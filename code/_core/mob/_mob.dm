@@ -11,6 +11,7 @@
 
 	var/list/obj/hud/button/buttons //List of HUD buttons
 	var/list/obj/hud/button/health_elements //List of health elements. This is an assoc list!
+	var/list/obj/hud/button/examine_butons //List of examine buttons.
 
 	//var/animation_pixel_x = 0
 	//var/animation_pixel_y = 0
@@ -28,24 +29,16 @@
 
 	plane = PLANE_MOB
 
-	see_invisible = INVISIBILITY_LIGHTING
-
-	sight = 0x0
-
-	var/vision = 0x0
-
-	/*
-	var/list/quests/all_quests = list()
-	var/list/quests/active_quests = list()
-	*/
-
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = TRUE
 
 	var/move_mod = 2
 	var/move_mod_button = 0
 
+	var/vision = 0x0
+	sight = SEE_BLACKNESS
 	see_invisible = INVISIBILITY_DEFAULT
+
 	invisibility = INVISIBILITY_MOBS
 
 	var/draw_buttons = TRUE
@@ -98,9 +91,9 @@
 	var/last_hold = -1
 
 /mob/proc/update_eyes()
-	vision = 0x0
-	sight = SEE_BLACKNESS
-	see_invisible = INVISIBILITY_DEFAULT
+	vision = initial(vision)
+	sight = initial(sight)
+	see_invisible = initial(see_invisible)
 	return TRUE
 
 /mob/Destroy()
@@ -138,7 +131,8 @@
 
 	var/client/C = src.client
 
-	for(var/obj/structure/interactive/localmachine/L in local_machines)
+	for(var/k in local_machines)
+		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
 
 	if(!plane_master_wall)
@@ -213,6 +207,7 @@
 	parallax = list()
 	buttons = list()
 	health_elements = list()
+	examine_butons = list()
 
 	if(C)
 		C.control_mob(src,FALSE)

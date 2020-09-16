@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(tracks)
 /subsystem/tracks/Initialize()
 	for(var/k in subtypesof(/track/))
 		var/track/T = new k
-		all_tracks[T.id] = T
+		all_tracks[T.type] = T
 
 	log_subsystem(name,"Initialized [length(all_tracks)] music tracks.")
 	return ..()

@@ -57,7 +57,7 @@
 
 	return .
 
-/mob/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	var/atom/old_loc = loc
 
@@ -79,7 +79,8 @@
 
 
 /mob/proc/update_rs_chat()
-	for(var/obj/effect/chat_text/CT in stored_chat_text)
+	for(var/k in stored_chat_text)
+		var/obj/effect/chat_text/CT = k
 		CT.glide_size = src.glide_size
 		CT.force_move(src.loc)
 

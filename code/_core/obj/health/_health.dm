@@ -1,7 +1,7 @@
 /obj/hud/button/health/
 	name = "Health Element"
 	desc = "This is an element for health."
-	id = "none"
+	var/id = "none"
 
 	icon = 'icons/obj/health/base.dmi'
 

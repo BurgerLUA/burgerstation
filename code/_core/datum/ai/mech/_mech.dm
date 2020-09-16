@@ -1,6 +1,4 @@
 /ai/mech/
-	attack_delay = 1
-
 	distance_target_min = 3
 	distance_target_max = VIEW_RANGE
 

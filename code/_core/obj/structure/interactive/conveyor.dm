@@ -9,6 +9,10 @@
 
 	layer = LAYER_GROUND_CONVERYOR
 
+	var/obj/structure/interactive/limiter/found_limiter
+	var/turf/move_turf
+
+
 /obj/structure/interactive/conveyor/shuttle
 	plane = PLANE_SHUTTLE
 
@@ -20,6 +24,10 @@
 	icon_state = "conveyor_inverted"
 	reversed = TRUE
 
+/obj/structure/interactive/conveyor/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	start_thinking(src)
+	return ..()
+
 /obj/structure/interactive/conveyor/PostInitialize()
 
 	if(active)
@@ -27,7 +35,35 @@
 	else
 		disable()
 
+	update_conveyor()
+
 	return ..()
+
+/obj/structure/interactive/conveyor/proc/update_conveyor()
+
+	var/move_direction = dir
+
+	var/list/optimization = list(
+		"[NORTHEAST]" = TRUE,
+		"[NORTHWEST]" = TRUE,
+		"[SOUTHWEST]" = TRUE,
+		"[SOUTHEAST]" = TRUE
+	)
+
+	var/intercardinal = optimization["[move_direction]"]
+
+	if(reversed)
+		move_direction = turn(move_direction,180)
+		if(intercardinal)
+			move_direction = turn(move_direction,45)
+	else if(intercardinal)
+		move_direction = turn(move_direction,-45)
+
+	move_turf = get_step(src,move_direction)
+	found_limiter = locate() in move_turf.contents
+
+	return TRUE
+
 
 /obj/structure/interactive/conveyor/update_icon()
 
@@ -57,42 +93,39 @@
 
 /obj/structure/interactive/conveyor/think()
 
-	var/desired_dir = dir
+	if(found_limiter)
+		var/obj/item/I = locate() in move_turf.contents
+		if(I) return TRUE
 
-	if(reversed)
-		desired_dir = turn(desired_dir,180)
-		if(desired_dir in DIRECTIONS_INTERCARDINAL)
-			desired_dir = turn(desired_dir,45)
-	else
-		if(desired_dir in DIRECTIONS_INTERCARDINAL)
-			desired_dir = turn(desired_dir,-45)
-
-	var/turf/desired_turf = get_step(src,desired_dir) //The turf where we're going
-
-	var/obj/structure/interactive/limiter/L = locate() in desired_turf.contents
-
-	if(L)
-		var/obj/item/I = locate() in desired_turf.contents
-		if(I)
-			return TRUE
-
-	if(desired_turf)
+	if(move_turf)
 		var/conveyor_limit = 5
-		for(var/atom/movable/M in loc.contents)
+		var/moved = FALSE
+		for(var/k in loc.contents)
+			var/atom/movable/M = k
+			if(!is_item(M) && !ismob(M) && !is_structure(M))
+				continue
 			if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
 				continue
 			if(conveyor_limit <= 0)
 				break
-			if(M.anchored || M.grabbing_hand || M.next_conveyor > world.time)
+			if(M.anchored)
+				continue
+			if(M.grabbing_hand || M.next_conveyor > world.time)
+				moved = TRUE
 				continue
 			if(is_living(M))
 				var/mob/living/L2 = M
 				if(!L2.horizontal && M.move_delay > -1)
+					moved = TRUE
 					continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
-			M.Move(desired_turf,silent=TRUE)
+			M.Move(move_turf,silent=TRUE)
 			M.next_conveyor = world.time + 8
 			conveyor_limit--
-			break
+			moved = TRUE
+			continue
+		if(!moved)
+			return FALSE
+
 
 	return TRUE

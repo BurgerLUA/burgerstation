@@ -25,7 +25,8 @@
 	if(!mob)
 		return TRUE
 
-	for(var/image/I in stored_hud_images)
+	for(var/k in stored_hud_images)
+		var/image/I = k
 		images -= I
 		stored_hud_images -= I
 

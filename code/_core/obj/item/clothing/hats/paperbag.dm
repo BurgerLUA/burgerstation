@@ -27,7 +27,8 @@
 	. = ..()
 
 	var/filled_slots = 1
-	for(var/obj/hud/inventory/I in src.inventories)
+	for(var/k in src.inventories)
+		var/obj/hud/inventory/I = k
 		filled_slots += length(I.held_objects)
 
 	icon_state = "[initial(icon_state)][clamp(filled_slots,1,2)]"

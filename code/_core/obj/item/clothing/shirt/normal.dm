@@ -50,6 +50,16 @@
 		"shoulders" = COLOR_WHITE
 	)
 
+/obj/item/clothing/shirt/normal/uniform/botanty
+	name = "botany uniformed shirt"
+	desc = "Blue and green."
+	desc_extended = "The shirt of choice for botanists."
+	polymorphs = list(
+		"shirt" = COLOR_BLUE,
+		"shoulders" = COLOR_GREEN
+	)
+
+
 /obj/item/clothing/shirt/normal/security
 	name = "security shirt"
 	desc = "HALT HALT HALT"
@@ -57,6 +67,15 @@
 	polymorphs = list(
 		"shirt" = COLOR_SECURITY_LIGHT,
 	)
+
+/obj/item/clothing/shirt/normal/security/ancient
+	name = "ancient security shirt"
+	desc = "Redshirts!"
+	desc_extended = "An old outdated variant of the security shirt."
+	polymorphs = list(
+		"shirt" = COLOR_CRIMSON,
+	)
+
 
 /obj/item/clothing/shirt/normal/engineering
 	name = "engineering shirt"

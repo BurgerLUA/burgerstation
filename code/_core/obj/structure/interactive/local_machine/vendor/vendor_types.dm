@@ -153,10 +153,11 @@
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/syringe/epinephrine,
-		/obj/item/storage/pillbottle/iron_small,
+		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,
-		/obj/item/storage/pillbottle/bicaridine_small
+		/obj/item/storage/pillbottle/iron_small,
+		/obj/item/storage/pillbottle/antihol_small
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
@@ -235,12 +236,41 @@
 	icon_state = "robotics"
 
 /obj/structure/interactive/vending/robotics/mech_gun_fabricator
-	name = "mech gun fabricator"
+	name = "mech fabricator"
 	icon_state = "mech"
 	stored_types = list(
-		/obj/item/weapon/ranged/energy/mech/smg/mk1,
-		/obj/item/weapon/ranged/energy/mech/smg/mk2,
-		/obj/item/weapon/ranged/energy/mech/smg/mk3
+		/obj/item/mech_part/equipment/weapon/smg,
+		/obj/item/mech_part/equipment/weapon/rifle,
+		/obj/item/mech_part/equipment/weapon/laser,
+		/obj/item/mech_part/equipment/weapon/ion,
+		/obj/item/mech_part/equipment/weapon/missile_pod,
+
+		/obj/item/mech_part/legs/loader,
+		/obj/item/mech_part/legs/light,
+		/obj/item/mech_part/legs/combat,
+		/obj/item/mech_part/legs/heavy,
+		/obj/item/mech_part/legs/spiderlegs,
+		/obj/item/mech_part/legs/tracks,
+
+		/obj/item/mech_part/body/loader,
+		/obj/item/mech_part/body/light,
+		/obj/item/mech_part/body/combat,
+		/obj/item/mech_part/body/heavy,
+		/obj/item/mech_part/body/pod,
+
+		/obj/item/mech_part/head/light,
+		/obj/item/mech_part/head/combat,
+		/obj/item/mech_part/head/heavy,
+
+		/obj/item/mech_part/arms/loader,
+		/obj/item/mech_part/arms/light,
+		/obj/item/mech_part/arms/combat,
+		/obj/item/mech_part/arms/heavy,
+
+		/obj/item/weapon/melee/tool/wrench,
+		/obj/item/weapon/melee/tool/screwdriver,
+		/obj/item/weapon/melee/tool/multitool,
+		/obj/item/powercell/vehicle
 	)
 
 /obj/structure/interactive/vending/chaplain/wardrobe
@@ -361,6 +391,7 @@
 	name = "smart fridge"
 	icon_state = "smartfridge"
 	plane = PLANE_WALL_ATTACHMENTS
+	pixel_y = 0
 
 /obj/structure/interactive/vending/smart_fridge/chemistry
 	name = "chemistry smart fridge"
@@ -374,7 +405,7 @@
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"
 	stored_types = list(
-		/obj/item/container/beaker/bottle/large/enzymes,
+		/obj/item/container/beaker/vial/enzymes,
 		/obj/item/container/beaker/food/flour,
 		/obj/item/container/beaker/food/sugar,
 		/obj/item/container/beaker/food/milk,
@@ -384,6 +415,41 @@
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/beaker/bottle/large/water
 	)
+
+
+/obj/structure/interactive/vending/smart_fridge/bar
+	name = "bar smart fridge"
+	icon_state = "boozeomat"
+	stored_types = list(
+		/obj/item/container/beaker/glass,
+		/obj/item/container/beaker/shot,
+		/obj/item/container/beaker/alcohol/absinthe,
+		/obj/item/container/beaker/alcohol/ale,
+		/obj/item/container/beaker/alcohol/beer,
+		/obj/item/container/beaker/alcohol/brandy,
+		/obj/item/container/beaker/alcohol/cider,
+		/obj/item/container/beaker/alcohol/coffee_liqueur,
+		/obj/item/container/beaker/alcohol/fernet,
+		/obj/item/container/beaker/alcohol/gin,
+		/obj/item/container/beaker/alcohol/grappa,
+		/obj/item/container/beaker/alcohol/hearty_punch,
+		/obj/item/container/beaker/alcohol/nothing,
+		/obj/item/container/beaker/alcohol/rum,
+		/obj/item/container/beaker/alcohol/tequila,
+		/obj/item/container/beaker/alcohol/vodka,
+		/obj/item/container/beaker/alcohol/whiskey,
+		/obj/item/container/beaker/alcohol/wine,
+		/obj/item/container/beaker/alcohol/wine/vermouth,
+		/obj/item/container/beaker/can/cola,
+		/obj/item/container/beaker/can/dr_gibb,
+		/obj/item/container/beaker/can/grape_soda,
+		/obj/item/container/beaker/can/grey_bull,
+		/obj/item/container/beaker/can/iced_tea,
+		/obj/item/container/beaker/can/mountain_wind,
+		/obj/item/container/beaker/can/orange_soda,
+		/obj/item/container/beaker/can/space_up
+	)
+
 
 /obj/structure/interactive/vending/dinnerware
 	name = "dinnerware vendor"
@@ -397,4 +463,21 @@
 		/obj/item/container/beaker/large,
 		/obj/item/clothing/head/hat/paperbag,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
+	)
+
+
+/obj/structure/interactive/vending/experimental
+	name = "experimental vendor"
+	icon_state = "experimental"
+	desc = "For science! (And balance.)"
+	desc_extended = "An experimental vendor that vends even more experimental weapons, armor, and clothing. Use at your own risk!"
+
+	stored_types = list(
+		/obj/item/clothing/uniform/stealth,
+		/obj/item/clothing/head/helmet/nanotrasen/light,
+		/obj/item/clothing/head/helmet/nanotrasen/medium,
+		/obj/item/clothing/head/helmet/nanotrasen/heavy,
+		/obj/item/clothing/overwear/armor/nanotrasen/light,
+		/obj/item/clothing/overwear/armor/nanotrasen/medium,
+		/obj/item/clothing/overwear/armor/nanotrasen/heavy
 	)

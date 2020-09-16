@@ -18,12 +18,15 @@
 	if(call_result)
 		return I
 
-	for(var/obj/hud/inventory/I2 in I.inventories)
-		for(var/obj/item/I3 in I2.held_objects)
+	for(var/v in I.inventories)
+		var/obj/hud/inventory/I2 = v
+		for(var/k in I2.held_objects)
+			var/obj/item/I3 = k
 			var/result = recursive_find_item(I3,desired_obj,desired_proc)
 			if(result)
 				return result
-		for(var/obj/item/I3 in I2.worn_objects)
+		for(var/k in I2.worn_objects)
+			var/obj/item/I3 = k
 			var/result = recursive_find_item(I3,desired_obj,desired_proc)
 			if(result)
 				return result
@@ -45,11 +48,13 @@
 		CRASH_SAFE("recursive_find_mob not supplied with a obj!")
 		return FALSE
 
-	for(var/obj/item/I3 in A.worn_objects)
+	for(var/k in A.worn_objects)
+		var/obj/item/I3 = k
 		var/result = recursive_find_item(I3,desired_obj,desired_proc)
 		if(result)
 			return result
-	for(var/obj/item/I3 in A.held_objects)
+	for(var/k in A.held_objects)
+		var/obj/item/I3 = k
 		var/result = recursive_find_item(I3,desired_obj,desired_proc)
 		if(result)
 			return result

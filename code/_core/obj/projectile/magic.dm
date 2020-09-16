@@ -36,6 +36,25 @@
 	name = "magic rift"
 	icon_state = "rift"
 
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/rift/revive
+	name = "revival rift"
+	hit_laying = TRUE
+
+/obj/projectile/magic/rift/revive/post_on_hit(var/atom/hit_atom)
+
+	. = ..()
+
+	if(. && is_living(hit_atom))
+		var/mob/living/L = hit_atom
+		if(L.dead && L.loyalty_tag == src.loyalty_tag)
+			L.resurrect()
+
+	return .
+
+
+
 /obj/projectile/magic/lightning_bolt
 	name = "holy lightning bolt"
 	icon_state = "lightning"
@@ -52,7 +71,7 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-/obj/projectile/magic/crystal/primary/update_projectile()
+/obj/projectile/magic/crystal/primary/update_projectile(var/tick_rate=1)
 
 	. = ..()
 

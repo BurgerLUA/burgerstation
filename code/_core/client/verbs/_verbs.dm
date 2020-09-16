@@ -42,6 +42,7 @@
 	//Game
 	verbs += /client/verb/stop_sound
 	verbs += /client/verb/ghost
+	verbs += /client/verb/check_objectives
 
 	//Admin
 	if(permissions & FLAG_PERMISSION_MODERATOR)
@@ -56,6 +57,7 @@
 
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)
+		verbs += /client/verb/print_cleaning_log
 		verbs += /client/verb/air_test
 		verbs += /client/verb/var_edit
 		verbs += /client/verb/change_variable
@@ -72,5 +74,6 @@
 		verbs += /client/verb/rejuvenate_player
 		verbs += /client/verb/stress_test
 		verbs += /client/verb/print_dps
+		verbs += /client/verb/create_dummy_objective
 
 	return TRUE

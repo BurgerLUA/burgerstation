@@ -16,6 +16,22 @@
 
 	drop_sound = 'sound/items/drop/herb.ogg'
 
+/obj/item/container/food/plant/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("icon_state")
+	SAVEVAR("potency")
+	SAVEVAR("yield")
+	SAVEVAR("growth_speed")
+	return .
+
+/obj/item/container/food/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("icon_state")
+	LOADVAR("potency")
+	LOADVAR("yield")
+	LOADVAR("growth_speed")
+	return .
+
 /obj/item/container/food/plant/nitrogen_flower
 	name = "nitrogen flower"
 	icon_state = "nitrogen_flower"

@@ -5,6 +5,7 @@
 
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)
+	FINALIZE(src)
 	stop_music_track(client)
 	nutrition *= RAND_PRECISE(0.9,1)
 	hydration *= RAND_PRECISE(0.9,1)
@@ -26,7 +27,6 @@
 	equip_loadout(loadout_to_use)
 
 	return TRUE
-
 
 /mob/living/advanced/player/antagonist/default_appearance()
 	var/species/S = all_species[species]

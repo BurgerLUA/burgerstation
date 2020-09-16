@@ -35,6 +35,17 @@
 	size = 0.01
 	value = 0.1
 
+	var/bullet_seed //For icon generation.
+
+/obj/item/bullet_cartridge/calculate_value()
+
+	. = ..()
+
+	if(is_spent)
+		. *= 0.05
+
+	return .
+
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
 	return 'sound/weapons/gun/general/mag_bullet_remove.ogg'
 
@@ -65,13 +76,25 @@
 		icon_state = "[initial(icon_state)]_[min(item_count_max_icon,item_count_current)]"
 	else
 		icon_state = "[initial(icon_state)]_spent"
-		if(item_count_current <= 1 && isturf(src.loc))
-			pixel_x = rand(-8,8)
-			pixel_y = rand(-8,8)
 
 	size = initial(size)*item_count_current
 
-	..()
+	return ..()
+
+/obj/item/bullet_cartridge/update_overlays()
+
+	. = ..()
+
+	if(is_spent)
+		if(!bullet_seed)
+			bullet_seed = rand(100,999)
+		for(var/i=1,i<=min(9,item_count_current-1),i++)
+			var/image/I = new(icon,icon_state)
+			I.pixel_x = sin(i*bullet_seed)*TILE_SIZE % 16
+			I.pixel_y = cos(i*bullet_seed)*TILE_SIZE % 16
+			add_overlay(I)
+
+	return .
 
 /obj/item/bullet_cartridge/get_examine_list(var/mob/examiner)
 
@@ -91,7 +114,8 @@
 		if(misfire_chance && luck(list(caller,src,loc),misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
-		item_count_max = -1
+		plane = PLANE_BULLET_CASINGS
+		item_count_max = max(item_count_max,100000) //Some absurd value.
 		return src
 
 	return FALSE
@@ -100,11 +124,8 @@
 
 	if(is_bullet(O))
 		var/obj/item/bullet_cartridge/B = O
-		if(!B.qdeleting && B.damage_type == src.damage_type && B.is_spent && src.is_spent)
-			B.item_count_current += item_count_current
-			item_count_current = 0 //Just in case
-			B.update_sprite()
-			qdel(src)
+		if(!B.qdeleting && B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
+			B.transfer_item_count_to(src)
 
 	return ..()
 
@@ -139,6 +160,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
 		B.is_spent = is_spent
 		INITIALIZE(B)
+		FINALIZE(B)
 		transfer_target.stored_bullets += B
 	if(talk)
 		caller.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
@@ -152,6 +174,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		INITIALIZE(B)
+		FINALIZE(B)
 		W.chambered_bullet += B
 		add_item_count(-1)
 		return TRUE
@@ -160,6 +183,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		INITIALIZE(B)
+		FINALIZE(B)
 		var/valid_slot = 0
 		for(var/i=1,i<=length(W.stored_bullets),i++)
 			if(!W.stored_bullets[i])
@@ -197,5 +221,21 @@
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
 				play(M.get_cock_sound("forward"),src)
 			return TRUE
+
+	return ..()
+
+
+/obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)
+
+	if(!istype(I,/obj/item/bullet_cartridge/))
+		return FALSE
+
+	var/obj/item/bullet_cartridge/BC = I
+
+	if(BC.bullet_length != bullet_length)
+		return FALSE
+
+	if(BC.bullet_diameter != bullet_diameter)
+		return FALSE
 
 	return ..()

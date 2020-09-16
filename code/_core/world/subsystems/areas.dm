@@ -73,7 +73,8 @@ SUBSYSTEM_DEF(area)
 		is_volcanic = !is_volcanic
 		set_weather(WEATHER_VOLCANIC,is_volcanic,areas_volcanic)
 
-	for(var/area/A in areas_ambient)
+	for(var/k in areas_ambient)
+		var/area/A = k
 		CHECK_TICK(tick_usage_max,0)
 		var/sound_to_play = pick(A.random_sounds)
 		var/list/valid_players = list()
@@ -87,7 +88,8 @@ SUBSYSTEM_DEF(area)
 	return TRUE
 
 /subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/affected_areas)
-	for(var/area/A in affected_areas)
+	for(var/k in affected_areas)
+		var/area/A = k
 		CHECK_TICK(tick_usage_max,0)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'

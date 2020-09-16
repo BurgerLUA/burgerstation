@@ -9,6 +9,12 @@
 
 	liquid = 0.5
 
+/reagent/toxin/New(var/desired_loc)
+
+	value *= 1+(damage_per_unit*2)
+
+	return ..()
+
 /reagent/toxin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()

@@ -41,7 +41,8 @@
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
-			for(var/obj/hud/button/slot/B in A.buttons)
+			for(var/k in A.buttons)
+				var/obj/hud/button/slot/B = k
 				if(B.id == text_num)
 					B.activate_button(owner.mob)
 
@@ -50,16 +51,20 @@
 	switch(command)
 		if("move_up")
 			owner.mob.move_dir |= NORTH
-			owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = NORTH
 		if("move_down")
 			owner.mob.move_dir |= SOUTH
-			owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = SOUTH
 		if("move_left")
 			owner.mob.move_dir |= WEST
-			owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = WEST
 		if("move_right")
 			owner.mob.move_dir |= EAST
-			owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = EAST
 		if("sprint")
 			owner.mob.movement_flags |= MOVEMENT_RUNNING
 		if("walk")
@@ -107,12 +112,16 @@
 	switch(command)
 		if("move_up")
 			owner.mob.move_dir &= ~NORTH
+			if(owner.mob.first_move_dir == NORTH) owner.mob.first_move_dir = null
 		if("move_down")
 			owner.mob.move_dir &= ~SOUTH
+			if(owner.mob.first_move_dir == SOUTH) owner.mob.first_move_dir = null
 		if("move_left")
 			owner.mob.move_dir &= ~WEST
+			if(owner.mob.first_move_dir == WEST) owner.mob.first_move_dir = null
 		if("move_right")
 			owner.mob.move_dir &= ~EAST
+			if(owner.mob.first_move_dir == EAST) owner.mob.first_move_dir = null
 		if("sprint")
 			owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 		if("walk")

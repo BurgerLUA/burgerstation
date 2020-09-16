@@ -2,7 +2,7 @@
 	name = "Skeleton"
 	desc = "Meat."
 	id = "skeleton"
-	flags_species = SPECIES_BEEF
+	flags_species = SPECIES_SKELETON
 
 	flags_chargen = CHARGEN_EYE | CHARGEN_SKIN
 

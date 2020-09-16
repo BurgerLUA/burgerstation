@@ -30,7 +30,8 @@
 		owner.fps = loaded_data["fps_client"]
 
 	if(owner.mob)
-		for(var/obj/hud/button/B in owner.mob.buttons)
+		for(var/k in owner.mob.buttons)
+			var/obj/hud/button/B = k
 			B.update_sprite()
 
 		for(var/k in owner.mob.health_elements)
@@ -39,7 +40,8 @@
 
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner.mob
-			for(var/obj/hud/inventory/I in A.inventory)
+			for(var/k in A.inventory)
+				var/obj/hud/inventory/I = k
 				I.update_sprite()
 
 	owner.update_window()

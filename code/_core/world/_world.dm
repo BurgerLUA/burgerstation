@@ -25,7 +25,7 @@ var/global/world_state = STATE_STARTING
 	maxy = WORLD_SIZE
 	maxz = 3
 
-	loop_checks = 0
+	loop_checks = 1
 
 /world/New()
 	__detect_rust_g()
@@ -100,7 +100,9 @@ var/global/world_state = STATE_STARTING
 /world/proc/save()
 	var/chosen_sound = pick(SSsound.round_end_sounds)
 	play(chosen_sound,all_mobs_with_clients)
-	for(var/mob/living/advanced/player/P in all_players)
+	save_all_mechs()
+	for(var/k in all_players)
+		var/mob/living/advanced/player/P = k
 		if(P.dead)
 			P.to_chat("Could not save your character because you were dead.")
 			continue

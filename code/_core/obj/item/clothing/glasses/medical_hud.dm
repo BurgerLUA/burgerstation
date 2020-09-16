@@ -43,7 +43,7 @@
 	)
 
 /obj/item/clothing/glasses/security_hud/red
-	name = "syndicate sensors suite"
+	name = "security sensors suite"
 	rarity = RARITY_MYTHICAL
 	desc_extended = "A syndicate heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking syndicate operatives. Comes with build-in thermals as well."
 	value = 1000

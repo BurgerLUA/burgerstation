@@ -7,7 +7,9 @@
 	icon = 'icons/obj/item/medicine.dmi'
 
 	var/heal_brute = 0
+	var/heal_brute_percent = 0
 	var/heal_burn = 0
+	var/heal_burn_percent = 0
 	var/heal_bleeding = FALSE
 
 	var/verb_to_use = "treat"
@@ -22,6 +24,8 @@
 	reagents = /reagent_container/medicine
 
 	var/override_icon_state = FALSE
+
+	var/robotic = FALSE //Set to true if heals robotic limbs and not organic limbs.
 
 /obj/item/container/medicine/Initialize(var/desired_loc)
 
@@ -50,16 +54,31 @@
 		var/obj/item/organ/O = A
 		O.bleeding = 0
 
+	. = FALSE
+
 	if(heal_brute)
 		A.health.adjust_brute_loss(-heal_brute)
+		. = TRUE
+
+	if(heal_brute_percent)
+		A.health.adjust_brute_loss(-heal_brute_percent*A.health.get_brute_loss())
+		. = TRUE
 
 	if(heal_burn)
 		A.health.adjust_burn_loss(-heal_burn)
+		. = TRUE
 
-	if(heal_brute || heal_burn)
-		A.health.update_health()
-		if(is_organ(A) && A.loc.health)
-			A.loc.health.update_health()
+	if(heal_burn_percent)
+		A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss())
+		. = TRUE
+
+	if(.)
+		if(is_organ(A) && is_living(A.loc))
+			var/mob/living/L = A.loc
+			A.health.update_health()
+			L.queue_health_update = TRUE
+		else
+			A.health.update_health()
 
 	var/reagent_transfer = CEILING((1/item_count_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer)

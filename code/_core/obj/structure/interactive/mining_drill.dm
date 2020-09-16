@@ -35,7 +35,7 @@
 
 	return ..()
 
-/obj/structure/interactive/mining_drill/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/obj/structure/interactive/mining_drill/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	. = ..()
 
@@ -55,18 +55,17 @@
 		visible_message("\The [caller.name] activates \the [src.name].")
 	else
 		visible_message("\The [src.name] activates itself.")
-	anchored = TRUE
+	set_anchored(TRUE)
 	start_thinking(src)
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
-
 	if(caller)
 		visible_message("\The [caller.name] turns off \the [src.name].")
 	else
 		visible_message("\The [src.name] turns off on its own.")
-	anchored = FALSE
+	set_anchored(FALSE)
 	stop_thinking(src)
 	update_sprite()
 	return TRUE
@@ -76,14 +75,11 @@
 
 	var/valid_setup = FALSE
 	for(var/obj/structure/interactive/mining_brace/MB in orange(1,src))
-		if(!MB.anchored)
-			continue
-		if(get_step(MB,MB.dir) != src.loc)
+		if(!MB.anchored || get_step(MB,MB.dir) != src.loc)
 			continue
 		var/obj/structure/interactive/mining_brace/MB2 = locate() in get_step(src,MB.dir).contents
-		if(!MB2 || !MB.anchored)
+		if(!MB2 || !MB2.anchored || get_step(MB2,MB2.dir) != src.loc)
 			continue
-
 		valid_setup = TRUE
 		break
 
@@ -135,7 +131,7 @@
 		caller.to_chat(span("warning","You need to disable the mining drill first before moving this!"))
 		return TRUE
 
-	anchored = !anchored
+	set_anchored(!anchored)
 
 	if(anchored)
 		caller.visible_message("\The [caller.name] secures \the [src.name].","You secure \the [src.name].")

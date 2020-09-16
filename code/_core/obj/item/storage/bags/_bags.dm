@@ -132,7 +132,8 @@
 
 	var/chosen_color
 	var/filled_slots = 0
-	for(var/obj/hud/inventory/I in src.inventories)
+	for(var/k in src.inventories)
+		var/obj/hud/inventory/I = k
 		filled_slots += length(I.held_objects)
 		if(!chosen_color)
 			var/obj/item/I2 = I.get_top_held_object()
@@ -226,4 +227,14 @@
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/omnizine(src)
+	return ..()
+
+
+/obj/item/storage/pillbottle/antihol_small
+	name = "antihol bottle"
+	desc = "Contains 10 20u antihol pills."
+
+/obj/item/storage/pillbottle/antihol_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/pill/antihol(src)
 	return ..()

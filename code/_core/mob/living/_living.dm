@@ -12,6 +12,7 @@
 
 	var/enable_AI = FALSE
 	var/ai/ai
+	var/id //Boss ID
 
 	var/iff_tag
 	var/loyalty_tag
@@ -26,6 +27,8 @@
 
 	var/nutrition = 1000
 	var/hydration = 1000
+	var/intoxication = 0
+	var/last_intoxication_message = 0
 
 	var/first_life = TRUE
 
@@ -164,6 +167,8 @@
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
+	var/fatigue_from_block_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+
 	value = 250
 
 	var/mob/living/advanced/player/following = null
@@ -245,12 +250,14 @@
 		following.followers -= src
 		following = null
 
-	for(var/experience/E in attributes)
+	for(var/k in attributes)
+		var/experience/E = attributes[k]
 		qdel(E)
 
 	attributes.Cut()
 
-	for(var/experience/E in skills)
+	for(var/k in skills)
+		var/experience/E = skills[k]
 		qdel(E)
 
 	skills.Cut()
@@ -258,7 +265,8 @@
 	QDEL_NULL(ai)
 
 	if(screen_blood)
-		for(var/obj/hud/screen_blood/S in screen_blood)
+		for(var/k in screen_blood)
+			var/obj/hud/screen_blood/S = k
 			qdel(S)
 
 		screen_blood.Cut()
@@ -357,7 +365,8 @@
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
-			for(var/obj/hud/button/boss_health/B in P.buttons)
+			for(var/k in P.buttons)
+				var/obj/hud/button/boss_health/B = k
 				B.target_boss = src
 				B.update_stats()
 
@@ -387,6 +396,7 @@
 		health.armor_base = armor_base
 	if(ai)
 		INITIALIZE(ai)
+		FINALIZE(ai)
 	setup_name()
 	return .
 
@@ -456,6 +466,6 @@
 			params[PARAM_ICON_Y] = rand(0,32)
 			var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 			var/damagetype/D = all_damage_types[/damagetype/explosion/]
-			D.do_damage(source,src,source,object_to_damage,owner,magnitude)
+			D.hit(source,src,source,object_to_damage,owner,magnitude)
 
 	return TRUE

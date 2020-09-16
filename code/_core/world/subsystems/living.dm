@@ -11,17 +11,21 @@ SUBSYSTEM_DEF(living)
 	tick_usage_max = 80
 	cpu_usage_max = 80
 
+	use_time_dialation = FALSE
+
 /subsystem/living/Initialize()
 
 	if(!ENABLE_MOB)
 		return ..()
 
-	for(var/mob/living/L in all_living)
+	for(var/k in all_living)
+		var/mob/living/L = k
 		if(istype(L.loc,/turf/simulated/wall))
 			qdel(L)
 			continue
 		INITIALIZE(L)
 		GENERATE(L)
+		FINALIZE(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 
@@ -31,7 +35,8 @@ SUBSYSTEM_DEF(living)
 
 	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
 
-	for(var/mob/living/L in all_living)
+	for(var/k in all_living)
+		var/mob/living/L = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		L.on_life()
 		if(do_slow)

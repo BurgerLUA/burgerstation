@@ -1,6 +1,5 @@
 /obj/item/bullet_cartridge/shotgun_23/
 	rarity = RARITY_COMMON
-	id = "shotgun"
 	icon = 'icons/obj/item/bullet/shotgun_23.dmi'
 	item_count_max = 4
 	item_count_max_icon = 4

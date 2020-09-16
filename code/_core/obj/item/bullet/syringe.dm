@@ -5,7 +5,6 @@
 	icon = 'icons/obj/item/bullet/syringe_gun.dmi'
 	icon_state = "syringe"
 
-	id = "syringe"
 	bullet_diameter = 18.5
 	bullet_length = 18.5
 

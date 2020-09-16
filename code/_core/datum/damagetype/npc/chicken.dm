@@ -3,6 +3,8 @@
 	attack_verbs = list("pecks","claws","kicks")
 	weapon_name = "beak"
 
+	hit_effect = /obj/effect/temp/impact/combat/claw
+
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLADE = 1,

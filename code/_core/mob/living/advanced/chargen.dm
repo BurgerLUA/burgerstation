@@ -1,6 +1,7 @@
 /mob/living/advanced/proc/start_chargen()
 
 	INITIALIZE(src)
+	FINALIZE(src)
 	default_appearance()
 	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)
@@ -21,7 +22,7 @@
 			"They promise it won't be your last."
 		)
 
-		play_music_track("space_wayfarer",src.client)
+		play_music_track(/track/space_wayfarer,src.client)
 
 		client.disable_controls = TRUE
 		client.update_zoom(3)
@@ -100,7 +101,8 @@
 	if(keep_items)
 		kept_items = drop_all_items(src,FALSE,TRUE)
 	else
-		for(var/obj/hud/inventory/I in inventory)
+		for(var/k in inventory)
+			var/obj/hud/inventory/I = k
 			I.delete_all_objects()
 
 	remove_all_organs()

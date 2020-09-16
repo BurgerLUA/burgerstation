@@ -1,6 +1,7 @@
 /area/lz_001/caves
 	name = "\improper Unexplored Caves"
 	icon_state = "cave"
+	tracks = TRACKS_CAVE
 	random_sounds = list(
 		'sound/ambient/cave_1.ogg',
 		'sound/ambient/cave_2.ogg',
@@ -22,6 +23,8 @@
 		'sound/ambient/lavacaves_2.ogg',
 	)
 
+	tracks = TRACKS_LAVA
+
 	cheese_type = /reagent/nutrition/cheese/guava
 
 
@@ -41,21 +44,31 @@
 	name = "King Crab's Burrow"
 	icon_state = "king_crab"
 
+	tracks = null
+
 /area/lz_001/caves/ocean_pass
 	name = "Ocean's Pass"
 	icon_state = "ocean_pass"
+
+	tracks = null
 
 /area/lz_001/caves/diamond_cave
 	name = "Diamond's Cave"
 	icon_state = "diamond_cave"
 
+	tracks = null
+
 /area/lz_001/caves/glow_cave
 	name = "Glowshroom Cave"
 	icon_state = "glow_cave"
 
+	tracks = null
+
 /area/lz_001/caves/desert_cave
 	name = "Sandraider's Cave"
 	icon_state = "desert_cave"
+
+	tracks = null
 
 /area/lz_001/caves/lagoon
 	name = "Pirate's Lagoon"
@@ -64,12 +77,16 @@
 	sunlight_freq = 8
 	sunlight_color ="#8CB08F"
 
+	tracks = null
+
 /area/lz_001/caves/lagoon/ship
 	name = "Captain Condom's Ship"
 	icon_state = "ship"
 
 	sunlight_freq = 8
 	sunlight_color ="#8CB08F"
+
+	tracks = null
 
 /area/lz_001/caves/knight/
 	name = "Knight's Landing"
@@ -78,10 +95,16 @@
 	sunlight_freq = 8
 	sunlight_color ="#AEB05D"
 
+	tracks = null
+
 /area/lz_001/caves/knight/cave
 	name = "Knight's Landing Cave"
 	icon_state = "knight"
 
+	tracks = null
+
 /area/lz_001/caves/hive
 	name = "\improper Alien Hive"
 	icon_state = "hive"
+
+	tracks = null

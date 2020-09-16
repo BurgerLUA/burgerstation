@@ -76,7 +76,7 @@
 
 	boss = TRUE
 	force_spawn = TRUE
-	boss_music = "crab_rave"
+	boss_music = /track/crab_rave
 
 	damage_type = /damagetype/npc/crab/king
 
@@ -98,13 +98,21 @@
 	)
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		FATIGUE = STAGGER,
-		DISARM = TRUE
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
+		DISARM = TRUE,
+		DRUGGY = TRUE,
+		FIRE = TRUE
 	)
 
 	enable_medical_hud = FALSE

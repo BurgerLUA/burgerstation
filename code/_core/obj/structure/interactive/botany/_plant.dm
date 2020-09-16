@@ -5,7 +5,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	desc = "A plant grows here."
 	icon = 'icons/obj/structure/botany.dmi'
 	icon_state = "spawn"
-	id = null
+	var/plant_type/plant_type
 
 	var/growth = 0 //Increases by growth_speed every 10 seconds.
 	var/growth_min = 0 //This is set AFTER harvesting.
@@ -42,14 +42,14 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 /obj/structure/interactive/plant/update_icon()
 
-	var/plant_type/associated_plant = all_plant_types[id]
+	var/plant_type/associated_plant = all_plant_types[plant_type]
 
 	name = "[associated_plant.name] plant"
 
 	if(growth >= growth_produce_max)
-		icon_state = "[id]_grown"
+		icon_state = "[associated_plant.icon_state]_grown"
 	else
-		icon_state = "[id]_[FLOOR((min(growth,growth_max)/growth_max)*associated_plant.icon_count, 1)]"
+		icon_state = "[associated_plant.icon_state]_[FLOOR((min(growth,growth_max)/growth_max)*associated_plant.icon_count, 1)]"
 
 /obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/caller)
 
@@ -57,7 +57,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 		caller.to_chat(span("notice","\The [src.name] is not ready to be harvested!"))
 		return TRUE
 
-	var/plant_type/associated_plant = all_plant_types[id]
+	var/plant_type/associated_plant = all_plant_types[plant_type]
 
 	var/turf/caller_turf = get_turf(caller)
 
@@ -94,12 +94,13 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			P.name = associated_plant.name
 			P.desc = associated_plant.desc
 			P.icon = associated_plant.harvest_icon
-			P.icon_state = associated_plant.id
+			P.icon_state = associated_plant.icon_state
 			P.potency = potency
 			P.yield = yield
 			P.growth_speed = growth_speed
 			INITIALIZE(P)
 			GENERATE(P)
+			FINALIZE(P)
 			for(var/r_id in associated_plant.reagents)
 				var/r_value = associated_plant.reagents[r_id] * potency
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)

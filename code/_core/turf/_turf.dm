@@ -66,13 +66,20 @@
 	return ..()
 
 /turf/change_victim(var/atom/attacker)
-	for(var/v in contents)
+
+	for(var/atom/movable/v in contents)
 		if(ismob(v) && attacker != v)
+			var/mob/M = v
+			if(M.mouse_opacity == 0)
+				continue
+			return v
+		if(v.health && v.can_be_attacked(attacker))
 			return v
 
 	if(old_living)
-		for(var/mob/living/L in old_living)
-			if(!L.dead && L.move_delay > 0 && attacker != L)
+		for(var/k in old_living)
+			var/mob/living/L = k
+			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && attacker != L)
 				return L
 
 	return src
@@ -147,13 +154,13 @@
 
 /turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	for(var/atom/A in contents)
+	for(var/atom/A in src.contents)
 		A.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return ..()
 
 /*
-/turf/dropped_on_by_object(var/mob/caller,var/atom/object)
+/turf/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
 		var/obj/structure/S = object

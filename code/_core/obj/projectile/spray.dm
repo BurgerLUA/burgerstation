@@ -21,7 +21,7 @@
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE)
 	return ..()
 
-/obj/projectile/spray/update_projectile()
+/obj/projectile/spray/update_projectile(var/tick_rate=1)
 	. = ..()
 	if(.)
 		vel_x *= 0.9

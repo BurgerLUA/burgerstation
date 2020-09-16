@@ -28,6 +28,64 @@
 
 /obj/item/crafting/click_self(caller,location,control,params)
 
+	if(!length(inventories))
+		return FALSE
+
+	if(inventory_user && is_advanced(inventory_user))
+		var/mob/living/advanced/A = inventory_user
+		for(var/obj/hud/button/crafting/B in A.buttons)
+			B.alpha = 0
+			B.mouse_opacity = 0
+
+	var/mob/living/advanced/A = caller
+
+	var/opening = FALSE
+
+	for(var/k in A.inventory)
+		var/obj/hud/inventory/crafting/I = k
+		CHECK_TICK(100,FPS_SERVER*0.5)
+		I.alpha = 0
+		I.mouse_opacity = 0
+
+	if(inventory_user != A)
+		for(var/obj/hud/button/crafting/B in A.buttons)
+			B.alpha = 0
+			B.mouse_opacity = 0
+
+	for(var/i=1,i<=length(inventories),i++)
+		CHECK_TICK(100,FPS_SERVER*0.5)
+		var/obj/hud/inventory/crafting/I = inventories[i]
+		I.update_owner(A)
+		if(opening || !I.alpha)
+			animate(I,alpha=255,time=4)
+			I.mouse_opacity = 2
+			opening = TRUE
+		else
+			animate(I,alpha=0,time=4)
+			I.mouse_opacity = 0
+			opening = FALSE
+
+	if(opening)
+		play(pick(inventory_sounds),src)
+
+	for(var/obj/hud/button/crafting/B in A.buttons)
+		if(opening)
+			animate(B,alpha=255,time=4)
+			B.mouse_opacity = 2
+		else
+			animate(B,alpha=0,time=4)
+			B.mouse_opacity = 0
+
+	inventory_user = caller
+
+	return TRUE
+
+
+
+
+/*
+/obj/item/crafting/click_self(caller,location,control,params)
+
 	if(!is_advanced(caller))
 		return ..()
 
@@ -64,6 +122,7 @@
 			opening = FALSE
 
 	return TRUE
+*/
 
 
 /obj/item/crafting/proc/attempt_to_craft(var/mob/living/advanced/caller)
@@ -87,6 +146,8 @@
 
 			var/obj/item/I3 = new R.product(caller.loc)
 			INITIALIZE(I3)
+			GENERATE(I3)
+			FINALIZE(I3)
 			product_slot.add_held_object(I3,caller,FALSE,TRUE)
 
 			for(var/obj/item/I in recipe_check)

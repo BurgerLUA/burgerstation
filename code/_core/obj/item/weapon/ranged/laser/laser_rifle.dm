@@ -12,14 +12,12 @@
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 4
 
-	automatic = FALSE
+	automatic = TRUE
 
 	override_icon_state = TRUE
 	override_icon_state_held = FALSE //TODO: FIX THIS
 
-	charge_max = CELL_SIZE_ADVANCED
-	charge_current = CELL_SIZE_ADVANCED
-	charge_cost = CELL_SIZE_ADVANCED / 40
+	charge_cost = CELL_SIZE_BASIC / 60
 
 	view_punch = 16
 
@@ -38,11 +36,25 @@
 	value = 900
 
 	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = FALSE,
+		/obj/item/attachment/barrel/compensator = FALSE,
+		/obj/item/attachment/barrel/extended = FALSE,
+		/obj/item/attachment/barrel/gyro = FALSE,
 		/obj/item/attachment/barrel/laser_charger = TRUE,
+		/obj/item/attachment/barrel/suppressor = FALSE,
+
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/sight/scope/large = TRUE,
+		/obj/item/attachment/sight/targeting_computer = TRUE,
+
+		/obj/item/attachment/stock/c20r = FALSE,
+
+		/obj/item/attachment/undermount/angled_grip = TRUE,
+		/obj/item/attachment/undermount/bipod = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = FALSE,
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
@@ -68,7 +80,9 @@
 
 /obj/item/weapon/ranged/energy/rifle/update_overlays()
 
-	var/true_charge = FLOOR(charge_current/charge_cost, 1) / FLOOR(charge_max/charge_cost, 1)
+	var/obj/item/powercell/PC = get_battery()
+
+	var/true_charge = istype(PC) ? FLOOR(PC.charge_current/charge_cost, 1) / FLOOR(PC.charge_max/charge_cost, 1) : 0
 
 	var/image/I = new/image(initial(icon),"ammo_[CEILING(true_charge * 8, 1)]")
 	I.color = polymorphs["barrel"]
@@ -88,7 +102,7 @@
 	projectile_speed = 26
 	shoot_delay = 6
 
-	charge_cost = 2000
+	charge_cost = CELL_SIZE_BASIC / 50
 
 	view_punch = 20
 
@@ -107,7 +121,7 @@
 	projectile_speed = 20
 	shoot_delay = 4
 
-	charge_cost = 2000
+	charge_cost = CELL_SIZE_BASIC / 50
 
 	view_punch = 24
 
@@ -120,37 +134,39 @@
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad/
 	name = "AER13c-D X-Ray Rifle"
-	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special phoron battery that charges over time."
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special fusion battery that charges over time."
+
+	projectile_speed = 30
+	shoot_delay = 5
+
+	view_punch = 30
 
 	polymorphs = list(
-		"base" = COLOR_WHITE,
-		"barrel" = COLOR_PURPLE
+		"base" = "#EEEEEE",
+		"barrel" = "#FF00DC"
 	)
 
-	charge_max = 3000*3
-	charge_current = 3000*3
-	charge_cost = 3000
-	recharge_rate = 300
+	charge_cost = CELL_SIZE_BASIC / 12
 
-	value = 4000
+	battery = /obj/item/powercell/recharging
+
+	value = 2000
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad/Generate()
 
 	. = ..()
 
-	attachment_undermount = new/obj/item/attachment/undermount/burst_adapter(src)
+	attachment_undermount = new/obj/item/attachment/undermount/angled_grip(src)
 	INITIALIZE(attachment_undermount)
 	GENERATE(attachment_undermount)
-
-	attachment_sight = new /obj/item/attachment/sight/laser_sight(src)
-	INITIALIZE(attachment_sight)
-	GENERATE(attachment_sight)
+	FINALIZE(attachment_undermount)
 
 	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
 	INITIALIZE(attachment_barrel)
 	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)
 
-	update_attachments()
+	update_attachment_stats()
 	update_sprite()
 
 	return .

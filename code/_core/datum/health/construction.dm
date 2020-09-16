@@ -21,12 +21,12 @@
 	var/old_damage_number = 0
 
 
-/health/construction/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
+/health/construction/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
 
 	if(. && health_current <= 0)
-		var/obj/structure/interactive/construction/C = owner
+		var/atom/C = owner
 		C.on_destruction(attacker,TRUE)
 
 	return .
@@ -35,7 +35,7 @@
 /health/construction/glass
 
 
-/health/construction/glass/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
+/health/construction/glass/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
 

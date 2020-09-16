@@ -21,6 +21,7 @@
 		var/turf/T = get_step(src,d)
 		var/obj/structure/interactive/blob/node/N = new(T,src)
 		INITIALIZE(N)
+		FINALIZE(N)
 		linked_nodes += N
 
 	return ..()
@@ -32,7 +33,8 @@
 
 /obj/structure/interactive/blob/core/Destroy()
 
-	for(var/obj/structure/interactive/blob/B in linked_walls)
+	for(var/k in linked_walls)
+		var/obj/structure/interactive/blob/B = k
 		B.health.adjust_brute_loss(max(0,B.health.health_current - 10))
 		B.health.update_health()
 		B.color = null
@@ -46,7 +48,8 @@
 	. = list()
 
 	if(length(linked_walls))
-		for(var/list/obj/structure/interactive/blob/B in linked_walls)
+		for(var/k in linked_walls)
+			var/list/obj/structure/interactive/blob/B = k
 			for(var/d in DIRECTIONS_CARDINAL)
 				var/turf/T = get_step(B,d)
 				if(!T)
@@ -93,10 +96,12 @@
 				var/obj/structure/interactive/blob/node/B = new(F,src)
 				resources_to_spend -= 5
 				INITIALIZE(B)
+				FINALIZE(B)
 			else
 				var/obj/structure/interactive/blob/wall/B = new(F,src)
 				resources_to_spend -= 1
 				INITIALIZE(B)
+				FINALIZE(B)
 			valid_turfs -= F
 
 	return ..()

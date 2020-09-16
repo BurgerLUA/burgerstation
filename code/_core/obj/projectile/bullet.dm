@@ -59,7 +59,7 @@
 
 	return .
 
-/obj/projectile/bullet/gyrojet/update_projectile()
+/obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
 
 	. = ..()
 
@@ -77,5 +77,19 @@
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_hit(current_loc,TRUE)
 			return FALSE
+
+	return .
+
+
+/obj/projectile/bullet/rocket
+	name = "rocket"
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "rocket"
+
+/obj/projectile/bullet/rocket/post_on_hit(var/atom/hit_atom)
+	. = ..()
+
+	if(.)
+		explode(get_turf(hit_atom),2,owner,src,iff_tag)
 
 	return .

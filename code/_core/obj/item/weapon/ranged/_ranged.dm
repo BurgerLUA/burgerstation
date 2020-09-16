@@ -55,6 +55,8 @@
 
 	drop_sound = 'sound/items/drop/gun.ogg'
 
+	var/list/attachment_stats = list()
+
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("firing_pin")
@@ -71,128 +73,39 @@
 	LOADATOM("attachment_sight")
 	LOADATOM("attachment_undermount")
 	LOADATOM("attachment_stock")
-	update_attachments()
+	update_attachment_stats()
 	return .
+
+/obj/item/weapon/ranged/Finalize()
+
+	. = ..()
+
+	if(!istype(firing_pin))
+		firing_pin = null
+
+	return .
+
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
-
-/obj/item/weapon/ranged/proc/update_attachments()
-
-	automatic = initial(automatic)
-	zoom_mul = initial(zoom_mul)
-	heat_per_shot = initial(heat_per_shot)
-
-	var/list/list_to_check = list(attachment_barrel,attachment_sight,attachment_undermount,attachment_stock)
-
-	for(var/k in list_to_check)
-		if(!k)
-			continue
-		var/obj/item/attachment/A = k
-		if(A.attachment_force_automatic)
-			automatic = TRUE
-		if(A.attachment_zoom_mul)
-			zoom_mul *= A.attachment_zoom_mul
-		if(A.attachment_heat_mul)
-			heat_per_shot *= A.attachment_heat_mul
-
-	return TRUE
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(istype(defer_object,/obj/item/attachment))
-		var/obj/item/attachment/A = defer_object
-
-		if(!length(attachment_whitelist))
-			caller.to_chat(span("notice","This weapon does not accept attachments!"))
-			return FALSE
-
-		if(!attachment_whitelist[A.type])
-			caller.to_chat(span("notice","\The [A.name] cannot fit on \the [src.name]!"))
-			return FALSE
-
-		if(istype(A,/obj/item/attachment/barrel))
-			if(attachment_barrel)
-				caller.to_chat(span("notice","There is already \a [attachment_barrel.name] attached to \the [src.name]!"))
-			else
-				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
-				A.drop_item(src)
-				attachment_barrel = A
-				update_attachments()
-				update_sprite()
-		else if(istype(A,/obj/item/attachment/sight))
-			if(attachment_sight)
-				caller.to_chat(span("notice","There is already \a [attachment_sight.name] attached to \the [src.name]!"))
-			else
-				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
-				A.drop_item(src)
-				attachment_sight = A
-				update_attachments()
-				update_sprite()
-		else if(istype(A,/obj/item/attachment/undermount))
-			if(attachment_undermount)
-				caller.to_chat(span("notice","There is already \a [attachment_undermount.name] attached to \the [src.name]!"))
-			else
-				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
-				A.drop_item(src)
-				attachment_undermount = A
-				update_attachments()
-				update_sprite()
-		else if(istype(A,/obj/item/attachment/stock))
-			if(attachment_stock)
-				caller.to_chat(span("notice","There is already \a [attachment_stock.name] attached to \the [src.name]!"))
-			else
-				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
-				A.drop_item(src)
-				attachment_stock = A
-				update_attachments()
-				update_sprite()
-
-
+		add_attachment(caller,defer_object)
 		return TRUE
 
 	else if(!use_loyalty_tag && is_item(defer_object))
 		var/obj/item/I = defer_object
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
-			var/choice_list = list()
-			if(attachment_barrel) choice_list[attachment_barrel.name] = "barrel"
-			if(attachment_sight) choice_list[attachment_sight.name] = "sight"
-			if(attachment_undermount) choice_list[attachment_undermount.name] = "undermount"
-			if(attachment_stock) choice_list[attachment_stock.name] = "stock"
-			var/attachment_choice = input("What would you like to remove?","Attachment Removal") as null|anything in choice_list
-			switch(choice_list[attachment_choice])
-				if("barrel")
-					caller.to_chat(span("notice","You remove \the [attachment_barrel.name] from \the [src.name]."))
-					attachment_barrel.drop_item(get_turf(caller))
-					attachment_barrel = null
-					update_attachments()
-					update_sprite()
-				if("sight")
-					caller.to_chat(span("notice","You remove \the [attachment_sight.name] from \the [src.name]."))
-					attachment_sight.drop_item(get_turf(caller))
-					attachment_sight = null
-					update_attachments()
-					update_sprite()
-				if("undermount")
-					caller.to_chat(span("notice","You remove \the [attachment_undermount.name] from \the [src.name]."))
-					attachment_undermount.drop_item(get_turf(caller))
-					attachment_undermount = null
-					update_attachments()
-					update_sprite()
-				if("stock")
-					caller.to_chat(span("notice","You remove \the [attachment_stock.name] from \the [src.name]."))
-					attachment_stock.drop_item(get_turf(caller))
-					attachment_stock = null
-					update_attachments()
-					update_sprite()
-				else
-					caller.to_chat(span("notice","You decide not to remove anything."))
+			INTERACT_CHECK
+			remove_attachment(caller)
 			return TRUE
-
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
+				INTERACT_CHECK
 				firing_pin.force_move(get_turf(src))
 				caller.to_chat(span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
 				firing_pin = null
@@ -200,6 +113,7 @@
 				caller.to_chat(span("notice","There is no firing pin inside \the [src.name]!"))
 			return TRUE
 		if(istype(I,/obj/item/firing_pin/))
+			INTERACT_CHECK
 			if(istype(firing_pin))
 				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
 			else
@@ -215,6 +129,7 @@
 		firing_pin = new firing_pin(src)
 		INITIALIZE(firing_pin)
 		GENERATE(firing_pin)
+		FINALIZE(firing_pin)
 	return ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()
@@ -266,7 +181,7 @@
 
 	. = ..()
 
-	return . && (heat_current > 0 || istype(src,/obj/item/weapon/ranged/energy/recharging)) //Shitcode ahoy.
+	return . && heat_current > 0
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -344,7 +259,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
-	var/bullet_spread = 0
+	var/bullet_spread_to_use = 0
 	var/projectile_speed_to_use = projectile_speed
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = inaccuracy_modifer
@@ -354,55 +269,24 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier
 
+
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
 	if(spent_bullet)
-		if(spent_bullet.projectile)
-			projectile_to_use = spent_bullet.projectile
-		if(spent_bullet.shoot_sounds && length(spent_bullet.shoot_sounds))
-			shoot_sounds_to_use = spent_bullet.shoot_sounds
-		if(spent_bullet.damage_type_bullet)
-			damage_type_to_use = spent_bullet.damage_type_bullet
-		if(spent_bullet.projectile_count)
-			bullet_count_to_use = spent_bullet.projectile_count
-		if(spent_bullet.base_spread)
-			bullet_spread = spent_bullet.base_spread
-		if(spent_bullet.projectile_speed)
-			projectile_speed_to_use = spent_bullet.projectile_speed
-		if(spent_bullet.bullet_color)
-			bullet_color_to_use = spent_bullet.bullet_color
-		if(spent_bullet.inaccuracy_modifer)
-			inaccuracy_modifer_to_use = inaccuracy_modifer_to_use * spent_bullet.inaccuracy_modifer //Use both the gun and the bullet.
+		SET(projectile_to_use,spent_bullet.projectile)
+		SET(shoot_sounds_to_use,spent_bullet.shoot_sounds)
+		SET(damage_type_to_use,spent_bullet.damage_type_bullet)
+		SET(bullet_count_to_use,spent_bullet.projectile_count)
+		ADD(bullet_spread_to_use,spent_bullet.base_spread)
+		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
+		SET(bullet_color_to_use,spent_bullet.bullet_color)
+		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
+
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
 
-	var/list/attachment_list = list(attachment_barrel,attachment_sight,attachment_undermount,attachment_stock)
-
-	for(var/k in attachment_list)
-		if(!k)
-			continue
-		var/obj/item/attachment/A = k
-		if(A.attachment_accuracy_mod) bullet_spread *= A.attachment_accuracy_mod
-		if(A.attachment_damage_mod) damage_multiplier_to_use *= A.attachment_damage_mod
-		if(A.attachment_recoil_mod) view_punch_to_use *= A.attachment_recoil_mod
-		if(A.attachment_delay_mod) shoot_delay_to_use *= A.attachment_delay_mod
-		if(A.attachment_burst_add) max_bursts_to_use += A.attachment_burst_add
-		if(A.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= A.attachment_inaccuracy_mod
-		if(A.attachment_shoot_alert) shoot_alert_to_use = A.attachment_shoot_alert
-		if(A.attachment_shoot_sound) shoot_sounds_to_use = A.attachment_shoot_sound
-
-	next_shoot_time = world.time + shoot_delay_to_use
-	projectile_speed_to_use = min(projectile_speed_to_use,31)
-
 	if(projectile_to_use)
-
-		var/loyalty_tag = null
-		if(is_living(caller) && use_loyalty_tag)
-			var/mob/living/L = caller
-			loyalty_tag = L.loyalty_tag
-
-		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
 
 		if(!params || !length(params))
 			params = list()
@@ -416,15 +300,51 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/icon_pos_x = text2num(params[PARAM_ICON_X])
 		var/icon_pos_y = text2num(params[PARAM_ICON_Y])
 
-		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
+		var/prone = FALSE
+		var/static_spread = get_static_spread()
+		var/heat_spread = get_heat_spread()
+		var/skill_spread = 0
+		var/movement_spread = 0
+		var/loyalty_tag = null
+
+		var/prone_mod = 0.75
+
 		if(is_living(caller))
 			var/mob/living/L = caller
-			accuracy_loss += (get_skill_spread(L) + get_movement_spread(L))
-		accuracy_loss = clamp(accuracy_loss,0,0.5)
+			skill_spread = get_skill_spread(L)
+			movement_spread = get_movement_spread(L)
+			if(L.horizontal) prone = TRUE
+			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
+
+		if(length(attachment_stats))
+			SET(shoot_sounds_to_use,attachment_stats["shoot_sounds"])
+			SET(shoot_alert_to_use,attachment_stats["shoot_alert"])
+			SET(damage_type_to_use,attachment_stats["damage_type"])
+			ADD(bullet_count_to_use,attachment_stats["bullet_count"])
+			MUL(bullet_spread_to_use,attachment_stats["bullet_spread"])
+			MUL(projectile_speed_to_use,attachment_stats["projectile_speed"])
+			SET(bullet_color_to_use,attachment_stats["bullet_color"])
+			MUL(inaccuracy_modifer_to_use,attachment_stats["inaccuracy_modifer"])
+			MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
+			MUL(static_spread,attachment_stats["static_spread"])
+			MUL(heat_spread,attachment_stats["heat_spread"])
+			MUL(skill_spread,attachment_stats["skill_spread"])
+			MUL(movement_spread,attachment_stats["movement_spread"])
+			MUL(view_punch_to_use,attachment_stats["view_punch"])
+			MUL(shoot_delay_to_use,attachment_stats["shoot_delay"])
+			ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
+			MUL(prone_mod,attachment_stats["prone_mod"])
+
+		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
+
+		var/accuracy_loss = clamp(static_spread + heat_spread + skill_spread + movement_spread,0,0.5)
+		if(prone) accuracy_loss *= prone_mod
+		projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE - 1)
 
 		var/view_punch_time = shoot_delay
 		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch_to_use,view_punch_time,damage_multiplier_to_use, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
+	next_shoot_time = world.time + shoot_delay_to_use
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)
 
@@ -468,14 +388,17 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
 	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
 
-	var/final_pixel_target_x = rand(-8,8) //Fallback.
-	var/final_pixel_target_y = rand(-8,8) //Fallback.
+	var/final_pixel_target_x = 0
+	var/final_pixel_target_y = 0
 
 	if(is_living(caller))
 		var/mob/living/L = caller
 		var/list/target_cords = L.get_current_target_cords(params)
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
+	else
+		final_pixel_target_x = rand(-8,8)
+		final_pixel_target_y = rand(-8,8)
 
 	if(length(params) && params["screen-loc"])
 		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])

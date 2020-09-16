@@ -1,7 +1,9 @@
 /obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
-		quick_equip(caller,ignore_held=TRUE)
+		if(delete_on_drop)
+			return TRUE
+		quick_equip(caller,ignore_held=TRUE,ignore_dynamic=TRUE)
 		return TRUE
 
 	return ..()
@@ -23,12 +25,13 @@
 
 	return ..()
 
-/obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/debug=FALSE)
+/obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE)
 
 	var/obj/hud/inventory/best_inventory_wear
 	var/obj/hud/inventory/best_inventory_equip
 
-	for(var/obj/hud/inventory/I in caller.inventory)
+	for(var/k in caller.inventory)
+		var/obj/hud/inventory/I = k
 		if(I.click_flags && ignore_hands)
 			continue
 		if(!I.allow_quick_equip)
@@ -36,9 +39,15 @@
 		if(!ignore_worn && can_be_worn(caller,I) && I.can_wear_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
 			best_inventory_wear = I
 			continue
-		if(!ignore_held && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
-			best_inventory_equip = I
-			continue
+		if(istype(I,/obj/hud/inventory/dynamic))
+			if(!ignore_dynamic && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+				best_inventory_equip = I
+				continue
+		else
+			if(!ignore_held && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+				best_inventory_equip = I
+				continue
+
 
 	if(best_inventory_wear)
 		if(debug) LOG_DEBUG("(WEAR) Best inventory found for [caller.get_debug_name()]: [best_inventory_wear.get_debug_name()].")

@@ -10,9 +10,11 @@
 
 	var/list/data = list("There is nothing here.","Oh god oh fuck.")
 
-	value = 1
+	value = 10
 
 	drop_sound = 'sound/items/drop/paper.ogg'
+
+	var/editable = TRUE
 
 /obj/item/paper/click_self(var/mob/caller,location,control,params)
 

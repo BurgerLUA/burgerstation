@@ -19,6 +19,11 @@
 	return ..()
 
 
+/mob/living/advanced/defer_click_on_object(location,control,params)
+	if(driving)
+		return driving
+	return ..()
+
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
@@ -36,7 +41,9 @@
 	var/obj/item/organ/best_organ
 	var/obj/item/organ/best_distance_organ
 
-	for(var/obj/item/organ/O in src.organs)
+	for(var/k in src.organs)
+
+		var/obj/item/organ/O = k
 
 		if(!O.can_be_targeted)
 			continue
@@ -66,8 +73,6 @@
 		return best_distance_organ
 
 	return FALSE
-
-	return ..()
 
 /mob/living/proc/get_current_target_cords(params)
 	if(!params)

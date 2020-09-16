@@ -12,6 +12,7 @@
 	stored_radio = new stored_radio(src)
 	INITIALIZE(stored_radio)
 	GENERATE(stored_radio)
+	FINALIZE(stored_radio)
 	return ..()
 
 /obj/item/radio/click_self(var/mob/caller,location,control,params)

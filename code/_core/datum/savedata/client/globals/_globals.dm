@@ -1,6 +1,8 @@
 /savedata/client/globals
 	loaded_data = list(
-		"antag_tokens" = 0
+		"antag_tokens" = 0,
+		"redeemed_rewards" = list(),
+		"burgerbux" = 0
 	)
 
 /savedata/client/globals/get_file(var/file_id)

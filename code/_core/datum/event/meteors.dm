@@ -59,7 +59,8 @@
 /event/meteors/on_life()
 
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
-		for(var/i=1,i<=rand(10,20),i++)
+		CHECK_TICK(50,FPS_SERVER*10)
+		for(var/i=1,i<=5,i++)
 			var/turf/T = pick(valid_turfs)
 			new/obj/effect/falling_meteor(T)
 

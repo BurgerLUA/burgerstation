@@ -59,6 +59,7 @@
 	P = new P(get_turf(src))
 	INITIALIZE(P)
 	GENERATE(P)
+	FINALIZE(P)
 
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount)
 	if(I2)

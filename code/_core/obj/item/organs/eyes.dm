@@ -63,14 +63,10 @@
 	icon_state = BODY_EYE_LEFT
 
 
-
-
-
-//Cyborg
+//Beefman
 /obj/item/organ/eye/beefman
 	name = "right beefman eye"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
-
 
 /obj/item/organ/eye/beefman/left
 	name = "left beefman eye"
@@ -78,3 +74,12 @@
 	icon_state = BODY_EYE_LEFT
 
 
+//Monkey
+/obj/item/organ/eye/monkey
+	name = "right monkey eye"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+
+/obj/item/organ/eye/monkey/left
+	name = "left monkey eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT

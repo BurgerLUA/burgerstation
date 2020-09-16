@@ -71,6 +71,7 @@
 	I.load_item_data_pre(P,object_data)
 	INITIALIZE(I)
 	I.load_item_data_post(P,object_data)
+	FINALIZE(I)
 	I.force_move(loc)
 	I.update_sprite()
 
@@ -82,6 +83,12 @@
 
 	if(!should_save)
 		return .
+
+	if(name != initial(name))
+		.["name"] = name
+
+	if(last_marker)
+		.["last_marker"] = last_marker
 
 	.["type"] = type
 
@@ -134,6 +141,10 @@
 
 /obj/item/proc/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
+	if(object_data["name"])
+		name = object_data["name"]
+	if(object_data["last_marker"])
+		last_marker = object_data["last_marker"]
 	if(object_data["color"])
 		color = object_data["color"]
 	if(object_data["inventories"])

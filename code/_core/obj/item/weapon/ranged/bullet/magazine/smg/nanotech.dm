@@ -37,13 +37,21 @@
 	ai_heat_sensitivity = 0.5
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/gyro = TRUE,
+		/obj/item/attachment/barrel/laser_charger = FALSE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
-		/obj/item/attachment/sight/red_dot = TRUE
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = FALSE,
+		/obj/item/attachment/sight/scope/large = FALSE,
+		/obj/item/attachment/sight/targeting_computer = TRUE,
+
+		/obj/item/attachment/stock/c20r = FALSE
 	)
 
 	attachment_barrel_offset_x = 29 - 16
@@ -76,6 +84,6 @@
 	. = ..()
 	attachment_barrel = new /obj/item/attachment/barrel/charger(src)
 	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
-	update_attachments()
+	update_attachment_stats()
 	update_sprite()
 	return .

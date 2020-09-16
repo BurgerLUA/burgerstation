@@ -5,6 +5,10 @@
 	icon = 'icons/obj/item/book.dmi'
 	icon_state = "book_template"
 
+	editable = FALSE
+
+	value = 99
+
 /obj/item/paper/book/firearms/Initialize()
 	. = ..()
 	name = "manual: A Guide to Firearms"
@@ -32,4 +36,12 @@
 	name = "manual: A Guide to Controlling Yourself"
 	desc_extended = "A guide on how to masteer self-control"
 	data = all_paper_data["a guide to controlling yourself"]
+	return .
+
+
+/obj/item/paper/book/cargo_catalog/Initialize()
+	. = ..()
+	name = "catalog: Cargo Catalog Vol 1"
+	desc_extended = "A catalog featuring the many items you can buy from cargo."
+	data = SScargo.catalog_data
 	return .

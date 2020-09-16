@@ -23,21 +23,27 @@ SUBSYSTEM_DEF(obj)
 			initialize_none += O
 			log_error("ERROR: [O.get_debug_name()] did not have a valid initialize_type ([O.initialize_type]) set!")
 
-	for(var/obj/O in initialize_early)
+	for(var/k in initialize_early)
+		var/obj/O = k
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	log_subsystem(name,"Early: Initialized and spawned [length(initialize_early)] objects in world.")
 
-	for(var/obj/O in initialize_normal)
+	for(var/k in initialize_normal)
+		var/obj/O = k
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	log_subsystem(name,"Normal: Initialized and spawned [length(initialize_normal)] objects in world.")
 
-	for(var/obj/O in initialize_late)
+	for(var/k in initialize_late)
+		var/obj/O = k
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	log_subsystem(name,"Late: Initialized and spawned [length(initialize_late)] objects in world.")
 
@@ -52,7 +58,8 @@ SUBSYSTEM_DEF(obj)
 
 /subsystem/obj/on_life()
 
-	for(var/obj/structure/smooth/S in queued_smooth)
+	for(var/k in queued_smooth)
+		var/obj/structure/smooth/S = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		S.update_sprite()
 		queued_smooth -= S

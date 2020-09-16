@@ -4,6 +4,7 @@ obj/structure/interactive/computer
 	desc_extended = "Operates things, depending on what the console is."
 	icon = 'icons/obj/structure/computer.dmi'
 	var/on = TRUE
+	plane = PLANE_WALL_ATTACHMENTS
 
 obj/structure/interactive/computer/console
 	name = "computer console"
@@ -53,14 +54,17 @@ obj/structure/interactive/computer/console/laptop
 
 obj/structure/interactive/computer/console/old
 	name = "old computer"
-	icon_state = "oldcomp"
+	desc = "An old, non-functional computer."
+	desc_extended = "It doesn't even work. What gives?!"
 	pixel_y = 10
+
+	icon_state = "oldcomp"
+	computer_type = "library"
+	keyboard_type = "no_keyboard"
 
 
 obj/structure/interactive/computer/console/old/chargen
 	name = "\improper IMB piece of shit"
-	computer_type = "library"
-	keyboard_type = ""
 
 obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(caller,object,location,control,params)
 
@@ -188,7 +192,3 @@ obj/structure/interactive/computer/console/remote_flight/charlie
 obj/structure/interactive/computer/console/remote_flight/delta
 	name = "remote delta shuttle console"
 	desired_shuttle_controller = /obj/shuttle_controller/delta
-
-obj/structure/interactive/computer/console/remote_flight/golf
-	name = "remote golf shuttle console"
-	desired_shuttle_controller = /obj/shuttle_controller/golf

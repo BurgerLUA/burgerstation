@@ -11,6 +11,9 @@ var/global/list/possible_hostage_types = list(
 
 	var/completed = FALSE
 
+	credit_reward = 1000
+	burgerbux_reward = 1
+
 /objective/hostage/get_description()
 	return "Rescue [english_list(tracked_atoms)] and bring them shipside. Location: [english_list(get_locations())]."
 
@@ -27,15 +30,29 @@ var/global/list/possible_hostage_types = list(
 	possible_hostage_types -= L
 	L = new L(get_turf(S))
 	INITIALIZE(L)
+	FINALIZE(L)
 	var/obj/item/handcuffs/H = new(get_turf(L))
 	INITIALIZE(H)
 	GENERATE(H)
+	FINALIZE(H)
 	L.set_handcuffs(TRUE,H)
 	created_hostage = L
 	return TRUE
 
-/objective/hostage/get_valid_targets()
+/objective/hostage/proc/get_valid_targets()
 	return list(created_hostage)
+
+/objective/hostage/proc/has_valid_targets()
+	return length(get_valid_targets()) ? TRUE : FALSE
+
+/objective/hostage/proc/get_random_target()
+
+	var/list/valid_targets = get_valid_targets()
+
+	if(!length(valid_targets))
+		return FALSE
+
+	return pick(valid_targets)
 
 /objective/hostage/check_completion()
 

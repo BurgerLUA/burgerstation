@@ -29,7 +29,6 @@ var/global/list/all_shuttle_controlers = list()
 	var/transit_end
 
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME
-	var/default_transit_time_no_living = SHUTTLE_DEFAULT_TRANSIT_TIME_NO_LIVING
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME
 
 	anchored = TRUE
@@ -89,16 +88,10 @@ var/global/list/all_shuttle_controlers = list()
 	if(last_caller)
 		create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 
-	if(!desired_transit_time)
-		desired_transit_time = default_transit_time_no_living
-		for(var/mob/living/advanced/P in get_area(src))
-			if(P.dead)
-				continue
-			desired_transit_time = default_transit_time
-			break
-	transit_time = max(10,desired_transit_time)
 	var/area/A = get_area(src)
-	if(A.id == transit_start)
+	if(!desired_transit_time) desired_transit_time = default_transit_time
+	transit_time = max(10,desired_transit_time)
+	if(A.type == transit_start)
 		transit_target = transit_end
 		transit_source = transit_start
 	else
@@ -232,10 +225,12 @@ var/global/list/all_shuttle_controlers = list()
 		var/offset_x = T.x - starting_cord_x
 		var/offset_y = T.y - starting_cord_y
 		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, ending_cord_z)
-		for(var/atom/movable/M in replacing_turf.contents)
+		for(var/k in replacing_turf.contents)
+			var/atom/movable/M = k
 			M.on_crush()
 		replacing_turf.change_turf(T.type,TRUE,TRUE)
-		for(var/atom/movable/M in T.contents)
+		for(var/k in T.contents)
+			var/atom/movable/M = k
 			CHECK_TICK(75,FPS_SERVER)
 			if(!M.allow_shuttle_move)
 				continue
@@ -244,7 +239,8 @@ var/global/list/all_shuttle_controlers = list()
 			objects_to_throw += M
 		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
 
-	for(var/atom/movable/M in objects_to_throw)
+	for(var/k in objects_to_throw)
+		var/atom/movable/M = k
 		CHECK_TICK(75,FPS_SERVER)
 		if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 			continue

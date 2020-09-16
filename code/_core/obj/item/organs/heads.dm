@@ -109,3 +109,13 @@
 	desc = "An organ."
 
 	defense_rating = SKELETON_ARMOR
+
+
+//skeleton
+/obj/item/organ/head/monkey
+	name = "monkey head"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+	desc = "An organ."
+
+/obj/item/organ/head/monkey/female
+	icon_state = BODY_HEAD_FEMALE

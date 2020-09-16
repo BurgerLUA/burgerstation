@@ -1,7 +1,7 @@
 /obj/hud/button/boss_health
 	name = "Boss Health"
 	desc = "Health bar for bosses"
-	id = "boss_health"
+	//id = "boss_health"
 
 	icon = 'icons/hud/boss_bar.dmi'
 	icon_state = "frame"

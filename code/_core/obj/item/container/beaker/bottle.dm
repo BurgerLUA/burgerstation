@@ -47,12 +47,36 @@
 	desc = "Bottom's up!"
 	desc_extended = "You can put drinks in these."
 	icon = 'icons/obj/item/container/cup/glass.dmi'
-	icon_state = "cup"
-	icon_count = 15
+	icon_state = "glass"
+	icon_count = 12
 
-	reagents = /reagent_container/beaker/bottle/
+	reagents = /reagent_container/beaker/drink/
 
 	value = 10
+
+	pixel_y = 4
+
+	consume_size = BITE_SIZE*2
+
+/obj/item/container/beaker/shot
+	name = "shot glass"
+	desc = "Bottom's way up!"
+	desc_extended = "You can put drinks in these."
+	icon = 'icons/obj/item/container/cup/glass_shot.dmi'
+	icon_state = "glass"
+	icon_count = 9
+
+	reagents = /reagent_container/beaker/shot_glass/
+
+	value = 5
+
+	pixel_y = 4
+
+	consume_size = 100 //All of it.
+
+
+
+
 
 /obj/item/container/beaker/bowl
 	name = "glass mixing bowl"

@@ -20,6 +20,8 @@
 
 	material_id = /material/dirt/
 
+	destruction_turf = /turf/simulated/floor/colored/dirt/snow
+
 /turf/simulated/floor/colored/grass
 	name = "grass"
 	color = "#44683B"

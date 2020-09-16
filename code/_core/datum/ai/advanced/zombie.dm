@@ -1,11 +1,7 @@
 /ai/advanced/zombie
 
-	radius_find_enemy = 6
+	resist_handcuffs = FALSE
+	should_find_weapon = FALSE //Citzens aren't supposed to have guns.
 
-	objective_delay = 10
-	attack_delay = 10
-	movement_delay = 10
-
-	target_distribution_y = list(16,16,32,32,32,32,32) //BRAINS
-
-	attack_on_block = TRUE
+	target_distribution_x = list(12,12,16,20,20)
+	target_distribution_y = list(8,8,8,8,16,16,16,20)

@@ -52,6 +52,8 @@
 	INITIALIZE(W)
 	GENERATE(G)
 	GENERATE(W)
+	FINALIZE(G)
+	FINALIZE(W)
 	queue_update_smooth_edges(W)
 
 /obj/marker/spawning/window/reinforced/

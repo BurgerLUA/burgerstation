@@ -20,17 +20,17 @@
 
 /obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	.["scroll_count"] = scroll_count
+	SAVEVAR("scroll_count")
 	return .
 
 /obj/item/weapon/ranged/magic/scroll/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	if(isnum(object_data["scroll_count"])) scroll_count = object_data["scroll_count"]
+	LOADVAR("scroll_count")
 	return .
 
 /obj/item/weapon/ranged/magic/scroll/calculate_value()
 	. = ..()
-	. *= scroll_count
+	. *= (1 + scroll_count)
 	return .
 
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
@@ -93,7 +93,7 @@
 			caller.to_chat(span("notice","The scroll is blank and void of magic!"))
 			return TRUE
 
-		if(S.id != id) //Need to be the exact same id.
+		if(S.type != type) //Need to be the exact same id.
 			caller.to_chat(span("notice","It wouldn't be a very good idea to mix scrolls together without a tome."))
 			return TRUE
 
@@ -111,14 +111,14 @@
 	return ..()
 
 /obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
-	scroll_count -= 1
+	scroll_count--
 	update_sprite()
 	return ..()
 
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"
 	desc = "Shoots a fireball."
-	id = "fireball"
+
 
 	projectile = /obj/projectile/magic/fireball
 
@@ -131,6 +131,6 @@
 
 	value = 20
 
-/obj/item/weapon/ranged/magic/scroll/fireball/amount_3/Generate()
+/obj/item/weapon/ranged/magic/scroll/fireball/Generate()
 	scroll_count = 5
 	return ..()

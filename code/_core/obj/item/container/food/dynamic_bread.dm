@@ -70,6 +70,7 @@
 					B.cooked_icon_state = cooked_icon_state
 					INITIALIZE(B)
 					reagents.transfer_reagents_to(B.reagents,original_volume/pieces)
+					FINALIZE(B)
 					animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
 				animate(src, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
 				update_sprite()
@@ -84,6 +85,7 @@
 					B.pixel_y = pixel_y
 					INITIALIZE(B)
 					reagents.transfer_reagents_to(B.reagents,10)
+					FINALIZE(B)
 					animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
 				update_sprite()
 				if(is_living(attacker))
@@ -102,6 +104,7 @@
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into two halves.")
 			update_sprite()
+			FINALIZE(B)
 			B.update_sprite()
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten

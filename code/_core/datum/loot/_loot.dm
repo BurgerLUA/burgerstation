@@ -29,10 +29,12 @@
 
 /loot/proc/do_spawn(var/spawn_loc)
 	. = create_loot_table(spawn_loc)
-	for(var/atom/movable/M in .)
+	for(var/k in .)
+		var/atom/movable/M = k
 		pre_spawn(M)
 		INITIALIZE(M)
 		GENERATE(M)
+		FINALIZE(M)
 		post_spawn(M)
 		animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
 	return .

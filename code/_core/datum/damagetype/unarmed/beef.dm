@@ -5,11 +5,8 @@
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLUNT = 10,
-		HEAT = 5,
-		COLD = 5,
 		BIO = 10,
-		DARK = 30,
-		FATIGUE = 20
+		DARK = 30
 	)
 
 	impact_sounds = list(
@@ -19,11 +16,8 @@
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 25,
-		HEAT = 25,
-		COLD = 25,
 		BIO = 25,
-		DARK = 25,
-		FATIGUE = 25
+		DARK = 25
 	)
 
 	attribute_stats = list(
@@ -32,8 +26,8 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
-		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
+		ATTRIBUTE_STRENGTH = list(BLUNT),
+		ATTRIBUTE_DEXTERITY = list(BLUNT)
 	)
 
 	skill_stats = list(
@@ -46,4 +40,7 @@
 
 	throw_mul = 1
 
-	fatigue_coefficient = 0.25
+	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLUNT = 1,
+		DARK = 1
+	)

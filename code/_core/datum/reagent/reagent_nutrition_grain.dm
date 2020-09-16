@@ -3,7 +3,7 @@
 	desc = "Ground up wheat. Process this to get flour."
 	color = "#AD9300"
 
-	nutrition_amount = 7
+	nutrition_amount = 14
 
 	flavor = "gross oats"
 
@@ -20,7 +20,7 @@
 	desc = "Processed wheat grains for use in baking. Process this some more to get white flour."
 	color = "#A5771C"
 
-	nutrition_amount = 8
+	nutrition_amount = 16
 
 	flavor = "gross dry oat flour"
 
@@ -37,7 +37,7 @@
 	desc = "Finely processed white flour for use in baking."
 	color = "#FFF8ED"
 
-	nutrition_amount = 9
+	nutrition_amount = 18
 
 	flavor = "gross dry flour"
 
@@ -52,7 +52,7 @@
 	desc = "Also called corn starch. One of the biproducts of processing corn."
 	color = "#E0AC33"
 
-	nutrition_amount = 5
+	nutrition_amount = 10
 
 	flavor = "corn starch"
 

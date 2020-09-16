@@ -83,3 +83,6 @@
 	health = null
 	health_base = null
 	destruction_turf = null
+
+/turf/simulated/wall/rock/indestructable/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+	return FALSE

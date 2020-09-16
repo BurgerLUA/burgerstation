@@ -15,7 +15,7 @@
 
 /obj/structure/interactive/intercom/New(var/desired_loc)
 	stored_radio = new(src) //Initialized somewhere else. Don't know where, though, honestly.
-	stored_radio.anchored = TRUE
+	stored_radio.set_anchored(TRUE)
 	stored_radio.broadcasting = FALSE
 	stored_radio.receiving = TRUE
 	return ..()

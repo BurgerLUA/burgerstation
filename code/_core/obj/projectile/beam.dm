@@ -2,7 +2,6 @@
 
 /obj/projectile/beam/
 	name = "beam"
-	id = "beam"
 	icon = 'icons/obj/projectiles/beam.dmi'
 	icon_state = "laser"
 

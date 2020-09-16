@@ -36,7 +36,8 @@
 
 /mob/living/advanced/proc/remove_all_inventory()
 
-	for(var/obj/hud/inventory/I in inventory)
+	for(var/k in inventory)
+		var/obj/hud/inventory/I = k
 		remove_inventory(I)
 
 
@@ -44,7 +45,8 @@
 	if(!client)
 		return
 
-	for(var/obj/hud/inventory/I in inventory)
+	for(var/k in inventory)
+		var/obj/hud/inventory/I = k
 		client.screen += I
 
 

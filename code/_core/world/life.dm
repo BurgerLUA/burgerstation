@@ -1,3 +1,4 @@
+var/global/time_dialation = 0
 
 /world/proc/life()
 
@@ -21,7 +22,8 @@
 
 	var/benchmark = world.timeofday
 
-	for(var/subsystem/SS in active_subsystems)
+	for(var/k in active_subsystems)
+		var/subsystem/SS = k
 		var/local_benchmark = world.timeofday
 		log_subsystem(SS.name,"Initializing...")
 		INITIALIZE(SS)
@@ -35,7 +37,8 @@
 
 	//SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
 
-	for(var/subsystem/SS in active_subsystems)
+	for(var/k in active_subsystems)
+		var/subsystem/SS = k
 		spawn
 			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
 				if(SS.overtime_count < SS.overtime_max)
@@ -47,6 +50,8 @@
 						SS.overtime_count++
 						sleep(TICK_LAG)
 						continue
+				if(time_dialation && SS.use_time_dialation)
+					sleep(time_dialation)
 				try
 					SS.overtime_count = 0
 					var/start_time = world.time
@@ -70,7 +75,7 @@
 	else if(length(lobby_positions))
 		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			O.force_move(get_turf(pick(lobby_positions)))
-			play_music_track("slow_fall", O.client)
+			play_music_track(pick(TRACKS_LOBBY), O.client)
 			O.show_hud(TRUE,speed = 2)
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")

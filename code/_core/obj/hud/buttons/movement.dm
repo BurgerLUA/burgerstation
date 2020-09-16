@@ -79,13 +79,7 @@
 
 	if(. && is_living(caller))
 		var/mob/living/L = caller
-		if(L.dead)
-			L.to_chat(span("warning","You're already resting... in peace."))
-			return .
-		if(L.has_status_effect(REST) && L.get_status_effect_duration(REST) == -1)
-			PROGRESS_BAR(L,L,3,/mob/living/proc/remove_status_effect,REST)
-		else
-			L.add_status_effect(REST,-1,-2, force = TRUE)
+		L.rest()
 
 	return .
 

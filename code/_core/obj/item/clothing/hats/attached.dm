@@ -52,6 +52,8 @@
 
 	value = 300
 
+	dyeable = FALSE
+
 /obj/item/clothing/head/helmet/drake
 	name = "ash drake helmet"
 	icon = 'icons/obj/item/clothing/hats/drake_helmet.dmi'

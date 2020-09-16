@@ -1,12 +1,12 @@
 /mob/living/simple/npc/xeno/hunter
-	name = "alien hunter"
+	name = "xeno hunter"
 	icon = 'icons/mob/living/simple/alien_hunter.dmi'
 
-	health_base = 100
+	health_base = 50
 
 	level_multiplier = 2
 
-	movement_delay = 1
+	movement_delay = 2
 
 	armor_base = list(
 		BLADE = 25,
@@ -28,10 +28,12 @@
 	can_leap = TRUE
 
 /mob/living/simple/npc/xeno/drone
-	name = "alien drone"
+	name = "xeno drone"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
-	health_base = 200
+	health_base = 100
+
+	movement_delay = 3
 
 	armor_base = list(
 		BLADE = 50,
@@ -53,12 +55,12 @@
 	can_leap = TRUE
 
 /mob/living/simple/npc/xeno/sentinel
-	name = "alien sentinel"
+	name = "xeno sentinel"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
 	level_multiplier = 4
 
-	health_base = 300
+	health_base = 150
 
 	movement_delay = DECISECONDS_TO_TICKS(AI_TICK)
 
@@ -81,3 +83,4 @@
 
 	can_spit = TRUE
 
+	movement_delay = 4

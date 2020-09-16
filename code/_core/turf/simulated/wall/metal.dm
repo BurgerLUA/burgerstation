@@ -17,7 +17,7 @@
 	G.material_id = material_id
 	G.color = color
 	INITIALIZE(G)
-	GENERATE(G)
+	FINALIZE(G)
 
 	create_destruction(src,list(/obj/item/material/sheet/ = 4),material_id)
 

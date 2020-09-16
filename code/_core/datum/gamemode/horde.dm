@@ -22,20 +22,26 @@
 
 	if(!length(active_objectives) && length(completed_objectives) >= 1 && state == GAMEMODE_FIGHTING)
 		state = GAMEMODE_BREAK
-		SSvote.create_vote(/vote/continue_round)
+		if(can_continue())
+			SSvote.create_vote(/vote/continue_round)
+		else
+			world.end(WORLD_END_NANOTRASEN_VICTORY)
 
 	return .
 
 /gamemode/horde/New()
+
 	state = GAMEMODE_WAITING
 	round_time = 0
 	round_time_next = HORDE_DELAY_WAIT //Skip to gearing. Nothing to wait for.
-	announce("Free-Roam Horde Mode","Starting new round...","Roam around the map completing set objectives while hostile enemies prevent you from doing so.")
+	announce(name,"Starting new round...",desc)
 
-	for(var/turf/T in horde_spawnpoints)
+	for(var/k in horde_spawnpoints)
+		var/turf/T = k
 		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)
+		FINALIZE(L)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
 		if(O.z < Z_LEVEL_MISSION)
@@ -44,15 +50,51 @@
 
 	return ..()
 
+/gamemode/horde/can_continue()
+
+	if(length(SSbosses.living_bosses) <= 0)
+		return FALSE
+
+	return ..()
+
 /gamemode/horde/proc/add_objectives()
-	add_objective(/objective/kill_boss)
-	add_objective(/objective/kill_boss)
+
+	var/player_count = length(all_clients)
+
+	LOG_DEBUG("Current player count: [player_count].")
+
+	//Base Objectives.
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+
+	if(player_count >= 10)
+		add_objective(/objective/hostage)
+		LOG_DEBUG("Adding player count 10 objectives.")
+
+	if(player_count >= 20)
+		add_objective(/objective/kill_boss)
+		LOG_DEBUG("Adding player count 20 objectives.")
+
+	if(player_count >= 30)
+		add_objective(/objective/kill_boss)
+		LOG_DEBUG("Adding player count 30 objectives.")
+
+	if(player_count >= 40)
+		add_objective(/objective/kill_boss)
+		LOG_DEBUG("Adding player count 40 objectives.")
+
+	next_objective_update = world.time + 100
+
 	return TRUE
 
 /gamemode/horde/on_continue()
-	add_objective(/objective/kill_boss)
+
+	if(!add_objective(/objective/kill_boss))
+		state = GAMEMODE_BREAK
+		SSvote.create_vote(/vote/continue_round)
+	else
+		add_objective(/objective/artifact)
+
 	return ..()
 
 /gamemode/horde/on_life()
@@ -152,6 +194,7 @@
 		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)
+		FINALIZE(L)
 		L.ai.set_path(found_path)
 		tracked_enemies += L
 		HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
@@ -171,11 +214,11 @@
 
 /gamemode/horde/proc/find_horde_target()
 
-	var/picks_remaining = 4
+	var/picks_remaining = 3
 
 	while(picks_remaining > 0)
-		CHECK_TICK(50,FPS_SERVER*10)
 		picks_remaining--
+		CHECK_TICK(50,FPS_SERVER*10)
 		var/turf/chosen_target = get_turf(pick(horde_targets))
 		if(chosen_target.z < Z_LEVEL_MISSION)
 			continue
@@ -189,16 +232,22 @@
 
 /gamemode/horde/proc/find_horde_spawn()
 
-	var/picks_remaining = 4
+	var/picks_remaining = 3
 
 	while(picks_remaining > 0)
-		CHECK_TICK(50,FPS_SERVER*10)
 		picks_remaining--
+		CHECK_TICK(50,FPS_SERVER*20)
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
-		if(chosen_spawn.z < Z_LEVEL_MISSION)
-			continue
-		var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
-		if(P)
+		if(chosen_spawn.z < Z_LEVEL_MISSION) continue
+		var/found_player = FALSE
+		for(var/k in all_players)
+			CHECK_TICK(50,FPS_SERVER*20)
+			var/mob/living/advanced/player/P = k
+			if(P && !P.dead) continue
+			if(get_dist(P,chosen_spawn) <= VIEW_RANGE + ZOOM_RANGE)
+				found_player = TRUE
+				break
+		if(found_player)
 			continue
 		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
 		if(!N_start)

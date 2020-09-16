@@ -10,14 +10,14 @@
 
 /obj/structure/interactive/wall_ore_deposit/Initialize(var/desired_loc)
 
-	if(!istype(loc,/turf/simulated/wall/))
+	if(!istype(loc,/turf/simulated/wall/rock/))
 		qdel(src)
 		return TRUE
 
 	. = ..()
 
 	if(ore_score > 10)
-		for(var/turf/simulated/wall/T in orange(1,src)) //Wall only.
+		for(var/turf/simulated/wall/rock/T in orange(1,src)) //Rock Wall only.
 			if(locate(/obj/structure/interactive/wall_ore_deposit/) in T.contents)
 				continue
 			if(prob(25 + ore_score))
@@ -26,6 +26,7 @@
 				GOD.ore_score = ore_score * RAND_PRECISE(0.1,0.75)
 				GOD.initialize_type = INITIALIZE_NONE
 				INITIALIZE(GOD)
+				FINALIZE(GOD)
 
 	return .
 /obj/structure/interactive/wall_ore_deposit/PostInitialize()
@@ -54,6 +55,7 @@
 		O.material_id = src.material_id
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 		var/move_direction = get_dir(src,caller)
 

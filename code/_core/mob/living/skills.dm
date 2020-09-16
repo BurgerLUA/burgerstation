@@ -7,6 +7,9 @@
 
 /mob/living/proc/get_skill_level(var/id)
 	var/experience/skill/S = get_skill(id)
+	if(!S)
+		CRASH_SAFE("Warning! Tried getting skill level of [id], but it didn't exist for [src.get_debug_name()]!")
+		return 25
 	return S.get_current_level()
 
 /mob/living/proc/get_skill_power(var/id)
@@ -37,6 +40,9 @@
 
 /mob/living/proc/get_attribute_level(var/id)
 	var/experience/attribute/A = get_attribute(id)
+	if(!A)
+		CRASH_SAFE("Warning! Tried getting attribute level of [id], but it didn't exist for [src.get_debug_name()]!")
+		return 25
 	return A.get_current_level()
 
 /mob/living/proc/get_attribute_power(var/id)

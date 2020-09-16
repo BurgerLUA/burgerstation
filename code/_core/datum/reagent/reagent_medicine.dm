@@ -1,6 +1,6 @@
 #define METABOLISM_BLOOD 1
-#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.75
-#define METABOLISM_SKIN METABOLISM_BLOOD * 10
+#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.5
+#define METABOLISM_SKIN METABOLISM_BLOOD * 4
 #define OVERDOSE_THRESHOLD_MEDICINE 30
 
 /reagent/medicine/
@@ -123,7 +123,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.tox_regen_buffer += 5*.
+		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.05 : 0) + 5)*.
 		L.health_regen_delay = 0
 
 	return .
@@ -133,7 +133,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.tox_regen_buffer += 4*.
+		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.04 : 0) + 4)*.
 		L.health_regen_delay = 0
 
 	return .
@@ -342,17 +342,29 @@
 	flavor = "pure speed"
 	metabolism_blood = 1
 	var/strength = 100
-	var/duration = 30
+	var/duration = 10 * 60 //Deciseconds, 1 Minute
 
 	value = 2
 
-/reagent/medicine/adrenaline/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/adrenaline/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.add_status_effect(ADRENALINE,strength,.*50)
+	if(is_living(container.owner))
+		var/mob/living/L = container.owner
+		if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+			L.add_status_effect(ADRENALINE,strength,-1)
+
+	return .
+
+/reagent/medicine/adrenaline/on_remove(var/reagent_container/container)
+
+	. = ..()
+
+	if(is_living(container.owner))
+		var/mob/living/L = container.owner
+		if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+			L.remove_status_effect(ADRENALINE)
 
 	return .
 
@@ -364,21 +376,9 @@
 	color = "#FFFFFF"
 	flavor = "bandaids"
 	strength = 50
-	duration = 50
+	duration = 10 * 60 //1 minute.
 
 	value = 1.5
-
-/reagent/medicine/adrenaline/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-
-	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		if(L.health && L.health.get_oxy_loss() > 100 - strength)
-			L.health.set_oxy_loss(100 - strength)
-			L.queue_health_update = TRUE
-
-	return .
 
 /reagent/medicine/adrenaline/epinephrine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -386,9 +386,6 @@
 
 	if(. + current_volume >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
-		L.add_status_effect(ADRENALINE,100,100)
-		. = 0
-		if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
 		if(L.dead && !L.check_death() && L.client)
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
@@ -407,8 +404,8 @@
 
 	flavor = "cherry"
 
-	metabolism_blood = 10
-	metabolism_stomach = 10
+	metabolism_blood = METABOLISM_BLOOD * 10
+	metabolism_stomach = METABOLISM_BLOOD * 10
 
 	value = 3
 
@@ -442,8 +439,8 @@
 
 	flavor = "lime"
 
-	metabolism_blood = 10
-	metabolism_stomach = 10
+	metabolism_blood = METABOLISM_BLOOD * 10
+	metabolism_stomach = METABOLISM_BLOOD * 10
 
 	value = 3
 
@@ -472,8 +469,8 @@
 
 	flavor = "blueberry"
 
-	metabolism_blood = 10
-	metabolism_stomach = 10
+	metabolism_blood = METABOLISM_BLOOD * 10
+	metabolism_stomach = METABOLISM_BLOOD * 10
 
 	value = 3
 
@@ -490,5 +487,48 @@
 
 	if(owner && owner.health)
 		owner.health.adjust_mana(.*10)
+
+	return .
+
+
+/reagent/medicine/antihol
+	name = "Antihol"
+	desc = "Purges alcohol from your system quickly."
+	desc_extended = "Works just as good when consumed."
+
+	color = "#999999"
+
+	flavor = "bitter grass"
+
+	metabolism_blood = METABOLISM_BLOOD * 5
+	metabolism_stomach = METABOLISM_BLOOD * 5
+
+	value = 5
+
+/reagent/medicine/antihol/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		L.intoxication = max(0,L.intoxication - .*10)
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(istype(R,/reagent/nutrition/ethanol))
+				container.remove_reagent(reagent_id,.*3)
+
+	return .
+
+/reagent/medicine/antihol/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		L.intoxication = max(0,L.intoxication - .*10)
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(istype(R,/reagent/nutrition/ethanol))
+				container.remove_reagent(reagent_id,.*3)
 
 	return .

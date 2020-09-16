@@ -1,5 +1,5 @@
 /reagent/nutrition/water //Found through organic things
-	name = "Water"
+	name = "water"
 	desc = "What most lifeforms drink."
 	color = "#99D5FF"
 
@@ -8,9 +8,7 @@
 
 	liquid = 0.5
 
-	hydration_amount = 8
-
-	value = 0.2
+	hydration_amount = 25
 
 /reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
 
@@ -19,7 +17,7 @@
 	if(. && isturf(target))
 		var/turf/T = target
 		var/cleaning_power = volume_to_splash
-		for(var/obj/effect/cleanable/C in T)
+		for(var/obj/effect/cleanable/C in T.contents)
 			if(cleaning_power <= 0)
 				break
 			qdel(C)
@@ -35,12 +33,10 @@
 	desc = "Carbonated water."
 	color = "#DDFFFF"
 
-	nutrition_amount = 0.1
-	hydration_amount = 5
+	nutrition_amount = 5
+	hydration_amount = 15
 
 	flavor = "white noise"
-
-	value = 0.15
 
 	liquid = 0.7
 

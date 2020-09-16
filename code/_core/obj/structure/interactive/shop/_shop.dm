@@ -37,7 +37,8 @@
 	stored_item.force_move(src)
 	possible_items -= stored_item
 
-	for(var/obj/item/I in possible_items)
+	for(var/k in possible_items)
+		var/obj/item/I = k
 		qdel(I)
 
 	return .
@@ -64,20 +65,26 @@
 
 	. = ..()
 
+	stored_item.pixel_x = initial(stored_item.pixel_x)
+	stored_item.pixel_y = initial(stored_item.pixel_y)
+
 	var/image/U = new/image(icon,icon_state)
 	U.appearance = stored_item.appearance
 	U.pixel_x = 2
 	U.pixel_y = 4
+	U.plane = FLOAT_PLANE + 1
 	add_overlay(U)
 
 	var/image/M = new/image(icon,icon_state)
 	M.appearance = stored_item.appearance
+	M.plane = FLOAT_PLANE + 2
 	add_overlay(M)
 
 	var/image/O = new/image(icon,icon_state)
 	O.appearance = stored_item.appearance
 	O.pixel_x = -2
 	O.pixel_y = -4
+	O.plane = FLOAT_PLANE + 3
 	add_overlay(O)
 	return .
 
@@ -128,6 +135,7 @@
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
 			INITIALIZE(new_item)
 			GENERATE(new_item)
+			FINALIZE(new_item)
 			new_item.update_sprite()
 			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))

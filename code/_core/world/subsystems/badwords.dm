@@ -32,7 +32,8 @@ SUBSYSTEM_DEF(badwords)
 
 	. = null
 
-	for(var/regex/R in bad_word_regex)
+	for(var/k in bad_word_regex)
+		var/regex/R = k
 		var/result = R.Find(text_to_check)
 		if(result)
 			. = result

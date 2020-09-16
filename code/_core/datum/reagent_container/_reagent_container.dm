@@ -320,6 +320,7 @@
 			CHECK_TICK(75,FPS_SERVER)
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
+			FINALIZE(A)
 			if(!A.reagents)
 				break
 			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current))
@@ -374,6 +375,9 @@
 			stored_reagents_temperature[reagent_type] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_type])
 		else
 			stored_reagents_temperature[reagent_type] = temperature
+
+	if(stored_reagents[reagent_type] <= 0)
+		R.on_remove(src)
 
 	if(check_recipes)
 		process_recipes()

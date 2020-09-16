@@ -37,7 +37,7 @@
 	name = "grass"
 	color = COLOR_GREEN
 
-	value_per_unit = 1
+	value_per_unit = 2
 
 	armor = list(
 		BLADE = -50,
@@ -55,7 +55,6 @@
 		FATIGUE = INFINITY,
 		ION = INFINITY
 	)
-
 
 /material/dirt/
 	name = "dirt"
@@ -85,7 +84,7 @@
 	name = "rock"
 	color = COLOR_ROCK
 
-	value_per_unit = 1
+	value_per_unit = 2
 
 	armor = list(
 		BLADE = 25,
@@ -113,7 +112,7 @@
 
 	icon_state_ore = "ore_sand"
 
-	value_per_unit = 1
+	value_per_unit = 4
 
 	armor = list(
 		BLADE = 25,
@@ -136,7 +135,7 @@
 	name = "steel"
 	color = COLOR_STEEL
 
-	value_per_unit = 2
+	value_per_unit = 6
 
 	armor = list(
 		BLADE = 75,
@@ -158,7 +157,7 @@
 /material/aluminum
 	name = "aluminum"
 	color = COLOR_ALUMINUM
-	value_per_unit = 3
+	value_per_unit = 5
 
 	armor = list(
 		BLADE = 25,
@@ -183,7 +182,7 @@
 	icon_state_ore = "ore_iron"
 	icon_state_ore_deposit = "deposit_iron"
 
-	value_per_unit = 0.5
+	value_per_unit = 4
 
 	armor = list(
 		BLADE = 25,
@@ -209,7 +208,7 @@
 	icon_state_ore = "ore_phoron"
 	icon_state_ore_deposit = "deposit_phoron"
 
-	value_per_unit = 10
+	value_per_unit = 20
 
 	armor = list(
 		BLADE = 100,
@@ -234,7 +233,7 @@
 	icon_state_ore = "ore_coal"
 	icon_state_ore_deposit = "deposit_coal"
 
-	value_per_unit = 0.5
+	value_per_unit = 5
 
 	armor = list(
 		BLADE = 50,
@@ -259,7 +258,7 @@
 	icon_state_ore = "ore_gold"
 	icon_state_ore_deposit = "deposit_gold"
 
-	value_per_unit = 3
+	value_per_unit = 40
 
 	armor = list(
 		BLADE = 0,
@@ -284,7 +283,7 @@
 	icon_state_ore = "ore_diamond"
 	icon_state_ore_deposit = "deposit_diamond"
 
-	value_per_unit = 50
+	value_per_unit = 100
 
 	armor = list(
 		BLADE = 200,
@@ -334,7 +333,7 @@
 	icon_state_ore = "ore_uranium"
 	icon_state_ore_deposit = "deposit_uranium"
 
-	value_per_unit = 20
+	value_per_unit = 35
 
 	armor = list(
 		BLADE = 25,
@@ -358,7 +357,7 @@
 	color = COLOR_TITANIUM
 	icon_state_ore = "ore_titanium"
 
-	value_per_unit = 30
+	value_per_unit = 25
 
 	armor = list(
 		BLADE = 100,
@@ -381,7 +380,7 @@
 	name = "plasteel"
 	color = COLOR_PLASTEEL
 
-	value_per_unit = 30
+	value_per_unit = 25
 
 	armor = list(
 		BLADE = 75,

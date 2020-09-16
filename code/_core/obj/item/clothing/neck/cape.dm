@@ -77,3 +77,5 @@
 	additional_clothing = list(/obj/item/clothing/head/hood/goliath_cloak)
 
 	value = 200
+
+	dyeable = FALSE

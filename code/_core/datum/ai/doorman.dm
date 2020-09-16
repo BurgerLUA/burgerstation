@@ -23,7 +23,7 @@
 	if(!beepsky_marker)
 		beepsky_marker = locate() in owner.loc.loc.contents
 
-	if(frustration_move > frustration_threshold)
+	if(frustration_move > frustration_move_threshold)
 		owner.force_move(beepsky_marker.loc)
 		frustration_move = 0
 

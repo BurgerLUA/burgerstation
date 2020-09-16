@@ -1,7 +1,5 @@
 /ai/goliath
 
-	attack_delay = 1
-
 	var/mob/living/simple/npc/goliath/owner_as_goliath
 
 	var/tentacle_attack_ticks = 0
@@ -24,13 +22,11 @@
 			owner_as_goliath.tentacle_attack(objective_attack)
 			tentacle_attack_ticks = 0
 
-	attack_ticks = 0
+	owner.attack_next = world.time + 40
 
 
 /ai/goliath/ancient
-	attack_delay = 1
 	tentacle_ttack_frequency = 50
 
 /ai/goliath/broodmother
-	attack_delay = 1
 	tentacle_ttack_frequency = 50

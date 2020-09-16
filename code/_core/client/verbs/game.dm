@@ -30,16 +30,57 @@
 		return FALSE
 
 	var/choice = input("Are you sure you want to abandon your body and become a ghost? You will no longer be able to be revived.","Abandon Body","No") in list("Yes","No") | null
-	if(choice == "Yes")
-		make_ghost(mob.loc)
-		to_chat("You abandon your body...")
-		return TRUE
+	if(choice != "Yes")
+		return FALSE
 
+	make_ghost(mob.loc)
+	to_chat("You abandon your body...")
+	return TRUE
 
-	return FALSE
 
 /client/verb/stop_sound()
 	set name = "Stop Sounds"
 	set category = "Game"
 	mob << sound(null)
 	to_chat("All sounds have been stopped.")
+
+
+/client/verb/check_objectives()
+	set name = "Check Objectives"
+	set category = "Game"
+
+	if(!SSgamemode || !SSgamemode.active_gamemode)
+		to_chat(span("warning","The game is not ready yet!"))
+		return FALSE
+
+	var/gamemode/G = SSgamemode.active_gamemode
+
+	to_chat("<br><h2>Active Objectives</h2>")
+	if(length(G.active_objectives))
+		for(var/k in G.active_objectives)
+			var/objective/O = k
+			to_chat(O.get_description())
+	else
+		to_chat("No active objectives.")
+
+	to_chat("<br><h2>Completed Objectives</h2>")
+	if(length(G.completed_objectives))
+		for(var/k in G.completed_objectives)
+			var/objective/O = k
+			to_chat(O.get_description())
+	else
+		to_chat("No completed objectives.")
+
+	to_chat("<br><h2>Failed Objectives</h2>")
+	if(length(G.failed_objectives))
+		for(var/k in G.failed_objectives)
+			var/objective/O = k
+			to_chat(O.get_description())
+	else
+		to_chat("No failed objectives.")
+
+	return TRUE
+
+
+
+

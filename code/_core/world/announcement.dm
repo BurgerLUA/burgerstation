@@ -11,12 +11,14 @@
 	var/list/valid_mobs = list()
 
 	if(announcement_type & ANNOUNCEMENT_STATION)
-		for(var/mob/M in all_mobs_with_clients)
+		for(var/k in all_mobs_with_clients)
+			var/mob/M = k
 			var/area/A = get_area(M)
 			if(!is_living(M) || !(A.flags_area & FLAGS_AREA_NO_ROUND_INFORMATION))
 				valid_mobs += M
 
-	for(var/mob/M in valid_mobs)
+	for(var/k in valid_mobs)
+		var/mob/M = k
 		M.to_chat_language(text_to_announce,CHAT_TYPE_SAY,language,text_to_announce_language)
 
 	if(sound_to_play)

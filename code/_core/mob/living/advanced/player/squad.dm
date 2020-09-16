@@ -59,7 +59,8 @@
 	if(current_squad.leader)
 		add_squad_button(current_squad.leader)
 
-	for(var/mob/living/advanced/player/P in current_squad.members)
+	for(var/k in current_squad.members)
+		var/mob/living/advanced/player/P = k
 		add_squad_button(P)
 
 	update_squad_buttons()

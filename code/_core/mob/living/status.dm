@@ -82,21 +82,15 @@
 
 	return TRUE
 
-
 /mob/living/proc/has_status_effect(var/status_type) //Accepts lists! Defaults to OR. Set to true if you want AND.
-
 	if(src.status_effects[status_type])
 		return TRUE
-
 	return FALSE
 
-
 /mob/living/proc/has_status_effects(...)
-
 	for(var/status_type in args)
 		if(src.status_effects[status_type])
 			return TRUE
-
 	return FALSE
 
 /mob/living/proc/get_status_effect_duration(var/status_type)

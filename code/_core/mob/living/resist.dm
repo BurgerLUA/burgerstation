@@ -18,20 +18,10 @@
 
 	return TRUE
 
-/mob/living/proc/resist()
+/mob/living/proc/resist() //Return TRUE means you can resist. //Return FALSE means you can't resist
 
 	if(!src.can_resist())
 		return FALSE
-
-	if(on_fire)
-		adjust_fire_stacks(max(-fire_stacks,-50))
-		health.adjust_stamina(-5)
-		src.visible_message(
-			span("warning","\The [src.name] quickly pats out the flames!"),
-			span("warning","You quickly pat out the flames!"),
-		)
-		next_resist = world.time + 20
-		return TRUE
 
 	if(grabbing_hand)
 		var/mob/living/advanced/attacker = grabbing_hand.owner
@@ -55,11 +45,41 @@
 				)
 		resist_counter += 1
 		health.adjust_stamina(-20)
+		next_resist = world.time + 10
+		return FALSE
 
-	next_resist = world.time + 10
+	else if(on_fire)
+		if(horizontal)
+			adjust_fire_stacks(max(-fire_stacks,-100))
+			src.visible_message(
+				span("warning","\The [src.name] rolls on the ground!"),
+				span("danger","You quickly roll on the ground!"),
+			)
+		else
+			adjust_fire_stacks(max(-fire_stacks,-50))
+			src.visible_message(
+				span("warning","\The [src.name] quickly pats out the flames!"),
+				span("danger","You quickly pat out the flames!"),
+			)
+		health.adjust_stamina(-5)
+		next_resist = world.time + 20
+		return FALSE
+
+	else if(has_status_effect(REST))
+		rest()
+		return FALSE
 
 	return TRUE
 
+/mob/living/proc/rest()
+	if(dead)
+		to_chat(span("warning","You're already resting... in peace."))
+		return FALSE
+	if(has_status_effect(REST) && get_status_effect_duration(REST) == -1)
+		PROGRESS_BAR(src,src,3,.proc/remove_status_effect,REST)
+	else
+		add_status_effect(REST,-1,-2, force = TRUE)
+	return TRUE
 
 /mob/living/advanced/resist()
 
@@ -76,7 +96,7 @@
 			counter_to_add *= 3
 			src.visible_message(
 				span("danger","\The [src.name] tries to resist out of the handcuffs!"),
-				span("danger","You try to resist out of the handcuffs...")
+				span("danger","You try to resist out of the handcuffs!")
 			)
 		else
 			to_chat(span("warning","You attempt to stealthfully resist out of the handcuffs..."))
@@ -86,13 +106,13 @@
 
 		switch(handcuff_break_counter)
 			if(0 to 25)
-				src.to_chat(span("notice","...the handcuffs are pretty strong."))
+				src.to_chat(span("warning","...the handcuffs are pretty strong."))
 			if(25 to 50)
-				src.to_chat(span("notice","...the handcuffs are getting a little loose."))
+				src.to_chat(span("warning","...the handcuffs are getting a little loose."))
 			if(50 to 75)
-				src.to_chat(span("notice","...the handcuffs start to feel weak!"))
+				src.to_chat(span("warning","...the handcuffs start to feel weak!"))
 			if(75 to 99)
-				src.to_chat(span("notice","...the handcuffs feel fragile, and could break at any moment!"))
+				src.to_chat(span("warning","...the handcuffs feel fragile, and could break at any moment!"))
 			else
 				src.set_handcuffs(FALSE)
 				src.visible_message(

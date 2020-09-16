@@ -15,8 +15,6 @@
 
 	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
 
-	charge_max = 12000
-	charge_current = 12000
 	charge_cost = 1000
 
 	override_icon_state = TRUE
@@ -33,8 +31,12 @@
 
 /obj/item/weapon/ranged/energy/recharging/captain/update_overlays()
 	. = ..()
-	var/image/I = new/icon(initial(icon),"charge[FLOOR((charge_current/charge_max) * 4, 1)]")
-	add_overlay(I)
+	if(!battery)
+		var/image/I = new/icon(initial(icon),"charge0")
+		add_overlay(I)
+	else
+		var/image/I = new/icon(initial(icon),"charge[FLOOR((battery.charge_current/battery.charge_max) * 4, 1)]")
+		add_overlay(I)
 	return .
 
 

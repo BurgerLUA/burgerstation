@@ -44,14 +44,16 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 		var/mob/living/advanced/A = caller
 		A.client.settings.loaded_data["hud_colors"] = DEFAULT_COLORS
 
-		for(var/obj/hud/button/B in A.buttons)
+		for(var/k in A.buttons)
+			var/obj/hud/button/B = k
 			B.update_sprite()
 
 		for(var/k in A.health_elements)
 			var/obj/hud/button/B = A.health_elements[k]
 			B.update_sprite()
 
-		for(var/obj/hud/inventory/I in A.inventory)
+		for(var/k in A.inventory)
+			var/obj/hud/inventory/I = k
 			I.update_sprite()
 
 		A.client.update_window()
@@ -83,14 +85,16 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 		if(desired_color)
 			A.client.settings.loaded_data["hud_colors"][color_id] = desired_color
 
-			for(var/obj/hud/button/B in A.buttons)
+			for(var/k in A.buttons)
+				var/obj/hud/button/B = k
 				B.update_sprite()
 
 			for(var/k in A.health_elements)
 				var/obj/hud/button/B = A.health_elements[k]
 				B.update_sprite()
 
-			for(var/obj/hud/inventory/I in A.inventory)
+			for(var/k in A.inventory)
+				var/obj/hud/inventory/I = k
 				I.update_sprite()
 
 			A.client.update_window()

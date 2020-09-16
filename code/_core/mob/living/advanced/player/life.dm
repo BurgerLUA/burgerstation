@@ -16,7 +16,8 @@
 	var/list/people_who_killed = list()
 	var/list/people_who_killed_names = list()
 
-	for(var/list/attack_log in attack_logs)
+	for(var/k in attack_logs)
+		var/list/attack_log = k
 		if(attack_log["lethal"])
 			var/mob/living/advanced/player/P = attack_log["attacker"]
 			if(!(P in people_who_killed))
@@ -41,7 +42,8 @@
 
 	/*
 	if(ENABLE_KARMA)
-		for(var/mob/living/advanced/player/P in people_who_killed)
+		for(var/k in people_who_killed)
+			var/mob/living/advanced/player/P = k
 
 			if(!P.client || !P.mobdata) //Something something exploitable something something
 				continue
@@ -85,6 +87,7 @@
 		var/mob/living/advanced/npc/beefman/B = new(src.loc)
 		INITIALIZE(B)
 		GENERATE(B)
+		FINALIZE(B)
 		step_rand(B)
 
 	return TRUE

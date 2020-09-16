@@ -2,7 +2,8 @@
 
 	var/list/obj/item/final_list = worn_objects + held_objects
 
-	for(var/obj/item/I in final_list)
+	for(var/k in final_list)
+		var/obj/item/I = k
 		if(I.light)
 			I.light.update(src)
 

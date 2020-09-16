@@ -5,7 +5,8 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	if(!ENABLE_SCREEN_MESSAGES)
 		return FALSE
 
-	for(var/obj/hud/button/message/M in all_hud_messages)
+	for(var/k in all_hud_messages)
+		var/obj/hud/button/message/M = k
 		if(desired_text && M.owner)
 			var/area/A = get_area(M.owner)
 			if(!A || (A.flags_area & FLAGS_AREA_NO_ROUND_INFORMATION))

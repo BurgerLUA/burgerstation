@@ -30,10 +30,9 @@ SUBSYSTEM_DEF(sound)
 		if(active_sounds[S] > 0)
 			continue
 		S.status = SOUND_MUTE | SOUND_UPDATE
-		for(var/mob/M in all_mobs_with_clients)
-			if(!M.client)
-				continue
-			M.client.receive_sound(S)
+		for(var/k in all_clients)
+			var/client/C = k
+			C.receive_sound(S)
 		active_sounds -= S
 		qdel(S)
 
@@ -46,7 +45,8 @@ SUBSYSTEM_DEF(sound)
 		if(S.file != sound_path)
 			continue
 		S.status = SOUND_MUTE
-		for(var/mob/M in hearers)
+		for(var/k in hearers)
+			var/mob/M = k
 			if(!M.client)
 				continue
 			M.client.receive_sound(S)
@@ -87,7 +87,8 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 	created_sound.environment = environment
 	created_sound.status = SOUND_STREAM
 
-	for(var/mob/M in hearers)
+	for(var/k in hearers)
+		var/mob/M = k
 		if(M.client)
 			if(M.client.current_ambient_sound == sound_path)
 				continue
@@ -111,7 +112,8 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 	created_sound.environment = environment
 	created_sound.status = SOUND_STREAM
 
-	for(var/mob/M in hearers)
+	for(var/k in hearers)
+		var/mob/M = k
 		if(!M.client)
 			continue
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]
@@ -163,7 +165,8 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 /proc/get_clients_in_range(var/range,var/atom/epicenter=usr)
 
 	. = list()
-	for(var/mob/M in all_mobs_with_clients)
+	for(var/k in all_mobs_with_clients)
+		var/mob/M = k
 		if(get_dist(epicenter,M) > range)
 			continue
 		. += M
@@ -187,7 +190,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		return FALSE
 
 	if(!location_or_list)
-		CRASH_SAFE("Tried playing a sound without a target!")
+		CRASH_SAFE("Tried playing a sound \"[sound_path]\" without a target!")
 		return FALSE
 
 	var/list/hearers = list()
@@ -251,11 +254,10 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	else if(loop)
 		active_sounds[created_sound] = -1
 
-	for(var/mob/M in hearers)
+	for(var/k in hearers)
+		var/mob/M = k
 
-		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER)
-
-		hearers -= M
+		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
 
 		if(!M.client)
 			continue
@@ -316,8 +318,5 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		created_sound.volume = local_volume
 
 		if(C) C.receive_sound(created_sound)
-
-	if(length(hearers))
-		CRASH_SAFE("Warning: Found [length(hearers)] non-mobs in a hearers list.")
 
 	return created_sound

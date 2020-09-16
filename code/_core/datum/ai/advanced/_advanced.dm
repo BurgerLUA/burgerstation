@@ -1,7 +1,5 @@
 /ai/advanced/
 
-	attack_delay = 1
-
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
 	var/checked_weapons = FALSE
 
@@ -19,20 +17,28 @@
 	objective_weapon = null
 	return ..()
 
-
 /ai/advanced/on_life()
 
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(resist_handcuffs && A.handcuffed && owner.next_resist <= world.time)
-			owner.resist()
+	var/mob/living/advanced/A = owner
+	if(resist_handcuffs && A.handcuffed && owner.next_resist <= world.time)
+		owner.resist()
 
 	return ..()
 
 /ai/advanced/proc/handle_movement_weapon()
 
-	if(!is_advanced(owner))
+	if(!objective_weapon)
 		return FALSE
+
+	if(get_dist(owner,objective_weapon) > 1)
+		owner.move_dir = get_dir(owner,objective_weapon)
+		return TRUE
+
+	equip_weapon(objective_weapon)
+
+	return FALSE
+
+/ai/advanced/proc/find_weapon_on_ground()
 
 	var/mob/living/advanced/A = owner
 	if(A.right_item || A.left_item || !should_find_weapon)
@@ -67,13 +73,7 @@
 			return FALSE
 		objective_weapon = pickweight(possible_weapons)
 
-	if(get_dist(A,objective_weapon) > 1)
-		A.move_dir = get_dir(owner,objective_weapon)
-		return TRUE
-
-	equip_weapon(objective_weapon)
-
-	return FALSE
+	return TRUE
 
 /ai/advanced/proc/handle_gunplay()
 
@@ -140,9 +140,6 @@
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
-	if(!is_advanced(owner))
-		return ..()
-
 	if(next_complex > world.time)
 		return FALSE
 
@@ -187,9 +184,6 @@
 /ai/advanced/can_attack(var/atom/target,var/left_click=FALSE)
 
 	ranged_attack_cooldown = max(0,ranged_attack_cooldown - 1)
-
-	if(!is_advanced(owner))
-		return ..()
 
 	var/mob/living/advanced/A = owner
 	if(!left_click)
@@ -302,9 +296,6 @@
 
 /ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
-	if(!is_advanced(owner))
-		return ..()
-
 	var/mob/living/advanced/A = owner
 
 	if(new_alert_level == ALERT_LEVEL_COMBAT || new_alert_level == ALERT_LEVEL_CAUTION)
@@ -318,9 +309,6 @@
 	return ..()
 
 /ai/advanced/handle_attacking()
-
-	if(!is_advanced(owner))
-		return ..()
 
 	var/mob/living/advanced/A = owner
 

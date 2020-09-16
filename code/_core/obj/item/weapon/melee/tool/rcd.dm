@@ -13,6 +13,16 @@
 
 	value = 50
 
+/obj/item/weapon/melee/tool/rcd/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEATOM("rcd_disk")
+	return .
+
+/obj/item/weapon/melee/tool/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADATOM("rcd_disk")
+	return .
+
 /obj/item/weapon/melee/tool/rcd/Generate()
 	matter_current = matter_max
 	return ..()
@@ -84,6 +94,7 @@
 				var/atom/A = data["object"]
 				A = new A(T)
 				INITIALIZE(A)
+				FINALIZE(A)
 				caller.to_chat("You construct \a [A.name] with \the [src.name].")
 
 		return TRUE

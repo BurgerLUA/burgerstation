@@ -69,7 +69,7 @@ var/global/saved_icons = 0
 
 /turf/proc/is_occupied()
 
-	for(var/atom/movable/A in contents)
+	for(var/atom/movable/A in src.contents)
 		if(istype(A,/obj/effect/temp/construction/))
 			return A
 		if(is_living(A))
@@ -107,7 +107,7 @@ var/global/saved_icons = 0
 		CRASH_SAFE("[get_debug_name()] called on_destruction without having a destruction turf!")
 		return FALSE
 
-	for(var/obj/effect/temp/impact/I in contents)
+	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0
 
 	. = ..()
@@ -273,7 +273,7 @@ var/global/saved_icons = 0
 	if(desired_exposed == exposed && !force)
 		return FALSE
 
-	for(var/obj/O in contents)
+	for(var/obj/O in src.contents)
 		if(!O.under_tile)
 			continue
 		if(desired_exposed)

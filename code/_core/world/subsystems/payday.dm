@@ -28,7 +28,8 @@ SUBSYSTEM_DEF(payday)
 
 	var/list/mob/living/advanced/player/valid_players = list()
 
-	for(var/mob/living/advanced/player/P in all_players)
+	for(var/k in all_players)
+		var/mob/living/advanced/player/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
 			continue
@@ -37,13 +38,14 @@ SUBSYSTEM_DEF(payday)
 			var/tax = CEILING(P.currency * P.insurance_premiums,1)
 			if(tax)
 				var/charged_amount = -P.adjust_currency( -(tax + 50) )
-				P.insurance += FLOOR(charged_amount*0.5,1)
+				P.insurance += FLOOR(charged_amount*0.75,1)
 				P.to_chat(span("notice","You were taxed your insurance premium of <b>[charged_amount] credits</b>. Your insurance pool is now <b>[P.insurance] credits</b>."))
 				P.update_premiums()
 
 	stored_payday *= 0.5 //Prevents gaming the system.
 
-	for(var/mob/living/advanced/player/P in valid_players)
+	for(var/k in valid_players)
+		var/mob/living/advanced/player/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,10000)
 		P.adjust_currency( BASE_PAY + bonus_to_give )
@@ -52,6 +54,6 @@ SUBSYSTEM_DEF(payday)
 		else
 			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits for your efforts."))
 
-	next_payday = world.time + SECONDS_TO_DECISECONDS(600)
+	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
 
 	stored_payday = 0

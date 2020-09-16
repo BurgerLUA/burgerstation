@@ -57,12 +57,14 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/on_life()
 
-	for(var/turf/T in queued_edges)
+	for(var/k in queued_edges)
+		var/turf/T = k
 		CHECK_TICK(75,FPS_SERVER*3)
 		T.update_sprite()
 		queued_edges -= T
 
-	for(var/turf/simulated/T in wet_turfs)
+	for(var/k in wet_turfs)
+		var/turf/simulated/T = k
 		T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
 		if(T.wet_level <= 0)
 			wet_turfs -= T

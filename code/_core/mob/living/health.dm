@@ -1,10 +1,10 @@
-/mob/living/proc/add_health_element(var/obj/hud/button/H)
+/mob/living/proc/add_health_element(var/obj/hud/button/health/H)
 	health_elements[H.id] = H
 	if(client)
 		client.screen += H
 	update_health_elements()
 
-/mob/living/proc/remove_health_element(var/obj/hud/button/H)
+/mob/living/proc/remove_health_element(var/obj/hud/button/health/H)
 	health_elements -= H
 	if(client)
 		client.screen -= H
@@ -42,7 +42,8 @@
 		M.update_stats(src)
 
 	if(length(screen_blood))
-		for(var/obj/hud/screen_blood/SB in screen_blood)
+		for(var/k in screen_blood)
+			var/obj/hud/screen_blood/SB = k
 			SB.update_stats()
 
 	return TRUE
@@ -56,7 +57,7 @@
 	if(has_status_effect(ADRENALINE))
 		health_added = get_status_effect_magnitude(ADRENALINE)
 
-	if(health.health_current + health_added <= death_threshold)
+	if( (health.health_current + health_added) <= death_threshold)
 		return TRUE
 
 	return FALSE
@@ -155,8 +156,10 @@
 		var/obj/O = new k(T)
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
-	for(var/atom/movable/M in target.contents)
+	for(var/k in target.contents)
+		var/atom/movable/M = k
 		if(is_organ(M))
 			continue
 		M.force_move(T)

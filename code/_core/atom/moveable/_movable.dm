@@ -10,8 +10,9 @@
 
 	var/area/area //The object's area.
 
-	var/tmp/move_dir = 0
-	var/tmp/move_dir_last = 0 //Used for momentum and speed.
+	var/tmp/move_dir = 0x0
+	var/tmp/move_dir_last = 0x0 //Used for momentum and speed.
+	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
 	var/tmp/move_delay = 0
 
 	var/movement_delay = 4 //Measured in ticks.
@@ -65,6 +66,7 @@
 			P.color = F.footprint_color
 			P.alpha = F.footprint_alpha
 			INITIALIZE(P)
+			FINALIZE(P)
 		if(length(F.footstep_sounds))
 			play(pick(F.footstep_sounds), T, volume = 50, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
 
@@ -143,8 +145,26 @@
 
 /proc/is_valid_dir(var/direction)
 
+	/*
 	if(!direction || (direction & EAST && direction & WEST) || (direction & NORTH && direction & SOUTH))
 		return FALSE
+	*/
+
+	if(direction - (NORTH + EAST + SOUTH + WEST) > 0)
+		return FALSE
+
+	return TRUE
+
+
+/atom/movable/proc/set_anchored(var/desired_anchored=TRUE)
+
+	if(anchored == desired_anchored)
+		return FALSE
+
+	anchored = desired_anchored
+
+	if(!anchored)
+		force_move(loc)
 
 	return TRUE
 

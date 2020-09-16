@@ -44,7 +44,8 @@
 
 	var/turf/T = get_turf(src)
 	var/did_drop = FALSE
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		if(length(I.drop_held_objects(T)))
 			did_drop = TRUE
 	if(did_drop && is_advanced(loc))
@@ -293,6 +294,72 @@
 
 /obj/item/organ/hand/skeleton/left
 	name = "left skeleton hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+
+
+
+//Skeleton
+/obj/item/organ/hand/monkey
+	name = "right monkey hand"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+	inventories = list(
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
+	)
+
+/obj/item/organ/hand/monkey/left
+	name = "left monkey hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+
+
+
+//Zombie
+/obj/item/organ/hand/zombie
+	name = "right zombie hand"
+	inventories = list(
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
+	)
+
+	damage_type = /damagetype/unarmed/bite/zombie
+
+/obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+	return damage_type
+
+/obj/item/organ/hand/zombie/left
+	name = "left zombie hand"
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(

@@ -11,17 +11,11 @@
 	if(id == BODY_HAND_LEFT)
 		if(!A.right_hand)
 			return FALSE
-		caller.attack_flags &= ~ATTACK_SELF
-		. = src.click_on_object(caller,A.right_hand)
-		caller.attack_flags |= ATTACK_SELF
-		return .
+		return src.click_on_object(caller,A.right_hand)
 	else if(id == BODY_HAND_RIGHT)
 		if(!A.left_hand)
 			return FALSE
-		caller.attack_flags &= ~ATTACK_SELF
-		. = src.click_on_object(caller,A.left_hand)
-		caller.attack_flags |= ATTACK_SELF
-		return .
+		return src.click_on_object(caller,A.left_hand)
 
 	return ..()
 
@@ -61,7 +55,7 @@
 				rotation = 90
 			M.set_dir(turn(M.dir,rotation))
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
-		return TRUE
+			return TRUE
 
 	else if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
@@ -84,8 +78,8 @@
 			vel_x *= 1/highest
 			vel_y *= 1/highest
 
-			vel_x *= 12
-			vel_y *= 12
+			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
+			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
 
 			I.drop_item(get_turf(caller))
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
@@ -119,7 +113,7 @@
 			object.click_on_object(caller,caller,location,control,params)
 		return TRUE
 
-	if((caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
+	if(params && (caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
 	if(get_dist(defer_self,defer_object) <= 1) //We're able to interact with the item.
@@ -159,20 +153,6 @@
 
 	return FALSE
 
-/obj/hud/inventory/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
-
-	if(is_inventory(object))
-		var/obj/hud/inventory/object_as_inventory = object
-		var/obj/item/I = src.get_top_object()
-		if(I && I.can_be_dragged(caller) && get_dist(src,object) <= 1)
-			object_as_inventory.add_object(I)
-		return TRUE
-
-	return ..()
-
-
-
-
 /obj/hud/inventory/proc/wield_object(var/mob/caller,var/obj/item/item_to_wield)
 
 	if(!is_item(item_to_wield) || !item_to_wield.can_wield)
@@ -197,6 +177,8 @@
 
 /obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 
+	object = object.defer_click_on_object(location,control,params)
+
 	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object
 		var/atom/defer_self = src.defer_click_on_object(location,control,params)
@@ -208,6 +190,21 @@
 			return TRUE
 
 	return ..()
+
+/*
+/obj/hud/inventory/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+
+	if(is_inventory(object))
+		var/obj/hud/inventory/object_as_inventory = object
+		var/obj/item/I = src.get_top_object()
+		if(I && I.can_be_dragged(caller) && get_dist(src,object) <= 1)
+			object_as_inventory.add_object(I)
+		return TRUE
+
+	return ..()
+*/
+
+
 
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc

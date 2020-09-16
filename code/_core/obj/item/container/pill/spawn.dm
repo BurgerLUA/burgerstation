@@ -50,3 +50,10 @@
 /obj/item/container/pill/omnizine/Generate()
 	reagents.add_reagent(/reagent/medicine/omnizine,20)
 	return ..()
+
+/obj/item/container/pill/antihol
+	name = "antihol pill (20u)"
+
+/obj/item/container/pill/antihol/Generate()
+	reagents.add_reagent(/reagent/medicine/antihol,20)
+	return ..()

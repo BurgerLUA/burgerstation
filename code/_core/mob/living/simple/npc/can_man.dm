@@ -39,13 +39,20 @@
 	)
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		FATIGUE = STAGGER,
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
 		DISARM = TRUE,
+		DRUGGY = TRUE,
 		FIRE = TRUE
 	)
 
@@ -54,7 +61,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	boss_music = "cursed_as_love"
+	//boss_music = "cursed_as_love"
 
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"
@@ -99,7 +106,7 @@
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
 		var/atom/object_to_damage = obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
-		DT.do_damage(src,obstacle,src,object_to_damage,src,1)
+		DT.hit(src,obstacle,src,object_to_damage,src,1)
 		return TRUE
 
 	return ..()

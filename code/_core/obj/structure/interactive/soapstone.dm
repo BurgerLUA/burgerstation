@@ -3,7 +3,7 @@ obj/structure/interactive/soapstone_message
 	desc = "A message left by a traveler."
 	icon = 'icons/obj/structure/soapstone.dmi'
 	icon_state = "message"
-	anchored = 1
+	anchored = TRUE
 
 	var/owner
 	var/ckey

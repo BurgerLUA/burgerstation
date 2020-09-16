@@ -44,6 +44,7 @@
 			for(var/i=1,i<=v,i++)
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
+				FINALIZE(B)
 				stored_bullets += B
 
 	return .
@@ -54,6 +55,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
+			FINALIZE(B)
 			stored_bullets += B
 
 		update_sprite()
@@ -62,7 +64,9 @@
 
 /obj/item/magazine/Destroy()
 
-	for(var/obj/item/bullet_cartridge/B in stored_bullets)
+	for(var/k in stored_bullets)
+		if(!k) continue
+		var/obj/item/bullet_cartridge/B = k
 		qdel(B)
 
 	stored_bullets.Cut()
@@ -124,6 +128,18 @@
 		if(I.add_held_object(B))
 			B.update_sprite()
 			stored_bullets -= B
+			update_sprite()
+		return TRUE
+
+	return ..()
+
+/obj/item/magazine/click_self(var/mob/caller)
+
+	if(length(stored_bullets))
+		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
+		B.drop_item(get_turf(caller))
+		B.update_sprite()
+		stored_bullets -= B
 		update_sprite()
 		return TRUE
 

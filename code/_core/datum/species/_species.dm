@@ -97,6 +97,8 @@
 
 		/obj/hud/button/toggle_cash_money,
 		/obj/hud/button/cash_money,
+		/obj/hud/button/microstransactions,
+		/obj/hud/button/toggle_microtransactions,
 
 		/obj/hud/button/boss_health,
 
@@ -138,7 +140,9 @@
 		/obj/hud/button/health/body
 	)
 
-/species/proc/mod_speech(var/mob/M,var/text,var/intensity=50)
+var/regex/vowels = new("\[aeiou\]", "i")
+
+/species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
 
 	if(!accent || !length(accent))
 		return text

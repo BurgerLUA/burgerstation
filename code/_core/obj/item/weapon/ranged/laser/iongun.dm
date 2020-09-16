@@ -15,9 +15,7 @@
 
 	bullet_color = "#00FFFF"
 
-	charge_current = CELL_SIZE_ADVANCED
-	charge_max = CELL_SIZE_ADVANCED
-	charge_cost = CELL_SIZE_ADVANCED / 10
+	charge_cost = CELL_SIZE_BASIC / 30
 
 	view_punch = 15
 
@@ -44,9 +42,11 @@
 
 /obj/item/weapon/ranged/energy/iongun/update_icon()
 
-	if(charge_cost > charge_current)
+	var/obj/item/powercell/PC = get_battery()
+
+	if(!istype(PC) || charge_cost > PC.charge_current)
 		icon_state = "inventory_0"
 	else
-		icon_state = "inventory_[FLOOR((charge_current/charge_max) * 4, 1)]"
+		icon_state = "inventory_[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]"
 
 	return ..()

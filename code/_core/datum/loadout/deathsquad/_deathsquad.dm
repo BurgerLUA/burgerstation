@@ -1,22 +1,17 @@
 /loadout/deathsquad
 	spawning_items = list(
 		/obj/item/clothing/uniform/stealth,
+		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/glasses/sun,
-		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/overwear/armor/carbon/deathsquad,
 		/obj/item/clothing/head/helmet/carbon/deathsquad
 	)
 
 	var/list/random_primary = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault/equipped,
 		/obj/item/weapon/ranged/energy/rifle/xray/deathsquad,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull
 	)
 
 	var/list/random_secondary = list(
@@ -30,6 +25,7 @@
 	)
 
 /loadout/deathsquad/get_spawning_items()
+
 	. = ..()
 
 	var/obj/item/chosen_primary = pick(random_primary)
@@ -40,12 +36,8 @@
 	. += chosen_secondary
 	. += chosen_melee
 
-	if(SSweapons.weapon_to_magazine[chosen_primary])
-		for(var/i=1,i<=4,i++)
-			. += SSweapons.weapon_to_magazine[chosen_primary]
-
 	if(SSweapons.weapon_to_magazine[chosen_secondary])
-		for(var/i=1,i<=2,i++)
+		for(var/i=1,i<=4,i++)
 			. += SSweapons.weapon_to_magazine[chosen_secondary]
 
 	return .

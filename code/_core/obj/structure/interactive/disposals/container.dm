@@ -15,7 +15,8 @@
 
 /obj/disposals_container/Destroy()
 
-	for(var/atom/movable/M in contents)
+	for(var/k in contents)
+		var/atom/movable/M = k
 		if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
 			M.force_move(get_turf(src))
 			continue
@@ -51,7 +52,7 @@
 		if(sorting_tag && sorting_tag == D.sorting_tag && (!istext(passcode) || passcode != sorting_tag))
 			continue
 		var/turf/found_turf = get_step(src,dir_number) //GOING INTO THIS PIPE!
-		for(var/obj/structure/interactive/disposals/D2 in found_turf)
+		for(var/obj/structure/interactive/disposals/D2 in found_turf.contents)
 			if(D2 == D)
 				continue
 			if(last_pipe == D2)
@@ -63,7 +64,7 @@
 			move_to_pipe(D2)
 			return TRUE
 
-	for(var/atom/movable/M in contents)
+	for(var/atom/movable/M in src.contents)
 		M.force_move(get_turf(src.loc))
 
 	stop_thinking(src)

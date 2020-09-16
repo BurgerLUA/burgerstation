@@ -1,7 +1,8 @@
 /mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_delete = FALSE)
 
 	if(length(O.inventories))
-		for(var/obj/hud/inventory/I in O.inventories)
+		for(var/k in O.inventories)
+			var/obj/hud/inventory/I = k
 			I.delete_all_objects()
 			I.remove_from_owner()
 
@@ -20,16 +21,9 @@
 
 /mob/living/advanced/proc/remove_all_organs(var/do_delete=TRUE)
 
-	for(var/obj/item/organ/O in organs)
+	for(var/k in organs)
+		var/obj/item/organ/O = k
 		remove_organ(O,do_delete)
-
-/*
-/mob/living/advanced/proc/update_all_organs()
-	labeled_organs = list()
-	for(var/obj/item/organ/O in organs)
-		if(O.id)
-			labeled_organs[O.id] = O
-*/
 
 /mob/living/advanced/proc/add_species_organs()
 
@@ -90,6 +84,7 @@
 
 	if(initialize)
 		INITIALIZE(O)
+		FINALIZE(O)
 
 	if(is_tail(O))
 		add_overlay_tracked("tail_behind",O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")

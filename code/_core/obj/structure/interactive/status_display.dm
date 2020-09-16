@@ -2,7 +2,8 @@ var/global/list/global_status_displays = list()
 
 /proc/set_status_display(var/status_id,var/message)
 
-	for(var/obj/structure/interactive/status_display/global_display/S in global_status_displays)
+	for(var/k in global_status_displays)
+		var/obj/structure/interactive/status_display/global_display/S = k
 		if(S.status_id == status_id)
 			S.set_text(message)
 
@@ -78,11 +79,17 @@ var/global/list/global_status_displays = list()
 	status_id = "arrivals_02"
 
 
-/obj/structure/interactive/status_display/global_display/cargo
+/obj/structure/interactive/status_display/global_display/cargo_inbound
 	name = "cargo status display"
 	desc = "ASS BLAST USA"
 	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Cargo Shuttle."
 	status_id = "cargo"
+
+/obj/structure/interactive/status_display/global_display/cargo
+	name = "cargo inbound status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Inbound Cargo Shuttle."
+	status_id = "cargo_inbound"
 
 /obj/structure/interactive/status_display/global_display/round
 	name = "mission status display"

@@ -24,10 +24,14 @@
 
 	var/loot/loot
 
+	value = 300
+
+	can_rotate = FALSE
 
 /obj/structure/interactive/crate/on_crush()
 
-	for(var/atom/movable/M in contents)
+	for(var/k in contents)
+		var/atom/movable/M = k
 		M.on_crush()
 
 	return ..()
@@ -90,7 +94,8 @@
 /obj/structure/interactive/crate/Generate()
 
 	if(collect_contents_on_initialize && !open)
-		for(var/atom/movable/M in loc.contents)
+		for(var/k in loc.contents)
+			var/atom/movable/M = k
 			if(M == src || M.anchored)
 				continue
 			M.force_move(src)
@@ -127,7 +132,8 @@
 /obj/structure/interactive/crate/proc/close(var/mob/caller)
 
 	var/atom/blocking
-	for(var/atom/movable/M in loc.contents)
+	for(var/k in loc.contents)
+		var/atom/movable/M = k
 		if(can_prevent_close(M))
 			blocking = M
 		break
@@ -136,7 +142,8 @@
 		caller.to_chat("\The [blocking.name] is preventing \the [src.name] from being closed!")
 		return FALSE
 
-	for(var/atom/movable/M in loc.contents)
+	for(var/k in loc.contents)
+		var/atom/movable/M = k
 		if(M == src)
 			continue
 		if(!can_store(M))
@@ -158,7 +165,8 @@
 		L.do_spawn(src.loc)
 		loot = null
 
-	for(var/atom/movable/M in crate_contents)
+	for(var/k in crate_contents)
+		var/atom/movable/M = k
 		crate_contents -= M
 		M.force_move(src.loc)
 		//animate(M,pixel_x = initial(M.pixel_x) + rand(-16,16),pixel_y = initial(M.pixel_y) + rand(-16,16),time = 4)

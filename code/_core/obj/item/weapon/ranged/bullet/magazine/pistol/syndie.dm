@@ -31,15 +31,26 @@
 	bullet_diameter_max = 11
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/gyro = TRUE,
+		/obj/item/attachment/barrel/laser_charger = FALSE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/sight/scope/large = FALSE,
+		/obj/item/attachment/sight/targeting_computer = TRUE,
+
+		/obj/item/attachment/stock/c20r = FALSE,
+
+		/obj/item/attachment/undermount/angled_grip = FALSE,
+		/obj/item/attachment/undermount/bipod = FALSE,
+		/obj/item/attachment/undermount/burst_adapter = FALSE,
+		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
 	attachment_barrel_offset_x = 32 - 16
@@ -61,10 +72,15 @@
 	name = "10mm Stechkin MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
-	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is less compact, it comes with a suppressor."
+	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is less compact."
 
 	size = SIZE_2
 
-	shoot_sounds = list('sound/weapons/10/shoot_mod.ogg')
+	attachment_barrel_offset_x = 25 - 16
+	attachment_barrel_offset_y = 20 - 16
 
-	shoot_alert = ALERT_LEVEL_NONE
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 24 - 16
+
+	attachment_undermount_offset_x = 26 - 16
+	attachment_undermount_offset_y = 14 - 16

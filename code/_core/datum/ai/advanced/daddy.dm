@@ -1,7 +1,4 @@
 /ai/advanced/daddy
-
-	attack_delay = 1
-
 	var/next_chat_time = 0
 
 /ai/advanced/daddy/handle_objectives()

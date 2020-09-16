@@ -10,7 +10,7 @@
 	collision_bullet_flags = FLAG_COLLISION_NONE
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
-	anchored = 1
+	anchored = TRUE
 
 	var/bullet_block_chance = 100 //Chance to block bullets, assuming that the object is solid.
 

@@ -1,3 +1,29 @@
+/client/verb/print_cleaning_log()
+
+	set name = "Print Cleaning Log (DANGER)"
+	set category = "Debug"
+
+	var/final_text = "<h1>Cleaned Objects</h1>"
+
+	for(var/k in SSdelete.cleaning_log)
+		final_text += "[k]<br>"
+
+	final_text += "<h1>Queued Objects</h1>"
+
+	for(var/k in SSdelete.objects_to_delete)
+		var/datum/D = k
+		var/value = SSdelete.objects_to_delete[k]
+		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
+
+	final_text += "<h1>Queued Objects (SAFE)</h1>"
+
+	for(var/k in SSdelete.objects_to_delete_safe)
+		var/datum/D = k
+		var/value = SSdelete.objects_to_delete_safe[k]
+		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",final_text)]</body>","window=help")
+
 client/verb/air_test(var/pressure as num)
 	set name = "Air Test"
 	set category = "Debug"
@@ -53,6 +79,7 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/M = new(T)
 		M.dir = mob.dir
 		INITIALIZE(M)
+		FINALIZE(M)
 		M.ai.set_active(TRUE)
 
 /client/verb/generate_map_icon()
@@ -103,12 +130,12 @@ client/verb/air_test(var/pressure as num)
 	var/list/turf/possible_NT = list()
 	var/list/turf/possible_SY = list()
 
-	for(var/turf/simulated/floor/tile/F in range(src.view*0.4,N_T))
+	for(var/turf/simulated/floor/F in range(src.view*0.4,N_T))
 		if(F.is_occupied())
 			continue
 		possible_NT += F
 
-	for(var/turf/simulated/floor/tile/F in range(src.view*0.4,S_T))
+	for(var/turf/simulated/floor/F in range(src.view*0.4,S_T))
 		if(F.is_occupied())
 			continue
 		possible_SY += F
@@ -123,11 +150,13 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/nanotrasen/N_NPC = new(N)
 		N_NPC.dir = EAST
 		INITIALIZE(N_NPC)
+		FINALIZE(N_NPC)
 		N_NPC.ai.set_active(TRUE)
 
 		var/mob/living/advanced/npc/syndicate/S_NPC = new(S)
 		S_NPC.dir = WEST
 		INITIALIZE(S_NPC)
+		FINALIZE(S_NPC)
 		S_NPC.ai.set_active(TRUE)
 
 
@@ -195,12 +224,11 @@ client/verb/air_test(var/pressure as num)
 		return FALSE
 
 	if(valid_count == 1)
-		var/datum/A = valid_count[1]
+		var/datum/A = valid_objects[1]
 		A = new A(usr.loc)
 		INITIALIZE(A)
-		if(isobj(A))
-			var/obj/O = A
-			GENERATE(O)
+		GENERATE(A)
+		FINALIZE(A)
 		return TRUE
 
 	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
@@ -209,6 +237,7 @@ client/verb/air_test(var/pressure as num)
 		var/datum/A = selection
 		A = new A(usr.loc)
 		INITIALIZE(A)
+		FINALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
 			GENERATE(O)
@@ -256,7 +285,8 @@ client/verb/air_test(var/pressure as num)
 
 	var/report_string = "<h2>Subsystem Report</h2>CPU Usage: [CEILING(world.cpu,1)]%<br>Tick Usage: [CEILING(world.tick_usage,1)]%<br>"
 
-	for(var/subsystem/S in active_subsystems)
+	for(var/k in active_subsystems)
+		var/subsystem/S = k
 		if(S.last_run_duration || S.total_run_duration)
 			report_string += "<b>[S.name]</b>: <pre>LAST: [S.last_run_duration], TOTAL: [S.total_run_duration].</pre><br>"
 
@@ -274,13 +304,14 @@ client/verb/air_test(var/pressure as num)
 	set name = "Force Save Everyone (DANGER)"
 	set category = "Debug"
 
-	for(var/mob/living/advanced/player/P in world)
+	for(var/k in all_players)
+		var/mob/living/advanced/player/P = k
 		if(!P.ckey_last || !P.allow_save)
 			continue
 		try
 			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 			if(mobdata)
-				mobdata.save_character(src,force = TRUE)
+				mobdata.save_character(P,force = TRUE)
 			to_chat("Saved [P.get_debug_name()].")
 		catch
 			to_chat("COULD NOT SAVE [P.get_debug_name()]!")
@@ -296,13 +327,15 @@ client/verb/air_test(var/pressure as num)
 
 	var/list/valid_turfs = list()
 
-	for(var/turf/simulated/S in view(VIEW_RANGE + ZOOM_RANGE,mob))
+	for(var/turf/simulated/floor/S in view(VIEW_RANGE + ZOOM_RANGE,mob))
 		valid_turfs += S
 
 	for(var/i=1,i<=60,i++)
-		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
-		INITIALIZE(ST)
-		GENERATE(ST)
+		spawn
+			var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
+			INITIALIZE(ST)
+			GENERATE(ST)
+			FINALIZE(ST)
 
 
 /client/verb/create_vote()
@@ -314,6 +347,26 @@ client/verb/air_test(var/pressure as num)
 	if(confirm != "Yes")
 		return FALSE
 
-	//SSvote.create_vote(/vote/continue_round)
+	SSvote.create_vote(/vote/continue_round)
+
+	return TRUE
+
+
+/client/verb/create_dummy_objective()
+	set name = "Create Dummy Objective"
+	set category = "Debug"
+
+	var/gamemode/G = SSgamemode.active_gamemode
+
+	G.add_objective(/objective/dummy)
+
+	for(var/objective/dummy/D in G.active_objectives)
+		D.update()
+
+	sleep(100)
+
+	for(var/objective/dummy/D in G.active_objectives)
+		D.completed = TRUE
+		D.update()
 
 	return TRUE

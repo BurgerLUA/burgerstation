@@ -25,7 +25,8 @@
 
 		owner = desired_loc
 
-		for(var/obj/effect/chat_text/CT in owner.stored_chat_text)
+		for(var/k in owner.stored_chat_text)
+			var/obj/effect/chat_text/CT = k
 			animate(CT,pixel_y = CT.pixel_y + 8,time = 5)
 
 		owner.stored_chat_text += src

@@ -11,7 +11,8 @@ SUBSYSTEM_DEF(vote)
 
 /subsystem/vote/on_life()
 
-	for(var/vote/V in active_votes)
+	for(var/k in active_votes)
+		var/vote/V = k
 		if(V.time_to_end > world.time)
 			continue
 		active_votes -= V

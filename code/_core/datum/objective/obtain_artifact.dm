@@ -5,6 +5,24 @@
 
 	var/completed = FALSE
 
+	credit_reward = 1000
+	burgerbux_reward = 1
+
+/objective/artifact/proc/get_valid_targets()
+	return list(created_artifact)
+
+/objective/artifact/proc/has_valid_targets()
+	return length(get_valid_targets()) ? TRUE : FALSE
+
+/objective/artifact/proc/get_random_target()
+
+	var/list/valid_targets = get_valid_targets()
+
+	if(!length(valid_targets))
+		return FALSE
+
+	return pick(valid_targets)
+
 /objective/artifact/get_description()
 	return "Obtain [english_list(tracked_atoms)] and bring it shipside. Location: [english_list(get_locations())]."
 
@@ -17,10 +35,8 @@
 	created_artifact = new /obj/structure/interactive/artifact(get_turf(S))
 	INITIALIZE(created_artifact)
 	GENERATE(created_artifact)
+	FINALIZE(created_artifact)
 	return TRUE
-
-/objective/artifact/get_valid_targets()
-	return list(created_artifact)
 
 /objective/artifact/check_completion()
 	if(completed)

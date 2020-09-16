@@ -5,6 +5,13 @@
 	aggression = 1
 	retaliate = TRUE
 
+
+/ai/advanced/syndicate/stress_test
+
+/ai/advanced/syndicate/stress_test/handle_movement()
+	owner.move_dir = pick(DIRECTIONS_ALL)
+	return TRUE
+
 /*
 /ai/advanced/syndicate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 

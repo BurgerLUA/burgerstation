@@ -25,11 +25,17 @@
 	boss = TRUE
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		FATIGUE = STAGGER,
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
 		DISARM = TRUE,
+		DRUGGY = TRUE,
 		FIRE = TRUE
 	)
 
@@ -40,6 +46,7 @@
 	)
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS
 
@@ -57,7 +64,8 @@
 	. = ..()
 
 	if(!dead && initialized)
-		for(var/mob/living/simple/npc/goliath/baby/B in tracked_babies)
+		for(var/k in tracked_babies)
+			var/mob/living/simple/npc/goliath/baby/B = k
 			if(B.dead || B.qdeleting)
 				tracked_babies -= B
 			if(ai && ai.objective_attack && B.ai && !B.ai.objective_attack)
@@ -67,6 +75,7 @@
 			var/mob/living/simple/npc/goliath/baby/B = new(spawning_turf)
 			INITIALIZE(B)
 			GENERATE(B)
+			FINALIZE(B)
 			tracked_babies += B
 
 	return .

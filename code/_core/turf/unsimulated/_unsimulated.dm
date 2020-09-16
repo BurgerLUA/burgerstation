@@ -248,7 +248,7 @@
 		if(0.15 to 0.4)
 			new /turf/simulated/floor/grass/jungle(src)
 			if(prob(2))
-				new /obj/marker/generation/mob/venus_human_trap(src)
+				new /mob/living/advanced/npc/monkey(src)
 			if(prob(10))
 				new /obj/marker/generation/jungle_high_grass(src)
 			if(prob(3))

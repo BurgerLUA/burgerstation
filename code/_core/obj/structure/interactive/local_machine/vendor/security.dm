@@ -59,6 +59,8 @@
 		/obj/item/magazine/sniper_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/magazine/lmg_762,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
+		/obj/item/magazine/sniper_127,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
@@ -66,7 +68,8 @@
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,
-		/obj/item/powercell/advanced
+		/obj/item/powercell/advanced,
+		/obj/item/cell_charger
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/engineering
@@ -89,6 +92,7 @@
 		/obj/item/attachment/sight/red_dot,
 		/obj/item/attachment/sight/scope,
 		/obj/item/attachment/sight/scope/large,
+		/obj/item/attachment/undermount/bipod,
 		/obj/item/attachment/undermount/burst_adapter,
 		/obj/item/attachment/undermount/vertical_grip
 	)

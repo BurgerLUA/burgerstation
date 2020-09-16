@@ -44,10 +44,11 @@
 	dan_mode = TRUE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE,
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)

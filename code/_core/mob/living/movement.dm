@@ -42,7 +42,7 @@
 /mob/living/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
 
-/mob/living/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	if(is_sneaking)
 		on_sneak()
@@ -103,9 +103,6 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
 		return FALSE
 
-	if(has_status_effect(CONFUSED))
-		move_dir = pick(DIRECTIONS_ALL)
-
 	if(move_dir)
 		if(buckled_object && !buckled_object.unbuckle(src))
 			return FALSE
@@ -117,6 +114,9 @@
 		if(get_status_effect_magnitude(SLEEP) == -1)
 			remove_status_effect(SLEEP)
 			return FALSE
+
+		if(has_status_effect(CONFUSED))
+			move_dir = turn(move_dir,180)
 
 	. = ..()
 
@@ -143,12 +143,20 @@
 
 	. *= (2 - (get_nutrition_mod() * get_hydration_mod()))
 
+	if(has_status_effect(ADRENALINE))
+		. *= 0.9
+
+	if(intoxication)
+		. += intoxication*0.003
+
+
 	return .
 
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		if(B.type == /obj/hud/button/sneak)
 			var/obj/hud/button/sneak/S = B
 			S.sneaking = on

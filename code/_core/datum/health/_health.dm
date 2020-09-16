@@ -55,7 +55,8 @@
 /health/Destroy()
 
 	/*
-	for(var/wound/W in wounds)
+	for(var/k in wounds)
+		var/wound/W = k
 		qdel(W)
 
 	wounds.Cut()
@@ -96,7 +97,7 @@
 
 /health/proc/restore()
 	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
-	update_health(TRUE)
+	update_health(update_hud = TRUE)
 	return TRUE
 
 /health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
@@ -197,7 +198,7 @@
 /health/proc/get_mana_loss()
 	return mana_max - mana_current
 
-/health/proc/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE) //Update the health values.
+/health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
 	health_current = get_overall_health()
 	return TRUE
 

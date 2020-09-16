@@ -14,7 +14,8 @@
 	var/opening = FALSE
 	var/should_center = length(inventories) <= MAX_INVENTORY_X
 
-	for(var/obj/hud/inventory/I in A.inventory)
+	for(var/k in A.inventory)
+		var/obj/hud/inventory/I = k
 		CHECK_TICK(100,FPS_SERVER*0.5)
 		if(I in inventories)
 			continue
@@ -51,20 +52,16 @@
 		play(pick(inventory_sounds),src)
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
-
 		if(should_center)
 			B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
 		else
 			B.screen_loc = "CENTER+[0.5+MAX_INVENTORY_X*0.5],BOTTOM+1.25"
-
 		if(opening)
 			animate(B,alpha=255,time=4)
 			B.mouse_opacity = 2
 		else
 			animate(B,alpha=0,time=4)
 			B.mouse_opacity = 0
-
-		break
 
 	inventory_user = caller
 
@@ -91,7 +88,44 @@
 /obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	return clicked_on_by_object(caller,object,location,control,params)
 
+/obj/item/proc/can_empty_contents()
+
+
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+
+	if(get_dist(src,object) > 1)
+		if(is_living(caller))
+			var/mob/living/L = caller
+			object = object.defer_click_on_object(location,control,params)
+			if(!is_clothing(src))
+				caller.face_atom(object)
+			if(src.additional_clothing_parent)
+				caller.to_chat(span("warning","You can't throw this!"))
+				return TRUE
+			var/vel_x = object.x - caller.x
+			var/vel_y = object.y - caller.y
+			var/highest = max(abs(vel_x),abs(vel_y))
+
+			if(!highest)
+				src.drop_item(get_step(caller,caller.dir))
+				return TRUE
+
+			vel_x *= 1/highest
+			vel_y *= 1/highest
+
+			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
+			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
+
+			src.drop_item(get_turf(caller))
+			src.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+		return TRUE
+	else if(isturf(object) || istype(object,/obj/structure/smooth/table))
+		var/turf/T = get_turf(object)
+		if(is_container)
+			caller.to_chat(span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
+		else
+			src.drop_item(T)
+		return TRUE
 
 	if(!can_be_dragged(caller))
 		return TRUE
@@ -102,8 +136,17 @@
 	return ..()
 
 /obj/item/proc/can_be_dragged(var/mob/caller)
-
 	if(additional_clothing_parent)
 		return FALSE
-
 	return TRUE
+
+/obj/item/proc/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0) //Should be used in place of forcemove when possible.
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		if(!new_location)
+			new_location = get_turf(I.owner)
+		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset))
+			return TRUE
+	force_move(new_location)
+	return FALSE
+

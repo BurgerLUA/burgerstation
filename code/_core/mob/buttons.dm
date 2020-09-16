@@ -15,7 +15,8 @@
 	if(!client)
 		return
 
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		client.screen += B
 
 	sync_buttons()
@@ -41,7 +42,8 @@
 	show_buttons(draw_buttons,show_flags_whitelist,show_flags_blacklist,speed)
 
 /mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		if(B.flags & show_flags_whitelist && !(B.flags & show_flags_blacklist))
 			B.show(show,speed)
 
@@ -50,3 +52,46 @@
 	show_buttons(show,show_flags_whitelist,show_flags_blacklist,speed)
 	show_health(show,show_flags_whitelist,show_flags_blacklist,speed)
 
+
+/mob/proc/close_turf_contents()
+	for(var/k in examine_butons) //Clear existing.
+		var/obj/hud/button/B = k
+		B.update_owner(null)
+	return TRUE
+
+/mob/proc/display_turf_contents(var/turf/T)
+
+	close_turf_contents()
+
+	if(!(attack_flags & ATTACK_ALT))
+		return FALSE
+
+	if(get_dist(T,src) > 1 )
+		return FALSE
+
+	if(!T)
+		return FALSE
+
+	var/list/valid_contents = list()
+	for(var/k in T.contents)
+		var/atom/movable/M = k
+		if(M.invisibility > src.see_invisible)
+			continue
+		if(M.mouse_opacity <= 0)
+			continue
+		valid_contents += k
+
+	var/i=0
+	var/content_length = length(valid_contents)
+	for(var/k in valid_contents)
+		var/atom/movable/M = k
+		var/obj/hud/button/floor_object/B = new(src)
+		var/x_pos = sin( (i/content_length)*360 ) * content_length*0.3
+		var/y_pos = cos( (i/content_length)*360 ) * content_length*0.3
+		B.screen_loc = "CENTER+[x_pos],CENTER+[y_pos]"
+		B.associated_object = M
+		B.associated_loc = T
+		B.update_owner(src)
+		i++
+
+	return TRUE

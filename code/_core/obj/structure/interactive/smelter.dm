@@ -44,6 +44,7 @@
 	S.material_id = I.material_id
 	INITIALIZE(S)
 	GENERATE(S)
+	FINALIZE(S)
 	qdel(I)
 
 	return

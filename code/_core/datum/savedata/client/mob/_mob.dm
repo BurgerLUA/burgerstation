@@ -25,7 +25,8 @@ var/global/list/ckey_to_mobdata = list()
 		"known_topics" = list(),
 		"nutrition" = 1000,
 		"hydration" = 1000,
-		"known_languages" = list()
+		"known_languages" = list(),
+		"stored_mechs" = list()
 	)
 
 /savedata/client/mob/New(var/desired_ckey)

@@ -1,7 +1,6 @@
 /ai/boss/
 
-	attack_delay = 1
-	objective_delay = 1
+	objective_delay = DECISECONDS_TO_TICKS(10)
 
 	true_sight = TRUE
 	roaming_distance = 3

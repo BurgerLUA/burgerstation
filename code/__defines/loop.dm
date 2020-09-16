@@ -1,0 +1,1 @@
+#define FOR_TYPE(x,y) for(var/##y_var in y) var##x = ##y_var;

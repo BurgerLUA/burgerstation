@@ -9,6 +9,7 @@
 	var/value = 0 //Value per unit.
 
 	var/color = "#FFFFFF" //Reagent's color.
+	var/alpha = 255 //Reagent's alpha
 
 	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive.
 
@@ -43,6 +44,9 @@
 
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 	return amount_added
+
+/reagent/proc/on_remove(var/reagent_container/container)
+	return TRUE
 
 /reagent/proc/metabolize(var/atom/originial_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

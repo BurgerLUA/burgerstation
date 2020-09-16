@@ -11,8 +11,7 @@
 
 	vision_mod = FLAG_VISION_ALL
 	sight_mod = SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_THRU
-	see_invisible = INVISIBILITY_ALL
-
+	see_invisible = INVISIBLITY_GHOST
 
 /obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 

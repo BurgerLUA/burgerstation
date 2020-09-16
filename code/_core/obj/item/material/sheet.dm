@@ -22,6 +22,7 @@
 			R.item_count_current = 4
 			INITIALIZE(R)
 			GENERATE(R)
+			FINALIZE(R)
 			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
 			add_item_count(-1)
 			R.Move(get_turf(I))

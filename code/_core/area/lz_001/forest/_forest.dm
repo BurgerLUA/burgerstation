@@ -5,6 +5,8 @@
 	sunlight_freq = 8
 	sunlight_color = "#CCB06A"
 
+	tracks = TRACKS_FOREST
+
 /area/lz_001/forest/village
 	name = "\improper First Light Village"
 	icon_state = "village"

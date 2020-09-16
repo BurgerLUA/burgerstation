@@ -30,7 +30,8 @@ SUBSYSTEM_DEF(squad)
 /subsystem/squad/on_life()
 
 	for(var/squad/S in all_squads)
-		for(var/mob/living/advanced/player/M in S.members)
+		for(var/k in S.members)
+			var/mob/living/advanced/player/M = k
 			CHECK_TICK(tick_usage_max,FPS_SERVER)
 			M.update_squad_buttons()
 

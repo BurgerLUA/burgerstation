@@ -137,3 +137,6 @@
 
 /turf/simulated/floor/tile/morphing/grey
 	color = COLOR_GREY
+
+/turf/simulated/floor/tile/morphing/green
+	color = COLOR_GREEN

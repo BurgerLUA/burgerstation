@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(client)
 	cpu_usage_max = 0 //0 Means no limits.
 	tick_usage_max = 0 //0 Means no limits.
 
+	use_time_dialation = FALSE
+
 /subsystem/client/on_life()
 
 	advanced_ticks += 1

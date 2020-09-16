@@ -12,7 +12,7 @@
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE
 
-	for(var/atom/movable/M in contents)
+	for(var/atom/movable/M in src.contents)
 		if(M.collision_flags & FLAG_COLLISION_WALKING)
 			return FALSE
 
@@ -112,6 +112,7 @@
 	F.material_id = R.material_id
 	F.color = R.color
 	INITIALIZE(F)
+	FINALIZE(F)
 	caller.to_chat(span("notice","You place \the [F.name]."))
 	R.add_item_count(-2)
 	return TRUE

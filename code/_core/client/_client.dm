@@ -174,7 +174,8 @@ var/global/list/all_clients = list() //Assoc list
 		sync_permissions()
 
 	var/mob/found_mob = null
-	for(var/mob/M in all_mobs)
+	for(var/k in all_mobs)
+		var/mob/M = k
 		if(M.ckey_last == ckey)
 			found_mob = M
 			break
@@ -186,8 +187,9 @@ var/global/list/all_clients = list() //Assoc list
 		make_observer(FALLBACK_TURF)
 		mob.show_hud(FALSE,speed = 0)
 		if(world_state == STATE_RUNNING)
-			play_music_track("slow_fall", src)
+			play_music_track(pick(TRACKS_LOBBY), src)
 			mob.show_hud(TRUE,speed = 2)
+			mob.force_move(get_turf(lobby_positions[1]))
 
 	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
 	update_window()
@@ -200,7 +202,8 @@ var/global/list/all_clients = list() //Assoc list
 
 
 	if(SSvote && SSvote.initialized)
-		for(var/vote/V in SSvote.active_votes)
+		for(var/k in SSvote.active_votes)
+			var/vote/V = k
 			V.show(src)
 
 	return mob
@@ -210,7 +213,8 @@ var/global/list/all_clients = list() //Assoc list
 	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
 	if(world.port == 0) ranks |= SSadmin.stored_ranks["host"]
 	if(SSadmin.stored_user_ranks[ckey])
-		for(var/rank/R in SSadmin.stored_user_ranks[ckey])
+		for(var/k in SSadmin.stored_user_ranks[ckey])
+			var/rank/R = k
 			ranks |= R
 
 	return ranks
@@ -220,7 +224,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/list/rank/ranks = get_ranks()
 
-	for(var/rank/R in ranks)
+	for(var/k in ranks)
+		var/rank/R = k
 		to_chat("Adding [R.name] permissions...")
 		permissions |= R.permissions
 
@@ -236,20 +241,20 @@ var/global/list/all_clients = list() //Assoc list
 	return TRUE
 */
 
-/client/proc/get_click_flags(aug,var/check_swap = FALSE)
+/client/proc/get_click_flags(var/list/params,var/check_swap = FALSE)
 
-	var/returning = 0x0
+	. = 0x0
 
-	if((swap_mouse && check_swap) ? ("left" in aug) :("right" in aug))
-		returning |= CLICK_RIGHT
+	if((swap_mouse && check_swap) ? ("left" in params) :("right" in params))
+		. |= CLICK_RIGHT
 
-	if((swap_mouse && check_swap) ? ("right" in aug) : ("left" in aug))
-		returning |= CLICK_LEFT
+	if((swap_mouse && check_swap) ? ("right" in params) : ("left" in params))
+		. |= CLICK_LEFT
 
-	if("middle" in aug)
-		returning |= CLICK_MIDDLE
+	if("middle" in params)
+		. |= CLICK_MIDDLE
 
-	return returning
+	return .
 
 /client/MouseDown(var/atom/object,location,control,params)
 
@@ -266,6 +271,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(examine_mode)
+		if(mob) mob.display_turf_contents(get_turf(object))
 		examine(object)
 		return ..()
 

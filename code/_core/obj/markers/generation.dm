@@ -26,7 +26,8 @@
 
 /obj/marker/generation/proc/grow(var/desired_grow)
 
-	for(var/turf/T in valid_turfs)
+	for(var/k in valid_turfs)
+		var/turf/T = k
 		valid_turfs -= T
 		if(length(forbidden_turfs) && forbidden_turfs[T])
 			continue
@@ -39,8 +40,8 @@
 			new object_to_place(T)
 			objects_placed++
 
-		for(var/k in DIRECTIONS_CARDINAL)
-			var/turf/T2 = get_step(T,k)
+		for(var/v in DIRECTIONS_CARDINAL)
+			var/turf/T2 = get_step(T,v)
 			if(!T2)
 				continue
 			if(prob(skip_chance))
@@ -234,7 +235,7 @@
 
 
 /obj/marker/generation/snow_tree
-	object_to_place = /obj/structure/scenery/pinetrees
+	object_to_place = /obj/structure/interactive/tree/pine
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 12
@@ -248,7 +249,7 @@
 
 
 /obj/marker/generation/jungle_tree
-	object_to_place = /obj/structure/scenery/jungle_trees
+	object_to_place = /obj/structure/interactive/tree/jungle_large
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 2
@@ -261,7 +262,7 @@
 
 
 /obj/marker/generation/forest_tree
-	object_to_place = /obj/structure/scenery/evergreen
+	object_to_place = /obj/structure/interactive/tree/evergreen
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 5
@@ -303,7 +304,7 @@
 
 
 /obj/marker/generation/jungle_tree_small
-	object_to_place = /obj/structure/scenery/jungle_trees_small
+	object_to_place = /obj/structure/interactive/tree/jungle_small
 	grow_amount_min = 10
 	grow_amount_max = 30
 	objects_max = 3

@@ -17,7 +17,8 @@ SUBSYSTEM_DEF(recipe)
 
 	var/list/item_table = list()
 
-	for(var/obj/hud/inventory/crafting/I in C.inventories)
+	for(var/k in C.inventories)
+		var/obj/hud/inventory/crafting/I = k
 		var/obj/item/held_item = I.get_top_held_object()
 		if(held_item)
 			item_table[I.id] = held_item

@@ -8,7 +8,6 @@
 	item_count_max_icon = 5
 	icon_state = "t"
 
-	id = "tungsten"
 	bullet_length = 20
 	bullet_diameter = 5
 

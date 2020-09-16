@@ -42,6 +42,7 @@
 		stored_magazine = null
 		INITIALIZE(M)
 		GENERATE(M)
+		FINALIZE(M)
 		M.click_on_object(null,src)
 		src.click_self()
 

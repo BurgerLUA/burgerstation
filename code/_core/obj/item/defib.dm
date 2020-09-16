@@ -63,7 +63,7 @@
 	play('sound/items/defib/defib_zap.ogg',src)
 	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
-	if(target.check_death() || !target.client || target.suicide)
+	if(target.check_death() || !target.is_player_controlled() || target.suicide)
 		target.visible_message(span("warning","Nothing happens..."))
 		play('sound/items/defib/defib_failed.ogg',src)
 		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
@@ -103,6 +103,8 @@
 	throwable = FALSE
 
 	value = 10
+
+	size = 99
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

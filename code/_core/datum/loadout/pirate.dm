@@ -16,7 +16,7 @@
 		/obj/item/clothing/hands/gloves/captain,
 		/obj/item/clothing/hands/gloves/captain/left,
 		/obj/item/clothing/head/hat/captain,
-		/obj/item/weapon/ranged/energy/recharging/captain,
+		/obj/item/weapon/ranged/energy/captain,
 		/obj/item/weapon/melee/sword/sabre
 	)
 

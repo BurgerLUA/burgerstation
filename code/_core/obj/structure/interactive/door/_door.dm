@@ -38,7 +38,7 @@ obj/structure/interactive/door
 
 	layer = LAYER_OBJ_DOOR_CLOSED
 
-	plane = PLANE_WALL
+	plane = PLANE_DOOR
 
 /obj/structure/interactive/door/New(var/desired_loc)
 
@@ -49,6 +49,7 @@ obj/structure/interactive/door
 		S.signal_current = radio_signal
 		INITIALIZE(S)
 		GENERATE(S)
+		FINALIZE(S)
 		door_state = DOOR_STATE_CLOSED
 		locked = TRUE
 

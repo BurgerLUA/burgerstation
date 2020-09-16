@@ -65,7 +65,8 @@
 				linked_text.alpha = 255
 
 				var/highscore = "HIGH SCORES:"
-				for(var/list/v in SSresearch.quadrant_high_scores)
+				for(var/k in SSresearch.quadrant_high_scores)
+					var/list/v = k
 					highscore += "<br>[v[1]]:&nbsp;&nbsp;[v[2]]"
 
 				linked_text.maptext = "<center><font size=10>TIMES UP!</font><br>Final Score: [points].<br><br><br>[highscore]</center>"

@@ -58,3 +58,14 @@
 	name = "left cyborg sensor"
 	id = BODY_EAR_LEFT
 	icon_state = BODY_EAR_LEFT
+
+
+//monkey
+/obj/item/organ/ear/monkey
+	name = "right monkey ear"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+
+/obj/item/organ/ear/monkey/left
+	name = "left monkey ear"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT

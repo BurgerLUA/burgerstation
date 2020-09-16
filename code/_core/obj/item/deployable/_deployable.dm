@@ -18,6 +18,7 @@
 	var/obj/structure/S = new structure_to_deploy(T)
 	S.dir = caller.dir
 	INITIALIZE(S)
+	FINALIZE(S)
 	caller.visible_message(span("\The [caller.name] deploys \the [S.name]."),span("You deploy \the [S.name]."))
 
 	add_item_count(-1)

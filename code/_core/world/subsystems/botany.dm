@@ -11,7 +11,8 @@ SUBSYSTEM_DEF(botany)
 
 /subsystem/botany/on_life()
 
-	for(var/obj/structure/interactive/plant/P in all_plants)
+	for(var/k in all_plants)
+		var/obj/structure/interactive/plant/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		P.on_life()
 
@@ -20,10 +21,8 @@ SUBSYSTEM_DEF(botany)
 /subsystem/botany/Initialize()
 	for(var/k in subtypesof(/plant_type/))
 		var/plant_type/P = k
-		var/p_id = initial(P.id)
-		if(p_id)
-			P = new k
-			all_plant_types[p_id] = P
+		P = new k
+		all_plant_types[P.type] = P
 
 	log_subsystem(name,"Found [length(all_plant_types)] plant types.")
 

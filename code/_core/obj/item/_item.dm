@@ -2,6 +2,8 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	var/last_marker //The last person to name this item. Used for moderation purposes.
+
 	layer = LAYER_OBJ_ITEM
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
@@ -123,7 +125,15 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
-	var/list/block_defense_rating = list()
+	var/list/block_defense_rating = DEFAULT_BLOCK
+
+	var/consume_size = BITE_SIZE
+
+/obj/item/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	return TRUE
+
+/obj/item/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	return TRUE
 
 /obj/item/PostInitialize()
 	. = ..()
@@ -198,7 +208,8 @@
 
 	additional_clothing_parent = null
 
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		qdel(I)
 
 	inventories.Cut()
@@ -231,7 +242,8 @@
 	if(!length(inventories))
 		return null
 
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		if(bypass && length(I.held_objects) >= I.held_slots)
 			continue
 		if(I.can_hold_object(object,enable_messages))
@@ -372,10 +384,24 @@
 
 	return TRUE
 
+/obj/item/post_move(var/atom/old_loc)
+
+	if(isturf(loc))
+		if(delete_on_drop)
+			qdel(src)
+			return TRUE
+		else
+			queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
+	else
+		undelete(src)
+
+	return ..()
+
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
 	if(is_container)
-		for(var/obj/hud/inventory/I in inventories)
+		for(var/k in inventories)
+			var/obj/hud/inventory/I = k
 			I.update_owner(new_location.owner)
 
 	if(old_location && new_location)
@@ -400,10 +426,6 @@
 
 /obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 
-	if(delete_on_drop)
-		qdel(src)
-		return TRUE
-
 	if(additional_clothing_parent)
 		src.force_move(additional_clothing_parent)
 
@@ -418,8 +440,6 @@
 
 	update_lighting_for_owner(old_inventory)
 
-	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
-
 	if(drop_sound && isturf(loc) && !qdeleting)
 		play(drop_sound,get_turf(src))
 
@@ -429,7 +449,8 @@
 
 	var/list/returning_list = list()
 
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		if(length(I.held_objects) && I.held_objects[1])
 			returning_list += I.held_objects[1]
 
@@ -469,21 +490,13 @@
 
 	return TRUE
 
-
-/obj/item/Cross(var/atom/movable/O)
-
-	if(istype(O,/obj/item/))
-		return TRUE
-
-	return ..()
-
 /obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	last_interacted = caller
 	return ..()
 
 /obj/item/proc/get_reagents_to_consume()
 	var/reagent_container/temp/T = new(src,1000)
-	reagents.transfer_reagents_to(T,BITE_SIZE)
+	reagents.transfer_reagents_to(T,consume_size)
 	return T.qdeleting ? null : T
 
 /obj/item/proc/feed(var/mob/caller,var/mob/living/target)
@@ -576,3 +589,6 @@
 
 /obj/item/proc/can_parry()
 	return TRUE
+
+/obj/item/proc/get_battery()
+	return null

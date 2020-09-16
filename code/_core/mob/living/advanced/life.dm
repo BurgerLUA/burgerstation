@@ -2,21 +2,13 @@
 	src.emote("deathgasp")
 	return TRUE
 
-/mob/living/advanced/on_life()
-
-	. = ..()
-
-	if(.)
-		if(talk_duration)
-			talk_duration = max(0,talk_duration-LIFE_TICK)
-			if(talk_duration <= 0 && !is_typing)
-				animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
-
-	return .
-
 
 /mob/living/advanced/on_life_slow()
 
+	if(talk_duration)
+		talk_duration = max(0,talk_duration-LIFE_TICK_SLOW)
+		if(talk_duration <= 0 && !is_typing)
+			animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
 
 	. = ..()
 
@@ -73,8 +65,9 @@ mob/living/advanced/revive()
 		return FALSE
 
 	for(var/k in labeled_organs)
-		CHECK_TICK(75,FPS_SERVER)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(O.has_life) O.on_life()
+		CHECK_TICK(75,FPS_SERVER*2)
+		if(O.has_life)
+			O.on_life()
 
 	return TRUE

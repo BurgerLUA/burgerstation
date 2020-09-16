@@ -71,9 +71,11 @@
 			M = new M(T)
 			INITIALIZE(M)
 			GENERATE(M)
+			FINALIZE(M)
 			S.add_to_crate(M)
 		INITIALIZE(S)
 		GENERATE(S)
+		FINALIZE(S)
 
 	return ..()
 

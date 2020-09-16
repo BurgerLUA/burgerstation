@@ -4,8 +4,8 @@
 	desc = "Nutrition and flavor from cow's milk."
 	color = "#FFFFFF"
 
-	nutrition_amount = 5
-	hydration_amount = 5
+	nutrition_amount = 8
+	hydration_amount = 8
 
 	flavor = "milk"
 
@@ -18,8 +18,8 @@
 	desc = "Nutrition and flavor from milk cream."
 	color = "#EEEED9"
 
-	nutrition_amount = 7
-	hydration_amount = 3
+	nutrition_amount = 15
+	hydration_amount = 5
 
 	flavor = "milk"
 
@@ -33,7 +33,7 @@
 	desc = "Nutrition and flavor from processed cheese."
 	color = "#FFC237"
 
-	nutrition_amount = 12
+	nutrition_amount = 20
 
 	flavor = "processed cheese"
 
@@ -48,7 +48,7 @@
 	desc = "Nutrition and flavor from Kadchgall cheese."
 	color = "#FFE8AA"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "processed cheese"
 
@@ -61,7 +61,7 @@
 	desc = "Nutrition and flavor from cheddar cheese."
 	color = "#FF9F00"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "sharp cheddar cheese"
 
@@ -75,7 +75,7 @@
 	desc = "Nutrition and flavor from Old Brabander Jungle cheese."
 	color = "#FFFCE8"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "sweet and creamy caramel cheese"
 
@@ -90,7 +90,7 @@
 	desc = "Nutrition and flavor from Raclette Alpine cheese."
 	color = "#FFF09F"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "sweet nutty cheese"
 
@@ -104,7 +104,7 @@
 	desc = "Nutrition and flavor from Gruyère cave cheese."
 	color = "#E4A300"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "sweet and salty nutty cream cheese"
 
@@ -118,7 +118,7 @@
 	desc = "Nutrition and flavor from Smoked Guava cheese."
 	color = "#704226"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "sweet fudge cheese"
 
@@ -132,7 +132,7 @@
 	desc = "Nutrition and flavor from bluespace cheese."
 	color = "#78A093"
 
-	nutrition_amount = 12
+	nutrition_amount = 30
 
 	flavor = "bluespace cheese"
 
@@ -146,7 +146,7 @@
 	desc = "Nutrition and flavor from butter."
 	color = "#FFD865"
 
-	nutrition_amount = 10
+	nutrition_amount = 20
 
 	flavor = "butter"
 

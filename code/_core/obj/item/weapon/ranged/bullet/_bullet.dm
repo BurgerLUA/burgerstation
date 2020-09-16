@@ -51,6 +51,7 @@
 		var/b_type = object_data["chambered_bullet"]
 		var/obj/item/bullet_cartridge/B = new b_type(src)
 		INITIALIZE(B)
+		FINALIZE(B)
 		src.chambered_bullet = B
 
 	if(object_data["stored_bullets"] && length(object_data["stored_bullets"]))
@@ -59,6 +60,7 @@
 			if(b_type)
 				var/obj/item/bullet_cartridge/B = new b_type(src)
 				INITIALIZE(B)
+				FINALIZE(B)
 				src.stored_bullets[i] = B
 
 	return .
@@ -101,7 +103,7 @@
 	B.update_sprite()
 	if(play_sound)
 		play(chambered_bullet.get_bullet_eject_sound(),src)
-	if(B.is_spent)
+	if(B.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(B)
 
 	chambered_bullet = null
@@ -119,7 +121,7 @@
 	stored_bullets += null
 	if(play_sound)
 		play(bullet_to_remove.get_bullet_eject_sound(),src)
-	if(bullet_to_remove.is_spent)
+	if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(bullet_to_remove)
 
 	return bullet_to_remove
@@ -127,14 +129,18 @@
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc,var/play_sound=FALSE)
 
-	for(var/obj/item/bullet_cartridge/B in stored_bullets)
+	for(var/k in stored_bullets)
+		if(!k) continue
+		var/obj/item/bullet_cartridge/B = k
 		eject_stored_bullet(caller,B,new_loc,play_sound)
 
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc,var/play_sound=FALSE)
 
-	for(var/obj/item/bullet_cartridge/B in stored_bullets)
+	for(var/k in stored_bullets)
+		if(!k) continue
+		var/obj/item/bullet_cartridge/B = k
 		if(!B.is_spent)
 			continue
 		eject_stored_bullet(caller,B,new_loc,play_sound)

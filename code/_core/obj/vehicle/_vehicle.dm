@@ -9,7 +9,7 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	opacity = 0
-	anchored = 0
+	anchored = FALSE
 
 	layer = LAYER_MOB_BELOW
 
@@ -30,11 +30,13 @@
 
 	blood_type = null
 
+
 /mob/living/vehicle/get_examine_details_list()
 
 	. = ..()
 
-	for(var/obj/item/I in equipment)
+	for(var/k in equipment)
+		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
 
 	return .
@@ -42,7 +44,8 @@
 
 /mob/living/vehicle/on_crush()
 
-	for(var/mob/living/advanced/A in passengers)
+	for(var/k in passengers)
+		var/mob/living/advanced/A = k
 		exit_vehicle(A,loc)
 		A.on_crush()
 
@@ -52,11 +55,13 @@
 
 /mob/living/vehicle/Destroy()
 
-	for(var/mob/living/advanced/A in passengers)
+	for(var/k in passengers)
+		var/mob/living/advanced/A = k
 		exit_vehicle(A,loc)
 	passengers.Cut()
 
-	for(var/obj/item/I in equipment)
+	for(var/k in equipment)
+		var/obj/item/I = k
 		qdel(I)
 	equipment.Cut()
 
@@ -68,7 +73,8 @@
 	return ..()
 
 /mob/living/vehicle/post_death()
-	for(var/mob/living/advanced/A in passengers)
+	for(var/k in passengers)
+		var/mob/living/advanced/A = k
 		exit_vehicle(A, get_turf(src))
 	return ..()
 
@@ -79,7 +85,8 @@
 	return TRUE
 
 /mob/living/vehicle/proc/remove_buttons(var/mob/living/advanced/A)
-	for(var/obj/hud/button/B in A.buttons)
+	for(var/k in A.buttons)
+		var/obj/hud/button/B = k
 		if(B.type in buttons_to_add)
 			B.update_owner(null)
 	return TRUE
@@ -93,6 +100,7 @@
 	equipment += I
 	I.drop_item(src)
 	I.unremovable = TRUE
+	update_sprite()
 
 /mob/living/vehicle/proc/unattach_equipment(var/mob/caller,var/obj/item/I)
 	if(!(I in equipment))
@@ -101,6 +109,7 @@
 	equipment -= I
 	I.force_move(get_turf(caller))
 	I.unremovable = initial(I.unremovable)
+	update_sprite()
 
 /mob/living/vehicle/New(var/desired_loc)
 	..()
@@ -108,6 +117,17 @@
 	equipment = list()
 	update_sprite()
 
+
+/mob/living/vehicle/proc/can_attach_weapon(var/mob/caller,var/obj/item/weapon/W)
+
+	if(ai || length(passengers))
+		caller?.to_chat(span("warning","You can't add this while it's in use!"))
+		return FALSE
+	if(length(equipment) >= 2)
+		caller?.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
+		return FALSE
+
+	return TRUE
 
 /mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -135,14 +155,8 @@
 					caller.to_chat(span("notice","You choose not to remove anything."))
 				return TRUE
 
-			if(istype(I,/obj/item/weapon) && !istype(I,/obj/item/weapon/ranged/magic))
-				if(ai || length(passengers))
-					caller.to_chat(span("warning","You can't add this while it's in use!"))
-					return TRUE
-				if(length(equipment) >= 2)
-					caller.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
-					return TRUE
-				attach_equipment(caller,I)
+			if(istype(I,/obj/item/weapon/ranged/energy/mech))
+				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
 				return TRUE
 
 			return TRUE
@@ -173,13 +187,13 @@
 		params["right"] = rand(0,1)
 		params["left"] = rand(0,1)
 
-	if(params["right"])
+	if(params["left"])
 		if(length(equipment) >= 1)
 			equipment[1].click_on_object(caller,object,location,control,params)
 		else
 			caller?.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
 
-	if(params["left"])
+	if(params["right"])
 		if(length(equipment) >= 2)
 			equipment[2].click_on_object(caller,object,location,control,params)
 		else
@@ -209,7 +223,8 @@
 	. = ..()
 
 	if(.)
-		for(var/mob/living/L in passengers)
+		for(var/k in passengers)
+			var/mob/living/L = k
 			L.set_dir(.)
 
 	return .
@@ -243,12 +258,13 @@
 
 	return ..()
 
-/mob/living/vehicle/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/vehicle/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	. = ..()
 
 	if(.)
-		for(var/atom/movable/M in passengers)
+		for(var/k in passengers)
+			var/atom/movable/M = k
 			M.force_move(src.loc)
 
 	return .

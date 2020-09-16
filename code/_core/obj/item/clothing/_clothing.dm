@@ -101,7 +101,8 @@
 			add_blend("polymorph_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 		update_sprite()
 
-	for(var/obj/item/C in additional_clothing_stored)
+	for(var/k in additional_clothing_stored)
+		var/obj/item/C = k
 		C.initialize_blends()
 
 	..()

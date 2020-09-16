@@ -157,15 +157,15 @@
 	dan_mode = TRUE
 
 	polymorphs = list(base = "#FFFFFF")
+
 	block_defense_rating = list(
 		BLADE = 75,
 		BLUNT = 25,
 		PIERCE = 50,
 		LASER = 100,
-		MAGIC = 100
+		ARCANE = 100
 	)
 
-// changed from color to polymorphs because i can't be assed to add an exception for shields specifically
 /obj/item/weapon/melee/energy/shield/blue
 	polymorphs = list(base = "#0000FF")
 

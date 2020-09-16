@@ -125,6 +125,7 @@
 		if(desired_color)
 			M.color = desired_color
 		INITIALIZE(M)
+		FINALIZE(M)
 
 	pixel_x_float = pixel_x
 	pixel_y_float = pixel_y
@@ -185,7 +186,8 @@
 		on_hit(collide_with_turf)
 		return TRUE
 
-	for(var/atom/movable/A in new_loc.contents)
+	for(var/k in new_loc.contents)
+		var/atom/movable/A = k
 		if(A == owner || A == weapon)
 			continue
 		var/atom/collide_atom = A.projectile_should_collide(src,new_loc,old_loc)
@@ -196,7 +198,8 @@
 		on_hit(collide_atom)
 		return TRUE
 
-	for(var/mob/living/L in new_loc.old_living)
+	for(var/k in new_loc.old_living)
+		var/mob/living/L = k
 		if(L.dead)
 			continue
 		if(L.move_delay > 0)
@@ -213,7 +216,7 @@
 
 	return FALSE
 
-/obj/projectile/proc/update_projectile()
+/obj/projectile/proc/update_projectile(var/tick_rate=1)
 
 	if(!isturf(src.loc))
 		on_hit(src.loc,TRUE)
@@ -235,9 +238,9 @@
 		if(!start_time)
 			transform = M
 		else
-			animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+			animate(src, transform = M, time = CEILING(TICKS_TO_DECISECONDS(tick_rate),1))
 
-	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
+	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
 	if(lifetime && start_time >= lifetime)
 		on_hit(src.loc,TRUE)
@@ -287,27 +290,11 @@
 			DT.perform_miss(owner,hit_atom,weapon)
 			return FALSE
 
-		/*
-		if(DT.allow_dodge)
-			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
-			if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
-
-		if(DT.allow_parry)
-			var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
-			if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
-
-		if(DT.allow_block)
-			var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
-			if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom))
-				damage_multiplier *= 0.75
-				damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(hit_atom,owner,weapon,object_to_damage,DT) - DT.get_block_power_penetration(owner,hit_atom,weapon,object_to_damage,blocking_atom),0,1)
-		*/
-
 		if(DT.falloff > 0)
 			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
 		if(damage_multiplier > 0)
-			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+			DT.hit(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 

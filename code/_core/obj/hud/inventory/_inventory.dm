@@ -3,7 +3,7 @@
 /obj/hud/inventory/
 	name = "Inventory Holder"
 	desc = "Inventory"
-	id = "BADINVENTORY"
+	var/id = "BADINVENTORY"
 
 	alpha = 225
 
@@ -108,11 +108,13 @@
 
 	remove_from_owner()
 
-	for(var/obj/item/I in held_objects)
+	for(var/k in held_objects)
+		var/obj/item/I = k
 		qdel(I)
 	held_objects.Cut()
 
-	for(var/obj/item/I in worn_objects)
+	for(var/k in worn_objects)
+		var/obj/item/I = k
 		qdel(I)
 	worn_objects.Cut()
 
@@ -165,7 +167,8 @@
 	else
 		color = initial(color)
 
-	for(var/obj/item/I in held_objects)
+	for(var/k in held_objects)
+		var/obj/item/I = k
 		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
 		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
 
@@ -177,7 +180,8 @@
 
 		add_overlay(I)
 
-	for(var/obj/item/I in worn_objects)
+	for(var/k in worn_objects)
+		var/obj/item/I = k
 		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
 		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
 
@@ -379,6 +383,9 @@
 
 /obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
 
+	if(bypass_checks && held_slots <= 0)
+		return FALSE
+
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
@@ -406,11 +413,12 @@
 	overlays.Cut()
 	update_overlays()
 
-	undelete(I)
-
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
+
+	if(bypass_checks && worn_slots <= 0)
+		return FALSE
 
 	if(!bypass_checks && !can_wear_object(I,messages))
 		return FALSE
@@ -444,8 +452,6 @@
 	overlays.Cut()
 	update_overlays()
 
-	undelete(I)
-
 	return TRUE
 
 /obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update) //BEHOLD. SHITCODE.
@@ -478,7 +484,8 @@
 
 /obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
-	for(var/obj/item/I in worn_objects)
+	for(var/k in worn_objects)
+		var/obj/item/I = k
 		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
 			continue
 		if(remove_object(I,T))
@@ -488,7 +495,8 @@
 
 /obj/hud/inventory/proc/drop_held_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
-	for(var/obj/item/I in held_objects)
+	for(var/k in held_objects)
+		var/obj/item/I = k
 		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
 			continue
 		if(remove_object(I,T))
@@ -497,12 +505,14 @@
 	return dropped_objects
 
 /obj/hud/inventory/proc/delete_held_objects()
-	for(var/obj/item/I in held_objects)
+	for(var/k in held_objects)
+		var/obj/item/I = k
 		I.delete_on_drop = TRUE
 		remove_object(I,owner.loc)
 
 /obj/hud/inventory/proc/delete_worn_objects()
-	for(var/obj/item/I in worn_objects)
+	for(var/k in worn_objects)
+		var/obj/item/I = k
 		I.delete_on_drop = TRUE
 		remove_object(I,owner.loc)
 
@@ -574,7 +584,8 @@
 /obj/hud/inventory/proc/update_stats()
 	total_size = 0
 
-	for(var/obj/item/O in held_objects)
+	for(var/k in held_objects)
+		var/obj/item/O = k
 		total_size += O.size
 
 	var/obj/item/I = get_top_object()
@@ -588,6 +599,10 @@
 		I2.update_inventory()
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
+
+	if(!I)
+		CRASH_SAFE("can_hold_object() called on a null object!")
+		return FALSE
 
 	if(loc && loc == I)
 		return FALSE
@@ -655,7 +670,8 @@
 		return FALSE
 
 	if(worn_allow_duplicate)
-		for(var/obj/item/I2 in worn_objects)
+		for(var/k in worn_objects)
+			var/obj/item/I2 = k
 			if(I.item_slot & I.item_slot)
 				if(messages) owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 				return FALSE
@@ -665,7 +681,8 @@
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			if(C.flags_clothing)
-				for(var/obj/item/organ/O in A.organs)
+				for(var/k in A.organs)
+					var/obj/item/organ/O = k
 					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
 						if(messages)
 							owner.to_chat(span("notice","Beast races cannot wear this!"))
@@ -676,14 +693,6 @@
 						return FALSE
 
 			var/list/list_to_check = I.ignore_other_slots ? src.worn_objects : A.worn_objects
-
-			/*
-			for(var/obj/item/clothing/C2 in src.worn_objects)
-				if(C2.item_slot & C.item_slot)
-					if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
-					return FALSE
-			*/
-
 			for(var/obj/item/clothing/C2 in list_to_check)
 				if(C2.blocks_clothing && I.item_slot && (I.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
 					if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))

@@ -374,8 +374,101 @@ window "control"
 		is-vert = false
 		splitter = 25
 
+window "edit"
+	elem "edit"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		border = sunken
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Edit"
+		outer-size = 656x538
+		inner-size = 640x499
+	elem "exit"
+		type = BUTTON
+		pos = 540,460
+		size = 100x20
+		anchor1 = 100,100
+		anchor2 = 100,100
+		background-color = none
+		saved-params = "is-checked"
+		text = "Save and Exit"
+		command = ""
+	elem "input"
+		type = INPUT
+		pos = 0,0
+		size = 640x460
+		anchor1 = 0,0
+		anchor2 = 100,96
+		font-family = "monospace"
+		is-default = true
+		saved-params = ""
+		multi-line = true
+		no-command = true
+
 window "info"
 	elem "info"
+		type = MAIN
+		pos = 281,0
+		size = 800x800
+		anchor1 = none
+		anchor2 = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+	elem "info"
+		type = INFO
+		pos = 0,0
+		size = 800x800
+		anchor1 = 0,0
+		anchor2 = 100,100
+		font-family = "Arial Narrow"
+		font-size = 10
+		background-color = none
+		is-default = true
+		right-click = true
+		saved-params = ""
+		highlight-color = #000000
+		tab-font-family = "Arial Narrow"
+		tab-font-size = 10
+
+window "main"
+	elem "main"
+		type = MAIN
+		pos = 281,0
+		size = 800x800
+		anchor1 = none
+		anchor2 = none
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Burgerstation 13"
+		icon = 'interface\\icons\\burger.png'
+		image-mode = center
+		macro = "macro"
+		menu = "menu"
+	elem "splitter"
+		type = CHILD
+		pos = 0,0
+		size = 800x800
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-default = true
+		saved-params = "splitter"
+		left = "map"
+		right = "control"
+		is-vert = true
+		splitter = 75
+
+window "map"
+	elem "map"
 		type = MAIN
 		pos = 281,0
 		size = 800x800
@@ -391,68 +484,6 @@ window "info"
 		is-pane = true
 		outer-size = 814x814
 		inner-size = 800x800
-	elem "info"
-		type = INFO
-		pos = 0,0
-		size = 800x800
-		anchor1 = 0,0
-		anchor2 = 100,100
-		font-family = "Arial Narrow"
-		font-size = 10
-		background-color = none
-		is-default = true
-		right-click = true
-		saved-params = ""
-		highlight-color = #000000
-		tab-background-color = none
-		tab-font-family = "Arial Narrow"
-		tab-font-size = 10
-
-window "main"
-	elem "main"
-		type = MAIN
-		pos = 281,0
-		size = 800x800
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		is-default = true
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Burgerstation 13"
-		icon = 'interface\\icons\\burger.png'
-		image-mode = center
-		macro = "macro"
-		menu = "menu"
-		outer-size = 816x878
-		inner-size = 800x819
-	elem "splitter"
-		type = CHILD
-		pos = 0,0
-		size = 800x800
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = none
-		is-default = true
-		saved-params = "splitter"
-		left = "map"
-		right = "control"
-		is-vert = true
-		splitter = 75
-
-window "map"
-	elem "map"
-		type = MAIN
-		pos = 281,0
-		size = 800x800
-		anchor1 = none
-		anchor2 = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
-		is-pane = true
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -464,7 +495,6 @@ window "map"
 		is-default = true
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 32
 		zoom = 1
 		zoom-mode = distort
 	elem "paper"
@@ -473,6 +503,7 @@ window "map"
 		size = 600x680
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = #eaeaea
 		is-visible = false
 		border = sunken
 		saved-params = ""
@@ -482,6 +513,7 @@ window "map"
 		size = 680x320
 		anchor1 = 0,100
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		saved-params = ""
 

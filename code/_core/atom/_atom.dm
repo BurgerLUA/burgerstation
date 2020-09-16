@@ -3,7 +3,6 @@
 	desc = "What the fuck is this?"
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
-	var/id = null
 
 	plane = PLANE_OBJ
 
@@ -49,6 +48,27 @@
 	var/desired_light_color = "#FFFFFF" //Color of the light.
 	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
 
+
+
+	var/light_sprite_range = 0
+	var/light_sprite_alpha = 0
+
+/atom/proc/set_light_sprite(var/desired_range,var/desired_alpha)
+
+	var/update_overlays = FALSE
+
+	if(isnum(desired_range))
+		light_sprite_range = desired_range
+		update_overlays = TRUE
+
+	if(isnum(desired_alpha))
+		light_sprite_alpha = desired_alpha
+		update_overlays = TRUE
+
+	if(update_overlays)
+		update_sprite()
+
+
 /atom/proc/get_consume_verb()
 	return "eat"
 
@@ -93,24 +113,21 @@
 
 	set_light(FALSE)
 
-	for(var/datum/O in underlays)
-		qdel(O)
-	underlays.Cut()
-
-	for(var/datum/O in overlays)
-		qdel(O)
-	overlays.Cut()
+	QDEL_CUT(underlays)
+	QDEL_CUT(overlays)
 
 	QDEL_NULL(reagents)
 	QDEL_NULL(health)
 
 	stop_thinking(src)
 
-	for(var/atom/A in contents)
+	for(var/k in contents)
+		var/atom/movable/A = k
 		qdel(A)
 
 	appearance = null
 	invisibility = 101
+	mouse_opacity = 0
 
 	return ..()
 
@@ -126,6 +143,7 @@
 	if(health)
 		health = new health(src)
 		INITIALIZE(health)
+		FINALIZE(health)
 
 	update_atom_light()
 
@@ -159,10 +177,13 @@
 
 /atom/proc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
+	if(!src.initialized)
+		return FALSE
+
 	if(!src.health)
 		return FALSE
 
-	if(!BYPASS_AREA_NO_DAMAGE && attacker && is_valid(attacker))
+	if(!BYPASS_AREA_NO_DAMAGE)
 
 		var/area/A1 = get_area(attacker)
 		var/area/A2 = get_area(src)
@@ -226,8 +247,9 @@
 	if(check_loc && loc && !isturf(loc))
 		return FALSE
 
-	for(var/atom/A in contents)
-		if(!A.is_safe_to_delete())
+	for(var/k in contents)
+		var/atom/movable/A = k
+		if(!A.is_safe_to_delete(FALSE))
 			return FALSE
 
 	return ..()

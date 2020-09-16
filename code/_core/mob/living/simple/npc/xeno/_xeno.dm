@@ -1,5 +1,5 @@
 /mob/living/simple/npc/xeno
-	name = "alien"
+	name = "xeno"
 	desc = "Xenos mad."
 	desc_extended = "Oh shit they're here too?!"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
@@ -8,7 +8,7 @@
 	ai = /ai/xeno
 	damage_type = /damagetype/npc/xeno
 	class = /class/xeno
-	health_base = 100
+	health_base = 50
 
 	pixel_x = -16
 
@@ -63,7 +63,9 @@
 
 /mob/living/simple/npc/xeno/on_life_slow()
 
-	if(ai && ai.active && ai.alert_level != ALERT_LEVEL_COMBAT && next_talk <= world.time && prob(25))
+	. = ..()
+
+	if(. && ai && ai.active && ai.alert_level != ALERT_LEVEL_COMBAT && next_talk <= world.time && prob(25))
 
 		var/sound_to_play
 
@@ -104,7 +106,7 @@
 
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
-	return ..()
+	return .
 
 
 /mob/living/simple/npc/xeno/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE) //The src attacks the victim, with the blamed taking responsibility

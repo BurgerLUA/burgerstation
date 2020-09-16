@@ -126,7 +126,7 @@
 	return ..()
 
 
-/health/mob/living/advanced/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
+/health/mob/living/advanced/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	if(!is_advanced(owner))
 		return ..()
@@ -134,7 +134,8 @@
 	var/mob/living/advanced/A = owner
 	damage[BRUTE] = 0
 	damage[BURN] = 0
-	for(var/obj/item/organ/O in A.organs)
+	for(var/k in A.organs)
+		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
 		damage[BRUTE] += O.health.damage[BRUTE] * O.health_coefficient
@@ -143,10 +144,10 @@
 	. = ..()
 
 	if(.)
-		if(health_current <= 0 && !A.status_effects[CRIT])
+		if(health_current <= 0 && !A.status_effects[ADRENALINE] && !A.status_effects[CRIT])
 			A.add_status_effect(CRIT,-1,-1,force = TRUE)
 
-		else if(health_current > 0 && A.status_effects[CRIT])
+		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
 			A.remove_status_effect(CRIT)
 
 	return .

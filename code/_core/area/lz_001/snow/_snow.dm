@@ -9,6 +9,8 @@
 
 	cheese_type = /reagent/nutrition/cheese/raclette
 
+	tracks = TRACKS_MOUNTAIN
+
 
 /area/lz_001/snow/interior
 	sunlight_freq = 0

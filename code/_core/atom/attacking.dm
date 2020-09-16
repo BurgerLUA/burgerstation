@@ -11,7 +11,7 @@
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(health)
-		health.update_health(damage_amount,attacker)
+		health.update_health(attacker,damage_amount)
 
 	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0)
 		if(isturf(src.loc)) new/obj/effect/temp/damage_number(src.loc,null,damage_amount)
@@ -105,30 +105,7 @@
 		DT.perform_miss(attacker,victim,object_to_damage_with) //TODO: FIX THIS
 		return FALSE
 
-	var/damage_multiplier = 1
-
-	/*
-	if(DT.allow_dodge)
-		var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
-		if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT))
-			return FALSE
-
-	if(DT.allow_parry)
-		var/atom/parrying_atom = victim.can_parry(attacker,object_to_damage_with,object_to_damage,DT)
-		if(parrying_atom && victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,parrying_atom))
-			return FALSE
-
-	if(DT.allow_block)
-		var/atom/blocking_atom = victim.can_block(attacker,object_to_damage_with,object_to_damage,DT)
-		if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom))
-			damage_multiplier *= 0.75
-			damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(victim,attacker,object_to_damage_with,object_to_damage,DT) - DT.get_block_power_penetration(attacker,victim,object_to_damage_with,object_to_damage,blocking_atom),0,1)
-	*/
-
-	if(damage_multiplier <= 0)
-		return FALSE
-
-	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker,damage_multiplier)
+	DT.swing(attacker,victim,object_to_damage_with,object_to_damage,attacker)
 
 	return TRUE
 

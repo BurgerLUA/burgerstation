@@ -33,6 +33,8 @@
 	if(ai)
 		ai.on_death()
 
+	create_alert(VIEW_RANGE*0.5, get_turf(src), alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+
 	movement_flags = 0x0
 	attack_flags = 0x0
 
@@ -92,14 +94,16 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 	dead = FALSE
+	remove_status_effect(CRIT)
 	plane = initial(plane)
-	if(health)
-		health.update_health()
 	if(ai)
 		ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
+	if(health)
+		health.update_health(update_hud=TRUE,check_death=TRUE)
 	handle_horizontal()
+	undelete(src)
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -171,7 +175,7 @@
 
 	update_alpha(handle_alpha())
 
-	if(queue_health_update && health)
+	if(health && queue_health_update)
 		health.update_health()
 		queue_health_update = FALSE
 
@@ -227,6 +231,9 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
+	if(ai && !ai.active)
+		return FALSE
+
 	blood_volume = clamp(blood_volume + 1,0,blood_volume_max)
 
 	handle_regen()
@@ -237,6 +244,49 @@ mob/living/proc/on_life_slow()
 	//handle_charges(LIFE_TICK_SLOW)
 
 	handle_hunger()
+
+	handle_intoxication()
+
+	return TRUE
+
+/mob/living/proc/handle_intoxication()
+
+	if(intoxication)
+		var/intoxication_to_remove = (0.05 + intoxication*0.005)*(LIFE_TICK_SLOW/10)
+		intoxication = max(0,intoxication-intoxication_to_remove)
+
+	switch(intoxication)
+		if(0 to 200)
+			if(last_intoxication_message != 0)
+				to_chat(span("notice","You feel sober."))
+				last_intoxication_message = 0
+		if(200 to 400)
+			if(last_intoxication_message != 1)
+				to_chat(span("notice","You feel buzzed."))
+				last_intoxication_message = 1
+		if(400 to 800)
+			if(last_intoxication_message != 2)
+				to_chat(span("warning","You feel drunk."))
+				last_intoxication_message = 2
+		if(800 to 1600)
+			if(last_intoxication_message != 3)
+				to_chat(span("danger","You feel shitfaced."))
+				last_intoxication_message = 3
+		if(1600 to INFINITY)
+			if(last_intoxication_message != 4)
+				to_chat(span("danger","You feel gjkpeagheutyhaophghe."))
+				last_intoxication_message = 4
+			health.adjust_tox_loss(0.25*(LIFE_TICK_SLOW/10))
+			queue_health_update = TRUE
+
+	if(intoxication >= 400 && prob(intoxication/100))
+		var/list/possible_status_effects = list(
+			STAGGER,
+			CONFUSED,
+			SLIP
+		)
+		add_status_effect(pick(possible_status_effects),40,40)
+
 
 	return TRUE
 
@@ -257,7 +307,7 @@ mob/living/proc/on_life_slow()
 	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer) && health_regen_delay <= 0
 
 /mob/living/proc/can_buffer_stamina()
-	return stamina_regen_buffer && (stamina_regen_delay <= 0 || (horizontal && move_delay <= 0))
+	return stamina_regen_buffer && (stamina_regen_delay <= 0 || (horizontal && move_delay <= 0)) && !has_status_effect(ADRENALINE)
 
 /mob/living/proc/can_buffer_mana()
 	return mana_regen_buffer && mana_regen_delay <= 0
