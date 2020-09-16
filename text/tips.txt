@@ -50,3 +50,4 @@ Secure crates do not give any rewards when turned into cargo, regardless of cont
 Armor and clothing that give magic, holy, or dark defence give 0.5 armor penetration per 1 defense to attacks grant by the wearer.
 You consume twice as much reagents if you're drinking from a glass than compared to a beaker. You consume all the reagents when drinking from a shot glass.
 You gain decent physical damage resistance when drunk. This increases based on your intoxication. Careful not to get too drunk or your body may suffer consequences...
+The frequency of headsets and radios can be changed by hovering over the object and using your mousewheel.
