@@ -8,7 +8,7 @@
 
 	status_id = "cargo_inbound"
 
-	default_waiting_time = 120
+	default_waiting_time = 60
 	default_transit_time = 10
 
 /obj/shuttle_controller/cargo_inbound/transit(var/starting_transit_id,var/ending_transit_id)

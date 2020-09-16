@@ -100,11 +100,12 @@
 	else if(!use_loyalty_tag && is_item(defer_object))
 		var/obj/item/I = defer_object
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
+			INTERACT_CHECK
 			remove_attachment(caller)
 			return TRUE
-
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
+				INTERACT_CHECK
 				firing_pin.force_move(get_turf(src))
 				caller.to_chat(span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
 				firing_pin = null
@@ -112,6 +113,7 @@
 				caller.to_chat(span("notice","There is no firing pin inside \the [src.name]!"))
 			return TRUE
 		if(istype(I,/obj/item/firing_pin/))
+			INTERACT_CHECK
 			if(istype(firing_pin))
 				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
 			else

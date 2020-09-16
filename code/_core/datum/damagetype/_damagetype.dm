@@ -262,27 +262,27 @@
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	if(!is_valid(attacker))
-		CRASH_SAFE("Could not process damage as there was no attacker!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no attacker!")
 		return FALSE
 
 	if(!is_valid(victim))
-		CRASH_SAFE("Could not process damage as there was no victim!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim!")
 		return FALSE
 
 	if(!is_valid(weapon))
-		CRASH_SAFE("Could not process damage as there was no weapon!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no weapon!")
 		return FALSE
 
 	if(!is_valid(hit_object))
-		CRASH_SAFE("Could not process damage as there was no hit_object!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no hit_object!")
 		return FALSE
 
 	if(!is_valid(hit_object.health))
-		CRASH_SAFE("Could not process damage as there was no hit_object health! (Hitobject: [hit_object])")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no hit_object health! (Hitobject: [hit_object])")
 		return FALSE
 
 	if(!is_valid(victim.health))
-		CRASH_SAFE("Could not process damage as there was no victim health! (Victim: [victim])")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
 		return FALSE
 
 	if(is_living(victim))

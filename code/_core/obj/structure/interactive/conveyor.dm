@@ -125,10 +125,7 @@
 			moved = TRUE
 			continue
 		if(!moved)
-			color = "#FF0000"
 			return FALSE
-
-	color = "#00FF00"
 
 
 	return TRUE

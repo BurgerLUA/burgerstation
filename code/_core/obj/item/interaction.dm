@@ -52,20 +52,16 @@
 		play(pick(inventory_sounds),src)
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
-
 		if(should_center)
 			B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
 		else
 			B.screen_loc = "CENTER+[0.5+MAX_INVENTORY_X*0.5],BOTTOM+1.25"
-
 		if(opening)
 			animate(B,alpha=255,time=4)
 			B.mouse_opacity = 2
 		else
 			animate(B,alpha=0,time=4)
 			B.mouse_opacity = 0
-
-		break
 
 	inventory_user = caller
 

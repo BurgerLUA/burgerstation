@@ -75,14 +75,11 @@
 
 	var/valid_setup = FALSE
 	for(var/obj/structure/interactive/mining_brace/MB in orange(1,src))
-		if(!MB.anchored)
-			continue
-		if(get_step(MB,MB.dir) != src.loc)
+		if(!MB.anchored || get_step(MB,MB.dir) != src.loc)
 			continue
 		var/obj/structure/interactive/mining_brace/MB2 = locate() in get_step(src,MB.dir).contents
-		if(!MB2 || !MB.anchored)
+		if(!MB2 || !MB2.anchored || get_step(MB2,MB2.dir) != src.loc)
 			continue
-
 		valid_setup = TRUE
 		break
 
