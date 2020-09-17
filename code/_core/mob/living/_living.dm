@@ -365,8 +365,7 @@
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
-			for(var/k in P.buttons)
-				var/obj/hud/button/boss_health/B = k
+			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_boss = src
 				B.update_stats()
 
