@@ -52,9 +52,8 @@
 			B.alpha = 0
 			B.mouse_opacity = 0
 
-	for(var/i=1,i<=length(inventories),i++)
+	for(var/obj/hud/inventory/crafting/I in inventories)
 		CHECK_TICK(100,FPS_SERVER*0.5)
-		var/obj/hud/inventory/crafting/I = inventories[i]
 		I.update_owner(A)
 		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)

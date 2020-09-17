@@ -21,6 +21,8 @@
 		/obj/item/container/food/dynamic/meat/raw_beefman
 	)
 
+	has_hard_crit = FALSE
+
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()
 	change_organ_visual("skin", desired_color = pick("#C42F36","#A02518","#742210","#541900","#261007"))

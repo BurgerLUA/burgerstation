@@ -77,7 +77,7 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 			. += div("green","Equipment Move Bonus: [-move_penalty]%.")
 
 	if(handcuffed)
-		. += div("warning","(<a href='?src=\ref[examiner];uncuff=\ref[src]'>Remove</a>)[capitalize(pronoun)] is handcuffed!")
+		. += div("warning","(<a href='?src=\ref[examiner];uncuff=\ref[src]'>Remove</a>) [capitalize(pronoun)] is handcuffed!")
 
 	. += ..()
 

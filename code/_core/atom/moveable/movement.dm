@@ -60,7 +60,8 @@
 					final_move_dir &= ~second_move_dir_to_use
 
 		var/similiar_move_dir = FALSE
-		if(final_move_dir && Move(get_step(src,final_move_dir),final_move_dir,force = intercardinal))
+		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
+		if(step && Move(step,final_move_dir,force = intercardinal))
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir

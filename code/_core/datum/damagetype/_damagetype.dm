@@ -261,13 +261,18 @@
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
+	/*
 	if(!is_valid(attacker))
 		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no attacker!")
 		return FALSE
+	*/
 
 	if(!is_valid(victim))
 		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim!")
 		return FALSE
+
+	if(!attacker)
+		attacker = victim
 
 	if(!is_valid(weapon))
 		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no weapon!")

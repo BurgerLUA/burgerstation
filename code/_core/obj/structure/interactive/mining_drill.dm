@@ -13,6 +13,16 @@
 
 	bullet_block_chance = 75
 
+	health = /health/construction
+
+	health_base = 1000
+
+/obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
+	. = ..()
+	qdel(src)
+	return .
+
 /obj/structure/interactive/mining_drill/update_icon()
 
 	if(THINKING(src))
@@ -46,11 +56,9 @@
 	return .
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
-
 	if(!check_valid())
 		caller.to_chat("\The [src] doesn't seem to want to turn on!")
 		return FALSE
-
 	if(caller)
 		visible_message("\The [caller.name] activates \the [src.name].")
 	else
@@ -91,7 +99,7 @@
 	if(!found_deposit)
 		found_deposit = locate() in src.loc
 
-	 if(!anchored || !check_valid() || !found_deposit || found_deposit.ore_score <= 0)
+	 if(!anchored || !found_deposit || found_deposit.ore_score <= 0)
 	 	deactivate()
 	 	return FALSE
 
@@ -113,6 +121,22 @@
 	collision_flags = FLAG_COLLISION_WALL
 
 	bullet_block_chance = 50
+
+	health = /health/construction
+
+	health_base = 500
+
+/obj/structure/interactive/mining_brace/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)
+	. = ..()
+	qdel(src)
+	return .
+
+/obj/structure/interactive/mining_brace/Destroy()
+	var/obj/structure/interactive/mining_drill/MD = locate() in get_step(src,dir)
+	if(MD)
+		MD.check_valid()
+	return ..()
 
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

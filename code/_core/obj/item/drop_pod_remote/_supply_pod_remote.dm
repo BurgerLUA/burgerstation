@@ -59,7 +59,7 @@
 		/obj/structure/interactive/mining_brace,
 		/obj/structure/interactive/mining_brace
 	)
-	value = 500
+	value = 1000
 
 /obj/item/supply_remote/mech/
 	value = 1000

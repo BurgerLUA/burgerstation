@@ -271,7 +271,7 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Initialize()
 
-	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none")
+	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
 	. = ..()
 

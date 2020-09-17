@@ -28,6 +28,10 @@
 	start_thinking(src)
 	return ..()
 
+/obj/structure/interactive/conveyor/post_move()
+	update_conveyor()
+	return ..()
+
 /obj/structure/interactive/conveyor/PostInitialize()
 
 	if(active)

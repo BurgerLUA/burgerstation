@@ -67,10 +67,20 @@ var/global/list/possible_hostage_types = list(
 
 /objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/unique/hostage/H,args)
 
-	if(!completed && H.z == Z_LEVEL_CENTCOMM)
+	if(!completed && H.z == Z_LEVEL_CENTCOMM && !H.dead)
 		var/area/A = get_area(H)
 		if(istype(A,/area/burgerstation))
 			completed = TRUE
+			if(H.ai)
+				var/turf/T = get_turf(pick(possible_hostage_rest_markers))
+				var/obj/marker/map_node/N_start = find_closest_node(H)
+				if(N_start)
+					var/obj/marker/map_node/N_end = find_closest_node(T)
+					if(N_end)
+						var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
+						if(found_path)
+							H.ai.set_path(found_path)
+
 			update()
 
 	return TRUE
@@ -79,8 +89,13 @@ var/global/list/possible_hostage_types = list(
 	update()
 	return TRUE
 
+/objective/hostage/proc/hostage_post_death(var/mob/living/advanced/npc/unique/hostage/H,args)
+	update()
+	return TRUE
+
 /objective/hostage/start()
 	HOOK_ADD("post_move","hostage_post_move",created_hostage,src,.proc/hostage_post_move)
+	HOOK_ADD("post_death","hostage_post_death",created_hostage,src,.proc/hostage_post_death)
 	HOOK_ADD("Destroy","hostage_Destroy",created_hostage,src,.proc/hostage_Destroy)
 	tracked_atoms += created_hostage
 	return TRUE
