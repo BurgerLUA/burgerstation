@@ -44,6 +44,8 @@
 
 	attachment_whitelist = list()
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread() //Base spread
 	return 0
 

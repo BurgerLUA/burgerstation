@@ -4,6 +4,10 @@
 
 /obj/structure/interactive/vending/syndicate/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
+	if(!istype(P,/mob/living/advanced/player/antagonist/syndicate))
+		P.to_chat(span("notice","\The [src.name] doesn't seem to respect your IFF tag!"))
+		return FALSE
+
 	if(SSgamemode.active_gamemode.state < GAMEMODE_GEARING)
 		P.to_chat(span("notice","It's too <b>early</b> to purchase this! Wait a bit and coordinate with your team!"))
 		return FALSE
@@ -13,8 +17,6 @@
 		return FALSE
 
 	return ..()
-
-var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/syndicate/limited
 	name = "timed syndicate vendor"

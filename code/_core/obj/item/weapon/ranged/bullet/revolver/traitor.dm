@@ -67,6 +67,8 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 19 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
 	return 0.01
 

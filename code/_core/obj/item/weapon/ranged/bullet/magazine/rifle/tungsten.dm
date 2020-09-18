@@ -61,6 +61,8 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/update_icon()
 
 	icon_state = initial(icon_state)

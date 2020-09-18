@@ -74,7 +74,6 @@
 		verbs += /client/verb/rejuvenate_player
 		verbs += /client/verb/stress_test
 		verbs += /client/verb/print_dps
-		verbs += /client/verb/create_dummy_objective
 		verbs += /client/verb/force_screech
 
 	return TRUE

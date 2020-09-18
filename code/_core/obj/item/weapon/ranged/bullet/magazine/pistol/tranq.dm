@@ -35,6 +35,8 @@
 
 	inaccuracy_modifer = 0.25
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/tranq/get_static_spread() //Base spread
 	return 0
 

@@ -62,6 +62,8 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 14 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_static_spread() //Base spread
 	return 0.0025
 

@@ -56,6 +56,8 @@
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
 	return 0.08
 

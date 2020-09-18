@@ -41,6 +41,8 @@
 
 	zoom_mul = 2
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_static_spread() //Base spread
 	return 0
 

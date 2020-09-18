@@ -52,3 +52,7 @@
 	structure_to_deploy = /obj/structure/interactive/barricade/
 	icon = 'icons/obj/item/deployable/barricade.dmi'
 	value = 80
+
+/obj/item/deployable/barricade/filled/Generate()
+	item_count_current = item_count_max
+	return ..()

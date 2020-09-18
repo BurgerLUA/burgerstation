@@ -19,6 +19,13 @@
 	reagents.add_reagent(/reagent/medicine/dylovene,20)
 	return ..()
 
+/obj/item/container/pill/calomel
+	name = "calomel pill (20u)"
+
+/obj/item/container/pill/calomel/Generate()
+	reagents.add_reagent(/reagent/medicine/purge,20)
+	return ..()
+
 /obj/item/container/pill/iron
 	name = "iron pill (20u)"
 

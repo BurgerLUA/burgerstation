@@ -65,6 +65,8 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 /obj/item/weapon/ranged/bullet/revolver/big_game/get_static_spread() //Base spread
 	return 0.01
 

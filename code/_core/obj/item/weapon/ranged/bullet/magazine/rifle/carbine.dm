@@ -68,6 +68,8 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 

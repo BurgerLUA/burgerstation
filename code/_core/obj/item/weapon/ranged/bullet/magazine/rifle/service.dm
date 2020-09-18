@@ -65,6 +65,8 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 19 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/service/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.2
@@ -79,3 +81,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/service/nt
 	dan_mode = TRUE
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_service_nt.dmi'
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen

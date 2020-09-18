@@ -63,6 +63,8 @@
 	attachment_undermount_offset_x = 0
 	attachment_undermount_offset_y = 0
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 /obj/item/weapon/ranged/bullet/magazine/smg/p69/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

@@ -53,31 +53,67 @@
 		to_chat(span("warning","The game is not ready yet!"))
 		return FALSE
 
+	if(!mob)
+		to_chat(span("warning","You're not controlling a valid mob!"))
+		return FALSE
+
+
+	var/display_crew_objectives = is_observer(mob) || !istype(mob,/mob/living/advanced/player/antagonist/)
+	var/display_antagonist_objectives = is_observer(mob) || istype(mob,/mob/living/advanced/player/antagonist/)
+
 	var/gamemode/G = SSgamemode.active_gamemode
 
-	to_chat("<br><h2>Active Objectives</h2>")
-	if(length(G.active_objectives))
-		for(var/k in G.active_objectives)
-			var/objective/O = k
-			to_chat(O.get_description())
-	else
-		to_chat("No active objectives.")
+	if(display_crew_objectives)
+		to_chat("<br><h2>Active Crew Objectives</h2>")
+		if(length(G.crew_active_objectives))
+			for(var/k in G.crew_active_objectives)
+				var/objective/O = k
+				to_chat(O.get_description())
+		else
+			to_chat("No active crew objectives.")
 
-	to_chat("<br><h2>Completed Objectives</h2>")
-	if(length(G.completed_objectives))
-		for(var/k in G.completed_objectives)
-			var/objective/O = k
-			to_chat(O.get_description())
-	else
-		to_chat("No completed objectives.")
+		to_chat("<br><h2>Completed Crew Objectives</h2>")
+		if(length(G.crew_completed_objectives))
+			for(var/k in G.crew_completed_objectives)
+				var/objective/O = k
+				to_chat(O.get_description())
+		else
+			to_chat("No completed crew objectives.")
 
-	to_chat("<br><h2>Failed Objectives</h2>")
-	if(length(G.failed_objectives))
-		for(var/k in G.failed_objectives)
-			var/objective/O = k
-			to_chat(O.get_description())
-	else
-		to_chat("No failed objectives.")
+		to_chat("<br><h2>Failed Crew Objectives</h2>")
+		if(length(G.crew_failed_objectives))
+			for(var/k in G.crew_failed_objectives)
+				var/objective/O = k
+				to_chat(O.get_description())
+		else
+			to_chat("No failed crew objectives.")
+
+	if(display_antagonist_objectives)
+		to_chat("<br><h2>Active Antagonist Objectives</h2>")
+		if(length(G.antagonist_active_objectives))
+			for(var/k in G.antagonist_active_objectives)
+				var/objective/O = k
+				to_chat(O.get_description())
+		else
+			to_chat("No active antagonist objectives.")
+
+		to_chat("<br><h2>Completed Antagonist Objectives</h2>")
+		if(length(G.antagonist_completed_objectives))
+			for(var/k in G.antagonist_completed_objectives)
+				var/objective/O = k
+				to_chat(O.get_description())
+		else
+			to_chat("No completed antagonist objectives.")
+
+		to_chat("<br><h2>Failed Antagonist Objectives</h2>")
+		if(length(G.antagonist_failed_objectives))
+			for(var/k in G.antagonist_failed_objectives)
+				var/objective/O = k
+				to_chat(O.get_description())
+		else
+			to_chat("No failed antagonist objectives.")
+
+
 
 	return TRUE
 

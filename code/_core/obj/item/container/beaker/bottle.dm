@@ -40,6 +40,27 @@
 	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max)
 	return ..()
 
+/obj/item/container/beaker/bottle/calomel
+	name = "bottle of calomel"
+
+/obj/item/container/beaker/bottle/calomel/Generate()
+	reagents.add_reagent(/reagent/medicine/purge,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/bottle/antihol
+	name = "bottle of antihol"
+
+/obj/item/container/beaker/bottle/antihol/Generate()
+	reagents.add_reagent(/reagent/medicine/antihol,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/bottle/charcoal
+	name = "bottle of charcoal"
+
+/obj/item/container/beaker/bottle/charcoal/Generate()
+	reagents.add_reagent(/reagent/medicine/charcoal,reagents.volume_max)
+	return ..()
+
 
 
 /obj/item/container/beaker/glass

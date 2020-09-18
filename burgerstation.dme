@@ -1393,6 +1393,7 @@
 #include "code\_core\obj\structure\interactive\local_machine\vendor\_vendor.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\engineering.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\mining.dm"
+#include "code\_core\obj\structure\interactive\local_machine\vendor\rev.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\security.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\syndicate.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\vendor_types.dm"

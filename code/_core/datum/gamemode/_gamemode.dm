@@ -2,9 +2,13 @@
 	var/name = "Gamemode Name"
 	var/desc = "Gamemode Description"
 
-	var/objective/list/active_objectives = list()
-	var/objective/list/completed_objectives = list()
-	var/objective/list/failed_objectives = list()
+	var/objective/list/crew_active_objectives = list()
+	var/objective/list/crew_completed_objectives = list()
+	var/objective/list/crew_failed_objectives = list()
+
+	var/objective/list/antagonist_active_objectives = list()
+	var/objective/list/antagonist_completed_objectives = list()
+	var/objective/list/antagonist_failed_objectives = list()
 
 	var/allow_launch = FALSE
 
@@ -20,9 +24,15 @@
 	var/hidden = FALSE //Set to true if this gamemode shouldn't show up in voting.
 
 /gamemode/Destroy()
-	active_objectives.Cut()
-	completed_objectives.Cut()
-	failed_objectives.Cut()
+
+	QDEL_CUT(crew_active_objectives)
+	QDEL_CUT(crew_completed_objectives)
+	QDEL_CUT(crew_failed_objectives)
+
+	QDEL_CUT(antagonist_active_objectives)
+	QDEL_CUT(antagonist_completed_objectives)
+	QDEL_CUT(antagonist_failed_objectives)
+
 	return ..()
 
 /gamemode/New()
@@ -67,15 +77,15 @@
 
 	objective_text = ""
 
-	for(var/k in active_objectives)
+	for(var/k in crew_active_objectives)
 		var/objective/O = k
 		objective_text += "[O.desc] (ACTIVE)<br>"
 
-	for(var/k in completed_objectives)
+	for(var/k in crew_completed_objectives)
 		var/objective/O = k
 		objective_text += "[O.desc] (COMPLETED)<br>"
 
-	for(var/k in failed_objectives)
+	for(var/k in crew_failed_objectives)
 		var/objective/O = k
 		objective_text += "[O.desc] (FAILED)<br>"
 

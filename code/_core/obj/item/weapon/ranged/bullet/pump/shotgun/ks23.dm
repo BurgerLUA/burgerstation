@@ -70,6 +70,8 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
 	return 0.12
 

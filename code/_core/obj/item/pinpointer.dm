@@ -226,7 +226,7 @@
 
 	var/list/possible_artifacts = list()
 
-	for(var/v in SSgamemode.active_gamemode.active_objectives)
+	for(var/v in SSgamemode.active_gamemode.crew_active_objectives)
 		var/objective/O = v
 		for(var/k in O.tracked_atoms)
 			var/atom/A = k

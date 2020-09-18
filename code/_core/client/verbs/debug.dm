@@ -351,7 +351,7 @@ client/verb/air_test(var/pressure as num)
 
 	return TRUE
 
-
+/*
 /client/verb/create_dummy_objective()
 	set name = "Create Dummy Objective"
 	set category = "Debug"
@@ -370,6 +370,7 @@ client/verb/air_test(var/pressure as num)
 		D.update()
 
 	return TRUE
+*/
 
 
 /client/verb/force_screech()

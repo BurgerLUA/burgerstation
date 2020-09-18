@@ -532,3 +532,87 @@
 				container.remove_reagent(reagent_id,.*3)
 
 	return .
+
+
+/reagent/medicine/purge
+	name = "Calomel"
+	desc = "Purges all chemicals from the system quickly. Deals toxin damage as a consequences, relative to the amount purged. Works better when injected."
+	color = "#315F77"
+	flavor = "old shoes"
+
+	value = 12
+
+
+/reagent/medicine/purge/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(R.type == src.type)
+				continue
+			owner.health.adjust_tox_loss(container.remove_reagent(reagent_id,.*1.5))
+		L.queue_health_update = TRUE
+
+	return .
+
+/reagent/medicine/purge/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(R.type == src.type)
+				continue
+			owner.health.adjust_tox_loss(container.remove_reagent(reagent_id,.*1.5))
+		L.queue_health_update = TRUE
+
+	return .
+
+
+
+/reagent/medicine/charcoal
+	name = "charcoal"
+	desc = "Purges poisons from the system while healing a slight amount of toxins. Works just as well when consumed."
+	color = "#315F77"
+	flavor = "old shoes"
+
+	value = 8
+
+/reagent/medicine/charcoal/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(!R.lethal)
+				continue
+			container.remove_reagent(reagent_id,.*2)
+		if(L.health)
+			L.health.adjust_tox_loss(.*-1)
+			L.queue_health_update = TRUE
+
+	return .
+
+/reagent/medicine/charcoal/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(!R.lethal)
+				continue
+			container.remove_reagent(reagent_id,.*2)
+			if(L.health)
+				L.health.adjust_tox_loss(.*-1)
+				L.queue_health_update = TRUE
+
+	return .

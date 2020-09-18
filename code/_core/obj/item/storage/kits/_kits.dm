@@ -72,6 +72,24 @@
 	new /obj/item/container/medicine/patch/burn(src)
 	return ..()
 
+/obj/item/storage/kit/toxin
+	name = "toxin first aid kit"
+	desc_extended = "A first aid kit that focuses on healing toxin based injuries. Usually contains a pill bottle filled with kelotane, two tubes of ointment, one set of burn kits and four sets of silver sulfadiazine."
+	icon_state = "toxin"
+
+/obj/item/storage/kit/toxin/filled/fill_inventory()
+	new /obj/item/container/syringe(src)
+	new /obj/item/container/beaker/bottle/dylovene(src)
+	new /obj/item/container/beaker/bottle/dylovene(src)
+	new /obj/item/container/beaker/bottle/dylovene(src)
+	new /obj/item/container/beaker/bottle/calomel(src)
+	new /obj/item/container/beaker/bottle/antihol(src)
+	new /obj/item/container/beaker/bottle/charcoal(src)
+	new /obj/item/container/beaker/bottle/epinephrine(src)
+	return ..()
+
+
+
 
 /obj/item/storage/kit/syndicate
 	name = "combat medikit"

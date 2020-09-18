@@ -66,6 +66,8 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.15
@@ -134,6 +136,8 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 18 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.08
@@ -198,6 +202,8 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_static_spread() //Base spread
@@ -264,6 +270,8 @@
 
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread() //Base spread
 	if(!wielded)
@@ -335,6 +343,8 @@
 
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 17 - 16
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread() //Base spread
 	if(!wielded)

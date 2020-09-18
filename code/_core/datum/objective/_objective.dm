@@ -6,6 +6,8 @@
 	var/credit_reward = 0
 	var/burgerbux_reward = 0
 
+	var/antagonist = FALSE
+
 /objective/New()
 
 	if(!setup() || !start())
@@ -66,17 +68,30 @@
 	var/old_completion_state = completion_state
 	completion_state = check_completion()
 
-	G.active_objectives -= src
-	G.completed_objectives -= src
-	G.failed_objectives -= src
+	G.crew_active_objectives -= src
+	G.crew_completed_objectives -= src
+	G.crew_failed_objectives -= src
 
-	switch(completion_state)
-		if(ACTIVE)
-			G.active_objectives |= src
-		if(COMPLETED)
-			G.completed_objectives |= src
-		if(FAILED)
-			G.failed_objectives |= src
+	G.antagonist_active_objectives -= src
+	G.antagonist_completed_objectives -= src
+	G.antagonist_failed_objectives -= src
+
+	if(antagonist)
+		switch(completion_state)
+			if(ACTIVE)
+				G.antagonist_active_objectives |= src
+			if(COMPLETED)
+				G.antagonist_completed_objectives |= src
+			if(FAILED)
+				G.antagonist_failed_objectives |= src
+	else
+		switch(completion_state)
+			if(ACTIVE)
+				G.crew_active_objectives |= src
+			if(COMPLETED)
+				G.crew_completed_objectives |= src
+			if(FAILED)
+				G.crew_failed_objectives |= src
 
 	desc = get_description()
 

@@ -20,7 +20,7 @@
 
 	. = ..()
 
-	if(!length(active_objectives) && length(completed_objectives) >= 1 && state == GAMEMODE_FIGHTING)
+	if(!length(crew_active_objectives) && length(crew_completed_objectives) >= 1 && state == GAMEMODE_FIGHTING)
 		state = GAMEMODE_BREAK
 		if(can_continue())
 			SSvote.create_vote(/vote/continue_round)

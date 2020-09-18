@@ -17,7 +17,6 @@
 	to_chat(span("danger","<h1>An explosive implant was implanted in your head that triggers when you leave the Area of Operations. Avoid getting captured if you can.</h1>"))
 	return .
 
-
 /mob/living/advanced/player/antagonist/syndicate/setup_name()
 	. = ..()
 	name = "Operative [real_name]"

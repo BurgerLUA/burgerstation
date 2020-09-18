@@ -56,6 +56,8 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
 	return 0.005
@@ -125,6 +127,8 @@
 	bullet_diameter_min = 8.5
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_static_spread() //Base spread
 	return 0.004
