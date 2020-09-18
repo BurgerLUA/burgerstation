@@ -14,7 +14,7 @@
 
 	stun_angle = 0
 
-	health_base = 4000
+	health_base = 8000
 
 	attack_range = 2
 
@@ -56,7 +56,6 @@
 	iff_tag = "colossus"
 	loyalty_tag = "colossus"
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS

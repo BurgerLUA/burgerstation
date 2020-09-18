@@ -13,9 +13,8 @@
 	class = /class/pirate
 	level_multiplier = 4
 
-	health_base = 3000
+	health_base = 6000
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	loyalty_tag = "Skeleton"
@@ -79,13 +78,11 @@
 	class = /class/pirate
 	level_multiplier = 2
 
-	health_base = 1200
+	health_base = 2500
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
 	ai = /ai/advanced/skeleton
-
-	damage_received_multiplier = 0.5
 
 /mob/living/advanced/npc/unique/pirate_mate/Initialize()
 	. = ..()

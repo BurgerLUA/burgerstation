@@ -5,8 +5,7 @@
 	icon = 'icons/mob/living/simple/dick_kickem.dmi'
 	icon_state = "dick"
 
-	health_base = 2000
-	damage_received_multiplier = 0.5
+	health_base = 4000
 
 	ai = /ai/dick_kickem/
 	class = /class/npc/robust

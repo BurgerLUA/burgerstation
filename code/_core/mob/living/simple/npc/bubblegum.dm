@@ -14,7 +14,7 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 4000
+	health_base = 8000
 
 	move_delay = DECISECONDS_TO_TICKS(2)
 
@@ -60,7 +60,6 @@
 	iff_tag = "bubblegum"
 	loyalty_tag = "bubblegum"
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS

@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "living"
 	pixel_x = -16
-	health_base = 1000
+	health_base = 2000
 	value = 2000
 
 	armor_base = list(
@@ -59,7 +59,6 @@
 		/obj/item/container/food/dynamic/meat/xeno/
 	)
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS
@@ -69,3 +68,51 @@
 
 	can_leap = FALSE
 	can_spit = TRUE
+
+	death_sounds = FALSE
+
+	var/next_screech = 0
+
+/mob/living/simple/npc/xeno/queen/post_death()
+
+	. = ..()
+
+	play('sound/voice/xeno/queen_death.ogg',get_turf(src))
+
+	return .
+
+/mob/living/simple/npc/xeno/queen/proc/screech(var/debug = FALSE)
+
+	var/obj/marker/map_node/N_end = find_closest_node(src)
+
+	play('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+
+	for(var/mob/living/L in range(src,VIEW_RANGE))
+		if(L.loyalty_tag == src.loyalty_tag)
+			continue
+		L.add_status_effect(STUN,40,40)
+
+	if(N_end)
+		var/created_paths = 0
+		var/failed_paths = 0
+		for(var/mob/living/simple/npc/xeno/X in all_living)
+			CHECK_TICK(75,FPS_SERVER)
+			if(X == src)
+				continue
+			if(X.dead || !X.ai)
+				continue
+			var/obj/marker/map_node/N_start = find_closest_node(X)
+			if(!N_start)
+				failed_paths++
+				continue
+			var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
+			if(!found_path)
+				failed_paths++
+				continue
+			X.ai.set_path(found_path)
+			created_paths++
+		log_error("Screech: Found [created_paths] valid pathsa and [failed_paths] failed paths.")
+	else if(debug)
+		log_error("Could not find path end for [src.get_debug_name()] queen screech!")
+
+	return TRUE

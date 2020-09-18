@@ -6,7 +6,7 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/ash_drake
 
-	value = 3000
+	value = 6000
 
 	pixel_w = -16
 
@@ -43,7 +43,6 @@
 		ION = INFINITY
 	)
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	butcher_contents = list(

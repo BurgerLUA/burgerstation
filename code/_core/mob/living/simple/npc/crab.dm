@@ -55,7 +55,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 3000
+	health_base = 6000
 
 	ai = /ai/
 
@@ -97,7 +97,6 @@
 		ION = INFINITY
 	)
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	status_immune = list(

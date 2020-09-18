@@ -52,6 +52,8 @@
 	var/can_leap = FALSE
 	var/can_spit = FALSE
 
+	var/death_sounds = TRUE
+
 /mob/living/simple/npc/xeno/get_emote_sound(var/emote_id)
 
 	switch(emote_id)
@@ -142,12 +144,14 @@
 
 	. = ..()
 
-	if(prob(50))
+	if(death_sounds && prob(50))
 		var/list/valid_sounds = list(
 			'sound/voice/xeno/death1.ogg',
 			'sound/voice/xeno/death2.ogg'
 		)
 		play(pick(valid_sounds),get_turf(src))
+
+	update_sprite()
 
 	return .
 
@@ -160,10 +164,7 @@
 
 	return ..()
 
-/mob/living/simple/npc/xeno/post_death()
-	. = ..()
-	update_sprite()
-	return .
+
 
 /mob/living/simple/npc/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
 

@@ -64,7 +64,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	value = 0
 
-	damage_received_multiplier = 0.75
+	damage_received_multiplier = 1
 
 	queue_delete_on_death = FALSE
 

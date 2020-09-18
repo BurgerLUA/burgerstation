@@ -232,6 +232,7 @@
 #include "code\_core\datum\ai\boss\can_man.dm"
 #include "code\_core\datum\ai\boss\colossus.dm"
 #include "code\_core\datum\ai\boss\herald.dm"
+#include "code\_core\datum\ai\boss\xeno_queen.dm"
 #include "code\_core\datum\ai\mech\_mech.dm"
 #include "code\_core\datum\ai\passive\_passive.dm"
 #include "code\_core\datum\ai\passive\crab.dm"

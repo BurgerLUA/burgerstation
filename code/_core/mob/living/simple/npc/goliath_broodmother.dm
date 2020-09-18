@@ -12,7 +12,7 @@
 
 	stun_angle = 0
 
-	health_base = 3000
+	health_base = 5000
 
 	var/boss_state = 0
 	//0 = walking
@@ -45,7 +45,6 @@
 		/obj/item/weapon/ranged/magic/tome/summon/goliath
 	)
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS

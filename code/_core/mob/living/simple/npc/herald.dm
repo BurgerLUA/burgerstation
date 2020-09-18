@@ -8,7 +8,7 @@
 	ai = /ai/boss/herald/
 	value = 3000
 
-	health_base = 1000
+	health_base = 2000
 
 	move_delay = 1
 
@@ -54,7 +54,6 @@
 	iff_tag = "Herald"
 	loyalty_tag = "Herald"
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS

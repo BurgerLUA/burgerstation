@@ -14,7 +14,7 @@
 
 	stun_angle = 0
 
-	health_base = 7500
+	health_base = 15000
 
 	attack_range = 2
 
@@ -38,7 +38,6 @@
 		ION = 0
 	)
 
-	damage_received_multiplier = 0.5
 	fatigue_from_block_mul = 0
 
 	status_immune = list(
