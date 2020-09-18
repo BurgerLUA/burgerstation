@@ -22,6 +22,11 @@
 	enemies_to_spawn_per_player = 2
 	enemies_to_spawn_per_minute = 0.15
 
+/gamemode/horde/xeno/get_enemy_types_to_spawn()
+	if(!tracked_xeno_queen && prob(1))
+		return list(/mob/living/simple/npc/xeno/queen)
+	return ..()
+
 
 /gamemode/horde/zombie
 	name = "Horde Mode (Zombies)"
