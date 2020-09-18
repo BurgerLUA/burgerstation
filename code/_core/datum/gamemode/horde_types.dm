@@ -36,7 +36,9 @@
 		/mob/living/advanced/npc/zombie/captain = 1,
 		/mob/living/advanced/npc/zombie/botanist = 10,
 		/mob/living/advanced/npc/zombie/chaplain = 5,
-		/mob/living/advanced/npc/zombie/security = 10
+		/mob/living/advanced/npc/zombie/security = 10,
+		/mob/living/advanced/npc/zombie/scientist = 5,
+		/mob/living/advanced/npc/zombie/librarian = 5
 	)
 	hidden = FALSE
 

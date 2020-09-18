@@ -152,7 +152,10 @@
 		/obj/item/container/medicine/burn_kit,
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
-		/obj/item/container/syringe/epinephrine,
+		/obj/item/container/syringe,
+		/obj/item/container/beaker/bottle/calomel,
+		/obj/item/container/beaker/bottle/charcoal,
+		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,
@@ -171,9 +174,7 @@
 		/obj/item/container/beaker/bottle/large,
 		/obj/item/container/beaker/bottle,
 		/obj/item/container/beaker,
-		/obj/item/container/beaker/large,
-		/obj/item/crafting/alchemy,
-		/obj/item/crafting/pill_press
+		/obj/item/container/beaker/large
 	)
 
 /obj/structure/interactive/vending/medical/wardrobe
