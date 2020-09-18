@@ -3,6 +3,8 @@
 	class = /class/antagonist
 	allow_save = FALSE
 
+	damage_received_multiplier = 0.5
+
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)
 	FINALIZE(src)
@@ -14,6 +16,8 @@
 
 	sex = pick(MALE,FEMALE)
 	gender = sex
+
+	default_appearance()
 
 	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
 
@@ -34,8 +38,5 @@
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)
 	handle_eyecolor_chargen(S.default_color_eye,FALSE)
-	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
-	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
-	src.add_organ(/obj/item/organ/internal/implant/groin/syndicate_explosive)
 	update_all_blends()
 	return TRUE

@@ -7,6 +7,9 @@
 
 #define COLOR_RED "#994444"
 #define COLOR_GREEN "#449944"
+#define COLOR_GREEN_MILITARY "#5F7F42"
+
+
 #define COLOR_BLUE "#444499"
 
 #define COLOR_YELLOW "#999944"

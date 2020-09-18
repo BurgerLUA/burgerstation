@@ -101,3 +101,21 @@
 	polymorphs = list(
 		"pants" = COLOR_GREY
 	)
+
+/obj/item/clothing/pants/normal/military_green
+	name = "military pants"
+	desc = "Eat pant."
+	desc_extended = "The signature pants of a revolutionary."
+	polymorphs = list(
+		"pants" = COLOR_GREEN_MILITARY
+	)
+
+	defense_rating = list(
+		BLADE = 20,
+		BLUNT = 15,
+		PIERCE = 20,
+		ARCANE = 10,
+		COLD = 25,
+	)
+
+	value = 70

@@ -2,8 +2,11 @@
 	name = "bite"
 	attack_verbs = list("bite")
 
-	hit_effect = /obj/effect/temp/impact/combat/bite
+	impact_sounds = list(
+		'sound/weapons/fists/bite.ogg'
+	)
 
+	hit_effect = /obj/effect/temp/impact/combat/bite
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -41,10 +44,6 @@
 /damagetype/unarmed/bite/zombie
 	name = "zombie bite"
 	attack_verbs = list("bite","chomp","gnaw")
-
-	impact_sounds = list(
-		'sound/weapons/fists/bite.ogg'
-	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

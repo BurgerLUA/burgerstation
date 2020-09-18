@@ -181,11 +181,13 @@
 
 	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object
+		/*
 		var/atom/defer_self = src.defer_click_on_object(location,control,params)
 		if(is_item(defer_self))
 			var/obj/item/self_as_item = defer_self
 			self_as_item.dropped_on_by_object(caller,object_as_item,location,control,params)
 			return TRUE
+		*/
 		if(src.add_object(object_as_item))
 			return TRUE
 

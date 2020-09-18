@@ -86,6 +86,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/tutorial = FALSE
 
+	damage_received_multiplier = 0.75
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 	click_and_drag_icon	= new(src)

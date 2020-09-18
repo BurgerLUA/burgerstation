@@ -4,7 +4,7 @@
 		/obj/item/clothing/feet/shoes/winter,
 		/obj/item/clothing/feet/shoes/winter/left,
 		/obj/item/clothing/back/storage/backpack/explorer,
-		/obj/item/clothing/belt/storage/tool/full,
+		/obj/item/clothing/belt/storage/tool,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
@@ -36,7 +36,7 @@
 		/obj/item/clothing/feet/shoes/winter,
 		/obj/item/clothing/feet/shoes/winter/left,
 		/obj/item/clothing/back/storage/backpack/explorer,
-		/obj/item/clothing/belt/storage/tool/full,
+		/obj/item/clothing/belt/storage/tool,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
@@ -151,4 +151,36 @@
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939
+	)
+
+
+/loadout/rev/player_antagonist
+	spawning_items = list(
+		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/feet/socks/ankle,
+		/obj/item/clothing/feet/socks/ankle,
+		/obj/item/clothing/pants/normal/military_green,
+		/obj/item/clothing/shirt/normal/military_green,
+		/obj/item/clothing/back/storage/backpack/explorer,
+		/obj/item/clothing/belt/storage/tool,
+		/obj/item/clothing/feet/shoes/winter,
+		/obj/item/clothing/feet/shoes/winter/left,
+		/obj/item/clothing/glasses/sun,
+		/obj/item/clothing/hands/gloves/colored/insulated,
+		/obj/item/clothing/hands/gloves/colored/insulated/left,
+		/obj/item/clothing/head/hat/ushanka,
+		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/mask/gas/mining,
+		/obj/item/clothing/neck/mantle/brown,
+		/obj/item/clothing/overwear/armor/bulletproof,
+		/obj/item/clothing/overwear/coat/winter,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
+		/obj/item/magazine/rifle_762_short,
+		/obj/item/magazine/rifle_762_short,
+		/obj/item/magazine/rifle_762_short,
+		/obj/item/magazine/rifle_762_short,
+		/obj/item/magazine/rifle_762_short,
+		/obj/item/magazine/rifle_762_short
 	)

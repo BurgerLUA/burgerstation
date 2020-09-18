@@ -102,3 +102,21 @@
 	polymorphs = list(
 		"shirt" = COLOR_GREY
 	)
+
+/obj/item/clothing/shirt/normal/military_green
+	name = "military shirt"
+	desc = "No stains here."
+	desc_extended = "The signature shirt of the revolutionary."
+	polymorphs = list(
+		"shirt" = COLOR_GREY
+	)
+
+	defense_rating = list(
+		BLADE = 20,
+		BLUNT = 15,
+		PIERCE = 20,
+		ARCANE = 10,
+		COLD = 25,
+	)
+
+	value = 70

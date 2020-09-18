@@ -660,6 +660,7 @@
 #include "code\_core\mob\living\advanced\player\topic.dm"
 #include "code\_core\mob\living\advanced\player\verbs.dm"
 #include "code\_core\mob\living\advanced\player\antagonist\_antagonist.dm"
+#include "code\_core\mob\living\advanced\player\antagonist\revolutionary.dm"
 #include "code\_core\mob\living\advanced\player\antagonist\syndicate.dm"
 #include "code\_core\mob\living\advanced\player\verbs\_verbs.dm"
 #include "code\_core\mob\living\advanced\stand\_stand.dm"

@@ -69,69 +69,108 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
+
+/obj/hud/button/become_antag/proc/can_become_antagonist(var/mob/caller)
+
+	if(!is_observer(caller))
+		caller.to_chat(span("notice","You cannot become an antag while your character is currently loaded!"))
+		return FALSE
+
+	var/client/C = caller.client
+
+	if(!C.globals.loaded_data)
+		caller.to_chat(span("warning","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
+		return FALSE
+	if(C.globals.loaded_data["antag_tokens"] <= 0)
+		caller.to_chat(span("notice","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
+		return FALSE
+
+	if(world_state != STATE_RUNNING)
+		caller.to_chat(span("notice","The game has not loaded yet!"))
+		return FALSE
+
+	if(!SSgamemode || !SSgamemode.active_gamemode)
+		caller.to_chat(span("notice","The game has not loaded yet!"))
+		return FALSE
+
+	var/gamemode_state = SSgamemode.active_gamemode.state
+
+	if(gamemode_state <= GAMEMODE_WAITING)
+		caller.to_chat(span("notice","The game has not started yet! Wait until the vote is complete until choosing an antagonist type!"))
+		return FALSE
+
+	if(gamemode_state >= GAMEMODE_FIGHTING)
+		caller.to_chat(span("notice","The game has already started! It's too late to become an antagonist!"))
+		return FALSE
+
+	if(gamemode_state >= GAMEMODE_BREAK)
+		caller.to_chat(span("notice","The round is currently ending!"))
+		return FALSE
+
+	if(length(all_antag_markers) <= 0)
+		caller.to_chat(span("notice","There are no available antag types!"))
+		return FALSE
+
+	return TRUE
+
+
+
 /obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		if(!is_observer(caller))
-			caller.to_chat(span("notice","You cannot become an antag while your character is currently loaded!"))
-			return TRUE
 
-		if(world_state != STATE_RUNNING)
-			caller.to_chat(span("notice","The game has not loaded yet!"))
-			return TRUE
-
-		if(length(all_antag_markers) <= 0)
-			caller.to_chat(span("notice","There are no available antag slots!"))
-			return TRUE
+		if(!can_become_antagonist(caller))
+			return ..()
 
 		var/client/C = caller.client
 
-		if(!SSgamemode || !SSgamemode.active_gamemode)
-			return FALSE
-
-		var/gamemode_state = SSgamemode.active_gamemode.state
-
-		if(gamemode_state <= GAMEMODE_WAITING)
-			caller.to_chat(span("notice","The game has not loaded yet!"))
-			return TRUE
-
 		var/choice = input("Are you sure you wish to spend an antag token to become an antagonist? You will spawn in as a Syndicate Assassin with predetermined gear.") as null|anything in list("Yes","No","Cancel")
-
-		if(!C.globals.loaded_data)
-			caller.to_chat(span("warning","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
-			return FALSE
-		if(C.globals.loaded_data["antag_tokens"] <= 0)
-			caller.to_chat(span("notice","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
-			return .
 
 		if(choice != "Yes")
 			caller.to_chat(span("notice","Good choice."))
 			return FALSE
 
-		if(gamemode_state >= GAMEMODE_FIGHTING)
-			caller.to_chat(span("notice","The game has already started!"))
-			return TRUE
+		var/list/valid_choices = list()
 
-		if(gamemode_state >= GAMEMODE_BREAK)
-			caller.to_chat(span("notice","The round is currently ending!"))
-			return TRUE
+		for(var/k_id in all_antag_markers)
+			var/list/list_of_markers = list(all_antag_markers[k_id])
+			if(!length(list_of_markers))
+				continue
+			valid_choices += k_id
 
-		if(length(all_antag_markers) <= 0)
-			caller.to_chat(span("notice","There aren't enough antag slots left! Better luck next time!"))
-			return TRUE
+		var/antagonist_choice = input("What antagonist do you wish to be?","Antagonist Selection.") as null|anything in valid_choices
+
+		if(!antagonist_choice)
+			caller.to_chat(span("notice","Good choice."))
+			return FALSE
+
+		if(!length(all_antag_markers))
+			caller.to_chat(span("warning","Someone stole your slot! There are no antagonist slots left!"))
+			return ..()
+
+		if(!antagonist_choice || !length(all_antag_markers[antagonist_choice]))
+			caller.to_chat(span("warning","Someone stole your slot! Pick another antagonist type!"))
+			return ..()
+
+		if(!can_become_antagonist(caller))
+			return ..()
+
+		var/obj/marker/antag/chosen_marker = pick(all_antag_markers[antagonist_choice])
+		all_antag_markers[antagonist_choice] -= chosen_marker
+		if(!length(all_antag_markers[antagonist_choice]))
+			all_antag_markers -= antagonist_choice
 
 		caller.client.globals.loaded_data["antag_tokens"] -= 1 //We don't save here because there might be an exploit where you don't save or something.
 		caller.to_chat(span("notice","You spend an antag token to become an antagonist. You now have [caller.client.globals.loaded_data["antag_tokens"]] token(s)."))
 		caller.client.globals.save()
 
-		var/obj/marker/antag/M = pick(all_antag_markers)
-		all_antag_markers -= M
 		var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
 		mobdata.reset_data()
-		var/mob/living/advanced/player/antagonist/syndicate/SP = new(get_turf(M),C)
-		SP.prepare()
+
+		var/mob/living/advanced/player/antagonist/P = new chosen_marker.spawn_type(get_turf(chosen_marker),C)
+		P.prepare()
 
 	return .
 
