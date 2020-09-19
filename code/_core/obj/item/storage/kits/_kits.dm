@@ -107,3 +107,28 @@
 	new /obj/item/container/syringe/epinephrine(src)
 	new /obj/item/analyzer/health(src)
 	return ..()
+
+/obj/item/storage/kit/ai3
+	name = "AI-3"
+	desc = "Ya like cheese?"
+	desc_extended = "A basic Russian-made AI-3 infantry first aid kit. Usually contains four pairs of high-volume injectors to treat every basic type of damage, as well as epinephrine and iron medipens."
+	icon_state = "ai3"
+
+	is_container = TRUE
+
+	size = SIZE_2
+	container_max_size = SIZE_1
+	dynamic_inventory_count = 10
+
+/obj/item/storage/kit/ai3/filled/fill_inventory()
+	new /obj/item/container/syringe/medipen/bicaridine(src)
+	new /obj/item/container/syringe/medipen/bicaridine(src)
+	new /obj/item/container/syringe/medipen/kelotane(src)
+	new /obj/item/container/syringe/medipen/kelotane(src)
+	new /obj/item/container/syringe/medipen/dylovene(src)
+	new /obj/item/container/syringe/medipen/dylovene(src)
+	new /obj/item/container/syringe/medipen/dexaline(src)
+	new /obj/item/container/syringe/medipen/dexaline(src)
+	new /obj/item/container/syringe/medipen/iron(src)
+	new /obj/item/container/syringe/medipen/epinephrine(src)
+	return ..()

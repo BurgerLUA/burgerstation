@@ -148,6 +148,75 @@
 		return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak12
+	name = "\improper 5.45x39mm AK-12"
+	desc = "A nuu cheeki breeki i v damkee!"
+	desc_extended = "Lettuce."
+	icon = 'icons/obj/item/weapons/ranged/rifle/auto_545.dmi'
+	icon_state = "inventory"
+	value = 450
+
+	shoot_delay = 1
+	view_punch = 5
+
+	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
+
+	can_wield = TRUE
+
+	automatic = TRUE
+
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
+	size = SIZE_4
+
+
+	heat_per_shot = 0.01
+	heat_max = 0.45
+
+	bullet_length_min = 38
+	bullet_length_best = 39
+	bullet_length_max = 40
+
+	bullet_diameter_min = 5.4
+	bullet_diameter_best = 5.45
+	bullet_diameter_max = 5.46  //Just so people wouldn't load this gun with 5.56, would be really-really weird to do so - Stalkeros
+
+	ai_heat_sensitivity = 1.5
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/bipod = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 23 - 16
+	attachment_undermount_offset_y = 18 - 16
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_static_spread() //Base spread
+	if(!wielded)
+		return 0.12
+	return 0.006
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_skill_spread(var/mob/living/L) //Base spread
+	if(!heat_current)
+		return 0
+	return max(0,0.04 - (0.07 * L.get_skill_power(SKILL_RANGED)))
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza
 	name = "\improper 9x39mm OTs-14 Groza"
 	desc = "No need to pull the pin now."
