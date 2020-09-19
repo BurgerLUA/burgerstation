@@ -46,8 +46,13 @@
 
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
+	if(alpha == 0)
+		return FALSE
+
 	if(source == src)
-		qdel(src)
+		alpha = 0
+		mouse_opacity = 0
+		queue_delete(src,60)
 	else
 		trigger(owner,source,-1,-1)
 

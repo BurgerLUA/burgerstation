@@ -161,6 +161,8 @@
 	announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	return TRUE
 
+/gamemode/horde/proc/get_enemy_types_to_spawn()
+	return enemy_types_to_spawn
 
 /gamemode/horde/proc/on_fighting()
 
@@ -191,7 +193,7 @@
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
-		var/mob/living/L = pickweight(enemy_types_to_spawn)
+		var/mob/living/L = pickweight(get_enemy_types_to_spawn())
 		L = new L(T)
 		INITIALIZE(L)
 		FINALIZE(L)

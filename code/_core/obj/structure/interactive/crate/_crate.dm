@@ -95,6 +95,7 @@
 
 	if(collect_contents_on_initialize && !open)
 		for(var/k in loc.contents)
+			CHECK_TICK(50,FPS_SERVER)
 			var/atom/movable/M = k
 			if(M == src || M.anchored)
 				continue
@@ -144,6 +145,7 @@
 
 	for(var/k in loc.contents)
 		var/atom/movable/M = k
+		CHECK_TICK(50,FPS_SERVER)
 		if(M == src)
 			continue
 		if(!can_store(M))
@@ -166,6 +168,7 @@
 		loot = null
 
 	for(var/k in crate_contents)
+		CHECK_TICK(50,FPS_SERVER)
 		var/atom/movable/M = k
 		crate_contents -= M
 		M.force_move(src.loc)

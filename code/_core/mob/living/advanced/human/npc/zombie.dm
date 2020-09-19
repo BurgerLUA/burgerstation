@@ -217,3 +217,23 @@
 /mob/living/advanced/npc/zombie/security
 	loadout_to_use = /loadout/zombie/security
 	level_multiplier = 4
+
+/mob/living/advanced/npc/zombie/librarian
+	loadout_to_use = /loadout/zombie/librarian
+	level_multiplier = 2
+
+/mob/living/advanced/npc/zombie/scientist
+	loadout_to_use = /loadout/zombie/scientist
+	level_multiplier = 1
+	var/dropped_vial = FALSE
+
+/mob/living/advanced/npc/zombie/scientist/post_death()
+
+	if(!dropped_vial)
+		var/obj/item/container/beaker/vial/zombie_antidote/ZA = new(get_turf(src))
+		INITIALIZE(ZA)
+		GENERATE(ZA)
+		FINALIZE(ZA)
+		dropped_vial = TRUE
+
+	return ..()

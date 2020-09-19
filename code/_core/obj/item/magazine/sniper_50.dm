@@ -33,17 +33,21 @@
 
 
 /obj/item/magazine/sniper_50/explosive
+	name = "\improper .50 sniper magazine - explosive"
 	icon_state = "50EXP"
 	ammo = /obj/item/bullet_cartridge/sniper_50/explosive
 
 /obj/item/magazine/sniper_50/ion
+	name = "\improper .50 sniper magazine - ion"
 	icon_state = "50ION"
 	ammo = /obj/item/bullet_cartridge/sniper_50/ion
 
 /obj/item/magazine/sniper_50/incendiary
+	name = "\improper .50 sniper magazine - incendiary"
 	icon_state = "50INC"
 	ammo = /obj/item/bullet_cartridge/sniper_50/incendiary
 
 /obj/item/magazine/sniper_50/ap
+	name = "\improper .50 sniper magazine - armor piercing"
 	icon_state = "50AP"
 	ammo = /obj/item/bullet_cartridge/sniper_50/ap

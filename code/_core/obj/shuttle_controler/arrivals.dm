@@ -10,6 +10,8 @@
 
 	status_id = "arrivals"
 
+	var/beepsky_fail_times = 0
+
 /obj/shuttle_controller/arrivals/Initialize()
 	. = ..()
 	linked_beepsky = locate() in get_area(src)
@@ -18,6 +20,14 @@
 /obj/shuttle_controller/arrivals/launch(var/mob/caller,var/desired_transit_time)
 
 	if(get_area(src) != get_area(linked_beepsky))
+		beepsky_fail_times++
+		if(beepsky_fail_times >= 5)
+			var/obj/marker/beepsky/BM = locate() in src.loc.loc.contents
+			if(BM)
+				linked_beepsky.force_move(BM)
+				beepsky_fail_times = 0
+			else
+				log_error("BEEPSKY IS STUCK!")
 		return FALSE
 
 	. = ..()

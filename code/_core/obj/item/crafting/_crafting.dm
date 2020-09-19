@@ -41,8 +41,7 @@
 
 	var/opening = FALSE
 
-	for(var/k in A.inventory)
-		var/obj/hud/inventory/crafting/I = k
+	for(var/obj/hud/inventory/crafting/I in A.inventory)
 		CHECK_TICK(100,FPS_SERVER*0.5)
 		I.alpha = 0
 		I.mouse_opacity = 0

@@ -1,3 +1,5 @@
+var/mob/living/simple/npc/xeno/queen/tracked_xeno_queen
+
 /mob/living/simple/npc/xeno/queen
 	name = "xeno queen"
 	id = "xeno_queen"
@@ -73,11 +75,27 @@
 
 	var/next_screech = 0
 
+/mob/living/simple/npc/xeno/queen/PostInitialize()
+
+	if(tracked_xeno_queen && tracked_xeno_queen == src)
+		tracked_xeno_queen = null
+	return ..()
+
+
+/mob/living/simple/npc/xeno/queen/Destroy()
+
+	if(tracked_xeno_queen && tracked_xeno_queen == src)
+		tracked_xeno_queen = null
+
+	return ..()
+
 /mob/living/simple/npc/xeno/queen/post_death()
 
 	. = ..()
 
 	play('sound/voice/xeno/queen_death.ogg',get_turf(src))
+
+	tracked_xeno_queen = null
 
 	return .
 

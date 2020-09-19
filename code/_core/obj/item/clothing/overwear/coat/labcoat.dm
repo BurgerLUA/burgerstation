@@ -35,3 +35,9 @@
 	polymorphs = list(
 		"base" = COLOR_MEDICAL
 	)
+
+/obj/item/clothing/overwear/coat/labcoat/scientist
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"shoulder" = COLOR_SCIENCE
+	)

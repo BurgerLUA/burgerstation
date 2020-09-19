@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(projectile)
 	tick_rate = PROJECTILE_TICK
 	priority = SS_ORDER_IMPORTANT
 
-	cpu_usage_max = 95
-	tick_usage_max = 95
+	cpu_usage_max = 100
+	tick_usage_max = 100
 
 	use_time_dialation = FALSE
 
@@ -15,7 +15,6 @@ SUBSYSTEM_DEF(projectile)
 
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k
-		CHECK_TICK(tick_usage_max,1)
 		P.update_projectile(tick_rate)
 
 	return TRUE

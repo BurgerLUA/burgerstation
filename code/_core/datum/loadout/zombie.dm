@@ -166,3 +166,27 @@
 
 	extra_weapon_chance = 90
 	extra_clothing_chance = 0
+
+/loadout/zombie/scientist
+
+	spawning_items = list(
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left,
+		/obj/item/clothing/pants/brown,
+		/obj/item/clothing/shirt/normal/medical,
+		/obj/item/clothing/neck/tie/red,
+		/obj/item/clothing/overwear/coat/labcoat/scientist
+	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/glasses/prescription = 3,
+		/obj/item/clothing/glasses/prescription/blue = 3,
+		/obj/item/clothing/glasses/medical_hud = 1,
+		/obj/item/clothing/head/hat/beret = 1
+	)
+
+	possible_extra_weapon = list()
+
+	extra_weapon_chance = 0
+	extra_clothing_chance = 50
+

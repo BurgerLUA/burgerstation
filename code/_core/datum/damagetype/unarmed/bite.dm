@@ -49,16 +49,14 @@
 	attack_damage_base = list(
 		BLADE = 10,
 		BLUNT = 5,
-		PIERCE = 20,
-		BIO = 30
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLADE = 75,
 		BLUNT = 75,
-		PIERCE = 75,
-		BIO = 0
+		PIERCE = 75
 	)
 
 
@@ -79,3 +77,11 @@
 	skill_damage = list(
 		SKILL_UNARMED = list(BLADE,BLUNT,PIERCE)
 	)
+
+
+/damagetype/unarmed/bite/zombie/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	if(total_damage_dealt >= 10 && victim && victim.reagents)
+		victim.reagents.add_reagent(/reagent/toxin/zombie_toxin,CEILING(total_damage_dealt*0.05,1))
+
+	return ..()

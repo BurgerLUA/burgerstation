@@ -26,6 +26,7 @@
 		else
 			A.click_and_drag_icon.color = "#FF0000"
 
+	/*
 	if(istype(over_inventory,/obj/hud/inventory/crafting/) && I.item_count_current > 1) //WE MINECRAFT NOW.
 		var/obj/item/existing_item = over_inventory.get_top_object()
 		if(!existing_item && I.add_item_count(-1))
@@ -33,6 +34,7 @@
 			I2.item_count_current = 1
 			I2.update_sprite()
 			over_inventory.add_object(I2)
+	*/
 
 	return ..()
 

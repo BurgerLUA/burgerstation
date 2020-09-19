@@ -616,3 +616,21 @@
 				L.queue_health_update = TRUE
 
 	return .
+
+
+/reagent/medicine/zombie_antidote
+	name = "zombie antidote"
+	desc = "An zombie bite immunity injection that automatically counter-acts zombie poison as long as the volume of the antidote exceeds the poison volume. Does not actually purge the medicine."
+	color = "#9FFF2A"
+	flavor = "not brains"
+	value = 15
+
+/reagent/medicine/zombie_antidote/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	return 0
+
+/reagent/medicine/zombie_antidote/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.reagents)
+		return owner.reagents.add_reagent(/reagent/medicine/zombie_antidote/,.*0.75)
+	return 0

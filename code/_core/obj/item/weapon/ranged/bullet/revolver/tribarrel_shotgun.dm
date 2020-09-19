@@ -21,7 +21,6 @@
 
 	size = SIZE_3
 
-
 	bullet_length_min = 73
 	bullet_length_best = 75
 	bullet_length_max = 78

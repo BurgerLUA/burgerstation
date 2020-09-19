@@ -22,6 +22,11 @@
 	enemies_to_spawn_per_player = 2
 	enemies_to_spawn_per_minute = 0.15
 
+/gamemode/horde/xeno/get_enemy_types_to_spawn()
+	if(!tracked_xeno_queen && prob(1))
+		return list(/mob/living/simple/npc/xeno/queen)
+	return ..()
+
 
 /gamemode/horde/zombie
 	name = "Horde Mode (Zombies)"
@@ -31,13 +36,11 @@
 		/mob/living/advanced/npc/zombie/captain = 1,
 		/mob/living/advanced/npc/zombie/botanist = 10,
 		/mob/living/advanced/npc/zombie/chaplain = 5,
-		/mob/living/advanced/npc/zombie/security = 10
+		/mob/living/advanced/npc/zombie/security = 10,
+		/mob/living/advanced/npc/zombie/scientist = 5,
+		/mob/living/advanced/npc/zombie/librarian = 5
 	)
 	hidden = FALSE
-
-	enemies_to_spawn_base = 20
-	enemies_to_spawn_per_player = 3
-	enemies_to_spawn_per_minute = 1
 
 
 /gamemode/horde/syndicate
