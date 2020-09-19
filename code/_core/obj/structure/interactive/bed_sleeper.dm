@@ -41,6 +41,8 @@ obj/structure/interactive/bed/sleeper/update_underlays()
 
 obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(door_state == SLEEPER_CLOSING || door_state == SLEEPER_OPENING)
 		return TRUE
 

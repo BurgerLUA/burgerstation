@@ -42,10 +42,6 @@
 	)
 	hidden = FALSE
 
-	enemies_to_spawn_base = 20
-	enemies_to_spawn_per_player = 3
-	enemies_to_spawn_per_minute = 1
-
 
 /gamemode/horde/syndicate
 	name = "Horde Mode (Syndicate)"

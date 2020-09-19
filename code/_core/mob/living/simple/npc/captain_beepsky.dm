@@ -20,3 +20,11 @@
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
+
+/mob/living/simple/npc/captain_beepsky/can_be_grabbed(var/atom/grabber,var/messages=FALSE)
+
+	if(messages && is_living(grabber))
+		var/mob/living/L = grabber
+		L.to_chat(span("warning","Beepsky instantly resists out of your grab!"))
+
+	return FALSE
