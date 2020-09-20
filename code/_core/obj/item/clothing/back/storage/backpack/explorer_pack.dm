@@ -26,16 +26,15 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/supply_crate/russian(src)
 
 	//1 Weapon
-	new /obj/item/weapon/ranged/bullet/magazine/rifle/ak13(src)
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/ak12(src)
 
 	//7 mags
-	new /obj/item/magazine/rifle_762_short(src)
-	new /obj/item/magazine/rifle_762_short(src)
-	new /obj/item/magazine/rifle_762_short(src)
-	new /obj/item/magazine/rifle_762_short(src)
-	new /obj/item/magazine/rifle_762_short(src)
-	new /obj/item/magazine/rifle_762_short(src)
-	new /obj/item/magazine/rifle_762_short(src)
+	new /obj/item/magazine/rifle_545(src)
+	new /obj/item/magazine/rifle_545(src)
+	new /obj/item/magazine/rifle_545(src)
+	new /obj/item/magazine/rifle_545(src)
+	new /obj/item/magazine/rifle_545(src)
+	new /obj/item/magazine/rifle_545(src)
 
 	//1 Vodka
 	new /obj/item/container/beaker/alcohol/vodka(src)

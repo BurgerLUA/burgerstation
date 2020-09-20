@@ -33,6 +33,8 @@
 /obj/item/clothing/neck/mantle/brown
 	color = "#603A20"
 
+/obj/item/clothing/neck/mantle/white
+	color = "#e9eef5"
 
 /obj/item/clothing/neck/mantle/daddy
 	name = "dad's bib"
