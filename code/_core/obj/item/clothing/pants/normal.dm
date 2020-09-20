@@ -69,7 +69,7 @@
 	)
 
 /obj/item/clothing/pants/normal/botany
-	name = "botanty pants"
+	name = "botany pants"
 	desc = "Good for plants."
 	desc_extended = "Good pants to wear if you're on your knees a lot. Also good for botany."
 	polymorphs = list(

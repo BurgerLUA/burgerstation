@@ -118,3 +118,11 @@
 		/obj/item/supply_crate/american,
 		/obj/item/supply_crate/american
 	)
+
+/obj/item/supply_remote/barbecue
+	name = "drop pod remote - Barbecue Kit"
+	desc_extended = "A special remote designed to drop cool essential things into the battlefield. This one contains a portable barbecue."
+	stored_object_types = list(
+		/obj/structure/smooth/table/grill/barbecue
+	)
+	value = 500

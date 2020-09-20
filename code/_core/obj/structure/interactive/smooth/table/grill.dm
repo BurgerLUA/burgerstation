@@ -7,6 +7,7 @@
 
 	corner_category = "table_reinforced"
 	corner_icons = FALSE
+	var/enabled = FALSE
 
 	layer = LAYER_TABLE
 
@@ -29,6 +30,10 @@
 			span("notice","\The [caller] name slides in \the [I.name] into \the [src.name]."),
 			span("notice","You slide in \the [I.name] into \the [src.name]."),
 		)
+		if(anchored == FALSE)
+			icon_state = "grill_on"
+			enabled = TRUE
+			update_atom_light()
 		return TRUE
 	else if(is_inventory(object))
 		var/obj/hud/inventory/I = object
@@ -37,28 +42,51 @@
 			caller.to_chat("\The [src.name] is empty!")
 			return TRUE
 		I.add_object(item_to_remove)
+		if(anchored == FALSE)
+			icon_state = "grill_open"
+			enabled = FALSE
+			update_atom_light()
 		return TRUE
-
 	return ..()
 
 /obj/structure/smooth/table/grill/Entered(var/atom/movable/O,var/atom/old_loc)
-	if(O.reagents)
+	if(O.reagents && anchored == TRUE)
 		O.reagents.special_temperature_mod += (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Exited(var/atom/movable/O,var/atom/new_loc)
-	if(O.reagents)
+	if(O.reagents && anchored == TRUE)
 		O.reagents.special_temperature_mod -= (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(O.reagents)
+	if(O.reagents && anchored == TRUE)
 		src.visible_message(span("notice","The [O.name] starts to cook."))
 		O.reagents.special_temperature_mod += (temperature_mod - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(O.reagents)
+	if(O.reagents && anchored == TRUE)
 		src.visible_message(span("notice","The [O.name] continues to cook off the grille."))
 		O.reagents.special_temperature_mod -= (temperature_mod - (T0C + 20))
 	return ..()
+
+
+/obj/structure/smooth/table/grill/barbecue
+	name = "electric portable grill"
+	desc = "I just wanna grill for god's sake."
+	desc_extended = "You can cook or heat up items by slotting it inside the grill. The grill turns on and off automatically."
+	icon = 'icons/obj/structure/grill.dmi'
+	icon_state = "grill"
+	anchored = FALSE
+	desired_light_range = VIEW_RANGE*0.2
+	desired_light_power = 1
+	desired_light_color = "#B82E00"
+	desired_light_angle = LIGHT_OMNI
+
+/obj/structure/smooth/table/grill/barbecue/update_atom_light()
+	if(enabled)
+		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
+	else
+		set_light(FALSE)
+	return TRUE

@@ -61,3 +61,13 @@
 		I.child_inventory = null
 	update_sprite()
 	return ..()
+
+/obj/item/weapon/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	if(length(polymorphs)) .["polymorphs"] = polymorphs
+	return .
+
+/obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	return .
