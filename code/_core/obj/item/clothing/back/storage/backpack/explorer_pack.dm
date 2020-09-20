@@ -35,6 +35,7 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/magazine/rifle_545(src)
 	new /obj/item/magazine/rifle_545(src)
 	new /obj/item/magazine/rifle_545(src)
+	new /obj/item/magazine/rifle_545(src)
 
 	//1 Vodka
 	new /obj/item/container/beaker/alcohol/vodka(src)

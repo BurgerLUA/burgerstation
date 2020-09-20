@@ -37,7 +37,7 @@
 		/obj/item/clothing/feet/shoes/winter/left,
 		/obj/item/clothing/back/storage/backpack/explorer,
 		/obj/item/clothing/belt/storage/tool,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
