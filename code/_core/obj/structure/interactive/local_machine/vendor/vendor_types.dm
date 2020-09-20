@@ -463,6 +463,7 @@
 		/obj/item/container/beaker/bowl,
 		/obj/item/container/beaker/large,
 		/obj/item/clothing/head/hat/paperbag,
+		/obj/item/supply_remote/barbecue,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
 	)
 
