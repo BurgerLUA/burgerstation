@@ -1470,7 +1470,7 @@
 #include "code\_core\world\announcement.dm"
 #include "code\_core\world\garbage.dm"
 #include "code\_core\world\life.dm"
-#include "code\_core\world\subsystems\_subsystems.dm"
+#include "code\_core\world\subsystems\__subsystems.dm"
 #include "code\_core\world\subsystems\admin.dm"
 #include "code\_core\world\subsystems\ai.dm"
 #include "code\_core\world\subsystems\ai_boss.dm"

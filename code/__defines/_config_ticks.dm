@@ -4,7 +4,6 @@
 #define BOSS_TICK 1 //Deciseconds per boss tick interval. Also handles movement.
 
 
-#define MOB_TICK 4 //FRAMES per mob movement tick interval.
 #define CLIENT_TICK 2 //FRAMES per life tick interval
 #define CLIENT_TICK_SLOW FPS_SERVER //FRAMES per slow life tick internval
 

@@ -125,7 +125,7 @@
 			if(bullet_count > 1)
 				local_angle = (i - (bullet_count / 2)) * (360/bullet_count)
 
-			new /obj/projectile/magic/crystal/ice(
+			var/obj/projectile/magic/crystal/ice/P = new(
 				get_turf(owner),
 				owner,
 				owner,
@@ -141,6 +141,8 @@
 				1,
 				owner.iff_tag
 			)
+			INITIALIZE(P)
+			FINALIZE(P)
 
 		projectile_ticks = delay_mod
 		projectiles_to_shoot -= 1

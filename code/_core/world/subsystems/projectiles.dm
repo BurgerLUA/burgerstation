@@ -1,6 +1,6 @@
-var/global/list/obj/projectile/all_projectiles = list()
 
-SUBSYSTEM_DEF(projectile)
+
+SUBSYSTEM_DEF(projectiles)
 	name = "Projectile Subsystem"
 	desc = "Controls projectiles."
 	tick_rate = PROJECTILE_TICK
@@ -11,7 +11,9 @@ SUBSYSTEM_DEF(projectile)
 
 	use_time_dialation = FALSE
 
-/subsystem/projectile/on_life()
+	var/list/obj/projectile/all_projectiles = list()
+
+/subsystem/projectiles/on_life()
 
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k

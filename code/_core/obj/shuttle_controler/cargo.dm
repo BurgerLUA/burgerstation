@@ -21,7 +21,8 @@
 		var/total_value = 0
 		for(var/obj/structure/interactive/crate/C in A.contents)
 			if(istype(C,/obj/structure/interactive/crate/secure))
-				qdel(C)
+				if(C.is_safe_to_delete(check_loc = FALSE))
+					qdel(C)
 			else
 				C.open()
 		for(var/atom/movable/O in A.contents)

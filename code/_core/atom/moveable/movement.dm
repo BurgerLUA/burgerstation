@@ -171,11 +171,11 @@
 /atom/movable/proc/can_move(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
 
 	if(!OldLoc)
-		CRASH_SAFE("Tried calling can_move without an OldLoc!")
+		log_error("Warning: [src.get_debug_name()] tried calling can_move() without an OldLoc!")
 		return FALSE
 
 	if(!NewLoc)
-		CRASH_SAFE("Tried calling can_move without an NewLoc!")
+		log_error("Warning: [src.get_debug_name()] tried calling can_move() without a NewLoc!")
 		return FALSE
 
 	if(!can_move_turf(OldLoc,NewLoc,real_dir))
@@ -194,6 +194,7 @@
 	if(!loc) //Use forcemove instead
 		return FALSE
 
+	/* No pixel movement
 	//Try Pixel Movement x
 	if(desired_step_x)
 		if(step_x + desired_step_x >= TILE_SIZE)
@@ -212,6 +213,7 @@
 		else if(step_y + desired_step_y < 0)
 			NewLoc = get_step(NewLoc,SOUTH)
 			stepped_y = -TILE_SIZE
+	*/
 
 	if(!NewLoc)
 		return FALSE

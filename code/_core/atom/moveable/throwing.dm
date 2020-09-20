@@ -14,8 +14,8 @@
 	P.appearance = src.appearance
 	P.pixel_x = src.pixel_x
 	P.pixel_y = src.pixel_y
-	P.pixel_x_float = src.pixel_x
-	P.pixel_y_float = src.pixel_y
+	//P.pixel_x_float = src.pixel_x
+	//P.pixel_y_float = src.pixel_y
 	P.lifetime = lifetime == -1 ? (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*6 : lifetime
 	P.steps_allowed = steps_allowed
 	P.mouse_opacity = 0
