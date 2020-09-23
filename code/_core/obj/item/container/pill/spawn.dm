@@ -26,6 +26,13 @@
 	reagents.add_reagent(/reagent/medicine/purge,20)
 	return ..()
 
+/obj/item/container/pill/charcoal
+	name = "charcoal pill (20u)"
+
+/obj/item/container/pill/charcoal/Generate()
+	reagents.add_reagent(/reagent/medicine/charcoal,20)
+	return ..()
+
 /obj/item/container/pill/iron
 	name = "iron pill (20u)"
 

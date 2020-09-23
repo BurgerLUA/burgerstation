@@ -67,6 +67,7 @@
 		play(pick(inventory_sounds),src)
 
 	for(var/obj/hud/button/crafting/B in A.buttons)
+		B.stored_crafting_table = src
 		if(opening)
 			animate(B,alpha=255,time=4)
 			B.mouse_opacity = 2
@@ -133,6 +134,7 @@
 			return FALSE
 		else
 			product_slot = R
+			break
 
 	var/list/item_table = generate_crafting_table(caller,src)
 

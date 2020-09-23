@@ -132,3 +132,21 @@
 	new /obj/item/container/syringe/medipen/iron(src)
 	new /obj/item/container/syringe/medipen/epinephrine(src)
 	return ..()
+
+
+/obj/item/storage/kit/advanced
+	name = "advanced first aid kit"
+	desc = "I hope you've got insurance."
+	desc_extended = "A first aid kit for healing when under pressure. Usually contains five pill bottles, each filled with bicaridine, dylovene, kelotane, iron and epinephrine pills. Also contains two epinephrine syringes and a health analyzer."
+	icon_state = "purple"
+
+/obj/item/storage/kit/advanced/filled/fill_inventory()
+	new /obj/item/container/medicine/trauma_kit/advanced(src)
+	new /obj/item/container/medicine/burn_kit/advanced(src)
+	new /obj/item/container/spray/synthflesh(src)
+	new /obj/item/container/spray/synthflesh(src)
+	new /obj/item/storage/pillbottle/charcoal(src)
+	new /obj/item/storage/pillbottle/omnizine(src)
+	new /obj/item/storage/pillbottle/iron(src)
+	new /obj/item/analyzer/health(src)
+	return ..()

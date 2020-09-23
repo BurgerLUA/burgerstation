@@ -335,6 +335,51 @@
 
 	return .
 
+
+/reagent/medicine/synthflesh
+	name = "synthflesh"
+	desc = "Experimental synthetic flesh. Significantly heals brute and burn damage of the affected limb instantly while dealing slight toxin damage. Also decreases natural healing regeneration delay."
+	color = "#FFEBEB"
+	flavor = "rotten flesh"
+	metabolism_skin = 1
+	value = 5
+	liquid = -0.5
+
+
+/reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+
+	. = ..()
+
+	if(. && is_living(target))
+		on_add(container,volume_to_splash*0.5,0)
+
+	return .
+
+
+/reagent/medicine/synthflesh/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=.)
+		. = 0
+
+	return .
+
+
+/reagent/medicine/synthflesh/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && owner.health)
+		if(is_living(owner.loc))
+			var/mob/living/L = owner.loc
+			L.health_regen_delay = max(0,L.health_regen_delay - .*10)
+
+	return .
+
+
+
 /reagent/medicine/adrenaline
 	name = "adrenaline"
 	desc = "Pure adrenaline. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, as well as a speed bonus."
@@ -503,7 +548,7 @@
 	metabolism_blood = METABOLISM_BLOOD * 5
 	metabolism_stomach = METABOLISM_BLOOD * 5
 
-	value = 5
+	value = 3
 
 /reagent/medicine/antihol/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

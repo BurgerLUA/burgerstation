@@ -114,3 +114,16 @@
 /obj/item/container/medicine/patch/burn/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,60)
 	return ..()
+
+/obj/item/container/medicine/patch/synthflesh
+	name = "regeneration patch (Synthflesh)"
+	desc = "For when you can't be bothered to use a syringe."
+	desc_extended = "Patches like these can't be used to cover wounds on their own, but can administer a great quantity of medicines really fast. Of course, giving too much medicines can be a way to speed up death rather than delay it, so be careful."
+	icon_state = "patch"
+
+/obj/item/container/medicine/patch/synthflesh/Generate()
+	reagents.add_reagent(/reagent/medicine/synthflesh,60)
+	return ..()
+
+
+

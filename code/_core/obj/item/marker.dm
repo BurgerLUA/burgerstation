@@ -37,6 +37,8 @@
 
 	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."))
 
+	log_rename("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
+
 	I.name = desired_name
 
 	caller.to_chat(span("notice","\The [src] is spent."))

@@ -18,17 +18,17 @@
 
 /mob/living/mod_speech(var/text)
 
-	if(intoxication >= 300)
+	if(intoxication >= 200)
 		var/list/exploded_words = splittext(text," ")
 		var/final_text = ""
 		for(var/word in exploded_words)
-			if(prob(intoxication/100))
+			if(prob(intoxication/150))
+				word = "*HICCUP* [word]"
+			else if(prob(intoxication/200))
 				word = "*BURP*"
-			else if(prob(intoxication/100))
-				word = "*HICCUP*"
-			else if(length(word) > 2 && prob(intoxication/10))
+			else if(length(word) > 3 && prob(intoxication/10))
 				var/list/exploded_letters = splittext(word,"")
-				var/min = 1
+				var/min = 2
 				var/max = exploded_letters-1
 				var/choice = rand(min,max)
 				exploded_letters.Swap(choice,choice+1)

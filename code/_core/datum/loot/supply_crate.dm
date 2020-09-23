@@ -6,7 +6,7 @@
 
 /loot/supply_crate/russian
 	loot_table = list(
-		/loot/medicine/pack = 10,
+		/obj/item/storage/kit/ai3/filled = 10,
 		/loot/weapon/abakan = 10,
 		/loot/weapon/groza = 10,
 		/loot/weapon/ak13 = 10,

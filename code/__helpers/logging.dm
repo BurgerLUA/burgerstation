@@ -1,9 +1,13 @@
 #define ERROR_DIR "error_log.txt"
+#define RENAME_DIR "data/server/rename_log.txt"
 
 
 /proc/log_error(var/log_text)
 	world.log << "<span class='error'>[log_text]</span>"
 	rustg_log_write(ERROR_DIR,log_text,"true")
+
+/proc/log_rename(var/log_text)
+	rustg_log_write(RENAME_DIR,log_text,"true")
 
 /proc/log_subsystem(var/subsystem_id,var/log_text)
 	world.log << "<span class='subsystem'><b><u>[subsystem_id]:</u></b> [log_text]</span>"

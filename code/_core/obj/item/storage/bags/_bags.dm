@@ -229,6 +229,16 @@
 		new /obj/item/container/pill/omnizine(src)
 	return ..()
 
+/obj/item/storage/pillbottle/charcoal
+	name = "charcoal pill bottle"
+	desc = "Contains 20 20u charcoal pills."
+
+/obj/item/storage/pillbottle/charcoal/fill_inventory()
+	for(var/i=1,i<=20,i++)
+		new /obj/item/container/pill/charcoal(src)
+	return ..()
+
+
 
 /obj/item/storage/pillbottle/antihol_small
 	name = "antihol bottle"
