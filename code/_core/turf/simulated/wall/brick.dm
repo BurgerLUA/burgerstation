@@ -12,3 +12,8 @@
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"
 	color = "#FFC68C"
+
+
+/turf/simulated/wall/brick/banana
+	name = "banana brick wall"
+	color = "#FFFF00"

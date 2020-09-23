@@ -6,7 +6,8 @@
 	icon = 'icons/obj/item/marker.dmi'
 	icon_state = "inventory"
 
-	value = 500
+	value = 50
+	value_burgerbux = 2
 
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

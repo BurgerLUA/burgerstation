@@ -4,7 +4,9 @@
 	desc = "NOT IMPORTANT."
 
 	var/obj/item/stored_item
+
 	var/stored_item_cost
+	var/stored_item_burgerbux_cost
 
 	icon = 'icons/obj/structure/shop.dmi'
 	icon_state = "debug"
@@ -48,15 +50,19 @@
 	. = ..()
 
 	if(stored_item)
+
 		stored_item.update_sprite()
 		update_sprite()
 
-		stored_item_cost = max(1,CEILING(stored_item.calculate_value(),1))
-
-		if(stored_item_cost == 1)
-			log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
-
-		name = "[stored_item.name] - [stored_item_cost] credits"
+		if(stored_item.value_burgerbux)
+			stored_item_burgerbux_cost = stored_item.value_burgerbux
+			stored_item_cost = 0
+			name = "[stored_item.name] - [stored_item_burgerbux_cost] burgerbux"
+		else
+			stored_item_cost = max(1,CEILING(stored_item.calculate_value(),1))
+			if(stored_item_cost == 1)
+				log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
+			name = "[stored_item.name] - [stored_item_cost] credits"
 
 	return .
 
@@ -110,7 +116,10 @@
 		var/list/contents = stored_item.inventory_to_list()
 		. += div("notice","It contains: [english_list(contents)]")
 
-	. += div("notice","This item is being sold for [stored_item_cost] credits.")
+	if(stored_item_burgerbux_cost)
+		. += div("notice","This item is being sold for [stored_item_burgerbux_cost] burgerbux.")
+	else
+		. += div("notice","This item is being sold for [stored_item_cost] credits.")
 
 	return .
 
@@ -118,7 +127,7 @@
 
 	INTERACT_CHECK
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return TRUE
 
 	var/mob/living/advanced/player/P = caller
@@ -130,8 +139,24 @@
 
 	var/obj/hud/inventory/I = defer_object
 
-	if(P.currency >= stored_item_cost && P.spend_currency(stored_item_cost)) //Just in case
-		spawn()
+	if(stored_item_burgerbux_cost)
+		var/savedata/client/globals/globals = caller.client.globals
+		var/currency = globals.loaded_data["burgerbux"]
+		if(currency >= stored_item_burgerbux_cost && P.spend_burgerbux(stored_item_burgerbux_cost))
+			var/obj/item/new_item = new stored_item.type(get_turf(src))
+			INITIALIZE(new_item)
+			GENERATE(new_item)
+			FINALIZE(new_item)
+			new_item.update_sprite()
+			I.add_object(new_item,TRUE)
+			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_burgerbux_cost] burgerbux."))
+			return TRUE
+
+		P.to_chat(span("notice","You don't have enough burgerbux ([stored_item_burgerbux_cost] burgerbux) to buy this!"))
+
+
+	else
+		if(P.currency >= stored_item_cost && P.spend_currency(stored_item_cost)) //Just in case
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
 			INITIALIZE(new_item)
 			GENERATE(new_item)
@@ -139,9 +164,11 @@
 			new_item.update_sprite()
 			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))
+			return TRUE
 
-		return TRUE
+		P.to_chat(span("notice","You don't have enough credits ([stored_item_cost] credits) to buy this!"))
 
-	P.to_chat(span("notice","You don't have enough credits ([stored_item_cost] credits) to buy this!"))
+
+
 
 	return TRUE

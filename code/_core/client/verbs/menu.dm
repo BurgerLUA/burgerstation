@@ -39,7 +39,7 @@
 	for(var/k in all_clients)
 		//var/client/C = all_clients[k]
 		if(SSadmin.stored_user_ranks[k])
-			var/rank/R = SSadmin.stored_user_ranks[k]
-			active_staff += "[k] ([R.name])"
+			var/list/ranks = SSadmin.stored_user_ranks[k]
+			active_staff += "[k] ([english_list(ranks)])"
 
 	to_chat("<b>[length(active_staff)] Online Staff</b><br>[english_list(active_staff)]")

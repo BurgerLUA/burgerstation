@@ -33,4 +33,4 @@
 /mob/living/advanced/player/proc/spend_burgerbux(var/currency_to_spend)
 	if(currency < currency_to_spend)
 		return FALSE
-	return -adjust_currency(-currency_to_spend)
+	return -adjust_burgerbux(-currency_to_spend)

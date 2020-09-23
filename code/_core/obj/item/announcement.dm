@@ -6,6 +6,7 @@
 	icon_state = "captain"
 
 	value = 3000
+	value_burgerbux = 10
 
 	var/sound_to_play = 'sound/voice/station/attention.ogg'
 
@@ -45,10 +46,10 @@
 		return FALSE
 
 	if(!sender)
-		sender = caller.name
+		sender = "Central Command Portable Announcement System."
 
 	if(!title)
-		title = caller.name
+		title = "Message from [caller.name]"
 
 	if(print_owner)
 		message = "[message]<br> -[caller.name]"

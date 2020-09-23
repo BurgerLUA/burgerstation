@@ -2,6 +2,8 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	var/value_burgerbux
+
 	var/last_marker //The last person to name this item. Used for moderation purposes.
 
 	layer = LAYER_OBJ_ITEM
