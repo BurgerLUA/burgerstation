@@ -14,8 +14,6 @@
 	icon_state = "[initial(icon_state)]_[icon_count]"
 	return ..()
 
-
-
 /obj/item/cable/proc/treat(var/mob/caller,var/atom/A)
 
 	if(heal_burn)
@@ -63,6 +61,8 @@
 	if(is_inventory(object))
 		return ..()
 
+	var/self_treat = caller == object
+
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
@@ -71,7 +71,7 @@
 		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
 	if(can_be_treated(caller,object))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+		PROGRESS_BAR(caller,src,self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME,.proc/treat,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
 		return TRUE
 

@@ -196,6 +196,7 @@
 	)
 
 	defense_rating = CYBORG_ARMOR
+	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/hand/cyborg/left
 	name = "left cyborg hand"

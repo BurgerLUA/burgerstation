@@ -74,6 +74,7 @@
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
 	defense_rating = CYBORG_ARMOR
+	health = /health/obj/item/organ/synthetic
 
 
 //Beefman

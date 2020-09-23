@@ -91,6 +91,7 @@
 	desc = "An organ."
 
 	defense_rating = CYBORG_ARMOR
+	health = /health/obj/item/organ/synthetic
 
 
 //beef

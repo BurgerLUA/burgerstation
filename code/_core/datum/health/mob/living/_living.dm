@@ -1,5 +1,6 @@
 /health/mob/living/
 	var/has_bloodloss = TRUE
+	organic = TRUE
 
 
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object)

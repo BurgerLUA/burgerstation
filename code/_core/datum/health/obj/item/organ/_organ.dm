@@ -1,3 +1,6 @@
+/health/obj/item/organ/
+	organic = TRUE
+
 /health/obj/item/organ/update_health_stats()
 
 	if(!is_organ(owner))
@@ -102,3 +105,7 @@
 		return FALSE
 
 	return A.health.adjust_fatigue_loss(value)
+
+
+/health/obj/item/organ/synthetic
+	organic = FALSE

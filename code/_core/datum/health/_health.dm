@@ -36,6 +36,8 @@
 		FATIGUE = 0
 	)
 
+	var/organic = FALSE
+
 /health/New(var/desired_owner)
 	owner = desired_owner
 	return ..()

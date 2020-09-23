@@ -90,6 +90,7 @@
 	desc = "An organ."
 
 	defense_rating = CYBORG_ARMOR
+	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/torso/beefman
 	name = "beefman torso"

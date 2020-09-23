@@ -170,6 +170,9 @@
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
 	defense_rating = CYBORG_ARMOR
+	health = /health/obj/item/organ/synthetic
+
+
 
 /obj/item/organ/foot/cyborg/left
 	name = "left cyborg foot"
