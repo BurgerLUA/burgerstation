@@ -100,3 +100,56 @@
 
 
 	value = 400
+
+/obj/item/clothing/overwear/hardsuit/skat
+	name = "SKAT-9"
+	icon = 'icons/obj/item/clothing/suit/skat.dmi'
+	desc = "RIP Stingray."
+	desc_extended = "This modern military armored suit is designed for assault operations in anomalous areas. Comprises a PSZ-12p heavy military armored suit, built-in compensation suit, and an anomalous protection bodysuit. The armor provides excellent protection against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Does not come with an artifact container, as there's literally no artifacts anywhere. You know, different universe."
+	rarity = RARITY_UNCOMMON
+
+	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
+
+	defense_rating = list(
+		BLADE = 75,
+		BLUNT = 75,
+		PIERCE = 100,
+		LASER = 75,
+		ARCANE = -250,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 75
+	)
+
+	size = SIZE_7
+
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/skat)
+
+	slowdown_mul_worn = 1.5
+
+	value = 1050
+
+/obj/item/clothing/head/helmet/hardsuit/skat
+	name = "SKAT-9 full-head mask/helmet assembly"
+	icon = 'icons/obj/item/clothing/hats/helmet_skat.dmi'
+	desc = "Milstalkers are just military but hetero."
+	desc_extended = "So, it's an SKAT's helmet. It protects. It is cool, because milstalkers are cool."
+	rarity = RARITY_RARE
+
+	defense_rating = list(
+		BLADE = 75,
+		BLUNT = 75,
+		PIERCE = 100,
+		LASER = 100,
+		ARCANE = -250,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 75
+	)
+
+	size = SIZE_4
+
+
+	value = 550
