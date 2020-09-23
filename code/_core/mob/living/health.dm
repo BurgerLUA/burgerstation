@@ -106,38 +106,21 @@
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
 		var/butcher_mod = (src.health.health_max + src.health.health_current)*0.1
 		if(blade_damage > max(10,butcher_mod))
-			if(L.can_butcher(weapon,src))
+			if(L.can_be_butchered(weapon,src))
 				L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
 				PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
-				PROGRESS_BAR_CONDITIONS(L,L,.proc/can_butcher,weapon,src)
+				PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
 		else
 			L.to_chat("You weaken \the [src.name] for butchering...")
 
 	return .
 
-/mob/living/proc/can_butcher(var/obj/item/butcher_item,var/mob/living/butcher_target)
+/mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item)
 
-	if(butcher_target.qdeleting)
-		to_chat(span("warning","They were already butchered!"))
-		return FALSE
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(butchering_item)
 
-	if(!butcher_item || !butcher_target)
-		to_chat(span("warning","You can't butcher that!"))
-		return FALSE
-
-	if(!is_inventory(butcher_item.loc))
-		to_chat(span("warning","You must be holding \the [butcher_item.name] to butcher \the [butcher_target.name]!"))
-		return FALSE
-
-	if(!isturf(butcher_target.loc))
-		to_chat(span("warning","You can't butcher \the [butcher_target.name] in there!"))
-		return FALSE
-
-	if(get_dist(src,butcher_target) > 1 || get_dist(src,butcher_item) > 1)
-		to_chat(span("warning","You're too far way to butcher \the [butcher_target.name]!"))
-		return FALSE
-
-	if(!butcher_target.dead)
+	if(!src.dead)
 		to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))
 		return FALSE
 

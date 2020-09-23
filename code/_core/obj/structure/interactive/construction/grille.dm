@@ -13,14 +13,13 @@
 	bullet_block_chance = 50
 
 /obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/caller,var/obj/item/material/sheet/S)
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(S)
 	if(istype(src.loc,/obj/structure/smooth/window/))
-		caller.to_chat("There is already a window here... somehow.")
+		caller.to_chat("There is already a window here!")
 		return FALSE
 	if(S.item_count_current < 4)
 		caller.to_chat(span("warning","You need 4 glass sheets in order to build a wall!"))
-		return FALSE
-	if(get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
 

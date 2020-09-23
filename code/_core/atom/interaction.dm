@@ -69,6 +69,9 @@
 
 /atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)
 
+	if(!caller || caller.qdeleting)
+		return FALSE
+
 	. = FALSE
 
 	if(is_living(caller))

@@ -62,12 +62,10 @@
 	update_sprite()
 	return TRUE
 
-
 /obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,target) > 1)
-		caller.to_chat("You're too far away!")
-		return FALSE
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(target)
 
 	if(!target || !target.reagents)
 		caller.to_chat("You can't target this!")
@@ -78,31 +76,33 @@
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(is_inventory(object))
+	if(is_inventory(defer_object))
 		return ..()
 
-	if(istype(object,/obj/item/container/))
+	if(istype(defer_object,/obj/item/container/))
 		inject(caller,object,injecting ? inject_amount : -draw_amount)
 		return TRUE
 
-	else if(can_inject(caller,object))
+	var/self_inject = caller == object
 
-		var/real_object_name = object.name
+	if(can_inject(caller,defer_object))
 
-		if(is_organ(object) && is_living(object.loc))
-			real_object_name = "[object.loc.name]'s [object.name]"
+		var/real_object_name = defer_object.name
+
+		if(is_organ(defer_object) && is_living(object))
+			real_object_name = "[object.name]'s [object.name]"
 
 		var/transfer_amount = 0
 		if(injecting)
 			transfer_amount = inject_amount
 			caller.visible_message("\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!")
 		else
-			caller.visible_message("\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!")
+			caller.visible_message("\The [caller.name] tries to draw blood from \the [real_object_name] with \the [src.name]!")
 			transfer_amount = -draw_amount
 
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/inject,caller,object,transfer_amount)
+		PROGRESS_BAR(caller,src,self_inject ? BASE_INJECT_TIME_SELF : BASE_INJECT_TIME,.proc/inject,caller,object,transfer_amount)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,object)
 
 	return TRUE

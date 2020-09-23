@@ -43,16 +43,15 @@
 
 /obj/item/cable/proc/can_be_treated(var/mob/caller,var/atom/target)
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(target)
+
 	if(!is_organ(target) && !is_living(target))
 		caller.to_chat("You can't treat this!")
 		return FALSE
 
 	if(!target || !target.health)
 		caller.to_chat("You can't treat this!")
-		return FALSE
-
-	if(get_dist(caller,target) > 1)
-		caller.to_chat("You're too far away!")
 		return FALSE
 
 	return TRUE

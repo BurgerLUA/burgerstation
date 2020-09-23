@@ -19,13 +19,7 @@
 
 /obj/item/proc/can_strip(var/mob/caller)
 
-	if(src.qdeleting)
-		caller.to_chat(span("warning","That doesn't exist!"))
-		return FALSE
-
-	if(get_dist(src,caller) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
-		return FALSE
+	INTERACT_CHECK
 
 	if(!istype(loc,/obj/hud/inventory/organs/))
 		caller.to_chat(span("warning","That's not there anymore!"))
@@ -37,6 +31,9 @@
 		return FALSE
 
 	var/mob/living/L = I.owner
+
+	INTERACT_CHECK_OTHER(L)
+
 	if(!L.dead)
 		caller.to_chat(span("warning","You can't remove clothing from living people!"))
 		return FALSE

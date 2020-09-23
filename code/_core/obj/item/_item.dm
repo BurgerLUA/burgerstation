@@ -500,15 +500,17 @@
 	return T.qdeleting ? null : T
 
 /obj/item/proc/feed(var/mob/caller,var/mob/living/target)
-	if(reagents && can_feed(caller,target))
-		var/reagent_container/R = get_reagents_to_consume()
-		if(R) R.consume(caller,target)
-		return TRUE
-	return FALSE
+	var/reagent_container/R = get_reagents_to_consume()
+	if(!R)
+		return FALSE
+	R.consume(caller,target)
+	return TRUE
 
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+
+	var/self_feed = caller == defer_object
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
@@ -517,7 +519,7 @@
 			return TRUE
 
 	if(can_feed(caller,defer_object))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/feed,caller,defer_object)
+		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,.proc/feed,caller,defer_object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
 		return TRUE
 
@@ -538,6 +540,9 @@
 
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(target)
+
 	if(!is_living(target))
 		return FALSE
 
@@ -550,10 +555,6 @@
 		return FALSE
 
 	var/mob/living/L = target
-
-	if(get_dist(caller,target) > 1)
-		caller?.to_chat(span("warning","They're too far away!"))
-		return FALSE
 
 	if(caller != target && L.ckey_last && !L.ckey && !L.dead)
 		caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))

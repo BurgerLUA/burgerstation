@@ -26,12 +26,10 @@
 
 /mob/living/advanced/proc/can_uncuff(var/mob/caller)
 
+	INTERACT_CHECK
+
 	if(src.qdeleting)
 		caller.to_chat(span("warning","That doesn't exist!"))
-		return FALSE
-
-	if(get_dist(src,caller) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	if(!handcuffed)

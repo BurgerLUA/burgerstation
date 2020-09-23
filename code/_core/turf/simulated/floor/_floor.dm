@@ -119,15 +119,14 @@
 
 /turf/simulated/floor/proc/can_construct_frame(var/mob/caller,var/obj/item/material/rod/R)
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(R)
+
 	if(R.item_count_current < 2)
 		caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))
 		return FALSE
 
 	if(!src.can_construct_on(caller,/obj/structure/interactive/construction/frame/))
-		return FALSE
-
-	if(get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	return TRUE

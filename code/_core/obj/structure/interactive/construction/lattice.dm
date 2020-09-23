@@ -40,6 +40,11 @@
 	return TRUE
 
 /obj/structure/interactive/construction/lattice/proc/can_construct_floor_plating(var/mob/caller,var/obj/item/material/sheet/S)
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(S)
+
+
 	if(istype(src.loc,/turf/simulated/floor/plating/))
 		caller.to_chat("There is already a floor plating here!")
 		return FALSE
@@ -48,9 +53,6 @@
 		return FALSE
 	if(S.material_id != material_id)
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
-		return FALSE
-	if(get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
 

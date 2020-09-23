@@ -10,9 +10,9 @@
 		if(2 to 3)
 			desired_premium_amount = 0.03
 		if(3 to 4)
-			desired_premium_amount = 0.02
-		if(4 to INFINITY)
 			desired_premium_amount = 0.01
+		if(4 to INFINITY)
+			desired_premium_amount = 0
 	if(desired_premium_amount > insurance_premiums)
 		if(messages) to_chat(span("warning","Your insurance premiums have increased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>..."))
 		insurance_premiums = desired_premium_amount

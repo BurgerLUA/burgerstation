@@ -72,6 +72,12 @@
 	reagents_2?.transfer_reagents_to(T,reagents_2.volume_current)
 	return T.qdeleting ? null : T
 
+/obj/item/container/pill/feed(var/mob/caller,var/mob/living/target)
+	. = ..()
+	if(.) qdel(src)
+	return .
+
+/*
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(!is_living(object))
@@ -85,6 +91,7 @@
 	qdel(src)
 
 	return TRUE
+*/
 
 /obj/item/container/pill/Generate()
 	. = ..()

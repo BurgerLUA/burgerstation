@@ -32,14 +32,16 @@
 	return TRUE
 
 /obj/structure/interactive/construction/frame/proc/can_construct_lattice(var/mob/caller,var/obj/item/material/rod/R)
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(R)
+
+
 	if(R.item_count_current < 2)
 		caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))
 		return FALSE
 	if(R.material_id != material_id)
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
-		return FALSE
-	if(get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
 

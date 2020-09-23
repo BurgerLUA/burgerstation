@@ -88,9 +88,6 @@
 /obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	return clicked_on_by_object(caller,object,location,control,params)
 
-/obj/item/proc/can_empty_contents()
-
-
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
 	if(get_dist(src,object) > 1)

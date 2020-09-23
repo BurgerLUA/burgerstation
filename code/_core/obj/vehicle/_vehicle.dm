@@ -291,9 +291,7 @@
 
 /mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
 
-	if(get_dist(src,caller) > 1)
-		caller.to_chat("You're too far away!")
-		return FALSE
+	INTERACT_CHECK
 
 	if(length(passengers) >= passengers_max)
 		caller.to_chat("\The [src.name] is full!")

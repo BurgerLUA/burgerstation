@@ -14,7 +14,7 @@
 
 	var/verb_to_use = "treat"
 
-	var/treatment_time = 5
+	var/treatment_time_mul = 1
 
 	item_count_current = 5
 	item_count_max = 10
@@ -96,16 +96,15 @@
 
 /obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(target)
+
 	if(!is_organ(target) && !is_living(target))
 		caller.to_chat("You can't treat this!")
 		return FALSE
 
 	if(!target || !target.health)
 		caller.to_chat("You can't treat this!")
-		return FALSE
-
-	if(get_dist(caller,target) > 1)
-		caller.to_chat("You're too far away!")
 		return FALSE
 
 	return TRUE
@@ -117,6 +116,8 @@
 	if(is_inventory(object))
 		return ..()
 
+	var/self_treat = caller == object
+
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
@@ -125,7 +126,7 @@
 		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
 	if(can_be_treated(caller,object))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+		PROGRESS_BAR(caller,src,(self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME) * treatment_time_mul,.proc/treat,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
 		return TRUE
 

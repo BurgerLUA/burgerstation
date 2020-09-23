@@ -30,9 +30,8 @@
 
 /obj/item/handcuffs/proc/can_cuff(var/mob/caller,var/mob/living/advanced/target)
 
-	if(get_dist(caller,target) > 1 || get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
-		return FALSE
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(target)
 
 	if(target.handcuffed)
 		caller.to_chat(span("warning","\The [target.name] is already handcuffed!"))

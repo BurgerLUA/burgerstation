@@ -38,7 +38,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 5*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -49,7 +49,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 4*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -65,7 +65,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 10*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -75,7 +75,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 8*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -94,7 +94,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.burn_regen_buffer += 5*.
-		L.health_regen_delay = 0
+
 
 
 	return .
@@ -105,7 +105,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.burn_regen_buffer += 4*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -124,7 +124,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.05 : 0) + 5)*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -134,7 +134,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.04 : 0) + 4)*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -183,7 +183,7 @@
 		L.brute_regen_buffer += 4*.
 		L.burn_regen_buffer += 4*.
 		L.tox_regen_buffer += 4*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -195,7 +195,7 @@
 		L.brute_regen_buffer += 3*.
 		L.burn_regen_buffer += 3*.
 		L.tox_regen_buffer += 3*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -220,7 +220,7 @@
 		L.brute_regen_buffer += 3*.
 		L.burn_regen_buffer += 3*.
 		L.tox_regen_buffer += 3*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -232,7 +232,7 @@
 		L.brute_regen_buffer += 3*.
 		L.burn_regen_buffer += 3*.
 		L.tox_regen_buffer += 3*.
-		L.health_regen_delay = 0
+
 
 	return .
 
@@ -329,7 +329,7 @@
 			if(L.health)
 				owner.health.adjust_loss_smart(brute=.*-5,update=FALSE)
 				L.brute_regen_buffer += 3*.
-				L.health_regen_delay = 0
+
 		else
 			owner.health.adjust_loss_smart(brute=.*-5)
 
@@ -417,7 +417,7 @@
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 5*.
 		L.burn_regen_buffer += 5*.
-		L.health_regen_delay = 0
+
 
 	return .
 

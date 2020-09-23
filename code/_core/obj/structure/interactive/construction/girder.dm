@@ -11,6 +11,10 @@
 	bullet_block_chance = 90
 
 /obj/structure/interactive/construction/girder/proc/can_construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(S)
+
 	if(istype(src.loc,/turf/simulated/wall/))
 		caller.to_chat("There is already a wall here... somehow.")
 		return FALSE
@@ -19,9 +23,6 @@
 		return FALSE
 	if(S.material_id != material_id)
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
-		return FALSE
-	if(get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
 

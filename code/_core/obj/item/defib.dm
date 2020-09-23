@@ -48,9 +48,8 @@
 
 /obj/item/defib/proc/can_defib_target(var/mob/caller,var/mob/living/target)
 
-	if(get_dist(caller,target) > 1)
-		caller.to_chat("You're too far away!")
-		return FALSE
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(target)
 
 	return TRUE
 
