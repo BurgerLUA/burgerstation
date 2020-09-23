@@ -74,10 +74,10 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 /obj/item/weapon/ranged/bullet/revolver/horse/get_static_spread() //Base spread
-	return 0.002
+	return 0
 
 /obj/item/weapon/ranged/bullet/revolver/horse/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/revolver/horse/click_self(var/mob/caller)
 	rotate_cylinder(-1)

@@ -74,7 +74,8 @@
 	return 0.08
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_static_spread() //Base spread
-	return 0.002
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_skill_spread(var/mob/living/L) //Base spread
+	if(!heat_current) return 0
 	return max(0,0.05 - (0.1 * L.get_skill_power(SKILL_RANGED)))

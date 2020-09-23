@@ -74,8 +74,7 @@
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L) //Base spread
-	if(!heat_current)
-		return 0
+	if(!heat_current) return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/abakan
@@ -281,8 +280,7 @@
 	return 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_skill_spread(var/mob/living/L) //Base spread
-	if(!heat_current)
-		return 0
+	if(!heat_current) return 0
 	return max(0,0.008 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val
@@ -343,14 +341,13 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread() //Base spread
-	if(!wielded)
-		return 0.04
-	return 0.002
+	if(!wielded) return 0.04
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_skill_spread(var/mob/living/L) //Base spread
 	if(!heat_current)
 		return 0
-	return max(0,0.014 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez
 	name = "\improper 9x39mm VSS Vintorez"
@@ -416,12 +413,12 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread() //Base spread
-	if(!wielded)
-		return 0.02
+	if(!wielded) return 0.005
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.02 - (0.004 * L.get_skill_power(SKILL_RANGED)))
+	if(!heat_current) return 0
+	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
 

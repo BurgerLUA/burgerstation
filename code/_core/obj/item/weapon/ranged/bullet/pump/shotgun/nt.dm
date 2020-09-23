@@ -60,13 +60,12 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_base_spread() //For multiple bullets
-	return 0.05
-
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread() //Base spread
-	if(!wielded)
-		return 0.1
-	return 0.001
+	return 0.004
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	if(!heat_current) return 0
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_base_spread()
+	return 0.012

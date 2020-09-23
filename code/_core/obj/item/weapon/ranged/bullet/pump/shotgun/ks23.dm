@@ -73,10 +73,11 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
-	return 0.12
+	return 0.015
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_static_spread() //Base spread
-	return 0.004
+	return 0.003
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_skill_spread(var/mob/living/L) //Base spread
+	if(!heat_current) return 0
 	return max(0,0.025 - (0.01 * L.get_skill_power(SKILL_RANGED)))

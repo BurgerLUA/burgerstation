@@ -40,6 +40,8 @@
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
+	shoot_delay = 10
+
 	value = 1200
 
 /obj/item/weapon/ranged/magic/staff/fire/New()
@@ -60,7 +62,7 @@
 	cost_charge = 250
 	total_charge = 1000
 
-	shoot_delay = 20
+	shoot_delay = 15
 
 	projectile_speed = 4
 
@@ -108,6 +110,8 @@
 
 	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 
+	shoot_delay = 10
+
 	value = 1000
 
 /obj/item/weapon/ranged/magic/staff/focus
@@ -120,6 +124,7 @@
 
 	projectile_speed = 31
 	bullet_count = 1
+	shoot_delay = 10
 
 	icon = 'icons/obj/item/weapons/ranged/magic/focus.dmi'
 
@@ -137,7 +142,7 @@
 
 	projectile_speed = 15
 	bullet_count = 1
-	shoot_delay = 4
+	shoot_delay = 10
 
 	can_wield = TRUE
 

@@ -43,7 +43,7 @@
 
 
 /obj/item/weapon/ranged/energy/captain/get_static_spread() //Base spread
-	return 0.02
+	return 0
 
 /obj/item/weapon/ranged/energy/captain/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.03 - (0.6 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

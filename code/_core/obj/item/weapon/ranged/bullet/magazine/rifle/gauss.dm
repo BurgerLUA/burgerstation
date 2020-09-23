@@ -57,7 +57,8 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
+	if(!heat_current) return 0
+	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
 

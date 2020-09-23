@@ -67,19 +67,15 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_base_spread() //For multiple bullets
-	return 0.06
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
-	return TRUE
-
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread() //Base spread
-	if(!wielded)
-		return 0.1
-	return 0.001
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	if(!heat_current) return 0
+	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_base_spread()
+	return 0.0075
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
 	name = "12 gauge modified combat shotgun"
@@ -111,7 +107,8 @@
 	return 0.003
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	if(!heat_current) return 0
+	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_base_spread()
 	return 0.01

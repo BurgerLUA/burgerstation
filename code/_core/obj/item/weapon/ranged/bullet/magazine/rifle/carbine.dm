@@ -87,6 +87,7 @@
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(var/mob/living/L) //Base spread
+	if(!heat_current) return 0
 	return max(0,0.02 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")

@@ -65,9 +65,10 @@
 	attachment_undermount_offset_y = 16 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L) //Base spread
+	if(!heat_current) return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/update_icon()

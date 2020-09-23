@@ -70,14 +70,12 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread() //Base spread
-	if(!wielded)
-		return 0.2
+	if(!wielded) return 0.2
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_skill_spread(var/mob/living/L) //Base spread
-	if(!heat_current)
-		return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	if(!heat_current) return 0
+	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod

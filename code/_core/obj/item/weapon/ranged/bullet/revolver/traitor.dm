@@ -70,7 +70,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
-	return 0.01
+	return 0
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))

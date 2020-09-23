@@ -70,9 +70,8 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_static_spread() //Base spread
-	return 0.02
+	return 0.0075
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_skill_spread(var/mob/living/L) //Base spread
-	if(!heat_current)
-		return 0
+	if(!heat_current) return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))

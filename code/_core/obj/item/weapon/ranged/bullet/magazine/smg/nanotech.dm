@@ -74,10 +74,11 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_static_spread() //Base spread
-	return 0.02
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+	if(!heat_current) return 0
+	return 0.02 - (0.04 * L.get_skill_power(SKILL_RANGED))
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/equipped/Generate()
