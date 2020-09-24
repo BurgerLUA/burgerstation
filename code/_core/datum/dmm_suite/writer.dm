@@ -61,7 +61,8 @@ dmm_suite
 			startX > world.maxx             || \
 			startY > world.maxy             || \
 			startZ > world.maxz                \
-		) CRASH_SAFE("Dimensions outside valid range")
+		)
+			CRASH_SAFE("Dimensions outside valid range")
 		// Create dmm_suite comments to store in map file
 		var /dmm_suite/comment/mapComment = new(locate(startX, startY, startZ))
 		mapComment.coordinates = "[startX],[startY],[startZ]"

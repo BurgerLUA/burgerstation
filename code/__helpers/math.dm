@@ -9,12 +9,12 @@
 
 /proc/nice_number(var/input)
 
-	var/absolute = abs(number)
+	var/absolute = abs(input)
 
 	if(absolute >= 1000000)
-		return "[FLOOR(number/1000000,0.1)]m"
+		return "[FLOOR(input/1000000,0.1)]m"
 
 	else if(absolute >= 10000)
-		return "[FLOOR(number/1000,0.1)]k"
+		return "[FLOOR(input/1000,0.1)]k"
 
-	return "[number]"
+	return "[input]"

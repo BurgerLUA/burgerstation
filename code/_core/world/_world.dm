@@ -61,17 +61,11 @@ var/global/world_state = STATE_STARTING
 
 	return TRUE
 
-/*
+
 /world/Error(var/exception/e)
-	var/name = e.name
-	var/file = e.file
-	var/line = e.line
-	var/desc = e.desc
-
-	broadcast_to_role("<span class='system error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>",TEXT_OOC,FLAG_PERMISSION_DEVELOPER)
-
+	log_error("[e.name] in [e.file]:[e.line].\n[e.desc]")
 	return TRUE
-*/
+
 
 /world/Del()
 	SSdiscord.send_message("Shutting down world...")

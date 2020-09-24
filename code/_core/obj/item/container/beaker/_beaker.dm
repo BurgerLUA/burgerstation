@@ -7,8 +7,6 @@
 	icon = 'icons/obj/item/container/cup/beaker.dmi'
 	icon_state = "beaker"
 
-
-
 	reagents = /reagent_container/beaker/
 
 	var/icon_count = 7
