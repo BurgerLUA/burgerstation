@@ -60,6 +60,17 @@
 
 	liquid = -0.25
 
+/reagent/silver
+	name = "Silver"
+	desc = "What most lifeforms build weapons out of."
+	color = COLOR_SILVER
+
+	flavor = "metal"
+
+	liquid = -0.25
+
+
+
 /reagent/oxygen //Found in the snow biome as a magic plant
 	name = "Liquid Oxygen"
 	desc = "What most lifeforms breathe in.."
@@ -110,11 +121,36 @@
 	liquid = 0.4
 
 /reagent/salt
-	name = "salt"
+	name = "table salt"
 	desc = "Down here, everything is salt."
 	color = "#FFFFFF"
 
 	flavor = "salt"
 	flavor_strength = 4
 
+	liquid = -0.9
+
+/reagent/salt/sodium_chloride
+	name = "sodium chloride"
+	desc = "The purest form of salt. Harvested only from the saltiest of Burgerstation players."
+	color = "#FFFFFF"
+
+	flavor = "salt"
+	flavor_strength = 10
+
 	liquid = -1
+
+
+/reagent/ash
+	name = "Ash"
+
+/reagent/ammonia
+	name = "Ammonia"
+
+/reagent/sulfur
+	name = "Sulfur"
+
+	flavor = "sewer"
+
+/reagent/chlorine
+	name = "Chlorine"

@@ -23,7 +23,7 @@
 	for(var/k in list_to_use)
 		CHECK_TICK(75,FPS_SERVER*4)
 		var/ai/AI = k
-		if(!AI || AI.owner || AI.owner.dead || AI.objective_attack)
+		if(!AI || AI.qdeleting || !AI.owner || AI.owner.qdeleting || AI.owner.dead || AI.objective_attack)
 			continue
 		if(!within_range(AI.owner,epicenter,VIEW_RANGE))
 			continue

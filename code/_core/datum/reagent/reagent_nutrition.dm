@@ -71,6 +71,13 @@
 
 	liquid = -0.4
 
+/reagent/nutrition/sugar/glucose
+	name = "glucose"
+	desc = "sugar broken down into its purest form: glucose"
+	nutrition_amount = 20
+
+	liquid = -0.6
+
 /reagent/nutrition/sugar/cane
 	name = "cane sugar"
 	desc = "Unprocessed sugarcane sugar."

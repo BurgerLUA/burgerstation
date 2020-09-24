@@ -458,11 +458,8 @@
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 5*.
-		L.burn_regen_buffer += 5*.
-
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
 
 	return .
 

@@ -72,6 +72,10 @@
 	if(!caller || caller.qdeleting)
 		return FALSE
 
+	if(!ismob(caller))
+		CRASH_SAFE("Tried passing a non-mob as a caller!")
+		return FALSE
+
 	. = FALSE
 
 	if(is_living(caller))

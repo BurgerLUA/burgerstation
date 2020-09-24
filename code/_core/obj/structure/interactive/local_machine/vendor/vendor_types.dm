@@ -396,12 +396,47 @@
 
 /obj/structure/interactive/vending/smart_fridge/chemistry
 	name = "chemistry smart fridge"
-	stored_types = list(
-		/obj/item/container/beaker/bottle/epinephrine,
-		/obj/item/container/beaker/bottle/dylovene,
-		/obj/item/container/beaker/bottle/kelotane,
-		/obj/item/container/beaker/bottle/bicaridine
+	stored_types = list()
+
+	var/list/chemicals_to_make = list(
+		/reagent/carbon,
+		/reagent/iron,
+		/reagent/oxygen,
+		/reagent/nitrogen,
+		/reagent/silicon,
+		/reagent/potassium,
+		/reagent/salt/sodium_chloride,
+		/reagent/nutrition/sugar/glucose,
+		/reagent/fuel/welding,
+		/reagent/fuel/hydrogen,
+		/reagent/ammonia,
+		/reagent/sulfur,
+		/reagent/chlorine,
+		/reagent/nutrition/water
 	)
+
+/obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
+
+	for(var/k in chemicals_to_make)
+		var/reagent/R = REAGENT(k)
+		if(!R) continue
+		var/obj/item/container/beaker/B = new(T)
+		INITIALIZE(B)
+		GENERATE(B)
+		B.reagents.add_reagent(R.type,B.reagents.volume_max - B.reagents.volume_current)
+		B.name = "beaker of [R.name]"
+		FINALIZE(B)
+
+	return .
+
+/obj/structure/interactive/vending/smart_fridge/chemistry/Finalize()
+	. = ..()
+	sortTim(stored_objects, /proc/cmp_name_dsc)
+	return .
 
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"

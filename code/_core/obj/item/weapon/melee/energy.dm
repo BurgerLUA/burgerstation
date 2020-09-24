@@ -59,32 +59,36 @@
 
 
 /obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
-	var/obj/item/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(defer_object.flags_tool & FLAG_TOOL_MULTITOOL)
-		if(length(polymorphs))
-			var/choice = input("What do you want to change the color of?","Color Selection") as null|anything in polymorphs
 
-			INTERACT_CHECK
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-			if(!choice)
-				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+	if(is_item(defer_object))
+		var/obj/item/I = defer_object
+		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
+			if(length(polymorphs))
+				var/choice = input("What do you want to change the color of?","Color Selection") as null|anything in polymorphs
+
+				INTERACT_CHECK
+
+				if(!choice)
+					caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+					return ..()
+
+				var/color = "#FFFFFF"
+				var/choice_color = input("What would you like the new color to be?") as color|null
+
+				INTERACT_CHECK
+
+				if(choice_color)
+					color = choice_color
+					polymorphs[choice] = blend_colors(polymorphs[choice],color,1000)
+					caller.to_chat(span("notice","You change \the [src.name]'s color."))
+				else
+					caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+					return ..()
+				update_icon()
 				return ..()
-
-			var/color = "#FFFFFF"
-			var/choice_color = input("What would you like the new color to be?") as color|null
-
-			INTERACT_CHECK
-
-			if(choice_color)
-				color = choice_color
-				polymorphs[choice] = blend_colors(polymorphs[choice],color,1000)
-				caller.to_chat(span("notice","You change \the [src.name]'s color."))
-			else
-				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
-				return ..()
-			update_icon()
-			return ..()
 
 
 /obj/item/weapon/melee/energy/sword/

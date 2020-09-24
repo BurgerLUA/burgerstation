@@ -1,3 +1,8 @@
+#define BEAKER(x) \
+/obj/item/container/beaker/large##x/Generate() { \
+	reagents.add_reagent(##x,reagents.volume_max); \
+	return ..();}
+
 /obj/item/container/beaker/large
 	name = "large beaker"
 	icon = 'icons/obj/item/container/cup/beaker_large.dmi'
@@ -27,7 +32,6 @@
 /obj/item/container/beaker/large/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
-
 
 /obj/item/container/beaker/large/grenade_water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max*0.5)

@@ -71,11 +71,19 @@ var/global/list/equipped_antags = list()
 	var/turf/T = get_turf(src)
 
 	for(var/S in stored_types)
-		var/obj/item/I = new S(src.loc)
+		var/obj/item/I = new S(T)
 		INITIALIZE(I)
 		GENERATE(I)
 		FINALIZE(I)
 	stored_types.Cut()
+
+	return ..()
+
+/obj/structure/interactive/vending/Finalize()
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
 
 	for(var/obj/item/I in T.contents)
 		stored_objects += I
@@ -83,7 +91,7 @@ var/global/list/equipped_antags = list()
 		I.plane = PLANE_HUD_OBJ
 		I.pixel_y = 4
 
-	return ..()
+	return .
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

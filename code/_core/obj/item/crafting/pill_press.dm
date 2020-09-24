@@ -35,12 +35,12 @@
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
-	if(!item_table["b2"] || !is_beaker(item_table["b1"]))
-		caller.to_chat(span("notice","There must be a beaker in the left slot in order to make a pill!"))
+	if(!item_table["b2"] || !is_beaker(item_table["b2"]))
+		caller.to_chat(span("notice","There must be a beaker in the left-most slot in order to make a pill!"))
 		return FALSE
 
-	if(item_table["b3"] && !is_beaker(item_table["b2"]))
-		caller.to_chat(span("notice","There must be a beaker in the right slot in order to make a double pill!"))
+	if(item_table["b3"] || !is_beaker(item_table["b3"]))
+		caller.to_chat(span("notice","There must be a beaker in the right-most slot in order to make a double pill!"))
 		return FALSE
 
 	var/obj/item/container/beaker/I1 = item_table["b2"]
