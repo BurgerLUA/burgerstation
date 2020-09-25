@@ -190,3 +190,127 @@
 	extra_weapon_chance = 0
 	extra_clothing_chance = 50
 
+
+/loadout/zombie/clown
+	spawning_items = list(
+		/obj/item/clothing/uniform/clown,
+		/obj/item/clothing/feet/shoes/clown,
+		/obj/item/clothing/feet/shoes/clown/left,
+		/obj/item/clothing/hands/gloves/colored,
+		/obj/item/clothing/hands/gloves/colored/left
+	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/mask/gas/clown = 1
+	)
+
+	possible_extra_weapon = list(
+		/obj/item/fluff/bikehorn = 3,
+		/obj/item/container/pill/space_drugs = 1,
+		/obj/item/container/pill/space_dust = 1
+
+	)
+
+	extra_weapon_chance = 40
+	extra_clothing_chance = 85
+
+/loadout/zombie/medical
+	spawning_items = list(
+		/obj/item/clothing/overwear/coat/labcoat/medical,
+		/obj/item/clothing/underbottom/underwear/boxers/medical,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/shirt/normal/medical,
+		/obj/item/clothing/pants/normal/medical,
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left,
+		/obj/item/clothing/hands/gloves/colored,
+		/obj/item/clothing/hands/gloves/colored/left
+	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/neck/tie/red = 1,
+		/obj/item/clothing/overwear/coat/labcoat/medical = 4,
+		/obj/item/clothing/glasses/prescription = 1,
+	)
+
+	possible_extra_weapon = list(
+		/obj/item/storage/kit/brute/filled = 1,
+		/obj/item/storage/kit/burn/filled = 1,
+		/obj/item/storage/kit/toxin/filled = 1,
+		/obj/item/storage/kit/brute/filled = 1
+	)
+
+	extra_weapon_chance = 30
+	extra_clothing_chance = 85
+
+/loadout/zombie/chemist
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/uniform/chemist,
+		/obj/item/clothing/overwear/coat/labcoat/chemist,
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left,
+		/obj/item/clothing/hands/gloves/colored,
+		/obj/item/clothing/hands/gloves/colored/left,
+		/obj/item/clothing/neck/tie/red
+	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/mask/gas = 3,
+		/obj/item/clothing/glasses/prescription = 1,
+	)
+
+	possible_extra_weapon = list(
+				/obj/item/container/syringe = 1,
+				/obj/item/container/beaker = 1,
+				/obj/item/storage/pillbottle/iron_small = 2,
+				/obj/item/storage/pillbottle/antihol_small = 1,
+	)
+
+	extra_weapon_chance = 40
+	extra_clothing_chance = 85
+
+/loadout/zombie/bartender
+	spawning_items = list(
+		/obj/item/clothing/feet/shoes/colored/black,
+		/obj/item/clothing/feet/shoes/colored/black/left,
+		/obj/item/clothing/neck/tie/red,
+		/obj/item/clothing/pants/normal/security,
+		/obj/item/clothing/shirt/normal
+	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/glasses/sun = 1
+	)
+
+	possible_extra_weapon = list(
+		/obj/item/container/beaker/alcohol/whiskey = 3,
+		/obj/item/container/beaker/alcohol/beer = 4,
+		/obj/item/container/beaker/glass = 1,
+		/obj/item/container/beaker/shot = 1
+	)
+
+	extra_weapon_chance = 50
+	extra_clothing_chance = 85
+
+/loadout/zombie/chef
+	spawning_items = list(
+		/obj/item/clothing/feet/shoes/colored/black,
+		/obj/item/clothing/feet/shoes/colored/black/left,
+		/obj/item/clothing/pants/normal/security,
+		/obj/item/clothing/shirt/normal,
+		/obj/item/clothing/overwear/coat/apron/chef
+	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/head/hat/chef = 1
+	)
+
+	possible_extra_weapon = list(
+		/obj/item/weapon/melee/sword/sabre = 5,
+		/obj/item/container/beaker/food/sugar = 1,
+		/obj/item/container/beaker/bottle/large/water = 1
+	)
+
+	extra_weapon_chance = 80
+	extra_clothing_chance = 75

@@ -227,6 +227,27 @@
 	level_multiplier = 1
 	var/dropped_vial = FALSE
 
+/mob/living/advanced/npc/zombie/clown
+	loadout_to_use = /loadout/zombie/clown
+	level_multiplier = 8
+
+/mob/living/advanced/npc/zombie/medical
+	loadout_to_use = /loadout/zombie/medical
+	level_multiplier = 4
+
+/mob/living/advanced/npc/zombie/chemist
+	loadout_to_use = /loadout/zombie/chemist
+	level_multiplier = 4
+
+/mob/living/advanced/npc/zombie/bartender
+	loadout_to_use = /loadout/zombie/bartender
+	level_multiplier = 3
+
+/mob/living/advanced/npc/zombie/chef
+	loadout_to_use = /loadout/zombie/chef
+	level_multiplier = 3
+
+
 /mob/living/advanced/npc/zombie/scientist/post_death()
 
 	if(!dropped_vial)

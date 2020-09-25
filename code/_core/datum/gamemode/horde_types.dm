@@ -38,7 +38,13 @@
 		/mob/living/advanced/npc/zombie/chaplain = 5,
 		/mob/living/advanced/npc/zombie/security = 10,
 		/mob/living/advanced/npc/zombie/scientist = 5,
-		/mob/living/advanced/npc/zombie/librarian = 5
+		/mob/living/advanced/npc/zombie/librarian = 5,
+		/mob/living/advanced/npc/zombie/clown = 2,
+		/mob/living/advanced/npc/zombie/medical = 3,
+		/mob/living/advanced/npc/zombie/chemist = 2,
+		/mob/living/advanced/npc/zombie/bartender = 2,
+		/mob/living/advanced/npc/zombie/chef = 2
+
 	)
 	hidden = FALSE
 
