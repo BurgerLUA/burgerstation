@@ -45,3 +45,10 @@
 	desc_extended = "A catalog featuring the many items you can buy from cargo."
 	data = SScargo.catalog_data
 	return .
+
+/obj/item/paper/book/chemistry/Initialize()
+	. = ..()
+	name = "reference: Chemistry"
+	desc_extended = "A catalog featuring all the medical recipes known to man."
+	data = SSreagent.stored_book_data["Chemistry"]
+	return .

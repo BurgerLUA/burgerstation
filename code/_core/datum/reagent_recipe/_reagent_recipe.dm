@@ -3,6 +3,7 @@
 /reagent_recipe/
 	var/name = "reagent recipe"
 	var/desc = "A recipe for a reagent."
+	var/category = "None" //For books
 
 	var/list/required_reagents = list()
 

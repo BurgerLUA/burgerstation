@@ -32,10 +32,6 @@ SUBSYSTEM_DEF(cargo)
 			cargo_id_to_type[md5_hash] = P
 			sortTim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
 
-	for(var/k in cargo_id_to_type)
-		var/v = cargo_id_to_type[k]
-		LOG_DEBUG("[k]: [v]")
-
 	var/item_count = 1
 
 	var/list/cached_text = ""

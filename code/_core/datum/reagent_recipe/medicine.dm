@@ -1,4 +1,7 @@
-/reagent_recipe/bicaridine
+/reagent_recipe/medicine/
+	category = "Chemistry"
+
+/reagent_recipe/medicine/bicaridine
 
 	name = "Bicaridine"
 
@@ -12,7 +15,7 @@
 		/reagent/medicine/bicaridine = 3
 	)
 
-/reagent_recipe/kelotane
+/reagent_recipe/medicine/kelotane
 
 	name = "Kelotane"
 
@@ -26,7 +29,7 @@
 	)
 
 
-/reagent_recipe/dylovene
+/reagent_recipe/medicine/dylovene
 
 	name = "Dylovene"
 
@@ -40,7 +43,7 @@
 		/reagent/medicine/dylovene = 3
 	)
 
-/reagent_recipe/tricordrazine
+/reagent_recipe/medicine/tricordrazine
 
 	name = "Tricordrazine"
 
@@ -54,7 +57,7 @@
 		/reagent/medicine/tricordrazine = 3
 	)
 
-/reagent_recipe/charcoal
+/reagent_recipe/medicine/charcoal
 
 	name = "Charcoal"
 
@@ -72,7 +75,7 @@
 		/reagent/salt/sodium_chloride = 380
 	)
 
-/reagent_recipe/silver_sulfadiazine
+/reagent_recipe/medicine/silver_sulfadiazine
 	name = "Silver Sulfadiazine"
 	required_reagents = list(
 		/reagent/ammonia = 1,

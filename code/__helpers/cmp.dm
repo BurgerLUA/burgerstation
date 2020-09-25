@@ -22,6 +22,12 @@
 /proc/cmp_name_dsc(atom/a, atom/b)
 	return sorttext(a.name, b.name)
 
+/proc/cmp_recipe_name_asc(var/reagent_recipe/A,var/reagent_recipe/B)
+	return sorttext(B.name, A.name)
+
+/proc/cmp_recipe_name_dsc(var/reagent_recipe/A,var/reagent_recipe/B)
+	return sorttext(A.name, B.name)
+
 // Datum cmp with vars is always slower than a specialist cmp proc, use your judgement.
 /proc/cmp_datum_numeric_asc(datum/a, datum/b, variable)
 	return cmp_numeric_asc(a.vars[variable], b.vars[variable])

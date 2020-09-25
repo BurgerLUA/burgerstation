@@ -1,5 +1,9 @@
-/reagent_recipe/explosion_water_potassium
-	name = "water potassium explosion"
+/reagent_recipe/explosion/
+	category = "Explosions"
+
+/reagent_recipe/explosion/water_potassium
+	name = "Water-Potassium Explosion"
+	category = "Explosions"
 	required_reagents = list(
 		/reagent/nutrition/water = 1,
 		/reagent/potassium = 1
@@ -7,7 +11,7 @@
 
 	results = list()
 
-/reagent_recipe/explosion_water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
 
 	var/turf/explosion_location = get_turf(container.owner)
 

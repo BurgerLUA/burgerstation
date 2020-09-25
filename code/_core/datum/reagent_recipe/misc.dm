@@ -1,4 +1,7 @@
-/reagent_recipe/ash
+/reagent_recipe/chemistry/
+	category = "Chemistry"
+
+/reagent_recipe/chemistry/ash
 
 	name = "Ash"
 
@@ -14,7 +17,7 @@
 		/reagent/fuel/oil/carbon = 480
 	)
 
-/reagent_recipe/oil/
+/reagent_recipe/chemistry/oil/
 
 	name = "Crude Oil"
 
@@ -27,7 +30,7 @@
 		/reagent/fuel/oil/crude = 2
 	)
 
-/reagent_recipe/oil/carbon
+/reagent_recipe/chemistry/oil/carbon
 
 	name = "Carbonized Oil"
 
@@ -41,7 +44,7 @@
 	)
 
 
-/reagent_recipe/ammonia
+/reagent_recipe/chemistry/ammonia
 
 	name = "Ammonia"
 

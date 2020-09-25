@@ -1,4 +1,7 @@
-/reagent_recipe/dough/
+/reagent_recipe/food/
+	category = "Food"
+
+/reagent_recipe/food/dough/
 
 	name = "wheat grain dough"
 
@@ -13,7 +16,7 @@
 
 	result = /obj/item/container/food/dynamic/bread
 
-/reagent_recipe/dough/flour
+/reagent_recipe/food/dough/flour
 
 	name = "whole wheat flour dough"
 
@@ -28,7 +31,7 @@
 
 	result = /obj/item/container/food/dynamic/bread
 
-/reagent_recipe/dough/flour/processed
+/reagent_recipe/food/dough/flour/processed
 
 	name = "white flour dough"
 
@@ -44,7 +47,7 @@
 	result = /obj/item/container/food/dynamic/bread
 
 
-/reagent_recipe/bread/
+/reagent_recipe/food/bread/
 
 	name = "wheat grain bread"
 
@@ -60,7 +63,7 @@
 		/reagent/nutrition/bread = 1
 	)
 
-/reagent_recipe/bread/flour
+/reagent_recipe/food/bread/flour
 
 	name = "whole wheat flour bread"
 
@@ -76,7 +79,7 @@
 		/reagent/nutrition/bread/flour = 1
 	)
 
-/reagent_recipe/bread/flour/processed
+/reagent_recipe/food/bread/flour/processed
 
 	name = "white flour bread"
 
@@ -92,7 +95,7 @@
 		/reagent/nutrition/bread/flour/processed = 1
 	)
 
-/reagent_recipe/cake_batter/
+/reagent_recipe/food/cake_batter/
 
 	name = "cake batter"
 
@@ -109,7 +112,7 @@
 
 	result = /obj/item/container/food/dynamic/cake
 
-/reagent_recipe/icing_sugar
+/reagent_recipe/food/icing_sugar
 	name = "icing sugar"
 
 	required_reagents = list(
@@ -121,7 +124,7 @@
 		/reagent/nutrition/sugar/icing = 1
 	)
 
-/reagent_recipe/icing
+/reagent_recipe/food/icing
 	name = "icing"
 
 	required_reagents = list(

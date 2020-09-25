@@ -2,6 +2,18 @@
 	var/cost_charge = 100
 	var/total_charge = 1000
 
+
+/obj/item/weapon/ranged/magic/staff/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("total_charge")
+	return .
+
+/obj/item/weapon/ranged/magic/staff/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("total_charge")
+	return .
+
+
 /obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller)
 
 	if(total_charge < cost_charge)

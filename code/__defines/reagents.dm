@@ -1,3 +1,6 @@
+#define RECIPE(x) SSreagent.all_reagent_recipes[x]
+
+
 #define REAGENT_METABOLISM_NONE 0x0
 #define REAGENT_METABOLISM_INGEST 0x1
 #define REAGENT_METABOLISM_BLOOD 0x2

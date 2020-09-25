@@ -28,7 +28,7 @@
 
 /reagent_container/Destroy()
 	owner = null
-	all_reagent_containers -= src
+	SSreagent.all_reagent_containers -= src
 	return ..()
 
 /reagent_container/proc/get_contents_english()
@@ -52,7 +52,7 @@
 
 	. = ..()
 
-	all_reagent_containers += src
+	SSreagent.all_reagent_containers += src
 
 	return .
 
@@ -236,11 +236,11 @@
 
 	var/reagent_recipe/found_recipe = null
 
-	for(var/k in all_reagent_recipes)
+	for(var/k in SSreagent.all_reagent_recipes)
 
 		CHECK_TICK(75,FPS_SERVER)
 
-		var/reagent_recipe/recipe = all_reagent_recipes[k]
+		var/reagent_recipe/recipe = SSreagent.all_reagent_recipes[k]
 
 		if(debug) LOG_DEBUG("Checking [recipe]...")
 
