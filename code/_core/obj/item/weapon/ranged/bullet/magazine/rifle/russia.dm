@@ -155,7 +155,7 @@
 	icon_state = "inventory"
 	value = 450
 
-	shoot_delay = 1
+	shoot_delay = 1.75
 	view_punch = 5
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
@@ -192,7 +192,9 @@
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/angled_grip = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16
@@ -201,7 +203,7 @@
 	attachment_sight_offset_x = 13 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 23 - 16
+	attachment_undermount_offset_x = 22 - 15
 	attachment_undermount_offset_y = 18 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
