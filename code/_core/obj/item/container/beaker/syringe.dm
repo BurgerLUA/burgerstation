@@ -78,6 +78,13 @@
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		var/list/new_x_y = A.get_current_target_cords(params)
+		params[PARAM_ICON_X] = new_x_y[1]
+		params[PARAM_ICON_Y] = new_x_y[2]
+		defer_object = defer_object.get_object_to_damage(caller,src,params,TRUE,TRUE)
+
 	if(!defer_object.reagents)
 		return ..()
 
@@ -115,12 +122,12 @@
 		if(is_organ(object))
 			if(is_living(object.loc))
 				var/mob/living/L = object.loc
-				L.draw_blood(caller,src,amount)
+				L.draw_blood(caller,src,-amount)
 			else
 				caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object] with \the [src]!"))
 		else if(is_living(object))
-			var/mob/living/L = object.loc
-			L.draw_blood(caller,src,amount)
+			var/mob/living/L = object
+			L.draw_blood(caller,src,-amount)
 		else if(object.reagents)
 			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount)
 			if(transfer_amount)

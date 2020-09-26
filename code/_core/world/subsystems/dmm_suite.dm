@@ -5,6 +5,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	desc = "Map loading and saving."
 	priority = SS_ORDER_DMM
 
+	var/map_name
+
 /subsystem/dmm_suite/Initialize()
 
 	dmm_suite = new()
@@ -25,12 +27,13 @@ SUBSYSTEM_DEF(dmm_suite)
 			if(found_map && maps[found_map])
 				voted_map = found_map
 			else
-				LOG_DEBUG("Invalid map: [found_map]! Defaulting it [voted_map]...")
+				LOG_DEBUG("Invalid map: [found_map]! Defaulting to [voted_map]...")
 
 		LOG_DEBUG("Found file: [maps[voted_map]]...")
 		var/ground_map = file2text(maps[voted_map])
 		dmm_suite.read_map(ground_map,1,1,3)
 		log_subsystem(name,"Loaded ground map.")
+		map_name = voted_map
 
 	return ..()
 

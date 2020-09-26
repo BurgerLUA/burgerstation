@@ -218,3 +218,14 @@
 
 /mob/is_player_controlled()
 	return ckey || ckey_last
+
+
+/mob/proc/is_afk()
+
+	if(src.ckey_last && !src.ckey)
+		return TRUE
+
+	if(client && client.inactivity >= SECONDS_TO_TICKS(180))
+		return TRUE
+
+	return FALSE

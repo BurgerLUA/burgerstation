@@ -29,6 +29,7 @@
 	if(advanced)
 		var/species = "N/A"
 		var/blood_type = "N/A"
+		var/blood_volume = "N/A"
 		if(is_living(target))
 			var/mob/living/L = target
 			if(is_advanced(target))
@@ -36,8 +37,10 @@
 				species = all_species[A.species].name
 			else
 				species = initial(L.name)
-			var/reagent/BT = REAGENT(L.blood_type)
-			blood_type = BT.name
+			if(L.blood_type)
+				var/reagent/BT = REAGENT(L.blood_type)
+				blood_type = BT.name
+				blood_volume = "[L.blood_volume] ([FLOOR(L.blood_volume/L.blood_volume_max,0.01)*100]%)"
 
 		var/reagent_printout = ""
 		if(target.reagents)
@@ -51,7 +54,7 @@
 		else
 			reagent_printout = "N/A"
 
-		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>[.]<br>Reagents (Blood):[reagent_printout]"
+		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>[.]<br>Reagents (Blood):[reagent_printout]"
 
 
 	caller.to_chat(.)

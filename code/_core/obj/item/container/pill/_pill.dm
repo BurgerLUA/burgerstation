@@ -28,7 +28,7 @@
 /obj/item/container/pill/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["double"] = double
-	if(reagents_2) .["reagents_2"] = text2path(reagents_2.stored_reagents)
+	if(reagents_2) .["reagents_2"] = reagents_2.stored_reagents
 	return .
 
 
@@ -46,6 +46,7 @@
 
 	if(object_data["reagents_2"] && length(object_data["reagents_2"]))
 		for(var/r_id in object_data["reagents_2"])
+			r_id = text2path(r_id)
 			var/volume = object_data["reagents_2"][r_id]
 			reagents_2.add_reagent(r_id,volume,TNULL,FALSE)
 		reagents_2.update_container()

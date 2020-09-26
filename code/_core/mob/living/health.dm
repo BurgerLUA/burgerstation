@@ -71,7 +71,7 @@
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*4 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	if(total_bleed_damage && should_bleed() && (luck(src,total_bleed_damage,FALSE) || (atom_damaged && atom_damaged.health && luck(src,atom_damaged.health.get_brute_loss()*5,FALSE))))
+	if(blood_type && total_bleed_damage && should_bleed() && (luck(src,total_bleed_damage,FALSE) || (atom_damaged && atom_damaged.health && luck(src,atom_damaged.health.get_brute_loss()*5,FALSE))))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)

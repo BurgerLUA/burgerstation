@@ -146,6 +146,8 @@
 	name = "medicine vendor"
 	icon_state = "med"
 	stored_types = list(
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/reptile,
 		/obj/item/container/medicine/bandage,
 		/obj/item/container/medicine/ointment,
 		/obj/item/container/medicine/trauma_kit,
@@ -153,6 +155,7 @@
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/syringe,
+		/obj/item/container/beaker/bottle/epinephrine,
 		/obj/item/container/beaker/bottle/calomel,
 		/obj/item/container/beaker/bottle/charcoal,
 		/obj/item/container/beaker/vial/zombie_antidote,
@@ -175,7 +178,8 @@
 		/obj/item/container/beaker/bottle/large,
 		/obj/item/container/beaker/bottle,
 		/obj/item/container/beaker,
-		/obj/item/container/beaker/large
+		/obj/item/container/beaker/large,
+		/obj/item/container/blood_pack/
 	)
 
 /obj/structure/interactive/vending/medical/wardrobe

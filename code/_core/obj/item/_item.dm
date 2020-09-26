@@ -558,7 +558,11 @@
 
 	var/mob/living/L = target
 
-	if(caller != target && L.ckey_last && !L.ckey && !L.dead)
+	if(L.dead)
+		caller.to_chat(span("warning","\The [L.name] is dead!"))
+		return FALSE
+
+	if(caller != target && L.is_afk())
 		caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))
 		return FALSE
 

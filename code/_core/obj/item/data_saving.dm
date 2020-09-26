@@ -87,6 +87,9 @@
 	if(name != initial(name))
 		.["name"] = name
 
+	if(label != initial(label))
+		.["label"] = label
+
 	if(last_marker)
 		.["last_marker"] = last_marker
 
@@ -143,6 +146,8 @@
 
 	if(object_data["name"])
 		name = object_data["name"]
+	if(object_data["label"])
+		name = object_data["label"]
 	if(object_data["last_marker"])
 		last_marker = object_data["last_marker"]
 	if(object_data["color"])

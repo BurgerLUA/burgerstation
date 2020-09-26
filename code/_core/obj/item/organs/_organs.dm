@@ -216,7 +216,7 @@
 
 	if(bleeding >= 1 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
-		if(A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
+		if(A.blood_type && A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
 			var/bleed_amount = bleeding*DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
 			var/reagent/R = REAGENT(A.blood_type)
 			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),R.color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))

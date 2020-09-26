@@ -40,24 +40,17 @@ var/global/world_state = STATE_STARTING
 	var/server_name = CONFIG("SERVER_NAME","Unofficial Burgerstation 13 Server")
 	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
-	var/description = CONFIG("SERVER_DESCRIPTION","No description provided.")
 
-	/*
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
-
 	if(minutes < 10)
 		minutes = "0[minutes]"
-
 	var/duration = "[hours]:[minutes]"
-	var/map = "Biomes"
-	*/
+
+	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b>Map: <b>[SSdmm_suite.map_name ? "Loading..." : SSdmm_suite.map_name]</b><br>Duration: <b>[duration]</b>"
 
 	//Format it.
-	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>"
-	status += "<i>[description]</i><br>"
-	//status += "Map: <b>[map]</b><br>"
-	//status += "Time: <b>\[[duration]</b>"
+	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br><i>[description]</i><br>"
 
 	return TRUE
 

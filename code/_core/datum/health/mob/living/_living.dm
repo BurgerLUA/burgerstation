@@ -44,7 +44,7 @@
 		var/mob/living/L = owner
 
 		if(has_bloodloss)
-			damage[OXY] = clamp(1 - L.blood_volume/L.blood_volume_max,0,1) * 300
+			damage[OXY] = clamp(1 - (0.15 + L.blood_volume/L.blood_volume_max),0,1) * 300
 
 		var/should_be_dead = check_death && L.check_death()
 
@@ -126,7 +126,7 @@
 	for(var/damage_type in damage)
 		if(!include_fatigue && damage_type == FATIGUE)
 			continue
-		if(damage_type == TOX && L.has_status_effect(ADRENALINE))
+		if((damage_type == TOX || damage_type == OXY) && L.has_status_effect(ADRENALINE))
 			continue
 		returning_value += damage[damage_type]
 

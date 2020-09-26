@@ -1,6 +1,7 @@
 /atom/
 	name = "atom"
 	desc = "What the fuck is this?"
+	var/label
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
@@ -68,6 +69,11 @@
 	if(update_overlays)
 		update_sprite()
 
+/atom/proc/update_name(var/desired_name)
+	name = desired_name
+	if(label)
+		name = "[name] ([label])"
+	return TRUE
 
 /atom/proc/get_consume_verb()
 	return "eat"
@@ -155,6 +161,11 @@
 		reagents = new reagents(src)
 
 	return ..()
+
+/atom/Finalize()
+	. = ..()
+	update_name(name) //Setup labels
+	return .
 
 /atom/New()
 

@@ -15,7 +15,9 @@
 	var/list/compatible_blood = list(/reagent/blood)
 
 /reagent/blood/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
 	. = ..()
+
 	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_BLOOD) && is_living(container.owner.loc))
 		var/mob/living/L = container.owner.loc
 		if(L.blood_type)
@@ -27,6 +29,11 @@
 	return .
 
 /reagent/blood/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.health) owner.health.adjust_loss_smart(tox=.*3)
+	return .
+
+/reagent/blood/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(owner.health) owner.health.adjust_loss_smart(tox=.*5)
 	return .
