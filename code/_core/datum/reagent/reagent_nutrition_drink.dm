@@ -15,25 +15,6 @@
 	cooled_reagent_amount = 1
 	cooled_reagent_mul = 0.25
 
-/reagent/nutrition/ice
-	name = "ice"
-	desc = "What most lifeforms use to cool their drinks."
-	color = "#E5FFFF"
-	alpha = 200
-
-	flavor = "ice"
-	flavor_strength = 0.1
-
-	liquid = -0.5
-
-	hydration_amount = 25
-
-	heated_reagent_temp = T0C + 1
-	heated_reagent_amount = 0.25
-	heated_reagent_mul = 0.25
-
-	temperature_mod = 0.75
-
 /reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
 
 	. = ..()
@@ -51,6 +32,26 @@
 			S.add_wet(volume_to_splash*10)
 
 	return .
+
+/reagent/nutrition/ice
+	name = "ice"
+	desc = "What most lifeforms use to cool their drinks."
+	color = "#E5FFFF"
+	alpha = 200
+
+	flavor = "ice"
+	flavor_strength = 0.1
+
+	liquid = -0.5
+
+	hydration_amount = 25
+
+	heated_reagent_temp = T0C + 1
+	heated_reagent_amount = 0.25
+	heated_reagent_mul = 0.25
+	heated_reagent = /reagent/nutrition/water
+
+	temperature_mod = 50
 
 /reagent/nutrition/soda
 	name = "carbonated water"

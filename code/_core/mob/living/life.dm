@@ -234,7 +234,8 @@ mob/living/proc/on_life_slow()
 	if(ai && !ai.active)
 		return FALSE
 
-	blood_volume = clamp(blood_volume + 1,0,blood_volume_max)
+	if(blood_volume < blood_volume_max)
+		blood_volume = min(blood_volume_max - blood_volume,add_hydration(-1) + add_nutrition(-5))
 
 	handle_regen()
 
