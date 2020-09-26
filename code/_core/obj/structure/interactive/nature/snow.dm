@@ -87,7 +87,7 @@ obj/structure/scenery/snow_bush/New()
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "evergreen_stump"
-	collision_flags = FLAG_COLLISION_CRAWLING
+	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 	return .
 

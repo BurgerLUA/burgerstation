@@ -93,7 +93,7 @@
 
 /obj/structure/interactive/door/airlock/station/chemistry
 	name = "medical airlock"
-	color = COLOR_ORANGE
+	color = COLOR_CHEMISTRY
 	filler = "glass"
 	fill_color = COLOR_WHITE
 

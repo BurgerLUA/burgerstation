@@ -78,21 +78,23 @@
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(is_inventory(defer_object))
+	if(!defer_object.reagents)
 		return ..()
 
 	if(istype(defer_object,/obj/item/container/))
-		inject(caller,object,injecting ? inject_amount : -draw_amount)
+		inject(caller,defer_object,injecting ? inject_amount : -draw_amount)
 		return TRUE
 
-	var/self_inject = caller == object
-
 	if(can_inject(caller,defer_object))
+
+		var/self_inject = FALSE
 
 		var/real_object_name = defer_object.name
 
 		if(is_organ(defer_object) && is_living(object))
 			real_object_name = "[object.name]'s [object.name]"
+			if(object == caller)
+				self_inject = TRUE
 
 		var/transfer_amount = 0
 		if(injecting)
@@ -109,22 +111,36 @@
 
 /obj/item/container/syringe/proc/inject(var/mob/caller,var/atom/object,var/amount=5)
 
-	if(object.reagents)
-		if(amount > 0)
-			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount)
-			if(transfer_amount)
-				caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
-				return TRUE
-
-		else if(amount < 0)
+	if(amount < 0) //Draw
+		if(is_organ(object))
+			if(is_living(object.loc))
+				var/mob/living/L = object.loc
+				L.draw_blood(caller,src,amount)
+			else
+				caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object] with \the [src]!"))
+		else if(is_living(object))
+			var/mob/living/L = object.loc
+			L.draw_blood(caller,src,amount)
+		else if(object.reagents)
 			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount)
 			if(transfer_amount)
 				caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
 				return TRUE
+		else
+			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object] with \the [src]!"))
+
+	else if(amount > 0) //Inject
+		if(object.reagents)
+			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount)
+			if(transfer_amount)
+				caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
+				return TRUE
+		else
+			caller.to_chat(span("warning","You can't seem to find a way to inject \the [object] with \the [src]!"))
 
 	if(is_organ(object) && is_living(object.loc))
 		var/mob/living/L = object.loc
-		L.to_chat("You feel a tiny prick.")
+		L.to_chat("You feel a tiny prick on your [object.name].")
 	else if(is_living(object))
 		var/mob/living/L = object
 		L.to_chat("You feel a tiny prick.")

@@ -24,6 +24,7 @@
 	name = "Bicaridine"
 	desc = "Red for brute."
 	color = "#FF0000"
+	alpha = 200
 
 	flavor = "bandaids"
 
@@ -38,6 +39,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 5*.
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -56,6 +58,7 @@
 /reagent/medicine/bicaridine_plus
 	name = "Bicaridine+"
 	color = "#FF0080"
+	alpha = 225
 
 	value = 3
 
@@ -65,6 +68,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 10*.
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -83,6 +87,7 @@
 	name = "Kelotane"
 	desc = "Yellow for burn."
 	color = "#FFFF00"
+	alpha = 200
 
 	flavor = "ointment"
 
@@ -94,6 +99,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.burn_regen_buffer += 5*.
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 
@@ -113,6 +119,7 @@
 	name = "Dylovene"
 	desc = "Green for toxin."
 	color = "#00FF00"
+	alpha = 200
 
 	flavor = "sweetness"
 
@@ -124,6 +131,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.05 : 0) + 5)*.
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -142,6 +150,7 @@
 	name = "Dexalin"
 	desc = "Blue for oxy."
 	color = "#0000FF"
+	alpha = 200
 
 	flavor = "bitterness"
 
@@ -167,6 +176,7 @@
 	name = "Tricordrazine"
 	desc = "Heals everything except for oxygen loss."
 	color = "#B21FFF"
+	alpha = 225
 
 	flavor = "sourness"
 
@@ -183,6 +193,7 @@
 		L.brute_regen_buffer += 4*.
 		L.burn_regen_buffer += 4*.
 		L.tox_regen_buffer += 4*.
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -204,6 +215,7 @@
 	desc = "Heals everything."
 	desc_extended = "Works just as good when consumed."
 	color = "#F7F7F7"
+	alpha = 255
 
 	flavor = "bitter sourness"
 
@@ -220,6 +232,7 @@
 		L.brute_regen_buffer += 3*.
 		L.burn_regen_buffer += 3*.
 		L.tox_regen_buffer += 3*.
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -242,6 +255,7 @@
 	desc = "Heals burn damage. Only works when applied to skin."
 	desc_extended = ""
 	color = "#E8BEED"
+	alpha = 255
 
 	flavor = "bitter silver"
 
@@ -267,6 +281,9 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(burn=.*-10)
+		if(is_living(container.owner))
+			var/mob/living/L = container.owner
+			L.emote("scream")
 
 	return .
 
@@ -279,6 +296,7 @@
 			if(L.health)
 				owner.health.adjust_loss_smart(burn=.*-5,update=FALSE)
 				L.burn_regen_buffer += 3*.
+				L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 		else
 			owner.health.adjust_loss_smart(burn=.*-5)
 
@@ -290,6 +308,7 @@
 	desc = "Heals brute damage. Only works when applied to skin."
 	desc_extended = ""
 	color = "#FFC9DD"
+	alpha = 255
 
 	flavor = "baby powder"
 
@@ -316,6 +335,9 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(brute=.*-10)
+		if(is_living(container.owner))
+			var/mob/living/L = container.owner
+			L.emote("scream")
 
 	return .
 
@@ -329,6 +351,7 @@
 			if(L.health)
 				owner.health.adjust_loss_smart(brute=.*-5,update=FALSE)
 				L.brute_regen_buffer += 3*.
+				L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 		else
 			owner.health.adjust_loss_smart(brute=.*-5)
@@ -344,6 +367,7 @@
 	metabolism_skin = 1
 	value = 5
 	liquid = -0.5
+	alpha = 255
 
 
 /reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
@@ -384,6 +408,7 @@
 	name = "adrenaline"
 	desc = "Pure adrenaline. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, as well as a speed bonus."
 	color = "#880000"
+	alpha = 225
 	flavor = "pure speed"
 	metabolism_blood = 1
 	var/strength = 100
@@ -419,6 +444,7 @@
 	desc = "Used for stabilizing dying patients. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, and also regulating oxyloss."
 	desc_extended = ""
 	color = "#FFFFFF"
+	alpha = 225
 	flavor = "bandaids"
 	strength = 50
 	duration = 10 * 60 //1 minute.
@@ -446,6 +472,7 @@
 	desc = "Heals brute and burn damage. Metabolizes fast."
 	desc_extended = "Works just as good when consumed."
 	color = "#FF0000"
+	alpha = 255
 
 	flavor = "cherry"
 
@@ -478,6 +505,7 @@
 	desc = "Restores your energy. Magical!"
 	desc_extended = "Works just as good when consumed."
 	color = "#00FF00"
+	alpha = 255
 
 	flavor = "lime"
 
@@ -508,6 +536,7 @@
 	desc = "Restores your magical powers. Super magical!"
 	desc_extended = "Works just as good when consumed."
 	color = "#0000FF"
+	alpha = 255
 
 	flavor = "blueberry"
 
@@ -537,6 +566,7 @@
 	name = "Antihol"
 	desc = "Purges alcohol from your system quickly."
 	desc_extended = "Works just as good when consumed."
+	alpha = 225
 
 	color = "#999999"
 
@@ -580,6 +610,7 @@
 	name = "Calomel"
 	desc = "Purges all chemicals from the system quickly. Deals toxin damage as a consequences, relative to the amount purged. Works better when injected."
 	color = "#315F77"
+	alpha = 225
 	flavor = "old shoes"
 
 	value = 12
@@ -621,6 +652,7 @@
 	name = "charcoal"
 	desc = "Purges poisons from the system while healing a slight amount of toxins. Works just as well when consumed."
 	color = "#315F77"
+	alpha = 255
 	flavor = "old shoes"
 
 	value = 8
@@ -664,6 +696,7 @@
 	name = "zombie antidote"
 	desc = "An zombie bite immunity injection that automatically counter-acts zombie poison as long as the volume of the antidote exceeds the poison volume. Does not actually purge the medicine."
 	color = "#9FFF2A"
+	alpha = 225
 	flavor = "not brains"
 	value = 15
 

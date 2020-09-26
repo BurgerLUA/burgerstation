@@ -167,6 +167,7 @@
 	name = "chemistry vendor"
 	icon_state = "chem"
 	stored_types = list(
+		/obj/item/paper/book/chemistry,
 		/obj/item/storage/bags/chemistry,
 		/obj/item/storage/pillbottle,
 		/obj/item/container/syringe,
@@ -281,6 +282,17 @@
 /obj/structure/interactive/vending/chemistry/wardrobe
 	name = "chemist wardrobe vendor"
 	icon_state = "chemdrobe"
+
+	stored_types = list(
+		/obj/item/clothing/back/storage/satchel/poly/chemistry,
+		/obj/item/clothing/belt/storage/colored/chemistry,
+		/obj/item/clothing/mask/gas/poly/chemistry,
+		/obj/item/clothing/shirt/normal/uniform/chemistry,
+		/obj/item/clothing/pants/normal/chemistry,
+		/obj/item/clothing/overwear/coat/labcoat/chemist,
+		/obj/item/storage/shoebox/colored/,
+		/obj/item/storage/glovebox/white
+	)
 
 /*
 /obj/structure/interactive/vending/clown/
@@ -412,7 +424,8 @@
 		/reagent/ammonia,
 		/reagent/sulfur,
 		/reagent/chlorine,
-		/reagent/nutrition/water
+		/reagent/nutrition/water,
+		/reagent/aluminium
 	)
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
@@ -433,6 +446,20 @@
 
 	return .
 
+/obj/structure/interactive/vending/smart_fridge/chemistry/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+
+	. = ..()
+
+
+	if(. && associated_item.reagents && length(associated_item.reagents.stored_reagents))
+		var/obj/item/I2 = .
+		for(var/r_id in associated_item.reagents.stored_reagents)
+			var/amount = associated_item.reagents.stored_reagents[r_id]
+			I2.reagents.add_reagent(r_id,amount,should_update = FALSE)
+		I2.reagents.update_container()
+
+	return .
+
 /obj/structure/interactive/vending/smart_fridge/chemistry/Finalize()
 	. = ..()
 	sortTim(stored_objects, /proc/cmp_name_dsc)
@@ -449,7 +476,8 @@
 		/obj/item/container/beaker/food/corn_flour,
 		/obj/item/storage/egg_carton,
 		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/beaker/bottle/large/water
+		/obj/item/container/beaker/bottle/large/water,
+		/obj/item/container/beaker/large/ice
 	)
 
 
@@ -483,7 +511,8 @@
 		/obj/item/container/beaker/can/iced_tea,
 		/obj/item/container/beaker/can/mountain_wind,
 		/obj/item/container/beaker/can/orange_soda,
-		/obj/item/container/beaker/can/space_up
+		/obj/item/container/beaker/can/space_up,
+		/obj/item/container/beaker/large/ice
 	)
 
 

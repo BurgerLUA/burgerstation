@@ -5,14 +5,21 @@
 
 /obj/item/storage/bags/click_on_object(var/mob/caller as mob, var/atom/object, location, contmrol, params)
 
-	if(length(container_whitelist) && isturf(object) && get_dist(src,object) <= 1)
-		var/turf/T = object
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
+	var/turf/T = get_turf(object)
+
+	if(length(container_whitelist) && get_dist(src,T) <= 1)
 		var/pickup = 0
 		for(var/obj/item/I in T.contents)
 			if(I in container_whitelist)
-				src.add_to_inventory(caller,I,enable_messages = FALSE)
-				pickup++
-		if(pickup) caller?.to_chat(span("notice","You add [pickup] objects to \the [src.name]."))
+				if(src.add_to_inventory(caller,I,enable_messages = FALSE))
+					pickup++
+		if(pickup)
+			caller?.to_chat(span("notice","You add [pickup] objects to \the [src.name]."))
+		else
+			caller?.to_chat(span("notice","You fail to pickup anything!"))
 		return TRUE
 
 	return ..()

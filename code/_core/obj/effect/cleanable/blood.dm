@@ -11,6 +11,7 @@
 	anchored = TRUE
 
 	collision_flags = FLAG_COLLISION_WALL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 /obj/effect/cleanable/blood/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 	return TRUE

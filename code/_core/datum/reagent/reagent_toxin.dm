@@ -2,6 +2,7 @@
 	name = "toxin"
 	desc = "A common toxin found nearly everywhere."
 	color = "#FF8411"
+	alpha = 200
 
 	var/damage_per_unit = 1
 
@@ -84,3 +85,10 @@
 	..()
 
 	return 0
+
+
+/reagent/toxin/sulfur_dioxide
+	name = "Sulfur Dioxide"
+	desc = "Toxic fumes from burning sulfur with coal."
+
+	damage_per_unit = 1

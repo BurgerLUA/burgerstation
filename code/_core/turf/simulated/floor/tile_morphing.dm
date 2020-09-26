@@ -147,3 +147,6 @@
 /turf/simulated/floor/tile/morphing/yellow/pure
 	color = "#FFFF00"
 
+/turf/simulated/floor/tile/morphing/chemistry
+	color = COLOR_CHEMISTRY
+

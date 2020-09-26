@@ -2,6 +2,7 @@
 	name = "wheat grain"
 	desc = "Ground up wheat. Process this to get flour."
 	color = "#AD9300"
+	alpha = 255
 
 	nutrition_amount = 14
 

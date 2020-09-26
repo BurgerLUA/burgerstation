@@ -413,6 +413,10 @@
 	overlays.Cut()
 	update_overlays()
 
+	if(I.loc != src) //Something went wrong.
+		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord."))
+		I.drop_item(get_turf(src))
+
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
@@ -451,6 +455,10 @@
 	I.on_pickup(old_location,src)
 	overlays.Cut()
 	update_overlays()
+
+	if(I.loc != src) //Something went wrong.
+		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord."))
+		I.drop_item(get_turf(src))
 
 	return TRUE
 

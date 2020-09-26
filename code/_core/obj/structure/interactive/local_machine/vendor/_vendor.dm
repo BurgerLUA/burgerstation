@@ -46,7 +46,7 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
 	if(!can_purchase_item(P,associated_item,item_value,I))
-		return FALSE
+		return null
 
 	P.spend_currency(item_value)
 
@@ -64,7 +64,7 @@ var/global/list/equipped_antags = list()
 	if(I)
 		I.add_object(new_item)
 
-	return TRUE
+	return new_item
 
 /obj/structure/interactive/vending/Initialize()
 

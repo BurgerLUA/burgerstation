@@ -32,6 +32,10 @@
 
 	return ..()
 
+/obj/effect/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+	return null
+
+
 /*
 /mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 

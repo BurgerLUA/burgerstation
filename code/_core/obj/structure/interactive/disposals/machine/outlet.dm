@@ -11,7 +11,7 @@
 
 	var/throw_accuracy = 0
 	var/throw_velocity = 10
-	var/throw_range_min = 1
+	var/throw_range_min = 2
 	var/throw_range_max = 3
 
 	plane = PLANE_OBJ

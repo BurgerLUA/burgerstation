@@ -42,3 +42,10 @@
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max*0.5)
 	reagents.add_reagent(/reagent/iron,reagents.volume_max*0.5)
 	return ..()
+
+/obj/item/container/beaker/large/ice/
+	name = "beaker of ice"
+
+/obj/item/container/beaker/large/ice/Generate()
+	reagents.add_reagent(/reagent/nutrition/ice,reagents.volume_max,T0C - 10)
+	return ..()

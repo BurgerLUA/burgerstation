@@ -4,6 +4,7 @@
 	name = "ethanol"
 	desc = "What most lifeforms drink."
 	color = "#778877"
+	alpha = 225
 
 	flavor = "ethanol"
 	flavor_strength = 3

@@ -5,6 +5,8 @@
 	name = "Stand Juice"
 	desc = "Gives you a stand."
 	color = "#B200FF"
+	alpha = 200
+
 	flavor = "cola"
 
 	value = 10

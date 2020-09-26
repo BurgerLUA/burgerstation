@@ -60,6 +60,16 @@
 	)
 
 
+/obj/item/clothing/shirt/normal/uniform/chemistry
+	name = "chemistry uniformed shirt"
+	desc = "Orange and white."
+	desc_extended = "The shirt of choice for botanists."
+	polymorphs = list(
+		"shirt" = COLOR_WHITE,
+		"shoulders" = COLOR_CHEMISTRY
+	)
+
+
 /obj/item/clothing/shirt/normal/security
 	name = "security shirt"
 	desc = "HALT HALT HALT"

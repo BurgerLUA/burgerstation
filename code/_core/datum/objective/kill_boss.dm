@@ -36,6 +36,7 @@ var/list/tracked_bosses = list()
 	tracked_bosses += L //Global list
 	tracked_atoms += L
 	HOOK_ADD("post_death","kill_boss_post_death",L,src,.proc/kill_boss_post_death)
+	HOOK_ADD("destroy","kill_boss_destroy",L,src,.proc/kill_boss_post_death)
 	update()
 	return ..()
 

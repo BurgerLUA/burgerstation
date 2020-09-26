@@ -73,7 +73,7 @@
 		return FALSE
 
 	if(!ismob(caller))
-		CRASH_SAFE("Tried passing a non-mob as a caller!")
+		CRASH_SAFE("Tried passing a non-mob ([caller.get_debug_name()]) as a caller when interacting with [src.get_debug_name()]!")
 		return FALSE
 
 	. = FALSE

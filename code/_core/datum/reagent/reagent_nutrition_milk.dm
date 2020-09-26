@@ -3,6 +3,7 @@
 	name = "cow's milk"
 	desc = "Nutrition and flavor from cow's milk."
 	color = "#FFFFFF"
+	alpha = 255
 
 	nutrition_amount = 8
 	hydration_amount = 8

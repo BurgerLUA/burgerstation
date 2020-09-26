@@ -2,6 +2,7 @@
 	name = "radioactive waste"
 	desc = "I wouldn't mishandle this if I were you..."
 	color = "#267F00"
+	alpha = 255
 
 	flavor = "radioactive waste"
 

@@ -17,7 +17,7 @@
 */
 
 
-#define within_range(point_A,point_B,range) (get_dist(point_A,point_B) <= range)
+#define within_range(point_A,point_B,range) (get_dist(point_A,point_B) <= range && point_A.z == point_B.z)
 
 /proc/create_alert_process(var/list/list_to_use,var/range = VIEW_RANGE,var/atom/epicenter=usr,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
 	for(var/k in list_to_use)

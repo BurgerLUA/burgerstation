@@ -2,6 +2,7 @@
 	name = "flavor"
 	desc = "Pure flavor."
 	color = "#EAD5A4"
+	alpha = 255
 
 	nutrition_amount = 20
 
@@ -22,6 +23,7 @@
 	name = "fat"
 	desc = "Nutrition and flavor from fat."
 	color = "#EAD5A4"
+	alpha = 255
 
 	nutrition_amount = 20
 

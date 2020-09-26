@@ -8,6 +8,7 @@
 	var/volume_current = 0
 	var/volume_max = 1000
 	var/color = "#FFFFFF"
+	var/alpha = 255
 
 	var/average_temperature = T0C + 20
 
@@ -166,6 +167,7 @@
 	var/red = 0
 	var/green = 0
 	var/blue = 0
+	var/alpha = 0
 
 	volume_current = 0
 	average_temperature = 0
@@ -195,6 +197,7 @@
 		red += GetRedPart(R.color) * volume
 		green += GetGreenPart(R.color) * volume
 		blue += GetBluePart(R.color) * volume
+		alpha += R.alpha * volume
 		volume_current += volume
 
 		temperature_math_01[r_id] = temperature
@@ -208,6 +211,7 @@
 
 	if(total_reagents)
 		color = rgb(red/volume_current,green/volume_current,blue/volume_current)
+		alpha = clamp(FLOOR(alpha/total_reagents,1),1,255)
 	else
 		color = "#FFFFFF"
 		average_temperature = T0C+20
@@ -504,10 +508,8 @@
 
 /reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE)
 
-	if(!splash_amount)
-		return FALSE
-
-	if(!volume_current)
+	if(!splash_amount || !volume_current)
+		caller?.to_chat(span("warning","There is nothing to splash!"))
 		return FALSE
 
 	if(!target)
@@ -516,18 +518,23 @@
 
 	target = target.change_victim(caller)
 
-	for(var/r_id in stored_reagents)
-		var/reagent/R = REAGENT(r_id)
-		var/volume_to_splash = remove_reagent(R.type,stored_reagents[r_id] * (splash_amount/volume_current),FALSE,FALSE)
-		R.on_splash(src,caller,target,volume_to_splash)
-
-	if(!silent)
-		caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [src.owner.name] on \the [target.name]!"))
-
-	update_container()
+	target.on_splash(caller,src,splash_amount,silent)
 
 	return TRUE
 
+
+/atom/proc/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE)
+
+	if(source.stored_reagents)
+		for(var/r_id in source.stored_reagents)
+			var/reagent/R = REAGENT(r_id)
+			var/volume_to_splash = source.remove_reagent(R.type,source.stored_reagents[r_id] * (splash_amount/source.volume_current),FALSE,FALSE)
+			R.on_splash(source,caller,src,volume_to_splash)
+		if(!silent) caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [source.owner.name] on \the [src.name]!"))
+		source.update_container()
+		return TRUE
+
+	return FALSE
 
 /reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
 

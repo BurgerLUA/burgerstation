@@ -104,14 +104,10 @@
 	if(dead && time_of_death + 30 <= world.time && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
-		var/butcher_mod = (src.health.health_max + src.health.health_current)*0.1
-		if(blade_damage > max(10,butcher_mod))
-			if(L.can_be_butchered(weapon,src))
-				L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
-				PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
-				PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
-		else
-			L.to_chat("You weaken \the [src.name] for butchering...")
+		if(blade_damage > 0 && src.can_be_butchered(L,weapon))
+			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
+			PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
+			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
 
 	return .
 

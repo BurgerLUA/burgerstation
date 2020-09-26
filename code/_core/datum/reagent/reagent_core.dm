@@ -2,6 +2,7 @@
 	name = "Space Lube"
 	desc = "Lube in space!"
 	color = "#B6F0FF"
+	alpha = 150
 
 	flavor = "cherries"
 	flavor_strength = 2
@@ -9,6 +10,8 @@
 	liquid = 2
 
 	value = 2
+
+
 
 /reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
 
@@ -25,15 +28,22 @@
 	name = "Carbon"
 	desc = "What most lifeforms are made out of."
 	color = "#000000"
+	alpha = 255
 
 	flavor = "burnt food"
 
 	liquid = -0.75
 
+	heated_reagent = /reagent/ash
+	heated_reagent_temp = 400
+	heated_reagent_amount = 1
+	heated_reagent_mul = 0.01
+
 /reagent/iron //Found while mining iron ore deposits
 	name = "Iron"
 	desc = "What most lifeforms build weapons out of."
 	color = COLOR_IRON
+	alpha = 255
 
 	flavor = "iron"
 
@@ -55,6 +65,7 @@
 	name = "Steel"
 	desc = "What most lifeforms build weapons out of."
 	color = COLOR_STEEL
+	alpha = 255
 
 	flavor = "steel"
 
@@ -64,17 +75,27 @@
 	name = "Silver"
 	desc = "What most lifeforms build weapons out of."
 	color = COLOR_SILVER
+	alpha = 255
 
 	flavor = "metal"
 
 	liquid = -0.25
 
+/reagent/aluminium
+	name = "Aluminium"
+	desc = "What most lifeforms build weapons out of."
+	color = COLOR_SILVER
+	alpha = 255
 
+	flavor = "metal"
+
+	liquid = -0.25
 
 /reagent/oxygen //Found in the snow biome as a magic plant
 	name = "Liquid Oxygen"
 	desc = "What most lifeforms breathe in.."
 	color = "#E6F2F2"
+	alpha = 200
 
 	flavor = "oxygen"
 
@@ -84,6 +105,7 @@
 	name = "Liquid Nitrogen"
 	desc = "What most lifeforms also breathe in but don't really use."
 	color = "#D9E2E2"
+	alpha = 200
 
 	flavor = "cold"
 
@@ -93,6 +115,7 @@
 	name = "Silicon"
 	desc = "What most lifeforms do things with."
 	color = COLOR_BLACK
+	alpha = 225
 
 	flavor = "dildos"
 
@@ -102,6 +125,7 @@
 	name = "Potassium"
 	desc = "What most lifeforms do things with."
 	color = "#ADADAD"
+	alpha = 255
 
 	flavor = "bananas"
 
@@ -113,6 +137,7 @@
 	name = "Blood"
 	desc = "What most lifeforms do things with."
 	color = "#880000"
+	alpha = 255
 
 	flavor = "blood"
 
@@ -123,7 +148,8 @@
 /reagent/salt
 	name = "table salt"
 	desc = "Down here, everything is salt."
-	color = "#FFFFFF"
+	color = "#FFFFF4"
+	alpha = 235
 
 	flavor = "salt"
 	flavor_strength = 4
@@ -134,6 +160,7 @@
 	name = "sodium chloride"
 	desc = "The purest form of salt. Harvested only from the saltiest of Burgerstation players."
 	color = "#FFFFFF"
+	alpha = 255
 
 	flavor = "salt"
 	flavor_strength = 10
@@ -143,14 +170,47 @@
 
 /reagent/ash
 	name = "Ash"
+	desc = "Ash from burning organic things."
+	color = "#A0A0A0"
+	alpha = 255
+
+	flavor = "ash"
+	flavor_strength = 3
+
+	liquid = -0.9
 
 /reagent/ammonia
-	name = "Ammonia"
+	name = "Liquid Ammonia"
+	desc = "Ammonia from lifeforms."
+	alpha = 200
+
+	color = "#EFEFEF"
+
+	flavor = "ammonia"
+	flavor_strength = 2
+
+	liquid = 0.9
 
 /reagent/sulfur
 	name = "Sulfur"
+	desc = "Sulfur from hell."
+	alpha = 200
+
+	color = "#FFD800"
 
 	flavor = "sewer"
+	flavor_strength = 8
+
+	liquid = -0.75
 
 /reagent/chlorine
 	name = "Chlorine"
+	desc = "Chlorine from planets."
+	alpha = 200
+
+	color = "#C1D689"
+
+	flavor = "chlorine"
+	flavor_strength = 8
+
+	liquid = 0

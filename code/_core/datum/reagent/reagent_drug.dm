@@ -2,6 +2,7 @@
 	name = "drug"
 	desc = "What the fuck is this?"
 	color = "#FFFFFF"
+	alpha = 255
 	metabolism_stomach = 1
 	metabolism_blood = 2
 
@@ -42,6 +43,7 @@
 	name = "space liberty dust"
 	desc = "The taste of liberty AND FREEDOM."
 	color = "#FFFFFF"
+	alpha = 255
 
 	flavor = "freedom"
 
@@ -56,6 +58,7 @@
 	name = "space drugs"
 	desc = "It's like space weed."
 	color = "#FFFFFF"
+	alpha = 255
 
 	flavor = "dude weed bro"
 
@@ -69,6 +72,7 @@
 	name = "space dust"
 	desc = "It's like space weed but better."
 	color = "#7A9BFF"
+	alpha = 255
 
 	flavor = "regret"
 

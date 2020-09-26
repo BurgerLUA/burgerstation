@@ -2,6 +2,7 @@
 	name = "nutrients"
 	desc = "A source of nutrition."
 	color = "#FFFFFF"
+	alpha = 255
 
 	metabolism_stomach = 1
 
@@ -20,7 +21,7 @@
 
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
-	value *= 0.1+((nutrition_amount*0.1)+(hydration_amount*0.05)+(heal_factor*2)*0.1)
+	value *= 0.1+((nutrition_amount*0.1)+(hydration_amount*0.05)+(heal_factor*2)*0.1*flavor_strength)
 	return ..()
 
 
@@ -64,6 +65,7 @@
 	name = "white sugar"
 	desc = "Processed sugar."
 	color = "#F4FFF8"
+	alpha = 225
 
 	nutrition_amount = 16
 
@@ -71,12 +73,18 @@
 
 	liquid = -0.4
 
+	var/coma_rating = 4
+
 /reagent/nutrition/sugar/glucose
 	name = "glucose"
 	desc = "sugar broken down into its purest form: glucose"
 	nutrition_amount = 20
 
+	coma_rating = 10
+
 	liquid = -0.6
+
+	value = 0.25
 
 /reagent/nutrition/sugar/cane
 	name = "cane sugar"
@@ -84,6 +92,7 @@
 	color = "#CEA171"
 
 	nutrition_amount = 16
+	coma_rating = 4
 
 	flavor = "sweetness"
 
@@ -93,6 +102,7 @@
 	color = "#F4FFF8"
 
 	nutrition_amount = 14
+	coma_rating = 3
 
 	flavor = "icing sugar"
 

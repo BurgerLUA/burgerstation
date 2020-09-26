@@ -84,6 +84,12 @@ SUBSYSTEM_DEF(reagent)
 			result_text += "- [amount]u [R.name]\n\n"
 
 		var/desired_text = "# [actual_name]\n\n [RR.desc]\n\n[trim(recipe_text)] \n\n[trim(result_text)]\n\n"
+		if(!cached_text[RR.category])
+			cached_text[RR.category] = ""
+		if(!item_counts[RR.category])
+			item_counts[RR.category] = 0
+		if(!stored_book_data[RR.category])
+			stored_book_data[RR.category] = list()
 
 		cached_text[RR.category] += desired_text
 		item_counts[RR.category] += 1

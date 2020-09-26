@@ -437,7 +437,7 @@
 
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(src != source && owner != source && loyalty_tag && desired_loyalty == loyalty_tag)
+	if(loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
 		return TRUE
 
 	if(magnitude > 3)
@@ -466,5 +466,19 @@
 			var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 			var/damagetype/D = all_damage_types[/damagetype/explosion/]
 			D.hit(source,src,source,object_to_damage,owner,magnitude)
+
+	return TRUE
+
+
+/mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0)
+
+	if(!blood_type || !min(amount,blood_volume))
+		caller.to_chat(span("warning","There is nothing to draw!"))
+		return FALSE
+
+	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume))
+	blood_volume -= amount_added
+
+	caller?.to_chat(span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return TRUE

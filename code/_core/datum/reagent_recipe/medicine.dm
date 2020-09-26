@@ -88,3 +88,16 @@
 	results = list(
 		/reagent/medicine/silver_sulfadiazine = 1
 	)
+
+/reagent_recipe/medicine/styptic_powder
+	name = "Silver Sulfadiazine"
+	required_reagents = list(
+		/reagent/aluminium = 1,
+		/reagent/fuel/hydrogen = 1,
+		/reagent/oxygen = 1,
+		/reagent/acid/sulphuric = 1
+	)
+
+	results = list(
+		/reagent/medicine/styptic_powder = 1
+	)

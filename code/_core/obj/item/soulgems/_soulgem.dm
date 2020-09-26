@@ -20,6 +20,11 @@
 	LOADVAR("total_charge")
 	return .
 
+/obj/item/soulgem/Finalize()
+	. = ..()
+	update_sprite()
+	return .
+
 /obj/item/soulgem/calculate_value()
 
 	. = ..()
@@ -36,7 +41,7 @@
 		icon_state = "[initial(icon_state)]_1"
 	else
 		icon_state = initial(icon_state)
-	..()
+	return ..()
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

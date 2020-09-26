@@ -119,3 +119,12 @@
 	)
 
 	value = 70
+
+/obj/item/clothing/pants/normal/chemistry
+	name = "chemistry pants"
+	desc = "Stripes improve everything."
+	desc_extended = "The pants of choice for chemists."
+	polymorphs = list(
+		"pants" = COLOR_WHITE,
+		"stripes" = COLOR_CHEMISTRY
+	)

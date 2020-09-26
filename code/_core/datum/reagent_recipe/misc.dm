@@ -56,3 +56,38 @@
 	results = list(
 		/reagent/ammonia = 1
 	)
+
+/reagent_recipe/chemistry/sulfur_dioxide
+
+	name = "Sulfur Dioxide"
+
+	required_reagents = list(
+		/reagent/sulfur = 1,
+		/reagent/carbon = 1
+	)
+
+	results = list(
+		/reagent/toxin/sulfur_dioxide = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/carbon = 480
+	)
+
+
+/reagent_recipe/chemistry/sulfur_dioxide/alt
+
+	name = "Sulfur Dioxide"
+
+	required_reagents = list(
+		/reagent/sulfur = 5,
+		/reagent_recipe/chemistry/oil/carbon = 1
+	)
+
+	results = list(
+		/reagent/toxin/sulfur_dioxide = 5
+	)
+
+	required_temperature_min = list(
+		/reagent_recipe/chemistry/oil/carbon = 480
+	)

@@ -5,7 +5,7 @@
 
 	inventories = list(
 
-		/obj/hud/inventory/crafting/slotB2,
+		/obj/hud/inventory/crafting/slotB1,
 		/obj/hud/inventory/crafting/slotB3,
 
 		/obj/hud/inventory/crafting/result
@@ -35,15 +35,15 @@
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
-	if(!item_table["b2"] || !is_beaker(item_table["b2"]))
+	if(!item_table["b1"] || !is_beaker(item_table["b1"]))
 		caller.to_chat(span("notice","There must be a beaker in the left-most slot in order to make a pill!"))
 		return FALSE
 
-	if(item_table["b3"] || !is_beaker(item_table["b3"]))
+	if(item_table["b3"] && !is_beaker(item_table["b3"]))
 		caller.to_chat(span("notice","There must be a beaker in the right-most slot in order to make a double pill!"))
 		return FALSE
 
-	var/obj/item/container/beaker/I1 = item_table["b2"]
+	var/obj/item/container/beaker/I1 = item_table["b1"]
 	var/obj/item/container/beaker/I2 = item_table["b3"]
 	var/is_double = I1 && I2
 
