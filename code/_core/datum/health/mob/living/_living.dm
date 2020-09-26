@@ -9,15 +9,15 @@
 
 	var/mob/living/advanced/A = owner
 
-	if(A.intoxication >= 300)
+	var/armor_bonus = FLOOR(A.intoxication*0.025 + max(0,A.nutrition - 1000)*0.05,5)
+
+	if(armor_bonus >= 10)
 		var/list/bonus_armor = list(
-			BLADE = A.intoxication*0.025,
-			BLUNT = A.intoxication*0.025,
-			PIERCE = A.intoxication*0.025,
-			ARCANE = -A.intoxication*0.025,
-			HEAT = A.intoxication*0.025,
-			COLD = A.intoxication*0.025,
-			BOMB = A.intoxication*0.025,
+			BLADE = armor_bonus,
+			BLUNT = armor_bonus,
+			PIERCE = armor_bonus,
+			ARCANE = -armor_bonus,
+			COLD = armor_bonus
 		)
 
 		for(var/damage_type in bonus_armor)
