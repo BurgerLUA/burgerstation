@@ -28,7 +28,7 @@
 /obj/item/container/pill/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["double"] = double
-	if(reagents_2) .["reagents_2"] = reagents_2.stored_reagents
+	if(reagents_2) .["reagents_2"] = text2path(reagents_2.stored_reagents)
 	return .
 
 

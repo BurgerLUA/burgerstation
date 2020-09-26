@@ -33,6 +33,7 @@
 	save_id = loaded_data["id"]
 	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 3
 	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 0
+	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood
 
 	if(loaded_data["dead"]) //New body!
 		nutrition = 600
@@ -123,6 +124,7 @@
 	.["known_languages"] = known_languages
 	.["id"] = save_id
 	.["dead"] = died
+	.["blood_type"] = blood_type
 
 	if(M && M.loaded_data)
 		.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.

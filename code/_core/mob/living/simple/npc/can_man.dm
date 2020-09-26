@@ -68,7 +68,7 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	blood_color = "#262626"
+	blood_type = /reagent/blood/robot
 
 	change_dir_on_move = FALSE
 

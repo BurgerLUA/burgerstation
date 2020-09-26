@@ -12,7 +12,7 @@
 
 	change_dir_on_move = FALSE
 
-	blood_color = "#111111"
+	blood_type = /reagent/blood/robot
 
 /mob/living/vehicle/mech/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps + /footstep/mech_step

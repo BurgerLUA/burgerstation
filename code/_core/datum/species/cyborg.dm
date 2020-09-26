@@ -6,8 +6,6 @@
 
 	flags_chargen = CHARGEN_EYE
 
-	default_blood_color = COLOR_OIL
-
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#FFFFFF"
 	default_color_hair = "#FFFFFF"
@@ -38,3 +36,6 @@
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
+
+/species/reptile/generate_blood_type()
+	return /reagent/blood/robot

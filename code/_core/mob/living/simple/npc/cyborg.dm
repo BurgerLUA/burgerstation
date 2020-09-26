@@ -10,7 +10,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	blood_color = "#262626"
+	blood_type = /reagent/blood/robot
 
 	value = 100
 

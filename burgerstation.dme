@@ -499,6 +499,7 @@
 #include "code\_core\datum\rank\_rank.dm"
 #include "code\_core\datum\reagent\_reagent.dm"
 #include "code\_core\datum\reagent\reagent_acid.dm"
+#include "code\_core\datum\reagent\reagent_blood.dm"
 #include "code\_core\datum\reagent\reagent_core.dm"
 #include "code\_core\datum\reagent\reagent_drug.dm"
 #include "code\_core\datum\reagent\reagent_enzymes.dm"

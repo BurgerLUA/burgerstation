@@ -125,6 +125,14 @@
 
 	return ..()
 
+/mob/living/advanced/Finalize()
+
+	if(blood_type == /reagent/blood) //Uninitialized blood.
+		var/species/S = all_species[species]
+		blood_type = S.generate_blood_type()
+
+	 return ..()
+
 /mob/living/advanced/proc/update_clothes() //Avoid using?
 
 	tracked_hidden_organs = list()
@@ -376,9 +384,6 @@ mob/living/advanced/Login()
 
 	if(S.default_color_glow)
 		change_organ_visual("skin_glow", desired_color = S.default_color_glow)
-
-	if(S.default_blood_color)
-		blood_color = S.default_blood_color
 
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/k in organs)

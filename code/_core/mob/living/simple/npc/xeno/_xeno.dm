@@ -44,7 +44,7 @@
 
 	mob_size = MOB_SIZE_LARGE
 
-	blood_color = "#B6FF00"
+	blood_type = /reagent/blood/xenomorph
 
 	var/next_talk = 0
 	var/leaping = FALSE

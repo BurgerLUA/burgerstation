@@ -16,6 +16,8 @@
 /mob/proc/mod_speech(var/text)
 	return text
 
+var/regex/vowels = new("\[aeiou\]", "i")
+
 /mob/living/mod_speech(var/text)
 
 	if(intoxication >= 200)

@@ -340,7 +340,7 @@
 	var/reagent/R = REAGENT(reagent_type)
 
 	if(!R)
-		CRASH_SAFE("Reagent Error: Tried to add/remove a null reagent ([reagent_type]) to [owner]!")
+		CRASH_SAFE("Reagent Error: Tried to add/remove an invalid reagent ([reagent_type]) to [owner.get_debug_name()]!")
 		return 0
 
 	if(amount == 0)

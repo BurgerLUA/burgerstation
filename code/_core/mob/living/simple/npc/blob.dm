@@ -45,7 +45,6 @@
 		linked_node = desired_node
 		linked_node.linked_blobbernaught = src
 		color = linked_node.color
-		blood_color = linked_node.color
 
 	return ..()
 

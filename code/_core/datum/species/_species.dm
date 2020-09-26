@@ -11,8 +11,6 @@
 	var/flags_species_traits = TRAIT_NONE
 	var/flags_chargen = CHARGEN_NONE
 
-	var/default_blood_color = COLOR_BLOOD
-
 	var/default_color_eye = "#FF0000"
 
 	var/default_color_skin = "#0000FF"
@@ -140,8 +138,6 @@
 		/obj/hud/button/health/body
 	)
 
-var/regex/vowels = new("\[aeiou\]", "i")
-
 /species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
 
 	if(!accent || !length(accent))
@@ -152,3 +148,19 @@ var/regex/vowels = new("\[aeiou\]", "i")
 		text = replacetextEx(text,k,v)
 
 	return text
+
+
+/species/proc/generate_blood_type()
+
+	var/list/blood_types = list(
+		/reagent/blood/human/ab_negative = 6,
+		/reagent/blood/human/b_negative = 15,
+		/reagent/blood/human/ab_positive = 34,
+		/reagent/blood/human/a_negative = 63,
+		/reagent/blood/human/o_negative = 66,
+		/reagent/blood/human/b_positive = 85,
+		/reagent/blood/human/a_positive = 357,
+		/reagent/blood/human/o_positive = 374,
+	)
+
+	return pickweight(blood_types)

@@ -133,18 +133,6 @@
 
 	liquid = -0.25
 
-/reagent/blood //Found through organic things
-	name = "Blood"
-	desc = "What most lifeforms do things with."
-	color = "#880000"
-	alpha = 255
-
-	flavor = "blood"
-
-	metabolism_blood = 0
-
-	liquid = 0.4
-
 /reagent/salt
 	name = "table salt"
 	desc = "Down here, everything is salt."
