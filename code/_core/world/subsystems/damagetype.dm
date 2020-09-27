@@ -5,10 +5,11 @@ SUBSYSTEM_DEF(damagetype)
 	desc = "Stores all the known damage types in a list."
 	priority = SS_ORDER_PRELOAD
 
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	//tick_rate = DECISECONDS_TO_TICKS(1)
 
-	var/list/damage_to_process = list()
+	//var/list/damage_to_process = list()
 
+/*
 /subsystem/damagetype/on_life()
 
 	for(var/d_id in damage_to_process)
@@ -21,7 +22,7 @@ SUBSYSTEM_DEF(damagetype)
 		damage_to_process -= d_id
 
 	return ..()
-
+*/
 
 
 /subsystem/damagetype/Initialize()
@@ -34,6 +35,7 @@ SUBSYSTEM_DEF(damagetype)
 
 	return ..()
 
+/*
 /subsystem/damagetype/proc/add_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1,var/damagetype/DT)
 
 	var/reference_id = "\ref[weapon]_\ref[hit_object]"
@@ -55,3 +57,4 @@ SUBSYSTEM_DEF(damagetype)
 	damage_to_process[reference_id] = list_to_generate
 
 	return TRUE
+*/

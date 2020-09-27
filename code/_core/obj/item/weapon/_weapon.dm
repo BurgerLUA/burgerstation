@@ -1,6 +1,4 @@
 /obj/item/weapon/
-	//var/wielded = FALSE
-	//var/can_wield = FALSE
 	var/wield_only = FALSE //Set to true if you can only attack with this while wielded.
 
 

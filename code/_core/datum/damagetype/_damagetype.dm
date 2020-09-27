@@ -255,9 +255,13 @@
 	return swing_time
 
 /damagetype/proc/hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
+	/*
 	if(!attacker || !victim || !weapon || !hit_object || !hit_object.health || !victim.health)
 		return FALSE
 	return SSdamagetype.add_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier,src)
+	*/
+	return process_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier)
+
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
