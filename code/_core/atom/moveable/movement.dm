@@ -175,7 +175,7 @@
 		return FALSE
 
 	if(!NewLoc)
-		log_error("Warning: [src.get_debug_name()] tried calling can_move() without a NewLoc!")
+		//log_error("Warning: [src.get_debug_name()] tried calling can_move() without a NewLoc!")
 		return FALSE
 
 	if(!can_move_turf(OldLoc,NewLoc,real_dir))

@@ -27,7 +27,6 @@
 
 	size = SIZE_4
 
-
 	value = 1500
 
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread() //Base spread

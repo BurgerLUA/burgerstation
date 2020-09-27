@@ -121,12 +121,15 @@
 
 	. = ..()
 
-	var/icon_mul = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
-	var/desired_state = "[initial(icon_state)]_[icon_mul]"
-	if(desired_state != icon_state)
-		if(icon_state != initial(icon_state))
-			play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
-		icon_state = desired_state
+	var/turf/T = get_turf(src)
+
+	if(T)
+		var/icon_mul = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
+		var/desired_state = "[initial(icon_state)]_[icon_mul]"
+		if(desired_state != icon_state)
+			if(icon_state != initial(icon_state))
+				play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),T)
+			icon_state = desired_state
 
 	return .
 

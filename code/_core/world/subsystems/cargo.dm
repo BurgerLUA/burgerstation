@@ -20,14 +20,16 @@ SUBSYSTEM_DEF(cargo)
 		var/line_count = 0
 		for(var/line in splittext(loaded_data,"\n"))
 			line_count++
-			var/atom/P = text2path(trim(line))
+			var/atom/movable/P = text2path(trim(line))
 			if(!P)
 				log_error("Cargo Subsystem: Could not parse line [line_count] of [CARGO_DIR].")
 				continue
 			P = new P(T)
-			//INITIALIZE(P) //Handled elsewhere
-			//GENERATE(P) //Handled elsewhere
+			INITIALIZE(P)
+			GENERATE(P)
+			FINALIZE(P)
 			P.invisibility = 101
+			P.force_move(null) //Move to nullspace
 			var/md5_hash = copytext(rustg_hash_string(RUSTG_HASH_MD5,line),1,6)
 			cargo_id_to_type[md5_hash] = P
 			sortTim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
