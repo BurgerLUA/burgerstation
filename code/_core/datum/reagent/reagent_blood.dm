@@ -8,34 +8,31 @@
 
 	flavor = "blood"
 
-	metabolism_blood = 0
+	metabolism_blood = 10
+	metabolism_stomach = 2
 
 	liquid = 0.4
 
 	var/list/compatible_blood = list(/reagent/blood)
 
-/reagent/blood/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/blood/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.health) owner.health.adjust_loss_smart(tox=.*0.25)
+	return .
+
+/reagent/blood/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_BLOOD) && is_living(container.owner.loc))
-		var/mob/living/L = container.owner.loc
+	if(is_living(owner))
+		var/mob/living/L = owner
 		if(L.blood_type)
 			var/reagent/blood/R = REAGENT(L.blood_type)
 			if(R.compatible_blood[src.type])
 				L.blood_volume += .
-				. = 0
+		else
+			if(owner.health) owner.health.adjust_loss_smart(tox=.*1)
 
-	return .
-
-/reagent/blood/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	if(owner.health) owner.health.adjust_loss_smart(tox=.*3)
-	return .
-
-/reagent/blood/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	if(owner.health) owner.health.adjust_loss_smart(tox=.*5)
 	return .
 
 /reagent/blood/human/ab_negative

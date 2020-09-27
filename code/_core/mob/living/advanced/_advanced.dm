@@ -127,11 +127,13 @@
 
 /mob/living/advanced/Finalize()
 
+	. = ..()
+
 	if(blood_type == /reagent/blood) //Uninitialized blood.
 		var/species/S = all_species[species]
 		blood_type = S.generate_blood_type()
 
-	 return ..()
+	 return .
 
 /mob/living/advanced/proc/update_clothes() //Avoid using?
 

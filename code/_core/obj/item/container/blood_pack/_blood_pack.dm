@@ -118,11 +118,11 @@
 			if(injecting)
 				if(!reagents.volume_current || !src.reagents.transfer_reagents_to(attached_to.reagents,1))
 					return FALSE
+				draw_delay = initial(draw_delay)*0.25
 			else
 				if(!attached_to.draw_blood(null,src,1))
 					return FALSE
-
-		draw_delay = initial(draw_delay)
+				draw_delay = initial(draw_delay)
 	else
 		draw_delay--
 

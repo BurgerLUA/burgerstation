@@ -54,7 +54,7 @@
 		else
 			reagent_printout = "N/A"
 
-		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>[.]<br>Reagents (Blood):[reagent_printout]"
+		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>[.]<br>Reagents (Blood):<Br>[reagent_printout]"
 
 
 	caller.to_chat(.)

@@ -55,9 +55,9 @@
 				rotation = 90
 			M.set_dir(turn(M.dir,rotation))
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
-			return TRUE
+			return TRUE //Needs to be here. At this level.
 
-	else if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+	if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
 		object = object.defer_click_on_object(location,control,params)
 		caller.face_atom(object)
@@ -85,7 +85,7 @@
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
 
-	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
+	if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 		if(parent_inventory)
 			var/obj/item/I = parent_inventory.get_top_held_object()
 			return wield_object(caller,I)
@@ -97,7 +97,7 @@
 			return drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 		return drop_item_from_inventory()
 
-	else if(grabbed_object && grabbed_object == object)
+	if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
 
 	if(defer_self == grabbed_object)
@@ -200,21 +200,6 @@
 			return TRUE
 
 	return ..()
-
-/*
-/obj/hud/inventory/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
-
-	if(is_inventory(object))
-		var/obj/hud/inventory/object_as_inventory = object
-		var/obj/item/I = src.get_top_object()
-		if(I && I.can_be_dragged(caller) && get_dist(src,object) <= 1)
-			object_as_inventory.add_object(I)
-		return TRUE
-
-	return ..()
-*/
-
-
 
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc

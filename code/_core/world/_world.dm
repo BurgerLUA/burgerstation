@@ -47,10 +47,10 @@ var/global/world_state = STATE_STARTING
 		minutes = "0[minutes]"
 	var/duration = "[hours]:[minutes]"
 
-	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b>Map: <b>[SSdmm_suite.map_name ? "Loading..." : SSdmm_suite.map_name]</b><br>Duration: <b>[duration]</b>"
+	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "Loading..."]</b><br>Duration: <b>[duration]</b>"
 
 	//Format it.
-	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br><i>[description]</i><br>"
+	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
 
 	return TRUE
 

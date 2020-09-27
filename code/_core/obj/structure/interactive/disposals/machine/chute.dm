@@ -51,6 +51,7 @@
 	//Todo, interact delay.
 	if(ismob(object) && caller == object)
 		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
 		var/mob/living/L = object
 		L.force_move(src)
 		start_thinking(src)

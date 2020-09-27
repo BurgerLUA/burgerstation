@@ -55,8 +55,8 @@
 		zoom_offset_x = returning_list[1]*TILE_SIZE*ZOOM_RANGE*zoom_mul
 		zoom_offset_y = returning_list[2]*TILE_SIZE*ZOOM_RANGE*zoom_mul
 
-	var/final_pixel_x = desired_recoil_x + desired_pixel_x + zoom_offset_x + desired_punch_x
-	var/final_pixel_y = desired_recoil_y + desired_pixel_y + zoom_offset_y + desired_punch_y
+	var/final_pixel_x = desired_pixel_x + zoom_offset_x + clamp(desired_recoil_x + desired_punch_x,-TILE_SIZE*2,TILE_SIZE*2)
+	var/final_pixel_y = desired_pixel_y + zoom_offset_y + clamp(desired_recoil_y + desired_punch_y,-TILE_SIZE*2,TILE_SIZE*2)
 
 	if(istype(mob.loc,/obj/projectile/))
 		var/obj/projectile/P = mob.loc

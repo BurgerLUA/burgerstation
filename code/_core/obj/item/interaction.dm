@@ -86,10 +86,16 @@
 
 
 /obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(object)
 	return clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(object)
+
+	/*
 	if(get_dist(src,object) > 1)
 		if(is_living(caller))
 			var/mob/living/L = caller
@@ -116,7 +122,9 @@
 			src.drop_item(get_turf(caller))
 			src.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
-	else if(isturf(object) || istype(object,/obj/structure/smooth/table))
+	*/
+
+	if(isturf(object) || istype(object,/obj/structure/smooth/table))
 		var/turf/T = get_turf(object)
 		if(is_container)
 			caller.to_chat(span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))

@@ -235,8 +235,7 @@ mob/living/proc/on_life_slow()
 		return FALSE
 
 	if(blood_volume < blood_volume_max)
-		var/blood_volume_to_add = -(add_hydration(-0.25) + add_nutrition(-1))
-		blood_volume_to_add *= 0.25
+		var/blood_volume_to_add = -(add_hydration(-0.025) + add_nutrition(-0.1))
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 
 	handle_regen()

@@ -59,7 +59,6 @@ SUBSYSTEM_DEF(progressbars)
 		if(ismob(owner))
 			var/mob/M = owner
 			M.to_chat(span("notice","You're already busy with a task!"))
-			CRASH_SAFE("ZOOP!")
 		return FALSE
 
 	all_progress_bars[owner] = list(
