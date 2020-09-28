@@ -30,7 +30,6 @@
 /obj/item/clothing/head/hat/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("logo")
-	Finalize()
 	return .
 
 /obj/item/clothing/head/hat/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
