@@ -28,9 +28,9 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD
 
-/obj/item/clothing/head/hat/paperbag/Initialize()
+/obj/item/clothing/head/hat/paperbag/Finalize()
 	. = ..()
-	Finalize(update_inventory())
+	update_sprite()
 	return .
 
 /obj/item/clothing/head/hat/paperbag/save_item_data(var/save_inventory = TRUE)
