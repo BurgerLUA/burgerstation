@@ -25,8 +25,8 @@
 
 	value = 40
 
-/obj/item/weapon/melee/sword/sabre/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
-	return TRUE
+	can_wear = TRUE
+
 
 /obj/item/weapon/melee/sword/claymore
 	name = "steel claymore sword"
@@ -48,6 +48,8 @@
 
 	value = 30
 
+	can_wear = TRUE
+
 /obj/item/weapon/melee/sword/claymore/cult
 	name = "cultist sword"
 	icon = 'icons/obj/item/weapons/melee/swords/cult.dmi'
@@ -59,10 +61,6 @@
 	size = SIZE_3
 
 	value = 50
-
-
-/obj/item/weapon/melee/sword/claymore/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
-	return TRUE
 
 /obj/item/weapon/melee/spear
 	name = "steel spear"

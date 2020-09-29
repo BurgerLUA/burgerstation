@@ -21,8 +21,8 @@
 		PIERCE = 75
 	)
 
-/obj/item/weapon/melee/shield/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
-	return TRUE
+	can_wear = TRUE
+
 
 /obj/item/weapon/melee/shield/glass
 	name = "glass shield"

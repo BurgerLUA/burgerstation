@@ -116,29 +116,32 @@
 	if(params && (caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
-	if(get_dist(defer_self,defer_object) <= 1) //We're able to interact with the item.
-		if(is_item(defer_self)) //We have an object in our hands.
-			if(is_inventory(object)) //We're clicking on an inventory. It may or may not have an object.
-				var/obj/hud/inventory/object_as_inventory = object
-				if(object_as_inventory.can_wear_object(defer_self,FALSE))
-					object_as_inventory.add_worn_object(defer_self) //Add the object to the inventory
-					return TRUE
-				if(object_as_inventory.can_hold_object(defer_self,FALSE)) //The inventory has space.
-					object_as_inventory.add_held_object(defer_self) //Add the object to the inventory
-					return TRUE
-		else if(is_item(defer_object)) //We don't have an object in our hands and we're clicking on an item.
+
+	if(get_dist(defer_self,defer_object) <= 1)
+
+		if(is_item(defer_object)) //We're clicking on another item.
 			var/obj/item/I = defer_object
-			if(is_inventory(defer_object.loc)) //The object is in an inventory
+			if(is_inventory(defer_object.loc)) //The object we're clicking on is in an inventory. Special behavior.
 				var/obj/hud/inventory/I2 = defer_object.loc
-				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container, and it should be opened instead.
+				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in a worn slot, and it should be opened instead.
 					I.click_self(caller)
 					return TRUE
 				if(!I2.click_flags && !I2.drag_to_take)
 					src.add_object(defer_object)
+					world.log << "ADD OBJECT 0"
 					return TRUE
 			else
 				src.add_object(defer_object)
+				world.log << "ADD OBJECT 1"
 				return TRUE
+
+		else if(is_item(defer_self)) //We have an object in our hands, clicking on an empty inventory.
+			if(is_inventory(object)) //We're clicking on an inventory. It may or may not have an object.
+				var/obj/hud/inventory/object_as_inventory = object
+				object_as_inventory.add_object(defer_self)
+				world.log << "ADD OBJECT 2"
+				return TRUE
+
 
 	//Stolen from /atom/proc/click_on_object
 	if(src != defer_self && defer_self.click_on_object(caller,object,location,control,params))
@@ -189,13 +192,6 @@
 
 	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object
-		/*
-		var/atom/defer_self = src.defer_click_on_object(location,control,params)
-		if(is_item(defer_self))
-			var/obj/item/self_as_item = defer_self
-			self_as_item.dropped_on_by_object(caller,object_as_item,location,control,params)
-			return TRUE
-		*/
 		if(src.add_object(object_as_item))
 			return TRUE
 

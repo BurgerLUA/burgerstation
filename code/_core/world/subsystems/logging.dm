@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(logging)
 	return ..()
 
 /subsystem/logging/proc/log_chat(var/data_to_log)
-	buffered_log_chat += data_to_log
+	buffered_log_chat += "[type]: [data_to_log]"
 	return TRUE
 
 /subsystem/logging/proc/get_logging_dir(var/type)

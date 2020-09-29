@@ -131,6 +131,9 @@
 
 	var/consume_size = BITE_SIZE
 
+	var/can_hold = TRUE
+	var/can_wear = FALSE
+
 /obj/item/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	return TRUE
 
@@ -429,7 +432,7 @@
 /obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 
 	if(additional_clothing_parent)
-		src.force_move(additional_clothing_parent)
+		drop_item(additional_clothing_parent)
 
 	if(light)
 		light.update(src)
@@ -464,11 +467,22 @@
 		return FALSE
 	if(anchored)
 		return FALSE
-	return TRUE
+	if(unremovable)
+		return FALSE
+	if(additional_clothing_parent && is_inventory(src.loc))
+		return FALSE
+	return can_hold
 
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
-	return FALSE
-
+	if(delete_on_drop)
+		return FALSE
+	if(anchored)
+		return FALSE
+	if(unremovable)
+		return FALSE
+	if(additional_clothing_parent && is_inventory(src.loc))
+		return FALSE
+	return can_wear
 
 /obj/item/update_icon()
 

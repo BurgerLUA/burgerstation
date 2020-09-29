@@ -373,10 +373,10 @@
 
 /obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass=FALSE) //Prioritize wearing it, then holding it.
 
-	if((bypass || (!I.unremovable && I.can_be_worn())) && add_worn_object(I,messages,bypass))
+	if((bypass || I.can_be_worn()) && add_worn_object(I,messages,bypass))
 		return TRUE
 
-	if((bypass || (!I.unremovable && I.can_be_held())) && add_held_object(I,messages,bypass))
+	if((bypass || I.can_be_held()) && add_held_object(I,messages,bypass))
 		return TRUE
 
 	return FALSE
@@ -538,7 +538,6 @@
 
 	var/was_worn = FALSE
 	//var/was_held = FALSE
-
 	var/was_removed = FALSE
 
 	if(I in held_objects)
@@ -624,6 +623,7 @@
 		return FALSE
 
 	if(!I.can_be_held(owner,src))
+		if(messages) owner.to_chat(span("notice","\The [I] cannot be held!"))
 		return FALSE
 
 	if(length(item_blacklist))
@@ -671,10 +671,8 @@
 			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE
 
-	if(!I.can_be_held(owner,src))
-		return FALSE
-
-	if(!I.can_be_worn(owner,src))
+	if(!I.can_be_held(owner,src) || !I.can_be_worn(owner,src))
+		if(messages) owner.to_chat(span("notice","\The [I] cannot be worn!"))
 		return FALSE
 
 	if(worn_allow_duplicate)

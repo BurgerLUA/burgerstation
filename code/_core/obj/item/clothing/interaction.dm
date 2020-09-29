@@ -1,8 +1,6 @@
 /obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
-		if(delete_on_drop)
-			return TRUE
 		quick_equip(caller,ignore_held=TRUE,ignore_dynamic=TRUE)
 		return TRUE
 
@@ -11,17 +9,10 @@
 
 /obj/item/clothing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && is_inventory(src.loc))
-
-		if(delete_on_drop)
-			qdel(src)
-			return TRUE
-
+	if(is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-
-		if(is_advanced(caller) && (src in I.worn_objects))
-			if(equip_additional_clothing(caller,object,location,control,params))
-				return TRUE
+		if((src in I.worn_objects) && equip_additional_clothing(caller,object,location,control,params))
+			return TRUE
 
 	return ..()
 

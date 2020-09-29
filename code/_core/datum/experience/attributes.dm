@@ -42,6 +42,11 @@
 	experience_multiplier = 1.7
 	combat_level_mul = 0.75
 
+/experience/attribute/vitality/on_level_up(var/old_level,var/new_level)
+	if(owner && owner.health)
+		owner.health.update_health_stats()
+	return ..()
+
 //Wizard
 /experience/attribute/intelligence/ //100% complete
 	//Leveled up by dealing damage with weapons using the intelligence attribute.
@@ -76,6 +81,11 @@
 	experience_multiplier = 1.7
 	combat_level_mul = 0.75
 
+/experience/attribute/wisdom/on_level_up(var/old_level,var/new_level)
+	if(owner && owner.health)
+		owner.health.update_health_stats()
+	return ..()
+
 //Rogue
 /experience/attribute/dexterity/ //100% complete
 	//Leveled up by dealing damage with weapons using the dexterity attribute.
@@ -109,6 +119,11 @@
 	experience_power = 1
 	experience_multiplier = 1.7
 	combat_level_mul = 0.75
+
+/experience/attribute/endurance/on_level_up(var/old_level,var/new_level)
+	if(owner && owner.health)
+		owner.health.update_health_stats()
+	return ..()
 
 //None. Everyone starts with 50.
 /experience/attribute/luck/ //50% complete.

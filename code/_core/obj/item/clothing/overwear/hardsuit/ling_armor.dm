@@ -22,7 +22,6 @@
 
 
 	additional_clothing = list(
-		/obj/item/weapon/melee/sword/armblade,
 		/obj/item/weapon/melee/sword/armblade
 	)
 

@@ -53,6 +53,8 @@
 
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
+	can_wear = TRUE
+
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()
 
@@ -84,7 +86,6 @@
 		C.size = 0
 		C.additional_blends = additional_blends
 		C.additional_clothing_parent = src
-		C.delete_on_drop = FALSE
 		additional_clothing_stored += C
 
 	return ..()
@@ -106,9 +107,6 @@
 		C.initialize_blends()
 
 	..()
-
-/obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
-	return TRUE
 
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 	. = ..()

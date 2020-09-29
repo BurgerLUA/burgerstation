@@ -1,6 +1,6 @@
 /obj/item/clothing/proc/equip_additional_clothing(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 
-	if(!length(additional_clothing))
+	if(!length(additional_clothing_stored))
 		return FALSE
 
 	var/should_deploy = FALSE

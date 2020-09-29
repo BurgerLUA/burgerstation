@@ -152,6 +152,8 @@
 			new_location = get_turf(I.owner)
 		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset))
 			return TRUE
+		else
+			return FALSE
 	force_move(new_location)
-	return FALSE
+	return TRUE
 
