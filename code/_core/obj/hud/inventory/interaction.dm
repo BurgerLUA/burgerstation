@@ -128,18 +128,15 @@
 					return TRUE
 				if(!I2.click_flags && !I2.drag_to_take)
 					src.add_object(defer_object)
-					world.log << "ADD OBJECT 0"
 					return TRUE
 			else
 				src.add_object(defer_object)
-				world.log << "ADD OBJECT 1"
 				return TRUE
 
 		else if(is_item(defer_self)) //We have an object in our hands, clicking on an empty inventory.
 			if(is_inventory(object)) //We're clicking on an inventory. It may or may not have an object.
 				var/obj/hud/inventory/object_as_inventory = object
 				object_as_inventory.add_object(defer_self)
-				world.log << "ADD OBJECT 2"
 				return TRUE
 
 
