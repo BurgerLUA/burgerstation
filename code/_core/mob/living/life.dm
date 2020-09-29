@@ -226,6 +226,11 @@ mob/living/proc/on_life_slow()
 		dust()
 		return TRUE
 
+	if(talk_duration)
+		talk_duration = max(0,talk_duration-LIFE_TICK_SLOW)
+		if(talk_duration <= 0 && !is_typing)
+			animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
+
 	handle_fire()
 
 	if(dead)
@@ -306,13 +311,13 @@ mob/living/proc/on_life_slow()
 
 
 /mob/living/proc/can_buffer_health()
-	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer) && health_regen_delay <= 0
+	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer)
 
 /mob/living/proc/can_buffer_stamina()
-	return stamina_regen_buffer && (stamina_regen_delay <= 0 || (horizontal && move_delay <= 0)) && !has_status_effect(ADRENALINE)
+	return stamina_regen_buffer
 
 /mob/living/proc/can_buffer_mana()
-	return mana_regen_buffer && mana_regen_delay <= 0
+	return mana_regen_buffer
 
 /mob/living/proc/handle_health_buffer()
 

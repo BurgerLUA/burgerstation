@@ -24,22 +24,12 @@
 	healing_target = null
 	return ..()
 
-/ai/bot/medical/proc/is_valid_healing_target(var/mob/living/L,var/distance_check=VIEW_RANGE,var/best_distance=VIEW_RANGE*2)
-	if(L == owner)
-		return FALSE
+/ai/bot/medical/proc/is_valid_healing_target(var/mob/living/L)
 	if(!L || L.qdeleting)
 		return FALSE
-	if(L.loyalty_tag != L.loyalty_tag)
+	if(owner.loyalty_tag != L.loyalty_tag)
 		return FALSE
-	if(L.dead)
-		return FALSE
-	if(distance_check >= best_distance)
-		return FALSE
-	if(!L.reagents)
-		return FALSE
-	if(L.reagents.stored_reagents[owner_as_bot.reagent_to_inject])
-		return FALSE
-	if(!L.health || ((L.health.health_max - L.health.health_current) < damage_threshold))
+	if(!owner_as_bot.get_inject_amount(L))
 		return FALSE
 	return TRUE
 
@@ -64,34 +54,37 @@
 
 /ai/bot/medical/proc/find_healing_target()
 
-	var/mob/living/best_target
-	var/best_distance
+	var/mob/living/best_target = null
+	var/best_distance = VIEW_RANGE
 
 	if(next_idle_voice <= world.time)
 		switch(rand(1,6))
 			if(1)
 				play('sound/voice/medbot/apple.ogg',get_turf(owner))
-				owner.say("An apple a day keeps me away!")
+				owner.do_say("An apple a day keeps me away!")
 			if(2)
-				play('sound/voice/medbot/apple.ogg',get_turf(owner))
-				owner.say("There's always a catch, and I'm the best there is.")
+				play('sound/voice/medbot/catch.ogg',get_turf(owner))
+				owner.do_say("There's always a catch, and I'm the best there is.")
 			if(3)
 				play('sound/voice/medbot/delicious.ogg',get_turf(owner))
-				owner.say("Delicious!")
+				owner.do_say("Delicious!")
 			if(4)
 				play('sound/voice/medbot/flies.ogg',get_turf(owner))
-				owner.say("What kind of medbay is this? Everyone is dropping like flies!")
+				owner.do_say("What kind of medbay is this? Everyone is dropping like flies!")
 			if(5)
 				play('sound/voice/medbot/radar.ogg',get_turf(owner))
-				owner.say("Radar! Put a mask on!")
+				owner.do_say("Radar! Put a mask on!")
 			if(6)
 				play('sound/voice/medbot/surgeon.ogg',get_turf(owner))
-				owner.say("I knew it, I should've been a plastic surgeon.")
+				owner.do_say("I knew it, I should've been a plastic surgeon.")
 		next_idle_voice = world.time + SECONDS_TO_DECISECONDS(120)
 
 	for(var/mob/living/L in view(owner,8))
+		if(!src.is_valid_healing_target(L))
+			continue
 		var/distance_check = get_dist(L,owner)
-		if(!src.is_valid_healing_target(L,distance_check,best_distance))
+		L << "Best Distance: [best_distance], Yours: [distance_check]."
+		if(distance_check >= best_distance)
 			continue
 		best_target = L
 		best_distance = distance_check
@@ -102,11 +95,13 @@
 			switch(rand(1,3))
 				if(1)
 					play('sound/voice/medbot/injured.ogg',get_turf(owner))
-					owner.say("You appear to be injured, [healing_target.name]!")
+					owner.do_say("You appear to be injured, [healing_target.name]!")
 				if(2)
 					play('sound/voice/medbot/coming.ogg',get_turf(owner))
-					owner.say("Hold on [healing_target.name], I'm coming!")
+					owner.do_say("Hold on [healing_target.name], I'm coming!")
 				if(3)
 					play('sound/voice/medbot/help.ogg',get_turf(owner))
-					owner.say("Wait [healing_target.name], I want to help!")
+					owner.do_say("Wait [healing_target.name], I want to help!")
+
+	return TRUE
 

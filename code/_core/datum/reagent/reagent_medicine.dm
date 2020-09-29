@@ -1,14 +1,7 @@
-#define METABOLISM_BLOOD 1
-#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.5
-#define METABOLISM_SKIN METABOLISM_BLOOD * 4
 #define OVERDOSE_THRESHOLD_MEDICINE 30
 
 /reagent/medicine/
-	metabolism_stomach = METABOLISM_STOMACH //How many units of the reagent to metabolize per second.
-	metabolism_blood = METABOLISM_BLOOD //How many units of the reagent to metabolize per second.
-	metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
 	overdose_threshold = OVERDOSE_THRESHOLD_MEDICINE
-
 	value = 1
 
 /reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
@@ -28,6 +21,9 @@
 
 	flavor = "bandaids"
 
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
+
 	value = 1.25
 
 	liquid = 0.6
@@ -39,8 +35,6 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 5*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-
 
 	return .
 
@@ -60,6 +54,9 @@
 	color = "#FF0080"
 	alpha = 225
 
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
+
 	value = 3
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -68,7 +65,6 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.brute_regen_buffer += 10*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -91,6 +87,9 @@
 
 	flavor = "ointment"
 
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
+
 	value = 1
 
 /reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -99,9 +98,6 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.burn_regen_buffer += 5*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-
-
 
 	return .
 
@@ -111,7 +107,6 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.burn_regen_buffer += 4*.
-
 
 	return .
 
@@ -123,6 +118,9 @@
 
 	flavor = "sweetness"
 
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
+
 	value = 1.25
 
 /reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -131,8 +129,6 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.05 : 0) + 5)*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-
 
 	return .
 
@@ -153,6 +149,9 @@
 	alpha = 200
 
 	flavor = "bitterness"
+
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
 
 	value = 1.5
 
@@ -180,8 +179,8 @@
 
 	flavor = "sourness"
 
-	metabolism_blood = METABOLISM_BLOOD*0.75
-	metabolism_stomach = METABOLISM_STOMACH*0.75
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
 
 	value = 1.5
 
@@ -193,7 +192,6 @@
 		L.brute_regen_buffer += 4*.
 		L.burn_regen_buffer += 4*.
 		L.tox_regen_buffer += 4*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 
 	return .
@@ -219,8 +217,8 @@
 
 	flavor = "bitter sourness"
 
-	metabolism_blood = METABOLISM_BLOOD*0.5
-	metabolism_stomach = METABOLISM_STOMACH*0.5
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.25
 
 	value = 2
 

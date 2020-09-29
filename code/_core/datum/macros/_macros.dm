@@ -146,7 +146,7 @@
 		if("zoom")
 			//Do nothing
 		if("say")
-			spawn owner.mob.say()
+			owner.mob.say()
 		else
 			winset(owner, null, "command='[command]'")
 

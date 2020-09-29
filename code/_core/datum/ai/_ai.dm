@@ -109,8 +109,14 @@
 	start_turf = null
 	path_start_turf = null
 	path_end_turf = null
-	attackers.Cut()
-	current_path.Cut()
+
+	if(attackers)
+		attackers.Cut()
+		attackers = null
+
+	if(current_path)
+		current_path.Cut()
+		current_path = null
 
 	SSai.active_ai -= src
 	SSai.inactive_ai -= src
@@ -205,7 +211,7 @@
 	if(owner.has_status_effects(STUN,SLEEP,PARALYZE))
 		return FALSE
 
-	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time)
+	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && is_enemy(owner.grabbing_hand.owner))
 		owner.resist()
 		return FALSE
 

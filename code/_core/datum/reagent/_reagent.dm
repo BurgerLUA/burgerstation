@@ -2,6 +2,17 @@
 #define FLAG_REAGENT_COOKED 0x2
 #define FLAG_REAGENT_FAT 0x4
 
+
+#define METABOLISM_BLOOD 1
+#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.5
+#define METABOLISM_SKIN METABOLISM_BLOOD * 4
+
+#define OVERDOSE_THRESHOLD_MEDICINE 30
+
+/reagent/medicine/
+
+
+
 /reagent/
 	var/name = "Reagent"
 	var/desc = "The basic description of the reagent."
@@ -13,9 +24,10 @@
 
 	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive.
 
-	var/metabolism_stomach = 1 //How many units of the reagent to metabolize per second.
-	var/metabolism_blood = 1 //How many units of the reagent to metabolize per second.
-	var/metabolism_skin = 1 //How many units of the reagent to metabolize per second.
+	var/metabolism_stomach = METABOLISM_STOMACH //How many units of the reagent to metabolize per second.
+	var/metabolism_blood = METABOLISM_BLOOD //How many units of the reagent to metabolize per second.
+	var/metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
+	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
 	var/flags_metabolism = REAGENT_METABOLISM_INGEST | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN
 
@@ -36,9 +48,7 @@
 	var/cooled_reagent_amount //Amount (units) to add per reagent tick.
 	var/cooled_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
 
-	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
-
-	var/lethal = FALSE //Used by loyalty tags, checks if this reagent is lethal or not.
+	var/lethal = FALSE //Used by loyalty tags, checks if this reagent is lethal or not. TODO: WIP
 
 	var/flags_reagent
 

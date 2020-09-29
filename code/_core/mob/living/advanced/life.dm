@@ -5,11 +5,6 @@
 
 /mob/living/advanced/on_life_slow()
 
-	if(talk_duration)
-		talk_duration = max(0,talk_duration-LIFE_TICK_SLOW)
-		if(talk_duration <= 0 && !is_typing)
-			animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
-
 	. = ..()
 
 	if(.)

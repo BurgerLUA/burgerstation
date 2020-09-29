@@ -13,10 +13,10 @@
 			"STAMINA. HEALTH. ENDURANCE. EVERYTHING YOU COULD EVER WANT.",
 			"WELL, WHAT IS IT?"
 		)
-		owner.say(pick(possible_phrases))
+		owner.do_say(pick(possible_phrases))
 		next_chat_time = world.time + SECONDS_TO_DECISECONDS(5)
 
 	return .
 
 /ai/advanced/daddy/attack_message()
-	owner.say("POW.")
+	owner.do_say("POW.")

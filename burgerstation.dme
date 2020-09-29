@@ -614,7 +614,6 @@
 #include "code\_core\mob\living\advanced\_advanced.dm"
 #include "code\_core\mob\living\advanced\buttons.dm"
 #include "code\_core\mob\living\advanced\chargen.dm"
-#include "code\_core\mob\living\advanced\chat_bubble.dm"
 #include "code\_core\mob\living\advanced\combat.dm"
 #include "code\_core\mob\living\advanced\controls.dm"
 #include "code\_core\mob\living\advanced\cqc.dm"

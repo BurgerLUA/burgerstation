@@ -12,7 +12,6 @@
 	owner.move_dir = pick(DIRECTIONS_ALL)
 	return TRUE
 
-/*
 /ai/advanced/syndicate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
@@ -20,7 +19,7 @@
 	if(damage_amount >= 10 && . && prob(25))
 		if(prob(10) && get_dist(owner,attacker) >= 3)
 			var/attack_dir = dir2text(get_dir(owner,attacker))
-			owner.say("Taking fire from the [attack_dir]!")
+			owner.do_say("Taking fire from the [attack_dir]!")
 		else
 			var/list/responses = list(
 				"I'm hit!",
@@ -31,7 +30,7 @@
 				"Taking fire, need assistance!",
 				"Fuck! I'm hit!"
 			)
-			owner.say(pick(responses))
+			owner.do_say(pick(responses))
 
 	return .
 
@@ -84,7 +83,6 @@
 			)
 
 		if(length(responses))
-			owner.say(pick(responses))
+			owner.do_say(pick(responses))
 
 	return .
-*/
