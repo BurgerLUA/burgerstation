@@ -45,8 +45,6 @@
 	var/turf/path_start_turf
 	var/turf/path_end_turf
 
-
-
 	var/list/attackers = list()
 
 	var/kick_chance = 10
@@ -102,6 +100,26 @@
 
 	var/idle_time = 0
 
+/ai/Destroy()
+	if(owner) owner.ai = null
+	owner = null
+	objective_move = null
+	objective_attack = null
+	objective_investigate = null
+	start_turf = null
+	path_start_turf = null
+	path_end_turf = null
+	attackers.Cut()
+	current_path.Cut()
+
+	SSai.active_ai -= src
+	SSai.inactive_ai -= src
+
+	SSbossai.active_ai -= src
+	SSbossai.inactive_ai -= src
+
+	return ..()
+
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
 
 	if(!force && active == desired_active)
@@ -127,25 +145,6 @@
 	set_active(FALSE)
 	set_path(null)
 	return TRUE
-
-/ai/Destroy()
-	if(owner)
-		owner.ai = null
-	owner = null
-	objective_move = null
-	objective_attack = null
-	start_turf = null
-	attackers.Cut()
-	path_start_turf = null
-	path_end_turf = null
-
-	SSai.active_ai -= src
-	SSai.inactive_ai -= src
-
-	SSbossai.active_ai -= src
-	SSbossai.inactive_ai -= src
-
-	return ..()
 
 /ai/New(var/mob/living/desired_owner)
 

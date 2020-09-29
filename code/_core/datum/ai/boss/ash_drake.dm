@@ -12,6 +12,10 @@
 	owner_as_ash_drake = desired_owner
 	return ..()
 
+/ai/boss/ash_drake/Destroy()
+	owner_as_ash_drake = null
+	return ..()
+
 /ai/boss/ash_drake/handle_attacking()
 
 

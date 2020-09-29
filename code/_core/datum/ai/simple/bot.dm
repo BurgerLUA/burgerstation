@@ -6,9 +6,22 @@
 	var/mob/living/simple/bot/medical/owner_as_bot
 	var/next_idle_voice = 0
 
-/ai/bot/medical/New()
+	radius_find_enemy = 0
+	should_investigate_alert = FALSE
+
+	roaming_distance = 0
+
+	resist_grabs = FALSE
+
+/ai/bot/medical/New(var/mob/living/desired_owner)
+	. = ..()
 	next_idle_voice = world.time + rand(100,300)
 	owner_as_bot = owner
+	return .
+
+/ai/bot/medical/Destroy()
+	owner_as_bot = null
+	healing_target = null
 	return ..()
 
 /ai/bot/medical/proc/is_valid_healing_target(var/mob/living/L,var/distance_check=VIEW_RANGE,var/best_distance=VIEW_RANGE*2)
@@ -22,7 +35,11 @@
 		return FALSE
 	if(distance_check >= best_distance)
 		return FALSE
-	if(!owner.health || ((owner.health.health_max - owner.health.health_current) < damage_threshold))
+	if(!L.reagents)
+		return FALSE
+	if(L.reagents.stored_reagents[owner_as_bot.reagent_to_inject])
+		return FALSE
+	if(!L.health || ((L.health.health_max - L.health.health_current) < damage_threshold))
 		return FALSE
 	return TRUE
 
@@ -70,7 +87,7 @@
 			if(6)
 				play('sound/voice/medbot/surgeon.ogg',get_turf(owner))
 				owner.say("I knew it, I should've been a plastic surgeon.")
-		next_idle_voice = world.time + SECONDS_TO_DECISECONDS(30)
+		next_idle_voice = world.time + SECONDS_TO_DECISECONDS(120)
 
 	for(var/mob/living/L in view(owner,8))
 		var/distance_check = get_dist(L,owner)
@@ -81,15 +98,15 @@
 
 	if(healing_target != best_target)
 		healing_target = best_target
-
-		switch(rand(1,3))
-			if(1)
-				play('sound/voice/medbot/injured.ogg',get_turf(owner))
-				owner.say("You appear to be injured, [healing_target.name]!")
-			if(2)
-				play('sound/voice/medbot/coming.ogg',get_turf(owner))
-				owner.say("Hold on [healing_target.name], I'm coming!")
-			if(3)
-				play('sound/voice/medbot/help.ogg',get_turf(owner))
-				owner.say("Wait [healing_target.name], I want to help!")
+		if(healing_target)
+			switch(rand(1,3))
+				if(1)
+					play('sound/voice/medbot/injured.ogg',get_turf(owner))
+					owner.say("You appear to be injured, [healing_target.name]!")
+				if(2)
+					play('sound/voice/medbot/coming.ogg',get_turf(owner))
+					owner.say("Hold on [healing_target.name], I'm coming!")
+				if(3)
+					play('sound/voice/medbot/help.ogg',get_turf(owner))
+					owner.say("Wait [healing_target.name], I want to help!")
 

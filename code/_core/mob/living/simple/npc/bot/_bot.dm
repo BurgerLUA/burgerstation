@@ -69,16 +69,17 @@
 
 	if(inject_amount)
 		target.reagents.add_reagent(reagent_to_inject,inject_amount)
+		world.log << "Added [inject_amount]u of [reagent_to_inject] to [target]."
 
-	target.to_chat(span("notice","\The [src.name] injects you with the hypospray."))
+		target.to_chat(span("notice","\The [src.name] injects you with the hypospray."))
 
-	switch(rand(1,2))
-		if(1)
-			play('sound/voice/medbot/feelbetter.ogg',get_turf(src))
-			src.say("Feel better soon!")
-		if(2)
-			play('sound/voice/medbot/patchedup.ogg',get_turf(src))
-			src.say("All patched up!")
+		switch(rand(1,2))
+			if(1)
+				play('sound/voice/medbot/feelbetter.ogg',get_turf(src))
+				src.say("Feel better soon!")
+			if(2)
+				play('sound/voice/medbot/patchedup.ogg',get_turf(src))
+				src.say("All patched up!")
 
 	return TRUE
 

@@ -6,9 +6,11 @@
 	var/tentacle_ttack_frequency = 100
 
 /ai/goliath/New(var/mob/living/desired_owner)
-
 	owner_as_goliath = desired_owner
+	return ..()
 
+/ai/goliath/Destroy()
+	owner_as_goliath = null
 	return ..()
 
 /ai/goliath/handle_attacking()

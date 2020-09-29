@@ -11,6 +11,10 @@
 	aggression = 0
 	retaliate = TRUE
 
+/ai/doorman/Destroy()
+	beepsky_marker = null
+	return ..()
+
 /ai/doorman/should_attack_mob(var/mob/living/L,var/do_aggression_check = TRUE)
 
 	if(L == owner)

@@ -1,5 +1,4 @@
 /ai/watcher
-	var/mob/living/simple/npc/watcher/owner_as_watcher
 	attack_distance_min = 4
 	attack_distance_max = 8
 

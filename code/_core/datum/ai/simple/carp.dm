@@ -2,6 +2,10 @@
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader
 
 
+/ai/carp/Destroy()
+	carp_leader = null
+	return ..()
+
 /ai/carp/proc/is_valid_leader(var/mob/living/simple/npc/spacecarp/leader/L)
 	return !(L.dead)
 

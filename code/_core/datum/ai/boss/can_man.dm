@@ -19,6 +19,10 @@
 	owner_as_can_man = desired_owner
 	return ..()
 
+/ai/boss/can_man/Destroy()
+	owner_as_can_man = null
+	return ..()
+
 /ai/boss/can_man/handle_movement()
 
 	if(projectile_count && !strafe_count)

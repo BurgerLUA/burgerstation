@@ -8,6 +8,10 @@
 	assistance = 1
 	retaliate = TRUE
 
+/ai/boss/xeno_queen/Destroy()
+	owner_as_queen = null
+	return ..()
+
 /ai/boss/xeno_queen/New(var/mob/living/desired_owner)
 	owner_as_queen = desired_owner
 	return ..()

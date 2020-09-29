@@ -7,6 +7,9 @@
 	owner_as_herald = desired_owner
 	return ..()
 
+/ai/boss/herald/Destroy()
+	owner_as_herald = null
+	return ..()
 
 /ai/boss/herald/handle_movement()
 

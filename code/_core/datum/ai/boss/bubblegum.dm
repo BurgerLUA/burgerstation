@@ -7,6 +7,9 @@
 	owner_as_bubblegum = desired_owner
 	return ..()
 
+/ai/boss/bubblegum/Destroy()
+	owner_as_bubblegum = null
+	return ..()
 
 /ai/boss/bubblegum/handle_movement()
 
