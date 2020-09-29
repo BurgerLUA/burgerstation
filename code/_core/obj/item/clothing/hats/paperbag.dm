@@ -52,25 +52,22 @@
 		if(C.intent == INTENT_DISARM)
 			if(logobg < 1)
 				logobg++
-				update_sprite()
 				caller.to_chat(span("notice","You change \the pattern from \the [src.name]."))
 				return TRUE
 			else
 				logobg = 0
-				update_sprite()
 				caller.to_chat(span("notice","You wipe \the pattern from \the [src.name]."))
 				return TRUE
 		if(C.intent == INTENT_HELP)
 			if(logo < 5)
 				logo++
-				update_sprite()
 				caller.to_chat(span("notice","You change \the logo from \the [src.name]."))
 				return TRUE
 			else
 				logo = 0
-				update_sprite()
 				caller.to_chat(span("notice","You wipe \the logo from \the [src.name]."))
 				return TRUE
+		update_sprite()
 
 /obj/item/clothing/head/hat/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
@@ -109,16 +106,21 @@
 	return .
 
 /obj/item/clothing/head/hat/paperbag/update_overlays()
-	var/fs = 1
+
+	var/content_count = 1
+
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I3 = k
-		fs += length(I3.held_objects)
-	var/image/I2 = new/image(initial(icon),"logobg[clamp(fs,1,2)][logobg]")
-	I2.color = polymorphs["logobg"]
-	add_overlay(I2)
-	var/image/I = new/image(initial(icon),"logo[clamp(fs,1,2)][logo]")
-	I.color = polymorphs["logo"]
+		content_count += length(I3.held_objects)
+
+	var/image/I = new/image(initial(icon),"logobg[clamp(content_count,1,2)][logobg]")
+	I.color = polymorphs["logobg"]
 	add_overlay(I)
+
+	var/image/I2 = new/image(initial(icon),"logo[clamp(content_count,1,2)][logo]")
+	I2.color = polymorphs["logo"]
+	add_overlay(I2)
+
 	return ..()
 
 /obj/item/clothing/head/hat/paperbag/nanotrasen
@@ -137,3 +139,8 @@
 		"logo" = "#FFFFFF",
 		"logobg" = "#2A2A2A"
 	)
+
+/obj/item/clothing/head/hat/paperbag/random/Generate()
+	logo = rand(0,5)
+	logobg = rand(0,1)
+	return ..()
