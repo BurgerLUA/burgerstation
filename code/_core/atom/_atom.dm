@@ -276,3 +276,6 @@
 
 /atom/proc/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
 	return TRUE
+
+/atom/proc/is_busy()
+	return SSprogressbars.all_progress_bars[src] ? TRUE : FALSE
