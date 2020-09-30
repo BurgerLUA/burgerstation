@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(name)
 	var/list/adjectives = list()
 	var/list/verbs = list()
 
+	var/list/player_names = list()
+
 /subsystem/name/Initialize()
 
 	first_names_male = splittext(rustg_file_read("text/names/first_male.txt"),"\n")
@@ -39,3 +41,14 @@ SUBSYSTEM_DEF(name)
 	else
 		name_count[name] = rand(1,999) //One funny thing is that you can tell at least how many of this type exists by starting it at 1, so it's random.
 		return "[name] ([name_count[name]])"
+
+/subsystem/name/proc/check_duplicate_player_name(var/name,var/ckey)
+	var/length_of_name = length(player_names[name])
+	if(!length_of_name)
+		player_names[name] = list()
+	if(!isnum(player_names[name][ckey]))
+		player_names[name][ckey] = length_of_name
+	if(player_names[name][ckey] == 0)
+		return name
+	return "[name] the [player_names[name][ckey]]\th"
+

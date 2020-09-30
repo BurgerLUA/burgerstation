@@ -90,6 +90,9 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/get_debug_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[mob.x];y=[mob.y];z=[mob.z]'>([mob.x],[mob.y],[mob.z])</a>" : "NONE"])"
 
+/client/proc/get_log_name()
+	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
+
 /client/Del() //Called when the client disconnects.
 
 	all_clients -= src.ckey

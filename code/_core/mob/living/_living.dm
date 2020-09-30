@@ -224,6 +224,9 @@
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
 
+/mob/living/get_log_name()
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

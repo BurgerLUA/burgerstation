@@ -8,7 +8,7 @@
 
 	reagents = /reagent_container/beaker/bucket
 
-	size = SIZE_2
+	size = SIZE_3
 
 	color = COLOR_GREY
 

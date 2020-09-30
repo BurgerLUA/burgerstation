@@ -268,7 +268,8 @@
 /atom/get_debug_name()
 	return "[src.name]([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
 
-
+/atom/get_log_name()
+	return "[src.name]([src.type])([x],[y],[z])</a>"
 
 /atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod = 1)
 	return 0
