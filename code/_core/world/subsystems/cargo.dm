@@ -5,13 +5,13 @@
 SUBSYSTEM_DEF(cargo)
 	name = "Cargo Subsystem"
 	desc = "Store all possible items to load from cargo."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_LAST
 	var/list/cargo_id_to_type = list()
 	var/list/catalog_data = list() //What the catalog should look like
 
 	var/list/stored_orders = list()
 
-/*
+
 /subsystem/cargo/Initialize()
 
 	var/turf/T = locate(1,1,1)
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(cargo)
 			GENERATE(P)
 			FINALIZE(P)
 			P.invisibility = 101
-			P.force_move(null) //Move to nullspace
+			P.loc = null
 			var/md5_hash = copytext(rustg_hash_string(RUSTG_HASH_MD5,line),1,6)
 			cargo_id_to_type[md5_hash] = P
 			sortTim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
@@ -51,4 +51,3 @@ SUBSYSTEM_DEF(cargo)
 			item_count = 1
 
 	return ..()
-*/

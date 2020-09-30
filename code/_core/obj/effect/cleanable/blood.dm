@@ -13,7 +13,30 @@
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+	var/blood_level = 0
+
 /obj/effect/cleanable/blood/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+	return TRUE
+
+/obj/effect/cleanable/blood/Destroy()
+	update_blood_level(null,loc)
+	return ..()
+
+/obj/effect/cleanable/blood/proc/update_blood_level(var/turf/simulated/new_loc,var/turf/simulated/old_loc)
+
+	if(!blood_level)
+		return FALSE
+
+	if(istype(new_loc))
+		old_loc.blood_level += blood_level
+		if(old_loc.blood_level >= 0)
+			blood_turfs |= new_loc
+
+	if(istype(old_loc))
+		old_loc.blood_level -= blood_level
+		if(old_loc.blood_level <= 0)
+			blood_turfs -= old_loc
+
 	return TRUE
 
 /obj/effect/cleanable/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
@@ -46,17 +69,21 @@
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
 
+	update_blood_level(null,src.loc)
+
 	return ..()
 
 /obj/effect/cleanable/blood/drip
 	name = "blood drip"
 	icon_state = "drip"
 	animate_position = FALSE
+	blood_level = 1
 
 /obj/effect/cleanable/blood/splatter/
 	name = "blood splatter"
 	icon_state = "1"
 	animate_position = TRUE
+	blood_level = 10
 
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "[rand(1,12)]"

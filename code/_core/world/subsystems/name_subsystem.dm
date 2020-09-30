@@ -1,6 +1,3 @@
-
-
-
 SUBSYSTEM_DEF(name)
 	name = "Name Subsystem"
 	desc = "Stores random names in a list and keeps track of possibly duplicate names."

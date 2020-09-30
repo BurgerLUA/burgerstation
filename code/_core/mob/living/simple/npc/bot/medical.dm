@@ -147,13 +147,18 @@
 
 	health_base = 200
 
+	level_multiplier = 3
 
 /mob/living/simple/bot/medibot/rogue
 	name = "rogue medical bot"
 	iff_tag = "Robot"
 	iff_tag = "Robot"
 
+	ai = /ai/bot/medical/aggressive
+
 	health_base = 200
+
+	level_multiplier = 3
 
 /mob/living/simple/bot/medibot/rogue/Generate()
 	var/desired_pack = pick("firstaid","brute","burn","toxin","rad","purple","oxy","tactical")

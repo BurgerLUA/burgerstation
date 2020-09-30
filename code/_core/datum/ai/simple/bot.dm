@@ -105,3 +105,10 @@
 
 	return TRUE
 
+
+
+/ai/bot/medical/aggressive
+	radius_find_enemy = VIEW_RANGE
+	should_investigate_alert = TRUE
+	roaming_distance = VIEW_RANGE
+	resist_grabs = TRUE

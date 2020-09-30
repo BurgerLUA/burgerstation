@@ -1,6 +1,7 @@
 var/global/list/turf_icon_cache = list()
 var/global/saved_icons = 0
 
+var/global/list/blood_turfs = list()
 
 /turf/simulated/
 

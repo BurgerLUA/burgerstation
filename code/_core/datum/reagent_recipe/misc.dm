@@ -81,7 +81,7 @@
 
 	required_reagents = list(
 		/reagent/sulfur = 5,
-		/reagent_recipe/chemistry/oil/carbon = 1
+		/reagent/fuel/oil/carbon = 1
 	)
 
 	results = list(
@@ -89,5 +89,18 @@
 	)
 
 	required_temperature_min = list(
-		/reagent_recipe/chemistry/oil/carbon = 480
+		/reagent/fuel/oil/carbon = 480
+	)
+
+/reagent_recipe/chemistry/space_cleaner
+
+	name = "Space Cleaner"
+
+	required_reagents = list(
+		/reagent/ammonia = 1,
+		/reagent/nutrition/water = 1
+	)
+
+	results = list(
+		/reagent/space_cleaner = 2
 	)
