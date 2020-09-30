@@ -25,3 +25,7 @@
 
 /reagent_container/beaker/shot_glass
 	volume_max = 30
+
+
+/reagent_container/beaker/bucket
+	volume_max = 500

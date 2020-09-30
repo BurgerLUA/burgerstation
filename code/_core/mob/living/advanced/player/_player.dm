@@ -118,7 +118,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(real_name == DEFAULT_NAME)
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 
-	name = "[real_name] ([client ? client : "NO CKEY"])"
+	name = real_name
 
 	return TRUE
 

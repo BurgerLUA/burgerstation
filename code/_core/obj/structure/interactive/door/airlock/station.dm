@@ -47,11 +47,17 @@
 
 /obj/structure/interactive/door/airlock/station/maintenance
 	name = "maintenance airlock"
-	color = "#626262"
+	color = COLOR_METAL_DARK
 	fill_color = "#B69F3C"
 
 /obj/structure/interactive/door/airlock/station/maintenance/no_access
 	no_access = TRUE
+
+/obj/structure/interactive/door/airlock/station/janitor
+	name = "janitorial airlock"
+	color = COLOR_METAL_DARK
+	fill_color = COLOR_JANITOR
+
 
 /obj/structure/interactive/door/airlock/station/dark
 	name = "maintenance airlock"
@@ -88,7 +94,7 @@
 
 /obj/structure/interactive/door/airlock/station/general
 	name = "general airlock"
-	color = "#626262"
+	color = COLOR_METAL_DARK
 	fill_color = "#83A35D"
 
 /obj/structure/interactive/door/airlock/station/chemistry

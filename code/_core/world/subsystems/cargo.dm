@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(cargo)
 
 	var/list/stored_orders = list()
 
+/*
 /subsystem/cargo/Initialize()
 
 	var/turf/T = locate(1,1,1)
@@ -50,3 +51,4 @@ SUBSYSTEM_DEF(cargo)
 			item_count = 1
 
 	return ..()
+*/

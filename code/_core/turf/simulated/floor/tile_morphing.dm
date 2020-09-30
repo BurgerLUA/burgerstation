@@ -123,6 +123,9 @@
 /turf/simulated/floor/tile/morphing/security
 	color = COLOR_SECURITY
 
+/turf/simulated/floor/tile/morphing/janitor
+	color = COLOR_JANITOR
+
 /turf/simulated/floor/tile/morphing/chapel
 	color = COLOR_GREY_DARK
 

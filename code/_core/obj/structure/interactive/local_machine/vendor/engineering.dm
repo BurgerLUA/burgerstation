@@ -40,6 +40,9 @@
 		/obj/item/clothing/belt/storage/colored/janitor,
 		/obj/item/clothing/mask/gas/poly/janitor,
 		/obj/item/clothing/overwear/coat/vest/colored/grey,
+		/obj/item/mop,
 		/obj/item/broom,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner
+		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner,
+		/obj/item/container/beaker/bucket/water,
+		/obj/item/wet_floor_sign
 	)

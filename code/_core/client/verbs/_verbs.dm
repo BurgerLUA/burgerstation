@@ -54,6 +54,7 @@
 		verbs += /client/verb/ban
 		verbs += /client/verb/force_random_event
 		verbs += /client/verb/create_vote
+		verbs += /client/verb/get_players
 
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)

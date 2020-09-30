@@ -6,6 +6,10 @@
 
 	damage_type = /damagetype/melee/club/broom
 
+	size = SIZE_3
+
+	value = 200
+
 /obj/item/broom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(isturf(object))

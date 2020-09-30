@@ -60,9 +60,11 @@ var/global/saved_icons = 0
 
 	if(is_living(O))
 		var/mob/living/L = O
-		var/slip_strength = get_slip_strength(L)
-		if(slip_strength >= 4 - L.move_mod)
-			L.add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+		if(!L.horizontal)
+			var/slip_strength = get_slip_strength(L)
+			if(slip_strength >= 4 - L.move_mod)
+				var/obj/item/wet_floor_sign/WFS = locate() in range(1,src)
+				if(!WFS) L.add_status_effect(SLIP,slip_strength*10,slip_strength*10)
 
 	return .
 

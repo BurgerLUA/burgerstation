@@ -65,6 +65,7 @@
 
 //Materials
 #define COLOR_METAL "#777777"
+#define COLOR_METAL_DARK "#626262"
 #define COLOR_STEEL "#444444"
 #define COLOR_ALUMINUM "#C0C0C0"
 #define COLOR_GLASS "#D9FFFF"

@@ -30,3 +30,12 @@
 
 	SSevents.next_event_time = 0
 
+/client/verb/get_players()
+	set name = "Get Players"
+	set category = "Admin"
+
+	for(var/k in all_clients)
+		var/client/C = all_clients[k]
+		src.to_chat(C.get_debug_name())
+
+	return TRUE

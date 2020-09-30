@@ -112,6 +112,7 @@
 	)
 
 /obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
+	SPAM_CHECK
 	. = ..()
 	if(enabled)
 		play('sound/weapons/energy/energy_on.ogg',src)

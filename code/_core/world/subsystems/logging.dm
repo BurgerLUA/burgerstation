@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(logging)
 	tick_rate = DECISECONDS_TO_TICKS(LOG_RATE)
 	priority = SS_ORDER_LOGGING
 	var/list/buffered_log_chat = list()
+	var/list/buffered_log_admin = list() //TODO
 	var/round_id = 0
 	var/start_date = ""
 
@@ -21,7 +22,11 @@ SUBSYSTEM_DEF(logging)
 	return ..()
 
 /subsystem/logging/proc/log_chat(var/data_to_log)
-	buffered_log_chat += "[type]: [data_to_log]"
+	buffered_log_chat += data_to_log
+	return TRUE
+
+/subsystem/logging/proc/log_admin(var/data_to_log)
+	buffered_log_admin += data_to_log
 	return TRUE
 
 /subsystem/logging/proc/get_logging_dir(var/type)
