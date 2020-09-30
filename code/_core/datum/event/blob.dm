@@ -54,7 +54,8 @@
 	announce(
 		"Central Xenoviral Division",
 		"Blob Alert",
-		"A level 5 \"blob\" biohazard growth has been detected near the area of operations. Predicted area: [A.name]."
+		"A level 5 \"blob\" biohazard growth has been detected near the area of operations. Predicted area: [A.name].",
+		sound_to_play = 'sound/voice/announcement/blob.ogg'
 	)
 
 	var/turf/T = pick(valid_turfs)

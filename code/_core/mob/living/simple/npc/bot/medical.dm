@@ -146,3 +146,22 @@
 	iff_tag = "Syndicate"
 
 	health_base = 200
+
+
+/mob/living/simple/bot/medical/rogue
+	name = "rogue medical bot"
+	iff_tag = "Robot"
+	iff_tag = "Robot"
+
+	health_base = 200
+
+/mob/living/simple/bot/medical/rogue/Generate()
+	var/desired_pack = pick("firstaid","brute","burn","toxin","rad","purple","oxy","tactical")
+	var/desired_num = pick("","1","2","3","4")
+	overlay_icon = "[desired_pack][desired_num]"
+	return ..()
+
+/mob/living/simple/bot/medical/rogue/Finalize()
+	. = ..()
+	update_sprite()
+	return .

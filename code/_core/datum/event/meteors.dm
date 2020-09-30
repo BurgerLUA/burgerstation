@@ -51,7 +51,8 @@
 	announce(
 		"Central Command Meteorology Division",
 		"Meteor Storm Inbound",
-		"Meteors have been detected near the area of operations. Predicted landing areas: [english_list(announce_areas)]."
+		"Meteors have been detected near the area of operations. Predicted landing areas: [english_list(announce_areas)].",
+		sound_to_play = 'sound/voice/announcement/meteors.ogg'
 	)
 
 	return ..()

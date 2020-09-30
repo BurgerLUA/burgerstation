@@ -58,7 +58,8 @@
 	announce(
 		"Central Command Cargo Control",
 		"Stray Supply Pods",
-		"Several stray supply pods are detected to land in the area of operations shortly. Predicted landing areas: [english_list(announce_areas)]."
+		"Several stray supply pods are predicted to land in the area of operations. Predicted landing areas: [english_list(announce_areas)].",
+		sound_to_play = 'sound/voice/announcement/supply.ogg'
 	)
 
 	for(var/i=1,i<=rand(4,8),i++)

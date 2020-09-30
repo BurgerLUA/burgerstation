@@ -6,7 +6,7 @@
 	var/list/turf/valid_turfs = list()
 	var/list/area/valid_areas = list()
 
-	occurances_max = 3
+	occurances_max = 10
 
 	var/list/possible_enemy_types = list(
 		/mob/living/advanced/npc/ashwalker/hunter,
@@ -26,7 +26,8 @@
 		/mob/living/simple/npc/venus_human_trap,
 		/mob/living/simple/npc/watcher,
 		/mob/living/simple/npc/xeno/hunter,
-		/mob/living/simple/npc/glockroach
+		/mob/living/simple/npc/glockroach,
+		/mob/living/simple/bot/medical/rogue
 	)
 
 	var/mob/living/enemy_type_to_spawn
@@ -77,7 +78,8 @@
 	announce(
 		"Central Command Space Biology Division",
 		"[the_name] Migration",
-		"A [the_name] migration has been detected near the area of operations. Predicted migration areas: [english_list(announce_areas)]."
+		"A [the_name] migration has been detected near the area of operations. Predicted migration areas: [english_list(announce_areas)].",
+		sound_to_play = 'sound/voice/announcement/migration.ogg'
 	)
 
 	for(var/i=1,i<=20,i++)
