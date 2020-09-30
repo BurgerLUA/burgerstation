@@ -59,6 +59,15 @@
 		"shoulders" = COLOR_GREEN
 	)
 
+/obj/item/clothing/shirt/normal/uniform/janitor
+	name = "janitor uniformed shirt"
+	desc = "Purple and grey."
+	desc_extended = "The shirt of choice for janitor."
+	polymorphs = list(
+		"shirt" = COLOR_GREY,
+		"shoulders" = COLOR_JANITOR
+	)
+
 
 /obj/item/clothing/shirt/normal/uniform/chemistry
 	name = "chemistry uniformed shirt"
@@ -130,3 +139,11 @@
 	)
 
 	value = 70
+
+/obj/item/clothing/shirt/normal/janitor
+	name = "janitor shirt"
+	desc = "Offensively janitor."
+	desc_extended = "A shirt that is purple as heck."
+	polymorphs = list(
+		"shirt" = COLOR_JANITOR,
+	)

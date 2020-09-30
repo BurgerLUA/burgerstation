@@ -32,3 +32,11 @@
 		"detail" = COLOR_CHEMISTRY,
 		"buckle" = COLOR_GOLD
 	)
+
+/obj/item/clothing/back/storage/satchel/poly/grey
+	polymorphs = list(
+		"body" = COLOR_GREY,
+		"straps" = COLOR_GREY_DARK,
+		"detail" = COLOR_GREY_DARK,
+		"buckle" = COLOR_SILVER
+	)

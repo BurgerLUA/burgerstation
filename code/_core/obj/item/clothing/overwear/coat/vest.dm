@@ -49,6 +49,10 @@
 	name = "medical vest"
 	color = COLOR_WHITE
 
+/obj/item/clothing/overwear/coat/vest/colored/grey
+	name = "grey vest"
+	color = COLOR_GREY
+
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'

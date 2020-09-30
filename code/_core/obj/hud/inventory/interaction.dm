@@ -129,7 +129,7 @@
 				if(!I2.click_flags && !I2.drag_to_take)
 					src.add_object(defer_object)
 					return TRUE
-			else
+			else if(is_inventory(defer_self))
 				src.add_object(defer_object)
 				return TRUE
 

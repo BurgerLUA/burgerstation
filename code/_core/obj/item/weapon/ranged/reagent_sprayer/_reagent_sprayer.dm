@@ -58,3 +58,10 @@
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube/Generate()
 	reagents.add_reagent(/reagent/lube,reagents.volume_max)
 	return ..()
+
+/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner
+	name = "spray bottle (space cleaner)"
+
+/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner/Generate()
+	reagents.add_reagent(/reagent/space_cleaner,reagents.volume_max)
+	return ..()

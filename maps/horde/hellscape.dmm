@@ -531,7 +531,7 @@
 "kk" = (/obj/structure/interactive/computer/console/remote_flight/alpha,/turf/simulated/floor/grass/jungle,/area/hellscape/jungle)
 "kl" = (/obj/item/organ/leg/skeleton,/turf/simulated/floor/cave_dirt,/area/lz_001/caves)
 "km" = (/obj/structure/interactive/lighting/tube/syndicate{dir = 1},/turf/simulated/floor/circuit,/area/lz_001/outpost/syndicate)
-"kn" = (/mob/living/simple/bot/medical/syndicate,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate/jungle)
+"kn" = (/mob/living/simple/bot/medibot/syndicate,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate/jungle)
 "ko" = (/obj/structure/scenery/jungle_grass,/turf/simulated/floor/grass/jungle,/area/hellscape/jungle)
 "kp" = (/turf/simulated/wall/rock/moss,/area/hellscape/jungle)
 "kq" = (/turf/simulated/floor/colored/grass/jungle,/area/hellscape/jungle)

@@ -19,3 +19,11 @@
 		"straps" = COLOR_ENGINEERING,
 		"buckles" = COLOR_SILVER
 	)
+
+/obj/item/clothing/back/storage/backpack/poly/grey
+	polymorphs = list(
+		"body" = COLOR_GREY,
+		"straps" = COLOR_GREY_DARK,
+		"detail" = COLOR_GREY_DARK,
+		"buckle" = COLOR_SILVER
+	)

@@ -202,3 +202,49 @@
 	flavor_strength = 8
 
 	liquid = 0
+
+
+
+/reagent/space_cleaner
+	name = "space cleaner"
+	desc = "Foodsafe! Cleans 10 times faster that regular water! BLAM! Space Cleaner!"
+	color = "#66E1FF"
+	alpha = 150
+
+	flavor = "bleach"
+	flavor_strength = 5
+
+	liquid = 0.4
+
+/reagent/space_cleaner/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(tox=.*2)
+
+	return .
+
+/reagent/space_cleaner/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(tox=.*4)
+
+	return .
+
+/reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+
+	. = ..()
+
+	if(. && isturf(target))
+		var/turf/T = target
+		var/cleaning_power = volume_to_splash*10
+		for(var/obj/effect/cleanable/C in T.contents)
+			if(cleaning_power <= 0)
+				break
+			qdel(C)
+			cleaning_power -= 10
+
+	return .

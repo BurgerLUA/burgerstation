@@ -3,7 +3,7 @@
 /ai/bot/medical
 	var/mob/living/healing_target
 	var/damage_threshold = 20 //Value
-	var/mob/living/simple/bot/medical/owner_as_bot
+	var/mob/living/simple/bot/medibot/owner_as_bot
 	var/next_idle_voice = 0
 
 	radius_find_enemy = 0

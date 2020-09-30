@@ -107,3 +107,10 @@
 		"eyes" = COLOR_CHEMISTRY,
 		"filter" = COLOR_PLASTEEL
 	)
+
+/obj/item/clothing/mask/gas/poly/janitor
+	polymorphs = list(
+		"base" = COLOR_METAL,
+		"eyes" = COLOR_PURPLE,
+		"filter" = COLOR_METAL
+	)

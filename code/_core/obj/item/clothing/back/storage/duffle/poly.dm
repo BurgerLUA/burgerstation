@@ -20,3 +20,12 @@
 		"detail" = COLOR_ENGINEERING,
 		"straps" = COLOR_BROWN
 	)
+
+
+/obj/item/clothing/back/storage/dufflebag/poly/grey
+	polymorphs = list(
+		"body" = COLOR_GREY,
+		"straps" = COLOR_GREY_DARK,
+		"detail" = COLOR_GREY_DARK,
+		"buckle" = COLOR_SILVER
+	)

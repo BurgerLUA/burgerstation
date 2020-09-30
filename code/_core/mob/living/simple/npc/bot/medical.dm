@@ -1,4 +1,4 @@
-/mob/living/simple/bot/medical
+/mob/living/simple/bot/medibot
 	name = "medical bot"
 	desc = "I NEED HEALING."
 	desc_extended = "A medical bot programmed to heal those in need. It's not afraid to defend itself."
@@ -14,8 +14,8 @@
 	var/healing_threshold = 10
 	var/amount_to_inject = 10
 
-	var/overlay_icon_state = "firstaid"
 	var/overlay_icon = 'icons/obj/item/storage/kits.dmi'
+	var/overlay_icon_state = "firstaid"
 
 	var/list/medicine = list(
 		BRUTE = /reagent/medicine/bicaridine,
@@ -30,12 +30,12 @@
 
 	stun_angle = 180
 
-/mob/living/simple/bot/medical/Finalize()
+/mob/living/simple/bot/medibot/Finalize()
 	. = ..()
 	update_sprite()
 	return .
 
-/mob/living/simple/bot/medical/update_icon()
+/mob/living/simple/bot/medibot/update_icon()
 
 	. =..()
 
@@ -48,7 +48,7 @@
 
 	return .
 
-/mob/living/simple/bot/medical/update_overlays()
+/mob/living/simple/bot/medibot/update_underlays()
 
 	. = ..()
 
@@ -57,7 +57,7 @@
 
 	return .
 
-/mob/living/simple/bot/medical/proc/get_inject_amount(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/get_inject_amount(var/mob/living/target)
 
 	. = list()
 
@@ -75,7 +75,7 @@
 
 	return length(.) ? . : FALSE
 
-/mob/living/simple/bot/medical/proc/treat(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/treat(var/mob/living/target)
 
 	var/inject_amount = get_inject_amount(target)
 
@@ -98,7 +98,7 @@
 
 	return TRUE
 
-/mob/living/simple/bot/medical/proc/can_treat(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/can_treat(var/mob/living/target)
 
 	if(!target || target.qdeleting)
 		return FALSE
@@ -123,7 +123,7 @@
 
 	return TRUE
 
-/mob/living/simple/bot/medical/proc/try_treat(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/try_treat(var/mob/living/target)
 
 	if(get_inject_amount(target))
 		PROGRESS_BAR(src,src,SECONDS_TO_DECISECONDS(5),.proc/treat,target)
@@ -139,7 +139,7 @@
 
 
 
-/mob/living/simple/bot/medical/syndicate
+/mob/living/simple/bot/medibot/syndicate
 	name = "Dr. Malpractice"
 	overlay_icon_state = "tactical"
 	loyalty_tag = "Syndicate"
@@ -148,20 +148,16 @@
 	health_base = 200
 
 
-/mob/living/simple/bot/medical/rogue
+/mob/living/simple/bot/medibot/rogue
 	name = "rogue medical bot"
 	iff_tag = "Robot"
 	iff_tag = "Robot"
 
 	health_base = 200
 
-/mob/living/simple/bot/medical/rogue/Generate()
+/mob/living/simple/bot/medibot/rogue/Generate()
 	var/desired_pack = pick("firstaid","brute","burn","toxin","rad","purple","oxy","tactical")
 	var/desired_num = pick("","1","2","3","4")
 	overlay_icon = "[desired_pack][desired_num]"
 	return ..()
 
-/mob/living/simple/bot/medical/rogue/Finalize()
-	. = ..()
-	update_sprite()
-	return .

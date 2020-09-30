@@ -42,7 +42,9 @@
 
 //Department Colors
 #define COLOR_CARGO "#BB9042"
+
 #define COLOR_COMMAND "#2C566E"
+
 #define COLOR_MEDICAL "#0094FF"
 #define COLOR_MEDICAL_LIGHT "#6DC2FF"
 
@@ -52,10 +54,14 @@
 
 #define COLOR_ENGINEERING "#D8A538"
 #define COLOR_ENGINEERING_BRIGHT "#FFDE15"
+
 #define COLOR_SCIENCE "#9651C6"
+
 #define COLOR_CHEMISTRY "#FF6A00"
 
 #define COLOR_LIBRARY "#992F2F"
+
+#define COLOR_JANITOR "#A747C0"
 
 //Materials
 #define COLOR_METAL "#777777"

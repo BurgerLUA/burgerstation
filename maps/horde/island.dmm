@@ -556,7 +556,7 @@
 "kJ" = (/obj/marker/map_node,/turf/simulated/floor/colored/dirt/cave,/area/lz_001/desert)
 "kK" = (/obj/marker/map_node,/mob/living/simple/npc/xeno/sentinel,/turf/simulated/floor/xeno,/area/lz_001/caves/hive)
 "kL" = (/turf/simulated/floor/colored/sand/desert,/area/lz_001/caves/ocean_pass)
-"kM" = (/mob/living/simple/bot/medical/syndicate,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate/jungle)
+"kM" = (/mob/living/simple/bot/medibot/syndicate,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate/jungle)
 "kN" = (/turf/simulated/hazard/water,/area/lz_001/desert)
 "kO" = (/turf/simulated/wall/rock,/area/lz_001/caves/desert_cave)
 "kR" = (/turf/simulated/wall/rock/desert,/area/lz_001/caves/desert_cave)

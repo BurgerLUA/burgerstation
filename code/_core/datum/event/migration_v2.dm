@@ -27,7 +27,7 @@
 		/mob/living/simple/npc/watcher,
 		/mob/living/simple/npc/xeno/hunter,
 		/mob/living/simple/npc/glockroach,
-		/mob/living/simple/bot/medical/rogue
+		/mob/living/simple/bot/medibot/rogue
 	)
 
 	var/mob/living/enemy_type_to_spawn
