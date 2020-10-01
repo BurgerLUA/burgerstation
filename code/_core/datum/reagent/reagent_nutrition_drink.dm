@@ -15,13 +15,13 @@
 	cooled_reagent_amount = 1
 	cooled_reagent_mul = 0.25
 
-/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
 	if(. && isturf(target))
 		var/turf/T = target
-		var/cleaning_power = volume_to_splash
+		var/cleaning_power = volume_to_splash*5*strength_mod
 		for(var/obj/effect/cleanable/C in T.contents)
 			if(cleaning_power <= 0)
 				break
@@ -29,7 +29,7 @@
 			cleaning_power -= 10
 		if(is_simulated(target))
 			var/turf/simulated/S = target
-			S.add_wet(volume_to_splash*10)
+			S.add_wet(volume_to_splash*10*strength_mod)
 
 	return .
 

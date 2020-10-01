@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 200
 
-	shoot_delay = 1.3
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
@@ -14,7 +14,7 @@
 
 	can_wield = TRUE
 
-	view_punch = 9
+	view_punch = 6
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 

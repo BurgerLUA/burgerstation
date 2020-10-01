@@ -44,7 +44,11 @@
 		var/mob/living/L = owner
 
 		if(has_bloodloss)
-			damage[OXY] = clamp(1 - (0.15 + L.blood_volume/L.blood_volume_max),0,1) * 300
+			var/blood_percent = L.blood_volume/L.blood_volume_max
+			if(blood_percent <= 1)
+				damage[OXY] = clamp(1 - (0.15 + blood_percent),0,1) * 300
+			else
+				damage[OXY] = (blood_percent-1)*50
 
 		var/should_be_dead = check_death && L.check_death()
 

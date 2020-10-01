@@ -25,6 +25,8 @@
 	return ..()
 
 /ai/bot/medical/proc/is_valid_healing_target(var/mob/living/L)
+	if(L == owner)
+		return FALSE
 	if(!L || L.qdeleting)
 		return FALSE
 	if(owner.loyalty_tag != L.loyalty_tag)

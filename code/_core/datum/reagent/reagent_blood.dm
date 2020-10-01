@@ -15,6 +15,8 @@
 
 	var/list/compatible_blood = list(/reagent/blood)
 
+	value = 2
+
 /reagent/blood/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(owner.health) owner.health.adjust_loss_smart(tox=.*0.25)
@@ -30,6 +32,7 @@
 			var/reagent/blood/R = REAGENT(L.blood_type)
 			if(R.compatible_blood[src.type])
 				L.blood_volume += .
+				L.queue_health_update = TRUE
 		else
 			if(owner.health) owner.health.adjust_loss_smart(tox=.*1)
 

@@ -787,6 +787,9 @@
 	if(!desired_target)
 		return FALSE
 
+	if(!owner)
+		return FALSE
+
 	if(desired_target == objective_attack)
 		return FALSE
 

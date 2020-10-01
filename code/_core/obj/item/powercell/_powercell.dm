@@ -110,7 +110,7 @@
 	icon = 'icons/obj/item/cells.dmi'
 	icon_state = "cell_recharging"
 
-	charge_max = CELL_SIZE_BASIC
+	charge_max = CELL_SIZE_BASIC*0.5
 
 	size = SIZE_2
 

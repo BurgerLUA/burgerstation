@@ -123,11 +123,15 @@
 			var/obj/item/I = defer_object
 			if(is_inventory(defer_object.loc)) //The object we're clicking on is in an inventory. Special behavior.
 				var/obj/hud/inventory/I2 = defer_object.loc
-				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in a worn slot, and it should be opened instead.
-					I.click_self(caller)
-					return TRUE
+				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in a worn slot.
+					if(is_inventory(defer_self)) //We have nothing to add to it, so we should open it instead.
+						I.click_self(caller)
+						return TRUE
 				if(!I2.click_flags && !I2.drag_to_take)
 					src.add_object(defer_object)
+					return TRUE
+				if(I2.worn_slots && is_item(defer_self) && !I.is_container)
+					I2.add_object(defer_self)
 					return TRUE
 			else if(is_inventory(defer_self))
 				src.add_object(defer_object)

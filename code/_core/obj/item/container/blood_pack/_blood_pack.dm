@@ -14,6 +14,8 @@
 
 	var/draw_delay = 10
 
+	value = 20
+
 /obj/item/container/blood_pack/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 

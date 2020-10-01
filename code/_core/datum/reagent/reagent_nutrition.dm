@@ -47,7 +47,9 @@
 	var/mob/living/L = owner
 	if(nutrition_amount)
 		L.add_nutrition(nutrition_amount*.)
-		L.blood_volume = clamp(L.blood_volume + nutrition_amount*.*0.1,0,L.blood_volume_max)
+		if(L.blood_volume < L.blood_volume_max)
+			L.blood_volume = clamp(L.blood_volume + nutrition_amount*.*0.1,0,L.blood_volume_max)
+			L.queue_health_update = TRUE
 	if(hydration_amount)
 		L.add_hydration(hydration_amount*.)
 

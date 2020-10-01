@@ -4,6 +4,9 @@
 	icon_state = "dough_ball"
 	crafting_id = "pastry_dough"
 
+	cooked_icon_state = "cake"
+	raw_icon_state = "dough_ball"
+
 	health = /health/obj/item/misc/
 
 	scale_sprite = FALSE
@@ -13,7 +16,6 @@
 	allow_reagent_transfer_to = TRUE
 
 	var/last_cooked = FALSE
-
 
 /obj/item/container/food/dynamic/cake/click_self(var/mob/caller,location,control,params)
 
@@ -25,7 +27,6 @@
 	update_sprite()
 
 	return TRUE
-
 
 /obj/item/container/food/dynamic/cake/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 

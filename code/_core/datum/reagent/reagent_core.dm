@@ -13,13 +13,13 @@
 
 
 
-/reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+/reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
 	if(. && is_simulated(target))
 		var/turf/simulated/S = target
-		S.add_wet(volume_to_splash*100)
+		S.add_wet(volume_to_splash*100*strength_mod)
 
 	return .
 
@@ -55,7 +55,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		if(L.blood_type && L.reagents && L.blood_type == /reagent/blood)
+		if(L.blood_type && ispath(L.blood_type,/reagent/blood))
 			L.blood_volume = clamp(L.blood_volume + .*3,0,L.blood_volume_max)
 			L.queue_health_update = TRUE
 
@@ -234,13 +234,13 @@
 
 	return .
 
-/reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+/reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
 	if(. && isturf(target))
 		var/turf/T = target
-		var/cleaning_power = volume_to_splash*10
+		var/cleaning_power = volume_to_splash*10*strength_mod
 		for(var/obj/effect/cleanable/C in T.contents)
 			if(cleaning_power <= 0)
 				break

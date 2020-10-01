@@ -263,12 +263,12 @@
 
 	liquid = -0.5
 
-/reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+/reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
 	if(. && is_living(target))
-		on_add(container,volume_to_splash*0.5,0)
+		on_add(container,volume_to_splash*strength_mod,0)
 
 	return .
 
@@ -279,8 +279,8 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(burn=.*-10)
-		if(is_living(container.owner))
-			var/mob/living/L = container.owner
+		if(is_living(container.owner.loc))
+			var/mob/living/L = container.owner.loc
 			L.emote("scream")
 
 	return .
@@ -316,12 +316,12 @@
 
 	liquid = -0.5
 
-/reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+/reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
 	if(. && is_living(target))
-		on_add(container,volume_to_splash*0.5,0)
+		on_add(container,volume_to_splash*strength_mod,0)
 
 	return .
 
@@ -333,8 +333,8 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(brute=.*-10)
-		if(is_living(container.owner))
-			var/mob/living/L = container.owner
+		if(is_living(container.owner.loc))
+			var/mob/living/L = container.owner.loc
 			L.emote("scream")
 
 	return .
@@ -368,12 +368,12 @@
 	alpha = 255
 
 
-/reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+/reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
 	if(. && is_living(target))
-		on_add(container,volume_to_splash*0.5,0)
+		on_add(container,volume_to_splash*strength_mod,0)
 
 	return .
 
@@ -455,7 +455,7 @@
 
 	if(. + current_volume >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
-		if(L.dead && !L.check_death() && L.client)
+		if(L.dead && !L.check_death() && L.is_player_controlled() && !L.suicide)
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
 		else

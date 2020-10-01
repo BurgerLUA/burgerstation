@@ -105,6 +105,8 @@
 
 	size = 99
 
+	size = SIZE_6
+
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(object == linked_defib)
@@ -119,11 +121,11 @@
 
 	return ..()
 
-/obj/item/defib_paddle/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
+/obj/item/defib_paddle/post_move()
 
 	. = ..()
 
-	if(. && linked_defib)
+	if(. && linked_defib && isturf(loc))
 		placed_target_ref = null
 		src.force_move(linked_defib)
 

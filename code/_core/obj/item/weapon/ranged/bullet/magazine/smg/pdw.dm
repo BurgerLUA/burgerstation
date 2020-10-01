@@ -8,7 +8,7 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1.5
+	shoot_delay = 1.2
 	view_punch = 4
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
@@ -74,7 +74,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[initial(icon_state)]_[CEILING( (length(M.stored_bullets)/20)*5,1)]"
+		icon_state = "[initial(icon_state)]_[CEILING((length(M.stored_bullets)/M.bullet_count_max)*5,1)]"
 	else
 		icon_state = "[initial(icon_state)]_open"
 	..()

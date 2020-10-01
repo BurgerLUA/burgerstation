@@ -506,7 +506,7 @@
 	return list(english_list(english_flavor_profile),flavor_flags)
 
 
-/reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE)
+/reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE,var/strength_mod=1)
 
 	if(!splash_amount || !volume_current)
 		caller?.to_chat(span("warning","There is nothing to splash!"))
@@ -518,18 +518,18 @@
 
 	target = target.change_victim(caller)
 
-	target.on_splash(caller,src,splash_amount,silent)
+	target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
 	return TRUE
 
 
-/atom/proc/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE)
+/atom/proc/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE,var/strength_mod=1)
 
 	if(source.stored_reagents)
 		for(var/r_id in source.stored_reagents)
 			var/reagent/R = REAGENT(r_id)
 			var/volume_to_splash = source.remove_reagent(R.type,source.stored_reagents[r_id] * (splash_amount/source.volume_current),FALSE,FALSE)
-			R.on_splash(source,caller,src,volume_to_splash)
+			R.on_splash(source,caller,src,volume_to_splash,strength_mod)
 		if(!silent) caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [source.owner.name] on \the [src.name]!"))
 		source.update_container()
 		return TRUE

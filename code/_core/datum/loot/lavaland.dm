@@ -5,7 +5,8 @@
 		/obj/item/clothing/overwear/hardsuit/ling = 1,
 		/obj/item/armor_plate/ultra = 1,
 		/obj/item/attachment/barrel/charger/advanced = 1,
-		/obj/item/clothing/overwear/hardsuit/seva/mono = 1
+		/obj/item/clothing/overwear/hardsuit/seva/mono = 1,
+		/obj/item/clothing/overwear/armor/knight/battlemage = 1
 	)
 
 	loot_multiplier = 4
