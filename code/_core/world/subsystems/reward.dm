@@ -1,15 +1,16 @@
 #define REWARD_DIR "data/server/reward_codes.txt"
 
+
+
+
 SUBSYSTEM_DEF(reward)
 	name = "Reward Subsystem"
 	desc = "Handles rewards and whatnot."
 	priority = SS_ORDER_PRELOAD
 
 	var/list/reward_code_to_reward = list()
-
-
 	var/list/stored_rewards = list()
-
+	var/list/redeemed_rewards_by_ckey = list() //Only with FLAG_REWARD_ONCE_PER_ROUND set.
 
 /subsystem/reward/Initialize()
 
@@ -32,6 +33,7 @@ SUBSYSTEM_DEF(reward)
 			var/reward = text2path(code_type_pair[2])
 			if(!reward || !stored_rewards[reward])
 				log_error("Reward Subsystem: Invalid reward type \"[code_type_pair[2]]\" for line [current_line] of [REWARD_DIR].")
+			code = sanitize(code) //So it's always the same.
 			reward_code_to_reward[code] = stored_rewards[reward]
 			var/debug_reward = sanitize("[reward_code_to_reward[code]] = [reward]")
 			log_subsystem(src.name,"Found reward: [debug_reward].")

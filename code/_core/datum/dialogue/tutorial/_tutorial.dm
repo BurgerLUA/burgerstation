@@ -11,13 +11,12 @@
 	if(is_on_burgerstation)
 		dialogue_options["hello"] = list(
 			"Greetings. I am Cyborg Assistant MK1. I am here to answer all your questions and concerns at your #1 at #2's #3! \
-			If you have no questions, please insert your hand into the #4 implanter so we can #5 and you can #6!.",
+			If you have no questions, please #4.",
 			"employment",
 			"NanoTrasen",
 			"Burgerstation",
-			"IFF",
-			"register you in the system",
-			"get to work"
+			"get to work",
+			"*Reward Redemption"
 		)
 	else
 		dialogue_options["hello"] = list(
@@ -29,7 +28,7 @@
 
 	dialogue_options["employment"] = list(
 		"You are currently hired as a #1 aboard #2. Your primary task is to shoot at the enemies of #3, which are currently the #4. You will be paid in #5 every 10 or so minutes, \
-		with additional credit #6 based on your job performance",
+		with additional credit #6 based on your job performance.",
 		"Corporate Mercenary",
 		"Burgerstation",
 		"NanoTrasen",
@@ -100,6 +99,9 @@
 			"Burgerstation",
 			"Burgerstation"
 		)
+		dialogue_options["*Reward Redemption"] = list(
+			"Please whisper the secret phrase to redeem your reward."
+		)
 	else
 		dialogue_options["shuttle"] = list(
 			"The shuttle takes new crewmembers to #1 from #2. You should be boarding it now so you can #3.",
@@ -111,23 +113,6 @@
 			"Central Command is the link between civilization and #1. You are currently at Central Command right now!",
 			"Burgerstation"
 		)
-
-
-
-	dialogue_options["IFF"] = list(
-		"IFF, or intergrated friendly fire, is a state of the art police and military protection system that prevents projectiles registered with the IFF system from hitting you. \
-		As required by Space Law Section 463, subsection 54b of the Patriotic Patrot Safety and Patrotic Health Act, all citizens are required to recieve an IFF implant if they \
-		wish to buy, rent, or own a firearm! In other words, we must #1 before you #2!",
-		"register you in the system",
-		"get to work"
-	)
-
-	dialogue_options["register you in the system"] = list(
-		"Due to unpatriotic laws and liberal politicians corrupted by the #1, we cannot register you in the system until you consent to doing so by placing your hand in inside the #2 implanter. \
-		Benifits of placing your hand inside include technical immortality, free healthcare, free dental, a roof over your head, and a place to sleep.",
-		"Syndicate",
-		"IFF"
-	)
 
 	dialogue_options["Corporate Mercenary"] = list(
 		"Your #1 can be summed up to: an organic with a gun that shoots other organics with guns in the name of #2. The legal term for that is armed contractor, but we think that doesn't sound as badass.",
@@ -159,7 +144,28 @@
 		"Burgerstation"
 	)
 
+	dialogue_options["*rewardfail"] = list(
+		"It appears you did not enter a valid reward code.",
+	)
 
-
+	dialogue_options["*rewardsuccess"] = list(
+		"Enjoy your reward!",
+	)
 
 	return dialogue_options
+
+
+
+/dialogue/tutorial/front_desk/set_topic(var/mob/living/advanced/player/P,var/topic)
+
+	. = ..()
+
+	if(topic == "*Reward Redemption")
+		var/desired_input = input("Please enter the reward code. Reward codes are case sensitive.","Reward Code") as text
+		desired_input = sanitize(desired_input)
+		if(desired_input && SSreward.check_code(P.client,desired_input))
+			set_topic(P,"*rewardsuccess")
+		else
+			set_topic(P,"*rewardfail")
+
+	return .

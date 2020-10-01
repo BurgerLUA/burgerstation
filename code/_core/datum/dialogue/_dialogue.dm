@@ -38,6 +38,7 @@
 
 	if(!length(chosen_dialogue))
 		log_error("ERROR: [P] cannot access chosen topic [topic] for dialogue [type]!")
+		P.to_chat(span("error","Dialogue Error: Cannot access chosen topic [topic] for dialogue [type]. Please report this bug on discord."))
 		return FALSE
 
 	var/dialogue = chosen_dialogue[1]
