@@ -189,10 +189,10 @@
 
 /obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 
-	object = object.defer_click_on_object(location,control,params)
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
-		var/obj/item/object_as_item = object
+	if(is_item(defer_object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
+		var/obj/item/object_as_item = defer_object
 		if(src.add_object(object_as_item))
 			return TRUE
 

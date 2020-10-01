@@ -622,6 +622,11 @@
 			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE
 
+	if(is_inventory(I.loc))
+		var/obj/hud/inventory/INV = I.loc
+		if((I in INV.worn_objects) && !INV.can_unwear_object(I,messages))
+			return FALSE
+
 	if(!I.can_be_held(owner,src))
 		if(messages) owner.to_chat(span("notice","\The [I] cannot be held!"))
 		return FALSE
@@ -657,6 +662,24 @@
 
 	return TRUE
 
+/obj/hud/inventory/proc/can_unwear_object(var/obj/item/I,var/messages = FALSE)
+
+	if(!I.item_slot)
+		return FALSE
+
+	if(!is_advanced(owner))
+		return TRUE
+
+	var/mob/living/advanced/A = owner
+	for(var/obj/item/clothing/C in A.worn_objects)
+		if(C == I)
+			continue
+		if(C.loc != I.loc && C.blocks_clothing && (I.item_slot & C.blocks_clothing))
+			if(messages) owner.to_chat(span("notice","\The [C.name] prevents you from removing \the [I.name]!"))
+			return FALSE
+
+	return TRUE
+
 /obj/hud/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(loc && loc == I)
@@ -669,6 +692,11 @@
 		if(messages && src.loc)
 			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE
+
+	if(is_inventory(I.loc))
+		var/obj/hud/inventory/INV = I.loc
+		if((I in INV.worn_objects) && !INV.can_unwear_object(I,messages))
+			return FALSE
 
 	if(!I.can_be_held(owner,src) || !I.can_be_worn(owner,src))
 		if(messages) owner.to_chat(span("notice","\The [I] cannot be worn!"))
@@ -696,12 +724,12 @@
 						if(messages)
 							owner.to_chat(span("notice","Beast races cannot wear this!"))
 						return FALSE
-
-			var/list/list_to_check = I.ignore_other_slots ? src.worn_objects : A.worn_objects
-			for(var/obj/item/clothing/C2 in list_to_check)
-				if(C2.blocks_clothing && I.item_slot && (I.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
-					if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
-					return FALSE
+			if(I.item_slot)
+				var/list/list_to_check = I.ignore_other_slots ? src.worn_objects : A.worn_objects
+				for(var/obj/item/clothing/C2 in list_to_check)
+					if(C2.blocks_clothing && (I.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
+						if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
+						return FALSE
 
 
 	if(!(I.item_slot & item_slot))
