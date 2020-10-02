@@ -525,6 +525,7 @@
 	icon_state = "dinnerware"
 
 	stored_types = list(
+		/obj/item/paper/book/cooking,
 		/obj/item/weapon/melee/sword/sabre,
 		/obj/item/container/cheese_mold/block,
 		/obj/item/container/beaker/glass,
