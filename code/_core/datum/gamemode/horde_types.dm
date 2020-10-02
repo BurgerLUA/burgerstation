@@ -82,7 +82,7 @@
 		/mob/living/advanced/npc/ashwalker/hunter = 2,
 		/mob/living/advanced/npc/ashwalker/warrior = 3
 	)
-	hidden = FALSE
+	hidden = TRUE
 
 /gamemode/horde/pirates
 	name = "Horde Mode (Pirates)"
@@ -93,4 +93,4 @@
 		/mob/living/advanced/npc/pirate_crew/ninja = 1,
 		/mob/living/advanced/npc/pirate_crew/ranged = 4
 	)
-	hidden = FALSE
+	hidden = TRUE

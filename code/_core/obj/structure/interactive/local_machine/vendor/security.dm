@@ -81,17 +81,19 @@
 	icon_state = "attachment"
 
 	stored_types = list(
-		/obj/item/weapon/melee/tool/multitool,
-		/obj/item/attachment/barrel/laser_charger,
 		/obj/item/attachment/barrel/charger,
 		/obj/item/attachment/barrel/compensator,
 		/obj/item/attachment/barrel/extended,
+		/obj/item/attachment/barrel/gyro,
+		/obj/item/attachment/barrel/laser_charger,
 		/obj/item/attachment/barrel/suppressor,
 		/obj/item/attachment/sight/laser_sight,
 		/obj/item/attachment/sight/quickfire_adapter,
 		/obj/item/attachment/sight/red_dot,
 		/obj/item/attachment/sight/scope,
 		/obj/item/attachment/sight/scope/large,
+		/obj/item/attachment/sight/targeting_computer,
+		/obj/item/attachment/undermount/angled_grip,
 		/obj/item/attachment/undermount/bipod,
 		/obj/item/attachment/undermount/burst_adapter,
 		/obj/item/attachment/undermount/vertical_grip

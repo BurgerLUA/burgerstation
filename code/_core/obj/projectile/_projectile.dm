@@ -1,6 +1,8 @@
 /obj/projectile/
 	name = "Projectile"
 
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE
+
 	var/vel_x = 0 //X velocity, in pixels per decisecond
 	var/vel_y = 0 //Y velocity in pixels per decisecond
 
@@ -227,9 +229,8 @@
 		var/new_angle = -ATAN2(vel_x,vel_y) + 90
 		M.Turn(new_angle)
 		transform = M
-		M.Translate(vel_x*(1.5+lifetime),vel_y*(1.5+lifetime))
-		animate(src, transform = M, alpha=0, time = lifetime)
-
+		//M.Translate(vel_x*(1.5+lifetime),vel_y*(1.5+lifetime))
+		//animate(src, transform = M, alpha=0, time = lifetime)
 
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
@@ -249,9 +250,12 @@
 			return FALSE
 		if(current_loc)
 			previous_loc = current_loc
+		//animate(pxiel_x =
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
+
+	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
 
 	last_loc_x = current_loc_x
 	last_loc_y = current_loc_y

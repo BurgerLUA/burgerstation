@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 40
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = FALSE
 
@@ -74,7 +74,7 @@
 	name = "10mm Stechkin MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
-	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is less compact."
+	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is more compact."
 
 	size = SIZE_2
 

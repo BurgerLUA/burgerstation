@@ -24,7 +24,7 @@
 
 
 /obj/item/magazine/smg_46/update_icon()
-	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/20)*5,1)]"
+	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*5,1)]"
 	..()
 
 /*

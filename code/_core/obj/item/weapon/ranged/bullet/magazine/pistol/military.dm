@@ -4,7 +4,7 @@
 	desc_extended = "A security grade pistol chambered in 9mm. Good for self defense."
 	value = 70
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
-	shoot_delay = 1.5
+	shoot_delay = 1.25
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
 	view_punch = 7

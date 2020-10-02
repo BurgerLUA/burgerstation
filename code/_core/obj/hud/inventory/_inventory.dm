@@ -674,6 +674,8 @@
 	for(var/obj/item/clothing/C in A.worn_objects)
 		if(C == I)
 			continue
+		if(C.ignore_other_slots)
+			continue
 		if(C.loc != I.loc && C.blocks_clothing && (I.item_slot & C.blocks_clothing))
 			if(messages) owner.to_chat(span("notice","\The [C.name] prevents you from removing \the [I.name]!"))
 			return FALSE
