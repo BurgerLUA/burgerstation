@@ -150,6 +150,10 @@ list(
 		return FALSE
 
 	var/area/A = get_area(src)
+	if(!A)
+		log_error("WARNING: [get_debug_name()] wasn't in a valid area!")
+		return FALSE
+
 	if(A.flags_comms & FLAG_COMM_DISABLED)
 		return FALSE
 

@@ -44,8 +44,8 @@
 					return TRUE
 			grab_object(caller,object,location,control,params)
 			return TRUE
-		else
-			return wield_object(caller,defer_object)
+		else if(is_item(object) && is_inventory(object.loc))
+			return toggle_wield(caller,defer_object)
 
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
@@ -88,7 +88,7 @@
 	if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 		if(parent_inventory)
 			var/obj/item/I = parent_inventory.get_top_held_object()
-			return wield_object(caller,I)
+			return unwield(caller,I)
 		if(grabbed_object)
 			return release_object(caller)
 		var/turf/caller_turf = get_turf(caller)
@@ -157,35 +157,82 @@
 
 	return FALSE
 
-/obj/hud/inventory/proc/wield_object(var/mob/caller,var/obj/item/item_to_wield)
+/obj/hud/inventory/proc/toggle_wield(var/mob/caller,var/obj/item/item_to_wield)
+
+	if(parent_inventory)
+		unwield(caller,item_to_wield)
+	else
+		wield(caller,item_to_wield)
+
+	return TRUE
+
+
+/obj/hud/inventory/proc/can_wield(var/mob/caller,var/obj/item/item_to_wield)
+
+	if(src.is_occupied(ignore_worn=TRUE))
+		caller.to_chat(span("warning","Your hand must be unoccupied in order to wield this!"))
+		return FALSE
+
+	if(!is_inventory(item_to_wield.loc) || item_to_wield.loc == src)
+		caller.to_chat(span("warning","You must be holding this object in another hand in order to wield this!"))
+		return FALSE
+
+	var/obj/hud/inventory/holding = item_to_wield.loc
+
+	if(!(holding.click_flags & (LEFT_HAND | RIGHT_HAND)))
+		caller.to_chat(span("warning","You must be holding this object in another hand in order to wield this!"))
+		return FALSE
+
+	return TRUE
+
+
+
+/obj/hud/inventory/proc/unwield(var/mob/caller,var/obj/item/item_to_wield)
+
+	caller.to_chat(span("notice","You unbrace \the [item_to_wield] with your [src.loc.name]."))
+
+	var/obj/hud/inventory/holding = item_to_wield.loc
+
+	if(holding && is_inventory(holding))
+		holding.child_inventory = null
+	else
+		CRASH_SAFE("ERRROR: unwield() variable holding wasn't valid ([holding])!")
+
+	src.parent_inventory = null
+	item_to_wield.wielded = null
+
+	update_sprite()
+	item_to_wield.update_sprite()
+	return TRUE
+
+
+/obj/hud/inventory/proc/wield(var/mob/caller,var/obj/item/item_to_wield)
 
 	if(!is_item(item_to_wield) || !item_to_wield.can_wield)
 		caller.to_chat(span("warning","You can't wield this!"))
 		return FALSE
 
+	if(src.parent_inventory)
+		caller.to_chat(span("warning","You are already wielding something!"))
+		return FALSE
+
+	if(!can_wield(caller,item_to_wield))
+		return FALSE
+
+	caller.to_chat(span("notice","You brace \the [item_to_wield] with your [src.loc.name]."))
+
 	var/obj/hud/inventory/holding = item_to_wield.loc
 
-	if(!item_to_wield.wielded)
-		if(src.is_occupied(ignore_worn=TRUE))
-			caller.to_chat(span("warning","Your hand must be unoccupied in order to wield this!"))
-			return FALSE
+	item_to_wield.wielded = TRUE
+	src.parent_inventory = holding
+	holding.child_inventory = src
 
-		if(!is_inventory(item_to_wield.loc) || item_to_wield.loc == src)
-			caller.to_chat(span("warning","You must be holding this object in another hand in order to wield this!"))
-			return FALSE
-
-		if(!(holding.click_flags & (LEFT_HAND | RIGHT_HAND)))
-			caller.to_chat(span("warning","You must be holding this object in another hand in order to wield this!"))
-			return FALSE
-
-	item_to_wield.wielded = !item_to_wield.wielded
-	src.parent_inventory = item_to_wield.wielded ? holding : null
-	holding.child_inventory = item_to_wield.wielded ? src : null
-	if(caller)
-		caller.to_chat(span("notice","You [item_to_wield.wielded ? "brace" : "release"] \the [item_to_wield] with your [src.loc.name]."))
 	update_sprite()
-	item_to_wield.update_sprite() //This will also update the inventory.
+	item_to_wield.update_sprite()
+
 	return TRUE
+
+
 
 /obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 

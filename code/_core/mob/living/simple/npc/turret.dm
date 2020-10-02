@@ -9,6 +9,8 @@
 
 	ai = /ai/turret
 
+	blood_type = /reagent/blood/robot
+
 /mob/living/simple/npc/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 
@@ -26,8 +28,6 @@
 		log_error("[src.get_debug_name()] didn't have a stored weapon!")
 		qdel(src)
 		return FALSE
-
-	world.log << "SHOOT"
 
 	return stored_weapon.shoot(attacker,victim,null,params,1)
 

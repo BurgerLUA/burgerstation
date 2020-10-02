@@ -31,6 +31,8 @@
 		return FALSE
 	if(owner.loyalty_tag != L.loyalty_tag)
 		return FALSE
+	if(L.dead)
+		return FALSE
 	if(!owner_as_bot.get_inject_amount(L))
 		return FALSE
 	return TRUE

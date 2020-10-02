@@ -62,6 +62,5 @@
 			scan_key = clamp(scan_key,0,scan_dir_length)
 
 			owner.set_dir(valid_scan_dirs[scan_key])
-			world.log << "Dir: [owner.dir]."
 			last_scan = world.time
 

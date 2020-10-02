@@ -95,7 +95,7 @@
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
 			if(G.wielded) //We should unwield
-				A.left_hand.wield_object(A,G) //Also unwields
+				A.left_hand.unwield(A,G)
 			next_complex = world.time + 15
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
@@ -109,7 +109,7 @@
 				G.drop_item(get_turf(owner)) //IT'S NO USE.
 				return FALSE
 			if(G.can_wield && !G.wielded && A.left_hand && !A.left_item)
-				A.left_hand.wield_object(A,G)
+				A.left_hand.wield(A,G)
 			return FALSE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
@@ -273,7 +273,7 @@
 		A.right_hand.add_held_object(W,FALSE)
 		. = TRUE
 		if(W.can_wield && !W.wielded && A.left_hand && !A.left_item)
-			A.left_hand.wield_object(A,W)
+			A.left_hand.wield(A,W)
 
 	else if(A.left_hand && !A.left_hand.parent_inventory && !A.left_item)
 		A.left_hand.add_held_object(W,FALSE)
