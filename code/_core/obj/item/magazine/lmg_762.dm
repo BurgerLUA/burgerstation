@@ -22,4 +22,4 @@
 
 	size = SIZE_3
 
-	icon_states = 0
+	icon_states = 1

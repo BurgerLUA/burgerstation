@@ -2,7 +2,7 @@
 	name = "\improper 10mm auto pistol magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
-	icon = 'icons/obj/item/magazine/10mmpistol.dmi'
+	icon = 'icons/obj/item/magazine/10mm_pistol.dmi'
 	icon_state = "10mmpistol"
 	bullet_count_max = 12
 

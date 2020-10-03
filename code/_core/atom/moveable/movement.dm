@@ -65,13 +65,15 @@
 		var/similiar_move_dir = FALSE
 
 		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
-		if(step && Move(step,final_move_dir))
+		if(step && Move(step))
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir
 		else
 			move_dir_last = 0x0
 			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
+		set_dir(final_move_dir,force=TRUE)
+
 
 		if(acceleration_mod)
 			if(similiar_move_dir)
