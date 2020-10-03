@@ -1,29 +1,6 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay * MOVEMENT_DELAY_MOD
 
-
-/*
-/atom/movable/proc/can_enter(var/atom/T)
-
-	if(!src.loc.Exit(src,T))
-		return FALSE
-
-	if(!T.Enter(src,src.loc)
-		return FALSE
-
-	for(var/k in src.loc.contents)
-		var/atom/movable/M = k
-		if(!M.Uncross(src))
-			return FALSE
-
-	for(var/k in T.contents)
-		var/atom/movable/M = k
-		if(!M.Cross(src))
-			return FALSE
-
-	return TRUE
-*/
-
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
 
 	if(anchored)
@@ -62,8 +39,43 @@
 
 		glide_size = move_delay ? step_size/move_delay : 1
 
-		var/similiar_move_dir = FALSE
 
+		var/move_check = FALSE
+
+		if(intercardinal)
+			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
+			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
+			var/turf/first_step = get_step(src,first_move_dir_to_use)
+			var/turf/second_step = get_step(src,second_move_dir_to_use)
+
+			if(!first_step.Enter(src,src.loc))
+				final_move_dir &= ~first_move_dir_to_use
+
+			if(!second_step.Enter(src,src.loc))
+				final_move_dir &= ~second_move_dir_to_use
+
+			/*
+			if(first_step != src.loc && )
+				move_check = TRUE
+			else
+				var/old_first_move_dir_to_use = first_move_dir_to_use
+				first_move_dir_to_use = second_move_dir_to_use
+				second_move_dir_to_use = old_first_move_dir_to_use
+				first_step = get_step(src,first_move_dir_to_use)
+				if(first_step != src.loc && src.can_move(src.loc,first_step,final_move_dir))
+					move_check = TRUE
+				else
+					final_move_dir = 0x0
+			if(move_check)
+				var/turf/second_step = get_step(first_step,second_move_dir_to_use)
+				if(second_step != src.loc && !src.can_move(first_step,second_step,final_move_dir))
+					final_move_dir &= ~second_move_dir_to_use
+			*/
+
+
+
+
+		var/similiar_move_dir = FALSE
 		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
 		if(step && Move(step))
 			if(move_dir_last & final_move_dir)
@@ -176,27 +188,11 @@
 
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
-		/*
-		if(loc) //This needs to be here.
-			for(var/k in loc.contents)
-				var/atom/movable/AM = k
-				if(AM == src)
-					continue
-				AM.Uncrossed(src,new_loc,old_loc)
-		*/
 
 	loc = new_loc
 
 	if(loc)
 		loc.Entered(src, old_loc)
-		/*
-		if(loc) //This needs to be here.
-			for(var/k in loc.contents)
-				var/atom/movable/AM = k
-				if(AM == src)
-					continue
-				AM.Crossed(src,new_loc,old_loc)
-		*/
 
 	if(old_loc != loc)
 		post_move(old_loc)
@@ -219,11 +215,6 @@
 	HOOK_CALL("post_move")
 	return TRUE
 
-/*
-/atom/movable/Bump(atom/Obstacle)
-	return FALSE //Default behavior bad.
-*/
-
 /atom/movable/Bump(atom/Obstacle)
 
 	if(ismovable(Obstacle) && src.loc != Obstacle)
@@ -234,6 +225,7 @@
 
 	return FALSE
 
+/*
 /atom/movable/proc/can_move_into(var/atom/A)
 
 	if(!src.loc)
@@ -269,6 +261,8 @@
 			return FALSE
 
 	return TRUE
+*/
+
 
 /*
 /atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
