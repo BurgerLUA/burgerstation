@@ -22,7 +22,4 @@
 
 	size = SIZE_2
 
-
-/obj/item/magazine/smg_40/update_icon()
-	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*12,1)]"
-	return ..()
+	icon_states = 12

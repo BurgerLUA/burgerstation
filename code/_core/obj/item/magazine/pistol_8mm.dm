@@ -11,15 +11,4 @@
 
 	ammo = /obj/item/bullet/pistol_8mm
 
-/obj/item/magazine/pistol_8mm/update_icon()
-	if(length(stored_bullets))
-		icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
-	else
-		icon_state = "[initial(icon_state)]_0"
-
-	..()
-/*
-/obj/item/magazine/pistol_8mm/hollowpoint
-	name = "\improper 8mm hollow point pistol magazine"
-	ammo = /obj/item/bullet/pistol_8mm/hollowpoint
-*/
+	icon_states = 4

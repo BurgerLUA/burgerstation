@@ -22,7 +22,4 @@
 
 	size = SIZE_2
 
-
-/obj/item/magazine/syringe_gun/update_icon()
-	icon_state = "[length(stored_bullets)]"
-	..()
+	icon_states = 8

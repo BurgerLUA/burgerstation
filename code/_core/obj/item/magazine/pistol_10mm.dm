@@ -4,7 +4,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/10mmpistol.dmi'
 	icon_state = "10mmpistol"
-	bullet_count_max = 8
+	bullet_count_max = 12
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = TRUE,
@@ -24,10 +24,4 @@
 
 	size = SIZE_2
 
-
-/obj/item/magazine/pistol_10mm/update_icon()
-	if(length(stored_bullets))
-		icon_state = "[initial(icon_state)]_1"
-	else
-		icon_state = "[initial(icon_state)]_0"
-	..()
+	icon_states = 6

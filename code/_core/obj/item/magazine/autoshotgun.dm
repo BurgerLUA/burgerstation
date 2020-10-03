@@ -23,6 +23,8 @@
 
 	size = SIZE_2
 
+	icon_states = 9
+
 
 /obj/item/magazine/shotgun_auto/buckshot
 	name = "\improper 12 gauge AS-12 magazine"
@@ -34,11 +36,6 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/shotgun_12/buckshot
-
-/obj/item/magazine/shotgun_auto/update_icon()
-	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
-	return ..()
-
 
 /obj/item/magazine/shotgun_auto/empty
 	ammo = null

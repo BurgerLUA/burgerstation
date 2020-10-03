@@ -1,6 +1,3 @@
-/obj/item/magazine/clip/revolver/update_icon()
-	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
-
 /obj/item/magazine/clip/revolver/bullet_38
 	name = "\improper .38 six round speedloader"
 	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
@@ -25,6 +22,8 @@
 
 	size = SIZE_1
 
+	icon_states = 6
+
 
 /obj/item/magazine/clip/revolver/bullet_38/eight
 	name = "\improper .38 eight round speedloader"
@@ -36,6 +35,8 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/revolver/comp = TRUE
 	)
+
+	icon_states = 8
 
 
 /obj/item/magazine/clip/revolver/bullet_44
@@ -63,26 +64,7 @@
 
 	size = SIZE_1
 
-
-
-
-/*
-/obj/item/magazine/clip/revolver/bullet_44/surplus/
-	name = "\improper surplus .44 revolver speedloader"
-	ammo = /obj/item/bullet_cartridge/revolver_44/surplus
-*/
-
-/*
-/obj/item/magazine/clip/revolver/bullet_22
-	name = "\improper .22LR speedloader"
-	icon = 'icons/obj/item/magazine/revolver/22.dmi'
-	icon_state = "22"
-	bullet_count_max = 6
-
-	weapon_whitelist = list()
-
-	ammo = /obj/item/bullet_cartridge/pistol_22
-*/
+	icon_states = 6
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
@@ -108,9 +90,4 @@
 
 	size = SIZE_1
 
-
-/*
-/obj/item/magazine/clip/revolver/bullet_357/surplus
-	name = "\improper surplus .357 speedloader"
-	ammo = /obj/item/bullet_cartridge/revolver_357/surplus
-*/
+	icon_states = 6
