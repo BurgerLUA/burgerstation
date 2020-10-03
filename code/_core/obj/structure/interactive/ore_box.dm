@@ -20,7 +20,7 @@
 
 	return ..()
 
-/obj/structure/interactive/ore_box/Cross(var/atom/movable/O)
+/obj/structure/interactive/ore_box/Cross(atom/movable/O)
 
 	if(istype(O,/obj/item/material/ore/))
 		var/obj/item/material/ore/I = O

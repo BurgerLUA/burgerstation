@@ -5,9 +5,6 @@
 	layer = LAYER_EFFECT
 	plane = PLANE_EFFECT
 
-/obj/effect/Bump(var/atom/obstacle,var/Dir=0)
-	return FALSE
-
 /obj/effect/logo
 	name = "Burgerstation 13"
 	desc = "Welcome to Burgerstation 13"

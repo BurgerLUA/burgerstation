@@ -1,6 +1,92 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay * MOVEMENT_DELAY_MOD
 
+
+/*
+/atom/movable/proc/can_enter(var/atom/T)
+
+	if(!src.loc.Exit(src,T))
+		return FALSE
+
+	if(!T.Enter(src,src.loc)
+		return FALSE
+
+	for(var/k in src.loc.contents)
+		var/atom/movable/M = k
+		if(!M.Uncross(src))
+			return FALSE
+
+	for(var/k in T.contents)
+		var/atom/movable/M = k
+		if(!M.Cross(src))
+			return FALSE
+
+	return TRUE
+*/
+
+/atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
+
+	if(anchored)
+		return FALSE
+
+	var/final_move_dir = move_dir
+
+	//Handle acceleration and deceleration
+	if(!final_move_dir)
+		if(deceleration)
+			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
+		else
+			acceleration_value = 0
+		if(use_momentum && move_dir_last && acceleration_value)
+			final_move_dir = move_dir_last
+	else
+		final_move_dir = sanitize_direction(final_move_dir)
+
+	//Now we move.
+	if(final_move_dir && move_delay <= 0 && is_valid_dir(final_move_dir))
+
+		var/final_movement_delay = get_movement_delay()
+		var/intercardinal = is_intercardinal_dir(final_move_dir)
+
+		if(intercardinal)
+			final_movement_delay *= HYPOTENUSE(1,1)
+
+		if(acceleration_mod > 0)
+			final_movement_delay *= 1 / (acceleration_mod + ((acceleration_value/100)*(1-acceleration_mod)))
+
+		if(isturf(loc))
+			var/turf/T = loc
+			final_movement_delay *= T.delay_modifier
+
+		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
+
+		glide_size = move_delay ? step_size/move_delay : 1
+
+		var/similiar_move_dir = FALSE
+
+		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
+		if(step && Move(step,final_move_dir))
+			if(move_dir_last & final_move_dir)
+				similiar_move_dir = TRUE
+			move_dir_last = final_move_dir
+		else
+			move_dir_last = 0x0
+			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
+
+		if(acceleration_mod)
+			if(similiar_move_dir)
+				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
+			else
+				acceleration_value *= 0.5
+
+	if(adjust_delay)
+		move_delay = move_delay - adjust_delay
+
+	return FALSE
+
+
+
+/*
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
 
 	if(anchored)
@@ -79,6 +165,8 @@
 		move_delay = move_delay - adjust_delay
 
 	return FALSE
+*/
+
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
@@ -86,23 +174,27 @@
 
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
+		/*
 		if(loc) //This needs to be here.
 			for(var/k in loc.contents)
 				var/atom/movable/AM = k
 				if(AM == src)
 					continue
 				AM.Uncrossed(src,new_loc,old_loc)
+		*/
 
 	loc = new_loc
 
 	if(loc)
 		loc.Entered(src, old_loc)
+		/*
 		if(loc) //This needs to be here.
 			for(var/k in loc.contents)
 				var/atom/movable/AM = k
 				if(AM == src)
 					continue
 				AM.Crossed(src,new_loc,old_loc)
+		*/
 
 	if(old_loc != loc)
 		post_move(old_loc)
@@ -125,64 +217,54 @@
 	HOOK_CALL("post_move")
 	return TRUE
 
-/atom/movable/Bump(var/atom/obstacle,var/Dir=0)
+/*
+/atom/movable/Bump(atom/Obstacle)
+	return FALSE //Default behavior bad.
+*/
 
-	if(Dir && ismovable(obstacle) && src.loc != obstacle)
-		var/atom/movable/M = obstacle
-		if(!M.anchored && (!grabbing_hand || obstacle != grabbing_hand.owner))
+/atom/movable/Bump(atom/Obstacle)
+
+	if(ismovable(Obstacle) && src.loc != Obstacle)
+		var/atom/movable/M = Obstacle
+		if(!M.anchored && (!grabbing_hand || Obstacle != grabbing_hand.owner))
 			M.glide_size = src.glide_size
-			return M.Move(get_step(M,Dir))
+			return M.Move(get_step(M,get_dir(src,Obstacle)))
 
 	return FALSE
 
-/atom/movable/proc/can_move_turf(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
+/atom/movable/proc/can_move_into(var/atom/A)
+
+	if(!src.loc)
+		log_error("Warning: [src.get_debug_name()] tried calling can_move() in nullspace!")
+		return FALSE
+
+	if(!A)
+		//log_error("Warning: [src.get_debug_name()] tried calling can_move() without a destination!")
+		return FALSE
 
 	//TRY: Exit the turf.
-	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
+	if(!src.loc.Exit(src,A))
 		return FALSE
 
 	//TRY: Enter the turf.
-	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
+	if(!A.Enter(src,src.loc))
 		return FALSE
 
-	return TRUE
-
-
-/atom/movable/proc/can_move_contents(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
-
 	//TRY: Exit the contents.
-	for(var/k in OldLoc.contents)
+	for(var/k in src.loc.contents)
 		var/atom/movable/M = k
 		if(M == src)
 			continue
-		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
+		if(!M.Uncross(src))
 			return FALSE
 
 	//TRY: Enter the contents.
-	for(var/k in NewLoc.contents)
+	for(var/k in A.contents)
 		var/atom/movable/M = k
 		if(M == src)
 			continue
-		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
+		if(!M.Cross(src))
 			return FALSE
-
-	return TRUE
-
-/atom/movable/proc/can_move(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
-
-	if(!OldLoc)
-		log_error("Warning: [src.get_debug_name()] tried calling can_move() without an OldLoc!")
-		return FALSE
-
-	if(!NewLoc)
-		//log_error("Warning: [src.get_debug_name()] tried calling can_move() without a NewLoc!")
-		return FALSE
-
-	if(!can_move_turf(OldLoc,NewLoc,real_dir))
-		return FALSE
-
-	if(!can_move_contents(OldLoc,NewLoc,real_dir))
-		return FALSE
 
 	return TRUE
 

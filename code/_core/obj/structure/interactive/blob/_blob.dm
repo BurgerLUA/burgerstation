@@ -79,7 +79,7 @@
 
 	return .
 
-/obj/structure/interactive/blob/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/blob/Cross(atom/movable/O)
 	if(istype(O,/mob/living/simple/npc/blobbernaught))
 		return TRUE
 	return ..()

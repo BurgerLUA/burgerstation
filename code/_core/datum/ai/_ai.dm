@@ -768,6 +768,7 @@
 
 	return TRUE
 
+
 /ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
 	if(obstacle)
@@ -781,6 +782,7 @@
 			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE
+
 
 /ai/proc/investigate(var/atom/desired_target)
 

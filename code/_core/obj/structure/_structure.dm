@@ -24,6 +24,15 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
 
+/obj/structure/should_smooth_with(var/turf/T)
+
+	for(var/obj/structure/O in T.contents)
+		if(O.corner_category != corner_category)
+			continue
+		return TRUE
+
+	return FALSE
+
 /obj/structure/Initialize()
 
 	. = ..()
@@ -69,11 +78,11 @@
 	return TRUE
 
 
-/obj/structure/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/Cross(atom/movable/O)
 
 	if(O.collision_flags & src.collision_flags)
 
-		var/direction = get_dir(OldLoc,NewLoc)
+		var/direction = get_dir(O,src)
 
 		if(turn(direction,180) & collision_dir)
 			return FALSE
@@ -82,7 +91,6 @@
 			var/obj/structure/S = O
 			if(collision_dir & S.collision_dir)
 				return FALSE
-
 
 	return TRUE
 

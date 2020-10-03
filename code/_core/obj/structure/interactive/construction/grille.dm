@@ -49,7 +49,7 @@
 
 	return ..()
 
-/obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/interactive/construction/grille/Cross(atom/movable/O)
 	if(istype(O,/obj/structure/smooth/window/)) //Allow windows to easily fit on grilles.
 		return TRUE
 	return ..()

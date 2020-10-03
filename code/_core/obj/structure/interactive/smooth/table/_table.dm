@@ -54,13 +54,11 @@
 
 
 
-/obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
-
-
+/obj/structure/smooth/table/Cross(atom/movable/O)
 
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
-		var/obj/structure/smooth/table/T = locate() in OldLoc.contents
+		var/obj/structure/smooth/table/T = locate() in O.loc.contents
 		if(T)
 			return TRUE
 
@@ -75,6 +73,7 @@
 	return ..()
 
 /obj/structure/smooth/table/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+
 	if(old_loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in old_loc.contents

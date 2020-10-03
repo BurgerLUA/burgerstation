@@ -137,7 +137,7 @@
 /obj/item/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	return TRUE
 
-/obj/item/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/item/Cross(atom/movable/O)
 	return TRUE
 
 /obj/item/PostInitialize()

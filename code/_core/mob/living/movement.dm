@@ -76,20 +76,10 @@
 
 	return .
 
-/mob/living/Bump(var/atom/obstacle,var/Dir=0)
 
-	if(is_living(obstacle))
-		var/mob/living/L = obstacle
-		if(L.mob_size > mob_size)
-			return FALSE
-
-	. = ..()
-
-	if(ai)
-		ai.Bump(obstacle)
-
-	return .
-
+/mob/living/Bump(atom/Obstacle)
+	if(ai) ai.Bump(Obstacle)
+	return ..()
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
@@ -194,7 +184,7 @@
 	return ..()
 */
 
-/mob/living/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/mob/living/Cross(atom/movable/O)
 
 	if(is_living(O))
 		var/mob/living/L = O
@@ -202,6 +192,8 @@
 			return TRUE
 		if(L.dead || src.dead)
 			return TRUE
+		if(L.mob_size > mob_size)
+			return FALSE
 
 	return ..()
 

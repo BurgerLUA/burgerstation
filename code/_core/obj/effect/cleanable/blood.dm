@@ -15,7 +15,7 @@
 
 	var/blood_level = 0
 
-/obj/effect/cleanable/blood/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/effect/cleanable/blood/Cross(atom/movable/O)
 	return TRUE
 
 /obj/effect/cleanable/blood/Destroy()

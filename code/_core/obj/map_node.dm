@@ -19,9 +19,6 @@ var/global/mob/abstract/node_checker
 	node_checker = src
 	return ..()
 
-/mob/abstract/node_checker/Bump(atom/movable/O)
-	return !isturf(O) && !is_wall(O)
-
 /obj/marker/map_node
 	name = "map node"
 	icon = 'icons/obj/node.dmi'

@@ -260,14 +260,14 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 
 
-/obj/structure/interactive/door/airlock/Cross(var/atom/movable/A,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/interactive/door/airlock/Cross(atom/movable/O)
 
 	. = ..()
 
-	if(!. && is_living(A) && door_state == DOOR_STATE_CLOSED && door_state != DOOR_STATE_DENY)
-		var/mob/living/L = A
+	if(!. && is_living(O) && door_state == DOOR_STATE_CLOSED && door_state != DOOR_STATE_DENY)
+		var/mob/living/L = O
 		if(!L.dead)
-			open(A)
+			open(L)
 
 	return .
 

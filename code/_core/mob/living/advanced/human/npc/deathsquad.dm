@@ -6,13 +6,6 @@
 	dialogue_id = /dialogue/npc/soldier
 	level_multiplier = 10
 
-/mob/living/advanced/npc/deathsquad/Bump(var/atom/Obstacle)
-
-	if(istype(src,Obstacle) || istype(Obstacle,src))
-		return TRUE
-
-	return ..()
-
 /mob/living/advanced/npc/deathsquad/Initialize()
 
 	. = ..()

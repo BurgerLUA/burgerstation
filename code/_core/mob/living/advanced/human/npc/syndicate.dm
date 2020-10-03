@@ -19,13 +19,6 @@
 		/loadout/syndicate/elite = 16
 	)
 
-/mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
-
-	if(istype(src,Obstacle) || istype(Obstacle,src))
-		return TRUE
-
-	return ..()
-
 /mob/living/advanced/npc/syndicate/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)

@@ -7,7 +7,7 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //DEPCRECATED. Should always be set to FALSE!
+	density = FALSE //Should always be set to FALSE!
 
 	var/health_base = 1
 	var/mana_base = 1
@@ -99,15 +99,6 @@
 
 	return TRUE
 
-/obj/structure/should_smooth_with(var/turf/T)
-
-	for(var/obj/structure/O in T.contents)
-		if(O.corner_category != corner_category)
-			continue
-		return TRUE
-
-	return FALSE
-
 /atom/proc/should_smooth_with(var/turf/T)
 	return FALSE
 
@@ -137,9 +128,9 @@
 
 	return ..()
 
-/atom/Cross(var/atom/A)
+/atom/Cross(atom/movable/O)
 
-	if(!ignore_incoming_collisons && src.collision_flags & A.collision_flags)
+	if(!ignore_incoming_collisons && src.collision_flags & O.collision_flags)
 		return FALSE
 
 	return ..()
@@ -207,16 +198,8 @@
 
 	return TRUE
 
-
 /atom/proc/think()
 	return TRUE
-
-/atom/Enter(var/atom/movable/enterer,var/atom/oldloc)
-	return TRUE
-
-/atom/Exit(var/atom/movable/exiter,var/atom/newloc)
-	return TRUE
-
 
 /atom/proc/get_touching_space(var/intercardinal = FALSE)
 

@@ -97,16 +97,16 @@
 
 	return ..()
 
-/mob/living/simple/npc/can_man/Bump(var/atom/obstacle,var/Dir=0)
 
-	if(charge_steps && is_living(obstacle))
+/mob/living/simple/npc/can_man/Bump(atom/Obstacle)
+
+	if(charge_steps && Obstacle.health)
 		var/damagetype/DT = all_damage_types[/damagetype/npc/bubblegum]
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
-		DT.hit(src,obstacle,src,object_to_damage,src,1)
-		return TRUE
+		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
+		DT.hit(src,Obstacle,src,object_to_damage,src,1)
 
 	return ..()
 

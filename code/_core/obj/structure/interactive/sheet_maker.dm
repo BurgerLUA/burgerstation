@@ -18,7 +18,7 @@ obj/structure/interactive/sheet_maker/update_icon()
 	icon_state = "sheet_maker"
 	return .
 
-obj/structure/interactive/sheet_maker/Cross(var/atom/movable/O)
+obj/structure/interactive/sheet_maker/Cross(atom/movable/O)
 	make_sheet(O)
 	return TRUE
 
