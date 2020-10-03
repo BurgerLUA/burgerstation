@@ -57,7 +57,7 @@
 
 	return .
 
-/mob/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
+/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	var/atom/old_loc = loc
 
@@ -72,8 +72,8 @@
 			if(3)
 				on_sprint()
 
-	if(loc != old_loc)
-		post_move(old_loc)
+		if(loc != old_loc)
+			post_move(old_loc)
 
 	return .
 

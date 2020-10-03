@@ -61,7 +61,7 @@
 
 		var/similiar_move_dir = FALSE
 		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
-		if(step && Move(step,final_move_dir,force = intercardinal))
+		if(step && Move(step,final_move_dir))
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir
@@ -186,6 +186,7 @@
 
 	return TRUE
 
+/*
 /atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	var/stepped_x = 0
@@ -262,3 +263,4 @@
 		post_move(OldLoc)
 
 	return TRUE
+*/

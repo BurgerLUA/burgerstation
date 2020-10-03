@@ -45,14 +45,9 @@
 
 	return ..()
 
-/obj/structure/interactive/mining_drill/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
-
-	. = ..()
-
-	if(.)
-		drill_depth = 0
-		found_deposit = null
-
+/obj/structure/interactive/mining_drill/post_move()
+	drill_depth = 0
+	found_deposit = null
 	return .
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)

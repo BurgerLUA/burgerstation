@@ -123,7 +123,7 @@
 					moved = TRUE
 					continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
-			M.Move(move_turf,silent=TRUE)
+			M.Move(move_turf)
 			M.next_conveyor = world.time + 8
 			conveyor_limit--
 			moved = TRUE

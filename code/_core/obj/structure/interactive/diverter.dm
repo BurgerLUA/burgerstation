@@ -42,7 +42,7 @@
 			continue
 		var/atom/movable/M = k
 		if(!M.anchored && !M.grabbing_hand && should_push(M) && M.loc == src.loc)
-			M.Move(get_step(src,dir),silent = TRUE)
+			M.Move(get_step(src,dir))
 		tracked_movables -= k
 
 	think_timer--

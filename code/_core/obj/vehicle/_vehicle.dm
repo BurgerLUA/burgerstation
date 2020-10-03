@@ -258,14 +258,13 @@
 
 	return ..()
 
-/mob/living/vehicle/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
+/mob/living/vehicle/post_move()
 
 	. = ..()
 
-	if(.)
-		for(var/k in passengers)
-			var/atom/movable/M = k
-			M.force_move(src.loc)
+	for(var/k in passengers)
+		var/atom/movable/M = k
+		M.force_move(src.loc)
 
 	return .
 

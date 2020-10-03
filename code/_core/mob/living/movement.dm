@@ -42,18 +42,12 @@
 /mob/living/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
 
-/mob/living/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
-
-	if(is_sneaking)
-		on_sneak()
+/mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	if(attack_flags & ATTACK_HOLD || (client && client.is_zoomed))
 		Dir = 0x0
 
-	. = ..(NewLoc,Dir,desired_step_x,desired_step_y,silent)
-
-	if(.)
-		climb_counter = 0
+	. = ..(NewLoc,Dir,step_x,step_y)
 
 	if(ai)
 		ai.on_move(.,NewLoc,Dir)
@@ -65,18 +59,20 @@
 
 /mob/living/post_move(var/atom/old_loc)
 
-	. = ..()
+	if(chat_overlay)
+		chat_overlay.glide_size = src.glide_size
+		chat_overlay.force_move(src.loc)
+	if(alert_overlay)
+		alert_overlay.glide_size = src.glide_size
+		alert_overlay.force_move(src.loc)
+	if(fire_overlay)
+		fire_overlay.glide_size = src.glide_size
+		fire_overlay.force_move(src.loc)
 
-	if(.)
-		if(chat_overlay)
-			chat_overlay.glide_size = src.glide_size
-			chat_overlay.force_move(src.loc)
-		if(alert_overlay)
-			alert_overlay.glide_size = src.glide_size
-			alert_overlay.force_move(src.loc)
-		if(fire_overlay)
-			fire_overlay.glide_size = src.glide_size
-			fire_overlay.force_move(src.loc)
+	if(is_sneaking)
+		on_sneak()
+
+	climb_counter = 0
 
 	return .
 
