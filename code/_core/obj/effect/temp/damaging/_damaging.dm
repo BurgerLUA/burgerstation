@@ -36,7 +36,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 	return ..()
 
-/obj/effect/temp/hazard/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/effect/temp/hazard/Crossed(atom/movable/O)
 	if(enabled && cross_hazard && is_living(O))
 		do_damage(O)
 	return ..()

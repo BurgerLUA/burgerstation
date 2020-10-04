@@ -32,7 +32,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/disposals/machine/chute/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/disposals/machine/chute/Crossed(atom/movable/O)
 	O.force_move(src)
 	start_thinking(src)
 	return ..()

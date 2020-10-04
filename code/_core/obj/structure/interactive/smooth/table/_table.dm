@@ -72,30 +72,19 @@
 
 	return ..()
 
-/obj/structure/smooth/table/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/smooth/table/Crossed(atom/movable/O)
 
-	if(old_loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
-		var/obj/structure/smooth/table/T = locate() in old_loc.contents
-		if(!T)
-			animate(L,pixel_z = initial(L.pixel_z) + 10,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
-			L.move_delay += DECISECONDS_TO_TICKS(10)
-	else
-		O.pixel_y += table_height
+		L.tabled = TRUE
 
 	return ..()
 
-/obj/structure/smooth/table/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+/obj/structure/smooth/table/Uncrossed(atom/movable/O)
+
+	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
-		var/obj/structure/smooth/table/T
-		if(new_loc)
-			T = locate() in new_loc.contents
-		if(!T)
-			animate(L,pixel_z = initial(L.pixel_z),time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
-			L.move_delay += DECISECONDS_TO_TICKS(5)
-	else
-		O.pixel_y -= table_height
+		L.tabled = FALSE
 
 	return ..()
 

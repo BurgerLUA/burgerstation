@@ -49,6 +49,6 @@
 
 	return
 
-/obj/structure/interactive/smelter/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/smelter/Crossed(atom/movable/O)
 	smelt(O)
 	return ..()

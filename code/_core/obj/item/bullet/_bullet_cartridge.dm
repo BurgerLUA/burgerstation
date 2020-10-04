@@ -120,7 +120,7 @@
 
 	return FALSE
 
-/obj/item/bullet_cartridge/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/item/bullet_cartridge/Crossed(atom/movable/O)
 
 	if(is_bullet(O))
 		var/obj/item/bullet_cartridge/B = O

@@ -24,7 +24,7 @@
 	icon_state = "conveyor_inverted"
 	reversed = TRUE
 
-/obj/structure/interactive/conveyor/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/conveyor/Crossed(atom/movable/O)
 	start_thinking(src)
 	return ..()
 

@@ -25,7 +25,7 @@
 
 	return .
 
-/obj/structure/interactive/disposals/machine/inlet/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/disposals/machine/inlet/Crossed(atom/movable/O)
 	if(O.collision_flags & FLAG_COLLISION_ETHEREAL)
 		return ..()
 	enter_pipe(O)

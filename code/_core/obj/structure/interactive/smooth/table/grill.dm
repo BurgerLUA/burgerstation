@@ -59,13 +59,13 @@
 		O.reagents.special_temperature_mod -= (temperature_mod_oven - (T0C + 20))
 	return ..()
 
-/obj/structure/smooth/table/grill/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/smooth/table/grill/Crossed(atom/movable/O)
 	if(O.reagents && anchored == TRUE)
 		src.visible_message(span("notice","The [O.name] starts to cook."))
 		O.reagents.special_temperature_mod += (temperature_mod - (T0C + 20))
 	return ..()
 
-/obj/structure/smooth/table/grill/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/smooth/table/grill/Uncrossed(atom/movable/O)
 	if(O.reagents && anchored == TRUE)
 		src.visible_message(span("notice","The [O.name] continues to cook off the grille."))
 		O.reagents.special_temperature_mod -= (temperature_mod - (T0C + 20))

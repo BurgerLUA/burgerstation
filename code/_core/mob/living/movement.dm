@@ -74,6 +74,8 @@
 
 	climb_counter = 0
 
+	handle_tabled()
+
 	return .
 
 
@@ -208,3 +210,18 @@
 	else
 		add_status_effect(STAGGER,2,2,source = owner)
 	return ..()
+
+/mob/living/proc/handle_tabled()
+
+	src << "You are [tabled ? "tabled" : "NOT tabled"]."
+
+	if(tabled != currently_tabled)
+		currently_tabled = tabled
+		if(currently_tabled)
+			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
+			move_delay = max(10,move_delay)
+		else
+			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
+			move_delay = max(5,move_delay)
+
+	return TRUE

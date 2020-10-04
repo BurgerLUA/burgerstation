@@ -9,7 +9,7 @@
 
 	bullet_block_chance = 50
 
-/obj/structure/interactive/stacker/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/stacker/Crossed(atom/movable/O)
 	stack(O)
 	return ..()
 

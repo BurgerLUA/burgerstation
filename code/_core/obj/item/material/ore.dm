@@ -11,7 +11,7 @@
 	crafting_id = "ore"
 
 
-/obj/item/material/ore/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/item/material/ore/Crossed(atom/movable/O)
 
 	if(istype(O,/obj/structure/interactive/ore_box))
 		var/obj/structure/interactive/ore_box/OB = O

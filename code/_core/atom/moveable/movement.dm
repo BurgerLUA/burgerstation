@@ -39,9 +39,6 @@
 
 		glide_size = move_delay ? step_size/move_delay : 1
 
-
-		var/move_check = FALSE
-
 		if(intercardinal)
 			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
 			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use

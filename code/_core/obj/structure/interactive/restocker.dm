@@ -7,7 +7,7 @@
 
 	bullet_block_chance = 50
 
-/obj/structure/interactive/restocker/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/restocker/Crossed(atom/movable/O)
 	store(O)
 	return ..()
 
