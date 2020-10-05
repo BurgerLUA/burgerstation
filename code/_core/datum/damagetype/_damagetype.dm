@@ -213,44 +213,53 @@
 
 	return luck(list(attacker,weapon),crit_chance)
 
-/damagetype/proc/swing(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
+/damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
-	if(istype(victim,/mob/living/advanced/stand/))
-		var/mob/living/advanced/stand/S = victim
-		victim = S.owner
-		if(is_organ(hit_object) && is_advanced(victim))
-			var/mob/living/advanced/A = victim
-			var/obj/item/organ/O = hit_object
-			if(A.labeled_organs[O.id])
-				hit_object = A.labeled_organs[O.id]
+	var/swing_time = 0
 
-	if(!is_valid(attacker))
-		CRASH_SAFE("Could not swing as there was no attacker!")
-		return FALSE
+	world.log << "Length of victims: [length(victims)]."
 
-	if(!is_valid(victim))
-		CRASH_SAFE("Could not swing as there was no victim!")
-		return FALSE
+	for(var/i=1,i<=length(victims),i++)
+		var/atom/victim = victims[i]
+		var/atom/hit_object = hit_objects[i]
 
-	if(!is_valid(weapon))
-		CRASH_SAFE("Could not swing as there was no weapon!")
-		return FALSE
+		if(istype(victim,/mob/living/advanced/stand/))
+			var/mob/living/advanced/stand/S = victim
+			victim = S.owner
+			if(is_organ(hit_object) && is_advanced(victim))
+				var/mob/living/advanced/A = victim
+				var/obj/item/organ/O = hit_object
+				if(A.labeled_organs[O.id])
+					hit_object = A.labeled_organs[O.id]
 
-	if(!is_valid(hit_object))
-		CRASH_SAFE("Could not swing as there was no hit_object!")
-		return FALSE
+		if(!is_valid(attacker))
+			CRASH_SAFE("Could not swing as there was no attacker!")
+			return FALSE
 
-	if(!is_valid(hit_object.health))
-		CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
-		return FALSE
+		if(!is_valid(weapon))
+			CRASH_SAFE("Could not swing as there was no weapon!")
+			return FALSE
 
-	if(!is_valid(victim.health))
-		CRASH_SAFE("Could not swing as there was no victim health! (Victim: [victim])")
-		return FALSE
+		if(!is_valid(victim))
+			CRASH_SAFE("Could not swing as there was no victim!")
+			return FALSE
 
-	var/swing_time = do_attack_animation(attacker,victim,weapon,hit_object)
+		if(!is_valid(victim.health))
+			CRASH_SAFE("Could not swing as there was no victim health! (Victim: [victim])")
+			return FALSE
 
-	CALLBACK("\ref[weapon]_\ref[hit_object]",swing_time,src,.proc/hit,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
+		if(!is_valid(hit_object))
+			CRASH_SAFE("Could not swing as there was no hit_object!")
+			return FALSE
+
+		if(!is_valid(hit_object.health))
+			CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
+			return FALSE
+
+		if(i==1)
+			swing_time = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
+
+		CALLBACK("\ref[weapon]_\ref[hit_object]",swing_time,src,.proc/hit,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
 
 	return swing_time
 

@@ -68,7 +68,7 @@
 	var/next_teleport = 0
 
 
-/mob/living/simple/npc/herald/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+/mob/living/simple/npc/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 
 	if( (next_teleport - world.time) >= SECONDS_TO_DECISECONDS(2) )
 		return /damagetype/cqc/sleeping_carp/crashing_wave_kick

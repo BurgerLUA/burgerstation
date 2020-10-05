@@ -54,7 +54,7 @@
 
 	return . || did_drop
 
-/obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+/obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
@@ -230,7 +230,7 @@
 
 	defense_rating = MEATMEN_ARMOR
 
-/obj/item/organ/hand/beefman/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+/obj/item/organ/hand/beefman/get_damage_type(var/atom/attacker,var/atom/victim)
 	return damage_type
 
 /obj/item/organ/hand/beefman/left
@@ -259,7 +259,7 @@
 	attack_delay = 1
 	attack_delay_max = 4
 
-/obj/item/organ/hand/stand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+/obj/item/organ/hand/stand/get_damage_type(var/atom/attacker,var/atom/victim)
 	return /damagetype/unarmed/fists/stand
 
 /obj/item/organ/hand/stand/left
@@ -356,7 +356,7 @@
 
 	damage_type = /damagetype/unarmed/bite/zombie
 
-/obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+/obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
 	return damage_type
 
 /obj/item/organ/hand/zombie/left
