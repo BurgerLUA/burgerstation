@@ -14,3 +14,10 @@
 	value = 80
 
 	drop_sound = 'sound/items/drop/axe.ogg'
+
+/obj/item/weapon/melee/mezzaluna/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+
+	if(wielded)
+		return TRUE
+
+	return ..()

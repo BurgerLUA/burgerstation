@@ -24,6 +24,8 @@
 	attack_delay = 8
 	attack_delay_max = 20
 
+	attack_range = 2
+
 /obj/item/weapon/melee/null_rod/dagger
 	name = "null dagger"
 	desc = "I don't think that man has ever been to a seminarian."

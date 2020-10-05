@@ -16,3 +16,5 @@
 	attack_delay_max = 25
 
 	value = 80
+
+	attack_range = 2

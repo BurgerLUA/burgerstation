@@ -77,7 +77,9 @@
 
 	value = 10
 
-/obj/item/weapon/melee/zweihander
+	attack_range = 2
+
+/obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
 	rarity = RARITY_MYTHICAL
 	desc = "THE LEGEND."
@@ -91,6 +93,15 @@
 	size = SIZE_5
 
 	value = 120
+
+	attack_range = 2
+
+/obj/item/weapon/melee/sword/zweihander/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+
+	if(wielded)
+		return TRUE
+
+	return ..()
 
 /obj/item/weapon/melee/sword/curvedsword
 	name = "steel curved sword"

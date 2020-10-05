@@ -5,7 +5,7 @@
 	spawning_items = list(
 		/obj/item/clothing/overwear/armor/knight/red,
 		/obj/item/clothing/head/helmet/knight/red,
-		/obj/item/weapon/melee/zweihander
+		/obj/item/weapon/melee/sword/zweihander
 	)
 
 /loadout/knight/yellow
