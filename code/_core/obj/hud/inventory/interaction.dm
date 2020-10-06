@@ -35,17 +35,19 @@
 		L.dash(object,0x0,2)
 		return TRUE
 
-	if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
-		if(isturf(object.loc))
+	if(caller.attack_flags & ATTACK_GRAB)
+		if(is_item(defer_object) && is_inventory(defer_object.loc))
+			toggle_wield(caller,defer_object)
+			return TRUE
+		if(isturf(object.loc) && get_dist(caller,object) <= 1)
 			if(is_living(object))
 				var/mob/living/L = object
 				if(!L.add_status_effect(GRAB, source = caller))
 					caller.to_chat(span("warning","\The [object.name] is too strong to be grabbed!"))
 					return TRUE
 			grab_object(caller,object,location,control,params)
-			return TRUE
-		else if(is_item(object) && is_inventory(object.loc))
-			return toggle_wield(caller,defer_object)
+		return TRUE
+
 
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
