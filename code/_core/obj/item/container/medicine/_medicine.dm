@@ -54,23 +54,25 @@
 		var/obj/item/organ/O = A
 		O.bleeding = 0
 
-	. = FALSE
+	var/heal_multiplier = 1
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		heal_multiplier += L.get_skill_power(SKILL_MEDICINE)
+
+	. = 0
 
 	if(heal_brute)
-		A.health.adjust_brute_loss(-heal_brute)
-		. = TRUE
+		. += A.health.adjust_brute_loss(-heal_brute*heal_multiplier)
 
 	if(heal_brute_percent)
-		A.health.adjust_brute_loss(-heal_brute_percent*A.health.get_brute_loss())
-		. = TRUE
+		. += A.health.adjust_brute_loss(-heal_brute_percent*A.health.get_brute_loss()*heal_multiplier)
 
 	if(heal_burn)
-		A.health.adjust_burn_loss(-heal_burn)
-		. = TRUE
+		. += A.health.adjust_burn_loss(-heal_burn*heal_multiplier)
 
 	if(heal_burn_percent)
-		A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss())
-		. = TRUE
+		. += A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss()*heal_multiplier)
 
 	if(.)
 		if(is_organ(A) && is_living(A.loc))
@@ -79,6 +81,12 @@
 			L.queue_health_update = TRUE
 		else
 			A.health.update_health()
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			var/experience_gain = . * A.get_xp_multiplier()
+			if(P == A.loc)
+				experience_gain *= 0.25
+			P.add_skill_xp(SKILL_MEDICINE,experience_gain)
 
 	var/reagent_transfer = CEILING((1/item_count_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer)
