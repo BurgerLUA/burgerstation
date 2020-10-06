@@ -217,8 +217,6 @@
 
 	var/swing_time = 0
 
-	world.log << "Length of victims: [length(victims)]."
-
 	for(var/i=1,i<=length(victims),i++)
 		var/atom/victim = victims[i]
 		var/atom/hit_object = hit_objects[i]

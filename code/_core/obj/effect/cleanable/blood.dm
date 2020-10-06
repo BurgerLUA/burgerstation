@@ -64,7 +64,7 @@
 		if(move_x || move_y)
 			var/turf/desired_turf = locate(x + move_x,y + move_y,z)
 			if(desired_turf)
-				walk_to(src,desired_turf)
+				walk_to(src,desired_turf,0,3)
 	else
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
@@ -88,6 +88,12 @@
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "[rand(1,12)]"
 	return ..()
+
+/obj/effect/cleanable/blood/splatter_small/
+	name = "small blood splatter"
+	icon_state = "micro"
+	animate_position = TRUE
+	blood_level = 1
 
 
 

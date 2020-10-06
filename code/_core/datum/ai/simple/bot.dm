@@ -87,7 +87,6 @@
 		if(!src.is_valid_healing_target(L))
 			continue
 		var/distance_check = get_dist(L,owner)
-		L << "Best Distance: [best_distance], Yours: [distance_check]."
 		if(distance_check >= best_distance)
 			continue
 		best_target = L

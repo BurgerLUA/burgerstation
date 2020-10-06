@@ -85,11 +85,14 @@
 			offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
 			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
-				var/reagent/R = REAGENT(blood_type)
+			var/reagent/R = REAGENT(blood_type)
 
+			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
 				if(!create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,offset_x,offset_y))
 					break
+
+			for(var/i=1,i<=total_bleed_damage*0.1,i++)
+				create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32))
 
 			if(health && total_bleed_damage)
 				blood_volume -= FLOOR(total_bleed_damage*0.2,1)

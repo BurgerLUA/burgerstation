@@ -91,7 +91,6 @@
 		if(can_attack && can_be_attacked)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
 			hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
-			world.log << "Going to hit \the [v] right in \the [hit_object]."
 			if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
 				var/mob/living/advanced/A = attacker
 				A.add_cqc(DT.cqc_tag)
@@ -99,7 +98,6 @@
 				if(DT2) DT = DT2
 			continue
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
-			world.log << "CAN'T ATTACK FIRST!"
 			return FALSE
 		victims -= v
 

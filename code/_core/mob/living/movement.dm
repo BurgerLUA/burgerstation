@@ -213,8 +213,6 @@
 
 /mob/living/proc/handle_tabled()
 
-	src << "You are [tabled ? "tabled" : "NOT tabled"]."
-
 	if(tabled != currently_tabled)
 		currently_tabled = tabled
 		if(currently_tabled)

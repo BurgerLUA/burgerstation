@@ -39,3 +39,7 @@
 	. = ..()
 	equip_loadout(/loadout/dummy/heavy)
 	return .
+
+
+/mob/living/advanced/npc/dummy/dead
+	dead = TRUE
