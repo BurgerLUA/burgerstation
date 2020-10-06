@@ -78,7 +78,7 @@
 	if(. && is_player(owner))
 		var/mob/living/advanced/player/P = owner
 		if(P.client)
-			var/savedata/client/globals/globals = P.client.globals
+			var/savedata/client/globals/globals = GLOBALDATA(P.client.ckey)
 			update_stats(globals.loaded_data["burgerbux"])
 
 	return TRUE

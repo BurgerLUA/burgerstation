@@ -40,3 +40,20 @@
 	handle_eyecolor_chargen(S.default_color_eye,FALSE)
 	update_all_blends()
 	return TRUE
+
+
+/mob/living/advanced/player/antagonist/on_level_up(var/experience/E,var/old_level,var/new_level)
+
+	. = ..()
+
+	if(client && new_level - old_level > 0)
+		var/experienced_gained = E.level_to_xp(new_level) - E.level_to_xp(old_level) * 0.75
+		if(!experienced_gained)
+			return .
+		var/savedata/client/globals/G = GLOBALDATA(client.ckey)
+		if(!G)
+			return .
+		G.loaded_data["stored_experience"][E.id] += experienced_gained
+		to_chat(span("notice","You gained [experienced_gained] global [E.id] experience."))
+
+	return .

@@ -54,7 +54,11 @@
 
 	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
 
-	return (old_level != 0 && old_level < level)
+	if((old_level != 0 && old_level < level))
+		to_chat(span("notice","Your overall level increased to [level]."))
+		return TRUE
+
+	return FALSE
 
 /mob/living/proc/on_level_up(var/experience/E,var/old_level,var/new_level)
 
@@ -68,5 +72,7 @@
 				add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
 			if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER)
 				add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
+
+	update_level()
 
 	return TRUE

@@ -140,7 +140,7 @@
 	var/obj/hud/inventory/I = defer_object
 
 	if(stored_item_burgerbux_cost)
-		var/savedata/client/globals/globals = caller.client.globals
+		var/savedata/client/globals/globals = GLOBALDATA(caller.client.ckey)
 		var/currency = globals.loaded_data["burgerbux"]
 		if(currency >= stored_item_burgerbux_cost && P.spend_burgerbux(stored_item_burgerbux_cost))
 			var/obj/item/new_item = new stored_item.type(get_turf(src))

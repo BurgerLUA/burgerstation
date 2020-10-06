@@ -67,6 +67,7 @@
 	if(last_level < current_level)
 		on_level_up(last_level,current_level)
 
+
 	return xp_to_add
 
 /experience/proc/set_xp(var/new_xp)
@@ -79,11 +80,8 @@
 	return clamp(last_level / 100,min_power,max_power)
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
-	owner.on_level_up(src,old_level,new_level)
 	last_level = new_level
-	if(owner.update_level())
-		owner.to_chat(span("notice","Your overall level increased to [owner.level]."))
-
+	owner.on_level_up(src,old_level,new_level)
 	return new_level
 
 

@@ -83,7 +83,6 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 	if(is_advanced(O))
 		var/mob/living/advanced/player/P = O
 		P.remove_chargen_buttons()
-		//P.save()
 	return ..()
 
 
