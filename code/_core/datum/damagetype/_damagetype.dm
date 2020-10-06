@@ -31,7 +31,7 @@
 
 	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
-	var/draw_blood = FALSE //This weapon can cause bleed.
+	var/draw_blood = FALSE //This weapon causes blood visual effects.
 	var/draw_weapon = FALSE //This should display the weapon attack animation when it does damage.
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -461,6 +461,12 @@
 
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
+
+	if(draw_blood && is_living(victim))
+		var/mob/living/L = victim
+		if(L.blood_type)
+			var/reagent/R = REAGENT(L.blood_type)
+			new /obj/effect/temp/impact/blood(get_turf(victim),3,R.color)
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
