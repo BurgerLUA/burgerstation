@@ -9,7 +9,7 @@ var/global/world_state = STATE_STARTING
 	fps = FPS_SERVER
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
-	map_format = TOPDOWN_MAP
+	map_format = SIDE_MAP
 	sleep_offline = TRUE
 
 	name = "Burgerstation 13"

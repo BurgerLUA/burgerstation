@@ -2,8 +2,7 @@
 	name = "effect"
 	desc = "an effect"
 	mouse_opacity = 0
-	layer = LAYER_EFFECT
-	plane = PLANE_EFFECT
+	layer = EFFECTS_LAYER
 
 /obj/effect/logo
 	name = "Burgerstation 13"

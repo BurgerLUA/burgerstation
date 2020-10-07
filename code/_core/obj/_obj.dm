@@ -3,8 +3,7 @@
 	icon = 'icons/debug/objs.dmi'
 	icon_state = ""
 	desc = "null"
-	layer = LAYER_OBJ
-	plane = PLANE_OBJ
+	layer = OBJ_LAYER
 
 	var/list/additional_blends
 

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/effects/meteor.dmi'
 	icon_state = "small"
 
-	plane = PLANE_ALWAYS_VISIBLE
+	layer = EFFECTS_LAYER
 
 	var/meteor_time = SECONDS_TO_DECISECONDS(3)
 

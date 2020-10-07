@@ -5,7 +5,6 @@
 	icon_state    = LIGHTING_BASE_ICON_STATE
 	color         = LIGHTING_BASE_MATRIX
 	mouse_opacity = 0
-	layer         = LAYER_LIGHTING
 	plane         = PLANE_LIGHTING
 	invisibility  = INVISIBILITY_LIGHTING
 	blend_mode    = BLEND_MULTIPLY

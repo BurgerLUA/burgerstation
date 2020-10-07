@@ -5,8 +5,7 @@ var/global/list/all_areas = list()
 	name = "AREA ERROR"
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
-	layer = LAYER_AREA
-	plane = PLANE_AREA
+	layer = AREA_LAYER
 	invisibility = 101
 
 	mouse_opacity = 0
