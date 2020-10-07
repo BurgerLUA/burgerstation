@@ -68,6 +68,9 @@
 	if(fire_overlay)
 		fire_overlay.glide_size = src.glide_size
 		fire_overlay.force_move(src.loc)
+	if(shield_overlay)
+		shield_overlay.glide_size = src.glide_size
+		shield_overlay.force_move(src.loc)
 
 	if(is_sneaking)
 		on_sneak()

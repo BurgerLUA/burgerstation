@@ -1,5 +1,5 @@
 /mob/living/get_xp_multiplier()
-	return ai ? 1 : 0
+	return 1
 
 /mob/living/proc/initialize_attributes()
 

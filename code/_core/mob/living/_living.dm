@@ -124,6 +124,8 @@
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
 
+
+
 	has_footsteps = TRUE
 
 	var/climb_counter = 0
@@ -155,6 +157,7 @@
 	var/obj/effect/chat_overlay
 	var/obj/effect/alert_overlay
 	var/obj/effect/fire_overlay
+	var/obj/effect/shield_overlay
 
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
@@ -292,6 +295,7 @@
 	QDEL_NULL(alert_overlay)
 	QDEL_NULL(chat_overlay)
 	QDEL_NULL(fire_overlay)
+	QDEL_NULL(shield_overlay)
 
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
@@ -391,6 +395,12 @@
 	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
 	fire_overlay.icon_state = "0"
 	//This is initialized somewhere else.
+
+	shield_overlay = new(src.loc)
+	shield_overlay.layer = LAYER_EFFECT
+	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
+	shield_overlay.icon_state = "block"
+	shield_overlay.alpha = 0
 
 	return .
 
