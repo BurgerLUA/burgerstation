@@ -10,7 +10,7 @@
 	corner_icons = TRUE
 	corner_category = "basalt"
 
-	layer = LAYER_FLOOR_LARGE + 0.2
+	layer = LAYER_FLOOR_ROCK
 
 	footstep = /footstep/concrete
 

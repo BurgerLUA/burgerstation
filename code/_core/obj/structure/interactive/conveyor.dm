@@ -7,7 +7,7 @@
 	var/active = TRUE
 	var/reversed = FALSE
 
-	layer = LAYER_GROUND_CONVERYOR
+	layer = LAYER_FLOOR_CONVEYOR
 
 	var/obj/structure/interactive/limiter/found_limiter
 	var/turf/move_turf

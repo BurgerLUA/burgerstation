@@ -44,7 +44,7 @@
 	desc_extended = "A general proximity scanner that detects whether or not a person is present in the tile."
 	icon_state = "door"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 /obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 

@@ -4,7 +4,7 @@ obj/structure/interactive/computer
 	desc_extended = "Operates things, depending on what the console is."
 	icon = 'icons/obj/structure/computer.dmi'
 	var/on = TRUE
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 obj/structure/interactive/computer/console
 	name = "computer console"

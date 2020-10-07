@@ -21,7 +21,7 @@ var/global/list/equipped_antags = list()
 
 	bullet_block_chance = 75
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	pixel_y = 8
 

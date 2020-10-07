@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structure/fire_closet.dmi'
 	icon_state = "extinguisher"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 /obj/structure/interactive/fire_closet/Initialize()
 	setup_dir_offsets()

@@ -2,6 +2,7 @@
 	name = "stairs"
 	icon = 'icons/turf/floor/stairs.dmi'
 	icon_state = "stair"
+	layer = LAYER_FLOOR_TILE
 
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"

@@ -12,7 +12,7 @@
 	desired_light_angle = LIGHT_TUBE
 
 	layer = LAYER_LARGE_OBJ
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	var/on = TRUE
 

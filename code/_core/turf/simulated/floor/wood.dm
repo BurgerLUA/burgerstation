@@ -2,6 +2,7 @@
 	name = "wood floor"
 	icon = 'icons/turf/floor/wood.dmi'
 	icon_state = "wood"
+	layer = LAYER_FLOOR_TILE
 
 	footstep = /footstep/wood
 

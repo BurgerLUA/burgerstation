@@ -45,10 +45,10 @@
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
 
-			if(!first_step.Enter(src,src.loc))
+			if(!first_step || !first_step.Enter(src,src.loc))
 				final_move_dir &= ~first_move_dir_to_use
 
-			if(!second_step.Enter(src,src.loc))
+			if(!second_step || !second_step.Enter(src,src.loc))
 				final_move_dir &= ~second_move_dir_to_use
 
 			/*

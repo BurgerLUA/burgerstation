@@ -7,7 +7,7 @@
 	var/obj/structure/interactive/blob/core/linked_core
 	color = "#80CC2A"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	anchored = TRUE
 

@@ -9,7 +9,7 @@
 	desired_light_color = null //Set in update_icon
 
 	layer = LAYER_LARGE_OBJ
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	var/on = TRUE
 

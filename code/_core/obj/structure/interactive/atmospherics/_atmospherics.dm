@@ -12,7 +12,7 @@ obj/structure/interactive/atmospherics/vent
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
-	plane = PLANE_TILE
+	plane = PLANE_FLOOR
 
 obj/structure/interactive/atmospherics/scrubber
 	name = "scrubber"
@@ -25,7 +25,7 @@ obj/structure/interactive/atmospherics/scrubber
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
-	plane = PLANE_TILE
+	plane = PLANE_FLOOR
 
 obj/structure/interactive/atmospherics/air_alarm
 	name = "air alarm"
@@ -38,7 +38,7 @@ obj/structure/interactive/atmospherics/air_alarm
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 	setup_dir_offsets()
@@ -66,6 +66,6 @@ obj/structure/interactive/atmospherics/fan
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "fan_tiny"
 
-	plane = PLANE_TILE
+	plane = PLANE_FLOOR
 
 	blocks_air = NORTH | EAST | SOUTH | WEST

@@ -22,7 +22,7 @@ var/global/list/global_status_displays = list()
 
 	maptext_y = -2
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 /obj/structure/interactive/status_display/shuttle
 	name = "shuttle status display"

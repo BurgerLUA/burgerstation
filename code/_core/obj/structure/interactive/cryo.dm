@@ -8,7 +8,7 @@ obj/structure/interactive/cryopod
 	desired_light_range = 2
 	desired_light_color = "#3ADD7C"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	bullet_block_chance = 90
 

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/smelter.dmi'
 	icon_state = "furnace"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	pixel_y = 2
 

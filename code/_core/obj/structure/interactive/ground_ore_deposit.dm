@@ -4,7 +4,7 @@
 	icon_state = "deposit"
 	var/ore_score = 1
 	var/material_id
-	plane = PLANE_FLOOR_ORE
+	plane = PLANE_FLOOR
 	layer = 0
 	initialize_type = INITIALIZE_LATE
 

@@ -13,7 +13,7 @@
 	density_south = TRUE
 	density_west = TRUE
 
-	plane = PLANE_WATER
+	plane = PLANE_FLOOR
 
 	desired_light_frequency = 4
 	desired_light_power = 0.5

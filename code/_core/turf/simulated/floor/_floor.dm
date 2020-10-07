@@ -8,6 +8,8 @@
 
 	health_base = 100
 
+	plane = PLANE_FLOOR
+
 /turf/simulated/floor/is_safe_teleport()
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE

@@ -407,7 +407,7 @@
 /obj/structure/interactive/vending/smart_fridge
 	name = "smart fridge"
 	icon_state = "smartfridge"
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 	pixel_y = 0
 
 /obj/structure/interactive/vending/smart_fridge/chemistry

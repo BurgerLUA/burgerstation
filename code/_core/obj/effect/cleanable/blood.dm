@@ -2,8 +2,8 @@
 	name = "blood"
 	icon = 'icons/obj/effects/blood_impact.dmi'
 	color = "#990000"
-	layer = LAYER_GROUND_SCENERY
-	plane = PLANE_BLOOD
+	layer = LAYER_FLOOR_SCENERY
+	plane = PLANE_OBJ
 	alpha = 200
 
 	var/animate_position = FALSE

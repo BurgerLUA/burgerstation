@@ -6,7 +6,7 @@
 
 	footstep = /footstep/lava
 
-	plane = PLANE_WATER
+	plane = PLANE_FLOOR
 
 	desired_light_frequency = 2
 	desired_light_power = 0.5

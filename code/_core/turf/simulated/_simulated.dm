@@ -247,7 +247,7 @@ var/global/list/blood_turfs = list()
 	icon = I
 	pixel_x = (32 - I.Width())/2
 	pixel_y = (32 - I.Height())/2
-	layer = initial(layer) + 0.1
+	//layer = initial(layer) + 0.1
 
 /turf/simulated/update_icon()
 

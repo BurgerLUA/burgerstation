@@ -20,7 +20,7 @@ obj/structure/scenery/flowers
 	name = "flowers"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "ywflowers_1"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/flowers/New()
 	..()
@@ -36,7 +36,7 @@ obj/structure/scenery/grass
 	name = "uncut grass"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "sparsegrass_1"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/grass/New()
 	..()
@@ -50,7 +50,7 @@ obj/structure/scenery/rocks
 	name = "rocks"
 	icon = 'icons/obj/structure/flora/rocks_new.dmi'
 	icon_state = "rock_1"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/rocks/New()
 	..()
@@ -130,7 +130,7 @@ obj/structure/scenery/peppermint
 	name = "red peppermint"
 	icon = 'icons/obj/structure/flora/peppermint.dmi'
 	icon_state = "peppermint_red"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_SCENERY
 
 
 obj/structure/scenery/peppermint/green

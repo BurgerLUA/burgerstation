@@ -114,7 +114,7 @@
 		if(misfire_chance && luck(list(caller,src,loc),misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
-		plane = PLANE_BULLET_CASINGS
+		plane = PLANE_OBJ
 		item_count_max = max(item_count_max,100000) //Some absurd value.
 		return src
 
