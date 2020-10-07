@@ -30,7 +30,7 @@
 
 /obj/item/clothing/head/hat/paperbag/Finalize()
 	. = ..()
-	update_sprite()
+	update_inventory()
 	return .
 
 /obj/item/clothing/head/hat/paperbag/save_item_data(var/save_inventory = TRUE)
@@ -50,24 +50,23 @@
 	var/mob/living/C = caller
 	if(C.attack_flags & ATTACK_ALT)
 		if(C.intent == INTENT_DISARM)
-			if(logobg < 1)
+			if(logobg < 2)
 				logobg++
 				caller.to_chat(span("notice","You change \the pattern from \the [src.name]."))
-				return TRUE
 			else
 				logobg = 0
 				caller.to_chat(span("notice","You wipe \the pattern from \the [src.name]."))
-				return TRUE
+
 		if(C.intent == INTENT_HELP)
 			if(logo < 5)
 				logo++
 				caller.to_chat(span("notice","You change \the logo from \the [src.name]."))
-				return TRUE
 			else
 				logo = 0
 				caller.to_chat(span("notice","You wipe \the logo from \the [src.name]."))
-				return TRUE
 		update_sprite()
+
+
 
 /obj/item/clothing/head/hat/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
@@ -125,10 +124,11 @@
 
 /obj/item/clothing/head/hat/paperbag/nanotrasen
 	logo = 1
+	logobg = 2
 	polymorphs = list(
 		"base" = "#145180",
 		"logo" = "#FFFFFF",
-		"logobg" = "#FFFFFF"
+		"logobg" = "#092337"
 	)
 
 /obj/item/clothing/head/hat/paperbag/syndicate
@@ -142,5 +142,5 @@
 
 /obj/item/clothing/head/hat/paperbag/random/Generate()
 	logo = rand(0,5)
-	logobg = rand(0,1)
+	logobg = rand(0,2)
 	return ..()
