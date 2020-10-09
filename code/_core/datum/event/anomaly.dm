@@ -13,9 +13,10 @@
 		/mob/living/simple/npc/clown/hulk = 1,
 		/mob/living/simple/npc/clown/long = 3,
 		/mob/living/simple/npc/clown/lube = 4,
-		/mob/living/simple/npc/clown/mutant = 1,
-		/mob/living/simple/npc/clown/pie = 2,
-		/mob/living/simple/npc/clown/tree = 2
+		/mob/living/simple/npc/clown/mutant = 2,
+		/mob/living/simple/npc/clown/pie = 3,
+		/mob/living/simple/npc/clown/tree = 4,
+		/mob/living/simple/npc/bot/medibot/rogue = 5
 	)
 
 	occurances_max = 5

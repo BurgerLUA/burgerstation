@@ -53,7 +53,8 @@
 	desc = "Fight off an endless wave of traitorous syndicate soliders while attempting to completele objectives. Some Syndicate soliders may have spells!"
 	enemy_types_to_spawn = list(
 		/mob/living/advanced/npc/syndicate = 40,
-		/mob/living/advanced/npc/sorcerer = 10
+		/mob/living/advanced/npc/sorcerer = 10,
+		/mob/living/simple/npc/silicon/squats = 1
 	)
 	hidden = FALSE
 

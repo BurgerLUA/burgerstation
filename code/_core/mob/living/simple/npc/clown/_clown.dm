@@ -180,6 +180,21 @@
 		ION = INFINITY
 	)
 
+	status_immune = list(
+		SLIP = TRUE
+	)
+
+/mob/living/simple/npc/clown/lube/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(is_simulated(loc))
+		var/turf/simulated/S = loc
+		S.add_wet(1000)
+
+	return .
+
+
 /*
 /mob/living/simple/npc/clown/creep
 	name = "clown creep"

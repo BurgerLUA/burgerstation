@@ -24,9 +24,7 @@
 		/mob/living/simple/npc/spider,
 		/mob/living/simple/npc/venus_human_trap,
 		/mob/living/simple/npc/watcher,
-		/mob/living/simple/npc/xeno/hunter,
-		/mob/living/simple/npc/glockroach,
-		/mob/living/simple/npc/bot/medibot/rogue
+		/mob/living/simple/npc/xeno/hunter
 	)
 
 	var/mob/living/enemy_type_to_spawn

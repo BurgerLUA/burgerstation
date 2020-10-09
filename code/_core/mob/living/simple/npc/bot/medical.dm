@@ -30,6 +30,31 @@
 
 	stun_angle = 180
 
+/mob/living/simple/npc/bot/medibot/post_death()
+
+	. = ..()
+
+	var/obj/item/storage/kit/K = new(src.loc)
+	K.icon = overlay_icon
+	K.icon_state = overlay_icon_state
+	INITIALIZE(K)
+	GENERATE(K)
+	FINALIZE(K)
+
+	var/obj/item/analyzer/health/H = new(src.loc)
+	INITIALIZE(H)
+	GENERATE(H)
+	FINALIZE(H)
+
+	var/obj/item/device/proximity/P = new(src.loc)
+	INITIALIZE(P)
+	GENERATE(P)
+	FINALIZE(P)
+
+	qdel(src)
+
+	return .
+
 /mob/living/simple/npc/bot/medibot/Finalize()
 	. = ..()
 	update_sprite()
@@ -152,7 +177,8 @@
 
 /mob/living/simple/npc/bot/medibot/rogue
 	name = "rogue medical bot"
-	iff_tag = "Robot"
+
+	loyalty_tag = "Robot"
 	iff_tag = "Robot"
 
 	ai = /ai/bot/medical/aggressive
@@ -164,6 +190,6 @@
 /mob/living/simple/npc/bot/medibot/rogue/Generate()
 	var/desired_pack = pick("firstaid","brute","burn","toxin","rad","purple","oxy","tactical")
 	var/desired_num = pick("","1","2","3","4")
-	overlay_icon = "[desired_pack][desired_num]"
+	overlay_icon_state = "[desired_pack][desired_num]"
 	return ..()
 

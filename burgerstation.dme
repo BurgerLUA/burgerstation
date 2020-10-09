@@ -444,6 +444,7 @@
 #include "code\_core\datum\health\mob\living\_living.dm"
 #include "code\_core\datum\health\mob\living\advanced\_advanced.dm"
 #include "code\_core\datum\health\mob\living\advanced\zombie.dm"
+#include "code\_core\datum\health\mob\living\simple\squarts.dm"
 #include "code\_core\datum\health\mob\living\vehicle\mech\modular\_modular.dm"
 #include "code\_core\datum\health\obj\item\misc.dm"
 #include "code\_core\datum\health\obj\item\mech_part\_mech_part.dm"
