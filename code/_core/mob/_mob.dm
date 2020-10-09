@@ -51,8 +51,6 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/obj/hud/screen/paralax
-
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
@@ -112,7 +110,6 @@
 
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
-	QDEL_NULL(paralax)
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)

@@ -82,8 +82,7 @@
 			owner.mob.attack_flags |= ATTACK_HOLD
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
-				L.shield_overlay.alpha = 255
-				world.log << "Hello, [L.shield_overlay.alpha]."
+				animate(L.shield_overlay,alpha = 200, time = 5, easing = BACK_EASING | EASE_OUT, flags = ANIMATION_LINEAR_TRANSFORM)
 				if(world.time - owner.mob.last_hold < 5)
 					L.dash(null,owner.mob.move_dir ? owner.mob.move_dir : owner.mob.dir,2)
 				else if(world.time - owner.mob.last_hold >= 30) //Can't spam it.
@@ -144,7 +143,7 @@
 			owner.mob.attack_flags &= ~ATTACK_HOLD
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
-				L.shield_overlay.alpha = 0
+				animate(L.shield_overlay,alpha = 0, time = 3, flags = ANIMATION_LINEAR_TRANSFORM)
 		if("grab")
 			owner.mob.attack_flags &= ~ATTACK_GRAB
 		if("quick_self")

@@ -80,6 +80,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //Something blocking?
 		return FALSE
+
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
@@ -136,6 +137,7 @@ var/global/list/all_shuttle_controlers = list()
 				S.open(null,lock,force)
 			else
 				S.close(null,lock,force)
+
 	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()

@@ -498,3 +498,14 @@
 	if(messages) caller?.to_chat(span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
+
+
+/mob/living/set_dir(var/desired_dir,var/force=FALSE)
+
+	if(client && client.is_zoomed)
+		return ..(client.is_zoomed,force)
+
+	if(attack_flags & ATTACK_HOLD)
+		return FALSE
+
+	return ..()

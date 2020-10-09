@@ -59,6 +59,8 @@
 
 /mob/living/post_move(var/atom/old_loc)
 
+	. = ..()
+
 	if(chat_overlay)
 		chat_overlay.glide_size = src.glide_size
 		chat_overlay.force_move(src.loc)
