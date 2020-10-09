@@ -64,9 +64,10 @@
 	experience += xp_to_add
 
 	var/current_level = get_current_level()
-	if(last_level < current_level)
+	if(last_level != current_level)
 		on_level_up(last_level,current_level)
 
+	last_level = current_level //Just in case it's leveled down or something.
 
 	return xp_to_add
 
@@ -80,7 +81,6 @@
 	return clamp(last_level / 100,min_power,max_power)
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
-	last_level = new_level
 	owner.on_level_up(src,old_level,new_level)
 	return new_level
 

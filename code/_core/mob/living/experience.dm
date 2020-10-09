@@ -23,7 +23,7 @@
 		S.Initialize(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		skills[S.id] = S
 
-/mob/living/proc/update_level()
+/mob/living/proc/update_level(var/first=FALSE)
 
 	var/total_attribute_mod = 0
 	var/total_skill_mod = 0
@@ -54,17 +54,27 @@
 
 	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
 
-	if((old_level != 0 && old_level < level))
-		to_chat(span("notice","Your overall level increased to [level]."))
-		return TRUE
+	if(!first)
+		var/decrease = old_level > level
+		if(decrease)
+			to_chat(span("warning","Your overall level decreased to [level]..."))
+		else
+			to_chat(span("notice","Your overall level increased to [level]!"))
 
-	return FALSE
+	return old_level != level
+
+
 
 /mob/living/proc/on_level_up(var/experience/E,var/old_level,var/new_level)
 
-	to_chat(span("notice","Your [E.name] increased to [new_level]."))
+	var/decrease = old_level > new_level
 
-	if(new_level > old_level)
+	if(decrease)
+		to_chat(span("warning","Your [E.name] decreased to [new_level]..."))
+	else
+		to_chat(span("notice","Your [E.name] increased to [new_level]!"))
+
+	if(new_level > old_level) //Only care if it's an increase.
 		switch(E.id)
 			if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE)
 				add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)

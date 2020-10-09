@@ -2,9 +2,8 @@
 	name = "Horde Mode (Revolutionaries)"
 	desc = "Fight off an endless wave of Russian Revolutionaries while attempting to complete objectives."
 	enemy_types_to_spawn = list(
-		/mob/living/advanced/npc/rev = 100,
-		/mob/living/simple/npc/bear/armored/revolutionary = 20,
-		/mob/living/simple/npc/rev_leader = 1
+		/mob/living/advanced/npc/rev = 5,
+		/mob/living/simple/npc/bear/armored/revolutionary = 1
 	)
 	hidden = FALSE
 

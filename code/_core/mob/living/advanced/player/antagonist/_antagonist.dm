@@ -47,12 +47,13 @@
 	. = ..()
 
 	if(client && new_level - old_level > 0)
-		var/experienced_gained = E.level_to_xp(new_level) - E.level_to_xp(old_level) * 0.75
+		var/experienced_gained = FLOOR(E.level_to_xp(new_level) - E.level_to_xp(old_level) * 0.75,1)
 		if(!experienced_gained)
 			return .
 		var/savedata/client/globals/G = GLOBALDATA(client.ckey)
 		if(!G)
 			return .
+		if(!G.loaded_data["stored_experience"]) G.loaded_data["stored_experience"] = list()
 		G.loaded_data["stored_experience"][E.id] += experienced_gained
 		to_chat(span("notice","You gained [experienced_gained] global [E.id] experience."))
 

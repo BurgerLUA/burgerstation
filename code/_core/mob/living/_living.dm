@@ -367,7 +367,7 @@
 
 	initialize_attributes()
 	initialize_skills()
-	update_level()
+	update_level(TRUE)
 	set_intent(intent,TRUE)
 
 	. = ..()
@@ -411,13 +411,15 @@
 	if(ai)
 		INITIALIZE(ai)
 		FINALIZE(ai)
+	set_loyalty_tag(loyalty_tag,TRUE)
+	set_iff_tag(iff_tag,TRUE)
 	setup_name()
 	return .
 
 /mob/living/proc/setup_name()
 	if(boss)
 		return FALSE
-	name = CHECK_NAME(name)
+	name = "[CHECK_NAME(name)] (LVL: [level])"
 	return TRUE
 
 /mob/living/proc/set_iff_tag(var/desired_iff_tag,var/force=FALSE)

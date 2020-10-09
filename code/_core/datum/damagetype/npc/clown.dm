@@ -1,18 +1,20 @@
-/damagetype/npc/cow
-	name = "cow's head"
-	attack_verbs = list("headbutt")
+/damagetype/npc/clown
+	name = "clown honk"
+	attack_verbs = list("honk")
+
+	impact_sounds = list('sound/items/bikehorn.ogg')
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 5,
+		BLUNT = 20,
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = 15,
+		BLUNT = 25,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 20
+		ATTRIBUTE_STRENGTH = 50
 	)
 
 	attribute_damage = list(

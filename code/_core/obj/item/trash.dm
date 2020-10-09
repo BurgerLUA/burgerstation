@@ -2,8 +2,8 @@
 	name = "trash"
 	icon = 'icons/obj/item/trash.dmi'
 
-/obj/item/trash/rasins
-	icon_state = "rasins"
+/obj/item/trash/raisins
+	icon_state = "raisins"
 
 /obj/item/trash/candy
 	icon_state = "candy"

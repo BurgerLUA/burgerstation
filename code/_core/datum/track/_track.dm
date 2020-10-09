@@ -181,6 +181,17 @@
 	path = 'sound/music/Whistles from the Holy Forest.ogg'
 	length = 3*60 + 25
 
+/track/boat //Menu Music
+	name = "Boat"
+	path = 'sound/music/Boat.ogg'
+	length = 1*60 + 35
+
+/track/chords //Heirophant Boss Music
+	name = "Chords"
+	path = 'sound/music/Chords.ogg'
+	length = 1*60 + 30
+
+
 
 
 
