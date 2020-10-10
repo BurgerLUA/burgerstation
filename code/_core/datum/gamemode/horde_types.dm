@@ -99,3 +99,15 @@
 		/mob/living/advanced/npc/pirate_crew/ranged = 4
 	)
 	hidden = TRUE
+
+/gamemode/horde/cultists
+	name = "Horde Mode (Cultists)"
+	desc = "Fight off an endless wave of Cultists while attempting to complete objectives."
+	enemy_types_to_spawn = list(
+		/mob/living/simple/npc/cult/construct/artificer = 10,
+		/mob/living/simple/npc/cult/construct/behemoth = 10,
+		/mob/living/simple/npc/cult/construct/chosen = 1,
+		/mob/living/simple/npc/cult/construct/floating = 25,
+		/mob/living/simple/npc/cult/cultist = 100
+	)
+	hidden = FALSE
