@@ -78,14 +78,14 @@
 		var/experience/skill/S = get_skill(id,FALSE)
 		if(S)
 			var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.chargen_max_level)
-			S.Initialize(xp)
+			S.update_experience(xp)
 
 	//Attributes
 	for(var/id in loaded_data["attributes"])
 		var/experience/attribute/S = get_attribute(id,FALSE)
 		if(S)
 			var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.chargen_max_level)
-			S.Initialize(xp)
+			S.update_experience(xp)
 
 	if(do_teleport)
 		var/obj/marker/dev/D = locate() in world

@@ -726,10 +726,10 @@
 						if(messages)
 							owner.to_chat(span("notice","Beast races cannot wear this!"))
 						return FALSE
-			if(I.item_slot)
-				var/list/list_to_check = I.ignore_other_slots ? src.worn_objects : A.worn_objects
+			if(C.item_slot)
+				var/list/list_to_check = C.ignore_other_slots ? src.worn_objects : A.worn_objects
 				for(var/obj/item/clothing/C2 in list_to_check)
-					if(C2.blocks_clothing && (I.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
+					if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
 						if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
 						return FALSE
 

@@ -17,16 +17,21 @@
 		BLADE = 25,
 		BLUNT = 50,
 		PIERCE = 50,
-		LASER = 25,
-		ARCANE = -100,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 25
+		LASER = 75,
+		ARCANE = -75,
+		BOMB = 75
 	)
 
-	value = 800
+	value = 200
 
-	slowdown_mul_worn = 1.10
+	slowdown_mul_worn = 1
+
+/obj/item/clothing/head/helmet/nanotrasen/light/deathsquad
+	polymorphs = list(
+		"helmet_light" = COLOR_BLACK,
+		"visor_light" = COLOR_RED
+	)
+
 
 /obj/item/clothing/head/helmet/nanotrasen/medium
 	name = "medium Jaeger hemlet"
@@ -36,19 +41,24 @@
 	)
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 75,
 		PIERCE = 75,
-		LASER = 50,
-		ARCANE = -125,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 50
+		LASER = 100,
+		ARCANE = -75,
+		BOMB = 75
 	)
 
-	value = 1300
+	value = 300
 
-	slowdown_mul_worn = 1.25
+	slowdown_mul_worn = 1.05
+
+/obj/item/clothing/head/helmet/nanotrasen/medium/deathsquad
+	polymorphs = list(
+		"helmet_medium" = COLOR_BLACK,
+		"visor_medium" = COLOR_RED
+	)
+
 
 /obj/item/clothing/head/helmet/nanotrasen/heavy
 	name = "heavy Jaeger hemlet"
@@ -59,15 +69,19 @@
 
 	defense_rating = list(
 		BLADE = 50,
-		BLUNT = 100,
-		PIERCE = 100,
-		LASER = 50,
-		ARCANE = -200,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 100
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 100,
+		ARCANE = -100,
+		BOMB = 200
 	)
 
-	value = 2700
+	value = 400
 
-	slowdown_mul_worn = 1.35
+	slowdown_mul_worn = 1.15
+
+/obj/item/clothing/head/helmet/nanotrasen/heavy/deathsquad
+	polymorphs = list(
+		"helmet_heavy" = COLOR_BLACK,
+		"visor_heavy" = COLOR_RED
+	)

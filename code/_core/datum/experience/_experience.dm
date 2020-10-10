@@ -31,9 +31,9 @@
 	owner = M
 	return ..()
 
-/experience/Initialize(var/desired_xp)
+/experience/proc/update_experience(var/desired_xp)
 	experience = desired_xp
-	last_level = xp_to_level(experience)
+	last_level = min(xp_to_level(experience),LEVEL_CAP)
 	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level

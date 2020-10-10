@@ -28,16 +28,22 @@
 		BLADE = 25,
 		BLUNT = 50,
 		PIERCE = 50,
-		LASER = 25,
-		ARCANE = -100,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 25
+		LASER = 75,
+		ARCANE = -75,
+		BOMB = 75
 	)
 
-	value = 1200
+	value = 300
 
-	slowdown_mul_worn = 1.10
+	slowdown_mul_worn = 1.05
+
+	size = SIZE_6
+
+/obj/item/clothing/overwear/armor/nanotrasen/light/deathsquad
+	polymorphs = list(
+		"under" = "#FFFFFF",
+		"light" = COLOR_BLACK
+	)
 
 
 /obj/item/clothing/overwear/armor/nanotrasen/medium
@@ -48,19 +54,25 @@
 	)
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 75,
 		PIERCE = 75,
-		LASER = 50,
-		ARCANE = -125,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 50
+		LASER = 100,
+		ARCANE = -75,
+		BOMB = 75
 	)
 
-	value = 1700
+	value = 600
 
-	slowdown_mul_worn = 1.25
+	slowdown_mul_worn = 1.1
+
+	size = SIZE_7
+
+/obj/item/clothing/overwear/armor/nanotrasen/medium/deathsquad
+	polymorphs = list(
+		"under" = "#FFFFFF",
+		"medium" = COLOR_BLACK
+	)
 
 /obj/item/clothing/overwear/armor/nanotrasen/heavy
 	name = "heavy Jaeger armor"
@@ -70,16 +82,20 @@
 	)
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 90,
-		PIERCE = 90,
-		LASER = 50,
-		ARCANE = -200,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 100
+		BLADE = 50,
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 100,
+		ARCANE = -100,
+		BOMB = 200
 	)
 
-	value = 3100
+	value = 1200
 
-	slowdown_mul_worn = 1.5
+	slowdown_mul_worn = 1.25
+
+/obj/item/clothing/overwear/armor/nanotrasen/heavy/deathsquad
+	polymorphs = list(
+		"under" = "#FFFFFF",
+		"heavy" = COLOR_BLACK
+	)

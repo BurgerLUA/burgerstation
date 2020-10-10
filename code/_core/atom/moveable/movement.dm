@@ -1,6 +1,19 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay * MOVEMENT_DELAY_MOD
 
+/atom/movable/proc/can_enter(var/turf/T)
+
+	if(!T.Enter(src,src.loc))
+		return FALSE
+
+	for(var/k in T.contents)
+		var/atom/movable/M = k
+		if(!M.Cross(src))
+			return FALSE
+
+	return TRUE
+
+
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
 
 	if(anchored)
@@ -45,10 +58,10 @@
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
 
-			if(!first_step || !first_step.Enter(src,src.loc))
+			if(!first_step || !src.can_enter(first_step))
 				final_move_dir &= ~first_move_dir_to_use
 
-			if(!second_step || !second_step.Enter(src,src.loc))
+			if(!second_step || !src.can_enter(second_step))
 				final_move_dir &= ~second_move_dir_to_use
 
 		var/similiar_move_dir = FALSE

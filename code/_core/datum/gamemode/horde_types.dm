@@ -58,7 +58,6 @@
 	)
 	hidden = FALSE
 
-
 /gamemode/horde/beefmen
 	name = "Horde Mode (Beefmen)"
 	enemy_types_to_spawn = list(
@@ -68,11 +67,17 @@
 
 /gamemode/horde/death_squad
 	name = "Horde Mode (Death Squad)"
-	desc = "Fight off an endless wave of NanoTrasen deathsquad while attemtping to complete objectives in this lethal training excercise!"
+	desc = "Fight off an endless wave of NanoTrasen deathsquad while attemtping to complete objectives in this extremely lethal training excercise!"
 	enemy_types_to_spawn = list(
-		/mob/living/advanced/npc/deathsquad = 1
+		/mob/living/advanced/npc/deathsquad/light = 8,
+		/mob/living/advanced/npc/deathsquad/medium = 4,
+		/mob/living/advanced/npc/deathsquad/heavy = 1
 	)
-	hidden = TRUE
+	hidden = FALSE
+
+	enemies_to_spawn_base = 4
+	enemies_to_spawn_per_player = 0.25
+	enemies_to_spawn_per_minute = 0.1
 
 /gamemode/horde/ashwalkers
 	name = "Horde Mode (Ashwalkers)"

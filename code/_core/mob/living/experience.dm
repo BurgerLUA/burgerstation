@@ -9,7 +9,7 @@
 		var/v = SSexperience.all_attributes[k]
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
-		A.Initialize(A.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
+		A.update_experience(A.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		attributes[A.id] = A
 
 /mob/living/proc/initialize_skills()
@@ -20,7 +20,7 @@
 		var/v = SSexperience.all_skills[k]
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
-		S.Initialize(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
+		S.update_experience(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		skills[S.id] = S
 
 /mob/living/proc/update_level(var/first=FALSE)
@@ -70,9 +70,9 @@
 	var/decrease = old_level > new_level
 
 	if(decrease)
-		to_chat(span("warning","Your [E.name] decreased to [new_level]..."))
+		to_chat(span("warning","Your [E.name] decreased from [old_level] to [new_level]..."))
 	else
-		to_chat(span("notice","Your [E.name] increased to [new_level]!"))
+		to_chat(span("notice","Your [E.name] increased from [old_level] to [new_level]!"))
 
 	if(new_level > old_level) //Only care if it's an increase.
 		switch(E.id)
