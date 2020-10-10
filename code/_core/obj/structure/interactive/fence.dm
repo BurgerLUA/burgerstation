@@ -14,6 +14,8 @@ obj/structure/interactive/fence
 
 	health_base = 100
 
+	density = TRUE
+
 /obj/structure/interactive/fence/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 4),/material/steel)
 	. = ..()

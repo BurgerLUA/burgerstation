@@ -20,6 +20,8 @@
 	health = /health/construction/
 	health_base = 250
 
+	density = TRUE
+
 	var/health_states = 0
 
 /obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)

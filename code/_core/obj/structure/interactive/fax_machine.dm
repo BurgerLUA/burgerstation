@@ -12,7 +12,6 @@
 
 	pixel_y = 4
 
-
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK

@@ -72,7 +72,7 @@
 	enemy_types_to_spawn = list(
 		/mob/living/advanced/npc/deathsquad = 1
 	)
-	hidden = FALSE
+	hidden = TRUE
 
 /gamemode/horde/ashwalkers
 	name = "Horde Mode (Ashwalkers)"

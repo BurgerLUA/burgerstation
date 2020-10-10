@@ -12,6 +12,9 @@
 	var/obj/structure/interactive/limiter/found_limiter
 	var/turf/move_turf
 
+	density = TRUE
+
+
 
 /obj/structure/interactive/conveyor/shuttle
 	plane = PLANE_SHUTTLE

@@ -6,6 +6,8 @@
 
 	bullet_block_chance = 75
 
+	density = TRUE
+
 /obj/structure/interactive/ore_storage/update_icon()
 
 	if(THINKING(src))

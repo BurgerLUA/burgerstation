@@ -25,6 +25,8 @@ var/global/list/equipped_antags = list()
 
 	pixel_y = 8
 
+	density = TRUE
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()

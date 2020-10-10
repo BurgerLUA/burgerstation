@@ -1,4 +1,4 @@
-obj/structure/interactive/misc/
+obj/structure/interactive/misc/ //TODO: RENAME THIS ENTIRE CATEGORY
 	icon = 'icons/obj/structure/misc.dmi'
 
 obj/structure/interactive/misc/tv
@@ -21,6 +21,8 @@ obj/structure/interactive/misc/dresser
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	bullet_block_chance = 50
+
+	density = TRUE
 
 obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
 

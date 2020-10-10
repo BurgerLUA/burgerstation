@@ -5,6 +5,7 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	density = TRUE
 
 	health_base = 75
 

@@ -51,109 +51,6 @@
 			if(!second_step || !second_step.Enter(src,src.loc))
 				final_move_dir &= ~second_move_dir_to_use
 
-			/*
-			if(first_step != src.loc && )
-				move_check = TRUE
-			else
-				var/old_first_move_dir_to_use = first_move_dir_to_use
-				first_move_dir_to_use = second_move_dir_to_use
-				second_move_dir_to_use = old_first_move_dir_to_use
-				first_step = get_step(src,first_move_dir_to_use)
-				if(first_step != src.loc && src.can_move(src.loc,first_step,final_move_dir))
-					move_check = TRUE
-				else
-					final_move_dir = 0x0
-			if(move_check)
-				var/turf/second_step = get_step(first_step,second_move_dir_to_use)
-				if(second_step != src.loc && !src.can_move(first_step,second_step,final_move_dir))
-					final_move_dir &= ~second_move_dir_to_use
-			*/
-
-		var/similiar_move_dir = FALSE
-		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
-		if(step && Move(step))
-			if(move_dir_last & final_move_dir)
-				similiar_move_dir = TRUE
-			move_dir_last = final_move_dir
-		else
-			move_dir_last = 0x0
-			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
-
-		set_dir(final_move_dir,force=TRUE)
-
-
-		if(acceleration_mod)
-			if(similiar_move_dir)
-				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
-			else
-				acceleration_value *= 0.5
-
-	if(adjust_delay)
-		move_delay = move_delay - adjust_delay
-
-	return FALSE
-
-
-
-/*
-/atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
-
-	if(anchored)
-		return FALSE
-
-	var/final_move_dir = move_dir
-
-	if(!final_move_dir)
-		if(deceleration)
-			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
-		else
-			acceleration_value = 0
-		if(use_momentum && move_dir_last && acceleration_value)
-			final_move_dir = move_dir_last
-	else
-		final_move_dir = sanitize_direction(final_move_dir)
-
-	if(final_move_dir && is_valid_dir(final_move_dir) && move_delay <= 0)
-
-		var/final_movement_delay = get_movement_delay()
-		var/intercardinal = is_intercardinal_dir(final_move_dir)
-
-		if(intercardinal)
-			final_movement_delay *= HYPOTENUSE(1,1)
-
-		if(acceleration_mod > 0)
-			final_movement_delay *= 1 / (acceleration_mod + ((acceleration_value/100)*(1-acceleration_mod)))
-
-		if(isturf(loc))
-			var/turf/T = loc
-			final_movement_delay *= T.delay_modifier
-
-		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
-
-		glide_size = move_delay ? step_size/move_delay : 1
-
-		var/move_check = FALSE
-
-		if(intercardinal)
-			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
-			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
-			var/turf/first_step = get_step(src,first_move_dir_to_use)
-			if(first_step != src.loc && src.can_move(src.loc,first_step,final_move_dir))
-				move_check = TRUE
-			else
-				var/old_first_move_dir_to_use = first_move_dir_to_use
-				first_move_dir_to_use = second_move_dir_to_use
-				second_move_dir_to_use = old_first_move_dir_to_use
-				first_step = get_step(src,first_move_dir_to_use)
-				if(first_step != src.loc && src.can_move(src.loc,first_step,final_move_dir))
-					move_check = TRUE
-				else
-					final_move_dir = 0x0
-			if(move_check)
-				var/turf/second_step = get_step(first_step,second_move_dir_to_use)
-				if(second_step != src.loc && !src.can_move(first_step,second_step,final_move_dir))
-					final_move_dir &= ~second_move_dir_to_use
-
 		var/similiar_move_dir = FALSE
 		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
 		if(step && Move(step,final_move_dir))
@@ -164,6 +61,8 @@
 			move_dir_last = 0x0
 			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
 
+		set_dir(final_move_dir,force=TRUE)
+
 		if(acceleration_mod)
 			if(similiar_move_dir)
 				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
@@ -174,8 +73,6 @@
 		move_delay = move_delay - adjust_delay
 
 	return FALSE
-*/
-
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
@@ -193,8 +90,6 @@
 		post_move(old_loc)
 
 	return FALSE
-
-
 
 /atom/movable/proc/post_move(var/atom/old_loc)
 
@@ -220,120 +115,67 @@
 
 	return FALSE
 
-/*
-/atom/movable/proc/can_move_into(var/atom/A)
 
-	if(!src.loc)
-		log_error("Warning: [src.get_debug_name()] tried calling can_move() in nullspace!")
+
+/atom/movable/Move(var/atom/NewLoc,var/Dir=0x0,var/step_x=0,var/step_y=0)
+
+	var/atom/OldLoc = loc
+
+	if(!NewLoc || NewLoc == OldLoc)
 		return FALSE
 
-	if(!A)
-		//log_error("Warning: [src.get_debug_name()] tried calling can_move() without a destination!")
-		return FALSE
-
-	//TRY: Exit the turf.
-	if(!src.loc.Exit(src,A))
-		return FALSE
-
-	//TRY: Enter the turf.
-	if(!A.Enter(src,src.loc))
-		return FALSE
-
-	//TRY: Exit the contents.
-	for(var/k in src.loc.contents)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.Uncross(src))
-			return FALSE
-
-	//TRY: Enter the contents.
-	for(var/k in A.contents)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.Cross(src))
-			return FALSE
-
-	return TRUE
-*/
-
-
-/*
-/atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
-
-	var/stepped_x = 0
-	var/stepped_y = 0
-
-	if(!loc) //Use forcemove instead
-		return FALSE
-
-	/* No pixel movement
-	//Try Pixel Movement x
-	if(desired_step_x)
-		if(step_x + desired_step_x >= TILE_SIZE)
-			NewLoc = get_step(NewLoc,EAST)
-			stepped_x = TILE_SIZE
-		else if(step_x + desired_step_x < 0)
-			NewLoc = get_step(NewLoc,WEST)
-			stepped_x = -TILE_SIZE
-
-	//Try Pixel Movement y
-	if(desired_step_y)
-		if(step_y + desired_step_y >= TILE_SIZE)
-			NewLoc = get_step(NewLoc,NORTH)
-			stepped_y = TILE_SIZE
-
-		else if(step_y + desired_step_y < 0)
-			NewLoc = get_step(NewLoc,SOUTH)
-			stepped_y = -TILE_SIZE
-	*/
-
-	if(!NewLoc)
-		return FALSE
-
-	if(istype(src.loc,/obj/projectile)) //TODO: GET RID OF THIS SHITCODE.
-		return FALSE
+	//var/move_direction = get_dir(OldLoc,NewLoc)
 
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 
-	var/atom/OldLoc = loc
-
-	var/real_dir = get_dir(OldLoc,NewLoc)
-
-	if(!force && !can_move(OldLoc,NewLoc,real_dir))
+	//Try: Enter the turf.
+	if(!NewLoc.Enter(src,OldLoc))
 		return FALSE
 
-	if(OldLoc != NewLoc)
-		//DO: Exited the turf.
-		OldLoc.Exited(src,NewLoc)
+	//Try: Exit the turf.
+	if(OldLoc && !OldLoc.Exit(src,NewLoc))
+		return FALSE
 
-		//DO: Exited the contents.
-		for(var/k in OldLoc.contents)
-			var/atom/movable/A = k
-			if(A == src)
-				continue
-			A.Uncrossed(src,NewLoc,OldLoc)
+	//Try: Cross the Contents
+	for(var/k in NewLoc.contents)
+		var/atom/movable/M = k
+		if(M.density && !M.Cross(src) && !src.Bump(M))
+			return FALSE
 
-	if(desired_step_x) step_x += desired_step_x - stepped_x
+	//Try: Uncross the Contents
+	for(var/k in OldLoc.contents)
+		var/atom/movable/M = k
+		if(M.density && !M.Uncross(src))
+			return FALSE
 
-	if(desired_step_y) step_y += desired_step_y - stepped_y
+	//Do: Enter the turf.
+	NewLoc.Entered(src,OldLoc)
 
-	if(loc == OldLoc && loc != NewLoc)
+	//Do: Exit the turf.
+	NewLoc.Exited(src,NewLoc)
+
+	if(OldLoc == loc)
 		loc = NewLoc
 
-		//DO: Entered the turf.
-		NewLoc.Entered(src,OldLoc)
+	//Do: Crossed the contents
+	for(var/k in NewLoc.contents)
+		var/atom/movable/M = k
+		if(!M.density)
+			continue
+		M.Crossed(src)
 
-		//DO: Enter the contents.
-		for(var/k in NewLoc.contents)
-			var/atom/movable/A = k
-			if(A == src)
-				continue
-			A.Crossed(src,NewLoc,OldLoc)
+	//Do: Uncrossed the contents
+	for(var/k in OldLoc.contents)
+		var/atom/movable/M = k
+		if(!M.density)
+			continue
+		M.Uncrossed(src)
 
-		post_move(OldLoc)
+	post_move(OldLoc)
 
 	return TRUE
-*/
+
+
+
+

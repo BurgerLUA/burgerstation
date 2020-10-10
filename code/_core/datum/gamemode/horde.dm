@@ -14,7 +14,7 @@
 
 	var/enemies_to_spawn_base = 4
 	var/enemies_to_spawn_per_player = 1
-	var/enemies_to_spawn_per_minute = 0.34
+	var/enemies_to_spawn_per_minute = 0.1
 
 /gamemode/horde/update_objectives()
 
@@ -231,7 +231,6 @@
 
 	return null
 
-
 /gamemode/horde/proc/find_horde_spawn()
 
 	var/picks_remaining = 3
@@ -240,15 +239,14 @@
 		picks_remaining--
 		CHECK_TICK(50,FPS_SERVER*20)
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
-		if(chosen_spawn.z < Z_LEVEL_MISSION) continue
 		var/found_player = FALSE
 		for(var/k in all_players)
 			CHECK_TICK(50,FPS_SERVER*20)
 			var/mob/living/advanced/player/P = k
-			if(P && !P.dead) continue
-			if(get_dist(P,chosen_spawn) <= VIEW_RANGE + ZOOM_RANGE)
-				found_player = TRUE
-				break
+			if(P && P.dead) continue //They're dead. Doesn't matter.
+			if(get_dist(P,chosen_spawn) > VIEW_RANGE + ZOOM_RANGE) continue //They're close, doesn't matter.
+			found_player = TRUE
+			break
 		if(found_player)
 			continue
 		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))

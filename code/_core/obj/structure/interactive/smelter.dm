@@ -11,6 +11,8 @@
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 /obj/structure/interactive/smelter/PostInitialize()
 	. = ..()
 	update_sprite()

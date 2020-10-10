@@ -7,7 +7,7 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //Should always be set to FALSE!
+	density = FALSE //Should always be set to FALSE! Controls if an object should recieve a Cross/Uncross/Crossed/Uncrossed proc calls.
 
 	var/health_base = 1
 	var/mana_base = 1
@@ -263,3 +263,16 @@
 
 /atom/proc/is_busy()
 	return SSprogressbars.all_progress_bars[src] ? TRUE : FALSE
+
+
+/atom/Enter(atom/movable/O,atom/oldloc) //Override default
+	return TRUE
+
+/atom/Exit(atom/movable/O,atom/oldloc) //Override default
+	return TRUE
+
+/atom/Cross(atom/movable/O) //Override default
+	return TRUE
+
+/atom/Crossed(atom/movable/O) //Override default
+	return TRUE

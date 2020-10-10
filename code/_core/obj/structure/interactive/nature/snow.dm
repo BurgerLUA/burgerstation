@@ -53,6 +53,7 @@ obj/structure/scenery/snow_bush/New()
 	health = /health/construction/
 	health_base = 250
 	mouse_opacity = 1
+	density = TRUE
 
 /obj/structure/interactive/tree/can_be_attacked()
 	return TRUE

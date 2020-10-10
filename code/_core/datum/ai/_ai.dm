@@ -472,22 +472,6 @@
 
 	return FALSE
 
-/*
-/ai/proc/handle_movement_grabbed()
-
-	if(owner.grabbing_hand)
-		grab_time++
-	else
-		grab_time = 0
-
-	if(owner.grabbing_hand && grab_time >= grab_time_max)
-		var/turf/T = get_turf(owner.grabbing_hand)
-		owner.move_dir = get_dir(T,owner)
-		return TRUE
-
-	return FALSE
-*/
-
 /ai/proc/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_NORMAL
 	owner.move_dir = 0x0

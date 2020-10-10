@@ -14,6 +14,8 @@
 
 	var/list/atom/movable/tracked_movables = list()
 
+	density = TRUE
+
 /obj/structure/interactive/diverter/Initialize()
 
 	if(.)

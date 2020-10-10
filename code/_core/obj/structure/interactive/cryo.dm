@@ -12,6 +12,8 @@ obj/structure/interactive/cryopod
 
 	bullet_block_chance = 90
 
+
+
 obj/structure/interactive/cryopod/occupied
 	icon_state = "cell_occupied"
 

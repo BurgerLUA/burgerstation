@@ -17,6 +17,8 @@
 
 	health_base = 1000
 
+	density = TRUE
+
 /obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
 	. = ..()
@@ -120,6 +122,8 @@
 	health = /health/construction
 
 	health_base = 500
+
+	density = TRUE
 
 /obj/structure/interactive/mining_brace/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)

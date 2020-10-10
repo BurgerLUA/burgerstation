@@ -12,7 +12,6 @@
 	. = ..()
 
 	if(.)
-
 		//Right hand
 		if(right_hand && right_hand.grabbed_object)
 			var/distance = get_dist(src,right_hand.grabbed_object)

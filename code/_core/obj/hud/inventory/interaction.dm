@@ -129,7 +129,7 @@
 					if(is_inventory(defer_self)) //We have nothing to add to it, so we should open it instead.
 						I.click_self(caller)
 						return TRUE
-				if(!I2.click_flags && !I2.drag_to_take && is_item(defer_object))
+				if(!I2.click_flags && !I2.drag_to_take && is_item(defer_object) && !is_item(defer_self))
 					src.add_object(defer_object)
 					return TRUE
 				if(I2.worn_slots && is_item(defer_self) && !I.is_container)

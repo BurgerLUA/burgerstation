@@ -7,6 +7,8 @@ obj/structure/interactive/chair
 
 	bullet_block_chance = 25
 
+	density = TRUE
+
 obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()

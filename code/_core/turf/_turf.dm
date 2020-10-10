@@ -136,16 +136,12 @@
 
 	if(enterer.collision_flags & src.collision_flags)
 		var/enter_direction = get_dir(oldloc,src)
-
 		if((enter_direction & NORTH) && density_north)
 			return FALSE
-
 		if((enter_direction & EAST) && density_east)
 			return FALSE
-
 		if((enter_direction & SOUTH) && density_south)
 			return FALSE
-
 		if((enter_direction & WEST) && density_west)
 			return FALSE
 

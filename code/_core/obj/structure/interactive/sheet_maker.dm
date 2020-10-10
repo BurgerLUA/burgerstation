@@ -8,6 +8,8 @@ obj/structure/interactive/sheet_maker
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 obj/structure/interactive/sheet_maker/PostInitialize()
 	. = ..()
 	update_sprite()
@@ -19,8 +21,9 @@ obj/structure/interactive/sheet_maker/update_icon()
 	return .
 
 obj/structure/interactive/sheet_maker/Cross(atom/movable/O)
-	make_sheet(O)
-	return TRUE
+	if(make_sheet(O))
+		return FALSE
+	return ..()
 
 obj/structure/interactive/sheet_maker/proc/make_sheet(var/atom/movable/O)
 

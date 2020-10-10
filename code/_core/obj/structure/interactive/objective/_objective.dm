@@ -5,6 +5,7 @@ obj/structure/interactive/artifact
 
 	anchored = FALSE
 	collision_flags = FLAG_COLLISION_WALL
+	density = TRUE
 
 	value = 1000
 

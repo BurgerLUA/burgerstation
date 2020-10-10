@@ -13,6 +13,8 @@
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 /obj/structure/interactive/recycler/New(var/desired_loc)
 
 	var/image/I1b = new/image(icon,"grinder_bottom")

@@ -39,6 +39,10 @@
 		CRASH_SAFE("Tried attacking without a victim!")
 		return FALSE
 
+	var/atom/changed_target = victim.change_victim(attacker)
+	if(changed_target)
+		victim = changed_target
+
 	if(!precise && is_living(victim))
 		var/mob/living/L = victim
 		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)

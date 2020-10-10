@@ -7,6 +7,7 @@
 	plane = PLANE_MOB
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	density = TRUE
 
 	collision_dir = 0x0
 

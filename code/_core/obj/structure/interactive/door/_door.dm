@@ -40,6 +40,8 @@ obj/structure/interactive/door
 
 	plane = PLANE_WALL
 
+	density = TRUE
+
 /obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)

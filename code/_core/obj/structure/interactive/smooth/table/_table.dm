@@ -19,6 +19,8 @@
 
 	var/table_height = 8
 
+	density = TRUE
+
 /obj/structure/smooth/table/PostInitialize()
 
 	var/turf/T = get_turf(src)

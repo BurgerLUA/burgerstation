@@ -1,10 +1,12 @@
-obj/structure/shuttle_engine
+obj/structure/shuttle_engine //TODO: RENAME THIS
 	name = "engine"
 	icon = 'icons/obj/structure/shuttle.dmi'
 	icon_state = "router"
 	plane = PLANE_SHUTTLE
 
 	collision_flags = FLAG_COLLISION_WALL
+
+	density = TRUE
 
 obj/structure/shuttle_engine/heater
 	name = "engine heater"

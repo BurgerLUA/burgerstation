@@ -9,6 +9,8 @@
 
 	bullet_block_chance = 25
 
+	density = TRUE
+
 /obj/structure/interactive/plastic_flaps/Cross(atom/movable/O)
 
 	if(is_living(O))

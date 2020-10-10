@@ -13,6 +13,8 @@
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 /obj/structure/interactive/disposals/machine/chute/think()
 
 	if(disposals_countdown <= 0)

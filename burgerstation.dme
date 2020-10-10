@@ -1330,7 +1330,6 @@
 #include "code\_core\obj\structure\interactive\blocker.dm"
 #include "code\_core\obj\structure\interactive\chair.dm"
 #include "code\_core\obj\structure\interactive\conveyor.dm"
-#include "code\_core\obj\structure\interactive\cryo.dm"
 #include "code\_core\obj\structure\interactive\diverter.dm"
 #include "code\_core\obj\structure\interactive\fakedoor.dm"
 #include "code\_core\obj\structure\interactive\fax_machine.dm"

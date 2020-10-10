@@ -6,6 +6,8 @@ obj/structure/interactive/computer
 	var/on = TRUE
 	plane = PLANE_OBJ
 
+	density = TRUE
+
 obj/structure/interactive/computer/console
 	name = "computer console"
 	var/computer_type = "generic"

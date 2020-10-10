@@ -5,6 +5,8 @@
 	icon = 'icons/obj/structure/scanner.dmi'
 	icon_state = "pad"
 
+	density = TRUE
+
 /obj/structure/interactive/scanner/iff
 	name = "\improper IFF body scanner"
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."

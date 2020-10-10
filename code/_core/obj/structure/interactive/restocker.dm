@@ -7,6 +7,8 @@
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 /obj/structure/interactive/restocker/Crossed(atom/movable/O)
 	store(O)
 	return ..()

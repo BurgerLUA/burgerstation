@@ -9,6 +9,8 @@
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 /obj/structure/interactive/stacker/Crossed(atom/movable/O)
 	stack(O)
 	return ..()
