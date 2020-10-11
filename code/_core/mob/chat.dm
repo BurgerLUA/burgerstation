@@ -47,12 +47,6 @@ var/regex/vowels = new("\[aeiou\]", "i")
 
 	return ..(text)
 
-/mob/living/advanced/mod_speech(var/text)
-	var/species/S = all_species[species]
-	if(!S)
-		return text
-	return ..(S.mod_speech(src,text))
-
 /mob/proc/to_chat(var/text,var/chat_type = CHAT_TYPE_INFO)
 
 	if(client)

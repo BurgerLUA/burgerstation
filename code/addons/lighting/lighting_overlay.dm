@@ -3,7 +3,7 @@
 	anchored      = TRUE
 	icon          = LIGHTING_ICON
 	icon_state    = LIGHTING_BASE_ICON_STATE
-	color         = LIGHTING_BASE_MATRIX
+	color         = null
 	mouse_opacity = 0
 	layer         = LAYER_LIGHTING
 	plane         = PLANE_LIGHTING
@@ -26,6 +26,10 @@
 
 	needs_update = TRUE
 	SSlighting.overlay_queue += src
+
+	color = LIGHTING_BASE_MATRIX
+
+	return ..()
 
 /atom/movable/lighting_overlay/Destroy()
 

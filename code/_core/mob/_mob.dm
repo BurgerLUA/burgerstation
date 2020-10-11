@@ -156,7 +156,7 @@
 		plane_master_scenery = new(src)
 	C.screen += plane_master_scenery
 
-	/* TODO: Find out why this make lighting invisible.
+	/* TODO: Find out why this would cause objects to be invisible.
 	if(!plane_master_lighting)
 		plane_master_lighting = new(src)
 	C.screen += plane_master_lighting

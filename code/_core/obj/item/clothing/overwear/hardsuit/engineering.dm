@@ -17,7 +17,7 @@
 		BOMB = 25,
 		BIO = 50,
 		RAD = 75,
-		FATIGUE = INFINITY
+		FATIGUE = 50
 	)
 
 	size = SIZE_7

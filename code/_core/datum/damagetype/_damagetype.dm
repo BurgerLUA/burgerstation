@@ -56,9 +56,9 @@
 	)
 
 	var/list/damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
-		BLADE = 0.15,
-		BLUNT = 0.25,
-		PIERCE = 0.1,
+		BLADE = 0.10,
+		BLUNT = 0.15,
+		PIERCE = 0.05,
 		BOMB = 0.5
 	)
 

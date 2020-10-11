@@ -1,8 +1,9 @@
 /obj/plane_master/
 	name = "plane master"
 	plane = 0
-	screen_loc = "1,1"
+	screen_loc = "CENTER" //Stolen from /tg/
 	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE
+	blend_mode = BLEND_OVERLAY
 
 /*
 /obj/plane_master/render_target
@@ -74,8 +75,11 @@
 
 //Lighting
 /obj/plane_master/lighting
+	name = "plane master"
 	plane = PLANE_LIGHTING
-	mouse_opacity = 0
+	//screen_loc = "1,1"
+	blend_mode = BLEND_MULTIPLY
+
 
 /obj/plane_master/lighting/New(var/desired_loc)
 	. = ..()

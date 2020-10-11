@@ -597,6 +597,7 @@
 #include "code\_core\mob\abstract\observer\menu.dm"
 #include "code\_core\mob\abstract\observer\movement.dm"
 #include "code\_core\mob\abstract\observer\verbs\_verbs.dm"
+#include "code\_core\mob\abstract\observer\verbs\game.dm"
 #include "code\_core\mob\abstract\observer\verbs\menu.dm"
 #include "code\_core\mob\living\_living.dm"
 #include "code\_core\mob\living\chat.dm"

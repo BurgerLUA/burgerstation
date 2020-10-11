@@ -22,7 +22,8 @@
 		COLD = 100,
 		BOMB = 25,
 		BIO = 25,
-		RAD = 75
+		RAD = 75,
+		FATIGUE = 50
 	)
 
 	size = SIZE_2

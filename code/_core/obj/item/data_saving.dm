@@ -32,8 +32,8 @@
 		var/desired_color = value_or_null(blend_list,"color")
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
-		var/desired_layer = value_or_null(blend_list,"layer")
-		src.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
+		//var/desired_layer = value_or_null(blend_list,"layer")
+		src.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE)
 
 	return TRUE
 

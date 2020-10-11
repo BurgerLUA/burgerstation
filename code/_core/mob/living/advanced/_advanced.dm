@@ -469,3 +469,9 @@ mob/living/advanced/Login()
 		return TRUE
 
 	return FALSE
+
+/mob/living/advanced/mod_speech(var/text)
+	var/species/S = all_species[species]
+	if(!S)
+		return text
+	return ..(S.mod_speech(src,text))

@@ -110,7 +110,6 @@
 
 /atom/set_dir(var/desired_dir,var/force = FALSE)
 
-
 	. = ..()
 
 	var/light_source/L
