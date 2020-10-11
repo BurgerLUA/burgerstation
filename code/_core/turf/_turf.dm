@@ -134,7 +134,7 @@
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
-	if(enterer.collision_flags & src.collision_flags)
+	if(density && (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags))
 		var/enter_direction = get_dir(oldloc,src)
 		if((enter_direction & NORTH) && density_north)
 			return FALSE

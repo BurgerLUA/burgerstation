@@ -13,7 +13,7 @@
 
 	ai = /ai/cultist
 
-	stun_angle = 90
+	stun_angle = 0
 
 	damage_type = /damagetype/melee/sword/claymore/cult
 

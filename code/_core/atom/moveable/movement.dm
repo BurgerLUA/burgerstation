@@ -91,13 +91,21 @@
 
 	var/atom/old_loc = loc
 
-	if(old_loc)
-		old_loc.Exited(src, new_loc)
+	if(loc)
+		loc.Exited(src, new_loc)
+		if(loc)
+			for(var/k in old_loc.contents)
+				var/atom/movable/M = k
+				M.Uncrossed(src)
 
 	loc = new_loc
 
 	if(loc)
 		loc.Entered(src, old_loc)
+		if(loc)
+			for(var/k in loc.contents)
+				var/atom/movable/M = k
+				M.Crossed(src)
 
 	if(old_loc != loc)
 		post_move(old_loc)
@@ -152,12 +160,14 @@
 
 	//Try: Cross the Contents
 	for(var/k in NewLoc.contents)
+		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
 		if(M.density && !M.Cross(src) && !src.Bump(M))
 			return FALSE
 
 	//Try: Uncross the Contents
 	for(var/k in OldLoc.contents)
+		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
 		if(M.density && !M.Uncross(src))
 			return FALSE
@@ -173,6 +183,7 @@
 
 	//Do: Crossed the contents
 	for(var/k in NewLoc.contents)
+		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
 		if(!M.density)
 			continue
@@ -180,6 +191,7 @@
 
 	//Do: Uncrossed the contents
 	for(var/k in OldLoc.contents)
+		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
 		if(!M.density)
 			continue

@@ -47,7 +47,7 @@
 			'sound/effects/water_wade4.ogg'
 		)
 		play(pick(valid_sounds),object)
-		src.reagents.splash(caller,object,5,silent=TRUE,1)
+		src.reagents.splash(caller,object,5,TRUE,1)
 		return TRUE
 
 	return ..()

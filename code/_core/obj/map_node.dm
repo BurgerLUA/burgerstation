@@ -13,6 +13,7 @@ var/global/mob/abstract/node_checker
 	alpha        = 0
 	opacity      = 0
 	see_in_dark  = 1e6 // Literally arbitrary.
+	density = 1
 
 
 /mob/abstract/node_checker/New(var/desired_loc)

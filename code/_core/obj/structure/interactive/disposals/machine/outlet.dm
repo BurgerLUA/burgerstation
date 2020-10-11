@@ -45,7 +45,7 @@
 			else
 				diff_x = throw_offset[1]
 				diff_y = throw_offset[2]
-
+			M.force_move(get_step(src,dir))
 			var/obj/projectile/bullet/thrown/P = M.throw_self(src,null,null,null,diff_x*throw_velocity,diff_y*throw_velocity)
 			P.steps_allowed = rand(throw_range_min,throw_range_max)
 

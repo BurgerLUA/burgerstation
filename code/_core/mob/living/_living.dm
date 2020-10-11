@@ -211,6 +211,8 @@
 	var/tabled = FALSE
 	var/currently_tabled = FALSE
 
+	density = 1
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	visible_message(span("danger","\The [src] is violently crushed!"))

@@ -52,6 +52,7 @@
 
 	if(desired_color) color = desired_color
 
+	/*
 	var/matrix/T = matrix()
 	transform = turn(T,pick(0,90,180,270))
 	if(animate_position)
@@ -68,6 +69,7 @@
 	else
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
+	*/
 
 	update_blood_level(null,src.loc)
 

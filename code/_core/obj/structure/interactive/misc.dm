@@ -69,6 +69,8 @@ obj/structure/interactive/misc/mirror
 	icon_state = "mirror"
 	plane = PLANE_OBJ
 
+	density = TRUE
+
 
 obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O)
 	if(is_player(O))

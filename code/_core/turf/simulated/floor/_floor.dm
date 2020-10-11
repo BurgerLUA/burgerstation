@@ -10,6 +10,8 @@
 
 	plane = PLANE_FLOOR
 
+	density = FALSE
+
 /turf/simulated/floor/is_safe_teleport()
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE

@@ -12,6 +12,8 @@
 
 	var/sprite_update_delay = 20 //Decisecond interval used in sprite updating.
 
+	density = TRUE
+
 /obj/item/cell_charger/get_battery()
 	return battery
 

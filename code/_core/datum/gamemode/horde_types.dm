@@ -75,9 +75,9 @@
 	)
 	hidden = FALSE
 
-	enemies_to_spawn_base = 4
+	enemies_to_spawn_base = 3
 	enemies_to_spawn_per_player = 0.25
-	enemies_to_spawn_per_minute = 0.1
+	enemies_to_spawn_per_minute = 0.05
 
 /gamemode/horde/ashwalkers
 	name = "Horde Mode (Ashwalkers)"
