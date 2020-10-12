@@ -60,6 +60,9 @@
 		verbs += /client/verb/set_skill
 		verbs += /client/verb/set_attribute
 		verbs += /client/verb/force_random_event
-
+		verbs += /client/verb/var_edit
+		verbs += /client/verb/change_variable
+		verbs += /client/verb/spawn_from_path
+		verbs += /client/verb/add_new_wikibot_entry
 
 	return TRUE

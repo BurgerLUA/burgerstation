@@ -25,7 +25,7 @@
 	src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",final_text)]</body>","window=help")
 
 client/verb/air_test(var/pressure as num)
-	set name = "Air Test"
+	set name = "Air Test (DANGER)"
 	set category = "Debug"
 
 	if(mob)
@@ -159,19 +159,6 @@ client/verb/air_test(var/pressure as num)
 		FINALIZE(S_NPC)
 		S_NPC.ai.set_active(TRUE)
 
-
-/client/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
-	set category = "Debug"
-	set name = "Add New Wikibot Entry"
-
-	if(!wikibot_question || !wikibot_answer)
-		return FALSE
-
-	var/list/new_question_keys = splittext(wikibot_question," ")
-
-	if(SSwikibot)
-		SSwikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
-
 /*
 /client/verb/print_garbage()
 
@@ -192,91 +179,6 @@ client/verb/air_test(var/pressure as num)
 
 	usr << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
 */
-
-
-/client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
-	set name = "Spawn Object"
-	set desc = "Spawn an object."
-	set category = "Debug"
-
-	if(!object)
-		return FALSE
-
-	if(object[1] != "/")
-		object = "/" + object
-
-	var/last_checker = copytext(object,-1,0)
-	if(last_checker == "/")
-		object = copytext(object,1,-1)
-
-	var/valid_path = text2path(object)
-
-	if(!valid_path)
-		usr.to_chat("\"[object]\" isn't a valid path.")
-		return FALSE
-
-	var/list/valid_objects = typesof(valid_path)
-
-	var/valid_count = length(valid_objects)
-
-	if(!valid_count)
-		usr.to_chat("\"[object]\" returned no valid types.")
-		return FALSE
-
-	if(valid_count == 1)
-		var/datum/A = valid_objects[1]
-		A = new A(usr.loc)
-		INITIALIZE(A)
-		GENERATE(A)
-		FINALIZE(A)
-		return TRUE
-
-	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
-
-	if(selection)
-		var/datum/A = selection
-		A = new A(usr.loc)
-		INITIALIZE(A)
-		FINALIZE(A)
-		if(isobj(A))
-			var/obj/O = A
-			GENERATE(O)
-		return TRUE
-
-/client/verb/change_variable(var/datum/object as anything in view(), var/desired_varable_key as text, var/desired_varable_value as anything)
-	set name = "Change Variable"
-	set category = "Admin"
-
-	if(desired_varable_value && istext(desired_varable_value))
-		desired_varable_value = sanitize(desired_varable_value)
-
-	if(object && is_datum(object) && desired_varable_key && desired_varable_value)
-		object.vars[desired_varable_key] = desired_varable_value
-
-
-/client/verb/var_edit(var/object as anything in view())
-	set name = "Variable Edit"
-	set category = "Admin"
-
-	if(!object)
-		return FALSE
-
-	if(is_datum(object))
-
-		var/datum/D = object
-
-		var/returning_text = "<br><center>[object]</center>"
-
-		for(var/k in D.vars)
-
-			if(k == "vars" || k == "verbs")
-				continue
-
-			var/v = D.vars[k]
-			var/line_text = "[k] = [get_value_text_for_debug(D,k,v)]"
-			returning_text += "[line_text]<br>"
-
-		src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",returning_text)]</body>","window=help")
 
 /client/verb/subsystem_report()
 	set name = "Subsystem Report"
@@ -397,10 +299,6 @@ client/verb/air_test(var/pressure as num)
 var/global/list/debug_verbs = list(
 	/client/verb/print_cleaning_log,
 	/client/verb/air_test,
-	/client/verb/var_edit,
-	/client/verb/change_variable,
-	/client/verb/spawn_from_path,
-	/client/verb/add_new_wikibot_entry,
 	/client/verb/make_war,
 	/client/verb/generate_map_icon,
 	/client/verb/stealth_test,
@@ -423,8 +321,8 @@ var/global/list/debug_verbs = list(
 	set category = "Game"
 	for(var/k in debug_verbs)
 		verbs += debug_verbs
+	verbs -= /client/verb/show_debug_verbs
 	verbs += /client/verb/hide_debug_verbs
-
 
 /client/verb/hide_debug_verbs()
 	set name = "Hide Debug Verbs"
@@ -432,3 +330,4 @@ var/global/list/debug_verbs = list(
 	for(var/k in debug_verbs)
 		verbs -= debug_verbs
 	verbs += /client/verb/show_debug_verbs
+	verbs -= /client/verb/hide_debug_verbs
