@@ -37,7 +37,7 @@
 
 	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."))
 
-	log_rename("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
+	log_admin("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
 
 	I.name = desired_name
 

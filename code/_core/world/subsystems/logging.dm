@@ -7,10 +7,13 @@ SUBSYSTEM_DEF(logging)
 	desc = "Logs things that are important."
 	tick_rate = DECISECONDS_TO_TICKS(LOG_RATE)
 	priority = SS_ORDER_LOGGING
-	var/list/buffered_log_chat = list()
-	var/list/buffered_log_admin = list() //TODO
 	var/round_id = 0
 	var/start_date = ""
+
+	var/list/buffered_log_chat = list()
+	var/list/buffered_log_admin = list()
+	var/list/buffered_log_error = list()
+	var/list/buffered_log_debug = list()
 
 /subsystem/logging/Initialize()
 	if(fexists(ROUND_ID_DIR))
@@ -32,11 +35,23 @@ SUBSYSTEM_DEF(logging)
 /subsystem/logging/proc/get_logging_dir(var/type)
 	return "data/server/logging/[round_id]-[start_date]/[type].txt"
 
+/subsystem/logging/proc/log_from_list(var/identifier,var/list/desired_list)
+	if(length(desired_list))
+		var/log_string = english_list(desired_list,"LIST ERROR","\n","\n")
+		rustg_log_write(get_logging_dir("identifier"),log_string,"true")
+		desired_list.Cut()
+		return TRUE
+	return FALSE
+
 /subsystem/logging/on_life()
 
-	if(length(buffered_log_chat))
-		var/chat_log_string = english_list(buffered_log_chat,"ERROR.","\n","\n")
-		rustg_log_write(get_logging_dir("chat"),chat_log_string,"true")
-		buffered_log_chat.Cut()
+	log_from_list("chat",buffered_log_chat)
+	log_from_list("admin",buffered_log_admin)
+	log_from_list("error",buffered_log_error)
+	log_from_list("debug",buffered_log_debug)
+
+
+
+
 
 	return TRUE

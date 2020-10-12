@@ -11,3 +11,6 @@
 			continue
 		new/obj/effect/explosion_particle(T)
 		T.act_explode(desired_owner,desired_source,desired_turf,0.5 + ((1 + desired_range) - distance)*0.5,desired_loyalty)
+
+
+/proc/smoke(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty,var/reagents/desired_reagents)

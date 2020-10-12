@@ -2,37 +2,50 @@
 #define RENAME_DIR "data/server/rename_log.txt"
 
 
-/proc/log_error(var/log_text)
-	world.log << "<span class='error'>[log_text]</span>"
-	rustg_log_write(ERROR_DIR,log_text,"true")
-
-/proc/log_rename(var/log_text)
-	rustg_log_write(RENAME_DIR,log_text,"true")
-
-/proc/log_subsystem(var/subsystem_id,var/log_text)
-	world.log << "<span class='subsystem'><b><u>[subsystem_id]:</u></b> [log_text]</span>"
-
-/proc/log_unit_test(var/subsystem_id,var/log_text)
-	world.log << "<span class='unittest'><b><u>[subsystem_id]:</u></b> [log_text]</span>"
-
 /proc/print_list(var/list_name,var/list/L)
-	LOG_DEBUG("Printing list '[list_name]' of length [length(L)]:")
+	log_debug("Printing list '[list_name]' of length [length(L)]:")
 	for(var/i=1,i<=length(L),i++)
-		LOG_DEBUG("[i]: [L[i]]")
+		log_debug("[i]: [L[i]]")
 
 /proc/print_assoc_list(var/list_name,var/list/L)
-	LOG_DEBUG("Printing list '[list_name]' of length [length(L)]:")
+	log_debug("Printing list '[list_name]' of length [length(L)]:")
 	var/i=1
 	for(var/k in L)
 		var/v = L[k]
 		if(v != null)
-			LOG_DEBUG("[k]: [v]")
+			log_debug("[k]: [v]")
 		else
-			LOG_DEBUG("[i]: [k]")
+			log_debug("[i]: [k]")
 		i++
 
 /proc/print_list_dir(var/list_name,var/list/L)
-	LOG_DEBUG("Printing direction list '[list_name]' of length [length(L)]:")
+	log_debug("Printing direction list '[list_name]' of length [length(L)]:")
 	for(var/k in L)
 		var/v = L[k]
-		LOG_DEBUG("[dir2text(text2num(k))]: [v]")
+		log_debug("[dir2text(text2num(k))]: [v]")
+
+
+//Completed
+/proc/log_subsystem(var/log_text)
+	world_log("<span class='debug'>[log_text]</span>")
+	SSlogging.buffered_log_debug += log_text
+	SSlogging.buffered_log_admin += log_text
+
+/proc/log_error(var/log_text)
+	world_log("<span class='error'>[log_text]</span>")
+	SSlogging.buffered_log_error += log_text
+
+/proc/log_debug(var/log_text)
+	world_log("<span class='debug'>[log_text]</span>")
+	SSlogging.buffered_log_debug += log_text
+
+/proc/log_admin(var/log_text)
+	world_log("<span class='admin'>[log_text]</span>")
+	SSlogging.buffered_log_admin += log_text
+
+/proc/log_chat(var/log_text)
+	SSlogging.buffered_log_chat += log_text
+
+
+/proc/world_log(var/log_text)
+	world.log << log_text

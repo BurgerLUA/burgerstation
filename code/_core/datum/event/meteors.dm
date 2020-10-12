@@ -25,7 +25,7 @@
 			continue
 		valid_areas += A
 
-	LOG_DEBUG("Found [length(valid_turfs)] valid turfs for meteors event.")
+	log_debug("Found [length(valid_turfs)] valid turfs for meteors event.")
 
 	return ..()
 
@@ -33,7 +33,7 @@
 
 	valid_turfs.Cut()
 
-	LOG_DEBUG("Starting Meteor Event")
+	log_debug("Starting Meteor Event")
 
 	var/list/announce_areas = list()
 
@@ -68,5 +68,5 @@
 	return ..()
 
 /event/meteors/on_end()
-	LOG_DEBUG("Ending Meteor Event")
+	log_debug("Ending Meteor Event")
 	return ..()

@@ -134,11 +134,11 @@
 	. = ..()
 
 	if(object_data["blend_data"])
-		LOG_DEBUG("Blend data for [src.type]:")
+		log_debug("Blend data for [src.type]:")
 		debug_list(object_data["blend_data"])
 		set_blend_data(object_data["blend_data"])
 	else
-		LOG_DEBUG("No blend data found for: [src.type].")
+		log_debug("No blend data found for: [src.type].")
 
 	return .
 

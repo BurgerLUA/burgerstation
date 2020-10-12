@@ -12,7 +12,7 @@ var/global/price_multiplier = 1
 /event/economy_dump/on_start()
 
 
-	LOG_DEBUG("Starting Economy Dump Event")
+	log_debug("Starting Economy Dump Event")
 
 	price_increase = rand(10,50)
 
@@ -28,5 +28,5 @@ var/global/price_multiplier = 1
 	return ..()
 
 /event/economy_dump/on_end()
-	LOG_DEBUG("Ending Economy Dump Event")
+	log_debug("Ending Economy Dump Event")
 	return ..()

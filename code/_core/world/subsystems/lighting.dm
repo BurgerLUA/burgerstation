@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(lighting)
 
 	if(ENABLE_LIGHTING)
 
-		LOG_DEBUG("Initializing lighting... this may take a while...")
+		log_debug("Initializing lighting... this may take a while...")
 
 		var/overlay_count = 0
 

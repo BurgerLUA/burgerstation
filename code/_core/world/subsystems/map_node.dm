@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(map_node)
 
 	if(ENABLE_AI)
 
-		LOG_SERVER("Node graph out of date. Rebuilding...")
+		log_subsystem("Node graph out of date. Rebuilding...")
 
 		new /mob/abstract/node_checker(locate(1,1,1))
 

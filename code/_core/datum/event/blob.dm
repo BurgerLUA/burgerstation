@@ -24,7 +24,7 @@
 			continue
 		valid_areas += A
 
-	LOG_DEBUG("Found [length(valid_turfs)] valid turfs for blob event.")
+	log_debug("Found [length(valid_turfs)] valid turfs for blob event.")
 
 	return ..()
 
@@ -32,7 +32,7 @@
 
 	valid_turfs.Cut()
 
-	LOG_DEBUG("Starting Blob Event")
+	log_debug("Starting Blob Event")
 
 	var/area/A
 
@@ -67,5 +67,5 @@
 	return ..()
 
 /event/blob/on_end()
-	LOG_DEBUG("Ending Blob Event")
+	log_debug("Ending Blob Event")
 	return ..()

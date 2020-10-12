@@ -195,7 +195,7 @@ client/verb/air_test(var/pressure as num)
 
 
 /client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
-	set name = "Spawn"
+	set name = "Spawn Object"
 	set desc = "Spawn an object."
 	set category = "Debug"
 
@@ -244,9 +244,8 @@ client/verb/air_test(var/pressure as num)
 		return TRUE
 
 /client/verb/change_variable(var/datum/object as anything in view(), var/desired_varable_key as text, var/desired_varable_value as anything)
-
 	set name = "Change Variable"
-	set category = "Debug"
+	set category = "Admin"
 
 	if(desired_varable_value && istext(desired_varable_value))
 		desired_varable_value = sanitize(desired_varable_value)
@@ -257,7 +256,7 @@ client/verb/air_test(var/pressure as num)
 
 /client/verb/var_edit(var/object as anything in view())
 	set name = "Variable Edit"
-	set category = "Debug"
+	set category = "Admin"
 
 	if(!object)
 		return FALSE
@@ -381,3 +380,55 @@ client/verb/air_test(var/pressure as num)
 
 	if(XQ)
 		XQ.screech(TRUE)
+
+/*	This was dumb
+/client/verb/print_forcemove_table()
+	set name = "Forcemove Table (DANGER)"
+	set category = "Debug"
+
+	sortTim(force_move_calls_per_type,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	for(var/k in force_move_calls_per_type)
+		var/v = force_move_calls_per_type[k]
+		src.to_chat("[k]: [v]")
+*/
+
+
+var/global/list/debug_verbs = list(
+	/client/verb/print_cleaning_log,
+	/client/verb/air_test,
+	/client/verb/var_edit,
+	/client/verb/change_variable,
+	/client/verb/spawn_from_path,
+	/client/verb/add_new_wikibot_entry,
+	/client/verb/make_war,
+	/client/verb/generate_map_icon,
+	/client/verb/stealth_test,
+	/client/verb/test_round_end,
+	/client/verb/check_lights,
+	/client/verb/subsystem_report,
+	/client/verb/reload_badwords,
+	/client/verb/force_save_all,
+	/client/verb/rejuvenate_player,
+	/client/verb/stress_test,
+	/client/verb/print_dps,
+	/client/verb/force_screech,
+	/client/verb/rtv,
+	/client/verb/create_vote
+)
+
+
+/client/verb/show_debug_verbs()
+	set name = "Show Debug Verbs"
+	set category = "Game"
+	for(var/k in debug_verbs)
+		verbs += debug_verbs
+	verbs += /client/verb/hide_debug_verbs
+
+
+/client/verb/hide_debug_verbs()
+	set name = "Hide Debug Verbs"
+	set category = "Game"
+	for(var/k in debug_verbs)
+		verbs -= debug_verbs
+	verbs += /client/verb/show_debug_verbs

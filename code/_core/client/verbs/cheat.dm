@@ -78,11 +78,11 @@
 	SSgamemode.active_gamemode.round_time = 1000000
 
 
-/client/verb/rejuvenate_player(var/dosh_amount as num)
+/client/verb/rejuvenate_player()
 	set name = "Rejuvenate Player"
 	set category = "Cheat"
 
-	var/mob/living/advanced/player/P = input("Who do you want to rejuvenate?") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to rejuvenate?","Player Rejuvenation") in all_players as mob|null
 
 	if(!P)
 		return FALSE

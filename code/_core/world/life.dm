@@ -2,7 +2,7 @@ var/global/time_dialation = 0
 
 /world/proc/life()
 
-	LOG_SERVER("STARTING WORLD.")
+	log_subsystem("STARTING WORLD.")
 
 	world_state = STATE_INITIALIZING
 
@@ -33,7 +33,7 @@ var/global/time_dialation = 0
 
 	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds.")
 
-	//LOG_DEBUG("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
+	//log_debug("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
 
 	//SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
 

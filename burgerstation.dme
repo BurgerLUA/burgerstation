@@ -35,7 +35,6 @@
 #include "code\__defines\config.dm"
 #include "code\__defines\crash.dm"
 #include "code\__defines\damage.dm"
-#include "code\__defines\debug.dm"
 #include "code\__defines\directions.dm"
 #include "code\__defines\end_states.dm"
 #include "code\__defines\enviroment.dm"

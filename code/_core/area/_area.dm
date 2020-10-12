@@ -99,7 +99,7 @@ var/global/list/all_areas = list()
 		for(var/turf/T in contents)
 			if(setup_sunlight(T))
 				light_count++
-		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
+		log_debug("Initialized Area \"[name]\" with [light_count] sun lights.")
 
 	if(weather)
 		icon = 'icons/area/weather.dmi'

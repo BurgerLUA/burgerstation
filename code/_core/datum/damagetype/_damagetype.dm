@@ -165,27 +165,27 @@
 		if(!islist(attribute_damage[attribute]))
 			var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01
 			new_attack_damage[attribute_damage[attribute]] += attack_damage
-			if(debug) LOG_DEBUG("Getting [attack_damage] [attribute_damage[attribute]] damage from [attribute].")
+			if(debug) log_debug("Getting [attack_damage] [attribute_damage[attribute]] damage from [attribute].")
 		else
 			for(var/damage_type in attribute_damage[attribute])
 				var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01 * (1/length(attribute_damage[attribute]))
 				new_attack_damage[damage_type] += attack_damage
-				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [attribute].")
+				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [attribute].")
 
 	for(var/skill in skill_stats)
 		if(!islist(skill_damage[skill]))
 			var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01
 			new_attack_damage[skill_damage[skill]] += attack_damage
-			if(debug) LOG_DEBUG("Getting [attack_damage] [skill_damage[skill]] damage from [skill].")
+			if(debug) log_debug("Getting [attack_damage] [skill_damage[skill]] damage from [skill].")
 		else
 			for(var/damage_type in skill_damage[skill])
 				var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01 * (1/length(skill_damage[skill]))
 				new_attack_damage[damage_type] += attack_damage
-				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [skill].")
+				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
 	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier
 
-	if(debug) LOG_DEBUG("Getting final damage by [bonus_damage_multiplier] from bonuses.")
+	if(debug) log_debug("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= bonus_damage_multiplier
@@ -326,21 +326,21 @@
 			object_to_check = A.labeled_organs[O.id]
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
 
-	if(debug) LOG_DEBUG("Calculating [length(damage_to_deal)] damage types...")
+	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
-		if(debug) LOG_DEBUG("Calculating [damage_type]...")
+		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
-		if(debug) LOG_DEBUG("Initial [damage_type] damage: [old_damage_amount].")
+		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
-		if(debug) LOG_DEBUG("Inital victim's defense against [damage_type]: [victim_defense].")
+		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
 		if(victim_defense >= INFINITY) //Defense is infinite. No point in calculating further armor.
 			damage_to_deal[damage_type] = 0
 			continue
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-			if(debug) LOG_DEBUG("Victim's [damage_type] defense after penetration: [victim_defense].")
+			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
 		if(old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 				damage_to_deal[damage_type] = 0
@@ -348,11 +348,11 @@
 			if(victim_defense == INFINITY)
 				continue
 			victim_defense -= defense_rating_attacker[damage_type]*0.5
-			if(debug) LOG_DEBUG("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
+			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
 		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
-		if(debug) LOG_DEBUG("Final [damage_type] damage: [new_damage_amount].")
+		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
-		if(debug) LOG_DEBUG("Blocked [damage_type] damage: [damage_to_block].")
+		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
 		damage_blocked += damage_to_block
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 		if(damage_type_to_fatigue[damage_type])
@@ -360,7 +360,7 @@
 			if(is_living(victim))
 				var/mob/living/L = victim
 				fatigue_damage_to_convert *= L.fatigue_from_block_mul
-			if(debug) LOG_DEBUG("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
+			if(debug) log_debug("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
 			fatigue_damage += fatigue_damage_to_convert
 
 	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)

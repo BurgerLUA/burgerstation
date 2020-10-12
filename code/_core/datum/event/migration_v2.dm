@@ -45,7 +45,7 @@
 			continue
 		valid_areas += A
 
-	LOG_DEBUG("Found [length(valid_areas)] valid areas for migration event.")
+	log_debug("Found [length(valid_areas)] valid areas for migration event.")
 
 	return ..()
 
@@ -53,7 +53,7 @@
 
 	valid_turfs.Cut()
 
-	LOG_DEBUG("Starting Migration Event")
+	log_debug("Starting Migration Event")
 
 	enemy_type_to_spawn = pick(possible_enemy_types)
 
@@ -91,5 +91,5 @@
 	return ..()
 
 /event/migration/on_end()
-	LOG_DEBUG("Ending Migration Event")
+	log_debug("Ending Migration Event")
 	return ..()

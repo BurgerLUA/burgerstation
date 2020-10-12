@@ -32,13 +32,13 @@
 			continue
 		valid_areas += A
 
-	LOG_DEBUG("Found [length(valid_areas)] valid areas for anomaly event.")
+	log_debug("Found [length(valid_areas)] valid areas for anomaly event.")
 
 	return ..()
 
 /event/anomaly/on_start()
 
-	LOG_DEBUG("Starting Anomaly Event")
+	log_debug("Starting Anomaly Event")
 
 	var/area/chosen_area = pick(valid_areas)
 	var/list/valid_turfs = list()

@@ -4,7 +4,7 @@
 		return
 
 	if(findtext(href,"<script",1,0))
-		LOG_ADMIN("Attempted use of scripts within a topic call, by [src]/[usr].")
+		log_admin("Attempted use of scripts within a topic call, by [src]/[usr].")
 		return
 
 	/*

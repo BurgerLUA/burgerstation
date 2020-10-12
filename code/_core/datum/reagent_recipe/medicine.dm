@@ -90,7 +90,7 @@
 	)
 
 /reagent_recipe/medicine/styptic_powder
-	name = "Silver Sulfadiazine"
+	name = "Styptic Powder"
 	required_reagents = list(
 		/reagent/aluminium = 1,
 		/reagent/fuel/hydrogen = 1,

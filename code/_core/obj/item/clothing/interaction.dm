@@ -41,11 +41,11 @@
 
 
 	if(best_inventory_wear)
-		if(debug) LOG_DEBUG("(WEAR) Best inventory found for [caller.get_debug_name()]: [best_inventory_wear.get_debug_name()].")
+		if(debug) log_debug("(WEAR) Best inventory found for [caller.get_debug_name()]: [best_inventory_wear.get_debug_name()].")
 		return best_inventory_wear.add_object(src)
 
 	if(best_inventory_equip)
-		if(debug) LOG_DEBUG("(EQUIP) Best inventory found for [caller.get_debug_name()]: [best_inventory_equip.get_debug_name()].")
+		if(debug) log_debug("(EQUIP) Best inventory found for [caller.get_debug_name()]: [best_inventory_equip.get_debug_name()].")
 		return best_inventory_equip.add_object(src)
 
 	return FALSE
