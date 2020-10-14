@@ -25,17 +25,21 @@
 
 	icon_states = 9
 
-
-/obj/item/magazine/shotgun_auto/buckshot
-	name = "\improper 12 gauge AS-12 magazine"
-	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
-	desc_extended = "Contains buckshot shells for a magazine-fed bullpup shotgun. Make sure you're trying to use the right caliber."
-
-	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = TRUE
-	)
-
-	ammo = /obj/item/bullet_cartridge/shotgun_12/buckshot
-
 /obj/item/magazine/shotgun_auto/empty
 	ammo = null
+
+/obj/item/magazine/shotgun_auto/buckshot
+	name = "\improper 12 gauge AS-12 magazine (buckshot)"
+	ammo = /obj/item/bullet_cartridge/shotgun_12/buckshot
+
+/obj/item/magazine/shotgun_auto/slug
+	name = "\improper 12 gauge AS-12 magazine (slug)"
+	ammo = /obj/item/bullet_cartridge/shotgun_12/slug
+
+/obj/item/magazine/shotgun_auto/fire
+	name = "\improper 12 gauge AS-12 magazine (fire)"
+	ammo = /obj/item/bullet_cartridge/shotgun_12/fire
+
+/obj/item/magazine/shotgun_auto/flechette
+	name = "\improper 12 gauge AS-12 magazine (flechette)"
+	ammo = /obj/item/bullet_cartridge/shotgun_12/flechette

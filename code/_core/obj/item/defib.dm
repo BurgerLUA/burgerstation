@@ -101,8 +101,6 @@
 
 	throwable = FALSE
 
-	value = 10
-
 	size = 99
 
 	size = SIZE_6

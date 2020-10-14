@@ -120,9 +120,11 @@
 
 
 	if(get_dist(defer_self,defer_object) <= 1)
-
 		if(is_item(defer_object)) //We're clicking on another item.
 			var/obj/item/I = defer_object
+			if(I.anchored)
+				I.click_self(caller)
+				return TRUE
 			if(is_inventory(defer_object.loc)) //The object we're clicking on is in an inventory. Special behavior.
 				var/obj/hud/inventory/I2 = defer_object.loc
 				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in a worn slot.

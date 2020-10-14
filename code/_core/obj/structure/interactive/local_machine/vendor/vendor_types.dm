@@ -325,7 +325,7 @@
 		/obj/item/clothing/mask/gas/clown,
 		/obj/item/clothing/uniform/clown,
 		/obj/item/storage/shoebox/clown,
-		/obj/item/fluff/bikehorn,
+		/obj/item/bikehorn,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube
 	)
 
@@ -552,3 +552,17 @@
 		/obj/item/clothing/overwear/armor/nanotrasen/medium,
 		/obj/item/clothing/overwear/armor/nanotrasen/heavy
 	)
+
+
+/obj/structure/interactive/vending/prize
+	name = "prize vendor"
+	icon_state = "prize"
+	desc = "It's not pointless, I swear."
+	desc_extended = "A special prize vendor that converts arcade prize tickets into items."
+
+	accepts_item = /obj/item/currency/prize_ticket
+
+	stored_types = list(
+		/obj/item/bikehorn
+	)
+

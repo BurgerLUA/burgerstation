@@ -3,6 +3,7 @@
 	icon = 'icons/debug/mobs.dmi'
 	icon_state = ""
 	layer = LAYER_MOB
+	plane = PLANE_MOB
 
 	var/ckey_last
 
@@ -26,8 +27,6 @@
 	var/attack_turn_delay = 10
 
 	var/auto_resist = FALSE
-
-	plane = PLANE_MOB
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = TRUE

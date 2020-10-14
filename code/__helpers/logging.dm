@@ -27,7 +27,7 @@
 
 //Completed
 /proc/log_subsystem(var/subsystem_name,var/log_text)
-	world_log("<span class='subsystem'><b>[subsystem_name]</b>:[log_text]</span>")
+	world_log("<span class='subsystem'><b>[subsystem_name]</b>: [log_text]</span>")
 	SSlogging.buffered_log_debug += "[subsystem_name]: [log_text]"
 	SSlogging.buffered_log_admin += "[subsystem_name]: [log_text]"
 

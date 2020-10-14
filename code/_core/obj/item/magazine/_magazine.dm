@@ -11,9 +11,6 @@
 
 	size = SIZE_2
 
-
-	value = 4
-
 	var/bullet_length_min = -1
 	var/bullet_length_best = -1
 	var/bullet_length_max = -1

@@ -32,8 +32,15 @@ SUBSYSTEM_DEF(research)
 	sortList(quadrant_high_scores,/proc/cmp_highscore)
 	quadrant_high_scores = quadrant_high_scores.Copy(1,min(length(quadrant_high_scores),5))
 	rustg_file_write(json_encode(quadrant_high_scores),RESEARCH_SCORES_QUADRANTS)
-	var/added_currency = P.adjust_currency(score*5)
-	P.to_chat("You were given [added_currency] credits for your research efforts.")
+
+	var/obj/item/currency/prize_ticket/PT = new(P.loc)
+	PT.item_count_current = CEILING(score,1)
+	INITIALIZE(PT)
+	GENERATE(PT)
+	FINALIZE(PT)
+	P.put_in_hands(PT)
+	P.to_chat(span("notice","The arcade machine vends [PT.item_count_current] prize tickets!"))
+
 	return FALSE
 
 /proc/cmp_highscore(var/list/a,var/list/b)

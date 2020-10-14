@@ -1,7 +1,7 @@
 /obj/item/storage/emergency
 	name = "survival kit"
+	icon = 'icons/obj/item/storage/boxes.dmi'
 	icon_state = "emergency"
-
 
 
 /obj/item/storage/emergency/fill_inventory()

@@ -12,6 +12,8 @@
 
 	var/mob/last_caller = null
 
+	value = 20
+
 /obj/item/device/proximity/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("time_set")

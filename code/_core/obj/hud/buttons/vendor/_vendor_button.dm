@@ -15,6 +15,7 @@
 
 	var/obj/item/associated_item
 	var/obj/structure/interactive/vending/associated_vendor
+	var/associated_cost = 1
 
 	mouse_opacity = 1
 
@@ -33,13 +34,17 @@
 
 	. = ..()
 
-	var/sale_amount = CEILING(associated_item.calculate_value(),1)
-	var/num_to_text = num2text(sale_amount)
+	var/num_to_text = num2text(associated_cost)
 	var/the_length = length(num_to_text)
 
 	var/icon/I2 = ICON_INVISIBLE
 
-	if(!(associated_vendor && associated_vendor.is_free))
+	if(associated_vendor.accepts_item)
+		var/icon/I3 = new/icon('icons/hud/numbers.dmi',"[associated_vendor.accepts_item.type]")
+		I3.Shift(EAST,1)
+		I2.Blend(I3,ICON_OVERLAY)
+
+	else if(!(associated_vendor && associated_vendor.is_free))
 		var/icon/I3 = new/icon('icons/hud/numbers.dmi',"T")
 		I3.Shift(EAST,1)
 		I2.Blend(I3,ICON_OVERLAY)
@@ -105,17 +110,8 @@
 		update_owner(null)
 		return .
 
-	if(. && is_player(caller))
-		var/mob/living/advanced/player/P = caller
-		var/atom/defer_object = object.defer_click_on_object(location,control,params)
-		var/item_value = CEILING(associated_item.calculate_value(),1)
-
-		if(!is_inventory(defer_object))
-			P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
-			return TRUE
-
-		var/obj/hud/inventory/I = defer_object
-		associated_vendor.purchase_item(caller,associated_item,item_value,I)
+	if(.)
+		associated_vendor.purchase_item(caller,associated_item,associated_cost)
 
 	return .
 

@@ -131,12 +131,12 @@
 	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
-		temperature_change *= 0.5
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
 	else //If we're colder than we need to be.
+		temperature_change *= 0.5 //This means it's slow to heat up, but fast to cool down.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
-
 	 . = FALSE
+
 
 	for(var/r_id in stored_reagents_temperature)
 		var/reagent/R = REAGENT(r_id)

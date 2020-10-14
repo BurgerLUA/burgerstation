@@ -2,7 +2,7 @@ var/global/time_dialation = 0
 
 /world/proc/life()
 
-	log_subsystem("STARTING WORLD.")
+	world_log("Starting world...")
 
 	world_state = STATE_INITIALIZING
 

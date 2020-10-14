@@ -3,6 +3,9 @@
 	desc = "What's inside the box?"
 	desc_extended = "A regular grey cardboard box."
 
+	icon = 'icons/obj/item/storage/boxes.dmi'
+	icon_state = "box"
+
 	size = SIZE_3
 
 	is_container = TRUE
@@ -11,3 +14,5 @@
 	dynamic_inventory_count = 4
 
 	value = 5
+
+	value = 10

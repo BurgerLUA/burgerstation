@@ -3,7 +3,7 @@
 	icon = 'icons/obj/effects/blood_impact.dmi'
 	color = "#990000"
 	layer = LAYER_FLOOR_SCENERY
-	plane = PLANE_OBJ
+	plane = PLANE_BLOOD
 	alpha = 200
 
 	var/animate_position = FALSE
@@ -52,24 +52,28 @@
 
 	if(desired_color) color = desired_color
 
-	/*
 	var/matrix/T = matrix()
 	transform = turn(T,pick(0,90,180,270))
 	if(animate_position)
+		desired_x = clamp(desired_x,-TILE_SIZE,TILE_SIZE)
+		desired_y = clamp(desired_y,-TILE_SIZE,TILE_SIZE)
 		var/move_x = SIGN(desired_x) * FLOOR(abs(desired_x)/TILE_SIZE,1)
 		var/move_y = SIGN(desired_y) * FLOOR(abs(desired_y)/TILE_SIZE,1)
 		desired_x -= move_x*TILE_SIZE
 		desired_y -= move_y*TILE_SIZE
-		T.Translate(desired_x,desired_y)
-		animate(src, transform=T, easing = QUAD_EASING, time = 3)
 		if(move_x || move_y)
 			var/turf/desired_turf = locate(x + move_x,y + move_y,z)
 			if(desired_turf)
-				walk_to(src,desired_turf,0,3)
+				loc = desired_turf
+				pixel_x = -move_x*TILE_SIZE
+				pixel_y = -move_y*TILE_SIZE
+				animate(src,pixel_x=desired_x,pixel_y=desired_y,time=3,easing=QUAD_EASING,time=3)
 	else
+		desired_x = clamp(desired_x,-TILE_SIZE/2,TILE_SIZE/2)
+		desired_y = clamp(desired_y,-TILE_SIZE/2,TILE_SIZE/2)
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
-	*/
+
 
 	update_blood_level(null,src.loc)
 
@@ -95,7 +99,7 @@
 	name = "small blood splatter"
 	icon_state = "micro"
 	animate_position = TRUE
-	blood_level = 1
+	blood_level = 0 //Trivial to clean.
 
 
 

@@ -3,7 +3,6 @@
 	desc = "THIS IS CLOTHING."
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
-	value = 1
 
 	color = "#FFFFFF"
 

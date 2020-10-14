@@ -14,6 +14,8 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 	var/code = 1337
 
+	value = 10
+
 /obj/item/device/keypad/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("code")

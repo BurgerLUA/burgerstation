@@ -1,7 +1,6 @@
 /obj/item/analyzer
 	name = "analyzer"
 	var/next_scan = 0
-	value = 10
 
 /obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target,location,control,params)
 	return TRUE

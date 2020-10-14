@@ -1,73 +1,57 @@
 /obj/item/currency/
-	name = "telecrystal"
-	desc = "Often used as currency in the realm for its rarity and magical properties."
-	desc_extended = "A crystal that can be used to teleport stuff. The bigger the stuff, the more crystals you need."
+	name = "currency"
+	desc = "DOSH"
+	desc_extended = "Grab it while it's hot!"
 
+	item_count_current = 1
+	item_count_max = 5000
+
+	size = 0.002
+
+/obj/item/currency/telecrystals/
+	name = "telecrystals"
+	desc = "These are pretty sus crystals."
+	desc_extended = "Currency primarily used by syndicate operatives."
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
+	value = 100
 
-	value = 1
-
-/obj/item/currency/New(var/spawn_loc,var/desired_value=0)
-	..()
-	if(desired_value)
-		value = desired_value
-	update_sprite()
-
-/obj/item/currency/update_icon()
-
-	if(value <= 10)
-		icon_state = "[value]"
-	else if(value <= 100)
-		icon_state = "[FLOOR(value/10, 1)*10]"
-	else if(value <= 1000)
-		icon_state = "[FLOOR(value/100, 1)*100]"
-	else if(value <= 5000)
-		icon_state = "[FLOOR(value/1000, 1)*1000]"
-	else
-		icon_state = "5000"
-
-	name = "[value] telecrystal\s"
-
-	..()
-
-/obj/item/currency/proc/adjust_value(var/value_amount)
-	var/value_added = max(value_amount,-value)
-	value += value_added
-	update_sprite()
-	if(value<=0)
-		qdel(src)
-
-	return value_added
-
-/obj/item/currency/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-
-	if(is_player(O))
-		var/mob/living/advanced/player/P = O
-		P.adjust_currency(value)
-		value = 0
-		qdel(src)
-
-	if(is_currency(O))
-		var/obj/item/currency/C = O
-		C.value += value
-		value = 0 //Just in case
-		qdel(src)
-
+/obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
+	item_count_current = 30
 	return ..()
 
-/obj/item/currency/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/currency/telecrystals/update_icon()
+	switch(item_count_current)
+		if(1 to 10)
+			icon_state = "[item_count_current]"
+		if(11 to 100)
+			icon_state = "[FLOOR(item_count_current/10, 1)*10]"
+		if(101 to 1000)
+			icon_state = "[FLOOR(item_count_current/100, 1)*100]"
+		if(1001 to 5000)
+			icon_state = "[FLOOR(value/1000, 1)*1000]"
+	return ..()
 
-	if(!is_player(caller) || !value)
-		return ..()
+/obj/item/currency/prize_ticket
+	name = "prize ticket"
+	desc = "What, another useless currency? Isn't burgerbux enough???"
+	desc_extended = "A prize ticket that can be redeemed at a prize vendor. Earned by completing minigames in arcade vendors."
+	icon = 'icons/obj/item/currency/ticket.dmi'
+	icon_state = "1"
+	value = 0.25
 
-	var/mob/living/advanced/player/P = caller
-	P.adjust_currency(value)
-	value = 0 //just in case
-	qdel(src)
+/obj/item/currency/prize_ticket/update_icon()
+	switch(item_count_current)
+		if(1)
+			icon_state = "1"
+		if(2 to 10)
+			icon_state = "2"
+		if(11 to 50)
+			icon_state = "3"
+		if(51 to item_count_max)
+			icon_state = "4"
+	return ..()
 
-	return TRUE
-
-
-/obj/item/currency/lots/New(var/desired_loc)
-	return ..(desired_loc,10000)
+/obj/item/currency/prize_ticket/max/Generate()
+	item_count_current = item_count_max
+	return ..()

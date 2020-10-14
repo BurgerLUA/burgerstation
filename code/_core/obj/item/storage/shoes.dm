@@ -1,6 +1,7 @@
 /obj/item/storage/shoebox/
 	name = "shoebox"
 	desc = "Contains a matching pair of shoes."
+	icon = 'icons/obj/item/storage/boxes.dmi'
 	icon_state = "shoebox"
 
 	size = SIZE_3

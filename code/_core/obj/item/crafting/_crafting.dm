@@ -24,8 +24,6 @@
 
 	var/crafting_type = null
 
-	value = 5
-
 /obj/item/crafting/click_self(caller,location,control,params)
 
 	if(!length(inventories))

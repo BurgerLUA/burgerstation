@@ -33,8 +33,6 @@
 
 	var/removable = TRUE
 
-	value = 200
-
 /obj/item/attachment/get_examine_list(var/mob/caller)
 
 	. = ..()

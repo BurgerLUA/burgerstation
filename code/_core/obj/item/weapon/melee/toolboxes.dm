@@ -29,3 +29,17 @@
 
 /obj/item/weapon/melee/toolbox/yellow
 	color = "#FFFF00"
+
+
+/obj/item/weapon/melee/toolbox/syndicate
+	name = "fully loaded black toolbox"
+	color = COLOR_GREY_DARK
+
+/obj/item/weapon/melee/toolbox/syndicate/Generate()
+	new /obj/item/weapon/melee/tool/crowbar(src)
+	new /obj/item/weapon/melee/tool/multitool(src)
+	new /obj/item/weapon/melee/tool/screwdriver(src)
+	new /obj/item/weapon/melee/tool/wirecutters(src)
+	new /obj/item/weapon/melee/tool/wrench(src)
+	new /obj/item/weapon/melee/torch/flashlight(src)
+	return ..()

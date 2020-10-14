@@ -148,7 +148,6 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45,
-		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
@@ -156,5 +155,6 @@
 		/obj/item/weapon/melee/energy/sword/green,
 		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/container/food/package/junkfood/syndicate,
-		/obj/item/container/beaker/can/dr_gibb
+		/obj/item/container/beaker/can/dr_gibb,
+		/obj/item/currency/telecrystals/player_antagonist_spawn
 	)

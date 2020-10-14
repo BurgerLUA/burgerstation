@@ -134,6 +134,8 @@
 	var/can_hold = TRUE
 	var/can_wear = FALSE
 
+	value = -1
+
 /obj/item/Crossed(atom/movable/O)
 	return TRUE
 

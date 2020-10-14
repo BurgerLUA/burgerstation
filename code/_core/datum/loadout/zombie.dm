@@ -205,7 +205,7 @@
 	)
 
 	possible_extra_weapon = list(
-		/obj/item/fluff/bikehorn = 3,
+		/obj/item/bikehorn = 3,
 		/obj/item/container/pill/space_drugs = 1,
 		/obj/item/container/pill/space_dust = 1
 

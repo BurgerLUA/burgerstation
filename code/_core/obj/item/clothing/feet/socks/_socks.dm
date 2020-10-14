@@ -25,14 +25,14 @@
 
 	size = SIZE_0
 
-	value = 3
-
 	slowdown_mul_worn = 0.95
 
 /obj/item/clothing/feet/socks/ankle
 	name = "ankle high socks"
 	icon = 'icons/obj/item/clothing/socks/normal.dmi'
 	polymorphs = null
+
+	value = 3
 
 /obj/item/clothing/feet/socks/knee
 	name = "knee high socks"
@@ -41,7 +41,7 @@
 		"sock" = COLOR_WHITE
 	)
 
-	value = 5
+	value = 3
 
 /obj/item/clothing/feet/socks/knee/white
 	polymorphs = list(
@@ -59,6 +59,8 @@
 		"sock" = "#53512A",
 		"stripes" = "#32321B"
 	)
+
+	value = 3
 
 /obj/item/clothing/feet/socks/thigh/
 	name = "thigh high sock"

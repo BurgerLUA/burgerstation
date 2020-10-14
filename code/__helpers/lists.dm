@@ -329,7 +329,7 @@
 				return TRUE
 
 		return FALSE
-	catch(var/exception/e)
+	catch()
 		return FALSE
 
 /proc/make_associative(var/list/flat_list)

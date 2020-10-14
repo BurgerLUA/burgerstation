@@ -1,14 +1,16 @@
-#define PLANE_HIDDEN -12
+#define PLANE_HIDDEN -13
 
-#define PLANE_SPACE -11
+#define PLANE_SPACE -12
 
-#define PLANE_PARALLAX -10
+#define PLANE_PARALLAX -11
 
-#define PLANE_FLOOR -9
+#define PLANE_FLOOR -10
 
-#define PLANE_SHUTTLE -8
+#define PLANE_SHUTTLE -9
 
-#define PLANE_WALL -7
+#define PLANE_WALL -8
+
+#define PLANE_BLOOD -7
 
 #define PLANE_OBJ -6
 

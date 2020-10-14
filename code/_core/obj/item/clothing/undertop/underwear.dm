@@ -18,6 +18,8 @@
 
 	dyeable = TRUE
 
+	value = 10
+
 /obj/item/clothing/undertop/underwear/bra/alt
 	icon = 'icons/obj/item/clothing/underwear/bra_alt.dmi'
 
@@ -63,6 +65,8 @@
 	)
 
 	dyeable = TRUE
+
+	value = 20
 
 /obj/item/clothing/undertop/underwear/shirt/security
 	desc = "Shirt that goes under your shirt."

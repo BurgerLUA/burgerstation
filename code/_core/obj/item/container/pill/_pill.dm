@@ -13,7 +13,7 @@
 
 	var/reagent_container/reagents_2
 
-	value = 1
+	value = 0
 
 /obj/item/container/pill/get_consume_verb()
 	return "swallow"

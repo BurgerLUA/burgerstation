@@ -3,6 +3,8 @@
 	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
 
+	value = 20
+
 /obj/item/storage/bags/click_on_object(var/mob/caller as mob, var/atom/object, location, contmrol, params)
 
 	if(object.plane >= PLANE_HUD)
@@ -86,6 +88,8 @@
 	var/color_canister = "#D35400"
 
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
+
+	value = 20
 
 
 /obj/item/storage/pillbottle/save_item_data(var/save_inventory = TRUE)

@@ -33,7 +33,6 @@
 	maptext_y = 2
 
 	size = 0.01
-	value = 0.1
 
 	var/bullet_seed //For icon generation.
 

@@ -6,8 +6,6 @@ obj/structure/interactive/computer
 	var/on = TRUE
 	plane = PLANE_OBJ
 
-	density = TRUE
-
 obj/structure/interactive/computer/console
 	name = "computer console"
 	var/computer_type = "generic"
@@ -24,6 +22,8 @@ obj/structure/interactive/computer/console
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
 	bullet_block_chance = 75
+
+	density = TRUE
 
 obj/structure/interactive/computer/console/PostInitialize()
 	. = ..()

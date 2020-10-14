@@ -62,32 +62,33 @@
 			else
 				linked_time.color = "#FFFFFF"
 			if(time_left <= 0)
-				linked_text.alpha = 255
+
+				SSresearch.add_quadrants_score(owner,points)
 
 				var/highscore = "HIGH SCORES:"
 				for(var/k in SSresearch.quadrant_high_scores)
 					var/list/v = k
 					highscore += "<br>[v[1]]:&nbsp;&nbsp;[v[2]]"
-
 				linked_text.maptext = "<center><font size=10>TIMES UP!</font><br>Final Score: [points].<br><br><br>[highscore]</center>"
-				SSresearch.add_quadrants_score(owner,points)
+				linked_text.alpha = 255
+
 				return FALSE
 
 	return .
 
 /obj/hud/button/research/board/proc/add_points(var/points_to_add)
-	level = 1 + FLOOR(points/20,1)
-	time_left += (points_to_add)*10
+	level = 1 + FLOOR(points/5,1)
+	time_left += (points_to_add)*10 //In Deciseconds
 	if(points_to_add >= 2)
 		time_left = max(time_left,30)
-	points += points_to_add*(1 + FLOOR(level/3,1))
+	points += points_to_add*(1 + FLOOR(level/2,1))
 	if(linked_level)
 		linked_level.maptext = "<center>Level:<br>[level]</center>"
 	if(linked_score)
 		linked_score.maptext = "<center>Score:<br>[points]</center>"
 		if(points_to_add > 2)
 			linked_text.alpha = 255
-			linked_text.maptext = "<center><font size=5>Well done!</font></center>"
+			linked_text.maptext = "<center><font size=5>Good!</font></center>"
 			play('sound/ui/friendly.ogg',owner, sound_setting = SOUND_SETTING_UI)
 			spawn(20)
 				animate(linked_text,alpha=0,time = 10)

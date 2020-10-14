@@ -21,7 +21,7 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 		else
 			var/index = 1
 			for(var/v in value)
-				returning += "&nbsp;[index] = [get_value_text_for_debug(null,null,v)]<br>"
+				returning += "&nbsp;[index] = [get_value_text_for_debug(v,null,null)]<br>"
 				index++
 
 		returning += ")"
