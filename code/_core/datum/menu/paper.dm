@@ -18,10 +18,10 @@
 	var/mob/living/advanced/player/P = user
 
 	if(P.active_paper && length(P.active_paper.data))
-		set_text(P,P.active_paper.data[1],P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
+		set_text(P,sanitize(P.active_paper.data[P.active_paper.last_page],3000,extra = FALSE),P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
 
 /menu/paper/close(var/user)
-	winset(user, "map.paper","is-visible=false")
+	winset(user,"map.paper","is-visible=false")
 	winset(user,"map.map","focus=true")
 	winset(user,"control.input","focus=false")
 
