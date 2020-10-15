@@ -212,7 +212,7 @@
 	return TRUE
 
 /gamemode/horde/proc/get_enemies_to_spawn()
-	return CEILING(clamp(enemies_to_spawn_base + length(all_players)*enemies_to_spawn_per_player + FLOOR(DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute),1),0,40),4) - length(tracked_enemies) //One additional enemy every 3 minutes.
+	return CEILING(clamp(enemies_to_spawn_base + length(all_players)*enemies_to_spawn_per_player + FLOOR(DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute),1),0,min(40,length(all_players)*1.5)),4) - length(tracked_enemies) //One additional enemy every 3 minutes.
 
 /gamemode/horde/proc/find_horde_target()
 
