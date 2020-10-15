@@ -72,10 +72,10 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_cock_sound(var/direction="both")

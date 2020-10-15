@@ -28,6 +28,6 @@
 
 	return list(norm_x/mul,norm_y/mul)
 
-/obj/item/weapon/ranged/magic/tome/chaos/get_static_spread() //Base spread
+/obj/item/weapon/ranged/magic/tome/chaos/get_static_spread()
 	return 0
 

@@ -68,10 +68,10 @@
 	heat_per_shot = 0.03
 	heat_max = 0.09
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread()
 	if(!wielded) return 0.15
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

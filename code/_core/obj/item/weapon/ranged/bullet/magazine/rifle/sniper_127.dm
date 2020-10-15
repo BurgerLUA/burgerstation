@@ -73,10 +73,10 @@
 
 	requires_cock_each_shot = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
 

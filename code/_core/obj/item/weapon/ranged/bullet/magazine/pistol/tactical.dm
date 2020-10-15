@@ -60,10 +60,10 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
@@ -103,8 +103,8 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))

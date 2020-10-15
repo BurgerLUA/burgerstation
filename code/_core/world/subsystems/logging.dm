@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(logging)
 /subsystem/logging/proc/log_from_list(var/identifier,var/list/desired_list)
 	if(length(desired_list))
 		var/log_string = english_list(desired_list,"LIST ERROR","\n","\n")
-		rustg_log_write(get_logging_dir("identifier"),log_string,"true")
+		rustg_log_write(get_logging_dir(identifier),log_string,"true")
 		desired_list.Cut()
 		return TRUE
 	return FALSE

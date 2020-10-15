@@ -66,10 +66,10 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread()
 	return 0.0025
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod

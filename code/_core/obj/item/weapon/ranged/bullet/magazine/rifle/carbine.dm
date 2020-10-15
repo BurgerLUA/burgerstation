@@ -83,10 +83,10 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.02 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
@@ -104,8 +104,8 @@
 
 	value = 120
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread()
 	return 0.05
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))

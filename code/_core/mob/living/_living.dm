@@ -459,7 +459,7 @@
 	if(loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
 		return TRUE
 
-	if(magnitude > 3)
+	if(magnitude > 6)
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y
 		var/max = max(abs(x_mod),abs(y_mod))
@@ -471,11 +471,11 @@
 			y_mod *= 1/max
 		throw_self(owner,null,null,null,x_mod*16,y_mod*16,steps_allowed = magnitude)
 
-	else if(magnitude > 2)
-		add_status_effect(STUN,20,20)
+	else if(magnitude > 4)
+		add_status_effect(STUN,magnitude*3,magnitude*3)
 
-	else if(magnitude > 1)
-		add_status_effect(STAGGER,5,5, source = epicenter)
+	else if(magnitude > 2)
+		add_status_effect(STAGGER,magnitude,magnitude, source = epicenter)
 
 	if(health)
 		for(var/i=1,i<=clamp(2+(magnitude),1,5),i++)

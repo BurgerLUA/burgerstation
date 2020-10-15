@@ -62,8 +62,8 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/energy/hybrid/carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/hybrid/carbine/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/energy/hybrid/carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/hybrid/carbine/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.08 * L.get_skill_power(SKILL_RANGED)))

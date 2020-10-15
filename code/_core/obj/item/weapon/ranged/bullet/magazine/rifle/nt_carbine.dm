@@ -69,10 +69,10 @@
 	dan_mode = TRUE
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread()
 	if(wielded) return 0.005
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_skill_spread(var/mob/living/L)
 	if(!heat_current)return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))

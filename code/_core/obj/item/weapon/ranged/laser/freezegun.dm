@@ -29,10 +29,10 @@
 
 	value = 1500
 
-/obj/item/weapon/ranged/energy/freezegun/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/freezegun/get_static_spread()
 	return 0.001
 
-/obj/item/weapon/ranged/energy/freezegun/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/freezegun/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/freezegun/update_icon()

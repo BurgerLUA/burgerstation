@@ -54,10 +54,10 @@
 
 	value = 500
 
-/obj/item/weapon/ranged/energy/mech/smg/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/mech/smg/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(var/mob/living/L)
 	return 0
 
 
@@ -86,10 +86,10 @@
 	heat_per_shot = 0.005
 	heat_max = 0.04
 
-/obj/item/weapon/ranged/energy/mech/lmg/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/mech/lmg/get_static_spread()
 	return 0.002
 
-/obj/item/weapon/ranged/energy/mech/lmg/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/mech/lmg/get_skill_spread(var/mob/living/L)
 	return 0
 
 
@@ -119,10 +119,10 @@
 	heat_per_shot = 0.004
 	heat_max = 0.03
 
-/obj/item/weapon/ranged/energy/mech/laser/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/mech/laser/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/mech/laser/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/mech/laser/get_skill_spread(var/mob/living/L)
 	return 0
 
 
@@ -154,10 +154,10 @@
 	heat_per_shot = 0.004
 	heat_max = 0.03
 
-/obj/item/weapon/ranged/energy/mech/ion/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/mech/ion/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/mech/ion/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/mech/ion/get_skill_spread(var/mob/living/L)
 	return 0
 
 
@@ -187,8 +187,8 @@
 	heat_per_shot = 0.004
 	heat_max = 0.03
 
-/obj/item/weapon/ranged/energy/mech/missile_pod/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/mech/missile_pod/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/energy/mech/missile_pod/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/mech/missile_pod/get_skill_spread(var/mob/living/L)
 	return 0

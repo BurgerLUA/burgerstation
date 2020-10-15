@@ -62,10 +62,10 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 

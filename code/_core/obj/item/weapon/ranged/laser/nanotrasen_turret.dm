@@ -30,5 +30,5 @@
 	bullet_color = "#FF0000"
 
 
-/obj/item/weapon/ranged/energy/nanotrasen_turret/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/nanotrasen_turret/get_static_spread()
 	return 0.003

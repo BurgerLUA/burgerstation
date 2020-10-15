@@ -135,10 +135,10 @@
 /obj/item/weapon/ranged/proc/get_heat_spread()
 	return heat_current
 
-/obj/item/weapon/ranged/proc/get_static_spread() //Base spread
+/obj/item/weapon/ranged/proc/get_static_spread()
 	return 0.025
 
-/obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L)
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)

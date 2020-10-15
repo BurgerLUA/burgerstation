@@ -67,10 +67,10 @@
 	attachment_undermount_offset_y = 16 - 16
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_skill_spread(var/mob/living/L)
 	if(!heat_current)
 		return 0
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
