@@ -9,6 +9,8 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
+	value = -1
+
 /obj/item/clothing/head/helmet/hardsuit/engineering
 	name = "engineering rig helmet"
 	desc = "The SM is at 9% health? Eh, it's probably gonna be fine"
@@ -31,9 +33,6 @@
 	)
 
 	size = SIZE_3
-
-
-	value = 80
 
 	slowdown_mul_worn = 1.1
 
@@ -59,8 +58,6 @@
 
 	size = SIZE_4
 
-	value = 250
-
 	slowdown_mul_worn = 1.05
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
@@ -84,8 +81,6 @@
 	)
 
 	size = SIZE_3
-
-	value = 500
 
 	slowdown_mul_worn = 1.1
 
@@ -113,8 +108,6 @@
 
 	slowdown_mul_worn = 0.75
 
-	value = 1200
-
 /obj/item/clothing/head/helmet/hardsuit/mining
 	name = "mining hardsuit helmet"
 	desc = "MIIIIINIIIIING DIAAAAMOOOOOONDS!"
@@ -136,9 +129,6 @@
 	)
 
 	size = SIZE_3
-
-
-	value = 300
 
 	slowdown_mul_worn = 1.1
 
@@ -165,8 +155,6 @@
 
 	size = SIZE_3
 
-	value = 300
-
 	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/head/helmet/hardsuit/seva
@@ -190,8 +178,6 @@
 	)
 
 	size = SIZE_3
-
-	value = 400
 
 	slowdown_mul_worn = 1.05
 

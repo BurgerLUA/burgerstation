@@ -146,8 +146,7 @@
 	name = "medicine vendor"
 	icon_state = "med"
 	stored_types = list(
-		/obj/item/container/blood_pack/full/o_negative,
-		/obj/item/container/blood_pack/full/reptile,
+		/obj/item/analyzer/health,
 		/obj/item/container/medicine/bandage,
 		/obj/item/container/medicine/ointment,
 		/obj/item/container/medicine/trauma_kit,
@@ -163,7 +162,9 @@
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,
 		/obj/item/storage/pillbottle/iron_small,
-		/obj/item/storage/pillbottle/antihol_small
+		/obj/item/storage/pillbottle/antihol_small,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/reptile
 	)
 
 /obj/structure/interactive/vending/medical/chemistry

@@ -156,5 +156,6 @@
 		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/container/food/package/junkfood/syndicate,
 		/obj/item/container/beaker/can/dr_gibb,
-		/obj/item/currency/telecrystals/player_antagonist_spawn
+		/obj/item/currency/telecrystals/player_antagonist_spawn,
+		/obj/item/clothing/back/storage/dufflebag/syndicate
 	)

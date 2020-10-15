@@ -3,7 +3,7 @@
 
 	anchored = TRUE
 
-	health_base = 200
+	health_base = 400
 
 	var/obj/item/weapon/ranged/stored_weapon
 

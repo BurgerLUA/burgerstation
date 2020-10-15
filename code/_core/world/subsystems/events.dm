@@ -58,11 +58,12 @@ SUBSYSTEM_DEF(events)
 		E.active = TRUE
 		E.start_time = world.time
 		E.end_time = world.time + E.duration
-		E.occurances_current++
 		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900)) + E.duration
 	else
 		E.on_end()
 		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
+
+	E.occurances_current++
 
 	if(E.occurances_current >= E.occurances_max)
 		all_events -= E

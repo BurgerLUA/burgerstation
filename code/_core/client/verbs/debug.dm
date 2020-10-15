@@ -318,7 +318,7 @@ var/global/list/debug_verbs = list(
 
 /client/verb/show_debug_verbs()
 	set name = "Show Debug Verbs"
-	set category = "Game"
+	set category = "Debug"
 	for(var/k in debug_verbs)
 		verbs += debug_verbs
 	verbs -= /client/verb/show_debug_verbs
@@ -326,7 +326,7 @@ var/global/list/debug_verbs = list(
 
 /client/verb/hide_debug_verbs()
 	set name = "Hide Debug Verbs"
-	set category = "Game"
+	set category = "Debug"
 	for(var/k in debug_verbs)
 		verbs -= debug_verbs
 	verbs += /client/verb/show_debug_verbs

@@ -15,8 +15,6 @@
 
 	var/scroll_count = 1
 
-	value = 10
-
 
 /obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -118,7 +116,6 @@
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"
 	desc = "Shoots a fireball."
-
 
 	projectile = /obj/projectile/magic/fireball
 

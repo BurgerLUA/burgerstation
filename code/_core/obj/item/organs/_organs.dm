@@ -55,8 +55,6 @@
 
 	health = /health/obj/item/organ
 
-	value = 100
-
 	var/damage_layer = LAYER_MOB_INJURY
 
 	var/bleeding = 0 //How much blood to use per second.

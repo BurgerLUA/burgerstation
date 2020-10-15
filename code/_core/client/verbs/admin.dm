@@ -90,9 +90,22 @@
 			GENERATE(O)
 		return TRUE
 
-/client/verb/change_variable(var/datum/object as anything in view(), var/desired_varable_key as text, var/desired_varable_value as anything)
+/client/verb/change_variable(var/datum/object as anything, var/desired_varable_key as text, var/desired_varable_value as anything)
 	set name = "Change Variable"
 	set category = "Admin"
+
+	if(!object)
+		return FALSE
+
+	if(!desired_varable_key)
+		return FALSE
+
+	if(!desired_varable_value)
+		if(isnum(object.vars[desired_varable_key]))
+			desired_varable_value = input("Desired Number") as num|null
+
+		else if(istext(object.vars[desired_varable_key]))
+			desired_varable_value = input("Desired Number") as text|null
 
 	if(desired_varable_value && istext(desired_varable_value))
 		desired_varable_value = sanitize(desired_varable_value)

@@ -1,5 +1,5 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate
-	name = "dufflebag"
+	name = "syndicate dufflebag"
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate.dmi'
 	desc = "EVIL!"
 	desc_extended = "A sturdy, yet lightweight black dufflebag. Doesn't slow you down at all for some reason."

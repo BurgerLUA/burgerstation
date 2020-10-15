@@ -332,8 +332,16 @@
 
 /obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
 
-	if(istype(weapon,/obj/item/weapon/ranged/) && is_living(source))
-		var/obj/item/weapon/ranged/R = weapon
-		return R.get_bullet_inaccuracy(source,target,src,inaccuracy_modifier)
+	. = 0
 
-	return 0
+	if(is_living(source))
+		var/mob/living/L = source
+		if(istype(weapon,/obj/item/weapon/ranged/))
+			var/obj/item/weapon/ranged/R = weapon
+			. = R.get_bullet_inaccuracy(L,target,src,inaccuracy_modifier)
+		if(L.ai)
+			. *= max(1,get_dist(start_turf,target)/VIEW_RANGE)
+		if(target_atom)
+			. *= max(1,get_dist(target_atom,target)/(VIEW_RANGE*0.5))
+
+	return .

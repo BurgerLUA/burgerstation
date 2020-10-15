@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/obj/item/cell_charger/Crossed(var/atom/movable/O)
+/obj/item/cell_charger/Crossed(atom/movable/O)
 
 	. = ..()
 
