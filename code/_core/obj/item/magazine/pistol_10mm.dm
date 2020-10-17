@@ -25,3 +25,10 @@
 	size = SIZE_2
 
 	icon_states = 6
+
+	value = 5
+
+
+/obj/item/magazine/pistol_10mm/ap
+	name = "\improper 10mm auto AP pistol magazine"
+	ammo = /obj/item/bullet_cartridge/pistol_10mm/ap

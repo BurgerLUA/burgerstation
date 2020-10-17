@@ -13,7 +13,7 @@
 
 	object = object.defer_click_on_object(location,control,params)
 
-	if(!is_item(object))
+	if(!is_item(object) || object == src)
 		return ..()
 
 	var/obj/item/I = object

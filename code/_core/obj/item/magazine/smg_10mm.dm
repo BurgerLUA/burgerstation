@@ -23,6 +23,8 @@
 
 	size = SIZE_2
 
+	value = 10
+
 
 /obj/item/magazine/smg_10mm/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"

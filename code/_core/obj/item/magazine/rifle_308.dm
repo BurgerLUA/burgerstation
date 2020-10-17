@@ -26,3 +26,11 @@
 	size = SIZE_2
 
 	icon_states = 1
+
+	value = 10
+
+
+/obj/item/magazine/rifle_308/ap
+	name = "\improper .308 AP rifle magazine"
+	icon = 'icons/obj/item/magazine/308_rifle_ap.dmi'
+	ammo = /obj/item/bullet_cartridge/rifle_308/ap

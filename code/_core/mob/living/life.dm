@@ -264,7 +264,7 @@ mob/living/proc/on_life_slow()
 /mob/living/proc/handle_intoxication()
 
 	if(intoxication)
-		var/intoxication_to_remove = (0.05 + intoxication*0.005)*(LIFE_TICK_SLOW/10)
+		var/intoxication_to_remove = (0.025 + intoxication*0.0025)*(LIFE_TICK_SLOW/10)
 		intoxication = max(0,intoxication-intoxication_to_remove)
 
 	switch(intoxication)
@@ -291,7 +291,7 @@ mob/living/proc/on_life_slow()
 			health.adjust_tox_loss(0.25*(LIFE_TICK_SLOW/10))
 			queue_health_update = TRUE
 
-	if(intoxication >= 400 && prob(intoxication/100))
+	if(intoxication >= 600 && prob(intoxication/100))
 		var/list/possible_status_effects = list(
 			STAGGER,
 			CONFUSED,

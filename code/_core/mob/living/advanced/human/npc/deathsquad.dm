@@ -4,7 +4,6 @@
 	ai = /ai/advanced/syndicate
 	class = /class/syndicate_soldier
 	dialogue_id = /dialogue/npc/soldier
-	level_multiplier = 10
 
 	var/desired_loadout = /loadout/deathsquad
 
@@ -35,12 +34,12 @@
 
 /mob/living/advanced/npc/deathsquad/light
 	desired_loadout = /loadout/deathsquad/light
-	level_multiplier = 5
+	level_multiplier = 2
 
 /mob/living/advanced/npc/deathsquad/medium
 	desired_loadout = /loadout/deathsquad/medium
-	level_multiplier = 10
+	level_multiplier = 4
 
 /mob/living/advanced/npc/deathsquad/heavy
 	desired_loadout = /loadout/deathsquad/heavy
-	level_multiplier = 15
+	level_multiplier = 8

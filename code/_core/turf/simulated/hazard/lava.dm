@@ -14,8 +14,7 @@
 	desired_light_color = "#CE631C"
 
 /turf/simulated/hazard/lava/Enter(atom/movable/O,atom/oldloc)
-	if(is_living(O))
-		lava_idiot(O)
+	if(is_living(O)) lava_idiot(O)
 	return ..()
 
 /turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)

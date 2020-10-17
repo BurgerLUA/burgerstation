@@ -25,3 +25,10 @@
 	size = SIZE_2
 
 	icon_states = 8
+
+	value = 5
+
+/obj/item/magazine/pistol_12mm/ap
+	name = "\improper 12.7mm AP pistol magazine"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one contains AP rounds."
+	ammo = /obj/item/bullet_cartridge/pistol_12mm/ap

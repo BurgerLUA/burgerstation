@@ -539,7 +539,7 @@
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
 		if(L.intent == INTENT_HARM) //SPLASH
-			reagents.splash(caller,object,0.75)
+			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
 	if(can_feed(caller,defer_object))

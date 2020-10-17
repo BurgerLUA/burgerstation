@@ -1,6 +1,10 @@
-#define DASH_DELAY 1 //In deciseconds.
+#define DASH_DELAY 2 //In deciseconds.
 
 /mob/living/proc/dash(var/atom/dash_target,var/dash_direction=0x0,var/instances_left = 0)//Can either input dash target or dash direction.
+
+	if(!can_move())
+		return FALSE
+
 	if(health)
 		if(health.stamina_current < 25)
 			to_chat(span("warning","You're exhausted!"))

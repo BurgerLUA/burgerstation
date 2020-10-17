@@ -88,7 +88,8 @@
 	if(ai) ai.Bump(Obstacle)
 	return ..()
 
-/mob/living/handle_movement(var/adjust_delay = 1)
+
+/mob/living/proc/can_move()
 
 	if(dead)
 		return FALSE
@@ -96,11 +97,20 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
 		return FALSE
 
-	if(move_dir)
-		if(buckled_object && !buckled_object.unbuckle(src))
+	if(buckled_object && !buckled_object.unbuckle(src))
+		return FALSE
+
+	return TRUE
+
+/mob/living/handle_movement(var/adjust_delay = 1)
+
+
+	if(move_dir) //If you're actuall moving.
+
+		if(!can_move())
 			return FALSE
 
-		if(move_dir && grabbing_hand)
+		if(grabbing_hand)
 			resist()
 			return FALSE
 
@@ -116,6 +126,8 @@
 	if(.)
 		add_nutrition(-0.01)
 		add_hydration(-0.01)
+		if(has_status_effect(CONFUSED))
+			move_dir = turn(move_dir,180)
 
 	return .
 

@@ -15,6 +15,8 @@
 
 	value = 0
 
+	allow_reagent_transfer_from = FALSE
+
 /obj/item/container/pill/get_consume_verb()
 	return "swallow"
 

@@ -24,3 +24,9 @@
 	size = SIZE_2
 
 	icon_states = 12
+
+	value = 10
+
+/obj/item/magazine/smg_45/ap
+	name = "\improper .45 AP smg magazine"
+	ammo = /obj/item/bullet_cartridge/pistol_45/ap

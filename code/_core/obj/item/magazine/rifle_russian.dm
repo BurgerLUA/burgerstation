@@ -27,3 +27,5 @@
 	bullet_count_max = 20
 
 	icon_states = 1
+
+	value = 10

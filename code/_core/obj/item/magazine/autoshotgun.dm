@@ -25,6 +25,8 @@
 
 	icon_states = 9
 
+	value = 15
+
 /obj/item/magazine/shotgun_auto/empty
 	ammo = null
 

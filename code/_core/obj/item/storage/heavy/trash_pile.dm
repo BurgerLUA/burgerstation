@@ -16,6 +16,8 @@
 /obj/item/storage/heavy/trash_pile/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,11)]"
+	if(prob(70))
+		meatman_spawned = TRUE
 	return .
 
 /obj/item/storage/heavy/trash_pile/Generate()
@@ -37,7 +39,7 @@
 
 /obj/item/storage/heavy/trash_pile/click_self(var/mob/caller)
 	. = ..()
-	if(prob(10) && !meatman_spawned)
+	if(!meatman_spawned)
 		loc.visible_message(span("danger","A disturbed beefman crawls out of \the [src.name]!"))
 		var/mob/living/advanced/npc/beefman/B = new(src.loc)
 		INITIALIZE(B)

@@ -25,7 +25,7 @@
 	color = "#EAD5A4"
 	alpha = 255
 
-	nutrition_amount = 20
+	nutrition_amount = 14
 
 	flavor = "fat"
 
@@ -44,7 +44,7 @@
 	desc = "Nutrition and flavor from cow's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 20
+	nutrition_amount = 14
 
 	flavor = "fat"
 
@@ -53,7 +53,7 @@
 	desc = "Nutrition and flavor from bear's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 30
+	nutrition_amount = 20
 
 	flavor = "fat"
 
@@ -62,7 +62,7 @@
 	desc = "Nutrition and flavor from penguin's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 24
+	nutrition_amount = 12
 
 	flavor = "fat"
 
@@ -71,7 +71,7 @@
 	desc = "Nutrition and flavor from fish's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 40
+	nutrition_amount = 12
 
 	flavor = "fat"
 
@@ -80,7 +80,7 @@
 	desc = "Nutrition and flavor from a xeno's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 40
+	nutrition_amount = 20
 
 	flavor = "fat"
 
@@ -89,7 +89,7 @@
 	desc = "Nutrition and flavor from crab's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 24
+	nutrition_amount = 16
 
 	flavor = "fat"
 
@@ -100,7 +100,7 @@
 	desc = "Nutrition and flavor from raw meat."
 	color = "#EA4147"
 
-	nutrition_amount = 30
+	nutrition_amount = 15
 	heal_factor = -5
 
 	flavor = "raw meat"
@@ -121,7 +121,7 @@
 	desc = "Nutrition and flavor from raw cow's meat."
 	color = "#BF0000"
 
-	nutrition_amount = 30
+	nutrition_amount = 15
 	heal_factor = -1
 
 	flavor = "raw meat"
@@ -133,7 +133,7 @@
 	desc = "Nutrition and flavor from cooked cow's meat."
 	color = "#6B3731"
 
-	nutrition_amount = 30
+	nutrition_amount = 13
 	heal_factor = 5
 
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED
@@ -152,7 +152,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW
 
-	nutrition_amount = 30
+	nutrition_amount = 15
 	heal_factor = -2
 
 	flavor = "raw chicken"
@@ -166,7 +166,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
 
-	nutrition_amount = 30
+	nutrition_amount = 13
 	heal_factor = 5
 
 	flavor = "chicken"
@@ -183,7 +183,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
 
-	nutrition_amount = 40
+	nutrition_amount = 20
 	heal_factor = -5
 
 	flavor = "mistakes"
@@ -195,7 +195,7 @@
 	desc = "Nutrition and flavor from cooked xeno meat."
 	color = "#293D2E"
 
-	nutrition_amount = 40
+	nutrition_amount = 18
 	heal_factor = 5
 
 	flavor = "space aliens"
@@ -214,7 +214,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
 
-	nutrition_amount = 20
+	nutrition_amount = 15
 	heal_factor = -5
 
 	flavor = "hair"
@@ -228,7 +228,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GROSS
 
-	nutrition_amount = 30
+	nutrition_amount = 13
 	heal_factor = 5
 
 	flavor = "web"
@@ -245,7 +245,7 @@
 
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_RAW
 
-	nutrition_amount = 30
+	nutrition_amount = 15
 	heal_factor = -3
 
 	flavor = "bearable"
@@ -259,7 +259,7 @@
 
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_LOVE
 
-	nutrition_amount = 40
+	nutrition_amount = 13
 	heal_factor = 20
 
 	flavor = "russia"
@@ -276,7 +276,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
-	nutrition_amount = 20
+	nutrition_amount = 10
 	heal_factor = -3
 
 	flavor = "ice"
@@ -290,7 +290,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
-	nutrition_amount = 30
+	nutrition_amount = 8
 	heal_factor = 5
 
 	flavor = "igloos"
@@ -307,7 +307,7 @@
 
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
-	nutrition_amount = 20
+	nutrition_amount = 15
 	heal_factor = 0
 
 	flags_reagent = FLAG_REAGENT_COOKED
@@ -326,7 +326,7 @@
 
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
-	nutrition_amount = 30
+	nutrition_amount = 12
 	heal_factor = 5
 
 	flavor = "FISH"
@@ -343,7 +343,7 @@
 
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
-	nutrition_amount = 20
+	nutrition_amount = 15
 	heal_factor = 0
 
 	flavor = "seashells"
@@ -357,7 +357,7 @@
 
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
-	nutrition_amount = 20
+	nutrition_amount = 12
 	heal_factor = 5
 
 	flavor = "the ocean"
@@ -366,3 +366,24 @@
 	heated_reagent = /reagent/carbon
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
+
+
+/reagent/nutrition/egg_white
+	name = "egg whites"
+	desc = "Nutrition and flavor from egg whites."
+	color = "#FFD865"
+
+	nutrition_amount = 10
+	heal_factor = 1
+
+	flavor = "egg white"
+
+/reagent/nutrition/egg_yellow
+	name = "egg yolk"
+	desc = "Nutrition and flavor from egg yellows."
+	color = "#FFFFE4"
+
+	nutrition_amount = 30
+	heal_factor = 3
+
+	flavor = "egg yolk"

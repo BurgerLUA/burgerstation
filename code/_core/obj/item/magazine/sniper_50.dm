@@ -24,6 +24,8 @@
 
 	icon_states = 1
 
+	value = 20
+
 /obj/item/magazine/sniper_50/explosive
 	name = "\improper .50 sniper magazine - explosive"
 	icon_state = "50EXP"

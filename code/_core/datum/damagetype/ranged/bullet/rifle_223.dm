@@ -15,6 +15,19 @@
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
 
+/damagetype/ranged/bullet/rifle_223/ap
+	name = "ap .223 rifle bullet"
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		PIERCE = 30
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		PIERCE = 75
+	)
+
 /damagetype/ranged/bullet/rifle_556mm
 	name = "5.56mm rifle bullet"
 
@@ -29,6 +42,19 @@
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE*0.5
+
+/damagetype/ranged/bullet/rifle_556mm/ap
+	name = "AP 5.56mm rifle bullet"
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		PIERCE = 30
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		PIERCE = 75
+	)
 
 /damagetype/ranged/bullet/rifle_545mm
 	name = "5.45mm rifle bullet"

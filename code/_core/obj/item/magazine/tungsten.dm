@@ -23,3 +23,5 @@
 	size = SIZE_2
 
 	icon_states = 10
+
+	value = 10

@@ -46,7 +46,7 @@
 					caller.to_chat(span("warning","\The [object.name] is too strong to be grabbed!"))
 					return TRUE
 			grab_object(caller,object,location,control,params)
-		return TRUE
+			return TRUE
 
 
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))

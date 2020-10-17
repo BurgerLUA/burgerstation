@@ -85,7 +85,7 @@
 /obj/item/hand_teleporter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	var/obj/item/powercell/PC = get_battery()
-	if(PC.charge_current < teleport_cost)
+	if(!PC || PC.charge_current < teleport_cost)
 		caller.to_chat(span("warning","\The [src.name] beeps, indicating a lack of charge!"))
 		return FALSE
 
