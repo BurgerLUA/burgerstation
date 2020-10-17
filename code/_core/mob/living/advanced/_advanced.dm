@@ -101,6 +101,8 @@
 		ION = 0
 	)
 
+	var/genetic_code/genetics
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -122,6 +124,7 @@
 	driving = null
 
 	QDEL_NULL(stored_handcuffs)
+	QDEL_NULL(genetics)
 
 	return ..()
 
@@ -274,12 +277,16 @@ mob/living/advanced/Login()
 		L.update_for_mob(src)
 
 /mob/living/advanced/proc/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
-	add_species_languages()
-	add_species_organs()
-	add_species_colors()
+	genetics.sync_species_organs()
+	genetics.sync_species_colors()
+	genetics.apply_visuals()
 	return TRUE
 
 /mob/living/advanced/Initialize()
+
+	genetics = new
+	genetics.sex = sex
+	genetics.species = all_species[species]
 
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
@@ -358,35 +365,6 @@ mob/living/advanced/Login()
 
 	return FALSE
 
-/mob/living/advanced/proc/add_species_languages()
-
-	known_languages.Cut()
-
-	var/species/S = all_species[species]
-
-	for(var/language in S.languages)
-		known_languages[language] = TRUE
-
-/mob/living/advanced/proc/add_species_colors()
-
-	var/species/S = all_species[species]
-
-	if(S.default_color_skin)
-		change_organ_visual("skin", desired_color = S.default_color_skin)
-
-	if(S.default_color_eye)
-		change_organ_visual("eye", desired_color = S.default_color_eye)
-
-	if(S.default_color_hair && S.default_icon_hair && S.default_icon_state_hair)
-		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = S.default_icon_state_hair, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
-		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = S.default_icon_state_hair_face, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
-
-	if(S.default_color_detail)
-		change_organ_visual("skin_detail", desired_color = S.default_color_detail)
-
-	if(S.default_color_glow)
-		change_organ_visual("skin_glow", desired_color = S.default_color_glow)
-
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/k in organs)
 		var/obj/item/organ/O = k
@@ -394,20 +372,6 @@ mob/living/advanced/Login()
 			continue
 		if(O.additional_blends[desired_id])
 			O.add_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
-
-/mob/living/advanced/proc/update_gender()
-	remove_all_organs()
-	add_species_organs()
-	add_species_colors()
-
-/mob/living/advanced/proc/update_species()
-
-	var/species/S = all_species[species]
-
-	if(S.genderless)
-		gender = NEUTER
-
-	update_gender()
 
 /mob/living/advanced/can_sprint()
 

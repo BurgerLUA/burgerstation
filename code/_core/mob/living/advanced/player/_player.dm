@@ -102,8 +102,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
 		return ..()
 
-	add_species_languages()
-
 	set_mob_data(mobdata["loaded_data"],teleport,update_blends)
 
 	return TRUE

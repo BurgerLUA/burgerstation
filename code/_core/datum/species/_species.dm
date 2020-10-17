@@ -164,3 +164,13 @@
 	)
 
 	return pickweight(blood_types)
+
+
+/species/proc/get_known_languages() //Should only be applied when the player is created for the first time
+
+	. = list()
+
+	for(var/language in languages)
+		.[language] = TRUE
+
+	return .
