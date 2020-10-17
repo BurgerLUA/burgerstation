@@ -15,20 +15,6 @@
 	slowdown_mul_worn = 1
 	slowdown_mul_held = 1
 
-/obj/item/clothing/back/storage/dufflebag/syndicate/pre_fill_inventory(var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-
-	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
-		var/obj/item/weapon/ranged/bullet/magazine/M = I
-		if(SSweapons.weapon_to_magazine[M.type])
-			M.stored_magazine = pick(SSweapons.weapon_to_magazine[M.type])
-
-	return ..()
-
-
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_medical.dmi'
 

@@ -17,20 +17,6 @@
 		/obj/item/magazine/pistol_10mm
 	)
 
-/loadout/syndicate/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		if(R.firing_pin)
-			R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-
-	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
-		var/obj/item/weapon/ranged/bullet/magazine/M = I
-		if(SSweapons.weapon_to_magazine[M.type])
-			M.stored_magazine = pick(SSweapons.weapon_to_magazine[M.type])
-
-	return ..()
-
 /loadout/syndicate/soldier
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,

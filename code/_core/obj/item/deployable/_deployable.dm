@@ -17,7 +17,7 @@
 	S.dir = caller.dir
 	INITIALIZE(S)
 	FINALIZE(S)
-	caller.visible_message(span("\The [caller.name] deploys \the [S.name]."),span("You deploy \the [S.name]."))
+	caller.visible_message(span("notice","\The [caller.name] deploys \the [S.name]."),span("notice","You deploy \the [S.name]."))
 
 	add_item_count(-1)
 

@@ -213,6 +213,8 @@
 
 	density = 1
 
+	var/list/defense_bonuses = list() //From perks, powers, and whatever.
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	visible_message(span("danger","\The [src] is violently crushed!"))
