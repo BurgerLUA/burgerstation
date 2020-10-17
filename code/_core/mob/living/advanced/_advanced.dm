@@ -287,6 +287,7 @@ mob/living/advanced/Login()
 	genetics = new
 	genetics.sex = sex
 	genetics.species = all_species[species]
+	genetics.owner = src
 
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 

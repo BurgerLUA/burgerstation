@@ -20,6 +20,9 @@
 
 	var/mob/living/advanced/owner
 
+/genetic_code/proc/apply_save_data()
+
+
 /genetic_code/proc/get_save_data()
 
 	. = list()

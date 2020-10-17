@@ -24,10 +24,8 @@
 
 	//Name
 	real_name = loaded_data["name"]
-	sex = loaded_data["sex"]
 	gender = loaded_data["gender"]
 	currency = loaded_data["currency"]
-	species = loaded_data["species"]
 	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : 1000
 	hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : 1000
 	save_id = loaded_data["id"]
