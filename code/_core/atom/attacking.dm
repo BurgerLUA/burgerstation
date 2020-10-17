@@ -67,7 +67,8 @@
 		return FALSE
 
 	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim)
-	if(!desired_damage_type) return FALSE
+	if(!desired_damage_type)
+		return FALSE
 
 	var/cleave_number = should_cleave(attacker,victim,params)
 	var/list/victims = list(victim)
@@ -88,6 +89,9 @@
 		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
 		return FALSE
 
+	if(world.time < attacker.attack_next)
+		return FALSE
+
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
 		var/can_attack = attacker.can_attack(v,object_to_damage_with,params,DT)
@@ -102,15 +106,12 @@
 				if(DT2) DT = DT2
 			continue
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
-			return FALSE
+			hit_objects = null
+			break
 		victims -= v
 
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
-
-	if(!length(hit_objects))
-		DT.perform_miss(attacker,victim,object_to_damage_with) //TODO: FIX THIS
-		return FALSE
 
 	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
 

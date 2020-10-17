@@ -16,7 +16,7 @@
 /obj/item/storage/heavy/trash_pile/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,11)]"
-	if(prob(70))
+	if(prob(70) || z != 1)
 		meatman_spawned = TRUE
 	return .
 

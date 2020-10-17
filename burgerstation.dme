@@ -1184,7 +1184,6 @@
 #include "code\_core\obj\item\weapon\melee\_melee.dm"
 #include "code\_core\obj\item\weapon\melee\baton.dm"
 #include "code\_core\obj\item\weapon\melee\chainsaw.dm"
-#include "code\_core\obj\item\weapon\melee\dan_sprite_test.dm"
 #include "code\_core\obj\item\weapon\melee\energy.dm"
 #include "code\_core\obj\item\weapon\melee\grazer.dm"
 #include "code\_core\obj\item\weapon\melee\katana.dm"

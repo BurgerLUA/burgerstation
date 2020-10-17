@@ -9,7 +9,7 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
-	value = -1
+	value = 0
 
 /obj/item/clothing/head/helmet/hardsuit/engineering
 	name = "engineering rig helmet"

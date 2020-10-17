@@ -16,6 +16,8 @@
 	var/enemies_to_spawn_per_player = 1
 	var/enemies_to_spawn_per_minute = 0.1
 
+	var/next_spawn_check = 0
+
 /gamemode/horde/update_objectives()
 
 	. = ..()
@@ -166,7 +168,12 @@
 
 /gamemode/horde/proc/on_fighting()
 
-	var/wave_to_spawn = get_enemies_to_spawn()
+	if(next_spawn_check < world.time)
+		return TRUE
+
+	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(60)
+
+	var/wave_to_spawn = get_enemies_to_spawn() - length(tracked_enemies)
 
 	if(wave_to_spawn < 4)
 		return TRUE
@@ -212,7 +219,11 @@
 	return TRUE
 
 /gamemode/horde/proc/get_enemies_to_spawn()
-	return CEILING(clamp(enemies_to_spawn_base + length(all_players)*enemies_to_spawn_per_player + FLOOR(DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute),1),0,min(40,length(all_players)*1.5)),4) - length(tracked_enemies) //One additional enemy every 3 minutes.
+	. = enemies_to_spawn_base
+	. += length(all_players)*enemies_to_spawn_per_player
+	. += DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute)
+	. = max( min(40,length(all_players*enemies_to_spawn_per_player*2)) )
+	return FLOOR(.,1)
 
 /gamemode/horde/proc/find_horde_target()
 

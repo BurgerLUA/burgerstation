@@ -150,7 +150,7 @@
 	var/time_to_wait = do_attack_animation(attacker,victim,weapon)
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",time_to_wait,src,.proc/do_miss_sound,attacker,victim,weapon)
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",time_to_wait,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
-	return TRUE
+	return time_to_wait
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
@@ -216,6 +216,13 @@
 	return luck(list(attacker,weapon),crit_chance)
 
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
+
+	if(!length(victims))
+		CRASH_SAFE("Swing had no victims!")
+		return FALSE
+
+	if(!length(hit_objects))
+		return perform_miss(attacker,victims[1],weapon)
 
 	var/swing_time = 0
 

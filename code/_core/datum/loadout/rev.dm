@@ -158,6 +158,6 @@
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/storage/kit/ai3/filled
-
+		/obj/item/storage/kit/ai3/filled,
+		/obj/item/currency/telecrystals/player_antagonist_spawn
 	)

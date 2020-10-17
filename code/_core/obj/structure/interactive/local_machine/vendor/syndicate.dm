@@ -103,3 +103,57 @@
 		/obj/item/pinpointer/crew/syndicate
 	)
 	markup = 0.75
+
+/obj/structure/interactive/vending/syndicate/prize/rev
+	stored_types = list(
+		/obj/item/clothing/back/storage/backpack/explorer,
+		/obj/item/clothing/overwear/armor/plate_carrier/black,
+		/obj/item/armor_plate/super,
+		/obj/item/armor_plate/ultra,
+		/obj/item/clothing/overwear/armor/slavticool,
+		/obj/item/clothing/head/helmet/security/slavticool,
+		/obj/item/clothing/overwear/hardsuit/exosuit,
+		/obj/item/clothing/overwear/hardsuit/seva/mono,
+		/obj/item/clothing/overwear/hardsuit/skat,
+		/obj/item/deployable/barricade/filled,
+		/obj/item/grenade/landmine/proximity/explosive,
+		/obj/item/grenade/timed/explosive,
+		/obj/item/supply_crate/russian,
+		/obj/item/weapon/melee/toolbox/syndicate,
+		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
+	)
+
+
+/obj/structure/interactive/vending/syndicate/guns/rev
+	name = "revolutionary armaments vendor"
+	icon_state = "sovietsoda"
+	stored_types = list(
+		/obj/item/weapon/ranged/bullet/revolver/nagant,
+		/obj/item/bullet_cartridge/revolver_762,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
+		/obj/item/magazine/rifle_545,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
+		/obj/item/magazine/rifle_762_short,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
+		/obj/item/magazine/gauss_gun,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
+		/obj/item/magazine/rifle_762_long,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
+		/obj/item/magazine/rifle_939,
+
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/storage/ammo/buckshot_23,
+		/obj/item/storage/ammo/slug_23,
+
+		/obj/item/weapon/melee/sword/allium,
+		/obj/item/weapon/melee/shield
+	)
