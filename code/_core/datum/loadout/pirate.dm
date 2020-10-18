@@ -48,7 +48,7 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/armor/bulletproof,
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/glasses/ninja,
 		/obj/item/clothing/head/hat/headband/dark_grey,
 		/obj/item/clothing/neck/cloak/black,
@@ -68,7 +68,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/weapon/melee/sword/sabre,
-		/obj/item/clothing/head/hood/bandana/red
+		/obj/item/clothing/head/hat/bandana/red
 	)
 
 

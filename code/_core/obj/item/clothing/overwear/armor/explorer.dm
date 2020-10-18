@@ -22,8 +22,7 @@
 		DARK = 25,
 	)
 	additional_clothing = list(
-		/obj/item/clothing/head/helmet/explorer_suit,
-		/obj/item/clothing/mask/gas/mining
+		/obj/item/clothing/head/helmet/full/explorer
 	)
 
 	size = SIZE_6

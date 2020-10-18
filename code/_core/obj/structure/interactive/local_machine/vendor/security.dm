@@ -21,7 +21,7 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
 		/obj/item/clothing/overwear/armor/medium_armor/security,

@@ -1,4 +1,4 @@
-/obj/item/clothing/head/hood/bandana
+/obj/item/clothing/head/hat/bandana
 	name = "bandana"
 	desc = "Damn, it feels good to be a gangsta."
 	desc_extended = "Can be worn both as a mask to cover up your face, or as a hat."
@@ -21,7 +21,7 @@
 
 	value = 10
 
-/obj/item/clothing/head/hood/bandana/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/hat/bandana/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 
@@ -36,5 +36,5 @@
 	return .
 
 
-/obj/item/clothing/head/hood/bandana/red
+/obj/item/clothing/head/hat/bandana/red
 	color = "#880000"

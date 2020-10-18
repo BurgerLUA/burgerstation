@@ -16,7 +16,7 @@
 		/obj/item/storage/pouch/double/brown,
 		/obj/item/storage/pouch/triple/brown,
 		/obj/item/clothing/belt/storage/colored/brown,
-		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/poly/engineering,
 		/obj/item/clothing/head/light/hardhat,
 		/obj/item/clothing/overwear/coat/vest/colored/brown

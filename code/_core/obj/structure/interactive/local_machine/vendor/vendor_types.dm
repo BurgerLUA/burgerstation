@@ -116,8 +116,8 @@
 		/obj/item/clothing/back/storage/backpack/,
 		/obj/item/clothing/back/storage/dufflebag/,
 		/obj/item/clothing/belt/storage/colored,
-		/obj/item/clothing/head/hood/bandana,
-		/obj/item/clothing/head/hood/skimask,
+		/obj/item/clothing/head/hat/bandana,
+		/obj/item/clothing/head/hat/skimask,
 		/obj/item/clothing/neck/cape,
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,
@@ -532,7 +532,7 @@
 		/obj/item/container/beaker/glass,
 		/obj/item/container/beaker/bowl,
 		/obj/item/container/beaker/large,
-		/obj/item/clothing/head/hat/paperbag,
+		//obj/item/clothing/head/helmet/full/paperbag,
 		/obj/item/supply_remote/barbecue,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
 	)
@@ -546,9 +546,9 @@
 
 	stored_types = list(
 		/obj/item/clothing/uniform/stealth,
-		/obj/item/clothing/head/helmet/nanotrasen/light,
-		/obj/item/clothing/head/helmet/nanotrasen/medium,
-		/obj/item/clothing/head/helmet/nanotrasen/heavy,
+		/obj/item/clothing/head/helmet/full/nanotrasen/light,
+		/obj/item/clothing/head/helmet/full/nanotrasen/medium,
+		/obj/item/clothing/head/helmet/full/nanotrasen/heavy,
 		/obj/item/clothing/overwear/armor/nanotrasen/light,
 		/obj/item/clothing/overwear/armor/nanotrasen/medium,
 		/obj/item/clothing/overwear/armor/nanotrasen/heavy

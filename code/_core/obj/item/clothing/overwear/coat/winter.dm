@@ -18,7 +18,7 @@
 		BODY_GROIN = 2
 	)
 
-	additional_clothing = list(/obj/item/clothing/head/hood/winter)
+	additional_clothing = list(/obj/item/clothing/head/hat/winter)
 
 	size = SIZE_3
 

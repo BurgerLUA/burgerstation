@@ -92,6 +92,10 @@
 	if(world.time < attacker.attack_next)
 		return FALSE
 
+	if(attacker != object_to_damage_with)
+		if(world.time < object_to_damage_with.attack_next)
+			return FALSE
+
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
 		var/can_attack = attacker.can_attack(v,object_to_damage_with,params,DT)
@@ -107,13 +111,13 @@
 			continue
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
 			hit_objects = null
-			break
-		victims -= v
+			if(!can_be_attacked) break
+		victims -= v //Needs to be here.
 
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
 
-	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
+	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)*DT.attack_delay_mod
 
 	DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
 

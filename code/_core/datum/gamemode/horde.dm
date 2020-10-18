@@ -168,7 +168,7 @@
 
 /gamemode/horde/proc/on_fighting()
 
-	if(next_spawn_check < world.time)
+	if(next_spawn_check > world.time)
 		return TRUE
 
 	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(60)

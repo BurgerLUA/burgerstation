@@ -217,9 +217,9 @@
 
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
-	visible_message(span("danger","\The [src] is violently crushed!"))
-	death()
-	if(!qdeleting) qdel(src)
+	visible_message(span("danger","\The [src] bursts through the shuttle floor!"))
+	//death()
+	//if(!qdeleting) qdel(src)
 	return .
 
 /mob/living/calculate_value()

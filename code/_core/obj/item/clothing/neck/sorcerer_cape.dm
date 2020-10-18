@@ -22,7 +22,7 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
-	additional_clothing = list(/obj/item/clothing/head/hood/sorcerer_hood)
+	additional_clothing = list(/obj/item/clothing/head/hat/sorcerer_hood)
 
 	dyeable = TRUE
 

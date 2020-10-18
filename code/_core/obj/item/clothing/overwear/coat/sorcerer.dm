@@ -26,6 +26,6 @@
 	dyeable = TRUE
 
 	additional_clothing = list(
-		/obj/item/clothing/head/hood/sorcerer_hood,
+		/obj/item/clothing/head/hat/sorcerer_hood,
 		/obj/item/clothing/neck/sorcerer
 	)

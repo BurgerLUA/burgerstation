@@ -77,6 +77,6 @@
 
 	value = 500
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/cult)
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/cult)
 
 	slowdown_mul_worn = 1.2

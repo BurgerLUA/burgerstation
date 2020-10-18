@@ -5,4 +5,4 @@
 
 	protected_limbs = list(BODY_GROIN)
 
-	blocks_clothing = SLOT_GROIN_O
+	blocks_clothing = SLOT_GROIN_O | SLOT_GROIN

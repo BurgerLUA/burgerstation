@@ -1,7 +1,7 @@
 /loadout/cult
 	spawning_items = list(
 
-		/obj/item/clothing/head/hood/cult,
+		/obj/item/clothing/head/hat/cult,
 		/obj/item/clothing/overwear/armor/cult,
 
 		/obj/item/clothing/feet/shoes/brown,

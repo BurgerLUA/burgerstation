@@ -147,7 +147,7 @@
 		/obj/item/clothing/glasses/sun,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/mining,
 		/obj/item/clothing/neck/mantle/white,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
