@@ -27,13 +27,13 @@
 			L.to_chat(span("warning","You're dead!"))
 			return FALSE
 
+		if(caller.attack_flags & ATTACK_HOLD)
+			L.dash(object,0x0,2)
+			return TRUE
+
+
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
-
-	if(caller.attack_flags & ATTACK_HOLD && defer_self == src && is_living(caller))
-		var/mob/living/L = caller
-		L.dash(object,0x0,2)
-		return TRUE
 
 	if(caller.attack_flags & ATTACK_GRAB)
 		if(is_item(defer_object) && is_inventory(defer_object.loc))

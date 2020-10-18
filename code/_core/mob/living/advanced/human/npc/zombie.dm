@@ -15,7 +15,8 @@
 
 	value = 250
 
-
+	loyalty_tag = "Zombie"
+	iff_tag = "Zombie"
 
 /mob/living/advanced/npc/zombie/post_death()
 	CALLBACK("zombie_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/zombie_revive)

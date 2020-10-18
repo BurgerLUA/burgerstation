@@ -539,11 +539,11 @@
 		animate(L, transform = attack_matrix, time = FLOOR(weapon_attack_delay*0.125,1), flags = ANIMATION_LINEAR_TRANSFORM)
 
 		if(L.horizontal)
-			animate(transform = turn(matrix(), L.stun_angle), time = FLOOR(caller_attack_delay*0.9,1), flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(transform = turn(matrix(), L.stun_angle), time = FLOOR(caller_attack_delay*0.99,1), flags = ANIMATION_LINEAR_TRANSFORM)
 		else
-			animate(transform = matrix(), time = FLOOR(caller_attack_delay*0.9,1), flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(transform = matrix(), time = FLOOR(caller_attack_delay*0.99,1), flags = ANIMATION_LINEAR_TRANSFORM)
 
-	. = clamp(CEILING(weapon_attack_delay*0.125,1),1,30)
+	. = CEILING(weapon_attack_delay*0.125,1)
 
 	if(draw_weapon)
 		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 2,victim,attacker,weapon)

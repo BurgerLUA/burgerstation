@@ -5,6 +5,10 @@
 	if(!can_move())
 		return FALSE
 
+	if(!src.client)
+		CRASH_SAFE("Dash called on non-player!")
+		return FALSE
+
 	if(health)
 		if(health.stamina_current < 25)
 			to_chat(span("warning","You're exhausted!"))

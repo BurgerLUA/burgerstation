@@ -32,8 +32,8 @@
 		FIRE = TRUE
 	)
 
-	iff_tag = "goliath"
-	loyalty_tag = "goliath"
+	iff_tag = "Goliath"
+	loyalty_tag = "Goliath"
 
 	mob_size = MOB_SIZE_LARGE
 

@@ -185,12 +185,23 @@
 					continue
 				.[damage_type] += C_defense_rating[damage_type]
 
-	if(A.attack_flags |= ATTACK_HOLD && get_dir(attacker,src) & A.dir) //Do you even block?
+	if((A.attack_flags & ATTACK_HOLD) && (get_dir(attacker,owner) != owner.dir)) //Do you even block?
+		owner << "Block!"
+		for(var/damage_type in ALL_DAMAGE)
+			if(IS_INFINITY(.[damage_type]))
+				continue
+			.[damage_type] += 25 //25 extra armor when blocking regardless of item.
+
 		if(A.right_item && A.right_item.can_block() && length(A.right_item.block_defense_rating))
 			for(var/damage_type in A.right_item.block_defense_rating)
+				if(IS_INFINITY(.[damage_type]))
+					continue
 				.[damage_type] += A.right_item.block_defense_rating[damage_type]
+
 		if(A.left_item && A.left_item.can_block() && length(A.left_item.block_defense_rating))
 			for(var/damage_type in A.left_item.block_defense_rating)
+				if(IS_INFINITY(.[damage_type]))
+					continue
 				.[damage_type] += A.left_item.block_defense_rating[damage_type]
 
 	return .

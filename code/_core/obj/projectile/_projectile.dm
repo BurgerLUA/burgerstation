@@ -207,7 +207,7 @@
 		var/mob/living/L = k
 		if(L.dead)
 			continue
-		if(L.move_delay > 0)
+		if(L.move_delay <= 0)
 			continue
 		if(L == owner || L == weapon)
 			continue

@@ -102,16 +102,18 @@
 		var/can_be_attacked = v.can_be_attacked(attacker,object_to_damage_with,params,DT)
 		if(can_attack && can_be_attacked)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
-			hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
-			if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
-				var/mob/living/advanced/A = attacker
-				A.add_cqc(DT.cqc_tag)
-				var/damagetype/DT2 = A.check_cqc(v,object_to_damage_with,hit_object,blamed)
-				if(DT2) DT = DT2
-			continue
+			if(hit_object)
+				hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
+				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
+					var/mob/living/advanced/A = attacker
+					A.add_cqc(DT.cqc_tag)
+					var/damagetype/DT2 = A.check_cqc(v,object_to_damage_with,hit_object,blamed)
+					if(DT2) DT = DT2
+				continue
+			//No hit object means we missed.
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
 			hit_objects = null
-			if(!can_be_attacked) break
+			if(!(can_attack && can_be_attacked)) break
 		victims -= v //Needs to be here.
 
 	if(attacker != object_to_damage_with)

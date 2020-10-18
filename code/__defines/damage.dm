@@ -27,3 +27,4 @@
 #define HOLY "holy"
 #define DARK "dark"
 
+#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,BOMB,BIO,RAD,ION)
