@@ -13,4 +13,4 @@
 
 	size = SIZE_2
 
-	value = 1200
+	value = 800

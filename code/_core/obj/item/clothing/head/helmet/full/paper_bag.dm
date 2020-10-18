@@ -1,4 +1,4 @@
-/obj/item/clothing/head/hat/full/paperbag
+/obj/item/clothing/head/helmet/full/paperbag
 	name = "paper bag"
 	desc = "Put the MONEY in the BAG! PUT IT IN!"
 	desc_extended = "Holds items but preferably food. Can be dyed. Can apply a logo by Alt-clicking on help intent nearby, background with disarm intent. Also a fashion statement when worn (must be empty)."
@@ -28,24 +28,24 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD
 
-/obj/item/clothing/head/hat/full/paperbag/Finalize()
+/obj/item/clothing/head/helmet/full/paperbag/Finalize()
 	. = ..()
 	update_inventory()
 	return .
 
-/obj/item/clothing/head/hat/full/paperbag/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("logo")
 	SAVEVAR("logobg")
 	return .
 
-/obj/item/clothing/head/hat/full/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/clothing/head/helmet/full/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("logo")
 	LOADVAR("logobg")
 	return .
 
-/obj/item/clothing/head/hat/full/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/item/clothing/head/helmet/full/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	var/mob/living/C = caller
 	if(C.attack_flags & ATTACK_ALT)
@@ -68,7 +68,7 @@
 
 
 
-/obj/item/clothing/head/hat/full/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/helmet/full/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 
@@ -88,7 +88,7 @@
 		is_container = TRUE
 	return .
 
-/obj/item/clothing/head/hat/full/paperbag/update_inventory()
+/obj/item/clothing/head/helmet/full/paperbag/update_inventory()
 	. = ..()
 	var/filled_slots = 1
 	for(var/k in src.inventories)
@@ -105,7 +105,7 @@
 	update_overlays()
 	return .
 
-/obj/item/clothing/head/hat/full/paperbag/update_overlays()
+/obj/item/clothing/head/helmet/full/paperbag/update_overlays()
 
 	var/content_count = 1
 
@@ -123,7 +123,7 @@
 
 	return ..()
 
-/obj/item/clothing/head/hat/full/paperbag/nanotrasen
+/obj/item/clothing/head/helmet/full/paperbag/nanotrasen
 	logo = 1
 	logobg = 2
 	polymorphs = list(
@@ -132,7 +132,7 @@
 		"logobg" = "#092337"
 	)
 
-/obj/item/clothing/head/hat/full/paperbag/syndicate
+/obj/item/clothing/head/helmet/full/paperbag/syndicate
 	logo = 3
 	logobg = 1
 	polymorphs = list(
@@ -141,7 +141,7 @@
 		"logobg" = "#2A2A2A"
 	)
 
-/obj/item/clothing/head/hat/full/paperbag/random/Generate()
+/obj/item/clothing/head/helmet/full/paperbag/random/Generate()
 	logo = rand(0,5)
 	logobg = rand(0,2)
 	return ..()
