@@ -112,6 +112,7 @@
 
 	if(object && is_datum(object) && desired_varable_key && desired_varable_value)
 		object.vars[desired_varable_key] = desired_varable_value
+		var_edit(object)
 
 /client/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
 	set category = "Admin"

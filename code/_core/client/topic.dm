@@ -94,15 +94,15 @@
 			if(key != "quit")
 				edit_macros()
 
-		else if(href_list["var_edit_ref"])
-			var/datum/actual_reference = locate(href_list["var_edit_ref"])
-			if(actual_reference && /client/verb/var_edit in verbs)
-				var_edit(actual_reference)
+		if(permissions & FLAG_PERMISSION_ADMIN)
+			if(href_list["var_edit_ref"])
+				var/datum/actual_reference = locate(href_list["var_edit_ref"])
+				if(actual_reference)
+					var_edit(actual_reference)
 
-		else if(href_list["var_edit_other"] && href_list["var_edit_other_ref"])
-			var/datum/actual_reference = locate(href_list["var_edit_other_ref"])
-			var/actual_key = href_list["var_edit_other"]
-			if(actual_reference && /client/verb/change_variable in verbs)
+			else if(href_list["var_edit_other"] && href_list["var_edit_other_ref"])
+				var/datum/actual_reference = locate(href_list["var_edit_other_ref"])
+				var/actual_key = href_list["var_edit_other"]
 				change_variable(actual_reference,actual_key,null)
 
 		if(href_list["done_loading"])
