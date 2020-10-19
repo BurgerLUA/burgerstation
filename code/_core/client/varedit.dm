@@ -26,10 +26,10 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 		returning += ")"
 		return returning
 
-	if(!key)
-		return value
-
 	if(!value && !isnum(value))
 		value = "NULL"
+
+	if(!key)
+		return value
 
 	return "<a href='?var_edit_other=[key];var_edit_other_ref=\ref[D]'>[value]</a>"

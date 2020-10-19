@@ -103,6 +103,7 @@
 		if(can_attack && can_be_attacked)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
 			if(hit_object)
+				attacker << "Found hitobject: [hit_object.type]."
 				hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
 				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
 					var/mob/living/advanced/A = attacker
@@ -112,8 +113,9 @@
 				continue
 			//No hit object means we missed.
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
+			attacker << "Clearing hitobjects."
 			hit_objects = null
-			if(!(can_attack && can_be_attacked)) break
+			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
 		victims -= v //Needs to be here.
 
 	if(attacker != object_to_damage_with)
