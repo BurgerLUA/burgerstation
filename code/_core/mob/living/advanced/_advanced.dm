@@ -135,6 +135,10 @@
 
 	 return .
 
+/mob/living/advanced/on_crush()
+	drop_all_items(get_turf(src))
+	return ..()
+
 /mob/living/advanced/proc/update_clothes() //Avoid using?
 
 	tracked_hidden_organs = list()
@@ -236,7 +240,7 @@
 
 	return .
 
-/mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
+/mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=TRUE)
 
 	var/dropped_objects = list()
 

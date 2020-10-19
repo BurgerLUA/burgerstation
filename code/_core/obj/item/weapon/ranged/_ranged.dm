@@ -313,6 +313,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/mob/living/L = caller
 			skill_spread = get_skill_spread(L)
 			movement_spread = get_movement_spread(L)
+			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED)*0.5)
 			if(L.horizontal) prone = TRUE
 			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
 

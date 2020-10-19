@@ -148,3 +148,36 @@
 			returning_text += "[line_text]<br>"
 
 		src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",returning_text)]</body>","window=help")
+
+
+/client/verb/smite_living()
+
+	set name = "Smite Living"
+	set category = "Admin"
+
+	var/list/valid_targets = list()
+
+	for(var/k in all_players)
+		valid_targets += k
+
+	for(var/mob/living/L in view(src.mob,VIEW_RANGE))
+		valid_targets |= L
+
+	var/mob/living/L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
+
+	if(!L) return FALSE
+
+	var/confirm = input("Are you sure you want to crush [L.name]? This will kill them instantly...","Cursh Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(confirm != "Yes") return FALSE
+
+	var/turf/T = get_turf(L)
+	play('sound/meme/cbt.ogg',T)
+	CALLBACK("\ref[L]_smite",15,L,/mob/living/proc/smite)
+
+
+/mob/living/proc/smite()
+	var/turf/T = get_turf(src)
+	new/obj/effect/temp/fist(T,4,"#FFFFFF")
+	play('sound/effects/anima_fragment_attack.ogg',T)
+	on_crush()

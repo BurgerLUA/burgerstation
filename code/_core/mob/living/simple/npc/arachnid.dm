@@ -31,8 +31,8 @@
 		ION = INFINITY
 	)
 
-	iff_tag = "jungle"
-	loyalty_tag = "jungle"
+	iff_tag = "Jungle"
+	loyalty_tag = "Jungle"
 
 	health_base = 1000
 

@@ -186,7 +186,6 @@
 				.[damage_type] += C_defense_rating[damage_type]
 
 	if((A.attack_flags & ATTACK_HOLD) && (get_dir(attacker,owner) != owner.dir)) //Do you even block?
-		owner << "Block!"
 		for(var/damage_type in ALL_DAMAGE)
 			if(IS_INFINITY(.[damage_type]))
 				continue

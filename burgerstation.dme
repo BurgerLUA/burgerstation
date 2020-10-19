@@ -750,6 +750,7 @@
 #include "code\_core\obj\effect\temp\death.dm"
 #include "code\_core\obj\effect\temp\debug.dm"
 #include "code\_core\obj\effect\temp\explosion.dm"
+#include "code\_core\obj\effect\temp\fist.dm"
 #include "code\_core\obj\effect\temp\healing.dm"
 #include "code\_core\obj\effect\temp\item_pickup.dm"
 #include "code\_core\obj\effect\temp\landing.dm"

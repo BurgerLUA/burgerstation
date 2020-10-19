@@ -64,5 +64,6 @@
 		verbs += /client/verb/change_variable
 		verbs += /client/verb/spawn_from_path
 		verbs += /client/verb/add_new_wikibot_entry
+		verbs += /client/verb/smite_living
 
 	return TRUE

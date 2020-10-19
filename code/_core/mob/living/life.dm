@@ -171,6 +171,8 @@
 
 	handle_status_effects()
 
+	handle_blocking()
+
 	handle_health_buffer()
 
 	update_alpha(handle_alpha())

@@ -58,7 +58,7 @@
 
 	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 
-	var/stun_angle = 0
+	var/stun_angle = 90
 
 	var/boss = FALSE
 	var/boss_music
@@ -215,11 +215,18 @@
 
 	var/list/defense_bonuses = list() //From perks, powers, and whatever.
 
+	var/blocking = FALSE
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
-	visible_message(span("danger","\The [src] bursts through the shuttle floor!"))
-	//death()
-	//if(!qdeleting) qdel(src)
+	play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
+	visible_message(span("danger","\The [src.name] is violently crushed!"))
+	if(blood_type)
+		var/reagent/R = REAGENT(blood_type)
+		for(var/i=1,i<=9,i++)
+			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
+	death()
+	if(!qdeleting) qdel(src)
 	return .
 
 /mob/living/calculate_value()

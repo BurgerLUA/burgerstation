@@ -24,3 +24,34 @@
 	if(instances_left > 0 && (dash_direction || (get_turf(dash_target) != get_turf(src))))
 		CALLBACK("dash_\ref[src]",DASH_DELAY,src,.proc/dash,dash_target,dash_direction,instances_left)
 	return TRUE
+
+
+/mob/living/proc/can_block()
+
+	if(!(attack_flags & ATTACK_HOLD))
+		return FALSE
+
+	if(!can_move())
+		return FALSE
+
+	if(!isturf(loc))
+		return FALSE
+
+	if(move_mod >= 3)
+		return FALSE
+
+	return TRUE
+
+/mob/living/proc/handle_blocking()
+
+	if(blocking)
+		if(!can_block())
+			//Disabled
+			animate(shield_overlay,alpha = 0, time = 3, flags = ANIMATION_LINEAR_TRANSFORM)
+			blocking = FALSE
+	else
+		if(can_block())
+			//Enabled
+			animate(shield_overlay,alpha = 200, time = 5, easing = BACK_EASING | EASE_OUT, flags = ANIMATION_LINEAR_TRANSFORM)
+			blocking = TRUE
+

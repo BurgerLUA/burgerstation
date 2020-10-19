@@ -36,7 +36,10 @@
 			var/current_xp = A.get_xp()
 			var/last_xp = A.level_to_xp(current_level)
 			var/next_xp = A.level_to_xp(min(current_level+1,L.max_level))
-			final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
+			if(next_xp - last_xp > 0)
+				final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
+			else
+				final_text += div("notice","[A.name]: <b>[A.get_current_level(current_level)]</b>\n")
 
 		final_text += div("bold underlined","Skills\n")
 		for(var/k in L.skills)
@@ -45,8 +48,10 @@
 			var/current_xp = A.get_xp()
 			var/last_xp = A.level_to_xp(current_level)
 			var/next_xp = A.level_to_xp(min(current_level+1,L.max_level))
-			final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
-
+			if(next_xp - last_xp > 0)
+				final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
+			else
+				final_text += div("notice","[A.name]: <b>[A.get_current_level(current_level)]</b>\n")
 		L.to_chat(final_text)
 
 	return .

@@ -106,7 +106,7 @@
 	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, stamina damage as well as stamina regeneration"
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.64
-	experience_multiplier = 21.5
+	experience_multiplier = 29.7
 	combat_level_mul = 0.5
 
 /experience/attribute/endurance/ //100% complete
