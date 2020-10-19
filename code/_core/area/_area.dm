@@ -53,6 +53,9 @@ var/global/list/all_areas = list()
 
 	var/interior = FALSE
 
+	var/average_x = 0
+	var/average_y = 0
+
 /area/proc/is_space()
 	return FALSE
 
@@ -104,6 +107,20 @@ var/global/list/all_areas = list()
 	if(weather)
 		icon = 'icons/area/weather.dmi'
 		icon_state = weather
+
+	var/area_count = 0
+	average_x = 0
+	average_y = 0
+
+	for(var/turf/T in contents)
+		average_x += T.x
+		average_y += T.y
+		area_count += 1
+
+	average_x = CEILING(average_x/area_count,1)
+	average_y = CEILING(average_y/area_count,1)
+
+	log_debug("Found [area_count] turfs in area [src.type], with an average coord of [average_x],[average_y],[z]")
 
 	return ..()
 

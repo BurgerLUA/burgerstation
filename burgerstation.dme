@@ -1410,6 +1410,7 @@
 #include "code\_core\obj\structure\interactive\crate\crate.dm"
 #include "code\_core\obj\structure\interactive\crate\secure.dm"
 #include "code\_core\obj\structure\interactive\crate\supply_pod.dm"
+#include "code\_core\obj\structure\interactive\crate\trash.dm"
 #include "code\_core\obj\structure\interactive\disposals\_disposals.dm"
 #include "code\_core\obj\structure\interactive\disposals\container.dm"
 #include "code\_core\obj\structure\interactive\disposals\labeler.dm"

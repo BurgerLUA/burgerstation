@@ -11,7 +11,7 @@
 	desired_light_color = null //Set in update_icon
 
 	layer = LAYER_OBJ
-	plane = PLANE_OBJ
+	plane = PLANE_FLOOR
 
 	var/on = TRUE
 

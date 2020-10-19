@@ -13,6 +13,8 @@
 
 	bullet_block_chance = 50
 
+	layer = LAYER_OBJ_WINDOW - 0.1
+
 /obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/caller,var/obj/item/material/sheet/S)
 	INTERACT_CHECK
 	INTERACT_CHECK_OTHER(S)
