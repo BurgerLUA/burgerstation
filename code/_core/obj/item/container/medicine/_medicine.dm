@@ -84,7 +84,7 @@
 				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit.
 					var/experience_gain = .
 					if(P == A.loc)
-						experience_gain *= 0.25
+						experience_gain *= 0.15
 					P.add_skill_xp(SKILL_MEDICINE,experience_gain)
 		else
 			A.health.update_health()
