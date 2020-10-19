@@ -100,6 +100,7 @@
 
 	add_item_count(-1)
 
+
 	return TRUE
 
 /obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
