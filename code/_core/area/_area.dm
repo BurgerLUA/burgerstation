@@ -17,6 +17,9 @@ var/global/list/all_areas = list()
 
 	var/sound_environment = ENVIRONMENT_GENERIC
 
+	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues.
+	var/trackable = FALSE //Trackable area by the game.
+
 	var/map_color_r = rgb(255,0,0,255)
 	var/map_color_g = rgb(0,255,0,255)
 	var/map_color_b = rgb(0,0,255,255)
@@ -55,8 +58,6 @@ var/global/list/all_areas = list()
 
 	var/average_x = 0
 	var/average_y = 0
-
-	var/trackable = FALSE //Trackable area by the game.
 
 /area/proc/is_space()
 	return FALSE

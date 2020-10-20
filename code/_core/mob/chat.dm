@@ -161,6 +161,9 @@ var/regex/vowels = new("\[aeiou\]", "i")
 
 /mob/proc/do_emote(var/emote_text,var/atom/target,var/messages = TRUE)
 
+	if(world.time <= next_emote)
+		return FALSE
+
 	if(!emote_text)
 		return FALSE
 
@@ -174,6 +177,8 @@ var/regex/vowels = new("\[aeiou\]", "i")
 
 	var/emote/E = SSemote.all_emotes[emote_text]
 	E.on_emote(src,target)
+
+	next_emote = world.time + 5
 
 	return TRUE
 

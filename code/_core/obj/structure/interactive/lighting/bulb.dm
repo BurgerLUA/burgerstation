@@ -18,6 +18,24 @@
 
 	rotation_mod = -1
 
+
+/obj/structure/interactive/lighting/bulb/on_destruction(var/mob/caller,var/damage = FALSE)
+
+	if(desired_light_color)
+		desired_light_color = null
+		if(health)
+			health.restore()
+		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),/material/glass)
+		. = ..()
+		update_atom_light()
+		update_sprite()
+	else
+		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),/material/steel)
+		. = ..()
+		qdel(src)
+
+	return .
+
 /obj/structure/interactive/lighting/bulb/New()
 
 	. = ..()

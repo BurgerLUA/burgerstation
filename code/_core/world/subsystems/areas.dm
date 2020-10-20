@@ -37,6 +37,9 @@ SUBSYSTEM_DEF(area)
 				if(WEATHER_VOLCANIC)
 					areas_volcanic += A
 
+
+	sortTim(all_areas,/proc/cmp_name_asc,associative=TRUE)
+
 	/*
 	if(run_unit_tests)
 		log_subsystem(name,"Initialized [length(areas_snow)] snow areas.")

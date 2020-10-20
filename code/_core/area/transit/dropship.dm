@@ -7,11 +7,10 @@
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/transit/dropship/alpha/landing
-	weather = WEATHER_SNOW
-	ambient_temperature = T0C - 20
-	hazard = "cold"
+	area_identifier = "Mission"
 
 /area/transit/dropship/alpha/station
+	area_identifier = "Station"
 
 
 /area/transit/dropship/bravo/bluespace
@@ -20,8 +19,10 @@
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/transit/dropship/bravo/landing
+	area_identifier = "Mission"
 
 /area/transit/dropship/bravo/station
+	area_identifier = "Station"
 
 
 /area/transit/dropship/charlie/bluespace
@@ -30,8 +31,10 @@
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/transit/dropship/charlie/landing
+	area_identifier = "Mission"
 
 /area/transit/dropship/charlie/station
+	area_identifier = "Station"
 
 
 /area/transit/dropship/delta/bluespace
@@ -40,11 +43,10 @@
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/transit/dropship/delta/landing
-	weather = WEATHER_SNOW
-	ambient_temperature = T0C - 20
-	hazard = "cold"
+	area_identifier = "Mission"
 
 /area/transit/dropship/delta/station
+	area_identifier = "Station"
 
 
 /area/transit/dropship/golf/bluespace
@@ -53,8 +55,10 @@
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/transit/dropship/golf/landing
+	area_identifier = "Mission"
 
 /area/transit/dropship/golf/station
+	area_identifier = "Station"
 
 
 

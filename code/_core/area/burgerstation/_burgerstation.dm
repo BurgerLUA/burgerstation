@@ -20,6 +20,10 @@
 		'sound/ambient/station_13.ogg'
 	)
 
+	trackable = TRUE
+
+	area_identifier = "Station"
+
 /area/burgerstation/hall
 	name = "\improper Hallway"
 	icon_state = "hall"

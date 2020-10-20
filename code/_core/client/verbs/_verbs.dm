@@ -46,24 +46,27 @@
 
 	//Moderator
 	if(permissions & FLAG_PERMISSION_MODERATOR)
-		verbs += /client/verb/make_announcement
 		verbs += /client/verb/ban
-		verbs += /client/verb/get_players
+		verbs += /client/verb/get_clients
 
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)
 		verbs += /client/verb/show_debug_verbs
 
 	//Admin
-	if(permissions & FLAG_PERMISSION_ADMIN)
-		verbs += /client/verb/give_dosh
+	//if(permissions & FLAG_PERMISSION_ADMIN)
+
+
+	if(permissions & FLAG_PERMISSION_GAMEMASTER)
+		verbs += /client/verb/speed_up_setup
+		verbs += /client/verb/force_random_event
 		verbs += /client/verb/set_skill
 		verbs += /client/verb/set_attribute
-		verbs += /client/verb/force_random_event
-		verbs += /client/verb/var_edit
-		verbs += /client/verb/change_variable
 		verbs += /client/verb/spawn_from_path
-		verbs += /client/verb/add_new_wikibot_entry
 		verbs += /client/verb/smite_living
+		verbs += /client/proc/add_points
+		verbs += /client/verb/give_dosh
+		verbs += /client/verb/test_spook_station
+		verbs += /client/verb/test_syndicate_raid
 
 	return TRUE

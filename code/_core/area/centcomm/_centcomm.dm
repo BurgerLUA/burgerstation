@@ -19,3 +19,5 @@
 		'sound/ambient/station_12.ogg',
 		'sound/ambient/station_13.ogg'
 	)
+
+	area_identifier = "Central Command"

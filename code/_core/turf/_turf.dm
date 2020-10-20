@@ -30,6 +30,8 @@
 
 	var/world_spawn = FALSE
 
+	var/darkness = 0 //Calculated tile darkness.
+
 /turf/proc/on_step()
 	return TRUE
 

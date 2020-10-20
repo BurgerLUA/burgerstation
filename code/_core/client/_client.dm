@@ -80,6 +80,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/byond_member = FALSE
 
+	var/queued_shakes = 0
 
 /client/proc/is_player_controlled()
 	return TRUE //duh

@@ -8,6 +8,8 @@
 	sunlight_freq = 4
 	sunlight_color = "#1A3E4C"
 
+	area_identifier = null
+
 /area/space/is_space()
 	return TRUE
 

@@ -57,17 +57,6 @@ client/verb/air_test(var/pressure as num)
 
 	to_chat("Done generating light spaces.")
 
-/client/verb/test_round_end()
-	set name = "Test Round End (DANGER)"
-	set category = "Debug"
-
-	var/confirm = input("Are you sure you want to end the round in a NanoTrasen Victory?","NanoTrasen Victory") in list("Yes","No","Cancel")|null
-
-	if(confirm != "Yes")
-		return FALSE
-
-	world.end(WORLD_END_NANOTRASEN_VICTORY,FALSE)
-
 /client/verb/stealth_test()
 	set name = "Stealth Test"
 	set category = "Debug"
@@ -302,23 +291,21 @@ var/global/list/debug_verbs = list(
 	/client/verb/make_war,
 	/client/verb/generate_map_icon,
 	/client/verb/stealth_test,
-	/client/verb/test_round_end,
 	/client/verb/check_lights,
 	/client/verb/subsystem_report,
 	/client/verb/reload_badwords,
 	/client/verb/force_save_all,
-	/client/verb/rejuvenate_player,
 	/client/verb/stress_test,
 	/client/verb/print_dps,
 	/client/verb/force_screech,
-	/client/verb/rtv,
-	/client/verb/create_vote
+	/client/verb/create_vote,
+	/client/verb/var_edit,
+	/client/verb/change_variable
 )
-
 
 /client/verb/show_debug_verbs()
 	set name = "Show Debug Verbs"
-	set category = "Debug"
+	set category = "Menu"
 	for(var/k in debug_verbs)
 		verbs += debug_verbs
 	verbs -= /client/verb/show_debug_verbs
@@ -326,7 +313,7 @@ var/global/list/debug_verbs = list(
 
 /client/verb/hide_debug_verbs()
 	set name = "Hide Debug Verbs"
-	set category = "Debug"
+	set category = "Menu"
 	for(var/k in debug_verbs)
 		verbs -= debug_verbs
 	verbs += /client/verb/show_debug_verbs

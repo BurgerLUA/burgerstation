@@ -8,7 +8,7 @@
 	value = 3000
 	value_burgerbux = 10
 
-	var/sound_to_play = 'sound/voice/station/attention.ogg'
+	var/sound_to_play = 'sound/alert/announcement.ogg'
 
 	var/sender
 	var/title
@@ -66,7 +66,7 @@
 	title = "Declaration of War"
 	sender = "The Syndicate"
 	value = 500
-	sound_to_play = 'sound/voice/station/enemy_communciation.ogg'
+	sound_to_play = 'sound/alert/warning.ogg'
 
 /obj/item/announcement/syndicate/can_use(var/mob/caller)
 

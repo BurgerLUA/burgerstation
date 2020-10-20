@@ -97,9 +97,12 @@
 	else
 		add_objective(/objective/artifact)
 
+	points += 20
+
 	return ..()
 
 /gamemode/horde/on_life()
+
 	switch(state)
 		if(GAMEMODE_WAITING)
 			on_waiting()
@@ -110,6 +113,7 @@
 		if(GAMEMODE_LAUNCHING)
 			on_launching()
 		if(GAMEMODE_FIGHTING)
+			points -= FLOOR(1/60,0.01)
 			on_fighting()
 
 	return ..()
@@ -123,7 +127,7 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Prepare for Landfall","All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 8 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_8_minutes.ogg')
 	add_objectives()
 	return TRUE
 
@@ -136,7 +140,7 @@
 	state = GAMEMODE_BOARDING
 	round_time = 0
 	round_time_next = HORDE_DELAY_BOARDING
-	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_2_minutes.ogg')
 	return TRUE
 
 /gamemode/horde/proc/on_boarding()
@@ -148,7 +152,7 @@
 	state = GAMEMODE_LAUNCHING
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
-	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	allow_launch = TRUE
 	return TRUE
 
@@ -160,7 +164,6 @@
 		return TRUE
 	state = GAMEMODE_FIGHTING
 	round_time = 0
-	announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	return TRUE
 
 /gamemode/horde/proc/get_enemy_types_to_spawn()
@@ -172,6 +175,8 @@
 		return TRUE
 
 	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(60)
+
+	handle_alert_level()
 
 	var/wave_to_spawn = get_enemies_to_spawn() - length(tracked_enemies)
 
@@ -216,13 +221,15 @@
 	total_killed_enemies++
 	tracked_enemies -= L
 
+	points += 0.1
+
 	return TRUE
 
 /gamemode/horde/proc/get_enemies_to_spawn()
 	. = enemies_to_spawn_base
 	. += length(all_players)*enemies_to_spawn_per_player
 	. += DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute)
-	. = max( min(40,length(all_players*enemies_to_spawn_per_player*2)) )
+	. = max( min(40,length(all_players)*enemies_to_spawn_per_player*2) )
 	return FLOOR(.,1)
 
 /gamemode/horde/proc/find_horde_target()

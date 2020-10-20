@@ -189,9 +189,18 @@
 
 	var/list/possible_landmarks = list()
 
+	var/area/my_area = get_area(src)
+	if(!my_area.area_identifier)
+		caller.to_chat(span("warning","There is no signal..."))
+		return TRUE
+
 	for(var/k in all_areas)
 		var/area/A = all_areas[k]
-		if(A.z != caller.z || !A.trackable)
+		if(A.z != caller.z)
+			continue
+		if(!A.trackable)
+			continue
+		if(my_area.area_identifier != A.area_identifier)
 			continue
 		var/turf/T = locate(A.average_x,A.average_y,A.z)
 		if(!can_track(T))
@@ -206,7 +215,7 @@
 	scan_mode = TRUE
 	update_sprite()
 
-	var/choice = input("What do you want to track?","Landmark Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
+	var/choice = input("What do you want to track?","Area Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
 
 	if(choice)
 		var/turf/T = possible_landmarks[choice]

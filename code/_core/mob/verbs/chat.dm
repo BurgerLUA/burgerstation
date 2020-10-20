@@ -5,17 +5,7 @@
 /mob/verb/emote(var/emote as text,var/mob/target in view)
 	set name = "Emote"
 	set category = "Communication"
-
-	if(!(emote in known_emotes))
-		to_chat("Invalid emote!")
-		return FALSE
-
-	if(!SSemote.all_emotes[emote])
-		to_chat("Invalid emote!")
-		return FALSE
-
-	var/emote/E = SSemote.all_emotes[emote]
-	E.on_emote(src,target)
+	do_emote(text,target)
 
 /mob/verb/me(var/emote_text as text)
 	set name = "Me"

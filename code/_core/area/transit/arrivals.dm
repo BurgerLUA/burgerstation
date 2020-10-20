@@ -4,6 +4,7 @@
 /area/transit/arrivals_shuttle_01/centcomm
 	name = "arrivals shuttle - central command"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_NO_EVENTS
+	area_identifier = "Centcomm"
 
 /area/transit/arrivals_shuttle_01/bluespace
 	name = "arrivals shuttle - bluespace"
@@ -14,6 +15,7 @@
 
 /area/transit/arrivals_shuttle_01/station
 	name = "arrivals shuttle - station"
+	area_identifier = "Station"
 
 
 
@@ -25,6 +27,7 @@
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_NO_EVENTS
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
+	area_identifier = "Centcomm"
 
 /area/transit/arrivals_shuttle_02/bluespace
 	name = "arrivals shuttle - bluespace"
@@ -33,3 +36,4 @@
 
 /area/transit/arrivals_shuttle_02/station
 	name = "arrivals shuttle - station"
+	area_identifier = "Station"

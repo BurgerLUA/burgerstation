@@ -7,6 +7,7 @@
 
 	credit_reward = 1000
 	burgerbux_reward = 1
+	points_reward = 10
 
 /objective/artifact/proc/get_valid_targets()
 	return list(created_artifact)

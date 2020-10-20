@@ -50,19 +50,19 @@ var/global/list/all_shuttle_controlers = list()
 /obj/shuttle_controller/Initialize()
 
 	var/area/A1 = transit_areas[transit_start]
-	var/area/A2 = transit_areas[transit_bluespace]
+	//var/area/A2 = transit_areas[transit_bluespace]
 	var/area/A3 = transit_areas[transit_end]
 
 	if(!A1)
 		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit starting area ([transit_start])!")
 
-	if(!A2)
-		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit bluespace area ([transit_bluespace])!")
+	//if(!A2)
+	//	log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit bluespace area ([transit_bluespace])!")
 
 	if(!A3)
 		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit ending area ([transit_end])!")
 
-	if(!A1 || !A2 || !A3)
+	if(!A1 || !A3)
 		qdel(src)
 		return FALSE
 
@@ -151,8 +151,12 @@ var/global/list/all_shuttle_controlers = list()
 	if(state == SHUTTLE_STATE_LAUNCHING)
 		display = "IGNT"
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
-			if(!transit(transit_source,transit_bluespace))
-				return FALSE
+			if(transit_bluespace)
+				if(!transit(transit_source,transit_bluespace))
+					return FALSE
+			else
+				if(!transit(transit_source,transit_target))
+					return FALSE
 			play('sound/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 			if(last_caller)
 				create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
