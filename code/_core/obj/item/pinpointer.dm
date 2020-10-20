@@ -191,7 +191,7 @@
 
 	for(var/k in all_areas)
 		var/area/A = all_areas[k]
-		if(A.z != caller.z)
+		if(A.z != caller.z || !A.trackable)
 			continue
 		var/turf/T = locate(A.average_x,A.average_y,A.z)
 		if(!can_track(T))

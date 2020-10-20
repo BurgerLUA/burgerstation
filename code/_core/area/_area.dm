@@ -56,6 +56,8 @@ var/global/list/all_areas = list()
 	var/average_x = 0
 	var/average_y = 0
 
+	var/trackable = FALSE //Trackable area by the game.
+
 /area/proc/is_space()
 	return FALSE
 
