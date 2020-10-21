@@ -18,3 +18,20 @@
 /obj/structure/interactive/door/airlock/lz_420/security
 	color = COLOR_RED
 	fill_color = COLOR_BLACK
+
+
+/obj/structure/interactive/door/airlock/lz_420/basement
+	color = COLOR_GREY_DARK
+	fill_color = COLOR_IRON
+
+/obj/structure/interactive/door/airlock/lz_420/basement/glass
+	filler = "glass"
+	fill_color = "#FFFFFF"
+
+/obj/structure/interactive/door/airlock/lz_420/basement/maintenance
+	color = COLOR_IRON
+	fill_color = COLOR_ENGINEERING
+
+/obj/structure/interactive/door/airlock/lz_420/basement/bathroom
+	color = COLOR_GREY
+	fill_color = COLOR_GREY_LIGHT

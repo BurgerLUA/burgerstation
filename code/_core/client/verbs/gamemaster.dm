@@ -112,6 +112,10 @@
 
 /mob/living/proc/smite()
 	var/turf/T = get_turf(src)
+	for(var/mob/M in range(T,8))
+		if(!M.client)
+			continue
+		M.client.queued_shakes += 5
 	new/obj/effect/temp/fist(T,4,"#FFFFFF")
 	play('sound/effects/anima_fragment_attack.ogg',T)
 	on_crush()
