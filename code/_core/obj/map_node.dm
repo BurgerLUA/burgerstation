@@ -56,8 +56,7 @@ var/global/mob/abstract/node_checker
 		found = TRUE
 
 	if(!found)
-		var/turf/T = get_turf(src)
-		log_error("WARNING: Node at [T.x], [T.y], [T.z] is invalid!")
+		log_error("Invalid node! [src.get_debug_name()].")
 
 	return found
 
