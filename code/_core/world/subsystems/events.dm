@@ -45,6 +45,10 @@ SUBSYSTEM_DEF(events)
 	var/event_id = pickweight(all_events_prob)
 
 	var/event/E = all_events[event_id]
+	return trigger_event(E)
+
+/subsystem/events/proc/trigger_event(var/event/E)
+
 	if(E.active)
 		return FALSE
 
@@ -70,7 +74,6 @@ SUBSYSTEM_DEF(events)
 		all_events_prob -= E
 
 	return E
-
 
 
 

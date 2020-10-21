@@ -17,6 +17,28 @@
 
 	SSevents.next_event_time = 0
 
+/client/verb/force_specific_event()
+	set name = "Force Specific Event"
+	set category = "GameMaster"
+
+	var/list/refactored_list = list()
+
+	for(var/k in SSevents.all_events)
+		var/event/E = SSevents.all_events[k]
+		refactored_list["[E]"] = E
+
+	sortTim(refactored_list,/proc/cmp_path_asc)
+
+	var/desired_event = input("What event would you like to run?","Event Manager") as null|anything in refactored_list
+
+	if(!desired_event)
+		return FALSE
+
+	var/event/E = refactored_list[desired_event]
+
+	SSevents.trigger_event(E)
+
+
 /client/proc/add_points()
 
 	set name = "Add Gamemode Points"

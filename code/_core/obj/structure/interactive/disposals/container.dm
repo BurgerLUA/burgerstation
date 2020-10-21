@@ -64,6 +64,7 @@
 			move_to_pipe(D2)
 			return TRUE
 
+	log_error("Disposal error: [src.loc.get_debug_name()].")
 	for(var/atom/movable/M in src.contents)
 		M.force_move(get_turf(src.loc))
 

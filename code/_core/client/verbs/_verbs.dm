@@ -70,5 +70,6 @@
 		verbs += /client/verb/give_dosh
 		verbs += /client/verb/test_spook_station
 		verbs += /client/verb/test_syndicate_raid
+		verbs += /client/verb/force_specific_event
 
 	return TRUE

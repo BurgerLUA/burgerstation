@@ -10,6 +10,8 @@
 
 	area_identifier = null
 
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+
 /area/space/is_space()
 	return TRUE
 
