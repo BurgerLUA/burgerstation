@@ -54,7 +54,9 @@
 		verbs += /client/verb/show_debug_verbs
 
 	//Admin
-	//if(permissions & FLAG_PERMISSION_ADMIN)
+	if(permissions & FLAG_PERMISSION_ADMIN)
+		verbs += /client/verb/jump_to_player
+		verbs += /client/verb/jump_to_area
 
 
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)

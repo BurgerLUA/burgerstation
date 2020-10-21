@@ -24,5 +24,3 @@
 			explode(get_turf(MP),4,null,MP,"Syndicate")
 
 	return .
-
-

@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(area)
 					areas_volcanic += A
 
 
-	sortTim(all_areas,/proc/cmp_name_asc,associative=TRUE)
+	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 
 	/*
 	if(run_unit_tests)

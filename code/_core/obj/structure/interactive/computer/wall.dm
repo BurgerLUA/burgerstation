@@ -76,3 +76,36 @@ obj/structure/interactive/computer/wall/dorms
 
 
 
+/obj/structure/interactive/computer/wall/remote_flight
+	name = "remote flight computer"
+	var/obj/shuttle_controller/desired_shuttle_controller
+
+/obj/structure/interactive/computer/wall/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(!is_advanced(caller))
+		return ..()
+
+	INTERACT_CHECK
+
+	if(!SSgamemode.active_gamemode.allow_launch)
+		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] isn't ready to launch yet!"))
+		return FALSE
+
+	var/selection = input("Are you sure you wish to launch \the [desired_shuttle_controller.name]?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
+
+	if(selection == "Yes")
+		var/obj/shuttle_controller/SC = locate(desired_shuttle_controller) in world
+		if(SC)
+			if(SC.state == SHUTTLE_STATE_LANDED)
+				SC.state = SHUTTLE_STATE_WAITING
+				SC.time = 0
+				caller.to_chat("You prepare \the [desired_shuttle_controller.name] for launch.")
+			else
+				caller.to_chat("ERROR: |The [desired_shuttle_controller.name] is already in transit.")
+		else
+			caller.to_chat("ERROR: No controller found!")
+
+
+/obj/structure/interactive/computer/wall/remote_flight/lz420_elevator
+	name = "elevator controls"
+	desired_shuttle_controller = /obj/shuttle_controller/lz420_elevator

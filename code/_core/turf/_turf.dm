@@ -173,4 +173,4 @@
 	return FALSE
 
 /turf/should_smooth_with(var/turf/T)
-	return (T.corner_category == corner_category)
+	return (T.corner_category == corner_category) && (T.plane == plane)

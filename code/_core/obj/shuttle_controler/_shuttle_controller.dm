@@ -39,6 +39,12 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/mob/last_caller = null //The last caller who interacted with this shuttle's launch, if any.
 
+	var/start_sound = 'sound/effects/shuttle/hyperspace_begin.ogg'
+	var/progress_sound = 'sound/effects/shuttle/hyperspace_progress.ogg'
+	var/end_sound = 'sound/effects/shuttle/hyperspace_end.ogg'
+
+	var/enable_shuttle_throwing = TRUE
+
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
 	return ..()
@@ -85,9 +91,10 @@ var/global/list/all_shuttle_controlers = list()
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
 
-	play('sound/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-	if(last_caller)
-		create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+	if(start_sound)
+		play(start_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+		if(last_caller)
+			create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 
 	var/area/A = get_area(src)
 	if(!desired_transit_time) desired_transit_time = default_transit_time
@@ -157,9 +164,10 @@ var/global/list/all_shuttle_controlers = list()
 			else
 				if(!transit(transit_source,transit_target))
 					return FALSE
-			play('sound/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-			if(last_caller)
-				create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+			if(progress_sound)
+				play(progress_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+				if(last_caller)
+					create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
 
@@ -176,9 +184,10 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
-			play('sound/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-			if(last_caller)
-				create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
+			if(end_sound)
+				play(end_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+				if(last_caller)
+					create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null
@@ -235,25 +244,27 @@ var/global/list/all_shuttle_controlers = list()
 			var/atom/movable/M = k
 			M.on_crush()
 		replacing_turf.change_turf(T.type,TRUE,TRUE)
-		for(var/k in T.contents)
-			var/atom/movable/M = k
-			CHECK_TICK(75,FPS_SERVER)
-			if(!M.allow_shuttle_move)
-				continue
-			M.move_delay = SECONDS_TO_TICKS(3)
-			M.force_move(replacing_turf)
-			objects_to_throw += M
+		if(enable_shuttle_throwing)
+			for(var/k in T.contents)
+				var/atom/movable/M = k
+				CHECK_TICK(75,FPS_SERVER)
+				if(!M.allow_shuttle_move)
+					continue
+				M.move_delay = SECONDS_TO_TICKS(3)
+				M.force_move(replacing_turf)
+				objects_to_throw += M
 		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
 
-	for(var/k in objects_to_throw)
-		var/atom/movable/M = k
-		CHECK_TICK(75,FPS_SERVER)
-		if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
-			continue
-		if(istype(M,/obj/structure/))
-			continue
-		if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
-			continue
-		M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
+	if(enable_shuttle_throwing)
+		for(var/k in objects_to_throw)
+			var/atom/movable/M = k
+			CHECK_TICK(75,FPS_SERVER)
+			if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
+				continue
+			if(istype(M,/obj/structure/))
+				continue
+			if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
+				continue
+			M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
 
 	return TRUE

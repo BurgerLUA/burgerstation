@@ -29,6 +29,8 @@
 	for(var/obj/structure/O in T.contents)
 		if(O.corner_category != corner_category)
 			continue
+		if(O.plane != plane)
+			continue
 		return TRUE
 
 	return FALSE

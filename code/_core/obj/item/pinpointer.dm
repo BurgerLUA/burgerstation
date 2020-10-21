@@ -42,6 +42,12 @@
 	if(!A || A.qdeleting || T.z != T2.z)
 		return FALSE
 
+	var/area/A1 = get_area(A)
+	var/area/A2 = get_area(src)
+
+	if(A1.area_identifier != A2.area_identifier)
+		return FALSE
+
 	return TRUE
 
 /obj/item/pinpointer/PostInitialize()
@@ -203,8 +209,6 @@
 		if(my_area.area_identifier != A.area_identifier)
 			continue
 		var/turf/T = locate(A.average_x,A.average_y,A.z)
-		if(!can_track(T))
-			continue
 		var/name_mod = "[A.name] ([dir2text(get_dir(caller,T))], [get_dist(src,T)]m)"
 		possible_landmarks[name_mod] = T
 

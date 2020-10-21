@@ -50,6 +50,9 @@
 	color = COLOR_IRON
 	reinforced_color = "#FF0000"
 
+/turf/simulated/wall/metal/reinforced/syndicate/shuttle
+	plane = PLANE_SHUTTLE
+
 /*
 /turf/simulated/wall/metal/reinforced/rusted
 	name = "reinforced metal wall"
