@@ -13,10 +13,10 @@
 	layer = LAYER_OBJ
 	plane = PLANE_FLOOR
 
-	var/on = TRUE
-
 	color = "#FFFFAA"
 	var/color_frame = "#888888"
+
+	lightswitch = TRUE
 
 /obj/structure/interactive/lighting/floor/on_destruction(var/mob/caller,var/damage = FALSE)
 

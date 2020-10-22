@@ -2,7 +2,6 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 
 var/global/mob/abstract/node_checker
 
-
 /mob/abstract/node_checker
 	name = "node checker"
 	collision_flags = FLAG_COLLISION_WALKING

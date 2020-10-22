@@ -1,6 +1,7 @@
 /obj/item/trash
 	name = "trash"
 	icon = 'icons/obj/item/trash.dmi'
+	value = 1
 
 /obj/item/trash/raisins
 	icon_state = "raisins"

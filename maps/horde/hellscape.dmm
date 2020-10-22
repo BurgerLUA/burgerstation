@@ -55,7 +55,7 @@
 "bc" = (/obj/structure/interactive/vending/junk/full,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate)
 "bd" = (/obj/structure/interactive/fence,/turf/simulated/hazard/water,/area/lz_001/caves)
 "be" = (/turf/simulated/floor/sand,/area/lz_001/forest)
-"bf" = (/obj/structure/interactive/vending/dinnerware,/obj/structure/interactive/lighting/tube/station/strong,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate)
+"bf" = (/obj/structure/interactive/vending/chef/dinnerwear,/obj/structure/interactive/lighting/tube/station/strong,/turf/simulated/floor/tile/dark,/area/lz_001/outpost/syndicate)
 "bg" = (/obj/structure/interactive/fence{dir = 4; icon_state = "straight"},/turf/simulated/floor/cave_dirt,/area/lz_001/caves)
 "bh" = (/obj/structure/interactive/fence/end{dir = 8; icon_state = "end"},/turf/simulated/floor/cave_dirt,/area/lz_001/caves)
 "bi" = (/obj/structure/interactive/ore_box,/turf/simulated/floor/cave_dirt,/area/lz_001/caves)

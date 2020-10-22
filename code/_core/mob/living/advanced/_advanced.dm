@@ -101,6 +101,8 @@
 		ION = 0
 	)
 
+	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

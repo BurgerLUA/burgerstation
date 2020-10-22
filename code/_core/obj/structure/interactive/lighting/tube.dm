@@ -14,8 +14,6 @@
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_OBJ
 
-	var/on = TRUE
-
 	color = COLOR_LIGHT
 	var/color_frame = COLOR_GREY
 
@@ -26,6 +24,8 @@
 	health = /health/construction
 
 	health_base = 10
+
+	lightswitch = TRUE
 
 /obj/structure/interactive/lighting/tube/on_destruction(var/mob/caller,var/damage = FALSE)
 

@@ -11,8 +11,8 @@
 
 	object = object.defer_click_on_object()
 
-	if(istype(object,/obj/item/weapon/melee/tool/rcd/))
-		var/obj/item/weapon/melee/tool/rcd/R = object
+	if(istype(object,/obj/item/rcd/))
+		var/obj/item/rcd/R = object
 		R.add_matter(R.matter_max)
 		caller.to_chat("You refill \the [R.name].")
 		qdel(src)

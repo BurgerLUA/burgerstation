@@ -195,49 +195,6 @@
 		/obj/item/storage/glovebox/white
 	)
 
-
-
-/obj/structure/interactive/vending/engineering
-	name = "engineering vendor"
-	icon_state = "engivend"
-
-/obj/structure/interactive/vending/engineering/tool
-	name = "tool vendor"
-	icon_state = "tool"
-	stored_types = list(
-		/obj/item/weapon/melee/toolbox/blue,
-		/obj/item/weapon/melee/toolbox/red,
-		/obj/item/weapon/melee/toolbox/green,
-		/obj/item/weapon/melee/toolbox/yellow,
-		/obj/item/weapon/melee/tool/crowbar,
-		/obj/item/weapon/melee/tool/multitool,
-		/obj/item/weapon/melee/tool/screwdriver,
-		/obj/item/weapon/melee/tool/wirecutters,
-		/obj/item/weapon/melee/tool/wrench,
-		/obj/item/weapon/melee/torch/flashlight
-	)
-
-
-/obj/structure/interactive/vending/engineering/material
-	name = "material vendor"
-	icon_state = "engivend"
-	stored_types = list(
-		/obj/item/material/sheet/steel/spawn_50,
-		/obj/item/material/sheet/glass/spawn_50
-
-	)
-
-/obj/structure/interactive/vending/engineering/engidrobe
-	name = "engineering clothing vendor"
-	icon_state = "engidrobe"
-	stored_types = list(
-		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/underbottom/underwear/boxers/engineering,
-		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/pants/normal/engineering,
-		/obj/item/clothing/shirt/normal/engineering
-	)
-
 /obj/structure/interactive/vending/robotics
 	name = "robotics vendor"
 	icon_state = "robotics"
@@ -519,24 +476,6 @@
 		/obj/item/container/beaker/can/space_up,
 		/obj/item/container/beaker/large/ice
 	)
-
-
-/obj/structure/interactive/vending/dinnerware
-	name = "dinnerware vendor"
-	icon_state = "dinnerware"
-
-	stored_types = list(
-		/obj/item/paper/book/cooking,
-		/obj/item/weapon/melee/sword/sabre,
-		/obj/item/container/cheese_mold/block,
-		/obj/item/container/beaker/glass,
-		/obj/item/container/beaker/bowl,
-		/obj/item/container/beaker/large,
-		//obj/item/clothing/head/helmet/full/paperbag,
-		/obj/item/supply_remote/barbecue,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
-	)
-
 
 /obj/structure/interactive/vending/experimental
 	name = "experimental vendor"

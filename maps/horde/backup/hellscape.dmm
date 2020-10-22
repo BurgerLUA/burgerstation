@@ -533,7 +533,7 @@
 "mW" = (/obj/structure/smooth/table/cult,/obj/item/soulgem/mystic,/turf/simulated/floor/basalt,/area/lz_001/caves/lava)
 "nd" = (/obj/item/organ/arm/reptile/left,/turf/simulated/floor/colored/dirt/cave,/area/lz_001/caves/lava)
 "ng" = (/obj/structure/interactive/fence/door{dir = 4},/turf/simulated/floor/cave_dirt,/area/lz_001/caves)
-"np" = (/obj/item/clothing/head/hood/cult,/turf/simulated/floor/cult,/area/lz_001/caves)
+"np" = (/turf/simulated/floor/cult,/area/lz_001/caves)
 "nJ" = (/obj/item/clothing/underbottom/underwear/boxers/random,/turf/simulated/floor/basalt,/area/lz_001/caves/lava)
 "nU" = (/obj/item/container/beaker/bottle/large/mana_potion,/turf/simulated/floor/basalt,/area/lz_001/caves/lava)
 "ov" = (/obj/marker/hostage_spawn,/turf/simulated/floor/basalt,/area/lz_001/caves)

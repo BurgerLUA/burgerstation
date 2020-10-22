@@ -217,8 +217,6 @@
 
 	var/blocking = FALSE
 
-	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
-
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))

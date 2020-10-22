@@ -79,7 +79,7 @@
 	new /obj/item/grenade/timed/explosive(src)
 	new /obj/item/grenade/timed/explosive(src)
 	new /obj/item/grenade/timed/explosive(src)
-	new /obj/item/weapon/melee/tool/rcd(src)
+	new /obj/item/rcd(src)
 	new /obj/item/disk/rcd/metal_wall(src)
 	new /obj/item/matter_cartridge(src)
 	new /obj/item/matter_cartridge(src)

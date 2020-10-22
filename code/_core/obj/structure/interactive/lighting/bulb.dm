@@ -11,12 +11,12 @@
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_OBJ
 
-	var/on = TRUE
-
 	color = COLOR_LIGHT
 	var/color_frame = "#888888"
 
 	rotation_mod = -1
+
+	lightswitch = TRUE
 
 
 /obj/structure/interactive/lighting/bulb/on_destruction(var/mob/caller,var/damage = FALSE)

@@ -399,7 +399,7 @@
 "hI" = (/obj/structure/smooth/table/grill,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "hJ" = (/obj/structure/smooth/table/reinforced,/obj/item/container/beaker/bowl,/obj/structure/interactive/lighting/bulb,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "hK" = (/obj/structure/interactive/crate/closet,/obj/item/container/beaker/food/flour,/obj/item/container/beaker/food/sugar,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
-"hL" = (/obj/structure/interactive/vending/dinnerware,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
+"hL" = (/obj/structure/interactive/vending/chef/dinnerwear,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "hM" = (/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "hN" = (/obj/structure/smooth/table/wood,/obj/item/container/food/package/junkfood/raisins,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "hO" = (/obj/structure/interactive/vending/junk/full,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)

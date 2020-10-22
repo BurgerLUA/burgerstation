@@ -21,3 +21,5 @@
 			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");															\
 		}																											\
 	}
+
+#define qdel_in(object,time) CALLBACK_GLOBAL("\ref[object]_qdel_in",time,/datum/proc/delete)

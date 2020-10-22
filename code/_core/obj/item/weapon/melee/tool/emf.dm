@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/tool/emf
+/obj/item/emf
 	name = "\improper EMF reader"
 	desc = "It just works."
 	desc_extended = "A specialized plastic tool that can allegedly read Electromagnetic Field Radiation levels. Allegedly."
@@ -10,9 +10,7 @@
 	var/emf_level = 0
 	var/active = FALSE
 
-	override_icon_state = TRUE
-
-/obj/item/weapon/melee/tool/emf/proc/set_emf_level(var/desired_level)
+/obj/item/emf/proc/set_emf_level(var/desired_level)
 
 	if(desired_level == emf_level)
 		return FALSE
@@ -28,7 +26,7 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/tool/emf/proc/on_emf_think()
+/obj/item/emf/proc/on_emf_think()
 
 	if(!active)
 		return FALSE
@@ -60,18 +58,22 @@
 	return TRUE
 
 
-/obj/item/weapon/melee/tool/emf/New(var/desired_loc)
+/obj/item/emf/New(var/desired_loc)
 	. = ..()
 	SSghost.all_emf_trackers += src
 	return .
 
-/obj/item/weapon/melee/tool/emf/Destroy()
+/obj/item/emf/Destroy()
 	SSghost.all_emf_trackers -= src
 	return ..()
 
-/obj/item/weapon/melee/tool/emf/click_self(var/mob/caller)
+/obj/item/emf/click_self(var/mob/caller)
+
 	active = !active
+
 	caller.to_chat(span("notice","You turn [active ? "on" : "off"] \the [src.name]."))
+
+	play('sound/machines/click.ogg',get_turf(src))
 
 	if(active)
 		if(emf_level) start_thinking(src)
@@ -82,7 +84,7 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/tool/emf/update_icon()
+/obj/item/emf/update_icon()
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 	if(active)

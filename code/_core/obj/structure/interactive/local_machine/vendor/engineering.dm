@@ -1,6 +1,40 @@
-/obj/structure/interactive/vending/engineering/wardrobe
+/obj/structure/interactive/vending/engineering
+	name = "engineering vendor"
+	icon_state = "engivend"
+
+/obj/structure/interactive/vending/engineering/equipment
 	name = "engineering equipment vendor"
 	icon_state = "engineering"
+	stored_types = list(
+		/obj/item/weapon/melee/toolbox/blue,
+		/obj/item/weapon/melee/toolbox/red,
+		/obj/item/weapon/melee/toolbox/green,
+		/obj/item/weapon/melee/toolbox/yellow,
+		/obj/item/weapon/melee/tool/crowbar,
+		/obj/item/weapon/melee/tool/multitool,
+		/obj/item/weapon/melee/tool/screwdriver,
+		/obj/item/weapon/melee/tool/wirecutters,
+		/obj/item/weapon/melee/tool/wrench,
+		/obj/item/weapon/melee/tool/welder,
+		/obj/item/light_sensor,
+		/obj/item/cable,
+		/obj/item/pinpointer/landmark,
+		/obj/item/weapon/melee/torch/flashlight,
+		/obj/item/material/sheet/steel/spawn_50,
+		/obj/item/material/sheet/glass/spawn_50,
+		/obj/item/material/rod/steel/spawn_50,
+		/obj/item/deployable/barricade/filled,
+		/obj/item/rcd,
+		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_wall,
+		/obj/item/matter_cartridge,
+		/obj/item/cell_charger,
+		/obj/item/powercell/industrial
+	)
+
+/obj/structure/interactive/vending/engineering/wardrobe
+	name = "engineering clothing vendor"
+	icon_state = "engidrobe"
 	stored_types = list(
 		/obj/item/clothing/feet/socks/knee/white,
 		/obj/item/clothing/underbottom/underwear/boxers,
@@ -20,29 +54,4 @@
 		/obj/item/clothing/mask/gas/poly/engineering,
 		/obj/item/clothing/head/light/hardhat,
 		/obj/item/clothing/overwear/coat/vest/colored/brown
-	)
-
-
-/obj/structure/interactive/vending/janitor
-	name = "janitor equipment vendor"
-	icon_state = "janidrobe"
-	stored_types = list(
-		/obj/item/clothing/feet/socks/knee/white,
-		/obj/item/clothing/underbottom/underwear/boxers,
-		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/pants/normal/janitor,
-		/obj/item/clothing/shirt/normal/janitor,
-		/obj/item/storage/shoebox/colored/,
-		/obj/item/storage/glovebox/yellow/,
-		/obj/item/clothing/back/storage/satchel/poly/grey,
-		/obj/item/clothing/back/storage/backpack/poly/grey,
-		/obj/item/clothing/back/storage/dufflebag/poly/grey,
-		/obj/item/clothing/belt/storage/colored/janitor,
-		/obj/item/clothing/mask/gas/poly/janitor,
-		/obj/item/clothing/overwear/coat/vest/colored/grey,
-		/obj/item/mop,
-		/obj/item/broom,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner,
-		/obj/item/container/beaker/bucket/water,
-		/obj/item/wet_floor_sign
 	)
