@@ -582,7 +582,10 @@
 				best_target = L
 				best_score = local_score
 		if(best_target && best_target != objective_attack)
-			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
+			if(reaction_time)
+				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
+			else
+				set_objective(best_target)
 
 		frustration_attack = 0
 
@@ -735,7 +738,10 @@
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
 			if(!objective_attack && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
-				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
+				if(reaction_time)
+					CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
+				else
+					set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
 			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)

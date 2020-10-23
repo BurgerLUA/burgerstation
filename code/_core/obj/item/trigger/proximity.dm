@@ -47,14 +47,15 @@
 				play('sound/weapons/timer/beep.ogg',src)
 				create_alert(VIEW_RANGE,src,src,ALERT_LEVEL_NOISE)
 
-		if(loc && time_set < 0 && !(time_set % 10))
-			play('sound/weapons/timer/beep.ogg',src)
-			var/mob/living/L = locate() in range(src.loc,2)
-			if(L)
+		if(loc && time_set < 0 && !(time_set % 4))
+			for(var/atom/movable/M in view(src.loc,2))
+				CHECK_TICK(100,FPS_SERVER)
+				if(M.move_delay <= 0)
+					continue
 				loc.trigger(last_interacted,src,-1,-1)
-				active = FALSE
-				time_set = 0
-				return FALSE
+				play('sound/weapons/timer/beep.ogg',src)
+				flick("motion_trigger",src)
+				break
 
 	return .
 

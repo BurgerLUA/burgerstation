@@ -34,7 +34,7 @@
 //DARKNESS
 /obj/plane_master/darkness
 	plane = PLANE_DARKNESS
-	mouse_opacity = 1
+	mouse_opacity = 0
 	blend_mode = BLEND_MULTIPLY
 
 /obj/plane_master/darkness/New(var/desired_loc)

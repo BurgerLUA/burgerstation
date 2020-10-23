@@ -193,3 +193,19 @@ var/global/list/all_areas = list()
 			P.see_invisible = initial(P.see_invisible)
 
 	return TRUE
+
+
+/area/proc/smash_all_lights()
+	for(var/obj/structure/interactive/lighting/T in src.contents)
+		CHECK_TICK(75,FPS_SERVER)
+		if(!T.desired_light_color)
+			continue
+		T.on_destruction(null,TRUE)
+	return TRUE
+
+/area/proc/toggle_all_lights()
+	var/obj/structure/interactive/light_switch/LS = locate() in src.contents
+	if(LS && LS.on)
+		LS.toggle()
+		return TRUE
+	return FALSE

@@ -119,6 +119,11 @@
 				0, 0, 0, 1
 			)
 
-	T.darkness = max //set the turf's darkness when calculated
+	if(max > LIGHTING_SOFT_THRESHOLD)
+		luminosity = 1
+		T.darkness = max //set the turf's darkness when calculated
+	else
+		luminosity = 0
+		T.darkness = 0
 
 #undef ALL_EQUAL

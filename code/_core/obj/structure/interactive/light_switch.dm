@@ -47,6 +47,11 @@
 		L.on = on
 		L.update_atom_light()
 		L.update_sprite()
+	for(var/obj/structure/interactive/light_switch/LS in A.contents)
+		if(LS.on == on)
+			continue
+		LS.on = on
+		LS.update_sprite()
 	return TRUE
 
 /obj/structure/interactive/light_switch/proc/set_on(var/mob/caller)

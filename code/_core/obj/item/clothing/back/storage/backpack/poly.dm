@@ -27,3 +27,10 @@
 		"detail" = COLOR_GREY_DARK,
 		"buckle" = COLOR_SILVER
 	)
+
+/obj/item/clothing/back/storage/backpack/poly/science
+	polymorphs = list(
+		"body" = COLOR_WHITE,
+		"straps" = COLOR_SCIENCE,
+		"buckles" = COLOR_SILVER
+	)

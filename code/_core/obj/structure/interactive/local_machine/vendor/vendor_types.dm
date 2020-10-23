@@ -197,7 +197,6 @@
 
 /obj/structure/interactive/vending/robotics
 	name = "robotics vendor"
-	icon_state = "robotics"
 
 /obj/structure/interactive/vending/robotics/mech_gun_fabricator
 	name = "mech fabricator"

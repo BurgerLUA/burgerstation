@@ -114,3 +114,10 @@
 		"eyes" = COLOR_PURPLE,
 		"filter" = COLOR_METAL
 	)
+
+/obj/item/clothing/mask/gas/poly/science
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"eyes" = COLOR_SCIENCE,
+		"filter" = COLOR_METAL
+	)

@@ -113,7 +113,6 @@
 				continue
 			//No hit object means we missed.
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
-			attacker << "Clearing hitobjects."
 			hit_objects = null
 			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
 		victims -= v //Needs to be here.
