@@ -148,6 +148,7 @@
 	return TRUE
 
 /ai/proc/on_death()
+	set_objective(null)
 	set_active(FALSE)
 	set_path(null)
 	return TRUE

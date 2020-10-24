@@ -159,7 +159,8 @@
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
 	if(!amount_to_transfer) return 0
-	if(amount_to_transfer < 0) return target.transfer_item_count_to(src,-amount_to_transfer)
+	if(amount_to_transfer < 0)
+		return target.transfer_item_count_to(src,-amount_to_transfer)
 	amount_to_transfer = min(
 		amount_to_transfer, //What we want to transfer
 		item_count_current, //What we can actually transfer from

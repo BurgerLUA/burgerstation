@@ -48,7 +48,7 @@
 	var/material/M = SSmaterials.all_materials[material_id]
 	return ..() * M.value_per_unit
 
-
+/*
 /obj/item/material/Crossed(atom/movable/O)
 
 	if(!istype(O,/obj/item/material))
@@ -63,3 +63,4 @@
 
 	src.transfer_item_count_to(M)
 	return TRUE
+*/

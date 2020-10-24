@@ -56,5 +56,6 @@
 		for(var/obj/hud/button/crafting/B in A.buttons)
 			animate(B,alpha=0,time=4)
 			B.mouse_opacity = 0
+			B.stored_crafting_table = null
 
 	return .

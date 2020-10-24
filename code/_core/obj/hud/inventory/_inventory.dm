@@ -383,6 +383,9 @@
 
 /obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
 
+	if(!I)
+		return FALSE
+
 	if(bypass_checks && held_slots <= 0)
 		return FALSE
 
@@ -414,12 +417,15 @@
 	update_overlays()
 
 	if(I.loc != src) //Something went wrong.
-		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord."))
+		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
 
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
+
+	if(!I)
+		return FALSE
 
 	if(bypass_checks && worn_slots <= 0)
 		return FALSE
@@ -431,6 +437,7 @@
 		return FALSE
 
 	if(I.qdeleting)
+		I.drop_item(null)
 		return FALSE
 
 	var/mob/living/advanced/A = owner
@@ -457,7 +464,7 @@
 	update_overlays()
 
 	if(I.loc != src) //Something went wrong.
-		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord."))
+		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02."))
 		I.drop_item(get_turf(src))
 
 	return TRUE

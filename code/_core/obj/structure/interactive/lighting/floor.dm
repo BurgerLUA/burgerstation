@@ -46,6 +46,13 @@
 	return .
 
 
+/obj/structure/interactive/lighting/floor/Initialize()
+
+	if(color)
+		desired_light_color = color
+		color = "#FFFFFF"
+
+	return ..()
 
 /obj/structure/interactive/lighting/floor/PostInitialize()
 	. = ..()
@@ -53,11 +60,6 @@
 	return .
 
 /obj/structure/interactive/lighting/floor/update_icon()
-
-	if(color)
-		desired_light_color = color
-	else
-		desired_light_color = "#FFFFFF"
 
 	if(desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color)

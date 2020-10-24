@@ -1,5 +1,7 @@
 /obj/structure/interactive/lighting/bulb
 	name = "bulb light"
+	desc = "An electrical storm has been detected in proximity of the station. Please check all equipment for potential overloads."
+	desc_extended = "Used to light up the area."
 
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "bulb_light"
@@ -7,12 +9,13 @@
 	desired_light_power = 0.4
 	desired_light_range = 4
 	desired_light_color = null //Set in update_icon
+	desired_light_angle = LIGHT_OMNI
 
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_OBJ
 
 	color = COLOR_LIGHT
-	var/color_frame = "#888888"
+	var/color_frame = COLOR_GREY
 
 	rotation_mod = -1
 
@@ -23,7 +26,6 @@
 	health_base = 10
 
 	lightswitch = TRUE
-
 
 /obj/structure/interactive/lighting/bulb/on_destruction(var/mob/caller,var/damage = FALSE)
 
@@ -61,17 +63,20 @@
 
 	return .
 
+/obj/structure/interactive/lighting/bulb/Initialize()
+
+	if(color)
+		desired_light_color = color
+		color = "#FFFFFF"
+
+	return ..()
+
 /obj/structure/interactive/lighting/bulb/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .
 
 /obj/structure/interactive/lighting/bulb/update_icon()
-
-	if(color)
-		desired_light_color = color
-	else
-		desired_light_color = "#FFFFFF"
 
 	if(desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color)

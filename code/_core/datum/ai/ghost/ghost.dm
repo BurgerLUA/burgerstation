@@ -32,6 +32,8 @@
 
 	var/origin_area_identifier
 
+	var/next_voice = 0
+
 
 /ai/ghost/New(var/mob/living/desired_owner)
 
@@ -130,6 +132,7 @@
 						notify_ghosts("\The [owner.name] is now hunting!",T)
 						log_debug("\The [owner.name] is now hunting!")
 						owner.icon_state = "[ghost_type]_angry"
+						play('sound/ghost/ghost_ambience_2.ogg',T,volume=75)
 					else
 						set_objective(null)
 						owner.icon_state = "[ghost_type]"
@@ -143,8 +146,7 @@
 	//Who is looking at us?
 	var/list/viewers = list()
 	var/mob/living/advanced/insane
-	var/sanity_rating = 9999
-
+	var/sanity_rating = 75
 	if(T.darkness >= 0 && owner.invisibility < 101)
 		for(var/mob/living/advanced/ADV in view(owner,owner.view))
 			if(ADV.dead)
@@ -158,11 +160,10 @@
 			if(ADV.sanity < sanity_rating)
 				insane = ADV
 				sanity_rating = ADV.sanity
-
 	var/viewer_count = length(viewers)
 
+	//What should our alpha be?
 	var/desired_alpha = 200
-
 	switch(shy_level)
 		if(2) //Shy
 			anger += viewer_count*0.05
@@ -179,6 +180,7 @@
 	else if (T.darkness <= 0)
 		desired_alpha = 0
 
+	//How should we respond to darkness?
 	if(T.darkness >= 0.1 && prob(anger)) //Too bright
 		desired_alpha -= 50
 		if(anger >= 50)
@@ -191,19 +193,22 @@
 			else
 				create_emf(T,3)
 		var/annoying_player = FALSE
+		var/tolerance = 0.5 - min(0.25,(anger/200))
 		for(var/light_source/LS in T.affecting_lights)
-			if(LS.light_power < 0.5)
+			if(LS.light_power < tolerance)
 				continue
 			if(is_advanced(LS.top_atom))
 				var/mob/living/advanced/ADV = LS.top_atom
 				if(anger >= 50)
-					play(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),ADV)
+					if(!annoying_player)
+						play(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T)
+						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					anger += 25
 					anger = max(anger,90)
 					ADV.sanity -= 50
 				else
-					anger += 25
-					ADV.sanity -= 25
+					anger += 10
+					ADV.sanity -= 10
 				annoying_player = TRUE
 			if(istype(LS.source_atom,/obj/item/weapon/melee/torch))
 				var/obj/item/weapon/melee/torch/L = LS.source_atom
@@ -218,12 +223,28 @@
 					create_emf(T2,3,VIEW_RANGE*3)
 					notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 					log_debug("\The [owner.name] moved to [T2.loc.name].")
+					play(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
+					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 			else
+				var/mob/living/advanced/ADV = insane ? insane : pick(viewers)
+				var/turf/T2 = get_turf(ADV)
+				owner.force_move(T2)
+				if(anger <= 50)
+					play(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
+					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+					anger = max(anger,50)
+				else
+					play(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2)
+					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 				anger += 10
 
 
 	//Look at the man who will die.
-	if(insane) owner.set_dir(get_dir(owner,insane))
+	if(insane)
+		owner.set_dir(get_dir(owner,insane))
+		if(next_voice < world.time && prob(25))
+			play(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
+			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
 	desired_alpha = clamp(desired_alpha,0,255)
 	owner_as_ghost.desired_alpha = desired_alpha
@@ -240,12 +261,22 @@
 
 /ai/ghost/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
 	//Trying to alert it just pisses it off.
+
+	var/mob/living/advanced/A
+
+	if(is_advanced(alert_source))
+		A = alert_source
+
 	switch(desired_alert_level)
 		if(ALERT_LEVEL_NOISE)
 			anger += 3
+			A?.sanity -= 3
 		if(ALERT_LEVEL_CAUTION)
 			anger += 5
+			A?.sanity -= 5
 		if(ALERT_LEVEL_COMBAT)
 			anger += 20
+			A?.sanity -= 20
+
 
 	return TRUE
