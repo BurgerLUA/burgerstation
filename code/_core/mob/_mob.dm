@@ -58,6 +58,7 @@
 	var/obj/plane_master/shuttle/plane_master_shuttle
 	var/obj/plane_master/scenery/plane_master_scenery
 	var/obj/plane_master/lighting/plane_master_lighting
+	var/obj/plane_master/floor/plane_master_floor
 
 	var/list/parallax
 
@@ -109,6 +110,7 @@
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
+	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_darkness)
@@ -132,6 +134,10 @@
 	for(var/k in local_machines)
 		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
+
+	if(!plane_master_floor)
+		plane_master_floor = new(src)
+	C.screen += plane_master_floor
 
 	if(!plane_master_wall)
 		plane_master_wall = new(src)
@@ -157,7 +163,7 @@
 		plane_master_scenery = new(src)
 	C.screen += plane_master_scenery
 
-	/* TODO: Find out why this would cause objects to be invisible.
+	/*
 	if(!plane_master_lighting)
 		plane_master_lighting = new(src)
 	C.screen += plane_master_lighting

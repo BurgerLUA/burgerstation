@@ -74,7 +74,7 @@
 			move_dir_last = 0x0
 			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
 
-		set_dir(final_move_dir,force=TRUE)
+		//set_dir(final_move_dir,force=TRUE)
 
 		if(acceleration_mod)
 			if(similiar_move_dir)

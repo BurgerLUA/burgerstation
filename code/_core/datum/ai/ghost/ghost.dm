@@ -28,7 +28,7 @@
 	//1 = fully visible on hunt
 	//2 = invisbile on hunt
 
-	roaming_distance = 0
+	roaming_distance = 128
 
 	var/origin_area_identifier
 
@@ -110,7 +110,7 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(objective_attack || anger >= 100 || (anger >= 50 && prob(1)))
+	if(objective_attack || anger >= 100)
 		var/no_objective = !objective_attack
 		objective_ticks += tick_rate
 		owner_as_ghost.desired_alpha = stealth_killer == 2 ? 0 : 255
@@ -181,7 +181,7 @@
 		desired_alpha = 0
 
 	//How should we respond to darkness?
-	if(T.darkness >= 0.1 && prob(anger)) //Too bright
+	if(owner.alpha >= 0 && T.darkness >= 0.1 && prob(anger)) //Too bright
 		desired_alpha -= 50
 		if(anger >= 50)
 			A.smash_all_lights()
@@ -225,14 +225,13 @@
 					log_debug("\The [owner.name] moved to [T2.loc.name].")
 					play(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
 					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-			else
+			else if(viewer_count || insane)
 				var/mob/living/advanced/ADV = insane ? insane : pick(viewers)
 				var/turf/T2 = get_turf(ADV)
 				owner.force_move(T2)
 				if(anger <= 50)
 					play(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
 					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-					anger = max(anger,50)
 				else
 					play(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2)
 					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
@@ -245,6 +244,10 @@
 		if(next_voice < world.time && prob(25))
 			play(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
 			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+
+	if(anger <= 50)
+		desired_alpha = 0
+
 
 	desired_alpha = clamp(desired_alpha,0,255)
 	owner_as_ghost.desired_alpha = desired_alpha

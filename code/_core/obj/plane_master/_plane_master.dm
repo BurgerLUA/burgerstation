@@ -11,9 +11,23 @@
 	plane = 0
 */
 
+
+/obj/plane_master/floor
+	plane = PLANE_FLOOR
+
+/obj/plane_master/floor/New(var/desired_loc)
+	. = ..()
+	/*
+	var/matrix/M = matrix()
+	M.Scale(0.9,0.9)
+	filters += filter(type="layer",render_source="plane_walls",transform=M)
+	*/
+	return .
+
 //WALLS
 /obj/plane_master/walls
 	plane = PLANE_WALL
+	//render_target = "plane_walls"
 
 /obj/plane_master/walls/New(var/desired_loc)
 	. = ..()
@@ -77,12 +91,10 @@
 /obj/plane_master/lighting
 	name = "plane master"
 	plane = PLANE_LIGHTING
-	//screen_loc = "1,1"
-	blend_mode = BLEND_MULTIPLY
 
-
+/*
 /obj/plane_master/lighting/New(var/desired_loc)
 	. = ..()
-	//var/icon/I = new/icon('icons/test.dmi',"reverse")
-	//filters += filter(type="alpha",icon = I)
+	filters += filter(type="layer",render_source="plane_lighting",blend_mode=BLEND_INSET_OVERLAY)
 	return .
+*/

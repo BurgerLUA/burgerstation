@@ -5,6 +5,7 @@
 #define FLAG_COLLISION_SWIMMING 0x8
 #define FLAG_COLLISION_ITEM 0x20 //For item collisions. Checks if items are allowed to pass.
 #define FLAG_COLLISION_CRAWLING 0x40 //For crawling objects, such as dead bodies.
+#define FLAG_COLLISION_UNSIMULATED 0x80 //For unsimulated objects. Prevents some mobs from going into space.
 
 #define FLAG_COLLISION_WALL FLAG_COLLISION_WALKING | FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING | FLAG_COLLISION_ITEM | FLAG_COLLISION_CRAWLING //For walls.
 #define FLAG_COLLISION_BARICADE FLAG_COLLISION_WALKING | FLAG_COLLISION_SWIMMING | FLAG_COLLISION_CRAWLING //For hip level barricades.
