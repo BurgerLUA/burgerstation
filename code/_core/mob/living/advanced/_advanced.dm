@@ -481,3 +481,11 @@ mob/living/advanced/Login()
 	if(!S)
 		return text
 	return ..(S.mod_speech(src,text))
+
+
+
+/mob/living/advanced/can_use_controls()
+	if(handcuffed)
+		return FALSE
+
+	return ..()

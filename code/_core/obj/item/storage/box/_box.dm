@@ -11,8 +11,6 @@
 	is_container = TRUE
 	container_max_size = SIZE_2
 
-	dynamic_inventory_count = 4
-
-	value = 5
+	dynamic_inventory_count = MAX_INVENTORY_X
 
 	value = 10

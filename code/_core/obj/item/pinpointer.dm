@@ -200,8 +200,8 @@
 		caller.to_chat(span("warning","There is no signal..."))
 		return TRUE
 
-	for(var/k in all_areas)
-		var/area/A = all_areas[k]
+	for(var/k in SSarea.all_areas)
+		var/area/A = SSarea.all_areas[k]
 		if(A.z != caller.z)
 			continue
 		if(!A.trackable)

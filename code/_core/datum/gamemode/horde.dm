@@ -180,6 +180,8 @@
 
 	var/wave_to_spawn = get_enemies_to_spawn() - length(tracked_enemies)
 
+	log_debug("Trying to spawn [wave_to_spawn] enemies.")
+
 	if(wave_to_spawn < 4)
 		return TRUE
 

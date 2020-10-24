@@ -2,6 +2,8 @@
 	name = "LZ 420 Basement"
 	trackable = TRUE
 	area_identifier = "LZ-420 Basement"
+	icon_state = "pink"
+	interior = TRUE
 
 
 /area/lz_420/basement/lobby
@@ -19,3 +21,20 @@
 /area/lz_420/basement/bathroom/female
 	name = "Basement Bathroom Lobby - Womens"
 	icon_state = "red"
+
+
+/area/lz_420/basement/medical
+	name = "Basement Medical"
+	icon_state = "med"
+
+/area/lz_420/basement/kitchen
+	name = "Basement Kitchen"
+	icon_state = "kitchen"
+
+/area/lz_420/basement/cafe
+	name = "Basement Cafe"
+	icon_state = "kitchen"
+
+/area/lz_420/basement/hallway
+	name = "Basement Main Hallway"
+	icon_state = "hall"

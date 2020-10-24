@@ -15,6 +15,10 @@ SUBSYSTEM_DEF(area)
 	var/is_sandstorming = TRUE
 	var/is_volcanic = TRUE
 
+	var/list/all_areas = list()
+
+	var/list/areas_by_identifier = list()
+
 /subsystem/area/Initialize()
 
 	var/area_count = 0

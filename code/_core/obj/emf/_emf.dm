@@ -5,9 +5,21 @@
 
 	var/emf_range = VIEW_RANGE*0.5
 
-/obj/emf/New(var/desired_loc)
+	invisibility = 101
+	alpha = 0
+	mouse_opacity = 0
+
+/obj/emf/New(var/desired_loc,var/desired_level,var/desired_range)
 	. = ..()
 	SSghost.all_emfs += src
+
+
+	if(desired_level)
+		emf_level = desired_level
+
+	if(desired_range)
+		emf_range = desired_range
+
 	return .
 
 /obj/emf/Destroy()

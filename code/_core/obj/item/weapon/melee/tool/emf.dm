@@ -33,15 +33,27 @@
 
 	var/turf/T1 = get_turf(src)
 
+	if(!T1)
+		return FALSE
+
 	emf_level = 0
 
-	var/mob/abstract/observer/ghost = locate() in range(3,T1)
-
-	if(ghost) emf_level = 2
+	var/mob/living/simple/npc/ghost/G1 = locate() in range(6,T1)
+	if(G1)
+		if(G1.ai && G1.ai.objective_attack)
+			emf_level = 5
+		else
+			emf_level = 3
+	else
+		var/mob/abstract/observer/G2 = locate() in range(3,T1)
+		if(G2) emf_level = 2
 
 	for(var/k in SSghost.all_emfs)
 		var/obj/emf/E = k
 		var/turf/T2 = get_turf(E)
+		if(!T2)
+			log_error("Warning: Invalid EMF location found for [E.get_debug_name()].")
+			continue
 		if(T1.z != T2.z)
 			continue
 		var/distance = get_dist(T1,T2)

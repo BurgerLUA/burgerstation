@@ -50,7 +50,7 @@
 		BIO = TOX,
 		RAD = TOX,
 		HOLY = BURN,
-		DARK = BURN,
+		DARK = BRUTE,
 		FATIGUE = FATIGUE,
 		ION = BURN
 	)
@@ -96,6 +96,8 @@
 	var/debug = FALSE
 
 	var/list/defense_bonuses = list()
+
+	var/ignore_armor_bonus_damage = FALSE
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -350,7 +352,7 @@
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
-		if(old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
+		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 				damage_to_deal[damage_type] = 0
 				continue

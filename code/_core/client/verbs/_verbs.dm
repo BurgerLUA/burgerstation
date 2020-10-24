@@ -71,5 +71,7 @@
 		verbs += /client/verb/test_spook_station
 		verbs += /client/verb/test_syndicate_raid
 		verbs += /client/verb/force_specific_event
+		verbs += /client/verb/ic_announcement
+		verbs += /client/verb/force_round_end
 
 	return TRUE

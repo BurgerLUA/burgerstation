@@ -16,20 +16,30 @@
 	color = "#FFFFAA"
 	var/color_frame = "#888888"
 
+	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+
+	health = /health/construction
+
+	health_base = 10
+
 	lightswitch = TRUE
 
+
 /obj/structure/interactive/lighting/floor/on_destruction(var/mob/caller,var/damage = FALSE)
+
+	var/turf/T = get_turf(src)
 
 	if(desired_light_color)
 		desired_light_color = null
 		if(health)
 			health.restore()
-		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),/material/glass)
+		create_destruction(T,list(/obj/item/material/shard = 1),/material/glass)
+		play('sound/effects/glass_shatter.ogg',T)
 		. = ..()
 		update_atom_light()
 		update_sprite()
 	else
-		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),/material/steel)
+		create_destruction(T,list(/obj/item/material/sheet = 1),/material/steel)
 		. = ..()
 		qdel(src)
 

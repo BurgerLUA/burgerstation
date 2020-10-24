@@ -5,9 +5,15 @@
 	icon = 'icons/obj/item/cross.dmi'
 	icon_state = "inventory"
 
+	value = 100
+
+/obj/item/cross/proc/break_cross()
+	icon_state = "[initial(icon_state)]_broken"
+	return TRUE
+
 /obj/item/cross/Cross(var/atom/movable/O)
 
-	if(O.health)
+	if(O.health && icon_state == initial(icon_state))
 		var/list/defense = O.health.get_defense()
 		if(defense[HOLY] - defense[DARK] < 0)
 			return FALSE

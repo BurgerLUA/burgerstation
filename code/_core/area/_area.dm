@@ -1,6 +1,3 @@
-var/global/list/all_areas = list()
-
-
 /area/
 	name = "AREA ERROR"
 	icon = 'icons/area/area.dmi'
@@ -59,27 +56,16 @@ var/global/list/all_areas = list()
 	var/average_x = 0
 	var/average_y = 0
 
+/area/New(var/desired_loc)
+	SSarea.all_areas[src.type] = src
+	if(area_identifier)
+		if(!SSarea.areas_by_identifier[area_identifier])
+			SSarea.areas_by_identifier[area_identifier] = list()
+		SSarea.areas_by_identifier[area_identifier] += src
+	return ..()
+
 /area/proc/is_space()
 	return FALSE
-
-/area/New()
-	. = ..()
-
-	/*
-	if(hazard)
-		all_areas_with_hazards += src
-	*/
-
-	/*
-	if(dynamic_lighting_overlay_color)
-		all_areas_with_dynamic_lighting_overlay_color += src
-	*/
-
-	if(!all_areas[type])
-		all_areas[type] = src
-
-	return .
-
 
 /area/Destroy()
 	if(players_inside)
@@ -87,6 +73,9 @@ var/global/list/all_areas = list()
 
 	if(sunlight_turfs)
 		sunlight_turfs.Cut()
+
+	SSarea.all_areas -= src.type
+	SSarea.areas_by_identifier[area_identifier] -= src
 
 	return ..()
 
@@ -101,11 +90,8 @@ var/global/list/all_areas = list()
 /area/Initialize()
 
 	if(sunlight_freq > 0 && sunlight_color)
-		var/light_count = 0
 		for(var/turf/T in contents)
-			if(setup_sunlight(T))
-				light_count++
-		log_debug("Initialized Area \"[name]\" with [light_count] sun lights.")
+			setup_sunlight(T)
 
 	if(weather)
 		icon = 'icons/area/weather.dmi'
@@ -122,8 +108,6 @@ var/global/list/all_areas = list()
 
 	average_x = CEILING(average_x/area_count,1)
 	average_y = CEILING(average_y/area_count,1)
-
-	log_debug("Found [area_count] turfs in area [src.type], with an average coord of [average_x],[average_y],[z]")
 
 	return ..()
 

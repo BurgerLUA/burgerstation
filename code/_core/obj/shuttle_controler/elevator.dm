@@ -7,7 +7,7 @@
 
 	status_id = "lz420_elevator"
 
-	default_transit_time = 30
+	default_transit_time = 10
 	default_waiting_time = 5
 
 	start_sound = 'sound/effects/elevator_openclose.ogg'
@@ -15,3 +15,5 @@
 	end_sound = 'sound/effects/elevator_openclose.ogg'
 
 	enable_shuttle_throwing = FALSE
+
+	time_restricted = FALSE

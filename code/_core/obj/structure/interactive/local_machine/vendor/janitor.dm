@@ -19,5 +19,7 @@
 		/obj/item/broom,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner,
 		/obj/item/container/beaker/bucket/water,
-		/obj/item/wet_floor_sign
+		/obj/item/wet_floor_sign,
+		/obj/item/storage/lighting/tube,
+		/obj/item/storage/lighting/bulb
 	)

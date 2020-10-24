@@ -21,9 +21,6 @@
 
 	size = SIZE_3
 
-
-	value = 160
-
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
 	slowdown_mul_worn = 1.05
@@ -34,17 +31,25 @@
 	desc = "Deus Vult."
 	desc_extended = "A knight's helmet. Made out of the finest metal."
 
+	value = 160
+
 /obj/item/clothing/head/helmet/knight/blue
 	name = "blue knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_blue.dmi'
+
+	value = 160
 
 /obj/item/clothing/head/helmet/knight/green
 	name = "green knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_green.dmi'
 
+	value = 160
+
 /obj/item/clothing/head/helmet/knight/yellow
 	name = "yellow knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_yellow.dmi'
+
+	value = 160
 
 /obj/item/clothing/head/helmet/knight/templar
 	name = "templar knight helmet"

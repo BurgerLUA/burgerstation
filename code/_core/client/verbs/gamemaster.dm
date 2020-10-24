@@ -132,19 +132,6 @@
 	log_admin("[L] was smited by [src].")
 
 
-/mob/living/proc/smite()
-	var/turf/T = get_turf(src)
-	for(var/mob/M in range(T,8))
-		if(!M.client)
-			continue
-		M.client.queued_shakes += 5
-	new/obj/effect/temp/fist(T,4,"#FFFFFF")
-	play('sound/effects/anima_fragment_attack.ogg',T)
-	on_crush()
-
-
-
-
 /client/verb/give_dosh(var/dosh_amount as num)
 	set name = "Give Dosh"
 	set category = "GameMaster"
@@ -282,7 +269,7 @@
 
 	for(var/k in subtypesof(/area/burgerstation))
 		CHECK_TICK(75,FPS_SERVER)
-		var/area/A = all_areas[k]
+		var/area/A = AREA(k)
 		if(!A) continue
 		var/list/valid_hearers = list()
 		for(var/mob/living/L in A.contents)

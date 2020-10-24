@@ -78,6 +78,8 @@
 	iff_tag = "Slime"
 	loyalty_tag = "Slime"
 
+	stun_angle = 0
+
 /mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()

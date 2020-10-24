@@ -9,6 +9,8 @@
 	var/heal_burn = 30 //Only applies to inorganics.
 	var/heal_burn_percent = 5 //Only applies to inorganics.
 
+	value = 3
+
 /obj/item/cable/update_icon()
 	var/icon_count = clamp(item_count_current,1,5)
 	icon_state = "[initial(icon_state)]_[icon_count]"

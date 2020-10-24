@@ -119,8 +119,8 @@
 	//sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE) Already done.
 
 	var/list/coverted_choice = list()
-	for(var/k in all_areas)
-		var/area/A = all_areas[k]
+	for(var/k in SSarea.all_areas)
+		var/area/A = SSarea.all_areas[k]
 		coverted_choice["[A]"] = A
 
 	var/choice = input("What area would you like to jump to?","Jump to Area") as null|anything in coverted_choice

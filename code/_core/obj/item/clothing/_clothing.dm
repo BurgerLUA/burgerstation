@@ -54,6 +54,8 @@
 
 	can_wear = TRUE
 
+	value = -1
+
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()
 

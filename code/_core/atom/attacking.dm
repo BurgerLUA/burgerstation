@@ -92,9 +92,8 @@
 	if(world.time < attacker.attack_next)
 		return FALSE
 
-	if(attacker != object_to_damage_with)
-		if(world.time < object_to_damage_with.attack_next)
-			return FALSE
+	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
+		return FALSE
 
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
@@ -103,7 +102,6 @@
 		if(can_attack && can_be_attacked)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
 			if(hit_object)
-				attacker << "Found hitobject: [hit_object.type]."
 				hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
 				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
 					var/mob/living/advanced/A = attacker
@@ -136,9 +134,6 @@
 	return src
 
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(!mouse_opacity)
-		return FALSE
 
 	if(attack_next > world.time)
 		return FALSE

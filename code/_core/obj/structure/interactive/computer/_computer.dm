@@ -101,24 +101,25 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	if(!is_advanced(caller))
 		return ..()
 
-	if(!SSgamemode.active_gamemode.allow_launch)
+	var/obj/shuttle_controller/SC = locate() in get_area(src)
+
+	if(!SC)
+		caller.to_chat("No shuttle controller found!")
+		return FALSE
+
+	if(SC.time_restricted && !SSgamemode.active_gamemode.allow_launch)
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
 		return FALSE
 
 	var/selection = input("Are you sure you wish to launch this shuttle?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
 
 	if(selection == "Yes")
-		var/obj/shuttle_controller/SC = locate() in get_area(src)
-		if(SC)
-			if(SC.state == SHUTTLE_STATE_LANDED)
-				SC.state = SHUTTLE_STATE_WAITING
-				SC.time = 0
-				caller.to_chat("You prepare the shuttle for launch.")
-			else
-				caller.to_chat("ERROR: Shuttle already in transit.")
+		if(SC.state == SHUTTLE_STATE_LANDED)
+			SC.state = SHUTTLE_STATE_WAITING
+			SC.time = 0
+			caller.to_chat("You prepare the shuttle for launch.")
 		else
-			caller.to_chat("ERROR: No shuttle controller found!")
-
+			caller.to_chat("ERROR: Shuttle already in transit.")
 	return TRUE
 
 /obj/structure/interactive/computer/console/remote_flight
@@ -127,6 +128,10 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	keyboard_type = "syndie_key"
 
 	var/obj/shuttle_controller/desired_shuttle_controller
+
+/obj/structure/interactive/computer/console/remote_flight/Finalize()
+	desired_shuttle_controller = locate(desired_shuttle_controller) in world
+	return ..()
 
 /obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -139,19 +144,17 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] isn't ready to launch yet!"))
 		return FALSE
 
-	var/selection = input("Are you sure you wish to launch \the [desired_shuttle_controller.name]?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
+	var/selection = input("Are you sure you wish to launch \the [desired_shuttle_controller.name]?","Shuttle Control","Cancel") as null|anything in list("Yes","No","Cancel")
 
 	if(selection == "Yes")
-		var/obj/shuttle_controller/SC = locate(desired_shuttle_controller) in world
-		if(SC)
-			if(SC.state == SHUTTLE_STATE_LANDED)
-				SC.state = SHUTTLE_STATE_WAITING
-				SC.time = 0
-				caller.to_chat("You prepare \the [desired_shuttle_controller.name] for launch.")
-			else
-				caller.to_chat("ERROR: |The [desired_shuttle_controller.name] is already in transit.")
+		if(desired_shuttle_controller.state == SHUTTLE_STATE_LANDED)
+			desired_shuttle_controller.state = SHUTTLE_STATE_WAITING
+			desired_shuttle_controller.time = 0
+			caller.to_chat("You prepare \the [desired_shuttle_controller.name] for launch.")
 		else
-			caller.to_chat("ERROR: No controller found!")
+			caller.to_chat("ERROR: \The [desired_shuttle_controller.name] is already in transit.")
+	else
+		caller.to_chat(span("notice","You decide not to launch \the [desired_shuttle_controller.name]."))
 
 obj/structure/interactive/computer/console/remote_flight/cargo
 	name = "remote cargo shuttle console"
