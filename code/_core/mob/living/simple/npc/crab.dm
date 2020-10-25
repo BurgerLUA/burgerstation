@@ -78,7 +78,7 @@
 	force_spawn = TRUE
 	boss_music = /track/crab_rave
 
-	damage_type = /damagetype/npc/crab/king
+	damage_type = /damagetype/npc/crab
 
 	armor_base = list(
 		BLADE = 75,
