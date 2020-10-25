@@ -504,6 +504,7 @@
 #include "code\_core\datum\objective\_objective.dm"
 #include "code\_core\datum\objective\dummy.dm"
 #include "code\_core\datum\objective\kill_boss.dm"
+#include "code\_core\datum\objective\kill_ghost.dm"
 #include "code\_core\datum\objective\obtain_artifact.dm"
 #include "code\_core\datum\objective\rescue_hostage.dm"
 #include "code\_core\datum\plant\_plant_type.dm"

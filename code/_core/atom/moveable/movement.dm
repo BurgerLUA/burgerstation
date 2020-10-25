@@ -96,6 +96,8 @@
 		if(loc)
 			for(var/k in old_loc.contents)
 				var/atom/movable/M = k
+				if(M == src)
+					continue
 				M.Uncrossed(src)
 
 	loc = new_loc
@@ -105,6 +107,8 @@
 		if(loc)
 			for(var/k in loc.contents)
 				var/atom/movable/M = k
+				if(M == src)
+					continue
 				M.Crossed(src)
 
 	if(old_loc != loc)
@@ -162,6 +166,8 @@
 	for(var/k in NewLoc.contents)
 		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
+		if(M == src)
+			continue
 		if(M.density && !M.Cross(src) && !src.Bump(M))
 			return FALSE
 
@@ -169,6 +175,8 @@
 	for(var/k in OldLoc.contents)
 		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
+		if(M == src)
+			continue
 		if(M.density && !M.Uncross(src))
 			return FALSE
 
@@ -185,6 +193,8 @@
 	for(var/k in NewLoc.contents)
 		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
+		if(M == src)
+			continue
 		if(!M.density)
 			continue
 		M.Crossed(src)
@@ -193,6 +203,8 @@
 	for(var/k in OldLoc.contents)
 		CHECK_TICK(100,FPS_SERVER)
 		var/atom/movable/M = k
+		if(M == src)
+			continue
 		if(!M.density)
 			continue
 		M.Uncrossed(src)

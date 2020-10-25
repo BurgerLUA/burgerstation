@@ -73,7 +73,7 @@
 	F.Blend(color_frame,ICON_MULTIPLY)
 	I.Blend(F,ICON_OVERLAY)
 
-	if(on)
+	if(on && desired_light_color)
 		var/icon/L = new /icon(icon,"floor_light")
 		L.Blend(desired_light_color,ICON_MULTIPLY)
 		I.Blend(L,ICON_OVERLAY)

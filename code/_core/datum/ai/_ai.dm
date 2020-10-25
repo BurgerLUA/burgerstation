@@ -161,6 +161,10 @@
 
 	start_turf = get_turf(owner)
 
+	if(!stored_sneak_power && is_living(owner))
+		var/mob/living/L = owner
+		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
+
 	return ..()
 
 /ai/proc/set_path(var/list/Vector3D/desired_path = list())
@@ -559,18 +563,34 @@
 
 	return TRUE
 
+/ai/proc/handle_light()
+
+	var/turf/T = get_turf(owner)
+
+	for(var/light_source/LS in T.affecting_lights)
+		if(!is_living(LS.top_atom))
+			continue
+		var/mob/living/L = LS.top_atom
+		if(should_attack_mob(L))
+			set_alert_level(ALERT_LEVEL_CAUTION,L,L)
+			break
+
+	return TRUE
+
 /ai/proc/handle_objectives()
 
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE
 
 	if(objective_attack)
-		if(objective_attack.dead || objective_attack.qdeleting || (is_living(objective_attack) && !should_attack_mob(objective_attack)) || !can_see(objective_attack))
+		if((is_living(objective_attack) && !should_attack_mob(objective_attack)) || get_sight_chance(objective_attack) <= 50)
 			set_objective(null)
 		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
 		else
 			frustration_attack = 0
+	else
+		handle_light()
 
 	if(!objective_attack || frustration_attack > frustration_attack_threshold)
 		var/list/possible_targets = get_possible_targets()
@@ -608,6 +628,9 @@
 /ai/proc/should_attack_mob(var/mob/living/L)
 
 	if(L == owner)
+		return FALSE
+
+	if(L.qdeleting)
 		return FALSE
 
 	if(L.dead)
@@ -688,18 +711,50 @@
 	if(A in attackers)
 		return TRUE
 
-	var/atom_alpha = A.alpha
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		atom_alpha *= 2
-	if(atom_alpha >= 255)
-		return TRUE
 	var/distance = get_dist(owner,A)
 	if(distance <= 1)
 		return TRUE
-	if(!stored_sneak_power && is_living(owner))
-		var/mob/living/L = owner
-		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
+
+	var/atom_alpha = A.alpha
+	if(alert_level == ALERT_LEVEL_COMBAT)
+		atom_alpha *= 2
+
 	return A.alpha >= ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
+
+
+/ai/proc/get_sight_chance(var/atom/A,var/check_view = TRUE)
+
+	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
+		return 0
+
+	if(check_view && !is_in_view(A))
+		return 0
+
+	if(A in attackers)
+		return 100
+
+	var/distance = get_dist(owner,A)
+	if(distance <= 1)
+		return 100
+
+	. = 100
+
+	var/turf/T = get_turf(A)
+
+	var/darkness = T.darkness*2
+	var/atom_alpha = A.alpha
+	if(alert_level == ALERT_LEVEL_COMBAT)
+		atom_alpha *= 2
+		darkness *= 2
+
+	. *= clamp(atom_alpha/255,0,1) * darkness
+
+	if(distance > VIEW_RANGE)
+		. *= 0.25
+
+	return .
+
+
 
 /ai/proc/get_possible_targets()
 
@@ -723,7 +778,8 @@
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
 			CHECK_TICK(75,FPS_SERVER*2)
-			if(!can_see(L,FALSE))
+			var/sight_chance = get_sight_chance(L,FALSE)
+			if(sight_chance < 100 && !prob(sight_chance))
 				continue
 			CHECK_TICK(75,FPS_SERVER*2)
 			if(!should_attack_mob(L))

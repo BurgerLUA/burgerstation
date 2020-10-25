@@ -11,7 +11,7 @@
 	density_down  = TRUE
 	allow_bullet_pass = FALSE
 
-	flags_collision = FLAG_COLLISION_UNSIMULATED
+	collision_flags = FLAG_COLLISION_UNSIMULATED
 
 
 /turf/unsimulated/bluespace

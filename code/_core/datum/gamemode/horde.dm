@@ -68,6 +68,7 @@
 	//Base Objectives.
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+	add_objective(/objective/kill_ghost)
 
 	if(player_count >= 10)
 		add_objective(/objective/hostage)

@@ -34,6 +34,14 @@
 
 	var/next_voice = 0
 
+	var/was_being_watched = FALSE
+
+/ai/ghost/handle_movement_roaming()
+
+	if(was_being_watched)
+		return FALSE
+
+	return ..()
 
 /ai/ghost/New(var/mob/living/desired_owner)
 
@@ -100,6 +108,10 @@
 
 	var/turf/T = get_turf(owner)
 	var/area/A = T.loc
+
+	if(A.area_identifier != origin_area_identifier)
+		find_new_location()
+		return TRUE
 
 	if(owner.move_delay <= 0)
 		handle_movement_reset()
@@ -251,6 +263,8 @@
 
 	desired_alpha = clamp(desired_alpha,0,255)
 	owner_as_ghost.desired_alpha = desired_alpha
+
+	was_being_watched = viewer_count > 0
 
 	return TRUE
 

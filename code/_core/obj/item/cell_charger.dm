@@ -25,8 +25,11 @@
 /obj/item/cell_charger/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("battery")
-	update_sprite()
 	return .
+
+/obj/item/cell_charger/Finalize()
+	update_sprite()
+	return ..()
 
 /obj/item/cell_charger/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -123,6 +126,7 @@
 		return FALSE
 
 	if(!charging_device)
+		visible_message("\The [src.name] gives a brink ding.")
 		return FALSE
 
 	return .

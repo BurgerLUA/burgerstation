@@ -37,7 +37,7 @@
 
 	value = 90
 
-	slowdown_mul_worn = 1.05
+	slowdown_mul_worn = 1
 
 /obj/item/armor_plate/medium
 	name = "medium armor plate"
@@ -54,7 +54,7 @@
 
 	value = 190
 
-	slowdown_mul_worn = 1.1
+	slowdown_mul_worn = 1.05
 
 
 /obj/item/armor_plate/heavy
@@ -69,7 +69,7 @@
 		ARCANE = -50
 	)
 
-	slowdown_mul_worn = 1.15
+	slowdown_mul_worn = 1.1
 
 
 
@@ -87,7 +87,7 @@
 		ARCANE = -75
 	)
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.1
 
 	value = 500
 
@@ -103,6 +103,6 @@
 		ARCANE = -75
 	)
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.15
 
 	value = 1000

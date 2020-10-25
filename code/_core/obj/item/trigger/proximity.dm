@@ -50,8 +50,13 @@
 		if(loc && time_set < 0 && !(time_set % 4))
 			for(var/atom/movable/M in view(src.loc,2))
 				CHECK_TICK(100,FPS_SERVER)
-				if(M.move_delay <= 0)
-					continue
+				if(is_living(M))
+					var/mob/living/L = M
+					if(L.dead || L.move_delay <= 0)
+						continue
+				else
+					if(M.move_delay <= 0)
+						continue
 				loc.trigger(last_interacted,src,-1,-1)
 				play('sound/weapons/timer/beep.ogg',src)
 				flick("motion_trigger",src)
