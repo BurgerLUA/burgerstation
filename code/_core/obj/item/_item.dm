@@ -282,7 +282,7 @@
 
 /obj/item/New(var/desired_loc)
 
-	if(!damage_type || damage_type == /damagetype/default/)
+	if(!damage_type)
 		switch(size)
 			if(0 to SIZE_3)
 				damage_type = /damagetype/item/light

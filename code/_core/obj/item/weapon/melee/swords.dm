@@ -67,8 +67,8 @@
 	desc = "Unga bunga."
 	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/item/weapons/melee/swords/spear.dmi'
-	damage_type = /damagetype/melee/spear/spear/
-	damage_type_thrown = /damagetype/melee/spear/spear/thrown
+	damage_type = /damagetype/melee/spear/basic/
+	damage_type_thrown = /damagetype/melee/spear/basic/thrown
 
 	attack_delay = 5
 	attack_delay_max = 12

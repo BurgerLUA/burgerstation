@@ -2,62 +2,60 @@
 	name = "inactive grazer"
 
 	attack_damage_base = list(
-		BLADE = 20,
-		PIERCE = 10,
+		BLADE = DAMAGE_DAGGER*0.5,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 50,
-		PIERCE = 50,
+		BLADE = AP_DAGGER
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 20,
-		ATTRIBUTE_DEXTERITY = 30,
+		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.1,
+		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.2,
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLADE,PIERCE),
-		ATTRIBUTE_DEXTERITY = list(BLADE,PIERCE)
+		ATTRIBUTE_STRENGTH = BLADE,
+		ATTRIBUTE_DEXTERITY = BLADE
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 25
+		SKILL_MELEE = DAMAGE_DAGGER*0.2
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = list(BLADE,PIERCE)
+		SKILL_MELEE = BLADE
 	)
 
 /damagetype/melee/sword/grazer/on
 	name = "active grazer"
 
 	attack_damage_base = list(
-		LASER = 20,
-		HEAT = 10,
+		LASER = DAMAGE_SWORD*0.4,
+		HEAT = DAMAGE_SWORD*0.1,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = 75,
-		HEAT = 75,
+		LASER = AP_SWORD*0.75,
+		HEAT = AP_SWORD**0.25,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 20,
-		ATTRIBUTE_DEXTERITY = 30,
+		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.1,
+		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2,
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(LASER,HEAT),
-		ATTRIBUTE_DEXTERITY = list(LASER,HEAT)
+		ATTRIBUTE_STRENGTH = LASER,
+		ATTRIBUTE_DEXTERITY = LASER
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 25
+		SKILL_MELEE = DAMAGE_SWORD*0.2
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = list(LASER,HEAT)
+		SKILL_MELEE = LASER
 	)

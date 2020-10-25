@@ -3,19 +3,19 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 30,
-		PIERCE = 20,
+		BLADE = DAMAGE_AXE*0.3,
+		PIERCE = DAMAGE_AXE*0.1,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 25,
-		PIERCE = 25,
+		BLADE = AP_AXE*0.75,
+		PIERCE = AP_AXE*0.25,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 40,
-		ATTRIBUTE_DEXTERITY = 10,
+		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.2,
+		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.2,
 	)
 
 	attribute_damage = list(
@@ -24,7 +24,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 30
+		SKILL_MELEE = DAMAGE_AXE*0.2
 	)
 
 	skill_damage = list(
@@ -36,21 +36,21 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 20,
-		PIERCE = 10,
-		DARK = 50
+		BLADE = DAMAGE_CLUB*0.2,
+		PIERCE = DAMAGE_CLUB*0.1,
+		DARK = DAMAGE_CLUB*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 25,
-		PIERCE = 25,
+		BLADE = AP_CLUB*0.5,
+		PIERCE = AP_CLUB*0.5,
 		UNHOLY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 40,
-		ATTRIBUTE_DEXTERITY = 10,
+		ATTRIBUTE_STRENGTH = DAMAGE_CLUB*0.1,
+		ATTRIBUTE_DEXTERITY = DAMAGE_CLUB*0.1,
 	)
 
 	attribute_damage = list(
@@ -59,9 +59,11 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 30
+		SKILL_MELEE = DAMAGE_CLUB*0.1,
+		SKILL_PRAYER = DAMAGE_CLUB*0.1
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = list(BLADE,PIERCE)
+		SKILL_MELEE = list(BLADE,PIERCE),
+		SKILL_PRAYER = DARK
 	)

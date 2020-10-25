@@ -210,7 +210,7 @@
 
 
 /obj/item/weapon/melee/energy/plightbringer
-	name = "\improper Plightbringer"
+	name = "\improper Plightbringer's Sword"
 	desc = "A large black steel straightsword with a decorated hilt."
 	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
 	icon = 'icons/obj/item/weapons/melee/swords/plightbringer.dmi'
