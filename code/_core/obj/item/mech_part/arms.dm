@@ -1,5 +1,7 @@
 /obj/item/mech_part/arms
 	name = "arms"
+	desc = "Bigger than yours."
+	desc_extended = "Arms for your mech. You need these to hold weapons."
 
 	var/maximum_support = 0 //How much these arms can carry (SIZE LIMIT PER HAND)
 	var/maximum_weapons = 1
