@@ -234,25 +234,10 @@
 	return .
 
 /mob/living/advanced/proc/update_slowdown()
-
-	var/cucumber = (weight/weight_max)*100
-
-	. = 1
-
-	switch(cucumber)
-		if(-INFINITY to 0)
-			. = max(1 - cucumber,0.5)
-		if(25 to 50)
-			. = 1.25
-		if(50 to 75)
-			. = 1.50
-		if(75 to 100)
-			. = 1.75
-		if(100 to INFINITY)
-			. = 2
-
+	//https://www.desmos.com/calculator/9oyrocojgp
+	var/cucumber = (weight/weight_max)
+	. = 2 - (1-cucumber)**0.2
 	slowdown_mul = .
-
 	return .
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)

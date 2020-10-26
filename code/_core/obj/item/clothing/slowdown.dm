@@ -24,8 +24,9 @@ var/global/list/armor_slowdown_values = list(
 	. = 1
 
 	for(var/k in defense_rating)
+		if(IS_INFINITY(defense_rating[k]))
+			continue
 		. += defense_rating[k] * armor_slowdown_values[k]
-
 	. *= length(protected_limbs)
 
 	return .

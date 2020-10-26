@@ -81,10 +81,12 @@
 
 	cqc_tag = "1"
 
-	allow_friendly_fire = TRUE
+	allow_friendly_fire = FALSE
 
 	attack_delay = SPEED_CLUB*0.5
 	attack_delay_max = SPEED_CLUB
+
+	draw_blood = FALSE
 
 /damagetype/unarmed/fists/disarm
 	name = "disarm fists"
