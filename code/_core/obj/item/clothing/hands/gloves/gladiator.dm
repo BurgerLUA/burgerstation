@@ -19,7 +19,7 @@
 
 	size = SIZE_3
 
-	slowdown_mul_worn = 1.05
+
 
 	value = 20
 

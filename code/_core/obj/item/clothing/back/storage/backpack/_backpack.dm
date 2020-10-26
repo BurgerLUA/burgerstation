@@ -14,7 +14,7 @@
 
 	value = 40
 
-	slowdown_mul_worn = 1.2
+
 	slowdown_mul_held = 1.2
 
 /obj/item/clothing/back/storage/backpack/white
