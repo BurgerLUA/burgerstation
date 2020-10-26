@@ -16,9 +16,8 @@
 
 	view_punch = 10
 
-	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
-
 	size = SIZE_2
+	weight = 4
 
 	heat_per_shot = 0.02
 	heat_max = 0.12

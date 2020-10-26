@@ -20,5 +20,3 @@
 
 
 	value = 200
-
-	slowdown_mul_worn = 1.1

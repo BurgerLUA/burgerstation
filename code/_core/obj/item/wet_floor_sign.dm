@@ -5,3 +5,6 @@
 	icon = 'icons/obj/item/wet_floor.dmi'
 	icon_state = "wet_floor"
 	value = 20
+
+	size = SIZE_2
+	weight = 4

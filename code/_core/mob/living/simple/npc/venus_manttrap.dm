@@ -5,7 +5,7 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/venus_human_trap
 
-	health_base = 100
+	health_base = 75
 
 	ai = /ai/
 

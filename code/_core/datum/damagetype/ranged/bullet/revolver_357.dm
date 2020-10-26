@@ -3,14 +3,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 50,
-		PIERCE = 20
+		BLUNT = DAMAGE_AXE*0.75,
+		PIERCE = DAMAGE_AXE*0.25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 25,
-		PIERCE = 25
+		BLUNT = AP_AXE*0.75,
+		PIERCE = AP_AXE*0.25
 	)
 
 	falloff = VIEW_RANGE
@@ -21,12 +21,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 50
+		PIERCE = DAMAGE_AXE
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = 100
+		PIERCE = AP_AXE
 	)
 
 	falloff = VIEW_RANGE

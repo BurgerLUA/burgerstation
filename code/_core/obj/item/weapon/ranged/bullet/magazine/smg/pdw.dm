@@ -27,6 +27,7 @@
 	bullet_diameter_max = 5
 
 	size = SIZE_3
+	weight = 6
 
 	value = 110
 

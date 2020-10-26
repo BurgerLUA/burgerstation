@@ -29,9 +29,6 @@
 
 	base_miss_chance = 20
 
-	attack_delay = 8
-	attack_delay_max = 15
-
 	health_base = 25
 
 	health_coefficient = 0.5
@@ -255,9 +252,6 @@
 //Stand
 /obj/item/organ/hand/stand
 	name = "right fast hand"
-
-	attack_delay = 1
-	attack_delay_max = 4
 
 /obj/item/organ/hand/stand/get_damage_type(var/atom/attacker,var/atom/victim)
 	return /damagetype/unarmed/fists/stand

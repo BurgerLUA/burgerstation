@@ -12,6 +12,8 @@
 
 	value = 150
 
+	weight = 2
+
 
 /obj/item/mop/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

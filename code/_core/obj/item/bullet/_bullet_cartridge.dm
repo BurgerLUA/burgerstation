@@ -36,7 +36,14 @@
 
 	var/bullet_seed //For icon generation.
 
-/obj/item/bullet_cartridge/calculate_value()
+/obj/item/bullet_cartridge/New(var/desired_loc)
+	calculate_weight()
+	return ..()
+
+/obj/item/bullet_cartridge/proc/calculate_weight()
+	return size*0.25
+
+/obj/item/bullet_cartridge/get_value()
 
 	. = ..()
 

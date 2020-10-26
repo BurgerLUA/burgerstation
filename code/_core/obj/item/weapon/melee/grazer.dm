@@ -10,3 +10,6 @@
 	value = 80
 
 	dan_mode = TRUE
+
+	size = SIZE_2
+	weight = 3

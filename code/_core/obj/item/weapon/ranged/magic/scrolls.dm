@@ -15,6 +15,8 @@
 
 	var/scroll_count = 1
 
+	weight = 0.1
+
 
 /obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -26,7 +28,7 @@
 	LOADVAR("scroll_count")
 	return .
 
-/obj/item/weapon/ranged/magic/scroll/calculate_value()
+/obj/item/weapon/ranged/magic/scroll/get_value()
 	. = ..()
 	. *= (1 + scroll_count)
 	return .

@@ -11,4 +11,3 @@ obj/item/clothing/back/wings
 
 	protected_limbs = TARGETABLE_LIMBS
 
-	slowdown_mul_worn = 0.5

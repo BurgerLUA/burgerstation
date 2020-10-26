@@ -3,6 +3,8 @@
 	icon = 'icons/obj/item/trash.dmi'
 	value = 1
 
+	weight = 0.25
+
 /obj/item/trash/raisins
 	icon_state = "raisins"
 

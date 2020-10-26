@@ -15,9 +15,10 @@
 
 	view_punch = 1
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_3
+	weight = 8
 
 
 	override_icon_state = TRUE

@@ -17,5 +17,3 @@
 		LASER = 10,
 		ARCANE = -50
 	)
-
-	slowdown_mul_worn = 1.1

@@ -36,8 +36,6 @@
 
 	no_initial_blend = TRUE
 
-	slowdown_mul_worn = 1.2
-
 /obj/item/clothing/overwear/armor/carbon/nanotrasen
 	polymorphs = list(
 		"armor" = COLOR_NANOTRASEN,

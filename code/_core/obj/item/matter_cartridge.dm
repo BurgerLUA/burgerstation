@@ -6,6 +6,8 @@
 	desc_extended = "RCDs use this as ammo. Stick inside an RCD when empty to refill it of atoms."
 	value = 50
 
+	weight = 5
+
 
 /obj/item/matter_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

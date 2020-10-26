@@ -4,6 +4,10 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
+	health_base = 200
+	stamina_base = 100
+	mana_base = 100
+
 	class = /class/player
 
 	var/dialogue_target_id

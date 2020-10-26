@@ -18,9 +18,10 @@
 	view_punch = 12
 
 	size = SIZE_2
+	weight = 7
 
 
-	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 
 	bullet_length_min = 20
 	bullet_length_best = 33

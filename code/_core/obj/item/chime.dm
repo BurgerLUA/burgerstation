@@ -9,6 +9,8 @@
 
 	var/sound_to_play = 'sound/ui/message_double_ping.ogg'
 
+	weight = 3
+
 /obj/item/chime/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_device")

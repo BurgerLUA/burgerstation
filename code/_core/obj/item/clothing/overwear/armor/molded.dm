@@ -8,8 +8,6 @@
 
 	dyeable = TRUE
 
-	slowdown_mul_worn = 1.1
-
 /obj/item/clothing/overwear/armor/molded_armor/security
 	name = "kevlar vest"
 	desc = "Hey, as long as it works."

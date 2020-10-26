@@ -35,8 +35,6 @@
 
 	value = 300
 
-	slowdown_mul_worn = 1.05
-
 	size = SIZE_6
 
 /obj/item/clothing/overwear/armor/nanotrasen/light/deathsquad
@@ -64,8 +62,6 @@
 
 	value = 600
 
-	slowdown_mul_worn = 1.1
-
 	size = SIZE_7
 
 /obj/item/clothing/overwear/armor/nanotrasen/medium/deathsquad
@@ -91,8 +87,6 @@
 	)
 
 	value = 1200
-
-	slowdown_mul_worn = 1.25
 
 /obj/item/clothing/overwear/armor/nanotrasen/heavy/deathsquad
 	polymorphs = list(

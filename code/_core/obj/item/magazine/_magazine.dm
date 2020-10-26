@@ -21,6 +21,8 @@
 
 	var/icon_states = 1
 
+	weight = 0.25
+
 
 /obj/item/magazine/update_icon()
 

@@ -14,9 +14,8 @@
 
 	view_punch = 2
 
-	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
-
 	size = SIZE_3
+	weight = 10
 
 
 	heat_per_shot = 0

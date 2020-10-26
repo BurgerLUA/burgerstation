@@ -5,7 +5,7 @@
 
 	var/pump_sound = 'sound/weapons/shotgun_pump.ogg'
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 
 	movement_spread_base = 0.03
 	movement_spread_mul = 0.05

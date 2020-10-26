@@ -6,9 +6,9 @@
 	dialogue_id = /dialogue/npc/soldier
 
 	var/list/possible_outfits = list(
-		/loadout/syndicate/soldier = 75,
-		/loadout/syndicate/basic = 8,
-		/loadout/syndicate/advanced = 4,
+		/loadout/syndicate/soldier = 90,
+		/loadout/syndicate/basic = 6,
+		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 1
 	)
 

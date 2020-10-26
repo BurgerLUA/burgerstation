@@ -28,9 +28,10 @@
 
 	view_punch = 16
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
+
 
 	size = SIZE_4
+	weight = 16
 
 
 	value = 80

@@ -17,9 +17,10 @@
 
 	view_punch = 64
 
-	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
+
 
 	size = SIZE_4
+	weight = 30
 
 
 	heat_per_shot = 0.06

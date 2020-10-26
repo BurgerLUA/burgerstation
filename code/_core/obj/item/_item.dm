@@ -13,6 +13,9 @@
 	var/rarity = RARITY_COMMON
 
 	var/size = 1
+	var/weight = 0
+
+	var/weight_last = 0//Last weight calculated via calculation
 
 	var/list/material = list() //Stored materials
 
@@ -23,9 +26,6 @@
 	var/item_count_current = 1
 	var/item_count_max = 1
 	var/item_count_max_icon = 0
-
-	var/slowdown_mul_held = 1 //Slow down multiplier. High values means more slower.
-	var/slowdown_mul_worn = 1
 
 	var/pixel_height = 2 //The z size of this, in pixels. Used for sandwiches and burgers.
 
@@ -136,13 +136,23 @@
 
 	value = -1
 
+/obj/item/proc/get_weight(var/check_containers=TRUE)
+
+	. = weight*item_count_current
+
+	if(check_containers && is_container)
+		for(var/obj/hud/inventory/I in src.inventories)
+			. += I.get_weight()
+
+	return .
+
 /obj/item/Crossed(atom/movable/O)
 	return TRUE
 
 /obj/item/Cross(atom/movable/O)
 	return TRUE
 
-/obj/item/PostInitialize()
+/obj/item/Finalize()
 	. = ..()
 	if(length(polymorphs))
 		update_sprite()
@@ -150,12 +160,6 @@
 
 /obj/item/get_base_value()
 	return initial(value) * item_count_current * price_multiplier
-
-/obj/item/proc/get_slowdown_mul_held()
-	return slowdown_mul_held
-
-/obj/item/proc/get_slowdown_mul_worn()
-	return slowdown_mul_worn
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
 	if(!amount_to_transfer) return 0
@@ -282,7 +286,7 @@
 
 /obj/item/New(var/desired_loc)
 
-	if(!damage_type || damage_type == /damagetype/default/)
+	if(!damage_type)
 		switch(size)
 			if(0 to SIZE_3)
 				damage_type = /damagetype/item/light
@@ -357,19 +361,9 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
-	. += div("weightsize","Size: [size]")
+	. += div("rarity","Value: [CEILING(value,1)].")
+	. += div("weightsize","Size: [size], Weight: [get_weight(FALSE)]")
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
-	var/worn_slowdown = get_slowdown_mul_worn()
-	if(worn_slowdown > 1)//Slower
-		. += div("red bold center","Worn Speed Penalty: [FLOOR((worn_slowdown-1)*100,1)]%")
-	else if(worn_slowdown < 1)//Faster
-		. += div("green bold center","Worn Speed Boost: [FLOOR((1/worn_slowdown)*100,1)-100]%")
-	var/held_slowdown = get_slowdown_mul_held()
-	if(held_slowdown > 1)//Slower
-		. += div("red bold center","Held Speed Penalty: [FLOOR((held_slowdown-1)*100,1)]%")
-	else if(held_slowdown < 1)//Faster
-		. += div("green bold center","Held Speed Boost: [FLOOR((1/held_slowdown)*100,1)-100]%")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 

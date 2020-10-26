@@ -4,7 +4,7 @@
 	desc_extended = "A harmless critter. Or so it may seem."
 	icon = 'icons/mob/living/simple/glockroach.dmi'
 	icon_state = "glockroach"
-	damage_type = /damagetype/npc/glockroach
+	damage_type = /damagetype/ranged/bullet/pistol_10mm
 	class = /class/glockroach
 
 	value = 25

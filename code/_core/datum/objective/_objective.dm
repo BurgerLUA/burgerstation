@@ -9,6 +9,8 @@
 
 	var/antagonist = FALSE
 
+	var/trackable = TRUE
+
 /objective/New()
 
 	if(!setup() || !start())

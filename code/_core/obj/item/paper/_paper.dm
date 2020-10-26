@@ -16,6 +16,8 @@
 
 	var/editable = TRUE
 
+	weight = 0.01
+
 /obj/item/paper/click_self(var/mob/caller,location,control,params)
 
 	if(!is_player(caller))

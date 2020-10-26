@@ -34,7 +34,7 @@
 
 	value = 30
 
-	slowdown_mul_worn = 0.95
+
 
 	drop_sound = 'sound/items/drop/shoes.ogg'
 

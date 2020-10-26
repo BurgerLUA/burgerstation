@@ -13,6 +13,8 @@
 
 	var/teleport_cost = CELL_SIZE_BASIC
 
+	weight = 2
+
 /obj/item/hand_teleporter/Generate()
 
 	if(ispath(battery))

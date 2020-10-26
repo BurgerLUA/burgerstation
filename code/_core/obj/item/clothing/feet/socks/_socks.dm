@@ -25,7 +25,7 @@
 
 	size = SIZE_0
 
-	slowdown_mul_worn = 0.95
+
 
 /obj/item/clothing/feet/socks/ankle
 	name = "ankle high socks"

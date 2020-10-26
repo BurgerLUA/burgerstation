@@ -30,5 +30,3 @@
 		/obj/item/clothing/feet/shoes/engineering,
 		/obj/item/clothing/feet/shoes/engineering/left
 	)
-
-	slowdown_mul_worn = 1.3

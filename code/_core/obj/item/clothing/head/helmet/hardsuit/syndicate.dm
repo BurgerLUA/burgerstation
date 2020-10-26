@@ -20,8 +20,6 @@
 
 	size = SIZE_4
 
-	slowdown_mul_worn = 1.05
-
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
 	desc = "Perimeter Secured."
@@ -44,8 +42,6 @@
 
 	size = SIZE_3
 
-	slowdown_mul_worn = 1.1
-
 /obj/item/clothing/head/helmet/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
 	desc = "May I make a suggestion? Run."
@@ -67,5 +63,3 @@
 	)
 
 	size = SIZE_3
-
-	slowdown_mul_worn = 0.75

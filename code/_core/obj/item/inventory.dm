@@ -22,6 +22,14 @@
 
 
 /obj/item/proc/update_inventory() //When this object's inventory was updated.
+
+	if(is_inventory(loc) && finalized)
+		var/obj/hud/inventory/I = loc
+		if(is_advanced(I.owner))
+			var/mob/living/advanced/A = I.owner
+			A.update_weight()
+			A.update_slowdown()
+
 	return TRUE
 
 /obj/item/Generate()

@@ -4,6 +4,8 @@
 	burgerbux_reward = 1
 	points_reward = 25
 
+	trackable = FALSE
+
 /objective/kill_ghost/setup()
 
 	if(!has_valid_targets())
@@ -37,7 +39,7 @@
 
 /objective/kill_ghost/start()
 	var/mob/living/L = get_random_target()
-	tracked_atoms += L.loc
+	tracked_atoms += L
 	HOOK_ADD("post_death","kill_ghost_death",L,src,.proc/kill_ghost_post_death)
 	HOOK_ADD("destroy","kill_ghost_destroy",L,src,.proc/kill_ghost_post_death)
 	update()

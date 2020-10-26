@@ -20,7 +20,7 @@
 
 	view_punch = 8
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
+
 
 	heat_per_shot = 0.03
 	heat_max = 0.15
@@ -34,6 +34,7 @@
 	bullet_diameter_max = 5.6
 
 	size = SIZE_4
+	weight = 30
 
 	value = 400
 

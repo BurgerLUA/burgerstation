@@ -16,6 +16,8 @@
 
 	drop_sound = 'sound/items/drop/gascan.ogg'
 
+	weight = 0.1
+
 /*
 /obj/item/material/save_item_data(var/save_inventory = TRUE)
 	. = ..()

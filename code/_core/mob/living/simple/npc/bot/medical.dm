@@ -171,7 +171,7 @@
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"
 
-	health_base = 200
+	health_base = 100
 
 	level_multiplier = 3
 
