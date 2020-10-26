@@ -9,12 +9,22 @@
 
 	size = SIZE_2
 
+/obj/item/armor_plate/New(var/desired_loc)
+	calculate_weight()
+	return ..()
+
+/obj/item/armor_plate/proc/calculate_weight()
+
+	. = 1
+
+	for(var/k in armor_base)
+		. += armor_base[k] * armor_slowdown_values[k]
+
+	return .
 
 
 /obj/item/armor_plate/get_examine_list(var/mob/examiner)
-
 	. = ..()
-
 	var/list/armor_list = list()
 	for(var/damagetype in armor_base)
 		var/damage_rating = armor_base[damagetype]

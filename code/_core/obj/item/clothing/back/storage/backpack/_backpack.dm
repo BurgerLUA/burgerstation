@@ -15,7 +15,7 @@
 	value = 40
 
 
-	slowdown_mul_held = 1.2
+
 
 /obj/item/clothing/back/storage/backpack/white
 	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'

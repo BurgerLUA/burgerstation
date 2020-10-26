@@ -15,7 +15,7 @@
 	value = 30
 
 
-	slowdown_mul_held = 1.1
+
 
 /obj/item/clothing/back/storage/satchel/loadout/new_player/fill_inventory()
 	new /obj/item/clothing/mask/gas(src)

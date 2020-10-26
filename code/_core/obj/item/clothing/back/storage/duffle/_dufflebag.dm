@@ -15,7 +15,7 @@
 	value = 100
 
 
-	slowdown_mul_held = 1.1
+
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
 	color = COLOR_WHITE

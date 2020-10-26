@@ -14,7 +14,7 @@
 
 	view_punch = 2
 
-	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 
 	size = SIZE_3
 

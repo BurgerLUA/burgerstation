@@ -19,16 +19,13 @@ var/global/list/armor_slowdown_values = list(
 
 
 
-/obj/item/clothing/proc/calculate_slowdown()
+/obj/item/clothing/proc/calculate_weight()
 
-	. = 0
+	. = 1
 
 	for(var/k in defense_rating)
 		. += defense_rating[k] * armor_slowdown_values[k]
 
 	. *= length(protected_limbs)
-
-	slowdown_mul_held = FLOOR(1 + .*0.25*0.01,0.1)
-	slowdown_mul_worn = FLOOR(1 + .*0.01,0.1)
 
 	return .

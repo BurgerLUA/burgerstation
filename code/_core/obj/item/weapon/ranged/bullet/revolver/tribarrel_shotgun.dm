@@ -17,8 +17,6 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
-
 	size = SIZE_3
 
 	bullet_length_min = 73

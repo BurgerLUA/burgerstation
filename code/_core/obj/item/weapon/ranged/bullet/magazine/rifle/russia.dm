@@ -16,7 +16,7 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 
@@ -95,7 +95,7 @@
 
 	automatic = TRUE
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 
@@ -164,7 +164,7 @@
 
 	automatic = TRUE
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 
@@ -236,7 +236,7 @@
 
 	view_punch = 4
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 
@@ -303,7 +303,7 @@
 
 	view_punch = 2.5
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 
@@ -369,7 +369,7 @@
 
 	view_punch = 3.5
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 

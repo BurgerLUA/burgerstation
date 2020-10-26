@@ -17,7 +17,7 @@
 
 	view_punch = 64
 
-	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
+
 
 	size = SIZE_4
 

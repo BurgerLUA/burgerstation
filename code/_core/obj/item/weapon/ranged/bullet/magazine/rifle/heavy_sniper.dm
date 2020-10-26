@@ -18,7 +18,7 @@
 
 	view_punch = TILE_SIZE - 1
 
-	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
+
 
 	heat_per_shot = 0.1
 	heat_max = 0.1

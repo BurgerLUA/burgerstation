@@ -23,7 +23,7 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 
 	size = SIZE_4
 
@@ -96,7 +96,7 @@
 
 	view_punch = 16
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 
 	size = SIZE_3
 

@@ -13,6 +13,9 @@
 	var/sex = MALE
 	gender = MALE
 
+	var/weight = 0 //Weight of worn items.
+	var/weight_max = 1 //Maxinmum weight of worn items.
+
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
@@ -126,13 +129,15 @@
 
 /mob/living/advanced/Finalize()
 
-	. = ..()
-
 	if(blood_type == /reagent/blood) //Uninitialized blood.
 		var/species/S = all_species[species]
 		blood_type = S.generate_blood_type()
 
-	 return .
+	. = ..()
+
+	update_items(force=TRUE)
+
+	return .
 
 /mob/living/advanced/on_crush()
 	drop_all_items(get_turf(src))
@@ -196,29 +201,64 @@
 
 	return .
 
-/mob/living/advanced/proc/update_slowdown_mul()
+
+/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_weight=TRUE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
 	if(qdeleting) //Bandaid fix.
 		return FALSE
 
-	var/slow_mul = 1
+	if(!force && !finalized)
+		return FALSE //Don't want to call this too much during initializations.
+
+	if(should_update_weight) update_weight()
+	if(should_update_slowdown) update_slowdown()
+	if(should_update_eyes) update_eyes()
+	if(should_update_protection) update_protection()
+	if(should_update_clothes) update_clothes()
+
+	return TRUE
+
+
+
+/mob/living/advanced/proc/update_weight()
+
+	. = 0
 
 	for(var/k in worn_objects)
 		var/obj/item/I = k
-		slow_mul += I.get_slowdown_mul_worn() - 1
+		. += I.get_weight()
 
 	for(var/k in held_objects)
 		var/obj/item/I = k
-		if(is_inventory(I.loc))
-			var/obj/hud/inventory/I2 = I.loc
-			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
-				slow_mul += I.get_slowdown_mul_held() - 1
-			else
-				slow_mul += I.get_slowdown_mul_worn() - 1
+		. += I.get_weight()
 
-	slowdown_mul = clamp(slow_mul,0.5,4)
+	weight = .
 
-	return TRUE
+	weight_max = (50 + get_attribute_power(ATTRIBUTE_STRENGTH)*150)
+
+	return .
+
+/mob/living/advanced/proc/update_slowdown()
+
+	var/cucumber = (weight/weight_max)*100
+
+	. = 1
+
+	switch(cucumber)
+		if(-INFINITY to 0)
+			. = max(1 - cucumber,0.5)
+		if(25 to 50)
+			. = 1.25
+		if(50 to 75)
+			. = 1.50
+		if(75 to 100)
+			. = 1.75
+		if(100 to INFINITY)
+			. = 2
+
+	slowdown_mul = .
+
+	return .
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
@@ -301,12 +341,13 @@ mob/living/advanced/Login()
 		add_species_buttons()
 		add_species_health_elements()
 
-	update_slowdown_mul()
-
-	update_clothes()
-
 	return .
 
+
+/mob/living/advanced/Finalize()
+	. = ..()
+	update_items()
+	return .
 
 /mob/living/advanced/setup_name()
 

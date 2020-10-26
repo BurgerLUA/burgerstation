@@ -16,7 +16,7 @@
 
 	view_punch = 20
 
-	slowdown_mul_held = HELD_SLOWDOWN_SMG
+
 
 	size = SIZE_2
 

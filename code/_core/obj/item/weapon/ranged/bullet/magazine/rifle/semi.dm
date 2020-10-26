@@ -16,7 +16,7 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
 

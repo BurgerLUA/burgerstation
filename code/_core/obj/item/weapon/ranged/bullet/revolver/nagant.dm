@@ -17,7 +17,7 @@
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
-	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 
 	size = SIZE_3
 

@@ -30,12 +30,13 @@
 	LOADLISTATOM("installed_plate_carriers")
 	return .
 
-/obj/item/clothing/overwear/armor/plate_carrier/get_slowdown_mul_worn()
+/obj/item/clothing/overwear/armor/plate_carrier/get_weight()
+
 	. = ..()
 
 	for(var/k in installed_plate_carriers)
 		var/obj/item/armor_plate/P = k
-		. *= P.get_slowdown_mul_worn()
+		. += P.weight
 
 	return .
 
@@ -65,7 +66,7 @@
 		installed_plate_carriers += P
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
-			A.update_slowdown_mul()
+			A.update_items()
 		return TRUE
 
 	return ..()

@@ -16,7 +16,7 @@
 
 	view_punch = 6
 
-	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
 
 	size = SIZE_2
 
