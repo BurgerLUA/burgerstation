@@ -60,31 +60,31 @@
 //Melee Balance
 #define DAMAGE_DAGGER 20
 #define SPEED_DAGGER 8
-#define AP_DAGGER 10
+#define AP_DAGGER 40
 
 #define DAMAGE_SWORD 40
 #define SPEED_SWORD 10
-#define AP_SWORD 20
+#define AP_SWORD 50
 
 #define DAMAGE_AXE 60
 #define SPEED_AXE 12
-#define AP_AXE 30
+#define AP_AXE 60
 
 #define DAMAGE_CLUB 80
 #define SPEED_CLUB 14
-#define AP_CLUB 40
+#define AP_CLUB 70
 
 #define DAMAGE_GREATSWORD 100
 #define SPEED_GREATSWORD 16
-#define AP_GREATSWORD 24
+#define AP_GREATSWORD 80
 
 #define DAMAGE_GREATAXE 120
 #define SPEED_GREATAXE 18
-#define AP_GREATAXE 60
+#define AP_GREATAXE 90
 
 #define DAMAGE_GREATCLUB 140
 #define SPEED_GREATCLUB 20
-#define AP_GREATCLUB 70
+#define AP_GREATCLUB 100
 
 
 //Slowdown values are automaticlly calculated. Thank god.
