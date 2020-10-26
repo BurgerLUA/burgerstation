@@ -16,3 +16,6 @@
 		BLUNT = AP_CLUB*0.8,
 		BIO = AP_CLUB*0.2
 	)
+
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB

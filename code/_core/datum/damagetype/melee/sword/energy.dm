@@ -29,6 +29,10 @@
 		SKILL_MELEE = BLUNT
 	)
 
+	attack_delay = SPEED_SWORD*0.5
+	attack_delay_max = SPEED_SWORD
+
+
 /damagetype/melee/sword/energy/on
 	name = "energy sword"
 
@@ -63,3 +67,6 @@
 	skill_damage = list(
 		SKILL_MELEE = LASER
 	)
+
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE

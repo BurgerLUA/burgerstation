@@ -24,6 +24,9 @@
 		SKILL_MELEE = BLUNT
 	)
 
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB
+
 /damagetype/melee/club/stunbaton/on
 	name = "active stunbaton"
 
@@ -45,6 +48,9 @@
 	skill_stats = list()
 
 	skill_damage = list()
+
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB
 
 
 /damagetype/melee/club/stunbaton/on/harm
@@ -78,3 +84,6 @@
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
 	)
+
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB

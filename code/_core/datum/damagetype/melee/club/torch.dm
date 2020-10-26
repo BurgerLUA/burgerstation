@@ -27,6 +27,9 @@
 		SKILL_MELEE = BLUNT,
 	)
 
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE
+
 /damagetype/melee/club/torch/on
 	name = "torch"
 
@@ -57,3 +60,6 @@
 	skill_damage = list(
 		SKILL_MELEE = BLUNT,
 	)
+
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE

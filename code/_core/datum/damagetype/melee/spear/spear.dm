@@ -29,6 +29,9 @@
 		SKILL_MELEE = PIERCE
 	)
 
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE
+
 /damagetype/melee/spear/basic/thrown
 
 	name = "thrown spear"
@@ -61,3 +64,6 @@
 		SKILL_MELEE = PIERCE,
 		SKILL_RANGED = PIERCE
 	)
+
+	attack_delay = SPEED_GREATSWORD*0.5
+	attack_delay_max = SPEED_GREATSWORD

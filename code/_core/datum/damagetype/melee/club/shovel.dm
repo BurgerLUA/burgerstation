@@ -31,6 +31,9 @@
 		SKILL_MELEE = list(BLUNT, BLADE, PIERCE)
 	)
 
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB
+
 /damagetype/melee/club/shovel/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(is_floor(hit_object))
 		return TRUE

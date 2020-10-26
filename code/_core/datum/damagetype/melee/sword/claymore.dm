@@ -31,6 +31,9 @@
 		SKILL_MELEE = list(BLADE,PIERCE)
 	)
 
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE
+
 /damagetype/melee/sword/claymore/cult
 	name = "cult claymore"
 
@@ -67,3 +70,6 @@
 		SKILL_MELEE = list(BLADE,PIERCE),
 		SKILL_PRAYER = DARK
 	)
+
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB

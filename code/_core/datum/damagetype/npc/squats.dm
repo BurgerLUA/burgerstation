@@ -20,3 +20,6 @@
 		ATTRIBUTE_STRENGTH = BLUNT,
 		ATTRIBUTE_DEXTERITY = PIERCE,
 	)
+
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB

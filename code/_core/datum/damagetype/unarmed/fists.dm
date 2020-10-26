@@ -39,6 +39,9 @@
 
 	cqc_tag = "4"
 
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB
+
 /damagetype/unarmed/fists/help
 	name = "help fists"
 	attack_verbs = list("tap")
@@ -79,6 +82,9 @@
 
 	allow_friendly_fire = TRUE
 
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB
+
 /damagetype/unarmed/fists/disarm
 	name = "disarm fists"
 	attack_verbs = list("shove")
@@ -116,6 +122,9 @@
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
+
+	attack_delay = SPEED_DAGGER*0.5
+	attack_delay_max = SPEED_DAGGER
 
 	cqc_tag = "2"
 
@@ -176,6 +185,9 @@
 	)
 
 	cqc_tag = "3"
+
+	attack_delay = SPEED_DAGGER*0.5
+	attack_delay_max = SPEED_DAGGER
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 

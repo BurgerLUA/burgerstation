@@ -28,6 +28,9 @@
 		SKILL_MELEE = BLADE
 	)
 
+	attack_delay = SPEED_DAGGER*0.5
+	attack_delay_max = SPEED_DAGGER
+
 /damagetype/melee/sword/grazer/on
 	name = "active grazer"
 
@@ -59,3 +62,6 @@
 	skill_damage = list(
 		SKILL_MELEE = LASER
 	)
+
+	attack_delay = SPEED_SWORD*0.5
+	attack_delay_max = SPEED_SWORD

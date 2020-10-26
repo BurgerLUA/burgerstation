@@ -28,3 +28,6 @@
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT
 	)
+
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE

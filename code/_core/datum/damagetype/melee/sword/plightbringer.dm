@@ -27,6 +27,9 @@
 		SKILL_MELEE = BLADE
 	)
 
+	attack_delay = SPEED_GREATSWORD*0.5
+	attack_delay_max = SPEED_GREATSWORD
+
 /damagetype/melee/sword/plightbringer/on
 	name = "blazing plightbringer"
 
@@ -64,6 +67,9 @@
 		SKILL_MELEE = DAMAGE_GREATAXE*0.2,
 		SKILL_SORCERY = DAMAGE_GREATAXE*0.2
 	)
+
+	attack_delay = SPEED_GREATAXE*0.5
+	attack_delay_max = SPEED_GREATAXE
 
 /damagetype/melee/sword/plightbringer/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim))

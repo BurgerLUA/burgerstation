@@ -24,6 +24,9 @@
 		SKILL_MELEE = BLADE
 	)
 
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB
+
 /damagetype/melee/sword/chainsaw/on
 	name = "chainsaw"
 
@@ -57,3 +60,6 @@
 	skill_damage = list(
 		SKILL_MELEE = PIERCE
 	)
+
+	attack_delay = SPEED_GREATSWORD*0.5
+	attack_delay_max = SPEED_GREATSWORD

@@ -16,3 +16,6 @@
 		PIERCE = AP_AXE*0.25,
 		DARK = AP_AXE*0.25
 	)
+
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE

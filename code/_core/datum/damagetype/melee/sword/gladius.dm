@@ -30,3 +30,6 @@
 	skill_damage = list(
 		SKILL_MELEE = BLADE
 	)
+
+	attack_delay = SPEED_DAGGER*0.5
+	attack_delay_max = SPEED_DAGGER

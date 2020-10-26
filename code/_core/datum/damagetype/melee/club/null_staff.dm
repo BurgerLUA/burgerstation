@@ -2,18 +2,18 @@
 	name = "null staff"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_SWORD*0.2,
+		BLUNT = DAMAGE_AXE*0.2,
 		HOLY = 0
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = AP_SWORD*0.25,
-		HOLY = AP_SWORD*0.75
+		BLUNT = AP_AXE*0.25,
+		HOLY = AP_AXE*0.75
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2
+		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.1,
+		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.2
 	)
 
 	attribute_damage = list(
@@ -21,11 +21,14 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_SWORD*0.1,
-		SKILL_PRAYER = DAMAGE_SWORD*0.40
+		SKILL_MELEE = DAMAGE_AXE*0.1,
+		SKILL_PRAYER = DAMAGE_AXE*0.40
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT,
 		SKILL_PRAYER = HOLY
 	)
+
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE

@@ -10,3 +10,6 @@
 	attack_damage_penetration = list(
 		BLUNT = AP_GREATCLUB
 	)
+
+	attack_delay = SPEED_GREATCLUB*0.5
+	attack_delay_max = SPEED_GREATCLUB

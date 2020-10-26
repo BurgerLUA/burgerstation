@@ -22,3 +22,6 @@
 	attribute_damage = list(
 		ATTRIBUTE_VITALITY = BIO
 	)
+
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE

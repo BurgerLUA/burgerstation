@@ -40,6 +40,9 @@
 
 	throw_mul = 1
 
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE
+
 
 /damagetype/unarmed/bite/zombie
 	name = "zombie bite"

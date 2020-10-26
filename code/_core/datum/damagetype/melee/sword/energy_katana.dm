@@ -29,6 +29,9 @@
 		SKILL_MELEE = BLUNT
 	)
 
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE
+
 /damagetype/melee/sword/energy_katana/on
 	name = "energy katana"
 
@@ -62,3 +65,6 @@
 	skill_damage = list(
 		SKILL_MELEE = BLADE
 	)
+
+	attack_delay = SPEED_CLUB*0.5
+	attack_delay_max = SPEED_CLUB

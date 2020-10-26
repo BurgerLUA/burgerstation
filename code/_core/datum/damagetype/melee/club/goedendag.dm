@@ -29,3 +29,6 @@
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
 	)
+
+	attack_delay = SPEED_GREATCLUB*0.5
+	attack_delay_max = SPEED_GREATCLUB
