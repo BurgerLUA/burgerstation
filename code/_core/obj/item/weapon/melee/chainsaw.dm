@@ -5,9 +5,6 @@
 	icon = 'icons/obj/item/weapons/melee/swords/chainsaw.dmi'
 	damage_type = /damagetype/melee/sword/chainsaw
 
-	attack_delay = 10
-	attack_delay_max = 15
-
 	can_wield = TRUE
 
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)

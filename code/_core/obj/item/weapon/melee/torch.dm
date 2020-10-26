@@ -17,9 +17,6 @@
 	desired_light_color = "#FFD175"
 	desired_light_angle = LIGHT_OMNI
 
-	attack_delay = 5
-	attack_delay_max = 10
-
 	value = 10
 
 /obj/item/weapon/melee/torch/click_self(var/mob/caller)
@@ -65,16 +62,11 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	desired_light_range = VIEW_RANGE*0.75
-	desired_light_power = 0.75
+	desired_light_range = VIEW_RANGE*0.5
+	desired_light_power = 0.5
 	desired_light_color = "#FFD175"
 
-	attack_delay = 5
-	attack_delay_max = 10
-
-	value = 5
-
-	value = 30
+	value = 200
 
 
 /obj/item/weapon/melee/torch/flashlight

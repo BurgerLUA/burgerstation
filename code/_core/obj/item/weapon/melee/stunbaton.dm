@@ -5,9 +5,6 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/stunbaton.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 
-	attack_delay = 5
-	attack_delay_max = 10
-
 	value = 20
 
 /obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/caller)

@@ -18,9 +18,6 @@
 
 	slot_icons = TRUE
 
-	attack_delay = 5
-	attack_delay_max = 12
-
 	size = SIZE_3
 
 	value = 40
@@ -41,8 +38,6 @@
 	slot_icons = TRUE
 
 	damage_type = /damagetype/melee/sword/claymore
-
-	attack_delay = 8
 
 	size = SIZE_3
 
@@ -70,9 +65,6 @@
 	damage_type = /damagetype/melee/spear/basic/
 	damage_type_thrown = /damagetype/melee/spear/basic/thrown
 
-	attack_delay = 5
-	attack_delay_max = 12
-
 	size = SIZE_4
 
 	value = 10
@@ -86,9 +78,6 @@
 	desc_extended = "A steel sword that makes up for it's simplicity by being heavy and huge, the Zweihander is a fearsome sight only used by PMCs with no self-regard whatsoever."
 	icon = 'icons/obj/item/weapons/melee/swords/zweihander.dmi'
 	damage_type = /damagetype/melee/sword/zweihander
-
-	attack_delay = 10
-	attack_delay_max = 30
 
 	size = SIZE_5
 
@@ -118,9 +107,6 @@
 
 	damage_type = /damagetype/melee/sword/curvedsword
 
-	attack_delay = 7
-	attack_delay_max = 14
-
 	size = SIZE_3
 
 	value = 900
@@ -137,8 +123,6 @@
 	item_slot = SLOT_GROIN_O
 
 	damage_type = /damagetype/melee/sword/skana
-
-	attack_delay = 8
 
 	size = SIZE_3
 
@@ -157,8 +141,6 @@
 
 	damage_type = /damagetype/melee/sword/gladius
 
-	attack_delay = 6
-
 	size = SIZE_2
 
 	value = 200
@@ -175,8 +157,6 @@
 	item_slot = SLOT_GROIN_O
 
 	damage_type = /damagetype/melee/sword/allium
-
-	attack_delay = 7
 
 	size = SIZE_2
 

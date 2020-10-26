@@ -201,7 +201,6 @@
 #include "code\_core\client\verbs\chat.dm"
 #include "code\_core\client\verbs\controls.dm"
 #include "code\_core\client\verbs\debug.dm"
-#include "code\_core\client\verbs\debug_dps_calc.dm"
 #include "code\_core\client\verbs\game.dm"
 #include "code\_core\client\verbs\gamemaster.dm"
 #include "code\_core\client\verbs\menu.dm"

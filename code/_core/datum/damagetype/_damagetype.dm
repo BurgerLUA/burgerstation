@@ -99,6 +99,9 @@
 
 	var/ignore_armor_bonus_damage = FALSE
 
+	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
+	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -652,3 +655,14 @@
 		span("warning", replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text))\
 	)
 	return TRUE
+
+
+/damagetype/proc/get_attack_delay(var/atom/attacker)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(attack_delay_max < attack_delay)
+			attack_delay_max = attack_delay
+		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+
+	return attack_delay

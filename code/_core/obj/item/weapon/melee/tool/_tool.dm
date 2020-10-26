@@ -142,9 +142,6 @@
 
 	tool_time = SECONDS_TO_DECISECONDS(2)
 
-	attack_delay = 10
-	attack_delay_max = 15
-
 	value = 10
 
 
@@ -159,8 +156,5 @@
 	flags_tool = FLAG_TOOL_SHOVEL
 
 	tool_time = SECONDS_TO_DECISECONDS(2)
-
-	attack_delay = 10
-	attack_delay_max = 15
 
 	value = 10

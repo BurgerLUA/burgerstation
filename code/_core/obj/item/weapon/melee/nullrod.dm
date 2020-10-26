@@ -6,9 +6,6 @@
 
 	damage_type = /damagetype/melee/club/null_rod
 
-	attack_delay = 6
-	attack_delay_max = 10
-
 	value = 30
 
 
@@ -20,10 +17,6 @@
 
 	damage_type = /damagetype/melee/club/null_staff
 
-
-	attack_delay = 8
-	attack_delay_max = 20
-
 	attack_range = 2
 
 /obj/item/weapon/melee/null_rod/dagger
@@ -33,6 +26,3 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/nullathame.dmi'
 
 	damage_type = /damagetype/melee/sword/null_dagger
-
-	attack_delay = 4
-	attack_delay_max = 6

@@ -8,8 +8,6 @@
 
 	can_wield = TRUE
 	wield_only = TRUE
-	attack_delay = 15
-	attack_delay_max = 20
 
 	value = 80
 

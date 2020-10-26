@@ -56,9 +56,6 @@
 
 	health = /health/mob/living/advanced
 
-	attack_delay = 2
-	attack_delay_max = 6
-
 	var/list/tracked_hidden_organs
 	var/tracked_hidden_clothing = 0x0
 

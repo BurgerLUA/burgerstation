@@ -13,7 +13,4 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
-	attack_delay = 6
-	attack_delay_max = 12
-
 	value = 80

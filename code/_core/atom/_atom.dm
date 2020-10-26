@@ -25,10 +25,6 @@
 	var/object_size = 1 //This-1 is added to attack range.
 	var/attack_range = 1 //If it's a melee weapon, it needs a range.
 
-	var/attack_delay = 5 //The attack delay for an object.
-	var/attack_delay_max = 10 //For living mobs using this object, the maximum attack delay.
-	var/attack_next = -1
-
 	var/reagent_container/reagents //The reagents object. If an object is supposed to hold liquid, give it a reagent_container datum.
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
@@ -49,7 +45,7 @@
 	var/desired_light_color = "#FFFFFF" //Color of the light.
 	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
 
-
+	var/attack_next = -1
 
 	var/light_sprite_range = 0
 	var/light_sprite_alpha = 0
