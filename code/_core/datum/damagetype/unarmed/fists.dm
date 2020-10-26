@@ -39,8 +39,9 @@
 
 	cqc_tag = "4"
 
-	attack_delay = SPEED_CLUB*0.5
-	attack_delay_max = SPEED_CLUB
+	//BALANCE SPECIAL CASE: SPEED IS DAGGER.
+	attack_delay = SPEED_SWORD*0.5
+	attack_delay_max = SPEED_SWORD
 
 /damagetype/unarmed/fists/help
 	name = "help fists"

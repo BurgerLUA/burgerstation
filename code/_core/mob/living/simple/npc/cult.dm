@@ -61,7 +61,7 @@
 
 	ai = /ai/behemoth
 
-	health_base = 300
+	health_base = 200
 
 	movement_delay = DECISECONDS_TO_TICKS(7)
 
@@ -93,7 +93,7 @@
 
 	ai = /ai/artificer
 
-	health_base = 150
+	health_base = 100
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
@@ -157,7 +157,7 @@
 
 	ai = /ai/chosen
 
-	health_base = 250
+	health_base = 150
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
@@ -189,7 +189,7 @@
 
 	ai = /ai/chosen
 
-	health_base = 250
+	health_base = 150
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

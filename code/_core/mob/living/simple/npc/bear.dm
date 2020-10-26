@@ -30,7 +30,7 @@
 		ION = INFINITY
 	)
 
-	health_base = 500
+	health_base = 200
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/bear/,

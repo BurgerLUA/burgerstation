@@ -38,7 +38,7 @@
 
 	movement_delay = 2
 
-	health_base = 500
+	health_base = 300
 
 	sprint_delay_mul = 1
 	jog_delay_mul = 3

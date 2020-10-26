@@ -26,7 +26,7 @@
 	var/obj/item/right_item
 	var/obj/item/holster_item
 
-	health_base = 200
+	health_base = 100
 	stamina_base = 100
 	mana_base = 100
 

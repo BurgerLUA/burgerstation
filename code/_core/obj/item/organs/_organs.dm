@@ -51,7 +51,7 @@
 
 	var/base_miss_chance = 0
 
-	health_base = 200
+	health_base = 100
 
 	health = /health/obj/item/organ
 
