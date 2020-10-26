@@ -19,8 +19,6 @@
 
 	size = SIZE_6
 
-	slowdown_mul_worn = 1.3
-
 	value = 150
 
 /obj/item/clothing/overwear/armor/knight/red
@@ -58,8 +56,6 @@
 	)
 
 	size = SIZE_7
-
-	slowdown_mul_worn = 1.5
 
 	value = 1000
 
@@ -132,8 +128,6 @@
 
 	value = 4000
 
-	slowdown_mul_worn = 1.6
-
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "magnus armor"
 	icon = 'icons/obj/item/clothing/suit/magnus.dmi'
@@ -156,8 +150,6 @@
 	size = SIZE_5
 
 	value = 300
-
-	slowdown_mul_worn = 1.2
 
 /obj/item/clothing/overwear/armor/knight/magnus/red
 	color = COLOR_RED

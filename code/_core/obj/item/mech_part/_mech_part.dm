@@ -6,8 +6,6 @@
 
 	size = SIZE_8
 
-	var/weight = 0 //The weight of the part.
-
 	health = /health/obj/item/mech_part/
 
 	health_base = 500

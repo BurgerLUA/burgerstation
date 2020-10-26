@@ -14,6 +14,8 @@
 	var/title
 	var/print_owner = TRUE
 
+	weight = 3
+
 
 /obj/item/announcement/proc/can_use(var/mob/caller)
 	return TRUE

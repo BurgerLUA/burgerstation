@@ -18,4 +18,3 @@
 
 	value = 40
 
-	slowdown_mul_worn = 0.90

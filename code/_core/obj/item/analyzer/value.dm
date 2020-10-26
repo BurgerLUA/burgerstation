@@ -12,7 +12,7 @@
 
 /obj/item/analyzer/value/on_scan(var/mob/caller,var/atom/target,location,control,params)
 	var/atom/movable/M = target
-	var/calculated_value = M.calculate_value()
+	var/calculated_value = M.get_value()
 	caller.to_chat(span("notice","\The [target.name]'s total value and its contents is worth [calculated_value] credits(s)."))
 	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 	return TRUE

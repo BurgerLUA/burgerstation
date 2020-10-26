@@ -6,7 +6,7 @@
 	icon = 'icons/mob/living/simple/blob.dmi'
 	icon_state = "blobbernaut"
 
-	health_base = 500
+	health_base = 300
 
 	value = 50
 

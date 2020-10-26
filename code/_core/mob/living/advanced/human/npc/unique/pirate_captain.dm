@@ -78,7 +78,7 @@
 	class = /class/pirate
 	level_multiplier = 2
 
-	health_base = 2500
+	health_base = 1000
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"

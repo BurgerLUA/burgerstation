@@ -9,6 +9,8 @@
 
 	ai = /ai/goliath
 
+	health_base = 200
+
 	stun_angle = 0
 
 	armor_base = list(
@@ -36,8 +38,6 @@
 	loyalty_tag = "Goliath"
 
 	mob_size = MOB_SIZE_LARGE
-
-	health_base = 100
 
 /mob/living/simple/npc/goliath/post_death()
 	..()

@@ -71,8 +71,10 @@
 
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
-	..()
+	weight = calculate_weight()
+	. = ..()
 	initialize_blends()
+	return .
 
 /obj/item/clothing/Destroy()
 	additional_clothing_stored.Cut()

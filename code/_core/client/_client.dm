@@ -29,7 +29,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/atom/last_object
 	var/atom/last_location
 
-	mouse_pointer_icon = 'icons/pointer.dmi'
+	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
 	var/swap_mouse = FALSE
 

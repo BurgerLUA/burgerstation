@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/baton.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 
-	attack_delay = 4
-	attack_delay_max = 10
-
 	value = 10
+
+	size = SIZE_2
+	weight = 5

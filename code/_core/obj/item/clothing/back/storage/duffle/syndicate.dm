@@ -12,8 +12,8 @@
 
 	value = 200
 
-	slowdown_mul_worn = 1
-	slowdown_mul_held = 1
+
+
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_medical.dmi'

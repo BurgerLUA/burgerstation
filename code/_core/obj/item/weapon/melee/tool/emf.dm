@@ -10,6 +10,8 @@
 	var/emf_level = 0
 	var/active = FALSE
 
+	weight = 1
+
 /obj/item/emf/proc/set_emf_level(var/desired_level)
 
 	if(desired_level == emf_level)

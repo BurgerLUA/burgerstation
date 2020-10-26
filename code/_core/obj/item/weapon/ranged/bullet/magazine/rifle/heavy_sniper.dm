@@ -18,7 +18,7 @@
 
 	view_punch = TILE_SIZE - 1
 
-	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
+
 
 	heat_per_shot = 0.1
 	heat_max = 0.1
@@ -32,6 +32,7 @@
 	bullet_diameter_max = 13
 
 	size = SIZE_4
+	weight = 30
 
 
 	value = 500

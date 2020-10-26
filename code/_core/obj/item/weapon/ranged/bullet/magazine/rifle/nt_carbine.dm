@@ -16,9 +16,10 @@
 
 	view_punch = 10
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_3
+	weight = 9
 
 
 	heat_per_shot = 0.04

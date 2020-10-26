@@ -24,6 +24,7 @@
 	override_icon_state = TRUE
 
 	size = SIZE_3
+	weight = 8
 
 	value = 300
 

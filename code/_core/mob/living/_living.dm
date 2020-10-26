@@ -1,5 +1,9 @@
 /mob/living/
 
+	health_base = 50
+	stamina_base = 50
+	mana_base = 50
+
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 	var/list/faction/factions
@@ -229,7 +233,7 @@
 	if(!qdeleting) qdel(src)
 	return .
 
-/mob/living/calculate_value()
+/mob/living/get_value()
 
 	. = ..()
 

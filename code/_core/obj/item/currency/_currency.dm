@@ -7,6 +7,7 @@
 	item_count_max = 5000
 
 	size = 0.002
+	weight = 0.002
 
 /obj/item/currency/telecrystals/
 	name = "telecrystals"

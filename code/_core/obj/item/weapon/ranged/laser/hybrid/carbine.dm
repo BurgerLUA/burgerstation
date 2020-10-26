@@ -32,6 +32,7 @@
 	heat_max = 0.2
 
 	size = SIZE_3
+	weight = 14
 
 	value = 600
 

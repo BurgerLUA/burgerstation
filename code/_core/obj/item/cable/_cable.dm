@@ -11,6 +11,8 @@
 
 	value = 3
 
+	weight = 0.02
+
 /obj/item/cable/update_icon()
 	var/icon_count = clamp(item_count_current,1,5)
 	icon_state = "[initial(icon_state)]_[icon_count]"

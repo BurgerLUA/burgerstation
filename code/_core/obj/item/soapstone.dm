@@ -10,6 +10,8 @@
 
 	value = 100
 
+	weight = 0.5
+
 /obj/item/soapstone/New(var/desired_loc)
 	update_sprite()
 	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stone_color)

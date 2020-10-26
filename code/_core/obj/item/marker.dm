@@ -9,6 +9,8 @@
 	value = 50
 	value_burgerbux = 2
 
+	weight = 0.1
+
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)

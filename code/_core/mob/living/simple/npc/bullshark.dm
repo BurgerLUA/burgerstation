@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/bullshark.dmi'
 	icon_state = "living"
 
-	health_base = 500
+	health_base = 200
 
 	ai = /ai/bullshark
 	class = /class/bull

@@ -32,6 +32,7 @@
 	)
 
 	size = SIZE_4
+	weight = 14
 
 	value = 900
 

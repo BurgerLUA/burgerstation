@@ -27,7 +27,7 @@
 
 	value = 60
 
-	slowdown_mul_worn = 1
+
 
 /obj/item/clothing/feet/shoes/black_boots/left
 	name = "left black boot"

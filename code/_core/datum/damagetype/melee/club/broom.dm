@@ -3,15 +3,15 @@
 	attack_verbs = list("sweeps")
 
 	attack_damage_base = list(
-		BLUNT = 30
+		BLUNT = DAMAGE_SWORD*0.1
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = 10
+		BLUNT = AP_SWORD
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 20
+		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.7
 	)
 
 	attribute_damage = list(
@@ -19,9 +19,12 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 25,
+		SKILL_MELEE = DAMAGE_SWORD*0.2,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
 	)
+
+	attack_delay = SPEED_SWORD*0.5
+	attack_delay_max = SPEED_SWORD

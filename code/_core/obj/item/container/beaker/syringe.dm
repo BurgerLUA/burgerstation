@@ -22,6 +22,8 @@
 	allow_reagent_transfer_to = FALSE
 	allow_reagent_transfer_from = FALSE
 
+	weight = 0.1
+
 /obj/item/container/syringe/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 

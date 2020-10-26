@@ -8,12 +8,13 @@
 
 	can_wield = TRUE
 	wield_only = TRUE
-	attack_delay = 15
-	attack_delay_max = 20
 
 	value = 80
 
 	drop_sound = 'sound/items/drop/axe.ogg'
+
+	size = SIZE_4
+	weight = 20
 
 /obj/item/weapon/melee/mezzaluna/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
 

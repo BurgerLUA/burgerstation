@@ -1,13 +1,3 @@
-/atom/proc/get_attack_delay(var/mob/user) //Return deciseconds.
-
-	if(is_living(user))
-		var/mob/living/L = user
-		if(attack_delay_max < attack_delay)
-			attack_delay_max = attack_delay
-		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
-
-	return attack_delay
-
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(health)
@@ -115,10 +105,12 @@
 			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
 		victims -= v //Needs to be here.
 
-	if(attacker != object_to_damage_with)
-		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
+	var/object_attack_delay = DT.get_attack_delay(attacker)
 
-	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)*DT.attack_delay_mod
+	if(attacker != object_to_damage_with)
+		object_to_damage_with.attack_next = world.time + object_attack_delay
+
+	attacker.attack_next = world.time + object_attack_delay*0.5
 
 	DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
 

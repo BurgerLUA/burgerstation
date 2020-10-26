@@ -408,7 +408,7 @@
 		if(should_add_held && is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			A.held_objects += I
-			A.update_slowdown_mul()
+			A.update_items(should_update_eyes = FALSE, should_update_protection = FALSE, should_update_clothes = FALSE)
 			update_held_icon(I)
 
 	update_stats()
@@ -452,10 +452,7 @@
 		I.update_owner(A)
 		if(should_add_worn)
 			A.worn_objects += I
-			A.update_slowdown_mul()
-			A.update_protection()
-			A.update_eyes()
-			A.update_clothes()
+			A.update_items()
 			update_worn_icon(I)
 
 	update_stats()
@@ -541,6 +538,20 @@
 	delete_held_objects()
 	delete_worn_objects()
 
+/obj/hud/inventory/proc/get_weight()
+
+	. = 0
+
+	for(var/k in held_objects)
+		var/obj/item/I = k
+		. += I.get_weight()
+
+	for(var/k in worn_objects)
+		var/obj/item/I = k
+		. += I.get_weight()
+
+	return .
+
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0) //Removes the object from both worn and held objects, just in case.
 
 	var/was_worn = FALSE
@@ -587,11 +598,8 @@
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner
-				A.update_slowdown_mul()
-				A.update_protection()
-				A.update_eyes()
-				if(was_worn)
-					A.update_clothes()
+				A.update_items(should_update_eyes = was_worn, should_update_protection = was_worn, should_update_clothes = was_worn)
+
 
 	return I
 

@@ -20,8 +20,6 @@
 
 	size = SIZE_3
 
-	slowdown_mul_worn = 1.05
-
 /obj/item/clothing/head/helmet/full/seva/mono
 	name = "custom SEVA suit"
 	icon = 'icons/obj/item/clothing/hats/sevamono_suit.dmi'

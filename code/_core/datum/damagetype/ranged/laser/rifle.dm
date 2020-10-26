@@ -3,14 +3,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = 30,
-		HEAT = 30
+		LASER = DAMAGE_AXE*0.75,
+		HEAT = DAMAGE_AXE*0.25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = 10,
-		HEAT = 10
+		LASER = AP_AXE*0.5,
+		HEAT = AP_AXE*0.5
 	)
 
 /damagetype/ranged/laser/rifle/hardlight
@@ -18,18 +18,18 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 20,
-		COLD = 10
+		BLUNT = DAMAGE_AXE*0.25,
+		PIERCE = DAMAGE_AXE*0.25,
+		LASER = DAMAGE_AXE*0.25,
+		COLD = DAMAGE_AXE*0.25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 25,
-		COLD = 25
+		BLUNT = AP_AXE*0.25,
+		PIERCE = AP_AXE*0.25,
+		LASER = AP_AXE*0.25,
+		COLD = AP_AXE*0.25
 	)
 
 /damagetype/ranged/laser/rifle/xray
@@ -37,14 +37,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = 10,
-		HEAT = 20,
-		RAD = 20
+		LASER = DAMAGE_AXE*0.7,
+		HEAT = DAMAGE_AXE*0.1,
+		RAD = DAMAGE_AXE*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = INFINITY,
-		HEAT = INFINITY,
-		RAD = INFINITY
+		LASER = AP_AXE*0.9,
+		HEAT = AP_AXE*0.1,
+		RAD = AP_AXE*0.1
 	)

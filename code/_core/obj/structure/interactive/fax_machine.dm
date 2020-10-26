@@ -133,7 +133,7 @@
 		SC.lock()
 		SC.owner_name = "[found_data["Requisitioner's Name"]]"
 		SC.name = "secure cargo crate ([SC.owner_name] [found_data["Item ID"]])"
-		SC.credits_required = SC.calculate_value()
+		SC.credits_required = SC.get_value()
 		SC.force_move(SC.loc)
 
 	return ..()

@@ -23,9 +23,6 @@
 
 	var/display_menacing = FALSE
 
-	attack_delay = 1
-	attack_delay_max = 2
-
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 

@@ -23,7 +23,7 @@
 
 	value = 100
 
-	slowdown_mul_worn = 1.1
+
 
 /obj/item/clothing/feet/shoes/clown/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
 	original_footsteps += /footstep/clownstep
