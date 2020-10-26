@@ -46,6 +46,19 @@
 
 	return ..()
 
+/obj/projectile/bullet/HE_40M
+
+	icon = 'icons/obj/projectiles/explosive.dmi'
+	icon_state = "HE"
+
+/obj/projectile/bullet/HE_40M/post_on_hit(var/atom/hit_atom)
+	. = ..()
+
+	if(.)
+		explode(get_turf(hit_atom),2,owner,src,iff_tag)
+
+	return .
+
 /obj/projectile/bullet/gyrojet
 	name = "gyrojet"
 	icon = 'icons/obj/projectiles/rocket.dmi'
