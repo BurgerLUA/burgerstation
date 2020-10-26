@@ -1,5 +1,7 @@
 /obj/item/mech_part/body
 	name = "mech body"
+	desc = "Heavy armour."
+	desc_extended = "A body for your mech."
 
 
 /obj/item/mech_part/body/loader
