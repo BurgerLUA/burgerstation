@@ -10,6 +10,8 @@
 
 	var/active = FALSE
 
+	weight = 1
+
 /obj/item/light_sensor/Finalize()
 	. = ..()
 	update_sprite()

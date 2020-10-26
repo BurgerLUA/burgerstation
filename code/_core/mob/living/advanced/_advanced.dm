@@ -224,12 +224,7 @@
 
 	. = 0
 
-	for(var/k in worn_objects)
-		var/obj/item/I = k
-		. += I.get_weight()
-
-	for(var/k in held_objects)
-		var/obj/item/I = k
+	for(var/obj/hud/inventory/organs/I in inventory) //THIS IS FINE
 		. += I.get_weight()
 
 	weight = .

@@ -10,3 +10,5 @@
 	dynamic_inventory_count = 4
 
 	drop_sound = 'sound/items/drop/box.ogg'
+
+	weight = 2

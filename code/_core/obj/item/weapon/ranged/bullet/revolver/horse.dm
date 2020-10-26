@@ -18,6 +18,7 @@
 
 
 	size = SIZE_1
+	weight = 5
 
 
 	bullet_length_min = 20

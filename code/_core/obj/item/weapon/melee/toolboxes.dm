@@ -8,7 +8,7 @@
 	value = 10
 
 	size = SIZE_3
-
+	weight = 10
 
 	is_container = TRUE
 	container_max_size = SIZE_2

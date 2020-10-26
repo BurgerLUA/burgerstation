@@ -13,6 +13,9 @@
 
 	drop_sound = 'sound/items/drop/axe.ogg'
 
+	size = SIZE_4
+	weight = 20
+
 /obj/item/weapon/melee/mezzaluna/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
 
 	if(wielded)

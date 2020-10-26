@@ -18,6 +18,7 @@
 	mech_only = TRUE
 
 	size = SIZE_6
+	weight = 50
 
 /obj/item/weapon/ranged/energy/mech/get_battery()
 

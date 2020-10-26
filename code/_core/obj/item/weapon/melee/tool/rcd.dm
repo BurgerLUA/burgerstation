@@ -13,6 +13,8 @@
 
 	value = 50
 
+	weight = 5
+
 /obj/item/rcd/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("rcd_disk")

@@ -20,6 +20,7 @@
 
 
 	size = SIZE_4
+	weight = 12
 
 	bullet_length_min = 40
 	bullet_length_best = 45

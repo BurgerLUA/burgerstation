@@ -17,6 +17,8 @@
 
 	allow_reagent_transfer_from = FALSE
 
+	weight = 0.01
+
 /obj/item/container/pill/get_consume_verb()
 	return "swallow"
 

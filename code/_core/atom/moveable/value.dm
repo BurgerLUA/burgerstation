@@ -16,3 +16,10 @@
 			. += R.value*reagent_volume
 
 	return .
+
+
+
+/atom/movable/proc/get_value()
+	if(!value_last)
+		value_last = calculate_value()
+	return value_last

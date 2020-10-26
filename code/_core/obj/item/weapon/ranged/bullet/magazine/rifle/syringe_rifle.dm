@@ -18,6 +18,7 @@
 
 
 	size = SIZE_3
+	weight = 8
 
 
 	override_icon_state = TRUE

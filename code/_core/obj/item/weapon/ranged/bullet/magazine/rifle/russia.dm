@@ -16,10 +16,8 @@
 
 	view_punch = 12
 
-
-
 	size = SIZE_4
-
+	weight = 12
 
 	heat_per_shot = 0.02
 	heat_max = 0.3
@@ -95,10 +93,8 @@
 
 	automatic = TRUE
 
-
-
 	size = SIZE_4
-
+	weight = 12
 
 	heat_per_shot = 0.01
 	heat_max = 0.2
@@ -164,9 +160,8 @@
 
 	automatic = TRUE
 
-
-
 	size = SIZE_4
+	weight = 12
 
 
 	heat_per_shot = 0.01
@@ -236,9 +231,8 @@
 
 	view_punch = 4
 
-
-
 	size = SIZE_4
+	weight = 7
 
 
 	heat_per_shot = 0.02
@@ -303,9 +297,8 @@
 
 	view_punch = 2.5
 
-
-
 	size = SIZE_4
+	weight = 12
 
 
 	heat_per_shot = 0.02
@@ -370,8 +363,8 @@
 	view_punch = 3.5
 
 
-
 	size = SIZE_4
+	weight = 14
 
 
 	heat_per_shot = 0.07

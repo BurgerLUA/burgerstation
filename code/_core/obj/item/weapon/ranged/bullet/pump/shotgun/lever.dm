@@ -18,7 +18,7 @@
 
 
 	size = SIZE_4
-
+	weight = 10
 
 	value = 120
 

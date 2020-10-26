@@ -35,6 +35,7 @@
 	size = SIZE_4
 
 	value = 800
+	weight = 25
 
 	ai_heat_sensitivity = 0.1
 

@@ -15,6 +15,8 @@
 
 	var/scroll_count = 1
 
+	weight = 0.1
+
 
 /obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
 	. = ..()

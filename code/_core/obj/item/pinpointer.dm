@@ -12,6 +12,8 @@
 
 	value = 10
 
+	weight = 2
+
 /obj/item/pinpointer/get_examine_list(var/mob/caller)
 
 	. = ..()

@@ -4,6 +4,8 @@
 	icon_state = "inventory"
 	value = 100
 
+	weight = 4
+
 
 /obj/item/mech_delivery/click_self(var/mob/caller)
 

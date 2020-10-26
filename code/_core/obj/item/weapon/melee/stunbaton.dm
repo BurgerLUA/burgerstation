@@ -7,6 +7,9 @@
 
 	value = 20
 
+	weight = 5
+	size = SIZE_2
+
 /obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/caller)
 	. = ..()
 	if(enabled)

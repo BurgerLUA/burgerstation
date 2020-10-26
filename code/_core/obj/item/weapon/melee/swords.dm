@@ -19,6 +19,7 @@
 	slot_icons = TRUE
 
 	size = SIZE_3
+	weight = 6
 
 	value = 40
 
@@ -40,6 +41,7 @@
 	damage_type = /damagetype/melee/sword/claymore
 
 	size = SIZE_3
+	weight = 6
 
 	value = 30
 
@@ -54,6 +56,7 @@
 	damage_type = /damagetype/melee/sword/claymore/cult
 
 	size = SIZE_3
+	weight = 6
 
 	value = 50
 
@@ -70,6 +73,9 @@
 	value = 10
 
 	attack_range = 2
+
+	weight = 5
+	size = SIZE_4
 
 /obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
@@ -108,12 +114,13 @@
 	damage_type = /damagetype/melee/sword/curvedsword
 
 	size = SIZE_3
+	weight = 5
 
 	value = 900
 
 /obj/item/weapon/melee/sword/skana
 	name = "skana"
-	desc = "A metal katana that's been space-ified."
+	desc = "A lightweight metal katana that's been space-ified."
 	desc_extended = "A straight katana-like sword, with a curved starting near the end. Incredibly sharp."
 
 	icon = 'icons/obj/item/weapons/melee/swords/skana.dmi'
@@ -125,6 +132,7 @@
 	damage_type = /damagetype/melee/sword/skana
 
 	size = SIZE_3
+	weight = 4
 
 	value = 200
 
@@ -142,6 +150,7 @@
 	damage_type = /damagetype/melee/sword/gladius
 
 	size = SIZE_2
+	weight = 4
 
 	value = 200
 
@@ -159,5 +168,6 @@
 	damage_type = /damagetype/melee/sword/allium
 
 	size = SIZE_2
+	weight = 5
 
 	value = 200

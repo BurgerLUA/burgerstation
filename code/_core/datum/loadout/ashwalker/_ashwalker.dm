@@ -6,7 +6,7 @@
 	)
 
 	var/list/random_weapon = list(
-		/obj/item/weapon/melee/club/mace,
+		/obj/item/weapon/melee/mace,
 		/obj/item/weapon/melee/sword/gladius,
 		/obj/item/weapon/melee/goedendag,
 		/obj/item/weapon/melee/mezzaluna,

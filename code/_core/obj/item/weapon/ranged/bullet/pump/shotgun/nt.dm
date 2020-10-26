@@ -21,6 +21,7 @@
 
 
 	size = SIZE_4
+	weight = 11
 
 	value = 130
 

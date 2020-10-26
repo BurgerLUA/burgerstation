@@ -16,6 +16,8 @@
 
 	value = 500
 
+	weight = 10
+
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall)
 
 	if(hit_wall || hit_atom)

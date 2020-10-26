@@ -19,6 +19,9 @@
 
 	can_wear = TRUE
 
+	weight = 6
+	size = SIZE_4
+
 
 /obj/item/weapon/melee/shield/glass
 	name = "glass shield"

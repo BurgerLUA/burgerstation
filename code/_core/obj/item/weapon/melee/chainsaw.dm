@@ -7,6 +7,9 @@
 
 	can_wield = TRUE
 
+	size = SIZE_4
+	weight = 20
+
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)
 	. = ..()
 	if(enabled)

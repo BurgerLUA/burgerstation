@@ -12,8 +12,10 @@
 
 	var/rarity = RARITY_COMMON
 
-	var/size = 0
+	var/size = 1
 	var/weight = 0
+
+	var/weight_last = 0//Last weight calculated via calculation
 
 	var/list/material = list() //Stored materials
 
@@ -136,10 +138,10 @@
 
 /obj/item/proc/get_weight()
 
-	. = weight
+	. = weight*item_count_current
 
 	if(is_container)
-		for(var/obj/hud/inventory/I in inventories)
+		for(var/obj/hud/inventory/I in src.inventories)
 			. += I.get_weight()
 
 	return .
@@ -149,11 +151,6 @@
 
 /obj/item/Cross(atom/movable/O)
 	return TRUE
-
-/obj/item/PostInitialize()
-	. = ..()
-	weight = get_weight() //Update the weight.
-	return .
 
 /obj/item/Finalize()
 	. = ..()
@@ -364,7 +361,7 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
+	. += div("rarity","Value: [CEILING(calculate_value()(TRUE),1)].")
 	. += div("weightsize","Size: [size], Weight: [weight]")
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
 	. += div("examine_description","\"[src.desc]\"")

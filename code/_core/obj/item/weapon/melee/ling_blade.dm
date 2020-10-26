@@ -9,3 +9,6 @@
 	value = 300
 
 	drop_sound = 'sound/items/drop/axe.ogg'
+
+	size = SIZE_4
+	weight = 6

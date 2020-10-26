@@ -8,6 +8,8 @@
 
 	value = 3
 
+	weight = 0.25
+
 /obj/item/slime_core/New(var/desired_loc)
 	generate_name()
 	return ..()

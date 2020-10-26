@@ -51,6 +51,8 @@
 
 	var/has_footsteps = FALSE
 
+	var/value_last = 0//Last value calculated via calculation
+
 /atom/movable/proc/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
 
 	if(!enter)

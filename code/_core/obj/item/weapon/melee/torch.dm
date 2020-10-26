@@ -17,6 +17,9 @@
 	desired_light_color = "#FFD175"
 	desired_light_angle = LIGHT_OMNI
 
+	size = SIZE_3
+	weight = 3
+
 	value = 10
 
 /obj/item/weapon/melee/torch/click_self(var/mob/caller)

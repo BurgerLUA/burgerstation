@@ -31,6 +31,7 @@
 
 
 	size = SIZE_4
+	weight = 16
 
 
 	value = 80

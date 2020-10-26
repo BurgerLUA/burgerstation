@@ -11,6 +11,8 @@
 
 	value = 50
 
+	weight = 3
+
 
 /obj/item/implanter/update_icon()
 

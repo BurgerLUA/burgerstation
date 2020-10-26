@@ -108,6 +108,9 @@
 		"core" = "#FFFFFF"
 	)
 
+	weight = 5
+	size = SIZE_2
+
 /obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
 	SPAM_CHECK
 	. = ..()
@@ -168,6 +171,9 @@
 		ARCANE = 100
 	)
 
+	weight = 2
+	size = SIZE_2
+
 /obj/item/weapon/melee/energy/shield/blue
 	polymorphs = list(base = "#0000FF")
 
@@ -217,6 +223,9 @@
 
 	damage_type = /damagetype/melee/sword/plightbringer
 	damage_type_on = /damagetype/melee/sword/plightbringer/on
+
+	size = SIZE_4
+	weight = 25
 
 /obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller)
 	. = ..()

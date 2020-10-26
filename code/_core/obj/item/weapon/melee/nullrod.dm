@@ -8,6 +8,9 @@
 
 	value = 30
 
+	weight = 4
+	size = SIZE_2
+
 
 /obj/item/weapon/melee/null_rod/staff
 	name = "null staff"
@@ -19,6 +22,9 @@
 
 	attack_range = 2
 
+	weight = 8
+	size = SIZE_4
+
 /obj/item/weapon/melee/null_rod/dagger
 	name = "null dagger"
 	desc = "I don't think that man has ever been to a seminarian."
@@ -26,3 +32,6 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/nullathame.dmi'
 
 	damage_type = /damagetype/melee/sword/null_dagger
+
+	weight = 3
+	size = SIZE_2

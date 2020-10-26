@@ -12,6 +12,8 @@
 
 	value = 10
 
+	weight = 2
+
 /obj/item/powercell/get_battery()
 	return src
 
@@ -66,6 +68,8 @@
 
 	value = 15
 
+	weight = 3
+
 /obj/item/powercell/industrial
 	name = "industrial power cell"
 	desc = "r&d can i have a powercell plz i wont use it for stunprod promise"
@@ -77,6 +81,8 @@
 
 
 	value = 25
+
+	weight = 5
 
 
 /obj/item/powercell/bluespace
@@ -90,6 +96,7 @@
 
 	value = 1000
 
+	weight = 4
 
 /obj/item/powercell/vehicle
 	name = "mech-grade power cell"
@@ -101,6 +108,8 @@
 	size = SIZE_4
 
 	value = 30
+
+	weight = 10
 
 
 /obj/item/powercell/recharging
@@ -115,6 +124,8 @@
 	size = SIZE_2
 
 	value = 1000
+
+	weight = 6
 
 /obj/item/powercell/recharging/PostInitialize()
 	start_thinking(src)

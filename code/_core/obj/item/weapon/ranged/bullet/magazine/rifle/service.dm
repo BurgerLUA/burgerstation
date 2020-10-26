@@ -19,6 +19,7 @@
 
 
 	size = SIZE_4
+	weight = 15
 
 	heat_per_shot = 0.01
 	heat_max = 0.08

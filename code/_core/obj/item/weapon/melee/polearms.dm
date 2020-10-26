@@ -16,3 +16,6 @@
 	value = 80
 
 	attack_range = 2
+
+	size = SIZE_5
+	weight = 40

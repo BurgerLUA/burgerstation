@@ -16,6 +16,7 @@
 	view_punch = 24
 
 	size = SIZE_3
+	weight = 10
 
 
 

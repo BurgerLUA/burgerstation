@@ -16,9 +16,8 @@
 
 	view_punch = 6
 
-
-
 	size = SIZE_2
+	weight = 5
 
 
 	heat_per_shot = 0.05

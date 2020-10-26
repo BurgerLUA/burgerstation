@@ -10,6 +10,8 @@ obj/item/bikehorn
 	icon_state_held_left = "held_left"
 	icon_state_held_right = "held_right"
 
+	weight = 0.25
+
 obj/item/bikehorn/click_self(var/mob/caller)
 
 	. = ..()

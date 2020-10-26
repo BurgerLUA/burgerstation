@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/club/mace/
+/obj/item/weapon/melee/mace/
 	name = "mace"
 	desc = "A light mace"
 	desc_extended = "A mace, light enough to swing quickly, but heavy enough to do enough damage to platemail."
@@ -14,3 +14,6 @@
 	slot_icons = TRUE
 
 	value = 80
+
+	size = SIZE_3
+	weight = 10

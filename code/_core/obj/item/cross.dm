@@ -7,6 +7,8 @@
 
 	value = 100
 
+	weight = 3
+
 /obj/item/cross/proc/break_cross()
 	icon_state = "[initial(icon_state)]_broken"
 	return TRUE
