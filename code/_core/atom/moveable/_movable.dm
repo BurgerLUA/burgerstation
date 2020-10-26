@@ -19,7 +19,7 @@
 	var/anchored = TRUE
 	var/ghost = FALSE
 
-	var/damage_type_thrown = /damagetype/thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
+	var/damage_type_thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
 
 	var/change_dir_on_move = FALSE
 
