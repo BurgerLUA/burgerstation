@@ -4,7 +4,6 @@
 	icon = 'icons/obj/item/weapons/ranged/mech.dmi'
 
 	projectile = /obj/projectile/bullet/laser
-	ranged_damage_type = /damagetype/ranged/laser/chronogun
 	projectile_speed = 8
 	shoot_delay = 20
 	automatic = FALSE
