@@ -33,8 +33,6 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
-	slowdown_mul_worn = 1.05
-
 	hidden_organs = list(
 		BODY_HEAD = TRUE,
 		BODY_HAIR_HEAD = TRUE,

@@ -85,3 +85,11 @@
 #define DAMAGE_GREATCLUB 140
 #define SPEED_GREATCLUB 20
 #define AP_GREATCLUB 70
+
+
+//Slowdown values are automaticlly calculated. Thank god.
+#define ARMOR_VERY_LIGHT 50
+#define ARMOR_LIGHT 100
+#define ARMOR_MEDIUM 200
+#define ARMOR_HEAVY 300
+#define ARMOR_VERY_HEAVY 500

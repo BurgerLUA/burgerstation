@@ -18,8 +18,6 @@
 
 	var/list/obj/item/armor_plate/installed_plate_carriers = list()
 
-	slowdown_mul_worn = 1.05
-
 	size = SIZE_3
 
 /obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/save_inventory = TRUE)

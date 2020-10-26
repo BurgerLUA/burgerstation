@@ -102,6 +102,8 @@
 	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
 	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
 
+	var/damage_mod = 1 //Simple multiplier for all damage.
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -190,7 +192,7 @@
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier
+	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier*damage_mod
 
 	if(debug) log_debug("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 

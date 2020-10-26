@@ -24,8 +24,6 @@
 
 	value = 200
 
-	slowdown_mul_worn = 1
-
 /obj/item/clothing/head/helmet/full/nanotrasen/light/deathsquad
 	polymorphs = list(
 		"helmet_light" = COLOR_BLACK,
@@ -51,8 +49,6 @@
 
 	value = 300
 
-	slowdown_mul_worn = 1.05
-
 /obj/item/clothing/head/helmet/full/nanotrasen/medium/deathsquad
 	polymorphs = list(
 		"helmet_medium" = COLOR_BLACK,
@@ -77,8 +73,6 @@
 	)
 
 	value = 400
-
-	slowdown_mul_worn = 1.15
 
 /obj/item/clothing/head/helmet/full/nanotrasen/heavy/deathsquad
 	polymorphs = list(

@@ -23,8 +23,6 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva)
 
-	slowdown_mul_worn = 1.1
-
 	value = 400
 
 

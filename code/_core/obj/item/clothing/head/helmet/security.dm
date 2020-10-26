@@ -35,8 +35,6 @@
 
 	value = 60
 
-	slowdown_mul_worn = 1.05
-
 /obj/item/clothing/head/helmet/security/tactical/advanced
 	name = "advanced tactical helmet"
 	icon = 'icons/obj/item/clothing/hats/tacticool2.dmi'
@@ -56,5 +54,3 @@
 
 
 	value = 120
-
-	slowdown_mul_worn = 1.05

@@ -205,18 +205,18 @@
 
 	for(var/k in worn_objects)
 		var/obj/item/I = k
-		slow_mul *= I.get_slowdown_mul_worn()
+		slow_mul += I.get_slowdown_mul_worn() - 1
 
 	for(var/k in held_objects)
 		var/obj/item/I = k
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
-				slow_mul *= I.get_slowdown_mul_held()
+				slow_mul += I.get_slowdown_mul_held() - 1
 			else
-				slow_mul *= I.get_slowdown_mul_worn()
+				slow_mul += I.get_slowdown_mul_worn() - 1
 
-	slowdown_mul = clamp(slow_mul,0.75,4)
+	slowdown_mul = clamp(slow_mul,0.5,4)
 
 	return TRUE
 

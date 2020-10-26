@@ -24,8 +24,6 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/exosuit)
 
-	slowdown_mul_worn = 1.4 // (Balanced) Design flaws. :P
-
 	value = 750 //Extraordinary cost. :P
 
 
@@ -54,7 +52,5 @@
 
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/skat)
-
-	slowdown_mul_worn = 1.5
 
 	value = 1050

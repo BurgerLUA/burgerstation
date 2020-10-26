@@ -25,7 +25,7 @@
 	var/item_count_max_icon = 0
 
 	var/slowdown_mul_held = 1 //Slow down multiplier. High values means more slower.
-	var/slowdown_mul_worn = 1
+	var/slowdown_mul_worn = 1 //This is automatically calculated for clothing.
 
 	var/pixel_height = 2 //The z size of this, in pixels. Used for sandwiches and burgers.
 

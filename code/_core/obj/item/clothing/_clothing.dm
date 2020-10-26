@@ -69,6 +69,11 @@
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
 	return .
 
+
+/obj/item/clothing/Finalize()
+	calculate_slowdown()
+	return ..()
+
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	..()

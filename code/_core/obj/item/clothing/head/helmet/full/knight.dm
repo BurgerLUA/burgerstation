@@ -23,8 +23,6 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
-	slowdown_mul_worn = 1.05
-
 /obj/item/clothing/head/helmet/knight/red
 	name = "red knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_red.dmi'
