@@ -43,7 +43,7 @@
 /obj/item/bullet_cartridge/proc/calculate_weight()
 	return size*0.25
 
-/obj/item/bullet_cartridge/calculate_value()
+/obj/item/bullet_cartridge/get_value()
 
 	. = ..()
 

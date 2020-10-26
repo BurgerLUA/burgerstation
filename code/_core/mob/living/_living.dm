@@ -233,7 +233,7 @@
 	if(!qdeleting) qdel(src)
 	return .
 
-/mob/living/calculate_value()
+/mob/living/get_value()
 
 	. = ..()
 

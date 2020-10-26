@@ -136,11 +136,11 @@
 
 	value = -1
 
-/obj/item/proc/get_weight()
+/obj/item/proc/get_weight(var/check_containers=TRUE)
 
 	. = weight*item_count_current
 
-	if(is_container)
+	if(check_containers && is_container)
 		for(var/obj/hud/inventory/I in src.inventories)
 			. += I.get_weight()
 
@@ -361,8 +361,8 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-	. += div("rarity","Value: [CEILING(calculate_value()(TRUE),1)].")
-	. += div("weightsize","Size: [size], Weight: [weight]")
+	. += div("rarity","Value: [CEILING(value,1)].")
+	. += div("weightsize","Size: [size], Weight: [get_weight(FALSE)]")
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)

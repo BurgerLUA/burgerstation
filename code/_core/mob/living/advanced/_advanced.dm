@@ -224,12 +224,12 @@
 
 	. = 0
 
-	for(var/obj/hud/inventory/organs/I in inventory) //THIS IS FINE
+	for(var/obj/hud/inventory/organs/I in inventory)
 		. += I.get_weight()
 
 	weight = .
 
-	weight_max = (50 + get_attribute_power(ATTRIBUTE_STRENGTH)*150)
+	weight_max = (200 + get_attribute_power(ATTRIBUTE_STRENGTH)*300) //Skyrim levels of memes.
 
 	return .
 

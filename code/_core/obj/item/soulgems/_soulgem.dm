@@ -27,7 +27,7 @@
 	update_sprite()
 	return .
 
-/obj/item/soulgem/calculate_value()
+/obj/item/soulgem/get_value()
 
 	. = ..()
 

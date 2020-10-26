@@ -23,7 +23,7 @@
 	LOADVAR("charges")
 	return .
 
-/obj/item/supply_remote/calculate_value()
+/obj/item/supply_remote/get_value()
 	return  charges ? charges * value : 10
 
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

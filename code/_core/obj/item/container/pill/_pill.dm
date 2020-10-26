@@ -58,7 +58,7 @@
 	return .
 
 
-/obj/item/container/pill/calculate_value()
+/obj/item/container/pill/get_value()
 
 	. = ..()
 

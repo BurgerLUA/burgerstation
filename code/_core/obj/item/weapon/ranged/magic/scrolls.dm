@@ -28,7 +28,7 @@
 	LOADVAR("scroll_count")
 	return .
 
-/obj/item/weapon/ranged/magic/scroll/calculate_value()
+/obj/item/weapon/ranged/magic/scroll/get_value()
 	. = ..()
 	. *= (1 + scroll_count)
 	return .

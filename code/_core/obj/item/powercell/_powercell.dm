@@ -17,7 +17,7 @@
 /obj/item/powercell/get_battery()
 	return src
 
-/obj/item/powercell/calculate_value()
+/obj/item/powercell/get_value()
 
 	. = ..()
 	. += CEILING(charge_current*0.01,1)

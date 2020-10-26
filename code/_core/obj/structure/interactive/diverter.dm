@@ -71,7 +71,7 @@
 /obj/structure/interactive/diverter/high_value/should_push(var/atom/movable/M)
 	if(is_item(M))
 		var/obj/item/I = M
-		return I.calculate_value() >= value_threshold
+		return I.get_value() >= value_threshold
 
 	return FALSE
 
