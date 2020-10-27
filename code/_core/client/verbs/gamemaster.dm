@@ -3,6 +3,10 @@
 	set name = "Speed up Setup"
 	set category = "GameMaster"
 
+	if(!SSgamemode || !SSgamemode.active_gamemode)
+		to_chat(span("warning","The gamemode is still being setup!"))
+		return FALSE
+
 	SSgamemode.active_gamemode.round_time = 1000000
 
 
@@ -39,7 +43,7 @@
 	SSevents.trigger_event(E)
 
 
-/client/proc/add_points()
+/client/verb/add_points()
 
 	set name = "Add Gamemode Points"
 	set category = "GameMaster"
@@ -286,9 +290,6 @@
 			CHECK_TICK(75,FPS_SERVER)
 			D.close(null,TRUE,TRUE)
 
-
-
-
 /client/verb/test_syndicate_raid()
 	set name = "Syndicate Raid (DANGER)"
 	set category = "GameMaster"
@@ -314,3 +315,11 @@
 		return FALSE
 	SR.launch()
 
+
+/client/verb/force_vote()
+	set name = "Force Vote End"
+	set category = "GameMaster"
+
+	for(var/k in SSvote.active_votes)
+		var/vote/V = k
+		qdel(V)

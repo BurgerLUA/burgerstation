@@ -78,7 +78,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/inventory/proc/is_occupied(var/ignore_held = TRUE, var/ignore_worn = TRUE)
+/obj/hud/inventory/proc/is_occupied(var/ignore_held = FALSE, var/ignore_worn = FALSE)
 
 	if(!ignore_held && get_top_held_object())
 		return TRUE
@@ -90,6 +90,9 @@
 		return TRUE
 
 	if(parent_inventory)
+		return TRUE
+
+	if(child_inventory)
 		return TRUE
 
 	if(is_advanced(owner))

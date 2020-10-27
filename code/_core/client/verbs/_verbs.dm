@@ -66,12 +66,14 @@
 		verbs += /client/verb/set_attribute
 		verbs += /client/verb/spawn_from_path
 		verbs += /client/verb/smite_living
-		verbs += /client/proc/add_points
+		verbs += /client/verb/add_points
 		verbs += /client/verb/give_dosh
 		verbs += /client/verb/test_spook_station
 		verbs += /client/verb/test_syndicate_raid
 		verbs += /client/verb/force_specific_event
 		verbs += /client/verb/ic_announcement
 		verbs += /client/verb/force_round_end
+		verbs += /client/verb/force_vote
+		verbs += /client/verb/rejuvenate_player
 
 	return TRUE

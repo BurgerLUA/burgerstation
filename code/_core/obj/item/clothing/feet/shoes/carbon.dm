@@ -26,7 +26,7 @@
 
 	value = 150
 
-	speed_bonus = 1
+	speed_bonus = 0
 
 
 

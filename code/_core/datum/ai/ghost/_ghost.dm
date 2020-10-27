@@ -57,7 +57,6 @@
 	var/turf/T = get_turf(desired_owner)
 	var/area/A = T.loc
 	origin_area_identifier = A.area_identifier
-	world.log << "ATTENTION: [origin_area_identifier]."
 
 	owner_as_ghost = desired_owner
 	shy_level = rand(1,3)

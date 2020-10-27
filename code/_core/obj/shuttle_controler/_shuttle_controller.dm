@@ -245,10 +245,18 @@ var/global/list/all_shuttle_controlers = list()
 		if(!replacing_turf)
 			//log_error("Warning: Could not find a replacing turf for [src.get_debug_name()] at [ending_cord_x + offset_x],[ending_cord_y + offset_y],[ending_cord_z].")
 			continue
+
 		for(var/k in replacing_turf.contents)
 			var/atom/movable/M = k
 			M.on_crush()
+		if(!replacing_turf.stored_shuttle_items) replacing_turf.stored_shuttle_items = list()
+		var/list/stored_items = list()
+		for(var/obj/item/I in replacing_turf.contents) //Second pass. Get everything that might've been crushed.
+			stored_items += I
+			I.force_move(src)
 		replacing_turf.change_turf(T.type,TRUE,TRUE)
+		replacing_turf.stored_shuttle_items = stored_items
+
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			CHECK_TICK(75,FPS_SERVER)
@@ -258,10 +266,11 @@ var/global/list/all_shuttle_controlers = list()
 			M.force_move(replacing_turf)
 			if(enable_shuttle_throwing)
 				objects_to_throw += M
+		for(var/k in T.stored_shuttle_items)
+			var/obj/item/I = k
+			I.force_move(T)
+			T.stored_shuttle_items -= I
 		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
-		//found_turfs++
-
-	//log_debug("[src.get_debug_name()]: Found [found_turfs] turfs to replace.")
 
 	if(enable_shuttle_throwing)
 		for(var/k in objects_to_throw)

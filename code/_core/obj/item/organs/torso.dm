@@ -27,7 +27,7 @@
 
 	health_base = 100
 
-	health_coefficient = 1
+	damage_coefficient = 1
 
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	. = ..()

@@ -30,7 +30,7 @@
 
 	health_base = 50
 
-	health_coefficient = 0.9
+	damage_coefficient = 0.9
 
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"

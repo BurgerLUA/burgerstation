@@ -86,7 +86,7 @@
 /obj/structure/Cross(atom/movable/O)
 
 	if(O.collision_flags & src.collision_flags)
-		var/direction = get_dir(O,src)
+		var/direction = O.move_dir
 		if(turn(direction,180) & collision_dir)
 			return FALSE
 		if(is_structure(O)) //Prevents infinite loops.
@@ -96,10 +96,10 @@
 
 	return TRUE
 
-/obj/structure/Uncross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/Uncross(var/atom/movable/O)
 
 	if(O.collision_flags & src.collision_flags)
-		var/direction = get_dir(OldLoc,NewLoc)
+		var/direction = O.move_dir
 		if(collision_dir == (NORTH | SOUTH | EAST | WEST))
 			return TRUE //Prevents people from getting stuck in walls.
 		if(direction & collision_dir)

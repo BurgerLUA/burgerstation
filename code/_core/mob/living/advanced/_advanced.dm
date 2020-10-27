@@ -152,7 +152,6 @@
 			tracked_hidden_clothing |= C.hidden_clothing
 		if(C.hidden_organs)
 			tracked_hidden_organs |= C.hidden_organs
-		slowdown_mul = max(slowdown_mul - C.speed_bonus,0.5)
 
 	var/do_organs = length(tracked_hidden_organs)
 	var/do_clothing = tracked_hidden_clothing != 0x0
@@ -213,11 +212,16 @@
 	if(!force && !finalized)
 		return FALSE //Don't want to call this too much during initializations.
 
-	if(should_update_weight) update_weight()
-	if(should_update_slowdown) update_slowdown()
-	if(should_update_eyes) update_eyes()
-	if(should_update_protection) update_protection()
-	if(should_update_clothes) update_clothes()
+	if(should_update_weight)
+		update_weight()
+	if(should_update_slowdown)
+		update_slowdown()
+	if(should_update_eyes)
+		update_eyes()
+	if(should_update_protection)
+		update_protection()
+	if(should_update_clothes)
+		update_clothes()
 
 	return TRUE
 
@@ -240,7 +244,14 @@
 	//https://www.desmos.com/calculator/9oyrocojgp
 	var/cucumber = (weight/weight_max)
 	. = 2 - (1-cucumber)**0.2
+
+	for(var/obj/item/clothing/C in worn_objects)
+		. -= C.speed_bonus
+
+	. = FLOOR(.,0.05)
+
 	slowdown_mul = .
+
 	return .
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)

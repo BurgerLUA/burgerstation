@@ -31,5 +31,6 @@
 
 /obj/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
+	loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
 	qdel(src)
 	return .

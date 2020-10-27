@@ -23,7 +23,7 @@
 
 	health_base = 50
 
-	health_coefficient = 0.75
+	damage_coefficient = 0.75
 
 	has_pain = TRUE
 
