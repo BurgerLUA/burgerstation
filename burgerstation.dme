@@ -1299,6 +1299,7 @@
 #include "code\_core\obj\item\weapon\ranged\laser\iongun.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\laser_rifle.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\nanotrasen_turret.dm"
+#include "code\_core\obj\item\weapon\ranged\laser\sentry.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\syndicate_turret.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\hybrid\_hybrid.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\hybrid\carbine.dm"

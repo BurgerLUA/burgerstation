@@ -63,3 +63,18 @@
 /mob/living/simple/npc/turret/nanotrasen/post_death()
 	icon_state = "dead"
 	return ..()
+
+
+/mob/living/simple/npc/turret/nanotrasen_deployable/
+	name = "Depolyed sentry"
+	icon = 'icons/mob/living/simple/turret_deployable.dmi'
+	icon_state = "active"
+
+	iff_tag = "NanoTrasen"
+	loyalty_tag = "NanoTrasen"
+
+	stored_weapon = /obj/item/weapon/ranged/energy/sentry_turret
+
+/mob/living/simple/npc/turret/nanotrasen_deployable/post_death()
+	icon_state = "dead"
+	return ..()
