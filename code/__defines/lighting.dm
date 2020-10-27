@@ -10,7 +10,7 @@
 #define LIGHTING_DARKNESS_ICON_STATE "black"	// icon_state used for lighting overlays with no luminosity.
 #define LIGHTING_TRANSPARENT_ICON_STATE "blank"
 
-#define LIGHTING_SOFT_THRESHOLD 0 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
+#define LIGHTING_SOFT_THRESHOLD 0.01 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
 #define LIGHTING_BLOCKED_FACTOR 0.5	// How much the range of a directional light will be reduced while facing a wall.
 
 // If defined, instant updates will be used whenever server load permits. Otherwise queued updates are always used.
@@ -29,7 +29,7 @@
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
-		0, 0, 0, 0.9  \
+		0, 0, 0, 0.98  \
 	)               \
 
 // Helpers so we can (more easily) control the colour matrices.

@@ -11,9 +11,6 @@
 
 	size = SIZE_2
 
-
-	value = 4
-
 	var/bullet_length_min = -1
 	var/bullet_length_best = -1
 	var/bullet_length_max = -1
@@ -21,6 +18,27 @@
 	var/bullet_diameter_min = -1
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
+
+	var/icon_states = 1
+
+	weight = 0.25
+
+
+/obj/item/magazine/update_icon()
+
+	var/icon_num = 1
+
+	if(icon_states)
+		var/bullet_num = length(stored_bullets)
+		icon_num = min(bullet_num/bullet_count_max,1)*icon_states
+		icon_num = FLOOR(icon_num,1)
+		if(!icon_num && bullet_num)
+			icon_num = 1
+		icon_state = "[initial(icon_state)]_[icon_num]"
+	else
+		icon_state = initial(icon_states)
+
+	return ..()
 
 /obj/item/magazine/save_item_data(var/save_inventory = TRUE)
 

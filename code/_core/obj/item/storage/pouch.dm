@@ -41,6 +41,8 @@
 
 	size = SIZE_4
 
+	value = 70
+
 
 /obj/item/storage/pouch/single/black
 	color = COLOR_BLACK
@@ -58,6 +60,8 @@
 
 	size = SIZE_6
 
+	value = 70
+
 
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
@@ -69,14 +73,12 @@
 	name = "triple small pouches"
 	desc_extended = "Storage pouches attachable to the groin or chest. This one can carry three Size 2 items, such as a sidearm or extra ammo."
 	icon_state = "triple"
-	dynamic_inventory_count = 6
 	size = SIZE_6
-
 
 	container_max_size = SIZE_2
 	dynamic_inventory_count = 3
 
-	size = SIZE_6
+	value = 70
 
 
 /obj/item/storage/pouch/triple/black/

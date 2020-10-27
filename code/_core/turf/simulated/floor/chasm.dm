@@ -8,7 +8,7 @@
 	corner_category = "chasm"
 
 
-/turf/simulated/floor/chasm/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/turf/simulated/floor/chasm/Crossed(atom/movable/O)
 
 	. = ..()
 

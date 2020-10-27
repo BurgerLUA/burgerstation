@@ -5,8 +5,11 @@
 	var/completion_state = ACTIVE
 	var/credit_reward = 0
 	var/burgerbux_reward = 0
+	var/points_reward = 0
 
 	var/antagonist = FALSE
+
+	var/trackable = TRUE
 
 /objective/New()
 
@@ -42,6 +45,10 @@
 			P.to_chat(span("notice","You've been given [increased_currency] burgerbux for completing [name]."))
 
 		burgerbux_reward = 0
+
+	if(points_reward)
+		SSgamemode.active_gamemode.points += points_reward
+		points_reward = 0
 
 	return TRUE
 

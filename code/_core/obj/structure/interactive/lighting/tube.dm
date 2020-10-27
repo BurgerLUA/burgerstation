@@ -12,9 +12,7 @@
 	desired_light_angle = LIGHT_TUBE
 
 	layer = LAYER_LARGE_OBJ
-	plane = PLANE_WALL_ATTACHMENTS
-
-	var/on = TRUE
+	plane = PLANE_OBJ
 
 	color = COLOR_LIGHT
 	var/color_frame = COLOR_GREY
@@ -27,18 +25,23 @@
 
 	health_base = 10
 
+	lightswitch = TRUE
+
 /obj/structure/interactive/lighting/tube/on_destruction(var/mob/caller,var/damage = FALSE)
+
+	var/turf/T = get_turf(src)
 
 	if(desired_light_color)
 		desired_light_color = null
 		if(health)
 			health.restore()
-		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),/material/glass)
+		create_destruction(T,list(/obj/item/material/shard = 1),/material/glass)
+		play('sound/effects/glass_shatter.ogg',T)
 		. = ..()
 		update_atom_light()
 		update_sprite()
 	else
-		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),/material/steel)
+		create_destruction(T,list(/obj/item/material/sheet = 1),/material/steel)
 		. = ..()
 		qdel(src)
 
@@ -137,13 +140,13 @@
 /obj/structure/interactive/lighting/tube/station
 	color = COLOR_LIGHT
 	color_frame = COLOR_GREY
-	desired_light_power = 0.75
-	desired_light_range = VIEW_RANGE*0.5
+	desired_light_power = 0.65
+	desired_light_range = VIEW_RANGE*0.6
 
 /obj/structure/interactive/lighting/tube/station/strong
-	desired_light_power = 0.6
-	desired_light_range = 9
+	desired_light_power = 0.7
+	desired_light_range = VIEW_RANGE*0.7
 
 /obj/structure/interactive/lighting/tube/station/stronger
-	desired_light_power = 0.7
-	desired_light_range = 12
+	desired_light_power = 0.75
+	desired_light_range = VIEW_RANGE*0.8

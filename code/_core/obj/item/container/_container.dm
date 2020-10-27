@@ -3,8 +3,7 @@
 	desc = "This holds something."
 	desc_extended = "Holds things."
 
-	value = 5
-
+	weight = 0.25
 
 
 

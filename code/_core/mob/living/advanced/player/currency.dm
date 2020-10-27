@@ -21,7 +21,7 @@
 		return FALSE
 	if(!client)
 		return 0
-	var/savedata/client/globals/globals = client.globals
+	var/savedata/client/globals/globals = GLOBALDATA(client.ckey)
 	var/old_currency = globals.loaded_data["burgerbux"]
 	globals.loaded_data["burgerbux"] = clamp(globals.loaded_data["burgerbux"] + currency_to_add,0,99999)
 	var/difference = globals.loaded_data["burgerbux"] - old_currency

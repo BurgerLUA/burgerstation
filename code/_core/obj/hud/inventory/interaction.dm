@@ -27,16 +27,19 @@
 			L.to_chat(span("warning","You're dead!"))
 			return FALSE
 
+		if(caller.attack_flags & ATTACK_HOLD)
+			L.dash(object,0x0,2)
+			return TRUE
+
+
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
-	if(caller.attack_flags & ATTACK_HOLD && defer_self == src && is_living(caller))
-		var/mob/living/L = caller
-		L.dash(object,0x0,2)
-		return TRUE
-
-	if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
-		if(isturf(object.loc))
+	if(caller.attack_flags & ATTACK_GRAB)
+		if(is_item(defer_object) && is_inventory(defer_object.loc))
+			toggle_wield(caller,defer_object)
+			return TRUE
+		if(isturf(object.loc) && get_dist(caller,object) <= 1)
 			if(is_living(object))
 				var/mob/living/L = object
 				if(!L.add_status_effect(GRAB, source = caller))
@@ -44,8 +47,7 @@
 					return TRUE
 			grab_object(caller,object,location,control,params)
 			return TRUE
-		else if(is_item(object) && is_inventory(object.loc))
-			return toggle_wield(caller,defer_object)
+
 
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
@@ -118,16 +120,18 @@
 
 
 	if(get_dist(defer_self,defer_object) <= 1)
-
 		if(is_item(defer_object)) //We're clicking on another item.
 			var/obj/item/I = defer_object
+			if(I.anchored)
+				I.click_self(caller)
+				return TRUE
 			if(is_inventory(defer_object.loc)) //The object we're clicking on is in an inventory. Special behavior.
 				var/obj/hud/inventory/I2 = defer_object.loc
 				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in a worn slot.
 					if(is_inventory(defer_self)) //We have nothing to add to it, so we should open it instead.
 						I.click_self(caller)
 						return TRUE
-				if(!I2.click_flags && !I2.drag_to_take)
+				if(!I2.click_flags && !I2.drag_to_take && is_item(defer_object) && !is_item(defer_self))
 					src.add_object(defer_object)
 					return TRUE
 				if(I2.worn_slots && is_item(defer_self) && !I.is_container)

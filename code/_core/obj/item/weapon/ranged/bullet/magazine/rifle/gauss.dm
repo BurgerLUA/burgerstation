@@ -17,9 +17,10 @@
 
 	view_punch = 64
 
-	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
+
 
 	size = SIZE_4
+	weight = 30
 
 
 	heat_per_shot = 0.06
@@ -53,10 +54,10 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))
 

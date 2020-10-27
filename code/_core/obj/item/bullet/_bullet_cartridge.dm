@@ -33,11 +33,17 @@
 	maptext_y = 2
 
 	size = 0.01
-	value = 0.1
 
 	var/bullet_seed //For icon generation.
 
-/obj/item/bullet_cartridge/calculate_value()
+/obj/item/bullet_cartridge/New(var/desired_loc)
+	calculate_weight()
+	return ..()
+
+/obj/item/bullet_cartridge/proc/calculate_weight()
+	return size*0.25
+
+/obj/item/bullet_cartridge/get_value()
 
 	. = ..()
 
@@ -114,13 +120,13 @@
 		if(misfire_chance && luck(list(caller,src,loc),misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
-		plane = PLANE_BULLET_CASINGS
+		plane = PLANE_OBJ
 		item_count_max = max(item_count_max,100000) //Some absurd value.
 		return src
 
 	return FALSE
 
-/obj/item/bullet_cartridge/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/item/bullet_cartridge/Crossed(atom/movable/O)
 
 	if(is_bullet(O))
 		var/obj/item/bullet_cartridge/B = O

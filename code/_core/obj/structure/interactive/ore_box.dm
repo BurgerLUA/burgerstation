@@ -9,6 +9,8 @@
 
 	bullet_block_chance = 75
 
+	density = TRUE
+
 /obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -20,12 +22,12 @@
 
 	return ..()
 
-/obj/structure/interactive/ore_box/Cross(var/atom/movable/O)
+/obj/structure/interactive/ore_box/Cross(atom/movable/O)
 
 	if(istype(O,/obj/item/material/ore/))
 		var/obj/item/material/ore/I = O
 		I.force_move(src)
-		return TRUE
+		return FALSE
 
 	return ..()
 

@@ -23,4 +23,18 @@
 	return TRUE
 
 /loadout/proc/post_add(var/mob/living/advanced/A,var/list/added_items = list()) //Added after everything is added.
+
+	var/list/found_magazines = list()
+	for(var/obj/item/magazine/M in added_items)
+		found_magazines += M
+
+	for(var/obj/item/weapon/ranged/bullet/magazine/R in added_items)
+		for(var/obj/item/magazine/M in found_magazines)
+			if(!M.weapon_whitelist[R.type])
+				continue
+			M.click_on_object(null,R)
+			R.click_self()
+			found_magazines -= M
+			break
+
 	return TRUE

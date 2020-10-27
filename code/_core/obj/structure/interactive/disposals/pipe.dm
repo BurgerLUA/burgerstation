@@ -1,7 +1,7 @@
 /obj/structure/interactive/disposals/pipe
 	name = "disposals pipe"
 	icon_state = "pipe"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_PIPE
 	under_tile = TRUE
 
 /obj/structure/interactive/disposals/pipe/get_connections()
@@ -19,6 +19,20 @@
 
 
 	return .
+
+/obj/structure/interactive/disposals/pipe/Finalize()
+
+	var/disposals_count = 0
+	for(var/obj/structure/interactive/disposals/pipe/DP in src.loc.contents)
+		disposals_count++
+
+
+	if(disposals_count > 1)
+		log_error("Multiple disposals pipes ([disposals_count]) detected at [src.loc.get_debug_name()].")
+
+	return ..()
+
+
 
 /obj/structure/interactive/disposals/pipe/New(var/desired_loc)
 	plane = PLANE_FLOOR

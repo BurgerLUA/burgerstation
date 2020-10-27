@@ -10,8 +10,6 @@
 
 	dyeable = TRUE
 
-	slowdown_mul_worn = 1.1
-
 /obj/item/clothing/overwear/armor/medium_armor/security
 	name = "padded stab vest"
 	desc = "Morning, Mr. Freeman. Looks like you're running late."

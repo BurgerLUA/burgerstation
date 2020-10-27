@@ -111,6 +111,12 @@
 /turf/simulated/floor/tile/morphing/cryo
 	color = COLOR_GREEN
 
+/turf/simulated/floor/tile/morphing/virology
+	color = COLOR_GREEN
+
+/turf/simulated/floor/tile/morphing/hydroponics
+	color = COLOR_GREEN
+
 /turf/simulated/floor/tile/morphing/medical
 	color = COLOR_MEDICAL
 
@@ -156,3 +162,8 @@
 /turf/simulated/floor/tile/morphing/chemistry
 	color = COLOR_CHEMISTRY
 
+/turf/simulated/floor/tile/morphing/command
+	color = COLOR_COMMAND
+
+/turf/simulated/floor/tile/morphing/cargo
+	color = COLOR_CARGO

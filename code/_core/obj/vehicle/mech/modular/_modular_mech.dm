@@ -3,7 +3,7 @@ var/global/list/stored_mechs_by_ckey = list()
 /proc/save_all_mechs() //Should only be done at the end of the round.
 
 	for(var/ckey in stored_mechs_by_ckey)
-		LOG_DEBUG("Checking stored mechs for [ckey]...")
+		log_debug("Checking stored mechs for [ckey]...")
 		var/savedata/client/mob/M = MOBDATA(ckey)
 		if(!M)
 			log_error("ERROR: Mech Saving: Could not find mobdata for ckey [ckey]!")
@@ -12,12 +12,12 @@ var/global/list/stored_mechs_by_ckey = list()
 			M.loaded_data["stored_mechs"] = list()
 		try
 			for(var/mob/living/vehicle/mech/modular/V in stored_mechs_by_ckey[ckey])
-				LOG_DEBUG("Mech Saving: Found mech [V.get_debug_name()].")
+				log_debug("Mech Saving: Found mech [V.get_debug_name()].")
 				if(V.qdeleting)
 					M.loaded_data["stored_mechs"] -= V.mech_id //Gone forever.
 				else
 					M.loaded_data["stored_mechs"][V.mech_id] = V.save_mech_data()
-					LOG_DEBUG("Storing mech. Data length: [length(M.loaded_data["stored_mechs"][V.mech_id])]")
+					log_debug("Storing mech. Data length: [length(M.loaded_data["stored_mechs"][V.mech_id])]")
 		catch(var/exception/e)
 			log_error("save_all_mechs(): [e] on [e.file]:[e.line]!")
 

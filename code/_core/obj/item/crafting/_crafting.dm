@@ -24,32 +24,33 @@
 
 	var/crafting_type = null
 
-	value = 5
+	weight = 10
 
 /obj/item/crafting/click_self(caller,location,control,params)
 
 	if(!length(inventories))
 		return FALSE
 
-	if(inventory_user && is_advanced(inventory_user))
-		var/mob/living/advanced/A = inventory_user
-		for(var/obj/hud/button/crafting/B in A.buttons)
-			B.alpha = 0
-			B.mouse_opacity = 0
-
 	var/mob/living/advanced/A = caller
 
-	var/opening = FALSE
-
-	for(var/obj/hud/inventory/crafting/I in A.inventory)
-		CHECK_TICK(100,FPS_SERVER*0.5)
-		I.alpha = 0
-		I.mouse_opacity = 0
+	if(inventory_user && is_advanced(inventory_user))
+		var/mob/living/advanced/A2 = inventory_user
+		for(var/obj/hud/button/crafting/B in A2.buttons)
+			B.alpha = 0
+			B.mouse_opacity = 0
+			B.stored_crafting_table = null
 
 	if(inventory_user != A)
 		for(var/obj/hud/button/crafting/B in A.buttons)
 			B.alpha = 0
 			B.mouse_opacity = 0
+			B.stored_crafting_table = null
+
+	var/opening = FALSE
+	for(var/obj/hud/inventory/crafting/I in A.inventory)
+		CHECK_TICK(100,FPS_SERVER*0.5)
+		I.alpha = 0
+		I.mouse_opacity = 0
 
 	for(var/obj/hud/inventory/crafting/I in inventories)
 		CHECK_TICK(100,FPS_SERVER*0.5)
@@ -67,13 +68,14 @@
 		play(pick(inventory_sounds),src)
 
 	for(var/obj/hud/button/crafting/B in A.buttons)
-		B.stored_crafting_table = src
 		if(opening)
 			animate(B,alpha=255,time=4)
 			B.mouse_opacity = 2
+			B.stored_crafting_table = src
 		else
 			animate(B,alpha=0,time=4)
 			B.mouse_opacity = 0
+			B.stored_crafting_table = null
 
 	inventory_user = caller
 

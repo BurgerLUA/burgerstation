@@ -5,10 +5,12 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	density = TRUE
 
 	health_base = 100
 
 	bullet_block_chance = 90
+
 
 /obj/structure/interactive/construction/girder/proc/can_construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
 

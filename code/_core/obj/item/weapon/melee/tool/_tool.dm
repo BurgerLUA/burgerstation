@@ -1,6 +1,7 @@
 /obj/item/weapon/melee/tool
 	name = "tool"
 	value = 10
+	drop_sound = 'sound/items/drop/scrap.ogg'
 
 /obj/item/weapon/melee/tool/wirecutters
 	name = "wirecutters"
@@ -9,6 +10,9 @@
 	icon = 'icons/obj/item/weapons/melee/tools/wirecutters.dmi'
 
 	flags_tool = FLAG_TOOL_WIRECUTTER
+
+	size = SIZE_2
+	weight = 2
 
 	value = 3
 
@@ -19,6 +23,9 @@
 	icon = 'icons/obj/item/weapons/melee/tools/wrench.dmi'
 
 	flags_tool = FLAG_TOOL_WRENCH
+
+	size = SIZE_2
+	weight = 4
 
 	value = 5
 
@@ -34,6 +41,9 @@
 
 	var/fuel_current = 0
 	var/fuel_max = 50
+
+	size = SIZE_2
+	weight = 5
 
 	var/active = FALSE
 
@@ -91,6 +101,9 @@
 
 	flags_tool = FLAG_TOOL_CROWBAR
 
+	size = SIZE_2
+	weight = 4
+
 	value = 5
 
 /obj/item/weapon/melee/tool/crowbar/red
@@ -104,6 +117,9 @@
 	icon = 'icons/obj/item/weapons/melee/tools/multitool.dmi'
 
 	flags_tool = FLAG_TOOL_MULTITOOL
+
+	size = SIZE_2
+	weight = 3
 
 	value = 10
 
@@ -127,6 +143,9 @@
 
 	value = 5
 
+	size = SIZE_1
+	weight = 2
+
 	flags_tool = FLAG_TOOL_SCREWDRIVER
 
 /obj/item/weapon/melee/tool/pickaxe
@@ -141,10 +160,10 @@
 
 	tool_time = SECONDS_TO_DECISECONDS(2)
 
-	attack_delay = 10
-	attack_delay_max = 15
-
 	value = 10
+
+	size = SIZE_3
+	weight = 10
 
 
 /obj/item/weapon/melee/tool/shovel
@@ -159,7 +178,7 @@
 
 	tool_time = SECONDS_TO_DECISECONDS(2)
 
-	attack_delay = 10
-	attack_delay_max = 15
-
 	value = 10
+
+	size = SIZE_3
+	weight = 8

@@ -15,11 +15,20 @@ SUBSYSTEM_DEF(area)
 	var/is_sandstorming = TRUE
 	var/is_volcanic = TRUE
 
+	var/list/all_areas = list()
+
+	var/list/areas_by_identifier = list()
+
 /subsystem/area/Initialize()
 
 	var/area_count = 0
 
 	for(var/area/A in world)
+		all_areas[A.type] = A
+		if(A.area_identifier)
+			if(!areas_by_identifier[A.area_identifier])
+				areas_by_identifier[A.area_identifier] = list()
+			areas_by_identifier[A.area_identifier] += A
 		INITIALIZE(A)
 		area_count += 1
 		if(length(A.random_sounds))
@@ -36,6 +45,9 @@ SUBSYSTEM_DEF(area)
 					areas_sandstorm += A
 				if(WEATHER_VOLCANIC)
 					areas_volcanic += A
+
+
+	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 
 	/*
 	if(run_unit_tests)

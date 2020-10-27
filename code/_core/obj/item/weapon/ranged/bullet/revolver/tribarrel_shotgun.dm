@@ -17,9 +17,8 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
-
 	size = SIZE_3
+	weight = 14
 
 	bullet_length_min = 73
 	bullet_length_best = 75
@@ -68,8 +67,8 @@
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_base_spread()
 	return 0.05
 
-/obj/item/weapon/ranged/bullet/revolver/tribarrel/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/revolver/tribarrel/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/revolver/tribarrel/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/revolver/tribarrel/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))

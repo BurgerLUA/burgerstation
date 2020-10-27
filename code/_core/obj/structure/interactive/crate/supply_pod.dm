@@ -34,7 +34,7 @@
 	return .
 
 /obj/structure/interactive/crate/closet/supply_pod/proc/land()
-	explode(get_turf(src),1,src,src)
+	//explode(get_turf(src),1,src,src)
 	return TRUE
 
 /obj/structure/interactive/crate/closet/supply_pod/close(var/mob/caller)

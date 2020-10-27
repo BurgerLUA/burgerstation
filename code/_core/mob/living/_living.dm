@@ -1,5 +1,9 @@
 /mob/living/
 
+	health_base = 50
+	stamina_base = 50
+	mana_base = 50
+
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 	var/list/faction/factions
@@ -58,7 +62,7 @@
 
 	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 
-	var/stun_angle = 0
+	var/stun_angle = 90
 
 	var/boss = FALSE
 	var/boss_music
@@ -124,6 +128,8 @@
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
 
+
+
 	has_footsteps = TRUE
 
 	var/climb_counter = 0
@@ -155,6 +161,7 @@
 	var/obj/effect/chat_overlay
 	var/obj/effect/alert_overlay
 	var/obj/effect/fire_overlay
+	var/obj/effect/shield_overlay
 
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
@@ -205,14 +212,28 @@
 		"salute"
 	)
 
+	var/tabled = FALSE
+	var/currently_tabled = FALSE
+
+	density = 1
+
+	var/list/defense_bonuses = list() //From perks, powers, and whatever.
+
+	var/blocking = FALSE
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
-	visible_message(span("danger","\The [src] is violently crushed!"))
+	play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
+	visible_message(span("danger","\The [src.name] is violently crushed!"))
+	if(blood_type)
+		var/reagent/R = REAGENT(blood_type)
+		for(var/i=1,i<=9,i++)
+			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
 	death()
 	if(!qdeleting) qdel(src)
 	return .
 
-/mob/living/calculate_value()
+/mob/living/get_value()
 
 	. = ..()
 
@@ -289,6 +310,7 @@
 	QDEL_NULL(alert_overlay)
 	QDEL_NULL(chat_overlay)
 	QDEL_NULL(fire_overlay)
+	QDEL_NULL(shield_overlay)
 
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
@@ -337,9 +359,6 @@
 
 	. = ..()
 
-	if(ai)
-		ai = new ai(src)
-
 	if(desired_client)
 		screen_blood = list()
 		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
@@ -354,13 +373,15 @@
 
 /mob/living/Initialize()
 
+	if(ai) ai = new ai(src)
+
 	if(boss)
 		SSbosses.tracked_bosses[id] = src
 		SSbosses.living_bosses += src
 
 	initialize_attributes()
 	initialize_skills()
-	update_level()
+	update_level(TRUE)
 	set_intent(intent,TRUE)
 
 	. = ..()
@@ -389,6 +410,12 @@
 	fire_overlay.icon_state = "0"
 	//This is initialized somewhere else.
 
+	shield_overlay = new(src.loc)
+	shield_overlay.layer = LAYER_EFFECT
+	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
+	shield_overlay.icon_state = "block"
+	shield_overlay.alpha = 0
+
 	return .
 
 /mob/living/PostInitialize()
@@ -398,13 +425,15 @@
 	if(ai)
 		INITIALIZE(ai)
 		FINALIZE(ai)
+	set_loyalty_tag(loyalty_tag,TRUE)
+	set_iff_tag(iff_tag,TRUE)
 	setup_name()
 	return .
 
 /mob/living/proc/setup_name()
 	if(boss)
 		return FALSE
-	name = CHECK_NAME(name)
+	name = "[CHECK_NAME(name)] (LVL: [level])"
 	return TRUE
 
 /mob/living/proc/set_iff_tag(var/desired_iff_tag,var/force=FALSE)
@@ -442,7 +471,7 @@
 	if(loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
 		return TRUE
 
-	if(magnitude > 3)
+	if(magnitude > 6)
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y
 		var/max = max(abs(x_mod),abs(y_mod))
@@ -454,11 +483,11 @@
 			y_mod *= 1/max
 		throw_self(owner,null,null,null,x_mod*16,y_mod*16,steps_allowed = magnitude)
 
-	else if(magnitude > 2)
-		add_status_effect(STUN,20,20)
+	else if(magnitude > 4)
+		add_status_effect(STUN,magnitude*3,magnitude*3)
 
-	else if(magnitude > 1)
-		add_status_effect(STAGGER,5,5, source = epicenter)
+	else if(magnitude > 2)
+		add_status_effect(STAGGER,magnitude,magnitude, source = epicenter)
 
 	if(health)
 		for(var/i=1,i<=clamp(2+(magnitude),1,5),i++)
@@ -485,3 +514,14 @@
 	if(messages) caller?.to_chat(span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
+
+
+/mob/living/set_dir(var/desired_dir,var/force=FALSE)
+
+	if(client && client.is_zoomed)
+		return ..(client.is_zoomed,force)
+
+	if(attack_flags & ATTACK_HOLD)
+		return FALSE
+
+	return ..()

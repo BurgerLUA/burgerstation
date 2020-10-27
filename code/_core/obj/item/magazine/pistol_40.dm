@@ -22,7 +22,6 @@
 
 	size = SIZE_2
 
+	icon_states = 7
 
-/obj/item/magazine/pistol_40/update_icon()
-	icon_state = "[initial(icon_state)]_[CEILING(length(stored_bullets)/2,1)]"
-	return ..()
+	value = 5

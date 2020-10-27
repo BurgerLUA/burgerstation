@@ -7,6 +7,7 @@
 
 	credit_reward = 1000
 	burgerbux_reward = 1
+	points_reward = 10
 
 /objective/artifact/proc/get_valid_targets()
 	return list(created_artifact)
@@ -44,7 +45,7 @@
 	return ..()
 
 /objective/artifact/proc/artifact_post_move(var/obj/structure/interactive/artifact/H,args)
-	if(!completed && H.z == Z_LEVEL_CENTCOMM)
+	if(!completed && H.z == Z_LEVEL_STATION)
 		var/area/A = get_area(H)
 		if(istype(A,/area/burgerstation))
 			completed = TRUE

@@ -12,6 +12,8 @@
 
 	value = 10
 
+	weight = 2
+
 /obj/item/pinpointer/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -42,6 +44,12 @@
 	if(!A || A.qdeleting || T.z != T2.z)
 		return FALSE
 
+	var/area/A1 = get_area(A)
+	var/area/A2 = get_area(src)
+
+	if(A1.area_identifier != A2.area_identifier)
+		return FALSE
+
 	return TRUE
 
 /obj/item/pinpointer/PostInitialize()
@@ -50,10 +58,11 @@
 	return .
 
 /obj/item/pinpointer/update_underlays()
+	. = ..()
 	if(!length(underlays))
 		var/image/I = new/image(initial(icon),initial(icon_state))
 		underlays += I
-	return TRUE
+	return .
 
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
@@ -66,17 +75,17 @@
 	if(scan_mode)
 		icon_state = "scan"
 	else if(tracked_atom)
-		var/distance = get_dist(tracked_atom,src)
+		var/distance = get_dist(src,tracked_atom)
 		var/desired_dir = get_dir(src,tracked_atom)
 		switch(distance)
-			if(0)
-				icon_state = "direct"
-			if(VIEW_RANGE*0.5)
+			if(1 to VIEW_RANGE*0.5)
 				icon_state = "[desired_dir]_close"
 			if(VIEW_RANGE*0.5 to VIEW_RANGE)
 				icon_state = "[desired_dir]_med"
 			if(VIEW_RANGE to 255)
 				icon_state = "[desired_dir]_far"
+			else
+				icon_state = "direct"
 	else
 		icon_state = "null"
 
@@ -178,8 +187,8 @@
 	encoded = TRUE
 
 /obj/item/pinpointer/landmark/
-	name = "landmark pinpointer"
-	desc_extended = "Use this to track and locate objects. This one tracks positions of landmarks."
+	name = "area pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of important areas."
 	icon_state = "green"
 
 	value = 10
@@ -188,12 +197,22 @@
 
 	var/list/possible_landmarks = list()
 
-	for(var/k in all_landmarks)
-		var/obj/marker/landmark/L = k
-		if(!can_track(L))
+	var/area/my_area = get_area(src)
+	if(!my_area.area_identifier)
+		caller.to_chat(span("warning","There is no signal..."))
+		return TRUE
+
+	for(var/k in SSarea.all_areas)
+		var/area/A = SSarea.all_areas[k]
+		if(A.z != caller.z)
 			continue
-		var/name_mod = "[L.name] ([dir2text(get_dir(caller,L))], [get_dist(src,L)]m)"
-		possible_landmarks[name_mod] = L
+		if(!A.trackable)
+			continue
+		if(my_area.area_identifier != A.area_identifier)
+			continue
+		var/turf/T = locate(A.average_x,A.average_y,A.z)
+		var/name_mod = "[A.name] ([dir2text(get_dir(caller,T))], [get_dist(src,T)]m)"
+		possible_landmarks[name_mod] = T
 
 	if(!length(possible_landmarks))
 		caller.to_chat(span("warning","Can't find anything to track!"))
@@ -202,11 +221,11 @@
 	scan_mode = TRUE
 	update_sprite()
 
-	var/choice = input("What do you want to track?","Landmark Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
+	var/choice = input("What do you want to track?","Area Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
 
 	if(choice)
-		var/obj/marker/landmark/L = possible_landmarks[choice]
-		tracked_atom = L
+		var/turf/T = possible_landmarks[choice]
+		tracked_atom = T
 	else
 		tracked_atom = null
 
@@ -228,6 +247,8 @@
 
 	for(var/v in SSgamemode.active_gamemode.crew_active_objectives)
 		var/objective/O = v
+		if(!O.trackable)
+			continue
 		for(var/k in O.tracked_atoms)
 			var/atom/A = k
 			if(!can_track(A))

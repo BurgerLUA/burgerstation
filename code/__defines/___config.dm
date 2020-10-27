@@ -2,12 +2,13 @@
 #define ENABLE_INSTALOAD FALSE
 #define QUICK_VOTE FALSE
 #define SHOW_HOOKS FALSE
+#define ENABLE_TRACKS FALSE
 
 #define LOAD_GROUND_MAP TRUE
 #define ENABLE_STOPLAG TRUE
 #define ENABLE_DAMAGE_NUMBERS TRUE
 
-#define MOVEMENT_DELAY_MOD 0.6 //Lower values means faster.
+#define MOVEMENT_DELAY_MOD 1 //Lower values means faster.
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
@@ -212,6 +213,6 @@
 	"V" = "zoom",\
 )
 
-#define Z_LEVEL_CENTCOMM 1
+#define Z_LEVEL_STATION 1
 #define Z_LEVEL_BLUESPACE 2
 #define Z_LEVEL_MISSION 3

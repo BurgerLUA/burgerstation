@@ -3,6 +3,7 @@
 	icon = 'icons/debug/mobs.dmi'
 	icon_state = ""
 	layer = LAYER_MOB
+	plane = PLANE_MOB
 
 	var/ckey_last
 
@@ -27,8 +28,6 @@
 
 	var/auto_resist = FALSE
 
-	plane = PLANE_MOB
-
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = TRUE
 
@@ -51,8 +50,6 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/obj/hud/screen/paralax
-
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
@@ -61,6 +58,7 @@
 	var/obj/plane_master/shuttle/plane_master_shuttle
 	var/obj/plane_master/scenery/plane_master_scenery
 	var/obj/plane_master/lighting/plane_master_lighting
+	var/obj/plane_master/floor/plane_master_floor
 
 	var/list/parallax
 
@@ -90,6 +88,8 @@
 
 	var/last_hold = -1
 
+	var/next_emote = 0 //Prevents spam
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)
@@ -110,9 +110,9 @@
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
+	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
-	QDEL_NULL(paralax)
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
@@ -134,6 +134,10 @@
 	for(var/k in local_machines)
 		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
+
+	if(!plane_master_floor)
+		plane_master_floor = new(src)
+	C.screen += plane_master_floor
 
 	if(!plane_master_wall)
 		plane_master_wall = new(src)
@@ -159,7 +163,7 @@
 		plane_master_scenery = new(src)
 	C.screen += plane_master_scenery
 
-	/* TODO: Find out why this make lighting invisible.
+	/*
 	if(!plane_master_lighting)
 		plane_master_lighting = new(src)
 	C.screen += plane_master_lighting

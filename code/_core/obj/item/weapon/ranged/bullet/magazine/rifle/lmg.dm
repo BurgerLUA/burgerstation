@@ -20,7 +20,7 @@
 
 	view_punch = 8
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
+
 
 	heat_per_shot = 0.03
 	heat_max = 0.15
@@ -34,6 +34,7 @@
 	bullet_diameter_max = 5.6
 
 	size = SIZE_4
+	weight = 30
 
 	value = 400
 
@@ -92,11 +93,11 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_static_spread()
 	if(!wielded)
 		return 0.2
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.075 - (0.1 * L.get_skill_power(SKILL_RANGED)))

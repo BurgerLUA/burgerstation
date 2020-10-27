@@ -44,37 +44,34 @@
 	verbs += /client/verb/ghost
 	verbs += /client/verb/check_objectives
 
-	//Admin
+	//Moderator
 	if(permissions & FLAG_PERMISSION_MODERATOR)
-		verbs += /client/verb/make_announcement
-		verbs += /client/verb/rtv
-		verbs += /client/verb/set_skill
-		verbs += /client/verb/set_attribute
-		verbs += /client/verb/give_dosh
 		verbs += /client/verb/ban
-		verbs += /client/verb/force_random_event
-		verbs += /client/verb/create_vote
-		verbs += /client/verb/get_players
+		verbs += /client/verb/get_clients
 
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)
-		verbs += /client/verb/print_cleaning_log
-		verbs += /client/verb/air_test
-		verbs += /client/verb/var_edit
-		verbs += /client/verb/change_variable
+		verbs += /client/verb/show_debug_verbs
+
+	//Admin
+	if(permissions & FLAG_PERMISSION_ADMIN)
+		verbs += /client/verb/jump_to_player
+		verbs += /client/verb/jump_to_area
+
+
+	if(permissions & FLAG_PERMISSION_GAMEMASTER)
+		verbs += /client/verb/speed_up_setup
+		verbs += /client/verb/force_random_event
+		verbs += /client/verb/set_skill
+		verbs += /client/verb/set_attribute
 		verbs += /client/verb/spawn_from_path
-		verbs += /client/verb/add_new_wikibot_entry
-		verbs += /client/verb/make_war
-		verbs += /client/verb/generate_map_icon
-		verbs += /client/verb/stealth_test
-		verbs += /client/verb/test_round_end
-		verbs += /client/verb/check_lights
-		verbs += /client/verb/subsystem_report
-		verbs += /client/verb/reload_badwords
-		verbs += /client/verb/force_save_all
-		verbs += /client/verb/rejuvenate_player
-		verbs += /client/verb/stress_test
-		verbs += /client/verb/print_dps
-		verbs += /client/verb/force_screech
+		verbs += /client/verb/smite_living
+		verbs += /client/proc/add_points
+		verbs += /client/verb/give_dosh
+		verbs += /client/verb/test_spook_station
+		verbs += /client/verb/test_syndicate_raid
+		verbs += /client/verb/force_specific_event
+		verbs += /client/verb/ic_announcement
+		verbs += /client/verb/force_round_end
 
 	return TRUE

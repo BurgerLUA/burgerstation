@@ -157,9 +157,22 @@
 
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
-	if(!new_loc || !old_loc)
+	if(!new_loc)
 		damage_atom(src.loc)
 		on_hit(src.loc,TRUE)
+		log_error("Warning: Projectile didn't have a new loc.")
+		return TRUE
+
+	if(!old_loc)
+		damage_atom(src.loc)
+		on_hit(src.loc,TRUE)
+		log_error("Warning: Projectile didn't have an old loc.")
+		return TRUE
+
+	if(!isturf(old_loc))
+		damage_atom(old_loc)
+		on_hit(old_loc,TRUE)
+		log_error("Warning: Projectile didn't have a valid old loc.")
 		return TRUE
 
 	if(hit_target_turf && new_loc == target_turf)
@@ -170,11 +183,6 @@
 	if(steps_allowed && steps_allowed <= steps_current)
 		damage_atom(new_loc)
 		on_hit(new_loc,TRUE)
-		return TRUE
-
-	if(!isturf(old_loc))
-		damage_atom(old_loc)
-		on_hit(old_loc,TRUE)
 		return TRUE
 
 	var/atom/collide_with_turf = current_loc.projectile_should_collide(src,new_loc,old_loc)
@@ -199,7 +207,7 @@
 		var/mob/living/L = k
 		if(L.dead)
 			continue
-		if(L.move_delay > 0)
+		if(L.move_delay <= 0)
 			continue
 		if(L == owner || L == weapon)
 			continue
@@ -229,8 +237,6 @@
 		var/new_angle = -ATAN2(vel_x,vel_y) + 90
 		M.Turn(new_angle)
 		transform = M
-		//M.Translate(vel_x*(1.5+lifetime),vel_y*(1.5+lifetime))
-		//animate(src, transform = M, alpha=0, time = lifetime)
 
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
@@ -250,7 +256,6 @@
 			return FALSE
 		if(current_loc)
 			previous_loc = current_loc
-		//animate(pxiel_x =
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
@@ -327,8 +332,16 @@
 
 /obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
 
-	if(istype(weapon,/obj/item/weapon/ranged/) && is_living(source))
-		var/obj/item/weapon/ranged/R = weapon
-		return R.get_bullet_inaccuracy(source,target,src,inaccuracy_modifier)
+	. = 0
 
-	return 0
+	if(is_living(source))
+		var/mob/living/L = source
+		if(istype(weapon,/obj/item/weapon/ranged/))
+			var/obj/item/weapon/ranged/R = weapon
+			. = R.get_bullet_inaccuracy(L,target,src,inaccuracy_modifier)
+		if(L.ai)
+			. *= max(1,get_dist(start_turf,target)/VIEW_RANGE)
+		if(target_atom)
+			. *= max(1,get_dist(target_atom,target)/(VIEW_RANGE*0.5))
+
+	return .

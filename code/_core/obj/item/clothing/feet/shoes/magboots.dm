@@ -24,7 +24,7 @@
 
 	size = SIZE_2
 
-	slowdown_mul_worn = 1.1
+
 
 	value = 200
 
@@ -35,7 +35,7 @@
 
 	item_slot = SLOT_FOOT_LEFT_O
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT_U
+	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
-	slowdown_mul_worn = 1.1
+
 

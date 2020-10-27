@@ -14,6 +14,8 @@
 
 	bullet_block_chance = 90
 
+	density = TRUE
+
 /obj/structure/interactive/supermatter/unachored
 	anchored = FALSE
 

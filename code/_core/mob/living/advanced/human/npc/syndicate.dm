@@ -6,9 +6,9 @@
 	dialogue_id = /dialogue/npc/soldier
 
 	var/list/possible_outfits = list(
-		/loadout/syndicate/soldier = 75,
-		/loadout/syndicate/basic = 8,
-		/loadout/syndicate/advanced = 4,
+		/loadout/syndicate/soldier = 90,
+		/loadout/syndicate/basic = 6,
+		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 1
 	)
 
@@ -18,13 +18,6 @@
 		/loadout/syndicate/advanced = 8,
 		/loadout/syndicate/elite = 16
 	)
-
-/mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
-
-	if(istype(src,Obstacle) || istype(Obstacle,src))
-		return TRUE
-
-	return ..()
 
 /mob/living/advanced/npc/syndicate/Initialize()
 

@@ -43,6 +43,9 @@
 	reagent_per_shot = 5
 	icon = 'icons/obj/item/container/spray_bottle.dmi'
 
+	size = SIZE_2
+	weight = 4
+
 	value = 50
 
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water

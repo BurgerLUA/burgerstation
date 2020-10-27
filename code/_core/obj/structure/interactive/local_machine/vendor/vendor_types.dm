@@ -116,8 +116,8 @@
 		/obj/item/clothing/back/storage/backpack/,
 		/obj/item/clothing/back/storage/dufflebag/,
 		/obj/item/clothing/belt/storage/colored,
-		/obj/item/clothing/head/hood/bandana,
-		/obj/item/clothing/head/hood/skimask,
+		/obj/item/clothing/head/hat/bandana,
+		/obj/item/clothing/head/hat/skimask,
 		/obj/item/clothing/neck/cape,
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,
@@ -146,8 +146,7 @@
 	name = "medicine vendor"
 	icon_state = "med"
 	stored_types = list(
-		/obj/item/container/blood_pack/full/o_negative,
-		/obj/item/container/blood_pack/full/reptile,
+		/obj/item/analyzer/health,
 		/obj/item/container/medicine/bandage,
 		/obj/item/container/medicine/ointment,
 		/obj/item/container/medicine/trauma_kit,
@@ -163,7 +162,9 @@
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,
 		/obj/item/storage/pillbottle/iron_small,
-		/obj/item/storage/pillbottle/antihol_small
+		/obj/item/storage/pillbottle/antihol_small,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/reptile
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
@@ -194,52 +195,8 @@
 		/obj/item/storage/glovebox/white
 	)
 
-
-
-/obj/structure/interactive/vending/engineering
-	name = "engineering vendor"
-	icon_state = "engivend"
-
-/obj/structure/interactive/vending/engineering/tool
-	name = "tool vendor"
-	icon_state = "tool"
-	stored_types = list(
-		/obj/item/weapon/melee/toolbox/blue,
-		/obj/item/weapon/melee/toolbox/red,
-		/obj/item/weapon/melee/toolbox/green,
-		/obj/item/weapon/melee/toolbox/yellow,
-		/obj/item/weapon/melee/tool/crowbar,
-		/obj/item/weapon/melee/tool/multitool,
-		/obj/item/weapon/melee/tool/screwdriver,
-		/obj/item/weapon/melee/tool/wirecutters,
-		/obj/item/weapon/melee/tool/wrench,
-		/obj/item/weapon/melee/torch/flashlight
-	)
-
-
-/obj/structure/interactive/vending/engineering/material
-	name = "material vendor"
-	icon_state = "engivend"
-	stored_types = list(
-		/obj/item/material/sheet/steel/spawn_50,
-		/obj/item/material/sheet/glass/spawn_50
-
-	)
-
-/obj/structure/interactive/vending/engineering/engidrobe
-	name = "engineering clothing vendor"
-	icon_state = "engidrobe"
-	stored_types = list(
-		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/underbottom/underwear/boxers/engineering,
-		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/pants/normal/engineering,
-		/obj/item/clothing/shirt/normal/engineering
-	)
-
 /obj/structure/interactive/vending/robotics
 	name = "robotics vendor"
-	icon_state = "robotics"
 
 /obj/structure/interactive/vending/robotics/mech_gun_fabricator
 	name = "mech fabricator"
@@ -325,7 +282,7 @@
 		/obj/item/clothing/mask/gas/clown,
 		/obj/item/clothing/uniform/clown,
 		/obj/item/storage/shoebox/clown,
-		/obj/item/fluff/bikehorn,
+		/obj/item/bikehorn,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube
 	)
 
@@ -407,7 +364,7 @@
 /obj/structure/interactive/vending/smart_fridge
 	name = "smart fridge"
 	icon_state = "smartfridge"
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 	pixel_y = 0
 
 /obj/structure/interactive/vending/smart_fridge/chemistry
@@ -519,23 +476,6 @@
 		/obj/item/container/beaker/large/ice
 	)
 
-
-/obj/structure/interactive/vending/dinnerware
-	name = "dinnerware vendor"
-	icon_state = "dinnerware"
-
-	stored_types = list(
-		/obj/item/weapon/melee/sword/sabre,
-		/obj/item/container/cheese_mold/block,
-		/obj/item/container/beaker/glass,
-		/obj/item/container/beaker/bowl,
-		/obj/item/container/beaker/large,
-		/obj/item/clothing/head/hat/paperbag,
-		/obj/item/supply_remote/barbecue,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
-	)
-
-
 /obj/structure/interactive/vending/experimental
 	name = "experimental vendor"
 	icon_state = "experimental"
@@ -544,10 +484,24 @@
 
 	stored_types = list(
 		/obj/item/clothing/uniform/stealth,
-		/obj/item/clothing/head/helmet/nanotrasen/light,
-		/obj/item/clothing/head/helmet/nanotrasen/medium,
-		/obj/item/clothing/head/helmet/nanotrasen/heavy,
+		/obj/item/clothing/head/helmet/full/nanotrasen/light,
+		/obj/item/clothing/head/helmet/full/nanotrasen/medium,
+		/obj/item/clothing/head/helmet/full/nanotrasen/heavy,
 		/obj/item/clothing/overwear/armor/nanotrasen/light,
 		/obj/item/clothing/overwear/armor/nanotrasen/medium,
 		/obj/item/clothing/overwear/armor/nanotrasen/heavy
 	)
+
+
+/obj/structure/interactive/vending/prize
+	name = "prize vendor"
+	icon_state = "prize"
+	desc = "It's not pointless, I swear."
+	desc_extended = "A special prize vendor that converts arcade prize tickets into items."
+
+	accepts_item = /obj/item/currency/prize_ticket
+
+	stored_types = list(
+		/obj/item/bikehorn
+	)
+

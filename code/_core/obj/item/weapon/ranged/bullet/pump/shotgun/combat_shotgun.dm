@@ -23,9 +23,10 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 
 	size = SIZE_4
+	weight = 12
 
 
 	value = 130
@@ -67,15 +68,15 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread()
 	return 0.002
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_base_spread()
-	return 0.0075
+	return 0.024
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
 	name = "12 gauge modified combat shotgun"
@@ -96,19 +97,19 @@
 
 	view_punch = 16
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 
 	size = SIZE_3
 
 
 	value = 150
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread() //Base spread
-	return 0.003
+/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread()
+	return 0.004
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_base_spread()
-	return 0.01
+	return 0.048

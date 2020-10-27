@@ -29,7 +29,7 @@
 	desc = "Nutrition and flavor from low quality chocolate."
 	color = "#68452A"
 
-	nutrition_amount = 14
+	nutrition_amount = 12
 
 	flavor = "bland chocolate"
 
@@ -38,7 +38,7 @@
 	desc = "Nutrition and flavor from soy jerky."
 	color = "#683013"
 
-	nutrition_amount = 16
+	nutrition_amount = 14
 
 	flavor = "soy meat"
 
@@ -49,7 +49,7 @@
 	desc = "Nutrition and flavor from dried sweet raisins."
 	color = "#470068"
 
-	nutrition_amount = 12
+	nutrition_amount = 10
 
 	flavor = "sour raisins"
 
@@ -58,7 +58,7 @@
 	desc = "Nutrition and flavor from yellow cake."
 	color = "#FFE97C"
 
-	nutrition_amount = 12
+	nutrition_amount = 10
 
 	flavor = "bland overmoist cake"
 
@@ -70,7 +70,7 @@
 	desc = "Nutrition and flavor from cream filling cake."
 	color = "#E1FFFF"
 
-	nutrition_amount = 18
+	nutrition_amount = 12
 
 	flavor = "sugary cream filling"
 

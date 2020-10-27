@@ -175,7 +175,7 @@
 		/obj/item/clothing/pants/brown,
 		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/neck/tie/red,
-		/obj/item/clothing/overwear/coat/labcoat/scientist
+		/obj/item/clothing/overwear/coat/labcoat/science
 	)
 
 	possible_extra_clothing = list(
@@ -205,7 +205,7 @@
 	)
 
 	possible_extra_weapon = list(
-		/obj/item/fluff/bikehorn = 3,
+		/obj/item/bikehorn = 3,
 		/obj/item/container/pill/space_drugs = 1,
 		/obj/item/container/pill/space_dust = 1
 

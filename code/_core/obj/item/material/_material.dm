@@ -16,6 +16,8 @@
 
 	drop_sound = 'sound/items/drop/gascan.ogg'
 
+	weight = 0.1
+
 /*
 /obj/item/material/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -48,8 +50,8 @@
 	var/material/M = SSmaterials.all_materials[material_id]
 	return ..() * M.value_per_unit
 
-
-/obj/item/material/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/*
+/obj/item/material/Crossed(atom/movable/O)
 
 	if(!istype(O,/obj/item/material))
 		return ..()
@@ -63,3 +65,4 @@
 
 	src.transfer_item_count_to(M)
 	return TRUE
+*/

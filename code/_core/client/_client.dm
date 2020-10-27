@@ -11,6 +11,7 @@ var/global/list/all_clients = list() //Assoc list
 	fps = FPS_CLIENT
 	preload_rsc = 1
 	view = VIEW_RANGE
+	perspective = MOB_PERSPECTIVE
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
@@ -28,7 +29,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/atom/last_object
 	var/atom/last_location
 
-	mouse_pointer_icon = 'icons/pointer.dmi'
+	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
 	var/swap_mouse = FALSE
 
@@ -79,6 +80,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/byond_member = FALSE
 
+	var/queued_shakes = 0
 
 /client/proc/is_player_controlled()
 	return TRUE //duh

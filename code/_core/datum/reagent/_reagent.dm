@@ -2,16 +2,9 @@
 #define FLAG_REAGENT_COOKED 0x2
 #define FLAG_REAGENT_FAT 0x4
 
-
 #define METABOLISM_BLOOD 1
 #define METABOLISM_STOMACH METABOLISM_BLOOD * 0.5
 #define METABOLISM_SKIN METABOLISM_BLOOD * 4
-
-#define OVERDOSE_THRESHOLD_MEDICINE 30
-
-/reagent/medicine/
-
-
 
 /reagent/
 	var/name = "Reagent"

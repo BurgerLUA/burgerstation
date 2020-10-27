@@ -7,7 +7,7 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //DEPCRECATED. Should always be set to FALSE!
+	density = FALSE //Should always be set to FALSE! Controls if an object should recieve a Cross/Uncross/Crossed/Uncrossed proc calls.
 
 	var/health_base = 1
 	var/mana_base = 1
@@ -24,10 +24,6 @@
 	var/interact_distance = 1 //You must be at least this close to interact with this object, and for the object to interact with others.
 	var/object_size = 1 //This-1 is added to attack range.
 	var/attack_range = 1 //If it's a melee weapon, it needs a range.
-
-	var/attack_delay = 5 //The attack delay for an object.
-	var/attack_delay_max = 10 //For living mobs using this object, the maximum attack delay.
-	var/attack_next = -1
 
 	var/reagent_container/reagents //The reagents object. If an object is supposed to hold liquid, give it a reagent_container datum.
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
@@ -49,7 +45,7 @@
 	var/desired_light_color = "#FFFFFF" //Color of the light.
 	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
 
-
+	var/attack_next = -1
 
 	var/light_sprite_range = 0
 	var/light_sprite_alpha = 0
@@ -99,15 +95,6 @@
 
 	return TRUE
 
-/obj/structure/should_smooth_with(var/turf/T)
-
-	for(var/obj/structure/O in T.contents)
-		if(O.corner_category != corner_category)
-			continue
-		return TRUE
-
-	return FALSE
-
 /atom/proc/should_smooth_with(var/turf/T)
 	return FALSE
 
@@ -137,9 +124,9 @@
 
 	return ..()
 
-/atom/Cross(var/atom/A)
+/atom/Cross(atom/movable/O)
 
-	if(!ignore_incoming_collisons && src.collision_flags & A.collision_flags)
+	if(!ignore_incoming_collisons && src.collision_flags & O.collision_flags)
 		return FALSE
 
 	return ..()
@@ -207,16 +194,8 @@
 
 	return TRUE
 
-
 /atom/proc/think()
 	return TRUE
-
-/atom/Enter(var/atom/movable/enterer,var/atom/oldloc)
-	return TRUE
-
-/atom/Exit(var/atom/movable/exiter,var/atom/newloc)
-	return TRUE
-
 
 /atom/proc/get_touching_space(var/intercardinal = FALSE)
 
@@ -280,3 +259,16 @@
 
 /atom/proc/is_busy()
 	return SSprogressbars.all_progress_bars[src] ? TRUE : FALSE
+
+
+/atom/Enter(atom/movable/O,atom/oldloc) //Override default
+	return TRUE
+
+/atom/Exit(atom/movable/O,atom/oldloc) //Override default
+	return TRUE
+
+/atom/Cross(atom/movable/O) //Override default
+	return TRUE
+
+/atom/Crossed(atom/movable/O) //Override default
+	return TRUE

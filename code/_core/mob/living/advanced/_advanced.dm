@@ -13,6 +13,9 @@
 	var/sex = MALE
 	gender = MALE
 
+	var/weight = 0 //Weight of worn items.
+	var/weight_max = 1 //Maxinmum weight of worn items.
+
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
@@ -26,7 +29,7 @@
 	var/obj/item/right_item
 	var/obj/item/holster_item
 
-	health_base = 200
+	health_base = 100
 	stamina_base = 100
 	mana_base = 100
 
@@ -55,9 +58,6 @@
 	var/list/known_wishgranters = list() //ID based.
 
 	health = /health/mob/living/advanced
-
-	attack_delay = 2
-	attack_delay_max = 6
 
 	var/list/tracked_hidden_organs
 	var/tracked_hidden_clothing = 0x0
@@ -101,6 +101,8 @@
 		ION = 0
 	)
 
+	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -127,13 +129,19 @@
 
 /mob/living/advanced/Finalize()
 
-	. = ..()
-
 	if(blood_type == /reagent/blood) //Uninitialized blood.
 		var/species/S = all_species[species]
 		blood_type = S.generate_blood_type()
 
-	 return .
+	. = ..()
+
+	update_items(force=TRUE)
+
+	return .
+
+/mob/living/advanced/on_crush()
+	drop_all_items(get_turf(src))
+	return ..()
 
 /mob/living/advanced/proc/update_clothes() //Avoid using?
 
@@ -193,29 +201,44 @@
 
 	return .
 
-/mob/living/advanced/proc/update_slowdown_mul()
+
+/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_weight=TRUE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
 	if(qdeleting) //Bandaid fix.
 		return FALSE
 
-	var/slow_mul = 1
+	if(!force && !finalized)
+		return FALSE //Don't want to call this too much during initializations.
 
-	for(var/k in worn_objects)
-		var/obj/item/I = k
-		slow_mul *= I.get_slowdown_mul_worn()
-
-	for(var/k in held_objects)
-		var/obj/item/I = k
-		if(is_inventory(I.loc))
-			var/obj/hud/inventory/I2 = I.loc
-			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
-				slow_mul *= I.get_slowdown_mul_held()
-			else
-				slow_mul *= I.get_slowdown_mul_worn()
-
-	slowdown_mul = clamp(slow_mul,0.75,4)
+	if(should_update_weight) update_weight()
+	if(should_update_slowdown) update_slowdown()
+	if(should_update_eyes) update_eyes()
+	if(should_update_protection) update_protection()
+	if(should_update_clothes) update_clothes()
 
 	return TRUE
+
+
+
+/mob/living/advanced/proc/update_weight()
+
+	. = 0
+
+	for(var/obj/hud/inventory/organs/I in inventory)
+		. += I.get_weight()
+
+	weight = .
+
+	weight_max = (200 + get_attribute_power(ATTRIBUTE_STRENGTH)*300) //Skyrim levels of memes.
+
+	return .
+
+/mob/living/advanced/proc/update_slowdown()
+	//https://www.desmos.com/calculator/9oyrocojgp
+	var/cucumber = (weight/weight_max)
+	. = 2 - (1-cucumber)**0.2
+	slowdown_mul = .
+	return .
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
@@ -236,7 +259,7 @@
 
 	return .
 
-/mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
+/mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=TRUE)
 
 	var/dropped_objects = list()
 
@@ -298,12 +321,13 @@ mob/living/advanced/Login()
 		add_species_buttons()
 		add_species_health_elements()
 
-	update_slowdown_mul()
-
-	update_clothes()
-
 	return .
 
+
+/mob/living/advanced/Finalize()
+	. = ..()
+	update_items()
+	return .
 
 /mob/living/advanced/setup_name()
 
@@ -469,3 +493,17 @@ mob/living/advanced/Login()
 		return TRUE
 
 	return FALSE
+
+/mob/living/advanced/mod_speech(var/text)
+	var/species/S = all_species[species]
+	if(!S)
+		return text
+	return ..(S.mod_speech(src,text))
+
+
+
+/mob/living/advanced/can_use_controls()
+	if(handcuffed)
+		return FALSE
+
+	return ..()

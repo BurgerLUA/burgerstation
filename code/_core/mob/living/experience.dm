@@ -1,5 +1,5 @@
 /mob/living/get_xp_multiplier()
-	return ai ? 1 : 0
+	return 1
 
 /mob/living/proc/initialize_attributes()
 
@@ -9,7 +9,7 @@
 		var/v = SSexperience.all_attributes[k]
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
-		A.Initialize(A.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
+		A.update_experience(A.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		attributes[A.id] = A
 
 /mob/living/proc/initialize_skills()
@@ -20,10 +20,10 @@
 		var/v = SSexperience.all_skills[k]
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
-		S.Initialize(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
+		S.update_experience(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		skills[S.id] = S
 
-/mob/living/proc/update_level()
+/mob/living/proc/update_level(var/first=FALSE)
 
 	var/total_attribute_mod = 0
 	var/total_skill_mod = 0
@@ -54,13 +54,27 @@
 
 	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
 
-	return (old_level != 0 && old_level < level)
+	if(!first)
+		var/decrease = old_level > level
+		if(decrease)
+			to_chat(span("warning","Your overall level decreased to [level]..."))
+		else
+			to_chat(span("notice","Your overall level increased to [level]!"))
+
+	return old_level != level
+
+
 
 /mob/living/proc/on_level_up(var/experience/E,var/old_level,var/new_level)
 
-	to_chat(span("notice","Your [E.name] increased to [new_level]."))
+	var/decrease = old_level > new_level
 
-	if(new_level > old_level)
+	if(decrease)
+		to_chat(span("warning","Your [E.name] decreased from [old_level] to [new_level]..."))
+	else
+		to_chat(span("notice","Your [E.name] increased from [old_level] to [new_level]!"))
+
+	if(new_level > old_level) //Only care if it's an increase.
 		switch(E.id)
 			if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE)
 				add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)
@@ -68,5 +82,7 @@
 				add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
 			if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER)
 				add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
+
+	update_level()
 
 	return TRUE

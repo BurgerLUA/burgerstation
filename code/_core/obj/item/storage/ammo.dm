@@ -8,6 +8,8 @@
 		/obj/item/bullet_cartridge/
 	)
 
+	value = 10
+
 /obj/item/storage/ammo/bullet_22/
 	name = "box of surplus .22 LR bullets"
 	desc_extended = "An ammo box that can hold 36 .22 LR bullets."

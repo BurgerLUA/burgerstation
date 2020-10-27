@@ -613,6 +613,7 @@
 
 	value = 12
 
+	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
 
 /reagent/medicine/purge/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -621,6 +622,8 @@
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
 		for(var/reagent_id in container.stored_reagents)
+			if(purge_blacklist[reagent_id])
+				continue
 			var/reagent/R = REAGENT(reagent_id)
 			if(R.type == src.type)
 				continue
@@ -636,6 +639,8 @@
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
 		for(var/reagent_id in container.stored_reagents)
+			if(purge_blacklist[reagent_id])
+				continue
 			var/reagent/R = REAGENT(reagent_id)
 			if(R.type == src.type)
 				continue
@@ -653,6 +658,8 @@
 	alpha = 255
 	flavor = "old shoes"
 
+	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
+
 	value = 8
 
 /reagent/medicine/charcoal/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -662,6 +669,8 @@
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
 		for(var/reagent_id in container.stored_reagents)
+			if(purge_blacklist[reagent_id])
+				continue
 			var/reagent/R = REAGENT(reagent_id)
 			if(!R.lethal)
 				continue
@@ -679,6 +688,8 @@
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
 		for(var/reagent_id in container.stored_reagents)
+			if(purge_blacklist[reagent_id])
+				continue
 			var/reagent/R = REAGENT(reagent_id)
 			if(!R.lethal)
 				continue
@@ -700,7 +711,8 @@
 
 /reagent/medicine/zombie_antidote/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	return 0
+	owner.reagents.remove_reagent(/reagent/toxin/zombie_toxin,.)
+	return .
 
 /reagent/medicine/zombie_antidote/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()

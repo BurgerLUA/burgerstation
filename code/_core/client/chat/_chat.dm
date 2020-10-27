@@ -37,7 +37,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 				if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-				if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
+				if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
 				break
 
 		if(TEXT_RAW) //People talking out of radios, pretty much.
@@ -73,8 +73,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-					if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-				if(speaker.is_player_controlled()) LOG_CHAT("WHISPER: [speaker.get_log_name()]: [text_to_say]")
+					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
+				if(speaker.is_player_controlled()) log_chat("WHISPER: [speaker.get_log_name()]: [text_to_say]")
 
 		if(TEXT_TALK)
 			if(istype(source,/client/))
@@ -105,8 +105,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-					if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-			if(speaker.is_player_controlled()) LOG_CHAT("TALK: [speaker.get_log_name()]: [text_to_say]")
+					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
+			if(speaker.is_player_controlled()) log_chat("TALK: [speaker.get_log_name()]: [text_to_say]")
 
 		if(TEXT_YELL)
 			if(istype(source,/client/))
@@ -137,8 +137,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-					if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-			if(speaker.is_player_controlled()) LOG_CHAT("YELL: [speaker.get_log_name()]: [text_to_say]")
+					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
+			if(speaker.is_player_controlled()) log_chat("YELL: [speaker.get_log_name()]: [text_to_say]")
 
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
@@ -147,7 +147,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				CHECK_TICK(75,FPS_SERVER)
 				if(within_range(M,source,YELL_RANGE))
 					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
-			if(speaker.is_player_controlled()) LOG_CHAT("LOOC: [speaker.get_log_name()]: [text_to_say]")
+			if(speaker.is_player_controlled()) log_chat("LOOC: [speaker.get_log_name()]: [text_to_say]")
 
 		if(TEXT_OOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
@@ -160,7 +160,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 			if(SSwikibot && ENABLE_WIKIBOT)
 				SSwikibot.process_string(source,text_to_say)
-			if(speaker.is_player_controlled()) LOG_CHAT("OOC: [speaker.get_log_name()]: [text_to_say]")
+			if(speaker.is_player_controlled()) log_chat("OOC: [speaker.get_log_name()]: [text_to_say]")
 
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
@@ -170,7 +170,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				if(!C.mob || !is_observer(C.mob))
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
-			if(speaker.is_player_controlled()) LOG_CHAT("GHOST: [speaker.get_log_name()]: [text_to_say]")
+			if(speaker.is_player_controlled()) log_chat("GHOST: [speaker.get_log_name()]: [text_to_say]")
 
 	if(language == LANGUAGE_BASIC && (text_type == TEXT_TALK || text_type == TEXT_YELL))
 		var/area/A = get_area(source)

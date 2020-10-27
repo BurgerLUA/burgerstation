@@ -30,6 +30,8 @@
 
 	var/world_spawn = FALSE
 
+	var/darkness = 0 //Calculated tile darkness.
+
 /turf/proc/on_step()
 	return TRUE
 
@@ -63,6 +65,10 @@
 	if(old_living)
 		old_living.Cut()
 
+	return ..()
+
+/turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+	caller.face_atom(src)
 	return ..()
 
 /turf/change_victim(var/atom/attacker)
@@ -134,18 +140,14 @@
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
-	if(enterer.collision_flags & src.collision_flags)
+	if(density && (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags))
 		var/enter_direction = get_dir(oldloc,src)
-
 		if((enter_direction & NORTH) && density_north)
 			return FALSE
-
 		if((enter_direction & EAST) && density_east)
 			return FALSE
-
 		if((enter_direction & SOUTH) && density_south)
 			return FALSE
-
 		if((enter_direction & WEST) && density_west)
 			return FALSE
 
@@ -175,4 +177,4 @@
 	return FALSE
 
 /turf/should_smooth_with(var/turf/T)
-	return (T.corner_category == corner_category)
+	return (T.corner_category == corner_category) && (T.plane == plane)

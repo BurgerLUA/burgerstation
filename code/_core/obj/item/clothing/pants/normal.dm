@@ -76,6 +76,14 @@
 		"pants" = COLOR_GREEN
 	)
 
+/obj/item/clothing/pants/normal/chef
+	name = "chef pants"
+	desc = "Good for food stains."
+	desc_extended = "Nondescript grey pants that fight against food stains."
+	polymorphs = list(
+		"pants" = COLOR_GREY
+	)
+
 
 /obj/item/clothing/pants/normal/engineering
 	name = "engineering pants"

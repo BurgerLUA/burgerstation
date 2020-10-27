@@ -12,7 +12,7 @@
 
 	destruction_turf = /turf/simulated/floor/colored/grass
 
-	layer = LAYER_FLOOR_LARGE + 0.2
+	layer = LAYER_FLOOR_GRASS
 
 	corner_category = "dense_grass"
 

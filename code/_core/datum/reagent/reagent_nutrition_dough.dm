@@ -4,7 +4,7 @@
 	desc = "Crudely mixed and made wheat dough."
 	color = "#AA9970"
 
-	nutrition_amount = 7
+	nutrition_amount = 3.5
 
 	flavor = "raw oaty dough"
 
@@ -26,7 +26,7 @@
 	desc = "Typical whole wheat water-flour based dough."
 	color = "#D8BD6C"
 
-	nutrition_amount = 8
+	nutrition_amount = 4
 
 	flavor = "raw oaty dough"
 
@@ -41,7 +41,7 @@
 	desc = "Typical whole wheat water-flour based dough."
 	color = "#E5D4A2"
 
-	nutrition_amount = 9
+	nutrition_amount = 4.5
 
 	flavor = "raw dough"
 
@@ -57,7 +57,7 @@
 	desc = "Crudely mixed and made wheat bread."
 	color = "#A09170"
 
-	nutrition_amount = 24
+	nutrition_amount = 12
 
 	flavor = "tough bread"
 
@@ -77,7 +77,7 @@
 	desc = "Typical whole wheat water-flour based bread."
 	color = "#A8784D"
 
-	nutrition_amount = 26
+	nutrition_amount = 13
 
 	flavor = "whole grain bread"
 
@@ -90,7 +90,7 @@
 	desc = "Typical water-flour based bread."
 	color = "#E0AC33"
 
-	nutrition_amount = 28
+	nutrition_amount = 14
 
 	flavor = "white bread"
 
@@ -104,7 +104,7 @@
 	desc = "Typical cake batter."
 	color = "#DDBE8F"
 
-	nutrition_amount = 24
+	nutrition_amount = 12
 
 	flavor = "raw dough"
 
@@ -124,7 +124,7 @@
 	desc = "Cooked cake."
 	color = "#BC9253"
 
-	nutrition_amount = 30
+	nutrition_amount = 15
 
 	flavor = "cake"
 

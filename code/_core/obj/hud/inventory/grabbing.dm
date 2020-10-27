@@ -1,5 +1,5 @@
 
-/mob/living/advanced/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
+/mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	var/OldLoc = loc
 
@@ -12,52 +12,19 @@
 	. = ..()
 
 	if(.)
-
 		//Right hand
 		if(right_hand && right_hand.grabbed_object)
 			var/distance = get_dist(src,right_hand.grabbed_object)
 			if(distance > 1)
 				right_hand.grabbed_object.glide_size = glide_size
-				right_hand.grabbed_object.Move(OldLoc,silent=TRUE)
+				right_hand.grabbed_object.Move(OldLoc)
 
 		//Left hand
 		if(left_hand && left_hand.grabbed_object)
 			var/distance = get_dist(src,left_hand.grabbed_object)
 			if(distance > 1)
 				left_hand.grabbed_object.glide_size = glide_size
-				left_hand.grabbed_object.Move(OldLoc,silent=TRUE)
-
-
-		/*
-		if(right_hand && right_hand.grabbed_object)
-			var/distance = get_dist(src,right_hand.grabbed_object)
-			if(distance > 2)
-				right_hand.release_object(src)
-
-		if(left_hand && left_hand.grabbed_object)
-			var/distance = get_dist(src,left_hand.grabbed_object)
-			if(distance > 2)
-				left_hand.release_object(src)
-
-		spawn()
-			if(left_hand && left_hand.grabbed_object)
-				var/distance = get_dist(src,left_hand.grabbed_object)
-				if(distance > 2)
-					left_hand.release_object(src)
-				else if(distance > 1)
-					left_hand.grabbed_object.glide_size = glide_size
-					if(!left_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE))
-						left_hand.release_object(src)
-
-			if(right_hand && right_hand.grabbed_object)
-				var/distance = get_dist(src,right_hand.grabbed_object)
-				if(distance > 2)
-					right_hand.release_object(src)
-				else if(distance > 1)
-					right_hand.grabbed_object.glide_size = glide_size
-					if(!right_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE))
-						right_hand.release_object(src)
-		*/
+				left_hand.grabbed_object.Move(OldLoc)
 
 	return .
 

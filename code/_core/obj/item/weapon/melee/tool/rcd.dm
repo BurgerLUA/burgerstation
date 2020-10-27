@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/tool/rcd
+/obj/item/rcd
 	name = "rapid construction device"
 	desc = "Rapidly construct items."
 	desc_extended = "Useful for making complex structures fast. Requires a blueprint disk to be loaded."
@@ -13,33 +13,35 @@
 
 	value = 50
 
-/obj/item/weapon/melee/tool/rcd/save_item_data(var/save_inventory = TRUE)
+	weight = 5
+
+/obj/item/rcd/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("rcd_disk")
 	return .
 
-/obj/item/weapon/melee/tool/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("rcd_disk")
 	return .
 
-/obj/item/weapon/melee/tool/rcd/Generate()
+/obj/item/rcd/Generate()
 	matter_current = matter_max
 	return ..()
 
-/obj/item/weapon/melee/tool/rcd/proc/add_matter(var/matter_amount)
+/obj/item/rcd/proc/add_matter(var/matter_amount)
 	matter_current = min(matter_current + matter_amount,matter_max)
 	update_sprite()
 	return matter_current
 
-/obj/item/weapon/melee/tool/rcd/proc/spend_matter(var/matter_to_spend)
+/obj/item/rcd/proc/spend_matter(var/matter_to_spend)
 	if(matter_to_spend > matter_current)
 		return FALSE
 	matter_current -= matter_to_spend
 	update_sprite()
 	return TRUE
 
-/obj/item/weapon/melee/tool/rcd/update_overlays()
+/obj/item/rcd/update_overlays()
 
 	. = ..()
 
@@ -50,7 +52,7 @@
 
 	return .
 
-/obj/item/weapon/melee/tool/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		return ..()
@@ -101,7 +103,7 @@
 
 	return ..()
 
-/obj/item/weapon/melee/tool/rcd/proc/insert_disk(var/mob/caller,var/obj/item/disk/desired_disk,var/silent=FALSE)
+/obj/item/rcd/proc/insert_disk(var/mob/caller,var/obj/item/disk/desired_disk,var/silent=FALSE)
 
 	var/obj/item/disk/old_disk
 	if(rcd_disk)
@@ -116,7 +118,7 @@
 
 	return old_disk
 
-/obj/item/weapon/melee/tool/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
+/obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
 	var/obj/item/disk/old_disk
 	old_disk = rcd_disk
 	rcd_disk.force_move(get_turf(src))
@@ -125,7 +127,7 @@
 		caller.to_chat("You remove \the [old_disk.name] from \the [src.name].")
 	return old_disk
 
-/obj/item/weapon/melee/tool/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_inventory(object) && rcd_disk)
 		var/obj/hud/inventory/I = object

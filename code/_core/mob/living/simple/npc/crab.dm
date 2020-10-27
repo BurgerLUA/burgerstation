@@ -55,7 +55,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 6000
+	health_base = 2500
 
 	ai = /ai/
 
@@ -78,7 +78,7 @@
 	force_spawn = TRUE
 	boss_music = /track/crab_rave
 
-	damage_type = /damagetype/npc/crab/king
+	damage_type = /damagetype/npc/crab
 
 	armor_base = list(
 		BLADE = 75,
@@ -120,7 +120,7 @@
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
 
-/mob/living/simple/npc/crab/king/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/mob/living/simple/npc/crab/king/Cross(atom/movable/O)
 
 	if(istype(O,/mob/living/simple/npc/crab/))
 		return TRUE

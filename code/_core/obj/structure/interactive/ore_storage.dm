@@ -6,6 +6,8 @@
 
 	bullet_block_chance = 75
 
+	density = TRUE
+
 /obj/structure/interactive/ore_storage/update_icon()
 
 	if(THINKING(src))
@@ -26,7 +28,7 @@
 	icon_state = "ore_storage"
 	return .
 
-/obj/structure/interactive/ore_storage/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/interactive/ore_storage/Cross(atom/movable/O)
 
 	if(store_ore(O))
 		return FALSE

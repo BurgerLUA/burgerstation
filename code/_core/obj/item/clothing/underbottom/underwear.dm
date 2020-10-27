@@ -20,6 +20,8 @@
 
 	dyeable = TRUE
 
+	value = 10
+
 /obj/item/clothing/underbottom/underwear/boxers/random/Generate()
 	color = random_color()
 	return ..()
@@ -66,6 +68,8 @@
 
 	dyeable = TRUE
 
+	value = 30
+
 /obj/item/clothing/underbottom/underwear/long_johns/grey
 	color = "#888888"
 
@@ -80,6 +84,8 @@
 	)
 
 	dyeable = TRUE
+
+	value = 10
 
 
 /obj/item/clothing/underbottom/underwear/panty/pink
@@ -113,6 +119,8 @@
 
 	dyeable = TRUE
 
+	value = 30
+
 /obj/item/clothing/underbottom/underwear/loincloth
 	name = "loincloth"
 	desc = "Emergency Underwear"
@@ -122,6 +130,8 @@
 	defense_rating = list(
 		ARCANE = 25
 	)
+
+	value = 5
 
 
 /obj/item/clothing/underbottom/underwear/loincloth/brown

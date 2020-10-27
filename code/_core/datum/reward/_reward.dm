@@ -28,7 +28,6 @@
 		if(!C.globals.loaded_data["redeemed_rewards"])
 			C.globals.loaded_data["redeemed_rewards"] = list()
 		C.globals.loaded_data["redeemed_rewards"] |= src.type
-		C.globals.save()
 
 	if(flags_reward & FLAG_REWARD_ONCE_PER_ROUND)
 		if(!SSreward.redeemed_rewards_by_ckey[C.ckey])

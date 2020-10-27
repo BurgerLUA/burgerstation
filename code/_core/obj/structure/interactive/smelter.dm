@@ -5,11 +5,13 @@
 	icon = 'icons/obj/structure/smelter.dmi'
 	icon_state = "furnace"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	pixel_y = 2
 
 	bullet_block_chance = 50
+
+	density = TRUE
 
 /obj/structure/interactive/smelter/PostInitialize()
 	. = ..()
@@ -49,6 +51,6 @@
 
 	return
 
-/obj/structure/interactive/smelter/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/smelter/Crossed(atom/movable/O)
 	smelt(O)
 	return ..()

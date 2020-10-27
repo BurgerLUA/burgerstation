@@ -4,7 +4,7 @@
 /mob/living/proc/handle_fire()
 
 	if(fire_stacks)
-		adjust_fire_stacks(clamp(-fire_stacks,-LIFE_TICK_SLOW,LIFE_TICK_SLOW))
+		adjust_fire_stacks(-min(fire_stacks,LIFE_TICK_SLOW))
 		if(on_fire && health)
 			var/damagetype/DT = all_damage_types[/damagetype/on_fire]
 			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(LIFE_TICK_SLOW/8)*5
@@ -21,6 +21,7 @@
 	if(!added_fire_stacks)
 		return FALSE
 	fire_stacks = clamp(fire_stacks + added_fire_stacks,MIN_FIRE_STACKS,MAX_FIRE_STACKS)
+	src << fire_stacks
 	if(fire_stacks <= 0)
 		extinguish()
 	else if(on_fire)

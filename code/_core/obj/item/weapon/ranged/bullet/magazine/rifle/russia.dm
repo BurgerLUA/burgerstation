@@ -16,10 +16,8 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
-
 	size = SIZE_4
-
+	weight = 12
 
 	heat_per_shot = 0.02
 	heat_max = 0.3
@@ -68,12 +66,12 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread()
 	if(!wielded)
 		return 0.15
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
 
@@ -95,10 +93,8 @@
 
 	automatic = TRUE
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
-
 	size = SIZE_4
-
+	weight = 12
 
 	heat_per_shot = 0.01
 	heat_max = 0.2
@@ -137,12 +133,12 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread()
 	if(!wielded)
 		return 0.08
 	return 0.003
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_skill_spread(var/mob/living/L)
 	if(!heat_current)
 		return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
@@ -164,9 +160,8 @@
 
 	automatic = TRUE
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
-
 	size = SIZE_4
+	weight = 12
 
 
 	heat_per_shot = 0.01
@@ -208,12 +203,12 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_static_spread()
 	if(!wielded)
 		return 0.12
 	return 0.006
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_skill_spread(var/mob/living/L)
 	if(!heat_current)
 		return 0
 	return max(0,0.04 - (0.07 * L.get_skill_power(SKILL_RANGED)))
@@ -236,9 +231,8 @@
 
 	view_punch = 4
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
-
 	size = SIZE_4
+	weight = 7
 
 
 	heat_per_shot = 0.02
@@ -276,12 +270,12 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_static_spread()
 	if(!wielded)
 		return 0.06
 	return 0.03
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.008 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
@@ -303,9 +297,8 @@
 
 	view_punch = 2.5
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
-
 	size = SIZE_4
+	weight = 12
 
 
 	heat_per_shot = 0.02
@@ -342,11 +335,11 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread()
 	if(!wielded) return 0.04
 	return 0.001
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/val/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/val/get_skill_spread(var/mob/living/L)
 	if(!heat_current)
 		return 0
 	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))
@@ -369,9 +362,9 @@
 
 	view_punch = 3.5
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
+	weight = 14
 
 
 	heat_per_shot = 0.07
@@ -414,11 +407,11 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread()
 	if(!wielded) return 0.005
 	return 0.001
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))
 

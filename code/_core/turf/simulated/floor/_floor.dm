@@ -8,6 +8,10 @@
 
 	health_base = 100
 
+	plane = PLANE_FLOOR
+
+	density = FALSE
+
 /turf/simulated/floor/is_safe_teleport()
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE
@@ -77,7 +81,7 @@
 
 	var/area/A = loc
 	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
-		caller.to_chat(span("warning","You cannot deploy this in this area!"))
+		caller.to_chat(span("warning","You cannot construct this in this area!"))
 		return FALSE
 
 	for(var/obj/structure/S in src.contents)
@@ -90,8 +94,13 @@
 			if(flags_placement & FLAGS_PLACEMENT_DIRECTIONAL)
 				if(!(S.dir & caller.dir))
 					continue
-		caller.to_chat(span("warning","There is a structure ([S.name]) here already!"))
-		return FALSE
+			caller.to_chat(span("warning","There is a [S.name] here already!"))
+			return FALSE
+		else
+			for(var/k in S.structure_blacklist)
+				if(istype(k,structure_to_make))
+					caller.to_chat(span("warning","You cannot construct this with \the [S.name] in the way!"))
+					return FALSE
 
 	return TRUE
 

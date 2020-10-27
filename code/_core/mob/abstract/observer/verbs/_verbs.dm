@@ -4,6 +4,7 @@
 	verbs += /mob/abstract/observer/verb/load_most_recent_character
 	verbs += /mob/abstract/observer/verb/become_antagonist
 	verbs += /mob/abstract/observer/verb/observe
+	//verbs += /mob/abstract/observer/verb/adjust_darkvision //I unironically cannot get this working.
 	return ..()
 
 /mob/abstract/observer/verb/observe()

@@ -1,4 +1,4 @@
-/damagetype/thrown
+/damagetype/thrown //This is dumb
 	name = "thrown"
 
 	attack_damage_base = list(

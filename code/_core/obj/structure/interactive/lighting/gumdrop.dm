@@ -1,8 +1,8 @@
 /obj/structure/interactive/lighting/gumdrop
-	name = "gumpdrop"
+	name = "gumdrop"
 	icon = 'icons/obj/structure/flora/gumdrops.dmi'
 	icon_state = "gumdrop"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_SCENERY
 
 	alpha = 200
 

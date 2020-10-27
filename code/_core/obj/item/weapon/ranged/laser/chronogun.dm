@@ -28,8 +28,8 @@
 
 	value = 2000
 
-/obj/item/weapon/ranged/energy/chronogun/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/chronogun/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/chronogun/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/chronogun/get_skill_spread(var/mob/living/L)
 	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))

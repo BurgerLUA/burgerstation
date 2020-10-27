@@ -51,7 +51,7 @@
 	id = SKILL_RANGED
 	desc = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
 	experience_power = 1.5
-	experience_multiplier = 21
+	experience_multiplier = 34
 	combat_level_mul = 1
 
 /experience/skill/precision/ //AGILITY

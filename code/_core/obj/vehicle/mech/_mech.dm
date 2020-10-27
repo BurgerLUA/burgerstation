@@ -1,6 +1,7 @@
 /mob/living/vehicle/mech
 	name = "mech"
-	desc = "Weaponized Anime"
+	desc = "Weaponized Anime."
+	desc_extended = "A humanoid armoured weapons platform that can be modified with an array of different parts and weapon modules to navigate and perform in any environment. Manufactures its own ammo using internal battery power, making it highly self-sufficient and expensive."
 	icon = 'icons/obj/vehicles/mechs.dmi'
 
 	collision_flags = FLAG_COLLISION_WALKING
@@ -28,7 +29,7 @@
 
 	return .
 
-/mob/living/vehicle/mech/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
+/mob/living/vehicle/mech/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 	var/real_dir = get_dir(src,NewLoc)
 	if(real_dir & dir)
 		return ..()

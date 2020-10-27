@@ -3,14 +3,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = 15,
-		LASER = 30
+		HEAT = DAMAGE_SWORD*0.25,
+		LASER = DAMAGE_SWORD*0.75
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HEAT = 0,
-		LASER = 0
+		HEAT = AP_SWORD*0.25,
+		LASER = AP_SWORD*0.75
 	)
 
 
@@ -19,12 +19,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 20
+		FATIGUE = DAMAGE_SWORD
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		FATIGUE = 50
+		FATIGUE = AP_SWORD
 	)
 
 /damagetype/ranged/laser/carbine/captain
@@ -32,12 +32,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = 10,
-		LASER = 25
+		HEAT = DAMAGE_SWORD*0.5,
+		LASER = DAMAGE_SWORD*0.5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HEAT = 0,
-		LASER = 0
+		HEAT = AP_SWORD*0.5,
+		LASER = AP_SWORD*0.5
 	)

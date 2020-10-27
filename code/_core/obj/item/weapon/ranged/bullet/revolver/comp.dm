@@ -15,9 +15,10 @@
 
 	view_punch = 3
 
-	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 
 	size = SIZE_2
+	weight = 6
 
 
 	bullet_length_min = 10
@@ -67,8 +68,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-/obj/item/weapon/ranged/bullet/revolver/comp/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/revolver/comp/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/revolver/comp/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/revolver/comp/get_skill_spread(var/mob/living/L)
 	return max(0,0.0075 - (0.0075 * L.get_skill_power(SKILL_RANGED)))

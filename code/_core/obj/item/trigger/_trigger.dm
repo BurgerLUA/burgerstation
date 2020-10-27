@@ -4,11 +4,11 @@
 
 	var/interactable = FALSE
 
-	value = 10
-
 	var/active = FALSE
 
 	drop_sound = 'sound/items/drop/device.ogg'
+
+	weight = 0.75
 
 /obj/item/device/proc/on_active()
 	return TRUE

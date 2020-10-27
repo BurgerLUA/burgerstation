@@ -5,10 +5,12 @@
 
 	has_quick_function = TRUE
 
-/obj/item/weapon/ranged/magic/tome/get_static_spread() //Base spread
+	weight = 6
+
+/obj/item/weapon/ranged/magic/tome/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/magic/tome/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/magic/tome/get_skill_spread(var/mob/living/L)
 	return 0
 
 /obj/item/weapon/ranged/magic/tome/quick(var/mob/caller as mob,var/atom/object,location,params)

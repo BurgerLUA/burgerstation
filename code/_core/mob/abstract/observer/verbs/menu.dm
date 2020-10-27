@@ -182,8 +182,7 @@
 	if(!length(all_antag_markers[antagonist_choice]))
 		all_antag_markers -= antagonist_choice
 
-	C.globals.loaded_data["antag_tokens"] -= 1 //We don't save here because there might be an exploit where you don't save or something.
-	C.globals.save()
+	C.globals.loaded_data["antag_tokens"] -= 1
 	src.to_chat(span("notice","You spend an antag token to become an antagonist. You now have [C.globals.loaded_data["antag_tokens"]] token(s)."))
 
 	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)

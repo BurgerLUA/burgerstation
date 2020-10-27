@@ -59,7 +59,7 @@
 	color = "#DDFFFF"
 	alpha = 225
 
-	nutrition_amount = 5
+	nutrition_amount = 3
 	hydration_amount = 15
 
 	flavor = "white noise"

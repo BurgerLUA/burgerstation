@@ -10,8 +10,6 @@
 
 	blood_type = null
 
-	health_base = 1000
-
 	anchored = TRUE
 
 /mob/living/advanced/npc/dummy/get_xp_multiplier()
@@ -39,3 +37,7 @@
 	. = ..()
 	equip_loadout(/loadout/dummy/heavy)
 	return .
+
+
+/mob/living/advanced/npc/dummy/dead
+	dead = TRUE

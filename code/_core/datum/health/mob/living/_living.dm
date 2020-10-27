@@ -7,9 +7,9 @@
 
 	. = ..()
 
-	var/mob/living/advanced/A = owner
+	var/mob/living/L = owner
 
-	var/armor_bonus = FLOOR(A.intoxication*0.025 + max(0,A.nutrition - 1000)*0.05,5)
+	var/armor_bonus = FLOOR(L.intoxication*0.025 + max(0,L.nutrition - 1000)*0.05,5)
 
 	if(armor_bonus >= 10)
 		var/list/bonus_armor = list(
@@ -27,6 +27,15 @@
 				.[damage_type] += bonus_armor[damage_type]
 			else
 				.[damage_type] = bonus_armor[damage_type]
+
+	for(var/list/bonus in L.defense_bonuses) //Superpowers and whatnot.
+		for(var/damage_type in bonus)
+			if(.[damage_type])
+				if(IS_INFINITY(.[damage_type]))
+					continue
+				.[damage_type] += bonus[damage_type]
+			else
+				.[damage_type] = bonus[damage_type]
 
 	return .
 
@@ -90,9 +99,9 @@
 
 	var/mob/living/L = owner
 
-	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*100*L.mob_size
-	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100*L.mob_size
-	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100*L.mob_size
+	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*100
+	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100
+	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100
 
 	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 

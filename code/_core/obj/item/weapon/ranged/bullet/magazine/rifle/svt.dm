@@ -16,9 +16,10 @@
 
 	view_punch = 8
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
+	weight = 14
 
 
 	heat_per_shot = 0.01
@@ -68,10 +69,10 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_static_spread()
 	if(!wielded) return 0.2
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.008 - (0.016 * L.get_skill_power(SKILL_RANGED)))

@@ -131,12 +131,12 @@
 	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
-		temperature_change *= 0.5
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
 	else //If we're colder than we need to be.
+		temperature_change *= 0.5 //This means it's slow to heat up, but fast to cool down.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
-
 	 . = FALSE
+
 
 	for(var/r_id in stored_reagents_temperature)
 		var/reagent/R = REAGENT(r_id)
@@ -246,7 +246,7 @@
 
 		var/reagent_recipe/recipe = SSreagent.all_reagent_recipes[k]
 
-		if(debug) LOG_DEBUG("Checking [recipe]...")
+		if(debug) log_debug("Checking [recipe]...")
 
 		if(!length(recipe.required_reagents))
 			continue
@@ -255,22 +255,22 @@
 
 		for(var/reagent_type in recipe.required_reagents)
 			if(recipe.required_container && !istype(owner,recipe.required_container))
-				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of wrong container type.")
+				if(debug) log_debug("Recipe [recipe.name] invalid because of wrong container type.")
 				good_recipe = FALSE
 				break
 
 			if(!c_id_to_volume[reagent_type] || c_id_to_volume[reagent_type] < recipe.required_reagents[reagent_type]) //if our container doesn't have what is required, then lets fuck off.
-				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too few reagents of [reagent_type].")
+				if(debug) log_debug("Recipe [recipe.name] invalid because of too few reagents of [reagent_type].")
 				good_recipe = FALSE
 				break
 
 			if(recipe.required_temperature_min[reagent_type] && c_id_to_temperature[reagent_type] < recipe.required_temperature_min[reagent_type])
-				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too low temperature of [reagent_type].")
+				if(debug) log_debug("Recipe [recipe.name] invalid because of too low temperature of [reagent_type].")
 				good_recipe = FALSE
 				break
 
 			if(recipe.required_temperature_max[reagent_type] && c_id_to_temperature[reagent_type] > recipe.required_temperature_max[reagent_type])
-				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too high temperature of [reagent_type].")
+				if(debug) log_debug("Recipe [recipe.name] invalid because of too high temperature of [reagent_type].")
 				good_recipe = FALSE
 				break
 

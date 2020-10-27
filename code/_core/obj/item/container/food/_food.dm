@@ -15,9 +15,9 @@
 
 	var/original_volume = 0 //For cooking and stuff.
 
-	value = 10
-
 	drop_sound = 'sound/items/drop/food.ogg'
+
+	value = 0
 
 /obj/item/container/food/save_item_data(var/save_inventory = TRUE)
 	. = ..()

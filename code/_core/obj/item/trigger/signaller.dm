@@ -18,6 +18,8 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 	var/mode = FALSE
 
+	value = 20
+
 /obj/item/device/signaller/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("frequency")

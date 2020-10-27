@@ -14,7 +14,9 @@
 
 	var/enemies_to_spawn_base = 4
 	var/enemies_to_spawn_per_player = 1
-	var/enemies_to_spawn_per_minute = 0.34
+	var/enemies_to_spawn_per_minute = 0.1
+
+	var/next_spawn_check = 0
 
 /gamemode/horde/update_objectives()
 
@@ -61,27 +63,28 @@
 
 	var/player_count = length(all_clients)
 
-	LOG_DEBUG("Current player count: [player_count].")
+	log_debug("Current player count: [player_count].")
 
 	//Base Objectives.
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+	add_objective(/objective/kill_ghost)
 
 	if(player_count >= 10)
 		add_objective(/objective/hostage)
-		LOG_DEBUG("Adding player count 10 objectives.")
+		log_debug("Adding player count 10 objectives.")
 
 	if(player_count >= 20)
 		add_objective(/objective/kill_boss)
-		LOG_DEBUG("Adding player count 20 objectives.")
+		log_debug("Adding player count 20 objectives.")
 
 	if(player_count >= 30)
 		add_objective(/objective/kill_boss)
-		LOG_DEBUG("Adding player count 30 objectives.")
+		log_debug("Adding player count 30 objectives.")
 
 	if(player_count >= 40)
 		add_objective(/objective/kill_boss)
-		LOG_DEBUG("Adding player count 40 objectives.")
+		log_debug("Adding player count 40 objectives.")
 
 	next_objective_update = world.time + 100
 
@@ -95,9 +98,12 @@
 	else
 		add_objective(/objective/artifact)
 
+	points += 20
+
 	return ..()
 
 /gamemode/horde/on_life()
+
 	switch(state)
 		if(GAMEMODE_WAITING)
 			on_waiting()
@@ -108,6 +114,7 @@
 		if(GAMEMODE_LAUNCHING)
 			on_launching()
 		if(GAMEMODE_FIGHTING)
+			points -= FLOOR(1/60,0.01)
 			on_fighting()
 
 	return ..()
@@ -121,7 +128,7 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Prepare for Landfall","All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 8 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_8_minutes.ogg')
 	add_objectives()
 	return TRUE
 
@@ -134,7 +141,7 @@
 	state = GAMEMODE_BOARDING
 	round_time = 0
 	round_time_next = HORDE_DELAY_BOARDING
-	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_2_minutes.ogg')
 	return TRUE
 
 /gamemode/horde/proc/on_boarding()
@@ -146,7 +153,7 @@
 	state = GAMEMODE_LAUNCHING
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
-	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	allow_launch = TRUE
 	return TRUE
 
@@ -158,7 +165,6 @@
 		return TRUE
 	state = GAMEMODE_FIGHTING
 	round_time = 0
-	announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	return TRUE
 
 /gamemode/horde/proc/get_enemy_types_to_spawn()
@@ -166,7 +172,16 @@
 
 /gamemode/horde/proc/on_fighting()
 
-	var/wave_to_spawn = get_enemies_to_spawn()
+	if(next_spawn_check > world.time)
+		return TRUE
+
+	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(60)
+
+	handle_alert_level()
+
+	var/wave_to_spawn = get_enemies_to_spawn() - length(tracked_enemies)
+
+	log_debug("Trying to spawn [wave_to_spawn] enemies.")
 
 	if(wave_to_spawn < 4)
 		return TRUE
@@ -209,10 +224,16 @@
 	total_killed_enemies++
 	tracked_enemies -= L
 
+	points += 0.1
+
 	return TRUE
 
 /gamemode/horde/proc/get_enemies_to_spawn()
-	return CEILING(clamp(enemies_to_spawn_base + length(all_players)*enemies_to_spawn_per_player + FLOOR(DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute),1),0,40),4) - length(tracked_enemies) //One additional enemy every 3 minutes.
+	. = enemies_to_spawn_base
+	. += length(all_players)*enemies_to_spawn_per_player
+	. += DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute)
+	. = max( min(40,length(all_players)*enemies_to_spawn_per_player*2) )
+	return FLOOR(.,1)
 
 /gamemode/horde/proc/find_horde_target()
 
@@ -231,7 +252,6 @@
 
 	return null
 
-
 /gamemode/horde/proc/find_horde_spawn()
 
 	var/picks_remaining = 3
@@ -240,15 +260,14 @@
 		picks_remaining--
 		CHECK_TICK(50,FPS_SERVER*20)
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
-		if(chosen_spawn.z < Z_LEVEL_MISSION) continue
 		var/found_player = FALSE
 		for(var/k in all_players)
 			CHECK_TICK(50,FPS_SERVER*20)
 			var/mob/living/advanced/player/P = k
-			if(P && !P.dead) continue
-			if(get_dist(P,chosen_spawn) <= VIEW_RANGE + ZOOM_RANGE)
-				found_player = TRUE
-				break
+			if(P && P.dead) continue //They're dead. Doesn't matter.
+			if(get_dist(P,chosen_spawn) > VIEW_RANGE + ZOOM_RANGE) continue //They're close, doesn't matter.
+			found_player = TRUE
+			break
 		if(found_player)
 			continue
 		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))

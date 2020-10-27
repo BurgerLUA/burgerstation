@@ -16,9 +16,8 @@
 
 	view_punch = 10
 
-	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
-
 	size = SIZE_2
+	weight = 4
 
 	heat_per_shot = 0.02
 	heat_max = 0.12
@@ -63,8 +62,8 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_static_spread()
 	return 0.001
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_skill_spread(var/mob/living/L)
 	return max(0,0.015 - (0.03 * L.get_skill_power(SKILL_RANGED)))

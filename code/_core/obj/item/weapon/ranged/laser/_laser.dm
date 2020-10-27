@@ -7,11 +7,11 @@
 
 	var/obj/item/powercell/battery = /obj/item/powercell/
 
-/obj/item/weapon/ranged/energy/calculate_value()
+/obj/item/weapon/ranged/energy/get_value()
 
 	. = ..()
 
-	if(battery) . += battery.calculate_value()
+	if(battery) . += battery.get_value()
 
 	return .
 

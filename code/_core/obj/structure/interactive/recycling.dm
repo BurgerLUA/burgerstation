@@ -9,9 +9,11 @@
 
 	var/list/stored_material = list()
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	bullet_block_chance = 50
+
+	density = TRUE
 
 /obj/structure/interactive/recycler/New(var/desired_loc)
 
@@ -33,7 +35,7 @@
 	placing_turf = get_step(src,EAST)
 	return ..()
 
-/obj/structure/interactive/recycler/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/recycler/Crossed(atom/movable/O)
 	recycle(O)
 	return ..()
 

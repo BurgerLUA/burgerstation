@@ -10,6 +10,8 @@
 
 	value = 60
 
+	weight = 1
+
 /obj/item/soulgem/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("total_charge")
@@ -25,7 +27,7 @@
 	update_sprite()
 	return .
 
-/obj/item/soulgem/calculate_value()
+/obj/item/soulgem/get_value()
 
 	. = ..()
 

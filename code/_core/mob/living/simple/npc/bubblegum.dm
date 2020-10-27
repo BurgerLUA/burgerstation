@@ -14,7 +14,7 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 8000
+	health_base = 2500
 
 	move_delay = DECISECONDS_TO_TICKS(2)
 
@@ -121,19 +121,17 @@
 
 	return ..()
 
-/mob/living/simple/npc/bubblegum/Bump(var/atom/obstacle,var/Dir=0)
+/mob/living/simple/npc/bubblegum/Bump(atom/Obstacle)
 
-	if(charge_steps && is_living(obstacle))
+	if(charge_steps && Obstacle.health)
 		var/damagetype/DT = all_damage_types[/damagetype/npc/bubblegum]
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
-		DT.hit(src,obstacle,src,object_to_damage,src,1)
-		return TRUE
+		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
+		DT.hit(src,Obstacle,src,object_to_damage,src,1)
 
 	return ..()
-
 
 /mob/living/simple/npc/bubblegum/proc/start_charge()
 	charge_dir = dir

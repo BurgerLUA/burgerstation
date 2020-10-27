@@ -24,7 +24,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/broadcasting_range = VIEW_RANGE
 
-	value = 5
+	value = 20
 
 /obj/item/device/radio/save_item_data(var/save_inventory = TRUE)
 	. = ..()

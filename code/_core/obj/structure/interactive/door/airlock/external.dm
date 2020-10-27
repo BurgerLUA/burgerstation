@@ -7,8 +7,10 @@ obj/structure/interactive/door/airlock/external
 
 obj/structure/interactive/door/airlock/external/glass
 	filler = "glass"
-
-
+	fill_color = "#FFFFFF"
 
 obj/structure/interactive/door/airlock/external/glass/bolted
 	locked = TRUE
+
+obj/structure/interactive/door/airlock/external/glass/iron
+	color = COLOR_IRON

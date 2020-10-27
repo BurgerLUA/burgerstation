@@ -30,5 +30,5 @@
 	bullet_color = COLOR_BULLET
 
 
-/obj/item/weapon/ranged/energy/syndicate_turret/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/syndicate_turret/get_static_spread()
 	return 0.005

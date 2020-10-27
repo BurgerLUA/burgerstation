@@ -1,9 +1,12 @@
 /obj/item/trash
 	name = "trash"
 	icon = 'icons/obj/item/trash.dmi'
+	value = 1
 
-/obj/item/trash/rasins
-	icon_state = "rasins"
+	weight = 0.25
+
+/obj/item/trash/raisins
+	icon_state = "raisins"
 
 /obj/item/trash/candy
 	icon_state = "candy"

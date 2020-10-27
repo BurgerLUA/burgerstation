@@ -17,6 +17,8 @@
 
 	health_base = 1000
 
+	density = TRUE
+
 /obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
 	. = ..()
@@ -45,14 +47,9 @@
 
 	return ..()
 
-/obj/structure/interactive/mining_drill/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
-
-	. = ..()
-
-	if(.)
-		drill_depth = 0
-		found_deposit = null
-
+/obj/structure/interactive/mining_drill/post_move()
+	drill_depth = 0
+	found_deposit = null
 	return .
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
@@ -125,6 +122,8 @@
 	health = /health/construction
 
 	health_base = 500
+
+	density = TRUE
 
 /obj/structure/interactive/mining_brace/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)

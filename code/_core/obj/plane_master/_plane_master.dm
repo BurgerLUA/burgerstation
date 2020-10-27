@@ -1,8 +1,9 @@
 /obj/plane_master/
 	name = "plane master"
 	plane = 0
-	screen_loc = "1,1"
+	screen_loc = "CENTER" //Stolen from /tg/
 	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE
+	blend_mode = BLEND_OVERLAY
 
 /*
 /obj/plane_master/render_target
@@ -10,9 +11,23 @@
 	plane = 0
 */
 
+
+/obj/plane_master/floor
+	plane = PLANE_FLOOR
+
+/obj/plane_master/floor/New(var/desired_loc)
+	. = ..()
+	/*
+	var/matrix/M = matrix()
+	M.Scale(0.9,0.9)
+	filters += filter(type="layer",render_source="plane_walls",transform=M)
+	*/
+	return .
+
 //WALLS
 /obj/plane_master/walls
 	plane = PLANE_WALL
+	//render_target = "plane_walls"
 
 /obj/plane_master/walls/New(var/desired_loc)
 	. = ..()
@@ -33,7 +48,7 @@
 //DARKNESS
 /obj/plane_master/darkness
 	plane = PLANE_DARKNESS
-	mouse_opacity = 1
+	mouse_opacity = 0
 	blend_mode = BLEND_MULTIPLY
 
 /obj/plane_master/darkness/New(var/desired_loc)
@@ -74,11 +89,12 @@
 
 //Lighting
 /obj/plane_master/lighting
+	name = "plane master"
 	plane = PLANE_LIGHTING
-	mouse_opacity = 0
 
+/*
 /obj/plane_master/lighting/New(var/desired_loc)
 	. = ..()
-	//var/icon/I = new/icon('icons/test.dmi',"reverse")
-	//filters += filter(type="alpha",icon = I)
+	filters += filter(type="layer",render_source="plane_lighting",blend_mode=BLEND_INSET_OVERLAY)
 	return .
+*/

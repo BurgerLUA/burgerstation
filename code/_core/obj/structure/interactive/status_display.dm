@@ -22,7 +22,7 @@ var/global/list/global_status_displays = list()
 
 	maptext_y = -2
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 /obj/structure/interactive/status_display/shuttle
 	name = "shuttle status display"
@@ -97,3 +97,9 @@ var/global/list/global_status_displays = list()
 	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of Nanotrasen's mission."
 	frame_color = "#E5C14B"
 	status_id = "mission"
+
+/obj/structure/interactive/status_display/global_display/lz420_elevator
+	name = "elevator status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Elevator."
+	status_id = "lz420_elevator"

@@ -3,7 +3,7 @@
 	anchored      = TRUE
 	icon          = LIGHTING_ICON
 	icon_state    = LIGHTING_BASE_ICON_STATE
-	color         = LIGHTING_BASE_MATRIX
+	color         = null
 	mouse_opacity = 0
 	layer         = LAYER_LIGHTING
 	plane         = PLANE_LIGHTING
@@ -26,6 +26,10 @@
 
 	needs_update = TRUE
 	SSlighting.overlay_queue += src
+
+	color = LIGHTING_BASE_MATRIX
+
+	return ..()
 
 /atom/movable/lighting_overlay/Destroy()
 
@@ -89,9 +93,6 @@
 	else if (max < LIGHTING_SOFT_THRESHOLD)
 		icon_state = LIGHTING_DARKNESS_ICON_STATE
 		color = null
-	else if (rr == LIGHTING_DEFAULT_TUBE_R && rg == LIGHTING_DEFAULT_TUBE_G && rb == LIGHTING_DEFAULT_TUBE_B && ALL_EQUAL)
-		icon_state = LIGHTING_STATION_ICON_STATE
-		color = null
 	else
 		icon_state = LIGHTING_BASE_ICON_STATE
 		if (islist(color))
@@ -117,5 +118,12 @@
 				ar, ag, ab, 0,
 				0, 0, 0, 1
 			)
+
+	if(max > LIGHTING_SOFT_THRESHOLD)
+		luminosity = 1
+		T.darkness = max //set the turf's darkness when calculated
+	else
+		luminosity = 0
+		T.darkness = 0
 
 #undef ALL_EQUAL

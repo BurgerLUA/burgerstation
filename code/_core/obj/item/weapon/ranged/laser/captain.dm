@@ -25,6 +25,7 @@
 	heat_max = 0.2
 
 	size = SIZE_3
+	weight = 10
 
 	value = 2000
 
@@ -42,8 +43,8 @@
 	return .
 
 
-/obj/item/weapon/ranged/energy/captain/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/captain/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/captain/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/captain/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

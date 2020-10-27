@@ -11,3 +11,5 @@
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
 	plane = PLANE_WALL
+
+	density = TRUE

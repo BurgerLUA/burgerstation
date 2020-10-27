@@ -24,13 +24,6 @@
 
 	var/map_spawn = FALSE
 
-/mob/living/advanced/npc/rev/Bump(var/atom/Obstacle)
-
-	if(istype(src,Obstacle) || istype(Obstacle,src))
-		return TRUE
-
-	return ..()
-
 /mob/living/advanced/npc/rev/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)

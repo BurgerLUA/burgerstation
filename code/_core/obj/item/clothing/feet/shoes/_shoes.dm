@@ -7,8 +7,8 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_SHOES
 
-	slowdown_mul_worn = 1
 
-	blocks_clothing = SLOT_FOOT_RIGHT_U
+
+	blocks_clothing = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U
 
 	drop_sound = 'sound/items/drop/boots.ogg'

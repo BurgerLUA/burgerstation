@@ -323,7 +323,6 @@
 		update = TRUE
 
 	if (!light_range || !light_power)
-		log_error("!light_range || !light_power: lighting object has neither.")
 		update = TRUE
 
 	if (isturf(top_atom))

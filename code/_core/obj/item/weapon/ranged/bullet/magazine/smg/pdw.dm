@@ -27,6 +27,7 @@
 	bullet_diameter_max = 5
 
 	size = SIZE_3
+	weight = 6
 
 	value = 110
 
@@ -64,10 +65,10 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 

@@ -320,14 +320,17 @@
 
 /proc/is_assoc_list(var/list/L) //Credit to SpaceManiac for providing this
 
-	if(!islist(L))
+	try
+		if(!islist(L) || !length(L))
+			return FALSE
+
+		for(var/k in L)
+			if(!isnum(k) && !isnull(L["[k]"]))
+				return TRUE
+
 		return FALSE
-
-	for(var/k in L)
-		if (!isnum(k) && !isnull(L["[k]"]))
-			return TRUE
-
-	return FALSE
+	catch()
+		return FALSE
 
 /proc/make_associative(var/list/flat_list)
 	. = list()

@@ -16,6 +16,8 @@
 
 	value = 110
 
+	weight = 8
+
 /obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -101,11 +103,11 @@
 
 	throwable = FALSE
 
-	value = 10
-
 	size = 99
 
 	size = SIZE_6
+
+	weight = 2
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

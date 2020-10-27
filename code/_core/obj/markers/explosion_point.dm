@@ -1,0 +1,1 @@
+/obj/marker/explosion_point

@@ -57,7 +57,7 @@
 
 	return .
 
-/mob/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
+/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	var/atom/old_loc = loc
 
@@ -72,8 +72,8 @@
 			if(3)
 				on_sprint()
 
-	if(loc != old_loc)
-		post_move(old_loc)
+		if(loc != old_loc)
+			post_move(old_loc)
 
 	return .
 
@@ -93,7 +93,6 @@
 		var/obj/parallax/P = parallax[k]
 		var/desired_x = FLOOR(-(T.x - (WORLD_SIZE*0.5)) * P.ratio,1)
 		var/desired_y = FLOOR(-(T.y - (WORLD_SIZE*0.5)) * P.ratio,1)
-
 		P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
 
 	. = ..()

@@ -1,6 +1,7 @@
 /obj/item/storage/glovebox/
 	name = "white glovebox"
 	desc = "Contains a matching pair of gloves."
+	icon = 'icons/obj/item/storage/boxes.dmi'
 	icon_state = "glovebox"
 
 	size = 2

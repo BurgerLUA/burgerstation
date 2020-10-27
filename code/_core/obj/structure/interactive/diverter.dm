@@ -14,6 +14,8 @@
 
 	var/list/atom/movable/tracked_movables = list()
 
+	density = TRUE
+
 /obj/structure/interactive/diverter/Initialize()
 
 	if(.)
@@ -42,14 +44,14 @@
 			continue
 		var/atom/movable/M = k
 		if(!M.anchored && !M.grabbing_hand && should_push(M) && M.loc == src.loc)
-			M.Move(get_step(src,dir),silent = TRUE)
+			M.Move(get_step(src,dir))
 		tracked_movables -= k
 
 	think_timer--
 
 	return think_timer
 
-/obj/structure/interactive/diverter/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/diverter/Crossed(atom/movable/O)
 
 	tracked_movables[O] = world.time + 4
 
@@ -69,7 +71,7 @@
 /obj/structure/interactive/diverter/high_value/should_push(var/atom/movable/M)
 	if(is_item(M))
 		var/obj/item/I = M
-		return I.calculate_value() >= value_threshold
+		return I.get_value() >= value_threshold
 
 	return FALSE
 

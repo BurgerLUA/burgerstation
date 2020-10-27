@@ -5,6 +5,8 @@
 	icon = 'icons/obj/structure/scanner.dmi'
 	icon_state = "pad"
 
+	density = TRUE
+
 /obj/structure/interactive/scanner/iff
 	name = "\improper IFF body scanner"
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
@@ -44,7 +46,7 @@
 	desc_extended = "A general proximity scanner that detects whether or not a person is present in the tile."
 	icon_state = "door"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 /obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 

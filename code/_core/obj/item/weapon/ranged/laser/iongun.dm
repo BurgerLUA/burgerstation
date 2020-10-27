@@ -27,6 +27,7 @@
 	heat_max = 0.06
 
 	size = SIZE_4
+	weight = 18
 
 	value = 2000
 
@@ -34,10 +35,10 @@
 
 	can_wield = TRUE
 
-/obj/item/weapon/ranged/energy/iongun/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/iongun/get_static_spread()
 	return 0.001
 
-/obj/item/weapon/ranged/energy/iongun/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/iongun/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/iongun/update_icon()

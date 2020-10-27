@@ -17,9 +17,10 @@
 
 	view_punch = 6
 
-	slowdown_mul_held = HELD_SLOWDOWN_SMG
+
 
 	size = SIZE_3
+	weight = 8
 
 	heat_per_shot = 0.03
 	heat_max = 0.05
@@ -75,9 +76,9 @@
 
 	..()
 
-/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_static_spread()
 	return 0.02
 
-/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return 0.02 - (0.04 * L.get_skill_power(SKILL_RANGED))

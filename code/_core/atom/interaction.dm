@@ -94,7 +94,7 @@
 		return FALSE
 
 	if(!(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(src,caller) > interact_distance)
-		if(enable_message) caller.to_chat(span("warning","You're too far away to interact with \the [src.name]!"))
+		//if(enable_message) caller.to_chat(span("warning","You're too far away to interact with \the [src.name]!")) THIS WAS ANNOYING
 		return FALSE
 
 	return .

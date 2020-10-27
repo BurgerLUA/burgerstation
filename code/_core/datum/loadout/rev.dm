@@ -11,19 +11,6 @@
 		/obj/item/magazine/pistol_10mm
 	)
 
-/loadout/rev/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
-
-	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
-		var/obj/item/weapon/ranged/bullet/magazine/M = I
-		if(SSweapons.weapon_to_magazine[M.type])
-			M.stored_magazine = pick(SSweapons.weapon_to_magazine[M.type])
-
-	return ..()
-
 /loadout/rev/olution
 	spawning_items = list(
 		/obj/item/clothing/pants/normal/grey,
@@ -43,19 +30,6 @@
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short
 	)
-
-/loadout/rev/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-
-	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
-		var/obj/item/weapon/ranged/bullet/magazine/M = I
-		if(SSweapons.weapon_to_magazine[M.type])
-			M.stored_magazine = pick(SSweapons.weapon_to_magazine[M.type])
-
-	return ..()
 
 /loadout/rev/medium_heavy
 	spawning_items = list(
@@ -173,7 +147,7 @@
 		/obj/item/clothing/glasses/sun,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/mining,
 		/obj/item/clothing/neck/mantle/white,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
@@ -184,6 +158,6 @@
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/storage/kit/ai3/filled
-
+		/obj/item/storage/kit/ai3/filled,
+		/obj/item/currency/telecrystals/player_antagonist_spawn
 	)

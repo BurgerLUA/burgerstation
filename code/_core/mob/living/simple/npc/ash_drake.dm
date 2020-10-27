@@ -14,7 +14,7 @@
 
 	stun_angle = 0
 
-	health_base = 2000
+	health_base = 2500
 
 	var/boss_state = 0
 	//0 = walking

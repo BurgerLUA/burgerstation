@@ -11,7 +11,7 @@
 
 	stun_angle = 0
 
-	health_base = 100
+	health_base = 75
 
 	value = 100
 

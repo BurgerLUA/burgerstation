@@ -54,29 +54,38 @@
 		var/obj/item/organ/O = A
 		O.bleeding = 0
 
-	. = FALSE
+	var/heal_multiplier = 1
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		heal_multiplier += L.get_skill_power(SKILL_MEDICINE)
+
+	. = 0
 
 	if(heal_brute)
-		A.health.adjust_brute_loss(-heal_brute)
-		. = TRUE
+		. += A.health.adjust_brute_loss(-heal_brute*heal_multiplier)
 
 	if(heal_brute_percent)
-		A.health.adjust_brute_loss(-heal_brute_percent*A.health.get_brute_loss())
-		. = TRUE
+		. += A.health.adjust_brute_loss(-heal_brute_percent*A.health.get_brute_loss()*heal_multiplier)
 
 	if(heal_burn)
-		A.health.adjust_burn_loss(-heal_burn)
-		. = TRUE
+		. += A.health.adjust_burn_loss(-heal_burn*heal_multiplier)
 
 	if(heal_burn_percent)
-		A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss())
-		. = TRUE
+		. += A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss()*heal_multiplier)
 
 	if(.)
 		if(is_organ(A) && is_living(A.loc))
 			var/mob/living/L = A.loc
 			A.health.update_health()
 			L.queue_health_update = TRUE
+			if(is_player(caller))
+				var/mob/living/advanced/player/P = caller
+				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit.
+					var/experience_gain = -.
+					if(P == A.loc)
+						experience_gain *= 0.15
+					P.add_skill_xp(SKILL_MEDICINE,experience_gain)
 		else
 			A.health.update_health()
 
@@ -90,7 +99,6 @@
 		caller.visible_message("\The [caller.name] bandages \the [A.loc.name]'s [A.name].")
 
 	add_item_count(-1)
-
 
 	return TRUE
 

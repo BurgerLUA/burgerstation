@@ -42,7 +42,7 @@
 	return ..()
 
 /obj/item/container/beaker/can/grape_soda/
-	name = "\improper Starkist Orange Soda"
+	name = "\improper Starkist Grape Soda"
 	icon_state = "grape_soda"
 
 /obj/item/container/beaker/can/grape_soda/Generate()

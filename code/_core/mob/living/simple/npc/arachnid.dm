@@ -31,10 +31,10 @@
 		ION = INFINITY
 	)
 
-	iff_tag = "jungle"
-	loyalty_tag = "jungle"
+	iff_tag = "Jungle"
+	loyalty_tag = "Jungle"
 
-	health_base = 1000
+	health_base = 500
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

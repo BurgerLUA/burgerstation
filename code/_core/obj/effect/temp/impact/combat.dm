@@ -3,6 +3,7 @@ obj/effect/temp/impact/combat
 	icon = 'icons/obj/effects/combat.dmi'
 	duration = 3
 	mouse_opacity = 0
+	plane = PLANE_EFFECT
 
 obj/effect/temp/impact/combat/New(var/desired_loc,var/desired_pixel_x,var/desired_pixel_y)
 	. = ..()

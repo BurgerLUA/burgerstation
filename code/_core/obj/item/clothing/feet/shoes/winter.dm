@@ -29,7 +29,7 @@
 
 	value = 70
 
-	slowdown_mul_worn = 1.05
+
 
 /obj/item/clothing/feet/shoes/winter/left
 	name = "left winter boot"
@@ -38,7 +38,7 @@
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT_U
+	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 	protection_cold = list(
 		BODY_FOOT_LEFT = 3,

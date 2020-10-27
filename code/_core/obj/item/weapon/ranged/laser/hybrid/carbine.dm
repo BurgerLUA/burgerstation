@@ -32,6 +32,7 @@
 	heat_max = 0.2
 
 	size = SIZE_3
+	weight = 14
 
 	value = 600
 
@@ -62,8 +63,8 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/energy/hybrid/carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/hybrid/carbine/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/energy/hybrid/carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/hybrid/carbine/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.08 * L.get_skill_power(SKILL_RANGED)))

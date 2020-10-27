@@ -7,7 +7,4 @@
 
 	size = SIZE_3
 
-
-	value = 5
-
 	blocks_clothing = SLOT_TORSO_U

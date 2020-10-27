@@ -36,7 +36,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 	return ..()
 
-/obj/effect/temp/hazard/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/effect/temp/hazard/Crossed(atom/movable/O)
 	if(enabled && cross_hazard && is_living(O))
 		do_damage(O)
 	return ..()
@@ -109,7 +109,7 @@ obj/effect/temp/hazard/tentacle/
 	damage_type = /damagetype/npc/goliath_tentacle
 	cross_hazard = TRUE
 
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_EFFECTS
 
 obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/desired_owner)
 	. = ..()
@@ -133,7 +133,7 @@ obj/effect/temp/hazard/bubblefist/
 	damage_type = /damagetype/npc/goliath_tentacle
 	cross_hazard = TRUE
 
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_EFFECTS
 
 	plane = PLANE_MOB - 1
 

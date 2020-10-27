@@ -12,7 +12,6 @@
 
 	pixel_y = 4
 
-
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -134,7 +133,7 @@
 		SC.lock()
 		SC.owner_name = "[found_data["Requisitioner's Name"]]"
 		SC.name = "secure cargo crate ([SC.owner_name] [found_data["Item ID"]])"
-		SC.credits_required = SC.calculate_value()
+		SC.credits_required = SC.get_value()
 		SC.force_move(SC.loc)
 
 	return ..()

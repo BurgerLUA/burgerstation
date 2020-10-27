@@ -36,7 +36,7 @@
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
 			owner.move_dir = 0x0
-	else
+	else if(beepsky_marker)
 		if(owner.loc != beepsky_marker.loc)
 			owner.move_dir = get_dir(owner,beepsky_marker)
 		else

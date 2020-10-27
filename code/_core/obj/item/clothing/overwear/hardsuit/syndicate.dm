@@ -23,9 +23,7 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie)
 
-	slowdown_mul_worn = 1.2
-
-	value = 120
+	value = 400
 
 /obj/item/clothing/overwear/hardsuit/syndie/advanced
 	name = "mauler hardsuit mk2"
@@ -52,9 +50,7 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced)
 
-	slowdown_mul_worn = 1.3
-
-	value = 180
+	value = 600
 
 /obj/item/clothing/overwear/hardsuit/syndie/elite
 	name = "mauler hardsuit mk3"
@@ -66,7 +62,7 @@
 	defense_rating = list(
 		BLADE = 50,
 		BLUNT = 50,
-		PIERCE = 50,
+		PIERCE = 75,
 		LASER = 75,
 		ARCANE = -50,
 		HEAT = 75,
@@ -80,6 +76,4 @@
 
 	size = SIZE_6
 
-	slowdown_mul_worn = 1 //Having the helmet on makes it go faster.
-
-	value = 360
+	value = 1200

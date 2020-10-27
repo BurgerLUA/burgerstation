@@ -32,7 +32,7 @@
 			continue
 		valid_areas += A
 
-	LOG_DEBUG("Found [length(valid_turfs)] valid turfs for carp event.")
+	log_debug("Found [length(valid_turfs)] valid turfs for carp event.")
 
 	return ..()
 
@@ -40,7 +40,7 @@
 
 	valid_turfs.Cut()
 
-	LOG_DEBUG("Starting Carp Event")
+	log_debug("Starting Carp Event")
 
 	var/list/announce_areas = list()
 
@@ -81,5 +81,5 @@
 	return ..()
 
 /event/supply/on_end()
-	LOG_DEBUG("Ending Supply Event")
+	log_debug("Ending Supply Event")
 	return ..()

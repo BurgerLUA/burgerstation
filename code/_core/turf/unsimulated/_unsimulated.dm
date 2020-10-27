@@ -11,6 +11,8 @@
 	density_down  = TRUE
 	allow_bullet_pass = FALSE
 
+	collision_flags = FLAG_COLLISION_UNSIMULATED
+
 
 /turf/unsimulated/bluespace
 	name = "bluespace"

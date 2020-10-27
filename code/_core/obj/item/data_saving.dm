@@ -17,7 +17,7 @@
 		if(IB.color) .[id]["color"] = IB.color
 		if(IB.blend) .[id]["blend"] = IB.blend
 		if(IB.special_type) .[id]["special_type"] = IB.special_type
-		if(IB.layer) .[id]["layer"] = IB.layer
+		//if(IB.layer) .[id]["layer"] = IB.layer Should not be saved because of the use of FLOAT_PLANE
 
 	return .
 
@@ -32,8 +32,8 @@
 		var/desired_color = value_or_null(blend_list,"color")
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
-		var/desired_layer = value_or_null(blend_list,"layer")
-		src.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
+		//var/desired_layer = value_or_null(blend_list,"layer")
+		src.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE)
 
 	return TRUE
 
@@ -134,11 +134,11 @@
 	. = ..()
 
 	if(object_data["blend_data"])
-		LOG_DEBUG("Blend data for [src.type]:")
+		log_debug("Blend data for [src.type]:")
 		debug_list(object_data["blend_data"])
 		set_blend_data(object_data["blend_data"])
 	else
-		LOG_DEBUG("No blend data found for: [src.type].")
+		log_debug("No blend data found for: [src.type].")
 
 	return .
 

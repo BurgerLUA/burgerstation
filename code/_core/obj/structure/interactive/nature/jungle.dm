@@ -2,8 +2,7 @@ obj/structure/scenery/jungle_grass
 	name = "jungle grass"
 	icon = 'icons/obj/structure/flora/jungleflora.dmi'
 	icon_state = "grassa1"
-	layer = LAYER_GROUND_SCENERY
-	plane = PLANE_FLOOR_OBJECTS
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/jungle_grass/New()
 	..()
@@ -17,8 +16,8 @@ obj/structure/scenery/jungle_rock
 	name = "jungle grass"
 	icon = 'icons/obj/structure/flora/jungleflora.dmi'
 	icon_state = "rock1"
-	layer = LAYER_GROUND_SCENERY
-	plane = PLANE_FLOOR_OBJECTS
+	layer = LAYER_FLOOR_SCENERY
+	plane = PLANE_FLOOR
 
 obj/structure/scenery/jungle_rock/New()
 	..()

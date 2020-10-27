@@ -6,22 +6,28 @@
 
 	footstep = /footstep/lava
 
-	plane = PLANE_WATER
+	plane = PLANE_FLOOR
 
 	desired_light_frequency = 2
 	desired_light_power = 0.5
 	desired_light_range = 8
 	desired_light_color = "#CE631C"
 
-/turf/simulated/hazard/lava/Crossed(var/atom/movable/M)
-	if(is_living(M))
-		lava_idiot(M)
+/turf/simulated/hazard/lava/Enter(atom/movable/O,atom/oldloc)
+	if(is_living(O)) lava_idiot(O)
 	return ..()
 
-/turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)
 
-	if(L.loc != src)
-		return FALSE
+/turf/simulated/hazard/lava/Exit(atom/movable/O,atom/newloc)
+
+	if(is_living(O) && !istype(src,newloc))
+		CALLBACK_REMOVE("lava_\ref[O]")
+
+	return ..()
+
+
+
+/turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)
 
 	if(length(L.status_immune) && L.status_immune[FIRE])
 		return FALSE

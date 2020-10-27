@@ -6,6 +6,3 @@
 	item_slot = SLOT_TORSO_U
 
 	protected_limbs = list(BODY_TORSO)
-
-	value = 5
-

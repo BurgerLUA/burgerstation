@@ -84,10 +84,24 @@ var/global/world_state = STATE_STARTING
 	Reboot(0)
 	return TRUE
 
+/proc/save_all_globals()
+	for(var/k in all_clients)
+		var/client/C = CLIENT(k)
+		if(!C)
+			log_error("FATAL ERROR: COULD NOT SAVE THE GLOBALS OF CKEY [k] AS THEY HAD A CKEY ISSUE.")
+			continue
+		var/savedata/client/globals/G = GLOBALDATA(k)
+		if(!G)
+			log_error("FATAL ERROR: COULD NOT SAVE THE GLOBALS OF CKEY [k] AS THEY DID NOT HAVE A GLOBAL ASSIGNED.")
+			continue
+		G.save()
+
 /world/proc/save()
 	var/chosen_sound = pick(SSsound.round_end_sounds)
 	play(chosen_sound,all_mobs_with_clients)
+	save_all_globals()
 	save_all_mechs()
+	save_all_globals()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		if(P.dead)

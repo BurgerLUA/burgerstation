@@ -22,14 +22,15 @@
 		COLD = 100,
 		BOMB = 25,
 		BIO = 25,
-		RAD = 75
+		RAD = 75,
+		FATIGUE = 50
 	)
 
 	size = SIZE_2
 
 	value = 300
 
-	slowdown_mul_worn = 1.05
+
 
 /obj/item/clothing/feet/shoes/engineering/left
 	name = "left engineering boot"
@@ -38,5 +39,5 @@
 
 	item_slot = SLOT_FOOT_LEFT_O
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT_U
+	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 

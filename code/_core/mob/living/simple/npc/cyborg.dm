@@ -33,11 +33,12 @@
 
 	damage_type = "squats_punch"
 
+	health = /health/mob/living/simple/npc/squats/
 	class = /class/squats
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = 2
 
-	health_base = 500
+	health_base = 300
 
 	sprint_delay_mul = 1
 	jog_delay_mul = 3
@@ -70,58 +71,18 @@
 	)
 
 /mob/living/simple/npc/silicon/squats/post_death()
-
 	. = ..()
 	icon_state = "squats-dead"
-	update_sprite()
 	return .
 
-
-/mob/living/simple/npc/silicon/squats/PostInitialize()
+/mob/living/simple/npc/silicon/squats/Finalize()
 	. = ..()
 	update_sprite()
 	return .
 
 /mob/living/simple/npc/silicon/squats/update_overlays()
-
-	if(!health || icon_state == "squats-roll" || icon_state == "squats-dead")
-		damage_received_multiplier = initial(damage_received_multiplier)
-		return ..()
-
-	var/image/I = new/image(icon,"squats-shield")
-	add_overlay(I)
-	damage_received_multiplier = 0.1
-
-	return ..()
-
-/mob/living/simple/npc/silicon/squats/on_sprint()
 	. = ..()
-
-	if(.)
-		if(icon_state != "squats-roll")
-			icon_state = "squats-roll"
-			update_sprite()
-
-	return .
-
-/mob/living/simple/npc/silicon/squats/on_jog()
-
-	. = ..()
-
-	if(.)
-		if(icon_state != "squats")
-			icon_state = "squats"
-			update_sprite()
-
-	return .
-
-/mob/living/simple/npc/silicon/squats/on_walk()
-
-	. = ..()
-
-	if(.)
-		if(icon_state != "squats")
-			icon_state = "squats"
-			update_sprite()
-
+	if(!dead && health && health.health_current >= health.health_max * 0.5)
+		var/icon/I = new/icon(initial(icon),"squats-shield")
+		add_overlay(I)
 	return .

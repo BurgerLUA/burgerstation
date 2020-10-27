@@ -23,6 +23,4 @@
 
 	additional_clothing = list()
 
-	slowdown_mul_worn = 1.05
-
 	value = 1700

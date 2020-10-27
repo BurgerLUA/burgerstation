@@ -16,7 +16,7 @@
 
 	view_punch = 20
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
+
 
 	size = SIZE_5
 
@@ -35,6 +35,7 @@
 	size = SIZE_4
 
 	value = 800
+	weight = 25
 
 	ai_heat_sensitivity = 0.1
 
@@ -72,9 +73,9 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_static_spread()
 	return 0.015
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))

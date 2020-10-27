@@ -18,9 +18,10 @@
 	view_punch = 12
 
 	size = SIZE_2
+	weight = 7
 
 
-	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 
 	bullet_length_min = 20
 	bullet_length_best = 33
@@ -69,8 +70,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
-/obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/revolver/traitor_357/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/revolver/traitor_357/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))

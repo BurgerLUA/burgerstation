@@ -7,10 +7,13 @@
 	var/active = TRUE
 	var/reversed = FALSE
 
-	layer = LAYER_GROUND_CONVERYOR
+	layer = LAYER_FLOOR_CONVEYOR
 
 	var/obj/structure/interactive/limiter/found_limiter
 	var/turf/move_turf
+
+	density = TRUE
+
 
 
 /obj/structure/interactive/conveyor/shuttle
@@ -24,7 +27,7 @@
 	icon_state = "conveyor_inverted"
 	reversed = TRUE
 
-/obj/structure/interactive/conveyor/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/conveyor/Crossed(atom/movable/O)
 	start_thinking(src)
 	return ..()
 
@@ -123,7 +126,7 @@
 					moved = TRUE
 					continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
-			M.Move(move_turf,silent=TRUE)
+			M.Move(move_turf)
 			M.next_conveyor = world.time + 8
 			conveyor_limit--
 			moved = TRUE

@@ -21,9 +21,7 @@
 	size = SIZE_7
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/seva)
-
-	slowdown_mul_worn = 1.1
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva)
 
 	value = 400
 
@@ -31,7 +29,7 @@
 /obj/item/clothing/overwear/hardsuit/seva/mono
 	name = "custom SEVA suit"
 	icon = 'icons/obj/item/clothing/suit/sevamono_suit.dmi'
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/seva/mono)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva/mono)
 
 	defense_rating = list(
 		BLADE = 50,

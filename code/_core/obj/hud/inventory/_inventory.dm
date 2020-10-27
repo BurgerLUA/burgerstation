@@ -383,6 +383,9 @@
 
 /obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
 
+	if(!I)
+		return FALSE
+
 	if(bypass_checks && held_slots <= 0)
 		return FALSE
 
@@ -405,7 +408,7 @@
 		if(should_add_held && is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			A.held_objects += I
-			A.update_slowdown_mul()
+			A.update_items(should_update_eyes = FALSE, should_update_protection = FALSE, should_update_clothes = FALSE)
 			update_held_icon(I)
 
 	update_stats()
@@ -414,12 +417,15 @@
 	update_overlays()
 
 	if(I.loc != src) //Something went wrong.
-		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord."))
+		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
 
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
+
+	if(!I)
+		return FALSE
 
 	if(bypass_checks && worn_slots <= 0)
 		return FALSE
@@ -431,6 +437,7 @@
 		return FALSE
 
 	if(I.qdeleting)
+		I.drop_item(null)
 		return FALSE
 
 	var/mob/living/advanced/A = owner
@@ -445,10 +452,7 @@
 		I.update_owner(A)
 		if(should_add_worn)
 			A.worn_objects += I
-			A.update_slowdown_mul()
-			A.update_protection()
-			A.update_eyes()
-			A.update_clothes()
+			A.update_items()
 			update_worn_icon(I)
 
 	update_stats()
@@ -457,7 +461,7 @@
 	update_overlays()
 
 	if(I.loc != src) //Something went wrong.
-		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord."))
+		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02."))
 		I.drop_item(get_turf(src))
 
 	return TRUE
@@ -534,6 +538,20 @@
 	delete_held_objects()
 	delete_worn_objects()
 
+/obj/hud/inventory/proc/get_weight()
+
+	. = 0
+
+	for(var/k in held_objects)
+		var/obj/item/I = k
+		. += I.get_weight()
+
+	for(var/k in worn_objects)
+		var/obj/item/I = k
+		. += I.get_weight()
+
+	return .
+
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0) //Removes the object from both worn and held objects, just in case.
 
 	var/was_worn = FALSE
@@ -580,11 +598,8 @@
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner
-				A.update_slowdown_mul()
-				A.update_protection()
-				A.update_eyes()
-				if(was_worn)
-					A.update_clothes()
+				A.update_items(should_update_eyes = was_worn, should_update_protection = was_worn, should_update_clothes = was_worn)
+
 
 	return I
 
@@ -726,10 +741,10 @@
 						if(messages)
 							owner.to_chat(span("notice","Beast races cannot wear this!"))
 						return FALSE
-			if(I.item_slot)
-				var/list/list_to_check = I.ignore_other_slots ? src.worn_objects : A.worn_objects
+			if(C.item_slot)
+				var/list/list_to_check = C.ignore_other_slots ? src.worn_objects : A.worn_objects
 				for(var/obj/item/clothing/C2 in list_to_check)
-					if(C2.blocks_clothing && (I.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
+					if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
 						if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
 						return FALSE
 

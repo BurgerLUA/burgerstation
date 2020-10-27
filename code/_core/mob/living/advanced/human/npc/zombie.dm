@@ -7,7 +7,6 @@
 
 	var/loadout_to_use = /loadout/zombie
 	health = /health/mob/living/advanced/zombie/
-	health_base = 300
 
 	movement_delay = DECISECONDS_TO_TICKS(5)
 
@@ -15,7 +14,8 @@
 
 	value = 250
 
-
+	loyalty_tag = "Zombie"
+	iff_tag = "Zombie"
 
 /mob/living/advanced/npc/zombie/post_death()
 	CALLBACK("zombie_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/zombie_revive)

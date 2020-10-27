@@ -24,6 +24,8 @@
 
 	plane = PLANE_WALL
 
+	density = TRUE
+
 /obj/structure/smooth/window/update_overlays()
 	. = ..()
 	if(health)

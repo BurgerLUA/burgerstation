@@ -45,6 +45,10 @@ SUBSYSTEM_DEF(events)
 	var/event_id = pickweight(all_events_prob)
 
 	var/event/E = all_events[event_id]
+	return trigger_event(E)
+
+/subsystem/events/proc/trigger_event(var/event/E)
+
 	if(E.active)
 		return FALSE
 
@@ -58,18 +62,18 @@ SUBSYSTEM_DEF(events)
 		E.active = TRUE
 		E.start_time = world.time
 		E.end_time = world.time + E.duration
-		E.occurances_current++
 		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900)) + E.duration
 	else
 		E.on_end()
 		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
+
+	E.occurances_current++
 
 	if(E.occurances_current >= E.occurances_max)
 		all_events -= E
 		all_events_prob -= E
 
 	return E
-
 
 
 

@@ -23,7 +23,11 @@
 
 	size = SIZE_2
 
+	icon_states = 21
 
-/obj/item/magazine/carbine_223/update_icon()
-	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*21,1)]"
-	..()
+	value = 10
+
+
+/obj/item/magazine/carbine_223/ap
+	name = "\improper .223 carbine AP magazine"
+	ammo = /obj/item/bullet_cartridge/rifle_223/ap

@@ -6,6 +6,10 @@
 	var/action_target
 
 /emote/proc/can_emote(var/atom/emoter,var/atom/target)
+	if(is_living(emoter))
+		var/mob/living/L = emoter
+		if(L.dead)
+			return FALSE
 	return TRUE
 
 /emote/proc/on_emote(var/atom/emoter,var/atom/target)

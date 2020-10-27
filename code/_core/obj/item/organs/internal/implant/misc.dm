@@ -23,3 +23,26 @@
 				A.to_chat(span("notice","Your [src.name] beeps..."))
 
 	return .
+
+
+/obj/item/organ/internal/implant/torso/death_alarm
+	name = "death alarm implant"
+	desc = "I died, please restart."
+	desc_extended = "A special implant that detects if the user has died. It destroys itself once a message is broadcasted."
+
+/obj/item/organ/internal/implant/torso/death_alarm/on_organ_add(var/mob/living/advanced/new_owner)
+	. = ..()
+	HOOK_ADD("post_death","\ref[src]_implant_post_death",new_owner,src,.proc/trigger_implant)
+	return .
+
+/obj/item/organ/internal/implant/torso/death_alarm/proc/trigger_implant()
+
+	if(loc && is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		A.to_chat(span("notice","Your death alarm goes off..."))
+		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_COMMON)
+		src.gib()
+		HOOK_REMOVE("post_death","\ref[src]_implant_post_death",A)
+		return TRUE
+
+	return FALSE

@@ -156,7 +156,7 @@
 	return .
 
 
-/mob/living/simple/npc/xeno/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/mob/living/simple/npc/xeno/Cross(atom/movable/O)
 
 	if(is_living(O))
 		var/mob/living/L = O

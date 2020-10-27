@@ -28,9 +28,10 @@
 
 	view_punch = 16
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
+
 
 	size = SIZE_4
+	weight = 16
 
 
 	value = 80
@@ -73,11 +74,11 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
-	return 0.015
+	return 0.03
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_static_spread()
 	return 0.003
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.025 - (0.01 * L.get_skill_power(SKILL_RANGED)))

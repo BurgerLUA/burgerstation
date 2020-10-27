@@ -14,3 +14,5 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	density = TRUE

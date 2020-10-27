@@ -8,11 +8,13 @@ obj/structure/interactive/fence
 
 	bullet_block_chance = 0
 
-	pixel_y = 16
+	pixel_y = 14
 
 	health = /health/construction/
 
 	health_base = 100
+
+	density = TRUE
 
 /obj/structure/interactive/fence/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 4),/material/steel)

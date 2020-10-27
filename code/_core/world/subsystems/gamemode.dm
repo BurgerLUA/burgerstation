@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(gamemode)
 /subsystem/gamemode/proc/set_active_gamemode(var/gamemode/desired_gamemode,var/source)
 	QDEL_NULL(active_gamemode)
 	active_gamemode = new desired_gamemode
-	LOG_DEBUG("Setting gamemode to: [active_gamemode.name]... Source: [source].")
+	log_debug("Setting gamemode to: [active_gamemode.name]... Source: [source].")
 	return TRUE
 
 /subsystem/gamemode/Initialize()

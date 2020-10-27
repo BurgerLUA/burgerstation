@@ -3,8 +3,6 @@
 	desc = "Fat roll mode on!"
 	desc_extended = "Heavily padded steel armor. Provides great protection from all physical forms of damage, but makes it hard to move."
 	icon = 'icons/obj/item/clothing/suit/knight_blank.dmi'
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
-	blocks_clothing = SLOT_TORSO_U
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_UNCOMMON
 
@@ -20,8 +18,6 @@
 	)
 
 	size = SIZE_6
-
-	slowdown_mul_worn = 1.3
 
 	value = 150
 
@@ -60,8 +56,6 @@
 	)
 
 	size = SIZE_7
-
-	slowdown_mul_worn = 1.5
 
 	value = 1000
 
@@ -134,8 +128,6 @@
 
 	value = 4000
 
-	slowdown_mul_worn = 1.6
-
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "magnus armor"
 	icon = 'icons/obj/item/clothing/suit/magnus.dmi'
@@ -158,8 +150,6 @@
 	size = SIZE_5
 
 	value = 300
-
-	slowdown_mul_worn = 1.2
 
 /obj/item/clothing/overwear/armor/knight/magnus/red
 	color = COLOR_RED

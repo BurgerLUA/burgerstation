@@ -51,11 +51,9 @@
 
 	var/base_miss_chance = 0
 
-	health_base = 200
+	health_base = 100
 
 	health = /health/obj/item/organ
-
-	value = 100
 
 	var/damage_layer = LAYER_MOB_INJURY
 
@@ -229,7 +227,7 @@
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 	return TRUE
 
-obj/item/organ/proc/on_organ_add(var/mob/living/advanced/old_owner)
+obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
 	return TRUE
 
 obj/item/organ/proc/get_damage_description()

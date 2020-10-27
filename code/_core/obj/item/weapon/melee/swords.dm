@@ -18,10 +18,8 @@
 
 	slot_icons = TRUE
 
-	attack_delay = 5
-	attack_delay_max = 12
-
 	size = SIZE_3
+	weight = 6
 
 	value = 40
 
@@ -42,9 +40,8 @@
 
 	damage_type = /damagetype/melee/sword/claymore
 
-	attack_delay = 8
-
 	size = SIZE_3
+	weight = 6
 
 	value = 30
 
@@ -59,6 +56,7 @@
 	damage_type = /damagetype/melee/sword/claymore/cult
 
 	size = SIZE_3
+	weight = 6
 
 	value = 50
 
@@ -67,17 +65,19 @@
 	desc = "Unga bunga."
 	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/item/weapons/melee/swords/spear.dmi'
-	damage_type = /damagetype/melee/spear/spear/
-	damage_type_thrown = /damagetype/melee/spear/spear/thrown
-
-	attack_delay = 5
-	attack_delay_max = 12
+	damage_type = /damagetype/melee/spear/basic/
+	damage_type_thrown = /damagetype/melee/spear/basic/thrown
 
 	size = SIZE_4
 
 	value = 10
 
-/obj/item/weapon/melee/zweihander
+	attack_range = 2
+
+	weight = 5
+	size = SIZE_4
+
+/obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
 	rarity = RARITY_MYTHICAL
 	desc = "THE LEGEND."
@@ -85,12 +85,18 @@
 	icon = 'icons/obj/item/weapons/melee/swords/zweihander.dmi'
 	damage_type = /damagetype/melee/sword/zweihander
 
-	attack_delay = 10
-	attack_delay_max = 30
-
 	size = SIZE_5
 
 	value = 120
+
+	attack_range = 2
+
+/obj/item/weapon/melee/sword/zweihander/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+
+	if(wielded)
+		return TRUE
+
+	return ..()
 
 /obj/item/weapon/melee/sword/curvedsword
 	name = "steel curved sword"
@@ -107,16 +113,14 @@
 
 	damage_type = /damagetype/melee/sword/curvedsword
 
-	attack_delay = 7
-	attack_delay_max = 14
-
 	size = SIZE_3
+	weight = 5
 
 	value = 900
 
 /obj/item/weapon/melee/sword/skana
 	name = "skana"
-	desc = "A metal katana that's been space-ified."
+	desc = "A lightweight metal katana that's been space-ified."
 	desc_extended = "A straight katana-like sword, with a curved starting near the end. Incredibly sharp."
 
 	icon = 'icons/obj/item/weapons/melee/swords/skana.dmi'
@@ -127,9 +131,8 @@
 
 	damage_type = /damagetype/melee/sword/skana
 
-	attack_delay = 8
-
 	size = SIZE_3
+	weight = 4
 
 	value = 200
 
@@ -146,9 +149,8 @@
 
 	damage_type = /damagetype/melee/sword/gladius
 
-	attack_delay = 6
-
 	size = SIZE_2
+	weight = 4
 
 	value = 200
 
@@ -165,8 +167,7 @@
 
 	damage_type = /damagetype/melee/sword/allium
 
-	attack_delay = 7
-
 	size = SIZE_2
+	weight = 5
 
 	value = 200

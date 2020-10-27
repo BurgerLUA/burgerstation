@@ -8,7 +8,7 @@ var/global/list/obj/structure/interactive/gateway/all_gateways = list()
 	pixel_x = -32
 	pixel_y = -32
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	var/enabled = FALSE
 

@@ -16,9 +16,10 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
+	weight = 10
 
 
 	heat_per_shot = 0.06
@@ -69,10 +70,10 @@
 	dan_mode = TRUE
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread()
 	if(!wielded) return 0.2
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))

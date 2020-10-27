@@ -2,7 +2,7 @@ obj/structure/scenery/lolipops
 	name = "lolipops"
 	icon = 'icons/obj/structure/flora/lolipops.dmi'
 	icon_state = "1"
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/lolipops/New()
 	..()

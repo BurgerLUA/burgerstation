@@ -2,9 +2,8 @@
 	name = "Horde Mode (Revolutionaries)"
 	desc = "Fight off an endless wave of Russian Revolutionaries while attempting to complete objectives."
 	enemy_types_to_spawn = list(
-		/mob/living/advanced/npc/rev = 100,
-		/mob/living/simple/npc/bear/armored/revolutionary = 20,
-		/mob/living/simple/npc/rev_leader = 1
+		/mob/living/advanced/npc/rev = 5,
+		/mob/living/simple/npc/bear/armored/revolutionary = 1
 	)
 	hidden = FALSE
 
@@ -53,11 +52,11 @@
 	name = "Horde Mode (Syndicate)"
 	desc = "Fight off an endless wave of traitorous syndicate soliders while attempting to completele objectives. Some Syndicate soliders may have spells!"
 	enemy_types_to_spawn = list(
-		/mob/living/advanced/npc/syndicate = 40,
-		/mob/living/advanced/npc/sorcerer = 10
+		/mob/living/advanced/npc/syndicate = 50,
+		/mob/living/advanced/npc/sorcerer = 5,
+		/mob/living/simple/npc/silicon/squats = 1
 	)
 	hidden = FALSE
-
 
 /gamemode/horde/beefmen
 	name = "Horde Mode (Beefmen)"
@@ -68,11 +67,17 @@
 
 /gamemode/horde/death_squad
 	name = "Horde Mode (Death Squad)"
-	desc = "Fight off an endless wave of NanoTrasen deathsquad while attemtping to complete objectives in this lethal training excercise!"
+	desc = "Fight off an endless wave of NanoTrasen deathsquad while attemtping to complete objectives in this extremely lethal training excercise!"
 	enemy_types_to_spawn = list(
-		/mob/living/advanced/npc/deathsquad = 1
+		/mob/living/advanced/npc/deathsquad/light = 8,
+		/mob/living/advanced/npc/deathsquad/medium = 4,
+		/mob/living/advanced/npc/deathsquad/heavy = 1
 	)
 	hidden = FALSE
+
+	enemies_to_spawn_base = 3
+	enemies_to_spawn_per_player = 0.25
+	enemies_to_spawn_per_minute = 0.05
 
 /gamemode/horde/ashwalkers
 	name = "Horde Mode (Ashwalkers)"
@@ -94,3 +99,15 @@
 		/mob/living/advanced/npc/pirate_crew/ranged = 4
 	)
 	hidden = TRUE
+
+/gamemode/horde/cultists
+	name = "Horde Mode (Cultists)"
+	desc = "Fight off an endless wave of Cultists while attempting to complete objectives."
+	enemy_types_to_spawn = list(
+		/mob/living/simple/npc/cult/construct/artificer = 10,
+		/mob/living/simple/npc/cult/construct/behemoth = 10,
+		/mob/living/simple/npc/cult/construct/chosen = 1,
+		/mob/living/simple/npc/cult/construct/floating = 25,
+		/mob/living/simple/npc/cult/cultist = 100
+	)
+	hidden = FALSE

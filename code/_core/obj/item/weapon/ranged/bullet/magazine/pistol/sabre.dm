@@ -16,9 +16,8 @@
 
 	view_punch = 6
 
-	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
-
 	size = SIZE_2
+	weight = 5
 
 
 	heat_per_shot = 0.05
@@ -66,10 +65,10 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread()
 	return 0.0025
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod

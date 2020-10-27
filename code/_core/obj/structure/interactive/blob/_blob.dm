@@ -7,7 +7,7 @@
 	var/obj/structure/interactive/blob/core/linked_core
 	color = "#80CC2A"
 
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_OBJ
 
 	anchored = TRUE
 
@@ -19,6 +19,8 @@
 
 	health = /health/construction/
 	health_base = 250
+
+	density = TRUE
 
 	var/health_states = 0
 
@@ -57,7 +59,7 @@
 	if(. && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
 		CALLBACK("check_mobs_\ref[src]",30,src,.proc/check_mobs)
 
-/obj/structure/interactive/blob/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/blob/Crossed(atom/movable/O)
 	if(is_living(O))
 		check_mobs()
 	return ..()
@@ -79,7 +81,7 @@
 
 	return .
 
-/obj/structure/interactive/blob/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/blob/Cross(atom/movable/O)
 	if(istype(O,/mob/living/simple/npc/blobbernaught))
 		return TRUE
 	return ..()

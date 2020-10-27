@@ -13,7 +13,7 @@
 
 	reagents = /reagent_container/medical_spray
 
-	value = 10
+	value = 5
 
 /obj/item/container/spray/update_icon()
 

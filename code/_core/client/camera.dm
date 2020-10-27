@@ -1,4 +1,4 @@
-#define CAMERA_RECOIL_SPEED 8
+#define CAMERA_RECOIL_SPEED 16
 #define CAMERA_PUNCH_SPEED 6
 
 /client/proc/update_zoom(var/desired_zoom_level = 2)
@@ -55,8 +55,13 @@
 		zoom_offset_x = returning_list[1]*TILE_SIZE*ZOOM_RANGE*zoom_mul
 		zoom_offset_y = returning_list[2]*TILE_SIZE*ZOOM_RANGE*zoom_mul
 
-	var/final_pixel_x = desired_pixel_x + zoom_offset_x + clamp(desired_recoil_x + desired_punch_x,-TILE_SIZE*2,TILE_SIZE*2)
-	var/final_pixel_y = desired_pixel_y + zoom_offset_y + clamp(desired_recoil_y + desired_punch_y,-TILE_SIZE*2,TILE_SIZE*2)
+	if(queued_shakes > 0)
+		desired_punch_x = rand(-TILE_SIZE*4,TILE_SIZE*4)
+		desired_punch_y = rand(-TILE_SIZE*4,TILE_SIZE*4)
+		queued_shakes--
+
+	var/final_pixel_x = desired_pixel_x + zoom_offset_x + desired_recoil_x + desired_punch_x
+	var/final_pixel_y = desired_pixel_y + zoom_offset_y + desired_recoil_y + desired_punch_y
 
 	if(istype(mob.loc,/obj/projectile/))
 		var/obj/projectile/P = mob.loc
@@ -72,9 +77,20 @@
 
 	if(x_mod) pixel_x = pixel_x + x_mod
 	if(y_mod) pixel_y = pixel_y + y_mod
-	if(desired_recoil_x) desired_recoil_x -= clamp(desired_recoil_x,-CAMERA_RECOIL_SPEED,CAMERA_RECOIL_SPEED)
-	if(desired_recoil_y) desired_recoil_y -= clamp(desired_recoil_y,-CAMERA_RECOIL_SPEED,CAMERA_RECOIL_SPEED)
-	if(desired_punch_x) desired_punch_x -= clamp(desired_punch_x,-CAMERA_PUNCH_SPEED,CAMERA_PUNCH_SPEED)
-	if(desired_punch_y) desired_punch_y -= clamp(desired_punch_y,-CAMERA_PUNCH_SPEED,CAMERA_PUNCH_SPEED)
+	if(desired_recoil_x)
+		desired_recoil_x = clamp(desired_recoil_x,-TILE_SIZE,TILE_SIZE)
+		desired_recoil_x -= clamp(desired_recoil_x,-CAMERA_RECOIL_SPEED,CAMERA_RECOIL_SPEED)
+	if(desired_recoil_y)
+		desired_recoil_y = clamp(desired_recoil_y,-TILE_SIZE,TILE_SIZE)
+		desired_recoil_y -= clamp(desired_recoil_y,-CAMERA_RECOIL_SPEED,CAMERA_RECOIL_SPEED)
+	if(desired_punch_x)
+		desired_punch_x = clamp(desired_punch_x,-TILE_SIZE*4,TILE_SIZE*4)
+		desired_punch_x -= clamp(desired_punch_x,-CAMERA_PUNCH_SPEED,CAMERA_PUNCH_SPEED)
+	if(desired_punch_y)
+		desired_punch_y = clamp(desired_punch_y,-TILE_SIZE*4,TILE_SIZE*4)
+		desired_punch_y -= clamp(desired_punch_y,-CAMERA_PUNCH_SPEED,CAMERA_PUNCH_SPEED)
+
+
+
 
 	return TRUE

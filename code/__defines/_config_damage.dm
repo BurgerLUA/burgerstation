@@ -54,3 +54,42 @@
 
 #define DEFAULT_BLOCK list(BLADE=25,BLUNT=25,PIERCE=25)
 #define DEFAULT_BLOCK_MELEE list(BLADE=50,BLUNT=25,PIERCE=25)
+
+
+
+//Melee Balance
+#define DAMAGE_DAGGER 20
+#define SPEED_DAGGER 8
+#define AP_DAGGER 40
+
+#define DAMAGE_SWORD 40
+#define SPEED_SWORD 10
+#define AP_SWORD 50
+
+#define DAMAGE_AXE 60
+#define SPEED_AXE 12
+#define AP_AXE 60
+
+#define DAMAGE_CLUB 80
+#define SPEED_CLUB 14
+#define AP_CLUB 70
+
+#define DAMAGE_GREATSWORD 100
+#define SPEED_GREATSWORD 16
+#define AP_GREATSWORD 80
+
+#define DAMAGE_GREATAXE 120
+#define SPEED_GREATAXE 18
+#define AP_GREATAXE 90
+
+#define DAMAGE_GREATCLUB 140
+#define SPEED_GREATCLUB 20
+#define AP_GREATCLUB 100
+
+
+//Slowdown values are automaticlly calculated. Thank god.
+#define ARMOR_VERY_LIGHT 50
+#define ARMOR_LIGHT 100
+#define ARMOR_MEDIUM 200
+#define ARMOR_HEAVY 300
+#define ARMOR_VERY_HEAVY 500

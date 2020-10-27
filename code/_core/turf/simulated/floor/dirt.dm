@@ -11,7 +11,7 @@
 	corner_icons = TRUE
 	corner_category = "dirt"
 
-	plane = PLANE_BEDROCK
+	plane = PLANE_FLOOR
 	layer = 0
 
 	footstep = /footstep/asteroid

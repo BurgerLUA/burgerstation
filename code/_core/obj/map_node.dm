@@ -2,7 +2,6 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 
 var/global/mob/abstract/node_checker
 
-
 /mob/abstract/node_checker
 	name = "node checker"
 	collision_flags = FLAG_COLLISION_WALKING
@@ -13,14 +12,12 @@ var/global/mob/abstract/node_checker
 	alpha        = 0
 	opacity      = 0
 	see_in_dark  = 1e6 // Literally arbitrary.
+	density = 1
 
 
 /mob/abstract/node_checker/New(var/desired_loc)
 	node_checker = src
 	return ..()
-
-/mob/abstract/node_checker/Bump(atom/movable/O)
-	return !isturf(O) && !is_wall(O)
 
 /obj/marker/map_node
 	name = "map node"
@@ -58,8 +55,7 @@ var/global/mob/abstract/node_checker
 		found = TRUE
 
 	if(!found)
-		var/turf/T = get_turf(src)
-		log_error("WARNING: Node at [T.x], [T.y], [T.z] is invalid!")
+		log_error("Invalid node! [src.get_debug_name()].")
 
 	return found
 

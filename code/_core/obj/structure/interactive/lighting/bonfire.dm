@@ -1,4 +1,4 @@
-/obj/structure/interactive/lighting/bonfire
+/obj/structure/interactive/lighting/bonfire //TODO: Make it cook.
 	name = "bonfire"
 	desc = "a large bonfire"
 

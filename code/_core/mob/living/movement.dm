@@ -42,18 +42,12 @@
 /mob/living/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
 
-/mob/living/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
-
-	if(is_sneaking)
-		on_sneak()
+/mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	if(attack_flags & ATTACK_HOLD || (client && client.is_zoomed))
 		Dir = 0x0
 
-	. = ..(NewLoc,Dir,desired_step_x,desired_step_y,silent)
-
-	if(.)
-		climb_counter = 0
+	. = ..(NewLoc,Dir,step_x,step_y)
 
 	if(ai)
 		ai.on_move(.,NewLoc,Dir)
@@ -67,35 +61,35 @@
 
 	. = ..()
 
-	if(.)
-		if(chat_overlay)
-			chat_overlay.glide_size = src.glide_size
-			chat_overlay.force_move(src.loc)
-		if(alert_overlay)
-			alert_overlay.glide_size = src.glide_size
-			alert_overlay.force_move(src.loc)
-		if(fire_overlay)
-			fire_overlay.glide_size = src.glide_size
-			fire_overlay.force_move(src.loc)
+	if(chat_overlay)
+		chat_overlay.glide_size = src.glide_size
+		chat_overlay.force_move(src.loc)
+	if(alert_overlay)
+		alert_overlay.glide_size = src.glide_size
+		alert_overlay.force_move(src.loc)
+	if(fire_overlay)
+		fire_overlay.glide_size = src.glide_size
+		fire_overlay.force_move(src.loc)
+	if(shield_overlay)
+		shield_overlay.glide_size = src.glide_size
+		shield_overlay.force_move(src.loc)
 
-	return .
+	if(is_sneaking)
+		on_sneak()
 
-/mob/living/Bump(var/atom/obstacle,var/Dir=0)
+	climb_counter = 0
 
-	if(is_living(obstacle))
-		var/mob/living/L = obstacle
-		if(L.mob_size > mob_size)
-			return FALSE
-
-	. = ..()
-
-	if(ai)
-		ai.Bump(obstacle)
+	handle_tabled()
 
 	return .
 
 
-/mob/living/handle_movement(var/adjust_delay = 1)
+/mob/living/Bump(atom/Obstacle)
+	if(ai) ai.Bump(Obstacle)
+	return ..()
+
+
+/mob/living/proc/can_move()
 
 	if(dead)
 		return FALSE
@@ -103,11 +97,20 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
 		return FALSE
 
-	if(move_dir)
-		if(buckled_object && !buckled_object.unbuckle(src))
+	if(buckled_object && !buckled_object.unbuckle(src))
+		return FALSE
+
+	return TRUE
+
+/mob/living/handle_movement(var/adjust_delay = 1)
+
+
+	if(move_dir) //If you're actuall moving.
+
+		if(!can_move())
 			return FALSE
 
-		if(move_dir && grabbing_hand)
+		if(grabbing_hand)
 			resist()
 			return FALSE
 
@@ -123,6 +126,8 @@
 	if(.)
 		add_nutrition(-0.01)
 		add_hydration(-0.01)
+		if(has_status_effect(CONFUSED))
+			move_dir = turn(move_dir,180)
 
 	return .
 
@@ -180,25 +185,7 @@
 
 	return FALSE
 
-/*
-/mob/living/Cross(var/atom/movable/M)
-
-	var/area/A = get_area(src)
-
-	if(!A.safe)
-		var/turf/T = get_turf(M)
-
-		var/count = 0
-		for(var/mob/living/L in T.contents)
-			count++
-
-		if(count>1)
-			return FALSE
-
-	return ..()
-*/
-
-/mob/living/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/mob/living/Cross(atom/movable/O)
 
 	if(is_living(O))
 		var/mob/living/L = O
@@ -206,6 +193,8 @@
 			return TRUE
 		if(L.dead || src.dead)
 			return TRUE
+		if(L.mob_size >= mob_size)
+			return FALSE
 
 	return ..()
 
@@ -220,3 +209,16 @@
 	else
 		add_status_effect(STAGGER,2,2,source = owner)
 	return ..()
+
+/mob/living/proc/handle_tabled()
+
+	if(tabled != currently_tabled)
+		currently_tabled = tabled
+		if(currently_tabled)
+			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
+			move_delay = max(10,move_delay)
+		else
+			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
+			move_delay = max(5,move_delay)
+
+	return TRUE

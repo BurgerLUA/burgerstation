@@ -1,13 +1,3 @@
-/atom/proc/get_attack_delay(var/mob/user) //Return deciseconds.
-
-	if(is_living(user))
-		var/mob/living/L = user
-		if(attack_delay_max < attack_delay)
-			attack_delay_max = attack_delay
-		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
-
-	return attack_delay
-
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(health)
@@ -21,6 +11,9 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
+/atom/proc/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+	return FALSE
+
 /atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!attacker)
@@ -33,79 +26,93 @@
 		params = list()
 
 	if(!victim)
-		CRASH_SAFE("Warning! [attacker.get_debug_name()] tried attacking a null victim!")
+		CRASH_SAFE("Tried attacking without a victim!")
 		return FALSE
 
-	victim = victim.change_victim(attacker)
-
-	if(attacker && victim && attacker != victim && !ignore_distance)
-		attacker.face_atom(victim)
+	var/atom/changed_target = victim.change_victim(attacker)
+	if(changed_target)
+		victim = changed_target
 
 	if(!precise && is_living(victim))
 		var/mob/living/L = victim
 		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 			precise = TRUE
 
+	if(attacker != victim && !ignore_distance)
+		attacker.face_atom(victim) //Face first victim
+
 	if(is_player(attacker))
 		var/mob/living/advanced/player/P = attacker
 		if(P.client)
-			//var/click_flags = P.client.get_click_flags(params,TRUE)
-
 			var/list/attack_coords = P.get_current_target_cords(params)
-
-			/*
-			if(click_flags & CLICK_LEFT)
-				attack_x = P.attack_left[P.attack_mode][1]
-				attack_y = P.attack_left[P.attack_mode][2]
-			else if(click_flags & CLICK_RIGHT)
-				attack_x = P.attack_right[P.attack_mode][1]
-				attack_y = P.attack_right[P.attack_mode][2]
-			*/
-
 			params[PARAM_ICON_X] = num2text(attack_coords[1])
 			params[PARAM_ICON_Y] = num2text(attack_coords[2])
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 
-	if(!object_to_damage_with)
+	if(!object_to_damage_with) //You don't even exist.
 		return FALSE
 
-	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
+	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range) //Can't attack, weapon isn't long enough.
 		return FALSE
 
-	var/atom/object_to_damage = victim.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
-	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim,object_to_damage)
-
+	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim)
 	if(!desired_damage_type)
 		return FALSE
 
+	var/cleave_number = should_cleave(attacker,victim,params)
+	var/list/victims = list(victim)
+	if(cleave_number)
+		for(var/atom/movable/A in range(1,victim))
+			if(cleave_number <= 0)
+				break
+			A = A.change_victim(attacker)
+			if(A == victim || A == attacker)
+				continue
+			if(get_dist(attacker,A) > object_to_damage_with.attack_range)
+				continue
+			victims += A
+			cleave_number--
+
 	var/damagetype/DT = all_damage_types[desired_damage_type]
-	if(!attacker.can_attack(victim,object_to_damage_with,params,DT))
-		return FALSE
-	if(!victim.can_be_attacked(attacker,object_to_damage_with,params,DT))
-		return FALSE
-
-	if(is_advanced(attacker) && DT.cqc_tag)
-		var/mob/living/advanced/A = attacker
-		A.add_cqc(DT.cqc_tag)
-		var/damagetype/DT2 = A.check_cqc(victim,object_to_damage_with,object_to_damage,blamed)
-		if(DT2 && attacker.can_attack(victim,object_to_damage_with,params,DT2) && victim.can_be_attacked(attacker,object_to_damage_with,params,DT2))
-			DT = DT2
-
 	if(!DT)
 		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
 		return FALSE
 
-	if(attacker != object_to_damage_with)
-		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
-
-	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
-
-	if(!object_to_damage)
-		DT.perform_miss(attacker,victim,object_to_damage_with) //TODO: FIX THIS
+	if(world.time < attacker.attack_next)
 		return FALSE
 
-	DT.swing(attacker,victim,object_to_damage_with,object_to_damage,attacker)
+	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
+		return FALSE
+
+	var/list/hit_objects = list()
+	for(var/atom/v in victims)
+		var/can_attack = attacker.can_attack(v,object_to_damage_with,params,DT)
+		var/can_be_attacked = v.can_be_attacked(attacker,object_to_damage_with,params,DT)
+		if(can_attack && can_be_attacked)
+			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
+			if(hit_object)
+				hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
+				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
+					var/mob/living/advanced/A = attacker
+					A.add_cqc(DT.cqc_tag)
+					var/damagetype/DT2 = A.check_cqc(v,object_to_damage_with,hit_object,blamed)
+					if(DT2) DT = DT2
+				continue
+			//No hit object means we missed.
+		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
+			hit_objects = null
+			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
+		victims -= v //Needs to be here.
+
+	var/object_attack_delay = DT.get_attack_delay(attacker)
+
+	if(attacker != object_to_damage_with)
+		object_to_damage_with.attack_next = world.time + object_attack_delay
+
+	attacker.attack_next = world.time + object_attack_delay*0.5
+
+	DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
 
 	return TRUE
 
@@ -119,9 +126,6 @@
 	return src
 
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(!mouse_opacity)
-		return FALSE
 
 	if(attack_next > world.time)
 		return FALSE
@@ -159,5 +163,5 @@
 	return FALSE
 */
 
-/atom/proc/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+/atom/proc/get_damage_type(var/atom/attacker,var/atom/victim)
 	return damage_type

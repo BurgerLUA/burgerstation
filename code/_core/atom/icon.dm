@@ -76,7 +76,7 @@
 		additional_blends[desired_id].layer = desired_layer
 
 	if(debug_message)
-		LOG_DEBUG("[debug_message]: [desired_id] [additional_blends[desired_id].icon_state]")
+		log_debug("[debug_message]: [desired_id] [additional_blends[desired_id].icon_state]")
 
 	return TRUE
 */

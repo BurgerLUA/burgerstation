@@ -13,7 +13,11 @@
 
 	var/reagent_container/reagents_2
 
-	value = 1
+	value = 0
+
+	allow_reagent_transfer_from = FALSE
+
+	weight = 0.01
 
 /obj/item/container/pill/get_consume_verb()
 	return "swallow"
@@ -54,7 +58,7 @@
 	return .
 
 
-/obj/item/container/pill/calculate_value()
+/obj/item/container/pill/get_value()
 
 	. = ..()
 

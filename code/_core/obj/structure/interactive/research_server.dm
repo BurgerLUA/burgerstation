@@ -1,4 +1,4 @@
-/obj/structure/interactive/server
+/obj/structure/interactive/server //TODO MAKE THIS DO SOMETHING
 	name = "??????"
 	icon = 'icons/obj/structure/telecomms.dmi'
 	icon_state = "hub"

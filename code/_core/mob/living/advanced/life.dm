@@ -9,6 +9,8 @@
 
 	if(.)
 		handle_organs()
+		handle_sanity()
+
 
 	return .
 
@@ -64,5 +66,17 @@ mob/living/advanced/revive()
 		CHECK_TICK(75,FPS_SERVER*2)
 		if(O.has_life)
 			O.on_life()
+
+	return TRUE
+
+/mob/living/advanced/proc/handle_sanity()
+
+	if(client && isturf(loc)) //If you afk in darkness, your sanity doesn't go down or up.
+		var/turf/T = loc
+		if(T.darkness <= 0.1)
+			sanity -= (1/6) // 10 minutes of darkness will make you "insane".
+		else if(T.darkness >= 0.9)
+			sanity += (1/18) // 30 minutes of light will get you from insane to completely sane.
+		sanity = clamp(sanity,1,100)
 
 	return TRUE

@@ -1,4 +1,4 @@
-/mob/abstract/observer/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/mob/abstract/observer/Cross(atom/movable/O)
 	if(istype(O,/mob/abstract/))
 		return TRUE
 	return ..()

@@ -8,6 +8,10 @@
 	sunlight_freq = 4
 	sunlight_color = "#1A3E4C"
 
+	area_identifier = null
+
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+
 /area/space/is_space()
 	return TRUE
 

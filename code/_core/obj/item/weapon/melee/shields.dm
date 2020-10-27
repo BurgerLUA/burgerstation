@@ -9,10 +9,6 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
-
-	attack_delay = 10
-	attack_delay_max = 15
-
 	value = 35
 
 	block_defense_rating = list(
@@ -22,6 +18,9 @@
 	)
 
 	can_wear = TRUE
+
+	weight = 6
+	size = SIZE_4
 
 
 /obj/item/weapon/melee/shield/glass

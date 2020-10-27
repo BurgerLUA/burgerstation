@@ -13,7 +13,7 @@
 
 	if(desired_handcuffs)
 		update_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "regular")
-		drop_held_objects(get_turf(src))
+		add_status_effect(DISARM,100,100)
 	else
 		update_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none")
 		if(stored_handcuffs)

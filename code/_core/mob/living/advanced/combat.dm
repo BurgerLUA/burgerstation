@@ -16,6 +16,9 @@
 	if(driving && !driving.can_attack(victim,weapon,params,damage_type))
 		return FALSE
 
+	if(handcuffed)
+		return FALSE
+
 	return ..()
 
 

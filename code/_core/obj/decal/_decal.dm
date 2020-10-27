@@ -1,9 +1,9 @@
 /obj/decal/
 	name = "decal"
-	plane = PLANE_TILE
+	plane = PLANE_FLOOR
 	mouse_opacity = 0
 	anchored = TRUE
-	plane = PLANE_TILE
+	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR_DECAL
 
 /obj/decal/directions

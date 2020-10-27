@@ -50,20 +50,20 @@
 /atom/proc/update_light(debug)
 
 	if(qdeleting)
-		if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being deleted as the object is being deleted.")
+		if(debug) log_debug("Light for [src.get_debug_name()] is being deleted as the object is being deleted.")
 		QDEL_NULL(light) //TODO: Does this work?
 		return
 
 	if (!light_power || !light_range) // We won't emit light anyways, destroy the light source.
-		if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being deleted as there is no light power ([light_power]) or light range ([light_range]).")
+		if(debug) log_debug("Light for [src.get_debug_name()] is being deleted as there is no light power ([light_power]) or light range ([light_range]).")
 		QDEL_NULL(light)
 	else
 		if(light)
 			light.update()
-			if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being updated.")
+			if(debug) log_debug("Light for [src.get_debug_name()] is being updated.")
 		else
 			light = new /light_source(src)
-			if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being created.")
+			if(debug) log_debug("Light for [src.get_debug_name()] is being created.")
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
 /atom/movable/Destroy()
@@ -109,7 +109,6 @@
 	return TRUE
 
 /atom/set_dir(var/desired_dir,var/force = FALSE)
-
 
 	. = ..()
 

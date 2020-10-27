@@ -39,6 +39,14 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/mob/last_caller = null //The last caller who interacted with this shuttle's launch, if any.
 
+	var/start_sound = 'sound/effects/shuttle/hyperspace_begin.ogg'
+	var/progress_sound = 'sound/effects/shuttle/hyperspace_progress.ogg'
+	var/end_sound = 'sound/effects/shuttle/hyperspace_end.ogg'
+
+	var/enable_shuttle_throwing = TRUE
+
+	var/time_restricted = TRUE
+
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
 	return ..()
@@ -80,13 +88,15 @@ var/global/list/all_shuttle_controlers = list()
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //Something blocking?
 		return FALSE
+
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
 
-	play('sound/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-	if(last_caller)
-		create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+	if(start_sound)
+		play(start_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+		if(last_caller)
+			create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 
 	var/area/A = get_area(src)
 	if(!desired_transit_time) desired_transit_time = default_transit_time
@@ -136,6 +146,7 @@ var/global/list/all_shuttle_controlers = list()
 				S.open(null,lock,force)
 			else
 				S.close(null,lock,force)
+
 	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()
@@ -151,9 +162,10 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			if(!transit(transit_source,transit_bluespace))
 				return FALSE
-			play('sound/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-			if(last_caller)
-				create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+			if(progress_sound)
+				play(progress_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+				if(last_caller)
+					create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
 
@@ -170,9 +182,10 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
-			play('sound/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-			if(last_caller)
-				create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
+			if(end_sound)
+				play(end_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+				if(last_caller)
+					create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null
@@ -193,6 +206,9 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/area/transit/starting_transit = transit_areas[starting_transit_id]
 	var/area/transit/ending_transit = transit_areas[ending_transit_id]
+
+	//log_debug("SHUTTLE: [src.get_debug_name()] moving from [starting_transit.get_debug_name()] to [ending_transit.get_debug_name()].")
+
 
 	var/starting_cord_x = starting_transit.x
 	var/starting_cord_y = starting_transit.y
@@ -218,6 +234,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/list/atom/movable/objects_to_throw = list()
 
+	//var/found_turfs = 0
 	for(var/turf/T in starting_transit)
 		CHECK_TICK(75,FPS_SERVER)
 		if(T.plane != PLANE_SHUTTLE)
@@ -225,6 +242,9 @@ var/global/list/all_shuttle_controlers = list()
 		var/offset_x = T.x - starting_cord_x
 		var/offset_y = T.y - starting_cord_y
 		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, ending_cord_z)
+		if(!replacing_turf)
+			//log_error("Warning: Could not find a replacing turf for [src.get_debug_name()] at [ending_cord_x + offset_x],[ending_cord_y + offset_y],[ending_cord_z].")
+			continue
 		for(var/k in replacing_turf.contents)
 			var/atom/movable/M = k
 			M.on_crush()
@@ -232,22 +252,27 @@ var/global/list/all_shuttle_controlers = list()
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			CHECK_TICK(75,FPS_SERVER)
-			if(!M.allow_shuttle_move)
+			if(!M.allow_shuttle_move) //For things like light.
 				continue
 			M.move_delay = SECONDS_TO_TICKS(3)
 			M.force_move(replacing_turf)
-			objects_to_throw += M
+			if(enable_shuttle_throwing)
+				objects_to_throw += M
 		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
+		//found_turfs++
 
-	for(var/k in objects_to_throw)
-		var/atom/movable/M = k
-		CHECK_TICK(75,FPS_SERVER)
-		if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
-			continue
-		if(istype(M,/obj/structure/))
-			continue
-		if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
-			continue
-		M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
+	//log_debug("[src.get_debug_name()]: Found [found_turfs] turfs to replace.")
+
+	if(enable_shuttle_throwing)
+		for(var/k in objects_to_throw)
+			var/atom/movable/M = k
+			CHECK_TICK(75,FPS_SERVER)
+			if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
+				continue
+			if(istype(M,/obj/structure/))
+				continue
+			if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
+				continue
+			M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
 
 	return TRUE

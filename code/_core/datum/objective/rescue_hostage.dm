@@ -13,6 +13,7 @@ var/global/list/possible_hostage_types = list(
 
 	credit_reward = 1000
 	burgerbux_reward = 1
+	points_reward = 15
 
 /objective/hostage/get_description()
 	return "Rescue [english_list(tracked_atoms)] and bring them shipside. Location: [english_list(get_locations())]."
@@ -67,7 +68,7 @@ var/global/list/possible_hostage_types = list(
 
 /objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/unique/hostage/H,args)
 
-	if(!completed && H.z == Z_LEVEL_CENTCOMM && !H.dead)
+	if(!completed && H.z == Z_LEVEL_STATION && !H.dead)
 		var/area/A = get_area(H)
 		if(istype(A,/area/burgerstation))
 			completed = TRUE

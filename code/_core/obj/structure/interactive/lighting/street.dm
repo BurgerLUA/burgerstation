@@ -16,6 +16,8 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
+	density = TRUE
+
 /obj/structure/interactive/lighting/streetlamp/strong
 	desired_light_power = 0.4
 	desired_light_range = 8

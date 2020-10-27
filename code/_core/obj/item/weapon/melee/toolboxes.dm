@@ -5,13 +5,10 @@
 	icon = 'icons/obj/item/weapons/melee/toolbox/red.dmi'
 	damage_type = /damagetype/item/heavy
 
-	attack_delay = 5
-	attack_delay_max = 10
-
 	value = 10
 
 	size = SIZE_3
-
+	weight = 10
 
 	is_container = TRUE
 	container_max_size = SIZE_2
@@ -29,3 +26,17 @@
 
 /obj/item/weapon/melee/toolbox/yellow
 	color = "#FFFF00"
+
+
+/obj/item/weapon/melee/toolbox/syndicate
+	name = "fully loaded black toolbox"
+	color = COLOR_GREY_DARK
+
+/obj/item/weapon/melee/toolbox/syndicate/Generate()
+	new /obj/item/weapon/melee/tool/crowbar(src)
+	new /obj/item/weapon/melee/tool/multitool(src)
+	new /obj/item/weapon/melee/tool/screwdriver(src)
+	new /obj/item/weapon/melee/tool/wirecutters(src)
+	new /obj/item/weapon/melee/tool/wrench(src)
+	new /obj/item/weapon/melee/torch/flashlight(src)
+	return ..()

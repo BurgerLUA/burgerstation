@@ -11,6 +11,10 @@
 
 	blood_type = /reagent/blood/robot
 
+	pixel_x = 0
+	pixel_y = 0
+	pixel_z = 0
+
 /mob/living/simple/npc/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 
@@ -42,5 +46,35 @@
 	stored_weapon = /obj/item/weapon/ranged/energy/syndicate_turret
 
 /mob/living/simple/npc/turret/syndicate/post_death()
+	icon_state = "dead"
+	return ..()
+
+
+/mob/living/simple/npc/turret/nanotrasen/
+	name = "nanotrasen turret"
+	icon = 'icons/mob/living/simple/turret_simple.dmi'
+	icon_state = "active"
+
+	iff_tag = "NanoTrasen"
+	loyalty_tag = "NanoTrasen"
+
+	stored_weapon = /obj/item/weapon/ranged/energy/nanotrasen_turret
+
+/mob/living/simple/npc/turret/nanotrasen/post_death()
+	icon_state = "dead"
+	return ..()
+
+
+/mob/living/simple/npc/turret/nanotrasen_deployable/
+	name = "Depolyed sentry"
+	icon = 'icons/mob/living/simple/turret_deployable.dmi'
+	icon_state = "active"
+
+	iff_tag = "NanoTrasen"
+	loyalty_tag = "NanoTrasen"
+
+	stored_weapon = /obj/item/weapon/ranged/energy/sentry_turret
+
+/mob/living/simple/npc/turret/nanotrasen_deployable/post_death()
 	icon_state = "dead"
 	return ..()

@@ -17,7 +17,7 @@
 		BOMB = 25,
 		BIO = 50,
 		RAD = 75,
-		FATIGUE = INFINITY
+		FATIGUE = 50
 	)
 
 	size = SIZE_7
@@ -30,5 +30,3 @@
 		/obj/item/clothing/feet/shoes/engineering,
 		/obj/item/clothing/feet/shoes/engineering/left
 	)
-
-	slowdown_mul_worn = 1.3

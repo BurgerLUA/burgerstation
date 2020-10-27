@@ -9,6 +9,6 @@
 		/obj/item/clothing/belt/skull_codpiece,
 		/obj/item/clothing/feet/shoes/workboot,
 		/obj/item/clothing/feet/shoes/workboot/left,
-		/obj/item/weapon/melee/zweihander/,
+		/obj/item/weapon/melee/sword/zweihander,
 		/obj/item/weapon/melee/shield/glass
 	)

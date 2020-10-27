@@ -47,6 +47,8 @@
 	iff_tag = "Slime"
 	loyalty_tag = "Slime"
 
+	stun_angle = 0
+
 /mob/living/simple/npc/slime/PostInitialize()
 	. = ..()
 	update_sprite()

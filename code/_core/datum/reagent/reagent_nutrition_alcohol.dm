@@ -39,7 +39,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.intoxication += power*.
+		L.intoxication += power*.*0.5
 
 	return .
 

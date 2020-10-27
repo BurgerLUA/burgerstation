@@ -5,12 +5,15 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	density = TRUE
 
 	health_base = 75
 
 	plane = PLANE_WALL
 
 	bullet_block_chance = 50
+
+	layer = LAYER_OBJ_WINDOW - 0.1
 
 /obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/caller,var/obj/item/material/sheet/S)
 	INTERACT_CHECK
@@ -49,7 +52,7 @@
 
 	return ..()
 
-/obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/interactive/construction/grille/Cross(atom/movable/O)
 	if(istype(O,/obj/structure/smooth/window/)) //Allow windows to easily fit on grilles.
 		return TRUE
 	return ..()

@@ -1,6 +1,3 @@
-var/global/list/all_areas = list()
-
-
 /area/
 	name = "AREA ERROR"
 	icon = 'icons/area/area.dmi'
@@ -16,6 +13,9 @@ var/global/list/all_areas = list()
 	var/flags_comms = FLAG_COMM_NONE
 
 	var/sound_environment = ENVIRONMENT_GENERIC
+
+	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues.
+	var/trackable = FALSE //Trackable area by the game.
 
 	var/map_color_r = rgb(255,0,0,255)
 	var/map_color_g = rgb(0,255,0,255)
@@ -53,27 +53,11 @@ var/global/list/all_areas = list()
 
 	var/interior = FALSE
 
+	var/average_x = 0
+	var/average_y = 0
+
 /area/proc/is_space()
 	return FALSE
-
-/area/New()
-	. = ..()
-
-	/*
-	if(hazard)
-		all_areas_with_hazards += src
-	*/
-
-	/*
-	if(dynamic_lighting_overlay_color)
-		all_areas_with_dynamic_lighting_overlay_color += src
-	*/
-
-	if(!all_areas[type])
-		all_areas[type] = src
-
-	return .
-
 
 /area/Destroy()
 	if(players_inside)
@@ -81,6 +65,9 @@ var/global/list/all_areas = list()
 
 	if(sunlight_turfs)
 		sunlight_turfs.Cut()
+
+	SSarea.all_areas -= src.type
+	SSarea.areas_by_identifier[area_identifier] -= src
 
 	return ..()
 
@@ -95,15 +82,24 @@ var/global/list/all_areas = list()
 /area/Initialize()
 
 	if(sunlight_freq > 0 && sunlight_color)
-		var/light_count = 0
 		for(var/turf/T in contents)
-			if(setup_sunlight(T))
-				light_count++
-		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
+			setup_sunlight(T)
 
 	if(weather)
 		icon = 'icons/area/weather.dmi'
 		icon_state = weather
+
+	var/area_count = 0
+	average_x = 0
+	average_y = 0
+
+	for(var/turf/T in contents)
+		average_x += T.x
+		average_y += T.y
+		area_count += 1
+
+	average_x = CEILING(average_x/area_count,1)
+	average_y = CEILING(average_y/area_count,1)
 
 	return ..()
 
@@ -143,7 +139,7 @@ var/global/list/all_areas = list()
 		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = INVISIBILITY_NO_PLAYERS
 
-	if(ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
+	if(ENABLE_TRACKS && ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
 		var/mob/M = enterer
 		if(M.client && length(tracks) && (!M.client.next_music_track || M.client.next_music_track <= world.time))
 			play_music_track(pick(tracks),M.client)
@@ -173,3 +169,19 @@ var/global/list/all_areas = list()
 			P.see_invisible = initial(P.see_invisible)
 
 	return TRUE
+
+
+/area/proc/smash_all_lights()
+	for(var/obj/structure/interactive/lighting/T in src.contents)
+		CHECK_TICK(75,FPS_SERVER)
+		if(!T.desired_light_color)
+			continue
+		T.on_destruction(null,TRUE)
+	return TRUE
+
+/area/proc/toggle_all_lights()
+	var/obj/structure/interactive/light_switch/LS = locate() in src.contents
+	if(LS && LS.on)
+		LS.toggle()
+		return TRUE
+	return FALSE

@@ -12,7 +12,10 @@
 
 	can_wield = TRUE
 	wield_only = TRUE
-	attack_delay = 15
-	attack_delay_max = 25
 
 	value = 80
+
+	attack_range = 2
+
+	size = SIZE_5
+	weight = 40

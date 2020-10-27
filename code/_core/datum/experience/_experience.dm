@@ -31,15 +31,22 @@
 	owner = M
 	return ..()
 
-/experience/Initialize(var/desired_xp)
+/experience/proc/update_experience(var/desired_xp)
+	desired_xp = max(0,desired_xp)
 	experience = desired_xp
-	last_level = xp_to_level(experience)
+	last_level = min(xp_to_level(experience),LEVEL_CAP)
 	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
+	if(xp < 0)
+		owner.to_chat(span("danger","Your [src.name] experience is negative! Report this bug on discord!"))
+		return 1
 	return FLOOR((xp ** (1/experience_power)) / experience_multiplier, 1)
 
 /experience/proc/level_to_xp(var/level) //Convert level to xp
+	if(level < 0)
+		owner.to_chat(span("danger","Your [src.name] level is negative! Report this bug on discord!"))
+		return 0
 	return CEILING((level*experience_multiplier) ** experience_power,1)
 
 /experience/proc/set_level(var/level)
@@ -64,8 +71,10 @@
 	experience += xp_to_add
 
 	var/current_level = get_current_level()
-	if(last_level < current_level)
+	if(last_level != current_level)
 		on_level_up(last_level,current_level)
+
+	last_level = current_level //Just in case it's leveled down or something.
 
 	return xp_to_add
 
@@ -80,10 +89,6 @@
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
 	owner.on_level_up(src,old_level,new_level)
-	last_level = new_level
-	if(owner.update_level())
-		owner.to_chat(span("notice","Your overall level increased to [owner.level]."))
-
 	return new_level
 
 

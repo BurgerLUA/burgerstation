@@ -32,17 +32,3 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/weapon/melee/energy/stunbaton
 	)
-
-/loadout/nanotrasen/soldier/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		if(R.firing_pin)
-			R.firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
-
-	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
-		var/obj/item/weapon/ranged/bullet/magazine/M = I
-		if(SSweapons.weapon_to_magazine[M.type])
-			M.stored_magazine = pick(SSweapons.weapon_to_magazine[M.type])
-
-	return ..()

@@ -23,7 +23,7 @@
 
 	value = 100
 
-	slowdown_mul_worn = 1.1
+
 
 /obj/item/clothing/feet/shoes/clown/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
 	original_footsteps += /footstep/clownstep
@@ -36,4 +36,4 @@
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT_U
+	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U

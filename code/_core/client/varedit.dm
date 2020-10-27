@@ -1,8 +1,5 @@
 proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 
-	if(!value)
-		return "NULL"
-
 	if(is_datum(value))
 		var/datum/VD = value
 		return "<a href='?var_edit_ref=\ref[VD]'>[VD]</a> (<i>[VD.type]</i>)"
@@ -12,20 +9,25 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 		if(length(value) == 0)
 			return "list()"
 
-		var/returning = "list(<br>"
+		var/returning = ""
 
 		if(is_assoc_list(value))
+			returning = "ASSOC_LIST(<br>"
 			for(var/k in value)
 				var/v = value["[k]"]
 				returning += "&nbsp;[k] = [get_value_text_for_debug(v)]<br>"
 		else
+			returning = "LIST(<br>"
 			var/index = 1
 			for(var/v in value)
-				returning += "&nbsp;[index] = [get_value_text_for_debug(null,null,v)]<br>"
+				returning += "&nbsp;[index] = [get_value_text_for_debug(v)]<br>"
 				index++
 
 		returning += ")"
 		return returning
+
+	if(!value && !isnum(value))
+		value = "NULL"
 
 	if(!key)
 		return value

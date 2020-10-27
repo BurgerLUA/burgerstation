@@ -171,6 +171,8 @@
 
 	handle_status_effects()
 
+	handle_blocking()
+
 	handle_health_buffer()
 
 	update_alpha(handle_alpha())
@@ -264,7 +266,7 @@ mob/living/proc/on_life_slow()
 /mob/living/proc/handle_intoxication()
 
 	if(intoxication)
-		var/intoxication_to_remove = (0.05 + intoxication*0.005)*(LIFE_TICK_SLOW/10)
+		var/intoxication_to_remove = (0.025 + intoxication*0.0025)*(LIFE_TICK_SLOW/10)
 		intoxication = max(0,intoxication-intoxication_to_remove)
 
 	switch(intoxication)
@@ -291,7 +293,7 @@ mob/living/proc/on_life_slow()
 			health.adjust_tox_loss(0.25*(LIFE_TICK_SLOW/10))
 			queue_health_update = TRUE
 
-	if(intoxication >= 400 && prob(intoxication/100))
+	if(intoxication >= 600 && prob(intoxication/100))
 		var/list/possible_status_effects = list(
 			STAGGER,
 			CONFUSED,
@@ -411,3 +413,14 @@ mob/living/proc/on_life_slow()
 				add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust*10)
 
 	return TRUE
+
+
+/mob/living/proc/smite()
+	var/turf/T = get_turf(src)
+	for(var/mob/M in range(T,8))
+		if(!M.client)
+			continue
+		M.client.queued_shakes += 5
+	new/obj/effect/temp/fist(T,4,"#FFFFFF")
+	play('sound/effects/anima_fragment_attack.ogg',T)
+	on_crush()

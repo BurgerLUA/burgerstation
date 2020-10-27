@@ -12,6 +12,7 @@
 	automatic = FALSE
 
 	size = SIZE_2
+	weight = 3
 
 	heat_per_shot = 0.03
 	heat_max = 0.12
@@ -59,10 +60,10 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
@@ -93,10 +94,10 @@
 
 	attachment_whitelist = list()
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 
@@ -130,8 +131,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_static_spread()
 	return 0.004
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)) )

@@ -21,7 +21,7 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
 		/obj/item/clothing/overwear/armor/medium_armor/security,
@@ -39,38 +39,49 @@
 
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
-		/obj/item/magazine/pistol_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
-		/obj/item/magazine/pistol_10mm,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer,
-		/obj/item/magazine/pistol_12mm/nt,
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
-		/obj/item/magazine/smg_46,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
-		/obj/item/magazine/smg_9mm,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
-		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
-		/obj/item/magazine/sniper_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
-		/obj/item/magazine/lmg_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
-		/obj/item/magazine/sniper_127,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/weapon/ranged/energy/rifle,
+		/obj/item/weapon/ranged/energy/rifle/hardlight,
+		/obj/item/weapon/ranged/energy/rifle/xray
+	)
+
+/obj/structure/interactive/vending/security/ammo
+	name = "ammo vendor"
+	icon_state = "ammodrobe"
+
+	stored_types = list(
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/pistol_12mm/nt,
+		/obj/item/magazine/smg_46,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/rifle_556/ap,
+		/obj/item/magazine/sniper_762,
+		/obj/item/magazine/sniper_762/ap,
+		/obj/item/magazine/lmg_762,
+		/obj/item/magazine/sniper_127,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
-		/obj/item/weapon/ranged/energy/rifle,
-		/obj/item/weapon/ranged/energy/rifle/hardlight,
-		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger
 	)
+
 
 /obj/structure/interactive/vending/security/gundrobe/engineering
 	icon_state = "gundrobe_engineering"

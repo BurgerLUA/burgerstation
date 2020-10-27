@@ -33,7 +33,7 @@
 
 	var/removable = TRUE
 
-	value = 200
+	weight = 1
 
 /obj/item/attachment/get_examine_list(var/mob/caller)
 

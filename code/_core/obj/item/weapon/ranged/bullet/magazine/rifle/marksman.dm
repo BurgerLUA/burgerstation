@@ -16,9 +16,10 @@
 
 	view_punch = 8
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
+	weight = 18
 
 
 	heat_per_shot = 0.03
@@ -69,11 +70,11 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread()
 	if(!wielded) return 0.2
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
@@ -90,7 +91,7 @@
 
 	value = 200
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod/get_static_spread()
 	if(!wielded)
 		return 0.1
 	return 0.05

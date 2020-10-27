@@ -1,5 +1,5 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate
-	name = "dufflebag"
+	name = "syndicate dufflebag"
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate.dmi'
 	desc = "EVIL!"
 	desc_extended = "A sturdy, yet lightweight black dufflebag. Doesn't slow you down at all for some reason."
@@ -12,21 +12,7 @@
 
 	value = 200
 
-	slowdown_mul_worn = 1
-	slowdown_mul_held = 1
 
-/obj/item/clothing/back/storage/dufflebag/syndicate/pre_fill_inventory(var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-
-	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
-		var/obj/item/weapon/ranged/bullet/magazine/M = I
-		if(SSweapons.weapon_to_magazine[M.type])
-			M.stored_magazine = pick(SSweapons.weapon_to_magazine[M.type])
-
-	return ..()
 
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical
@@ -93,7 +79,7 @@
 	new /obj/item/grenade/timed/explosive(src)
 	new /obj/item/grenade/timed/explosive(src)
 	new /obj/item/grenade/timed/explosive(src)
-	new /obj/item/weapon/melee/tool/rcd(src)
+	new /obj/item/rcd(src)
 	new /obj/item/disk/rcd/metal_wall(src)
 	new /obj/item/matter_cartridge(src)
 	new /obj/item/matter_cartridge(src)

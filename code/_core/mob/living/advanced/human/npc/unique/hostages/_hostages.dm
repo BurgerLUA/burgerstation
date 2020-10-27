@@ -1,6 +1,6 @@
 /mob/living/advanced/npc/unique/hostage/
 	ai = /ai/advanced/hostage
-	health_base = 300 //Extra health so the escort mission isn't fucking hell.
+	health_base = 200 //Extra health so the escort mission isn't fucking hell.
 	var/hostage = TRUE
 	queue_delete_on_death = FALSE
 

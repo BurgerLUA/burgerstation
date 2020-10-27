@@ -23,6 +23,10 @@
 
 	var/hidden = FALSE //Set to true if this gamemode shouldn't show up in voting.
 
+	var/points = 50
+	//0 means failure.
+	var/alert_level = CODE_GREEN
+
 /gamemode/Destroy()
 
 	QDEL_CUT(crew_active_objectives)
@@ -38,6 +42,70 @@
 /gamemode/New()
 	state = GAMEMODE_WAITING
 	return TRUE
+
+/gamemode/proc/handle_alert_level()
+	var/desired_alert_level = CODE_GREEN //Failsafe.
+	switch(points)
+		if(-INFINITY to 0)
+			desired_alert_level = CODE_DELTA
+		if(0 to 15)
+			desired_alert_level = CODE_RED
+		if(15 to 25)
+			desired_alert_level = CODE_AMBER
+		if(25 to 50)
+			desired_alert_level = CODE_BLUE
+		if(50 to INFINITY)
+			desired_alert_level = CODE_GREEN
+
+	if(desired_alert_level > alert_level)
+		alert_level = desired_alert_level
+		switch(alert_level)
+			if(CODE_BLUE)
+				play("",all_mobs_with_clients)
+				CALLBACK_GLOBAL(\
+					"gamemode_announce_alert",\
+					SECONDS_TO_DECISECONDS(10),\
+					.proc/announce,\
+					"Station Alert System",\
+					"Alert Level Increased",\
+					"Attention. Condition Blue set throughout the station. Exercise Term: Fade Out.",\
+					ANNOUNCEMENT_STATION,\
+					'sound/voice/announcement/code_blue.ogg'\
+				)
+			if(CODE_AMBER)
+				CALLBACK_GLOBAL(
+					"gamemode_announce_alert",\
+					SECONDS_TO_DECISECONDS(10),\
+					.proc/announce,\
+					"Station Alert System",\
+					"Alert Level Increased",\
+					"Attention. Condition Amber set throughout the station. Exercise Term: Double Take. Additional Enemy Reinforcements detected in route to Area of Operations.",\
+					ANNOUNCEMENT_STATION,\
+					'sound/voice/announcement/code_amber.ogg'\
+				)
+			if(CODE_RED)
+				raid_station()
+				CALLBACK_GLOBAL(\
+					"gamemode_announce_alert",\
+					SECONDS_TO_DECISECONDS(10),\
+					.proc/announce,\
+					"Station Alert System",\
+					"Alert Level Increased",\
+					"Warning. Warning. Condition Red set throughout the station. Exercise Term: Fast Pace. All personnel to prepare for potential borders on station..",\
+					ANNOUNCEMENT_STATION,\
+					'sound/voice/announcement/code_red.ogg'\
+				)
+			if(CODE_DELTA)
+				CALLBACK_GLOBAL(\
+					"gamemode_announce_alert",\
+					SECONDS_TO_DECISECONDS(10),\
+					.proc/announce,\
+					"Station Alert System",\
+					"Alert Level Increased",\
+					"Warning. Warning. Condition Delta set throughout the station. Exercise Term: Cocked Pistol. Nuclear Strike is imminent. All personnel are ordered to evacuate the Area of Operations.",\
+					ANNOUNCEMENT_STATION,\
+					'sound/voice/announcement/code_delta.ogg'\
+				)
 
 /gamemode/proc/on_life()
 
@@ -93,7 +161,7 @@
 		var/obj/hud/button/objectives/O = k
 		O.set_stored_text(objective_text)
 
-	announce("Central Command Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
 
 	next_objective_update = -1
 

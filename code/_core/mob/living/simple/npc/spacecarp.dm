@@ -8,7 +8,7 @@
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/carp/
 
-	health_base = 200
+	health_base = 150
 
 	value = 100
 

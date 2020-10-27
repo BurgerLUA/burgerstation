@@ -15,6 +15,8 @@
 
 	bullet_block_chance = 50
 
+	density = TRUE
+
 /obj/structure/smooth/wall/wood
 	name = "short wood wall"
 	color = "#4C3323"

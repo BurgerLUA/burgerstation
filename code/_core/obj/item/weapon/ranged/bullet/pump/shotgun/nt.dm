@@ -18,9 +18,10 @@
 
 	view_punch = 12
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 
 	size = SIZE_4
+	weight = 11
 
 	value = 130
 
@@ -60,12 +61,12 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
 	return 0.004
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_base_spread()
-	return 0.012
+	return 0.024

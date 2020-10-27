@@ -50,6 +50,15 @@
 		"shoulders" = COLOR_WHITE
 	)
 
+/obj/item/clothing/shirt/normal/uniform/science
+	name = "science uniformed shirt"
+	desc = "Nerd."
+	desc_extended = "The shirt of choice for people who hate Casual Fridays."
+	polymorphs = list(
+		"shirt" = COLOR_WHITE,
+		"shoulders" = COLOR_SCIENCE
+	)
+
 /obj/item/clothing/shirt/normal/uniform/botanty
 	name = "botany uniformed shirt"
 	desc = "Blue and green."

@@ -9,11 +9,13 @@
 	value = 50
 	value_burgerbux = 2
 
+	weight = 0.1
+
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
 
-	if(!is_item(object))
+	if(!is_item(object) || object == src)
 		return ..()
 
 	var/obj/item/I = object
@@ -37,7 +39,7 @@
 
 	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."))
 
-	log_rename("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
+	log_admin("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
 
 	I.name = desired_name
 

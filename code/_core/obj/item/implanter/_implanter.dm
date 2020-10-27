@@ -11,6 +11,8 @@
 
 	value = 50
 
+	weight = 3
+
 
 /obj/item/implanter/update_icon()
 
@@ -64,3 +66,6 @@
 
 /obj/item/implanter/od_purge
 		stored_implant = /obj/item/organ/internal/implant/torso/od_purge
+
+/obj/item/implanter/death_alarm
+		stored_implant = /obj/item/organ/internal/implant/torso/death_alarm

@@ -153,8 +153,8 @@ dmm_suite
 			// Begin Instanciation
 			// Handle Areas (not created every time)
 			var /atom/instance
-			if(ispath(atomPath, /area) && all_areas[atomPath])
-				instance = all_areas[atomPath]
+			if(ispath(atomPath, /area) && SSarea.all_areas[atomPath])
+				instance = SSarea.all_areas[atomPath]
 				instance.contents.Add(locate(xcrd, ycrd, zcrd))
 				location.dmm_preloader = null
 			// Handle Underlay Turfs

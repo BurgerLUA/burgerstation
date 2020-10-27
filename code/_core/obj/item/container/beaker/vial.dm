@@ -19,6 +19,7 @@
 	reagents.add_reagent(/reagent/enzymes,reagents.volume_max)
 	return ..()
 
+/*
 /obj/item/container/beaker/vial/stand
 	name = "vial of stand powers"
 	desc = "Hmm, tastes like a blended arrow."
@@ -27,6 +28,7 @@
 /obj/item/container/beaker/vial/stand/Generate()
 	reagents.add_reagent(/reagent/magic/stand_juice,10)
 	return ..()
+*/
 
 /obj/item/container/beaker/vial/zombie_antidote
 	name = "vial of zombie antidote"
