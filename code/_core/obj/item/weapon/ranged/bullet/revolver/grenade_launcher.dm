@@ -17,9 +17,8 @@
 
 	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
 
-	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
-
 	size = SIZE_4
+	weight = 12
 
 	bullet_length_min = 45
 	bullet_length_best = 46

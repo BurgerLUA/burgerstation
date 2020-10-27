@@ -2,7 +2,7 @@
 	name = "\improper 7.62mm sniper magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
-	icon = 'icons/obj/item/magazine/762_sniper.dmi'
+	icon = 'icons/obj/item/magazine/762_rifle.dmi'
 	icon_state = "762"
 	bullet_count_max = 15
 
@@ -28,3 +28,12 @@
 	icon_states = 1
 
 	value = 15
+
+
+/obj/item/magazine/sniper_762/ap
+	name = "\improper 7.62mm AP sniper magazine"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one contains AP rounds."
+	icon = 'icons/obj/item/magazine/762_rifle_ap.dmi'
+	icon_state = "762"
+
+	ammo = /obj/item/bullet_cartridge/rifle_308/nato/ap

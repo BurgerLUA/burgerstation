@@ -16,7 +16,7 @@
 
 	)
 
-	ammo = /obj/item/bullet_cartridge/rifle_223
+	ammo = /obj/item/bullet_cartridge/rifle_223/nato
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -31,3 +31,11 @@
 	icon_states = 1
 
 	value = 10
+
+
+
+/obj/item/magazine/rifle_556/ap
+	name = "\improper 5.56mm AP rifle magazine"
+	icon = 'icons/obj/item/magazine/556_rifle_ap.dmi'
+	icon_state = "556"
+	ammo = /obj/item/bullet_cartridge/rifle_223/nato/ap
