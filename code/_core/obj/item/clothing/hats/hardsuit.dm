@@ -235,7 +235,7 @@
 
 	value = 200
 
-	/obj/item/clothing/head/helmet/hardsuit/ghostsheedhood
+/obj/item/clothing/head/helmet/hardsuit/ghostsheedhood
 	name = "Ghost costume hood"
 	desc = "OOOOoooOOooo!"
 	desc_extended = "The hood of a ghost costume, with holes cut out to see out of."
@@ -253,7 +253,7 @@
 
 	value = 10
 
-	/obj/item/clothing/head/helmet/hardsuit/cardborghelm
+/obj/item/clothing/head/helmet/hardsuit/cardborghelm
 	name = "cardboard robot helmet"
 	desc = "01000010 01100101 01100101 01110000"
 	desc_extended = "A helmet made from a cardboard box"
