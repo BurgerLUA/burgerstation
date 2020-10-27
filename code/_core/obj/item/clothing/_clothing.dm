@@ -4,6 +4,8 @@
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
+	weight = 0
+
 	color = "#FFFFFF"
 
 	icon_state = "inventory"
@@ -55,6 +57,8 @@
 	can_wear = TRUE
 
 	value = -1
+
+	var/speed_bonus = 0
 
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()

@@ -90,3 +90,43 @@
 	reagents.add_reagent(/reagent/salt,5)
 	reagents.add_reagent(/reagent/nutrition/junk/cheese_powder,15)
 	return ..()
+
+
+/obj/item/container/food/package/junkfood/halloween
+	icon = 'icons/obj/item/consumable/food/candy.dmi'
+
+/obj/item/container/food/package/junkfood/halloween
+	name = "100 credit bar"
+	icon_state = "100_credit_bar"
+
+/obj/item/container/food/package/junkfood/coconut_joy
+	name = "coconut joy"
+	icon_state = "coconut_joy"
+
+/obj/item/container/food/package/junkfood/hurr_bar
+	name = "hurr bar"
+	icon_state = "hurr_bar"
+
+/obj/item/container/food/package/junkfood/sniggers_bar
+	name = "sniggers bar"
+	icon_state = "sniggers_bar"
+
+/obj/item/container/food/package/junkfood/kit_catgirl_metaclique_bar
+	name = "kit-catgirl metaclique bar"
+	icon_state = "kit_catgirl_metaclique_bar"
+
+/obj/item/container/food/package/junkfood/twink_bar
+	name = "twink bar"
+	icon_state = "twink_bar"
+
+/obj/item/container/food/package/junkfood/elon_musk_bar
+	name = "elon \"husky musk\" bar"
+	icon_state = "elon_musk_bar"
+
+/obj/item/container/food/package/junkfood/malf_way
+	name = "\improper MALF way bar"
+	icon_state = "malf_way"
+
+/obj/item/container/food/package/junkfood/triggerfinger
+	name = "triggerfinger bar"
+	icon_state = "triggerfinger"

@@ -49,10 +49,17 @@
 /obj/item/container/food/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
+/obj/item/container/food/proc/on_consumed(var/mob/caller,var/mob/living/target) //When there are no reagents left.
+	qdel(src)
+	return TRUE
+
 /obj/item/container/food/feed(var/mob/caller,var/mob/living/target)
+
 	. = ..()
-	if(. && reagents.volume_current <= 0)
-		qdel(src)
+
+	if(reagents.volume_current <= 0)
+		on_consumed(caller,target)
+
 	return .
 
 /obj/item/container/food/get_reagents_to_consume()

@@ -11,6 +11,7 @@
 	container_max_size = SIZE_4
 
 
+	weight = 20
 
 	value = 100
 

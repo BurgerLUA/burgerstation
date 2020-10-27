@@ -143,7 +143,7 @@
 	drop_all_items(get_turf(src))
 	return ..()
 
-/mob/living/advanced/proc/update_clothes() //Avoid using?
+/mob/living/advanced/proc/update_clothes()
 
 	tracked_hidden_organs = list()
 
@@ -152,6 +152,7 @@
 			tracked_hidden_clothing |= C.hidden_clothing
 		if(C.hidden_organs)
 			tracked_hidden_organs |= C.hidden_organs
+		slowdown_mul = max(slowdown_mul - C.speed_bonus,0.5)
 
 	var/do_organs = length(tracked_hidden_organs)
 	var/do_clothing = tracked_hidden_clothing != 0x0
@@ -176,11 +177,13 @@
 		sight |= E.sight_mod
 		vision |= E.vision_mod
 		see_invisible = max(E.see_invisible,see_invisible)
+		see_in_dark = max(see_in_dark,E.see_in_dark)
 
 	for(var/obj/item/clothing/glasses/G in worn_objects)
 		sight |= G.sight_mod
 		vision |= G.vision_mod
 		see_invisible = max(G.see_invisible,see_invisible)
+		see_in_dark = max(see_in_dark,G.see_in_dark)
 
 	return .
 

@@ -7,11 +7,15 @@
 	item_slot = SLOT_TORSO
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		DARK = 10,
-		COLD = 10,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -15,
+		ARCANE = 50,
+		HEAT = -50,
+		COLD = 50,
+		HOLY = -50,
+		DARK = 50
 	)
 
 	value = 100

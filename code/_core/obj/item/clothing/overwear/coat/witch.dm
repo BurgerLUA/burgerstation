@@ -7,8 +7,11 @@
 
 	defense_rating = list(
 		ARCANE = 100,
+		BIO = -100, //IM MELTING
+		HOLY = -50,
+		DARK = 50
 	)
 
 	size = SIZE_3
 
-	value = 120
+	value = 300

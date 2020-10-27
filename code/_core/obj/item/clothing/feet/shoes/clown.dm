@@ -23,6 +23,8 @@
 
 	value = 100
 
+	speed_bonus = -0.05
+
 
 
 /obj/item/clothing/feet/shoes/clown/get_footsteps(var/list/original_footsteps,var/enter=FALSE)

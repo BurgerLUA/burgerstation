@@ -5,6 +5,8 @@
 	desc_extended = "A pair of tactical nightvision goggles. Keep away from light."
 	icon = 'icons/obj/item/clothing/glasses/nightvision.dmi'
 
+	see_in_dark = VIEW_RANGE + ZOOM_RANGE
+
 	defense_rating = list(
 		LASER = -50,
 		ARCANE = -50,

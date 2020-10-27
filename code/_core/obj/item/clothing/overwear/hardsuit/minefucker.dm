@@ -1,25 +1,23 @@
-/obj/item/clothing/overwear/hardsuit/minefucker
+/obj/item/clothing/overwear/coat/miner
 	name = "blocky skinsuit"
 	desc = "punch trees"
 	desc_extended = "A strange skin suit that feels pixlated to the touch.... somehow.."
 	icon = 'icons/obj/item/clothing/suit/minefucker.dmi'
+
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
+
 	rarity = RARITY_RARE
-	value = 2000
+	value = 500
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 75,
-		ARCANE = -75,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 75,
-		BIO = 50,
-		RAD = 50
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = -25,
+		ARCANE = 25,
+		HEAT = -50,
+		COLD = 25,
+		BOMB = -100
 	)
 
-	size = SIZE_7
-
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/minefuckerhat)
-
+	size = SIZE_5

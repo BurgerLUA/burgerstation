@@ -29,7 +29,8 @@
 		/obj/item/disk/rcd/metal_wall,
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
-		/obj/item/powercell/industrial
+		/obj/item/powercell/industrial,
+		/obj/item/deployable/sentry
 	)
 
 /obj/structure/interactive/vending/engineering/wardrobe

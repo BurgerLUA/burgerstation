@@ -274,18 +274,6 @@
 	)
 */
 
-/obj/structure/interactive/vending/clown/wardrobe
-	name = "clown wardrobe vendor"
-	icon_state = "theater"
-
-	stored_types = list(
-		/obj/item/clothing/mask/gas/clown,
-		/obj/item/clothing/uniform/clown,
-		/obj/item/storage/shoebox/clown,
-		/obj/item/bikehorn,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube
-	)
-
 /obj/structure/interactive/vending/hydroponics/nutri
 	name = "garden vendor"
 	icon_state = "nutri"

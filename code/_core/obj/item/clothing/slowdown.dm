@@ -21,6 +21,11 @@ var/global/list/armor_slowdown_values = list(
 
 /obj/item/clothing/proc/calculate_weight()
 
+	var/init_weight = initial(weight)
+
+	if(init_weight != 0)
+		return init_weight
+
 	. = 1
 
 	for(var/k in defense_rating)

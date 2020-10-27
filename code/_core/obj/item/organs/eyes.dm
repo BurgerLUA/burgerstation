@@ -17,6 +17,7 @@
 	var/vision_mod = FLAG_VISION_NONE
 	var/sight_mod = SEE_BLACKNESS
 	var/see_invisible = 0
+	var/see_in_dark = 1
 
 
 /obj/item/organ/eye/initialize_blends()

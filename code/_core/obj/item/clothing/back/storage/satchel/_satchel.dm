@@ -10,7 +10,7 @@
 	size = MAX_INVENTORY_X*2*SIZE_2
 	container_max_size = SIZE_3
 
-
+	weight = 5
 
 	value = 30
 
