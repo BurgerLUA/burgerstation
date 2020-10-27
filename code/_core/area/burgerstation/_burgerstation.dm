@@ -22,7 +22,7 @@
 
 	trackable = TRUE
 
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 /area/burgerstation/hall
 	name = "\improper Hallway"

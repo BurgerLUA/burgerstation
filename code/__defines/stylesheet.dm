@@ -41,7 +41,7 @@ body {
 	font-weight:bold;
 	font-style: italic;
 }
-.debug_message{
+.subsystem{
 	color:blue;
 	font-weight: bold;
 	font-size: 10px;

@@ -32,6 +32,7 @@
 
 	var/origin_area_identifier
 
+	var/talks = TRUE
 	var/next_voice = 0
 
 	var/was_being_watched = FALSE
@@ -43,6 +44,12 @@
 
 	return ..()
 
+/ai/ghost/proc/setup_appearance()
+	ghost_type = pick("shade","revenant","faithless","forgotten")
+	owner_as_ghost.icon = 'icons/mob/living/simple/ghosts.dmi'
+	owner_as_ghost.icon_state = ghost_type
+	owner_as_ghost.name = ghost_type
+
 /ai/ghost/New(var/mob/living/desired_owner)
 
 	. = ..()
@@ -50,23 +57,20 @@
 	var/turf/T = get_turf(desired_owner)
 	var/area/A = T.loc
 	origin_area_identifier = A.area_identifier
+	world.log << "ATTENTION: [origin_area_identifier]."
 
 	owner_as_ghost = desired_owner
 	shy_level = rand(1,3)
 	//stealth_killer = rand(1,2)
 	stealth_killer = 1
-	ghost_type = pick("shade","revenant","faithless","forgotten")
 
-	owner_as_ghost.icon = 'icons/mob/living/simple/ghosts.dmi'
-	owner_as_ghost.icon_state = ghost_type
-	desired_owner.name = ghost_type
+	setup_appearance()
 
 
 	var/turf/T2 = find_new_location()
 	if(T2)
 		owner.force_move(T2)
 		notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
-		log_debug("\The [owner.name] moved to [T2.loc.name].")
 
 	return .
 
@@ -110,7 +114,8 @@
 	var/area/A = T.loc
 
 	if(A.area_identifier != origin_area_identifier)
-		find_new_location()
+		var/turf/T2 = find_new_location()
+		owner.force_move(T2)
 		return TRUE
 
 	if(owner.move_delay <= 0)
@@ -142,7 +147,6 @@
 					if(can_hunt)
 						anger = 200
 						notify_ghosts("\The [owner.name] is now hunting!",T)
-						log_debug("\The [owner.name] is now hunting!")
 						owner.icon_state = "[ghost_type]_angry"
 						play('sound/ghost/ghost_ambience_2.ogg',T,volume=75)
 					else
@@ -212,7 +216,7 @@
 			if(is_advanced(LS.top_atom))
 				var/mob/living/advanced/ADV = LS.top_atom
 				if(anger >= 50)
-					if(!annoying_player)
+					if(talks && !annoying_player)
 						play(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					anger += 25
@@ -234,26 +238,27 @@
 					owner.force_move(T2)
 					create_emf(T2,3,VIEW_RANGE*3)
 					notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
-					log_debug("\The [owner.name] moved to [T2.loc.name].")
-					play(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
-					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+					if(talks)
+						play(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
+						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 			else if(viewer_count || insane)
 				var/mob/living/advanced/ADV = insane ? insane : pick(viewers)
 				var/turf/T2 = get_turf(ADV)
 				owner.force_move(T2)
-				if(anger <= 50)
-					play(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
-					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-				else
-					play(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2)
-					next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+				if(talks)
+					if(anger <= 50)
+						play(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
+						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+					else
+						play(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2)
+						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 				anger += 10
 
 
 	//Look at the man who will die.
 	if(insane)
 		owner.set_dir(get_dir(owner,insane))
-		if(next_voice < world.time && prob(25))
+		if(talks && next_voice < world.time && prob(25))
 			play(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
 			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
@@ -297,3 +302,14 @@
 
 
 	return TRUE
+
+
+/ai/ghost/shitass
+	talks = FALSE
+
+/ai/ghost/shitass/setup_appearance()
+	ghost_type = "living"
+
+	owner_as_ghost.icon = 'icons/mob/living/simple/shitass.dmi'
+	owner_as_ghost.icon_state = "living"
+	owner_as_ghost.name = "shitass"

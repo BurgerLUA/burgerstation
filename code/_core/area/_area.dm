@@ -56,14 +56,6 @@
 	var/average_x = 0
 	var/average_y = 0
 
-/area/New(var/desired_loc)
-	SSarea.all_areas[src.type] = src
-	if(area_identifier)
-		if(!SSarea.areas_by_identifier[area_identifier])
-			SSarea.areas_by_identifier[area_identifier] = list()
-		SSarea.areas_by_identifier[area_identifier] += src
-	return ..()
-
 /area/proc/is_space()
 	return FALSE
 

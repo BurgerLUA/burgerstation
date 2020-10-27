@@ -4,7 +4,7 @@
 	desc_extended  = "..."
 	//Icon and icon state is set in AI.
 
-	ai = /ai/ghost
+	ai = /ai/ghost/
 	damage_type = /damagetype/npc/ghost
 	class = /class/antagonist
 	level_multiplier = 1000
@@ -56,9 +56,9 @@
 		FIRE = TRUE
 	)
 
-
-
-
-
 /mob/living/simple/npc/ghost/handle_alpha()
 	return desired_alpha
+
+
+/mob/living/simple/npc/ghost/shitass
+	ai = /ai/ghost/shitass

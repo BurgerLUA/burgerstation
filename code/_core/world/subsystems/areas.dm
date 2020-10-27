@@ -24,6 +24,11 @@ SUBSYSTEM_DEF(area)
 	var/area_count = 0
 
 	for(var/area/A in world)
+		all_areas[A.type] = A
+		if(A.area_identifier)
+			if(!areas_by_identifier[A.area_identifier])
+				areas_by_identifier[A.area_identifier] = list()
+			areas_by_identifier[A.area_identifier] += A
 		INITIALIZE(A)
 		area_count += 1
 		if(length(A.random_sounds))

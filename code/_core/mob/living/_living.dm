@@ -359,9 +359,6 @@
 
 	. = ..()
 
-	if(ai)
-		ai = new ai(src)
-
 	if(desired_client)
 		screen_blood = list()
 		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
@@ -375,6 +372,8 @@
 	return .
 
 /mob/living/Initialize()
+
+	if(ai) ai = new ai(src)
 
 	if(boss)
 		SSbosses.tracked_bosses[id] = src
