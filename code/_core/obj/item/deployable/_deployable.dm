@@ -49,9 +49,13 @@
 	desc_extended = "A large deployable barricade."
 	structure_to_deploy = /obj/structure/interactive/barricade/
 	icon = 'icons/obj/item/deployable/barricade.dmi'
-	value = 80
+	value = 40
 
 	weight = 3
+
+	item_count_max = 5
+
+	size = SIZE_3
 
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
@@ -65,3 +69,5 @@
 	icon = 'icons/obj/item/deployable/miniturret.dmi'
 	value = 500
 	item_count_max = 1
+	weight = 20
+	size = SIZE_4

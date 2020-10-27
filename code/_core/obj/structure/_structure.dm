@@ -21,8 +21,11 @@
 	var/light_sprite //The light sprite of the object, if any.
 
 	var/flags_placement = FLAGS_PLACEMENT_NONE
+	var/list/structure_blacklist = list() //Things that can't be constructed on the same turf that's occupying this.
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
+
+
 
 /obj/structure/should_smooth_with(var/turf/T)
 

@@ -17,10 +17,17 @@
 	if(is_living(O)) lava_idiot(O)
 	return ..()
 
-/turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)
 
-	if(L.loc != src)
-		return FALSE
+/turf/simulated/hazard/lava/Exit(atom/movable/O,atom/newloc)
+
+	if(is_living(O) && !istype(src,newloc))
+		CALLBACK_REMOVE("lava_\ref[O]")
+
+	return ..()
+
+
+
+/turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)
 
 	if(length(L.status_immune) && L.status_immune[FIRE])
 		return FALSE
