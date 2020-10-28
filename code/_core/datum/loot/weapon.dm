@@ -450,3 +450,19 @@
 	)
 	loot_count = 6
 	chance_none = 25
+
+/loot/weapon/grenade_launcher
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher,
+		/obj/item/bullet_cartridge/grenade_40mm/,
+		/obj/item/bullet_cartridge/grenade_40mm/,
+		/obj/item/bullet_cartridge/grenade_40mm/
+	)
+
+	loot_table = list(
+		/obj/item/bullet_cartridge/grenade_40mm/ = 1
+	)
+	loot_count = 4
+	chance_none = 25
+
+

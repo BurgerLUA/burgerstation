@@ -7,7 +7,8 @@
 		/obj/item/attachment/barrel/charger/advanced = 1,
 		/obj/item/clothing/overwear/armor/knight/battlemage = 1,
 		/obj/item/hand_teleporter = 1,
-		/loot/weapon/minigun = 1
+		/loot/weapon/minigun = 1,
+		/loot/weapon/grenade_launcher = 1
 	)
 
 	loot_multiplier = 4

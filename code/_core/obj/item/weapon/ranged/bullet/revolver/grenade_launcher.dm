@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher
-	name = "M79 Thumper"
+	name = "\improper Grenade Thumper"
 	desc = "Blooper"
 	desc_extended = "an old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
@@ -62,7 +62,7 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.05
