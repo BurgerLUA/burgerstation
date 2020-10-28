@@ -3,7 +3,7 @@
 	desc = "Edible reagent that you can grab with a hand."
 	desc_extended = "Edible."
 
-	scale_sprite = TRUE
+	scale_sprite = FALSE
 
 	var/obj/item/trash/packaging //The object created when you unwrap it.
 	var/obj/item/trash/trash //The object created when there is nothing left to eat from it.
@@ -17,17 +17,30 @@
 
 	. = ..()
 
+	if(trash)
+		var/obj/item/trash/T = create_trash(caller)
+		if(I) I.add_object(T)
+		trash = null
+
+	return TRUE
+
+/obj/item/container/food/package/proc/create_trash(var/mob/caller)
 	var/obj/item/trash/T = new trash(get_turf(caller))
 	INITIALIZE(T)
 	GENERATE(T)
 	FINALIZE(T)
+	return T
 
-	if(I) I.add_object(I)
-
-	return TRUE
+/obj/item/container/food/package/proc/create_packaging(var/mob/caller)
+	var/obj/item/trash/T = new packaging(get_turf(caller))
+	INITIALIZE(T)
+	GENERATE(T)
+	FINALIZE(T)
+	return T
 
 
 /obj/item/container/food/package/feed(var/mob/caller,var/mob/living/target)
+
 	if(packaging)
 		caller.to_chat(span("notice","Unwrap \the [src.name] before eating it!"))
 		return FALSE
@@ -40,14 +53,11 @@
 	if(!packaging)
 		return FALSE
 
-	var/obj/item/trash/T = new packaging(get_turf(src))
-	INITIALIZE(T)
-	GENERATE(T)
-	FINALIZE(T)
+	var/obj/item/trash/T = create_packaging(caller)
 
 	caller.to_chat(span("notice","You unwrap \the [src.name]."))
 
-	if(I) I.add_object(I)
+	if(I) I.add_object(T)
 
 	packaging = null
 

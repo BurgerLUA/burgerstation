@@ -31,6 +31,16 @@
 
 	return .
 
+/gamemode/horde/proc/create_horde_mob(var/desired_loc)
+	var/mob/living/L = pickweight(enemy_types_to_spawn)
+	L = new L(desired_loc)
+	INITIALIZE(L)
+	FINALIZE(L)
+	GENERATE(L)
+	HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
+	return L
+
+
 /gamemode/horde/New()
 
 	state = GAMEMODE_WAITING
@@ -40,10 +50,7 @@
 
 	for(var/k in horde_spawnpoints)
 		var/turf/T = k
-		var/mob/living/L = pickweight(enemy_types_to_spawn)
-		L = new L(T)
-		INITIALIZE(L)
-		FINALIZE(L)
+		create_horde_mob(T)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
 		if(O.z < Z_LEVEL_MISSION)
@@ -208,15 +215,15 @@
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
-		var/mob/living/L = pickweight(get_enemy_types_to_spawn())
-		L = new L(T)
-		INITIALIZE(L)
-		FINALIZE(L)
+		var/mob/living/L = create_horde_mob(T)
 		L.ai.set_path(found_path)
 		tracked_enemies += L
-		HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
 
 /gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
+
+	for(var/k in SSholiday.holidays)
+		var/holiday/H = SSholiday.holidays[k]
+		H.horde_post_death(L)
 
 	if(!(L in tracked_enemies))
 		return FALSE

@@ -94,39 +94,66 @@
 
 /obj/item/container/food/package/junkfood/halloween
 	icon = 'icons/obj/item/consumable/food/candy.dmi'
+	packaging = /obj/item/trash/candy
 
-/obj/item/container/food/package/junkfood/halloween
+/obj/item/container/food/package/junkfood/halloween/update_icon()
+	icon_state = initial(icon_state)
+	if(!packaging)
+		icon_state = "[icon_state]_open"
+	return ..()
+
+
+/obj/item/container/food/package/junkfood/halloween/unwrap(var/mob/caller,var/obj/hud/inventory/I)
+
+	. = ..()
+
+	if(.) update_sprite()
+
+	return .
+
+/obj/item/container/food/package/junkfood/halloween/create_packaging()
+	var/obj/item/trash/T = ..()
+	T.icon = icon
+	T.icon_state = "[initial(icon_state)]_trash"
+	return T
+
+/obj/item/container/food/package/junkfood/halloween/credit
 	name = "100 credit bar"
 	icon_state = "100_credit_bar"
 
-/obj/item/container/food/package/junkfood/coconut_joy
+/obj/item/container/food/package/junkfood/halloween/credit/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,10)
+	reagents.add_reagent(/reagent/nutrition/sugar,5)
+	return ..()
+
+/obj/item/container/food/package/junkfood/halloween/coconut_joy
 	name = "coconut joy"
 	icon_state = "coconut_joy"
 
-/obj/item/container/food/package/junkfood/hurr_bar
+/obj/item/container/food/package/junkfood/halloween/hurr_bar
 	name = "hurr bar"
 	icon_state = "hurr_bar"
 
-/obj/item/container/food/package/junkfood/sniggers_bar
+/obj/item/container/food/package/junkfood/halloween/sniggers_bar
 	name = "sniggers bar"
 	icon_state = "sniggers_bar"
 
-/obj/item/container/food/package/junkfood/kit_catgirl_metaclique_bar
+/obj/item/container/food/package/junkfood/halloween/kit_catgirl_metaclique_bar
 	name = "kit-catgirl metaclique bar"
 	icon_state = "kit_catgirl_metaclique_bar"
 
-/obj/item/container/food/package/junkfood/twink_bar
+/obj/item/container/food/package/junkfood/halloween/twink_bar
 	name = "twink bar"
 	icon_state = "twink_bar"
 
-/obj/item/container/food/package/junkfood/elon_musk_bar
+/obj/item/container/food/package/junkfood/halloween/elon_musk_bar
 	name = "elon \"husky musk\" bar"
 	icon_state = "elon_musk_bar"
 
-/obj/item/container/food/package/junkfood/malf_way
+/obj/item/container/food/package/junkfood/halloween/malf_way
 	name = "\improper MALF way bar"
 	icon_state = "malf_way"
 
-/obj/item/container/food/package/junkfood/triggerfinger
+/obj/item/container/food/package/junkfood/halloween/triggerfinger
 	name = "triggerfinger bar"
 	icon_state = "triggerfinger"
