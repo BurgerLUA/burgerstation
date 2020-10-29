@@ -18,6 +18,10 @@
 	icon_state = "[initial(icon_state)]_[rand(1,11)]"
 	if(prob(70) || z != 1)
 		meatman_spawned = TRUE
+
+	if(prob(20))
+		new /mob/living/simple/npc/passive/mouse/grey(src.loc)
+
 	return .
 
 /obj/item/storage/heavy/trash_pile/Generate()
