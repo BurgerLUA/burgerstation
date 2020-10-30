@@ -37,6 +37,8 @@
 
 	var/was_being_watched = FALSE
 
+	var/last_teleport = 0
+
 /ai/ghost/handle_movement_roaming()
 
 	if(was_being_watched)
@@ -126,7 +128,7 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(objective_attack || anger >= 100)
+	if(objective_attack || (anger >= 100 && last_teleport + SECONDS_TO_DECISECONDS(10) <= world.time))
 		var/no_objective = !objective_attack
 		objective_ticks += tick_rate
 		owner_as_ghost.desired_alpha = stealth_killer == 2 ? 0 : 255
@@ -140,7 +142,7 @@
 					var/can_hunt = TRUE
 					for(var/obj/item/cross/C in range(objective_attack,6))
 						if(C.icon_state == initial(C.icon_state))
-							C.break_cross()
+							C.on_destruction(owner,TRUE)
 							can_hunt = FALSE
 							break
 					if(can_hunt)
@@ -219,7 +221,6 @@
 						play(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					anger += 25
-					anger = max(anger,90)
 					ADV.sanity -= 50
 				else
 					anger += 10
@@ -229,7 +230,7 @@
 				var/obj/item/weapon/melee/torch/L = LS.source_atom
 				if(L.enabled) L.click_self(owner)
 				create_emf(get_turf(L),3)
-		if(annoying_player)
+		if(annoying_player && last_teleport + SECONDS_TO_DECISECONDS(20) <= world.time)
 			if(viewer_count >= 3)
 				var/turf/T2 = find_new_location()
 				if(T2)
@@ -240,10 +241,12 @@
 					if(talks)
 						play(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+					last_teleport = world.time
 			else if(viewer_count || insane)
 				var/mob/living/advanced/ADV = insane ? insane : pick(viewers)
 				var/turf/T2 = get_turf(ADV)
 				owner.force_move(T2)
+				last_teleport = world.time
 				if(talks)
 					if(anger <= 50)
 						play(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
@@ -261,8 +264,11 @@
 			play(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
 			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
-	if(anger <= 50)
+
+	if(anger <= 10)
 		desired_alpha = 0
+	else if (anger >= 75)
+		desired_alpha = 200
 
 
 	desired_alpha = clamp(desired_alpha,0,255)

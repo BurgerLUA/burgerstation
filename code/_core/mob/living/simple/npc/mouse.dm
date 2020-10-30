@@ -22,7 +22,7 @@
 	icon_state = "mouse_white"
 
 /mob/living/simple/npc/passive/mouse/grey
-	icon_state = "mouse_grey"
+	icon_state = "mouse_gray"
 
 /mob/living/simple/npc/passive/mouse/post_death()
 	..()

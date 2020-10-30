@@ -1,5 +1,5 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 #define QUICK_VOTE FALSE
 #define SHOW_HOOKS FALSE
 #define ENABLE_TRACKS FALSE

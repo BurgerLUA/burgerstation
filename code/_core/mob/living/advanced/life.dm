@@ -1,5 +1,5 @@
 /mob/living/advanced/death_message()
-	src.emote("deathgasp")
+	src.do_emote("deathgasp")
 	return TRUE
 
 

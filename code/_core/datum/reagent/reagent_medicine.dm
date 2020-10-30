@@ -281,7 +281,7 @@
 		container.owner.health.adjust_loss_smart(burn=.*-10)
 		if(is_living(container.owner.loc))
 			var/mob/living/L = container.owner.loc
-			L.emote("scream")
+			L.do_emote("scream")
 
 	return .
 
@@ -335,7 +335,7 @@
 		container.owner.health.adjust_loss_smart(brute=.*-10)
 		if(is_living(container.owner.loc))
 			var/mob/living/L = container.owner.loc
-			L.emote("scream")
+			L.do_emote("scream")
 
 	return .
 
