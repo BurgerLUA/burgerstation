@@ -209,7 +209,8 @@
 		"yawn",
 		"cry",
 		"clap",
-		"salute"
+		"salute",
+		"spin"
 	)
 
 	var/tabled = FALSE

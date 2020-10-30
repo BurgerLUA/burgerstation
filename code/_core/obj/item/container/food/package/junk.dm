@@ -122,38 +122,87 @@
 	icon_state = "100_credit_bar"
 
 /obj/item/container/food/package/junkfood/halloween/credit/Generate()
-	reagents.add_reagent(/reagent/nutrition/junk/chocolate,10)
-	reagents.add_reagent(/reagent/nutrition/sugar,5)
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/sugar/caramel,3)
+	reagents.add_reagent(/reagent/nutrition/sugar,2)
+	reagents.add_reagent(/reagent/nutrition/junk/crisp_rice,5)
 	return ..()
 
 /obj/item/container/food/package/junkfood/halloween/coconut_joy
 	name = "coconut joy"
 	icon_state = "coconut_joy"
 
+/obj/item/container/food/package/junkfood/halloween/coconut_joy/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,6)
+	reagents.add_reagent(/reagent/nutrition/sugar,5)
+	reagents.add_reagent(/reagent/nutrition/coconut,4)
+	return ..()
+
 /obj/item/container/food/package/junkfood/halloween/hurr_bar
 	name = "hurr bar"
 	icon_state = "hurr_bar"
+
+/obj/item/container/food/package/junkfood/halloween/hurr_bar/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/sugar,10)
+	return ..()
+
 
 /obj/item/container/food/package/junkfood/halloween/sniggers_bar
 	name = "sniggers bar"
 	icon_state = "sniggers_bar"
 
+/obj/item/container/food/package/junkfood/halloween/sniggers_bar/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/nut,5)
+	reagents.add_reagent(/reagent/nutrition/sugar/caramel,5)
+	return ..()
+
+
 /obj/item/container/food/package/junkfood/halloween/kit_catgirl_metaclique_bar
 	name = "kit-catgirl metaclique bar"
 	icon_state = "kit_catgirl_metaclique_bar"
+
+/obj/item/container/food/package/junkfood/halloween/kit_catgirl_metaclique_bar/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/junk/wafer,10)
+	return ..()
+
 
 /obj/item/container/food/package/junkfood/halloween/twink_bar
 	name = "twink bar"
 	icon_state = "twink_bar"
 
+/obj/item/container/food/package/junkfood/halloween/twink_bar/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/junk/cookie,7)
+	reagents.add_reagent(/reagent/nutrition/sugar/caramel,7)
+	return ..()
+
 /obj/item/container/food/package/junkfood/halloween/elon_musk_bar
 	name = "elon \"husky musk\" bar"
 	icon_state = "elon_musk_bar"
+
+/obj/item/container/food/package/junkfood/halloween/elon_musk_bar/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/junk/nougat,10)
+	return ..()
 
 /obj/item/container/food/package/junkfood/halloween/malf_way
 	name = "\improper MALF way bar"
 	icon_state = "malf_way"
 
+/obj/item/container/food/package/junkfood/halloween/malf_way/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/junk/nougat,10)
+	return ..()
+
 /obj/item/container/food/package/junkfood/halloween/triggerfinger
 	name = "triggerfinger bar"
 	icon_state = "triggerfinger"
+
+/obj/item/container/food/package/junkfood/halloween/triggerfinger/Generate()
+	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
+	reagents.add_reagent(/reagent/nutrition/nut/butter,5)
+	reagents.add_reagent(/reagent/nutrition/sugar,5)
+	return ..()

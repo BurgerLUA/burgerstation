@@ -10,14 +10,21 @@
 	size = SIZE_2
 
 /obj/item/armor_plate/New(var/desired_loc)
-	calculate_weight()
+	weight = calculate_weight()
 	return ..()
 
 /obj/item/armor_plate/proc/calculate_weight()
 
+	var/init_weight = initial(weight)
+
+	if(init_weight != 0)
+		return init_weight
+
 	. = 1
 
 	for(var/k in armor_base)
+		if(IS_INFINITY(armor_base[k]))
+			continue
 		. += armor_base[k] * armor_slowdown_values[k]
 
 	return .

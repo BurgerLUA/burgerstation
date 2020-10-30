@@ -81,3 +81,21 @@
 	id = "salute"
 	action = "\The #USER salutes!"
 	action_target = "\The #USER salutes #TARGET!"
+
+/emote/spin
+	name = "Spin"
+	id = "spin"
+	action = null
+	action_target = null
+
+
+/emote/spin/proc/spin(var/atom/emoter,var/spins_remaining=0)
+
+	emoter.set_dir(turn(emoter.dir,90))
+
+	if(spins_remaining > 0)
+		CALLBACK("\ref[emoter]_spin",1,src,.proc/spin,emoter,spins_remaining-1)
+
+/emote/spin/on_emote(var/atom/emoter,var/atom/target)
+	spin(emoter,10)
+	return ..()

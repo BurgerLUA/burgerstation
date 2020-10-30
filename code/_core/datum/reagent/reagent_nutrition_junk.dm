@@ -33,6 +33,42 @@
 
 	flavor = "bland chocolate"
 
+/reagent/nutrition/junk/nougat
+	name = "low quality nougat"
+	desc = "Nutrition and flavor from low quality nougat."
+	color = "#C4A06D"
+
+	nutrition_amount = 8
+
+	flavor = "bitter nougat"
+
+/reagent/nutrition/junk/crisp_rice
+	name = "crispy rice"
+	desc = "Nutrition and flavor from crispy rice."
+	color = "#EAEAC7"
+
+	nutrition_amount = 4
+
+	flavor = "stale crispy rice"
+
+/reagent/nutrition/junk/wafer
+	name = "wafer"
+	desc = "Nutrition and flavor from wafers."
+	color = "#FFD897"
+
+	nutrition_amount = 6
+
+	flavor = "stale wafer"
+
+/reagent/nutrition/junk/cookie
+	name = "cookie"
+	desc = "Nutrition and flavor from cookies."
+	color = "#B77100"
+
+	nutrition_amount = 10
+
+	flavor = "cookie"
+
 /reagent/nutrition/junk/jerky
 	name = "soy jerky"
 	desc = "Nutrition and flavor from soy jerky."
