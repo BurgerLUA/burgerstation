@@ -100,7 +100,7 @@
 	while(chances_left > 0)
 		chances_left--
 		var/area/A2 = pick(possible_areas)
-		if(istype(A2,/area/transit))
+		if(A2.allow_ghosts)
 			continue
 		var/turf/T = locate(A2.average_x,A2.average_y,A2.z)
 		return T

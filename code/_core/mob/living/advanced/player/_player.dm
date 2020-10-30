@@ -140,8 +140,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 		current_squad.remove_member(src)
 		current_squad = null
 
-	if(area && area.players_inside)
-		area.players_inside -= src
 	all_players -= src
 	attack_logs.Cut()
 

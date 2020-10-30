@@ -9,6 +9,7 @@
 /area/lz_420/basement/lobby
 	name = "Basement Lobby"
 	icon_state = "lobby"
+	allow_ghosts = FALSE
 
 /area/lz_420/basement/bathroom
 	name = "Basement Bathroom Lobby"
