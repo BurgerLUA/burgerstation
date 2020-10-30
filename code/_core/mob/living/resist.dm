@@ -62,7 +62,6 @@
 				span("warning","\The [src.name] quickly pats out the flames!"),
 				span("danger","You quickly pat out the flames!"),
 			)
-		src << -stacks_to_remove
 		adjust_fire_stacks(-stacks_to_remove)
 		health.adjust_stamina(-5)
 		next_resist = world.time + 15

@@ -16,7 +16,8 @@
 			"NanoTrasen",
 			"Burgerstation",
 			"get to work",
-			"*Reward Redemption"
+			"*Reward Redemption",
+			"*Experience Redemption"
 		)
 	else
 		dialogue_options["hello"] = list(
@@ -102,6 +103,9 @@
 		dialogue_options["*Reward Redemption"] = list(
 			"Please whisper the secret phrase to redeem your reward."
 		)
+		dialogue_options["*Experience Redemption"] = list(
+			"Select what experience you wish to redeem."
+		)
 	else
 		dialogue_options["shuttle"] = list(
 			"The shuttle takes new crewmembers to #1 from #2. You should be boarding it now so you can #3.",
@@ -160,12 +164,41 @@
 
 	. = ..()
 
-	if(topic == "*Reward Redemption")
-		var/desired_input = input("Please enter the reward code. Reward codes are case sensitive.","Reward Code") as text
-		desired_input = sanitize(desired_input)
-		if(desired_input && SSreward.check_code(P.client,desired_input))
+	switch(topic)
+		if("*Reward Redemption")
+			var/desired_input = input("Please enter the reward code. Reward codes are case sensitive.","Reward Code") as text
+			desired_input = sanitize(desired_input)
+			if(desired_input && SSreward.check_code(P.client,desired_input))
+				set_topic(P,"*rewardsuccess")
+			else
+				set_topic(P,"*rewardfail")
+		if("*Experience Redemption")
+			var/savedata/client/globals/G = GLOBALDATA(P.ckey)
+			var/list/data_to_use = G.loaded_data["stored_experience"]
+			var/list/choice_list = list()
+			for(var/k in data_to_use)
+				var/v = data_to_use[k]
+				choice_list["[k]: [v]xp"] = k
+			var/desired_experience = input("What experience would you like to redeem?","Experience Redemption") as null|anything in choice_list
+			if(desired_experience)
+				desired_experience = choice_list[desired_experience]
+				var/desired_redeem_amount = input("How much [desired_experience]xp do you wish to redeem? (Max: [data_to_use[desired_experience]])","[desired_experience] experience redemption") as num
+				if(desired_redeem_amount && desired_redeem_amount > 0)
+					desired_redeem_amount = min(desired_redeem_amount,data_to_use[desired_experience])
+					if(P.attributes[desired_experience])
+						desired_redeem_amount = P.add_attribute_xp(desired_experience,desired_redeem_amount)
+						P.to_chat(span("notice","You redeem [desired_redeem_amount] (attribute) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
+						G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
+					else if(P.skills[desired_experience])
+						desired_redeem_amount = P.add_skill_xp(desired_experience,desired_redeem_amount)
+						P.to_chat(span("notice","You redeem [desired_redeem_amount] (skill) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
+						G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
+					else
+						P.to_chat(span("notice","Something went wrong. Report this bug to burger on discord with the error: 1.[desired_experience].[desired_redeem_amount]."))
+				else
+					P.to_chat(span("notice","You decide not to redeem anything."))
+			else
+				P.to_chat(span("notice","You decide not to redeem anything."))
 			set_topic(P,"*rewardsuccess")
-		else
-			set_topic(P,"*rewardfail")
 
 	return .

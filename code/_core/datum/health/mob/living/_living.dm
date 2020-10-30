@@ -17,7 +17,8 @@
 			BLUNT = armor_bonus,
 			PIERCE = armor_bonus,
 			ARCANE = -armor_bonus,
-			COLD = armor_bonus
+			COLD = armor_bonus,
+			FATIGUE = L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100
 		)
 
 		for(var/damage_type in bonus_armor)

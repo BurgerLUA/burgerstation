@@ -271,7 +271,6 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			desc = "The door is broken."
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 			set_opacity(0)
-			world.log << "CUM ZONE"
 
 	if(filler)
 		var/image/fill = new/image(icon,"[icon_state]_[filler]")

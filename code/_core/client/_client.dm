@@ -122,7 +122,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	return ..()
 
-/client/proc/examine(var/atom/object)
+/client/proc/examine(var/datum/object)
 
 	for(var/v in object.get_examine_list(src.mob))
 		src.mob.to_chat(v)

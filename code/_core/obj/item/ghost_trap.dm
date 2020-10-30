@@ -43,8 +43,6 @@
 
 	. = ..()
 
-	world.log << "\The [O.type] crossed!"
-
 	if(istype(O,/mob/living/simple/npc/ghost))
 		var/mob/living/simple/npc/ghost/G = O
 		if(istype(G.ai,/ai/ghost))
