@@ -210,7 +210,7 @@
 			else
 				create_emf(T,3)
 		var/annoying_player = FALSE
-		var/tolerance = 0.5 - min(0.25,(anger/200))
+		var/tolerance = 0.75 - min(0.25,(anger/200))
 		for(var/light_source/LS in T.affecting_lights)
 			if(LS.light_power < tolerance)
 				continue

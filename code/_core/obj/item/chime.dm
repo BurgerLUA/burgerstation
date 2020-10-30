@@ -24,7 +24,7 @@
 /obj/item/chime/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(sound_to_play)
-		play(sound_to_play,get_turf(src))
+		play(sound_to_play,get_turf(src), alert_source = src, alert = ALERT_LEVEL_NOISE)
 
 	return ..()
 
