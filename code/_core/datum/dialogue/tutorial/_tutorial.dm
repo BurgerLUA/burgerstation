@@ -187,12 +187,13 @@
 					desired_redeem_amount = min(desired_redeem_amount,data_to_use[desired_experience])
 					if(P.attributes[desired_experience])
 						desired_redeem_amount = P.add_attribute_xp(desired_experience,desired_redeem_amount)
-						P.to_chat(span("notice","You redeem [desired_redeem_amount] (attribute) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
 						G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
+						P.to_chat(span("notice","You redeem [desired_redeem_amount] (attribute) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
 					else if(P.skills[desired_experience])
 						desired_redeem_amount = P.add_skill_xp(desired_experience,desired_redeem_amount)
-						P.to_chat(span("notice","You redeem [desired_redeem_amount] (skill) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
 						G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
+						P.to_chat(span("notice","You redeem [desired_redeem_amount] (skill) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
+
 					else
 						P.to_chat(span("notice","Something went wrong. Report this bug to burger on discord with the error: 1.[desired_experience].[desired_redeem_amount]."))
 				else

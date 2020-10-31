@@ -80,4 +80,6 @@
 
 	size = SIZE_4
 
+	value = 200
+
 

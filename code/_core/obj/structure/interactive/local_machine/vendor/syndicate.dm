@@ -100,7 +100,8 @@
 		/obj/item/supply_crate/syndicate,
 		/obj/item/weapon/melee/toolbox/syndicate,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
-		/obj/item/pinpointer/crew/syndicate
+		/obj/item/pinpointer/crew/syndicate,
+		/obj/item/weapon/melee/torch/flashlight/maglight
 	)
 	markup = 0.75
 
@@ -121,6 +122,7 @@
 		/obj/item/supply_crate/russian,
 		/obj/item/weapon/melee/toolbox/syndicate,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
+		/obj/item/weapon/melee/torch/flashlight/maglight
 	)
 
 

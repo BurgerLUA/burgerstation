@@ -159,7 +159,7 @@
 		set_dir(Dir)
 
 	//Try: Enter the turf.
-	if(!NewLoc.Enter(src,OldLoc))
+	if(!NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
 		return FALSE
 
 	//Try: Exit the turf.

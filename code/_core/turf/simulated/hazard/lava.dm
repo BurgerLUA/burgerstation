@@ -13,23 +13,17 @@
 	desired_light_range = 8
 	desired_light_color = "#CE631C"
 
-/turf/simulated/hazard/lava/Enter(atom/movable/O,atom/oldloc)
+/turf/simulated/hazard/lava/Entered(atom/movable/O,atom/oldloc)
 	if(is_living(O)) lava_idiot(O)
 	return ..()
-
-
-/turf/simulated/hazard/lava/Exit(atom/movable/O,atom/newloc)
-
-	if(is_living(O) && !istype(src,newloc))
-		CALLBACK_REMOVE("lava_\ref[O]")
-
-	return ..()
-
 
 
 /turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)
 
 	if(length(L.status_immune) && L.status_immune[FIRE])
+		return FALSE
+
+	if(!istype(loc,/turf/simulated/hazard/lava/))
 		return FALSE
 
 	if(!L.on_fire)

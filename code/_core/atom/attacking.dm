@@ -64,7 +64,7 @@
 		while(step_check > 0)
 			var/turf/next_turf = get_step(last_turf,direction)
 			node_checker.force_move(last_turf)
-			if(!node_checker.Move(next_turf))
+			if(next_turf != victim && !node_checker.Move(next_turf))
 				return FALSE
 			last_turf = next_turf
 			step_check--

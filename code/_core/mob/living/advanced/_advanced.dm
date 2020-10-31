@@ -76,7 +76,7 @@
 
 	death_threshold = -50
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(1.75)
 
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
@@ -243,6 +243,7 @@
 /mob/living/advanced/proc/update_slowdown()
 	//https://www.desmos.com/calculator/9oyrocojgp
 	var/cucumber = (weight/weight_max)
+	cucumber = clamp(cucumber,0,0.99)
 	. = 2 - (1-cucumber)**0.2
 
 	for(var/obj/item/clothing/C in worn_objects)

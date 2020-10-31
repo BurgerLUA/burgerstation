@@ -16,4 +16,4 @@
 
 	falloff = VIEW_RANGE
 
-	damage_mod = 0.5
+	damage_mod = 0.75

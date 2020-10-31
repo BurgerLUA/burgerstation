@@ -21,7 +21,6 @@
 	if(!added_fire_stacks)
 		return FALSE
 	fire_stacks = clamp(fire_stacks + added_fire_stacks,MIN_FIRE_STACKS,MAX_FIRE_STACKS)
-	src << fire_stacks
 	if(fire_stacks <= 0)
 		extinguish()
 	else if(on_fire)

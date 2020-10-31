@@ -47,8 +47,8 @@
 				play('sound/weapons/timer/beep.ogg',src)
 				create_alert(VIEW_RANGE,src,src,ALERT_LEVEL_NOISE)
 
-		if(loc && time_set < 0 && !(time_set % 4))
-			for(var/mob/living/L in view(src.loc,2))
+		if(time_set < 0 && !(time_set % 10))
+			for(var/mob/living/L in view(get_turf(src),2))
 				CHECK_TICK(100,FPS_SERVER)
 				loc.trigger(last_interacted,src,-1,-1)
 				play('sound/weapons/timer/beep.ogg',src)

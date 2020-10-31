@@ -14,6 +14,12 @@ var/global/mob/abstract/node_checker
 	see_in_dark  = 1e6 // Literally arbitrary.
 	density = 1
 
+/mob/abstract/node_checker/Bump(atom/Obstacle)
+
+	if(istype(Obstacle,/obj/structure/interactive/door))
+		return TRUE
+
+	return ..()
 
 /mob/abstract/node_checker/New(var/desired_loc)
 	node_checker = src

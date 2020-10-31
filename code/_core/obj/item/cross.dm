@@ -37,6 +37,7 @@
 		play('sound/effects/crate_break.ogg',get_turf(src))
 		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 		broken = TRUE
+		update_sprite()
 
 	. = ..()
 

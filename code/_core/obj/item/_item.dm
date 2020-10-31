@@ -134,6 +134,8 @@
 	var/can_hold = TRUE
 	var/can_wear = FALSE
 
+	density = 1
+
 	value = -1
 
 /obj/item/proc/get_weight(var/check_containers=TRUE)

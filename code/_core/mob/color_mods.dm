@@ -5,8 +5,16 @@
 	color_mods -= id
 
 /mob/proc/clear_color_mods()
-	for(var/id in color_mods)
-		color_mods -= id
+	color_mods = list()
+
+/mob/proc/add_lighting_mod(var/id,var/list/color_mod)
+	color_mods[id] = color_mod
+
+/mob/proc/remove_lighting_mod(var/id,var/list/color_mod)
+	color_mods -= id
+
+/mob/proc/clear_lighting_mods()
+	color_mods = list()
 
 /client/proc/update_color_mods()
 
@@ -32,3 +40,10 @@
 	animate(src,color = desired_color,time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	return TRUE
+
+
+
+
+/client/proc/update_lighting_mods()
+
+

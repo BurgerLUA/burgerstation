@@ -141,7 +141,7 @@
 				if(no_objective) //First time attacking.
 					var/can_hunt = TRUE
 					for(var/obj/item/cross/C in range(objective_attack,6))
-						if(C.icon_state == initial(C.icon_state))
+						if(!C.broken)
 							C.on_destruction(owner,TRUE)
 							can_hunt = FALSE
 							break

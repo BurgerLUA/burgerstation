@@ -54,5 +54,5 @@
 	name = "reference:Ghosthunting Manual"
 	desc = "How not to die to ghosts."
 	desc_extended = "A reference guide on how to successfully ghosthunt."
-	data = SSreagent.stored_book_data["Ghosthunting Manual"].Copy()
+	data = SSreagent.stored_book_data["ghosthunting guide"].Copy()
 	return .

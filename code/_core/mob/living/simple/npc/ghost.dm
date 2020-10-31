@@ -56,7 +56,10 @@
 		FIRE = TRUE
 	)
 
+
+
 /mob/living/simple/npc/ghost/handle_alpha()
+	if(dead) return 0
 	return desired_alpha
 
 

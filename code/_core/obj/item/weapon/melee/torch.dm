@@ -71,6 +71,8 @@
 
 	value = 200
 
+	size = SIZE_3
+
 
 /obj/item/weapon/melee/torch/flashlight
 	name = "plastic flashlight"
@@ -91,6 +93,8 @@
 
 	value = 20
 
+	size = SIZE_2
+
 /obj/item/weapon/melee/torch/flashlight/maglight
 	name = "maglight"
 	desc = "A robust flashlight."
@@ -108,3 +112,5 @@
 	desired_light_angle = LIGHT_NARROW
 
 	value = 80
+
+	size = SIZE_2

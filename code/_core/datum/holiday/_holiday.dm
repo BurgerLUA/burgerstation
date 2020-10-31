@@ -12,7 +12,7 @@
 
 /holiday/halloween/horde_post_death(var/mob/living/L)
 
-	if(prob(10))
+	if(prob(25))
 		var/turf/T = get_turf(L)
 		if(T)
 			var/obj/item/storage/bags/goodie/halloween/H = new (T)

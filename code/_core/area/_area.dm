@@ -80,10 +80,6 @@
 
 /area/Initialize()
 
-	if(sunlight_freq > 0 && sunlight_color)
-		for(var/turf/T in contents)
-			setup_sunlight(T)
-
 	if(weather)
 		icon = 'icons/area/weather.dmi'
 		icon_state = weather
@@ -154,6 +150,7 @@
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
 
 	if(is_player(exiter))
+		var/mob/living/advanced/player/P = exiter
 		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = initial(P.see_invisible)
 

@@ -1,9 +1,12 @@
 /obj/plane_master/
 	name = "plane master"
+	icon = 'icons/invisible.dmi'
+	icon_state = "0"
 	plane = 0
 	screen_loc = "CENTER" //Stolen from /tg/
-	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE
+	appearance_flags = PLANE_MASTER | PIXEL_SCALE
 	blend_mode = BLEND_OVERLAY
+	alpha = 255
 
 /*
 /obj/plane_master/render_target
@@ -91,6 +94,9 @@
 /obj/plane_master/lighting
 	name = "plane master"
 	plane = PLANE_LIGHTING
+	blend_mode = BLEND_MULTIPLY
+	mouse_opacity = 0
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 
 /*
 /obj/plane_master/lighting/New(var/desired_loc)
