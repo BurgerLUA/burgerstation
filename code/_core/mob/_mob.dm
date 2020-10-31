@@ -83,6 +83,7 @@
 	var/obj/hud/examine/examine_overlay
 
 	var/list/color_mods = list()
+	var/list/lighting_mods = list()
 
 	var/list/known_emotes = list()
 

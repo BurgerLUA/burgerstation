@@ -198,7 +198,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
 	update_window()
-	update_color_mods()
 
 	if(IsByondMember())
 		byond_member = TRUE

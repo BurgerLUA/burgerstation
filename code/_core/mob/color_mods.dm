@@ -1,19 +1,10 @@
 /mob/proc/add_color_mod(var/id,var/list/color_mod)
 	color_mods[id] = color_mod
 
-/mob/proc/remove_color_mod(var/id,var/list/color_mod)
+/mob/proc/remove_color_mod(var/id)
 	color_mods -= id
 
 /mob/proc/clear_color_mods()
-	color_mods = list()
-
-/mob/proc/add_lighting_mod(var/id,var/list/color_mod)
-	color_mods[id] = color_mod
-
-/mob/proc/remove_lighting_mod(var/id,var/list/color_mod)
-	color_mods -= id
-
-/mob/proc/clear_lighting_mods()
 	color_mods = list()
 
 /client/proc/update_color_mods()
@@ -44,6 +35,28 @@
 
 
 
+/mob/proc/add_lighting_mod(var/id,var/lighting_mod)
+	lighting_mods[id] = lighting_mod
+
+/mob/proc/remove_lighting_mod(var/id)
+	lighting_mods -= id
+
+/mob/proc/clear_lighting_mods()
+	lighting_mods = list()
+
 /client/proc/update_lighting_mods()
 
+	if(!mob)
+		return TRUE
 
+	var/desired_alpha = 255
+
+	for(var/id in mob.lighting_mods)
+		var/lighting_mod = mob.lighting_mods[id]
+		desired_alpha = (desired_alpha + lighting_mod)/2
+
+	desired_alpha = FLOOR(desired_alpha,1)
+
+	animate(mob.plane_master_lighting,alpha = desired_alpha,time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
+
+	return TRUE

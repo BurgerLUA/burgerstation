@@ -205,6 +205,7 @@
 #include "code\_core\client\verbs\gamemaster.dm"
 #include "code\_core\client\verbs\menu.dm"
 #include "code\_core\client\verbs\settings.dm"
+#include "code\_core\client\verbs\view.dm"
 #include "code\_core\datum\_datum.dm"
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\ai\_ai.dm"
