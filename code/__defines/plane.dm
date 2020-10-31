@@ -1,28 +1,30 @@
-#define PLANE_HIDDEN -13
+#define PLANE_HIDDEN -14
 
-#define PLANE_SPACE -12
+#define PLANE_SPACE -13
 
-#define PLANE_PARALLAX -11
+#define PLANE_PARALLAX -12
 
-#define PLANE_FLOOR -10
+#define PLANE_FLOOR -11
 
-#define PLANE_SHUTTLE -9
+#define PLANE_SHUTTLE -10
 
-#define PLANE_WALL -8
+#define PLANE_WALL -9
 
-#define PLANE_BLOOD -7
+#define PLANE_BLOOD -8
 
-#define PLANE_OBJ -6
+#define PLANE_OBJ -7
 
-#define PLANE_MOB -5
+#define PLANE_MOB -6
 
-#define PLANE_SCENERY -4
+#define PLANE_SCENERY -5
 
-#define PLANE_EFFECT -3
+#define PLANE_EFFECT -4
 
-#define PLANE_AREA -2
+#define PLANE_AREA -3
 
-#define PLANE_LIGHTING -1
+#define PLANE_LIGHTING -2
+
+#define PLANE_EFFECT_LIGHTING -1
 
 #define PLANE_DARKNESS 0
 

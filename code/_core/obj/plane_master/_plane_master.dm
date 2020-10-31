@@ -98,9 +98,8 @@
 	mouse_opacity = 0
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 
-/*
+
 /obj/plane_master/lighting/New(var/desired_loc)
 	. = ..()
-	filters += filter(type="layer",render_source="plane_lighting",blend_mode=BLEND_INSET_OVERLAY)
+	filters += filter(type="blur",3)
 	return .
-*/

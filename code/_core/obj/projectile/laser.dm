@@ -9,8 +9,7 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
-	plane = PLANE_LIGHTING
-	layer = 99
+	plane = PLANE_EFFECT_LIGHTING
 
 /obj/projectile/bullet/laser/update_underlays()
 	. = ..()

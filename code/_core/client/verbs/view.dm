@@ -54,11 +54,10 @@
 	if(!mob)
 		return FALSE
 
-	var/desired_nightvision = input("What is your desired nightvision strength? (0 to 255)","Nightvision",mob.lighting_mods["verb"] ? 255-mob.lighting_mods["verb"] : 0) as null|num
+	var/desired_nightvision = input("What is your desired lighting alpha? (0 to 255)","Lighting Alpha",mob.lighting_mods["verb"] ? mob.lighting_mods["verb"] : 255) as null|num
 
-	desired_nightvision = clamp(255-desired_nightvision,0,255)
-
-	if(desired_nightvision)
+	if(isnum(desired_nightvision))
+		desired_nightvision = clamp(desired_nightvision,0,254)
 		mob.add_lighting_mod("verb",desired_nightvision)
 	else
 		mob.remove_lighting_mod("verb")
