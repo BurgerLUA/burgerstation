@@ -43,7 +43,7 @@ var/global/mob/abstract/node_checker
 
 	var/found = FALSE
 
-	for(var/obj/marker/map_node/M in oview(VIEW_RANGE*2,src))
+	for(var/obj/marker/map_node/M in orange(VIEW_RANGE*2,src))
 		var/mob/abstract/node_checker/NC = node_checker
 		NC.loc = src.loc
 		var/invalid = FALSE

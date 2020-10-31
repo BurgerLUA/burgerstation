@@ -18,14 +18,16 @@
 /obj/plane_master/floor
 	plane = PLANE_FLOOR
 
+/*
 /obj/plane_master/floor/New(var/desired_loc)
 	. = ..()
-	/*
+
 	var/matrix/M = matrix()
-	M.Scale(0.9,0.9)
+	M.Scale(1.1,1.1)
 	filters += filter(type="layer",render_source="plane_walls",transform=M)
-	*/
+
 	return .
+*/
 
 //WALLS
 /obj/plane_master/walls
@@ -97,9 +99,3 @@
 	blend_mode = BLEND_MULTIPLY
 	mouse_opacity = 0
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
-
-
-/obj/plane_master/lighting/New(var/desired_loc)
-	. = ..()
-	filters += filter(type="blur",3)
-	return .
