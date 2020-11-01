@@ -1,6 +1,5 @@
 /obj/item/weapon/melee/tool
 	name = "tool"
-	value = 10
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
 /obj/item/weapon/melee/tool/wirecutters

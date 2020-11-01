@@ -23,7 +23,7 @@
 	if(length(L.status_immune) && L.status_immune[FIRE])
 		return FALSE
 
-	if(!istype(loc,/turf/simulated/hazard/lava/))
+	if(!istype(L.loc,src.type))
 		return FALSE
 
 	if(!L.on_fire)

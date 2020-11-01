@@ -42,7 +42,7 @@
 	if(L.immortal && !ignore_immortal)
 		return FALSE
 
-	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
+	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
 		return FALSE
 
 	if(!L.can_be_attacked(owner))

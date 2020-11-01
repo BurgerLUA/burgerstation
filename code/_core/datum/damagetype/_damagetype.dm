@@ -343,9 +343,12 @@
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
 
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
+	var/has_fatigue_damage = FALSE
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
+		if(damage_type == FATIGUE)
+			has_fatigue_damage = TRUE
 		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
@@ -407,6 +410,8 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		if(has_fatigue_damage && L.ai&& L.has_status_effect(FATIGUE) && !L.has_status_effect(SLEEP))
+			L.add_status_effect(SLEEP,600,600)
 
 	if(is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed

@@ -34,4 +34,6 @@ var/global/list/armor_slowdown_values = list(
 		. += defense_rating[k] * armor_slowdown_values[k]
 	. *= length(protected_limbs)
 
+	. = max(.,0)
+
 	return .

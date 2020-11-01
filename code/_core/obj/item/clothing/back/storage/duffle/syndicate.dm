@@ -12,6 +12,8 @@
 
 	value = 200
 
+	weight = 0
+
 
 
 

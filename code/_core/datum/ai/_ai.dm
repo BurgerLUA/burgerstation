@@ -639,7 +639,7 @@
 	if(L.immortal && !ignore_immortal)
 		return FALSE
 
-	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
+	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
 		return FALSE
 
 	if(!is_enemy(L))
@@ -734,14 +734,24 @@
 		return 100
 
 	var/distance = get_dist(owner,A)
-	if(distance <= 1)
-		return 100
-
-	. = 100
+	switch(distance)
+		if(1)
+			return 100
+		if(1 to VIEW_RANGE)
+			. = 100
+		if(VIEW_RANGE to VIEW_RANGE+ZOOM_RANGE)
+			. = 50
+		if(VIEW_RANGE+ZOOM_RANGE to INFINITY)
+			. = 25
 
 	var/turf/T = get_turf(A)
 
-	var/darkness = T.darkness*2
+	var/darkness = 0
+	switch(T.darkness)
+		if(-1 to 0.5)
+			darkness = 0.5 + T.darkness
+		if(0.5 to 1)
+			darkness = 1
 	var/atom_alpha = A.alpha
 	if(alert_level == ALERT_LEVEL_COMBAT)
 		atom_alpha *= 2
@@ -749,8 +759,7 @@
 
 	. *= clamp(atom_alpha/255,0,1) * darkness
 
-	if(distance > VIEW_RANGE)
-		. *= 0.25
+
 
 	return .
 
