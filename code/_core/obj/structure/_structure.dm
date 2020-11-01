@@ -25,7 +25,11 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
 
-
+/obj/structure/on_crush()
+	. = ..()
+	loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
+	qdel(src)
+	return .
 
 /obj/structure/should_smooth_with(var/turf/T)
 

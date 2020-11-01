@@ -31,6 +31,7 @@
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0
+	var/obj/hud/inventory/dynamic/dynamic_inventory_type = /obj/hud/inventory/dynamic
 	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
 	var/container_held_slots = 0 //How much each inventory slot can hold.
 	var/container_blacklist = list()
@@ -315,7 +316,7 @@
 			inventories[i].inventory_temperature_mod_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
-		var/obj/hud/inventory/dynamic/D = new(src)
+		var/obj/hud/inventory/dynamic/D = new dynamic_inventory_type(src)
 		//Doesn't need to be initialized as it's done later.
 		D.id = "dynamic_[i]"
 		D.slot_num = i

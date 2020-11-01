@@ -50,26 +50,39 @@
 	return ..()
 
 /obj/structure/smooth/table/grill/Entered(var/atom/movable/O,var/atom/old_loc)
-	if(O.reagents && anchored == TRUE)
+	if(O.reagents && anchored)
 		O.reagents.special_temperature_mod += (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Exited(var/atom/movable/O,var/atom/new_loc)
-	if(O.reagents && anchored == TRUE)
+	if(O.reagents && anchored)
 		O.reagents.special_temperature_mod -= (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Crossed(atom/movable/O)
-	if(O.reagents && anchored == TRUE)
+	if(O.reagents && anchored)
 		src.visible_message(span("notice","The [O.name] starts to cook."))
 		O.reagents.special_temperature_mod += (temperature_mod - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Uncrossed(atom/movable/O)
-	if(O.reagents && anchored == TRUE)
+	if(O.reagents && anchored)
 		src.visible_message(span("notice","The [O.name] continues to cook off the grille."))
 		O.reagents.special_temperature_mod -= (temperature_mod - (T0C + 20))
 	return ..()
+
+/obj/structure/smooth/table/grill/get_examine_details_list(var/mob/examiner)
+
+	. = ..()
+
+	for(var/obj/item/I in contents)
+		if(!I.reagents)
+			. += div("notice","It's warming up \the [I.name] nicely.")
+			continue
+
+
+
+	return .
 
 
 /obj/structure/smooth/table/grill/barbecue

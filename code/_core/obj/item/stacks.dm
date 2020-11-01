@@ -1,5 +1,5 @@
 /obj/item/proc/can_transfer_stacks_to(var/obj/item/I)
-	return istype(src,I) && I != src
+	return istype(src,I) && I != src && I.item_count_max > 1
 
 //Credit goes to Unknown Person
 
@@ -42,9 +42,9 @@
 		var/obj/item/I = defer_object
 		var/stacks_transfered = src.transfer_item_count_to(I)
 		if(stacks_transfered)
-			caller.to_chat("You transfer [stacks_transfered] stacks to \the [I.name].")
+			caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [I.name]."))
 		else
-			caller.to_chat("\The [I.name] is full!")
+			caller.to_chat(span("notice","You can't transfer any more stacks to \the [I.name], it's full!"))
 		return TRUE
 
 	return ..()

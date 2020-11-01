@@ -4,7 +4,7 @@
 	icon_state = "dough_ball"
 	crafting_id = "dough"
 
-	cooked_icon_state = "bread"
+	cooked_icon_state = "bread_whole"
 	raw_icon_state = "dough_ball"
 
 	health = /health/obj/item/misc/
@@ -53,7 +53,6 @@
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 		if(icon_state == raw_icon_state) //It's RAW!!!
-
 			if(raw_icon_state == "dough_flat")
 				var/pieces = FLOOR(original_volume/10, 1)
 				if(pieces <= 1 || original_volume < pieces)
@@ -62,8 +61,9 @@
 						L.to_chat("There isn't enough dough to cut!")
 					return FALSE
 				raw_icon_state = "dough_slice"
+				var/turf/T = get_turf(src)
 				for(var/i=1,i<=pieces-1,i++)
-					var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
+					var/obj/item/container/food/dynamic/bread/B = new(T)
 					B.pixel_x = pixel_x
 					B.pixel_y = pixel_y
 					B.raw_icon_state = raw_icon_state
@@ -106,7 +106,16 @@
 			update_sprite()
 			FINALIZE(B)
 			B.update_sprite()
-
+		else if(icon_state == "bread_whole")
+			var/pieces = CEILING(original_volume/10, 1)
+			var/turf/T = get_turf(src)
+			for(var/i=1,i<=pieces,i++)
+				var/obj/item/container/food/sandwich/bread/B = new(T)
+				INITIALIZE(B)
+				reagents.transfer_reagents_to(B.reagents,original_volume/pieces)
+				FINALIZE(B)
+				animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
+			qdel(src)
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
 		if(has_prefix(icon_state,"dough") && raw_icon_state != "dough_flat")
 			raw_icon_state = "dough_flat"
@@ -199,12 +208,12 @@
 		else
 			name = "[wetness_prefix] mystery dough"
 
-	if(reagents.volume_current <= 20 && cooked_icon_state == "bread")
+	if(reagents.volume_current <= 20 && cooked_icon_state == "bread_whole")
 		cooked_icon_state = "bun_whole"
 		raw_icon_state = "dough_ball_small"
 
 	else if(reagents.volume_current > 20 && cooked_icon_state == "bun_whole")
-		cooked_icon_state = "bread"
+		cooked_icon_state = "bread_whole"
 		raw_icon_state = "dough_ball"
 
 	icon_state = cooked_percent > 0.5 ? cooked_icon_state : raw_icon_state
