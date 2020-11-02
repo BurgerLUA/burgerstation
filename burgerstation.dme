@@ -69,6 +69,7 @@
 #include "code\__defines\params.dm"
 #include "code\__defines\permissions.dm"
 #include "code\__defines\plane.dm"
+#include "code\__defines\plant_traits.dm"
 #include "code\__defines\priority.dm"
 #include "code\__defines\quick.dm"
 #include "code\__defines\radio_frequency.dm"

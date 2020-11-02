@@ -3,22 +3,24 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 /obj/structure/interactive/plant
 	name = "plant"
 	desc = "A plant grows here."
-	icon = 'icons/obj/structure/botany.dmi'
-	icon_state = "spawn"
+	//Icon stand and icon is generated.
+	icon = 'icons/obj/markers/plant.dmi'
+	icon_state = null
+
+
 	var/plant_type/plant_type
 
-	var/growth = 0 //Increases by growth_speed every 10 seconds.
+	var/growth = 0 //Increases by growth_speed every second.
 	var/growth_min = 0 //This is set AFTER harvesting.
 	var/growth_max = 100 //The growth value when this plant is considered grown, but has no produce grown on it.
-	var/growth_produce_max = 120 //The growth value when this plant is considered grown, and has produce on it.
+	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
 
 	//Stats
 	var/potency = 20 //How much chemicals?
 	var/yield = 1
-	var/growth_speed = 5 //How much to add to growth every plant tick
+	var/growth_speed = 5 //How much to add to growth every second
 
-	var/rest_stats_after_harvest = TRUE
-	var/delete_after_harvest = FALSE
+	var/delete_after_harvest = TRUE
 
 	mouse_opacity = 2
 
@@ -26,7 +28,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	all_plants += src
 	return ..()
 
-/obj/structure/interactive/plant/PostInitialize()
+/obj/structure/interactive/plant/Finalize()
 	. = ..()
 	update_sprite()
 	return .
@@ -36,7 +38,10 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	return ..()
 
 /obj/structure/interactive/plant/proc/on_life()
-	growth += FLOOR(growth_speed * (rand(75,125)/100), 1)
+
+	var/real_growth_speed = growth_speed*TICKS_TO_SECONDS(SSbotany.tick_rate)
+
+	growth += FLOOR(real_growth_speed * (rand(75,125)/100), 1)
 	update_sprite()
 	return TRUE
 
@@ -44,12 +49,19 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 	var/plant_type/associated_plant = all_plant_types[plant_type]
 
-	name = "[associated_plant.name] plant"
+	name = "[associated_plant.name]"
+
+	icon = associated_plant.plant_icon
 
 	if(growth >= growth_produce_max)
-		icon_state = "[associated_plant.icon_state]_grown"
+		if(associated_plant.plant_icon_state_override)
+			icon_state ="[associated_plant.plant_icon_state_override]-harvest"
+		else
+			icon_state = "[associated_plant.plant_icon_state]-harvest"
 	else
-		icon_state = "[associated_plant.icon_state]_[FLOOR((min(growth,growth_max)/growth_max)*associated_plant.icon_count, 1)]"
+		icon_state = "[associated_plant.plant_icon_state]-grow[max(1,CEILING((min(growth,growth_max)/growth_max)*associated_plant.plant_icon_count, 1))]"
+
+	desc = "Icon state: [icon_state]"
 
 /obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/caller)
 
@@ -94,7 +106,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			P.name = associated_plant.name
 			P.desc = associated_plant.desc
 			P.icon = associated_plant.harvest_icon
-			P.icon_state = associated_plant.icon_state
+			P.icon_state = associated_plant.harvest_icon_state
 			P.potency = potency
 			P.yield = yield
 			P.growth_speed = growth_speed
@@ -114,11 +126,10 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 	if(delete_after_harvest)
 		qdel(src)
-	else if(rest_stats_after_harvest)
-		potency = initial(potency)
-		yield = initial(yield)
-		icon = initial(icon)
-		icon_state = initial(icon_state)
+	else
+		potency = potency > initial(potency) ? (initial(potency) + potency)/2 : potency
+		yield = yield > initial(yield) ? (initial(yield) + yield)/2 : yield
+		growth = growth_max
 		update_sprite()
 
 	return TRUE
