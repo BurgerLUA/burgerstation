@@ -6,6 +6,12 @@
 	update_underlays()
 	return TRUE
 
+/atom/movable/update_sprite()
+	. = ..()
+	vis_contents.Cut()
+	update_vis_contents()
+	return .
+
 /atom/proc/update_icon()
 	return TRUE
 
@@ -15,8 +21,43 @@
 /atom/proc/update_underlays()
 	return TRUE
 
+/atom/proc/update_vis_contents()
+	return TRUE
+
 /obj/proc/initialize_blends()
 	return TRUE
+
+/atom/proc/add_overlay(var/datum/desired_overlay)
+
+	if(length(overlays) >= 100)
+		CRASH_SAFE("Warning: [get_debug_name()] exceeds 100 overlays![is_datum(desired_overlay) ? " Overlay name: [desired_overlay.get_debug_name()]." : ""]")
+		return FALSE
+
+	overlays += desired_overlay
+
+	return TRUE
+
+/atom/proc/add_underlay(var/datum/desired_underlay)
+
+	if(length(overlays) >= 100)
+		CRASH_SAFE("Warning: [get_debug_name()] exceeds 100 underlays![is_datum(desired_underlay) ? " Overlay name: [desired_underlay.get_debug_name()]." : ""]")
+		return FALSE
+
+	underlays += desired_underlay
+
+	return TRUE
+
+/atom/movable/proc/add_vis_content(var/atom/movable/desired_vis_content)
+
+	if(length(vis_contents) >= 100)
+		CRASH_SAFE("Warning: [get_debug_name()] exceeds 100 vis contents![is_datum(desired_vis_content) ? " Overlay name: [desired_vis_content.get_debug_name()]." : ""]")
+		return FALSE
+
+	vis_contents |= desired_vis_content
+
+	return TRUE
+
+
 
 /obj/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save,var/desired_layer)
 

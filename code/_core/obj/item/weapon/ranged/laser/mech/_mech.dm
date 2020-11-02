@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/energy/mech
 	name = "mech gun"
-
+	desc = "A gun, but bigger."
+	desc_extended = "A weapon for your mech."
 	icon = 'icons/obj/item/weapons/ranged/mech.dmi'
 
 	projectile = /obj/projectile/bullet/laser
-	ranged_damage_type = /damagetype/ranged/laser/chronogun
 	projectile_speed = 8
 	shoot_delay = 20
 	automatic = FALSE
@@ -19,6 +19,7 @@
 	mech_only = TRUE
 
 	size = SIZE_6
+	weight = 50
 
 /obj/item/weapon/ranged/energy/mech/get_battery()
 
@@ -32,6 +33,8 @@
 
 /obj/item/weapon/ranged/energy/mech/smg
 	name = "9x19mm SMG"
+	desc = "Bullet hose."
+	desc_extended = "An SMG-caliber mech weapon that manufactures bullets using battery power. Pretend you have infinite ammo and spray, until the power runs out. Also mounts in the shoulder slot."
 	icon_state = "mech_ballistic"
 
 	automatic = TRUE
@@ -64,6 +67,8 @@
 
 /obj/item/weapon/ranged/energy/mech/lmg
 	name = "5.56mm LMG"
+	desc = "Not a real autocannon."
+	desc_extended = "Mounted machineguns are classic, and now you have one for your mech, too. Moderate energy use and fire rate with good damage make this a solid choice for any situation."
 	icon_state = "mech_uac2"
 
 	automatic = TRUE
@@ -95,7 +100,8 @@
 
 /obj/item/weapon/ranged/energy/mech/laser
 	name = "AER14 Laser Rifle"
-	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
+	desc = "Pew pew pew!"
+	desc_extended = "Modular NT laser rifle fitted for mechs. Uses the standard beam, and runs on mech battery power. Better performance than bullets against certain targets, with a slower fire rate."
 	icon_state = "mech_lasercarbine"
 
 	projectile = /obj/projectile/bullet/laser
@@ -130,7 +136,8 @@
 
 /obj/item/weapon/ranged/energy/mech/ion
 	name = "AER35 Ion Rifle"
-	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
+	desc = "THERE CAN ONLY BE ONE (MECH)!"
+	desc_extended = "Modular NT laser rifle fitted for mechs. Fires a heavy ion beam for mech-to-mech combat, at a large energy cost."
 	icon_state = "mech_ionrifle"
 
 	projectile = /obj/projectile/bullet/laser/ion
@@ -164,6 +171,8 @@
 
 /obj/item/weapon/ranged/energy/mech/missile_pod
 	name = "RK Missile Pod"
+	desc = "Collateral damage in 3..."
+	desc_extended = "Shoulder-mounted mech HE rocket pod with a wide blast radius. Uses large amounts of power to restock its rockets. Fired by holding the ALT key. Mount one on each shoulder for double the fun!"
 	icon_state = "mech_missile_pod"
 
 	projectile = /obj/projectile/bullet/rocket

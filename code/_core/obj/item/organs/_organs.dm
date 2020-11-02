@@ -51,7 +51,7 @@
 
 	var/base_miss_chance = 0
 
-	health_base = 200
+	health_base = 100
 
 	health = /health/obj/item/organ
 
@@ -59,7 +59,7 @@
 
 	var/bleeding = 0 //How much blood to use per second.
 
-	var/health_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
+	var/damage_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
 
 	var/has_life = TRUE
 

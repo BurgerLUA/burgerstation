@@ -1,4 +1,4 @@
-/damagetype/npc/ghost
+/damagetype/npc/ghost //Needs to do a lot of damage.
 	name = "ghost hunt"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -21,6 +21,8 @@
 
 	can_be_parried = FALSE
 
+	attack_delay = 1
+	attack_delay_max = 1
 
 /*
 /damagetype/npc/ghost/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)

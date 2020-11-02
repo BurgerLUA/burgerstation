@@ -91,23 +91,27 @@
 
 	var/atom/old_loc = loc
 
-	if(loc)
-		loc.Exited(src, new_loc)
-		if(loc)
+	if(old_loc)
+		old_loc.Exited(src, new_loc)
+		if(old_loc && src.density)
 			for(var/k in old_loc.contents)
 				var/atom/movable/M = k
 				if(M == src)
+					continue
+				if(!M.density)
 					continue
 				M.Uncrossed(src)
 
 	loc = new_loc
 
-	if(loc)
-		loc.Entered(src, old_loc)
-		if(loc)
-			for(var/k in loc.contents)
+	if(new_loc)
+		new_loc.Entered(src, old_loc)
+		if(new_loc && src.density)
+			for(var/k in new_loc.contents)
 				var/atom/movable/M = k
 				if(M == src)
+					continue
+				if(!M.density)
 					continue
 				M.Crossed(src)
 
@@ -155,7 +159,7 @@
 		set_dir(Dir)
 
 	//Try: Enter the turf.
-	if(!NewLoc.Enter(src,OldLoc))
+	if(!NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
 		return FALSE
 
 	//Try: Exit the turf.
@@ -190,24 +194,26 @@
 		loc = NewLoc
 
 	//Do: Crossed the contents
-	for(var/k in NewLoc.contents)
-		CHECK_TICK(100,FPS_SERVER)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.density)
-			continue
-		M.Crossed(src)
+	if(src.density)
+		for(var/k in NewLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(!M.density)
+				continue
+			M.Crossed(src)
 
 	//Do: Uncrossed the contents
-	for(var/k in OldLoc.contents)
-		CHECK_TICK(100,FPS_SERVER)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.density)
-			continue
-		M.Uncrossed(src)
+	if(src.density)
+		for(var/k in OldLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(!M.density)
+				continue
+			M.Uncrossed(src)
 
 	post_move(OldLoc)
 

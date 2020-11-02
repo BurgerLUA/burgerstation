@@ -58,6 +58,12 @@
 
 	. = ..()
 
+	if(speed_bonus != 0)
+		if(speed_bonus > 0)
+			. += div("notice","<b>Speed Bonus:</b> [speed_bonus*100]%.")
+		else
+			. += div("notice","<b>Speed Penalty:</b> [speed_bonus*100]%.")
+
 	var/list/defense_rating_to_print = get_defense_rating()
 
 	if(defense_rating_to_print && length(defense_rating_to_print) && protected_limbs && length(protected_limbs))
@@ -66,7 +72,6 @@
 			var/damage_rating = defense_rating_to_print[damagetype]
 			if(damage_rating)
 				armor_list += "[capitalize(damagetype)]: [damage_rating]"
-
 		. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
 		. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")
 

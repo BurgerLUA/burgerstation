@@ -9,6 +9,8 @@
 	item_slot = SLOT_HEAD | SLOT_FACE_WRAP
 	ignore_other_slots = TRUE
 
+	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
+
 	dyeable = TRUE
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK

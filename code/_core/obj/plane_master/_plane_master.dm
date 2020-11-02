@@ -1,9 +1,12 @@
 /obj/plane_master/
 	name = "plane master"
+	icon = 'icons/invisible.dmi'
+	icon_state = "0"
 	plane = 0
 	screen_loc = "CENTER" //Stolen from /tg/
-	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE
+	appearance_flags = PLANE_MASTER | PIXEL_SCALE
 	blend_mode = BLEND_OVERLAY
+	alpha = 255
 
 /*
 /obj/plane_master/render_target
@@ -15,14 +18,16 @@
 /obj/plane_master/floor
 	plane = PLANE_FLOOR
 
+/*
 /obj/plane_master/floor/New(var/desired_loc)
 	. = ..()
-	/*
+
 	var/matrix/M = matrix()
-	M.Scale(0.9,0.9)
+	M.Scale(1.1,1.1)
 	filters += filter(type="layer",render_source="plane_walls",transform=M)
-	*/
+
 	return .
+*/
 
 //WALLS
 /obj/plane_master/walls
@@ -91,10 +96,6 @@
 /obj/plane_master/lighting
 	name = "plane master"
 	plane = PLANE_LIGHTING
-
-/*
-/obj/plane_master/lighting/New(var/desired_loc)
-	. = ..()
-	filters += filter(type="layer",render_source="plane_lighting",blend_mode=BLEND_INSET_OVERLAY)
-	return .
-*/
+	blend_mode = BLEND_MULTIPLY
+	mouse_opacity = 0
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR

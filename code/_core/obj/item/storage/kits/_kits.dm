@@ -11,6 +11,8 @@
 	container_max_size = SIZE_2
 	dynamic_inventory_count = 8
 
+	value = 10
+
 /obj/item/storage/kit/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)][rand(1,4)]"

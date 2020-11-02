@@ -296,7 +296,6 @@ var/global/list/debug_verbs = list(
 	/client/verb/reload_badwords,
 	/client/verb/force_save_all,
 	/client/verb/stress_test,
-	/client/verb/print_dps,
 	/client/verb/force_screech,
 	/client/verb/create_vote,
 	/client/verb/var_edit,

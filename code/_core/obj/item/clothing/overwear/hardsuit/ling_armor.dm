@@ -24,5 +24,3 @@
 	additional_clothing = list(
 		/obj/item/weapon/melee/sword/armblade
 	)
-
-	slowdown_mul_worn = 1.1

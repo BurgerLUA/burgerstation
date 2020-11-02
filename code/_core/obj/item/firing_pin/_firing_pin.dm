@@ -8,6 +8,8 @@
 
 	value = 100
 
+	weight = 0.25
+
 /obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon)
 	return TRUE
 

@@ -8,6 +8,8 @@
 
 	value = 20
 
+	weight = 1
+
 /obj/item/radio/Generate()
 	stored_radio = new stored_radio(src)
 	INITIALIZE(stored_radio)

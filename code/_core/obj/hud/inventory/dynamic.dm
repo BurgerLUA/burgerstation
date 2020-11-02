@@ -46,3 +46,40 @@
 		play(pick(add_sounds),src)
 
 	return .
+
+
+/obj/hud/inventory/dynamic/sandwich //Special logic for buns
+	add_sounds = null
+
+
+
+/obj/hud/inventory/dynamic/sandwich/can_hold_object(var/obj/item/I,var/messages = FALSE)
+
+	if(src.loc && istype(src.loc.loc,/obj/hud/inventory/dynamic/sandwich/)) //Our sandwich is in of another sandwich. Do not accept items.
+		//No message needed.
+		return FALSE
+
+	if(istype(I,/obj/item/container/food/sandwich/))
+		var/obj/item/container/food/sandwich/S = I
+		for(var/obj/hud/inventory/I2 in S.inventories)
+			if(length(I2.held_objects))
+				owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of physics!"))
+				return FALSE
+		if(loc && loc == I)
+			return FALSE
+
+		if(held_slots <= 0)
+			return FALSE
+
+		if(is_occupied(TRUE,TRUE))
+			if(messages && src.loc)
+				owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
+			return FALSE
+
+		if(length(held_objects) >= held_slots)
+			if(messages) owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src.loc.name]."))
+			return FALSE
+
+		return TRUE
+
+	return ..()

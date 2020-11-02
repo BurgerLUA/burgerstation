@@ -23,8 +23,6 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie)
 
-	slowdown_mul_worn = 1.2
-
 	value = 400
 
 /obj/item/clothing/overwear/hardsuit/syndie/advanced
@@ -52,8 +50,6 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced)
 
-	slowdown_mul_worn = 1.3
-
 	value = 600
 
 /obj/item/clothing/overwear/hardsuit/syndie/elite
@@ -79,7 +75,5 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)
 
 	size = SIZE_6
-
-	slowdown_mul_worn = 1.2 //Having the helmet on makes it go faster burr.
 
 	value = 1200

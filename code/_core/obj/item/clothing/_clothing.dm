@@ -4,6 +4,8 @@
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
+	weight = 0
+
 	color = "#FFFFFF"
 
 	icon_state = "inventory"
@@ -56,6 +58,8 @@
 
 	value = -1
 
+	var/speed_bonus = 0
+
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()
 
@@ -71,8 +75,10 @@
 
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
-	..()
+	weight = calculate_weight()
+	. = ..()
 	initialize_blends()
+	return .
 
 /obj/item/clothing/Destroy()
 	additional_clothing_stored.Cut()

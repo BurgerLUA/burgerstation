@@ -23,5 +23,3 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
 
 	value = 800
-
-	slowdown_mul_worn = 1.1

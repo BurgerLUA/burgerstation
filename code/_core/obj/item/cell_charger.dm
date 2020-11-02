@@ -14,6 +14,8 @@
 
 	density = TRUE
 
+	weight = 6
+
 /obj/item/cell_charger/get_battery()
 	return battery
 

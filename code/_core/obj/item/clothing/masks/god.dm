@@ -39,5 +39,3 @@
 	item_slot = SLOT_HEAD | SLOT_FACE
 
 	blocks_clothing = SLOT_HEAD | SLOT_FACE
-
-	slowdown_mul_worn = 1.2

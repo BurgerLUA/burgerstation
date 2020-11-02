@@ -9,12 +9,29 @@
 
 	size = SIZE_2
 
-	slowdown_mul_worn = 1
+/obj/item/armor_plate/New(var/desired_loc)
+	weight = calculate_weight()
+	return ..()
+
+/obj/item/armor_plate/proc/calculate_weight()
+
+	var/init_weight = initial(weight)
+
+	if(init_weight != 0)
+		return init_weight
+
+	. = 1
+
+	for(var/k in armor_base)
+		if(IS_INFINITY(armor_base[k]))
+			continue
+		. += armor_base[k] * armor_slowdown_values[k]
+
+	return .
+
 
 /obj/item/armor_plate/get_examine_list(var/mob/examiner)
-
 	. = ..()
-
 	var/list/armor_list = list()
 	for(var/damagetype in armor_base)
 		var/damage_rating = armor_base[damagetype]
@@ -37,7 +54,7 @@
 
 	value = 90
 
-	slowdown_mul_worn = 1
+
 
 /obj/item/armor_plate/medium
 	name = "medium armor plate"
@@ -54,7 +71,7 @@
 
 	value = 190
 
-	slowdown_mul_worn = 1.05
+
 
 
 /obj/item/armor_plate/heavy
@@ -69,7 +86,7 @@
 		ARCANE = -50
 	)
 
-	slowdown_mul_worn = 1.1
+
 
 
 
@@ -87,7 +104,7 @@
 		ARCANE = -75
 	)
 
-	slowdown_mul_worn = 1.1
+
 
 	value = 500
 
@@ -103,6 +120,6 @@
 		ARCANE = -75
 	)
 
-	slowdown_mul_worn = 1.15
+
 
 	value = 1000

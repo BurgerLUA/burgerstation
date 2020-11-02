@@ -18,4 +18,4 @@
 
 	value = 40
 
-	slowdown_mul_worn = 0.90
+	speed_bonus = 0.1

@@ -1,7 +1,6 @@
 /obj/projectile/bullet/firearm
 	icon = 'icons/obj/projectiles/bullet.dmi'
-	plane = PLANE_LIGHTING
-	layer = 99
+	plane = PLANE_EFFECT_LIGHTING
 
 /obj/projectile/bullet/firearm/revolver
 	name = "revolver bullet"

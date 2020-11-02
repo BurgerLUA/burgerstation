@@ -1,6 +1,8 @@
 /obj/item/mech_part/legs
 
 	name = "legs"
+	desc = "Stomp."
+	desc_extended = "Some legs for your mech. You need these to move around."
 
 	var/maximum_support = 100 //How much these legs can support. Does not count towards itself.
 
@@ -66,6 +68,7 @@
 
 /obj/item/mech_part/legs/tracks
 	name = "heavy legs"
+	desc = "Stomp?"
 	icon_state = "tracks"
 
 	weight = 60

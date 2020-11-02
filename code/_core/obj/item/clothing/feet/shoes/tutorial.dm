@@ -26,7 +26,7 @@
 
 	value = 100
 
-	slowdown_mul_worn = 1.05
+
 
 /obj/item/clothing/feet/shoes/tutorial/left
 	name = "left tutorial boot"

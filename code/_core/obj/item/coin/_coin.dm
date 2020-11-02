@@ -7,6 +7,8 @@
 
 	drop_sound = 'sound/items/drop/ring.ogg'
 
+	weight = 0.05
+
 /obj/item/coin/antag_token
 	name = "antag token"
 	desc = "Valid or salid?"

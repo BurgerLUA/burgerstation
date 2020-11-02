@@ -7,7 +7,6 @@
 
 	var/loadout_to_use = /loadout/zombie
 	health = /health/mob/living/advanced/zombie/
-	health_base = 300
 
 	movement_delay = DECISECONDS_TO_TICKS(5)
 

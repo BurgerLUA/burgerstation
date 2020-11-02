@@ -99,6 +99,11 @@
 
 	var/ignore_armor_bonus_damage = FALSE
 
+	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
+	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
+
+	var/damage_mod = 1 //Simple multiplier for all damage.
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -187,7 +192,7 @@
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier
+	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier*damage_mod
 
 	if(debug) log_debug("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 
@@ -318,7 +323,7 @@
 					var/mob/living/LA = attacker
 					LA.to_chat(span("warning","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
 					if(get_dist(A,LA) <= 1)
-						LA.add_status_effect(STAGGER,20,20)
+						LA.add_status_effect(STAGGER,30,30)
 				return FALSE
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 
@@ -338,9 +343,12 @@
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
 
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
+	var/has_fatigue_damage = FALSE
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
+		if(damage_type == FATIGUE)
+			has_fatigue_damage = TRUE
 		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
@@ -402,6 +410,8 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		if(has_fatigue_damage && L.ai&& L.has_status_effect(FATIGUE) && !L.has_status_effect(SLEEP))
+			L.add_status_effect(SLEEP,600,600)
 
 	if(is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed
@@ -652,3 +662,14 @@
 		span("warning", replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text))\
 	)
 	return TRUE
+
+
+/damagetype/proc/get_attack_delay(var/atom/attacker)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(attack_delay_max < attack_delay)
+			attack_delay_max = attack_delay
+		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+
+	return attack_delay

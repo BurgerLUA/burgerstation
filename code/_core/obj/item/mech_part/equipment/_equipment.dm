@@ -52,6 +52,8 @@
 	if(istype(stored_weapon))
 
 		name = stored_weapon.name
+		desc = stored_weapon.desc
+		desc_extended = stored_weapon.desc_extended
 
 		if(istype(src.loc,/mob/living/vehicle/mech/modular))
 			icon = initial(icon)

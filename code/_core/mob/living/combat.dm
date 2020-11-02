@@ -16,7 +16,7 @@
 
 /mob/living/proc/send_pain(var/pain_strength=50)
 	if(pain_strength < 75)
-		emote("pain")
+		do_emote("pain")
 	else
-		emote("scream")
+		do_emote("scream")
 	return TRUE

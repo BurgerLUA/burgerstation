@@ -39,7 +39,7 @@
 
 	pixel_x = -12
 
-	health_base = 100
+	health_base = 75
 
 /mob/living/simple/npc/watcher/post_death()
 	. = ..()

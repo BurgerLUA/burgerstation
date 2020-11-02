@@ -1,5 +1,9 @@
 /mob/living/
 
+	health_base = 50
+	stamina_base = 50
+	mana_base = 50
+
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 	var/list/faction/factions
@@ -205,7 +209,8 @@
 		"yawn",
 		"cry",
 		"clap",
-		"salute"
+		"salute",
+		"spin"
 	)
 
 	var/tabled = FALSE
@@ -229,7 +234,7 @@
 	if(!qdeleting) qdel(src)
 	return .
 
-/mob/living/calculate_value()
+/mob/living/get_value()
 
 	. = ..()
 
@@ -355,9 +360,6 @@
 
 	. = ..()
 
-	if(ai)
-		ai = new ai(src)
-
 	if(desired_client)
 		screen_blood = list()
 		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
@@ -371,6 +373,8 @@
 	return .
 
 /mob/living/Initialize()
+
+	if(ai) ai = new ai(src)
 
 	if(boss)
 		SSbosses.tracked_bosses[id] = src

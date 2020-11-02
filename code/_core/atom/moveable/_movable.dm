@@ -19,7 +19,7 @@
 	var/anchored = TRUE
 	var/ghost = FALSE
 
-	var/damage_type_thrown = /damagetype/thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
+	var/damage_type_thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
 
 	var/change_dir_on_move = FALSE
 
@@ -50,6 +50,8 @@
 	var/use_momentum = FALSE //Acceleration uses momentum.
 
 	var/has_footsteps = FALSE
+
+	var/value_last = 0//Last value calculated via calculation
 
 /atom/movable/proc/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
 

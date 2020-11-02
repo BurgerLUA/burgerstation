@@ -8,5 +8,6 @@ var/global/list/maps = list(
 var/global/list/map_settings = list(
 	"Hellscape" = list(),
 	"Island" = list(),
-	"LZ-420" = list()
+	"LZ-420" = list(),
+	"Icebox (HEAVY WIP)" = list()
 )

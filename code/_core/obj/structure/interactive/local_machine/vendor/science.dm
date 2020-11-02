@@ -29,7 +29,6 @@
 		/obj/item/emf,
 		/obj/item/chime,
 		/obj/item/light_sensor,
-		/obj/item/analyzer/health,
-		/obj/item/powercell/industrial,
-		/obj/item/cell_charger,
+		/obj/item/ghost_box,
+		/obj/item/paper/book/ghost
 	)

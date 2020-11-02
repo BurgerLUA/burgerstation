@@ -6,3 +6,7 @@
 	color = COLOR_STEEL
 
 	health = /health/construction/
+
+	structure_blacklist = list(
+		/obj/structure/interactive/construction/
+	)

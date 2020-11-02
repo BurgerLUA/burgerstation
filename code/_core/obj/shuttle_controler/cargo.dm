@@ -34,7 +34,7 @@
 				var/mob/living/L = O
 				if(!L.dead && L.loyalty_tag == "NanoTrasen")
 					continue
-			var/calculated_value = CEILING(O.calculate_value(),1)
+			var/calculated_value = CEILING(O.get_value(),1)
 			if(calculated_value <= 0)
 				continue
 			total_value += calculated_value

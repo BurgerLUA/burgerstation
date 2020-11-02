@@ -1,3 +1,12 @@
+/mob/living/advanced/dash(var/atom/dash_target,var/dash_direction=0x0,var/instances_left = 0)//Can either input dash target or dash direction.
+
+	if(driving)
+		return FALSE
+
+	return ..()
+
+
+
 /mob/living/advanced/on_sprint()
 
 	if(health && health.adjust_stamina(-SPRINT_STAMINA_LOSS))

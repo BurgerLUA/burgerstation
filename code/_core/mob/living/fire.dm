@@ -4,7 +4,7 @@
 /mob/living/proc/handle_fire()
 
 	if(fire_stacks)
-		adjust_fire_stacks(clamp(-fire_stacks,-LIFE_TICK_SLOW,LIFE_TICK_SLOW))
+		adjust_fire_stacks(-min(fire_stacks,LIFE_TICK_SLOW))
 		if(on_fire && health)
 			var/damagetype/DT = all_damage_types[/damagetype/on_fire]
 			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(LIFE_TICK_SLOW/8)*5

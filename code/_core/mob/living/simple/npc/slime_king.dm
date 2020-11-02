@@ -17,7 +17,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 6000
+	health_base = 2500
 
 	value = 500
 

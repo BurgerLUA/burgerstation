@@ -17,9 +17,10 @@
 
 	view_punch = 10
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 
 	size = SIZE_4
+	weight = 12
 
 	bullet_length_min = 40
 	bullet_length_best = 45

@@ -109,7 +109,7 @@ var/global/list/equipped_antags = list()
 	for(var/obj/item/I in stored_objects)
 		if(stored_cost[I.type])
 			continue
-		stored_cost[I.type] = CEILING(I.calculate_value()*markup,1)
+		stored_cost[I.type] = CEILING(I.get_value()*markup,1)
 		if(stored_cost[I.type] <= 0)
 			log_error("Warning: [I.type] is for sale, yet it has no value!")
 			stored_cost -= I.type

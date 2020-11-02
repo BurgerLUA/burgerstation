@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/magic/staff
 	var/cost_charge = 100
 	var/total_charge = 1000
+	weight = 10
 
 
 /obj/item/weapon/ranged/magic/staff/save_item_data(var/save_inventory = TRUE)

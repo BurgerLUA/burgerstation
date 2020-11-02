@@ -12,6 +12,8 @@
 
 	value = 10
 
+	weight = 2
+
 /obj/item/pinpointer/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -245,6 +247,8 @@
 
 	for(var/v in SSgamemode.active_gamemode.crew_active_objectives)
 		var/objective/O = v
+		if(!O.trackable)
+			continue
 		for(var/k in O.tracked_atoms)
 			var/atom/A = k
 			if(!can_track(A))

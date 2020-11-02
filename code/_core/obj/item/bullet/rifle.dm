@@ -50,10 +50,9 @@
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 	value = 1.1
 
-/obj/item/bullet_cartridge/rifle_308/nato
+/obj/item/bullet_cartridge/rifle_308/nato/ap
 	name = "\improper AP 7.62mm rifle bullet"
 	desc_extended = "For rifles that require 7.62mm. This one has a steel tip."
-	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/762_ap.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/ap
 	value = 2.2
@@ -134,7 +133,22 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
-	rarity = 0.9
+	value = 0.9
+
+
+/obj/item/bullet_cartridge/rifle_223/nato/ap
+	name = "\improper 5.56mm AP rifle bullet"
+	desc_extended = "For rifles and machineguns that requre 5,56mm. This one has an armor piercing tip."
+	icon = 'icons/obj/item/bullet/223_ap.dmi'
+
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm/ap
+
+	size = 0.03
+	value = 2.2
+
+
+
+
 
 /obj/item/bullet_cartridge/rifle_545mm
 	name = "\improper 5.45mm rifle bullet"

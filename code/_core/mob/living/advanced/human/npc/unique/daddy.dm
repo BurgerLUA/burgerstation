@@ -4,7 +4,7 @@
 	ai = /ai/advanced/daddy
 	class = /class/daddy/
 
-	health_base = 4000
+	health_base = 2000
 
 /mob/living/advanced/npc/unique/daddy/setup_name()
 	name = "\improper THE LEGEND (SL 99)"

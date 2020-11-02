@@ -30,7 +30,9 @@
 
 	value = 300
 
-	slowdown_mul_worn = 1.05
+	speed_bonus = 0
+
+
 
 /obj/item/clothing/feet/shoes/engineering/left
 	name = "left engineering boot"

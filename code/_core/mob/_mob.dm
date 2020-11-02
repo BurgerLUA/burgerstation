@@ -83,6 +83,7 @@
 	var/obj/hud/examine/examine_overlay
 
 	var/list/color_mods = list()
+	var/list/lighting_mods = list()
 
 	var/list/known_emotes = list()
 
@@ -163,11 +164,9 @@
 		plane_master_scenery = new(src)
 	C.screen += plane_master_scenery
 
-	/*
 	if(!plane_master_lighting)
 		plane_master_lighting = new(src)
 	C.screen += plane_master_lighting
-	*/
 
 	if(!examine_overlay)
 		examine_overlay = new(src)

@@ -10,12 +10,12 @@
 	size = MAX_INVENTORY_X*2*SIZE_2
 	container_max_size = SIZE_3
 
-
+	weight = 5
 
 	value = 30
 
-	slowdown_mul_worn = 1.1
-	slowdown_mul_held = 1.1
+
+
 
 /obj/item/clothing/back/storage/satchel/loadout/new_player/fill_inventory()
 	new /obj/item/clothing/mask/gas(src)

@@ -32,6 +32,8 @@
 
 	var/darkness = 0 //Calculated tile darkness.
 
+	var/list/stored_shuttle_items
+
 /turf/proc/on_step()
 	return TRUE
 

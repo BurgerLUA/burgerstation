@@ -80,16 +80,16 @@ var/global/list/global_status_displays = list()
 
 
 /obj/structure/interactive/status_display/global_display/cargo_inbound
-	name = "cargo status display"
-	desc = "ASS BLAST USA"
-	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Cargo Shuttle."
-	status_id = "cargo"
-
-/obj/structure/interactive/status_display/global_display/cargo
 	name = "cargo inbound status display"
 	desc = "ASS BLAST USA"
-	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Inbound Cargo Shuttle."
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Cargo Shuttle."
 	status_id = "cargo_inbound"
+
+/obj/structure/interactive/status_display/global_display/cargo
+	name = "cargo status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Inbound Cargo Shuttle."
+	status_id = "cargo"
 
 /obj/structure/interactive/status_display/global_display/round
 	name = "mission status display"

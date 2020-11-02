@@ -49,20 +49,22 @@
 		return FALSE
 
 	else if(on_fire)
+		var/stacks_to_remove = 0
 		if(horizontal)
-			adjust_fire_stacks(max(-fire_stacks,-100))
+			stacks_to_remove = min(fire_stacks,100)
 			src.visible_message(
 				span("warning","\The [src.name] rolls on the ground!"),
 				span("danger","You quickly roll on the ground!"),
 			)
 		else
-			adjust_fire_stacks(max(-fire_stacks,-50))
+			stacks_to_remove = min(fire_stacks,25)
 			src.visible_message(
 				span("warning","\The [src.name] quickly pats out the flames!"),
 				span("danger","You quickly pat out the flames!"),
 			)
+		adjust_fire_stacks(-stacks_to_remove)
 		health.adjust_stamina(-5)
-		next_resist = world.time + 20
+		next_resist = world.time + 15
 		return FALSE
 
 	else if(has_status_effect(REST))

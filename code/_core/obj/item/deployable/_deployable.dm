@@ -49,8 +49,25 @@
 	desc_extended = "A large deployable barricade."
 	structure_to_deploy = /obj/structure/interactive/barricade/
 	icon = 'icons/obj/item/deployable/barricade.dmi'
-	value = 80
+	value = 40
+
+	weight = 3
+
+	item_count_max = 5
+
+	size = SIZE_3
 
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
 	return ..()
+
+/obj/item/deployable/sentry
+	name = "deployable sentry"
+	desc = "BUILDIN A SENTRY"
+	desc_extended = "A small man portable sentry. on the bottom you see a tag saying: ATTENTION DUE TO THE MANUFACTURE'S INCOMPITANCE YOU CANNOT PACK UP THIS SENTRY ONCE YOU DEPLOY IT"
+	structure_to_deploy =/mob/living/simple/npc/turret/nanotrasen_deployable/
+	icon = 'icons/obj/item/deployable/miniturret.dmi'
+	value = 500
+	item_count_max = 1
+	weight = 20
+	size = SIZE_4

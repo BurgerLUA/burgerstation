@@ -59,7 +59,7 @@
 			stored_item_cost = 0
 			name = "[stored_item.name] - [stored_item_burgerbux_cost] burgerbux"
 		else
-			stored_item_cost = max(1,CEILING(stored_item.calculate_value(),1))
+			stored_item_cost = max(1,CEILING(stored_item.get_value(),1))
 			if(stored_item_cost == 1)
 				log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
 			name = "[stored_item.name] - [stored_item_cost] credits"
@@ -78,19 +78,19 @@
 	U.appearance = stored_item.appearance
 	U.pixel_x = 2
 	U.pixel_y = 4
-	U.plane = FLOAT_PLANE + 1
+	//U.plane = FLOAT_PLANE + 1
 	add_overlay(U)
 
 	var/image/M = new/image(icon,icon_state)
 	M.appearance = stored_item.appearance
-	M.plane = FLOAT_PLANE + 2
+	//M.plane = FLOAT_PLANE + 2
 	add_overlay(M)
 
 	var/image/O = new/image(icon,icon_state)
 	O.appearance = stored_item.appearance
 	O.pixel_x = -2
 	O.pixel_y = -4
-	O.plane = FLOAT_PLANE + 3
+	//O.plane = FLOAT_PLANE + 3
 	add_overlay(O)
 	return .
 

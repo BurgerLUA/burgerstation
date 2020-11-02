@@ -12,6 +12,7 @@
 	vision_mod = FLAG_VISION_ALL
 	sight_mod = SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_THRU
 	see_invisible = INVISIBLITY_GHOST
+	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 /obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 

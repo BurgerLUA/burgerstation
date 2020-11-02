@@ -29,7 +29,7 @@
 
 	value = 70
 
-	slowdown_mul_worn = 1.05
+
 
 /obj/item/clothing/feet/shoes/winter/left
 	name = "left winter boot"

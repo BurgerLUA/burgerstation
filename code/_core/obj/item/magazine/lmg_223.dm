@@ -12,9 +12,6 @@
 
 	ammo = /obj/item/bullet_cartridge/rifle_223
 
-	size = SIZE_3
-
-
 	bullet_length_min = 40
 	bullet_length_best = 45
 	bullet_length_max = 46
@@ -23,7 +20,7 @@
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
 
-	size = SIZE_4
+	size = SIZE_3
 
 	icon_states = 11
 

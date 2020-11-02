@@ -5,13 +5,10 @@
 	icon = 'icons/obj/item/weapons/melee/toolbox/red.dmi'
 	damage_type = /damagetype/item/heavy
 
-	attack_delay = 5
-	attack_delay_max = 10
-
 	value = 10
 
 	size = SIZE_3
-
+	weight = 10
 
 	is_container = TRUE
 	container_max_size = SIZE_2

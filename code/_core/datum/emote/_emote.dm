@@ -15,8 +15,8 @@
 /emote/proc/on_emote(var/atom/emoter,var/atom/target)
 
 	if(!target || !action_target)
-		emoter.visible_message(span("emote",replacetextEx(action,"#USER","<b>[emoter.name]</b>")))
-	else
+		if(action) emoter.visible_message(span("emote",replacetextEx(action,"#USER","<b>[emoter.name]</b>")))
+	else if(action_target)
 		emoter.visible_message(span("emote",replacetextEx(action_target,"#USER","<b>[emoter.name]</b>")))
 
 	return TRUE

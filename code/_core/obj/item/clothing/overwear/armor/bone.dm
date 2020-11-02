@@ -22,5 +22,3 @@
 	size = SIZE_6
 
 	value = 500
-
-	slowdown_mul_worn = 1.2

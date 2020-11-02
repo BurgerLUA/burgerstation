@@ -15,5 +15,6 @@
 				A.health.adjust_burn_loss(100)
 			explode(T,7,A,src)
 			A.queue_health_update = TRUE
+			A.smite()
 
 	return .

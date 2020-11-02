@@ -1,5 +1,5 @@
 /obj/hud/button/floor_object
-	name = "foor object"
+	name = "floor object"
 	var/atom/associated_object //set before the object is initialized
 	var/atom/associated_loc //set before the object is initialized
 
@@ -74,7 +74,7 @@
 	if(associated_object)
 		var/image/I = new/image(associated_object.icon,associated_object.icon_state)
 		I.appearance = associated_object.appearance
-		I.plane = FLOAT_PLANE + 1
+		I.plane = PLANE_HUD_OBJ
 		I.appearance_flags = RESET_ALPHA | KEEP_TOGETHER
 		add_overlay(I)
 

@@ -210,3 +210,15 @@
 
 	return ..()
 */
+
+
+
+/mob/living/advanced/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+
+	. = ..()
+
+	if(is_organ(hit_object))
+		var/obj/item/organ/O = hit_object
+		. *= O.damage_coefficient
+
+	return .

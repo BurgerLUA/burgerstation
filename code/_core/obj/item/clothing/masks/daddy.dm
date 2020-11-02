@@ -13,6 +13,7 @@
 	)
 
 	size = SIZE_3
+	weight = -10
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
@@ -28,5 +29,3 @@
 	item_slot = SLOT_HEAD | SLOT_FACE
 
 	blocks_clothing = SLOT_HEAD | SLOT_FACE
-
-	slowdown_mul_worn = 0.95

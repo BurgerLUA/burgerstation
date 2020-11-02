@@ -9,6 +9,8 @@
 
 	var/sound_to_play = 'sound/ui/message_double_ping.ogg'
 
+	weight = 3
+
 /obj/item/chime/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_device")
@@ -22,7 +24,7 @@
 /obj/item/chime/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(sound_to_play)
-		play(sound_to_play,get_turf(src))
+		play(sound_to_play,get_turf(src), alert_source = src, alert = ALERT_LEVEL_NOISE)
 
 	return ..()
 

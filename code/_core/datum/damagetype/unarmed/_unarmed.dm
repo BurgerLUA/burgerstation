@@ -14,10 +14,6 @@
 		'sound/weapons/fists/light_punch_07.ogg'
 	)
 
-	skill_stats = list(
-		SKILL_UNARMED = 100 //100%
-	)
-
 	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
 		BLADE = 1,
 		BLUNT = 1,

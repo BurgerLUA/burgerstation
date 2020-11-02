@@ -28,8 +28,6 @@
 
 	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners. This actually just multiplies their experience from the template.
 
-	var/list/mob/living/advanced/player/players_inside
-
 	var/hazard //The id of the hazard
 
 	var/sunlight_freq = 0
@@ -56,20 +54,13 @@
 	var/average_x = 0
 	var/average_y = 0
 
-/area/New(var/desired_loc)
-	SSarea.all_areas[src.type] = src
-	if(area_identifier)
-		if(!SSarea.areas_by_identifier[area_identifier])
-			SSarea.areas_by_identifier[area_identifier] = list()
-		SSarea.areas_by_identifier[area_identifier] += src
-	return ..()
+	var/allow_ghosts = TRUE //Set to false to prevent a ghost from teleporting to this location.
+
 
 /area/proc/is_space()
 	return FALSE
 
 /area/Destroy()
-	if(players_inside)
-		players_inside.Cut()
 
 	if(sunlight_turfs)
 		sunlight_turfs.Cut()
@@ -88,10 +79,6 @@
 	return TRUE
 
 /area/Initialize()
-
-	if(sunlight_freq > 0 && sunlight_color)
-		for(var/turf/T in contents)
-			setup_sunlight(T)
 
 	if(weather)
 		icon = 'icons/area/weather.dmi'
@@ -137,13 +124,6 @@
 	if(is_player(enterer))
 
 		var/mob/living/advanced/player/P = enterer
-
-		if(!players_inside)
-			players_inside = list()
-
-		if(!(enterer in players_inside))
-			players_inside += enterer
-
 		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = INVISIBILITY_NO_PLAYERS
 
@@ -171,8 +151,6 @@
 
 	if(is_player(exiter))
 		var/mob/living/advanced/player/P = exiter
-		if(players_inside)
-			players_inside -= exiter
 		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = initial(P.see_invisible)
 

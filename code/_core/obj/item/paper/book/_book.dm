@@ -7,7 +7,7 @@
 
 	editable = FALSE
 
-	value = 99
+	value = 49
 
 /obj/item/paper/book/firearms/Initialize()
 	. = ..()
@@ -47,4 +47,12 @@
 	desc = "Winners don't drugs! Besides meth."
 	desc_extended = "A catalog featuring all the medical recipes known to man."
 	data = SSreagent.stored_book_data["Chemistry"].Copy()
+	return .
+
+/obj/item/paper/book/ghost/Initialize()
+	. = ..()
+	name = "reference:Ghosthunting Manual"
+	desc = "How not to die to ghosts."
+	desc_extended = "A reference guide on how to successfully ghosthunt."
+	data = SSreagent.stored_book_data["ghosthunting guide"].Copy()
 	return .

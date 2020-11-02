@@ -10,25 +10,24 @@
 
 	dynamic_inventory_count = 8
 
+	dynamic_inventory_type = /obj/hud/inventory/dynamic/sandwich/
+
 	icon = 'icons/obj/item/consumable/food/dynamic_bread.dmi'
 	icon_state = "bun_bottom"
 
 	scale_sprite = FALSE
 
+
+
+
 /obj/item/container/food/sandwich/Generate()
 	reagents.add_reagent(/reagent/nutrition/bread/flour/processed,5)
 	return ..()
 
-/obj/item/container/food/sandwich/update_icon()
+/obj/item/container/food/sandwich/update_sprite()
 
 	if(istype(reagents))
-		icon = initial(icon)
-		icon_state = initial(icon_state)
-
-		var/icon/I = new/icon(icon,icon_state)
-		I.Blend(reagents.color,ICON_MULTIPLY)
-
-		icon = I
+		src.color = reagents.color
 
 	return ..()
 
@@ -44,8 +43,9 @@
 		if(!IT)
 			continue
 		var/image/IM = new/image(IT.icon,IT.icon_state)
+		IM.appearance = IT.appearance
+		IM.appearance_flags |= RESET_COLOR
 		IM.pixel_y = offset_y
-		IM.color = IT.color
 		add_overlay(IM)
 		offset_y += IT.pixel_height
 
@@ -65,4 +65,4 @@
 
 /obj/item/container/food/sandwich/bread
 	name = "sandwich"
-	icon_state = "bun_bottom"
+	icon_state = "bread_slice"

@@ -6,10 +6,10 @@
 
 	damage_type = /damagetype/melee/club/null_rod
 
-	attack_delay = 6
-	attack_delay_max = 10
-
 	value = 30
+
+	weight = 4
+	size = SIZE_2
 
 
 /obj/item/weapon/melee/null_rod/staff
@@ -20,11 +20,10 @@
 
 	damage_type = /damagetype/melee/club/null_staff
 
-
-	attack_delay = 8
-	attack_delay_max = 20
-
 	attack_range = 2
+
+	weight = 8
+	size = SIZE_4
 
 /obj/item/weapon/melee/null_rod/dagger
 	name = "null dagger"
@@ -34,5 +33,5 @@
 
 	damage_type = /damagetype/melee/sword/null_dagger
 
-	attack_delay = 4
-	attack_delay_max = 6
+	weight = 3
+	size = SIZE_2

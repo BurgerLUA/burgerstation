@@ -16,6 +16,26 @@
 
 	value = 30
 
+/obj/item/clothing/glasses/sun/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+
+	. = ..()
+
+	if(is_inventory(old_location))
+		var/obj/hud/inventory/I = old_location
+		I.owner.remove_color_mod("eyes")
+
+	if(new_location.item_slot & SLOT_EYES)
+		var/list/desired_color = list(
+			0.9,0,0,0,
+			0,0.9,0,0,
+			0,0,0.9,0,
+			0,0,0,1,
+			0,0,0,0
+		)
+		new_location.owner.add_color_mod("eyes",desired_color)
+
+	return .
+
 
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"

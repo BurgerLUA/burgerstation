@@ -9,7 +9,7 @@
 
 	stun_angle = 0
 
-	health_base = 500
+	health_base = 400
 
 	attack_range = 1
 

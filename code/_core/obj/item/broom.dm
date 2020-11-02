@@ -18,6 +18,8 @@
 		INTERACT_CHECK_OTHER(object)
 		var/turf/T = object
 		for(var/obj/item/I in orange(T,1))
+			if(I.anchored)
+				continue
 			I.Move(T)
 
 	return ..()

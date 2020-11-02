@@ -5,6 +5,8 @@
 
 	has_quick_function = TRUE
 
+	weight = 6
+
 /obj/item/weapon/ranged/magic/tome/get_static_spread()
 	return 0
 

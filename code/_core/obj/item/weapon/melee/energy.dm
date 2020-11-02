@@ -97,9 +97,6 @@
 	desc_extended = "A lightweight energy blade that has become the standard issue melee pretty much everywhere. It's main issue is that it's not usable as a bayonet due to it's lack of weight and it's complex mechanisms."
 	icon = 'icons/obj/item/weapons/melee/laser/sword.dmi'
 
-	attack_delay = 4
-	attack_delay_max = 8
-
 	value = 80
 
 	damage_type = /damagetype/melee/sword/energy
@@ -110,6 +107,9 @@
 		"blade" = "#FFFFFF",
 		"core" = "#FFFFFF"
 	)
+
+	weight = 5
+	size = SIZE_2
 
 /obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
 	SPAM_CHECK
@@ -171,6 +171,9 @@
 		ARCANE = 100
 	)
 
+	weight = 2
+	size = SIZE_2
+
 /obj/item/weapon/melee/energy/shield/blue
 	polymorphs = list(base = "#0000FF")
 
@@ -210,19 +213,19 @@
 
 
 /obj/item/weapon/melee/energy/plightbringer
-	name = "\improper Plightbringer"
+	name = "\improper Plightbringer's Sword"
 	desc = "A large black steel straightsword with a decorated hilt."
 	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
 	icon = 'icons/obj/item/weapons/melee/swords/plightbringer.dmi'
-
-	attack_delay = 4
-	attack_delay_max = 10
 
 	value = 1000
 	rarity = RARITY_RARE
 
 	damage_type = /damagetype/melee/sword/plightbringer
 	damage_type_on = /damagetype/melee/sword/plightbringer/on
+
+	size = SIZE_4
+	weight = 25
 
 /obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller)
 	. = ..()

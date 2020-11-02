@@ -4,6 +4,8 @@
 	desc_extended = "Extra pockets not included."
 	icon = 'icons/obj/item/clothing/suit/labcoat.dmi'
 
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
+
 	defense_rating = list(
 		LASER = 25,
 		ARCANE = 25,

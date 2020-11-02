@@ -23,6 +23,4 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/medical)
 
-	slowdown_mul_worn = 1.1
-
 	value = 1000

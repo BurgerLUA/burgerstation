@@ -1,5 +1,7 @@
 /obj/item/mech_part/head
 	name = "mech head"
+	desc = "Don't lose it."
+	desc_extended = "A head for your mech."
 
 
 /obj/item/mech_part/head/combat

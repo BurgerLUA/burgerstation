@@ -20,7 +20,9 @@
 
 	value = 20
 
-	slowdown_mul_worn = 1
+	speed_bonus = 0
+
+
 
 /obj/item/clothing/feet/shoes/sandal/left
 	name = "left sandal"

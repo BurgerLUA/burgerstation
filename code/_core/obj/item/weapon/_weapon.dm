@@ -14,9 +14,6 @@
 
 	quick_function_type = FLAG_QUICK_TOGGLE
 
-	attack_delay = 10
-	attack_delay_max = 10
-
 /obj/item/weapon/update_icon()
 
 	var/open_text = open_icon && open ? "_open" : ""

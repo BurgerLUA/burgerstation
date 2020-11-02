@@ -1,6 +1,7 @@
 /mob/living/vehicle/mech
 	name = "mech"
-	desc = "Weaponized Anime"
+	desc = "Weaponized Anime."
+	desc_extended = "A humanoid armoured weapons platform that can be modified with an array of different parts and weapon modules to navigate and perform in any environment. Manufactures its own ammo using internal battery power, making it highly self-sufficient and expensive."
 	icon = 'icons/obj/vehicles/mechs.dmi'
 
 	collision_flags = FLAG_COLLISION_WALKING

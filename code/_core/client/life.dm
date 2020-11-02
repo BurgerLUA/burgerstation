@@ -43,6 +43,7 @@
 				images += L.medical_hud_image_advanced
 
 	update_color_mods()
+	update_lighting_mods()
 
 	return TRUE
 

@@ -45,7 +45,7 @@
 
 	if(is_item(object))
 		var/obj/item/I = object
-		I.drop_item(get_turf(src))
+		I.drop_item(src)
 
 	return ..()
 

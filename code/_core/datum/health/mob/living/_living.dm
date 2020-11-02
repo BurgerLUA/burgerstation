@@ -17,7 +17,8 @@
 			BLUNT = armor_bonus,
 			PIERCE = armor_bonus,
 			ARCANE = -armor_bonus,
-			COLD = armor_bonus
+			COLD = armor_bonus,
+			FATIGUE = L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100
 		)
 
 		for(var/damage_type in bonus_armor)
@@ -99,9 +100,9 @@
 
 	var/mob/living/L = owner
 
-	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*100*L.mob_size //200
-	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*200*L.mob_size //300
-	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100*L.mob_size //200
+	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*100
+	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100
+	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100
 
 	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 

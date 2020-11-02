@@ -106,4 +106,6 @@
 #define LAYER_MOB_HAIR_HEAD            FLOAT_LAYER + 0.72
 #define LAYER_MOB_CLOTHING_MASK        FLOAT_LAYER + 0.73
 #define LAYER_MOB_CLOTHING_HELMET      FLOAT_LAYER + 0.74
-#define LAYER_MOB_HELD                 FLOAT_LAYER + 0.75
+#define LAYER_MOB_CLOTHING_ALL         FLOAT_LAYER + 0.75
+
+#define LAYER_MOB_HELD                 FLOAT_LAYER + 0.8

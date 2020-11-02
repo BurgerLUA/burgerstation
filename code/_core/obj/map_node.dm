@@ -14,6 +14,12 @@ var/global/mob/abstract/node_checker
 	see_in_dark  = 1e6 // Literally arbitrary.
 	density = 1
 
+/mob/abstract/node_checker/Bump(atom/Obstacle)
+
+	if(istype(Obstacle,/obj/structure/interactive/door))
+		return TRUE
+
+	return ..()
 
 /mob/abstract/node_checker/New(var/desired_loc)
 	node_checker = src
@@ -37,7 +43,7 @@ var/global/mob/abstract/node_checker
 
 	var/found = FALSE
 
-	for(var/obj/marker/map_node/M in oview(VIEW_RANGE*2,src))
+	for(var/obj/marker/map_node/M in orange(VIEW_RANGE*2,src))
 		var/mob/abstract/node_checker/NC = node_checker
 		NC.loc = src.loc
 		var/invalid = FALSE

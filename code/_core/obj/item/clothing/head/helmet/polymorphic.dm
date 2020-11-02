@@ -28,8 +28,6 @@
 
 	no_initial_blend = TRUE
 
-	slowdown_mul_worn = 1.05
-
 /obj/item/clothing/head/helmet/polymorphic/security
 	polymorphs = list(
 		"base" = COLOR_BLACK,

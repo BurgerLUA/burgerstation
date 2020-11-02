@@ -16,7 +16,7 @@
 
 	view_punch = 20
 
-	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
+
 
 	size = SIZE_5
 
@@ -35,6 +35,7 @@
 	size = SIZE_4
 
 	value = 800
+	weight = 25
 
 	ai_heat_sensitivity = 0.1
 

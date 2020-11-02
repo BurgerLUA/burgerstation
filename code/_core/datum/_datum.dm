@@ -8,6 +8,12 @@
 	var/qdelete_immune = FALSE
 	var/list/hooks
 
+/datum/proc/get_examine_list(var/mob/examiner)
+	return list(div("examine_title","[src]"),div("examine_description","[src.type]"))
+
+/datum/proc/get_examine_details_list(var/mob/examiner)
+	return list()
+
 /datum/proc/Initialize()
 	if(initialized)
 		CRASH_SAFE("WARNING: [src.get_debug_name()] was initialized twice!")

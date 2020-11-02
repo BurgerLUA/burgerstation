@@ -5,9 +5,7 @@
 	icon = 'icons/mob/living/simple/beepsky.dmi'
 	icon_state = "captain"
 
-	health_base = 10000 //I'm a god.
 	immortal = TRUE //How can you kill a god?
-
 
 	ai = /ai/doorman
 	class = /class/beepsky

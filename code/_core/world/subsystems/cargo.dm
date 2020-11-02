@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(cargo)
 		var/obj/item/I = cargo_id_to_type[md5]
 		var/actual_name = I.name
 		actual_name = replacetextEx(actual_name,"\improper","")
-		var/desired_text = "# [actual_name]\n\n## [I.desc_extended]\n\n### Order Code: [md5]\n\n### Value: [I.calculate_value()]\n\n"
+		var/desired_text = "# [actual_name]\n\n## [I.desc_extended]\n\n### Order Code: [md5]\n\n### Value: [I.get_value()]\n\n"
 		cached_text += desired_text
 		item_count++
 		if(item_count >= 5)

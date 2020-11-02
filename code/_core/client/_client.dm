@@ -29,7 +29,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/atom/last_object
 	var/atom/last_location
 
-	mouse_pointer_icon = 'icons/pointer.dmi'
+	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
 	var/swap_mouse = FALSE
 
@@ -122,7 +122,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	return ..()
 
-/client/proc/examine(var/atom/object)
+/client/proc/examine(var/datum/object)
 
 	for(var/v in object.get_examine_list(src.mob))
 		src.mob.to_chat(v)
@@ -198,7 +198,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
 	update_window()
-	update_color_mods()
 
 	if(IsByondMember())
 		byond_member = TRUE

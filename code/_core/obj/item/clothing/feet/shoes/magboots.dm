@@ -24,9 +24,9 @@
 
 	size = SIZE_2
 
-	slowdown_mul_worn = 1.1
-
 	value = 200
+
+	speed_bonus = -0.1
 
 /obj/item/clothing/feet/shoes/magboot/left
 	name = "left magboot"
@@ -37,5 +37,5 @@
 	protected_limbs = list(BODY_FOOT_LEFT)
 	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
-	slowdown_mul_worn = 1.1
+
 
