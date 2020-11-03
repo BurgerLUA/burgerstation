@@ -259,6 +259,12 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
 
+
+		//AI checks
+		if(alert && alert_source && is_living(M))
+			var/mob/living/L = M
+			if(L.ai) L.ai.set_alert_level(alert,FALSE,locate(pos[1],pos[2],pos[3]),alert_source)
+
 		if(!M.client)
 			continue
 

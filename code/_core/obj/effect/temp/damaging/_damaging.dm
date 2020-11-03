@@ -12,6 +12,8 @@ obj/effect/temp/hazard
 
 	var/enabled = FALSE
 
+	density = TRUE
+
 obj/effect/temp/hazard/Destroy()
 	owner = null
 	return ..()
@@ -36,17 +38,40 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 	return ..()
 
+
+/obj/effect/temp/hazard/proc/do_cross_damage(var/mob/living/L)
+
+	if(!cross_hazard || !enabled || !L || L.loc != src.loc)
+		return FALSE
+
+	do_damage(L)
+
+	CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,.proc/do_cross_damage,L)
+
 /obj/effect/temp/hazard/Crossed(atom/movable/O)
 	if(enabled && cross_hazard && is_living(O))
-		do_damage(O)
+		do_cross_damage(O)
 	return ..()
 
+/obj/effect/temp/hazard/Uncrossed(atom/movable/O)
+	if(enabled && cross_hazard && is_living(O))
+		do_cross_damage(O)
+	return ..()
+
+/obj/effect/temp/hazard/proc/get_params(var/atom/victim)
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0,32)
+	return .
+
 /obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
+	if(is_living(victim) && is_living(owner) && owner != victim)
+		var/mob/living/L = victim
+		var/mob/living/L2 = owner
+		if(L.loyalty_tag == L2.loyalty_tag)
+			return FALSE
 	var/damagetype/DT = all_damage_types[damage_type]
-	var/list/params = list()
-	params[PARAM_ICON_X] = rand(0,32)
-	params[PARAM_ICON_Y] = rand(0,32)
-	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,params,TRUE,TRUE)
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,get_params(),TRUE,TRUE)
 	return DT.hit(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()
@@ -54,7 +79,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	if(qdeleting)
 		return FALSE
 
-	if(hazard_range >= 1)
+	if(hazard_range >= 2)
 		for(var/mob/living/L in range(hazard_range,src))
 			do_damage(L)
 	else
@@ -160,3 +185,22 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 	if(istype(victim,/mob/living/simple/npc/bubblegum)) //This bug is hilarious but we don't want to have it.
 		return FALSE
 	return ..()
+
+
+
+/obj/effect/temp/hazard/lava/
+	name = "lava"
+	icon = 'icons/obj/effects/effects.dmi'
+	icon_state = "lavastaff_warn"
+	duration = SECONDS_TO_DECISECONDS(30)
+	hazard_range = 1
+	damage_type = /damagetype/ranged/magic/fireball
+	cross_hazard = TRUE
+	plane = PLANE_FLOOR
+	layer = 100
+
+/obj/effect/temp/hazard/lava/get_params(var/atom/victim)
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0.8)
+	return .

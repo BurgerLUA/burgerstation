@@ -38,7 +38,7 @@
 
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		if(A.add_status_effect(STAGGER,5,5))
+		if(!A.horizontal && A.add_status_effect(STAGGER,5,5))
 			A.to_chat(span("danger","Your [src.name] recoils in pain, throwing you off balance!"))
 			return TRUE
 

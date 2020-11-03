@@ -106,9 +106,11 @@
 	undelete(src)
 	return TRUE
 
+/mob/living/proc/rejuvenate()
+	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss())
+
 /mob/living/proc/resurrect()
-	if(health)
-		health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss())
+	rejuvenate()
 	revive()
 	return TRUE
 

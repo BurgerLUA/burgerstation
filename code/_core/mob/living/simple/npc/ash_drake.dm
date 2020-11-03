@@ -45,11 +45,6 @@
 
 	fatigue_from_block_mul = 0
 
-	butcher_contents = list(
-		/obj/item/clothing/overwear/armor/drake_armor,
-		/obj/item/soapstone/orange
-	)
-
 	status_immune = list(
 		STUN = TRUE,
 		SLEEP = TRUE,

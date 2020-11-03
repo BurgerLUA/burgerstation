@@ -20,6 +20,17 @@
 
 	liquid = 0.3
 
+/reagent/nutrition/pineapple
+	name = "pineapple"
+	desc = "Nutrition and flavor from a pineapple."
+	color = "#C90000"
+
+	nutrition_amount = 8
+
+	flavor = "pineapple"
+
+	liquid = 0.5
+
 /reagent/nutrition/cabbage
 	name = "cabbage"
 	desc = "Nutrition and flavor from a cabbage."

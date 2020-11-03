@@ -13,13 +13,37 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-/obj/projectile/magic/fireball/post_on_hit(var/atom/hit_atom)
+
+/obj/projectile/magic/fireball/explosive
+	hit_target_turf = TRUE
+
+/obj/projectile/magic/fireball/explosive/post_on_hit(var/atom/hit_atom)
+
 	. = ..()
 
 	if(.)
 		explode(get_turf(hit_atom),1,owner,src,loyalty_tag)
 
 	return .
+
+
+/obj/projectile/magic/fireball/lava
+	hit_target_turf = TRUE
+
+/obj/projectile/magic/fireball/lava/post_on_hit(var/atom/hit_atom)
+
+	. = ..()
+
+	var/turf/T = get_turf(hit_atom)
+	if(T)
+		var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
+		INITIALIZE(L)
+		GENERATE(L)
+		FINALIZE(L)
+
+	return .
+
+
 
 
 /obj/projectile/magic/chaos

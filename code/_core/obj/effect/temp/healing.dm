@@ -18,3 +18,11 @@
 
 
 
+/obj/effect/temp/electricity
+	name = "electricity effect"
+	mouse_opacity = 0
+	icon = 'icons/obj/effects/effects.dmi'
+	icon_state = "electricity"
+	duration = SECONDS_TO_DECISECONDS(1)
+
+

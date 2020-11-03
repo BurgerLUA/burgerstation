@@ -62,6 +62,9 @@
 
 	return .
 
+/obj/item/container/food/proc/get_calculated_bites(var/total_reagents = 1)
+	return 1 + FLOOR(total_reagents/(BITE_SIZE*2),1)
+
 /obj/item/container/food/get_reagents_to_consume()
 
 	var/total_reagents = reagents.volume_current
@@ -73,8 +76,7 @@
 			continue
 		total_reagents += IT.reagents.volume_current
 
-	var/calculated_bites = 1 + FLOOR(total_reagents/(BITE_SIZE*2),1)
-
+	var/calculated_bites = get_calculated_bites(total_reagents)
 	var/reagent_container/temp/T = new(src,1000)
 
 	for(var/i=1,i<=length(inventories),i++)
