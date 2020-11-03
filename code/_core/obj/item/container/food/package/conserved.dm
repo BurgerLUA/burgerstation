@@ -96,7 +96,7 @@
 	reagents.add_reagent(/reagent/nutrition/oatmeal,30)
 
 /obj/item/container/food/package/conserved/choccy_bar
-	name = "/improper bar of dark chocolate"
+	name = "\improper bar of dark chocolate"
 	desc = "Military candy."
 	desc_extended = "Obligatory bar of dark chocolate that comes with almost any MRE you'd find in this region. Tastes like bitter plastic mixed with cheap chocolate powder and sugar subtitutes, but, hey, free chocolate!"
 	icon_state = "choco"
