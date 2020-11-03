@@ -135,3 +135,15 @@
 	results = list(
 		/reagent/nutrition/icing = 1
 	)
+
+/reagent_recipe/food/puree
+	name = "puree"
+
+	required_reagents = list(
+		/reagent/nutrition/puree/dry = 3,
+		/reagent/nutrition/water = 1
+	)
+
+	results = list(
+		/reagent/nutrition/puree = 1
+	)

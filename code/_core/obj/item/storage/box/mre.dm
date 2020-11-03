@@ -19,8 +19,6 @@
 	name = "NT MRE"
 	desc_extended = "Prepackaged first-response combat ration issued to NanoTrasen's combat personell. Contains a raid's worth of food."
 
-
-
 /obj/item/storage/mre/nt/filled/fill_inventory()
 	new /obj/item/container/food/package/conserved/spratts(src)
 	new /obj/item/container/food/package/conserved/puree(src)
