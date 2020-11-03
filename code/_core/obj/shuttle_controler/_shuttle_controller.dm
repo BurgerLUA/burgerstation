@@ -96,7 +96,7 @@ var/global/list/all_shuttle_controlers = list()
 	if(start_sound)
 		play(start_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 		if(last_caller)
-			create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+			create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 
 	var/area/A = get_area(src)
 	if(!desired_transit_time) desired_transit_time = default_transit_time
@@ -165,7 +165,7 @@ var/global/list/all_shuttle_controlers = list()
 			if(progress_sound)
 				play(progress_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 				if(last_caller)
-					create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+					create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
 
@@ -185,7 +185,7 @@ var/global/list/all_shuttle_controlers = list()
 			if(end_sound)
 				play(end_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 				if(last_caller)
-					create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
+					create_alert(VIEW_RANGE,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null

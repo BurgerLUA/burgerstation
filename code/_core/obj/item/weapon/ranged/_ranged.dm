@@ -203,8 +203,9 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click*"))
 	if(length(empty_sounds))
-		play(pick(empty_sounds),src,range_max = 3)
-		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+		var/turf/T = get_turf(src)
+		play(pick(empty_sounds),T,range_max = 5)
+		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	return FALSE
 
@@ -223,9 +224,10 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 
 	if(length(shoot_sounds_to_use))
-		play(pick(shoot_sounds_to_use),src)
+		var/turf/T = get_turf(src)
+		play(pick(shoot_sounds_to_use),T)
 		if(shoot_alert_to_use)
-			create_alert(VIEW_RANGE,src,caller,shoot_alert_to_use)
+			create_alert(VIEW_RANGE,T,caller,shoot_alert_to_use)
 		return TRUE
 
 	return FALSE

@@ -33,7 +33,9 @@
 	if(ai)
 		ai.on_death()
 
-	create_alert(VIEW_RANGE*0.5, get_turf(src), alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+	var/turf/T = get_turf(src)
+
+	create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
 	movement_flags = 0x0
 	attack_flags = 0x0
@@ -59,7 +61,6 @@
 	DG.update_owner(src)
 
 	if(client)
-		var/turf/T = get_turf(src)
 		notify_ghosts("[src.name] has died!",T)
 
 	if(master)

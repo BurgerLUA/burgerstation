@@ -35,8 +35,9 @@
 
 /obj/item/supply_crate/on_destruction(var/mob/caller,var/damage = FALSE)
 
-	play('sound/effects/crate_break.ogg',get_turf(src))
-	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+	var/turf/T = get_turf(src)
+	play('sound/effects/crate_break.ogg',T)
+	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(loot)
 		var/list/spawned_loot = CREATE_LOOT(loot,src.loc)

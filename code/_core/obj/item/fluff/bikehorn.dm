@@ -17,8 +17,9 @@ obj/item/bikehorn/click_self(var/mob/caller)
 	. = ..()
 
 	if(caller.can_attack(null,src))
-		play('sound/items/bikehorn.ogg',src)
-		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+		var/turf/T = get_turf(src)
+		play('sound/items/bikehorn.ogg',T)
+		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 		src.attack_next = world.time + 10
 
 	return .

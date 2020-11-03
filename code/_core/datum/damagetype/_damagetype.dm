@@ -521,16 +521,17 @@
 		play(pick(impact_sounds_flesh),get_turf(hit_object))
 
 	if(length(impact_sounds))
-		play(pick(impact_sounds),get_turf(hit_object))
-
-	create_alert(VIEW_RANGE,victim,attacker,ALERT_LEVEL_CAUTION)
+		var/turf/T = get_turf(hit_object)
+		play(pick(impact_sounds),T)
+		create_alert(VIEW_RANGE,T,attacker,ALERT_LEVEL_CAUTION)
 
 	return TRUE
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
-		play(pick(miss_sounds),get_turf(victim))
-		create_alert(VIEW_RANGE,victim,attacker,ALERT_LEVEL_NOISE)
+		var/turf/T = get_turf(victim)
+		play(pick(miss_sounds),T)
+		create_alert(VIEW_RANGE,T,attacker,ALERT_LEVEL_NOISE)
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 

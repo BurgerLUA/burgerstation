@@ -37,11 +37,12 @@
 	if(!target)
 		return FALSE
 
+	var/turf/T = get_turf(target)
+
 	caller.visible_message("\The [caller.name] charges up \the [src.name]...","You charge up \the [src.name]...")
 
-	play('sound/items/defib/defib_charge.ogg',src)
-
-	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+	play('sound/items/defib/defib_charge.ogg',T)
+	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
@@ -57,21 +58,23 @@
 
 /obj/item/defib/proc/defib_target(var/mob/caller,var/mob/living/target)
 
+	var/turf/T = get_turf(target)
+
 	target.add_status_effect(ADRENALINE,30,30)
 
 	caller.visible_message(span("notice","\The [caller.name] shocks \the [target.name] with \the [src.name]!"),span("notice","You shock \the [target.name] with \the [src.name]!"))
 
-	play('sound/items/defib/defib_zap.ogg',src)
-	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+	play('sound/items/defib/defib_zap.ogg',T)
+	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(target.check_death() || !target.is_player_controlled() || target.suicide)
 		target.visible_message(span("warning","Nothing happens..."))
-		play('sound/items/defib/defib_failed.ogg',src)
-		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+		play('sound/items/defib/defib_failed.ogg',T)
+		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 		return FALSE
 
-	play('sound/items/defib/defib_ready.ogg',src)
-	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
+	play('sound/items/defib/defib_ready.ogg',T)
+	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	target.revive()
 	caller.visible_message(span("danger","\The [target.name] jolts to life!"))

@@ -179,7 +179,7 @@ play('sound, atom) to play to all turfs in range of that atom(add args range_min
 play('sound',list_of_hearers, turf or vector) to play to that list of hearers at that location
 */
 
-/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0, var/atom/alert_source = null)
+/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
 
 	if(!SSsound)
 		log_error("Tried playing a sound without the sound subsystem active!")
@@ -258,12 +258,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		var/mob/M = k
 
 		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
-
-
-		//AI checks
-		if(alert && alert_source && is_living(M))
-			var/mob/living/L = M
-			if(L.ai) L.ai.set_alert_level(alert,FALSE,locate(pos[1],pos[2],pos[3]),alert_source)
 
 		if(!M.client)
 			continue
