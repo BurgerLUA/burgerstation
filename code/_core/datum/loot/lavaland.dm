@@ -8,8 +8,7 @@
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
 		/obj/item/clothing/overwear/armor/drake_armor = 1,
 		/obj/item/weapon/melee/energy/plightbringer = 1,
-		/obj/item/weapon/melee/sacred_flame = 1,
-		/obj/item/clothing/back/wings/angel = 1
+		/obj/item/weapon/melee/sacred_flame = 1
 	)
 
 /loot/lavaland/bubblegum
