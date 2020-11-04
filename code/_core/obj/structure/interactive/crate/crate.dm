@@ -20,9 +20,29 @@
 	icon_state = "coffin"
 
 /obj/structure/interactive/crate/necro
-	name = "necro"
+	name = "necro chest"
 	icon_state = "necro"
 
 	loot = /loot/lavaland
 
 	collect_contents_on_initialize = FALSE
+
+
+
+/obj/structure/interactive/crate/necro/herald
+	loot = /loot/lavaland/herald
+
+/obj/structure/interactive/crate/necro/bubblegum
+	loot = /loot/lavaland/bubblegum
+
+/obj/structure/interactive/crate/necro/ash_drake
+	loot = /loot/lavaland/ash_drake
+
+/obj/structure/interactive/crate/necro/can_man
+	loot = /loot/lavaland/can_man
+
+/obj/structure/interactive/crate/necro/colossus
+	loot = /loot/lavaland/colossus
+
+/obj/structure/interactive/crate/necro/broodmother
+	loot = /loot/lavaland/broodmother

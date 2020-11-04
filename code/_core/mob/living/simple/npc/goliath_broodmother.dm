@@ -56,7 +56,7 @@
 
 /mob/living/simple/npc/goliath/broodmother/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
+	CREATE(/obj/structure/interactive/crate/necro/broodmother,get_turf(src))
 	return .
 
 /mob/living/simple/npc/goliath/broodmother/on_life()

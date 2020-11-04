@@ -56,6 +56,12 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
+/obj/projectile/magic/blade
+	name = "magic blade"
+	icon_state = "blade"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
 /obj/projectile/magic/rift
 	name = "magic rift"
 	icon_state = "rift"

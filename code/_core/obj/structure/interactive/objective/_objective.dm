@@ -16,7 +16,7 @@ obj/structure/interactive/artifact/Initialize()
 	return ..()
 
 obj/structure/interactive/artifact/on_crush()
-	var/turf/T = get_turf(pick(all_fall_markers))
+	var/turf/T = get_turf(pick(rift_markers))
 	src.visible_message(span("danger","\The [name] strains as it disappears in a large flash!"))
 	src.force_move(T)
 	return FALSE

@@ -12,8 +12,8 @@
 
 	. = ..()
 
-	if((is_living(O) || isobj(O)) && length(all_fall_markers))
-		var/turf/T = get_turf(pick(all_fall_markers))
+	if((is_living(O) || isobj(O)) && length(rift_markers))
+		var/turf/T = get_turf(pick(rift_markers))
 		O.visible_message(span("danger","\The [O.name] falls into \the [src.name]!"))
 		if(is_living(O))
 			var/mob/living/L = O

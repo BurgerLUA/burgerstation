@@ -179,7 +179,6 @@
 	name = "\improper Disposals Maintenance"
 	icon_state = "disposals"
 
-
 /area/burgerstation/pvp
 	name = "ERROR"
 	icon_state = "pvp"

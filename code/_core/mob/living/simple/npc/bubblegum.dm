@@ -73,7 +73,7 @@
 
 /mob/living/simple/npc/bubblegum/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
+	CREATE(/obj/structure/interactive/crate/necro/bubblegum,get_turf(src))
 	charge_steps = 0
 	charge_dir = 0
 	icon_state = "dead"

@@ -70,7 +70,7 @@
 
 /mob/living/simple/npc/colossus/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
+	CREATE(/obj/structure/interactive/crate/necro/colossus,get_turf(src))
 	animate(src, pixel_z = 64, time = 30)
 	return .
 

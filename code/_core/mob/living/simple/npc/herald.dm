@@ -80,7 +80,7 @@
 
 /mob/living/simple/npc/herald/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
+	CREATE(/obj/structure/interactive/crate/necro/herald,get_turf(src))
 	animate(src, pixel_z = 64, time = 30)
 	icon_state = "dead"
 	update_sprite()
