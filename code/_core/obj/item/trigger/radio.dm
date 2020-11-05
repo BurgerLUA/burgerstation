@@ -9,7 +9,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
 	var/list/listening_frequencies = list(
-		RADIO_FREQ_COMMON
+		RADIO_FREQ_COMMON = TRUE
 	)
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.
@@ -125,15 +125,16 @@ list(
 	if(speaker_ref && all_unprocessed_radio_data[speaker_ref])
 		return FALSE
 
-	var/area/A = get_area(src)
+	var/turf/T = get_turf(src)
+	var/area/A = T.loc
+	if(!A)
+		log_error("WARNING: [get_debug_name()] wasn't in a valid area!")
+		return FALSE
 	if(A.flags_comms & FLAG_COMM_DISABLED)
 		return FALSE
-
-	/*
-	if(TRUE || A.flags_comms & FLAG_COMM_SCRAMBLED)
+	if(A.flags_comms & FLAG_COMM_SCRAMBLED)
 		data["message"] = scramble(data["message"])
 		data["message_language"] = scramble(data["message_language"])
-	*/
 
 	all_unprocessed_radio_data[speaker_ref] = data
 
@@ -143,27 +144,23 @@ list(
 
 /obj/item/device/radio/proc/receive_data(var/list/data = list())
 
-	if(!length(data))
+	if(!data || !length(data))
 		return FALSE
 
-	if(data["frequency"] != frequency && !(data["frequency"] in listening_frequencies))
+	if(data["frequency"] != frequency && !listening_frequencies[data["frequency"]])
 		return FALSE
 
-	var/area/A = get_area(src)
+	var/turf/T = get_turf(src)
+	var/area/A = T.loc
 	if(!A)
 		log_error("WARNING: [get_debug_name()] wasn't in a valid area!")
 		return FALSE
-
 	if(A.flags_comms & FLAG_COMM_DISABLED)
 		return FALSE
-
-	/*
 	if(A.flags_comms & FLAG_COMM_SCRAMBLED)
 		data["message"] = scramble(data["message"])
 		data["message_language"] = scramble(data["message_language"])
-	*/
 
-	var/turf/T = get_turf(src)
 	for(var/mob/M in range(broadcasting_range,T))
 		CHECK_TICK(75,FPS_SERVER)
 		if(!M.client)

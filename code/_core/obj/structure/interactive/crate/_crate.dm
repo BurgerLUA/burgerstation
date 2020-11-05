@@ -85,7 +85,7 @@
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
-	SPAM_CHECK
+	SPAM_CHECK(10)
 
 	if(!(caller.attack_flags & ATTACK_GRAB))
 		toggle(caller)
@@ -99,6 +99,8 @@
 			CHECK_TICK(50,FPS_SERVER)
 			var/atom/movable/M = k
 			if(M == src || M.anchored)
+				continue
+			if(M.loc != src.loc)
 				continue
 			M.force_move(src)
 			M.pixel_x = initial(M.pixel_x)

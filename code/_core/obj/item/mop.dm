@@ -18,7 +18,7 @@
 /obj/item/mop/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(isobj(object) && object.reagents)
-		SPAM_CHECK
+		SPAM_CHECK(10)
 		INTERACT_CHECK
 		INTERACT_CHECK_OTHER(object)
 		if(!object.reagents)

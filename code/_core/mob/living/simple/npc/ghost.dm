@@ -13,7 +13,7 @@
 
 	has_footsteps = FALSE
 
-	collision_flags = FLAG_COLLISION_ETHEREAL | FLAG_COLLISION_UNSIMULATED
+	collision_flags = FLAG_COLLISION_UNSIMULATED
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	movement_delay = DECISECONDS_TO_TICKS(2)

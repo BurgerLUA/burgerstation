@@ -39,6 +39,8 @@
 
 	loyalty_tag = "Blob"
 
+	stun_angle = 0
+
 /mob/living/simple/npc/blobbernaught/New(loc,desired_client,desired_level_multiplier,var/obj/structure/interactive/blob/node/desired_node)
 
 	if(desired_node)

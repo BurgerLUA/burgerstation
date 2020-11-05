@@ -43,6 +43,10 @@
 		A.to_chat(span("warning","Something went wrong... tell burger on discord."))
 		return FALSE
 
+	if(isturf(loc))
+		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport."))
+		return FALSE
+
 
 	return TRUE
 

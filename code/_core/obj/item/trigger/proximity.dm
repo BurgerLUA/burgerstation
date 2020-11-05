@@ -39,7 +39,9 @@
 
 /obj/item/device/proximity/think()
 	. = ..()
+
 	if(active)
+
 		time_set -= 1
 
 		if(time_set >= 0 && (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)

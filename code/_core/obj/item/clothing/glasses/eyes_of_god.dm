@@ -27,7 +27,7 @@
 			1.25,0,0,0,
 			0,1.25,0,0,
 			0,0,1.25,0,
-			0,0,0,0.5,
+			0,0,0,1,
 			0,0,0,0
 		)
 		new_location.owner.add_color_mod("eyes",desired_color)

@@ -173,6 +173,22 @@
 	round_time = 0
 	return TRUE
 
+/gamemode/horde/proc/get_wave_frequency()
+
+	var/player_count = length(all_clients)
+
+	switch(player_count)
+		if(0 to 10)
+			return SECONDS_TO_DECISECONDS(60)
+		if(10 to 20)
+			return SECONDS_TO_DECISECONDS(45)
+		if(20 to 30)
+			return SECONDS_TO_DECISECONDS(30)
+		if(30 to INFINITY)
+			return SECONDS_TO_DECISECONDS(15)
+
+	return .
+
 /gamemode/horde/proc/get_enemy_types_to_spawn()
 	return enemy_types_to_spawn
 
@@ -181,7 +197,7 @@
 	if(next_spawn_check > world.time)
 		return TRUE
 
-	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(60)
+	next_spawn_check = world.time + get_wave_frequency()
 
 	handle_alert_level()
 

@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(events)
 		all_events[E.type] = E
 		all_events_prob[E.type] = E.probability
 
-	next_event_time = world.time + SECONDS_TO_DECISECONDS(1200)
+	next_event_time = world.time + SECONDS_TO_DECISECONDS(600)
 
 	return ..()
 

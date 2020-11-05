@@ -13,7 +13,7 @@
 /obj/item/broom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(isturf(object))
-		SPAM_CHECK
+		SPAM_CHECK(10)
 		INTERACT_CHECK
 		INTERACT_CHECK_OTHER(object)
 		var/turf/T = object

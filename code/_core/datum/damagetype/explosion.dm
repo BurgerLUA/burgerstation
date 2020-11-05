@@ -10,3 +10,5 @@
 	attack_damage_penetration = list(
 		BOMB = 0,
 	)
+
+	impact_sounds = null

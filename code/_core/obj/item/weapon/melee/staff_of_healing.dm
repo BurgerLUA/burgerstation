@@ -47,17 +47,20 @@
 	for(var/mob/living/L in oview(T,4))
 		if(L.dead)
 			continue
-		L.brute_regen_buffer += 3
-		L.burn_regen_buffer += 3
-		L.tox_regen_buffer += 3
-		var/obj/effect/temp/healing/H = new(T,10,COLOR_MEDICAL)
+		if(!L.health)
+			continue
+		if(L.health.health_current >= L.health.health_max)
+			continue
+		if(L.health.get_brute_loss())
+			L.brute_regen_buffer += 3
+		if(L.health.get_burn_loss())
+			L.burn_regen_buffer += 3
+		if(L.health.get_tox_loss())
+			L.tox_regen_buffer += 3
+		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_MEDICAL)
 		INITIALIZE(H)
 		GENERATE(H)
 		FINALIZE(H)
-		var/obj/effect/temp/healing/H2 = new(L.loc,10,COLOR_MEDICAL)
-		INITIALIZE(H2)
-		GENERATE(H2)
-		FINALIZE(H2)
 
 	next_heal = world.time + SECONDS_TO_DECISECONDS(1)
 
