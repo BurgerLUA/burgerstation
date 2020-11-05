@@ -37,16 +37,14 @@
 	attack_damage_base = list(
 		BLADE = DAMAGE_GREATAXE*0.1,
 		LASER = DAMAGE_GREATAXE*0.1,
-		HEAT = DAMAGE_GREATAXE*0.1,
-		ARCANE = 0
+		HEAT = DAMAGE_GREATAXE*0.1
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLADE = AP_GREATAXE*0.3,
 		LASER = AP_GREATAXE*0.4,
-		HEAT = AP_GREATAXE*0.1,
-		ARCADE = AP_GREATAXE*0.2
+		HEAT = AP_GREATAXE*0.3
 	)
 
 	attribute_stats = list(
@@ -59,13 +57,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = BLADE,
-		SKILL_SORCERY = ARCANE
+		SKILL_MELEE = DAMAGE_GREATAXE*0.2,
+		SKILL_SORCERY = DAMAGE_GREATAXE*0.2
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = DAMAGE_GREATAXE*0.2,
-		SKILL_SORCERY = DAMAGE_GREATAXE*0.2
+		SKILL_MELEE = BLADE,
+		SKILL_SORCERY = HEAT
 	)
 
 	attack_delay = SPEED_GREATAXE*0.5
@@ -77,6 +75,6 @@
 
 	if(total_damage_dealt && is_living(victim))
 		var/mob/living/L = victim
-		L.add_status_effect(FIRE,30,30,stealthy=L.on_fire)
+		L.ignite(SPEED_GREATAXE*2)
 
 	return .

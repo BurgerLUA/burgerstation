@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(damagetype)
 			var/damagetype/DT = damage_list["damage_type"]
 			DT.process_damage(damage_list["attacker"],damage_list["victim"],damage_list["weapon"],damage_list["hit_object"],damage_list["blamed"],damage_list["damage_multiplier"])
 		catch(var/exception/e)
-			log_error("Damage Subsystem Error: [e] on [e.file]:[e.line]!")
+			log_error("Damage Subsystem Error: [e] on [e.file]:[e.line]!<br>[e.desc]")
 		damage_to_process -= d_id
 
 	return ..()

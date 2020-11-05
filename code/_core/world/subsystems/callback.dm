@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(callback)
 			else
 				call(stored_proc)(arglist(stored_args))
 		catch(var/exception/e)
-			log_error("SScallback: [e] on [e.file]:[e.line]!")
+			log_error("SScallback: [e] on [e.file]:[e.line]!\n[e.desc]")
 
 	return TRUE
 

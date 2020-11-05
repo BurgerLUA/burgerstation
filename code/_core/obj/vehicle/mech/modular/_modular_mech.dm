@@ -19,7 +19,7 @@ var/global/list/stored_mechs_by_ckey = list()
 					M.loaded_data["stored_mechs"][V.mech_id] = V.save_mech_data()
 					log_debug("Storing mech. Data length: [length(M.loaded_data["stored_mechs"][V.mech_id])]")
 		catch(var/exception/e)
-			log_error("save_all_mechs(): [e] on [e.file]:[e.line]!")
+			log_error("save_all_mechs(): [e] on [e.file]:[e.line]\n[e.desc]!")
 
 	return TRUE
 

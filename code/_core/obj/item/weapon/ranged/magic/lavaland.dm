@@ -3,7 +3,7 @@
 	desc = "You can also use it to reheat soup in a pinch."
 	desc_extended = "A special staff that shoots special lava projectiles that temporarily create pits of lava. Allies and the caster are immune to it."
 
-	icon = 'icons/obj/item/weapons/ranged/magic/tomes/inferno.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/lavaland.dmi'
 
 	cost_charge = 500
 	total_charge = 5000

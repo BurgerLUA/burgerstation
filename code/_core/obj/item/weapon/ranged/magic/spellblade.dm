@@ -3,6 +3,9 @@
 	var/active = FALSE
 	var/damagetype/damage_type_on
 
+	override_icon_state = TRUE
+	override_icon_state_held = TRUE
+
 /obj/item/weapon/ranged/magic/spellblade/update_icon() //Stolen from energy sword code.
 
 	if(active)

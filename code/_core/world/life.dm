@@ -59,7 +59,7 @@ var/global/time_dialation = 0
 					SS.last_run_duration = FLOOR(world.time - start_time,0.01)
 					SS.total_run_duration += SS.last_run_duration
 				catch(var/exception/e)
-					log_error("[SS.name] on_life() error: [e] on [e.file]:[e.line]!<br>[e.desc]")
+					log_error("[SS.name] on_life() error: [e] on [e.file]:[e.line]!\n[e.desc]")
 					sleep(10)
 					continue
 				sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
