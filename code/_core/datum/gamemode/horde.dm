@@ -187,7 +187,25 @@
 		if(30 to INFINITY)
 			return SECONDS_TO_DECISECONDS(15)
 
-	return .
+	return SECONDS_TO_DECISECONDS(60)
+
+/gamemode/horde/proc/get_wave_size()
+
+	var/player_count = length(all_clients)
+
+	switch(player_count)
+		if(0 to 10)
+			return 3
+		if(10 to 20)
+			return 4
+		if(20 to 30)
+			return 5
+		if(30 to INFINITY)
+			return 6
+
+	return 4
+
+
 
 /gamemode/horde/proc/get_enemy_types_to_spawn()
 	return enemy_types_to_spawn
@@ -197,7 +215,7 @@
 	if(next_spawn_check > world.time)
 		return TRUE
 
-	next_spawn_check = world.time + get_wave_frequency()
+	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(1) //Incase a check fails.
 
 	handle_alert_level()
 
@@ -205,10 +223,12 @@
 
 	log_debug("Trying to spawn [wave_to_spawn] enemies.")
 
-	if(wave_to_spawn < 4)
+	var/wave_we_want_to_spawn = get_wave_size()
+
+	if(wave_to_spawn < wave_we_want_to_spawn)
 		return TRUE
 
-	wave_to_spawn = 4 //Only spawn 4 in a group at a time.
+	wave_to_spawn = wave_we_want_to_spawn //Only spawn 4 in a group at a time.
 
 	var/obj/marker/map_node/spawn_node = find_horde_spawn()
 	if(!spawn_node)
@@ -225,8 +245,9 @@
 		log_error("ERROR: Could not find a valid path from [spawn_node.get_debug_name()] to [target_node.get_debug_name()]!")
 		return TRUE
 
-	var/turf/T = get_turf(spawn_node)
+	next_spawn_check = world.time + get_wave_frequency()
 
+	var/turf/T = get_turf(spawn_node)
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
