@@ -122,7 +122,8 @@
 		/mob/living/simple/npc/bubblegum = 3,
 		/mob/living/simple/npc/colossus = 3,
 		/mob/living/simple/npc/herald = 1,
-		/mob/living/simple/npc/xeno/queen = 1
+		/mob/living/simple/npc/xeno/queen = 1,
+		/mob/living/simple/npc/goliath/broodmother = 1
 	)
 	hidden = FALSE
 
