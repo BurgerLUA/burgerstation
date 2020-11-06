@@ -51,9 +51,10 @@
 	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'
 	icon_state = "window"
 
-
 	reinforced_material_id = /material/aluminum
 	reinforced_color = COLOR_ALUMINUM
+
+	health_base = 300
 
 /obj/structure/smooth/window/reinforced/plasma
 	name = "plasteel reinforced phoron-silicate window"
@@ -62,7 +63,7 @@
 	reinforced_material_id = /material/plasteel
 	reinforced_color = COLOR_PLASTEEL
 
-	health = null
+	health_base = 600
 
 /obj/structure/smooth/window/tinted
 	name = "tinted window"

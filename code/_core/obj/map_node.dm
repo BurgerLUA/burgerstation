@@ -12,7 +12,7 @@ var/global/mob/abstract/node_checker
 	alpha        = 0
 	opacity      = 0
 	see_in_dark  = 1e6 // Literally arbitrary.
-	density = 1
+	density = TRUE
 
 /mob/abstract/node_checker/Bump(atom/Obstacle)
 
@@ -33,6 +33,15 @@ var/global/mob/abstract/node_checker
 	invisibility = 0
 	anchored = TRUE
 
+/obj/marker/map_node/get_examine_list(var/mob/examiner)
+	. = ..()
+
+	for(var/k in adjacent_map_nodes)
+		var/obj/marker/map_node/MN = adjacent_map_nodes[k]
+		. += div("notice",MN.get_debug_name())
+
+	return .
+
 /obj/marker/map_node/New(var/desired_loc)
 	plane = PLANE_HIDDEN
 	alpha = 0
@@ -43,7 +52,7 @@ var/global/mob/abstract/node_checker
 
 	var/found = FALSE
 
-	for(var/obj/marker/map_node/M in orange(VIEW_RANGE*2,src))
+	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src))
 		var/mob/abstract/node_checker/NC = node_checker
 		NC.loc = src.loc
 		var/invalid = FALSE
@@ -57,7 +66,10 @@ var/global/mob/abstract/node_checker
 			sleep(-1)
 		if(invalid)
 			continue
-		src.adjacent_map_nodes += M
+		var/direction = dir2text(get_dir(src,M))
+		if(src.adjacent_map_nodes[direction] && get_dist(src,M) > get_dist(src,src.adjacent_map_nodes[direction]))
+			continue
+		src.adjacent_map_nodes[direction] = M
 		found = TRUE
 
 	if(!found)
@@ -79,10 +91,10 @@ var/global/list/stored_paths = list()
 	checked_nodes[src] = TRUE
 	current_path += src
 
-	sort_by_closest(adjacent_map_nodes,desired_node)
+	sort_by_closest_assoc(adjacent_map_nodes,desired_node)
 
 	for(var/k in adjacent_map_nodes)
-		var/obj/marker/map_node/M = k
+		var/obj/marker/map_node/M = adjacent_map_nodes[k]
 		if(M == desired_node)
 			return current_path
 		if(checked_nodes[M])
