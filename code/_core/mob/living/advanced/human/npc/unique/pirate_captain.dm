@@ -1,6 +1,6 @@
 /mob/living/advanced/npc/unique/pirate_captain
 	name = "Captain Condom"
-	id = "captain"
+	boss_icon_state = "captain"
 	desc = "The one and only."
 	desc = "The infamous Captain Condom. They lead a skeleton crew of murderous skeletons called the murderboners. Given their high status, they seem to be immune from everything, including Space Law and Stuns."
 	species = "skeleton"

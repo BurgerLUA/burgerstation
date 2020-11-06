@@ -1,6 +1,6 @@
 /mob/living/simple/npc/can_man
 	name = "Can Man"
-	id = "can_man"
+	boss_icon_state = "can_man"
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/

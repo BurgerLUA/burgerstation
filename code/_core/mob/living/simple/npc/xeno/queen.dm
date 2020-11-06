@@ -2,7 +2,7 @@ var/mob/living/simple/npc/xeno/queen/tracked_xeno_queen
 
 /mob/living/simple/npc/xeno/queen
 	name = "xeno queen"
-	id = "xeno_queen"
+	boss_icon_state = "xeno_queen"
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "living"
 	pixel_x = -16

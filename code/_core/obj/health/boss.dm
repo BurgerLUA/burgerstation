@@ -16,7 +16,9 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-	var/mob/living/target_boss
+	var/list/mob/living/target_bosses
+	var/mob/living/current_boss
+
 	var/current_boss_music
 
 	alpha = 0
@@ -27,16 +29,33 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/boss_health/Destroy()
-	target_boss = null
+	target_bosses.Cut()
+	target_bosses = null
 	return ..()
 
-/obj/hud/button/boss_health/proc/clear_boss()
-	target_boss = null
-	update_stats()
+/obj/hud/button/boss_health/proc/update_current_boss()
+
+	if(length(target_bosses) == 1)
+		current_boss = target_bosses[1]
+		return TRUE
+
+	var/mob/living/best_boss
+	for(var/k in target_bosses)
+		var/mob/living/L = k
+		if(!L.health)
+			continue
+		if(L.health.health_current >= best_boss.health.health_current)
+			continue
+		best_boss = L
+	current_boss = best_boss
+
+	return TRUE
 
 /obj/hud/button/boss_health/proc/update_stats()
 
-	if(!target_boss || !target_boss.health)
+	update_current_boss()
+
+	if(!current_boss || !current_boss.health)
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
 		if(current_boss_music && owner)
 			var/client/C = owner.client
@@ -45,15 +64,15 @@
 		return FALSE
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
-		if(target_boss.boss_music && owner)
+		if(current_boss.boss_music && owner)
 			var/client/C = owner.client
-			if(C && C.current_music_track != target_boss.boss_music)
-				play_music_track(target_boss.boss_music,C)
-				current_boss_music = target_boss.boss_music
+			if(C && C.current_music_track != current_boss.boss_music)
+				play_music_track(current_boss.boss_music,C)
+				current_boss_music = current_boss.boss_music
 
 	min = 0
-	max = target_boss.health.health_max
-	current = max - target_boss.health.get_total_loss()
+	max = current_boss.health.health_max
+	current = max - current_boss.health.get_total_loss()
 	update_sprite()
 
 	return TRUE
@@ -63,10 +82,12 @@
 	if(max == 0)
 		return
 
-	var/icon/base = new /icon(initial(icon),icon_state = icon_state)
-	var/icon/bar = new /icon(initial(icon),icon_state = "bar")
-	if(target_boss && target_boss.id)
-		var/icon/name = new /icon(initial(icon),icon_state = target_boss.id)
+	icon = initial(icon)
+
+	var/icon/base = new /icon(icon,icon_state = icon_state)
+	var/icon/bar = new /icon(icon,icon_state = "bar")
+	if(current_boss && current_boss.boss_icon_state)
+		var/icon/name = new /icon(icon,icon_state = current_boss.boss_icon_state)
 		base.Blend(name,ICON_OVERLAY)
 
 	var/start_x = 4

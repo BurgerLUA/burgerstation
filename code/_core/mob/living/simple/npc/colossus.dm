@@ -1,6 +1,6 @@
 /mob/living/simple/npc/colossus
 	name = "colossus"
-	id = "colossus"
+	boss_icon_state = "colossus"
 	icon = 'icons/mob/living/simple/lavaland/colossus.dmi'
 	icon_state = "colossus"
 	damage_type = /damagetype/unarmed/claw/

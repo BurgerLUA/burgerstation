@@ -1,6 +1,6 @@
 /mob/living/simple/npc/bubblegum
 	name = "bubblegum"
-	id = "bubblegum"
+	boss_icon_state = "bubblegum"
 	icon = 'icons/mob/living/simple/lavaland/bubblegum.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/

@@ -1,6 +1,6 @@
 /mob/living/simple/npc/ash_drake
 	name = "ash drake"
-	id = "ash_drake"
+	boss_icon_state = "ash_drake"
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/

@@ -16,7 +16,9 @@
 
 	var/enable_AI = FALSE
 	var/ai/ai
-	var/id //Boss ID
+	//var/id //Boss ID
+
+	var/boss_icon_state
 
 	var/iff_tag
 	var/loyalty_tag
@@ -377,7 +379,7 @@
 	if(ai) ai = new ai(src)
 
 	if(boss)
-		SSbosses.tracked_bosses[id] = src
+		SSbosses.tracked_bosses += src
 		SSbosses.living_bosses += src
 
 	initialize_attributes()
@@ -390,7 +392,7 @@
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
-				B.target_boss = src
+				B.target_bosses |= src
 				B.update_stats()
 
 	chat_overlay = new(src.loc)

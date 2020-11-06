@@ -1,6 +1,6 @@
 /mob/living/simple/npc/herald
 	name = "herald of Sleeping Carp"
-	id = "herald"
+	boss_icon_state = "herald"
 	icon = 'icons/mob/living/simple/lavaland/herald.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/cqc/sleeping_carp/gnashing_teeth

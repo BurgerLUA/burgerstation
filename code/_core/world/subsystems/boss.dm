@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(bosses)
 /subsystem/bosses/on_life()
 
 	for(var/k in tracked_bosses)
-		var/mob/living/L = tracked_bosses[k]
+		var/mob/living/L = k
 		if(L.dead)
 			for(var/v in L.players_fighting_boss)
 				var/mob/living/advanced/P = v
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(bosses)
 	for(var/k in players_fighting_boss)
 		var/mob/living/advanced/P = k
 		for(var/obj/hud/button/boss_health/B in P.buttons)
-			B.target_boss = src
+			B.target_bosses |= src
 			B.update_stats()
 
 /mob/living/proc/add_player_to_boss(var/mob/living/advanced/player/P)
@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(bosses)
 		return FALSE
 	players_fighting_boss += P
 	for(var/obj/hud/button/boss_health/B in P.buttons)
-		B.target_boss = src
+		B.target_bosses |= src
 		B.update_stats()
 
 /mob/living/proc/remove_player_from_boss(var/mob/living/advanced/player/P)
@@ -52,5 +52,5 @@ SUBSYSTEM_DEF(bosses)
 		return FALSE
 	players_fighting_boss -= P
 	for(var/obj/hud/button/boss_health/B in P.buttons)
-		B.target_boss = null
+		B.target_bosses -= src
 		B.update_stats()

@@ -111,3 +111,24 @@
 		/mob/living/simple/npc/cult/cultist = 100
 	)
 	hidden = FALSE
+
+
+/gamemode/horde/boss_rush
+	name = "Horde Mode (Boss Rush)"
+	desc = "Oh god oh fuck."
+	enemy_types_to_spawn = list(
+		/mob/living/simple/npc/can_man = 1,
+		/mob/living/simple/npc/ash_drake = 4,
+		/mob/living/simple/npc/bubblegum = 3,
+		/mob/living/simple/npc/colossus = 3,
+		/mob/living/simple/npc/herald = 1,
+		/mob/living/simple/npc/xeno/queen = 1
+	)
+	hidden = FALSE
+
+	enemies_to_spawn_base = 1
+	enemies_to_spawn_per_player = 0.1
+	enemies_to_spawn_per_minute = 0
+
+/gamemode/horde/boss_rush/get_wave_size()
+	return 1

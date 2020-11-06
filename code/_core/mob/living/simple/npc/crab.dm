@@ -49,7 +49,7 @@
 	name = "king crab"
 	desc = "A crab this size must be the work of some maniac."
 	desc_extended = "A ferocious king crab with massive sharp claws and a thick magic and bullet deflecting outer shell. You'll likely have to get up close and personal in order to crack this crab."
-	id = "crab_king"
+	boss_icon_state = "crab_king"
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
 	pixel_x = -32

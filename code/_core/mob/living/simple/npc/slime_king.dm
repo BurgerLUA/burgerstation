@@ -1,6 +1,6 @@
 /mob/living/simple/npc/slime_king //Not a subtype of slime because it behaves way differently
 	name = "slime king"
-	id = "slime_king"
+	boss_icon_state = "slime_king"
 	desc = "Oh no. They're here too."
 
 	icon = 'icons/mob/living/simple/slime_king.dmi'

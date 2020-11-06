@@ -1,6 +1,6 @@
 /mob/living/simple/npc/goliath/broodmother
 	name = "goliath broodmother"
-	id = "broodmother"
+	boss_icon_state = "broodmother"
 	icon = 'icons/mob/living/simple/lavaland/goliath_broodmother.dmi'
 	icon_state = "broodmother"
 	damage_type = /damagetype/unarmed/claw/
