@@ -26,6 +26,8 @@
 	var/bullet_color //The bullet color of the projectile.
 	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
 
+	var/caseless = FALSE
+
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
 
@@ -122,6 +124,8 @@
 		is_spent = TRUE
 		plane = PLANE_OBJ
 		item_count_max = max(item_count_max,100000) //Some absurd value.
+		if(caseless)
+			qdel(src)
 		return src
 
 	return FALSE

@@ -135,6 +135,26 @@
 
 	value = 0.9
 
+/obj/item/bullet_cartridge/rifle_223/nato/caseless
+	name = "\improper 5.56mm caseless rifle bullet"
+	desc = "The poodle shooter's favorite. Now in caseless!"
+	desc_extended = "For rifles and machineguns that requre 5,56mm. This doesn't leave a case."
+	rarity = RARITY_COMMON
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	projectile = /obj/projectile/bullet/firearm/rifle
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm
+
+	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
+
+	value = 1
+
+	caseless = TRUE
+
+
+
 
 /obj/item/bullet_cartridge/rifle_223/nato/ap
 	name = "\improper 5.56mm AP rifle bullet"

@@ -1,5 +1,5 @@
 /obj/item/magazine/minigun
-	name = "\improper 5.56mm minigun magazine"
+	name = "\improper 5.56mm caseless minigun magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/minigun.dmi'
@@ -10,7 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/rifle_223/nato
+	ammo = /obj/item/bullet_cartridge/rifle_223/nato/caseless
 
 	bullet_length_min = 40
 	bullet_length_best = 45

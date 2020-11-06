@@ -16,7 +16,7 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-	var/list/mob/living/target_bosses
+	var/list/mob/living/target_bosses = list()
 	var/mob/living/current_boss
 
 	var/current_boss_music
@@ -44,7 +44,7 @@
 		var/mob/living/L = k
 		if(!L.health)
 			continue
-		if(L.health.health_current >= best_boss.health.health_current)
+		if(best_boss && L.health.health_current >= best_boss.health.health_current)
 			continue
 		best_boss = L
 	current_boss = best_boss
@@ -59,8 +59,7 @@
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
 		if(current_boss_music && owner)
 			var/client/C = owner.client
-			if(C)
-				stop_music_track(C)
+			if(C) stop_music_track(C)
 		return FALSE
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))

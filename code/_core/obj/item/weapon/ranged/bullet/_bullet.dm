@@ -99,12 +99,16 @@
 		jammed = TRUE
 		return FALSE
 
-	B.force_move(new_loc)
-	B.update_sprite()
-	if(play_sound)
-		play(chambered_bullet.get_bullet_eject_sound(),src)
-	if(B.is_spent && !ENABLE_BULLET_CASINGS)
+	if(B.is_spent && B.caseless)
 		qdel(B)
+	else
+		if(play_sound)
+			play(chambered_bullet.get_bullet_eject_sound(),src)
+		if(B.is_spent && !ENABLE_BULLET_CASINGS)
+			qdel(B)
+		else
+			B.force_move(new_loc)
+			B.update_sprite()
 
 	chambered_bullet = null
 
@@ -152,7 +156,12 @@
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
 
-	return chambered_bullet.spend_bullet(caller)
+	. = chambered_bullet.spend_bullet(caller)
+
+	if(chambered_bullet.qdeleting)
+		chambered_bullet = null
+
+	return .
 
 /obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
 

@@ -389,12 +389,6 @@
 
 	. = ..()
 
-	if(boss)
-		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
-			for(var/obj/hud/button/boss_health/B in P.buttons)
-				B.target_bosses |= src
-				B.update_stats()
-
 	chat_overlay = new(src.loc)
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
@@ -431,6 +425,15 @@
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
+	return .
+
+/mob/living/Finalize()
+	. = ..()
+	if(boss)
+		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
+			for(var/obj/hud/button/boss_health/B in P.buttons)
+				B.target_bosses |= src
+				B.update_stats()
 	return .
 
 /mob/living/proc/setup_name()

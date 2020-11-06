@@ -14,7 +14,7 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 2500
+	health_base = 4000
 
 	move_delay = DECISECONDS_TO_TICKS(2)
 
