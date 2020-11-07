@@ -47,7 +47,7 @@
 	for(var/mob/living/L in oview(T,4))
 		if(L.dead)
 			continue
-		if(!L.health)
+		if(!istype(L.health))
 			continue
 		if(L.health.health_current >= L.health.health_max)
 			continue

@@ -18,8 +18,10 @@ SUBSYSTEM_DEF(radio)
 		for(var/data_key in all_unprocessed_radio_data)
 			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
 			var/data_value = all_unprocessed_radio_data[data_key]
-			R.receive_data(data_value)
-
+			try
+				R.receive_data(data_value)
+			catch(var/exception/e)
+				log_error("radio on_life(): [e] on [e.file]:[e.line]\n[e.desc]!")
 	all_unprocessed_radio_data.Cut()
 
 	return TRUE

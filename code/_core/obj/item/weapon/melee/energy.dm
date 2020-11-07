@@ -229,6 +229,7 @@
 
 /obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller)
 	. = ..()
+	SPAM_CHECK(20)
 	if(enabled)
 		play('sound/weapons/magic/ash.ogg',src)
 	else

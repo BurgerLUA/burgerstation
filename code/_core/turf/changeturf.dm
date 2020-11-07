@@ -15,6 +15,9 @@
 	for(var/obj/effect/cleanable/C in src.contents)
 		qdel(C)
 
+	if(src in SSturfs.wet_turfs)
+		SSturfs.wet_turfs -= src
+
 	var/turf/W = new N(src)
 	W.initialized = FALSE
 	INITIALIZE(W)

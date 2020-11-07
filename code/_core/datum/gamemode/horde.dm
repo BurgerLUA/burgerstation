@@ -18,6 +18,8 @@
 
 	var/next_spawn_check = 0
 
+	var/spawn_on_markers = TRUE
+
 /gamemode/horde/update_objectives()
 
 	. = ..()
@@ -48,9 +50,10 @@
 	round_time_next = HORDE_DELAY_WAIT //Skip to gearing. Nothing to wait for.
 	announce(name,"Starting new round...",desc)
 
-	for(var/k in horde_spawnpoints)
-		var/turf/T = k
-		create_horde_mob(T)
+	if(spawn_on_markers)
+		for(var/k in horde_spawnpoints)
+			var/turf/T = k
+			create_horde_mob(T)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
 		if(O.z < Z_LEVEL_MISSION)
@@ -273,9 +276,11 @@
 
 /gamemode/horde/proc/get_enemies_to_spawn()
 	. = enemies_to_spawn_base
-	. += length(all_players)*enemies_to_spawn_per_player
-	. += DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute)
-	. = max( min(40,length(all_players)*enemies_to_spawn_per_player*2) )
+	if(enemies_to_spawn_per_player)
+		. += length(all_players)*enemies_to_spawn_per_player
+	if(enemies_to_spawn_per_minute)
+		. += DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute)
+	. = min(.,50)
 	return FLOOR(.,1)
 
 /gamemode/horde/proc/find_horde_target()

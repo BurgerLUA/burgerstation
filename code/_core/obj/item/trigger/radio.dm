@@ -9,7 +9,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
 	var/list/listening_frequencies = list(
-		RADIO_FREQ_COMMON = TRUE
+		RADIO_FREQ_COMMON
 	)
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.
@@ -147,7 +147,12 @@ list(
 	if(!data || !length(data))
 		return FALSE
 
-	if(data["frequency"] != frequency && !listening_frequencies[data["frequency"]])
+	if(!length(listening_frequencies))
+		return FALSE
+
+	var/data_frequency = data["frequency"]
+
+	if(data_frequency != frequency && !(data_frequency in listening_frequencies))
 		return FALSE
 
 	var/turf/T = get_turf(src)
@@ -155,14 +160,16 @@ list(
 	if(!A)
 		log_error("WARNING: [get_debug_name()] wasn't in a valid area!")
 		return FALSE
+
 	if(A.flags_comms & FLAG_COMM_DISABLED)
 		return FALSE
+
 	if(A.flags_comms & FLAG_COMM_SCRAMBLED)
 		data["message"] = scramble(data["message"])
 		data["message_language"] = scramble(data["message_language"])
 
 	for(var/mob/M in range(broadcasting_range,T))
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 		if(!M.client)
 			continue
 		M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])

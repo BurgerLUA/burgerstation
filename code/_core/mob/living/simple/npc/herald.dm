@@ -8,7 +8,7 @@
 	ai = /ai/boss/herald/
 	value = 3000
 
-	health_base = 2000
+	health_base = 1000
 
 	move_delay = 1
 
@@ -21,7 +21,7 @@
 
 	armor_base = list(
 		BLADE = 25,
-		BLUNT = 75,
+		BLUNT = 25,
 		PIERCE = 75,
 		LASER = 75,
 		ARCANE = 50,

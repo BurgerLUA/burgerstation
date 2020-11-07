@@ -196,8 +196,8 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 	hazard_range = 1
 	damage_type = /damagetype/ranged/magic/fireball
 	cross_hazard = TRUE
-	plane = PLANE_FLOOR
-	layer = 100
+	plane = PLANE_BLOOD
+	layer = 0
 
 /obj/effect/temp/hazard/lava/get_params(var/atom/victim)
 	. = list()

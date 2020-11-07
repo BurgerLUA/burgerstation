@@ -236,7 +236,7 @@
 
 	weight = .
 
-	weight_max = (200 + get_attribute_power(ATTRIBUTE_STRENGTH)*300) //Skyrim levels of memes.
+	weight_max = CEILING(200 + get_attribute_power(ATTRIBUTE_ENDURANCE)*300,5) //Skyrim levels of memes.
 
 	return .
 

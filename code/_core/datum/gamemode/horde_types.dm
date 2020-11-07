@@ -122,14 +122,22 @@
 		/mob/living/simple/npc/bubblegum = 3,
 		/mob/living/simple/npc/colossus = 3,
 		/mob/living/simple/npc/herald = 1,
-		/mob/living/simple/npc/xeno/queen = 1,
 		/mob/living/simple/npc/goliath/broodmother = 1
 	)
-	hidden = FALSE
+	hidden = TRUE
 
-	enemies_to_spawn_base = 1
-	enemies_to_spawn_per_player = 0.1
+	spawn_on_markers = FALSE
+
+	enemies_to_spawn_base = 4
+	enemies_to_spawn_per_player = 0
 	enemies_to_spawn_per_minute = 0
 
 /gamemode/horde/boss_rush/get_wave_size()
 	return 1
+
+
+/gamemode/horde/boss_rush/create_horde_mob(var/desired_loc)
+	var/mob/living/L = ..()
+	L.set_loyalty_tag("Boss")
+	L.set_iff_tag("Boss")
+	return L

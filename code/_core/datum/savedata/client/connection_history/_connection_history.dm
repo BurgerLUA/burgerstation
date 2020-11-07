@@ -1,3 +1,6 @@
+#define CONNECTIONS_FILE_LIMIT 10
+
+
 /savedata/client/connection_history
 
 /savedata/client/connection_history/reset_data()
@@ -18,19 +21,13 @@
 
 	reset_data()
 
-	var/worst_date
-	var/worst_time
-
 	var/list/connection_files = get_files()
-
-	if(length(connection_files) >= 5)
-		for(var/file in connection_files)
-			var/list/time_data = splittext(file,"_")
-			var/local_date = time_data[1]
-			var/local_time = replacetext(time_data[2],".json","")
-			if(!worst_date || !worst_time || !time_x_newer_than_y(local_date,local_time,worst_date,worst_time))
-				worst_date = local_date
-				worst_time = local_time
+	sortTim(connection_files, /proc/cmp_path_dsc)
+	var/connections_length = length(connection_files)
+	if(connections_length >= CONNECTIONS_FILE_LIMIT)
+		for(var/i=CONNECTIONS_FILE_LIMIT,i<=connections_length,i++)
+			var/file_name = "[get_folder(ckey)][connection_files[i]]"
+			fdel(file_name)
 
 	var/new_file_name = "[get_folder(ckey)][loaded_data["connection_date"]]_[loaded_data["connection_time"]].json"
 	var/new_file_data = json_encode(loaded_data)

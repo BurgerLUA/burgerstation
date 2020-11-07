@@ -99,6 +99,10 @@
 		usr?.to_chat(span("danger","You cannot save this character!"))
 		return FALSE
 
+	if(!A.finalized || !A.initialized)
+		usr?.to_chat(span("warning","Your character was not saved as it is still initializing. This is to prevent save corruption. If you believe you recieved this message in error, contact Burger on discord."))
+		return FALSE
+
 	var/list/loaded_data = A.get_mob_data(save_inventory,force,died)
 	if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		if(died)

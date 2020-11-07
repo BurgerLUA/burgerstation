@@ -12,6 +12,7 @@
 
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)
 	. = ..()
+	SPAM_CHECK(20)
 	if(enabled)
 		play('sound/weapons/energy/energy_on.ogg',src)
 		damage_type = /damagetype/melee/sword/chainsaw/on

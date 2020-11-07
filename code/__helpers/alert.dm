@@ -3,7 +3,7 @@
 /proc/create_alert_process(var/list/list_to_use,var/range = VIEW_RANGE,var/atom/epicenter=usr,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
 
 	for(var/k in list_to_use)
-		CHECK_TICK(75,FPS_SERVER*4)
+		CHECK_TICK(50,FPS_SERVER*4)
 		var/ai/AI = k
 		if(!AI || AI.qdeleting || !AI.owner || AI.owner.qdeleting || AI.owner.dead || AI.objective_attack)
 			continue
