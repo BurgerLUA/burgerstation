@@ -77,7 +77,7 @@
 	if(!T)
 		qdel(src)
 	else
-		stored_magazine.force_move(T)
+		stored_magazine.drop_item(T)
 		play(stored_magazine.get_magazine_eject_sound(),T)
 		if(stored_magazine)
 			stored_magazine.update_sprite()
@@ -105,7 +105,7 @@
 		var/obj/item/bullet_cartridge/B = stored_magazine.stored_bullets[1]
 		if(can_load_chamber(null,B))
 			stored_magazine.stored_bullets -= B
-			B.force_move(src)
+			B.drop_item(src)
 			chambered_bullet = B
 			return TRUE
 

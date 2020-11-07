@@ -16,6 +16,7 @@
 	. = ..()
 
 	for(var/k in src.contents)
+		CHECK_TICK(75,FPS_SERVER)
 		var/atom/movable/A = k
 		if(A.qdeleting)
 			A.force_move(null)

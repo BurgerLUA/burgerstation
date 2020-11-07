@@ -262,13 +262,15 @@ var/global/list/all_shuttle_controlers = list()
 			CHECK_TICK(75,FPS_SERVER)
 			if(!M.allow_shuttle_move) //For things like light.
 				continue
+			if(M.loc != T)
+				continue
 			M.move_delay = SECONDS_TO_TICKS(3)
 			M.force_move(replacing_turf)
 			if(enable_shuttle_throwing)
 				objects_to_throw += M
 		for(var/k in T.stored_shuttle_items)
 			var/obj/item/I = k
-			I.force_move(T)
+			I.drop_item(T)
 			T.stored_shuttle_items -= I
 		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
 

@@ -163,7 +163,7 @@
 		if(is_advanced(src.loc))
 			var/mob/living/advanced/A = src.loc
 			A.remove_organ(src,FALSE)
-		src.force_move(T)
+		src.drop_item(T)
 
 	update_sprite()
 

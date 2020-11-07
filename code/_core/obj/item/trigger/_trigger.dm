@@ -10,6 +10,12 @@
 
 	weight = 0.75
 
+
+/obj/item/device/proximity/Destroy()
+	active = FALSE
+	interactable = FALSE
+	return ..()
+
 /obj/item/device/proc/on_active()
 	return TRUE
 

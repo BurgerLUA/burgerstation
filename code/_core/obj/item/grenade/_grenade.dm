@@ -166,7 +166,6 @@
 		if(!stored_trigger)
 			var/obj/item/device/T = object
 			T.drop_item(src)
-			T.force_move(src)
 			stored_trigger = T
 			caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
 			update_sprite()

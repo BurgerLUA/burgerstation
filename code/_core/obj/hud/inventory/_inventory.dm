@@ -581,7 +581,7 @@
 		was_worn = TRUE
 
 	if(was_removed)
-		I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
+		I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
 		I.pixel_x = pixel_x_offset
 		I.pixel_y = pixel_y_offset
 		I.plane = initial(I.plane)

@@ -32,7 +32,7 @@
 		if(I.can_transfer_stacks_to(E))
 			I.transfer_item_count_to(E)
 			if(E.item_count_current == E.item_count_max)
-				E.force_move(src.loc)
+				E.drop_item(src.loc)
 			break
 
 	return TRUE

@@ -151,6 +151,8 @@
 		CHECK_TICK(50,FPS_SERVER)
 		if(M == src)
 			continue
+		if(M.loc != src.loc)
+			continue
 		if(!can_store(M))
 			continue
 		add_to_crate(M)

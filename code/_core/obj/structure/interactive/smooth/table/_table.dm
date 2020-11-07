@@ -49,7 +49,11 @@
 		var/obj/O = object
 		if(anchored)
 			return FALSE
-		O.force_move(src.loc)
+		if(is_item(object))
+			var/obj/item/I = O
+			I.drop_item(src.loc)
+		else
+			O.force_move(src.loc)
 		return TRUE
 
 	return ..()

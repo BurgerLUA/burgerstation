@@ -126,10 +126,10 @@
 
 	if(istype(object,/obj/structure/interactive/)) //MOVE THIS TO STRUCTURE CODE
 		var/obj/structure/interactive/I = object
-		var/atom/movable/A = I.check_interactables(caller,src,location,control,params)
-		if(A)
-			A.force_move(get_turf(caller))
-			caller.to_chat("You successfully remove \the [A.name] from \the [I.name] with \the [src.name].")
+		var/obj/item/I2 = I.check_interactables(caller,src,location,control,params)
+		if(I2)
+			I2.drop_item(get_turf(caller))
+			caller.to_chat("You successfully remove \the [I2.name] from \the [I.name] with \the [src.name].")
 		return TRUE
 
 	return ..()

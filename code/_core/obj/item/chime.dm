@@ -50,7 +50,7 @@
 		if(I.flags_tool == FLAG_TOOL_SCREWDRIVER)
 			if(stored_device)
 				caller.to_chat(span("notice","You remove \the [stored_device.name] from \the [src.name]."))
-				stored_device.force_move(get_turf(src))
+				stored_device.drop_item(get_turf(src))
 				stored_device = null
 			else
 				caller.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))

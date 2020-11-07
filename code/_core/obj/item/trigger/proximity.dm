@@ -14,6 +14,8 @@
 
 	value = 20
 
+
+
 /obj/item/device/proximity/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("time_set")
@@ -38,6 +40,7 @@
 	return ..()
 
 /obj/item/device/proximity/think()
+
 	. = ..()
 
 	if(active)
@@ -58,7 +61,7 @@
 				flick("motion_trigger",src)
 				break
 
-	return .
+	return active
 
 /obj/item/device/proximity/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
 

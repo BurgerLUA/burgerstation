@@ -72,7 +72,7 @@
 	INITIALIZE(I)
 	I.load_item_data_post(P,object_data)
 	FINALIZE(I)
-	I.force_move(loc)
+	I.drop_item(loc)
 	I.update_sprite()
 
 	return I
@@ -186,20 +186,20 @@
 				var/obj/item/I = load_and_create(P,inventory_data["held"][i],get_turf(src))
 				if(I && !src.add_held_object(I,TRUE,TRUE))
 					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
-					I.force_move(get_turf(P))
+					I.drop_item(get_step(P,P.dir))
 
 		if(inventory_data["worn"])
 			for(var/i=1,i<=length(inventory_data["worn"]),i++)
 				var/obj/item/I = load_and_create(P,inventory_data["worn"][i],get_turf(src))
 				if(I && !src.add_worn_object(I,TRUE,TRUE))
 					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
-					I.force_move(get_turf(P))
+					I.drop_item(get_step(P,P.dir))
 	else
 		for(var/i=1,i<=length(inventory_data),i++)
 			var/obj/item/I = load_and_create(P,inventory_data[i],get_turf(src))
 			if(I && !src.add_object(I,TRUE,TRUE))
 				log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
-				I.force_move(get_turf(P))
+				I.drop_item(get_step(P,P.dir))
 
 
 	return TRUE

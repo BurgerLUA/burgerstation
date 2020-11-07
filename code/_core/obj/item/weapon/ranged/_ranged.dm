@@ -106,7 +106,7 @@
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
 				INTERACT_CHECK
-				firing_pin.force_move(get_turf(src))
+				firing_pin.drop_item(get_turf(src))
 				caller.to_chat(span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
 				firing_pin = null
 			else

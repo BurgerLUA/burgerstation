@@ -121,7 +121,7 @@
 /obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
 	var/obj/item/disk/old_disk
 	old_disk = rcd_disk
-	rcd_disk.force_move(get_turf(src))
+	rcd_disk.drop_item(get_turf(src))
 	rcd_disk = null
 	if(caller && !silent)
 		caller.to_chat("You remove \the [old_disk.name] from \the [src.name].")

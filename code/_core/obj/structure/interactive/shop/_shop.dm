@@ -36,7 +36,7 @@
 		return .
 
 	stored_item = pick(possible_items)
-	stored_item.force_move(src)
+	stored_item.drop_item(src)
 	possible_items -= stored_item
 
 	for(var/k in possible_items)

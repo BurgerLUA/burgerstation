@@ -107,7 +107,7 @@
 		if(B.is_spent && !ENABLE_BULLET_CASINGS)
 			qdel(B)
 		else
-			B.force_move(new_loc)
+			B.drop_item(new_loc)
 			B.update_sprite()
 
 	chambered_bullet = null
@@ -120,7 +120,7 @@
 		return FALSE
 
 	stored_bullets -= bullet_to_remove
-	bullet_to_remove.force_move(new_loc)
+	bullet_to_remove.drop_item(new_loc)
 	bullet_to_remove.update_sprite()
 	stored_bullets += null
 	if(play_sound)
