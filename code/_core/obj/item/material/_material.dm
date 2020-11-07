@@ -18,17 +18,15 @@
 
 	weight = 0.1
 
-/*
 /obj/item/material/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	SAVEVAR("material_id")
+	SAVEPATH("material_id")
 	return .
 
 /obj/item/material/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	LOADVAR("material_id")
+	LOADPATH("material_id")
 	return .
-*/
 
 /obj/item/material/Initialize()
 	if(!SSmaterials.all_materials[material_id])

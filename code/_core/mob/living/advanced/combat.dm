@@ -11,6 +11,13 @@
 	return ..()
 
 
+/mob/living/advanced/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(driving)
+		return FALSE
+
+	return ..()
+
 /mob/living/advanced/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(driving && !driving.can_attack(victim,weapon,params,damage_type))

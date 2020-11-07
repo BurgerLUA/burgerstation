@@ -140,6 +140,8 @@
 	return .
 
 /mob/living/advanced/on_crush()
+	if(driving)
+		return FALSE
 	drop_all_items(get_turf(src))
 	return ..()
 
@@ -187,6 +189,9 @@
 	return .
 
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
+
+	if(driving)
+		desired_dir = driving.dir
 
 	if(!force && grabbing_hand)
 		return FALSE

@@ -15,7 +15,11 @@
 	return .
 
 /mob/living/advanced/pre_death()
-	return TRUE
+
+	if(driving)
+		driving.exit_vehicle(src,get_turf(driving))
+
+	return ..()
 
 /*
 /mob/living/advanced/do_loot_drop(var/atom/desired_loc)
