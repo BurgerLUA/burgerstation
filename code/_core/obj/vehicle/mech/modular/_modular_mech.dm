@@ -10,18 +10,21 @@ var/global/list/stored_mechs_by_ckey = list()
 			continue
 		if(!M.loaded_data["stored_mechs"])
 			M.loaded_data["stored_mechs"] = list()
-		try
-			for(var/mob/living/vehicle/mech/modular/V in stored_mechs_by_ckey[ckey])
-				log_debug("Mech Saving: Found mech [V.get_debug_name()].")
-				if(V.qdeleting)
-					M.loaded_data["stored_mechs"] -= V.mech_id //Gone forever.
-				else
-					M.loaded_data["stored_mechs"][V.mech_id] = V.save_mech_data()
-					log_debug("Storing mech. Data length: [length(M.loaded_data["stored_mechs"][V.mech_id])]")
-		catch(var/exception/e)
-			log_error("save_all_mechs(): [e] on [e.file]:[e.line]\n[e.desc]!")
+
+		for(var/mob/living/vehicle/mech/modular/V in stored_mechs_by_ckey[ckey])
+			save_mech(M,V)
 
 	return TRUE
+
+/proc/save_mech(var/savedata/client/mob/M,var/mob/living/vehicle/mech/modular/V)
+	log_debug("Mech Saving: Found mech [V.get_debug_name()].")
+	if(V.qdeleting)
+		M.loaded_data["stored_mechs"] -= V.mech_id //Gone forever.
+	else
+		M.loaded_data["stored_mechs"][V.mech_id] = V.save_mech_data()
+		log_debug("Storing mech. Data length: [length(M.loaded_data["stored_mechs"][V.mech_id])]")
+	return TRUE
+
 
 /mob/living/vehicle/mech/modular
 	name = "modular mech"

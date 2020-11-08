@@ -16,11 +16,8 @@
 
 	view_punch = 32
 
-
-
 	size = SIZE_5
 	weight = 25
-
 
 	heat_per_shot = 0.07
 	heat_max = 0.07
@@ -73,6 +70,8 @@
 	attachment_stock_offset_y = 19 - 16
 
 	requires_cock_each_shot = TRUE
+
+	zoom_mul = 1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0
