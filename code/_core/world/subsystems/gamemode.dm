@@ -33,4 +33,4 @@ SUBSYSTEM_DEF(gamemode)
 
 /subsystem/gamemode/on_life()
 	if(active_gamemode) active_gamemode.on_life()
-	return ..()
+	return TRUE

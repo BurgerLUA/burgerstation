@@ -209,7 +209,6 @@ var/global/list/all_shuttle_controlers = list()
 
 	//log_debug("SHUTTLE: [src.get_debug_name()] moving from [starting_transit.get_debug_name()] to [ending_transit.get_debug_name()].")
 
-
 	var/starting_cord_x = starting_transit.x
 	var/starting_cord_y = starting_transit.y
 

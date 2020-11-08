@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(vote)
 			qdel(V)
 			active_votes -= k
 
-	return ..()
+	return TRUE
 
 /subsystem/vote/proc/create_vote(var/vote/desired_vote_type)
 	var/vote/V = new desired_vote_type

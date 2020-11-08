@@ -4,7 +4,7 @@
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
 	var/list/listening_frequencies = list(
-		RADIO_FREQ_COMMON = TRUE
+		RADIO_FREQ_COMMON
 	)
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.

@@ -28,4 +28,4 @@ SUBSYSTEM_DEF(ghost)
 		var/obj/item/emf/E = k
 		E.on_emf_think()
 
-	return ..()
+	return TRUE

@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(events)
 	if(world.time >= next_event_time)
 		trigger_random_event()
 
-	return ..()
+	return TRUE
 
 /subsystem/events/proc/trigger_random_event()
 
