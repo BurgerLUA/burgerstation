@@ -28,21 +28,28 @@ SUBSYSTEM_DEF(sound)
 	log_subsystem(name,"Found [length(round_end_sounds)] round end sounds.")
 	return TRUE
 
+/subsystem/sound/proc/process_sound(var/sound/S)
+	if(active_sounds[S] == -1)
+		return FALSE
+	active_sounds[S] -= 1
+	if(active_sounds[S] > 0)
+		return FALSE
+	S.status = SOUND_MUTE | SOUND_UPDATE
+	for(var/k in all_clients)
+		var/client/C = k
+		C.receive_sound(S)
+	active_sounds -= S
+	qdel(S)
+	return TRUE
+
 /subsystem/sound/on_life()
 	for(var/F in active_sounds)
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		var/sound/S = F
-		if(active_sounds[S] == -1)
-			continue
-		active_sounds[S] -= 1
-		if(active_sounds[S] > 0)
-			continue
-		S.status = SOUND_MUTE | SOUND_UPDATE
-		for(var/k in all_clients)
-			var/client/C = k
-			C.receive_sound(S)
-		active_sounds -= S
-		qdel(S)
+		if(!process_sound(S))
+			log_error("Warning! Could not properly process an active sound!")
+			qdel(S)
+			active_sounds -= F
 
 	return TRUE
 

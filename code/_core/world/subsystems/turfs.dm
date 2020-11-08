@@ -67,21 +67,33 @@ SUBSYSTEM_DEF(turfs)
 
 	return ..()
 
+/subsystem/turfs/proc/process_queued_edge(var/turf/T)
+	CHECK_TICK(75,FPS_SERVER*3)
+	T.update_sprite()
+	queued_edges -= T
+	return TRUE
+
+/subsystem/turfs/proc/process_wet_turf(var/turf/simulated/T)
+	CHECK_TICK(75,FPS_SERVER*3)
+	T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
+	if(T.wet_level <= 0)
+		wet_turfs -= T
+		T.overlays.Cut()
+		T.update_overlays()
+	return TRUE
+
+
 /subsystem/turfs/on_life()
 
 	for(var/k in queued_edges)
 		var/turf/T = k
-		CHECK_TICK(75,FPS_SERVER*3)
-		T.update_sprite()
-		queued_edges -= T
+		if(process_queued_edge(T) == null)
+			queued_edges -= k
 
 	for(var/k in wet_turfs)
 		var/turf/simulated/T = k
-		T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
-		if(T.wet_level <= 0)
-			wet_turfs -= T
-			T.overlays.Cut()
-			T.update_overlays()
+		if(process_wet_turf(T) == null)
+			wet_turfs -= k
 
 	return TRUE
 

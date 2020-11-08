@@ -1,3 +1,5 @@
+//TODO: Move to living life.
+
 SUBSYSTEM_DEF(status)
 	name = "Status Effect Subsystem"
 	desc = "Controls the status effects of mobs."

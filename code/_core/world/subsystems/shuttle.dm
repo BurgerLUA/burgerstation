@@ -20,7 +20,8 @@ SUBSYSTEM_DEF(shuttle)
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		SC.time++
 		if(!SC.on_shuttle_think())
-			log_error("Shutting down controller for [SC]([SC.x])([SC.y])([SC.z]) as on_shuttle_think returned FALSE!")
+			log_error("Shutting down controller for [SC]([SC.x])([SC.y])([SC.z]) as on_shuttle_think returned FALSE or NULL!")
 			all_shuttle_controlers -= SC
+			qdel(SC)
 
 	return ..()

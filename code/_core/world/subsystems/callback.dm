@@ -15,6 +15,14 @@ SUBSYSTEM_DEF(callback)
 	broadcast_to_clients(span("danger","Removed all callbacks."))
 	return ..()
 
+/subsystem/callback/proc/try_call(var/stored_object,var/stored_proc,var/stored_args)
+	if(stored_object)
+		call(stored_object,stored_proc)(arglist(stored_args))
+	else
+		call(stored_proc)(arglist(stored_args))
+	return TRUE
+
+
 /subsystem/callback/on_life()
 
 	for(var/callback_id in src.all_callbacks)
@@ -29,13 +37,12 @@ SUBSYSTEM_DEF(callback)
 		var/stored_args = callback_value["args"]
 		var/datum/stored_object = callback_value["object"]
 		src.all_callbacks -= callback_id
-		try
+		if(try_call(stored_object,stored_proc,stored_args) == null)
 			if(stored_object)
-				call(stored_object,stored_proc)(arglist(stored_args))
+				log_error("Warning! Callback of id [callback_id] belonging to [stored_object] did not complete try_call() correctly, thus it was removed.")
 			else
-				call(stored_proc)(arglist(stored_args))
-		catch(var/exception/e)
-			log_error("SScallback: [e] on [e.file]:[e.line]!\n[e.desc]")
+				log_error("Warning! Callback of id [callback_id] belonging to world did not complete try_call() correctly, thus it was removed.")
+			all_callbacks -= callback_id
 
 	return TRUE
 

@@ -31,6 +31,12 @@ SUBSYSTEM_DEF(living)
 
 	return ..()
 
+/subsystem/living/proc/process_living(var/mob/living/L,var/do_slow=FALSE)
+	L.on_life()
+	if(do_slow)
+		L.on_life_slow()
+	return TRUE
+
 /subsystem/living/on_life()
 
 	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
@@ -38,9 +44,13 @@ SUBSYSTEM_DEF(living)
 	for(var/k in all_living)
 		var/mob/living/L = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
-		L.on_life()
-		if(do_slow)
-			L.on_life_slow()
+		if(process_living(L,do_slow) == null)
+			if(!L.ckey_last)
+				log_error("Warning! [L.get_debug_name()] is not running process_living() correctly! They will be deleted as a result.")
+				qdel(L)
+			else
+				log_error("Warning! [L.get_debug_name()] is not running process_living() correctly! They currently have a ckey associated, so they will be notified instead of deleted.")
+				L.to_chat(span("danger","It appears your character experienced a script error. If this message persists, please cryo and rejoin while notifying a developer."))
 
 	if(do_slow)
 		advanced_ticks = 0

@@ -31,5 +31,3 @@ SUBSYSTEM_DEF(holiday)
 		INITIALIZE(H)
 		GENERATE(H)
 		FINALIZE(H)
-
-/obj/item/storage/bags/goodie/halloween

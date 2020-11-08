@@ -32,16 +32,23 @@ SUBSYSTEM_DEF(events)
 
 	return ..()
 
+/subsystem/events/proc/process_event(var/event/E)
+	if(E.end_time <= world.time)
+		E.on_end()
+		E.active = FALSE
+		all_events_active -= E
+	else
+		E.on_life()
+	return TRUE
+
 /subsystem/events/on_life()
 
 	for(var/k in all_events_active)
 		var/event/E = k
-		if(E.end_time <= world.time)
-			E.on_end()
-			E.active = FALSE
+		if(process_event(E) == null)
 			all_events_active -= E
-		else
-			E.on_life()
+			qdel(E)
+			log_error("Warning! Event of type [E.type] did not process correctly, thus it was deleted.")
 
 	if(world.time >= next_event_time)
 		trigger_random_event()

@@ -61,8 +61,9 @@ SUBSYSTEM_DEF(obj)
 	for(var/k in queued_smooth)
 		var/obj/structure/smooth/S = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-		S.update_sprite()
 		queued_smooth -= S
+		S.update_sprite()
+		//This doesn't need to be "processed" as the only thing that could go wrong is update sprite.
 
 	return TRUE
 

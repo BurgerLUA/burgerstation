@@ -45,13 +45,24 @@ SUBSYSTEM_DEF(logging)
 
 /subsystem/logging/on_life()
 
-	log_from_list("chat",buffered_log_chat)
-	log_from_list("admin",buffered_log_admin)
-	log_from_list("error",buffered_log_error)
-	log_from_list("debug",buffered_log_debug)
+	if(log_from_list("chat",buffered_log_chat) == null)
+		buffered_log_chat.Cut()
+		buffered_log_chat += "Warning! buffered_log_chat could not be processed. Some data is missing."
+		log_debug("Warning! buffered_log_chat could not be processed. Some data is missing.")
 
+	if(log_from_list("admin",buffered_log_admin) == null)
+		buffered_log_admin.Cut()
+		buffered_log_admin += "Warning! buffered_log_admin could not be processed. Some data is missing."
+		log_debug("Warning! buffered_log_admin could not be processed. Some data is missing.")
 
+	if(log_from_list("error",buffered_log_error) == null)
+		buffered_log_error.Cut()
+		buffered_log_error += "Warning! buffered_log_error could not be processed. Some data is missing."
+		log_debug("Warning! buffered_log_error could not be processed. Some data is missing.")
 
-
+	if(log_from_list("debug",buffered_log_debug) == null)
+		buffered_log_debug.Cut()
+		buffered_log_debug += "Warning! buffered_log_debug could not be processed. Some data is missing."
+		log_debug("Warning! buffered_log_debug could not be processed. Some data is missing.")
 
 	return TRUE

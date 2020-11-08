@@ -21,19 +21,18 @@ SUBSYSTEM_DEF(bossai)
 
 	return ..()
 
-
-
-
 /subsystem/bossai/on_life()
 
 	for(var/k in active_ai)
 		var/ai/AI = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER*0.25)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(AI && !AI.owner)
 			log_error("WARING! AI of type [AI.type] didn't have an owner!")
 			qdel(AI)
 			continue
-		if(AI.should_life())
-			AI.on_life(tick_rate)
+		var/should_life = AI.should_life()
+		if(should_life == null || (should_life && AI.on_life(tick_rate) == null))
+			log_error("WARING! AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
+			qdel(AI.owner)
 
 	return TRUE

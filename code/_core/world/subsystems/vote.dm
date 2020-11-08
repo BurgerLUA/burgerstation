@@ -19,14 +19,20 @@ SUBSYSTEM_DEF(vote)
 
 	return ..()
 
+/subsystem/vote/proc/proces_vote(var/vote/V)
+	if(V.time_to_end > world.time)
+		return FALSE
+	active_votes -= V
+	qdel(V)
+	return TRUE
+
 /subsystem/vote/on_life()
 
 	for(var/k in active_votes)
 		var/vote/V = k
-		if(V.time_to_end > world.time)
-			continue
-		active_votes -= V
-		qdel(V)
+		if(proces_vote(V) == null)
+			qdel(V)
+			active_votes -= k
 
 	return ..()
 

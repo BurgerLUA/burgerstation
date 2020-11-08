@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(projectiles)
 
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k
-		qdel(P)
+		qdel(P) //Remove is called inside the projectile
 
 	broadcast_to_clients(span("danger","Removed all projectiles."))
 
@@ -27,6 +27,8 @@ SUBSYSTEM_DEF(projectiles)
 
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k
-		P.update_projectile(tick_rate)
+		if(P.update_projectile(tick_rate) == null)
+			log_error("Warning! Projectile [P.get_debug_name()] didn't run update_projectile properly, and thus was deleted.")
+			qdel(P) //Remove is called inside the projectile
 
 	return TRUE

@@ -1,5 +1,3 @@
-var/global/list/
-
 SUBSYSTEM_DEF(radio)
 	name = "Radio Subsystem"
 	desc = "Controls radios."
@@ -19,19 +17,27 @@ SUBSYSTEM_DEF(radio)
 
 	return ..()
 
+/subsystem/radio/proc/process_radio(var/obj/item/device/radio/R)
+
+	if(!R.receiving)
+		return FALSE
+
+	for(var/data_key in unprocessed_radio_data)
+		CHECK_TICK(tick_usage_max,FPS_SERVER*10)
+		var/data_value = unprocessed_radio_data[data_key]
+		R.receive_data(data_value)
+
+	return TRUE
+
+
+
 /subsystem/radio/on_life()
 
 	for(var/k in all_radios)
 		var/obj/item/device/radio/R = k
-		if(!R.receiving)
-			continue
-		for(var/data_key in unprocessed_radio_data)
-			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
-			var/data_value = unprocessed_radio_data[data_key]
-			try
-				R.receive_data(data_value)
-			catch(var/exception/e)
-				log_error("radio on_life(): [e] on [e.file]:[e.line]\n[e.desc]!")
+		if(process_radio(R) == null)
+			log_error("Warning! Radio [R.get_debug_name()] could not process radio data properly!")
+
 	unprocessed_radio_data.Cut()
 
 	return TRUE

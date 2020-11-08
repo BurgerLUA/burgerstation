@@ -27,8 +27,14 @@ SUBSYSTEM_DEF(client)
 			log_error("Tried getting the client of [ckey] but it didn't exist!")
 			all_clients -= ckey
 			continue
-		C.on_life()
-		if(do_slow)
-			C.on_life_slow()
+		process_client(C,do_slow)
 
+
+	return TRUE
+
+
+/subsystem/client/proc/process_client(var/client/C,var/do_slow=FALSE)
+	C.on_life()
+	if(do_slow)
+		C.on_life_slow()
 	return TRUE

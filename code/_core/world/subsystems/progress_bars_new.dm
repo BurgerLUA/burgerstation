@@ -22,47 +22,52 @@ SUBSYSTEM_DEF(progressbars)
 
 	return ..()
 
+/subsystem/progressbars/proc/process_progress_bar(var/k)
+	var/atom/A = k
+	var/list/progress_list = all_progress_bars[k]
+	var/obj/hud/progress_bar/P = progress_list["progress_bar"]
+
+	P.update_sprite()
+
+	if(progress_list["time"] < world.time)
+		all_progress_bars -= A
+		if(progress_list["src"])
+			call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
+		else
+			call(progress_list["proc"])(arglist(progress_list["args"]))
+		animate(P,alpha=0,time=5)
+		queue_delete(P,10)
+		return FALSE
+
+	if(progress_list["condition_proc"])
+		var/pass = FALSE
+		if(progress_list["condition_src"])
+			if(call(progress_list["condition_src"],progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
+				pass = TRUE
+		else
+			if(call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
+				pass = TRUE
+		if(!pass)
+			animate(P,alpha=0,time=5)
+			queue_delete(P,10)
+			all_progress_bars -= A
+			return FALSE
+
+	return TRUE
+
+
 
 /subsystem/progressbars/on_life()
 
 	for(var/k in all_progress_bars)
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
-		var/atom/A = k
-		var/list/progress_list = all_progress_bars[k]
-		var/obj/hud/progress_bar/P = progress_list["progress_bar"]
-
-		P.update_sprite()
-
-		if(progress_list["time"] < world.time)
+		if(process_progress_bar(k) == null)
+			var/atom/A = k
+			var/list/progress_list = all_progress_bars[k]
+			var/obj/hud/progress_bar/P = progress_list["progress_bar"]
+			log_error("Warning! A progress bar belonging to [A.get_debug_name()] didn't run properly, and thus was deleted.")
+			qdel(P)
 			all_progress_bars -= A
-			try
-				if(progress_list["src"])
-					call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
-				else
-					call(progress_list["proc"])(arglist(progress_list["args"]))
-			catch(var/exception/e)
-				log_error("SSprogressbars: [e] on [e.file]:[e.line]!")
-			animate(P,alpha=0,time=5)
-			queue_delete(P,10)
-			continue
-
-		if(progress_list["condition_proc"])
-			var/pass = FALSE
-			try
-				if(progress_list["condition_src"])
-					if(call(progress_list["condition_src"],progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
-						pass = TRUE
-				else
-					if(call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
-						pass = TRUE
-			catch(var/exception/e)
-				log_error("SSprogressbars: [e] on [e.file]:[e.line]!")
-
-			if(!pass)
-				animate(P,alpha=0,time=5)
-				queue_delete(P,10)
-				all_progress_bars -= A
-				continue
 
 	return TRUE
 
