@@ -9,6 +9,15 @@ SUBSYSTEM_DEF(botany)
 	tick_usage_max = 75
 	cpu_usage_max = 75
 
+
+/subsystem/botany/unclog(var/mob/caller)
+	for(var/k in all_plants)
+		var/obj/structure/interactive/plant/P = k
+		qdel(P)
+	broadcast_to_clients(span("danger","Deleted all plants."))
+
+	return ..()
+
 /subsystem/botany/on_life()
 
 	for(var/k in all_plants)

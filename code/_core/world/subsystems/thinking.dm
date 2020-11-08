@@ -8,6 +8,12 @@ SUBSYSTEM_DEF(thinking)
 	cpu_usage_max = 100
 	tick_usage_max = 100
 
+/subsystem/thinking/unclog(var/mob/caller)
+	for(var/k in src.all_thinkers)
+		all_thinkers -= k
+	broadcast_to_clients(span("danger","Stopped all thinkers."))
+	return ..()
+
 /subsystem/thinking/on_life()
 	for(var/k in all_thinkers)
 		var/atom/A = k

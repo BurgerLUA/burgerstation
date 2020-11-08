@@ -10,6 +10,19 @@ SUBSYSTEM_DEF(progressbars)
 	tick_usage_max = 90
 
 
+/subsystem/progressbars/unclog(var/mob/caller)
+
+	for(var/k in all_progress_bars)
+		var/list/progress_list = all_progress_bars[k]
+		var/obj/hud/progress_bar/P = progress_list["progress_bar"]
+		qdel(P)
+		all_progress_bars -= k
+
+	broadcast_to_clients(span("danger","Removed all progress bars."))
+
+	return ..()
+
+
 /subsystem/progressbars/on_life()
 
 	for(var/k in all_progress_bars)

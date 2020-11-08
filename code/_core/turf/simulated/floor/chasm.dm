@@ -13,6 +13,8 @@
 	. = ..()
 
 	if((is_living(O) || isobj(O)) && length(rift_markers))
+		if(!O.finalized)
+			return .
 		var/turf/T = get_turf(pick(rift_markers))
 		O.visible_message(span("danger","\The [O.name] falls into \the [src.name]!"))
 		if(is_living(O))
@@ -21,7 +23,7 @@
 		O.force_move(T)
 		if(is_living(O))
 			var/mob/living/L = O
-			if(L.health)
+			if(istype(L.health))
 				L.visible_message(span("danger","\The [O.name] falls from above and takes damage from the impact!"))
 				for(var/i=1,i<=3,i++)
 					L.health.adjust_brute_loss(-30)

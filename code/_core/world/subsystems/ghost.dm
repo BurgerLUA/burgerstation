@@ -10,6 +10,17 @@ SUBSYSTEM_DEF(ghost)
 	var/list/obj/item/emf/all_emf_trackers = list()
 	var/list/obj/emf/all_emfs = list()
 
+/subsystem/ghost/unclog(var/mob/caller)
+
+	for(var/k in all_emfs)
+		var/datum/D = k
+		all_emfs -= k
+		qdel(D)
+
+	broadcast_to_clients(span("danger","Removed all active EMFs."))
+
+	return ..()
+
 /subsystem/ghost/on_life()
 
 	for(var/k in all_emf_trackers)

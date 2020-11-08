@@ -1,7 +1,5 @@
 #define ROUND_END_DIRECTORY "sound/round_end/"
 
-var/global/list/active_sounds = list()
-
 SUBSYSTEM_DEF(sound)
 	name = "Sound Subsystem"
 	tick_rate = DECISECONDS_TO_TICKS(1)
@@ -12,6 +10,16 @@ SUBSYSTEM_DEF(sound)
 	tick_usage_max = 75
 
 	var/list/round_end_sounds = list()
+
+	var/list/active_sounds = list()
+
+/subsystem/sound/unclog(var/mob/caller)
+	for(var/k in src.active_sounds)
+		var/sound/S = k
+		qdel(S)
+		active_sounds -= k
+	broadcast_to_clients(span("danger","Removed all active sounds."))
+	return ..()
 
 /subsystem/sound/Initialize()
 	var/found_files = flist(ROUND_END_DIRECTORY)
@@ -39,7 +47,7 @@ SUBSYSTEM_DEF(sound)
 	return TRUE
 
 /proc/stop_sound(var/sound_path,var/list/mob/hearers)
-	for(var/F in active_sounds)
+	for(var/F in SSsound.active_sounds)
 		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER)
 		var/sound/S = F
 		if(S.file != sound_path)
@@ -250,9 +258,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		SSsound.channel_hack = 100
 
 	if(duration > 0)
-		active_sounds[created_sound] = duration
+		SSsound.active_sounds[created_sound] = duration
 	else if(loop)
-		active_sounds[created_sound] = -1
+		SSsound.active_sounds[created_sound] = -1
 
 	for(var/k in hearers)
 		var/mob/M = k

@@ -25,6 +25,17 @@ SUBSYSTEM_DEF(lighting)
 	tick_usage_max = 75
 	cpu_usage_max = 75
 
+/subsystem/lighting/unclog(var/mob/caller)
+
+	for(var/k in lighting_corners)
+		var/datum/D = k
+		lighting_corners -= k
+		qdel(D)
+
+	broadcast_to_clients(span("danger","Removed all lighting corners."))
+
+	return ..()
+
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 	var/force_queued = TRUE
 	var/force_override = FALSE	// For admins.

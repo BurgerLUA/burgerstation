@@ -94,6 +94,8 @@
 
 /atom/Destroy()
 
+	stop_thinking(src)
+
 	set_light(FALSE)
 
 	QDEL_CUT(underlays)
@@ -101,8 +103,6 @@
 
 	QDEL_NULL(reagents)
 	QDEL_NULL(health)
-
-	stop_thinking(src)
 
 	for(var/k in contents)
 		var/atom/movable/A = k

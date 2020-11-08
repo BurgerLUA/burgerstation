@@ -50,12 +50,14 @@
 				zoom_mul = A.right_item.zoom_mul
 				if(istype(A.right_item,/obj/item/weapon/ranged/))
 					var/obj/item/weapon/ranged/R = A.right_item
-					zoom_mul *= R.attachment_stats["zoom_mul"]
+					if(R.attachment_stats["zoom_mul"])
+						zoom_mul *= R.attachment_stats["zoom_mul"]
 			else if(A.left_item && A.left_item.wielded && (A.left_item.wielded || !A.left_item.can_wield))
 				zoom_mul = A.left_item.zoom_mul
 				if(istype(A.left_item,/obj/item/weapon/ranged/))
 					var/obj/item/weapon/ranged/R = A.left_item
-					zoom_mul *= R.attachment_stats["zoom_mul"]
+					if(R.attachment_stats["zoom_mul"])
+						zoom_mul *= R.attachment_stats["zoom_mul"]
 		var/list/returning_list = direction_to_pixel_offset(is_zoomed)
 		zoom_offset_x = returning_list[1]*TILE_SIZE*ZOOM_RANGE*zoom_mul
 		zoom_offset_y = returning_list[2]*TILE_SIZE*ZOOM_RANGE*zoom_mul

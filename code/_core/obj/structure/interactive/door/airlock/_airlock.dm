@@ -67,6 +67,9 @@
 	if(door_state == DOOR_STATE_BROKEN)
 		return FALSE
 
+	if(!loc)
+		return FALSE
+
 	if(door_state == DOOR_STATE_OPENED)
 		opened_time += 1
 	else if (door_state == DOOR_STATE_CLOSED)

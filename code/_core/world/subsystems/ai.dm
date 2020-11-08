@@ -13,6 +13,19 @@ SUBSYSTEM_DEF(ai)
 
 	use_time_dialation = FALSE
 
+/subsystem/ai/unclog(var/mob/caller)
+
+	for(var/k in active_ai)
+		var/ai/AI = k
+		if(AI.owner)
+			qdel(AI.owner)
+		else
+			qdel(AI)
+	broadcast_to_clients(span("danger","Deleted all non-boss mobs and AIs."))
+
+	return ..()
+
+
 /subsystem/ai/on_life()
 
 	for(var/k in active_ai)

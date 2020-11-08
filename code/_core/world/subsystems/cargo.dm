@@ -9,9 +9,6 @@ SUBSYSTEM_DEF(cargo)
 	var/list/cargo_id_to_type = list()
 	var/list/catalog_data = list() //What the catalog should look like
 
-	var/list/stored_orders = list()
-
-
 /subsystem/cargo/Initialize()
 
 	var/turf/T = locate(1,1,1)

@@ -23,6 +23,11 @@
 
 	var/use_time_dialation = TRUE
 
+
+/subsystem/proc/unclog(var/mob/caller)
+	broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [caller.ckey].")
+	return TRUE
+
 /subsystem/New(var/desired_loc)
 	tick_rate = FLOOR(tick_rate,1)
 	return ..()

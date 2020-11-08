@@ -13,6 +13,16 @@ SUBSYSTEM_DEF(projectiles)
 
 	var/list/obj/projectile/all_projectiles = list()
 
+/subsystem/projectiles/unclog(var/mob/caller)
+
+	for(var/k in all_projectiles)
+		var/obj/projectile/P = k
+		qdel(P)
+
+	broadcast_to_clients(span("danger","Removed all projectiles."))
+
+	return ..()
+
 /subsystem/projectiles/on_life()
 
 	for(var/k in all_projectiles)

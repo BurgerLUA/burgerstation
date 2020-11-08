@@ -65,13 +65,17 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	return .
 
 /obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
+
 	if(is_living(victim) && is_living(owner) && owner != victim)
 		var/mob/living/L = victim
 		var/mob/living/L2 = owner
 		if(L.loyalty_tag == L2.loyalty_tag)
 			return FALSE
 	var/damagetype/DT = all_damage_types[damage_type]
-	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,get_params(),TRUE,TRUE)
+	var/list/params = get_params()
+	if(!victim.can_be_attacked(owner,src,params,DT))
+		return FALSE
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,params,TRUE,TRUE)
 	return DT.hit(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()

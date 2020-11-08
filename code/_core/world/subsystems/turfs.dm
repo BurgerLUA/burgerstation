@@ -14,6 +14,18 @@ SUBSYSTEM_DEF(turfs)
 
 	var/list/seeds = list() //id = value
 
+/subsystem/turfs/unclog(var/mob/caller)
+
+	for(var/k in wet_turfs)
+		wet_turfs -= k
+
+	for(var/k in queued_edges)
+		queued_edges -= k
+
+	broadcast_to_clients(span("danger","Removed all wet turfs and queued edges."))
+
+	return ..()
+
 /subsystem/turfs/Initialize()
 
 	if(!ENABLE_TURFGEN)

@@ -10,6 +10,17 @@ SUBSYSTEM_DEF(events)
 
 	var/next_event_time = 0
 
+/subsystem/events/unclog(var/mob/caller)
+
+	for(var/k in all_events_active)
+		var/datum/D = k
+		all_events_active -= k
+		qdel(D)
+
+	broadcast_to_clients(span("danger","Force ended all active events and shutdown the event subsystem."))
+
+	return ..()
+
 /subsystem/events/Initialize()
 
 	for(var/k in subtypesof(/event/))

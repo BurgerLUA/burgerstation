@@ -13,6 +13,22 @@ SUBSYSTEM_DEF(delete)
 
 	var/list/cleaning_log = list()
 
+/subsystem/delete/unclog(var/mob/caller)
+
+	for(var/k in src.objects_to_delete)
+		var/datum/D = k
+		objects_to_delete -= k
+		qdel(D)
+
+	for(var/k in src.objects_to_delete_safe)
+		var/datum/D = k
+		objects_to_delete -= k
+		qdel(D)
+
+	broadcast_to_clients(span("danger","Force deleted all objects queued for deletion."))
+
+	return ..()
+
 /subsystem/delete/on_life()
 
 	var/i=0

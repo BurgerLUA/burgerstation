@@ -122,7 +122,7 @@ list(
 
 	var/speaker_ref = is_atom(data["speaker"]) ? "/ref[data["speaker"]]" : null
 
-	if(speaker_ref && all_unprocessed_radio_data[speaker_ref])
+	if(speaker_ref && SSradio.unprocessed_radio_data[speaker_ref])
 		return FALSE
 
 	var/turf/T = get_turf(src)
@@ -136,7 +136,7 @@ list(
 		data["message"] = scramble(data["message"])
 		data["message_language"] = scramble(data["message_language"])
 
-	all_unprocessed_radio_data[speaker_ref] = data
+	SSradio.unprocessed_radio_data[speaker_ref] = data
 
 	play(radio_sound,src)
 

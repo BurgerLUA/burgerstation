@@ -9,6 +9,16 @@ SUBSYSTEM_DEF(vote)
 
 	var/list/active_votes = list()
 
+/subsystem/vote/unclog(var/mob/caller)
+
+	for(var/k in active_votes)
+		var/vote/V = k
+		qdel(V)
+
+	broadcast_to_clients(span("danger","Force ended all active votes."))
+
+	return ..()
+
 /subsystem/vote/on_life()
 
 	for(var/k in active_votes)

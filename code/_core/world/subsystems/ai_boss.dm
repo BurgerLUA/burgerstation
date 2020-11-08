@@ -9,6 +9,21 @@ SUBSYSTEM_DEF(bossai)
 	var/list/active_ai = list()
 	var/list/inactive_ai = list()
 
+/subsystem/bossai/unclog(var/mob/caller)
+
+	for(var/k in active_ai)
+		var/ai/AI = k
+		if(AI.owner)
+			qdel(AI.owner)
+		else
+			qdel(AI)
+	broadcast_to_clients(span("danger","Deleted all boss mobs and AIs."))
+
+	return ..()
+
+
+
+
 /subsystem/bossai/on_life()
 
 	for(var/k in active_ai)

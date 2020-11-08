@@ -8,6 +8,13 @@ SUBSYSTEM_DEF(callback)
 	cpu_usage_max = 0
 	tick_usage_max = 0
 
+
+/subsystem/callback/unclog(var/mob/caller)
+	for(var/callback_id in src.all_callbacks)
+		all_callbacks -= callback_id
+	broadcast_to_clients(span("danger","Removed all callbacks."))
+	return ..()
+
 /subsystem/callback/on_life()
 
 	for(var/callback_id in src.all_callbacks)

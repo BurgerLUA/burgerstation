@@ -69,9 +69,9 @@
 	desired_light_power = 0.5
 	desired_light_color = "#FFD175"
 
-	value = 200
+	value = 100
 
-	size = SIZE_3
+	size = SIZE_2
 
 
 /obj/item/weapon/melee/torch/flashlight
