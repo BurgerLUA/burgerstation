@@ -14,7 +14,7 @@
 
 	var/sound_environment = ENVIRONMENT_GENERIC
 
-	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues.
+	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.
 	var/trackable = FALSE //Trackable area by the game.
 
 	var/map_color_r = rgb(255,0,0,255)

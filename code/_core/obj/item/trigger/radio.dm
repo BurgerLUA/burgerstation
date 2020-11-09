@@ -24,6 +24,8 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/broadcasting_range = VIEW_RANGE
 
+	listener = TRUE
+
 	value = 20
 
 /obj/item/device/radio/save_item_data(var/save_inventory = TRUE)
@@ -111,7 +113,7 @@ list(
 			loc.trigger(caller,src,signal_freq,signal_code)
 			return TRUE
 
-
+/*
 /obj/item/device/radio/proc/send_data(var/list/data = list())
 
 	if(!length(data))
@@ -141,7 +143,8 @@ list(
 	play(radio_sound,src)
 
 	return TRUE
-
+*/
+/*
 /obj/item/device/radio/proc/receive_data(var/list/data = list())
 
 	if(!data || !length(data))
@@ -181,6 +184,15 @@ list(
 			M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
 
 	return TRUE
+*/
+
+/obj/item/device/radio/on_listen(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals.
+		return FALSE
+	if(!broadcasting && !(frequency > 0)) //Dumb logic here, but it catches null as well as null (greater,less,equal) 0 is always 0.
+		return FALSE
+	use_radio(speaker,source,text,TEXT_RADIO,src.frequency,language)
+	return ..()
 
 
 /obj/item/device/radio/nanotrasen

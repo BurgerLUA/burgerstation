@@ -142,7 +142,7 @@
 		reagents = new reagents(src)
 
 	if(listener)
-		listener |= src
+		all_listeners |= src
 
 	return ..()
 
@@ -268,4 +268,7 @@
 	return TRUE
 
 /atom/Crossed(atom/movable/O) //Override default
+	return TRUE
+
+/atom/proc/on_listen(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
 	return TRUE

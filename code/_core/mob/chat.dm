@@ -188,3 +188,16 @@ var/regex/vowels = new("\[aeiou\]", "i")
 		return FALSE
 
 	return ..()
+
+
+/mob/on_listen(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+
+	if(client)
+		var/formatted_speech
+		if(!length(known_languages) || !known_languages[language])
+			formatted_speech = format_speech(speaker,source,text,talk_type,frequency,language)
+		else
+			formatted_speech = format_speech(speaker,source,text,talk_type,frequency,language)
+		to_chat(formatted_speech,talk_type)
+
+	return ..()

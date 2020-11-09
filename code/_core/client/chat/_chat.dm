@@ -9,158 +9,64 @@
 		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,text_type)
 
-/atom/proc/on_listen(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+
+
+/proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
+
+	var/list/radio_data = list(
+		"speaker" = speaker,
+		"source" = source,
+		"text_to_say" = text_to_say,
+		"text_type" = text_type,
+		"frequency" = frequency,
+		"language" = language
+	)
+
+	var/area/A = get_area(source)
+	if(all_telecomms[A.area_identifier])
+		for(var/k in all_telecomms[A.area_identifier])
+			var/obj/structure/interactive/telecomms/TC = k
+			TC.add_data(rustg_hash_string(RUSTG_HASH_SHA1,"\ref[speaker],\ref[source],[text_to_say]"),radio_data)
+
+	play('sound/items/radio.ogg',source)
+
 	return TRUE
 
-proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
+/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/distance=VIEW_RANGE)
+
+	var/turf/T1 = get_turf(source)
+
+	for(var/k in all_listeners)
+		var/atom/A = k
+		var/turf/T2 = get_turf(A)
+		if(!within_range(T1,T2,distance))
+			continue
+		A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
+
+	return TRUE
+
+
+/proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
 
 	if(!text_to_say)
 		return FALSE
 
-	var/language/LA = SSlanguage.all_languages[language]
-
-	var/text_to_say_language = LA ? LA.process_text(speaker,text_to_say) : "Blah blah blah."
-
 	var/turf/source_turf = get_turf(source)
 
 	switch(text_type)
-		if(TEXT_RADIO) //People talking into radios with the ; key.
-			var/list/sent_frequencies = list()
+		if(TEXT_RADIO) //Snowflake code.
 			for(var/k in all_radios)
 				var/obj/item/device/radio/R = k
-				CHECK_TICK(75,FPS_SERVER)
-				var/desired_frequency = frequency
-				if(desired_frequency == -1 || !desired_frequency)
-					desired_frequency = R.frequency
-				if(length(sent_frequencies) && sent_frequencies["[desired_frequency]"])
-					continue
-				if(get_turf(R) != source_turf)
-					continue
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,desired_frequency,language)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
-				if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-				if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-				break
-
-		if(TEXT_RAW) //People talking out of radios, pretty much. Note that this is formatted. (should probably remove this)
-			for(var/k in all_mobs_with_clients)
-				var/mob/M = k
-				CHECK_TICK(75,FPS_SERVER)
-				if(within_range(M,source,TALK_RANGE))
-					M.to_chat(text_to_say,CHAT_TYPE_RADIO)
-
+				var/turf/T = get_turf(R)
+				if(T == source_turf)
+					R.on_listen(speaker,source,text_to_say,TEXT_TALK,R.frequency,language)
+					break
 		if(TEXT_WHISPER)
-			if(istype(source,/client/))
-				var/client/C = source
-				C.to_chat("You cannot talk like this!")
-				return
-			else
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/k in all_listeners)
-					var/atom/A = k
-					CHECK_TICK(75,FPS_SERVER)
-					if(!within_range(A,source,WHISPER_RANGE))
-						continue
-					A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
-					if(ismob(k))
-						var/mob/M = k
-						if(!M.client)
-							continue
-						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
-				var/list/sent_frequencies = list()
-				for(var/k in all_radios)
-					var/obj/item/device/radio/R = k
-					CHECK_TICK(75,FPS_SERVER)
-					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
-						continue
-					var/desired_frequency = frequency
-					if(!desired_frequency)
-						desired_frequency = R.frequency
-					//formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
-					//formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = text_to_say_language, "frequency" = desired_frequency))
-					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-				if(speaker.is_player_controlled()) log_chat("WHISPER: [speaker.get_log_name()]: [text_to_say]")
-
+			use_ears(speaker,source,text_to_say,text_type,frequency,language,WHISPER_RANGE)
 		if(TEXT_TALK)
-			if(istype(source,/client/))
-				var/client/C = source
-				C.to_chat("You cannot talk like this!")
-				return
-			else
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/k in all_listeners)
-					var/atom/A = k
-					CHECK_TICK(75,FPS_SERVER)
-					if(!within_range(A,source,TALK_RANGE))
-						continue
-					A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
-					if(ismob(k))
-						var/mob/M = k
-						if(!M.client)
-							continue
-						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
-
-				var/list/sent_frequencies = list()
-				for(var/k in all_radios)
-					var/obj/item/device/radio/R = k
-					CHECK_TICK(75,FPS_SERVER)
-					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
-						continue
-					var/desired_frequency = frequency
-					if(!desired_frequency)
-						desired_frequency = R.frequency
-					if(length(sent_frequencies) && sent_frequencies["[desired_frequency]"])
-						continue
-					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
-					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
-					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-			if(speaker.is_player_controlled()) log_chat("TALK: [speaker.get_log_name()]: [text_to_say]")
-
+			use_ears(speaker,source,text_to_say,text_type,frequency,language,TALK_RANGE)
 		if(TEXT_YELL)
-			if(istype(source,/client/))
-				var/client/C = source
-				C.to_chat("You cannot talk like this!")
-				return
-			else
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/k in all_listeners)
-					var/atom/A = k
-					CHECK_TICK(75,FPS_SERVER)
-					if(!within_range(A,source,YELL_RANGE))
-						continue
-					A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
-					if(ismob(A))
-						var/mob/M = k
-						if(!M.client)
-							continue
-						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
-
-				var/list/sent_frequencies = list()
-				for(var/k in all_radios)
-					var/obj/item/device/radio/R = k
-					CHECK_TICK(75,FPS_SERVER)
-					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
-						continue
-					var/desired_frequency = frequency
-					if(!desired_frequency)
-						desired_frequency = R.frequency
-					if(length(sent_frequencies) && sent_frequencies["[desired_frequency]"])
-						continue
-					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
-					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
-					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
-					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
-			if(speaker.is_player_controlled()) log_chat("YELL: [speaker.get_log_name()]: [text_to_say]")
-
+			use_ears(speaker,source,text_to_say,text_type,frequency,language,YELL_RANGE)
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/k in all_mobs_with_clients)
@@ -169,7 +75,6 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				if(within_range(M,source,YELL_RANGE))
 					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 			if(speaker.is_player_controlled()) log_chat("LOOC: [speaker.get_log_name()]: [text_to_say]")
-
 		if(TEXT_OOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/k in all_clients)
@@ -178,11 +83,9 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				if(!C || !C.mob)
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_OOC)
-
 			if(SSwikibot && ENABLE_WIKIBOT)
 				SSwikibot.process_string(source,text_to_say)
 			if(speaker.is_player_controlled()) log_chat("OOC: [speaker.get_log_name()]: [text_to_say]")
-
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/k in all_clients)
