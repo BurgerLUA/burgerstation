@@ -50,6 +50,8 @@
 	var/light_sprite_range = 0
 	var/light_sprite_alpha = 0
 
+	var/listener = FALSE //Setting this to true doesn't make it listen after it's been initialized.
+
 /atom/proc/set_light_sprite(var/desired_range,var/desired_alpha)
 
 	var/update_overlays = FALSE
@@ -112,6 +114,8 @@
 	invisibility = 101
 	mouse_opacity = 0
 
+	all_listeners -= src
+
 	return ..()
 
 /atom/Cross(atom/movable/O)
@@ -136,6 +140,9 @@
 
 	if(reagents)
 		reagents = new reagents(src)
+
+	if(listener)
+		listener |= src
 
 	return ..()
 

@@ -1,29 +1,33 @@
 
-mob/living/get_examine_list(var/mob/examiner)
+/mob/living/get_examine_list(var/mob/examiner)
 
 	. = ..()
 
-	if(dead)
-		if(ai || is_player_controlled())
-			. += div("danger","They are dead...")
-		else
-			. += div("warning","They are dead and lifeless, and their soul has departed...")
-	else if(!ai)
-
-		if(!is_player_controlled())
-			. += div("warning","They are totally catonic. Any recovery is unlikely.")
-		else if(!client)
-			. += div("warning","They seem to be affected by space sleep disorder. They may recover soon.")
-		else if(client.inactivity >= SECONDS_TO_TICKS(60))
-			. += div("warning","They seem to be blanking out for [TICKS_TO_SECONDS(client.inactivity)] seconds. They may snap out of it soon.")
-
-
+	var/activity_text = get_activity_text()
+	if(activity_text)
+		. += activity_text
 
 
 
 	return .
 
-mob/living/get_examine_details_list(var/mob/examiner)
+
+/mob/living/proc/get_activity_text()
+
+	if(dead)
+		if(ai || is_player_controlled())
+			return div("danger","They are dead...")
+		else
+			return div("warning","They are dead and lifeless, and their soul has departed...")
+	else if(!ai)
+		if(!client)
+			return div("warning","They seem to be affected by space sleep disorder. They may recover soon.")
+		else if(client.inactivity >= SECONDS_TO_TICKS(60))
+			return div("warning","They seem to be blanking out for [TICKS_TO_SECONDS(client.inactivity)] seconds. They may snap out of it soon.")
+
+	return null
+
+/mob/living/get_examine_details_list(var/mob/examiner)
 
 	. = ..()
 

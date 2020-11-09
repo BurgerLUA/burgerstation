@@ -168,11 +168,17 @@ list(
 		data["message"] = scramble(data["message"])
 		data["message_language"] = scramble(data["message_language"])
 
-	for(var/mob/M in range(broadcasting_range,T))
+	for(var/k in all_listeners)
+		var/atom/A2 = k
 		CHECK_TICK(50,FPS_SERVER)
-		if(!M.client)
+		if(!within_range(A2,T,broadcasting_range))
 			continue
-		M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
+		A.on_listen(data["speaker"],src,data["message"],TEXT_RADIO,data["frequency"],data["language"])
+		if(ismob(k))
+			var/mob/M = k
+			if(!M.client)
+				continue
+			M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
 
 	return TRUE
 

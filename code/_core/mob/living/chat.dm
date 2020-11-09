@@ -1,8 +1,7 @@
 /mob/living/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
 
 	if(dead)
-		to_chat(span("warning","You can't talk while you're dead!"))
-		return FALSE
+		return ..(text_to_say,should_sanitize,TEXT_GHOST)
 
 	start_typing()
 

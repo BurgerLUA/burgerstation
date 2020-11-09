@@ -9,6 +9,9 @@
 		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,text_type)
 
+/atom/proc/on_listen(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+	return TRUE
+
 proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
 
 	if(!text_to_say)
@@ -40,7 +43,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
 				break
 
-		if(TEXT_RAW) //People talking out of radios, pretty much.
+		if(TEXT_RAW) //People talking out of radios, pretty much. Note that this is formatted. (should probably remove this)
 			for(var/k in all_mobs_with_clients)
 				var/mob/M = k
 				CHECK_TICK(75,FPS_SERVER)
@@ -55,10 +58,16 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			else
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/k in all_mobs_with_clients)
-					var/mob/M = k
+				for(var/k in all_listeners)
+					var/atom/A = k
 					CHECK_TICK(75,FPS_SERVER)
-					if(within_range(M,source,WHISPER_RANGE))
+					if(!within_range(A,source,WHISPER_RANGE))
+						continue
+					A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
+					if(ismob(k))
+						var/mob/M = k
+						if(!M.client)
+							continue
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 				var/list/sent_frequencies = list()
 				for(var/k in all_radios)
@@ -69,9 +78,9 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					var/desired_frequency = frequency
 					if(!desired_frequency)
 						desired_frequency = R.frequency
-					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
-					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
+					//formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
+					//formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = text_to_say_language, "frequency" = desired_frequency))
 					if(desired_frequency) sent_frequencies["[desired_frequency]"] = TRUE
 					if(speaker.is_player_controlled()) log_chat("RADIO: [speaker.get_log_name()]([desired_frequency]): [text_to_say]")
 				if(speaker.is_player_controlled()) log_chat("WHISPER: [speaker.get_log_name()]: [text_to_say]")
@@ -84,10 +93,16 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			else
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/k in all_mobs_with_clients)
-					var/mob/M = k
+				for(var/k in all_listeners)
+					var/atom/A = k
 					CHECK_TICK(75,FPS_SERVER)
-					if(within_range(M,source,TALK_RANGE))
+					if(!within_range(A,source,TALK_RANGE))
+						continue
+					A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
+					if(ismob(k))
+						var/mob/M = k
+						if(!M.client)
+							continue
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				var/list/sent_frequencies = list()
@@ -116,10 +131,16 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			else
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/k in all_mobs_with_clients)
-					var/mob/M = k
+				for(var/k in all_listeners)
+					var/atom/A = k
 					CHECK_TICK(75,FPS_SERVER)
-					if(within_range(M,source,YELL_RANGE))
+					if(!within_range(A,source,YELL_RANGE))
+						continue
+					A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
+					if(ismob(A))
+						var/mob/M = k
+						if(!M.client)
+							continue
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				var/list/sent_frequencies = list()
@@ -167,7 +188,13 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			for(var/k in all_clients)
 				CHECK_TICK(75,FPS_SERVER)
 				var/client/C = all_clients[k]
-				if(!C.mob || !is_observer(C.mob))
+				if(!C.mob)
+					continue
+				if(is_living(C.mob))
+					var/mob/living/L = C.mob
+					if(!L.dead)
+						continue
+				else if(!is_observer(C.mob))
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
 			if(speaker.is_player_controlled()) log_chat("GHOST: [speaker.get_log_name()]: [text_to_say]")

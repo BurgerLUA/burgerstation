@@ -7,28 +7,28 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_CLUB*0.1,
-		FATIGUE = 0
+		BLUNT = DAMAGE_AXE*0.2,
+		FATIGUE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_CLUB*0.5,
-		FATIGUE = AP_CLUB*0.5,
+		BLUNT = AP_AXE,
+		FATIGUE = INFINITY,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_CLUB*0.3,
-		ATTRIBUTE_DEXTERITY = DAMAGE_CLUB*0.2
+		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.3,
+		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.1
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
-		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
+		ATTRIBUTE_STRENGTH = list(BLUNT),
+		ATTRIBUTE_DEXTERITY = list(BLUNT)
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_CLUB*0.4
+		SKILL_UNARMED = DAMAGE_AXE*0.4
 	)
 
 	skill_damage = list(
@@ -39,9 +39,8 @@
 
 	cqc_tag = "4"
 
-	//BALANCE SPECIAL CASE: SPEED IS DAGGER.
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = SPEED_AXE*0.5
+	attack_delay_max = SPEED_AXE
 
 /damagetype/unarmed/fists/help
 	name = "help fists"
@@ -53,17 +52,17 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_AXE*0.2
+		FATIGUE = DAMAGE_SWORD*0.2 + 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		FATIGUE = AP_CLUB*1,
+		FATIGUE = INFINITY,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_CLUB*0.3,
-		ATTRIBUTE_DEXTERITY = DAMAGE_CLUB*0.2
+		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.3,
+		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2
 	)
 
 	attribute_damage = list(
@@ -72,7 +71,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_CLUB*0.3
+		SKILL_UNARMED = DAMAGE_SWORD*0.3
 	)
 
 	skill_damage = list(
@@ -83,8 +82,8 @@
 
 	allow_friendly_fire = FALSE
 
-	attack_delay = SPEED_CLUB*0.5
-	attack_delay_max = SPEED_CLUB
+	attack_delay = SPEED_SWORD*0.5
+	attack_delay_max = SPEED_SWORD
 
 	draw_blood = FALSE
 
@@ -105,7 +104,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		FATIGUE = AP_DAGGER
+		FATIGUE = INFINITY
 	)
 
 	attribute_stats = list(
@@ -126,8 +125,8 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 10
+	attack_delay_max = 10
 
 	cqc_tag = "2"
 
@@ -161,7 +160,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_DAGGER*0.25
+		FATIGUE = INFINITY
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -189,8 +188,8 @@
 
 	cqc_tag = "3"
 
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 10
+	attack_delay_max = 10
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
