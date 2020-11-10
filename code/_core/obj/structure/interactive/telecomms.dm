@@ -1,22 +1,13 @@
 var/global/list/all_telecomms = list()
 
 /obj/structure/interactive/telecomms
-	name = "telecommunications"
-	desc = "Controls radios."
+	name = "telecommunications system"
+	desc = "The complexity of a communications setup packed into one easy package!"
 	icon = 'icons/obj/structure/telecomms.dmi'
 	icon_state = "comm_server"
 
 	var/list/queued_data = list()
 
-/obj/structure/interactive/telecomms/Finalize()
-
-	var/area/A = get_area(src)
-	if(A.area_identifier)
-		if(!all_telecomms[A.area_identifier])
-			all_telecomms[A.area_identifier] = list()
-		all_telecomms[A.area_identifier] += src
-
-	return ..()
 
 /obj/structure/interactive/telecomms/Destroy()
 	var/area/A = get_area(src)
@@ -59,3 +50,12 @@ var/global/list/all_telecomms = list()
 
 
 	return TRUE
+
+
+/obj/structure/interactive/telecomms/station
+	name = "station telecomms system"
+
+/obj/structure/interactive/telecomms/station/Initialize()
+	all_telecomms["Burgerstation"] += src
+	all_telecomms["Mission"] += src
+	return ..()

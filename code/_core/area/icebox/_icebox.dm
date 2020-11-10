@@ -1,7 +1,7 @@
 /area/icebox/
 	name = "\improper Icebox"
 	trackable = TRUE
-	area_identifier = "icebox"
+	area_identifier = "Mission"
 
 /area/icebox/exterior
 	name = "\improper Icebox Exterior"
