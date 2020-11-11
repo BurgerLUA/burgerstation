@@ -22,9 +22,16 @@
 
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
-	value *= 0.1+((nutrition_amount*0.07)+(hydration_amount*0.03)+(heal_factor*2)*0.1*flavor_strength)
-	return ..()
 
+	value *= 0.1 + max(0,(nutrition_amount-nutrition_quality_amount)*0.035) + (hydration_amount*0.015) + (heal_factor) + (0.05*flavor_strength)
+
+	. = ..()
+
+	value = CEILING(value,0.01)
+
+	log_debug("The value of [src.type] is now [value] credits per unit.")
+
+	return .
 
 /reagent/nutrition/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -56,7 +63,7 @@
 	if(hydration_amount)
 		L.add_hydration(hydration_amount*.)
 
-	if(owner && owner.health)
+	if(heal_factor && owner && owner.health)
 		var/amount_to_heal = heal_factor*.
 
 		if(amount_to_heal > 0)

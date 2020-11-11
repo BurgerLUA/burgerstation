@@ -11,8 +11,6 @@
 
 	liquid = -0.75
 
-	value = 0.5
-
 /reagent/nutrition/junk/New(var/desired_loc)
 	nutrition_quality_amount = -nutrition_amount*0.4 //Automation!
 	return ..()

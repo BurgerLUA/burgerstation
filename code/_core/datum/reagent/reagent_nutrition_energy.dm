@@ -6,19 +6,12 @@
 	metabolism_stomach = 20/60 // Lasts a minute per 20u
 	metabolism_blood = 10/60 // Lasts a minute per 10u
 
-	value = 1.5
+	value = 1.25
 
 	var/adrenaline_strength = 100
 	var/stamina_strength = 10
 
 	heal_factor = 0
-
-/reagent/nutrition/energy/New(var/desired_loc)
-	. = ..()
-
-	value += stamina_strength*0.1 + adrenaline_strength*0.01
-
-	return .
 
 /reagent/nutrition/energy/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -38,6 +31,8 @@
 	return .
 
 /reagent/nutrition/energy/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
 
 	if(is_living(container.owner))
 		var/mob/living/L = container.owner
@@ -65,7 +60,7 @@
 	flavor = "electricity"
 
 	nutrition_amount = 10
-	hydration_amount = 10
+	hydration_amount = 5
 	nutrition_quality_amount = -10
 
 	adrenaline_strength = 200
