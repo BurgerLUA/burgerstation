@@ -17,7 +17,6 @@
 		if(IB.color) .[id]["color"] = IB.color
 		if(IB.blend) .[id]["blend"] = IB.blend
 		if(IB.special_type) .[id]["special_type"] = IB.special_type
-		//if(IB.layer) .[id]["layer"] = IB.layer Should not be saved because of the use of FLOAT_PLANE
 
 	return .
 

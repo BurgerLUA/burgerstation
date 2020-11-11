@@ -46,6 +46,7 @@
 		IM.appearance = IT.appearance
 		IM.appearance_flags |= RESET_COLOR
 		IM.pixel_y = offset_y
+		IM.plane = src.plane
 		add_overlay(IM)
 		offset_y += IT.pixel_height
 

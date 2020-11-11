@@ -35,8 +35,8 @@
 	liquid = -0.75
 
 	heated_reagent = /reagent/ash
-	heated_reagent_temp = 400
-	heated_reagent_amount = 1
+	heated_reagent_temp = 500
+	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
 /reagent/iron //Found while mining iron ore deposits

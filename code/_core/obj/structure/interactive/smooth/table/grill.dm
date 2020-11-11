@@ -19,6 +19,16 @@
 
 	bullet_block_chance = 50
 
+/obj/structure/smooth/table/grill/get_examine_details_list(var/mob/examiner)
+
+	. = ..()
+
+	for(var/k in src.contents)
+		var/atom/movable/M = k
+		. += span("notice","It contains \The [M.name].")
+
+	return .
+
 /obj/structure/smooth/table/grill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -70,20 +80,6 @@
 		src.visible_message(span("notice","The [O.name] continues to cook off the grille."))
 		O.reagents.special_temperature_mod -= (temperature_mod - (T0C + 20))
 	return ..()
-
-/obj/structure/smooth/table/grill/get_examine_details_list(var/mob/examiner)
-
-	. = ..()
-
-	for(var/obj/item/I in contents)
-		if(!I.reagents)
-			. += div("notice","It's warming up \the [I.name] nicely.")
-			continue
-
-
-
-	return .
-
 
 /obj/structure/smooth/table/grill/barbecue
 	name = "electric portable grill"

@@ -20,8 +20,13 @@
 /obj/item/container/food/dynamic/bread/click_self(var/mob/caller,location,control,params)
 
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
-		raw_icon_state = "dough_ball"
-		cooked_icon_state = "bread"
+		if(reagents.volume_current <= 10)
+			raw_icon_state = "dough_ball_small"
+			cooked_icon_state = "bun_whole"
+		else
+			raw_icon_state = "dough_ball"
+			cooked_icon_state = "bread"
+
 		caller.to_chat("You reshape \the [src.name].")
 
 	update_sprite()
@@ -87,10 +92,14 @@
 					reagents.transfer_reagents_to(B.reagents,10)
 					FINALIZE(B)
 					animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
-				update_sprite()
-				if(is_living(attacker))
-					var/mob/living/L = attacker
-					L.to_chat("You cut some small dough from the dough pile.")
+					update_sprite()
+					if(is_living(attacker))
+						var/mob/living/L = attacker
+						L.to_chat("You cut some small dough from the dough pile.")
+				else
+					if(is_living(attacker))
+						var/mob/living/L = attacker
+						L.to_chat("There isn't enough dough to cut!")
 
 		else if(icon_state == "bun_whole") //It's cooked, and a bun.
 			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
@@ -99,6 +108,7 @@
 			B.layer = layer - 0.01
 			INITIALIZE(B)
 			reagents.transfer_reagents_to(B.reagents,reagents.volume_current/2)
+			icon_state = "bun_top"
 			cooked_icon_state = "bun_top"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
@@ -106,7 +116,7 @@
 			update_sprite()
 			FINALIZE(B)
 			B.update_sprite()
-		else if(icon_state == "bread_whole")
+		else if(icon_state == "bread_whole") //It's cooked, and it's bread.
 			var/pieces = CEILING(original_volume/10, 1)
 			var/turf/T = get_turf(src)
 			for(var/i=1,i<=pieces,i++)

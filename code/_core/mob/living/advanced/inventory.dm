@@ -17,6 +17,8 @@
 		client.screen += I
 		client.known_inventory += I
 
+	return TRUE
+
 /mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
 
 	if(I.id == BODY_HAND_LEFT)
@@ -40,18 +42,24 @@
 		var/obj/hud/inventory/I = k
 		remove_inventory(I)
 
+	return TRUE
+
 
 /mob/living/advanced/proc/restore_inventory()
+
 	if(!client)
-		return
+		return FALSE
 
 	for(var/k in inventory)
 		var/obj/hud/inventory/I = k
 		client.screen += I
 
+	return TRUE
+
 
 /mob/living/advanced/proc/open_inventory(var/obj/hud/inventory/I)
 	active_inventory = I
+	return TRUE
 
 
 /mob/living/advanced/proc/drop_held_objects(var/turf/T)

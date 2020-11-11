@@ -93,10 +93,18 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	damage_received_multiplier = 0.75
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
-	. = ..()
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
 	FINALIZE(click_and_drag_icon)
+	return ..()
+
+/mob/living/advanced/player/restore_inventory()
+
+	. = ..()
+
+	if(.)
+		client.screen += click_and_drag_icon
+
 	return .
 
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
