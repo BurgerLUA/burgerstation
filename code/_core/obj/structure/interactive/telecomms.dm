@@ -75,5 +75,6 @@ var/global/list/all_telecomms = list()
 
 	add_telecomm("Burgerstation")
 	add_telecomm("Mission")
+	add_telecomm("Central Command")
 
 	return ..()

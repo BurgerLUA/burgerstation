@@ -10,4 +10,3 @@
 /ai/cat/kitten
 	roam_counter = 10
 	objective_delay = 100
-	movement_delay = 20
