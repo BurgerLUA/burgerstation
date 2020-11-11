@@ -153,14 +153,14 @@
 
 
 /obj/item/container/blood_pack/full/o_negative/
-	label = "O-"
+	name = "blood pack (O-)"
 
 /obj/item/container/blood_pack/full/o_negative/Generate()
 	reagents.add_reagent(/reagent/blood/human/o_negative,reagents.volume_max)
 	return ..()
 
 /obj/item/container/blood_pack/full/reptile/
-	label = "L"
+	name = "blood pack (L)"
 
 /obj/item/container/blood_pack/full/reptile/Generate()
 	reagents.add_reagent(/reagent/blood/reptile,reagents.volume_max)

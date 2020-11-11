@@ -51,3 +51,14 @@
 	icon_state = stored_radio.broadcasting ? "intercom_speak" : "intercom"
 
 	return TRUE
+
+/obj/structure/interactive/intercom/active/Finalize()
+	. = ..()
+	stored_radio.broadcasting = TRUE
+	return .
+
+
+/obj/structure/interactive/intercom/active/poly/Finalize()
+	. = ..()
+	stored_radio.broadcasting_range = 3
+	return .

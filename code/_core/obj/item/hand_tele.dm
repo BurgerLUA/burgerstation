@@ -94,9 +94,17 @@
 	var/turf/simulated/T = get_turf(object)
 
 	if(!istype(T))
+		caller.to_chat(span("danger","It's not safe to teleport here!"))
 		return TRUE
 
 	if(!T.is_safe_teleport())
+		caller.to_chat(span("danger","It's not safe to teleport here!"))
+		return FALSE
+
+	var/area/A = T.loc
+
+	if(A && A.flags_area & FLAGS_AREA_NO_TELEPORT)
+		caller.to_chat(span("danger","It's not safe to teleport here!"))
 		return FALSE
 
 	caller.force_move(T)

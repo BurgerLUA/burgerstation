@@ -116,6 +116,12 @@
 	name = "\improper Engineering"
 	icon_state = "eng"
 
+/area/burgerstation/engineering/ce
+	name = "\improper Chief Engineer's Office"
+	icon_state = "cmd"
+
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+
 /area/burgerstation/medical
 	name = "\improper Medical"
 	icon_state = "med"
@@ -182,4 +188,4 @@
 /area/burgerstation/pvp
 	name = "ERROR"
 	icon_state = "pvp"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT

@@ -32,6 +32,16 @@
 /proc/deunderscore(var/text)
 	return replacetextEx(text,"_"," ")
 
+/proc/remove_trailing_punctuation(var/text)
+
+	if(!text)
+		return text
+
+	var/regex/R = regex("\[!,.?\]+$")
+	text = R.Replace(text,"")
+
+	return text
+
 /proc/police_input(var/client/caller,var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
 
 	if(capitalize)
