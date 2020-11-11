@@ -212,7 +212,9 @@
 /mob/living/proc/handle_hunger()
 
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
-	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10)
+	var/quality_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
+
+	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*quality_mod)
 	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
 
 	if(client)

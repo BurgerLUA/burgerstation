@@ -28,16 +28,18 @@
 	gender = loaded_data["gender"]
 	currency = loaded_data["currency"]
 	species = loaded_data["species"]
-	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : 1000
-	hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : 1000
+	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
+	hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : initial(hydration)*0.5
+	nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
 	save_id = loaded_data["id"]
 	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 3
 	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 0
-	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood
+	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
 	if(loaded_data["dead"]) //New body!
-		nutrition = 600
-		hydration = 600
+		nutrition = initial(nutrition)*0.5
+		hydration = initial(hydration)*0.5
+		nutrition_quality = initial(nutrition_quality)
 		if(isnum(insurance))
 			var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
 			insurance -= insurance_to_pay
@@ -121,6 +123,7 @@
 	.["sex"] = sex
 	.["nutrition"] = nutrition
 	.["hydration"] = hydration
+	.["nutrition_quality"] = nutrition_quality
 	.["known_languages"] = known_languages
 	.["id"] = save_id
 	.["dead"] = died

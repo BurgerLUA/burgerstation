@@ -134,7 +134,7 @@
 	liquid = -0.25
 
 /reagent/salt
-	name = "table salt"
+	name = "ionized table salt"
 	desc = "Down here, everything is salt."
 	color = "#FFFFF4"
 	alpha = 235
@@ -144,13 +144,21 @@
 
 	liquid = -0.9
 
+/reagent/salt/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	var/mob/living/L = owner
+	L.add_hydration(.*-10)
+
+
 /reagent/salt/sodium_chloride
 	name = "sodium chloride"
 	desc = "The purest form of salt. Harvested only from the saltiest of Burgerstation players."
 	color = "#FFFFFF"
 	alpha = 255
 
-	flavor = "salt"
+	flavor = "disgusting salt"
 	flavor_strength = 10
 
 	liquid = -1

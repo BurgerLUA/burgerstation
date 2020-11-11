@@ -140,13 +140,13 @@
 /obj/structure/interactive/lighting/tube/station
 	color = COLOR_LIGHT
 	color_frame = COLOR_GREY
-	desired_light_power = 0.65
+	desired_light_power = 0.75
 	desired_light_range = VIEW_RANGE*0.6
 
 /obj/structure/interactive/lighting/tube/station/strong
-	desired_light_power = 0.7
+	desired_light_power = 0.80
 	desired_light_range = VIEW_RANGE*0.7
 
 /obj/structure/interactive/lighting/tube/station/stronger
-	desired_light_power = 0.75
+	desired_light_power = 0.85
 	desired_light_range = VIEW_RANGE*0.8

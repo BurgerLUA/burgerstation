@@ -27,6 +27,7 @@
 	color = "#D8BD6C"
 
 	nutrition_amount = 4
+	nutrition_quality_amount = -1
 
 	flavor = "raw oaty dough"
 
@@ -42,6 +43,7 @@
 	color = "#E5D4A2"
 
 	nutrition_amount = 4.5
+	nutrition_quality_amount = -2
 
 	flavor = "raw dough"
 
@@ -58,6 +60,7 @@
 	color = "#A09170"
 
 	nutrition_amount = 12
+	nutrition_quality_amount = 3
 
 	flavor = "tough bread"
 
@@ -78,6 +81,7 @@
 	color = "#A8784D"
 
 	nutrition_amount = 13
+	nutrition_quality_amount = 2
 
 	flavor = "whole grain bread"
 
@@ -91,6 +95,7 @@
 	color = "#E0AC33"
 
 	nutrition_amount = 14
+	nutrition_quality_amount = -1
 
 	flavor = "white bread"
 
@@ -105,6 +110,7 @@
 	color = "#DDBE8F"
 
 	nutrition_amount = 12
+	nutrition_quality_amount = -3
 
 	flavor = "raw dough"
 
@@ -125,6 +131,7 @@
 	color = "#BC9253"
 
 	nutrition_amount = 15
+	nutrition_quality_amount = -2
 
 	flavor = "cake"
 

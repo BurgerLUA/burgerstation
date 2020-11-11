@@ -31,9 +31,12 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
+		var/quality_mod = L.get_nutrition_quality_mod()
 		. += "Your nutrition is [L.nutrition]/[initial(L.nutrition)]."
 		. += "Your hydration is [L.hydration]/[initial(L.hydration)]."
-		. += "Your energy level is [FLOOR(100 * L.get_nutrition_mod() * L.get_hydration_mod(),1)]%."
+		. += "Your nutritional quality is [FLOOR(100*quality_mod,0.1)]%."
+		. += "Your energy level is [FLOOR(100 * L.get_nutrition_mod() * L.get_hydration_mod() * quality_mod,1)]%."
+
 
 	return .
 
@@ -63,6 +66,7 @@
 	var/thirst_mod = L.get_hydration_mod()
 	var/hunger_icon = FLOOR(clamp(visual_hunger_mod * 20,0,20),1)
 	var/thirst_icon = FLOOR(clamp(visual_thirst_mod * 20,0,20),1)
+
 
 	var/image/I_hunger = new/image(initial_icon,"hunger_bar_[hunger_icon]")
 	var/image/I_thirst = new/image(initial_icon,"thirst_bar_[thirst_icon]")

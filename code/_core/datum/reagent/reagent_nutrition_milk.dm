@@ -7,6 +7,7 @@
 
 	nutrition_amount = 8
 	hydration_amount = 8
+	nutrition_quality_amount = 1
 
 	flavor = "milk"
 
@@ -21,6 +22,7 @@
 
 	nutrition_amount = 15
 	hydration_amount = 5
+	nutrition_quality_amount = -3
 
 	flavor = "milk"
 
@@ -35,6 +37,7 @@
 	color = "#FFC237"
 
 	nutrition_amount = 20
+	nutrition_quality_amount = -6
 
 	flavor = "processed cheese"
 
@@ -50,6 +53,7 @@
 	color = "#FFE8AA"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = -3
 
 	flavor = "processed cheese"
 
@@ -63,6 +67,7 @@
 	color = "#FF9F00"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = -6
 
 	flavor = "sharp cheddar cheese"
 
@@ -77,6 +82,7 @@
 	color = "#FFFCE8"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = -3
 
 	flavor = "sweet and creamy caramel cheese"
 
@@ -92,6 +98,7 @@
 	color = "#FFF09F"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = -3
 
 	flavor = "sweet nutty cheese"
 
@@ -106,6 +113,7 @@
 	color = "#E4A300"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = -3
 
 	flavor = "sweet and salty nutty cream cheese"
 
@@ -120,6 +128,7 @@
 	color = "#704226"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = -3
 
 	flavor = "sweet fudge cheese"
 
@@ -134,6 +143,7 @@
 	color = "#78A093"
 
 	nutrition_amount = 30
+	nutrition_quality_amount = 0
 
 	flavor = "bluespace cheese"
 
@@ -148,6 +158,7 @@
 	color = "#FFD865"
 
 	nutrition_amount = 20
+	nutrition_quality_amount = -5
 
 	flavor = "butter"
 

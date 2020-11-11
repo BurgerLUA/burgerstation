@@ -5,6 +5,7 @@
 	alpha = 255
 
 	nutrition_amount = 20
+	nutrition_quality_amount = 0
 
 	flavor = "flavor"
 	flavor_strength = 10
@@ -38,6 +39,10 @@
 	heated_reagent_mul = 0.01
 
 	flags_flavor = FLAG_FLAVOR_FAT
+
+/reagent/nutrition/fat/New(var/desired_loc)
+	nutrition_quality_amount = -nutrition_amount*0.25
+	return ..()
 
 /reagent/nutrition/fat/cow
 	name = "cow's fat"
@@ -115,6 +120,9 @@
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 1
 
+/reagent/nutrition/meat/New(var/desired_loc)
+	nutrition_quality_amount = nutrition_amount*0.1
+	return ..()
 
 /reagent/nutrition/meat/cow
 	name = "raw cow's meat"

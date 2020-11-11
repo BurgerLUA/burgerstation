@@ -8,7 +8,8 @@
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
-	var/heal_factor = 1 //Per unit.
+	var/nutrition_quality_amount = 0 //Per unit
+	var/heal_factor = 2 //Per unit.
 
 	value = 1
 
@@ -21,7 +22,7 @@
 
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
-	value *= 0.1+((nutrition_amount*0.1)+(hydration_amount*0.05)+(heal_factor*2)*0.1*flavor_strength)
+	value *= 0.1+((nutrition_amount*0.07)+(hydration_amount*0.03)+(heal_factor*2)*0.1*flavor_strength)
 	return ..()
 
 
@@ -36,6 +37,8 @@
 			L.add_nutrition(nutrition_amount*.)
 		if(hydration_amount)
 			L.add_hydration(hydration_amount*.)
+		if(nutrition_quality_amount)
+			L.add_nutrition_quality(nutrition_quality_amount*.)
 
 	return .
 

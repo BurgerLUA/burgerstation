@@ -4,6 +4,7 @@
 	color = "#FFDD8F"
 
 	nutrition_amount = 7
+	nutrition_quality_amount = 2
 
 	flavor = "mushroom"
 
@@ -15,6 +16,7 @@
 	color = "#C90000"
 
 	nutrition_amount = 6
+	nutrition_quality_amount = 2
 
 	flavor = "tomato"
 
@@ -26,6 +28,7 @@
 	color = "#C90000"
 
 	nutrition_amount = 8
+	nutrition_quality_amount = 1
 
 	flavor = "pineapple"
 
@@ -37,6 +40,7 @@
 	color = "#658268"
 
 	nutrition_amount = 8
+	nutrition_quality_amount = 4
 
 	flavor = "cabbage"
 
@@ -48,6 +52,7 @@
 	color = "#658268"
 
 	nutrition_amount = 15
+	nutrition_quality_amount = 2
 
 	flavor = "coconut"
 
@@ -59,7 +64,8 @@
 	desc = "Nutrition and flavor from a nut."
 	color = "#658268"
 
-	nutrition_amount = 13
+	nutrition_amount = 12
+	nutrition_quality_amount = 2
 
 	flavor = "nut"
 
@@ -71,6 +77,7 @@
 	color = "#658268"
 
 	nutrition_amount = 20
+	nutrition_quality_amount = 0
 
 	flavor = "nut butter"
 

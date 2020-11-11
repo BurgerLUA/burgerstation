@@ -13,6 +13,10 @@
 
 	value = 0.5
 
+/reagent/nutrition/junk/New(var/desired_loc)
+	nutrition_quality_amount = -nutrition_amount*0.4 //Automation!
+	return ..()
+
 /reagent/nutrition/junk/chips
 	name = "chips"
 	desc = "Nutrition and flavor from chips."

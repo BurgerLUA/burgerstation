@@ -408,9 +408,9 @@
 	color = "#880000"
 	alpha = 225
 	flavor = "pure speed"
-	metabolism_blood = 1
+	metabolism_stomach = 5/60 // Lasts a minute per 5u
+	metabolism_blood = 10/60 // Lasts a minute per 10u
 	var/strength = 100
-	var/duration = 10 * 60 //Deciseconds, 1 Minute
 
 	value = 2
 
@@ -445,7 +445,6 @@
 	alpha = 225
 	flavor = "bandaids"
 	strength = 50
-	duration = 10 * 60 //1 minute.
 
 	value = 1.5
 

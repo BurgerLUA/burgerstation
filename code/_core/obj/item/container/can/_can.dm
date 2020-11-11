@@ -74,7 +74,7 @@
 	reagents = /reagent_container/beaker/
 
 /obj/item/container/beaker/can/grey_bull/Generate()
-	reagents.add_reagent(/reagent/nutrition/soda/grey_bull,reagents.volume_max)
+	reagents.add_reagent(/reagent/nutrition/energy/grey_bull,reagents.volume_max)
 	open = FALSE
 	return ..()
 

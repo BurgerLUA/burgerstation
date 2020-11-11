@@ -9,18 +9,19 @@
 	flavor = "ethanol"
 	flavor_strength = 3
 
-	liquid = 0.5
+	liquid = 0.75
 
-	hydration_amount = 10
+
+	//Hydration, nutrition, and nutrition_quality are generated in new.
 
 	var/power = 100 //Also known as alcohol by volume.
 
 /reagent/nutrition/ethanol/New(var/desired_loc)
-	. = ..()
-
-	value += power*0.02
-
-	return .
+	var/power_mod = power/100
+	nutrition_amount = power_mod*10
+	hydration_amount = max(0,(1-power_mod)*10)
+	nutrition_quality_amount = -nutrition_amount*0.5
+	return ..()
 
 
 /reagent/nutrition/ethanol/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)

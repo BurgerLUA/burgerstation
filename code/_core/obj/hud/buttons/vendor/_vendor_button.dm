@@ -22,9 +22,7 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/vendor/get_examine_list(var/mob/caller)
-	if(associated_item && !ispath(associated_item))
-		return associated_item.get_examine_list(caller)
-	return ..()
+	return associated_item.get_examine_list(caller)
 
 /obj/hud/button/vendor/Destroy()
 	associated_item = null
@@ -70,14 +68,13 @@
 	I4.pixel_x = 35
 	add_overlay(I4)
 
-	if(ispath(associated_item))
-		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
-		IM.color = initial(associated_item.color)
-		IM.pixel_y = 4
-		add_overlay(IM)
-	else
-		associated_item.pixel_y = 4
-		add_overlay(associated_item)
+	var/image/IM = new/image(associated_item.icon,associated_item.icon_state)
+	IM.appearance = associated_item.appearance
+	IM.pixel_x = 0
+	IM.pixel_y = 4
+	IM.pixel_z = 0
+	IM.plane = PLANE_HUD_OBJ
+	add_overlay(IM)
 
 	return .
 
@@ -85,19 +82,12 @@
 
 	. = ..()
 
-	var/desired_name
+	name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
 
-	if(!ispath(associated_item))
-		desired_name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
-	else
-		desired_name = initial(associated_item.vendor_name) ? initial(associated_item.vendor_name) : associated_item.name
-
-	maptext = desired_name
+	maptext = name
 	maptext_width = 96*2
 	maptext_x = 2
 	maptext_y = 2
-
-	name = desired_name
 
 	return .
 

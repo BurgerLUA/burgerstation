@@ -75,3 +75,20 @@
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
+
+
+/obj/marker/spawning/random
+	var/list/possible_objects = list()
+
+
+/obj/marker/spawning/random/do_spawn(var/turf/T)
+	var/atom/movable/M = pickweight(possible_objects)
+	M = new M(T)
+	LATE_INIT(M)
+
+/obj/marker/spawning/random/object_of_interest
+	possible_objects = list(
+		/obj/structure/interactive/vending/random = 1,
+		/obj/structure/interactive/vending/old_ammo = 1,
+		/obj/item/storage/heavy/trash_pile = 1
+	)

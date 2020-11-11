@@ -56,6 +56,14 @@ var/global/list/all_telecomms = list()
 	name = "station telecomms system"
 
 /obj/structure/interactive/telecomms/station/Initialize()
+
+	if(!all_telecomms["Burgerstation"])
+		all_telecomms["Burgerstation"] = list()
+
+	if(!all_telecomms["Mission"])
+		all_telecomms["Mission"] = list()
+
 	all_telecomms["Burgerstation"] += src
 	all_telecomms["Mission"] += src
+
 	return ..()

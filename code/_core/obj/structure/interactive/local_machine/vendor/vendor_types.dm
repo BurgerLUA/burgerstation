@@ -1,34 +1,3 @@
-/obj/structure/interactive/vending/ammo
-	name = "ammo vendor"
-	icon_state = "liberationstation"
-
-/obj/structure/interactive/vending/ammo/pistol
-	name = "pistol ammo vendor"
-	stored_types = list(
-		/obj/item/magazine/gyrojet,
-		/obj/item/magazine/smp_9mm,
-		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_9mm,
-	)
-
-/obj/structure/interactive/vending/ammo/auto
-	name = "smg, rifle ammo vendor"
-	stored_types = list(
-		/obj/item/magazine/sniper_762,
-		/obj/item/magazine/lmg_762,
-		/obj/item/magazine/rifle_556,
-		/obj/item/magazine/smg_46
-	)
-
-/obj/structure/interactive/vending/ammo/shotgun
-	name = "shotgun ammo vendor"
-	stored_types = list(
-		/obj/item/bullet_cartridge/shotgun_12/buckshot,
-		/obj/item/bullet_cartridge/shotgun_12/slug,
-		/obj/item/storage/ammo/buckshot,
-		/obj/item/storage/ammo/slug
-	)
 
 /obj/structure/interactive/vending/clothes
 	name = "clothes vendor"

@@ -10,6 +10,8 @@
 	liquid = 0.5
 
 	hydration_amount = 25
+	nutrition_quality_amount = 3
+	heal_factor = 0
 
 	cooled_reagent_temp = T0C - 1
 	cooled_reagent_amount = 1
@@ -45,6 +47,8 @@
 	liquid = -0.5
 
 	hydration_amount = 25
+	nutrition_quality_amount = 3
+	heal_factor = 0
 
 	heated_reagent_temp = T0C + 1
 	heated_reagent_amount = 0.25
@@ -59,10 +63,13 @@
 	color = "#DDFFFF"
 	alpha = 225
 
-	nutrition_amount = 3
+	nutrition_amount = 5
 	hydration_amount = 15
+	nutrition_quality_amount = -3
 
 	flavor = "white noise"
+
+	heal_factor = 0
 
 	liquid = 0.7
 
@@ -92,14 +99,11 @@
 	desc = "Secure that refreshing flavor!"
 	color = "#A55C2B"
 
+	nutrition_amount = 2
+	hydration_amount = 15
+	nutrition_quality_amount = -2
+
 	flavor = "iced tea"
-
-/reagent/nutrition/soda/grey_bull
-	name = "\improper Grey Bull"
-	desc = "Grey Bull gives you gloves!"
-	color = "#F2C12E"
-
-	flavor = "electricity"
 
 /reagent/nutrition/soda/mountain_wind
 	name = "\improper Space Mountain Wind"

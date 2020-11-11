@@ -71,7 +71,7 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	if(survival_skill >= 50)
 		. += div("notice","Encumbrance: [weight]/[weight_max].")
-		var/slowdown = (slowdown_mul*100) - 100
+		var/slowdown = FLOOR((slowdown_mul - 1) * 100,0.1)
 		if(slowdown == 0)
 			. += div("green","Equipment Move Penalty: [slowdown]%.")
 		else if(slowdown > 0)
