@@ -57,8 +57,14 @@ var/global/world_state = STATE_STARTING
 
 /world/Error(var/exception/e)
 	log_error("[e.name] in [e.file]:[e.line].\n[e.desc]")
-	return TRUE
 
+	for(var/k in all_runtimes)
+		var/mob/living/simple/npc/cat/runtime/R = k
+		if(!R || R.qdeleting)
+			continue
+		R.reproduce()
+
+	return TRUE
 
 /world/Del()
 	SSdiscord.send_message("Shutting down world...")

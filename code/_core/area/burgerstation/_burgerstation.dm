@@ -119,12 +119,16 @@
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
 	icon_state = "cmd"
-
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 
 /area/burgerstation/medical
 	name = "\improper Medical"
 	icon_state = "med"
+
+/area/burgerstation/medical/cmo
+	name = "\improper Chief Medical Officer's Office"
+	icon_state = "cmd"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 
 /area/burgerstation/medical/chemistry
 	name = "\improper Chemistry"

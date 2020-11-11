@@ -22,7 +22,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/radio_sound = 'sound/items/radio.ogg'
 
-	var/broadcasting_range = VIEW_RANGE
+	var/broadcasting_range = 5
 
 	listener = TRUE
 

@@ -17,7 +17,7 @@
 	var/sitting = FALSE
 
 /mob/living/simple/npc/parrot/Finalize()
-	update_sprite()
+	post_move(src.loc)
 	return ..()
 
 /mob/living/simple/npc/parrot/post_move(var/atom/old_loc)
@@ -56,7 +56,7 @@
 
 /mob/living/simple/npc/parrot/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
 
-	if(!CALLBACK_EXISTS("\ref[src]_parrot") && length(text) <= 30 && prob(10) && speaker != src)
+	if(!CALLBACK_EXISTS("\ref[src]_parrot") && length(text) <= 30 && prob(5) && speaker != src)
 		text = remove_trailing_punctuation(text)
 		if(length(text))
 			CALLBACK("\ref[src]_parrot",rand(30,100),src,.proc/do_say,"SQUAWK! [uppertext(text)]! SQUAWK!")

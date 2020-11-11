@@ -8,12 +8,34 @@ var/global/list/all_telecomms = list()
 
 	var/list/queued_data = list()
 
+	var/list/broadcasting_areas = list()
 
 /obj/structure/interactive/telecomms/Destroy()
-	var/area/A = get_area(src)
-	if(all_telecomms[A.area_identifier])
-		all_telecomms[A.area_identifier] -= src
-	return ..()
+
+	for(var/k in broadcasting_areas)
+		remove_telecomm(k)
+
+/obj/structure/interactive/telecomms/proc/add_telecomm(var/area_identifier)
+
+	if(!all_telecomms[area_identifier])
+		all_telecomms[area_identifier] = list()
+
+	all_telecomms[area_identifier] |= src
+	broadcasting_areas[area_identifier] = TRUE
+
+	return TRUE
+
+/obj/structure/interactive/telecomms/proc/remove_telecomm(var/area_identifier)
+
+	if(!all_telecomms[area_identifier])
+		all_telecomms[area_identifier] = list()
+		return TRUE
+
+	all_telecomms[area_identifier] -= src
+	broadcasting_areas -= area_identifier
+
+	return TRUE
+
 
 /obj/structure/interactive/telecomms/proc/add_data(var/data_identifier,var/list/data_to_add)
 	ASSERT(data_identifier)
@@ -25,29 +47,23 @@ var/global/list/all_telecomms = list()
 /obj/structure/interactive/telecomms/proc/process_all_data()
 	for(var/id in queued_data)
 		var/v = queued_data[id]
-		process_data(v)
+		if(!process_data(v))
+			log_error("Warning! [src.get_debug_name()] couldn't be processed! Breaking!")
+			break
 	queued_data.Cut()
 	return TRUE
-
-/*
-	var/list/radio_data = list(
-		"speaker" = speaker,
-		"source" = source,
-		"text_to_say" = text_to_say,
-		"text_type" = text_type,
-		"frequency" = frequency,
-		"language" = language
-	)
-*/
-
 
 /obj/structure/interactive/telecomms/proc/process_data(var/list/data_to_process = list())
 
 	for(var/k in all_radios)
+		CHECK_TICK(50,FPS_SERVER*3)
 		var/obj/item/device/radio/R = k
+		if(!R || R.qdeleting)
+			continue
+		var/area/A = get_area(R)
+		if(!A.area_identifier || !broadcasting_areas[A.area_identifier])
+			continue
 		use_ears(data_to_process["speaker"],R,data_to_process["text_to_say"],data_to_process["text_type"],data_to_process["frequency"],data_to_process["language"],R.broadcasting_range)
-
-
 
 	return TRUE
 
@@ -57,13 +73,7 @@ var/global/list/all_telecomms = list()
 
 /obj/structure/interactive/telecomms/station/Initialize()
 
-	if(!all_telecomms["Burgerstation"])
-		all_telecomms["Burgerstation"] = list()
-
-	if(!all_telecomms["Mission"])
-		all_telecomms["Mission"] = list()
-
-	all_telecomms["Burgerstation"] += src
-	all_telecomms["Mission"] += src
+	add_telecomm("Burgerstation")
+	add_telecomm("Mission")
 
 	return ..()
