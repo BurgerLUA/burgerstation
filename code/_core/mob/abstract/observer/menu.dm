@@ -18,7 +18,7 @@
 
 	invisibility = INVISIBILITY_ALWAYS
 
-/mob/abstract/observer/menu/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
+/mob/abstract/observer/menu/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE)
 	return FALSE
 
 /mob/abstract/observer/menu/think()

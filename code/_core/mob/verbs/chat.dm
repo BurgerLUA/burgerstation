@@ -32,7 +32,7 @@
 	if(client && !check_spam(client))
 		return FALSE
 
-	do_say(text_to_say,talk_type_to_use = TEXT_WHISPER)
+	do_say(text_to_say,talk_range = WHISPER_RANGE)
 
 /mob/verb/looc(var/text_to_say as text)
 

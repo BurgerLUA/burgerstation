@@ -9,11 +9,17 @@ SUBSYSTEM_DEF(radio)
 
 /subsystem/radio/on_life()
 
+	var/list/queued_telecomms = list()
+
 	for(var/area_id in all_telecomms)
 		var/list/area_list = all_telecomms[area_id]
 		for(var/k in area_list)
 			var/obj/structure/interactive/telecomms/TC = k
-			TC.process_all_data()
+			queued_telecomms |= TC
+
+	for(var/k in queued_telecomms)
+		var/obj/structure/interactive/telecomms/TC = k
+		TC.process_all_data()
 
 	return TRUE
 

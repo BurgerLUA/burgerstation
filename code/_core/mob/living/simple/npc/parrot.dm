@@ -54,7 +54,7 @@
 
 	return ..()
 
-/mob/living/simple/npc/parrot/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+/mob/living/simple/npc/parrot/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency,var/language =LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	if(!CALLBACK_EXISTS("\ref[src]_parrot") && length(text) <= 30 && prob(5) && speaker != src)
 		text = remove_trailing_punctuation(text)
@@ -74,10 +74,3 @@
 /mob/living/simple/npc/parrot/poly/setup_name()
 	name = initial(name)
 	return TRUE
-
-/*
-/mob/living/simple/npc/parrot/poly/on_listen(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
-
-
-	return TRUE
-*/

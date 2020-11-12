@@ -113,85 +113,12 @@ list(
 			loc.trigger(caller,src,signal_freq,signal_code)
 			return TRUE
 
-/*
-/obj/item/device/radio/proc/send_data(var/list/data = list())
-
-	if(!length(data))
-		return FALSE
-
-	if(!data["frequency"])
-		data["frequency"] = frequency
-
-	var/speaker_ref = is_atom(data["speaker"]) ? "/ref[data["speaker"]]" : null
-
-	if(speaker_ref && SSradio.unprocessed_radio_data[speaker_ref])
-		return FALSE
-
-	var/turf/T = get_turf(src)
-	var/area/A = T.loc
-	if(!A)
-		log_error("WARNING: [get_debug_name()] wasn't in a valid area!")
-		return FALSE
-	if(A.flags_comms & FLAG_COMM_DISABLED)
-		return FALSE
-	if(A.flags_comms & FLAG_COMM_SCRAMBLED)
-		data["message"] = scramble(data["message"])
-		data["message_language"] = scramble(data["message_language"])
-
-	SSradio.unprocessed_radio_data[speaker_ref] = data
-
-	play(radio_sound,src)
-
-	return TRUE
-*/
-/*
-/obj/item/device/radio/proc/receive_data(var/list/data = list())
-
-	if(!data || !length(data))
-		return FALSE
-
-	if(!length(listening_frequencies))
-		return FALSE
-
-	var/data_frequency = data["frequency"]
-
-	if(data_frequency != frequency && !(data_frequency in listening_frequencies))
-		return FALSE
-
-	var/turf/T = get_turf(src)
-	var/area/A = T.loc
-	if(!A)
-		log_error("WARNING: [get_debug_name()] wasn't in a valid area!")
-		return FALSE
-
-	if(A.flags_comms & FLAG_COMM_DISABLED)
-		return FALSE
-
-	if(A.flags_comms & FLAG_COMM_SCRAMBLED)
-		data["message"] = scramble(data["message"])
-		data["message_language"] = scramble(data["message_language"])
-
-	for(var/k in all_listeners)
-		var/atom/A2 = k
-		CHECK_TICK(50,FPS_SERVER)
-		if(!within_range(A2,T,broadcasting_range))
-			continue
-		A.on_listen(data["speaker"],src,data["message"],TEXT_RADIO,data["frequency"],data["language"])
-		if(ismob(k))
-			var/mob/M = k
-			if(!M.client)
-				continue
-			M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
-
-	return TRUE
-*/
-
-/obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+/obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals.
 		return FALSE
 	if(!broadcasting && !(frequency > 0)) //Dumb logic here, but it catches null as well as null (greater,less,equal) 0 is always 0.
 		return FALSE
-	use_radio(speaker,source,text,TEXT_RADIO,src.frequency,language)
+	use_radio(speaker,source,text,TEXT_RADIO,src.frequency,language,talk_range)
 	return ..()
 
 

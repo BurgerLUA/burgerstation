@@ -1,15 +1,14 @@
-#define TEXT_WHISPER 0
-#define TEXT_TALK 1
-#define TEXT_YELL 2
-#define TEXT_LOOC 3
-#define TEXT_OOC 4
-#define TEXT_GHOST 5
-#define TEXT_BOT 6
-#define TEXT_RADIO 7
-#define TEXT_PM 8
-#define TEXT_PM_ADMIN_IN 9
-#define TEXT_PM_ADMIN_OUT 10
-#define TEXT_RAW 11
+//THIS IS FOR INPUTS
+#define TEXT_TALK "talk"
+#define TEXT_LOOC "looc"
+#define TEXT_OOC "ooc"
+#define TEXT_GHOST "ghost"
+#define TEXT_BOT "bot"
+#define TEXT_RADIO "radio"
+#define TEXT_PM "pm"
+#define TEXT_PM_ADMIN_IN "admin_in"
+#define TEXT_PM_ADMIN_OUT "admin_out"
+#define TEXT_RAW "raw"
 
 #define CHAT_TYPE_SAY 0x1
 #define CHAT_TYPE_OOC 0x2

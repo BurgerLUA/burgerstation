@@ -45,7 +45,7 @@
 	if(loc && is_advanced(loc))
 		var/mob/living/advanced/A = loc
 		A.to_chat(span("notice","Your death alarm goes off..."))
-		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_COMMON)
+		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_COMMON,talk_range = YELL_RANGE)
 		return TRUE
 
 	return FALSE

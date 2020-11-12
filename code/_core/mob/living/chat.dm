@@ -1,7 +1,7 @@
-/mob/living/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
+/mob/living/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE)
 
 	if(dead)
-		return ..(text_to_say,should_sanitize,TEXT_GHOST)
+		return ..(text_to_say,should_sanitize,TEXT_GHOST,talk_range)
 
 	start_typing()
 

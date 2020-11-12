@@ -38,7 +38,7 @@ body {
 }
 .emote{
 	color: black;
-	font-weight:bold;
+	font-weight: bold;
 	font-style: italic;
 }
 .subsystem{
@@ -52,6 +52,12 @@ body {
 }
 .danger{
 	color: red;
+	font-weight: bold;
+}
+.whisper{
+	font-style: italic;
+}
+.yell{
 	font-weight: bold;
 }
 .thought{

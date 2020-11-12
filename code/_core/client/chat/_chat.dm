@@ -1,17 +1,9 @@
-/*
-/proc/broadcast(var/text_to_say as text, var/text_type = TEXT_OOC)
-	for(var/mob/object in world)
-		object.to_chat(text_to_say)
-*/
-
-/proc/broadcast_to_clients(var/text_to_say as text, var/text_type = TEXT_OOC)
+/proc/broadcast_to_clients(var/text_to_say as text, var/chat_type = CHAT_TYPE_OOC)
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
-		C.to_chat(text_to_say,text_type)
+		C.to_chat(text_to_say,chat_type)
 
-
-
-/proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
+/proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	var/list/radio_data = list(
 		"speaker" = speaker,
@@ -19,7 +11,8 @@
 		"text_to_say" = text_to_say,
 		"text_type" = text_type,
 		"frequency" = frequency,
-		"language" = language
+		"language" = language,
+		"talk_range" = talk_range
 	)
 
 	var/area/A = get_area(source)
@@ -32,21 +25,23 @@
 
 	return TRUE
 
-/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/distance=VIEW_RANGE)
+/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	var/turf/T1 = get_turf(source)
 
 	for(var/k in all_listeners)
+		CHECK_TICK(75,FPS_SERVER)
 		var/atom/A = k
 		var/turf/T2 = get_turf(A)
-		if(!within_range(T1,T2,distance))
+		if(!within_range(T1,T2,talk_range))
 			continue
-		A.on_listen(speaker,source,text_to_say,text_type,frequency,language)
+		A.on_listen(speaker,source,text_to_say,text_type,frequency,language,talk_range)
+
 
 	return TRUE
 
 
-/proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
+/proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE) //Range only applies to TALK and RADIO
 
 	if(!text_to_say)
 		return FALSE
@@ -56,19 +51,16 @@
 	switch(text_type)
 		if(TEXT_RADIO) //Snowflake code.
 			for(var/k in all_radios)
+				CHECK_TICK(75,FPS_SERVER)
 				var/obj/item/device/radio/R = k
 				var/turf/T = get_turf(R)
 				if(T == source_turf)
-					R.on_listen(speaker,source,text_to_say,TEXT_TALK,R.frequency,language)
+					R.on_listen(speaker,source,text_to_say,TEXT_TALK,R.frequency,language,talk_range)
 					break
-		if(TEXT_WHISPER)
-			use_ears(speaker,source,text_to_say,text_type,frequency,language,WHISPER_RANGE)
 		if(TEXT_TALK)
-			use_ears(speaker,source,text_to_say,text_type,frequency,language,TALK_RANGE)
-		if(TEXT_YELL)
-			use_ears(speaker,source,text_to_say,text_type,frequency,language,YELL_RANGE)
+			use_ears(speaker,source,text_to_say,text_type,frequency,language,talk_range)
 		if(TEXT_LOOC)
-			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
+			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_mobs_with_clients)
 				var/mob/M  = k
 				CHECK_TICK(75,FPS_SERVER)
@@ -76,7 +68,7 @@
 					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 			if(speaker.is_player_controlled()) log_chat("LOOC: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_OOC)
-			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
+			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_clients)
 				CHECK_TICK(75,FPS_SERVER)
 				var/client/C = all_clients[k]
@@ -87,7 +79,7 @@
 				SSwikibot.process_string(source,text_to_say)
 			if(speaker.is_player_controlled()) log_chat("OOC: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_GHOST)
-			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
+			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_clients)
 				CHECK_TICK(75,FPS_SERVER)
 				var/client/C = all_clients[k]
@@ -102,7 +94,7 @@
 				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
 			if(speaker.is_player_controlled()) log_chat("GHOST: [speaker.get_log_name()]: [text_to_say]")
 
-	if(language == LANGUAGE_BASIC && (text_type == TEXT_TALK || text_type == TEXT_YELL))
+	if(language == LANGUAGE_BASIC && text_type == TEXT_TALK)
 		var/area/A = get_area(source)
 		if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
 			new/obj/effect/chat_text(source,text_to_say)

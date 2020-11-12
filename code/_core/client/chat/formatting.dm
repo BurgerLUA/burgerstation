@@ -4,16 +4,17 @@ var/global/icon/chat_language = new('icons/hud/language.dmi')
 var/global/icon/chat_toolbox = new('icons/hud/chat_toolbox_old.dmi')
 
 
-proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency,var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	var/html = "ERROR"
 	switch(talk_type)
-		if(TEXT_WHISPER)
-			html = "<i>[format_speaker(speaker,source, language = language)] whispers, &#34;[span("whisper",text)]&#34;</i>"
 		if(TEXT_TALK)
-			html = "[format_speaker(speaker,source, language = language)] says, &#34;[span("say",text)]&#34;"
-		if(TEXT_YELL)
-			html = "[format_speaker(speaker,source, language = language)] yells, <b>&#34;[span("yell",text)]&#34;</b>"
+			if(talk_range >= YELL_RANGE)
+				html = "[format_speaker(speaker,source, language = language)] yells, &#34;[span("yell",text)]&#34;"
+			else if(talk_range <= WHISPER_RANGE)
+				html = "<i>[format_speaker(speaker,source, language = language)] whispers, &#34;[span("whisper",text)]&#34;</i>"
+			else
+				html = "[format_speaker(speaker,source, language = language)] says, &#34;[span("say",text)]&#34;"
 		if(TEXT_LOOC)
 			html = "[format_speaker(speaker,source,"LOOC", language = language)]: [span("looc",text)]"
 		if(TEXT_OOC)
@@ -25,7 +26,12 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		if(TEXT_RADIO)
 			ASSERT(frequency)
 			var/radio_class = "radio_[lowertext(frequency_to_name(frequency))]"
-			html = span(radio_class,"[format_speaker(speaker,source,null,frequency,language)] says, &#34;[span("say",text)]&#34;")
+			if(talk_range >= YELL_RANGE)
+				html = span(radio_class,"[format_speaker(speaker,source,null,frequency,language)] yells, &#34;[span("yell",text)]&#34;")
+			else if(talk_range <= WHISPER_RANGE)
+				html = span(radio_class,"[format_speaker(speaker,source,null,frequency,language)] whispers, &#34;[span("whisper",text)]&#34;")
+			else
+				html = span(radio_class,"[format_speaker(speaker,source,null,frequency,language)] says, &#34;[span("say",text)]&#34;")
 		if(TEXT_PM)
 			html = "[format_speaker(speaker,source,"PM_OTHER", language = language)]: [span("pm_other",text)]"
 		if(TEXT_PM_ADMIN_IN)
