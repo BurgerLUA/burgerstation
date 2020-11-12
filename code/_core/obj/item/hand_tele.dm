@@ -26,6 +26,16 @@
 
 	return ..()
 
+/obj/item/hand_teleporter/Finalize()
+
+	. = ..()
+
+	if(!istype(battery))
+		battery = null
+
+	return .
+
+
 /obj/item/hand_teleporter/update_icon()
 
 	icon_state = initial(icon_state)
@@ -87,6 +97,11 @@
 /obj/item/hand_teleporter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	var/obj/item/powercell/PC = get_battery()
+
+	if(ispath(PC))
+		caller.to_chat(span("danger","Warning: This item is bugged. Tell burger how you obtained this item."))
+		return FALSE
+
 	if(!PC || PC.charge_current < teleport_cost)
 		caller.to_chat(span("warning","\The [src.name] beeps, indicating a lack of charge!"))
 		return FALSE

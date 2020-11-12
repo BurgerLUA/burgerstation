@@ -124,7 +124,7 @@
 		/mob/living/simple/npc/herald = 1,
 		/mob/living/simple/npc/goliath/broodmother = 1
 	)
-	hidden = TRUE
+	hidden = FALSE
 
 	spawn_on_markers = FALSE
 
@@ -134,7 +134,6 @@
 
 /gamemode/horde/boss_rush/get_wave_size()
 	return 1
-
 
 /gamemode/horde/boss_rush/create_horde_mob(var/desired_loc)
 	var/mob/living/L = ..()

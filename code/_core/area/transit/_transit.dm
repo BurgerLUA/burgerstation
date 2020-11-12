@@ -15,7 +15,7 @@ var/global/list/area/transit/transit_areas = list()
 
 /area/transit/cargo/ship
 	name = "cargo shuttle"
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 /area/transit/cargo/bluespace
 	name = "cargo shuttle"
@@ -29,7 +29,7 @@ var/global/list/area/transit/transit_areas = list()
 
 /area/transit/cargo_inbound/ship
 	name = "cargo shuttle"
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 
 /area/transit/cargo_inbound/bluespace

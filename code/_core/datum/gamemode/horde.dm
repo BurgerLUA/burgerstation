@@ -13,7 +13,7 @@
 	hidden = TRUE
 
 	var/enemies_to_spawn_base = 4
-	var/enemies_to_spawn_per_player = 1
+	var/enemies_to_spawn_per_player = 0.5
 	var/enemies_to_spawn_per_minute = 0.1
 
 	var/next_spawn_check = 0
@@ -223,8 +223,6 @@
 	handle_alert_level()
 
 	var/wave_to_spawn = get_enemies_to_spawn() - length(tracked_enemies)
-
-	log_debug("Trying to spawn [wave_to_spawn] enemies.")
 
 	var/wave_we_want_to_spawn = get_wave_size()
 

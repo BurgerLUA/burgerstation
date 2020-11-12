@@ -10,7 +10,7 @@
 	area_identifier = "Mission"
 
 /area/transit/dropship/alpha/station
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 
 /area/transit/dropship/bravo/bluespace
@@ -22,7 +22,7 @@
 	area_identifier = "Mission"
 
 /area/transit/dropship/bravo/station
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 
 /area/transit/dropship/charlie/bluespace
@@ -34,7 +34,7 @@
 	area_identifier = "Mission"
 
 /area/transit/dropship/charlie/station
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 
 /area/transit/dropship/delta/bluespace
@@ -46,7 +46,7 @@
 	area_identifier = "Mission"
 
 /area/transit/dropship/delta/station
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 
 /area/transit/dropship/golf/bluespace
@@ -58,7 +58,7 @@
 	area_identifier = "Mission"
 
 /area/transit/dropship/golf/station
-	area_identifier = "Station"
+	area_identifier = "Burgerstation"
 
 
 
