@@ -53,8 +53,8 @@
 		FIRE = TRUE
 	)
 
-	iff_tag = "colossus"
-	loyalty_tag = "colossus"
+	iff_tag = "Colossus"
+	loyalty_tag = "Colossus"
 
 	fatigue_from_block_mul = 0
 

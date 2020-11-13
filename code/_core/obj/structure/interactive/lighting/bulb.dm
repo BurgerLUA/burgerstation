@@ -6,8 +6,8 @@
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "bulb_light"
 
-	desired_light_power = 0.4
-	desired_light_range = 4
+	desired_light_power = 0.5
+	desired_light_range = 5
 	desired_light_color = null //Set in update_icon
 	desired_light_angle = LIGHT_OMNI
 
