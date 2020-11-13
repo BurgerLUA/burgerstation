@@ -6,8 +6,9 @@
 		/obj/item/clothing/pants/syndicate,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
 		/obj/item/weapon/melee/energy/sword/green,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/magazine/pistol_10mm,
@@ -30,7 +31,6 @@
 		/obj/item/clothing/head/helmet/security/tactical/advanced,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/overwear/armor/molded_armor/security,
-		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/weapon/melee/energy/sword/green,
@@ -54,6 +54,7 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
 		/obj/item/weapon/melee/energy/sword/green,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
@@ -98,13 +99,12 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
-		/obj/item/clothing/back/storage/satchel,
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/single/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
 		/obj/item/magazine/lmg_223,
-		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/weapon/melee/energy/sword/red
+		/obj/item/magazine/lmg_223,
+		/obj/item/clothing/belt/storage/colored/black
 	)
 
 /loadout/syndicate/player_antagonist

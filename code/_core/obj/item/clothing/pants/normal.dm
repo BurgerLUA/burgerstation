@@ -145,3 +145,13 @@
 		"pants" = COLOR_GREY,
 		"stripes" = COLOR_JANITOR
 	)
+
+/obj/item/clothing/pants/normal/space_cop
+	name = "space cop pants"
+	desc = "Stripes improve everything."
+	desc_extended = "The pants of choice for space cops."
+	polymorphs = list(
+		"pants" = "#313E37",
+		"stripes" = "#222F28"
+	)
+

@@ -88,3 +88,24 @@
 		return FALSE
 
 	return ..()
+
+
+
+/obj/structure/interactive/scanner/cop
+	name = "cop scanner"
+	desc = "Don't block the doors!"
+	desc_extended = "A general proximity scanner that detects whether or not a person is a cop"
+	icon_state = "door"
+
+	plane = PLANE_OBJ
+
+/obj/structure/interactive/scanner/cop/Cross/(var/atom/movable/M)
+
+	if(!is_living(M))
+		return FALSE
+
+	var/mob/living/L = M
+	if(L.loyalty_tag != "Space Cop")
+		return FALSE
+
+	return ..()

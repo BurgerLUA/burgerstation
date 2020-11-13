@@ -4,12 +4,11 @@
 	roaming_distance = 0
 	resist_handcuffs = FALSE
 
-/ai/advanced/hostage/is_enemy(var/atom/A)
+/ai/advanced/hostage/is_enemy(var/atom/A,var/safety_check=TRUE)
 	if(!is_living(A))
 		return FALSE
 	var/mob/living/L = A
 	return L.ai && L.ai.objective_attack == owner
-
 
 /ai/advanced/hostage/set_path(var/list/Vector3D/desired_path = list())
 

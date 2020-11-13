@@ -11,7 +11,7 @@
 			continue
 		if(visual && !AI.owner.is_facing(epicenter))
 			continue
-		if(alert_source && !AI.is_enemy(alert_source))
+		if(alert_source && !AI.is_enemy(alert_source,FALSE))
 			continue
 		if(!within_range(AI.owner,epicenter,VIEW_RANGE))
 			continue

@@ -8,7 +8,6 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton = TRUE
 	)

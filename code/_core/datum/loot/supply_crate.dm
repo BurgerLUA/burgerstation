@@ -32,7 +32,6 @@
 		/loot/weapon/big_game_revolver = 10,
 		/loot/weapon/assault_rifle = 10,
 		/loot/weapon/grenade = 10,
-		/loot/weapon/civil_defense_pistol = 10,
 		/loot/weapon/civilian_carbine = 10,
 		/loot/weapon/tungsten = 10,
 		/loot/weapon/commander_revolver = 10,

@@ -122,6 +122,8 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 			caller.to_chat("ERROR: Shuttle already in transit.")
 	return TRUE
 
+var/global/list/obj/structure/interactive/computer/console/remote_flight/all_remote_flight_consoles = list()
+
 /obj/structure/interactive/computer/console/remote_flight
 	name = "remote flight control console"
 	computer_type = "syndishuttle"
@@ -131,6 +133,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 /obj/structure/interactive/computer/console/remote_flight/Finalize()
 	desired_shuttle_controller = locate(desired_shuttle_controller) in world
+	all_remote_flight_consoles += src
 	return ..()
 
 /obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

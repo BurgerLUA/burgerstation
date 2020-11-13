@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(events)
 	return ..()
 
 /subsystem/events/proc/process_event(var/event/E)
-	if(E.end_time <= world.time)
+	if(E.end_time != -1 && E.end_time <= world.time)
 		E.on_end()
 		E.active = FALSE
 		all_events_active -= E
@@ -79,11 +79,14 @@ SUBSYSTEM_DEF(events)
 		all_events_active += E
 		E.active = TRUE
 		E.start_time = world.time
-		E.end_time = world.time + E.duration
-		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900)) + E.duration
+		if(E.duration == -1)
+			E.end_time = -1
+		else
+			E.end_time = world.time + E.duration
 	else
 		E.on_end()
-		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
+
+	next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
 
 	E.occurances_current++
 

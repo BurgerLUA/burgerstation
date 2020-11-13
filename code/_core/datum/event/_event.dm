@@ -4,7 +4,7 @@
 	var/active = FALSE
 
 	var/probability = 0 //Relative probability of this event occuring.
-	var/duration = 0 //How long does this event process for, in deciseconds.
+	var/duration = 0 //How long does this event process for, in deciseconds. Set to -1 to make it end when it wants to end.
 
 	var/start_time = 0
 	var/end_time = 0
@@ -13,6 +13,10 @@
 
 	var/occurances_current = 0
 	var/occurances_max = 3
+
+/event/proc/force_end()
+	end_time = 0
+	return TRUE
 
 /event/proc/on_start()
 	lifetime = 0

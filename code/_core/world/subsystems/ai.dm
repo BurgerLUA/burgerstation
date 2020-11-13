@@ -9,8 +9,6 @@ SUBSYSTEM_DEF(ai)
 	var/list/active_ai = list()
 	var/list/inactive_ai = list()
 
-	var/turf/list/stuck_turfs = list() //List of turfs that the AI keeps getting stuck on.
-
 	use_time_dialation = FALSE
 
 /subsystem/ai/unclog(var/mob/caller)

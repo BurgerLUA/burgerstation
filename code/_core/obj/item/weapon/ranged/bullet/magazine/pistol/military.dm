@@ -94,6 +94,8 @@
 
 	attachment_whitelist = list()
 
+	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread()
 	return 0
 

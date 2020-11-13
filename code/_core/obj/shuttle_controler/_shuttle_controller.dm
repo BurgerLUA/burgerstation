@@ -1,11 +1,3 @@
-#define SHUTTLE_STATUS_NONE "none"
-
-#define SHUTTLE_STATE_LAUNCHING "launching" //We're going to launch.
-#define SHUTTLE_STATE_TRANSIT "transit" //We're currently in transit.
-#define SHUTTLE_STATE_LANDING "landing" //We're currently landing.
-#define SHUTTLE_STATE_LANDED "landed" //We have landed.
-#define SHUTTLE_STATE_WAITING "waiting" //We have enough people to launch, now we wait just for more, just in case.
-
 var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller
@@ -100,7 +92,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/area/A = get_area(src)
 	if(!desired_transit_time) desired_transit_time = default_transit_time
-	transit_time = max(10,desired_transit_time)
+	transit_time = max(1,desired_transit_time)
 	if(A.type == transit_start)
 		transit_target = transit_end
 		transit_source = transit_start
