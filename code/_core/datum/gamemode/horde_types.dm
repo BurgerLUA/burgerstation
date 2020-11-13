@@ -124,7 +124,7 @@
 		/mob/living/simple/npc/herald = 1,
 		/mob/living/simple/npc/goliath/broodmother = 1
 	)
-	hidden = FALSE
+	hidden = TRUE
 
 	spawn_on_markers = FALSE
 
