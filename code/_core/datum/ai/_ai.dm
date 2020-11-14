@@ -268,7 +268,7 @@
 
 	return TRUE
 
-/ai/proc/handle_movement_checks()
+/ai/proc/handle_movement_checks() //Stops crowding/stacking.
 
 	var/turf/T
 
@@ -280,7 +280,11 @@
 	for(var/mob/living/L in T.contents)
 		if(L == owner)
 			continue
-		if(owner.move_dir && !L.move_dir)
+		if(L.dead)
+			continue
+		if(!owner.move_dir && !L.move_dir)
+			owner.move_dir = pick(DIRECTIONS_ALL)
+		else if(owner.move_dir && !L.move_dir)
 			owner.move_dir = 0x0
 		else
 			owner.move_dir = turn(owner.move_dir,pick(-90,90))

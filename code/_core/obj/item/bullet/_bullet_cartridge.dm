@@ -116,10 +116,11 @@
 
 	return .
 
-/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller)
+/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
 
 	if(!is_spent)
-		if(misfire_chance && luck(list(caller,src,loc),misfire_chance,FALSE))
+		var/total_misfire_chance = bonus_misfire_chance + misfire_chance
+		if(total_misfire_chance && luck(list(caller,src,loc),total_misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
 		plane = PLANE_OBJ

@@ -16,6 +16,9 @@
 
 	tracks = TRACKS_MOUNTAIN
 
+/area/icebox/interior/
+	interior = TRUE
+
 /area/icebox/interior/caves
 	name = "\improper Unexplored Caves"
 	icon_state = "cave"
@@ -26,7 +29,9 @@
 	)
 	cheese_type = /reagent/nutrition/cheese/gruyere
 
-	interior = TRUE
+/area/icebox/interior/syndicate_shuttle
+	name = "\improper UNKNOWN SHIP"
+	icon_state = "syndicate"
 
 /area/icebox/interior/station
 	name = "\improper Icebox Station Interior"

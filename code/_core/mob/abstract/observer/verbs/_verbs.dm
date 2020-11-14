@@ -5,9 +5,10 @@
 	verbs += /mob/abstract/observer/verb/become_antagonist
 	verbs += /mob/abstract/observer/verb/observe
 
-	verbs += /client/verb/jump_to_player
-	verbs += /client/verb/jump_to_area
-	verbs += /client/verb/adjust_nightvision
+	if(client)
+		client.verbs += /client/verb/jump_to_player
+		client.verbs += /client/verb/jump_to_area
+		client.verbs += /client/verb/adjust_nightvision
 
 	return ..()
 

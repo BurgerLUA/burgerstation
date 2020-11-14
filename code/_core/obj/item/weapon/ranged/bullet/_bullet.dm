@@ -90,12 +90,17 @@
 		return FALSE
 
 	var/obj/item/bullet_cartridge/B = chambered_bullet
+	var/jam_chance = B.jam_chance
+	if(B.bullet_length != bullet_length_best)
+		jam_chance += 25
+	if(B.bullet_diameter != bullet_diameter_best)
+		jam_chance += 50
 
 	if(jammed)
-		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		if(jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
-	else if(B.jam_chance && luck(list(B,src,caller),B.jam_chance,FALSE))
-		if(B.jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
+	else if(jam_chance && luck(list(B,src,caller),jam_chance,FALSE))
+		if(jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE
 
@@ -156,7 +161,13 @@
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
 
-	. = chambered_bullet.spend_bullet(caller)
+	var/misfire_chance = 0
+	if(chambered_bullet.bullet_length != bullet_length_best)
+		misfire_chance += 25
+	if(chambered_bullet.bullet_diameter != bullet_diameter_best)
+		misfire_chance += 50
+
+	. = chambered_bullet.spend_bullet(caller,misfire_chance)
 
 	if(chambered_bullet.qdeleting)
 		chambered_bullet = null
@@ -167,10 +178,15 @@
 
 	if(length(stored_bullets) && stored_bullets[bullet_position]) //Spend a bullet
 		var/obj/item/bullet_cartridge/B = stored_bullets[bullet_position]
-		return B.spend_bullet(caller)
+		var/misfire_chance = 0
+		if(B.bullet_length != bullet_length_best)
+			misfire_chance += 25
+		if(B.bullet_diameter != bullet_diameter_best)
+			misfire_chance += 50
+		return B.spend_bullet(caller,misfire_chance)
 
 
-	return FALSE
+	return null
 
 /obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
 	return spend_chambered_bullet(caller)

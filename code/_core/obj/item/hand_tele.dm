@@ -22,7 +22,6 @@
 		INITIALIZE(battery)
 		GENERATE(battery)
 		FINALIZE(battery)
-		update_sprite()
 
 	return ..()
 
@@ -32,6 +31,8 @@
 
 	if(!istype(battery))
 		battery = null
+
+	update_sprite()
 
 	return .
 
@@ -58,7 +59,6 @@
 /obj/item/hand_teleporter/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("battery")
-	update_sprite()
 	return .
 
 /obj/item/hand_teleporter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

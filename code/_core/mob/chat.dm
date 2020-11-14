@@ -146,7 +146,7 @@ var/regex/vowels = new("\[aeiou\]", "i")
 	if(has_suffix(text_to_say,"!"))
 		talk_range = YELL_RANGE
 
-	if(frequency_to_use)
+	if(frequency_to_use && talk_type_to_use == TEXT_TALK)
 		talk_type_to_use = TEXT_RADIO
 
 	text_to_say = trim(mod_speech(text_to_say))

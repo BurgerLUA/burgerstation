@@ -63,7 +63,7 @@
 		var/obj/item/container/food/sandwich/S = I
 		for(var/obj/hud/inventory/I2 in S.inventories)
 			if(length(I2.held_objects))
-				owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of physics!"))
+				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of physics!"))
 				return FALSE
 		if(loc && loc == I)
 			return FALSE

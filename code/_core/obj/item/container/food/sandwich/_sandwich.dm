@@ -17,7 +17,9 @@
 
 	scale_sprite = FALSE
 
-
+/obj/item/container/food/sandwich/Finalize()
+	update_sprite()
+	return ..()
 
 
 /obj/item/container/food/sandwich/Generate()

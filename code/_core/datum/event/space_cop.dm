@@ -21,6 +21,10 @@
 /event/space_cop/Destroy()
 	associated_shuttle_controller = null
 	tracked_space_cops.Cut()
+	recalling = FALSE
+	next_recall = 0
+	duration = -1
+	space_cops_spawned = 0
 	return ..()
 
 /event/space_cop/on_start()
@@ -143,10 +147,12 @@
 			mising_count++
 			continue
 
+	var/dead_percentage = FLOOR(dead_count/length(tracked_space_cops),0.01)*100
+
 	var/final_message = ""
 
 	if(dead_count)
-		final_message += "We've successfully completed our investigation and determined that war crimes are indeed taking place here, notably by [english_list(space_cop_tag_shitlist)]. "
+		final_message += "We've successfully completed our investigation and determined that given our casualty rate of [dead_percentage]%, war crimes are indeed taking place here, notably by [english_list(space_cop_tag_shitlist)]. "
 	else
 		final_message += "We've successfully completed our investigation and determined that no war crimes are taking place here, which is quite strange given NanoTrasen's history. "
 

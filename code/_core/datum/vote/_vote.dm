@@ -147,8 +147,13 @@
 	for(var/k in options)
 		.[k] = list()
 
+	var/options_length = length(options)
+
 	for(var/ckey in votes)
 		var/option_num = votes[ckey]
+		if(options_length < option_num)
+			log_admin("[ckey] tried voting for an option that didn't exist ([option_num]).")
+			continue
 		var/real_option = options[option_num]
 		.[real_option] += ckey
 
