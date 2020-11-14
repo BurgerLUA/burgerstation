@@ -75,6 +75,30 @@
 	var/obj/item/powercell/stored_battery
 	var/obj/item/magazine/stored_magazine
 
+	ai = /ai/turret/deployable
+
+/mob/living/simple/npc/turret/deployable/get_examine_list(var/mob/examiner)
+
+	. = ..()
+
+	var/obj/item/powercell/B = get_battery()
+	if(B)
+		. += div("notice","It has a battery installed. It has ([B.charge_current]/[B.charge_max]) charge.")
+	else
+		. += div("warning","It is missing a battery.")
+
+	if(stored_magazine)
+		. += div("notice","It has a magazine installed. It has [length(stored_magazine.stored_bullets)]/[stored_magazine.bullet_count_max] bullets.")
+	else
+		. += div("warning","It is missing a magazine.")
+
+	return .
+
+
+
+/mob/living/simple/npc/turret/deployable/proc/get_battery()
+	return stored_battery
+
 /mob/living/simple/npc/turret/deployable/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/powercell/))

@@ -53,9 +53,10 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/deployable/mob/sentry,
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
-		/obj/item/weapon/ranged/energy/rifle/xray
+		/obj/item/weapon/ranged/energy/rifle/xray,
 	)
 
 /obj/structure/interactive/vending/security/ammo
@@ -79,6 +80,7 @@
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
+		/obj/item/magazine/minigun_46,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger
 	)

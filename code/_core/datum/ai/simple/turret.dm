@@ -64,3 +64,26 @@
 			owner.set_dir(valid_scan_dirs[scan_key])
 			last_scan = world.time
 
+
+
+/ai/turret/deployable
+	var/mob/living/simple/npc/turret/deployable/owner_as_turret
+
+/ai/turret/deployable/New(var/mob/living/desired_owner)
+	. = ..()
+	owner_as_turret = owner
+	return .
+
+
+/ai/turret/deployable/should_life()
+
+	var/obj/item/powercell/B = owner_as_turret.get_battery()
+	if(!B)
+		return FALSE
+
+	if(B.charge_current <= 0)
+		return FALSE
+
+	B.charge_current = max(B.charge_current - AI_TICK,0)
+
+	return ..()

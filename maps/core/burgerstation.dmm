@@ -210,7 +210,7 @@
 "eb" = (/obj/structure/interactive/vending/security/attachment,/turf/simulated/floor/tile/morphing/security,/area/burgerstation/armory)
 "ec" = (/mob/living/advanced/npc/dummy{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/morphing/cryo,/area/burgerstation/cryo)
 "ed" = (/obj/structure/interactive/chair{dir = 4},/obj/marker/hostage_rest,/turf/simulated/floor/tile/dark,/area/burgerstation/cargo)
-"ee" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/turf/simulated/floor/carpet,/area/burgerstation/chapel)
+"ee" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/melee/vampire_killer,/turf/simulated/floor/carpet,/area/burgerstation/chapel)
 "ef" = (/obj/decal/hazard{dir = 4},/turf/simulated/floor/tile/dark,/area/burgerstation/armory)
 "eg" = (/obj/decal/hazard/corner{dir = 1},/turf/simulated/floor/tile/dark,/area/burgerstation/cargo)
 "eh" = (/obj/decal/hazard{dir = 8},/turf/simulated/floor/plating,/area/burgerstation/hanger)

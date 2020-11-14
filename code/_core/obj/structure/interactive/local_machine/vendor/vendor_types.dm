@@ -445,9 +445,7 @@
 		/obj/item/clothing/head/helmet/full/nanotrasen/heavy,
 		/obj/item/clothing/overwear/armor/nanotrasen/light,
 		/obj/item/clothing/overwear/armor/nanotrasen/medium,
-		/obj/item/clothing/overwear/armor/nanotrasen/heavy,
-		/obj/item/deployable/mob/sentry,
-		/obj/item/magazine/minigun_46
+		/obj/item/clothing/overwear/armor/nanotrasen/heavy
 	)
 
 
