@@ -120,6 +120,8 @@
 		/reagent/blood/robot = TRUE
 	)
 
+	color = COLOR_BLACK
+
 /reagent/blood/xenomorph
 	name = "Xenomorph Blood"
 
@@ -127,9 +129,13 @@
 		/reagent/blood/xenomorph = TRUE
 	)
 
+	color = "#B6FF00"
+
 /reagent/blood/reptile
 	name = "Reptile Blood"
 
 	compatible_blood = list(
 		/reagent/blood/reptile = TRUE
 	)
+
+	color = "#88002B"

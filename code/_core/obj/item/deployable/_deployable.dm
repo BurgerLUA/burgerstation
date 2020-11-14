@@ -2,7 +2,7 @@
 	name = "deployable structure"
 	desc = "Quick and fast deployment."
 	desc_extended = "Deploys a structure."
-	var/obj/structure/structure_to_deploy //Store as a type.
+	var/obj/structure/structure_to_deploy //Store as a type. This should always be a structure.
 
 	item_count_current = 1
 	item_count_max = 10
@@ -11,17 +11,24 @@
 /obj/item/deployable/proc/get_deploy_time(var/mob/caller)
 	return SECONDS_TO_DECISECONDS(3)
 
-/obj/item/deployable/proc/deploy(var/mob/caller,var/turf/T)
-
-	var/obj/structure/S = new structure_to_deploy(T)
+/obj/item/deployable/proc/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
 	S.dir = caller.dir
 	INITIALIZE(S)
 	FINALIZE(S)
-	caller.visible_message(span("notice","\The [caller.name] deploys \the [S.name]."),span("notice","You deploy \the [S.name]."))
+	return TRUE
 
+/obj/item/deployable/proc/post_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
+	caller.visible_message(span("notice","\The [caller.name] deploys \the [S.name]."),span("notice","You deploy \the [S.name]."))
+	return TRUE
+
+/obj/item/deployable/proc/deploy(var/mob/caller,var/turf/T)
+
+	var/obj/structure/S = new structure_to_deploy(T)
+	pre_deploy(caller,T,S)
+	post_deploy(caller,T,S)
 	add_item_count(-1)
 
-	return TRUE
+	return S
 
 /obj/item/deployable/proc/can_deploy_to(var/mob/caller,var/turf/T)
 
@@ -61,13 +68,89 @@
 	item_count_current = item_count_max
 	return ..()
 
-/obj/item/deployable/sentry
+/obj/item/deployable/mob
+	var/mob/living/mob_to_deploy
+
+/obj/item/deployable/mob/can_deploy_to(var/mob/caller,var/turf/T)
+
+	if(item_count_current <= 0)
+		qdel(src)
+		return FALSE
+
+	if(get_dist(caller,T) > 1)
+		caller.to_chat(span("warning","You're too far away!"))
+		return FALSE
+
+	var/mob/living/L = locate() in T.contents
+	if(L)
+		caller.to_chat(span("warning","\The [L.name] is in the way!"))
+		return FALSE
+
+	return TRUE
+
+/obj/item/deployable/mob/pre_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
+	L.dir = caller.dir
+	INITIALIZE(L)
+	FINALIZE(L)
+	return TRUE
+
+/obj/item/deployable/mob/post_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
+	caller.visible_message(span("notice","\The [caller.name] deploys \the [L.name]."),span("notice","You deploy \the [L.name]."))
+	return TRUE
+
+/obj/item/deployable/mob/deploy(var/mob/caller,var/turf/T)
+	var/mob/living/L = new mob_to_deploy(T)
+	pre_deploy(caller,T,L)
+	post_deploy(caller,T,L)
+	add_item_count(-1)
+	return L
+
+/obj/item/deployable/mob/sentry
 	name = "deployable sentry"
 	desc = "BUILDIN A SENTRY"
-	desc_extended = "A small man portable sentry. on the bottom you see a tag saying: ATTENTION DUE TO THE MANUFACTURE'S INCOMPITANCE YOU CANNOT PACK UP THIS SENTRY ONCE YOU DEPLOY IT"
-	structure_to_deploy =/mob/living/simple/npc/turret/nanotrasen_deployable/
-	icon = 'icons/obj/item/deployable/miniturret.dmi'
-	value = 500
+	desc_extended = "A small man portable sentry designed to fire small-arms ammunition at hostile targets. Battery amd ammo not included."
+	mob_to_deploy = /mob/living/simple/npc/turret/deployable
+	icon = 'icons/mob/living/simple/turret_deployable_2.dmi'
+	value = 750
 	item_count_max = 1
 	weight = 20
-	size = SIZE_4
+	dan_mode = TRUE
+	size = SIZE_8
+
+	var/obj/item/powercell/stored_battery
+	var/obj/item/magazine/stored_magazine
+
+/obj/item/deployable/mob/sentry/pre_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
+
+	. = ..()
+
+	var/mob/living/simple/npc/turret/deployable/TD = L
+	if(stored_battery)
+		TD.stored_battery = stored_battery
+		stored_battery.force_move(TD)
+	if(stored_magazine)
+		TD.stored_magazine = stored_magazine
+		stored_magazine.force_move(TD)
+
+	if(is_living(caller))
+		var/mob/living/C = caller
+		if(C.loyalty_tag)
+			TD.set_loyalty_tag(C.loyalty_tag)
+		if(C.iff_tag)
+			TD.set_iff_tag(C.iff_tag)
+
+	return .
+
+/obj/item/deployable/mob/sentry/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEATOM("stored_battery")
+	SAVEATOM("stored_magazine")
+	return .
+
+/obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADATOM("stored_battery")
+	LOADATOM("stored_magazine")
+	return .
+
+

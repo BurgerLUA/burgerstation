@@ -84,6 +84,11 @@
 		caller.to_chat(span("warning","You cannot construct this in this area!"))
 		return FALSE
 
+	var/mob/living/L = locate() in contents
+	if(L)
+		caller.to_chat(span("warning","You can't build this here, \the [L.name] is in the way!"))
+		return FALSE
+
 	for(var/obj/structure/S in src.contents)
 		if(S.under_tile != SAFEVAR(structure_to_make,under_tile))
 			continue

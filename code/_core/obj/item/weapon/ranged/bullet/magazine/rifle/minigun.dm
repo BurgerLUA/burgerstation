@@ -15,19 +15,18 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = 16
+	view_punch = 10
 
-	heat_per_shot = 0.02
-	heat_max = 0.2
+	heat_per_shot = 0.01
+	heat_max = 0.15
 
+	bullet_length_min = 25
+	bullet_length_best = 30
+	bullet_length_max = 31
 
-	bullet_length_min = 40
-	bullet_length_best = 45
-	bullet_length_max = 46
-
-	bullet_diameter_min = 5.5
-	bullet_diameter_best = 5.56
-	bullet_diameter_max = 5.6
+	bullet_diameter_min = 4
+	bullet_diameter_best = 4.6
+	bullet_diameter_max = 5
 
 	size = SIZE_5
 	weight = 120

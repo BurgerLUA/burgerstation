@@ -7,9 +7,9 @@
 
 
 	dynamic_inventory_count = MAX_INVENTORY_X*4
-	container_max_size = SIZE_6
+	container_max_size = SIZE_5
 
-	size = MAX_INVENTORY_X*4*SIZE_3
+	size = MAX_INVENTORY_X*4*SIZE_5
 
 
 	container_blacklist = list(
@@ -27,9 +27,9 @@
 	icon = 'icons/obj/item/clothing/back/satchel/bluespace.dmi'
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
-	container_max_size = SIZE_6
+	container_max_size = SIZE_4
 
-	size = MAX_INVENTORY_X*4*SIZE_3
+	size = MAX_INVENTORY_X*4*SIZE_4
 
 
 	container_blacklist = list(
