@@ -1,4 +1,3 @@
-
 /obj/structure/interactive/vending/clothes
 	name = "clothes vendor"
 	icon_state = "clothes"

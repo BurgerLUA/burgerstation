@@ -3,7 +3,7 @@
 	desc = "More like Drakeskin Armor, eh?"
 	desc_extended = "Armor made from the hardened scales of an Elder Ash Drake."
 	icon = 'icons/obj/item/clothing/suit/drake_armor.dmi'
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	item_slot = SLOT_TORSO_A
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_MYTHICAL
 
@@ -25,6 +25,6 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/drake)
 
-	blocks_clothing = SLOT_TORSO_U
+	blocks_clothing = SLOT_TORSO_A | SLOT_TORSO_O | SLOT_TORSO_U
 
 	value = 1100
