@@ -66,14 +66,60 @@
 
 
 /mob/living/simple/npc/turret/deployable
-	name = "Depolyed sentry"
+	name = "deployed sentry"
 	icon = 'icons/mob/living/simple/turret_deployable_2.dmi'
 	icon_state = "living"
 
-	stored_weapon = /obj/item/weapon/ranged/energy/sentry_turret
+	stored_weapon = /obj/item/weapon/ranged/bullet/magazine/misc/sentry
 
 	var/obj/item/powercell/stored_battery
 	var/obj/item/magazine/stored_magazine
+
+/mob/living/simple/npc/turret/deployable/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(istype(object,/obj/item/powercell/))
+		INTERACT_CHECK
+		var/obj/item/powercell/PC = object
+
+		if(stored_battery)
+			caller.to_chat(span("notice","You swap out the battery of \the [src.name]."))
+			stored_battery.drop_item(get_turf(src))
+			stored_battery = null
+		else
+			caller.to_chat(span("notice","You insert a new battery into \the [src.name]."))
+
+		PC.drop_item(src)
+		stored_battery = PC
+
+		return TRUE
+
+	if(istype(object,/obj/item/magazine/))
+		INTERACT_CHECK
+		var/obj/item/magazine/M = object
+		if(!istype(stored_weapon,/obj/item/weapon/ranged/bullet/magazine))
+			caller.to_chat(span("warning","This turret doesn't accept magazines!"))
+			return FALSE
+
+		var/obj/item/weapon/ranged/bullet/magazine/R = stored_weapon
+		if(!M.weapon_whitelist[R.type])
+			caller.to_chat(span("warning","This turret doesn't accept this type of magazine!"))
+			return FALSE
+
+		if(stored_magazine)
+			caller.to_chat(span("notice","You swap out the magazine of \the [src.name]."))
+			stored_magazine.drop_item(get_turf(src))
+			stored_magazine = null
+		else
+			caller.to_chat(span("notice","You insert a new magazine into \the [src.name]."))
+
+		M.drop_item(src)
+		stored_magazine = M
+
+		return TRUE
+
+	return ..()
+
+
 
 /mob/living/simple/npc/turret/deployable/Destroy()
 	QDEL_NULL(stored_battery)

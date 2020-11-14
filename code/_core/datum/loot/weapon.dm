@@ -442,11 +442,11 @@
 /loot/weapon/minigun
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun,
-		/obj/item/magazine/minigun
+		/obj/item/magazine/minigun_46
 	)
 
 	loot_table = list(
-		/obj/item/magazine/minigun = 1
+		/obj/item/magazine/minigun_46 = 1
 	)
 	loot_count = 6
 	chance_none = 25

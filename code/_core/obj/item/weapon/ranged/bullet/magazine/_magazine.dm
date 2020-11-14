@@ -14,6 +14,9 @@
 	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
 	return .
 
+/obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
+	return stored_magazine
+
 
 /obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
@@ -101,10 +104,13 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)
-	if(stored_magazine && length(stored_magazine.stored_bullets) && stored_magazine.stored_bullets[1] && !chambered_bullet)
-		var/obj/item/bullet_cartridge/B = stored_magazine.stored_bullets[1]
+
+	var/obj/item/magazine/M = get_magazine()
+
+	if(M && length(M.stored_bullets) && M.stored_bullets[1] && !chambered_bullet)
+		var/obj/item/bullet_cartridge/B = M.stored_bullets[1]
 		if(can_load_chamber(null,B))
-			stored_magazine.stored_bullets -= B
+			M.stored_bullets -= B
 			B.drop_item(src)
 			chambered_bullet = B
 			return TRUE

@@ -1,4 +1,4 @@
-/obj/item/magazine/minigun
+/obj/item/magazine/minigun_46
 	name = "\improper 4.6x30mm caseless mingun/turret magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
@@ -11,7 +11,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/misc/sentry = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/pistol_4mm/
+	ammo = /obj/item/bullet_cartridge/pistol_4mm/caseless
 
 	bullet_length_min = 25
 	bullet_length_best = 30

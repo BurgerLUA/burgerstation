@@ -6,14 +6,14 @@
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry
 
-	name = "\improper 5.56mm Gatling Gun"
-	desc = "It costs 10,000 credits to fire this weapon for 12 seconds."
+	name = "\improper Sentry Gun"
+	desc = ""
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/rifle/minigun.dmi'
 	icon_state = "inventory"
 	value = 3000
 
-	shoot_delay = 1 //Oh god oh fuck
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -24,8 +24,8 @@
 
 	view_punch = 16
 
-	heat_per_shot = 0.02
-	heat_max = 0.2
+	heat_per_shot = 0.002
+	heat_max = 0.01
 
 	bullet_length_min = 25
 	bullet_length_best = 30
@@ -45,3 +45,23 @@
 	attachment_whitelist = list()
 
 	firing_pin = /obj/item/firing_pin/electronic
+
+
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_ammo(var/mob/caller)
+	if(!chambered_bullet) load_new_bullet_from_magazine(caller)
+	return ..()
+
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_magazine()
+
+	if(istype(loc,/mob/living/simple/npc/turret/deployable))
+		var/mob/living/simple/npc/turret/deployable/D = loc
+		if(D.stored_magazine)
+			return D.stored_magazine
+
+	return ..()
+
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_static_spread()
+	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_skill_spread(var/mob/living/L)
+	return 0

@@ -75,6 +75,7 @@
 		/obj/item/magazine/sniper_762/ap,
 		/obj/item/magazine/lmg_762,
 		/obj/item/magazine/sniper_127,
+		/obj/item/magazine/minigun_46,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,

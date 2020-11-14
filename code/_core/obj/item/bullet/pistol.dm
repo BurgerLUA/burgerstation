@@ -171,6 +171,11 @@
 
 	value = 0.8
 
+/obj/item/bullet_cartridge/pistol_4mm/caseless
+	name = "\improper 4.6x30mm caseless smg cartridge"
+	caseless = TRUE
+	value = 0.5
+
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
 	desc = "Different than 9mm!"

@@ -131,6 +131,8 @@
 	if(stored_magazine)
 		TD.stored_magazine = stored_magazine
 		stored_magazine.force_move(TD)
+	if(TD.ai)
+		TD.ai.set_active(TRUE)
 
 	if(is_living(caller))
 		var/mob/living/C = caller
