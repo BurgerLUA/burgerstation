@@ -60,6 +60,8 @@ var/global/list/all_telecomms = list()
 		var/obj/item/device/radio/R = k
 		if(!R || R.qdeleting)
 			continue
+		if(!(data_to_process["frequency"] in R.listening_frequencies))
+			continue
 		var/area/A = get_area(R)
 		if(!A.area_identifier || !broadcasting_areas[A.area_identifier])
 			continue

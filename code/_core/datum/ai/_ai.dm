@@ -274,8 +274,15 @@
 
 	if(owner.move_dir)
 		T = get_step(owner,owner.move_dir)
+		if(istype(T,/turf/simulated/hazard/))
+			var/turf/T2 = get_turf(owner)
+			if(!istype(T2,/turf/simulated/hazard/))
+				owner.move_dir = 0x0
+				return TRUE
 	else
 		T = get_turf(owner)
+
+
 
 	for(var/mob/living/L in T.contents)
 		if(L == owner)
@@ -287,7 +294,7 @@
 		else if(owner.move_dir && !L.move_dir)
 			owner.move_dir = 0x0
 		else
-			owner.move_dir = turn(owner.move_dir,pick(-90,90))
+			owner.move_dir = pick(DIRECTIONS_ALL)
 		return TRUE
 
 	return FALSE

@@ -8,7 +8,7 @@
 #define CLIENT_TICK_SLOW FPS_SERVER //FRAMES per slow life tick internval
 
 
-#define PROJECTILE_TICK 2 //Ticks per Sprojectile tick interval
+#define PROJECTILE_TICK 1 //Ticks per Sprojectile tick interval
 
 
 

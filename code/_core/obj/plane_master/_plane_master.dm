@@ -68,7 +68,7 @@
 
 /obj/plane_master/objs/New(var/desired_loc)
 	. = ..()
-	filters += filter(type="drop_shadow", x=0, y=-2, size=1, offset=0, color=rgb(0,0,0))
+	filters += filter(type="drop_shadow", x=0, y=-1, size=1, offset=0, color=rgb(0,0,0))
 	return .
 
 //SHUTTLE

@@ -1,16 +1,18 @@
-#define PLANE_HIDDEN -14
+#define PLANE_HIDDEN -15
 
-#define PLANE_SPACE -13
+#define PLANE_SPACE -14
 
-#define PLANE_PARALLAX -12
+#define PLANE_PARALLAX -13
 
-#define PLANE_FLOOR -11
+#define PLANE_FLOOR -12
 
-#define PLANE_SHUTTLE -10
+#define PLANE_SHUTTLE -11
 
-#define PLANE_WALL -9
+#define PLANE_WALL -10
 
-#define PLANE_BLOOD -8
+#define PLANE_BLOOD -9
+
+#define PLANE_JUNK -8 //Plane used for junk objects that shouldn't have outlines.
 
 #define PLANE_OBJ -7
 

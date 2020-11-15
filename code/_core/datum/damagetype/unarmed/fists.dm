@@ -7,14 +7,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.2,
-		FATIGUE = 10
+		BLUNT = DAMAGE_AXE*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_AXE,
-		FATIGUE = INFINITY,
+		BLUNT = AP_AXE
 	)
 
 	attribute_stats = list(
@@ -32,7 +30,7 @@
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT,FATIGUE)
+		SKILL_UNARMED = list(BLUNT)
 	)
 
 	allow_friendly_fire = FALSE
@@ -52,7 +50,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_SWORD*0.2 + 10
+		FATIGUE = DAMAGE_SWORD*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

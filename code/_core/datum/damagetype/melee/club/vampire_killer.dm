@@ -34,12 +34,8 @@
 
 /damagetype/melee/club/vampire_killer/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
-	if(is_living(victim))
+	if(is_living(victim) && prob(total_damage_dealt))
 		var/mob/living/L = victim
-		if(L.horizontal)
-			L.add_status_effect(DISARM,10,10)
-		else
-			L.add_status_effect(STUN,10,10)
-
+		L.add_status_effect(DISARM,10,10)
 
 	return ..()

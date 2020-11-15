@@ -1,5 +1,5 @@
 /obj/item/clothing/ears/headset
-	name = "headset"
+	name = "nanotrasen headset"
 	desc = "; HELP MAINT!"
 	desc_extended = "A headset for communicating with your fellows. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
 	icon = 'icons/obj/item/clothing/ears/headset.dmi'
@@ -35,3 +35,8 @@
 	. = ..()
 	LOADATOM("stored_radio")
 	return .
+
+
+/obj/item/clothing/ears/headset/syndicate
+	name = "syndicate headset"
+	stored_radio = /obj/item/device/radio/syndicate

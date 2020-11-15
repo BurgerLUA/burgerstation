@@ -38,6 +38,8 @@
 
 	var/bullet_seed //For icon generation.
 
+	plane = PLANE_JUNK
+
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
 	return ..()

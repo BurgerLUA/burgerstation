@@ -129,3 +129,13 @@ list(
 	frequency_max = RADIO_FREQ_SHIP + 2
 
 	value = 15
+
+/obj/item/device/radio/syndicate
+	name = "\improper NanoTrasen Radio"
+
+	frequency_min = RADIO_FREQ_SYNDICATE
+	frequency_max = RADIO_FREQ_COMMON
+
+	frequency = RADIO_FREQ_SYNDICATE
+
+	value = 100

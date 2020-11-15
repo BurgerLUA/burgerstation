@@ -52,6 +52,7 @@
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)
 		verbs += /client/verb/show_debug_verbs
+		verbs += /client/verb/add_new_wikibot_entry
 
 	//Admin
 	if(permissions & FLAG_PERMISSION_ADMIN)

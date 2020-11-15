@@ -191,7 +191,7 @@
 		var/mob/living/L = O
 		if(L.loyalty_tag == src.loyalty_tag)
 			return TRUE
-		if(L.dead || src.dead)
+		if(L.horizontal || src.horizontal)
 			return TRUE
 		if(L.mob_size >= mob_size)
 			return FALSE
