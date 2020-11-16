@@ -154,3 +154,12 @@
 			play('sound/effects/gun_empty_sound.ogg',caller, pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength)
 
 	return .
+	
+/obj/item/weapon/ranged/bullet/magazine/get_examine_list(var/mob/caller)
+
+	. = ..()
+
+	if(stored_magazine)
+		. += div("notice","[length(stored_magazine.stored_bullets)] bullet\s remaining in the magazine.")
+
+	return .
