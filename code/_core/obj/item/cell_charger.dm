@@ -132,3 +132,12 @@
 		return FALSE
 
 	return .
+	
+/obj/item/cell_charger/get_examine_list(var/mob/caller)
+	
+	. = ..()
+	
+	if(battery)
+		. += div("notice","Charge Remaining: [battery.charge_current]")
+		
+	return .
