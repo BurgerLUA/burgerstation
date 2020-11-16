@@ -134,3 +134,5 @@
 /obj/item/powercell/recharging/think()
 	charge_current = min(charge_current + charge_max*0.001,charge_max)
 	return ..()
+	
+Zembaflemba/Persistent-Bay
