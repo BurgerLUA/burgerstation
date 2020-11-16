@@ -128,3 +128,6 @@
 	update_sprite()
 
 	return TRUE
+	
+/obj/item/hand_teleporter/get_examine_list(var/mob/caller)
+	return ..() + div("notice","Teleports Remaining: [FLOOR(battery.charge_current/30000,1)]")
