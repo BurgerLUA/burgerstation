@@ -55,10 +55,18 @@ var/regex/vowels = new("\[aeiou\]", "i")
 
 	return FALSE
 
+/proc/tooltip(var/text,var/tooltip)
+	if(!tooltip)
+		return text
+	world.log << "Penis."
+	return div("tooltip","[text][div("tooltip_text",tooltip)]")
+
+/*
 /mob/proc/to_chat_language(var/text, var/chat_type=CHAT_TYPE_INFO, var/language = LANGUAGE_BASIC, var/language_text = "Blah blah blah.")
 	if(!length(known_languages) || !known_languages[language])
 		return to_chat(language_text,chat_type)
-	return to_chat(text,chat_type)
+	return to_chat(tooltip(text,language_text),chat_type)
+*/
 
 
 /mob/proc/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE)
@@ -189,15 +197,15 @@ var/regex/vowels = new("\[aeiou\]", "i")
 	return ..()
 
 
-/mob/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/mob/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	if(client)
+		var/knows_language = length(known_languages) && known_languages[language]
 		var/formatted_speech
-		if(!length(known_languages) || !known_languages[language])
-			formatted_speech = format_speech(speaker,source,text,talk_type,frequency,language,talk_range)
+		if(!knows_language && language_text)
+			formatted_speech = format_speech(speaker,source,language_text,talk_type,frequency,language,talk_range,knows_language)
 		else
-			formatted_speech = format_speech(speaker,source,text,talk_type,frequency,language,talk_range)
-
+			formatted_speech = format_speech(speaker,source,text,talk_type,frequency,language,talk_range,knows_language)
 		to_chat(formatted_speech,CHAT_TYPE_SAY) //Ears are in game. NEVER CHANGE CHAT_TYPE_SAY OR ELSE YOU'LL SPEND 1 HOUR DEBUGGING THIS LIKE I DID.
 
 	return ..()

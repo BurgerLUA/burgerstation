@@ -14,6 +14,8 @@
 
 	quick_function_type = FLAG_QUICK_TOGGLE
 
+	var/enchantment/enchantment
+
 /obj/item/weapon/update_icon()
 
 	var/open_text = open_icon && open ? "_open" : ""
@@ -60,9 +62,32 @@
 /obj/item/weapon/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
+
+	if(enchantment)
+		.["enchantment"] = list(
+			"name" = enchantment.name,
+			"type" = enchantment.type,
+			"strength" = enchantment.strength
+		)
+
+
+
 	return .
 
 /obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	return .
+
+/obj/item/weapon/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+
+	. = ..()
+
+	if(length(object_data["enchantment"]))
+		var/list/enchant_data = object_data["enchantment"]
+		var/enchantment/type_to_create = text2path(enchant_data["type"])
+		enchantment = new type_to_create
+		enchantment.name = enchant_data["name"]
+		enchantment.strength = enchant_data["strength"]
+
 	return .

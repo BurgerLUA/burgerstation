@@ -54,20 +54,23 @@
 			P.active_paper = null
 
 		if(href_list["edit"])
-			var/desired_page = clamp(text2num(href_list["edit"]),1,length(P.active_paper.data))
-			var/desired_new_text = input(usr,"What should the text say?","Edit Text",P.active_paper.data[desired_page]) as message
-			if(desired_new_text && length(desired_new_text))
-				var/regex/link_remover = new("\\\[.*\\\]\\(.*\\)","g")
-				desired_new_text = link_remover.Replace(desired_new_text,"")
-
-				var/regex/link_remover_2 = new("http.*:\\/\\/","g")
-				desired_new_text = link_remover_2.Replace(desired_new_text,"")
-
-				var/regex/link_remover_3 = new("www\\.","g")
-				desired_new_text = link_remover_3.Replace(desired_new_text,"")
-
+			if(!P.active_paper.editable)
+				P.to_chat(span("notice","\The [P.active_paper.name] cannot be modifed!"))
+			else
+				var/desired_page = clamp(text2num(href_list["edit"]),1,length(P.active_paper.data))
+				var/desired_new_text = input(usr,"What should the text say?","Edit Text",P.active_paper.data[desired_page]) as message
 				if(desired_new_text && length(desired_new_text))
-					P.active_paper.data[desired_page] = desired_new_text
-					set_text(P,sanitize(P.active_paper.data[desired_page],3000,extra = FALSE),P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
+					var/regex/link_remover = new("\\\[.*\\\]\\(.*\\)","g")
+					desired_new_text = link_remover.Replace(desired_new_text,"")
+
+					var/regex/link_remover_2 = new("http.*:\\/\\/","g")
+					desired_new_text = link_remover_2.Replace(desired_new_text,"")
+
+					var/regex/link_remover_3 = new("www\\.","g")
+					desired_new_text = link_remover_3.Replace(desired_new_text,"")
+
+					if(desired_new_text && length(desired_new_text))
+						P.active_paper.data[desired_page] = desired_new_text
+						set_text(P,sanitize(P.active_paper.data[desired_page],3000,extra = FALSE),P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
 
 	return ..()

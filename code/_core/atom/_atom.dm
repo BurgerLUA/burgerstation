@@ -270,5 +270,5 @@
 /atom/Crossed(atom/movable/O) //Override default
 	return TRUE
 
-/atom/proc/on_listen(var/atom/speaker,var/datum/source,var/text,var/talk_type,var/frequency,var/language=LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/atom/proc/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency,var/language=LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 	return TRUE
