@@ -6,7 +6,7 @@
 
 /enchantment/proc/generate_stats(var/obj/item/weapon/desired_weapon,var/obj/item/soulgem/desired_soulgem)
 
-	strength = CEILING(desired_soulgem.total_charge/1000,1)
+	strength = CEILING(desired_soulgem.total_charge/SOUL_SIZE_COMMON,1)
 	name = "[initial(name)] \Roman[strength]"
 
 	return TRUE
