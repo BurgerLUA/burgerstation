@@ -1522,6 +1522,7 @@
 #include "code\_core\obj\structure\interactive\local_machine\vendor\ammo.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\chef.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\coffee.dm"
+#include "code\_core\obj\structure\interactive\local_machine\vendor\enchanting.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\engineering.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\janitor.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\mining.dm"
