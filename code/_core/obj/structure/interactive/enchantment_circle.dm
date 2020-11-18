@@ -20,6 +20,8 @@
 	var/list/stored_items = list()
 	var/obj/item/paper/book/enchanting/stored_book
 
+	mouse_opacity = 2
+
 /obj/structure/interactive/enchantment_circle/Destroy()
 	set_active(FALSE)
 	stored_book = null // Just in case.

@@ -19,6 +19,7 @@
 
 	if(stored_enchantment)
 		enchanting_phrase = initial(stored_enchantment.enchanting_phrase)
+		name = "[initial(name)]: [initial(stored_enchantment.name)]"
 
 	var/language/L = SSlanguage.all_languages[LANGUAGE_LIZARD]
 	var/enchanting_phrase_language = L.process_text(null,enchanting_phrase)
@@ -30,3 +31,16 @@
 
 /obj/item/paper/book/enchanting/fire
 	stored_enchantment = /enchantment/fire
+
+/obj/item/paper/book/enchanting/stagger
+	stored_enchantment = /enchantment/stagger
+
+/obj/item/paper/book/enchanting/stun
+	stored_enchantment = /enchantment/stun
+
+/obj/item/paper/book/enchanting/disarm
+	stored_enchantment = /enchantment/disarm
+
+/obj/item/paper/book/enchanting/blood_leech
+	stored_enchantment = /enchantment/blood_leech
+
