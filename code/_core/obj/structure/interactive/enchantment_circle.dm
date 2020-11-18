@@ -1,5 +1,5 @@
 /obj/structure/interactive/enchantment_circle
-	name = "enchantment_circle"
+	name = "circle of enchanting"
 	icon = 'icons/obj/decal/enchanting_circle.dmi'
 	icon_state = "0"
 
@@ -60,15 +60,15 @@
 		var/list/found_contents = get_contents()
 		var/obj/item/paper/book/enchanting/B = locate() in found_contents
 		if(!B)
-			src.visible_message(span("warning","\The [src.name] quietly fades..."))
 			set_active(FALSE)
 			return FALSE
 		for(var/k in found_contents)
 			store_item(k)
-
+		src.visible_message(span("warning","\The [src.name] brightens up and indicates it's ready for enchanting."))
 	else
 		for(var/k in stored_items)
 			unstore_item(k)
+		src.visible_message(span("warning","\The [src.name] quietly fades..."))
 
 	update_sprite()
 
@@ -82,11 +82,9 @@
 
 	INTERACT_CHECK
 
-	caller.visible_message(span("notice","\The [caller.name] [!active ? "activates" : "deactivates"] \the [src.name]."))
-
 	set_active(!active)
 
-
+	caller.visible_message(span("notice","\The [caller.name] [active ? "activates" : "deactivates"] \the [src.name]."))
 
 	return TRUE
 
@@ -125,8 +123,6 @@
 
 
 /obj/structure/interactive/enchantment_circle/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
-
-
 
 	if(is_living(speaker) && active && stored_book && text)
 		var/text_to_compare = sanitize(lowertext(stored_book.enchanting_phrase))

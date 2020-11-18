@@ -27,6 +27,11 @@
 
 /obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(istype(object,/obj/structure/interactive/enchantment_circle/))
+		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."))
+		qdel(object)
+		return TRUE
+
 	if(isturf(object))
 		INTERACT_CHECK
 
@@ -38,8 +43,9 @@
 		var/turf/T = object
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/T2 = get_step(T,k)
-			if(is_wall(T2) || T2.is_occupied())
-				caller.to_chat(span("warning","There isn't enough room here to draw an enchantment circle!"))
+			var/atom/occupied = T2.is_occupied(PLANE_DECAL)
+			if(occupied)
+				caller.to_chat(span("warning","You can't draw an enchantment circle here, \the [occupied.name] is in the way!"))
 				return FALSE
 		var/obj/structure/interactive/enchantment_circle/EC = new(T)
 		INITIALIZE(EC)
@@ -51,6 +57,7 @@
 			qdel(src)
 		else
 			update_sprite()
+		return TRUE
 
 	return ..()
 

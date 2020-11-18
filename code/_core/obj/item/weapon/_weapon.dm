@@ -16,6 +16,15 @@
 
 	var/enchantment/enchantment
 
+/obj/item/weapon/get_examine_list(var/mob/examiner)
+
+	. = ..()
+
+	if(enchantment)
+		. += div("notice","It's enchanted with [enchantment.name].")
+
+	return .
+
 /obj/item/weapon/update_icon()
 
 	var/open_text = open_icon && open ? "_open" : ""

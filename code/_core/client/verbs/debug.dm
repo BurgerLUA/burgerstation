@@ -120,12 +120,12 @@ client/verb/air_test(var/pressure as num)
 	var/list/turf/possible_SY = list()
 
 	for(var/turf/simulated/floor/F in range(src.view*0.4,N_T))
-		if(F.is_occupied())
+		if(F.is_occupied(PLANE_OBJ))
 			continue
 		possible_NT += F
 
 	for(var/turf/simulated/floor/F in range(src.view*0.4,S_T))
-		if(F.is_occupied())
+		if(F.is_occupied(PLANE_OBJ))
 			continue
 		possible_SY += F
 

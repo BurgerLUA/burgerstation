@@ -696,7 +696,6 @@
 #include "code\_core\mob\living\advanced\player\antagonist\syndicate.dm"
 #include "code\_core\mob\living\advanced\player\verbs\_verbs.dm"
 #include "code\_core\mob\living\advanced\stand\_stand.dm"
-#include "code\_core\mob\living\simple\_simple.dm"
 #include "code\_core\mob\living\simple\npc\_npc.dm"
 #include "code\_core\mob\living\simple\npc\antagonist.dm"
 #include "code\_core\mob\living\simple\npc\arachnid.dm"
