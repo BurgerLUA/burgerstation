@@ -111,8 +111,9 @@
 	src.visible_message(span("danger","\The [src.name] reacts to [caller.name]'s words!"))
 
 	weapon_to_enchant.enchantment = new stored_book.stored_enchantment
-	weapon_to_enchant.enchantment.generate_stats(weapon_to_enchant,soulgem)
+	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem) * 500
 	weapon_to_enchant.visible_message("\The [weapon_to_enchant.name] shines brightly as it's new enchantment is applied.")
+	caller.add_skill_xp(SKILL_ENCHANTING,experience_to_give)
 
 	qdel(soulgem)
 	qdel(stored_book)
