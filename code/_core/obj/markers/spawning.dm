@@ -92,3 +92,14 @@
 		/obj/structure/interactive/vending/old_ammo = 1,
 		/obj/item/storage/heavy/trash_pile = 1
 	)
+
+/obj/marker/spawning/random/supply_crate
+	name = "random supply crate"
+	icon_state = "supply"
+	possible_objects = list(
+		/obj/item/supply_crate/american = 2,
+		/obj/item/supply_crate/magic = 1,
+		/obj/item/supply_crate/nanotrasen = 3,
+		/obj/item/supply_crate/russian = 1,
+		/obj/item/supply_crate/syndicate = 1
+	)
