@@ -6,12 +6,6 @@
 	update_underlays()
 	return TRUE
 
-/atom/movable/update_sprite()
-	. = ..()
-	vis_contents.Cut()
-	update_vis_contents()
-	return .
-
 /atom/proc/update_icon()
 	return TRUE
 
@@ -19,9 +13,6 @@
 	return TRUE
 
 /atom/proc/update_underlays()
-	return TRUE
-
-/atom/proc/update_vis_contents()
 	return TRUE
 
 /obj/proc/initialize_blends()
@@ -54,6 +45,12 @@
 		return FALSE
 
 	vis_contents |= desired_vis_content
+
+	return TRUE
+
+/atom/movable/proc/remove_vis_content(var/atom/movable/desired_vis_content)
+
+	vis_contents -= desired_vis_content
 
 	return TRUE
 

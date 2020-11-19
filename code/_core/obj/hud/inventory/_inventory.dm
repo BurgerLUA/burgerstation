@@ -769,27 +769,11 @@
 	if(!length(worn_objects))
 		return null
 
-	var/obj/item/I = worn_objects[length(worn_objects)]
-	if(I.qdeleting)
-		worn_objects -= I
-		overlays.Cut()
-		update_overlays()
-		update_stats()
-		return null
-
-	return I
+	return worn_objects[length(worn_objects)]
 
 /obj/hud/inventory/proc/get_top_held_object()
 
 	if(!length(held_objects))
 		return null
 
-	var/obj/item/I = held_objects[length(held_objects)]
-	if(I.qdeleting)
-		held_objects -= I
-		overlays.Cut()
-		update_overlays()
-		update_stats()
-		return null
-
-	return I
+	return held_objects[length(held_objects)]
