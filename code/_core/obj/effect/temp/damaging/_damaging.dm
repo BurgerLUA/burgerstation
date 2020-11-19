@@ -132,7 +132,7 @@ obj/effect/temp/hazard/tentacle/
 	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'
 	icon_state = "tentacle"
 	duration = 13
-	hazard_delay = 3
+	hazard_delay = 7
 
 	hazard_range = 0
 	damage_type = /damagetype/npc/goliath_tentacle

@@ -1,3 +1,11 @@
+/damagetype/ranged/bullet/shotgun_20/
+	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLADE = 0.20,
+		BLUNT = 0.3,
+		PIERCE = 0.1,
+		BOMB = 1
+	)
+
 /damagetype/ranged/bullet/shotgun_20/buckshot
 	name = "group of buckshot pellets"
 
@@ -17,11 +25,6 @@
 
 	falloff = VIEW_RANGE*0.5
 
-	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
-		BLUNT = 0.75,
-		PIERCE = 0.25
-	)
-
 /damagetype/ranged/bullet/shotgun_20/slug
 	name = "shotgun slug"
 
@@ -38,11 +41,6 @@
 	)
 
 	falloff = VIEW_RANGE
-
-	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
-		BLUNT = 0.75,
-		PIERCE = 0.25
-	)
 
 /damagetype/ranged/bullet/shotgun_20/flechette
 	name = "shotgun flechette"

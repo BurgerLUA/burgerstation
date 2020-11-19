@@ -15,7 +15,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_CLUB,
+		BLUNT = 0,
 	)
 
 	attribute_stats = list(
@@ -70,7 +70,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_AXE
+		BLUNT = 0
 	)
 
 	attribute_stats = list(
@@ -128,8 +128,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_CLUB*0.5,
-		FATIGUE = AP_CLUB*0.5,
+		BLUNT = 0,
+		FATIGUE = 0,
 	)
 
 	attribute_stats = list(
@@ -155,7 +155,3 @@
 	//BALANCE CHANGE. FASTER SPEED.
 	attack_delay = SPEED_DAGGER*0.5
 	attack_delay_max = SPEED_DAGGER
-
-
-/damagetype/cqc/sleeping_carp/gnashing_teeth/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	return TRUE //Always crit.

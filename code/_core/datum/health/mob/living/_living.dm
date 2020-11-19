@@ -11,23 +11,22 @@
 
 	var/armor_bonus = FLOOR(L.intoxication*0.025 + max(0,L.nutrition - 1000)*0.05,5)
 
-	if(armor_bonus >= 10)
-		var/list/bonus_armor = list(
-			BLADE = armor_bonus,
-			BLUNT = armor_bonus,
-			PIERCE = armor_bonus,
-			ARCANE = -armor_bonus,
-			COLD = armor_bonus,
-			FATIGUE = L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100
-		)
+	var/list/bonus_armor = list(
+		BLADE = armor_bonus,
+		BLUNT = armor_bonus,
+		PIERCE = armor_bonus,
+		ARCANE = -armor_bonus,
+		COLD = armor_bonus,
+		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100,1)
+	)
 
-		for(var/damage_type in bonus_armor)
-			if(.[damage_type])
-				if(IS_INFINITY(.[damage_type]))
-					continue
-				.[damage_type] += bonus_armor[damage_type]
-			else
-				.[damage_type] = bonus_armor[damage_type]
+	for(var/damage_type in bonus_armor)
+		if(.[damage_type])
+			if(IS_INFINITY(.[damage_type]))
+				continue
+			.[damage_type] += bonus_armor[damage_type]
+		else
+			.[damage_type] = bonus_armor[damage_type]
 
 	for(var/list/bonus in L.defense_bonuses) //Superpowers and whatnot.
 		for(var/damage_type in bonus)

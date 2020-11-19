@@ -30,11 +30,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308/ap,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
-		/obj/item/magazine/shotgun_auto/fire,
-		/obj/item/magazine/shotgun_auto/flechette,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,
 		/obj/item/magazine/sniper_50,
 		/obj/item/magazine/sniper_50/ap,
@@ -55,7 +53,8 @@
 		/obj/item/storage/kit/burn/filled,
 		/obj/item/storage/kit/toxin/filled,
 		/obj/item/container/blood_pack/full/reptile,
-		/obj/item/container/blood_pack/full/o_negative
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/beaker/vial/zombie_antidote
 	)
 	markup = 0.75
 

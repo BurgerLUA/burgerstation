@@ -71,7 +71,7 @@
 /loot/supply_crate/magic
 	loot_table = list(
 		/loot/enchanting/book = 1,
-		/obj/item/soulgem = 10,
 		/obj/item/soulgem/common = 5,
 		/obj/item/container/beaker/bottle/large/mana_potion = 10
 	)
+	loot_count = 3

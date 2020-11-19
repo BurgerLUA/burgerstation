@@ -5,8 +5,8 @@
 	item_count_max_icon = 5
 
 
-	bullet_diameter = 18.5
-	bullet_length = 18.5
+	bullet_diameter = 17.5
+	bullet_length = 17.5
 	bullet_color = COLOR_BULLET
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
@@ -59,3 +59,4 @@
 	value = 1.6
 
 	inaccuracy_modifer = 1.5
+
