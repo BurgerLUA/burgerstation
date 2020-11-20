@@ -134,3 +134,6 @@
 /obj/item/powercell/recharging/think()
 	charge_current = min(charge_current + charge_max*0.001,charge_max)
 	return ..()
+	
+/obj/item/powercell/get_examine_list(var/mob/caller)
+	return ..() + div("notice","It has [charge_current] out of [charge_max] charge remaining.")

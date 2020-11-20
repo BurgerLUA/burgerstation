@@ -42,3 +42,6 @@
 
 /obj/item/weapon/ranged/bullet/pump/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
 	return FALSE
+	
+/obj/item/weapon/ranged/bullet/pump/get_examine_list(var/mob/caller)
+	return ..() + div("notice","[get_ammo_count()] shell\s remaining in the tube.")
