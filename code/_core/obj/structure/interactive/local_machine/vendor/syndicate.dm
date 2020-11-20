@@ -54,7 +54,8 @@
 		/obj/item/storage/kit/toxin/filled,
 		/obj/item/container/blood_pack/full/reptile,
 		/obj/item/container/blood_pack/full/o_negative,
-		/obj/item/container/beaker/vial/zombie_antidote
+		/obj/item/container/beaker/vial/zombie_antidote,
+		/obj/item/container/medicine/nanopaste
 	)
 	markup = 0.75
 

@@ -44,6 +44,34 @@
 		/obj/item/magazine/pistol_10mm,
 	)
 
+/loadout/syndicate/shotgunnner
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/shirt/syndicate,
+		/obj/item/clothing/pants/syndicate,
+		/obj/item/clothing/feet/shoes/black_boots,
+		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/security/tactical/advanced,
+		/obj/item/clothing/head/hat/skimask/black,
+		/obj/item/clothing/mask/gas/poly/syndicate,
+		/obj/item/clothing/overwear/armor/bulletproof,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/pistol_10mm,
+	)
+
 /loadout/syndicate/basic
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,

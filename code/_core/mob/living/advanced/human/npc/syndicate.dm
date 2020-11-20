@@ -7,6 +7,7 @@
 
 	var/list/possible_outfits = list(
 		/loadout/syndicate/soldier = 90,
+		/loadout/syndicate/shotgunnner = 20,
 		/loadout/syndicate/basic = 6,
 		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 1
@@ -14,6 +15,7 @@
 
 	var/loadout_to_level = list(
 		/loadout/syndicate/soldier = 2,
+		/loadout/syndicate/shotgunnner = 2,
 		/loadout/syndicate/basic = 4,
 		/loadout/syndicate/advanced = 8,
 		/loadout/syndicate/elite = 16
