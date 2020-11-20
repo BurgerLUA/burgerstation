@@ -554,7 +554,7 @@
 			if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
 				caller.to_chat(span("warning","\The [defer_object.name] is full!"))
 				return FALSE
-			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount)
+			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
 		return TRUE
 

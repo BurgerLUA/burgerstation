@@ -41,7 +41,7 @@
 			if(ismovable(object_to_damage))
 				var/atom/movable/M = object_to_damage
 				if(M.reagents)
-					M.reagents.add_reagent(reagent_to_add,volume_to_add)
+					M.reagents.add_reagent(reagent_to_add,volume_to_add,caller=owner)
 				return TRUE
 
 	return ..()

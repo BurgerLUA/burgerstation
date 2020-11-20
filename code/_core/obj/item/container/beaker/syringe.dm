@@ -131,7 +131,7 @@
 			var/mob/living/L = object
 			L.draw_blood(caller,src,-amount)
 		else if(object.reagents)
-			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount)
+			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount, caller = caller)
 			if(transfer_amount)
 				caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
 				return TRUE
@@ -140,7 +140,7 @@
 
 	else if(amount > 0) //Inject
 		if(object.reagents)
-			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount)
+			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount, caller = caller)
 			if(transfer_amount)
 				caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
 				return TRUE

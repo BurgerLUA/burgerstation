@@ -314,7 +314,7 @@
 
 	for(var/k in found_recipe.results)
 		var/v = found_recipe.results[k] * portions_to_make
-		add_reagent(k,v,desired_temperature,FALSE,FALSE)
+		add_reagent(k,v,desired_temperature,FALSE,FALSE,caller)
 
 	found_recipe.on_react(caller,src,portions_to_make)
 
@@ -327,13 +327,13 @@
 			FINALIZE(A)
 			if(!A.reagents)
 				break
-			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current))
+			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current, caller = caller))
 	else
 		update_container()
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
+/reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
 	amount = round(amount,REAGENT_ROUNDING)
 
@@ -369,7 +369,7 @@
 	. = amount //This is the REAL WORLD AMOUNT that is added. This is used for removing stuff.
 
 	if(amount > 0)
-		amount = R.on_add(src,amount,previous_amount) //This is the VIRTUAL AMOUNT that is actually added.
+		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 
 	if(amount)
 		stored_reagents[reagent_type] += amount
@@ -391,8 +391,8 @@
 
 	return .
 
-/reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
-	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes)
+/reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
+	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes,caller)
 
 /reagent_container/proc/remove_all_reagents()
 
@@ -402,9 +402,9 @@
 
 	return TRUE
 
-/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_type,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE) //Transfer a single reagent by id.
+/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_type,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE,var/mob/living/caller) //Transfer a single reagent by id.
 	var/old_temperature = stored_reagents_temperature[reagent_type] ? stored_reagents_temperature[reagent_type] : T0C + 20
-	return target_container.add_reagent(reagent_type,remove_reagent(reagent_type,amount,should_update,check_recipes),old_temperature,should_update,check_recipes)
+	return target_container.add_reagent(reagent_type,remove_reagent(reagent_type,amount,should_update,check_recipes,caller),old_temperature,should_update,check_recipes,caller)
 
 /reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE)
 
@@ -430,7 +430,7 @@
 
 	return total_amount_removed
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
 
 	if(!target_container)
 		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
@@ -440,7 +440,7 @@
 		return FALSE
 
 	if(amount < 0)
-		return -target_container.transfer_reagents_to(src,-amount,should_update,check_recipes)
+		return -target_container.transfer_reagents_to(src,-amount,should_update,check_recipes,caller)
 
 	amount = min(amount,volume_current)
 
@@ -453,7 +453,7 @@
 		var/ratio = volume / old_volume
 		var/temp = stored_reagents_temperature[r_id]
 
-		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,temp,FALSE,FALSE)
+		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,temp,FALSE,FALSE,caller = caller)
 		remove_reagent(r_id,amount_transfered,FALSE)
 		total_amount_transfered += amount_transfered
 
@@ -593,8 +593,8 @@
 			consumer.to_chat(span("notice",final_flavor_text))
 
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
-		. = transfer_reagents_to(S.reagents,volume_current)
+		. = transfer_reagents_to(S.reagents,volume_current, caller = caller)
 	else
-		. = transfer_reagents_to(consumer.reagents,volume_current)
+		. = transfer_reagents_to(consumer.reagents,volume_current, caller = caller)
 
 	return .

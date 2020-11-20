@@ -514,7 +514,7 @@
 		if(messages) caller?.to_chat(span("warning","There is nothing to draw!"))
 		return FALSE
 
-	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume))
+	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
 	blood_volume -= amount_added
 	queue_health_update = TRUE
 

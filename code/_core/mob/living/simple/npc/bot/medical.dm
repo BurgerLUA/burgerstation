@@ -107,7 +107,7 @@
 	if(inject_amount)
 		for(var/k in inject_amount)
 			var/v = inject_amount[k]
-			target.reagents.add_reagent(k,v)
+			target.reagents.add_reagent(k,v,caller=src)
 
 		target.to_chat(span("danger","\The [src.name] injects you with the hypospray."))
 

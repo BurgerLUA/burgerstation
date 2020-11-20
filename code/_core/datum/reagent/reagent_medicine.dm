@@ -4,6 +4,20 @@
 	overdose_threshold = OVERDOSE_THRESHOLD_MEDICINE
 	value = 1
 
+	var/experience_per_unit = 0 //Medical XP per unit added.
+
+/reagent/medicine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+
+	. = ..()
+
+	if(experience_per_unit && caller && is_player(caller))
+		//Imagine readability
+		var/mob/living/L = is_organ(container.owner) && is_living(container.owner.loc) ? container.owner.loc : (is_living(container.owner) ? container.owner : null)
+		if(L && !L.dead)
+			caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
+
+	return .
+
 /reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 
 	. = ..()
@@ -23,6 +37,7 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
+	experience_per_unit = 2.5
 
 	value = 1.25
 
@@ -56,6 +71,7 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
+	experience_per_unit = 5
 
 	value = 3
 
@@ -89,6 +105,7 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
+	experience_per_unit = 2.5
 
 	value = 1
 
@@ -120,6 +137,7 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
+	experience_per_unit = 2.5
 
 	value = 1.25
 
@@ -181,6 +199,7 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
+	experience_per_unit = 4
 
 	value = 1.5
 
@@ -219,6 +238,7 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
+	experience_per_unit = 3
 
 	value = 2
 
@@ -262,6 +282,8 @@
 	value = 2.5
 
 	liquid = -0.5
+
+	experience_per_unit = 5
 
 /reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
@@ -316,6 +338,8 @@
 
 	liquid = -0.5
 
+	experience_per_unit = 5
+
 /reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
@@ -367,6 +391,8 @@
 	liquid = -0.5
 	alpha = 255
 
+	experience_per_unit = 5
+
 
 /reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
@@ -411,6 +437,8 @@
 	metabolism_stomach = 5/60 // Lasts a minute per 5u
 	metabolism_blood = 10/60 // Lasts a minute per 10u
 	var/strength = 100
+
+	experience_per_unit = 1
 
 	value = 2
 
@@ -476,6 +504,8 @@
 	metabolism_blood = METABOLISM_BLOOD * 10
 	metabolism_stomach = METABOLISM_BLOOD * 10
 
+	experience_per_unit = 5
+
 	value = 3
 
 /reagent/medicine/health_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -509,6 +539,8 @@
 	metabolism_blood = METABOLISM_BLOOD * 10
 	metabolism_stomach = METABOLISM_BLOOD * 10
 
+	experience_per_unit = 5
+
 	value = 3
 
 /reagent/medicine/stamina_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -539,6 +571,8 @@
 
 	metabolism_blood = METABOLISM_BLOOD * 10
 	metabolism_stomach = METABOLISM_BLOOD * 10
+
+	experience_per_unit = 5
 
 	value = 3
 
@@ -571,6 +605,8 @@
 
 	metabolism_blood = METABOLISM_BLOOD * 5
 	metabolism_stomach = METABOLISM_BLOOD * 5
+
+	experience_per_unit = 2
 
 	value = 3
 
@@ -611,6 +647,8 @@
 	flavor = "old shoes"
 
 	value = 12
+
+	experience_per_unit = 2
 
 	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
 
@@ -658,6 +696,8 @@
 	flavor = "old shoes"
 
 	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
+
+	experience_per_unit = 2
 
 	value = 8
 
@@ -707,6 +747,8 @@
 	alpha = 225
 	flavor = "not brains"
 	value = 15
+
+	experience_per_unit = 3
 
 /reagent/medicine/zombie_antidote/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()

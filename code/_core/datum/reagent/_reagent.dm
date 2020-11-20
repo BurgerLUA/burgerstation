@@ -45,9 +45,7 @@
 
 	var/flags_reagent
 
-	var/experience_per_unit = 0 //Medical experience
-
-/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 	return amount_added
 
 /reagent/proc/on_remove(var/reagent_container/container)

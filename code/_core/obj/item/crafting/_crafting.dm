@@ -154,7 +154,7 @@
 
 			for(var/obj/item/I in recipe_check)
 				if(R.transfer_reagents && I.reagents && I3.reagents)
-					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current)
+					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current, caller = caller)
 					qdel(I)
 				else
 					I.add_item_count(-1)

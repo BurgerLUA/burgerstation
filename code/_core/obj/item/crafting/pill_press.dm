@@ -61,8 +61,8 @@
 	GENERATE(P)
 	FINALIZE(P)
 
-	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount)
-	if(I2) I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount)
+	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount, caller = caller)
+	if(I2) I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount, caller = caller)
 
 	if(product_container)
 		product_container.add_to_inventory(caller,P,TRUE)

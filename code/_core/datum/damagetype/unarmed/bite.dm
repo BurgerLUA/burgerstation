@@ -50,6 +50,6 @@
 /damagetype/unarmed/bite/zombie/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(total_damage_dealt >= 10 && victim && victim.reagents)
-		victim.reagents.add_reagent(/reagent/toxin/zombie_toxin,CEILING(total_damage_dealt*0.05,1))
+		victim.reagents.add_reagent(/reagent/toxin/zombie_toxin,CEILING(total_damage_dealt*0.05,1),is_living(attacker) ? attacker : null)
 
 	return ..()

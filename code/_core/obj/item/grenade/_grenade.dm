@@ -192,7 +192,7 @@
 
 	for(var/k in stored_containers)
 		var/obj/item/container/beaker/B = k
-		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE)
+		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
 		B.reagents.update_container()
 
 	src.reagents.update_container()

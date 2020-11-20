@@ -83,14 +83,12 @@
 				var/mob/living/advanced/player/P = caller
 				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit.
 					var/experience_gain = -.
-					if(P == A.loc)
-						experience_gain *= 0.15
-					P.add_skill_xp(SKILL_MEDICINE,experience_gain)
+					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 		else
 			A.health.update_health()
 
 	var/reagent_transfer = CEILING((1/item_count_max)*reagents.volume_current, 1)
-	reagents.transfer_reagents_to(A.reagents,reagent_transfer)
+	reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
 	reagents.volume_max = item_count_current*10
 
 	if(caller == A.loc)

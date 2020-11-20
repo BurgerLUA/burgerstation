@@ -62,7 +62,7 @@
 			caller.to_chat(span("notice","\The [src.name] is empty."))
 			return TRUE
 
-		reagents.transfer_reagents_to(O.reagents,reagent_transfer)
+		reagents.transfer_reagents_to(O.reagents,reagent_transfer, caller = caller)
 
 		if(caller == O.loc)
 			caller.visible_message("\The [caller.name] sprays their [O.name] with \the [src].")
