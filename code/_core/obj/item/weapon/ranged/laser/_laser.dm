@@ -123,3 +123,6 @@
 		return FALSE
 
 	return TRUE
+	
+/obj/item/weapon/ranged/energy/get_examine_list(var/mob/caller)
+	return ..() + div("notice","[get_ammo_count()] shot\s remaining at the current charge level.")
