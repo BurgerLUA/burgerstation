@@ -21,7 +21,7 @@
 
 	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
-	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved!."))
+	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved again!."))
 
 	dead = TRUE
 	time_of_death = world.time
@@ -109,7 +109,9 @@
 
 /mob/living/proc/rejuvenate()
 	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss())
-
+	blood_volume = blood_volume_max
+	if(reagents) reagents.remove_all_reagents()
+	return TRUE
 
 /mob/living/proc/resurrect()
 	rejuvenate()

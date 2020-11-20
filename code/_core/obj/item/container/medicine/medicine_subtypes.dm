@@ -110,8 +110,7 @@
 	desc_extended = "Cable for construction purposes and fixing robotic limbs."
 	icon_state = "cable"
 	treatment_time_mul = 1.25
-	heal_burn = 80
-	heal_burn_percent = 10
+	heal_burn = 70
 	item_count_current = 5
 	item_count_max = 10
 

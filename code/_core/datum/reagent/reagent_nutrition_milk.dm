@@ -6,8 +6,8 @@
 	alpha = 255
 
 	nutrition_amount = 8
-	hydration_amount = 8
-	nutrition_quality_amount = 1
+	hydration_amount = 4
+	nutrition_quality_amount = 0
 
 	flavor = "milk"
 
