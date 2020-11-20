@@ -53,7 +53,13 @@
 
 	return .
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+
+	if(src.organic && !organic)
+		return 0
+
+	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
+		return 0
 
 	if(tox || oxy)
 		if(owner.loc && is_advanced(owner.loc))

@@ -102,7 +102,13 @@
 	update_health(update_hud = TRUE)
 	return TRUE
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+
+	if(src.organic && !organic)
+		return 0
+
+	if(!src.organic && !robotic)
+		return 0
 
 	var/total_loss = 0
 
@@ -203,21 +209,6 @@
 /health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
 	health_current = get_overall_health()
 	return TRUE
-
-/health/proc/adjust_loss(var/type=BRUTE,var/amount)
-	if(!amount)
-		return FALSE
-	switch(type)
-		if(BRUTE)
-			return adjust_brute_loss(amount)
-		if(BURN)
-			return adjust_burn_loss(amount)
-		if(TOX)
-			return adjust_tox_loss(amount)
-		if(OXY)
-			return adjust_oxy_loss(amount)
-		if(FATIGUE)
-			return adjust_fatigue_loss(amount)
 
 /health/proc/get_defense(var/atom/attacker,var/atom/hit_object)
 	return armor_base.Copy()

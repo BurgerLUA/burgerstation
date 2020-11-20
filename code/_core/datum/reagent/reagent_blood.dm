@@ -19,7 +19,7 @@
 
 /reagent/blood/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	if(owner.health) owner.health.adjust_loss_smart(tox=.*0.25)
+	if(owner.health) owner.health.adjust_loss_smart(tox=.*0.25,robotic=FALSE)
 	return .
 
 /reagent/blood/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -34,7 +34,7 @@
 				L.blood_volume += .
 				L.queue_health_update = TRUE
 		else
-			if(owner.health) owner.health.adjust_loss_smart(tox=.*1)
+			if(owner.health) owner.health.adjust_loss_smart(tox=.*1,robotic=FALSE)
 
 	return .
 

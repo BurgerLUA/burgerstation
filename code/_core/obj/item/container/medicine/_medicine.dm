@@ -113,6 +113,14 @@
 		caller.to_chat("You can't treat this!")
 		return FALSE
 
+	if(robotic)
+		if(target.health.organic)
+			caller.to_chat("This can only treat robotic limbs!")
+			return FALSE
+	else
+		if(!target.health.organic)
+			caller.to_chat("This can only treat organic limbs!")
+			return FALSE
 	return TRUE
 
 

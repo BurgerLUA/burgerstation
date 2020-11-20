@@ -229,7 +229,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*2)
+		owner.health.adjust_loss_smart(tox=.*2,robotic=FALSE)
 
 	return .
 
@@ -238,7 +238,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*4)
+		owner.health.adjust_loss_smart(tox=.*4,robotic=FALSE)
 
 	return .
 

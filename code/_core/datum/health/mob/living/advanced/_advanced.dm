@@ -1,4 +1,4 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	var/total_damage = 0
 
@@ -11,20 +11,21 @@
 		var/desired_organ = pick(TARGETABLE_LIMBS)
 		if(A.labeled_organs[desired_organ])
 			var/obj/item/O = A.labeled_organs[desired_organ]
-			if(O.health)
+			if(O.health && ((O.health.organic && organic) || (!O.health.organic && robotic)))
 				total_damage = O.health.adjust_loss_smart(brute=brute > 0 ? brute : 0,burn=burn > 0 ? burn : 0)
 
-	if(tox)
-		tox -= (tox > 0 ? resistance[TOX] : 0)
-		tox -= min(0,damage[TOX] + tox)
-		damage[TOX] += tox
-		total_damage += tox
+	if( (src.organic && organic) || (!src.organic && robotic) )
+		if(tox)
+			tox -= (tox > 0 ? resistance[TOX] : 0)
+			tox -= min(0,damage[TOX] + tox)
+			damage[TOX] += tox
+			total_damage += tox
 
-	if(oxy)
-		oxy -= (oxy > 0 ? resistance[OXY] : 0)
-		oxy -= min(0,damage[OXY] + oxy)
-		damage[OXY] += oxy
-		total_damage += oxy
+		if(oxy)
+			oxy -= (oxy > 0 ? resistance[OXY] : 0)
+			oxy -= min(0,damage[OXY] + oxy)
+			damage[OXY] += oxy
+			total_damage += oxy
 
 	if(brute < 0 || burn < 0) //Heal damage
 		var/list/desired_heal_amounts = list(
@@ -36,9 +37,15 @@
 
 		var/list/damage_totals = list()
 
-		for(var/organ_id in A.labeled_organs)
+		for(var/organ_id in TARGETABLE_LIMBS)
 			var/obj/item/organ/O = A.labeled_organs[organ_id]
+			if(!O)
+				continue
 			if(!O.health)
+				continue
+			if(O.health.organic && !organic)
+				continue
+			if(!O.health.organic && !robotic)
 				continue
 			for(var/damage_type in O.health.damage)
 				var/damage_amount =  O.health.damage[damage_type]

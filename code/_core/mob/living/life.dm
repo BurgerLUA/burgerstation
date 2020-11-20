@@ -253,7 +253,7 @@ mob/living/proc/on_life_slow()
 	else if(blood_volume > blood_volume_max)
 		blood_volume--
 		if(blood_volume >= blood_volume_max*1.05)
-			if(health) health.adjust_loss_smart(tox=1)
+			if(health) health.adjust_loss_smart(tox=1,robotic=FALSE)
 
 	handle_regen()
 
@@ -295,7 +295,7 @@ mob/living/proc/on_life_slow()
 			if(last_intoxication_message != 4)
 				to_chat(span("danger","You feel gjkpeagheutyhaophghe."))
 				last_intoxication_message = 4
-			health.adjust_tox_loss(0.25*(LIFE_TICK_SLOW/10))
+			health.adjust_loss_smart(tox=0.25*(LIFE_TICK_SLOW/10),robotic = FALSE)
 			queue_health_update = TRUE
 
 	if(intoxication >= 600 && prob(intoxication/100))

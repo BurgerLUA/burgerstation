@@ -19,15 +19,16 @@
 
 /health/obj/item/mech_part/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
 
+	/*
 	if(tox || oxy)
 		if(owner.loc && is_modular_mech(owner.loc))
 			var/mob/living/vehicle/mech/modular/A = owner.loc
 			if(A.health)
 				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy)
+	*/
 
-		tox = 0
-		oxy = 0
-
+	tox = 0
+	oxy = 0
 
 	. += ..(brute,burn,tox,oxy)
 

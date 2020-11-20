@@ -62,6 +62,26 @@
 	reagents.add_reagent(/reagent/medicine/styptic_powder,50)
 	return ..()
 
+/obj/item/container/medicine/nanopaste
+	name = "nanopaste"
+	desc = "Nanomachines, son!"
+	desc_extended = "A tube of healing nanites that heals any mechanical limb of any brute and burn damage."
+	icon_state = "nanopaste"
+	treatment_time_mul = 1.25
+	heal_brute = 80
+	heal_brute_percent = 10
+	heal_burn = 80
+	heal_burn_percent = 10
+	heal_bleeding = TRUE
+	item_count_current = 5
+	item_count_max = 10
+
+	value = 80
+
+	robotic = TRUE
+
+
+
 /obj/item/container/medicine/burn_kit
 	name = "burn kit"
 	desc = "Each kit contains a set of ointments and antiseptics."
@@ -83,6 +103,21 @@
 /obj/item/container/medicine/burn_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,50)
 	return ..()
+
+/obj/item/container/medicine/cable
+	name = "cable"
+	desc = "I prefer satellite"
+	desc_extended = "Cable for construction purposes and fixing robotic limbs."
+	icon_state = "cable"
+	treatment_time_mul = 1.25
+	heal_burn = 80
+	heal_burn_percent = 10
+	item_count_current = 5
+	item_count_max = 10
+
+	value = 20
+
+	robotic = TRUE
 
 /obj/item/container/medicine/patch
 	name = "medical patch"

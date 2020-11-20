@@ -23,7 +23,7 @@
 	. = ..()
 
 	if(original_owner && original_owner.health)
-		original_owner.health.adjust_loss_smart(tox=.)
+		original_owner.health.adjust_loss_smart(tox=.,robotic=FALSE)
 
 	return .
 
@@ -177,7 +177,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-5)
+		owner.health.adjust_loss_smart(oxy=.*-5,robotic = FALSE)
 
 	return .
 
@@ -185,7 +185,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-4)
+		owner.health.adjust_loss_smart(oxy=.*-4,robotic = FALSE)
 
 	return .
 
@@ -300,7 +300,7 @@
 
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
-		container.owner.health.adjust_loss_smart(burn=.*-10)
+		container.owner.health.adjust_loss_smart(burn=.*-10,robotic=FALSE)
 		if(is_living(container.owner.loc))
 			var/mob/living/L = container.owner.loc
 			L.do_emote("scream")
@@ -314,11 +314,11 @@
 		if(is_living(owner.loc))
 			var/mob/living/L = owner.loc
 			if(L.health)
-				owner.health.adjust_loss_smart(burn=.*-5,update=FALSE)
+				owner.health.adjust_loss_smart(burn=.*-5,robotic=FALSE)
 				L.burn_regen_buffer += 3*.
 				L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 		else
-			owner.health.adjust_loss_smart(burn=.*-5)
+			owner.health.adjust_loss_smart(burn=.*-5,robotic=FALSE)
 
 
 	return .
@@ -356,7 +356,7 @@
 
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
-		container.owner.health.adjust_loss_smart(brute=.*-10)
+		container.owner.health.adjust_loss_smart(brute=.*-10,robotic=FALSE)
 		if(is_living(container.owner.loc))
 			var/mob/living/L = container.owner.loc
 			L.do_emote("scream")
@@ -371,12 +371,12 @@
 		if(is_living(owner.loc))
 			var/mob/living/L = owner.loc
 			if(L.health)
-				owner.health.adjust_loss_smart(brute=.*-5,update=FALSE)
+				owner.health.adjust_loss_smart(brute=.*-5,robotic=FALSE)
 				L.brute_regen_buffer += 3*.
 				L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 		else
-			owner.health.adjust_loss_smart(brute=.*-5)
+			owner.health.adjust_loss_smart(brute=.*-5,robotic=FALSE)
 
 	return .
 
@@ -409,7 +409,7 @@
 	. = ..()
 
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
-		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=.)
+		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=.,robotic=FALSE)
 		. = 0
 
 	return .
@@ -513,7 +513,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5,robotic = FALSE)
 
 	return .
 
@@ -522,7 +522,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5,robotic = FALSE)
 
 	return .
 
@@ -664,7 +664,7 @@
 			var/reagent/R = REAGENT(reagent_id)
 			if(R.type == src.type)
 				continue
-			owner.health.adjust_tox_loss(container.remove_reagent(reagent_id,.*1.5))
+			owner.health.adjust_loss_smart(tox=container.remove_reagent(reagent_id,.*1.5), robotic = FALSE)
 		L.queue_health_update = TRUE
 
 	return .
@@ -681,7 +681,7 @@
 			var/reagent/R = REAGENT(reagent_id)
 			if(R.type == src.type)
 				continue
-			owner.health.adjust_tox_loss(container.remove_reagent(reagent_id,.*1.5))
+			owner.health.adjust_loss_smart(tox=container.remove_reagent(reagent_id,.*1.5),robotic = FALSE)
 		L.queue_health_update = TRUE
 
 	return .
@@ -714,9 +714,7 @@
 			if(!R.lethal)
 				continue
 			container.remove_reagent(reagent_id,.*2)
-		if(L.health)
-			L.health.adjust_tox_loss(.*-1)
-			L.queue_health_update = TRUE
+			L.tox_regen_buffer += 3*.
 
 	return .
 
@@ -733,9 +731,8 @@
 			if(!R.lethal)
 				continue
 			container.remove_reagent(reagent_id,.*2)
-			if(L.health)
-				L.health.adjust_tox_loss(.*-1)
-				L.queue_health_update = TRUE
+			L.tox_regen_buffer += 2*.
+
 
 	return .
 
