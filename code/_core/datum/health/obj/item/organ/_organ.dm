@@ -79,39 +79,5 @@
 
 	return .
 
-/health/obj/item/organ/adjust_tox_loss(var/value)
-	if(!owner.loc || !is_advanced(owner.loc))
-		return 0
-
-	var/mob/living/advanced/A = owner.loc
-
-	if(!A.health)
-		return FALSE
-
-	return A.health.adjust_tox_loss(value)
-
-/health/obj/item/organ/adjust_oxy_loss(var/value)
-	if(!owner.loc || !is_advanced(owner.loc))
-		return 0
-
-	var/mob/living/advanced/A = owner.loc
-
-	if(!A.health)
-		return FALSE
-
-	return A.health.adjust_oxy_loss(value)
-
-/health/obj/item/organ/adjust_fatigue_loss(var/value)
-	if(!owner.loc || !is_advanced(owner.loc))
-		return 0
-
-	var/mob/living/advanced/A = owner.loc
-
-	if(!A.health)
-		return FALSE
-
-	return A.health.adjust_fatigue_loss(value)
-
-
 /health/obj/item/organ/synthetic
 	organic = FALSE

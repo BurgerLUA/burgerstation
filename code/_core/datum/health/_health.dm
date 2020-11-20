@@ -76,27 +76,6 @@
 /health/proc/get_overall_health(var/includes_fatigue = FALSE)
 	return health_max - get_total_loss(includes_fatigue)
 
-//Setting
-/health/proc/set_brute_loss(var/value)
-	damage[BRUTE] = value
-	return value
-
-/health/proc/set_burn_loss(var/value)
-	damage[BURN] = value
-	return value
-
-/health/proc/set_tox_loss(var/value)
-	damage[TOX] = value
-	return value
-
-/health/proc/set_oxy_loss(var/value)
-	damage[OXY] = value
-	return value
-
-/health/proc/set_fatigue_loss(var/value)
-	damage[FATIGUE] = value
-	return value
-
 /health/proc/restore()
 	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
 	update_health(update_hud = TRUE)
@@ -140,31 +119,6 @@
 		update_health()
 
 	return total_loss
-
-//Adding/Subtracting
-/health/proc/adjust_brute_loss(var/value)
-	value -= (value > 0 ? resistance[BRUTE] : 0)
-	value -= min(0,damage[BRUTE] + value)
-	damage[BRUTE] += value
-	return value
-
-/health/proc/adjust_burn_loss(var/value)
-	value -= (value > 0 ? resistance[BURN] : 0)
-	value -= min(0,damage[BURN] + value)
-	damage[BURN] += value
-	return value
-
-/health/proc/adjust_tox_loss(var/value)
-	value -= (value > 0 ? resistance[TOX] : 0)
-	value -= min(0,damage[TOX] + value)
-	damage[TOX] += value
-	return value
-
-/health/proc/adjust_oxy_loss(var/value)
-	value -= (value > 0 ? resistance[OXY] : 0)
-	value -= min(0,damage[OXY] + value)
-	damage[OXY] += value
-	return value
 
 /health/proc/adjust_fatigue_loss(var/value)
 	value -= (value > 0 ? resistance[FATIGUE] : 0)

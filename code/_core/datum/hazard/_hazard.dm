@@ -14,6 +14,7 @@
 		"The cold air hurts you..."
 	)
 
+/* rewrite
 /hazard/cold/process_player_tick(var/mob/living/advanced/player/P)
 
 	var/total_damage = 0
@@ -33,7 +34,6 @@
 
 		var/damage_amount = base_damage - P.protection_cold[k]
 		if(damage_amount > 0)
-			total_damage += O.health.adjust_burn_loss(damage_amount)
 			all_damaged_organs += O.name
 
 	if(total_damage)
@@ -41,3 +41,4 @@
 		P.to_chat(span("warning","You took [total_damage] burn damage from the cold! (Affected limbs: [english_list(all_damaged_organs)])"),CHAT_TYPE_COMBAT)
 
 	return TRUE
+*/

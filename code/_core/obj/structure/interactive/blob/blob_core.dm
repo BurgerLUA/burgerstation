@@ -35,7 +35,7 @@
 
 	for(var/k in linked_walls)
 		var/obj/structure/interactive/blob/B = k
-		B.health.adjust_brute_loss(max(0,B.health.health_current - 10))
+		B.health.adjust_loss_smart(brute=max(0,B.health.health_current - 10))
 		B.health.update_health()
 		B.color = null
 

@@ -82,13 +82,6 @@
 
 	return total_damage
 
-/health/mob/living/advanced/adjust_brute_loss(var/value)
-	return owner.health.adjust_loss_smart(brute=value)
-
-/health/mob/living/advanced/adjust_burn_loss(var/value)
-	return owner.health.adjust_loss_smart(burn=value)
-
-
 /*
 /health/mob/living/advanced/adjust_tox_loss(var/value)
 

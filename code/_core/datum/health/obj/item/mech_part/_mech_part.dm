@@ -37,36 +37,3 @@
 		A.queue_health_update = TRUE
 
 	return .
-
-/health/obj/item/mech_part/adjust_tox_loss(var/value)
-	if(!owner.loc || !is_modular_mech(owner.loc))
-		return 0
-
-	var/mob/living/vehicle/mech/modular/A = owner.loc
-
-	if(!A.health)
-		return FALSE
-
-	return A.health.adjust_tox_loss(value)
-
-/health/obj/item/mech_part/adjust_oxy_loss(var/value)
-	if(!owner.loc || !is_modular_mech(owner.loc))
-		return 0
-
-	var/mob/living/vehicle/mech/modular/A = owner.loc
-
-	if(!A.health)
-		return FALSE
-
-	return A.health.adjust_oxy_loss(value)
-
-/health/obj/item/mech_part/adjust_fatigue_loss(var/value)
-	if(!owner.loc || !is_modular_mech(owner.loc))
-		return 0
-
-	var/mob/living/vehicle/mech/modular/A = owner.loc
-
-	if(!A.health)
-		return FALSE
-
-	return A.health.adjust_fatigue_loss(value)

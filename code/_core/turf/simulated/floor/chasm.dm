@@ -26,7 +26,7 @@
 			if(istype(L.health))
 				L.visible_message(span("danger","\The [O.name] falls from above and takes damage from the impact!"))
 				for(var/i=1,i<=3,i++)
-					L.health.adjust_brute_loss(-30)
+					L.health.adjust_loss_smart(brute=-10)
 				L.queue_health_update = TRUE
 				L.send_pain(40)
 				L.add_status_effect(STUN,30,30)
