@@ -3,6 +3,9 @@
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
+	var/swing_sounds = list(
+		'sound/weapons/fists/swing.ogg'
+	)
 	var/impact_sounds = list(
 		'sound/weapons/fists/punch1.ogg',
 		'sound/weapons/fists/punch2.ogg',
@@ -532,11 +535,19 @@
 
 	return TRUE
 
+/damagetype/proc/do_swing_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
+	if(length(swing_sounds))
+		var/turf/T = get_turf(victim)
+		play(pick(swing_sounds),T)
+		return TRUE
+	return FALSE
+
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
 		var/turf/T = get_turf(victim)
 		play(pick(miss_sounds),T)
-		create_alert(VIEW_RANGE,T,attacker,ALERT_LEVEL_NOISE)
+		return TRUE
+	return FALSE
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -562,6 +573,8 @@
 			animate(transform = matrix(), time = FLOOR(caller_attack_delay*0.99,1), flags = ANIMATION_LINEAR_TRANSFORM)
 
 	. = CEILING(weapon_attack_delay*0.125,1)
+
+	do_swing_sound(attacker,victim,weapon)
 
 	if(draw_weapon)
 		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 2,victim,attacker,weapon)

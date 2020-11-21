@@ -26,6 +26,7 @@
 	enabled = !enabled
 	update_sprite()
 	update_atom_light()
+	update_held_icon()
 	return TRUE
 
 /obj/item/weapon/melee/torch/update_atom_light()

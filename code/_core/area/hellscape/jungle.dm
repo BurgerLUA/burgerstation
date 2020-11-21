@@ -21,7 +21,11 @@
 		'sound/ambient/ambiruin_7.ogg',
 	)
 
+	sound_environment = ENVIRONMENT_PLAIN
+
 
 /area/hellscape/caves
 	name = "Caves"
 	icon_state = "cave"
+
+	sound_environment = ENVIRONMENT_CAVE

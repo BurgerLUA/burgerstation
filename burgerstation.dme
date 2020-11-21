@@ -38,7 +38,7 @@
 #include "code\__defines\damage.dm"
 #include "code\__defines\directions.dm"
 #include "code\__defines\end_states.dm"
-#include "code\__defines\enviroment.dm"
+#include "code\__defines\environment.dm"
 #include "code\__defines\experience.dm"
 #include "code\__defines\factions.dm"
 #include "code\__defines\file_paths.dm"

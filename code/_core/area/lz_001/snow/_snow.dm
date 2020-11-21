@@ -11,10 +11,14 @@
 
 	tracks = TRACKS_MOUNTAIN
 
+	sound_environment = ENVIRONMENT_FOREST
+
 
 /area/lz_001/snow/interior
 	sunlight_freq = 0
 	interior = TRUE
+
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/lz_001/snow/interior/lodge
 	name = "\improper White Forest Lodge"

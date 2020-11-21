@@ -207,6 +207,7 @@
 
 	update_sprite()
 	item_to_wield.update_sprite()
+
 	return TRUE
 
 

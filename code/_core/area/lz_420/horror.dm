@@ -5,6 +5,8 @@
 	icon_state = "pink"
 	interior = TRUE
 
+	sound_environment = ENVIRONMENT_ROOM
+
 
 /area/lz_420/basement/lobby
 	name = "Basement Lobby"
@@ -14,6 +16,7 @@
 /area/lz_420/basement/bathroom
 	name = "Basement Bathroom Lobby"
 	icon_state = "bathroom"
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/lz_420/basement/bathroom/male
 	name = "Basement Bathroom Lobby - Mens"
@@ -22,7 +25,6 @@
 /area/lz_420/basement/bathroom/female
 	name = "Basement Bathroom Lobby - Womens"
 	icon_state = "red"
-
 
 /area/lz_420/basement/medical
 	name = "Basement Medical"
@@ -39,3 +41,5 @@
 /area/lz_420/basement/hallway
 	name = "Basement Main Hallway"
 	icon_state = "hall"
+
+	sound_environment = ENVIRONMENT_HALLWAY

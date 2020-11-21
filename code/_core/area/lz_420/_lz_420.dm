@@ -5,11 +5,15 @@
 
 	area_identifier = "Mission"
 
+	sound_environment = ENVIRONMENT_FOREST
+
 /area/lz_420/nexus
 	name = "\improper Nexus"
 	sunlight_freq = 0
 	interior = TRUE
 	icon_state = "pink"
+
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/lz_420/nexus/entrance
 	name = "\improper Nexus East Entrance"
@@ -19,21 +23,37 @@
 	name = "\improper Central Nexus Hallway"
 	icon_state = "hall_c"
 
+	sound_environment = ENVIRONMENT_HALLWAY
+
 /area/lz_420/nexus/west
 	name = "\improper West Nexus Hallway"
 	icon_state = "hall_w"
+
+	sound_environment = ENVIRONMENT_HALLWAY
 
 /area/lz_420/nexus/east
 	name = "\improper East Nexus Hallway"
 	icon_state = "hall_e"
 
+	sound_environment = ENVIRONMENT_HALLWAY
+
 /area/lz_420/nexus/south
 	name = "\improper South Nexus Hallway"
 	icon_state = "hall_s"
 
+	sound_environment = ENVIRONMENT_HALLWAY
+
 /area/lz_420/nexus/north
 	name = "\improper North Nexus Hallway"
 	icon_state = "hall_n"
+
+	sound_environment = ENVIRONMENT_HALLWAY
+
+/area/lz_420/nexus/maint
+	name = "\improper Nexus Maintenance"
+	icon_state = "maint"
+
+	sound_environment = ENVIRONMENT_ALLEY
 
 /area/lz_420/nexus/chapel
 	name = "\improper Nexus Chapel"
