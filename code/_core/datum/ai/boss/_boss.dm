@@ -14,6 +14,7 @@
 	radius_find_enemy_caution = BOSS_RANGE
 	radius_find_enemy_combat = BOSS_RANGE
 
+	ignore_hazard_turfs = TRUE
 
 /ai/boss/set_active(var/desired_active=TRUE,var/force=FALSE)
 

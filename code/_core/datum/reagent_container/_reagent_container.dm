@@ -327,7 +327,7 @@
 			FINALIZE(A)
 			if(!A.reagents)
 				break
-			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current, caller = caller))
+			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current),caller = caller)
 	else
 		update_container()
 

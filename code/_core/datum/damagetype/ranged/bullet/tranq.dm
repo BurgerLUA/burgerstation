@@ -25,7 +25,7 @@
 		var/mob/living/L = victim
 		if(L.health.stamina_current <= 0)
 			if(L.ckey_last)
-				L.add_status_effect(SLEEP,300,300) //30 seconds of sleep
+				L.add_status_effect(SLEEP,100,100) //10 seconds of sleep
 			else
 				L.add_status_effect(SLEEP,600,600) //1 minute of sleep
 

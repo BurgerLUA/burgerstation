@@ -56,7 +56,7 @@
 			S.total_charge += total_charge
 			if(is_living(caller))
 				var/mob/living/L = caller
-				L.add_skill_xp(SKILL_ENCHANTING,CEILING(total_charge*0.1,1))
+				L.add_skill_xp(SKILL_ENCHANTING,CEILING(total_charge*0.05,1))
 			total_charge = 0
 		else
 			caller.to_chat(span("notice","\The [src] is empty!"))

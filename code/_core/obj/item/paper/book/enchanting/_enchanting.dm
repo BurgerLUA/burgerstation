@@ -9,7 +9,7 @@
 
 	var/enchanting_phrase = "Memes."
 
-	value = 1000
+	value = -1
 
 	editable = FALSE
 
@@ -31,16 +31,21 @@
 
 /obj/item/paper/book/enchanting/fire
 	stored_enchantment = /enchantment/fire
+	value = 1000
 
 /obj/item/paper/book/enchanting/stagger
 	stored_enchantment = /enchantment/stagger
+	value = 1500
 
 /obj/item/paper/book/enchanting/stun
 	stored_enchantment = /enchantment/stun
+	value = 2000
 
 /obj/item/paper/book/enchanting/disarm
 	stored_enchantment = /enchantment/disarm
+	value = 1500
 
 /obj/item/paper/book/enchanting/blood_leech
 	stored_enchantment = /enchantment/blood_leech
+	value = 2000
 

@@ -110,7 +110,7 @@
 		/mob/living/simple/npc/cult/construct/floating = 25,
 		/mob/living/simple/npc/cult/cultist = 100
 	)
-	hidden = FALSE
+	hidden = TRUE
 
 
 /gamemode/horde/boss_rush

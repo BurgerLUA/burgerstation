@@ -410,7 +410,7 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
-		if(has_fatigue_damage && L.ai&& L.has_status_effect(FATIGUE) && !L.has_status_effect(SLEEP))
+		if(has_fatigue_damage && L.ai && L.has_status_effect(FATIGUE) && !L.has_status_effect(SLEEP))
 			L.add_status_effect(SLEEP,600,600)
 
 	if(is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.

@@ -101,6 +101,8 @@
 
 	var/idle_time = 0
 
+	var/ignore_hazard_turfs = FALSE
+
 /ai/Destroy()
 	if(owner) owner.ai = null
 	owner = null
@@ -268,13 +270,13 @@
 
 	return TRUE
 
-/ai/proc/handle_movement_checks() //Stops crowding/stacking.
+/ai/proc/handle_movement_checks() //Stops crowding/stacking/grouping.
 
 	var/turf/T
 
 	if(owner.move_dir)
 		T = get_step(owner,owner.move_dir)
-		if(istype(T,/turf/simulated/hazard/))
+		if(!ignore_hazard_turfs && istype(T,/turf/simulated/hazard/))
 			var/turf/T2 = get_turf(owner)
 			if(!istype(T2,/turf/simulated/hazard/))
 				owner.move_dir = 0x0
@@ -289,9 +291,7 @@
 			continue
 		if(L.dead)
 			continue
-		if(!owner.move_dir && !L.move_dir)
-			owner.move_dir = pick(DIRECTIONS_ALL)
-		else if(owner.move_dir && !L.move_dir)
+		if(owner.move_dir && !L.move_dir)
 			owner.move_dir = 0x0
 		else
 			owner.move_dir = pick(DIRECTIONS_ALL)

@@ -14,18 +14,17 @@
 			if(O.health && ((O.health.organic && organic) || (!O.health.organic && robotic)))
 				total_damage = O.health.adjust_loss_smart(brute=brute > 0 ? brute : 0,burn=burn > 0 ? burn : 0)
 
-	if( (src.organic && organic) || (!src.organic && robotic) )
-		if(tox)
-			tox -= (tox > 0 ? resistance[TOX] : 0)
-			tox -= min(0,damage[TOX] + tox)
-			damage[TOX] += tox
-			total_damage += tox
+	if(tox)
+		tox -= (tox > 0 ? resistance[TOX] : 0)
+		tox -= min(0,damage[TOX] + tox)
+		damage[TOX] += tox
+		total_damage += tox
 
-		if(oxy)
-			oxy -= (oxy > 0 ? resistance[OXY] : 0)
-			oxy -= min(0,damage[OXY] + oxy)
-			damage[OXY] += oxy
-			total_damage += oxy
+	if(oxy)
+		oxy -= (oxy > 0 ? resistance[OXY] : 0)
+		oxy -= min(0,damage[OXY] + oxy)
+		damage[OXY] += oxy
+		total_damage += oxy
 
 	if(brute < 0 || burn < 0) //Heal damage
 		var/list/desired_heal_amounts = list(

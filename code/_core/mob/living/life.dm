@@ -347,7 +347,7 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen,robotic=FALSE)
+		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen, robotic=FALSE)
 		brute_regen_buffer -= brute_to_regen
 		burn_regen_buffer -= burn_to_regen
 		tox_regen_buffer -= tox_to_regen

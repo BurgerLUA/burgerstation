@@ -28,7 +28,7 @@
 		if(!owner_as_ash_drake.boss_state)
 			var/distance = get_dist(owner,objective_attack)
 			var/health_mod = (1 - (owner.health.health_current/owner.health.health_max))*25
-			var/fly_chance = max(0,distance*10 - 50) + failed_attack_frames + health_mod
+			var/fly_chance = max(0,distance*10 - 25) + failed_attack_frames + health_mod
 			var/shoot_chance = max(0,distance*10 - 25) + failed_attack_frames + health_mod
 			if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max))
 				failed_attack_frames = 0

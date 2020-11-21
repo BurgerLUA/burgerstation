@@ -1,2 +1,2 @@
-/health/mob/living/advanced/
+/health/mob/living/advanced/robotic
 	organic = FALSE
