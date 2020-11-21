@@ -41,7 +41,7 @@
 		BLADE = 75,
 		BLUNT = 75,
 		PIERCE = 100,
-		LASER = 75,
+		LASER = 100,
 		ARCANE = -250,
 		HEAT = 50,
 		COLD = 50,
