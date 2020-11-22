@@ -246,15 +246,13 @@
 	return .
 
 /mob/living/advanced/proc/update_slowdown()
-	//https://www.desmos.com/calculator/9oyrocojgp
-	var/cucumber = (weight/weight_max)
-	cucumber = clamp(cucumber,0,0.99)
-	. = 2 - (1-cucumber)**0.2
+
+	. = 1
 
 	for(var/obj/item/clothing/C in worn_objects)
 		. -= C.speed_bonus
 
-	. = FLOOR(.,0.05)
+	. = FLOOR(.,0.01)
 
 	slowdown_mul = .
 
