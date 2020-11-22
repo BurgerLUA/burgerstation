@@ -123,3 +123,19 @@
 	)
 
 	value = 300
+	
+/obj/item/attachment/barrel/laser_charger/advanced
+	name = "experimental laser charger"
+	desc = "HYPERCHARGE."
+	desc_extended = "Supercharges a laser weapon's damage by increasing the amount of capacitors used with no extra energy cost. Increases damage and projectile speed at the cost of greater recoil, higher spread, and a greater delay. This seems to be a prototype designed to increase damage and projectile speed above the original design."
+	icon_state = "laser_charger"
+
+	attachment_stats = list(
+		damage_multiplier = 1.5,
+		projectile_speed = 1.5,
+		heat_spread = 1.25,
+		view_punch = 3,
+		shoot_delay = 1.5,
+	)
+
+	value = 800
