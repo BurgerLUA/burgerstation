@@ -34,7 +34,6 @@
 		else
 			icon_state_held_left = "[initial(icon_state_held_left)]_on"
 			icon_state_held_right = "[initial(icon_state_held_right)]_on"
-		world.log << icon_state_held_left
 		dan_icon_state = "[initial(dan_icon_state)]_on"
 		dan_icon_state_wielded = "[initial(dan_icon_state_wielded)]_on"
 		dan_icon_state_back = "[initial(dan_icon_state_back)]_on"

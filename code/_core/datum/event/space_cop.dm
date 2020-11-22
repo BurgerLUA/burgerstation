@@ -17,16 +17,6 @@
 
 	var/list/mob/living/tracked_space_cops = list()
 
-
-/event/space_cop/Destroy()
-	associated_shuttle_controller = null
-	tracked_space_cops.Cut()
-	recalling = FALSE
-	next_recall = 0
-	duration = -1
-	space_cops_spawned = 0
-	return ..()
-
 /event/space_cop/on_start()
 
 	log_debug("Starting Space Cop Event")
@@ -165,5 +155,12 @@
 
 	associated_shuttle_controller.state = SHUTTLE_STATE_WAITING
 	associated_shuttle_controller.time = 0
+
+	associated_shuttle_controller = null
+	tracked_space_cops.Cut()
+	recalling = FALSE
+	next_recall = 0
+	duration = -1
+	space_cops_spawned = 0
 
 	return ..()

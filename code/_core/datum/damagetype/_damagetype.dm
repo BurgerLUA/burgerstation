@@ -357,17 +357,17 @@
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
-		if(victim_defense >= INFINITY) //Defense is infinite. No point in calculating further armor.
+		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further armor.
 			damage_to_deal[damage_type] = 0
 			continue
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
-			if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
+			if(IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any magic damage if we resist magic.
 				damage_to_deal[damage_type] = 0
 				continue
-			if(victim_defense == INFINITY)
+			if(IS_INFINITY(victim_defense))
 				continue
 			victim_defense -= defense_rating_attacker[damage_type]*0.5
 			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
@@ -396,13 +396,11 @@
 	var/total_damage_dealt = 0
 	if(victim.immortal || hit_object.immortal)
 		for(var/damage_type in damage_to_deal_main)
-			if(damage_type == FATIGUE)
-				continue
 			total_damage_dealt += damage_to_deal_main[damage_type]
 	else
 		if(hit_object.health)
-			hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
 			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
+			total_damage_dealt += hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
 		else
 			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
 			return TRUE

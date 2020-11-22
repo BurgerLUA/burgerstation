@@ -14,13 +14,22 @@
 
 	var/last_bump_hit = 0
 
+	value = 500
+
+/obj/item/weapon/melee/energy/chainsaw/post_move(var/atom/A)
+
+	if(isturf(A))
+		stop()
+
+	return ..()
+
 /obj/item/weapon/melee/energy/chainsaw/think()
 
 	if(world.time >= next_chain_time)
 		if(last_bump_hit >= world.time - 5)
-			play('sound/weapons/chainsaw/loop_bump.ogg',src)
+			play('sound/weapons/chainsaw/loop_bump.ogg',src, volume = 20)
 		else
-			play('sound/weapons/chainsaw/loop.ogg',src)
+			play('sound/weapons/chainsaw/loop.ogg',src,volume = 20)
 		next_chain_time = world.time + 5
 
 	return ..()

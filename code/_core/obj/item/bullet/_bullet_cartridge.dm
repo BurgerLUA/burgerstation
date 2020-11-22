@@ -38,8 +38,6 @@
 
 	var/bullet_seed //For icon generation.
 
-	plane = PLANE_JUNK
-
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
 	return ..()
@@ -125,7 +123,7 @@
 		if(total_misfire_chance && luck(list(caller,src,loc),total_misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
-		plane = PLANE_OBJ
+		plane = PLANE_JUNK
 		item_count_max = max(item_count_max,100000) //Some absurd value.
 		if(caseless)
 			qdel(src)

@@ -27,10 +27,6 @@
 	attack_delay = SPEED_CLUB*0.5
 	attack_delay_max = SPEED_CLUB
 
-	swing_sounds = list(
-		'sound/weapons/chainsaw/swing.ogg'
-	)
-
 /damagetype/melee/sword/chainsaw/on
 	name = "chainsaw"
 
@@ -57,3 +53,7 @@
 
 	attack_delay = SPEED_GREATSWORD*0.5
 	attack_delay_max = SPEED_GREATSWORD*0.5
+
+	swing_sounds = list(
+		'sound/weapons/chainsaw/swing.ogg'
+	)

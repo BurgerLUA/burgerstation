@@ -4,11 +4,7 @@
 		/obj/item/clothing/feet/shoes/winter,
 		/obj/item/clothing/feet/shoes/winter/left,
 		/obj/item/clothing/back/storage/backpack/explorer,
-		/obj/item/clothing/belt/storage/tool,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm
+		/obj/item/clothing/belt/storage/tool
 	)
 
 /loadout/rev/olution
@@ -44,11 +40,7 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/weapon/melee/energy/sword/red,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545,
@@ -68,11 +60,7 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/weapon/melee/energy/sword/red,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
@@ -91,17 +79,11 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/weapon/melee/energy/sword/red,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
-		/obj/item/magazine/rifle_939,
-		/obj/item/grenade/timed/explosive/,
-		/obj/item/grenade/timed/explosive/
+		/obj/item/magazine/rifle_939
 	)
 
 /loadout/rev/special_forces
@@ -116,11 +98,7 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/weapon/melee/energy/sword/red,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
