@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/full/carbon
-	name = "space military helmet"
+	name = "carbon helmet"
 	icon = 'icons/obj/item/clothing/hats/carbon.dmi'
 	desc = "Military. In space!"
 	desc_extended = "A helmet made from hardened carbon fibres."

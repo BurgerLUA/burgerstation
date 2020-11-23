@@ -113,3 +113,11 @@
 
 /obj/item/clothing/overwear/armor/plate_carrier/pocket/black
 	color = COLOR_BLACK
+
+/obj/item/clothing/overwear/armor/plate_carrier/pocket/black/medium/Generate()
+	var/obj/item/armor_plate/medium/M = new(src)
+	INITIALIZE(M)
+	GENERATE(M)
+	FINALIZE(M)
+	installed_plate_carriers += M
+	return ..()
