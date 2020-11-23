@@ -6,15 +6,12 @@
 
 	var/experience_per_unit = 0 //Medical XP per unit added.
 
-/reagent/medicine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/medicine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 
 	. = ..()
 
-	if(experience_per_unit && caller && is_player(caller))
-		//Imagine readability
-		var/mob/living/L = is_organ(container.owner) && is_living(container.owner.loc) ? container.owner.loc : (is_living(container.owner) ? container.owner : null)
-		if(L && !L.dead)
-			caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
+	if(!L.dead && experience_per_unit && caller && is_player(caller))
+		caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
 
 	return .
 
@@ -160,11 +157,11 @@
 
 	return .
 
-/reagent/medicine/dexalin //Shit chem, rework.
+/reagent/medicine/dexalin
 	name = "Dexalin"
 	desc = "Blue for oxy."
-	color = "#0000FF"
-	alpha = 200
+	color = "#1111FF"
+	alpha = 150
 
 	flavor = "bitterness"
 
@@ -173,19 +170,19 @@
 
 	value = 1.5
 
-/reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/dexalin/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-5,robotic = FALSE)
+	L.blood_oxygen += 0.2
 
 	return .
 
-/reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/dexalin/on_remove_living(var/mob/living/L,var/reagent_container/container)
+
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-4,robotic = FALSE)
+	L.blood_oxygen -= 0.2
 
 	return .
 
@@ -442,25 +439,21 @@
 
 	value = 2
 
-/reagent/medicine/adrenaline/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/medicine/adrenaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(is_living(container.owner))
-		var/mob/living/L = container.owner
-		if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
-			L.add_status_effect(ADRENALINE,strength,-1)
+	if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+		L.add_status_effect(ADRENALINE,strength,-1)
 
 	return .
 
-/reagent/medicine/adrenaline/on_remove(var/reagent_container/container)
+/reagent/medicine/adrenaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(is_living(container.owner))
-		var/mob/living/L = container.owner
-		if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
-			L.remove_status_effect(ADRENALINE)
+	if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+		L.remove_status_effect(ADRENALINE)
 
 	return .
 
@@ -476,12 +469,11 @@
 
 	value = 1.5
 
-/reagent/medicine/adrenaline/epinephrine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/medicine/adrenaline/epinephrine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(. + current_volume >= 10 && is_living(container.owner))
-		var/mob/living/L = container.owner
+	if(. + current_volume >= 10)
 		if(L.dead && !L.check_death() && L.is_player_controlled() && !L.suicide)
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")

@@ -25,6 +25,8 @@
 		dan_icon_state_back = initial(dan_icon_state_back)
 		damage_type = initial(damage_type)
 
+	update_held_icon()
+
 	return ..()
 
 

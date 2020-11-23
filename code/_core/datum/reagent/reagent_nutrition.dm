@@ -4,7 +4,7 @@
 	color = "#FFFFFF"
 	alpha = 255
 
-	metabolism_stomach = 1
+	metabolism_stomach = 0.2
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
@@ -33,12 +33,11 @@
 
 	return .
 
-/reagent/nutrition/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/nutrition/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_INGEST) && is_living(container.owner.loc))
-		var/mob/living/L = container.owner.loc
+	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_INGEST))
 		. *= 0.5
 		if(nutrition_amount)
 			L.add_nutrition(nutrition_amount*.)
@@ -58,7 +57,7 @@
 	if(nutrition_amount)
 		L.add_nutrition(nutrition_amount*.)
 		if(L.blood_volume < L.blood_volume_max)
-			L.blood_volume = clamp(L.blood_volume + nutrition_amount*.*0.1,0,L.blood_volume_max)
+			L.blood_volume = clamp(L.blood_volume + nutrition_amount*.*0.3,0,L.blood_volume_max)
 			L.queue_health_update = TRUE
 	if(hydration_amount)
 		L.add_hydration(hydration_amount*.)
@@ -67,8 +66,19 @@
 		var/amount_to_heal = heal_factor*.
 
 		if(amount_to_heal > 0)
-			owner.health.adjust_loss_smart(brute=-amount_to_heal,burn=-amount_to_heal,tox=-amount_to_heal)
+			owner.health.adjust_loss_smart(brute=-amount_to_heal,burn=-amount_to_heal,tox=-amount_to_heal,robotic=FALSE)
 		else if(amount_to_heal < 0)
-			owner.health.adjust_loss_smart(tox=-amount_to_heal)
+			owner.health.adjust_loss_smart(tox=-amount_to_heal,robotic=FALSE)
 
 	return .
+
+/reagent/nutrition/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(nutrition_amount)
+		var/mob/living/L = owner
+		if(L.health) L.health.adjust_loss_smart(tox=(0.5 + nutrition_amount*0.1)*.)
+		on_metabolize_stomach(owner,container,starting_volume,multiplier*0.5)
+
+	return

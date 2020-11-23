@@ -81,3 +81,11 @@
 
 /health/obj/item/organ/synthetic
 	organic = FALSE
+
+
+
+/health/obj/item/organ/adjust_fatigue_loss(var/value)
+	if(is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		if(A.health) return A.health.adjust_fatigue_loss(value)
+	return 0

@@ -27,3 +27,6 @@ ADDITIONAL CREDITS
 
 	Some Sounds and Punches by Independent.nu
 	https://opengameart.org/content/37-hitspunches
+	
+	Swing sound by Mark Diangelo.
+	http://soundbible.com/tags-mark-diangelo.html

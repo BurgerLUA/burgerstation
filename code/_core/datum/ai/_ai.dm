@@ -270,21 +270,26 @@
 
 	return TRUE
 
+/ai/proc/can_enter_turf(var/turf/T)
+
+	if(!ignore_hazard_turfs && istype(T,/turf/simulated/hazard/))
+		return FALSE
+
+	return TRUE
+
+
 /ai/proc/handle_movement_checks() //Stops crowding/stacking/grouping.
 
 	var/turf/T
 
 	if(owner.move_dir)
 		T = get_step(owner,owner.move_dir)
-		if(!ignore_hazard_turfs && istype(T,/turf/simulated/hazard/))
-			var/turf/T2 = get_turf(owner)
-			if(!istype(T2,/turf/simulated/hazard/))
-				owner.move_dir = 0x0
-				return TRUE
+		var/turf/T2 = get_turf(owner)
+		if(!can_enter_turf(T) && can_enter_turf(T2))
+			owner.move_dir = 0x0
+			return TRUE
 	else
 		T = get_turf(owner)
-
-
 
 	for(var/mob/living/L in T.contents)
 		if(L == owner)

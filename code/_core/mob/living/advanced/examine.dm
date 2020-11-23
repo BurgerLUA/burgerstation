@@ -60,6 +60,7 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	var/pronoun = get_pronoun(src)
 
+
 	var/survival_skill = 1
 	if(examiner == src || is_observer(examiner))
 		survival_skill = 999
@@ -70,14 +71,9 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 	. = list()
 
 	if(survival_skill >= 50)
-		. += div("notice","Encumbrance: [weight]/[weight_max].")
-		var/slowdown = FLOOR((slowdown_mul - 1) * 100,0.1)
-		if(slowdown == 0)
-			. += div("green","Equipment Move Penalty: [slowdown]%.")
-		else if(slowdown > 0)
-			. += div("red","Equipment Move Penalty: [slowdown]%.")
-		else if(slowdown < 0)
-			. += div("green","Equipment Move Bonus: [-slowdown]%.")
+		var/move_delay = TICKS_TO_SECONDS(max(1,get_movement_delay()))
+		var/steps_per_second = 1/move_delay
+		. += div("notice","Speed: [FLOOR(steps_per_second,0.1)] steps per second.")
 
 	if(handcuffed)
 		. += div("warning","(<a href='?src=\ref[examiner];uncuff=\ref[src]'>Remove</a>) [capitalize(pronoun)] is handcuffed!")

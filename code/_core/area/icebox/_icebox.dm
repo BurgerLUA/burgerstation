@@ -3,6 +3,8 @@
 	trackable = TRUE
 	area_identifier = "Mission"
 
+	sound_environment = ENVIRONMENT_ROOM
+
 /area/icebox/exterior
 	name = "\improper Icebox Exterior"
 	icon_state = "snow"
@@ -16,8 +18,12 @@
 
 	tracks = TRACKS_MOUNTAIN
 
+	sound_environment = ENVIRONMENT_FOREST
+
 /area/icebox/interior/
 	interior = TRUE
+
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/icebox/interior/caves
 	name = "\improper Unexplored Caves"
@@ -28,6 +34,8 @@
 		'sound/ambient/cave_2.ogg',
 	)
 	cheese_type = /reagent/nutrition/cheese/gruyere
+
+	sound_environment = ENVIRONMENT_CAVE
 
 /area/icebox/interior/syndicate_shuttle
 	name = "\improper UNKNOWN SHIP"
@@ -54,11 +62,14 @@
 		'sound/ambient/station_13.ogg'
 	)
 
+	sound_environment = ENVIRONMENT_ROOM
 
 
 /area/icebox/interior/station/hall
 	name = "\improper Icebox Hallway"
 	icon_state = "hall"
+
+	sound_environment = ENVIRONMENT_HALLWAY
 
 /area/icebox/interior/station/hall/north
 	name = "\improper Icebox North Hallway"
@@ -87,6 +98,8 @@
 /area/icebox/interior/station/bathrooms
 	name = "\improper Icebox Bathrooms"
 	icon_state = "bath"
+
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/icebox/interior/station/hydroponics
 	name = "\improper Icebox Hydroponics"
@@ -133,6 +146,8 @@
 	name = "\improper Icebox Arrivals Dock"
 	icon_state = "ariv"
 
+	sound_environment = ENVIRONMENT_HANGAR
+
 /area/icebox/interior/station/chapel
 	name = "\improper Icebox Chapel"
 	icon_state = "chapel"
@@ -166,6 +181,8 @@
 	name = "\improper Icebox Hanger"
 	icon_state = "hanger"
 
+	sound_environment = ENVIRONMENT_HANGAR
+
 /area/icebox/interior/station/cargo
 	name = "\improper Icebox Cargo"
 	icon_state = "cargo"
@@ -183,6 +200,8 @@
 		'sound/ambient/maint_1.ogg',
 		'sound/ambient/maint_2.ogg'
 	)
+
+	sound_environment = ENVIRONMENT_ALLEY
 
 /area/icebox/interior/station/maint/north
 	name = "\improper Icebox North Maintenance"

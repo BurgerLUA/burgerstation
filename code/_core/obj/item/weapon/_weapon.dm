@@ -44,6 +44,8 @@
 	if(!override_icon_state)
 		icon_state = "[initial(icon_state)][open_text]"
 
+
+
 	return ..()
 
 /obj/item/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

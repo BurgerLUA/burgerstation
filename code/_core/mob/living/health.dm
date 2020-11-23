@@ -95,7 +95,7 @@
 				create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32))
 
 			if(health && total_bleed_damage)
-				blood_volume -= FLOOR(total_bleed_damage*0.2,1)
+				blood_volume -= FLOOR(total_bleed_damage*0.1,1)
 				queue_health_update = TRUE
 
 		if(is_organ(atom_damaged))
@@ -151,7 +151,6 @@
 	qdel(target)
 
 	return TRUE
-
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return damage_received_multiplier

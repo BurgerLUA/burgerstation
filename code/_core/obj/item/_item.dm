@@ -582,10 +582,6 @@
 		caller.to_chat(span("warning","\The [L.name] is dead!"))
 		return FALSE
 
-	if(caller != target && L.is_afk())
-		caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))
-		return FALSE
-
 	return TRUE
 
 /obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)

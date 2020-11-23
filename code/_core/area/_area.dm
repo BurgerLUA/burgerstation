@@ -96,6 +96,8 @@
 	average_x = CEILING(average_x/area_count,1)
 	average_y = CEILING(average_y/area_count,1)
 
+	sound_environment = ENVIRONMENT_GENERIC //I know this is shitcode but the test is soon and I need to go through every single ambient effect and gauge what's best.
+
 	return ..()
 
 /area/proc/setup_sunlight(var/turf/T)

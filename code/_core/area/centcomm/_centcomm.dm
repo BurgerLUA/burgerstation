@@ -21,3 +21,5 @@
 	)
 
 	area_identifier = "Central Command"
+
+	sound_environment = ENVIRONMENT_ROOM

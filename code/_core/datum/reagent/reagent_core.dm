@@ -56,7 +56,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		if(L.blood_type && ispath(L.blood_type,/reagent/blood))
-			L.blood_volume = clamp(L.blood_volume + .*3,0,L.blood_volume_max)
+			L.blood_volume = clamp(L.blood_volume + .*2,0,L.blood_volume_max)
 			L.queue_health_update = TRUE
 
 	return .

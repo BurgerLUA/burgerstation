@@ -250,13 +250,13 @@ mob/living/proc/on_life_slow()
 		return FALSE
 
 	if(blood_volume < blood_volume_max)
-		var/blood_volume_to_add = -(add_hydration(-0.025) + add_nutrition(-0.1))
+		var/blood_volume_to_add = -(add_hydration(-0.1) + add_nutrition(-1))*0.3
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)
 		blood_volume--
-		if(blood_volume >= blood_volume_max*1.05)
-			if(health) health.adjust_loss_smart(tox=1,robotic=FALSE)
+		if(health && blood_volume >= blood_volume_max*1.05)
+			health.adjust_loss_smart(tox=0.5,robotic=FALSE)
 
 	handle_regen()
 

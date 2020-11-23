@@ -1,6 +1,7 @@
 /footstep/
 
 	var/list/footstep_sounds = list()
+	var/list/drag_sounds = list() //TODO: Implement these.
 
 	var/has_footprints = FALSE
 	var/footprint_color = "#FFFFFF"

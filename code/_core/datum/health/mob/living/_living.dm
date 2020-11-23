@@ -1,5 +1,5 @@
 /health/mob/living/
-	var/has_bloodloss = TRUE
+	var/has_bloodoxygen = TRUE
 	organic = TRUE
 
 
@@ -52,12 +52,9 @@
 
 		var/mob/living/L = owner
 
-		if(has_bloodloss)
-			var/blood_percent = L.blood_volume/L.blood_volume_max
-			if(blood_percent <= 1)
-				damage[OXY] = clamp(1 - (0.15 + blood_percent),0,1) * 300
-			else
-				damage[OXY] = (blood_percent-1)*50
+		if(has_bloodoxygen)
+			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
+			damage[OXY] = max(0,health_max*(0.4 - blood_oxygen*0.4))
 
 		var/should_be_dead = check_death && L.check_death()
 
