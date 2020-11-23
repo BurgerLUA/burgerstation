@@ -370,6 +370,13 @@
 
 	if(amount > 0)
 		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
+		var/mob/living/L
+		if(is_living(src.owner))
+			L = src.owner
+		else if(is_living(src.owner.loc))
+			L = src.owner.loc
+		if(L)
+			amount = R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 
 	if(amount)
 		stored_reagents[reagent_type] += amount
@@ -382,6 +389,13 @@
 
 	if(stored_reagents[reagent_type] <= 0)
 		R.on_remove(src)
+		var/mob/living/L
+		if(is_living(src.owner))
+			L = src.owner
+		else if(is_living(src.owner.loc))
+			L = src.owner.loc
+		if(L)
+			R.on_remove_living(L,src)
 
 	if(check_recipes)
 		process_recipes()

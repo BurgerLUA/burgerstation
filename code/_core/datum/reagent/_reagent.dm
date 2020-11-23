@@ -48,7 +48,13 @@
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 	return amount_added
 
+/reagent/proc/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+	return amount_added
+
 /reagent/proc/on_remove(var/reagent_container/container)
+	return TRUE
+
+/reagent/proc/on_remove_living(var/mob/living/L,var/reagent_container/container)
 	return TRUE
 
 /reagent/proc/metabolize(var/atom/originial_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)

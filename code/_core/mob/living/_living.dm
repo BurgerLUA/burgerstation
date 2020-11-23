@@ -23,6 +23,10 @@
 	var/iff_tag
 	var/loyalty_tag
 
+	var/list/dynamic_variable_base = list()
+	var/list/dynamic_variable_mul = list()
+	var/list/dynamic_variable_add = list()
+
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
@@ -36,6 +40,12 @@
 	var/nutrition_quality = 1000 //0 to 2000. 2000 means super health, 0 means absolutely fucking obese unfit and all that.
 	var/intoxication = 0
 	var/last_intoxication_message = 0
+
+	var/blood_type = /reagent/blood
+	var/blood_volume = BLOOD_LEVEL_DEFAULT
+	var/blood_volume_max = BLOOD_LEVEL_DEFAULT
+
+	var/blood_oxygen = 0 //Additional blood oxygen.
 
 	var/first_life = TRUE
 
@@ -118,10 +128,6 @@
 
 	var/dead = FALSE
 	var/time_of_death = -1
-
-	var/blood_type = /reagent/blood
-	var/blood_volume = BLOOD_LEVEL_DEFAULT
-	var/blood_volume_max = BLOOD_LEVEL_DEFAULT
 
 	var/obj/structure/buckled_object
 

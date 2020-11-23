@@ -52,18 +52,18 @@
 
 		glide_size = move_delay ? step_size/move_delay : 1
 
+		//Handling intercardinal collisions.
 		if(intercardinal)
 			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
 			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
-
 			if(!first_step || !src.can_enter(first_step))
 				final_move_dir &= ~first_move_dir_to_use
-
 			if(!second_step || !src.can_enter(second_step))
 				final_move_dir &= ~second_move_dir_to_use
 
+		//Storing previous move dir and handling inability to move.
 		var/similiar_move_dir = FALSE
 		var/turf/step = final_move_dir ? get_step(src,final_move_dir) : null
 		if(step && Move(step,final_move_dir))
@@ -73,8 +73,6 @@
 		else
 			move_dir_last = 0x0
 			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
-
-		//set_dir(final_move_dir,force=TRUE)
 
 		if(acceleration_mod)
 			if(similiar_move_dir)

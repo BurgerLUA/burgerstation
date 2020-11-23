@@ -30,25 +30,21 @@
 
 	return .
 
-/reagent/nutrition/energy/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/nutrition/energy/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(is_living(container.owner))
-		var/mob/living/L = container.owner
-		if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
-			L.add_status_effect(ADRENALINE,adrenaline_strength,-1)
+	if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
+		L.add_status_effect(ADRENALINE,adrenaline_strength,-1)
 
 	return .
 
-/reagent/nutrition/energy/on_remove(var/reagent_container/container)
+/reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(is_living(container.owner))
-		var/mob/living/L = container.owner
-		if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
-			L.remove_status_effect(ADRENALINE)
+	if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
+		L.remove_status_effect(ADRENALINE)
 
 	return .
 

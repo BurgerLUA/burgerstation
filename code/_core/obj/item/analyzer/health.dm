@@ -30,6 +30,8 @@
 		var/species = "N/A"
 		var/blood_type = "N/A"
 		var/blood_volume = "N/A"
+		var/blood_oxygen = "N/A"
+		var/reagent_printout = "N/A"
 		if(is_living(target))
 			var/mob/living/L = target
 			if(is_advanced(target))
@@ -41,20 +43,16 @@
 				var/reagent/BT = REAGENT(L.blood_type)
 				blood_type = BT.name
 				blood_volume = "[L.blood_volume] ([FLOOR(L.blood_volume/L.blood_volume_max,0.01)*100]%)"
+				blood_oxygen = "[FLOOR((L.blood_volume/L.blood_volume_max) + L.blood_oxygen,0.01)*100]%"
 
-		var/reagent_printout = ""
-		if(target.reagents)
-			if(length(target.reagents))
-				for(var/r_id in target.reagents)
-					var/reagent/R = REAGENT(r_id)
-					var/volume = target.reagents[r_id]
-					. += "[R.name]: [volume]u<br>"
-			else
-				reagent_printout = "None."
-		else
-			reagent_printout = "N/A"
+		if(target.reagents && length(target.reagents.stored_reagents))
+			reagent_printout = ""
+			for(var/r_id in target.reagents.stored_reagents)
+				var/reagent/R = REAGENT(r_id)
+				var/volume = target.reagents.stored_reagents[r_id]
+				reagent_printout += "[R.name]: [volume]u<br>"
 
-		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>[.]<br>Reagents (Blood):<Br>[reagent_printout]"
+		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Reagents (Blood):<Br>[reagent_printout]"
 
 
 	caller.to_chat(.)

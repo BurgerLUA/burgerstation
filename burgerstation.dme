@@ -626,6 +626,7 @@
 #include "code\_core\mob\living\chat.dm"
 #include "code\_core\mob\living\combat.dm"
 #include "code\_core\mob\living\dash.dm"
+#include "code\_core\mob\living\dynamic_variable.dm"
 #include "code\_core\mob\living\emote.dm"
 #include "code\_core\mob\living\examine.dm"
 #include "code\_core\mob\living\experience.dm"

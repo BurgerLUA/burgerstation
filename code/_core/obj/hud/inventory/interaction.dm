@@ -27,11 +27,6 @@
 			L.to_chat(span("warning","You're dead!"))
 			return FALSE
 
-		if(caller.attack_flags & ATTACK_HOLD)
-			L.dash(object,0x0,2)
-			return TRUE
-
-
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
@@ -117,7 +112,6 @@
 
 	if(params && (caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
-
 
 	if(get_dist(defer_self,defer_object) <= 1)
 		if(is_item(defer_object)) //We're clicking on another item.
