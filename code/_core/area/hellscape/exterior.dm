@@ -1,4 +1,6 @@
-/area/hellscape/jungle
+/area/hellscape/exterior/
+
+/area/hellscape/exterior/jungle
 	name = "Jungle"
 	icon_state = "jungle"
 	weather = WEATHER_RAIN
@@ -24,7 +26,7 @@
 	sound_environment = ENVIRONMENT_PLAIN
 
 
-/area/hellscape/caves
+/area/hellscape/exterior/caves
 	name = "Caves"
 	icon_state = "cave"
 
