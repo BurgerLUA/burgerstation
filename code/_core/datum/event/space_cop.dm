@@ -142,12 +142,14 @@
 	var/final_message = ""
 
 	if(dead_count)
-		final_message += "We've successfully completed our investigation and determined that given our casualty rate of [dead_percentage]%, war crimes are indeed taking place here, notably by [english_list(space_cop_tag_shitlist)]. "
+		final_message += "We've successfully completed our investigation and determined that given our casualty rate of [dead_percentage]%, war crimes are indeed taking place here, notably by [english_list(space_cop_tag_shitlist)]. We're sending down some space soldiers to resolve the situation. "
+		if("NanoTrasen" in space_cop_tag_shitlist)
+			var/event/E = SSevents.all_events[/event/space_military]
+			SSevents.trigger_event(E)
 	else
 		final_message += "We've successfully completed our investigation and determined that no war crimes are taking place here, which is quite strange given NanoTrasen's history. "
-
-	if(mising_count)
-		final_message += "As a result, we are leaving some of our investigators behind to further investigate the situation. "
+		if(mising_count)
+			final_message += "As a result, we are leaving some of our investigators behind to further investigate the situation. "
 
 	final_message = trim(final_message)
 

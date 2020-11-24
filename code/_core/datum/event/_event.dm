@@ -14,6 +14,11 @@
 	var/occurances_current = 0
 	var/occurances_max = 3
 
+	var/list/gamemode_blacklist = list(
+
+
+	)
+
 /event/proc/force_end()
 	end_time = 0
 	return TRUE

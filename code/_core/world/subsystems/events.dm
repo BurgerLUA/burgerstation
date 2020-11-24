@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(events)
 	name = "Event Subsystem"
-	desc = "Stores all the known dialogue in a list."
+	desc = "Handles processing for events."
 	priority = SS_ORDER_NORMAL
 	tick_rate = SECONDS_TO_TICKS(1)
 
