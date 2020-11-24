@@ -41,6 +41,8 @@
 		. *= 0.5
 		if(nutrition_amount)
 			L.add_nutrition(nutrition_amount*.)
+			if(nutrition_quality_amount < 0)
+				L.add_nutrition_fast(-nutrition_quality_amount*.)
 		if(hydration_amount)
 			L.add_hydration(hydration_amount*.)
 		if(nutrition_quality_amount)
@@ -56,6 +58,8 @@
 	var/mob/living/L = owner
 	if(nutrition_amount)
 		L.add_nutrition(nutrition_amount*.)
+		if(nutrition_quality_amount < 0)
+			L.add_nutrition_fast(-nutrition_quality_amount*.)
 		if(L.blood_volume < L.blood_volume_max)
 			L.blood_volume = clamp(L.blood_volume + nutrition_amount*.*0.3,0,L.blood_volume_max)
 			L.queue_health_update = TRUE

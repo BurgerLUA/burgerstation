@@ -118,6 +118,7 @@
 	if(.)
 		add_nutrition(-0.01)
 		add_hydration(-0.01)
+		add_nutrition_fast(-0.03)
 		if(has_status_effect(CONFUSED))
 			move_dir = turn(move_dir,180)
 
