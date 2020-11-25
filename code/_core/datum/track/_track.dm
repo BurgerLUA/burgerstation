@@ -189,10 +189,12 @@
 /track/chords //Heirophant Boss Music
 	name = "Chords"
 	path = 'sound/music/Chords.ogg'
-	length = 1*60 + 30
+	length = 2*60 + 0
 
-
-
+/track/two_thirty_six //Menu Music
+	name = "236"
+	path = 'sound/music/236.ogg'
+	length = 1*60 + 25
 
 
 

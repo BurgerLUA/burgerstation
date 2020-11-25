@@ -17,6 +17,9 @@
 
 	scale_sprite = FALSE
 
+/obj/item/container/food/sandwich/proc/sync_planes()
+	return TRUE
+
 /obj/item/container/food/sandwich/Finalize()
 	update_sprite()
 	return ..()
@@ -48,7 +51,7 @@
 		IM.appearance = IT.appearance
 		IM.appearance_flags |= RESET_COLOR
 		IM.pixel_y = offset_y
-		IM.plane = src.plane
+		IM.plane = FLOAT_PLANE
 		add_overlay(IM)
 		offset_y += IT.pixel_height
 
