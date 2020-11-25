@@ -7,7 +7,7 @@
 	var/flags_flavor_love = 0x0
 	var/flags_flavor_hate = 0x0
 
-	var/flags_species = SPECIES_NONE
+	var/flags_species = SPECIES_NONE //The identifier of the species.
 	var/flags_species_traits = TRAIT_NONE
 	var/flags_chargen = CHARGEN_NONE
 

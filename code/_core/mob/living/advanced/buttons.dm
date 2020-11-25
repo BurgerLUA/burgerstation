@@ -1,6 +1,6 @@
 /mob/living/advanced/proc/add_species_buttons()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	for(var/v in S.spawning_buttons)
 		var/obj/hud/button/B = new v
@@ -19,7 +19,7 @@
 
 /mob/living/advanced/proc/add_chargen_buttons()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	for(var/v in chargen_buttons)
 		var/obj/hud/button/chargen/B = v

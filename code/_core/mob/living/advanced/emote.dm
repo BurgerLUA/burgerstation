@@ -4,7 +4,7 @@
 
 	if(.) return .
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	if(gender == MALE)
 		if(S.emote_sounds_male[emote_id])
 			return pick(S.emote_sounds_male[emote_id])

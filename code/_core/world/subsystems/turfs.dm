@@ -45,6 +45,9 @@ SUBSYSTEM_DEF(turfs)
 	log_subsystem(name,"Found [found_turfs] simulated turfs.")
 
 	for(var/turf/unsimulated/generation/G in world)
+		G.pre_generate()
+
+	for(var/turf/unsimulated/generation/G in world)
 		G.generate()
 		turf_generation_count++
 

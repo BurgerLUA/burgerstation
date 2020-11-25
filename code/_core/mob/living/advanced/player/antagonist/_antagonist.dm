@@ -12,7 +12,7 @@
 	nutrition *= RAND_PRECISE(0.9,1)
 	hydration *= RAND_PRECISE(0.9,1)
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	sex = pick(MALE,FEMALE)
 	gender = sex
@@ -33,7 +33,7 @@
 	return TRUE
 
 /mob/living/advanced/player/antagonist/default_appearance()
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)

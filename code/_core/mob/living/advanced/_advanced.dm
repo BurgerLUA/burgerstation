@@ -130,7 +130,7 @@
 /mob/living/advanced/Finalize()
 
 	if(blood_type == /reagent/blood) //Uninitialized blood.
-		var/species/S = all_species[species]
+		var/species/S = SPECIES(species)
 		blood_type = S.generate_blood_type()
 
 	. = ..()
@@ -404,14 +404,14 @@ mob/living/advanced/Login()
 
 	known_languages.Cut()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	for(var/language in S.languages)
 		known_languages[language] = TRUE
 
 /mob/living/advanced/proc/add_species_colors()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(S.default_color_skin)
 		change_organ_visual("skin", desired_color = S.default_color_skin)
@@ -444,7 +444,7 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/update_species()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(S.genderless)
 		gender = NEUTER
@@ -513,7 +513,7 @@ mob/living/advanced/Login()
 	return FALSE
 
 /mob/living/advanced/mod_speech(var/text)
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	if(!S)
 		return text
 	return ..(S.mod_speech(src,text))

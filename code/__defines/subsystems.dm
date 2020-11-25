@@ -12,8 +12,8 @@
 #define SS_ORDER_FIRST 3
 #define SS_ORDER_PRELOAD 4
 #define SS_ORDER_DMM 5
-#define SS_ORDER_AREAS 6
-#define SS_ORDER_TURFS 7
+#define SS_ORDER_TURFS 6
+#define SS_ORDER_AREAS 7
 #define SS_ORDER_OBJS 8
 #define SS_ORDER_OBJS_POST 9
 #define SS_ORDER_SUNLIGHT 10

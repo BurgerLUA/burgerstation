@@ -1,31 +1,43 @@
-/area/icebox/
-	name = "\improper Icebox"
+/area/box/
+	name = "\improper B-0X"
 	trackable = TRUE
 	area_identifier = "Mission"
 
 	sound_environment = ENVIRONMENT_ROOM
 
-/area/icebox/exterior
-	name = "\improper Icebox Exterior"
-	icon_state = "snow"
-	weather = WEATHER_SNOW
-	ambient_temperature = T0C - 20
-	hazard = "cold"
+/area/box/exterior
+	name = "\improper B-0X Exterior"
+	icon_state = "jungle"
+	weather = WEATHER_RAIN
+	ambient_temperature = T0C + 40
+
 	sunlight_freq = 8
-	sunlight_color = "#898989"
+	sunlight_color = "#29332C"
 
-	cheese_type = /reagent/nutrition/cheese/raclette
+	cheese_type = /reagent/nutrition/cheese/brabander
 
-	tracks = TRACKS_MOUNTAIN
+	//ambient_sound = 'sound/ambient/crickets.ogg'
+
+	random_sounds = list(
+		'sound/ambient/ambiruin_1.ogg',
+		'sound/ambient/ambiruin_2.ogg',
+		'sound/ambient/ambiruin_3.ogg',
+		'sound/ambient/ambiruin_4.ogg',
+		'sound/ambient/ambiruin_5.ogg',
+		'sound/ambient/ambiruin_6.ogg',
+		'sound/ambient/ambiruin_7.ogg',
+	)
+
+	tracks = TRACKS_JUNGLE
 
 	sound_environment = ENVIRONMENT_FOREST
 
-/area/icebox/interior/
+/area/box/interior/
 	interior = TRUE
 
 	sound_environment = ENVIRONMENT_ROOM
 
-/area/icebox/interior/caves
+/area/box/interior/caves
 	name = "\improper Unexplored Caves"
 	icon_state = "cave"
 	tracks = TRACKS_CAVE
@@ -37,12 +49,12 @@
 
 	sound_environment = ENVIRONMENT_CAVE
 
-/area/icebox/interior/syndicate_shuttle
+/area/box/interior/syndicate_shuttle
 	name = "\improper UNKNOWN SHIP"
 	icon_state = "syndicate"
 
-/area/icebox/interior/station
-	name = "\improper Icebox Station Interior"
+/area/box/interior/station
+	name = "\improper B-0X Station Interior"
 	icon_state = "ship"
 
 	ambient_sound = 'sound/ambient/station_loop.ogg'
@@ -65,134 +77,134 @@
 	sound_environment = ENVIRONMENT_ROOM
 
 
-/area/icebox/interior/station/hall
-	name = "\improper Icebox Hallway"
+/area/box/interior/station/hall
+	name = "\improper B-0X Hallway"
 	icon_state = "hall"
 
 	sound_environment = ENVIRONMENT_HALLWAY
 
-/area/icebox/interior/station/hall/north
-	name = "\improper Icebox North Hallway"
+/area/box/interior/station/hall/north
+	name = "\improper B-0X North Hallway"
 	icon_state = "hall_n"
 
-/area/icebox/interior/station/hall/east
-	name = "\improper Icebox East Hallway"
+/area/box/interior/station/hall/east
+	name = "\improper B-0X East Hallway"
 	icon_state = "hall_e"
 
-/area/icebox/interior/station/hall/south
-	name = "\improper Icebox South Hallway"
+/area/box/interior/station/hall/south
+	name = "\improper B-0X South Hallway"
 	icon_state = "hall_s"
 
-/area/icebox/interior/station/hall/west
-	name = "\improper Icebox West Hallway"
+/area/box/interior/station/hall/west
+	name = "\improper B-0X West Hallway"
 	icon_state = "hall_w"
 
-/area/icebox/interior/station/hall/central
-	name = "\improper Icebox Central Primary Hallway"
+/area/box/interior/station/hall/central
+	name = "\improper B-0X Central Primary Hallway"
 	icon_state = "hall_c"
 
-/area/icebox/interior/station/hall/dorms
-	name = "\improper Icebox Dorms Hallway"
+/area/box/interior/station/hall/dorms
+	name = "\improper B-0X Dorms Hallway"
 	icon_state = "dorms_hall"
 
-/area/icebox/interior/station/bathrooms
-	name = "\improper Icebox Bathrooms"
+/area/box/interior/station/bathrooms
+	name = "\improper B-0X Bathrooms"
 	icon_state = "bath"
 
 	sound_environment = ENVIRONMENT_BATHROOM
 
-/area/icebox/interior/station/hydroponics
-	name = "\improper Icebox Hydroponics"
+/area/box/interior/station/hydroponics
+	name = "\improper B-0X Hydroponics"
 	icon_state = "hydro"
 
-/area/icebox/interior/station/cafe
-	name = "\improper Icebox Cafe"
+/area/box/interior/station/cafe
+	name = "\improper B-0X Cafe"
 	icon_state = "cafe"
 	safe_storage = TRUE
 
-/area/icebox/interior/station/cafe/kitchen
-	name = "\improper Icebox Kitchen"
+/area/box/interior/station/cafe/kitchen
+	name = "\improper B-0X Kitchen"
 	icon_state = "kitchen"
 
-/area/icebox/interior/station/cafe/bar
-	name = "\improper Icebox Bar"
+/area/box/interior/station/cafe/bar
+	name = "\improper B-0X Bar"
 	icon_state = "bar"
 
-/area/icebox/interior/station/dressing
-	name = "\improper Icebox Dressing Room"
+/area/box/interior/station/dressing
+	name = "\improper B-0X Dressing Room"
 	icon_state = "dressing"
 
-/area/icebox/interior/station/dorm
-	name = "\improper Icebox Dorm"
+/area/box/interior/station/dorm
+	name = "\improper B-0X Dorm"
 	icon_state = "dorm"
 
-/area/icebox/interior/station/help_desk
-	name = "\improper Icebox Help Desk"
+/area/box/interior/station/help_desk
+	name = "\improper B-0X Help Desk"
 	icon_state = "help"
 
-/area/icebox/interior/station/cloning
-	name = "\improper Icebox Cloning"
+/area/box/interior/station/cloning
+	name = "\improper B-0X Cloning"
 	icon_state = "clone"
 
-/area/icebox/interior/station/science
-	name = "\improper Icebox Science"
+/area/box/interior/station/science
+	name = "\improper B-0X Science"
 	icon_state = "science"
 
-/area/icebox/interior/station/cryo
-	name = "\improper Icebox Cryogenic Storage"
+/area/box/interior/station/cryo
+	name = "\improper B-0X Cryogenic Storage"
 	icon_state = "cryo"
 
-/area/icebox/interior/station/arrivals
-	name = "\improper Icebox Arrivals Dock"
+/area/box/interior/station/arrivals
+	name = "\improper B-0X Arrivals Dock"
 	icon_state = "ariv"
 
 	sound_environment = ENVIRONMENT_HANGAR
 
-/area/icebox/interior/station/chapel
-	name = "\improper Icebox Chapel"
+/area/box/interior/station/chapel
+	name = "\improper B-0X Chapel"
 	icon_state = "chapel"
 
-/area/icebox/interior/station/library
-	name = "\improper Icebox Library"
+/area/box/interior/station/library
+	name = "\improper B-0X Library"
 	icon_state = "library"
 
-/area/icebox/interior/station/engineering
-	name = "\improper Icebox Engineering"
+/area/box/interior/station/engineering
+	name = "\improper B-0X Engineering"
 	icon_state = "eng"
 
-/area/icebox/interior/station/medical
-	name = "\improper Icebox Medical"
+/area/box/interior/station/medical
+	name = "\improper B-0X Medical"
 	icon_state = "med"
 
-/area/icebox/interior/station/medical/chemistry
-	name = "\improper Icebox Chemistry"
+/area/box/interior/station/medical/chemistry
+	name = "\improper B-0X Chemistry"
 	icon_state = "chem"
 
-/area/icebox/interior/station/briefing
-	name = "\improper Icebox Briefing"
+/area/box/interior/station/briefing
+	name = "\improper B-0X Briefing"
 	icon_state = "brief"
 
-/area/icebox/interior/station/armory
-	name = "\improper Icebox Armory"
+/area/box/interior/station/armory
+	name = "\improper B-0X Armory"
 	icon_state = "armory"
 
 
-/area/icebox/interior/station/hanger
-	name = "\improper Icebox Hanger"
+/area/box/interior/station/hanger
+	name = "\improper B-0X Hanger"
 	icon_state = "hanger"
 
 	sound_environment = ENVIRONMENT_HANGAR
 
-/area/icebox/interior/station/cargo
-	name = "\improper Icebox Cargo"
+/area/box/interior/station/cargo
+	name = "\improper B-0X Cargo"
 	icon_state = "cargo"
 
-/area/icebox/interior/station/command
-	name = "\improper Icebox Command"
+/area/box/interior/station/command
+	name = "\improper B-0X Command"
 	icon_state = "cmd"
 
-/area/icebox/interior/station/maint
-	name = "\improper Icebox Maint"
+/area/box/interior/station/maint
+	name = "\improper B-0X Maint"
 	icon_state = "maint"
 	ambient_sound = 'sound/ambient/vents_loop.ogg'
 
@@ -203,22 +215,22 @@
 
 	sound_environment = ENVIRONMENT_ALLEY
 
-/area/icebox/interior/station/maint/north
-	name = "\improper Icebox North Maintenance"
+/area/box/interior/station/maint/north
+	name = "\improper B-0X North Maintenance"
 	icon_state = "maint_n"
 
-/area/icebox/interior/station/maint/east
-	name = "\improper Icebox East Maintenance"
+/area/box/interior/station/maint/east
+	name = "\improper B-0X East Maintenance"
 	icon_state = "maint_e"
 
-/area/icebox/interior/station/maint/south
-	name = "\improper Icebox South Maintenance"
+/area/box/interior/station/maint/south
+	name = "\improper B-0X South Maintenance"
 	icon_state = "maint_s"
 
-/area/icebox/interior/station/maint/west
-	name = "\improper Icebox West Maintenance"
+/area/box/interior/station/maint/west
+	name = "\improper B-0X West Maintenance"
 	icon_state = "maint_w"
 
-/area/icebox/interior/station/maint/disposals
-	name = "\improper Icebox Disposals Maintenance"
+/area/box/interior/station/maint/disposals
+	name = "\improper B-0X Disposals Maintenance"
 	icon_state = "disposals"

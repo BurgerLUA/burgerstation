@@ -68,7 +68,11 @@
 
 	if(heal_factor && owner && owner.health)
 		var/amount_to_heal = heal_factor*.
-
+		if(amount_to_heal < 0 && is_advanced(L))
+			var/mob/living/advanced/A = L
+			var/species/S = SPECIES(A.species)
+			if(S.flags_flavor_love & FLAG_FLAVOR_RAW)
+				amount_to_heal = -amount_to_heal*0.5
 		if(amount_to_heal > 0)
 			owner.health.adjust_loss_smart(brute=-amount_to_heal,burn=-amount_to_heal,tox=-amount_to_heal,robotic=FALSE)
 		else if(amount_to_heal < 0)
