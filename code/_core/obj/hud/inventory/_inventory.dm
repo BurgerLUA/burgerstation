@@ -170,6 +170,7 @@
 	else
 		color = initial(color)
 
+	/*
 	for(var/k in held_objects)
 		var/obj/item/I = k
 		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
@@ -195,6 +196,7 @@
 			total_pixel_y += I.size*y_offset_mul
 
 		add_overlay(I)
+	*/
 
 	return .
 
@@ -416,8 +418,7 @@
 
 	update_stats()
 	I.on_pickup(old_location,src)
-	overlays.Cut()
-	update_overlays()
+	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
 		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
@@ -460,8 +461,7 @@
 
 	update_stats()
 	I.on_pickup(old_location,src)
-	overlays.Cut()
-	update_overlays()
+	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
 		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02."))
@@ -586,8 +586,6 @@
 		I.pixel_y = pixel_y_offset
 		I.plane = initial(I.plane)
 		I.on_drop(src,drop_loc)
-		overlays.Cut()
-		update_overlays()
 		update_stats()
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner
@@ -602,7 +600,7 @@
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner
 				A.update_items(should_update_eyes = was_worn, should_update_protection = was_worn, should_update_clothes = was_worn)
-
+		vis_contents -= I
 
 	return I
 

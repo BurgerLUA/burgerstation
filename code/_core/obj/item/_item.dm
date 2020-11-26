@@ -2,6 +2,8 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_LAYER
+
 	var/value_burgerbux
 
 	var/last_marker //The last person to name this item. Used for moderation purposes.
