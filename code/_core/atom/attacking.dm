@@ -56,19 +56,18 @@
 	var/attack_distance = get_dist_advanced(attacker,victim)
 	if(!ignore_distance && attack_distance > object_to_damage_with.attack_range) //Can't attack, weapon isn't long enough.
 		return FALSE
-	/*
+
 	if(attack_distance > 1)
 		var/step_check = attack_distance
 		var/direction = get_dir(attacker,victim)
 		var/turf/last_turf = get_turf(src)
 		while(step_check > 0)
 			var/turf/next_turf = get_step(last_turf,direction)
-			node_checker.force_move(last_turf)
-			if(next_turf != victim && !node_checker.Move(next_turf))
+			melee_checker.force_move(last_turf)
+			if(next_turf != victim && !melee_checker.Move(next_turf))
 				return FALSE
 			last_turf = next_turf
 			step_check--
-	*/
 
 	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim)
 	if(!desired_damage_type)
