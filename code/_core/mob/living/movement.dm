@@ -94,6 +94,14 @@
 
 	return TRUE
 
+/mob/living/on_sprint()
+	add_hydration(-1.5)
+	return ..()
+
+/mob/living/on_jog()
+	add_hydration(-0.5)
+	return ..()
+
 /mob/living/handle_movement(var/adjust_delay = 1)
 
 
@@ -116,9 +124,7 @@
 	. = ..()
 
 	if(.)
-		add_nutrition(-0.01)
-		add_hydration(-0.01)
-		add_nutrition_fast(-0.03)
+
 		if(has_status_effect(CONFUSED))
 			move_dir = turn(move_dir,180)
 

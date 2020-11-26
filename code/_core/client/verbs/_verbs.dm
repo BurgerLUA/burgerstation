@@ -59,6 +59,7 @@
 		verbs += /client/verb/jump_to_player
 		verbs += /client/verb/jump_to_area
 		verbs += /client/verb/adjust_nightvision
+		verbs += /client/verb/bring_player
 
 
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)

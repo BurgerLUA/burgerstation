@@ -328,6 +328,10 @@ mob/living/advanced/Login()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
+	var/species/S = SPECIES(species)
+	if(S && S.health)
+		health = S.health
+
 	return .
 
 /mob/living/advanced/PostInitialize()

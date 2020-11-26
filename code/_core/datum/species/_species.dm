@@ -36,6 +36,8 @@
 		LANGUAGE_BASIC
 	)
 
+	var/health/health = /health/mob/living/advanced
+
 	var/list/emote_sounds_male = list(
 		"laugh" = list('sound/voice/human/human_male_laugh_1.ogg','sound/voice/human/human_male_laugh_2.ogg'),
 		"cough" = list('sound/voice/human/human_male_cough_1.ogg','sound/voice/human/human_male_cough_2.ogg'),

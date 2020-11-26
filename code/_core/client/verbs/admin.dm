@@ -88,3 +88,25 @@
 
 	if(SSwikibot)
 		SSwikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
+
+
+/client/verb/bring_player()
+	set name = "Bring Player"
+	set category = "Admin"
+
+	sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
+
+	var/mob/choice = input("Who would you like to bring","Bring Mob") as null|mob in all_mobs_with_clients
+	if(!choice)
+		to_chat("Invalid choice.")
+		return FALSE
+
+	var/turf/T = get_turf(mob)
+	if(!T)
+		to_chat("Invalid turf.")
+		return FALSE
+
+	choice.force_move(T)
+
+	to_chat(span("notice","You brought \the [choice.name] to you."))
+	log_admin("[src] brought [choice] to their location.")
