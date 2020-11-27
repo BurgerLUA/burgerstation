@@ -75,15 +75,7 @@
 
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		var/stored_bullets = length(M.stored_bullets)
-		var/icon_num = 0
-		switch(stored_bullets)
-			if(1 to 2)
-				icon_num = 1
-			if(3 to 4)
-				icon_num = 2
-			if(5 to 6)
-				icon_num = 3
+		var/icon_num = CEILING(3*(length(M.stored_bullets)/bullet_count_max),1)
 		icon_state = "[initial(icon_state)]_[icon_num]"
 	else
 		icon_state = "[initial(icon_state)]_open"

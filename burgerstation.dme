@@ -252,6 +252,7 @@
 #include "code\_core\datum\ai\simple\dick_kickem.dm"
 #include "code\_core\datum\ai\simple\glockroach.dm"
 #include "code\_core\datum\ai\simple\goliath.dm"
+#include "code\_core\datum\ai\simple\syndicate_cyborg.dm"
 #include "code\_core\datum\ai\simple\traitor.dm"
 #include "code\_core\datum\ai\simple\turret.dm"
 #include "code\_core\datum\ai\simple\watcher.dm"

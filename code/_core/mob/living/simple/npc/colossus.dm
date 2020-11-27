@@ -18,6 +18,8 @@
 
 	attack_range = 2
 
+	move_delay = DECISECONDS_TO_TICKS(10)
+
 	force_spawn = TRUE
 	boss = TRUE
 

@@ -37,10 +37,12 @@
 				owner_as_ash_drake.fly()
 				var/fly_multiplier = clamp(owner_as_ash_drake.health.health_current / owner_as_ash_drake.health.health_max,0.5,1)
 				fly_delay = initial(fly_delay) * fly_multiplier
+				failed_attack_frames = 0
 			else if(fireball_delay <= 0 && prob(shoot_chance))
 				owner_as_ash_drake.shoot_fireball(objective_attack)
 				var/fireball_multiplier = clamp(owner_as_ash_drake.health.health_current / owner_as_ash_drake.health.health_max,0.25,1)
 				fireball_delay = initial(fireball_delay) * fireball_multiplier
+				failed_attack_frames = 0
 			else
 				failed_attack_frames += 1
 

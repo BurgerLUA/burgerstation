@@ -8,7 +8,7 @@
 	var/loadout_to_use = /loadout/zombie
 	health = /health/mob/living/advanced/zombie/
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	var/next_talk = 0
 
@@ -22,9 +22,9 @@
 	. = ..()
 
 	var/turf/T = get_turf(src)
-
-
 	. *= max(1,2 - T.darkness)
+	if(ai && ai.objective_attack)
+		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
 
 	return .
 
