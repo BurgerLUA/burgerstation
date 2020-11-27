@@ -64,7 +64,7 @@
 		while(step_check > 0)
 			var/turf/next_turf = get_step(last_turf,direction)
 			melee_checker.force_move(last_turf)
-			if(next_turf != victim && !melee_checker.Move(next_turf))
+			if(next_turf != get_turf(victim) && !melee_checker.Move(next_turf)) //Only do a move check BETWEEN the attacker and the victim.
 				return FALSE
 			last_turf = next_turf
 			step_check--
