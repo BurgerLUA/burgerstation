@@ -4,7 +4,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/pulse.dmi'
 	icon_state = "battery"
-	bullet_count_max = 6
+	bullet_count_max = 12
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pulse = TRUE
@@ -20,7 +20,7 @@
 	bullet_diameter_best = 13
 	bullet_diameter_max = 13
 
-	size = SIZE_2
+	size = SIZE_3
 
 	icon_states = 6
 

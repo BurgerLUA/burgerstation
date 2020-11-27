@@ -157,9 +157,6 @@
 
 	. = ..()
 
-	var/total_pixel_x = 0
-	var/total_pixel_y = 0
-
 	if(parent_inventory)
 		color = "#ff0000"
 		add_overlay(parent_inventory.overlays)
@@ -169,34 +166,6 @@
 		add_overlay(I)
 	else
 		color = initial(color)
-
-	/*
-	for(var/k in held_objects)
-		var/obj/item/I = k
-		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
-		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
-
-		if(x_offset_mul)
-			total_pixel_x += I.size*x_offset_mul
-
-		if(y_offset_mul)
-			total_pixel_y += I.size*y_offset_mul
-
-		add_overlay(I)
-
-	for(var/k in worn_objects)
-		var/obj/item/I = k
-		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
-		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
-
-		if(x_offset_mul)
-			total_pixel_x += I.size*x_offset_mul
-
-		if(y_offset_mul)
-			total_pixel_y += I.size*y_offset_mul
-
-		add_overlay(I)
-	*/
 
 	return .
 

@@ -69,7 +69,7 @@
 
 	override_icon_state = TRUE
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
+	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/update_icon()
 

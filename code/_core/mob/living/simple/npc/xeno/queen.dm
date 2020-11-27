@@ -41,7 +41,7 @@ var/mob/living/simple/npc/xeno/queen/tracked_xeno_queen
 		FIRE = FALSE
 	)
 
-	ai = /ai/xeno
+	ai = /ai/boss/xeno_queen
 	damage_type = /damagetype/npc/xeno/queen
 	class = /class/xeno
 

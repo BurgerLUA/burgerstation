@@ -1315,6 +1315,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\burst.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\carbine.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\civ_carbine.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\dmca.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\gauss.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\heavy_sniper.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg.dm"
