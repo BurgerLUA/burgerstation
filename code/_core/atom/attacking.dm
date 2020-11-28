@@ -63,9 +63,24 @@
 		var/turf/last_turf = get_turf(src)
 		while(step_check > 0)
 			var/turf/next_turf = get_step(last_turf,direction)
-			melee_checker.force_move(last_turf)
-			if(next_turf != get_turf(victim) && !melee_checker.Move(next_turf)) //Only do a move check BETWEEN the attacker and the victim.
-				return FALSE
+			if(next_turf != get_turf(victim)) //Only do a move check BETWEEN the attacker and the victim.
+				if(!next_turf.Enter(melee_checker,last_turf))
+					if(ismob(attacker))
+						var/mob/M = attacker
+						M.to_chat(span("warning","\The [next_turf.name] is in the way!"))
+					return FALSE
+
+				for(var/k in next_turf.contents)
+					var/atom/movable/M = k
+					if(!M.density)
+						continue
+					if(!M.Cross(melee_checker))
+						if(ismob(attacker))
+							var/mob/M2 = attacker
+							M2.to_chat(span("warning","\The [M.name] is in the way!"))
+						return FALSE
+
+
 			last_turf = next_turf
 			step_check--
 
