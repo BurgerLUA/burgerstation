@@ -484,24 +484,28 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	if(attachment_barrel)
 		var/image/I = new/image(attachment_barrel.icon,"[attachment_barrel.icon_state]_attached")
+		I.plane = FLOAT_PLANE
 		I.pixel_x = attachment_barrel.attachment_offset_x + attachment_barrel_offset_x
 		I.pixel_y = attachment_barrel.attachment_offset_y + attachment_barrel_offset_y
 		add_overlay(I)
 
 	if(attachment_sight)
 		var/image/I = new/image(attachment_sight.icon,"[attachment_sight.icon_state]_attached")
+		I.plane = FLOAT_PLANE
 		I.pixel_x = attachment_sight.attachment_offset_x + attachment_sight_offset_x
 		I.pixel_y = attachment_sight.attachment_offset_y + attachment_sight_offset_y
 		add_overlay(I)
 
 	if(attachment_undermount)
 		var/image/I = new/image(attachment_undermount.icon,"[attachment_undermount.icon_state]_attached")
+		I.plane = FLOAT_PLANE
 		I.pixel_x = attachment_undermount.attachment_offset_x + attachment_undermount_offset_x
 		I.pixel_y = attachment_undermount.attachment_offset_y + attachment_undermount_offset_y
 		add_overlay(I)
 
 	if(attachment_stock)
 		var/image/I = new/image(attachment_stock.icon,"[attachment_stock.icon_state]_attached")
+		I.plane = FLOAT_PLANE
 		I.pixel_x = attachment_stock.attachment_offset_x + attachment_stock_offset_x
 		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)

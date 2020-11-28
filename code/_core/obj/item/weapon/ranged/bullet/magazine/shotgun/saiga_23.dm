@@ -70,7 +70,7 @@
 	attachment_undermount_offset_x = 23 - 12
 	attachment_undermount_offset_y = 12 - 13
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_base_spread()
 	return 0.12

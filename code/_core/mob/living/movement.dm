@@ -95,11 +95,11 @@
 	return TRUE
 
 /mob/living/on_sprint()
-	add_hydration(-1.5)
+	add_hydration(-0.4)
 	return ..()
 
 /mob/living/on_jog()
-	add_hydration(-0.5)
+	add_hydration(-0.1)
 	return ..()
 
 /mob/living/handle_movement(var/adjust_delay = 1)

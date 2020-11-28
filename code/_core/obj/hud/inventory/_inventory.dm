@@ -14,6 +14,7 @@
 	icon_state = "square"
 
 	plane = PLANE_HUD
+	layer = -1 //Needs to be low.
 
 	value = 0
 
