@@ -107,9 +107,10 @@
 		/mob/living/simple/npc/cult/construct/behemoth = 10,
 		/mob/living/simple/npc/cult/construct/chosen = 1,
 		/mob/living/simple/npc/cult/construct/floating = 25,
-		/mob/living/simple/npc/cult/cultist = 100
+		/mob/living/advanced/npc/cultist = 70,
+		/mob/living/advanced/npc/cultist/hard = 30
 	)
-	hidden = TRUE
+	hidden = FALSE
 
 
 /gamemode/horde/boss_rush

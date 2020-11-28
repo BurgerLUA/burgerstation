@@ -208,3 +208,29 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0.8)
 	return .
+
+
+
+/obj/effect/temp/hazard/curse
+	name = "lava"
+	icon = 'icons/obj/structure/cult/effects.dmi'
+	icon_state = "floorglow_strong"
+	duration = SECONDS_TO_DECISECONDS(10)
+	hazard_range = 1
+	damage_type = /damagetype/ranged/magic/cult
+	cross_hazard = TRUE
+	plane = PLANE_BLOOD
+	layer = 0
+
+/obj/effect/temp/hazard/curse/New(var/desired_location,var/desired_time,var/desired_owner)
+
+	if(istype(desired_location,/turf/simulated/wall/))
+		icon_state = "wallglow_strong"
+
+	return ..()
+
+/obj/effect/temp/hazard/curse/get_params(var/atom/victim)
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0.8)
+	return .
