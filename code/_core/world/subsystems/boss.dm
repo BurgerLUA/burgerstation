@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(bosses)
 
 /subsystem/bosses/proc/check_boss(var/mob/living/L)
 
-	if(L.dead)
+	if(L.dead || L.qdeleting)
 		for(var/v in L.players_fighting_boss)
 			var/mob/living/advanced/P = v
 			CHECK_TICK(tick_usage_max,FPS_SERVER*5)
