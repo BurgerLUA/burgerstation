@@ -19,7 +19,7 @@
 /loadout/cultist/get_spawning_items()
 	. = ..()
 	. += pick(random_weapon)
-	. += pick(random_tome)
+	if(prob(25)) . += pick(random_tome)
 	return .
 
 

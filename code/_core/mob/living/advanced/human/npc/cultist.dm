@@ -3,14 +3,14 @@
 	desc = "*incomprehensible gibberish*"
 	desc_extended = "A cultist of Nar'sie."
 	enable_AI = TRUE
-	ai = /ai/advanced
+	ai = /ai/advanced/cult
 	class = /class/cult
 
 	var/loadout/loadout_to_use = /loadout/cultist
 
-	health_base = 200
-	mana_base = 200
-	stamina_base = 200
+	health_base = 100
+	mana_base = 100
+	stamina_base = 100
 
 	armor_base = list(
 		BLADE = 25,

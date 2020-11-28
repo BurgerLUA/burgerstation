@@ -69,7 +69,7 @@ var/regex/vowels = new("\[aeiou\]", "i")
 */
 
 
-/mob/proc/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE)
+/mob/proc/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
 
 	if(client && !check_spam(client))
 		return FALSE
@@ -106,17 +106,18 @@ var/regex/vowels = new("\[aeiou\]", "i")
 		do_emote(final_emote)
 		return TRUE
 
-	var/language_to_use = LANGUAGE_BASIC
-	var/frequency_to_use = null
-
 	var/list/available_languages = list()
-	if(client)
-		for(var/letter_key in client.macros.language_keys)
-			var/language_key = client.macros.language_keys[letter_key]
-			if(!known_languages[language_key])
-				continue
-			available_languages[letter_key] = language_key
-	//TODO: MAKE IT SO THAT NPCS CAN USE LANGUAGES HERE.
+
+	if(!language_to_use)
+		language_to_use = LANGUAGE_BASIC
+		if(client)
+			for(var/letter_key in client.macros.language_keys)
+				var/language_key = client.macros.language_keys[letter_key]
+				if(!known_languages[language_key])
+					continue
+				available_languages[letter_key] = language_key
+
+	var/frequency_to_use = null
 
 	if(first_character == "." || first_character == ",")
 		var/old_first = first_character
@@ -136,6 +137,7 @@ var/regex/vowels = new("\[aeiou\]", "i")
 			else
 				to_chat(span("warning","You don't have that radio key!"))
 				return FALSE
+
 	else if(first_character == ";") //Common radio.
 		frequency_to_use = -1
 		text_to_say = trim(copytext(text_to_say,2,0))

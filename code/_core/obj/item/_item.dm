@@ -420,9 +420,8 @@
 	if(new_location)
 		update_lighting_for_owner(new_location)
 		last_interacted = new_location.owner
-
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
+		pixel_x = initial(pixel_x)
+		pixel_y = initial(pixel_y)
 
 	return TRUE
 
