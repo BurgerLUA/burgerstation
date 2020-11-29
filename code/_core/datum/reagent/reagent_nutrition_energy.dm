@@ -55,8 +55,8 @@
 
 	flavor = "electricity"
 
-	nutrition_amount = 10
-	hydration_amount = 5
+	nutrition_amount = 5
+	hydration_amount = 10
 	nutrition_quality_amount = -10
 
 	adrenaline_strength = 200
@@ -80,14 +80,14 @@
 
 
 /reagent/nutrition/energy/coffee/expresso
-	name = "expresso"
+	name = "espresso"
 	desc = "Coffee in its purest form."
 	color = "#824C28"
 
 	flavor = "expresso"
 
-	nutrition_amount = 10
-	hydration_amount = 3
+	nutrition_amount = 3
+	hydration_amount = 10
 	nutrition_quality_amount = -4
 
 	adrenaline_strength = 100

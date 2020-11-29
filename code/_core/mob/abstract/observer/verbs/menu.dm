@@ -99,7 +99,7 @@
 
 	var/client/C = src.client
 
-	if(!C.globals.loaded_data)
+	if(!C.globals || !C.globals.loaded_data)
 		src.to_chat(span("warning","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
 		return FALSE
 

@@ -112,7 +112,15 @@
 
 	weight = 2
 
+	should_save = FALSE
+
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	SPAM_CHECK(10)
+
+	if(!linked_defib)
+		caller.to_chat(span("danger","Paddle error detected. Tell burger how you encountered this bug."))
+		return TRUE
 
 	if(object == linked_defib)
 		drop_item(get_turf(src))
