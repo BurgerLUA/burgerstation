@@ -3,3 +3,5 @@
 #define LANGUAGE_CULT "cult"
 #define LANGUAGE_CODESPEAK "codespeak"
 #define LANGUAGE_RUSSIAN "russian"
+#define LANGUAGE_CANADIAN "canadian"
+#define LANGUAGE_BINARY "binary"

@@ -9,6 +9,8 @@
 
 	SSgamemode.active_gamemode.round_time = 1000000
 
+	log_admin("[src.get_debug_name()] sped up setup.")
+
 
 /client/verb/force_random_event()
 	set name = "Force Random Event"
@@ -20,6 +22,8 @@
 		return FALSE
 
 	SSevents.next_event_time = 0
+
+	log_admin("[src.get_debug_name()] forced a random event.")
 
 /client/verb/force_specific_event()
 	set name = "Force Specific Event"
@@ -42,6 +46,8 @@
 
 	SSevents.trigger_event(E)
 
+	log_admin("[src.get_debug_name()] triggered a specific event ([E.name]).")
+
 
 /client/verb/add_points()
 
@@ -53,7 +59,7 @@
 	var/points_to_add = input("How many points would you like to add? Current: [G.points].","Add points.",0) as num
 	G.points += points_to_add
 
-	log_admin("[src] added [points_to_add] points to current gamemode.")
+	log_admin("[src.get_debug_name()] added [points_to_add] points to current gamemode.")
 
 
 /client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
@@ -95,15 +101,20 @@
 
 	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
 
-	if(selection)
-		var/datum/A = selection
-		A = new A(usr.loc)
-		INITIALIZE(A)
-		FINALIZE(A)
-		if(isobj(A))
-			var/obj/O = A
-			GENERATE(O)
-		return TRUE
+	if(!selection)
+		return FALSE
+
+	var/datum/A = selection
+	A = new A(usr.loc)
+	INITIALIZE(A)
+	FINALIZE(A)
+	if(isobj(A))
+		var/obj/O = A
+		GENERATE(O)
+
+	log_admin("[src.get_debug_name()] spawned [A.get_debug_name()].")
+
+	return TRUE
 
 
 
@@ -133,7 +144,7 @@
 	play('sound/meme/cbt.ogg',T)
 	CALLBACK("\ref[L]_smite",15,L,/mob/living/proc/smite)
 
-	log_admin("[L] was smited by [src].")
+	log_admin("[L.get_debug_name()] was smited by [src.get_debug_name()].")
 
 
 /client/verb/give_dosh(var/dosh_amount as num)
@@ -146,7 +157,9 @@
 		return FALSE
 
 	var/added_currency = P.adjust_currency(dosh_amount)
-	to_chat("You [P.name] [added_currency] credits.")
+	to_chat("You gave [P.name] [added_currency] credits.")
+
+	log_admin("[src.get_debug_name()] gave [P.get_debug_name()] [added_currency] credits.")
 
 /client/verb/set_attribute(var/mob/mob as mob)
 
@@ -221,7 +234,7 @@
 	P.resurrect()
 	to_chat("You rejuvenated [P.name].")
 
-
+	log_admin("[src.get_debug_name()] rejuvenated [P.get_debug_name()].")
 
 /client/verb/force_round_end()
 	set name = "Force Round End (DANGER)"
@@ -233,6 +246,8 @@
 		return FALSE
 
 	world.end(WORLD_END_NANOTRASEN_VICTORY,FALSE)
+
+	log_admin("[src.get_debug_name()] forced the round to end.")
 
 
 /client/verb/ic_announcement()
@@ -254,6 +269,8 @@
 
 	announce(sender,header,message,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
 
+	log_admin("[src.get_debug_name()] made an IC announcement from [sender].")
+
 	return TRUE
 
 /client/verb/test_spook_station()
@@ -266,6 +283,8 @@
 		return FALSE
 
 	spook_station()
+
+	log_admin("[src.get_debug_name()] spooked the station.")
 
 	return TRUE
 
@@ -307,6 +326,8 @@
 	G.points = min(G.points,15)
 	G.handle_alert_level()
 
+	log_admin("[src.get_debug_name()] forced a syndicate raid.")
+
 /proc/raid_station()
 	var/obj/shuttle_controller/syndicate_raid/SR = locate() in world
 	var/area/A = get_area(SR)
@@ -323,3 +344,59 @@
 	for(var/k in SSvote.active_votes)
 		var/vote/V = k
 		qdel(V)
+
+	log_admin("[src.get_debug_name()] forced all votes to end.")
+
+
+/client/verb/add_language()
+	set name = "Add Language"
+	set category = "GameMaster"
+
+	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") in all_players as mob|null
+
+	if(!P)
+		return FALSE
+
+	var/list/valid_languages = list()
+
+	for(var/k in SSlanguage.all_languages)
+		var/language/L = SSlanguage.all_languages[k]
+		valid_languages += L
+
+	var/language/L = input("What language do you wish to add to \the [P.name]?","Add Language") as null|anything in valid_languages
+
+	if(!L)
+		return FALSE
+
+	P.known_languages[L.id] = TRUE
+
+	log_admin("[src.get_debug_name()] added the language [L.get_debug_name()] to [P.get_debug_name()].")
+
+	return TRUE
+
+
+/client/verb/remove_language()
+	set name = "Remove Language"
+	set category = "GameMaster"
+
+	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") in all_players as mob|null
+
+	if(!P)
+		return FALSE
+
+	var/list/valid_languages = list()
+
+	for(var/k in P.known_languages)
+		var/language/L = SSlanguage.all_languages[k]
+		valid_languages += L
+
+	var/language/L = input("What language do you wish to remvoe from \the [P.name]?","Remove Language") as null|anything in valid_languages
+
+	if(!L)
+		return FALSE
+
+	P.known_languages -= L.id
+
+	log_admin("[src.get_debug_name()] removed the language [L.get_debug_name()] to [P.get_debug_name()].")
+
+	return TRUE
