@@ -8,28 +8,56 @@
 
 	consume_verb = "eat"
 
+	var/plant_type/plant_type
 
-	//Seed stuff
-	var/potency = 20 //How much chemicals to add.
-	var/yield = 1 //How much does each harvest yield?
-	var/growth_speed = 5 //How much to add to growth every 10 seconds when the plant is done growing but is making fruit.
+	var/growth_min = 0
+	var/growth_max = 100
+	var/growth_produce_max = 200
+
+	var/potency = 20
+	var/yield = 1
+	var/growth_speed = 5
+
+	var/delete_after_harvest = TRUE
 
 	drop_sound = 'sound/items/drop/herb.ogg'
 
 /obj/item/container/food/plant/save_item_data(var/save_inventory = TRUE)
 	. = ..()
+
 	SAVEVAR("icon_state")
+
+	SAVEPATH("plant_type")
+
+	SAVEVAR("growth_min")
+	SAVEVAR("growth_max")
+	SAVEVAR("growth_produce_max")
+
 	SAVEVAR("potency")
 	SAVEVAR("yield")
 	SAVEVAR("growth_speed")
+
+	SAVEVAR("delete_after_harvest")
+
 	return .
 
 /obj/item/container/food/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
+
 	LOADVAR("icon_state")
+
+	LOADPATH("plant_type")
+
+	LOADVAR("growth_min")
+	LOADVAR("growth_max")
+	LOADVAR("growth_produce_max")
+
 	LOADVAR("potency")
 	LOADVAR("yield")
 	LOADVAR("growth_speed")
+
+	LOADVAR("delete_after_harvest")
+
 	return .
 
 /obj/item/container/food/plant/nitrogen_flower

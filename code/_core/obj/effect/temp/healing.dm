@@ -21,8 +21,8 @@
 /obj/effect/temp/electricity
 	name = "electricity effect"
 	mouse_opacity = 0
-	icon = 'icons/obj/effects/effects.dmi'
-	icon_state = "electricity"
+	icon = 'icons/obj/effects/sparkles.dmi'
+	icon_state = "sparks"
 	duration = SECONDS_TO_DECISECONDS(1)
 
 

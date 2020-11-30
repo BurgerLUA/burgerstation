@@ -1,5 +1,3 @@
-var/global/list/plant_type/all_plant_types = list()
-
 SUBSYSTEM_DEF(botany)
 	name = "Botany Subsystem"
 	desc = "Handle botany related matters."
@@ -9,6 +7,8 @@ SUBSYSTEM_DEF(botany)
 	tick_usage_max = 75
 	cpu_usage_max = 75
 
+	var/list/obj/structure/interactive/plant/all_plants = list()
+	var/list/plant_type/all_plant_types = list()
 
 /subsystem/botany/unclog(var/mob/caller)
 	for(var/k in all_plants)
