@@ -21,3 +21,9 @@
 	. = ..()
 	name = "Operative [real_name]"
 	return TRUE
+
+
+/mob/living/advanced/player/antagonist/syndicate/add_species_languages()
+	. = ..()
+	known_languages[LANGUAGE_CODESPEAK] = TRUE
+	return .

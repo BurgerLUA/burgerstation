@@ -475,6 +475,7 @@
 #include "code\_core\datum\holiday\_holiday.dm"
 #include "code\_core\datum\language\_language.dm"
 #include "code\_core\datum\language\basic.dm"
+#include "code\_core\datum\language\codespeak.dm"
 #include "code\_core\datum\language\cult.dm"
 #include "code\_core\datum\language\lizard.dm"
 #include "code\_core\datum\loadout\_loadout.dm"
