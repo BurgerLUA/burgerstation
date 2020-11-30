@@ -7,6 +7,7 @@
 	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
 	var/current_bursts = 0 //Read only.
 	var/shoot_delay = 4 //In deciseconds
+	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts
 	var/next_shoot_time = 0
 
 	var/ranged_damage_type
@@ -357,7 +358,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(automatic && is_player(caller))
 		spawn(next_shoot_time - world.time)
 			var/mob/living/advanced/player/P = caller
-			if(P && P.client && ((params["left"] && P.attack_flags & ATTACK_HELD_LEFT) || (params["right"] && P.attack_flags & ATTACK_HELD_RIGHT)) )
+			if(P && P.client && ((params["left"] && P.attack_flags & ATTACK_HELD_LEFT) || (params["right"] && P.attack_flags & ATTACK_HELD_RIGHT) || max_bursts_to_use) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
 					return TRUE
@@ -368,12 +369,13 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				if(T)
 					next_shoot_time = 0 //This is needed.
 					if((max_bursts_to_use <= 0 || current_bursts < (max_bursts_to_use-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
-						current_bursts += 1
+						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
+							current_bursts += 1
 					else if(max_bursts_to_use > 0)
-						next_shoot_time = world.time + shoot_delay*current_bursts
+						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
 						current_bursts = 0
 			else if(max_bursts_to_use > 0)
-				next_shoot_time = world.time + shoot_delay*current_bursts
+				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
 				current_bursts = 0
 
 	update_sprite()
