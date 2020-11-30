@@ -19,7 +19,8 @@
 	var/list/language_keys = list(
 		"1" = LANGUAGE_BASIC,
 		"o" = LANGUAGE_LIZARD,
-		"t" = LANGUAGE_CODESPEAK
+		"t" = LANGUAGE_CODESPEAK,
+		"p" = LANGUAGE_RUSSIAN
 	)
 
 /macros/Destroy()

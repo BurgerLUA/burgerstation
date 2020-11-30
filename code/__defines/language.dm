@@ -2,3 +2,4 @@
 #define LANGUAGE_LIZARD "lizard"
 #define LANGUAGE_CULT "cult"
 #define LANGUAGE_CODESPEAK "codespeak"
+#define LANGUAGE_RUSSIAN "russian"
