@@ -194,7 +194,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 
 /obj/effect/temp/hazard/lava/
 	name = "lava"
-	icon = 'icons/obj/effects/effects.dmi'
+	icon = 'icons/obj/effects/lava.dmi'
 	icon_state = "lavastaff_warn"
 	duration = SECONDS_TO_DECISECONDS(30)
 	hazard_range = 1

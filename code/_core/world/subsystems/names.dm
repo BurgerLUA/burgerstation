@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(name)
 
 	var/list/player_names = list()
 
+	var/list/wisdoms = list()
+
 /subsystem/name/Initialize()
 
 	first_names_male = splittext(rustg_file_read("text/names/first_male.txt"),"\n")
@@ -21,9 +23,11 @@ SUBSYSTEM_DEF(name)
 
 	adjectives = splittext(rustg_file_read("text/names/adjectives.txt"),"\n")
 	verbs = splittext(rustg_file_read("text/names/verbs.txt"),"\n")
+	wisdoms = splittext(rustg_file_read("text/names/wisdoms.txt"),"\n")
 
 	log_subsystem(name,"Found [length(adjectives)] adjectives.")
 	log_subsystem(name,"Found [length(verbs)] verbs.")
+	log_subsystem(name,"Found [length(wisdoms)] verbs.")
 
 	log_subsystem(name,"Found [length(first_names_male)] male first names.")
 	log_subsystem(name,"Found [length(first_names_female)] female first names.")

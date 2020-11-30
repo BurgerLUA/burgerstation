@@ -1670,7 +1670,7 @@
 #include "code\_core\world\subsystems\map_node.dm"
 #include "code\_core\world\subsystems\material.dm"
 #include "code\_core\world\subsystems\menus.dm"
-#include "code\_core\world\subsystems\name_subsystem.dm"
+#include "code\_core\world\subsystems\names.dm"
 #include "code\_core\world\subsystems\objs.dm"
 #include "code\_core\world\subsystems\ore.dm"
 #include "code\_core\world\subsystems\paper.dm"
