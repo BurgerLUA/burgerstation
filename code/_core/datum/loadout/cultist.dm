@@ -32,6 +32,9 @@
 		/obj/item/clothing/overwear/armor/cult/old
 	)
 
+	random_weapon = list(
+		/obj/item/weapon/melee/sword/claymore
+	)
 
 /loadout/cultist/hard
 	spawning_items = list(
@@ -42,6 +45,3 @@
 		/obj/item/clothing/overwear/armor/cult/hard
 	)
 
-	random_weapon = list(
-		/obj/item/weapon/melee/sword/claymore
-	)

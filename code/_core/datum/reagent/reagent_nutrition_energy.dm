@@ -55,7 +55,7 @@
 
 	flavor = "electricity"
 
-	nutrition_amount = 5
+	nutrition_amount = 3
 	hydration_amount = 10
 	nutrition_quality_amount = -10
 
@@ -69,8 +69,8 @@
 
 	flavor = "coffee"
 
-	nutrition_amount = 5
-	hydration_amount = 5
+	nutrition_amount = 3
+	hydration_amount = 10
 	nutrition_quality_amount = -2
 
 	adrenaline_strength = 50
@@ -87,7 +87,7 @@
 	flavor = "expresso"
 
 	nutrition_amount = 3
-	hydration_amount = 10
+	hydration_amount = 6
 	nutrition_quality_amount = -4
 
 	adrenaline_strength = 100

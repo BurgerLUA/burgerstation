@@ -24,11 +24,11 @@
 		BIO = 25,
 		RAD = 25,
 		HOLY = -100,
-		DARK = 300,
+		DARK = 100,
 		FATIGUE = 25
 	)
 
-	level_multiplier = 5
+	level_multiplier = 2
 
 /mob/living/advanced/npc/cultist/Initialize()
 
@@ -58,7 +58,7 @@
 /mob/living/advanced/npc/cultist/old
 	name = "ancient cultist"
 	loadout_to_use = /loadout/cultist/old
-	level_multiplier = 20
+	level_multiplier = 4
 
 /mob/living/advanced/npc/cultist/hard
 	name = "master cultist"

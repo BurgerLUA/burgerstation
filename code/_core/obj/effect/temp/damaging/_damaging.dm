@@ -204,9 +204,16 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 	layer = 0
 
 /obj/effect/temp/hazard/lava/get_params(var/atom/victim)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			return ..()
+
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
-	.[PARAM_ICON_Y] = rand(0.8)
+	.[PARAM_ICON_Y] = rand(0.14)
+
 	return .
 
 
@@ -230,7 +237,14 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 	return ..()
 
 /obj/effect/temp/hazard/curse/get_params(var/atom/victim)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			return ..()
+
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
-	.[PARAM_ICON_Y] = rand(0.8)
+	.[PARAM_ICON_Y] = rand(0.14)
+
 	return .
