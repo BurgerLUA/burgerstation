@@ -138,9 +138,7 @@
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
 
-
-
-	has_footsteps = TRUE
+	var/has_footsteps = TRUE
 
 	var/climb_counter = 0
 

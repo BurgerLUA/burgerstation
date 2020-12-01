@@ -92,7 +92,7 @@
 
 	return src
 
-/turf/proc/do_footstep(var/atom/movable/source,var/enter=FALSE)
+/turf/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
 
 	if(!source.has_footsteps)
 		return FALSE
@@ -108,34 +108,24 @@
 	if(src.loc && (!old_loc || src.loc != old_loc.loc))
 		src.loc.Entered(enterer)
 
-	do_footstep(enterer,TRUE)
+	. = ..()
 
-	..()
+	if(!enterer.qdeleting && is_living(enterer))
+		do_footstep(enterer,TRUE)
+
+	return .
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
 		src.loc.Exited(exiter)
 
-	do_footstep(exiter,FALSE)
+	. = ..()
 
-	..()
+	if(!exiter.qdeleting && is_living(exiter))
+		do_footstep(exiter,FALSE)
 
-	if(is_living(exiter) && !exiter.qdeleting)
-		var/mob/living/L = exiter
-		L.old_turf = src
-		if(!old_living)
-			old_living = list()
-		old_living += L
-
-/atom/Exited(var/atom/exiter,var/atom/new_loc)
-
-	if(is_living(exiter))
-		var/mob/living/L = exiter
-		if(L.old_turf && L.old_turf.old_living)
-			L.old_turf.old_living -= L
-
-	..()
+	return .
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return health && !ispath(health)

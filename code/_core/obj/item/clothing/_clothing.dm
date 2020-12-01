@@ -119,3 +119,6 @@
 	. = ..()
 	remove_additonal_clothing()
 	return .
+
+/obj/item/clothing/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	return original_footsteps

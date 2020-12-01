@@ -1,4 +1,4 @@
-/mob/living/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+/mob/living/proc/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
 
 	if(!T)
 		return FALSE
@@ -26,12 +26,23 @@
 			var/footstep_volume = 50 * (move_mod-0.5)
 			if(is_sneaking)
 				footstep_volume *= 0.5
-			if(length(F.footstep_sounds))
-				var/footstep_sound = pick(F.footstep_sounds)
+
+			var/footstep_sound
+			if(horizontal)
+				if(length(F.drag_sounds))
+					footstep_sound = pick(F.drag_sounds)
+			else
+				if(length(F.footstep_sounds))
+					footstep_sound = pick(F.footstep_sounds)
+
+			if(footstep_sound)
 				play(footstep_sound,all_mobs_with_clients - src, T, volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
 				if(src.client) play(footstep_sound,src,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch= 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
 
-/mob/living/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	return TRUE
+
+
+/mob/living/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
@@ -69,7 +80,16 @@
 	if(is_sneaking)
 		on_sneak()
 
-	climb_counter = 0
+	if(isturf(old_loc))
+		var/turf/T = old_loc
+		if(T.old_living)
+			T.old_living -= src
+
+	if(isturf(loc))
+		var/turf/T = loc
+		if(!T.old_living)
+			T.old_living = list()
+		T.old_living |= src
 
 	handle_tabled()
 
@@ -133,8 +153,8 @@
 /mob/living/get_stance_movement_mul()
 
 	if(horizontal)
-		move_mod = initial(move_mod)
-		return 3
+		move_mod = 1
+		return 6
 
 	return ..()
 
@@ -207,9 +227,12 @@
 		add_status_effect(STUN,5,5,source = owner)
 	else
 		add_status_effect(STAGGER,2,2,source = owner)
+
 	return ..()
 
 /mob/living/proc/handle_tabled()
+
+	climb_counter = 0
 
 	if(tabled != currently_tabled)
 		currently_tabled = tabled

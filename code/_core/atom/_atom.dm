@@ -113,6 +113,8 @@
 	appearance = null
 	invisibility = 101
 	mouse_opacity = 0
+	icon = null
+	icon_state = null
 
 	all_listeners -= src
 

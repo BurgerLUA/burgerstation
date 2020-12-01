@@ -49,31 +49,7 @@
 	var/acceleration_mod = 0
 	var/use_momentum = FALSE //Acceleration uses momentum.
 
-	var/has_footsteps = FALSE
-
 	var/value_last = 0//Last value calculated via calculation
-
-/atom/movable/proc/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
-
-	if(!enter)
-		return FALSE //Only for advanced types
-
-	for(var/k in footsteps_to_use)
-		if(!k)
-			continue
-		var/footstep/F = SSfootstep.all_footsteps[k]
-		if(F.has_footprints)
-			var/type_to_use = enter ? /obj/effect/footprint/emboss/ : /obj/effect/footprint/emboss/exit
-			var/obj/effect/footprint/emboss/P = new type_to_use(T,src.dir,TRUE,TRUE)
-			P.color = F.footprint_color
-			P.alpha = F.footprint_alpha
-			INITIALIZE(P)
-			FINALIZE(P)
-		if(length(F.footstep_sounds))
-			play(pick(F.footstep_sounds), T, volume = 50, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
-
-/atom/movable/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
-	return original_footsteps
 
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
 
