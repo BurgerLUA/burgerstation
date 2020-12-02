@@ -10,7 +10,7 @@
 	corner_icons = TRUE
 	corner_category = "xeno"
 
-	//footstep = /footstep/xeno
+	footstep = /footstep/resin
 
 	var/glow = FALSE
 

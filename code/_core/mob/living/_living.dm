@@ -6,7 +6,6 @@
 
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
-	var/list/faction/factions
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 

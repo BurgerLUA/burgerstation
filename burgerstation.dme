@@ -40,7 +40,6 @@
 #include "code\__defines\end_states.dm"
 #include "code\__defines\environment.dm"
 #include "code\__defines\experience.dm"
-#include "code\__defines\factions.dm"
 #include "code\__defines\file_paths.dm"
 #include "code\__defines\flags_area.dm"
 #include "code\__defines\flags_clicking.dm"
