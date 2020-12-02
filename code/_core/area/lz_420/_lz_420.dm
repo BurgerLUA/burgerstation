@@ -4,20 +4,31 @@
 
 /area/lz_420/exterior/
 	name = "LZ-420 Snow Forest"
-	icon_state = "snow"
-	weather = WEATHER_SNOW
-	ambient_temperature = T0C - 20
-	hazard = "cold"
+	icon_state = "jungle"
+	weather = WEATHER_RAIN
+	ambient_temperature = T0C + 40
+
 	sunlight_freq = 8
-	sunlight_color = "#898989"
+	sunlight_color = "#29332C"
 
-	cheese_type = /reagent/nutrition/cheese/raclette
+	cheese_type = /reagent/nutrition/cheese/brabander
 
-	tracks = TRACKS_MOUNTAIN
+	//ambient_sound = 'sound/ambient/crickets.ogg'
+
+	random_sounds = list(
+		'sound/ambient/ambiruin_1.ogg',
+		'sound/ambient/ambiruin_2.ogg',
+		'sound/ambient/ambiruin_3.ogg',
+		'sound/ambient/ambiruin_4.ogg',
+		'sound/ambient/ambiruin_5.ogg',
+		'sound/ambient/ambiruin_6.ogg',
+		'sound/ambient/ambiruin_7.ogg',
+	)
+
+	tracks = TRACKS_JUNGLE
 
 	sound_environment = ENVIRONMENT_FOREST
 
-	interior = FALSE
 
 /area/lz_420/interior/
 	sunlight_freq = 0

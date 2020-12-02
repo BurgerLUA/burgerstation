@@ -7,30 +7,20 @@
 
 /area/box/exterior
 	name = "\improper B-0X Exterior"
-	icon_state = "jungle"
-	weather = WEATHER_RAIN
-	ambient_temperature = T0C + 40
-
+	icon_state = "snow"
+	weather = WEATHER_SNOW
+	ambient_temperature = T0C - 20
+	hazard = "cold"
 	sunlight_freq = 8
-	sunlight_color = "#29332C"
+	sunlight_color = "#898989"
 
-	cheese_type = /reagent/nutrition/cheese/brabander
+	cheese_type = /reagent/nutrition/cheese/raclette
 
-	//ambient_sound = 'sound/ambient/crickets.ogg'
-
-	random_sounds = list(
-		'sound/ambient/ambiruin_1.ogg',
-		'sound/ambient/ambiruin_2.ogg',
-		'sound/ambient/ambiruin_3.ogg',
-		'sound/ambient/ambiruin_4.ogg',
-		'sound/ambient/ambiruin_5.ogg',
-		'sound/ambient/ambiruin_6.ogg',
-		'sound/ambient/ambiruin_7.ogg',
-	)
-
-	tracks = TRACKS_JUNGLE
+	tracks = TRACKS_MOUNTAIN
 
 	sound_environment = ENVIRONMENT_FOREST
+
+	interior = FALSE
 
 /area/box/interior/
 	interior = TRUE

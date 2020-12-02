@@ -145,5 +145,3 @@
 		force_move(loc)
 
 	return TRUE
-
-

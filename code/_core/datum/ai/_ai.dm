@@ -881,7 +881,7 @@
 	if(!use_alerts)
 		return FALSE
 
-	if(owner.dead)
+	if(!owner || owner.dead)
 		return FALSE
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))

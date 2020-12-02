@@ -129,6 +129,8 @@
 		if(0.1 to 0.2)
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
+				new /obj/marker/generation/mob/legion(src)
+			if(prob(1))
 				new /obj/marker/generation/lava(src)
 		if(0.2 to 0.4)
 			new /turf/simulated/hazard/lava(src)
@@ -190,8 +192,6 @@
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(4))
 				new /obj/marker/generation/snow_grass(src)
-			if(prob(0.5))
-				new /mob/living/simple/npc/snow_legion(src)
 		if(0.4 to 0.41)
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.41 to 0.43)
@@ -359,7 +359,7 @@
 	return ..()
 
 
-/turf/unsimulated/generation/snow_cave //For LZ420
+/turf/unsimulated/generation/snow_cave //ICEBOX ONLY
 	name = "snow cave generation"
 	icon_state = "caves"
 
@@ -399,18 +399,18 @@
 				new /obj/marker/generation/snow_wall(src)
 			else
 				new /turf/simulated/wall/rock(src)
-				new /area/lz_420/interior/snow_cave(src)
+				new /area/box/interior/caves(src)
 				if(prob(1)) new /obj/marker/generation/rock_wall(src)
 		if(0.5 to 0.8)
 			new /turf/simulated/floor/cave_dirt(src)
-			new /area/lz_420/interior/snow_cave(src)
+			new /area/box/interior/caves(src)
 			if(prob(1)) new /obj/marker/generation/rock_wall(src)
 		if(0.8 to 0.9)
 			if(is_different)
 				new /obj/marker/generation/snow_wall(src)
 			else
 				new /turf/simulated/wall/rock(src)
-				new /area/lz_420/interior/snow_cave(src)
+				new /area/box/interior/caves(src)
 				if(prob(1)) new /obj/marker/generation/rock_wall(src)
 		if(0.9 to INFINITY)
 			new /turf/simulated/wall/rock/snow(src)
