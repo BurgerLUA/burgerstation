@@ -75,6 +75,7 @@
 			if(B)
 				caller?.to_chat(span("notice","You remove \the [B.name] from \the [src.name]."))
 				I.add_object(B)
+				//TODO: Bullet removal sounds?
 
 		return TRUE
 

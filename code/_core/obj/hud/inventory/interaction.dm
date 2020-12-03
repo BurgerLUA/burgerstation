@@ -69,7 +69,7 @@
 			var/highest = max(abs(vel_x),abs(vel_y))
 
 			if(!highest)
-				I.drop_item(get_turf(caller))
+				I.drop_item(get_turf(caller)) //Drop if we can't throw.
 				return TRUE
 
 			vel_x *= 1/highest
@@ -78,7 +78,7 @@
 			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
 			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
 
-			I.drop_item(get_turf(caller))
+			I.drop_item(get_turf(caller),silent=TRUE)
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
 
@@ -92,7 +92,7 @@
 		var/turf/desired_turf = object ? get_turf(object) : null
 		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
 			return drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
-		return drop_item_from_inventory()
+		return drop_item_from_inventory(get_turf(src))
 
 	if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
@@ -247,8 +247,7 @@
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc
 
-obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
-
+obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	if(!length(src.held_objects))
 		return FALSE
 

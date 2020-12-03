@@ -298,7 +298,7 @@
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/k in clothing_list)
 		var/obj/item/clothing/C = k
-		C.quick_equip(src)
+		C.quick_equip(src,silent=TRUE)
 
 mob/living/advanced/Login()
 	. = ..()
@@ -388,10 +388,11 @@ mob/living/advanced/Login()
 
 	return TRUE
 
-/mob/living/advanced/proc/add_worn_item(var/obj/item/C)
+/* UNUSED
+/mob/living/advanced/proc/add_worn_item(var/obj/item/C,var/slient=FALSE)
 	for(var/k in inventory)
 		var/obj/hud/inventory/I = k
-		if(I.add_worn_object(C,FALSE))
+		if(I.add_worn_object(C,FALSE,silent=FALSE))
 			return TRUE
 
 	return FALSE
@@ -403,6 +404,7 @@ mob/living/advanced/Login()
 			return TRUE
 
 	return FALSE
+*/
 
 /mob/living/advanced/proc/add_species_languages()
 
@@ -477,24 +479,24 @@ mob/living/advanced/Login()
 
 	return ..()
 
-/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
+/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE,var/silent=FALSE)
 
 	if(left_hand && right_hand)
 		if(left)
 			if(left_hand.can_hold_object(I,FALSE))
-				return left_hand.add_object(I)
+				return left_hand.add_object(I,silent=silent)
 			else if(right_hand.can_hold_object(I,FALSE))
-				return right_hand.add_object(I)
+				return right_hand.add_object(I,silent=silent)
 		else
 			if(right_hand.can_hold_object(I,FALSE))
-				return right_hand.add_object(I)
+				return right_hand.add_object(I,silent=silent)
 			else if(left_hand.can_hold_object(I,FALSE))
-				return left_hand.add_object(I)
+				return left_hand.add_object(I,silent=silent)
 	else
 		if(left_hand)
-			return left_hand.add_object(I)
+			return left_hand.add_object(I,silent=silent)
 		else if(right_hand)
-			return right_hand.add_object(I)
+			return right_hand.add_object(I,silent=silent)
 
 	return FALSE
 

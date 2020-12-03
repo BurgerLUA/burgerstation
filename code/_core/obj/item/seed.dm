@@ -6,7 +6,6 @@
 	icon = 'icons/obj/item/seed.dmi'
 	icon_state = "seed"
 
-
 	var/plant_type/plant_type
 
 	var/growth_min = 0

@@ -234,7 +234,7 @@
 	last_interacted = null
 
 	if(loc)
-		drop_item()
+		drop_item(silent=TRUE)
 
 	return ..()
 
@@ -268,7 +268,7 @@
 
 	return null
 
-/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //We add the object to this item's inventory.
+/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE
@@ -278,7 +278,7 @@
 	if(object != src)
 		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,FALSE,bypass)
 		if(found_inventory)
-			found_inventory.add_object(object,enable_messages,bypass)
+			found_inventory.add_object(object,enable_messages,bypass,silent=silent)
 			added = TRUE
 
 	if(enable_messages && caller)
@@ -433,10 +433,10 @@
 	update_lighting_for_owner()
 	return .
 
-/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 
 	if(additional_clothing_parent)
-		drop_item(additional_clothing_parent)
+		drop_item(additional_clothing_parent) //This retracts the clothing.
 
 	if(light)
 		light.update(src)
@@ -448,9 +448,6 @@
 			new/obj/effect/temp/item_pickup(NL,2,OL,src,isturf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
-
-	if(drop_sound && isturf(loc) && !qdeleting)
-		play(drop_sound,get_turf(src))
 
 	return TRUE
 

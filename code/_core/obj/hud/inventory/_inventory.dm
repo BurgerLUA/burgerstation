@@ -346,17 +346,17 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass=FALSE) //Prioritize wearing it, then holding it.
+/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass=FALSE,var/silent=FALSE) //Prioritize wearing it, then holding it.
 
-	if((bypass || I.can_be_worn()) && add_worn_object(I,messages,bypass))
+	if((bypass || I.can_be_worn()) && add_worn_object(I,messages,bypass,silent))
 		return TRUE
 
-	if((bypass || I.can_be_held()) && add_held_object(I,messages,bypass))
+	if((bypass || I.can_be_held()) && add_held_object(I,messages,bypass,silent))
 		return TRUE
 
 	return FALSE
 
-/obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
+/obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 
 	if(!I)
 		return FALSE
@@ -373,7 +373,7 @@
 
 	var/atom/old_location = I.loc
 
-	I.drop_item(src)
+	I.drop_item(src,silent=silent)
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
 	I.pre_pickup(old_location,src)
@@ -396,7 +396,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
+/obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE,var/silent=FALSE)
 
 	if(!I)
 		return FALSE
@@ -417,7 +417,7 @@
 	var/mob/living/advanced/A = owner
 	var/atom/old_location = I.loc
 
-	I.drop_item(src)
+	I.drop_item(src,silent=silent)
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
 	I.pre_pickup(old_location,src)
@@ -525,7 +525,7 @@
 
 	return .
 
-/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0) //Removes the object from both worn and held objects, just in case.
+/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
 	var/was_worn = FALSE
 	//var/was_held = FALSE
@@ -555,7 +555,7 @@
 		I.pixel_x = pixel_x_offset
 		I.pixel_y = pixel_y_offset
 		I.plane = initial(I.plane)
-		I.on_drop(src,drop_loc)
+		I.on_drop(src,drop_loc,silent)
 		update_stats()
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner

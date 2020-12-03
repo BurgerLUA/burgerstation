@@ -71,7 +71,7 @@
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(additional_clothing_parent)
-		drop_item(additional_clothing_parent)
+		drop_item(additional_clothing_parent,silent=TRUE)
 		return TRUE
 
 	if(is_container) //We're a container being clicked on.
@@ -95,39 +95,13 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OTHER(object)
 
-	/*
-	if(get_dist(src,object) > 1)
-		if(is_living(caller))
-			var/mob/living/L = caller
-			object = object.defer_click_on_object(location,control,params)
-			if(!is_clothing(src))
-				caller.face_atom(object)
-			if(src.additional_clothing_parent)
-				caller.to_chat(span("warning","You can't throw this!"))
-				return TRUE
-			var/vel_x = object.x - caller.x
-			var/vel_y = object.y - caller.y
-			var/highest = max(abs(vel_x),abs(vel_y))
-
-			if(!highest)
-				src.drop_item(get_step(caller,caller.dir))
-				return TRUE
-
-			vel_x *= 1/highest
-			vel_y *= 1/highest
-
-			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
-			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
-
-			src.drop_item(get_turf(caller))
-			src.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
-		return TRUE
-	*/
-
 	if(isturf(object) || istype(object,/obj/structure/smooth/table))
 		var/turf/T = get_turf(object)
 		if(is_container)
-			caller.to_chat(span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
+			if(can_dump_contents(caller,T))
+				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/dump_contents,caller,T)
+				PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_dump_contents,caller,T)
+				caller.to_chat(span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
 		else
 			src.drop_item(T)
 		return TRUE
@@ -145,15 +119,66 @@
 		return FALSE
 	return TRUE
 
-/obj/item/proc/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0) //Should be used in place of forcemove when possible.
+
+/obj/item/proc/dump_single_content(var/mob/caller,var/obj/item/I,var/turf/target_turf)
+
+	if(!caller || !target_turf || !I)
+		return FALSE
+
+	if(get_dist(caller,target_turf) > 1)
+		return FALSE
+
+	if(!is_inventory(I.loc))
+		return FALSE
+
+	if(I.loc.loc != src)
+		return FALSE
+
+	I.drop_item(target_turf,rand(-8,8),rand(-8,8))
+
+	return TRUE
+
+/obj/item/proc/can_dump_contents(var/mob/caller,var/turf/target_turf)
+
+	if(!caller || !target_turf)
+		return FALSE
+
+	if(get_dist(caller,target_turf) > 1)
+		caller.to_chat(span("notice","You need to be standing still to dump the contents out!"))
+		return FALSE
+
+	return TRUE
+
+
+/obj/item/proc/dump_contents(var/mob/caller,var/turf/target_turf)
+
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
+		for(var/i in I.held_objects)
+			CHECK_TICK(50,FPS_SERVER)
+			var/obj/item/I2 = i
+			if(!dump_single_content(caller,I2,target_turf))
+				break
+
+	caller.to_chat(span("notice","You dump out the contents of \the [src.name] onto \the [target_turf.name]."))
+
+	return TRUE
+
+
+/obj/item/proc/drop_item(var/atom/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE) //Should be used in place of forcemove when possible.
+
+	if(drop_sound && !silent && new_location && !qdeleting)
+		play(drop_sound,new_location)
+
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		if(!new_location)
 			new_location = get_turf(I.owner)
-		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset))
+		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset,silent))
 			return TRUE
 		else
 			return FALSE
 	force_move(new_location)
+
 	return TRUE
 

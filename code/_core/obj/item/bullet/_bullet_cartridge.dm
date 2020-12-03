@@ -38,6 +38,8 @@
 
 	var/bullet_seed //For icon generation.
 
+	drop_sound = 'sound/items/bullet_casing.ogg'
+
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
 	return ..()
@@ -54,9 +56,6 @@
 
 	return .
 
-/obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
-	return 'sound/weapons/gun/general/mag_bullet_remove.ogg'
-
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
 	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
 
@@ -68,7 +67,7 @@
 	update_sprite()
 	return .
 
-/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 	return .

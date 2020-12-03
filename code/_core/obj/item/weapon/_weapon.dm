@@ -61,12 +61,12 @@
 	return TRUE
 */
 
-/obj/item/weapon/on_drop(var/obj/hud/inventory/I)
+/obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	wielded = FALSE
-	if(I.child_inventory)
-		I.child_inventory.parent_inventory = null
-		I.child_inventory.update_sprite()
-		I.child_inventory = null
+	if(old_inventory.child_inventory)
+		old_inventory.child_inventory.parent_inventory = null
+		old_inventory.child_inventory.update_sprite()
+		old_inventory.child_inventory = null
 	update_sprite()
 	return ..()
 

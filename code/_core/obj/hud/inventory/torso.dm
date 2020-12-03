@@ -68,7 +68,7 @@
 
 	priority = 1
 
-/obj/hud/inventory/organs/torso_ob/add_held_object(var/obj/item/I,var/messages = TRUE)
+/obj/hud/inventory/organs/torso_ob/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
@@ -76,7 +76,7 @@
 
 	return .
 
-/obj/hud/inventory/organs/torso_ob/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0)
+/obj/hud/inventory/organs/torso_ob/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner

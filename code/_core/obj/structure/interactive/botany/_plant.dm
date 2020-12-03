@@ -108,6 +108,7 @@
 			P.potency = potency
 			P.yield = yield
 			P.growth_speed = growth_speed
+			P.plant_type = plant_type
 			INITIALIZE(P)
 			GENERATE(P)
 			FINALIZE(P)
