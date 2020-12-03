@@ -134,7 +134,7 @@
 	if(I.loc.loc != src)
 		return FALSE
 
-	I.drop_item(target_turf,rand(-8,8),rand(-8,8))
+	I.drop_item(target_turf,rand(-8,8),rand(-8,8),silent=TRUE)
 
 	return TRUE
 
