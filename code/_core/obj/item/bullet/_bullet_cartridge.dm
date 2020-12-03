@@ -1,4 +1,4 @@
-/obj/item/bullet_cartridge/ //NOT TO BE CONFUSED WITH PROJECTILES.
+/obj/item/bullet_cartridge/
 	name = "bullet"
 	desc = "Try not to bite it."
 	desc_extended = "Bullets can be put in guns with the matching ammo type."

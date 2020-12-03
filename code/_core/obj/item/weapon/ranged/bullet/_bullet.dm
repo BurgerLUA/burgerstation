@@ -105,10 +105,11 @@
 		return FALSE
 
 	if(B.is_spent && B.caseless)
+		caller << "BYE"
 		qdel(B)
 	else
-		if(B.is_spent && !ENABLE_BULLET_CASINGS && drop_sound)
-			play(chambered_bullet.drop_sound,src)
+		if(B.is_spent && !ENABLE_BULLET_CASINGS)
+			if(B.drop_sound) play(B.drop_sound,src)
 			qdel(B)
 		else
 			B.drop_item(new_loc)
@@ -132,7 +133,7 @@
 		qdel(chambered_bullet)
 	else
 		if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
-			play(chambered_bullet.drop_sound,src)
+			if(bullet_to_remove.drop_sound) play(chambered_bullet.drop_sound,src)
 			qdel(bullet_to_remove)
 		else
 			bullet_to_remove.drop_item(new_loc)
