@@ -3,7 +3,7 @@
 	area_identifier = "Mission"
 
 /area/lz_420/exterior/
-	name = "LZ-420 Snow Forest"
+	name = "LZ-420 Exterior"
 	icon_state = "jungle"
 	weather = WEATHER_RAIN
 	ambient_temperature = T0C + 40
@@ -36,8 +36,8 @@
 
 	sound_environment = ENVIRONMENT_ROOM
 
-/area/lz_420/interior/snow_cave
-	name = "\improper Unexplored Caves"
+/area/lz_420/interior/cave
+	name = "\improper LZ-420 Caves"
 	icon_state = "cave"
 	tracks = TRACKS_CAVE
 	random_sounds = list(

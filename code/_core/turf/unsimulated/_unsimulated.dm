@@ -151,11 +151,6 @@
 
 	return ..()
 
-
-
-
-
-
 /turf/unsimulated/generation/snow
 	name = "snow generation"
 	icon_state = "snow"
