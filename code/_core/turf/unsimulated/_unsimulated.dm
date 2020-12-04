@@ -100,6 +100,21 @@
 	name = "lava generation"
 	icon_state = "lava"
 
+/turf/unsimulated/generation/lava/proc/spawn_mob()
+
+	switch(rand(1,4))
+		if(1)
+			new /obj/marker/generation/mob/watcher(src)
+		if(2)
+			if(prob(10))
+				new /obj/marker/generation/mob/goliath_ancient(src)
+			else
+				new /obj/marker/generation/mob/goliath(src)
+		if(3)
+			new /obj/marker/generation/mob/legion(src)
+		if(4)
+			new /obj/marker/generation/mob/ash_walker(src)
+
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
 	var/noise = 0
@@ -127,9 +142,9 @@
 		if(-INFINITY to 0.1)
 			new /turf/simulated/hazard/lava(src)
 		if(0.1 to 0.2)
-			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
-				new /obj/marker/generation/mob/legion(src)
+				spawn_mob()
+			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
 		if(0.2 to 0.4)
@@ -137,9 +152,9 @@
 			if(prob(1))
 				new /obj/marker/generation/basalt(src)
 		if(0.4 to 0.6)
-			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
-				new /obj/marker/generation/mob/watcher(src)
+				spawn_mob()
+			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.6 to 0.8)

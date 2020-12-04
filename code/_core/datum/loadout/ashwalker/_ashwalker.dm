@@ -1,8 +1,7 @@
 /loadout/ashwalker
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/brown,
-		/obj/item/clothing/neck/cloak/brown,
-		/obj/item/weapon/melee/null_rod/staff
+		/obj/item/clothing/neck/cloak/brown
 	)
 
 	var/list/random_weapon = list(
@@ -34,8 +33,7 @@
 /loadout/ashwalker/hunter
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/brown,
-		/obj/item/clothing/neck/mantle/brown,
-		/obj/item/weapon/melee/spear
+		/obj/item/clothing/neck/mantle/brown
 	)
 
 /loadout/ashwalker/hunter/female

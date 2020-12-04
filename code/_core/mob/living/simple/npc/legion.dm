@@ -30,8 +30,9 @@
 
 /mob/living/simple/npc/legionare/Destroy()
 
-	if(stored_corpse && stored_corpse.ckey_last)
-		stored_corpse.force_move(get_turf(src))
+	if(stored_corpse)
+		if(istype(stored_corpse) && stored_corpse.ckey_last)
+			stored_corpse.force_move(get_turf(src))
 		stored_corpse = null
 	else
 		QDEL_NULL(stored_corpse)
