@@ -1468,6 +1468,7 @@
 #include "code\_core\obj\structure\interactive\fence.dm"
 #include "code\_core\obj\structure\interactive\fire_alarm.dm"
 #include "code\_core\obj\structure\interactive\fire_closet.dm"
+#include "code\_core\obj\structure\interactive\fountain.dm"
 #include "code\_core\obj\structure\interactive\fulton_beacon.dm"
 #include "code\_core\obj\structure\interactive\gateway.dm"
 #include "code\_core\obj\structure\interactive\ground_ore_deposit.dm"

@@ -171,7 +171,7 @@
 		if(isturf(new_location))
 			play(drop_sound,new_location)
 		else
-			play(drop_sound,get_turf(new_location),range_max=1,volume=25)
+			play(inventory_sound,get_turf(new_location),range_max=1,volume=25)
 
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc

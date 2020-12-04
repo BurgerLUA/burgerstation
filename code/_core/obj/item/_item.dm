@@ -72,7 +72,7 @@
 
 	var/crafting_id = null
 
-	var/inventory_sound = 'sound/items/drop/accessory.ogg' //Sound when moved to an inventory.
+	var/inventory_sound = 'sound/items/drop/food.ogg' //Sound when moved to an inventory.
 	var/drop_sound = 'sound/items/drop/accessory.ogg' //Sound when moved elsewhere
 
 	var/list/inventory_sounds = list(
