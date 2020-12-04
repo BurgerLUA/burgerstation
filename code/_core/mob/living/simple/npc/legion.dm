@@ -1,4 +1,4 @@
-/mob/living/simple/npc/legion
+/mob/living/simple/npc/legionare
 	name = "legion"
 
 	icon = 'icons/mob/living/simple/lavaland/legioner.dmi'
@@ -17,34 +17,37 @@
 
 	var/mob/living/advanced/stored_corpse = /mob/living/advanced/npc/nanotrasen/shaft_miner
 
-	var/mob/living/simple/npc/legion_head/head_type = /mob/living/simple/npc/legion_head
+	var/mob/living/simple/npc/legionare_head/head_type = /mob/living/simple/npc/legionare_head
 
-	var/list/mob/living/simple/npc/legion_head/tracked_heads = list()
+	var/list/mob/living/simple/npc/legionare_head/tracked_heads = list()
 
 	var/head_limit = 3
+
+	var/clone=FALSE
 
 	iff_tag = "Legion"
 	loyalty_tag = "Legion"
 
-/mob/living/simple/npc/legion/Destroy()
+/mob/living/simple/npc/legionare/Destroy()
 
-	if(stored_corpse)
+	if(stored_corpse && stored_corpse.ckey_last)
 		stored_corpse.force_move(get_turf(src))
-
-	stored_corpse = null
+		stored_corpse = null
+	else
+		QDEL_NULL(stored_corpse)
 
 	for(var/k in tracked_heads)
-		var/mob/living/simple/npc/legion_head/L = k
+		var/mob/living/simple/npc/legionare_head/L = k
 		L.death()
 
 	return ..()
 
-/mob/living/simple/npc/legion/proc/create_head()
+/mob/living/simple/npc/legionare/proc/create_head()
 
 	if(length(tracked_heads) >= head_limit)
 		return FALSE
 
-	var/mob/living/simple/npc/legion_head/L = new head_type(get_turf(src))
+	var/mob/living/simple/npc/legionare_head/L = new head_type(get_turf(src))
 	L.parent_legion = src
 	INITIALIZE(L)
 	GENERATE(L)
@@ -60,7 +63,7 @@
 
 	return TRUE
 
-/mob/living/simple/npc/legion/Finalize()
+/mob/living/simple/npc/legionare/Finalize()
 
 	if(ispath(stored_corpse))
 		stored_corpse = new /mob/living/advanced/npc/nanotrasen/shaft_miner(src)
@@ -72,11 +75,20 @@
 
 	return ..()
 
-/mob/living/simple/npc/legion/post_death()
+/mob/living/simple/npc/legionare/post_death()
+
+	if(stored_corpse)
+		var/turf/T = get_turf(src)
+		stored_corpse.force_move(T)
+		stored_corpse = null
+		if(!clone)
+			CREATE(/obj/item/legion_core,T)
+
 	qdel(src)
+
 	return ..()
 
-/mob/living/simple/npc/legion/snow
+/mob/living/simple/npc/legionare/snow
 	name = "snow legion"
 	icon = 'icons/mob/living/simple/snowlegion.dmi'
 	icon_state = "living"
@@ -104,7 +116,7 @@
 
 	mob_size = MOB_SIZE_LARGE
 
-/mob/living/simple/npc/legion/snow/post_death()
+/mob/living/simple/npc/legionare/snow/post_death()
 	. = ..()
 	icon_state = "dead"
 	return .

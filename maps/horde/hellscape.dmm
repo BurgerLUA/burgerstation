@@ -620,7 +620,7 @@
 "lV" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal/reinforced/syndicate,/area/hellscape/interior/syndicate)
 "lW" = (/obj/item/clothing/shirt/normal,/turf/simulated/floor/basalt,/area/hellscape/interior/caves/broodmother)
 "lX" = (/obj/structure/interactive/chair,/obj/structure/interactive/lighting/bulb,/turf/simulated/floor/circuit,/area/hellscape/interior/syndicate)
-"lY" = (/mob/living/simple/npc/legion,/turf/simulated/floor/colored/ash/dark,/area/hellscape/exterior/death_plains)
+"lY" = (/mob/living/simple/npc/legionare,/turf/simulated/floor/colored/ash/dark,/area/hellscape/exterior/death_plains)
 "lZ" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/circuit,/area/hellscape/interior/syndicate)
 "ma" = (/obj/structure/interactive/door/airlock/syndicate,/turf/simulated/floor/circuit,/area/hellscape/interior/syndicate)
 "mb" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/morphing/red/dark,/area/hellscape/interior/syndicate)

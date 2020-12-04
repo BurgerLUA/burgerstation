@@ -889,6 +889,7 @@
 #include "code\_core\obj\item\herald_mirror.dm"
 #include "code\_core\obj\item\interaction.dm"
 #include "code\_core\obj\item\inventory.dm"
+#include "code\_core\obj\item\legion_core.dm"
 #include "code\_core\obj\item\light_sensor.dm"
 #include "code\_core\obj\item\marker.dm"
 #include "code\_core\obj\item\matter_cartridge.dm"

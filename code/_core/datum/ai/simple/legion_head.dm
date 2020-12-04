@@ -1,5 +1,5 @@
 /ai/legion_head
-	var/mob/living/simple/npc/legion_head/owner_as_legion_head
+	var/mob/living/simple/npc/legionare_head/owner_as_legion_head
 	use_alerts = FALSE
 
 /ai/legion_head/New(var/mob/living/desired_owner)
