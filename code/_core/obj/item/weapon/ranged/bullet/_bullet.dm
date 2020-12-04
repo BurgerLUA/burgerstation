@@ -105,7 +105,6 @@
 		return FALSE
 
 	if(B.is_spent && B.caseless)
-		caller << "BYE"
 		qdel(B)
 	else
 		if(B.is_spent && !ENABLE_BULLET_CASINGS)

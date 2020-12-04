@@ -58,7 +58,6 @@ var/regex/vowels = new("\[aeiou\]", "i")
 /proc/tooltip(var/text,var/tooltip)
 	if(!tooltip)
 		return text
-	world.log << "Penis."
 	return div("tooltip","[text][div("tooltip_text",tooltip)]")
 
 /*
