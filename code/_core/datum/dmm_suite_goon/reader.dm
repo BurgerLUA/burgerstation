@@ -141,9 +141,9 @@ dmm_suite
 
 	var
 		quote = "\""
-		regex/comma_delim = new(@"[\s\r\n]*,[\s\r\n]*")
-		regex/semicolon_delim = new(@"[\s\r\n]*;[\s\r\n]*")
-		regex/key_value_regex = new(@"^[\s\r\n]*([^=]*?)[\s\r\n]*=[\s\r\n]*(.*?)[\s\r\n]*$")
+		regex/comma_delim = new("\[\\s\\r\\n\]*,\[\\s\\r\\n\]*")
+		regex/semicolon_delim = new("\[\\s\\r\\n\]*;\[\\s\\r\\n\]*")
+		regex/key_value_regex = new("^\[\\s\\r\\n\]*(\[^=\]*?)\[\\s\\r\\n\]*=\[\\s\\r\\n\]*(.*?)\[\\s\\r\\n\]*$")
 
 	proc
 		parse_grid(models as text, xcrd, ycrd, zcrd)
@@ -152,7 +152,7 @@ dmm_suite
 				instantiates them.*/
 			// Store quoted portions of text in text_strings, and replace them with an index to that list.
 			var /list/originalStrings = list()
-			var /regex/noStrings = regex(@{"(["])(?:(?=(\\?))\2(.|\n))*?\1"})
+			var /regex/noStrings = regex("\"(\[\"\])(?:(?=(\\\\?))\\2(.|\\n))*?\\1\"")
 			var stringIndex = 1
 			var found
 			do
