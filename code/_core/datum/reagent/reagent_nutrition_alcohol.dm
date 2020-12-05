@@ -31,7 +31,7 @@
 
 	. = ..()
 
-	if(is_living(owner))
+	if(is_living(owner) && owner.health && owner.health.organic)
 		var/mob/living/L = owner
 		L.intoxication += power*.
 
@@ -41,7 +41,7 @@
 
 	. = ..()
 
-	if(is_living(owner))
+	if(is_living(owner) && owner.health && owner.health.organic)
 		var/mob/living/L = owner
 		L.intoxication += power*.*0.5
 

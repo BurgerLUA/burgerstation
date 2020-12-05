@@ -37,7 +37,7 @@
 	sound_environment = ENVIRONMENT_ROOM
 
 /area/lz_420/interior/cave
-	name = "\improper LZ-420 Caves"
+	name = "\improper Central Caves"
 	icon_state = "cave"
 	tracks = TRACKS_CAVE
 	random_sounds = list(
@@ -47,6 +47,34 @@
 	cheese_type = /reagent/nutrition/cheese/gruyere
 
 	sound_environment = ENVIRONMENT_CAVE
+
+/area/lz_420/interior/cave/north
+	name = "North Caves"
+	icon_state = "blue"
+
+	sunlight_freq = 8
+	sunlight_color ="#7F3B11"
+
+	random_sounds = list(
+		'sound/ambient/lavacaves_1.ogg',
+		'sound/ambient/lavacaves_2.ogg',
+	)
+
+	tracks = TRACKS_LAVA
+
+	cheese_type = /reagent/nutrition/cheese/guava
+
+/area/lz_420/interior/cave/south
+	name = "South Caves"
+	icon_state = "red"
+
+/area/lz_420/interior/cave/east
+	name = "East Caves"
+	icon_state = "green"
+
+/area/lz_420/interior/cave/west
+	name = "West Caves"
+	icon_state = "yellow"
 
 /area/lz_420/interior/nexus
 	name = "\improper Nexus"
@@ -108,6 +136,10 @@
 /area/lz_420/interior/nexus/kitchen
 	name = "\improper Nexus Kitchen"
 	icon_state = "kitchen"
+
+/area/lz_420/interior/nexus/science
+	name = "\improper Nexus Science"
+	icon_state = "science"
 
 /area/lz_420/interior/nexus/garden
 	name = "\improper Nexus Garden"

@@ -30,6 +30,7 @@
 
 	blood_type = null
 
+	health = /health/mob/living/vehicle
 
 /mob/living/vehicle/get_examine_details_list()
 

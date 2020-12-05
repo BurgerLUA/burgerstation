@@ -244,9 +244,23 @@
 */
 
 /obj/structure/interactive/vending/hydroponics/nutri
-	name = "garden vendor"
+	name = "nutriment vendor"
 	icon_state = "nutri"
+	stored_types = list(
+		/obj/item/container/beaker/bucket/water
+	)
 
+/obj/structure/interactive/vending/hydroponics/seeds
+	name = "seeds vendor"
+	icon_state = "seeds"
+
+/obj/structure/interactive/vending/hydroponics/seeds
+	stored_types = list(
+		/obj/item/seed/cabbage,
+		/obj/item/seed/tomato,
+		/obj/item/seed/chanterelle,
+		/obj/item/seed/wheat
+	)
 
 /obj/structure/interactive/vending/soda
 	name = "soda vendor"

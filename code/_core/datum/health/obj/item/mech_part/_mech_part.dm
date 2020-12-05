@@ -1,3 +1,6 @@
+/health/obj/item/mech_part
+	organic = FALSE
+
 /health/obj/item/mech_part/update_health_stats()
 
 	if(!is_mech_part(owner))

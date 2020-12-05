@@ -152,7 +152,7 @@ dmm_suite
 				instantiates them.*/
 			// Store quoted portions of text in text_strings, and replace them with an index to that list.
 			var /list/originalStrings = list()
-			var /regex/noStrings = regex("\"(\[\"\])(?:(?=(\\\\?))\\2(.|\\n))*?\\1\"")
+			var /regex/noStrings = regex("(\[\"\])(?:(?=(\\\\?))\\2(.|\\n))*?\\1")
 			var stringIndex = 1
 			var found
 			do

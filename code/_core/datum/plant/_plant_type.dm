@@ -13,8 +13,13 @@
 	var/harvest_icon = 'icons/obj/item/consumable/food/plants.dmi'
 	var/harvest_icon_state = ""
 
-
 	var/list/reagents = list()
+
+	var/list/allowed_turfs = list(
+		/turf/simulated/floor/colored/dirt/soil
+	)
+
+	var/value = 100
 
 
 /plant_type/nitrogen_flower

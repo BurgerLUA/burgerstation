@@ -58,6 +58,7 @@
 
 	if(!CALLBACK_EXISTS("\ref[src]_parrot") && length(text) <= 30 && speaker != src && prob(5))
 		text = remove_trailing_punctuation(text)
+		text = "SQUAWK! [uppertext(text)]!"
 		if(length(text))
 			CALLBACK_GLOBAL("\ref[src]_parrot",rand(30,100),.proc/talk,src,src,text,TEXT_TALK,null,language,TALK_RANGE)
 
