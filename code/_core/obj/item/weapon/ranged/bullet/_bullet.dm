@@ -132,7 +132,7 @@
 		qdel(chambered_bullet)
 	else
 		if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
-			if(bullet_to_remove.drop_sound) play(chambered_bullet.drop_sound,src)
+			if(bullet_to_remove.drop_sound) play(bullet_to_remove.drop_sound,src)
 			qdel(bullet_to_remove)
 		else
 			bullet_to_remove.drop_item(new_loc)

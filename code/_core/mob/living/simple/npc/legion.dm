@@ -22,6 +22,7 @@
 	var/list/mob/living/simple/npc/legionare_head/tracked_heads = list()
 
 	var/head_limit = 3
+	var/next_head = 0
 
 	var/clone=FALSE
 
@@ -45,6 +46,9 @@
 
 /mob/living/simple/npc/legionare/proc/create_head()
 
+	if(next_head > world.time)
+		return FALSE
+
 	if(length(tracked_heads) >= head_limit)
 		return FALSE
 
@@ -61,6 +65,8 @@
 			L.ai.set_active(TRUE)
 
 	tracked_heads += L
+
+	next_head = world.time + 10
 
 	return TRUE
 

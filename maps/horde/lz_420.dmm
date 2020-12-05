@@ -17,7 +17,7 @@
 "aq" = (/turf/simulated/floor/grass/jungle,/area/lz_420/interior/nexus/entrance)
 "ar" = (/obj/structure/shuttle_engine/burst{icon_state = "burst_s"; dir = 4},/turf/simulated/floor/colored/sand/oasis,/area/lz_420/exterior)
 "as" = (/obj/structure/shuttle_engine/large{icon_state = "large_engine"; dir = 4},/turf/simulated/floor/colored/sand/oasis,/area/lz_420/exterior)
-"at" = (/turf/unsimulated/generation/lava,/area/lz_420/interior/cave)
+"at" = (/turf/unsimulated/generation/cave,/area/lz_420/interior/cave)
 "au" = (/turf/unsimulated/generation/jungle,/area/lz_420/exterior)
 "av" = (/turf/simulated/wall/metal,/area/lz_420/interior/nexus/wip)
 "aw" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/grass/jungle,/area/lz_420/interior/nexus/entrance)
@@ -592,7 +592,7 @@
 "lt" = (/obj/marker/objective_spawn,/turf/simulated/floor/basalt,/area/lz_420/interior/cave)
 "lu" = (/obj/marker/objective_spawn,/turf/simulated/floor/tile/shuttle/red,/area/box/interior/syndicate_shuttle)
 "lv" = (/turf/unsimulated/generation/jungle,/area/lz_420/interior/cave)
-"lw" = (/turf/unsimulated/generation/lava,/area/lz_420/exterior)
+"lw" = (/turf/unsimulated/generation/cave,/area/lz_420/exterior)
 "lx" = (/obj/structure/shuttle_engine/burst{icon_state = "burst_s"; dir = 4},/turf/unsimulated/generation/jungle,/area/lz_420/exterior)
 "ly" = (/obj/structure/shuttle_engine/large{icon_state = "large_engine"; dir = 4},/turf/unsimulated/generation/jungle,/area/lz_420/exterior)
 
