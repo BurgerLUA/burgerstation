@@ -58,7 +58,7 @@
 
 /obj/plane_master/darkness/New(var/desired_loc)
 	. = ..()
-	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=rgb(0,0,0))
+	//filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=rgb(0,0,0))
 	return .
 
 //Objects

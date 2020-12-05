@@ -52,8 +52,6 @@
 	if(!P.hit_laying)
 		if(dead && P.target_atom != src)
 			return null
-		if(horizontal && get_dist(P.target_atom,src) >= 2)
-			return null
 
 	if(P && !P.ignore_iff && P.iff_tag && src.iff_tag == P.iff_tag)
 		return null
