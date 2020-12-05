@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/Initialize()
 
+	set background = TRUE
+
 	if(!ENABLE_TURFGEN)
 		return
 
