@@ -1,6 +1,10 @@
+
+
 //-- Writer for saving DMM files at runtime ------------------------------------
 
 dmm_suite
+	var/save_comment = 1
+	var/static/list/map_save_var_blacklist = list("flags", "luminosity", "net_id", "host_id", "glide_size", "screen_loc")
 
 	/*-- write_map -----------------------------------
 	Generates DMM map text from a region represented by turfs on two opposite
@@ -23,9 +27,10 @@ dmm_suite
 		var height = (endY - startY)+1
 		var width  = (endX - startX)+1
 		// Create dmm_suite comments to store in map file
-		var/obj/dmm_suite/comment/mapComment = new(locate(startX, startY, startZ))
-		mapComment.coordinates = "[startX],[startY],[startZ]"
-		mapComment.dimensions = "[width],[height],[depth]"
+		if(src.save_comment)
+			var/obj/dmm_suite/comment/mapComment = new(locate(startX, startY, startZ))
+			mapComment.coordinates = "[startX],[startY],[startZ]"
+			mapComment.dimensions = "[width],[height],[depth]"
 		// Identify all unique grid cells
 		// Store template number for each grid cells
 		var /list/templates = list()
@@ -133,14 +138,15 @@ dmm_suite
 					var compoundIndex = 1 + (posX) + (posY*width) + (posZ*width*height)
 					templateBuffer[compoundIndex] = templateNumber
 		// Create dmm_suite comments to store in map file
-		var/obj/dmm_suite/comment/mapComment = new(locate(startX, startY, startZ))
-		mapComment.coordinates = "[startX],[startY],[startZ]"
-		mapComment.dimensions = "[width],[height],[depth]"
-		var firstSaveIndex = templateBuffer[1]
-		var firstTemplate = templates[firstSaveIndex]
-		var commentTemplate  = "[mapComment.type][checkAttributes(mapComment)],[firstTemplate]"
-		templates[1] = commentTemplate
-		templateBuffer[1] = 1
+		if(src.save_comment)
+			var/obj/dmm_suite/comment/mapComment = new(locate(startX, startY, startZ))
+			mapComment.coordinates = "[startX],[startY],[startZ]"
+			mapComment.dimensions = "[width],[height],[depth]"
+			var firstSaveIndex = templateBuffer[1]
+			var firstTemplate = templates[firstSaveIndex]
+			var commentTemplate  = "[mapComment.type][checkAttributes(mapComment)],[firstTemplate]"
+			templates[1] = commentTemplate
+			templateBuffer[1] = 1
 		// Compile List of Keys mapped to Models
 		return writeDimensions(startX, startY, startZ, width, height, depth, templates, templateBuffer)
 
@@ -211,17 +217,25 @@ dmm_suite/proc
 				if(!(flags & DMM_IGNORE_NPCS))
 					mobTemplate += "[M.type][checkAttributes(M)],"
 		// Add Turf Template
+		var/skip_area = 0
 		var turfTemplate = ""
 		if(!(flags & DMM_IGNORE_TURFS))
 			for(var/appearance in model.underlays)
 				var /mutable_appearance/underlay = new(appearance)
 				turfTemplate = "[/turf/dmm_suite/underlay][checkAttributes(underlay)],[turfTemplate]"
-			turfTemplate += "[model.type][checkAttributes(model)],"
+			if(istype(model, /turf/unsimulated/space))
+				if(flags & DMM_IGNORE_SPACE)
+					skip_area = 1
+					turfTemplate += "[/turf/dmm_suite/clear_turf],"
+				else
+					turfTemplate += "[model.type],"
+			else
+				turfTemplate += "[model.type][checkAttributes(model)],"
 		else
 			turfTemplate = "[/turf/dmm_suite/clear_turf],"
 		// Add Area Template
 		var areaTemplate = ""
-		if(!(flags & DMM_IGNORE_AREAS))
+		if(!(flags & DMM_IGNORE_AREAS) && !skip_area)
 			var /area/mArea = model.loc
 			areaTemplate = "[mArea.type][checkAttributes(mArea)]"
 		else
@@ -235,18 +249,21 @@ dmm_suite/proc
 	a given atom. Return value is of the form:
 		{name = "value"; name2 = 2}
 	*/
-	checkAttributes(atom/A, underlay)
+	checkAttributes(atom/A, underlay, force_vars)
 		var attributesText = ""
 		var saving = FALSE
 		for(var/V in A.vars)
 			sleep(-1)
 			// If the Variable isn't changed, or is marked as non-saving
-			if(!issaved(A.vars[V]) || A.vars[V] == initial(A.vars[V]))
+			if((!issaved(A.vars[V]) || A.vars[V] == initial(A.vars[V]) || copytext(V, 1, 4) == "RL_" || (V in map_save_var_blacklist)) && \
+				!(force_vars && (V in force_vars)))
 				continue
 			// Format different types of values
 			if(istext(A.vars[V])) // Text
 				if(saving) attributesText += "; "
-				attributesText += {"[V] = "[A.vars[V]]""}
+				var/val = replacetext(A.vars[V], {"""}, {"\\""}) // escape quotes
+				val = replacetext(val, "\n", "\\n")
+				attributesText += {"[V] = "[val]""}
 			else if(isnum(A.vars[V]) || ispath(A.vars[V])) // Numbers & Type Paths
 				if(saving) attributesText += "; "
 				attributesText += {"[V] = [A.vars[V]]"}
@@ -294,3 +311,66 @@ dmm_suite/var
 	)
 
 //-- Supplemental Writing Objects ----------------------------------------------
+
+// for saving an area as a prefab
+
+dmm_suite/prefab_saving
+	save_comment = 0
+	var/unsimulate = 0
+	var/static/list/unsimulate_reskinning_vars = list("icon", "icon_state", "opacity", "name", "desc", "pixel_x", "pixel_y", "layer", "plane")
+	var/static/list/unsimulate_mild_reskinning_vars = list("icon", "icon_state")
+
+dmm_suite/prefab_saving/unsimulate
+	unsimulate = 1
+
+dmm_suite/prefab_saving/makeTemplate(turf/model as turf, flags as num)
+	// Add Obj Templates
+	var objTemplate = ""
+	if(!(flags & DMM_IGNORE_OBJS))
+		for(var/obj/O in model.contents)
+			if(O.loc != model) continue
+			objTemplate += "[O.type][checkAttributes(O)],"
+	// Add Mob
+	var mobTemplate = ""
+	for(var/mob/M in model.contents)
+		if(M.loc != model) continue
+		if(M.client)
+			if(!(flags & DMM_IGNORE_PLAYERS))
+				mobTemplate += "[M.type][checkAttributes(M)],"
+		else
+			if(!(flags & DMM_IGNORE_NPCS))
+				mobTemplate += "[M.type][checkAttributes(M)],"
+	// Add Turf Template
+	var/empty_area = 0
+	var turfTemplate = ""
+	if(!(flags & DMM_IGNORE_TURFS))
+		for(var/appearance in model.underlays)
+			var /mutable_appearance/underlay = new(appearance)
+			turfTemplate = "[/turf/dmm_suite/underlay][checkAttributes(underlay)],[turfTemplate]"
+		if(istype(model, /turf/unsimulated/space))
+			empty_area = 1
+			turfTemplate += "[/turf/unsimulated/floor],"
+		else if(src.unsimulate && istype(model, /turf/simulated))
+			var/new_path_str = replacetext("[model.type]", "simulated", "unsimulated")
+			var/new_type = text2path(new_path_str)
+			if(isnull(new_type))
+				new_type = model.density ? /turf/unsimulated/wall : /turf/unsimulated/floor //This is a fallback.
+				turfTemplate += "[new_type][checkAttributes(model, force_vars=unsimulate_reskinning_vars)],"
+			else
+				turfTemplate += "[new_type][checkAttributes(model, force_vars=unsimulate_mild_reskinning_vars)],"
+		else
+			turfTemplate += "[model.type][checkAttributes(model)],"
+	else
+		turfTemplate = "[/turf/dmm_suite/clear_turf],"
+	// Add Area Template
+	var areaTemplate = ""
+	if(empty_area)
+		areaTemplate = "[/area/dmm_suite/allow_generate]"
+	else if(!(flags & DMM_IGNORE_AREAS))
+		var /area/mArea = model.loc
+		areaTemplate = "[mArea.type][checkAttributes(mArea)]"
+	else
+		areaTemplate = "[/area/dmm_suite/no_generate]"
+	//
+	var template = "[objTemplate][mobTemplate][turfTemplate][areaTemplate]"
+	return template

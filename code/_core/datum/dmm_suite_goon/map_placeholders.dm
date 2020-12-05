@@ -36,3 +36,16 @@
 	icon_state = "clear_area"
 	New()
 		qdel(src)
+
+
+/area/dmm_suite/allow_generate
+	icon = 'icons/obj/markers/map_editor.dmi'
+	icon_state = "clear_area"
+	New()
+		qdel(src)
+
+/area/dmm_suite/no_generate
+	icon = 'icons/obj/markers/map_editor.dmi'
+	icon_state = "clear_area"
+	New()
+		qdel(src)

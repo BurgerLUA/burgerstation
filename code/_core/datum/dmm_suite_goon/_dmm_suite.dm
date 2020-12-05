@@ -23,12 +23,20 @@ Both:
 //-- Preprocessor --------------------------------------------------------------
 
 #define DMM_SUITE_VERSION 2
-#define DMM_IGNORE_AREAS 1
-#define DMM_IGNORE_TURFS 2
-#define DMM_IGNORE_OBJS 4
-#define DMM_IGNORE_NPCS 8
-#define DMM_IGNORE_PLAYERS 16
-#define DMM_IGNORE_MOBS 24
+
+#define DMM_IGNORE_AREAS 0x1
+#define DMM_IGNORE_TURFS 0x2
+#define DMM_IGNORE_OBJS 0x4
+#define DMM_IGNORE_NPCS 0x8
+#define DMM_IGNORE_PLAYERS 0x10
+#define DMM_IGNORE_SPACE 0x20
+#define DMM_OVERWRITE_MOBS 0x40
+#define DMM_OVERWRITE_OBJS 0x80
+
+#define DMM_IGNORE_MOBS DMM_IGNORE_NPCS | DMM_IGNORE_PLAYERS
+
+
+
 
 
 //-- Text / List Utilities - From Forum_account.Text ---------------------------

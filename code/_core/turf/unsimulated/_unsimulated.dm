@@ -13,6 +13,11 @@
 
 	collision_flags = FLAG_COLLISION_UNSIMULATED
 
+/turf/unsimulated/wall
+	name = "WALL ERROR"
+
+/turf/unsimulated/floor
+	name = "FLOOR ERROR"
 
 /turf/unsimulated/bluespace
 	name = "bluespace"

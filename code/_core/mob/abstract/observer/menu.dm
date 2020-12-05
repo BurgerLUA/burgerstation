@@ -25,13 +25,16 @@
 
 	. = ..()
 
-	next_lobby_cycle -= 1 //This runs every decisecond.
-	if(next_lobby_cycle <= 0)
-		current_lobby_position++
-		if(current_lobby_position >= length(lobby_positions))
-			current_lobby_position = 1
-		force_move(get_turf(lobby_positions[current_lobby_position]))
-		next_lobby_cycle = initial(next_lobby_cycle)
+	var/positions = length(lobby_positions)
+
+	if(positions)
+		next_lobby_cycle -= 1 //This runs every decisecond.
+		if(next_lobby_cycle <= 0)
+			current_lobby_position++
+			if(current_lobby_position >= positions)
+				current_lobby_position = 1
+			force_move(get_turf(lobby_positions[current_lobby_position]))
+			next_lobby_cycle = initial(next_lobby_cycle)
 
 	return .
 
