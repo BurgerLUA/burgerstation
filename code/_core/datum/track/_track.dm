@@ -148,7 +148,7 @@
 
 /track/spacemans_flight //Lobby Music? Forrest Music?
 	name = "Spaceman's Flight"
-	path = 'sound/music/Spaceman\'s Flight.ogg'
+	path = 'sound/music/Spaceman Flight.ogg'
 	length = 1*60 + 45
 
 /track/vapor //Snow Music
