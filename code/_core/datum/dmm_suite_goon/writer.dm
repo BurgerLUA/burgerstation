@@ -223,7 +223,7 @@ dmm_suite/proc
 			for(var/appearance in model.underlays)
 				var /mutable_appearance/underlay = new(appearance)
 				turfTemplate = "[/turf/dmm_suite/underlay][checkAttributes(underlay)],[turfTemplate]"
-			if(istype(model, /turf/unsimulated/space))
+			if(istype(model, /turf/space))
 				if(flags & DMM_IGNORE_SPACE)
 					skip_area = 1
 					turfTemplate += "[/turf/dmm_suite/clear_turf],"
@@ -347,7 +347,7 @@ dmm_suite/prefab_saving/makeTemplate(turf/model as turf, flags as num)
 		for(var/appearance in model.underlays)
 			var /mutable_appearance/underlay = new(appearance)
 			turfTemplate = "[/turf/dmm_suite/underlay][checkAttributes(underlay)],[turfTemplate]"
-		if(istype(model, /turf/unsimulated/space))
+		if(istype(model, /turf/space))
 			empty_area = 1
 			turfTemplate += "[/turf/unsimulated/floor],"
 		else if(src.unsimulate && istype(model, /turf/simulated))

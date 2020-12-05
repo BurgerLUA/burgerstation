@@ -5,7 +5,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "ab" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/transit/syndicate_raid/ship)
 "ac" = (
 /turf/simulated/wall/metal/reinforced,
@@ -38,7 +38,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/east)
 "ak" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/transit/arrivals_shuttle_02/station)
 "al" = (
 /mob/living/advanced/npc/dummy/armor,
@@ -104,7 +104,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/burgerstation/hanger)
+/area/transit/syndicate_raid/ship)
 "ax" = (
 /obj/structure/interactive/vending/chef/wardrobe,
 /turf/simulated/floor/tile,
@@ -363,7 +363,7 @@
 "bw" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/smooth/lattice,
-/turf/space,
+/turf/unsimulated/space,
 /area/space/light)
 "bx" = (
 /obj/marker/spawning/window/reinforced,
@@ -376,7 +376,7 @@
 "bz" = (
 /obj/structure/smooth/lattice,
 /obj/structure/interactive/disposals/pipe,
-/turf/space,
+/turf/unsimulated/space,
 /area/space/light)
 "bA" = (
 /obj/structure/interactive/atmospherics/vent,
@@ -735,7 +735,10 @@
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
 "cR" = (
-/turf/simulated/floor/tile,
+/obj/marker/failsafe,
+/turf/simulated/floor/tile{
+	icon_state = "white_single"
+	},
 /area/burgerstation/hall/east)
 "cS" = (
 /obj/structure/interactive/disposals/pipe{
@@ -973,7 +976,7 @@
 /area/burgerstation/armory)
 "dH" = (
 /obj/structure/smooth/lattice,
-/turf/space,
+/turf/unsimulated/space,
 /area/space/light)
 "dI" = (
 /obj/decal/hazard{
@@ -1700,7 +1703,7 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "gd" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/transit/arrivals_shuttle_01/station)
 "ge" = (
 /obj/structure/smooth/table/glass,
@@ -2512,7 +2515,7 @@
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/hall/north)
 "iN" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/burgerstation/help_desk)
 "iO" = (
 /obj/structure/interactive/light_switch{
@@ -3006,7 +3009,7 @@
 /area/burgerstation/cafe)
 "kB" = (
 /obj/structure/smooth/lattice,
-/turf/space,
+/turf/unsimulated/space,
 /area/transit/syndicate_raid/ship)
 "kC" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
@@ -3020,7 +3023,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
 "kF" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/space)
 "kG" = (
 /obj/structure/interactive/conveyor{
@@ -3091,7 +3094,7 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/east)
 "kQ" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/space/deep)
 "kR" = (
 /turf/simulated/floor/plating,
@@ -3534,7 +3537,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
 "mF" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/space/light)
 "mG" = (
 /obj/decal/hazard/black,
@@ -4317,7 +4320,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/chapel)
 "pw" = (
-/turf/space,
+/turf/unsimulated/space,
 /area/burgerstation/chapel)
 "px" = (
 /turf/simulated/floor/tile/chapel{
@@ -4523,27 +4526,6 @@
 	},
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/hall/south)
-"qi" = (
-/obj/structure/interactive/shield{
-	icon_state = "shieldwall";
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/cargo)
-"qj" = (
-/obj/structure/interactive/shield{
-	icon_state = "shieldwall";
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/transit/syndicate_raid/ship)
-"qk" = (
-/obj/marker/failsafe,
-/turf/simulated/floor/tile,
-/area/burgerstation/hall/east)
-"ql" = (
-/turf/simulated/floor/tile,
-/area/burgerstation/arrivals)
 "rA" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 5
@@ -4591,7 +4573,7 @@
 /area/space)
 "rT" = (
 /obj/structure/smooth/lattice,
-/turf/space,
+/turf/unsimulated/space,
 /area/space)
 "rU" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
@@ -4743,6 +4725,11 @@
 "sy" = (
 /turf/simulated/wall/metal,
 /area/burgerstation/hall/east)
+"sA" = (
+/turf/simulated/floor/tile{
+	icon_state = "white_single"
+	},
+/area/burgerstation/hall/east)
 "sB" = (
 /turf/simulated/floor/tile/nanotrasen,
 /area/burgerstation/hall/east)
@@ -4823,6 +4810,11 @@
 /area/burgerstation/arrivals)
 "sO" = (
 /turf/simulated/floor/tile/nanotrasen,
+/area/burgerstation/arrivals)
+"sP" = (
+/turf/simulated/floor/tile{
+	icon_state = "white_single"
+	},
 /area/burgerstation/arrivals)
 "sQ" = (
 /obj/structure/interactive/status_display/global_display/arrivals_01,
@@ -6374,6 +6366,20 @@
 /obj/marker/dev,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
+"zI" = (
+/obj/structure/interactive/shield{
+	icon_state = "shieldwall";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
+"zJ" = (
+/obj/structure/interactive/shield{
+	icon_state = "shieldwall";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
 "zK" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
@@ -27933,7 +27939,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 bL
@@ -27974,7 +27980,7 @@ bK
 bK
 bK
 bK
-qj
+aw
 ab
 ab
 ab
@@ -28190,7 +28196,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -28231,7 +28237,7 @@ dS
 dS
 dS
 ei
-qj
+aw
 ab
 ab
 ab
@@ -28447,7 +28453,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -28488,7 +28494,7 @@ ep
 ep
 ep
 hO
-qj
+aw
 ab
 ab
 ab
@@ -28704,7 +28710,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -28745,7 +28751,7 @@ gt
 gv
 ep
 hO
-qj
+aw
 ab
 ab
 ab
@@ -28961,7 +28967,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -29002,7 +29008,7 @@ ic
 ep
 ep
 hO
-qj
+aw
 ab
 ab
 ab
@@ -29218,7 +29224,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -29259,7 +29265,7 @@ hH
 iC
 iF
 hO
-qj
+aw
 ab
 ab
 ab
@@ -29475,7 +29481,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -29516,7 +29522,7 @@ ic
 ep
 ep
 hO
-qj
+aw
 ab
 ab
 ab
@@ -29732,7 +29738,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -29773,7 +29779,7 @@ gt
 hj
 ep
 hO
-qj
+aw
 ab
 ab
 ab
@@ -29989,7 +29995,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -30030,7 +30036,7 @@ ep
 ep
 ep
 hO
-qj
+aw
 ab
 ab
 ab
@@ -30246,7 +30252,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 cg
@@ -30287,7 +30293,7 @@ eh
 eh
 eh
 iZ
-qj
+aw
 ab
 ab
 ab
@@ -30503,7 +30509,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 ch
@@ -30544,7 +30550,7 @@ bK
 bK
 bK
 bK
-qj
+aw
 ab
 ab
 ab
@@ -30760,7 +30766,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 bK
@@ -30801,7 +30807,7 @@ dS
 dS
 dS
 ei
-qj
+aw
 ab
 ab
 ab
@@ -31017,7 +31023,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bK
 bK
 bK
@@ -31058,7 +31064,7 @@ hi
 hi
 hi
 hO
-qj
+aw
 ab
 ab
 ab
@@ -31274,7 +31280,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 bL
 dS
 dS
@@ -31315,7 +31321,7 @@ er
 fA
 er
 hO
-qj
+aw
 ab
 ab
 ab
@@ -31531,7 +31537,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 ku
 ku
@@ -31572,7 +31578,7 @@ fR
 eF
 uf
 hO
-qj
+aw
 ab
 ab
 ab
@@ -31788,7 +31794,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 aC
@@ -31829,7 +31835,7 @@ er
 hI
 er
 hO
-qj
+aw
 ab
 ab
 ab
@@ -32045,7 +32051,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 nC
@@ -32086,7 +32092,7 @@ fR
 eF
 iH
 hO
-qj
+aw
 ab
 ab
 ab
@@ -32302,7 +32308,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 nC
@@ -32343,7 +32349,7 @@ eF
 eF
 iI
 hO
-qj
+aw
 ab
 ab
 ab
@@ -32559,7 +32565,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 aU
@@ -32600,7 +32606,7 @@ iB
 iD
 iI
 hO
-qj
+aw
 ab
 ab
 ab
@@ -32816,7 +32822,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 nC
@@ -32857,7 +32863,7 @@ eF
 eF
 iI
 hO
-qj
+aw
 ab
 ab
 ab
@@ -33073,7 +33079,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 nC
@@ -33114,7 +33120,7 @@ eH
 eF
 iJ
 hO
-qj
+aw
 ab
 ab
 ab
@@ -33330,7 +33336,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 aA
 aC
@@ -33371,7 +33377,7 @@ er
 hI
 er
 hO
-qj
+aw
 ab
 ab
 ab
@@ -33587,7 +33593,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 ku
 ku
@@ -33628,7 +33634,7 @@ eH
 eF
 uf
 hO
-qj
+aw
 ab
 ab
 ab
@@ -33844,7 +33850,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 ku
 ku
@@ -33885,7 +33891,7 @@ er
 fA
 er
 hO
-qj
+aw
 ab
 ab
 ab
@@ -34101,7 +34107,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 ku
 ku
@@ -34142,7 +34148,7 @@ hi
 hi
 hi
 hO
-qj
+aw
 ab
 ab
 ab
@@ -34358,7 +34364,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 ku
 ku
@@ -34399,7 +34405,7 @@ eh
 eh
 eh
 iZ
-qj
+aw
 ab
 ab
 ab
@@ -34615,7 +34621,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 cg
 ku
 ku
@@ -34656,7 +34662,7 @@ bK
 bK
 bK
 bK
-qj
+aw
 ab
 ab
 ab
@@ -34872,7 +34878,7 @@ kF
 kF
 kF
 mF
-aw
+zI
 ch
 eh
 eh
@@ -35129,7 +35135,7 @@ kF
 kF
 kF
 mF
-qi
+zJ
 xX
 xX
 xX
@@ -47742,7 +47748,7 @@ md
 vV
 mh
 jy
-cR
+sA
 sB
 sB
 sB
@@ -47999,8 +48005,8 @@ wE
 vV
 mh
 jy
-cR
-cR
+sA
+sA
 sB
 sB
 sB
@@ -48513,11 +48519,11 @@ wE
 vV
 mh
 jy
+sA
+sA
 cR
-cR
-qk
-cR
-cR
+sA
+sA
 jy
 sF
 lJ
@@ -48771,7 +48777,7 @@ vV
 mh
 jy
 sB
-cR
+sA
 sB
 sB
 sB
@@ -49029,7 +49035,7 @@ mh
 jy
 sB
 sB
-cR
+sA
 sB
 sB
 jy
@@ -49287,7 +49293,7 @@ jy
 sB
 sB
 sB
-cR
+sA
 sB
 jy
 mh
@@ -49541,11 +49547,11 @@ wE
 vV
 mh
 jy
-cR
-cR
-cR
-cR
-cR
+sA
+sA
+sA
+sA
+sA
 jy
 mh
 lE
@@ -50058,8 +50064,8 @@ jy
 sB
 sB
 sB
-cR
-cR
+sA
+sA
 jy
 sG
 jw
@@ -50316,7 +50322,7 @@ sO
 sO
 sO
 sO
-ql
+sP
 hU
 hJ
 hJ

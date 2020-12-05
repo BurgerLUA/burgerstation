@@ -1,48 +1,48 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/space/bluespace)
 "ab" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/arrivals_shuttle_01/bluespace)
 "ac" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/arrivals_shuttle_02/bluespace)
 "ad" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/dropship/bravo/bluespace)
 "ae" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/dropship/alpha/bluespace)
 "af" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/cargo/bluespace)
 "ag" = (
 /turf/unsimulated,
 /area/space/deep)
 "ah" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/syndicate/bluespace)
 "ai" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/dropship/charlie/bluespace)
 "aj" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/dropship/delta/bluespace)
 "ak" = (
 /turf/unsimulated/void,
 /area/space/deep)
 "al" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/cargo_inbound/bluespace)
 "am" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/space)
 "an" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/space/light)
 "ao" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/arrivals_shuttle_01/centcomm)
 "ap" = (
 /turf/simulated/wall/shuttle,
@@ -71,7 +71,7 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/arrivals_shuttle_01/centcomm)
 "au" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/arrivals_shuttle_02/centcomm)
 "av" = (
 /turf/simulated/wall/shuttle,
@@ -548,7 +548,7 @@
 /turf/simulated/floor/tile,
 /area/centcomm)
 "bX" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/cargo_inbound/centcomm)
 "bY" = (
 /obj/marker/cargo,
@@ -574,10 +574,10 @@
 /turf/simulated/floor/plating,
 /area/centcomm)
 "cc" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/syndicate_raid/centcomm)
 "cd" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/space/deep)
 "ce" = (
 /obj/structure/interactive/conveyor,
@@ -605,7 +605,7 @@
 /turf/simulated/floor/chasm,
 /area/herald)
 "ck" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/cargo/centcomm)
 "cl" = (
 /turf/simulated/floor/tile/shuttle/black,
@@ -636,7 +636,7 @@
 	icon_state = "large_engine";
 	dir = 4
 	},
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/syndicate_raid/centcomm)
 "cr" = (
 /mob/living/advanced/npc/syndicate/quadruple{
@@ -818,7 +818,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cV" = (
-/turf/unsimulated/bluespace,
+/turf/bluespace,
 /area/transit/syndicate_raid/bluespace)
 "cW" = (
 /obj/shuttle_controller/syndicate_raid{
@@ -944,7 +944,7 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "ds" = (
-/turf/unsimulated/space,
+/turf/space,
 /area/transit/space_cop/bluespace)
 "dt" = (
 /obj/structure/interactive/door/airlock/shuttle,

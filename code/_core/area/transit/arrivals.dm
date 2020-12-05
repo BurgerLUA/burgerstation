@@ -1,5 +1,5 @@
 /area/transit/arrivals_shuttle_01/
-	transit_turf = /turf/unsimulated/space/
+	transit_turf = /turf/space/
 
 /area/transit/arrivals_shuttle_01/centcomm
 	name = "arrivals shuttle - central command"
@@ -9,7 +9,7 @@
 /area/transit/arrivals_shuttle_01/bluespace
 	name = "arrivals shuttle - bluespace"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -20,7 +20,7 @@
 
 
 /area/transit/arrivals_shuttle_02/
-	transit_turf = /turf/unsimulated/space/
+	transit_turf = /turf/space/
 
 /area/transit/arrivals_shuttle_02/centcomm
 	name = "arrivals shuttle - central command"
@@ -32,7 +32,7 @@
 /area/transit/arrivals_shuttle_02/bluespace
 	name = "arrivals shuttle - bluespace"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 /area/transit/arrivals_shuttle_02/station
 	name = "arrivals shuttle - station"

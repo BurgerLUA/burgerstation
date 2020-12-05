@@ -109,6 +109,10 @@
 /obj/structure/interactive/lighting/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cargo)
+"aD" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/cargo)
 "aE" = (
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/grey,
@@ -1562,6 +1566,10 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/hall/central)
+"gp" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal,
+/area/lavaland/interior/base/cargo)
 "gq" = (
 /obj/structure/interactive/crate/engineering,
 /turf/simulated/floor/tile/grey,
@@ -1728,6 +1736,78 @@
 "gT" = (
 /turf/simulated/floor/plating,
 /area/transit/space_cop/landing)
+"gU" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/arrivals)
+"gV" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal,
+/area/lavaland/interior/base/armory)
+"gW" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal,
+/area/lavaland/interior/base/engineering)
+"gX" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/hall/west)
+"gY" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal,
+/area/lavaland/interior/base)
+"gZ" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base)
+"ha" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/arrivals)
+"hb" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/engineering)
+"hc" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/hall/central)
+"hd" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal,
+/area/lavaland/interior/base/cafe/kitchen)
+"he" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/lavaland/interior/base/cafe/kitchen)
+"hf" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal,
+/area/lavaland/interior/base/dressing)
 
 (1,1,1) = {"
 aa
@@ -8615,7 +8695,7 @@ ag
 ag
 ag
 ag
-ay
+aD
 aB
 gR
 aB
@@ -8872,7 +8952,7 @@ ag
 ag
 ag
 ag
-ay
+aD
 aB
 aB
 aB
@@ -10410,11 +10490,11 @@ as
 as
 as
 ag
-ay
+aD
 aB
 aB
 aB
-aN
+gp
 aB
 aB
 aB
@@ -11453,7 +11533,7 @@ aZ
 aZ
 aZ
 ay
-ei
+gU
 eo
 ew
 eo
@@ -11721,7 +11801,7 @@ ej
 bP
 bV
 bX
-bF
+gV
 dH
 dH
 dH
@@ -11968,13 +12048,13 @@ ag
 ag
 ag
 ei
-ei
+ha
 es
 es
 es
 es
 ei
-ei
+gU
 bP
 bW
 bX
@@ -12492,7 +12572,7 @@ bM
 bT
 bX
 bX
-bF
+gV
 dH
 dH
 dH
@@ -13269,11 +13349,11 @@ dP
 dH
 ch
 cw
-cd
-cd
+hf
+hf
 cw
 dd
-cd
+hf
 cw
 cc
 ds
@@ -14805,7 +14885,7 @@ bz
 dI
 dI
 dI
-dI
+gW
 dH
 dH
 dH
@@ -15067,13 +15147,13 @@ dH
 dH
 dH
 cj
-cj
+hd
 cj
 cR
 cj
 de
 cj
-cj
+hd
 cj
 ds
 ds
@@ -17631,20 +17711,20 @@ bA
 bA
 bA
 bz
-bz
+hb
 dX
 dH
 dH
 dH
 cm
+he
+he
 cm
-cm
-cm
-cm
-cm
+he
+he
 dk
 cm
-cm
+he
 cm
 as
 as
@@ -18146,7 +18226,7 @@ ag
 ag
 ag
 ag
-dF
+gX
 dG
 dH
 dG
@@ -18406,7 +18486,7 @@ ag
 aK
 aK
 eH
-aK
+hc
 aK
 as
 as
@@ -25842,20 +25922,20 @@ ae
 ax
 ax
 ax
+gY
 bu
-bu
-bu
+gY
 eM
 bu
 bu
 bd
 bu
+gY
+bu
+gY
 bu
 bu
-bu
-bu
-bu
-bu
+gY
 bd
 bd
 bd
@@ -27641,9 +27721,9 @@ ae
 au
 au
 bf
+gZ
 ax
-ax
-ax
+gZ
 eO
 ax
 ax

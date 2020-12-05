@@ -18,7 +18,7 @@ var/global/world_state = STATE_STARTING
 
 	cache_lifespan = 5
 
-	turf = /turf/unsimulated/space
+	turf = /turf/space
 	area = /area/
 
 	maxx = WORLD_SIZE

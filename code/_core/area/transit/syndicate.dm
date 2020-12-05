@@ -6,7 +6,7 @@
 
 /area/transit/syndicate/bluespace
 	name = "syndicate shuttle - bluespace"
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -24,7 +24,7 @@
 
 /area/transit/syndicate_raid/bluespace
 	name = "syndicate raid shuttle - bluespace"
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
