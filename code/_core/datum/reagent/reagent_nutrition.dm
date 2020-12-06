@@ -16,7 +16,7 @@
 	liquid = -0.25
 
 	heated_reagent = /reagent/carbon
-	heated_reagent_temp = 300
+	heated_reagent_temp = 450
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 

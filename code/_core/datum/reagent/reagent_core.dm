@@ -35,7 +35,7 @@
 	liquid = -0.75
 
 	heated_reagent = /reagent/ash
-	heated_reagent_temp = 500
+	heated_reagent_temp = 600
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 

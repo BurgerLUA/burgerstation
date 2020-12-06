@@ -53,7 +53,7 @@
 
 		if(has_bloodoxygen)
 			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
-			damage[OXY] = max(0,health_max*(0.4 - blood_oxygen*0.4))
+			damage[OXY] = max(0,health_max*(2 - blood_oxygen*2))
 
 		var/should_be_dead = check_death && L.check_death()
 

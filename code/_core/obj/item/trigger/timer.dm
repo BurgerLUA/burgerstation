@@ -14,6 +14,10 @@
 
 	value = 20
 
+/obj/item/device/timer/Destroy()
+	last_caller = null
+	return ..()
+
 /obj/item/device/timer/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("time_set")

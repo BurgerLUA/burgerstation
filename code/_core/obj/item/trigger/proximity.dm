@@ -14,7 +14,9 @@
 
 	value = 20
 
-
+/obj/item/device/proximity/Destroy()
+	last_caller = null
+	return ..()
 
 /obj/item/device/proximity/save_item_data(var/save_inventory = TRUE)
 	. = ..()

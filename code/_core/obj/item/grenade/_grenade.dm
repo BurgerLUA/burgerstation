@@ -21,6 +21,17 @@
 
 	weight = 1
 
+/obj/item/grenade/Destroy()
+
+	for(var/k in stored_containers)
+		var/obj/item/I = k
+		qdel(I)
+	stored_containers.Cut()
+
+	QDEL_NULL(stored_trigger)
+
+	return ..()
+
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
@@ -59,17 +70,6 @@
 		trigger(owner,source,-1,-1)
 
 	return .
-
-/obj/item/grenade/Destroy()
-
-	for(var/k in stored_containers)
-		var/obj/item/I = k
-		qdel(I)
-	stored_containers.Cut()
-
-	QDEL_NULL(stored_trigger)
-
-	return ..()
 
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()

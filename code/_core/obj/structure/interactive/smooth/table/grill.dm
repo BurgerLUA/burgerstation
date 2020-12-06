@@ -14,8 +14,8 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/temperature_mod = 400
-	var/temperature_mod_oven = 500
+	var/temperature_mod = 590
+	var/temperature_mod_oven = 475
 
 	bullet_block_chance = 50
 

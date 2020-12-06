@@ -13,6 +13,8 @@
 	desired_light_range = 8
 	desired_light_color = "#CE631C"
 
+	turf_temperature_mod = 800
+
 /turf/simulated/hazard/lava/Entered(atom/movable/O,atom/oldloc)
 	if(is_living(O)) lava_idiot(O)
 	return ..()
