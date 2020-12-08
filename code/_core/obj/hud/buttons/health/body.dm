@@ -1,7 +1,6 @@
 /obj/hud/button/health/body
 	name = "limb health"
 	desc = "Health for your limbs."
-	id = "body"
 
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "invisible"
