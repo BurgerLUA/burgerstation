@@ -32,6 +32,9 @@
 	corner_category = "metal"
 */
 
+/turf/simulated/wall/metal/crew
+	color = "#3D4A4A"
+
 /turf/simulated/wall/metal/reinforced
 	name = "plasteel reinforced steel wall"
 	icon_state = "wall_ref"

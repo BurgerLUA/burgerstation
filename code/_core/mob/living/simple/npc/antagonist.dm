@@ -1,3 +1,18 @@
+var/global/list/valid_antag_colors = list(
+	"#C51111",
+	"#71491E",
+	"#EF7D0D",
+	"#F6F658",
+	"#ED54BA",
+	"#6B2FBB",
+	"#132ED1",
+	"#38FEDB",
+	"#117F2D",
+	"#50EF39",
+	"#D6E0F0",
+	"#3F474E"
+)
+
 /mob/living/simple/npc/antag
 	name = "crewmember"
 	desc = "Uh..."
@@ -45,7 +60,33 @@
 	add_underlay(I)
 	return ..()
 
+/mob/living/simple/npc/antag/Generate()
+
+	var/chosen_color
+	if(length(valid_antag_colors))
+		chosen_color = pick(valid_antag_colors)
+		valid_antag_colors -= chosen_color
+	else
+		chosen_color = random_color()
+
+	color = chosen_color
+
+	return ..()
+
+/mob/living/simple/npc/antag/Finalize()
+	update_sprite()
+	return ..()
+
+/mob/living/simple/npc/antag/update_sprite()
+	//Custom snowflake code.
+	overlays.Cut()
+	var/image/I = new/image(icon,"[icon_state]_visor")
+	I.appearance_flags = RESET_COLOR
+	add_overlay(I)
+	return TRUE
+
 
 /mob/living/simple/npc/antag/post_death()
 	icon_state = "dead"
+	update_sprite()
 	return ..()
