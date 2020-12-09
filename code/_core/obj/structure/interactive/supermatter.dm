@@ -1,7 +1,7 @@
 /obj/structure/interactive/supermatter
 	name = "supermatter crystal"
 	desc = "Looks valuable!"
-	desc_extended = "You should send this to central command as soon as possible!"
+	desc_extended = "An extremely important and extremely unstable shard of supermatter. You should protect this at all costs if you're NanoTrasen..."
 	icon = 'icons/obj/structure/supermatter.dmi'
 	icon_state = "supermatter"
 
@@ -16,31 +16,34 @@
 
 	density = TRUE
 
-/obj/structure/interactive/supermatter/unachored
-	anchored = FALSE
+	var/last_warning_percent = 1
 
-/obj/structure/interactive/radiation_collector
-	name = "radiation collector"
-	icon = 'icons/obj/structure/power.dmi'
-	icon_state = "rad_collector"
+	health = /health/construction/
+	health_base = 2000
 
-	var/active = FALSE
 
-/obj/structure/interactive/radiation_collector/New(var/desired_loc)
+
+
+/obj/structure/interactive/supermatter/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+
 	. = ..()
-	update_sprite()
+
+	var/health_percent = health.health_current/health.health_max
+	var/threshold = health_percent*0.2
+	if((last_warning_percent - health_percent) >= threshold)
+		trigger_warning()
+
 	return .
 
+/obj/structure/interactive/supermatter/unanchored
+	anchored = FALSE
 
-/obj/structure/interactive/radiation_collector/update_icon()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	if(active)
-		icon_state = "[icon_state]_on"
-
-	return ..()
-
-/obj/structure/interactive/radiation_collector/on
-	active = TRUE
+/obj/structure/interactive/supermatter/proc/trigger_warning()
+	var/health_percent = health.health_current/health.health_max
+	var/message = "Warning: Supermatter Crystal at [FLOOR(health_percent*100,1)]% integrity."
+	last_warning_percent = health_percent
+	if(health_percent <= 0.2)
+		message = "[message] DELAMINATION IMMINENT!!"
+	use_radio(src,src,message,LANGUAGE_BASIC,TEXT_RADIO,RADIO_FREQ_COMMON,LANGUAGE_BASIC,TALK_RANGE)
+	last_warning_percent = health_percent
+	return TRUE

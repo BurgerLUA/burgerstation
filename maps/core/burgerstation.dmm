@@ -6354,10 +6354,6 @@
 /obj/structure/interactive/vending/smart_fridge/bar,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
-"zB" = (
-/obj/marker/dev,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cafe/bar)
 "zK" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
@@ -43355,7 +43351,7 @@ hZ
 if
 dj
 jo
-zB
+jP
 eQ
 zz
 kZ

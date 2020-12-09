@@ -1,22 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #define RADIO_FREQ_AI_PRIVATE 144.7
 
 #define RADIO_FREQ_SECURITY 135.9
@@ -35,7 +16,6 @@
 
 
 //In use.
-
 #define RADIO_FREQ_MIN 110.1
 
 #define RADIO_FREQ_ALPHA    145.1

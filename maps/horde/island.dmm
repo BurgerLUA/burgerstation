@@ -2687,6 +2687,20 @@
 /obj/structure/interactive/fountain,
 /turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
+"lH" = (
+/turf/simulated/wall/metal/reinforced/hull,
+/area/lz_001/caves)
+"lI" = (
+/turf/simulated/floor/plating,
+/area/lz_001/caves)
+"lJ" = (
+/obj/marker/spawning/window/extra,
+/turf/simulated/floor/plating,
+/area/lz_001/caves)
+"lK" = (
+/obj/structure/interactive/supermatter,
+/turf/simulated/floor/plating,
+/area/lz_001/caves)
 "mc" = (
 /obj/structure/interactive/barricade{
 	icon_state = "metal";
@@ -26374,8 +26388,8 @@ ce
 ce
 ce
 ce
-el
 ce
+el
 ce
 ce
 ce
@@ -26627,11 +26641,11 @@ ce
 ce
 ce
 ce
-ce
-ce
-ce
-ce
-ce
+lH
+lJ
+lJ
+lJ
+lH
 ce
 ce
 ce
@@ -26884,11 +26898,11 @@ ce
 ce
 ce
 ce
-ce
-ce
-ce
-ce
-ce
+lJ
+lI
+lI
+lI
+lJ
 ce
 ce
 ce
@@ -27141,11 +27155,11 @@ ce
 ce
 ce
 ce
-ce
-ce
-ls
-ce
-ce
+lJ
+lI
+lK
+lI
+lJ
 ce
 ce
 ce
@@ -27398,11 +27412,11 @@ ce
 ce
 ce
 ce
-ce
-ce
-ce
-ce
-ce
+lJ
+lI
+lI
+lI
+lJ
 ce
 ce
 ce
@@ -27655,11 +27669,11 @@ ce
 ce
 ce
 ce
-ce
-ce
-ce
-ce
-ce
+lH
+lJ
+lJ
+lJ
+lH
 ce
 ce
 ce
@@ -27916,8 +27930,8 @@ ce
 ce
 ce
 ce
-el
 ce
+el
 ce
 ce
 ce
