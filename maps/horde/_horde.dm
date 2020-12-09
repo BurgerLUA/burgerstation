@@ -4,7 +4,7 @@ var/global/list/maps = list(
 	"LZ-420" = "maps/horde/lz_420.dmm",
 	//"Jungle B-0X (WIP)" = "maps/horde/box.dmm",
 	"Lavaland (WIP)" = "maps/horde/lavaland.dmm",
-	"Supermatter Defense" = "maps/horde/supermatter.dmm"
+	//"Supermatter Defense" = "maps/horde/supermatter.dmm"
 )
 
 
@@ -14,5 +14,5 @@ var/global/list/map_settings = list(
 	"LZ-420" = list(),
 	//"Jungle B-0X (WIP)" = list(),
 	"Lavaland (WIP)" = list(),
-	"Supermatter Defense" = list()
+	//"Supermatter Defense" = list()
 )
