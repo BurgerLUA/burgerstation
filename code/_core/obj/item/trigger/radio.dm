@@ -23,6 +23,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	var/radio_sound = 'sound/items/radio.ogg'
 
 	var/broadcasting_range = 5
+	var/listen_range = 0 // Set to 0 to ignore distance.
 
 	listener = TRUE
 
@@ -116,9 +117,11 @@ list(
 /obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals.
 		return FALSE
+	if(listen_range > 0 && get_dist(source,src) > listen_range)
+		return FALSE
 	if(!broadcasting && !(frequency > 0)) //Dumb logic here, but it catches null as well as null (greater,less,equal) 0 is always 0.
 		return FALSE
-	use_radio(speaker,source,text,language_text,TEXT_RADIO,src.frequency,language,talk_range)
+	use_radio(speaker,src,text,language_text,TEXT_RADIO,src.frequency,language,talk_range)
 	return ..()
 
 

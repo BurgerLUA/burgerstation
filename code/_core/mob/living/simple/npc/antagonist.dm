@@ -20,7 +20,7 @@ var/global/list/valid_antag_colors = list(
 	icon = 'icons/mob/living/simple/antag.dmi'
 	icon_state = "living"
 
-	health_base = 200
+	health_base = 1
 
 	ai = /ai/traitor
 	class = /class/player

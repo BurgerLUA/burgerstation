@@ -374,7 +374,7 @@
 	var/atom/old_location = I.loc
 
 	I.drop_item(src,silent=silent)
-	I.plane = PLANE_HUD_OBJ
+	//I.plane = PLANE_HUD_OBJ
 	held_objects += I
 	I.pre_pickup(old_location,src)
 
@@ -418,7 +418,7 @@
 	var/atom/old_location = I.loc
 
 	I.drop_item(src,silent=silent)
-	I.plane = PLANE_HUD_OBJ
+	//I.plane = PLANE_HUD_OBJ
 	worn_objects += I
 	I.pre_pickup(old_location,src)
 
@@ -554,7 +554,7 @@
 		I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
 		I.pixel_x = pixel_x_offset
 		I.pixel_y = pixel_y_offset
-		I.plane = initial(I.plane)
+		//I.plane = initial(I.plane)
 		I.on_drop(src,drop_loc,silent)
 		update_stats()
 		if(owner && is_advanced(owner))

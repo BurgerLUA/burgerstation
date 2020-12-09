@@ -263,6 +263,7 @@
 		for(var/k in priority_targets)
 			L.ai.obstacles[k] = TRUE
 		tracked_enemies += L
+		points -= 0.1
 
 /gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
 

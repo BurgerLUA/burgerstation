@@ -70,30 +70,6 @@ var/global/list/blood_turfs = list()
 
 	return .
 
-
-/turf/proc/is_occupied(var/plane_min=-INFINITY,var/plane_max=INFINITY,var/check_under_tile=FALSE)
-
-	for(var/atom/movable/A in src.contents)
-		if(A.plane < plane_min || A.plane > plane_max)
-			continue
-		if(istype(A,/obj/effect/temp/construction/))
-			return A
-		if(is_living(A))
-			return A
-		if(isobj(A))
-			var/obj/O = A
-			if(check_under_tile && O.under_tile)
-				return O
-			if(is_structure(O))
-				return O
-
-	return null
-
-
-/turf/proc/can_construct_on(var/mob/caller)
-	caller.to_chat(span("warning","You cannot deploy on this turf!"))
-	return FALSE
-
 /turf/simulated/get_examine_list(var/mob/caller)
 	. = ..()
 	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
