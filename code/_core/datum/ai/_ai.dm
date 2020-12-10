@@ -401,6 +401,12 @@
 
 /ai/proc/check_obstructions()
 
+	if(length(current_path) < path_steps)
+		return FALSE
+
+	if(!current_path[path_steps])
+		return FALSE
+
 	var/Vector3D/desired_node = current_path[path_steps]
 	var/turf/T1 = get_turf(owner)
 	var/turf/T2 = locate(desired_node.x,desired_node.y,desired_node.z)

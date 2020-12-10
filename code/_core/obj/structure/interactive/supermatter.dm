@@ -5,14 +5,12 @@
 	icon = 'icons/obj/structure/supermatter.dmi'
 	icon_state = "supermatter"
 
-	collision_flags = FLAG_COLLISION_WALKING
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
 	value = 1000
-
-	bullet_block_chance = 90
 
 	density = TRUE
 

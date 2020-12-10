@@ -42,7 +42,7 @@
 	var/last_intoxication_message = 0
 
 	var/blood_type = /reagent/blood
-	var/blood_volume = BLOOD_LEVEL_DEFAULT
+	var/blood_volume = 0 //Set to max on new.
 	var/blood_volume_max = BLOOD_LEVEL_DEFAULT
 
 	var/blood_oxygen = 0 //Additional blood oxygen.
@@ -337,6 +337,8 @@
 	return "#444444"
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
+
+	blood_volume = blood_volume_max
 
 	if(desired_level_multiplier)
 		level_multiplier *= desired_level_multiplier
