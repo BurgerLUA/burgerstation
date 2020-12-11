@@ -19,9 +19,6 @@
 	health = /health/construction/
 	health_base = 2000
 
-
-
-
 /obj/structure/interactive/supermatter/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
