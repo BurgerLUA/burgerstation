@@ -7,10 +7,6 @@
 #define DOWN 16
 #define UP 32
 
-
-
-
-
 /proc/is_cardinal_dir(var/dir)
 	return dir && (dir == NORTH || dir == SOUTH || dir == EAST || dir == WEST)
 

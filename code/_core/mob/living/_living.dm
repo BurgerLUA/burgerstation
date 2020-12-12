@@ -43,7 +43,7 @@
 
 	var/blood_type = /reagent/blood
 	var/blood_volume = 0 //Set to max on new.
-	var/blood_volume_max = BLOOD_LEVEL_DEFAULT
+	var/blood_volume_max = 510
 
 	var/blood_oxygen = 0 //Additional blood oxygen.
 

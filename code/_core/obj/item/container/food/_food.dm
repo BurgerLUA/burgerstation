@@ -63,7 +63,7 @@
 	return .
 
 /obj/item/container/food/proc/get_calculated_bites(var/total_reagents = 1)
-	return 1 + FLOOR(total_reagents/(BITE_SIZE*2),1)
+	return CEILING(total_reagents/consume_size,1)
 
 /obj/item/container/food/get_reagents_to_consume()
 

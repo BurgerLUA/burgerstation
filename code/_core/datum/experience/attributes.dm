@@ -4,7 +4,7 @@
 /experience/attribute/
 	experience_power = 1
 	experience_multiplier = 1
-	default_level = ATTRIBUTE_STARTING_NONE
+	default_level = 15
 	chargen_min_level = 5
 	chargen_max_level = 20
 

@@ -130,15 +130,6 @@ var/global/list/all_clients = list() //Assoc list
 	for(var/v in object.get_examine_details_list(src.mob))
 		src.mob.to_chat(v)
 
-	if(SHOW_HOOKS)
-		if(!length(object.hooks))
-			src.mob.to_chat("This object has no hooks.")
-		else
-			for(var/event_name in object.hooks)
-				for(var/identifier in object.hooks[event_name])
-					var/list/hook_data = object.hooks[event_name][identifier]
-					src.mob.to_chat("[event_name] ([identifier]): [hook_data[1]], [hook_data[2]]")
-
 	return TRUE
 
 /client/New()

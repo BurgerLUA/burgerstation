@@ -133,7 +133,7 @@
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
 
-	var/consume_size = BITE_SIZE
+	var/consume_size = 10
 
 	var/can_hold = TRUE
 	var/can_wear = FALSE

@@ -77,7 +77,7 @@
 
 	pixel_y = 4
 
-	consume_size = BITE_SIZE*2
+	consume_size = 20
 
 /obj/item/container/beaker/shot
 	name = "shot glass"

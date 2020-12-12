@@ -9,7 +9,7 @@
 	nutrition *= RAND_PRECISE(0.5,0.75)
 	hydration *= RAND_PRECISE(0.5,0.75)
 
-	if(ENABLE_LORE && client)
+	if(client)
 
 		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 

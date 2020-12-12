@@ -9,7 +9,7 @@
 
 /mob/living/advanced/on_sprint()
 
-	if(health && health.adjust_stamina(-SPRINT_STAMINA_LOSS))
+	if(health && health.adjust_stamina(-4))
 		update_health_element_icons(stamina=TRUE)
 		stamina_regen_delay = max(stamina_regen_delay,30)
 

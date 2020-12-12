@@ -1,3 +1,0 @@
-#define CLICK_LEFT 0x1
-#define CLICK_RIGHT 0x2
-#define CLICK_MIDDLE 0x4
