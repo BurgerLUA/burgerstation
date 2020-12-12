@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/gas
 	name = "classic gas mask"
-	icon = 'obj/item/clothing/masks/gasmask.dmi'
+	icon = 'icons/obj/item/clothing/masks/gasmask.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "A modern gas mask. Filters out most forms of gas."
@@ -21,7 +21,7 @@
 
 /obj/item/clothing/mask/gas/clown
 	name = "clown mask"
-	icon = 'obj/item/clothing/masks/clown.dmi'
+	icon = 'icons/obj/item/clothing/masks/clown.dmi'
 	desc = "Where the clown gets their power."
 	desc_extended = "A flawless clown mask and wig."
 
@@ -42,7 +42,7 @@
 
 /obj/item/clothing/mask/gas/mining
 	name = "advanced gas mask"
-	icon = 'obj/item/clothing/masks/mining.dmi'
+	icon = 'icons/obj/item/clothing/masks/mining.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "An advanced gas mask. Filters out most forms of gas."
@@ -62,7 +62,7 @@
 
 /obj/item/clothing/mask/gas/space_cop
 	name = "space cop's mask"
-	icon = 'obj/item/clothing/masks/space_cop.dmi'
+	icon = 'icons/obj/item/clothing/masks/space_cop.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Baton not included."
 	desc_extended = "A space-age gas mask. Filters out most forms of gas."
@@ -70,7 +70,7 @@
 
 /obj/item/clothing/mask/gas/poly
 	name = "gas mask"
-	icon = 'obj/item/clothing/masks/gasmask_poly.dmi'
+	icon = 'icons/obj/item/clothing/masks/gasmask_poly.dmi'
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"eyes" = COLOR_WHITE,
