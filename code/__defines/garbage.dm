@@ -5,7 +5,7 @@
 		CRASH_SAFE("Tried to qdel null object!");																	\
 	}																												\
 	else if (object.qdeleting) {																					\
-		if (!object.qdel_warning && WARN_ON_DUPLICATE_QDEL) {														\
+		if (!object.qdel_warning) {														\
 			var/warning_message = "[object.get_debug_name()] was queued for delete more than once!";				\
 			CRASH_SAFE(warning_message);																			\
 			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");															\
