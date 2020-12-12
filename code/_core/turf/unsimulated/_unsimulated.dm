@@ -24,6 +24,12 @@
 	icon = 'icons/turf/space/abyss.dmi'
 	icon_state = "abyss"
 	opacity = 1
+	density = TRUE
+
+	desired_light_frequency = 2
+	desired_light_power = 1
+	desired_light_range = 8
+	desired_light_color = "#FFFFFF"
 
 /turf/unsimulated/void
 	name = "abyss"

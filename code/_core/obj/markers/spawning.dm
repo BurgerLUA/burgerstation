@@ -76,7 +76,6 @@
 	LATE_INIT(W)
 	setup_airlock()
 
-
 /obj/marker/spawning/random
 	var/list/possible_objects = list()
 

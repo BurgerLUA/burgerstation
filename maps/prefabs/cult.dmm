@@ -1,0 +1,88 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/wall/cult,/area)
+"c" = (/obj/structure/interactive/lighting/cult_pylon,/turf/simulated/floor/cult,/area)
+"d" = (/turf/simulated/floor/cult,/area)
+"e" = (/obj/structure/smooth/table/cult,/turf/simulated/floor/cult,/area)
+"f" = (/obj/structure/interactive/lighting/cult_pylon,/turf/simulated/floor/cult/darker,/area)
+"g" = (/obj/structure/smooth/table/cult,/turf/simulated/floor/cult/darker,/area)
+"h" = (/turf/simulated/floor/cult/darker,/area)
+"i" = (/turf/simulated/floor/stair/cult{icon_state = "stair"; dir = 1},/area)
+"j" = (/turf/simulated/floor/stair/cult,/area)
+"k" = (/turf/simulated/floor/stair/cult{icon_state = "stair"; dir = 4},/area)
+"l" = (/mob/living/simple/npc/cult/construct/behemoth,/turf/simulated/floor/cult,/area)
+"m" = (/mob/living/advanced/npc/cultist,/turf/simulated/floor/cult,/area)
+"n" = (/mob/living/advanced/npc/cultist{icon_state = "directional"; dir = 4},/turf/simulated/floor/cult,/area)
+"o" = (/mob/living/advanced/npc/cultist{icon_state = "directional"; dir = 8},/turf/simulated/floor/cult,/area)
+"p" = (/mob/living/advanced/npc/cultist{icon_state = "directional"; dir = 1},/turf/simulated/floor/cult,/area)
+"q" = (/mob/living/simple/npc/cult/construct/behemoth,/turf/simulated/floor/cult/darker,/area)
+"r" = (/mob/living/simple/npc/cult/construct/artificer,/turf/simulated/floor/cult,/area)
+"s" = (/mob/living/simple/npc/cult/construct/floating,/turf/simulated/floor/cult,/area)
+"t" = (/mob/living/simple/npc/cult/construct/chosen,/turf/simulated/floor/cult,/area)
+"u" = (/obj/marker/objective_spawn,/turf/simulated/floor/cult/darker,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaabbbbdddddddbbbbbbbbbbbbbbdddddddddbbbbbbbbbbbaaaaaaaaa
+aaaaaaaaaabcddddddddddcbcddddddddddddddldddddddddddddcbaaaaaaaaa
+aaaaaaaaaabddddddddddddbddddddddddddddddddddddddddddddbaaaaaaaaa
+aaaaaaaaaabddddddddddddbbbddbbbcddddddddddddddddddddddbaaaaaaaaa
+aaaaaaaaaadddddddmdddddbcddddcbbbbbbbbbbbbbbdddbbbbddbbaaaaaaaaa
+aaaaaaaaaadddddeeeeddddbddddddbceeeeeeeecbcdddddcbcddcbaaaaaaaaa
+aaaaaaaaaadddddeeeedddddddlddddddddddddddbdmdddddbddddbaaaaaaaaa
+aaaaaaaaaaddddneeeeodddddddddddddodddddodbdddddddbddddbaaaaaaaaa
+aaaaaaaaaadddddeeeeddddbdddddddddddddddddbdddddmdbdddddaaaaaaaaa
+aaaaaaaaaadddddeeeeddddbcddddcbcdddddddddbddmddddbdddddaaaaaaaaa
+aaaaaaaaaaddddddpddddddbbbbbbbbbbbbbbdoddbdddddddbdddddaaaaaaaaa
+aaaaaaaaaadddddddddddddbfggggggggggfbddddbcdddddcbdddddaaaaaaaaa
+aaaaaaaaaabddddddddddddbhhhhhhhhhhhhbddddbbbdbbbbbdddddaaaaaaaaa
+aaaaaaaaaabcddddddddddcbhhhqhhhhhhuhbddrdbcddddcbcdddddaaaaaaaaa
+aaaaaaaaaabbbddbbbbddbbbhhhhhhhhhhhhbddddbedddddbdddrddaaaaaaaaa
+aaaaaaaaaabcddddcbcddcbfhhhhhhhhhhhhbddddbeddddobddddddaaaaaaaaa
+aaaaaaaaaabddddddbddddbhhhhhhhhhhhhhbddddbedddddbdddddbaaaaaaaaa
+aaaaaaaaaaddoddddbddddbhhuhhhhhhhqhhbcddcbedddddbdddddbaaaaaaaaa
+aaaaaaaaaadddddddbddddbhhhhhhhhhhhhhbbddbbedddddbdddddbaaaaaaaaa
+aaaaaaaaaadddddddbddddbfhhhhhhhhhhhfbcddcbedddddbdddddbaaaaaaaaa
+aaaaaaaaaadddddodbddddbbbbbbiiibbbbbbddddbeddddobdddddbaaaaaaaaa
+aaaaaaaaaaddoddddbdddddcbcdddddddddddddddbedddddbdddddbaaaaaaaaa
+aaaaaaaaaadddddddbddddddbeddsddddddddddddbedddddbdddddbaaaaaaaaa
+aaaaaaaaaabddddddbddddddbedddddddddddddddbcddddcbdddddbaaaaaaaaa
+aaaaaaaaaabcddddcbcddddcbedddddeeedddddddbbbdbbbbdddddbaaaaaaaaa
+aaaaaaaaaabbbddbbbbbjjbbbedddddeeedddddddbcdddcbcdddddbaaaaaaaaa
+aaaaaaaaaabcddddcbfhhhhfbeddsddeeeddddsddbeddddbdddtddbaaaaaaaaa
+aaaaaaaaaabedddddbhhhhhhbedddddddddddddddbeddddbddddddbaaaaaaaaa
+aaaaaaaaaabeddlddbhhhhhhbcddddddddddddddcbeddddbddddddbaaaaaaaaa
+aaaaaaaaaabedddddbhhhhhhbbbbddddbbbbbbbbbbeddddbddddddbaaaaaaaaa
+aaaaaaaaaabedddddkhhhhhhbcddddddddddcbcddddddddbdddddddaaaaaaaaa
+aaaaaaaaaabedrdddkhhhhhhbddddddddddddbdddddddddbdddddddaaaaaaaaa
+aaaaaaaaaabedddddbhhhhhhbndddddddddddddddeeedddddddddddaaaaaaaaa
+aaaaaaaaaabcddddcbfhhhhfbddddddddddddddddeeedddddddddddaaaaaaaaa
+aaaaaaaaaabbbbbbbbbbbiibbndddddddddddddddeeedddddddddddaaaaaaaaa
+aaaaaaaaaabcddddddcbcddcbddddddddddddbdddddddddbdddddddaaaaaaaaa
+aaaaaaaaaabddddddddbddddbceeeeeeeeeecbcdpddpddcbdddddddaaaaaaaaa
+aaaaaaaaaabddddldddbddddbbbbbbbbbbbbbbbbbbbbbbbbddrddddaaaaaaaaa
+aaaaaaaaaabdddddddddddddddddddddddddddddddddddcbdddddddaaaaaaaaa
+aaaaaaaaaabddrdddddbddddrdddddlddddddddddddrddddddddddbaaaaaaaaa
+aaaaaaaaaabddddddddbddddddddddddddddldddddddddddddddddbaaaaaaaaa
+aaaaaaaaaabceeeeeecbcdddddddddddddddddddddddddcbcddddcbaaaaaaaaa
+aaaaaaaaaabbbbbbbbbbbbbbbbbddddddddddddddbbbbbbbbbbbbbbaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
