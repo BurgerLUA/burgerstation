@@ -148,7 +148,7 @@
 
 /track/spacemans_flight //Lobby Music? Forrest Music?
 	name = "Spaceman's Flight"
-	path = 'sound/music/Spaceman\'s Flight.ogg'
+	path = 'sound/music/Spaceman Flight.ogg'
 	length = 1*60 + 45
 
 /track/vapor //Snow Music
@@ -189,16 +189,19 @@
 /track/chords //Heirophant Boss Music
 	name = "Chords"
 	path = 'sound/music/Chords.ogg'
-	length = 1*60 + 30
+	length = 2*60 + 0
 
+/track/two_thirty_six //Menu Music
+	name = "236"
+	path = 'sound/music/236.ogg'
+	length = 1*60 + 25
 
+/track/relaxed_intro
+	name = "Relaxed Intro"
+	path = 'sound/music/Relaxed Intro.ogg'
+	length = 2*60 + 30
 
-
-
-
-
-
-
-
-
-
+/track/soul_gem //Herald's Realm
+	name = "Soul Gem"
+	path = 'sound/music/Soul Gem.ogg'
+	length = 4*60 + 15

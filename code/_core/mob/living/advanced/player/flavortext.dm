@@ -1,6 +1,6 @@
 /mob/living/advanced/proc/get_flavortext()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	var/strength = get_attribute_level(ATTRIBUTE_STRENGTH)
 	var/vitality = get_attribute_level(ATTRIBUTE_VITALITY)

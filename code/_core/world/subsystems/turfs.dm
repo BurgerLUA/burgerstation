@@ -28,8 +28,7 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/Initialize()
 
-	if(!ENABLE_TURFGEN)
-		return
+	set background = TRUE
 
 	for(var/i=1,i<=10,i++) //Generate 10 seeds.
 		seeds += rand(1,99999)
@@ -43,6 +42,9 @@ SUBSYSTEM_DEF(turfs)
 		found_turfs++
 
 	log_subsystem(name,"Found [found_turfs] simulated turfs.")
+
+	for(var/turf/unsimulated/generation/G in world)
+		G.pre_generate()
 
 	for(var/turf/unsimulated/generation/G in world)
 		G.generate()

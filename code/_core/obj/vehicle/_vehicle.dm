@@ -30,6 +30,7 @@
 
 	blood_type = null
 
+	health = /health/mob/living/vehicle
 
 /mob/living/vehicle/get_examine_details_list()
 
@@ -67,15 +68,11 @@
 
 	return ..()
 
-
-/mob/living/vehicle/pre_death()
-	explode(get_turf(src),2,src,src)
-	return ..()
-
 /mob/living/vehicle/post_death()
 	for(var/k in passengers)
 		var/mob/living/advanced/A = k
 		exit_vehicle(A, get_turf(src))
+	explode(get_turf(src),2,src,src)
 	return ..()
 
 /mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)

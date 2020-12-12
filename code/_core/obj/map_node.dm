@@ -15,14 +15,8 @@ var/global/mob/abstract/node_checker
 	density = TRUE
 
 /mob/abstract/node_checker/Bump(atom/Obstacle)
-
 	if(istype(Obstacle,/obj/structure/interactive/door))
 		return TRUE
-
-	return ..()
-
-/mob/abstract/node_checker/New(var/desired_loc)
-	node_checker = src
 	return ..()
 
 /obj/marker/map_node
@@ -63,7 +57,6 @@ var/global/mob/abstract/node_checker
 				break
 			if(NC.loc == M.loc)
 				break
-			sleep(-1)
 		if(invalid)
 			continue
 		var/direction = dir2text(get_dir(src,M))
@@ -109,7 +102,34 @@ var/global/list/stored_paths = list()
 
 	return null
 
-/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE,var/debug = FALSE)
+/proc/get_obstructions(var/turf/point_A,var/turf/point_B)
+
+	. = list()
+
+	if(!point_A || !point_B)
+		return .
+
+	var/mob/abstract/node_checker/NC = new /mob/abstract/node_checker(point_A)
+	var/limit = 10
+	while(NC.loc != point_B && limit > 0)
+		limit--
+		CHECK_TICK(75,FPS_SERVER)
+		var/desired_dir = get_dir(NC,point_B)
+		var/turf/T = get_step(NC,desired_dir)
+		if(!T.Enter(NC,NC.loc))
+			. |= T
+		for(var/k in T.contents)
+			var/atom/movable/M = k
+			if(!M.Cross(NC))
+				. |= M
+		NC.loc = T
+
+	qdel(NC)
+
+	return .
+
+
+/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE)
 
 	var/obj/marker/map_node/best_node = null
 	var/best_distance = INFINITY

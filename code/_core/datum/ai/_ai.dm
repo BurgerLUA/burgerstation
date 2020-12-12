@@ -8,6 +8,8 @@
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
 
+	var/check_for_obstructions = TRUE //Pathing only
+
 	var/radius_find_enemy = AI_DETECTION_RANGE //No alert.
 	var/radius_find_enemy_noise = AI_DETECTION_RANGE_NOISE
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
@@ -25,6 +27,8 @@
 	var/turf/start_turf
 
 	var/roaming_distance = 5
+
+	var/shoot_obstacles = TRUE
 
 	var/attack_distance_min = 0
 	var/attack_distance_max = 1
@@ -53,6 +57,8 @@
 
 	var/path_steps = 1
 	var/list/Vector3D/current_path = list()
+
+	var/list/obstacles = list()
 
 	var/distance_target_min = 1
 	var/distance_target_max = 1
@@ -117,6 +123,10 @@
 		attackers.Cut()
 		attackers = null
 
+	if(obstacles)
+		obstacles.Cut()
+		obstacles = null
+
 	if(current_path)
 		current_path.Cut()
 		current_path = null
@@ -147,6 +157,7 @@
 		set_move_objective(null)
 		CALLBACK_REMOVE("set_new_objective_\ref[src]")
 		attackers.Cut()
+		obstacles.Cut()
 
 	return TRUE
 
@@ -188,8 +199,11 @@
 	frustration_move = 0
 	owner.move_dir = 0
 	path_start_turf = get_turf(owner)
+
 	var/Vector3D/last_path = desired_path[length(desired_path)]
 	path_end_turf = locate(last_path.x,last_path.y,last_path.z)
+
+	if(check_for_obstructions) check_obstructions()
 
 	HOOK_CALL("set_path")
 
@@ -385,6 +399,27 @@
 		return TRUE
 	return FALSE
 
+/ai/proc/check_obstructions()
+
+	if(length(current_path) < path_steps)
+		return FALSE
+
+	if(!current_path[path_steps])
+		return FALSE
+
+	var/Vector3D/desired_node = current_path[path_steps]
+	var/turf/T1 = get_turf(owner)
+	var/turf/T2 = locate(desired_node.x,desired_node.y,desired_node.z)
+	var/list/obstructions = get_obstructions(T1,T2)
+
+	for(var/k in obstructions)
+		var/atom/A = k
+		if(!A.health)
+			continue
+		obstacles[A] = TRUE
+
+	return TRUE
+
 /ai/proc/handle_movement_path()
 	if(current_path && length(current_path))
 		owner.movement_flags = MOVEMENT_NORMAL
@@ -394,6 +429,7 @@
 			if(desired_node.x == T.x && desired_node.y == T.y)
 				path_steps++
 				owner.move_dir = 0
+				if(check_for_obstructions) check_obstructions()
 				frustration_path = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
@@ -537,13 +573,12 @@
 
 	var/atom/old_attack = objective_attack
 
-	if(!A && old_attack && attackers[old_attack])
-		attackers -= old_attack
-
 	if(A) owner.set_dir(get_dir(owner,A))
 
 	if(objective_investigate)
 		objective_investigate = null
+
+
 
 	if(is_living(A))
 		if(!should_attack_mob(A))
@@ -558,8 +593,16 @@
 			objective_move = null
 		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
 		return TRUE
+	else if(istype(A))
+		frustration_attack = 0
+		set_active(TRUE)
+		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
+		objective_attack = A
+		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
+		return TRUE
 
 	frustration_attack = 0
+
 	objective_attack = null
 	owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
 
@@ -611,10 +654,10 @@
 		var/atom/best_target
 		var/best_score = 0
 		for(var/k in possible_targets)
-			var/mob/living/L = k
-			var/local_score = get_attack_score(L)
+			var/atom/A = k
+			var/local_score = get_attack_score(A)
 			if(!best_score || local_score > best_score)
-				best_target = L
+				best_target = A
 				best_score = local_score
 		if(best_target && best_target != objective_attack)
 			if(reaction_time)
@@ -626,16 +669,18 @@
 
 	return TRUE
 
-/ai/proc/get_attack_score(var/mob/living/L)
+/ai/proc/get_attack_score(var/atom/A)
 
-	var/dist = get_dist(L.loc,owner.loc)
+	var/dist = get_dist(A.loc,owner.loc)
 
 	if(dist <= attack_distance_max)
-		if(attackers[L])
-			return 3000 - (L.health ? L.health.health_current : 0)
-		if(L.ai && L.ai.objective_attack == owner)
-			return 2000 - (L.health ? L.health.health_current : 0)
-		return 1000 - (L.health ? L.health.health_current : 0)
+		if(attackers[A])
+			return 3000 - (A.health ? A.health.health_current : 0)
+		if(is_living(A))
+			var/mob/living/L = A
+			if(L.ai && L.ai.objective_attack == owner)
+				return 2000 - (A.health ? A.health.health_current : 0)
+		return 1000 - (A.health ? A.health.health_current : 0)
 
 	return -dist
 
@@ -778,18 +823,28 @@
 
 	. *= clamp(atom_alpha/255,0,1) * darkness
 
-
-
 	return .
-
 
 
 /ai/proc/get_possible_targets()
 
-	if(retaliate && length(attackers))
-		return attackers
-
 	. = list()
+
+	if(retaliate && length(attackers))
+		for(var/k in attackers)
+			var/atom/A = k
+			if(A.qdeleting)
+				attackers -= k
+				continue
+			.[A] = TRUE
+
+	if(shoot_obstacles && length(obstacles))
+		for(var/k in obstacles)
+			var/atom/A = k
+			if(A.qdeleting)
+				obstacles -= k
+				continue
+			.[A] = TRUE
 
 	var/range_to_use = radius_find_enemy
 	switch(alert_level)
@@ -881,7 +936,7 @@
 	if(!use_alerts)
 		return FALSE
 
-	if(owner.dead)
+	if(!owner || owner.dead)
 		return FALSE
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))

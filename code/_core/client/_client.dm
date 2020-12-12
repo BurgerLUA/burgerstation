@@ -130,15 +130,6 @@ var/global/list/all_clients = list() //Assoc list
 	for(var/v in object.get_examine_details_list(src.mob))
 		src.mob.to_chat(v)
 
-	if(SHOW_HOOKS)
-		if(!length(object.hooks))
-			src.mob.to_chat("This object has no hooks.")
-		else
-			for(var/event_name in object.hooks)
-				for(var/identifier in object.hooks[event_name])
-					var/list/hook_data = object.hooks[event_name][identifier]
-					src.mob.to_chat("[event_name] ([identifier]): [hook_data[1]], [hook_data[2]]")
-
 	return TRUE
 
 /client/New()
@@ -192,7 +183,9 @@ var/global/list/all_clients = list() //Assoc list
 		make_observer(FALLBACK_TURF)
 		mob.show_hud(FALSE,speed = 0)
 		if(world_state == STATE_RUNNING)
-			play_music_track(pick(TRACKS_LOBBY), src)
+			var/list/possible_music = TRACKS_LOBBY
+			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
+			play_music_track(possible_music[lobby_track], src)
 			mob.show_hud(TRUE,speed = 2)
 			mob.force_move(get_turf(lobby_positions[1]))
 

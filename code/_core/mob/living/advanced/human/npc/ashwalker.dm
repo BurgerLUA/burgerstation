@@ -31,7 +31,7 @@
 
 	. = ..()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	var/skin_color = sex == MALE ? rgb(rand(75,120),rand(75,120),rand(75,120)) : rgb(rand(120,200),rand(120,200),rand(120,200))
 	var/rand_col = rand(50,200)

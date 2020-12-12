@@ -505,7 +505,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5,robotic = FALSE)
+		owner.health.adjust_loss_smart(brute=.*-3,burn=.*-3,tox=.*-3,oxy=.*-3,robotic = FALSE)
 
 	return .
 
@@ -514,7 +514,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5,robotic = FALSE)
+		owner.health.adjust_loss_smart(brute=.*-3,burn=.*-3,tox=.*-3,oxy=.*-3,robotic = FALSE)
 
 	return .
 
@@ -539,7 +539,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*10)
+		owner.health.adjust_stamina(.*5)
 
 	return .
 
@@ -547,7 +547,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*10)
+		owner.health.adjust_stamina(.*5)
 
 	return .
 
@@ -572,7 +572,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*10)
+		owner.health.adjust_mana(.*5)
 
 	return .
 
@@ -580,7 +580,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*10)
+		owner.health.adjust_mana(.*5)
 
 	return .
 

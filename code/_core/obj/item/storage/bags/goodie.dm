@@ -32,7 +32,7 @@
 			INITIALIZE(I)
 			GENERATE(I)
 			FINALIZE(I)
-			add_to_inventory(null,I,FALSE,TRUE)
+			add_to_inventory(null,I,FALSE,TRUE,silent=TRUE)
 
 		caller.to_chat(span("notice","You unwrap \the [src.name]."))
 		return TRUE

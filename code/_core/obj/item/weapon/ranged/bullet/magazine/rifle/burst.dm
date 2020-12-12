@@ -7,6 +7,7 @@
 	value = 400
 
 	shoot_delay = 1
+	burst_delay = 4
 	max_bursts = 3
 
 	automatic = TRUE
@@ -16,8 +17,6 @@
 	can_wield = TRUE
 
 	view_punch = 10
-
-
 
 	size = SIZE_4
 	weight = 12

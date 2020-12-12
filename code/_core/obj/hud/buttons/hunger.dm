@@ -32,7 +32,7 @@
 	if(is_living(caller))
 		var/mob/living/L = caller
 		var/quality_mod = L.get_nutrition_quality_mod()
-		. += "Your nutrition is [L.nutrition]/[initial(L.nutrition)]."
+		. += "Your nutrition is [L.nutrition_fast+L.nutrition]/[initial(L.nutrition)]."
 		. += "Your hydration is [L.hydration]/[initial(L.hydration)]."
 		. += "Your nutritional quality is [FLOOR(100*quality_mod,0.1)]%."
 		. += "Your energy level is [FLOOR(100 * L.get_nutrition_mod() * L.get_hydration_mod() * quality_mod,1)]%."
@@ -60,7 +60,7 @@
 	var/initial_icon = initial(icon)
 
 	var/mob/living/L = owner
-	var/visual_hunger_mod = L.nutrition/(initial(L.nutrition)*0.95)
+	var/visual_hunger_mod = (L.nutrition_fast+L.nutrition)/(initial(L.nutrition)*0.95)
 	var/visual_thirst_mod = L.hydration/(initial(L.hydration)*0.95)
 	var/hunger_mod = L.get_nutrition_mod()
 	var/thirst_mod = L.get_hydration_mod()

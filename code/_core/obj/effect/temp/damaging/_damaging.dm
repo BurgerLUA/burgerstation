@@ -194,7 +194,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 
 /obj/effect/temp/hazard/lava/
 	name = "lava"
-	icon = 'icons/obj/effects/effects.dmi'
+	icon = 'icons/obj/effects/lava.dmi'
 	icon_state = "lavastaff_warn"
 	duration = SECONDS_TO_DECISECONDS(30)
 	hazard_range = 1
@@ -204,7 +204,47 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,param
 	layer = 0
 
 /obj/effect/temp/hazard/lava/get_params(var/atom/victim)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			return ..()
+
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
-	.[PARAM_ICON_Y] = rand(0.8)
+	.[PARAM_ICON_Y] = rand(0.14)
+
+	return .
+
+
+
+/obj/effect/temp/hazard/curse
+	name = "lava"
+	icon = 'icons/obj/structure/cult/effects.dmi'
+	icon_state = "floorglow_strong"
+	duration = SECONDS_TO_DECISECONDS(10)
+	hazard_range = 1
+	damage_type = /damagetype/ranged/magic/cult
+	cross_hazard = TRUE
+	plane = PLANE_BLOOD
+	layer = 0
+
+/obj/effect/temp/hazard/curse/New(var/desired_location,var/desired_time,var/desired_owner)
+
+	if(istype(desired_location,/turf/simulated/wall/))
+		icon_state = "wallglow_strong"
+
+	return ..()
+
+/obj/effect/temp/hazard/curse/get_params(var/atom/victim)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			return ..()
+
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0.14)
+
 	return .

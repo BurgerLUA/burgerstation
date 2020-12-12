@@ -10,6 +10,6 @@
 
 	value = 1000
 
-	ai = null
+	ai =  /ai/
 	class = /class/passive/
-	damage_type = /damagetype/unarmed/claw/
+	damage_type = /damagetype/unarmed/bite/

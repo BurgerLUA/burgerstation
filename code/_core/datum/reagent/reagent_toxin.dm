@@ -92,3 +92,8 @@
 	desc = "Toxic fumes from burning sulfur with coal."
 
 	damage_per_unit = 1
+
+	heated_reagent = /reagent/acid/sulphuric
+	heated_reagent_temp = 600
+	heated_reagent_amount = 1
+	heated_reagent_mul = 0.01

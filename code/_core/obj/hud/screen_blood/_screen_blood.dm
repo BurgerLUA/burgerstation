@@ -58,6 +58,7 @@
 		if(L.dead)
 			alpha = 200
 			maptext = "<center>You have died.</center>"
+			health = 0
 		else
 			alpha = clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
 			maptext = null

@@ -44,23 +44,21 @@
 
 	. = ..()
 
-	if(!is_living(P.dialogue_target))
-		return .
-
-	var/mob/living/L = P.dialogue_target
+	var/mob/living/advanced/npc/unique/hostage/L = P.dialogue_target
 
 	if(!L.ai)
 		return .
 
-	switch(topic)
-		if("*stop following me")
-			if(L in P.followers)
-				L.ai.set_move_objective(null)
-				L.following = null
-				P.followers -= L
-		if("*follow me")
-			if(length(P.followers) < 2 && !L.following)
-				P.followers += L
-				L.ai.set_move_objective(P,TRUE)
-				L.following = P
+	if(L.hostage)
+		switch(topic)
+			if("*stop following me")
+				if(L in P.followers)
+					L.ai.set_move_objective(null)
+					L.following = null
+					P.followers -= L
+			if("*follow me")
+				if(length(P.followers) < 2 && !L.following)
+					P.followers += L
+					L.ai.set_move_objective(P,TRUE)
+					L.following = P
 	return .

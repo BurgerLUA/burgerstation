@@ -3,7 +3,7 @@
 
 /mob/living/advanced/send_pain(var/pain_strength=50)
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(S.flags_species_traits & TRAIT_NO_PAIN)
 		return FALSE

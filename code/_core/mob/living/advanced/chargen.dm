@@ -9,7 +9,7 @@
 	nutrition *= RAND_PRECISE(0.5,0.75)
 	hydration *= RAND_PRECISE(0.5,0.75)
 
-	if(ENABLE_LORE && client)
+	if(client)
 
 		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 
@@ -73,7 +73,7 @@
 
 	known_languages.Cut()
 	species = desired_species
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	if(S.genderless)
 		sex = MALE
 		gender = MALE
@@ -111,7 +111,7 @@
 	return kept_items
 
 /mob/living/advanced/proc/default_appearance()
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)

@@ -16,7 +16,7 @@
 
 	return ..()
 
-/obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE)
+/obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE,var/silent=FALSE)
 
 	var/obj/hud/inventory/best_inventory_wear
 	var/obj/hud/inventory/best_inventory_equip
@@ -42,11 +42,11 @@
 
 	if(best_inventory_wear)
 		if(debug) log_debug("(WEAR) Best inventory found for [caller.get_debug_name()]: [best_inventory_wear.get_debug_name()].")
-		return best_inventory_wear.add_object(src)
+		return best_inventory_wear.add_object(src,silent=silent)
 
 	if(best_inventory_equip)
 		if(debug) log_debug("(EQUIP) Best inventory found for [caller.get_debug_name()]: [best_inventory_equip.get_debug_name()].")
-		return best_inventory_equip.add_object(src)
+		return best_inventory_equip.add_object(src,silent=silent)
 
 	return FALSE
 

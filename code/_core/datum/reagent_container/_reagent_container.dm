@@ -577,7 +577,7 @@
 		var/list/flavor_flags = flavor_data[2]
 
 		var/like_score = 0
-		var/species/SP = all_species[A.species]
+		var/species/SP = SPECIES(A.species)
 		for(var/k in flavor_flags)
 			var/real_bit = text2num(k)
 			if(real_bit & SP.flags_flavor_love)

@@ -101,7 +101,7 @@
 	if(text_type == TEXT_TALK)
 		var/area/A = get_area(source)
 		if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
-			new/obj/effect/chat_text(source,text_to_say)
+			new/obj/effect/chat_text(source,language_text_to_say)
 
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)

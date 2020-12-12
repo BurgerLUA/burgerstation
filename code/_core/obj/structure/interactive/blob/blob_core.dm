@@ -55,7 +55,7 @@
 				if(!T)
 					continue
 				var/obj/structure/interactive/blob/B2 = locate() in T.contents
-				if(!B2 && !is_wall(T))
+				if(!B2 && !is_wall(T) && !istype(T,/turf/simulated/hazard/))
 					. += T
 
 	for(var/d in DIRECTIONS_CARDINAL)
@@ -63,7 +63,7 @@
 		if(!T)
 			continue
 		var/obj/structure/interactive/blob/B = locate() in T.contents
-		if(!B && !is_wall(T))
+		if(!B && !is_wall(T) && !istype(T,/turf/simulated/hazard/))
 			. += T
 
 	return .

@@ -399,3 +399,11 @@
 /obj/marker/generation/mob/cave_spider
 	object_to_place = /mob/living/simple/npc/spider
 	objects_max = 3
+
+/obj/marker/generation/mob/legion
+	object_to_place = /mob/living/simple/npc/legionare
+	objects_max = 2
+
+/obj/marker/generation/mob/ash_walker
+	object_to_place = /mob/living/advanced/npc/ashwalker/hunter
+	objects_max = 1

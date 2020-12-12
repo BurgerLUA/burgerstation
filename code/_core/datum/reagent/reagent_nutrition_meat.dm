@@ -81,7 +81,7 @@
 	flavor = "fat"
 
 /reagent/nutrition/fat/xeno
-	name = "xeo fat"
+	name = "xeno fat"
 	desc = "Nutrition and flavor from a xeno's fat."
 	color = "#EAD5A4"
 

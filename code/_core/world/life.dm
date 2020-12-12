@@ -76,8 +76,10 @@ var/global/time_dialation = 0
 
 	else if(length(lobby_positions))
 		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
+			var/list/possible_music = TRACKS_LOBBY
+			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
 			O.force_move(get_turf(pick(lobby_positions)))
-			play_music_track(pick(TRACKS_LOBBY), O.client)
+			play_music_track(possible_music[lobby_track], O.client)
 			O.show_hud(TRUE,speed = 2)
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")

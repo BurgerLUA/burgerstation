@@ -130,7 +130,7 @@
 /mob/living/advanced/Finalize()
 
 	if(blood_type == /reagent/blood) //Uninitialized blood.
-		var/species/S = all_species[species]
+		var/species/S = SPECIES(species)
 		blood_type = S.generate_blood_type()
 
 	. = ..()
@@ -298,7 +298,7 @@
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/k in clothing_list)
 		var/obj/item/clothing/C = k
-		C.quick_equip(src)
+		C.quick_equip(src,silent=TRUE)
 
 mob/living/advanced/Login()
 	. = ..()
@@ -327,6 +327,10 @@ mob/living/advanced/Login()
 	. = ..()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
+
+	var/species/S = SPECIES(species)
+	if(S && S.health)
+		health = S.health
 
 	return .
 
@@ -384,10 +388,11 @@ mob/living/advanced/Login()
 
 	return TRUE
 
-/mob/living/advanced/proc/add_worn_item(var/obj/item/C)
+/* UNUSED
+/mob/living/advanced/proc/add_worn_item(var/obj/item/C,var/slient=FALSE)
 	for(var/k in inventory)
 		var/obj/hud/inventory/I = k
-		if(I.add_worn_object(C,FALSE))
+		if(I.add_worn_object(C,FALSE,silent=FALSE))
 			return TRUE
 
 	return FALSE
@@ -399,19 +404,20 @@ mob/living/advanced/Login()
 			return TRUE
 
 	return FALSE
+*/
 
 /mob/living/advanced/proc/add_species_languages()
 
 	known_languages.Cut()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	for(var/language in S.languages)
 		known_languages[language] = TRUE
 
 /mob/living/advanced/proc/add_species_colors()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(S.default_color_skin)
 		change_organ_visual("skin", desired_color = S.default_color_skin)
@@ -444,7 +450,7 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/update_species()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(S.genderless)
 		gender = NEUTER
@@ -473,24 +479,24 @@ mob/living/advanced/Login()
 
 	return ..()
 
-/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
+/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE,var/silent=FALSE)
 
 	if(left_hand && right_hand)
 		if(left)
 			if(left_hand.can_hold_object(I,FALSE))
-				return left_hand.add_object(I)
+				return left_hand.add_object(I,silent=silent)
 			else if(right_hand.can_hold_object(I,FALSE))
-				return right_hand.add_object(I)
+				return right_hand.add_object(I,silent=silent)
 		else
 			if(right_hand.can_hold_object(I,FALSE))
-				return right_hand.add_object(I)
+				return right_hand.add_object(I,silent=silent)
 			else if(left_hand.can_hold_object(I,FALSE))
-				return left_hand.add_object(I)
+				return left_hand.add_object(I,silent=silent)
 	else
 		if(left_hand)
-			return left_hand.add_object(I)
+			return left_hand.add_object(I,silent=silent)
 		else if(right_hand)
-			return right_hand.add_object(I)
+			return right_hand.add_object(I,silent=silent)
 
 	return FALSE
 
@@ -513,7 +519,7 @@ mob/living/advanced/Login()
 	return FALSE
 
 /mob/living/advanced/mod_speech(var/text)
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	if(!S)
 		return text
 	return ..(S.mod_speech(src,text))

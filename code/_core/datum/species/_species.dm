@@ -7,7 +7,7 @@
 	var/flags_flavor_love = 0x0
 	var/flags_flavor_hate = 0x0
 
-	var/flags_species = SPECIES_NONE
+	var/flags_species = SPECIES_NONE //The identifier of the species.
 	var/flags_species_traits = TRAIT_NONE
 	var/flags_chargen = CHARGEN_NONE
 
@@ -35,6 +35,8 @@
 	var/list/languages = list(
 		LANGUAGE_BASIC
 	)
+
+	var/health/health = /health/mob/living/advanced
 
 	var/list/emote_sounds_male = list(
 		"laugh" = list('sound/voice/human/human_male_laugh_1.ogg','sound/voice/human/human_male_laugh_2.ogg'),

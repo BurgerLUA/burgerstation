@@ -32,7 +32,7 @@
 	return ..()
 
 
-/obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
+/obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 	return .
@@ -108,9 +108,9 @@
 		var/transfer_amount = 0
 		if(injecting)
 			transfer_amount = inject_amount
-			caller.visible_message("\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!")
+			caller.visible_message(span("danger","\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!"))
 		else
-			caller.visible_message("\The [caller.name] tries to draw blood from \the [real_object_name] with \the [src.name]!")
+			caller.visible_message(span("danger","\The [caller.name] tries to draw blood from \the [real_object_name] with \the [src.name]!"))
 			transfer_amount = -draw_amount
 
 		PROGRESS_BAR(caller,src,self_inject ? BASE_INJECT_TIME_SELF : BASE_INJECT_TIME,.proc/inject,caller,object,transfer_amount)

@@ -30,6 +30,7 @@
 	species = loaded_data["species"]
 	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
 	hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : initial(hydration)*0.5
+	nutrition_fast = isnum(loaded_data["nutrition_fast"]) ? loaded_data["nutrition_fast"] : 0
 	nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
 	save_id = loaded_data["id"]
 	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 3
@@ -37,7 +38,8 @@
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
 	if(loaded_data["dead"]) //New body!
-		nutrition = initial(nutrition)*0.5
+		nutrition = initial(nutrition)*0.25
+		nutrition_fast = nutrition
 		hydration = initial(hydration)*0.5
 		nutrition_quality = initial(nutrition_quality)
 		if(isnum(insurance))
@@ -124,6 +126,7 @@
 	.["nutrition"] = nutrition
 	.["hydration"] = hydration
 	.["nutrition_quality"] = nutrition_quality
+	.["nutrition_fast"] = nutrition_fast
 	.["known_languages"] = known_languages
 	.["id"] = save_id
 	.["dead"] = died

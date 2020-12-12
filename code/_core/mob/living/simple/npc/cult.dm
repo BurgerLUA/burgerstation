@@ -9,8 +9,6 @@
 	icon = 'icons/mob/living/simple/cult.dmi'
 	icon_state = "cultist"
 
-	damage_type = "cultist"
-
 	ai = /ai/cultist
 
 	stun_angle = 0

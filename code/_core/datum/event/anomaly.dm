@@ -6,18 +6,12 @@
 	var/list/valid_areas = list()
 
 	var/list/possible_anomalies = list(
-		/mob/living/simple/npc/dick_kickem = 3.5,
-		/mob/living/simple/npc/glockroach = 7,
-		/mob/living/simple/npc/bullshark = 3.5,
-		/mob/living/simple/npc/clown/blob = 1,
-		/mob/living/simple/npc/clown/hulk = 1,
-		/mob/living/simple/npc/clown/long = 1,
-		/mob/living/simple/npc/clown/lube = 1,
-		/mob/living/simple/npc/clown/mutant = 1,
-		/mob/living/simple/npc/clown/pie = 1,
-		/mob/living/simple/npc/clown/tree =1,
-		/mob/living/simple/npc/bot/medibot/rogue = 7,
-		/mob/living/simple/npc/antag = 3.5
+		/mob/living/simple/npc/dick_kickem = 1,
+		/mob/living/simple/npc/glockroach = 6,
+		/mob/living/simple/npc/bullshark = 4,
+		/mob/living/simple/npc/bot/medibot/rogue = 6,
+		/mob/living/simple/npc/antag = 8,
+		/mob/living/simple/npc/screech = 4
 	)
 
 	occurances_max = 5
@@ -43,6 +37,7 @@
 	var/area/chosen_area = pick(valid_areas)
 	var/list/valid_turfs = list()
 	for(var/turf/simulated/floor/T in chosen_area.contents)
+		if(T.is_occupied()) continue
 		valid_turfs += T
 
 	if(!length(valid_turfs))

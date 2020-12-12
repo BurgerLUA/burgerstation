@@ -14,7 +14,7 @@
 		/obj/item/storage/kit/brute/filled = 2,
 		/obj/item/storage/kit/burn/filled = 2,
 		/obj/item/storage/kit/toxin/filled = 2,
-		/obj/item/storage/kit/advanced = 1
+		/obj/item/storage/kit/advanced/filled = 1
 	)
 	loot_count = 1
 

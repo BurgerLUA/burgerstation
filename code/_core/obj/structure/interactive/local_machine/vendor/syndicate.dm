@@ -160,6 +160,6 @@
 		/obj/item/magazine/saiga_23/buckshot,
 		/obj/item/magazine/saiga_23/slug,
 
-		/obj/item/weapon/melee/sword/allium,
-		/obj/item/weapon/melee/shield
+		/obj/item/weapon/melee/sword/rev_bayonet,
+		/obj/item/weapon/melee/shield/ballistic
 	)

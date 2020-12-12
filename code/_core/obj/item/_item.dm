@@ -2,6 +2,8 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_LAYER
+
 	var/value_burgerbux
 
 	var/last_marker //The last person to name this item. Used for moderation purposes.
@@ -70,7 +72,8 @@
 
 	var/crafting_id = null
 
-	var/drop_sound = 'sound/items/drop/accessory.ogg'
+	var/inventory_sound = 'sound/items/drop/food.ogg' //Sound when moved to an inventory.
+	var/drop_sound = 'sound/items/drop/accessory.ogg' //Sound when moved elsewhere
 
 	var/list/inventory_sounds = list(
 		'sound/effects/inventory/rustle1.ogg',
@@ -130,7 +133,7 @@
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
 
-	var/consume_size = BITE_SIZE
+	var/consume_size = 10
 
 	var/can_hold = TRUE
 	var/can_wear = FALSE
@@ -232,7 +235,7 @@
 	last_interacted = null
 
 	if(loc)
-		drop_item()
+		drop_item(silent=TRUE)
 
 	return ..()
 
@@ -266,7 +269,7 @@
 
 	return null
 
-/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //We add the object to this item's inventory.
+/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE
@@ -276,7 +279,7 @@
 	if(object != src)
 		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,FALSE,bypass)
 		if(found_inventory)
-			found_inventory.add_object(object,enable_messages,bypass)
+			found_inventory.add_object(object,enable_messages,bypass,silent=silent)
 			added = TRUE
 
 	if(enable_messages && caller)
@@ -418,6 +421,8 @@
 	if(new_location)
 		update_lighting_for_owner(new_location)
 		last_interacted = new_location.owner
+		pixel_x = initial(pixel_x)
+		pixel_y = initial(pixel_y)
 
 	return TRUE
 
@@ -429,10 +434,10 @@
 	update_lighting_for_owner()
 	return .
 
-/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 
 	if(additional_clothing_parent)
-		drop_item(additional_clothing_parent)
+		drop_item(additional_clothing_parent) //This retracts the clothing.
 
 	if(light)
 		light.update(src)
@@ -444,9 +449,6 @@
 			new/obj/effect/temp/item_pickup(NL,2,OL,src,isturf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
-
-	if(drop_sound && isturf(loc) && !qdeleting)
-		play(drop_sound,get_turf(src))
 
 	return TRUE
 

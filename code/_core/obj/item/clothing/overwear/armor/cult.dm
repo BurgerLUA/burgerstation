@@ -25,6 +25,10 @@
 
 	value = 200
 
+	additional_clothing = list(
+		/obj/item/clothing/head/hat/cult
+	)
+
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
 	desc = "Listen to your eldritch, son."
@@ -47,8 +51,11 @@
 
 	size = SIZE_3
 
-
 	value = 300
+
+	additional_clothing = list(
+		/obj/item/clothing/head/hat/cult/old
+	)
 
 /obj/item/clothing/overwear/armor/cult/hard
 	name = "hardened cult robes"
@@ -75,4 +82,6 @@
 
 	value = 500
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/cult)
+	additional_clothing = list(
+		/obj/item/clothing/head/helmet/hardsuit/cult
+	)

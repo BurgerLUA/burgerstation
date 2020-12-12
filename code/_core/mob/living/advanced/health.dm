@@ -1,6 +1,6 @@
 /mob/living/advanced/proc/add_species_health_elements()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	for(var/v in S.spawning_health)
 		var/obj/hud/button/B = v
@@ -9,7 +9,7 @@
 
 /mob/living/advanced/should_bleed()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 	if(S.flags_species_traits & TRAIT_NO_BLOOD)
 		return FALSE
 

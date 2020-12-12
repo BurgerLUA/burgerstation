@@ -13,64 +13,23 @@
 
 	collision_flags = FLAG_COLLISION_UNSIMULATED
 
+/turf/unsimulated/wall
+	name = "WALL ERROR"
 
-/turf/unsimulated/bluespace
-	name = "bluespace"
-	icon_state = "bluespace"
-
-/turf/unsimulated/bluespace/Entered(atom/movable/Obj, atom/OldLoc)
-
-	if(!istype(Obj,/mob/abstract/))
-		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
-		if(is_safe_to_delete(Obj))
-			qdel(Obj)
-		else if(length(rift_markers))
-			Obj.force_move(get_turf(pick(rift_markers)))
-			Obj.visible_message(span("danger","\The [Obj.name] appears out of nowhere!"))
-		return TRUE
-
-	return ..()
-
-/turf/unsimulated/space
-	name = "space"
-	icon = 'icons/turf/space/space.dmi'
-	icon_state = "1"
-	opacity = 0
-	var/generate = TRUE
-	plane = PLANE_SPACE
-
-/turf/unsimulated/space/is_space()
-	return TRUE
-
-/turf/unsimulated/space/Entered(atom/movable/Obj, atom/OldLoc)
-
-	if(ismob(Obj) && !istype(Obj,/mob/abstract/))
-		var/mob/M = Obj
-		if(M.initialized)
-			var/obj/marker/failsafe/FS = locate() in world
-			if(FS)
-				M.force_move(FS.loc)
-			else
-				M.force_move(pick(cryo_spawnpoints).loc)
-
-	return ..()
-
-/turf/unsimulated/space/New(var/desired_loc)
-	icon_state = "space"
-	return ..()
-
-/turf/unsimulated/space/blocking
-	name = "deep space"
-	icon = 'icons/turf/space/space.dmi'
-	icon_state = "space"
-	opacity = 1
-	generate = FALSE
+/turf/unsimulated/floor
+	name = "FLOOR ERROR"
 
 /turf/unsimulated/abyss
 	name = "abyss"
 	icon = 'icons/turf/space/abyss.dmi'
 	icon_state = "abyss"
 	opacity = 1
+	density = TRUE
+
+	desired_light_frequency = 2
+	desired_light_power = 1
+	desired_light_range = 8
+	desired_light_color = "#FFFFFF"
 
 /turf/unsimulated/void
 	name = "abyss"
@@ -81,6 +40,17 @@
 
 /turf/unsimulated/generation
 	icon = 'icons/turf/generation.dmi'
+	var/is_different = FALSE
+
+/turf/unsimulated/generation/proc/pre_generate()
+
+	for(var/k in list(NORTH,EAST,SOUTH,WEST))
+		var/turf/T = get_step(src,k)
+		if(T && !istype(T,src))
+			is_different = TRUE
+			break
+
+	return TRUE
 
 /turf/unsimulated/generation/proc/generate(var/size = WORLD_SIZE)
 	return TRUE
@@ -88,6 +58,21 @@
 /turf/unsimulated/generation/lava
 	name = "lava generation"
 	icon_state = "lava"
+
+/turf/unsimulated/generation/lava/proc/spawn_mob()
+
+	switch(rand(1,4))
+		if(1)
+			new /obj/marker/generation/mob/watcher(src)
+		if(2)
+			if(prob(10))
+				new /obj/marker/generation/mob/goliath_ancient(src)
+			else
+				new /obj/marker/generation/mob/goliath(src)
+		if(3)
+			new /obj/marker/generation/mob/legion(src)
+		if(4)
+			new /obj/marker/generation/mob/ash_walker(src)
 
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
@@ -116,6 +101,8 @@
 		if(-INFINITY to 0.1)
 			new /turf/simulated/hazard/lava(src)
 		if(0.1 to 0.2)
+			if(prob(1))
+				spawn_mob()
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
@@ -124,9 +111,9 @@
 			if(prob(1))
 				new /obj/marker/generation/basalt(src)
 		if(0.4 to 0.6)
-			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
-				new /obj/marker/generation/mob/watcher(src)
+				spawn_mob()
+			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.6 to 0.8)
@@ -137,11 +124,6 @@
 			new /turf/simulated/wall/rock/basalt(src)
 
 	return ..()
-
-
-
-
-
 
 /turf/unsimulated/generation/snow
 	name = "snow generation"
@@ -179,8 +161,6 @@
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(4))
 				new /obj/marker/generation/snow_grass(src)
-			if(prob(0.5))
-				new /mob/living/simple/npc/snow_legion(src)
 		if(0.4 to 0.41)
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.41 to 0.43)
@@ -304,64 +284,6 @@
 
 	return ..()
 
-
-/turf/unsimulated/generation/jungle/lz_420/generate(var/size = WORLD_SIZE)
-
-	var/noise = 0
-
-	var/instances = 2
-
-	for(var/i=1,i<=instances,i++)
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[2] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances) + (rand(-1,1) * 0.001)
-
-	switch(noise)
-		if(-INFINITY to 0.2)
-			new /turf/simulated/wall/rock/moss(src)
-		if(0.2 to 0.22)
-			new /turf/simulated/floor/cave_dirt(src)
-		if(0.22 to 0.23)
-			new /turf/simulated/floor/colored/dirt/jungle(src)
-		if(0.23 to 0.48)
-			new /turf/simulated/floor/grass/jungle(src)
-			if(prob(10))
-				new /obj/marker/generation/jungle_high_grass(src)
-			if(prob(3))
-				new /obj/marker/generation/jungle_tree_small(src)
-			if(prob(2))
-				new /obj/marker/generation/jungle_tree(src)
-		if(0.48 to 0.5)
-			new /turf/simulated/floor/colored/sand/oasis(src)
-		if(0.5 to 0.6)
-			new /turf/simulated/hazard/water(src)
-		if(0.6 to 0.62)
-			new /turf/simulated/floor/colored/sand/oasis(src)
-		if(0.62 to 0.8)
-			new /turf/simulated/floor/grass/jungle(src)
-			if(prob(10))
-				new /obj/marker/generation/jungle_high_grass(src)
-			if(prob(3))
-				new /obj/marker/generation/jungle_tree_small(src)
-			if(prob(2))
-				new /obj/marker/generation/jungle_tree(src)
-		if(0.8 to INFINITY)
-			new /turf/simulated/wall/rock/moss(src)
-
-	return ..()
-
 /turf/unsimulated/generation/cave
 	name = "lava generation"
 	icon_state = "caves"
@@ -393,15 +315,73 @@
 			if(prob(1))
 				new /obj/marker/generation/rock_wall/small(src)
 			if(prob(1))
-				new /mob/living/simple/npc/bat(src)
-			if(prob(1))
-				new /mob/living/simple/npc/passive/mouse/brown(src)
+				new /mob/living/simple/npc/spider(src)
 		if(0.5 to 1)
 			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(0.5))
 				new /obj/marker/generation/mob/black_bear(src)
 		if(1 to INFINITY)
 			new /turf/simulated/wall/rock(src)
+
+	return ..()
+
+
+/turf/unsimulated/generation/snow_cave //ICEBOX ONLY
+	name = "snow cave generation"
+	icon_state = "caves"
+
+/turf/unsimulated/generation/snow_cave/generate(var/size = WORLD_SIZE)
+
+
+	var/noise = 0
+	var/instances = 2
+
+	for(var/i=1,i<=instances,i++) //Use sin/cosine?
+
+		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
+		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+
+		var/seed_resolution = WORLD_SIZE * 0.5
+		var/x_seed = used_x / seed_resolution
+		if(x_seed > 1)
+			x_seed = 1 - (x_seed - 1)
+		var/y_seed = used_y / seed_resolution
+		if(y_seed > 1)
+			y_seed = 1 - (y_seed - 1)
+		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[2] + i]","[x_seed]","[y_seed]"))
+		noise += found
+
+	noise = (noise/instances)
+
+	switch(noise)
+		if(-INFINITY to 0.2)
+			new /turf/simulated/floor/colored/snow(src)
+			if(prob(1)) new /obj/marker/generation/snow_grass(src)
+			if(prob(1)) new /obj/marker/generation/snow_tree(src)
+		if(0.2 to 0.3)
+			new /turf/simulated/wall/rock/snow(src)
+			if(prob(1)) new /obj/marker/generation/snow_wall(src)
+		if(0.3 to 0.5)
+			if(is_different)
+				new /obj/marker/generation/snow_wall(src)
+			else
+				new /turf/simulated/wall/rock(src)
+				new /area/box/interior/caves(src)
+				if(prob(1)) new /obj/marker/generation/rock_wall(src)
+		if(0.5 to 0.8)
+			new /turf/simulated/floor/cave_dirt(src)
+			new /area/box/interior/caves(src)
+			if(prob(1)) new /obj/marker/generation/rock_wall(src)
+		if(0.8 to 0.9)
+			if(is_different)
+				new /obj/marker/generation/snow_wall(src)
+			else
+				new /turf/simulated/wall/rock(src)
+				new /area/box/interior/caves(src)
+				if(prob(1)) new /obj/marker/generation/rock_wall(src)
+		if(0.9 to INFINITY)
+			new /turf/simulated/wall/rock/snow(src)
+			if(prob(1)) new /obj/marker/generation/snow_wall(src)
 
 	return ..()
 

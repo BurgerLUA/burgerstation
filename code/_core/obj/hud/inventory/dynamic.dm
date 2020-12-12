@@ -15,14 +15,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
 
-	var/list/add_sounds = list(
-		'sound/effects/inventory/rustle1.ogg',
-		'sound/effects/inventory/rustle2.ogg',
-		'sound/effects/inventory/rustle3.ogg',
-		'sound/effects/inventory/rustle4.ogg',
-		'sound/effects/inventory/rustle5.ogg'
-	)
-
 	should_add_worn = FALSE
 	should_add_held = FALSE
 
@@ -38,20 +30,7 @@
 
 	return ..()
 
-/obj/hud/inventory/dynamic/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0)
-
-	. = ..()
-
-	if(. && owner && !qdeleting)
-		play(pick(add_sounds),src)
-
-	return .
-
-
 /obj/hud/inventory/dynamic/sandwich //Special logic for buns
-	add_sounds = null
-
-
 
 /obj/hud/inventory/dynamic/sandwich/can_hold_object(var/obj/item/I,var/messages = FALSE)
 

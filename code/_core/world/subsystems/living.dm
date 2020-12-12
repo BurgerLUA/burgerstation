@@ -15,9 +15,6 @@ SUBSYSTEM_DEF(living)
 
 /subsystem/living/Initialize()
 
-	if(!ENABLE_MOB)
-		return ..()
-
 	for(var/k in all_living)
 		var/mob/living/L = k
 		if(istype(L.loc,/turf/simulated/wall))

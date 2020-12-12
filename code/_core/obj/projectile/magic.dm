@@ -146,3 +146,22 @@
 	icon_state = "blackflame"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+
+/obj/projectile/magic/cultist
+	name = "cultist hand"
+	icon_state = "cultist"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+
+/obj/projectile/magic/cultist/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+
+	. = ..()
+
+	var/obj/effect/temp/hazard/curse/found_curse = locate() in new_loc
+
+	if(!found_curse)
+		new /obj/effect/temp/hazard/curse(new_loc,SECONDS_TO_DECISECONDS(10),owner)
+
+	return .

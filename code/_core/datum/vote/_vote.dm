@@ -55,8 +55,6 @@
 
 /vote/proc/set_vote(var/ckey,var/number)
 	votes[ckey] = number
-	if(QUICK_VOTE)
-		time_to_end = 1
 	return TRUE
 
 /vote/proc/unset_vote(var/ckey)

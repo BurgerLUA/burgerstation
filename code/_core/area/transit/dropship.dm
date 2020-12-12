@@ -2,7 +2,7 @@
 	name = "dropship shuttle"
 
 /area/transit/dropship/alpha/bluespace
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -14,7 +14,7 @@
 
 
 /area/transit/dropship/bravo/bluespace
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -26,7 +26,7 @@
 
 
 /area/transit/dropship/charlie/bluespace
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -38,7 +38,7 @@
 
 
 /area/transit/dropship/delta/bluespace
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -50,7 +50,7 @@
 
 
 /area/transit/dropship/golf/bluespace
-	transit_turf = /turf/unsimulated/bluespace
+	transit_turf = /turf/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 

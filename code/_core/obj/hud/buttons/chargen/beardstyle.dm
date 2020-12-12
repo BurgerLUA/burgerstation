@@ -1,6 +1,6 @@
 mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_color,var/update_blends = TRUE) //This needs to be called when the buttons are made visible.
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(hair_num == -1)
 		if(labeled_organs[BODY_HAIR_FACE])
@@ -82,7 +82,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
-		var/species/S = all_species[A.species]
+		var/species/S = SPECIES(A.species)
 		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_face))
 		A.handle_beardstyle_chargen(hair_num)
 
@@ -123,7 +123,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		return ..()
 
 	var/mob/living/advanced/A = owner
-	var/species/S = all_species[A.species]
+	var/species/S = SPECIES(A.species)
 
 	if(hair_num >= 1 && hair_num <= length(S.all_hair_face))
 		var/hair_icon = S.all_hair_face[hair_num]

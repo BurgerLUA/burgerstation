@@ -16,7 +16,7 @@
 	liquid = -0.25
 
 	heated_reagent = /reagent/carbon
-	heated_reagent_temp = 300
+	heated_reagent_temp = 450
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
@@ -41,6 +41,8 @@
 		. *= 0.5
 		if(nutrition_amount)
 			L.add_nutrition(nutrition_amount*.)
+			if(nutrition_quality_amount < 0)
+				L.add_nutrition_fast(-nutrition_quality_amount*.)
 		if(hydration_amount)
 			L.add_hydration(hydration_amount*.)
 		if(nutrition_quality_amount)
@@ -56,6 +58,8 @@
 	var/mob/living/L = owner
 	if(nutrition_amount)
 		L.add_nutrition(nutrition_amount*.)
+		if(nutrition_quality_amount < 0)
+			L.add_nutrition_fast(-nutrition_quality_amount*.)
 		if(L.blood_volume < L.blood_volume_max)
 			L.blood_volume = clamp(L.blood_volume + nutrition_amount*.*0.3,0,L.blood_volume_max)
 			L.queue_health_update = TRUE
@@ -64,7 +68,11 @@
 
 	if(heal_factor && owner && owner.health)
 		var/amount_to_heal = heal_factor*.
-
+		if(amount_to_heal < 0 && is_advanced(L))
+			var/mob/living/advanced/A = L
+			var/species/S = SPECIES(A.species)
+			if(S.flags_flavor_love & FLAG_FLAVOR_RAW)
+				amount_to_heal = -amount_to_heal*0.5
 		if(amount_to_heal > 0)
 			owner.health.adjust_loss_smart(brute=-amount_to_heal,burn=-amount_to_heal,tox=-amount_to_heal,robotic=FALSE)
 		else if(amount_to_heal < 0)

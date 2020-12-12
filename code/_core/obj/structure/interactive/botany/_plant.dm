@@ -1,5 +1,3 @@
-var/global/list/obj/structure/interactive/plant/all_plants = list()
-
 /obj/structure/interactive/plant
 	name = "plant"
 	desc = "A plant grows here."
@@ -25,7 +23,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	mouse_opacity = 2
 
 /obj/structure/interactive/plant/New(var/desired_loc)
-	all_plants += src
+	SSbotany.all_plants += src
 	return ..()
 
 /obj/structure/interactive/plant/Finalize()
@@ -34,7 +32,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	return .
 
 /obj/structure/interactive/plant/Destroy()
-	all_plants -= src
+	SSbotany.all_plants -= src
 	return ..()
 
 /obj/structure/interactive/plant/proc/on_life()
@@ -47,7 +45,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 /obj/structure/interactive/plant/update_icon()
 
-	var/plant_type/associated_plant = all_plant_types[plant_type]
+	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
 
 	name = "[associated_plant.name]"
 
@@ -69,7 +67,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 		caller.to_chat(span("notice","\The [src.name] is not ready to be harvested!"))
 		return TRUE
 
-	var/plant_type/associated_plant = all_plant_types[plant_type]
+	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
 
 	var/turf/caller_turf = get_turf(caller)
 
@@ -110,6 +108,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			P.potency = potency
 			P.yield = yield
 			P.growth_speed = growth_speed
+			P.plant_type = plant_type
 			INITIALIZE(P)
 			GENERATE(P)
 			FINALIZE(P)

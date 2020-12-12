@@ -10,8 +10,6 @@
 
 	var/flags_area = FLAG_AREA_NONE
 
-	var/flags_comms = FLAG_COMM_NONE
-
 	var/sound_environment = ENVIRONMENT_GENERIC
 
 	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.

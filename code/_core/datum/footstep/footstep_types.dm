@@ -111,6 +111,12 @@
 		'sound/effects/footsteps/gravel5.ogg'
 	)
 
+/footstep/resin
+	footstep_sounds = list(
+		'sound/effects/footsteps/resin1.ogg',
+		'sound/effects/footsteps/resin2.ogg'
+	)
+
 /footstep/sand
 	footstep_sounds = list(
 		'sound/effects/footsteps/sand1.ogg',

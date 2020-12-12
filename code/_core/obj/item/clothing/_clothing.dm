@@ -115,7 +115,10 @@
 
 	..()
 
-/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()
 	remove_additonal_clothing()
 	return .
+
+/obj/item/clothing/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	return original_footsteps

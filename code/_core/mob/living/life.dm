@@ -218,6 +218,7 @@
 	var/quality_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
 
 	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*quality_mod)
+	add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*quality_mod)
 	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
 
 	if(client)
@@ -250,7 +251,7 @@ mob/living/proc/on_life_slow()
 		return FALSE
 
 	if(blood_volume < blood_volume_max)
-		var/blood_volume_to_add = -(add_hydration(-0.1) + add_nutrition(-1))*0.3
+		var/blood_volume_to_add = -(add_hydration(-0.05) + add_nutrition(-0.3))*0.5
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)
@@ -400,7 +401,6 @@ mob/living/proc/on_life_slow()
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust
-			add_nutrition(-health_adjust*0.2)
 			if(health_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
 
@@ -408,8 +408,6 @@ mob/living/proc/on_life_slow()
 		stamina_adjust += min(max(0,health.get_stamina_loss() - stamina_regen_buffer),health.stamina_regeneration*delay_mod*nutrition_hydration_mod*0.1)
 		if(stamina_adjust)
 			stamina_regen_buffer += stamina_adjust
-			add_nutrition(-stamina_adjust*0.05)
-			add_hydration(-stamina_adjust*0.1)
 			if(stamina_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust*10)
 

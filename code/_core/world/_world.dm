@@ -18,7 +18,7 @@ var/global/world_state = STATE_STARTING
 
 	cache_lifespan = 5
 
-	turf = /turf/unsimulated/space
+	turf = /turf/space
 	area = /area/
 
 	maxx = WORLD_SIZE
@@ -60,7 +60,8 @@ var/global/world_state = STATE_STARTING
 
 	for(var/k in all_runtimes)
 		var/mob/living/simple/npc/cat/runtime/R = k
-		if(!R || R.qdeleting)
+		if(R.qdeleting)
+			all_runtimes -= k
 			continue
 		R.reproduce()
 

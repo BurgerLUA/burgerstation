@@ -19,21 +19,20 @@ SUBSYSTEM_DEF(dmm_suite)
 	dmm_suite.read_map(bluespace_map,1,1,2)
 	log_subsystem(name,"Loaded bluespace map.")
 
-	if(LOAD_GROUND_MAP)
-		var/voted_map = "Island"
-		if(fexists(NEXT_MAP_FILE))
-			var/found_map = trim(file2text(NEXT_MAP_FILE))
-			log_debug("Found map: [found_map]...")
-			if(found_map && maps[found_map])
-				voted_map = found_map
-			else
-				log_debug("Invalid map: [found_map]! Defaulting to [voted_map]...")
+	var/voted_map = "Island"
+	if(rustg_file_exists(NEXT_MAP_FILE))
+		var/found_map = trim(file2text(NEXT_MAP_FILE))
+		log_debug("Found map: [found_map]...")
+		if(found_map && maps[found_map])
+			voted_map = found_map
+		else
+			log_debug("Invalid map: [found_map]! Defaulting to [voted_map]...")
 
-		log_debug("Found file: [maps[voted_map]]...")
-		var/ground_map = file2text(maps[voted_map])
-		dmm_suite.read_map(ground_map,1,1,3)
-		log_subsystem(name,"Loaded ground map.")
-		map_name = voted_map
+	log_debug("Found file: [maps[voted_map]]...")
+	var/ground_map = file2text(maps[voted_map])
+	dmm_suite.read_map(ground_map,1,1,3)
+	log_subsystem(name,"Loaded ground map.")
+	map_name = voted_map
 
 	return ..()
 

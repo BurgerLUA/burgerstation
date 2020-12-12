@@ -22,6 +22,21 @@
 	weight = 6
 	size = SIZE_4
 
+/obj/item/weapon/melee/shield/ballistic
+	name = "ballistic shield"
+	desc = "Not just a slice off a plasteel wall, we swear!"
+	desc_extended = "A huge shield fit to protect you from huge bullets. The sheer size makes it impossible to carry it anywhere but your back when you aren't using it."
+
+	icon = 'icons/obj/item/weapons/melee/ballistic_shield.dmi'
+
+	block_defense_rating = list(
+		BLADE = 50,
+		BLUNT = 125,
+		PIERCE = 125,
+		ARCANE = -100
+	)
+	weight = 25
+	size = SIZE_7
 
 /obj/item/weapon/melee/shield/glass
 	name = "glass shield"

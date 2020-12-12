@@ -1,3 +1,6 @@
+var/global/next_announcement = 0
+
+
 /obj/item/announcement/
 	name = "broadcast announcement device"
 	desc = "One day while..."
@@ -16,6 +19,7 @@
 
 	weight = 3
 
+	var/stored_message
 
 /obj/item/announcement/proc/can_use(var/mob/caller)
 	return TRUE
@@ -28,7 +32,13 @@
 	if(!can_use(caller))
 		return FALSE
 
-	var/message = input("What should the message be?", "Message") as message | null
+	if(next_announcement > world.time)
+		caller.to_chat(span("warning","Please wait [SECONDS_TO_DECISECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		return FALSE
+
+	var/message = input("What should the message be?", "Message", stored_message) as message | null
+
+	stored_message = message
 
 	if(!message)
 		caller.to_chat(span("notice","You decide not to use the device."))
@@ -56,7 +66,15 @@
 	if(print_owner)
 		message = "[message]<br> -[caller.name]"
 
+	if(next_announcement > world.time)
+		caller.to_chat(span("warning","Please wait [SECONDS_TO_DECISECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		return FALSE
+
 	announce(sender,title,message,ANNOUNCEMENT_STATION,sound_to_play)
+
+	next_announcement = world.time + SECONDS_TO_DECISECONDS(60)
+
+	stored_message = null
 
 	qdel(src)
 

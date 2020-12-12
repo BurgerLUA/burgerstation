@@ -1,3 +1,8 @@
+#define ENABLE_XP TRUE
+#define ENABLE_XP_SAVING TRUE
+#define LEVEL_CAP 100 //This is the highest possible OVERALL level someone can get.
+
+
 #define ATTRIBUTE_STAT 0x1
 #define ATTRIBUTE_DAMAGE 0x2
 #define ATTRIBUTE_RESISTANCE 0x4
@@ -18,30 +23,29 @@
 
 #define ATTRIBUTE_LUCK "luck"
 
-#define ATTRIBUTE_LEVEL_S 90
-#define ATTRIBUTE_LEVEL_A 75
-#define ATTRIBUTE_LEVEL_B 60
-#define ATTRIBUTE_LEVEL_C 45
-#define ATTRIBUTE_LEVEL_D 30
-#define ATTRIBUTE_LEVEL_E 15
-#define ATTRIBUTE_LEVEL_F 0
 
-#define SKILL_LEVEL_S 90
-#define SKILL_LEVEL_A 75
-#define SKILL_LEVEL_B 60
-#define SKILL_LEVEL_C 45
-#define SKILL_LEVEL_D 30
-#define SKILL_LEVEL_E 15
-#define SKILL_LEVEL_F 0
+#define SKILL_DEFAULT 5
 
+//STRENGTH
+#define SKILL_UNARMED "unarmed" //Completed
+#define SKILL_MELEE "melee" //Completed
+#define SKILL_PRAYER "prayer" //Completed
+//#define SKILL_BLOCK "block" //Completed
 
-#define ATTRIBUTE_STARTING_PRIMARY 25
-#define ATTRIBUTE_STARTING_SECONDARY 15
-#define ATTRIBUTE_STARTING_TERTIARY 10
-#define ATTRIBUTE_STARTING_NONE 5
+//DEXTERITY
+#define SKILL_RANGED "ranged" //Completed
+#define SKILL_PRECISION "precision"
+#define SKILL_SURVIVAL "survival" //Completed
+//#define SKILL_DODGE "dodge" //Completed
 
-#define SKILL_STARTING_PRIMARY 25
-#define SKILL_STARTING_SECONDARY 15
-#define SKILL_STARTING_TERTIARY 10
-#define SKILL_STARTING_NONE 5
+//INTELLIGENCE
+#define SKILL_MAGIC "magic" //Completed
+#define SKILL_SORCERY "sorcery" //Completed
+#define SKILL_MEDICINE "medicine"
+//#define SKILL_PARRY "parry" //Completed
 
+//CRAFTING
+#define SKILL_CRAFTING "crafting"
+#define SKILL_ALCHEMY "alchemy"
+#define SKILL_COOKING "cooking"
+#define SKILL_ENCHANTING "enchanting"

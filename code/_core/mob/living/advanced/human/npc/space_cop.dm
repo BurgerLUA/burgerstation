@@ -1,6 +1,6 @@
 /mob/living/advanced/npc/space_cop
 	name = "space cop"
-	desc = "Punishing warcrime since 2068."
+	desc = "Investigating warcrimes since 2068."
 
 	ai = /ai/advanced/space_cop
 	class = /class/syndicate_soldier
@@ -12,7 +12,7 @@
 
 	. = ..()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	sex = pick(MALE,FEMALE)
 	gender = sex

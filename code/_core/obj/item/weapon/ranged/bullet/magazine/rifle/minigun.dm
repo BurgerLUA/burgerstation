@@ -29,9 +29,7 @@
 	bullet_diameter_max = 5
 
 	size = SIZE_5
-	weight = 120
-
-	value = 4000
+	weight = 60
 
 	ai_heat_sensitivity = 0
 

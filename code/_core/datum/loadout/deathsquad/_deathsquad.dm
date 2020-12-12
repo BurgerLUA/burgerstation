@@ -60,9 +60,17 @@
 		/obj/item/clothing/hands/gloves/colored/combat/left,
 		/obj/item/clothing/overwear/armor/nanotrasen/heavy/deathsquad,
 		/obj/item/clothing/head/helmet/full/nanotrasen/heavy/deathsquad,
-		/obj/item/weapon/ranged/energy/rifle/xray/deathsquad/,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pulse,
+		/obj/item/storage/pouch/double/black,
+		/obj/item/storage/pouch/double/black,
+		/obj/item/magazine/pulse_rifle,
+		/obj/item/magazine/pulse_rifle,
+		/obj/item/magazine/pulse_rifle,
+		/obj/item/magazine/pulse_rifle,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,
 		/obj/item/magazine/pistol_50,
 		/obj/item/magazine/pistol_50,
+		/obj/item/magazine/pistol_50,
 		/obj/item/magazine/pistol_50
+
 	)

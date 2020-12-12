@@ -59,35 +59,4 @@
 
 	attack_logs = list()
 
-	CALLBACK("beef_create_\ref[src]",SECONDS_TO_DECISECONDS(rand(BEEF_TIME_SECONDS,BEEF_TIME_SECONDS*1.2)),src,.proc/create_beef)
-
 	return ..()
-
-
-/mob/living/advanced/player/revive()
-	. = ..()
-	if(.)
-		CALLBACK_REMOVE("beef_create_\ref[src]")
-	return .
-
-/mob/living/advanced/player/proc/create_beef()
-
-	if(qdeleting)
-		return FALSE
-
-	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
-		return FALSE
-
-	for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE))
-		if(!P.dead)
-			return FALSE
-
-	for(var/i=1,i<=rand(1,3),i++)
-		var/mob/living/advanced/npc/beefman/B = new(src.loc)
-		INITIALIZE(B)
-		GENERATE(B)
-		FINALIZE(B)
-		step_rand(B)
-
-	return TRUE

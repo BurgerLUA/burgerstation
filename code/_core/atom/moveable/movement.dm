@@ -1,5 +1,5 @@
 /atom/movable/proc/get_movement_delay()
-	return movement_delay * MOVEMENT_DELAY_MOD
+	return movement_delay
 
 /atom/movable/proc/can_enter(var/turf/T)
 

@@ -6,12 +6,13 @@
 	ai = /ai/advanced/nanotrasen
 	class = /class/syndicate_soldier
 	dialogue_id = /dialogue/npc/soldier/
+	var/loadout_to_use = /loadout/nanotrasen/soldier
 
 /mob/living/advanced/npc/nanotrasen/Initialize()
 
 	. = ..()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	sex = pick(MALE,FEMALE)
 	gender = sex
@@ -28,6 +29,13 @@
 
 	update_all_blends()
 
-	equip_loadout(/loadout/nanotrasen/soldier)
+	equip_loadout(loadout_to_use)
 
 	return .
+
+
+/mob/living/advanced/npc/nanotrasen/shaft_miner
+	name = "shaft miner"
+	desc = "Someone didn't do their job."
+	dialogue_id = null
+	loadout_to_use = /loadout/shaft_miner

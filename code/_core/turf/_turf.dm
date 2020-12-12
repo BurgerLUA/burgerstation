@@ -92,7 +92,7 @@
 
 	return src
 
-/turf/proc/do_footstep(var/atom/movable/source,var/enter=FALSE)
+/turf/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
 
 	if(!source.has_footsteps)
 		return FALSE
@@ -108,34 +108,24 @@
 	if(src.loc && (!old_loc || src.loc != old_loc.loc))
 		src.loc.Entered(enterer)
 
-	do_footstep(enterer,TRUE)
+	. = ..()
 
-	..()
+	if(!enterer.qdeleting && is_living(enterer))
+		do_footstep(enterer,TRUE)
+
+	return .
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
 		src.loc.Exited(exiter)
 
-	do_footstep(exiter,FALSE)
+	. = ..()
 
-	..()
+	if(!exiter.qdeleting && is_living(exiter))
+		do_footstep(exiter,FALSE)
 
-	if(is_living(exiter) && !exiter.qdeleting)
-		var/mob/living/L = exiter
-		L.old_turf = src
-		if(!old_living)
-			old_living = list()
-		old_living += L
-
-/atom/Exited(var/atom/exiter,var/atom/new_loc)
-
-	if(is_living(exiter))
-		var/mob/living/L = exiter
-		if(L.old_turf && L.old_turf.old_living)
-			L.old_turf.old_living -= L
-
-	..()
+	return .
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return health && !ispath(health)
@@ -180,3 +170,25 @@
 
 /turf/should_smooth_with(var/turf/T)
 	return (T.corner_category == corner_category) && (T.plane == plane)
+
+/turf/proc/is_occupied(var/plane_min=-INFINITY,var/plane_max=INFINITY,var/check_under_tile=FALSE)
+
+	for(var/atom/movable/A in src.contents)
+		if(A.plane < plane_min || A.plane > plane_max)
+			continue
+		if(istype(A,/obj/effect/temp/construction/))
+			return A
+		if(is_living(A))
+			return A
+		if(isobj(A))
+			var/obj/O = A
+			if(check_under_tile && O.under_tile)
+				return O
+			if(is_structure(O))
+				return O
+
+	return null
+
+/turf/proc/can_construct_on(var/mob/caller)
+	caller.to_chat(span("warning","You cannot deploy on this turf!"))
+	return FALSE

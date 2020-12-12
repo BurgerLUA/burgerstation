@@ -1,4 +1,3 @@
-
 #define CHARGEN_NONE 0x0
 #define CHARGEN_SKIN 0x1
 #define CHARGEN_DETAIL 0x2

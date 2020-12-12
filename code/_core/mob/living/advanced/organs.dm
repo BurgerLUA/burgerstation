@@ -27,7 +27,7 @@
 
 /mob/living/advanced/proc/add_species_organs()
 
-	var/species/S = all_species[species]
+	var/species/S = SPECIES(species)
 
 	if(!S)
 		log_error("WARNING: INVALID SPECIES: [species].")

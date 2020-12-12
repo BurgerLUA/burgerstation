@@ -59,7 +59,7 @@
 		verbs += /client/verb/jump_to_player
 		verbs += /client/verb/jump_to_area
 		verbs += /client/verb/adjust_nightvision
-
+		verbs += /client/verb/bring_player
 
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)
 		verbs += /client/verb/speed_up_setup
@@ -77,5 +77,7 @@
 		verbs += /client/verb/force_round_end
 		verbs += /client/verb/force_vote
 		verbs += /client/verb/rejuvenate_player
+		verbs += /client/verb/add_language
+		verbs += /client/verb/remove_language
 
 	return TRUE

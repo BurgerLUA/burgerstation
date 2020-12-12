@@ -19,7 +19,7 @@
 
 	if(trash)
 		var/obj/item/trash/T = create_trash(caller)
-		if(I) I.add_object(T)
+		if(I) I.add_object(T,silent=TRUE)
 		trash = null
 
 	return TRUE

@@ -107,11 +107,15 @@
 
 	var/obj/item/magazine/M = get_magazine()
 
-	if(M && length(M.stored_bullets) && M.stored_bullets[1] && !chambered_bullet)
-		var/obj/item/bullet_cartridge/B = M.stored_bullets[1]
+	if(!M) return FALSE
+
+	var/bullet_length = length(M.stored_bullets)
+
+	if(bullet_length && !chambered_bullet)
+		var/obj/item/bullet_cartridge/B = M.stored_bullets[bullet_length]
 		if(can_load_chamber(null,B))
 			M.stored_bullets -= B
-			B.drop_item(src)
+			B.drop_item(src,silent=TRUE)
 			chambered_bullet = B
 			return TRUE
 
@@ -154,7 +158,7 @@
 			play('sound/effects/gun_empty_sound.ogg',caller, pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength)
 
 	return .
-	
+
 /obj/item/weapon/ranged/bullet/magazine/get_examine_list(var/mob/caller)
 
 	. = ..()

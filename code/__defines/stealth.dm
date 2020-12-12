@@ -1,0 +1,2 @@
+#define STEALTH_MAX_ALPHA 10
+#define STEALTH_MIN_ALPHA 1

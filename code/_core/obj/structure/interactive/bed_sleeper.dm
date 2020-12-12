@@ -26,6 +26,8 @@ obj/structure/interactive/bed/sleeper
 
 	interaction_flags = FLAG_INTERACTION_LIVING
 
+	density = TRUE
+
 obj/structure/interactive/bed/sleeper/Initialize()
 	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
 	check_collisions()

@@ -20,6 +20,8 @@
 
 	var/spawn_on_markers = TRUE
 
+	var/atom/list/priority_targets  = list()
+
 /gamemode/horde/update_objectives()
 
 	. = ..()
@@ -42,7 +44,6 @@
 	HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
 	return L
 
-
 /gamemode/horde/New()
 
 	state = GAMEMODE_WAITING
@@ -56,9 +57,14 @@
 			create_horde_mob(T)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
-		if(O.z < Z_LEVEL_MISSION)
+		if(O.z != Z_LEVEL_MISSION)
 			continue
 		horde_targets += O
+
+	for(var/obj/structure/interactive/supermatter/S in world)
+		if(S.z != Z_LEVEL_MISSION)
+			continue
+		priority_targets += S
 
 	return ..()
 
@@ -254,7 +260,10 @@
 		CHECK_TICK(50,FPS_SERVER*5)
 		var/mob/living/L = create_horde_mob(T)
 		L.ai.set_path(found_path)
+		for(var/k in priority_targets)
+			L.ai.obstacles[k] = TRUE
 		tracked_enemies += L
+		points -= 0.1
 
 /gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
 
@@ -288,9 +297,19 @@
 	while(picks_remaining > 0)
 		picks_remaining--
 		CHECK_TICK(50,FPS_SERVER*10)
-		var/turf/chosen_target = get_turf(pick(horde_targets))
-		if(chosen_target.z < Z_LEVEL_MISSION)
-			continue
+		var/turf/chosen_target
+
+		if(length(priority_targets))
+			chosen_target = get_turf(pick(priority_targets))
+			if(chosen_target.z != Z_LEVEL_MISSION)
+				continue
+		else if(length(horde_targets))
+			chosen_target = get_turf(pick(horde_targets))
+			if(chosen_target.z != Z_LEVEL_MISSION)
+				continue
+		else
+			return null
+
 		var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
 		if(!N_end)
 			continue

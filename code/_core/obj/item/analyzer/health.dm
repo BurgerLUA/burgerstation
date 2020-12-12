@@ -36,7 +36,8 @@
 			var/mob/living/L = target
 			if(is_advanced(target))
 				var/mob/living/advanced/A = target
-				species = all_species[A.species].name
+				var/species/S = SPECIES(A.species)
+				species = S.name
 			else
 				species = initial(L.name)
 			if(L.blood_type)

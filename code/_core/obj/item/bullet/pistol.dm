@@ -161,16 +161,6 @@
 	size = 0.01
 	value = 0.4
 
-/obj/item/bullet_cartridge/pistol_4mm/ap
-	name = "\improper AP 4.6x30mm smg cartridge"
-	desc_extended = "For smgs that require 4.6x30mm ammo. This one has a steel tip."
-	rarity = RARITY_UNCOMMON
-	icon = 'icons/obj/item/bullet/46mm_ap.dmi'
-
-	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ap
-
-	value = 0.8
-
 /obj/item/bullet_cartridge/pistol_4mm/caseless
 	name = "\improper 4.6x30mm caseless smg cartridge"
 	caseless = TRUE

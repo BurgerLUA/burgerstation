@@ -33,8 +33,8 @@
 
 	. = ..()
 
-	if(!owner_as_queen.dead && owner_as_queen.health && owner_as_queen.health.health_current <= owner_as_queen.health.health_max*0.5 && owner_as_queen.next_screech <= world.time)
+	if(!owner_as_queen.dead && owner_as_queen.health && owner_as_queen.health.health_current <= owner_as_queen.health.health_max*0.75 && owner_as_queen.next_screech <= world.time)
 		owner_as_queen.screech()
-		owner_as_queen.next_screech = world.time = SECONDS_TO_DECISECONDS(120)
+		owner_as_queen.next_screech = world.time + SECONDS_TO_DECISECONDS(60)
 
 	return .

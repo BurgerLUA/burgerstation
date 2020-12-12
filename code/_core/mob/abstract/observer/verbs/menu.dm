@@ -73,7 +73,7 @@
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
 			var/obj/marker/dev/D = locate() in world
-			if(D && ENABLE_INSTALOAD) //Setup like this so the iff initializes properly.
+			if(D)
 				P.force_move(get_turf(D))
 				P.start_chargen()
 				P.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
@@ -99,7 +99,7 @@
 
 	var/client/C = src.client
 
-	if(!C.globals.loaded_data)
+	if(!C.globals || !C.globals.loaded_data)
 		src.to_chat(span("warning","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
 		return FALSE
 

@@ -3,7 +3,6 @@
 	desc = "CARGO WE NEED DIAMONDS"
 	desc_extended = "A protective suit of armor worn by miners to protect from the megafauna. Also comes with a hood and gas mask that can be brought up by shift-clicking the suit."
 	icon = 'icons/obj/item/clothing/suit/explorer_suit.dmi'
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_UNCOMMON
 
@@ -26,8 +25,5 @@
 	)
 
 	size = SIZE_6
-
-
-	blocks_clothing = SLOT_TORSO_U
 
 	value = 100

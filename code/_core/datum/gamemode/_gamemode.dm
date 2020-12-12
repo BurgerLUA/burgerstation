@@ -41,6 +41,12 @@
 
 /gamemode/New()
 	state = GAMEMODE_WAITING
+	if(SSevents) //Go through all the events and remove them if needed. I know this is shitcode and I need to combine SSgamemode with SSevent so events initialize after the gamemode is picked.
+		for(var/k in SSevents.all_events)
+			var/event/E = SSevents.all_events[k]
+			if(E.gamemode_blacklist[src.type])
+				SSevents.all_events -= E.type
+				qdel(E)
 	return TRUE
 
 /gamemode/proc/handle_alert_level()

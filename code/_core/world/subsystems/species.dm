@@ -1,9 +1,9 @@
-var/global/list/all_species = list()
 
 SUBSYSTEM_DEF(species)
 	name = "Chargen Subsystem"
 	desc = "Basically allows the chargen system not to be dumb."
 	priority = SS_ORDER_PRELOAD
+	var/list/all_species = list() //Assoc list.
 
 /subsystem/species/Initialize()
 
