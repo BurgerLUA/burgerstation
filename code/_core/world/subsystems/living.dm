@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(living)
 
 	use_time_dialation = FALSE
 
+	var/list/stored_addictions = list()
+
 /subsystem/living/Initialize()
 
 	for(var/k in all_living)
@@ -25,6 +27,10 @@ SUBSYSTEM_DEF(living)
 		FINALIZE(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
+
+	for(var/k in subtypesof(/addiction/))
+		var/addiction/A = new k
+		stored_addictions[k] = A
 
 	return ..()
 

@@ -65,6 +65,9 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	iff_tag = "Ash Drake"
+	loyalty_tag = "Ash Drake"
+
 
 /*
 /mob/living/simple/npc/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
