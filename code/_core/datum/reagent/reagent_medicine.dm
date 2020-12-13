@@ -92,6 +92,86 @@
 
 	return .
 
+/reagent/medicine/libital
+	name = "Libital"
+	desc = "Yellow... for brute?"
+	color = "#ECEC8D"
+	alpha = 200
+
+	flavor = "fat"
+
+	metabolism_blood = 0.25
+	metabolism_stomach = 0.125
+	experience_per_unit = 3.5
+
+	value = 1.25
+
+	liquid = 0.5
+
+/reagent/medicine/libital/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 8*.
+		L.tox_regen_buffer -= 0.4*.
+
+	return .
+
+/reagent/medicine/libital/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 6*.
+		L.tox_regen_buffer -= 0.2*.
+
+
+	return .
+
+
+/reagent/medicine/helbital
+	name = "Helbital"
+	desc = "A wonder medicine that is more effective when the user is critically damaged at the cost of toxins. Metabolizes fast."
+	color = "#9400D3"
+	alpha = 200
+
+	flavor = "fat"
+
+	metabolism_blood = 1
+	metabolism_stomach = 0.5
+	experience_per_unit = 4.5
+
+	value = 1.75
+
+	liquid = 0.5
+
+/reagent/medicine/helbital/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		if(L.health)
+			L.brute_regen_buffer += 10*.*(1 - L.health.health_current/L.health.health_max)
+			L.tox_regen_buffer -= 0.1*.
+
+	return .
+
+/reagent/medicine/helbital/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		if(L.health)
+			L.brute_regen_buffer += 8*.*(1 - L.health.health_current/L.health.health_max)
+			L.tox_regen_buffer -= 0.1*.
+
+	return .
+
 /reagent/medicine/kelotane
 	name = "Kelotane"
 	desc = "Yellow for burn."

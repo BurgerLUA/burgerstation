@@ -104,3 +104,75 @@
 	results = list(
 		/reagent/space_cleaner = 2
 	)
+
+
+/reagent_recipe/chemistry/acetone
+
+	name = "Acetone"
+
+	required_reagents = list(
+		/reagent/fuel/oil = 1,
+		/reagent/fuel/welding = 1,
+		/reagent/oxygen = 1
+	)
+
+	results = list(
+		/reagent/fuel/acetone = 3
+	)
+
+
+/reagent_recipe/chemistry/diethylamine
+
+	name = "Diethylamine"
+
+	required_reagents = list(
+		/reagent/ammonia = 1,
+		/reagent/nutrition/ethanol = 1
+	)
+
+	results = list(
+		/reagent/fuel/diethylamine  = 2
+	)
+
+/reagent_recipe/chemistry/phenol
+
+	name = "Phenol"
+
+	required_reagents = list(
+		/reagent/fuel/oil = 1,
+		/reagent/chlorine = 1,
+		/reagent/nutrition/water = 1
+	)
+
+	results = list(
+		/reagent/phenol  = 3
+	)
+
+/reagent_recipe/chemistry/saltpetre
+
+	name = "Saltpetre"
+
+	required_reagents = list(
+		/reagent/oxygen = 3,
+		/reagent/potassium = 1,
+		/reagent/nitrogen = 1
+	)
+
+	results = list(
+		/reagent/saltpetre  = 3
+	)
+
+
+/reagent_recipe/chemistry/lye
+
+	name = "Lye"
+
+	required_reagents = list(
+		/reagent/sodium = 1,
+		/reagent/fuel/hydrogen = 1,
+		/reagent/oxygen = 1
+	)
+
+	results = list(
+		/reagent/lye  = 3
+	)

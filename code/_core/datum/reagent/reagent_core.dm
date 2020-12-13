@@ -256,3 +256,48 @@
 			cleaning_power -= 10
 
 	return .
+
+
+/reagent/phenol
+	name = "Phenol"
+	desc = "A corrosive flammable solid used as a component in most recipes. Works as a good disinfectant."
+	color = "#FFFFFF"
+	alpha = 200
+
+	flavor = "acid"
+	flavor_strength = 5
+
+	liquid = -0.5
+
+/reagent/saltpetre
+	name = "Saltpere"
+	desc = ""
+	color = "#FFFFFF"
+	alpha = 200
+
+	flavor = "acid"
+	flavor_strength = 5
+
+	liquid = -0.5
+
+/reagent/lye
+	name = "Lye"
+	desc = ""
+	color = "#FFFFFF"
+	alpha = 200
+
+	flavor = "acid"
+	flavor_strength = 5
+
+	liquid = -0.5
+
+/reagent/sodium
+	name = "Sodium"
+	desc = ""
+	color = "#FFFFFF"
+	alpha = 200
+
+	flavor = "acid"
+	flavor_strength = 5
+
+	liquid = -0.5
