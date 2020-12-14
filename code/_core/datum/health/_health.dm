@@ -16,8 +16,8 @@
 
 	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
 
-	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
-	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0) //How much to subtract damage
+	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0)
+	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0) //How much to subtract damage
 	var/list/wound/wounds = list()
 
 	var/list/armor_base = list(  //Base armor for the mob.
@@ -33,7 +33,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		PAIN = 0
 	)
 
 	var/organic = FALSE
@@ -77,11 +78,11 @@
 	return health_max - get_total_loss(includes_fatigue)
 
 /health/proc/restore()
-	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN = 0, RAD = 0)
 	update_health(update_hud = TRUE)
 	return TRUE
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -115,6 +116,18 @@
 		damage[OXY] += oxy
 		total_loss += oxy
 
+	if(pain)
+		pain -= (pain > 0 ? resistance[PAIN] : 0)
+		pain -= min(0,damage[PAIN] + pain)
+		damage[PAIN] += pain
+		total_loss += pain
+
+	if(rad)
+		rad -= (rad > 0 ? resistance[RAD] : 0)
+		rad -= min(0,damage[RAD] + rad)
+		damage[RAD] += rad
+		total_loss += rad
+
 	if(update && total_loss)
 		update_health()
 
@@ -126,10 +139,12 @@
 	damage[FATIGUE] += value
 	return value
 
-/health/proc/get_total_loss(var/include_fatigue = TRUE)
+/health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE)
 	var/returning_value = 0
 	for(var/damage_type in damage)
 		if(!include_fatigue && damage_type == FATIGUE)
+			continue
+		if(!include_pain && damage_type == PAIN)
 			continue
 		returning_value += damage[damage_type]
 
@@ -150,6 +165,12 @@
 
 /health/proc/get_fatigue_loss()
 	return damage[FATIGUE]
+
+/health/proc/get_pain_loss()
+	return damage[PAIN]
+
+/health/proc/get_rad_loss()
+	return damage[RAD]
 
 /health/proc/get_loss(var/damage_type)
 	return damage[damage_type]

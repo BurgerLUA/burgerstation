@@ -22,8 +22,9 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 		RAD = INFINITY,
 		HOLY = 75,
 		DARK = 100,
-		FATIGUE = 50,
-		ION = INFINITY
+		FATIGUE = 100,
+		ION = INFINITY,
+		PAIN = 100
 	)
 
 	status_immune = list(

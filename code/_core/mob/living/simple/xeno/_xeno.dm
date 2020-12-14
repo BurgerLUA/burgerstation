@@ -37,7 +37,8 @@
 		HOLY = 50,
 		DARK = 100,
 		FATIGUE = 75,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 100
 	)
 
 	movement_delay = DECISECONDS_TO_TICKS(AI_TICK*0.5)

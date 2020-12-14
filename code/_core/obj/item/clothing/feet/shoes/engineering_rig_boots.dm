@@ -23,7 +23,8 @@
 		BOMB = 25,
 		BIO = 25,
 		RAD = 75,
-		FATIGUE = 50
+		FATIGUE = 50,
+		PAIN = 25
 	)
 
 	size = SIZE_2

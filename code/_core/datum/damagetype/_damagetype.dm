@@ -51,10 +51,11 @@
 		COLD = BURN,
 		BOMB = BRUTE,
 		BIO = TOX,
-		RAD = TOX,
+		RAD = RAD,
 		HOLY = BURN,
 		DARK = BRUTE,
 		FATIGUE = FATIGUE,
+		PAIN = PAIN,
 		ION = BURN
 	)
 
@@ -331,7 +332,7 @@
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
-	var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0)
+	var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0,PAIN=0,RAD=0)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
 

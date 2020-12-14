@@ -27,7 +27,8 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	health_base = 200
@@ -80,7 +81,8 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	armored = TRUE
@@ -110,7 +112,8 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 /mob/living/simple/bear/black
@@ -133,7 +136,8 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 /mob/living/simple/bear/space
@@ -156,5 +160,6 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)

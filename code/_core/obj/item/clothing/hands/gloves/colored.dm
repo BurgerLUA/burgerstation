@@ -95,7 +95,8 @@
 		HEAT = 25,
 		COLD = 25,
 		BIO = 10,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		PAIN = 50
 	)
 
 	protection_cold = list(

@@ -72,7 +72,8 @@ var/global/list/stored_mechs_by_ckey = list()
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -100
+		ION = -100,
+		PAIN = INFINITY
 	)
 
 	class = /class/gygax/

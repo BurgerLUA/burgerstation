@@ -28,7 +28,8 @@
 		HOLY = 50,
 		DARK = 50,
 		FATIGUE = 25,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	iff_tag = "Jungle"

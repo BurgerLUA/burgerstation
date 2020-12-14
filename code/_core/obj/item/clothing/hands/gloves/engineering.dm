@@ -23,7 +23,8 @@
 		BOMB = 25,
 		BIO = 50,
 		RAD = 75,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		PAIN = 50
 	)
 
 	protection_cold = list(

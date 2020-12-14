@@ -5,6 +5,8 @@
 #define TOX "toxin"
 #define OXY "oxy"
 #define FATIGUE "fatigue"
+#define PAIN "pain"
+#define RAD "radiation"
 
 #define HEALTH "health"
 #define MANA "mana"

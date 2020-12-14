@@ -35,7 +35,8 @@
 		HOLY = 50,
 		DARK = 75,
 		FATIGUE = 25,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 25
 	)
 
 	mob_size = MOB_SIZE_LARGE
@@ -67,7 +68,8 @@
 		HOLY = 75,
 		DARK = 50,
 		FATIGUE = 25,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 25
 	)
 
 /mob/living/simple/spider/desert/Initialize()
@@ -95,6 +97,7 @@
 		HOLY = 25,
 		DARK = 100,
 		FATIGUE = 25,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 25
 	)
 

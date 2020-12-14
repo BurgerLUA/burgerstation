@@ -117,7 +117,8 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		PAIN = 0
 	)
 
 	var/list/status_immune = list() //What status effects area they immune to?

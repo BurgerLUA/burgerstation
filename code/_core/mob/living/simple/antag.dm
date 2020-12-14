@@ -45,7 +45,8 @@ var/global/list/valid_antag_colors = list(
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	attack_range = 3

@@ -39,7 +39,8 @@
 		HOLY = 75,
 		DARK = 75,
 		FATIGUE = 50,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 50
 	)
 
 	mob_size = MOB_SIZE_LARGE

@@ -80,7 +80,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 
@@ -106,7 +107,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 	class = /class/gygax/
@@ -173,7 +175,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 	class = /class/durand

@@ -20,7 +20,8 @@
 		RAD = 100,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 100
+		FATIGUE = 100,
+		PAIN = 100
 	)
 
 	size = SIZE_7

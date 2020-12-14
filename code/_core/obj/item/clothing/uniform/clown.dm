@@ -13,7 +13,8 @@
 		COLD = 15,
 		HOLY = -75,
 		DARK = 75,
-		FATIGUE = 25
+		FATIGUE = 25,
+		PAIN = 25
 	)
 
 	value = 200

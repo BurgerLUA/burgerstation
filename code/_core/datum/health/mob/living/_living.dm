@@ -15,7 +15,8 @@
 		BLUNT = armor_bonus,
 		PIERCE = armor_bonus,
 		ARCANE = -armor_bonus,
-		COLD = armor_bonus,
+		COLD = armor_bonus*2,
+		PAIN = armor_bonus*2,
 		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100,1)
 	)
 

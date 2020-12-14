@@ -39,7 +39,8 @@
 		HOLY = -25,
 		DARK = 75,
 		FATIGUE = 75,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = INFINITY
 	)
 
 	status_immune = list(

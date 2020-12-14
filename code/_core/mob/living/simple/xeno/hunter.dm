@@ -22,7 +22,8 @@
 		HOLY = 75,
 		DARK = 100,
 		FATIGUE = 75,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 100
 	)
 
 	can_leap = TRUE
@@ -49,7 +50,8 @@
 		HOLY = 75,
 		DARK = 100,
 		FATIGUE = 75,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 100
 	)
 
 	can_leap = TRUE
@@ -78,7 +80,8 @@
 		HOLY = 75,
 		DARK = 100,
 		FATIGUE = 75,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 100
 	)
 
 	can_spit = TRUE

@@ -33,7 +33,8 @@
 		HOLY = -50,
 		DARK = 200,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	level_multiplier = 1
@@ -78,7 +79,8 @@
 		HOLY = -100,
 		DARK = 200,
 		FATIGUE = INFINITY,
-		ION = 0
+		ION = 0,
+		PAIN = INFINITY
 	)
 
 	level_multiplier = 5
@@ -142,7 +144,8 @@
 		HOLY = -100,
 		DARK = 200,
 		FATIGUE = INFINITY,
-		ION = 0
+		ION = 0,
+		PAIN = INFINITY
 	)
 
 	level_multiplier = 1
@@ -174,7 +177,8 @@
 		HOLY = -100,
 		DARK = 200,
 		FATIGUE = INFINITY,
-		ION = 0
+		ION = 0,
+		PAIN = INFINITY
 	)
 
 	level_multiplier = 10
@@ -206,7 +210,8 @@
 		HOLY = -100,
 		DARK = 200,
 		FATIGUE = INFINITY,
-		ION = 0
+		ION = 0,
+		PAIN = INFINITY
 	)
 
 	level_multiplier = 3

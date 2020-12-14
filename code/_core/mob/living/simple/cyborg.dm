@@ -53,7 +53,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 	iff_tag = "Syndicate"
@@ -108,7 +109,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = 0
+		ION = 0,
+		PAIN = INFINITY
 	)
 
 	iff_tag = "Syndicate"

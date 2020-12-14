@@ -15,8 +15,7 @@
 		ARCANE = 25,
 		HEAT = -25,
 		BOMB = -25,
-		FATIGUE = 50,
-		ION = 0
+		FATIGUE = 50
 	)
 
 	value = 200

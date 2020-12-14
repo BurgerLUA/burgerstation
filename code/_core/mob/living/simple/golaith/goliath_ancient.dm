@@ -27,7 +27,8 @@
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = INFINITY,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = INFINITY
 	)
 
 	mob_size = MOB_SIZE_GIANT

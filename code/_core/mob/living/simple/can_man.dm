@@ -35,7 +35,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = 0
+		ION = 0,
+		PAIN = INFINITY
 	)
 
 	fatigue_from_block_mul = 0

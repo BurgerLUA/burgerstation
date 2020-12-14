@@ -19,7 +19,8 @@
 		ARCANE = -25,
 		HEAT = -20,
 		COLD = 25,
-		FATIGUE = 100
+		FATIGUE = 100,
+		PAIN = 50
 	)
 
 	size = SIZE_2

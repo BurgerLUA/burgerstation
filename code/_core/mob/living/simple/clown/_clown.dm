@@ -25,7 +25,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 
@@ -51,7 +52,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	pixel_x = -16
@@ -74,7 +76,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 /mob/living/simple/clown/tree
@@ -99,7 +102,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	pixel_x = -16
@@ -128,7 +132,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 /mob/living/simple/clown/pie
@@ -152,7 +157,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 /mob/living/simple/clown/lube
@@ -177,7 +183,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	status_immune = list(
@@ -220,7 +227,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 */
 
@@ -249,7 +257,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 */
 
@@ -279,7 +288,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 */
 
@@ -310,7 +320,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 */
 
@@ -339,7 +350,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 */
 
@@ -368,7 +380,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 */
 
@@ -395,7 +408,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	pixel_x = -16
@@ -422,7 +436,8 @@
 		HOLY = -100,
 		DARK = 100,
 		FATIGUE = 0,
-		ION = INFINITY
+		ION = INFINITY,
+		PAIN = 0
 	)
 
 	pixel_x = -16
@@ -451,7 +466,8 @@
 		RAD = 0,
 		HOLY = -100,
 		DARK = 100,
-		FATIGUE = 0,
+		FATIGUE = 0,,
+		PAIN = 0
 		ION = INFINITY
 	)
 */
