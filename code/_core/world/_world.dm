@@ -59,7 +59,7 @@ var/global/world_state = STATE_STARTING
 	log_error("[e.name] in [e.file]:[e.line].\n[e.desc]")
 
 	for(var/k in all_runtimes)
-		var/mob/living/simple/npc/cat/runtime/R = k
+		var/mob/living/simple/cat/runtime/R = k
 		if(R.qdeleting)
 			all_runtimes -= k
 			continue

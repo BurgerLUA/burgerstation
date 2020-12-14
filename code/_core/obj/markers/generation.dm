@@ -359,49 +359,49 @@
 
 
 /obj/marker/generation/mob/arachnid
-	object_to_place = /mob/living/simple/npc/arachnid
+	object_to_place = /mob/living/simple/arachnid
 	objects_max = 1
 
 /obj/marker/generation/mob/venus_human_trap
-	object_to_place = /mob/living/simple/npc/venus_human_trap
+	object_to_place = /mob/living/simple/venus_human_trap
 	objects_max = 1
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 
 /obj/marker/generation/mob/watcher
-	object_to_place = /mob/living/simple/npc/watcher
+	object_to_place = /mob/living/simple/watcher
 	objects_max = 1
 
 /obj/marker/generation/mob/goliath
-	object_to_place = /mob/living/simple/npc/goliath
+	object_to_place = /mob/living/simple/goliath
 	objects_max = 1
 
 /obj/marker/generation/mob/goliath_ancient
-	object_to_place = /mob/living/simple/npc/goliath/ancient
+	object_to_place = /mob/living/simple/goliath/ancient
 	objects_max = 1
 
 /obj/marker/generation/mob/black_bear
-	object_to_place = /mob/living/simple/npc/bear/black
+	object_to_place = /mob/living/simple/bear/black
 	objects_max = 1
 
 /obj/marker/generation/mob/snow_bear
-	object_to_place = /mob/living/simple/npc/bear/snow
+	object_to_place = /mob/living/simple/bear/snow
 	objects_max = 1
 
 /obj/marker/generation/mob/chicken
-	object_to_place = /mob/living/simple/npc/passive/chicken
+	object_to_place = /mob/living/simple/passive/chicken
 	objects_max = 3
 
 /obj/marker/generation/mob/cow
-	object_to_place = /mob/living/simple/npc/passive/cow
+	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
 
 /obj/marker/generation/mob/cave_spider
-	object_to_place = /mob/living/simple/npc/spider
+	object_to_place = /mob/living/simple/spider
 	objects_max = 3
 
 /obj/marker/generation/mob/legion
-	object_to_place = /mob/living/simple/npc/legionare
+	object_to_place = /mob/living/simple/legionare
 	objects_max = 2
 
 /obj/marker/generation/mob/ash_walker

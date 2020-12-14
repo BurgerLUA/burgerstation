@@ -32,7 +32,7 @@
 /obj/structure/interactive/blob/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(is_living(victim))
-		if(istype(victim,/mob/living/simple/npc/blobbernaught))
+		if(istype(victim,/mob/living/simple/blobbernaught))
 			return FALSE
 		var/mob/living/L = victim
 		if(L.dead)
@@ -82,7 +82,7 @@
 	return .
 
 /obj/structure/interactive/blob/Cross(atom/movable/O)
-	if(istype(O,/mob/living/simple/npc/blobbernaught))
+	if(istype(O,/mob/living/simple/blobbernaught))
 		return TRUE
 	return ..()
 

@@ -67,7 +67,7 @@
 
 
 /ai/turret/deployable
-	var/mob/living/simple/npc/turret/deployable/owner_as_turret
+	var/mob/living/simple/turret/deployable/owner_as_turret
 
 /ai/turret/deployable/New(var/mob/living/desired_owner)
 	. = ..()

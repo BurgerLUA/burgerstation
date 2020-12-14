@@ -6,7 +6,7 @@
 
 	health_states = 1
 
-	var/mob/living/simple/npc/blobbernaught/linked_blobbernaught
+	var/mob/living/simple/blobbernaught/linked_blobbernaught
 
 	var/next_jug = 0
 

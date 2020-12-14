@@ -10,10 +10,10 @@
 
 	. = ..()
 
-	if(!istype(owner,/mob/living/simple/npc/xeno/))
+	if(!istype(owner,/mob/living/simple/xeno/))
 		return .
 
-	var/mob/living/simple/npc/xeno/X = owner
+	var/mob/living/simple/xeno/X = owner
 
 	if(!. && objective_attack)
 		if(X.can_leap && world.time >= next_leap && get_dist(objective_attack,owner) >= 3)

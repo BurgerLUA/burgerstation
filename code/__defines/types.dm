@@ -58,12 +58,12 @@
 
 #define is_scroll(A) istype(A, /obj/item/weapon/ranged/magic/scroll)
 
-#define is_npc(A) (istype(A, /mob/living/advanced/npc) || istype(A, /mob/living/simple/npc))
+#define is_npc(A) (istype(A, /mob/living/advanced/npc) || istype(A, /mob/living/simple))
 
 #define is_staff(A) istype(A, /obj/item/weapon/ranged/magic/staff)
 
 /*
-#define is_summon(A) istype(A, /mob/living/simple/npc/summon)
+#define is_summon(A) istype(A, /mob/living/simple/summon)
 */
 
 #define is_soulgem(A) istype(A, /obj/item/soulgem)
@@ -86,7 +86,7 @@
 
 #define is_pocket(A) istype(A, /obj/hud/inventory/organs/groin/pocket)
 
-#define is_slime(A) istype(A, /mob/living/simple/npc/slime)
+#define is_slime(A) istype(A, /mob/living/simple/slime)
 
 #define is_unique(A) istype(A, /mob/living/advanced/npc/unique)
 

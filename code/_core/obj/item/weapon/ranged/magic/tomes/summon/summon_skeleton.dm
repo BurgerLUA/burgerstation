@@ -18,7 +18,7 @@
 
 	cost_mana = 75
 
-	object_to_summon = /mob/living/simple/npc/bull
+	object_to_summon = /mob/living/simple/bull
 
 	value = 1000
 
@@ -30,7 +30,7 @@
 
 	cost_mana = 150
 
-	object_to_summon = /mob/living/simple/npc/bear/space
+	object_to_summon = /mob/living/simple/bear/space
 
 	value = 3000
 
@@ -42,7 +42,7 @@
 
 	cost_mana = 50
 
-	object_to_summon = /mob/living/simple/npc/crab
+	object_to_summon = /mob/living/simple/crab
 
 	value = 750
 
@@ -54,7 +54,7 @@
 
 	cost_mana = 100
 
-	object_to_summon = /mob/living/simple/npc/goliath
+	object_to_summon = /mob/living/simple/goliath
 
 	value = 2000
 
@@ -66,7 +66,7 @@
 
 	cost_mana = 75
 
-	object_to_summon = /mob/living/simple/npc/spider/twilight
+	object_to_summon = /mob/living/simple/spider/twilight
 
 	value = 1500
 
@@ -78,6 +78,6 @@
 
 	cost_mana = 75
 
-	object_to_summon = /mob/living/simple/npc/watcher
+	object_to_summon = /mob/living/simple/watcher
 
 	value = 2000

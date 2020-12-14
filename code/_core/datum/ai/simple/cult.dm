@@ -9,7 +9,7 @@
 
 	if(objective_attack && length(tracked_mobs) < 4 && owner.health && owner.health.mana_current >= 20)
 		owner.health.adjust_mana(-20)
-		var/mob/living/simple/npc/cult/construct/harvester/H = new(owner.loc)
+		var/mob/living/simple/cult/construct/harvester/H = new(owner.loc)
 		INITIALIZE(H)
 		GENERATE(H)
 		FINALIZE(H)
