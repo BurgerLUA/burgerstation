@@ -201,6 +201,7 @@
 #include "code\_core\datum\_datum.dm"
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\addiction\_addiction.dm"
+#include "code\_core\datum\addiction\addiction_opium.dm"
 #include "code\_core\datum\ai\_ai.dm"
 #include "code\_core\datum\ai\doorman.dm"
 #include "code\_core\datum\ai\ranged.dm"

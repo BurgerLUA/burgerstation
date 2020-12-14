@@ -7,7 +7,7 @@
 	attach_flag = BODY_HEAD
 
 	var/list/addictions = list()
-	var/list/withdrawl = list()
+	var/list/withdrawal = list()
 
 	has_life = TRUE
 
@@ -20,9 +20,7 @@
 			if(addictions[k] <= 0)
 				D.on_remove(A,src)
 				continue
-			D.on_life(A,src,addictions[k],withdrawl[k])
-
-
+			D.on_life(A,src,addictions[k],withdrawal[k])
 
 	return ..()
 

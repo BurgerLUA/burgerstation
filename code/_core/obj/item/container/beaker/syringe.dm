@@ -163,6 +163,13 @@
 	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max)
 	return ..()
 
+/obj/item/container/syringe/opium/
+	name = "syringe (opium)"
+
+/obj/item/container/syringe/opium/Generate()
+	reagents.add_reagent(/reagent/medicine/opium,reagents.volume_max)
+	return ..()
+
 /obj/item/container/syringe/medipen
 	name = "medipen"
 	desc = "For when you want to poke holes in people and overdose them even faster than with the syringe."

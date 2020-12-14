@@ -60,14 +60,14 @@
 		if(addiction_value >= addiction_threshold && A.labeled_organs[BODY_BRAIN])
 			var/obj/item/organ/internal/brain/B = A.labeled_organs[BODY_BRAIN]
 			var/addiction/D = SSliving.stored_addictions[addiction]
-			if(B.addictions[addiction])
-				B.addictions[addiction] = max(B.addictions[addiction],addiction_value)
-				B.withdrawl[addiction] = max(0,B.withdrawl[addiction]-amount_added)
-				D.on_add(A,B,B.addictions[addiction],B.withdrawl[addiction])
-			else
+			if(isnull(B.addictions[addiction]))
 				B.addictions[addiction] = addiction_value
-				B.withdrawl[addiction] = 0
-				D.on_add_initial(A,B,B.addictions[addiction],B.withdrawl[addiction])
+				B.withdrawal[addiction] = 0
+				D.on_add_initial(A,B,B.addictions[addiction],B.withdrawal[addiction])
+			else
+				B.addictions[addiction] = max(B.addictions[addiction],addiction_value)
+				B.withdrawal[addiction] = max(0,B.withdrawal[addiction]-amount_added)
+				D.on_add(A,B,B.addictions[addiction],B.withdrawal[addiction])
 
 	return amount_added
 

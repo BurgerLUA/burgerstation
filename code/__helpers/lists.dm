@@ -344,6 +344,7 @@
 				return TRUE
 
 		return FALSE
+
 	catch()
 		return FALSE
 
