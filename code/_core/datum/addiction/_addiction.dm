@@ -21,9 +21,6 @@
 	B.addictions[src.type] -= CEILING(DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)*(1/60)*(1/60)*15,0.001) //Takes an hour to remove addiction from a 15u dose, naturally.
 	B.withdrawal[src.type] += CEILING(DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)*(1/60)*(1/30)*addiction_value,0.001) //Must take a max dose every 30 mins if addicted.
 
-	A << "Addiction: [B.addictions[src.type]]."
-	A << "Withdrawal: [B.withdrawal[src.type]]."
-
 	return TRUE
 
 /addiction/proc/on_remove(var/mob/living/advanced/A,var/obj/item/organ/internal/brain/B)
