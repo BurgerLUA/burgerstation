@@ -53,7 +53,7 @@
 
 	return .
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -71,7 +71,7 @@
 		oxy = 0
 
 
-	. += ..(brute,burn,tox,oxy)
+	. += ..(brute,burn,tox,oxy,pain,rad)
 
 	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc

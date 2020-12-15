@@ -125,7 +125,7 @@
 
 	return value
 
-/health/mob/living/get_total_loss(var/include_fatigue = TRUE)
+/health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE)
 
 	if(!is_living(owner))
 		return ..()
@@ -135,6 +135,8 @@
 	var/returning_value = 0
 	for(var/damage_type in damage)
 		if(!include_fatigue && damage_type == FATIGUE)
+			continue
+		if(!include_pain && damage_type == PAIN)
 			continue
 		if((damage_type == TOX || damage_type == OXY) && L.has_status_effect(ADRENALINE))
 			continue

@@ -52,11 +52,14 @@
 	var/brute_regen_buffer = 0
 	var/burn_regen_buffer = 0
 	var/tox_regen_buffer = 0
+	var/pain_regen_buffer = 0
+	var/rad_regen_buffer = 0
 
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 	//Oxy not present as that is controlled via an organ.
+	//The rest are not present as you cannot naturally regenerate them.
 
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0

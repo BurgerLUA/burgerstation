@@ -74,8 +74,8 @@
 	stamina_max = owner.stamina_base
 	mana_max = owner.mana_base
 
-/health/proc/get_overall_health(var/includes_fatigue = FALSE)
-	return health_max - get_total_loss(includes_fatigue)
+/health/proc/get_overall_health(var/includes_fatigue = FALSE,var/include_pain=FALSE)
+	return health_max - get_total_loss(includes_fatigue,include_pain)
 
 /health/proc/restore()
 	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN = 0, RAD = 0)
@@ -182,7 +182,7 @@
 	return mana_max - mana_current
 
 /health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
-	health_current = get_overall_health()
+	health_current = get_overall_health(FALSE,FALSE)
 	return TRUE
 
 /health/proc/get_defense(var/atom/attacker,var/atom/hit_object)

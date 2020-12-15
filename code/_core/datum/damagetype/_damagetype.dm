@@ -400,7 +400,7 @@
 			total_damage_dealt += damage_to_deal_main[damage_type]
 	else
 		if(hit_object.health)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
+			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],pain=damage_to_deal_main[PAIN],rad=damage_to_deal_main[RAD],update=FALSE)
 			total_damage_dealt += hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
 		else
 			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")

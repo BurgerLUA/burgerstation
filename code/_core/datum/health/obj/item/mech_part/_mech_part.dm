@@ -20,7 +20,7 @@
 
 	return .
 
-/health/obj/item/mech_part/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
+/health/obj/item/mech_part/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE)
 
 	/*
 	if(tox || oxy)
@@ -32,8 +32,10 @@
 
 	tox = 0
 	oxy = 0
+	pain = 0
+	rad = 0
 
-	. += ..(brute,burn,tox,oxy)
+	. += ..(brute,burn,tox,oxy,pain,rad)
 
 	if(. && update && is_modular_mech(owner.loc))
 		var/mob/living/vehicle/mech/modular/A = owner.loc

@@ -197,7 +197,7 @@ obj/structure/interactive/bed/sleeper/medical/think()
 	if(buckled || is_living(buckled))
 		var/mob/living/L = buckled
 		if(L.health)
-			L.health.adjust_loss_smart(brute=-1,burn=-1,tox=-1,robotic=FALSE)
+			L.health.adjust_loss_smart(brute=-1,burn=-1,tox=-1,pain=-1,rad=-1,robotic=FALSE)
 		if(L.blood_type)
 			L.blood_volume = min(L.blood_volume + 1,L.blood_volume_max)
 	return TRUE

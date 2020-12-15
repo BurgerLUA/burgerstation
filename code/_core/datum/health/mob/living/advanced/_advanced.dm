@@ -1,4 +1,4 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	var/total_damage = 0
 
@@ -26,6 +26,18 @@
 			oxy -= min(0,damage[OXY] + oxy)
 			damage[OXY] += oxy
 			total_damage += oxy
+
+		if(pain)
+			pain -= (pain > 0 ? resistance[PAIN] : 0)
+			pain -= min(0,damage[PAIN] + pain)
+			damage[PAIN] += pain
+			total_damage += pain
+
+		if(rad)
+			rad -= (rad > 0 ? resistance[RAD] : 0)
+			rad -= min(0,damage[RAD] + rad)
+			damage[RAD] += rad
+			total_damage += rad
 
 	if(brute < 0 || burn < 0) //Heal damage
 		var/list/desired_heal_amounts = list(
@@ -64,7 +76,9 @@
 				BRUTE = 0,
 				BURN = 0,
 				TOX = 0,
-				OXY = 0
+				OXY = 0,
+				RAD = 0,
+				PAIN = 0
 			)
 			for(var/damage_type in damaged_organs[organ_id])
 				var/damage_amount_of_type = damaged_organs[organ_id][damage_type]
@@ -75,7 +89,7 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[TOX] || heal_list[OXY])
-				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],update=FALSE)
+				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],rad=-heal_list[RAD],pain=-heal_list[PAIN],update=FALSE)
 
 	if(total_damage && update)
 		A.queue_health_update = TRUE
@@ -140,6 +154,8 @@
 			continue
 		damage[BRUTE] += O.health.damage[BRUTE]
 		damage[BURN] += O.health.damage[BURN]
+		damage[RAD] += O.health.damage[RAD]
+		damage[PAIN] += O.health.damage[PAIN]
 
 	. = ..()
 
