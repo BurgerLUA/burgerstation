@@ -1,4 +1,4 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	var/total_damage = 0
 
@@ -15,29 +15,11 @@
 				total_damage = O.health.adjust_loss_smart(brute=brute > 0 ? brute : 0,burn=burn > 0 ? burn : 0)
 
 	if((src.organic && organic) || (!src.organic && robotic))
-		if(tox)
-			tox -= (tox > 0 ? resistance[TOX] : 0)
-			tox -= min(0,damage[TOX] + tox)
-			damage[TOX] += tox
-			total_damage += tox
-
-		if(oxy)
-			oxy -= (oxy > 0 ? resistance[OXY] : 0)
-			oxy -= min(0,damage[OXY] + oxy)
-			damage[OXY] += oxy
-			total_damage += oxy
-
-		if(pain)
-			pain -= (pain > 0 ? resistance[PAIN] : 0)
-			pain -= min(0,damage[PAIN] + pain)
-			damage[PAIN] += pain
-			total_damage += pain
-
-		if(rad)
-			rad -= (rad > 0 ? resistance[RAD] : 0)
-			rad -= min(0,damage[RAD] + rad)
-			damage[RAD] += rad
-			total_damage += rad
+		if(tox) . += adjust_loss(TOX,tox)
+		if(oxy) . += adjust_loss(OXY,oxy)
+		if(pain) . += adjust_loss(PAIN,pain)
+		if(rad) . += adjust_loss(RAD,rad)
+		if(fatigue) . += adjust_loss(FATIGUE,fatigue)
 
 	if(brute < 0 || burn < 0) //Heal damage
 		var/list/desired_heal_amounts = list(
@@ -77,6 +59,7 @@
 				BURN = 0,
 				TOX = 0,
 				OXY = 0,
+				FATIGUE = 0,
 				RAD = 0,
 				PAIN = 0
 			)
@@ -89,7 +72,7 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[TOX] || heal_list[OXY])
-				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],rad=-heal_list[RAD],pain=-heal_list[PAIN],update=FALSE)
+				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],fatigue=-heal_list[FATIGUE],pain=-heal_list[PAIN],rad=-heal_list[RAD],update=FALSE)
 
 	if(total_damage && update)
 		A.queue_health_update = TRUE
@@ -130,7 +113,7 @@
 	else
 		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*9)
 
-	if(A.has_status_effects(FATIGUE,SLEEP,REST))
+	if(A.has_status_effects(STAMCRIT,SLEEP,REST))
 		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*29)
 	else
 		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*19)
@@ -148,6 +131,9 @@
 	var/mob/living/advanced/A = owner
 	damage[BRUTE] = 0
 	damage[BURN] = 0
+	damage[RAD] = 0
+	damage[PAIN] = 0
+
 	for(var/k in A.organs)
 		var/obj/item/organ/O = k
 		if(!O.health)

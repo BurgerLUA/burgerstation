@@ -31,7 +31,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 		STUN = TRUE,
 		SLEEP = TRUE,
 		PARALYZE = TRUE,
-		FATIGUE = TRUE,
+		STAMCRIT = TRUE,
 		STAGGER = TRUE,
 		CONFUSED = TRUE,
 		CRIT = TRUE,

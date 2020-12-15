@@ -82,7 +82,7 @@
 	update_health(update_hud = TRUE)
 	return TRUE
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -90,53 +90,25 @@
 	if(!src.organic && !robotic)
 		return 0
 
-	var/total_loss = 0
+	. = 0
 
-	if(brute)
-		brute -= (brute > 0 ? resistance[BRUTE] : 0)
-		brute -= min(0,damage[BRUTE] + brute)
-		damage[BRUTE] += brute
-		total_loss += brute
+	if(brute) . += adjust_loss(BRUTE,brute)
+	if(burn) . += adjust_loss(BURN,burn)
+	if(tox) . += adjust_loss(TOX,tox)
+	if(oxy) . += adjust_loss(OXY,oxy)
+	if(pain) . += adjust_loss(PAIN,pain)
+	if(rad) . += adjust_loss(RAD,rad)
+	if(fatigue) . += adjust_loss(FATIGUE,fatigue)
 
-	if(burn)
-		burn -= (burn > 0 ? resistance[BURN] : 0)
-		burn -= min(0,damage[BURN] + burn)
-		damage[BURN] += burn
-		total_loss += burn
-
-	if(tox)
-		tox -= (tox > 0 ? resistance[TOX] : 0)
-		tox -= min(0,damage[TOX] + tox)
-		damage[TOX] += tox
-		total_loss += tox
-
-	if(oxy)
-		oxy -= (oxy > 0 ? resistance[OXY] : 0)
-		oxy -= min(0,damage[OXY] + oxy)
-		damage[OXY] += oxy
-		total_loss += oxy
-
-	if(pain)
-		pain -= (pain > 0 ? resistance[PAIN] : 0)
-		pain -= min(0,damage[PAIN] + pain)
-		damage[PAIN] += pain
-		total_loss += pain
-
-	if(rad)
-		rad -= (rad > 0 ? resistance[RAD] : 0)
-		rad -= min(0,damage[RAD] + rad)
-		damage[RAD] += rad
-		total_loss += rad
-
-	if(update && total_loss)
+	if(update && .)
 		update_health()
 
-	return total_loss
+	return .
 
-/health/proc/adjust_fatigue_loss(var/value)
-	value -= (value > 0 ? resistance[FATIGUE] : 0)
-	value -= min(0,damage[FATIGUE] + value)
-	damage[FATIGUE] += value
+/health/proc/adjust_loss(var/loss_type,var/value)
+	value -= (value > 0 ? resistance[loss_type] : 0)
+	value -= min(0,damage[loss_type] + value)
+	damage[loss_type] += value
 	return value
 
 /health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE)

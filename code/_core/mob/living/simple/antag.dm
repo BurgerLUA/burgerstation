@@ -44,7 +44,7 @@ var/global/list/valid_antag_colors = list(
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0,
+		STAMCRIT = 0,
 		ION = INFINITY,
 		PAIN = 0
 	)

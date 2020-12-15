@@ -161,7 +161,7 @@
 	. = ..()
 
 	if(owner.health) owner.health.update_health(check_death=FALSE)
-	owner.remove_status_effect(FATIGUE)
+	owner.remove_status_effect(STAMCRIT)
 
 	return .
 

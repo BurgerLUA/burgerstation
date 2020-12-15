@@ -53,7 +53,7 @@
 
 	return .
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -61,17 +61,17 @@
 	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
 		return 0
 
-	if(tox || oxy)
+	if(tox || oxy || fatigue)
 		if(owner.loc && is_advanced(owner.loc))
 			var/mob/living/advanced/A = owner.loc
 			if(A.health)
-				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy)
-
+				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy,fatigue=fatigue)
 		tox = 0
 		oxy = 0
+		fatigue = 0
 
 
-	. += ..(brute,burn,tox,oxy,pain,rad)
+	. += ..(brute,burn,tox,oxy,fatigue,pain,rad)
 
 	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
@@ -81,11 +81,3 @@
 
 /health/obj/item/organ/synthetic
 	organic = FALSE
-
-
-
-/health/obj/item/organ/adjust_fatigue_loss(var/value)
-	if(is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		if(A.health) return A.health.adjust_fatigue_loss(value)
-	return 0

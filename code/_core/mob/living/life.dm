@@ -108,7 +108,7 @@
 	return TRUE
 
 /mob/living/proc/rejuvenate()
-	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss(),-health.get_pain_loss(),-health.get_rad_loss())
+	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss(),-health.get_fatigue_loss(),-health.get_pain_loss(),-health.get_rad_loss())
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
 	return TRUE
@@ -132,7 +132,7 @@
 	if(dead)
 		return FALSE
 
-	if(has_status_effects(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STAMCRIT,STUN))
 		return FALSE
 
 	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
@@ -156,7 +156,7 @@
 
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effects(STUN,FATIGUE,SLEEP,CRIT,REST)
+	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST)
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN

@@ -18,7 +18,7 @@
 //Cannot move.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 
-#define FATIGUE "fatigue"
+#define STAMCRIT "stamcrit"
 //Removes initial stamina regeneration delay.
 //Stamina regenrates 5 times faster.
 //Move delay multiplied by 4.
