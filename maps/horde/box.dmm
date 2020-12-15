@@ -2510,15 +2510,15 @@
 /turf/simulated/floor/colored/dirt/snow,
 /area/box/interior/caves)
 "kI" = (
-/mob/living/simple/npc/bubblegum,
+/mob/living/simple/bubblegum,
 /turf/simulated/floor/cave_dirt,
 /area/box/interior/caves)
 "kJ" = (
-/mob/living/simple/npc/ash_drake,
+/mob/living/simple/ash_drake,
 /turf/simulated/floor/cave_dirt,
 /area/box/interior/caves)
 "kK" = (
-/mob/living/simple/npc/colossus,
+/mob/living/simple/colossus,
 /turf/simulated/floor/cave_dirt,
 /area/box/interior/caves)
 "kL" = (
@@ -2739,7 +2739,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/box/interior/caves)
 "lC" = (
-/mob/living/simple/npc/ghost,
+/mob/living/simple/ghost,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/command)
 

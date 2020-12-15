@@ -73,7 +73,7 @@
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
 			var/obj/marker/dev/D = locate() in world
-			if(D)
+			if(D && ENABLE_INSTALOAD)
 				P.force_move(get_turf(D))
 				P.start_chargen()
 				P.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)

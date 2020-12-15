@@ -193,7 +193,7 @@
 	dir = 4
 	},
 /obj/marker/beepsky,
-/mob/living/simple/npc/captain_beepsky,
+/mob/living/simple/captain_beepsky,
 /turf/simulated/floor/tile/shuttle/cyan,
 /area/transit/arrivals_shuttle_01/centcomm)
 "aQ" = (
@@ -216,7 +216,7 @@
 	dir = 4
 	},
 /obj/marker/beepsky,
-/mob/living/simple/npc/captain_beepsky,
+/mob/living/simple/captain_beepsky,
 /turf/simulated/floor/tile/shuttle/cyan,
 /area/transit/arrivals_shuttle_02/centcomm)
 "aS" = (
@@ -611,7 +611,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cm" = (
-/mob/living/simple/npc/turret/syndicate{
+/mob/living/simple/turret/syndicate{
 	icon_state = "active";
 	dir = 1
 	},
@@ -749,7 +749,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cJ" = (
-/mob/living/simple/npc/turret/syndicate{
+/mob/living/simple/turret/syndicate{
 	icon_state = "active";
 	dir = 4
 	},
@@ -814,7 +814,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cU" = (
-/mob/living/simple/npc/turret/syndicate,
+/mob/living/simple/turret/syndicate,
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cV" = (

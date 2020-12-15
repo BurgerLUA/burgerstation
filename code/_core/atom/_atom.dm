@@ -180,15 +180,6 @@
 	if(!src.health)
 		return FALSE
 
-	var/area/A1 = get_area(attacker)
-	var/area/A2 = get_area(src)
-
-	if(!(A1 && A2))
-		return FALSE
-
-	if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
-		return FALSE
-
 	return TRUE
 
 /atom/proc/think()

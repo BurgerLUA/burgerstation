@@ -2159,7 +2159,7 @@
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/lz_420/interior/basement/kitchen)
 "iG" = (
-/mob/living/simple/npc/ghost,
+/mob/living/simple/ghost,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "iH" = (
@@ -2892,7 +2892,7 @@
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/entrance)
 "lt" = (
-/mob/living/simple/npc/ash_drake,
+/mob/living/simple/ash_drake,
 /turf/simulated/floor/basalt,
 /area/lz_420/interior/cave/north)
 "lu" = (
@@ -2928,7 +2928,7 @@
 /turf/unsimulated/generation/jungle,
 /area/lz_420/exterior)
 "lz" = (
-/mob/living/simple/npc/bubblegum,
+/mob/living/simple/bubblegum,
 /turf/simulated/floor/basalt,
 /area/lz_420/interior/cave/north)
 "lA" = (
@@ -2957,7 +2957,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_420/interior/cave/east)
 "lH" = (
-/mob/living/simple/npc/colossus,
+/mob/living/simple/colossus,
 /turf/simulated/floor/cave_dirt,
 /area/lz_420/interior/cave/east)
 "lI" = (
