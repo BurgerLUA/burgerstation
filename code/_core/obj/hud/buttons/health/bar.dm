@@ -48,7 +48,7 @@
 
 	min = 0
 	max = FLOOR(M.health.health_max, 1)
-	current = FLOOR(M.health.health_current - health.get_pain_loss(), 1)
+	current = FLOOR(M.health.health_current - M.health.get_pain_loss(), 1)
 
 	return ..()
 
