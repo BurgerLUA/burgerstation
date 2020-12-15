@@ -32,13 +32,17 @@ mob/living/advanced/get_movement_delay()
 
 	var/health_mul = 1
 	var/stamina_mul = 1
+	var/pain_mul = 1
 
-	if(health && !has_status_effect(ADRENALINE))
-		health_mul = clamp(0.5 + (health.health_current/health.health_max),0.5,1)
-		stamina_mul = clamp(0.75 + (health.stamina_current/health.stamina_max),0.75,1)
+	if(health)
+		if(!has_status_effect(ADRENALINE))
+			health_mul = clamp(0.5 + (health.health_current/health.health_max),0.5,1)
+			stamina_mul = clamp(0.75 + (health.stamina_current/health.stamina_max),0.75,1)
+		if(TRUE)
+			pain_mul = clamp(0.1 + (1 - health.get_pain_loss()/health.health_max)*0.9,0.1,1)
 
 	//https://www.desmos.com/calculator/9oyrocojgp
-	var/cucumber = weight/(weight_max*health_mul*stamina_mul*health_mul)
+	var/cucumber = weight/(weight_max*health_mul*stamina_mul*health_mul*pain_mul)
 	cucumber = clamp(cucumber,0,1)
 	. *= 2 - ((1-cucumber)**0.42)
 

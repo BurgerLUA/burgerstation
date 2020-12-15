@@ -398,13 +398,15 @@ mob/living/proc/on_life_slow()
 	var/player_controlled = is_player_controlled()
 
 	if(health_regen_delay <= 0 && health.health_regeneration > 0)
-		var/health_mod = health.health_regeneration * delay_mod * nutrition_hydration_mod * 0.1
-		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
-		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
-		health_adjust += brute_to_adjust + burn_to_adjust
+		var/health_mod = DECISECONDS_TO_SECONDS(health.health_regeneration * delay_mod * nutrition_hydration_mod)
+		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_pain_loss() - pain_regen_buffer),health_mod)
+		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust
+			pain_regen_buffer += pain_to_adjust
 			if(health_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
 

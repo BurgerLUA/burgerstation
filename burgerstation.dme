@@ -353,6 +353,7 @@
 #include "code\_core\datum\damagetype\npc\clown.dm"
 #include "code\_core\datum\damagetype\npc\cow.dm"
 #include "code\_core\datum\damagetype\npc\crab.dm"
+#include "code\_core\datum\damagetype\npc\dick_kickem.dm"
 #include "code\_core\datum\damagetype\npc\ghost.dm"
 #include "code\_core\datum\damagetype\npc\goliath.dm"
 #include "code\_core\datum\damagetype\npc\legion_assault.dm"

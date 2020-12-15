@@ -9,7 +9,7 @@
 
 	ai = /ai/dick_kickem/
 	class = /class/npc/robust
-	damage_type = /damagetype/cqc/sleeping_carp/crashing_wave_kick
+	damage_type = /damagetype/npc/dick_kickem
 
 	iff_tag = "American"
 	loyalty_tag = "American"
