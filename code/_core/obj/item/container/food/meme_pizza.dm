@@ -45,7 +45,7 @@
 	update_sprite()
 	return ..()
 
-/obj/item/container/food/meme_pizza/get_calculated_bites(var/total_reagents = 1)
+/obj/item/container/food/meme_pizza/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
 	return servings_left
 
 /obj/item/container/food/meme_pizza/feed(var/mob/caller,var/mob/living/target)

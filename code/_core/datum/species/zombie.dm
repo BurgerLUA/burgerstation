@@ -4,6 +4,8 @@
 	id = "zombie"
 	flags_species = SPECIES_ZOMBIE
 
+	bite_size = 10
+
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	default_color_eye = "#FF6E00"

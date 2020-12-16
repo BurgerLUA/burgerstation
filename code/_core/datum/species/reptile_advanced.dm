@@ -4,6 +4,8 @@
 	id = "reptile_advanced"
 	flags_species = SPECIES_REPTILE_ADVANCED
 
+	bite_size = 10
+
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	default_hairstyle_chargen_male = 1

@@ -4,6 +4,8 @@
 	id = "diona"
 	flags_species = SPECIES_DIONA
 
+	bite_size = 20
+
 	flags_chargen = CHARGEN_SKIN | CHARGEN_DETAIL | CHARGEN_GLOW
 
 	default_color_eye = "#88FF88"
