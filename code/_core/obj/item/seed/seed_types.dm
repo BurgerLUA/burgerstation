@@ -63,3 +63,17 @@
 	growth_speed = 4
 
 	delete_after_harvest = TRUE
+
+
+/obj/item/seed/poppy
+	plant_type = /plant_type/poppy
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 10
+	yield = 8
+	growth_speed = 2
+
+	delete_after_harvest = TRUE
