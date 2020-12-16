@@ -75,9 +75,9 @@
 	if(. + current_volume >= 10)
 		if(L.dead && !L.check_death() && L.is_player_controlled() && !L.suicide)
 			L.revive()
-			L.visible_message("\The [L.name] jolts to life!")
+			L.visible_message(span("danger","\The [L.name] jolts to life!"))
 		else
-			L.visible_message("\The [L.name] twitches for a moment, but falls back limp...")
+			L.visible_message(span("warning","\The [L.name] twitches for a moment, but falls back limp..."))
 
 	return .
 

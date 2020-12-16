@@ -44,7 +44,7 @@
 		C.reagents.add_reagent(reagent_path,reagent_volume,original_temperature,FALSE,FALSE)
 	FINALIZE(C)
 
-	T.visible_message("The cheese finishes molding!")
+	T.visible_message(span("notice","The cheese finishes curdling!"))
 
 	C.reagents.update_container()
 
@@ -103,7 +103,7 @@
 			allow_reagent_transfer_to = FALSE
 			allow_reagent_transfer_from = FALSE
 			var/turf/T = get_turf(src)
-			T.visible_message("The milk starts to curdle!")
+			T.visible_message(span("notice","The milk starts to curdle!"))
 			start_thinking(src)
 
 	return ..()

@@ -65,9 +65,9 @@
 		reagents.transfer_reagents_to(O.reagents,reagent_transfer, caller = caller)
 
 		if(caller == O.loc)
-			caller.visible_message("\The [caller.name] sprays their [O.name] with \the [src].")
+			caller.visible_message(span("notice","\The [caller.name] sprays their [O.name] with \the [src]."))
 		else
-			caller.visible_message("\The [caller.name] sprays \the [O.loc.name]'s [O.name] with \the [src].")
+			caller.visible_message(span("warning","\The [caller.name] sprays \the [O.loc.name]'s [O.name] with \the [src]."))
 
 		update_sprite()
 

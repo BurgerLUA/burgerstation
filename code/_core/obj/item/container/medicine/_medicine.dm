@@ -86,9 +86,9 @@
 	reagents.volume_max = item_count_current*10
 
 	if(caller == A.loc)
-		caller.visible_message("\The [caller.name] bandages their [A.name].")
+		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."))
 	else
-		caller.visible_message("\The [caller.name] bandages \the [A.loc.name]'s [A.name].")
+		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."))
 
 	add_item_count(-1)
 

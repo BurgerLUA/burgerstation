@@ -57,9 +57,9 @@
 		caller.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
 		return FALSE
 	if(caller)
-		visible_message("\The [caller.name] activates \the [src.name].")
+		visible_message(span("notice","\The [caller.name] activates \the [src.name]."))
 	else
-		visible_message("\The [src.name] activates itself.")
+		visible_message(span("warning","\The [src.name] powers up on its own!."))
 	set_anchored(TRUE)
 	start_thinking(src)
 	update_sprite()
@@ -67,9 +67,9 @@
 
 /obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
 	if(caller)
-		visible_message("\The [caller.name] turns off \the [src.name].")
+		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."))
 	else
-		visible_message("\The [src.name] turns off on its own.")
+		visible_message(span("warning","\The [src.name] shuts itself down!"))
 	set_anchored(FALSE)
 	stop_thinking(src)
 	update_sprite()
@@ -157,9 +157,9 @@
 	set_anchored(!anchored)
 
 	if(anchored)
-		caller.visible_message("\The [caller.name] secures \the [src.name].","You secure \the [src.name].")
+		caller.visible_message(span("notice","\The [caller.name] secures \the [src.name]."),span("notice","You secure \the [src.name]."))
 	else
-		caller.visible_message("\The [caller.name] unsecures \the [src.name].","You unsecure \the [src.name].")
+		caller.visible_message(span("notice","\The [caller.name] unsecures \the [src.name]."),span("notice","You unsecure \the [src.name]."))
 
 	update_sprite()
 

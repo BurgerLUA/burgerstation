@@ -39,7 +39,7 @@
 
 	var/turf/T = get_turf(target)
 
-	caller.visible_message("\The [caller.name] charges up \the [src.name]...","You charge up \the [src.name]...")
+	caller.visible_message(span("danger","\The [caller.name] charges up \the [src.name]..."),span("warning","You charge up \the [src.name]..."))
 
 	play('sound/items/defib/defib_charge.ogg',T)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
@@ -127,7 +127,7 @@
 		return TRUE
 
 	if(is_living(object))
-		caller.visible_message("\The [caller.name] places \a [src.name] on [object.name]'s chest...","You place \the [src.name] on \the [object.name]'s chest...")
+		caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
 		placed_target_ref = "\ref[object]"
 		linked_defib.on_paddle(caller)
 		return TRUE
