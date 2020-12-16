@@ -101,9 +101,9 @@ obj/structure/interactive/computer/wall/dorms
 		if(desired_shuttle_controller.state == SHUTTLE_STATE_LANDED)
 			desired_shuttle_controller.state = SHUTTLE_STATE_WAITING
 			desired_shuttle_controller.time = 0
-			caller.to_chat("You prepare \the [desired_shuttle_controller.name] for launch.")
+			caller.to_chat(span("warning","You prepare \the [desired_shuttle_controller.name] for launch."))
 		else
-			caller.to_chat("ERROR: \The [desired_shuttle_controller.name] is already in transit.")
+			caller.to_chat(span("warning","ERROR: \The [desired_shuttle_controller.name] is already in transit."))
 	else
 		caller.to_chat(span("notice","You decide not to launch \the [desired_shuttle_controller.name]."))
 
@@ -132,7 +132,7 @@ obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/call
 	var/obj/shuttle_controller/SC = locate() in get_area(src)
 
 	if(!SC)
-		caller.to_chat("No shuttle controller found!")
+		caller.to_chat(span("warning","No shuttle controller found!"))
 		return FALSE
 
 	if(SC.time_restricted && !SSgamemode.active_gamemode.allow_launch)
@@ -145,7 +145,7 @@ obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/call
 		if(SC.state == SHUTTLE_STATE_LANDED)
 			SC.state = SHUTTLE_STATE_WAITING
 			SC.time = 0
-			caller.to_chat("You prepare the shuttle for launch.")
+			caller.to_chat(span("notice","You prepare the shuttle for launch."))
 		else
-			caller.to_chat("ERROR: Shuttle already in transit.")
+			caller.to_chat(span("warning","ERROR: Shuttle already in transit.")) //TODO: Make this more verbose.
 	return TRUE

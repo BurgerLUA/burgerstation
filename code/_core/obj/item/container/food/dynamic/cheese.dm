@@ -31,7 +31,7 @@
 		if(pieces <= 1 || original_volume < pieces)
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("There isn't enough cheese to cut!")
+				L.to_chat(span("notice","There isn't enough cheese in \the [src.name] to cut!"))
 			return ..()
 
 		for(var/i=1,i<=pieces,i++)
@@ -44,7 +44,7 @@
 
 		if(is_living(attacker))
 			var/mob/living/L = attacker
-			L.to_chat("You cut \the [src.name] into [pieces] cheese pieces.")
+			L.to_chat(span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
 
 		qdel(src)
 
@@ -55,7 +55,7 @@
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("There isn't enough cheese to cut!")
+					L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
 				return ..()
 
 			for(var/i=1,i<=pieces,i++)
@@ -68,14 +68,14 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You cut \the [src.name] into [pieces] cheese pieces.")
+				L.to_chat(span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
 
 			qdel(src)
 
 		else if(original_volume <= 1)
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("There isn't enough cheese to cut!")
+				L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
 			return ..()
 		else
 			var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
@@ -86,7 +86,7 @@
 			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You slice a thin slice of cheese off the top of \the [src.name].")
+				L.to_chat(span("notice","You slice a thin slice of cheese off the top of \the [src.name]."))
 
 	return ..()
 

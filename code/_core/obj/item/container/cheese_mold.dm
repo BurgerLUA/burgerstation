@@ -79,7 +79,7 @@
 		var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
 		if(answer == "Yes" && get_dist(caller,src) <= 1)
 			reagents.remove_all_reagents(reagents.volume_current)
-			caller.to_chat("You empty \the [src.name] of its contents.")
+			caller.to_chat(span("notice","You empty \the [src.name] of its contents."))
 
 	return TRUE
 

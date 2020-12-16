@@ -129,7 +129,7 @@
 		var/obj/item/I2 = I.check_interactables(caller,src,location,control,params)
 		if(I2)
 			I2.drop_item(get_turf(caller))
-			caller.to_chat("You successfully remove \the [I2.name] from \the [I.name] with \the [src.name].")
+			caller.to_chat(span("notice","You successfully remove \the [I2.name] from \the [I.name] with \the [src.name]."))
 		return TRUE
 
 	return ..()

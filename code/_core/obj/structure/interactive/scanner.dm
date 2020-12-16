@@ -17,8 +17,8 @@
 	if(is_advanced(M))
 		var/mob/living/advanced/A = M
 		if(!A.iff_tag)
-			A.to_chat("The barrier prevents you from moving!")
-			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant not detected. Please move to the front desk to recieve your IFF implant.\"</font>")
+			A.to_chat(span("warning","The barrier prevents you from moving!"))
+			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant not detected. Please move to the front desk to recieve your IFF implant.\"</font>") //TODO: Fix this.
 			return FALSE
 
 	return ..()
@@ -34,8 +34,8 @@
 	if(is_advanced(M))
 		var/mob/living/advanced/A = M
 		if(A.iff_tag)
-			A.to_chat("The barrier prevents you from moving!")
-			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant detected. Your employment is not over.\"</font>")
+			A.to_chat(span("warning","The barrier prevents you from moving!"))
+			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant detected. Your employment is not over.\"</font>") //TODO: Fix this.
 			return FALSE
 
 	return ..()

@@ -188,13 +188,13 @@
 		if(length(equipment) >= 1)
 			equipment[1].click_on_object(caller,object,location,control,params)
 		else
-			caller?.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
+			caller?.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"") //TODO: Format speaker.
 
 	if(params["right"])
 		if(length(equipment) >= 2)
 			equipment[2].click_on_object(caller,object,location,control,params)
 		else
-			caller?.to_chat("\the [src.name] blares, \"No equipment found in slot 2!\"")
+			caller?.to_chat("<b>\the [src.name] blares</b>, \"No equipment found in slot 2!\"") //TODO: Format speaker.
 
 	return TRUE
 
@@ -232,11 +232,11 @@
 		return FALSE
 
 	if(dead)
-		to_chat("The [src.name] is destroyed!")
+		to_chat(span("warning","The [src.name] is destroyed!"))
 		return FALSE
 
 	if(length(passengers) >= passengers_max)
-		to_chat("There isn't enough space inside \the [src.name] to fit [length(passengers) + 1] people!")
+		to_chat(span("warning","There isn't enough space inside \the [src.name] to fit [length(passengers) + 1] people!"))
 		return FALSE
 
 	var/mob/living/advanced/L = Obj
@@ -290,17 +290,17 @@
 	INTERACT_CHECK
 
 	if(length(passengers) >= passengers_max)
-		caller.to_chat("\The [src.name] is full!")
+		caller.to_chat(span("warning","\The [src.name] is full!"))
 		return FALSE
 
 	if(!is_advanced(caller))
-		caller.to_chat("You can't get inside \the [src.name]!")
+		caller.to_chat(span("warning","You can't get inside \the [src.name]!"))
 		return FALSE
 
 	var/mob/living/advanced/A = caller
 
 	if(A.iff_tag != iff_tag)
-		A.to_chat("ERROR: Unrecognized IFF tag.")
+		A.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
 		return FALSE
 
 	return TRUE

@@ -63,7 +63,7 @@
 					S.add_member(P)
 					update_sprite()
 				else
-					caller.to_chat("uh, for some reason that squad doesn't exist. Please tell burger you can't join the squad [answer].")
+					caller.to_chat(span("danger","For some reason that squad doesn't exist. Please tell burger you can't join the squad [answer]."))
 
 		else
 			var/answer = input("There aren't any squads available to join. Would you like to create a squad?","Squad Creation","Cancel") in list("Yes","No","Cancel")
@@ -77,7 +77,7 @@
 		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation",null) as text|null
 
 		if(squad_name == "Cancel" || squad_name == "Create New Squad" || squad_name == "Cancel")
-			P.to_chat("You cheeky bastard.")
+			P.to_chat(span("danger","You cheeky bastard. That's an invalid name!"))
 			return FALSE
 
 		if(!squad_name)
@@ -96,7 +96,7 @@
 				found_name = TRUE
 
 		if(found_name)
-			P.to_chat("That name is already taken!")
+			P.to_chat(span("warning","The squad name \"[found_name]\" is already taken!"))
 			continue
 
 		var/squad/S = new

@@ -22,7 +22,7 @@
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
 		raw_icon_state = "dough_ball"
 		cooked_icon_state = "cake"
-		caller.to_chat("You reshape \the [src.name].")
+		caller.to_chat(span("notice","You reshape \the [src.name]."))
 
 	update_sprite()
 
@@ -37,11 +37,11 @@
 			if(amount_to_transfer <= 0)
 				if(is_living(caller))
 					var/mob/living/L = caller
-					L.to_chat("You can't add any more dough!")
+					L.to_chat(span("warning","You can't add any more dough to \the [B.name]!"))
 				return TRUE
 			if(is_living(caller))
 				var/mob/living/L = caller
-				L.to_chat("You add \the [name] to \the [B.name].")
+				L.to_chat(span("notice","You add \the [name] to \the [B.name]."))
 			reagents.transfer_reagents_to(B.reagents,amount_to_transfer)
 			return TRUE
 
@@ -60,7 +60,7 @@
 				if(pieces <= 1 || original_volume < pieces)
 					if(is_living(attacker))
 						var/mob/living/L = attacker
-						L.to_chat("There isn't enough dough to cut!")
+						L.to_chat(span("warning","There isn't enough dough to cut!"))
 					return FALSE
 				raw_icon_state = "dough_slice"
 				for(var/i=1,i<=pieces-1,i++)
@@ -74,10 +74,10 @@
 					FINALIZE(B)
 					animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
 				animate(src, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
-				update_sprite()
+				update_sprite() //TODO: Wait, why is the below not enclosed in the above condition statement?
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("You cut \the [src.name] into [pieces] pieces.")
+					L.to_chat(span("notice","You cut \the [src.name] into [pieces] pieces."))
 
 			else if(raw_icon_state == "dough_ball")
 				if(original_volume > 10)
@@ -88,10 +88,10 @@
 					reagents.transfer_reagents_to(B.reagents,10)
 					FINALIZE(B)
 					animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
-				update_sprite()
+				update_sprite() //TODO: Wait, why is the below not enclosed in the above condition statement?
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("You cut some small dough from the dough pile.")
+					L.to_chat(span("notice","You cut some small dough from \the [src.name]."))
 
 		//else if(icon_state == "cake") //It's cooked, and a cake.
 			//Make cake slices.
@@ -102,7 +102,7 @@
 			cooked_icon_state = "pie"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You flatten \the [src.name].")
+				L.to_chat(span("notice","You flatten \the [src.name]."))
 			update_sprite()
 
 	return TRUE

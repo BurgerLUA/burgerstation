@@ -54,7 +54,7 @@
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
 	if(!check_valid())
-		caller.to_chat("\The [src] doesn't seem to want to turn on!")
+		caller.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
 		return FALSE
 	if(caller)
 		visible_message("\The [caller.name] activates \the [src.name].")
@@ -143,9 +143,9 @@
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)
-			caller.to_chat("Unsecure \the [src.name] before rotating it!")
+			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
 		else
-			caller.to_chat("You rotate \the [src.name].")
+			caller.to_chat(span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 		return TRUE
 

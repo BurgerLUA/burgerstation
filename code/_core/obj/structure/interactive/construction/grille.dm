@@ -19,7 +19,7 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OTHER(S)
 	if(istype(src.loc,/obj/structure/smooth/window/))
-		caller.to_chat("There is already a window here!")
+		caller.to_chat(span("warning","There is already a window here!"))
 		return FALSE
 	if(S.item_count_current < 4)
 		caller.to_chat(span("warning","You need 4 glass sheets in order to build a wall!"))

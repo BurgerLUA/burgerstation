@@ -47,7 +47,7 @@ client/verb/air_test(var/pressure as num)
 
 	var/mob_z = mob.z
 
-	to_chat("Generating light spaces...")
+	to_chat(span("notice","Generating light spaces..."))
 
 	for(var/obj/structure/interactive/lighting/L in world)
 		if(L.z != mob_z)
@@ -55,7 +55,7 @@ client/verb/air_test(var/pressure as num)
 		for(var/turf/T in view((0.5 + L.desired_light_power*0.5)*L.desired_light_range,L))
 			T.color = "#00FF00"
 
-	to_chat("Done generating light spaces.")
+	to_chat(span("notice","All light spaces have been generated."))
 
 /client/verb/stealth_test()
 	set name = "Stealth Test"
@@ -202,9 +202,10 @@ client/verb/air_test(var/pressure as num)
 			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 			if(mobdata)
 				mobdata.save_character(P,force = TRUE)
-			to_chat("Saved [P.get_debug_name()].")
-		catch
-			to_chat("COULD NOT SAVE [P.get_debug_name()]!")
+			to_chat(span("notice","Saved [P.get_debug_name()]."))
+		catch(var/exception/e)
+			to_chat(span("danger","Could not save [P.get_debug_name()] due to a runtime error!"))
+			log_error("[e] on [e.file]:[e.line]!")
 
 /client/verb/stress_test()
 	set name = "Stress Test (DANGER)"

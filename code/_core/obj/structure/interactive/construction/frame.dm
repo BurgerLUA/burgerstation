@@ -7,13 +7,13 @@
 
 /obj/structure/interactive/construction/frame/proc/can_construct_girder(var/mob/caller,var/obj/item/material/sheet/S)
 	if(!istype(src.loc,/turf/simulated/floor/plating/))
-		caller.to_chat("You need to build plating before you can build a girder!")
+		caller.to_chat(span("warning","You need to build plating before you can build a girder!"))
 		return FALSE
 	if(S.item_count_current < 4)
 		caller.to_chat(span("warning","You need 4 sheets in order to build a frame!"))
 		return FALSE
 	if(S.material_id != material_id)
-		caller.to_chat("You don't have the correct material for this!")
+		caller.to_chat(span("warning","You don't have the correct material for this!"))
 		return FALSE
 	if(get_dist(caller,src) > 1)
 		caller.to_chat(span("warning","You're too far away!"))

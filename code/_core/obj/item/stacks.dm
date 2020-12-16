@@ -74,6 +74,6 @@
 	var/obj/hud/inventory/I = object
 	var/old_item_name = src.name
 	var/obj/item/I2 = split_stack()
-	caller.to_chat("You split \the stack of [old_item_name]. The new stack now has [I2.item_count_current].")
+	caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [I2.item_count_current]."))
 	I.add_object(I2)
 	return TRUE

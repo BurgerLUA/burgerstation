@@ -6,7 +6,7 @@
 	INTERACT_CHECK
 
 	if(!dyeable)
-		caller.to_chat("\The [src.name] cannot be dyed.")
+		caller.to_chat(span("warning","\The [src.name] cannot be dyed."))
 		return FALSE
 
 	var/choice

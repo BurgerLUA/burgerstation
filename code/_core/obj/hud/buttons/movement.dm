@@ -102,6 +102,6 @@
 		if(L.stand && L.stand.linked_stand)
 			L.stand.linked_stand.set_enabled(!L.stand.linked_stand.enabled)
 		else
-			L.to_chat("You don't have a stand for some reason!")
+			L.to_chat(span("danger","You don't have a stand for some reason!"))
 
 	return .

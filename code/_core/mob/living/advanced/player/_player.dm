@@ -186,7 +186,7 @@ mob/living/advanced/player/on_life_client()
 			for(var/k in SSai.inactive_ai)
 				var/ai/A = k
 				if(!A.owner)
-					to_chat("Warning! [A.get_debug_name()] had no owner!")
+					log_error("Warning! [A.get_debug_name()] had no owner!")
 					qdel(A)
 					continue
 				var/dist = get_dist(src,A.owner)

@@ -98,12 +98,12 @@
 
 	var/mob/choice = input("Who would you like to bring","Bring Mob") as null|mob in all_mobs_with_clients
 	if(!choice)
-		to_chat("Invalid choice.")
+		to_chat(span("warning","Invalid mob."))
 		return FALSE
 
 	var/turf/T = get_turf(mob)
 	if(!T)
-		to_chat("Invalid turf.")
+		to_chat(span("warning","Invalid turf."))
 		return FALSE
 
 	choice.force_move(T)

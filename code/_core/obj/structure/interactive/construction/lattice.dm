@@ -46,7 +46,7 @@
 
 
 	if(istype(src.loc,/turf/simulated/floor/plating/))
-		caller.to_chat("There is already a floor plating here!")
+		caller.to_chat(span("warning","There is already a floor plating here!"))
 		return FALSE
 	if(S.item_count_current < 4)
 		caller.to_chat(span("warning","You need 4 sheets in order to build a floor plating!"))

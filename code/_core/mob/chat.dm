@@ -176,11 +176,11 @@ var/regex/vowels = new("\[aeiou\]", "i")
 		return FALSE
 
 	if(!(emote_text in known_emotes))
-		if(messages) to_chat("Invalid emote: [emote_text]!")
+		if(messages) to_chat(span("warning","Invalid emote: \"[emote_text]\"!"))
 		return FALSE
 
 	if(!SSemote.all_emotes[emote_text])
-		if(messages) to_chat("Unknown emote: \"[emote_text]\".")
+		if(messages) to_chat(span("warning","Unknown emote: \"[emote_text]\"."))
 		return FALSE
 
 	var/emote/E = SSemote.all_emotes[emote_text]

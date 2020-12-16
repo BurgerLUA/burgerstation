@@ -112,11 +112,11 @@ var/global/world_state = STATE_STARTING
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		if(P.dead)
-			P.to_chat("Could not save your character because you were dead.")
+			P.to_chat(span("danger","Could not save your character because you were dead."))
 			continue
 		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 		mobdata.save_character(P,force = TRUE)
-		P.to_chat("Your character was automatically saved.")
+		P.to_chat(span("notice","Your character was automatically saved."))
 		sleep(1)
 	return TRUE
 

@@ -223,7 +223,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	for(var/k in ranks)
 		var/rank/R = k
-		to_chat("Adding [R.name] permissions...")
+		to_chat(span("debug","Adding [R.name] permissions..."))
 		permissions |= R.permissions
 
 	return TRUE

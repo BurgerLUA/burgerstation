@@ -18,7 +18,7 @@
 	INTERACT_CHECK_OTHER(S)
 
 	if(istype(src.loc,/turf/simulated/wall/))
-		caller.to_chat("There is already a wall here... somehow.")
+		caller.to_chat(span("warning","There is already a wall here... somehow."))
 		return FALSE
 	if(S.item_count_current < 4)
 		caller.to_chat(span("warning","You need 4 sheets in order to build a wall!"))
@@ -33,7 +33,7 @@
 	T.change_turf(/turf/simulated/wall/metal/)
 	T.material_id = material_id
 	T.color = color
-	caller.to_chat("You place \the metal wall.")
+	caller.to_chat(span("notice","You place \the metal wall."))
 	S.add_item_count(-4)
 	qdel(src)
 	return TRUE

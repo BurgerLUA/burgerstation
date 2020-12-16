@@ -25,7 +25,7 @@
 	if(open)
 		return ..()
 
-	caller.to_chat("You open \the [src.name].")
+	caller.to_chat(span("notice","You open \the [src.name]."))
 	open = TRUE
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE
