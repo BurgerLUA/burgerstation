@@ -15,6 +15,9 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 
 	var/sitting = FALSE
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/cat/post_move(var/atom/old_loc)
 
 	var/old_sitting = sitting

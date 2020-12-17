@@ -11,8 +11,8 @@
 	class = /class/npc/robust
 	damage_type = /damagetype/npc/dick_kickem
 
-	iff_tag = "American"
-	loyalty_tag = "American"
+	iff_tag = "Meme"
+	loyalty_tag = "Meme"
 
 	mob_size = MOB_SIZE_BOSS
 

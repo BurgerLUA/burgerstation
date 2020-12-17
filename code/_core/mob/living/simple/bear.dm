@@ -92,6 +92,9 @@
 	loyalty_tag = "Revolutionary"
 	iff_tag = "Revolutionary"
 
+	enable_security_hud = TRUE
+	enable_medical_hud = TRUE
+
 /mob/living/simple/bear/snow
 	name = "snow bear"
 	icon_state = "white"

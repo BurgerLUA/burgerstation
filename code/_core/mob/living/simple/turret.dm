@@ -15,6 +15,8 @@
 	pixel_y = 0
 	pixel_z = 0
 
+	enable_security_hud = TRUE
+
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 

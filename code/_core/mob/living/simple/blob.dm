@@ -38,9 +38,13 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
+	iff_tag = "Blob"
 	loyalty_tag = "Blob"
 
 	stun_angle = 0
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
 
 /mob/living/simple/blobbernaught/New(loc,desired_client,desired_level_multiplier,var/obj/structure/interactive/blob/node/desired_node)
 

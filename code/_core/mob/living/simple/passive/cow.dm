@@ -14,6 +14,9 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
+	iff_tag = "Cow"
+	loyalty_tag = "Cow"
+
 /mob/living/simple/passive/cow/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

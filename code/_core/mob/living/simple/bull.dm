@@ -35,6 +35,12 @@
 
 	mob_size = MOB_SIZE_LARGE
 
+	iff_tag = "Cow"
+	loyalty_tag = "Cow"
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/bull/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

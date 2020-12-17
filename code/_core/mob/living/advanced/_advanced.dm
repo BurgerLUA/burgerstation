@@ -104,6 +104,9 @@
 
 	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
 
+	enable_security_hud = TRUE
+	enable_medical_hud = TRUE
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

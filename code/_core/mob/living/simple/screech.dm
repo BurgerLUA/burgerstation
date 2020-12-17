@@ -13,3 +13,6 @@
 	ai =  /ai/
 	class = /class/passive/
 	damage_type = /damagetype/unarmed/bite/
+
+	enable_security_hud = TRUE
+	enable_medical_hud = TRUE

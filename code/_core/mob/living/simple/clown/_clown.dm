@@ -29,6 +29,9 @@
 		PAIN = 0
 	)
 
+	iff_tag = "Clown"
+	loyalty_tag = "Clown"
+
 
 /mob/living/simple/clown/hulk
 	name = "clown hunk"
