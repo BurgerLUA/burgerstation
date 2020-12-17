@@ -16,3 +16,6 @@
 
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
+
+	loyalty_tag = "Screech"
+	iff_tag = "Screech"

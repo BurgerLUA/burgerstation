@@ -44,6 +44,9 @@
 
 	var/armored = FALSE
 
+	iff_tag = "Bear"
+	loyalty_tag = "Bear"
+
 /mob/living/simple/bear/update_overlays()
 	. = ..()
 

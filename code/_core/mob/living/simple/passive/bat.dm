@@ -14,6 +14,9 @@
 
 	stun_angle = 0
 
+	iff_tag = "Bat"
+	loyalty_tag = "Bat"
+
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"

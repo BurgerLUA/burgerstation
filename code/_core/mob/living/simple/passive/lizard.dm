@@ -12,6 +12,9 @@
 
 	stun_angle = 0
 
+	loyalty_tag = "Lizard"
+	iff_tag = "Lizard"
+
 /mob/living/simple/passive/lizard/Crossed(atom/movable/O)
 	return TRUE
 

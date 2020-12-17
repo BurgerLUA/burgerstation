@@ -18,6 +18,9 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	iff_tag = "Cat"
+	loyalty_tag = "Cat"
+
 /mob/living/simple/cat/post_move(var/atom/old_loc)
 
 	var/old_sitting = sitting

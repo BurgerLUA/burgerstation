@@ -34,5 +34,8 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
+	loyalty_tag = "Ghost"
+	iff_tag = "Ghost"
+
 /mob/living/simple/halloween_spirit/blue
 	icon_state = "blue"

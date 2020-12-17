@@ -21,8 +21,8 @@
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	loyalty_tag = "carp"
-	iff_tag = "carp"
+	loyalty_tag = "Carp"
+	iff_tag = "Carp"
 
 	armor_base = list(
 		BLADE = 50,

@@ -33,8 +33,8 @@
 		FIRE = TRUE
 	)
 
-	iff_tag = "watcher"
-	loyalty_tag = "watcher"
+	iff_tag = "Watcher"
+	loyalty_tag = "Watcher"
 
 	mob_size = MOB_SIZE_LARGE
 

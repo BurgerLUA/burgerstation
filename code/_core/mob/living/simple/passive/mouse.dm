@@ -12,6 +12,9 @@
 
 	stun_angle = 0
 
+	loyalty_tag = "Mouse"
+	iff_tag = "Mouse"
+
 /mob/living/simple/passive/mouse/Crossed(atom/movable/O)
 	return TRUE
 

@@ -32,6 +32,9 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
+	loyalty_tag = "Meme"
+	iff_tag = "Meme"
+
 /mob/living/simple/glockroach/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

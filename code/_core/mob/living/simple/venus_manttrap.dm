@@ -31,8 +31,8 @@
 		PAIN = 0
 	)
 
-	iff_tag = "jungle"
-	loyalty_tag = "jungle"
+	iff_tag = "Jungle"
+	loyalty_tag = "Jungle"
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

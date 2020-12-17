@@ -53,3 +53,6 @@
 
 	level_multiplier = 3
 
+	loyalty_tag = "Shark"
+	iff_tag = "Shark"
+

@@ -12,6 +12,9 @@
 
 	value = 100
 
+	loyalty_tag = "Silicon"
+	iff_tag = "Silicon"
+
 /mob/living/simple/silicon/engineer
 	name = "engineer cyborg"
 	icon_state = "engineer"

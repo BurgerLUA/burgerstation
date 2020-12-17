@@ -16,6 +16,9 @@
 
 	var/sitting = FALSE
 
+	loyalty_tag = "Parrot"
+	iff_tag = "Parrot"
+
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
 	return ..()

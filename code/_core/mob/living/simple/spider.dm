@@ -43,6 +43,9 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
+	loyalty_tag = "Spider"
+	iff_tag = "Spider"
+
 /mob/living/simple/spider/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

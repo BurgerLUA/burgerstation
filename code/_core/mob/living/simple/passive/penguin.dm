@@ -16,6 +16,9 @@
 
 	mob_size = MOB_SIZE_ANIMAL
 
+	loyalty_tag = "Penguin"
+	iff_tag = "Penguin"
+
 /mob/living/simple/passive/penguin/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

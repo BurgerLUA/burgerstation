@@ -12,6 +12,9 @@
 	)
 	mob_size = MOB_SIZE_CRITTER
 
+	loyalty_tag = "Chicken"
+	iff_tag = "Chicken"
+
 /mob/living/simple/passive/chicken/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

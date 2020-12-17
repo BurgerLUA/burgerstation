@@ -58,8 +58,8 @@
 		FIRE = TRUE
 	)
 
-	iff_tag = "bubblegum"
-	loyalty_tag = "bubblegum"
+	iff_tag = "Bubblegum"
+	loyalty_tag = "Bubblegum"
 
 	fatigue_from_block_mul = 0
 
