@@ -17,6 +17,8 @@
 
 	enable_security_hud = TRUE
 
+	mob_size = MOB_SIZE_HUMAN
+
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 
@@ -78,6 +80,8 @@
 	var/obj/item/magazine/stored_magazine
 
 	ai = /ai/turret/deployable
+
+	mob_size = MOB_SIZE_ANIMAL
 
 /mob/living/simple/turret/deployable/get_examine_list(var/mob/examiner)
 

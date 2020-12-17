@@ -15,6 +15,8 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/bullshark/post_death()
 	. = ..()
 	icon_state = "dead"

@@ -17,6 +17,8 @@
 	iff_tag = "Bat"
 	loyalty_tag = "Bat"
 
+	mob_size = MOB_SIZE_CRITTER
+
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"

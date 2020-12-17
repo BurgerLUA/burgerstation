@@ -20,6 +20,8 @@
 	iff_tag = "Legion"
 	loyalty_tag = "Legion"
 
+	mob_size = MOB_SIZE_CRITTER
+
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 

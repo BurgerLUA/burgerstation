@@ -29,6 +29,8 @@
 	iff_tag = "Legion"
 	loyalty_tag = "Legion"
 
+	mob_size = MOB_SIZE_HUMAN
+
 /mob/living/simple/legionare/Destroy()
 
 	if(stored_corpse)

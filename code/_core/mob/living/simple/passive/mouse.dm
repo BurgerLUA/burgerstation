@@ -15,6 +15,8 @@
 	loyalty_tag = "Mouse"
 	iff_tag = "Mouse"
 
+	mob_size = MOB_SIZE_CRITTER
+
 /mob/living/simple/passive/mouse/Crossed(atom/movable/O)
 	return TRUE
 

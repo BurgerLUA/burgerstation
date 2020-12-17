@@ -19,3 +19,5 @@
 
 	loyalty_tag = "Screech"
 	iff_tag = "Screech"
+
+	mob_size = MOB_SIZE_HUMAN

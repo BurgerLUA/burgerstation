@@ -58,6 +58,8 @@ var/global/list/valid_antag_colors = list(
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 
+	mob_size = MOB_SIZE_HUMAN
+
 /mob/living/simple/antag/Initialize()
 	var/image/I = new/image(icon,"shadow")
 	I.blend_mode = BLEND_MULTIPLY

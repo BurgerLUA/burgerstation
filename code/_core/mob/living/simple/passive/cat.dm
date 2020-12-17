@@ -21,6 +21,8 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	iff_tag = "Cat"
 	loyalty_tag = "Cat"
 
+	mob_size = MOB_SIZE_ANIMAL
+
 /mob/living/simple/cat/post_move(var/atom/old_loc)
 
 	var/old_sitting = sitting

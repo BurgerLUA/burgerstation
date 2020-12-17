@@ -4,6 +4,8 @@
 	iff_tag = "Cult"
 	loyalty_tag = "Cult"
 
+	mob_size = MOB_SIZE_HUMAN
+
 /mob/living/simple/cult/cultist
 	name = "blood cult peon"
 	icon = 'icons/mob/living/simple/cult.dmi'
@@ -46,6 +48,8 @@
 
 /mob/living/simple/cult/construct
 	stun_angle = 0
+
+	mob_size = MOB_SIZE_LARGE
 
 /mob/living/simple/cult/construct/post_death()
 	. = ..()

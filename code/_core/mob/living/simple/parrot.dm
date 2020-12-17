@@ -19,6 +19,8 @@
 	loyalty_tag = "Parrot"
 	iff_tag = "Parrot"
 
+	mob_size = MOB_SIZE_CRITTER
+
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
 	return ..()

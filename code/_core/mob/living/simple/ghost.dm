@@ -57,6 +57,8 @@
 		FIRE = TRUE
 	)
 
+	mob_size = MOB_SIZE_LARGE
+
 
 
 /mob/living/simple/ghost/handle_alpha()

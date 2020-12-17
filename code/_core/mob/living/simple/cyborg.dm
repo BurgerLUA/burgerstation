@@ -15,6 +15,8 @@
 	loyalty_tag = "Silicon"
 	iff_tag = "Silicon"
 
+	mob_size = MOB_SIZE_HUMAN
+
 /mob/living/simple/silicon/engineer
 	name = "engineer cyborg"
 	icon_state = "engineer"

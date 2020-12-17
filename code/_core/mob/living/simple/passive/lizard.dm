@@ -15,6 +15,8 @@
 	loyalty_tag = "Lizard"
 	iff_tag = "Lizard"
 
+	mob_size = MOB_SIZE_CRITTER
+
 /mob/living/simple/passive/lizard/Crossed(atom/movable/O)
 	return TRUE
 

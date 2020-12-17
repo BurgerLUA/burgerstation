@@ -32,6 +32,8 @@
 	iff_tag = "Clown"
 	loyalty_tag = "Clown"
 
+	mob_size = MOB_SIZE_HUMAN
+
 
 /mob/living/simple/clown/hulk
 	name = "clown hunk"
@@ -60,6 +62,8 @@
 	)
 
 	pixel_x = -16
+
+	mob_size = MOB_SIZE_LARGE
 
 /mob/living/simple/clown/hulk/armored
 	name = "armored clown hunk"
@@ -111,6 +115,8 @@
 
 	pixel_x = -16
 
+	mob_size = MOB_SIZE_LARGE
+
 
 
 /mob/living/simple/clown/long
@@ -139,6 +145,8 @@
 		PAIN = 0
 	)
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/clown/pie
 	name = "pie clown"
 	icon_state = "pie"
@@ -163,6 +171,8 @@
 		ION = INFINITY,
 		PAIN = 0
 	)
+
+	mob_size = MOB_SIZE_LARGE
 
 /mob/living/simple/clown/lube
 	name = "lube slime clown"
@@ -198,7 +208,7 @@
 
 	. = ..()
 
-	if(is_simulated(loc))
+	if(is_simulated(loc) && !dead)
 		var/turf/simulated/S = loc
 		S.add_wet(1000)
 
@@ -414,6 +424,8 @@
 		ION = INFINITY,
 		PAIN = 0
 	)
+
+	mob_size = MOB_SIZE_LARGE
 
 	pixel_x = -16
 

@@ -1,4 +1,4 @@
-/mob/living/simple/captain_beepsky
+/mob/living/simple/bot/securitron/captain
 	name = "Captain Beepsky"
 	desc = "He's the Captain now."
 	desc_extended = "A named securitron model. It is programmed to guard the shuttle from punk passengers via bluespace stunbaton. Its circuits and wheels are a little loose..."
@@ -19,7 +19,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-/mob/living/simple/captain_beepsky/can_be_grabbed(var/atom/grabber,var/messages=FALSE)
+/mob/living/simple/bot/securitron/captain/can_be_grabbed(var/atom/grabber,var/messages=FALSE)
 
 	if(messages && is_living(grabber))
 		var/mob/living/L = grabber

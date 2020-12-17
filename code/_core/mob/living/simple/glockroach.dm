@@ -28,7 +28,7 @@
 		ION = INFINITY
 	)
 
-	mob_size = MOB_SIZE_ANIMAL
+	mob_size = MOB_SIZE_CRITTER
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

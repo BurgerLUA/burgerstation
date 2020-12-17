@@ -15,6 +15,8 @@
 
 	blood_type = /reagent/blood/robot
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/vehicle/mech/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps + /footstep/mech_step
 

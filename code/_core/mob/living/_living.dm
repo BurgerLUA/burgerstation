@@ -161,7 +161,7 @@
 
 	var/queue_delete_on_death = TRUE
 
-	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling. See mob_size.dm for more information.
+	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See mob_size.dm for values
 
 	var/max_level = 500 //Max level for attributes of the mob.
 

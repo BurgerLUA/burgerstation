@@ -43,7 +43,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(AI_TICK*0.5)
 
-	mob_size = MOB_SIZE_LARGE
+	mob_size = MOB_SIZE_HUMAN
 
 	blood_type = /reagent/blood/xenomorph
 
