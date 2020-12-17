@@ -31,6 +31,10 @@ var/global/list/equipped_antags = list()
 
 	var/markup = 1.25 //Cost multiplier from buying out of this vendor.
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#FFFFFF"
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()

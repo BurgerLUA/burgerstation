@@ -1488,7 +1488,6 @@
 #include "code\_core\obj\structure\interactive\potted.dm"
 #include "code\_core\obj\structure\interactive\rack.dm"
 #include "code\_core\obj\structure\interactive\recycling.dm"
-#include "code\_core\obj\structure\interactive\research_server.dm"
 #include "code\_core\obj\structure\interactive\restocker.dm"
 #include "code\_core\obj\structure\interactive\scanner.dm"
 #include "code\_core\obj\structure\interactive\sheet_maker.dm"

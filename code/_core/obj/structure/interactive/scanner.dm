@@ -7,6 +7,10 @@
 
 	density = TRUE
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#00FF00"
+
 /obj/structure/interactive/scanner/iff
 	name = "\improper IFF body scanner"
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
@@ -47,6 +51,8 @@
 	icon_state = "door"
 
 	plane = PLANE_OBJ
+
+	desired_light_power = 0
 
 /obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -98,6 +104,8 @@
 	icon_state = "door"
 
 	plane = PLANE_OBJ
+
+	desired_light_power = 0
 
 /obj/structure/interactive/scanner/cop/Cross/(var/atom/movable/M)
 

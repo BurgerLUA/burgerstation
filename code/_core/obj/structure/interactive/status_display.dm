@@ -24,6 +24,10 @@ var/global/list/global_status_displays = list()
 
 	plane = PLANE_OBJ
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#FFFFFF"
+
 /obj/structure/interactive/status_display/shuttle
 	name = "shuttle status display"
 

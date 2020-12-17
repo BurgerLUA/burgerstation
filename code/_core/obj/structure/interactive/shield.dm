@@ -13,3 +13,7 @@
 	plane = PLANE_WALL
 
 	density = TRUE
+
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#0000FF"

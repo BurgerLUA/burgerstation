@@ -11,6 +11,10 @@ obj/structure/interactive/artifact
 
 	bullet_block_chance = 75
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#FFFFFF"
+
 obj/structure/interactive/artifact/Initialize()
 	name = "[pick(SSname.adjectives)] artifact of [pick(SSname.verbs)]"
 	return ..()

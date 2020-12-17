@@ -19,6 +19,10 @@
 	health = /health/construction/
 	health_base = 2000
 
+	desired_light_power = 0.5
+	desired_light_range = 6
+	desired_light_color = "#FFFF00"
+
 /obj/structure/interactive/supermatter/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()

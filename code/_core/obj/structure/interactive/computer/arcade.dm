@@ -13,6 +13,10 @@ obj/structure/interactive/computer/arcade
 
 	density = TRUE
 
+	desired_light_power = 0.25
+	desired_light_range = 3
+	desired_light_color = "#00FF00"
+
 obj/structure/interactive/computer/arcade/bubbletwist
 	name = "arcade - bubble twist"
 

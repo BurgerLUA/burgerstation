@@ -27,6 +27,9 @@
 
 	collect_contents_on_initialize = FALSE
 
+	desired_light_power = 0.25
+	desired_light_range = 1
+	desired_light_color = "#FF0000"
 
 
 /obj/structure/interactive/crate/necro/herald

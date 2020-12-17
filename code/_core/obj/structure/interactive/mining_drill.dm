@@ -19,6 +19,10 @@
 
 	density = TRUE
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#FFFFFF"
+
 /obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
 	. = ..()

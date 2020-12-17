@@ -5,6 +5,10 @@
 
 	bullet_block_chance = 50
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#0000FF"
+
 
 
 /obj/structure/interactive/server/broadcast_receiver
