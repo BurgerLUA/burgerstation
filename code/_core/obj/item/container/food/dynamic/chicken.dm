@@ -55,9 +55,15 @@
 	return ..()
 
 /obj/item/container/food/dynamic/chicken/raw/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/chicken,10)
+	reagents.add_reagent(/reagent/nutrition/meat/chicken,15)
+	reagents.add_reagent(/reagent/nutrition/fat/chicken,5)
 	return ..()
 
 /obj/item/container/food/dynamic/chicken/cooked/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/chicken/cooked,10)
+	reagents.add_reagent(/reagent/nutrition/meat/chicken/cooked,15)
+	return ..()
+
+/obj/item/container/food/dynamic/chicken/raw_penguin/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/penguin,15)
+	reagents.add_reagent(/reagent/nutrition/fat/penguin,5)
 	return ..()

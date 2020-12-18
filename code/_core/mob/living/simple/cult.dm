@@ -6,6 +6,9 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
+	blood_type = /reagent/blood/unholy
+	blood_volume = BLOOD_VOLUME_DEFAULT
+
 /mob/living/simple/cult/cultist
 	name = "blood cult peon"
 	icon = 'icons/mob/living/simple/cult.dmi'
@@ -50,6 +53,9 @@
 	stun_angle = 0
 
 	mob_size = MOB_SIZE_LARGE
+
+	blood_type = /reagent/blood/unholy
+	blood_volume = 1000
 
 /mob/living/simple/cult/construct/post_death()
 	. = ..()

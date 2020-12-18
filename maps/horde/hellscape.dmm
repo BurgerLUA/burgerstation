@@ -1393,7 +1393,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "gg" = (
-/obj/item/container/food/dynamic/meat/spider,
+/obj/item/container/food/dynamic/meat/raw_spider,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "gh" = (
@@ -1454,8 +1454,8 @@
 /area/hellscape/interior/caves/hellchamber)
 "gw" = (
 /obj/structure/smooth/table/wood,
-/obj/item/container/food/dynamic/meat/bear,
-/obj/item/container/food/dynamic/meat/bear,
+/obj/item/container/food/dynamic/meat/raw_bear,
+/obj/item/container/food/dynamic/meat/raw_bear,
 /obj/structure/interactive/lighting/candle,
 /turf/simulated/floor/wood/brown,
 /area/hellscape/exterior/jungle/north)
@@ -1652,7 +1652,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/hellscape/interior/syndicate/aux)
 "hp" = (
-/obj/item/container/food/dynamic/meat/xeno,
+/obj/item/container/food/dynamic/meat/raw_xeno,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "hq" = (

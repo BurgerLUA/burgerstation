@@ -34,6 +34,9 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
+	blood_type = /reagent/blood/clown
+	blood_volume = 750
+
 
 /mob/living/simple/clown/hulk
 	name = "clown hunk"

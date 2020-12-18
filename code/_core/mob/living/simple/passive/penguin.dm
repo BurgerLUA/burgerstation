@@ -10,14 +10,17 @@
 	value = 50
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/penguin/,
-		/obj/item/container/food/dynamic/fish/penguin/
+		/obj/item/container/food/dynamic/chicken/raw_penguin/,
+		/obj/item/container/food/dynamic/chicken/raw_penguin/
 	)
 
 	mob_size = MOB_SIZE_ANIMAL
 
 	loyalty_tag = "Penguin"
 	iff_tag = "Penguin"
+
+	blood_type = /reagent/blood/chicken
+	blood_volume = 400
 
 /mob/living/simple/passive/penguin/post_death()
 	..()

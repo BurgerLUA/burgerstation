@@ -10,6 +10,7 @@
 	ai = /ai/turret
 
 	blood_type = /reagent/blood/robot
+	blood_volume = 400
 
 	pixel_x = 0
 	pixel_y = 0

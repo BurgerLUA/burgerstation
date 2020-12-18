@@ -19,6 +19,9 @@
 
 	mob_size = MOB_SIZE_CRITTER
 
+	blood_type = /reagent/blood/bat
+	blood_volume = 100
+
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"

@@ -13,9 +13,9 @@
 	value = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/
 	)
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
@@ -49,6 +49,8 @@
 	has_footsteps = FALSE
 
 	stun_angle = 180
+
+	blood_type = /reagent/blood/carp
 
 /mob/living/simple/spacecarp/post_death()
 	..()

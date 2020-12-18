@@ -17,6 +17,16 @@
 
 	mob_size = MOB_SIZE_LARGE
 
+	blood_type = /reagent/blood/carp
+	blood_volume = 750
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/fish/raw_carp,
+		/obj/item/container/food/dynamic/fish/raw_carp,
+		/obj/item/container/food/dynamic/fish/raw_carp,
+		/obj/item/container/food/dynamic/fish/raw_carp
+	)
+
 /mob/living/simple/bullshark/post_death()
 	. = ..()
 	icon_state = "dead"

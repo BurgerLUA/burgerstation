@@ -15,6 +15,9 @@
 	loyalty_tag = "Chicken"
 	iff_tag = "Chicken"
 
+	blood_type = /reagent/blood/chicken
+	blood_volume = 100
+
 /mob/living/simple/passive/chicken/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

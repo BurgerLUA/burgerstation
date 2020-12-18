@@ -11,19 +11,16 @@
 	value = 400
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/,
-		/obj/item/container/food/dynamic/fish/carp/
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/,
+		/obj/item/container/food/dynamic/fish/raw_carp/
 	)
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	loyalty_tag = "carp"
-	iff_tag = "carp"
 
 	armor_base = list(
 		BLADE = 75,
@@ -55,4 +52,7 @@
 
 	loyalty_tag = "Shark"
 	iff_tag = "Shark"
+
+	blood_type = /reagent/blood/carp
+	blood_volume = 750
 

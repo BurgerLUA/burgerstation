@@ -4,3 +4,7 @@
 #define MOB_SIZE_LARGE 3
 #define MOB_SIZE_GIANT 4
 #define MOB_SIZE_BOSS 5
+
+
+
+#define BLOOD_VOLUME_DEFAULT 510

@@ -17,6 +17,9 @@
 
 	mob_size = MOB_SIZE_CRITTER
 
+	blood_type = /reagent/blood/reptile
+	blood_volume = 50
+
 /mob/living/simple/passive/lizard/Crossed(atom/movable/O)
 	return TRUE
 

@@ -42,3 +42,5 @@
 		DISARM = TRUE,
 		FIRE = TRUE
 	)
+
+	blood_type = /reagent/blood/human/a_positive

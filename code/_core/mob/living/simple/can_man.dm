@@ -70,6 +70,7 @@
 	var/charge_dir = 0
 
 	blood_type = /reagent/blood/robot
+	blood_volume = 3000
 
 	change_dir_on_move = FALSE
 

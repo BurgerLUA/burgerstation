@@ -58,6 +58,17 @@
 		FIRE = TRUE
 	)
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum,
+		/obj/item/container/food/dynamic/meat/raw_bubblegum
+	)
+
 	iff_tag = "Bubblegum"
 	loyalty_tag = "Bubblegum"
 
@@ -71,6 +82,9 @@
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
+
+	blood_volume = 5000
+	blood_type = /reagent/blood/ancient
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()

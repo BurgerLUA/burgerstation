@@ -13,6 +13,15 @@
 
 	stun_angle = 0
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_arachnid,
+		/obj/item/container/food/dynamic/meat/raw_arachnid,
+		/obj/item/container/food/dynamic/meat/raw_arachnid,
+		/obj/item/container/food/dynamic/meat/raw_arachnid,
+		/obj/item/container/food/dynamic/meat/raw_arachnid,
+		/obj/item/container/food/dynamic/meat/raw_arachnid
+	)
+
 	pixel_x = -16
 
 	armor_base = list(
@@ -51,6 +60,9 @@
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
+
+	blood_type = /reagent/blood/alien/green
+	blood_volume = 2000
 
 /mob/living/simple/arachnid/post_death()
 	. = ..()

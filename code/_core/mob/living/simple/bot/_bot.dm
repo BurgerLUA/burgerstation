@@ -4,3 +4,6 @@
 	desc_extended = "This is a bot."
 
 	mob_size = MOB_SIZE_ANIMAL
+
+	blood_type = /reagent/blood/robot
+	blood_volume = 250

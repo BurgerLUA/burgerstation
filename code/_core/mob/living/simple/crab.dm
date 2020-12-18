@@ -10,7 +10,8 @@
 	value = 25
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/crab/
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/
 	)
 
 	ai = /ai/
@@ -39,6 +40,9 @@
 	loyalty_tag = "Crab"
 	iff_tag = "Crab"
 
+	blood_type = /reagent/blood/crab
+	blood_volume = 200
+
 /mob/living/simple/crab/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -65,13 +69,13 @@
 	class = /class/crab/king
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/crab/,
-		/obj/item/container/food/dynamic/fish/crab/,
-		/obj/item/container/food/dynamic/fish/crab/,
-		/obj/item/container/food/dynamic/fish/crab/,
-		/obj/item/container/food/dynamic/fish/crab/,
-		/obj/item/container/food/dynamic/fish/crab/,
-		/obj/item/container/food/dynamic/fish/crab/
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/,
+		/obj/item/container/food/dynamic/fish/raw_crab/
 	)
 
 

@@ -42,6 +42,9 @@
 
 	health_base = 75
 
+	blood_type = /reagent/blood/ancient
+	blood_volume = 200
+
 /mob/living/simple/watcher/post_death()
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"

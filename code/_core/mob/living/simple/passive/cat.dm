@@ -23,6 +23,9 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 
 	mob_size = MOB_SIZE_ANIMAL
 
+	blood_type = /reagent/blood/cat
+	blood_volume = 200
+
 /mob/living/simple/cat/post_move(var/atom/old_loc)
 
 	var/old_sitting = sitting

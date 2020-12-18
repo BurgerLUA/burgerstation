@@ -21,3 +21,6 @@
 	iff_tag = "Screech"
 
 	mob_size = MOB_SIZE_HUMAN
+
+	blood_type = /reagent/blood/alien/red
+	blood_volume = 400

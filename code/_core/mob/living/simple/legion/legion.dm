@@ -31,6 +31,8 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
+	blood_type = null
+
 /mob/living/simple/legionare/Destroy()
 
 	if(stored_corpse)

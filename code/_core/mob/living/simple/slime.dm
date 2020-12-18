@@ -50,6 +50,16 @@
 
 	stun_angle = 0
 
+	blood_type = null
+
+
+/mob/living/simple/slime/create_override_contents(var/mob/living/caller)
+	var/obj/item/slime_core/SC = new(src.loc)
+	SC.color = slime_color
+	INITIALIZE(SC)
+	FINALIZE(SC)
+	return TRUE
+
 /mob/living/simple/slime/PostInitialize()
 	. = ..()
 	update_sprite()
@@ -58,12 +68,6 @@
 /mob/living/simple/slime/post_death()
 
 	. = ..()
-
-	if(stored_slimes <= 1)
-		var/obj/item/slime_core/SC = new(src.loc)
-		SC.color = slime_color
-		INITIALIZE(SC)
-		FINALIZE(SC)
 
 	for(var/i=1,i<=stored_slimes-1,i++)
 		var/mob/living/simple/slime/S = new(get_turf(src))

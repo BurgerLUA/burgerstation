@@ -21,6 +21,13 @@
 
 	mob_size = MOB_SIZE_CRITTER
 
+	blood_type = /reagent/blood/bird
+	blood_volume = 100
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/chicken/raw
+	)
+
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
 	return ..()

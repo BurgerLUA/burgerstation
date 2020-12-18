@@ -9,6 +9,7 @@
 	enable_security_hud = FALSE
 
 	blood_type = /reagent/blood/robot
+	blood_volume = 500
 
 	value = 100
 

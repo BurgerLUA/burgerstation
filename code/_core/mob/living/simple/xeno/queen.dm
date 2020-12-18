@@ -55,11 +55,11 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange,
-		/obj/item/container/food/dynamic/meat/xeno/,
-		/obj/item/container/food/dynamic/meat/xeno/,
-		/obj/item/container/food/dynamic/meat/xeno/,
-		/obj/item/container/food/dynamic/meat/xeno/,
-		/obj/item/container/food/dynamic/meat/xeno/
+		/obj/item/container/food/dynamic/meat/raw_xeno/,
+		/obj/item/container/food/dynamic/meat/raw_xeno/,
+		/obj/item/container/food/dynamic/meat/raw_xeno/,
+		/obj/item/container/food/dynamic/meat/raw_xeno/,
+		/obj/item/container/food/dynamic/meat/raw_xeno/
 	)
 
 	fatigue_from_block_mul = 0

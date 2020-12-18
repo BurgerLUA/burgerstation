@@ -13,7 +13,6 @@
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/food/dynamic/meat/raw
 	)
 
@@ -40,6 +39,9 @@
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
+
+	blood_type = /reagent/blood/cow
+	blood_volume = 500
 
 /mob/living/simple/bull/post_death()
 	..()

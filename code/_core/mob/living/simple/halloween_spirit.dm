@@ -37,5 +37,7 @@
 	loyalty_tag = "Ghost"
 	iff_tag = "Ghost"
 
+	blood_type = null
+
 /mob/living/simple/halloween_spirit/blue
 	icon_state = "blue"

@@ -12,6 +12,15 @@
 
 	ai = /ai/boss/ash_drake/
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_ash_drake,
+		/obj/item/container/food/dynamic/meat/raw_ash_drake,
+		/obj/item/container/food/dynamic/meat/raw_ash_drake,
+		/obj/item/container/food/dynamic/meat/raw_ash_drake,
+		/obj/item/container/food/dynamic/meat/raw_ash_drake,
+		/obj/item/container/food/dynamic/meat/raw_ash_drake
+	)
+
 	stun_angle = 0
 
 	health_base = 3000
@@ -68,6 +77,9 @@
 
 	iff_tag = "Ash Drake"
 	loyalty_tag = "Ash Drake"
+
+	blood_type = /reagent/blood/ancient
+	blood_volume = 3000
 
 
 /*

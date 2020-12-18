@@ -42,8 +42,8 @@
 	var/last_intoxication_message = 0
 
 	var/blood_type = /reagent/blood
-	var/blood_volume = 0 //Set to max on new.
-	var/blood_volume_max = 510
+	var/blood_volume = BLOOD_VOLUME_DEFAULT
+	var/blood_volume_max = 0 //Set to blood_volume on new.
 
 	var/blood_oxygen = 0 //Additional blood oxygen.
 
@@ -154,6 +154,7 @@
 	deceleration = 15
 	use_momentum = TRUE
 
+	var/override_butcher = FALSE //Set to true for custom butcher contents.
 	var/list/obj/butcher_contents = list()
 
 	var/next_resist = 0
@@ -344,7 +345,7 @@
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
-	blood_volume = blood_volume_max
+	blood_volume_max = blood_volume
 
 	if(desired_level_multiplier)
 		level_multiplier *= desired_level_multiplier

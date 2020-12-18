@@ -34,10 +34,10 @@
 	health_base = 200
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/bear/,
-		/obj/item/container/food/dynamic/meat/bear/,
-		/obj/item/container/food/dynamic/meat/bear/,
-		/obj/item/container/food/dynamic/meat/bear/
+		/obj/item/container/food/dynamic/meat/raw_bear/,
+		/obj/item/container/food/dynamic/meat/raw_bear/,
+		/obj/item/container/food/dynamic/meat/raw_bear/,
+		/obj/item/container/food/dynamic/meat/raw_bear/
 	)
 
 	mob_size = MOB_SIZE_LARGE
@@ -46,6 +46,9 @@
 
 	iff_tag = "Bear"
 	loyalty_tag = "Bear"
+
+	blood_type = /reagent/blood/bear
+	blood_volume = 1000
 
 /mob/living/simple/bear/update_overlays()
 	. = ..()

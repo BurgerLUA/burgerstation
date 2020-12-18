@@ -184,6 +184,28 @@
 
 	return TRUE
 
+/obj/item/container/food/dynamic/meat/raw_arachnid/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/arachnid,15)
+	reagents.add_reagent(/reagent/nutrition/fat/arachnid,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_ash_drake/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/ash_drake,15)
+	reagents.add_reagent(/reagent/ash,5)
+	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_bubblegum/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/bubblegum,15)
+	reagents.add_reagent(/reagent/blood/ancient,5)
+	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_colossus/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/colossus,15)
+	reagents.add_reagent(/reagent/blood/ancient,5)
+	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
 
 /obj/item/container/food/dynamic/meat/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
@@ -210,21 +232,25 @@
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/xeno/Generate()
+/obj/item/container/food/dynamic/meat/raw_xeno/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/xeno,15)
 	reagents.add_reagent(/reagent/nutrition/fat/xeno,5)
 	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/spider/Generate()
+/obj/item/container/food/dynamic/meat/raw_spider/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/spider,15)
 	reagents.add_reagent(/reagent/toxin/spider_toxin,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/bear/Generate()
+/obj/item/container/food/dynamic/meat/raw_bear/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/bear,20)
 	reagents.add_reagent(/reagent/nutrition/fat/bear,10)
 	return ..()
 
+/obj/item/container/food/dynamic/meat/raw_goliath/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/goliath,15)
+	reagents.add_reagent(/reagent/nutrition/fat/goliath,5)
+	return ..()
 
 

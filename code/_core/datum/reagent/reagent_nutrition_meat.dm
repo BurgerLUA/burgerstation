@@ -45,7 +45,7 @@
 	return ..()
 
 /reagent/nutrition/fat/cow
-	name = "cow's fat"
+	name = "cow fat"
 	desc = "Nutrition and flavor from cow's fat."
 	color = "#EAD5A4"
 
@@ -54,17 +54,35 @@
 	flavor = "fat"
 
 /reagent/nutrition/fat/bear
-	name = "bear's fat"
-	desc = "Nutrition and flavor from bear's fat."
+	name = "bear fat"
+	desc = "Nutrition and flavor from bear fat."
 	color = "#EAD5A4"
 
 	nutrition_amount = 20
 
 	flavor = "fat"
 
+/reagent/nutrition/fat/chicken
+	name = "chicken fat"
+	desc = "Nutrition and flavor from chicken fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 12
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/ancient
+	name = "ancient fat"
+	desc = "Nutrition and flavor from ancient fat."
+	color = "#BAAD8D"
+
+	nutrition_amount = 20
+
+	flavor = "fat"
+
 /reagent/nutrition/fat/penguin
-	name = "penguin's fat"
-	desc = "Nutrition and flavor from penguin's fat."
+	name = "penguin fat"
+	desc = "Nutrition and flavor from penguin fat."
 	color = "#EAD5A4"
 
 	nutrition_amount = 12
@@ -72,8 +90,8 @@
 	flavor = "fat"
 
 /reagent/nutrition/fat/fish
-	name = "fish's fat"
-	desc = "Nutrition and flavor from fish's fat."
+	name = "fish fat"
+	desc = "Nutrition and flavor from fish fat."
 	color = "#EAD5A4"
 
 	nutrition_amount = 12
@@ -82,21 +100,40 @@
 
 /reagent/nutrition/fat/xeno
 	name = "xeno fat"
-	desc = "Nutrition and flavor from a xeno's fat."
+	desc = "Nutrition and flavor from a xeno fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 20
+	nutrition_amount = 10
 
 	flavor = "fat"
 
 /reagent/nutrition/fat/crab
-	name = "crab's fat"
-	desc = "Nutrition and flavor from crab's fat."
+	name = "crab fat"
+	desc = "Nutrition and flavor from crab fat."
 	color = "#EAD5A4"
 
 	nutrition_amount = 16
 
 	flavor = "fat"
+
+/reagent/nutrition/fat/arachnid
+	name = "arachnid fat"
+	desc = "Nutrition and flavor from arachnid fat."
+	color = "#B2D5A4"
+
+	nutrition_amount = 10
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/goliath
+	name = "goliath fat"
+	desc = "Nutrition and flavor from goliath fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 5
+
+	flavor = "fat"
+
 
 
 //Meat
@@ -214,6 +251,173 @@
 	heated_reagent = /reagent/carbon
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
+
+
+
+/reagent/nutrition/meat/arachnid
+	name = "raw arachnid meat"
+	desc = "Nutrition and flavor from raw arachnid meat."
+	color = "#80BA2B"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	nutrition_amount = 10
+	heal_factor = -20
+
+	flavor = "sour dirt"
+
+	heated_reagent = /reagent/nutrition/meat/arachnid/cooked
+
+/reagent/nutrition/meat/arachnid/cooked
+	name = "cooked arachnid meat"
+	desc = "Nutrition and flavor from cooked arachnid meat."
+	color = "#9E782D"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
+
+	nutrition_amount = 8
+	heal_factor = 10
+
+	flavor = "chicken"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+/reagent/nutrition/meat/ash_drake
+	name = "raw ash drake meat"
+	desc = "Nutrition and flavor from raw ash drake meat."
+	color = "#C44E55"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS | FLAG_FLAVOR_NECRO
+
+	nutrition_amount = 10
+	heal_factor = -10
+
+	flavor = "sour dirt"
+
+	heated_reagent = /reagent/nutrition/meat/ash_drake/cooked
+
+/reagent/nutrition/meat/ash_drake/cooked
+	name = "cooked ash drake meat"
+	desc = "Nutrition and flavor from cooked ash drake meat."
+	color = "#8E5627"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GROSS | FLAG_FLAVOR_NECRO
+
+	nutrition_amount = 8
+	heal_factor = -10
+
+	flavor = "chicken"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/ash
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+
+/reagent/nutrition/meat/bubblegum
+	name = "raw bubblegum meat"
+	desc = "Nutrition and flavor from raw bubblegum meat."
+	color = "#C44E55"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	nutrition_amount = 30
+	heal_factor = -10
+
+	flavor = "brains"
+
+	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+
+/reagent/nutrition/meat/bubblegum/cooked
+	name = "cooked bubblegum meat"
+	desc = "Nutrition and flavor from cooked bubblegum meat."
+	color = "#8E5627"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GROSS
+
+	nutrition_amount = 40
+	heal_factor = -10
+
+	flavor = "cooked brains"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/ash
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+
+
+
+/reagent/nutrition/meat/colossus
+	name = "raw colossus meat"
+	desc = "Nutrition and flavor from raw colossus meat."
+	color = "#AD0000"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	nutrition_amount = 20
+	heal_factor = -5
+
+	flavor = "tough raw jerky"
+
+	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+
+/reagent/nutrition/meat/colossus/cooked
+	name = "cooked colossus meat"
+	desc = "Nutrition and flavor from cooked colossus meat."
+	color = "#633700"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
+
+	nutrition_amount = 20
+	heal_factor = 0
+
+	flavor = "tough jerky"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/ash
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+
+
+/reagent/nutrition/meat/goliath
+	name = "raw goliath meat"
+	desc = "Nutrition and flavor from raw goliath meat."
+	color = "#A54343"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	nutrition_amount = 0
+	heal_factor = 0
+
+	flavor = "rocks"
+
+	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+
+/reagent/nutrition/meat/goliath/cooked
+	name = "cooked goliath meat"
+	desc = "Nutrition and flavor from cooked goliath meat."
+	color = "#823613"
+
+	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
+
+	nutrition_amount = 20
+	heal_factor = 10
+
+	flavor = "filet mignon"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/ash
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+
+
+
 
 /reagent/nutrition/meat/spider
 	name = "raw spider meat"

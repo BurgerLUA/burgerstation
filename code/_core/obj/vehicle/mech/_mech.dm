@@ -14,6 +14,7 @@
 	change_dir_on_move = FALSE
 
 	blood_type = /reagent/blood/robot
+	blood_volume = 1000
 
 	mob_size = MOB_SIZE_LARGE
 

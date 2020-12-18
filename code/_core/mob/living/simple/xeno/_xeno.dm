@@ -15,9 +15,9 @@
 	value = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/xeno/,
-		/obj/item/container/food/dynamic/meat/xeno/,
-		/obj/item/container/food/dynamic/meat/xeno/
+		/obj/item/container/food/dynamic/meat/raw_xeno/,
+		/obj/item/container/food/dynamic/meat/raw_xeno/,
+		/obj/item/container/food/dynamic/meat/raw_xeno/
 	)
 
 	loyalty_tag = "Alien"
@@ -45,7 +45,8 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
-	blood_type = /reagent/blood/xenomorph
+	blood_type = /reagent/blood/xeno
+	blood_volume = 480
 
 	var/next_talk = 0
 	var/leaping = FALSE

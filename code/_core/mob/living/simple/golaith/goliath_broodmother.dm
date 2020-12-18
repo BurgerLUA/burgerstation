@@ -54,6 +54,18 @@
 
 	var/list/mob/living/simple/goliath/baby/tracked_babies = list()
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath
+	)
+
 /mob/living/simple/goliath/broodmother/post_death()
 	. = ..()
 	CREATE(/obj/structure/interactive/crate/necro/broodmother,get_turf(src))

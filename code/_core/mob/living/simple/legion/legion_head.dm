@@ -22,6 +22,8 @@
 
 	mob_size = MOB_SIZE_CRITTER
 
+	blood_type = null
+
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 

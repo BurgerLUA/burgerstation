@@ -35,6 +35,9 @@
 	loyalty_tag = "Meme"
 	iff_tag = "Meme"
 
+	blood_type = /reagent/blood/insect
+	blood_volume = 50
+
 /mob/living/simple/glockroach/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

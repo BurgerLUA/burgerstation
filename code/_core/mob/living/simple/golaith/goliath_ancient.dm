@@ -32,3 +32,11 @@
 	)
 
 	mob_size = MOB_SIZE_GIANT
+
+	blood_type = /reagent/blood/ancient
+	blood_volume = 1000
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath
+	)

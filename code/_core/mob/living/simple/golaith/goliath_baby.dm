@@ -16,8 +16,8 @@
 
 	mob_size = MOB_SIZE_CRITTER
 
-
 /mob/living/simple/goliath/baby/post_death()
 	. = ..()
 	explode(get_turf(src),2,src,src,loyalty_tag)
+	qdel(src)
 	return .

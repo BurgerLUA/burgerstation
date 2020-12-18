@@ -5,6 +5,12 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/goliath
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath,
+		/obj/item/container/food/dynamic/meat/raw_goliath
+	)
+
 	value = 25
 
 	ai = /ai/goliath
@@ -39,6 +45,9 @@
 	loyalty_tag = "Goliath"
 
 	mob_size = MOB_SIZE_LARGE
+
+	blood_type = /reagent/blood/goliath
+	blood_volume = 750
 
 /mob/living/simple/goliath/post_death()
 	..()

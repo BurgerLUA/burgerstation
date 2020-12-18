@@ -68,6 +68,16 @@
 
 	var/next_teleport = 0
 
+	blood_type = /reagent/blood/ancient
+	blood_volume = 1000
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_colossus,
+		/obj/item/container/food/dynamic/meat/raw_colossus,
+		/obj/item/container/food/dynamic/meat/raw_colossus,
+		/obj/item/container/food/dynamic/meat/raw_colossus
+	)
+
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 

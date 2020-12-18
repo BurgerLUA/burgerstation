@@ -16,9 +16,9 @@
 	value = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/spider/,
-		/obj/item/container/food/dynamic/meat/spider/,
-		/obj/item/container/food/dynamic/meat/spider/
+		/obj/item/container/food/dynamic/meat/raw_spider/,
+		/obj/item/container/food/dynamic/meat/raw_spider/,
+		/obj/item/container/food/dynamic/meat/raw_spider/
 	)
 
 	armor_base = list(
@@ -45,6 +45,8 @@
 
 	loyalty_tag = "Spider"
 	iff_tag = "Spider"
+
+	blood_type = /reagent/blood/spider
 
 /mob/living/simple/spider/post_death()
 	..()

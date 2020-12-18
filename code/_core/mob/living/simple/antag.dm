@@ -77,6 +77,19 @@ var/global/list/valid_antag_colors = list(
 
 	color = chosen_color
 
+	var/list/blood_types = list(
+		/reagent/blood/human/ab_negative = 6,
+		/reagent/blood/human/b_negative = 15,
+		/reagent/blood/human/ab_positive = 34,
+		/reagent/blood/human/a_negative = 63,
+		/reagent/blood/human/o_negative = 66,
+		/reagent/blood/human/b_positive = 85,
+		/reagent/blood/human/a_positive = 357,
+		/reagent/blood/human/o_positive = 374,
+	)
+
+	blood_type = pickweight(blood_types)
+
 	return ..()
 
 /mob/living/simple/antag/Finalize()
