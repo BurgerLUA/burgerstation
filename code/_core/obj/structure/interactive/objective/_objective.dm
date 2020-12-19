@@ -16,7 +16,7 @@ obj/structure/interactive/artifact
 	desired_light_color = "#FFFFFF"
 
 obj/structure/interactive/artifact/Initialize()
-	name = "[pick(SSname.adjectives)] artifact of [pick(SSname.verbs)]"
+	name = "[pick(SStext.adjectives)] artifact of [pick(SStext.verbs)]"
 	return ..()
 
 obj/structure/interactive/artifact/on_crush()

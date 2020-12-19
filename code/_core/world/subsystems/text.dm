@@ -1,5 +1,5 @@
-SUBSYSTEM_DEF(name)
-	name = "Name Subsystem"
+SUBSYSTEM_DEF(text)
+	name = "text Subsystem"
 	desc = "Stores random names in a list and keeps track of possibly duplicate names."
 	priority = SS_ORDER_PRELOAD
 
@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(name)
 
 	var/list/wisdoms = list()
 
-/subsystem/name/Initialize()
+/subsystem/text/Initialize()
 
 	first_names_male = splittext(rustg_file_read("text/names/first_male.txt"),"\n")
 	first_names_female = splittext(rustg_file_read("text/names/first_female.txt"),"\n")
@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(name)
 
 	return ..()
 
-/subsystem/name/proc/check_duplicate_name(var/name)
+/subsystem/text/proc/check_duplicate_name(var/name)
 	if(name_count[name])
 		name_count[name]++
 		return "[name] ([name_count[name]])"
@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(name)
 		name_count[name] = rand(1,999) //One funny thing is that you can tell at least how many of this type exists by starting it at 1, so it's random.
 		return "[name] ([name_count[name]])"
 
-/subsystem/name/proc/check_duplicate_player_name(var/name,var/ckey)
+/subsystem/text/proc/check_duplicate_player_name(var/name,var/ckey)
 	var/length_of_name = length(player_names[name])
 	if(!length_of_name)
 		player_names[name] = list()

@@ -51,7 +51,7 @@
 	return ..()
 
 /stand/proc/generate()
-	name = uppertext("[pick(SSname.adjectives)] [pick(SSname.verbs)]")
+	name = uppertext("[pick(SStext.adjectives)] [pick(SStext.verbs)]")
 
 	var/points_left = 3*6
 	var/passes_left = points_left*3
