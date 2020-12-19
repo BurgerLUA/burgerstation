@@ -931,6 +931,7 @@
 #include "code\_core\obj\item\clothing\additional.dm"
 #include "code\_core\obj\item\clothing\interaction.dm"
 #include "code\_core\obj\item\clothing\slowdown.dm"
+#include "code\_core\obj\item\clothing\value.dm"
 #include "code\_core\obj\item\clothing\back\_back.dm"
 #include "code\_core\obj\item\clothing\back\storage\_storage.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\_backpack.dm"
