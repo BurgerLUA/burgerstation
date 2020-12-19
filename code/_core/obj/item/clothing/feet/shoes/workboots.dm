@@ -1,5 +1,5 @@
 /obj/item/clothing/feet/shoes/workboot
-	name = "right workboot"
+	name = "right steel-toe workboot"
 	desc = "Heavy load coming trough!"
 	desc_extended = "A heavy-duty boot for a heavy-duty work enviroment. Protects your feet against falling tools."
 	icon_state = "inventory_right"
@@ -12,21 +12,22 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 40,
-		PIERCE = 10,
-		ARCANE = -25,
-		COLD = 25
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		ARCANE = -AP_AXE,
+		COLD = AP_SWORD,
+		PAIN = INFINITY
 	)
 
 	size = SIZE_2
 
-	value = 50
+	value = 120
 
 
 
 /obj/item/clothing/feet/shoes/workboot/left
-	name = "left workboot"
+	name = "left steel-toe workboot"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

@@ -5,10 +5,10 @@
 	icon = 'icons/obj/item/clothing/suit/winter_coat.dmi'
 
 	defense_rating = list(
-		LASER = -25,
-		ARCANE = 50,
-		HEAT = -25,
-		COLD = 75
+		LASER = -AP_AXE,
+		ARCANE = AP_AXE,
+		HEAT = -AP_AXE,
+		COLD = AP_GREATSWORD
 	)
 
 	protection_cold = list(

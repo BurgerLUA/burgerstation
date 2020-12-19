@@ -6,9 +6,9 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 10
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER
 	)
 
 	size = SIZE_1

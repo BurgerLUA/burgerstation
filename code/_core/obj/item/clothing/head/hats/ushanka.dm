@@ -6,7 +6,7 @@
 	icon = 'icons/obj/item/clothing/hats/ushanka.dmi'
 
 	defense_rating = list(
-		COLD = 75
+		COLD = AP_CLUB
 	)
 
 	size = SIZE_2

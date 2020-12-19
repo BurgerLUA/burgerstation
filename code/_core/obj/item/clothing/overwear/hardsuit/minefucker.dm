@@ -10,14 +10,13 @@
 	value = 500
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 25,
-		HEAT = -50,
-		COLD = 25,
-		BOMB = -100
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		BOMB = -AP_SWORD,
+		FATIGUE = AP_SWORD
 	)
 
 	size = SIZE_5

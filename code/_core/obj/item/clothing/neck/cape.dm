@@ -8,8 +8,8 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		ARCANE = 25,
-		COLD = 25
+		ARCANE = AP_AXE,
+		COLD = AP_SWORD
 	)
 
 	rarity = RARITY_UNCOMMON

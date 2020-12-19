@@ -6,13 +6,13 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 30,
-		PIERCE = 40,
-		LASER = 15,
-		ARCANE = -50,
-		HEAT = 10,
-		COLD = 10
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_DAGGER,
+		ARCANE = -AP_AXE,
+		HEAT = AP_DAGGER,
+		COLD = AP_DAGGER
 	)
 
 	size = SIZE_2

@@ -9,16 +9,17 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 25,
-		HEAT = 50,
-		COLD = 25,
-		BIO = 25,
-		HOLY = 25,
-		DARK = 25,
+		BLADE = AP_SWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		ARCANE = AP_AXE,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BIO = AP_AXE,
+		HOLY = AP_AXE,
+		DARK = AP_AXE,
+		PAIN = AP_AXE
 	)
 	additional_clothing = list(
 		/obj/item/clothing/head/helmet/full/explorer

@@ -9,15 +9,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -10,
-		ARCANE = 25,
-		HEAT = 25,
-		COLD = 25,
-		HOLY = -50,
-		DARK = 50
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_SWORD,
+		COLD = AP_SWORD,
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD,
+		PAIN = AP_AXE
 	)
 
 	size = SIZE_4
@@ -38,15 +39,15 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 50,
-		HEAT = 50,
-		COLD = 25,
-		HOLY = -75,
-		DARK = 75
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_SWORD,
+		COLD = AP_SWORD,
+		HOLY = -AP_GREATCLUB,
+		DARK = AP_GREATCLUB
 	)
 
 	size = SIZE_3
@@ -66,15 +67,15 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 75,
-		LASER = -75,
-		ARCANE = 25,
-		HEAT = 50,
-		COLD = 50,
-		HOLY = -75,
-		DARK = 100
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = -AP_AXE,
+		ARCANE = AP_SWORD,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB
 	)
 
 	size = SIZE_5

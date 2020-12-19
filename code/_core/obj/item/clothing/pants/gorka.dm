@@ -5,11 +5,11 @@
 	icon = 'icons/obj/item/clothing/pants/gorka.dmi'
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 15,
-		PIERCE = 15,
-		COLD = 50,
-		HEAT = 50
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		COLD = AP_AXE,
+		HEAT = -AP_SWORD
 	)
 
 	value = 50

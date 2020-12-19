@@ -5,8 +5,9 @@
 	icon = 'icons/obj/item/clothing/glasses/eyepatch.dmi'
 	rarity = RARITY_MYTHICAL
 
-	defense_rating = list(
-		BLADE = 10,
+	defense_rating = list(,
+		ARCANE = AP_SWORD,
+		PAIN = AP_SWORD
 	)
 
 	size = SIZE_1

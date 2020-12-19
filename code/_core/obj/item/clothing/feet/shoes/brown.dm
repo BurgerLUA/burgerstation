@@ -12,11 +12,12 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 25,
-		COLD = 10
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		ARCANE = AP_SWORD,
+		COLD = AP_SWORD,
+		PAIN = AP_SWORD
 	)
 
 	size = SIZE_1

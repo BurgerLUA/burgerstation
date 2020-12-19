@@ -23,8 +23,7 @@
 	loot_table = list(
 		/obj/item/clothing/glasses/eyes_of_god = 1,
 		/obj/item/clothing/back/wings/angel = 1,
-		/obj/item/clothing/overwear/armor/knight/battlemage = 1,
-		/obj/item/clothing/mask/god = 1
+		/obj/item/clothing/overwear/armor/knight/battlemage = 1
 	)
 
 

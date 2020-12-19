@@ -7,9 +7,9 @@
 	desc_extended = "A giant mask depicting some sort of father figure. Speeds you up when worn."
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD
 	)
 
 	size = SIZE_3

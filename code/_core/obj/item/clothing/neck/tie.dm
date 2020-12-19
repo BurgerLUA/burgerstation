@@ -8,7 +8,7 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		ARCANE = 15
+		ARCANE = AP_SWORD
 	)
 
 	size = SIZE_1

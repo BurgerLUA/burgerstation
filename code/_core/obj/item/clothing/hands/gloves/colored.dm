@@ -11,12 +11,12 @@
 	protected_limbs = list(BODY_HAND_RIGHT)
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		ARCANE = 25,
-		COLD = 25,
-		BIO = 10
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = AP_SWORD,
+		COLD = AP_DAGGER,
+		BIO = AP_SWORD
 	)
 
 	size = SIZE_1
@@ -45,15 +45,15 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 25,
-		LASER = -10,
-		ARCANE = -25,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 10,
-		BIO = 10
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_DAGGER,
+		ARCANE = -AP_SWORD,
+		HEAT = AP_SWORD,
+		COLD = AP_SWORD,
+		BOMB = AP_SWORD,
+		BIO = AP_DAGGER
 	)
 
 	protection_cold = list(
@@ -88,15 +88,15 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		ARCANE = 50,
-		HEAT = 25,
-		COLD = 25,
-		BIO = 10,
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BIO = AP_DAGGER,
 		FATIGUE = INFINITY,
-		PAIN = 50
+		PAIN = AP_SWORD
 	)
 
 	protection_cold = list(
@@ -133,14 +133,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = -50,
-		HEAT = 50,
-		COLD = 50,
-		BIO = 10
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = -AP_AXE,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_CLUB,
+		COLD = AP_CLUB,
+		BIO = AP_DAGGER
 	)
 
 	protection_cold = list(

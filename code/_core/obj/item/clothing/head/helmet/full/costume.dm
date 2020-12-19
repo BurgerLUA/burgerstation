@@ -8,14 +8,13 @@
 	size = SIZE_3
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 0,
-		LASER = -25,
-		ARCANE = 25,
-		HEAT = -25,
-		BOMB = -25,
-		FATIGUE = 50
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		BOMB = -AP_SWORD,
+		FATIGUE = AP_SWORD
 	)
 
 	value = 200
@@ -30,14 +29,13 @@
 	size = SIZE_3
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -50,
-		ARCANE = -50,
-		HEAT = -50,
-		COLD = 50,
-		BIO = 25
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		BOMB = -AP_SWORD,
+		FATIGUE = AP_SWORD
 	)
 
 	value = 200
@@ -52,9 +50,9 @@
 	size = SIZE_2
 
 	defense_rating = list(
-		ARCANE = 50,
-		COLD = 25,
-		DARK = 25
+		ARCANE = AP_SWORD,
+		COLD = AP_SWORD,
+		DARK = AP_SWORD
 	)
 
 	value = 10
@@ -67,14 +65,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 25,
-		HEAT = -50,
-		COLD = 25,
-		BOMB = -100
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		BOMB = -AP_SWORD,
+		FATIGUE = AP_SWORD
 	)
 
 	size = SIZE_4

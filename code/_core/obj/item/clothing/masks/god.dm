@@ -1,4 +1,4 @@
-/obj/item/clothing/mask/god
+/obj/item/clothing/mask/godlike
 	name = "god mask"
 	icon = 'icons/obj/item/clothing/masks/god.dmi'
 	rarity = RARITY_LEGENDARY

@@ -5,11 +5,11 @@
 	desc_extended = "A fashionable beret."
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 25,
-		COLD = 25
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = AP_SWORD,
+		COLD = AP_DAGGER
 	)
 
 	size = SIZE_2
@@ -26,13 +26,13 @@
 	name = "armored beret"
 	desc_extended = "A fashionable beret with extra padding and protection built into it."
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		COLD = 25
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		COLD = AP_SWORD
 	)
 	rarity = RARITY_RARE
-	value = 400
+	value = 200
 
 /obj/item/clothing/head/hat/beret/armored/syndicate
 	color = COLOR_CRIMSON
