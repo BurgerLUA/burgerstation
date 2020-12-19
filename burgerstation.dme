@@ -542,6 +542,7 @@
 #include "code\_core\datum\reagent\reagent_magic.dm"
 #include "code\_core\datum\reagent\reagent_medicine.dm"
 #include "code\_core\datum\reagent\reagent_medicine_core.dm"
+#include "code\_core\datum\reagent\reagent_medicine_painkiller.dm"
 #include "code\_core\datum\reagent\reagent_nutrition.dm"
 #include "code\_core\datum\reagent\reagent_nutrition_alcohol.dm"
 #include "code\_core\datum\reagent\reagent_nutrition_dough.dm"

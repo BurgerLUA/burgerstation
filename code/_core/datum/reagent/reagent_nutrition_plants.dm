@@ -112,7 +112,7 @@
 	name = "raw poppy seed"
 	desc = "Pure unrefined poppy seeds. It's unwashed and contains traces of opium."
 
-	processed_reagent = /reagent/medicine/opium
+	processed_reagent = /reagent/medicine/painkiller/opium
 
 
 /reagent/nutrition/poppy_seed/raw/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)

@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/mob/living/proc/has_status_effect(var/status_type) //Accepts lists! Defaults to OR. Set to true if you want AND.
+/mob/living/proc/has_status_effect(var/status_type)
 	if(src.status_effects[status_type])
 		return TRUE
 	return FALSE

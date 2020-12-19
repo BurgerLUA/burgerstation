@@ -156,7 +156,7 @@
 
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST)
+	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN
@@ -348,7 +348,7 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX*2)
 		var/rad_to_regen = clamp(rad_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen, pain=-pain_to_regen, rad=-rad_to_regen, robotic=FALSE)
 		brute_regen_buffer -= brute_to_regen

@@ -167,7 +167,7 @@
 	name = "syringe (opium)"
 
 /obj/item/container/syringe/opium/Generate()
-	reagents.add_reagent(/reagent/medicine/opium,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/painkiller/opium,reagents.volume_max)
 	return ..()
 
 /obj/item/container/syringe/medipen
