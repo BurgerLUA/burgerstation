@@ -8,11 +8,8 @@
 	ai = /ai/xeno
 	damage_type = /damagetype/npc/xeno
 	class = /class/xeno
-	health_base = 50
 
 	pixel_x = -16
-
-	value = 100
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/raw_xeno/,
@@ -23,26 +20,9 @@
 	loyalty_tag = "Alien"
 	iff_tag = "Alien"
 
-	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		HEAT = -AP_SWORD,
-		COLD = AP_GREATAXE,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = AP_CLUB,
-		ION = INFINITY,
-		PAIN = AP_CLUB
-	)
-
 	movement_delay = DECISECONDS_TO_TICKS(AI_TICK*0.5)
 
 	mob_size = MOB_SIZE_HUMAN
-
-	blood_type = /reagent/blood/xeno
-	blood_volume = 480
 
 	var/next_talk = 0
 	var/leaping = FALSE

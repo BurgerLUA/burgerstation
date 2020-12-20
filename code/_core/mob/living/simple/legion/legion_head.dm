@@ -14,6 +14,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	health_base = 10
+	stamina_base = 50
+	mana_base = 50
 
 	has_footsteps = FALSE
 

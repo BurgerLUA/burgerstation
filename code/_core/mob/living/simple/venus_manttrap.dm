@@ -6,6 +6,8 @@
 	class = /class/venus_human_trap
 
 	health_base = 75
+	stamina_base = 25
+	mana_base = 25
 
 	ai = /ai/
 

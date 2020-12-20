@@ -7,6 +7,10 @@
 	damage_type = /damagetype/melee/sword/claymore/cult
 	class = /class/crab
 
+	health_base = 50
+	stamina_base = 100
+	mana_base = 100
+
 	value = 100
 
 	ai = /ai/

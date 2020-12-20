@@ -4,6 +4,8 @@
 	anchored = TRUE
 
 	health_base = 200
+	stamina_base = 100
+	mana_base = 100
 
 	var/obj/item/weapon/ranged/stored_weapon
 

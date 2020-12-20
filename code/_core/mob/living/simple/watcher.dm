@@ -7,6 +7,10 @@
 
 	value = 100
 
+	health_base = 100
+	stamina_base = 200
+	mana_base = 400
+
 	ai = /ai/watcher
 
 	stun_angle = 0

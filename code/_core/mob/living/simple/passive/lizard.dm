@@ -19,6 +19,10 @@
 	blood_type = /reagent/blood/reptile
 	blood_volume = 50
 
+	health_base = 25
+	stamina_base = 50
+	mana_base = 25
+
 /mob/living/simple/passive/lizard/Crossed(atom/movable/O)
 	return TRUE
 

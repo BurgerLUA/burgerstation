@@ -9,6 +9,10 @@
 
 	value = 50
 
+	health_base = 25
+	stamina_base = 50
+	mana_base = 25
+
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/chicken/raw_penguin/,
 		/obj/item/container/food/dynamic/chicken/raw_penguin/

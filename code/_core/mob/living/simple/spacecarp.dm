@@ -9,6 +9,8 @@
 	class = /class/carp/
 
 	health_base = 150
+	stamina_base = 100
+	mana_base = 50
 
 	value = 100
 

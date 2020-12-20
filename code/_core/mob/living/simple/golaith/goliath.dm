@@ -16,6 +16,8 @@
 	ai = /ai/goliath
 
 	health_base = 200
+	stamina_base = 100
+	mana_base = 200
 
 	stun_angle = 0
 

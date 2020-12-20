@@ -6,8 +6,8 @@
 
 	ai = /ai/ghost/
 	damage_type = /damagetype/npc/ghost
-	class = /class/antagonist
-	level_multiplier = 1000
+	class = /class/default
+	level_multiplier = 1
 
 	var/desired_alpha = 200 //Controlled in AI.
 
@@ -19,6 +19,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	health_base = 500
+	stamina_base = 500
+	mana_base = 500
 	blood_type = null
 
 	iff_tag = "Ghost"

@@ -6,6 +6,8 @@
 	icon_state = "dick"
 
 	health_base = 2500
+	stamina_base = 5000
+	mana_base = 50
 
 	ai = /ai/dick_kickem/
 	class = /class/npc/robust

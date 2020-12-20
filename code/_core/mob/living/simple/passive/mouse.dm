@@ -7,7 +7,9 @@
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/crab
 
-	health_base = 20
+	health_base = 25
+	stamina_base = 50
+	mana_base = 25
 
 	stun_angle = 0
 

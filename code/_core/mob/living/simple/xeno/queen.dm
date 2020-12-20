@@ -6,25 +6,25 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "living"
 	pixel_x = -16
+
+
 	health_base = 2000
+	stamina_base = 3000
+	mana_base = 500
+
 	value = 2000
 
 	armor_base = list(
-		BLADE = 100,
-		BLUNT = 75,
-		PIERCE = 100,
-		LASER = 50,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 50,
+		BLADE = AP_DAGGER,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		HEAT = AP_DAGGER,
+		COLD = AP_GREATSWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = 75,
-		DARK = 100,
-		FATIGUE = 100,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 100
+		PAIN = INFINITY
 	)
 
 	status_immune = list(
@@ -75,6 +75,9 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	death_sounds = FALSE
 
 	var/next_screech = 0
+
+	blood_type = /reagent/blood/xeno
+	blood_volume = 4000
 
 /mob/living/simple/xeno/queen/PostInitialize()
 

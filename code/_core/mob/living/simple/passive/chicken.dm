@@ -18,6 +18,10 @@
 	blood_type = /reagent/blood/chicken
 	blood_volume = 100
 
+	health_base = 25
+	stamina_base = 50
+	mana_base = 25
+
 /mob/living/simple/passive/chicken/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

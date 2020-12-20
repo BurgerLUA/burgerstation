@@ -10,6 +10,8 @@
 	ai = /ai/legion
 
 	health_base = 200
+	stamina_base = 200
+	mana_base = 200
 
 	value = 500
 

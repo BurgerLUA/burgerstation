@@ -20,7 +20,9 @@
 
 	damage_type = /damagetype/melee/sword/claymore/cult
 
-	health_base = 50
+	health_base = 100
+	stamina_base = 50
+	mana_base = 50
 
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
@@ -68,6 +70,8 @@
 	ai = /ai/behemoth
 
 	health_base = 200
+	stamina_base = 200
+	mana_base = 50
 
 	movement_delay = DECISECONDS_TO_TICKS(7)
 
@@ -98,6 +102,8 @@
 	ai = /ai/artificer
 
 	health_base = 100
+	stamina_base = 50
+	mana_base = 200
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
@@ -127,6 +133,8 @@
 	ai = /ai/harvester
 
 	health_base = 50
+	stamina_base = 100
+	mana_base = 50
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
@@ -155,6 +163,9 @@
 	ai = /ai/chosen
 
 	health_base = 150
+	stamina_base = 100
+	mana_base = 100
+
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
@@ -183,6 +194,8 @@
 	ai = /ai/chosen
 
 	health_base = 150
+	stamina_base = 100
+	mana_base = 100
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

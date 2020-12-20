@@ -9,6 +9,10 @@
 
 	value = 25
 
+	health_base = 5
+	stamina_base = 5
+	mana_base = 5
+
 	ai = /ai/simple/glockroach
 
 	stun_angle = 180

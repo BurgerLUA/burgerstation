@@ -9,6 +9,8 @@
 	class = /class/bear
 
 	health_base = 25
+	stamina_base = 50
+	mana_base = 25
 
 	listener = TRUE
 

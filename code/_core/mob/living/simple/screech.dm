@@ -7,6 +7,8 @@
 	pixel_x = -16
 
 	health_base = 100
+	stamina_base = 100
+	mana_base = 100
 
 	value = 1000
 

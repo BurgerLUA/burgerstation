@@ -20,16 +20,16 @@
 
 	armor_base = CYBORG_ARMOR
 
+/*
 /mob/living/simple/silicon/engineer
 	name = "engineer cyborg"
 	icon_state = "engineer"
-
-
 
 /mob/living/simple/silicon/engineer/PostInitialize()
 	. = ..()
 	flick("engineer_transform",src)
 	return .
+*/
 
 
 /mob/living/simple/silicon/squats
@@ -42,6 +42,8 @@
 	movement_delay = 2
 
 	health_base = 300
+	stamina_base = 500
+	mana_base = 100
 
 	sprint_delay_mul = 1
 	jog_delay_mul = 3
@@ -101,6 +103,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	health_base = 400
+	stamina_base = 200
+	mana_base = 100
 
 	armor_base = list(
 		BLADE = AP_SWORD,

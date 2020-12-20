@@ -20,6 +20,10 @@
 	blood_type = /reagent/blood/cow
 	blood_volume = 750
 
+	health_base = 100
+	stamina_base = 50
+	mana_base = 25
+
 /mob/living/simple/passive/cow/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

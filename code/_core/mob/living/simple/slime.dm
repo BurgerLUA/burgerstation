@@ -18,6 +18,10 @@
 
 	var/slime_color = "#000000"
 
+	health_base = 50
+	stamina_base = 100
+	mana_base = 100
+
 	value = 100
 
 	armor_base = list(
