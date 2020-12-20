@@ -68,6 +68,7 @@
 
 	if(!(bypass_checks || owner.allow_experience_gains))
 		return FALSE
+
 	if(!ENABLE_XP)
 		return FALSE
 
@@ -78,6 +79,8 @@
 		on_level_up(last_level,current_level)
 
 	last_level = current_level //Just in case it's leveled down or something.
+
+	owner.on_add_xp(src,xp_to_add)
 
 	return xp_to_add
 

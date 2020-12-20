@@ -6,7 +6,6 @@
 	icon_state = "mouse_brown"
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/crab
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 
 	health_base = 20
 

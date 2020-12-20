@@ -64,6 +64,8 @@
 	return old_level != level
 
 
+/mob/living/proc/on_add_xp(var/experience/E,var/added_xp)
+	return TRUE
 
 /mob/living/proc/on_level_up(var/experience/E,var/old_level,var/new_level)
 

@@ -46,9 +46,37 @@
 
 	var/active = FALSE
 
+/obj/item/weapon/melee/tool/welder/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("fuel_current")
+	return .
+
+/obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("fuel_current")
+	return .
+
 /obj/item/weapon/melee/tool/welder/Generate()
 	fuel_current = fuel_max
 	return ..()
+
+/obj/item/weapon/melee/tool/welder/Finalize()
+	fuel_current = min(fuel_current,fuel_max)
+	return ..()
+
+/obj/item/weapon/melee/tool/welder/think()
+
+	. = ..()
+
+	add_fuel(-0.001)
+
+	if(fuel_current <= 0)
+		return FALSE
+
+	if(!active)
+		return FALSE
+
+	return .
 
 /obj/item/weapon/melee/tool/welder/proc/add_fuel(var/fuel_amount = 0)
 
@@ -68,11 +96,13 @@
 		active = FALSE
 		update_sprite()
 		caller.to_chat(span("notice","You turn \the [src.name] off."))
+		stop_thinking(src)
 	else
 		if(fuel_current > 0)
 			active = TRUE
 			update_sprite()
 			caller.to_chat(span("notice","\The [src.name] turns on."))
+			start_thinking(src)
 		else
 			caller.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
 
