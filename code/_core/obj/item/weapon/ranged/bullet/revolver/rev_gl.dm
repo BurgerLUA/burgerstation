@@ -1,21 +1,24 @@
-/obj/item/weapon/ranged/bullet/revolver/grenade_launcher
-	name = "\improper Grenade Thumper"
-	desc = "Blooper"
-	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
-	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
+/obj/item/weapon/ranged/bullet/revolver/gm94
+	name = "\improper GM-94"
+	desc = "VOT POSHLA GRANATA"
+	desc_extended = "An old semi-automatic grenade launcher from a past era, uses 40mm grenades."
+	icon = 'icons/obj/item/weapons/ranged/misc/gm94.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1.25
+	shoot_delay = 3
 
-	automatic = TRUE
+	automatic = FALSE
 
-	bullet_count_max = 1
+	bullet_count_max = 4
 
-	insert_limit = 1
+	insert_limit = 4
 
 	view_punch = TILE_SIZE - 1
 
 	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
+
+	can_wield = TRUE
+	wield_only = TRUE
 
 	size = SIZE_4
 	weight = 12
@@ -31,7 +34,7 @@
 	heat_per_shot = 0.09
 	heat_max = 0.18
 
-	value = 600
+	value = 1000
 
 	open = TRUE
 
@@ -62,13 +65,13 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
+/obj/item/weapon/ranged/bullet/revolver/gm94/get_base_spread()
 	return 0.05
 
-/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_static_spread()
+/obj/item/weapon/ranged/bullet/revolver/gm94/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/revolver/gm94/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))

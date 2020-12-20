@@ -9,7 +9,8 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/laton = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm
