@@ -172,7 +172,7 @@ mob/living/advanced/player/on_life_client()
 
 		if(dialogue_target_id)
 			dialogue_target_id = null
-			close_menu(src,"dialogue")
+			close_menu(src,/menu/dialogue/)
 
 		if(active_structure && get_dist(src,active_structure) > 1)
 			set_structure_unactive()

@@ -197,11 +197,13 @@ var/global/list/all_clients = list() //Assoc list
 
 	world.update_server_status()
 
-
 	if(SSvote && SSvote.initialized)
 		for(var/k in SSvote.active_votes)
 			var/vote/V = k
 			V.show(src)
+
+	if(SSmenu && SSmenu.initialized)
+		SSmenu.preload_assets(src)
 
 	return mob
 

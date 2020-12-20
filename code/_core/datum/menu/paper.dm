@@ -1,9 +1,10 @@
 /menu/paper/
-	id = "paper"
 	file = 'html/paper.html'
+	resources = list(
+		"markdown.js" = 'html/markdown.js'
+	)
 
 /menu/paper/open(var/user)
-	cache_resources(user)
 	winset(user, "map.paper","is-visible=true")
 	sleep(1)
 	user << output(file, "map.paper")
@@ -50,7 +51,7 @@
 			set_text(P,sanitize(P.active_paper.data[desired_page],3000,extra = FALSE),P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
 
 		if(href_list["close"])
-			close_menu(P,"paper")
+			close_menu(P,/menu/paper/)
 			P.active_paper = null
 
 		if(href_list["edit"])

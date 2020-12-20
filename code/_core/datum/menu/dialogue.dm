@@ -1,6 +1,4 @@
 /menu/dialogue/
-	id = "dialogue"
-
 	file = 'html/dialogue.html'
 	resources = list(
 		"tile.png" = 'html/tile.png',

@@ -108,7 +108,7 @@
 				change_variable(actual_reference,actual_key,null)
 
 		if(href_list["done_loading"])
-			send_load(src.mob,href_list["done_loading"])
+			send_load(src.mob,text2path(href_list["done_loading"]))
 
 	. = ..()
 

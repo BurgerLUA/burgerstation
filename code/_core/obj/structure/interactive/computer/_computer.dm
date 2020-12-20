@@ -77,7 +77,7 @@ obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(call
 
 	var/mob/living/advanced/player/P = caller
 	P.dialogue_target_id = "chargen_computer"
-	open_menu(P,"dialogue")
+	open_menu(P,/menu/dialogue/)
 
 	return TRUE
 
@@ -181,7 +181,7 @@ obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(
 
 	P.dialogue_target = src
 	P.dialogue_target_id = "job_computer"
-	open_menu(P,"dialogue")
+	open_menu(P,/menu/dialogue/)
 
 	return TRUE
 
