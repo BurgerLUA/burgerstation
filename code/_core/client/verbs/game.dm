@@ -20,13 +20,13 @@
 				return FALSE
 
 	if(!mob || !is_living(mob))
-		to_chat("You have no body to abandon!")
+		to_chat(span("warning","You have no body to abandon!"))
 		return FALSE
 
 	var/mob/living/L = mob
 
 	if(!L.dead)
-		to_chat("You can't abandon your body while alive!")
+		to_chat(span("warning","You can't abandon your body while alive!"))
 		return FALSE
 
 	var/choice = input("Are you sure you want to abandon your body and become a ghost? You will no longer be able to be revived.","Abandon Body","No") in list("Yes","No") | null
@@ -34,7 +34,7 @@
 		return FALSE
 
 	make_ghost(mob.loc)
-	to_chat("You abandon your body...")
+	to_chat(span("danger","You abandon your body..."))
 	return TRUE
 
 
@@ -42,7 +42,7 @@
 	set name = "Stop Sounds"
 	set category = "Game"
 	mob << sound(null)
-	to_chat("All sounds have been stopped.")
+	to_chat(span("warning","All sounds have been stopped."))
 
 
 /client/verb/check_objectives()

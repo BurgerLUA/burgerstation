@@ -7,8 +7,8 @@
 	protected_limbs = list(BODY_TORSO, BODY_GROIN)
 
 	defense_rating = list(
-		ARCANE = 25,
-		HEAT = 25
+		ARCANE = AP_SWORD,
+		HEAT = AP_SWORD
 	)
 
 	size = SIZE_2
@@ -29,8 +29,8 @@
 	protected_limbs = list(BODY_TORSO, BODY_GROIN)
 
 	defense_rating = list(
-		ARCANE = 50,
-		HEAT = 50
+		ARCANE = AP_AXE,
+		HEAT = AP_AXE
 	)
 
 	size = SIZE_2
@@ -55,12 +55,12 @@
 	container_max_size = SIZE_3
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 25,
-		HEAT = 75
+		BLADE = AP_AXE,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_AXE
 	)
 
 	size = SIZE_3

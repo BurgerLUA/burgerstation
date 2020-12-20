@@ -1,5 +1,5 @@
 /ai/boss/xeno_queen/
-	var/mob/living/simple/npc/xeno/queen/owner_as_queen
+	var/mob/living/simple/xeno/queen/owner_as_queen
 
 	var/next_leap = 0
 	var/next_spit = 0

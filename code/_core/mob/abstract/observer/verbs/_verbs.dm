@@ -24,7 +24,7 @@
 		return FALSE
 
 	if(type == /mob/abstract/observer/ghost)
-		to_chat("You are already observing!")
+		to_chat(span("warning","You are already observing!"))
 		return FALSE
 
 	client.make_ghost(get_turf(src))

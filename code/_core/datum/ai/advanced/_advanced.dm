@@ -159,8 +159,11 @@
 		"alt" = 0
 	)
 
-	var/atom/defer_left_click = A.left_hand?.defer_click_on_object(null,null,params)
-	var/atom/defer_right_click = A.right_hand?.defer_click_on_object(null,null,params)
+	var/atom/defer_left_click
+	var/atom/defer_right_click
+
+	if(A.left_hand) defer_left_click = A.left_hand.defer_click_on_object(null,null,params)
+	if(A.right_hand) defer_right_click = A.right_hand.defer_click_on_object(null,null,params)
 
 	var/list/possible_attacks = list()
 

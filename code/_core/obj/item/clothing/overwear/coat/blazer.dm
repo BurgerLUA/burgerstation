@@ -15,11 +15,11 @@
 
 
 	defense_rating = list(
-		BLADE = 10,
-		PIERCE = 10,
-		ARCANE = 25,
-		HEAT = -25,
-		COLD = 25
+		BLADE = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_SWORD
 	)
 
 	value = 30

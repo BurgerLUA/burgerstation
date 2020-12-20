@@ -1,6 +1,6 @@
 /ai/boss/herald/
 
-	var/mob/living/simple/npc/herald/owner_as_herald
+	var/mob/living/simple/herald/owner_as_herald
 
 
 /ai/boss/herald/New(var/mob/living/desired_owner)

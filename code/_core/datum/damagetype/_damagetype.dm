@@ -51,10 +51,11 @@
 		COLD = BURN,
 		BOMB = BRUTE,
 		BIO = TOX,
-		RAD = TOX,
+		RAD = RAD,
 		HOLY = BURN,
 		DARK = BRUTE,
 		FATIGUE = FATIGUE,
+		PAIN = PAIN,
 		ION = BURN
 	)
 
@@ -331,7 +332,7 @@
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
-	var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0)
+	var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0,PAIN=0,RAD=0)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
 
@@ -399,8 +400,7 @@
 			total_damage_dealt += damage_to_deal_main[damage_type]
 	else
 		if(hit_object.health)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
-			total_damage_dealt += hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
+			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],fatigue=damage_to_deal_main[FATIGUE],pain=damage_to_deal_main[PAIN],rad=damage_to_deal_main[RAD],update=FALSE)
 		else
 			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
 			return TRUE
@@ -411,7 +411,7 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
-		if(has_fatigue_damage && L.ai && L.has_status_effect(FATIGUE) && !L.has_status_effect(SLEEP))
+		if(has_fatigue_damage && L.ai && L.has_status_effect(STAMCRIT) && !L.has_status_effect(SLEEP))
 			L.add_status_effect(SLEEP,600,600)
 
 	if(is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.

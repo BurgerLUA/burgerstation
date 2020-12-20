@@ -5,12 +5,12 @@
 	desc_extended = "A fancy chef hat. For chefing."
 
 	defense_rating = list(
-		ARCANE = 25,
-		HEAT = 25
+		ARCANE = AP_AXE,
+		HEAT = AP_AXE
 	)
 
 	size = SIZE_2
 
-	value = 25
+	value = 75
 
 	dyeable = TRUE

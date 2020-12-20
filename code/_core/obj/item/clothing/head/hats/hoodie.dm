@@ -12,9 +12,9 @@
 	value = 10
 
 	defense_rating = list(
-		ARCANE = 25,
-		HEAT = -25,
-		COLD = 50
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_CLUB
 	)
 
 	hidden_organs = list(

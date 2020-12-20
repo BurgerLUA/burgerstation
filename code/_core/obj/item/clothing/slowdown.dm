@@ -14,7 +14,8 @@ var/global/list/armor_slowdown_values = list(
 	HOLY = 0.01,
 	DARK = 0.01,
 	FATIGUE = 0.02,
-	ION = 0.02
+	ION = 0.02,
+	PAIN = 0.02
 )
 
 

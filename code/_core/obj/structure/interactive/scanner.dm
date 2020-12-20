@@ -7,6 +7,10 @@
 
 	density = TRUE
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#00FF00"
+
 /obj/structure/interactive/scanner/iff
 	name = "\improper IFF body scanner"
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
@@ -17,8 +21,8 @@
 	if(is_advanced(M))
 		var/mob/living/advanced/A = M
 		if(!A.iff_tag)
-			A.to_chat("The barrier prevents you from moving!")
-			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant not detected. Please move to the front desk to recieve your IFF implant.\"</font>")
+			A.to_chat(span("warning","The barrier prevents you from moving!"))
+			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant not detected. Please move to the front desk to recieve your IFF implant.\"</font>") //TODO: Fix this.
 			return FALSE
 
 	return ..()
@@ -34,8 +38,8 @@
 	if(is_advanced(M))
 		var/mob/living/advanced/A = M
 		if(A.iff_tag)
-			A.to_chat("The barrier prevents you from moving!")
-			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant detected. Your employment is not over.\"</font>")
+			A.to_chat(span("warning","The barrier prevents you from moving!"))
+			A.to_chat("<font size='2'>[src.name] beeps, \"IFF implant detected. Your employment is not over.\"</font>") //TODO: Fix this.
 			return FALSE
 
 	return ..()
@@ -47,6 +51,8 @@
 	icon_state = "door"
 
 	plane = PLANE_OBJ
+
+	desired_light_power = 0
 
 /obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -98,6 +104,8 @@
 	icon_state = "door"
 
 	plane = PLANE_OBJ
+
+	desired_light_power = 0
 
 /obj/structure/interactive/scanner/cop/Cross/(var/atom/movable/M)
 

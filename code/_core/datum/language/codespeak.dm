@@ -4,7 +4,7 @@
 
 /language/codespeak/process_text(var/speaker,var/text)
 
-	var/widsom_length = length(SSname.wisdoms)
+	var/widsom_length = length(SStext.wisdoms)
 
 	if(!widsom_length)
 		return "Penis."
@@ -16,7 +16,7 @@
 
 	number = (number % widsom_length) + 1
 
-	if(SSname.wisdoms[number])
-		return SSname.wisdoms[number]
+	if(SStext.wisdoms[number])
+		return SStext.wisdoms[number]
 
-	return pick(SSname.wisdoms)
+	return pick(SStext.wisdoms)

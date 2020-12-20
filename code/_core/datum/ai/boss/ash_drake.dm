@@ -1,7 +1,7 @@
 /ai/boss/ash_drake/
 
 	var/failed_attack_frames = 0
-	var/mob/living/simple/npc/ash_drake/owner_as_ash_drake
+	var/mob/living/simple/ash_drake/owner_as_ash_drake
 
 	var/fly_time = 0
 

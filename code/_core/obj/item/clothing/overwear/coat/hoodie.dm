@@ -16,8 +16,9 @@
 	dyeable = TRUE
 
 	defense_rating = list(
-		HEAT = -25,
-		COLD = 50
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_CLUB
 	)
 
 

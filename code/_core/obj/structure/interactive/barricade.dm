@@ -1,6 +1,6 @@
 /obj/structure/interactive/barricade
 	name = "metal barricade"
-	desc_extended = "Has a 60% chance to block most types of projectiles when a bullet passes it from the outside."
+	desc_extended = "Has a 90% chance to block most types of projectiles when a bullet passes it from the outside."
 	icon = 'icons/obj/structure/barricade.dmi'
 	icon_state = "metal"
 
@@ -20,6 +20,8 @@
 	health_base = 300
 
 	var/list/climbers = list()
+
+	repair_flag = FLAG_TOOL_WELDER
 
 /obj/structure/interactive/barricade/Cross(atom/movable/O)
 	if(climbers[O])

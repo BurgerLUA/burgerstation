@@ -14,12 +14,12 @@
 	)
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 75,
-		ARCANE = -75,
-		BOMB = 75
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = AP_AXE,
+		ARCANE = -AP_AXE,
+		BOMB = AP_AXE
 	)
 
 	value = 200
@@ -39,12 +39,12 @@
 	)
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 100,
-		ARCANE = -75,
-		BOMB = 75
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		ARCANE = -AP_CLUB,
+		BOMB = AP_AXE
 	)
 
 	value = 300
@@ -64,12 +64,12 @@
 	)
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 100,
-		ARCANE = -100,
-		BOMB = 200
+		BLADE = AP_CLUB,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_AXE,
+		ARCANE = -AP_GREATSWORD,
+		BOMB = AP_AXE
 	)
 
 	value = 400

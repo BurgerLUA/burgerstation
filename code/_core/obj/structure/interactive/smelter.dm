@@ -13,6 +13,10 @@
 
 	density = TRUE
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#FFFF00"
+
 /obj/structure/interactive/smelter/PostInitialize()
 	. = ..()
 	update_sprite()

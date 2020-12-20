@@ -1,15 +1,15 @@
 /obj/item/clothing/mask/daddy
 	name = "true mask"
-	icon = 'obj/item/clothing/masks/daddy.dmi'
+	icon = 'icons/obj/item/clothing/masks/daddy.dmi'
 	rarity = RARITY_MYTHICAL
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Well, what is it?"
 	desc_extended = "A giant mask depicting some sort of father figure. Speeds you up when worn."
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD
 	)
 
 	size = SIZE_3

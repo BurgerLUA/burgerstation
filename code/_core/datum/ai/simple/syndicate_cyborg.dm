@@ -1,5 +1,5 @@
 /ai/syndicate_cyborg
-	var/mob/living/simple/npc/silicon/syndieborg/owner_as_borg
+	var/mob/living/simple/silicon/syndieborg/owner_as_borg
 	var/next_shoot = 0
 
 /ai/syndicate_cyborg/New(var/mob/living/desired_owner)

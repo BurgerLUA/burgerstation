@@ -17,7 +17,7 @@
 
 	if(is_living(loc))
 		var/mob/living/L = loc
-		L.to_chat("\The [src.name] in your [attached_organ.name] beeps.")
+		L.to_chat(span("warning","\The [src.name] in your [attached_organ.name] beeps."))
 
 	return TRUE
 

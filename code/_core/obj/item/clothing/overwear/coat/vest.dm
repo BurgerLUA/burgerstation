@@ -15,10 +15,10 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = -25,
-		ARCANE = -25
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = -AP_SWORD
 	)
 
 	protected_limbs = list(BODY_TORSO)

@@ -77,7 +77,7 @@
 /obj/item/cell_charger/proc/check_device_move()
 
 	if(charging_device.loc != src.loc)
-		visible_message("\The [src.name] beeps as \the [charging_device.name] is disconnected.")
+		visible_message(span("warning","\The [src.name] beeps as \the [charging_device.name] is disconnected."))
 		charging_device.update_sprite()
 		HOOK_REMOVE("post_move","cell_charger_post_move_\ref[src]",charging_device)
 		charging_device = null
@@ -97,7 +97,7 @@
 		if(istype(B))
 			charging_device = I
 			HOOK_ADD("post_move","cell_charger_post_move_\ref[src]",I,src,.proc/check_device_move)
-			visible_message("\The [src.name] dings as \the [I.name] is placed on top of it.")
+			visible_message(span("notice","\The [src.name] dings as \the [I.name] is placed on top of it."))
 			start_thinking(src)
 
 	return .
@@ -110,7 +110,7 @@
 	if(istype(B))
 		var/obj/item/powercell/B2 = charging_device.get_battery()
 		if(!istype(B2))
-			visible_message("\The [src.name] gives a high double beep.")
+			visible_message(span("notice","\The [src.name] gives a high double beep."))
 			return FALSE
 		if(B.charge_current > 0)
 			var/charge_to_add = min(100,B.charge_current,B2.charge_max - B2.charge_current)
@@ -121,23 +121,23 @@
 				charging_device.update_sprite()
 				sprite_update_delay = initial(sprite_update_delay)
 		else
-			visible_message("\The [src.name] gives a low beep.")
+			visible_message(span("warning","\The [src.name] gives a low beep."))
 			return FALSE
 	else
-		visible_message("\The [src.name] gives a low double beep.")
+		visible_message(span("warning","\The [src.name] gives a low double beep."))
 		return FALSE
 
 	if(!charging_device)
-		visible_message("\The [src.name] gives a brink ding.")
+		visible_message(span("notice","\The [src.name] gives a bright ding."))
 		return FALSE
 
 	return .
-	
+
 /obj/item/cell_charger/get_examine_list(var/mob/caller)
-	
+
 	. = ..()
-	
+
 	if(battery)
 		. += div("notice","Charge Remaining: [battery.charge_current]")
-		
+
 	return .

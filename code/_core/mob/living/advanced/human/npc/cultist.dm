@@ -25,7 +25,8 @@
 		RAD = 25,
 		HOLY = -100,
 		DARK = 100,
-		FATIGUE = 25
+		FATIGUE = 25,
+		PAIN = 25
 	)
 
 	level_multiplier = 2

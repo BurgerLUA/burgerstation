@@ -86,9 +86,9 @@
 	reagents.volume_max = item_count_current*10
 
 	if(caller == A.loc)
-		caller.visible_message("\The [caller.name] bandages their [A.name].")
+		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."))
 	else
-		caller.visible_message("\The [caller.name] bandages \the [A.loc.name]'s [A.name].")
+		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."))
 
 	add_item_count(-1)
 
@@ -100,20 +100,20 @@
 	INTERACT_CHECK_OTHER(target)
 
 	if(!is_organ(target) && !is_living(target))
-		caller.to_chat("You can't treat this!")
+		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
 		return FALSE
 
 	if(!target || !target.health)
-		caller.to_chat("You can't treat this!")
+		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
 		return FALSE
 
 	if(robotic)
 		if(target.health.organic)
-			caller.to_chat("This can only treat robotic limbs!")
+			caller.to_chat(span("warning","\The [src.name] can only treat robotic limbs!"))
 			return FALSE
 	else
 		if(!target.health.organic)
-			caller.to_chat("This can only treat organic limbs!")
+			caller.to_chat(span("warning","\The [src.name] can only treat organic limbs!"))
 			return FALSE
 	return TRUE
 

@@ -6,14 +6,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 75,
-		PIERCE = 50,
-		LASER = 50,
-		ARCANE = -100,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 50
+		BLADE = AP_SWORD,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_CLUB,
+		ARCANE = -AP_GREATSWORD,
+		HEAT = AP_SWORD,
+		COLD = AP_CLUB,
+		BOMB = AP_SWORD
 	)
 
 	size = SIZE_4
@@ -29,14 +29,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 100,
-		LASER = 100,
-		ARCANE = -250,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 75
+		BLADE = AP_AXE,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_AXE,
+		ARCANE = -AP_GREATAXE,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE
 	)
 
 	size = SIZE_4

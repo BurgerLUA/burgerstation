@@ -31,7 +31,7 @@
 /turf/unsimulated/generation/jungle,
 /area/lz_001/caves/lava)
 "ak" = (
-/mob/living/simple/npc/herald,
+/mob/living/simple/herald,
 /turf/simulated/floor/colored/dirt/jungle,
 /area/lz_001/jungle)
 "al" = (
@@ -50,7 +50,7 @@
 /turf/unsimulated/generation/lava,
 /area/lz_001/caves/lava)
 "ap" = (
-/mob/living/simple/npc/bear/armored/revolutionary,
+/mob/living/simple/bear/armored/revolutionary,
 /turf/unsimulated/generation/snow,
 /area/lz_001/snow)
 "aq" = (
@@ -61,7 +61,7 @@
 /turf/unsimulated/generation/snow,
 /area/lz_001/snow)
 "ar" = (
-/mob/living/simple/npc/turret/syndicate,
+/mob/living/simple/turret/syndicate,
 /turf/simulated/floor/plating,
 /area/lz_001/outpost/syndicate/jungle)
 "as" = (
@@ -275,7 +275,7 @@
 /turf/simulated/floor/tile/overlapping/dark,
 /area/lz_001/outpost/russian/snow)
 "bn" = (
-/mob/living/simple/npc/bubblegum,
+/mob/living/simple/bubblegum,
 /turf/simulated/floor/basalt,
 /area/lz_001/caves/lava)
 "bo" = (
@@ -293,7 +293,7 @@
 	},
 /area/lz_001/forest/village)
 "br" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves)
 "bs" = (
@@ -308,7 +308,7 @@
 /turf/unsimulated/generation/jungle,
 /area/lz_001/jungle)
 "bv" = (
-/mob/living/simple/npc/bear/armored/revolutionary,
+/mob/living/simple/bear/armored/revolutionary,
 /turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "bw" = (
@@ -482,14 +482,14 @@
 /turf/simulated/wall/xeno,
 /area/lz_001/caves/lava)
 "ci" = (
-/mob/living/simple/npc/ash_drake,
+/mob/living/simple/ash_drake,
 /turf/simulated/floor/basalt,
 /area/lz_001/caves/lava)
 "cj" = (
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "ck" = (
-/mob/living/simple/npc/xeno/sentinel,
+/mob/living/simple/xeno/sentinel,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "cl" = (
@@ -507,7 +507,7 @@
 /turf/simulated/floor/colored/grass,
 /area/lz_001/caves/lagoon)
 "cp" = (
-/mob/living/simple/npc/goliath/broodmother,
+/mob/living/simple/goliath/broodmother,
 /turf/simulated/floor/basalt,
 /area/lz_001/caves/lava)
 "cq" = (
@@ -563,7 +563,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/shack)
 "cF" = (
-/mob/living/simple/npc/colossus,
+/mob/living/simple/colossus,
 /turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "cG" = (
@@ -909,7 +909,7 @@
 /area/lz_001/outpost/syndicate/canman)
 "ed" = (
 /obj/marker/generation/snow,
-/mob/living/simple/npc/bear/armored/revolutionary,
+/mob/living/simple/bear/armored/revolutionary,
 /turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "ee" = (
@@ -1120,7 +1120,7 @@
 /area/lz_001/forest/village)
 "fb" = (
 /obj/marker/map_node,
-/mob/living/simple/npc/xeno/drone,
+/mob/living/simple/xeno/drone,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "fc" = (
@@ -1129,7 +1129,7 @@
 /area/lz_001/forest/village)
 "fd" = (
 /obj/marker/map_node,
-/mob/living/simple/npc/xeno/sentinel,
+/mob/living/simple/xeno/sentinel,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "fe" = (
@@ -1145,7 +1145,7 @@
 /turf/simulated/floor/colored/dirt/jungle,
 /area/lz_001/jungle)
 "fi" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/lz_001/caves/lava)
 "fj" = (
@@ -1334,7 +1334,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/glow_cave)
 "fY" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
 /area/lz_001/caves)
 "fZ" = (
@@ -1343,7 +1343,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/lodge)
 "ga" = (
-/mob/living/simple/npc/spacecarp/leader,
+/mob/living/simple/spacecarp/leader,
 /turf/simulated/hazard/water,
 /area/lz_001/caves)
 "gb" = (
@@ -1465,12 +1465,12 @@
 /turf/simulated/floor/colored/sand,
 /area/lz_001/forest/village)
 "gz" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
 /area/lz_001/forest)
 "gA" = (
 /obj/marker/map_node,
-/mob/living/simple/npc/xeno/queen,
+/mob/living/simple/xeno/queen,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "gB" = (
@@ -1490,7 +1490,7 @@
 /turf/simulated/floor/wood/dock,
 /area/lz_001/caves/lagoon)
 "gF" = (
-/mob/living/simple/npc/spacecarp/leader,
+/mob/living/simple/spacecarp/leader,
 /turf/simulated/hazard/water,
 /area/lz_001/forest)
 "gG" = (
@@ -1550,7 +1550,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/outpost/russian/snow)
 "gU" = (
-/mob/living/simple/npc/xeno/drone,
+/mob/living/simple/xeno/drone,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "gV" = (
@@ -2238,7 +2238,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "jB" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
 /area/lz_001/caves/lagoon)
 "jC" = (
@@ -2248,11 +2248,11 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
 "jD" = (
-/mob/living/simple/npc/crab/passive,
+/mob/living/simple/crab/passive,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/forest)
 "jE" = (
-/mob/living/simple/npc/spacecarp/leader,
+/mob/living/simple/spacecarp/leader,
 /turf/simulated/hazard/water,
 /area/lz_001/caves/lagoon)
 "jF" = (
@@ -2377,7 +2377,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "kg" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/snow)
 "kh" = (
@@ -2385,7 +2385,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/outpost/russian/snow)
 "ki" = (
-/mob/living/simple/npc/crab,
+/mob/living/simple/crab,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/crab)
 "kj" = (
@@ -2393,7 +2393,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/outpost/russian/snow)
 "kk" = (
-/mob/living/simple/npc/crab/king,
+/mob/living/simple/crab/king,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/crab)
 "kl" = (
@@ -2512,7 +2512,7 @@
 /turf/simulated/floor/colored/sand/desert,
 /area/lz_001/caves/ocean_pass)
 "kM" = (
-/mob/living/simple/npc/bot/medibot/syndicate,
+/mob/living/simple/bot/medibot/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "kN" = (
@@ -2577,7 +2577,7 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/lz_001/desert)
 "le" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
 /area/lz_001/desert)
 "lf" = (
@@ -2621,7 +2621,7 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/lz_001/caves/glow_cave)
 "lq" = (
-/mob/living/simple/npc/spacecarp/leader,
+/mob/living/simple/spacecarp/leader,
 /turf/simulated/hazard/water,
 /area/lz_001/desert)
 "lr" = (
@@ -2688,7 +2688,7 @@
 /turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "lL" = (
-/mob/living/simple/npc/spider/desert,
+/mob/living/simple/spider/desert,
 /turf/simulated/floor/colored/sand/desert,
 /area/lz_001/desert)
 "lM" = (

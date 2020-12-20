@@ -24,7 +24,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 /obj/item/mech_part/update_sprite()

@@ -27,7 +27,7 @@
 			raw_icon_state = "dough_ball"
 			cooked_icon_state = "bread"
 
-		caller.to_chat("You reshape \the [src.name].")
+		caller.to_chat(span("notice","You reshape \the [src.name]."))
 
 	update_sprite()
 
@@ -42,11 +42,11 @@
 			if(amount_to_transfer <= 0)
 				if(is_living(caller))
 					var/mob/living/L = caller
-					L.to_chat("You can't add any more dough!")
+					L.to_chat(span("warning","You can't add any more dough to \the [B.name]!"))
 				return TRUE
 			if(is_living(caller))
 				var/mob/living/L = caller
-				L.to_chat("You add \the [name] to \the [B.name].")
+				L.to_chat(span("notice","You add \the [name] to \the [B.name]."))
 			reagents.transfer_reagents_to(B.reagents,amount_to_transfer)
 			return TRUE
 
@@ -63,7 +63,7 @@
 				if(pieces <= 1 || original_volume < pieces)
 					if(is_living(attacker))
 						var/mob/living/L = attacker
-						L.to_chat("There isn't enough dough to cut!")
+						L.to_chat(span("warning","There isn't enough dough in \the [src.name] to cut!"))
 					return FALSE
 				raw_icon_state = "dough_slice"
 				var/turf/T = get_turf(src)
@@ -81,7 +81,7 @@
 				update_sprite()
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("You cut \the [src.name] into [pieces] pieces.")
+					L.to_chat(span("notice","You cut \the [src.name] into [pieces] pieces."))
 
 			else if(raw_icon_state == "dough_ball")
 				if(original_volume > 10)
@@ -95,11 +95,11 @@
 					update_sprite()
 					if(is_living(attacker))
 						var/mob/living/L = attacker
-						L.to_chat("You cut some small dough from the dough pile.")
+						L.to_chat(span("notice","You cut some dough from \the [src.name]."))
 				else
 					if(is_living(attacker))
 						var/mob/living/L = attacker
-						L.to_chat("There isn't enough dough to cut!")
+						L.to_chat(span("warning","There isn't enough dough in \the [src.name] to cut!"))
 
 		else if(icon_state == "bun_whole") //It's cooked, and a bun.
 			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
@@ -112,7 +112,7 @@
 			cooked_icon_state = "bun_top"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You cut \the [src.name] into two halves.")
+				L.to_chat(span("notice","You cut \the [src.name] into two halves."))
 			update_sprite()
 			FINALIZE(B)
 			B.update_sprite()
@@ -132,7 +132,7 @@
 			cooked_icon_state = "bread_flat"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You flatten \the [src.name].")
+				L.to_chat(span("notice","You flatten \the [src.name]."))
 			update_sprite()
 
 	return TRUE

@@ -61,9 +61,9 @@
 
 	if(!silent)
 		if(!caller || caller == victim)
-			victim.visible_message("\The [caller.name] buckles themselves to \the [src.name].")
+			victim.visible_message(span("notice","\The [caller.name] buckles themselves to \the [src.name]."))
 		else
-			victim.visible_message("\The [caller.name] buckles \the [victim.name] into \the [src.name].")
+			victim.visible_message(span("notice","\The [caller.name] buckles \the [victim.name] into \the [src.name]."))
 
 	buckled = victim
 	buckled.buckled_object = src
@@ -77,9 +77,9 @@
 
 	if(!silent)
 		if(!caller || caller == buckled)
-			buckled.visible_message("\The [buckled.name] unbuckles themselves from \the [src.name].")
+			buckled.visible_message(span("notice","\The [buckled.name] unbuckles themselves from \the [src.name]."))
 		else
-			buckled.visible_message("\The [buckled.name] is unbuckled from \the [src.name] by \the [caller.name].")
+			buckled.visible_message(span("notice","\The [buckled.name] is unbuckled from \the [src.name] by \the [caller.name]."))
 
 	buckled.buckled_object = null
 	buckled = null

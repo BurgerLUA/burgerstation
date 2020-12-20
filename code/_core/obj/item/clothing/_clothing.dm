@@ -28,7 +28,8 @@
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = 0,
-		ION = 0
+		ION = 0,
+		PAIN = 0
 	)
 	*/
 
@@ -76,6 +77,7 @@
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	weight = calculate_weight()
+	generate_value()
 	. = ..()
 	initialize_blends()
 	return .

@@ -51,7 +51,7 @@
 	return ..()
 
 /stand/proc/generate()
-	name = uppertext("[pick(SSname.adjectives)] [pick(SSname.verbs)]")
+	name = uppertext("[pick(SStext.adjectives)] [pick(SStext.verbs)]")
 
 	var/points_left = 3*6
 	var/passes_left = points_left*3
@@ -128,14 +128,6 @@
 	caller.to_chat("Stand Name: <b>[name]</b>")
 	caller.to_chat("Stand User: [stand_user.name]")
 	caller.to_chat("Stand Cry: <b>\"[stand_cry]\"</b>")
-	/*
-	caller.to_chat("Power: [stat_destructive_power]")
-	caller.to_chat("Speed: [stat_speed]")
-	caller.to_chat("Range: [stat_range]")
-	caller.to_chat("Persistence: [stat_persistence]")
-	caller.to_chat("Precision: [stat_precision]")
-	caller.to_chat("Potential: [stat_development_potential]")
-	*/
 	return TRUE
 
 /mob/living/proc/remove_stand()
@@ -148,7 +140,7 @@
 		return FALSE
 
 	if(stand)
-		to_chat("You already have a stand!")
+		to_chat(span("warning","You already have a stand!"))
 		return FALSE
 
 	stand = new(src)

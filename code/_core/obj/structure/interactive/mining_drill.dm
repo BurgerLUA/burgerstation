@@ -19,6 +19,10 @@
 
 	density = TRUE
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#FFFFFF"
+
 /obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
 	. = ..()
@@ -54,12 +58,12 @@
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
 	if(!check_valid())
-		caller.to_chat("\The [src] doesn't seem to want to turn on!")
+		caller.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
 		return FALSE
 	if(caller)
-		visible_message("\The [caller.name] activates \the [src.name].")
+		visible_message(span("notice","\The [caller.name] activates \the [src.name]."))
 	else
-		visible_message("\The [src.name] activates itself.")
+		visible_message(span("warning","\The [src.name] powers up on its own!."))
 	set_anchored(TRUE)
 	start_thinking(src)
 	update_sprite()
@@ -67,9 +71,9 @@
 
 /obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
 	if(caller)
-		visible_message("\The [caller.name] turns off \the [src.name].")
+		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."))
 	else
-		visible_message("\The [src.name] turns off on its own.")
+		visible_message(span("warning","\The [src.name] shuts itself down!"))
 	set_anchored(FALSE)
 	stop_thinking(src)
 	update_sprite()
@@ -143,9 +147,9 @@
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)
-			caller.to_chat("Unsecure \the [src.name] before rotating it!")
+			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
 		else
-			caller.to_chat("You rotate \the [src.name].")
+			caller.to_chat(span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 		return TRUE
 
@@ -157,9 +161,9 @@
 	set_anchored(!anchored)
 
 	if(anchored)
-		caller.visible_message("\The [caller.name] secures \the [src.name].","You secure \the [src.name].")
+		caller.visible_message(span("notice","\The [caller.name] secures \the [src.name]."),span("notice","You secure \the [src.name]."))
 	else
-		caller.visible_message("\The [caller.name] unsecures \the [src.name].","You unsecure \the [src.name].")
+		caller.visible_message(span("notice","\The [caller.name] unsecures \the [src.name]."),span("notice","You unsecure \the [src.name]."))
 
 	update_sprite()
 

@@ -146,7 +146,7 @@ obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/de
 	return .
 
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
-	if(istype(victim,/mob/living/simple/npc/goliath/)) //This bug is hilarious but we don't want to have it.
+	if(istype(victim,/mob/living/simple/goliath/)) //This bug is hilarious but we don't want to have it.
 		return FALSE
 	return ..()
 
@@ -186,7 +186,7 @@ obj/effect/temp/hazard/bubblefist/New(var/desired_location,var/desired_time,var/
 	return .
 
 obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
-	if(istype(victim,/mob/living/simple/npc/bubblegum)) //This bug is hilarious but we don't want to have it.
+	if(istype(victim,/mob/living/simple/bubblegum)) //This bug is hilarious but we don't want to have it.
 		return FALSE
 	return ..()
 

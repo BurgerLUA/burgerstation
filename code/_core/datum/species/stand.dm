@@ -4,6 +4,8 @@
 	id = "stand"
 	flags_species = SPECIES_HUMAN
 
+	bite_size = 5
+
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	default_color_eye = "#000000"

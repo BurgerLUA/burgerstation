@@ -42,7 +42,7 @@
 		if(href_list["vote"])
 			var/vote/vote_datum = locate(href_list["vote"]) in SSvote.active_votes
 			if(!vote_datum)
-				to_chat("Could not locate a valid poll!")
+				to_chat(span("warning","Could not locate a valid poll!"))
 			else
 				if(href_list["vote_option"])
 					var/option = text2num(href_list["vote_option"])
@@ -108,7 +108,7 @@
 				change_variable(actual_reference,actual_key,null)
 
 		if(href_list["done_loading"])
-			send_load(src.mob,href_list["done_loading"])
+			send_load(src.mob,text2path(href_list["done_loading"]))
 
 	. = ..()
 

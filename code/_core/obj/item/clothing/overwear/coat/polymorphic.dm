@@ -17,10 +17,12 @@
 
 	size = SIZE_3
 
-
 	defense_rating = list(
-		ARCANE = 50,
-		COLD = 25
+		BLADE = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_SWORD
 	)
 
 	dyeable = TRUE

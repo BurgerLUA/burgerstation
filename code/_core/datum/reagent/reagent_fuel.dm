@@ -1,10 +1,10 @@
 /reagent/fuel
-	name = "fuel"
+	name = "Generic Fuel"
 	color = "#7F3300"
 	alpha = 255
 
 /reagent/fuel/oil
-	name = "oil"
+	name = "Processed Oil"
 	color = "#131616"
 	alpha = 255
 
@@ -26,4 +26,13 @@
 /reagent/fuel/hydrogen
 	name = "Solid Hydrogen"
 	color = "#7F0000"
+	alpha = 255
+
+/reagent/fuel/acetone
+	name = "Dcetone"
+	desc = "A colorless, corrosive flammable liquid used for solvents."
+	alpha = 100
+
+/reagent/fuel/diethylamine
+	name = "Diethylamine"
 	alpha = 255

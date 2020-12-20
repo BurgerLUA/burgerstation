@@ -4,6 +4,8 @@
 	id = "skeleton"
 	flags_species = SPECIES_SKELETON
 
+	bite_size = 5
+
 	flags_chargen = CHARGEN_EYE | CHARGEN_SKIN
 
 	default_color_eye = "#FFFFFF"

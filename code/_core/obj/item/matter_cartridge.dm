@@ -16,7 +16,7 @@
 	if(istype(object,/obj/item/rcd/))
 		var/obj/item/rcd/R = object
 		R.add_matter(R.matter_max)
-		caller.to_chat("You refill \the [R.name].")
+		caller.to_chat(span("notice","You refill \the [R.name]."))
 		qdel(src)
 		return TRUE
 

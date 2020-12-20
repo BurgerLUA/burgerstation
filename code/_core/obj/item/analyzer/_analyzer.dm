@@ -12,7 +12,7 @@
 
 /obj/item/analyzer/proc/can_scan(var/mob/caller,var/atom/target)
 	if(next_scan >= world.time)
-		caller.to_chat("\The [src.name] is recharging, please wait!")
+		caller.to_chat(span("warning","\The [src.name] is recharging, please wait!"))
 		return FALSE
 	return TRUE
 

@@ -71,11 +71,11 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	var/freq = frequency_string ? " (<b>[frequency_string]</b>)" : ""
 
 	if(old_frequency == frequency)
-		caller.to_chat("The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"].")
+		caller.to_chat(span("warning","The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"]!"))
 	else if(spam_fix_time <= world.time)
-		caller.to_chat("You change \the [src.name]'s frequency to [frequency] kHz[freq]...")
+		caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency] kHz[freq]..."))
 	else
-		caller.to_chat("...[frequency] kHz[freq]...")
+		caller.to_chat(span("notice","...[frequency] kHz[freq]..."))
 
 	spam_fix_time = world.time + 20
 

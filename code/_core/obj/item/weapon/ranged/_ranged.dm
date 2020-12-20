@@ -163,7 +163,7 @@
 			firing_pin = null
 
 		if(!firing_pin)
-			caller.to_chat("This gun doesn't have a firing pin installed!")
+			caller.to_chat(span("warning","This gun doesn't have a firing pin installed!"))
 			return FALSE
 
 		if(!firing_pin.can_shoot(caller,src))

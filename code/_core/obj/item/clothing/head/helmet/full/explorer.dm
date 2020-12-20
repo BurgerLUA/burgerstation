@@ -8,16 +8,17 @@
 	)
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 25,
-		HEAT = 50,
-		COLD = 25,
-		BIO = 25,
-		HOLY = 25,
-		DARK = 25,
+		BLADE = AP_SWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		ARCANE = AP_AXE,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BIO = AP_AXE,
+		HOLY = AP_AXE,
+		DARK = AP_AXE,
+		PAIN = AP_AXE
 	)
 
 	size = SIZE_3

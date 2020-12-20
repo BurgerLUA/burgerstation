@@ -6,11 +6,9 @@
 	icon = 'icons/obj/item/clothing/glasses/prescription.dmi'
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = -10,
-		PIERCE = 0,
-		LASER = -25,
-		ARCANE = 50
+		BLUNT = -AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD
 	)
 
 	value = 40

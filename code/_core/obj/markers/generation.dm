@@ -359,51 +359,118 @@
 
 
 /obj/marker/generation/mob/arachnid
-	object_to_place = /mob/living/simple/npc/arachnid
+	object_to_place = /mob/living/simple/arachnid
 	objects_max = 1
 
 /obj/marker/generation/mob/venus_human_trap
-	object_to_place = /mob/living/simple/npc/venus_human_trap
+	object_to_place = /mob/living/simple/venus_human_trap
 	objects_max = 1
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 
 /obj/marker/generation/mob/watcher
-	object_to_place = /mob/living/simple/npc/watcher
+	object_to_place = /mob/living/simple/watcher
 	objects_max = 1
 
 /obj/marker/generation/mob/goliath
-	object_to_place = /mob/living/simple/npc/goliath
+	object_to_place = /mob/living/simple/goliath
 	objects_max = 1
 
 /obj/marker/generation/mob/goliath_ancient
-	object_to_place = /mob/living/simple/npc/goliath/ancient
+	object_to_place = /mob/living/simple/goliath/ancient
 	objects_max = 1
 
 /obj/marker/generation/mob/black_bear
-	object_to_place = /mob/living/simple/npc/bear/black
+	object_to_place = /mob/living/simple/bear/black
 	objects_max = 1
 
 /obj/marker/generation/mob/snow_bear
-	object_to_place = /mob/living/simple/npc/bear/snow
+	object_to_place = /mob/living/simple/bear/snow
 	objects_max = 1
 
 /obj/marker/generation/mob/chicken
-	object_to_place = /mob/living/simple/npc/passive/chicken
+	object_to_place = /mob/living/simple/passive/chicken
 	objects_max = 3
 
 /obj/marker/generation/mob/cow
-	object_to_place = /mob/living/simple/npc/passive/cow
+	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
 
 /obj/marker/generation/mob/cave_spider
-	object_to_place = /mob/living/simple/npc/spider
+	object_to_place = /mob/living/simple/spider
 	objects_max = 3
 
 /obj/marker/generation/mob/legion
-	object_to_place = /mob/living/simple/npc/legionare
+	object_to_place = /mob/living/simple/legionare
 	objects_max = 2
 
 /obj/marker/generation/mob/ash_walker
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter
 	objects_max = 1
+
+
+/obj/marker/generation/plant
+	grow_amount_min = 10
+	grow_amount_max = 20
+	objects_max = 6
+	skip_chance = 90
+	hole_chance = 0
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/
+
+/obj/marker/generation/plant/cabbage
+	object_to_place = /obj/structure/interactive/plant/cabbage
+	turf_whitelist = /turf/simulated/floor/colored/grass
+	objects_max = 2
+
+/obj/marker/generation/plant/chanterelle
+	object_to_place = /obj/structure/interactive/plant/chanterelle
+	turf_whitelist = /turf/simulated/floor/colored
+	objects_max = 3
+
+/obj/marker/generation/plant/destroying_angel
+	object_to_place = /obj/structure/interactive/plant/destroying_angel
+	turf_whitelist = /turf/simulated/floor/colored/dirt
+	objects_max = 2
+
+/obj/marker/generation/plant/fly_amanita
+	object_to_place = /obj/structure/interactive/plant/fly_amanita
+	turf_whitelist = /turf/simulated/floor/colored
+	objects_max = 2
+
+/obj/marker/generation/plant/glowshroom
+	object_to_place = /obj/structure/interactive/plant/glowshroom
+	turf_whitelist = /turf/simulated/floor
+	objects_max = 2
+
+/obj/marker/generation/plant/liberty_cap
+	object_to_place = /obj/structure/interactive/plant/liberty_cap
+	turf_whitelist = /turf/simulated/floor/colored
+	objects_max = 3
+
+/obj/marker/generation/plant/nitrogen_flower
+	object_to_place = /obj/structure/interactive/plant/nitrogen_flower
+	turf_whitelist = /turf/simulated/floor/colored/snow
+	objects_max = 2
+
+/obj/marker/generation/plant/oxygen_fruit
+	object_to_place = /obj/structure/interactive/plant/oxygen_fruit
+	turf_whitelist = /turf/simulated/floor/colored/snow
+	objects_max = 2
+
+/obj/marker/generation/plant/sugarcane
+	object_to_place = /obj/structure/interactive/plant/sugarcane
+	turf_whitelist = /turf/simulated/floor/colored/sand
+	objects_max = 3
+
+/obj/marker/generation/plant/tomato
+	object_to_place = /obj/structure/interactive/plant/tomato
+	turf_whitelist = /turf/simulated/floor/colored/grass
+	objects_max = 1
+
+/obj/marker/generation/plant/wheat
+	object_to_place = /obj/structure/interactive/plant/wheat
+	turf_whitelist = /turf/simulated/floor/colored/grass
+	objects_max = 4

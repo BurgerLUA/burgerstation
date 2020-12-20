@@ -1,5 +1,5 @@
 /ai/legion
-	var/mob/living/simple/npc/legionare/owner_as_legion
+	var/mob/living/simple/legionare/owner_as_legion
 
 	var/next_legion = 0
 

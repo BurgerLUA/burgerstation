@@ -1,6 +1,6 @@
 /ai/goliath
 
-	var/mob/living/simple/npc/goliath/owner_as_goliath
+	var/mob/living/simple/goliath/owner_as_goliath
 
 
 

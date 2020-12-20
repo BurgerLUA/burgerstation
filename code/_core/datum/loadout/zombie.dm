@@ -151,7 +151,8 @@
 /loadout/zombie/librarian
 
 	spawning_items = list(
-		/obj/item/clothing/uniform/suit/red,
+		/obj/item/clothing/shirt/suit/red,
+		/obj/item/clothing/pants/brown,
 		/obj/item/clothing/neck/miner_talisman,
 		/obj/item/clothing/glasses/prescription,
 		/obj/item/clothing/feet/shoes/brown,

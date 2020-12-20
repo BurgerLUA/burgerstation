@@ -14,6 +14,9 @@
 	change_dir_on_move = FALSE
 
 	blood_type = /reagent/blood/robot
+	blood_volume = 1000
+
+	mob_size = MOB_SIZE_LARGE
 
 /mob/living/vehicle/mech/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps + /footstep/mech_step
@@ -80,7 +83,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 
@@ -106,7 +110,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 	class = /class/gygax/
@@ -173,7 +178,8 @@
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -50,
+		PAIN = INFINITY
 	)
 
 	class = /class/durand

@@ -69,8 +69,8 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OTHER(target)
 
-	if(!target || !target.reagents)
-		caller.to_chat("You can't target this!")
+	if(!target.reagents)
+		caller.to_chat(span("warning","You can't target \the [target.name]!"))
 		return FALSE
 
 	return TRUE
@@ -149,10 +149,10 @@
 
 	if(is_organ(object) && is_living(object.loc))
 		var/mob/living/L = object.loc
-		L.to_chat("You feel a tiny prick on your [object.name].")
+		L.to_chat(span("warning","You feel a tiny prick on your [object.name]."))
 	else if(is_living(object))
 		var/mob/living/L = object
-		L.to_chat("You feel a tiny prick.")
+		L.to_chat(span("warning","You feel a tiny prick."))
 
 	return FALSE
 
@@ -161,6 +161,13 @@
 
 /obj/item/container/syringe/epinephrine/Generate()
 	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max)
+	return ..()
+
+/obj/item/container/syringe/opium/
+	name = "syringe (opium)"
+
+/obj/item/container/syringe/opium/Generate()
+	reagents.add_reagent(/reagent/medicine/painkiller/opium,reagents.volume_max)
 	return ..()
 
 /obj/item/container/syringe/medipen

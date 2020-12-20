@@ -44,7 +44,7 @@
 		C.reagents.add_reagent(reagent_path,reagent_volume,original_temperature,FALSE,FALSE)
 	FINALIZE(C)
 
-	T.visible_message("The cheese finishes molding!")
+	T.visible_message(span("notice","The cheese finishes curdling!"))
 
 	C.reagents.update_container()
 
@@ -79,7 +79,7 @@
 		var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
 		if(answer == "Yes" && get_dist(caller,src) <= 1)
 			reagents.remove_all_reagents(reagents.volume_current)
-			caller.to_chat("You empty \the [src.name] of its contents.")
+			caller.to_chat(span("notice","You empty \the [src.name] of its contents."))
 
 	return TRUE
 
@@ -103,7 +103,7 @@
 			allow_reagent_transfer_to = FALSE
 			allow_reagent_transfer_from = FALSE
 			var/turf/T = get_turf(src)
-			T.visible_message("The milk starts to curdle!")
+			T.visible_message(span("notice","The milk starts to curdle!"))
 			start_thinking(src)
 
 	return ..()

@@ -20,12 +20,12 @@
 
 	if(icon_state == "ground")
 		icon_state = "meatball"
-		caller.to_chat("You reshape \the [src.name] into a meatball.")
+		caller.to_chat(span("notice","You reshape \the [src.name] into a meatball."))
 		pixel_height = 1
 		update_sprite()
 	else if(icon_state == "meatball")
 		icon_state = "patty"
-		caller.to_chat("You reshape \the [src.name] into a patty.")
+		caller.to_chat(span("notice","You reshape \the [src.name] into a patty."))
 		pixel_height = 1
 		update_sprite()
 	else
@@ -117,7 +117,7 @@
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("There isn't enough meat to cut!")
+					L.to_chat(span("warning","There isn't enough meat in \the [src.name] to cut!"))
 				return FALSE
 
 			for(var/i=1,i<=pieces-1,i++)
@@ -130,7 +130,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You cut \the [src.name] into [pieces] cutlets.")
+				L.to_chat(span("notice","You cut \the [src.name] into [pieces] cutlets."))
 
 		else if(has_prefix(icon_state,"cutlet"))
 			//Make bacon.
@@ -138,7 +138,7 @@
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("There isn't enough meat to cut!")
+					L.to_chat(span("warning","There isn't enough meat in \the [src.name] to cut!"))
 				return FALSE
 
 			for(var/i=1,i<=pieces-1,i++)
@@ -152,7 +152,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You cut \the [src.name] into [pieces] bacon slices.")
+				L.to_chat(span("notice","You cut \the [src.name] into [pieces] bacon slices."))
 
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
@@ -165,7 +165,7 @@
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat("There isn't enough meat to pound!")
+					L.to_chat(span("warning","There isn't enough meat in \the [src.name] to pound!"))
 				return FALSE
 
 			src.icon_state = "ground"
@@ -180,10 +180,32 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat("You pound \the [src.name] into [pieces] portion\s of ground beef.")
+				L.to_chat(span("notice","You pound \the [src.name] into [pieces] portion\s of ground beef."))
 
 	return TRUE
 
+/obj/item/container/food/dynamic/meat/raw_arachnid/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/arachnid,15)
+	reagents.add_reagent(/reagent/nutrition/fat/arachnid,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_ash_drake/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/ash_drake,15)
+	reagents.add_reagent(/reagent/ash,5)
+	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_bubblegum/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/bubblegum,15)
+	reagents.add_reagent(/reagent/blood/ancient,5)
+	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_colossus/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/colossus,15)
+	reagents.add_reagent(/reagent/blood/ancient,5)
+	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
 
 /obj/item/container/food/dynamic/meat/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
@@ -210,21 +232,25 @@
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/xeno/Generate()
+/obj/item/container/food/dynamic/meat/raw_xeno/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/xeno,15)
 	reagents.add_reagent(/reagent/nutrition/fat/xeno,5)
 	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/spider/Generate()
+/obj/item/container/food/dynamic/meat/raw_spider/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/spider,15)
 	reagents.add_reagent(/reagent/toxin/spider_toxin,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/bear/Generate()
+/obj/item/container/food/dynamic/meat/raw_bear/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/bear,20)
 	reagents.add_reagent(/reagent/nutrition/fat/bear,10)
 	return ..()
 
+/obj/item/container/food/dynamic/meat/raw_goliath/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/goliath,15)
+	reagents.add_reagent(/reagent/nutrition/fat/goliath,5)
+	return ..()
 
 

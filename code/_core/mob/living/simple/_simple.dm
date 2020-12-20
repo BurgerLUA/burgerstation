@@ -1,6 +1,8 @@
 /mob/living/simple
-	soul_size = SOUL_SIZE_COMMON
+	//soul_size = SOUL_SIZE_COMMON
+	enable_AI = TRUE
+	loyalty_tag = null
+	iff_tag = null
 
-/mob/living/simple/Finalize()
-
-	switch(level)
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE

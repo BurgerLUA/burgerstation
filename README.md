@@ -1,21 +1,11 @@
-Welcome to Burgerstation.
+# Welcome to Burgerstation.
 
-As of December 11th, 2020 the licence Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) only applies to any and all files and folders located in the following directories of this project, unless stated otherwise.
+Enjoy your stay.
 
-/config/
-/html/
-/icons/
-interface/
-/maps/
-/scripts/
-/settings/
-/sound/
-/text/
-/tools/
+## Licensing
 
-As of December 11th, 2020, the license Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) only applies to any and all files and folders located in the following directories of this project, unless stated otherwise.
+All code is licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) unless otherwise noted.
 
-/code/
+All other assets including sprites and sounds are licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise noted.
 
-
-
+rust_g.dll is licensed under MIT. See rust_g_license.txt for details and copyright information.

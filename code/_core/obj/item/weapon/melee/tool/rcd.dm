@@ -63,11 +63,11 @@
 	if(object && get_dist(caller,object) <= rcd_range)
 		var/turf/T = object
 		if(!rcd_disk)
-			caller.to_chat("ERROR: There is no construction disk loaded in \the [src.name]!")
+			caller.to_chat(span("warning","ERROR: There is no construction disk loaded in \the [src.name]!"))
 			return TRUE
 		var/list/data = rcd_disk.data
 		if(!data || !data["object"] || !data["cost"] || !ispath(data["object"]))
-			caller.to_chat("ERROR: Invalid construction disk!")
+			caller.to_chat(span("warning","ERROR: Invalid construction disk!"))
 			return TRUE
 
 		if(ispath(data["object"],/turf/) ? !T.can_construct_on(caller,/obj/structure/interactive/construction/girder/) : !T.can_construct_on(caller,data["object"]))
@@ -77,7 +77,7 @@
 		var/delay_time = 0
 
 		if(matter_cost && !spend_matter(matter_cost))
-			caller.to_chat("You don't have enough matter to construct this! (You have [matter_current], [matter_cost] needed).")
+			caller.to_chat(span("warning","You don't have enough matter to construct this! (You have [matter_current], [matter_cost] needed)."))
 			return TRUE
 
 		if(ispath(data["effect"]))
@@ -91,13 +91,13 @@
 		spawn(delay_time)
 			if(ispath(data["object"],/turf/))
 				T.change_turf(data["object"])
-				caller.to_chat("You construct \a [T.name] with \the [src.name].")
+				caller.to_chat(span("notice","You construct \a [T.name] with \the [src.name]."))
 			else
 				var/atom/A = data["object"]
 				A = new A(T)
 				INITIALIZE(A)
 				FINALIZE(A)
-				caller.to_chat("You construct \a [A.name] with \the [src.name].")
+				caller.to_chat(span("notice","You construct \a [A.name] with \the [src.name]."))
 
 		return TRUE
 
@@ -105,18 +105,18 @@
 
 /obj/item/rcd/proc/insert_disk(var/mob/caller,var/obj/item/disk/desired_disk,var/silent=FALSE)
 	if(rcd_disk)
-		if(caller && !silent) caller.to_chat("There is already a [rcd_disk.name] installed in \the [src.name]!")
+		if(caller && !silent) caller.to_chat(span("warning","There is already a [rcd_disk.name] installed in \the [src.name]!"))
 		return null
 	desired_disk.drop_item(src)
 	rcd_disk = desired_disk
-	if(caller && !silent) caller.to_chat("You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD.")
+	if(caller && !silent) caller.to_chat(span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
 	return rcd_disk
 
 /obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
 	if(!rcd_disk)
-		caller.to_chat("There is no disk to eject from \the [src.name]!")
+		caller.to_chat(span("warning","There is no disk to eject from \the [src.name]!"))
 		return null
-	if(caller && !silent) caller.to_chat("You remove \the [rcd_disk.name] from \the [src.name].")
+	if(caller && !silent) caller.to_chat(span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
 	rcd_disk.drop_item(get_turf(src))
 	. = rcd_disk
 	rcd_disk = null

@@ -46,7 +46,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "am" = (
-/mob/living/simple/npc/goliath,
+/mob/living/simple/goliath,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
 "an" = (
@@ -84,7 +84,7 @@
 /turf/simulated/hazard/lava,
 /area/hellscape/interior/caves/watersource)
 "ax" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
 "ay" = (
@@ -172,7 +172,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
 "aS" = (
-/mob/living/simple/npc/silicon/squats,
+/mob/living/simple/silicon/squats,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
 "aT" = (
@@ -268,7 +268,7 @@
 /area/hellscape/interior/caves/ashwalker_village)
 "bo" = (
 /obj/structure/interactive/lighting/floor/strong,
-/mob/living/simple/npc/can_man,
+/mob/living/simple/can_man,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
 "bp" = (
@@ -386,7 +386,7 @@
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "bQ" = (
-/mob/living/simple/npc/bear/armored/revolutionary,
+/mob/living/simple/bear/armored/revolutionary,
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "bR" = (
@@ -525,7 +525,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "cz" = (
-/mob/living/simple/npc/crab,
+/mob/living/simple/crab,
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/watersource)
 "cA" = (
@@ -572,7 +572,7 @@
 /turf/simulated/hazard/water,
 /area/hellscape/interior/caves/watersource)
 "cK" = (
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "cL" = (
@@ -612,7 +612,7 @@
 /area/hellscape/interior/rev)
 "cT" = (
 /obj/structure/scenery/grass,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "cU" = (
@@ -676,7 +676,7 @@
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/crash)
 "dg" = (
-/mob/living/simple/npc/arachnid,
+/mob/living/simple/arachnid,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "dh" = (
@@ -702,7 +702,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/syndicate)
 "dm" = (
-/mob/living/simple/npc/xeno/hunter,
+/mob/living/simple/xeno/hunter,
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "dn" = (
@@ -789,7 +789,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/hellscape/interior/caves/crash)
 "dC" = (
-/mob/living/simple/npc/watcher,
+/mob/living/simple/watcher,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
 "dD" = (
@@ -889,11 +889,11 @@
 /turf/simulated/wall/xeno,
 /area/hellscape/interior/caves/hive)
 "dY" = (
-/mob/living/simple/npc/xeno/sentinel,
+/mob/living/simple/xeno/sentinel,
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "dZ" = (
-/mob/living/simple/npc/xeno/drone,
+/mob/living/simple/xeno/drone,
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "ea" = (
@@ -944,11 +944,11 @@
 /area/hellscape/interior/caves/hive)
 "ej" = (
 /obj/marker/map_node,
-/mob/living/simple/npc/xeno/sentinel,
+/mob/living/simple/xeno/sentinel,
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "ek" = (
-/mob/living/simple/npc/xeno/queen,
+/mob/living/simple/xeno/queen,
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "el" = (
@@ -1038,7 +1038,7 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "eI" = (
-/mob/living/simple/npc/watcher,
+/mob/living/simple/watcher,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/crash)
 "eJ" = (
@@ -1087,7 +1087,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
 "eR" = (
-/mob/living/simple/npc/goliath,
+/mob/living/simple/goliath,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/crash)
 "eS" = (
@@ -1178,7 +1178,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "fm" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
 /area/hellscape/interior/caves/watersource)
 "fn" = (
@@ -1393,7 +1393,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "gg" = (
-/obj/item/container/food/dynamic/meat/spider,
+/obj/item/container/food/dynamic/meat/raw_spider,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "gh" = (
@@ -1433,7 +1433,7 @@
 /turf/simulated/floor/plating,
 /area/transit/dropship/delta/landing)
 "gr" = (
-/mob/living/simple/npc/herald,
+/mob/living/simple/herald,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
 "gs" = (
@@ -1454,8 +1454,8 @@
 /area/hellscape/interior/caves/hellchamber)
 "gw" = (
 /obj/structure/smooth/table/wood,
-/obj/item/container/food/dynamic/meat/bear,
-/obj/item/container/food/dynamic/meat/bear,
+/obj/item/container/food/dynamic/meat/raw_bear,
+/obj/item/container/food/dynamic/meat/raw_bear,
 /obj/structure/interactive/lighting/candle,
 /turf/simulated/floor/wood/brown,
 /area/hellscape/exterior/jungle/north)
@@ -1480,7 +1480,7 @@
 "gB" = (
 /obj/structure/scenery/jungle_rock,
 /obj/structure/scenery/grass,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "gC" = (
@@ -1593,7 +1593,7 @@
 /area/hellscape/interior/caves/watersource)
 "hc" = (
 /obj/structure/interactive/tree/jungle_large,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "hd" = (
@@ -1617,7 +1617,7 @@
 /turf/simulated/floor/colored/sand/beach,
 /area/hellscape/interior/pirate_landing)
 "hi" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/watersource)
 "hj" = (
@@ -1625,11 +1625,11 @@
 /turf/simulated/floor/colored/dirt/soil,
 /area/hellscape/exterior/jungle/north)
 "hk" = (
-/mob/living/simple/npc/bear,
+/mob/living/simple/bear,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "hl" = (
-/mob/living/simple/npc/crab,
+/mob/living/simple/crab,
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/crab)
 "hm" = (
@@ -1652,7 +1652,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/hellscape/interior/syndicate/aux)
 "hp" = (
-/obj/item/container/food/dynamic/meat/xeno,
+/obj/item/container/food/dynamic/meat/raw_xeno,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "hq" = (
@@ -1675,7 +1675,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
 "hu" = (
-/mob/living/simple/npc/bear,
+/mob/living/simple/bear,
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/watersource)
 "hv" = (
@@ -1801,7 +1801,7 @@
 /area/hellscape/interior/caves/watersource)
 "hU" = (
 /obj/structure/interactive/bed,
-/mob/living/simple/npc/spider,
+/mob/living/simple/spider,
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
 "hV" = (
@@ -1815,7 +1815,7 @@
 /area/hellscape/interior/caves/watersource)
 "hX" = (
 /obj/structure/interactive/tree/jungle_small,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "hY" = (
@@ -1856,7 +1856,7 @@
 	dir = 8;
 	icon_state = "wooden_chair"
 	},
-/mob/living/simple/npc/spider,
+/mob/living/simple/spider,
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
 "ig" = (
@@ -1877,7 +1877,7 @@
 /turf/simulated/floor/wood/dock,
 /area/hellscape/interior/pirate_landing)
 "ij" = (
-/mob/living/simple/npc/crab,
+/mob/living/simple/crab,
 /turf/simulated/floor/colored/sand/beach,
 /area/hellscape/interior/pirate_landing)
 "ik" = (
@@ -1915,7 +1915,7 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/interior/pirate_landing)
 "ir" = (
-/mob/living/simple/npc/crab,
+/mob/living/simple/crab,
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/pirate_landing)
 "is" = (
@@ -2170,7 +2170,7 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
 "jv" = (
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "jw" = (
@@ -2251,7 +2251,7 @@
 /area/hellscape/interior/syndicate)
 "jK" = (
 /obj/structure/interactive/tree/jungle_large,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "jL" = (
@@ -2313,7 +2313,7 @@
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "jY" = (
-/mob/living/simple/npc/arachnid,
+/mob/living/simple/arachnid,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "jZ" = (
@@ -2440,7 +2440,7 @@
 /area/hellscape/exterior/jungle/south)
 "kz" = (
 /obj/structure/scenery/grass,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "kA" = (
@@ -2486,7 +2486,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
 "kI" = (
-/mob/living/simple/npc/watcher,
+/mob/living/simple/watcher,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/syndicate)
 "kJ" = (
@@ -2577,14 +2577,14 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "kY" = (
-/mob/living/simple/npc/turret/syndicate{
+/mob/living/simple/turret/syndicate{
 	icon_state = "active";
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "kZ" = (
-/mob/living/simple/npc/turret/syndicate{
+/mob/living/simple/turret/syndicate{
 	icon_state = "active";
 	dir = 8
 	},
@@ -2854,7 +2854,7 @@
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/syndicate)
 "lY" = (
-/mob/living/simple/npc/legionare,
+/mob/living/simple/legionare,
 /turf/simulated/floor/colored/ash/dark,
 /area/hellscape/exterior/death_plains)
 "lZ" = (
@@ -2874,7 +2874,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "md" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/broodmother)
 "me" = (
@@ -2988,7 +2988,7 @@
 "mA" = (
 /obj/structure/scenery/grass,
 /obj/structure/interactive/tree/jungle_large,
-/mob/living/simple/npc/venus_human_trap,
+/mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "mB" = (
@@ -3014,14 +3014,14 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "mG" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/floor/wood/dock,
 /area/hellscape/exterior/jungle/south)
 "mH" = (
 /turf/simulated/floor/colored/grass/jungle,
 /area/hellscape/exterior/jungle/south)
 "mI" = (
-/mob/living/simple/npc/spacecarp,
+/mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
 /area/hellscape/exterior/jungle/south)
 "mJ" = (
@@ -3144,7 +3144,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "nk" = (
-/mob/living/simple/npc/bear/black,
+/mob/living/simple/bear/black,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "nl" = (
@@ -3527,7 +3527,7 @@
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/ashwalker_village)
 "oJ" = (
-/mob/living/simple/npc/spider,
+/mob/living/simple/spider,
 /turf/simulated/floor/colored/dirt/cave{
 	icon_state = "ash"
 	},
@@ -3558,15 +3558,15 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
 "oQ" = (
-/mob/living/simple/npc/spider,
+/mob/living/simple/spider,
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/ashwalker_village)
 "oR" = (
-/mob/living/simple/npc/goliath,
+/mob/living/simple/goliath,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "oS" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "oT" = (
@@ -3732,22 +3732,22 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "pA" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pB" = (
-/mob/living/simple/npc/bubblegum,
+/mob/living/simple/bubblegum,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pC" = (
-/mob/living/simple/npc/watcher,
+/mob/living/simple/watcher,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pD" = (
 /obj/marker/landmark{
 	name = "Ash Drake Cave"
 	},
-/mob/living/simple/npc/ash_drake,
+/mob/living/simple/ash_drake,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pE" = (
@@ -3759,7 +3759,7 @@
 /turf/simulated/wall/rock/basalt,
 /area/hellscape/interior/caves/ancient)
 "pG" = (
-/mob/living/simple/npc/goliath,
+/mob/living/simple/goliath,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pH" = (
@@ -3787,7 +3787,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pN" = (
-/mob/living/simple/npc/colossus,
+/mob/living/simple/colossus,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "pO" = (
@@ -3853,7 +3853,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/containment)
 "pZ" = (
-/mob/living/simple/npc/slime,
+/mob/living/simple/slime,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/containment)
 "qa" = (
@@ -3865,7 +3865,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/containment)
 "qc" = (
-/mob/living/simple/npc/slime_king,
+/mob/living/simple/slime_king,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/containment)
 "qd" = (
@@ -3926,7 +3926,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/rev)
 "qn" = (
-/mob/living/simple/npc/watcher,
+/mob/living/simple/watcher,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/rev)
 "qo" = (
@@ -3936,11 +3936,11 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/syndicate)
 "qq" = (
-/mob/living/simple/npc/goliath/broodmother,
+/mob/living/simple/goliath/broodmother,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/broodmother)
 "qr" = (
-/mob/living/simple/npc/goliath,
+/mob/living/simple/goliath,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/broodmother)
 "qs" = (
@@ -3956,7 +3956,7 @@
 /turf/simulated/wall/rock/indestructable,
 /area/hellscape/interior/caves/lava_lake)
 "qw" = (
-/mob/living/simple/npc/goliath/ancient,
+/mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "qx" = (
@@ -3988,7 +3988,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "qE" = (
-/mob/living/simple/npc/bear/black,
+/mob/living/simple/bear/black,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "qF" = (
@@ -4041,7 +4041,7 @@
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "qR" = (
-/mob/living/simple/npc/crab/king,
+/mob/living/simple/crab/king,
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/crab)
 "qS" = (

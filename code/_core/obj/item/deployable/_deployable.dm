@@ -109,7 +109,7 @@
 	name = "deployable sentry"
 	desc = "BUILDIN A SENTRY"
 	desc_extended = "A small man portable sentry designed to fire small-arms ammunition at hostile targets. Battery amd ammo not included."
-	mob_to_deploy = /mob/living/simple/npc/turret/deployable
+	mob_to_deploy = /mob/living/simple/turret/deployable
 	icon = 'icons/mob/living/simple/turret_deployable_2.dmi'
 	value = 750
 	item_count_max = 1
@@ -124,7 +124,7 @@
 
 	. = ..()
 
-	var/mob/living/simple/npc/turret/deployable/TD = L
+	var/mob/living/simple/turret/deployable/TD = L
 	if(stored_battery)
 		TD.stored_battery = stored_battery
 		stored_battery.force_move(TD)
