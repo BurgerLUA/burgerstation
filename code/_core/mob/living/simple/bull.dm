@@ -7,6 +7,8 @@
 	icon_state = "bull"
 
 	health_base = 100
+	stamina_base = 100
+	mana_base = 50
 
 	value = 50
 
@@ -22,7 +24,6 @@
 	damage_type = /damagetype/npc/bull
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
 		BLUNT = AP_SWORD,
 		PIERCE = AP_AXE,
 		LASER = -AP_SWORD,

@@ -15,6 +15,8 @@
 	stun_angle = 0
 
 	health_base = 3000
+	stamina_base = 500
+	mana_base = 2000
 
 	attack_range = 2
 
@@ -24,18 +26,12 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
 		LASER = AP_GREATSWORD,
 		ARCANE = AP_SWORD,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
-		BOMB = AP_DAGGER,
-		BIO = AP_DAGGER,
-		RAD = AP_SWORD,
-		HOLY = -AP_SWORD,
-		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

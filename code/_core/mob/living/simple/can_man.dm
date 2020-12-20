@@ -15,6 +15,8 @@
 	stun_angle = 0
 
 	health_base = 5000
+	stamina_base = 4000
+	mana_base = 100
 
 	attack_range = 2
 
@@ -26,16 +28,14 @@
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
 		LASER = AP_CLUB,
-		ARCANE = AP_SWORD,
+		ARCANE = -AP_SWORD,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
-		BOMB = AP_GREATSWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = 0,
 		PAIN = INFINITY
 	)
 

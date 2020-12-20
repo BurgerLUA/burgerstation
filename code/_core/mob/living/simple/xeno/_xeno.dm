@@ -24,17 +24,14 @@
 	iff_tag = "Alien"
 
 	armor_base = list(
-		BLADE = AP_CLUB,
+		BLADE = AP_SWORD,
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
 		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
 		HEAT = -AP_SWORD,
 		COLD = AP_GREATAXE,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = AP_SWORD,
-		DARK = AP_CLUB,
 		FATIGUE = AP_CLUB,
 		ION = INFINITY,
 		PAIN = AP_CLUB

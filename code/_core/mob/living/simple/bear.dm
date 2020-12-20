@@ -16,22 +16,17 @@
 	armor_base = list(
 		BLADE = AP_DAGGER,
 		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
 		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
 		HEAT = -AP_DAGGER,
 		COLD = AP_CLUB,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = AP_AXE,
-		DARK = AP_AXE,
 		FATIGUE = AP_SWORD,
 		ION = INFINITY,
 		PAIN = AP_SWORD
 	)
 
 	health_base = 200
+	stamina_base = 100
+	mana_base = 50
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/raw_bear/,

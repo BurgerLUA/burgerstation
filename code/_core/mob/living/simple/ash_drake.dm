@@ -24,6 +24,8 @@
 	stun_angle = 0
 
 	health_base = 3000
+	stamina_base = 500
+	mana_base = 2000
 
 	var/boss_state = 0
 	//0 = walking
@@ -43,7 +45,6 @@
 		ARCANE = AP_SWORD,
 		HEAT = AP_GREATSWORD,
 		COLD = -AP_AXE,
-		BOMB = AP_SWORD,
 		BIO = AP_SWORD,
 		RAD = AP_GREATSWORD,
 		HOLY = -AP_SWORD,

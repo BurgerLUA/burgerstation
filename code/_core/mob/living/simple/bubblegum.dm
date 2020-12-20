@@ -15,6 +15,8 @@
 	var/charge_dir = 0
 
 	health_base = 4000
+	stamina_base = 4000
+	mana_base = 1000
 
 	move_delay = DECISECONDS_TO_TICKS(2)
 
@@ -28,14 +30,9 @@
 	armor_base = list(
 		BLADE = AP_SWORD,
 		BLUNT = AP_SWORD,
-		PIERCE = AP_DAGGER,
 		LASER = AP_GREATSWORD,
-		ARCANE = AP_SWORD,
 		HEAT = AP_SWORD,
 		COLD = AP_DAGGER,
-		BOMB = AP_DAGGER,
-		BIO = 0,
-		RAD = AP_DAGGER,
 		HOLY = -AP_SWORD,
 		DARK = AP_CLUB,
 		FATIGUE = AP_CLUB,

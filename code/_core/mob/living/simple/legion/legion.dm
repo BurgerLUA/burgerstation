@@ -34,9 +34,6 @@
 	blood_type = null
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = 0,
-		PIERCE = AP_DAGGER,
 		LASER = AP_GREATSWORD,
 		MAGIC = AP_GREATSWORD,
 		HEAT = AP_GREATSWORD,

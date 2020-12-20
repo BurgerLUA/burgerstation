@@ -6,13 +6,14 @@
 	icon_state = "clown"
 
 	health_base = 100
+	stamina_base = 200
+	mana_base = 200
 
 	ai = /ai/clown
 	class = /class/clown //Just like highschool
 	damage_type = /damagetype/npc/clown
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -41,7 +42,6 @@
 		BLADE = AP_SWORD,
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
-		ARCANE = AP_CLUB,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -61,7 +61,7 @@
 		BLADE = AP_CLUB,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		ARCANE = AP_DAGGER,
+		ARCANE = -AP_DAGGER,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -79,7 +79,6 @@
 
 	armor_base = list(
 		BLADE = -AP_SWORD,
-		ARCANE = AP_CLUB,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -102,7 +101,6 @@
 	ai = /ai/clown/long
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -120,7 +118,6 @@
 	ai = /ai/clown/pie
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -139,9 +136,9 @@
 	ai = /ai/clown/lube
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
+		BIO = AP_CLUB,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

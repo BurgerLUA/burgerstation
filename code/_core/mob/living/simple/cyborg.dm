@@ -18,7 +18,7 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
-	armor_base = ARMOR_CYBORG
+	armor_base = CYBORG_ARMOR
 
 /mob/living/simple/silicon/engineer
 	name = "engineer cyborg"
@@ -53,9 +53,8 @@
 		PIERCE = AP_AXE,
 		LASER = AP_SWORD,
 		ARCANE = -AP_GREATSWORD,
-		HEAT = 0,
+		HEAT = -AP_AXE,
 		COLD = AP_AXE,
-		BOMB = AP_SWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
@@ -104,20 +103,17 @@
 	health_base = 400
 
 	armor_base = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 75,
-		LASER = 50,
-		ARCANE = -50,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 25,
+		BLADE = AP_SWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = -AP_AXE,
+		COLD = AP_SWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = 0,
 		PAIN = INFINITY
 	)
 

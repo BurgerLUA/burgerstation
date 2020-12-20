@@ -7,6 +7,10 @@
 	damage_type = /damagetype/npc/crab
 	class = /class/crab
 
+	health_base = 50
+	stamina_base = 25
+	mana_base = 25
+
 	value = 25
 
 	butcher_contents = list(
@@ -20,16 +24,9 @@
 
 	armor_base = list(
 		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
 		PIERCE = AP_CLUB,
-		LASER = 0,
-		ARCANE = AP_DAGGER,
 		HEAT = -AP_CLUB,
 		COLD = -AP_CLUB,
-		BOMB = AP_CLUB,
-		BIO = AP_SWORD,
-		HOLY = AP_CLUB,
-		DARK = AP_AXE,
 		ION = INFINITY
 	)
 
@@ -63,6 +60,8 @@
 	pixel_y = -12
 
 	health_base = 2500
+	stamina_base = 1000
+	mana_base = 100
 
 	ai = /ai/
 
@@ -91,14 +90,9 @@
 		BLADE = AP_GREATSWORD,
 		BLUNT = AP_AXE,
 		PIERCE = AP_GREATSWORD,
-		LASER = 0,
-		ARCANE = AP_DAGGER,
+		ARCANE = -AP_SWORD,
 		HEAT = -AP_CLUB,
 		COLD = -AP_CLUB,
-		BOMB = AP_CLUB,
-		BIO = AP_SWORD,
-		HOLY = AP_CLUB,
-		DARK = AP_AXE,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

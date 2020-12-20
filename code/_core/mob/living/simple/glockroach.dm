@@ -14,7 +14,7 @@
 	stun_angle = 180
 
 	armor_base = list(
-		BIO = INFINITY
+		BIO = INFINITY,
 		RAD = INFINITY,
 		ION = INFINITY
 	)

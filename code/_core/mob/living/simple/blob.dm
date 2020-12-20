@@ -7,6 +7,8 @@
 	icon_state = "blobbernaut"
 
 	health_base = 300
+	stamina_base = 100
+	mana_base = 50
 
 	value = 50
 
@@ -15,18 +17,13 @@
 	damage_type = /damagetype/npc/bull
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
 		BLUNT = AP_AXE,
-		PIERCE = AP_DAGGER,
 		LASER = -AP_AXE,
-		ARCANE = -AP_DAGGER,
 		HEAT = -AP_AXE,
 		COLD = AP_AXE,
 		BOMB = -AP_AXE,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = AP_AXE,
-		DARK = AP_AXE,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

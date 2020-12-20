@@ -29,13 +29,9 @@
 		BLUNT = AP_SWORD,
 		PIERCE = AP_DAGGER,
 		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
 		HEAT = AP_AXE,
 		COLD = -AP_AXE,
-		BOMB = AP_SWORD,
 		BIO = AP_CLUB,
-		HOLY = AP_SWORD,
-		DARK = AP_SWORD,
 		FATIGUE = AP_SWORD,
 		ION = INFINITY,
 		PAIN = AP_CLUB
@@ -45,6 +41,8 @@
 	loyalty_tag = "Jungle"
 
 	health_base = 500
+	stamina_base = 250
+	mana_base = 250
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

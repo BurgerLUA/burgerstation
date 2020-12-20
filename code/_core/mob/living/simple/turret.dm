@@ -20,7 +20,7 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
-	armor_base = ARMOR_CYBORG
+	armor_base = CYBORG_ARMOR
 
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))

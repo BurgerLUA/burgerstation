@@ -6,6 +6,8 @@
 	icon_state = "living"
 
 	health_base = 20
+	stamina_base = 10
+	mana_base = 10
 
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/crab
