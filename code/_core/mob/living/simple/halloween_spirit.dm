@@ -14,18 +14,15 @@
 	stun_angle = 0
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 50,
-		ARCANE = 25,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 25,
+		LASER = AP_AXE,
+		ARCANE = AP_AXE,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_CLUB,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = -50,
-		DARK = 200,
+		HOLY = -AP_GREATCLUB,
+		DARK = AP_GREATCLUB,
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)

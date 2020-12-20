@@ -14,17 +14,8 @@
 	stun_angle = 180
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = -50,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 50,
-		HEAT = 25,
-		COLD = -50,
-		BOMB = 25,
-		BIO = 50,
-		HOLY = 100,
-		DARK = 100,
+		BIO = INFINITY
+		RAD = INFINITY,
 		ION = INFINITY
 	)
 

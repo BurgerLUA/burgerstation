@@ -31,18 +31,16 @@
 	force_spawn = TRUE
 
 	armor_base = list(
-		BLADE = 50,
-		BLUNT = INFINITY,
-		PIERCE = 100,
-		LASER = 75,
-		ARCANE = 75,
-		HEAT = 100,
-		COLD = -25,
-		BOMB = 25,
+		BLADE = -AP_SWORD,
+		BLUNT = AP_GREATSWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_CLUB,
+		COLD = -AP_CLUB,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = 200,
-		DARK = 100,
+		HOLY = AP_SWORD,
+		DARK = AP_SWORD,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

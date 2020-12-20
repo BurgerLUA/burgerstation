@@ -18,6 +18,8 @@
 
 	mob_size = MOB_SIZE_HUMAN
 
+	armor_base = ARMOR_CYBORG
+
 /mob/living/simple/silicon/engineer
 	name = "engineer cyborg"
 	icon_state = "engineer"
@@ -46,20 +48,20 @@
 	walk_delay_mul = 3
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 75,
-		LASER = 50,
-		ARCANE = -50,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 25,
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_AXE,
+		LASER = AP_SWORD,
+		ARCANE = -AP_GREATSWORD,
+		HEAT = 0,
+		COLD = AP_AXE,
+		BOMB = AP_SWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50,
+		ION = -AP_GREATSWORD,
 		PAIN = INFINITY
 	)
 

@@ -17,19 +17,19 @@
 	mob_size = MOB_SIZE_BOSS
 
 	armor_base = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
-		ARCANE = 25,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 50,
-		BIO = 50,
-		RAD = 50,
-		HOLY = 25,
-		DARK = 100,
-		FATIGUE = 50,
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		ARCANE = AP_AXE,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE,
+		BIO = AP_AXE,
+		RAD = AP_AXE,
+		HOLY = AP_AXE,
+		DARK = AP_AXE,
+		FATIGUE = AP_AXE,
 		ION = INFINITY,
 		PAIN = INFINITY
 	)

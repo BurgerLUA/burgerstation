@@ -26,19 +26,19 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = 50,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 100,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = 25,
-		BOMB = 25,
-		BIO = 50,
-		RAD = 50,
-		HOLY = -25,
-		DARK = 75,
-		FATIGUE = 75,
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_DAGGER,
+		LASER = AP_GREATSWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_SWORD,
+		COLD = AP_DAGGER,
+		BOMB = AP_DAGGER,
+		BIO = 0,
+		RAD = AP_DAGGER,
+		HOLY = -AP_SWORD,
+		DARK = AP_CLUB,
+		FATIGUE = AP_CLUB,
 		ION = INFINITY,
 		PAIN = INFINITY
 	)

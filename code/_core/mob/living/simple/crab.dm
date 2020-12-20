@@ -19,17 +19,17 @@
 	stun_angle = 180
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = -25,
-		PIERCE = 75,
-		LASER = 25,
-		ARCANE = 50,
-		HEAT = -25,
-		COLD = -25,
-		BOMB = 50,
-		BIO = 25,
-		HOLY = 100,
-		DARK = 100,
+		BLADE = AP_CLUB,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_CLUB,
+		LASER = 0,
+		ARCANE = AP_DAGGER,
+		HEAT = -AP_CLUB,
+		COLD = -AP_CLUB,
+		BOMB = AP_CLUB,
+		BIO = AP_SWORD,
+		HOLY = AP_CLUB,
+		DARK = AP_AXE,
 		ION = INFINITY
 	)
 
@@ -88,18 +88,17 @@
 	damage_type = /damagetype/npc/crab
 
 	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 50,
-		ARCANE = 25,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 75,
-		BIO = 25,
-		RAD = 25,
-		HOLY = 100,
-		DARK = 100,
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_GREATSWORD,
+		LASER = 0,
+		ARCANE = AP_DAGGER,
+		HEAT = -AP_CLUB,
+		COLD = -AP_CLUB,
+		BOMB = AP_CLUB,
+		BIO = AP_SWORD,
+		HOLY = AP_CLUB,
+		DARK = AP_AXE,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

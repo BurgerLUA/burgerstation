@@ -14,21 +14,20 @@
 	value = 50
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 50,
-		PIERCE = 75,
-		LASER = 0,
-		ARCANE = 100,
-		HEAT = 0,
-		COLD = -25,
-		BOMB = 0,
-		BIO = -50,
-		RAD = 75,
-		HOLY = 75,
-		DARK = 0,
-		FATIGUE = 50,
+		BLADE = -AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_GREATSWORD,
+		HEAT = -AP_SWORD,
+		COLD = -AP_SWORD,
+		BIO = -AP_GREATSWORD,
+		RAD = AP_CLUB,
+		HOLY = AP_CLUB,
+		DARK = AP_DAGGER,
+		FATIGUE = AP_CLUB,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = AP_SWORD
 	)
 
 	iff_tag = "Jungle"

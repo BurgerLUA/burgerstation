@@ -12,21 +12,12 @@
 	damage_type = /damagetype/npc/clown
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	iff_tag = "Clown"
@@ -47,21 +38,15 @@
 	ai = /ai/clown/hulk
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	pixel_x = -16
@@ -73,21 +58,15 @@
 	icon_state = "destroyer"
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		BLADE = AP_CLUB,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		ARCANE = AP_DAGGER,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 /mob/living/simple/clown/tree
@@ -99,21 +78,13 @@
 	ai = /ai/clown/tree
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		BLADE = -AP_SWORD,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	pixel_x = -16
@@ -131,21 +102,12 @@
 	ai = /ai/clown/long
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	mob_size = MOB_SIZE_LARGE
@@ -158,21 +120,12 @@
 	ai = /ai/clown/pie
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	mob_size = MOB_SIZE_LARGE
@@ -186,21 +139,12 @@
 	ai = /ai/clown/lube
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	status_immune = list(
@@ -411,21 +355,13 @@
 	ai = /ai/clown/mutant
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY,
+		RAD = INFINITY
 	)
 
 	mob_size = MOB_SIZE_LARGE
@@ -441,21 +377,12 @@
 	ai = /ai/clown/blob
 
 	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 0,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_CLUB,
+		DARK = AP_CLUB,
+		FATIGUE = INFINITY,
 		ION = INFINITY,
-		PAIN = 0
+		PAIN = INFINITY
 	)
 
 	pixel_x = -16

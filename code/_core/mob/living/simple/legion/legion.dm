@@ -33,6 +33,24 @@
 
 	blood_type = null
 
+	armor_base = list(
+		BLADE = AP_DAGGER,
+		BLUNT = 0,
+		PIERCE = AP_DAGGER,
+		LASER = AP_GREATSWORD,
+		MAGIC = AP_GREATSWORD,
+		HEAT = AP_GREATSWORD,
+		COLD = AP_GREATSWORD,
+		BOMB = -AP_AXE,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = -AP_AXE,
+		DARK = AP_AXE,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY
+	)
+
 /mob/living/simple/legionare/Destroy()
 
 	if(stored_corpse)

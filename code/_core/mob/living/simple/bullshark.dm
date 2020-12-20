@@ -27,6 +27,24 @@
 		/obj/item/container/food/dynamic/fish/raw_carp
 	)
 
+	armor_base = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		LASER = 0,
+		ARCANE = AP_SWORD,
+		HEAT = AP_GREATAXE,
+		COLD = AP_GREATAXE,
+		BOMB = AP_DAGGER,
+		BIO = AP_GREATAXE,
+		RAD = INFINITY,
+		HOLY = AP_SWORD,
+		DARK = AP_SWORD,
+		FATIGUE = AP_SWORD,
+		ION = INFINITY,
+		PAIN = AP_SWORD
+	)
+
 /mob/living/simple/bullshark/post_death()
 	. = ..()
 	icon_state = "dead"

@@ -22,21 +22,19 @@
 	)
 
 	armor_base = list(
-		BLADE = 10,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 0,
-		ARCANE = 50,
-		HEAT = -25,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 75,
-		RAD = 25,
-		HOLY = 50,
-		DARK = 75,
-		FATIGUE = 25,
+		BLADE = AP_DAGGER,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_SWORD,
+		BIO = AP_GREATSWORD,
+		RAD = AP_AXE,
+		HOLY = AP_SWORD,
+		DARK = AP_SWORD,
+		FATIGUE = AP_SWORD,
 		ION = INFINITY,
-		PAIN = 25
+		PAIN = AP_SWORD
 	)
 
 	mob_size = MOB_SIZE_LARGE

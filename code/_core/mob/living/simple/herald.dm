@@ -20,21 +20,21 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 75,
-		LASER = 75,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = 25,
-		BOMB = 25,
-		BIO = 50,
-		RAD = 50,
-		HOLY = -25,
-		DARK = 75,
-		FATIGUE = 75,
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = AP_SWORD,
+		LASER = AP_GREATSWORD,
+		ARCANE = AP_GREATSWORD,
+		HEAT = AP_GREATSWORD,
+		COLD = AP_SWORD,
+		BOMB = AP_GREATSWORD,
+		BIO = AP_GREATSWORD,
+		RAD = AP_GREATSWORD,
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD,
+		FATIGUE = AP_GREATSWORD,
 		ION = INFINITY,
-		PAIN = 100
+		PAIN = AP_GREATSWORD
 	)
 
 	status_immune = list(

@@ -24,21 +24,20 @@
 	iff_tag = "Alien"
 
 	armor_base = list(
-		BLADE = 75,
-		BLUNT = 50,
-		PIERCE = 75,
-		LASER = 25,
-		ARCANE = 25,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 25,
+		BLADE = AP_CLUB,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_GREATAXE,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = 50,
-		DARK = 100,
-		FATIGUE = 75,
+		HOLY = AP_SWORD,
+		DARK = AP_CLUB,
+		FATIGUE = AP_CLUB,
 		ION = INFINITY,
-		PAIN = 100
+		PAIN = AP_CLUB
 	)
 
 	movement_delay = DECISECONDS_TO_TICKS(AI_TICK*0.5)

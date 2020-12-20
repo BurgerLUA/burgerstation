@@ -21,18 +21,16 @@
 	value = 100
 
 	armor_base = list(
-		BLADE = -25,
-		BLUNT = 100,
-		PIERCE = 75,
-		LASER = -25,
-		ARCANE = 50,
-		HEAT = 100,
-		COLD = -50,
-		BOMB = 0,
+		BLADE = -AP_SWORD,
+		BLUNT = AP_GREATSWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_CLUB,
+		COLD = -AP_CLUB,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = 75,
-		DARK = 75,
+		HOLY = AP_SWORD,
+		DARK = AP_SWORD,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

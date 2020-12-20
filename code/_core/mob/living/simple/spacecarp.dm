@@ -25,21 +25,20 @@
 	iff_tag = "Carp"
 
 	armor_base = list(
-		BLADE = 50,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 0,
-		ARCANE = 75,
-		HEAT = 50,
-		COLD = 100,
-		BOMB = 25,
-		BIO = 75,
+		BLADE = AP_AXE,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		ARCANE = AP_SWORD,
+		HEAT = AP_GREATAXE,
+		COLD = AP_GREATAXE,
+		BOMB = AP_DAGGER,
+		BIO = AP_GREATAXE,
 		RAD = INFINITY,
-		HOLY = 75,
-		DARK = 75,
-		FATIGUE = 25,
+		HOLY = AP_SWORD,
+		DARK = AP_SWORD,
+		FATIGUE = AP_SWORD,
 		ION = INFINITY,
-		PAIN = 25
+		PAIN = AP_SWORD
 	)
 
 	mob_size = MOB_SIZE_LARGE
