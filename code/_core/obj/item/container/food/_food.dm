@@ -3,7 +3,6 @@
 	desc = "Edible reagent"
 	desc_extended = "Edible."
 
-	var/bite_size = 5 //How many reagents to remove per bite?
 	var/bite_count = 0 //How many times someone has taken a bite from this.
 	consume_verb = "take a bite out of"
 
@@ -62,10 +61,10 @@
 
 	return .
 
-/obj/item/container/food/proc/get_calculated_bites(var/total_reagents = 1)
-	return CEILING(total_reagents/consume_size,1)
+/obj/item/container/food/proc/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
+	return CEILING(total_reagents/get_consume_size(caller),1)
 
-/obj/item/container/food/get_reagents_to_consume()
+/obj/item/container/food/get_reagents_to_consume(var/mob/living/consumer)
 
 	var/total_reagents = reagents.volume_current
 
@@ -76,7 +75,7 @@
 			continue
 		total_reagents += IT.reagents.volume_current
 
-	var/calculated_bites = get_calculated_bites(total_reagents)
+	var/calculated_bites = get_calculated_bites(consumer,total_reagents)
 	var/reagent_container/temp/T = new(src,1000)
 
 	for(var/i=1,i<=length(inventories),i++)

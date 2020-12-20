@@ -204,7 +204,7 @@
 			add_item_count(-1)
 			return TRUE
 
-	caller.to_chat("You can't load \the [src.name] into \the [W.name]!")
+	caller.to_chat(span("warning","You can't load \the [src.name] into \the [W.name]!"))
 
 	return FALSE
 

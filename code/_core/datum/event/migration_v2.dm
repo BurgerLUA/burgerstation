@@ -15,16 +15,16 @@
 		/mob/living/advanced/npc/rev,
 		/mob/living/advanced/npc/sorcerer,
 		/mob/living/advanced/npc/syndicate/quadruple,
-		/mob/living/simple/npc/arachnid,
-		/mob/living/simple/npc/bear/space,
-		/mob/living/simple/npc/bull,
-		/mob/living/simple/npc/crab,
-		/mob/living/simple/npc/goliath,
-		/mob/living/simple/npc/spacecarp,
-		/mob/living/simple/npc/spider,
-		/mob/living/simple/npc/venus_human_trap,
-		/mob/living/simple/npc/watcher,
-		/mob/living/simple/npc/xeno/hunter
+		/mob/living/simple/arachnid,
+		/mob/living/simple/bear/space,
+		/mob/living/simple/bull,
+		/mob/living/simple/crab,
+		/mob/living/simple/goliath,
+		/mob/living/simple/spacecarp,
+		/mob/living/simple/spider,
+		/mob/living/simple/venus_human_trap,
+		/mob/living/simple/watcher,
+		/mob/living/simple/xeno/hunter
 	)
 
 	var/mob/living/enemy_type_to_spawn

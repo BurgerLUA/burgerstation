@@ -8,11 +8,10 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		ARCANE = 75,
-		COLD = 25,
-		HEAT = 15,
-		HOLY = -75,
-		DARK = 75
+		ARCANE = AP_GREATSWORD,
+		COLD = AP_SWORD,
+		HOLY = -AP_AXE,
+		DARK = AP_AXE
 	)
 
 	rarity = RARITY_RARE
@@ -26,4 +25,4 @@
 
 	dyeable = TRUE
 
-	value = 750
+	value = 200

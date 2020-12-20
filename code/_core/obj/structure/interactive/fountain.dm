@@ -13,6 +13,10 @@
 
 	var/filled = TRUE
 
+	desired_light_range = 0.5
+	desired_light_power = 1
+	desired_light_color = "#FFFFFF"
+
 /obj/structure/interactive/fountain/Generate()
 
 	if(!fountain_type)
@@ -61,6 +65,8 @@
 				icon_state = "[icon_state]_mana"
 			if(3)
 				icon_state = "[icon_state]_stamina"
+			else
+				set_light(FALSE)
 
 	return ..()
 

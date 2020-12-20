@@ -74,7 +74,7 @@
 			labeled_overlays -= o_id
 			continue
 
-		var/health_mod = O.health.health_current / O.health.health_max
+		var/health_mod = (O.health.health_current - O.health.get_pain_loss()) / O.health.health_max
 
 		var/good_color = "#00FF00"
 		var/bad_color = "#FF0000"

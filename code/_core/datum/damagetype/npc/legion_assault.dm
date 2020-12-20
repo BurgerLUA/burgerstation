@@ -43,8 +43,8 @@
 
 	if(is_advanced(victim))
 		var/mob/living/advanced/A = victim
-		if(A.dead && istype(attacker,/mob/living/simple/npc/legionare_head))
-			var/mob/living/simple/npc/legionare_head/L = attacker
+		if(A.dead && istype(attacker,/mob/living/simple/legionare_head))
+			var/mob/living/simple/legionare_head/L = attacker
 			if(!L.qdeleting)
 				L.convert(A)
 

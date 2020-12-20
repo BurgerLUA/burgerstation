@@ -5,12 +5,13 @@
 	desc_extended = "Standard-issue of the Nanotrasen security force. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = -25,
-		BOMB = 25
+		BLADE = AP_SWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		ARCANE = -AP_AXE,
+		BOMB = AP_AXE,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_3

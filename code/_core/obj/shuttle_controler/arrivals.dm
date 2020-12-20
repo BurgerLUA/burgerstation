@@ -2,7 +2,7 @@
 	name = "arrivals shuttle controler"
 	desc = "Controls the arrivals shuttle."
 
-	var/mob/living/simple/npc/captain_beepsky/linked_beepsky
+	var/mob/living/simple/linked_beepsky
 
 	default_transit_time = 30 //Gotta be speedy or else players will probably D/C at stupid transit times.
 

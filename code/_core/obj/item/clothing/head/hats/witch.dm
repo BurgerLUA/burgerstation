@@ -6,10 +6,10 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		ARCANE = 100,
-		BIO = -100, //IM MELTING
-		HOLY = -50,
-		DARK = 50
+		ARCANE = AP_GREATSWORD,
+		BIO = -AP_GREATSWORD, //IM MELTING
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD
 	)
 
 	size = SIZE_2

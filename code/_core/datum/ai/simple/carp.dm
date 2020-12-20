@@ -1,16 +1,16 @@
 /ai/carp
-	var/mob/living/simple/npc/spacecarp/leader/carp_leader
+	var/mob/living/simple/spacecarp/leader/carp_leader
 
 
 /ai/carp/Destroy()
 	carp_leader = null
 	return ..()
 
-/ai/carp/proc/is_valid_leader(var/mob/living/simple/npc/spacecarp/leader/L)
+/ai/carp/proc/is_valid_leader(var/mob/living/simple/spacecarp/leader/L)
 	return !(L.dead)
 
 /ai/carp/proc/get_leader()
-	for(var/mob/living/simple/npc/spacecarp/leader/L in view(radius_find_enemy,owner))
+	for(var/mob/living/simple/spacecarp/leader/L in view(radius_find_enemy,owner))
 		if(owner == L)
 			continue
 		if(is_valid_leader(L))
@@ -21,7 +21,7 @@
 /ai/carp/handle_objectives()
 
 	if(!carp_leader || !is_valid_leader(carp_leader))
-		var/mob/living/simple/npc/spacecarp/leader/new_leader = get_leader()
+		var/mob/living/simple/spacecarp/leader/new_leader = get_leader()
 		if(new_leader)
 			carp_leader = new_leader
 

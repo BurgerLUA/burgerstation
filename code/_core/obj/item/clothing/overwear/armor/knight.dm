@@ -9,12 +9,13 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 75,
-		HEAT = -25,
-		ARCANE = -75
+		BLADE = AP_CLUB,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		HEAT = -AP_AXE,
+		ARCANE = -AP_CLUB,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_6
@@ -45,14 +46,13 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 90,
-		BLUNT = 90,
-		PIERCE = 90,
-		LASER = 50,
-		ARCANE = -125,
-		HEAT = -75,
-		COLD = 25,
-		BOMB = 25
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		HEAT = -AP_AXE,
+		ARCANE = -AP_GREATSWORD,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_7
@@ -67,14 +67,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = -25,
-		HEAT = -25,
-		HOLY = 50,
-		DARK = -100
+		BLADE = AP_CLUB,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		HEAT = -AP_AXE,
+		ARCANE = -AP_CLUB,
+		HOLY = AP_CLUB,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_5
@@ -90,13 +90,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 50,
-		ARCANE = 25,
-		HOLY = -50,
-		DARK = -50
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_SWORD,
+		HEAT = -AP_SWORD,
+		ARCANE = AP_CLUB,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_6
@@ -112,16 +112,13 @@
 	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
-		BLADE = 90,
-		BLUNT = 90,
-		PIERCE = 90,
-		LASER = -25,
-		ARCANE = -100,
-		HEAT = -100,
-		COLD = 15,
-		BOMB = 10,
-		HOLY = -25,
-		DARK = 25
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_CLUB,
+		LASER = -AP_AXE,
+		ARCANE = -AP_GREATSWORD,
+		HEAT = -AP_AXE,
+		BOMB = AP_AXE
 	)
 
 	size = SIZE_7
@@ -134,15 +131,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 10,
-		LASER = -25,
-		ARCANE = 75,
-		HEAT = 25,
-		COLD = 15,
-		HOLY = -25,
-		DARK = 25
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_CLUB,
+		HOLY = -AP_SWORD,
+		DARK = AP_SWORD
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)

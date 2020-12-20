@@ -82,3 +82,58 @@
 	flavor = "nut butter"
 
 	liquid = 0.25
+
+
+/reagent/nutrition/flower_petal
+	name = "flower petal"
+	desc = "Nutrition and flavor from a flower petal."
+	color = "#965A33"
+
+	nutrition_amount = 4
+	nutrition_quality_amount = 4
+
+	flavor = "flower petal"
+
+	liquid = 0
+
+/reagent/nutrition/poppy_seed
+	name = "poppy seed"
+	desc = "Opium-free washed poppy seeds."
+	color = "#511500"
+
+	nutrition_amount = 8
+	nutrition_quality_amount = 8
+
+	flavor = "poppy seeds"
+
+	liquid = 0
+
+/reagent/nutrition/poppy_seed/raw
+	name = "raw poppy seed"
+	desc = "Pure unrefined poppy seeds. It's unwashed and contains traces of opium."
+
+	processed_reagent = /reagent/medicine/painkiller/opium
+
+
+/reagent/nutrition/poppy_seed/raw/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(prob(10))
+		. *= 0.5
+		container.add_reagent(processed_reagent,.)
+
+	return .
+
+
+/reagent/nutrition/poppy_seed/raw/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(prob(10))
+		. *= 0.5
+		container.add_reagent(processed_reagent,.)
+
+	return .
+
+

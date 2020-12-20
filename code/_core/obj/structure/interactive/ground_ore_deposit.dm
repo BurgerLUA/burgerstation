@@ -8,6 +8,10 @@
 	layer = 0
 	initialize_type = INITIALIZE_LATE
 
+	desired_light_range = 1
+	desired_light_power = 0.25
+	desired_light_color = "#FFFFFF"
+
 /obj/structure/interactive/ground_ore_deposit/Initialize(var/desired_loc)
 
 	if(!istype(loc,/turf/simulated/floor/))

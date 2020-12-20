@@ -45,10 +45,30 @@
 
 	var/flags_reagent
 
+	var/addiction/addiction
+	var/addiction_strength = 1 //Percent chance to become addicted per unit.
+	var/addiction_threshold = 30 //The percent chance needs to be greater than this value to be considered addicted.
+
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 	return amount_added
 
 /reagent/proc/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+
+	if(addiction && is_advanced(L))
+		var/mob/living/advanced/A = L
+		var/addiction_value = (amount_added+current_volume)*addiction_strength
+		if(addiction_value >= addiction_threshold && A.labeled_organs[BODY_BRAIN])
+			var/obj/item/organ/internal/brain/B = A.labeled_organs[BODY_BRAIN]
+			var/addiction/D = SSliving.stored_addictions[addiction]
+			if(isnull(B.addictions[addiction]))
+				B.addictions[addiction] = addiction_value
+				B.withdrawal[addiction] = 0
+				D.on_add_initial(A,B,B.addictions[addiction],B.withdrawal[addiction])
+			else
+				B.addictions[addiction] = max(B.addictions[addiction],addiction_value)
+				B.withdrawal[addiction] = max(0,B.withdrawal[addiction]-amount_added)
+				D.on_add(A,B,B.addictions[addiction],B.withdrawal[addiction])
+
 	return amount_added
 
 /reagent/proc/on_remove(var/reagent_container/container)

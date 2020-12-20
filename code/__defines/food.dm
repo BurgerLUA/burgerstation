@@ -10,3 +10,4 @@
 #define FLAG_FLAVOR_JUNK 0x100 //Junkfood.
 #define FLAG_FLAVOR_FAT 0x200
 #define FLAG_FLAVOR_DAIRY 0x400 //Milk, cheese, ect
+#define FLAG_FLAVOR_NECRO 0x800 //Meat from the undead.

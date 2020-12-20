@@ -64,7 +64,7 @@
 
 		if(!mobdata)
 			log_error("WARNING: [ckey] doesn't have any mobdata!")
-			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 01. Rejoining may fix this.")
+			to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 01. Rejoining may fix this."))
 			return FALSE
 
 		var/character_id = mobdata.get_next_character_id()
@@ -73,7 +73,7 @@
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
 			var/obj/marker/dev/D = locate() in world
-			if(D)
+			if(D && ENABLE_INSTALOAD)
 				P.force_move(get_turf(D))
 				P.start_chargen()
 				P.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
@@ -86,7 +86,7 @@
 			P.update_premiums()
 			return TRUE
 		else
-			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this.")
+			to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this."))
 			log_error("WARNING: [ckey] was unable to create a new character!")
 
 

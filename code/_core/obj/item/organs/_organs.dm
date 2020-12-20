@@ -75,8 +75,9 @@
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(is_advanced(loc) && has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
+		health.adjust_loss(PAIN,damage_amount*0.5)
 		var/mob/living/advanced/A = loc
-		if(!A.dead && A.send_pain(80))
+		if(!A.dead && A.send_pain(damage_amount))
 			on_pain()
 			for(var/k in attached_organs)
 				var/obj/item/organ/O = k

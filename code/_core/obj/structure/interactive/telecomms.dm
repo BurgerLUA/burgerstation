@@ -10,6 +10,10 @@ var/global/list/all_telecomms = list()
 
 	var/list/broadcasting_areas = list()
 
+	desired_light_power = 0.25
+	desired_light_range = 2
+	desired_light_color = "#0000FF"
+
 /obj/structure/interactive/telecomms/Destroy()
 
 	for(var/k in broadcasting_areas)

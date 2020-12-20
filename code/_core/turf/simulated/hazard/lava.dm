@@ -30,7 +30,7 @@
 
 	if(!L.on_fire)
 		L.to_chat(span("danger","<h1>The lava is HOT!</h1>"))
-		L.send_pain(80)
+		L.send_pain(20)
 
 	L.add_status_effect(FIRE,100,0,stealthy=L.on_fire)
 

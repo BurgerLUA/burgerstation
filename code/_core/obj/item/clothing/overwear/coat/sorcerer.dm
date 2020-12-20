@@ -12,11 +12,10 @@
 	)
 
 	defense_rating = list(
-		ARCANE = 100,
-		COLD = 25,
-		HEAT = 15,
-		HOLY = -75,
-		DARK = 100
+		ARCANE = AP_GREATSWORD,
+		COLD = AP_SWORD,
+		HOLY = -AP_AXE,
+		DARK = AP_AXE
 	)
 
 	rarity = RARITY_RARE

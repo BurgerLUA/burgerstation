@@ -9,6 +9,7 @@
 	nutrition *= RAND_PRECISE(0.5,0.75)
 	hydration *= RAND_PRECISE(0.5,0.75)
 
+	/*
 	if(client)
 
 		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
@@ -60,6 +61,7 @@
 
 		client.update_zoom(2)
 		client.disable_controls = FALSE
+	*/
 
 
 

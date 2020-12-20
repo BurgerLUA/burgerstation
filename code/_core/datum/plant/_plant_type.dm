@@ -154,3 +154,15 @@
 	reagents = list(
 		/reagent/nutrition/cabbage = 1,
 	)
+
+/plant_type/poppy
+	name = "breadseed poppy"
+	desc = "A flower that grows poppy."
+	plant_icon_state = "poppy"
+	harvest_icon_state = "poppy"
+	seed_icon_state = "poppy"
+	plant_icon_count = 3
+	reagents = list(
+		/reagent/nutrition/flower_petal = 0.75,
+		/reagent/nutrition/poppy_seed/raw = 0.25
+	)

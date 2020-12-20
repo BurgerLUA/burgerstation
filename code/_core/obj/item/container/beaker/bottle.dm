@@ -77,7 +77,8 @@
 
 	pixel_y = 4
 
-	consume_size = 20
+/obj/item/container/beaker/glass/get_consume_size(var/mob/living/L)
+	return ..() * 2
 
 /obj/item/container/beaker/shot
 	name = "shot glass"
@@ -93,11 +94,8 @@
 
 	pixel_y = 4
 
-	consume_size = 100 //All of it.
-
-
-
-
+/obj/item/container/beaker/glass/get_consume_size(var/mob/living/L)
+	return reagents.volume_max
 
 /obj/item/container/beaker/bowl
 	name = "glass mixing bowl"

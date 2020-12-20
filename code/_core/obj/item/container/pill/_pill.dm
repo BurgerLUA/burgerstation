@@ -71,7 +71,7 @@
 	return .
 
 
-/obj/item/container/pill/get_reagents_to_consume()
+/obj/item/container/pill/get_reagents_to_consume(var/mob/living/consumer)
 	var/reagent_container/temp/T = new(src,1000)
 	reagents?.transfer_reagents_to(T,reagents.volume_current)
 	reagents_2?.transfer_reagents_to(T,reagents_2.volume_current)

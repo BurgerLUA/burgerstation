@@ -1,9 +1,9 @@
 /ai/slime/
 	roaming_distance = 32
 
-/ai/slime/proc/can_absorb_slime(var/mob/living/simple/npc/slime/S)
+/ai/slime/proc/can_absorb_slime(var/mob/living/simple/slime/S)
 
-	var/mob/living/simple/npc/slime/self = owner
+	var/mob/living/simple/slime/self = owner
 
 	if(S == self)
 		return FALSE
@@ -29,7 +29,7 @@
 
 	. = list()
 
-	var/mob/living/simple/npc/slime/self = owner
+	var/mob/living/simple/slime/self = owner
 
 	for(var/mob/living/advanced/A in view(radius_find_enemy,owner))
 		CHECK_TICK(75,FPS_SERVER)
@@ -37,7 +37,7 @@
 			.[A] = TRUE
 
 	if(!length(.) && self.stored_slimes < self.stored_slimes_max)
-		for(var/mob/living/simple/npc/slime/S in view(radius_find_enemy,owner))
+		for(var/mob/living/simple/slime/S in view(radius_find_enemy,owner))
 			CHECK_TICK(75,FPS_SERVER)
 			if(can_absorb_slime(S))
 				.[S] = TRUE
@@ -49,7 +49,7 @@
 	if(!is_slime(atom_to_attack) || !can_absorb_slime(atom_to_attack))
 		return ..()
 
-	var/mob/living/simple/npc/slime/self = owner
+	var/mob/living/simple/slime/self = owner
 	self.absorb_slime(atom_to_attack)
 
 	return TRUE

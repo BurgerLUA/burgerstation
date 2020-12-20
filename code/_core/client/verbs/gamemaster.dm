@@ -80,7 +80,7 @@
 	var/valid_path = text2path(object)
 
 	if(!valid_path)
-		usr.to_chat("\"[object]\" isn't a valid path.")
+		src.to_chat(span("warning","\"[object]\" isn't a valid path."))
 		return FALSE
 
 	var/list/valid_objects = typesof(valid_path)
@@ -88,7 +88,7 @@
 	var/valid_count = length(valid_objects)
 
 	if(!valid_count)
-		usr.to_chat("\"[object]\" returned no valid types.")
+		src.to_chat(span("warning","\"[object]\" returned no valid types."))
 		return FALSE
 
 	if(valid_count == 1)
@@ -157,7 +157,7 @@
 		return FALSE
 
 	var/added_currency = P.adjust_currency(dosh_amount)
-	to_chat("You gave [P.name] [added_currency] credits.")
+	to_chat(span("notice","You gave [P.name] [added_currency] credits."))
 
 	log_admin("[src.get_debug_name()] gave [P.get_debug_name()] [added_currency] credits.")
 
@@ -189,7 +189,7 @@
 
 	L.set_attribute_level(chosen_attribute,chosen_value)
 
-	to_chat("Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)].")
+	to_chat(span("notice","Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."))
 
 
 /client/verb/set_skill(var/mob/mob as mob)
@@ -220,7 +220,7 @@
 
 	L.set_skill_level(chosen_skill,chosen_value)
 
-	to_chat("Your [chosen_skill] is now [L.get_skill_level(chosen_skill)].")
+	to_chat(span("notice","Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."))
 
 /client/verb/rejuvenate_player()
 	set name = "Rejuvenate Player"
@@ -232,7 +232,7 @@
 		return FALSE
 
 	P.resurrect()
-	to_chat("You rejuvenated [P.name].")
+	to_chat(span("notice","You rejuvenated [P.name]."))
 
 	log_admin("[src.get_debug_name()] rejuvenated [P.get_debug_name()].")
 
@@ -320,7 +320,7 @@
 	var/gamemode/G = SSgamemode.active_gamemode
 
 	if(!G)
-		to_chat("The game isn't setup yet!")
+		to_chat(span("warning","The game isn't setup yet!"))
 		return FALSE
 
 	G.points = min(G.points,15)

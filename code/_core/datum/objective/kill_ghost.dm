@@ -16,7 +16,7 @@
 
 /objective/kill_ghost/proc/get_valid_targets()
 	. = list()
-	for(var/mob/living/simple/npc/ghost/G in world)
+	for(var/mob/living/simple/ghost/G in world)
 		if(G.dead || G.qdeleting)
 			continue
 		. += G

@@ -6,16 +6,17 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 75,
-		ARCANE = -75,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 75,
-		BIO = 50,
-		RAD = 50
+		BLADE = AP_SWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		ARCANE = -AP_AXE,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE,
+		BIO = AP_SWORD,
+		RAD = AP_SWORD,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_7
@@ -33,16 +34,17 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 100,
-		ARCANE = -75,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 75,
-		BIO = 50,
-		RAD = 50
+		BLADE = AP_AXE,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_CLUB,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE,
+		BIO = AP_SWORD,
+		RAD = AP_SWORD,
+		PAIN = AP_CLUB
 	)
 
 	size = SIZE_6
@@ -60,16 +62,17 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 75,
-		LASER = 75,
-		ARCANE = -50,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 75,
-		BIO = 50,
-		RAD = 50
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_CLUB,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE,
+		BIO = AP_SWORD,
+		RAD = AP_SWORD,
+		PAIN = AP_CLUB
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)

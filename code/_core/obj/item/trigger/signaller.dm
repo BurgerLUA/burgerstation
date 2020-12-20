@@ -66,7 +66,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller/click_self(var/mob/caller)
 	mode = !mode
-	caller.to_chat("You change the mode to [mode ? "frequency" : "signal"].")
+	caller.to_chat(span("notice","You change the mode to [mode ? "frequency" : "signal"]."))
 	spam_fix_time = 0
 	return TRUE
 

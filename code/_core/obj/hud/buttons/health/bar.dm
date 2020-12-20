@@ -15,7 +15,7 @@
 
 /obj/hud/button/health/bar/update_stats(var/mob/living/M)
 	var/math = FLOOR((current/max) * 28, 1)
-	icon_state = "bar_[math]"
+	icon_state = "bar_[clamp(math,0,28)]"
 	return TRUE
 
 /obj/hud/button/health/bar/update_underlays()
@@ -48,7 +48,7 @@
 
 	min = 0
 	max = FLOOR(M.health.health_max, 1)
-	current = FLOOR(M.health.health_current, 1)
+	current = FLOOR(M.health.health_current - M.health.get_pain_loss(), 1)
 
 	return ..()
 

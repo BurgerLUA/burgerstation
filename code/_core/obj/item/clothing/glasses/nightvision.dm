@@ -8,9 +8,9 @@
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	defense_rating = list(
-		LASER = -50,
-		ARCANE = -50,
-		HOLY = -50
+		LASER = -AP_CLUB,
+		ARCANE = -AP_CLUB,
+		HOLY = -AP_CLUB
 	)
 
 	value = 25

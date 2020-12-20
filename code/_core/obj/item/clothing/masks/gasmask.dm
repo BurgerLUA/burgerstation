@@ -1,17 +1,17 @@
 /obj/item/clothing/mask/gas
 	name = "classic gas mask"
-	icon = 'obj/item/clothing/masks/gasmask.dmi'
+	icon = 'icons/obj/item/clothing/masks/gasmask.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "A modern gas mask. Filters out most forms of gas."
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		BIO = 90,
-		RAD = 10
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		BIO = AP_GREATSWORD,
+		RAD = AP_DAGGER
 	)
 
 	size = SIZE_2
@@ -21,18 +21,18 @@
 
 /obj/item/clothing/mask/gas/clown
 	name = "clown mask"
-	icon = 'obj/item/clothing/masks/clown.dmi'
+	icon = 'icons/obj/item/clothing/masks/clown.dmi'
 	desc = "Where the clown gets their power."
 	desc_extended = "A flawless clown mask and wig."
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		BIO = 50,
-		RAD = 10,
-		HOLY = -75,
-		DARK = 75
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		BIO = AP_GREATSWORD,
+		RAD = AP_DAGGER,
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD
 	)
 
 	size = SIZE_2
@@ -42,18 +42,18 @@
 
 /obj/item/clothing/mask/gas/mining
 	name = "advanced gas mask"
-	icon = 'obj/item/clothing/masks/mining.dmi'
+	icon = 'icons/obj/item/clothing/masks/mining.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "An advanced gas mask. Filters out most forms of gas."
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 15,
-		PIERCE = 15,
-		BIO = 100,
-		RAD = 25
+		BLADE = AP_CLUB,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		BIO = AP_GREATAXE,
+		RAD = AP_DAGGER
 	)
 
 	size = SIZE_2
@@ -62,7 +62,7 @@
 
 /obj/item/clothing/mask/gas/space_cop
 	name = "space cop's mask"
-	icon = 'obj/item/clothing/masks/space_cop.dmi'
+	icon = 'icons/obj/item/clothing/masks/space_cop.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Baton not included."
 	desc_extended = "A space-age gas mask. Filters out most forms of gas."
@@ -70,7 +70,7 @@
 
 /obj/item/clothing/mask/gas/poly
 	name = "gas mask"
-	icon = 'obj/item/clothing/masks/gasmask_poly.dmi'
+	icon = 'icons/obj/item/clothing/masks/gasmask_poly.dmi'
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"eyes" = COLOR_WHITE,

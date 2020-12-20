@@ -54,17 +54,12 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/fish/penguin/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/penguin,15)
-	reagents.add_reagent(/reagent/nutrition/fat/penguin,5)
-	return ..()
-
-/obj/item/container/food/dynamic/fish/crab/Generate()
+/obj/item/container/food/dynamic/fish/raw_crab/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/crab,15)
 	reagents.add_reagent(/reagent/nutrition/fat/crab,5)
 	return ..()
 
-/obj/item/container/food/dynamic/fish/carp/Generate()
+/obj/item/container/food/dynamic/fish/raw_carp/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/fish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()

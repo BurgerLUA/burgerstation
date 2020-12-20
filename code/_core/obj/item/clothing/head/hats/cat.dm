@@ -6,11 +6,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		HOLY = -100,
-		DARK = 100,
-		BLADE = -25,
-		BLUNT = -25,
-		PIERCE = -25
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD,
+		BLADE = -AP_CLUB,
+		BLUNT = -AP_CLUB,
+		PIERCE = -AP_CLUB
 	)
 
 	protected_limbs = TARGETABLE_LIMBS
@@ -28,4 +28,4 @@
 
 	worn_layer = LAYER_MOB_HAIR_HEAD + 0.01
 
-	value = 200
+	value = 400

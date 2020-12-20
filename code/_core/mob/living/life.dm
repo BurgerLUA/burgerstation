@@ -108,7 +108,7 @@
 	return TRUE
 
 /mob/living/proc/rejuvenate()
-	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss())
+	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss(),-health.get_fatigue_loss(),-health.get_pain_loss(),-health.get_rad_loss())
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
 	return TRUE
@@ -132,7 +132,7 @@
 	if(dead)
 		return FALSE
 
-	if(has_status_effects(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STAMCRIT,STUN))
 		return FALSE
 
 	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
@@ -156,7 +156,7 @@
 
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effects(STUN,FATIGUE,SLEEP,CRIT,REST)
+	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN
@@ -327,7 +327,7 @@ mob/living/proc/on_life_slow()
 
 
 /mob/living/proc/can_buffer_health()
-	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer)
+	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer)
 
 /mob/living/proc/can_buffer_stamina()
 	return stamina_regen_buffer
@@ -348,10 +348,14 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen, robotic=FALSE)
+		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX*2)
+		var/rad_to_regen = clamp(rad_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen, pain=-pain_to_regen, rad=-rad_to_regen, robotic=FALSE)
 		brute_regen_buffer -= brute_to_regen
 		burn_regen_buffer -= burn_to_regen
 		tox_regen_buffer -= tox_to_regen
+		pain_regen_buffer -= pain_to_regen
+		rad_regen_buffer -= rad_to_regen
 		update_health = TRUE
 
 	if(can_buffer_stamina())
@@ -394,13 +398,15 @@ mob/living/proc/on_life_slow()
 	var/player_controlled = is_player_controlled()
 
 	if(health_regen_delay <= 0 && health.health_regeneration > 0)
-		var/health_mod = health.health_regeneration * delay_mod * nutrition_hydration_mod * 0.1
-		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
-		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
-		health_adjust += brute_to_adjust + burn_to_adjust
+		var/health_mod = DECISECONDS_TO_SECONDS(health.health_regeneration * delay_mod * nutrition_hydration_mod)
+		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_pain_loss() - pain_regen_buffer),health_mod)
+		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust
+			pain_regen_buffer += pain_to_adjust
 			if(health_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
 

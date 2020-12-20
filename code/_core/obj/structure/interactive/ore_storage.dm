@@ -59,7 +59,7 @@
 			if(store_ore(O))
 				did_store = TRUE
 		if(did_store)
-			OB.visible_message("\The [OB.name] dumps all the ore inside \the [src.name].")
+			OB.visible_message(span("notice","\The [OB.name] dumps all the ore inside \the [src.name]."))
 		return TRUE
 
 	return FALSE

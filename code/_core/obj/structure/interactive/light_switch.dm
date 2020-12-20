@@ -6,7 +6,6 @@
 	icon = 'icons/obj/structure/light_switch.dmi'
 	icon_state = "setup"
 
-
 	anchored = TRUE
 	initialize_type = INITIALIZE_LATE
 
@@ -18,8 +17,6 @@
 
 /obj/structure/interactive/light_switch/off
 	on = FALSE
-
-
 
 /obj/structure/interactive/light_switch/Initialize()
 
@@ -64,6 +61,7 @@
 	flick("anim_on",src)
 	sync_lights()
 	play('sound/machines/click.ogg',get_turf(src))
+	set_light(1,0.5,"#00FF00")
 	return TRUE
 
 /obj/structure/interactive/light_switch/proc/set_off(var/mob/caller)
@@ -74,6 +72,7 @@
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.sanity -= 2
+	set_light(1,0.5,"#FF0000")
 	return TRUE
 
 /obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

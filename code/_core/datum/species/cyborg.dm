@@ -6,6 +6,8 @@
 
 	flags_chargen = CHARGEN_EYE
 
+	bite_size = 20
+
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#FFFFFF"
 	default_color_hair = "#FFFFFF"

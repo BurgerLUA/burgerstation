@@ -6,12 +6,12 @@
 
 	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in all_mobs_with_clients
 	if(!choice)
-		to_chat("Invalid choice.")
+		to_chat(span("warning","Invalid mob."))
 		return FALSE
 
 	var/turf/T = get_turf(choice)
 	if(!T)
-		to_chat("Invalid turf.")
+		to_chat(span("warning","Invalid turf."))
 		return FALSE
 
 	mob.force_move(T)
@@ -31,14 +31,14 @@
 
 	var/choice = input("What area would you like to jump to?","Jump to Area") as null|anything in coverted_choice
 	if(!choice)
-		to_chat("Invalid choice.")
+		to_chat(span("warning","Invalid area."))
 		return FALSE
 
 	var/area/A = coverted_choice[choice]
 
 	var/turf/T = locate(A.average_x,A.average_y,A.z)
 	if(!T)
-		to_chat("Invalid turf.")
+		to_chat(span("warning","Invalid turf."))
 		return FALSE
 
 	mob.force_move(T)

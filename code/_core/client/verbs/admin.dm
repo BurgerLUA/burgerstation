@@ -1,7 +1,68 @@
-/client/verb/ban(var/target_ckey as text,var/ban_duration_minutes = -1 as num, var/ban_reason = "No reason given." as message)
+/client/verb/ban()
 
-	set name = "Ban Ckey"
+	set name = "Ban"
 	set category = "Admin"
+
+	var/list/possible_ckeys = list()
+
+	possible_ckeys["Custom..."] = null
+	possible_ckeys["Cancel"] = null
+
+	for(var/k in all_mobs_with_clients)
+		var/mob/M = k
+		if(!M.ckey_last)
+			continue
+		possible_ckeys["[M.name] ([M.ckey_last])"] = M.ckey_last
+
+	var/desired_ckey = input("Who do you wish to ban?","Ban Player","Cancel") as null|anything in possible_ckeys
+
+	if(desired_ckey == "Custom...")
+		desired_ckey = input("Please enter the Ckey you wish to ban.","Custom Ckey") as null|text
+	else if(desired_ckey)
+		desired_ckey = possible_ckeys[desired_ckey]
+
+	if(!desired_ckey)
+		src.to_chat(span("notice","You decide not to ban anyone."))
+		return TRUE
+
+	var/ban_durations = list(
+		"One Hour" = 60,
+		"Twelve Hours" = 60*12,
+		"One Day" = 60*24,
+		"Three Days" = 60*24*3,
+		"One Week" = 60*24*7,
+		"One Month" = 60*24*31,
+		"One Year" = 60*24*365,
+		"Forever" = -1,
+		"Custom..." = "Custom",
+		"Cancel" = null
+	)
+
+	var/desired_ban_duration = input("How long would you like to ban [desired_ckey] for?","Ban Duration","Cancel") as null|anything in ban_durations
+
+	if(desired_ban_duration == "Custom...")
+		desired_ban_duration = input("Please enter the ban duration, in minutes, that you'd like to ban for.","Custom Ban Duration",60*24) as num|null
+	else if(desired_ban_duration)
+		desired_ban_duration = ban_durations[desired_ban_duration]
+
+	if(!desired_ban_duration)
+		src.to_chat(span("notice","You decide not to ban anyone."))
+		return TRUE
+
+	var/desired_ban_reason = input("What is the ban reason?","Ban Reason","No reason specified.") as null|message
+
+	if(!desired_ban_reason)
+		src.to_chat(span("notice","You decide not to ban anyone."))
+		return TRUE
+
+	ban_raw(desired_ckey,desired_ban_duration,desired_ban_reason)
+
+	return TRUE
+
+
+
+
+/client/proc/ban_raw(var/target_ckey as text,var/ban_duration_minutes = -1 as num, var/ban_reason = "No reason given." as message)
 
 	ban_duration_minutes = text2num(ban_duration_minutes)
 
@@ -98,12 +159,12 @@
 
 	var/mob/choice = input("Who would you like to bring","Bring Mob") as null|mob in all_mobs_with_clients
 	if(!choice)
-		to_chat("Invalid choice.")
+		to_chat(span("warning","Invalid mob."))
 		return FALSE
 
 	var/turf/T = get_turf(mob)
 	if(!T)
-		to_chat("Invalid turf.")
+		to_chat(span("warning","Invalid turf."))
 		return FALSE
 
 	choice.force_move(T)

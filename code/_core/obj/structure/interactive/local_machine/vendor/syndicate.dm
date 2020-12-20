@@ -114,7 +114,7 @@
 		/obj/item/clothing/overwear/armor/slavticool,
 		/obj/item/clothing/head/helmet/security/slavticool,
 		/obj/item/clothing/overwear/hardsuit/exosuit,
-		/obj/item/clothing/overwear/hardsuit/seva/mono,
+		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/hardsuit/skat,
 		/obj/item/deployable/barricade/filled,
 		/obj/item/grenade/landmine/proximity/explosive,

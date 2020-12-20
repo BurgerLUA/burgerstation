@@ -22,7 +22,7 @@
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
 "ah" = (
-/mob/living/simple/npc/ash_drake,
+/mob/living/simple/ash_drake,
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
 "ai" = (
@@ -42,7 +42,7 @@
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
 "am" = (
-/mob/living/simple/npc/bubblegum,
+/mob/living/simple/bubblegum,
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
 "an" = (
@@ -54,7 +54,7 @@
 /turf/unsimulated/generation/lava,
 /area/lavaland/exterior)
 "ap" = (
-/mob/living/simple/npc/colossus,
+/mob/living/simple/colossus,
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
 "aq" = (

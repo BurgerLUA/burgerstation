@@ -197,11 +197,13 @@ var/global/list/all_clients = list() //Assoc list
 
 	world.update_server_status()
 
-
 	if(SSvote && SSvote.initialized)
 		for(var/k in SSvote.active_votes)
 			var/vote/V = k
 			V.show(src)
+
+	if(SSmenu && SSmenu.initialized)
+		SSmenu.preload_assets(src)
 
 	return mob
 
@@ -223,7 +225,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	for(var/k in ranks)
 		var/rank/R = k
-		to_chat("Adding [R.name] permissions...")
+		to_chat(span("debug","Adding [R.name] permissions..."))
 		permissions |= R.permissions
 
 	return TRUE

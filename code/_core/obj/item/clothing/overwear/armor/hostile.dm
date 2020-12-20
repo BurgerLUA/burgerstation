@@ -7,16 +7,16 @@
 	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
-		BLADE = 200,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 25,
-		ARCANE = -100,
-		HEAT = 125,
-		COLD = 25,
-		BOMB = 75,
-		BIO = 25,
-		RAD = 25
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_AXE,
+		ARCANE = -AP_GREATAXE,
+		HEAT = AP_CLUB,
+		COLD = AP_AXE,
+		BOMB = AP_AXE,
+		BIO = AP_SWORD,
+		RAD = AP_SWORD
 	)
 
 	size = SIZE_7

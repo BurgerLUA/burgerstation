@@ -3,7 +3,7 @@
 	if(!isturf(src.loc))
 		return FALSE
 
-	if(attacker && is_living(attacker) && src.loyalty_tag)
+	if(src.loyalty_tag && is_living(attacker))
 		var/mob/living/L = attacker
 		if(L.loyalty_tag == src.loyalty_tag)
 			var/area/A1 = get_area(L)

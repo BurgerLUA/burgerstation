@@ -3736,7 +3736,7 @@
 /area/burgerstation/engineering/ce)
 "nr" = (
 /obj/structure/smooth/table/wood,
-/mob/living/simple/npc/parrot/poly,
+/mob/living/simple/parrot/poly,
 /turf/simulated/floor/carpet,
 /area/burgerstation/engineering/ce)
 "ns" = (
@@ -4064,7 +4064,7 @@
 /area/burgerstation/medical/cmo)
 "oA" = (
 /obj/structure/smooth/table/wood,
-/mob/living/simple/npc/cat/runtime{
+/mob/living/simple/cat/runtime{
 	icon_state = "living";
 	dir = 4
 	},
@@ -6443,12 +6443,12 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "Ac" = (
-/mob/living/simple/npc/bot/medibot,
+/mob/living/simple/bot/medibot,
 /turf/simulated/floor/tile,
 /area/burgerstation/medical)
 "Ad" = (
 /obj/structure/interactive/disposals/pipe,
-/mob/living/simple/npc/bot/medibot,
+/mob/living/simple/bot/medibot,
 /turf/simulated/floor/tile,
 /area/burgerstation/medical)
 "Af" = (

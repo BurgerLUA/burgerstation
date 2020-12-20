@@ -1,6 +1,6 @@
 /ai/boss/bubblegum/
 
-	var/mob/living/simple/npc/bubblegum/owner_as_bubblegum
+	var/mob/living/simple/bubblegum/owner_as_bubblegum
 
 
 /ai/boss/bubblegum/New(var/mob/living/desired_owner)

@@ -98,10 +98,14 @@
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = 0,
-		ION = 0
+		ION = 0,
+		PAIN = 0
 	)
 
 	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
+
+	enable_security_hud = TRUE
+	enable_medical_hud = TRUE
 
 /mob/living/advanced/Destroy()
 

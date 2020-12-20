@@ -44,7 +44,7 @@
 		var/mob/living/advanced/player/P = caller
 		P.dialogue_target = src
 		P.dialogue_target_id = dialogue_id
-		open_menu(P,"dialogue")
+		open_menu(P,/menu/dialogue/)
 		return TRUE
 
 	return ..()

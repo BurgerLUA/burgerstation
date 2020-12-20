@@ -6,12 +6,12 @@
 	var/list/valid_areas = list()
 
 	var/list/possible_anomalies = list(
-		/mob/living/simple/npc/dick_kickem = 1,
-		/mob/living/simple/npc/glockroach = 6,
-		/mob/living/simple/npc/bullshark = 4,
-		/mob/living/simple/npc/bot/medibot/rogue = 6,
-		/mob/living/simple/npc/antag = 8,
-		/mob/living/simple/npc/screech = 4
+		/mob/living/simple/dick_kickem = 1,
+		/mob/living/simple/glockroach = 6,
+		/mob/living/simple/bullshark = 4,
+		/mob/living/simple/bot/medibot/rogue = 6,
+		/mob/living/simple/antag = 8,
+		/mob/living/simple/screech = 4
 	)
 
 	occurances_max = 5

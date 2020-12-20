@@ -133,8 +133,6 @@
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
 
-	var/consume_size = 10
-
 	var/can_hold = TRUE
 	var/can_wear = FALSE
 
@@ -165,7 +163,7 @@
 	return .
 
 /obj/item/get_base_value()
-	return initial(value) * item_count_current * price_multiplier
+	return value * item_count_current * price_multiplier
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
 	if(!amount_to_transfer) return 0
@@ -512,13 +510,22 @@
 	last_interacted = caller
 	return ..()
 
-/obj/item/proc/get_reagents_to_consume()
+/obj/item/proc/get_reagents_to_consume(var/mob/living/consumer)
 	var/reagent_container/temp/T = new(src,1000)
-	reagents.transfer_reagents_to(T,consume_size)
+	reagents.transfer_reagents_to(T,get_consume_size(consumer))
 	return T.qdeleting ? null : T
 
+/obj/item/proc/get_consume_size(var/mob/living/L)
+	. = 5
+	if(is_advanced(L))
+		var/mob/living/advanced/A = L
+		if(A.species)
+			var/species/S = SSspecies.all_species[A.species]
+			. = S.bite_size
+	return .
+
 /obj/item/proc/feed(var/mob/caller,var/mob/living/target)
-	var/reagent_container/R = get_reagents_to_consume()
+	var/reagent_container/R = get_reagents_to_consume(target)
 	if(!R)
 		return FALSE
 	R.consume(caller,target)

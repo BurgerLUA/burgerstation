@@ -69,7 +69,7 @@
 
 	. = ..()
 
-	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*4 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
+	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2 + SAFENUM(damage_table[BLUNT])*0.5 + SAFENUM(damage_table[PIERCE])
 
 	if(blood_type && total_bleed_damage && should_bleed() && (luck(src,total_bleed_damage,FALSE) || (atom_damaged && atom_damaged.health && luck(src,atom_damaged.health.get_brute_loss()*5,FALSE))))
 
@@ -95,7 +95,7 @@
 				create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32))
 
 			if(health && total_bleed_damage)
-				blood_volume -= FLOOR(total_bleed_damage*0.1,1)
+				blood_volume -= FLOOR(total_bleed_damage*0.05,1)
 				queue_health_update = TRUE
 
 		if(is_organ(atom_damaged))
@@ -106,7 +106,7 @@
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
 
-	if(dead && time_of_death + 30 <= world.time && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
+	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
 		if(blade_damage > 0 && src.can_be_butchered(L,weapon))
@@ -136,11 +136,14 @@
 
 	var/turf/T = get_turf(target)
 
-	for(var/k in target.butcher_contents)
-		var/obj/O = new k(T)
-		INITIALIZE(O)
-		GENERATE(O)
-		FINALIZE(O)
+	if(target.override_butcher)
+		target.create_override_contents(src)
+	else
+		for(var/k in target.butcher_contents)
+			var/obj/O = new k(T)
+			INITIALIZE(O)
+			GENERATE(O)
+			FINALIZE(O)
 
 	for(var/k in target.contents)
 		var/atom/movable/M = k
@@ -154,3 +157,8 @@
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return damage_received_multiplier
+
+
+/mob/living/proc/create_override_contents(var/mob/living/caller)
+
+	return TRUE

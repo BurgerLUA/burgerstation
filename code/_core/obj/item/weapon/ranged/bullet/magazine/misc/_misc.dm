@@ -56,8 +56,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_magazine()
 
-	if(istype(loc,/mob/living/simple/npc/turret/deployable))
-		var/mob/living/simple/npc/turret/deployable/D = loc
+	if(istype(loc,/mob/living/simple/turret/deployable))
+		var/mob/living/simple/turret/deployable/D = loc
 		if(D.stored_magazine)
 			return D.stored_magazine
 

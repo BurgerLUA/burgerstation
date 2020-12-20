@@ -40,7 +40,7 @@
 
 	emf_level = 0
 
-	var/mob/living/simple/npc/ghost/G1 = locate() in range(6,T1)
+	var/mob/living/simple/ghost/G1 = locate() in range(6,T1)
 	if(G1)
 		if(G1.ai && G1.ai.objective_attack)
 			emf_level = 5

@@ -10,7 +10,7 @@
 /dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
 
 	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
-	var/menu/M = get_menu("dialogue")
+	var/menu/M = get_menu(/menu/dialogue/)
 	var/list/known_options = mobdata.loaded_data["known_topics"]
 	var/list/dialogue_options = get_dialogue_options(P,known_options)
 	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
@@ -60,7 +60,7 @@
 
 /dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic)
 	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
-	var/menu/M = get_menu("dialogue")
+	var/menu/M = get_menu(/menu/dialogue/)
 	var/list/known_options = mobdata.loaded_data["known_topics"]
 	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P,known_options)))
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")

@@ -20,7 +20,7 @@
 		meatman_spawned = TRUE
 
 	if(prob(20))
-		new /mob/living/simple/npc/passive/mouse/grey(src.loc)
+		new /mob/living/simple/passive/mouse/grey(src.loc)
 
 	return .
 

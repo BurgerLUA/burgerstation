@@ -130,7 +130,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(real_name == DEFAULT_NAME)
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 
-	name = SSname.check_duplicate_player_name(real_name,ckey_last)
+	name = SStext.check_duplicate_player_name(real_name,ckey_last)
 
 	return TRUE
 
@@ -172,7 +172,7 @@ mob/living/advanced/player/on_life_client()
 
 		if(dialogue_target_id)
 			dialogue_target_id = null
-			close_menu(src,"dialogue")
+			close_menu(src,/menu/dialogue/)
 
 		if(active_structure && get_dist(src,active_structure) > 1)
 			set_structure_unactive()
@@ -186,7 +186,7 @@ mob/living/advanced/player/on_life_client()
 			for(var/k in SSai.inactive_ai)
 				var/ai/A = k
 				if(!A.owner)
-					to_chat("Warning! [A.get_debug_name()] had no owner!")
+					log_error("Warning! [A.get_debug_name()] had no owner!")
 					qdel(A)
 					continue
 				var/dist = get_dist(src,A.owner)

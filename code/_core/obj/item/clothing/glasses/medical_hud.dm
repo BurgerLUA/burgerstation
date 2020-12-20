@@ -10,7 +10,7 @@
 	value = 120
 
 	defense_rating = list(
-		ARCANE = -25,
+		ARCANE = -AP_SWORD,
 	)
 
 /obj/item/clothing/glasses/medical_hud/advanced
@@ -24,7 +24,7 @@
 	value = 200
 
 	defense_rating = list(
-		ARCANE = -50,
+		ARCANE = -AP_CLUB,
 	)
 
 /obj/item/clothing/glasses/security_hud
@@ -39,7 +39,7 @@
 	value = 160
 
 	defense_rating = list(
-		ARCANE = -25,
+		ARCANE = -AP_SWORD,
 	)
 
 /obj/item/clothing/glasses/security_hud/red
@@ -49,9 +49,10 @@
 	value = 1000
 
 	defense_rating = list(
-		BLUNT = 10,
-		PIERCE = 10,
-		BLADE = 10
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		BLADE = AP_DAGGER,
+		ARCANE = -AP_DAGGER
 	)
 
 	sight_mod = SEE_MOBS

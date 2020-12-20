@@ -49,7 +49,7 @@
 		var/obj/hud/inventory/I = object
 		var/obj/item/item_to_remove = locate() in src.contents
 		if(!item_to_remove)
-			caller.to_chat("\The [src.name] is empty!")
+			caller.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
 		I.add_object(item_to_remove)
 		if(anchored == FALSE)

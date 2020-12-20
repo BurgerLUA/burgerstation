@@ -9,7 +9,7 @@
 
 /mob/living/advanced/on_sprint()
 
-	if(health && health.adjust_stamina(-4))
+	if(health && health.adjust_stamina(-1))
 		update_health_element_icons(stamina=TRUE)
 		stamina_regen_delay = max(stamina_regen_delay,30)
 
@@ -32,13 +32,17 @@ mob/living/advanced/get_movement_delay()
 
 	var/health_mul = 1
 	var/stamina_mul = 1
+	var/pain_mul = 1
+	var/adrenaline_bonus = 1 + ((get_status_effect_magnitude(ADRENALINE)/100)*(get_status_effect_duration(ADRENALINE)/100))
 
-	if(health && !has_status_effect(ADRENALINE))
-		health_mul = clamp(0.5 + (health.health_current/health.health_max),0.5,1)
-		stamina_mul = clamp(0.75 + (health.stamina_current/health.stamina_max),0.75,1)
+	if(health)
+		var/pain_bonus = min(1,get_status_effect_magnitude(PAINKILLER)/100) * min(1,get_status_effect_duration(PAINKILLER)/100) * health.health_max
+		health_mul = clamp(0.5 + ((health.health_current + pain_bonus)/health.health_max),0.5,1)
+		stamina_mul = clamp(0.75 + ((health.stamina_current + pain_bonus)/health.stamina_max),0.75,1)
+		pain_mul = clamp(0.1 + (1 - ((health.get_pain_loss() - pain_bonus)/health.health_max))*0.9,0.1,1)
 
 	//https://www.desmos.com/calculator/9oyrocojgp
-	var/cucumber = weight/(weight_max*health_mul*stamina_mul*health_mul)
+	var/cucumber = weight/(weight_max*health_mul*stamina_mul*health_mul*pain_mul*adrenaline_bonus)
 	cucumber = clamp(cucumber,0,1)
 	. *= 2 - ((1-cucumber)**0.42)
 

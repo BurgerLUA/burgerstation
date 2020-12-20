@@ -16,8 +16,8 @@
 
 	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
 
-	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
-	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0) //How much to subtract damage
+	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0)
+	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0) //How much to subtract damage
 	var/list/wound/wounds = list()
 
 	var/list/armor_base = list(  //Base armor for the mob.
@@ -33,7 +33,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		PAIN = 0
 	)
 
 	var/organic = FALSE
@@ -73,15 +74,15 @@
 	stamina_max = owner.stamina_base
 	mana_max = owner.mana_base
 
-/health/proc/get_overall_health(var/includes_fatigue = FALSE)
-	return health_max - get_total_loss(includes_fatigue)
+/health/proc/get_overall_health(var/includes_fatigue = FALSE,var/include_pain=FALSE)
+	return health_max - get_total_loss(includes_fatigue,include_pain)
 
 /health/proc/restore()
-	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN = 0, RAD = 0)
 	update_health(update_hud = TRUE)
 	return TRUE
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -89,47 +90,33 @@
 	if(!src.organic && !robotic)
 		return 0
 
-	var/total_loss = 0
+	. = 0
 
-	if(brute)
-		brute -= (brute > 0 ? resistance[BRUTE] : 0)
-		brute -= min(0,damage[BRUTE] + brute)
-		damage[BRUTE] += brute
-		total_loss += brute
+	if(brute) . += adjust_loss(BRUTE,brute)
+	if(burn) . += adjust_loss(BURN,burn)
+	if(tox) . += adjust_loss(TOX,tox)
+	if(oxy) . += adjust_loss(OXY,oxy)
+	if(pain) . += adjust_loss(PAIN,pain)
+	if(rad) . += adjust_loss(RAD,rad)
+	if(fatigue) . += adjust_loss(FATIGUE,fatigue)
 
-	if(burn)
-		burn -= (burn > 0 ? resistance[BURN] : 0)
-		burn -= min(0,damage[BURN] + burn)
-		damage[BURN] += burn
-		total_loss += burn
-
-	if(tox)
-		tox -= (tox > 0 ? resistance[TOX] : 0)
-		tox -= min(0,damage[TOX] + tox)
-		damage[TOX] += tox
-		total_loss += tox
-
-	if(oxy)
-		oxy -= (oxy > 0 ? resistance[OXY] : 0)
-		oxy -= min(0,damage[OXY] + oxy)
-		damage[OXY] += oxy
-		total_loss += oxy
-
-	if(update && total_loss)
+	if(update && .)
 		update_health()
 
-	return total_loss
+	return .
 
-/health/proc/adjust_fatigue_loss(var/value)
-	value -= (value > 0 ? resistance[FATIGUE] : 0)
-	value -= min(0,damage[FATIGUE] + value)
-	damage[FATIGUE] += value
+/health/proc/adjust_loss(var/loss_type,var/value)
+	value -= (value > 0 ? resistance[loss_type] : 0)
+	value -= min(0,damage[loss_type] + value)
+	damage[loss_type] += value
 	return value
 
-/health/proc/get_total_loss(var/include_fatigue = TRUE)
+/health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE)
 	var/returning_value = 0
 	for(var/damage_type in damage)
 		if(!include_fatigue && damage_type == FATIGUE)
+			continue
+		if(!include_pain && damage_type == PAIN)
 			continue
 		returning_value += damage[damage_type]
 
@@ -151,6 +138,12 @@
 /health/proc/get_fatigue_loss()
 	return damage[FATIGUE]
 
+/health/proc/get_pain_loss()
+	return damage[PAIN]
+
+/health/proc/get_rad_loss()
+	return damage[RAD]
+
 /health/proc/get_loss(var/damage_type)
 	return damage[damage_type]
 
@@ -161,7 +154,7 @@
 	return mana_max - mana_current
 
 /health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
-	health_current = get_overall_health()
+	health_current = get_overall_health(FALSE,FALSE)
 	return TRUE
 
 /health/proc/get_defense(var/atom/attacker,var/atom/hit_object)

@@ -43,8 +43,8 @@
 
 	. = ..()
 
-	if(istype(O,/mob/living/simple/npc/ghost))
-		var/mob/living/simple/npc/ghost/G = O
+	if(istype(O,/mob/living/simple/ghost))
+		var/mob/living/simple/ghost/G = O
 		if(istype(G.ai,/ai/ghost))
 			var/ai/ghost/GAI = G.ai
 			if(GAI.objective_attack)

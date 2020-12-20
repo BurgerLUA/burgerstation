@@ -23,7 +23,7 @@
 	return ..()
 
 
-/ai/doorman/should_attack_mob(var/mob/living/L,var/do_aggression_check = TRUE)
+/ai/doorman/should_attack_mob(var/mob/living/L)
 
 	if(L == owner)
 		return FALSE

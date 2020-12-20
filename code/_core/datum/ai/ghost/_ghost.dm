@@ -9,7 +9,7 @@
 
 	reaction_time = 0 //Instant
 
-	var/mob/living/simple/npc/ghost/owner_as_ghost
+	var/mob/living/simple/ghost/owner_as_ghost
 
 	var/ghost_type = "ghost"
 	//shade

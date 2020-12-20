@@ -143,7 +143,7 @@
 		break
 
 	if(blocking)
-		caller.to_chat("\The [blocking.name] is preventing \the [src.name] from being closed!")
+		caller.to_chat(span("warning","\The [blocking.name] is preventing \the [src.name] from being closed!"))
 		return FALSE
 
 	for(var/k in loc.contents)

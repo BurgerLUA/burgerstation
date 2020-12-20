@@ -3,7 +3,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area)
 "b" = (
-/turf/unsimulated/space,
+/turf/space,
 /area)
 "c" = (
 /turf/simulated/floor/plating,

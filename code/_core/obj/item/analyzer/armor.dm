@@ -31,7 +31,7 @@
 	var/list/armor_list = target.health.get_defense(caller,object_to_analyze)
 
 	for(var/k in armor_list)
-		caller.to_chat("[uppertext(k)]: [armor_list[k]].")
+		caller.to_chat(span("debug","[uppertext(k)]: [armor_list[k]]."))
 	caller.to_chat(span("notice bold","End of message."))
 
 	next_scan = world.time + SECONDS_TO_DECISECONDS(4)

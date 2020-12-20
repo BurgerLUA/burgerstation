@@ -3,7 +3,7 @@
 	desc = "Fight off an endless wave of Russian Revolutionaries while attempting to complete objectives."
 	enemy_types_to_spawn = list(
 		/mob/living/advanced/npc/rev = 5,
-		/mob/living/simple/npc/bear/armored/revolutionary = 1
+		/mob/living/simple/bear/armored/revolutionary = 1
 	)
 	hidden = FALSE
 
@@ -11,9 +11,9 @@
 	name = "Horde Mode (Xenos)"
 	desc = "Fight off an endless wave of Acid-Spitting and Leaping Xenos while attempting to complete objectives."
 	enemy_types_to_spawn = list(
-		/mob/living/simple/npc/xeno/drone = 1,
-		/mob/living/simple/npc/xeno/hunter = 3,
-		/mob/living/simple/npc/xeno/sentinel = 2
+		/mob/living/simple/xeno/drone = 1,
+		/mob/living/simple/xeno/hunter = 3,
+		/mob/living/simple/xeno/sentinel = 2
 	)
 	hidden = FALSE
 
@@ -23,7 +23,7 @@
 
 /gamemode/horde/xeno/get_enemy_types_to_spawn()
 	if(!tracked_xeno_queen && prob(1))
-		return list(/mob/living/simple/npc/xeno/queen)
+		return list(/mob/living/simple/xeno/queen)
 	return ..()
 
 
@@ -53,7 +53,7 @@
 	enemy_types_to_spawn = list(
 		/mob/living/advanced/npc/syndicate = 10,
 		/mob/living/advanced/npc/sorcerer = 4,
-		/mob/living/simple/npc/silicon/syndieborg = 1
+		/mob/living/simple/silicon/syndieborg = 1
 	)
 	hidden = FALSE
 
@@ -103,10 +103,10 @@
 	name = "Horde Mode (Cultists)"
 	desc = "Fight off an endless wave of Cultists while attempting to complete objectives."
 	enemy_types_to_spawn = list(
-		/mob/living/simple/npc/cult/construct/artificer = 10,
-		/mob/living/simple/npc/cult/construct/behemoth = 10,
-		/mob/living/simple/npc/cult/construct/chosen = 1,
-		/mob/living/simple/npc/cult/construct/floating = 25,
+		/mob/living/simple/cult/construct/artificer = 10,
+		/mob/living/simple/cult/construct/behemoth = 10,
+		/mob/living/simple/cult/construct/chosen = 1,
+		/mob/living/simple/cult/construct/floating = 25,
 		/mob/living/advanced/npc/cultist = 70,
 		/mob/living/advanced/npc/cultist/hard = 30
 	)
@@ -117,12 +117,12 @@
 	name = "Horde Mode (Boss Rush)"
 	desc = "Oh god oh fuck."
 	enemy_types_to_spawn = list(
-		/mob/living/simple/npc/can_man = 1,
-		/mob/living/simple/npc/ash_drake = 4,
-		/mob/living/simple/npc/bubblegum = 3,
-		/mob/living/simple/npc/colossus = 3,
-		/mob/living/simple/npc/herald = 1,
-		/mob/living/simple/npc/goliath/broodmother = 1
+		/mob/living/simple/can_man = 1,
+		/mob/living/simple/ash_drake = 4,
+		/mob/living/simple/bubblegum = 3,
+		/mob/living/simple/colossus = 3,
+		/mob/living/simple/herald = 1,
+		/mob/living/simple/goliath/broodmother = 1
 	)
 	hidden = TRUE
 

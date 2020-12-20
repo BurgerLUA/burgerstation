@@ -6,11 +6,9 @@
 
 	item_slot = SLOT_FACE_WRAP
 
-	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		ARCANE = 25
+	defense_rating = list(,
+		ARCANE = AP_SWORD,
+		PAIN = AP_SWORD
 	)
 
 	size = SIZE_1

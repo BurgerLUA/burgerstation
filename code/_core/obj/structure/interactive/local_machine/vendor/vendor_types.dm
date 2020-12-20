@@ -259,7 +259,8 @@
 		/obj/item/seed/cabbage,
 		/obj/item/seed/tomato,
 		/obj/item/seed/chanterelle,
-		/obj/item/seed/wheat
+		/obj/item/seed/wheat,
+		/obj/item/seed/poppy
 	)
 
 /obj/structure/interactive/vending/soda

@@ -54,19 +54,6 @@
 
 	affects_dead = FALSE
 
-/status_effect/fatigued
-	name = "Fatigued"
-	desc = "You're fatigued!"
-	id = FATIGUE
-	minimum = 10
-	maximum = 30
-
-	affects_dead = FALSE
-
-/status_effect/fatigued/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-	owner.remove_status_effect(ADRENALINE)
-	return ..()
-
 /status_effect/fire
 	name = "Fire"
 	desc = "You're on fire!"
@@ -149,6 +136,34 @@
 
 	affects_dead = FALSE
 
+/status_effect/critical/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.remove_status_effect(ADRENALINE)
+	return ..()
+
+/status_effect/paincrit
+	name = "Paincrit"
+	desc = "You're in pain!"
+	id = PAINCRIT
+
+	affects_dead = FALSE
+
+/status_effect/paincrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.remove_status_effect(PAINKILLER)
+	return ..()
+
+/status_effect/stamcrit
+	name = "Stamcrit"
+	desc = "You're too tired!"
+	id = STAMCRIT
+	minimum = 10
+	maximum = 30
+
+	affects_dead = FALSE
+
+/status_effect/stamcrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.remove_status_effect(ADRENALINE)
+	return ..()
+
 /status_effect/energized
 	name = "Adrenaline"
 	desc = "You're filled with adrenaline!"
@@ -161,7 +176,7 @@
 	. = ..()
 
 	if(owner.health) owner.health.update_health(check_death=FALSE)
-	owner.remove_status_effect(FATIGUE)
+	owner.remove_status_effect(STAMCRIT)
 
 	return .
 

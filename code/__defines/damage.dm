@@ -5,6 +5,8 @@
 #define TOX "toxin"
 #define OXY "oxy"
 #define FATIGUE "fatigue"
+#define PAIN "pain"
+#define RAD "radiation"
 
 #define HEALTH "health"
 #define MANA "mana"
@@ -35,7 +37,7 @@
 //Melee Balance
 #define DAMAGE_DAGGER 15
 #define SPEED_DAGGER 8
-#define AP_DAGGER 0
+#define AP_DAGGER 10
 
 #define DAMAGE_SWORD 30
 #define SPEED_SWORD 10

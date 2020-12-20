@@ -14,12 +14,13 @@
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
 	defense_rating = list(
-		ARCANE = 25,
-		COLD = 25,
-		BIO = 25
+		ARCANE = AP_SWORD,
+		COLD = AP_SWORD,
+		HEAT = AP_SWORD,
+		BIO = AP_SWORD
 	)
 
-	value = 10
+	value = 40
 
 /obj/item/clothing/head/hat/bandana/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 

@@ -7,9 +7,9 @@
 	rarity = RARITY_COMMON
 
 	defense_rating = list(
-		ARCANE = 50,
-		COLD = 25,
-		DARK = 25
+		ARCANE = AP_SWORD,
+		COLD = AP_SWORD,
+		DARK = AP_SWORD
 	)
 	size = SIZE_2
 

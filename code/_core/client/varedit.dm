@@ -15,12 +15,12 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 			returning = "ASSOC_LIST(<br>"
 			for(var/k in value)
 				var/v = value["[k]"]
-				returning += "&nbsp;[k] = [get_value_text_for_debug(v)]<br>"
+				returning += "&nbsp;[k] = [get_value_text_for_debug(value=v)]<br>"
 		else
 			returning = "LIST(<br>"
 			var/index = 1
 			for(var/v in value)
-				returning += "&nbsp;[index] = [get_value_text_for_debug(v)]<br>"
+				returning += "&nbsp;[index] = [get_value_text_for_debug(value=v)]<br>"
 				index++
 
 		returning += ")"

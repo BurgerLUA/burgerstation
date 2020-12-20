@@ -42,8 +42,8 @@
 	var/last_intoxication_message = 0
 
 	var/blood_type = /reagent/blood
-	var/blood_volume = 0 //Set to max on new.
-	var/blood_volume_max = 510
+	var/blood_volume = BLOOD_VOLUME_DEFAULT
+	var/blood_volume_max = 0 //Set to blood_volume on new.
 
 	var/blood_oxygen = 0 //Additional blood oxygen.
 
@@ -52,11 +52,14 @@
 	var/brute_regen_buffer = 0
 	var/burn_regen_buffer = 0
 	var/tox_regen_buffer = 0
+	var/pain_regen_buffer = 0
+	var/rad_regen_buffer = 0
 
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 	//Oxy not present as that is controlled via an organ.
+	//The rest are not present as you cannot naturally regenerate them.
 
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0
@@ -117,7 +120,8 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		PAIN = 0
 	)
 
 	var/list/status_immune = list() //What status effects area they immune to?
@@ -150,6 +154,7 @@
 	deceleration = 15
 	use_momentum = TRUE
 
+	var/override_butcher = FALSE //Set to true for custom butcher contents.
 	var/list/obj/butcher_contents = list()
 
 	var/next_resist = 0
@@ -157,7 +162,7 @@
 
 	var/queue_delete_on_death = TRUE
 
-	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling. See mob_size.dm for more information.
+	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See mob_size.dm for values
 
 	var/max_level = 500 //Max level for attributes of the mob.
 
@@ -228,6 +233,8 @@
 	var/list/defense_bonuses = list() //From perks, powers, and whatever.
 
 	var/blocking = FALSE
+
+	var/list/addictions = list() //List of addictions.
 
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
@@ -338,7 +345,7 @@
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
-	blood_volume = blood_volume_max
+	blood_volume_max = blood_volume
 
 	if(desired_level_multiplier)
 		level_multiplier *= desired_level_multiplier

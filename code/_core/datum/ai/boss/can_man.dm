@@ -7,7 +7,7 @@
 
 	use_cone_vision = FALSE
 
-	var/mob/living/simple/npc/can_man/owner_as_can_man
+	var/mob/living/simple/can_man/owner_as_can_man
 
 	var/projectile_count = 15
 	var/projectile_delay = 10

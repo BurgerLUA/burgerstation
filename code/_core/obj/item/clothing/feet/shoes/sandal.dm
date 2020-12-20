@@ -12,7 +12,7 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		ARCANE = 75
+		ARCANE = AP_GREATSWORD
 	)
 
 	size = SIZE_1
