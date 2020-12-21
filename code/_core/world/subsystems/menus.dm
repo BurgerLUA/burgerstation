@@ -46,6 +46,6 @@ proc/get_menu(menu_id)
 /proc/send_load(var/client/C,menu_id) //A common command I use every time I visit your mom.
 	var/menu/M = SSmenu.all_menus[menu_id]
 	if(!M)
-		log_error("Warning: Could not load menu [menu_id] for [C.get_debug_name()]!")
+		log_error("Warning: Could not load menu [menu_id ? menu_id : "NULL"] for [C.get_debug_name()]!")
 		return FALSE
 	M.on_load(C)

@@ -16,13 +16,6 @@
 
 	value = 500
 
-/obj/item/weapon/melee/energy/chainsaw/post_move(var/atom/A)
-
-	if(isturf(A))
-		stop()
-
-	return ..()
-
 /obj/item/weapon/melee/energy/chainsaw/think()
 
 	if(world.time >= next_chain_time)
@@ -30,6 +23,14 @@
 			play('sound/weapons/chainsaw/loop_bump.ogg',src, volume = 20)
 		else
 			play('sound/weapons/chainsaw/loop.ogg',src,volume = 20)
+
+		if(is_inventory(loc))
+			var/obj/hud/inventory/I = loc
+			if(!I.click_flags)
+				stop()
+		else
+			stop()
+
 		next_chain_time = world.time + 5
 
 	return ..()

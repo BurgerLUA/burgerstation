@@ -86,7 +86,7 @@
 
 	if(nutrition_amount)
 		var/mob/living/L = owner
-		if(L.health) L.health.adjust_loss_smart(tox=(0.5 + nutrition_amount*0.1)*.)
+		if(L.health) L.health.adjust_loss_smart(tox=(0.5 + nutrition_amount*0.1)*.,robotic=FALSE)
 		on_metabolize_stomach(owner,container,starting_volume,multiplier*0.5)
 
 	return
