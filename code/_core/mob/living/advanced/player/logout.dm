@@ -17,3 +17,15 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 		return FALSE
 
 	return TRUE
+
+
+/mob/living/advanced/player/proc/force_logout()
+	if(!ckey_last)
+		return FALSE
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+	if(!mobdata)
+		return FALSE
+	mobdata.save_character(src)
+	if(client) client.make_ghost(get_turf(src))
+	qdel(src)
+	return TRUE

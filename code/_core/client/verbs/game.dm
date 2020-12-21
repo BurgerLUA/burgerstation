@@ -7,7 +7,7 @@
 		var/mob/living/advanced/player/P = mob
 		if(P.allow_save)
 			var/obj/structure/interactive/bed/sleeper/S = locate() in P.loc.contents
-			var/in_sleeper = istype(S,/obj/structure/interactive/bed/sleeper/backup) || istype(S,/obj/structure/interactive/bed/sleeper/cryo)
+			var/in_sleeper = istype(S,/obj/structure/interactive/bed/sleeper/cryo/no_spawn) || istype(S,/obj/structure/interactive/bed/sleeper/cryo)
 			if(in_sleeper)
 				var/choice = input("Are you sure you want to save your character and cryo? You will no longer be able to be rejoin the round as this character.","Cryogenics","No") in list("Yes","No") | null
 				if(choice == "Yes")

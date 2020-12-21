@@ -47,8 +47,6 @@
 
 	return .
 
-
-
 /obj/structure/interactive/lighting/tube/New()
 
 	. = ..()

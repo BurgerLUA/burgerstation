@@ -77,6 +77,10 @@
 	name = "\improper Bar"
 	icon_state = "bar"
 
+/area/burgerstation/cafe/botany
+	name = "\improper Botany"
+	icon_state = "hydro"
+
 /area/burgerstation/dressing
 	name = "\improper Dressing Room"
 	icon_state = "dressing"

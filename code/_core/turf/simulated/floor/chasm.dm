@@ -16,6 +16,8 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 
+	density = TRUE
+
 /*
 /turf/simulated/floor/chasm/Crossed(atom/movable/O)
 

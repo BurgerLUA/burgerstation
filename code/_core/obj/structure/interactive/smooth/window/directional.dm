@@ -12,6 +12,8 @@
 
 	var/force_corner = FALSE
 
+	density = TRUE
+
 /obj/structure/smooth/window/directional/anchored
 	anchored = TRUE
 

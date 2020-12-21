@@ -76,23 +76,38 @@
 	update_sprite()
 	return .
 
-/obj/structure/interactive/lighting/bulb/update_icon()
+/obj/structure/interactive/lighting/tube/update_atom_light()
+	if(on && desired_light_color)
+		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
+	else
+		set_light(FALSE)
+	return TRUE
 
-	if(desired_light_range && desired_light_power && desired_light_color)
-		set_light(desired_light_range,desired_light_power,desired_light_color)
+/obj/structure/interactive/lighting/bulb/update_icon()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
 	var/icon/I = new /icon(icon,"bulb")
+	I.Blend(color_frame,ICON_MULTIPLY)
 
-	var/icon/F = new /icon(icon,"bulb_bulb")
-	F.Blend(color_frame,ICON_MULTIPLY)
-	I.Blend(F,ICON_OVERLAY)
-
-	if(on && desired_light_color)
-		var/icon/L = new /icon(icon,"bulb_light")
-		L.Blend(desired_light_color,ICON_MULTIPLY)
-		I.Blend(L,ICON_OVERLAY)
+	if(desired_light_color)
+		var/icon/F = new /icon(icon,"bulb_bulb")
+		F.Blend(color_frame,ICON_MULTIPLY)
+		I.Blend(F,ICON_OVERLAY)
 
 	icon = I
+
+/obj/structure/interactive/lighting/bulb/update_overlays()
+
+	. = ..()
+
+	if(on && desired_light_color)
+		var/image/IS = new/image(initial(icon),"bulb_light")
+		IS.plane = PLANE_LIGHTING
+		IS.layer = 99
+		IS.color = desired_light_color
+		IS.alpha = 100
+		add_overlay(IS)
+
+	return .
