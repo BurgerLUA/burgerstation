@@ -53,7 +53,7 @@
 
 	var/kick_chance = 10
 
-	var/attack_on_block = FALSE
+	var/attack_on_block = TRUE
 
 	var/path_steps = 1
 	var/list/Vector3D/current_path = list()
@@ -667,6 +667,22 @@
 
 		frustration_attack = 0
 
+	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+		var/atom/closest_obstacle
+		var/best_distance = INFINITY
+		for(var/k in obstacles)
+			var/atom/A = k
+			if(A.qdeleting || A.Cross(owner))
+				obstacles -= k
+				continue
+			if(!closest_obstacle || get_dist(owner,A) < best_distance)
+				closest_obstacle = A
+		if(closest_obstacle)
+			if(reaction_time)
+				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,closest_obstacle)
+			else
+				set_objective(closest_obstacle)
+
 	return TRUE
 
 /ai/proc/get_attack_score(var/atom/A)
@@ -835,14 +851,6 @@
 			var/atom/A = k
 			if(A.qdeleting)
 				attackers -= k
-				continue
-			.[A] = TRUE
-
-	if(shoot_obstacles && length(obstacles))
-		for(var/k in obstacles)
-			var/atom/A = k
-			if(A.qdeleting)
-				obstacles -= k
 				continue
 			.[A] = TRUE
 
