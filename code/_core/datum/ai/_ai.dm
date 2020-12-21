@@ -578,10 +578,8 @@
 	if(objective_investigate)
 		objective_investigate = null
 
-
-
 	if(is_living(A))
-		if(!should_attack_mob(A))
+		if(!should_attack_mob(A,FALSE))
 			return FALSE
 		frustration_attack = 0
 		set_active(TRUE)
@@ -640,7 +638,7 @@
 		return TRUE
 
 	if(objective_attack)
-		if((is_living(objective_attack) && !should_attack_mob(objective_attack)) || get_sight_chance(objective_attack) <= 50)
+		if((is_living(objective_attack) && !should_attack_mob(objective_attack,FALSE)) || get_sight_chance(objective_attack) <= 50)
 			set_objective(null)
 		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
@@ -700,7 +698,7 @@
 
 	return -dist
 
-/ai/proc/should_attack_mob(var/mob/living/L)
+/ai/proc/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
 
 	if(L == owner)
 		return FALSE
@@ -717,7 +715,7 @@
 	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
 		return FALSE
 
-	if(!is_enemy(L,FALSE))
+	if(!is_enemy(L,FALSE,aggression_check))
 		return FALSE
 
 	if(!L.can_be_attacked(owner))
@@ -730,7 +728,7 @@
 
 	return TRUE
 
-/ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE)
+/ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
 	if(istype(A,/mob/living/vehicle/))
 		var/mob/living/vehicle/V = A
@@ -754,6 +752,9 @@
 			if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
 				return TRUE
 
+	if(!aggression_check)
+		return TRUE
+
 	switch(aggression)
 		if(0)
 			return FALSE
@@ -769,8 +770,6 @@
 			return owner.loyalty_tag != L.loyalty_tag
 		if(3)
 			return TRUE
-
-
 
 	return FALSE
 
@@ -882,7 +881,7 @@
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(is_living(attacker) && !stealthy && attacker != objective_attack)
-		if(should_attack_mob(attacker))
+		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
 			if(!objective_attack && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))

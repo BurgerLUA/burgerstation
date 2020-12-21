@@ -20,9 +20,6 @@
 	owner_as_ash_drake = null
 	return ..()
 
-//
-//
-
 /ai/boss/ash_drake/handle_attacking()
 
 	if(owner_as_ash_drake.boss_state == 2)
