@@ -95,12 +95,12 @@
 				create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32))
 
 			if(health && total_bleed_damage)
-				blood_volume -= FLOOR(total_bleed_damage*0.05,1)
+				blood_volume -= FLOOR(total_bleed_damage*0.03,1)
 				queue_health_update = TRUE
 
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
-			var/bleed_to_add = 1 + total_bleed_damage*0.002
+			var/bleed_to_add = total_bleed_damage*0.01
 			O.bleeding += bleed_to_add
 
 	if(ai)

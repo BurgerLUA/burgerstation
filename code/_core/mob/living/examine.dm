@@ -7,8 +7,6 @@
 	if(activity_text)
 		. += activity_text
 
-
-
 	return .
 
 

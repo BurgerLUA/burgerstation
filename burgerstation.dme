@@ -1727,8 +1727,7 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
-#include "maps\core\_core.dm"
-#include "maps\horde\_horde.dm"
+#include "maps\_maps.dm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

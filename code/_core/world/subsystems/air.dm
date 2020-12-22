@@ -3,7 +3,7 @@
 //Atmos should only update if and only if the surrounding NORTH|EAST|SOUTH|WEST has a GREATER gas composition (more gas, more air, ect) than the source tile.
 //The above is checked if the density of the turf is changed in some way or the turf's gas was also changed.
 
-//TODO: has_opaque_atom
+//TODO: has_opaque_atom (WTF DOES THIS MEAN)
 
 SUBSYSTEM_DEF(air)
 	name = "Atmospherics Subsystem"

@@ -23,13 +23,13 @@ SUBSYSTEM_DEF(dmm_suite)
 	if(rustg_file_exists(NEXT_MAP_FILE))
 		var/found_map = trim(file2text(NEXT_MAP_FILE))
 		log_debug("Found map: [found_map]...")
-		if(found_map && maps[found_map])
+		if(found_map && horde_maps[found_map])
 			voted_map = found_map
 		else
 			log_debug("Invalid map: [found_map]! Defaulting to [voted_map]...")
 
-	log_debug("Found file: [maps[voted_map]]...")
-	var/ground_map = file2text(maps[voted_map])
+	log_debug("Found file: [horde_maps[voted_map]]...")
+	var/ground_map = file2text(horde_maps[voted_map])
 	dmm_suite.read_map(ground_map,1,1,3)
 	log_subsystem(name,"Loaded ground map.")
 	map_name = voted_map

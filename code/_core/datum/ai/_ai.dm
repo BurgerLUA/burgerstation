@@ -604,6 +604,7 @@
 	objective_attack = null
 	owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
 
+
 	if(old_attack && !old_attack.qdeleting)
 		if(is_living(old_attack))
 			var/mob/living/L2 = old_attack
@@ -670,9 +671,17 @@
 		var/best_distance = INFINITY
 		for(var/k in obstacles)
 			var/atom/A = k
-			if(A.qdeleting || A.Cross(owner))
+			if(A.qdeleting)
 				obstacles -= k
 				continue
+			if(isturf(A))
+				if(A.Enter(owner,get_turf(owner)))
+					obstacles -= k
+					continue
+			if(ismovable(A))
+				if(A.Cross(owner))
+					obstacles -= k
+					continue
 			if(!closest_obstacle || get_dist(owner,A) < best_distance)
 				closest_obstacle = A
 		if(closest_obstacle)
