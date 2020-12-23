@@ -162,11 +162,11 @@
 	polymorphs = list(base = "#FFFFFF")
 
 	block_defense_rating = list(
-		BLADE = 75,
-		BLUNT = 25,
-		PIERCE = 50,
-		LASER = 100,
-		ARCANE = 100
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_GREATSWORD*0.25,
+		PIERCE = AP_GREATSWORD,
+		LASER = AP_GREATSWORD,
+		ARCANE = AP_GREATSWORD
 	)
 
 	weight = 2

@@ -12,9 +12,9 @@
 	value = 35
 
 	block_defense_rating = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75
+		BLADE = AP_CLUB,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB
 	)
 
 	can_wear = TRUE
@@ -30,10 +30,9 @@
 	icon = 'icons/obj/item/weapons/melee/ballistic_shield.dmi'
 
 	block_defense_rating = list(
-		BLADE = 50,
-		BLUNT = 125,
-		PIERCE = 125,
-		ARCANE = -100
+		BLADE = AP_CLUB,
+		BLUNT = AP_GREATSWORD,
+		PIERCE = AP_GREATSWORD
 	)
 	weight = 25
 	size = SIZE_7
@@ -43,10 +42,10 @@
 	icon = 'icons/obj/item/weapons/melee/glass_shield.dmi'
 
 	block_defense_rating = list(
-		BLADE = 75,
-		BLUNT = 25,
-		PIERCE = 25,
-		ARCANE = 200,
-		DARK = 100,
-		HOLY = 100
+		BLADE = AP_CLUB,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		ARCANE = AP_GREATSWORD,
+		DARK = AP_GREATSWORD,
+		HOLY = AP_GREATSWORD
 	)

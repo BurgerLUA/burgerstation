@@ -189,22 +189,29 @@
 					continue
 				.[damage_type] += C_defense_rating[damage_type]
 
-	if((A.attack_flags & CONTROL_MOD_BLOCK) && (get_dir(attacker,owner) != owner.dir)) //Do you even block?
-		for(var/damage_type in ALL_DAMAGE)
-			if(IS_INFINITY(.[damage_type]))
-				continue
-			.[damage_type] += 25 //25 extra armor when blocking regardless of item.
+	if((A.attack_flags & CONTROL_MOD_BLOCK) && (turn(get_dir(attacker,owner),180) & owner.dir)) //Do you even block?
 
-		if(A.right_item && A.right_item.can_block() && length(A.right_item.block_defense_rating))
-			for(var/damage_type in A.right_item.block_defense_rating)
-				if(IS_INFINITY(.[damage_type]))
-					continue
-				.[damage_type] += A.right_item.block_defense_rating[damage_type]
+		var/obj/item/item_to_block_with
 
-		if(A.left_item && A.left_item.can_block() && length(A.left_item.block_defense_rating))
+		if(A.right_item && A.right_item.can_block())
+			if(A.left_item && A.left_item.can_block() && A.left_item.value > A.right_item.value)
+				item_to_block_with = A.left_item
+			else
+				item_to_block_with = A.right_item
+		else if(A.left_item && A.left_item.can_block())
+			item_to_block_with = A.left_item
+
+		if(item_to_block_with)
 			for(var/damage_type in A.left_item.block_defense_rating)
 				if(IS_INFINITY(.[damage_type]))
 					continue
 				.[damage_type] += A.left_item.block_defense_rating[damage_type]
+		else
+			for(var/damage_type in ALL_DAMAGE)
+				if(IS_INFINITY(.[damage_type]))
+					continue
+				.[damage_type] += AP_GREATSWORD*0.25 + AP_GREATSWORD*0.75*A.get_skill_power(SKILL_UNARMED)
+
+
 
 	return .

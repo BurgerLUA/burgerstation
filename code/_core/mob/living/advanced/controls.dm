@@ -87,7 +87,6 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		return FALSE
 
-
 	//if(src.attack_flags & CONTROL_MOD_BLOCK)
 
 	if(right_hand)
