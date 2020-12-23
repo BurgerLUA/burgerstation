@@ -7,6 +7,7 @@
 #define FATIGUE "fatigue"
 #define PAIN "pain"
 #define RAD "radiation"
+#define SANITY "sanity"
 
 #define HEALTH "health"
 #define MANA "mana"
@@ -31,7 +32,7 @@
 #define HOLY "holy"
 #define DARK "dark"
 
-#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,BOMB,BIO,RAD,ION)
+#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,BOMB,BIO,FATIGUE,ION,RAD,SANITY)
 
 
 //Melee Balance

@@ -1,4 +1,4 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	var/total_damage = 0
 
@@ -19,6 +19,7 @@
 		if(oxy) . += adjust_loss(OXY,oxy)
 		if(rad) . += adjust_loss(RAD,rad)
 		if(fatigue) . += adjust_loss(FATIGUE,fatigue)
+		if(sanity) . += adjust_loss(SANITY,sanity)
 
 	if(brute < 0 || burn < 0 || pain < 0) //Heal damage
 		var/list/desired_heal_amounts = list(

@@ -54,6 +54,7 @@
 	var/tox_regen_buffer = 0
 	var/pain_regen_buffer = 0
 	var/rad_regen_buffer = 0
+	var/sanity_regen_buffer = 0
 
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
@@ -121,7 +122,9 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		PAIN = 0
+		ION = INFINITY,
+		PAIN = 0,
+		SANITY = 0
 	)
 
 	var/list/status_immune = list() //What status effects area they immune to?

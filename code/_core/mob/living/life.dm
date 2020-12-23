@@ -108,7 +108,16 @@
 	return TRUE
 
 /mob/living/proc/rejuvenate()
-	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss(),-health.get_fatigue_loss(),-health.get_pain_loss(),-health.get_rad_loss())
+	if(health) health.adjust_loss_smart(
+		-health.get_brute_loss(),
+		-health.get_burn_loss(),
+		-health.get_tox_loss(),
+		-health.get_oxy_loss(),
+		-health.get_fatigue_loss(),
+		-health.get_pain_loss(),
+		-health.get_rad_loss(),
+		-health.get_sanity_loss()
+	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
 	return TRUE
@@ -348,9 +357,18 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX*2)
+		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/rad_to_regen = clamp(rad_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen, pain=-pain_to_regen, rad=-rad_to_regen, robotic=FALSE)
+		var/sanity_to_regen = clamp(sanity_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		health.adjust_loss_smart(
+			brute = -brute_to_regen,
+			burn = -burn_to_regen,
+			tox=-tox_to_regen,
+			pain=-pain_to_regen,
+			rad=-rad_to_regen,
+			sanity=-sanity_to_regen,
+			robotic=FALSE
+		)
 		brute_regen_buffer -= brute_to_regen
 		burn_regen_buffer -= burn_to_regen
 		tox_regen_buffer -= tox_to_regen
