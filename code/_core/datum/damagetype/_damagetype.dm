@@ -316,7 +316,7 @@
 		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
 		return FALSE
 
-	if(is_living(victim))
+	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
 		if(is_advanced(victim) && can_be_parried)
 			var/mob/living/advanced/A = victim

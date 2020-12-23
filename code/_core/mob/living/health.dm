@@ -71,7 +71,7 @@
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2 + SAFENUM(damage_table[BLUNT])*0.5 + SAFENUM(damage_table[PIERCE])
 
-	if(blood_type && total_bleed_damage && should_bleed() && (luck(src,total_bleed_damage,FALSE) || (atom_damaged && atom_damaged.health && luck(src,atom_damaged.health.get_brute_loss()*5,FALSE))))
+	if(blood_type && total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)
@@ -113,6 +113,12 @@
 			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
 			PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
+
+	if(!dead && has_status_effect(STAGGER))
+		var/stagger_duration = get_status_effect_duration(STUN)*2
+		var/stagger_magnitude = get_status_effect_magnitude(STUN)*2
+		remove_status_effect(STAGGER)
+		add_status_effect(STUN,stagger_magnitude,stagger_duration)
 
 	return .
 
