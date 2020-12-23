@@ -68,7 +68,7 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 		return TRUE
 
 
-	//if(src.attack_flags & ATTACK_HOLD)
+	//if(src.attack_flags & CONTROL_MOD_BLOCK)
 
 	if(left_hand)
 		if(is_button(object))
@@ -88,7 +88,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 		return FALSE
 
 
-	//if(src.attack_flags & ATTACK_HOLD)
+	//if(src.attack_flags & CONTROL_MOD_BLOCK)
 
 	if(right_hand)
 		return right_hand.click_on_object(src,object,location,control,params)
@@ -106,7 +106,7 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		return TRUE
 
-	//if(src.attack_flags & ATTACK_HOLD)
+	//if(src.attack_flags & CONTROL_MOD_BLOCK)
 
 	if(left_hand)
 		return left_hand.click_on_object(src,object,location,control,params)

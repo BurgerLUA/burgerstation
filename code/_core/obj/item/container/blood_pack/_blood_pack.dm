@@ -66,7 +66,7 @@
 
 /obj/item/container/blood_pack/click_self(var/mob/caller)
 
-	if(caller.attack_flags & ATTACK_ALT)
+	if(caller.attack_flags & CONTROL_MOD_ALT)
 		if(attached_to)
 			detach(caller)
 		else

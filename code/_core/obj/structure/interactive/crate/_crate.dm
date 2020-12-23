@@ -87,7 +87,7 @@
 	INTERACT_CHECK
 	SPAM_CHECK(10)
 
-	if(!(caller.attack_flags & ATTACK_GRAB))
+	if(!(caller.attack_flags & CONTROL_MOD_GRAB))
 		toggle(caller)
 
 	return ..()

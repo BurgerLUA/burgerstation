@@ -30,7 +30,7 @@
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
-	if(caller.attack_flags & ATTACK_GRAB)
+	if(caller.attack_flags & CONTROL_MOD_GRAB)
 		if(is_item(defer_object) && is_inventory(defer_object.loc))
 			toggle_wield(caller,defer_object)
 			return TRUE
@@ -44,7 +44,7 @@
 			return TRUE
 
 
-	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
+	if(caller.attack_flags & CONTROL_MOD_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
@@ -54,7 +54,7 @@
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
 			return TRUE //Needs to be here. At this level.
 
-	if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
 		object = object.defer_click_on_object(location,control,params)
 		caller.face_atom(object)
@@ -82,7 +82,7 @@
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
 
-	if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
+	if(caller.attack_flags & CONTROL_MOD_DROP) //Drop the object if we are telling it to drop.
 		if(parent_inventory)
 			var/obj/item/I = parent_inventory.get_top_held_object()
 			return unwield(caller,I)
@@ -103,14 +103,14 @@
 			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir))
 		return TRUE
 
-	if(caller.attack_flags & ATTACK_OWNER)
+	if(caller.attack_flags & CONTROL_MOD_OWNER)
 		if(defer_self != src)
 			defer_self.click_on_object(caller,caller,location,control,params)
 		else if(object != src)
 			object.click_on_object(caller,caller,location,control,params)
 		return TRUE
 
-	if(params && (caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
+	if(params && (caller.attack_flags & CONTROL_MOD_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
 	if(get_dist(defer_self,defer_object) <= 1)

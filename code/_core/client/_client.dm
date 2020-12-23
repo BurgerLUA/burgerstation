@@ -275,11 +275,11 @@ var/global/list/all_clients = list() //Assoc list
 		return ..()
 
 	if(click_flags & CLICK_LEFT)
-		mob.attack_flags |= ATTACK_HELD_LEFT
+		mob.attack_flags |= CONTROL_MOD_LEFT
 		return mob.on_left_down(object,location,control,aug)
 
 	if(click_flags & CLICK_RIGHT)
-		mob.attack_flags |= ATTACK_HELD_RIGHT
+		mob.attack_flags |= CONTROL_MOD_RIGHT
 		return mob.on_right_down(object,location,control,aug)
 
 	if(click_flags & CLICK_MIDDLE)
@@ -315,11 +315,11 @@ var/global/list/all_clients = list() //Assoc list
 
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_up(object,location,control,aug)
-		mob.attack_flags &= ~ATTACK_HELD_LEFT
+		mob.attack_flags &= ~CONTROL_MOD_LEFT
 
 	if(click_flags & CLICK_RIGHT)
 		mob.on_right_up(object,location,control,aug)
-		mob.attack_flags &= ~ATTACK_HELD_RIGHT
+		mob.attack_flags &= ~CONTROL_MOD_RIGHT
 
 	if(is_player(mob))
 		var/mob/living/advanced/player/A = mob

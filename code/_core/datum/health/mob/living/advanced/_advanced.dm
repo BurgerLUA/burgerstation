@@ -189,7 +189,7 @@
 					continue
 				.[damage_type] += C_defense_rating[damage_type]
 
-	if((A.attack_flags & ATTACK_HOLD) && (get_dir(attacker,owner) != owner.dir)) //Do you even block?
+	if((A.attack_flags & CONTROL_MOD_BLOCK) && (get_dir(attacker,owner) != owner.dir)) //Do you even block?
 		for(var/damage_type in ALL_DAMAGE)
 			if(IS_INFINITY(.[damage_type]))
 				continue

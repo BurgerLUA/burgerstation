@@ -541,7 +541,7 @@
 	if(client && client.is_zoomed)
 		return ..(client.is_zoomed,force)
 
-	if(attack_flags & ATTACK_HOLD)
+	if(attack_flags & CONTROL_MOD_BLOCK)
 		return FALSE
 
 	return ..()

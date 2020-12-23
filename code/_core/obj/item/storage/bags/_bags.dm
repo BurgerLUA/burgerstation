@@ -49,7 +49,7 @@
 
 /obj/item/storage/bags/botany/processor/click_self(var/mob/caller)
 
-	if(caller.attack_flags & ATTACK_ALT)
+	if(caller.attack_flags & CONTROL_MOD_ALT)
 		process_plants(caller)
 		return TRUE
 

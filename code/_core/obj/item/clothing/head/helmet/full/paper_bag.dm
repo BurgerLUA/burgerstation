@@ -49,7 +49,7 @@
 /obj/item/clothing/head/helmet/full/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	var/mob/living/C = caller
-	if(C.attack_flags & ATTACK_ALT)
+	if(C.attack_flags & CONTROL_MOD_ALT)
 		if(C.intent == INTENT_DISARM)
 			if(logobg < 2)
 				logobg++

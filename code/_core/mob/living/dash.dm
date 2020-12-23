@@ -28,7 +28,7 @@
 
 /mob/living/proc/can_block()
 
-	if(!(attack_flags & ATTACK_HOLD))
+	if(!(attack_flags & CONTROL_MOD_BLOCK))
 		return FALSE
 
 	if(!can_move())

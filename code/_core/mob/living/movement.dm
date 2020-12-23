@@ -47,7 +47,7 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(attack_flags & ATTACK_HOLD || (client && client.is_zoomed))
+	if(attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..(NewLoc,Dir,step_x,step_y)

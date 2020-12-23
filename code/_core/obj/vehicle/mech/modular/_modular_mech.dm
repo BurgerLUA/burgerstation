@@ -261,13 +261,13 @@ var/global/list/stored_mechs_by_ckey = list()
 		return FALSE
 
 	if(params["right"])
-		if(left_shoulder && caller.attack_flags & ATTACK_ALT)
+		if(left_shoulder && caller.attack_flags & CONTROL_MOD_ALT)
 			return left_shoulder.click_on_object(caller,object,location,control,params)
 		else if(left_hand)
 			return left_hand.click_on_object(caller,object,location,control,params)
 
 	if(params["left"])
-		if(right_shoulder && caller.attack_flags & ATTACK_ALT)
+		if(right_shoulder && caller.attack_flags & CONTROL_MOD_ALT)
 			return right_shoulder.click_on_object(caller,object,location,control,params)
 		else if(right_hand)
 			return right_hand.click_on_object(caller,object,location,control,params)

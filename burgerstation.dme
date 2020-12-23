@@ -74,6 +74,7 @@
 #include "code\__defines\soul.dm"
 #include "code\__defines\sound.dm"
 #include "code\__defines\species.dm"
+#include "code\__defines\stat.dm"
 #include "code\__defines\status.dm"
 #include "code\__defines\stealth.dm"
 #include "code\__defines\subsystems.dm"
