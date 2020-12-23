@@ -14,7 +14,7 @@
 
 	liquid = 0.4
 
-	var/list/compatible_blood = list(/reagent/blood) //If a mob has this blood type, what can it recieve without poison?
+	var/list/compatible_blood = list(/reagent/blood) //If a mob has this blood type, what can it receive without poison?
 
 	value = 2
 

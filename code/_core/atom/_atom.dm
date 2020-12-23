@@ -7,7 +7,7 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //Should always be set to FALSE! Controls if an object should recieve a Cross/Uncross/Crossed/Uncrossed proc calls.
+	density = FALSE //Should always be set to FALSE! Controls if an object should receive a Cross/Uncross/Crossed/Uncrossed proc calls.
 
 	var/health_base = 1
 	var/mana_base = 1

@@ -50,7 +50,7 @@
 		var/mob/living/advanced/player/P = C.mob
 		if(P.allow_save)
 			return ..()
-	C.to_chat(span("danger","You cannot recieve this reward as a non-player! Redeem this reward as a player to recieve it!"))
+	C.to_chat(span("danger","You cannot receive this reward as a non-player! Redeem this reward as a player to receive it!"))
 	return FALSE
 
 
@@ -71,7 +71,7 @@
 		var/mob/living/advanced/player/P = C.mob
 		if(P.allow_save)
 			return ..()
-	C.to_chat(span("danger","You cannot recieve this reward as a non-player! Redeem this reward as a player to recieve it!"))
+	C.to_chat(span("danger","You cannot receive this reward as a non-player! Redeem this reward as a player to receive it!"))
 	return FALSE
 
 /reward/burgerbux/on_reward(var/client/C)

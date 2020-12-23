@@ -545,7 +545,7 @@
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
-		if(L.intent == INTENT_HARM) //SPLASH
+		if(L.attack_flags & CONTROL_MOD_ALT) //SPLASH
 			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 

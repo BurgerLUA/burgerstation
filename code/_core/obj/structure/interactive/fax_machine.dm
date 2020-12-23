@@ -68,7 +68,7 @@
 		if(processing)
 			icon_state = "send"
 		else
-			icon_state = "recieve"
+			icon_state = "receive"
 	else
 		icon_state = "idle"
 
