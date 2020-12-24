@@ -5,14 +5,14 @@
 	attack_damage_base = list(
 		BLADE = DAMAGE_GREATSWORD*0.1,
 		PIERCE = DAMAGE_GREATSWORD*0.05,
-		MAGIC = DAMAGE_GREATSWORD*0.2
+		ARCANE = DAMAGE_GREATSWORD*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLADE = AP_GREATSWORD*0.25,
 		PIERCE = AP_GREATSWORD*0.5,
-		MAGIC = AP_GREATSWORD*0.25
+		ARCANE = AP_GREATSWORD*0.25
 	)
 
 
@@ -31,5 +31,5 @@
 
 	skill_damage = list(
 		SKILL_MELEE = list(BLADE,PIERCE),
-		SKILL_MAGIC = MAGIC
+		SKILL_MAGIC = ARCANE
 	)

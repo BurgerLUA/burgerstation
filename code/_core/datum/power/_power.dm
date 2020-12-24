@@ -52,7 +52,7 @@
 	add_message = "You lose touch the magical energies..."
 	remove_message = "You regain magical coherance."
 	bonus_defense = list(
-		MAGIC = INFINITY,
+		ARCANE = INFINITY,
 		BLADE = -50,
 		PIERCE = -50,
 		BLUNT = -50

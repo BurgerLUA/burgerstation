@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/staff_of_healing
 	name = "staff of healing"
-	desc = "Who needs medicine when you have PASSIVE MAGIC?"
+	desc = "Who needs medicine when you have PASSIVE ARCANE?"
 	desc_extended = "A glowing magical staff that passively radiates health to all nearby living beings, except the caster, when activated. Also makes for a good blunt force weapon."
 	rarity = RARITY_RARE
 

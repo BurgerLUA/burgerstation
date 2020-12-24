@@ -18,8 +18,7 @@
 #define PIERCE "pierce"
 
 #define LASER "laser"
-#define ARCANE "magic"
-#define MAGIC "magic" //TODO: REPLACE
+#define ARCANE "arcane"
 
 #define HEAT "heat"
 #define COLD "cold"
