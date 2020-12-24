@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
 	name = ".45 1911 Pistol"
 	desc = "No rubber rounds here; it's all lethal."
-	desc_extended = "A common pistol used by moderern police forces as well as some private military corporations."
+	desc_extended = "A common pistol used by modern police forces as well as some private military corporations."
 	value = 30
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
