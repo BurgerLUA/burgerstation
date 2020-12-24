@@ -77,7 +77,6 @@
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	weight = calculate_weight()
-	generate_value()
 	. = ..()
 	initialize_blends()
 	return .

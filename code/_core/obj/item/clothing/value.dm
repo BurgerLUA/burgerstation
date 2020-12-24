@@ -32,19 +32,18 @@ var/global/list/limbs_to_value = list(
 	BODY_FOOT_RIGHT = 0.1
 )
 
-/obj/item/clothing/proc/generate_value()
+/obj/item/clothing/get_base_value()
 
-	value = 0
+	. = 0
 
 	for(var/defense_type in defense_rating)
 		var/defense_value = defense_rating[defense_type]
 		if(!defense_value || defense_value < 0)
 			continue
 		if(IS_INFINITY(defense_value))
-			value += 500
-			continue
-
-		value += (defense_value**2)/defense_rating_to_value[defense_type]
+			. += (400**2)/defense_rating_to_value[defense_type]
+		else
+			. += (min(400,defense_value)**2)/defense_rating_to_value[defense_type]
 
 	var/base_multiplier = 0
 
@@ -52,6 +51,10 @@ var/global/list/limbs_to_value = list(
 		var/limb_zone_value = limbs_to_value[limb_zone]
 		base_multiplier += limb_zone_value
 
-	value = CEILING(max(value*base_multiplier,10),1)
+	. = CEILING(max(.*base_multiplier,10),1)
 
-	return TRUE
+	// https://www.desmos.com/calculator/mzuyizloap
+	if(is_container)
+		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.7
+
+	return .

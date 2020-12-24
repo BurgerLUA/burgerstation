@@ -3,7 +3,7 @@
 
 /atom/movable/proc/get_value()
 
-	. = get_base_value()
+	. = value
 
 	for(var/k in contents)
 		var/atom/movable/M = k

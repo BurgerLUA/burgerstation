@@ -115,6 +115,11 @@
 
 	return ..()
 
+/atom/movable/Finalize()
+	value = get_base_value()
+	return ..()
+
+
 /atom/movable/Destroy()
 	area = null
 	grabbing_hand = null
