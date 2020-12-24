@@ -55,15 +55,14 @@
 	var/pain_regen_buffer = 0
 	var/rad_regen_buffer = 0
 	var/sanity_regen_buffer = 0
+	var/mana_regen_buffer = 0
+	var/stamina_regen_buffer = 0
 
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 	//Oxy not present as that is controlled via an organ.
 	//The rest are not present as you cannot naturally regenerate them.
-
-	var/mana_regen_buffer = 0
-	var/stamina_regen_buffer = 0
 
 	var/boss_range = VIEW_RANGE
 	var/list/mob/living/advanced/player/players_fighting_boss

@@ -333,7 +333,16 @@
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
-	var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0,PAIN=0,RAD=0,SANITY=0)
+	var/list/damage_to_deal_main = list(
+		BRUTE = 0,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0,
+		FATIGUE = 0,
+		PAIN = 0,
+		RAD = 0,
+		SANITY = 0
+	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
 
@@ -402,15 +411,15 @@
 	else
 		if(hit_object.health)
 			total_damage_dealt += hit_object.health.adjust_loss_smart(
-				brute=damage_to_deal_main[BRUTE],
-				burn=damage_to_deal_main[BURN],
-				tox=damage_to_deal_main[TOX],
-				oxy=damage_to_deal_main[OXY],
-				fatigue=damage_to_deal_main[FATIGUE],
-				pain=damage_to_deal_main[PAIN],
-				rad=damage_to_deal_main[RAD],
-				sanity=damage_to_deal_main[SANITY],
-				update=FALSE
+				brute = damage_to_deal_main[BRUTE],
+				burn = damage_to_deal_main[BURN],
+				tox = damage_to_deal_main[TOX],
+				oxy = damage_to_deal_main[OXY],
+				fatigue = damage_to_deal_main[FATIGUE],
+				pain = damage_to_deal_main[PAIN],
+				rad = damage_to_deal_main[RAD],
+				sanity = damage_to_deal_main[SANITY],
+				update = FALSE
 			)
 		else
 			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")

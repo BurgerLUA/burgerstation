@@ -61,11 +61,20 @@
 	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
 		return 0
 
-	if(tox || oxy || fatigue)
+	if(tox || oxy || fatigue || sanity)
 		if(owner.loc && is_advanced(owner.loc))
 			var/mob/living/advanced/A = owner.loc
 			if(A.health)
-				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy,fatigue=fatigue)
+				. += A.health.adjust_loss_smart(
+					tox=tox,
+					oxy=oxy,
+					fatigue=fatigue,
+					sanity=sanity,
+					update=update,
+					organic=organic,
+					robotic=robotic
+				)
+
 		tox = 0
 		oxy = 0
 		fatigue = 0
