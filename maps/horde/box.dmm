@@ -2542,6 +2542,10 @@
 /obj/marker/map_node,
 /turf/simulated/floor/colored/dirt/snow,
 /area/box/exterior)
+"kP" = (
+/obj/marker/supermatter_spawn,
+/turf/simulated/floor/plating,
+/area/box/interior/station/engineering)
 "kQ" = (
 /obj/structure/interactive/vending/syndicate/attachment,
 /turf/simulated/floor/tile/shuttle/red,
@@ -2726,10 +2730,6 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/engineering)
-"lz" = (
-/obj/marker/objective_spawn,
-/turf/simulated/floor/plating,
-/area/box/interior/station/engineering)
 "lA" = (
 /obj/marker/objective_spawn,
 /turf/simulated/floor/tile,
@@ -2742,6 +2742,31 @@
 /mob/living/simple/ghost,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/command)
+"lJ" = (
+/obj/marker/spawnpoint/horde,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/grey,
+/area/box/interior/station/engineering)
+"lK" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/box/interior/station/engineering)
+"lL" = (
+/obj/structure/interactive/lighting/tube/station{
+	icon_state = "tube_light";
+	dir = 4
+	},
+/obj/marker/map_node,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/box/interior/station/engineering)
+"lM" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/box/interior/station/engineering)
+"lN" = (
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/box/interior/station/engineering)
 
 (1,1,1) = {"
 is
@@ -35290,7 +35315,7 @@ eK
 eK
 eK
 eK
-eK
+eM
 eK
 eK
 eK
@@ -35539,7 +35564,7 @@ eP
 eP
 eP
 eP
-eK
+eM
 eP
 eP
 eP
@@ -35804,7 +35829,7 @@ eN
 eN
 eQ
 eQ
-hx
+lJ
 eQ
 eQ
 eN
@@ -36053,7 +36078,7 @@ eQ
 eQ
 eQ
 eQ
-hx
+lJ
 eQ
 eQ
 eN
@@ -40432,16 +40457,16 @@ eN
 eN
 eQ
 eQ
+lK
+eQ
+eQ
+eQ
+lL
 eQ
 eQ
 eQ
 eQ
-iJ
-eQ
-eQ
-eQ
-eQ
-eQ
+lK
 eQ
 fZ
 fX
@@ -41201,13 +41226,13 @@ eN
 eN
 eN
 eN
-eQ
+lK
 jA
 lx
 jA
 eN
 jA
-jA
+lM
 jA
 eN
 jA
@@ -41721,7 +41746,7 @@ jC
 jA
 jz
 eZ
-eZ
+lN
 eZ
 jz
 jA
@@ -41978,7 +42003,7 @@ jC
 jA
 jz
 eZ
-lz
+kP
 eZ
 jz
 jA
@@ -42749,7 +42774,7 @@ ly
 jA
 jA
 jA
-jA
+lM
 jA
 jA
 jA
@@ -43001,6 +43026,7 @@ eZ
 eZ
 eN
 eQ
+lM
 jA
 jA
 jA
@@ -43010,8 +43036,7 @@ jA
 jA
 jA
 jA
-jA
-jA
+lM
 eQ
 fZ
 fX

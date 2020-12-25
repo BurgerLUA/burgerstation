@@ -1,3 +1,5 @@
+var/global/list/obj/structure/interactive/supermatter/known_supermatters = list()
+
 /obj/structure/interactive/supermatter
 	name = "supermatter crystal"
 	desc = "Looks valuable!"
@@ -23,6 +25,14 @@
 	desired_light_power = 0.75
 	desired_light_range = 6
 	desired_light_color = "#FFFF00"
+
+/obj/structure/interactive/supermatter/New(var/desired_loc)
+	known_supermatters += src
+	return ..()
+
+/obj/structure/interactive/supermatter/Destroy()
+	known_supermatters -= src
+	return ..()
 
 /obj/structure/interactive/supermatter/on_destruction(var/mob/caller,var/damage = FALSE)
 	var/turf/T = get_turf(src)

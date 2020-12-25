@@ -84,6 +84,7 @@
 	//Base Objectives.
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+	add_objective(/objective/defense)
 
 	if(player_count >= 10)
 		add_objective(/objective/hostage)
@@ -170,6 +171,9 @@
 	round_time_next = HORDE_DELAY_LAUNCHING
 	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	allow_launch = TRUE
+	for(var/k in all_fog)
+		var/obj/effect/fog_of_war/F = k
+		F.remove()
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
