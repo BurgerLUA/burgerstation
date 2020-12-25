@@ -594,7 +594,6 @@
 #include "code\_core\datum\savedata\client\mob\_mob.dm"
 #include "code\_core\datum\savedata\client\mob\helpers.dm"
 #include "code\_core\datum\savedata\client\settings\_settings.dm"
-#include "code\_core\datum\savedata\server\_server.dm"
 #include "code\_core\datum\savedata\server\soapstone.dm"
 #include "code\_core\datum\species\_species.dm"
 #include "code\_core\datum\species\beefman.dm"

@@ -1,9 +1,10 @@
 /savedata/server/soapstone
 
-/savedata/server/soapstone/get_file(var/folder_id)
-	return SOAPSTONE_FILE_FORMAT
+/savedata/server/soapstone/get_file(var/z_level)
+	return replacetext(SOAPSTONE_FILE_FORMAT,"%MAP",SSdmm_suite.z_level_to_file["[z_level]"])
 
 /savedata/server/soapstone/proc/quick_write(var/list/data_to_write)
+
 	if(!data_to_write || !length(data_to_write))
 		return FALSE
 
@@ -12,42 +13,53 @@
 	var/z = data_to_write["z"]
 	var/unique_identifier = "[x]_[y]_[z]"
 
-	rustg_file_append(",\"[unique_identifier]\":" + json_encode(data_to_write),get_file())
+	var/file_name = get_file(z)
+
+	if(!fexists(file_name))
+		rustg_file_write("\"[unique_identifier]\":" + json_encode(data_to_write),file_name)
+		log_debug("[file_name] not registered in soapstone data... creating...")
+	else
+		rustg_file_append(",\"[unique_identifier]\":" + json_encode(data_to_write),file_name)
+		log_debug("[file_name] registerd in soapstone data!")
 
 	return TRUE
 
 /savedata/server/soapstone/proc/quick_load()
 
-	var/json_data = rustg_file_read(get_file())
+	for(var/z_level in SSdmm_suite.z_level_to_file)
 
-	if(!json_data)
-		return FALSE
+		var/json_data = rustg_file_read(get_file(z_level))
 
-	var/list/formatted_data = json_decode("{" + json_data + "}")
+		if(!json_data)
+			break
 
-	for(var/instance in formatted_data)
+		var/list/formatted_data = json_decode("{" + json_data + "}")
 
-		var/x_cord = formatted_data[instance]["x"]
-		var/y_cord = formatted_data[instance]["y"]
-		var/z_cord = formatted_data[instance]["z"]
+		for(var/instance in formatted_data)
 
-		var/turf/desired_loc = locate(x_cord,y_cord,z_cord)
+			var/x_cord = formatted_data[instance]["x"]
+			var/y_cord = formatted_data[instance]["y"]
+			var/z_cord = formatted_data[instance]["z"]
 
-		var/name = formatted_data[instance]["name"]
-		var/ckey = formatted_data[instance]["ckey"]
-		var/text = formatted_data[instance]["text"]
+			var/turf/desired_loc = locate(x_cord,y_cord,z_cord)
 
-		var/dir = formatted_data[instance]["dir"]
-		var/color = formatted_data[instance]["color"]
+			var/name = formatted_data[instance]["name"]
+			var/ckey = formatted_data[instance]["ckey"]
+			var/text = formatted_data[instance]["text"]
 
-		var/date = formatted_data[instance]["date"]
-		var/time = formatted_data[instance]["time"]
+			var/dir = formatted_data[instance]["dir"]
+			var/color = formatted_data[instance]["color"]
 
-		if(color == "#000000")
-			if(prob(90))
-				continue
-		else
-			if(prob(75))
-				continue
+			var/date = formatted_data[instance]["date"]
+			var/time = formatted_data[instance]["time"]
 
-		new/obj/structure/interactive/soapstone_message(desired_loc,dir,color,name,ckey,text,date,time)
+			/*
+			if(color == "#000000")
+				if(prob(90))
+					continue
+			else
+				if(prob(75))
+					continue
+			*/
+
+			new/obj/structure/interactive/soapstone_message(desired_loc,dir,color,name,ckey,text,date,time)

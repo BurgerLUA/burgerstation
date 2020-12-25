@@ -4,7 +4,7 @@
 
 #define SERVER_PATH_FORMAT "data/server/"
 
-#define SOAPSTONE_FILE_FORMAT "[SERVER_PATH_FORMAT]soapstone.json"
+#define SOAPSTONE_FILE_FORMAT "[SERVER_PATH_FORMAT]soapstone/%MAP.json"
 
 #define CKEY_PATH_FORMAT "data/users/%CKEY/"
 

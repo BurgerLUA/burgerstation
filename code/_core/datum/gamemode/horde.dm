@@ -144,7 +144,13 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	announce("Central Command Update","Prepare for Landfall","All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 8 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_8_minutes.ogg')
+	announce(
+		"Central Command Update",
+		"Prepare for Landfall",
+		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 8 minutes.",
+		ANNOUNCEMENT_STATION,
+		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
+	)
 	add_objectives()
 	return TRUE
 
@@ -157,7 +163,13 @@
 	state = GAMEMODE_BOARDING
 	round_time = 0
 	round_time_next = HORDE_DELAY_BOARDING
-	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_2_minutes.ogg')
+	announce(
+		"Central Command Update",
+		"Shuttle Boarding",
+		"All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",
+		ANNOUNCEMENT_STATION,
+		'sound/voice/announcement/landfall_crew_2_minutes.ogg'
+	)
 	return TRUE
 
 /gamemode/horde/proc/on_boarding()
@@ -170,10 +182,6 @@
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
 	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
-	allow_launch = TRUE
-	for(var/k in all_fog)
-		var/obj/effect/fog_of_war/F = k
-		F.remove()
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
@@ -184,6 +192,9 @@
 		return TRUE
 	state = GAMEMODE_FIGHTING
 	round_time = 0
+	for(var/k in all_fog)
+		var/obj/effect/fog_of_war/F = k
+		F.remove()
 	return TRUE
 
 /gamemode/horde/proc/get_wave_frequency()

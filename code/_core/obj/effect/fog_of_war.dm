@@ -10,12 +10,15 @@ var/global/list/all_fog = list()
 	layer = 100
 	alpha = 255
 
+	collision_flags = FLAG_COLLISION_WALL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
 	density = TRUE
 
 /obj/effect/fog_of_war/Cross(var/atom/movable/O)
 	if(is_living(O))
 		return FALSE
-	return ..()
+	return TRUE
 
 /obj/effect/fog_of_war/New(var/desired_loc)
 	all_fog += src
