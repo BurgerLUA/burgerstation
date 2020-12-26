@@ -51,11 +51,11 @@
 			continue
 		if(L.health.health_current >= L.health.health_max)
 			continue
-		if(L.health.get_brute_loss())
+		if(L.health.get_loss(BRUTE))
 			L.brute_regen_buffer += 3
-		if(L.health.get_burn_loss())
+		if(L.health.get_loss(BURN))
 			L.burn_regen_buffer += 3
-		if(L.health.get_tox_loss())
+		if(L.health.get_loss(TOX))
 			L.tox_regen_buffer += 3
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_MEDICAL)
 		INITIALIZE(H)

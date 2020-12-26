@@ -126,31 +126,6 @@
 
 	return returning_value
 
-//Retrieving
-/health/proc/get_brute_loss()
-	return damage[BRUTE]
-
-/health/proc/get_burn_loss()
-	return damage[BURN]
-
-/health/proc/get_tox_loss()
-	return damage[TOX]
-
-/health/proc/get_oxy_loss()
-	return damage[OXY]
-
-/health/proc/get_fatigue_loss()
-	return damage[FATIGUE]
-
-/health/proc/get_pain_loss()
-	return damage[PAIN]
-
-/health/proc/get_rad_loss()
-	return damage[RAD]
-
-/health/proc/get_sanity_loss()
-	return damage[SANITY]
-
 /health/proc/get_loss(var/damage_type)
 	return damage[damage_type]
 

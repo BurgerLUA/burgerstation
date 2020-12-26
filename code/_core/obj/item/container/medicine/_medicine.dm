@@ -62,8 +62,8 @@
 
 	. = 0
 
-	var/brute_to_heal = (-heal_brute*heal_multiplier) + (-heal_brute_percent*A.health.get_brute_loss()*heal_multiplier)
-	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_burn_loss()*heal_multiplier)
+	var/brute_to_heal = (-heal_brute*heal_multiplier) + (-heal_brute_percent*A.health.get_loss(BRUTE)*heal_multiplier)
+	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_loss(BURN)*heal_multiplier)
 
 	if(brute_to_heal || burn_to_heal)
 		A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal)

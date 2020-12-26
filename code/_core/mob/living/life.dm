@@ -109,14 +109,14 @@
 
 /mob/living/proc/rejuvenate()
 	if(health) health.adjust_loss_smart(
-		-health.get_brute_loss(),
-		-health.get_burn_loss(),
-		-health.get_tox_loss(),
-		-health.get_oxy_loss(),
-		-health.get_fatigue_loss(),
-		-health.get_pain_loss(),
-		-health.get_rad_loss(),
-		-health.get_sanity_loss()
+		-health.get_loss(BRUTE),
+		-health.get_loss(BURN),
+		-health.get_loss(TOX),
+		-health.get_loss(OXY),
+		-health.get_loss(FATIGUE),
+		-health.get_loss(PAIN),
+		-health.get_loss(RAD),
+		-health.get_loss(SANITY)
 	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
@@ -417,9 +417,9 @@ mob/living/proc/on_life_slow()
 
 	if(health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = DECISECONDS_TO_SECONDS(health.health_regeneration * delay_mod * nutrition_hydration_mod)
-		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod)
-		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.get_pain_loss() - pain_regen_buffer),health_mod)
+		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod)
 		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust

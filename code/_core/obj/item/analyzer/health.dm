@@ -23,7 +23,7 @@
 
 /obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target,location,control,params)
 
-	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
+	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_loss(BRUTE),1)]</font>|<font color='yellow'>[CEILING(target.health.get_loss(BURN),1)]</font>|<font color='green'>[CEILING(target.health.get_loss(TOX),1)]</font>|<font color='blue'>[CEILING(target.health.get_loss(OXY),1)]</font>"
 	new/obj/effect/chat_text(target,.,TRUE)
 
 	if(advanced)

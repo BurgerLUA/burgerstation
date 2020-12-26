@@ -41,8 +41,8 @@
 /mob/living/advanced/npc/beefman/proc/beef()
 	if(!health)
 		return FALSE
-	var/brute_to_remove = health.get_brute_loss()*0.5
-	var/burn_to_remove = health.get_burn_loss()*0.5
+	var/brute_to_remove = health.get_loss(BRUTE)*0.5
+	var/burn_to_remove = health.get_loss(BURN)*0.5
 	if(health.health_current + brute_to_remove + burn_to_remove <= 0)
 		return FALSE
 	health.adjust_loss_smart(brute=-brute_to_remove,burn=-burn_to_remove)
