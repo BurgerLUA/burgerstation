@@ -181,7 +181,7 @@
 	state = GAMEMODE_LAUNCHING
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
-	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
+	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
@@ -196,43 +196,6 @@
 		var/obj/effect/fog_of_war/F = k
 		F.remove()
 	return TRUE
-
-/gamemode/horde/proc/get_wave_frequency()
-
-	var/player_count = length(all_clients)
-
-	switch(player_count)
-		if(0 to 10)
-			return SECONDS_TO_DECISECONDS(60)
-		if(10 to 20)
-			return SECONDS_TO_DECISECONDS(45)
-		if(20 to 30)
-			return SECONDS_TO_DECISECONDS(30)
-		if(30 to INFINITY)
-			return SECONDS_TO_DECISECONDS(15)
-
-	return SECONDS_TO_DECISECONDS(60)
-
-/gamemode/horde/proc/get_wave_size()
-
-	var/player_count = length(all_clients)
-
-	switch(player_count)
-		if(0 to 10)
-			return 3
-		if(10 to 20)
-			return 4
-		if(20 to 30)
-			return 5
-		if(30 to INFINITY)
-			return 6
-
-	return 4
-
-
-
-/gamemode/horde/proc/get_enemy_types_to_spawn()
-	return enemy_types_to_spawn
 
 /gamemode/horde/proc/on_fighting()
 
@@ -279,6 +242,43 @@
 			L.ai.obstacles[k] = TRUE
 		tracked_enemies += L
 		points -= 0.1
+
+/gamemode/horde/proc/get_wave_frequency()
+
+	var/player_count = length(all_clients)
+
+	switch(player_count)
+		if(0 to 10)
+			return SECONDS_TO_DECISECONDS(60)
+		if(10 to 20)
+			return SECONDS_TO_DECISECONDS(45)
+		if(20 to 30)
+			return SECONDS_TO_DECISECONDS(30)
+		if(30 to INFINITY)
+			return SECONDS_TO_DECISECONDS(15)
+
+	return SECONDS_TO_DECISECONDS(60)
+
+/gamemode/horde/proc/get_wave_size()
+
+	var/player_count = length(all_clients)
+
+	switch(player_count)
+		if(0 to 10)
+			return 3
+		if(10 to 20)
+			return 4
+		if(20 to 30)
+			return 5
+		if(30 to INFINITY)
+			return 6
+
+	return 4
+
+
+
+/gamemode/horde/proc/get_enemy_types_to_spawn()
+	return enemy_types_to_spawn
 
 /gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
 
