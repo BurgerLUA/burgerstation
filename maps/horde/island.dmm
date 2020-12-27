@@ -119,7 +119,7 @@
 /area/lz_001/caves/glow_cave)
 "aG" = (
 /obj/decal/hazard/corner,
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/snow)
 "aH" = (
@@ -146,7 +146,7 @@
 	icon_state = "corner";
 	dir = 1
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/snow)
 "aL" = (
@@ -268,8 +268,7 @@
 /turf/unsimulated/generation/snow,
 /area/lz_001/snow)
 "bm" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/overlapping/dark,
@@ -316,8 +315,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/lagoon)
 "bx" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/overlapping/dark,
@@ -334,8 +332,7 @@
 /turf/unsimulated/generation/jungle,
 /area/lz_001/jungle)
 "bB" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/overlapping/dark,
@@ -353,7 +350,7 @@
 	icon_state = "corner";
 	dir = 8
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/snow)
 "bF" = (
@@ -368,7 +365,7 @@
 	icon_state = "corner";
 	dir = 4
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/snow)
 "bH" = (
@@ -610,7 +607,7 @@
 /turf/simulated/wall/wood/brown,
 /area/lz_001/jungle)
 "cT" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/structure/smooth/table/reinforced/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/dark,
@@ -744,7 +741,7 @@
 /area/lz_001/caves/lagoon)
 "dw" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/caves/lagoon)
 "dx" = (
@@ -774,7 +771,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/caves/lagoon)
 "dD" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/colored/dirt/cave,
@@ -789,8 +786,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "dG" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -803,12 +799,12 @@
 /turf/simulated/floor/tile/overlapping/dark,
 /area/lz_001/outpost/russian/snow)
 "dJ" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/lz_001/snow)
 "dK" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 1
@@ -841,7 +837,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "dQ" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "dR" = (
@@ -849,8 +845,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "dS" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -899,7 +894,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "eb" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -913,7 +908,7 @@
 /turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "ee" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -958,7 +953,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/lodge)
 "eo" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 8
@@ -984,7 +979,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/snow)
 "er" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 4
@@ -1165,7 +1160,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/lz_001/forest/village)
 "fn" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
 /area/lz_001/forest)
 "fo" = (
@@ -1180,7 +1175,7 @@
 	icon_state = "line";
 	dir = 6
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "fr" = (
@@ -1199,7 +1194,7 @@
 	icon_state = "line";
 	dir = 10
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "fv" = (
@@ -1214,7 +1209,7 @@
 	icon_state = "line";
 	dir = 5
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "fy" = (
@@ -1222,7 +1217,7 @@
 	icon_state = "line";
 	dir = 9
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "fz" = (
@@ -1417,7 +1412,7 @@
 /turf/simulated/floor/colored/grass,
 /area/lz_001/forest/village)
 "gq" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/lz_001/forest/village)
@@ -1426,7 +1421,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/forest/village)
 "gs" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 1
@@ -1685,7 +1680,7 @@
 /turf/simulated/floor/colored/sand,
 /area/lz_001/forest)
 "hw" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 8
@@ -1719,7 +1714,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/forest/village)
 "hA" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 4
@@ -1762,7 +1757,7 @@
 "hJ" = (
 /obj/structure/smooth/table/reinforced,
 /obj/item/container/beaker/bowl,
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "hK" = (
@@ -1796,15 +1791,13 @@
 /turf/simulated/floor/cobblestone/side,
 /area/lz_001/forest/village)
 "hR" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "hS" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /turf/simulated/floor/wood/brown,
@@ -1836,7 +1829,7 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/lz_001/caves/crab)
 "hZ" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1860,7 +1853,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "id" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 1
@@ -2017,7 +2010,7 @@
 "iK" = (
 /obj/structure/smooth/table/wood,
 /obj/item/container/beaker/can/mountain_wind,
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
@@ -2031,7 +2024,7 @@
 "iM" = (
 /obj/structure/smooth/table/wood,
 /obj/item/container/beaker/glass,
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
@@ -2040,7 +2033,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
 "iO" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
 "iP" = (
@@ -2073,7 +2066,7 @@
 /turf/simulated/floor/tile/morphing,
 /area/lz_001/outpost/syndicate/jungle)
 "iV" = (
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
@@ -2131,7 +2124,7 @@
 /area/lz_001/forest)
 "jh" = (
 /obj/structure/smooth/table/wood/poor,
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/armory)
 "ji" = (
@@ -2145,8 +2138,7 @@
 	},
 /area/lz_001/forest/village)
 "jk" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
@@ -2182,7 +2174,7 @@
 /turf/simulated/wall/rock,
 /area/lz_001/forest)
 "jr" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 8
@@ -2197,7 +2189,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "jt" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 4
@@ -2205,8 +2197,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "ju" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/wood/brown,
@@ -2242,7 +2233,7 @@
 /turf/simulated/hazard/water,
 /area/lz_001/caves/lagoon)
 "jC" = (
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
@@ -2268,14 +2259,14 @@
 "jH" = (
 /obj/structure/smooth/table/wood/poor,
 /obj/item/container/beaker/bottle/epinephrine,
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
 "jI" = (
 /obj/structure/smooth/table/wood/poor,
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
@@ -2391,7 +2382,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/crab)
 "kj" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/outpost/russian/snow)
 "kk" = (
@@ -2712,7 +2703,7 @@
 /turf/simulated/floor/colored/sand/desert,
 /area/lz_001/desert)
 "lN" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /obj/marker/map_node,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/forest)
@@ -2725,8 +2716,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/forest)
 "lQ" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -2736,8 +2726,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/forest)
 "lS" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -2751,8 +2740,7 @@
 /turf/simulated/floor/plating,
 /area/lz_001/forest)
 "lV" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -2835,7 +2823,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/desert_cave)
 "mo" = (
-/obj/structure/interactive/lighting/floor/syndicate,
+/obj/structure/interactive/lighting/fixture/floor/syndicate,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/desert)
 "mp" = (
@@ -2857,8 +2845,12 @@
 /obj/effect/fog_of_war,
 /turf/simulated/hazard/water,
 /area/lz_001/forest)
+"mt" = (
+/mob/living/advanced/npc/unique/knight/red,
+/turf/simulated/floor/cave_dirt,
+/area/lz_001/caves/knight/cave)
 "mv" = (
-/obj/structure/interactive/lighting/floor/syndicate,
+/obj/structure/interactive/lighting/fixture/floor/syndicate,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/desert_cave)
 "mw" = (
@@ -2880,7 +2872,7 @@
 /area/lz_001/outpost/syndicate/desert)
 "mD" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -2890,7 +2882,7 @@
 /area/lz_001/caves)
 "mJ" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "mK" = (
@@ -2900,7 +2892,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "mO" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -2914,22 +2906,20 @@
 /turf/simulated/floor/plating,
 /area/lz_001/outpost/syndicate/desert)
 "mU" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "mV" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "mX" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -7447,7 +7437,7 @@ eS
 fg
 fg
 fs
-fs
+mt
 fs
 fs
 fs

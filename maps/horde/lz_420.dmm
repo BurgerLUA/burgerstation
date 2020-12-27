@@ -13,22 +13,20 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_420/interior/cave)
 "ae" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/nexus/wip)
 "af" = (
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/nexus/wip)
 "ag" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/nexus/wip)
 "ah" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -52,8 +50,7 @@
 /turf/simulated/wall/rock/indestructable,
 /area/lz_420/interior/cave)
 "an" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -233,7 +230,7 @@
 /obj/decal/hazard/corner{
 	dir = 1
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "bc" = (
@@ -247,26 +244,25 @@
 	icon_state = "line";
 	dir = 4
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "be" = (
 /obj/decal/hazard{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "bf" = (
 /obj/decal/hazard/corner{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "bg" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /obj/structure/interactive/chair{
@@ -365,7 +361,7 @@
 /turf/simulated/floor/tile/tint,
 /area/lz_420/interior/nexus/kitchen)
 "bE" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
@@ -386,7 +382,7 @@
 /turf/simulated/floor/tile/tint,
 /area/lz_420/interior/nexus/kitchen)
 "bI" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 1
@@ -415,7 +411,7 @@
 /turf/unsimulated/generation/lava,
 /area/lz_420/interior/cave/north)
 "bN" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 8
@@ -430,7 +426,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "bP" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 4
@@ -439,7 +435,7 @@
 /area/lz_420/exterior)
 "bQ" = (
 /obj/decal/hazard/corner,
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "bR" = (
@@ -454,7 +450,7 @@
 	icon_state = "corner";
 	dir = 1
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "bT" = (
@@ -480,7 +476,7 @@
 /turf/simulated/floor/tile/tint,
 /area/lz_420/interior/nexus/kitchen)
 "bZ" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/north)
 "ca" = (
@@ -492,15 +488,13 @@
 /turf/simulated/floor/colored/grass,
 /area/lz_420/interior/nexus/north)
 "cc" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/north)
 "cd" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -517,25 +511,24 @@
 /turf/simulated/floor/tile/tan,
 /area/lz_420/exterior)
 "ch" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/tan,
 /area/lz_420/exterior)
 "ci" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "cj" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/medical)
 "ck" = (
 /turf/simulated/wall/metal,
 /area/lz_420/interior/nexus/medical)
 "cl" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/garden)
 "cm" = (
@@ -546,7 +539,7 @@
 	icon_state = "corner";
 	dir = 8
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "co" = (
@@ -559,8 +552,7 @@
 /area/lz_420/interior/nexus/garden)
 "cq" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/tan,
@@ -573,7 +565,7 @@
 	icon_state = "corner";
 	dir = 4
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
 "ct" = (
@@ -588,8 +580,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/armory)
 "cw" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tint,
@@ -607,7 +598,7 @@
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/kitchen)
 "cA" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/entrance)
@@ -623,7 +614,7 @@
 /turf/simulated/floor/colored/sand/oasis,
 /area/lz_420/exterior)
 "cD" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 1
@@ -710,7 +701,7 @@
 /turf/simulated/wall/metal,
 /area/lz_420/interior/nexus/science)
 "cZ" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/exterior)
 "da" = (
@@ -725,7 +716,7 @@
 /area/lz_420/exterior)
 "dd" = (
 /obj/structure/interactive/vending/soda/full,
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/exterior)
 "de" = (
@@ -738,7 +729,7 @@
 /area/lz_420/interior/nexus/science)
 "dg" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/science)
 "dh" = (
@@ -756,7 +747,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/entrance)
 "dk" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/science)
 "dl" = (
@@ -770,8 +761,7 @@
 /area/lz_420/interior/nexus/science)
 "dn" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tan,
@@ -821,22 +811,19 @@
 /turf/simulated/floor/plating,
 /area/transit/dropship/alpha/landing)
 "dx" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/exterior)
 "dy" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/central)
 "dz" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -854,7 +841,7 @@
 /turf/simulated/wall/metal,
 /area/lz_420/interior/nexus/west)
 "dD" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/central)
 "dE" = (
@@ -877,15 +864,13 @@
 "dI" = (
 /obj/structure/smooth/table,
 /obj/item/clothing/overwear/coat/apron,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tint,
 /area/lz_420/interior/nexus/kitchen)
 "dJ" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/tint,
@@ -911,7 +896,7 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/west)
 "dP" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/central)
 "dQ" = (
@@ -923,15 +908,13 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/cargo)
 "dS" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/cargo)
 "dT" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -959,8 +942,7 @@
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/east)
 "ea" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -970,7 +952,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/west)
 "ec" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/west)
 "ed" = (
@@ -989,7 +971,7 @@
 	},
 /area/lz_420/interior/nexus/chapel)
 "eg" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/east)
 "eh" = (
@@ -1029,22 +1011,19 @@
 /turf/simulated/floor/colored/grass,
 /area/lz_420/interior/nexus/east)
 "ep" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/west)
 "eq" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/east)
 "er" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -1077,22 +1056,19 @@
 /turf/simulated/floor/colored/grass,
 /area/lz_420/interior/nexus/south)
 "ez" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/south)
 "eA" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/south)
 "eB" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/tan,
@@ -1133,8 +1109,7 @@
 /area/lz_420/interior/nexus/kitchen)
 "eL" = (
 /obj/decal/tile/cross/red,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/tan,
@@ -1180,8 +1155,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/entrance)
 "eW" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -1266,7 +1240,7 @@
 /turf/simulated/floor/tile/tan,
 /area/lz_420/exterior)
 "fr" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/morphing,
 /area/lz_420/interior/nexus/science)
 "fs" = (
@@ -1277,34 +1251,30 @@
 /area/lz_420/interior/nexus/science)
 "ft" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/science)
 "fu" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/red,
 /area/lz_420/interior/nexus/medical)
 "fv" = (
 /obj/structure/smooth/table,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/red,
 /area/lz_420/interior/nexus/medical)
 "fw" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/red,
 /area/lz_420/interior/nexus/medical)
 "fx" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/tan,
@@ -1314,28 +1284,25 @@
 /turf/simulated/floor/tile/morphing,
 /area/lz_420/interior/nexus/science)
 "fz" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/garden)
 "fA" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/garden)
 "fB" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/garden)
 "fC" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -1370,7 +1337,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "fI" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/plating/shuttle,
 /area/transit/lz420_elevator/surface)
 "fJ" = (
@@ -1382,7 +1349,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/nexus/engineering)
 "fL" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/engineering)
 "fM" = (
@@ -1414,7 +1381,7 @@
 /turf/simulated/floor/colored/sand/oasis,
 /area/lz_420/exterior)
 "fS" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 8
@@ -1685,8 +1652,7 @@
 /turf/simulated/floor/tile/grey,
 /area/lz_420/interior/nexus/entrance)
 "gT" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /obj/decal/hazard/black{
@@ -1707,26 +1673,23 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/cargo)
 "gW" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/cargo)
 "gX" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/cargo)
 "gY" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/cargo)
 "gZ" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/grey,
@@ -1789,8 +1752,7 @@
 /area/lz_420/interior/nexus/entrance)
 "hm" = (
 /obj/decal/tile/cross/red,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tan,
@@ -1804,7 +1766,7 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/central)
 "hp" = (
-/obj/structure/interactive/lighting/tube,
+/obj/structure/interactive/lighting/fixture/tube,
 /obj/structure/interactive/chair{
 	dir = 8
 	},
@@ -1863,8 +1825,7 @@
 /turf/simulated/floor/carpet,
 /area/lz_420/interior/nexus/chapel)
 "hA" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 4
 	},
 /turf/simulated/floor/tile/chapel{
@@ -1873,8 +1834,7 @@
 	},
 /area/lz_420/interior/nexus/chapel)
 "hB" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/chapel{
@@ -1883,8 +1843,7 @@
 	},
 /area/lz_420/interior/nexus/chapel)
 "hC" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
@@ -1977,15 +1936,13 @@
 	icon_state = "chair";
 	dir = 1
 	},
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 8
 	},
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/kitchen)
 "hU" = (
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/coldroom,
@@ -2011,19 +1968,17 @@
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/cargo)
 "hZ" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/cargo)
 "ia" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/cargo)
 "ib" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -2060,7 +2015,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/nexus/engineering)
 "ik" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/structure/smooth/table/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
@@ -2102,8 +2057,7 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/north)
 "is" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/plating/shuttle,
@@ -2162,8 +2116,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "iH" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -2173,8 +2126,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "iJ" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -2206,12 +2158,12 @@
 /area/lz_420/interior/basement/bathroom/male)
 "iO" = (
 /obj/structure/interactive/misc/toilet,
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/bathroom/male)
 "iP" = (
 /obj/structure/interactive/misc/toilet,
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/bathroom/female)
 "iQ" = (
@@ -2351,40 +2303,35 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/hallway)
 "jx" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/bathroom/male)
 "jy" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/bathroom/female)
 "jz" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "jA" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/bathroom/male)
 "jB" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/bathroom/female)
 "jC" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -2394,30 +2341,27 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/kitchen)
 "jE" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/hallway)
 "jF" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/hallway)
 "jG" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/medical)
 "jH" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/medical)
 "jI" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -2427,8 +2371,7 @@
 /turf/simulated/floor/tile/blue_baby,
 /area/lz_420/interior/basement/kitchen)
 "jK" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/blue_baby,
@@ -2441,22 +2384,19 @@
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/lz_420/interior/basement/kitchen)
 "jM" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/cafe)
 "jN" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/cafe)
 "jO" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -2523,7 +2463,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/medical)
 "kb" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /obj/structure/interactive/crate/closet,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/medical)
@@ -2540,7 +2480,7 @@
 /turf/simulated/floor/plating,
 /area/lz_420/interior/basement)
 "kf" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /obj/structure/interactive/crate/closet,
 /turf/simulated/floor/tile/blue_baby,
 /area/lz_420/interior/basement/kitchen)
@@ -2549,8 +2489,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "kh" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /obj/structure/interactive/crate/trash,
@@ -2569,12 +2508,12 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/hallway)
 "kl" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /obj/structure/interactive/crate/trash,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/cafe)
 "km" = (
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /obj/structure/interactive/potted_plant/bin,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/cafe)
@@ -2609,16 +2548,14 @@
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/lz_420/interior/basement/cafe)
 "kt" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /obj/structure/interactive/potted_plant/bin,
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/lobby)
 "ku" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /obj/structure/interactive/potted_plant/bin,
@@ -2629,8 +2566,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/hallway)
 "kw" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /obj/structure/interactive/potted_plant/bin,
@@ -2641,8 +2577,7 @@
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/lz_420/interior/basement/medical)
 "ky" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /obj/structure/interactive/potted_plant/bin,
@@ -2687,7 +2622,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/basement/cafe)
 "kG" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/structure/smooth/table/dark,
 /obj/item/soapstone/red,
 /turf/simulated/floor/tile/shuttle/red,
@@ -2747,8 +2682,7 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "kT" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /obj/structure/smooth/table/dark,
@@ -2756,8 +2690,7 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "kU" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/shuttle/red,
@@ -2781,12 +2714,11 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "kY" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "kZ" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /obj/structure/smooth/table/dark,
@@ -2822,8 +2754,7 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "lg" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /obj/structure/smooth/table/dark,
@@ -2851,8 +2782,7 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "ll" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /obj/structure/smooth/table/dark,
@@ -2899,15 +2829,13 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "lv" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
 	},
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/science)
 "lw" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tan,
@@ -2931,8 +2859,7 @@
 /turf/simulated/floor/basalt,
 /area/lz_420/interior/cave/north)
 "lA" = (
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing,
@@ -2976,8 +2903,7 @@
 /area/lz_420/interior/cave/south)
 "lM" = (
 /obj/structure/interactive/potted_plant/office,
-/obj/structure/interactive/lighting/tube{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube{
 	dir = 1
 	},
 /turf/simulated/floor/tile/tan,
@@ -2987,7 +2913,7 @@
 /turf/simulated/wall/rock/indestructable,
 /area/lz_420/interior/cave/west)
 "lO" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 4
@@ -3097,6 +3023,14 @@
 /obj/effect/fog_of_war,
 /turf/simulated/wall/rock/indestructable,
 /area/lz_420/interior/cave/east)
+"ml" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/tan,
+/area/lz_420/interior/nexus/cargo)
+"mm" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/tan,
+/area/lz_420/interior/nexus/cargo)
 
 (1,1,1) = {"
 ab
@@ -46981,7 +46915,7 @@ az
 aA
 dS
 ay
-aH
+ml
 aH
 aH
 aH
@@ -47238,7 +47172,7 @@ ay
 ic
 aA
 ay
-aH
+mm
 aH
 gc
 aH
@@ -47495,7 +47429,7 @@ ay
 ay
 ay
 ay
-aH
+mm
 aH
 aH
 aH

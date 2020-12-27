@@ -35,7 +35,7 @@
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "ak" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/security,
 /area/box/interior/station/armory)
 "al" = (
@@ -53,15 +53,14 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/armory)
 "ap" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/security,
 /area/box/interior/station/armory)
 "aq" = (
 /obj/structure/smooth/table,
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "ar" = (
@@ -76,8 +75,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/armory)
 "at" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -91,15 +89,13 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/armory)
 "aw" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/security,
 /area/box/interior/station/armory)
 "ax" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/security,
@@ -108,7 +104,7 @@
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "az" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "aA" = (
@@ -161,8 +157,7 @@
 /area/box/interior/station/hall/west)
 "aN" = (
 /obj/structure/smooth/table,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/grey,
@@ -171,26 +166,23 @@
 /turf/simulated/wall/dark/shuttle,
 /area/box/interior/syndicate_shuttle)
 "aP" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile,
 /area/box/interior/station/cafe/bar)
 "aQ" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/west)
 "aR" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "aS" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile,
@@ -199,7 +191,7 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/dorm)
 "aU" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/carpet,
 /area/box/interior/station/dorm)
 "aV" = (
@@ -219,8 +211,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/dorms)
 "ba" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/grey,
@@ -232,8 +223,7 @@
 /turf/simulated/wall/metal,
 /area/box/interior/station/chapel)
 "bd" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/grey,
@@ -255,8 +245,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/chapel)
 "bj" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/grey,
@@ -272,8 +261,7 @@
 /turf/simulated/wall/metal,
 /area/box/interior/station/maint/west)
 "bn" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/virology,
@@ -282,8 +270,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/box/interior/station/arrivals)
 "bp" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
@@ -321,7 +308,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/medical/chemistry)
 "by" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/red,
 /area/box/interior/station/arrivals)
 "bz" = (
@@ -335,15 +322,14 @@
 	},
 /area/box/interior/station/chapel)
 "bB" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/chapel{
 	icon_state = "floor";
 	dir = 4
 	},
 /area/box/interior/station/chapel)
 "bC" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/red,
@@ -374,8 +360,7 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/command)
 "bI" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/command,
@@ -400,7 +385,7 @@
 /area/box/interior/station/cafe/bar)
 "bO" = (
 /obj/structure/smooth/table,
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/cargo,
 /area/box/interior/station/cargo)
 "bP" = (
@@ -424,15 +409,13 @@
 /area/box/interior/station/chapel)
 "bT" = (
 /obj/structure/smooth/table/rack/grey,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/cargo,
 /area/box/interior/station/cargo)
 "bU" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/cargo,
@@ -441,8 +424,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/command)
 "bW" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -470,8 +452,7 @@
 /area/box/interior/station/armory)
 "cc" = (
 /obj/structure/smooth/table,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/cargo,
@@ -502,8 +483,7 @@
 /turf/simulated/floor/tile/morphing/medical,
 /area/box/interior/station/medical)
 "ck" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/chapel{
@@ -515,15 +495,14 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/science)
 "cm" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/plating,
 /area/box/interior/station/command)
 "cn" = (
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/command)
 "co" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
@@ -550,8 +529,7 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/medical)
 "cv" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/chemistry,
@@ -560,8 +538,7 @@
 /turf/simulated/wall/metal,
 /area/box/interior/station/hall/central)
 "cx" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
@@ -573,8 +550,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/central)
 "cA" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/chemistry,
@@ -608,15 +584,13 @@
 /turf/simulated/floor/tile/morphing/cargo,
 /area/box/interior/station/cargo)
 "cI" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/medical,
 /area/box/interior/station/medical)
 "cJ" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -626,8 +600,7 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/armory)
 "cL" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/medical,
@@ -641,8 +614,7 @@
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "cO" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /obj/structure/interactive/atmospherics/scrubber,
@@ -653,15 +625,13 @@
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "cQ" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
 "cR" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/mining,
@@ -674,14 +644,13 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/dorms)
 "cU" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/medical)
 "cV" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/morphing/mining,
 /area/box/interior/station/cargo)
@@ -701,8 +670,7 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/medical)
 "da" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -711,7 +679,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/west)
 "dc" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/west)
 "dd" = (
@@ -732,7 +700,7 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "di" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "dj" = (
@@ -742,15 +710,13 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/cafe/kitchen)
 "dl" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "dm" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
@@ -767,8 +733,7 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "dq" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/tint,
@@ -781,8 +746,7 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/bathrooms)
 "dt" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile,
@@ -812,15 +776,13 @@
 /area/box/interior/station/cafe/kitchen)
 "dA" = (
 /obj/structure/smooth/table/glass,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dB" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/virology,
@@ -830,15 +792,13 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dD" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dE" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
@@ -854,7 +814,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/arrivals)
 "dH" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/cargo,
 /area/box/interior/station/cargo)
 "dI" = (
@@ -865,7 +825,7 @@
 /turf/simulated/floor/tile/morphing/cargo,
 /area/box/interior/station/cargo)
 "dK" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/cargo)
 "dL" = (
@@ -884,8 +844,7 @@
 /turf/simulated/floor/tile/morphing/cargo,
 /area/box/interior/station/cargo)
 "dP" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/grey,
@@ -895,8 +854,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/cargo)
 "dR" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/cargo,
@@ -921,14 +879,13 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cargo)
 "dX" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cargo)
 "dY" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/central)
 "dZ" = (
@@ -940,15 +897,13 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/central)
 "eb" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/central)
 "ec" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
@@ -958,8 +913,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/hall/central)
 "ee" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/chapel{
@@ -968,15 +922,13 @@
 	},
 /area/box/interior/station/chapel)
 "ef" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/chapel,
 /area/box/interior/station/chapel)
 "eg" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/grey,
@@ -1010,8 +962,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/box/interior/station/hall/central)
 "em" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/cargo,
@@ -1024,8 +975,7 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/medical/chemistry)
 "ep" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/cargo,
@@ -1043,8 +993,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/medical)
 "et" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile,
@@ -1054,7 +1003,7 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/medical/chemistry)
 "ev" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/medical,
 /area/box/interior/station/medical)
 "ew" = (
@@ -1062,8 +1011,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/medical)
 "ex" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/medical,
@@ -1073,15 +1021,14 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/medical)
 "ez" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/box/interior/station/command)
 "eA" = (
 /obj/structure/smooth/table,
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/plating,
 /area/box/interior/station/armory)
@@ -1094,8 +1041,7 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/medical)
 "eD" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile,
@@ -1105,15 +1051,13 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/maint/east)
 "eF" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile,
 /area/box/interior/station/medical)
 "eG" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
@@ -1196,22 +1140,19 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/hall/north)
 "fd" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/north)
 "fe" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/north)
 "ff" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/grey,
@@ -1226,7 +1167,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hanger)
 "fj" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hanger)
 "fk" = (
@@ -1242,8 +1183,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/hanger)
 "fn" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/red,
@@ -1266,8 +1206,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/east)
 "ft" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
@@ -1280,7 +1219,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/east)
 "fw" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/east)
 "fx" = (
@@ -1292,12 +1231,11 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/east)
 "fz" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/virology,
 /area/box/interior/station/hall/east)
 "fA" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -1306,7 +1244,7 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/medical)
 "fC" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/medical)
 "fD" = (
@@ -1331,8 +1269,7 @@
 /turf/simulated/wall/metal,
 /area/box/interior/station/maint/east)
 "fI" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
@@ -1354,8 +1291,7 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/library)
 "fO" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
@@ -1365,8 +1301,7 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/library)
 "fQ" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
@@ -1419,15 +1354,13 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/maint/east)
 "ge" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/medical)
 "gf" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
@@ -1437,8 +1370,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/medical)
 "gh" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/wood/rich,
@@ -1466,8 +1398,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/science)
 "go" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -1484,14 +1415,14 @@
 /turf/simulated/wall/metal/reinforced,
 /area/box/interior/station/science)
 "gs" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/science)
 "gt" = (
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/science)
 "gu" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/science)
 "gv" = (
@@ -1502,8 +1433,7 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/science)
 "gx" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/wood/rich,
@@ -1532,8 +1462,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/hall/dorms)
 "gE" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1562,8 +1491,7 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/command)
 "gL" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -1572,7 +1500,7 @@
 /turf/simulated/wall/metal,
 /area/box/interior/station/armory)
 "gN" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/command)
 "gO" = (
@@ -1829,7 +1757,7 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/science)
 "hY" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/structure/smooth/table/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
@@ -1915,7 +1843,7 @@
 /turf/unsimulated/generation/snow_cave,
 /area/box/interior/caves)
 "iu" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/box/exterior)
@@ -1939,7 +1867,7 @@
 /turf/simulated/floor/plating,
 /area/box/exterior)
 "iy" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 1
@@ -1961,7 +1889,7 @@
 /turf/simulated/floor/plating,
 /area/box/exterior)
 "iB" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 8
@@ -1976,7 +1904,7 @@
 /turf/simulated/floor/plating,
 /area/box/exterior)
 "iD" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
 	icon_state = "corner";
 	dir = 4
@@ -2005,26 +1933,23 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hanger)
 "iI" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/box/interior/station/engineering)
 "iJ" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/box/interior/station/engineering)
 "iK" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/box/interior/station/engineering)
 "iL" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/engineering,
@@ -2040,8 +1965,7 @@
 /turf/simulated/floor/tile/morphing/medical,
 /area/box/interior/station/hall/east)
 "iP" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/medical,
@@ -2053,8 +1977,7 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/box/interior/station/hall/east)
 "iS" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/science,
@@ -2063,8 +1986,7 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/box/interior/station/science)
 "iU" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/medical,
@@ -2074,26 +1996,24 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/box/interior/station/science)
 "iW" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/command,
 /area/box/interior/station/hall/central)
 "iX" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/command,
 /area/box/interior/station/hall/central)
 "iY" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/command,
 /area/box/interior/station/hall/central)
 "iZ" = (
 /obj/decal/hazard/black/box,
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/arrivals)
 "ja" = (
@@ -2153,11 +2073,11 @@
 /area/box/interior/station/hanger)
 "jj" = (
 /obj/decal/hazard/black/box,
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hanger)
 "jk" = (
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/black/box,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/armory)
@@ -2187,15 +2107,13 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/armory)
 "jp" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/red,
 /area/box/interior/station/hanger)
 "jq" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/red,
@@ -2208,15 +2126,14 @@
 /turf/simulated/floor/tile/morphing/red,
 /area/box/interior/station/hall/east)
 "jt" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/red,
 /area/box/interior/station/hall/east)
 "ju" = (
 /turf/simulated/floor/tile/morphing/chapel,
 /area/box/interior/station/hall/east)
 "jv" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/janitor,
@@ -2251,8 +2168,7 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/arrivals)
 "jE" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile,
@@ -2329,8 +2245,7 @@
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/arrivals)
 "jX" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile,
@@ -2348,8 +2263,7 @@
 	icon_state = "toilet";
 	dir = 4
 	},
-/obj/structure/interactive/lighting/bulb{
-	icon_state = "bulb_light";
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
 	},
 /obj/structure/interactive/atmospherics/scrubber,
@@ -2414,16 +2328,14 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/box/interior/syndicate_shuttle)
 "kn" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /obj/structure/smooth/table/dark,
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "ko" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/shuttle/red,
@@ -2526,12 +2438,11 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "kM" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "kN" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /obj/structure/smooth/table/dark,
@@ -2620,8 +2531,7 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "lf" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /obj/structure/smooth/table/dark,
@@ -2629,8 +2539,7 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/box/interior/syndicate_shuttle)
 "lg" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /obj/structure/smooth/table/dark,
@@ -2653,7 +2562,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/box/interior/syndicate_shuttle)
 "lk" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/structure/smooth/table/dark,
 /obj/item/soapstone/red,
 /turf/simulated/floor/tile/shuttle/red,
@@ -2704,7 +2613,7 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/dorm)
 "lu" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /obj/structure/interactive/crate/closet/anchored,
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/dorms)
@@ -2717,15 +2626,13 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/maint/east)
 "lx" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/engineering)
 "ly" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -2752,8 +2659,7 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/box/interior/station/engineering)
 "lL" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /obj/marker/map_node,
@@ -32211,13 +32117,13 @@ cF
 cz
 cz
 gb
-gb
+gc
 gb
 gb
 eL
 gb
 gb
-gb
+gc
 gb
 bm
 bm

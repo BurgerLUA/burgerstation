@@ -68,6 +68,10 @@
 /obj/marker/objective_spawn,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost)
+"t" = (
+/obj/structure/interactive/door/airlock/glass,
+/turf/simulated/floor/plating,
+/area/lz_001/outpost)
 
 (1,1,1) = {"
 a
@@ -32838,7 +32842,7 @@ k
 l
 m
 l
-l
+t
 p
 j
 s
@@ -33351,7 +33355,7 @@ i
 f
 k
 k
-k
+f
 f
 i
 i

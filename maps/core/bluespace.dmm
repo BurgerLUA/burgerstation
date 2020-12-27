@@ -110,7 +110,7 @@
 /obj/structure/interactive/chair{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/shuttle,
 /area/transit/arrivals_shuttle_01/centcomm)
 "aD" = (
@@ -147,7 +147,7 @@
 /obj/structure/interactive/chair{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/shuttle,
 /area/transit/arrivals_shuttle_02/centcomm)
 "aJ" = (
@@ -238,8 +238,7 @@
 /obj/structure/interactive/chair{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/shuttle,
@@ -254,8 +253,7 @@
 /obj/structure/interactive/chair{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/shuttle,
@@ -286,7 +284,7 @@
 /obj/decal/hazard/black{
 	dir = 1
 	},
-/obj/structure/interactive/lighting/floor,
+/obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/centcomm)
 "bb" = (
@@ -322,7 +320,7 @@
 /area/centcomm)
 "bi" = (
 /obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/centcomm)
 "bj" = (
@@ -334,8 +332,7 @@
 /turf/simulated/floor/tile/grey,
 /area/centcomm)
 "bl" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -368,7 +365,7 @@
 /area/centcomm)
 "bs" = (
 /obj/structure/interactive/vending/clothes/overshirt,
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/centcomm)
 "bt" = (
@@ -395,7 +392,7 @@
 /turf/simulated/floor/tile,
 /area/centcomm)
 "bz" = (
-/obj/structure/interactive/lighting/bulb{
+/obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
 /turf/simulated/floor/tile,
@@ -419,16 +416,14 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/centcomm)
 "bE" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/centcomm)
 "bF" = (
 /obj/structure/interactive/crate/closet/anchored,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile,
@@ -467,7 +462,7 @@
 /obj/structure/interactive/misc/toilet{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile,
 /area/centcomm)
 "bM" = (
@@ -501,8 +496,7 @@
 	dir = 8
 	},
 /obj/marker/spawnpoint/chargen,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile,
@@ -522,7 +516,7 @@
 	dir = 8
 	},
 /obj/marker/spawnpoint/chargen,
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile,
 /area/centcomm)
 "bT" = (
@@ -531,8 +525,7 @@
 /area/centcomm)
 "bU" = (
 /obj/structure/interactive/crate/closet/anchored,
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile,
@@ -542,8 +535,7 @@
 /turf/simulated/floor/tile,
 /area/centcomm)
 "bW" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile,
@@ -585,8 +577,7 @@
 /turf/simulated/floor/plating,
 /area/centcomm)
 "cf" = (
-/obj/structure/interactive/lighting/tube/station/stronger{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station/stronger{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -651,8 +642,7 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/centcomm)
 "ct" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/cryo,
@@ -663,15 +653,13 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cv" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cw" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /mob/living/advanced/npc/syndicate/quadruple{
@@ -696,14 +684,13 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cz" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cA" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/cryo,
@@ -720,7 +707,7 @@
 /turf/simulated/wall/dark/shuttle,
 /area/transit/syndicate_raid/centcomm)
 "cD" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cE" = (
@@ -731,13 +718,13 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cF" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cG" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /mob/living/advanced/npc/syndicate/quadruple,
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -796,6 +783,9 @@
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
+"cO" = (
+/turf/bluespace,
+/area/transit/space_cop/bluespace)
 "cS" = (
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -933,9 +923,6 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
-"ds" = (
-/turf/space,
-/area/transit/space_cop/bluespace)
 "dt" = (
 /obj/structure/interactive/door/airlock/shuttle,
 /obj/structure/interactive/scanner/cop,
@@ -967,28 +954,25 @@
 /turf/simulated/floor/plating,
 /area/space/deep)
 "dB" = (
-/obj/structure/interactive/lighting/tube/station/strong{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /turf/simulated/floor/tile,
 /area/space/deep)
 "dC" = (
-/obj/structure/interactive/lighting/tube/station/strong{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /turf/simulated/floor/tile,
 /area/space/deep)
 "dD" = (
-/obj/structure/interactive/lighting/tube/station/strong{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/tile,
 /area/space/deep)
 "dE" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile,
 /area/space/deep)
 
@@ -9220,13 +9204,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -9477,13 +9461,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -9734,13 +9718,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -9991,13 +9975,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -10248,13 +10232,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -10505,13 +10489,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -10762,13 +10746,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -11019,13 +11003,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -11276,13 +11260,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -11533,13 +11517,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -11790,13 +11774,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa
@@ -12047,13 +12031,13 @@ ag
 aa
 aa
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 aa
 aa
 aa

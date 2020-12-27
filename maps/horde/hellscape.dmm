@@ -41,7 +41,7 @@
 /area/hellscape/interior/rev)
 "al" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
@@ -55,7 +55,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "ao" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
 "ap" = (
@@ -114,7 +114,7 @@
 /turf/simulated/wall/rock/basalt,
 /area/hellscape/interior/caves/ancient)
 "aF" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/tile/shuttle/black,
 /area/hellscape/interior/syndicate/canman)
 "aG" = (
@@ -125,7 +125,7 @@
 /turf/simulated/floor/colored/dirt/soil,
 /area/hellscape/exterior/jungle/north)
 "aI" = (
-/obj/structure/interactive/lighting/tube/station/stronger,
+/obj/structure/interactive/lighting/fixture/tube/station/stronger,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
 "aJ" = (
@@ -225,7 +225,7 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/interior/pirate_landing)
 "bf" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /obj/structure/smooth/table/rack/grey,
@@ -251,7 +251,7 @@
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/watersource)
 "bl" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /obj/structure/smooth/table/rack/grey,
@@ -267,12 +267,12 @@
 /turf/simulated/wall/rock/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "bo" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /mob/living/simple/can_man,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
 "bp" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -307,7 +307,7 @@
 /turf/simulated/floor/colored/ash/dark,
 /area/hellscape/interior/caves/watersource)
 "by" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -357,7 +357,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "bJ" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -371,7 +371,7 @@
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "bM" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "bN" = (
@@ -411,7 +411,7 @@
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/watersource)
 "bX" = (
-/obj/structure/interactive/lighting/tube/station/stronger{
+/obj/structure/interactive/lighting/fixture/tube/station/stronger{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark/er,
@@ -521,7 +521,7 @@
 /turf/simulated/wall/rock/basalt,
 /area/hellscape/interior/caves/hive)
 "cy" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "cz" = (
@@ -576,7 +576,7 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "cL" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /turf/simulated/floor/tile/shuttle/blue,
@@ -729,7 +729,7 @@
 /area/hellscape/interior/caves/crash)
 "dr" = (
 /obj/structure/interactive/vending/chef/dinnerwear,
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "ds" = (
@@ -846,7 +846,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "dP" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /turf/simulated/floor/tile/shuttle/blue,
@@ -1042,7 +1042,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/crash)
 "eJ" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /obj/structure/smooth/table/dark,
 /obj/item/deployable/barricade/filled,
 /turf/simulated/floor/tile/dark,
@@ -1067,7 +1067,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "eN" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /obj/structure/smooth/table/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/dark,
@@ -1110,7 +1110,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "eX" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /mob/living/advanced/npc/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
@@ -1446,7 +1446,7 @@
 /turf/simulated/floor/wood/brown,
 /area/hellscape/exterior/jungle/north)
 "gu" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
 "gv" = (
@@ -1550,7 +1550,7 @@
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "gR" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/circuit,
@@ -1646,7 +1646,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
 "ho" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /turf/simulated/floor/tile/shuttle/black,
@@ -1688,7 +1688,7 @@
 /turf/simulated/floor/colored/dirt,
 /area/hellscape/exterior/jungle/north)
 "hx" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /obj/effect/fog_of_war,
@@ -1720,14 +1720,14 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "hD" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /obj/effect/fog_of_war,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "hE" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -1781,7 +1781,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/exterior/jungle/north)
 "hQ" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -2031,8 +2031,7 @@
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
 "iP" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
@@ -2086,7 +2085,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/exterior/jungle/south)
 "jc" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
@@ -2128,7 +2127,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "jl" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "jm" = (
@@ -2287,7 +2286,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "jS" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/basalt,
@@ -2309,7 +2308,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/exterior/jungle/south)
 "jX" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/circuit,
@@ -2345,7 +2344,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "ke" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/basalt,
@@ -2380,7 +2379,7 @@
 /turf/simulated/floor/colored/dirt/soil,
 /area/hellscape/exterior/jungle/south)
 "kl" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
@@ -2415,7 +2414,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/exterior/jungle/south)
 "kt" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
@@ -2452,7 +2451,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "kB" = (
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "kC" = (
@@ -2477,7 +2476,7 @@
 "kG" = (
 /obj/structure/smooth/table/dark,
 /obj/item/analyzer/health,
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark/single,
@@ -2506,7 +2505,7 @@
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/caves/watersource)
 "kM" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "kN" = (
@@ -2540,7 +2539,7 @@
 /area/hellscape/interior/syndicate)
 "kS" = (
 /obj/decal/hazard/black/corner,
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
@@ -2555,7 +2554,7 @@
 	icon_state = "corner";
 	dir = 1
 	},
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
@@ -2592,7 +2591,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "la" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark/er,
@@ -2601,7 +2600,7 @@
 /obj/decal/hazard/black/corner{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "lc" = (
@@ -2620,7 +2619,7 @@
 	icon_state = "corner";
 	dir = 4
 	},
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "lf" = (
@@ -2660,7 +2659,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "lj" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 4
 	},
 /turf/simulated/floor/basalt,
@@ -2701,8 +2700,7 @@
 /area/hellscape/interior/caves/broodmother)
 "lt" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /obj/item/supply_crate/syndicate,
@@ -2731,7 +2729,7 @@
 /area/hellscape/interior/syndicate)
 "lz" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /obj/item/supply_crate/syndicate,
@@ -2769,7 +2767,7 @@
 /area/hellscape/interior/syndicate)
 "lH" = (
 /obj/structure/interactive/crate/closet,
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/item/deployable/mob/sentry,
 /obj/item/powercell/advanced,
 /obj/item/magazine/minigun_46,
@@ -2803,7 +2801,7 @@
 /area/hellscape/interior/syndicate)
 "lN" = (
 /obj/structure/interactive/vending/syndicate/attachment,
-/obj/structure/interactive/lighting/tube/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "lO" = (
@@ -2851,7 +2849,7 @@
 /area/hellscape/interior/caves/broodmother)
 "lX" = (
 /obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/syndicate)
 "lY" = (
@@ -2960,7 +2958,7 @@
 /area/hellscape/exterior/jungle/south)
 "mv" = (
 /obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
 /obj/item/clothing/overwear/hardsuit/syndie,
@@ -3654,7 +3652,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "pk" = (
-/obj/structure/interactive/lighting/tube/syndicate{
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark/er,
@@ -3692,15 +3690,14 @@
 /turf/simulated/floor/stair/cult,
 /area/hellscape/interior/caves/ancient)
 "pt" = (
-/obj/structure/interactive/lighting/tube/syndicate{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "pu" = (
 /obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/bulb,
+/obj/structure/interactive/lighting/fixture/bulb,
 /obj/item/bikehorn,
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/syndicate)
@@ -3872,17 +3869,17 @@
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/containment)
 "qe" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/rev)
 "qf" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/rev)
 "qg" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /obj/decal/hazard/corner{
 	dir = 8
 	},
@@ -3895,7 +3892,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/rev)
 "qi" = (
-/obj/structure/interactive/lighting/tube/station/strong,
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
 /obj/decal/hazard/corner{
 	dir = 4
 	},
@@ -4030,7 +4027,7 @@
 /turf/simulated/wall/rock/brown,
 /area/hellscape/interior/caves/lava_lake)
 "qP" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
 /area/hellscape/exterior/jungle/south)
 "qQ" = (
@@ -4053,19 +4050,19 @@
 /turf/simulated/wall/dark,
 /area/hellscape/interior/syndicate/aux)
 "qU" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
 "qV" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark/single,
 /area/hellscape/interior/syndicate/aux)
 "qW" = (
-/obj/structure/interactive/lighting/tube/station/strong{
+/obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1
 	},
 /turf/simulated/floor/tile/shuttle/black,
@@ -4092,11 +4089,11 @@
 /turf/simulated/floor/plating,
 /area/hellscape/exterior/jungle/south)
 "rd" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/watersource)
 "re" = (
-/obj/structure/interactive/lighting/tube/station,
+/obj/structure/interactive/lighting/fixture/tube/station,
 /obj/marker/map_node,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/caves/watersource)
@@ -4105,8 +4102,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/caves/watersource)
 "rg" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -4116,8 +4112,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/caves/watersource)
 "ri" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
@@ -4145,15 +4140,13 @@
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/watersource)
 "rp" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
 /area/hellscape/exterior/jungle/south)
 "rq" = (
-/obj/structure/interactive/lighting/tube/station{
-	icon_state = "tube_light";
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -4170,11 +4163,11 @@
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/hellchamber)
 "rt" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/hellchamber)
 "ru" = (
-/obj/structure/interactive/lighting/floor/strong,
+/obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
 /area/hellscape/exterior/jungle/north)
 "rv" = (
@@ -4865,8 +4858,8 @@ gT
 nH
 nS
 ob
-bd
-bd
+aq
+aq
 aq
 aq
 at
@@ -5123,7 +5116,7 @@ ar
 ar
 oc
 oj
-bd
+aq
 aq
 aq
 at
@@ -5380,7 +5373,7 @@ mY
 ar
 ar
 oj
-bd
+aq
 aq
 aq
 at
