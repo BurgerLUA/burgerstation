@@ -59,7 +59,7 @@
 
 		var/reagent_transfer = min(5,reagents.volume_current)
 		if(reagent_transfer <= 0)
-			caller.to_chat(span("notice","\The [src.name] is empty."))
+			caller.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
 
 		reagents.transfer_reagents_to(O.reagents,reagent_transfer, caller = caller)

@@ -29,7 +29,7 @@
 				stored_paper = null
 				update_sprite()
 		else
-			caller.to_chat(span("notice","\The [src.name] is empty."))
+			caller.to_chat(span("warning","\The [src.name] is empty!"))
 		return TRUE
 
 	else if(is_paper(A))

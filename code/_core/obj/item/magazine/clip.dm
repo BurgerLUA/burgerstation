@@ -26,7 +26,7 @@
 			update_sprite()
 			return TRUE
 		else
-			caller.to_chat(span("notice","You can't load anything into \the [object] with \the [src]!"))
+			caller.to_chat(span("warning","You can't load anything into \the [object] with \the [src]!"))
 		return TRUE
 
 	return ..()

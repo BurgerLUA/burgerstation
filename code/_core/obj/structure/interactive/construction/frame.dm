@@ -26,7 +26,7 @@
 	G.color = S.color
 	INITIALIZE(G)
 	GENERATE(G)
-	caller.to_chat(span("notice","You place \the [G.name]."))
+	caller?.to_chat(span("notice","You place \the [G.name]."))
 	S.add_item_count(-4)
 	qdel(src)
 	return TRUE
@@ -52,7 +52,7 @@
 	INITIALIZE(L)
 	GENERATE(L)
 	FINALIZE(L)
-	caller.to_chat(span("notice","You place \the [L.name]."))
+	caller?.to_chat(span("notice","You place \the [L.name]."))
 	R.add_item_count(-2)
 	qdel(src)
 	return TRUE

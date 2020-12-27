@@ -153,7 +153,7 @@ var/global/list/obj/structure/interactive/computer/console/remote_flight/all_rem
 		if(desired_shuttle_controller.state == SHUTTLE_STATE_LANDED)
 			desired_shuttle_controller.state = SHUTTLE_STATE_WAITING
 			desired_shuttle_controller.time = 0
-			caller.to_chat(span("notice","You prepare \the [desired_shuttle_controller.name] for launch."))
+			caller.visible_message(span("notice","\The [caller.name] prepares \the [src.name] for launch."),span("notice","You prepare \the [src.name] for launch."))
 		else
 			caller.to_chat(span("warning","ERROR: \The [desired_shuttle_controller.name] is already in transit."))
 	else

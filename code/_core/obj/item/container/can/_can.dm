@@ -25,7 +25,8 @@
 	if(open)
 		return ..()
 
-	caller.to_chat(span("notice","You open \the [src.name]."))
+	caller.visible_message(span("notice","\The [caller.name] opens \the [src.name]."),span("notice","You open \the [src.name]."))
+	//TODO: Pop sounds.
 	open = TRUE
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE

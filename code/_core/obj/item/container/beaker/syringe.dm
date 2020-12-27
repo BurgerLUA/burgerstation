@@ -133,19 +133,19 @@
 		else if(object.reagents)
 			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount, caller = caller)
 			if(transfer_amount)
-				caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
+				caller.to_chat(span("warning","\The [caller.name] draws liquid from \the [object.name]."),span("notice","You draw [transfer_amount] units of liquid from \the [object.name]."))
 				return TRUE
 		else
-			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object] with \the [src]!"))
+			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object.name] with \the [src.name]!"))
 
 	else if(amount > 0) //Inject
 		if(object.reagents)
 			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount, caller = caller)
 			if(transfer_amount)
-				caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
+				caller.visible_message(span("warning","\The [caller.name] injects \the [src.name] into \the [object.name]."),span("notice","You inject [transfer_amount] units of liquid into \the [object.name]."))
 				return TRUE
 		else
-			caller.to_chat(span("warning","You can't seem to find a way to inject \the [object] with \the [src]!"))
+			caller.to_chat(span("warning","You can't seem to find a way to inject \the [object.name] with \the [src.name]!"))
 
 	if(is_organ(object) && is_living(object.loc))
 		var/mob/living/L = object.loc

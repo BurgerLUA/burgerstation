@@ -42,7 +42,7 @@
 /obj/item/container/food/package/feed(var/mob/caller,var/mob/living/target)
 
 	if(packaging)
-		caller.to_chat(span("notice","Unwrap \the [src.name] before eating it!"))
+		caller.to_chat(span("warning","You must unwrap \the [src.name] before eating it!"))
 		return FALSE
 
 	return ..()
@@ -55,7 +55,7 @@
 
 	var/obj/item/trash/T = create_packaging(caller)
 
-	caller.to_chat(span("notice","You unwrap \the [src.name]."))
+	caller.visible_message(span("notice","\The [caller.name] unwraps \the [src.name]."),span("notice","You unwrap \the [src.name]."))
 
 	if(I) I.add_object(T)
 

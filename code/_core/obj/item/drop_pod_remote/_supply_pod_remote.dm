@@ -32,7 +32,7 @@
 		return ..()
 
 	if(charges <= 0)
-		caller.to_chat(span("warning","There are no charges left!"))
+		caller.to_chat(span("warning","There are no charges left in \the [src.name]!"))
 		return TRUE
 
 	charges--

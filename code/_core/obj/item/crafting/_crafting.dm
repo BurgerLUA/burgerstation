@@ -132,7 +132,7 @@
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
 		if(R.get_top_held_object())
-			caller.to_chat(span("notice","Remove the already completed item in the product slot before doing this!"))
+			caller.to_chat(span("warning","Remove the already completed item in the product slot before doing this!"))
 			return FALSE
 		else
 			product_slot = R
@@ -163,5 +163,5 @@
 
 			return I3
 
-	caller.to_chat(span("notice","You fail to craft anything..."))
+	caller.to_chat(span("warning","You fail to craft anything..."))
 	return FALSE

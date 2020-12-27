@@ -116,7 +116,7 @@
 		PL.delete_after_harvest = delete_after_harvest
 		INITIALIZE(PL)
 		FINALIZE(PL)
-		caller.to_chat(span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
+		caller.visible_message(span("notice","\The [caller.name] plants \the [src.name] in \the [T.name], creating a [PL.name]."),span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
 		qdel(src)
 		return TRUE
 

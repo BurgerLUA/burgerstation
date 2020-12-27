@@ -24,7 +24,7 @@
 	INITIALIZE(G)
 	GENERATE(G)
 	FINALIZE(G)
-	caller.to_chat(span("notice","You place \the [G.name]."))
+	caller?.visible_message(span("notice","\The [caller.name] places \the [G.name]."),span("notice","You place \the [G.name]."))
 	R.add_item_count(-4)
 	qdel(src)
 	return TRUE
@@ -34,7 +34,7 @@
 	T.change_turf(/turf/simulated/floor/plating/,TRUE)
 	T.color = S.color
 	T.material_id = S.material_id
-	caller.to_chat(span("notice","You place \the plating."))
+	caller?.visible_message(span("notice","\The [caller.name] places \the [T.name]."),span("notice","You place \the [T.name]."))
 	S.add_item_count(-4)
 	qdel(src)
 	return TRUE

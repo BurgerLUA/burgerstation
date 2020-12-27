@@ -109,14 +109,14 @@
 		return null
 	desired_disk.drop_item(src)
 	rcd_disk = desired_disk
-	if(caller && !silent) caller.to_chat(span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
+	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] inserts a disk into \the [src.name]."),span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
 	return rcd_disk
 
 /obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
 	if(!rcd_disk)
 		caller.to_chat(span("warning","There is no disk to eject from \the [src.name]!"))
 		return null
-	if(caller && !silent) caller.to_chat(span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
+	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] removes a disk from \the [src.name]."),span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
 	rcd_disk.drop_item(get_turf(src))
 	. = rcd_disk
 	rcd_disk = null

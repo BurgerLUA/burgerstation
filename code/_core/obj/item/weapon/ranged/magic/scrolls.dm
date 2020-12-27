@@ -72,9 +72,9 @@
 
 /obj/item/weapon/ranged/magic/scroll/handle_empty(var/mob/caller)
 	if(!open)
-		caller.to_chat(span("notice","You must unravel the scroll before using it!"))
+		caller.to_chat(span("warning","You must unravel the scroll before using it!"))
 	else
-		caller.to_chat(span("notice","This scroll is blank and void of magic!"))
+		caller.to_chat(span("warning","This scroll is blank and void of magic!"))
 	return TRUE //No melee
 
 /obj/item/weapon/ranged/magic/scroll/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -84,17 +84,17 @@
 	if(is_scroll(object))
 
 		if(scroll_count <= 0)
-			caller.to_chat(span("notice","This scroll is blank and void of magic!"))
+			caller.to_chat(span("warning","This scroll is blank and void of magic!"))
 			return TRUE
 
 		var/obj/item/weapon/ranged/magic/scroll/S = object
 
 		if(S.scroll_count <= 0)
-			caller.to_chat(span("notice","The scroll is blank and void of magic!"))
+			caller.to_chat(span("warning","The scroll is blank and void of magic!"))
 			return TRUE
 
 		if(S.type != type) //Need to be the exact same id.
-			caller.to_chat(span("notice","It wouldn't be a very good idea to mix scrolls together without a tome."))
+			caller.to_chat(span("warning","It wouldn't be a very good idea to mix scrolls together without a tome."))
 			return TRUE
 
 		var/transfer_count = S.scroll_count

@@ -1,13 +1,47 @@
-/mob/living/advanced/get_examine_list(var/mob/examiner)
+/mob/living/advanced/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 
-	var/pronoun = get_pronoun(src)
+	. = ..()
 
 	var/survival_skill = 1
 	if(examiner == src || is_observer(examiner))
-		survival_skill = 50
+		survival_skill = 999
 	else if(is_advanced(examiner))
 		var/mob/living/advanced/A = examiner
 		survival_skill = A.get_skill_level(SKILL_SURVIVAL)
+
+	for(var/k in src.organs)
+
+		var/obj/item/organ/O = k
+
+		if(!O.health)
+			continue
+
+		if(!O.hud_id)
+			continue
+
+		var/list/damage_desc = O.get_damage_description(examiner)
+		var/is_injured = length(damage_desc)
+
+		if(verbose && !is_injured)
+			continue
+
+		var/noun
+		if(examiner == src)
+			noun = "Your"
+		else
+			noun = get_pronoun_him_her_their(src)
+
+		var/number_text = ""
+		if(survival_skill >= 75 || verbose)
+			number_text = "([O.health.health_current]/[O.health.health_max])"
+
+		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
+
+	return .
+
+/mob/living/advanced/get_examine_list(var/mob/examiner)
+
+	var/pronoun = get_pronoun_he_she_it(src)
 
 	. = ..()
 
@@ -28,38 +62,11 @@
 			var/obj/item/I = k
 			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [capitalize(pronoun)] is holding \the <b>[I.name]</b> on their [initial(I.loc.name)].")
 
-	for(var/k in src.organs)
-
-		var/obj/item/organ/O = k
-
-		if(!O.health)
-			continue
-
-		if(!O.hud_id)
-			continue
-
-		var/list/damage_desc = O.get_damage_description()
-
-		var/is_injured = length(damage_desc)
-
-		if(!is_injured)
-			continue
-
-		var/noun = "Their"
-		var/number_text = ""
-		if(examiner == src)
-			noun = "Your"
-		if(survival_skill >= 75)
-			number_text = "([O.health.health_current]/[O.health.health_max])"
-
-		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
-
 	return .
 
 mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
-	var/pronoun = get_pronoun(src)
-
+	var/pronoun = get_pronoun_he_she_it(src)
 
 	var/survival_skill = 1
 	if(examiner == src || is_observer(examiner))

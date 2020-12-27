@@ -35,7 +35,7 @@
 				break
 
 	if(!C || !is_beaker(C))
-		caller.to_chat(span("notice","You're missing a valid container in the product slot!"))
+		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
 	var/list/item_table = generate_crafting_table(caller,src)
@@ -59,7 +59,7 @@
 			I.reagents.update_container()
 
 	if(!success)
-		caller.to_chat(span("notice","There are no valid items to process!"))
+		caller.to_chat(span("warning","There are no valid items to process!"))
 		return FALSE
 
 	for(var/reagent_type in C.reagents.stored_reagents)

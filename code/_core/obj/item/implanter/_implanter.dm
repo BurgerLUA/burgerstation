@@ -53,7 +53,7 @@
 
 	var/obj/item/organ/internal/implant/added_implant = A.add_organ(stored_implant)
 	if(added_implant)
-		caller.to_chat(span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
+		caller.visible_message(span("notice","\The [caller.name] implants something into their [added_implant.attached_organ.name]."),span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
 		name = initial(name)
 		stored_implant = null
 

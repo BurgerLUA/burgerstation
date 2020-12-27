@@ -33,7 +33,7 @@
 	T.change_turf(/turf/simulated/wall/metal/)
 	T.material_id = material_id
 	T.color = color
-	caller.to_chat(span("notice","You place \the metal wall."))
+	caller?.visible_message(span("notice","\The [caller.name] places \the [T.name]."),span("notice","You place \the [T.name]."))
 	S.add_item_count(-4)
 	qdel(src)
 	return TRUE

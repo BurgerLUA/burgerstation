@@ -33,7 +33,7 @@
 	INITIALIZE(W)
 	GENERATE(W)
 	FINALIZE(W)
-	caller.to_chat(span("notice","You place \the [W]."))
+	caller?.visible_message(span("notice","\The [caller.name] places \the [W.name]."),span("notice","You place \the [W.name]."))
 	S.add_item_count(-4)
 	return TRUE
 

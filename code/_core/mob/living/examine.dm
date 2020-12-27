@@ -1,3 +1,42 @@
+/mob/living/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
+
+	. = list()
+
+
+	if(health)
+
+		var/noun //Custom shit
+		if(examiner == src)
+			noun = "You look"
+		else
+			switch(gender)
+				if(MALE)
+					noun = "He looks"
+				if(FEMALE)
+					noun = "She looks"
+				else
+					noun = "They look"
+
+		switch(health.damage[TOX])
+			if(5 to 15)
+				. += div("warning","<i>[noun] off color.</i>")
+			if(15 to 25)
+				. += div("warning","[noun] sickly.")
+			if(25 to 50)
+				. += div("warning","<b>[noun] ailing.</b>")
+			if(50 to INFINITY)
+				. += div("warning","<u><b>[noun] diseased.</u></b>")
+
+		switch(health.damage[PAIN])
+			if(15 to 25)
+				. += div("warning","[noun] sore.")
+			if(25 to 50)
+				. += div("warning","<b>[noun] pained.</b>")
+			if(50 to INFINITY)
+				. += div("warning","<u><b>[noun] hurting.</u></b>")
+
+	return .
+
 
 /mob/living/get_examine_list(var/mob/examiner)
 
@@ -6,6 +45,8 @@
 	var/activity_text = get_activity_text()
 	if(activity_text)
 		. += activity_text
+
+	. += get_damage_description(examiner,FALSE)
 
 	return .
 
@@ -29,7 +70,7 @@
 
 	. = ..()
 
-	var/pronoun = get_pronoun(src)
+	var/pronoun = get_pronoun_he_she_it(src)
 
 	if(ai && ai.use_alerts)
 		switch(ai.alert_level)

@@ -52,14 +52,14 @@
 	if(is_staff(object))
 		var/obj/item/weapon/ranged/magic/staff/S = object
 		if(total_charge)
-			caller.to_chat(span("notice","You refill \the [S] with \the [src]."))
+			caller.visible_message(span("notice","\The [caller.name] recharges \the [S.name] with \the [src.name]."),span("notice","You charge \the [S] with \the [src]."))
 			S.total_charge += total_charge
 			if(is_living(caller))
 				var/mob/living/L = caller
 				L.add_skill_xp(SKILL_ENCHANTING,CEILING(total_charge*0.05,1))
 			total_charge = 0
 		else
-			caller.to_chat(span("notice","\The [src] is empty!"))
+			caller.to_chat(span("warning","\The [src] is empty!"))
 		update_sprite()
 
 		return TRUE

@@ -93,7 +93,7 @@
 		return FALSE
 	if(I.unremovable)
 		return FALSE
-	caller?.to_chat(span("notice","You attach \the [I.name] to \the [src.name]."))
+	caller?.to_chat(span("notice","\The [caller.name] attaches \the [I.name] to \the [src.name]."),span("notice","You attach \the [I.name] to \the [src.name]."))
 	equipment += I
 	I.drop_item(src)
 	I.unremovable = TRUE
@@ -102,7 +102,7 @@
 /mob/living/vehicle/proc/unattach_equipment(var/mob/caller,var/obj/item/I)
 	if(!(I in equipment))
 		return FALSE
-	caller?.to_chat(span("notice","You detach \the [I.name] from \the [src.name]."))
+	caller?.visible_message(span("notice","\The [caller.name] detaches \the [I.name] from \the [src.name]."),span("notice","You detach \the [I.name] from \the [src.name]."))
 	equipment -= I
 	I.force_move(get_turf(caller))
 	I.unremovable = initial(I.unremovable)
@@ -146,7 +146,7 @@
 					return TRUE
 				var/atom/movable/choice = input("What would you like to remove?","Equipment Removal") as null|anything in equipment
 				if(choice && choice in equipment)
-					caller.to_chat(span("notice","You remove \the [choice.name] from \the [src.name]."))
+					caller?.visible_message(span("notice","\The [caller.name] removes \the [choice.name] from \the [src.name]."),span("notice","You remove \the [choice.name] from \the [src.name]."))
 					unattach_equipment(caller,choice)
 				else
 					caller.to_chat(span("notice","You choose not to remove anything."))
@@ -188,13 +188,13 @@
 		if(length(equipment) >= 1)
 			equipment[1].click_on_object(caller,object,location,control,params)
 		else
-			caller?.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"") //TODO: Format speaker.
+			src.do_say("No equipment found in slot 1!")
 
 	if(params["right"])
 		if(length(equipment) >= 2)
 			equipment[2].click_on_object(caller,object,location,control,params)
 		else
-			caller?.to_chat("<b>\the [src.name] blares</b>, \"No equipment found in slot 2!\"") //TODO: Format speaker.
+			src.do_say("No equipment found in slot 2!")
 
 	return TRUE
 

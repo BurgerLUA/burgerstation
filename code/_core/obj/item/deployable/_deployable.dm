@@ -43,7 +43,7 @@
 	if(isturf(object) && can_deploy_to(caller,object))
 		if(caller.loc != object)
 			caller.face_atom(object) //Only face the atom if we're not on the tile.
-		caller.to_chat(span("notice","You begin deploying \the [src.name]..."))
+		caller.visible_message(span("warning","\The [caller.name] starts to deploy \the [src.name]..."),span("notice","You start to deploy \the [src.name]..."))
 		PROGRESS_BAR(caller,src,get_deploy_time(caller),.proc/deploy,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_deploy_to,caller,object)
 		return TRUE
@@ -78,7 +78,6 @@
 		return FALSE
 
 	if(get_dist(caller,T) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	var/mob/living/L = locate() in T.contents

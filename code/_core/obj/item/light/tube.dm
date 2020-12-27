@@ -19,7 +19,7 @@
 		L.desired_light_color = color
 		L.update_atom_light()
 		L.update_sprite()
-		caller.to_chat(span("notice","You insert \the [src.name] into \the [object.name]."))
+		caller.visible_message(span("notice","\The [caller.name] inserts \the [src.name] into \the [object.name]."),span("notice","You insert \the [src.name] into \the [object.name]."))
 		qdel(src)
 		return TRUE
 

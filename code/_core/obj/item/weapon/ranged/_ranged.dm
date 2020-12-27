@@ -108,19 +108,19 @@
 			if(istype(firing_pin))
 				INTERACT_CHECK
 				firing_pin.drop_item(get_turf(src))
-				caller.to_chat(span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
+				caller.to_chat(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
 				firing_pin = null
 			else
-				caller.to_chat(span("notice","There is no firing pin inside \the [src.name]!"))
+				caller.to_chat(span("warning","There is no firing pin inside \the [src.name]!"))
 			return TRUE
 		if(istype(I,/obj/item/firing_pin/))
 			INTERACT_CHECK
 			if(istype(firing_pin))
-				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
+				caller.to_chat(span("warning","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
 			else
 				I.drop_item(src)
 				firing_pin = I
-				caller.to_chat(span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
+				caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name].",span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
 			return TRUE
 
 	return ..()
@@ -187,7 +187,7 @@
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(wield_only && !wielded)
-		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
+		caller.to_chat(span("warning","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()
 
 	if(istype(object,/obj/parallax))
@@ -202,7 +202,6 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
 
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
-	caller.to_chat(span("danger","*click*"))
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)
 		play(pick(empty_sounds),T,range_max = 5)

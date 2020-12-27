@@ -20,7 +20,7 @@
 				has_purged = TRUE
 				A.reagents.stored_reagents[reagent_path] = FLOOR(reagent_volume, 1)
 			if(has_purged)
-				A.to_chat(span("notice","Your [src.name] beeps..."))
+				A.to_chat(span("danger","\The [src.name] in your [attached_organ.name] beeps..."))
 
 	return .
 
@@ -44,7 +44,7 @@
 
 	if(loc && is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		A.to_chat(span("notice","Your death alarm goes off..."))
+		A.to_chat(span("danger","Your [src.name] in your [attached_organ.name] beeps..."))
 		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_COMMON,talk_range = YELL_RANGE)
 		return TRUE
 

@@ -52,7 +52,7 @@
 				battery = null
 				update_sprite()
 			else
-				caller.to_chat(span("notice","There is nothing to pry out of \the [src.name]!"))
+				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
 			return TRUE
 
 		if(istype(object,/obj/item/powercell/))
@@ -123,6 +123,6 @@
 		return FALSE
 
 	return TRUE
-	
+
 /obj/item/weapon/ranged/energy/get_examine_list(var/mob/caller)
 	return ..() + div("notice","[get_ammo_count()] shot\s remaining at the current charge level.")

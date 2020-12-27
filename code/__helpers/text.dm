@@ -144,7 +144,7 @@
 		return FALSE
 	return copytext(haystack,-length(needle),0) == needle
 
-/proc/get_pronoun(var/mob/M)
+/proc/get_pronoun_he_she_it(var/mob/M)
 	switch(M.gender)
 		if(MALE)
 			return "he"
@@ -152,6 +152,14 @@
 			return "she"
 
 	return "it"
+
+/proc/get_pronoun_him_her_their(var/mob/M)
+	switch(M.gender)
+		if(MALE)
+			return "him"
+		if(FEMALE)
+			return "her"
+	return "their"
 
 /proc/proper_url_encode(var/input)
 	return url_encode(replacetextEx(input,"\n",""))

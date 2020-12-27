@@ -231,7 +231,7 @@ obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
 	return TRUE
 
-obj/item/organ/proc/get_damage_description()
+obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 
 	if(!health)
 		return list()
@@ -240,37 +240,41 @@ obj/item/organ/proc/get_damage_description()
 
 	switch(health.damage[BRUTE])
 		if(5 to 15)
-			damage_desc += "bruised"
+			damage_desc += "<i>bruised<i/>"
 		if(15 to 25)
 			damage_desc += "battered"
 		if(25 to 50)
-			damage_desc += "crushed"
+			damage_desc += "<b>crushed</b>"
 		if(50 to INFINITY)
-			damage_desc += "mangled"
+			damage_desc += "<u><b>mangled</b></u>"
 
 	switch(health.damage[BURN])
 		if(5 to 15)
-			damage_desc += "blistered"
+			damage_desc += "<i>blistered<i/>"
 		if(15 to 25)
 			damage_desc += "burned"
 		if(25 to 50)
-			damage_desc += "scorched"
+			damage_desc += "<b>scorched</b>"
 		if(50 to INFINITY)
-			damage_desc += "charred"
+			damage_desc += "<u><b>charred</b></u>"
 
-	if(bleeding >= 1)
-		damage_desc += "<b>bleeding</b>"
+	switch(health.damage[PAIN])
+		if(5 to 15)
+			damage_desc += "<i>tender<i/>"
+		if(15 to 25)
+			damage_desc += "sore"
+		if(25 to 50)
+			damage_desc += "<b>stinging</b>"
+		if(50 to INFINITY)
+			damage_desc += "<u><b>hurting</b></u>"
 
-	/*
-	if(health.damage[OXY])
-		damage_desc += "pale"
-
-	if(health.damage[TOX])
-		damage_desc += "sickly"
-
-	if(health.damage[FATIGUE])
-		damage_desc += "limp"
-	*/
+	switch(bleeding)
+		if(1 to 2)
+			damage_desc += "trickling blood"
+		if(2 to 4)
+			damage_desc += "<b>bleeding</b>"
+		if(4 to INFINITY)
+			damage_desc += "<u><b>gushing blood</b></u>"
 
 	return damage_desc
 

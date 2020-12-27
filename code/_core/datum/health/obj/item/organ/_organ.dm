@@ -80,7 +80,6 @@
 		fatigue = 0
 		sanity = 0
 
-
 	. += ..(brute,burn,tox,oxy,fatigue,pain,rad,sanity,update,organic,robotic)
 
 	if(. && update && is_advanced(owner.loc))

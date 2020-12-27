@@ -127,7 +127,7 @@
 	F.color = R.color
 	INITIALIZE(F)
 	FINALIZE(F)
-	caller.to_chat(span("notice","You place \the [F.name]."))
+	caller.visible_message(span("notice","\The [caller.name] places \the [F.name]."),span("notice","You place \the [F.name]."))
 	R.add_item_count(-2)
 	return TRUE
 

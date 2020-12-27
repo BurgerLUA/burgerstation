@@ -23,7 +23,7 @@
 			INITIALIZE(R)
 			GENERATE(R)
 			FINALIZE(R)
-			caller.to_chat(span("notice","You cut \the [src.name] into 4 [R.name]."))
+			caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
 			add_item_count(-1)
 			R.Move(get_turf(I))
 

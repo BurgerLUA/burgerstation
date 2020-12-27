@@ -93,7 +93,7 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(is_living(Obj))
 		var/mob/living/L = Obj
 		if(L.ckey != owner_ckey)
-			L.to_chat(span("notice","The DNA lock is preventing you from entering this vehicle!"))
+			L.to_chat(span("warning","The DNA lock is preventing you from entering this vehicle!"))
 			return FALSE
 
 	return ..()
@@ -242,7 +242,7 @@ var/global/list/stored_mechs_by_ckey = list()
 /mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/I)
 
 	if(caller && caller.ckey != owner_ckey)
-		caller.to_chat(span("notice","The DNA lock is preventing you from modifying \the [src.name]!"))
+		caller.to_chat(span("warning","The DNA lock is preventing you from modifying \the [src.name]!"))
 		return FALSE
 
 	if(!mech_arms)
@@ -343,7 +343,7 @@ var/global/list/stored_mechs_by_ckey = list()
 					var/part_name = valid_parts[i]
 					var/obj/item/I2 = vars[part_name]
 					if(I2)
-						caller?.to_chat(span("notice","You remove \the [I2.name] from \the [src.name]."))
+						caller?.visible_message(span("notice","\The [caller.name] removes \the [I2.name] from \the [src.name]."),span("notice","You remove \the [I2.name] from \the [src.name]."))
 						I2.drop_item(get_turf(src))
 						if(caller)
 							I2.drop_item(get_turf(caller))
@@ -363,12 +363,12 @@ var/global/list/stored_mechs_by_ckey = list()
 			INTERACT_CHECK
 			var/obj/item/powercell/PC = A
 			if(battery)
-				caller.to_chat(span("notice","You replace the [battery.name] in \the [src.name] with \the [PC.name]."))
+				caller?.visible_message(span("notice","\The [caller.name] replaces \the [battery.name] in \the [src.name] with \the [PC.name]."),span("notice","You replace \the [battery.name] in \the [src.name] with \the [PC.name]."))
 				battery.update_sprite()
 				battery.drop_item(get_turf(caller))
 				battery = null
 			else
-				caller.to_chat(span("notice","You add \the [PC.name] to \the [src.name]."))
+				caller?.visible_message(span("notice","\The [caller.name] adds \the [PC.name] to \the [src.name]."),span("notice","You add \the [PC.name] to \the [src.name]."))
 			PC.drop_item(src)
 			battery = PC
 			return TRUE
@@ -450,7 +450,7 @@ var/global/list/stored_mechs_by_ckey = list()
 			if(.)
 				I.drop_item(src)
 				I.update_sprite()
-				caller?.to_chat(span("notice","You insert \the [I.name] into \the [src.name]."))
+				caller?.visible_message(span("notice","\The [caller.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
 				update_sprite()
 				return TRUE
 

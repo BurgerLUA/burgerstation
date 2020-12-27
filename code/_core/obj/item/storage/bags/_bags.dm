@@ -22,7 +22,7 @@
 			caller?.to_chat(span("notice","You add [pickup] objects to \the [src.name]."))
 			//TODO: Pickup sounds.
 		else
-			caller?.to_chat(span("notice","You fail to pickup anything!"))
+			caller?.to_chat(span("warning","You fail to pickup anything!"))
 		return TRUE
 
 	return ..()

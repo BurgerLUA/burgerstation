@@ -41,7 +41,7 @@
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
 		if(!A.horizontal && A.add_status_effect(STAGGER,5,5))
-			A.to_chat(span("danger","Your [src.name] recoils in pain, throwing you off balance!"))
+			A.visible_message(span("warning","\The [A.name]'s [src.name] recoils in pain, throwing them off balance!"),span("danger","Your [src.name] recoils in pain, throwing you off balance!"))
 			return TRUE
 
 	return .

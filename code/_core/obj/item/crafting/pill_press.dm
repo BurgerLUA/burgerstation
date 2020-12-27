@@ -28,7 +28,7 @@
 			if(I.is_container)
 				product_container = I
 			else
-				caller.to_chat(span("notice","Remove the already completed item in the product slot before doing this!"))
+				caller.to_chat(span("warning","Remove the already completed item in the product slot before doing this!"))
 				return FALSE
 		else
 			product_slot = R
@@ -36,11 +36,11 @@
 	var/list/item_table = generate_crafting_table(caller,src)
 
 	if(!item_table["b1"] || !is_beaker(item_table["b1"]))
-		caller.to_chat(span("notice","There must be a beaker in the left-most slot in order to make a pill!"))
+		caller.to_chat(span("warning","There must be a beaker in the left-most slot in order to make a pill!"))
 		return FALSE
 
 	if(item_table["b3"] && !is_beaker(item_table["b3"]))
-		caller.to_chat(span("notice","There must be a beaker in the right-most slot in order to make a double pill!"))
+		caller.to_chat(span("warning","There must be a beaker in the right-most slot in order to make a double pill!"))
 		return FALSE
 
 	var/obj/item/container/beaker/I1 = item_table["b1"]
@@ -48,11 +48,11 @@
 	var/is_double = I1 && I2
 
 	if(I1 && (!I1.reagents || !I1.reagents.volume_current))
-		caller.to_chat(span("notice","There is no matter in the left slot to make a pill from!"))
+		caller.to_chat(span("warning","There is no matter in the left slot to make a pill from!"))
 		return FALSE
 
 	if(I2 && (!I2.reagents || !I2.reagents.volume_current))
-		caller.to_chat(span("notice","There is no matter in the right slot to make a double pill from!"))
+		caller.to_chat(span("warning","There is no matter in the right slot to make a double pill from!"))
 		return FALSE
 
 	var/obj/item/container/pill/P = is_double ? /obj/item/container/pill/double : /obj/item/container/pill

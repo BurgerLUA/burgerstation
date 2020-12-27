@@ -22,7 +22,7 @@
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
 		raw_icon_state = "dough_ball"
 		cooked_icon_state = "cake"
-		caller.to_chat(span("notice","You reshape \the [src.name]."))
+		caller.visible_message(span("notice","\The [caller.name] reshapes \the [src.name]."),span("notice","You reshape \the [src.name]."))
 
 	update_sprite()
 
@@ -41,7 +41,7 @@
 				return TRUE
 			if(is_living(caller))
 				var/mob/living/L = caller
-				L.to_chat(span("notice","You add \the [name] to \the [B.name]."))
+				L.visible_message(span("notice","\The [caller.name] adds \the [name] to \the [B.name]."),span("notice","You add \the [name] to \the [B.name]."))
 			reagents.transfer_reagents_to(B.reagents,amount_to_transfer)
 			return TRUE
 
@@ -77,7 +77,7 @@
 				update_sprite() //TODO: Wait, why is the below not enclosed in the above condition statement?
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat(span("notice","You cut \the [src.name] into [pieces] pieces."))
+					L.to_chat(span("notice","\The [caller.name] cuts \the [src.name] into several pieces."),span("notice","You cut \the [src.name] into [pieces] pieces."))
 
 			else if(raw_icon_state == "dough_ball")
 				if(original_volume > 10)
@@ -91,7 +91,7 @@
 				update_sprite() //TODO: Wait, why is the below not enclosed in the above condition statement?
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat(span("notice","You cut some small dough from \the [src.name]."))
+					L.visible_message(span("notice","\The [caller.name] cuts some small dough from \the [src.name]."),span("notice","You cut some small dough from \the [src.name]."))
 
 		//else if(icon_state == "cake") //It's cooked, and a cake.
 			//Make cake slices.
@@ -102,7 +102,7 @@
 			cooked_icon_state = "pie"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","You flatten \the [src.name]."))
+				L.visible_message(span("notice","\The [caller.name] flattens \the [src.name]."),span("notice","You flatten \the [src.name]."))
 			update_sprite()
 
 	return TRUE

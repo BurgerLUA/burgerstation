@@ -263,3 +263,13 @@
 
 /atom/proc/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency,var/language=LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 	return TRUE
+
+
+/atom/proc/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
+
+	if(should_sanitize)
+		text_to_say = sanitize(text_to_say)
+
+	talk(src,src,text_to_say,talk_type_to_use,null,language_to_use,talk_range)
+
+	return TRUE

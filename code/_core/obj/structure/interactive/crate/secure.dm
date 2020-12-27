@@ -107,17 +107,17 @@
 
 	var/mob/living/advanced/player/A = caller
 	if(A.real_name != owner_name)
-		caller.to_chat(span("notice","\The [src.name] refuses to unlock!"))
+		src.do_say("Error: Unrecognized user.")
 		return FALSE
 	if(credits_required && A.currency < credits_required)
-		caller.to_chat(span("notice","\The [src.name] beeps as you don't have enough credits to open \the [src.name]!"))
+		src.do_say("Error: Not enough credits.")
 		return FALSE
 
 	. = ..()
 
 	if(. && credits_required)
 		A.adjust_currency(-credits_required)
-		caller.to_chat(span("notice","Transaction complete."))
+		src.do_say("Transaction complete.")
 		credits_required = null
 
 	return .
