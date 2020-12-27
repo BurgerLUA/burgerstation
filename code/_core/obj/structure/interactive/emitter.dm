@@ -10,6 +10,13 @@
 
 	var/next_fire = 0
 
+	collision_flags = FLAG_COLLISION_WALL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	bullet_block_chance = 50
+
+	density = TRUE
+
+
 /obj/structure/interactive/emitter/Finalize()
 	if(active)
 		start_thinking(src)

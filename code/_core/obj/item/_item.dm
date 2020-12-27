@@ -529,12 +529,6 @@
 	if(!R)
 		return FALSE
 	R.consume(caller,target)
-
-	if(caller == target)
-		caller.to_chat(span("notice","You consume \the [src.name]."))
-	else
-		caller.visible_message(span("warning","\The [caller.name] forcefeeds \the [target.name] \the [src.name]!"))
-
 	return TRUE
 
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)

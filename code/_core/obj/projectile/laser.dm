@@ -39,7 +39,7 @@
 
 	if(istype(hit_atom,/obj/structure/interactive/supermatter))
 		var/obj/structure/interactive/supermatter/S = hit_atom
-		S.add_charge(2)
+		S.add_charge(SECONDS_TO_DECISECONDS(6)/3)
 		return TRUE
 
 	return ..()

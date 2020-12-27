@@ -401,8 +401,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
 	else
-		final_pixel_target_x = rand(-8,8)
-		final_pixel_target_y = rand(-8,8)
+		final_pixel_target_x = 16 + rand(-4,4)
+		final_pixel_target_y = 16 + rand(-4,4)
 
 	if(caller && length(params) && params["screen-loc"])
 		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])

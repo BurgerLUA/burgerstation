@@ -16,6 +16,12 @@
 		ANNOUNCEMENT_STATION
 	)
 
+	var/gamemode/G = SSgamemode.active_gamemode
+
+	if(istype(G,/gamemode/horde))
+		var/gamemode/horde/H = G
+		H.priority_targets |= defend
+
 	return ..()
 
 /objective/defense/proc/get_valid_targets()
@@ -38,9 +44,9 @@
 
 /objective/defense/setup()
 	if(!length(possible_supermatter_spawns))
+		log_error("No supermatter spawns found for defense objective!")
 		return FALSE
 	var/obj/marker/S = pick(possible_supermatter_spawns)
-	if(!S) return FALSE
 	possible_supermatter_spawns -= S
 	defend = new /obj/structure/interactive/supermatter(get_turf(S))
 	INITIALIZE(defend)

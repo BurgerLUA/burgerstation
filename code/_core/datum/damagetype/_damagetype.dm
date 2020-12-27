@@ -428,7 +428,7 @@
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)
 
-	if(is_living(victim))
+	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
 		if(has_fatigue_damage && L.ai && L.has_status_effect(STAMCRIT) && !L.has_status_effect(SLEEP))

@@ -15,6 +15,8 @@ var/global/list/all_fog = list()
 
 	density = TRUE
 
+	mouse_opacity = 2
+
 /obj/effect/fog_of_war/Cross(var/atom/movable/O)
 	if(is_living(O))
 		return FALSE

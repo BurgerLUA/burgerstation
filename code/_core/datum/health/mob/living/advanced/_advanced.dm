@@ -203,10 +203,10 @@
 			item_to_block_with = A.left_item
 
 		if(item_to_block_with)
-			for(var/damage_type in A.left_item.block_defense_rating)
+			for(var/damage_type in item_to_block_with.block_defense_rating)
 				if(IS_INFINITY(.[damage_type]))
 					continue
-				.[damage_type] += A.left_item.block_defense_rating[damage_type]
+				.[damage_type] += item_to_block_with.block_defense_rating[damage_type]
 		else
 			for(var/damage_type in ALL_DAMAGE)
 				if(IS_INFINITY(.[damage_type]))

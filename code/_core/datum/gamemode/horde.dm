@@ -61,11 +61,6 @@
 			continue
 		horde_targets += O
 
-	for(var/obj/structure/interactive/supermatter/S in world)
-		if(S.z != Z_LEVEL_MISSION)
-			continue
-		priority_targets += S
-
 	return ..()
 
 /gamemode/horde/can_continue()
@@ -196,6 +191,8 @@
 	for(var/k in all_fog)
 		var/obj/effect/fog_of_war/F = k
 		F.remove()
+	for(var/objective/O in crew_active_objectives)
+		O.on_gamemode_playable()
 	return TRUE
 
 /gamemode/horde/proc/on_fighting()

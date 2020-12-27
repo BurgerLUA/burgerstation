@@ -74,12 +74,13 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 	. = ..()
 
-	var/health_percent = health.health_current/health.health_max
-	var/threshold = max(0.01,health_percent*0.2)
-	if((last_warning_percent - health_percent) >= threshold && last_warning_time + SECONDS_TO_DECISECONDS(3) <= world.time)
-		trigger_warning()
+	if(health)
+		var/health_percent = health.health_current/health.health_max
+		var/threshold = max(0.01,health_percent*0.2)
+		if((last_warning_percent - health_percent) >= threshold && last_warning_time + SECONDS_TO_DECISECONDS(3) <= world.time)
+			trigger_warning()
 
-	update_map_text()
+		update_map_text()
 
 	return .
 

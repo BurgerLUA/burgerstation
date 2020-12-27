@@ -114,6 +114,10 @@
 	name = "Revolutionary Base"
 	icon_state = "library"
 
+/area/hellscape/interior/supermatter
+	name = "Supermatter Substation"
+	icon_state = "eng"
+
 /area/hellscape/interior/syndicate
 	name = "Syndicate Base"
 	icon_state = "syndicate"
