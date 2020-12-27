@@ -300,7 +300,7 @@
 
 	automatic = TRUE
 
-	size = SIZE_5
+	size = SIZE_3
 	weight = 9
 
 

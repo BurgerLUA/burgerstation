@@ -497,7 +497,7 @@
 #include "code\_core\datum\loadout\marwani.dm"
 #include "code\_core\datum\loadout\new_player.dm"
 #include "code\_core\datum\loadout\pirate.dm"
-#include "code\_core\datum\loadout\rev.dm"
+#include "code\_core\datum\loadout\rev_new.dm"
 #include "code\_core\datum\loadout\scientist.dm"
 #include "code\_core\datum\loadout\shaft_miner.dm"
 #include "code\_core\datum\loadout\shaleez.dm"

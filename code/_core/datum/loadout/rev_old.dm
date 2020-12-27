@@ -7,7 +7,7 @@
 		/obj/item/clothing/belt/storage/tool
 	)
 
-/loadout/rev/olution
+/loadout/rev/classic
 	spawning_items = list(
 		/obj/item/clothing/pants/normal/grey,
 		/obj/item/clothing/overwear/armor/bulletproof,
@@ -24,7 +24,12 @@
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
-		/obj/item/magazine/rifle_762_short
+		/obj/item/magazine/rifle_762_short,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/energy/sword/red
 	)
 
 /loadout/rev/medium_heavy
@@ -40,11 +45,15 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
-		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545,
-		/obj/item/magazine/rifle_545
+		/obj/item/magazine/rifle_545,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/energy/sword/red
 	)
 
 /loadout/rev/scout_sniper
@@ -60,11 +69,15 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
-		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
-		/obj/item/magazine/rifle_939
+		/obj/item/magazine/rifle_939,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/energy/sword/red
 	)
 
 /loadout/rev/heavy
@@ -79,11 +92,15 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
-		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
-		/obj/item/magazine/rifle_939
+		/obj/item/magazine/rifle_939,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/energy/sword/red
 	)
 
 /loadout/rev/special_forces
@@ -98,11 +115,15 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
-		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
 		/obj/item/magazine/rifle_939,
-		/obj/item/magazine/rifle_939
+		/obj/item/magazine/rifle_939,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/energy/sword/red
 	)
 
 
@@ -128,14 +149,19 @@
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/mining,
 		/obj/item/clothing/neck/mantle/white,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
-		/obj/item/magazine/rifle_762_short,
-		/obj/item/magazine/rifle_762_short,
-		/obj/item/magazine/rifle_762_short,
-		/obj/item/magazine/rifle_762_short,
-		/obj/item/magazine/rifle_762_short,
-		/obj/item/magazine/rifle_762_short,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/currency/telecrystals/player_antagonist_spawn
+		/obj/item/currency/telecrystals/player_antagonist_spawn,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/energy/sword/red
 	)

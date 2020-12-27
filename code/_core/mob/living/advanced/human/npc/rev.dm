@@ -7,19 +7,21 @@
 	class = /class/syndicate_soldier
 
 	var/list/possible_outfits = list(
-		//"syndicate" = 100,
-		/loadout/rev/olution = 75,
-		/loadout/rev/medium_heavy = 50,
-		/loadout/rev/heavy = 25,
-		/loadout/rev/special_forces = 5
+		/loadout/rev/basic = 50,
+		/loadout/rev/solider = 10,
+		/loadout/rev/solider/alt = 10,
+		/loadout/rev/skat = 10,
+		/loadout/rev/exo = 5,
+		/loadout/rev/sniper = 5
 	)
 
 	var/loadout_to_level = list(
-		//"syndicate" = 1,
-		/loadout/rev/olution = 2,
-		/loadout/rev/medium_heavy = 4,
-		/loadout/rev/heavy = 8,
-		/loadout/rev/special_forces = 16
+		/loadout/rev/basic = 1,
+		/loadout/rev/solider = 2,
+		/loadout/rev/solider/alt = 2,
+		/loadout/rev/skat = 4,
+		/loadout/rev/exo = 8,
+		/loadout/rev/sniper = 8
 	)
 
 	var/map_spawn = FALSE
