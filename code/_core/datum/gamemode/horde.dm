@@ -181,7 +181,7 @@
 	state = GAMEMODE_LAUNCHING
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
-	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
+	announce("Central Command Mission Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	allow_launch = TRUE
 	return TRUE
 

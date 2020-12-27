@@ -3031,6 +3031,51 @@
 /obj/structure/interactive/chair,
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/cargo)
+"mn" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/lz_420/interior/nexus/engineering)
+"mo" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/lz_420/interior/nexus/engineering)
+"mp" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/lz_420/interior/nexus/engineering)
+"mq" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/lz_420/exterior)
+"mr" = (
+/obj/decal/hazard{
+	icon_state = "line";
+	dir = 1
+	},
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/lz_420/exterior)
+"ms" = (
+/obj/decal/hazard/corner{
+	icon_state = "corner";
+	dir = 4
+	},
+/obj/structure/interactive/lighting/fixture/floor,
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/lz_420/exterior)
 
 (1,1,1) = {"
 ab
@@ -26621,7 +26666,7 @@ bw
 bw
 bw
 bw
-bO
+mr
 fK
 fj
 fj
@@ -27375,24 +27420,24 @@ lT
 dh
 df
 cM
-cM
+cP
 bb
 bc
 bc
 bc
-bc
+mq
 bc
 bc
 bc
 be
+mq
+bc
+bc
+mq
 bc
 bc
 bc
-bc
-bc
-bc
-bc
-cs
+ms
 fi
 fL
 ii
@@ -28160,7 +28205,7 @@ au
 bT
 fi
 ii
-fj
+mn
 fj
 fj
 fj
@@ -29192,7 +29237,7 @@ dp
 ha
 fp
 fj
-fj
+mp
 fj
 fj
 fj
@@ -30216,14 +30261,14 @@ au
 bT
 fi
 ii
+mo
+fj
+gu
 fj
 fj
+gu
 fj
-fj
-fj
-fj
-fj
-fj
+gu
 fj
 ii
 fi
@@ -31503,7 +31548,7 @@ au
 bT
 fi
 ii
-fj
+gu
 fj
 fj
 gu
@@ -34073,7 +34118,7 @@ cN
 cN
 cN
 fF
-cM
+cP
 cM
 cM
 cP

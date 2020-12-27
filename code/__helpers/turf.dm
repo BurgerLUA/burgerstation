@@ -1,6 +1,3 @@
-/proc/get_turf(A)
-	return get_step(A,0)
-
 /proc/get_area(A)
 	if(isarea(A))
 		return A

@@ -2160,7 +2160,7 @@
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/engineering)
 "jC" = (
-/obj/structure/scenery/fake_door/blast_door,
+/obj/structure/interactive/emitter,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/engineering)
 "jD" = (
@@ -2649,6 +2649,20 @@
 /mob/living/simple/ghost,
 /turf/simulated/floor/tile/dark,
 /area/box/interior/station/command)
+"lD" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/box/interior/station/engineering)
+"lE" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/box/interior/station/engineering)
 "lJ" = (
 /obj/marker/spawnpoint/horde,
 /obj/marker/map_node,
@@ -41646,9 +41660,9 @@ eX
 eZ
 eZ
 eN
-eQ
 jA
-jC
+jA
+eN
 jA
 jz
 eZ
@@ -41656,9 +41670,9 @@ lN
 eZ
 jz
 jA
-jC
+eN
 jA
-eQ
+jA
 fZ
 fX
 fZ
@@ -41903,9 +41917,9 @@ eN
 eN
 eN
 eN
-iJ
-jA
 jC
+jA
+jA
 jA
 jz
 eZ
@@ -41913,9 +41927,9 @@ kP
 eZ
 jz
 jA
-jC
 jA
-iI
+jA
+lE
 fZ
 fX
 fZ
@@ -42160,9 +42174,9 @@ eX
 eZ
 eZ
 eN
-eQ
 jA
-jC
+jA
+eN
 jA
 jz
 eZ
@@ -42170,9 +42184,9 @@ eZ
 eZ
 jz
 jA
-jC
+eN
 jA
-eQ
+jA
 fZ
 fX
 fZ
@@ -42422,9 +42436,9 @@ jA
 eN
 eN
 eN
-eN
 jz
-eN
+jz
+jz
 eN
 eN
 eN
@@ -43193,9 +43207,9 @@ eQ
 eQ
 eQ
 eQ
-eQ
-eQ
-eQ
+jA
+lD
+jA
 eQ
 eQ
 eQ

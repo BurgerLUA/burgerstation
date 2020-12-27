@@ -52,7 +52,7 @@
 		return FALSE
 
 	announce(
-		"Central Xenoviral Division",
+		"Central Command Xenoviral Division",
 		"Blob Alert",
 		"A level 5 \"blob\" biohazard growth has been detected near the area of operations. Predicted area: [A.name].",
 		sound_to_play = 'sound/voice/announcement/blob.ogg'

@@ -167,7 +167,7 @@
 		var/obj/hud/button/objectives/O = k
 		O.set_stored_text(objective_text)
 
-	announce("Central Command Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
+	announce("Central Command Mission Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
 
 	next_objective_update = -1
 

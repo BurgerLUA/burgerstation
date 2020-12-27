@@ -1798,7 +1798,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lavaland/exterior)
 "hj" = (
-/obj/structure/scenery/fake_door/blast_door,
+/obj/structure/interactive/emitter,
 /turf/simulated/floor/tile/dark,
 /area/lavaland/exterior)
 "hk" = (
@@ -1888,6 +1888,23 @@
 /obj/structure/interactive/chair,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/hall/central)
+"hE" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/lavaland/exterior)
+"hF" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/lavaland/exterior)
 
 (1,1,1) = {"
 aa
@@ -22914,7 +22931,7 @@ ae
 au
 aS
 aS
-hj
+aS
 aS
 hl
 at
@@ -22922,7 +22939,7 @@ hu
 at
 hl
 aS
-hj
+aS
 aS
 aS
 au
@@ -23179,7 +23196,7 @@ ho
 at
 hl
 aS
-hj
+hF
 aS
 hr
 au
@@ -23428,7 +23445,7 @@ ae
 au
 aS
 aS
-hj
+aS
 aS
 hl
 at
@@ -23436,7 +23453,7 @@ at
 at
 hl
 aS
-hj
+aS
 aS
 aS
 au
@@ -24460,7 +24477,7 @@ au
 au
 aS
 aS
-hi
+hE
 aS
 eP
 ht

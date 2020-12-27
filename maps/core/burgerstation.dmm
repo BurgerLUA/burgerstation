@@ -2538,11 +2538,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
 "iW" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
-	},
-/turf/simulated/wall/metal/reinforced,
+/obj/structure/interactive/light_switch,
+/turf/simulated/wall/metal,
 /area/burgerstation/bathrooms)
 "iX" = (
 /turf/simulated/floor/tile/red,
@@ -4575,6 +4572,69 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/cafe/botany)
+"qF" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/cryo)
+"qG" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/cryo)
+"qH" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/medical)
+"qI" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/maint/east)
+"qJ" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/bathrooms)
+"qK" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/bathrooms)
+"qL" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/bathrooms)
+"qM" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/bathrooms)
+"qN" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/bathrooms)
 "rA" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 5
@@ -47617,7 +47677,7 @@ pi
 wg
 pi
 wf
-nK
+qH
 zL
 gq
 Ac
@@ -47874,7 +47934,7 @@ pi
 pi
 pi
 nF
-nK
+qH
 tX
 gq
 ny
@@ -48131,7 +48191,7 @@ pi
 pi
 pi
 nF
-nK
+qH
 og
 gq
 ny
@@ -49926,10 +49986,10 @@ jw
 wh
 wh
 wh
-wi
-wi
+qG
+qF
 wk
-wi
+qG
 oL
 nZ
 nw
@@ -50697,7 +50757,7 @@ hJ
 hJ
 hU
 hJ
-aj
+qI
 dX
 dX
 dX
@@ -50955,7 +51015,7 @@ hJ
 hU
 sX
 kY
-iW
+qL
 kY
 kY
 kY
@@ -51218,7 +51278,7 @@ wp
 wp
 wp
 lR
-kY
+qM
 mF
 mF
 mF
@@ -51468,7 +51528,7 @@ hJ
 hJ
 hU
 hJ
-no
+iW
 nu
 wo
 nu
@@ -53012,10 +53072,10 @@ hU
 hJ
 no
 wm
-no
+qK
 wm
 no
-no
+qK
 wm
 kY
 mF
@@ -53267,7 +53327,7 @@ fN
 sT
 hU
 hJ
-no
+qJ
 wn
 no
 wn
@@ -53525,11 +53585,11 @@ sU
 sW
 hJ
 kY
+qN
 kY
+qN
 kY
-kY
-kY
-kY
+qN
 kY
 kY
 dH

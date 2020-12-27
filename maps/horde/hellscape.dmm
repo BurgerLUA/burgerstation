@@ -4093,8 +4093,7 @@
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/watersource)
 "re" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/obj/marker/map_node,
+/obj/structure/interactive/emitter,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/caves/watersource)
 "rf" = (
@@ -4108,9 +4107,15 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/caves/watersource)
 "rh" = (
-/obj/structure/scenery/fake_door/blast_door,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 8
+	},
 /turf/simulated/floor/tile/dark,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/exterior/jungle/south)
 "ri" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -4140,13 +4145,8 @@
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/watersource)
 "rp" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/hellscape/exterior/jungle/south)
-"rq" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
@@ -39244,7 +39244,7 @@ aq
 aq
 aq
 aq
-aq
+ra
 ra
 ow
 ow
@@ -39260,7 +39260,7 @@ ra
 ow
 ow
 ra
-aq
+ra
 aq
 aq
 aq
@@ -39501,11 +39501,11 @@ aq
 aq
 aq
 aq
-aq
 ra
 ow
 ow
-rh
+ow
+ra
 ow
 rj
 rk
@@ -39513,11 +39513,11 @@ ro
 rk
 rj
 ow
-rh
+ra
+ow
 ow
 ow
 ra
-aq
 aq
 aq
 aq
@@ -39758,11 +39758,11 @@ aq
 aq
 aq
 aq
-aq
 ra
 re
+ry
 ow
-rh
+ow
 ow
 rj
 rk
@@ -39770,11 +39770,11 @@ rl
 rk
 rj
 ow
-rh
+ow
 ry
-rq
+ow
+rp
 ra
-aq
 aq
 aq
 aq
@@ -40015,11 +40015,11 @@ aq
 aq
 aq
 aq
-aq
 ra
 ow
 ow
-rh
+ow
+ra
 ow
 rj
 rk
@@ -40027,11 +40027,11 @@ ro
 rk
 rj
 ow
-rh
+ra
+ow
 ow
 ow
 ra
-aq
 aq
 aq
 aq
@@ -40272,7 +40272,7 @@ aq
 aq
 aq
 aq
-aq
+ra
 ra
 ow
 ow
@@ -40288,7 +40288,7 @@ ra
 ow
 ow
 ra
-aq
+ra
 aq
 aq
 aq
@@ -41051,7 +41051,7 @@ rz
 rm
 rm
 rm
-rp
+rh
 rm
 rm
 rm

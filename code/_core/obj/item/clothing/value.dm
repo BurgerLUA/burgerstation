@@ -13,9 +13,9 @@ var/global/list/defense_rating_to_value = list(
 	RAD = 16.2,
 	HOLY = 10.1,
 	DARK = 10.1,
-	FATIGUE = 27,
-	ION = 27,
-	PAIN = 27
+	FATIGUE = 50,
+	ION = 50,
+	PAIN = 50
 )
 
 var/global/list/limbs_to_value = list(
@@ -40,10 +40,7 @@ var/global/list/limbs_to_value = list(
 		var/defense_value = defense_rating[defense_type]
 		if(!defense_value || defense_value < 0)
 			continue
-		if(IS_INFINITY(defense_value))
-			. += (400**2)/defense_rating_to_value[defense_type]
-		else
-			. += (min(400,defense_value)**2)/defense_rating_to_value[defense_type]
+		. += (min(200,defense_value)**2)/defense_rating_to_value[defense_type]
 
 	var/base_multiplier = 0
 

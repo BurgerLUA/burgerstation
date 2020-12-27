@@ -138,10 +138,10 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Nanotrasen Victory"
 			SSpayday.stored_payday += 10000
 			SSpayday.trigger_payday()
-			announce("Central Command","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
+			announce("Central Command Mission Update","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
 		if(WORLD_END_SYNDICATE_VICTORY)
 			nice_reason = "Syndicate Victory"
-			announce("Central Command","Fission Mailed","Mission failed, we'll get them next time.")
+			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
 
 	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 

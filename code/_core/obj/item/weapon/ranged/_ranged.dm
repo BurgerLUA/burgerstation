@@ -381,7 +381,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/mob/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
 
 	if(!target)
 		CRASH_SAFE("There is no target defined!")
@@ -389,8 +389,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
-	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
-	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
+	var/target_fake_x = 0
+	var/target_fake_y = 0
 
 	var/final_pixel_target_x = 0
 	var/final_pixel_target_y = 0
@@ -404,7 +404,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		final_pixel_target_x = rand(-8,8)
 		final_pixel_target_y = rand(-8,8)
 
-	if(length(params) && params["screen-loc"])
+	if(caller && length(params) && params["screen-loc"])
 		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])
 		target_fake_x = caller.x*TILE_SIZE + screen_loc_parsed[1] - (VIEW_RANGE * TILE_SIZE)
 		target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (VIEW_RANGE * TILE_SIZE)
@@ -412,14 +412,19 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/mob/M = caller
 			target_fake_x += M.client.pixel_x
 			target_fake_y += M.client.pixel_y
+	else
+		target_fake_x = target.x*TILE_SIZE + icon_pos_x
+		target_fake_y = target.y*TILE_SIZE + icon_pos_y
 
 	var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,accuracy_loss)
 
 	. = list()
 
+	var/turf/T = get_turf(src)
+
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
-		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,base_spread)
+		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,base_spread) //Needs to be unique to each shot.
 
 		var/new_x = local_xy_list[1]
 		var/new_y = local_xy_list[2]
@@ -429,8 +434,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(highest > 0)
 			var/normx = new_x/highest
 			var/normy = new_y/highest
-
-			var/turf/T = get_turf(src)
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
@@ -444,7 +447,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
 			INITIALIZE(P)
 			FINALIZE(P)
 			. += P
@@ -452,9 +455,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	return .
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
-	return 0.01
+	return 0
 
-/atom/proc/get_projectile_path(var/mob/caller,var/desired_x,var/desired_y,var/accuracy)
+/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
 
 	//desired_x and desired_y is in pixels.
 

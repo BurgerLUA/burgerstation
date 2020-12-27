@@ -1,15 +1,22 @@
 /objective/defense
-	name = "Defend Object"
+	name = "Defend Supermatter"
 
-	var/obj/structure/defend
-
-	var/defense_end_time = -1
-
-	var/completed = FALSE
+	var/obj/structure/interactive/supermatter/defend
 
 	credit_reward = 1000
 	burgerbux_reward = 1
 	points_reward = 10
+
+/objective/defense/on_gamemode_playable()
+
+	announce(
+		"Central Command Mission Update",
+		"Supermatter Defense",
+		"Our bluespace drives are ready to teleport the Supermatter Crystal once it is charged with emitter energy. Please activate the emitters to start the charging process.",
+		ANNOUNCEMENT_STATION
+	)
+
+	return ..()
 
 /objective/defense/proc/get_valid_targets()
 	return list(defend)
@@ -42,11 +49,16 @@
 	return TRUE
 
 /objective/defense/check_completion()
-	if(completed)
-		return COMPLETED
+
+	if(defend.qdeleting)
+		if(defend.charge >= defend.charge_max)
+			return COMPLETED
+		else
+			return FAILED
+
 	return ..()
 
-/objective/defense/proc/defense_Destroy(var/obj/structure/interactive/artifact/A,args)
+/objective/defense/proc/defense_Destroy(var/obj/structure/interactive/supermatter/S,args)
 	update()
 	return TRUE
 

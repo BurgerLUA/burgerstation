@@ -72,6 +72,24 @@
 /obj/structure/interactive/door/airlock/glass,
 /turf/simulated/floor/plating,
 /area/lz_001/outpost)
+"u" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/lz_001/outpost)
+"v" = (
+/obj/structure/interactive/emitter,
+/turf/simulated/floor/tile/dark,
+/area/lz_001/outpost)
+"w" = (
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/lz_001/outpost)
 
 (1,1,1) = {"
 a
@@ -32065,11 +32083,11 @@ c
 c
 h
 i
+r
 i
 i
 i
-i
-i
+w
 i
 i
 p
@@ -32837,7 +32855,7 @@ g
 i
 s
 j
-r
+v
 k
 l
 m
@@ -33355,7 +33373,7 @@ i
 f
 k
 k
-f
+k
 f
 i
 i
@@ -33611,7 +33629,7 @@ i
 i
 i
 i
-i
+u
 i
 i
 i

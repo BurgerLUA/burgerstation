@@ -24,6 +24,9 @@
 /objective/proc/start()
 	return TRUE
 
+/objective/proc/on_gamemode_playable()
+	return TRUE
+
 /objective/proc/on_completion()
 
 	if(credit_reward)

@@ -40,6 +40,7 @@
 
 /obj/structure/interactive/lighting/fixture/Finalize()
 	update_sprite()
+	update_atom_light()
 	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_atom_light()
