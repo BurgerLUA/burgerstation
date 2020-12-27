@@ -32,7 +32,7 @@
 	desc_extended = "A lighting tube for lights. Can be used to replace existing lights, or provide new ones."
 	icon = 'icons/obj/item/light_tube.dmi'
 	icon_state = "inventory"
-	light_type = /obj/structure/interactive/lighting/tube
+	light_type = /obj/structure/interactive/lighting/fixture/tube
 
 	value = 4
 
@@ -43,6 +43,6 @@
 	desc_extended = "A lighting bulb for lights. Can be used to replace existing lights, or provide new ones."
 	icon = 'icons/obj/item/light_bulb.dmi'
 	icon_state = "inventory"
-	light_type = /obj/structure/interactive/lighting/bulb
+	light_type = /obj/structure/interactive/lighting/fixture/bulb
 
 	value = 2

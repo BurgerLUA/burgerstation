@@ -47,22 +47,6 @@
 
 	return .
 
-/obj/structure/interactive/lighting/bulb/New()
-
-	. = ..()
-
-	switch(dir)
-		if(NORTH)
-			pixel_y = 1
-		if(SOUTH)
-			pixel_y = -1
-		if(EAST)
-			pixel_x = 1
-		if(WEST)
-			pixel_x = -1
-
-	return .
-
 /obj/structure/interactive/lighting/bulb/Initialize()
 
 	if(color)

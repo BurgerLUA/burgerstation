@@ -19,26 +19,39 @@
 	on = FALSE
 
 /obj/structure/interactive/light_switch/Initialize()
-
 	setup_dir_offsets()
 	dir = SOUTH
+	return ..()
+
+/obj/structure/interactive/light_switch/Finalize()
+	update_sprite()
+	return ..()
+
+/obj/structure/interactive/light_switch/update_atom_light()
 
 	if(on)
-		set_on(null)
+		set_light(1,1,"#00FF00")
 	else
-		set_off(null)
+		set_light(1,1,"#FF0000")
+
+	return ..()
+
+/obj/structure/interactive/light_switch/update_icon()
+
+	if(on)
+		flick("anim_on",src)
+		icon_state = "on"
+	else
+		flick("anim_off",src)
+		icon_state = "off"
 
 	return ..()
 
 /obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
-
 	on = !on
-
-	if(on)
-		set_on(caller)
-	else
-		set_off(caller)
-
+	sync_lights()
+	update_sprite()
+	play('sound/machines/click.ogg',get_turf(src))
 	return TRUE
 
 /obj/structure/interactive/light_switch/proc/sync_lights()
@@ -54,25 +67,6 @@
 			continue
 		LS.on = on
 		LS.update_sprite()
-	return TRUE
-
-/obj/structure/interactive/light_switch/proc/set_on(var/mob/caller)
-	icon_state = "on"
-	flick("anim_on",src)
-	sync_lights()
-	play('sound/machines/click.ogg',get_turf(src))
-	set_light(1,0.5,"#00FF00")
-	return TRUE
-
-/obj/structure/interactive/light_switch/proc/set_off(var/mob/caller)
-	icon_state = "off"
-	flick("anim_off",src)
-	sync_lights()
-	play('sound/machines/click.ogg',get_turf(src))
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
-		A.sanity -= 2
-	set_light(1,0.5,"#FF0000")
 	return TRUE
 
 /obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
