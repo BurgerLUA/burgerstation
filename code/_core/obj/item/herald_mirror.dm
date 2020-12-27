@@ -40,11 +40,11 @@
 		return FALSE
 
 	if(!linked_destination)
-		A.to_chat(span("warning","Something went wrong... tell burger on discord."))
+		A.to_chat(span("warning","Something went wrong... tell Burger on discord."))
 		return FALSE
 
 	if(isturf(loc))
-		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport."))
+		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport!"))
 		return FALSE
 
 
@@ -58,10 +58,10 @@
 	if(istype(A2,/area/herald))
 		var/turf/T = get_turf(linked_returning)
 		if(!T)
-			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the chasm can help get you back."))
+			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the portal can help you get back."))
 			return TRUE
 		A.force_move(T)
-		A.to_chat(span("notice","\The [src.name] whisks you away back to where you were."))
+		A.visible_message(span("danger","\The [A.name] appears out of nowhere!."),span("notice","\The [src.name] whisks you away back to where you were."))
 		return TRUE
 
 	qdel(linked_returning) //Get rid of existing one.
@@ -71,6 +71,6 @@
 	FINALIZE(linked_returning)
 
 	A.force_move(get_turf(linked_destination))
-	A.to_chat(span("notice","\The [src.name] whisks you away to safety."))
+	A.visible_message(span("danger","\The [A.name] disappears in a soft flash!"),span("notice","\The [src.name] whisks you away to safety."))
 
 	return TRUE

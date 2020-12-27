@@ -9,11 +9,11 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 
 	var/obj/structure/interactive/bed/sleeper/S = locate() in src.loc.contents
 	if(!S)
-		src.to_chat(span("danger","Find a sleeper and lie down on it first!"))
+		src.to_chat(span("danger","Find a sleeper and lie down on it first before saving!"))
 		return FALSE
 
 	if(!S.buckled)
-		src.to_chat(span("danger","Lay down on the bed first!"))
+		src.to_chat(span("danger","Lay down on the bed first before saving!"))
 		return FALSE
 
 	return TRUE

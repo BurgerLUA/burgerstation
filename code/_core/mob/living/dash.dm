@@ -11,7 +11,7 @@
 
 	if(health)
 		if(health.stamina_current < 25)
-			to_chat(span("warning","You're exhausted!"))
+			to_chat(span("warning","You can't dash, you're exhausted!"))
 			return FALSE
 		health.adjust_stamina(-25)
 		queue_health_update = TRUE

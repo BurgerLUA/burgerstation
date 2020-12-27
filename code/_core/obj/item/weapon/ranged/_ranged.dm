@@ -120,7 +120,7 @@
 			else
 				I.drop_item(src)
 				firing_pin = I
-				caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name].",span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
+				caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name]."),span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
 			return TRUE
 
 	return ..()

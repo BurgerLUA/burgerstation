@@ -42,7 +42,7 @@
 		var/obj/item/container/food/sandwich/S = I
 		for(var/obj/hud/inventory/I2 in S.inventories)
 			if(length(I2.held_objects))
-				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of physics!"))
+				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of sandwich!"))
 				return FALSE
 		if(loc && loc == I)
 			return FALSE
@@ -52,11 +52,11 @@
 
 		if(is_occupied(TRUE,TRUE))
 			if(messages && src.loc)
-				owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
+				owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 			return FALSE
 
 		if(length(held_objects) >= held_slots)
-			if(messages) owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src.loc.name]."))
+			if(messages) owner.to_chat(span("warning","You don't see how you can fit any more objects inside \the [src.loc.name]!"))
 			return FALSE
 
 		return TRUE

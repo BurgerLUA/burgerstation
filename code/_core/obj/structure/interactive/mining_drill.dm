@@ -149,7 +149,7 @@
 		if(anchored)
 			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
 		else
-			caller.visible_message(span("notice","\The [caller.name] rotates [\the [src.name].",span("notice","You rotate \the [src.name]."))
+			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 		return TRUE
 

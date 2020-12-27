@@ -526,14 +526,15 @@
 /mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)
 
 	if(!blood_type || !min(amount,blood_volume))
-		if(messages) caller?.to_chat(span("warning","There is nothing to draw!"))
+		if(messages) caller?.to_chat(span("warning","There is no blood to draw!"))
 		return FALSE
 
 	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
 	blood_volume -= amount_added
 	queue_health_update = TRUE
 
-	if(messages) caller?.to_chat(span("notice","You drew [amount_added]u of blood from \the [src.name]."))
+	if(messages)
+		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
 

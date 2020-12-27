@@ -7,9 +7,10 @@
 
 /obj/item/proc/strip(var/mob/caller)
 
-	caller.to_chat(span("notice","You remove \the [src.name]."))
-
 	drop_item(get_turf(src))
+
+	if(caller && src.loc && is_advanced(src.loc.loc))
+		caller.visible_message(span("notice","\The [caller.name] strips \the [src.name] off of [src.loc.loc]."),span("notice","You strip \the [src.name]."))
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

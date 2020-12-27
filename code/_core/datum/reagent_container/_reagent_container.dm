@@ -614,9 +614,9 @@
 			final_flavor_text = null
 
 		if(caller && caller != consumer)
-			caller.to_chat(span("notice","You feed \the [consumer.name] \the [src.owner.name]."))
-			consumer.to_chat(span("danger","\The [caller.name] feeds you \the [src.owner.name]!"))
-		consumer.to_chat(span("notice","You [consume_verb] \the [src.owner.name]."))
+			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))
+		else
+			consumer.to_chat(span("notice","\The [consumer.name] [consume_verb] \the [src.owner.name]."),span("notice","You [consume_verb] \the [src.owner.name]."))
 
 		if(consume_sound) play(consume_sound,get_turf(consumer))
 

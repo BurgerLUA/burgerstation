@@ -605,7 +605,7 @@
 
 	if(is_occupied(TRUE,TRUE))
 		if(messages && src.loc)
-			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
+			owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 		return FALSE
 
 	if(is_inventory(I.loc))
@@ -614,14 +614,14 @@
 			return FALSE
 
 	if(!I.can_be_held(owner,src))
-		if(messages) owner.to_chat(span("notice","\The [I] cannot be held!"))
+		if(messages) owner.to_chat(span("warning","\The [I.name] cannot be held!"))
 		return FALSE
 
 	if(length(item_blacklist))
 		for(var/o in item_blacklist)
 			if(istype(I,o))
 				if(messages && src.loc)
-					owner.to_chat(span("notice","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
+					owner.to_chat(span("warning","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
 				return FALSE
 
 	if(length(item_whitelist))
@@ -633,17 +633,17 @@
 
 		if(!whitelist_found)
 			if(messages && src.loc)
-				owner.to_chat(span("notice","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
+				owner.to_chat(span("warning","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
 			return FALSE
 
 	if(length(held_objects) >= held_slots)
-		if(messages) owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src.loc.name]."))
+		if(messages) owner.to_chat(span("warning","You don't see how you can fit any more objects inside \the [src.loc.name]!"))
 		return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
 		if(max_size >= 0 && I.size > max_size)
 			if(messages && src.loc)
-				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src.loc.name]."))
+				owner.to_chat(span("warning","\The [I] is too large to be put in \the [src.loc.name]."))
 			return FALSE
 
 	return TRUE
@@ -663,7 +663,7 @@
 		if(C.ignore_other_slots)
 			continue
 		if(C.loc != I.loc && C.blocks_clothing && (I.item_slot & C.blocks_clothing))
-			if(messages) owner.to_chat(span("notice","\The [C.name] prevents you from removing \the [I.name]!"))
+			if(messages) owner.to_chat(span("warning","\The [C.name] prevents you from removing \the [I.name]!"))
 			return FALSE
 
 	return TRUE
@@ -678,7 +678,7 @@
 
 	if(is_occupied(TRUE,TRUE))
 		if(messages && src.loc)
-			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
+			owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 		return FALSE
 
 	if(is_inventory(I.loc))
@@ -687,14 +687,14 @@
 			return FALSE
 
 	if(!I.can_be_held(owner,src) || !I.can_be_worn(owner,src))
-		if(messages) owner.to_chat(span("notice","\The [I] cannot be worn!"))
+		if(messages) owner.to_chat(span("warning","\The [I] cannot be worn!"))
 		return FALSE
 
 	if(worn_allow_duplicate)
 		for(var/k in worn_objects)
 			var/obj/item/I2 = k
 			if(I.item_slot & I.item_slot)
-				if(messages) owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
+				if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 				return FALSE
 
 	if(is_clothing(I))
@@ -706,11 +706,11 @@
 					var/obj/item/organ/O = k
 					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
 						if(messages)
-							owner.to_chat(span("notice","Beast races cannot wear this!"))
+							owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human feet..."))
 						return FALSE
 					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
 						if(messages)
-							owner.to_chat(span("notice","Beast races cannot wear this!"))
+							owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human head..."))
 						return FALSE
 			if(C.item_slot)
 				var/list/list_to_check = C.ignore_other_slots ? src.worn_objects : A.worn_objects
@@ -722,12 +722,12 @@
 
 	if(!(I.item_slot & item_slot))
 		if(messages)
-			owner.to_chat(span("notice","You cannot wear \the [I] like this!"))
+			owner.to_chat(span("notice","You cannot wear \the [I.name] like this!"))
 		return FALSE
 
 	if(length(worn_objects) >= worn_slots)
 		if(messages)
-			owner.to_chat(span("notice","You cannot seem to fit this on your already existing clothing!"))
+			owner.to_chat(span("notice","You cannot seem to fit \the [I.name] on your already existing clothing!"))
 		return FALSE
 
 	return TRUE

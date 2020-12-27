@@ -42,7 +42,7 @@
 		return FALSE
 
 	if(grabbed_object == object)
-		caller.to_chat(span("notice","You cannot grab yourself!"))
+		caller.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
 		return FALSE
 
 	if(grabbed_object)
@@ -54,7 +54,7 @@
 	caller.set_dir(get_dir(caller,object))
 
 	grabbed_object = object
-	caller.to_chat(span("notice","You grab \the [object.name]."))
+	caller.visible_message(span("warning","\The [caller.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
 	animate(grabbed_object,pixel_x = initial(grabbed_object.pixel_x), pixel_y = initial(grabbed_object.pixel_y), time = SECONDS_TO_DECISECONDS(1))
 	grabbed_object.grabbing_hand = src
 

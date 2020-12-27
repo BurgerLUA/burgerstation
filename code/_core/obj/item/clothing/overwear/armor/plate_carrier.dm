@@ -77,7 +77,7 @@
 		var/mob/living/advanced/A = caller
 		var/obj/item/armor_plate/P = input(A,"What armor plates do you wish to remove?","Plate Carrier Removal") as null|anything in installed_plate_carriers
 		if(P && P in installed_plate_carriers)
-			A.to_chat(span("notice","You remove \the [P.name] from \the [src.name]."))
+			A.visible_message(span("notice","\The [caller.name] removes \the [P.name] from \the [src.name]."),span("notice","You remove \the [P.name] from \the [src.name]."))
 			P.drop_item(get_turf(src))
 			installed_plate_carriers -= P
 			A.put_in_hands(P) //This calls update_slowdown_mul

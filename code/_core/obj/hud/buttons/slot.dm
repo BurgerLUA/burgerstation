@@ -117,7 +117,7 @@
 	var/obj/item/I = object
 
 	if(!istype(I) || !I.has_quick_function)
-		A.to_chat(span("notice","\The [I.name] doesn't have a quick bind function."))
+		A.to_chat(span("warning","\The [I.name] doesn't have a quick bind function."))
 		return TRUE
 
 	clear_object(A)

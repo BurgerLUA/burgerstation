@@ -114,7 +114,7 @@
 			caller.to_chat(span("warning","You can't track this object!"))
 			return TRUE
 		tracked_atom = object
-		caller.to_chat(span("notice","You scan \the [object], tracking it."))
+		caller.visible_message(span("notice","\The [caller.name] scans \the [object.name] with \the [src.name]."),span("notice","You scan \the [object.name], tracking it."))
 		scan_mode = FALSE
 		start_thinking(src)
 		return TRUE

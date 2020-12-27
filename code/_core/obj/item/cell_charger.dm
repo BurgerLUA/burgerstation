@@ -40,11 +40,11 @@
 	if(battery && is_inventory(object))
 		var/obj/hud/inventory/I = object
 		if(I.add_held_object(battery))
-			caller.to_chat(span("notice","You remove \the [battery.name] from \the [src.name]."))
+			caller.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
 			battery.update_sprite()
 			battery = null
 		else
-			caller.to_chat(span("notice","You can't seem to remove \the [battery.name] from \the [src.name]!"))
+			caller.to_chat(span("warning","You can't seem to remove \the [battery.name] from \the [src.name]!"))
 		update_sprite()
 		return TRUE
 

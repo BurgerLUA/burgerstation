@@ -47,14 +47,14 @@
 		return FALSE
 
 	if(!is_floor(object))
-		caller.to_chat(span("notice","You can only write your message on floors."))
+		caller.to_chat(span("warning","You can't write here, it's not a floor!"))
 		return TRUE
 
 	var/turf/T = object
 
 	var/obj/structure/interactive/soapstone_message/existing_message = locate() in T //Copied from /tg/
 	if(existing_message)
-		caller.to_chat(span("notice","There is already a message here."))
+		caller.to_chat(span("warning","You can't write here, there is already a message!"))
 		return TRUE
 
 	var/input_text = sanitize(input("What would you like the message to say?") as text|null)

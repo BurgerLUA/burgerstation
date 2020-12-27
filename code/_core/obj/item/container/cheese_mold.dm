@@ -75,11 +75,11 @@
 
 /obj/item/container/cheese_mold/click_self(var/mob/caller)
 
-	spawn()
-		var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
-		if(answer == "Yes" && get_dist(caller,src) <= 1)
-			reagents.remove_all_reagents(reagents.volume_current)
-			caller.to_chat(span("notice","You empty \the [src.name] of its contents."))
+	var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
+	if(answer == "Yes")
+		INTERACT_CHECK
+		reagents.remove_all_reagents(reagents.volume_current)
+		caller.visible_message(span("notice","\The [caller.name] empties \the [src.name] of its contents."),span("notice","You empty \the [src.name] of its contents."))
 
 	return TRUE
 

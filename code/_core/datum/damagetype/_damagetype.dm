@@ -326,7 +326,7 @@
 				play('sound/effects/parry.ogg',get_turf(A))
 				if(is_living(attacker))
 					var/mob/living/LA = attacker
-					LA.to_chat(span("warning","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
+					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
 					if(get_dist(A,LA) <= 1)
 						LA.add_status_effect(STAGGER,30,30)
 				return FALSE

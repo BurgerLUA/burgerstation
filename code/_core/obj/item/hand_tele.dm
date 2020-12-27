@@ -72,7 +72,7 @@
 			battery.update_sprite()
 			battery = null
 		else
-			caller.to_chat(span("notice","You can't seem to remove \the [battery.name] from \the [src.name]!"))
+			caller.to_chat(span("warning","You can't seem to remove \the [battery.name] from \the [src.name]!"))
 		update_sprite()
 		return TRUE
 
@@ -128,6 +128,6 @@
 	update_sprite()
 
 	return TRUE
-	
+
 /obj/item/hand_teleporter/get_examine_list(var/mob/caller)
 	return ..() + div("notice","Teleports Remaining: [FLOOR(battery.charge_current/30000,1)]")

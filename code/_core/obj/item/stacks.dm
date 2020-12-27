@@ -61,7 +61,7 @@
 			if(stacks_transfered)
 				caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
 			else
-				caller.to_chat(span("notice","You can't transfer any more stacks to \the [src.name], it's full!"))
+				caller.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
 			return TRUE
 
 	return ..()

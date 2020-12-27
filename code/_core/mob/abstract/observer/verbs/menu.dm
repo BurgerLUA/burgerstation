@@ -23,13 +23,13 @@
 	set category = "Menu"
 
 	if(world_state != STATE_RUNNING)
-		to_chat(span("warning","The round is currently ending! Wait until next round!"))
+		to_chat(span("danger","The round is currently ending! Wait until next round!"))
 		return FALSE
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 
 	if(!mobdata.has_files())
-		to_chat(span("notice","You don't have a character to load! Please create a new character."))
+		to_chat(span("danger","You don't have a character to load! Please create a new character."))
 		return
 
 	var/list/name_to_choice = list()
@@ -94,43 +94,43 @@
 /mob/abstract/observer/proc/can_become_antagonist()
 
 	if(!is_observer(src))
-		src.to_chat(span("notice","You cannot become an antag while your character is currently loaded!"))
+		src.to_chat(span("warning","You cannot become an antag while your character is currently loaded!"))
 		return FALSE
 
 	var/client/C = src.client
 
 	if(!C.globals || !C.globals.loaded_data)
-		src.to_chat(span("warning","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
+		src.to_chat(span("danger","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
 		return FALSE
 
 	if(C.globals.loaded_data["antag_tokens"] <= 0)
-		src.to_chat(span("notice","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
+		src.to_chat(span("danger","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
 		return FALSE
 
 	if(world_state != STATE_RUNNING)
-		src.to_chat(span("notice","The game has not loaded yet!"))
+		src.to_chat(span("warning","The game has not loaded yet!"))
 		return FALSE
 
 	if(!SSgamemode || !SSgamemode.active_gamemode)
-		src.to_chat(span("notice","The game has not started yet! Wait until objectives are announced before becoming an antagonist!"))
+		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an antagonist!"))
 		return FALSE
 
 	var/gamemode_state = SSgamemode.active_gamemode.state
 
 	if(gamemode_state <= GAMEMODE_WAITING)
-		src.to_chat(span("notice","The game has not started yet! Wait until objectives are announced before becoming an antagonist!"))
+		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an antagonist!"))
 		return FALSE
 
 	if(gamemode_state >= GAMEMODE_FIGHTING)
-		src.to_chat(span("notice","The game has already started! It's too late to become an antagonist!"))
+		src.to_chat(span("warning","The game has already started! It's too late to become an antagonist!"))
 		return FALSE
 
 	if(gamemode_state >= GAMEMODE_BREAK)
-		src.to_chat(span("notice","The round is currently ending!"))
+		src.to_chat(span("warning","The round is currently ending!"))
 		return FALSE
 
 	if(length(all_antag_markers) <= 0)
-		src.to_chat(span("notice","There are no available antag types!"))
+		src.to_chat(span("warning","There are no available antag types!"))
 		return FALSE
 
 	return TRUE
@@ -183,7 +183,7 @@
 		all_antag_markers -= antagonist_choice
 
 	C.globals.loaded_data["antag_tokens"] -= 1
-	src.to_chat(span("notice","You spend an antag token to become an antagonist. You now have [C.globals.loaded_data["antag_tokens"]] token(s)."))
+	src.to_chat(span("notice","You spend an antag token to become an antagonist. You now have <b>[C.globals.loaded_data["antag_tokens"]]</b> antag token(s)."))
 
 	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
 	mobdata.reset_data()

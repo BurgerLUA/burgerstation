@@ -14,12 +14,7 @@
 
 	pre_death()
 
-	for(var/mob/living/advanced/player/P in view(VIEW_RANGE,src.loc))
-		if(P == src)
-			continue
-		P.to_chat(span("notice","<b>\The [src.name] dies!</b>"),CHAT_TYPE_COMBAT)
-
-	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
+	src.to_chat(span("danger","<h1>You died!</h1>"))
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
 	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved again!."))
 
@@ -302,11 +297,11 @@ mob/living/proc/on_life_slow()
 				last_intoxication_message = 2
 		if(800 to 1600)
 			if(last_intoxication_message != 3)
-				to_chat(span("danger","You feel shitfaced."))
+				to_chat(span("danger","You feel seriously inebriated."))
 				last_intoxication_message = 3
 		if(1600 to INFINITY)
 			if(last_intoxication_message != 4)
-				to_chat(span("danger","You feel gjkpeagheutyhaophghe."))
+				to_chat(span("danger","You feel utterly and completely fucking shitfaced."))
 				last_intoxication_message = 4
 			health.adjust_loss_smart(tox=0.25*(LIFE_TICK_SLOW/10),robotic = FALSE)
 			queue_health_update = TRUE

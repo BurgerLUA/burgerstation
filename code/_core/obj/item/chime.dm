@@ -49,15 +49,15 @@
 		var/obj/item/I = object
 		if(I.flags_tool == FLAG_TOOL_SCREWDRIVER)
 			if(stored_device)
-				caller.to_chat(span("notice","You remove \the [stored_device.name] from \the [src.name]."))
+				caller.to_chat(span("warning","You remove \the [stored_device.name] from \the [src.name]."))
 				stored_device.drop_item(get_turf(src))
 				stored_device = null
 			else
-				caller.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))
+				caller.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
 			return TRUE
 		if(istype(I,/obj/item/device))
 			if(stored_device)
-				caller.to_chat(span("notice","There is already a [stored_device.name] inside \the [src.name]!"))
+				caller.to_chat(span("warning","There is already a [stored_device.name] inside \the [src.name]!"))
 				return TRUE
 			var/obj/item/device/D = I
 			D.drop_item(src)

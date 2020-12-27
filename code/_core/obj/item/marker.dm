@@ -43,7 +43,7 @@
 
 	I.name = desired_name
 
-	caller.to_chat(span("notice","\The [src] is spent."))
+	caller.to_chat(span("warning","\The [src] is spent."))
 	qdel(src)
 
 	return ..()

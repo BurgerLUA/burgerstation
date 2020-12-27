@@ -565,6 +565,7 @@
 				return FALSE
 			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
+			//TODO: Add liquid transfer sounds.
 		return TRUE
 
 	return FALSE

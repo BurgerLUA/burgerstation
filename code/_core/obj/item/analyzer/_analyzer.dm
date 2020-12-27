@@ -20,6 +20,7 @@
 
 	if(can_be_scanned(caller,object))
 		if(can_scan(caller,object))
+			caller.visible_message(span("\The [caller.name] scans \the [object.name]."),span("You scan \the [object.name]."))
 			on_scan(caller,object,location,control,params)
 		return TRUE
 

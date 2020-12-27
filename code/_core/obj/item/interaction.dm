@@ -101,7 +101,7 @@
 			if(can_dump_contents(caller,T))
 				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/dump_contents,caller,T)
 				PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_dump_contents,caller,T)
-				caller.to_chat(span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
+				caller.visible_message(span("notice","\The [caller.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
 		else
 			src.drop_item(T)
 		return TRUE
@@ -144,7 +144,7 @@
 		return FALSE
 
 	if(get_dist(caller,target_turf) > 1)
-		caller.to_chat(span("notice","You need to be standing still to dump the contents out!"))
+		caller.to_chat(span("warning","You need to be standing still to dump the contents out!"))
 		return FALSE
 
 	return TRUE
@@ -160,7 +160,7 @@
 			if(!dump_single_content(caller,I2,target_turf))
 				break
 
-	caller.to_chat(span("notice","You dump out the contents of \the [src.name] onto \the [target_turf.name]."))
+	caller.visible_message(span("notice","\The [caller.name] dumps out the contents of \the [src.name] onto \the [target_turf.name]."),span("notice","You dump out the contents of \the [src.name] onto \the [target_turf.name]."))
 
 	return TRUE
 
