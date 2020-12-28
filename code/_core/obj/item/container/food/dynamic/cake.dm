@@ -77,7 +77,7 @@
 				update_sprite() //TODO: Wait, why is the below not enclosed in the above condition statement?
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat(span("notice","\The [L.name] cuts \the [src.name] into several pieces."),span("notice","You cut \the [src.name] into [pieces] pieces."))
+					L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into several pieces."),span("notice","You cut \the [src.name] into [pieces] pieces."))
 
 			else if(raw_icon_state == "dough_ball")
 				if(original_volume > 10)

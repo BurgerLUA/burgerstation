@@ -5,14 +5,14 @@ var/global/list/defense_rating_to_value = list(
 	BLUNT = 8.1,
 	PIERCE = 8.1,
 	LASER = 8.1,
-	ARCANE = 10.1,
+	ARCANE = 20,
 	HEAT = 11.6,
 	COLD = 11.6,
 	BOMB = 16.2,
 	BIO = 17.9,
 	RAD = 16.2,
-	HOLY = 10.1,
-	DARK = 10.1,
+	HOLY = 20,
+	DARK = 20,
 	FATIGUE = 50,
 	ION = 50,
 	PAIN = 50
@@ -52,6 +52,6 @@ var/global/list/limbs_to_value = list(
 
 	// https://www.desmos.com/calculator/mzuyizloap
 	if(is_container)
-		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.7
+		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.35
 
 	return .

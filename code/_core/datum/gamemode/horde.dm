@@ -307,6 +307,11 @@
 
 	var/picks_remaining = 3
 
+	for(var/k in priority_targets)
+		var/atom/A = k
+		if(A.qdeleting)
+			priority_targets -= k
+
 	while(picks_remaining > 0)
 		picks_remaining--
 		CHECK_TICK(50,FPS_SERVER*10)

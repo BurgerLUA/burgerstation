@@ -30,3 +30,4 @@ var/global/list/all_fog = list()
 /obj/effect/fog_of_war/proc/remove()
 	animate(src,alpha = 0)
 	density = FALSE
+	mouse_opacity = 0

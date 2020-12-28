@@ -153,10 +153,10 @@
 
 	return "it"
 
-/proc/get_pronoun_him_her_their(var/mob/M)
+/proc/get_pronoun_his_her_their(var/mob/M)
 	switch(M.gender)
 		if(MALE)
-			return "him"
+			return "his"
 		if(FEMALE)
 			return "her"
 	return "their"

@@ -6,6 +6,8 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	opacity = 1
 
+	density = TRUE
+
 /obj/structure/scenery/fake_door/glass_bolted
 	icon_state = "glass_bolted"
 	opacity = 0

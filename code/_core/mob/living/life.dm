@@ -331,7 +331,7 @@ mob/living/proc/on_life_slow()
 
 
 /mob/living/proc/can_buffer_health()
-	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer)
+	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer || sanity_regen_buffer)
 
 /mob/living/proc/can_buffer_stamina()
 	return stamina_regen_buffer
@@ -369,6 +369,7 @@ mob/living/proc/on_life_slow()
 		tox_regen_buffer -= tox_to_regen
 		pain_regen_buffer -= pain_to_regen
 		rad_regen_buffer -= rad_to_regen
+		sanity_regen_buffer -= sanity_to_regen
 		update_health = TRUE
 
 	if(can_buffer_stamina())

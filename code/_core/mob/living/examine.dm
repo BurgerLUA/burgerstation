@@ -59,9 +59,9 @@
 		else
 			return div("warning","They are dead and lifeless, and their soul has departed...")
 	else if(!ai)
-		if(!client)
+		if(ckey_last && !client)
 			return div("warning","They seem to be affected by space sleep disorder. They may recover soon.")
-		else if(client.inactivity >= SECONDS_TO_TICKS(60))
+		else if(client && client.inactivity >= SECONDS_TO_TICKS(60))
 			return div("warning","They seem to be blanking out for [TICKS_TO_SECONDS(client.inactivity)] seconds. They may snap out of it soon.")
 
 	return null

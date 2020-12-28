@@ -68,7 +68,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","\The [L.name] cuts \the [src.name] into several cheese pieces."),span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
+				L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into several cheese pieces."),span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
 
 			qdel(src)
 

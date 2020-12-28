@@ -91,8 +91,9 @@
 				if(!create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,offset_x,offset_y))
 					break
 
-			for(var/i=1,i<=total_bleed_damage*0.1,i++)
-				create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32))
+			for(var/i=1,i<=total_bleed_damage/10,i++)
+				if(!create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
+					break
 
 			if(health && total_bleed_damage)
 				blood_volume -= FLOOR(total_bleed_damage*0.03,1)
@@ -100,7 +101,7 @@
 
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
-			var/bleed_to_add = total_bleed_damage*0.01
+			var/bleed_to_add = total_bleed_damage/25
 			O.bleeding += bleed_to_add
 
 	if(ai)

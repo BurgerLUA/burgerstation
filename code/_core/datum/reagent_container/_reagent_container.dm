@@ -469,7 +469,7 @@
 		else if(target_container.owner && is_living(target_container.owner.loc))
 			L2 = target_container.owner.loc
 
-		if(L1.loyalty_tag && L1.loyalty_tag == L2.loyalty_tag)
+		if(L2 && L1.loyalty_tag && L1.loyalty_tag == L2.loyalty_tag)
 			for(var/r_id in stored_reagents)
 				var/reagent/R = REAGENT(r_id)
 				if(R.lethal)

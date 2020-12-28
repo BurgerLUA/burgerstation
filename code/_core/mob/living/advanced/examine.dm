@@ -19,17 +19,17 @@
 		if(!O.hud_id)
 			continue
 
-		var/list/damage_desc = O.get_damage_description(examiner)
+		var/list/damage_desc = O.get_damage_description(examiner,verbose)
 		var/is_injured = length(damage_desc)
 
-		if(verbose && !is_injured)
+		if(!verbose && !is_injured)
 			continue
 
 		var/noun
 		if(examiner == src)
 			noun = "Your"
 		else
-			noun = get_pronoun_him_her_their(src)
+			noun = get_pronoun_his_her_their(src)
 
 		var/number_text = ""
 		if(survival_skill >= 75 || verbose)

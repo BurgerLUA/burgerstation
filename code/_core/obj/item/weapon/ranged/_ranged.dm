@@ -108,7 +108,7 @@
 			if(istype(firing_pin))
 				INTERACT_CHECK
 				firing_pin.drop_item(get_turf(src))
-				caller.to_chat(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
+				caller.visible_message(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
 				firing_pin = null
 			else
 				caller.to_chat(span("warning","There is no firing pin inside \the [src.name]!"))
