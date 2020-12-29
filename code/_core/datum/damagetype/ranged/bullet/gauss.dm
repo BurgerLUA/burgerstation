@@ -8,7 +8,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATCLUB
+		PIERCE = AP_GREATCLUB*3 //Inherit AP
 	)
 
 	falloff = VIEW_RANGE*3
