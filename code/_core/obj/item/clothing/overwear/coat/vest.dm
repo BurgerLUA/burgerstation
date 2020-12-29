@@ -27,7 +27,9 @@
 
 /obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(is_inventory(object)) //TODO: Move this to clothing?
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		click_self(caller,location,control,params)
 		return TRUE
 

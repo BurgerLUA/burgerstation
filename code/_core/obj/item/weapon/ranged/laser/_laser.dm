@@ -45,6 +45,9 @@
 		var/obj/item/I = object
 
 		if(I.flags_tool & FLAG_TOOL_CROWBAR)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			if(battery)
 				battery.drop_item(get_turf(src))
 				battery.update_sprite()
@@ -55,8 +58,11 @@
 				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
 			return TRUE
 
-		if(istype(object,/obj/item/powercell/))
-			var/obj/item/powercell/P = object
+		if(istype(I,/obj/item/powercell/))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			var/obj/item/powercell/P = I
 			if(P.size > SIZE_2) //Only fits size 2.
 				caller.to_chat(span("warning","\The [P.name] is too large to be put into \the [src.name]!"))
 				return TRUE

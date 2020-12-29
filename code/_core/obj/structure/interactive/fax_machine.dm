@@ -14,12 +14,14 @@
 
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(is_inventory(A))
-		var/obj/hud/inventory/I = A
+	if(is_inventory(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		var/obj/hud/inventory/I = object
 		if(stored_paper)
 			if(processing)
 				caller.to_chat(span("warning","\The [src.name] is too busy processing!"))
@@ -32,7 +34,11 @@
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
 		return TRUE
 
-	else if(is_paper(A))
+	if(is_paper(object))
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 
 		if(stored_paper)
 			caller.to_chat(span("warning","\The [src.name] already has paper inside!"))
@@ -56,9 +62,6 @@
 		CALLBACK("finish_processing_\ref[src]",SECONDS_TO_DECISECONDS(5),src,.proc/finish_processing,caller)
 
 		return TRUE
-
-
-
 
 	return ..()
 

@@ -73,11 +73,12 @@
 
 /obj/structure/interactive/fountain/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	var/mob/living/L = caller
 
 	if(filled)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		switch(fountain_type)
 			if(1)
 				L.brute_regen_buffer = max(L.brute_regen_buffer,200)
@@ -90,5 +91,6 @@
 		visible_message(span("notice","\The [caller.name] activates \the [src.name]'s energies, replenishing themself."))
 		filled = FALSE
 		update_sprite()
+		return TRUE
 
 	return ..()

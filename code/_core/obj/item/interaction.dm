@@ -74,6 +74,9 @@
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(additional_clothing_parent)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		drop_item(additional_clothing_parent,silent=TRUE)
 		return TRUE
 
@@ -81,8 +84,9 @@
 		var/atom/defer_object = object.defer_click_on_object(location,control,params)
 		if(is_item(defer_object)) //We're clicking on this item with an object.
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
 			var/obj/item/I = defer_object
-			src.add_to_inventory(caller,I) //Add that item in our hands to the container's invetory.
+			src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
 			return TRUE
 
 	return 	..()
@@ -90,13 +94,13 @@
 
 /obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(object)
+	INTERACT_CHECK_OBJECT
 	return clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
 	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(object)
+	INTERACT_CHECK_OBJECT
 
 	if(isturf(object) || istype(object,/obj/structure/smooth/table))
 		var/turf/T = get_turf(object)

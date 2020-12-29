@@ -293,7 +293,10 @@ var/global/list/stored_mechs_by_ckey = list()
 			return ..()
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WRENCH)
+
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 
 			var/list/valid_weapons = list()
 
@@ -363,6 +366,8 @@ var/global/list/stored_mechs_by_ckey = list()
 
 		if(istype(A,/obj/item/powercell/))
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			var/obj/item/powercell/PC = A
 			if(battery)
 				caller?.visible_message(span("notice","\The [caller.name] replaces \the [battery.name] in \the [src.name] with \the [PC.name]."),span("notice","You replace \the [battery.name] in \the [src.name] with \the [PC.name]."))
@@ -377,6 +382,8 @@ var/global/list/stored_mechs_by_ckey = list()
 
 		if(istype(A,/obj/item/mech_part/))
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			. = FALSE
 			if(istype(I,/obj/item/mech_part/arms))
 				if(!mech_arms)
@@ -454,7 +461,7 @@ var/global/list/stored_mechs_by_ckey = list()
 				I.update_sprite()
 				caller?.visible_message(span("notice","\The [caller.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
 				update_sprite()
-				return TRUE
+			return TRUE
 
 	return ..()
 

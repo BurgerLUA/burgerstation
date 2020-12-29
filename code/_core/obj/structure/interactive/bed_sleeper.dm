@@ -43,12 +43,12 @@
 
 /obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(door_state == SLEEPER_CLOSING || door_state == SLEEPER_OPENING)
 		return TRUE
 
 	if(door_state == SLEEPER_CLOSED)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		open(caller)
 		return TRUE
 
@@ -58,6 +58,8 @@
 		return TRUE
 
 	if(door_state == SLEEPER_OPENED)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		close(caller)
 		return TRUE
 

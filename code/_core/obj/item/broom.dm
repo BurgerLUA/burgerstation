@@ -14,7 +14,7 @@
 
 	if(isturf(object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		var/turf/T = object
 		for(var/obj/item/I in orange(T,1))

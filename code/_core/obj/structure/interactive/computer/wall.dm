@@ -87,9 +87,8 @@ obj/structure/interactive/computer/wall/dorms
 /obj/structure/interactive/computer/wall/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
-
-	if(!is_advanced(caller))
-		return ..()
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(desired_shuttle_controller.time_restricted && !SSgamemode.active_gamemode.allow_launch)
 		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] isn't ready to launch yet!"))
@@ -125,9 +124,8 @@ obj/structure/interactive/computer/wall/dorms
 /obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
-
-	if(!is_advanced(caller))
-		return ..()
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	var/obj/shuttle_controller/SC = locate() in get_area(src)
 

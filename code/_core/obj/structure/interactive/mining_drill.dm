@@ -43,13 +43,15 @@
 /obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(THINKING(src))
 		deactivate(caller)
 	else
 		activate(caller)
 
-	return ..()
+	return TRUE
 
 /obj/structure/interactive/mining_drill/post_move()
 	drill_depth = 0
@@ -144,6 +146,8 @@
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)

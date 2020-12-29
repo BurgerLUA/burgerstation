@@ -22,7 +22,12 @@ obj/structure/interactive/computer/arcade/bubbletwist
 
 obj/structure/interactive/computer/arcade/bubbletwist/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(!is_living(L))
+		return ..()
+
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	var/mob/living/L = caller
 	L.toggle_research_game(FALSE,TRUE)

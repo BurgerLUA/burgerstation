@@ -50,14 +50,12 @@
 
 /obj/item/container/food/package/proc/unwrap(var/mob/caller,var/obj/hud/inventory/I)
 
-	if(!packaging)
-		return FALSE
-
 	var/obj/item/trash/T = create_packaging(caller)
 
 	caller.visible_message(span("notice","\The [caller.name] unwraps \the [src.name]."),span("notice","You unwrap \the [src.name]."))
 
-	if(I) I.add_object(T)
+	if(I)
+		I.add_object(T)
 
 	packaging = null
 
@@ -65,6 +63,12 @@
 
 
 /obj/item/container/food/package/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	if(is_inventory(object) && unwrap(caller,object))
+
+	if(is_inventory(object) && packaging)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		unwrap(caller,object)
 		return TRUE
+
 	return ..()

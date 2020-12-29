@@ -59,20 +59,27 @@
 
 /obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
+	object = object.defer_click_on_object(location,control,params)
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
-
-	if(is_item(A))
-		var/obj/item/I = A
+	if(is_item(object))
+		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			src.on_destruction(caller)
 			return TRUE
 		if(istype(A,/obj/item/material/rod/))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_lattice,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_lattice,caller,object)
 			return TRUE
 		if(istype(A,/obj/item/material/sheet/))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_girder,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_girder,caller,object)
 			return TRUE

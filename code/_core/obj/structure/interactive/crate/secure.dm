@@ -40,6 +40,9 @@
 /obj/structure/interactive/crate/secure/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_ALT)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		if(locked)
 			unlock(caller)
 		else

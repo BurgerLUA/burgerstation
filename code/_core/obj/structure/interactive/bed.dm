@@ -40,9 +40,9 @@ obj/structure/interactive/bed
 
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(buckled)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		unbuckle(caller)
 		return TRUE
 
@@ -54,6 +54,8 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/objec
 		break
 
 	if(L)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		buckle(L,caller)
 		return TRUE
 

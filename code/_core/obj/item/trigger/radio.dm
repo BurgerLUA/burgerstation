@@ -52,6 +52,8 @@ var/global/list/obj/item/device/radio/all_radios = list()
 		return ..()
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
 
 	receiving = !receiving
 	caller.to_chat(span("notice","You toggle the speaker <b>[receiving ? "on" : "off"]</b>."))

@@ -76,7 +76,6 @@
 	var/atom/A = object.defer_click_on_object(location,control,params)
 	if(stored_weapon && !is_inventory(A))
 		stored_weapon.clicked_on_by_object(caller,object,location,control,params)
-
 	return ..()
 
 /obj/item/mech_part/equipment/weapon/smg/

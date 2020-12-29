@@ -41,6 +41,9 @@
 /mob/living/advanced/npc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(dialogue_id && is_player(caller) && can_talk_to(caller))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		var/mob/living/advanced/player/P = caller
 		P.dialogue_target = src
 		P.dialogue_target_id = dialogue_id

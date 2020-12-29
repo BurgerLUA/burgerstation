@@ -25,6 +25,8 @@
 		return ..()
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(!stored_implant)
 		caller.to_chat(span("warning","There is no implanter loaded!"))

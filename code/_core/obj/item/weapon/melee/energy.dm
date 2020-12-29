@@ -61,34 +61,41 @@
 /obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(is_item(defer_object))
-		var/obj/item/I = defer_object
+	if(is_item(object) && length(polymorphs))
+		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
-			if(length(polymorphs))
-				var/choice = input("What do you want to change the color of?","Color Selection") as null|anything in polymorphs
 
-				INTERACT_CHECK
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			var/choice = input("What do you want to change the color of \the [src.name]?","Color Selection") as null|anything in polymorphs
 
-				if(!choice)
-					caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
-					return ..()
+			if(!choice)
+				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+				return TRUE
 
-				var/color = "#FFFFFF"
-				var/choice_color = input("What would you like the new color to be?") as color|null
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
 
-				INTERACT_CHECK
+			var/choice_color = input("What would you like the new color to be?","Color Selection",color) as color|null
 
-				if(choice_color)
-					color = choice_color
-					polymorphs[choice] = blend_colors(polymorphs[choice],color,1000)
-					caller.to_chat(span("notice","You change \the [src.name]'s color."))
-				else
-					caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
-					return ..()
-				update_icon()
-				return ..()
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+
+			if(!choice_color)
+				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+				return TRUE
+
+			color = choice_color
+			polymorphs[choice] = polymorphs[choice]
+			caller.to_chat(span("notice","You change \the [src.name]'s color."))
+			update_sprite()
+
+			return TRUE
+
+	return ..()
 
 
 /obj/item/weapon/melee/energy/sword/

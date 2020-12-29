@@ -84,11 +84,12 @@
 
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-	SPAM_CHECK(10)
-
 	if(!(caller.attack_flags & CONTROL_MOD_GRAB))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		toggle(caller)
+		return TRUE
 
 	return ..()
 

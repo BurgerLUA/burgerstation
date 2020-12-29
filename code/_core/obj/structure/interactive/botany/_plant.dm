@@ -135,10 +135,12 @@
 
 /obj/structure/interactive/plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_advanced(caller))
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	harvest(caller)
 

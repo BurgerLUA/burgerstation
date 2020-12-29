@@ -74,6 +74,10 @@
 	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
+
 	var/obj/hud/inventory/I = object
 	var/old_item_name = src.name
 	var/obj/item/I2 = split_stack()

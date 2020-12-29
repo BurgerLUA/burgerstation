@@ -24,9 +24,11 @@
 /obj/structure/interactive/computer/console/mech_fabricator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
-		return TRUE
+		return ..()
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	var/mob/living/advanced/player/P = caller
 	P.dialogue_target_id = /dialogue/npc/mech_fabricator/

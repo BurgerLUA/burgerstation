@@ -10,12 +10,13 @@
 
 /obj/item/clothing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
-		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		if((src in I.worn_objects) && equip_additional_clothing(caller,object,location,control,params))
-			INTERACT_DELAY(10)
+		if(src in I.worn_objects)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			equip_additional_clothing(caller,object,location,control,params)
 			return TRUE
 
 	return ..()

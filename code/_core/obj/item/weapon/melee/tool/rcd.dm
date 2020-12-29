@@ -127,12 +127,18 @@
 /obj/item/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_inventory(object) && rcd_disk)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		var/obj/hud/inventory/I = object
 		var/obj/item/disk/ejected_disk = eject_disk(caller)
 		I.add_object(ejected_disk)
 		return TRUE
 
 	if(istype(object,/obj/item/disk/) && is_inventory(object.loc))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		var/obj/hud/inventory/I = object.loc
 		var/obj/item/disk/D = object
 		var/obj/item/disk/old_disk

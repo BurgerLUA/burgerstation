@@ -136,14 +136,12 @@
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	object = object.defer_click_on_object(location,control,params)
 
-	INTERACT_CHECK_OTHER(object)
-	INTERACT_DELAY(1)
-
 	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
 		if(I.add_held_object(B))

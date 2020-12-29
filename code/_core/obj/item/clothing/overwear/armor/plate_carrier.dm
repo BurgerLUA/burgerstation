@@ -56,6 +56,9 @@
 /obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/armor_plate/))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		if(length(installed_plate_carriers) >= 2)
 			if(ismob(caller))
 				var/mob/M = caller

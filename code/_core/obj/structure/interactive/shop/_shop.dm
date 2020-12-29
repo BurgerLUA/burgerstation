@@ -123,6 +123,8 @@
 /obj/structure/interactive/shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
 
 	if(!is_player(caller) || !caller.client)
 		return TRUE

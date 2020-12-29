@@ -124,19 +124,22 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
-	if(!is_player(caller))
+	if(!is_player(caller) && !is_inventory(object))
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
 
 	var/mob/living/advanced/player/P = caller
 
 	if(P.active_structure == src)
 		P.set_structure_unactive()
+		INTERACT_DELAY(1)
 	else
 		P.set_structure_active(src)
+		INTERACT_DELAY(10)
 
-	return ..()
+	return TRUE
 
 /obj/structure/interactive/vending/proc/show_buttons_to(var/mob/living/advanced/A)
 

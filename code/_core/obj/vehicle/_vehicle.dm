@@ -138,6 +138,9 @@
 		if(L.intent != INTENT_HARM)
 			var/obj/item/I = object
 			if(I.flags_tool & FLAG_TOOL_WRENCH)
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(5)
 				if(ai || length(passengers))
 					caller.to_chat(span("warning","You can't remove this while it's in use!"))
 					return TRUE
@@ -153,10 +156,13 @@
 				return TRUE
 
 			if(istype(I,/obj/item/weapon/ranged/energy/mech))
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(5)
 				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
 				return TRUE
 
-			return TRUE
+
 
 	if(is_inventory(object) )
 		if(!can_enter_vehicle(caller))

@@ -29,7 +29,7 @@
 
 	if(istype(object,/obj/structure/interactive/enchantment_circle/))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."))
 		qdel(object)
@@ -38,7 +38,7 @@
 	if(isturf(object))
 
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 
 		if(caller.loc != object)

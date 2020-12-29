@@ -114,6 +114,8 @@
 
 	if(istype(object,/obj/item/powercell/))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/item/powercell/PC = object
 
 		if(stored_battery)
@@ -130,6 +132,8 @@
 
 	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/item/magazine/M = object
 		if(!istype(stored_weapon,/obj/item/weapon/ranged/bullet/magazine))
 			caller.to_chat(span("warning","This turret doesn't accept magazines!"))

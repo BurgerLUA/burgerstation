@@ -39,13 +39,15 @@
 
 /obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(istype(A,/obj/item/material/sheet/glass))
+	if(istype(object,/obj/item/material/sheet))
 		var/obj/item/material/sheet/S = A
 		if(ispath(S.material_id,/material/glass))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_window,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_window,caller,object)
 			return TRUE

@@ -90,12 +90,18 @@
 
 	if(is_inventory(object) && is_inventory(src.loc) && is_advanced(caller))
 		var/obj/hud/inventory/I = src.loc
-		var/obj/hud/inventory/I2 = object
 		if(src in I.worn_objects)
+			var/obj/hud/inventory/I2 = object
 			if(paddle_left in src.contents)
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
 				I2.add_held_object(paddle_left)
 				return TRUE
 			else if(paddle_right in src.contents)
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
 				I2.add_held_object(paddle_right)
 				return TRUE
 
@@ -121,20 +127,20 @@
 
 	if(!linked_defib)
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		caller.to_chat(span("danger","Paddle error detected. Tell burger how you encountered this bug."))
 		return TRUE
 
 	if(object == linked_defib)
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		drop_item(get_turf(src))
 		return TRUE
 
 	if(is_living(object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
 		placed_target_ref = "\ref[object]"

@@ -47,11 +47,12 @@
 
 obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
+	object = object.defer_click_on_object(location,control,params)
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
-
-	if(istype(A,/obj/item/material/sheet/))
+	if(istype(object,/obj/item/material/sheet/))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_wall,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_wall,caller,object)
 		return TRUE

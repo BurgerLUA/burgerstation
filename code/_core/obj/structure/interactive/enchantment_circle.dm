@@ -81,6 +81,8 @@
 /obj/structure/interactive/enchantment_circle/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	set_active(!active)
 

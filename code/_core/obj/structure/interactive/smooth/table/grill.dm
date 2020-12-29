@@ -31,9 +31,12 @@
 
 /obj/structure/smooth/table/grill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
+
 
 	if(is_item(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/item/I = object
 		I.drop_item(src)
 		caller.visible_message(
@@ -45,7 +48,11 @@
 			enabled = TRUE
 			update_atom_light()
 		return TRUE
-	else if(is_inventory(object))
+
+	if(is_inventory(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/hud/inventory/I = object
 		var/obj/item/item_to_remove = locate() in src.contents
 		if(!item_to_remove)
@@ -57,6 +64,7 @@
 			enabled = FALSE
 			update_atom_light()
 		return TRUE
+
 	return ..()
 
 /obj/structure/smooth/table/grill/Entered(var/atom/movable/O,var/atom/old_loc)
