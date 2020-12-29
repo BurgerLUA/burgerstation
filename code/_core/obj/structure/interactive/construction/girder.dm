@@ -14,8 +14,8 @@
 
 /obj/structure/interactive/construction/girder/proc/can_construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(S)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(S)
 
 	if(istype(src.loc,/turf/simulated/wall/))
 		caller.to_chat(span("warning","There is already a wall here... somehow."))

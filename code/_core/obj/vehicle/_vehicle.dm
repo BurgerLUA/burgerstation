@@ -162,8 +162,6 @@
 				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
 				return TRUE
 
-
-
 	if(is_inventory(object) )
 		if(!can_enter_vehicle(caller))
 			return TRUE
@@ -295,7 +293,7 @@
 
 /mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(length(passengers) >= passengers_max)
 		caller.to_chat(span("warning","\The [src.name] is full!"))

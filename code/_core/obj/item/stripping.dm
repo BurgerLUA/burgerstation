@@ -20,7 +20,7 @@
 
 /obj/item/proc/can_strip(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!istype(loc,/obj/hud/inventory/organs/))
 		caller.to_chat(span("warning","That's not there anymore!"))

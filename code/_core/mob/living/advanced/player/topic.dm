@@ -26,7 +26,7 @@
 
 /mob/living/advanced/proc/can_uncuff(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(src.qdeleting)
 		caller.to_chat(span("warning","That doesn't exist!"))

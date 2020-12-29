@@ -6,6 +6,10 @@
 	health_base = 50
 
 /obj/structure/interactive/construction/lattice/proc/can_construct_grille(var/mob/caller,var/obj/item/material/rod/R)
+
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(R)
+
 	if(R.item_count_current < 2)
 		caller.to_chat(span("warning","You need 4 rods in order to build a grille!"))
 		return FALSE
@@ -41,9 +45,8 @@
 
 /obj/structure/interactive/construction/lattice/proc/can_construct_floor_plating(var/mob/caller,var/obj/item/material/sheet/S)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(S)
-
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(S)
 
 	if(istype(src.loc,/turf/simulated/floor/plating/))
 		caller.to_chat(span("warning","There is already a floor plating here!"))

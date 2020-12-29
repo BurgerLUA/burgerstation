@@ -48,7 +48,7 @@
 	if(is_item(object) || is_structure(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		INTERACT_CHECK_DELAY(1)
+		INTERACT_DELAY(1)
 		var/obj/O = object
 		if(anchored)
 			return FALSE

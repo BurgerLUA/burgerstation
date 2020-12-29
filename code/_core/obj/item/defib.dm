@@ -54,8 +54,8 @@
 
 /obj/item/defib/proc/can_defib_target(var/mob/caller,var/mob/living/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	return TRUE
 

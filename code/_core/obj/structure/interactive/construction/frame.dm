@@ -6,6 +6,10 @@
 	health_base = 25
 
 /obj/structure/interactive/construction/frame/proc/can_construct_girder(var/mob/caller,var/obj/item/material/sheet/S)
+
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(S)
+
 	if(!istype(src.loc,/turf/simulated/floor/plating/))
 		caller.to_chat(span("warning","You need to build plating before you can build a girder!"))
 		return FALSE
@@ -14,9 +18,6 @@
 		return FALSE
 	if(S.material_id != material_id)
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
-		return FALSE
-	if(get_dist(caller,src) > 1)
-		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
 
@@ -33,9 +34,8 @@
 
 /obj/structure/interactive/construction/frame/proc/can_construct_lattice(var/mob/caller,var/obj/item/material/rod/R)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(R)
-
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(R)
 
 	if(R.item_count_current < 2)
 		caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))

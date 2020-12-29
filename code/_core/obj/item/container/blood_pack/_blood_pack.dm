@@ -98,8 +98,8 @@
 
 /obj/item/container/blood_pack/proc/can_attach_to(var/mob/caller,var/mob/living/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!target.reagents)
 		caller.to_chat(span("warning","You can't find a way to attach \the [src.name] to \the [target.name]!"))

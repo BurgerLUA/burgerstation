@@ -171,6 +171,8 @@
 
 /mob/living/simple/turret/deployable/proc/can_pack_up(var/mob/caller)
 
+	INTERACT_CHECK_NO_DELAY(src)
+
 	if(dead)
 		caller.to_chat(span("warning","The turret is destroyed!"))
 		return FALSE
@@ -212,7 +214,7 @@
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
-	INTERACT_CHECK_DELAY(10)
+	INTERACT_DELAY(10)
 
 	if(can_pack_up(caller))
 		caller.visible_message(span("notice","\The [caller.name] starts to pack up \the [src.name]..."))

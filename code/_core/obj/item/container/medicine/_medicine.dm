@@ -96,8 +96,8 @@
 
 /obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!is_organ(target) && !is_living(target))
 		caller.to_chat(span("warning","You can't treat \the [target.name]!"))

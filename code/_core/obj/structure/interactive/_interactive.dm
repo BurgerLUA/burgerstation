@@ -27,8 +27,8 @@ obj/structure/interactive/get_examine_list(var/mob/examiner)
 
 obj/structure/interactive/proc/can_repair(var/mob/living/advanced/caller,var/obj/item/I)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(I)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(I)
 
 	if(caller.intent != INTENT_HELP)
 		return FALSE

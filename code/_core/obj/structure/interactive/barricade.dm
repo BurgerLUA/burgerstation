@@ -35,7 +35,8 @@
 
 /obj/structure/interactive/barricade/proc/can_climb_over(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
+
 	if(!is_living(caller))
 		return FALSE
 

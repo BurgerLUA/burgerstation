@@ -38,6 +38,10 @@
 
 /obj/item/herald_mirror/proc/can_teleport(var/mob/living/advanced/A)
 
+	var/mob/caller = A //reeee shitcode
+
+	INTERACT_CHECK_NO_DELAY(src)
+
 	if(!A.can_move())
 		A.to_chat(span("warning","You can't use the mirror in your current state!"))
 		return FALSE

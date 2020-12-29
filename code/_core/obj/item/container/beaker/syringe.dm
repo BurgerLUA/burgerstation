@@ -68,8 +68,8 @@
 
 /obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!target.reagents)
 		caller.to_chat(span("warning","You can't target \the [target.name]!"))

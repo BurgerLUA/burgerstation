@@ -37,7 +37,7 @@
 
 /obj/item/weapon/melee/energy/chainsaw/proc/can_start(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!is_inventory(src.loc))
 		caller.to_chat(span("warning","You need to be holding the chainsaw in order to start it!"))

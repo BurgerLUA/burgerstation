@@ -56,7 +56,7 @@
 	if(ismob(object) && caller == object)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		INTERACT_CHECK_DELAY(10)
+		INTERACT_DELAY(10)
 		var/mob/living/L = object
 		L.force_move(src)
 		start_thinking(src)

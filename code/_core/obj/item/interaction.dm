@@ -105,12 +105,12 @@
 		INTERACT_CHECK_OBJECT
 		var/turf/T = get_turf(object)
 		if(is_container && can_dump_contents(caller,T))
-			INTERACT_CHECK_DELAY(10)
+			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/dump_contents,caller,T)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_dump_contents,caller,T)
 			caller.visible_message(span("notice","\The [caller.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
 		else
-			INTERACT_CHECK_DELAY(1)
+			INTERACT_DELAY(1)
 			src.drop_item(T)
 		return TRUE
 
@@ -145,12 +145,8 @@
 
 /obj/item/proc/can_dump_contents(var/mob/caller,var/turf/target_turf)
 
-	if(!caller || !target_turf)
-		return FALSE
-
-	if(get_dist(caller,target_turf) > 1)
-		caller.to_chat(span("warning","You need to be standing still to dump the contents out!"))
-		return FALSE
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target_turf)
 
 	return TRUE
 

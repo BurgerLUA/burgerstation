@@ -125,8 +125,8 @@
 
 /mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(butchering_item)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(butchering_item)
 
 	if(!src.dead)
 		to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))

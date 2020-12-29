@@ -243,7 +243,7 @@
 		var/obj/item/object_as_item = defer_object
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		INTERACT_CHECK_DELAY(1)
+		INTERACT_DELAY(1)
 		src.add_object(object_as_item)
 		return TRUE
 

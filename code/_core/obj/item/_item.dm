@@ -566,8 +566,8 @@
 
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!is_living(target))
 		return FALSE

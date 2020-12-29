@@ -35,8 +35,8 @@
 
 /obj/item/handcuffs/proc/can_cuff(var/mob/caller,var/mob/living/advanced/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(target.handcuffed)
 		caller.to_chat(span("warning","\The [target.name] is already handcuffed!"))
