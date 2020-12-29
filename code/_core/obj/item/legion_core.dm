@@ -47,7 +47,7 @@
 /obj/item/legion_core/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(object)
+	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(10)
 
 	if(expiry_time == -1)

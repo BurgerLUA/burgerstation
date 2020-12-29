@@ -186,6 +186,8 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(wield_only && !wielded)
 		caller.to_chat(span("warning","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()

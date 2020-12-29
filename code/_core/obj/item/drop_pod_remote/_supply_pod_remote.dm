@@ -31,6 +31,9 @@
 	if(is_inventory(object))
 		return ..()
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	if(charges <= 0)
 		caller.to_chat(span("warning","There are no charges left in \the [src.name]!"))
 		return TRUE
@@ -49,7 +52,6 @@
 
 	INITIALIZE(SP)
 	FINALIZE(SP)
-
 
 	return TRUE
 

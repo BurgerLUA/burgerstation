@@ -28,6 +28,9 @@
 /obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/structure/interactive/enchantment_circle/))
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."))
 		qdel(object)
 		return TRUE

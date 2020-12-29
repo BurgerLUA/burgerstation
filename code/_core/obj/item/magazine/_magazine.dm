@@ -180,6 +180,9 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/magazine/G = object
 		if(!weapon_whitelist[G.type])
 			if(caller) caller.to_chat(span("warning","You can't insert this type of magazine into \the [G]!"))

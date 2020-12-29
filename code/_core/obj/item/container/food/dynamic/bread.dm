@@ -41,6 +41,9 @@
 	if(icon_state == raw_icon_state && istype(object,/obj/item/container/food/dynamic/bread)) //IT'S RAW.
 		var/obj/item/container/food/dynamic/bread/B = object
 		if(B.icon_state == B.raw_icon_state) //IT'S FUCKING RAW.
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			var/amount_to_transfer = min(reagents.volume_current,B.reagents.volume_max - B.reagents.volume_current)
 			if(amount_to_transfer <= 0)
 				if(is_living(caller))

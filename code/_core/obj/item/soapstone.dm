@@ -43,8 +43,9 @@
 
 /obj/item/soapstone/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(get_dist(caller,object) > 1)
-		return FALSE
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(10)
 
 	if(!is_floor(object))
 		caller.to_chat(span("warning","You can't write here, it's not a floor!"))

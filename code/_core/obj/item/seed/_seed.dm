@@ -89,10 +89,10 @@
 
 /obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(isturf(object))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/turf/T = object
 		var/plant_type/P = SSbotany.all_plant_types[plant_type]
 		var/allowed=FALSE

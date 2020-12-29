@@ -135,6 +135,7 @@
 	if(is_living(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 		caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
 		placed_target_ref = "\ref[object]"
 		linked_defib.on_paddle(caller)

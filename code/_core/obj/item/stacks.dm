@@ -49,14 +49,17 @@
 
 /obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(try_transfer_reagents(caller,defer_object,location,control,params))
+	if(try_transfer_reagents(caller,object,location,control,params))
 		return TRUE
 
-	if(is_item(defer_object))
-		var/obj/item/I = defer_object
+	if(is_item(object))
+		var/obj/item/I = object
 		if(I.can_transfer_stacks_to(src))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			var/stacks_transfered = I.transfer_item_count_to(src)
 			if(stacks_transfered)
 				caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))

@@ -99,6 +99,9 @@
 
 /obj/item/hand_teleporter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	var/obj/item/powercell/PC = get_battery()
 
 	if(ispath(PC))

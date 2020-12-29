@@ -82,22 +82,6 @@
 	if(.) qdel(src)
 	return .
 
-/*
-/obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	if(!is_living(object))
-		return ..()
-
-	INTERACT_CHECK
-
-	var/reagent_container/R = get_reagents_to_consume()
-	R.consume(caller,object)
-
-	qdel(src)
-
-	return TRUE
-*/
-
 /obj/item/container/pill/Generate()
 	. = ..()
 	update_sprite()

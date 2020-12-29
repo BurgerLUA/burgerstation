@@ -110,6 +110,8 @@
 /obj/item/pinpointer/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(scan_mode && object)
+		INTERACT_CHECK
+		INTERACT_DELAY(10)
 		if(!can_track(object))
 			caller.to_chat(span("warning","You can't track this object!"))
 			return TRUE

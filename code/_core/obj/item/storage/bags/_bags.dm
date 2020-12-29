@@ -13,6 +13,9 @@
 	var/turf/T = get_turf(object)
 
 	if(length(container_whitelist) && get_dist(src,T) <= 1)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/pickup = 0
 		for(var/obj/item/I in T.contents)
 			if(I.type in container_whitelist)

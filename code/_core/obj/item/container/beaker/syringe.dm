@@ -77,7 +77,6 @@
 
 	return TRUE
 
-
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
@@ -91,6 +90,10 @@
 
 	if(!defer_object.reagents)
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
 
 	if(istype(defer_object,/obj/item/container/))
 		inject(caller,defer_object,injecting ? inject_amount : -draw_amount)

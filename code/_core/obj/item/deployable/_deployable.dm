@@ -42,7 +42,7 @@
 
 	if(isturf(object) && can_deploy_to(caller,object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		if(caller.loc != object)
 			caller.face_atom(object) //Only face the atom if we're not on the tile.

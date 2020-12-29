@@ -254,6 +254,8 @@ var/global/list/stored_mechs_by_ckey = list()
 
 /mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(object.plane >= PLANE_HUD)
 		return ..()
 

@@ -19,9 +19,12 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(is_item(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/item/I = object
-		if(I.dye_self(caller,src,src.color,alpha/255))
-			return TRUE
+		I.dye_self(caller,src,src.color,alpha/255)
+		return TRUE
 
 	return ..()
 

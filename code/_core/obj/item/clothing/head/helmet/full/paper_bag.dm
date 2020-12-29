@@ -48,6 +48,10 @@
 
 /obj/item/clothing/head/helmet/full/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
+
 	var/mob/living/C = caller
 	if(C.attack_flags & CONTROL_MOD_ALT)
 		if(C.intent == INTENT_DISARM)
@@ -66,6 +70,9 @@
 				logo = 0
 				caller.to_chat(span("notice","You wipe \the logo from \the [src.name]."))
 		update_sprite()
+
+
+	return TRUE
 
 
 

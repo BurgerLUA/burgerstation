@@ -21,5 +21,6 @@
 			if(I.anchored)
 				continue
 			I.Move(T)
+		return TRUE
 
 	return ..()

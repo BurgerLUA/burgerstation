@@ -81,9 +81,13 @@
 
 /obj/item/weapon/ranged/magic/scroll/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object(location,control,params)
 
 	if(is_scroll(object))
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 
 		if(scroll_count <= 0)
 			caller.to_chat(span("warning","This scroll is blank and void of magic!"))

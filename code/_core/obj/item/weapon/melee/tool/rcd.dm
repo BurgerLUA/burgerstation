@@ -6,8 +6,6 @@
 
 	var/obj/item/disk/rcd_disk
 
-	var/rcd_range = 1
-
 	var/matter_current = 0
 	var/matter_max = 10000
 
@@ -57,10 +55,14 @@
 	if(is_inventory(object))
 		return ..()
 
-	if(!isturf(object))
-		object = get_turf(object)
+	if(!isturf(object)) object = get_turf(object)
 
-	if(object && get_dist(caller,object) <= rcd_range)
+	if(object)
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
+
 		var/turf/T = object
 		if(!rcd_disk)
 			caller.to_chat(span("warning","ERROR: There is no construction disk loaded in \the [src.name]!"))

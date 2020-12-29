@@ -12,11 +12,10 @@
 
 /obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(object)
-	INTERACT_DELAY(10)
-
 	if(ismob(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		if(!is_advanced(object))
 			caller.to_chat(span("warning","You can't cuff this!"))
 			return TRUE

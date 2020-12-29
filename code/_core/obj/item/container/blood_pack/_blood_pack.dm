@@ -33,6 +33,9 @@
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(is_living(defer_object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/mob/living/L = defer_object
 		if(attached_to == L)
 			detach(caller)

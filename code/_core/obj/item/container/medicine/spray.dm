@@ -43,8 +43,9 @@
 		return ..()
 
 	if(is_advanced(object) && is_advanced(caller))
-		if(get_dist(caller,object) > 1)
-			return FALSE
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(2)
 		var/mob/living/advanced/victim = object
 		var/mob/living/advanced/attacker = caller
 		var/list/new_x_y = attacker.get_current_target_cords(params)

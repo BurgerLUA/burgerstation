@@ -214,7 +214,7 @@
 
 	if(is_bullet(object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/bullet_cartridge/B = object
 		B.transfer_src_to_bullet(caller,src,location,control,params)
@@ -222,7 +222,7 @@
 
 	if(is_magazine(object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
 		transfer_src_to_magazine(caller,M,location,control,params)
@@ -231,7 +231,7 @@
 
 	if(is_bullet_gun(object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
 		if(transfer_src_to_gun(caller,G,location,control,params))

@@ -11,14 +11,12 @@
 
 /obj/item/matter_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	object = object.defer_click_on_object(location,control,params)
 
-	INTERACT_CHECK_OTHER(object)
-	INTERACT_DELAY(10)
-
 	if(istype(object,/obj/item/rcd/))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/item/rcd/R = object
 		R.add_matter(R.matter_max)
 		caller.to_chat(span("notice","You refill \the [R.name]."))

@@ -50,6 +50,11 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(is_staff(object))
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
+
 		var/obj/item/weapon/ranged/magic/staff/S = object
 		if(total_charge)
 			caller.visible_message(span("notice","\The [caller.name] recharges \the [S.name] with \the [src.name]."),span("notice","You charge \the [S] with \the [src]."))
