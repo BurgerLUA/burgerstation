@@ -348,10 +348,10 @@
 
 /obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass=FALSE,var/silent=FALSE) //Prioritize wearing it, then holding it.
 
-	if((bypass || I.can_be_worn()) && add_worn_object(I,messages,bypass,silent))
+	if((bypass || I.can_be_worn(owner,src,messages)) && add_worn_object(I,messages,bypass,silent))
 		return TRUE
 
-	if((bypass || I.can_be_held()) && add_held_object(I,messages,bypass,silent))
+	if((bypass || I.can_be_held(owner,src)) && add_held_object(I,messages,bypass,silent))
 		return TRUE
 
 	return FALSE
@@ -686,8 +686,8 @@
 		if((I in INV.worn_objects) && !INV.can_unwear_object(I,messages))
 			return FALSE
 
-	if(!I.can_be_held(owner,src) || !I.can_be_worn(owner,src))
-		if(messages) owner.to_chat(span("warning","\The [I] cannot be worn!"))
+	if(!I.can_be_held(owner,src,messages) || !I.can_be_worn(owner,src,messages))
+		//if(messages) owner.to_chat(span("warning","\The [I] cannot be worn!"))
 		return FALSE
 
 	if(worn_allow_duplicate)

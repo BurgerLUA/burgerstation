@@ -32,7 +32,7 @@
 		/loot/weapon/minigun = 1,
 		/obj/item/attachment/barrel/charger/advanced = 1,
 		/obj/item/attachment/barrel/laser_charger/advanced = 1,
-		/obj/item/hand_teleporter = 1,
+		//obj/item/hand_teleporter = 1,
 		/obj/item/armor_plate/ultra = 1,
 	)
 

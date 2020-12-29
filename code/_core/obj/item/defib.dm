@@ -18,7 +18,7 @@
 
 	weight = 8
 
-/obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
 /obj/item/defib/Initialize(var/desired_loc) //Fill inventory handles the initializations here.

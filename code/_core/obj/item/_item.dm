@@ -473,16 +473,23 @@
 		return FALSE
 	return can_hold
 
-/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	if(delete_on_drop)
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
 	if(anchored)
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
 	if(unremovable)
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
 	if(additional_clothing_parent && is_inventory(src.loc))
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
-	return can_wear
+	if(!can_wear)
+		if(messages) owner.to_chat("\The [src.name] cannot be worn!")
+		return FALSE
+	return TRUE
 
 /obj/item/update_icon()
 

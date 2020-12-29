@@ -17,7 +17,7 @@
 	size = 0.04
 	value = 0.6
 
-/obj/item/bullet_cartridge/shotgun_23/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/bullet_cartridge/shotgun_23/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
 /obj/item/bullet_cartridge/shotgun_23/Generate()

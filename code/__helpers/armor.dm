@@ -57,13 +57,15 @@
 	if(armor_rating <= 0)
 		return damage_dealt * (1 + (-armor_rating/200))
 
+	var/a = armor_rating
+	var/d = damage_dealt
 	var/c = 0.8 //Cooefient
 	var/m = 200 //Ideal armor rating to negative c (as a percent) damage.
 
 	if(armor_rating >= m)
 		return d*c
 
-	return  ( (1-c*0.5)*d) + (d*cos(x*(1/m)*180)*c*0.5)
+	return  ( (1-c*0.5)*d) + (d*cos(a*(1/m)*180)*c*0.5)
 
 
 
