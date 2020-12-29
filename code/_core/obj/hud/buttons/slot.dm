@@ -96,7 +96,7 @@
 
 	return clicked_on_by_object(caller,object)
 
-/obj/hud/button/slot/clicked_on_by_object(caller,object,location,control,params)
+/obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()
 
 	if(.)

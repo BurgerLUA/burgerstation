@@ -93,27 +93,25 @@
 
 
 /obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
 	return clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
-
-	if(isturf(object) || istype(object,/obj/structure/smooth/table))
-		var/turf/T = get_turf(object)
-		if(is_container)
-			if(can_dump_contents(caller,T))
-				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/dump_contents,caller,T)
-				PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_dump_contents,caller,T)
-				caller.visible_message(span("notice","\The [caller.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
-		else
-			src.drop_item(T)
+	if(!can_be_dragged(caller))
 		return TRUE
 
-	if(!can_be_dragged(caller))
+	if(isturf(object) || istype(object,/obj/structure/smooth/table))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		var/turf/T = get_turf(object)
+		if(is_container && can_dump_contents(caller,T))
+			INTERACT_CHECK_DELAY(10)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/dump_contents,caller,T)
+			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_dump_contents,caller,T)
+			caller.visible_message(span("notice","\The [caller.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
+		else
+			INTERACT_CHECK_DELAY(1)
+			src.drop_item(T)
 		return TRUE
 
 	if(caller == object)

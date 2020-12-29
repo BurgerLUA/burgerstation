@@ -68,7 +68,7 @@ obj/structure/interactive/computer/console/old
 obj/structure/interactive/computer/console/old/chargen
 	name = "\improper IMB piece of shit"
 
-obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(caller,object,location,control,params)
+obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
 		return ..()
@@ -185,7 +185,7 @@ obj/structure/interactive/computer/console/old/station_job
 	var/door_code = 0
 	var/unit_number = 0
 
-obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(caller,object,location,control,params)
+obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
 		return ..()

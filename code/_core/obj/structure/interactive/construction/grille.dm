@@ -43,7 +43,7 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(istype(object,/obj/item/material/sheet))
-		var/obj/item/material/sheet/S = A
+		var/obj/item/material/sheet/S = object
 		if(ispath(S.material_id,/material/glass))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT

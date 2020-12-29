@@ -210,7 +210,9 @@
 	if(caller != object)
 		return ..()
 
-	INTERACT_CHECK_OTHER(src)
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_CHECK_DELAY(10)
 
 	if(can_pack_up(caller))
 		caller.visible_message(span("notice","\The [caller.name] starts to pack up \the [src.name]..."))

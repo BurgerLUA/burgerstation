@@ -24,7 +24,7 @@ obj/structure/interactive/misc/dresser
 
 	density = TRUE
 
-obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
+obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

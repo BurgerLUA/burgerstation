@@ -69,14 +69,14 @@
 			INTERACT_DELAY(10)
 			src.on_destruction(caller)
 			return TRUE
-		if(istype(A,/obj/item/material/rod/))
+		if(istype(object,/obj/item/material/rod/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_lattice,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_lattice,caller,object)
 			return TRUE
-		if(istype(A,/obj/item/material/sheet/))
+		if(istype(object,/obj/item/material/sheet/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)

@@ -22,7 +22,7 @@ obj/structure/interactive/computer/arcade/bubbletwist
 
 obj/structure/interactive/computer/arcade/bubbletwist/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_living(L))
+	if(!is_living(caller))
 		return ..()
 
 	INTERACT_CHECK

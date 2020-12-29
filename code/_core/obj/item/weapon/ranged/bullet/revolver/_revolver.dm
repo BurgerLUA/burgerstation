@@ -68,7 +68,7 @@
 
 	object = object.defer_click_on_object(location,control,params)
 
-	if(open && is_inventory(object) && src && && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
+	if(open && is_inventory(object) && src && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
 
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
