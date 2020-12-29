@@ -30,9 +30,6 @@
 
 /obj/item/defib/proc/on_paddle(var/mob/caller)
 
-	INTERACT_CHECK
-	INTERACT_DELAY(10)
-
 	if(!paddle_left.placed_target_ref || !paddle_right.placed_target_ref || paddle_left.placed_target_ref != paddle_right.placed_target_ref)
 		return FALSE
 

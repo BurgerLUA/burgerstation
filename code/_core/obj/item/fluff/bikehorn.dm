@@ -15,7 +15,7 @@ obj/item/bikehorn
 obj/item/bikehorn/click_self(var/mob/caller)
 
 	INTERACT_CHECK
-	INTERACT_DELAY(5)
+	INTERACT_DELAY(20)
 
 	var/turf/T = get_turf(src)
 	play('sound/items/bikehorn.ogg',T)

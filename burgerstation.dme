@@ -884,7 +884,6 @@
 #include "code\_core\obj\item\dying.dm"
 #include "code\_core\obj\item\enchanting_chalk.dm"
 #include "code\_core\obj\item\ghost_trap.dm"
-#include "code\_core\obj\item\hand_tele.dm"
 #include "code\_core\obj\item\handcuffs.dm"
 #include "code\_core\obj\item\herald_mirror.dm"
 #include "code\_core\obj\item\interaction.dm"

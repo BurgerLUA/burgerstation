@@ -28,7 +28,7 @@
 /obj/item/light_sensor/click_self(var/mob/caller)
 
 	INTERACT_CHECK
-	INTERACT_DELAY(1)
+	INTERACT_DELAY(10)
 	SPAM_CHECK(3)
 
 	active = !active

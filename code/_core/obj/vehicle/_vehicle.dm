@@ -181,8 +181,6 @@
 
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(is_hud(object))
 		return ..()
 

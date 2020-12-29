@@ -9,3 +9,18 @@
 	INTERACT_DELAY(10)
 	ASSERT(null) //Force a fake error.
 	return TRUE
+
+
+/obj/item/runtime/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	log_debug("caller: [caller.get_debug_name()].")
+	log_debug("object: [object.get_debug_name()].")
+
+	return TRUE
+
+/obj/item/runtime/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	log_debug("caller: [caller.get_debug_name()].")
+	log_debug("object: [object.get_debug_name()].")
+
+	return TRUE
