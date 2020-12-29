@@ -27,6 +27,10 @@
 
 /obj/item/light_sensor/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+	SPAM_CHECK(3)
+
 	active = !active
 
 	caller.to_chat(span("notice","You turn \the [src.name] [active ? "on" : "off"]."))

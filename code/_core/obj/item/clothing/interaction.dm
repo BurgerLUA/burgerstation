@@ -1,6 +1,7 @@
 /obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
+		//No interaction delay needed.
 		quick_equip(caller,ignore_held=TRUE,ignore_dynamic=TRUE)
 		return TRUE
 
@@ -10,8 +11,11 @@
 /obj/item/clothing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
 		var/obj/hud/inventory/I = src.loc
 		if((src in I.worn_objects) && equip_additional_clothing(caller,object,location,control,params))
+			INTERACT_DELAY(10)
 			return TRUE
 
 	return ..()

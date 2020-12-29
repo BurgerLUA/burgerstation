@@ -26,7 +26,10 @@
 
 	weight = 10
 
-/obj/item/crafting/click_self(caller,location,control,params)
+/obj/item/crafting/click_self(var/mob/caller,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
 
 	if(!length(inventories))
 		return FALSE
@@ -80,51 +83,6 @@
 	inventory_user = caller
 
 	return TRUE
-
-
-
-
-/*
-/obj/item/crafting/click_self(caller,location,control,params)
-
-	if(!is_advanced(caller))
-		return ..()
-
-	var/mob/living/advanced/A = caller
-
-	var/opening = FALSE
-
-	for(var/obj/hud/inventory/crafting/I in A.inventory)
-		if(I in inventories)
-			continue
-		I.alpha = 0
-		I.mouse_opacity = 0
-
-	for(var/obj/hud/inventory/I in inventories)
-		I.update_owner(A)
-		if(opening || !I.alpha)
-			animate(I,alpha=255,time=4)
-			I.mouse_opacity = 2
-			opening = TRUE
-		else
-			animate(I,alpha=0,time=4)
-			I.mouse_opacity = 0
-			opening = FALSE
-
-	for(var/obj/hud/button/crafting/B in A.buttons)
-		B.stored_crafting_table = src
-		if(opening || !B.alpha)
-			animate(B,alpha=255,time=4)
-			B.mouse_opacity = 2
-			opening = TRUE
-		else
-			animate(B,alpha=0,time=4)
-			B.mouse_opacity = 0
-			opening = FALSE
-
-	return TRUE
-*/
-
 
 /obj/item/crafting/proc/attempt_to_craft(var/mob/living/advanced/caller)
 

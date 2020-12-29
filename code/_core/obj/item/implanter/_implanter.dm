@@ -35,6 +35,10 @@
 	if(caller != object || !is_advanced(caller))
 		return ..()
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OTHER(object)
+	INTERACT_DELAY(10)
+
 	if(!stored_implant)
 		caller.to_chat(span("warning","There is no implanter loaded in \the [src.name]!"))
 		return TRUE

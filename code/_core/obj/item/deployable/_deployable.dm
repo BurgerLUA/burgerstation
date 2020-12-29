@@ -41,6 +41,9 @@
 /obj/item/deployable/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(isturf(object) && can_deploy_to(caller,object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 		if(caller.loc != object)
 			caller.face_atom(object) //Only face the atom if we're not on the tile.
 		caller.visible_message(span("warning","\The [caller.name] starts to deploy \the [src.name]..."),span("notice","You start to deploy \the [src.name]..."))

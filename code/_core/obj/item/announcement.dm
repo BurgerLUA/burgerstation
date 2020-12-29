@@ -26,6 +26,9 @@ var/global/next_announcement = 0
 
 /obj/item/announcement/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	if(!caller.client)
 		return FALSE
 
@@ -37,6 +40,8 @@ var/global/next_announcement = 0
 		return FALSE
 
 	var/message = input("What should the message be?", "Message", stored_message) as message | null
+
+	INTERACT_CHECK_OTHER(src) //Hacky
 
 	stored_message = message
 

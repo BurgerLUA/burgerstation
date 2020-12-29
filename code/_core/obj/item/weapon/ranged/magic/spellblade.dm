@@ -32,6 +32,9 @@
 
 /obj/item/weapon/ranged/magic/spellblade/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	active = !active
 
 	if(active)

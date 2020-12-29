@@ -65,6 +65,9 @@
 
 	object = object.defer_click_on_object(location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	if(battery && is_inventory(object))
 		var/obj/hud/inventory/I = object
 		if(I.add_held_object(battery))

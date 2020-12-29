@@ -56,6 +56,8 @@ var/global/list/all_clients = list() //Assoc list
 	var/spam_protection_interact = 0 //Prevents soundspam and other memes.
 	var/last_message //See above.
 
+	var/interact_next = 0 //Regular interact delay.
+
 	var/list/stored_hud_images = list() //For MediHUDs
 
 	var/mouse_down_x = 0

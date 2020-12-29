@@ -8,3 +8,6 @@
 		} \
 		caller.client.spam_protection_interact += x; \
 	}
+//SPAM_CHECK usage: x is deciseconds. higher values means tougher spam protection.
+
+#define INTERACT_DELAY(x) if(caller.client) {caller.client.interact_next = max(caller.client.interact_next,world.time + x)}

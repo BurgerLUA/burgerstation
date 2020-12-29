@@ -30,6 +30,9 @@
 
 /obj/item/defib/proc/on_paddle(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	if(!paddle_left.placed_target_ref || !paddle_right.placed_target_ref || paddle_left.placed_target_ref != paddle_right.placed_target_ref)
 		return FALSE
 
@@ -116,17 +119,22 @@
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	SPAM_CHECK(10)
-
 	if(!linked_defib)
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 		caller.to_chat(span("danger","Paddle error detected. Tell burger how you encountered this bug."))
 		return TRUE
 
 	if(object == linked_defib)
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
 		drop_item(get_turf(src))
 		return TRUE
 
 	if(is_living(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
 		caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
 		placed_target_ref = "\ref[object]"
 		linked_defib.on_paddle(caller)

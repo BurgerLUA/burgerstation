@@ -66,6 +66,9 @@
 
 /obj/item/container/blood_pack/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	if(caller.attack_flags & CONTROL_MOD_ALT)
 		if(attached_to)
 			detach(caller)

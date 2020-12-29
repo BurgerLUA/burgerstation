@@ -24,6 +24,10 @@
 /obj/item/storage/bags/goodie/click_self(var/mob/caller)
 
 	if(!loot_generated)
+
+		INTERACT_CHECK
+		INTERACT_DELAY(1)
+
 		loot_generated = TRUE
 
 		var/loot/L = LOOT(loot_to_generate)
@@ -36,7 +40,6 @@
 
 		caller.to_chat(span("notice","You unwrap \the [src.name]."))
 		return TRUE
-
 
 	return ..()
 

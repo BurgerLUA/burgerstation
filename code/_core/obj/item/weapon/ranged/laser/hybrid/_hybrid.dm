@@ -31,6 +31,9 @@
 
 /obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	mode = !mode
 	caller.to_chat(span("notice","You switch \the [src] to [mode ? "kill" : "stun"]."))
 

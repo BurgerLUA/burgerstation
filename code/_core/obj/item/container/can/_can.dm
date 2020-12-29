@@ -22,11 +22,13 @@
 
 /obj/item/container/beaker/can/click_self(var/mob/caller,location,control,params)
 
-	if(open)
-		return ..()
+	if(open) return ..()
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 
 	caller.visible_message(span("notice","\The [caller.name] opens \the [src.name]."),span("notice","You open \the [src.name]."))
-	//TODO: Pop sounds.
+	//TODO: Pop sounds for certain objects.
 	open = TRUE
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE

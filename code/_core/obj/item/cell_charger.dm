@@ -38,6 +38,9 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(battery && is_inventory(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 		var/obj/hud/inventory/I = object
 		if(I.add_held_object(battery))
 			caller.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
@@ -49,6 +52,9 @@
 		return TRUE
 
 	if(istype(object,/obj/item/powercell))
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 		var/obj/item/PC = object
 		if(PC.size > SIZE_3) //Only fits size 3.
 			caller.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))

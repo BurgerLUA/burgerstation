@@ -48,6 +48,7 @@
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OTHER(object)
+	INTERACT_DELAY(10)
 
 	if(expiry_time == -1)
 		caller.to_chat(span("warning","\The [src.name] has expired!"))

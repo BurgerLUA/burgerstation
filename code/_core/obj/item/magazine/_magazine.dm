@@ -140,6 +140,9 @@
 
 	object = object.defer_click_on_object(location,control,params)
 
+	INTERACT_CHECK_OTHER(object)
+	INTERACT_DELAY(1)
+
 	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
@@ -154,6 +157,8 @@
 /obj/item/magazine/click_self(var/mob/caller)
 
 	if(length(stored_bullets))
+		INTERACT_CHECK
+		INTERACT_DELAY(1.5)
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
 		B.drop_item(get_turf(caller))
 		B.update_sprite()

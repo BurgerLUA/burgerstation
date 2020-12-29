@@ -56,11 +56,6 @@
 
 	return ..()
 
-/*
-/obj/item/weapon/click_self(var/mob/caller)
-	return TRUE
-*/
-
 /obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	wielded = FALSE
 	if(old_inventory.child_inventory)

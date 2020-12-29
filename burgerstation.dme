@@ -876,7 +876,6 @@
 #include "code\_core\obj\item\announcement.dm"
 #include "code\_core\obj\item\broom.dm"
 #include "code\_core\obj\item\cell_charger.dm"
-#include "code\_core\obj\item\chime.dm"
 #include "code\_core\obj\item\combat.dm"
 #include "code\_core\obj\item\cross.dm"
 #include "code\_core\obj\item\data_saving.dm"

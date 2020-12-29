@@ -25,6 +25,8 @@
 
 
 /obj/item/clothing/head/light/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
 	enabled = !enabled
 	update_sprite()
 	update_atom_light()

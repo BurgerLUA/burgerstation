@@ -5,5 +5,7 @@
 	value = -1
 
 /obj/item/runtime/click_self(var/mob/caller)
-	ASSERT(null)
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+	ASSERT(null) //Force a fake error.
 	return TRUE

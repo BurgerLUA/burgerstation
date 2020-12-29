@@ -18,6 +18,9 @@
 
 /obj/item/container/food/dynamic/meat/click_self(var/mob/caller,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+
 	if(icon_state == "ground")
 		icon_state = "meatball"
 		caller.to_chat(span("notice","You reshape \the [src.name] into a meatball."))

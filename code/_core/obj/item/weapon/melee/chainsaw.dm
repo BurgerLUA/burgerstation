@@ -89,8 +89,6 @@
 
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)
 
-	SPAM_CHECK(20)
-
 	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.ai)
@@ -99,6 +97,9 @@
 			else
 				start(caller)
 			return TRUE
+
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
 
 	if(enabled)
 		stop(caller)

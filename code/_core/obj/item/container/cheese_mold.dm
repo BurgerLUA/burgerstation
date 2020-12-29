@@ -78,6 +78,7 @@
 	var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
 	if(answer == "Yes")
 		INTERACT_CHECK
+		INTERACT_DELAY(1)
 		reagents.remove_all_reagents(reagents.volume_current)
 		caller.visible_message(span("notice","\The [caller.name] empties \the [src.name] of its contents."),span("notice","You empty \the [src.name] of its contents."))
 

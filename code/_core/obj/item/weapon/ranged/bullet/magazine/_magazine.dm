@@ -53,6 +53,9 @@
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	var/cock_type // = "flacid"
 
 	if(eject_chambered_bullet(caller,caller ? caller.loc : get_turf(src),TRUE))

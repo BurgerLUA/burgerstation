@@ -60,6 +60,8 @@
 	return ..()
 
 /obj/item/container/syringe/click_self(var/mob/caller,location,control,params)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	injecting = !injecting
 	update_sprite()
 	return TRUE

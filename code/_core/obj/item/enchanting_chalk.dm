@@ -33,12 +33,14 @@
 		return TRUE
 
 	if(isturf(object))
-		INTERACT_CHECK
 
+		INTERACT_CHECK
+		INTERACT_CHECK_OTHER(object)
+		INTERACT_DELAY(10)
 
 		if(caller.loc != object)
 			caller.to_chat(span("warning","You must draw the rune at your feet!"))
-			return FALSE
+			return TRUE
 
 		var/turf/T = object
 		for(var/k in DIRECTIONS_ALL)
@@ -46,7 +48,8 @@
 			var/atom/occupied = T2.is_occupied(PLANE_DECAL)
 			if(occupied)
 				caller.to_chat(span("warning","You can't draw an enchantment circle here, \the [occupied.name] is in the way!"))
-				return FALSE
+				return TRUE
+
 		var/obj/structure/interactive/enchantment_circle/EC = new(T)
 		INITIALIZE(EC)
 		GENERATE(EC)
@@ -57,6 +60,7 @@
 			qdel(src)
 		else
 			update_sprite()
+
 		return TRUE
 
 	return ..()

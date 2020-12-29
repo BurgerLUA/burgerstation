@@ -13,7 +13,12 @@
 
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	object = object.defer_click_on_object(location,control,params)
+
+	INTERACT_CHECK_OTHER(object)
+	INTERACT_DELAY(10)
 
 	if(!is_item(object) || object == src)
 		return ..()

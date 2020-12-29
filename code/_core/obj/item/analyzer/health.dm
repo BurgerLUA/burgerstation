@@ -9,6 +9,8 @@
 	var/advanced = FALSE
 
 /obj/item/analyzer/health/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	advanced = !advanced
 	caller.to_chat(span("notice","Advanced diagnostics is [advanced ? "enabled" : "disabled"]."))
 	return TRUE

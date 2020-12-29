@@ -1,5 +1,7 @@
 /obj/hud/inventory/click_self(var/mob/caller)
 
+	//No checks needed here.
+
 	if(src.defer_click_on_object() != src)
 		return ..()
 

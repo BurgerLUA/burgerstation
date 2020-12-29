@@ -38,6 +38,8 @@
 	return TRUE
 
 /obj/item/weapon/ranged/magic/scroll/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	open = !open
 	caller.to_chat(span("notice","You [open ? "unravel" : "roll up"] the scroll."))
 	update_sprite()

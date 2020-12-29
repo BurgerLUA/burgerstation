@@ -111,6 +111,8 @@
 
 /obj/item/grenade/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+
 	if(stored_trigger)
 		stored_trigger.click_self(caller)
 

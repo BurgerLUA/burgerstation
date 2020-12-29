@@ -29,6 +29,8 @@
 	return .
 
 /obj/item/device/timer/click_self(var/mob/caller)
+	INTERACT_CHECK
+	SPAM_CHECK(5)
 	trigger(caller,src,-1,-1)
 	return TRUE
 

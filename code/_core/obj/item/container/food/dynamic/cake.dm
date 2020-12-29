@@ -19,6 +19,9 @@
 
 /obj/item/container/food/dynamic/cake/click_self(var/mob/caller,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
 		raw_icon_state = "dough_ball"
 		cooked_icon_state = "cake"

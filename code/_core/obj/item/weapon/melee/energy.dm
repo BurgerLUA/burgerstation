@@ -20,6 +20,8 @@
 	return .
 
 /obj/item/weapon/melee/energy/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	enabled = !enabled
 	update_sprite()
 	return TRUE
@@ -110,12 +112,15 @@
 	size = SIZE_2
 
 /obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
-	SPAM_CHECK(20)
+
 	. = ..()
-	if(enabled)
-		play('sound/weapons/energy/energy_on.ogg',src)
-	else
-		play('sound/weapons/energy/energy_off.ogg',src)
+
+	if(.)
+		SPAM_CHECK(20)
+		if(enabled)
+			play('sound/weapons/energy/energy_on.ogg',src)
+		else
+			play('sound/weapons/energy/energy_off.ogg',src)
 	return .
 
 
@@ -226,10 +231,14 @@
 	weight = 25
 
 /obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller)
+
 	. = ..()
-	SPAM_CHECK(20)
-	if(enabled)
-		play('sound/weapons/magic/ash.ogg',src)
-	else
-		play('sound/weapons/magic/ash.ogg',src)
+
+	if(.)
+		SPAM_CHECK(20)
+		if(enabled)
+			play('sound/weapons/magic/ash.ogg',src)
+		else
+			play('sound/weapons/magic/ash.ogg',src)
+
 	return .

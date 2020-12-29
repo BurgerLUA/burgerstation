@@ -18,6 +18,9 @@
 	if(next_shoot_time > world.time + 1)
 		return TRUE
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	caller.to_chat(span("notice","You [action_name] \the [src]."))
 
 	eject_chambered_bullet(caller,get_turf(src),TRUE)
@@ -42,6 +45,6 @@
 
 /obj/item/weapon/ranged/bullet/pump/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
 	return FALSE
-	
+
 /obj/item/weapon/ranged/bullet/pump/get_examine_list(var/mob/caller)
 	return ..() + div("notice","[get_ammo_count()] shell\s remaining in the tube.")

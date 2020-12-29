@@ -15,6 +15,9 @@
 
 /obj/item/herald_mirror/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	if(!is_advanced(caller))
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE

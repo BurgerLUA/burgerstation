@@ -40,16 +40,19 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	return .
 
 /obj/item/device/radio/click_self(var/mob/caller,location,control,params)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	broadcasting = !broadcasting
 	caller.to_chat(span("notice","You toggle the receiver to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
 	return TRUE
 
 /obj/item/device/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_inventory(object))
 		return ..()
+
+	INTERACT_CHECK
+
 	receiving = !receiving
 	caller.to_chat(span("notice","You toggle the speaker <b>[receiving ? "on" : "off"]</b>."))
 	return TRUE

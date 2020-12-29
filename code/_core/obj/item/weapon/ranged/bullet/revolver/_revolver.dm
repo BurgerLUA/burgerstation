@@ -31,6 +31,10 @@
 	return current_chamber
 
 /obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	open = !open
 
 	if(open)

@@ -19,6 +19,9 @@
 
 /obj/item/weapon/melee/staff_of_healing/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	if(!SSthinking.all_thinkers[src])
 		start_thinking(src)
 		caller.to_chat(span("notice","You activate \the [src.name]'s passive healing effect."))

@@ -92,6 +92,9 @@
 
 /obj/item/weapon/melee/tool/welder/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	if(active)
 		active = FALSE
 		update_sprite()

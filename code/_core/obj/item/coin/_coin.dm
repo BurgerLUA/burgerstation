@@ -19,6 +19,9 @@
 
 /obj/item/coin/antag_token/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	if(!caller.client || !caller.client.globals)
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE

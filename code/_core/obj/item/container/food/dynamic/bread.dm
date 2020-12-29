@@ -19,6 +19,9 @@
 
 /obj/item/container/food/dynamic/bread/click_self(var/mob/caller,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
 		if(reagents.volume_current <= 10)
 			raw_icon_state = "dough_ball_small"

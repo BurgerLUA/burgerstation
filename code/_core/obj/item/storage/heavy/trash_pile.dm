@@ -42,8 +42,10 @@
 
 
 /obj/item/storage/heavy/trash_pile/click_self(var/mob/caller)
+
 	. = ..()
-	if(!meatman_spawned)
+
+	if(. && !meatman_spawned)
 		loc.visible_message(span("danger","A disturbed beefman crawls out of \the [src.name]!"))
 		var/mob/living/advanced/npc/beefman/B = new(src.loc)
 		INITIALIZE(B)
@@ -51,4 +53,5 @@
 		FINALIZE(B)
 		B.face_atom(caller)
 		meatman_spawned = TRUE
+
 	return .

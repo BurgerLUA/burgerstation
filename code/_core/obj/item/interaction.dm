@@ -1,4 +1,7 @@
-/obj/item/click_self(caller,location,control,params)
+/obj/item/click_self(var/mob/caller,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
 
 	if(!length(inventories))
 		return FALSE
