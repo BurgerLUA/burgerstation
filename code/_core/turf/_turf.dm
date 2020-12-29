@@ -153,18 +153,6 @@
 
 	return ..()
 
-/*
-/turf/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
-		var/obj/structure/S = object
-		if(!S.anchored)
-			S.Move(src)
-			return TRUE
-
-	return ..()
-*/
-
 /turf/proc/setup_turf_light(var/sunlight_freq=VIEW_RANGE*0.5)
 	return FALSE
 

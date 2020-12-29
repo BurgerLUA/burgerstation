@@ -239,10 +239,13 @@
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(is_item(defer_object) && get_dist(caller,object) <= 1 && get_dist(caller,src) <= 1) //Put the item in the inventory slot.
+	if(is_item(defer_object)) //Put the item in the inventory slot.
 		var/obj/item/object_as_item = defer_object
-		if(src.add_object(object_as_item))
-			return TRUE
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DELAY(1)
+		src.add_object(object_as_item)
+		return TRUE
 
 	return ..()
 
