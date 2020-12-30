@@ -471,7 +471,9 @@
 		return FALSE
 	if(additional_clothing_parent && is_inventory(src.loc))
 		return FALSE
-	return can_hold
+	if(!can_hold)
+		return FALSE
+	return TRUE
 
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	if(delete_on_drop)

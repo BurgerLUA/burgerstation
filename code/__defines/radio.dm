@@ -34,8 +34,6 @@
 
 /proc/frequency_to_name(var/frequency)
 
-	world.log << "[frequency] & [RADIO_FREQ_COMMON]: [frequency & RADIO_FREQ_COMMON]."
-
 	switch(frequency)
 		if(RADIO_FREQ_ALPHA)
 			return "Alpha"
