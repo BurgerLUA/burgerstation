@@ -9,3 +9,6 @@
 	reagents = /reagent_container/stomach
 
 	has_life = TRUE
+
+/obj/item/organ/internal/stomach/robotic
+	name = "robotic stomach"

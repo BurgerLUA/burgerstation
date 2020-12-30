@@ -129,15 +129,14 @@ var/global/list/equipped_antags = list()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
 
 	var/mob/living/advanced/player/P = caller
 
 	if(P.active_structure == src)
 		P.set_structure_unactive()
-		INTERACT_DELAY(1)
 	else
 		P.set_structure_active(src)
-		INTERACT_DELAY(10)
 
 	return TRUE
 

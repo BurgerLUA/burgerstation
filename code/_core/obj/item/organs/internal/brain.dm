@@ -31,3 +31,7 @@
 		var/mob/living/advanced/A = src.loc
 		A.death()
 	return ..()
+
+
+/obj/item/organ/internal/brain/robotic
+	name = "robotic brain"

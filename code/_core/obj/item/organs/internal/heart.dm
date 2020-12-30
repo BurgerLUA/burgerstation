@@ -13,6 +13,14 @@
 	var/heart_ticks = 0
 
 	has_life = FALSE
+
+
+
+/obj/item/organ/internal/heart/robotic
+	name = "robotic heart"
+
+
+
 /*
 /obj/item/organ/internal/heart/on_life()
 

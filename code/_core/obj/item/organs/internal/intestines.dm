@@ -5,3 +5,6 @@
 	desc = "Produces vitamins and waste. Requires digested nutrients, digested liquid, and oxygenated blood."
 
 	attach_flag = BODY_GROIN
+
+/obj/item/organ/internal/intestines/robotic
+	name = "robotic intestines"

@@ -38,7 +38,7 @@
 
 	var/bullet_seed //For icon generation.
 
-	drop_sound = 'sound/items/bullet_casing.ogg'
+	drop_sound = 'sound/items/drop/bullet.ogg'
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()

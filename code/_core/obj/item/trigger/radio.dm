@@ -63,11 +63,14 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	INTERACT_CHECK
 
-	var/fixed_delta = delta_y > 0 ? 1 : -1
+	var/fixed_delta = delta_y > 0 ? 2 : -2
 
 	var/old_frequency = frequency
 
-	frequency = clamp(frequency + fixed_delta*0.2,frequency_min,frequency_max)
+	frequency = 1 + FLOOR(frequency + fixed_delta,2)
+
+	if(frequency > frequency_max) frequency = frequency_max
+	if(frequency < frequency_min) frequency = frequency_min
 
 	var/frequency_string = frequency_to_name(frequency)
 	if(frequency_string == "Unknown")
@@ -78,9 +81,9 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	if(old_frequency == frequency)
 		caller.to_chat(span("warning","The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"]!"))
 	else if(spam_fix_time <= world.time)
-		caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency] kHz[freq]..."))
+		caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency*0.1] kHz[freq]..."))
 	else
-		caller.to_chat(span("notice","...[frequency] kHz[freq]..."))
+		caller.to_chat(span("notice","...[frequency*0.1] kHz[freq]..."))
 
 	spam_fix_time = world.time + 20
 
@@ -133,8 +136,8 @@ list(
 /obj/item/device/radio/nanotrasen
 	name = "\improper NanoTrasen Radio"
 
-	frequency_min = RADIO_FREQ_ALPHA - 2
-	frequency_max = RADIO_FREQ_SHIP + 2
+	frequency_min = RADIO_FREQ_ALPHA - 20
+	frequency_max = RADIO_FREQ_SHIP + 20
 
 	value = 15
 
