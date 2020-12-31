@@ -68,7 +68,7 @@
 	var/initial_fire = owner.on_fire
 
 	if(owner.ignite(magnitude) && !initial_fire)
-		owner.visible_message(span("danger","\The [owner.name] is set on fire!"))
+		owner.visible_message(span("danger","\The [owner.name] is set on fire!"),span("danger","You're set on fire!"))
 
 	return .
 

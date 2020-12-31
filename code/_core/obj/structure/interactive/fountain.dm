@@ -88,7 +88,7 @@
 				L.mana_regen_buffer = max(L.mana_regen_buffer,600)
 			if(3)
 				L.stamina_regen_buffer = max(L.stamina_regen_buffer,600)
-		visible_message(span("notice","\The [caller.name] activates \the [src.name]'s energies, replenishing themself."))
+		visible_message(span("notice","\The [caller.name] activates \the [src.name]'s energies, replenishing themself."),span("notice","You activate \the [src.name]'s energies, replenishing yourself."))
 		filled = FALSE
 		update_sprite()
 		return TRUE

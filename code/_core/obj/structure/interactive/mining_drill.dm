@@ -63,7 +63,7 @@
 		caller.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
 		return FALSE
 	if(caller)
-		visible_message(span("notice","\The [caller.name] activates \the [src.name]."))
+		visible_message(span("notice","\The [caller.name] activates \the [src.name]."),span("notice","You activate \the [src.name]."))
 	else
 		visible_message(span("warning","\The [src.name] powers up on its own!."))
 	set_anchored(TRUE)
@@ -73,7 +73,7 @@
 
 /obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
 	if(caller)
-		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."))
+		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."),span("notice","You turn off \the [src.name]."))
 	else
 		visible_message(span("warning","\The [src.name] shuts itself down!"))
 	set_anchored(FALSE)

@@ -49,7 +49,7 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 
-	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."))
+	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."),span("notice","You rename \the [I.name] to [desired_name]."))
 
 	log_admin("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
 

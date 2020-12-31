@@ -31,7 +31,7 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."))
+		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."),span("notice","You clear \the [object.name] with \the [src.name]."))
 		qdel(object)
 		return TRUE
 
@@ -57,7 +57,7 @@
 		INITIALIZE(EC)
 		GENERATE(EC)
 		FINALIZE(EC)
-		caller.visible_message(span("notice","\The [caller.name] touches \the [T.name] with \the [src.name], magically creating \a [EC.name]."))
+		caller.visible_message(span("notice","\The [caller.name] touches \the [T.name] with \the [src.name], magically creating \a [EC.name]."),span("notice","You touch \the [T.name] with \the [src.name], magically creating \a [EC.name]."))
 		uses_left--
 		if(uses_left <= 0)
 			qdel(src)

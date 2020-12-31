@@ -1,5 +1,5 @@
 /mob/living/proc/death_message()
-	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
+	src.visible_message("<b>\The [src.name]</b> seizes up and falls limp, their eyes dead and lifeless...")
 	return TRUE
 
 /mob/living/proc/death()

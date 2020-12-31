@@ -7,7 +7,11 @@
 
 	var/loot/desired_loot = /loot/trash_pile
 
-	var/meatman_spawned = FALSE
+	var/mob/living/advanced/npc/beefman/stored_beefman
+
+/obj/item/storage/heavy/trash_pile/Destroy()
+	QDEL_NULL(stored_beefman)
+	return ..()
 
 /obj/item/storage/heavy/trash_pile/Finalize()
 	prune_inventory()
@@ -16,10 +20,12 @@
 /obj/item/storage/heavy/trash_pile/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,11)]"
-	if(prob(70) || z != 1)
-		meatman_spawned = TRUE
-
-	if(prob(20))
+	if(prob(10) || z != 1)
+		stored_beefman = new(src)
+		INITIALIZE(stored_beefman)
+		GENERATE(stored_beefman)
+		FINALIZE(stored_beefman)
+	else if(prob(20))
 		new /mob/living/simple/passive/mouse/grey(src.loc)
 
 	return .
@@ -45,13 +51,12 @@
 
 	. = ..()
 
-	if(. && !meatman_spawned)
-		loc.visible_message(span("danger","A disturbed beefman crawls out of \the [src.name]!"))
-		var/mob/living/advanced/npc/beefman/B = new(src.loc)
-		INITIALIZE(B)
-		GENERATE(B)
-		FINALIZE(B)
-		B.face_atom(caller)
-		meatman_spawned = TRUE
+	if(. && stored_beefman)
+		var/turf/T = get_turf(src)
+		T.visible_message(span("danger","A disturbed beefman crawls out of \the [src.name]!"))
+		stored_beefman.force_move(T)
+		stored_beefman.ai.set_active(TRUE)
+		stored_beefman.face_atom(caller)
+		stored_beefman = null
 
 	return .

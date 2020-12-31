@@ -107,10 +107,10 @@
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
 
 	if(!soulgem || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
-		src.visible_message(span("warning","\The [src.name] reacts to [caller.name]'s words... but slowly fizzles out."))
+		caller.visible_message(span("warning","\The [src.name] reacts to [caller.name]'s words... but slowly fizzles out."),span("warning","\The [src.name] reacts to your words... but slowly fizzles out."))
 		return FALSE
 
-	src.visible_message(span("danger","\The [src.name] reacts to [caller.name]'s words!"))
+	caller.visible_message(span("danger","\The [src.name] reacts to [caller.name]'s words!"),span("warning","\The [src.name] reacts to your words!"))
 
 	weapon_to_enchant.enchantment = new stored_book.stored_enchantment
 	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem) * 500

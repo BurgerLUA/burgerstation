@@ -62,7 +62,7 @@
 	draw_delay = initial(draw_delay)
 	var/turf/T = get_turf(src)
 	attached_to = target
-	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."))
+	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."),span("notice","You attach \the [src.name] to \the [attached_to.name]."))
 	start_thinking(src)
 	update_sprite()
 	return TRUE
@@ -89,7 +89,7 @@
 	if(!can_attach_to(caller,target))
 		return FALSE
 
-	caller.visible_message(span("notice","\The [caller.name] begins to attach \the [src.name] to \the [target.name]."))
+	caller.visible_message(span("warning","\The [caller.name] begins to attach \the [src.name] to \the [target.name]..."),span("notice","You begin to attach \the [src.name] to \the [target.name]..."))
 
 	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/attach,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_attach_to,caller,target)

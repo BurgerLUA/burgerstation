@@ -189,7 +189,7 @@
 
 /mob/living/simple/turret/deployable/proc/pack_up(var/mob/caller)
 
-	caller.visible_message(span("notice","\The [caller.name] packs up \the [src.name]."))
+	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
 	var/obj/item/deployable/mob/sentry/S = new(get_turf(src))
 	INITIALIZE(S)
@@ -217,7 +217,7 @@
 	INTERACT_DELAY(10)
 
 	if(can_pack_up(caller))
-		caller.visible_message(span("notice","\The [caller.name] starts to pack up \the [src.name]..."))
+		caller.visible_message(span("warning","\The [caller.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/pack_up,caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_pack_up,caller)
 

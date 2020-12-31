@@ -134,7 +134,7 @@
 		return FALSE
 
 	if(!charging_device)
-		visible_message(span("notice","\The [src.name] gives a bright ding."))
+		visible_message(span("notice","\The [src.name] emits a bright ding."))
 		return FALSE
 
 	return .
