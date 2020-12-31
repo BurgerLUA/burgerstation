@@ -4,7 +4,9 @@
 	id = BODY_HEAD
 	screen_loc = "LEFT,BOTTOM+3"
 	item_slot = SLOT_HEAD
-	worn_slots = 1
+
+	max_slots = 1
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -18,7 +20,9 @@
 	id = BODY_NECK
 	screen_loc = "LEFT+2,BOTTOM+2"
 	item_slot = SLOT_NECK
-	worn_slots = 1
+
+	max_slots = 1
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -32,7 +36,9 @@
 	id = BODY_FACE
 	screen_loc = "LEFT+1,BOTTOM+3"
 	item_slot = SLOT_FACE | SLOT_EYES | SLOT_FACE_WRAP
-	worn_slots = 3
+
+	max_slots = 3
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -57,7 +63,9 @@
 	icon_state = "slot_ears"
 	screen_loc = "LEFT+2,BOTTOM+3"
 	item_slot = SLOT_EAR
-	worn_slots = 1
+
+	max_slots = 1
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 

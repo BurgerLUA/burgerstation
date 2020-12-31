@@ -105,7 +105,7 @@
 	else
 		for(var/k in inventory)
 			var/obj/hud/inventory/I = k
-			I.delete_all_objects()
+			I.delete_objects()
 
 	remove_all_organs()
 	remove_all_buttons()

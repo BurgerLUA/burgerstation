@@ -397,7 +397,7 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/add_worn_item(var/obj/item/C,var/slient=FALSE)
 	for(var/k in inventory)
 		var/obj/hud/inventory/I = k
-		if(I.add_worn_object(C,FALSE,silent=FALSE))
+		if(I.add_object(C,FALSE,silent=FALSE))
 			return TRUE
 
 	return FALSE
@@ -507,12 +507,12 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/get_held_left()
 	if(left_hand)
-		return left_hand.get_top_held_object()
+		return left_hand.get_top_object()
 	return null
 
 /mob/living/advanced/proc/get_held_right()
 	if(right_hand)
-		return right_hand.get_top_held_object()
+		return right_hand.get_top_object()
 	return null
 
 

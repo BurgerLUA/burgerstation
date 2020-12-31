@@ -5,8 +5,9 @@
 	id = BODY_HAND_LEFT + "_worn"
 	screen_loc = "LEFT+2,BOTTOM+1"
 	item_slot = SLOT_HAND_LEFT
-	worn_slots = 1
-	held_slots = 0
+
+	max_slots = 1
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -20,8 +21,9 @@
 	id = BODY_HAND_RIGHT + "_worn"
 	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT
-	worn_slots = 1
-	held_slots = 0
+
+	max_slots = 1
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -37,8 +39,8 @@
 	screen_loc = "CENTER+0.5,BOTTOM"
 	click_flags = LEFT_HAND
 	item_slot = SLOT_HAND_LEFT
-	held_slots = 1
-	worn_slots = 0
+
+	max_slots = 1
 
 	essential = TRUE
 
@@ -50,7 +52,7 @@
 
 	priority = 2
 
-/obj/hud/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
+/obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
@@ -74,8 +76,8 @@
 	screen_loc = "CENTER-0.5,BOTTOM"
 	click_flags = RIGHT_HAND
 	item_slot = SLOT_HAND_RIGHT
-	held_slots = 1
-	worn_slots = 0
+
+	max_slots = 1
 
 	essential = TRUE
 
@@ -87,7 +89,7 @@
 
 	priority = 3
 
-/obj/hud/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
+/obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner

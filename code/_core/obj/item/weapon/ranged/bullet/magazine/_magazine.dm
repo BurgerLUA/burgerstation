@@ -104,7 +104,7 @@
 		var/obj/hud/inventory/I = object
 		eject_magazine(caller)
 		if(M && !M.qdeleting)
-			I.add_held_object(M)
+			I.add_object(M)
 		return TRUE
 
 	return ..()

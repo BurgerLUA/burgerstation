@@ -37,7 +37,7 @@
 	if(!isturf(caller.loc))
 		return FALSE
 
-	if(length(held_objects) || grabbed_object)
+	if(is_occupied())
 		caller.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE
 

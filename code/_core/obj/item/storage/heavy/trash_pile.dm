@@ -41,7 +41,7 @@
 	var/filled_slots = 0
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I = k
-		filled_slots += length(I.held_objects)
+		filled_slots += length(I.contents)
 	if(filled_slots <= 0)
 		qdel(src)
 	return .

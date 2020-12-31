@@ -86,7 +86,7 @@
 
 	if(caller.attack_flags & CONTROL_MOD_DROP) //Drop the object if we are telling it to drop.
 		if(parent_inventory)
-			var/obj/item/I = parent_inventory.get_top_held_object()
+			var/obj/item/I = parent_inventory.get_top_object()
 			return unwield(caller,I)
 		if(grabbed_object)
 			return release_object(caller)
@@ -253,15 +253,18 @@
 	return src.loc
 
 obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
-	if(!length(src.held_objects))
-		return FALSE
 
-	return get_top_held_object().drop_item(new_location,pixel_x_offset,pixel_y_offset)
+	var/obj/item/I = get_top_object()
+
+	if(!I)
+		return null
+
+	return I.drop_item(new_location,pixel_x_offset,pixel_y_offset)
 
 /obj/hud/inventory/defer_click_on_object(location,control,params)
 
 	if(length(held_objects))
-		return get_top_held_object()
+		return get_top_object()
 
 	var/worn_length = length(worn_objects)
 
@@ -275,7 +278,7 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 				return I2
 			return I
 
-		return get_top_worn_object()
+		return get_top_object()
 
 	if(grabbed_object)
 		return grabbed_object

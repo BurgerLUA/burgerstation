@@ -39,7 +39,7 @@
 	return ..()
 
 /obj/hud/inventory/proc/get_top_object()
-	var/obj/item/I = src.get_top_held_object()
+	var/obj/item/I = src.get_top_object()
 	if(I) return I
-	I = src.get_top_worn_object()
+	I = src.get_top_object()
 	return I

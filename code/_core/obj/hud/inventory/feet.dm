@@ -5,8 +5,9 @@
 	screen_loc = "LEFT+2,BOTTOM"
 	click_flags = LEFT_FOOT
 	item_slot = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U | SLOT_FOOT_LEFT_O
-	worn_slots = 3
-	held_slots = 0
+
+	max_slots = 3
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -19,8 +20,9 @@
 	screen_loc = "LEFT+1,BOTTOM"
 	click_flags = RIGHT_FOOT
 	item_slot = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U | SLOT_FOOT_RIGHT_O
-	worn_slots = 3
-	held_slots = 0
+
+	max_slots = 3
+	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 

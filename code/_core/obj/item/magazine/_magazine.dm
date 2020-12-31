@@ -144,7 +144,7 @@
 		INTERACT_DELAY(1)
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
-		if(I.add_held_object(B))
+		if(I.add_object(B))
 			B.update_sprite()
 			stored_bullets -= B
 			update_sprite()

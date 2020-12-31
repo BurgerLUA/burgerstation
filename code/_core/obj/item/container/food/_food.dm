@@ -70,7 +70,7 @@
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/IN = inventories[i]
-		var/obj/item/IT = IN.get_top_held_object()
+		var/obj/item/IT = IN.get_top_object()
 		if(!IT || !IT.reagents)
 			continue
 		total_reagents += IT.reagents.volume_current
@@ -80,7 +80,7 @@
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/IN = inventories[i]
-		var/obj/item/IT = IN.get_top_held_object()
+		var/obj/item/IT = IN.get_top_object()
 		if(!IT || !IT.reagents)
 			continue
 		IT.reagents.transfer_reagents_to(T, IT.reagents.volume_current/calculated_bites, FALSE )

@@ -42,7 +42,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		var/obj/hud/inventory/I = object
-		if(I.add_held_object(battery))
+		if(I.add_object(battery))
 			caller.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
 			battery.update_sprite()
 			battery = null

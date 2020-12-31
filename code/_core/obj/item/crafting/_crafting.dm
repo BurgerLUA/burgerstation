@@ -89,7 +89,7 @@
 	var/obj/hud/inventory/crafting/result/product_slot
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
-		if(R.get_top_held_object())
+		if(R.get_top_object())
 			caller.to_chat(span("warning","Remove the already completed item in the product slot before doing this!"))
 			return FALSE
 		else
@@ -108,7 +108,7 @@
 			INITIALIZE(I3)
 			GENERATE(I3)
 			FINALIZE(I3)
-			product_slot.add_held_object(I3,caller,FALSE,TRUE)
+			product_slot.add_object(I3,caller,FALSE,TRUE)
 
 			for(var/obj/item/I in recipe_check)
 				if(R.transfer_reagents && I.reagents && I3.reagents)

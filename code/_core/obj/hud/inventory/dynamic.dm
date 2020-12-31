@@ -10,13 +10,11 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
-	held_slots = 1
-	worn_slots = 0
+	max_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
 
-	should_add_worn = FALSE
-	should_add_held = FALSE
+	should_add_to_advanced = FALSE
 
 	var/slot_num = 0
 
@@ -47,7 +45,7 @@
 		if(loc && loc == I)
 			return FALSE
 
-		if(held_slots <= 0)
+		if(max_slots <= 0)
 			return FALSE
 
 		if(is_occupied(TRUE,TRUE))
@@ -55,7 +53,7 @@
 				owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 			return FALSE
 
-		if(length(held_objects) >= held_slots)
+		if(length(contents) >= max_slots)
 			if(messages) owner.to_chat(span("warning","You don't see how you can fit any more objects inside \the [src.loc.name]!"))
 			return FALSE
 

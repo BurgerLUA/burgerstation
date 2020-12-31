@@ -44,7 +44,7 @@
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/IN = inventories[i]
-		var/obj/item/IT = IN.get_top_held_object()
+		var/obj/item/IT = IN.get_top_object()
 		if(!IT)
 			continue
 		var/image/IM = new/image(IT.icon,IT.icon_state)

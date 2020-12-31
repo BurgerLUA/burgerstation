@@ -18,17 +18,18 @@
 
 	value = 0
 
-	var/list/obj/item/held_objects //Items that are held, and not worn.
-	var/list/obj/item/worn_objects //Items that are worn, and not held.
 	var/atom/movable/grabbed_object
 
-	var/held_slots = 1 //How many items this object can hold.
+	var/worn = FALSE //Set to TRUE if it's a worn object.
+
+	var/max_slots = 1
+
 	var/max_size = -1 //Maximum amount of size this object can hold. -1 basically means it can't hold anything.
-
-	var/worn_slots = 1 //How many items this object can wear
-	var/worn_allow_duplicate = FALSE //Can you wear more than one item of the same slot at once?
-
 	var/total_size = 0 //Var storage value that is updated every time an item is changed.
+
+	var/should_add_to_advanced = TRUE //Set to false if it's some sort of special object that doesn't count towards the owner's inventory.
+
+	var/worn_allow_duplicate = FALSE //Can you wear more than one item of the same slot at once?
 
 	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to clothing only.
 
@@ -70,21 +71,15 @@
 
 	var/draw_extra = FALSE
 
-	var/should_add_held = TRUE
-	var/should_add_worn = TRUE
-
 	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
 
 	var/allow_quick_equip = TRUE
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/inventory/proc/is_occupied(var/ignore_held = FALSE, var/ignore_worn = FALSE)
+/obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
 
-	if(!ignore_held && get_top_held_object())
-		return TRUE
-
-	if(!ignore_worn && get_top_worn_object())
+	if(!ignore_contents && length(contents))
 		return TRUE
 
 	if(grabbed_object)
@@ -112,16 +107,6 @@
 
 	remove_from_owner()
 
-	for(var/k in held_objects)
-		var/obj/item/I = k
-		qdel(I)
-	held_objects.Cut()
-
-	for(var/k in worn_objects)
-		var/obj/item/I = k
-		qdel(I)
-	worn_objects.Cut()
-
 	owner = null
 
 	parent_inventory = null
@@ -139,8 +124,6 @@
 		src.mouse_opacity = 0
 
 /obj/hud/inventory/New(var/desired_loc)
-	held_objects = list()
-	worn_objects = list()
 	. = ..()
 	update_sprite()
 	return .
@@ -346,45 +329,39 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass=FALSE,var/silent=FALSE) //Prioritize wearing it, then holding it.
-
-	if((bypass || I.can_be_worn(owner,src,messages)) && add_worn_object(I,messages,bypass,silent))
-		return TRUE
-
-	if((bypass || I.can_be_held(owner,src)) && add_held_object(I,messages,bypass,silent))
-		return TRUE
-
-	return FALSE
-
-/obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
+/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 
 	if(!I)
 		return FALSE
 
-	if(bypass_checks && held_slots <= 0)
+	if(bypass_checks && max_slots <= 0)
 		return FALSE
 
-	if(!bypass_checks && !can_hold_object(I,messages))
+	if(!bypass_checks && !can_slot_object(I,messages))
 		return FALSE
 
 	if(I.qdeleting)
 		I.drop_item(null)
 		return FALSE
 
+
 	var/atom/old_location = I.loc
 
 	I.drop_item(src,silent=silent)
-	//I.plane = PLANE_HUD_OBJ
-	held_objects += I
 	I.pre_pickup(old_location,src)
 
 	if(owner)
 		I.update_owner(owner)
-		if(should_add_held && is_advanced(owner))
+		if(is_advanced(owner) && should_add_to_advanced)
 			var/mob/living/advanced/A = owner
-			A.held_objects += I
-			A.update_items(should_update_eyes = FALSE, should_update_protection = FALSE, should_update_clothes = FALSE)
-			update_held_icon(I)
+			if(worn)
+				A.worn_objects += I
+				update_worn_icon(I)
+			else
+				A.held_objects += I
+				update_held_icon(I)
+			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+
 
 	update_stats()
 	I.on_pickup(old_location,src)
@@ -396,53 +373,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE,var/silent=FALSE)
-
-	if(!I)
-		return FALSE
-
-	if(bypass_checks && worn_slots <= 0)
-		return FALSE
-
-	if(!bypass_checks && !can_wear_object(I,messages))
-		return FALSE
-
-	if(!is_advanced(owner))
-		return FALSE
-
-	if(I.qdeleting)
-		I.drop_item(null)
-		return FALSE
-
-	var/mob/living/advanced/A = owner
-	var/atom/old_location = I.loc
-
-	I.drop_item(src,silent=silent)
-	//I.plane = PLANE_HUD_OBJ
-	worn_objects += I
-	I.pre_pickup(old_location,src)
-
-	if(A)
-		I.update_owner(A)
-		if(should_add_worn)
-			A.worn_objects += I
-			A.update_items()
-			update_worn_icon(I)
-
-	update_stats()
-	I.on_pickup(old_location,src)
-	vis_contents |= I
-
-	if(I.loc != src) //Something went wrong.
-		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02."))
-		I.drop_item(get_turf(src))
-
-	return TRUE
-
-/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update) //BEHOLD. SHITCODE.
-
-	if(!is_advanced(owner))
-		return FALSE
+/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
 
 	var/mob/living/advanced/A = owner
 
@@ -467,9 +398,10 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
+
+/obj/hud/inventory/proc/drop_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
-	for(var/k in worn_objects)
+	for(var/k in contents)
 		var/obj/item/I = k
 		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
 			continue
@@ -478,48 +410,18 @@
 
 	return dropped_objects
 
-/obj/hud/inventory/proc/drop_held_objects(var/turf/T,var/exclude_soulbound=FALSE)
-	var/list/dropped_objects = list()
-	for(var/k in held_objects)
-		var/obj/item/I = k
-		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
-			continue
-		if(remove_object(I,T))
-			dropped_objects += I
-
-	return dropped_objects
-
-/obj/hud/inventory/proc/delete_held_objects()
-	for(var/k in held_objects)
+/obj/hud/inventory/proc/delete_objects()
+	for(var/k in contents)
 		var/obj/item/I = k
 		I.delete_on_drop = TRUE
 		remove_object(I,owner.loc)
 
-/obj/hud/inventory/proc/delete_worn_objects()
-	for(var/k in worn_objects)
-		var/obj/item/I = k
-		I.delete_on_drop = TRUE
-		remove_object(I,owner.loc)
-
-/obj/hud/inventory/proc/drop_all_objects(var/turf/T,var/exclude_soulbound=FALSE)
-	var/list/dropped_objects = list()
-	dropped_objects += drop_held_objects(T,exclude_soulbound)
-	dropped_objects += drop_worn_objects(T,exclude_soulbound)
-	return dropped_objects
-
-/obj/hud/inventory/proc/delete_all_objects()
-	delete_held_objects()
-	delete_worn_objects()
 
 /obj/hud/inventory/proc/get_weight()
 
 	. = 0
 
-	for(var/k in held_objects)
-		var/obj/item/I = k
-		. += I.get_weight()
-
-	for(var/k in worn_objects)
+	for(var/k in contents)
 		var/obj/item/I = k
 		. += I.get_weight()
 
@@ -527,57 +429,41 @@
 
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
-	var/was_worn = FALSE
-	//var/was_held = FALSE
-	var/was_removed = FALSE
+	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
+	I.pixel_x = pixel_x_offset
+	I.pixel_y = pixel_y_offset
+	I.on_drop(src,drop_loc,silent)
 
-	if(I in held_objects)
-		held_objects -= I
-		if(owner && is_advanced(owner) && should_add_held)
+	update_stats()
+
+	if(owner && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(worn && is_wings(I))
+			A.remove_overlay("wings_behind")
+			A.remove_overlay("wings_front")
+			A.remove_overlay("wings_side")
+		else
+			A.remove_overlay("\ref[I]")
+
+	if(owner)
+		I.set_dir(owner.dir)
+		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(A.held_objects)
-				A.held_objects -= I
-		was_removed = TRUE
-		//was_held = TRUE
-
-
-	if(I in worn_objects)
-		worn_objects -= I
-		if(owner && is_advanced(owner) && should_add_worn)
-			var/mob/living/advanced/A = owner
-			if(A.worn_objects)
+			if(A.worn)
 				A.worn_objects -= I
-		was_removed = TRUE
-		was_worn = TRUE
-
-	if(was_removed)
-		I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
-		I.pixel_x = pixel_x_offset
-		I.pixel_y = pixel_y_offset
-		//I.plane = initial(I.plane)
-		I.on_drop(src,drop_loc,silent)
-		update_stats()
-		if(owner && is_advanced(owner))
-			var/mob/living/advanced/A = owner
-			if(is_wings(I))
-				A.remove_overlay("wings_behind")
-				A.remove_overlay("wings_front")
-				A.remove_overlay("wings_side")
 			else
-				A.remove_overlay("\ref[I]")
-		if(owner)
-			I.set_dir(owner.dir)
-			if(is_advanced(owner))
-				var/mob/living/advanced/A = owner
-				A.update_items(should_update_eyes = was_worn, should_update_protection = was_worn, should_update_clothes = was_worn)
-		vis_contents -= I
+				A.held_objects -= I
+			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+
+	vis_contents -= I
 
 	return I
 
 /obj/hud/inventory/proc/update_stats()
+
 	total_size = 0
 
-	for(var/k in held_objects)
+	for(var/k in contents)
 		var/obj/item/O = k
 		total_size += O.size
 
@@ -587,20 +473,47 @@
 	else
 		name = initial(name)
 
-	if(src.loc && is_item(src.loc))
+	if(is_item(src.loc))
 		var/obj/item/I2 = src.loc
 		I2.update_inventory()
 
-/obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
 
-	if(!I)
-		CRASH_SAFE("can_hold_object() called on a null object!")
+	if(!I.item_slot)
 		return FALSE
+
+	if(!is_advanced(owner))
+		return TRUE
+
+	var/mob/living/advanced/A = owner
+	for(var/obj/item/clothing/C in A.worn_objects)
+		if(C == I)
+			continue
+		if(C.ignore_other_slots)
+			continue
+		if(C.loc != I.loc && C.blocks_clothing && (I.item_slot & C.blocks_clothing))
+			if(messages) owner.to_chat(span("warning","\The [C.name] prevents you from removing \the [I.name]!"))
+			return FALSE
+
+	return TRUE
+
+/obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE)
 
 	if(loc && loc == I)
 		return FALSE
 
-	if(held_slots <= 0)
+	if(max_slots <= 0)
+		log_error("Warning: [src.get_debug_name()] had no slots!")
+		return FALSE
+
+	if(length(contents) >= max_slots)
+		/* TODO: REMAKE
+		if(messages)
+			owner.to_chat(span("notice","You cannot seem to fit \the [I.name] on your already existing clothing!"))
+		*/
+		return FALSE
+
+	if(!I.can_be_held(owner,src,messages) || (worn && !I.can_be_worn(owner,src,messages)))
 		return FALSE
 
 	if(is_occupied(TRUE,TRUE))
@@ -610,12 +523,8 @@
 
 	if(is_inventory(I.loc))
 		var/obj/hud/inventory/INV = I.loc
-		if((I in INV.worn_objects) && !INV.can_unwear_object(I,messages))
+		if(INV.worn && !INV.can_unwear_object(I,messages))
 			return FALSE
-
-	if(!I.can_be_held(owner,src))
-		if(messages) owner.to_chat(span("warning","\The [I.name] cannot be held!"))
-		return FALSE
 
 	if(length(item_blacklist))
 		for(var/o in item_blacklist)
@@ -636,9 +545,41 @@
 				owner.to_chat(span("warning","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
 			return FALSE
 
-	if(length(held_objects) >= held_slots)
-		if(messages) owner.to_chat(span("warning","You don't see how you can fit any more objects inside \the [src.loc.name]!"))
-		return FALSE
+	if(worn)
+		if(worn_allow_duplicate)
+			for(var/k in contents)
+				var/obj/item/I2 = k
+				if(I.item_slot & I.item_slot)
+					if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
+					return FALSE
+
+		if(is_clothing(I))
+			var/obj/item/clothing/C = I
+			if(is_advanced(owner))
+				var/mob/living/advanced/A = owner
+				if(C.flags_clothing)
+					for(var/k in A.organs)
+						var/obj/item/organ/O = k
+						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
+							if(messages)
+								owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human feet..."))
+							return FALSE
+						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
+							if(messages)
+								owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human head..."))
+							return FALSE
+				if(C.item_slot)
+					var/list/list_to_check = C.ignore_other_slots ? src.worn_objects : A.worn_objects
+					for(var/obj/item/clothing/C2 in list_to_check)
+						if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
+							if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
+							return FALSE
+
+
+		if(!(I.item_slot & item_slot))
+			if(messages)
+				owner.to_chat(span("notice","You cannot wear \the [I.name] like this!"))
+			return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
 		if(max_size >= 0 && I.size > max_size)
@@ -648,100 +589,11 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/can_unwear_object(var/obj/item/I,var/messages = FALSE)
+/atom/proc/get_top_object()
 
-	if(!I.item_slot)
-		return FALSE
+	var/content_length = length(contents)
 
-	if(!is_advanced(owner))
-		return TRUE
-
-	var/mob/living/advanced/A = owner
-	for(var/obj/item/clothing/C in A.worn_objects)
-		if(C == I)
-			continue
-		if(C.ignore_other_slots)
-			continue
-		if(C.loc != I.loc && C.blocks_clothing && (I.item_slot & C.blocks_clothing))
-			if(messages) owner.to_chat(span("warning","\The [C.name] prevents you from removing \the [I.name]!"))
-			return FALSE
-
-	return TRUE
-
-/obj/hud/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
-
-	if(loc && loc == I)
-		return FALSE
-
-	if(worn_slots <= 0)
-		return FALSE
-
-	if(is_occupied(TRUE,TRUE))
-		if(messages && src.loc)
-			owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
-		return FALSE
-
-	if(is_inventory(I.loc))
-		var/obj/hud/inventory/INV = I.loc
-		if((I in INV.worn_objects) && !INV.can_unwear_object(I,messages))
-			return FALSE
-
-	if(!I.can_be_held(owner,src,messages) || !I.can_be_worn(owner,src,messages))
-		//if(messages) owner.to_chat(span("warning","\The [I] cannot be worn!"))
-		return FALSE
-
-	if(worn_allow_duplicate)
-		for(var/k in worn_objects)
-			var/obj/item/I2 = k
-			if(I.item_slot & I.item_slot)
-				if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
-				return FALSE
-
-	if(is_clothing(I))
-		var/obj/item/clothing/C = I
-		if(is_advanced(owner))
-			var/mob/living/advanced/A = owner
-			if(C.flags_clothing)
-				for(var/k in A.organs)
-					var/obj/item/organ/O = k
-					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
-						if(messages)
-							owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human feet..."))
-						return FALSE
-					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
-						if(messages)
-							owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human head..."))
-						return FALSE
-			if(C.item_slot)
-				var/list/list_to_check = C.ignore_other_slots ? src.worn_objects : A.worn_objects
-				for(var/obj/item/clothing/C2 in list_to_check)
-					if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
-						if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
-						return FALSE
-
-
-	if(!(I.item_slot & item_slot))
-		if(messages)
-			owner.to_chat(span("notice","You cannot wear \the [I.name] like this!"))
-		return FALSE
-
-	if(length(worn_objects) >= worn_slots)
-		if(messages)
-			owner.to_chat(span("notice","You cannot seem to fit \the [I.name] on your already existing clothing!"))
-		return FALSE
-
-	return TRUE
-
-/obj/hud/inventory/proc/get_top_worn_object()
-
-	if(!length(worn_objects))
+	if(!content_length)
 		return null
 
-	return worn_objects[length(worn_objects)]
-
-/obj/hud/inventory/proc/get_top_held_object()
-
-	if(!length(held_objects))
-		return null
-
-	return held_objects[length(held_objects)]
+	return contents[content_length]

@@ -38,7 +38,7 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(quick_mode && !right_hand.get_top_held_object() && handle_quick(object,location,control,params))
+	if(quick_mode && !right_hand.get_top_object() && handle_quick(object,location,control,params))
 		return TRUE
 
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT
@@ -61,7 +61,7 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(quick_mode && !left_hand.get_top_held_object() && handle_quick(object,location,control,params))
+	if(quick_mode && !left_hand.get_top_object() && handle_quick(object,location,control,params))
 		return TRUE
 
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT

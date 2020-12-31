@@ -26,7 +26,7 @@
 			if(processing)
 				caller.to_chat(span("warning","\The [src.name] is too busy processing!"))
 				return TRUE
-			if(I.add_held_object(stored_paper))
+			if(I.add_object(stored_paper))
 				visible_message(span("notice","\The [caller.name] picks up \the [stored_paper.name] from \the [src.name]."),span("notice","You pick up \the [stored_paper.name] from \the [src.name]."))
 				stored_paper = null
 				update_sprite()

@@ -50,7 +50,7 @@
 
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/H = k
-		var/obj/item/clothing/I = H.get_top_worn_object()
+		var/obj/item/clothing/I = H.get_top_object()
 		if(istype(I))
 			return I.get_footsteps(original_footsteps,enter)
 

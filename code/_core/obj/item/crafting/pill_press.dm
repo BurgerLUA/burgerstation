@@ -23,7 +23,7 @@
 	var/obj/item/product_container
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
-		var/obj/item/I = R.get_top_held_object()
+		var/obj/item/I = R.get_top_object()
 		if(I)
 			if(I.is_container)
 				product_container = I

@@ -257,13 +257,13 @@
 	. = FALSE
 
 	if(A.right_hand && !A.right_item)
-		A.right_hand.add_held_object(W,FALSE)
+		A.right_hand.add_object(W,FALSE)
 		. = TRUE
 		if(W.can_wield && !W.wielded && A.left_hand && !A.left_item)
 			A.left_hand.wield(A,W)
 
 	else if(A.left_hand && !A.left_hand.parent_inventory && !A.left_item)
-		A.left_hand.add_held_object(W,FALSE)
+		A.left_hand.add_object(W,FALSE)
 		. = TRUE
 
 	if(. && istype(W,/obj/item/weapon/melee/energy))

@@ -93,13 +93,13 @@
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
 				INTERACT_DELAY(1)
-				I2.add_held_object(paddle_left)
+				I2.add_object(paddle_left)
 				return TRUE
 			else if(paddle_right in src.contents)
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
 				INTERACT_DELAY(1)
-				I2.add_held_object(paddle_right)
+				I2.add_object(paddle_right)
 				return TRUE
 
 	return ..()

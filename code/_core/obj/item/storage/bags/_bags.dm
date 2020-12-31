@@ -219,9 +219,9 @@
 	var/filled_slots = 0
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I = k
-		filled_slots += length(I.held_objects)
+		filled_slots += length(I.contents)
 		if(!chosen_color)
-			var/obj/item/I2 = I.get_top_held_object()
+			var/obj/item/I2 = I.get_top_object()
 			if(I2) chosen_color = I2.color
 
 	var/icon_mod = CEILING( (filled_slots/(dynamic_inventory_count*container_held_slots)) * 7,1)

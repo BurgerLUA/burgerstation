@@ -183,14 +183,14 @@
 		if(inventory_data["held"])
 			for(var/i=1,i<=length(inventory_data["held"]),i++)
 				var/obj/item/I = load_and_create(P,inventory_data["held"][i],get_turf(src))
-				if(I && !src.add_held_object(I,TRUE,TRUE,silent=TRUE))
+				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
 					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 					I.drop_item(get_step(P,P.dir),silent=TRUE)
 
 		if(inventory_data["worn"])
 			for(var/i=1,i<=length(inventory_data["worn"]),i++)
 				var/obj/item/I = load_and_create(P,inventory_data["worn"][i],get_turf(src))
-				if(I && !src.add_worn_object(I,TRUE,TRUE,silent=TRUE))
+				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
 					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 					I.drop_item(get_step(P,P.dir),silent=TRUE)
 	else
@@ -205,22 +205,11 @@
 
 /obj/hud/inventory/proc/get_inventory_data(var/save_inventory=TRUE) //Getting the inventory and their contents for saving.
 
-	. = list()
+	var/content_length = length(contents)
 
-	if(length(held_objects) && length(worn_objects))
-		.["held"] = new/list(length(held_objects))
-		for(var/i=1,i<=length(held_objects),i++)
-			.["held"][i] = held_objects[i].save_item_data(save_inventory)
-		.["worn"] = new/list(length(worn_objects))
-		for(var/i=1,i<=length(worn_objects),i++)
-			.["worn"][i] = worn_objects[i].save_item_data(save_inventory)
-	else if(length(held_objects))
-		. = new/list(length(held_objects))
-		for(var/i=1,i<=length(held_objects),i++)
-			.[i] = held_objects[i].save_item_data(save_inventory)
-	else if(length(worn_objects))
-		. = new/list(length(worn_objects))
-		for(var/i=1,i<=length(worn_objects),i++)
-			.[i] = worn_objects[i].save_item_data(save_inventory)
+	. = new/list(content_length)
+
+	for(var/i=1,i<=content_length,i++)
+		.[i] = contents[i].save_item_data(save_inventory)
 
 	return .

@@ -137,7 +137,7 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			var/obj/item/container/beaker/selected_beaker = stored_containers[length(stored_containers)]
-			if(I.add_held_object(selected_beaker))
+			if(I.add_object(selected_beaker))
 				caller.visible_message(span("notice","\The [caller.name] removes \the [selected_beaker.name] from \the [src.name]."),span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
 				stored_containers -= selected_beaker
 				update_sprite()
@@ -149,7 +149,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			if(I.add_held_object(stored_trigger))
+			if(I.add_object(stored_trigger))
 				caller.to_chat(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 				stored_trigger = null
 				update_sprite()

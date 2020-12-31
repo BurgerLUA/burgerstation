@@ -22,7 +22,7 @@
 	var/obj/item/container/C //Final slot container.
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
-		var/obj/item/top_object = R.get_top_held_object()
+		var/obj/item/top_object = R.get_top_object()
 		if(is_container(top_object))
 			C = top_object
 			break
