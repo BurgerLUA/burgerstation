@@ -169,7 +169,7 @@
 
 /obj/hud/inventory/proc/can_wield(var/mob/caller,var/obj/item/item_to_wield)
 
-	if(src.is_occupied(ignore_worn=TRUE))
+	if(src.is_occupied())
 		caller.to_chat(span("warning","Your hand must be unoccupied in order to wield this!"))
 		return FALSE
 
