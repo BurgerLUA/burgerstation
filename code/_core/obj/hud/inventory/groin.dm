@@ -23,7 +23,7 @@
 	id = BODY_GROIN
 	screen_loc = "LEFT+1,BOTTOM+1"
 
-	max_slots = 1
+	max_slots = 2
 	worn = TRUE
 
 	item_slot = SLOT_GROIN_U | SLOT_GROIN

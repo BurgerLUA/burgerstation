@@ -30,7 +30,7 @@
 
 /obj/hud/inventory/dynamic/sandwich //Special logic for buns
 
-/obj/hud/inventory/dynamic/sandwich/can_hold_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/dynamic/sandwich/can_slot_object(var/obj/item/I,var/messages = FALSE)
 
 	if(src.loc && istype(src.loc.loc,/obj/hud/inventory/dynamic/sandwich/)) //Our sandwich is in of another sandwich. Do not accept items.
 		//No message needed.
@@ -39,7 +39,7 @@
 	if(istype(I,/obj/item/container/food/sandwich/))
 		var/obj/item/container/food/sandwich/S = I
 		for(var/obj/hud/inventory/I2 in S.inventories)
-			if(length(I2.held_objects))
+			if(length(I2.contents))
 				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of sandwich!"))
 				return FALSE
 		if(loc && loc == I)

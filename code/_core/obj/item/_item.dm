@@ -35,7 +35,7 @@
 	var/dynamic_inventory_count = 0
 	var/obj/hud/inventory/dynamic/dynamic_inventory_type = /obj/hud/inventory/dynamic
 	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
-	var/container_held_slots = 0 //How much each inventory slot can hold.
+	var/container_max_slots = 0 //How much each inventory slot can hold.
 	var/container_blacklist = list()
 	var/container_whitelist = list()
 
@@ -260,9 +260,9 @@
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(bypass && length(I.held_objects) >= I.held_slots)
+		if(bypass && length(I.contents) >= I.max_slots)
 			continue
-		if(I.can_hold_object(object,enable_messages))
+		if(I.can_slot_object(object,enable_messages))
 			return I
 
 	return null
@@ -303,8 +303,8 @@
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
 		//Doesn't need to be initialized as it's done later.
-		if(container_held_slots)
-			inventories[i].held_slots = container_held_slots
+		if(container_max_slots)
+			inventories[i].max_slots = container_max_slots
 		if(container_max_size)
 			inventories[i].max_size = container_max_size
 		if(container_blacklist && length(container_blacklist))
@@ -321,8 +321,8 @@
 		//Doesn't need to be initialized as it's done later.
 		D.id = "dynamic_[i]"
 		D.slot_num = i
-		if(container_held_slots)
-			D.held_slots = container_held_slots
+		if(container_max_slots)
+			D.max_slots = container_max_slots
 		if(container_max_size)
 			D.max_size = container_max_size
 		if(container_blacklist && length(container_blacklist))
@@ -452,14 +452,14 @@
 
 /obj/item/proc/inventory_to_list()
 
-	var/list/returning_list = list()
+	. = list()
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(length(I.held_objects) && I.held_objects[1])
-			returning_list += I.held_objects[1]
+		var/obj/item/I2 = I.get_top_object()
+		if(I2) . += I2
 
-	return returning_list
+	return .
 
 
 /obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)

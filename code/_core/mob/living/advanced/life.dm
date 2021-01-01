@@ -34,7 +34,8 @@ mob/living/advanced/revive()
 
 	. = ..()
 
-	drop_held_objects(src.loc)
+	drop_hands(src.loc)
+
 	for(var/obj/hud/inventory/I in inventory)
 		if(I.grabbed_object)
 			I.release_object()

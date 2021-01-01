@@ -64,11 +64,11 @@
 
 	if(left)
 		if(A.left_hand)
-			A.left_hand.drop_held_objects(A.loc)
+			A.left_hand.drop_objects(A.loc)
 
 	else
 		if(A.right_hand)
-			A.right_hand.drop_held_objects(A.loc)
+			A.right_hand.drop_objects(A.loc)
 
 	return TRUE
 */

@@ -12,7 +12,7 @@
 
 	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		if(src in I.worn_objects)
+		if(src in I.contents)
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
@@ -32,15 +32,15 @@
 			continue
 		if(!I.allow_quick_equip)
 			continue
-		if(!ignore_worn && can_be_worn(caller,I) && I.can_wear_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
+		if(!ignore_worn && I.worn && can_be_worn(caller,I) && I.can_slot_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
 			best_inventory_wear = I
 			continue
 		if(istype(I,/obj/hud/inventory/dynamic))
-			if(!ignore_dynamic && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+			if(!ignore_dynamic && can_be_held(caller,I) && I.can_slot_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
 				best_inventory_equip = I
 				continue
 		else
-			if(!ignore_held && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+			if(!ignore_held && can_be_held(caller,I) && I.can_slot_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
 				best_inventory_equip = I
 				continue
 

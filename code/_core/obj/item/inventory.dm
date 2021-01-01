@@ -5,7 +5,7 @@
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/dynamic/I = k
-		if(!length(I.held_objects) && !length(I.worn_objects))
+		if(!length(I.contents))
 			bad_inventories += I
 		else
 			good_inventory_count += 1

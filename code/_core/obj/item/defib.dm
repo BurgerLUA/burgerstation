@@ -87,7 +87,7 @@
 
 	if(is_inventory(object) && is_inventory(src.loc) && is_advanced(caller))
 		var/obj/hud/inventory/I = src.loc
-		if(src in I.worn_objects)
+		if(src in I.contents)
 			var/obj/hud/inventory/I2 = object
 			if(paddle_left in src.contents)
 				INTERACT_CHECK

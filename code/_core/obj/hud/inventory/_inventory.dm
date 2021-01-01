@@ -449,7 +449,7 @@
 		I.set_dir(owner.dir)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(A.worn)
+			if(worn)
 				A.worn_objects -= I
 			else
 				A.held_objects -= I
@@ -523,7 +523,7 @@
 
 	if(is_inventory(I.loc))
 		var/obj/hud/inventory/INV = I.loc
-		if(INV.worn && !INV.can_unwear_object(I,messages))
+		if(INV.worn && !INV.can_unslot_object(I,messages))
 			return FALSE
 
 	if(length(item_blacklist))
@@ -569,7 +569,7 @@
 								owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human head..."))
 							return FALSE
 				if(C.item_slot)
-					var/list/list_to_check = C.ignore_other_slots ? src.worn_objects : A.worn_objects
+					var/list/list_to_check = C.ignore_other_slots ? src.contents : A.worn_objects
 					for(var/obj/item/clothing/C2 in list_to_check)
 						if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
 							if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))

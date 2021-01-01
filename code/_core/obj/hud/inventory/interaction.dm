@@ -130,7 +130,7 @@
 				if(!I2.click_flags && !I2.drag_to_take && is_item(defer_object) && !is_item(defer_self))
 					src.add_object(defer_object)
 					return TRUE
-				if(I2.worn_slots && is_item(defer_self) && !I.is_container)
+				if(I2.worn && I2.max_slots && is_item(defer_self) && !I.is_container)
 					I2.add_object(defer_self)
 					return TRUE
 			else if(is_inventory(defer_self))
@@ -263,24 +263,19 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 /obj/hud/inventory/defer_click_on_object(location,control,params)
 
-	if(length(held_objects))
-		return get_top_object()
+	var/contents_length = length(contents)
 
-	var/worn_length = length(worn_objects)
-
-	if(worn_length)
-		if(worn_length > 1)
-			var/obj/item/I = worn_objects[worn_length]
+	if(worn && contents_length > 1)
+		for(var/i=contents_length,i>0,i--)
+			var/obj/item/I = contents[i]
 			if(I.is_container)
 				return I
-			var/obj/item/I2 = worn_objects[worn_length-1]
-			if(I2.is_container)
-				return I2
-			return I
-
-		return get_top_object()
 
 	if(grabbed_object)
 		return grabbed_object
+
+	var/obj/item/I = get_top_object()
+	if(I) return I
+
 
 	return src

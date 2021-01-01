@@ -6,7 +6,7 @@
 	icon_state = "eggbox"
 
 	dynamic_inventory_count = 12
-	container_held_slots = 1
+	container_max_slots = 1
 
 	container_whitelist = list(
 		/obj/item/container/food/egg/chicken,

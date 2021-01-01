@@ -38,7 +38,7 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = 3
-	container_held_slots = 10
+	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/seed,
 		/obj/item/container/food/plant
@@ -69,7 +69,7 @@
 	for(var/k in inventories)
 		CHECK_TICK(50,FPS_SERVER*4)
 		var/obj/hud/inventory/I = k
-		for(var/obj/item/container/food/plant/P in I.held_objects)
+		for(var/obj/item/container/food/plant/P in I.contents)
 			CHECK_TICK(50,FPS_SERVER*2)
 			if(!P.plant_type)
 				continue
@@ -109,7 +109,7 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = 3
-	container_held_slots = 10
+	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/material/ore,
 		/obj/item/material/ingot
@@ -122,7 +122,7 @@
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores and ingots."
 	dynamic_inventory_count = 6
 	container_max_size = 100
-	container_held_slots = 30
+	container_max_slots = 30
 
 
 /obj/item/storage/bags/chemistry
@@ -132,7 +132,7 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = 100
-	container_held_slots = 10
+	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/container/beaker,
 		/obj/item/container/pill,
@@ -152,7 +152,7 @@
 	size = SIZE_2
 	dynamic_inventory_count = 1
 	container_max_size = SIZE_1
-	container_held_slots = 30
+	container_max_slots = 30
 	container_whitelist = list(
 		/obj/item/container/pill,
 	)
@@ -224,7 +224,7 @@
 			var/obj/item/I2 = I.get_top_object()
 			if(I2) chosen_color = I2.color
 
-	var/icon_mod = CEILING( (filled_slots/(dynamic_inventory_count*container_held_slots)) * 7,1)
+	var/icon_mod = CEILING( (filled_slots/(dynamic_inventory_count*container_max_slots)) * 7,1)
 	icon_state = "contents_[icon_mod]"
 	color = chosen_color
 

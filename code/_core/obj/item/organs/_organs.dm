@@ -150,7 +150,7 @@
 	if(inventories)
 		for(var/v in inventories)
 			var/obj/hud/inventory/I = v
-			I.drop_all_objects(T)
+			I.drop_objects(T)
 
 	if(attached_organ)
 		attached_organ.attached_organs -= src

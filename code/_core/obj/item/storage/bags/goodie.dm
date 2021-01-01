@@ -9,7 +9,7 @@
 
 	dynamic_inventory_count = 8
 	container_max_size = SIZE_2
-	container_held_slots = 1
+	container_max_slots = 1
 
 /obj/item/storage/bags/goodie/save_item_data(var/save_inventory = TRUE)
 	. = ..()

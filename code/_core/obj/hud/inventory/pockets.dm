@@ -4,6 +4,7 @@
 	icon_state = "slot_pocket"
 	screen_loc = "CENTER,BOTTOM+3"
 	max_slots = 1
+	worn = FALSE
 	max_size = SIZE_2
 	//should_draw = FALSE
 	drag_to_take = FALSE

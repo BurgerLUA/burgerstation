@@ -291,14 +291,14 @@
 			var/obj/item/I = O.loc
 			if(I.is_container)
 				continue
-		dropped_objects += O.drop_all_objects(drop_location,exclude_soulbound)
+		dropped_objects += O.drop_objects(drop_location,exclude_soulbound)
 
 	return dropped_objects
 
 /mob/living/advanced/proc/delete_all_items()
 	for(var/v in inventory)
 		var/obj/hud/inventory/O = v
-		O.delete_all_objects()
+		O.delete_objects()
 
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/k in clothing_list)
@@ -488,14 +488,14 @@ mob/living/advanced/Login()
 
 	if(left_hand && right_hand)
 		if(left)
-			if(left_hand.can_hold_object(I,FALSE))
+			if(left_hand.can_slot_object(I,FALSE))
 				return left_hand.add_object(I,silent=silent)
-			else if(right_hand.can_hold_object(I,FALSE))
+			else if(right_hand.can_slot_object(I,FALSE))
 				return right_hand.add_object(I,silent=silent)
 		else
-			if(right_hand.can_hold_object(I,FALSE))
+			if(right_hand.can_slot_object(I,FALSE))
 				return right_hand.add_object(I,silent=silent)
-			else if(left_hand.can_hold_object(I,FALSE))
+			else if(left_hand.can_slot_object(I,FALSE))
 				return left_hand.add_object(I,silent=silent)
 	else
 		if(left_hand)
