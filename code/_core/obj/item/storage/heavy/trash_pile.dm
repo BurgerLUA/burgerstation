@@ -20,7 +20,7 @@
 /obj/item/storage/heavy/trash_pile/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,11)]"
-	if(prob(10) || z != 1)
+	if(prob(20) || z != 1)
 		stored_beefman = new(src)
 		INITIALIZE(stored_beefman)
 		GENERATE(stored_beefman)
@@ -55,8 +55,7 @@
 		var/turf/T = get_turf(src)
 		T.visible_message(span("danger","A disturbed beefman crawls out of \the [src.name]!"))
 		stored_beefman.force_move(T)
-		stored_beefman.ai.set_active(TRUE)
-		stored_beefman.face_atom(caller)
+		stored_beefman.ai.set_objective(caller)
 		stored_beefman = null
 
 	return .

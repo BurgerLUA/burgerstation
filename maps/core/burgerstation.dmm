@@ -195,9 +195,12 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
 "aN" = (
-/obj/structure/interactive/restocker/ammo,
+/obj/structure/smooth/table,
+/obj/structure/interactive/shop,
+/obj/structure/sign/department/c/infirm,
+/obj/item/clothing/glasses/sun/security,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/armory/shooting_range)
+/area/burgerstation/armory)
 "aO" = (
 /turf/simulated/floor/plating/shuttle,
 /area/transit/dropship/delta/station)
@@ -2161,10 +2164,6 @@
 	},
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
-"hB" = (
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/tile/shuttle/red,
-/area/transit/dropship/alpha/station)
 "hC" = (
 /obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/shuttle,
@@ -2382,14 +2381,6 @@
 	},
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/charlie/station)
-"is" = (
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/tile/shuttle/blue,
-/area/transit/dropship/delta/station)
-"it" = (
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/tile/shuttle/engineering,
-/area/transit/dropship/bravo/station)
 "iu" = (
 /obj/structure/interactive/door/airlock/shuttle,
 /turf/simulated/floor/tile/shuttle,
@@ -5862,10 +5853,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
-"xv" = (
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
 "xw" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -5888,12 +5875,6 @@
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/clothing/glasses/nightvision,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
-"xA" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/shop,
-/obj/item/clothing/glasses/security_hud,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "xB" = (
@@ -29665,7 +29646,7 @@ eh
 kX
 au
 ep
-is
+eA
 jT
 eV
 eV
@@ -29906,7 +29887,7 @@ bo
 bo
 bo
 gG
-hB
+bU
 bb
 iw
 hO
@@ -33006,7 +32987,7 @@ eh
 kX
 aQ
 er
-xv
+eF
 ir
 eH
 eH
@@ -34274,8 +34255,8 @@ aS
 aS
 ip
 uz
-it
-it
+bj
+bj
 bf
 iy
 hO
@@ -44537,7 +44518,7 @@ ag
 ao
 aq
 av
-aN
+aY
 xk
 bC
 bh
@@ -46859,7 +46840,7 @@ po
 eb
 dG
 cs
-xA
+aN
 fC
 gu
 gr
@@ -48135,7 +48116,7 @@ ag
 ao
 aq
 aM
-aN
+aY
 xk
 bC
 cq

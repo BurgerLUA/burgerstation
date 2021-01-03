@@ -282,6 +282,8 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		var/image/fill = new/image(icon,"[icon_state]_[filler]")
 		fill.appearance_flags = RESET_COLOR
 		fill.color = fill_color
+		if(filler == "glass")
+			fill.alpha = 150
 		underlays += fill
 
 	if(panel)

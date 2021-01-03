@@ -18,7 +18,7 @@
 	value = 100
 
 /obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
-	item_count_current = 40
+	item_count_current = 50
 	return ..()
 
 /obj/item/currency/telecrystals/update_icon()

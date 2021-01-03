@@ -60,6 +60,19 @@
 
 	value = 160
 
+/obj/item/clothing/mask/gas/syndicate
+	name = "ancient syndicate gas mask"
+	desc = "Fearsome."
+	desc_extended = "An old syndicate gas mask previously used by syndicate operatives."
+	icon = 'icons/obj/item/clothing/masks/gasmask_syndicate.dmi'
+
+/obj/item/clothing/mask/gas/syndicate
+	name = "cyborg skull gas mask"
+	desc = "Fearsome."
+	desc_extended = "An old syndicate gas mask previously used by syndicate operatives."
+	icon = 'icons/obj/item/clothing/masks/gasmask_syndicate.dmi'
+
+
 /obj/item/clothing/mask/gas/space_cop
 	name = "space cop's mask"
 	icon = 'icons/obj/item/clothing/masks/space_cop.dmi'

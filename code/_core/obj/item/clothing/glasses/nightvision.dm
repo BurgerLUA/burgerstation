@@ -13,7 +13,7 @@
 		HOLY = -AP_CLUB
 	)
 
-	value = 25
+	value = 100
 
 
 /obj/item/clothing/glasses/nightvision/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)

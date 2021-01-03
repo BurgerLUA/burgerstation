@@ -36,6 +36,17 @@
 
 	return .
 
+/obj/item/clothing/glasses/sun/big
+	name = "big shades"
+	icon = 'icons/obj/item/clothing/glasses/sunglasses_big.dmi'
+
+/obj/item/clothing/glasses/sun/gar
+	name = "gar shades"
+	icon = 'icons/obj/item/clothing/glasses/gar.dmi'
+
+/obj/item/clothing/glasses/sun/gar/giga
+	name = "gigagar shades"
+	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'
 
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"
@@ -57,3 +68,35 @@
 	vision_mod = FLAG_VISION_SECURITY | FLAG_VISION_MEDICAL
 
 	value = 1400
+
+
+/obj/item/clothing/glasses/sun/security
+	name = "security sunglasses"
+	rarity = RARITY_UNCOMMON
+	desc = "This is just like a videogame!"
+	desc_extended = "A security heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen."
+	icon = 'icons/obj/item/clothing/glasses/security_hud.dmi'
+
+	vision_mod = FLAG_VISION_SECURITY
+
+	value = 160
+
+	defense_rating = list(
+		ARCANE = -AP_SWORD,
+	)
+
+/obj/item/clothing/glasses/sun/security/red
+	name = "combat sensors suite sunglasses"
+	rarity = RARITY_MYTHICAL
+	desc_extended = "A syndicate heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking syndicate operatives. Comes with build-in thermals as well."
+	value = 1000
+
+	defense_rating = list(
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_DAGGER,
+		BLADE = AP_DAGGER,
+		ARCANE = -AP_DAGGER
+	)
+
+	sight_mod = SEE_MOBS
+	vision_mod = FLAG_VISION_SECURITY | FLAG_VISION_MEDICAL

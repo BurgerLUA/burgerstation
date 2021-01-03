@@ -87,10 +87,6 @@
 /mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
-"ay" = (
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/tile/dark,
-/area/hellscape/interior/rev)
 "az" = (
 /mob/living/advanced/npc/syndicate/triple{
 	dir = 8
@@ -14895,7 +14891,7 @@ kb
 kc
 kc
 aa
-ay
+aB
 an
 aX
 aZ

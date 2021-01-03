@@ -18,3 +18,9 @@
 	desc = "For nerds."
 	desc_extended = "Some less-than-sturdy prescription glasses. These ones are blue"
 	icon = 'icons/obj/item/clothing/glasses/prescription2.dmi'
+
+/obj/item/clothing/glasses/prescription/circle
+	name = "large prescription glasses"
+	desc = "For meganerds."
+	desc_extended = "Some less-than-sturdy prescription glasses. These ones are big and blue"
+	icon = 'icons/obj/item/clothing/glasses/circle.dmi'
