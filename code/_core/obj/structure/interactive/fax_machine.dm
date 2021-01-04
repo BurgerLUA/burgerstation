@@ -66,7 +66,6 @@
 	return ..()
 
 /obj/structure/interactive/fax_machine/update_icon()
-
 	if(stored_paper)
 		if(processing)
 			icon_state = "send"
@@ -74,29 +73,16 @@
 			icon_state = "receive"
 	else
 		icon_state = "idle"
-
-
-
-
 	return ..()
 
 
 /obj/structure/interactive/fax_machine/proc/process_data(var/mob/caller,var/list/data_to_process = list())
 	return TRUE
 
-
 /obj/structure/interactive/fax_machine/proc/finish_processing(var/mob/caller)
-
 	processing = FALSE
 	update_sprite()
-
 	return TRUE
-
-
-
-
-
-
 
 /obj/structure/interactive/fax_machine/cargo/process_data(var/mob/caller,var/list/data_to_process = list())
 

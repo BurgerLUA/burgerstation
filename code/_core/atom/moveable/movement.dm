@@ -8,7 +8,7 @@
 
 	for(var/k in T.contents)
 		var/atom/movable/M = k
-		if(!M.Cross(src))
+		if(M.density && !M.Cross(src))
 			return FALSE
 
 	return TRUE

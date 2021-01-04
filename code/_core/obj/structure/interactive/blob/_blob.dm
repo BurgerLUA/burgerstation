@@ -18,7 +18,7 @@
 	damage_type = /damagetype/blob_attack/
 
 	health = /health/construction/
-	health_base = 250
+	health_base = 125
 
 	density = TRUE
 

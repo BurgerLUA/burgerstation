@@ -49,7 +49,7 @@
 
 	if(has_gibs)
 		for(var/i=1,i<=5,i++)
-			new /obj/effect/temp/crate_gib/(src.loc,600)
+			new /obj/effect/temp/crate_gib(T,600)
 
 	. = ..()
 

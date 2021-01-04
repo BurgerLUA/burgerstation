@@ -220,7 +220,6 @@
 		/obj/item/clothing/overwear/coat/labcoat/medical,
 		/obj/item/clothing/underbottom/underwear/boxers/medical,
 		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,
 		/obj/item/clothing/feet/shoes/colored,
 		/obj/item/clothing/feet/shoes/colored/left,

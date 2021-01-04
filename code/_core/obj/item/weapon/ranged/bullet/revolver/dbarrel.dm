@@ -41,7 +41,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()
-	return 0.06
+	return 0.12
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread()
 	return 0.01

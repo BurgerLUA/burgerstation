@@ -72,12 +72,12 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_base_spread()
-	return 0.12
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23/get_base_spread()
+	return 0.2
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23/get_static_spread()
 	return 0.007
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.08 - (0.15 * L.get_skill_power(SKILL_RANGED)))

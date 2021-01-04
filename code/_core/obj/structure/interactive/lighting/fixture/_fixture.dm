@@ -24,8 +24,7 @@
 
 	if(desired_light_color)
 		desired_light_color = null
-		if(health)
-			health.restore()
+		if(health) health.restore()
 		create_destruction(T,list(/obj/item/material/shard = 1),/material/glass)
 		play('sound/effects/glass_shatter.ogg',T)
 		. = ..()
@@ -68,7 +67,7 @@
 
 	. = ..()
 
-	if(on && desired_light_color)
+	if(on && desired_light_color && desired_light_range)
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
 		IS.plane = PLANE_LIGHTING

@@ -68,7 +68,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 /obj/item/weapon/ranged/bullet/revolver/gm94/get_base_spread()
-	return 0.05
+	return 0.1
 
 /obj/item/weapon/ranged/bullet/revolver/gm94/get_static_spread()
 	return 0.01

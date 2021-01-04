@@ -65,7 +65,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
-	return 0.05
+	return 0.1
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_static_spread()
 	return 0.01

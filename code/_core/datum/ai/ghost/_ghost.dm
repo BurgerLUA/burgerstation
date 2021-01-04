@@ -137,7 +137,9 @@
 			handle_objectives()
 			if(objective_attack)
 				anger -= DECISECONDS_TO_SECONDS(1)
-				A.smash_all_lights()
+				A.smash_all_lights() //This sleeps
+				if(qdeleting || !owner || owner.qdeleting)
+					return FALSE
 				if(no_objective) //First time attacking.
 					var/can_hunt = TRUE
 					for(var/obj/item/cross/C in range(objective_attack,6))

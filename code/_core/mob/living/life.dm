@@ -36,6 +36,7 @@
 	attack_flags = 0x0
 
 	plane = PLANE_OBJ
+	layer = 1000
 
 	handle_horizontal()
 
@@ -92,6 +93,7 @@
 	dead = FALSE
 	remove_status_effect(CRIT)
 	plane = initial(plane)
+	layer = initial(layer)
 	if(ai)
 		ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)

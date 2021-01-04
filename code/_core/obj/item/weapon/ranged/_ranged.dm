@@ -466,7 +466,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	return .
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
-	return 0
+	return 0.05
 
 /atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
 

@@ -73,7 +73,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_base_spread()
-	return 0.08
+	return 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_static_spread()
 	return 0.001

@@ -1,7 +1,7 @@
 /obj/structure/interactive/blob/core
 	name = "blob core"
 	icon_state = "core"
-	health_base = 1000
+	health_base = 500
 	var/list/obj/structure/interactive/blob/linked_walls = list()
 	var/list/obj/structure/interactive/blob/node/linked_nodes = list()
 	var/list/obj/structure/interactive/blob/damaged_walls = list()
