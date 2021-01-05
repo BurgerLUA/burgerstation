@@ -107,7 +107,9 @@
 	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
 	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
 
-	var/damage_mod = 1 //Simple multiplier for all damage.
+	var/damage_mod = 1 //Simple multiplier for all damage of this type
+
+	var/experience_mod = 1 //Simple multiplier for all experience gains via this type.
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -461,7 +463,7 @@
 			var/mob/living/V = victim
 			var/list/experience_gained = list()
 			if(!V.dead && A.is_player_controlled())
-				var/experience_multiplier = victim.get_xp_multiplier()
+				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
 					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)

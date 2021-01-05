@@ -175,31 +175,35 @@
 		if("*Experience Redemption")
 			var/savedata/client/globals/G = GLOBALDATA(P.ckey)
 			var/list/data_to_use = G.loaded_data["stored_experience"]
-			var/list/choice_list = list()
-			for(var/k in data_to_use)
-				var/v = data_to_use[k]
-				choice_list["[k]: [v]xp"] = k
-			var/desired_experience = input("What experience would you like to redeem?","Experience Redemption") as null|anything in choice_list
-			if(desired_experience)
-				desired_experience = choice_list[desired_experience]
-				var/desired_redeem_amount = input("How much [desired_experience]xp do you wish to redeem? (Max: [data_to_use[desired_experience]])","[desired_experience] experience redemption") as num
-				if(desired_redeem_amount && desired_redeem_amount > 0)
-					desired_redeem_amount = min(desired_redeem_amount,data_to_use[desired_experience])
-					if(P.attributes[desired_experience])
-						desired_redeem_amount = P.add_attribute_xp(desired_experience,desired_redeem_amount)
-						G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
-						P.to_chat(span("notice","You redeem [desired_redeem_amount] (attribute) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
-					else if(P.skills[desired_experience])
-						desired_redeem_amount = P.add_skill_xp(desired_experience,desired_redeem_amount)
-						G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
-						P.to_chat(span("notice","You redeem [desired_redeem_amount] (skill) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
 
+			if(length(data_to_use))
+				var/list/choice_list = list()
+				for(var/k in data_to_use)
+					var/v = data_to_use[k]
+					choice_list["[k]: [v]xp"] = k
+				var/desired_experience = input("What experience would you like to redeem?","Experience Redemption") as null|anything in choice_list
+				if(desired_experience)
+					desired_experience = choice_list[desired_experience]
+					var/desired_redeem_amount = input("How much [desired_experience]xp do you wish to redeem? (Max: [data_to_use[desired_experience]])","[desired_experience] experience redemption") as num
+					if(desired_redeem_amount && desired_redeem_amount > 0)
+						desired_redeem_amount = min(desired_redeem_amount,data_to_use[desired_experience])
+						if(P.attributes[desired_experience])
+							desired_redeem_amount = P.add_attribute_xp(desired_experience,desired_redeem_amount)
+							G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
+							P.to_chat(span("notice","You redeem [desired_redeem_amount] (attribute) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
+						else if(P.skills[desired_experience])
+							desired_redeem_amount = P.add_skill_xp(desired_experience,desired_redeem_amount)
+							G.loaded_data["stored_experience"][desired_experience] -= desired_redeem_amount
+							P.to_chat(span("notice","You redeem [desired_redeem_amount] (skill) [desired_experience] experience. You now have [G.loaded_data["stored_experience"][desired_experience]] experience stored."))
+
+						else
+							P.to_chat(span("notice","Something went wrong. Report this bug to burger on discord with the error: 1.[desired_experience].[desired_redeem_amount]."))
 					else
-						P.to_chat(span("notice","Something went wrong. Report this bug to burger on discord with the error: 1.[desired_experience].[desired_redeem_amount]."))
+						P.to_chat(span("notice","You decide not to redeem anything."))
 				else
 					P.to_chat(span("notice","You decide not to redeem anything."))
+				set_topic(P,"*rewardsuccess")
 			else
-				P.to_chat(span("notice","You decide not to redeem anything."))
-			set_topic(P,"*rewardsuccess")
+				P.to_chat(span("notice","You can redeem any experience gained as an antagonist here to any character. Come back when you've played an antagonist role!"))
 
 	return .

@@ -1,5 +1,3 @@
-v
-
 SUBSYSTEM_DEF(menu)
 	name = "Menu Subsystem"
 	desc = "Stores all the known menus in a list."
@@ -30,12 +28,12 @@ SUBSYSTEM_DEF(menu)
 
 	return TRUE
 
-/proc/open_menu(var/client/C,menu_id)
+/proc/open_menu(var/client/C,var/menu_id)
 	spawn
 		var/menu/M = SSmenu.all_menus[menu_id]
 		M.open(C)
 
-/proc/close_menu(var/client/C,menu_id)
+/proc/close_menu(var/client/C,var/menu_id)
 	spawn
 		var/menu/M = SSmenu.all_menus[menu_id]
 		M.close(C)

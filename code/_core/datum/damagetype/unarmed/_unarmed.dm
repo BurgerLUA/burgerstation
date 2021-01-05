@@ -20,6 +20,8 @@
 		PIERCE = 0.75
 	)
 
+	experience_mod = 2
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 
