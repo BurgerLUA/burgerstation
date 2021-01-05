@@ -800,7 +800,7 @@
 		return TRUE
 
 	var/distance = get_dist(owner,A)
-	if(distance <= 1)
+	if(distance <= 1 || owner.z != A.z)
 		return TRUE
 
 	var/atom_alpha = A.alpha
@@ -816,6 +816,9 @@
 		return 0
 
 	if(check_view && !is_in_view(A))
+		return 0
+
+	if(owner.z != A.z)
 		return 0
 
 	if(A in attackers)

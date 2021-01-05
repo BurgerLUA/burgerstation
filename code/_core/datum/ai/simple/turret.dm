@@ -1,6 +1,6 @@
 /ai/turret
 	radius_find_enemy = VIEW_RANGE
-	radius_find_enemy_noise = VIEW_RANGE + ZOOM_RANGE
+	radius_find_enemy_noise = VIEW_RANGE
 	radius_find_enemy_caution = VIEW_RANGE + ZOOM_RANGE
 	radius_find_enemy_combat = VIEW_RANGE + ZOOM_RANGE
 

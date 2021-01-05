@@ -76,7 +76,7 @@
 			if(is_player(caller))
 				var/mob/living/advanced/player/P = caller
 				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit.
-					var/experience_gain = -.
+					var/experience_gain = -.*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 		else
 			A.health.update_health()

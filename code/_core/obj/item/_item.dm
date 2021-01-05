@@ -583,7 +583,7 @@
 
 	if(is_living(caller))
 		var/mob/living/C = caller
-		if(C.intent != INTENT_HELP)
+		if(C.attack_flags & CONTROL_MOD_ALT) //Splash
 			return FALSE
 
 	if(!reagents)

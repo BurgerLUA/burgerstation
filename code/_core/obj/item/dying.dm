@@ -3,7 +3,8 @@
 	if(!dye_color)
 		dye_color = "#FFFFFF"
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(D)
 
 	if(!dyeable)
 		caller.to_chat(span("warning","\The [src.name] cannot be dyed."))
@@ -14,12 +15,14 @@
 	if(length(polymorphs))
 		choice = input("What do you want to dye?","Dye Selection") as null|anything in polymorphs
 		if(choice)
-			INTERACT_CHECK
+			INTERACT_CHECK_NO_DELAY(src)
+			INTERACT_CHECK_NO_DELAY(D)
 			polymorphs[choice] = blend_colors(polymorphs[choice] ? polymorphs[choice] : "#FFFFFF",dye_color,dye_strength)
 	else
 		choice = input("Are you sure you want to dye \the [src.name]?","Dye Selection") as null|anything in list("Yes","No","Cancel")
 		if(choice == "Yes")
-			INTERACT_CHECK
+			INTERACT_CHECK_NO_DELAY(src)
+			INTERACT_CHECK_NO_DELAY(D)
 			color = blend_colors(color ? color : "#FFFFFF",dye_color,dye_strength)
 		else
 			choice = null

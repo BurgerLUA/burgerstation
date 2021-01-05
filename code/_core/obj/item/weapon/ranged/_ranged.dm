@@ -435,7 +435,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
-		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,base_spread) //Needs to be unique to each shot.
+		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,bullet_count_to_use,base_spread) //Needs to be unique to each shot.
 
 		var/new_x = local_xy_list[1]
 		var/new_y = local_xy_list[2]
@@ -466,7 +466,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	return .
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
-	return 0.05
+	return 0
 
 /atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
 
@@ -485,9 +485,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return list(cos(new_angle),sin(new_angle))
 
-/atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/accuracy)
+/atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 	var/new_angle = ATAN2(initial_offset_x,initial_offset_y)
-	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
+	if(bullet_num_max > 1) new_angle += RAND_PRECISE(-accuracy,accuracy)*90
 	return list(cos(new_angle),sin(new_angle))
 
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)

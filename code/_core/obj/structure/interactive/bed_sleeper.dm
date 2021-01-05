@@ -36,7 +36,8 @@
 /obj/structure/interactive/bed/sleeper/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),initial(icon_state))
-	I.layer = LAYER_MOB_BELOW
+	I.plane = PLANE_OBJ
+	I.layer = -100
 	I.color = base_color
 	underlays += I
 	return .
