@@ -799,8 +799,11 @@
 	if(A in attackers)
 		return TRUE
 
+	if(owner.z != A.z)
+		return FALSE
+
 	var/distance = get_dist(owner,A)
-	if(distance <= 1 || owner.z != A.z)
+	if(distance <= 1)
 		return TRUE
 
 	var/atom_alpha = A.alpha
