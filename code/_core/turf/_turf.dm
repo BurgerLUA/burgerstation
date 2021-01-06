@@ -30,7 +30,7 @@
 
 	var/world_spawn = FALSE
 
-	var/darkness = 0 //Calculated tile darkness.
+	var/lightness = 0 //Calculated tile darkness.
 
 	var/list/stored_shuttle_items
 

@@ -616,7 +616,7 @@
 		if(caller && caller != consumer)
 			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))
 		else
-			consumer.visible_message(span("notice","\The [consumer.name] [consume_verb] \the [src.owner.name]."),span("notice","You [consume_verb] \the [src.owner.name]."))
+			consumer.visible_message(span("notice","\The [consumer.name] [consume_verb]s \the [src.owner.name]."),span("notice","You [consume_verb] \the [src.owner.name]."))
 
 		if(consume_sound) play(consume_sound,get_turf(consumer))
 

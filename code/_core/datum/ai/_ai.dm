@@ -828,6 +828,8 @@
 		return 100
 
 	var/distance = get_dist(owner,A)
+	if(distance > radius_find_enemy_combat)
+		return 0
 	switch(distance)
 		if(1)
 			return 100
@@ -839,19 +841,23 @@
 			. = 25
 
 	var/turf/T = get_turf(A)
+	var/turf/T2 = get_turf(owner)
 
-	var/darkness = 0
-	switch(T.darkness)
+	var/lightness = 0
+	switch(T.lightness)
 		if(-1 to 0.5)
-			darkness = 0.5 + T.darkness
+			lightness = 0.5 + T.lightness
 		if(0.5 to 1)
-			darkness = 1
+			lightness = 1
+
+	if(T2.lightness < T.lightness - 0.25)
+		lightness *= 2
+
 	var/atom_alpha = A.alpha
 	if(alert_level == ALERT_LEVEL_COMBAT)
 		atom_alpha *= 2
-		darkness *= 2
 
-	. *= clamp(atom_alpha/255,0,1) * darkness
+	. *= clamp(atom_alpha/255,0,1) * lightness
 
 	return .
 

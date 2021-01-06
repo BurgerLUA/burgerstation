@@ -94,7 +94,7 @@
 
 	pixel_y = 4
 
-/obj/item/container/beaker/glass/get_consume_size(var/mob/living/L)
+/obj/item/container/beaker/shot/get_consume_size(var/mob/living/L)
 	return reagents.volume_max
 
 /obj/item/container/beaker/bowl

@@ -55,7 +55,7 @@
 
 	if(active)
 		var/turf/T = get_turf(src)
-		if(T) icon_state = "[icon_state]_[CEILING(clamp(T.darkness/1,0,1)*9,1)]"
+		if(T) icon_state = "[icon_state]_[CEILING(clamp(T.lightness/1,0,1)*9,1)]"
 
 	return ..()
 

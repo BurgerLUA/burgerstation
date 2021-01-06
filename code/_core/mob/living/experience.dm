@@ -54,7 +54,7 @@
 
 	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
 
-	if(!first)
+	if(!first && old_level != level)
 		var/decrease = old_level > level
 		if(decrease)
 			to_chat(span("warning","Your overall level decreased to [level]..."))

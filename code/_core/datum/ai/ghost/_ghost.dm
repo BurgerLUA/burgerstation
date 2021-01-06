@@ -166,7 +166,7 @@
 	var/list/viewers = list()
 	var/mob/living/advanced/insane
 	var/sanity_rating = 75
-	if(T.darkness >= 0 && owner.invisibility < 101)
+	if(T.lightness >= 0 && owner.invisibility < 101)
 		for(var/mob/living/advanced/ADV in view(owner,owner.view))
 			if(ADV.dead)
 				continue
@@ -194,13 +194,13 @@
 				anger += viewer_count*0.15
 			desired_alpha -= viewer_count ? 150 : 50
 
-	if(T.darkness >= 0.5) //Light bad.
+	if(T.lightness >= 0.5) //Light bad.
 		desired_alpha = 0
-	else if (T.darkness <= 0)
+	else if (T.lightness <= 0)
 		desired_alpha = 0
 
 	//How should we respond to darkness?
-	if(owner.alpha >= 0 && T.darkness >= 0.1 && prob(anger)) //Too bright
+	if(owner.alpha >= 0 && T.lightness >= 0.1 && prob(anger)) //Too bright
 		desired_alpha -= 50
 		if(anger >= 50)
 			A.smash_all_lights()

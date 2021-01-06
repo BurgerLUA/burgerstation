@@ -62,9 +62,9 @@ mob/living/advanced/revive()
 
 	if(client && isturf(loc)) //If you afk in darkness, your sanity doesn't go down or up.
 		var/turf/T = loc
-		if(T.darkness <= 0.1)
+		if(T.lightness <= 0.1)
 			sanity -= (1/6) // 10 minutes of darkness will make you "insane".
-		else if(T.darkness >= 0.9)
+		else if(T.lightness >= 0.9)
 			sanity += (1/18) // 30 minutes of light will get you from insane to completely sane.
 		sanity = clamp(sanity,1,100)
 

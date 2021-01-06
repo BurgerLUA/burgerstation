@@ -149,7 +149,7 @@
 	icon = 'icons/obj/item/storage/bottles.dmi'
 	icon_state = "pill_canister"
 
-	size = SIZE_2
+	size = SIZE_1
 	dynamic_inventory_count = 1
 	container_max_size = SIZE_1
 	container_max_slots = 30
