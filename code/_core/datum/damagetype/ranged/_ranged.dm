@@ -30,17 +30,11 @@
 
 	attribute_damage = list()
 
-	bonus_experience = list(
-		SKILL_RANGED = 100 //100%
-	)
-
 	skill_damage = list()
 
 	throw_mul = 0.25
 
 	can_be_parried = FALSE
-
-	damage_mod = 0.9
 
 /damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0.5

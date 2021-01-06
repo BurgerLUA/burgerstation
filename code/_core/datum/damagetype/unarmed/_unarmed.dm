@@ -22,6 +22,10 @@
 
 	experience_mod = 2
 
+	bonus_experience = list(
+		SKILL_UNARMED = 50 //50%
+	)
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 

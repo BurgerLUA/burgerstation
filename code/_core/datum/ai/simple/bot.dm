@@ -29,7 +29,7 @@
 		return FALSE
 	if(!L || L.qdeleting)
 		return FALSE
-	if(!L.health || !L.health.organic)
+	if(!istype(L.health) || !L.health.organic)
 		return FALSE
 	if(owner.loyalty_tag != L.loyalty_tag)
 		return FALSE

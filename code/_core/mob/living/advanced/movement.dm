@@ -62,7 +62,7 @@ mob/living/advanced/get_movement_delay()
 /mob/living/advanced/on_sneak()
 
 	if(health)
-		if(health.adjust_stamina( -(2-stealth_mod)*5 ))
+		if(health.adjust_stamina( -(2-stealth_mod)*2.5 ))
 			update_health_element_icons(stamina=TRUE)
 			stamina_regen_delay = max(stamina_regen_delay,30)
 		else
