@@ -71,5 +71,10 @@
 		SKILL_PRAYER = DARK
 	)
 
+	bonus_experience = list(
+		SKILL_MELEE = 25, //25%
+		SKILL_PRAYER = 25
+	)
+
 	attack_delay = SPEED_CLUB*0.5
 	attack_delay_max = SPEED_CLUB

@@ -66,6 +66,11 @@
 		SKILL_SORCERY = HEAT
 	)
 
+	bonus_experience = list(
+		SKILL_MELEE = 25, //25%
+		SKILL_SORCERY = 25
+	)
+
 	attack_delay = SPEED_GREATAXE*0.5
 	attack_delay_max = SPEED_GREATAXE
 

@@ -111,7 +111,6 @@
 	value -= (value > 0 ? resistance[loss_type] : 0)
 	value -= min(0,damage[loss_type] + value)
 	damage[loss_type] += value
-	damage[loss_type] = clamp(damage[loss_type],0,health_max*4)
 	return value
 
 /health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)

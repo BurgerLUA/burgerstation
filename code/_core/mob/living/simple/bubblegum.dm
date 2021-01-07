@@ -107,16 +107,12 @@
 		new/obj/effect/temp/hazard/bubblefist(T,null,src)
 		. = TRUE
 
-/mob/living/simple/bubblegum/proc/spray_blood()
-
-	return TRUE
-
 /mob/living/simple/bubblegum/get_movement_delay()
 
 	. = ..()
 
 	if(charge_steps)
-		. = DECISECONDS_TO_TICKS(AI_TICK)
+		. = DECISECONDS_TO_TICKS(BOSS_TICK)
 
 	return .
 

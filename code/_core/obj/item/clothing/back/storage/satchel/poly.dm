@@ -1,4 +1,5 @@
 /obj/item/clothing/back/storage/satchel/poly
+	name = "satchel"
 	icon = 'icons/obj/item/clothing/back/satchel/poly.dmi'
 	polymorphs = list(
 		"body" = COLOR_WHITE,

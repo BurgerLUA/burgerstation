@@ -16,3 +16,7 @@
 	skill_damage = list(
 		SKILL_PRAYER = DARK
 	)
+
+	bonus_experience = list(
+		SKILL_PRAYER = 50 //50%
+	)

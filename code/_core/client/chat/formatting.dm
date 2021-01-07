@@ -25,7 +25,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		if(TEXT_OOC)
 			html = "[format_speaker(speaker,source,"OOC", language = language)]: [span("ooc",text)]"
 		if(TEXT_GHOST)
-			html = "[format_speaker(speaker,source,"DEAD", language = language)] moans &#34;[span("dead",text)]&#34;"
+			html = "[format_speaker(speaker,source,"DEAD", language = language)] moans, &#34;[span("dead",text)]&#34;"
 		if(TEXT_BOT)
 			html = "[format_speaker(speaker,source,"BOT", language = language)]: [span("bot",text)]"
 		if(TEXT_RADIO)

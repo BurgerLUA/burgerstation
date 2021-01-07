@@ -15,7 +15,6 @@
 		ARCANE = AP_GREATSWORD*0.25
 	)
 
-
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = AP_GREATSWORD*0.25
 	)
@@ -26,10 +25,15 @@
 
 	skill_stats = list(
 		SKILL_MELEE = DAMAGE_GREATSWORD*0.3,
-		SKILL_MAGIC = DAMAGE_GREATSWORD*0.35
+		SKILL_SORCERY = DAMAGE_GREATSWORD*0.35
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = list(BLADE,PIERCE),
-		SKILL_MAGIC = ARCANE
+		SKILL_SORCERY = ARCANE
+	)
+
+	bonus_experience = list(
+		SKILL_MELEE = 25, //25%
+		SKILL_SORCERY = 25
 	)

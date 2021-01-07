@@ -272,9 +272,9 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(burn=.*-10,robotic=FALSE)
-		if(is_living(container.owner.loc))
-			var/mob/living/L = container.owner.loc
-			L.do_emote("scream")
+		if(is_organ(container.owner))
+			var/obj/item/organ/O = container.owner
+			O.send_pain(50)
 
 	return .
 
@@ -328,9 +328,9 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(brute=.*-10,robotic=FALSE)
-		if(is_living(container.owner.loc))
-			var/mob/living/L = container.owner.loc
-			L.do_emote("scream")
+		if(is_organ(container.owner))
+			var/obj/item/organ/O = container.owner
+			O.send_pain(50)
 
 	return .
 

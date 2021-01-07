@@ -108,6 +108,8 @@
 	var/real_quantity = found_data["Quantity"] ? clamp(text2num(found_data["Quantity"]),0,10) : 0
 	if(length(found_data) && found_data["Requisitioner's Name"] && found_data["Item ID"] && real_quantity)
 		var/atom/movable/stored_item = SScargo.cargo_id_to_type[found_data["Item ID"]]
+		if(!stored_item)
+			return ..()
 		var/obj/marker/cargo/C = locate() in world
 		var/obj/structure/interactive/crate/secure/cargo/SC = new(get_turf(C))
 		INITIALIZE(SC)

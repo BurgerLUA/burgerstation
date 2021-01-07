@@ -84,6 +84,7 @@
 		/obj/item/clothing/back/storage/satchel/poly,
 		/obj/item/clothing/back/storage/backpack/poly,
 		/obj/item/clothing/back/storage/dufflebag/poly,
+		/obj/item/clothing/belt/storage/colored,
 		/obj/item/clothing/head/hat/bandana,
 		/obj/item/clothing/head/hat/skimask,
 		/obj/item/clothing/neck/cape,

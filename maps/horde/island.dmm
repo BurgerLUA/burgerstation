@@ -1159,6 +1159,10 @@
 "fm" = (
 /turf/simulated/wall/metal/reinforced,
 /area/lz_001/forest/village)
+"fn" = (
+/mob/living/advanced/npc/unique/knight/green,
+/turf/simulated/floor/cave_dirt,
+/area/lz_001/caves/knight/cave)
 "fo" = (
 /obj/structure/smooth/wall/wood,
 /turf/simulated/floor/colored/dirt,
@@ -2642,9 +2646,9 @@
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "ly" = (
-/obj/marker/syndicate,
-/turf/simulated/floor/cave_dirt,
-/area/lz_001/caves/glow_cave)
+/obj/marker/map_node,
+/turf/simulated/floor/wood/dock,
+/area/lz_001/caves)
 "lz" = (
 /obj/marker/syndicate,
 /turf/simulated/floor/colored/dirt/cave,
@@ -2788,10 +2792,6 @@
 /obj/effect/fog_of_war,
 /turf/simulated/hazard/water,
 /area/lz_001/forest)
-"mt" = (
-/mob/living/advanced/npc/unique/knight/red,
-/turf/simulated/floor/cave_dirt,
-/area/lz_001/caves/knight/cave)
 "mv" = (
 /obj/structure/interactive/lighting/fixture/floor/syndicate,
 /turf/simulated/floor/cave_dirt,
@@ -7380,7 +7380,7 @@ eS
 fg
 fg
 fs
-mt
+fs
 fs
 fs
 fs
@@ -7638,7 +7638,7 @@ fg
 fg
 fg
 fs
-fs
+fn
 fs
 fs
 fs
@@ -36528,7 +36528,7 @@ ce
 bY
 bY
 bY
-mE
+ly
 bY
 eD
 eD
@@ -48611,7 +48611,7 @@ lp
 lp
 lp
 kJ
-ly
+lF
 lF
 lc
 lc
