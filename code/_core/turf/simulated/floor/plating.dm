@@ -12,6 +12,8 @@
 	layer = LAYER_FLOOR_PLATING
 
 	exposed = TRUE
+	desc = "The plating underneath the floor"
+	var/desc_extended = "A floor found underneath an actual floor."
 
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"
