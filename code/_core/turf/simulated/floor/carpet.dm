@@ -6,7 +6,7 @@
 	corner_icons = TRUE
 	corner_category = "carpet"
 	desc = "A carpeted floor"
-	var/desc_extended = "A carpet with an awesomesauce design that has no flaws whatsoever"
+desc_extended = "A carpet with an awesomesauce design that has no flaws whatsoever"
 
 	footstep = /footstep/carpet
 
@@ -14,7 +14,7 @@
 	name = "office carpet"
 	icon = 'icons/turf/floor/carpet_office.dmi'
 	desc = "Office flooring"
-	var/desc_extended = "Boring office floor; may or may not smell vaguely of urine"
+	desc_extended = "Boring office floor; may or may not smell vaguely of urine"
 	icon_state = "1"
 
 /turf/simulated/floor/carpet/office/New(var/desired_loc)
