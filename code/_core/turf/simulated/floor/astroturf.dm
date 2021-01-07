@@ -4,6 +4,6 @@
 	icon = 'icons/turf/floor/natural.dmi'
 	icon_state = "grass"
 	desc = "Fake grass"
-	var/desc_extended = "it doesn't feel pain when you step on it, unlike real grass"
+	desc_extended = "it doesn't feel pain when you step on it, unlike real grass"
 
 	footstep_id = "grass"
