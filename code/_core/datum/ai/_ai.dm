@@ -433,7 +433,7 @@
 				frustration_path = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
-		else
+		else //Complete path
 			start_turf = get_turf(owner)
 			set_path(null)
 			owner.move_dir = 0

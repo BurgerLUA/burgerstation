@@ -15,7 +15,7 @@
 	desc_extended = "Currency primarily used by syndicate operatives."
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
-	value = 100
+	value = 400
 
 /obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
 	item_count_current = 50

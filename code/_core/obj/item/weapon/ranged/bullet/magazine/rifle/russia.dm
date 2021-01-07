@@ -221,8 +221,8 @@
 	icon_state = "inventory"
 	value = 650
 
-	shoot_delay = 1.5
-	view_punch = 7
+	shoot_delay = 1.75
+	view_punch = 9
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -234,7 +234,7 @@
 	weight = 18
 
 
-	heat_per_shot = 0.01
+	heat_per_shot = 0.02
 	heat_max = 1
 
 	bullet_length_min = 38

@@ -136,8 +136,7 @@
 		var/luck_value = (total_damage_dealt/DAMAGE_DAGGER)*100
 
 		if(is_living(attacker))
-			var/mob/living/A = attacker
-			if(A.loyalty_tag != L.loyalty_tag && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
+			if(luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
 				L.add_status_effect(DISARM,5,5, source = attacker)
 				return ..()
 

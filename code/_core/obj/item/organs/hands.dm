@@ -57,6 +57,8 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
+		if(L.attack_flags & CONTROL_MOD_KICK)
+			return /damagetype/unarmed/foot
 		switch(L.intent)
 			if(INTENT_HARM)
 				return /damagetype/unarmed/fists/

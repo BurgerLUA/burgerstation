@@ -21,6 +21,14 @@
 	size = SIZE_6
 	weight = 50
 
+/obj/item/weapon/ranged/energy/mech/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+
+	if(!istype(src.loc,/mob/living/vehicle/))
+		caller?.to_chat(span("warning","This weapon can only be fired in a vehicle!"))
+		return FALSE
+
+	return ..()
+
 /obj/item/weapon/ranged/energy/mech/get_battery()
 
 	if(istype(loc,/obj/item/mech_part))
@@ -62,8 +70,6 @@
 
 /obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(var/mob/living/L)
 	return 0
-
-
 
 /obj/item/weapon/ranged/energy/mech/lmg
 	name = "5.56mm LMG"

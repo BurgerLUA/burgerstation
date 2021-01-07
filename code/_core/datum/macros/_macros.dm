@@ -101,6 +101,8 @@
 			owner.mob.attack_flags |= CONTROL_MOD_SELF
 		if("quick_holder")
 			owner.mob.attack_flags |= CONTROL_MOD_OWNER
+		if("kick")
+			owner.mob.attack_flags |= CONTROL_MOD_KICK
 		if("zoom")
 			if(owner.is_zoomed)
 				owner.is_zoomed = 0x0
@@ -156,6 +158,8 @@
 			owner.mob.attack_flags &= ~CONTROL_MOD_SELF
 		if("quick_holder")
 			owner.mob.attack_flags &= ~CONTROL_MOD_OWNER
+		if("kick")
+			owner.mob.attack_flags &= ~CONTROL_MOD_KICK
 		if("zoom")
 			//Do nothing
 		if("say")

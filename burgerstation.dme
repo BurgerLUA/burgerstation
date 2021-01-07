@@ -418,6 +418,7 @@
 #include "code\_core\datum\damagetype\unarmed\bite.dm"
 #include "code\_core\datum\damagetype\unarmed\claws.dm"
 #include "code\_core\datum\damagetype\unarmed\fists.dm"
+#include "code\_core\datum\damagetype\unarmed\foot.dm"
 #include "code\_core\datum\damagetype\unarmed\stand.dm"
 #include "code\_core\datum\dialogue\_dialogue.dm"
 #include "code\_core\datum\dialogue\hostage\_hostage.dm"

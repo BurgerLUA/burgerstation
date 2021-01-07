@@ -241,6 +241,15 @@
 		tracked_enemies += L
 		points -= 0.1
 
+	for(var/k in tracked_enemies)
+		var/mob/living/L = k
+		if(!istype(L) || L.dead || L.qdeleting) //TODO: Remove these checks
+			log_error("Warning: [k] was invalid tracked enemy!")
+			tracked_enemies -= k
+			continue
+		if(L.ai && !L.ai.current_path)
+			L.ai.set_path(found_path)
+
 /gamemode/horde/proc/get_wave_frequency()
 
 	var/player_count = length(all_clients)

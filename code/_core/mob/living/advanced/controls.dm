@@ -20,7 +20,7 @@ mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT. DON'T CALL THIS ON INVENTORIES.
 		return FALSE
 
 	if(left_hand)
@@ -41,7 +41,7 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	if(quick_mode && !right_hand.get_top_object() && handle_quick(object,location,control,params))
 		return TRUE
 
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT. DON'T CALL THIS ON INVENTORIES.
 		return TRUE
 
 	if(right_hand)
@@ -64,11 +64,8 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 	if(quick_mode && !left_hand.get_top_object() && handle_quick(object,location,control,params))
 		return TRUE
 
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT. ONLY CALL THIS CODE ON INVENTORIES.
 		return TRUE
-
-
-	//if(src.attack_flags & CONTROL_MOD_BLOCK)
 
 	if(left_hand)
 		if(is_button(object))
@@ -84,7 +81,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
+	if(!is_inventory(object)) //THIS IS VERY IMPORTANT. ONLY CALL THIS CODE ON INVENTORIES.
 		return FALSE
 
 	//if(src.attack_flags & CONTROL_MOD_BLOCK)
