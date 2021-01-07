@@ -1,7 +1,7 @@
 /turf/simulated/floor/grass/
 	name = " dense grass"
 	desc = "Some grass on the ground"
-	var/desc_extended = "Damn daniel back at it agian with the green grass"
+	desc_extended = "Damn daniel back at it agian with the green grass"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "grass_new"
@@ -25,7 +25,7 @@
 	color = "#969696"
 	destruction_turf = /turf/simulated/floor/colored/grass/jungle
 	desc = "Some junglely grass"
-	var/desc_extended = "unlike what some people believe, jungle grass isn't just grass that likes to listen to jungle music"
+	desc_extended = "unlike what some people believe, jungle grass isn't just grass that likes to listen to jungle music"
 
 /*
 /turf/simulated/floor/grass/smooth_turfs()
