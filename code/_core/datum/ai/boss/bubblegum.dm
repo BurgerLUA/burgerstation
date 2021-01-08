@@ -33,7 +33,7 @@
 			owner_as_bubblegum.blood_attack()
 			return TRUE
 
-		if(!owner_as_bubblegum.charge_steps && prob(10*health_prob_mod))
+		if(!owner_as_bubblegum.charge_steps && (abs(get_angle(owner_as_bubblegum,objective_attack)) % 45 == 0) && prob(20*health_prob_mod))
 			owner_as_bubblegum.start_charge()
 			return TRUE
 

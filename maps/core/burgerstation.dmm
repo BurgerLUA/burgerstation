@@ -998,7 +998,7 @@
 "dL" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
-/obj/item/pinpointer/boss,
+/obj/item/analyzer/gps,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
 "dM" = (
@@ -1442,10 +1442,11 @@
 /turf/simulated/floor/tile/shuttle/purple,
 /area/transit/dropship/charlie/station)
 "fo" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/obj/structure/smooth/window/directional/anchored,
-/turf/simulated/floor/tile/morphing/security,
-/area/burgerstation/armory)
+/obj/structure/smooth/table/reinforced,
+/obj/structure/interactive/shop,
+/obj/item/pinpointer/boss,
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/science)
 "fp" = (
 /obj/structure/interactive/vending/mining,
 /obj/decal/hazard{
@@ -40993,7 +40994,7 @@ zg
 zq
 zh
 zi
-oR
+fo
 oR
 oR
 nb
@@ -48152,7 +48153,7 @@ cT
 dL
 ej
 eN
-fo
+co
 fr
 fr
 hA
