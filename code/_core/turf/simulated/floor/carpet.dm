@@ -6,7 +6,7 @@
 	corner_icons = TRUE
 	corner_category = "carpet"
 	desc = "A carpeted floor"
-desc_extended = "A carpet with an awesomesauce design that has no flaws whatsoever"
+	desc_extended = "A carpet with an awesomesauce design that has no flaws whatsoever"
 
 	footstep = /footstep/carpet
 
