@@ -34,20 +34,18 @@
 
 /obj/structure/interactive/restocker/ammo/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-
 	if(istype(object,/obj/item/powercell/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		var/obj/item/powercell/C = object
 		if(C.charge_current >= C.charge_max)
-			caller.to_chat(span("warning","You can't cram any more power into the [C.name]!"))
+			caller.to_chat(span("warning","You can't cram any more power into \the [C.name]!"))
 			return TRUE
-		if(C.charge_current <= C.charge_max)
-			C.charge_current = C.charge_max
-			caller.to_chat(span("notice","You swap the [C.name] for a fully charged one."))
-			C.update_sprite()
-			return TRUE
+		C.charge_current = C.charge_max
+		caller.to_chat(span("notice","You swap \the [C.name] for a fully charged one."))
+		C.update_sprite()
+		return TRUE
 
 	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
@@ -57,7 +55,6 @@
 		if(!M.ammo)
 			caller.to_chat(span("warning","That magazine isn't registered in our system!"))
 			return TRUE
-
 		var/bullets_to_add = M.bullet_count_max - M.get_ammo_count()
 		if(bullets_to_add <= 0)
 			caller.to_chat(span("warning","\The [M.name] is already full!"))
@@ -68,7 +65,6 @@
 		B.add_item_count(bullets_to_add - B.item_count_current,TRUE)
 		B.transfer_src_to_magazine(caller,M,location,control,params)
 		caller.to_chat(span("notice","\The [M.name] has been restocked with [bullets_to_add] bullets."))
-
 		return TRUE
 
 	return ..()

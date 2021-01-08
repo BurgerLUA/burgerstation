@@ -10,7 +10,7 @@
 	bullet_color = "#FF0000"
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 4
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -23,8 +23,8 @@
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
-	heat_per_shot = 0.06
-	heat_max = 0.1
+	heat_per_shot = 0.01
+	heat_max = 0.06
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
@@ -101,7 +101,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle/hardlight
 
 	projectile_speed = 26
-	shoot_delay = 6
+	shoot_delay = 2.5
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
@@ -120,7 +120,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle/xray
 
 	projectile_speed = 20
-	shoot_delay = 4
+	shoot_delay = 3
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
@@ -133,12 +133,12 @@
 
 	value = 1500
 
-/obj/item/weapon/ranged/energy/rifle/xray/deathsquad/
+/obj/item/weapon/ranged/energy/rifle/xray/deathsquad
 	name = "AER13c-D X-Ray Rifle"
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special fusion battery that charges over time."
 
-	projectile_speed = 30
-	shoot_delay = 5
+	projectile_speed = TILE_SIZE - 1
+	shoot_delay = 1.5
 
 	view_punch = 30
 
@@ -146,8 +146,6 @@
 		"base" = "#EEEEEE",
 		"barrel" = "#FF00DC"
 	)
-
-	charge_cost = CELL_SIZE_BASIC / 12
 
 	battery = /obj/item/powercell/recharging
 

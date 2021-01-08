@@ -23,8 +23,8 @@
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.02
-	heat_max = 0.06
+	heat_per_shot = 0.015
+	heat_max = 0.03
 
 	size = SIZE_4
 	weight = 18
