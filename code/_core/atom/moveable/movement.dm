@@ -156,39 +156,41 @@
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 
-	//Try: Enter the turf.
-	if(!NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
+	//Try: Enter the new turf.
+	if(src.density && !NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
 		return FALSE
 
-	//Try: Exit the turf.
-	if(OldLoc && !OldLoc.Exit(src,NewLoc))
+	//Try: Exit the old turf.
+	if(src.density && OldLoc && !OldLoc.Exit(src,NewLoc))
 		return FALSE
 
 	//Try: Cross the Contents
-	for(var/k in NewLoc.contents)
-		CHECK_TICK(100,FPS_SERVER)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(M.density && !M.Cross(src) && !src.Bump(M))
-			return FALSE
+	if(src.density)
+		for(var/k in NewLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(M.density && !M.Cross(src) && !src.Bump(M))
+				return FALSE
 
 	//Try: Uncross the Contents
-	for(var/k in OldLoc.contents)
-		CHECK_TICK(100,FPS_SERVER)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(M.density && !M.Uncross(src))
-			return FALSE
+	if(src.density && OldLoc)
+		for(var/k in OldLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(M.density && !M.Uncross(src))
+				return FALSE
 
 	//Do: Enter the turf.
-	NewLoc.Entered(src,OldLoc)
+	if(src.density) NewLoc.Entered(src,OldLoc)
 
 	//Do: Exit the turf.
-	NewLoc.Exited(src,NewLoc)
+	if(src.density) NewLoc.Exited(src,NewLoc)
 
-	if(OldLoc == loc)
+	if(!OldLoc || OldLoc == loc)
 		loc = NewLoc
 
 	//Do: Crossed the contents
@@ -203,7 +205,7 @@
 			M.Crossed(src)
 
 	//Do: Uncrossed the contents
-	if(src.density)
+	if(src.density && OldLoc)
 		for(var/k in OldLoc.contents)
 			CHECK_TICK(100,FPS_SERVER)
 			var/atom/movable/M = k

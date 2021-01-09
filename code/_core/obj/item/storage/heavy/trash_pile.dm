@@ -18,15 +18,19 @@
 	return ..()
 
 /obj/item/storage/heavy/trash_pile/New(var/desired_loc)
+
 	. = ..()
+
 	icon_state = "[initial(icon_state)]_[rand(1,11)]"
-	if(prob(20) || z != 1)
-		stored_beefman = new(src)
-		INITIALIZE(stored_beefman)
-		GENERATE(stored_beefman)
-		FINALIZE(stored_beefman)
-	else if(prob(20))
-		new /mob/living/simple/passive/mouse/grey(src.loc)
+
+	if(z == 1)
+		if(prob(20))
+			stored_beefman = new(src)
+			INITIALIZE(stored_beefman)
+			GENERATE(stored_beefman)
+			FINALIZE(stored_beefman)
+		else if(prob(20))
+			new /mob/living/simple/passive/mouse/grey(src.loc)
 
 	return .
 

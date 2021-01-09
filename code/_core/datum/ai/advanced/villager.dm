@@ -1,18 +1,18 @@
-/ai/villager
+/ai/advanced/villager
 	roaming_distance = 3
 
-/ai/villager/on_life()
+/ai/advanced/villager/on_life()
 
 	if(!isturf(owner.loc))
 		return TRUE
 
 	return TRUE
 
-/ai/villager/handle_attacking() //They do not need to attack.
+/ai/advanced/villager/handle_attacking() //They do not need to attack.
 	return FALSE
 
 
-/ai/villager/handle_movement()
+/ai/advanced/villager/handle_movement()
 
 	owner.move_dir = 0
 
@@ -70,7 +70,3 @@
 
 	if(length(valid_directions))
 		owner.move_dir = pick(valid_directions)
-
-
-
-/ai/villager/stationary
