@@ -17,25 +17,26 @@
 
 	value = 15
 
-	qdelete_immune = TRUE
+	queue_delete_immune = TRUE
 
 	weight = 1
 
 /obj/item/grenade/Destroy()
+
+	QDEL_NULL(stored_trigger)
 
 	for(var/k in stored_containers)
 		var/obj/item/I = k
 		qdel(I)
 	stored_containers.Cut()
 
-	QDEL_NULL(stored_trigger)
-
 	return ..()
 
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
-	. = ..()
-	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
 
+	. = ..()
+
+	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
 
 	if(length(stored_containers))
 		.["stored_containers"] = list()
@@ -65,7 +66,10 @@
 	if(source == src)
 		alpha = 0
 		mouse_opacity = 0
+		queue_delete_immune = FALSE
 		queue_delete(src,60)
+		if(!isturf(src.loc)) drop_item(get_turf(src))
+		if(stored_trigger) stored_trigger.active = FALSE
 	else
 		trigger(owner,source,-1,-1)
 

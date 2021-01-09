@@ -44,8 +44,11 @@
 	return ..()
 
 /obj/item/device/timer/think()
+
 	. = ..()
-	if(active)
+
+	if(. && active)
+
 		time_set -= 1
 
 		if( (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)
@@ -60,6 +63,7 @@
 			active = FALSE
 			time_set = 0
 			return FALSE
+
 	return .
 
 /obj/item/device/timer/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)

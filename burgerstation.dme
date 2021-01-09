@@ -396,6 +396,7 @@
 #include "code\_core\datum\damagetype\ranged\bullet\syringe.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\tranq.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\tungsten.dm"
+#include "code\_core\datum\damagetype\ranged\laser\_laser.dm"
 #include "code\_core\datum\damagetype\ranged\laser\carbine.dm"
 #include "code\_core\datum\damagetype\ranged\laser\emitter.dm"
 #include "code\_core\datum\damagetype\ranged\laser\freezegun.dm"

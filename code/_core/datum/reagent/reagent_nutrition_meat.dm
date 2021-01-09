@@ -348,9 +348,6 @@
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
 
-
-
-
 /reagent/nutrition/meat/colossus
 	name = "raw colossus meat"
 	desc = "Nutrition and flavor from raw colossus meat."
@@ -363,7 +360,7 @@
 
 	flavor = "tough raw jerky"
 
-	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+	heated_reagent = /reagent/nutrition/meat/colossus/cooked
 
 /reagent/nutrition/meat/colossus/cooked
 	name = "cooked colossus meat"
@@ -396,7 +393,7 @@
 
 	flavor = "rocks"
 
-	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+	heated_reagent = /reagent/nutrition/meat/goliath/cooked
 
 /reagent/nutrition/meat/goliath/cooked
 	name = "cooked goliath meat"

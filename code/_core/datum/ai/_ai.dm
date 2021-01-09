@@ -414,8 +414,10 @@
 
 	for(var/k in obstructions)
 		var/atom/A = k
-		if(!A.health)
-			continue
+		if(!A.health) //Can't destroy.
+			obstacles.Cut()
+			set_path(null)
+			break
 		obstacles[A] = TRUE
 
 	return TRUE
@@ -624,7 +626,7 @@
 	var/turf/T = get_turf(owner)
 
 	for(var/light_source/LS in T.affecting_lights)
-		if(!is_living(LS.top_atom))
+		if(!is_player(LS.top_atom))
 			continue
 		var/mob/living/L = LS.top_atom
 		if(should_attack_mob(L))
@@ -639,9 +641,14 @@
 		return TRUE
 
 	if(objective_attack)
-		if((is_living(objective_attack) && !should_attack_mob(objective_attack,FALSE)) || get_sight_chance(objective_attack) <= 50)
-			set_objective(null)
-		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
+		if(is_living(objective_attack))
+			if(!should_attack_mob(objective_attack,FALSE))
+				set_objective(null)
+			else if(get_sight_chance(objective_attack) <= 50)
+				frustration_attack++
+			else
+				frustration_attack = 0
+		else if(get_dist(owner,objective_attack) > attack_distance_max)
 			frustration_attack++
 		else
 			frustration_attack = 0
@@ -788,31 +795,6 @@
 /ai/proc/is_in_view(var/atom/A)
 	return A in view(owner)
 
-/ai/proc/can_see(var/atom/A,var/check_view = TRUE)
-
-	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
-		return FALSE
-
-	if(check_view && !is_in_view(A))
-		return FALSE
-
-	if(A in attackers)
-		return TRUE
-
-	if(owner.z != A.z)
-		return FALSE
-
-	var/distance = get_dist(owner,A)
-	if(distance <= 1)
-		return TRUE
-
-	var/atom_alpha = A.alpha
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		atom_alpha *= 2
-
-	return A.alpha >= ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
-
-
 /ai/proc/get_sight_chance(var/atom/A,var/check_view = TRUE)
 
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
@@ -827,9 +809,22 @@
 	if(A in attackers)
 		return 100
 
-	var/distance = get_dist(owner,A)
+	var/distance
+
+	if(!objective_attack)
+		distance = get_dist(owner,A)
+	else
+		distance = get_dist(objective_attack,A)
+
+	if(distance <= 0)
+		return 0
+
+	if(distance <= 1)
+		return 100
+
 	if(distance > radius_find_enemy_combat)
 		return 0
+
 	switch(distance)
 		if(1)
 			return 100
@@ -855,6 +850,11 @@
 
 	var/atom_alpha = A.alpha
 	if(alert_level == ALERT_LEVEL_COMBAT)
+		atom_alpha += 50
+		atom_alpha *= 2
+
+	if(A == objective_attack)
+		atom_alpha += 50
 		atom_alpha *= 2
 
 	. *= clamp(atom_alpha/255,0,1) * lightness

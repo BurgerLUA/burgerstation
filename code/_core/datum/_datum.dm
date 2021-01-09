@@ -5,7 +5,7 @@
 	var/initialized = FALSE
 	var/generated = FALSE
 	var/finalized = FALSE
-	var/qdelete_immune = FALSE
+	var/queue_delete_immune = FALSE
 	var/list/hooks
 
 /datum/proc/get_examine_list(var/mob/examiner)

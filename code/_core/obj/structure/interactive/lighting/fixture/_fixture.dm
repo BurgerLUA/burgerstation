@@ -22,7 +22,7 @@
 
 	var/turf/T = get_turf(src)
 
-	if(desired_light_color)
+	if(desired_light_range > 0)
 		desired_light_color = null
 		if(health) health.restore()
 		create_destruction(T,list(/obj/item/material/shard = 1),/material/glass)
@@ -67,7 +67,7 @@
 
 	. = ..()
 
-	if(on && desired_light_color && desired_light_range)
+	if(on && desired_light_range > 0)
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
 		IS.plane = PLANE_LIGHTING

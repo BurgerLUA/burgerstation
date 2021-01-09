@@ -6,8 +6,6 @@
 	damage_type = /damagetype/melee/sword/energy
 	var/damage_type_on = /damagetype/melee/sword/energy/on
 
-	value = 50
-
 /obj/item/weapon/melee/energy/can_block()
 	return enabled
 

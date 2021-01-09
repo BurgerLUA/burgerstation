@@ -15,8 +15,21 @@
 
 	turf_temperature_mod = 800
 
+/turf/simulated/hazard/lava/Enter(atom/movable/O,atom/oldloc)
+
+	if(istype(O,/mob/abstract/node_checker))
+		return FALSE
+
+	if(is_living(O))
+		var/mob/living/L = O
+		if(L.ai && !(length(L.status_immune) && L.status_immune[FIRE]))
+			return FALSE
+
+	return ..()
+
 /turf/simulated/hazard/lava/Entered(atom/movable/O,atom/oldloc)
-	if(is_living(O)) lava_idiot(O)
+	if(is_living(O))
+		lava_idiot(O)
 	return ..()
 
 

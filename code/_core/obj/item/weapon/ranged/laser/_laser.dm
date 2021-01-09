@@ -62,6 +62,9 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
+			if(battery)
+				caller.to_chat(span("warning","There is already a battery installed in \the [src.name]!"))
+				return TRUE
 			var/obj/item/powercell/P = I
 			if(P.size > SIZE_2) //Only fits size 2.
 				caller.to_chat(span("warning","\The [P.name] is too large to be put into \the [src.name]!"))
