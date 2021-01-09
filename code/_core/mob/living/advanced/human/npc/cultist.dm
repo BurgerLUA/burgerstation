@@ -13,20 +13,18 @@
 	stamina_base = 100
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 25,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 25,
-		BIO = 25,
-		RAD = 25,
-		HOLY = -100,
-		DARK = 100,
-		FATIGUE = 25,
-		PAIN = 25
+		BLADE = DAMAGE_SWORD,
+		BLUNT = DAMAGE_DAGGER,
+		PIERCE = DAMAGE_DAGGER,
+		LASER = -DAMAGE_CLUB,
+		ARCANE = DAMAGE_SWORD,
+		HEAT = -DAMAGE_SWORD,
+		COLD = DAMAGE_SWORD,
+		BIO = DAMAGE_CLUB,
+		RAD = DAMAGE_SWORD,
+		HOLY = -DAMAGE_GREATSWORD,
+		DARK = DAMAGE_CLUB,
+		PAIN = DAMAGE_SWORD
 	)
 
 	level_multiplier = 2
@@ -64,4 +62,4 @@
 /mob/living/advanced/npc/cultist/hard
 	name = "master cultist"
 	loadout_to_use = /loadout/cultist/hard
-	level_multiplier = 10
+	level_multiplier = 8

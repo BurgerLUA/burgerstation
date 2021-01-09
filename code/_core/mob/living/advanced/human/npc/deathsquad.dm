@@ -34,12 +34,12 @@
 
 /mob/living/advanced/npc/deathsquad/light
 	desired_loadout = /loadout/deathsquad/light
-	level_multiplier = 2
+	level_multiplier = 1
 
 /mob/living/advanced/npc/deathsquad/medium
 	desired_loadout = /loadout/deathsquad/medium
-	level_multiplier = 4
+	level_multiplier = 2
 
 /mob/living/advanced/npc/deathsquad/heavy
 	desired_loadout = /loadout/deathsquad/heavy
-	level_multiplier = 8
+	level_multiplier = 4
