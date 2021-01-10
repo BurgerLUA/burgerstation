@@ -77,7 +77,7 @@
 
 	if(objective_attack)
 		if(is_living(objective_attack))
-			if(!should_attack_mob(objective_attack,FALSE))
+			if(!should_attack_mob(objective_attack,FALSE) || get_sight_chance(objective_attack) <= 0)
 				set_objective(null)
 			else if(get_sight_chance(objective_attack) <= 50)
 				frustration_attack++

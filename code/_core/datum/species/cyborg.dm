@@ -41,5 +41,5 @@
 
 	health = /health/mob/living/advanced/robotic
 
-/species/reptile/generate_blood_type()
+/species/cyborg/generate_blood_type()
 	return /reagent/blood/robot

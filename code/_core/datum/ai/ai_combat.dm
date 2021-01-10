@@ -56,6 +56,9 @@
 
 /ai/proc/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
 
+	if(L.z != owner.z)
+		return FALSE
+
 	if(L == owner)
 		return FALSE
 

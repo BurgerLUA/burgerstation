@@ -13,11 +13,11 @@
 
 	bullet_block_chance = 90
 
-	health = /health/construction/
+	health = /health/construction/barricade
 
 	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
 
-	health_base = 300
+	health_base = 600
 
 	var/list/climbers = list()
 

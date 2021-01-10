@@ -467,6 +467,7 @@
 #include "code\_core\datum\gamemode\lobby.dm"
 #include "code\_core\datum\hazard\_hazard.dm"
 #include "code\_core\datum\health\_health.dm"
+#include "code\_core\datum\health\barricade.dm"
 #include "code\_core\datum\health\construction.dm"
 #include "code\_core\datum\health\mob\living\_living.dm"
 #include "code\_core\datum\health\mob\living\advanced\_advanced.dm"

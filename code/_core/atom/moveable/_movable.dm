@@ -51,6 +51,8 @@
 
 	var/value_last = 0//Last value calculated via calculation
 
+	var/is_moving = TRUE
+
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
 
 	. = FALSE
