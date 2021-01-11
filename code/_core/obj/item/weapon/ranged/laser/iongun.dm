@@ -36,6 +36,7 @@
 	can_wield = TRUE
 
 /obj/item/weapon/ranged/energy/iongun/get_static_spread()
+	if(wielded) return 0
 	return 0.001
 
 /obj/item/weapon/ranged/energy/iongun/get_skill_spread(var/mob/living/L)
