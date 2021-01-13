@@ -17,10 +17,26 @@
 	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0)
-	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0) //How much to subtract damage
-	var/list/wound/wounds = list()
 
-	var/list/armor_base = list(  //Base armor for the mob.
+	var/list/resistance = list() //How much to multiply damage
+
+	/* TEMPLATE
+	var/list/resistance = list(
+		BRUTE = 1,
+		BURN = 1,
+		TOX = 1,
+		OXY = 1,
+		FATIGUE = 1,
+		PAIN=1,
+		RAD=1,
+		SANITY=1
+	)
+	*/
+
+
+
+	/* TEMPLATE
+	var/list/armor_base = list(
 		BLADE = 0,
 		BLUNT = 0,
 		PIERCE = 0,
@@ -37,6 +53,9 @@
 		PAIN = 0,
 		SANITY = 0
 	)
+	*/
+
+	var/list/armor_base = list()
 
 	var/organic = FALSE
 
@@ -108,7 +127,7 @@
 	return .
 
 /health/proc/adjust_loss(var/loss_type,var/value)
-	value -= (value > 0 ? resistance[loss_type] : 0)
+	if(resistance[loss_type] && value > 0) value *= resistance[loss_type]
 	value -= min(0,damage[loss_type] + value)
 	damage[loss_type] += value
 	return value

@@ -49,14 +49,15 @@
 		ARCANE = BURN,
 		HEAT = BURN,
 		COLD = BURN,
-		BOMB = BRUTE,
+		SHOCK = BURN,
+		BOMB = list(BRUTE,BURN),
 		BIO = TOX,
-		RAD = RAD,
+		RAD = list(RAD,BURN),
 		HOLY = BURN,
 		DARK = BRUTE,
 		FATIGUE = FATIGUE,
 		PAIN = PAIN,
-		ION = BURN,
+		ION = list(BRUTE,BURN),
 		SANITY = SANITY
 	)
 
@@ -205,6 +206,12 @@
 
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= bonus_damage_multiplier
+		/*
+		if(victim.health && victim.health.damage_multipliers[k])
+			new_attack_damage[k] *= victim.health.damage_multipliers[k]
+		if(hit_object.health && hit_object.health.damage_multipliers[k])
+			new_attack_damage[k] *= hit_object.health.damage_multipliers[k]
+		*/
 
 	return new_attack_damage
 
@@ -404,7 +411,12 @@
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
 		var/real_damage_type = attack_damage_conversion[damage_type]
-		damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
+		if(islist(real_damage_type))
+			var/list_length = length(real_damage_type)
+			for(var/k in real_damage_type)
+				damage_to_deal_main[real_damage_type] += CEILING(damage_amount/list_length,1)
+		else
+			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
 
 	var/total_damage_dealt = 0
 	if(victim.immortal || hit_object.immortal)

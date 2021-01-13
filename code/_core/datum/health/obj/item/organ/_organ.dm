@@ -89,4 +89,5 @@
 	return .
 
 /health/obj/item/organ/synthetic
+	resistance = list(PAIN=0,TOX=0)
 	organic = FALSE

@@ -22,6 +22,8 @@
 
 #define HEAT "heat"
 #define COLD "cold"
+#define SHOCK "shock"
+
 #define BOMB "bomb"
 #define BIO "bioweapon"
 #define RAD "radiation"
