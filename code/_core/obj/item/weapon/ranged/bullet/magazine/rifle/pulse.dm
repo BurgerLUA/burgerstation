@@ -71,6 +71,10 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
+/obj/item/weapon/ranged/bullet/magazine/rifle/pulse/get_static_spread()
+	if(wielded) return 0
+	return 0.15
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/update_icon()
 
 	if(stored_magazine)
