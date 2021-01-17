@@ -3,6 +3,14 @@
 		/loot/medicine/pack = 50
 	)
 
+/loot/supply_crate/all
+	loot_table = list(
+		/loot/supply_crate/russian = 1,
+		/loot/supply_crate/nanotrasen = 1,
+		/loot/supply_crate/american = 1,
+		/loot/supply_crate/syndicate = 1,
+		/loot/supply_crate/magic = 1
+	)
 
 /loot/supply_crate/russian
 	loot_table = list(
@@ -18,13 +26,6 @@
 		/loot/weapon/russian_shotgun = 10,
 		/loot/weapon/gauss_rifle = 10
 	)
-
-/loot/supply_crate/russian/pre_spawn(var/atom/movable/M)
-	if(istype(M,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = M
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
-
-	return ..()
 
 /loot/supply_crate/nanotrasen
 	loot_table = list(
@@ -60,13 +61,6 @@
 		/loot/weapon/syringe_gun = 10,
 		/loot/weapon/traitor_revolver = 10
 	)
-
-/loot/supply_crate/syndicate/pre_spawn(var/atom/movable/M)
-	if(istype(M,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = M
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-
-	return ..()
 
 /loot/supply_crate/magic
 	loot_table = list(

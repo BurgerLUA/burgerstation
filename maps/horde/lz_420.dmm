@@ -3076,6 +3076,38 @@
 /obj/marker/map_node,
 /turf/simulated/floor/plating,
 /area/lz_420/exterior)
+"mt" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/colored/sand/oasis,
+/area/lz_420/exterior)
+"mu" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/plating,
+/area/lz_420/interior/nexus/cargo)
+"mv" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/colored/sand/oasis,
+/area/lz_420/interior/nexus/entrance)
+"mw" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/plating,
+/area/lz_420/exterior)
+"mx" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/grass/jungle,
+/area/lz_420/exterior)
+"my" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/tile/dark,
+/area/lz_420/interior/nexus/wip)
+"mz" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/plating,
+/area/lz_420/interior/nexus/chapel)
+"mA" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/tile/morphing/red,
+/area/lz_420/interior/nexus/armory)
 
 (1,1,1) = {"
 ab
@@ -26674,7 +26706,7 @@ gu
 fj
 ii
 fi
-bT
+mw
 au
 au
 au
@@ -29002,7 +29034,7 @@ au
 au
 au
 ap
-af
+my
 af
 ao
 ax
@@ -29013,7 +29045,7 @@ cH
 cH
 ax
 ao
-af
+my
 af
 ap
 au
@@ -31041,7 +31073,7 @@ fj
 fj
 fL
 fi
-bT
+mw
 bT
 bT
 au
@@ -37707,7 +37739,7 @@ aD
 aD
 aD
 aC
-id
+mz
 aD
 aD
 aD
@@ -38498,7 +38530,7 @@ bB
 bB
 bB
 cx
-cR
+mA
 cR
 cR
 cx
@@ -40294,7 +40326,7 @@ cE
 cE
 dA
 cx
-cR
+mA
 cR
 cR
 cR
@@ -42800,7 +42832,7 @@ kI
 kI
 hj
 aa
-cM
+mt
 cM
 cM
 cM
@@ -44628,12 +44660,12 @@ ay
 ay
 cM
 ay
-ic
+mu
 aA
 aA
 aA
 ay
-aA
+mu
 ic
 md
 aA
@@ -45113,7 +45145,7 @@ kJ
 kJ
 lk
 aa
-cM
+mt
 cM
 cM
 cM
@@ -46474,7 +46506,7 @@ hR
 hR
 bx
 eM
-cr
+mx
 cr
 cr
 au
@@ -47502,7 +47534,7 @@ bx
 bx
 bx
 eM
-cr
+mx
 cr
 cr
 au
@@ -50560,7 +50592,7 @@ gl
 aA
 aA
 aN
-gI
+mv
 aq
 aq
 gI

@@ -132,6 +132,7 @@
 	var/obj/item/clothing/additional_clothing_parent
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
+	var/block_defense_value = 0 //Automatically calculated.
 
 	var/can_hold = TRUE
 	var/can_wear = FALSE
@@ -160,6 +161,11 @@
 	. = ..()
 	if(length(polymorphs))
 		update_sprite()
+
+	for(var/k in block_defense_rating)
+		var/v = block_defense_rating[k]
+		block_defense_value += v
+
 	return .
 
 /obj/item/get_base_value()

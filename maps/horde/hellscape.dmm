@@ -87,6 +87,10 @@
 /mob/living/simple/goliath/ancient,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
+"ay" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/interior/caves/watersource)
 "az" = (
 /mob/living/advanced/npc/syndicate/triple{
 	dir = 8
@@ -1217,8 +1221,8 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/watersource)
 "fw" = (
-/obj/item/organ/arm/skeleton,
-/turf/simulated/floor/colored/dirt/cave,
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
 "fx" = (
 /obj/structure/interactive/tree/jungle_large,
@@ -1268,8 +1272,8 @@
 /turf/simulated/floor/tile/dark/single,
 /area/hellscape/interior/syndicate/aux)
 "fG" = (
-/obj/item/organ/groin/skeleton,
-/turf/simulated/floor/colored/dirt/cave,
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/watersource)
 "fH" = (
 /obj/item/container/beaker/bottle/large/water,
@@ -1405,9 +1409,9 @@
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/watersource)
 "gk" = (
-/obj/item/organ/torso/skeleton,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/xeno,
+/area/hellscape/interior/caves/hive)
 "gl" = (
 /obj/marker/syndicate,
 /turf/simulated/floor/basalt,
@@ -1459,9 +1463,9 @@
 /turf/simulated/floor/wood/brown,
 /area/hellscape/exterior/jungle/north)
 "gy" = (
-/obj/item/organ/foot/skeleton,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/containment)
 "gz" = (
 /obj/structure/interactive/chair/wood{
 	dir = 1;
@@ -1516,9 +1520,9 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/watersource)
 "gK" = (
-/obj/item/organ/head/skeleton,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/ancient)
 "gL" = (
 /turf/simulated/floor/colored/dirt/soil,
 /area/hellscape/exterior/jungle/south)
@@ -1552,9 +1556,9 @@
 /turf/simulated/floor/circuit,
 /area/hellscape/interior/rev)
 "gS" = (
-/obj/item/organ/arm/skeleton/left,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/syndicate)
 "gT" = (
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
@@ -1572,9 +1576,9 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "gY" = (
-/obj/item/organ/leg/skeleton/left,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/hellchamber)
 "gZ" = (
 /obj/structure/scenery/rocks,
 /turf/simulated/floor/colored/ash/dark,
@@ -1584,9 +1588,9 @@
 /turf/simulated/floor/grass/jungle,
 /area/hellscape/exterior/jungle/north)
 "hb" = (
-/obj/item/organ/leg/skeleton,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/south)
 "hc" = (
 /obj/structure/interactive/tree/jungle_large,
 /mob/living/simple/venus_human_trap,
@@ -2071,9 +2075,9 @@
 /turf/simulated/floor/tile/dark/single,
 /area/hellscape/interior/syndicate/aux)
 "iZ" = (
-/obj/item/organ/leg/reptile,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/ashwalker_village)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/north)
 "ja" = (
 /turf/simulated/wall/rock/indestructable,
 /area/hellscape/interior/caves/containment)
@@ -3073,9 +3077,9 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "mX" = (
-/obj/item/organ/foot/skeleton,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/colored/ash/dark,
+/area/hellscape/exterior/death_plains)
 "mY" = (
 /mob/living/advanced/npc/skeleton_miner/shovel{
 	dir = 4
@@ -3134,9 +3138,9 @@
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "nj" = (
-/obj/item/organ/groin/skeleton,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/exterior/death_plains)
 "nk" = (
 /mob/living/simple/bear/black,
 /turf/simulated/floor/cave_dirt,
@@ -3155,27 +3159,14 @@
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
-"no" = (
-/obj/item/organ/leg/skeleton,
-/obj/structure/scenery/rocks,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
 "np" = (
 /mob/living/advanced/npc/skeleton_miner/shovel,
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/watersource)
 "nq" = (
-/obj/item/organ/hand/skeleton,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
-"nr" = (
-/obj/item/organ/arm/skeleton,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
-"ns" = (
-/obj/item/organ/leg/skeleton,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/tile/dark/er,
+/area/hellscape/interior/syndicate/canman)
 "nt" = (
 /mob/living/advanced/npc/skeleton_miner/shovel{
 	dir = 8
@@ -3190,10 +3181,6 @@
 /area/hellscape/interior/caves/watersource)
 "nv" = (
 /turf/simulated/wall/wood/boat/starting,
-/area/hellscape/interior/caves/watersource)
-"nw" = (
-/obj/item/organ/head/skeleton,
-/turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "nx" = (
 /obj/structure/interactive/fountain,
@@ -3217,10 +3204,6 @@
 /obj/item/container/food/dynamic/meat/raw,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
-"nC" = (
-/obj/item/organ/foot/skeleton/left,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
 "nD" = (
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/basalt,
@@ -3234,18 +3217,6 @@
 "nF" = (
 /obj/structure/interactive/bed,
 /mob/living/advanced/npc/skeleton_miner,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
-"nG" = (
-/obj/item/organ/leg/skeleton/left,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
-"nH" = (
-/obj/item/organ/torso/skeleton,
-/turf/simulated/floor/cave_dirt,
-/area/hellscape/interior/caves/watersource)
-"nI" = (
-/obj/item/organ/arm/skeleton/left,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "nJ" = (
@@ -3326,10 +3297,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
-"nZ" = (
-/obj/item/organ/hand/skeleton/left,
-/turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "oa" = (
 /obj/item/clothing/feet/shoes/clown,
@@ -3503,18 +3470,10 @@
 /obj/structure/interactive/door,
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
-"oF" = (
-/obj/item/organ/groin/reptile,
-/turf/simulated/floor/colored/dirt/jungle,
-/area/hellscape/interior/caves/ashwalker_village)
 "oG" = (
 /turf/simulated/floor/colored/dirt/cave{
 	icon_state = "ash"
 	},
-/area/hellscape/interior/caves/ashwalker_village)
-"oH" = (
-/obj/item/organ/arm/reptile/left,
-/turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
 "oI" = (
 /obj/structure/scenery/jungle_rock,
@@ -3526,25 +3485,11 @@
 	icon_state = "ash"
 	},
 /area/hellscape/interior/caves/ashwalker_village)
-"oK" = (
-/obj/item/organ/torso/reptile,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/ashwalker_village)
-"oL" = (
-/obj/item/organ/head/reptile,
-/turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/ashwalker_village)
 "oM" = (
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/ashwalker_village)
 "oN" = (
 /obj/structure/interactive/door,
-/turf/simulated/floor/colored/dirt/jungle,
-/area/hellscape/interior/caves/ashwalker_village)
-"oO" = (
-/obj/item/organ/torso/reptile{
-	icon_state = "tail_behind"
-	},
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/ashwalker_village)
 "oP" = (
@@ -3746,10 +3691,6 @@
 "pE" = (
 /obj/marker/rift_location,
 /turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/ancient)
-"pF" = (
-/obj/item/clothing/overwear/armor/knight/daddy,
-/turf/simulated/wall/rock/basalt,
 /area/hellscape/interior/caves/ancient)
 "pG" = (
 /mob/living/simple/goliath,
@@ -3976,10 +3917,6 @@
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
-"qD" = (
-/obj/item/organ/groin/skeleton,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
 "qE" = (
 /mob/living/simple/bear/black,
 /turf/simulated/floor/basalt,
@@ -3988,32 +3925,8 @@
 /obj/item/container/food/dynamic/meat/raw,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
-"qG" = (
-/obj/item/organ/head/skeleton,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
-"qH" = (
-/obj/item/organ/hand/skeleton,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
 "qI" = (
 /obj/item/weapon/melee/energy/chainsaw,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
-"qJ" = (
-/obj/item/organ/arm/skeleton/left,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
-"qK" = (
-/obj/item/organ/foot/skeleton,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
-"qL" = (
-/obj/item/organ/arm/skeleton,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
-"qM" = (
-/obj/item/organ/torso/skeleton,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "qN" = (
@@ -4185,6 +4098,10 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/supermatter)
+"rz" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/rev)
 "rA" = (
 /obj/effect/fog_of_war,
 /turf/simulated/floor/cave_dirt,
@@ -4344,6 +4261,30 @@
 /obj/effect/fog_of_war,
 /turf/simulated/wall/rock/indestructable,
 /area/hellscape/interior/caves/watersource)
+"si" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/ashwalker_village)
+"sj" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/broodmother)
+"sk" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/lava_lake)
+"sl" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/colored/sand/underwater,
+/area/hellscape/interior/caves/crab)
+"sm" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/exterior/jungle/south)
+"sn" = (
+/obj/structure/interactive/supplies,
+/turf/simulated/floor/wood/boat,
+/area/hellscape/interior/pirate_landing)
 
 (1,1,1) = {"
 ja
@@ -4850,7 +4791,7 @@ ft
 ft
 nD
 gT
-nH
+ar
 nS
 ob
 aq
@@ -5086,7 +5027,7 @@ aw
 aw
 aw
 aw
-gT
+fw
 gT
 gT
 ft
@@ -5106,7 +5047,7 @@ ft
 gT
 nv
 nE
-nI
+ar
 ar
 ar
 oc
@@ -5837,7 +5778,7 @@ aM
 aM
 aM
 aM
-gT
+fw
 gT
 gT
 gT
@@ -5955,7 +5896,7 @@ dX
 dX
 dX
 dX
-dX
+gk
 cX
 cX
 cX
@@ -6133,12 +6074,12 @@ ar
 ar
 ar
 ar
-nG
+ar
 ar
 ar
 ar
 od
-nC
+ar
 ar
 aq
 aq
@@ -6608,7 +6549,7 @@ bU
 bU
 bU
 aM
-gT
+fw
 gT
 gT
 gT
@@ -6646,7 +6587,7 @@ iF
 nl
 ar
 ar
-nw
+ar
 mw
 ar
 ar
@@ -7164,7 +7105,7 @@ cd
 ar
 ar
 cd
-nj
+ar
 ar
 ar
 ar
@@ -7776,7 +7717,7 @@ cX
 cX
 dX
 dX
-cX
+gk
 cX
 cX
 dS
@@ -8443,7 +8384,7 @@ ar
 ar
 ar
 ar
-no
+cj
 ar
 ar
 ar
@@ -8474,7 +8415,7 @@ pY
 jq
 jq
 jq
-pY
+gy
 pY
 pY
 pY
@@ -8622,7 +8563,7 @@ bn
 bn
 bn
 bd
-bq
+fG
 bq
 bq
 bq
@@ -9249,7 +9190,7 @@ jq
 pY
 qd
 jq
-kc
+rz
 kc
 kc
 kc
@@ -9780,7 +9721,7 @@ aB
 aB
 aB
 aa
-kc
+rz
 kc
 kc
 kc
@@ -9974,7 +9915,7 @@ aq
 aq
 aq
 aq
-mX
+ar
 ar
 ar
 ar
@@ -10020,7 +9961,7 @@ aa
 aB
 aB
 aa
-kc
+rz
 kc
 kc
 kc
@@ -10508,7 +10449,7 @@ aq
 aq
 aq
 ar
-nH
+ar
 ar
 aq
 at
@@ -10663,8 +10604,8 @@ bn
 bn
 bn
 hU
-iZ
-oF
+ju
+oM
 ju
 bn
 bn
@@ -10922,7 +10863,7 @@ bn
 hV
 ju
 oG
-oK
+ju
 oG
 bn
 bn
@@ -11006,7 +10947,7 @@ dd
 dd
 kN
 cN
-ar
+ay
 ar
 ar
 cd
@@ -11180,7 +11121,7 @@ hY
 ju
 ju
 ju
-oO
+oM
 bn
 bn
 bn
@@ -11416,7 +11357,7 @@ du
 du
 du
 du
-av
+si
 av
 av
 du
@@ -11692,8 +11633,8 @@ bn
 bn
 if
 jC
-oH
-oL
+ju
+ju
 oQ
 jC
 bn
@@ -12712,7 +12653,7 @@ cf
 cf
 cf
 du
-av
+si
 av
 av
 av
@@ -13810,7 +13751,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -14100,7 +14041,7 @@ ow
 ow
 oA
 lq
-ar
+ay
 ar
 ar
 ar
@@ -16595,7 +16536,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -17662,7 +17603,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -20548,7 +20489,7 @@ bw
 bw
 bw
 aE
-bT
+gK
 bT
 bT
 bT
@@ -21791,7 +21732,7 @@ fF
 ff
 fF
 hr
-ar
+ay
 ar
 ar
 ar
@@ -22246,7 +22187,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -24119,7 +24060,7 @@ ne
 sc
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -24384,7 +24325,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 eV
 ar
@@ -25437,7 +25378,7 @@ aE
 aE
 aE
 aE
-bT
+gK
 bT
 bT
 bT
@@ -26299,7 +26240,7 @@ aE
 aE
 aE
 aE
-bv
+mX
 bv
 bv
 bv
@@ -26921,7 +26862,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -27327,7 +27268,7 @@ bT
 aE
 aE
 aE
-bv
+mX
 bv
 bv
 bv
@@ -27517,7 +27458,7 @@ bT
 bT
 bT
 aE
-pF
+aE
 aE
 aE
 aE
@@ -27774,7 +27715,7 @@ bT
 bT
 bT
 bT
-pF
+aE
 aE
 aE
 aE
@@ -28355,7 +28296,7 @@ aE
 aE
 aE
 aE
-bv
+mX
 bv
 bv
 gZ
@@ -28720,7 +28661,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -30553,7 +30494,7 @@ aq
 nR
 ar
 ar
-ns
+ar
 aq
 aq
 aq
@@ -31067,7 +31008,7 @@ ar
 ar
 ar
 ar
-nH
+ar
 ar
 aq
 aq
@@ -31573,13 +31514,13 @@ ar
 ar
 aq
 aq
-aq
+ay
 ar
 ar
 ar
 ar
 ar
-nZ
+ar
 ar
 ar
 nB
@@ -31830,14 +31771,14 @@ ar
 aq
 aq
 cM
-nq
+ar
 ar
 ar
 cj
 ar
 ar
 ar
-nj
+ar
 ar
 ar
 aq
@@ -32346,13 +32287,13 @@ aq
 ar
 ar
 cj
-nC
+ar
 ar
 ar
 cj
 ar
 ar
-nw
+ar
 ar
 os
 aq
@@ -32599,9 +32540,9 @@ ar
 ar
 aq
 aq
-nj
 ar
-nr
+ar
+ar
 ar
 ar
 nk
@@ -33113,7 +33054,7 @@ ar
 ar
 ar
 ar
-mX
+ar
 nk
 ar
 ar
@@ -33125,7 +33066,7 @@ ar
 ar
 ar
 ar
-nI
+ar
 aq
 sh
 "}
@@ -33315,7 +33256,7 @@ iB
 ml
 aq
 aq
-fw
+eU
 gj
 gJ
 aq
@@ -33375,7 +33316,7 @@ ar
 ar
 ar
 nB
-nH
+ar
 ar
 ar
 ar
@@ -33573,7 +33514,7 @@ iC
 aq
 fr
 cd
-gk
+eU
 eU
 eU
 aq
@@ -33629,7 +33570,7 @@ ar
 ar
 ar
 ar
-ns
+ar
 ar
 ar
 ar
@@ -34087,7 +34028,7 @@ iC
 aq
 aq
 eU
-gy
+eU
 eU
 eU
 fK
@@ -34100,7 +34041,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 eU
@@ -34346,7 +34287,7 @@ aq
 eU
 eU
 ge
-gY
+eU
 eU
 aq
 aq
@@ -34600,7 +34541,7 @@ ml
 iC
 kr
 aq
-fG
+eU
 eU
 cd
 eU
@@ -34809,7 +34750,7 @@ ba
 ba
 ba
 cE
-ba
+iZ
 ba
 ba
 br
@@ -34861,7 +34802,7 @@ fK
 eU
 eU
 cd
-hb
+eU
 aq
 aq
 aq
@@ -35116,7 +35057,7 @@ iC
 aq
 aq
 eU
-gK
+eU
 fK
 cd
 aq
@@ -35373,7 +35314,7 @@ kr
 iC
 aq
 ar
-gS
+eU
 eU
 cd
 ge
@@ -35759,7 +35700,7 @@ bT
 bT
 bT
 aE
-cb
+nj
 cb
 cb
 cb
@@ -36366,7 +36307,7 @@ br
 ba
 cr
 cr
-ba
+iZ
 iC
 iC
 iC
@@ -36841,7 +36782,7 @@ cr
 cq
 ba
 cr
-ba
+iZ
 ba
 ba
 ba
@@ -38243,7 +38184,7 @@ aq
 aq
 aq
 aq
-ar
+ay
 ar
 ar
 ar
@@ -39997,7 +39938,7 @@ iC
 iC
 iC
 iI
-iC
+hb
 iC
 iC
 iC
@@ -42644,7 +42585,7 @@ ch
 ch
 ch
 ch
-bb
+gY
 bb
 bb
 bb
@@ -43672,7 +43613,7 @@ ch
 ch
 ch
 ch
-bb
+gY
 bb
 bb
 bb
@@ -44100,7 +44041,7 @@ iC
 iG
 iC
 iI
-iD
+hb
 iC
 iC
 iC
@@ -45099,7 +45040,7 @@ ba
 cV
 rG
 cr
-ba
+iZ
 ba
 ba
 ba
@@ -45852,7 +45793,7 @@ cr
 cr
 cr
 ba
-ba
+iZ
 br
 ba
 ba
@@ -46473,7 +46414,7 @@ iC
 iB
 ie
 js
-ks
+sm
 ks
 ks
 ks
@@ -47040,7 +46981,7 @@ cW
 cW
 cW
 ad
-af
+nq
 af
 af
 af
@@ -48736,7 +48677,7 @@ iC
 iC
 iD
 iI
-iD
+hb
 iC
 iC
 iC
@@ -48899,7 +48840,7 @@ cF
 cr
 ba
 br
-br
+fM
 fM
 fM
 fM
@@ -49156,7 +49097,7 @@ ba
 ba
 cF
 ba
-ba
+fM
 gi
 gx
 gt
@@ -49413,7 +49354,7 @@ cr
 cF
 cr
 ba
-ba
+fM
 gt
 gx
 gx
@@ -49670,7 +49611,7 @@ ba
 ba
 cE
 cr
-cr
+fM
 gw
 gz
 gx
@@ -49927,7 +49868,7 @@ cr
 ba
 ba
 ba
-ba
+fM
 fM
 gA
 gA
@@ -52298,7 +52239,7 @@ cr
 cP
 ba
 cr
-ba
+iZ
 ba
 ba
 iC
@@ -53591,7 +53532,7 @@ iD
 iC
 iC
 iI
-iC
+hb
 iC
 jV
 iD
@@ -55693,7 +55634,7 @@ iC
 iC
 iI
 iD
-iD
+hb
 iC
 iD
 iD
@@ -58242,7 +58183,7 @@ iC
 iD
 iC
 iI
-iC
+hb
 iC
 iD
 iC
@@ -60096,7 +60037,7 @@ aP
 aP
 cs
 cs
-gU
+sn
 gU
 gU
 gU
@@ -60426,7 +60367,7 @@ cg
 cg
 cg
 ep
-lr
+sj
 lr
 lr
 lr
@@ -63972,7 +63913,7 @@ ia
 (233,1,1) = {"
 ce
 cg
-jL
+gS
 jL
 jL
 jL
@@ -64391,7 +64332,7 @@ qu
 qu
 qu
 qu
-qL
+qu
 qo
 qo
 qo
@@ -65155,7 +65096,7 @@ qo
 qu
 qu
 qu
-qH
+qu
 qu
 qu
 qu
@@ -65678,7 +65619,7 @@ qu
 qu
 qu
 qu
-qM
+qu
 qu
 qu
 qo
@@ -65922,6 +65863,7 @@ qo
 qo
 qo
 qo
+sk
 qu
 qu
 qu
@@ -65929,7 +65871,6 @@ qu
 qu
 qu
 qu
-qG
 qu
 qu
 qu
@@ -66179,9 +66120,9 @@ qu
 qo
 qo
 qo
-qA
 qu
-qD
+qu
+qu
 qu
 qu
 qu
@@ -66702,7 +66643,7 @@ qu
 qu
 qu
 qI
-qK
+qu
 qu
 qE
 qu
@@ -66716,7 +66657,7 @@ qo
 qo
 qo
 qo
-qu
+sk
 qu
 qu
 qu
@@ -67210,7 +67151,7 @@ qo
 qo
 qu
 qu
-qG
+qu
 qu
 qu
 qu
@@ -67528,7 +67469,7 @@ aD
 eq
 eq
 eq
-fg
+sl
 fg
 fg
 fg
@@ -67986,7 +67927,7 @@ qu
 qu
 qu
 qu
-qJ
+qu
 qu
 qu
 qu

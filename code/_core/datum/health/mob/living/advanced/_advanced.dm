@@ -198,7 +198,7 @@
 		var/obj/item/item_to_block_with
 
 		if(A.right_item && A.right_item.can_block())
-			if(A.left_item && A.left_item.can_block() && A.left_item.value > A.right_item.value)
+			if(A.left_item && A.left_item.can_block() && A.left_item.block_defense_value > A.right_item.block_defense_value)
 				item_to_block_with = A.left_item
 			else
 				item_to_block_with = A.right_item

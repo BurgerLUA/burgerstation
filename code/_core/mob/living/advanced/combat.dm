@@ -23,6 +23,9 @@
 	if(driving && !driving.can_attack(victim,weapon,params,damage_type))
 		return FALSE
 
+	if(A.attack_flags & CONTROL_MOD_BLOCK)
+		return FALSE
+
 	if(handcuffed)
 		return FALSE
 
