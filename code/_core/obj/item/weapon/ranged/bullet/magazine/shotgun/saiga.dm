@@ -1,12 +1,12 @@
-/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23
-	name = "\improper 23x75mmR Saiga-23"
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20
+	name = "\improper 20g Saiga"
 	desc = "For when you want to clear the house and erase the walls."
-	desc_extended = "The 23x75mm Saiga-23 is an insanely powerful semiautomatic AK-based shotgun, nicknamed \"Saiga\" because it's Saiga. <br> The description designer wasn't very original, it seems."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/saiga_23.dmi'
+	desc_extended = "The 20g Saiga is an insanely powerful semiautomatic AK-based shotgun, nicknamed \"Saiga\" because it's Saiga. <br> The description designer wasn't very original, it seems."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/saiga.dmi'
 	icon_state = "inventory"
 	value = 420
 
-	shoot_delay = 2
+	shoot_delay = 1
 
 	automatic = FALSE
 
@@ -15,8 +15,6 @@
 	can_wield = TRUE
 
 	view_punch = 24
-
-
 
 	size = SIZE_4
 	weight = 12
@@ -72,12 +70,12 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23/get_base_spread()
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20/get_base_spread()
 	return 0.2
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20/get_static_spread()
 	return 0.007
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.08 - (0.15 * L.get_skill_power(SKILL_RANGED)))

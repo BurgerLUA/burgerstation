@@ -16,7 +16,10 @@
 
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/equipped = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm

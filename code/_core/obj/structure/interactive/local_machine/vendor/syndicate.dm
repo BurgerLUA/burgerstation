@@ -157,9 +157,9 @@
 		/obj/item/storage/ammo/buckshot_23,
 		/obj/item/storage/ammo/slug_23,
 
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23,
-		/obj/item/magazine/saiga_23/buckshot,
-		/obj/item/magazine/saiga_23/slug,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/slug,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
 		/obj/item/magazine/pistol_9mm,

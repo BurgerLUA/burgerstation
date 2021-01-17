@@ -15,8 +15,7 @@
 	bullet_diameter_max = 9.5
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/equipped = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm
