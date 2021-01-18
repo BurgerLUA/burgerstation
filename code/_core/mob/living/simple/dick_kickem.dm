@@ -37,12 +37,17 @@
 	)
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		STAMCRIT = STAGGER,
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		STAMCRIT = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		FIRE = TRUE
+		DRUGGY = TRUE
 	)
 
 	blood_type = /reagent/blood/human/a_positive

@@ -1,31 +1,3 @@
-/atom/movable/proc/setup_dir_offsets()
-	var/x_offset = 0
-	var/y_offset = 0
-
-	if(dir & NORTH)
-		pixel_y -= 32
-		light_offset_y -= 16
-		y_offset++
-
-	if(dir & SOUTH)
-		pixel_y += 32
-		light_offset_y += 16
-		y_offset--
-
-	if(dir & EAST)
-		pixel_x -= 32
-		light_offset_x -= 16
-		x_offset++
-
-	if(dir & WEST)
-		pixel_x += 32
-		light_offset_x += 16
-		x_offset--
-
-	loc = locate(x+x_offset,y+y_offset,z) //Legitimately don't know why force_move or get_step doesn't work here. Even in initialize.
-
-	return TRUE
-
 obj/structure/interactive/computer/wall
 	name = "wall computer"
 	desc = "Compute walls!"

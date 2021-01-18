@@ -56,8 +56,7 @@
 		REST = TRUE,
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE,
-		FIRE = FALSE
+		DRUGGY = TRUE
 	)
 
 	fatigue_from_block_mul = 0

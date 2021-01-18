@@ -91,8 +91,8 @@ SUBSYSTEM_DEF(events)
 	E.occurances_current++
 
 	if(E.occurances_current >= E.occurances_max)
-		all_events -= E
-		all_events_prob -= E
+		all_events -= E.type
+		all_events_prob -= E.type
 
 	return E
 

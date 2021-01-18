@@ -18,11 +18,15 @@
 
 	lightswitch = TRUE
 
+/obj/structure/interactive/lighting/fixture/Generate()
+	desired_light_color = color
+	return ..()
+
 /obj/structure/interactive/lighting/fixture/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/turf/T = get_turf(src)
 
-	if(desired_light_range > 0)
+	if(desired_light_color)
 		desired_light_color = null
 		if(health) health.restore()
 		create_destruction(T,list(/obj/item/material/shard = 1),/material/glass)
@@ -43,7 +47,7 @@
 	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_atom_light()
-	if(on && desired_light_color)
+	if(on && desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
 	else
 		set_light(FALSE)
@@ -51,8 +55,10 @@
 
 /obj/structure/interactive/lighting/fixture/update_icon()
 	icon = initial(icon)
-	icon_state = "bulb"
-	desired_light_color = color
+	if(desired_light_color)
+		icon_state = "bulb"
+	else
+		icon_state = "none"
 	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_underlays()
@@ -67,13 +73,13 @@
 
 	. = ..()
 
-	if(on && desired_light_range > 0)
+	if(on && light_color && light_range > 0 && light_power > 0)
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
 		IS.plane = PLANE_LIGHTING
 		IS.layer = 99
 		IS.color = desired_light_color
-		IS.alpha = 200
+		IS.alpha = 255*(light_power/1)
 		add_overlay(IS)
 
 	return .

@@ -15,6 +15,8 @@
 
 	var/next_interact = 0
 
+	dir_offset = TILE_SIZE - 8
+
 /obj/structure/interactive/light_switch/off
 	on = FALSE
 

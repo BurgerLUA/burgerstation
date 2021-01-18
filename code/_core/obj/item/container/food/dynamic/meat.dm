@@ -210,6 +210,11 @@
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
 
+/obj/item/container/food/dynamic/meat/raw_monkey/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/monkey,15)
+	reagents.add_reagent(/reagent/nutrition/fat/monkey,5)
+	return ..()
+
 /obj/item/container/food/dynamic/meat/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)

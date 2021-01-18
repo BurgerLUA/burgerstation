@@ -55,6 +55,8 @@
 	blood_type = /reagent/blood/unholy
 	blood_volume = 1000
 
+	has_footsteps = FALSE
+
 /mob/living/simple/cult/construct/post_death()
 	. = ..()
 	icon_state = "construct_dead"

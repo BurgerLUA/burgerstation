@@ -36,9 +36,8 @@ mob/living/advanced/revive()
 
 	drop_hands(src.loc)
 
-	for(var/obj/hud/inventory/I in inventory)
-		if(I.grabbed_object)
-			I.release_object()
+	right_hand?.release_object()
+	left_hand?.release_object()
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)
