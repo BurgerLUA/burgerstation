@@ -1,22 +1,5 @@
 /health/turf/
-
-	/*
-	armor_base = list(  //Base armor for the mob.
-		BLADE = 50,
-		BLUNT = 0,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 25,
-		HEAT = 0,
-		COLD = 50,
-		BOMB = 0,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY
-	)
-	*/
+	organic = FALSE
 
 /health/turf/Initialize()
 

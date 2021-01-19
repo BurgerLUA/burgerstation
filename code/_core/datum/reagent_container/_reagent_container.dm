@@ -547,7 +547,7 @@
 		CRASH_SAFE("Tried to splash with no target!")
 		return FALSE
 
-	target = target.change_victim(caller)
+	target = target.change_victim(caller,owner)
 
 	target.on_splash(caller,src,splash_amount,silent,strength_mod)
 

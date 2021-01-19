@@ -5,6 +5,7 @@
 	corner_category = "cult_wall"
 	corner_icons = TRUE
 
+	destruction_turf = /turf/simulated/floor/basalt
 
 /turf/simulated/wall/cult/New()
 	..()

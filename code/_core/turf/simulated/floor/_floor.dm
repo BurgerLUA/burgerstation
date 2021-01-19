@@ -24,12 +24,7 @@
 
 /turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(!is_item(weapon))
-		return FALSE
-
-	var/obj/item/I = weapon
-
-	if(!(I.flags_tool & FLAG_TOOL_SHOVEL))
+	if(!damage_type.target_floors)
 		return FALSE
 
 	return ..()

@@ -73,7 +73,7 @@
 	caller.face_atom(src)
 	return ..()
 
-/turf/change_victim(var/atom/attacker)
+/turf/change_victim(var/atom/attacker,var/atom/object)
 
 	for(var/atom/movable/v in contents)
 		if(ismob(v) && attacker != v)
@@ -128,7 +128,7 @@
 	return .
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-	return health && !ispath(health)
+	return istype(health)
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 

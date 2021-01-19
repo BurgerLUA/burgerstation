@@ -5,6 +5,8 @@
 
 	footstep = /footstep/catwalk
 
+	destruction_turf = /turf/simulated/floor/plating
+
 /turf/simulated/floor/clockwork/alt1/
 	icon_state = "floor2"
 

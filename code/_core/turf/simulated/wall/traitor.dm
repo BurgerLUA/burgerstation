@@ -5,6 +5,8 @@
 	corner_icons = TRUE
 	corner_category = "traitor_wall"
 
+	//No destruction turf, immortal
+
 
 /turf/simulated/wall/dark/shuttle
 	name = "syndicate shuttle wall"

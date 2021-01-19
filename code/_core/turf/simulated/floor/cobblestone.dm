@@ -6,6 +6,8 @@
 
 	footstep = /footstep/concrete
 
+	destruction_turf = /turf/simulated/floor/colored/dirt
+
 /turf/simulated/floor/cobblestone/side
 	icon_state = "cobble_side"
 

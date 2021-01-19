@@ -11,7 +11,7 @@
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	view_punch = 3
 

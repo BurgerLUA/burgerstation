@@ -4,3 +4,5 @@
 	icon_state = "wall"
 	corner_category = "clockwork"
 	corner_icons = TRUE
+
+	destruction_turf = /turf/simulated/floor/plating

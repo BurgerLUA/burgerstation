@@ -4,3 +4,5 @@
 	icon_state = "wall"
 	corner_category = "diona_wall"
 	corner_icons = TRUE
+
+	destruction_turf = /turf/simulated/floor/cave_dirt

@@ -14,6 +14,8 @@
 
 	footstep = /footstep/concrete
 
+	destruction_turf = /turf/simulated/floor/basalt
+
 
 /turf/simulated/floor/boss/New()
 	..()

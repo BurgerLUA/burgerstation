@@ -1,7 +1,6 @@
 /turf/simulated/floor/cave_dirt/
+
 	name = "bedrock"
-
-
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "dirt"

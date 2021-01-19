@@ -2898,6 +2898,10 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
+"mI" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/grass,
+/area/lz_001/caves/knight)
 "mJ" = (
 /obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
@@ -2909,16 +2913,40 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
+"mL" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/dirt/cave,
+/area/lz_001/caves/lagoon)
+"mM" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/sand/desert,
+/area/lz_001/desert)
+"mN" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/dirt/cave,
+/area/lz_001/forest)
 "mO" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
+"mP" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/dirt,
+/area/lz_001/forest/village)
+"mQ" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/dirt/snow,
+/area/lz_001/snow)
 "mR" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
+"mS" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/snow,
+/area/lz_001/snow)
 "mT" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
@@ -2935,6 +2963,10 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
+"mW" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/lz_001/caves/lava)
 "mX" = (
 /obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
@@ -2942,6 +2974,10 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
+"mY" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/cave_dirt,
+/area/lz_001/caves)
 "mZ" = (
 /obj/marker/generation/snow_dirt,
 /turf/unsimulated/generation/snow,
@@ -11074,7 +11110,7 @@ gB
 cf
 cf
 cf
-cf
+mI
 cf
 cf
 cf
@@ -12038,7 +12074,7 @@ al
 al
 iT
 iT
-iT
+mW
 iT
 iT
 iT
@@ -15242,7 +15278,7 @@ dH
 dH
 fJ
 fJ
-fJ
+mL
 by
 fJ
 fJ
@@ -37977,7 +38013,7 @@ ca
 ca
 ce
 ce
-ce
+mY
 ce
 ce
 ce
@@ -42055,7 +42091,7 @@ gV
 gV
 gV
 gV
-aw
+mS
 aw
 aw
 aw
@@ -46276,7 +46312,7 @@ eM
 eM
 eM
 lz
-eM
+mN
 ge
 eU
 eU
@@ -49685,7 +49721,7 @@ kC
 kC
 kC
 kC
-kC
+mM
 kC
 kC
 kC
@@ -55986,7 +56022,7 @@ bz
 bz
 bz
 bz
-bz
+mQ
 bz
 bz
 aw
@@ -58121,7 +58157,7 @@ fF
 fF
 fF
 fF
-fe
+mP
 fe
 eU
 ht
@@ -61822,7 +61858,7 @@ gV
 gV
 gV
 gV
-bz
+mQ
 gV
 bz
 bz

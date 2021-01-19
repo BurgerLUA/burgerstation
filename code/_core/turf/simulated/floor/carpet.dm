@@ -10,6 +10,8 @@
 
 	footstep = /footstep/carpet
 
+	destruction_turf = /turf/simulated/floor/plating
+
 /turf/simulated/floor/carpet/office
 	name = "office carpet"
 	icon = 'icons/turf/floor/carpet_office.dmi'

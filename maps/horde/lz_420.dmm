@@ -3108,6 +3108,42 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/tile/morphing/red,
 /area/lz_420/interior/nexus/armory)
+"mB" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/tile/morphing/grey,
+/area/lz_420/interior/nexus/garden)
+"mC" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/tile/tan,
+/area/lz_420/interior/nexus/science)
+"mD" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/sand/oasis,
+/area/lz_420/exterior)
+"mE" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/tile/dark,
+/area/lz_420/interior/nexus/wip)
+"mF" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/tile/tan,
+/area/lz_420/interior/nexus/central)
+"mG" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/tile/tan,
+/area/lz_420/exterior)
+"mH" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/cave_dirt,
+/area/lz_420/interior/cave)
+"mI" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/lz_420/interior/cave/north)
+"mJ" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/cave_dirt,
+/area/lz_420/interior/cave/east)
 
 (1,1,1) = {"
 ab
@@ -27703,7 +27739,7 @@ lv
 di
 lw
 dh
-dh
+mC
 dh
 lU
 dh
@@ -29847,7 +29883,7 @@ lp
 lp
 lp
 lp
-lp
+mI
 lp
 lp
 lp
@@ -33518,7 +33554,7 @@ ad
 ad
 ad
 ad
-ad
+mH
 ad
 ad
 ad
@@ -34870,7 +34906,7 @@ cM
 co
 cI
 cI
-eQ
+mB
 eY
 eY
 eY
@@ -34895,7 +34931,7 @@ ce
 ce
 ce
 ce
-ce
+mG
 fq
 ce
 ce
@@ -34924,7 +34960,7 @@ cM
 cM
 cM
 gk
-cM
+mD
 cM
 cM
 cM
@@ -35208,7 +35244,7 @@ af
 af
 af
 aj
-af
+mE
 af
 af
 af
@@ -42119,7 +42155,7 @@ gf
 cK
 cK
 cK
-cK
+mF
 cK
 cK
 cK
@@ -57978,7 +58014,7 @@ lG
 lG
 lG
 lG
-lG
+mJ
 lG
 lG
 lG
@@ -63259,7 +63295,7 @@ lt
 lp
 lp
 lp
-lp
+mI
 lp
 lp
 lp

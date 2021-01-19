@@ -18,6 +18,8 @@
 
 	layer = LAYER_FLOOR_DECAL
 
+	destruction_turf = /turf/simulated/floor/cave_dirt/
+
 /turf/simulated/floor/xeno/New(var/desired_loc)
 
 	if(prob(5))

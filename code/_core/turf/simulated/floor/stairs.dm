@@ -4,6 +4,8 @@
 	icon_state = "stair"
 	layer = LAYER_FLOOR_TILE
 
+	destruction_turf = /turf/simulated/floor/plating
+
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
 	footstep = /footstep/wood
@@ -16,3 +18,6 @@
 
 /turf/simulated/floor/stair/cult
 	color = "#33241B"
+	footstep = /footstep/wood
+
+	destruction_turf = /turf/simulated/floor/basalt

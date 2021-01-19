@@ -5,6 +5,8 @@
 	corner_icons = TRUE
 	corner_category = "plastic_wall"
 
+	destruction_turf = /turf/simulated/floor/plating
+
 
 /turf/simulated/wall/plastic/office
 	name = "office wall"

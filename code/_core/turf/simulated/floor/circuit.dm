@@ -8,6 +8,8 @@
 
 	footstep = /footstep/plating
 
+	destruction_turf = /turf/simulated/floor/plating
+
 
 /turf/simulated/floor/circuit/blue
 	name = "blue circuit"

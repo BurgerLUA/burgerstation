@@ -209,6 +209,11 @@
 	name = "\improper Disposals Maintenance"
 	icon_state = "disposals"
 
+/area/burgerstation/maint/garden
+	name = "\improper Hidden Maintenance Garden"
+	icon_state = "blue"
+	flags_area = FLAGS_AREA_NO_EVENTS
+
 /area/burgerstation/pvp
 	name = "ERROR"
 	icon_state = "pvp"

@@ -3159,6 +3159,10 @@
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
+"no" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/south)
 "np" = (
 /mob/living/advanced/npc/skeleton_miner/shovel,
 /turf/simulated/floor/colored/dirt/cave,
@@ -3167,6 +3171,14 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate/canman)
+"nr" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/colored/ash/dark,
+/area/hellscape/exterior/death_plains)
+"ns" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/north)
 "nt" = (
 /mob/living/advanced/npc/skeleton_miner/shovel{
 	dir = 8
@@ -3182,6 +3194,10 @@
 "nv" = (
 /turf/simulated/wall/wood/boat/starting,
 /area/hellscape/interior/caves/watersource)
+"nw" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/rev)
 "nx" = (
 /obj/structure/interactive/fountain,
 /turf/simulated/floor/basalt,
@@ -3204,6 +3220,10 @@
 /obj/item/container/food/dynamic/meat/raw,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
+"nC" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/crash)
 "nD" = (
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/basalt,
@@ -3217,6 +3237,18 @@
 "nF" = (
 /obj/structure/interactive/bed,
 /mob/living/advanced/npc/skeleton_miner,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/interior/caves/watersource)
+"nG" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/ashwalker_village)
+"nH" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/lava_lake)
+"nI" = (
+/obj/marker/drop_pod_location,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "nJ" = (
@@ -3298,6 +3330,10 @@
 	},
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/watersource)
+"nZ" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/hellchamber)
 "oa" = (
 /obj/item/clothing/feet/shoes/clown,
 /turf/simulated/floor/cave_dirt,
@@ -3470,6 +3506,10 @@
 /obj/structure/interactive/door,
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
+"oF" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/ancient)
 "oG" = (
 /turf/simulated/floor/colored/dirt/cave{
 	icon_state = "ash"
@@ -9559,7 +9599,7 @@ cf
 dE
 du
 av
-av
+nG
 av
 av
 cf
@@ -12556,7 +12596,7 @@ kc
 kc
 kc
 kc
-kc
+nw
 kc
 kc
 kc
@@ -20333,7 +20373,7 @@ fo
 fu
 fO
 bD
-bD
+nC
 bD
 bD
 bD
@@ -20369,7 +20409,7 @@ bv
 hL
 bv
 bv
-bv
+nr
 bv
 bv
 bv
@@ -21013,7 +21053,7 @@ bT
 bT
 bT
 bT
-bT
+oF
 bT
 bT
 bT
@@ -27003,7 +27043,7 @@ bT
 bT
 bT
 bT
-bT
+oF
 bT
 bT
 bT
@@ -27126,7 +27166,7 @@ ar
 eB
 ar
 ar
-ar
+nI
 ar
 ar
 ar
@@ -29334,7 +29374,7 @@ bv
 gZ
 bv
 bv
-bv
+nr
 bv
 bv
 bv
@@ -34650,7 +34690,7 @@ bT
 bT
 pD
 bT
-bT
+oF
 bT
 bT
 bT
@@ -41894,7 +41934,7 @@ cE
 ba
 ba
 ba
-ba
+ns
 ba
 ba
 ba
@@ -46368,7 +46408,7 @@ iC
 jw
 iC
 iD
-iC
+no
 iC
 iC
 iC
@@ -49831,7 +49871,7 @@ ae
 ae
 aH
 br
-ba
+ns
 aH
 ba
 bt
@@ -56211,7 +56251,7 @@ bb
 bb
 bb
 bb
-bb
+nZ
 bb
 bb
 bb
@@ -59495,7 +59535,7 @@ iC
 iC
 iC
 iC
-iC
+no
 iC
 iD
 iC
@@ -63281,7 +63321,7 @@ qu
 qu
 qu
 qu
-qu
+nH
 qu
 qu
 qu
@@ -66127,7 +66167,7 @@ qu
 qu
 qu
 qu
-qu
+nH
 qu
 qu
 qu

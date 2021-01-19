@@ -1933,6 +1933,10 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
+"hP" = (
+/obj/marker/drop_pod_location,
+/turf/simulated/floor/basalt,
+/area/lavaland/exterior)
 
 (1,1,1) = {"
 aa
@@ -5545,7 +5549,7 @@ ag
 ag
 ag
 am
-ag
+hP
 aj
 ag
 ag
@@ -17522,7 +17526,7 @@ ag
 ag
 ag
 ag
-ag
+hP
 ag
 ak
 ag
@@ -26952,7 +26956,7 @@ ag
 ag
 ag
 ag
-ag
+hP
 ag
 ag
 ag
@@ -30689,7 +30693,7 @@ gT
 ag
 ag
 ag
-ag
+hP
 ag
 ag
 ag
@@ -37332,7 +37336,7 @@ ag
 ag
 ag
 ag
-ag
+hP
 ag
 ag
 ag
@@ -62309,7 +62313,7 @@ ag
 ag
 ag
 ag
-ag
+hP
 ag
 ag
 ag
@@ -65164,7 +65168,7 @@ ag
 ag
 ag
 ah
-ag
+hP
 ag
 ag
 ag
