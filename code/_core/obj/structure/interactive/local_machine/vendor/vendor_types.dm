@@ -34,7 +34,8 @@
 	stored_types = list(
 		/obj/item/clothing/overwear/coat/hoodie,
 		/obj/item/clothing/overwear/coat/labcoat,
-		/obj/item/clothing/overwear/coat/polymorphic
+		/obj/item/clothing/overwear/coat/polymorphic,
+		/obj/item/clothing/overwear/coat/wizard
 	)
 
 

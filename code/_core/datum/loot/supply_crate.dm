@@ -36,7 +36,8 @@
 		/loot/weapon/civilian_carbine = 10,
 		/loot/weapon/tungsten = 10,
 		/loot/weapon/commander_revolver = 10,
-		/loot/weapon/tribarrel_shotgun = 10
+		/loot/weapon/tribarrel_shotgun = 10,
+		/loot/weapon/gyrojet = 10
 	)
 
 /loot/supply_crate/american
@@ -46,7 +47,8 @@
 		/loot/weapon/pistol_45 = 10,
 		/loot/weapon/comp_revolver = 10,
 		/loot/weapon/horse_revolver = 10,
-		/loot/weapon/solarian_rifle = 10
+		/loot/weapon/solarian_rifle = 10,
+		/loot/weapon/dynamic = 10
 	)
 
 /loot/supply_crate/syndicate
@@ -64,8 +66,9 @@
 
 /loot/supply_crate/magic
 	loot_table = list(
-		/loot/enchanting/book = 1,
-		/obj/item/soulgem/common = 5,
-		/obj/item/container/beaker/bottle/large/mana_potion = 10
+		/loot/magic/book = 1,
+		/loot/magic/soulgem = 9,
+		/loot/magic/potion = 6,
+		/loot/magic/tome = 3
 	)
 	loot_count = 3

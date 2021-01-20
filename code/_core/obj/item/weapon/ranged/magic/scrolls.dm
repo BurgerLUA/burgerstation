@@ -122,10 +122,10 @@
 	return ..()
 
 /obj/item/weapon/ranged/magic/scroll/fireball
-	name = "scroll of fireball"
-	desc = "Shoots a fireball."
+	name = "scroll of true fireball"
+	desc = "Shoots an explosive fireball."
 
-	projectile = /obj/projectile/magic/fireball
+	projectile = /obj/projectile/magic/fireball/explosive
 
 	ranged_damage_type = /damagetype/ranged/magic/fireball
 
@@ -134,7 +134,7 @@
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
-	value = 20
+	value = 15
 
 /obj/item/weapon/ranged/magic/scroll/fireball/Generate()
 	scroll_count = 5

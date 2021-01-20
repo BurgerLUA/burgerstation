@@ -61,6 +61,28 @@
 	reagents.add_reagent(/reagent/medicine/charcoal,reagents.volume_max)
 	return ..()
 
+/obj/item/container/beaker/bottle/health_potion
+	name = "health potion"
+
+/obj/item/container/beaker/bottle/health_potion/Generate()
+	reagents.add_reagent(/reagent/medicine/health_potion,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/bottle/stamina_potion
+	name = "stamina potion"
+
+/obj/item/container/beaker/bottle/stamina_potion/Generate()
+	reagents.add_reagent(/reagent/medicine/stamina_potion,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/bottle/mana_potion
+	name = "mana potion"
+
+/obj/item/container/beaker/bottle/mana_potion/Generate()
+	reagents.add_reagent(/reagent/medicine/mana_potion,reagents.volume_max)
+	return ..()
+
+
 
 
 /obj/item/container/beaker/glass

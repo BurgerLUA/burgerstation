@@ -26,6 +26,22 @@
 	loot_count = 4
 	chance_none = 25
 
+/loot/weapon/dynamic
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic,
+		/obj/item/magazine/dynamic_50,
+		/obj/item/magazine/dynamic_50,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic = 1,
+		/obj/item/magazine/dynamic_50 = 4
+	)
+	loot_count = 4
+	chance_none = 25
+
+
 /loot/weapon/assault_rifle
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/assault,
@@ -465,4 +481,17 @@
 	loot_count = 4
 	chance_none = 25
 
+/loot/weapon/gyrojet
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet,
+		/obj/item/magazine/gyrojet,
+		/obj/item/magazine/gyrojet,
+		/obj/item/magazine/gyrojet
+	)
+
+	loot_table = list(
+		/obj/item/magazine/gyrojet = 1
+	)
+	loot_count = 4
+	chance_none = 25
 

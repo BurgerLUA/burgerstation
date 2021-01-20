@@ -127,6 +127,7 @@
 
 	value = 1000
 
+/*
 /obj/item/weapon/ranged/magic/staff/focus
 
 	name = "Staff of the Rift"
@@ -145,6 +146,7 @@
 	ranged_damage_type = /damagetype/ranged/magic/chaos
 
 	shoot_sounds = list('sound/weapons/magic/teleport_out.ogg')
+*/
 
 /obj/item/weapon/ranged/magic/staff/blackflame
 	name = "Staff of the Blackflame"

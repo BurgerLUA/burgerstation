@@ -413,9 +413,12 @@
 /area/burgerstation/maint/west)
 "bJ" = (
 /obj/structure/smooth/table/wood,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
 /obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/skeleton,
-/turf/simulated/floor/carpet,
+/obj/item/weapon/ranged/magic/scroll/fireball,
+/turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "bK" = (
 /turf/simulated/floor/plating,
@@ -1541,9 +1544,7 @@
 /area/burgerstation/armory)
 "fE" = (
 /obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/space_bear,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "fF" = (
 /obj/decal/hazard{
@@ -4092,9 +4093,7 @@
 /area/burgerstation/medical)
 "oO" = (
 /obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/staff/fire,
-/turf/simulated/floor/wood/rich,
+/turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "oP" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
@@ -4232,16 +4231,13 @@
 /obj/structure/interactive/atmospherics/air_alarm,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/north)
-"pp" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/staff/chaos,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 "pq" = (
 /obj/structure/smooth/table/wood,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
 /obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/staff/basic,
+/obj/item/weapon/ranged/magic/tome/flame,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pr" = (
@@ -4291,8 +4287,8 @@
 "pC" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
-/obj/item/storage/shoebox/sandal,
-/turf/simulated/floor/carpet,
+/obj/item/weapon/ranged/magic/tome/frost,
+/turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pD" = (
 /obj/structure/interactive/door/airlock/station/engineering/glass,
@@ -4371,13 +4367,19 @@
 "pS" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
-/obj/item/clothing/overwear/coat/wizard/blue,
-/turf/simulated/floor/carpet,
+/obj/item/weapon/ranged/magic/tome/shock,
+/turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pT" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
-/obj/item/clothing/head/hat/wizard/blue,
+/obj/item/weapon/ranged/magic/tome/summon/bull,
+/obj/item/weapon/ranged/magic/tome/summon/crab,
+/obj/item/weapon/ranged/magic/tome/summon/goliath,
+/obj/item/weapon/ranged/magic/tome/summon/skeleton,
+/obj/item/weapon/ranged/magic/tome/summon/space_bear,
+/obj/item/weapon/ranged/magic/tome/summon/twilight,
+/obj/item/weapon/ranged/magic/tome/summon/watcher,
 /turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "pU" = (
@@ -4394,8 +4396,12 @@
 "pW" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/tome/chaos,
+/obj/item/weapon/ranged/magic/tome/crystal,
+/obj/item/weapon/ranged/magic/tome/fireball,
 /obj/item/weapon/ranged/magic/tome/ice,
-/turf/simulated/floor/wood/rich,
+/obj/item/weapon/ranged/magic/tome/missile,
+/turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "pX" = (
 /obj/structure/interactive/status_display/global_display/round,
@@ -4732,21 +4738,11 @@
 /turf/simulated/floor/carpet,
 /area/burgerstation/maint/garden)
 "rc" = (
-/obj/item/weapon/melee/tool/shovel,
-/turf/simulated/floor/grass,
-/area/burgerstation/maint/garden)
-"rd" = (
-/obj/item/weapon/melee/tool/crowbar,
-/turf/simulated/floor/grass,
-/area/burgerstation/maint/garden)
-"re" = (
-/obj/item/weapon/melee/tool/pickaxe,
-/turf/simulated/floor/grass,
-/area/burgerstation/maint/garden)
-"rf" = (
-/obj/item/grenade/timed/explosive,
-/turf/simulated/floor/grass,
-/area/burgerstation/maint/garden)
+/obj/structure/smooth/table/wood,
+/obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/staff/basic,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/library)
 "rA" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 5
@@ -5630,46 +5626,10 @@
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
 /area/burgerstation/library)
-"vJ" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/fireball,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"vK" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/chaos,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"vL" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/missile,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"vM" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/crystal,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 "vN" = (
 /obj/structure/interactive/fulton_beacon,
 /turf/simulated/floor/tile/shuttle/blue,
 /area/transit/dropship/delta/station)
-"vP" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/scroll/fireball,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 "vR" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -5794,12 +5754,6 @@
 /obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal,
 /area/burgerstation/help_desk)
-"wJ" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/bull,
-/turf/simulated/floor/carpet,
-/area/burgerstation/library)
 "wK" = (
 /obj/structure/interactive/diverter/high_value{
 	dir = 8
@@ -5908,24 +5862,6 @@
 /obj/structure/interactive/status_display/global_display/round,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/east)
-"xf" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/twilight,
-/turf/simulated/floor/carpet,
-/area/burgerstation/library)
-"xg" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/watcher,
-/turf/simulated/floor/carpet,
-/area/burgerstation/library)
-"xh" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/staff/blackflame,
-/turf/simulated/floor/carpet,
-/area/burgerstation/library)
 "xj" = (
 /turf/simulated/floor/plating,
 /area/transit/cargo_inbound/ship)
@@ -44444,11 +44380,11 @@ pP
 pA
 pB
 pB
-wJ
-xf
 pB
 pB
-vJ
+pB
+pB
+ps
 pP
 dX
 aj
@@ -44701,11 +44637,11 @@ pP
 nD
 pB
 pB
-bJ
-xg
 pB
 pB
-vK
+pB
+pB
+pq
 pP
 dX
 aj
@@ -44958,11 +44894,11 @@ pP
 ps
 pB
 pB
-fE
-xh
 pB
 pB
-vL
+pB
+pB
+pC
 pP
 dX
 aj
@@ -45219,7 +45155,7 @@ ps
 ps
 ps
 ps
-vM
+pS
 pP
 dX
 aj
@@ -45470,13 +45406,13 @@ pP
 dX
 pP
 ps
-pC
-pS
-pT
+oO
+oO
+oO
 pB
 pB
 pB
-pW
+rc
 pP
 dX
 aj
@@ -45729,11 +45665,11 @@ pP
 pA
 pB
 pB
-oO
+pT
 pB
 pB
 pB
-vP
+bJ
 pP
 dX
 aj
@@ -45986,7 +45922,7 @@ aX
 ps
 pB
 pB
-pp
+pW
 pB
 pB
 pB
@@ -46243,7 +46179,7 @@ pP
 ps
 ps
 ps
-pq
+fE
 ps
 ps
 ps
@@ -52144,9 +52080,9 @@ wq
 nu
 qq
 kY
-rc
 nt
-rf
+nt
+nt
 nt
 nt
 nt
@@ -52402,7 +52338,7 @@ nu
 qq
 kY
 qU
-rd
+nt
 nt
 nt
 nt
@@ -52659,7 +52595,7 @@ nu
 qq
 kY
 qU
-re
+nt
 nt
 nt
 nt

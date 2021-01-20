@@ -209,10 +209,10 @@
 	if(is_living(O))
 		var/mob/living/L = O
 		if(L.loyalty_tag == src.loyalty_tag)
-			if(!src.ai || L.is_moving)
-				return TRUE
+			if(!src.ai || L.is_moving || !L.ai)
+				return ..()
 		if(L.horizontal || src.horizontal)
-			return TRUE
+			return ..()
 		if(L.mob_size >= mob_size && L.mob_size >= MOB_SIZE_ANIMAL)
 			return FALSE
 
