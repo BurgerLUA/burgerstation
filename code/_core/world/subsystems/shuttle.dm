@@ -31,7 +31,9 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 		if(time_left >= 0)
 			set_status_display("drop_pod","DROP\n[get_clock_time(time_left)]")
 
-		if(next_pod_launch <= world.time)
+		if(time_left <= 0)
+
+			next_pod_launch = world.time + SECONDS_TO_DECISECONDS(120)
 
 			var/list/valid_pods = list()
 			for(var/k in all_drop_pods)
@@ -68,6 +70,5 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 					i++
 
 
-			next_pod_launch = world.time + SECONDS_TO_DECISECONDS(120)
 
 	return TRUE

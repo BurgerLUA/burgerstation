@@ -510,14 +510,14 @@
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-	if(victim != hit_object)
-		hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon
 		if(W.enchantment)
 			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
+	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+	if(victim != hit_object)
+		hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
 	return TRUE
 

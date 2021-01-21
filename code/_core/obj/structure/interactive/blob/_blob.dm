@@ -31,6 +31,9 @@
 
 /obj/structure/interactive/blob/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
+	if(!health || health.health_current <= 0 || !color || color == "#FFFFFF")
+		return FALSE
+
 	if(is_living(victim))
 		if(istype(victim,/mob/living/simple/blobbernaught))
 			return FALSE

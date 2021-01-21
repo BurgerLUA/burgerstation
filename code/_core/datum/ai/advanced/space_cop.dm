@@ -17,7 +17,7 @@ var/global/list/space_cop_tag_shitlist = list()
 
 	var/event/space_cop/tracked_event
 
-/ai/advanced/space_cop/handle_objectives()
+/ai/advanced/space_cop/handle_objectives(var/tick_rate=AI_TICK)
 
 	if(!roam && !located_chair_turf && !length(current_path))
 		if(tracked_event && tracked_event.recalling && tracked_event.associated_shuttle_controller && get_dist(owner,tracked_event.associated_shuttle_controller) <= VIEW_RANGE)
@@ -26,7 +26,6 @@ var/global/list/space_cop_tag_shitlist = list()
 				var/area/A2 = get_area(tracked_event.associated_shuttle_controller)
 				if(A1 == A2)
 					located_chair_turf = get_turf(C)
-					log_debug("Space Cop: FOUND A CHAIR!")
 					break
 
 	return ..()

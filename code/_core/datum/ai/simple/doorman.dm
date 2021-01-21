@@ -52,7 +52,7 @@
 
 	return TRUE
 
-/ai/doorman/handle_objectives()
+/ai/doorman/handle_objectives(var/tick_rate=AI_TICK)
 
 	if(!objective_attack && length(attackers))
 		var/mob/living/chosen_target = pick(attackers)

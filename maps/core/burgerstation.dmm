@@ -4231,6 +4231,11 @@
 /obj/structure/interactive/atmospherics/air_alarm,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/north)
+"pp" = (
+/obj/structure/interactive/lighting/fixture/floor,
+/obj/decal/hazard/end,
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
 "pq" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -4696,11 +4701,6 @@
 /obj/structure/interactive/power/apc,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/ce)
-"qT" = (
-/obj/structure/interactive/drop_pod,
-/mob/living/advanced/npc/nanotrasen,
-/turf/simulated/floor/plating,
-/area/burgerstation/hanger)
 "qU" = (
 /turf/simulated/wall/rock,
 /area/burgerstation/maint/garden)
@@ -25843,7 +25843,7 @@ ot
 qD
 qD
 qD
-ot
+pp
 jd
 jd
 jd
@@ -25855,7 +25855,7 @@ ot
 qD
 qD
 qD
-ot
+pp
 qE
 mF
 kQ
@@ -26607,13 +26607,13 @@ kQ
 mF
 bp
 bp
-qT
+qC
 bp
-qT
+qC
 bp
-qT
+qC
 bp
-qT
+qC
 bp
 jd
 jd
@@ -26871,7 +26871,7 @@ ot
 qD
 qD
 qD
-ot
+pp
 jd
 jd
 jd
@@ -26883,7 +26883,7 @@ ot
 qD
 qD
 qD
-ot
+pp
 qE
 mF
 kQ
@@ -27121,13 +27121,13 @@ mF
 mF
 bp
 bp
-qT
+qC
 bp
-qT
+qC
 bp
-qT
+qC
 bp
-qT
+qC
 qE
 jd
 jd

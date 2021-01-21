@@ -36,7 +36,7 @@ obj/structure/interactive/proc/can_repair(var/mob/living/advanced/caller,var/obj
 	if(!health)
 		return FALSE
 
-	if(I.health.health_current >= I.health.health_max)
+	if(health.health_current >= health.health_max)
 		caller?.to_chat(span("warning","\The [src.name] is already repaired!"))
 		return FALSE
 

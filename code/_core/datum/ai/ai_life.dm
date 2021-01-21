@@ -30,7 +30,7 @@
 	objective_ticks += tick_rate
 	if(objective_ticks >= get_objective_delay())
 		objective_ticks = 0
-		handle_objectives()
+		handle_objectives(tick_rate)
 		if(length(current_path) || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
 			idle_time = 0
 		else

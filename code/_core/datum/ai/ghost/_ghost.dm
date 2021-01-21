@@ -134,7 +134,7 @@
 		owner_as_ghost.desired_alpha = stealth_killer == 2 ? 0 : 255
 		if(objective_ticks >= get_objective_delay())
 			objective_ticks = 0
-			handle_objectives()
+			handle_objectives(tick_rate)
 			if(objective_attack)
 				anger -= DECISECONDS_TO_SECONDS(1)
 				A.smash_all_lights() //This sleeps

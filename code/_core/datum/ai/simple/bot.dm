@@ -39,7 +39,7 @@
 		return FALSE
 	return TRUE
 
-/ai/bot/medical/handle_objectives()
+/ai/bot/medical/handle_objectives(var/tick_rate=AI_TICK)
 
 	if(!healing_target || !is_valid_healing_target(healing_target,get_dist(owner,healing_target),VIEW_RANGE))
 		find_healing_target()

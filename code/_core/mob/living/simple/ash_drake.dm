@@ -23,7 +23,7 @@
 
 	stun_angle = 0
 
-	health_base = 3000
+	health_base = 6000
 	stamina_base = 500
 	mana_base = 2000
 
@@ -173,7 +173,7 @@
 	for(var/i=1,i<=amount_multiplier,i++)
 		var/turf/T = pick(valid_floors)
 		new/obj/effect/temp/ash_drake/target/(T)
-		new/obj/effect/falling_meteor/falling_fireball(T)
+		new/obj/effect/falling_fireball(T)
 
 	return TRUE
 

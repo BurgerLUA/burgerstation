@@ -139,11 +139,11 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*8 + 10)
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*10 + 10)
 	announce(
 		"Central Command Update",
 		"Prepare for Landfall",
-		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 8 minutes.",
+		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 10 minutes.",
 		ANNOUNCEMENT_STATION,
 		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
 	)

@@ -70,21 +70,26 @@
 
 	return TRUE
 
-/ai/proc/handle_objectives()
+/ai/proc/handle_objectives(var/tick_rate=AI_TICK)
 
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE
 
 	if(objective_attack)
 		if(is_living(objective_attack))
-			if(!should_attack_mob(objective_attack,FALSE) || get_sight_chance(objective_attack) <= 0)
+			if(!should_attack_mob(objective_attack,FALSE))
 				set_objective(null)
-			else if(get_sight_chance(objective_attack) <= 50)
-				frustration_attack++
 			else
-				frustration_attack = 0
+				var/sight_chance = get_sight_chance(objective_attack)
+				if(sight_chance <= 0)
+					set_objective(null)
+					frustration_attack = 0
+				else if(sight_chance <= 50)
+					frustration_attack += tick_rate
+				else
+					frustration_attack = 0
 		else if(get_dist(owner,objective_attack) > attack_distance_max)
-			frustration_attack++
+			frustration_attack += tick_rate
 		else
 			frustration_attack = 0
 	else

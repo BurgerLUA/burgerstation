@@ -24,7 +24,7 @@
 
 /turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(!damage_type.target_floors)
+	if(!damage_type || !damage_type.target_floors)
 		return FALSE
 
 	return ..()

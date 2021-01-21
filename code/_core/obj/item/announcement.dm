@@ -72,7 +72,7 @@ var/global/next_announcement = 0
 		message = "[message]<br> -[caller.name]"
 
 	if(next_announcement > world.time)
-		caller.to_chat(span("warning","Please wait [SECONDS_TO_DECISECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
 	announce(sender,title,message,ANNOUNCEMENT_STATION,sound_to_play)

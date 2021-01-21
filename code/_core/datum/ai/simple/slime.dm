@@ -5,7 +5,7 @@
 
 	var/mob/living/simple/slime/self = owner
 
-	if(S == self)
+	if(!S || !self || S == self)
 		return FALSE
 
 	if(S.slime_color == self.slime_color)

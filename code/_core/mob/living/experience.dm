@@ -6,6 +6,8 @@
 	var/class/C = all_classes[class]
 
 	for(var/k in SSexperience.all_attributes)
+		if(k == ATTRIBUTE_LUCK)
+			continue
 		var/v = SSexperience.all_attributes[k]
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
