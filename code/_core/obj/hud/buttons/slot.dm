@@ -96,7 +96,7 @@
 
 	return clicked_on_by_object(caller,object)
 
-/obj/hud/button/slot/clicked_on_by_object(caller,object,location,control,params)
+/obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()
 
 	if(.)
@@ -117,7 +117,7 @@
 	var/obj/item/I = object
 
 	if(!istype(I) || !I.has_quick_function)
-		A.to_chat(span("notice","\The [I.name] doesn't have a quick bind function."))
+		A.to_chat(span("warning","\The [I.name] doesn't have a quick bind function."))
 		return TRUE
 
 	clear_object(A)

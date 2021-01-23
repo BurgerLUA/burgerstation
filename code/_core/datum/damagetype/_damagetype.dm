@@ -49,14 +49,16 @@
 		ARCANE = BURN,
 		HEAT = BURN,
 		COLD = BURN,
-		BOMB = BRUTE,
+		SHOCK = BURN,
+		BOMB = list(BRUTE,BURN),
 		BIO = TOX,
-		RAD = RAD,
+		RAD = list(RAD,BURN),
 		HOLY = BURN,
 		DARK = BRUTE,
 		FATIGUE = FATIGUE,
 		PAIN = PAIN,
-		ION = BURN
+		ION = list(BRUTE,BURN),
+		SANITY = SANITY
 	)
 
 	var/list/damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
@@ -106,7 +108,11 @@
 	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
 	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
 
-	var/damage_mod = 1 //Simple multiplier for all damage.
+	var/damage_mod = 1 //Simple multiplier for all damage of this type
+
+	var/experience_mod = 1 //Simple multiplier for all experience gains via this type.
+
+	var/target_floors = FALSE //Can this damagetype target floors?
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -202,6 +208,12 @@
 
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= bonus_damage_multiplier
+		/*
+		if(victim.health && victim.health.damage_multipliers[k])
+			new_attack_damage[k] *= victim.health.damage_multipliers[k]
+		if(hit_object.health && hit_object.health.damage_multipliers[k])
+			new_attack_damage[k] *= hit_object.health.damage_multipliers[k]
+		*/
 
 	return new_attack_damage
 
@@ -282,11 +294,6 @@
 	return swing_time
 
 /damagetype/proc/hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
-	/*
-	if(!attacker || !victim || !weapon || !hit_object || !hit_object.health || !victim.health)
-		return FALSE
-	return SSdamagetype.add_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier,src)
-	*/
 	return process_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier)
 
 
@@ -316,7 +323,11 @@
 		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
 		return FALSE
 
-	if(is_living(victim))
+	if(debug)
+		log_debug("**************************************")
+		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
+
+	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
 		if(is_advanced(victim) && can_be_parried)
 			var/mob/living/advanced/A = victim
@@ -325,14 +336,23 @@
 				play('sound/effects/parry.ogg',get_turf(A))
 				if(is_living(attacker))
 					var/mob/living/LA = attacker
-					LA.to_chat(span("warning","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
+					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
 					if(get_dist(A,LA) <= 1)
 						LA.add_status_effect(STAGGER,30,30)
 				return FALSE
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
-	var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0,PAIN=0,RAD=0)
+	var/list/damage_to_deal_main = list(
+		BRUTE = 0,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0,
+		FATIGUE = 0,
+		PAIN = 0,
+		RAD = 0,
+		SANITY = 0
+	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
 
@@ -392,7 +412,15 @@
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
 		var/real_damage_type = attack_damage_conversion[damage_type]
-		damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
+		if(islist(real_damage_type))
+			var/list_length = length(real_damage_type)
+			for(var/single_damage_type in real_damage_type)
+				var/real_damage_amount = CEILING(damage_amount/list_length,1)
+				damage_to_deal_main[single_damage_type] += real_damage_amount
+				if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [real_damage_amount] [single_damage_type] damage.")
+		else
+			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
+			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
 	var/total_damage_dealt = 0
 	if(victim.immortal || hit_object.immortal)
@@ -400,15 +428,27 @@
 			total_damage_dealt += damage_to_deal_main[damage_type]
 	else
 		if(hit_object.health)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],fatigue=damage_to_deal_main[FATIGUE],pain=damage_to_deal_main[PAIN],rad=damage_to_deal_main[RAD],update=FALSE)
+			total_damage_dealt += hit_object.health.adjust_loss_smart(
+				brute = damage_to_deal_main[BRUTE],
+				burn = damage_to_deal_main[BURN],
+				tox = damage_to_deal_main[TOX],
+				oxy = damage_to_deal_main[OXY],
+				fatigue = damage_to_deal_main[FATIGUE],
+				pain = damage_to_deal_main[PAIN],
+				rad = damage_to_deal_main[RAD],
+				sanity = damage_to_deal_main[SANITY],
+				update = FALSE
+			)
 		else
 			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
 			return TRUE
 
+	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
+
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)
 
-	if(is_living(victim))
+	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
 		if(has_fatigue_damage && L.ai && L.has_status_effect(STAMCRIT) && !L.has_status_effect(SLEEP))
@@ -441,7 +481,7 @@
 			var/mob/living/V = victim
 			var/list/experience_gained = list()
 			if(!V.dead && A.is_player_controlled())
-				var/experience_multiplier = victim.get_xp_multiplier()
+				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
 					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)
@@ -470,14 +510,14 @@
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-	if(victim != hit_object)
-		hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon
 		if(W.enchantment)
 			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
+	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+	if(victim != hit_object)
+		hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
 	return TRUE
 

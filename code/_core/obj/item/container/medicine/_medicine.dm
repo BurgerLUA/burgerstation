@@ -62,8 +62,8 @@
 
 	. = 0
 
-	var/brute_to_heal = (-heal_brute*heal_multiplier) + (-heal_brute_percent*A.health.get_brute_loss()*heal_multiplier)
-	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_burn_loss()*heal_multiplier)
+	var/brute_to_heal = (-heal_brute*heal_multiplier) + (-heal_brute_percent*A.health.get_loss(BRUTE)*heal_multiplier)
+	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_loss(BURN)*heal_multiplier)
 
 	if(brute_to_heal || burn_to_heal)
 		A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal)
@@ -76,7 +76,7 @@
 			if(is_player(caller))
 				var/mob/living/advanced/player/P = caller
 				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit.
-					var/experience_gain = -.
+					var/experience_gain = -.*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 		else
 			A.health.update_health()
@@ -86,9 +86,9 @@
 	reagents.volume_max = item_count_current*10
 
 	if(caller == A.loc)
-		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."))
+		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
 	else
-		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."))
+		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."),span("notice","You bandage \the [A.loc.name]'s [A.name]."))
 
 	add_item_count(-1)
 
@@ -96,8 +96,8 @@
 
 /obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!is_organ(target) && !is_living(target))
 		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
@@ -134,6 +134,8 @@
 		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
 	if(can_be_treated(caller,object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		PROGRESS_BAR(caller,src,(self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME) * treatment_time_mul,.proc/treat,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
 		return TRUE

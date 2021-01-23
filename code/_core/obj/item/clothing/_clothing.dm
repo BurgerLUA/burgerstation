@@ -61,6 +61,16 @@
 
 	var/speed_bonus = 0
 
+	var/loyalty_tag //Set to a loyalty tag here to restrict this to those who have this tag.
+
+/obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
+
+	if(loyalty_tag && owner.loyalty_tag != loyalty_tag)
+		if(messages) owner.to_chat(span("warning","<b>\The [src.name]</b> dings, \"Invalid Loyalty Tag detected!\""))
+		return FALSE
+
+	return ..()
+
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()
 
@@ -77,7 +87,6 @@
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	weight = calculate_weight()
-	generate_value()
 	. = ..()
 	initialize_blends()
 	return .

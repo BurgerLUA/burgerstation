@@ -13,6 +13,9 @@
 /obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(ismob(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		if(!is_advanced(object))
 			caller.to_chat(span("warning","You can't cuff this!"))
 			return TRUE
@@ -32,8 +35,8 @@
 
 /obj/item/handcuffs/proc/can_cuff(var/mob/caller,var/mob/living/advanced/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(target.handcuffed)
 		caller.to_chat(span("warning","\The [target.name] is already handcuffed!"))

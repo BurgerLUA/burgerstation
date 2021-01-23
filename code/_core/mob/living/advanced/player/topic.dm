@@ -20,13 +20,13 @@
 	return TRUE
 
 /mob/living/advanced/proc/uncuff(var/mob/caller)
-	caller.to_chat(span("notice","You remove \the [src.name]'s handcuffs."))
+	caller.visible_message(span("warning","\The [caller.name] removes \the [src.name]'s handcuffs."),span("notice","You remove \the [src.name]'s handcuffs."))
 	set_handcuffs(FALSE)
 	return TRUE
 
 /mob/living/advanced/proc/can_uncuff(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(src.qdeleting)
 		caller.to_chat(span("warning","That doesn't exist!"))

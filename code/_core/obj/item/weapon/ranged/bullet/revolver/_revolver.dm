@@ -31,6 +31,10 @@
 	return current_chamber
 
 /obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	open = !open
 
 	if(open)
@@ -62,9 +66,13 @@
 
 /obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(open && defer_object && is_inventory(defer_object) && src && src.loc && is_inventory(src.loc)) //The revolver is in an inventory, and you're click on it with your hands.
+	if(open && is_inventory(object) && src && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 
 		var/obj/hud/inventory/I = object
 

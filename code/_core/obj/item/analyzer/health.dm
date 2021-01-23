@@ -9,6 +9,8 @@
 	var/advanced = FALSE
 
 /obj/item/analyzer/health/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	advanced = !advanced
 	caller.to_chat(span("notice","Advanced diagnostics is [advanced ? "enabled" : "disabled"]."))
 	return TRUE
@@ -23,7 +25,9 @@
 
 /obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target,location,control,params)
 
-	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
+	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
+
+	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_loss(BRUTE),1)]</font>|<font color='yellow'>[CEILING(target.health.get_loss(BURN),1)]</font>|<font color='green'>[CEILING(target.health.get_loss(TOX),1)]</font>|<font color='blue'>[CEILING(target.health.get_loss(OXY),1)]</font>"
 	new/obj/effect/chat_text(target,.,TRUE)
 
 	if(advanced)
@@ -52,10 +56,11 @@
 				var/reagent/R = REAGENT(r_id)
 				var/volume = target.reagents.stored_reagents[r_id]
 				reagent_printout += "[R.name]: [volume]u<br>"
+		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Reagents (Blood):<br>[reagent_printout]"
+		caller.to_chat(.)
+		if(is_living(target))
+			var/mob/living/L = target
+			for(var/k in L.get_damage_description(caller,TRUE))
+				caller.to_chat(k)
 
-		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Reagents (Blood):<Br>[reagent_printout]"
-
-
-	caller.to_chat(.)
-	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 	return TRUE

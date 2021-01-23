@@ -43,11 +43,13 @@
 	var/did_drop = FALSE
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(length(I.drop_held_objects(T)))
+		if(I.worn)
+			continue
+		if(length(I.drop_objects(T)))
 			did_drop = TRUE
 	if(did_drop && is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		A.to_chat(span("danger","You cry in pain as your [src.name] recoils from your injury!"))
+		A.visible_message(span("warning","\The [A.name]'s [src.name] recoils from their injury!"),span("danger","You cry in pain as your [src.name] recoils from your injury!"))
 
 	return . || did_drop
 
@@ -55,6 +57,8 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
+		if(L.attack_flags & CONTROL_MOD_KICK)
+			return /damagetype/unarmed/foot
 		switch(L.intent)
 			if(INTENT_HARM)
 				return /damagetype/unarmed/fists/

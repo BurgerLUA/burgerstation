@@ -77,6 +77,10 @@
 	name = "\improper Bar"
 	icon_state = "bar"
 
+/area/burgerstation/cafe/botany
+	name = "\improper Botany"
+	icon_state = "hydro"
+
 /area/burgerstation/dressing
 	name = "\improper Dressing Room"
 	icon_state = "dressing"
@@ -204,6 +208,11 @@
 /area/burgerstation/maint/disposals
 	name = "\improper Disposals Maintenance"
 	icon_state = "disposals"
+
+/area/burgerstation/maint/garden
+	name = "\improper Hidden Maintenance Garden"
+	icon_state = "blue"
+	flags_area = FLAGS_AREA_NO_EVENTS
 
 /area/burgerstation/pvp
 	name = "ERROR"

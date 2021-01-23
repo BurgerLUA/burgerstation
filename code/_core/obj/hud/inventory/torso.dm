@@ -3,7 +3,8 @@
 	icon_state = "slot_torso"
 	id = BODY_TORSO
 	screen_loc = "LEFT+1,BOTTOM+2"
-	worn_slots = 2
+	max_slots = 2
+	worn = TRUE
 
 	item_slot = SLOT_TORSO | SLOT_TORSO_U
 
@@ -16,7 +17,8 @@
 	icon_state = "slot_torso_o"
 	id = BODY_TORSO_O
 	screen_loc = "LEFT,BOTTOM+2"
-	worn_slots = 2
+	max_slots = 2
+	worn = TRUE
 
 	item_slot = SLOT_TORSO_O | SLOT_TORSO_A
 
@@ -31,7 +33,8 @@
 	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
 	screen_loc = "CENTER-3,BOTTOM"
-	worn_slots = 1
+	max_slots = 1
+	worn = TRUE
 
 	item_slot = SLOT_TORSO_B
 
@@ -48,7 +51,7 @@
 	icon_state = "slot_torso_ob"
 	id = BODY_TORSO_OB
 	screen_loc = "CENTER-4,BOTTOM"
-	held_slots = 1
+	max_slots = 1
 
 	item_slot = SLOT_TORSO_OB
 
@@ -68,7 +71,7 @@
 
 	priority = 1
 
-/obj/hud/inventory/organs/torso_ob/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
+/obj/hud/inventory/organs/torso_ob/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner

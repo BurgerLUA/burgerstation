@@ -83,7 +83,7 @@
 	possible_extra_clothing = list(
 		/obj/item/clothing/head/helmet/security/old = 10,
 		/obj/item/clothing/head/hat/beret/armored/syndicate = 5,
-		/obj/item/clothing/glasses/security_hud/red = 2
+		/obj/item/clothing/glasses/sun/security/red = 2
 	)
 
 	extra_clothing_chance = 75
@@ -220,7 +220,6 @@
 		/obj/item/clothing/overwear/coat/labcoat/medical,
 		/obj/item/clothing/underbottom/underwear/boxers/medical,
 		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,
 		/obj/item/clothing/feet/shoes/colored,
 		/obj/item/clothing/feet/shoes/colored/left,

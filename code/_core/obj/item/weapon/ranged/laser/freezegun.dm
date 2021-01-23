@@ -8,7 +8,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/freezegun
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 7
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -16,14 +16,14 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-	view_punch = 15
+	view_punch = 8
 
 	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.1
-	heat_max = 0.2
+	heat_per_shot = 0.015
+	heat_max = 0.04
 
 	size = SIZE_4
 	weight = 15

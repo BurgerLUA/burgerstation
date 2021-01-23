@@ -90,7 +90,7 @@
 		var/mana = owner.health.mana_current
 
 		var/max_pain = owner.health.health_max
-		var/pain = owner.health.get_pain_loss()
+		var/pain = owner.health.get_loss(PAIN)
 
 		alpha = max(1 - health/max_health, 1 - stamina/max_stamina, 1 - mana/max_mana,pain/max_pain)*255
 		color = rgb(255*(1 - pain/max_pain) - (health/max_health)*255,255*(1 - pain/max_pain) - (stamina/max_stamina)*255,255*(1 - pain/max_pain) - (mana/max_mana)*255)

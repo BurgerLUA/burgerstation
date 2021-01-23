@@ -7,7 +7,7 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //Should always be set to FALSE! Controls if an object should recieve a Cross/Uncross/Crossed/Uncrossed proc calls.
+	density = FALSE //Should always be set to FALSE! Controls if an object should receive a Cross/Uncross/Crossed/Uncrossed proc calls.
 
 	var/health_base = 1
 	var/mana_base = 1
@@ -51,6 +51,8 @@
 	var/light_sprite_alpha = 0
 
 	var/listener = FALSE //Setting this to true doesn't make it listen after it's been initialized.
+
+	var/dir_offset = TILE_SIZE
 
 /atom/proc/set_light_sprite(var/desired_range,var/desired_alpha)
 
@@ -262,4 +264,14 @@
 	return TRUE
 
 /atom/proc/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency,var/language=LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+	return TRUE
+
+
+/atom/proc/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
+
+	if(should_sanitize)
+		text_to_say = sanitize(text_to_say)
+
+	talk(src,src,text_to_say,talk_type_to_use,null,language_to_use,talk_range)
+
 	return TRUE

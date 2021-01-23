@@ -32,8 +32,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/currency = 3000
 
-	var/insurance //How much insurance the user has. This amount is paid out in death, up to 8000 credits.
-	var/insurance_premiums //How much your insurance premiums are. This is taxed from your current amount each payday.
+	var/insurance = INSURANCE_PAYOUT * 4 //How much insurance the user has. This amount is paid out in death, up to 8000 credits.
+	var/insurance_premiums = 0.05 //How much your insurance premiums are. This is taxed from your current amount each payday.
 
 	var/logout_time = 0
 
@@ -68,7 +68,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	value = 0
 
-	damage_received_multiplier = 1
+	damage_received_multiplier = 0.5
 
 	queue_delete_on_death = FALSE
 

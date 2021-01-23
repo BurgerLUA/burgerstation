@@ -14,12 +14,11 @@ obj/item/bikehorn
 
 obj/item/bikehorn/click_self(var/mob/caller)
 
-	. = ..()
+	INTERACT_CHECK
+	INTERACT_DELAY(20)
 
-	if(caller.can_attack(null,src))
-		var/turf/T = get_turf(src)
-		play('sound/items/bikehorn.ogg',T)
-		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
-		src.attack_next = world.time + 10
+	var/turf/T = get_turf(src)
+	play('sound/items/bikehorn.ogg',T)
+	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
-	return .
+	return TRUE

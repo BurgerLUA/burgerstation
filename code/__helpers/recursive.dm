@@ -20,12 +20,7 @@
 
 	for(var/v in I.inventories)
 		var/obj/hud/inventory/I2 = v
-		for(var/k in I2.held_objects)
-			var/obj/item/I3 = k
-			var/result = recursive_find_item(I3,desired_obj,desired_proc)
-			if(result)
-				return result
-		for(var/k in I2.worn_objects)
+		for(var/k in I2.contents)
 			var/obj/item/I3 = k
 			var/result = recursive_find_item(I3,desired_obj,desired_proc)
 			if(result)

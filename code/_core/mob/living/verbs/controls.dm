@@ -25,7 +25,7 @@
 
 	if(choice == "Yes")
 		death()
-		visible_message(span("danger","[src.name] kills themselves!"))
+		visible_message(span("danger","[src.name] kills themselves!"),span("danger","You kill yourself!"))
 		suicide = TRUE
 		client.make_ghost(get_turf(src))
 

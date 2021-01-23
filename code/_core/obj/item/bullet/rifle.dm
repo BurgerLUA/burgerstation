@@ -173,7 +173,7 @@
 /obj/item/bullet_cartridge/rifle_545mm
 	name = "\improper 5.45mm rifle bullet"
 	desc = "Smaller than 7.62x39, but boy does it leave a nasty wound!"
-	desc_extended = "For rifles and machineguns that requre 5,45mm."
+	desc_extended = "For rifles and machineguns that require 5,45mm."
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/223.dmi'
 
@@ -191,3 +191,25 @@
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
 	value = 1
+
+/obj/item/bullet_cartridge/rifle_545mm/ap
+	name = "\improper 5.45mm AP rifle bullet"
+	desc = "Smaller than 7.62x39, but boy does it leave a nasty wound! Now comes with a shiny tombac-plated jacket!"
+	desc_extended = "For rifles and machineguns that require 5,45mm. This one has an armor piercing tip."
+	rarity = RARITY_UNCOMMON
+	icon = 'icons/obj/item/bullet/223_ap.dmi'
+
+	bullet_diameter = 5.45
+	bullet_length = 39
+	bullet_color = COLOR_BULLET
+
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	projectile = /obj/projectile/bullet/firearm/rifle
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_545mm/ap
+
+	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
+
+	value = 2.2

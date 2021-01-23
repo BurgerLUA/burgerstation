@@ -31,6 +31,9 @@
 
 /obj/item/container/beaker/click_self(var/mob/caller,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	var/initial_amount = initial(transfer_amount)
 
 	transfer_amount += initial_amount

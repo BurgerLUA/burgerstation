@@ -12,21 +12,7 @@
 	var/other_kills = 0
 	var/other_deaths = 0
 
-	var/list/first_player_death = list(
-		"attacker" = "no one",
-		"victim" = "no one",
-		"weapon" = "nothing",
-		"last_words" = "none"
-	)
-
-	var/list/highest_damage = list(
-		"attacker" = "no one",
-		"victim" = "no one",
-		"weapon" = "nothing",
-		"damage" = 0
-	)
+	var/list/stored_stats = list()
 
 /subsystem/stats/Initialize()
-
-
 	return ..()

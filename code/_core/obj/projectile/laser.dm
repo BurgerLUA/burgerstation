@@ -30,3 +30,16 @@
 /obj/projectile/bullet/spit
 	icon = 'icons/obj/projectiles/spit.dmi'
 	icon_state = "spit"
+
+
+/obj/projectile/bullet/laser/emitter
+	name = "emitter laser"
+
+/obj/projectile/bullet/laser/emitter/damage_atom(var/atom/hit_atom)
+
+	if(istype(hit_atom,/obj/structure/interactive/supermatter))
+		var/obj/structure/interactive/supermatter/S = hit_atom
+		S.add_charge(SECONDS_TO_DECISECONDS(6)/3)
+		return TRUE
+
+	return ..()

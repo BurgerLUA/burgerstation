@@ -38,13 +38,15 @@
 
 /obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!stored_radio)
 		return ..()
 
 	if(!is_inventory(object))
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	stored_radio.broadcasting = !stored_radio.broadcasting
 	caller.to_chat(span("notice","You toggle the intercomm microphone [stored_radio.broadcasting ? "on" : "off"]."))

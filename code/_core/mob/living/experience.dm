@@ -6,6 +6,8 @@
 	var/class/C = all_classes[class]
 
 	for(var/k in SSexperience.all_attributes)
+		if(k == ATTRIBUTE_LUCK)
+			continue
 		var/v = SSexperience.all_attributes[k]
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
@@ -54,7 +56,7 @@
 
 	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
 
-	if(!first)
+	if(!first && old_level != level)
 		var/decrease = old_level > level
 		if(decrease)
 			to_chat(span("warning","Your overall level decreased to [level]..."))

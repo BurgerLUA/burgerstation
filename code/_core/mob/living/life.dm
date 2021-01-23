@@ -1,5 +1,5 @@
 /mob/living/proc/death_message()
-	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
+	src.visible_message("<b>\The [src.name]</b> seizes up and falls limp, their eyes dead and lifeless...")
 	return TRUE
 
 /mob/living/proc/death()
@@ -14,12 +14,7 @@
 
 	pre_death()
 
-	for(var/mob/living/advanced/player/P in view(VIEW_RANGE,src.loc))
-		if(P == src)
-			continue
-		P.to_chat(span("notice","<b>\The [src.name] dies!</b>"),CHAT_TYPE_COMBAT)
-
-	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
+	src.to_chat(span("danger","<h1>You died!</h1>"))
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
 	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved again!."))
 
@@ -41,6 +36,7 @@
 	attack_flags = 0x0
 
 	plane = PLANE_OBJ
+	layer = 1000
 
 	handle_horizontal()
 
@@ -97,6 +93,7 @@
 	dead = FALSE
 	remove_status_effect(CRIT)
 	plane = initial(plane)
+	layer = initial(layer)
 	if(ai)
 		ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
@@ -108,7 +105,16 @@
 	return TRUE
 
 /mob/living/proc/rejuvenate()
-	if(health) health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss(),-health.get_fatigue_loss(),-health.get_pain_loss(),-health.get_rad_loss())
+	if(health) health.adjust_loss_smart(
+		-health.get_loss(BRUTE),
+		-health.get_loss(BURN),
+		-health.get_loss(TOX),
+		-health.get_loss(OXY),
+		-health.get_loss(FATIGUE),
+		-health.get_loss(PAIN),
+		-health.get_loss(RAD),
+		-health.get_loss(SANITY)
+	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
 	return TRUE
@@ -293,11 +299,11 @@ mob/living/proc/on_life_slow()
 				last_intoxication_message = 2
 		if(800 to 1600)
 			if(last_intoxication_message != 3)
-				to_chat(span("danger","You feel shitfaced."))
+				to_chat(span("danger","You feel seriously inebriated."))
 				last_intoxication_message = 3
 		if(1600 to INFINITY)
 			if(last_intoxication_message != 4)
-				to_chat(span("danger","You feel gjkpeagheutyhaophghe."))
+				to_chat(span("danger","You feel utterly and completely fucking shitfaced."))
 				last_intoxication_message = 4
 			health.adjust_loss_smart(tox=0.25*(LIFE_TICK_SLOW/10),robotic = FALSE)
 			queue_health_update = TRUE
@@ -327,7 +333,7 @@ mob/living/proc/on_life_slow()
 
 
 /mob/living/proc/can_buffer_health()
-	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer)
+	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer || sanity_regen_buffer)
 
 /mob/living/proc/can_buffer_stamina()
 	return stamina_regen_buffer
@@ -348,14 +354,24 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX*2)
+		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/rad_to_regen = clamp(rad_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen, pain=-pain_to_regen, rad=-rad_to_regen, robotic=FALSE)
+		var/sanity_to_regen = clamp(sanity_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		health.adjust_loss_smart(
+			brute = -brute_to_regen,
+			burn = -burn_to_regen,
+			tox=-tox_to_regen,
+			pain=-pain_to_regen,
+			rad=-rad_to_regen,
+			sanity=-sanity_to_regen,
+			robotic=FALSE
+		)
 		brute_regen_buffer -= brute_to_regen
 		burn_regen_buffer -= burn_to_regen
 		tox_regen_buffer -= tox_to_regen
 		pain_regen_buffer -= pain_to_regen
 		rad_regen_buffer -= rad_to_regen
+		sanity_regen_buffer -= sanity_to_regen
 		update_health = TRUE
 
 	if(can_buffer_stamina())
@@ -399,9 +415,9 @@ mob/living/proc/on_life_slow()
 
 	if(health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = DECISECONDS_TO_SECONDS(health.health_regeneration * delay_mod * nutrition_hydration_mod)
-		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod)
-		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.get_pain_loss() - pain_regen_buffer),health_mod)
+		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod)
 		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust

@@ -92,6 +92,9 @@
 
 /obj/item/weapon/melee/tool/welder/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	if(active)
 		active = FALSE
 		update_sprite()
@@ -154,7 +157,10 @@
 
 /obj/item/weapon/melee/tool/multitool/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/structure/interactive/)) //MOVE THIS TO STRUCTURE CODE
+	if(istype(object,/obj/structure/interactive/)) //TODO: MOVE THIS TO STRUCTURE CODE
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/structure/interactive/I = object
 		var/obj/item/I2 = I.check_interactables(caller,src,location,control,params)
 		if(I2)

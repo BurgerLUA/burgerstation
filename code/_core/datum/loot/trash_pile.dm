@@ -13,4 +13,3 @@
 		loot_table[k] = CEILING(100/value,1)
 
 	return ..()
-

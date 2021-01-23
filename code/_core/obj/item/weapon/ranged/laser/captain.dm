@@ -9,7 +9,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = FALSE
 
@@ -21,8 +21,8 @@
 
 	view_punch = 4
 
-	heat_per_shot = 0.07
-	heat_max = 0.2
+	heat_per_shot = 0
+	heat_max = 0
 
 	size = SIZE_3
 	weight = 10

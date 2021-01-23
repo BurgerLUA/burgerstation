@@ -5,7 +5,7 @@
 
 /vote/map/New()
 
-	for(var/k in maps)
+	for(var/k in horde_maps)
 		options += k
 
 	return ..()

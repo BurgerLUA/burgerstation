@@ -1,7 +1,7 @@
 /obj/structure/interactive/blob/core
 	name = "blob core"
 	icon_state = "core"
-	health_base = 1000
+	health_base = 500
 	var/list/obj/structure/interactive/blob/linked_walls = list()
 	var/list/obj/structure/interactive/blob/node/linked_nodes = list()
 	var/list/obj/structure/interactive/blob/damaged_walls = list()
@@ -35,7 +35,7 @@
 
 	for(var/k in linked_walls)
 		var/obj/structure/interactive/blob/B = k
-		B.health.adjust_loss_smart(brute=max(0,B.health.health_current - 10))
+		B.health.adjust_loss_smart(brute=max(0,B.health.health_current - 1))
 		B.health.update_health()
 		B.color = null
 

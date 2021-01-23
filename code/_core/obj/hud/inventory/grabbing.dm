@@ -37,12 +37,12 @@
 	if(!isturf(caller.loc))
 		return FALSE
 
-	if(length(held_objects) || grabbed_object)
+	if(is_occupied())
 		caller.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE
 
 	if(grabbed_object == object)
-		caller.to_chat(span("notice","You cannot grab yourself!"))
+		caller.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
 		return FALSE
 
 	if(grabbed_object)
@@ -54,7 +54,7 @@
 	caller.set_dir(get_dir(caller,object))
 
 	grabbed_object = object
-	caller.to_chat(span("notice","You grab \the [object.name]."))
+	caller.visible_message(span("warning","\The [caller.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
 	animate(grabbed_object,pixel_x = initial(grabbed_object.pixel_x), pixel_y = initial(grabbed_object.pixel_y), time = SECONDS_TO_DECISECONDS(1))
 	grabbed_object.grabbing_hand = src
 
@@ -75,6 +75,8 @@
 	return TRUE
 
 /obj/hud/inventory/proc/release_object(var/mob/caller as mob)
+	if(!grabbed_object)
+		return FALSE
 	if(caller) caller.to_chat(span("notice","You release \the [grabbed_object.name]."))
 	if(is_living(grabbed_object))
 		var/mob/living/L = grabbed_object

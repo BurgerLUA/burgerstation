@@ -11,6 +11,5 @@
 	anchored = TRUE
 
 /obj/item/storage/heavy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-	INTERACT_CHECK
 	click_self(caller,location,control,params)
 	return TRUE

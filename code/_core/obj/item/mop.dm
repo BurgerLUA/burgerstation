@@ -18,9 +18,9 @@
 /obj/item/mop/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(isobj(object) && object.reagents)
-		SPAM_CHECK(10)
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		if(!object.reagents)
 			caller.to_chat(span("warning","\The [object.name] is empty!"))
 			return TRUE
@@ -36,6 +36,8 @@
 
 	if(isturf(object))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(4)
 		caller.set_dir(get_dir(caller,object))
 		var/damagetype/DT = all_damage_types[damage_type]
 		DT.do_attack_visuals(caller,object,src,object,0)

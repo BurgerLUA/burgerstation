@@ -1,5 +1,7 @@
 /obj/hud/inventory/click_self(var/mob/caller)
 
+	//No checks needed here.
+
 	if(src.defer_click_on_object() != src)
 		return ..()
 
@@ -30,7 +32,7 @@
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
-	if(caller.attack_flags & ATTACK_GRAB)
+	if(caller.attack_flags & CONTROL_MOD_GRAB)
 		if(is_item(defer_object) && is_inventory(defer_object.loc))
 			toggle_wield(caller,defer_object)
 			return TRUE
@@ -44,7 +46,7 @@
 			return TRUE
 
 
-	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
+	if(caller.attack_flags & CONTROL_MOD_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
@@ -54,7 +56,7 @@
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
 			return TRUE //Needs to be here. At this level.
 
-	if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
 		object = object.defer_click_on_object(location,control,params)
 		caller.face_atom(object)
@@ -82,9 +84,9 @@
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
 
-	if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
+	if(caller.attack_flags & CONTROL_MOD_DROP) //Drop the object if we are telling it to drop.
 		if(parent_inventory)
-			var/obj/item/I = parent_inventory.get_top_held_object()
+			var/obj/item/I = parent_inventory.get_top_object()
 			return unwield(caller,I)
 		if(grabbed_object)
 			return release_object(caller)
@@ -103,14 +105,14 @@
 			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir))
 		return TRUE
 
-	if(caller.attack_flags & ATTACK_OWNER)
+	if(caller.attack_flags & CONTROL_MOD_OWNER)
 		if(defer_self != src)
 			defer_self.click_on_object(caller,caller,location,control,params)
 		else if(object != src)
 			object.click_on_object(caller,caller,location,control,params)
 		return TRUE
 
-	if(params && (caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
+	if(params && (caller.attack_flags & CONTROL_MOD_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
 	if(get_dist(defer_self,defer_object) <= 1)
@@ -125,10 +127,10 @@
 					if(is_inventory(defer_self)) //We have nothing to add to it, so we should open it instead.
 						I.click_self(caller)
 						return TRUE
-				if(!I2.click_flags && !I2.drag_to_take && is_item(defer_object) && !is_item(defer_self))
+				if(!I2.click_flags && (!I2.drag_to_take || is_weapon(defer_object)) && is_item(defer_object) && !is_item(defer_self))
 					src.add_object(defer_object)
 					return TRUE
-				if(I2.worn_slots && is_item(defer_self) && !I.is_container)
+				if(I2.worn && I2.max_slots && is_item(defer_self) && !I.is_container)
 					I2.add_object(defer_self)
 					return TRUE
 			else if(is_inventory(defer_self))
@@ -167,7 +169,7 @@
 
 /obj/hud/inventory/proc/can_wield(var/mob/caller,var/obj/item/item_to_wield)
 
-	if(src.is_occupied(ignore_worn=TRUE))
+	if(src.is_occupied())
 		caller.to_chat(span("warning","Your hand must be unoccupied in order to wield this!"))
 		return FALSE
 
@@ -237,10 +239,13 @@
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(is_item(defer_object) && get_dist(caller,object) <= 1 && get_dist(caller,src) <= 1) //Put the item in the inventory slot.
+	if(is_item(defer_object)) //Put the item in the inventory slot.
 		var/obj/item/object_as_item = defer_object
-		if(src.add_object(object_as_item))
-			return TRUE
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
+		src.add_object(object_as_item)
+		return TRUE
 
 	return ..()
 
@@ -248,31 +253,29 @@
 	return src.loc
 
 obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
-	if(!length(src.held_objects))
-		return FALSE
 
-	return get_top_held_object().drop_item(new_location,pixel_x_offset,pixel_y_offset)
+	var/obj/item/I = get_top_object()
+
+	if(!I)
+		return null
+
+	return I.drop_item(new_location,pixel_x_offset,pixel_y_offset)
 
 /obj/hud/inventory/defer_click_on_object(location,control,params)
 
-	if(length(held_objects))
-		return get_top_held_object()
+	var/contents_length = length(contents)
 
-	var/worn_length = length(worn_objects)
-
-	if(worn_length)
-		if(worn_length > 1)
-			var/obj/item/I = worn_objects[worn_length]
+	if(worn && contents_length > 1)
+		for(var/i=contents_length,i>0,i--)
+			var/obj/item/I = contents[i]
 			if(I.is_container)
 				return I
-			var/obj/item/I2 = worn_objects[worn_length-1]
-			if(I2.is_container)
-				return I2
-			return I
-
-		return get_top_worn_object()
 
 	if(grabbed_object)
 		return grabbed_object
+
+	var/obj/item/I = get_top_object()
+	if(I) return I
+
 
 	return src

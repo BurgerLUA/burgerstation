@@ -27,7 +27,6 @@
 	stored_types = list(
 		/obj/item/weapon/melee/torch/flashlight,
 		/obj/item/emf,
-		/obj/item/chime,
 		/obj/item/light_sensor,
 		/obj/item/ghost_box,
 		/obj/item/paper/book/ghost

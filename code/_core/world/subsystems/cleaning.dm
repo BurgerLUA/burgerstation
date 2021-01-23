@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(delete)
 
 proc/queue_delete(var/datum/object_to_delete,var/delete_in = 1,var/safe=FALSE)
 
-	if(object_to_delete.qdelete_immune)
+	if(object_to_delete.queue_delete_immune)
 		return FALSE
 
 	if(object_to_delete.qdeleting)

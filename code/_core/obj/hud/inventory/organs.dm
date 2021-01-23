@@ -1,8 +1,8 @@
 /obj/hud/inventory/organs/
 	name = "organ slot"
 
-	held_slots = 0
-	worn_slots = 0
+	max_slots = 0
+	worn = FALSE
 
 	max_size = -1
 

@@ -83,6 +83,10 @@
 
 /obj/item/emf/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+	SPAM_CHECK(3)
+
 	active = !active
 
 	caller.to_chat(span("notice","You turn [active ? "on" : "off"] \the [src.name]."))

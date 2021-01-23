@@ -34,18 +34,24 @@
 
 	return TRUE
 
-/obj/structure/interactive/disposals/machine/chute/Crossed(atom/movable/O)
-	O.force_move(src)
+/obj/structure/interactive/disposals/machine/chute/Entered(atom/movable/Obj,atom/OldLoc)
 	start_thinking(src)
+	return ..()
+
+/obj/structure/interactive/disposals/machine/chute/Crossed(atom/movable/O)
+	if(O.collision_flags & FLAG_COLLISION_WALKING)
+		O.Move(src)
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(is_item(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/item/I = object
 		I.drop_item(src)
+		return TRUE
 
 	return ..()
 
@@ -53,10 +59,10 @@
 	//Todo, interact delay.
 	if(ismob(object) && caller == object)
 		INTERACT_CHECK
-		INTERACT_CHECK_OTHER(object)
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/mob/living/L = object
-		L.force_move(src)
-		start_thinking(src)
+		L.Move(src)
 		return TRUE
 
 	return ..()

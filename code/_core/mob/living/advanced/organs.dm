@@ -3,7 +3,7 @@
 	if(length(O.inventories))
 		for(var/k in O.inventories)
 			var/obj/hud/inventory/I = k
-			I.delete_all_objects()
+			I.delete_objects()
 			I.remove_from_owner()
 
 	if(is_tail(O))

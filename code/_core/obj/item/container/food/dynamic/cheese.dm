@@ -44,7 +44,7 @@
 
 		if(is_living(attacker))
 			var/mob/living/L = attacker
-			L.to_chat(span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
+			L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into several cheese pieces."),span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
 
 		qdel(src)
 
@@ -68,7 +68,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
+				L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into several cheese pieces."),span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
 
 			qdel(src)
 
@@ -86,7 +86,7 @@
 			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","You slice a thin slice of cheese off the top of \the [src.name]."))
+				L.visible_message(span("notice","\The [L.name] slices a thin slice of cheese off the top of \the [src.name]."),span("notice","You slice a thin slice of cheese off the top of \the [src.name]."))
 
 	return ..()
 

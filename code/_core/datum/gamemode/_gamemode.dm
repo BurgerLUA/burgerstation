@@ -65,6 +65,7 @@
 
 	if(desired_alert_level > alert_level)
 		alert_level = desired_alert_level
+		set_message("Code [alert_level]",TRUE)
 		switch(alert_level)
 			if(CODE_BLUE)
 				play("",all_mobs_with_clients)
@@ -167,7 +168,7 @@
 		var/obj/hud/button/objectives/O = k
 		O.set_stored_text(objective_text)
 
-	announce("Central Command Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
+	announce("Central Command Mission Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
 
 	next_objective_update = -1
 

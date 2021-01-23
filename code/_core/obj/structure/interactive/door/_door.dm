@@ -137,6 +137,8 @@ obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/fo
 obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
 
 	var/atom/A = check_interactables(caller,object,location,control,params)
 	if(A && A.clicked_on_by_object(caller,object,location,control,params))

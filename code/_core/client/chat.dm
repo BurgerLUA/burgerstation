@@ -3,6 +3,10 @@
 	if(!text || !chat_type)
 		return FALSE
 
+	if(!isnum(chat_type))
+		CRASH("chat_type was not a number!")
+		return FALSE
+
 	var/output_target_list = list()
 
 	if(!(chat_type & CHAT_TYPE_COMBAT))

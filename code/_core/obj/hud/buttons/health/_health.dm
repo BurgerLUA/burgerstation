@@ -13,9 +13,14 @@
 	flags = FLAGS_HUD_MOB
 
 /obj/hud/button/health/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	if(owner && caller.client)
-		caller.client.examine(owner)
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		for(var/k in L.get_damage_description(caller,FALSE))
+			caller.to_chat(k)
+
 	return ..()
+
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
 	update_sprite()
 	return TRUE

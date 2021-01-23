@@ -23,6 +23,9 @@
 	if(driving && !driving.can_attack(victim,weapon,params,damage_type))
 		return FALSE
 
+	if(attack_flags & CONTROL_MOD_BLOCK)
+		return FALSE
+
 	if(handcuffed)
 		return FALSE
 
@@ -188,11 +191,11 @@
 
 /*
 /mob/living/advanced/player/proc/get_defence_key()
-	if(attack_flags & ATTACK_HOLD)
+	if(attack_flags & CONTROL_MOD_BLOCK)
 		return "block"
 	else if(movement_flags & MOVEMENT_RUNNING)
 		return "dodge"
-	else if(attack_flags & ATTACK_ALT)
+	else if(attack_flags & CONTROL_MOD_ALT)
 		return "parry"
 	return "none"
 

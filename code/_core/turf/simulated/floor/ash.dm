@@ -17,6 +17,8 @@
 
 	material_id = /material/dirt/
 
+	destruction_turf = /turf/simulated/floor/basalt/
+
 /turf/simulated/floor/colored/ash/grey
 	name = "ancient ash"
 	color = "#5E5D77"

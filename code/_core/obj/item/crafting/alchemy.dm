@@ -22,13 +22,13 @@
 	var/obj/item/container/C //Final slot container.
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
-		var/obj/item/top_object = R.get_top_held_object()
+		var/obj/item/top_object = R.get_top_object()
 		if(is_container(top_object))
 			C = top_object
 			break
 
 	if(!C && !is_beaker(C))
-		caller.to_chat(span("notice","You're missing a valid container in the product slot!"))
+		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
 	var/list/item_table = generate_crafting_table(caller,src)
@@ -55,7 +55,7 @@
 			should_delete = TRUE
 
 		if(!length(reagents_list) && !(I.reagents && I.reagents.volume_current))
-			caller.to_chat(span("notice","\The [I.name] contains no suitable reagents!"))
+			caller.to_chat(span("warning","\The [I.name] contains no suitable reagents!"))
 			continue
 
 		for(var/k in reagents_list)
@@ -72,7 +72,7 @@
 			I.reagents.update_container()
 
 	if(!success)
-		caller.to_chat(span("notice","There are no valid items to process!"))
+		caller.to_chat(span("warning","There are no valid items to process!"))
 		return FALSE
 
 	for(var/reagent_type in C.reagents.stored_reagents)

@@ -83,6 +83,8 @@
 	blood_volume = 5000
 	blood_type = /reagent/blood/ancient
 
+	var/next_blood_attack = 0
+
 /mob/living/simple/bubblegum/post_death()
 	. = ..()
 	CREATE(/obj/structure/interactive/crate/necro/bubblegum,get_turf(src))
@@ -94,9 +96,14 @@
 
 /mob/living/simple/bubblegum/proc/blood_attack()
 
+	if(next_blood_attack > world.time)
+		return FALSE
+
 	. = FALSE
 
-	for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
+	for(var/mob/living/A in view(VIEW_RANGE,src))
+		if(A == src)
+			continue
 		if(A.dead)
 			continue
 		var/turf/simulated/T = get_turf(A)
@@ -107,16 +114,16 @@
 		new/obj/effect/temp/hazard/bubblefist(T,null,src)
 		. = TRUE
 
-/mob/living/simple/bubblegum/proc/spray_blood()
+	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
-	return TRUE
+	return .
 
 /mob/living/simple/bubblegum/get_movement_delay()
 
 	. = ..()
 
 	if(charge_steps)
-		. = DECISECONDS_TO_TICKS(AI_TICK)
+		. = DECISECONDS_TO_TICKS(BOSS_TICK)
 
 	return .
 

@@ -70,8 +70,8 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pdw/get_static_spread()
-	if(wielded) return 0.01
-	return 0.005
+	if(wielded) return 0.005
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pdw/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0

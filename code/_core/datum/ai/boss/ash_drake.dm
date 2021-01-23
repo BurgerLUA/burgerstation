@@ -5,8 +5,12 @@
 
 	var/fly_time = 0
 
-	var/fly_delay = SECONDS_TO_DECISECONDS(5)
-	var/fireball_delay = SECONDS_TO_DECISECONDS(3)
+	var/fly_delay = SECONDS_TO_DECISECONDS(10)
+	var/fireball_delay = SECONDS_TO_DECISECONDS(5)
+
+	var/last_fly = 0
+	var/last_fireball = 0
+
 
 /ai/boss/ash_drake/New(var/mob/living/desired_owner)
 	owner_as_ash_drake = desired_owner
@@ -18,45 +22,39 @@
 
 /ai/boss/ash_drake/handle_attacking()
 
+	if(owner_as_ash_drake.boss_state == 2)
+		// Don't attack when landing.
+		return TRUE
+
 	if(owner_as_ash_drake.boss_state == 1)
-		if(fly_time >= 30)
+		if(fly_time >= 10)
 			owner_as_ash_drake.land()
 			fly_time = 0
+			last_fly = world.time
 		fly_time += 1
+		return TRUE
 
-	else if(objective_attack)
-		if(!owner_as_ash_drake.boss_state)
-			var/distance = get_dist(owner,objective_attack)
-			var/health_mod = (1 - (owner.health.health_current/owner.health.health_max))*25
-			var/fly_chance = max(0,distance*10 - 25) + failed_attack_frames + health_mod
-			var/shoot_chance = max(0,distance*10 - 25) + failed_attack_frames + health_mod
-			if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max))
-				failed_attack_frames = 0
-				return ..()
-			else if(fly_delay <= 0 && prob(fly_chance))
-				owner_as_ash_drake.fly()
-				var/fly_multiplier = clamp(owner_as_ash_drake.health.health_current / owner_as_ash_drake.health.health_max,0.5,1)
-				fly_delay = initial(fly_delay) * fly_multiplier
-				failed_attack_frames = 0
-			else if(fireball_delay <= 0 && prob(shoot_chance))
-				owner_as_ash_drake.shoot_fireball(objective_attack)
-				var/fireball_multiplier = clamp(owner_as_ash_drake.health.health_current / owner_as_ash_drake.health.health_max,0.25,1)
-				fireball_delay = initial(fireball_delay) * fireball_multiplier
-				failed_attack_frames = 0
-			else
-				failed_attack_frames += 1
+	if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max))
+		return ..()
 
-	fireball_delay -= 1
-	fly_delay -= 1
-	owner.attack_next = world.time + 10
+	if(objective_attack && !owner_as_ash_drake.boss_state)
+		if(last_fly != -1 && last_fly + fly_delay <= world.time)
+			owner_as_ash_drake.fly()
+			last_fly = -1 //Only start counting when you land.
+			return TRUE
+		if(last_fireball + fireball_delay <= world.time)
+			owner_as_ash_drake.shoot_fireball(objective_attack)
+			last_fireball = world.time
+			return TRUE
+
+	return ..()
+
+
 
 /ai/boss/ash_drake/handle_movement()
 
 	if(owner_as_ash_drake.boss_state == 2)
 		owner.move_dir = 0
-		return FALSE
+		return TRUE
 
-	if(objective_attack && (owner_as_ash_drake.boss_state || get_dist(owner,objective_attack) > attack_distance_max))
-		owner.move_dir = get_dir(owner,objective_attack)
-	else
-		owner.move_dir = 0
+	return ..()

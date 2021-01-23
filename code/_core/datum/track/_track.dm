@@ -205,3 +205,8 @@
 	name = "Soul Gem"
 	path = 'sound/music/Soul Gem.ogg'
 	length = 4*60 + 15
+
+/track/new_year //Menu music
+	name = "New Year"
+	path = 'sound/music/New Year.ogg'
+	length = 2*60 + 30

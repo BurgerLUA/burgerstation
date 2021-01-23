@@ -68,12 +68,14 @@ obj/structure/interactive/computer/console/old
 obj/structure/interactive/computer/console/old/chargen
 	name = "\improper IMB piece of shit"
 
-obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(caller,object,location,control,params)
+obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
-		return TRUE
+		return ..()
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	var/mob/living/advanced/player/P = caller
 	P.dialogue_target_id = "chargen_computer"
@@ -96,10 +98,11 @@ obj/structure/interactive/computer/console/flight
 
 obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_advanced(caller))
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
 
 	var/obj/shuttle_controller/SC = locate() in get_area(src)
 
@@ -113,6 +116,10 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	var/selection = input("Are you sure you wish to launch this shuttle?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
+
 	if(selection == "Yes")
 		if(SC.state == SHUTTLE_STATE_LANDED)
 			SC.state = SHUTTLE_STATE_WAITING
@@ -120,6 +127,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 			caller.to_chat(span("notice","You prepare the shuttle for launch."))
 		else
 			caller.to_chat(span("warning","ERROR: Shuttle already in transit."))
+
 	return TRUE
 
 var/global/list/obj/structure/interactive/computer/console/remote_flight/all_remote_flight_consoles = list()
@@ -142,6 +150,7 @@ var/global/list/obj/structure/interactive/computer/console/remote_flight/all_rem
 		return ..()
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
 
 	if(!SSgamemode.active_gamemode.allow_launch)
 		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] isn't ready to launch yet!"))
@@ -149,15 +158,21 @@ var/global/list/obj/structure/interactive/computer/console/remote_flight/all_rem
 
 	var/selection = input("Are you sure you wish to launch \the [desired_shuttle_controller.name]?","Shuttle Control","Cancel") as null|anything in list("Yes","No","Cancel")
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
+
 	if(selection == "Yes")
 		if(desired_shuttle_controller.state == SHUTTLE_STATE_LANDED)
 			desired_shuttle_controller.state = SHUTTLE_STATE_WAITING
 			desired_shuttle_controller.time = 0
-			caller.to_chat(span("notice","You prepare \the [desired_shuttle_controller.name] for launch."))
+			caller.visible_message(span("notice","\The [caller.name] prepares \the [src.name] for launch."),span("notice","You prepare \the [src.name] for launch."))
 		else
 			caller.to_chat(span("warning","ERROR: \The [desired_shuttle_controller.name] is already in transit."))
 	else
 		caller.to_chat(span("notice","You decide not to launch \the [desired_shuttle_controller.name]."))
+
+	return TRUE
 
 obj/structure/interactive/computer/console/remote_flight/cargo
 	name = "remote cargo shuttle console"
@@ -170,12 +185,14 @@ obj/structure/interactive/computer/console/old/station_job
 	var/door_code = 0
 	var/unit_number = 0
 
-obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(caller,object,location,control,params)
-
-	INTERACT_CHECK
+obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
-		return TRUE
+		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	var/mob/living/advanced/player/P = caller
 

@@ -46,14 +46,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		STAMCRIT = STAGGER,
-		DISARM = TRUE
-	)
-
 	mob_size = MOB_SIZE_GIANT
 
 	enable_medical_hud = FALSE

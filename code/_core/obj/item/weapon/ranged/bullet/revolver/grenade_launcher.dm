@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher
 	name = "\improper Grenade Thumper"
 	desc = "Blooper"
-	desc_extended = "an old grenade launcher from a past era, uses 40mm grenades."
+	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
 	icon_state = "inventory"
 
@@ -65,7 +65,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
-	return 0.05
+	return 0.1
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_static_spread()
 	return 0.01

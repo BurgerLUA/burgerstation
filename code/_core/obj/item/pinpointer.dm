@@ -110,11 +110,13 @@
 /obj/item/pinpointer/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(scan_mode && object)
+		INTERACT_CHECK
+		INTERACT_DELAY(10)
 		if(!can_track(object))
 			caller.to_chat(span("warning","You can't track this object!"))
 			return TRUE
 		tracked_atom = object
-		caller.to_chat(span("notice","You scan \the [object], tracking it."))
+		caller.visible_message(span("notice","\The [caller.name] scans \the [object.name] with \the [src.name]."),span("notice","You scan \the [object.name], tracking it."))
 		scan_mode = FALSE
 		start_thinking(src)
 		return TRUE
@@ -122,6 +124,9 @@
 	return ..()
 
 /obj/item/pinpointer/custom/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 
 	scan_mode = !scan_mode
 
@@ -148,6 +153,9 @@
 
 /obj/item/pinpointer/crew/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	var/list/possible_crew = list()
 
 	if(encoded && is_living(caller))
@@ -168,6 +176,8 @@
 	update_sprite()
 
 	var/choice = input("Who do you want to track?","Crew Pinpointer Tracking",null) as null|anything in possible_crew
+
+	INTERACT_CHECK_OTHER(src) //Hacky
 
 	if(choice)
 		var/mob/living/advanced/player/P = possible_crew[choice]
@@ -197,6 +207,9 @@
 
 /obj/item/pinpointer/landmark/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	var/list/possible_landmarks = list()
 
 	var/area/my_area = get_area(src)
@@ -225,6 +238,8 @@
 
 	var/choice = input("What do you want to track?","Area Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
 
+	INTERACT_CHECK_OTHER(src) //Hacky
+
 	if(choice)
 		var/turf/T = possible_landmarks[choice]
 		tracked_atom = T
@@ -244,6 +259,9 @@
 	value = 20
 
 /obj/item/pinpointer/artifact/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 
 	var/list/possible_artifacts = list()
 
@@ -267,6 +285,8 @@
 
 	var/choice = input("What do you want to track?","Objective Pinpointer Tracking","Cancel") as null|anything in possible_artifacts
 
+	INTERACT_CHECK_OTHER(src) //Hacky
+
 	if(choice)
 		var/atom/A = possible_artifacts[choice]
 		tracked_atom = A
@@ -288,6 +308,9 @@
 
 /obj/item/pinpointer/boss/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	var/list/possible_bosses = list()
 
 	for(var/k in SSbosses.tracked_bosses)
@@ -305,6 +328,8 @@
 	update_sprite()
 
 	var/choice = input("What do you want to track?","Objective Pinpointer Tracking","Cancel") as null|anything in possible_bosses
+
+	INTERACT_CHECK_OTHER(src) //Hacky.
 
 	if(choice)
 		var/atom/A = possible_bosses[choice]

@@ -7,19 +7,17 @@
 		log_admin("Attempted use of scripts within a topic call, by [src]/[usr].")
 		return
 
-	/*
 	if(next_allowed_topic > world.time)
 		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - world.time] second\s!"))
 		return FALSE
-	*/
 
 	/*
 	if(length(href_list) > 32)
-		to_chat(span("danger","No."))
+		to_chat(span("danger","You're sending too much information! If this is in error, please contact Burger! Error Code: 1."))
 		return FALSE
 
 	if(length(href) > 1000)
-		to_chat(span("danger","No!"))
+		to_chat(span("danger","You're sending too much information! If this is in error, please contact Burger! Error Code: 2."))
 		return FALSE
 	*/
 
@@ -108,7 +106,8 @@
 				change_variable(actual_reference,actual_key,null)
 
 		if(href_list["done_loading"])
-			send_load(src.mob,text2path(href_list["done_loading"]))
+			var/decoded = url_decode(href_list["done_loading"])
+			send_load(src.mob,text2path(decoded))
 
 	. = ..()
 

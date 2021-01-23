@@ -53,6 +53,15 @@
 
 	flavor = "fat"
 
+/reagent/nutrition/fat/monkey
+	name = "monkey fat"
+	desc = "Nutrition and flavor from monkey fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 12
+
+	flavor = "fat"
+
 /reagent/nutrition/fat/bear
 	name = "bear fat"
 	desc = "Nutrition and flavor from bear fat."
@@ -184,6 +193,36 @@
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED
 
 	flavor = "beef"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+
+/reagent/nutrition/meat/monkey
+	name = "raw monkey meat"
+	desc = "Nutrition and flavor from raw cow's meat."
+	color = "#BF0000"
+
+	nutrition_amount = 12
+	heal_factor = -4
+
+	flavor = "raw tangy meat"
+
+	heated_reagent = /reagent/nutrition/meat/monkey/cooked
+
+/reagent/nutrition/meat/monkey/cooked
+	name = "cooked monkey meat"
+	desc = "Nutrition and flavor from cooked cow's meat."
+	color = "#6B3731"
+
+	nutrition_amount = 10
+	heal_factor = 5
+
+	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED
+
+	flavor = "tangy beef"
 
 	flags_reagent = FLAG_REAGENT_COOKED
 	heated_reagent = /reagent/carbon
@@ -348,9 +387,6 @@
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
 
-
-
-
 /reagent/nutrition/meat/colossus
 	name = "raw colossus meat"
 	desc = "Nutrition and flavor from raw colossus meat."
@@ -363,7 +399,7 @@
 
 	flavor = "tough raw jerky"
 
-	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+	heated_reagent = /reagent/nutrition/meat/colossus/cooked
 
 /reagent/nutrition/meat/colossus/cooked
 	name = "cooked colossus meat"
@@ -396,7 +432,7 @@
 
 	flavor = "rocks"
 
-	heated_reagent = /reagent/nutrition/meat/bubblegum/cooked
+	heated_reagent = /reagent/nutrition/meat/goliath/cooked
 
 /reagent/nutrition/meat/goliath/cooked
 	name = "cooked goliath meat"

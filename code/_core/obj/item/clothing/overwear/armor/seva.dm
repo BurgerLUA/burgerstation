@@ -12,24 +12,21 @@
 	blocks_clothing = SLOT_TORSO | SLOT_TORSO_U | SLOT_TORSO_A
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = -50,
-		HEAT = 25,
-		COLD = 50,
-		BOMB = 25,
-		BIO = 150,
-		RAD = 150
+		BLADE = AP_SWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_SWORD,
+		ARCANE = -AP_SWORD,
+		HEAT = AP_CLUB,
+		COLD = AP_CLUB,
+		BOMB = AP_CLUB,
+		BIO = AP_CLUB
 	)
 
 	size = SIZE_7
 
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva)
-
-	value = 400
 
 
 /obj/item/clothing/overwear/armor/seva/mono
@@ -38,16 +35,13 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva/mono)
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 75,
-		PIERCE = 50,
-		LASER = 50,
-		ARCANE = -50,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 50,
-		BIO = INFINITY,
-		RAD = 200
+		BLADE = AP_AXE,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_SWORD,
+		ARCANE = -AP_SWORD,
+		HEAT = AP_CLUB,
+		COLD = AP_CLUB,
+		BOMB = AP_CLUB,
+		BIO = AP_CLUB
 	)
-
-	value = 1200

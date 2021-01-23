@@ -13,6 +13,9 @@
 	var/turf/T = get_turf(object)
 
 	if(length(container_whitelist) && get_dist(src,T) <= 1)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/pickup = 0
 		for(var/obj/item/I in T.contents)
 			if(I.type in container_whitelist)
@@ -22,7 +25,7 @@
 			caller?.to_chat(span("notice","You add [pickup] objects to \the [src.name]."))
 			//TODO: Pickup sounds.
 		else
-			caller?.to_chat(span("notice","You fail to pickup anything!"))
+			caller?.to_chat(span("warning","You fail to pickup anything!"))
 		return TRUE
 
 	return ..()
@@ -35,7 +38,7 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = 3
-	container_held_slots = 10
+	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/seed,
 		/obj/item/container/food/plant
@@ -49,7 +52,9 @@
 
 /obj/item/storage/bags/botany/processor/click_self(var/mob/caller)
 
-	if(caller.attack_flags & ATTACK_ALT)
+	if(caller.attack_flags & CONTROL_MOD_ALT)
+		INTERACT_CHECK
+		INTERACT_DELAY(10)
 		process_plants(caller)
 		return TRUE
 
@@ -64,7 +69,7 @@
 	for(var/k in inventories)
 		CHECK_TICK(50,FPS_SERVER*4)
 		var/obj/hud/inventory/I = k
-		for(var/obj/item/container/food/plant/P in I.held_objects)
+		for(var/obj/item/container/food/plant/P in I.contents)
 			CHECK_TICK(50,FPS_SERVER*2)
 			if(!P.plant_type)
 				continue
@@ -104,7 +109,7 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = 3
-	container_held_slots = 10
+	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/material/ore,
 		/obj/item/material/ingot
@@ -117,7 +122,7 @@
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores and ingots."
 	dynamic_inventory_count = 6
 	container_max_size = 100
-	container_held_slots = 30
+	container_max_slots = 30
 
 
 /obj/item/storage/bags/chemistry
@@ -127,7 +132,7 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = 100
-	container_held_slots = 10
+	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/container/beaker,
 		/obj/item/container/pill,
@@ -144,10 +149,10 @@
 	icon = 'icons/obj/item/storage/bottles.dmi'
 	icon_state = "pill_canister"
 
-	size = SIZE_2
+	size = SIZE_1
 	dynamic_inventory_count = 1
 	container_max_size = SIZE_1
-	container_held_slots = 30
+	container_max_slots = 30
 	container_whitelist = list(
 		/obj/item/container/pill,
 	)
@@ -214,12 +219,12 @@
 	var/filled_slots = 0
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I = k
-		filled_slots += length(I.held_objects)
+		filled_slots += length(I.contents)
 		if(!chosen_color)
-			var/obj/item/I2 = I.get_top_held_object()
+			var/obj/item/I2 = I.get_top_object()
 			if(I2) chosen_color = I2.color
 
-	var/icon_mod = CEILING( (filled_slots/(dynamic_inventory_count*container_held_slots)) * 7,1)
+	var/icon_mod = CEILING( (filled_slots/(dynamic_inventory_count*container_max_slots)) * 7,1)
 	icon_state = "contents_[icon_mod]"
 	color = chosen_color
 

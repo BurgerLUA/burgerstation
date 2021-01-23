@@ -54,15 +54,15 @@
 	var/tox_regen_buffer = 0
 	var/pain_regen_buffer = 0
 	var/rad_regen_buffer = 0
+	var/sanity_regen_buffer = 0
+	var/mana_regen_buffer = 0
+	var/stamina_regen_buffer = 0
 
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 	//Oxy not present as that is controlled via an organ.
 	//The rest are not present as you cannot naturally regenerate them.
-
-	var/mana_regen_buffer = 0
-	var/stamina_regen_buffer = 0
 
 	var/boss_range = VIEW_RANGE
 	var/list/mob/living/advanced/player/players_fighting_boss
@@ -121,7 +121,9 @@
 		HOLY = 100,
 		DARK = 100,
 		FATIGUE = 0,
-		PAIN = 0
+		ION = INFINITY,
+		PAIN = 0,
+		SANITY = 0
 	)
 
 	var/list/status_immune = list() //What status effects area they immune to?
@@ -488,7 +490,7 @@
 
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
+	if(desired_loyalty && loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
 		return TRUE
 
 	if(magnitude > 6)
@@ -524,14 +526,15 @@
 /mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)
 
 	if(!blood_type || !min(amount,blood_volume))
-		if(messages) caller?.to_chat(span("warning","There is nothing to draw!"))
+		if(messages) caller?.to_chat(span("warning","There is no blood to draw!"))
 		return FALSE
 
 	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
 	blood_volume -= amount_added
 	queue_health_update = TRUE
 
-	if(messages) caller?.to_chat(span("notice","You drew [amount_added]u of blood from \the [src.name]."))
+	if(messages)
+		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
 
@@ -541,7 +544,7 @@
 	if(client && client.is_zoomed)
 		return ..(client.is_zoomed,force)
 
-	if(attack_flags & ATTACK_HOLD)
+	if(attack_flags & CONTROL_MOD_BLOCK)
 		return FALSE
 
 	return ..()

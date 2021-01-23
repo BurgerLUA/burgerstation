@@ -6,6 +6,8 @@
 
 	footstep = /footstep/wood
 
+	destruction_turf = /turf/simulated/floor/plating
+
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"
 

@@ -34,10 +34,10 @@ mob/living/advanced/revive()
 
 	. = ..()
 
-	drop_held_objects(src.loc)
-	for(var/obj/hud/inventory/I in inventory)
-		if(I.grabbed_object)
-			I.release_object()
+	drop_hands(src.loc)
+
+	right_hand?.release_object()
+	left_hand?.release_object()
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)
@@ -61,9 +61,9 @@ mob/living/advanced/revive()
 
 	if(client && isturf(loc)) //If you afk in darkness, your sanity doesn't go down or up.
 		var/turf/T = loc
-		if(T.darkness <= 0.1)
+		if(T.lightness <= 0.1)
 			sanity -= (1/6) // 10 minutes of darkness will make you "insane".
-		else if(T.darkness >= 0.9)
+		else if(T.lightness >= 0.9)
 			sanity += (1/18) // 30 minutes of light will get you from insane to completely sane.
 		sanity = clamp(sanity,1,100)
 

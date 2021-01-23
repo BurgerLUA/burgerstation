@@ -8,7 +8,7 @@
 
 	for(var/k in T.contents)
 		var/atom/movable/M = k
-		if(!M.Cross(src))
+		if(M.density && !M.Cross(src))
 			return FALSE
 
 	return TRUE
@@ -70,15 +70,20 @@
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir
+			is_moving = TRUE
 		else
 			move_dir_last = 0x0
 			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
+			is_moving = FALSE
 
 		if(acceleration_mod)
 			if(similiar_move_dir)
 				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
 			else
 				acceleration_value *= 0.5
+
+	if(move_delay < 0)
+		is_moving = FALSE
 
 	if(adjust_delay)
 		move_delay = move_delay - adjust_delay
@@ -156,39 +161,41 @@
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 
-	//Try: Enter the turf.
-	if(!NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
+	//Try: Enter the new turf.
+	if(src.density && !NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
 		return FALSE
 
-	//Try: Exit the turf.
-	if(OldLoc && !OldLoc.Exit(src,NewLoc))
+	//Try: Exit the old turf.
+	if(src.density && OldLoc && !OldLoc.Exit(src,NewLoc))
 		return FALSE
 
 	//Try: Cross the Contents
-	for(var/k in NewLoc.contents)
-		CHECK_TICK(100,FPS_SERVER)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(M.density && !M.Cross(src) && !src.Bump(M))
-			return FALSE
+	if(src.density)
+		for(var/k in NewLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(M.density && !M.Cross(src) && !src.Bump(M))
+				return FALSE
 
 	//Try: Uncross the Contents
-	for(var/k in OldLoc.contents)
-		CHECK_TICK(100,FPS_SERVER)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(M.density && !M.Uncross(src))
-			return FALSE
+	if(src.density && OldLoc)
+		for(var/k in OldLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(M.density && !M.Uncross(src))
+				return FALSE
 
 	//Do: Enter the turf.
-	NewLoc.Entered(src,OldLoc)
+	if(src.density) NewLoc.Entered(src,OldLoc)
 
 	//Do: Exit the turf.
-	NewLoc.Exited(src,NewLoc)
+	if(src.density) NewLoc.Exited(src,NewLoc)
 
-	if(OldLoc == loc)
+	if(!OldLoc || OldLoc == loc)
 		loc = NewLoc
 
 	//Do: Crossed the contents
@@ -203,7 +210,7 @@
 			M.Crossed(src)
 
 	//Do: Uncrossed the contents
-	if(src.density)
+	if(src.density && OldLoc)
 		for(var/k in OldLoc.contents)
 			CHECK_TICK(100,FPS_SERVER)
 			var/atom/movable/M = k

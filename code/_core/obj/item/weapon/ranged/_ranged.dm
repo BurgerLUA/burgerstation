@@ -92,35 +92,44 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(istype(defer_object,/obj/item/attachment))
-		add_attachment(caller,defer_object)
+	if(istype(object,/obj/item/attachment))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		add_attachment(caller,object)
 		return TRUE
 
-	else if(!use_loyalty_tag && is_item(defer_object))
-		var/obj/item/I = defer_object
+	else if(!use_loyalty_tag && is_item(object))
+		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			remove_attachment(caller)
 			return TRUE
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			if(istype(firing_pin))
-				INTERACT_CHECK
 				firing_pin.drop_item(get_turf(src))
-				caller.to_chat(span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
+				caller.visible_message(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
 				firing_pin = null
 			else
-				caller.to_chat(span("notice","There is no firing pin inside \the [src.name]!"))
+				caller.to_chat(span("warning","There is no firing pin inside \the [src.name]!"))
 			return TRUE
 		if(istype(I,/obj/item/firing_pin/))
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			if(istype(firing_pin))
-				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
+				caller.to_chat(span("warning","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
 			else
 				I.drop_item(src)
 				firing_pin = I
-				caller.to_chat(span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
+				caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name]."),span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
 			return TRUE
 
 	return ..()
@@ -186,8 +195,10 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(wield_only && !wielded)
-		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
+		caller.to_chat(span("warning","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()
 
 	if(istype(object,/obj/parallax))
@@ -202,7 +213,6 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
 
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
-	caller.to_chat(span("danger","*click*"))
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)
 		play(pick(empty_sounds),T,range_max = 5)
@@ -358,7 +368,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(automatic && is_player(caller))
 		spawn(next_shoot_time - world.time)
 			var/mob/living/advanced/player/P = caller
-			if(P && P.client && ((params["left"] && P.attack_flags & ATTACK_HELD_LEFT) || (params["right"] && P.attack_flags & ATTACK_HELD_RIGHT) || max_bursts_to_use) )
+			if(P && P.client && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
 					return TRUE
@@ -382,7 +392,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/mob/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
 
 	if(!target)
 		CRASH_SAFE("There is no target defined!")
@@ -390,8 +400,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
-	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
-	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
+	var/target_fake_x = 0
+	var/target_fake_y = 0
 
 	var/final_pixel_target_x = 0
 	var/final_pixel_target_y = 0
@@ -402,10 +412,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
 	else
-		final_pixel_target_x = rand(-8,8)
-		final_pixel_target_y = rand(-8,8)
+		final_pixel_target_x = 16 + rand(-4,4)
+		final_pixel_target_y = 16 + rand(-4,4)
 
-	if(length(params) && params["screen-loc"])
+	if(caller && length(params) && params["screen-loc"])
 		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])
 		target_fake_x = caller.x*TILE_SIZE + screen_loc_parsed[1] - (VIEW_RANGE * TILE_SIZE)
 		target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (VIEW_RANGE * TILE_SIZE)
@@ -413,14 +423,19 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/mob/M = caller
 			target_fake_x += M.client.pixel_x
 			target_fake_y += M.client.pixel_y
+	else
+		target_fake_x = target.x*TILE_SIZE + icon_pos_x
+		target_fake_y = target.y*TILE_SIZE + icon_pos_y
 
 	var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,accuracy_loss)
 
 	. = list()
 
+	var/turf/T = get_turf(src)
+
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
-		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,base_spread)
+		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,bullet_count_to_use,base_spread) //Needs to be unique to each shot.
 
 		var/new_x = local_xy_list[1]
 		var/new_y = local_xy_list[2]
@@ -430,8 +445,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(highest > 0)
 			var/normx = new_x/highest
 			var/normy = new_y/highest
-
-			var/turf/T = get_turf(src)
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
@@ -445,7 +458,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
 			INITIALIZE(P)
 			FINALIZE(P)
 			. += P
@@ -453,9 +466,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	return .
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
-	return 0.01
+	return 0
 
-/atom/proc/get_projectile_path(var/mob/caller,var/desired_x,var/desired_y,var/accuracy)
+/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
 
 	//desired_x and desired_y is in pixels.
 
@@ -472,9 +485,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return list(cos(new_angle),sin(new_angle))
 
-/atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/accuracy)
+/atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 	var/new_angle = ATAN2(initial_offset_x,initial_offset_y)
-	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
+	if(bullet_num_max > 1) new_angle += RAND_PRECISE(-accuracy,accuracy)*90
 	return list(cos(new_angle),sin(new_angle))
 
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)

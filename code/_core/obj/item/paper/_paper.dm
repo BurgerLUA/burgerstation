@@ -23,6 +23,9 @@
 	if(!is_player(caller))
 		return ..()
 
+	INTERACT_CHECK
+	INTERACT_DELAY(2)
+
 	var/mob/living/advanced/player/P = caller
 
 	if(P.active_paper)

@@ -38,8 +38,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 		REST = TRUE,
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE,
-		FIRE = FALSE
+		DRUGGY = TRUE
 	)
 
 	ai = /ai/boss/xeno_queen

@@ -15,6 +15,9 @@
 
 /obj/item/herald_mirror/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
 	if(!is_advanced(caller))
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
@@ -35,16 +38,20 @@
 
 /obj/item/herald_mirror/proc/can_teleport(var/mob/living/advanced/A)
 
+	var/mob/caller = A //reeee shitcode
+
+	INTERACT_CHECK_NO_DELAY(src)
+
 	if(!A.can_move())
 		A.to_chat(span("warning","You can't use the mirror in your current state!"))
 		return FALSE
 
 	if(!linked_destination)
-		A.to_chat(span("warning","Something went wrong... tell burger on discord."))
+		A.to_chat(span("warning","Something went wrong... tell Burger on discord."))
 		return FALSE
 
 	if(isturf(loc))
-		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport."))
+		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport!"))
 		return FALSE
 
 
@@ -58,10 +65,10 @@
 	if(istype(A2,/area/herald))
 		var/turf/T = get_turf(linked_returning)
 		if(!T)
-			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the chasm can help get you back."))
+			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the portal can help you get back."))
 			return TRUE
 		A.force_move(T)
-		A.to_chat(span("notice","\The [src.name] whisks you away back to where you were."))
+		A.visible_message(span("danger","\The [A.name] appears out of nowhere!."),span("notice","\The [src.name] whisks you away back to where you were."))
 		return TRUE
 
 	qdel(linked_returning) //Get rid of existing one.
@@ -71,6 +78,6 @@
 	FINALIZE(linked_returning)
 
 	A.force_move(get_turf(linked_destination))
-	A.to_chat(span("notice","\The [src.name] whisks you away to safety."))
+	A.visible_message(span("danger","\The [A.name] disappears in a soft flash!"),span("notice","\The [src.name] whisks you away to safety."))
 
 	return TRUE

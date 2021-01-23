@@ -14,13 +14,18 @@
 	if(!is_player(caller))
 		return ..()
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	var/mob/living/advanced/player/P = caller
 
 	if(!P.allow_save)
-		P.to_chat(span("notice","You can't use this!"))
+		P.to_chat(span("warning","You don't seem to know how this works..."))
 		return FALSE
 
 	var/menu_choice = input("What would you like to do?","Mech Delivery Unit","Cancel") as null|anything in list("Create New Mech (1000 credits)","Loading Existing Mech (500 credits)","Cancel")
+
+	INTERACT_CHECK_OTHER(src) //Hacky
 
 	switch(menu_choice)
 		if("Cancel")

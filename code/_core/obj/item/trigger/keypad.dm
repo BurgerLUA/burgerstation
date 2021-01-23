@@ -39,6 +39,9 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 		return ..()
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
+
 	var/mob/living/advanced/player/P = caller
 	P.set_device_active(src)
 

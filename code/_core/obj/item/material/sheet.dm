@@ -17,15 +17,19 @@
 	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			var/obj/item/material/rod/R = new(get_turf(src))
 			R.material_id = material_id
 			R.item_count_current = 4
 			INITIALIZE(R)
 			GENERATE(R)
 			FINALIZE(R)
-			caller.to_chat(span("notice","You cut \the [src.name] into 4 [R.name]."))
+			caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
 			add_item_count(-1)
 			R.Move(get_turf(I))
+			return TRUE
 
 	return ..()
 

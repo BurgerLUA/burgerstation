@@ -19,9 +19,12 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(is_item(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/item/I = object
-		if(I.dye_self(caller,src,src.color,alpha/255))
-			return TRUE
+		I.dye_self(caller,src,src.color,alpha/255)
+		return TRUE
 
 	return ..()
 
@@ -47,6 +50,8 @@
 	alpha = 255
 
 /obj/item/slime_core/custom/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
 	var/choice = input("What would you like the color to be?") as color|null
 	if(choice)
 		color = choice

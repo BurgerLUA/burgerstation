@@ -87,7 +87,7 @@ var/global/world_state = STATE_STARTING
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
-	sleep(30)
+	sleep(0)
 	Reboot(0)
 	return TRUE
 
@@ -104,8 +104,6 @@ var/global/world_state = STATE_STARTING
 		G.save()
 
 /world/proc/save()
-	var/chosen_sound = pick(SSsound.round_end_sounds)
-	play(chosen_sound,all_mobs_with_clients)
 	save_all_globals()
 	save_all_mechs()
 	save_all_globals()
@@ -117,7 +115,10 @@ var/global/world_state = STATE_STARTING
 		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 		mobdata.save_character(P,force = TRUE)
 		P.to_chat(span("notice","Your character was automatically saved."))
-		sleep(1)
+		sleep(-1)
+	var/chosen_sound = pick(SSsound.round_end_sounds)
+	play(chosen_sound,all_mobs_with_clients)
+	sleep(100)
 	return TRUE
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
@@ -137,10 +138,10 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Nanotrasen Victory"
 			SSpayday.stored_payday += 10000
 			SSpayday.trigger_payday()
-			announce("Central Command","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
+			announce("Central Command Mission Update","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
 		if(WORLD_END_SYNDICATE_VICTORY)
 			nice_reason = "Syndicate Victory"
-			announce("Central Command","Fission Mailed","Mission failed, we'll get them next time.")
+			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
 
 	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 

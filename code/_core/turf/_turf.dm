@@ -30,7 +30,7 @@
 
 	var/world_spawn = FALSE
 
-	var/darkness = 0 //Calculated tile darkness.
+	var/lightness = 0 //Calculated tile darkness.
 
 	var/list/stored_shuttle_items
 
@@ -73,7 +73,7 @@
 	caller.face_atom(src)
 	return ..()
 
-/turf/change_victim(var/atom/attacker)
+/turf/change_victim(var/atom/attacker,var/atom/object)
 
 	for(var/atom/movable/v in contents)
 		if(ismob(v) && attacker != v)
@@ -128,7 +128,7 @@
 	return .
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-	return health && !ispath(health)
+	return istype(health)
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
@@ -152,18 +152,6 @@
 		A.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return ..()
-
-/*
-/turf/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
-		var/obj/structure/S = object
-		if(!S.anchored)
-			S.Move(src)
-			return TRUE
-
-	return ..()
-*/
 
 /turf/proc/setup_turf_light(var/sunlight_freq=VIEW_RANGE*0.5)
 	return FALSE

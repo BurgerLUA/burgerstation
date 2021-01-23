@@ -64,7 +64,7 @@
 /obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/caller)
 
 	if(growth < growth_produce_max)
-		caller.to_chat(span("notice","\The [src.name] is not ready to be harvested!"))
+		caller.to_chat(span("warning","\The [src.name] is not ready to be harvested!"))
 		return TRUE
 
 	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
@@ -76,7 +76,7 @@
 
 
 	if(potency <= 0 || yield <= 0)
-		caller.to_chat(span("notice","You fail to harvest anything from \the [src.name]!"))
+		caller.to_chat(span("warning","You fail to harvest anything from \the [src.name]!"))
 		return TRUE
 	else
 
@@ -119,7 +119,7 @@
 			P.original_volume = P.reagents.volume_current
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 
-		caller.to_chat(span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
+		caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
 
 	growth = growth_min
 
@@ -135,10 +135,12 @@
 
 /obj/structure/interactive/plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_advanced(caller))
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	harvest(caller)
 

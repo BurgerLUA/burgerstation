@@ -40,7 +40,7 @@
 /obj/item/clothing/overwear/armor/nanotrasen/light/deathsquad
 	polymorphs = list(
 		"under" = "#FFFFFF",
-		"light" = COLOR_BLACK
+		"light" = COLOR_DEATHSQUAD_BLACK
 	)
 
 
@@ -67,7 +67,7 @@
 /obj/item/clothing/overwear/armor/nanotrasen/medium/deathsquad
 	polymorphs = list(
 		"under" = "#FFFFFF",
-		"medium" = COLOR_BLACK
+		"medium" = COLOR_DEATHSQUAD_BLACK
 	)
 
 /obj/item/clothing/overwear/armor/nanotrasen/heavy
@@ -91,5 +91,5 @@
 /obj/item/clothing/overwear/armor/nanotrasen/heavy/deathsquad
 	polymorphs = list(
 		"under" = "#FFFFFF",
-		"heavy" = COLOR_BLACK
+		"heavy" = COLOR_DEATHSQUAD_BLACK
 	)

@@ -144,7 +144,7 @@
 		/obj/item/clothing/feet/socks/ankle,
 		/obj/item/clothing/shirt/syndicate,
 		/obj/item/clothing/pants/syndicate,
-		/obj/item/clothing/glasses/security_hud/red,
+		/obj/item/clothing/glasses/sun/security/red,
 		/obj/item/clothing/head/hat/beret/armored/syndicate,
 		/obj/item/clothing/mask/gas/mining,
 		/obj/item/clothing/overwear/armor/bulletproof,
@@ -167,9 +167,10 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/weapon/melee/energy/sword/green,
+		/obj/item/clothing/back/storage/dufflebag/syndicate,
+		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/container/food/package/junkfood/syndicate,
 		/obj/item/container/beaker/can/dr_gibb,
-		/obj/item/currency/telecrystals/player_antagonist_spawn,
-		/obj/item/clothing/back/storage/dufflebag/syndicate
+		/obj/item/currency/telecrystals/player_antagonist_spawn
 	)

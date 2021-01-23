@@ -416,9 +416,11 @@
 
 	return TRUE
 
+/*
 /reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_type,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE,var/mob/living/caller) //Transfer a single reagent by id.
 	var/old_temperature = stored_reagents_temperature[reagent_type] ? stored_reagents_temperature[reagent_type] : T0C + 20
 	return target_container.add_reagent(reagent_type,remove_reagent(reagent_type,amount,should_update,check_recipes,caller),old_temperature,should_update,check_recipes,caller)
+*/
 
 /reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE)
 
@@ -448,15 +450,30 @@
 
 	if(!target_container)
 		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
-		return FALSE
+		return 0
 
 	if(amount == 0)
-		return FALSE
+		return 0
 
 	if(amount < 0)
 		return -target_container.transfer_reagents_to(src,-amount,should_update,check_recipes,caller)
 
 	amount = min(amount,volume_current)
+
+	if(caller && target_container.owner)
+		var/mob/living/L1 = caller
+		var/mob/living/L2
+
+		if(is_living(target_container.owner))
+			L2 = target_container.owner
+		else if(target_container.owner && is_living(target_container.owner.loc))
+			L2 = target_container.owner.loc
+
+		if(L2 && L1.loyalty_tag && L1.loyalty_tag == L2.loyalty_tag)
+			for(var/r_id in stored_reagents)
+				var/reagent/R = REAGENT(r_id)
+				if(R.lethal)
+					return 0
 
 	var/total_amount_transfered = 0
 
@@ -530,7 +547,7 @@
 		CRASH_SAFE("Tried to splash with no target!")
 		return FALSE
 
-	target = target.change_victim(caller)
+	target = target.change_victim(caller,owner)
 
 	target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
@@ -544,7 +561,7 @@
 			var/reagent/R = REAGENT(r_id)
 			var/volume_to_splash = source.remove_reagent(R.type,source.stored_reagents[r_id] * (splash_amount/source.volume_current),FALSE,FALSE)
 			R.on_splash(source,caller,src,volume_to_splash,strength_mod)
-		if(!silent) caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [source.owner.name] on \the [src.name]!"))
+		if(!silent) caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [source.owner.name] on \the [src.name]!"),span("warning","You splash the contents of \the [source.owner.name] on \the [src.name]!"))
 		source.update_container()
 		return TRUE
 
@@ -597,9 +614,9 @@
 			final_flavor_text = null
 
 		if(caller && caller != consumer)
-			caller.to_chat(span("notice","You feed \the [consumer.name] \the [src.owner.name]."))
-			consumer.to_chat(span("danger","\The [caller.name] feeds you \the [src.owner.name]!"))
-		consumer.to_chat(span("notice","You [consume_verb] \the [src.owner.name]."))
+			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))
+		else
+			consumer.visible_message(span("notice","\The [consumer.name] [consume_verb]s \the [src.owner.name]."),span("notice","You [consume_verb] \the [src.owner.name]."))
 
 		if(consume_sound) play(consume_sound,get_turf(consumer))
 

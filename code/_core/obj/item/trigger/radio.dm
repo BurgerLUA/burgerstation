@@ -40,16 +40,21 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	return .
 
 /obj/item/device/radio/click_self(var/mob/caller,location,control,params)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 	broadcasting = !broadcasting
 	caller.to_chat(span("notice","You toggle the receiver to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
 	return TRUE
 
 /obj/item/device/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_inventory(object))
 		return ..()
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
+
 	receiving = !receiving
 	caller.to_chat(span("notice","You toggle the speaker <b>[receiving ? "on" : "off"]</b>."))
 	return TRUE
@@ -58,11 +63,14 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	INTERACT_CHECK
 
-	var/fixed_delta = delta_y > 0 ? 1 : -1
+	var/fixed_delta = delta_y > 0 ? 2 : -2
 
 	var/old_frequency = frequency
 
-	frequency = clamp(frequency + fixed_delta*0.2,frequency_min,frequency_max)
+	frequency = 1 + FLOOR(frequency + fixed_delta,2)
+
+	if(frequency > frequency_max) frequency = frequency_max
+	if(frequency < frequency_min) frequency = frequency_min
 
 	var/frequency_string = frequency_to_name(frequency)
 	if(frequency_string == "Unknown")
@@ -73,9 +81,9 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	if(old_frequency == frequency)
 		caller.to_chat(span("warning","The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"]!"))
 	else if(spam_fix_time <= world.time)
-		caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency] kHz[freq]..."))
+		caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency*0.1] kHz[freq]..."))
 	else
-		caller.to_chat(span("notice","...[frequency] kHz[freq]..."))
+		caller.to_chat(span("notice","...[frequency*0.1] kHz[freq]..."))
 
 	spam_fix_time = world.time + 20
 
@@ -128,8 +136,8 @@ list(
 /obj/item/device/radio/nanotrasen
 	name = "\improper NanoTrasen Radio"
 
-	frequency_min = RADIO_FREQ_ALPHA - 2
-	frequency_max = RADIO_FREQ_SHIP + 2
+	frequency_min = RADIO_FREQ_ALPHA - 20
+	frequency_max = RADIO_FREQ_SHIP + 20
 
 	value = 15
 

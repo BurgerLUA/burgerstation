@@ -135,7 +135,9 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
+
 		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
 		/obj/item/magazine/rifle_762_short,
@@ -144,7 +146,6 @@
 		/obj/item/magazine/gauss_gun,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
 		/obj/item/magazine/rifle_762_long,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
@@ -156,9 +157,22 @@
 		/obj/item/storage/ammo/buckshot_23,
 		/obj/item/storage/ammo/slug_23,
 
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_23,
-		/obj/item/magazine/saiga_23/buckshot,
-		/obj/item/magazine/saiga_23/slug,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/slug,
+
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
+		/obj/item/magazine/pistol_9mm,
+
+		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
+		/obj/item/magazine/bizon_9mm,
+
+		/obj/item/weapon/ranged/bullet/revolver/gm94,
+		/obj/item/storage/ammo/grenade_40mm,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
+		/obj/item/magazine/lmg_545,
+		/obj/item/magazine/lmg_545/ap,
 
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/weapon/melee/shield/ballistic

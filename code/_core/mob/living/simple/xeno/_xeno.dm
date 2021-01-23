@@ -193,7 +193,7 @@
 /mob/living/simple/xeno/update_icon()
 
 	if(dead)
-		if(health && health.get_brute_loss() < health.get_burn_loss())
+		if(health && health.get_loss(BRUTE) < health.get_loss(BURN))
 			icon_state = "husk"
 		else
 			icon_state = "dead"

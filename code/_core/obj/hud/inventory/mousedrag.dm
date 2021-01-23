@@ -21,7 +21,7 @@
 		A.click_and_drag_icon.stored_inventory = over_inventory
 		A.click_and_drag_icon.screen_loc = over_inventory.screen_loc
 		var/obj/item/over_item = over_inventory.get_top_object()
-		if(I.can_be_dragged(A) && get_dist(I,over_inventory) <= 1 && ((I.loc == over_inventory) || over_inventory.can_hold_object(I,FALSE) || over_inventory.can_wear_object(I,FALSE) || (over_item && over_item.can_add_to_inventory(A,I,FALSE,FALSE))))
+		if(I.can_be_dragged(A) && get_dist(I,over_inventory) <= 1 && ((I.loc == over_inventory) || over_inventory.can_slot_object(I,FALSE) || (over_item && over_item.can_add_to_inventory(A,I,FALSE,FALSE))))
 			A.click_and_drag_icon.color = "#00FF00"
 		else
 			A.click_and_drag_icon.color = "#FF0000"
@@ -37,9 +37,3 @@
 	*/
 
 	return ..()
-
-/obj/hud/inventory/proc/get_top_object()
-	var/obj/item/I = src.get_top_held_object()
-	if(I) return I
-	I = src.get_top_worn_object()
-	return I

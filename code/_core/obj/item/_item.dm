@@ -35,7 +35,7 @@
 	var/dynamic_inventory_count = 0
 	var/obj/hud/inventory/dynamic/dynamic_inventory_type = /obj/hud/inventory/dynamic
 	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
-	var/container_held_slots = 0 //How much each inventory slot can hold.
+	var/container_max_slots = 0 //How much each inventory slot can hold.
 	var/container_blacklist = list()
 	var/container_whitelist = list()
 
@@ -132,6 +132,7 @@
 	var/obj/item/clothing/additional_clothing_parent
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
+	var/block_defense_value = 0 //Automatically calculated.
 
 	var/can_hold = TRUE
 	var/can_wear = FALSE
@@ -160,6 +161,11 @@
 	. = ..()
 	if(length(polymorphs))
 		update_sprite()
+
+	for(var/k in block_defense_rating)
+		var/v = block_defense_rating[k]
+		block_defense_value += v
+
 	return .
 
 /obj/item/get_base_value()
@@ -260,9 +266,9 @@
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(bypass && length(I.held_objects) >= I.held_slots)
+		if(bypass && length(I.contents) >= I.max_slots)
 			continue
-		if(I.can_hold_object(object,enable_messages))
+		if(I.can_slot_object(object,enable_messages))
 			return I
 
 	return null
@@ -303,8 +309,8 @@
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
 		//Doesn't need to be initialized as it's done later.
-		if(container_held_slots)
-			inventories[i].held_slots = container_held_slots
+		if(container_max_slots)
+			inventories[i].max_slots = container_max_slots
 		if(container_max_size)
 			inventories[i].max_size = container_max_size
 		if(container_blacklist && length(container_blacklist))
@@ -321,8 +327,8 @@
 		//Doesn't need to be initialized as it's done later.
 		D.id = "dynamic_[i]"
 		D.slot_num = i
-		if(container_held_slots)
-			D.held_slots = container_held_slots
+		if(container_max_slots)
+			D.max_slots = container_max_slots
 		if(container_max_size)
 			D.max_size = container_max_size
 		if(container_blacklist && length(container_blacklist))
@@ -452,14 +458,14 @@
 
 /obj/item/proc/inventory_to_list()
 
-	var/list/returning_list = list()
+	. = list()
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(length(I.held_objects) && I.held_objects[1])
-			returning_list += I.held_objects[1]
+		var/obj/item/I2 = I.get_top_object()
+		if(I2) . += I2
 
-	return returning_list
+	return .
 
 
 /obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
@@ -471,18 +477,27 @@
 		return FALSE
 	if(additional_clothing_parent && is_inventory(src.loc))
 		return FALSE
-	return can_hold
+	if(!can_hold)
+		return FALSE
+	return TRUE
 
-/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	if(delete_on_drop)
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
 	if(anchored)
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
 	if(unremovable)
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
 	if(additional_clothing_parent && is_inventory(src.loc))
+		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
-	return can_wear
+	if(!can_wear)
+		if(messages) owner.to_chat("\The [src.name] cannot be worn!")
+		return FALSE
+	return TRUE
 
 /obj/item/update_icon()
 
@@ -529,12 +544,6 @@
 	if(!R)
 		return FALSE
 	R.consume(caller,target)
-
-	if(caller == target)
-		caller.to_chat(span("notice","You consume \the [src.name]."))
-	else
-		caller.visible_message(span("warning","\The [caller.name] forcefeeds \the [target.name] \the [src.name]!"))
-
 	return TRUE
 
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
@@ -545,7 +554,7 @@
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
-		if(L.intent == INTENT_HARM) //SPLASH
+		if(L.attack_flags & CONTROL_MOD_ALT) //SPLASH
 			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
@@ -565,21 +574,22 @@
 				return FALSE
 			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
+			//TODO: Add liquid transfer sounds.
 		return TRUE
 
 	return FALSE
 
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!is_living(target))
 		return FALSE
 
 	if(is_living(caller))
 		var/mob/living/C = caller
-		if(C.intent != INTENT_HELP)
+		if(C.attack_flags & CONTROL_MOD_ALT) //Splash
 			return FALSE
 
 	if(!reagents)

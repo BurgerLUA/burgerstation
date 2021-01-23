@@ -6,8 +6,6 @@
 
 	var/obj/item/disk/rcd_disk
 
-	var/rcd_range = 1
-
 	var/matter_current = 0
 	var/matter_max = 10000
 
@@ -57,10 +55,14 @@
 	if(is_inventory(object))
 		return ..()
 
-	if(!isturf(object))
-		object = get_turf(object)
+	if(!isturf(object)) object = get_turf(object)
 
-	if(object && get_dist(caller,object) <= rcd_range)
+	if(object)
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
+
 		var/turf/T = object
 		if(!rcd_disk)
 			caller.to_chat(span("warning","ERROR: There is no construction disk loaded in \the [src.name]!"))
@@ -109,14 +111,14 @@
 		return null
 	desired_disk.drop_item(src)
 	rcd_disk = desired_disk
-	if(caller && !silent) caller.to_chat(span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
+	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] inserts a disk into \the [src.name]."),span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
 	return rcd_disk
 
 /obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
 	if(!rcd_disk)
 		caller.to_chat(span("warning","There is no disk to eject from \the [src.name]!"))
 		return null
-	if(caller && !silent) caller.to_chat(span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
+	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] removes a disk from \the [src.name]."),span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
 	rcd_disk.drop_item(get_turf(src))
 	. = rcd_disk
 	rcd_disk = null
@@ -125,12 +127,18 @@
 /obj/item/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_inventory(object) && rcd_disk)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		var/obj/hud/inventory/I = object
 		var/obj/item/disk/ejected_disk = eject_disk(caller)
 		I.add_object(ejected_disk)
 		return TRUE
 
 	if(istype(object,/obj/item/disk/) && is_inventory(object.loc))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		var/obj/hud/inventory/I = object.loc
 		var/obj/item/disk/D = object
 		var/obj/item/disk/old_disk

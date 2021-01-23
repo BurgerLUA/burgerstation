@@ -26,6 +26,8 @@
 
 	value = 750 //Extraordinary cost. :P
 
+	loyalty_tag = "Revolutionary"
+
 
 /obj/item/clothing/overwear/hardsuit/skat
 	name = "SKAT-9"
@@ -54,3 +56,5 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/skat)
 
 	value = 1050
+
+	loyalty_tag = "Revolutionary"

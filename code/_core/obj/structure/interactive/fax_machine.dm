@@ -14,25 +14,31 @@
 
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(is_inventory(A))
-		var/obj/hud/inventory/I = A
+	if(is_inventory(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		var/obj/hud/inventory/I = object
 		if(stored_paper)
 			if(processing)
 				caller.to_chat(span("warning","\The [src.name] is too busy processing!"))
 				return TRUE
-			if(I.add_held_object(stored_paper))
-				visible_message(span("notice","\The [caller.name] picks up \the [stored_paper.name] from \the [src.name]."))
+			if(I.add_object(stored_paper))
+				visible_message(span("notice","\The [caller.name] picks up \the [stored_paper.name] from \the [src.name]."),span("notice","You pick up \the [stored_paper.name] from \the [src.name]."))
 				stored_paper = null
 				update_sprite()
 		else
-			caller.to_chat(span("notice","\The [src.name] is empty."))
+			caller.to_chat(span("warning","\The [src.name] is empty!"))
 		return TRUE
 
-	else if(is_paper(A))
+	if(is_paper(object))
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 
 		if(stored_paper)
 			caller.to_chat(span("warning","\The [src.name] already has paper inside!"))
@@ -57,43 +63,26 @@
 
 		return TRUE
 
-
-
-
 	return ..()
 
 /obj/structure/interactive/fax_machine/update_icon()
-
 	if(stored_paper)
 		if(processing)
 			icon_state = "send"
 		else
-			icon_state = "recieve"
+			icon_state = "receive"
 	else
 		icon_state = "idle"
-
-
-
-
 	return ..()
 
 
 /obj/structure/interactive/fax_machine/proc/process_data(var/mob/caller,var/list/data_to_process = list())
 	return TRUE
 
-
 /obj/structure/interactive/fax_machine/proc/finish_processing(var/mob/caller)
-
 	processing = FALSE
 	update_sprite()
-
 	return TRUE
-
-
-
-
-
-
 
 /obj/structure/interactive/fax_machine/cargo/process_data(var/mob/caller,var/list/data_to_process = list())
 
@@ -119,6 +108,8 @@
 	var/real_quantity = found_data["Quantity"] ? clamp(text2num(found_data["Quantity"]),0,10) : 0
 	if(length(found_data) && found_data["Requisitioner's Name"] && found_data["Item ID"] && real_quantity)
 		var/atom/movable/stored_item = SScargo.cargo_id_to_type[found_data["Item ID"]]
+		if(!stored_item)
+			return ..()
 		var/obj/marker/cargo/C = locate() in world
 		var/obj/structure/interactive/crate/secure/cargo/SC = new(get_turf(C))
 		INITIALIZE(SC)

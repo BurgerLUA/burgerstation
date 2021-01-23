@@ -24,20 +24,19 @@ obj/structure/interactive/misc/dresser
 
 	density = TRUE
 
-obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
-
-	INTERACT_CHECK
+obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
+
 	var/mob/living/advanced/A = caller
 
-	if(length(A.worn_objects))
-		return TRUE
-
-	A.equip_loadout(/loadout/new_player,TRUE)
-
+	if(!length(A.worn_objects))
+		A.equip_loadout(/loadout/new_player,TRUE)
 
 	return TRUE
 

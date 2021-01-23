@@ -84,6 +84,10 @@
 	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/revolver/nagant/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	rotate_cylinder(-1)
 	caller?.to_chat(span("notice","You rotate the cylinder backwards."))
 	return TRUE

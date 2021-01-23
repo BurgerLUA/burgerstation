@@ -27,6 +27,10 @@
 
 /obj/item/light_sensor/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+	SPAM_CHECK(3)
+
 	active = !active
 
 	caller.to_chat(span("notice","You turn \the [src.name] [active ? "on" : "off"]."))
@@ -51,7 +55,7 @@
 
 	if(active)
 		var/turf/T = get_turf(src)
-		if(T) icon_state = "[icon_state]_[CEILING(clamp(T.darkness/1,0,1)*9,1)]"
+		if(T) icon_state = "[icon_state]_[CEILING(clamp(T.lightness/1,0,1)*9,1)]"
 
 	return ..()
 

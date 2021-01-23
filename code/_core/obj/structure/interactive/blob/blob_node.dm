@@ -2,7 +2,7 @@
 	name = "blob node"
 	icon_state = "node"
 	has_damaged_state = TRUE
-	health_base = 500
+	health_base = 250
 
 	health_states = 1
 

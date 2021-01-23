@@ -11,7 +11,7 @@
 
 	var/mob/living/simple/legionare/parent_legion
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	health_base = 10
 	stamina_base = 50
@@ -28,7 +28,7 @@
 
 	armor_base = list(
 		LASER = AP_GREATSWORD,
-		MAGIC = AP_GREATSWORD,
+		ARCANE = AP_GREATSWORD,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
 		BOMB = -AP_AXE,

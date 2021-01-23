@@ -24,12 +24,7 @@
 
 /turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(!is_item(weapon))
-		return FALSE
-
-	var/obj/item/I = weapon
-
-	if(!(I.flags_tool & FLAG_TOOL_SHOVEL))
+	if(!damage_type || !damage_type.target_floors)
 		return FALSE
 
 	return ..()
@@ -111,10 +106,10 @@
 
 /turf/simulated/floor/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(get_dist(caller,src) > 1) //No interact check here because that's annoying.
-		return ..()
-
 	if(istype(object,/obj/item/material/rod))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_frame,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_frame,caller,object)
 		return TRUE
@@ -127,14 +122,14 @@
 	F.color = R.color
 	INITIALIZE(F)
 	FINALIZE(F)
-	caller.to_chat(span("notice","You place \the [F.name]."))
+	caller.visible_message(span("notice","\The [caller.name] places \the [F.name]."),span("notice","You place \the [F.name]."))
 	R.add_item_count(-2)
 	return TRUE
 
 /turf/simulated/floor/proc/can_construct_frame(var/mob/caller,var/obj/item/material/rod/R)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(R)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(R)
 
 	if(R.item_count_current < 2)
 		caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))

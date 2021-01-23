@@ -40,6 +40,8 @@
 		PAIN = AP_SWORD
 	)
 
+	stun_angle = 180
+
 /mob/living/simple/bullshark/post_death()
 	. = ..()
 	icon_state = "dead"

@@ -7,6 +7,7 @@
 #define FATIGUE "fatigue"
 #define PAIN "pain"
 #define RAD "radiation"
+#define SANITY "sanity"
 
 #define HEALTH "health"
 #define MANA "mana"
@@ -17,11 +18,12 @@
 #define PIERCE "pierce"
 
 #define LASER "laser"
-#define ARCANE "magic"
-#define MAGIC "magic" //TODO: REPLACE
+#define ARCANE "arcane"
 
 #define HEAT "heat"
 #define COLD "cold"
+#define SHOCK "shock"
+
 #define BOMB "bomb"
 #define BIO "bioweapon"
 #define RAD "radiation"
@@ -31,7 +33,7 @@
 #define HOLY "holy"
 #define DARK "dark"
 
-#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,BOMB,BIO,RAD,ION)
+#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,BOMB,BIO,FATIGUE,ION,RAD,SANITY)
 
 
 //Melee Balance
@@ -62,3 +64,5 @@
 #define DAMAGE_GREATCLUB 105
 #define SPEED_GREATCLUB 20
 #define AP_GREATCLUB 120
+
+#define BASE_MELEE_MUL 1.25

@@ -8,7 +8,7 @@
 
 	return TRUE
 
-/atom/proc/change_victim(var/atom/attacker)
+/atom/proc/change_victim(var/atom/attacker,var/atom/object)
 	return src
 
 /atom/proc/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
@@ -29,7 +29,25 @@
 		CRASH_SAFE("Tried attacking without a victim!")
 		return FALSE
 
-	var/atom/changed_target = victim.change_victim(attacker)
+	if(qdeleting)
+		CRASH("[src.get_debug_name()] tried attacking, but it was deleting!")
+		return FALSE
+
+	if(attacker.qdeleting)
+		CRASH("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
+		return FALSE
+
+	/* GOTTA TEST THIS
+	if(invisibility >= 101 || alpha == 0)
+		log_error("Warning: [src.get_debug_name()] tried attacking, but it was invisible!")
+		return FALSE
+
+	if(attacker.invisibility >= 101 || attacker.alpha == 0)
+		log_error("Warning: [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was invisible!")
+		return FALSE
+	*/
+
+	var/atom/changed_target = victim.change_victim(attacker,src)
 	if(changed_target)
 		victim = changed_target
 
@@ -94,7 +112,7 @@
 		for(var/atom/movable/A in range(1,victim))
 			if(cleave_number <= 0)
 				break
-			A = A.change_victim(attacker)
+			A = A.change_victim(attacker,src)
 			if(A == victim || A == attacker)
 				continue
 			if(get_dist(attacker,A) > object_to_damage_with.attack_range)

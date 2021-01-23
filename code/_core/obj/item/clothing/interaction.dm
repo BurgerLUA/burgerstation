@@ -1,6 +1,7 @@
 /obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
+		//No interaction delay needed.
 		quick_equip(caller,ignore_held=TRUE,ignore_dynamic=TRUE)
 		return TRUE
 
@@ -9,9 +10,13 @@
 
 /obj/item/clothing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
+	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		if((src in I.worn_objects) && equip_additional_clothing(caller,object,location,control,params))
+		if(src in I.contents)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			equip_additional_clothing(caller,object,location,control,params)
 			return TRUE
 
 	return ..()
@@ -27,15 +32,15 @@
 			continue
 		if(!I.allow_quick_equip)
 			continue
-		if(!ignore_worn && can_be_worn(caller,I) && I.can_wear_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
+		if(!ignore_worn && I.worn && can_be_worn(caller,I) && I.can_slot_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
 			best_inventory_wear = I
 			continue
 		if(istype(I,/obj/hud/inventory/dynamic))
-			if(!ignore_dynamic && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+			if(!ignore_dynamic && can_be_held(caller,I) && I.can_slot_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
 				best_inventory_equip = I
 				continue
 		else
-			if(!ignore_held && can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+			if(!ignore_held && can_be_held(caller,I) && I.can_slot_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
 				best_inventory_equip = I
 				continue
 

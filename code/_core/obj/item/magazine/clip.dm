@@ -8,6 +8,9 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(is_bullet_gun(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
 		var/insert_count = 0
 		for(var/k in stored_bullets)
@@ -26,7 +29,7 @@
 			update_sprite()
 			return TRUE
 		else
-			caller.to_chat(span("notice","You can't load anything into \the [object] with \the [src]!"))
+			caller.to_chat(span("warning","You can't load anything into \the [object] with \the [src]!"))
 		return TRUE
 
 	return ..()

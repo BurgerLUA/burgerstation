@@ -6,7 +6,7 @@
 	var/logo = 0
 	var/logobg = 0
 	dynamic_inventory_count = 7
-	container_held_slots = 1
+	container_max_slots = 1
 	container_max_size = SIZE_1
 
 	size = SIZE_2
@@ -48,8 +48,12 @@
 
 /obj/item/clothing/head/helmet/full/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
+
 	var/mob/living/C = caller
-	if(C.attack_flags & ATTACK_ALT)
+	if(C.attack_flags & CONTROL_MOD_ALT)
 		if(C.intent == INTENT_DISARM)
 			if(logobg < 2)
 				logobg++
@@ -66,6 +70,9 @@
 				logo = 0
 				caller.to_chat(span("notice","You wipe \the logo from \the [src.name]."))
 		update_sprite()
+
+
+	return TRUE
 
 
 
@@ -94,7 +101,7 @@
 	var/filled_slots = 1
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I3 = k
-		filled_slots += length(I3.held_objects)
+		filled_slots += length(I3.contents)
 
 	if(filled_slots == 1)
 		item_slot = SLOT_HEAD
@@ -112,7 +119,7 @@
 
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I3 = k
-		content_count += length(I3.held_objects)
+		content_count += length(I3.contents)
 
 	var/image/I = new/image(initial(icon),"logobg[clamp(content_count,1,2)][logobg]")
 	I.color = polymorphs["logobg"]

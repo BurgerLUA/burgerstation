@@ -89,9 +89,10 @@
 
 /obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-
 	if(isturf(object))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/turf/T = object
 		var/plant_type/P = SSbotany.all_plant_types[plant_type]
 		var/allowed=FALSE
@@ -116,7 +117,7 @@
 		PL.delete_after_harvest = delete_after_harvest
 		INITIALIZE(PL)
 		FINALIZE(PL)
-		caller.to_chat(span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
+		caller.visible_message(span("notice","\The [caller.name] plants \the [src.name] in \the [T.name], creating a [PL.name]."),span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
 		qdel(src)
 		return TRUE
 

@@ -28,17 +28,22 @@
 /obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/structure/interactive/enchantment_circle/))
-		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
+		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."),span("notice","You clear \the [object.name] with \the [src.name]."))
 		qdel(object)
 		return TRUE
 
 	if(isturf(object))
-		INTERACT_CHECK
 
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 
 		if(caller.loc != object)
 			caller.to_chat(span("warning","You must draw the rune at your feet!"))
-			return FALSE
+			return TRUE
 
 		var/turf/T = object
 		for(var/k in DIRECTIONS_ALL)
@@ -46,17 +51,19 @@
 			var/atom/occupied = T2.is_occupied(PLANE_DECAL)
 			if(occupied)
 				caller.to_chat(span("warning","You can't draw an enchantment circle here, \the [occupied.name] is in the way!"))
-				return FALSE
+				return TRUE
+
 		var/obj/structure/interactive/enchantment_circle/EC = new(T)
 		INITIALIZE(EC)
 		GENERATE(EC)
 		FINALIZE(EC)
-		caller.visible_message(span("notice","\The [caller.name] touches \the [T.name] with \the [src.name], magically creating \a [EC.name]."))
+		caller.visible_message(span("notice","\The [caller.name] touches \the [T.name] with \the [src.name], magically creating \a [EC.name]."),span("notice","You touch \the [T.name] with \the [src.name], magically creating \a [EC.name]."))
 		uses_left--
 		if(uses_left <= 0)
 			qdel(src)
 		else
 			update_sprite()
+
 		return TRUE
 
 	return ..()

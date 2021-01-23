@@ -5,20 +5,6 @@
 
 	var/dialogue_id
 
-	/*
-	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-	*/
-
-/*
-/mob/living/advanced/npc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(attacker && dialogue_id && is_player(attacker))
-		return FALSE
-
-	return ..()
-*/
-
 /mob/living/advanced/npc/proc/can_talk_to(var/mob/caller)
 
 	if(!is_living(caller))
@@ -41,6 +27,7 @@
 /mob/living/advanced/npc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(dialogue_id && is_player(caller) && can_talk_to(caller))
+		///Interact check isn't here because INTERACT_CHECK covers most of it and can_talk_to handles distance checks.
 		var/mob/living/advanced/player/P = caller
 		P.dialogue_target = src
 		P.dialogue_target_id = dialogue_id

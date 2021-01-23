@@ -18,6 +18,9 @@
 
 /obj/item/container/food/dynamic/meat/click_self(var/mob/caller,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+
 	if(icon_state == "ground")
 		icon_state = "meatball"
 		caller.to_chat(span("notice","You reshape \the [src.name] into a meatball."))
@@ -130,7 +133,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","You cut \the [src.name] into [pieces] cutlets."))
+				L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into cutlets."),span("notice","You cut \the [src.name] into [pieces] cutlets."))
 
 		else if(has_prefix(icon_state,"cutlet"))
 			//Make bacon.
@@ -152,7 +155,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","You cut \the [src.name] into [pieces] bacon slices."))
+				L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into bacon slices."),span("notice","You cut \the [src.name] into [pieces] bacon slices."))
 
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
@@ -180,7 +183,7 @@
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","You pound \the [src.name] into [pieces] portion\s of ground beef."))
+				L.visible_message(span("notice","\The [L.name] pounds \the [src.name] into ground beef."),span("notice","You pound \the [src.name] into [pieces] portion\s of ground beef."))
 
 	return TRUE
 
@@ -205,6 +208,11 @@
 	reagents.add_reagent(/reagent/nutrition/meat/colossus,15)
 	reagents.add_reagent(/reagent/blood/ancient,5)
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_monkey/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/monkey,15)
+	reagents.add_reagent(/reagent/nutrition/fat/monkey,5)
 	return ..()
 
 /obj/item/container/food/dynamic/meat/raw/Generate()

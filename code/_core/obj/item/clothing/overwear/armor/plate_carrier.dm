@@ -56,6 +56,9 @@
 /obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/armor_plate/))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		if(length(installed_plate_carriers) >= 2)
 			if(ismob(caller))
 				var/mob/M = caller
@@ -74,10 +77,12 @@
 /obj/item/clothing/overwear/armor/plate_carrier/click_self(var/mob/caller)
 
 	if(is_advanced(caller) && length(installed_plate_carriers))
+		INTERACT_CHECK
+		INTERACT_DELAY(1)
 		var/mob/living/advanced/A = caller
 		var/obj/item/armor_plate/P = input(A,"What armor plates do you wish to remove?","Plate Carrier Removal") as null|anything in installed_plate_carriers
 		if(P && P in installed_plate_carriers)
-			A.to_chat(span("notice","You remove \the [P.name] from \the [src.name]."))
+			A.visible_message(span("notice","\The [caller.name] removes \the [P.name] from \the [src.name]."),span("notice","You remove \the [P.name] from \the [src.name]."))
 			P.drop_item(get_turf(src))
 			installed_plate_carriers -= P
 			A.put_in_hands(P) //This calls update_slowdown_mul

@@ -80,31 +80,3 @@
 
 	icon = I
 
-/obj/structure/interactive/lighting/floor/strong
-	desired_light_power = 0.4
-	desired_light_range = 8
-
-/obj/structure/interactive/lighting/floor/stronger
-	desired_light_power = 0.5
-	desired_light_range = 16
-
-
-/obj/structure/interactive/lighting/floor/color
-	name = "colored light"
-	color = "#FFFFFF"
-
-	desired_light_power = 1
-	desired_light_range = 3
-
-
-/obj/structure/interactive/lighting/floor/color/turf/Initialize()
-
-	if(loc)
-		color = loc.color
-		name = loc.color
-
-	return ..()
-
-/obj/structure/interactive/lighting/floor/syndicate
-	color = "#FFBABA"
-	color_frame = "#666666"

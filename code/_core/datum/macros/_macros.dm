@@ -74,18 +74,18 @@
 		if("sprint")
 			owner.mob.movement_flags |= MOVEMENT_RUNNING
 		if("walk")
-			owner.mob.attack_flags |= ATTACK_ALT
+			owner.mob.attack_flags |= CONTROL_MOD_ALT
 		if("examine_mode")
 			owner.examine_mode = TRUE
 			owner.mob.examine_overlay.alpha = 255
 		if("crouch")
 			owner.mob.movement_flags |= MOVEMENT_CROUCHING
 		if("throw")
-			owner.mob.attack_flags |= ATTACK_THROW
+			owner.mob.attack_flags |= CONTROL_MOD_THROW
 		if("drop")
-			owner.mob.attack_flags |= ATTACK_DROP
+			owner.mob.attack_flags |= CONTROL_MOD_DROP
 		if("hold")
-			owner.mob.attack_flags |= ATTACK_HOLD
+			owner.mob.attack_flags |= CONTROL_MOD_BLOCK
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
 				L.handle_blocking()
@@ -96,11 +96,13 @@
 			else
 				owner.mob.last_hold = world.time
 		if("grab")
-			owner.mob.attack_flags |= ATTACK_GRAB
+			owner.mob.attack_flags |= CONTROL_MOD_GRAB
 		if("quick_self")
-			owner.mob.attack_flags |= ATTACK_SELF
+			owner.mob.attack_flags |= CONTROL_MOD_SELF
 		if("quick_holder")
-			owner.mob.attack_flags |= ATTACK_OWNER
+			owner.mob.attack_flags |= CONTROL_MOD_OWNER
+		if("kick")
+			owner.mob.attack_flags |= CONTROL_MOD_KICK
 		if("zoom")
 			if(owner.is_zoomed)
 				owner.is_zoomed = 0x0
@@ -135,27 +137,29 @@
 		if("sprint")
 			owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 		if("walk")
-			owner.mob.attack_flags &= ~ATTACK_ALT
+			owner.mob.attack_flags &= ~CONTROL_MOD_ALT
 		if("examine_mode")
 			owner.examine_mode = FALSE
 			owner.mob.examine_overlay.alpha = 0
 		if("crouch")
 			owner.mob.movement_flags &= ~MOVEMENT_CROUCHING
 		if("throw")
-			owner.mob.attack_flags &= ~ATTACK_THROW
+			owner.mob.attack_flags &= ~CONTROL_MOD_THROW
 		if("drop")
-			owner.mob.attack_flags &= ~ATTACK_DROP
+			owner.mob.attack_flags &= ~CONTROL_MOD_DROP
 		if("hold")
-			owner.mob.attack_flags &= ~ATTACK_HOLD
+			owner.mob.attack_flags &= ~CONTROL_MOD_BLOCK
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
 				L.handle_blocking()
 		if("grab")
-			owner.mob.attack_flags &= ~ATTACK_GRAB
+			owner.mob.attack_flags &= ~CONTROL_MOD_GRAB
 		if("quick_self")
-			owner.mob.attack_flags &= ~ATTACK_SELF
+			owner.mob.attack_flags &= ~CONTROL_MOD_SELF
 		if("quick_holder")
-			owner.mob.attack_flags &= ~ATTACK_OWNER
+			owner.mob.attack_flags &= ~CONTROL_MOD_OWNER
+		if("kick")
+			owner.mob.attack_flags &= ~CONTROL_MOD_KICK
 		if("zoom")
 			//Do nothing
 		if("say")

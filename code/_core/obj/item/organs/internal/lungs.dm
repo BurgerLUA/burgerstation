@@ -5,3 +5,6 @@
 	icon_state = "lungs"
 
 	attach_flag = BODY_TORSO
+
+/obj/item/organ/internal/lungs/robotic
+	name = "robotic lungs"

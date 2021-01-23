@@ -17,7 +17,8 @@
 		ARCANE = -armor_bonus,
 		COLD = armor_bonus*2,
 		PAIN = armor_bonus*2,
-		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100,1)
+		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100,1),
+		SANITY = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM)*100,1)
 	)
 
 	for(var/damage_type in bonus_armor)
@@ -106,7 +107,7 @@
 
 
 
-/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	. = 0
 
@@ -121,7 +122,7 @@
 
 	return . + ..(brute,burn,tox,oxy,fatigue,pain,rad,update,organic,robotic)
 
-/health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE)
+/health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
 
 	if(!is_living(owner))
 		return ..()
@@ -133,6 +134,8 @@
 		if(!include_fatigue && damage_type == FATIGUE)
 			continue
 		if(!include_pain && damage_type == PAIN)
+			continue
+		if(!include_sanity && damage_type == SANITY)
 			continue
 		if((damage_type == TOX || damage_type == OXY) && L.has_status_effect(ADRENALINE))
 			continue

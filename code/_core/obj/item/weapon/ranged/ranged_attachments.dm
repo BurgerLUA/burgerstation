@@ -1,11 +1,11 @@
 /obj/item/weapon/ranged/proc/add_attachment(var/mob/caller,var/obj/item/attachment/A)
 
 	if(!length(attachment_whitelist))
-		caller.to_chat(span("notice","This weapon does not accept attachments!"))
+		caller.to_chat(span("warning","This weapon does not accept attachments!"))
 		return FALSE
 
 	if(!attachment_whitelist[A.type])
-		caller.to_chat(span("notice","\The [A.name] cannot fit on \the [src.name]!"))
+		caller.to_chat(span("warning","\The [A.name] cannot fit on \the [src.name]!"))
 		return FALSE
 
 
@@ -22,9 +22,9 @@
 			continue
 		if(vars[v])
 			var/obj/item/I = vars[v]
-			caller.to_chat(span("notice","There is already \a [I.name] attached to \the [src.name]!"))
+			caller.to_chat(span("warning","There is already \a [I.name] attached to \the [src.name]!"))
 			return FALSE
-		caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
+		caller.visible_message(span("notice","\The [caller.name] attaches \the [A.name] to \the [src.name]."),span("notice","You attach \the [A.name] to \the [src.name]."))
 		A.drop_item(src)
 		vars[v] = A
 		update_sprite()
@@ -66,7 +66,7 @@
 
 	var/obj/item/I = vars[attachment_choice]
 
-	caller.to_chat(span("notice","You remove \the [I.name] from \the [src.name]."))
+	caller.visible_message(span("notice","\The [caller.name] removes \the [I.name] from \the [src.name]."),span("notice","You remove \the [I.name] from \the [src.name]."))
 	I.drop_item(get_turf(src))
 	vars[attachment_choice] = null
 	update_sprite()

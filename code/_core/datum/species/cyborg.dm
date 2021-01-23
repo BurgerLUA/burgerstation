@@ -31,15 +31,15 @@
 		BODY_HAND_RIGHT = /obj/item/organ/hand/cyborg,
 		BODY_HAND_LEFT = /obj/item/organ/hand/cyborg/left,
 
-		BODY_BRAIN = /obj/item/organ/internal/brain,
-		BODY_LUNGS = /obj/item/organ/internal/lungs,
-		BODY_STOMACH = /obj/item/organ/internal/stomach,
-		BODY_LIVER = /obj/item/organ/internal/liver,
-		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
-		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
+		BODY_BRAIN = /obj/item/organ/internal/brain/robotic,
+		BODY_LUNGS = /obj/item/organ/internal/lungs/robotic,
+		BODY_STOMACH = /obj/item/organ/internal/stomach/robotic,
+		BODY_LIVER = /obj/item/organ/internal/liver/robotic,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines/robotic,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys/robotic
 	)
 
 	health = /health/mob/living/advanced/robotic
 
-/species/reptile/generate_blood_type()
+/species/cyborg/generate_blood_type()
 	return /reagent/blood/robot

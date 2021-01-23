@@ -47,7 +47,7 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(attack_flags & ATTACK_HOLD || (client && client.is_zoomed))
+	if(attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..(NewLoc,Dir,step_x,step_y)
@@ -209,10 +209,11 @@
 	if(is_living(O))
 		var/mob/living/L = O
 		if(L.loyalty_tag == src.loyalty_tag)
-			return TRUE
+			if(!src.ai || L.is_moving || !L.ai)
+				return ..()
 		if(L.horizontal || src.horizontal)
-			return TRUE
-		if(L.mob_size >= mob_size)
+			return ..()
+		if(L.mob_size >= mob_size && L.mob_size >= MOB_SIZE_ANIMAL)
 			return FALSE
 
 	return ..()

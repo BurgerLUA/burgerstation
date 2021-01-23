@@ -8,3 +8,10 @@
 	species = "monkey"
 
 	loyalty_tag = "Monkey"
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw_monkey,
+		/obj/item/container/food/dynamic/meat/raw_monkey,
+		/obj/item/container/food/dynamic/meat/raw_monkey,
+		/obj/item/container/food/dynamic/meat/raw_monkey
+	)

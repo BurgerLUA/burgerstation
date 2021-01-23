@@ -19,8 +19,12 @@
 
 /obj/item/storage/pouch/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(caller == object && is_advanced(caller) && quick_equip(caller,TRUE))
-		return TRUE
+	if(caller == object && is_advanced(caller))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		if(quick_equip(caller,TRUE))
+			INTERACT_DELAY(1)
+			return TRUE
 
 	return ..()
 

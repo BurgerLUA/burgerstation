@@ -109,7 +109,7 @@
 			var/v = inject_amount[k]
 			target.reagents.add_reagent(k,v,caller=src)
 
-		target.to_chat(span("danger","\The [src.name] injects you with the hypospray."))
+		target.visible_message(span("danger","\The [src.name] injects \the [target.name] with the hypospray."),span("danger","\The [src.name] injects you with the hypospray."))
 
 		switch(rand(1,2))
 			if(1)
@@ -153,7 +153,7 @@
 	if(get_inject_amount(target))
 		PROGRESS_BAR(src,src,SECONDS_TO_DECISECONDS(5),.proc/treat,target)
 		PROGRESS_BAR_CONDITIONS(src,src,.proc/can_treat,target)
-		target.to_chat(span("danger","\The [src.name] is trying to inject you!"))
+		target.visible_message(span("warning","\The [src.name] is trying to inject [target.name]!"),span("danger","\The [src.name] is trying to inject you!"))
 		if(target.has_status_effect(CRIT))
 			play('sound/voice/medbot/no.ogg',get_turf(src))
 			src.do_say("No, stay with me!")

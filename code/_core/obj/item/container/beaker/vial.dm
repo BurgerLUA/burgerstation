@@ -41,6 +41,27 @@
 
 
 
+/obj/item/container/beaker/vial/health_potion
+	name = "vial of health"
+
+/obj/item/container/beaker/vial/health_potion/Generate()
+	reagents.add_reagent(/reagent/medicine/health_potion,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/vial/stamina_potion
+	name = "vial of stamina"
+
+/obj/item/container/beaker/vial/stamina_potion/Generate()
+	reagents.add_reagent(/reagent/medicine/stamina_potion,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/vial/mana_potion
+	name = "vial of mana"
+
+/obj/item/container/beaker/vial/mana_potion/Generate()
+	reagents.add_reagent(/reagent/medicine/mana_potion,reagents.volume_max)
+	return ..()
+
 
 
 

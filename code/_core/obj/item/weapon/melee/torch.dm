@@ -23,6 +23,10 @@
 	value = 10
 
 /obj/item/weapon/melee/torch/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	enabled = !enabled
 	update_sprite()
 	update_atom_light()

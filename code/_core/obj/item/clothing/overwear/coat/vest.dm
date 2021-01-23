@@ -7,12 +7,12 @@
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
 
-	size = SIZE_2*6
+	size = SIZE_1*6
 
 	is_container = TRUE
 
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_2
+	container_max_size = SIZE_1
 
 	defense_rating = list(
 		BLUNT = AP_SWORD,
@@ -27,7 +27,9 @@
 
 /obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(is_inventory(object)) //TODO: Move this to clothing?
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		click_self(caller,location,control,params)
 		return TRUE
 
@@ -57,10 +59,10 @@
 	rarity = RARITY_COMMON
 	desc = "For when you need pockets but not many."
 
-	size = SIZE_2*4
+	size = SIZE_2*2
 
-	dynamic_inventory_count = 4
-	container_max_size = SIZE_2
+	dynamic_inventory_count = 2
+	container_max_size = SIZE_1
 
 	defense_rating = list(
 		BLADE = 25,
@@ -73,3 +75,17 @@
 	)
 
 	value = 30
+
+
+/obj/item/clothing/overwear/coat/vest/webbing
+	name = "webbing"
+	icon = 'icons/obj/item/clothing/suit/webbing.dmi'
+	desc = " For a big guy."
+	desc_extended = "A minimalistic set of webbing harness meant to hold the basics. Holds less than storage vests, but can fit larger items."
+
+	size = SIZE_2*3
+
+	dynamic_inventory_count = 3
+	container_max_size = SIZE_2
+
+	value = 100

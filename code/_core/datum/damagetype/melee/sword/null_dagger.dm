@@ -2,8 +2,8 @@
 	name = "null dagger"
 
 	attack_damage_base = list(
-		BLADE = DAMAGE_DAGGER*0.1,
-		PIERCE = DAMAGE_DAGGER*0.1,
+		BLADE = DAMAGE_DAGGER*0.1*BASE_MELEE_MUL,
+		PIERCE = DAMAGE_DAGGER*0.1*BASE_MELEE_MUL,
 		HOLY = 0
 	)
 
@@ -28,6 +28,11 @@
 	skill_damage = list(
 		SKILL_MELEE = list(BLADE,PIERCE),
 		SKILL_PRAYER = HOLY
+	)
+
+	bonus_experience = list(
+		SKILL_MELEE = 25, //25%
+		SKILL_PRAYER = 25
 	)
 
 	attack_delay = SPEED_DAGGER*0.5

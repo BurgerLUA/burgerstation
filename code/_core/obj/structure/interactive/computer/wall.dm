@@ -1,31 +1,3 @@
-/atom/movable/proc/setup_dir_offsets()
-	var/x_offset = 0
-	var/y_offset = 0
-
-	if(dir & NORTH)
-		pixel_y -= 32
-		light_offset_y -= 16
-		y_offset++
-
-	if(dir & SOUTH)
-		pixel_y += 32
-		light_offset_y += 16
-		y_offset--
-
-	if(dir & EAST)
-		pixel_x -= 32
-		light_offset_x -= 16
-		x_offset++
-
-	if(dir & WEST)
-		pixel_x += 32
-		light_offset_x += 16
-		x_offset--
-
-	loc = locate(x+x_offset,y+y_offset,z) //Legitimately don't know why force_move or get_step doesn't work here. Even in initialize.
-
-	return TRUE
-
 obj/structure/interactive/computer/wall
 	name = "wall computer"
 	desc = "Compute walls!"
@@ -87,9 +59,8 @@ obj/structure/interactive/computer/wall/dorms
 /obj/structure/interactive/computer/wall/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
-
-	if(!is_advanced(caller))
-		return ..()
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(desired_shuttle_controller.time_restricted && !SSgamemode.active_gamemode.allow_launch)
 		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] isn't ready to launch yet!"))
@@ -101,9 +72,9 @@ obj/structure/interactive/computer/wall/dorms
 		if(desired_shuttle_controller.state == SHUTTLE_STATE_LANDED)
 			desired_shuttle_controller.state = SHUTTLE_STATE_WAITING
 			desired_shuttle_controller.time = 0
-			caller.to_chat(span("warning","You prepare \the [desired_shuttle_controller.name] for launch."))
+			caller.visible_message(span("notice","\The [caller.name] prepares \the [src.name] for launch."),span("notice","You prepare \the [src.name] for launch."))
 		else
-			caller.to_chat(span("warning","ERROR: \The [desired_shuttle_controller.name] is already in transit."))
+			src.do_say("Warning: Shuttle already in transit.") //TODO: Make this more verbose.
 	else
 		caller.to_chat(span("notice","You decide not to launch \the [desired_shuttle_controller.name]."))
 
@@ -117,22 +88,21 @@ obj/structure/interactive/computer/wall/dorms
 
 
 
-obj/structure/interactive/computer/wall/flight
+/obj/structure/interactive/computer/wall/flight
 	name = "flight control console"
 	desc = "Beep boop."
 	desc_extended = "Operates things, depending on what the console is. This one controls a shuttle."
 
-obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
-
-	if(!is_advanced(caller))
-		return ..()
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	var/obj/shuttle_controller/SC = locate() in get_area(src)
 
 	if(!SC)
-		caller.to_chat(span("warning","No shuttle controller found!"))
+		caller.to_chat(span("warning","ERROR: No shuttle controller found!"))
 		return FALSE
 
 	if(SC.time_restricted && !SSgamemode.active_gamemode.allow_launch)
@@ -145,7 +115,10 @@ obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/call
 		if(SC.state == SHUTTLE_STATE_LANDED)
 			SC.state = SHUTTLE_STATE_WAITING
 			SC.time = 0
-			caller.to_chat(span("notice","You prepare the shuttle for launch."))
+			caller.visible_message(span("notice","\The [caller.name] prepares \the [src.name] for launch."),span("notice","You prepare \the [src.name] for launch."))
 		else
-			caller.to_chat(span("warning","ERROR: Shuttle already in transit.")) //TODO: Make this more verbose.
+			src.do_say("Warning: Shuttle already in transit.") //TODO: Make this more verbose.
+	else
+		caller.to_chat(span("notice","You decide not to launch \the [SC.name]."))
+
 	return TRUE

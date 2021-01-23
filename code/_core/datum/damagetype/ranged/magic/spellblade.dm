@@ -27,5 +27,10 @@
 		SKILL_SORCERY = ARCANE
 	)
 
+	bonus_experience = list(
+		SKILL_SORCERY = 25, //25%
+		SKILL_MELEE = 25
+	)
+
 	attack_delay = SPEED_GREATSWORD*0.5
 	attack_delay_max = SPEED_GREATSWORD

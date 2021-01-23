@@ -11,12 +11,14 @@
 	size = SIZE_2
 
 /obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/caller)
+
 	. = ..()
-	SPAM_CHECK(20)
-	if(enabled)
-		play(pick('sound/effects/sparks/sparks1.ogg','sound/effects/sparks/sparks2.ogg','sound/effects/sparks/sparks3.ogg','sound/effects/sparks/sparks4.ogg'),src)
-		damage_type = /damagetype/melee/club/stunbaton/on
-	else
-		damage_type = /damagetype/melee/club/stunbaton
+
+	if(.)
+		if(enabled)
+			play(pick('sound/effects/sparks/sparks1.ogg','sound/effects/sparks/sparks2.ogg','sound/effects/sparks/sparks3.ogg','sound/effects/sparks/sparks4.ogg'),src)
+			damage_type = /damagetype/melee/club/stunbaton/on
+		else
+			damage_type = /damagetype/melee/club/stunbaton
 
 	return .

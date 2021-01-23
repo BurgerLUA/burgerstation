@@ -33,6 +33,9 @@
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(is_living(defer_object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/mob/living/L = defer_object
 		if(attached_to == L)
 			detach(caller)
@@ -59,14 +62,17 @@
 	draw_delay = initial(draw_delay)
 	var/turf/T = get_turf(src)
 	attached_to = target
-	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."))
+	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."),span("notice","You attach \the [src.name] to \the [attached_to.name]."))
 	start_thinking(src)
 	update_sprite()
 	return TRUE
 
 /obj/item/container/blood_pack/click_self(var/mob/caller)
 
-	if(caller.attack_flags & ATTACK_ALT)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
+	if(caller.attack_flags & CONTROL_MOD_ALT)
 		if(attached_to)
 			detach(caller)
 		else
@@ -83,7 +89,7 @@
 	if(!can_attach_to(caller,target))
 		return FALSE
 
-	caller.visible_message(span("notice","\The [caller.name] begins to attach \the [src.name] to \the [target.name]."))
+	caller.visible_message(span("warning","\The [caller.name] begins to attach \the [src.name] to \the [target.name]..."),span("notice","You begin to attach \the [src.name] to \the [target.name]..."))
 
 	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/attach,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_attach_to,caller,target)
@@ -92,8 +98,8 @@
 
 /obj/item/container/blood_pack/proc/can_attach_to(var/mob/caller,var/mob/living/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!target.reagents)
 		caller.to_chat(span("warning","You can't find a way to attach \the [src.name] to \the [target.name]!"))

@@ -18,7 +18,7 @@
 
 	weight = 8
 
-/obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
 /obj/item/defib/Initialize(var/desired_loc) //Fill inventory handles the initializations here.
@@ -51,8 +51,8 @@
 
 /obj/item/defib/proc/can_defib_target(var/mob/caller,var/mob/living/target)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(target)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(target)
 
 	return TRUE
 
@@ -87,13 +87,19 @@
 
 	if(is_inventory(object) && is_inventory(src.loc) && is_advanced(caller))
 		var/obj/hud/inventory/I = src.loc
-		var/obj/hud/inventory/I2 = object
-		if(src in I.worn_objects)
+		if(src in I.contents)
+			var/obj/hud/inventory/I2 = object
 			if(paddle_left in src.contents)
-				I2.add_held_object(paddle_left)
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
+				I2.add_object(paddle_left)
 				return TRUE
 			else if(paddle_right in src.contents)
-				I2.add_held_object(paddle_right)
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
+				I2.add_object(paddle_right)
 				return TRUE
 
 	return ..()
@@ -116,17 +122,23 @@
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	SPAM_CHECK(10)
-
 	if(!linked_defib)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		caller.to_chat(span("danger","Paddle error detected. Tell burger how you encountered this bug."))
 		return TRUE
 
 	if(object == linked_defib)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
 		drop_item(get_turf(src))
 		return TRUE
 
 	if(is_living(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
 		placed_target_ref = "\ref[object]"
 		linked_defib.on_paddle(caller)

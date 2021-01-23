@@ -99,7 +99,8 @@
 		DARK = 0,
 		FATIGUE = 0,
 		ION = 0,
-		PAIN = 0
+		PAIN = 0,
+		SANITY = 0
 	)
 
 	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
@@ -133,7 +134,7 @@
 
 /mob/living/advanced/Finalize()
 
-	if(blood_type == /reagent/blood) //Uninitialized blood.
+	if(blood_type == /reagent/blood || species != "human") //Uninitialized blood.
 		var/species/S = SPECIES(species)
 		blood_type = S.generate_blood_type()
 
@@ -290,14 +291,14 @@
 			var/obj/item/I = O.loc
 			if(I.is_container)
 				continue
-		dropped_objects += O.drop_all_objects(drop_location,exclude_soulbound)
+		dropped_objects += O.drop_objects(drop_location,exclude_soulbound)
 
 	return dropped_objects
 
 /mob/living/advanced/proc/delete_all_items()
 	for(var/v in inventory)
 		var/obj/hud/inventory/O = v
-		O.delete_all_objects()
+		O.delete_objects()
 
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/k in clothing_list)
@@ -396,7 +397,7 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/add_worn_item(var/obj/item/C,var/slient=FALSE)
 	for(var/k in inventory)
 		var/obj/hud/inventory/I = k
-		if(I.add_worn_object(C,FALSE,silent=FALSE))
+		if(I.add_object(C,FALSE,silent=FALSE))
 			return TRUE
 
 	return FALSE
@@ -487,14 +488,14 @@ mob/living/advanced/Login()
 
 	if(left_hand && right_hand)
 		if(left)
-			if(left_hand.can_hold_object(I,FALSE))
+			if(left_hand.can_slot_object(I,FALSE))
 				return left_hand.add_object(I,silent=silent)
-			else if(right_hand.can_hold_object(I,FALSE))
+			else if(right_hand.can_slot_object(I,FALSE))
 				return right_hand.add_object(I,silent=silent)
 		else
-			if(right_hand.can_hold_object(I,FALSE))
+			if(right_hand.can_slot_object(I,FALSE))
 				return right_hand.add_object(I,silent=silent)
-			else if(left_hand.can_hold_object(I,FALSE))
+			else if(left_hand.can_slot_object(I,FALSE))
 				return left_hand.add_object(I,silent=silent)
 	else
 		if(left_hand)
@@ -506,12 +507,12 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/get_held_left()
 	if(left_hand)
-		return left_hand.get_top_held_object()
+		return left_hand.get_top_object()
 	return null
 
 /mob/living/advanced/proc/get_held_right()
 	if(right_hand)
-		return right_hand.get_top_held_object()
+		return right_hand.get_top_object()
 	return null
 
 

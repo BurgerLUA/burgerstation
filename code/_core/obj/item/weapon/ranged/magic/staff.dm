@@ -90,9 +90,9 @@
 
 	value = 900
 
-/obj/item/weapon/ranged/magic/staff/chaos/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/accuracy)
+/obj/item/weapon/ranged/magic/staff/chaos/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
-	var/num = bullet_num/bullet_count
+	var/num = bullet_num/bullet_num_max
 
 	var/norm_x = initial_offset_x + sin(num*360)
 	var/norm_y = initial_offset_y + cos(num*360)
@@ -127,6 +127,7 @@
 
 	value = 1000
 
+/*
 /obj/item/weapon/ranged/magic/staff/focus
 
 	name = "Staff of the Rift"
@@ -145,6 +146,7 @@
 	ranged_damage_type = /damagetype/ranged/magic/chaos
 
 	shoot_sounds = list('sound/weapons/magic/teleport_out.ogg')
+*/
 
 /obj/item/weapon/ranged/magic/staff/blackflame
 	name = "Staff of the Blackflame"

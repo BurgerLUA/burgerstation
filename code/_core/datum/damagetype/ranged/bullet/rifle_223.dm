@@ -25,7 +25,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*2
+		PIERCE = AP_AXE*3
 	)
 
 /damagetype/ranged/bullet/rifle_556mm
@@ -55,7 +55,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*2
+		PIERCE = AP_AXE*3
 	)
 
 /damagetype/ranged/bullet/rifle_545mm
@@ -69,6 +69,21 @@
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		PIERCE = AP_SWORD
+	)
+
+	falloff = VIEW_RANGE + ZOOM_RANGE
+
+/damagetype/ranged/bullet/rifle_545mm/ap
+	name = "AP 5.45mm rifle bullet"
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		PIERCE = DAMAGE_SWORD*0.75
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		PIERCE = AP_SWORD*3
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE

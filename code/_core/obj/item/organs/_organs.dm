@@ -72,16 +72,22 @@
 /obj/item/organ/proc/get_defense_rating()
 	return defense_rating
 
+/obj/item/organ/proc/send_pain(var/pain_amount=50)
+	var/mob/living/advanced/A = loc
+	if(!A.send_pain(pain_amount))
+		return FALSE
+	on_pain()
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
+		O.on_pain()
+	return TRUE
+
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(is_advanced(loc) && has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
-		health.adjust_loss(PAIN,damage_amount*0.5)
 		var/mob/living/advanced/A = loc
-		if(!A.dead && A.send_pain(damage_amount))
-			on_pain()
-			for(var/k in attached_organs)
-				var/obj/item/organ/O = k
-				O.on_pain()
+		if(!A.dead)
+			send_pain(damage_amount)
 
 	return ..()
 
@@ -150,7 +156,7 @@
 	if(inventories)
 		for(var/v in inventories)
 			var/obj/hud/inventory/I = v
-			I.drop_all_objects(T)
+			I.drop_objects(T)
 
 	if(attached_organ)
 		attached_organ.attached_organs -= src
@@ -231,7 +237,7 @@ obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
 	return TRUE
 
-obj/item/organ/proc/get_damage_description()
+obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 
 	if(!health)
 		return list()
@@ -240,37 +246,50 @@ obj/item/organ/proc/get_damage_description()
 
 	switch(health.damage[BRUTE])
 		if(5 to 15)
-			damage_desc += "bruised"
+			damage_desc += "<i>bruised<i/>"
 		if(15 to 25)
 			damage_desc += "battered"
 		if(25 to 50)
-			damage_desc += "crushed"
+			damage_desc += "<b>crushed</b>"
 		if(50 to INFINITY)
-			damage_desc += "mangled"
+			damage_desc += "<u><b>mangled</b></u>"
 
 	switch(health.damage[BURN])
 		if(5 to 15)
-			damage_desc += "blistered"
+			damage_desc += "<i>blistered<i/>"
 		if(15 to 25)
 			damage_desc += "burned"
 		if(25 to 50)
-			damage_desc += "scorched"
+			damage_desc += "<b>scorched</b>"
 		if(50 to INFINITY)
-			damage_desc += "charred"
+			damage_desc += "<u><b>charred</b></u>"
 
-	if(bleeding >= 1)
-		damage_desc += "<b>bleeding</b>"
+	switch(health.damage[PAIN])
+		if(5 to 15)
+			damage_desc += "<i>tender<i/>"
+		if(15 to 25)
+			damage_desc += "sore"
+		if(25 to 50)
+			damage_desc += "<b>stinging</b>"
+		if(50 to INFINITY)
+			damage_desc += "<u><b>hurting</b></u>"
 
-	/*
-	if(health.damage[OXY])
-		damage_desc += "pale"
+	switch(health.damage[RAD])
+		if(15 to 25)
+			damage_desc += "glowing"
+		if(25 to 50)
+			damage_desc += "<b>pulsating</b>"
+		if(50 to INFINITY)
+			damage_desc += "<u><b>mutating</b></u>"
 
-	if(health.damage[TOX])
-		damage_desc += "sickly"
 
-	if(health.damage[FATIGUE])
-		damage_desc += "limp"
-	*/
+	switch(bleeding)
+		if(1 to 2)
+			damage_desc += "trickling blood"
+		if(2 to 4)
+			damage_desc += "<b>bleeding</b>"
+		if(4 to INFINITY)
+			damage_desc += "<u><b>gushing blood</b></u>"
 
 	return damage_desc
 

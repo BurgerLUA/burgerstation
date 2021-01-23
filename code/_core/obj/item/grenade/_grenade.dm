@@ -17,25 +17,26 @@
 
 	value = 15
 
-	qdelete_immune = TRUE
+	queue_delete_immune = TRUE
 
 	weight = 1
 
 /obj/item/grenade/Destroy()
+
+	QDEL_NULL(stored_trigger)
 
 	for(var/k in stored_containers)
 		var/obj/item/I = k
 		qdel(I)
 	stored_containers.Cut()
 
-	QDEL_NULL(stored_trigger)
-
 	return ..()
 
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
-	. = ..()
-	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
 
+	. = ..()
+
+	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
 
 	if(length(stored_containers))
 		.["stored_containers"] = list()
@@ -65,7 +66,10 @@
 	if(source == src)
 		alpha = 0
 		mouse_opacity = 0
+		queue_delete_immune = FALSE
 		queue_delete(src,60)
+		if(!isturf(src.loc)) drop_item(get_turf(src))
+		if(stored_trigger) stored_trigger.active = FALSE
 	else
 		trigger(owner,source,-1,-1)
 
@@ -111,6 +115,8 @@
 
 /obj/item/grenade/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+
 	if(stored_trigger)
 		stored_trigger.click_self(caller)
 
@@ -122,8 +128,6 @@
 
 /obj/item/grenade/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	object = object.defer_click_on_object(location,control,params)
 
 	if(!open)
@@ -133,44 +137,56 @@
 		var/obj/hud/inventory/I = object
 
 		if(length(stored_containers))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			var/obj/item/container/beaker/selected_beaker = stored_containers[length(stored_containers)]
-			if(I.add_held_object(selected_beaker))
-				caller.to_chat(span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
+			if(I.add_object(selected_beaker))
+				caller.visible_message(span("notice","\The [caller.name] removes \the [selected_beaker.name] from \the [src.name]."),span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
 				stored_containers -= selected_beaker
 				update_sprite()
 			else
-				caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
+				caller.to_chat(span("warning","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
 			return TRUE
 
 		if(stored_trigger)
-			if(I.add_held_object(stored_trigger))
-				caller.to_chat(span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			if(I.add_object(stored_trigger))
+				caller.to_chat(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 				stored_trigger = null
 				update_sprite()
 			else
-				caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
+				caller.to_chat(span("warning","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
 			return TRUE
 
 	else if(is_beaker(object))
-		if(length(stored_containers) < max_containers)
-			var/obj/item/container/beaker/B = object
-			B.drop_item(src)
-			stored_containers += B
-			caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
-			update_sprite()
-		else
-			caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		if(length(stored_containers) >= max_containers)
+			caller.to_chat(span("warning","You can't fit \the [object.name] in!"))
+			return TRUE
+		var/obj/item/container/beaker/B = object
+		B.drop_item(src)
+		stored_containers += B
+		caller.to_chat(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+		update_sprite()
 		return TRUE
 
 	else if(is_trigger(object))
-		if(!stored_trigger)
-			var/obj/item/device/T = object
-			T.drop_item(src)
-			stored_trigger = T
-			caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
-			update_sprite()
-		else
-			caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		if(stored_trigger)
+			caller.to_chat(span("warning","There is already a [stored_trigger.name] inside \the [src.name]!"))
+			return TRUE
+		var/obj/item/device/T = object
+		T.drop_item(src)
+		stored_trigger = T
+		caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+		update_sprite()
 		return TRUE
 
 	return ..()

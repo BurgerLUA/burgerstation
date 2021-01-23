@@ -22,7 +22,7 @@
 	. = ..()
 
 	var/turf/T = get_turf(src)
-	. *= max(1,2 - T.darkness)
+	. *= max(1,2 - T.lightness)
 	if(ai && ai.objective_attack)
 		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
 

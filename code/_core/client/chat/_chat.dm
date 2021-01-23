@@ -60,9 +60,11 @@
 				var/turf/T = get_turf(R)
 				if(T == source_turf)
 					R.on_listen(speaker,source,text_to_say,language_text_to_say,TEXT_TALK,R.frequency,language,talk_range)
+					if(speaker.is_player_controlled()) log_chat("RADIO [frequency_to_name(R.frequency)]: [speaker.get_log_name()]: [text_to_say]")
 					break
 		if(TEXT_TALK)
 			use_ears(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
+			if(speaker.is_player_controlled()) log_chat("TALK: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_mobs_with_clients)
@@ -102,7 +104,6 @@
 		var/area/A = get_area(source)
 		if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
 			new/obj/effect/chat_text(source,language_text_to_say)
-
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
 

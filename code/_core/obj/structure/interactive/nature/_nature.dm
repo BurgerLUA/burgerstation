@@ -10,12 +10,6 @@ obj/structure/scenery/grass_bush/New()
 	..()
 	icon_state = "grassybush_[rand(1,4)]"
 
-
-obj/structure/scenery/grass_bush/clicked_on_by_object(caller,object,location,control,params)
-	//Give loot
-
-	return TRUE
-
 obj/structure/scenery/flowers
 	name = "flowers"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'

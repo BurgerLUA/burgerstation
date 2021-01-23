@@ -30,10 +30,6 @@
 
 	attribute_damage = list()
 
-	bonus_experience = list(
-		SKILL_RANGED = 100 //100%
-	)
-
 	skill_damage = list()
 
 	throw_mul = 0.25

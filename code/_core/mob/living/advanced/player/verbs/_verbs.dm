@@ -27,9 +27,9 @@
 	else if(can_save(A))
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && can_save(A))
-			mobdata.save_character(src)
-			client.make_ghost(get_turf(src))
-			qdel(src)
+			force_logout()
 			return TRUE
 
 	return FALSE
+
+

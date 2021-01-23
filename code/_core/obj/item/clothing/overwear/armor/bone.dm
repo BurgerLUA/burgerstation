@@ -1,4 +1,4 @@
-/obj/item/clothing/overwear/armor/bone_armor
+/obj/item/clothing/overwear/armor/bone
 	name = "bone armor"
 	icon = 'icons/obj/item/clothing/suit/bone_armor.dmi'
 	desc = "I've got a BONE to pick with ya!"

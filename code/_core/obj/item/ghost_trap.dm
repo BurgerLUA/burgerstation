@@ -56,8 +56,11 @@
 
 /obj/item/ghost_box/click_self(var/mob/caller)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
 	if(stored_ghost)
-		caller.to_chat(span("notice","\The [src.name] is locked!."))
+		caller.to_chat(span("warning","\The [src.name] is locked!."))
 	else if(active)
 		caller.to_chat(span("notice","You turn off \the [src.name]."))
 		active = FALSE

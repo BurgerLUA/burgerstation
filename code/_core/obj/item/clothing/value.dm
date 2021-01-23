@@ -5,17 +5,17 @@ var/global/list/defense_rating_to_value = list(
 	BLUNT = 8.1,
 	PIERCE = 8.1,
 	LASER = 8.1,
-	MAGIC = 10.1,
-	HEAT = 11.6,
-	COLD = 11.6,
+	ARCANE = 20,
+	HEAT = 16.2,
+	COLD = 16.2,
 	BOMB = 16.2,
 	BIO = 17.9,
 	RAD = 16.2,
-	HOLY = 10.1,
-	DARK = 10.1,
-	FATIGUE = 27,
-	ION = 27,
-	PAIN = 27
+	HOLY = 20,
+	DARK = 20,
+	FATIGUE = 50,
+	ION = 50,
+	PAIN = 50
 )
 
 var/global/list/limbs_to_value = list(
@@ -32,19 +32,15 @@ var/global/list/limbs_to_value = list(
 	BODY_FOOT_RIGHT = 0.1
 )
 
-/obj/item/clothing/proc/generate_value()
+/obj/item/clothing/get_base_value()
 
-	value = 0
+	. = 0
 
 	for(var/defense_type in defense_rating)
 		var/defense_value = defense_rating[defense_type]
 		if(!defense_value || defense_value < 0)
 			continue
-		if(IS_INFINITY(defense_value))
-			value += 500
-			continue
-
-		value += (defense_value**2)/defense_rating_to_value[defense_type]
+		. += (min(200,defense_value)**2)/defense_rating_to_value[defense_type]
 
 	var/base_multiplier = 0
 
@@ -52,6 +48,10 @@ var/global/list/limbs_to_value = list(
 		var/limb_zone_value = limbs_to_value[limb_zone]
 		base_multiplier += limb_zone_value
 
-	value = CEILING(max(value*base_multiplier,10),1)
+	. = CEILING(max(.*base_multiplier,10),1)
 
-	return TRUE
+	// https://www.desmos.com/calculator/mzuyizloap
+	if(is_container)
+		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.35
+
+	return .

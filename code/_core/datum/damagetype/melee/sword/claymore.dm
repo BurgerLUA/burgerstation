@@ -3,8 +3,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_AXE*0.3,
-		PIERCE = DAMAGE_AXE*0.1,
+		BLADE = DAMAGE_AXE*0.3*BASE_MELEE_MUL,
+		PIERCE = DAMAGE_AXE*0.1*BASE_MELEE_MUL,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -39,9 +39,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_CLUB*0.2,
-		PIERCE = DAMAGE_CLUB*0.1,
-		DARK = DAMAGE_CLUB*0.2
+		BLADE = DAMAGE_CLUB*0.2*BASE_MELEE_MUL,
+		PIERCE = DAMAGE_CLUB*0.1*BASE_MELEE_MUL,
+		DARK = DAMAGE_CLUB*0.2*BASE_MELEE_MUL
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -69,6 +69,11 @@
 	skill_damage = list(
 		SKILL_MELEE = list(BLADE,PIERCE),
 		SKILL_PRAYER = DARK
+	)
+
+	bonus_experience = list(
+		SKILL_MELEE = 25, //25%
+		SKILL_PRAYER = 25
 	)
 
 	attack_delay = SPEED_CLUB*0.5

@@ -36,3 +36,5 @@ SUBSYSTEM_DEF(thinking)
 
 	return TRUE
 
+/proc/is_thinking(var/atom/A)
+	return SSthinking.all_thinkers[A]

@@ -5,6 +5,8 @@
 	corner_icons = TRUE
 	corner_category = "brick"
 
+	destruction_turf = /turf/simulated/floor/plating
+
 /turf/simulated/wall/brick/red
 	color = "#C66B59"
 

@@ -26,8 +26,8 @@
 
 /obj/item/clothing/head/helmet/full/nanotrasen/light/deathsquad
 	polymorphs = list(
-		"helmet_light" = COLOR_BLACK,
-		"visor_light" = COLOR_RED
+		"helmet_light" = COLOR_DEATHSQUAD_BLACK,
+		"visor_light" = COLOR_DEATHSQUAD_RED
 	)
 
 
@@ -51,8 +51,8 @@
 
 /obj/item/clothing/head/helmet/full/nanotrasen/medium/deathsquad
 	polymorphs = list(
-		"helmet_medium" = COLOR_BLACK,
-		"visor_medium" = COLOR_RED
+		"helmet_medium" = COLOR_DEATHSQUAD_BLACK,
+		"visor_medium" = COLOR_DEATHSQUAD_RED
 	)
 
 
@@ -76,6 +76,6 @@
 
 /obj/item/clothing/head/helmet/full/nanotrasen/heavy/deathsquad
 	polymorphs = list(
-		"helmet_heavy" = COLOR_BLACK,
-		"visor_heavy" = COLOR_RED
+		"helmet_heavy" = COLOR_DEATHSQUAD_BLACK,
+		"visor_heavy" = COLOR_DEATHSQUAD_RED
 	)

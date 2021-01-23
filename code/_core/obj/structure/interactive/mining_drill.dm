@@ -43,13 +43,15 @@
 /obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(THINKING(src))
 		deactivate(caller)
 	else
 		activate(caller)
 
-	return ..()
+	return TRUE
 
 /obj/structure/interactive/mining_drill/post_move()
 	drill_depth = 0
@@ -61,7 +63,7 @@
 		caller.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
 		return FALSE
 	if(caller)
-		visible_message(span("notice","\The [caller.name] activates \the [src.name]."))
+		visible_message(span("notice","\The [caller.name] activates \the [src.name]."),span("notice","You activate \the [src.name]."))
 	else
 		visible_message(span("warning","\The [src.name] powers up on its own!."))
 	set_anchored(TRUE)
@@ -71,7 +73,7 @@
 
 /obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
 	if(caller)
-		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."))
+		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."),span("notice","You turn off \the [src.name]."))
 	else
 		visible_message(span("warning","\The [src.name] shuts itself down!"))
 	set_anchored(FALSE)
@@ -144,12 +146,14 @@
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)
 			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
 		else
-			caller.to_chat(span("notice","You rotate \the [src.name]."))
+			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 		return TRUE
 

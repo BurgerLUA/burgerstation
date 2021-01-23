@@ -117,7 +117,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.05 : 0) + 5)*.
+		L.tox_regen_buffer += ((L.health ? L.health.get_loss(TOX)*0.05 : 0) + 5)*.
 
 	return .
 
@@ -126,7 +126,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.04 : 0) + 4)*.
+		L.tox_regen_buffer += ((L.health ? L.health.get_loss(TOX)*0.04 : 0) + 4)*.
 
 
 	return .
@@ -272,9 +272,9 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(burn=.*-10,robotic=FALSE)
-		if(is_living(container.owner.loc))
-			var/mob/living/L = container.owner.loc
-			L.do_emote("scream")
+		if(is_organ(container.owner))
+			var/obj/item/organ/O = container.owner
+			O.send_pain(50)
 
 	return .
 
@@ -328,9 +328,9 @@
 	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(brute=.*-10,robotic=FALSE)
-		if(is_living(container.owner.loc))
-			var/mob/living/L = container.owner.loc
-			L.do_emote("scream")
+		if(is_organ(container.owner))
+			var/obj/item/organ/O = container.owner
+			O.send_pain(50)
 
 	return .
 

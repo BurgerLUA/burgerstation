@@ -12,3 +12,5 @@
 	)
 
 	impact_sounds = null
+
+	target_floors = TRUE

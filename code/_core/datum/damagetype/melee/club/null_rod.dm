@@ -2,7 +2,7 @@
 	name = "null rod"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_SWORD*0.2,
+		BLUNT = DAMAGE_SWORD*0.2*BASE_MELEE_MUL,
 		HOLY = 0
 	)
 
@@ -27,6 +27,11 @@
 	skill_damage = list(
 		SKILL_MELEE = BLUNT,
 		SKILL_PRAYER = HOLY
+	)
+
+	bonus_experience = list(
+		SKILL_MELEE = 25, //25%
+		SKILL_PRAYER = 25
 	)
 
 	attack_delay = SPEED_SWORD*0.5

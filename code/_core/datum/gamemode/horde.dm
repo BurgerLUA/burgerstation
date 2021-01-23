@@ -61,11 +61,6 @@
 			continue
 		horde_targets += O
 
-	for(var/obj/structure/interactive/supermatter/S in world)
-		if(S.z != Z_LEVEL_MISSION)
-			continue
-		priority_targets += S
-
 	return ..()
 
 /gamemode/horde/can_continue()
@@ -84,6 +79,7 @@
 	//Base Objectives.
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+	add_objective(/objective/defense)
 
 	if(player_count >= 10)
 		add_objective(/objective/hostage)
@@ -143,7 +139,14 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	announce("Central Command Update","Prepare for Landfall","All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 8 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_8_minutes.ogg')
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*10 + 10)
+	announce(
+		"Central Command Update",
+		"Prepare for Landfall",
+		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 10 minutes.",
+		ANNOUNCEMENT_STATION,
+		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
+	)
 	add_objectives()
 	return TRUE
 
@@ -156,7 +159,13 @@
 	state = GAMEMODE_BOARDING
 	round_time = 0
 	round_time_next = HORDE_DELAY_BOARDING
-	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_2_minutes.ogg')
+	announce(
+		"Central Command Update",
+		"Shuttle Boarding",
+		"All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",
+		ANNOUNCEMENT_STATION,
+		'sound/voice/announcement/landfall_crew_2_minutes.ogg'
+	)
 	return TRUE
 
 /gamemode/horde/proc/on_boarding()
@@ -168,8 +177,9 @@
 	state = GAMEMODE_LAUNCHING
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
-	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
+	announce("Central Command Mission Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	allow_launch = TRUE
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(10)
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
@@ -180,44 +190,12 @@
 		return TRUE
 	state = GAMEMODE_FIGHTING
 	round_time = 0
+	for(var/k in all_fog)
+		var/obj/effect/fog_of_war/F = k
+		F.remove()
+	for(var/objective/O in crew_active_objectives)
+		O.on_gamemode_playable()
 	return TRUE
-
-/gamemode/horde/proc/get_wave_frequency()
-
-	var/player_count = length(all_clients)
-
-	switch(player_count)
-		if(0 to 10)
-			return SECONDS_TO_DECISECONDS(60)
-		if(10 to 20)
-			return SECONDS_TO_DECISECONDS(45)
-		if(20 to 30)
-			return SECONDS_TO_DECISECONDS(30)
-		if(30 to INFINITY)
-			return SECONDS_TO_DECISECONDS(15)
-
-	return SECONDS_TO_DECISECONDS(60)
-
-/gamemode/horde/proc/get_wave_size()
-
-	var/player_count = length(all_clients)
-
-	switch(player_count)
-		if(0 to 10)
-			return 3
-		if(10 to 20)
-			return 4
-		if(20 to 30)
-			return 5
-		if(30 to INFINITY)
-			return 6
-
-	return 4
-
-
-
-/gamemode/horde/proc/get_enemy_types_to_spawn()
-	return enemy_types_to_spawn
 
 /gamemode/horde/proc/on_fighting()
 
@@ -265,6 +243,52 @@
 		tracked_enemies += L
 		points -= 0.1
 
+	for(var/k in tracked_enemies)
+		var/mob/living/L = k
+		if(!istype(L) || L.dead || L.qdeleting) //TODO: Remove these checks
+			log_error("Warning: [k] was invalid tracked enemy!")
+			tracked_enemies -= k
+			continue
+		if(L.ai && !L.ai.current_path)
+			L.ai.set_path(found_path)
+
+/gamemode/horde/proc/get_wave_frequency()
+
+	var/player_count = length(all_clients)
+
+	switch(player_count)
+		if(0 to 10)
+			return SECONDS_TO_DECISECONDS(60)
+		if(10 to 20)
+			return SECONDS_TO_DECISECONDS(45)
+		if(20 to 30)
+			return SECONDS_TO_DECISECONDS(30)
+		if(30 to INFINITY)
+			return SECONDS_TO_DECISECONDS(15)
+
+	return SECONDS_TO_DECISECONDS(60)
+
+/gamemode/horde/proc/get_wave_size()
+
+	var/player_count = length(all_clients)
+
+	switch(player_count)
+		if(0 to 10)
+			return 3
+		if(10 to 20)
+			return 4
+		if(20 to 30)
+			return 5
+		if(30 to INFINITY)
+			return 6
+
+	return 4
+
+
+
+/gamemode/horde/proc/get_enemy_types_to_spawn()
+	return enemy_types_to_spawn
+
 /gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
 
 	for(var/k in SSholiday.holidays)
@@ -293,6 +317,11 @@
 /gamemode/horde/proc/find_horde_target()
 
 	var/picks_remaining = 3
+
+	for(var/k in priority_targets)
+		var/atom/A = k
+		if(A.qdeleting)
+			priority_targets -= k
 
 	while(picks_remaining > 0)
 		picks_remaining--

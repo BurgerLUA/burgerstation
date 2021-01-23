@@ -16,8 +16,10 @@
 	layer = LAYER_OBJ_WINDOW - 0.1
 
 /obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/caller,var/obj/item/material/sheet/S)
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(S)
+
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(S)
+
 	if(istype(src.loc,/obj/structure/smooth/window/))
 		caller.to_chat(span("warning","There is already a window here!"))
 		return FALSE
@@ -33,19 +35,21 @@
 	INITIALIZE(W)
 	GENERATE(W)
 	FINALIZE(W)
-	caller.to_chat(span("notice","You place \the [W]."))
+	caller?.visible_message(span("notice","\The [caller.name] places \the [W.name]."),span("notice","You place \the [W.name]."))
 	S.add_item_count(-4)
 	return TRUE
 
 /obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(istype(A,/obj/item/material/sheet/glass))
-		var/obj/item/material/sheet/S = A
+	if(istype(object,/obj/item/material/sheet))
+		var/obj/item/material/sheet/S = object
 		if(ispath(S.material_id,/material/glass))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_window,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_window,caller,object)
 			return TRUE

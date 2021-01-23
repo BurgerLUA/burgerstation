@@ -228,31 +228,15 @@
 
 	var/distance_check = possible_target ? get_dist(owner,possible_target) : VIEW_RANGE
 
-	for(var/obj/item/weapon/W in A.worn_objects)
+	var/list/lists_to_check = A.worn_objects + A.held_objects
+
+	for(var/obj/item/weapon/W in lists_to_check)
+
 		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = W
-			if(!M.stored_magazine)
-				continue
+			if(!M.stored_magazine) continue
 
-		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 2 : 1)
-
-		if(!best_weapon || !best_weapon_value)
-			best_weapon = W
-			best_weapon_value = weapon_value
-			continue
-
-		if(weapon_value > best_weapon_value)
-			best_weapon = W
-			best_weapon_value = weapon_value
-			continue
-
-	for(var/obj/item/weapon/W in A.held_objects)
-		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
-			var/obj/item/weapon/ranged/bullet/magazine/M = W
-			if(!M.stored_magazine)
-				continue
-
-		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 2 : 1)
+		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 4 : 1)
 
 		if(!best_weapon || !best_weapon_value)
 			best_weapon = W
@@ -273,13 +257,13 @@
 	. = FALSE
 
 	if(A.right_hand && !A.right_item)
-		A.right_hand.add_held_object(W,FALSE)
+		A.right_hand.add_object(W,FALSE)
 		. = TRUE
 		if(W.can_wield && !W.wielded && A.left_hand && !A.left_item)
 			A.left_hand.wield(A,W)
 
 	else if(A.left_hand && !A.left_hand.parent_inventory && !A.left_item)
-		A.left_hand.add_held_object(W,FALSE)
+		A.left_hand.add_object(W,FALSE)
 		. = TRUE
 
 	if(. && istype(W,/obj/item/weapon/melee/energy))

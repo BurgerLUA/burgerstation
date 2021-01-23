@@ -18,10 +18,10 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = 6
-	container_held_slots = 6
+	container_max_slots = 6
 
 /obj/item/storage/ammo/bullet_22/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/pistol_22(src)
 	return ..()
 
@@ -33,10 +33,10 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_1*6
-	container_held_slots = 6
+	container_max_slots = 6
 
 /obj/item/storage/ammo/slug/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/slug(src)
 	return ..()
 
@@ -47,10 +47,10 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_1*6
-	container_held_slots = 6
+	container_max_slots = 6
 
 /obj/item/storage/ammo/buckshot/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/buckshot(src)
 	return ..()
 
@@ -62,10 +62,10 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_1*6
-	container_held_slots = 6
+	container_max_slots = 6
 
 /obj/item/storage/ammo/flechette/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/flechette(src)
 	return ..()
 
@@ -78,10 +78,10 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_1*6
-	container_held_slots = 6
+	container_max_slots = 6
 
 /obj/item/storage/ammo/fire/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/fire(src)
 	return ..()
 
@@ -93,10 +93,10 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_1*4
-	container_held_slots = 4
+	container_max_slots = 4
 
 /obj/item/storage/ammo/buckshot_23/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_23/buckshot(src)
 	return ..()
 
@@ -107,9 +107,23 @@
 
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_1*4
-	container_held_slots = 4
+	container_max_slots = 4
 
 /obj/item/storage/ammo/slug_23/fill_inventory()
-	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_23/slug(src)
+	return ..()
+
+/obj/item/storage/ammo/grenade_40mm
+	name = "box of 40mm grenades"
+	desc_extended = "An ammo box that can hold 8 40mm high-explosive grenades."
+	icon_state = "40mm"
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1*4
+	container_max_slots = 2
+
+/obj/item/storage/ammo/grenade_40mm/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/grenade_40mm/(src)
 	return ..()

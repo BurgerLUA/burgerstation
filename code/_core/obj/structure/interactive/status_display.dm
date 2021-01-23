@@ -107,3 +107,10 @@ var/global/list/global_status_displays = list()
 	desc = "ASS BLAST USA"
 	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Elevator."
 	status_id = "lz420_elevator"
+
+/obj/structure/interactive/status_display/global_display/drop_pod
+	name = "drop pod status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the next drop pod cluster launch."
+	frame_color = "#2E00AF"
+	status_id = "drop_pod"

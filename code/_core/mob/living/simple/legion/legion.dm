@@ -15,7 +15,7 @@
 
 	value = 500
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	var/mob/living/advanced/stored_corpse = /mob/living/advanced/npc/nanotrasen/shaft_miner
 
@@ -23,7 +23,7 @@
 
 	var/list/mob/living/simple/legionare_head/tracked_heads = list()
 
-	var/head_limit = 3
+	var/head_limit = 2
 	var/next_head = 0
 
 	var/clone=FALSE
@@ -37,7 +37,7 @@
 
 	armor_base = list(
 		LASER = AP_GREATSWORD,
-		MAGIC = AP_GREATSWORD,
+		ARCANE = AP_GREATSWORD,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
 		BOMB = -AP_AXE,
@@ -71,6 +71,9 @@
 		return FALSE
 
 	if(length(tracked_heads) >= head_limit)
+		return FALSE
+
+	if(istype(stored_corpse) && stored_corpse.ckey_last)
 		return FALSE
 
 	var/mob/living/simple/legionare_head/L = new head_type(get_turf(src))

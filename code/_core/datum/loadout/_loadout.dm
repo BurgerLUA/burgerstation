@@ -32,8 +32,11 @@
 		for(var/obj/item/magazine/M in found_magazines)
 			if(!M.weapon_whitelist[R.type])
 				continue
-			M.click_on_object(null,R)
-			R.click_self()
+			M.drop_item(R)
+			R.stored_magazine = M
+			R.open = FALSE
+			R.load_new_bullet_from_magazine(A)
+			R.update_sprite()
 			found_magazines -= M
 			break
 

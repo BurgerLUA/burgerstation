@@ -38,17 +38,23 @@
 	object = object.defer_click_on_object(location,control,params)
 
 	if(battery && is_inventory(object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/hud/inventory/I = object
-		if(I.add_held_object(battery))
-			caller.to_chat(span("notice","You remove \the [battery.name] from \the [src.name]."))
+		if(I.add_object(battery))
+			caller.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
 			battery.update_sprite()
 			battery = null
 		else
-			caller.to_chat(span("notice","You can't seem to remove \the [battery.name] from \the [src.name]!"))
+			caller.to_chat(span("warning","You can't seem to remove \the [battery.name] from \the [src.name]!"))
 		update_sprite()
 		return TRUE
 
 	if(istype(object,/obj/item/powercell))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/item/PC = object
 		if(PC.size > SIZE_3) //Only fits size 3.
 			caller.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))
@@ -128,7 +134,7 @@
 		return FALSE
 
 	if(!charging_device)
-		visible_message(span("notice","\The [src.name] gives a bright ding."))
+		visible_message(span("notice","\The [src.name] emits a bright ding."))
 		return FALSE
 
 	return .

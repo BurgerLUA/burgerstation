@@ -30,16 +30,18 @@ var/global/list/local_machines = list()
 		var/mob/M = k
 		update_for_mob(M)
 
-/obj/structure/interactive/localmachine/clicked_on_by_object(caller,object,location,control,params)
-
-	INTERACT_CHECK
+/obj/structure/interactive/localmachine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(ismob(caller))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
 		var/mob/M = caller
 		disallowed_mobs += M
 		clear_existing_images(M)
+		return TRUE
 
-	return TRUE
+	return ..()
 
 
 /obj/structure/interactive/localmachine/proc/clear_existing_images(var/mob/M)

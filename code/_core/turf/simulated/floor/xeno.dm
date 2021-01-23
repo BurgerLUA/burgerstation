@@ -3,6 +3,8 @@
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "xeno"
+	desc = "Floor for xenos"
+	desc_extended = "No, you can't smoke the resin floors."
 
 	real_icon = 'icons/turf/floor/resin_1.dmi'
 	real_icon_state = "floor"
@@ -15,6 +17,8 @@
 	var/glow = FALSE
 
 	layer = LAYER_FLOOR_DECAL
+
+	destruction_turf = /turf/simulated/floor/cave_dirt/
 
 /turf/simulated/floor/xeno/New(var/desired_loc)
 

@@ -40,7 +40,7 @@
 	)
 
 	butcher_contents = list(
-		/obj/item/clothing/overwear/armor/bone_armor,
+		/obj/item/clothing/overwear/armor/bone,
 		/obj/item/soapstone/orange,
 		/obj/item/weapon/ranged/magic/tome/summon/goliath
 	)

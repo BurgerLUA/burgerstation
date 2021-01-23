@@ -78,10 +78,34 @@
 
 	. = ..()
 
-	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
-	attachment_barrel = new /obj/item/attachment/barrel/compensator(src)
+	if(prob(50))
+		attachment_barrel = pick(\
+			/obj/item/attachment/barrel/charger,\
+			/obj/item/attachment/barrel/compensator,\
+			/obj/item/attachment/barrel/extended,\
+			/obj/item/attachment/barrel/gyro,\
+			/obj/item/attachment/barrel/suppressor\
+		)
+	if(prob(50))
+		attachment_sight = pick(\
+			/obj/item/attachment/sight/laser_sight,\
+			/obj/item/attachment/sight/quickfire_adapter,\
+			/obj/item/attachment/sight/red_dot\
+		)
 
-	update_sprite()
+	if(prob(50))
+		attachment_undermount = pick(\
+			/obj/item/attachment/undermount/angled_grip,\
+			/obj/item/attachment/undermount/bipod,\
+			/obj/item/attachment/undermount/burst_adapter,\
+			/obj/item/attachment/undermount/vertical_grip\
+		)
+
+	if(attachment_barrel) attachment_barrel = new attachment_barrel(src)
+	if(attachment_sight) attachment_sight = new attachment_sight(src)
+	if(attachment_undermount) attachment_undermount = new attachment_undermount(src)
+
 	update_attachment_stats()
+	update_sprite()
 
 	return .

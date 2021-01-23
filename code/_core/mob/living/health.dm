@@ -71,7 +71,7 @@
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2 + SAFENUM(damage_table[BLUNT])*0.5 + SAFENUM(damage_table[PIERCE])
 
-	if(blood_type && total_bleed_damage && should_bleed() && (luck(src,total_bleed_damage,FALSE) || (atom_damaged && atom_damaged.health && luck(src,atom_damaged.health.get_brute_loss()*5,FALSE))))
+	if(blood_type && total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)
@@ -91,16 +91,17 @@
 				if(!create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,offset_x,offset_y))
 					break
 
-			for(var/i=1,i<=total_bleed_damage*0.1,i++)
-				create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32))
+			for(var/i=1,i<=total_bleed_damage/10,i++)
+				if(!create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
+					break
 
 			if(health && total_bleed_damage)
-				blood_volume -= FLOOR(total_bleed_damage*0.05,1)
+				blood_volume -= FLOOR(total_bleed_damage*0.03,1)
 				queue_health_update = TRUE
 
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
-			var/bleed_to_add = 1 + total_bleed_damage*0.002
+			var/bleed_to_add = total_bleed_damage/25
 			O.bleeding += bleed_to_add
 
 	if(ai)
@@ -114,12 +115,18 @@
 			PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
 
+	if(!dead && has_status_effect(STAGGER))
+		var/stagger_duration = get_status_effect_duration(STUN)*2
+		var/stagger_magnitude = get_status_effect_magnitude(STUN)*2
+		remove_status_effect(STAGGER)
+		add_status_effect(STUN,stagger_magnitude,stagger_duration)
+
 	return .
 
 /mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OTHER(butchering_item)
+	INTERACT_CHECK_NO_DELAY(src)
+	INTERACT_CHECK_NO_DELAY(butchering_item)
 
 	if(!src.dead)
 		to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))

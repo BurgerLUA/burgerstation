@@ -1,4 +1,4 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	var/total_damage = 0
 
@@ -7,30 +7,34 @@
 
 	var/mob/living/advanced/A = owner
 
-	if(brute > 0 || burn > 0 || pain > 0) //Deal damage.
+	if(brute > 0 || burn > 0 || pain > 0 || rad > 0) //Deal damage.
 		var/desired_organ = pick(TARGETABLE_LIMBS)
 		if(A.labeled_organs[desired_organ])
 			var/obj/item/O = A.labeled_organs[desired_organ]
 			if(O.health && ((O.health.organic && organic) || (!O.health.organic && robotic)))
-				total_damage = O.health.adjust_loss_smart(brute = brute > 0 ? brute : 0, burn = burn > 0 ? burn : 0, pain = pain > 0 ? pain : 0)
+				total_damage = O.health.adjust_loss_smart(
+					brute = brute > 0 ? brute : 0,
+					burn = burn > 0 ? burn : 0,
+					pain = pain > 0 ? pain : 0,
+					rad = rad > 0 ? rad : 0
+				)
 
 	if((src.organic && organic) || (!src.organic && robotic))
 		if(tox) . += adjust_loss(TOX,tox)
 		if(oxy) . += adjust_loss(OXY,oxy)
 		if(rad) . += adjust_loss(RAD,rad)
 		if(fatigue) . += adjust_loss(FATIGUE,fatigue)
+		if(sanity) . += adjust_loss(SANITY,sanity)
 
-	if(brute < 0 || burn < 0 || pain < 0) //Heal damage
+	if(brute < 0 || burn < 0 || pain < 0 || rad < 0) //Heal damage
+		var/list/damaged_organs = list()
+		var/list/damage_totals = list()
 		var/list/desired_heal_amounts = list(
 			BRUTE = brute < 0 ? -brute : 0,
 			BURN = burn < 0 ? -burn : 0,
-			PAIN = pain < 0 ? -pain : 0
-		) //Tox, Fatigue, and Oxy not included here.
-
-		var/list/damaged_organs = list()
-
-		var/list/damage_totals = list()
-
+			PAIN = pain < 0 ? -pain : 0,
+			RAD = rad < 0 ? -rad : 0
+		)
 		for(var/organ_id in TARGETABLE_LIMBS)
 			var/obj/item/organ/O = A.labeled_organs[organ_id]
 			if(!O)
@@ -68,7 +72,7 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[PAIN])
-				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=FALSE)
+				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=TRUE)
 
 	if(total_damage && update)
 		A.queue_health_update = TRUE
@@ -148,10 +152,10 @@
 		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
 			A.remove_status_effect(CRIT)
 
-		if(damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
+		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
 			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
 
-		else if((damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
+		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
 			A.remove_status_effect(PAINCRIT)
 
 	return .
@@ -189,22 +193,29 @@
 					continue
 				.[damage_type] += C_defense_rating[damage_type]
 
-	if((A.attack_flags & ATTACK_HOLD) && (get_dir(attacker,owner) != owner.dir)) //Do you even block?
-		for(var/damage_type in ALL_DAMAGE)
-			if(IS_INFINITY(.[damage_type]))
-				continue
-			.[damage_type] += 25 //25 extra armor when blocking regardless of item.
+	if((A.attack_flags & CONTROL_MOD_BLOCK) && (turn(get_dir(attacker,owner),180) & owner.dir)) //Do you even block?
 
-		if(A.right_item && A.right_item.can_block() && length(A.right_item.block_defense_rating))
-			for(var/damage_type in A.right_item.block_defense_rating)
+		var/obj/item/item_to_block_with
+
+		if(A.right_item && A.right_item.can_block())
+			if(A.left_item && A.left_item.can_block() && A.left_item.block_defense_value > A.right_item.block_defense_value)
+				item_to_block_with = A.left_item
+			else
+				item_to_block_with = A.right_item
+		else if(A.left_item && A.left_item.can_block())
+			item_to_block_with = A.left_item
+
+		if(item_to_block_with)
+			for(var/damage_type in item_to_block_with.block_defense_rating)
 				if(IS_INFINITY(.[damage_type]))
 					continue
-				.[damage_type] += A.right_item.block_defense_rating[damage_type]
-
-		if(A.left_item && A.left_item.can_block() && length(A.left_item.block_defense_rating))
-			for(var/damage_type in A.left_item.block_defense_rating)
+				.[damage_type] += item_to_block_with.block_defense_rating[damage_type]
+		else
+			for(var/damage_type in ALL_DAMAGE)
 				if(IS_INFINITY(.[damage_type]))
 					continue
-				.[damage_type] += A.left_item.block_defense_rating[damage_type]
+				.[damage_type] += AP_GREATSWORD*0.25 + AP_GREATSWORD*0.75*A.get_skill_power(SKILL_UNARMED)
+
+
 
 	return .

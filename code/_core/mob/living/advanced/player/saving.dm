@@ -33,8 +33,8 @@
 	nutrition_fast = isnum(loaded_data["nutrition_fast"]) ? loaded_data["nutrition_fast"] : 0
 	nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
 	save_id = loaded_data["id"]
-	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 3
-	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 0
+	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 4
+	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
 	if(loaded_data["dead"]) //New body!
@@ -92,17 +92,20 @@
 			S.update_experience(xp)
 
 	if(do_teleport)
-		var/obj/marker/dev/D = locate() in world
-		if(D && ENABLE_INSTALOAD)
-			force_move(get_turf(D))
-			adjust_currency(10000)
-		else
-			var/obj/structure/interactive/bed/sleeper/C = length(cryo_spawnpoints) ? pick(cryo_spawnpoints) : pick(backup_spawnpoints)
+		if(length(cryo_spawnpoints))
+			var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
 			force_move(get_turf(C))
 			C.door_state = SLEEPER_OPENED
 			C.buckle(src,silent=TRUE)
 			C.door_state = SLEEPER_CLOSED
 			C.update_icon()
+		else if(length(backup_spawnpoints))
+			var/obj/marker/backup_spawn/BS = pick(backup_spawnpoints)
+			force_move(get_turf(BS))
+		else
+			var/obj/marker/failsafe/FS = locate() in world
+			force_move(get_turf(FS))
+
 
 	if(update_blends)
 		update_all_blends()

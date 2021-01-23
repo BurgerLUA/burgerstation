@@ -16,7 +16,7 @@
 
 	var/list/aug = params2list(params)
 
-	if(mob && (mob.attack_flags & ATTACK_GRAB) && allow_zoom_controls)
+	if(mob && (mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
 		var/change_in_screen = delta_y > 1 ? 1 : -1
 		if(precise_zoom)
 			change_in_screen *= 0.1

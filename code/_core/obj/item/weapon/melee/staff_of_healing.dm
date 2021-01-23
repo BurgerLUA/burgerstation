@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/staff_of_healing
 	name = "staff of healing"
-	desc = "Who needs medicine when you have PASSIVE MAGIC?"
+	desc = "Who needs medicine when you have PASSIVE ARCANE?"
 	desc_extended = "A glowing magical staff that passively radiates health to all nearby living beings, except the caster, when activated. Also makes for a good blunt force weapon."
 	rarity = RARITY_RARE
 
@@ -18,6 +18,9 @@
 
 
 /obj/item/weapon/melee/staff_of_healing/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 
 	if(!SSthinking.all_thinkers[src])
 		start_thinking(src)
@@ -51,11 +54,11 @@
 			continue
 		if(L.health.health_current >= L.health.health_max)
 			continue
-		if(L.health.get_brute_loss())
+		if(L.health.get_loss(BRUTE))
 			L.brute_regen_buffer += 3
-		if(L.health.get_burn_loss())
+		if(L.health.get_loss(BURN))
 			L.burn_regen_buffer += 3
-		if(L.health.get_tox_loss())
+		if(L.health.get_loss(TOX))
 			L.tox_regen_buffer += 3
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_MEDICAL)
 		INITIALIZE(H)

@@ -1,5 +1,4 @@
-#define BASE_PAY 200
-
+#define BASE_PAY 600
 
 SUBSYSTEM_DEF(payday)
 	name = "Payday Subsystem"
@@ -38,11 +37,11 @@ SUBSYSTEM_DEF(payday)
 			var/tax = CEILING(P.currency * P.insurance_premiums,1)
 			if(tax)
 				var/charged_amount = -P.adjust_currency( -(tax + 50) )
-				P.insurance += FLOOR(charged_amount*0.75,1)
+				P.insurance += FLOOR(charged_amount*1,1)
 				P.to_chat(span("notice","You were taxed your insurance premium of <b>[charged_amount] credits</b>. Your insurance pool is now <b>[P.insurance] credits</b>."))
 				P.update_premiums()
 
-	stored_payday *= 0.5 //Prevents gaming the system.
+	stored_payday *= 0.75 //Prevents gaming the system.
 
 	for(var/k in valid_players)
 		var/mob/living/advanced/player/P = k

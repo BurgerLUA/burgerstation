@@ -27,8 +27,6 @@
 	target_bounds_y_min = 23
 	target_bounds_y_max = 29
 
-	//damage_multiplier = 2
-
 	base_miss_chance = 20
 
 	health_base = 50

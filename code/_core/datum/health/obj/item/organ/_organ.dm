@@ -53,7 +53,7 @@
 
 	return .
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -61,17 +61,26 @@
 	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
 		return 0
 
-	if(tox || oxy || fatigue)
+	if(tox || oxy || fatigue || sanity) //These types should be dealt to the owner.
 		if(owner.loc && is_advanced(owner.loc))
 			var/mob/living/advanced/A = owner.loc
 			if(A.health)
-				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy,fatigue=fatigue)
+				. += A.health.adjust_loss_smart(
+					tox=tox,
+					oxy=oxy,
+					fatigue=fatigue,
+					sanity=sanity,
+					update=update,
+					organic=organic,
+					robotic=robotic
+				)
+
 		tox = 0
 		oxy = 0
 		fatigue = 0
+		sanity = 0
 
-
-	. += ..(brute,burn,tox,oxy,fatigue,pain,rad)
+	. += ..(brute,burn,tox,oxy,fatigue,pain,rad,sanity,update,organic,robotic)
 
 	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
@@ -80,4 +89,5 @@
 	return .
 
 /health/obj/item/organ/synthetic
+	resistance = list(PAIN=0,TOX=0)
 	organic = FALSE

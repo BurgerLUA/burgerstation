@@ -93,7 +93,7 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(is_living(Obj))
 		var/mob/living/L = Obj
 		if(L.ckey != owner_ckey)
-			L.to_chat(span("notice","The DNA lock is preventing you from entering this vehicle!"))
+			L.to_chat(span("warning","The DNA lock is preventing you from entering this vehicle!"))
 			return FALSE
 
 	return ..()
@@ -242,7 +242,7 @@ var/global/list/stored_mechs_by_ckey = list()
 /mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/I)
 
 	if(caller && caller.ckey != owner_ckey)
-		caller.to_chat(span("notice","The DNA lock is preventing you from modifying \the [src.name]!"))
+		caller.to_chat(span("warning","The DNA lock is preventing you from modifying \the [src.name]!"))
 		return FALSE
 
 	if(!mech_arms)
@@ -254,6 +254,8 @@ var/global/list/stored_mechs_by_ckey = list()
 
 /mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
@@ -261,13 +263,13 @@ var/global/list/stored_mechs_by_ckey = list()
 		return FALSE
 
 	if(params["right"])
-		if(left_shoulder && caller.attack_flags & ATTACK_ALT)
+		if(left_shoulder && caller.attack_flags & CONTROL_MOD_ALT)
 			return left_shoulder.click_on_object(caller,object,location,control,params)
 		else if(left_hand)
 			return left_hand.click_on_object(caller,object,location,control,params)
 
 	if(params["left"])
-		if(right_shoulder && caller.attack_flags & ATTACK_ALT)
+		if(right_shoulder && caller.attack_flags & CONTROL_MOD_ALT)
 			return right_shoulder.click_on_object(caller,object,location,control,params)
 		else if(right_hand)
 			return right_hand.click_on_object(caller,object,location,control,params)
@@ -291,7 +293,10 @@ var/global/list/stored_mechs_by_ckey = list()
 			return ..()
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WRENCH)
+
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 
 			var/list/valid_weapons = list()
 
@@ -312,7 +317,6 @@ var/global/list/stored_mechs_by_ckey = list()
 			if(battery)
 				valid_weapons[battery.name] = "battery"
 
-
 			if(length(valid_weapons))
 				valid_weapons["Cancel"] = "Cancel"
 				var/desired_remove = input("What would you like to remove?","Weapon Removal","Cancel") as null|anything in valid_weapons
@@ -322,106 +326,64 @@ var/global/list/stored_mechs_by_ckey = list()
 				if(!caller)
 					return TRUE
 
-				switch(desired_remove) //TODO: Use vars[] for this.
-					if("left_hand")
-						left_hand.drop_item(get_turf(caller))
-						left_hand.update_sprite()
-						left_hand = null
-						update_sprite()
-					if("right_hand")
-						right_hand.drop_item(get_turf(caller))
-						right_hand.update_sprite()
-						right_hand = null
-						update_sprite()
-					if("left_shoulder")
-						left_shoulder.drop_item(get_turf(caller))
-						left_shoulder.update_sprite()
-						left_shoulder = null
-						update_sprite()
-					if("right_shoulder")
-						right_shoulder.drop_item(get_turf(caller))
-						right_shoulder.update_sprite()
-						right_shoulder = null
-						update_sprite()
-					if("back")
-						back.drop_item(get_turf(caller))
-						back.update_sprite()
-						back = null
-						update_sprite()
-					if("head")
-						head.drop_item(get_turf(caller))
-						head.update_sprite()
-						head = null
-						update_sprite()
-					if("chest")
-						chest.drop_item(get_turf(caller))
-						chest.update_sprite()
-						chest = null
-						update_sprite()
-					if("battery")
-						battery.drop_item(get_turf(caller))
-						battery.update_sprite()
-						battery = null
-						update_sprite()
-					if("Cancel")
-						caller.to_chat(span("notice","You decide not to remove anything."))
+				if(!desired_remove || desired_remove == "Cancel")
+					caller.to_chat(span("notice","You decide not to remove anything."))
+				else
+					var/obj/item/I2 = vars[desired_remove]
+					I2.drop_item(get_turf(caller))
+					I2.update_sprite()
+					vars[desired_remove] = null
+					update_sprite()
 
-			else if(mech_head)
-				caller?.to_chat(span("notice","You remove \the [mech_head.name] from \the [src.name]."))
-				mech_head.drop_item(get_turf(src))
-				if(caller)
-					mech_head.drop_item(get_turf(caller))
-				else
-					mech_head.drop_item(get_turf(src))
-				mech_head = null
-				update_sprite()
-			else if(mech_arms)
-				caller?.to_chat(span("notice","You remove \the [mech_arms.name] from \the [src.name]."))
-				mech_arms.drop_item(get_turf(src))
-				if(caller)
-					mech_arms.drop_item(get_turf(caller))
-				else
-					mech_arms.drop_item(get_turf(src))
-				mech_arms = null
-				update_sprite()
-			else if(mech_body)
-				caller?.to_chat(span("notice","You remove \the [mech_body.name] from \the [src.name]."))
-				if(caller)
-					mech_body.drop_item(get_turf(caller))
-				else
-					mech_body.drop_item(get_turf(src))
-				mech_body = null
-				update_sprite()
-			else if(mech_legs)
-				caller?.to_chat(span("notice","You remove \the [mech_legs.name] from \the [src.name]."))
-				mech_legs.drop_item(get_turf(src))
-				if(caller)
-					mech_legs.drop_item(get_turf(caller))
-				else
-					mech_legs.drop_item(get_turf(src))
-				mech_legs = null
-				update_sprite()
 			else
-				caller?.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))
+				var/list/valid_parts = list(
+					"mech_head",
+					"mech_arms",
+					"mech_body",
+					"mech_legs"
+				)
+
+				var/removed = FALSE
+				for(var/i=1,i<=length(valid_parts),i++)
+					var/part_name = valid_parts[i]
+					var/obj/item/I2 = vars[part_name]
+					if(I2)
+						caller?.visible_message(span("notice","\The [caller.name] removes \the [I2.name] from \the [src.name]."),span("notice","You remove \the [I2.name] from \the [src.name]."))
+						I2.drop_item(get_turf(src))
+						if(caller)
+							I2.drop_item(get_turf(caller))
+						else
+							I2.drop_item(get_turf(src))
+						vars[part_name] = null
+						update_sprite()
+						removed = TRUE
+						break
+
+				if(!removed)
+					caller?.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))
 
 			return TRUE
 
 		if(istype(A,/obj/item/powercell/))
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			var/obj/item/powercell/PC = A
 			if(battery)
-				caller.to_chat(span("notice","You replace the [battery.name] in \the [src.name] with \the [PC.name]."))
+				caller?.visible_message(span("notice","\The [caller.name] replaces \the [battery.name] in \the [src.name] with \the [PC.name]."),span("notice","You replace \the [battery.name] in \the [src.name] with \the [PC.name]."))
 				battery.update_sprite()
 				battery.drop_item(get_turf(caller))
 				battery = null
 			else
-				caller.to_chat(span("notice","You add \the [PC.name] to \the [src.name]."))
+				caller?.visible_message(span("notice","\The [caller.name] adds \the [PC.name] to \the [src.name]."),span("notice","You add \the [PC.name] to \the [src.name]."))
 			PC.drop_item(src)
 			battery = PC
 			return TRUE
 
 		if(istype(A,/obj/item/mech_part/))
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
 			. = FALSE
 			if(istype(I,/obj/item/mech_part/arms))
 				if(!mech_arms)
@@ -497,9 +459,9 @@ var/global/list/stored_mechs_by_ckey = list()
 			if(.)
 				I.drop_item(src)
 				I.update_sprite()
-				caller?.to_chat(span("notice","You insert \the [I.name] into \the [src.name]."))
+				caller?.visible_message(span("notice","\The [caller.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
 				update_sprite()
-				return TRUE
+			return TRUE
 
 	return ..()
 

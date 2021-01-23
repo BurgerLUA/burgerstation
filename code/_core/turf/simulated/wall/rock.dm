@@ -16,7 +16,7 @@
 	health = /health/turf/
 	health_base = 500
 
-	destruction_turf = /turf/simulated/floor/cave_dirt/
+	destruction_turf = /turf/simulated/floor/cave_dirt
 
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
 	CREATE(/obj/structure/scenery/rocks,src)
@@ -39,6 +39,8 @@
 
 	corner_icons = TRUE
 	corner_category = "rock_basalt"
+
+	destruction_turf = /turf/simulated/floor/basalt
 
 
 /turf/simulated/wall/rock/brown

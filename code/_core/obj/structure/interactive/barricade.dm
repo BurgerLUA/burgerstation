@@ -13,11 +13,11 @@
 
 	bullet_block_chance = 90
 
-	health = /health/construction/
+	health = /health/construction/barricade
 
 	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
 
-	health_base = 300
+	health_base = 600
 
 	var/list/climbers = list()
 
@@ -35,7 +35,8 @@
 
 /obj/structure/interactive/barricade/proc/can_climb_over(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
+
 	if(!is_living(caller))
 		return FALSE
 
@@ -63,12 +64,15 @@
 
 /obj/structure/interactive/barricade/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	object = object.defer_click_on_object(location,control,params)
 
-	if(is_advanced(caller) && is_inventory(defer_object) && can_climb_over(caller))
+	if(is_advanced(caller) && is_inventory(object) && can_climb_over(caller))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(2),.proc/climb_over,caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_climb_over,caller)
-		caller.visible_message(span("warning","\The [caller.name] begins climbing over \the [src.name]."))
+		caller.visible_message(span("warning","\The [caller.name] begins climbing over \the [src.name]."),span("notice","You begin climbing over \the [src.name]."))
 		return TRUE
 
 	return ..()

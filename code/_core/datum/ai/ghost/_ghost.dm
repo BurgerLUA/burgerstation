@@ -134,10 +134,12 @@
 		owner_as_ghost.desired_alpha = stealth_killer == 2 ? 0 : 255
 		if(objective_ticks >= get_objective_delay())
 			objective_ticks = 0
-			handle_objectives()
+			handle_objectives(tick_rate)
 			if(objective_attack)
 				anger -= DECISECONDS_TO_SECONDS(1)
-				A.smash_all_lights()
+				A.smash_all_lights() //This sleeps
+				if(qdeleting || !owner || owner.qdeleting)
+					return FALSE
 				if(no_objective) //First time attacking.
 					var/can_hunt = TRUE
 					for(var/obj/item/cross/C in range(objective_attack,6))
@@ -164,7 +166,7 @@
 	var/list/viewers = list()
 	var/mob/living/advanced/insane
 	var/sanity_rating = 75
-	if(T.darkness >= 0 && owner.invisibility < 101)
+	if(T.lightness >= 0 && owner.invisibility < 101)
 		for(var/mob/living/advanced/ADV in view(owner,owner.view))
 			if(ADV.dead)
 				continue
@@ -192,13 +194,13 @@
 				anger += viewer_count*0.15
 			desired_alpha -= viewer_count ? 150 : 50
 
-	if(T.darkness >= 0.5) //Light bad.
+	if(T.lightness >= 0.5) //Light bad.
 		desired_alpha = 0
-	else if (T.darkness <= 0)
+	else if (T.lightness <= 0)
 		desired_alpha = 0
 
 	//How should we respond to darkness?
-	if(owner.alpha >= 0 && T.darkness >= 0.1 && prob(anger)) //Too bright
+	if(owner.alpha >= 0 && T.lightness >= 0.1 && prob(anger)) //Too bright
 		desired_alpha -= 50
 		if(anger >= 50)
 			A.smash_all_lights()

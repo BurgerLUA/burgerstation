@@ -16,13 +16,6 @@
 
 	value = 500
 
-/obj/item/weapon/melee/energy/chainsaw/post_move(var/atom/A)
-
-	if(isturf(A))
-		stop()
-
-	return ..()
-
 /obj/item/weapon/melee/energy/chainsaw/think()
 
 	if(world.time >= next_chain_time)
@@ -30,13 +23,21 @@
 			play('sound/weapons/chainsaw/loop_bump.ogg',src, volume = 20)
 		else
 			play('sound/weapons/chainsaw/loop.ogg',src,volume = 20)
+
+		if(is_inventory(loc))
+			var/obj/hud/inventory/I = loc
+			if(!I.click_flags)
+				stop()
+		else
+			stop()
+
 		next_chain_time = world.time + 5
 
 	return ..()
 
 /obj/item/weapon/melee/energy/chainsaw/proc/can_start(var/mob/caller)
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!is_inventory(src.loc))
 		caller.to_chat(span("warning","You need to be holding the chainsaw in order to start it!"))
@@ -88,8 +89,6 @@
 
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)
 
-	SPAM_CHECK(20)
-
 	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.ai)
@@ -98,6 +97,9 @@
 			else
 				start(caller)
 			return TRUE
+
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
 
 	if(enabled)
 		stop(caller)

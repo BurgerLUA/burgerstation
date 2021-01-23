@@ -34,7 +34,8 @@
 	stored_types = list(
 		/obj/item/clothing/overwear/coat/hoodie,
 		/obj/item/clothing/overwear/coat/labcoat,
-		/obj/item/clothing/overwear/coat/polymorphic
+		/obj/item/clothing/overwear/coat/polymorphic,
+		/obj/item/clothing/overwear/coat/wizard
 	)
 
 
@@ -81,8 +82,9 @@
 	name = "accessories vendor"
 	icon_state = "accessories"
 	stored_types = list(
-		/obj/item/clothing/back/storage/backpack/,
-		/obj/item/clothing/back/storage/dufflebag/,
+		/obj/item/clothing/back/storage/satchel/poly,
+		/obj/item/clothing/back/storage/backpack/poly,
+		/obj/item/clothing/back/storage/dufflebag/poly,
 		/obj/item/clothing/belt/storage/colored,
 		/obj/item/clothing/head/hat/bandana,
 		/obj/item/clothing/head/hat/skimask,

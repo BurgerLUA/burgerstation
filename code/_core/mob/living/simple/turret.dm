@@ -114,6 +114,8 @@
 
 	if(istype(object,/obj/item/powercell/))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/item/powercell/PC = object
 
 		if(stored_battery)
@@ -130,6 +132,8 @@
 
 	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
 		var/obj/item/magazine/M = object
 		if(!istype(stored_weapon,/obj/item/weapon/ranged/bullet/magazine))
 			caller.to_chat(span("warning","This turret doesn't accept magazines!"))
@@ -167,6 +171,8 @@
 
 /mob/living/simple/turret/deployable/proc/can_pack_up(var/mob/caller)
 
+	INTERACT_CHECK_NO_DELAY(src)
+
 	if(dead)
 		caller.to_chat(span("warning","The turret is destroyed!"))
 		return FALSE
@@ -183,7 +189,7 @@
 
 /mob/living/simple/turret/deployable/proc/pack_up(var/mob/caller)
 
-	caller.visible_message(span("notice","\The [caller.name] packs up \the [src.name]."))
+	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
 	var/obj/item/deployable/mob/sentry/S = new(get_turf(src))
 	INITIALIZE(S)
@@ -206,10 +212,12 @@
 	if(caller != object)
 		return ..()
 
-	INTERACT_CHECK_OTHER(src)
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(10)
 
 	if(can_pack_up(caller))
-		caller.visible_message(span("notice","\The [caller.name] starts to pack up \the [src.name]..."))
+		caller.visible_message(span("warning","\The [caller.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/pack_up,caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_pack_up,caller)
 
