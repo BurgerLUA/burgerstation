@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(discord)
 
 /subsystem/discord/proc/send_message(var/message_to_send)
 
-	if(world.port == 0)
+	if(world.port == 0) //Don't send to local servers.
 		return FALSE
 
 	var/list/webhook_forum_params = list(

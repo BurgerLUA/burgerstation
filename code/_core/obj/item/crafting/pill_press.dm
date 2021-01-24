@@ -45,7 +45,6 @@
 
 	var/obj/item/container/beaker/I1 = item_table["b1"]
 	var/obj/item/container/beaker/I2 = item_table["b3"]
-	var/is_double = I1 && I2
 
 	if(I1 && (!I1.reagents || !I1.reagents.volume_current))
 		caller.to_chat(span("warning","There is no matter in the left slot to make a pill from!"))
@@ -55,14 +54,13 @@
 		caller.to_chat(span("warning","There is no matter in the right slot to make a double pill from!"))
 		return FALSE
 
-	var/obj/item/container/pill/P = is_double ? /obj/item/container/pill/double : /obj/item/container/pill
-	P = new P(get_turf(src))
+	var/obj/item/container/pill/P = new(get_turf(src))
 	INITIALIZE(P)
 	GENERATE(P)
 	FINALIZE(P)
 
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount, caller = caller)
-	if(I2) I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount, caller = caller)
+	if(I2) I2.reagents.transfer_reagents_to(P.reagents,I2.transfer_amount, caller = caller)
 
 	if(product_container)
 		product_container.add_to_inventory(caller,P,TRUE)
