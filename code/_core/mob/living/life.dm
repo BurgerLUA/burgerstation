@@ -113,7 +113,8 @@
 		-health.get_loss(FATIGUE),
 		-health.get_loss(PAIN),
 		-health.get_loss(RAD),
-		-health.get_loss(SANITY)
+		-health.get_loss(SANITY),
+		-health.get_loss(MENTAL)
 	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()

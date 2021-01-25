@@ -107,20 +107,26 @@
 
 
 
-/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	. = 0
 
-	if(fatigue)
+	if(fatigue || mental)
 		var/mob/living/L = owner
-		if(!L.has_status_effect(STAMCRIT))
+		var/fatigue_adjusted = FALSE
+		var/mana_adjusted = FALSE
+		if(fatigue && !L.has_status_effect(STAMCRIT))
 			if(adjust_stamina(-fatigue))
-				L.update_health_element_icons(stamina=TRUE)
+				fatigue_adjusted = TRUE
 			if(stamina_current <= 0)
 				L.add_status_effect(STAMCRIT)
+		if(mental && adjust_mana(-mental))
+			mana_adjusted = TRUE
+		L.update_health_element_icons(mana=mana_adjusted,stamina=fatigue_adjusted)
 		fatigue = 0
+		mental = 0
 
-	return . + ..(brute,burn,tox,oxy,fatigue,pain,rad,update,organic,robotic)
+	return . + ..(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,update,organic,robotic)
 
 /health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
 

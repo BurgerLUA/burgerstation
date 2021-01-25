@@ -1,6 +1,6 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
-	var/total_damage = 0
+	. = 0
 
 	if(!is_advanced(owner))
 		return ..()
@@ -12,7 +12,7 @@
 		if(A.labeled_organs[desired_organ])
 			var/obj/item/O = A.labeled_organs[desired_organ]
 			if(O.health && ((O.health.organic && organic) || (!O.health.organic && robotic)))
-				total_damage = O.health.adjust_loss_smart(
+				. += O.health.adjust_loss_smart(
 					brute = brute > 0 ? brute : 0,
 					burn = burn > 0 ? burn : 0,
 					pain = pain > 0 ? pain : 0,
@@ -25,6 +25,7 @@
 		if(rad) . += adjust_loss(RAD,rad)
 		if(fatigue) . += adjust_loss(FATIGUE,fatigue)
 		if(sanity) . += adjust_loss(SANITY,sanity)
+		if(mental) . += adjust_loss(MENTAL,mental)
 
 	if(brute < 0 || burn < 0 || pain < 0 || rad < 0) //Heal damage
 		var/list/damaged_organs = list()
@@ -72,12 +73,12 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[PAIN])
-				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=TRUE)
+				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=TRUE)
 
-	if(total_damage && update)
+	if(. && update)
 		A.queue_health_update = TRUE
 
-	return total_damage
+	return .
 
 /*
 /health/mob/living/advanced/adjust_tox_loss(var/value)

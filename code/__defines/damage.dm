@@ -8,6 +8,7 @@
 #define PAIN "pain"
 #define RAD "radiation"
 #define SANITY "sanity"
+#define MENTAL "mental"
 
 #define HEALTH "health"
 #define MANA "mana"

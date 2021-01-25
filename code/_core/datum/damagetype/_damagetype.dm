@@ -437,6 +437,7 @@
 				pain = damage_to_deal_main[PAIN],
 				rad = damage_to_deal_main[RAD],
 				sanity = damage_to_deal_main[SANITY],
+				mental = damage_to_deal_main[MENTAL],
 				update = FALSE
 			)
 		else
