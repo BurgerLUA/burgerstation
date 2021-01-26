@@ -166,6 +166,9 @@
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
 
+	if(quality <= 0)
+		return FALSE
+
 	if(!use_loyalty_tag)
 		if(ispath(firing_pin))
 			log_error("WARNING: WEAPON OF TYPE [src.type] HAD A PATH AS A FIRING PIN.")
