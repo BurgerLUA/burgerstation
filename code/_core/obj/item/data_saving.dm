@@ -117,6 +117,9 @@
 	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
+	if(quality && quality != initial(quality))
+		.["quality"] = quality
+
 	return .
 
 /obj/item/organ/save_item_data(var/save_inventory = TRUE)
@@ -161,6 +164,8 @@
 		item_count_current = object_data["item_count_current"]
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
+	if(object_data["quality"])
+		quality = object_data["quality"]
 
 	return TRUE
 

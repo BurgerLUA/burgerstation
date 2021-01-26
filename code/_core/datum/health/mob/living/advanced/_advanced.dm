@@ -192,7 +192,7 @@
 				if(IS_INFINITY(C_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
 					.[damage_type] = C_defense_rating[damage_type]
 					continue
-				.[damage_type] += C_defense_rating[damage_type]
+				.[damage_type] += FLOOR(C_defense_rating[damage_type] * (C.quality/100),1)
 
 	if((A.attack_flags & CONTROL_MOD_BLOCK) && (turn(get_dir(attacker,owner),180) & owner.dir)) //Do you even block?
 

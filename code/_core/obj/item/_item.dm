@@ -16,6 +16,7 @@
 
 	var/size = 1
 	var/weight = 0
+	var/quality = 100
 
 	var/weight_last = 0//Last weight calculated via calculation
 
@@ -140,6 +141,15 @@
 	density = 1
 
 	value = -1
+
+/obj/item/proc/adjust_quality(var/quality_to_add=0)
+
+	quality = FLOOR(quality + quality_to_add,0.01)
+
+	if(quality <= 0)
+		visible_message(span("danger","\The [src.name] breaks!"))
+
+	return TRUE
 
 /obj/item/proc/get_weight(var/check_containers=TRUE)
 
@@ -634,3 +644,7 @@
 
 /obj/item/proc/get_battery()
 	return null
+
+/obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
+	damage_multiplier *= FLOOR(quality/100,0.01)
+	return ..(damage_multiplier = damage_multiplier)

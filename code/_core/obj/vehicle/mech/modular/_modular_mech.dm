@@ -274,8 +274,6 @@ var/global/list/stored_mechs_by_ckey = list()
 		else if(right_hand)
 			return right_hand.click_on_object(caller,object,location,control,params)
 
-	//src.attack(caller,object,params)
-
 	return TRUE
 
 /mob/living/vehicle/mech/modular/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

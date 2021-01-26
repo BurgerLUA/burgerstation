@@ -282,7 +282,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier
 
-
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
 	if(spent_bullet)
@@ -294,6 +293,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
+		damage_multiplier *= FLOOR(spent_bullet.quality/100,0.01)
 
 	else if(requires_bullets)
 		handle_empty(caller)
