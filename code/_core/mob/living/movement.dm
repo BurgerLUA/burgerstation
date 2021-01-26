@@ -50,7 +50,7 @@
 	if(attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
 		Dir = 0x0
 
-	. = ..(NewLoc,Dir,step_x,step_y)
+	. = ..()
 
 	if(ai)
 		ai.on_move(.,NewLoc,Dir)

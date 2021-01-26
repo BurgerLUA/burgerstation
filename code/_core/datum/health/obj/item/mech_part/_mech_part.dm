@@ -31,7 +31,7 @@
 	sanity = 0
 	mental = 0
 
-	. = ..(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,update,organic,robotic)
+	. = ..()
 
 	if(. && update && is_modular_mech(owner.loc))
 		var/mob/living/vehicle/mech/modular/A = owner.loc

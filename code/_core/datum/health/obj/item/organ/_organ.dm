@@ -82,7 +82,7 @@
 		sanity = 0
 		mental = 0
 
-	. += ..(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,update,organic,robotic)
+	. += ..()
 
 	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc

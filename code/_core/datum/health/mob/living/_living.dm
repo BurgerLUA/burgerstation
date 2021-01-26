@@ -126,7 +126,7 @@
 		fatigue = 0
 		mental = 0
 
-	return . + ..(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,update,organic,robotic)
+	return . + ..()
 
 /health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
 

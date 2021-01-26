@@ -2,7 +2,8 @@
 
 	if(dead)
 		if(!client) return FALSE
-		return ..(text_to_say,should_sanitize,TEXT_GHOST,talk_range)
+		talk_type_to_use = TEXT_GHOST
+		return ..()
 
 	start_typing()
 
