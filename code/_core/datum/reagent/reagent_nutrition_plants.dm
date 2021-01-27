@@ -40,9 +40,21 @@
 	color = "#658268"
 
 	nutrition_amount = 8
-	nutrition_quality_amount = 4
+	nutrition_quality_amount = 8
 
 	flavor = "cabbage"
+
+	liquid = 0
+
+/reagent/nutrition/lettuce
+	name = "lettuce"
+	desc = "Nutrition and flavor from lettuce."
+	color = "#5AAF36"
+
+	nutrition_amount = 6
+	nutrition_quality_amount = 5
+
+	flavor = "lettuce"
 
 	liquid = 0
 

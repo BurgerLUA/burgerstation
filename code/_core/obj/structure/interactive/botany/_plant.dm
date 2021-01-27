@@ -109,14 +109,14 @@
 			P.yield = yield
 			P.growth_speed = growth_speed
 			P.plant_type = plant_type
+			P.can_slice = associated_plant.can_slice
 			INITIALIZE(P)
 			GENERATE(P)
-			FINALIZE(P)
 			for(var/r_id in associated_plant.reagents)
 				var/r_value = associated_plant.reagents[r_id] * potency
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
 			P.reagents.update_container(FALSE)
-			P.original_volume = P.reagents.volume_current
+			FINALIZE(P)
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 
 		caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))

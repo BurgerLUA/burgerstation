@@ -9,38 +9,30 @@
 	reagents = /reagent_container/food/
 
 	var/scale_sprite = TRUE
+	var/typical_volume = 23 //Standard typical volume for the sprite. Apply transform scale if needed.
 
 	var/remove_on_no_reagents = TRUE
-
-	var/original_volume = 0 //For cooking and stuff.
 
 	drop_sound = 'sound/items/drop/food.ogg'
 
 	value = 0
 
-/obj/item/container/food/save_item_data(var/save_inventory = TRUE)
-	. = ..()
-	.["original_volume"] = original_volume
-	return .
-
-/obj/item/container/food/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
-	if(object_data["original_volume"]) original_volume = object_data["original_volume"]
-	return .
-
-/obj/item/container/food/Generate()
-	original_volume = reagents.volume_current
+/obj/item/container/food/Finalize()
+	if(scale_sprite) update_sprite()
 	return ..()
 
 /obj/item/container/food/update_icon()
 
 	if(scale_sprite)
-		var/matrix/M = matrix()
-		var/scale_math = max(0.5 + (original_volume/reagents.volume_max)*0.5)
-		M.Scale(scale_math)
-		transform = M
-	else
-		transform = matrix()
+		if(typical_volume <= 0)
+			color = "#FF0000"
+			log_error("Warning: [src.get_debug_name()] had a typical volume of [typical_volume]!")
+		else
+			var/matrix/M = matrix()
+			var/scale_math = min(0.5 + (reagents.volume_current/typical_volume)*0.5,2)
+			M.Scale(scale_math)
+			transform = M
+			desc = "Scale: [scale_math] ([reagents.volume_current]/[typical_volume])"
 
 	return ..()
 

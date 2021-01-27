@@ -259,6 +259,7 @@
 /obj/structure/interactive/vending/hydroponics/seeds
 	stored_types = list(
 		/obj/item/seed/cabbage,
+		/obj/item/seed/lettuce,
 		/obj/item/seed/tomato,
 		/obj/item/seed/chanterelle,
 		/obj/item/seed/wheat,

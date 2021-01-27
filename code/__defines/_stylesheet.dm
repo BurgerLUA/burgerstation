@@ -97,6 +97,12 @@ body {
 .legendary{
 	color: gold;
 }
+.bad{
+	color: red;
+}
+.good{
+	color: green;
+}
 .examine_title{
 	font-size: 200%;
 	text-align: center;

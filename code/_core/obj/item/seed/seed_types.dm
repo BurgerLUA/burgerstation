@@ -25,6 +25,19 @@
 
 	delete_after_harvest = TRUE
 
+/obj/item/seed/lettuce
+	plant_type = /plant_type/lettuce
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 30
+	yield = 1
+	growth_speed = 3
+
+	delete_after_harvest = TRUE
+
 /obj/item/seed/tomato
 	plant_type = /plant_type/tomato
 
@@ -45,7 +58,7 @@
 	growth_max = 100
 	growth_produce_max = 200
 
-	potency = 20
+	potency = 15
 	yield = 2
 	growth_speed = 4
 
@@ -58,7 +71,7 @@
 	growth_max = 100
 	growth_produce_max = 200
 
-	potency = 10
+	potency = 20
 	yield = 4
 	growth_speed = 4
 
