@@ -271,12 +271,15 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!can_gun_shoot(caller,object,location,params))
 		return FALSE
 
+	var/quality_bonus = get_quality_bonus(0.5,2)
+	var/quality_penalty = 1/get_quality_bonus(0.25,2)
+
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread_to_use = 0
-	var/projectile_speed_to_use = projectile_speed
+	var/projectile_speed_to_use = projectile_speed*quality_penalty
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = inaccuracy_modifer
 	var/view_punch_to_use = view_punch
@@ -284,6 +287,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier
+
+	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
@@ -296,7 +301,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
-		damage_multiplier *= FLOOR(spent_bullet.quality/100,0.01)
+		damage_multiplier *= quality_bonus
 
 	else if(requires_bullets)
 		handle_empty(caller)
@@ -317,8 +322,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/icon_pos_y = text2num(params[PARAM_ICON_Y])
 
 		var/prone = FALSE
-		var/static_spread = get_static_spread()
-		var/heat_spread = get_heat_spread()
+		var/static_spread = get_static_spread() * quality_penalty
+		var/heat_spread = get_heat_spread() * quality_penalty
 		var/skill_spread = 0
 		var/movement_spread = 0
 		var/loyalty_tag = null

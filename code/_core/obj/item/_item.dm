@@ -142,6 +142,9 @@
 
 	value = -1
 
+/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
+	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
+
 /obj/item/proc/adjust_quality(var/quality_to_add=0)
 
 	quality = FLOOR(quality + quality_to_add,0.01)
@@ -381,8 +384,22 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-	. += div("rarity","Value: [CEILING(value,1)].")
+
+	if(quality <= 0)
+		. += div("rarity bad","<b>Quality</b>: BROKEN")
+	else if(quality < 100)
+		. += div("rarity bad","<b>Quality</b>: -[100 - FLOOR(quality,1)]%")
+	else if(quality > 100)
+		. += div("rarity good","<b>Quality</b>: +[FLOOR(quality,1) - 100]%")
+
+	if(luck < 50)
+		. += div("rarity bad","<b>Luck</b>: -[50 - luck]")
+	else if(luck > 50)
+		. += div("rarity good","<b>Luck</b>: +[luck-50]")
+
+	. += div("rarity","Value: [CEILING(value,1)]cr.")
 	. += div("weightsize","Size: [size], Weight: [get_weight(FALSE)]")
+
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)

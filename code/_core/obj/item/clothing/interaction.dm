@@ -60,11 +60,6 @@
 
 	. = ..()
 
-	if(quality <= 0)
-		. += div("danger","BROKEN")
-	else
-		. += div("notice","<b>Quality</b>: [FLOOR(quality,1)]%")
-
 	if(speed_bonus != 0)
 		if(speed_bonus > 0)
 			. += div("notice","<b>Speed Bonus:</b> [speed_bonus*100]%.")

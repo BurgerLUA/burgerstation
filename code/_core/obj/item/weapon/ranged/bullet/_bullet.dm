@@ -91,10 +91,12 @@
 
 	var/obj/item/bullet_cartridge/B = chambered_bullet
 	var/jam_chance = B.jam_chance
+	if(quality <= 25)
+		jam_chance += 10
 	if(B.bullet_length != bullet_length_best)
-		jam_chance += 25
+		jam_chance += 10
 	if(B.bullet_diameter != bullet_diameter_best)
-		jam_chance += 50
+		jam_chance += 25
 
 	if(jammed)
 		if(jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
