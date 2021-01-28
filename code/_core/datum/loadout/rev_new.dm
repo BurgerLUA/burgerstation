@@ -162,7 +162,7 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/back/storage/satchel,
-		/obj/item/clothing/overwear/coat/vest/,
+		/obj/item/clothing/overwear/coat/vest/webbing,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
