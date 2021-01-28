@@ -32,6 +32,7 @@
 		/obj/item/clothing/pants/gorka,
 		/obj/item/clothing/shirt/gorka,
 		/obj/item/clothing/overwear/armor/slavticool,
+		/obj/item/clothing/mask/skimask,
 		/obj/item/clothing/head/helmet/security/slavticool,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
@@ -56,6 +57,7 @@
 		/obj/item/clothing/pants/gorka,
 		/obj/item/clothing/shirt/gorka,
 		/obj/item/clothing/overwear/armor/slavticool,
+		/obj/item/clothing/mask/skimask,
 		/obj/item/clothing/head/helmet/security/slavticool,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
@@ -152,6 +154,7 @@
 	spawning_items = list(
 		/obj/item/clothing/pants/gorka,
 		/obj/item/clothing/shirt/gorka,
+		/obj/item/clothing/mask/skimask,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,

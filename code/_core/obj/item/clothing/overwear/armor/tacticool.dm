@@ -43,3 +43,25 @@
 	size = SIZE_2
 
 	value = 150
+
+//obj/item/clothing/head/helmet/security/slavticool/thermal
+//	name = "\improper 'Slav-safe' LLC combat helmet with thermals"
+//	icon = 'icons/obj/item/clothing/hats/squad_helmet.dmi'
+//	desc_extended = "Durable combat helmet made out of complex plastic-based bullet-resistant materials and ceramics. Should save you from a bullet or five. This version features an in-built thermal imagery monocle"
+
+//	rarity = RARITY_UNCOMMON
+
+//	defense_rating = list(
+//		BLADE = AP_AXE,
+//		BLUNT = AP_AXE,
+//		PIERCE = AP_CLUB,
+//		LASER = AP_CLUB,
+//		ARCANE = -AP_CLUB,
+//		BOMB = AP_AXE
+//	)
+
+//	size = SIZE_2
+
+//	additional_clothing = list(/obj/item/clothing/glasses/thermal/rev)
+
+//	value = 150
