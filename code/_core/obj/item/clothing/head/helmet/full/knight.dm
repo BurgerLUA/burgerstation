@@ -86,3 +86,21 @@
 
 
 	value = 300
+
+/obj/item/clothing/head/helmet/knight/clockwork
+	name = "clockwork helmet"
+	icon = 'icons/obj/item/clothing/hats/clockwork.dmi'
+	rarity = RARITY_RARE
+
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = -AP_CLUB,
+		ARCANE = AP_CLUB,
+		HEAT = -AP_AXE
+	)
+
+	value = 500
+
+	size = SIZE_2

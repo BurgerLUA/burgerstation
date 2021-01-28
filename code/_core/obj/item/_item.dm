@@ -31,6 +31,7 @@
 	var/item_count_max_icon = 0
 
 	var/pixel_height = 2 //The z size of this, in pixels. Used for sandwiches and burgers.
+	var/pixel_height_offset = 0 //The z offset of this, in pixels. Used for sandwiches and burgers.
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0

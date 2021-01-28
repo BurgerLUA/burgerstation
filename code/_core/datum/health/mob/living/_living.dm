@@ -53,7 +53,7 @@
 
 		var/mob/living/L = owner
 
-		if(has_bloodoxygen)
+		if(has_bloodoxygen && L.blood_volume_max)
 			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
 			damage[OXY] = max(0,health_max*(2 - blood_oxygen*2))
 

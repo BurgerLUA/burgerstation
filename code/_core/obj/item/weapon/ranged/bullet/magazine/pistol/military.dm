@@ -1,15 +1,15 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
-	name = "9mm Civil Defense Pistol"
+	name = "9mm Auto 18"
 	desc = "An old relic from an oppressive police force."
-	desc_extended = "A security grade pistol chambered in 9mm. Good for self defense."
+	desc_extended = "An automatic pistol chambered in 9mm. Good for self defense."
 	value = 70
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
-	shoot_delay = 1.25
+	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
 	view_punch = 7
 
-	automatic = FALSE
+	automatic = TRUE
 
 	size = SIZE_2
 	weight = 3
@@ -67,12 +67,12 @@
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
-	name = ".40 Civil Defense Pistol MOD"
+	name = ".40 Auto-18 MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_2.dmi'
-	desc_extended = "A modified variant of the 9mm Civil Defense Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
+	desc_extended = "A modified variant of the 9mm Auto Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 110
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
-	shoot_delay = 1
+	shoot_delay = 1.5
 
 	view_punch = 5
 
@@ -105,7 +105,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen
-	name = "9mm NT Defense Pistol"
+	name = "9mm Auto-18 NT"
 	desc = "An old relic from an oppressive police force."
 	desc_extended = "A security grade pistol chambered in 9mm. This one has been modifed with a new lighrweight frame and paintjob."
 	value = 90

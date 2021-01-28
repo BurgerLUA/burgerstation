@@ -516,7 +516,9 @@
 
 	var/list/english_flavor_profile = list()
 
-	for(var/i=1,i<=min(4,length(flavor_profile)),i++)
+	var/flavor_count = min(4,length(flavor_profile))
+
+	for(var/i=1,i<=flavor_count,i++)
 		var/k = flavor_profile[i] //This gets the key (flavor name)
 		var/v = flavor_profile[k] //This gets the value (flavor strength)
 		var/flavor_text
@@ -534,7 +536,8 @@
 		if(flavor_text)
 			english_flavor_profile += flavor_text
 
-	return list(english_list(english_flavor_profile),flavor_flags)
+
+	return list(english_list(english_flavor_profile),flavor_flags,flavor_count)
 
 
 /reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE,var/strength_mod=1)
@@ -592,6 +595,7 @@
 
 		var/final_flavor_text = flavor_data[1]
 		var/list/flavor_flags = flavor_data[2]
+		var/flavor_count = flavor_data[3]
 
 		var/like_score = 0
 		var/species/SP = SPECIES(A.species)
@@ -601,6 +605,9 @@
 				like_score += flavor_flags[k]
 			if(real_bit & SP.flags_flavor_hate)
 				like_score -= flavor_flags[k]*5 //Things you dislike in food are much more obvious than things you like.
+
+		if(flavor_count > 1 && like_score > 0)
+			like_score *= 1 + flavor_count*0.5 //Bonuses for multiple flavor types. More effort must've been put into it.
 
 		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || A.last_flavor != final_flavor_text) )
 			A.last_flavor = final_flavor_text

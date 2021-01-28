@@ -75,7 +75,21 @@
 	attack_range = 2
 
 	weight = 5
+
+/obj/item/weapon/melee/spear/clockwork
+	name = "clockwork spear"
+	desc = "FOR RATVAR."
+	desc_extended = "A very sharp brass alloy spear. Doesn't do that much damage when thrown."
+	icon = 'icons/obj/item/weapons/melee/swords/ratvar.dmi'
+	damage_type = /damagetype/melee/spear/ratvar/
+
 	size = SIZE_4
+
+	value = 250
+
+	attack_range = 2
+
+	weight = 10
 
 /obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"

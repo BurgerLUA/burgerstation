@@ -36,12 +36,15 @@
 
 /obj/item/container/food/plant/Initialize()
 
+
 	if(!sliced && can_slice)
 		health = /health/obj/item/misc/
 
 	if(sliced)
 		icon = 'icons/obj/item/consumable/food/sliced.dmi'
 		scale_sprite = FALSE
+		pixel_height = 1
+		pixel_height_offset = -1
 
 	return ..()
 
@@ -65,6 +68,7 @@
 			S.delete_after_harvest = delete_after_harvest
 			S.sliced = TRUE
 			S.icon_state = icon_state
+			S.plant_type = plant_type
 			INITIALIZE(S)
 			if(S.reagents) src.reagents.transfer_reagents_to(S.reagents,5)
 			FINALIZE(S)

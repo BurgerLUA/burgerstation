@@ -47,3 +47,46 @@
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
 	return .
+
+
+/mob/living/simple/watcher/clockwork
+	name = "clockwork watcher"
+	desc = "Eye see you."
+	desc_extended = "A robotic watcher that serves the clockwork army."
+	icon = 'icons/mob/living/simple/clockwork_watcher.dmi'
+	icon_state = "warden"
+
+	anchored = TRUE
+
+	iff_tag = "Clockwork"
+	loyalty_tag = "Clockwork"
+
+	class = /class/clockwork_watcher
+
+	ai = /ai/watcher/clockwork
+
+	blood_type = /reagent/blood/robot
+
+	health_base = 100
+
+	pixel_x = 0
+
+	mob_size = MOB_SIZE_LARGE
+
+	status_immune = list()
+
+	armor_base = list(
+		BLADE = AP_SWORD,
+		PIERCE = AP_SWORD,
+		ARCANE = AP_GREATSWORD,
+		HEAT = -AP_SWORD,
+		COLD = AP_GREATSWORD,
+		FATIGUE = INFINITY,
+		ION = 0,
+		PAIN = INFINITY
+	)
+
+/mob/living/simple/watcher/clockwork/post_death()
+	. = ..()
+	anchored = FALSE
+	return .
