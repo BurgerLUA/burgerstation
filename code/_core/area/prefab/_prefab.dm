@@ -24,3 +24,12 @@
 	sound_environment = ENVIRONMENT_AUDITORIUM
 
 	interior = TRUE
+
+/area/prefab/xeno_hive
+	name = "Xenomorph Beta Hive"
+	icon_state = "blue"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_CAVE
+
+	interior = TRUE
