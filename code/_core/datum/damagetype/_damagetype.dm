@@ -48,8 +48,8 @@
 		LASER = BURN,
 		ARCANE = BURN,
 		HEAT = BURN,
-		COLD = BURN,
-		SHOCK = BURN,
+		COLD = list(BURN,FATIGUE),
+		SHOCK = list(BURN,FATIGUE),
 		BOMB = list(BRUTE,BURN),
 		BIO = TOX,
 		RAD = list(RAD,BURN),
@@ -437,6 +437,7 @@
 				pain = damage_to_deal_main[PAIN],
 				rad = damage_to_deal_main[RAD],
 				sanity = damage_to_deal_main[SANITY],
+				mental = damage_to_deal_main[MENTAL],
 				update = FALSE
 			)
 		else

@@ -527,7 +527,8 @@ mob/living/advanced/Login()
 	var/species/S = SPECIES(species)
 	if(!S)
 		return text
-	return ..(S.mod_speech(src,text))
+	text = S.mod_speech(src,text)
+	return ..()
 
 
 

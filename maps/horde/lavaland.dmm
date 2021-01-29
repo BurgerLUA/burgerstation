@@ -1937,6 +1937,10 @@
 /obj/marker/drop_pod_location,
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
+"hQ" = (
+/obj/marker/prefab,
+/turf/unsimulated/generation/lava,
+/area/lavaland/exterior)
 
 (1,1,1) = {"
 aa
@@ -2578,7 +2582,7 @@ ae
 ae
 ae
 ae
-ae
+hQ
 ae
 ae
 ae
@@ -28565,7 +28569,7 @@ ae
 ae
 ae
 ae
-ae
+hQ
 ae
 ae
 ae
@@ -50714,7 +50718,7 @@ ae
 ae
 ae
 ae
-ae
+hQ
 ag
 ag
 ag

@@ -250,12 +250,11 @@
 
 /ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
-	if(obstacle)
-		if(is_living(obstacle))
-			var/mob/living/L = obstacle
-			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
-			if(trigger_other_bump && L.ai)
-				L.ai.Bump(owner,FALSE)
+	if(obstacle && is_living(obstacle))
+		var/mob/living/L = obstacle
+		if(is_enemy(L)) set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+		if(trigger_other_bump && L.ai)
+			L.ai.Bump(owner,FALSE)
 
 		if(attack_on_block)
 			spawn do_attack(obstacle,prob(left_click_chance))

@@ -1,12 +1,12 @@
 /obj/parallax
-	name = "void"
+	name = "the void"
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/parallax.dmi'
 	var/ratio = 1 //For every tile moved, move x pixel in the opposite direction.
 	plane = PLANE_PARALLAX
 	var/mob/owner
 	var/auto_resize = TRUE
-	//appearance_flags = LONG_GLIDE | PIXEL_SCALE
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
 /obj/parallax/New(var/desired_loc)
 	if(auto_resize)

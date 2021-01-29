@@ -6,6 +6,8 @@
 
 	var/experience_per_unit = 0 //Medical XP per unit added.
 
+	flags_flavor = FLAG_FLAVOR_MEDICINE
+
 /reagent/medicine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 
 	. = ..()

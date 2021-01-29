@@ -5,11 +5,10 @@
 	icon = 'icons/obj/item/clothing/hats/paperbag.dmi'
 	var/logo = 0
 	var/logobg = 0
-	dynamic_inventory_count = 7
-	container_max_slots = 1
-	container_max_size = SIZE_1
+	dynamic_inventory_count = MAX_INVENTORY_X
+	container_max_size = SIZE_2
 
-	size = SIZE_2
+	size = SIZE_3
 	is_container = TRUE
 
 	value = 10

@@ -145,7 +145,7 @@ obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/de
 	CALLBACK("deactivate_hazard_\ref[src]",9,src,.proc/deactivate_hazard)
 	return .
 
-obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
+obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1)
 	if(istype(victim,/mob/living/simple/goliath/)) //This bug is hilarious but we don't want to have it.
 		return FALSE
 	return ..()
@@ -185,7 +185,7 @@ obj/effect/temp/hazard/bubblefist/New(var/desired_location,var/desired_time,var/
 
 	return .
 
-obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
+obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1)
 	if(istype(victim,/mob/living/simple/bubblegum)) //This bug is hilarious but we don't want to have it.
 		return FALSE
 	return ..()

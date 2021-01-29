@@ -108,7 +108,7 @@
 	name = "giant father's armor"
 	rarity = RARITY_LEGENDARY
 	desc = "THE LEGEND NEVER DIES"
-	desc = "A matching suit of armor for your Chaos Zweihander."
+	desc_extended = "A matching suit of armor for your Chaos Zweihander."
 	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
@@ -124,6 +124,26 @@
 	size = SIZE_7
 
 	value = 4000
+
+/obj/item/clothing/overwear/armor/knight/clockwork
+	name = "clockwork armor"
+	rarity = RARITY_RARE
+	desc = "HAIL RATVAR."
+	desc_extended = "A bronze plate of protective armor."
+	icon = 'icons/obj/item/clothing/suit/clockwork.dmi'
+
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = -AP_CLUB,
+		ARCANE = AP_CLUB,
+		HEAT = -AP_AXE
+	)
+
+	size = SIZE_6
+
+	value = 900
 
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "magnus armor"

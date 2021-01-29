@@ -53,6 +53,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
 		/obj/item/deployable/mob/sentry,
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,

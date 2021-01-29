@@ -205,7 +205,7 @@
 	else
 		stealthy = TRUE
 
-	return ..(owner,source,magnitude,duration,stealthy)
+	return ..()
 
 /status_effect/grab
 	name = "Grab"

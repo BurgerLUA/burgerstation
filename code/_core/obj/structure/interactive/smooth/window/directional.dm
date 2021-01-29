@@ -48,7 +48,7 @@
 			if(NORTHWEST)
 				desired_dir = WEST
 
-	. = ..(desired_dir,force)
+	. = ..()
 
 	update_collisions(c_dir = dir, a_dir = dir)
 

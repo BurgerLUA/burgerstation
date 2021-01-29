@@ -3,12 +3,12 @@
 	desc = "A clusterfuck of food."
 	desc_extended = "SANDWICH MAKES ME STRONG!"
 
-	size = 3
+	size = SIZE_2
 
 	is_container = TRUE
-	container_max_size = 2
+	container_max_size = SIZE_1
 
-	dynamic_inventory_count = 8
+	dynamic_inventory_count = MAX_INVENTORY_X
 
 	dynamic_inventory_type = /obj/hud/inventory/dynamic/sandwich/
 
@@ -50,7 +50,7 @@
 		var/image/IM = new/image(IT.icon,IT.icon_state)
 		IM.appearance = IT.appearance
 		IM.appearance_flags |= RESET_COLOR
-		IM.pixel_y = offset_y
+		IM.pixel_y = offset_y + IT.pixel_height_offset
 		IM.plane = FLOAT_PLANE
 		add_overlay(IM)
 		offset_y += IT.pixel_height

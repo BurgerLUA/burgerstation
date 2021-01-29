@@ -13,6 +13,8 @@
 	var/harvest_icon = 'icons/obj/item/consumable/food/plants.dmi'
 	var/harvest_icon_state = ""
 
+	var/typical_volume = 10
+
 	var/list/reagents = list()
 
 	var/list/allowed_turfs = list(
@@ -21,6 +23,7 @@
 
 	var/value = 100
 
+	var/can_slice = FALSE
 
 /plant_type/nitrogen_flower
 	name = "nitrogen flower"
@@ -33,6 +36,8 @@
 	reagents = list(
 		/reagent/nitrogen = 1,
 	)
+
+	typical_volume = 10
 
 
 /plant_type/oxygen_fruit
@@ -47,6 +52,8 @@
 		/reagent/oxygen = 1,
 	)
 
+	typical_volume = 15
+
 /plant_type/wheat
 	name = "wheat"
 	desc = "The staple of everything."
@@ -57,6 +64,8 @@
 	reagents = list(
 		/reagent/nutrition/wheat_grain = 1,
 	)
+
+	typical_volume = 20
 
 
 /plant_type/sugarcane
@@ -70,6 +79,8 @@
 		/reagent/nutrition/sugar/cane = 1,
 	)
 
+	typical_volume = 10
+
 
 /plant_type/liberty_cap
 	name = "liberty cap"
@@ -81,6 +92,8 @@
 	reagents = list(
 		/reagent/drug/liberty_dust = 1,
 	)
+
+	typical_volume = 10
 
 
 /plant_type/chanterelle
@@ -94,6 +107,8 @@
 		/reagent/nutrition/chanterelle = 1,
 	)
 
+	typical_volume = 15
+
 
 /plant_type/destroying_angel
 	name = "destroying angel mushroom"
@@ -106,6 +121,8 @@
 		/reagent/toxin/angel_toxin = 1,
 	)
 
+	typical_volume = 20
+
 
 /plant_type/fly_amanita
 	name = "fly amanita mushroom"
@@ -115,9 +132,11 @@
 	seed_icon_state = "fly_amanita"
 	plant_icon_count = 2
 	reagents = list(
-		/reagent/toxin/fly_amanita_toxin = 1,
-		/reagent/drug/space = 1
+		/reagent/toxin/fly_amanita_toxin = 0.25,
+		/reagent/drug/space = 0.75
 	)
+
+	typical_volume = 10
 
 
 /plant_type/glowshroom
@@ -131,6 +150,8 @@
 		/reagent/radioactive/radium = 1,
 	)
 
+	typical_volume = 10
+
 
 /plant_type/tomato
 	name = "tomato"
@@ -143,6 +164,24 @@
 		/reagent/nutrition/tomato = 1,
 	)
 
+	typical_volume = 15
+
+	can_slice = TRUE
+
+/plant_type/lettuce
+	name = "lettuce"
+	desc = "A patch that grows lettuce."
+	plant_icon_state = "lettuce"
+	harvest_icon_state = "lettuce"
+	seed_icon_state = "lettuce"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/lettuce = 1,
+	)
+
+	typical_volume = 30
+
+	can_slice = TRUE
 
 /plant_type/cabbage
 	name = "cabbage"
@@ -155,6 +194,8 @@
 		/reagent/nutrition/cabbage = 1,
 	)
 
+	typical_volume = 30
+
 /plant_type/poppy
 	name = "breadseed poppy"
 	desc = "A flower that grows poppy."
@@ -166,3 +207,5 @@
 		/reagent/nutrition/flower_petal = 0.75,
 		/reagent/nutrition/poppy_seed/raw = 0.25
 	)
+
+	typical_volume = 10

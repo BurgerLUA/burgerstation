@@ -35,7 +35,7 @@
 	var/move_mod_button = 0
 
 	var/vision = 0x0
-	sight = SEE_BLACKNESS
+	sight = 0x0
 	see_invisible = INVISIBILITY_DEFAULT
 
 	invisibility = INVISIBILITY_MOBS

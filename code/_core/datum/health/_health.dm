@@ -16,7 +16,7 @@
 
 	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
 
-	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0)
+	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 
 	var/list/resistance = list() //How much to multiply damage
 
@@ -98,11 +98,11 @@
 	return health_max - get_total_loss(includes_fatigue,include_pain,include_sanity)
 
 /health/proc/restore()
-	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN = 0, RAD = 0, SANITY = 0)
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 	update_health(update_hud = TRUE)
 	return TRUE
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -120,6 +120,7 @@
 	if(rad) . += adjust_loss(RAD,rad)
 	if(fatigue) . += adjust_loss(FATIGUE,fatigue)
 	if(sanity) . += adjust_loss(SANITY,sanity)
+	if(mental) . += adjust_loss(MENTAL,mental)
 
 	if(update && .)
 		update_health()

@@ -45,7 +45,7 @@ var/regex/vowels = new("\[aeiou\]", "i")
 
 		text = trim(final_text)
 
-	return ..(text)
+	return ..()
 
 /mob/proc/to_chat(var/text,var/chat_type = CHAT_TYPE_INFO)
 

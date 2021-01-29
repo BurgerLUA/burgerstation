@@ -53,5 +53,7 @@
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/poly/engineering,
 		/obj/item/clothing/head/light/hardhat,
-		/obj/item/clothing/overwear/coat/vest/colored/brown
+		/obj/item/clothing/overwear/coat/vest/colored/brown,
+		/obj/item/clothing/glasses/material,
+		/obj/item/clothing/glasses/meson
 	)

@@ -16,6 +16,7 @@
 
 	var/size = 1
 	var/weight = 0
+	var/quality = 100
 
 	var/weight_last = 0//Last weight calculated via calculation
 
@@ -30,6 +31,7 @@
 	var/item_count_max_icon = 0
 
 	var/pixel_height = 2 //The z size of this, in pixels. Used for sandwiches and burgers.
+	var/pixel_height_offset = 0 //The z offset of this, in pixels. Used for sandwiches and burgers.
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0
@@ -140,6 +142,18 @@
 	density = 1
 
 	value = -1
+
+/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
+	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
+
+/obj/item/proc/adjust_quality(var/quality_to_add=0)
+
+	quality = FLOOR(quality + quality_to_add,0.01)
+
+	if(quality <= 0)
+		visible_message(span("danger","\The [src.name] breaks!"))
+
+	return TRUE
 
 /obj/item/proc/get_weight(var/check_containers=TRUE)
 
@@ -371,8 +385,22 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-	. += div("rarity","Value: [CEILING(value,1)].")
+
+	if(quality <= 0)
+		. += div("rarity bad","<b>Quality</b>: BROKEN")
+	else if(quality < 100)
+		. += div("rarity bad","<b>Quality</b>: -[100 - FLOOR(quality,1)]%")
+	else if(quality > 100)
+		. += div("rarity good","<b>Quality</b>: +[FLOOR(quality,1) - 100]%")
+
+	if(luck < 50)
+		. += div("rarity bad","<b>Luck</b>: -[50 - luck]")
+	else if(luck > 50)
+		. += div("rarity good","<b>Luck</b>: +[luck-50]")
+
+	. += div("rarity","Value: [CEILING(value,1)]cr.")
 	. += div("weightsize","Size: [size], Weight: [get_weight(FALSE)]")
+
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
@@ -634,3 +662,13 @@
 
 /obj/item/proc/get_battery()
 	return null
+
+
+/obj/item/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+	if(quality <= 0)
+		return FALSE
+	return ..()
+
+/obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
+	damage_multiplier *= FLOOR(quality/100,0.01)
+	return ..()

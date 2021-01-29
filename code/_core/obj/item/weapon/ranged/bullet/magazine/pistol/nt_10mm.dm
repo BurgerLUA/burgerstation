@@ -67,3 +67,34 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_skill_spread(var/mob/living/L)
 	return max(0,0.015 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/old
+	name = "10mm Umbra Pistol"
+	desc = "The ultimate pistol."
+	desc_extended = "An extremely powerful prototype of the 10mm NT Penumbra Pistol, before everything was simplified for factory production. Fires 3 round bursts at an absurd firerate. They don't make them like they used to."
+	icon = 'icons/obj/item/weapons/ranged/pistol/robo.dmi'
+
+	value = 1200
+
+	shoot_delay = 1
+	burst_delay = 4
+	max_bursts = 3
+
+	automatic = TRUE
+
+	view_punch = 10
+
+	weight = 6
+
+	heat_per_shot = 0.015
+	heat_max = 0.09
+
+	attachment_barrel_offset_x = 27 - 16
+	attachment_barrel_offset_y = 21 - 16
+
+	attachment_sight_offset_x = 21 - 16
+	attachment_sight_offset_y = 23 - 16
+
+	attachment_undermount_offset_x = 22 - 16
+	attachment_undermount_offset_y = 17 - 16

@@ -9,7 +9,8 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/old = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm
@@ -27,7 +28,6 @@
 	icon_states = 6
 
 	value = 5
-
 
 /obj/item/magazine/pistol_10mm/ap
 	name = "\improper 10mm auto AP pistol magazine"

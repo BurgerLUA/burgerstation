@@ -44,7 +44,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 	all_signalers -= src
 	return ..()
 
-/obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
 	trigger(attacker,src,-1,-1)
 	return TRUE
 
