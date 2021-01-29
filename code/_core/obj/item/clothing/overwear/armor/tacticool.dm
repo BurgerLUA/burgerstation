@@ -43,3 +43,15 @@
 	size = SIZE_2
 
 	value = 150
+
+/obj/item/clothing/head/helmet/security/slavticool/thermal
+	name = "\improper 'Slav-safe' LLC thermal combat helmet"
+
+
+	desc_extended = "Durable combat helmet made out of complex plastic-based bullet-resistant materials and ceramics. Should save you from a bullet or five. This model has been outfitted with an advanced thermal monocle."
+
+	rarity = RARITY_RARE
+
+	additional_clothing = list(/obj/item/clothing/glasses/thermal/thermal_rev)
+
+	value = 250

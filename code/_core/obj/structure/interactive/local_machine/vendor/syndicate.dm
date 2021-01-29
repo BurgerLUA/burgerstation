@@ -114,6 +114,7 @@
 		/obj/item/armor_plate/ultra,
 		/obj/item/clothing/overwear/armor/slavticool,
 		/obj/item/clothing/head/helmet/security/slavticool,
+		/obj/item/clothing/head/helmet/security/slavticool/thermal,
 		/obj/item/clothing/overwear/hardsuit/exosuit,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/hardsuit/skat,
