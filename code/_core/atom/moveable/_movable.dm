@@ -1,7 +1,6 @@
 /atom/movable/
 
 	step_size = TILE_SIZE
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
 
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

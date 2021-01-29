@@ -81,7 +81,6 @@
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
-		/obj/item/magazine/minigun_46,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger
 	)

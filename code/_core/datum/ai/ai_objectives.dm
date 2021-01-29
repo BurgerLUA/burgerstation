@@ -11,6 +11,11 @@
 
 	var/atom/old_attack = objective_attack
 
+	if(old_attack == A)
+		return FALSE
+
+	attackers -= old_attack
+
 	if(A) owner.set_dir(get_dir(owner,A))
 
 	if(objective_investigate)

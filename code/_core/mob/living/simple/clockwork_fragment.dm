@@ -9,6 +9,7 @@
 	stamina_base = 200
 	mana_base = 200
 
+	ai = /ai/simple/
 	damage_type = /damagetype/unarmed/fists
 	class = /class/clockwork_fragment
 

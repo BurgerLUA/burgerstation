@@ -3,6 +3,8 @@
 	desc = "What the fuck is this?"
 	var/label
 
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
+
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
 	plane = PLANE_OBJ

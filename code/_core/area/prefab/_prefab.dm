@@ -1,5 +1,6 @@
 /area/prefab
 	name = "prefab area"
+	area_identifier = "Mission"
 
 
 /area/prefab/clockwork_cult

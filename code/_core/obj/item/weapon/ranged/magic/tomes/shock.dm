@@ -11,7 +11,7 @@
 
 	projectile = /obj/projectile/magic/lightning
 
-	ranged_damage_type = /damagetype/ranged/magic/lightning
+	ranged_damage_type = /damagetype/ranged/magic/shock
 
 	shoot_sounds = list('sound/effects/zzzt.ogg')
 
