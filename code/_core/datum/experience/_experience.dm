@@ -37,7 +37,7 @@
 /experience/proc/update_experience(var/desired_xp)
 	desired_xp = max(0,desired_xp)
 	experience = desired_xp
-	last_level = min(xp_to_level(experience),LEVEL_CAP)
+	last_level = min(xp_to_level(experience),100)
 	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level

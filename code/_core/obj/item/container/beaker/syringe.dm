@@ -195,6 +195,14 @@
 
 	value = 30
 
+/obj/item/container/syringe/medipen/adminomnizine
+	name = "god's medipen"
+	value_burgerbux = 1000
+
+/obj/item/container/syringe/medipen/adminomnizine/Generate()
+	reagents.add_reagent(/reagent/medicine/adminomnizine,reagents.volume_max)
+	return ..()
+
 /obj/item/container/syringe/medipen/bicaridine
 	name = "anti-brute medipen"
 

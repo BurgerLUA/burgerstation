@@ -275,6 +275,7 @@
 /mob/living/proc/dust()
 	new /obj/effect/temp/death(src.loc,30)
 	qdel(src)
+	return TRUE
 
 /mob/living/Destroy()
 
