@@ -31,12 +31,13 @@
 
 /obj/item/fishing/lure/easy
 	name = "easy-going fishing bob"
+	icon_state = "easy"
 	desc = "i just wanna fish for god's sake"
 	desc_extended = "A comfy store-brand fishing bob. Takes longer to get the job done but is much easier to reel in."
 	bobsprite = "easy"
-	value = 250
+	value = 500
 	timemin = 3
-	timemax = 12
+	timemax = 16
 	react = 14
 
 /obj/item/fishing/lure/commercial
@@ -45,33 +46,36 @@
 	desc = "fishin' purchases are necessity"
 	desc_extended = "A premium fishing bob. Does the job well."
 	bobsprite = "commercial"
-	value = 1500
+	value = 1000
 	timemin = 2
-	timemax = 11
+	timemax = 14
 	react = 10
 
 /obj/item/fishing/lure/gamble
 	name = "robust gambler's fishing bob"
+	icon_state = "robust"
 	desc = "hell yeah GAMBLIN"
 	desc_extended = "A rare fishing bob. Can do very well like extremely horribly. Neat?"
 	bobsprite = "robust"
-	value = 2000
+	value = 1000
 	timemin = 1
-	timemax = 15
+	timemax = 20
 	react = 9
 
 /obj/item/fishing/lure/gamble/clown
 	name = "funny fishing bob"
+	icon_state = "clown"
 	desc = "hjönk"
 	desc_extended = "A clownish fishing bob. Can do very well like extremely horribly."
 	bobsprite = "clown"
 	catchsound = "sound/items/bikehorn.ogg"
-	value = 4069
+	value = 1069
 
 /obj/item/fishing/lure/gamble/cluwne
 	name = "funny fishing bob?"
+	icon_state = "clown"
 	desc = "smells funny"
 	desc_extended = "A funny cluwnish fishing bob..? Can do very well like extremely horribly."
 	bobsprite = "clown"
 	catchsound = "sound/ui/rasp.ogg"
-	value = 4420
+	value = 1420

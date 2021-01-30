@@ -584,6 +584,44 @@
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
 
+/reagent/nutrition/meat/qualityfish
+	name = "raw high-grade fish"
+	desc = "Nutrition and flavor from high-grade raw fish."
+	color = "#F0D8E0"
+
+	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
+
+	nutrition_amount = 15
+	nutrition_quality_amount = 5
+	heal_factor = 1
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+	flavor = "fish"
+
+	heated_reagent = /reagent/nutrition/meat/qualityfish/cooked
+
+/reagent/nutrition/meat/qualityfish/cooked
+	name = "cooked high-grade fish"
+	desc = "Nutrition and flavor from cooked high-grade fish."
+	color = "#CFBE91"
+
+	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
+
+	nutrition_amount = 12
+	nutrition_quality_amount = 5
+	heal_factor = 7
+
+	flavor = "FISH"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
 /reagent/nutrition/meat/crab
 	name = "raw crab meat"
 	desc = "Nutrition and flavor from raw crab meat."

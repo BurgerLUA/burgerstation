@@ -88,21 +88,21 @@
 	if(fishing == 0)
 		if(bait && is_inventory(object))
 			var/obj/hud/inventory/I = object
-			if(I.add_held_object(bait))
+			if(I.add_object(bait))
 				caller.to_chat(span("notice","You remove \the [bait.name]."))
 				bait = null
 				update_rod_stats()
 				return
 		if(lure && is_inventory(object))
 			var/obj/hud/inventory/I = object
-			if(I.add_held_object(lure))
+			if(I.add_object(lure))
 				caller.to_chat(span("notice","You remove \the [lure.name]."))
 				lure = null
 				update_rod_stats()
 				return
 		if(line && is_inventory(object))
 			var/obj/hud/inventory/I = object
-			if(I.add_held_object(line))
+			if(I.add_object(line))
 				caller.to_chat(span("notice","You remove \the [line.name]."))
 				line = null
 				update_rod_stats()
@@ -182,7 +182,7 @@
 		animate(I,pixel_x = rand(-8,8),pixel_y = rand(-8,8),time=5)
 	if(nice_bait == 0)
 		bait = null
-		update_rod_stats()
+	update_rod_stats()
 	return
 
 /obj/item/fishing/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -215,13 +215,18 @@
 			get_reward()
 			return
 		caller.to_chat(span("notice","You reel back in."))
+		update_rod_stats()
 		return FALSE
 	var/turf/L = object
 	if(istype(L,/turf/simulated/hazard/))
 		if(object.name == "salty water")
 			fishingzone = 1
+			if(!wekrewards)
+				wekrewards = /loot/fishing/bait/sea/fish/common
 		if(object.name == "water")
 			fishingzone = 2
+			if(!wekrewards)
+				wekrewards = /loot/fishing/bait/river/fish/common
 		if(object.name == "lava") // shit redundant but hey ynever know if new tiles get added :flushed:
 			if(lavaproof == 1 & !wekrewards)
 				fishingzone = 10
