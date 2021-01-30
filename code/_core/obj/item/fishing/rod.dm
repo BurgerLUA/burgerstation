@@ -1,4 +1,4 @@
-/obj/item/fishing/rod // there are two rods, this is the correct one, other is located next to summon books
+/obj/item/fishing/rod
 	name = "fishing rod"
 	drop_sound = 'sound/items/drop/scrap.ogg'
 	size = SIZE_2
