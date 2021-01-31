@@ -217,8 +217,19 @@ dmm_suite
 			// Handle Turfs & Movable Atoms
 			else
 				if(ispath(atomPath, /turf))
-					instance = new atomPath(location)
-					//instance = location.ReplaceWith(atomPath, keep_old_material = 0, handle_air = 0, handle_dir = 0)
+					if(ispath(atomPath, /turf/dmm_suite/clear_turf))
+						if(is_simulated(location))
+							var/turf/simulated/S = location
+							if(S.density)
+								if(S.destruction_turf)
+									instance = new S.destruction_turf(location)
+								else
+									instance = new /turf/simulated/floor/cave_dirt(location)
+						else
+							instance = new /turf/simulated/floor/cave_dirt(location)
+					else
+						instance = new atomPath(location)
+						//instance = location.ReplaceWith(atomPath, keep_old_material = 0, handle_air = 0, handle_dir = 0)
 				else
 					if (atomPath)
 						instance = new atomPath(location)

@@ -30,6 +30,13 @@
 	New()
 		qdel(src)
 
+//-- Destroys walls underneath, if any. ----------
+/turf/dmm_suite/no_wall
+	icon = 'icons/obj/markers/map_editor.dmi'
+	icon_state = "no_wall"
+	New()
+		qdel(src)
+
 //-- Fills maps when writing with IGNORE_AREAS ---
 /area/dmm_suite/clear_area
 	icon = 'icons/obj/markers/map_editor.dmi'
