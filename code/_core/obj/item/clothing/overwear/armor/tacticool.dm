@@ -5,7 +5,7 @@
 	desc = "Protecting against the capitalism since 2238."
 	desc_extended = "A sturdy chestplate with shoulder- and knee pads of bulletproof armor. Should protect against most small arms fire. Feels lighter than standard-issued vests."
 
-	protected_limbs = list(BODY_TORSO,BODY_LEG_LEFT,BODY_LEG_RIGHT)
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	rarity = RARITY_UNCOMMON
 
@@ -43,3 +43,15 @@
 	size = SIZE_2
 
 	value = 150
+
+/obj/item/clothing/head/helmet/security/slavticool/thermal
+	name = "\improper 'Slav-safe' LLC thermal combat helmet"
+
+
+	desc_extended = "Durable combat helmet made out of complex plastic-based bullet-resistant materials and ceramics. Should save you from a bullet or five. This model has been outfitted with an advanced thermal monocle."
+
+	rarity = RARITY_RARE
+
+	additional_clothing = list(/obj/item/clothing/glasses/thermal/thermal_rev)
+
+	value = 250
