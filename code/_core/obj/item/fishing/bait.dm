@@ -15,9 +15,6 @@
 		"logo" = "#FFFFFF"
 	)
 
-/obj/item/fishing/bait/proc/get_bait()
-	return src
-
 /obj/item/fishing/bait/sea
 	name = "sea fishing bait"
 	desc = "hrngrnh fisheing"

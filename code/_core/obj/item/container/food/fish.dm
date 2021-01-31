@@ -4,6 +4,7 @@
 	desc_extended = "A fresh catch."
 	icon = 'icons/obj/item/consumable/food/fish.dmi'
 	icon_state = "fish"
+	value = 100
 	health = /health/obj/item/misc/
 	scale_sprite = FALSE
 

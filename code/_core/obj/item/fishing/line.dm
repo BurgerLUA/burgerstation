@@ -11,11 +11,6 @@
 	var/break_on_success = 0
 	color = "#FFFFFF"
 
-
-
-/obj/item/fishing/line/proc/get_line()
-	return src
-
 /obj/item/fishing/line/basic
 	name = "basic fishing line"
 	desc = "hobo style"

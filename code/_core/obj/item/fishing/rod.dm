@@ -3,25 +3,13 @@
 	drop_sound = 'sound/items/drop/scrap.ogg'
 	size = SIZE_2
 	weight = 2
-	var/lavaproof = 0
-	var/lcolor = "#FFFFFF"
-	var/nice_bait = 0
-	var/break_on_failure = 0
-	var/break_on_success = 0
 	var/win = 0
 	var/win_time = 0
-	var/timemin = 3
-	var/timemax = 9
-	var/react = 9
-	var/bobsprite = null
-	var/catchsound = "sound/ui/message_ping.ogg"
 	var/fishing = 0
 	var/fishingzone = 0
-	var/wished_fishingzone = 0
 	var/mintime = 0
 	var/maxtime = 0
-	var/list/obj/item/effrewards = list()
-	var/list/obj/item/wekrewards = list()
+	var/list/obj/item/wekrewards = list()	//keep this one as the turfs decide reward if bait doesnt
 	var/fish_loc
 
 	var/obj/item/fishing/lure
@@ -40,44 +28,14 @@
 	LOADATOM("lure")
 	LOADATOM("line")
 	LOADATOM("bait")
-	update_rod_stats()
 	return .
-
-/obj/item/fishing/rod/proc/get_line()
-	return line
-
-/obj/item/fishing/rod/proc/get_lure()
-	return lure
-
-/obj/item/fishing/rod/proc/get_bait()
-	return bait
-
-/obj/item/fishing/rod/proc/update_rod_stats()
-	if(line)
-		var/obj/item/fishing/line/L = get_line()
-		lavaproof = L.lavaproof
-		break_on_failure = L.break_on_failure
-		break_on_success = L.break_on_success
-		lcolor = L.color
-	if(lure)
-		var/obj/item/fishing/lure/L = get_lure()
-		bobsprite = L.bobsprite
-		catchsound = L.catchsound
-	if(bait)
-		var/obj/item/fishing/bait/L = get_bait()
-		effrewards = L.effrewards
-		wekrewards = L.wekrewards
-		nice_bait = L.nice_bait
-		wished_fishingzone = L.wished_fishingzone
-	update_overlays()
-	update_sprite()
-	return
 
 /obj/item/fishing/rod/update_overlays()
 	. = ..()
 	if(line)
+		var/obj/item/fishing/line/L = line
 		var/image/I = new/image('icons/obj/item/fishing/rod.dmi',"string")
-		I.color = lcolor
+		I.color = L.color
 		add_overlay(I)
 	return .
 
@@ -85,27 +43,25 @@
 /obj/item/fishing/rod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
-	if(fishing == 0)
+	if(!fishing)
 		if(bait && is_inventory(object))
 			var/obj/hud/inventory/I = object
 			if(I.add_object(bait))
 				caller.to_chat(span("notice","You remove \the [bait.name]."))
 				bait = null
-				update_rod_stats()
 				return
 		if(lure && is_inventory(object))
 			var/obj/hud/inventory/I = object
 			if(I.add_object(lure))
 				caller.to_chat(span("notice","You remove \the [lure.name]."))
 				lure = null
-				update_rod_stats()
 				return
 		if(line && is_inventory(object))
 			var/obj/hud/inventory/I = object
 			if(I.add_object(line))
 				caller.to_chat(span("notice","You remove \the [line.name]."))
 				line = null
-				update_rod_stats()
+				update_sprite()
 				return
 		if(istype(object,/obj/item/))
 			if(istype(object,/obj/item/fishing/line/))
@@ -113,15 +69,13 @@
 				if(line)
 					caller.to_chat(span("notice","You swap out \the [line.name] for \the [P.name]."))
 					line.drop_item(get_turf(caller))
-					update_rod_stats()
 					line = null
 				else
 					caller.to_chat(span("notice","You insert \the [P.name] into \the [src.name]."))
 
 				line = P
 				P.drop_item(src)
-				update_rod_stats()
-
+				update_sprite()
 				return TRUE
 
 			if(istype(object,/obj/item/fishing/lure/))
@@ -129,14 +83,12 @@
 				if(lure)
 					caller.to_chat(span("notice","You swap out \the [lure.name] for \the [P.name]."))
 					lure.drop_item(get_turf(caller))
-					update_rod_stats()
 					lure = null
 				else
 					caller.to_chat(span("notice","You insert \the [P.name] onto \the [src.name]."))
 
 				lure = P
 				P.drop_item(src)
-				update_rod_stats()
 
 				return TRUE
 
@@ -145,27 +97,26 @@
 				if(bait)
 					caller.to_chat(span("notice","You swap out \the [bait.name] for \the [P.name]."))
 					bait.drop_item(get_turf(caller))
-					update_rod_stats()
 					bait = null
 				else
 					caller.to_chat(span("notice","You attach \the [P.name] to \the [src.name]."))
 
 				bait = P
 				P.drop_item(src)
-				update_rod_stats()
 
 				return TRUE
 	return ..()
 
 /obj/item/fishing/rod/think()
 	var/turf/T = get_turf(fish_loc)
+	var/obj/item/fishing/lure/U = lure
 	if(world.time > maxtime)
-		play(catchsound,T)
+		play(U.catchsound,T)
 		win++
 		return FALSE
 	if(world.time > mintime)
 		if(win_time == 0)
-			play(catchsound,T)
+			play(U.catchsound,T)
 			win++
 			win_time++
 	return TRUE
@@ -173,16 +124,18 @@
 /obj/item/fishing/rod/proc/get_reward(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	var/rewards
-	if(fishingzone == wished_fishingzone)
-		rewards = effrewards
+	var/obj/item/fishing/bait/B = bait
+	if(fishingzone == B.wished_fishingzone)
+		rewards = B.effrewards
+	if(B.wekrewards)
+		rewards = B.wekrewards
 	else rewards = wekrewards
 	var/list/spawned_loot = CREATE_LOOT(rewards,get_turf(src.loc))
 	for(var/k in spawned_loot)
 		var/obj/item/I = k
 		animate(I,pixel_x = rand(-8,8),pixel_y = rand(-8,8),time=5)
-	if(nice_bait == 0)
+	if(B.nice_bait == 0)
 		bait = null
-	update_rod_stats()
 	return
 
 /obj/item/fishing/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -190,6 +143,9 @@
 	if(is_inventory(object))
 		return ..()
 
+	var/obj/item/fishing/line/L = line
+	var/obj/item/fishing/lure/U = lure
+	var/obj/item/fishing/bait/B = bait
 	if(fishing == 1)
 		stop_thinking(src)
 		var/turf/simulated/hazard/T = get_turf(fish_loc)
@@ -197,38 +153,38 @@
 		T.fishing--
 		T.fishtime()
 		if(win > 1)
-			if(break_on_failure > 0)
+			if(L.break_on_failure > 0)
 				var/check = (rand(0,100))
-				if(check < break_on_failure)
+				if(check < L.break_on_failure)
 					line = null
 					caller.to_chat(span("notice","Your line snaps!"))
-					return
+			if(B.nice_bait == 0)
+				caller.to_chat(span("notice","It got away alongside your bait..."))
+				bait = null
+				return
 			caller.to_chat(span("notice","It got away..."))
 			return
 		if(win == 1)
 			caller.to_chat(span("notice","You caught something!"))
-			if(break_on_success > 0)
+			if(L.break_on_success > 0)
 				var/check = (rand(0,100))
-				if(check < break_on_success)
+				if(check < L.break_on_success)
 					line = null
 					caller.to_chat(span("notice","Your line also snaps in the process..."))
 			get_reward()
 			return
 		caller.to_chat(span("notice","You reel back in."))
-		update_rod_stats()
 		return FALSE
-	var/turf/L = object
-	if(istype(L,/turf/simulated/hazard/))
+	var/turf/W = object
+	if(istype(W,/turf/simulated/hazard/))
 		if(object.name == "salty water")
 			fishingzone = 1
-			if(!wekrewards)
-				wekrewards = /loot/fishing/bait/sea/fish/common
+			wekrewards = /loot/fishing/bait/sea/fish/common
 		if(object.name == "water")
 			fishingzone = 2
-			if(!wekrewards)
-				wekrewards = /loot/fishing/bait/river/fish/common
+			wekrewards = /loot/fishing/bait/river/fish/common
 		if(object.name == "lava") // shit redundant but hey ynever know if new tiles get added :flushed:
-			if(lavaproof == 1 & !wekrewards)
+			if(L.lavaproof == 1 & !B.wekrewards)
 				fishingzone = 10
 			else return
 		var/turf/simulated/hazard/T = get_turf(object)
@@ -241,12 +197,12 @@
 		if(!bait)
 			caller.to_chat(span("notice","You need bait for this."))
 			return FALSE
-		if(fishing == 0)
+		if(!fishing)
 			fish_loc = T
-			T.bobsprite = bobsprite
+			T.bobsprite = U.bobsprite
 			T.fishing++
-			mintime = world.time + SECONDS_TO_DECISECONDS(rand(timemin,timemax))
-			maxtime = mintime + react
+			mintime = world.time + SECONDS_TO_DECISECONDS(rand(U.timemin,U.timemax))
+			maxtime = mintime + U.react
 			T.fishtime()
 			fishing++
 			win = 0

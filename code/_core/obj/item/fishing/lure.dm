@@ -12,12 +12,6 @@
 	var/react = 9
 	var/catchsound = "sound/ui/message_ping.ogg"
 
-
-/obj/item/fishing/lure/proc/get_lure()
-	return src
-
-
-
 /obj/item/fishing/lure/generic
 	name = "generic fishing bob"
 	icon_state = "generic"

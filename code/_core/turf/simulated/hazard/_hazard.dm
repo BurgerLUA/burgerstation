@@ -8,12 +8,11 @@
 
 /turf/simulated/hazard/proc/fishtime()
 	update_sprite()
-	update_overlays()
 	return
 
 /turf/simulated/hazard/update_overlays()
 	. = ..()
-	if(fishing > 0)
+	if(fishing)
 		var/image/I = new/image('icons/obj/item/fishing/bob.dmi',"[bobsprite]_out")
 		add_overlay(I)
 	return .
