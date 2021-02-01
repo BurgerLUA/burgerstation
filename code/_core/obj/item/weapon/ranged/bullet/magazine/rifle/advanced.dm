@@ -1,27 +1,25 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/service
-	name = "\improper 7.62mm SOL-14 Service Rifle"
+/obj/item/weapon/ranged/bullet/magazine/rifle/advanced
+	name = "\improper 7.62mm SOL-15 Battle Rifle"
 	desc = "HOORAH!."
 	desc_extended = "The SOL-14 is the battle rifle currently in service in the SolGov Army. It's occasionally seen in the hands of PMCs."
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_service.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_3.dmi'
 	icon_state = "inventory"
-	value = 300
+	value = 800
 
-	shoot_delay = 3
+	shoot_delay = 2
 
-	automatic = FALSE
+	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/308/shoot.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 8
-
-
+	view_punch = 10
 
 	size = SIZE_4
-	weight = 15
+	weight = 20
 
-	heat_per_shot = 0.01
+	heat_per_shot = 0.015
 	heat_max = 0.08
 
 	bullet_length_min = 46
@@ -32,10 +30,11 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
-	ai_heat_sensitivity = 1.5
+	ai_heat_sensitivity = 1
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -63,22 +62,9 @@
 	attachment_sight_offset_x = 15 - 16
 	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 28 - 16
-	attachment_undermount_offset_y = 19 - 16
-
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/get_static_spread()
-	if(!wielded) return 0.2
-	return 0
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
-
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt
-	dan_mode = TRUE
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_service_nt.dmi'
+	attachment_undermount_offset_x = 14 - 16
+	attachment_undermount_offset_y = 17 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+
+	dan_mode = TRUE

@@ -125,16 +125,6 @@
 		"pants" = COLOR_GREEN_MILITARY
 	)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 15,
-		PIERCE = 20,
-		ARCANE = 10,
-		COLD = 25,
-	)
-
-	value = 70
-
 /obj/item/clothing/pants/normal/chemistry
 	name = "chemistry pants"
 	desc = "Stripes improve everything."
@@ -162,3 +152,21 @@
 		"stripes" = "#222F28"
 	)
 
+/obj/item/clothing/pants/normal/reinforced
+	name = "reinforced pants"
+	icon = 'icons/obj/item/clothing/pants/reinforced.dmi'
+
+	defense_rating = list(
+		BLADE = AP_SWORD,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_SWORD,
+		ARCANE = -AP_DAGGER,
+		COLD = AP_DAGGER,
+	)
+
+/obj/item/clothing/pants/normal/reinforced/ntops
+	name = "NT ops reinforced pants"
+	polymorphs = list(
+		"pants" = COLOR_WHITE,
+		"stripes" = COLOR_BLACK
+	)

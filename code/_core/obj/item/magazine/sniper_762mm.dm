@@ -10,7 +10,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato
