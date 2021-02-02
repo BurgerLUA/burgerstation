@@ -58,7 +58,7 @@
 	value = 10
 
 /obj/item/clothing/head/helmet/full/miner
-	name = "blocky helemet"
+	name = "blocky helmet"
 	desc = "micheal soft pls no sue"
 	desc_extended = "The helmet included in the blocky skinsuit"
 	icon = 'icons/obj/item/clothing/hats/minefucker.dmi'

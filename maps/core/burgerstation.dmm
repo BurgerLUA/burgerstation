@@ -5289,6 +5289,9 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
+"td" = (
+/turf/simulated/hazard/water,
+/area/burgerstation/maint/garden)
 "te" = (
 /obj/structure/interactive/vending/security/ammo,
 /turf/simulated/floor/tile/dark,
@@ -5438,6 +5441,15 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/alpha/station)
+"tL" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/blue,
+/area/burgerstation/bait_shop)
 "tM" = (
 /obj/structure/interactive/disposals/pipe/junction{
 	dir = 1
@@ -5537,15 +5549,6 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/dropship/charlie/station)
-"ug" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/structure/interactive/disposals/pipe/junction/flipped{
-	dir = 8
-	},
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/central)
 "uh" = (
 /obj/structure/interactive/vending/soda/full,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -6016,8 +6019,8 @@
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "vS" = (
-/obj/structure/interactive/chair{
-	dir = 4
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
 	},
 /turf/simulated/floor/tile/morphing/blue,
 /area/burgerstation/bait_shop)
@@ -6035,6 +6038,10 @@
 /obj/structure/smooth/table/reinforced,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/help_desk)
+"vW" = (
+/obj/structure/interactive/vending/fishing,
+/turf/simulated/floor/grass,
+/area/burgerstation/maint/garden)
 "vX" = (
 /obj/structure/interactive/door/airlock/station/chemistry,
 /turf/simulated/floor/tile/morphing/chemistry,
@@ -37481,7 +37488,7 @@ jn
 hn
 fi
 yi
-ug
+zb
 iK
 iK
 iK
@@ -38509,7 +38516,7 @@ jn
 hn
 eL
 yi
-ug
+zb
 iK
 iK
 iK
@@ -38519,7 +38526,7 @@ gy
 tG
 vr
 vr
-vS
+tL
 gn
 nv
 vn
@@ -39804,7 +39811,7 @@ gx
 um
 vr
 vr
-uS
+vS
 gn
 nQ
 vn
@@ -52400,7 +52407,7 @@ wq
 nu
 qq
 kY
-nt
+vW
 nt
 nt
 nt
@@ -52658,7 +52665,7 @@ nu
 qq
 kY
 qU
-nt
+td
 nt
 nt
 nt
@@ -52915,8 +52922,8 @@ nu
 qq
 kY
 qU
-nt
-nt
+td
+td
 nt
 nt
 nt
@@ -53172,9 +53179,9 @@ nu
 oZ
 kY
 qU
-nt
-nt
-nt
+td
+td
+td
 nt
 qW
 qX
@@ -53430,8 +53437,8 @@ wm
 kY
 qU
 qU
-nt
-nt
+td
+td
 nt
 nt
 nt

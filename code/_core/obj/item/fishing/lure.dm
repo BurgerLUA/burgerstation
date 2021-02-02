@@ -1,75 +1,79 @@
 /obj/item/fishing/lure
-	name = "fishing bob"
-	desc = "goddamn maint dwellers"
 	icon = 'icons/obj/item/fishing/bob.dmi'
 	drop_sound = 'sound/items/drop/scrap.ogg'
 	size = SIZE_0
-	weight = 0.5
-	value = 420
-	var/bobsprite = null
-	var/timemin = 3
-	var/timemax = 9
-	var/react = 9
+	weight = 1
+
+	var/bob_icon_state = null
+
+	var/chance_bonus = 0 //Chance for the lure to hook something.
+	var/time_bonus = 0 //Time, in deciseconds, before the fish gets away.
+	var/rarity_bonus = 0 //Bonus chance every decisecond to catch something.
+
 	var/catchsound = "sound/ui/message_ping.ogg"
 
-/obj/item/fishing/lure/generic
-	name = "generic fishing bob"
+/obj/item/fishing/lure/t1
+	name = "basic fishing lure"
 	icon_state = "generic"
-	desc = "cheap ho"
-	desc_extended = "A basic fishing bob. Does the job but... Barely"
-	bobsprite = "generic"
+	desc = "Lure in some fish."
+	desc_extended = "A basic fishing bob. It does the job."
+	bob_icon_state = "generic"
+
+	chance_bonus = 0
+	time_bonus = 2
+	rarity_bonus = 0
+
 	value = 50
-	timemin = 3
-	timemax = 16
-	react = 10
 
-/obj/item/fishing/lure/easy
-	name = "easy-going fishing bob"
+/obj/item/fishing/lure/t1_easy
+	name = "easy-going fishing lure"
 	icon_state = "easy"
-	desc = "i just wanna fish for god's sake"
-	desc_extended = "A comfy store-brand fishing bob. Takes longer to get the job done but is much easier to reel in."
-	bobsprite = "easy"
-	value = 500
-	timemin = 3
-	timemax = 16
-	react = 14
+	desc = "I just wanna fish for god's sake!"
+	desc_extended = "A comfy store-brand fishing bob designed for novice fishers. A little more pricy, but it should be good for those who are slow to fish, such as kids or the Head of Security."
+	bob_icon_state = "easy"
 
-/obj/item/fishing/lure/commercial
-	name = "commercial fishing bob"
+	chance_bonus = -2
+	time_bonus = 10
+	rarity_bonus = -CHANCE_GOOD
+
+	value = 250
+
+/obj/item/fishing/lure/t2
+	name = "commercial fishing lure"
 	icon_state = "commercial"
-	desc = "fishin' purchases are necessity"
-	desc_extended = "A premium fishing bob. Does the job well."
-	bobsprite = "commercial"
-	value = 1000
-	timemin = 2
-	timemax = 14
-	react = 10
+	desc = "Commercialized fishing."
+	desc_extended = "A premium fishing bob for the premium fisherman. Very pricy but can attract all sorts of rare fish with a better grip."
+	bob_icon_state = "commercial"
 
-/obj/item/fishing/lure/gamble
-	name = "robust gambler's fishing bob"
+	chance_bonus = 3
+	time_bonus = 5
+	rarity_bonus = 0
+
+	value = 1000
+
+/obj/item/fishing/lure/t3
+	name = "McRobust's fishing lure"
 	icon_state = "robust"
-	desc = "hell yeah GAMBLIN"
-	desc_extended = "A rare fishing bob. Can do very well like extremely horribly. Neat?"
-	bobsprite = "robust"
-	value = 1000
-	timemin = 1
-	timemax = 20
-	react = 9
+	desc = "Warning: Robust."
+	desc_extended = "A very robust and very rare fishing lure for the most robust of fishermen. Can catch a lot of rare fish at an increased rate."
+	bob_icon_state = "robust"
 
-/obj/item/fishing/lure/gamble/clown
+	chance_bonus = 5
+	time_bonus = 0
+	rarity_bonus = 10
+
+	value = 1000
+
+/obj/item/fishing/lure/t3_clown
 	name = "funny fishing bob"
 	icon_state = "clown"
-	desc = "hjönk"
-	desc_extended = "A clownish fishing bob. Can do very well like extremely horribly."
-	bobsprite = "clown"
+	desc = "Funny how?"
+	desc_extended = "A rather peculiar clownish fishing bob. Can catch a lot of rare fish, but at what cost?"
+	bob_icon_state = "clown"
 	catchsound = "sound/items/bikehorn.ogg"
-	value = 1069
 
-/obj/item/fishing/lure/gamble/cluwne
-	name = "funny fishing bob?"
-	icon_state = "clown"
-	desc = "smells funny"
-	desc_extended = "A funny cluwnish fishing bob..? Can do very well like extremely horribly."
-	bobsprite = "clown"
-	catchsound = "sound/ui/rasp.ogg"
-	value = 1420
+	chance_bonus = 0
+	time_bonus = -5
+	rarity_bonus = 20
+
+	value = 2000

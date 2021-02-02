@@ -23,7 +23,6 @@
 	if(!new_source)
 		if(top_atom)
 			top_atom.light_sprite_sources -= src
-		world.log << "Top atom for light_sprite is now removed."
 		return TRUE
 
 	if(top_atom != new_source)
@@ -33,7 +32,6 @@
 		top_atom.light_sprite_sources |= src
 		force_move(get_turf(top_atom))
 		set_dir(top_atom.dir)
-		world.log << "Top atom for light_sprite is now [top_atom]."
 		return TRUE
 
 	return FALSE
