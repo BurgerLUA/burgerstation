@@ -217,7 +217,7 @@ dmm_suite
 			// Handle Turfs & Movable Atoms
 			else
 				if(ispath(atomPath, /turf))
-					if(ispath(atomPath, /turf/dmm_suite/clear_turf))
+					if(ispath(atomPath, /turf/dmm_suite/no_wall))
 						if(is_simulated(location))
 							var/turf/simulated/S = location
 							if(S.density)

@@ -5289,9 +5289,6 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
-"td" = (
-/turf/simulated/hazard/water,
-/area/burgerstation/maint/garden)
 "te" = (
 /obj/structure/interactive/vending/security/ammo,
 /turf/simulated/floor/tile/dark,
@@ -6038,10 +6035,6 @@
 /obj/structure/smooth/table/reinforced,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/help_desk)
-"vW" = (
-/obj/structure/interactive/vending/fishing,
-/turf/simulated/floor/grass,
-/area/burgerstation/maint/garden)
 "vX" = (
 /obj/structure/interactive/door/airlock/station/chemistry,
 /turf/simulated/floor/tile/morphing/chemistry,
@@ -52407,7 +52400,7 @@ wq
 nu
 qq
 kY
-vW
+nt
 nt
 nt
 nt
@@ -52665,7 +52658,7 @@ nu
 qq
 kY
 qU
-td
+nt
 nt
 nt
 nt
@@ -52922,8 +52915,8 @@ nu
 qq
 kY
 qU
-td
-td
+nt
+nt
 nt
 nt
 nt
@@ -53179,9 +53172,9 @@ nu
 oZ
 kY
 qU
-td
-td
-td
+nt
+nt
+nt
 nt
 qW
 qX
@@ -53437,8 +53430,8 @@ wm
 kY
 qU
 qU
-td
-td
+nt
+nt
 nt
 nt
 nt
