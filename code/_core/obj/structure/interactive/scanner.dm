@@ -122,7 +122,7 @@
 /obj/structure/interactive/scanner/rich
 	name = "rich person scanner"
 	desc = "Poor people get out."
-	desc_extended = "A proximity door scanner that prevents those with less than 50,000 credits from entering. Or leaving..."
+	desc_extended = "A proximity door scanner that prevents those with less than 20,000 credits from entering. Or leaving..."
 	icon_state = "door"
 
 /obj/structure/interactive/scanner/rich/Cross/(var/atom/movable/M)
@@ -132,7 +132,8 @@
 
 	var/mob/living/advanced/player/P = M
 
-	if(P.currency < 50000)
+	if(P.currency < 20000)
+		P.to_chat(span("warning","You are too poor to cross the rich person scanner..."))
 		return FALSE
 
 	return ..()

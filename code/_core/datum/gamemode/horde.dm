@@ -308,7 +308,7 @@
 /gamemode/horde/proc/get_enemies_to_spawn()
 	. = enemies_to_spawn_base
 	if(enemies_to_spawn_per_player)
-		. += length(all_players)*enemies_to_spawn_per_player
+		. += min(30,length(all_players))*enemies_to_spawn_per_player
 	if(enemies_to_spawn_per_minute)
 		. += DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute)
 	. = min(.,50)

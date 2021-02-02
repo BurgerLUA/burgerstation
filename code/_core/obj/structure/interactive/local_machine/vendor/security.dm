@@ -39,9 +39,9 @@
 		/obj/item/clothing/shirt/normal/reinforced/ntops,
 		/obj/item/storage/shoebox/jackboot,
 		/obj/item/storage/glovebox/padded,
-		/obj/item/clothing/back/storage/satchel/poly/security,
-		/obj/item/clothing/back/storage/dufflebag/poly/security,
-		/obj/item/clothing/back/storage/backpack/poly/security,
+		/obj/item/clothing/back/storage/satchel/poly/ntops,
+		/obj/item/clothing/back/storage/dufflebag/poly/ntops,
+		/obj/item/clothing/back/storage/backpack/poly/ntops,
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
@@ -77,7 +77,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
-		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/hybrid/carbine
 	)
 
@@ -94,11 +93,11 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 
-
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
 
+		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/weapon/ranged/energy/freezegun,

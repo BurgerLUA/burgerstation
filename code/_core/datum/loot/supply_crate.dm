@@ -43,7 +43,7 @@
 /loot/supply_crate/american
 	loot_table = list(
 		/loot/medicine/pack = 10,
-		/loot/weapon/deagle = 10,
+		//loot/weapon/deagle = 10,
 		/loot/weapon/pistol_45 = 10,
 		/loot/weapon/comp_revolver = 10,
 		/loot/weapon/horse_revolver = 10,

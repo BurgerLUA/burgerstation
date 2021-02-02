@@ -190,7 +190,7 @@
 			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
 
 			var/desired_reward = pickweight(loot_table)
-			if(desired_reward)
+			if(ispath(desired_reward))
 				var/atom/movable/reward = new desired_reward(get_step(caller,caller.dir))
 				INITIALIZE(reward)
 				GENERATE(reward)
