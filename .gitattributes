@@ -8,3 +8,7 @@
 
 # force changelog merging to use union
 html/changelog.html merge=union
+
+.dme text=auto eol=crlf
+
+.dm text=auto eol=crlf
