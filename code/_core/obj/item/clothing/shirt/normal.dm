@@ -20,9 +20,6 @@
 		"shirt" = COLOR_WHITE
 	)
 
-	value = 20
-
-
 /obj/item/clothing/shirt/normal/striped
 	name = "striped shirt"
 	desc = "Stripey!"
@@ -139,20 +136,29 @@
 		"shirt" = COLOR_GREY
 	)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 15,
-		PIERCE = 20,
-		ARCANE = 10,
-		COLD = 25,
-	)
-
-	value = 70
-
 /obj/item/clothing/shirt/normal/janitor
 	name = "janitor shirt"
 	desc = "Offensively janitor."
 	desc_extended = "A shirt that is purple as heck."
 	polymorphs = list(
 		"shirt" = COLOR_JANITOR,
+	)
+
+/obj/item/clothing/shirt/normal/reinforced
+	name = "reinforced shirt"
+	icon = 'icons/obj/item/clothing/shirts/reinforced.dmi'
+
+	defense_rating = list(
+		BLADE = AP_SWORD,
+		BLUNT = AP_DAGGER,
+		PIERCE = AP_SWORD,
+		ARCANE = -AP_DAGGER,
+		COLD = AP_DAGGER,
+	)
+
+/obj/item/clothing/shirt/normal/reinforced/ntops
+	name = "NT ops reinforced shirt"
+	polymorphs = list(
+		"shirt" = COLOR_WHITE,
+		"shoulders" = COLOR_BLACK
 	)

@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(tax)
 	if(P.last_tax_payment == 0)
 		return -1 //Never paid taxes.
 
-	var/yes = world.realtime - (P.last_tax_payment + 604800*2)
+	var/yes = world.realtime - (P.last_tax_payment + 604800)
 
 	if(yes > 0)
 		return yes
@@ -56,7 +56,12 @@ SUBSYSTEM_DEF(tax)
 		P.to_chat(span("danger","You don't have enough credits to pay your taxes!"))
 		return FALSE
 
-	P.adjust_currency(-taxes_to_pay,FALSE)
+	var/pay_amount = P.adjust_currency(-taxes_to_pay,FALSE)
+	P.to_chat(span("notice","You have successfully paid [pay_amount] your taxes. Check back in 1 week ([time2text(world.realtime+6048000,"Month DD")]) to pay your taxes again!"))
+
+	P.last_tax_payment = world.realtime
+	P.revenue = 0
+	P.expenses = 0
 
 	return TRUE
 
@@ -97,10 +102,10 @@ SUBSYSTEM_DEF(tax)
 	var/total_tax = bracket_tax_amount + sales_tax_amount + revenue_tax_amount
 
 	return "Your tax total is the following:\n\
-	[revenue_tax]% of your revenue (which is currently [revenue_tax_amount] credits) is taxed as revenue tax.\n\
-	[sales_tax]% of your expenses, which are classified as \"sales\" under the current tax code, (which is currently [sales_tax_amount] credits) is taxed as sales tax.\n\
+	[revenue_tax]% of your revenue (which is currently [revenue_tax_amount] credits) is taxed as revenue tax. \
+	[sales_tax]% of your expenses, which are classified as \"sales\" under the current tax code, (which is currently [sales_tax_amount] credits) is taxed as sales tax. \
 	Your bracket tax is a bit more complex, with [length(business_tax_percent)] different brackets between [business_tax_percent[1]]% and [business_tax_percent[length(business_tax_percent)]]% taxed on a per bracket basis, which is based on your total profit (before taxes)...\n\
 	... with the math all together, you will be paying [bracket_tax_amount] credits in business tax...\n\
-	... and your total tax for this week and all possible weeks you missed is...\n\
-	[total_tax] credits... and with eligible beneifts and processing fees added, the amount you pay will be...\n\
+	... and your total tax for this week and all possible weeks you missed is [total_tax] credits...\n\
+	and with eligible beneifts and processing fees added, the amount you pay will be... \
 	[-processing_fee + total_tax + tax_credit_this_round] credits."

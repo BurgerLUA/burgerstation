@@ -227,8 +227,8 @@ var/global/list/blood_turfs = list()
 		turf_icon_cache[full_icon_string] = I
 
 	icon = I
-	pixel_x = (32 - I.Width())/2
-	pixel_y = (32 - I.Height())/2
+	pixel_x = (TILE_SIZE - I.Width())/2
+	pixel_y = (TILE_SIZE - I.Height())/2
 
 	return TRUE
 

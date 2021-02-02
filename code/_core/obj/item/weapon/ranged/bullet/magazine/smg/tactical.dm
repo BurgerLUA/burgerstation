@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1.6
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
@@ -111,3 +111,10 @@
 	update_sprite()
 
 	return .
+
+
+/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt
+	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3_nt.dmi'
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+

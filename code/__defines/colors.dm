@@ -1,3 +1,6 @@
+// Nonesensical value for l_color default, so we can detect if it gets set to null.
+#define NONSENSICAL_VALUE -99999
+
 //Basic Colors
 #define COLOR_WHITE "#FFFFFF"
 #define COLOR_GREY "#999999"

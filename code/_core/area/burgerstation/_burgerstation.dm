@@ -154,6 +154,10 @@
 	name = "\improper Briefing"
 	icon_state = "brief"
 
+/area/burgerstation/tax
+	name = "\improper Tax Room"
+	icon_state = "tax"
+
 /area/burgerstation/armory
 	name = "\improper Armory"
 	icon_state = "armory"

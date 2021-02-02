@@ -44,7 +44,6 @@
 
 	var/needs_update = LIGHTING_NO_UPDATE
 
-// Kill ourselves.
 /light_source/Destroy()
 
 	SSlighting.light_queue -= src

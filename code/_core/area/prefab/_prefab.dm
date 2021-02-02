@@ -34,3 +34,21 @@
 	sound_environment = ENVIRONMENT_CAVE
 
 	interior = TRUE
+
+/area/prefab/rng_shrine
+	name = "Shrine of RNG"
+	icon_state = "green"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_CAVE
+
+	interior = TRUE
+
+/area/prefab/syndicate_ship
+	name = "Syndicate Ship"
+	icon_state = "red"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_CAVE
+
+	interior = TRUE

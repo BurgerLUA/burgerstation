@@ -49,27 +49,9 @@
 
 	var/attack_next = -1
 
-	var/light_sprite_range = 0
-	var/light_sprite_alpha = 0
-
 	var/listener = FALSE //Setting this to true doesn't make it listen after it's been initialized.
 
 	var/dir_offset = TILE_SIZE
-
-/atom/proc/set_light_sprite(var/desired_range,var/desired_alpha)
-
-	var/update_overlays = FALSE
-
-	if(isnum(desired_range))
-		light_sprite_range = desired_range
-		update_overlays = TRUE
-
-	if(isnum(desired_alpha))
-		light_sprite_alpha = desired_alpha
-		update_overlays = TRUE
-
-	if(update_overlays)
-		update_sprite()
 
 /atom/proc/update_name(var/desired_name)
 	name = desired_name

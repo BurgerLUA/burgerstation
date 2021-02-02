@@ -117,3 +117,22 @@
 		return FALSE
 
 	return ..()
+
+
+/obj/structure/interactive/scanner/rich
+	name = "rich person scanner"
+	desc = "Poor people get out."
+	desc_extended = "A proximity door scanner that prevents those with less than 50,000 credits from entering. Or leaving..."
+	icon_state = "door"
+
+/obj/structure/interactive/scanner/rich/Cross/(var/atom/movable/M)
+
+	if(!is_player(M))
+		return FALSE
+
+	var/mob/living/advanced/player/P = M
+
+	if(P.currency < 50000)
+		return FALSE
+
+	return ..()

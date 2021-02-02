@@ -1,0 +1,1479 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/dmm_suite/clear_turf,
+/area)
+"ab" = (
+/turf/simulated/wall/brick/red,
+/area)
+"ac" = (
+/turf/simulated/wall/wood,
+/area)
+"ad" = (
+/turf/simulated/floor/wood/brown,
+/area)
+"ae" = (
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"af" = (
+/turf/simulated/floor/colored/dirt,
+/area)
+"ag" = (
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+"ah" = (
+/turf/simulated/wall/brick/red/dark,
+/area)
+"ai" = (
+/obj/structure/smooth/table/dark,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aj" = (
+/obj/structure/smooth/table/reinforced,
+/turf/simulated/floor/wood/brown,
+/area)
+"ak" = (
+/obj/structure/smooth/table/grill,
+/turf/simulated/floor/wood/brown,
+/area)
+"al" = (
+/obj/structure/smooth/table/wood,
+/turf/simulated/floor/wood/brown,
+/area)
+"am" = (
+/obj/structure/smooth/wall/wood,
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+"an" = (
+/obj/structure/scenery/rocks,
+/turf/simulated/floor/colored/dirt,
+/area)
+"ao" = (
+/obj/structure/scenery/grass,
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+"ap" = (
+/turf/simulated/floor/colored/dirt/soil,
+/area)
+"aq" = (
+/obj/structure/interactive/plant/wheat,
+/turf/simulated/floor/colored/dirt/soil,
+/area)
+"ar" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/food/plant/wheat,
+/turf/simulated/floor/wood/brown,
+/area)
+"as" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/food/plant/wheat,
+/obj/item/container/food/plant/wheat,
+/turf/simulated/floor/wood/brown,
+/area)
+"at" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"au" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"av" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"aw" = (
+/obj/structure/interactive/chair/stool/bar,
+/turf/simulated/floor/wood/brown,
+/area)
+"ax" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"ay" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"az" = (
+/obj/structure/interactive/crate/trash,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aA" = (
+/obj/structure/interactive/crate/closet,
+/turf/simulated/floor/wood/brown,
+/area)
+"aB" = (
+/obj/structure/interactive/crate/trash,
+/turf/simulated/floor/wood/brown,
+/area)
+"aC" = (
+/obj/structure/interactive/door/metal,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aD" = (
+/obj/structure/interactive/door/wood,
+/turf/simulated/floor/wood/brown,
+/area)
+"aE" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 4
+	},
+/turf/simulated/wall/brick/red/dark,
+/area)
+"aF" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 8
+	},
+/turf/simulated/wall/wood,
+/area)
+"aG" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 1
+	},
+/turf/simulated/wall/brick/red/dark,
+/area)
+"aH" = (
+/obj/structure/interactive/lighting/streetlamp,
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+"aI" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 8
+	},
+/turf/simulated/wall/brick/red/dark,
+/area)
+"aJ" = (
+/obj/structure/interactive/lighting/streetlamp,
+/turf/simulated/floor/colored/dirt,
+/area)
+"aK" = (
+/obj/structure/interactive/misc/mirror/cracked/chargen{
+	pixel_x = 32
+	},
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aL" = (
+/obj/structure/interactive/misc/toilet{
+	icon_state = "toilet";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aM" = (
+/obj/structure/interactive/misc/shower,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aN" = (
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aO" = (
+/obj/structure/interactive/misc/urinal,
+/turf/simulated/floor/colored/dirt,
+/area)
+"aP" = (
+/obj/structure/smooth/table/reinforced,
+/obj/structure/interactive/misc/tv,
+/turf/simulated/floor/wood/brown,
+/area)
+"aQ" = (
+/obj/structure/interactive/restocker/ammo,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aR" = (
+/obj/structure/interactive/potted_plant/bin,
+/turf/simulated/floor/wood/brown,
+/area)
+"aS" = (
+/obj/structure/interactive/tree/evergreen,
+/turf/simulated/floor/colored/dirt,
+/area)
+"aT" = (
+/obj/structure/interactive/tree/evergreen,
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+"aU" = (
+/obj/structure/interactive/vending/syndicate/medicine,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aV" = (
+/obj/structure/interactive/vending/syndicate/attachment,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aW" = (
+/obj/structure/interactive/vending/syndicate/guns/rev,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aX" = (
+/obj/structure/smooth/table/dark,
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aY" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"aZ" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"ba" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bb" = (
+/obj/structure/smooth/table/dark,
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bc" = (
+/obj/structure/interactive/vending/syndicate/prize/rev,
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bd" = (
+/obj/structure/interactive/crate/closet,
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/wood/brown,
+/area)
+"be" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"bf" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"bg" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"bh" = (
+/obj/structure/interactive/barricade,
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/colored/dirt,
+/area)
+"bi" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 4
+	},
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bj" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 8
+	},
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bk" = (
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bl" = (
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/wood/brown,
+/area)
+"bm" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area)
+"bn" = (
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bo" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 4
+	},
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bp" = (
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/colored/dirt,
+/area)
+"bq" = (
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/colored/dirt,
+/area)
+"br" = (
+/mob/living/advanced/npc/rev{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+"bs" = (
+/obj/marker/antag/revolutionary,
+/turf/simulated/floor/brick/grey/dark,
+/area)
+"bt" = (
+/turf/dmm_suite/no_wall,
+/area)
+"bu" = (
+/obj/item/storage/heavy/trash_pile,
+/turf/simulated/floor/colored/dirt,
+/area)
+"bv" = (
+/obj/item/storage/heavy/trash_pile,
+/turf/simulated/floor/colored/grass/jungle,
+/area)
+
+(1,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+ab
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+ag
+ag
+ag
+ag
+af
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+ab
+af
+af
+af
+af
+af
+af
+ag
+ag
+ag
+af
+ag
+ag
+ag
+ag
+ag
+bv
+bv
+bv
+bv
+ag
+ag
+ag
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+ab
+af
+af
+ah
+ah
+ah
+ah
+ah
+ah
+aH
+ag
+ag
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aT
+ag
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+ab
+af
+af
+ah
+aM
+aY
+aN
+ae
+ah
+aT
+ag
+ag
+ac
+aA
+be
+ad
+ad
+ad
+ad
+be
+aR
+ac
+ag
+ag
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+ab
+af
+ag
+ah
+ae
+ae
+ae
+ae
+aG
+ag
+ag
+ag
+ac
+aA
+ad
+ar
+aw
+ad
+bm
+at
+ad
+ac
+ag
+ag
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+ab
+af
+ag
+ah
+bk
+ae
+ae
+ae
+aC
+ag
+ag
+aT
+ac
+aA
+ad
+as
+aw
+ad
+al
+al
+av
+ac
+ag
+br
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+ab
+af
+ag
+ah
+az
+aL
+aZ
+ae
+ah
+ag
+ag
+ag
+ac
+bd
+ad
+ar
+aw
+ad
+al
+al
+av
+ac
+aH
+ag
+af
+ab
+aa
+bt
+aa
+bt
+aa
+aa
+"}
+(9,1,1) = {"
+ab
+af
+aS
+ah
+ah
+ah
+ah
+ah
+ah
+aH
+ag
+ag
+ac
+aP
+bl
+al
+aw
+ad
+al
+al
+av
+ac
+ag
+ag
+af
+ab
+aa
+bt
+bt
+bt
+aa
+aa
+"}
+(10,1,1) = {"
+ab
+af
+af
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ac
+ak
+ad
+al
+aw
+ad
+au
+au
+ad
+ac
+ag
+ag
+af
+ab
+bt
+bt
+bt
+bt
+aa
+aa
+"}
+(11,1,1) = {"
+ab
+af
+ag
+ao
+ao
+ag
+ag
+ag
+af
+aT
+ag
+ag
+ac
+aj
+bl
+al
+aw
+ad
+ad
+ad
+bg
+ac
+ag
+ag
+af
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(12,1,1) = {"
+ab
+af
+ao
+ao
+ao
+ag
+aH
+af
+af
+af
+af
+ag
+ac
+aj
+bf
+al
+aw
+ad
+ad
+ad
+aB
+ac
+ag
+ag
+af
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(13,1,1) = {"
+ab
+af
+ao
+ao
+ao
+ag
+af
+af
+af
+af
+af
+ag
+ac
+ac
+ac
+ac
+ac
+ac
+aF
+aD
+ac
+ac
+ag
+ag
+af
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(14,1,1) = {"
+ab
+ag
+ao
+ao
+ag
+ag
+af
+af
+af
+af
+af
+ag
+aH
+ag
+af
+af
+ag
+ag
+ag
+ag
+ag
+aH
+ag
+af
+bh
+af
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(15,1,1) = {"
+ab
+ag
+ag
+ag
+aT
+af
+af
+bp
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+bh
+af
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(16,1,1) = {"
+ab
+ag
+ag
+af
+af
+af
+af
+af
+af
+af
+af
+bp
+af
+af
+af
+aO
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(17,1,1) = {"
+ab
+ag
+ag
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(18,1,1) = {"
+ab
+ag
+af
+bu
+bu
+bu
+af
+aJ
+af
+af
+af
+af
+aJ
+af
+af
+ag
+ag
+ag
+ag
+ag
+af
+af
+af
+af
+bh
+af
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(19,1,1) = {"
+ab
+af
+af
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+aE
+aC
+ah
+ah
+am
+am
+am
+am
+aH
+af
+af
+bh
+af
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(20,1,1) = {"
+ab
+af
+af
+ah
+az
+ae
+bn
+bo
+bn
+ae
+ae
+ae
+aY
+ae
+ae
+az
+ah
+aq
+ap
+aq
+am
+ag
+ag
+af
+af
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(21,1,1) = {"
+ab
+af
+af
+ah
+ai
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ah
+aq
+aq
+aq
+am
+ag
+ag
+af
+af
+ab
+bt
+bt
+bt
+bt
+aa
+aa
+"}
+(22,1,1) = {"
+ab
+af
+af
+ah
+aX
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ba
+ah
+aq
+aq
+ap
+am
+ag
+aT
+af
+af
+ab
+bt
+bt
+bt
+bt
+aa
+aa
+"}
+(23,1,1) = {"
+ab
+af
+bu
+ah
+aU
+bs
+ae
+ae
+ae
+bi
+ax
+ax
+ae
+ae
+ae
+ae
+ah
+aq
+aq
+ap
+am
+ag
+ag
+af
+af
+ab
+bt
+aa
+bt
+bt
+aa
+aa
+"}
+(24,1,1) = {"
+ab
+af
+bu
+ah
+aV
+bs
+ae
+ae
+ae
+ai
+ai
+ai
+ae
+ae
+ae
+ae
+ah
+ap
+aq
+aq
+am
+ag
+ag
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+ab
+af
+bu
+ah
+aW
+bs
+ae
+ae
+ae
+ai
+ai
+ai
+ae
+ae
+ae
+ae
+ah
+ap
+ap
+ap
+am
+ag
+ag
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,1) = {"
+ab
+af
+af
+ah
+bc
+bs
+ae
+ae
+ae
+ay
+ay
+bj
+ae
+ae
+ae
+bb
+ah
+ag
+ag
+am
+am
+ag
+ag
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+ab
+an
+af
+ah
+ai
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ai
+ah
+ag
+ag
+ag
+ag
+ag
+af
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+ab
+an
+af
+ah
+aQ
+ae
+ae
+aZ
+aK
+aK
+aK
+aK
+aZ
+ae
+ae
+ai
+ah
+ag
+ag
+ag
+ag
+af
+af
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+ab
+an
+af
+ah
+ah
+aC
+aI
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ag
+aT
+ag
+af
+af
+af
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+ab
+an
+an
+af
+af
+bu
+bu
+bu
+af
+af
+af
+bu
+bv
+bv
+bv
+ag
+ag
+ag
+ag
+af
+af
+af
+af
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+ab
+an
+an
+an
+an
+af
+af
+af
+af
+af
+af
+af
+af
+ag
+ag
+ag
+ag
+ag
+af
+af
+af
+bq
+af
+af
+af
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}

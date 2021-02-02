@@ -1,5 +1,5 @@
 /obj/item/seed/template
-	plant_type
+	plant_type = null
 
 	growth_min = 0
 	growth_max = 100
