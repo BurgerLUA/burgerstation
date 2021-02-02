@@ -24,4 +24,4 @@
 	reagents = /reagent_container/turf/
 
 /turf/simulated/hazard/water/sea
-	name = "salty water"
+	name = "saltwater"

@@ -150,6 +150,9 @@
 /turf/simulated/floor/tile/morphing/blue
 	color = COLOR_BLUE
 
+/turf/simulated/floor/tile/morphing/brown
+	color = COLOR_BROWN
+
 /turf/simulated/floor/tile/morphing/grey
 	color = COLOR_GREY
 
