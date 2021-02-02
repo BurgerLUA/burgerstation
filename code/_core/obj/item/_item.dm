@@ -407,7 +407,6 @@
 
 	return .
 
-
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
 
 	var/obj/hud/inventory/I = inventory_override || src.loc
@@ -419,8 +418,7 @@
 		return FALSE
 
 	var/mob/living/advanced/A = I.owner
-
-	A.update_lighting()
+	A.update_single_lighting(src)
 
 	return TRUE
 
@@ -461,7 +459,12 @@
 /obj/item/proc/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 	return TRUE
 
-/obj/item/set_light(range,power,color,angle,no_update)
+/obj/item/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
+	. = ..()
+	update_lighting_for_owner()
+	return .
+
+/obj/item/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
 	update_lighting_for_owner()
 	return .

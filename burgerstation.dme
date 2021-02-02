@@ -1478,6 +1478,7 @@
 #include "code\_core\obj\item\weapon\ranged\magic\tomes\summon\summon_skeleton.dm"
 #include "code\_core\obj\item\weapon\ranged\reagent_sprayer\_reagent_sprayer.dm"
 #include "code\_core\obj\item\weapon\torch\_torch.dm"
+#include "code\_core\obj\light_sprite\_light_sprite.dm"
 #include "code\_core\obj\markers\_marker.dm"
 #include "code\_core\obj\markers\antag.dm"
 #include "code\_core\obj\markers\boss.dm"

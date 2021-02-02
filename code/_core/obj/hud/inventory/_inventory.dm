@@ -432,7 +432,6 @@
 	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
 	I.pixel_x = pixel_x_offset
 	I.pixel_y = pixel_y_offset
-	I.on_drop(src,drop_loc,silent)
 
 	update_stats()
 
@@ -456,6 +455,8 @@
 			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
 
 	vis_contents -= I
+
+	I.on_drop(src,drop_loc,silent)
 
 	return I
 

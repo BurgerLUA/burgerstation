@@ -52,6 +52,55 @@
 
 	var/is_moving = TRUE
 
+	var/obj/light_sprite/light_sprite
+	var/list/obj/light_sprite/light_sprite_sources //Doesn't need to be qdeled
+
+/atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
+
+	if(l_range)
+		if(!light_sprite)
+			light_sprite = new (get_turf(src))
+		light_sprite.icon_state = angle == LIGHT_OMNI || angle == NONSENSICAL_VALUE ? "radial" : "cone"
+		light_sprite.size = max(1,l_range*(TILE_SIZE/96))
+		light_sprite.owner = src
+		light_sprite.alpha = l_power*255
+		if(l_color != NONSENSICAL_VALUE)
+			light_sprite.color = l_color
+		light_sprite.update_sprite()
+
+	if(!l_range && light_sprite)
+		qdel(light_sprite)
+		light_sprite = null
+
+	return TRUE
+
+/atom/movable/set_dir(var/desired_dir,var/force = FALSE)
+
+	. = ..()
+
+	if(isturf(src.loc))
+		for(var/k in light_sprite_sources)
+			var/obj/light_sprite/LS = k
+			LS.set_dir(desired_dir,force)
+
+	return .
+
+/atom/movable/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(isturf(src.loc))
+		for(var/k in light_sprite_sources)
+			var/obj/light_sprite/LS = k
+			LS.force_move(src.loc)
+
+	return .
+
+
+/atom/movable/New(var/desired_loc)
+	light_sprite_sources = list()
+	return ..()
+
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
 
 	. = FALSE
@@ -122,6 +171,8 @@
 
 
 /atom/movable/Destroy()
+	QDEL_NULL(light_sprite)
+
 	area = null
 	grabbing_hand = null
 	force_move(null)

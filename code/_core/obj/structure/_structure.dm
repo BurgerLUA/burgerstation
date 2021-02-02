@@ -18,8 +18,6 @@
 
 	can_rotate = TRUE
 
-	var/light_sprite //The light sprite of the object, if any.
-
 	var/flags_placement = FLAGS_PLACEMENT_NONE
 	var/list/structure_blacklist = list() //Things that can't be constructed on the same turf that's occupying this.
 
