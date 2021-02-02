@@ -1,6 +1,7 @@
 // DM Environment file for burgerstation.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
+// Welcome to the cum zone. All cum, all the time.
 
 // BEGIN_INTERNALS
 // END_INTERNALS
@@ -539,6 +540,7 @@
 #include "code\_core\datum\loadout\syndicate\_syndicate.dm"
 #include "code\_core\datum\loot\_loot.dm"
 #include "code\_core\datum\loot\enchanting.dm"
+#include "code\_core\datum\loot\fishing.dm"
 #include "code\_core\datum\loot\halloween.dm"
 #include "code\_core\datum\loot\lavaland.dm"
 #include "code\_core\datum\loot\medicine.dm"
@@ -1191,6 +1193,7 @@
 #include "code\_core\obj\item\container\can\coffee.dm"
 #include "code\_core\obj\item\container\food\_food.dm"
 #include "code\_core\obj\item\container\food\egg.dm"
+#include "code\_core\obj\item\container\food\fish.dm"
 #include "code\_core\obj\item\container\food\meme_pizza.dm"
 #include "code\_core\obj\item\container\food\plants.dm"
 #include "code\_core\obj\item\container\food\dynamic\_dynamic.dm"
@@ -1223,6 +1226,11 @@
 #include "code\_core\obj\item\experience_scroll\experience_scroll_attribute.dm"
 #include "code\_core\obj\item\experience_scroll\experience_scroll_skill.dm"
 #include "code\_core\obj\item\firing_pin\_firing_pin.dm"
+#include "code\_core\obj\item\fishing\bait.dm"
+#include "code\_core\obj\item\fishing\line.dm"
+#include "code\_core\obj\item\fishing\lure.dm"
+#include "code\_core\obj\item\fishing\rod.dm"
+#include "code\_core\obj\item\fishing\tacklebox.dm"
 #include "code\_core\obj\item\fluff\bikehorn.dm"
 #include "code\_core\obj\item\grenade\_grenade.dm"
 #include "code\_core\obj\item\grenade\landmine.dm"
@@ -1633,6 +1641,7 @@
 #include "code\_core\obj\structure\interactive\local_machine\vendor\coffee.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\enchanting.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\engineering.dm"
+#include "code\_core\obj\structure\interactive\local_machine\vendor\fishing.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\janitor.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\mining.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\random.dm"
@@ -1799,4 +1808,3 @@
 #include "maps\_maps.dm"
 #include "scripts\macro.dms"
 // END_INCLUDE
-
