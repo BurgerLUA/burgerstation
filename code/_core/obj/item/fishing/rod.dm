@@ -157,6 +157,7 @@
 			if(!is_inventory(src.loc))
 				fishing_turf = null
 				last_caller = null
+				QDEL_NULL(fishing_bob)
 			else if(prob(5 + lure.chance_bonus))
 				snagged_fish = rand(5,20) + lure.time_bonus
 				catch_time = world.time
@@ -210,6 +211,7 @@
 		else //Reel it in without catching anything.
 			stop_thinking(src)
 			fishing_turf = null
+			QDEL_NULL(fishing_bob)
 			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
 			return TRUE
 

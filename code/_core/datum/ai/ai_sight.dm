@@ -22,9 +22,6 @@
 	else
 		distance = get_dist(objective_attack,A)
 
-	if(distance <= 0)
-		return 0
-
 	if(distance <= 1)
 		return 100
 

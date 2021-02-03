@@ -4,7 +4,6 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_6.dmi'
 	icon_state = "inventory"
-	value = 150
 
 	shoot_delay = 1.5
 
@@ -69,6 +68,7 @@
 
 	dan_mode = TRUE
 
+	value = 1000
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light/get_static_spread()
 	if(!wielded)

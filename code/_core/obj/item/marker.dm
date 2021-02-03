@@ -58,4 +58,4 @@
 	caller.to_chat(span("warning","\The [src] is spent."))
 	qdel(src)
 
-	return ..()
+	return TRUE
