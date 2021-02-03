@@ -63,7 +63,13 @@ SUBSYSTEM_DEF(events)
 	var/event_id = pickweight(all_events_prob)
 
 	var/event/E = all_events[event_id]
-	return trigger_event(E)
+
+	log_debug("Triggering [E.get_debug_name()] in 5 seconds...")
+
+	CALLBACK("trigger_event",50,src,.proc/trigger_event,E)
+	next_event_time = world.time + 200 //In case it doesn't trigger.
+
+	return TRUE
 
 /subsystem/events/proc/trigger_event(var/event/E)
 

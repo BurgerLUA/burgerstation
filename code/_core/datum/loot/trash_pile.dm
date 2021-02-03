@@ -9,7 +9,7 @@
 		var/obj/item/I = k
 		var/value = initial(I.value)
 		var/value_burgerbux = initial(I.value_burgerbux)
-		if(value < 0)
+		if(value <= 0)
 			continue
 		if(value_burgerbux > 0)
 			continue

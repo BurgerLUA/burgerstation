@@ -65,6 +65,10 @@
 		var/area/A = pick(valid_areas)
 		announce_areas |= A.name
 		for(var/turf/simulated/floor/T in A.contents)
+			if(T.x <= 10 || T.x >= WORLD_SIZE - 10)
+				continue
+			if(T.y <= 10 || T.y >= WORLD_SIZE - 10)
+				continue
 			valid_turfs += T
 
 	if(!length(valid_turfs))

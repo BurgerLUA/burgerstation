@@ -9,4 +9,4 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
-	value = 0
+	value = -1

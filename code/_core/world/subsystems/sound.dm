@@ -104,6 +104,7 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 
 	for(var/k in hearers)
 		var/mob/M = k
+		CHECK_TICK(50,FPS_SERVER*10)
 		if(M.client)
 			if(M.client.current_ambient_sound == sound_path)
 				continue
@@ -129,6 +130,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 
 	for(var/k in hearers)
 		var/mob/M = k
+		CHECK_TICK(50,FPS_SERVER*10)
 		if(!M.client)
 			continue
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]

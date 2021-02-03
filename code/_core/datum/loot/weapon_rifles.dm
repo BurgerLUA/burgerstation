@@ -400,3 +400,107 @@
 	)
 	loot_count = 6
 	chance_none = 25
+
+/loot/weapon/syringe
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,
+		/obj/item/magazine/syringe_gun,
+		/obj/item/magazine/syringe_gun,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe = 1,
+		/obj/item/magazine/syringe_gun = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/tungsten
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
+		/obj/item/magazine/rifle_tungsten,
+		/obj/item/magazine/rifle_tungsten,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten = 1,
+		/obj/item/magazine/rifle_tungsten = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/val
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
+		/obj/item/magazine/rifle_939,
+		/obj/item/magazine/rifle_939,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/val = 1,
+		/obj/item/magazine/rifle_939 = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/vintorez
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
+		/obj/item/magazine/rifle_939,
+		/obj/item/magazine/rifle_939,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez = 1,
+		/obj/item/magazine/rifle_939 = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+//Magazine - Shotguns
+/loot/weapon/bulldog
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog = 1,
+		/obj/item/magazine/shotgun_auto/buckshot = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/saiga_20
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20 = 1,
+		/obj/item/magazine/shotgun_auto/buckshot = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/bizon
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/bizon = 1,
+		/obj/item/magazine/shotgun_auto/buckshot = 4,
+	)
+	loot_count = 6
+	chance_none = 25
