@@ -1239,10 +1239,34 @@
 /obj/marker/prefab/antag,
 /turf/unsimulated/generation/lava,
 /area/lavaland/exterior)
+"fj" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/basalt,
+/area/lavaland/exterior)
+"fk" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/tile/grey,
+/area/lavaland/interior/base/cargo)
 "fl" = (
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cargo)
+"fm" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/tile/grey,
+/area/lavaland/interior/base/arrivals)
+"fn" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/tile/grey,
+/area/lavaland/interior/base)
+"fo" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/tile/grey,
+/area/lavaland/interior/base/engineering)
+"fp" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/tile/grey,
+/area/lavaland/interior/base/hall/west)
 "fB" = (
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
@@ -9191,7 +9215,7 @@ ae
 ae
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -9890,7 +9914,7 @@ aB
 aB
 aB
 fg
-aB
+fk
 aB
 aB
 aB
@@ -10156,7 +10180,7 @@ aB
 el
 eo
 eo
-eo
+fm
 fh
 eo
 eo
@@ -11965,7 +11989,7 @@ bW
 bX
 bF
 dH
-dH
+fp
 dH
 ce
 cs
@@ -16073,7 +16097,7 @@ as
 bA
 bD
 dK
-dK
+fo
 dK
 dW
 dH
@@ -19845,7 +19869,7 @@ ag
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -25586,7 +25610,7 @@ eT
 gm
 gm
 bd
-bd
+fn
 bd
 gm
 eO
@@ -26729,7 +26753,7 @@ ae
 ae
 ag
 ag
-ag
+fj
 ag
 ag
 hP
@@ -26864,7 +26888,7 @@ eS
 gm
 bd
 bd
-bd
+fn
 bd
 bd
 hg
@@ -36593,7 +36617,7 @@ ae
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -38393,7 +38417,7 @@ ag
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -40847,7 +40871,7 @@ ag
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -55035,7 +55059,7 @@ ag
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -59316,7 +59340,7 @@ ag
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
@@ -59766,7 +59790,7 @@ ag
 ag
 ag
 ag
-ag
+fj
 ag
 ag
 ag
