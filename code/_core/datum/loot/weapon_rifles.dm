@@ -1,4 +1,4 @@
-/loot/weapon/abakan
+/loot/weapon/rifle/abakan
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
@@ -13,7 +13,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/advanced
+/loot/weapon/rifle/advanced
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
@@ -28,7 +28,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/ak12
+/loot/weapon/rifle/ak12
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
@@ -43,7 +43,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/ak13
+/loot/weapon/rifle/ak13
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
@@ -58,7 +58,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/assault
+/loot/weapon/rifle/assault
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/assault,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/assault,
@@ -73,7 +73,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/burst
+/loot/weapon/rifle/burst
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
@@ -88,7 +88,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/carbine
+/loot/weapon/rifle/carbine
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
@@ -103,7 +103,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/civ_carbine
+/loot/weapon/rifle/civ_carbine
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine,
@@ -118,7 +118,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/civ_carbine
+/loot/weapon/rifle/dmca
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/dmca,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/dmca,
@@ -133,7 +133,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/gauss_gun
+/loot/weapon/rifle/gauss_gun
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun
 	)
@@ -144,7 +144,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/groza
+/loot/weapon/rifle/groza
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
@@ -159,7 +159,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/heavy_sniper
+/loot/weapon/rifle/heavy_sniper
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,
 	)
@@ -170,7 +170,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/lmg
+/loot/weapon/rifle/lmg
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
 	)
@@ -181,7 +181,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/lmg_nt
+/loot/weapon/rifle/lmg_nt
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 	)
@@ -192,7 +192,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/lmg_nt
+/loot/weapon/rifle/lmg_nt
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
 	)
@@ -203,7 +203,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/marksman
+/loot/weapon/rifle/marksman
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
@@ -218,7 +218,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/minigun
+/loot/weapon/rifle/minigun
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun,
 	)
@@ -229,7 +229,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/nt_carbine
+/loot/weapon/rifle/nt_carbine
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
@@ -244,7 +244,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/pdw
+/loot/weapon/rifle/pdw
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw,
@@ -259,7 +259,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/pulse
+/loot/weapon/rifle/pulse
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pulse,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pulse,
@@ -274,7 +274,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/rpk
+/loot/weapon/rifle/rpk
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
 	)
@@ -285,7 +285,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/semi
+/loot/weapon/rifle/semi
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
@@ -300,7 +300,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/service
+/loot/weapon/rifle/service
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
@@ -315,7 +315,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/sniper
+/loot/weapon/rifle/sniper
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
@@ -330,7 +330,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/sniper_127
+/loot/weapon/rifle/sniper_127
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 	)
@@ -341,7 +341,7 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/sniper_nt
+/loot/weapon/rifle/sniper_nt
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
@@ -356,7 +356,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/standard
+/loot/weapon/rifle/standard
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
@@ -371,7 +371,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/svd
+/loot/weapon/rifle/svd
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
@@ -386,7 +386,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/svt
+/loot/weapon/rifle/svt
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
@@ -401,7 +401,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/syringe
+/loot/weapon/rifle/syringe
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,
 		/obj/item/magazine/syringe_gun,
@@ -415,7 +415,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/tungsten
+/loot/weapon/rifle/tungsten
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
 		/obj/item/magazine/rifle_tungsten,
@@ -429,7 +429,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/val
+/loot/weapon/rifle/val
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
@@ -444,7 +444,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/vintorez
+/loot/weapon/rifle/vintorez
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
@@ -460,7 +460,7 @@
 	chance_none = 25
 
 //Magazine - Shotguns
-/loot/weapon/bulldog
+/loot/weapon/shotgun/bulldog
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
@@ -475,7 +475,7 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/saiga_20
+/loot/weapon/shotgun/saiga_20
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
@@ -490,7 +490,8 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/bizon
+//Magazine - SMG
+/loot/weapon/smg/bizon
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
@@ -501,6 +502,208 @@
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon = 1,
 		/obj/item/magazine/shotgun_auto/buckshot = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/bullpup
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
+		/obj/item/magazine/smg_45,
+		/obj/item/magazine/smg_45,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard = 1,
+		/obj/item/magazine/smg_45 = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/fbi
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
+		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_10mm,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = 1,
+		/obj/item/magazine/smg_10mm = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/handheld
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
+		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
+		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_10mm,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = 1,
+		/obj/item/magazine/smp_9mm = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/nanotech
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
+		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech = 1,
+		/obj/item/magazine/smg_9mm = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/pdw
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
+		/obj/item/magazine/smg_46,
+		/obj/item/magazine/smg_46,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw = 1,
+		/obj/item/magazine/smg_46 = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/tactical
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
+		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_10mm,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = 1,
+		/obj/item/magazine/smg_10mm = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/smg/tactical/nt
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
+		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_10mm,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt = 1,
+		/obj/item/magazine/smg_10mm = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+
+/loot/weapon/shotgun/combat
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/combat,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/combat,
+		/obj/item/storage/ammo/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/combat = 1,
+		/obj/item/storage/ammo/buckshot = 2,
+		/obj/item/storage/ammo/slug = 1,
+		/obj/item/storage/ammo/flechette = 1
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/shotgun/ks23
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/storage/ammo/buckshot_23,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23 = 1,
+		/obj/item/storage/ammo/buckshot_23 = 2,
+		/obj/item/storage/ammo/slug_23 = 2
+	)
+	loot_count = 6
+	chance_none = 25
+
+
+/loot/weapon/shotgun/lever
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/lever,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/lever,
+		/obj/item/storage/ammo/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/lever = 1,
+		/obj/item/storage/ammo/buckshot = 2,
+		/obj/item/storage/ammo/slug = 1,
+		/obj/item/storage/ammo/flechette = 1
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/shotgun/nt
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/storage/ammo/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt = 1,
+		/obj/item/storage/ammo/buckshot = 2,
+		/obj/item/storage/ammo/slug = 1,
+		/obj/item/storage/ammo/flechette = 1
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/shotgun/semi
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
+		/obj/item/storage/ammo/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/semi = 1,
+		/obj/item/storage/ammo/buckshot = 2,
+		/obj/item/storage/ammo/slug = 1,
+		/obj/item/storage/ammo/flechette = 1
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/shotgun/wood
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
+		/obj/item/storage/ammo/buckshot,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/wood = 1,
+		/obj/item/storage/ammo/buckshot = 2,
+		/obj/item/storage/ammo/slug = 1,
+		/obj/item/storage/ammo/flechette = 1
 	)
 	loot_count = 6
 	chance_none = 25
