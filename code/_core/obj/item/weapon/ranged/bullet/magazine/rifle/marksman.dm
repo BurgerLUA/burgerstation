@@ -4,7 +4,7 @@
 	desc_extended = "The .308 Mauler Marksman Rifle is THE dmr for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/item/weapons/ranged/rifle/308.dmi'
 	icon_state = "inventory"
-	value = 150
+	value = 250
 
 	shoot_delay = 3
 

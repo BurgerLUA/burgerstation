@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced
 	name = "\improper 7.62mm SOL-15 Battle Rifle"
 	desc = "HOORAH!."
-	desc_extended = "The SOL-14 is the battle rifle currently in service in the SolGov Army. It's occasionally seen in the hands of PMCs."
+	desc_extended = "The SOL-15 is an upgraded version of the SOL-14 rifle. This one features automatic fire capabilities and better recoil dampening."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_3.dmi'
 	icon_state = "inventory"
-	value = 800
+	value = 1200
 
 	shoot_delay = 2
 
@@ -14,12 +14,12 @@
 
 	can_wield = TRUE
 
-	view_punch = 10
+	view_punch = 7
 
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.015
+	heat_per_shot = 0.09
 	heat_max = 0.08
 
 	bullet_length_min = 46
