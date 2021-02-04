@@ -23,8 +23,8 @@
 /client/proc/on_life_slow()
 
 	if(!mob)
-		src << span("danger","Uhh... it seems like your mob was deleted unexpectedly. Contact Burger on Discord to tell them how you encountered this."))
-		src << span("danger","As a precaution, you were kicked. You can rejoin again."))
+		src << span("danger","Uhh... it seems like your mob was deleted unexpectedly. Contact Burger on Discord to tell them how you encountered this.")
+		src << span("danger","As a precaution, you were kicked. You can rejoin again.")
 		del(src)
 		return FALSE
 

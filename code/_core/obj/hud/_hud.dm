@@ -23,7 +23,7 @@
 
 	var/list/color_scheme = DEFAULT_COLORS
 
-	if(owner && owner.client)
+	if(owner && owner.client && owner.client.settings)
 		color_scheme = owner.client.settings.loaded_data["hud_colors"]
 
 	I.SwapColor(rgb(255,0,0),color_scheme[1])
