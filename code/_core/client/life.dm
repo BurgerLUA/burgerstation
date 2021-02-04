@@ -14,16 +14,19 @@
 
 		queued_chat_messages.Cut(1,2)
 
-	if(mob) mob.on_life_client()
-
-	handle_camera()
+	if(mob)
+		mob.on_life_client()
+		handle_camera()
 
 	return TRUE
 
 /client/proc/on_life_slow()
 
 	if(!mob)
-		return TRUE
+		src << span("danger","Uhh... it seems like your mob was deleted unexpectedly. Contact Burger on Discord to tell them how you encountered this."))
+		src << span("danger","As a precaution, you were kicked. You can rejoin again."))
+		del(src)
+		return FALSE
 
 	for(var/k in stored_hud_images)
 		var/image/I = k

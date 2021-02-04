@@ -300,7 +300,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_screech,
 	/client/verb/create_vote,
 	/client/verb/var_edit,
-	/client/verb/change_variable
+	/client/verb/change_variable,
+	/client/verb/set_mob_to_null
 )
 
 /client/verb/show_debug_verbs()
@@ -318,3 +319,15 @@ var/global/list/debug_verbs = list(
 		verbs -= debug_verbs
 	verbs += /client/verb/show_debug_verbs
 	verbs -= /client/verb/hide_debug_verbs
+
+/client/verb/set_mob_to_null()
+	set name = "Set Mob to Null (DANGER)"
+	set category = "Debug"
+
+	var/desired_input = input("Are you sure you want to set your mob to null? This exists to test a safety feature.","Set Mob to Null","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(desired_input == "Yes")
+		mob.ckey = null
+		mob = null
+	else
+		to_chat(span("notice","You decide not to do anything."))
