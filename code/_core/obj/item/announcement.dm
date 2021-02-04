@@ -36,7 +36,7 @@ var/global/next_announcement = 0
 		return FALSE
 
 	if(next_announcement > world.time)
-		caller.to_chat(span("warning","Please wait [SECONDS_TO_DECISECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
 	var/message = input("What should the message be?", "Message", stored_message) as message | null

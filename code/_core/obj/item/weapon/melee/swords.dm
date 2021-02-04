@@ -1,5 +1,5 @@
-/obj/item/weapon/melee/sword/
-	value = 10
+/obj/item/weapon/melee/sword
+	drop_sound = 'sound/items/drop/knife.ogg'
 
 /obj/item/weapon/melee/sword/sabre
 
