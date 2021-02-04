@@ -298,6 +298,10 @@
 
 /obj/item/New(var/desired_loc)
 
+	if(is_container && size <= container_max_size)
+		log_error("Warning: [get_debug_name()] had a size ([size]) less than its container max size ([container_max_size]).")
+		size = container_max_size + 1
+
 	if(!damage_type)
 		switch(size)
 			if(0 to SIZE_3)
