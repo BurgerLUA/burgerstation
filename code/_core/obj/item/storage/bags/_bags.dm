@@ -151,7 +151,7 @@
 
 	size = SIZE_1
 	dynamic_inventory_count = 1
-	container_max_size = SIZE_1
+	container_max_size = SIZE_0
 	container_max_slots = 30
 	container_whitelist = list(
 		/obj/item/container/pill,

@@ -6054,6 +6054,12 @@
 "vY" = (
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
+"vZ" = (
+/obj/structure/smooth/table/reinforced/dark/pvp,
+/obj/structure/interactive/shop,
+/obj/item/coin/antag_token,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/east)
 "wf" = (
 /obj/structure/interactive/bed/sleeper/cryo,
 /turf/simulated/floor/tile/morphing/cryo,
@@ -51396,7 +51402,7 @@ aj
 aj
 lA
 aj
-dX
+vZ
 xc
 dX
 dX
