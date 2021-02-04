@@ -3144,6 +3144,17 @@
 /obj/marker/drop_pod_location,
 /turf/simulated/floor/cave_dirt,
 /area/lz_420/interior/cave/east)
+"mK" = (
+/turf/simulated/floor/colored/grass/jungle,
+/area/lz_420/exterior)
+"mL" = (
+/obj/structure/interactive/crate/tent,
+/turf/simulated/floor/colored/grass/jungle,
+/area/lz_420/exterior)
+"mM" = (
+/obj/structure/interactive/lighting/bonfire/on,
+/turf/simulated/floor/colored/grass/jungle,
+/area/lz_420/exterior)
 
 (1,1,1) = {"
 ab
@@ -15378,8 +15389,8 @@ au
 au
 au
 au
-au
-au
+mK
+mK
 au
 au
 au
@@ -15635,9 +15646,9 @@ au
 au
 au
 au
-au
-au
-au
+mK
+mK
+mK
 au
 au
 au
@@ -15891,11 +15902,11 @@ au
 au
 au
 au
-au
-au
-au
-au
-au
+mK
+mK
+mK
+mK
+mK
 au
 au
 au
@@ -16148,11 +16159,11 @@ au
 au
 au
 au
-au
-au
-au
-au
-au
+mK
+mL
+mM
+mK
+mK
 au
 au
 au
@@ -16405,11 +16416,11 @@ au
 au
 au
 au
-au
-au
-au
-au
-au
+mK
+mK
+mK
+mK
+mK
 au
 au
 au
@@ -16662,11 +16673,11 @@ au
 au
 au
 au
-au
-au
-au
-au
-au
+mK
+mK
+mK
+mK
+mK
 au
 au
 au
@@ -16920,10 +16931,10 @@ au
 au
 au
 au
-au
-au
-au
-au
+mK
+mK
+mK
+mK
 au
 au
 au

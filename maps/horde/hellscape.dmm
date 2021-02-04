@@ -3747,6 +3747,10 @@
 /obj/marker/rift_location,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
+"pF" = (
+/obj/structure/interactive/crate/tent,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/south)
 "pG" = (
 /mob/living/simple/goliath,
 /turf/simulated/floor/basalt,
@@ -3972,6 +3976,10 @@
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
+"qD" = (
+/obj/structure/interactive/lighting/bonfire/on,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/south)
 "qE" = (
 /mob/living/simple/bear/black,
 /turf/simulated/floor/basalt,
@@ -39712,8 +39720,8 @@ iC
 iC
 iD
 iC
-iC
-iC
+pF
+qD
 iC
 iC
 iC

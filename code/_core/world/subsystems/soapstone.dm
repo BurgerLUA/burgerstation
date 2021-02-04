@@ -25,4 +25,4 @@ SUBSYSTEM_DEF(soapstone)
 	data_to_write["color"] = desired_color
 	save_soapstone.quick_write(data_to_write)
 
-	new/obj/structure/interactive/soapstone_message(desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
+	return new/obj/structure/interactive/soapstone_message(desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
