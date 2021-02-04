@@ -92,8 +92,7 @@
 /turf/unsimulated/generation/jungle,
 /area/lz_001/jungle)
 "az" = (
-/obj/structure/interactive/lighting/streetlamp/jungle,
-/turf/unsimulated/generation/jungle,
+/turf/simulated/floor/colored/grass/jungle,
 /area/lz_001/jungle)
 "aA" = (
 /turf/simulated/wall/rock/moss,
@@ -2982,10 +2981,18 @@
 /obj/marker/generation/snow_dirt,
 /turf/unsimulated/generation/snow,
 /area/lz_001/snow)
+"na" = (
+/obj/structure/interactive/crate/tent,
+/turf/simulated/floor/colored/grass/jungle,
+/area/lz_001/jungle)
 "nb" = (
 /obj/marker/generation/ice,
 /turf/unsimulated/generation/snow,
 /area/lz_001/snow)
+"nc" = (
+/obj/structure/interactive/lighting/bonfire/on,
+/turf/simulated/floor/colored/grass/jungle,
+/area/lz_001/jungle)
 
 (1,1,1) = {"
 aa
@@ -17231,14 +17238,14 @@ ay
 ay
 ay
 ay
-ay
-az
-ay
-ay
-ay
+fh
+av
+fh
 ay
 ay
-az
+ay
+fh
+av
 cA
 cA
 cA
@@ -17488,15 +17495,15 @@ ay
 ay
 ay
 ay
+fh
+fh
 ay
 ay
 ay
 ay
-ay
-ay
-ay
-ay
-ay
+fh
+fh
+fh
 ay
 ay
 ay
@@ -19555,8 +19562,8 @@ ay
 ay
 ay
 ay
-ay
-ay
+az
+az
 ay
 ay
 ay
@@ -19812,9 +19819,9 @@ ay
 ay
 ay
 ay
-ay
-ay
-ay
+az
+az
+az
 ay
 ay
 cA
@@ -20068,11 +20075,11 @@ fh
 ay
 ay
 ay
-ay
-ay
-ay
-ay
-ay
+az
+az
+az
+az
+az
 ay
 ay
 af
@@ -20325,11 +20332,11 @@ fh
 ay
 ay
 ay
-ay
-ay
-ay
-ay
-ay
+az
+na
+nc
+az
+az
 ay
 ay
 ay
@@ -20582,11 +20589,11 @@ fh
 ay
 ay
 ay
-ay
-ay
-ay
-ay
-ay
+az
+az
+az
+az
+az
 ay
 ay
 ay
@@ -20839,11 +20846,11 @@ fh
 fh
 ay
 ay
-ay
-ay
-ay
-ay
-ay
+az
+az
+az
+az
+az
 ay
 ay
 ay
@@ -21097,10 +21104,10 @@ fh
 ay
 ay
 ay
-ay
-ay
-ay
-ay
+az
+az
+az
+az
 ay
 ay
 ay
