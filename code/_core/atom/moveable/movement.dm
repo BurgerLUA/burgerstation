@@ -35,7 +35,7 @@
 	//Now we move.
 	if(final_move_dir && move_delay <= 0 && is_valid_dir(final_move_dir))
 
-		var/final_movement_delay = get_movement_delay()
+		var/final_movement_delay = max(adjust_delay,get_movement_delay())
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)

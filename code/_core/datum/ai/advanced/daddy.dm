@@ -1,7 +1,7 @@
 /ai/advanced/daddy
 	var/next_chat_time = 0
 
-/ai/advanced/daddy/handle_objectives(var/tick_rate=AI_TICK)
+/ai/advanced/daddy/handle_objectives(var/tick_rate)
 
 	. = ..()
 

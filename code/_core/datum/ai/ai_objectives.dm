@@ -75,7 +75,7 @@
 
 	return TRUE
 
-/ai/proc/handle_objectives(var/tick_rate=AI_TICK)
+/ai/proc/handle_objectives(var/tick_rate)
 
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE

@@ -17,7 +17,7 @@ var/global/list/space_cop_tag_shitlist = list()
 
 	var/event/space_cop/tracked_event
 
-/ai/advanced/space_cop/handle_objectives(var/tick_rate=AI_TICK)
+/ai/advanced/space_cop/handle_objectives(var/tick_rate)
 
 	if(!roam && !located_chair_turf && !length(current_path))
 		if(tracked_event && tracked_event.recalling && tracked_event.associated_shuttle_controller && get_dist(owner,tracked_event.associated_shuttle_controller) <= VIEW_RANGE)

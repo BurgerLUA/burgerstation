@@ -18,7 +18,7 @@
 
 	return null
 
-/ai/carp/handle_objectives(var/tick_rate=AI_TICK)
+/ai/carp/handle_objectives(var/tick_rate)
 
 	if(!carp_leader || !is_valid_leader(carp_leader))
 		var/mob/living/simple/spacecarp/leader/new_leader = get_leader()

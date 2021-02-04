@@ -1,9 +1,9 @@
 #define LIFE_TICK 5 //Deciseconds per life tick interval.
 #define LIFE_TICK_SLOW 10 //Deciseconds per slow life tick interval.
-#define AI_TICK 3 //Deciseconds per AI tick interval.
-#define BOSS_TICK 2 //Deciseconds per boss tick interval. Also handles movement.
+#define AI_TICK 2 //Deciseconds per AI tick interval.
+#define BOSS_TICK 1 //Deciseconds per boss tick interval. Also handles movement.
 
-#define CLIENT_TICK 3 //FRAMES per life tick interval
+#define CLIENT_TICK 2 //FRAMES per life tick interval
 #define CLIENT_TICK_SLOW FPS_SERVER //FRAMES per slow life tick internval
 
 #define PROJECTILE_TICK 2 //Ticks per Sprojectile tick interval

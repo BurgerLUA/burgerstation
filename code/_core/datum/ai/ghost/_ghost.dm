@@ -107,7 +107,7 @@
 
 	return null
 
-/ai/ghost/on_life(var/tick_rate=AI_TICK)
+/ai/ghost/on_life(var/tick_rate)
 
 	anger = clamp(anger,0,200)
 
@@ -120,7 +120,7 @@
 		return TRUE
 
 	if(owner.move_delay <= 0)
-		handle_movement_reset()
+		//handle_movement_reset()
 		handle_movement()
 
 	if(owner.attack_next <= world.time)

@@ -86,12 +86,10 @@
 
 /mob/living/simple/can_man/get_movement_delay()
 
-	. = ..()
-
 	if(charge_steps)
-		. = DECISECONDS_TO_TICKS(AI_TICK)
+		return 1 //Max
 
-	return .
+	return ..()
 
 /mob/living/simple/can_man/post_move(var/atom/old_loc)
 

@@ -20,7 +20,7 @@
 	loyalty_tag = "Alien"
 	iff_tag = "Alien"
 
-	movement_delay = DECISECONDS_TO_TICKS(AI_TICK*0.5)
+	movement_delay = 1
 
 	mob_size = MOB_SIZE_HUMAN
 
