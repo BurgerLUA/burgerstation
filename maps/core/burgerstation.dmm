@@ -267,6 +267,7 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/kitchen)
 "bb" = (
+/obj/structure/interactive/status_display/global_display/alpha,
 /turf/simulated/wall/shuttle,
 /area/transit/dropship/alpha/station)
 "bc" = (
@@ -286,8 +287,9 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/dropship/alpha/station)
 "bf" = (
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/bravo/station)
+/obj/structure/interactive/status_display/global_display/alpha,
+/turf/simulated/wall/metal,
+/area/burgerstation/hanger)
 "bg" = (
 /obj/structure/shuttle_engine/burst/left{
 	dir = 1
@@ -298,7 +300,6 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/north)
 "bi" = (
-/obj/structure/interactive/status_display/shuttle,
 /turf/simulated/wall/shuttle,
 /area/transit/dropship/bravo/station)
 "bj" = (
@@ -1184,15 +1185,17 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/dropship/delta/station)
 "ep" = (
+/obj/structure/interactive/status_display/global_display/bravo,
 /turf/simulated/wall/shuttle,
-/area/transit/dropship/delta/station)
+/area/transit/dropship/bravo/station)
 "eq" = (
 /obj/structure/interactive/door/airlock/shuttle,
 /turf/simulated/floor/tile/shuttle/blue,
 /area/transit/dropship/delta/station)
 "er" = (
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/charlie/station)
+/obj/structure/interactive/status_display/global_display/bravo,
+/turf/simulated/wall/metal,
+/area/burgerstation/hanger)
 "es" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -1215,7 +1218,6 @@
 /turf/simulated/floor/tile/shuttle/purple,
 /area/transit/dropship/charlie/station)
 "ew" = (
-/obj/structure/interactive/status_display/shuttle,
 /turf/simulated/wall/shuttle,
 /area/transit/dropship/alpha/station)
 "ex" = (
@@ -2278,7 +2280,6 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo/ship)
 "ic" = (
-/obj/structure/interactive/status_display/shuttle,
 /turf/simulated/wall/shuttle,
 /area/transit/dropship/delta/station)
 "id" = (
@@ -2379,7 +2380,6 @@
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/alpha/station)
 "iv" = (
-/obj/structure/interactive/status_display/shuttle,
 /turf/simulated/wall/shuttle,
 /area/transit/dropship/charlie/station)
 "iw" = (
@@ -3094,9 +3094,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "le" = (
-/obj/structure/interactive/status_display/global_display/round,
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/bravo/station)
+/obj/structure/interactive/status_display/global_display/charlie,
+/turf/simulated/wall/metal,
+/area/burgerstation/hanger)
 "lf" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -5289,6 +5289,10 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
+"td" = (
+/obj/structure/interactive/status_display/global_display/charlie,
+/turf/simulated/wall/shuttle,
+/area/transit/dropship/charlie/station)
 "te" = (
 /obj/structure/interactive/vending/security/ammo,
 /turf/simulated/floor/tile/dark,
@@ -5546,6 +5550,10 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/dropship/charlie/station)
+"ug" = (
+/obj/structure/interactive/status_display/global_display/delta,
+/turf/simulated/wall/shuttle,
+/area/transit/dropship/delta/station)
 "uh" = (
 /obj/structure/interactive/vending/soda/full,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -6035,6 +6043,10 @@
 /obj/structure/smooth/table/reinforced,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/help_desk)
+"vW" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/shuttle,
+/area/transit/dropship/charlie/station)
 "vX" = (
 /obj/structure/interactive/door/airlock/station/chemistry,
 /turf/simulated/floor/tile/morphing/chemistry,
@@ -28460,18 +28472,18 @@ aw
 bK
 bK
 cg
-bb
-bb
-bb
+ew
+ew
+ew
 oT
-bb
-bb
-bb
-bb
+ew
+ew
+ew
+ew
 oT
-bb
-bb
-bb
+ew
+ew
+ew
 iw
 hO
 bK
@@ -28728,7 +28740,7 @@ bl
 bl
 gB
 bl
-bb
+ew
 iw
 hO
 bK
@@ -28740,19 +28752,19 @@ jd
 hO
 bK
 bK
-cg
+kw
 au
-ep
-ep
-ep
+ic
+ic
+ic
 iE
-ep
-ep
+ic
+ic
 iE
-ep
-ep
-ep
-ep
+ic
+ic
+ic
+ic
 hO
 qj
 ab
@@ -28974,18 +28986,18 @@ aw
 bK
 bK
 cg
-bb
 ew
-bm
-bm
-bm
-bm
-bm
-bm
-bm
-bm
-bm
 bb
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+ew
 iw
 ii
 dS
@@ -28999,7 +29011,7 @@ dS
 dS
 kM
 aB
-ep
+ic
 ez
 jJ
 ez
@@ -29009,7 +29021,7 @@ ez
 jJ
 gt
 gv
-ep
+ic
 hO
 qj
 ab
@@ -29264,9 +29276,9 @@ eX
 eX
 eX
 eX
+ug
 ic
-ep
-ep
+ic
 hO
 qj
 ab
@@ -29499,7 +29511,7 @@ tK
 bm
 bU
 bm
-ew
+bb
 aP
 iX
 jd
@@ -29513,7 +29525,7 @@ jd
 jd
 kW
 eo
-ic
+ug
 eA
 eA
 eA
@@ -29778,9 +29790,9 @@ eX
 eX
 eX
 eX
+ug
 ic
-ep
-ep
+ic
 hO
 qj
 ab
@@ -30002,18 +30014,18 @@ aw
 bK
 bK
 cg
-bb
 ew
-bm
-bm
-bm
-bm
-bm
-bm
-bm
-bm
-bm
 bb
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+ew
 iw
 iY
 eh
@@ -30027,8 +30039,8 @@ eh
 eh
 kX
 au
-ep
-eA
+ic
+eV
 jT
 eV
 eV
@@ -30037,7 +30049,7 @@ eV
 jT
 gt
 hj
-ep
+ic
 hO
 qj
 ab
@@ -30269,10 +30281,10 @@ bo
 bo
 bo
 gG
-bU
-bb
+bo
+ew
 iw
-hO
+bf
 bK
 bK
 cg
@@ -30284,17 +30296,17 @@ bK
 bK
 cg
 aB
-ep
-ep
-ep
+ic
+ic
+ic
 iE
-ep
-ep
+ic
+ic
 iE
-ep
-ep
-ep
-ep
+ic
+ic
+ic
+ic
 hO
 qj
 ab
@@ -30516,18 +30528,18 @@ aw
 bK
 bK
 cg
-bb
-bb
-bb
+ew
+ew
+ew
 oT
-bb
-bb
-bb
-bb
+ew
+ew
+ew
+ew
 oT
-bb
-bb
-bb
+ew
+ew
+ew
 iw
 hO
 bK
@@ -31312,14 +31324,14 @@ bK
 bK
 cg
 aQ
-er
-er
-er
-er
-er
+iv
+iv
+iv
+iv
+iv
 fA
 fA
-er
+iv
 hi
 hi
 hi
@@ -31576,10 +31588,10 @@ iA
 eB
 eY
 eB
-er
-er
+iv
+iv
 fA
-er
+iv
 hO
 qj
 ab
@@ -31801,18 +31813,18 @@ aw
 cg
 ku
 ku
-bf
-bf
-bf
+bi
+bi
+bi
 oS
-bf
-bf
+bi
+bi
 oS
-bf
-bf
+bi
+bi
 oS
-bf
-bf
+bi
+bi
 iy
 hO
 bK
@@ -31833,8 +31845,8 @@ eC
 eC
 eZ
 eB
-er
-fR
+iv
+vW
 eF
 uf
 hO
@@ -32058,7 +32070,7 @@ aw
 cg
 aA
 aC
-bi
+ep
 bq
 gO
 bq
@@ -32069,7 +32081,7 @@ bq
 bq
 bq
 bq
-bf
+bi
 iy
 hO
 bK
@@ -32081,19 +32093,19 @@ jd
 hO
 bK
 bK
-cg
+le
 aQ
-er
+iv
 eD
-er
+td
 eD
-er
+iv
 fA
-er
-er
-er
+iv
+td
+iv
 hI
-er
+iv
 hO
 qj
 ab
@@ -32326,7 +32338,7 @@ aS
 aS
 aS
 ho
-bf
+bi
 iy
 ii
 dS
@@ -32340,7 +32352,7 @@ dS
 dS
 lp
 bg
-er
+iv
 eE
 iz
 eE
@@ -32840,7 +32852,7 @@ aS
 aS
 aS
 aS
-bi
+ep
 dB
 jb
 jd
@@ -32854,7 +32866,7 @@ jd
 jd
 lq
 ix
-iv
+td
 eG
 eG
 eF
@@ -33354,7 +33366,7 @@ aS
 aS
 aS
 ho
-bf
+bi
 iy
 jc
 eh
@@ -33368,8 +33380,8 @@ eh
 eh
 kX
 aQ
-er
-eF
+iv
+eH
 ir
 eH
 eH
@@ -33600,7 +33612,7 @@ aw
 cg
 aA
 aC
-bi
+ep
 br
 gS
 br
@@ -33611,9 +33623,9 @@ br
 br
 br
 br
-bf
+bi
 iy
-hO
+er
 bK
 bK
 cg
@@ -33625,17 +33637,17 @@ bK
 bK
 cg
 bg
-er
+iv
 eD
-er
+td
 eD
-er
+iv
 fA
-er
-er
-er
+iv
+td
+iv
 hI
-er
+iv
 hO
 qj
 ab
@@ -33857,18 +33869,18 @@ aw
 cg
 ku
 ku
-bf
-bf
-bf
-le
-bf
+bi
+bi
+bi
+ep
+bi
 aS
 aS
-bf
-le
-bf
-bf
-bf
+bi
+ep
+bi
+bi
+bi
 iy
 hO
 bK
@@ -33889,8 +33901,8 @@ fm
 fm
 fm
 fB
-er
-eH
+iv
+vW
 eF
 uf
 hO
@@ -34146,10 +34158,10 @@ jE
 fn
 fB
 fS
-er
-er
+iv
+iv
 fA
-er
+iv
 hO
 qj
 ab
@@ -34372,7 +34384,7 @@ cg
 ku
 ku
 ku
-bf
+bi
 hD
 aS
 aS
@@ -34382,7 +34394,7 @@ aS
 aS
 aS
 ho
-bf
+bi
 iy
 hO
 bK
@@ -34396,14 +34408,14 @@ jx
 bK
 cg
 bg
-er
-er
-er
-er
-er
+iv
+iv
+iv
+iv
+iv
 fQ
 fQ
-er
+iv
 hi
 hi
 hi
@@ -34639,7 +34651,7 @@ ip
 uz
 bj
 bj
-bf
+bi
 iy
 hO
 kw
@@ -34886,17 +34898,17 @@ cg
 ku
 ku
 ku
-bf
-bf
-bf
+bi
+bi
+bi
 io
-bf
-bf
+bi
+bi
 iq
-bf
+bi
 oS
-bf
-bf
+bi
+bi
 iy
 hO
 kw

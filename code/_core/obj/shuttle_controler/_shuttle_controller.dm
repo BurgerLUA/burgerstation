@@ -183,13 +183,7 @@ var/global/list/all_shuttle_controlers = list()
 			transit_source = null
 			transit_target = null
 
-	var/area/A = get_area(src)
-
-	for(var/obj/structure/interactive/status_display/shuttle/SD in A.contents)
-		SD.set_text(display)
-
-	if(status_id)
-		set_status_display(status_id,display)
+	if(status_id) set_status_display(status_id,display)
 
 	return TRUE
 
