@@ -15,10 +15,8 @@
 	var/rarity = RARITY_COMMON
 
 	var/size = 1
-	var/weight = 0
+	var/weight = 0 //DEPRICATED
 	var/quality = 100
-
-	var/weight_last = 0//Last weight calculated via calculation
 
 	var/list/material = list() //Stored materials
 
@@ -154,16 +152,6 @@
 		visible_message(span("danger","\The [src.name] breaks!"))
 
 	return TRUE
-
-/obj/item/proc/get_weight(var/check_containers=TRUE)
-
-	. = weight*item_count_current
-
-	if(check_containers && is_container)
-		for(var/obj/hud/inventory/I in src.inventories)
-			. += I.get_weight()
-
-	return .
 
 /obj/item/Crossed(atom/movable/O)
 	return TRUE
@@ -399,7 +387,7 @@
 		. += div("rarity good","<b>Luck</b>: +[luck-50]")
 
 	. += div("rarity","Value: [CEILING(value,1)]cr.")
-	. += div("weightsize","Size: [size], Weight: [get_weight(FALSE)]")
+	. += div("weightsize","Size: [size], Weight: [weight]")
 
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
 	. += div("examine_description","\"[src.desc]\"")

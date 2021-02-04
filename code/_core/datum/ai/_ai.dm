@@ -67,7 +67,7 @@
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
-	var/alert_time = 600 //Deciseconds
+	var/alert_time = SECONDS_TO_TICKS(8) //In ticks
 	var/sidestep_next = FALSE
 	var/should_investigate_alert = TRUE
 

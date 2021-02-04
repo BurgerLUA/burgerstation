@@ -416,17 +416,6 @@
 		I.delete_on_drop = TRUE
 		remove_object(I,owner.loc)
 
-
-/obj/hud/inventory/proc/get_weight()
-
-	. = 0
-
-	for(var/k in contents)
-		var/obj/item/I = k
-		. += I.get_weight()
-
-	return .
-
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
 	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP

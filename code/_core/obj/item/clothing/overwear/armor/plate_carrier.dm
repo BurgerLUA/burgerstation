@@ -30,16 +30,6 @@
 	LOADLISTATOM("installed_plate_carriers")
 	return .
 
-/obj/item/clothing/overwear/armor/plate_carrier/get_weight()
-
-	. = ..()
-
-	for(var/k in installed_plate_carriers)
-		var/obj/item/armor_plate/P = k
-		. += P.weight
-
-	return .
-
 /obj/item/clothing/overwear/armor/plate_carrier/get_defense_rating()
 
 	. = ..()

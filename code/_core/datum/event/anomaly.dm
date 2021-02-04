@@ -10,7 +10,6 @@
 		/mob/living/simple/glockroach = 6,
 		/mob/living/simple/bullshark = 4,
 		/mob/living/simple/bot/medibot/rogue = 6,
-		/mob/living/simple/antag = 8,
 		/mob/living/simple/screech = 4
 	)
 

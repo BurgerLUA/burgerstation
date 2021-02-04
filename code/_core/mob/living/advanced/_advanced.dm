@@ -13,9 +13,6 @@
 	var/sex = MALE
 	gender = MALE
 
-	var/weight = 0 //Weight of worn items.
-	var/weight_max = 1 //Maxinmum weight of worn items.
-
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
@@ -214,7 +211,7 @@
 	return .
 
 
-/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_weight=TRUE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
+/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
 	if(qdeleting) //Bandaid fix.
 		return FALSE
@@ -222,8 +219,6 @@
 	if(!force && !finalized)
 		return FALSE //Don't want to call this too much during initializations.
 
-	if(should_update_weight)
-		update_weight()
 	if(should_update_slowdown)
 		update_slowdown()
 	if(should_update_eyes)
@@ -234,21 +229,6 @@
 		update_clothes()
 
 	return TRUE
-
-
-
-/mob/living/advanced/proc/update_weight()
-
-	. = 0
-
-	for(var/obj/hud/inventory/organs/I in inventory)
-		. += I.get_weight()
-
-	weight = .
-
-	weight_max = CEILING(200 + get_attribute_power(ATTRIBUTE_ENDURANCE)*300,5) //Skyrim levels of memes.
-
-	return .
 
 /mob/living/advanced/proc/update_slowdown()
 
