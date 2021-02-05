@@ -231,8 +231,6 @@
 		on_hit(current_loc ? current_loc : src.loc,TRUE)
 		return FALSE
 
-	start_time += TICKS_TO_DECISECONDS(tick_rate)
-
 	if(lifetime && start_time >= lifetime)
 		on_hit(current_loc ? current_loc : src.loc,TRUE)
 		return FALSE
@@ -262,6 +260,8 @@
 	pixel_y_float += vel_y
 
 	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
+
+	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
 	return TRUE
 
