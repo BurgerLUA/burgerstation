@@ -159,6 +159,9 @@
 	if(!owner || !is_advanced(owner) || !item_to_update)
 		return FALSE
 
+	if(!item_to_update.dan_mode && !item_to_update.enable_held_icon_states)
+		return FALSE
+
 	var/mob/living/advanced/A = owner
 
 	var/icon/desired_icon = initial(item_to_update.icon)

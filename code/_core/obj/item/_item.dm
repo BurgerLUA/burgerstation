@@ -48,6 +48,7 @@
 	var/icon_state_held_left = "held_left"
 	var/icon_state_held_right = "held_right"
 	var/icon_state_worn = "worn"
+	var/enable_held_icon_states = FALSE
 	//var/icon_state_held_single
 
 	collision_flags = FLAG_COLLISION_ITEM
