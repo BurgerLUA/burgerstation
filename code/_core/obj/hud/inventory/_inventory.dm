@@ -168,8 +168,6 @@
 	var/desired_layer = LAYER_MOB_HELD
 	var/matrix/desired_transform = matrix()
 
-	var/list/states = icon_states(initial(item_to_update.icon))
-
 	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT || id == BODY_HAND_RIGHT || id == BODY_TORSO_OB) )
 		if(id == BODY_TORSO_OB)
 			desired_icon_state = item_to_update.dan_icon_state_back
@@ -260,15 +258,11 @@
 		var/icon/I = ICON_INVISIBLE
 		for(var/polymorph_name in item_to_update.polymorphs)
 			var/polymorph_color = item_to_update.polymorphs[polymorph_name]
-			if(!("[desired_icon_state]_[polymorph_name]" in states))
-				continue
 			var/icon/I2 = new /icon(desired_icon,"[desired_icon_state]_[polymorph_name]")
 			I2.Blend(polymorph_color,ICON_MULTIPLY)
 			I.Blend(I2,ICON_OVERLAY)
 		desired_icon_state = null
 		desired_icon = I
-	else if(!(desired_icon_state in states))
-		return FALSE
 
 	if(!A.overlays_assoc["\ref[item_to_update]"])
 		A.add_overlay_tracked(

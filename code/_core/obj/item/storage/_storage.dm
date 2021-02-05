@@ -2,10 +2,10 @@
 	name = "storage"
 	desc = "What could it contain?"
 
-	size = 3
+	size = SIZE_3
 
 	is_container = TRUE
-	container_max_size = 2
+	container_max_size = SIZE_2
 
 	dynamic_inventory_count = 4
 

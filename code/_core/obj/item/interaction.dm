@@ -6,7 +6,7 @@
 	if(!length(inventories))
 		return FALSE
 
-	if(inventory_user && is_advanced(inventory_user))
+	if(inventory_user)
 		var/mob/living/advanced/A = inventory_user
 		for(var/obj/hud/button/close_inventory/B in A.buttons)
 			B.alpha = 0

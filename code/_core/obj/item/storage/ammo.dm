@@ -17,7 +17,7 @@
 	size = SIZE_3
 
 	dynamic_inventory_count = 4
-	container_max_size = 6
+	container_max_size = SIZE_1
 	container_max_slots = 6
 
 /obj/item/storage/ammo/bullet_22/fill_inventory()

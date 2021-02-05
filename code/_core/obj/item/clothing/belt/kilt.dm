@@ -10,7 +10,7 @@
 
 	size = 8
 
-	container_max_size = 2
+	container_max_size = SIZE_2
 
 	defense_rating = list(
 		BLADE = AP_SWORD,

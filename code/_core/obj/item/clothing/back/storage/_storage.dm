@@ -6,8 +6,8 @@ obj/item/clothing/back/storage
 
 	dynamic_inventory_count = 1
 
-	size = 4
+	size = SIZE_4
 	weight = 10
-	container_max_size = 3
+	container_max_size = SIZE_3
 
 	drop_sound = 'sound/items/drop/backpack.ogg'
