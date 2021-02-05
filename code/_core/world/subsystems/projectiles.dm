@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(projectiles)
 	tick_rate = PROJECTILE_TICK
 	priority = SS_ORDER_IMPORTANT
 
-	cpu_usage_max = 100
-	tick_usage_max = 100
+	cpu_usage_max = 0 //Uncapped.
+	tick_usage_max = 0 //Uncapped.
 
 	use_time_dialation = FALSE
 

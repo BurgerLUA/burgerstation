@@ -193,60 +193,52 @@
 
 	for(var/k in new_loc.contents)
 		var/atom/movable/A = k
-		if(A == owner || A == weapon)
+		if(!A.density)
 			continue
-		var/atom/collide_atom = A.projectile_should_collide(src,new_loc,old_loc)
-		if(!collide_atom)
-			continue
-		if(!damage_atom(collide_atom))
-			continue
-		on_hit(collide_atom)
-		return TRUE
+		if(check_hit(A,old_loc,new_loc))
+			return TRUE
 
 	for(var/k in new_loc.old_living)
 		var/mob/living/L = k
+		if(!L.density)
+			continue
 		if(L.dead)
 			continue
 		if(L.move_delay <= 0)
 			continue
-		if(L == owner || L == weapon)
-			continue
-		var/atom/collide_atom = L.projectile_should_collide(src,new_loc,old_loc)
-		if(!collide_atom)
-			continue
-		if(!damage_atom(collide_atom))
-			continue
-		on_hit(collide_atom)
-		return TRUE
+		if(check_hit(L,old_loc,new_loc))
+			return TRUE
 
 	return FALSE
+
+/obj/projectile/proc/check_hit(var/atom/movable/A,var/atom/old_loc,var/atom/new_loc)
+	if(A == owner || A == weapon)
+		return FALSE
+	var/atom/collide_atom = A.projectile_should_collide(src,new_loc,old_loc)
+	if(!collide_atom)
+		return FALSE
+	if(!damage_atom(collide_atom))
+		return FALSE
+	return on_hit(collide_atom)
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
 	if(!isturf(src.loc))
-		on_hit(src.loc,TRUE)
+		on_hit(current_loc ? current_loc : src.loc,TRUE)
 		return FALSE
 
 	if(!vel_x && !vel_y)
-		on_hit(src.loc,TRUE)
+		on_hit(current_loc ? current_loc : src.loc,TRUE)
 		return FALSE
-
-	if(!start_time)
-		//Bullet Effect.
-		var/matrix/M = matrix()
-		var/new_angle = -ATAN2(vel_x,vel_y) + 90
-		M.Turn(new_angle)
-		transform = M
-
-	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
-	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
 	if(lifetime && start_time >= lifetime)
-		on_hit(src.loc,TRUE)
+		on_hit(current_loc ? current_loc : src.loc,TRUE)
 		return FALSE
 
+	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
 		steps_current += 1
@@ -254,16 +246,22 @@
 			return FALSE
 		if(on_enter_tile(previous_loc,current_loc))
 			return FALSE
-		if(current_loc)
-			previous_loc = current_loc
+		if(!current_loc)
+			return FALSE
+		previous_loc = current_loc
+		last_loc_x = current_loc_x
+		last_loc_y = current_loc_y
+
+	if(!start_time)
+		var/matrix/M = matrix()
+		var/new_angle = -ATAN2(vel_x,vel_y) + 90
+		M.Turn(new_angle)
+		transform = M
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
 	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
-
-	last_loc_x = current_loc_x
-	last_loc_y = current_loc_y
 
 	return TRUE
 
@@ -311,14 +309,6 @@
 	return TRUE
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
-
-	/*
-	for(var/mob/MO in contents)
-		if(MO.client)
-			MO.client.pixel_x = vel_x
-			MO.client.pixel_y = vel_y
-			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
-	*/
 
 	if(impact_effect_turf && isturf(hit_atom))
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)

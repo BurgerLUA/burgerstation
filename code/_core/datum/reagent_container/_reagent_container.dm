@@ -231,15 +231,10 @@
 		var/obj/item/I = src.owner
 		caller = I.last_interacted
 
-	var/list/c_id_to_volume = list() //What is in the reagent container, but in a nice id = volume form
-	var/list/c_id_to_temperature = list()
-
-	for(var/reagent_type in stored_reagents)
-		c_id_to_volume[reagent_type] = stored_reagents[reagent_type]
-		c_id_to_temperature[reagent_type] = stored_reagents_temperature[reagent_type]
+	var/list/c_id_to_volume = stored_reagents.Copy()
+	var/list/c_id_to_temperature = stored_reagents_temperature.Copy()
 
 	var/reagent_recipe/found_recipe = null
-
 	for(var/k in SSreagent.all_reagent_recipes)
 
 		CHECK_TICK(75,FPS_SERVER)
@@ -292,11 +287,9 @@
 		var/required_amount = found_recipe.required_reagents[k]
 		var/current_volume = c_id_to_volume[k]
 		var/math_to_do = current_volume / required_amount
-
 		if(!portions_to_make)
 			portions_to_make = math_to_do
 			continue
-
 		portions_to_make = min(portions_to_make,math_to_do)
 
 	var/amount_removed = 0
