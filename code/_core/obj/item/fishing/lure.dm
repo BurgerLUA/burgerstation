@@ -34,7 +34,7 @@
 
 	chance_bonus = -2
 	time_bonus = 10
-	rarity_bonus = -CHANCE_GOOD
+	rarity_bonus = -10
 
 	value = 250
 

@@ -5,6 +5,7 @@
 	icon_state = "lava"
 
 	footstep = /footstep/lava
+	fishing_rewards = /loot/fishing/lava
 
 	plane = PLANE_FLOOR
 

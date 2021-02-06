@@ -26,6 +26,7 @@
 	var/catch_time
 
 	var/next_tick = 0
+	var/nospam
 
 	value = 200
 
@@ -72,6 +73,7 @@
 		else if(line)
 			object_removed = line
 			line = null
+			update_sprite()
 		if(!object_removed)
 			caller.to_chat(span("notice","There is nothing to remove from \the [src.name]."))
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
@@ -158,7 +160,7 @@
 				fishing_turf = null
 				last_caller = null
 				QDEL_NULL(fishing_bob)
-			else if(prob(5 + lure.chance_bonus))
+			else if(prob(5 + lure.chance_bonus) && nospam <= world.time)
 				snagged_fish = rand(5,20) + lure.time_bonus
 				catch_time = world.time
 				if(lure.catchsound)
@@ -172,6 +174,8 @@
 
 /obj/item/fishing/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+
+	INTERACT_CHECK
 	if(is_inventory(object))
 		return ..()
 
@@ -205,12 +209,14 @@
 
 			stop_thinking(src)
 			fishing_turf = null
+			nospam = null
 			snagged_fish = null
 			QDEL_NULL(fishing_bob)
 			return TRUE
 		else //Reel it in without catching anything.
 			stop_thinking(src)
 			fishing_turf = null
+			nospam = null
 			QDEL_NULL(fishing_bob)
 			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
 			return TRUE
@@ -225,12 +231,15 @@
 		if(!line.lavaproof && istype(object,/turf/simulated/hazard/lava))
 			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))
 			return TRUE
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
 		fishing_turf = H
 		last_caller = caller
 		caller.visible_message(span("notice","\The [caller] casts their [src.name] into \the [fishing_turf.name]."),span("notice","You cast your [src.name] into \the [fishing_turf.name]."))
 		fishing_bob = new(fishing_turf)
 		fishing_bob.icon_state = "[lure.bob_icon_state]_out"
 		animate(fishing_bob,pixel_x=rand(-10,10),pixel_y=rand(-10,10),time=50)
+		nospam = world.time + SECONDS_TO_DECISECONDS(1)
 		start_thinking(src)
 		return TRUE
 
