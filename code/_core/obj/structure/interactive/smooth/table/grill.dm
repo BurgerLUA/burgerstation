@@ -25,7 +25,7 @@
 
 	for(var/k in src.contents)
 		var/atom/movable/M = k
-		. += span("notice","It contains \The [M.name].")
+		. += span("notice","It contains \the [M.name].")
 
 	return .
 
@@ -37,16 +37,20 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
+		if(!anchored)
+			var/obj/item/full = locate() in src.contents
+			if(full)
+				caller.to_chat(span("warning","\The [src.name] is full!"))
+				return TRUE
+			icon_state = "grill_on"
+			enabled = TRUE
+			update_atom_light()
 		var/obj/item/I = object
 		I.drop_item(src)
 		caller.visible_message(
 			span("notice","\The [caller] name slides in \the [I.name] into \the [src.name]."),
 			span("notice","You slide in \the [I.name] into \the [src.name]."),
 		)
-		if(anchored == FALSE)
-			icon_state = "grill_on"
-			enabled = TRUE
-			update_atom_light()
 		return TRUE
 
 	if(is_inventory(object))
@@ -59,7 +63,7 @@
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
 		I.add_object(item_to_remove)
-		if(anchored == FALSE)
+		if(!anchored)
 			icon_state = "grill_open"
 			enabled = FALSE
 			update_atom_light()
@@ -68,12 +72,12 @@
 	return ..()
 
 /obj/structure/smooth/table/grill/Entered(var/atom/movable/O,var/atom/old_loc)
-	if(O.reagents && anchored)
+	if(O.reagents)
 		O.reagents.special_temperature_mod += (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Exited(var/atom/movable/O,var/atom/new_loc)
-	if(O.reagents && anchored)
+	if(O.reagents)
 		O.reagents.special_temperature_mod -= (temperature_mod_oven - (T0C + 20))
 	return ..()
 
@@ -92,7 +96,7 @@
 /obj/structure/smooth/table/grill/barbecue
 	name = "electric portable grill"
 	desc = "I just wanna grill for god's sake."
-	desc_extended = "You can cook or heat up items by slotting it inside the grill. The grill turns on and off automatically."
+	desc_extended = "You can cook or heat up items by slotting it inside the grill. Can fit one item at a time. The grill turns on and off automatically."
 	icon = 'icons/obj/structure/grill.dmi'
 	icon_state = "grill"
 	anchored = FALSE
