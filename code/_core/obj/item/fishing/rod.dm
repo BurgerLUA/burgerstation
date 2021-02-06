@@ -58,10 +58,10 @@
 	if(fishing_turf) //Don't do anything while fishing.
 		return ..()
 
-	DEFER_OBJECT
 
-	if(is_inventory(defer_object))
-		var/obj/hud/inventory/I = defer_object
+
+	if(is_inventory(object))
+		var/obj/hud/inventory/I = object
 		var/obj/item/object_removed
 		if(bait)
 			object_removed = bait
@@ -79,9 +79,9 @@
 		I.add_object(object_removed)
 		return TRUE
 
-	if(is_item(defer_object))
+	if(is_item(object))
 		if(istype(object,/obj/item/fishing/line/))
-			var/obj/item/fishing/line/P = defer_object
+			var/obj/item/fishing/line/P = object
 			if(line)
 				caller.to_chat(span("notice","You swap out \the [line.name] for \the [P.name]."))
 				line.drop_item(get_turf(caller))
@@ -94,8 +94,8 @@
 			update_sprite()
 			return TRUE
 
-		if(istype(defer_object,/obj/item/fishing/lure/))
-			var/obj/item/fishing/lure/P = defer_object
+		if(istype(object,/obj/item/fishing/lure/))
+			var/obj/item/fishing/lure/P = object
 			if(lure)
 				caller.to_chat(span("notice","You swap out \the [lure.name] for \the [P.name]."))
 				lure.drop_item(get_turf(caller))
@@ -108,8 +108,8 @@
 
 			return TRUE
 
-		if(istype(defer_object,/obj/item/fishing/bait/))
-			var/obj/item/fishing/bait/P = defer_object
+		if(istype(object,/obj/item/fishing/bait/))
+			var/obj/item/fishing/bait/P = object
 			if(bait)
 				caller.to_chat(span("notice","You swap out \the [bait.name] for \the [P.name]."))
 				bait.drop_item(get_turf(caller))

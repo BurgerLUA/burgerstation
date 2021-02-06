@@ -16,13 +16,13 @@
 
 /obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(is_item(defer_object))
+
+	if(is_item(object))
 		INTERACT_CHECK
-		INTERACT_CHECK_DEFER
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
-		var/obj/item/I = defer_object
+		var/obj/item/I = object
 		I.dye_self(caller,src,src.color,alpha/255)
 		return TRUE
 

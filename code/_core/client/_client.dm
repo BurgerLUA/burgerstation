@@ -207,6 +207,8 @@ var/global/list/all_clients = list() //Assoc list
 	if(SSmenu && SSmenu.initialized)
 		SSmenu.preload_assets(src)
 
+	to_chat(span("notice","<h1>Please be sure to read the rules <a href='https://docs.google.com/document/d/1dbUCqnu7k5gRsSTCZECbst0XuV8grelQB9Z95PpyvLc/edit?usp=sharing'>here</a> before playing!</h1>"))
+
 	return mob
 
 /client/proc/get_ranks()

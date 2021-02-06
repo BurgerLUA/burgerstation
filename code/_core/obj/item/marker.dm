@@ -13,15 +13,15 @@
 
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(!is_item(defer_object) || object == src)
+
+	if(!is_item(object) || object == src)
 		return ..()
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 
-	var/obj/item/I = defer_object
+	var/obj/item/I = object
 
 	var/confrim = input("Are you sure you wish to rename \the [I.name]? The marker will be spent after this operation!","Marker Rename","Cancel") as null|anything in list("Yes","No","Cancel")
 
@@ -29,7 +29,7 @@
 		return TRUE
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 
 	caller.to_chat(span("danger","Note that abuse of the rename feature will result in a ban."))
 
@@ -39,7 +39,7 @@
 		return TRUE
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 
 	desired_name = sanitize(desired_name,50)
 
@@ -47,7 +47,7 @@
 		return TRUE
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 
 	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."),span("notice","You rename \the [I.name] to [desired_name]."))
 

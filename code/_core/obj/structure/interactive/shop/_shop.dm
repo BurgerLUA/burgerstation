@@ -125,16 +125,16 @@
 	if(!is_player(caller) || !caller.client)
 		return ..()
 
-	DEFER_OBJECT
+
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
 	var/mob/living/advanced/player/P = caller
-	var/obj/hud/inventory/I = defer_object
+	var/obj/hud/inventory/I = object
 
-	if(!is_inventory(defer_object))
+	if(!is_inventory(object))
 		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
 		return TRUE
 

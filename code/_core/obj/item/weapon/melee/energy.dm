@@ -58,14 +58,14 @@
 
 /obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(is_item(defer_object) && length(polymorphs))
-		var/obj/item/I = defer_object
+
+	if(is_item(object) && length(polymorphs))
+		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
 
 			INTERACT_CHECK
-			INTERACT_CHECK_DEFER
+			INTERACT_CHECK_OBJECT
 
 			var/choice = input("What do you want to change the color of \the [src.name]?","Color Selection") as null|anything in polymorphs
 			if(!choice)
@@ -73,12 +73,12 @@
 				return TRUE
 
 			INTERACT_CHECK
-			INTERACT_CHECK_DEFER
+			INTERACT_CHECK_OBJECT
 
 			var/choice_color = input("What would you like the new color to be?","Color Selection",color) as color|null
 
 			INTERACT_CHECK
-			INTERACT_CHECK_DEFER
+			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 
 			if(!choice_color)

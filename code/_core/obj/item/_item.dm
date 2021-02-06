@@ -572,9 +572,9 @@
 
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
-	DEFER_OBJECT
 
-	var/self_feed = caller == defer_object
+
+	var/self_feed = caller == object
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
@@ -582,22 +582,22 @@
 			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
-	if(can_feed(caller,defer_object))
-		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,.proc/feed,caller,defer_object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
+	if(can_feed(caller,object))
+		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,.proc/feed,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
 		return TRUE
 
-	if(allow_reagent_transfer_from && is_item(defer_object) && defer_object.reagents)
-		var/obj/item/I = defer_object
+	if(allow_reagent_transfer_from && is_item(object) && object.reagents)
+		var/obj/item/I = object
 		if(I.allow_reagent_transfer_to)
 			if(reagents.volume_current <= 0)
 				caller.to_chat(span("warning","\The [src.name] is empty!"))
 				return FALSE
-			if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
-				caller.to_chat(span("warning","\The [defer_object.name] is full!"))
+			if(object.reagents.volume_current >= object.reagents.volume_max)
+				caller.to_chat(span("warning","\The [object.name] is full!"))
 				return FALSE
-			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount, caller = caller)
-			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
+			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount, caller = caller)
+			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
 			//TODO: Add liquid transfer sounds.
 		return TRUE
 

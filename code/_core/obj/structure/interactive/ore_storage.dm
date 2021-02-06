@@ -38,13 +38,13 @@
 
 /obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
+
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	store_ore(defer_object)
+	store_ore(object)
 
 	return TRUE
 

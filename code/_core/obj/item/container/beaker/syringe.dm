@@ -79,35 +79,35 @@
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
+
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		defer_object = defer_object.get_object_to_damage(caller,src,params,TRUE,TRUE)
+		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
-	if(!defer_object.reagents)
+	if(!object.reagents)
 		return ..()
 
 	INTERACT_CHECK
-	INTERACT_CHECK_DEFER
+	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
-	if(istype(defer_object,/obj/item/container/))
-		inject(caller,defer_object,injecting ? inject_amount : -draw_amount)
+	if(istype(object,/obj/item/container/))
+		inject(caller,object,injecting ? inject_amount : -draw_amount)
 		return TRUE
 
-	if(can_inject(caller,defer_object))
+	if(can_inject(caller,object))
 
 		var/self_inject = FALSE
 
-		var/real_object_name = defer_object.name
+		var/real_object_name = object.name
 
-		if(is_organ(defer_object) && is_living(defer_object))
-			real_object_name = "[defer_object.name]'s [defer_object.name]"
-			if(defer_object == caller)
+		if(is_organ(object) && is_living(object))
+			real_object_name = "[object.name]'s [object.name]"
+			if(object == caller)
 				self_inject = TRUE
 
 		var/transfer_amount = 0
@@ -118,8 +118,8 @@
 			caller.visible_message(span("danger","\The [caller.name] tries to draw blood from \the [real_object_name] with \the [src.name]!"),span("warnning","You try to draw blood from \the [real_object_name] with \the [src.name]."))
 			transfer_amount = -draw_amount
 
-		PROGRESS_BAR(caller,src,self_inject ? BASE_INJECT_TIME_SELF : BASE_INJECT_TIME,.proc/inject,caller,defer_object,transfer_amount)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,defer_object)
+		PROGRESS_BAR(caller,src,self_inject ? BASE_INJECT_TIME_SELF : BASE_INJECT_TIME,.proc/inject,caller,object,transfer_amount)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,object)
 
 	return TRUE
 

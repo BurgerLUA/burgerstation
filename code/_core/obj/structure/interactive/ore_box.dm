@@ -13,13 +13,13 @@
 
 /obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(istype(defer_object,/obj/item/material/ore))
+
+	if(istype(object,/obj/item/material/ore))
 		INTERACT_CHECK
-		INTERACT_CHECK_DEFER
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		var/obj/item/material/ore/O = defer_object
+		var/obj/item/material/ore/O = object
 		O.drop_item(src)
 		return TRUE
 

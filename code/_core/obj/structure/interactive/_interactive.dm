@@ -55,14 +55,14 @@ obj/structure/interactive/proc/do_repair(var/mob/living/advanced/caller,var/obj/
 
 obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(repair_flag && is_item(defer_object) && is_advanced(caller) && can_repair(caller,defer_object))
+
+	if(repair_flag && is_item(object) && is_advanced(caller) && can_repair(caller,object))
 		INTERACT_CHECK
-		INTERACT_CHECK_DEFER
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_repair,caller,defer_object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_repair,caller,defer_object)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_repair,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_repair,caller,object)
 		return TRUE
 
 	return ..()

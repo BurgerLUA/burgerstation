@@ -92,17 +92,17 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	DEFER_OBJECT
 
-	if(istype(defer_object,/obj/item/attachment))
+
+	if(istype(object,/obj/item/attachment))
 		INTERACT_CHECK
-		INTERACT_CHECK_DEFER
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		add_attachment(caller,defer_object)
+		add_attachment(caller,object)
 		return TRUE
 
-	else if(!use_loyalty_tag && is_item(defer_object))
-		var/obj/item/I = defer_object
+	else if(!use_loyalty_tag && is_item(object))
+		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
@@ -111,7 +111,7 @@
 			return TRUE
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			INTERACT_CHECK
-			INTERACT_CHECK_DEFER
+			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(istype(firing_pin))
 				firing_pin.drop_item(get_turf(src))
@@ -122,7 +122,7 @@
 			return TRUE
 		if(istype(I,/obj/item/firing_pin/))
 			INTERACT_CHECK
-			INTERACT_CHECK_DEFER
+			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(istype(firing_pin))
 				caller.to_chat(span("warning","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))

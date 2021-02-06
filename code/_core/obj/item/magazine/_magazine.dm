@@ -136,13 +136,13 @@
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(is_inventory(defer_object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
+
+	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		INTERACT_CHECK
-		INTERACT_CHECK_DEFER
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
-		var/obj/hud/inventory/I = defer_object
+		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
 		if(I.add_object(B))
 			B.update_sprite()
@@ -175,13 +175,13 @@
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	DEFER_OBJECT
 
-	if(is_bullet_gun(defer_object) && !istype(src,/obj/item/magazine/clip))
+
+	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
 		INTERACT_CHECK
-		INTERACT_CHECK_DEFER
+		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
-		var/obj/item/weapon/ranged/bullet/magazine/G = defer_object
+		var/obj/item/weapon/ranged/bullet/magazine/G = object
 		if(!weapon_whitelist[G.type])
 			if(caller) caller.to_chat(span("warning","You can't insert this type of magazine into \the [G]!"))
 			return TRUE
