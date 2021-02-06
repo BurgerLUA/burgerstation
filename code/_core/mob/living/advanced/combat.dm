@@ -32,7 +32,7 @@
 	return ..()
 
 
-/mob/living/advanced/defer_click_on_object(location,control,params)
+/mob/living/advanced/defer_click_on_object(var/mob/caller,location,control,params)
 	if(driving)
 		return driving
 	return ..()

@@ -88,8 +88,9 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 			do_damage(L)
 	else
 		var/turf/T = get_turf(src)
-		for(var/mob/living/L in T.contents)
-			do_damage(L)
+		if(T)
+			for(var/mob/living/L in T.contents)
+				do_damage(L)
 
 
 obj/effect/temp/hazard/falling_fireball

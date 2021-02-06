@@ -210,30 +210,30 @@
 
 /obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_bullet(object))
+	if(is_bullet(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
-		var/obj/item/bullet_cartridge/B = object
+		var/obj/item/bullet_cartridge/B = defer_object
 		B.transfer_src_to_bullet(caller,src,location,control,params)
 		return TRUE
 
-	if(is_magazine(object))
+	if(is_magazine(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
-		var/obj/item/magazine/M = object
+		var/obj/item/magazine/M = defer_object
 		transfer_src_to_magazine(caller,M,location,control,params)
 		play(get_bullet_insert_sound(),M)
 		return TRUE
 
-	if(is_bullet_gun(object))
+	if(is_bullet_gun(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
-		var/obj/item/weapon/ranged/bullet/G = object
+		var/obj/item/weapon/ranged/bullet/G = defer_object
 		if(transfer_src_to_gun(caller,G,location,control,params))
 			play(get_bullet_insert_sound(),G)
 			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))

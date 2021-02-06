@@ -64,15 +64,15 @@
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_staff(object))
+	if(is_staff(defer_object))
 
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
 
-		var/obj/item/weapon/ranged/magic/staff/S = object
+		var/obj/item/weapon/ranged/magic/staff/S = defer_object
 		if(total_charge)
 			caller.visible_message(span("notice","\The [caller.name] recharges \the [S.name] with \the [src.name]."),span("notice","You charge \the [S] with \the [src]."))
 			S.total_charge += total_charge

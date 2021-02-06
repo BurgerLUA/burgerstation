@@ -122,21 +122,21 @@
 
 /obj/structure/interactive/shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(!is_player(caller) || !caller.client)
+		return ..()
+
+	DEFER_OBJECT
+
 	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
+	INTERACT_CHECK_DEFER
 	INTERACT_DELAY(1)
 
-	if(!is_player(caller) || !caller.client)
-		return TRUE
-
 	var/mob/living/advanced/player/P = caller
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	var/obj/hud/inventory/I = defer_object
 
 	if(!is_inventory(defer_object))
 		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
 		return TRUE
-
-	var/obj/hud/inventory/I = defer_object
 
 	if(stored_item_burgerbux_cost)
 		var/savedata/client/globals/globals = GLOBALDATA(caller.client.ckey)

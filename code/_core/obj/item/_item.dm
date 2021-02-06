@@ -572,7 +572,7 @@
 
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
 	var/self_feed = caller == defer_object
 

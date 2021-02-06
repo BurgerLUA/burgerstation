@@ -14,12 +14,14 @@
 
 	return .
 
+/*
 /mob/living/advanced/pre_death()
 
 	if(driving)
 		driving.exit_vehicle(src,get_turf(driving))
 
 	return ..()
+*/
 
 mob/living/advanced/revive()
 

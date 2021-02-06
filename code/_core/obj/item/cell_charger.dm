@@ -35,13 +35,13 @@
 
 /obj/item/cell_charger/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(battery && is_inventory(object))
+	if(battery && is_inventory(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(10)
-		var/obj/hud/inventory/I = object
+		var/obj/hud/inventory/I = defer_object
 		if(I.add_object(battery))
 			caller.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
 			battery.update_sprite()
@@ -51,16 +51,16 @@
 		update_sprite()
 		return TRUE
 
-	if(istype(object,/obj/item/powercell))
+	if(istype(defer_object,/obj/item/powercell))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(10)
-		var/obj/item/PC = object
+		var/obj/item/PC = defer_object
 		if(PC.size > SIZE_3) //Only fits size 3.
 			caller.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))
 			return TRUE
 		if(battery)
-			caller.to_chat(span("notice","You replace \the [battery.name] in \the [src.name] with \the [object.name] in your hand."))
+			caller.to_chat(span("notice","You replace \the [battery.name] in \the [src.name] with \the [defer_object.name] in your hand."))
 			battery.update_sprite()
 			battery.drop_item(get_turf(caller))
 		else

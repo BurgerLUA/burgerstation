@@ -14,8 +14,6 @@
 
 	size = SIZE_3
 
-
-
 	polymorphs = list(
 		"base" = "#FFFFFF"
 	)

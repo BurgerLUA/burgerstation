@@ -64,11 +64,11 @@
 
 /obj/structure/interactive/barricade/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_advanced(caller) && is_inventory(object) && can_climb_over(caller))
+	if(is_advanced(caller) && is_inventory(defer_object) && can_climb_over(caller))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(5)
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(2),.proc/climb_over,caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_climb_over,caller)

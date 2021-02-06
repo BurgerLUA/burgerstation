@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(progressbars)
 
 	var/list/all_progress_bars = list()
 
-	cpu_usage_max = 90
-	tick_usage_max = 90
+	cpu_usage_max = 95
+	tick_usage_max = 95
 
 
 /subsystem/progressbars/unclog(var/mob/caller)

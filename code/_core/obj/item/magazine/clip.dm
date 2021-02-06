@@ -5,13 +5,13 @@
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_bullet_gun(object))
+	if(is_bullet_gun(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
-		var/obj/item/weapon/ranged/bullet/G = object
+		var/obj/item/weapon/ranged/bullet/G = defer_object
 		var/insert_count = 0
 		for(var/k in stored_bullets)
 			if(!k) continue
@@ -24,12 +24,12 @@
 			insert_count += 1
 			stored_bullets -= B
 		if(insert_count)
-			caller.to_chat(span("notice","You load [insert_count] bullet\s into \the [object]."))
+			caller.to_chat(span("notice","You load [insert_count] bullet\s into \the [defer_object.name]."))
 			G.update_sprite()
 			update_sprite()
 			return TRUE
 		else
-			caller.to_chat(span("warning","You can't load anything into \the [object] with \the [src]!"))
+			caller.to_chat(span("warning","You can't load anything into \the [object.name] with \the [src.name]!"))
 		return TRUE
 
 	return ..()

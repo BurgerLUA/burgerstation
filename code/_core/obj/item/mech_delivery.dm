@@ -4,7 +4,7 @@
 	desc_extended = "A tablet to manage your collection of mechs and summon them anywhere. NOTICE: NT is not responsible for any injuries caused by state-of-the-art precision launched mech storage pods."
 	icon = 'icons/obj/item/supply_remote_mech.dmi'
 	icon_state = "inventory"
-	value = -1
+	value = 1000
 
 	weight = 4
 

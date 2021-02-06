@@ -38,15 +38,15 @@
 
 /obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(istype(object,/obj/item/))
+	if(istype(defer_object,/obj/item/))
 
-		var/obj/item/I = object
+		var/obj/item/I = defer_object
 
 		if(I.flags_tool & FLAG_TOOL_CROWBAR)
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
 			if(battery)
 				battery.drop_item(get_turf(src))
@@ -60,7 +60,7 @@
 
 		if(istype(I,/obj/item/powercell/))
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
 			if(battery)
 				caller.to_chat(span("warning","There is already a battery installed in \the [src.name]!"))

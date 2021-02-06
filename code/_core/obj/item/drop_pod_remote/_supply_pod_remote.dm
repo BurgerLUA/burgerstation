@@ -65,6 +65,7 @@
 	)
 	value = 1000
 
+/*
 /obj/item/supply_remote/mech/
 	value = 1000
 
@@ -82,6 +83,7 @@
 	name = "drop pod remote - Durand Combat Mech"
 	stored_object_types = list(/mob/living/vehicle/mech/durand)
 	value = 5000
+*/
 
 /obj/item/supply_remote/crates/
 	value = 2000

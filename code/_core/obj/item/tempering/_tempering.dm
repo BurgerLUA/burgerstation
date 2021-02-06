@@ -14,10 +14,13 @@
 
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
 	if(is_item(defer_object))
 		if(can_temper(caller,defer_object))
+			INTERACT_CHECK
+			INTERACT_CHECK_DEFER
+			INTERACT_DELAY(10)
 			on_temper(caller,defer_object)
 			return TRUE
 

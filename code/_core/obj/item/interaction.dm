@@ -73,21 +73,21 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(additional_clothing_parent)
+	DEFER_OBJECT
+
+	if(is_inventory(defer_object) && additional_clothing_parent)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		drop_item(additional_clothing_parent,silent=TRUE)
 		return TRUE
 
-	if(is_container) //We're a container being clicked on.
-		var/atom/defer_object = object.defer_click_on_object(location,control,params)
-		if(is_item(defer_object)) //We're clicking on this item with an object.
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			var/obj/item/I = defer_object
-			src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
-			return TRUE
+	if(is_container && is_item(defer_object)) //We're a container being clicked on.
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		var/obj/item/I = defer_object
+		src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
+		return TRUE
 
 	return 	..()
 

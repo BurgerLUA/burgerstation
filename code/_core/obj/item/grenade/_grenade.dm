@@ -128,17 +128,17 @@
 
 /obj/item/grenade/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
 	if(!open)
 		return ..()
 
-	if(is_inventory(object))
-		var/obj/hud/inventory/I = object
+	if(is_inventory(defer_object))
+		var/obj/hud/inventory/I = defer_object
 
 		if(length(stored_containers))
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
 			var/obj/item/container/beaker/selected_beaker = stored_containers[length(stored_containers)]
 			if(I.add_object(selected_beaker))
@@ -151,7 +151,7 @@
 
 		if(stored_trigger)
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
 			if(I.add_object(stored_trigger))
 				caller.to_chat(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
@@ -161,31 +161,31 @@
 				caller.to_chat(span("warning","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
 			return TRUE
 
-	else if(is_beaker(object))
+	else if(is_beaker(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(5)
 		if(length(stored_containers) >= max_containers)
-			caller.to_chat(span("warning","You can't fit \the [object.name] in!"))
+			caller.to_chat(span("warning","You can't fit \the [defer_object.name] in!"))
 			return TRUE
-		var/obj/item/container/beaker/B = object
+		var/obj/item/container/beaker/B = defer_object
 		B.drop_item(src)
 		stored_containers += B
-		caller.to_chat(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+		caller.to_chat(span("notice","\The [caller.name] fits \the [defer_object.name] into \the [src.name]."),span("notice","You fit \the [defer_object.name] inside \the [src.name]."))
 		update_sprite()
 		return TRUE
 
-	else if(is_trigger(object))
+	else if(is_trigger(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(5)
 		if(stored_trigger)
 			caller.to_chat(span("warning","There is already a [stored_trigger.name] inside \the [src.name]!"))
 			return TRUE
-		var/obj/item/device/T = object
+		var/obj/item/device/T = defer_object
 		T.drop_item(src)
 		stored_trigger = T
-		caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+		caller.visible_message(span("notice","\The [caller.name] fits \the [defer_object.name] into \the [src.name]."),span("notice","You fit \the [defer_object.name] inside \the [src.name]."))
 		update_sprite()
 		return TRUE
 

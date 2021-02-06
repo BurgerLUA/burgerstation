@@ -79,7 +79,7 @@
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
@@ -92,7 +92,7 @@
 		return ..()
 
 	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
+	INTERACT_CHECK_DEFER
 	INTERACT_DELAY(1)
 
 	if(istype(defer_object,/obj/item/container/))
@@ -105,9 +105,9 @@
 
 		var/real_object_name = defer_object.name
 
-		if(is_organ(defer_object) && is_living(object))
-			real_object_name = "[object.name]'s [object.name]"
-			if(object == caller)
+		if(is_organ(defer_object) && is_living(defer_object))
+			real_object_name = "[defer_object.name]'s [defer_object.name]"
+			if(defer_object == caller)
 				self_inject = TRUE
 
 		var/transfer_amount = 0
@@ -118,8 +118,8 @@
 			caller.visible_message(span("danger","\The [caller.name] tries to draw blood from \the [real_object_name] with \the [src.name]!"),span("warnning","You try to draw blood from \the [real_object_name] with \the [src.name]."))
 			transfer_amount = -draw_amount
 
-		PROGRESS_BAR(caller,src,self_inject ? BASE_INJECT_TIME_SELF : BASE_INJECT_TIME,.proc/inject,caller,object,transfer_amount)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,object)
+		PROGRESS_BAR(caller,src,self_inject ? BASE_INJECT_TIME_SELF : BASE_INJECT_TIME,.proc/inject,caller,defer_object,transfer_amount)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,defer_object)
 
 	return TRUE
 

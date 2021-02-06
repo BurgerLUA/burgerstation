@@ -29,8 +29,8 @@
 			L.to_chat(span("warning","You're dead!"))
 			return FALSE
 
-	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
-	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
+	var/atom/defer_self = src.defer_click_on_object(caller,location,control,params) //We could be holding an object.
+	var/atom/defer_object = object.defer_click_on_object(caller,location,control,params) //The object we're clicking on could be something else.
 
 	if(caller.attack_flags & CONTROL_MOD_GRAB)
 		if(is_item(defer_object) && is_inventory(defer_object.loc))
@@ -58,16 +58,15 @@
 
 	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
-		object = object.defer_click_on_object(location,control,params)
-		caller.face_atom(object)
-		var/atom/movable/object_to_throw = src.defer_click_on_object(location,control,params)
+		caller.face_atom(defer_object)
+		var/atom/movable/object_to_throw = src.defer_click_on_object(caller,location,control,params)
 		if(is_item(object_to_throw))
 			var/obj/item/I = object_to_throw
 			if(I.additional_clothing_parent)
 				caller.to_chat(span("warning","You can't throw this!"))
 				return TRUE
-			var/vel_x = object.x - caller.x
-			var/vel_y = object.y - caller.y
+			var/vel_x = defer_object.x - caller.x
+			var/vel_y = defer_object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
 			if(!highest)
@@ -237,12 +236,12 @@
 
 /obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
 	if(is_item(defer_object)) //Put the item in the inventory slot.
 		var/obj/item/object_as_item = defer_object
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
 		src.add_object(object_as_item)
 		return TRUE
@@ -261,7 +260,7 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 	return I.drop_item(new_location,pixel_x_offset,pixel_y_offset)
 
-/obj/hud/inventory/defer_click_on_object(location,control,params)
+/obj/hud/inventory/defer_click_on_object(var/mob/caller,location,control,params)
 
 	var/contents_length = length(contents)
 

@@ -281,19 +281,19 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(caller && caller.ckey != owner_ckey)
 		return ..()
 
-	var/atom/A = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_item(object) && is_living(caller))
+	if(is_item(defer_object) && is_living(caller))
 		var/mob/living/L = caller
 		if(L.intent == INTENT_HARM)
 			return ..()
 		if(length(passengers))
 			return ..()
-		var/obj/item/I = object
+		var/obj/item/I = defer_object
 		if(I.flags_tool & FLAG_TOOL_WRENCH)
 
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
 
 			var/list/valid_weapons = list()
@@ -362,11 +362,11 @@ var/global/list/stored_mechs_by_ckey = list()
 
 			return TRUE
 
-		if(istype(A,/obj/item/powercell/))
+		if(istype(I,/obj/item/powercell/))
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
-			var/obj/item/powercell/PC = A
+			var/obj/item/powercell/PC = I
 			if(battery)
 				caller?.visible_message(span("notice","\The [caller.name] replaces \the [battery.name] in \the [src.name] with \the [PC.name]."),span("notice","You replace \the [battery.name] in \the [src.name] with \the [PC.name]."))
 				battery.update_sprite()
@@ -378,9 +378,9 @@ var/global/list/stored_mechs_by_ckey = list()
 			battery = PC
 			return TRUE
 
-		if(istype(A,/obj/item/mech_part/))
+		if(istype(I,/obj/item/mech_part/))
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
+			INTERACT_CHECK_DEFER
 			INTERACT_DELAY(5)
 			. = FALSE
 			if(istype(I,/obj/item/mech_part/arms))

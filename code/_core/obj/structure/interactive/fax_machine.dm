@@ -14,14 +14,13 @@
 
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	DEFER_OBJECT
 
-	object = object.defer_click_on_object(location,control,params)
-
-	if(is_inventory(object))
+	if(is_inventory(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(5)
-		var/obj/hud/inventory/I = object
+		var/obj/hud/inventory/I = defer_object
 		if(stored_paper)
 			if(processing)
 				caller.to_chat(span("warning","\The [src.name] is too busy processing!"))
@@ -34,17 +33,17 @@
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
 		return TRUE
 
-	if(is_paper(object))
+	if(is_paper(defer_object))
 
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(5)
 
 		if(stored_paper)
 			caller.to_chat(span("warning","\The [src.name] already has paper inside!"))
 			return TRUE
 
-		var/obj/item/paper/P = object
+		var/obj/item/paper/P = defer_object
 
 		if(!length(P.data))
 			caller.to_chat(span("warning","\The [src.name] rejects the blank [P.name]!"))

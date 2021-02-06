@@ -70,11 +70,11 @@
 
 /obj/structure/interactive/emitter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_inventory(object))
+	if(is_inventory(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(5)
 		active = !active
 		caller.visible_message(span("warning","\The [caller.name] turns \the [src.name] [active ? "on" : "off"]."),span("warning","You turn \the [src.name] [active ? "on" : "off"]."))

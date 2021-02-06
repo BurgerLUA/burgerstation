@@ -66,15 +66,15 @@
 
 /obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(open && is_inventory(object) && src && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
+	if(open && is_inventory(defer_object) && src && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
 
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
 
-		var/obj/hud/inventory/I = object
+		var/obj/hud/inventory/I = defer_object
 
 		var/last_value = get_last_value(stored_bullets)
 

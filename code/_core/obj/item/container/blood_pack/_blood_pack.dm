@@ -30,11 +30,11 @@
 
 /obj/item/container/blood_pack/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
 	if(is_living(defer_object))
 		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
+		INTERACT_CHECK_DEFER
 		INTERACT_DELAY(1)
 		var/mob/living/L = defer_object
 		if(attached_to == L)

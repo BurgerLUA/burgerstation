@@ -151,7 +151,7 @@
 
 	return .
 
-/atom/proc/defer_click_on_object(location,control,params)
+/atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src
 
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.
