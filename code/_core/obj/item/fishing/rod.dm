@@ -140,6 +140,7 @@
 					QDEL_NULL(bait)
 					QDEL_NULL(lure)
 					QDEL_NULL(fishing_bob)
+					update_sprite()
 					fishing_turf = null
 					return FALSE
 
