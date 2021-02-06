@@ -265,13 +265,6 @@
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
-/mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
-	if(object && is_atom(object))
-		var/atom/A = object
-		A.on_mouse_wheel(src,delta_x,delta_y,location,control,params)
-
-	return TRUE
-
 /mob/living/proc/dust()
 	new /obj/effect/temp/death(src.loc,30)
 	qdel(src)

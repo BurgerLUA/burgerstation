@@ -23,8 +23,8 @@
 /obj/item/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 	return stored_radio.clicked_on_by_object(caller,object,location,control,params)
 
-/obj/item/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
-	return stored_radio.on_mouse_wheel(caller,delta_x,delta_y,location,control,params)
+/obj/item/radio/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+	return stored_radio.mouse_wheel_on_object(caller,delta_x,delta_y,location,control,params)
 
 /obj/item/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)

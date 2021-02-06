@@ -12,21 +12,6 @@
 
 	return TRUE
 
-/client/MouseWheel(object,delta_x,delta_y,location,control,params)
-
-	var/list/aug = params2list(params)
-
-	if(mob && (mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
-		var/change_in_screen = delta_y > 1 ? 1 : -1
-		if(precise_zoom)
-			change_in_screen *= 0.1
-		update_zoom(zoom_level + change_in_screen)
-		return TRUE
-
-	mob.do_mouse_wheel(object,delta_x,delta_y,location,control,aug)
-
-	return TRUE
-
 /client/proc/update_view_range()
 
 	if(settings && settings.loaded_data["view_range"])

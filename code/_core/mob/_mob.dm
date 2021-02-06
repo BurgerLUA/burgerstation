@@ -123,9 +123,6 @@
 
 	return ..()
 
-/mob/proc/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
-	return TRUE
-
 /mob/Login()
 
 	. = ..()

@@ -67,7 +67,7 @@
 
 	return active
 
-/obj/item/device/proximity/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/proximity/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = delta_y ? 1 : -1
 

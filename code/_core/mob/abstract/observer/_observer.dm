@@ -22,10 +22,14 @@
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE
+	if(object.clicked_on_by_object(src,src,location,control,params))
+		return TRUE
 	return ..()
 
 /mob/abstract/observer/on_right_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
+		return TRUE
+	if(object.clicked_on_by_object(src,src,location,control,params))
 		return TRUE
 	return ..()
 

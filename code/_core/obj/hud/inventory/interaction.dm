@@ -1,11 +1,7 @@
+/*
 /obj/hud/inventory/click_self(var/mob/caller)
 
-	//No checks needed here.
-
 	if(src.defer_click_on_object() != src)
-		return ..()
-
-	if(!is_advanced(caller))
 		return ..()
 
 	var/mob/living/advanced/A = caller
@@ -20,8 +16,11 @@
 		return src.click_on_object(caller,A.left_hand)
 
 	return ..()
+*/
 
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+
+	world.log << "click_on_object: [object.type]"
 
 	if(is_living(caller))
 		var/mob/living/L = caller

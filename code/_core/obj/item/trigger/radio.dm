@@ -59,7 +59,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	caller.to_chat(span("notice","You toggle the speaker <b>[receiving ? "on" : "off"]</b>."))
 	return TRUE
 
-/obj/item/device/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/radio/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 
 	INTERACT_CHECK
 

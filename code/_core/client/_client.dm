@@ -207,8 +207,6 @@ var/global/list/all_clients = list() //Assoc list
 	if(SSmenu && SSmenu.initialized)
 		SSmenu.preload_assets(src)
 
-	to_chat(span("notice","<h1>Please be sure to read the rules <a href='https://docs.google.com/document/d/1dbUCqnu7k5gRsSTCZECbst0XuV8grelQB9Z95PpyvLc/edit?usp=sharing'>here</a> before playing!</h1>"))
-
 	return mob
 
 /client/proc/get_ranks()
@@ -236,6 +234,7 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/proc/welcome()
 	to_chat("<title>Welcome to Burgerstation 13</title><p>This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed. If you wish to join the discord, please do so here: https://discord.gg/yEaV92a</p>")
+	to_chat(span("notice","<h1>Please be sure to read the rules <a href='https://docs.google.com/document/d/1dbUCqnu7k5gRsSTCZECbst0XuV8grelQB9Z95PpyvLc/edit?usp=sharing'>here</a> before playing!</h1>"))
 	return TRUE
 
 /*
@@ -244,144 +243,9 @@ var/global/list/all_clients = list() //Assoc list
 	return TRUE
 */
 
-/client/proc/get_click_flags(var/list/params,var/check_swap = FALSE)
-
-	. = 0x0
-
-	if((swap_mouse && check_swap) ? ("left" in params) :("right" in params))
-		. |= CLICK_RIGHT
-
-	if((swap_mouse && check_swap) ? ("right" in params) : ("left" in params))
-		. |= CLICK_LEFT
-
-	if("middle" in params)
-		. |= CLICK_MIDDLE
-
-	return .
-
-/client/MouseDown(var/atom/object,location,control,params)
-
-	var/list/aug = params2list(params)
-
-	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
-	if(!screen_loc)
-		return FALSE
-	mouse_down_x = screen_loc[1]
-	mouse_down_y = screen_loc[2]
-
-	store_new_params(object,location,params)
-
-	var/click_flags = get_click_flags(aug,TRUE)
-
-	if(examine_mode)
-		if(mob) mob.display_turf_contents(get_turf(object))
-		examine(object)
-		return ..()
-
-	if(click_flags & CLICK_LEFT)
-		mob.attack_flags |= CONTROL_MOD_LEFT
-		return mob.on_left_down(object,location,control,aug)
-
-	if(click_flags & CLICK_RIGHT)
-		mob.attack_flags |= CONTROL_MOD_RIGHT
-		return mob.on_right_down(object,location,control,aug)
-
-	if(click_flags & CLICK_MIDDLE)
-		examine(object)
-		return TRUE
-
-	return ..()
-
-/client/Click(var/atom/object,location,control,params)
-
-	var/list/aug = params2list(params)
-	var/click_flags = get_click_flags(aug,TRUE)
-
-	if(click_flags & CLICK_LEFT)
-		mob.on_left_click(object,location,control,aug)
-
-	if(click_flags & CLICK_RIGHT)
-		mob.on_right_click(object,location,control,aug)
-
-	if(click_flags & CLICK_MIDDLE)
-		mob.on_middle_click(object,location,control,aug)
-
-	return ..()
-
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
       to_chat("[v] = [object.vars[v]]")
-
-/client/MouseUp(object,location,control,params)
-
-	var/list/aug = params2list(params)
-	var/click_flags = get_click_flags(aug,TRUE)
-
-	if(click_flags & CLICK_LEFT)
-		mob.on_left_up(object,location,control,aug)
-		mob.attack_flags &= ~CONTROL_MOD_LEFT
-
-	if(click_flags & CLICK_RIGHT)
-		mob.on_right_up(object,location,control,aug)
-		mob.attack_flags &= ~CONTROL_MOD_RIGHT
-
-	if(is_player(mob))
-		var/mob/living/advanced/player/A = mob
-		if(A.click_and_drag_icon)
-			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
-			click_and_drag_icon.stored_object = null
-			click_and_drag_icon.stored_inventory = null
-			click_and_drag_icon.alpha = 0
-
-	return ..()
-
-/client/MouseDrop(src_object,over_object,src_location,over_location,src_control,over_control,params)
-
-	if(src_object == over_object)
-		return FALSE
-
-	var/list/aug = params2list(params)
-
-	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
-	if(!screen_loc)
-		return FALSE
-	if(abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
-		return FALSE
-
-	var/click_flags = get_click_flags(aug,TRUE)
-
-	if(click_flags & CLICK_LEFT)
-		mob.on_left_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
-
-	if(click_flags & CLICK_RIGHT)
-		mob.on_right_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
-
-	if(click_flags & CLICK_MIDDLE)
-		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
-
-	return ..()
-
-
-/client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-
-	var/list/aug = params2list(params)
-
-	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
-	if(!screen_loc)
-		return FALSE
-	if(abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) <= 8) //Only store the new params if the movement has changed more than 8 units.
-		return FALSE
-
-	store_new_params(over_object,over_location,params)
-
-	return ..()
-
-
-/client/proc/store_new_params(over_object,over_location,params)
-	var/list/new_params = params2list(params)
-	last_params = new_params
-	last_object = over_object
-	last_location = over_location
 
 /client/proc/receive_sound(var/sound/S)
 	src << S
