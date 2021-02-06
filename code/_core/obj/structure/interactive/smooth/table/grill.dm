@@ -38,8 +38,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		if(!anchored)
-			var/obj/item/full = locate() in src.contents
-			if(full)
+			if(length(src.contents))
 				caller.to_chat(span("warning","\The [src.name] is full!"))
 				return TRUE
 			icon_state = "grill_on"
