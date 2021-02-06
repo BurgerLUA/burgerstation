@@ -74,6 +74,7 @@
 			line = null
 		if(!object_removed)
 			caller.to_chat(span("notice","There is nothing to remove from \the [src.name]."))
+			return TRUE
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
 		I.add_object(object_removed)
