@@ -39,6 +39,11 @@
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
+	if(examine_mode)
+		if(mob) mob.display_turf_contents(get_turf(object))
+		examine(object)
+		return TRUE
+
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_click(object,location,control,new_params)
 
@@ -46,7 +51,7 @@
 		mob.on_right_click(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
-		mob.on_middle_click(object,location,control,new_params)
+		examine(object)
 
 	return ..()
 

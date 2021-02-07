@@ -7,9 +7,6 @@
 /mob/proc/on_right_click(object,location,control,params)
 	return FALSE
 
-/mob/proc/on_middle_click(object,location,control,params)
-	return FALSE
-
 /mob/proc/on_left_down(object,location,control,params)
 	return FALSE
 
