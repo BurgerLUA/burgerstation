@@ -203,14 +203,17 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	var/sound/created_sound
 
+	/*
 	if(SSsound.sound_cache[sound_path])
 		created_sound = SSsound.sound_cache[sound_path]
 	else
-		created_sound = sound(sound_path)
-		if(!created_sound)
-			CRASH_SAFE("Error: Invalid sound! [sound_path].")
-			return null
-		SSsound.sound_cache[sound_path] = created_sound
+	*/
+	created_sound = sound(sound_path)
+	if(!created_sound)
+		CRASH_SAFE("Error: Invalid sound! [sound_path].")
+		return null
+
+	//SSsound.sound_cache[sound_path] = created_sound
 
 	created_sound.channel = SSsound.channel_hack
 	SSsound.channel_hack++
