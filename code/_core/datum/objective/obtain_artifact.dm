@@ -54,6 +54,7 @@
 	return TRUE
 
 /objective/artifact/proc/artifact_Destroy(var/obj/structure/interactive/artifact/A,args)
+	completed = TRUE
 	update()
 	return TRUE
 
