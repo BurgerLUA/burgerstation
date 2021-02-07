@@ -107,11 +107,11 @@
 		top_object.click_on_object(caller,caller,location,control,params)
 		return TRUE
 
-	if(top_object && object == top_object) //Click on ourself
+	//Self clicking.
+	if(top_object && (object == top_object || caller.attack_flags & CONTROL_MOD_SELF)) //Click on ourself
 		top_object.click_self(caller)
 		return TRUE
-
-	if(caller.attack_flags & CONTROL_MOD_SELF)
+	else if(caller.attack_flags & CONTROL_MOD_SELF)
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
 			if(src == A.right_hand && A.left_item)
