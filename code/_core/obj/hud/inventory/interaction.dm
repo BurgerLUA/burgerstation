@@ -108,7 +108,10 @@
 		return TRUE
 
 	if(top_object && (object == top_object || caller.attack_flags & CONTROL_MOD_SELF)) //Click on ourself
-		top_object.click_self(caller)
+		if(is_advanced(caller) && caller.attack_flags & CONTROL_MOD_SELF)
+			var/mob/living/advanced/A = caller
+		else
+			top_object.click_self(caller)
 		return TRUE
 
 	if(get_dist(src,object) <= 1)
