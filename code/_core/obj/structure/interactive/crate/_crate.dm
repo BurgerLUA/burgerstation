@@ -118,6 +118,11 @@
 /obj/structure/interactive/crate/proc/can_store(var/atom/movable/M)
 	if(M.anchored)
 		return FALSE
+	if(istype(M, /mob/living/advanced/player/))
+		var/mob/living/advanced/player/playerCorpse = M
+		if(playerCorpse.dead)
+			visible_message(span("warning", "\The [playerCorpse.name] hilariously looses balance and falls out of the crate!"))
+			return FALSE
 	return TRUE
 
 /obj/structure/interactive/crate/proc/can_prevent_close(var/atom/movable/M)
