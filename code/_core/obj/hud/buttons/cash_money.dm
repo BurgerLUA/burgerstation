@@ -36,7 +36,7 @@
 
 	if(amount != new_value)
 		amount = new_value
-		play('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
+		play_sound_target('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
 		update_sprite()
 
 	return TRUE
@@ -76,7 +76,7 @@
 
 	if(amount != new_value)
 		amount = new_value
-		play('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
+		play_sound_target('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
 		update_sprite()
 
 	return TRUE

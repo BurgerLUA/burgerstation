@@ -52,7 +52,7 @@
 			opening = FALSE
 
 	if(opening)
-		play(pick(inventory_sounds),src)
+		play_sound(pick(inventory_sounds),get_turf(src))
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
 		if(should_center)
@@ -170,9 +170,9 @@
 
 	if(drop_sound && !silent && new_location && !qdeleting)
 		if(isturf(new_location))
-			play(drop_sound,new_location)
+			play_sound(drop_sound,new_location)
 		else
-			play(inventory_sound,get_turf(new_location),range_max=1,volume=25)
+			play_sound(inventory_sound,get_turf(new_location),range_max=2,volume=25)
 
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc

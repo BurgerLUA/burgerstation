@@ -1,4 +1,5 @@
 /area/hellscape/exterior/
+	sound_environment = ENVIRONMENT_PLAIN
 
 /area/hellscape/exterior/jungle
 	name = "Jungle"
@@ -23,8 +24,6 @@
 		'sound/ambient/ambiruin_7.ogg',
 	)
 
-	sound_environment = ENVIRONMENT_PLAIN
-
 /area/hellscape/exterior/jungle/north
 	name = "North Jungle"
 	icon_state = "jungle_north"
@@ -41,7 +40,7 @@
 	name = "Caves"
 	icon_state = "cave"
 
-	sound_environment = ENVIRONMENT_CAVE
+	sound_environment = ENVIRONMENT_QUARRY
 
 /area/hellscape/interior/caves/watersource
 	name = "Watersource Caves"
@@ -110,17 +109,25 @@
 	name = "Pirate's Landing"
 	icon_state = "lagoon"
 
+	sound_environment = ENVIRONMENT_CONCERT_HALL
+
 /area/hellscape/interior/rev
 	name = "Revolutionary Base"
 	icon_state = "library"
+
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/hellscape/interior/supermatter
 	name = "Supermatter Substation"
 	icon_state = "eng"
 
+	sound_environment = ENVIRONMENT_STONEROOM
+
 /area/hellscape/interior/syndicate
 	name = "Syndicate Base"
 	icon_state = "syndicate"
+
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/hellscape/interior/syndicate/aux
 	name = "Syndicate Aux Base"

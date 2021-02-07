@@ -23,4 +23,4 @@
 
 	tracks = TRACKS_JUNGLE
 
-	sound_environment = ENVIRONMENT_FOREST
+	sound_environment = ENVIRONMENT_PLAIN

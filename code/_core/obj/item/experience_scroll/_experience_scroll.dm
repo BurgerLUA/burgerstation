@@ -25,7 +25,7 @@
 	return ..()
 
 /obj/item/experience_scroll/proc/gain_knowledge(var/mob/living/advanced/A)
-	play('sound/ui/friendly.ogg',get_turf(src))
+	play_sound('sound/ui/friendly.ogg',get_turf(src))
 	return TRUE
 
 /obj/item/experience_scroll/click_self(var/mob/caller)

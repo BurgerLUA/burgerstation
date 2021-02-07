@@ -210,8 +210,6 @@
 
 /obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-
-
 	if(is_bullet(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -226,7 +224,7 @@
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
 		transfer_src_to_magazine(caller,M,location,control,params)
-		play(get_bullet_insert_sound(),M)
+		play_sound(get_bullet_insert_sound(),get_turf(src))
 		return TRUE
 
 	if(is_bullet_gun(object))
@@ -235,10 +233,11 @@
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
 		if(transfer_src_to_gun(caller,G,location,control,params))
-			play(get_bullet_insert_sound(),G)
+			var/turf/T = get_turf(src)
+			play_sound(get_bullet_insert_sound(),T)
 			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
-				play(M.get_cock_sound("forward"),src)
+				play_sound(M.get_cock_sound("forward"),T)
 			return TRUE
 
 	return ..()

@@ -218,7 +218,7 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)
-		play(pick(empty_sounds),T,range_max = 5)
+		play_sound(pick(empty_sounds),T,range_max = 5)
 		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	return FALSE
@@ -239,7 +239,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	if(length(shoot_sounds_to_use))
 		var/turf/T = get_turf(src)
-		play(pick(shoot_sounds_to_use),T)
+		play_sound(pick(shoot_sounds_to_use),T)
 		if(shoot_alert_to_use)
 			create_alert(VIEW_RANGE,T,caller,shoot_alert_to_use)
 		return TRUE

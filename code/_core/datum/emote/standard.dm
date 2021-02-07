@@ -88,7 +88,6 @@
 	action = null
 	action_target = null
 
-
 /emote/spin/proc/spin(var/atom/emoter,var/spins_remaining=0)
 
 	emoter.set_dir(turn(emoter.dir,90))
@@ -97,5 +96,5 @@
 		CALLBACK("\ref[emoter]_spin",1,src,.proc/spin,emoter,spins_remaining-1)
 
 /emote/spin/on_emote(var/atom/emoter,var/atom/target)
-	spin(emoter,10)
+	spin(emoter,12)
 	return ..()

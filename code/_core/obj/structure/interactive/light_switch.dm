@@ -53,7 +53,7 @@
 	on = !on
 	sync_lights()
 	update_sprite()
-	play('sound/machines/click.ogg',get_turf(src))
+	play_sound('sound/machines/click.ogg',get_turf(src))
 	return TRUE
 
 /obj/structure/interactive/light_switch/proc/sync_lights()

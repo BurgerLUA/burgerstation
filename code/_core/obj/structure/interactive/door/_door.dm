@@ -105,7 +105,7 @@ obj/structure/interactive/door/proc/toggle(var/mob/caller,var/lock = FALSE,var/f
 
 obj/structure/interactive/door/proc/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 	if(open_sound)
-		play(open_sound,src)
+		play_sound(open_sound,src.loc)
 		if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 	door_state = DOOR_STATE_OPENING_01
 	update_sprite()
@@ -116,7 +116,7 @@ obj/structure/interactive/door/proc/open(var/mob/caller,var/lock = FALSE,var/for
 
 obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 	if(close_sound)
-		play(close_sound,src)
+		play_sound(close_sound,src.loc)
 		if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 	door_state = DOOR_STATE_CLOSING_01
 	update_sprite()

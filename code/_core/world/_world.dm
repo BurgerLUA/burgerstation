@@ -117,7 +117,7 @@ var/global/world_state = STATE_STARTING
 		P.to_chat(span("notice","Your character was automatically saved."))
 		sleep(-1)
 	var/chosen_sound = pick(SSsound.round_end_sounds)
-	play(chosen_sound,all_mobs_with_clients)
+	play_sound_global(chosen_sound,all_mobs_with_clients)
 	sleep(100)
 	return TRUE
 
@@ -143,7 +143,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
 
-	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
+	play_sound_global('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
 	SSvote.create_vote(/vote/map)
 

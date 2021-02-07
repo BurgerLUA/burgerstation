@@ -7,7 +7,7 @@
 
 	tracks = TRACKS_FOREST
 
-	sound_environment = ENVIRONMENT_FOREST
+	sound_environment = ENVIRONMENT_PLAIN
 
 /area/lz_001/forest/village
 	name = "\improper First Light Village"
@@ -18,7 +18,7 @@
 	sunlight_freq = 0
 	interior = TRUE
 
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_001/forest/village/interior/bar
 	name = "\improper Bar"

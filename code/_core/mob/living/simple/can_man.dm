@@ -94,7 +94,7 @@
 /mob/living/simple/can_man/post_move(var/atom/old_loc)
 
 	if(charge_steps)
-		play('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
+		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 
 	return ..()
 

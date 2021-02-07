@@ -30,7 +30,7 @@
 		desired_light_color = null
 		if(health) health.restore()
 		create_destruction(T,list(/obj/item/material/shard = 1),/material/glass)
-		play('sound/effects/glass_shatter.ogg',T)
+		play_sound('sound/effects/glass_shatter.ogg',T)
 		. = ..()
 		update_atom_light()
 		update_sprite()

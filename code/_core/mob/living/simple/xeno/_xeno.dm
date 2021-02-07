@@ -82,7 +82,8 @@
 				)
 				sound_to_play = pick(valid_sounds)
 
-		if(sound_to_play) play(sound_to_play,get_turf(src))
+		if(sound_to_play)
+			play_sound(sound_to_play,get_turf(src))
 
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
@@ -100,7 +101,7 @@
 			'sound/voice/xeno/screech3.ogg',
 			'sound/voice/xeno/screech4.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 	return .
 
@@ -113,7 +114,7 @@
 			'sound/voice/xeno/hurt1.ogg',
 			'sound/voice/xeno/hurt2.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 
 	return .
 
@@ -127,7 +128,7 @@
 			'sound/voice/xeno/death1.ogg',
 			'sound/voice/xeno/death2.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 
 	update_sprite()
 

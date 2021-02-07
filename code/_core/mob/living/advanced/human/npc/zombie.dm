@@ -70,7 +70,7 @@
 			'sound/voice/zombie/revive_02.ogg',
 			'sound/voice/zombie/revive_03.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 
 	return .
 
@@ -138,7 +138,8 @@
 			)
 			sound_to_play = pick(valid_sounds)
 
-		if(sound_to_play) play(sound_to_play,get_turf(src))
+		if(sound_to_play)
+			play_sound(sound_to_play,get_turf(src))
 
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
@@ -156,7 +157,7 @@
 			'sound/voice/zombie/attack_03.ogg',
 			'sound/voice/zombie/attack_04.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 	return .
 
@@ -173,7 +174,7 @@
 			'sound/voice/zombie/pain_05.ogg',
 			'sound/voice/zombie/pain_06.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 
 	return .
 
@@ -186,7 +187,7 @@
 		var/list/valid_sounds = list(
 			'sound/voice/zombie/death_01.ogg'
 		)
-		play(pick(valid_sounds),get_turf(src))
+		play_sound(pick(valid_sounds),get_turf(src))
 
 	return .
 

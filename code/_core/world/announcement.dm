@@ -26,5 +26,5 @@
 			M.to_chat(text_to_announce_language,CHAT_TYPE_SAY)
 
 	if(sound_to_play)
-		play(sound_to_play,valid_mobs, sound_setting = SOUND_SETTING_UI)
+		play_sound_global(sound_to_play,valid_mobs, sound_setting = SOUND_SETTING_UI)
 

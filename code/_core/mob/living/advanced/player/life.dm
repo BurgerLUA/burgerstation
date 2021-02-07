@@ -10,7 +10,7 @@
 
 /mob/living/advanced/player/post_death()
 
-	play(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src)
+	play_sound_target(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src,channel=SOUND_CHANNEL_MUSIC)
 
 	var/list/people_who_contributed = list()
 	var/list/people_who_killed = list()

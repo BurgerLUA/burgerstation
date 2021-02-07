@@ -3,7 +3,7 @@
 	icon_state = "ship"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM
 
 	ambient_sound = 'sound/ambient/station_loop.ogg'
 	random_sounds = list(
@@ -30,7 +30,7 @@
 	name = "\improper Hallway"
 	icon_state = "hall"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_ALLEY
 
 /area/burgerstation/hall/north
 	name = "\improper North Hallway"
@@ -62,7 +62,7 @@
 	name = "\improper Bathrooms"
 	icon_state = "bath"
 
-	sound_environment = ENVIRONMENT_BATHROOM
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/burgerstation/cafe
 	name = "\improper Cafe"
@@ -92,7 +92,7 @@
 	icon_state = "dorm"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE
 
-	sound_environment = ENVIRONMENT_BATHROOM
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/burgerstation/help_desk
 	name = "\improper Help Desk"
@@ -118,9 +118,13 @@
 	icon_state = "ariv"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
+	sound_environment = ENVIRONMENT_STONEROOM
+
 /area/burgerstation/chapel
 	name = "\improper Chapel"
 	icon_state = "chapel"
+
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/burgerstation/library
 	name = "\improper Library"
@@ -131,6 +135,8 @@
 /area/burgerstation/engineering
 	name = "\improper Engineering"
 	icon_state = "eng"
+
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
@@ -178,11 +184,13 @@
 	name = "\improper Shooting Range"
 	icon_state = "shooting_range"
 
+	sound_environment = ENVIRONMENT_STONEROOM
+
 /area/burgerstation/hanger
 	name = "\improper Hanger"
 	icon_state = "hanger"
 
-	sound_environment = ENVIRONMENT_HANGAR
+	sound_environment = ENVIRONMENT_CONCERT_HALL
 
 /area/burgerstation/cargo
 	name = "\improper Cargo"
@@ -199,7 +207,7 @@
 		'sound/ambient/maint_2.ogg'
 	)
 
-	sound_environment = ENVIRONMENT_ALLEY
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/burgerstation/maint/north
 	name = "\improper North Maintenance"
@@ -225,6 +233,8 @@
 	name = "\improper Hidden Maintenance Garden"
 	icon_state = "blue"
 	flags_area = FLAGS_AREA_NO_EVENTS
+
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/burgerstation/pvp
 	name = "ERROR"

@@ -15,7 +15,7 @@
 
 	if(.)
 		if(enabled)
-			play(pick('sound/effects/sparks/sparks1.ogg','sound/effects/sparks/sparks2.ogg','sound/effects/sparks/sparks3.ogg','sound/effects/sparks/sparks4.ogg'),src)
+			play_sound(pick('sound/effects/sparks/sparks1.ogg','sound/effects/sparks/sparks2.ogg','sound/effects/sparks/sparks3.ogg','sound/effects/sparks/sparks4.ogg'),get_turf(src))
 			damage_type = /damagetype/melee/club/stunbaton/on
 		else
 			damage_type = /damagetype/melee/club/stunbaton

@@ -41,7 +41,7 @@
 
 	caller.visible_message(span("danger","\The [caller.name] charges up \the [src.name]..."),span("warning","You charge up \the [src.name]..."))
 
-	play('sound/items/defib/defib_charge.ogg',T)
+	play_sound('sound/items/defib/defib_charge.ogg',T)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
@@ -64,16 +64,16 @@
 
 	caller.visible_message(span("notice","\The [caller.name] shocks \the [target.name] with \the [src.name]!"),span("notice","You shock \the [target.name] with \the [src.name]!"))
 
-	play('sound/items/defib/defib_zap.ogg',T)
+	play_sound('sound/items/defib/defib_zap.ogg',T)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(target.check_death() || !target.is_player_controlled() || target.suicide)
 		target.visible_message(span("warning","Nothing happens..."))
-		play('sound/items/defib/defib_failed.ogg',T)
+		play_sound('sound/items/defib/defib_failed.ogg',T)
 		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 		return FALSE
 
-	play('sound/items/defib/defib_ready.ogg',T)
+	play_sound('sound/items/defib/defib_ready.ogg',T)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	target.revive()

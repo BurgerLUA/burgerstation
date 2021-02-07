@@ -22,4 +22,4 @@
 
 	area_identifier = "Central Command"
 
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM

@@ -333,7 +333,7 @@
 			var/mob/living/advanced/A = victim
 			if(A.parry(attacker,weapon,hit_object,src))
 				A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
-				play('sound/effects/parry.ogg',get_turf(A))
+				play_sound('sound/effects/parry.ogg',get_turf(A))
 				if(is_living(attacker))
 					var/mob/living/LA = attacker
 					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
@@ -565,11 +565,11 @@
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play(pick(impact_sounds_flesh),get_turf(hit_object))
+		play_sound(pick(impact_sounds_flesh),get_turf(hit_object))
 
 	if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
-		play(pick(impact_sounds),T)
+		play_sound(pick(impact_sounds),T)
 		create_alert(VIEW_RANGE,T,attacker,ALERT_LEVEL_CAUTION)
 
 	return TRUE
@@ -577,14 +577,14 @@
 /damagetype/proc/do_swing_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(swing_sounds))
 		var/turf/T = get_turf(victim)
-		play(pick(swing_sounds),T)
+		play_sound(pick(swing_sounds),T)
 		return TRUE
 	return FALSE
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
 		var/turf/T = get_turf(victim)
-		play(pick(miss_sounds),T)
+		play_sound(pick(miss_sounds),T)
 		return TRUE
 	return FALSE
 
