@@ -178,7 +178,8 @@
 
 
 	INTERACT_CHECK
-	if(is_inventory(object))
+
+	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	if(fishing_turf)

@@ -107,11 +107,12 @@
 		top_object.click_on_object(caller,caller,location,control,params)
 		return TRUE
 
+	if(top_object && object == top_object) //Click on ourself
+		top_object.click_self(caller)
+		return TRUE
+
 	if(caller.attack_flags & CONTROL_MOD_SELF)
-		if(top_object && object == top_object) //Click on ourself
-			top_object.click_self(caller)
-			return TRUE
-		else if(!top_object && is_advanced(caller))
+		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
 			if(src == A.right_hand && A.left_item)
 				return A.right_hand.toggle_wield(caller,A.left_item)

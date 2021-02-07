@@ -55,7 +55,7 @@
 
 /obj/item/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	if(!isturf(object)) object = get_turf(object)

@@ -121,7 +121,7 @@
 
 /obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	var/self_treat = caller == object
