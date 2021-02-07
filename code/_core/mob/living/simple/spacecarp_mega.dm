@@ -5,6 +5,7 @@
 
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/carp/
+	ai = /ai/
 
 	health_base = 300
 	stamina_base = 300

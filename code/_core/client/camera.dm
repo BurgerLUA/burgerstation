@@ -15,7 +15,7 @@
 /client/proc/update_view_range()
 
 	if(settings && settings.loaded_data["view_range"])
-		view = clamp(settings.loaded_data["view_range"],4,VIEW_RANGE)
+		view = clamp(settings.loaded_data["view_range"],8,VIEW_RANGE)
 	else
 		view = VIEW_RANGE
 

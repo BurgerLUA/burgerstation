@@ -432,8 +432,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (VIEW_RANGE * TILE_SIZE)
 		if(ismob(caller))
 			var/mob/M = caller
-			target_fake_x += M.client.pixel_x
-			target_fake_y += M.client.pixel_y
+			if(M.client)
+				target_fake_x = caller.x*TILE_SIZE + screen_loc_parsed[1] - (M.client.view * TILE_SIZE)
+				target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (M.client.view * TILE_SIZE)
+				target_fake_x += M.client.pixel_x
+				target_fake_y += M.client.pixel_y
 	else
 		target_fake_x = target.x*TILE_SIZE + icon_pos_x
 		target_fake_y = target.y*TILE_SIZE + icon_pos_y
