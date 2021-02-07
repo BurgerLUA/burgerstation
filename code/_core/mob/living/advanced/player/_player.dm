@@ -200,3 +200,17 @@ mob/living/advanced/player/on_life_client()
 
 
 	return .
+
+/mob/living/advanced/player/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+	// only prevent dead bodies from being grabbed if person grabbing is antag
+	// unfortunately due to code in datum/damagetype/unarmed/fists.dm, a GRAB! message will be displayed anyway
+	if(dead && istype(grabber, /mob/living/advanced/player/antagonist/))
+		if(istype(src, /mob/living/advanced/player/antagonist/))
+			return ..() // person being grabbed is also antag, allows revs and syndies to grab each other (maybe check IFF?)
+		
+		if(messages)
+			var/mob/living/grabberMob = grabber
+			grabberMob.to_chat(span("warning", "Ew! Why would I touch a disgusting [name]!"))
+		
+		return FALSE
+	return ..()
