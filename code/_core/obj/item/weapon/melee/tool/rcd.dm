@@ -16,11 +16,14 @@
 /obj/item/rcd/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("rcd_disk")
+	SAVEVAR("matter_current")
 	return .
 
 /obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("rcd_disk")
+	LOADVAR("matter_current")
+	update_sprite()
 	return .
 
 /obj/item/rcd/Generate()
