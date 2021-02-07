@@ -26,13 +26,16 @@
 
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
-	return TRUE
+	return ..()
 
 /client/Click(var/atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
 
 	var/click_flags = get_click_flags(new_params,TRUE)
+
+	if(!object || object.plane < PLANE_HUD)
+		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
@@ -45,7 +48,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_click(object,location,control,new_params)
 
-	return TRUE
+	return ..()
 
 /client/MouseDown(var/atom/object,location,control,params)
 
@@ -56,11 +59,18 @@
 		mouse_down_x = screen_loc[1]
 		mouse_down_y = screen_loc[2]
 
-	object = object.defer_click_on_object(mob,location,control,new_params)
-
 	store_new_params(object,location,new_params)
 
 	var/click_flags = get_click_flags(new_params,TRUE)
+	if(click_flags & CLICK_LEFT)
+		mob.attack_flags |= CONTROL_MOD_LEFT
+	if(click_flags & CLICK_RIGHT)
+		mob.attack_flags |= CONTROL_MOD_RIGHT
+
+	if(!object || object.plane >= PLANE_HUD)
+		return FALSE
+
+	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	if(examine_mode)
 		if(mob) mob.display_turf_contents(get_turf(object))
@@ -68,31 +78,24 @@
 		return TRUE
 
 	if(click_flags & CLICK_LEFT)
-		mob.attack_flags |= CONTROL_MOD_LEFT
 		mob.on_left_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_RIGHT)
-		mob.attack_flags |= CONTROL_MOD_RIGHT
 		mob.on_right_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)
 
-	return TRUE
+	return ..()
 
 /client/MouseUp(var/atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
+
 	var/click_flags = get_click_flags(new_params,TRUE)
-
-	object = object.defer_click_on_object(mob,location,control,new_params)
-
 	if(click_flags & CLICK_LEFT)
-		mob.on_left_up(object,location,control,new_params)
 		mob.attack_flags &= ~CONTROL_MOD_LEFT
-
 	if(click_flags & CLICK_RIGHT)
-		mob.on_right_up(object,location,control,new_params)
 		mob.attack_flags &= ~CONTROL_MOD_RIGHT
 
 	if(is_player(mob))
@@ -103,7 +106,18 @@
 			click_and_drag_icon.stored_inventory = null
 			click_and_drag_icon.alpha = 0
 
-	return TRUE
+	if(!object || object.plane >= PLANE_HUD)
+		return FALSE
+
+	object = object.defer_click_on_object(mob,location,control,new_params)
+
+	if(click_flags & CLICK_LEFT)
+		mob.on_left_up(object,location,control,new_params)
+
+	if(click_flags & CLICK_RIGHT)
+		mob.on_right_up(object,location,control,new_params)
+
+	return ..()
 
 /client/MouseDrop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
@@ -130,7 +144,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,new_params)
 
-	return TRUE
+	return ..()
 
 
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
@@ -143,10 +157,10 @@
 
 	store_new_params(over_object,over_location,new_params)
 
-	return TRUE
+	return ..()
 
 /client/proc/store_new_params(over_object,over_location,params)
-	var/list/new_params = params2list(params)
-	last_params = new_params
+	last_params = params
 	last_object = over_object
 	last_location = over_location
+	return TRUE

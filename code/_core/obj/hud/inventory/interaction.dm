@@ -20,20 +20,18 @@
 
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	world.log << "click_on_object: [object.type]"
+	var/atom/top_object = get_top_object()
 
-	if(is_living(caller))
+	//Test
+	if(is_living(caller)) //TODO: Do you even need this?
 		var/mob/living/L = caller
 		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
 			L.to_chat(span("warning","You're dead!"))
 			return FALSE
 
-	var/atom/defer_self = src.defer_click_on_object(caller,location,control,params) //We could be holding an object.
-	var/atom/defer_object = object.defer_click_on_object(caller,location,control,params) //The object we're clicking on could be something else.
-
 	if(caller.attack_flags & CONTROL_MOD_GRAB)
-		if(is_item(defer_object) && is_inventory(defer_object.loc))
-			toggle_wield(caller,defer_object)
+		if(is_item(object) && is_inventory(object.loc))
+			toggle_wield(caller,object)
 			return TRUE
 		if(isturf(object.loc) && get_dist(caller,object) <= 1)
 			if(is_living(object))
@@ -44,9 +42,8 @@
 			grab_object(caller,object,location,control,params)
 			return TRUE
 
-
-	if(caller.attack_flags & CONTROL_MOD_ALT && ismovable(defer_object))
-		var/atom/movable/M = defer_object
+	if(caller.attack_flags & CONTROL_MOD_ALT && ismovable(object))
+		var/atom/movable/M = object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
 			if(click_flags & LEFT_HAND)
@@ -57,15 +54,15 @@
 
 	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
-		caller.face_atom(defer_object)
-		var/atom/movable/object_to_throw = src.defer_click_on_object(caller,location,control,params)
-		if(is_item(object_to_throw))
+		caller.face_atom(object)
+		var/atom/movable/object_to_throw = top_object
+		if(istype(object_to_throw))
 			var/obj/item/I = object_to_throw
 			if(I.additional_clothing_parent)
 				caller.to_chat(span("warning","You can't throw this!"))
 				return TRUE
-			var/vel_x = defer_object.x - caller.x
-			var/vel_y = defer_object.y - caller.y
+			var/vel_x = object.x - caller.x
+			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
 			if(!highest)
@@ -80,6 +77,9 @@
 
 			I.drop_item(get_turf(caller),silent=TRUE)
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+		else if(top_object)
+			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))
+
 		return TRUE
 
 	if(caller.attack_flags & CONTROL_MOD_DROP) //Drop the object if we are telling it to drop.
@@ -97,59 +97,60 @@
 	if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
 
-	if(defer_self == grabbed_object)
+	if(grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
 			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir))
 		return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_OWNER)
-		if(defer_self != src)
-			defer_self.click_on_object(caller,caller,location,control,params)
-		else if(object != src)
-			object.click_on_object(caller,caller,location,control,params)
+	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)
+		top_object.click_on_object(caller,caller,location,control,params)
 		return TRUE
 
-	if(params && (caller.attack_flags & CONTROL_MOD_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
+	if(top_object && (object == top_object || caller.attack_flags & CONTROL_MOD_SELF)) //Click on ourself
+		top_object.click_self(caller)
 		return TRUE
 
-	if(get_dist(defer_self,defer_object) <= 1)
-		if(is_item(defer_object)) //We're clicking on another item.
-			var/obj/item/I = defer_object
-			if(I.anchored)
-				I.click_self(caller)
+	if(get_dist(src,object) <= 1)
+		if(is_item(object)) //We're clicking on another item.
+			var/obj/item/I = object
+			if(I.anchored) //If it's anchored, we just call click_self on it.
+				I.click_self(caller) //works
 				return TRUE
-			if(is_inventory(defer_object.loc)) //The object we're clicking on is in an inventory. Special behavior.
-				var/obj/hud/inventory/I2 = defer_object.loc
-				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in a worn slot.
-					if(is_inventory(defer_self)) //We have nothing to add to it, so we should open it instead.
-						I.click_self(caller)
+			if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
+				var/obj/hud/inventory/INV = I.loc
+				if(!top_object)
+					if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
+						I.click_self(caller) //works
 						return TRUE
-				if(!I2.click_flags && (!I2.drag_to_take || is_weapon(defer_object)) && is_item(defer_object) && !is_item(defer_self))
-					src.add_object(defer_object)
+					if(!INV.click_flags && (!INV.drag_to_take || is_weapon(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
+						src.add_object(object)
+						return TRUE
+				else if(INV.worn && !I.is_container) //The item we're clicking on is not a container and it's in a worn inventory.
+					INV.add_object(top_object)
 					return TRUE
-				if(I2.worn && I2.max_slots && is_item(defer_self) && !I.is_container)
-					I2.add_object(defer_self)
-					return TRUE
-			else if(is_inventory(defer_self))
-				src.add_object(defer_object)
+
+			else if(!top_object) //If we don't have a top object, pick it up.
+				src.add_object(object)
 				return TRUE
+		else if(top_object && is_inventory(object)) //We have an object in our hands, clicking on an empty inventory.
+			var/obj/hud/inventory/INV = object
+			INV.add_object(top_object)
+			return TRUE
 
-		else if(is_item(defer_self)) //We have an object in our hands, clicking on an empty inventory.
-			if(is_inventory(object)) //We're clicking on an inventory. It may or may not have an object.
-				var/obj/hud/inventory/object_as_inventory = object
-				object_as_inventory.add_object(defer_self)
-				return TRUE
+	//Here be shitcode territory. We're overriding what is normally called.
+	//Should change this in the future.
 
-
-	//Stolen from /atom/proc/click_on_object
-	if(src != defer_self && defer_self.click_on_object(caller,object,location,control,params))
+	if(top_object && top_object.click_on_object(caller,object,location,control,params))
 		return TRUE
 
-	if(object.clicked_on_by_object(caller,src,location,control,params))
+	if(object.clicked_on_by_object(caller,top_object ? top_object : src,location,control,params))
 		return TRUE
 
-	if(is_organ(src.loc))
+	if(top_object && top_object.attack(caller,object,params))
+		return TRUE
+
+	if(is_organ(src.loc)) //We belong to an organ, so we should attack.
 		var/obj/item/organ/O = src.loc
 		return O.attack(caller,object,params)
 
@@ -274,6 +275,5 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 	var/obj/item/I = get_top_object()
 	if(I) return I
-
 
 	return src

@@ -379,6 +379,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			if(P && P.client && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
+					log_error("Warning: [caller] had no screen loc parsed.")
 					return TRUE
 				var/turf/caller_turf = get_turf(caller)
 				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
@@ -392,6 +393,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 					else if(max_bursts_to_use > 0)
 						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
 						current_bursts = 0
+				else
+					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")
 			else if(max_bursts_to_use > 0)
 				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
 				current_bursts = 0
