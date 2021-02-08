@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(sound)
 	S.status = SOUND_MUTE | SOUND_UPDATE
 	for(var/k in all_clients)
 		var/client/C = k
-		C.receive_sound(S)
+		C << S
 	active_sounds -= S
 	return TRUE
 
@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(sound)
 			var/mob/M = k
 			if(!M.client)
 				continue
-			M.client.receive_sound(S)
+			M.client << S
 
 proc/stop_ambient_sounds(var/mob/M)
 	if(!M.client)
@@ -73,7 +73,7 @@ proc/stop_ambient_sounds(var/mob/M)
 	created_sound.priority = 100
 	created_sound.status = SOUND_MUTE
 	created_sound.channel = SOUND_CHANNEL_AMBIENT
-	M.client.receive_sound(created_sound)
+	M.client << created_sound
 	M.client.current_ambient_sound = null
 	return TRUE
 
@@ -82,7 +82,7 @@ proc/stop_music_track(var/client/hearer)
 	created_sound.priority = 100
 	created_sound.status = SOUND_MUTE
 	created_sound.channel = SOUND_CHANNEL_MUSIC
-	hearer.receive_sound(created_sound)
+	hearer << created_sound
 	hearer.next_music_track = 0
 
 proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
@@ -110,7 +110,7 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 				continue
 			M.client.current_ambient_sound = sound_path
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]
-		M.client.receive_sound(created_sound)
+		M.client << created_sound
 
 proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
 	var/sound/created_sound = sound(sound_path)
@@ -134,7 +134,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 		if(!M.client)
 			continue
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]
-		M.client.receive_sound(created_sound)
+		M.client << created_sound
 
 proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
@@ -163,7 +163,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.volume = volume * (volume_mod/100)
 	created_sound.status = SOUND_STREAM
 
-	hearer.receive_sound(created_sound)
+	hearer << created_sound
 	hearer.current_music_track = music_track_id
 	hearer.next_music_track = world.time + SECONDS_TO_DECISECONDS(T.length)
 
@@ -270,7 +270,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	created_sound.y = 0
 	created_sound.volume = local_volume
 
-	if(C) C.receive_sound(created_sound)
+	C << created_sound
 
 	return C
 
@@ -331,7 +331,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		created_sound.volume = local_volume
 
-		if(C) C.receive_sound(created_sound)
+		C << created_sound
 
 	return created_sound
 
@@ -352,7 +352,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	SSsound.channel_hack++
 	if(SSsound.channel_hack > 1024)
-		SSsound.channel_hack = initial(SSsound.channel_hack)
+		SSsound.channel_hack = 100
 
 	if(duration > 0)
 		SSsound.active_sounds[created_sound] = duration
@@ -362,35 +362,35 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	var/list/pos = vector(source_turf.x,source_turf.y,source_turf.z)
 
 	for(var/k in hearers)
-		var/mob/M = k
 
 		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
 
-		if(invisibility_check && M.see_invisible < invisibility_check) continue
+		var/mob/M = k
 
-		if(!M.client || !M.client.eye) continue
+		if(!M.client || !M.client.eye)
+			continue
 
-		var/client/C = M.client
+		if(invisibility_check && M.see_invisible < invisibility_check)
+			continue
 
 		var/turf/T = get_turf(M)
-		if(!T || pos[3] != T.z) continue
-
-		created_sound.environment = M.get_sound_environment()
+		if(!T || pos[3] != T.z)
+			continue
 
 		var/local_volume = volume
-		if(C && C.settings)
-			local_volume *= C.settings.loaded_data["volume_master"] / 100
+		if(M.client.settings)
+			local_volume *= M.client.settings.loaded_data["volume_master"] / 100
 			switch(channel)
 				if(SOUND_CHANNEL_MUSIC)
-					local_volume *= C.settings.loaded_data["volume_music"] / 100
+					local_volume *= M.client.settings.loaded_data["volume_music"] / 100
 				if(SOUND_CHANNEL_AMBIENT)
-					local_volume *= C.settings.loaded_data["volume_ambient"] / 100
+					local_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
 				if(SOUND_CHANNEL_FOOTSTEPS)
-					local_volume *= C.settings.loaded_data["volume_footsteps"] / 100
+					local_volume *= M.client.settings.loaded_data["volume_footsteps"] / 100
 				if(SOUND_CHANNEL_UI)
-					local_volume *= C.settings.loaded_data["volume_ui"] / 100
+					local_volume *= M.client.settings.loaded_data["volume_ui"] / 100
 				if(SOUND_CHANNEL_FX)
-					local_volume *= C.settings.loaded_data["volume_fx"] / 100
+					local_volume *= M.client.settings.loaded_data["volume_fx"] / 100
 			if(local_volume <= 0)
 				continue
 
@@ -403,13 +403,13 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 				continue
 			var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
 			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
-
 			if(local_volume <= 0)
 				continue
 
 		created_sound.volume = local_volume
+		created_sound.environment = M.get_sound_environment()
 
-		if(C) C.receive_sound(created_sound)
+		M.client << created_sound
 
 	return created_sound
 

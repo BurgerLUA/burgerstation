@@ -246,6 +246,3 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
       to_chat("[v] = [object.vars[v]]")
-
-/client/proc/receive_sound(var/sound/S)
-	src << S
