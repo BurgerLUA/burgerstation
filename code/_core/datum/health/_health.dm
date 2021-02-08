@@ -159,7 +159,7 @@
 	health_current = get_overall_health(FALSE,FALSE,FALSE)
 	return TRUE
 
-/health/proc/get_defense(var/atom/attacker,var/atom/hit_object)
+/health/proc/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 	return armor_base.Copy()
 
 /health/proc/adjust_mana(var/adjust_value)

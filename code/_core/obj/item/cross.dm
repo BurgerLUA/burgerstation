@@ -52,7 +52,7 @@
 /obj/item/cross/Cross(var/atom/movable/O)
 
 	if(O.health && icon_state == initial(icon_state))
-		var/list/defense = O.health.get_defense()
+		var/list/defense = O.health.get_defense(ignore_luck=TRUE)
 		if(defense[HOLY] - defense[DARK] < 0)
 			return FALSE
 

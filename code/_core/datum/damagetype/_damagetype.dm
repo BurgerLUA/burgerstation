@@ -357,14 +357,14 @@
 	var/fatigue_damage = 0
 
 	var/damage_blocked = 0
-	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
+	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
 		if(is_advanced(attacker))
 			var/mob/living/advanced/A = attacker
 			object_to_check = A.labeled_organs[O.id]
-	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
+	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check,TRUE) : list()
 
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
 	var/has_fatigue_damage = FALSE
