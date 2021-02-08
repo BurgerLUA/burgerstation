@@ -425,7 +425,7 @@
 	desc_extended = "A modified version of the silent Vintorez sniper rifle, the assault rifle was designed as a special forces weapon."
 	icon = 'icons/obj/item/weapons/ranged/rifle/939_val.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 500
 
 	shoot_delay = 1.5
 
@@ -453,6 +453,8 @@
 	bullet_diameter_max = 10
 
 	ai_heat_sensitivity = 1.5
+
+	shoot_alert = ALERT_LEVEL_NONE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/sight/laser_sight = TRUE,
@@ -521,9 +523,11 @@
 	size = SIZE_4
 
 
-	value = 250
+	value = 450
 
 	ai_heat_sensitivity = 2
+
+	shoot_alert = ALERT_LEVEL_NONE
 
 	inaccuracy_modifer = 0.09
 
