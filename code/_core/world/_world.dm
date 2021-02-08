@@ -52,6 +52,10 @@ var/global/world_state = STATE_STARTING
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
 
+	var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
+	if(player_limit_config > 0)
+		status = "[status]<br>[length(all_clients)]/[player_limit_config] players."
+
 	return TRUE
 
 
