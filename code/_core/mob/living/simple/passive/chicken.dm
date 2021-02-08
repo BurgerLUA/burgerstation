@@ -10,7 +10,7 @@
 		/obj/item/container/food/dynamic/chicken/raw/,
 		/obj/item/container/food/dynamic/chicken/raw/
 	)
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 	loyalty_tag = "Chicken"
 	iff_tag = "Chicken"

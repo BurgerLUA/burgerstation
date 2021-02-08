@@ -14,7 +14,7 @@
 	iff_tag = "NanoTrasen"
 	loyalty_tag = "NanoTrasen"
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE

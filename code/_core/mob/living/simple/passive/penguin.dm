@@ -18,7 +18,7 @@
 		/obj/item/container/food/dynamic/chicken/raw_penguin/
 	)
 
-	mob_size = MOB_SIZE_ANIMAL
+	size = SIZE_ANIMAL
 
 	loyalty_tag = "Penguin"
 	iff_tag = "Penguin"

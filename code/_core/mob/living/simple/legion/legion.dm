@@ -31,7 +31,7 @@
 	iff_tag = "Legion"
 	loyalty_tag = "Legion"
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	blood_type = null
 
@@ -146,7 +146,7 @@
 
 
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 /mob/living/simple/legionare/snow/post_death()
 	. = ..()

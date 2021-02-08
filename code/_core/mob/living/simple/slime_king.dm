@@ -65,7 +65,7 @@
 		/obj/item/soapstone/orange
 	)
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	damage_type = /damagetype/npc/slime
 

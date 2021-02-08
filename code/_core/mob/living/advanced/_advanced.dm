@@ -67,7 +67,7 @@
 
 	var/list/known_cqc = list()
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	max_level = 100 //Max level for skills and attributes of the mob.
 

@@ -14,7 +14,7 @@
 
 	attack_range = 1
 
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 /mob/living/simple/goliath/baby/post_death()
 	. = ..()

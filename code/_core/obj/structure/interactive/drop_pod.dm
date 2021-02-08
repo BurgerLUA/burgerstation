@@ -27,6 +27,17 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 
 	density = TRUE
 
+/obj/structure/interactive/drop_pod/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	for(var/k in contents)
+		var/atom/movable/M = k
+		M.post_move(old_loc)
+
+	return .
+
+
 /obj/structure/interactive/drop_pod/Cross(atom/movable/O)
 
 	if(state == POD_IDLE)

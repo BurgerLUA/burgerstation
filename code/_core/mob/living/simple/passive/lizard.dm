@@ -14,7 +14,7 @@
 	loyalty_tag = "Lizard"
 	iff_tag = "Lizard"
 
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 	blood_type = /reagent/blood/reptile
 	blood_volume = 50

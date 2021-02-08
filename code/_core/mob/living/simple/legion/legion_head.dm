@@ -22,7 +22,7 @@
 	iff_tag = "Legion"
 	loyalty_tag = "Legion"
 
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 	blood_type = null
 

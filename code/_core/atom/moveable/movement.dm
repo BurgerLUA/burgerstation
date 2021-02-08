@@ -121,7 +121,7 @@
 	if(old_loc != loc)
 		post_move(old_loc)
 
-	return FALSE
+	return TRUE
 
 /atom/movable/proc/post_move(var/atom/old_loc)
 

@@ -57,7 +57,7 @@
 
 	fatigue_from_block_mul = 0
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE

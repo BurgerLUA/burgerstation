@@ -91,6 +91,8 @@
 
 	var/next_emote = 0 //Prevents spam
 
+	var/last_z = 0
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)

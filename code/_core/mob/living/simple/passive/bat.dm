@@ -19,7 +19,7 @@
 	iff_tag = "Bat"
 	loyalty_tag = "Bat"
 
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 	blood_type = /reagent/blood/bat
 	blood_volume = 100

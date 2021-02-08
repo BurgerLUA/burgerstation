@@ -16,14 +16,14 @@ var/global/world_state = STATE_STARTING
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
 
-	cache_lifespan = 5
+	cache_lifespan = 7
 
 	turf = /turf/space
 	area = /area/
 
 	maxx = WORLD_SIZE
 	maxy = WORLD_SIZE
-	maxz = 3
+	maxz = 0
 
 	loop_checks = 1
 

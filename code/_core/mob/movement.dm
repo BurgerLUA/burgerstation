@@ -102,4 +102,15 @@
 
 	update_rs_chat()
 
+	if(!T || last_z != T.z)
+		if(last_z && all_mobs_with_clients_by_z["[last_z]"])
+			all_mobs_with_clients_by_z["[last_z]"] -= src
+		if(T && T.z)
+			last_z = T.z
+			if(!all_mobs_with_clients_by_z["[last_z]"])
+				all_mobs_with_clients_by_z["[last_z]"] = list()
+			all_mobs_with_clients_by_z["[last_z]"] |= src
+		else
+			last_z = 0
+
 	return .

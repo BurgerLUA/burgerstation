@@ -37,7 +37,7 @@
 		PAIN = INFINITY
 	)
 
-	mob_size = MOB_SIZE_ANIMAL
+	size = SIZE_ANIMAL
 
 	damage_type = /damagetype/npc/slime
 

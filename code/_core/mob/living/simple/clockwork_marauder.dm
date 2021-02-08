@@ -18,7 +18,7 @@
 	iff_tag = "Clockwork"
 	loyalty_tag = "Clockwork"
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	blood_type = null
 	blood_volume = 0

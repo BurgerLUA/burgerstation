@@ -14,7 +14,7 @@
 
 	var/rarity = RARITY_COMMON
 
-	var/size = 1
+	size = SIZE_0
 	var/weight = 0 //DEPRICATED
 	var/quality = 100
 

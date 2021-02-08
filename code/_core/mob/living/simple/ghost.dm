@@ -59,7 +59,7 @@
 		FIRE = TRUE
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 
 

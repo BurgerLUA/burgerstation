@@ -35,7 +35,7 @@
 		/obj/item/container/food/dynamic/meat/raw_bear/
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	var/armored = FALSE
 

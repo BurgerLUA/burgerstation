@@ -4,7 +4,7 @@
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,2)
 
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
-#define FPS_SERVER 30
+#define FPS_SERVER 15
 
 #define WORLD_SIZE 255
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing

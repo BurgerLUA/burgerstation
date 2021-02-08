@@ -212,7 +212,7 @@
 				return ..()
 		if(L.horizontal || src.horizontal)
 			return ..()
-		if(L.mob_size >= mob_size && L.mob_size >= MOB_SIZE_ANIMAL)
+		if(L.size >= size && L.size >= SIZE_ANIMAL)
 			return FALSE
 
 	return ..()

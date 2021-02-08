@@ -301,7 +301,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
-		damage_multiplier *= quality_bonus
+		damage_multiplier_to_use *= quality_bonus
 
 	else if(requires_bullets)
 		handle_empty(caller)

@@ -29,7 +29,7 @@
 		PAIN = INFINITY
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	var/obj/structure/interactive/blob/node/linked_node
 

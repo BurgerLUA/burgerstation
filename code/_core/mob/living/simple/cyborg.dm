@@ -16,7 +16,7 @@
 	loyalty_tag = "Silicon"
 	iff_tag = "Silicon"
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	armor_base = CYBORG_ARMOR
 

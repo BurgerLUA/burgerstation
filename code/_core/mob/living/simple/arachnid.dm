@@ -46,7 +46,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	mob_size = MOB_SIZE_GIANT
+	size = SIZE_GIANT
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE

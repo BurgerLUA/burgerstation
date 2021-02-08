@@ -22,7 +22,7 @@
 
 	movement_delay = 1
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	var/next_talk = 0
 	var/leaping = FALSE

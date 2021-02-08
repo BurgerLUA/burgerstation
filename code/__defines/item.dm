@@ -4,12 +4,13 @@
 #define SIZE_2 2
 #define SIZE_3 3
 #define SIZE_4 4
-#define SIZE_5 5
-#define SIZE_6 6
-#define SIZE_7 7
-#define SIZE_8 8
-#define SIZE_9 10
-#define SIZE_X 100
+#define SIZE_5 6
+#define SIZE_6 10
+#define SIZE_7 15
+#define SIZE_8 25
+#define SIZE_9 50
+#define SIZE_10 75
+#define SIZE_X 1000
 
 //Inventory weights
 #define WEIGHT_0 0.5
