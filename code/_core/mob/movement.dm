@@ -99,15 +99,6 @@
 
 	if(client)
 		client.post_move(loc,old_loc)
-		if(!loc || !old_loc || old_loc.z != loc.z)
-			if(old_loc && old_loc.z > 0)
-				if(!all_mobs_with_clients_by_z_level["[old_loc.z]"])
-					all_mobs_with_clients_by_z_level["[old_loc.z]"] = list()
-				all_mobs_with_clients_by_z_level["[old_loc.z]"] -= src
-			if(loc && loc.z > 0)
-				if(!all_mobs_with_clients_by_z_level["[loc.z]"])
-					all_mobs_with_clients_by_z_level["[loc.z]"] = list()
-				all_mobs_with_clients_by_z_level["[loc.z]"] |= src
 
 	update_rs_chat()
 

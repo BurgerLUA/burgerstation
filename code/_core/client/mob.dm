@@ -38,14 +38,8 @@
 	mob = M
 	eye = M
 	all_mobs_with_clients |= M
-	if(M.loc && M.loc.z > 0)
-		if(!all_mobs_with_clients_by_z_level["[M.loc.z]"])
-			all_mobs_with_clients_by_z_level["[M.loc.z]"] = list()
-		all_mobs_with_clients_by_z_level["[M.loc.z]"] |= M
 	all_listeners |= M
 	view = M.view
-
-
 
 	update_zoom(2)
 	update_verbs()
@@ -78,10 +72,6 @@
 		M.parallax.Cut()
 
 	all_mobs_with_clients -= M
-	if(M.loc && M.loc.z > 0)
-		if(!all_mobs_with_clients_by_z_level["[M.loc.z]"])
-			all_mobs_with_clients_by_z_level["[M.loc.z]"] = list()
-		all_mobs_with_clients_by_z_level["[M.loc.z]"] -= M
 	if(!M.listener)
 		all_listeners -= M
 	M.client = null
