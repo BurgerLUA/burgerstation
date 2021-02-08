@@ -33,6 +33,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	var/currency = 3000
 	var/revenue = 0
 	var/expenses = 0
+	var/last_tax_payment = 0
 
 	var/insurance = INSURANCE_PAYOUT * 4 //How much insurance the user has. This amount is paid out in death, up to 8000 credits.
 	var/insurance_premiums = 0.05 //How much your insurance premiums are. This is taxed from your current amount each payday.
@@ -199,3 +200,17 @@ mob/living/advanced/player/on_life_client()
 
 
 	return .
+
+/mob/living/advanced/player/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+	// only prevent dead bodies from being grabbed if person grabbing is antag
+	// unfortunately due to code in datum/damagetype/unarmed/fists.dm, a GRAB! message will be displayed anyway
+	if(dead && istype(grabber, /mob/living/advanced/player/antagonist/))
+		if(istype(src, /mob/living/advanced/player/antagonist/))
+			return ..() // person being grabbed is also antag, allows revs and syndies to grab each other (maybe check IFF?)
+		
+		if(messages)
+			var/mob/living/grabberMob = grabber
+			grabberMob.to_chat(span("warning", "Ew! Why would I touch a disgusting [name]!"))
+		
+		return FALSE
+	return ..()

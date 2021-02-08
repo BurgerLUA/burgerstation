@@ -15,10 +15,8 @@
 	var/rarity = RARITY_COMMON
 
 	var/size = 1
-	var/weight = 0
+	var/weight = 0 //DEPRICATED
 	var/quality = 100
-
-	var/weight_last = 0//Last weight calculated via calculation
 
 	var/list/material = list() //Stored materials
 
@@ -50,6 +48,7 @@
 	var/icon_state_held_left = "held_left"
 	var/icon_state_held_right = "held_right"
 	var/icon_state_worn = "worn"
+	var/enable_held_icon_states = FALSE
 	//var/icon_state_held_single
 
 	collision_flags = FLAG_COLLISION_ITEM
@@ -154,16 +153,6 @@
 		visible_message(span("danger","\The [src.name] breaks!"))
 
 	return TRUE
-
-/obj/item/proc/get_weight(var/check_containers=TRUE)
-
-	. = weight*item_count_current
-
-	if(check_containers && is_container)
-		for(var/obj/hud/inventory/I in src.inventories)
-			. += I.get_weight()
-
-	return .
 
 /obj/item/Crossed(atom/movable/O)
 	return TRUE
@@ -310,6 +299,10 @@
 
 /obj/item/New(var/desired_loc)
 
+	if(is_container && size <= container_max_size)
+		log_error("Warning: [get_debug_name()] had a size ([size]) less than its container max size ([container_max_size]).")
+		size = container_max_size + 1
+
 	if(!damage_type)
 		switch(size)
 			if(0 to SIZE_3)
@@ -399,14 +392,13 @@
 		. += div("rarity good","<b>Luck</b>: +[luck-50]")
 
 	. += div("rarity","Value: [CEILING(value,1)]cr.")
-	. += div("weightsize","Size: [size], Weight: [get_weight(FALSE)]")
+	. += div("weightsize","Size: [size], Weight: [weight]")
 
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
 	return .
-
 
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
 
@@ -419,8 +411,7 @@
 		return FALSE
 
 	var/mob/living/advanced/A = I.owner
-
-	A.update_lighting()
+	A.update_single_lighting(src)
 
 	return TRUE
 
@@ -461,7 +452,12 @@
 /obj/item/proc/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 	return TRUE
 
-/obj/item/set_light(range,power,color,angle,no_update)
+/obj/item/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
+	. = ..()
+	update_lighting_for_owner()
+	return .
+
+/obj/item/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
 	update_lighting_for_owner()
 	return .
@@ -576,9 +572,9 @@
 
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	var/self_feed = caller == defer_object
+
+	var/self_feed = caller == object
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
@@ -586,22 +582,22 @@
 			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
-	if(can_feed(caller,defer_object))
-		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,.proc/feed,caller,defer_object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
+	if(can_feed(caller,object))
+		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,.proc/feed,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
 		return TRUE
 
-	if(allow_reagent_transfer_from && is_item(defer_object) && defer_object.reagents)
-		var/obj/item/I = defer_object
+	if(allow_reagent_transfer_from && is_item(object) && object.reagents)
+		var/obj/item/I = object
 		if(I.allow_reagent_transfer_to)
 			if(reagents.volume_current <= 0)
 				caller.to_chat(span("warning","\The [src.name] is empty!"))
 				return FALSE
-			if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
-				caller.to_chat(span("warning","\The [defer_object.name] is full!"))
+			if(object.reagents.volume_current >= object.reagents.volume_max)
+				caller.to_chat(span("warning","\The [object.name] is full!"))
 				return FALSE
-			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount, caller = caller)
-			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
+			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount, caller = caller)
+			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
 			//TODO: Add liquid transfer sounds.
 		return TRUE
 

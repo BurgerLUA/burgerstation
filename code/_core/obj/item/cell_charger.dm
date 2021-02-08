@@ -35,7 +35,7 @@
 
 /obj/item/cell_charger/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(battery && is_inventory(object))
 		INTERACT_CHECK

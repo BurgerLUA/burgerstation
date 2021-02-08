@@ -56,3 +56,23 @@
 		"ears" = COLOR_BLACK,
 		"stripe" = COLOR_BLACK
 	)
+
+/obj/item/clothing/head/helmet/polymorphic/reinforced
+	name = "reinforced protective helmet"
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_CLUB,
+		LASER = AP_AXE,
+		ARCANE = -AP_CLUB,
+		BOMB = AP_AXE,
+		PAIN = AP_CLUB
+	)
+
+/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops
+	name = "NT ops reinforced protective helmet"
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"ears" = COLOR_BLACK,
+		"stripe" = COLOR_BLACK
+	)

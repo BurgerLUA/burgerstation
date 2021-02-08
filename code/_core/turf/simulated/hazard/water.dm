@@ -7,6 +7,7 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	footstep = /footstep/water
+	fishing_rewards = /loot/fishing/river
 
 	density_north = TRUE
 	density_east = TRUE
@@ -22,3 +23,7 @@
 
 	water_reagent = /reagent/nutrition/water
 	reagents = /reagent_container/turf/
+
+/turf/simulated/hazard/water/sea
+	name = "saltwater"
+	fishing_rewards = /loot/fishing/sea

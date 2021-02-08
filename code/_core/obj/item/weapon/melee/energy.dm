@@ -59,7 +59,6 @@
 /obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 
-	object = object.defer_click_on_object(location,control,params)
 
 	if(is_item(object) && length(polymorphs))
 		var/obj/item/I = object
@@ -67,8 +66,8 @@
 
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			var/choice = input("What do you want to change the color of \the [src.name]?","Color Selection") as null|anything in polymorphs
 
+			var/choice = input("What do you want to change the color of \the [src.name]?","Color Selection") as null|anything in polymorphs
 			if(!choice)
 				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
 				return TRUE
@@ -123,9 +122,9 @@
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play('sound/weapons/energy/energy_on.ogg',src)
+			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play('sound/weapons/energy/energy_off.ogg',src)
+			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
 	return .
 
 
@@ -242,8 +241,8 @@
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play('sound/weapons/magic/ash.ogg',src)
+			play_sound('sound/weapons/magic/ash.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play('sound/weapons/magic/ash.ogg',src)
+			play_sound('sound/weapons/magic/ash.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	return .

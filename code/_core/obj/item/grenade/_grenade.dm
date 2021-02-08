@@ -128,7 +128,7 @@
 
 /obj/item/grenade/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(!open)
 		return ..()

@@ -14,7 +14,10 @@
 	for(var/k in possible)
 		var/obj/item/I = k
 		var/value = initial(I.value)
-		if(value <= 1)
+		var/value_burgerbux = initial(I.value_burgerbux)
+		if(value < 0)
+			continue
+		if(value_burgerbux > 0)
 			continue
 		loot_table[k] = max(10,sin(value*(90/500))*100)
 

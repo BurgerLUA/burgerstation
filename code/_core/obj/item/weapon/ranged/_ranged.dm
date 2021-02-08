@@ -92,7 +92,7 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(istype(object,/obj/item/attachment))
 		INTERACT_CHECK
@@ -205,7 +205,7 @@
 		return ..()
 
 	if(istype(object,/obj/parallax))
-		object = object.defer_click_on_object(location,control,params)
+		object = object.defer_click_on_object(caller,location,control,params) //Only time defer_click_on_object should be used like this.
 
 	if(object.z && shoot(caller,object,location,params))
 		return TRUE
@@ -218,7 +218,7 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)
-		play(pick(empty_sounds),T,range_max = 5)
+		play_sound(pick(empty_sounds),T,range_max = VIEW_RANGE*0.5)
 		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	return FALSE
@@ -239,7 +239,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	if(length(shoot_sounds_to_use))
 		var/turf/T = get_turf(src)
-		play(pick(shoot_sounds_to_use),T)
+		play_sound(pick(shoot_sounds_to_use),T)
 		if(shoot_alert_to_use)
 			create_alert(VIEW_RANGE,T,caller,shoot_alert_to_use)
 		return TRUE
@@ -379,6 +379,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			if(P && P.client && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
+					log_error("Warning: [caller] had no screen loc parsed.")
 					return TRUE
 				var/turf/caller_turf = get_turf(caller)
 				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
@@ -392,6 +393,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 					else if(max_bursts_to_use > 0)
 						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
 						current_bursts = 0
+				else
+					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")
 			else if(max_bursts_to_use > 0)
 				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
 				current_bursts = 0
@@ -429,8 +432,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (VIEW_RANGE * TILE_SIZE)
 		if(ismob(caller))
 			var/mob/M = caller
-			target_fake_x += M.client.pixel_x
-			target_fake_y += M.client.pixel_y
+			if(M.client)
+				target_fake_x = caller.x*TILE_SIZE + screen_loc_parsed[1] - (M.client.view * TILE_SIZE)
+				target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (M.client.view * TILE_SIZE)
+				target_fake_x += M.client.pixel_x
+				target_fake_y += M.client.pixel_y
 	else
 		target_fake_x = target.x*TILE_SIZE + icon_pos_x
 		target_fake_y = target.y*TILE_SIZE + icon_pos_y

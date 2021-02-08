@@ -35,7 +35,7 @@
 
 	if(!broken)
 		var/turf/T = get_turf(src)
-		play('sound/effects/crate_break.ogg',T)
+		play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)
 		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 		broken = TRUE
 		update_sprite()
@@ -52,7 +52,7 @@
 /obj/item/cross/Cross(var/atom/movable/O)
 
 	if(O.health && icon_state == initial(icon_state))
-		var/list/defense = O.health.get_defense()
+		var/list/defense = O.health.get_defense(ignore_luck=TRUE)
 		if(defense[HOLY] - defense[DARK] < 0)
 			return FALSE
 

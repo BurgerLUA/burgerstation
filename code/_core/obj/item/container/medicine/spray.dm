@@ -39,7 +39,7 @@
 
 /obj/item/container/spray/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	if(is_advanced(object) && is_advanced(caller))

@@ -135,7 +135,7 @@
 
 
 /mob/living/simple/herald/pre_death()
-	play('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
+	play_sound('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
 	return ..()
 
 /mob/living/simple/herald/handle_alpha()

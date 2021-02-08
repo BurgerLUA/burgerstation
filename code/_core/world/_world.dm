@@ -52,6 +52,10 @@ var/global/world_state = STATE_STARTING
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
 
+	var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
+	if(player_limit_config > 0)
+		status = "[status]<br>[length(all_clients)]/[player_limit_config] players."
+
 	return TRUE
 
 
@@ -105,7 +109,7 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/save()
 	save_all_globals()
-	save_all_mechs()
+	//save_all_mechs()
 	save_all_globals()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
@@ -117,7 +121,7 @@ var/global/world_state = STATE_STARTING
 		P.to_chat(span("notice","Your character was automatically saved."))
 		sleep(-1)
 	var/chosen_sound = pick(SSsound.round_end_sounds)
-	play(chosen_sound,all_mobs_with_clients)
+	play_sound_global(chosen_sound,all_mobs_with_clients)
 	sleep(100)
 	return TRUE
 
@@ -143,7 +147,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
 
-	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
+	play_sound_global('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
 	SSvote.create_vote(/vote/map)
 

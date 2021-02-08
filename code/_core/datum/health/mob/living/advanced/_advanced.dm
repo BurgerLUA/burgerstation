@@ -162,7 +162,7 @@
 	return .
 
 
-/health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object)
+/health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	if(!is_advanced(owner))
 		return ..()
@@ -192,7 +192,17 @@
 				if(IS_INFINITY(C_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
 					.[damage_type] = C_defense_rating[damage_type]
 					continue
-				.[damage_type] += FLOOR(C_defense_rating[damage_type] * (C.quality/100),1)
+				var/clothing_defense = C_defense_rating[damage_type]
+				if(clothing_defense > 0)
+					clothing_defense *= C.quality/100
+				else if(clothing_defense < 0)
+					clothing_defense *= max(0,2 - (C.quality/100))
+				if(!ignore_luck)
+					if(C.luck > 50 && prob(C.luck-50))
+						clothing_defense *= 2
+					else if(C.luck < 50 && prob(50-C.luck))
+						clothing_defense *= 0.5
+				.[damage_type] += FLOOR(clothing_defense,1)
 
 	if((A.attack_flags & CONTROL_MOD_BLOCK) && (turn(get_dir(attacker,owner),180) & owner.dir)) //Do you even block?
 

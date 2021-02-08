@@ -79,33 +79,33 @@
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		defer_object = defer_object.get_object_to_damage(caller,src,params,TRUE,TRUE)
+		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
-	if(!defer_object.reagents)
+	if(!object.reagents)
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
-	if(istype(defer_object,/obj/item/container/))
-		inject(caller,defer_object,injecting ? inject_amount : -draw_amount)
+	if(istype(object,/obj/item/container/))
+		inject(caller,object,injecting ? inject_amount : -draw_amount)
 		return TRUE
 
-	if(can_inject(caller,defer_object))
+	if(can_inject(caller,object))
 
 		var/self_inject = FALSE
 
-		var/real_object_name = defer_object.name
+		var/real_object_name = object.name
 
-		if(is_organ(defer_object) && is_living(object))
+		if(is_organ(object) && is_living(object))
 			real_object_name = "[object.name]'s [object.name]"
 			if(object == caller)
 				self_inject = TRUE
@@ -194,6 +194,14 @@
 	injecting = TRUE
 
 	value = 30
+
+/obj/item/container/syringe/medipen/adminomnizine
+	name = "god's medipen"
+	value_burgerbux = 1000
+
+/obj/item/container/syringe/medipen/adminomnizine/Generate()
+	reagents.add_reagent(/reagent/medicine/adminomnizine,reagents.volume_max)
+	return ..()
 
 /obj/item/container/syringe/medipen/bicaridine
 	name = "anti-brute medipen"

@@ -234,9 +234,49 @@
 		L.brute_regen_buffer += 3*.
 		L.burn_regen_buffer += 3*.
 		L.tox_regen_buffer += 3*.
-
+		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
 
 	return .
+
+/reagent/medicine/adminomnizine
+	name = "Adminomnizine"
+	desc = "Heals everything. EVERYTHING."
+	desc_extended = "Works just as good when consumed. Doesn't matter anyways because THIS IS THE STUFF OF THE GODS."
+	color = "#FFFFFF"
+	alpha = 255
+
+	flavor = "god"
+
+	metabolism_blood = 1
+	metabolism_stomach = 1
+	experience_per_unit = 10
+
+	value = 5000
+
+/reagent/medicine/adminomnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer = max(L.brute_regen_buffer,500*.)
+		L.burn_regen_buffer = max(L.burn_regen_buffer,500*.)
+		L.tox_regen_buffer = max(L.tox_regen_buffer,500*.)
+		L.health_regen_delay = 0
+
+	return .
+
+/reagent/medicine/adminomnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer = max(L.brute_regen_buffer,500*.)
+		L.burn_regen_buffer = max(L.burn_regen_buffer,500*.)
+		L.tox_regen_buffer = max(L.tox_regen_buffer,500*.)
+		L.health_regen_delay = 0
+
+	return .
+
 
 
 /reagent/medicine/silver_sulfadiazine

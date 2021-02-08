@@ -35,9 +35,9 @@
 
 /obj/item/weapon/melee/torch/update_atom_light()
 	if(enabled)
-		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
+		set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	else
-		set_light(FALSE)
+		set_light_sprite(FALSE)
 	return TRUE
 
 /obj/item/weapon/melee/torch/update_icon()
@@ -111,7 +111,7 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	desired_light_range = VIEW_RANGE
+	desired_light_range = VIEW_RANGE*0.75
 	desired_light_power = 0.6
 	desired_light_color = "#FFF0C6"
 	desired_light_angle = LIGHT_NARROW

@@ -96,7 +96,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	. = ..()
 
-	play('sound/voice/xeno/queen_death.ogg',get_turf(src))
+	play_sound('sound/voice/xeno/queen_death.ogg',get_turf(src))
 
 	tracked_xeno_queen = null
 
@@ -106,7 +106,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	var/obj/marker/map_node/N_end = find_closest_node(src)
 
-	play('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 
 	for(var/mob/living/L in range(src,VIEW_RANGE))
 		if(L.loyalty_tag == src.loyalty_tag)

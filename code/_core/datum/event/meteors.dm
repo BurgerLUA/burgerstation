@@ -17,7 +17,7 @@
 /event/meteors/New()
 
 	for(var/area/A in world)
-		if(A.z < Z_LEVEL_MISSION)
+		if(A.area_identifier != "Mission")
 			continue
 		if(A.interior)
 			continue
@@ -42,7 +42,7 @@
 			return FALSE
 		var/area/A = pick(valid_areas)
 		announce_areas |= A.name
-		for(var/turf/T in A.contents)
+		for(var/turf/simulated/T in A.contents)
 			valid_turfs |= T
 
 	if(!length(valid_turfs))

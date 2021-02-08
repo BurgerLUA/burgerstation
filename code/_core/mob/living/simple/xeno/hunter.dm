@@ -64,7 +64,7 @@
 
 	health_base = 150
 
-	movement_delay = DECISECONDS_TO_TICKS(AI_TICK)
+	movement_delay = 1
 
 	armor_base = list(
 		BLADE = AP_DAGGER,

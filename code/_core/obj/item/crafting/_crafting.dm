@@ -68,7 +68,7 @@
 			opening = FALSE
 
 	if(opening)
-		play(pick(inventory_sounds),src)
+		play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
 
 	for(var/obj/hud/button/crafting/B in A.buttons)
 		if(opening)

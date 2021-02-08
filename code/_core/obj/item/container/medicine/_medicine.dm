@@ -66,7 +66,7 @@
 	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_loss(BURN)*heal_multiplier)
 
 	if(brute_to_heal || burn_to_heal)
-		A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal)
+		. += A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal)
 
 	if(.)
 		if(is_organ(A) && is_living(A.loc))
@@ -121,7 +121,7 @@
 
 /obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	var/self_treat = caller == object

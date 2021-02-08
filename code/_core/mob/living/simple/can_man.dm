@@ -86,17 +86,15 @@
 
 /mob/living/simple/can_man/get_movement_delay()
 
-	. = ..()
-
 	if(charge_steps)
-		. = DECISECONDS_TO_TICKS(AI_TICK)
+		return 1 //Max
 
-	return .
+	return ..()
 
 /mob/living/simple/can_man/post_move(var/atom/old_loc)
 
 	if(charge_steps)
-		play('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
+		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 
 	return ..()
 

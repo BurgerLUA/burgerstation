@@ -131,12 +131,12 @@
 	if(caller == src)
 		return ..()
 
-	object = object.defer_click_on_object(location,control,params)
+	DEFER_OBJECT
 
-	if(is_item(object) && is_living(caller))
+	if(is_item(defer_object) && is_living(caller))
 		var/mob/living/L = caller
 		if(L.intent != INTENT_HARM)
-			var/obj/item/I = object
+			var/obj/item/I = defer_object
 			if(I.flags_tool & FLAG_TOOL_WRENCH)
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
@@ -162,7 +162,7 @@
 				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
 				return TRUE
 
-	if(is_inventory(object) )
+	if(is_inventory(object))
 		if(!can_enter_vehicle(caller))
 			return TRUE
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/enter_vehicle,caller)

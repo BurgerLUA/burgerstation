@@ -3,6 +3,8 @@
 	desc = "What the fuck is this?"
 	var/label
 
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
+
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
 	plane = PLANE_OBJ
@@ -47,27 +49,9 @@
 
 	var/attack_next = -1
 
-	var/light_sprite_range = 0
-	var/light_sprite_alpha = 0
-
 	var/listener = FALSE //Setting this to true doesn't make it listen after it's been initialized.
 
 	var/dir_offset = TILE_SIZE
-
-/atom/proc/set_light_sprite(var/desired_range,var/desired_alpha)
-
-	var/update_overlays = FALSE
-
-	if(isnum(desired_range))
-		light_sprite_range = desired_range
-		update_overlays = TRUE
-
-	if(isnum(desired_alpha))
-		light_sprite_alpha = desired_alpha
-		update_overlays = TRUE
-
-	if(update_overlays)
-		update_sprite()
 
 /atom/proc/update_name(var/desired_name)
 	name = desired_name
@@ -167,7 +151,7 @@
 
 	return .
 
-/atom/proc/defer_click_on_object(location,control,params)
+/atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src
 
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.

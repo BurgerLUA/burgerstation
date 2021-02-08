@@ -42,7 +42,7 @@
 /obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(istype(object,/obj/item/material/sheet))
 		var/obj/item/material/sheet/S = object

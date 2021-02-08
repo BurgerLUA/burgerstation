@@ -8,7 +8,10 @@
 	for(var/k in subtypesof(/obj/item)) //Is this a good idea? Probably not.
 		var/obj/item/I = k
 		var/value = initial(I.value)
-		if(value <= 1)
+		var/value_burgerbux = initial(I.value_burgerbux)
+		if(value <= 0)
+			continue
+		if(value_burgerbux > 0)
 			continue
 		loot_table[k] = CEILING(100/value,1)
 

@@ -138,7 +138,7 @@
 			cooked_icon_state = "bread_flat"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
-				L.to_chat(span("notice","\The [L.name] flattens \the [src.name]."),span("notice","You flatten \the [src.name]."))
+				L.visible_message(span("notice","\The [L.name] flattens \the [src.name]."),span("notice","You flatten \the [src.name]."))
 			update_sprite()
 
 	return TRUE

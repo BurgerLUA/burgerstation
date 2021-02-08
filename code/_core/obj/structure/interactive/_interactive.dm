@@ -55,7 +55,7 @@ obj/structure/interactive/proc/do_repair(var/mob/living/advanced/caller,var/obj/
 
 obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(repair_flag && is_item(object) && is_advanced(caller) && can_repair(caller,object))
 		INTERACT_CHECK
@@ -64,6 +64,7 @@ obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,lo
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_repair,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_repair,caller,object)
 		return TRUE
+
 	return ..()
 
 obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/object,location,control,params)

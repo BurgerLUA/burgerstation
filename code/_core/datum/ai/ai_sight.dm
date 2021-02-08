@@ -22,9 +22,6 @@
 	else
 		distance = get_dist(objective_attack,A)
 
-	if(distance <= 0)
-		return 0
-
 	if(distance <= 1)
 		return 100
 
@@ -53,9 +50,19 @@
 		lightness *= 2
 
 	var/atom_alpha = A.alpha
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		atom_alpha += 50
-		atom_alpha *= 2
+	switch(alert_level)
+		if(ALERT_LEVEL_COMBAT)
+			atom_alpha += 50
+			atom_alpha *= 2
+			lightness *= 2
+		if(ALERT_LEVEL_CAUTION)
+			atom_alpha += 25
+			atom_alpha *= 1.5
+			lightness *= 1.5
+		if(ALERT_LEVEL_NOISE)
+			atom_alpha += 10
+			atom_alpha *= 1.25
+			lightness *= 1.25
 
 	if(A == objective_attack)
 		atom_alpha += 50

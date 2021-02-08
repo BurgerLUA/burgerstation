@@ -5,11 +5,13 @@
 	name = "Syndicate Ship"
 	icon_state = "syndicate"
 
+	sound_environment = ENVIRONMENT_STONEROOM
+
 /area/lavaland/interior/base
 	name = "\improper Lavaland Base"
 	icon_state = "ship"
 
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM
 
 	ambient_sound = 'sound/ambient/station_loop.ogg'
 	random_sounds = list(
@@ -36,7 +38,7 @@
 	name = "\improper Hallway"
 	icon_state = "hall"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_HANGAR
 
 /area/lavaland/interior/base/hall/north
 	name = "\improper North Hallway"
@@ -62,11 +64,14 @@
 	name = "\improper Dorms Hallway"
 	icon_state = "dorms_hall"
 
+	sound_environment = ENVIRONMENT_ROOM
+
+
 /area/lavaland/interior/base/bathrooms
 	name = "\improper Bathrooms"
 	icon_state = "bath"
 
-	sound_environment = ENVIRONMENT_BATHROOM
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/lavaland/interior/base/cafe
 	name = "\improper Cafe"
@@ -85,12 +90,12 @@
 	name = "\improper Dressing Room"
 	icon_state = "dressing"
 
-	sound_environment = ENVIRONMENT_BATHROOM
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/lavaland/interior/base/dorm
 	name = "\improper Dorm"
 	icon_state = "dorm"
-	sound_environment = ENVIRONMENT_BATHROOM
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/lavaland/interior/base/help_desk
 	name = "\improper Help Desk"
@@ -160,7 +165,7 @@
 	name = "\improper Hanger"
 	icon_state = "hanger"
 
-	sound_environment = ENVIRONMENT_HANGAR
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lavaland/interior/base/cargo
 	name = "\improper Cargo"
@@ -177,7 +182,7 @@
 		'sound/ambient/maint_2.ogg'
 	)
 
-	sound_environment = ENVIRONMENT_ALLEY
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/lavaland/interior/base/maint/north
 	name = "\improper North Maintenance"

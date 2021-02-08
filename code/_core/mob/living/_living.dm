@@ -240,7 +240,7 @@
 
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
-	play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
+	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	visible_message(span("danger","\The [src.name] is violently crushed!"))
 	if(blood_type)
 		var/reagent/R = REAGENT(blood_type)
@@ -265,16 +265,10 @@
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
-/mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
-	if(object && is_atom(object))
-		var/atom/A = object
-		A.on_mouse_wheel(src,delta_x,delta_y,location,control,params)
-
-	return TRUE
-
 /mob/living/proc/dust()
 	new /obj/effect/temp/death(src.loc,30)
 	qdel(src)
+	return TRUE
 
 /mob/living/Destroy()
 

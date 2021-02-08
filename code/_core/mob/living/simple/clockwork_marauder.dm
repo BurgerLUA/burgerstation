@@ -9,6 +9,7 @@
 	stamina_base = 500
 	mana_base = 100
 
+	ai = /ai/simple/
 	damage_type = /damagetype/melee/spear/ratvar/
 	class = /class/clockwork_marauder
 

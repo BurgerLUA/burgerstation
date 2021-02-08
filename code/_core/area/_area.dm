@@ -10,7 +10,7 @@
 
 	var/flags_area = FLAG_AREA_NONE
 
-	var/sound_environment = ENVIRONMENT_GENERIC
+	var/sound_environment = ENVIRONMENT_NONE
 
 	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.
 	var/trackable = FALSE //Trackable area by the game.
@@ -91,10 +91,13 @@
 		average_y += T.y
 		area_count += 1
 
-	average_x = CEILING(average_x/area_count,1)
-	average_y = CEILING(average_y/area_count,1)
-
-	sound_environment = ENVIRONMENT_GENERIC //I know this is shitcode but the test is soon and I need to go through every single ambient effect and gauge what's best.
+	if(!area_count)
+		log_error("Warning: [src.get_debug_name()] had no turf contents.")
+		average_x = 1
+		average_y = 1
+	else
+		average_x = CEILING(average_x/area_count,1)
+		average_y = CEILING(average_y/area_count,1)
 
 	return ..()
 

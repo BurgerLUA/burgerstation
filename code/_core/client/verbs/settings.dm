@@ -32,11 +32,13 @@
 
 /client/verb/set_fps(var/desired_fps as num)
 	set hidden = TRUE
-	var/old_fps = src.fps
-	desired_fps = clamp(desired_fps,30,60)
+	var/old_fps = clamp(src.fps,FPS_SERVER,FPS_CLIENT)
+	desired_fps = clamp(desired_fps,FPS_SERVER,FPS_CLIENT)
+	to_chat(span("notice","Your FPS was changed from [old_fps] to [desired_fps]."))
+	if(desired_fps == FPS_SERVER)
+		desired_fps = 0
 	src.fps = desired_fps
 	settings.change_setting("fps_client",desired_fps)
-	to_chat(span("notice","Your FPS was changed from [old_fps] to [desired_fps]."))
 
 /client/verb/set_view_range(var/desired_view_range as num)
 	set hidden = TRUE

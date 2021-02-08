@@ -10,7 +10,7 @@
 
 /mob/living/advanced/player/post_death()
 
-	play(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src)
+	play_sound_target(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src,channel=SOUND_CHANNEL_MUSIC)
 
 	var/list/people_who_contributed = list()
 	var/list/people_who_killed = list()
@@ -31,14 +31,12 @@
 	if(!length(people_who_killed))
 		people_who_killed = people_who_contributed
 
-	/*
 	var/date = get_date()
 	var/time = get_time()
 
-
-	if(last_words && length(people_who_killed) && people_who_killed[1] && people_who_killed[1] != src)
-		SSsoapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
-	*/
+	if(prob(25) && last_words && length(people_who_killed) && people_who_killed[1] && people_who_killed[1] != src)
+		var/obj/structure/interactive/soapstone_message/SM = SSsoapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
+		SM.invisibility = INVISIBLITY_GHOST
 
 	/*
 	if(ENABLE_KARMA)

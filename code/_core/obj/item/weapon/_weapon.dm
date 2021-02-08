@@ -7,6 +7,7 @@
 
 	var/override_icon_state = FALSE
 	var/override_icon_state_held = FALSE
+	enable_held_icon_states = TRUE
 
 	ignore_other_slots = TRUE
 

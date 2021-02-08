@@ -16,11 +16,14 @@
 /obj/item/rcd/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("rcd_disk")
+	SAVEVAR("matter_current")
 	return .
 
 /obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("rcd_disk")
+	LOADVAR("matter_current")
+	update_sprite()
 	return .
 
 /obj/item/rcd/Generate()
@@ -52,7 +55,7 @@
 
 /obj/item/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	if(!isturf(object)) object = get_turf(object)

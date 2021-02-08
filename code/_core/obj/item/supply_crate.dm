@@ -38,11 +38,11 @@
 /obj/item/supply_crate/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/turf/T = get_turf(src)
-	play('sound/effects/crate_break.ogg',T)
+	play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(loot)
-		var/list/spawned_loot = CREATE_LOOT(loot,src.loc)
+		var/list/spawned_loot = CREATE_LOOT(loot,T)
 		for(var/k in spawned_loot)
 			var/obj/item/I = k
 			animate(I,pixel_x = rand(-8,8),pixel_y = rand(-8,8),time=5)

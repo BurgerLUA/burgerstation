@@ -4,10 +4,10 @@
 	icon = 'icons/obj/item/storage/boxes.dmi'
 	icon_state = "glovebox"
 
-	size = 2
+	size = SIZE_2
 
 	is_container = TRUE
-	container_max_size = 1
+	container_max_size = SIZE_1
 
 	dynamic_inventory_count = 2
 

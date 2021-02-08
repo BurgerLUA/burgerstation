@@ -13,7 +13,7 @@
 
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(!is_item(object) || object == src)
 		return ..()
@@ -58,4 +58,4 @@
 	caller.to_chat(span("warning","\The [src] is spent."))
 	qdel(src)
 
-	return ..()
+	return TRUE

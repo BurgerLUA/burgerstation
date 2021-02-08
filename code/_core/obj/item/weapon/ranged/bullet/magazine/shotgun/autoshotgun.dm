@@ -4,7 +4,7 @@
 	desc_extended = "The 20 Gauge Bulldog is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bulldog\" for its bullpup design as well as the fact that it kicks like one too."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
 	icon_state = "inventory"
-	value = 210
+	value = 400
 
 	shoot_delay = 2
 
@@ -16,11 +16,8 @@
 
 	view_punch = 18
 
-
-
 	size = SIZE_4
 	weight = 16
-
 
 	heat_per_shot = 0.05
 	heat_max = 0.15

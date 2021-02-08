@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(client)
 
 	var/advanced_ticks = 0
 
-	cpu_usage_max = 0 //0 Means no limits.
-	tick_usage_max = 0 //0 Means no limits.
+	cpu_usage_max = 0 //Uncapped.
+	tick_usage_max = 0 //Uncapped.
 
 	use_time_dialation = FALSE
 

@@ -4,5 +4,3 @@
 	trackable = TRUE
 
 	area_identifier = "Mission"
-
-	sound_environment = ENVIRONMENT_FOREST

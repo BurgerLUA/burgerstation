@@ -11,6 +11,11 @@
 
 	var/atom/old_attack = objective_attack
 
+	if(old_attack == A)
+		return FALSE
+
+	attackers -= old_attack
+
 	if(A) owner.set_dir(get_dir(owner,A))
 
 	if(objective_investigate)
@@ -70,7 +75,7 @@
 
 	return TRUE
 
-/ai/proc/handle_objectives(var/tick_rate=AI_TICK)
+/ai/proc/handle_objectives(var/tick_rate)
 
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE

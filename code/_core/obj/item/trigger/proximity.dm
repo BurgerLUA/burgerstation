@@ -39,7 +39,7 @@
 	start_thinking(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
-	play('sound/weapons/timer/arm.ogg',T)
+	play_sound('sound/weapons/timer/arm.ogg',T,range_max=VIEW_RANGE*0.5)
 	create_alert(VIEW_RANGE,T,last_interacted,ALERT_LEVEL_NOISE)
 	return ..()
 
@@ -54,20 +54,19 @@
 		if(time_set >= 0 && (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)
 			var/turf/T = get_turf(src)
 			if(T)
-				play('sound/weapons/timer/beep.ogg',T)
+				play_sound('sound/weapons/timer/beep.ogg',T,range_max=VIEW_RANGE*0.25)
 				create_alert(VIEW_RANGE,T,last_interacted,ALERT_LEVEL_NOISE)
 
 		if(time_set < 0 && !(time_set % 10))
 			for(var/mob/living/L in view(get_turf(src),2))
-				CHECK_TICK(100,FPS_SERVER)
 				loc.trigger(last_interacted,src,-1,-1)
-				play('sound/weapons/timer/beep.ogg',src)
+				play_sound('sound/weapons/timer/beep.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)
 				flick("motion_trigger",src)
 				break
 
 	return active
 
-/obj/item/device/proximity/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/proximity/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = delta_y ? 1 : -1
 

@@ -35,7 +35,8 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_ALL
 
-	value = 8000
+	value = 20000
+	value_burgerbux = 20000
 
 	item_slot = SLOT_HEAD | SLOT_FACE
 

@@ -52,7 +52,3 @@
 		if(51 to item_count_max)
 			icon_state = "4"
 	return ..()
-
-/obj/item/currency/prize_ticket/max/Generate()
-	item_count_current = item_count_max
-	return ..()

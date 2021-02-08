@@ -169,6 +169,7 @@
 /obj/structure/interactive/vending/robotics
 	name = "robotics vendor"
 
+/*
 /obj/structure/interactive/vending/robotics/mech_gun_fabricator
 	name = "mech fabricator"
 	icon_state = "mech"
@@ -206,6 +207,7 @@
 		/obj/item/weapon/melee/tool/multitool,
 		/obj/item/powercell/vehicle
 	)
+*/
 
 /obj/structure/interactive/vending/chaplain/wardrobe
 	name = "chaplain wardrobe vendor"

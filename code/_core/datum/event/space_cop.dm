@@ -1,7 +1,7 @@
 /event/space_cop
 	name = "Space Cop Investigation"
 
-	probability = 10 //relative
+	probability = 0 //disabled for now
 
 	occurances_max = 1
 

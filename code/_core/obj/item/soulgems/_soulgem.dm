@@ -38,6 +38,23 @@
 /obj/item/soulgem/get_examine_list(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 
+/obj/item/soulgem/update_sprite()
+	name = initial(name)
+	switch(total_charge)
+		if(0)
+			name = "empty [name]"
+		if(0 to SOUL_SIZE_COMMON)
+			name = "common [name]"
+		if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
+			name = "uncommon [name]"
+		if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
+			name = "rare [name]"
+		if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
+			name = "mystic [name]"
+		if(SOUL_SIZE_MYSTIC to INFINITY)
+			name = "godly [name]"
+	return ..()
+
 /obj/item/soulgem/update_icon()
 	if(total_charge)
 		icon_state = "[initial(icon_state)]_1"
@@ -47,7 +64,7 @@
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(is_staff(object))
 

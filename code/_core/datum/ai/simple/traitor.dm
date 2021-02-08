@@ -13,7 +13,7 @@
 
 	assistance = 0
 
-/ai/traitor/handle_objectives(var/tick_rate=AI_TICK)
+/ai/traitor/handle_objectives(var/tick_rate)
 
 	if(owner.iff_tag == "NanoTrasen" && prob(10))
 		var/living_count = 0

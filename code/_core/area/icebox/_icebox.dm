@@ -3,8 +3,6 @@
 	trackable = TRUE
 	area_identifier = "Mission"
 
-	sound_environment = ENVIRONMENT_ROOM
-
 /area/box/exterior
 	name = "\improper B-0X Exterior"
 	icon_state = "snow"
@@ -18,14 +16,12 @@
 
 	tracks = TRACKS_MOUNTAIN
 
-	sound_environment = ENVIRONMENT_FOREST
+	sound_environment = ENVIRONMENT_DIZZY
 
 	interior = FALSE
 
 /area/box/interior/
 	interior = TRUE
-
-	sound_environment = ENVIRONMENT_ROOM
 
 /area/box/interior/caves
 	name = "\improper Unexplored Caves"
@@ -37,11 +33,13 @@
 	)
 	cheese_type = /reagent/nutrition/cheese/gruyere
 
-	sound_environment = ENVIRONMENT_CAVE
+	sound_environment = ENVIRONMENT_QUARRY
 
 /area/box/interior/syndicate_shuttle
 	name = "\improper UNKNOWN SHIP"
 	icon_state = "syndicate"
+
+	sound_environment = ENVIRONMENT_STONE_CORRIDOR
 
 /area/box/interior/station
 	name = "\improper B-0X Station Interior"
@@ -64,14 +62,14 @@
 		'sound/ambient/station_13.ogg'
 	)
 
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM
 
 
 /area/box/interior/station/hall
 	name = "\improper B-0X Hallway"
 	icon_state = "hall"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_HANGAR
 
 /area/box/interior/station/hall/north
 	name = "\improper B-0X North Hallway"
@@ -101,7 +99,7 @@
 	name = "\improper B-0X Bathrooms"
 	icon_state = "bath"
 
-	sound_environment = ENVIRONMENT_BATHROOM
+	sound_environment = ENVIRONMENT_ROOM
 
 /area/box/interior/station/hydroponics
 	name = "\improper B-0X Hydroponics"
@@ -148,7 +146,7 @@
 	name = "\improper B-0X Arrivals Dock"
 	icon_state = "ariv"
 
-	sound_environment = ENVIRONMENT_HANGAR
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/box/interior/station/chapel
 	name = "\improper B-0X Chapel"
@@ -183,7 +181,7 @@
 	name = "\improper B-0X Hanger"
 	icon_state = "hanger"
 
-	sound_environment = ENVIRONMENT_HANGAR
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/box/interior/station/cargo
 	name = "\improper B-0X Cargo"
@@ -203,7 +201,7 @@
 		'sound/ambient/maint_2.ogg'
 	)
 
-	sound_environment = ENVIRONMENT_ALLEY
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/box/interior/station/maint/north
 	name = "\improper B-0X North Maintenance"

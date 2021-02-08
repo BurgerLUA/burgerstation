@@ -49,3 +49,11 @@
 		"detail" = COLOR_GREY_DARK,
 		"buckle" = COLOR_SILVER
 	)
+
+/obj/item/clothing/back/storage/satchel/poly/ntops
+	polymorphs = list(
+		"body" = COLOR_WHITE,
+		"straps" = COLOR_WHITE,
+		"detail" = COLOR_BLACK,
+		"buckle" = COLOR_SILVER
+	)

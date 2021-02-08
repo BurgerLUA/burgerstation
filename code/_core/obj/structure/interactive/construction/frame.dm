@@ -59,7 +59,7 @@
 
 /obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(is_item(object))
 		var/obj/item/I = object

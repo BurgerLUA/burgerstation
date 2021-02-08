@@ -86,7 +86,7 @@ var/global/list/all_shuttle_controlers = list()
 	time = 0
 
 	if(start_sound)
-		play(start_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+		play_sound(start_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 		if(last_caller)
 			create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 
@@ -155,7 +155,7 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_source,transit_bluespace))
 				return FALSE
 			if(progress_sound)
-				play(progress_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+				play_sound(progress_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 				if(last_caller)
 					create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
@@ -175,7 +175,7 @@ var/global/list/all_shuttle_controlers = list()
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 			if(end_sound)
-				play(end_sound,src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+				play_sound(end_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 				if(last_caller)
 					create_alert(VIEW_RANGE,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
@@ -183,13 +183,7 @@ var/global/list/all_shuttle_controlers = list()
 			transit_source = null
 			transit_target = null
 
-	var/area/A = get_area(src)
-
-	for(var/obj/structure/interactive/status_display/shuttle/SD in A.contents)
-		SD.set_text(display)
-
-	if(status_id)
-		set_status_display(status_id,display)
+	if(status_id) set_status_display(status_id,display)
 
 	return TRUE
 

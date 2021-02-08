@@ -76,7 +76,7 @@
 
 /mob/living/simple/colossus/pre_death()
 	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)
-	play('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
+	play_sound('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
 	return ..()
 
 /mob/living/simple/colossus/post_death()

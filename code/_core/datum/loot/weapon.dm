@@ -10,22 +10,6 @@
 	loot_count = 2
 	chance_none = 25
 
-
-/loot/weapon/deagle
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,
-		/obj/item/magazine/pistol_50,
-		/obj/item/magazine/pistol_50,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle = 1,
-		/obj/item/magazine/pistol_50 = 4
-	)
-	loot_count = 4
-	chance_none = 25
-
 /loot/weapon/dynamic
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic,

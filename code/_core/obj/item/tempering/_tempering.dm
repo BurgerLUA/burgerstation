@@ -14,8 +14,13 @@
 
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
+
+
 	if(is_item(object))
 		if(can_temper(caller,object))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
 			on_temper(caller,object)
 			return TRUE
 

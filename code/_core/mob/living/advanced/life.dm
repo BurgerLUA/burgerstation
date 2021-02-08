@@ -14,12 +14,14 @@
 
 	return .
 
+/*
 /mob/living/advanced/pre_death()
 
 	if(driving)
 		driving.exit_vehicle(src,get_turf(driving))
 
 	return ..()
+*/
 
 mob/living/advanced/revive()
 
@@ -52,8 +54,7 @@ mob/living/advanced/revive()
 	for(var/k in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[k]
 		CHECK_TICK(75,FPS_SERVER*2)
-		if(O.has_life)
-			O.on_life()
+		if(O.has_life) O.on_life()
 
 	return TRUE
 

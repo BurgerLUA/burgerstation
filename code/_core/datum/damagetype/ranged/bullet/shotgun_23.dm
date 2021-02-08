@@ -23,7 +23,7 @@
 		PIERCE = AP_CLUB*0.25
 	)
 
-	falloff = VIEW_RANGE*0.5
+	falloff = 3
 
 /damagetype/ranged/bullet/shotgun_23/slug
 	name = "shotgun slug"

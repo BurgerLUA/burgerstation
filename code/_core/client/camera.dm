@@ -12,25 +12,10 @@
 
 	return TRUE
 
-/client/MouseWheel(object,delta_x,delta_y,location,control,params)
-
-	var/list/aug = params2list(params)
-
-	if(mob && (mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
-		var/change_in_screen = delta_y > 1 ? 1 : -1
-		if(precise_zoom)
-			change_in_screen *= 0.1
-		update_zoom(zoom_level + change_in_screen)
-		return TRUE
-
-	mob.do_mouse_wheel(object,delta_x,delta_y,location,control,aug)
-
-	return TRUE
-
 /client/proc/update_view_range()
 
 	if(settings && settings.loaded_data["view_range"])
-		view = clamp(settings.loaded_data["view_range"],4,VIEW_RANGE)
+		view = clamp(settings.loaded_data["view_range"],8,VIEW_RANGE)
 	else
 		view = VIEW_RANGE
 
@@ -70,7 +55,7 @@
 	var/final_pixel_x = desired_pixel_x + zoom_offset_x + desired_recoil_x + desired_punch_x
 	var/final_pixel_y = desired_pixel_y + zoom_offset_y + desired_recoil_y + desired_punch_y
 
-	if(istype(mob.loc,/obj/projectile/))
+	if(mob && istype(mob.loc,/obj/projectile/))
 		var/obj/projectile/P = mob.loc
 		final_pixel_x = P.pixel_x_float
 		final_pixel_y = P.pixel_y_float

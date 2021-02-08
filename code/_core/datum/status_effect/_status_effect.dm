@@ -81,6 +81,16 @@
 
 	affects_dead = FALSE
 
+/status_effect/staggered/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	if(victim.horizontal)
+		return FALSE
+
+	if(victim.move_mod == 1)
+		return FALSE
+
+	return ..()
+
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	. = ..()
@@ -112,7 +122,7 @@
 
 /status_effect/slip/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	play('sound/effects/slip.ogg',get_turf(owner))
+	play_sound('sound/effects/slip.ogg',get_turf(owner),range_max=VIEW_RANGE)
 	owner.add_status_effect(STUN,30,30,source = source,stealthy = TRUE)
 	var/throw_dir = owner.move_dir
 	var/list/throw_offset = direction_to_pixel_offset(throw_dir)

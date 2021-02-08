@@ -22,7 +22,7 @@
 	update_sprite()
 
 	if(!open)
-		play('sound/effects/mortar_long_whistle.ogg',get_turf(src),range_min = VIEW_RANGE*0.5,range_max = VIEW_RANGE * 2)
+		play_sound('sound/effects/mortar_long_whistle.ogg',get_turf(src),range_min = VIEW_RANGE*0.5,range_max = VIEW_RANGE * 2)
 		create_alert(VIEW_RANGE,src.loc,src,ALERT_LEVEL_NOISE)
 		pixel_z = TILE_SIZE*VIEW_RANGE*4
 		pixel_w = TILE_SIZE*VIEW_RANGE*0.5
@@ -52,7 +52,7 @@
 	. = ..()
 
 	if(. && auto_open)
-		play('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE * 2)
+		play_sound('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE)
 
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 

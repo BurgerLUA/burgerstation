@@ -22,7 +22,7 @@
 			var/obj/structure/interactive/telecomms/TC = k
 			TC.add_data(rustg_hash_string(RUSTG_HASH_SHA1,"\ref[speaker],\ref[source],[text_to_say]"),radio_data)
 
-	play('sound/items/radio.ogg',source)
+	play_sound('sound/items/radio.ogg',get_turf(source),range_max=VIEW_RANGE)
 
 	return TRUE
 

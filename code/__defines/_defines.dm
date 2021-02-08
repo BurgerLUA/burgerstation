@@ -24,6 +24,7 @@
 	"B" = "sneak", \
 	"E" = "examine_mode", \
 	"Z" = "quick_self", \
+	"X" = "quick_holder", \
 	"Space" = "kick", \
 	"G" = "cycle-intent-clockwise", \
 	"F" = "cycle-intent-counter-clockwise", \
@@ -50,11 +51,12 @@
 	"Alt" = "walk",\
 	"Ctrl" = "grab",\
 	"R" = "throw",\
-	"X" = "drop",\
+	"A" = "drop",\
 	"C" = "hold",\
 	"B" = "sneak",\
 	"E" = "examine_mode",\
 	"F" = "quick_self",\
+	"X" = "quick_holder", \
 	"Space" = "kick",\
 	"G" = "cycle-intent-clockwise",\
 	"H" = "cycle-intent-counter-clockwise",\

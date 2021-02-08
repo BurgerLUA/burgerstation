@@ -2,7 +2,7 @@
 	var/has_bloodoxygen = TRUE
 	organic = TRUE
 
-/health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object)
+/health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
 

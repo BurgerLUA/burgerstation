@@ -122,6 +122,10 @@
 	filler = "glass"
 	fill_color = COLOR_WHITE
 
+/obj/structure/interactive/door/airlock/station/ntops
+	name = "ntops airlock"
+	color = COLOR_WHITE
+	filler = "glass"
 
 /obj/structure/interactive/door/airlock/station/glass
 	name = "public airlock"

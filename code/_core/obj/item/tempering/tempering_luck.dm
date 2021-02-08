@@ -30,3 +30,16 @@
 		I.luck += increase
 
 	return ..()
+
+/obj/item/tempering/luck/double
+	name = "double lucky four leaf clover"
+	desc = "Even luckier!"
+	desc_extended = "An very rare conjoined four leaf clover. Grants +10 luck to an item when used, up to 100 luck. If the improvement results in a luck value below 40, it will set the object's luck to 40."
+	icon_state = "luck2"
+
+	increase = 10
+	limit = 100
+	minimum = 40
+
+	value = 30000
+	value_burgerbux = 30000

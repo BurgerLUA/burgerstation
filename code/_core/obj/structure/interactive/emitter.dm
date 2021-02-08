@@ -51,7 +51,7 @@
 			null,
 			null
 		)
-		play('sound/weapons/emitter/emitter.ogg',get_turf(src))
+		play_sound('sound/weapons/emitter/emitter.ogg',get_turf(src))
 
 		next_fire = world.time + SECONDS_TO_DECISECONDS(6)
 		flick("[initial(icon_state)]_fire",src)
@@ -70,7 +70,7 @@
 
 /obj/structure/interactive/emitter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object(location,control,params)
+
 
 	if(is_inventory(object))
 		INTERACT_CHECK

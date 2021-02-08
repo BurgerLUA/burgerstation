@@ -107,7 +107,7 @@
 
 	return null
 
-/ai/ghost/on_life(var/tick_rate=AI_TICK)
+/ai/ghost/on_life(var/tick_rate)
 
 	anger = clamp(anger,0,200)
 
@@ -120,7 +120,7 @@
 		return TRUE
 
 	if(owner.move_delay <= 0)
-		handle_movement_reset()
+		//handle_movement_reset()
 		handle_movement()
 
 	if(owner.attack_next <= world.time)
@@ -151,7 +151,7 @@
 						anger = 200
 						notify_ghosts("\The [owner.name] is now hunting!",T)
 						owner.icon_state = "[ghost_type]_angry"
-						play('sound/ghost/ghost_ambience_2.ogg',T,volume=75)
+						play_sound('sound/ghost/ghost_ambience_2.ogg',T,volume=75)
 					else
 						set_objective(null)
 						owner.icon_state = "[ghost_type]"
@@ -220,7 +220,7 @@
 				var/mob/living/advanced/ADV = LS.top_atom
 				if(anger >= 50)
 					if(talks && !annoying_player)
-						play(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T)
+						play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					anger += 25
 					ADV.sanity -= 50
@@ -241,7 +241,7 @@
 					create_emf(T2,3,VIEW_RANGE*3)
 					notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 					if(talks)
-						play(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
+						play_sound(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					last_teleport = world.time
 			else if(viewer_count || insane)
@@ -251,10 +251,10 @@
 				last_teleport = world.time
 				if(talks)
 					if(anger <= 50)
-						play(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
+						play_sound(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					else
-						play(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2)
+						play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 				anger += 10
 
@@ -263,7 +263,7 @@
 	if(insane)
 		owner.set_dir(get_dir(owner,insane))
 		if(talks && next_voice < world.time && prob(25))
-			play(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
+			play_sound_target(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
 			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
 

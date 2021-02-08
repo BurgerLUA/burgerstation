@@ -71,16 +71,26 @@
 
 /obj/item/weapon/ranged/magic/spellblade/runesword
 	name = "rune sword"
+	desc = "This sword was made for those who are too lazy to walk up to people to stab them."
+	desc_extended = "A force-blade that was forged by Dwarven runesmiths, in a time long forgotten. It is capable of firing a potent long-range beam."
 	icon = 'icons/obj/item/weapons/ranged/magic/runesword.dmi'
 	icon_state = "inventory"
+
+	value = 1500
+	rarity = RARITY_RARE
 
 	projectile = /obj/projectile/magic/blade
 	damage_type = /damagetype/melee/sword/claymore
 	damage_type_on = /damagetype/melee/sword/spellblade
 	ranged_damage_type = /damagetype/ranged/magic/spellblade
 
+	size = SIZE_4
+	weight = 20
+
 	shoot_delay = SECONDS_TO_DECISECONDS(1)
 
 	shoot_sounds = list('sound/weapons/freeze.ogg')
+
+	value = 4000
 
 

@@ -6,7 +6,7 @@
 	if(!length(inventories))
 		return FALSE
 
-	if(inventory_user && is_advanced(inventory_user))
+	if(inventory_user)
 		var/mob/living/advanced/A = inventory_user
 		for(var/obj/hud/button/close_inventory/B in A.buttons)
 			B.alpha = 0
@@ -52,7 +52,7 @@
 			opening = FALSE
 
 	if(opening)
-		play(pick(inventory_sounds),src)
+		play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
 		if(should_center)
@@ -73,21 +73,21 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(additional_clothing_parent)
+
+
+	if(is_inventory(object) && additional_clothing_parent)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		drop_item(additional_clothing_parent,silent=TRUE)
 		return TRUE
 
-	if(is_container) //We're a container being clicked on.
-		var/atom/defer_object = object.defer_click_on_object(location,control,params)
-		if(is_item(defer_object)) //We're clicking on this item with an object.
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			var/obj/item/I = defer_object
-			src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
-			return TRUE
+	if(is_container && is_item(object)) //We're a container being clicked on.
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		var/obj/item/I = object
+		src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
+		return TRUE
 
 	return 	..()
 
@@ -170,9 +170,9 @@
 
 	if(drop_sound && !silent && new_location && !qdeleting)
 		if(isturf(new_location))
-			play(drop_sound,new_location)
+			play_sound(drop_sound,new_location,range_max=VIEW_RANGE*0.5)
 		else
-			play(inventory_sound,get_turf(new_location),range_max=1,volume=25)
+			play_sound(inventory_sound,get_turf(new_location),range_max=VIEW_RANGE*0.25,volume=25)
 
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc

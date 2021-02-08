@@ -9,7 +9,6 @@
 	var/mob/abstract/observer/ghost/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
-	O.force_move(desired_loc)
 
 /client/proc/make_observer(var/turf/desired_loc)
 	if(!desired_loc)
@@ -21,7 +20,6 @@
 	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
-	O.force_move(desired_loc)
 
 /client/proc/control_mob(var/mob/M,var/delete_last_mob = FALSE)
 
@@ -84,6 +82,10 @@
 
 
 /client/proc/load(var/savedata/client/mob/U,var/file_num)
+
+	if(restricted)
+		src.to_chat(span("danger",restricted))
+		return FALSE
 
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	U.loaded_data["id"] = file_num

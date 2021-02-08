@@ -25,7 +25,7 @@
 
 	return TRUE
 
-/ai/proc/on_life(var/tick_rate=AI_TICK)
+/ai/proc/on_life(var/tick_rate)
 
 	objective_ticks += tick_rate
 	if(objective_ticks >= get_objective_delay())
@@ -49,7 +49,7 @@
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(owner.move_delay <= 0)
-		handle_movement_reset()
+		//handle_movement_reset()
 		handle_movement()
 		handle_movement_checks()
 

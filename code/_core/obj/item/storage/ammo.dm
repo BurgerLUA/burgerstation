@@ -17,7 +17,7 @@
 	size = SIZE_3
 
 	dynamic_inventory_count = 4
-	container_max_size = 6
+	container_max_size = SIZE_1
 	container_max_slots = 6
 
 /obj/item/storage/ammo/bullet_22/fill_inventory()
@@ -32,7 +32,7 @@
 	icon_state = "slug"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*6
+	container_max_size = SIZE_1
 	container_max_slots = 6
 
 /obj/item/storage/ammo/slug/fill_inventory()
@@ -46,7 +46,7 @@
 	icon_state = "buckshot"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*6
+	container_max_size = SIZE_1
 	container_max_slots = 6
 
 /obj/item/storage/ammo/buckshot/fill_inventory()
@@ -61,7 +61,7 @@
 	icon_state = "flechette"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*6
+	container_max_size = SIZE_1
 	container_max_slots = 6
 
 /obj/item/storage/ammo/flechette/fill_inventory()
@@ -77,7 +77,7 @@
 	icon_state = "fire"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*6
+	container_max_size = SIZE_1
 	container_max_slots = 6
 
 /obj/item/storage/ammo/fire/fill_inventory()
@@ -92,7 +92,7 @@
 	icon_state = "23buck"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*4
+	container_max_size = SIZE_1
 	container_max_slots = 4
 
 /obj/item/storage/ammo/buckshot_23/fill_inventory()
@@ -106,7 +106,7 @@
 	icon_state = "23slug"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*4
+	container_max_size = SIZE_1
 	container_max_slots = 4
 
 /obj/item/storage/ammo/slug_23/fill_inventory()
@@ -120,7 +120,7 @@
 	icon_state = "40mm"
 
 	dynamic_inventory_count = 4
-	container_max_size = SIZE_1*4
+	container_max_size = SIZE_1
 	container_max_slots = 2
 
 /obj/item/storage/ammo/grenade_40mm/fill_inventory()

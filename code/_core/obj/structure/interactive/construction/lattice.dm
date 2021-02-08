@@ -62,7 +62,6 @@
 /obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 
-	object = object.defer_click_on_object(location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -72,14 +71,14 @@
 			INTERACT_DELAY(10)
 			src.on_destruction(caller)
 			return TRUE
-		if(istype(object,/obj/item/material/rod/))
+		if(istype(I,/obj/item/material/rod/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_grille,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_grille,caller,object)
 			return TRUE
-		if(istype(object,/obj/item/material/sheet/))
+		if(istype(I,/obj/item/material/sheet/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)

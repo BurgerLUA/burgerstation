@@ -118,6 +118,11 @@
 /obj/structure/interactive/crate/proc/can_store(var/atom/movable/M)
 	if(M.anchored)
 		return FALSE
+	if(istype(M, /mob/living/advanced/player/))
+		var/mob/living/advanced/player/playerCorpse = M
+		if(playerCorpse.dead)
+			visible_message(span("warning", "\The [playerCorpse.name] hilariously looses balance and falls out of the crate!"))
+			return FALSE
 	return TRUE
 
 /obj/structure/interactive/crate/proc/can_prevent_close(var/atom/movable/M)
@@ -160,7 +165,7 @@
 
 	open = FALSE
 
-	play('sound/effects/click.ogg',get_turf(src))
+	play_sound('sound/effects/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
 
@@ -182,7 +187,7 @@
 
 	open = TRUE
 
-	play('sound/effects/click.ogg',get_turf(src))
+	play_sound('sound/effects/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
 

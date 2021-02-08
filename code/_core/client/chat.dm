@@ -7,6 +7,10 @@
 		CRASH("chat_type was not a number!")
 		return FALSE
 
+	if(!queued_chat_messages)
+		log_error("Error: [src.get_debug_name()] didn't have a queued_chat_messages variable!")
+		return FALSE
+
 	var/output_target_list = list()
 
 	if(!(chat_type & CHAT_TYPE_COMBAT))

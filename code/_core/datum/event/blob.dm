@@ -16,7 +16,7 @@
 /event/blob/New()
 
 	for(var/area/A in world)
-		if(A.z < Z_LEVEL_MISSION)
+		if(A.area_identifier != "Mission")
 			continue
 		if(A.interior)
 			continue
@@ -46,6 +46,10 @@
 			if(!P) break
 			chances--
 		for(var/turf/simulated/floor/T in A.contents)
+			if(T.x <= 10 || T.x >= WORLD_SIZE - 10)
+				continue
+			if(T.y <= 10 || T.y >= WORLD_SIZE - 10)
+				continue
 			valid_turfs += T
 
 	if(!length(valid_turfs))

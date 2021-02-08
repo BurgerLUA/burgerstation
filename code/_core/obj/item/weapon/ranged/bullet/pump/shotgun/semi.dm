@@ -9,6 +9,8 @@
 
 	automatic = FALSE
 
+	can_wield = TRUE
+
 	bullet_count_max = 5
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
@@ -63,6 +65,8 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_static_spread()
+	if(!wielded)
+		return 0.2
 	return 0.007
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_skill_spread(var/mob/living/L)

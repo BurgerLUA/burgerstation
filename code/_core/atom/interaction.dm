@@ -1,63 +1,19 @@
 /atom/proc/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params)
-
-	var/atom/defer_self = src.defer_click_on_object(location,control,params)
-
-	if(src != defer_self && defer_self.on_mouse_up(caller,object,location,control,params))
-		return TRUE
-
 	return FALSE
 
-/atom/proc/on_mouse_wheel(caller,delta_x,delta_y,location,control,params)
-
-	var/atom/defer_self = src.defer_click_on_object(location,control,params)
-
-	if(src != defer_self && defer_self.on_mouse_wheel(caller,delta_x,delta_y,location,control,params))
-		return TRUE
-
+/atom/proc/mouse_wheel_on_object(caller,delta_x,delta_y,location,control,params)
 	return FALSE
 
 /atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object. This is called first.
-
-	var/atom/defer_self = src.defer_click_on_object(location,control,params)
-
-	if(src != defer_self && defer_self.click_on_object(caller,object,location,control,params))
-		return TRUE
-
-	if(object.clicked_on_by_object(caller,src,location,control,params))
-		return TRUE
-
-	defer_self.attack(caller,object,params)
-
-	return TRUE
+	return FALSE
 
 /atom/proc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	var/atom/defer_self = src.defer_click_on_object(location,control,params)
-
-	if(src != defer_self && defer_self.clicked_on_by_object(caller,object,location,control,params))
-		return TRUE
-
 	return FALSE
 
 /atom/proc/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
-
-	var/atom/defer_self = src.defer_click_on_object(location,control,params)
-
-	if(src != defer_self && defer_self.drop_on_object(caller,object,location,control,params))
-		return TRUE
-
-	if(object.dropped_on_by_object(caller,src,location,control,params))
-		return TRUE
-
 	return FALSE
 
 /atom/proc/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	var/atom/defer_self = src.defer_click_on_object(location,control,params)
-
-	if(src != defer_self && defer_self.dropped_on_by_object(caller,object,location,control,params))
-		return TRUE
-
 	return FALSE
 
 /atom/get_examine_list(var/mob/examiner)

@@ -37,7 +37,7 @@
 /event/migration/New()
 
 	for(var/area/A in world)
-		if(A.z < Z_LEVEL_MISSION)
+		if(A.area_identifier != "Mission")
 			continue
 		if(A.interior)
 			continue
@@ -59,12 +59,16 @@
 
 	var/list/announce_areas = list()
 
-	for(var/i=1,i<=3,i++)
+	for(var/i=1,i<=rand(1,3),i++)
 		if(!length(valid_areas))
 			return FALSE
 		var/area/A = pick(valid_areas)
 		announce_areas |= A.name
 		for(var/turf/simulated/floor/T in A.contents)
+			if(T.x <= 10 || T.x >= WORLD_SIZE - 10)
+				continue
+			if(T.y <= 10 || T.y >= WORLD_SIZE - 10)
+				continue
 			valid_turfs += T
 
 	if(!length(valid_turfs))

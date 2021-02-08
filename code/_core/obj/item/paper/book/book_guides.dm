@@ -14,6 +14,15 @@
 	data = SSpaper.all_paper_data["a guide to cooking"].Copy()
 	return .
 
+/obj/item/paper/book/fishing/Initialize()
+	. = ..()
+	name = "manual: A Guide to Fishing"
+	desc = "how to enjoy life"
+	desc_extended = "A guide on how to fish. Gnarly!"
+	data = SSpaper.all_paper_data["a guide to fishing"].Copy()
+	return .
+
+
 /obj/item/paper/book/ghost/Initialize()
 	. = ..()
 	name = "manual: Ghosthunting Manual"
