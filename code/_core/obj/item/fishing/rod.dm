@@ -228,8 +228,8 @@
 		var/turf/simulated/hazard/H = object
 		if(!H.fishing_rewards)
 			return TRUE
-		if(!line || !lure || !bait)
-			caller.to_chat(span("warning","You need a line, a lure, and some bait in order to use \the [src.name]!"))
+		if(!line || !lure || !bait || H.type != bait.valid_turf)
+			caller.to_chat(span("warning","You need a line, a lure, and the right bait in order to use \the [src.name]!"))
 			return TRUE
 		if(!line.lavaproof && istype(object,/turf/simulated/hazard/lava))
 			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))
