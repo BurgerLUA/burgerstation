@@ -104,3 +104,7 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/container/beaker/alcohol/vodka(src)
 
 	return ..()
+
+/obj/item/clothing/back/storage/backpack/explorer/black //I LOVE it - Stalk.
+	name = "black explorer's pack"
+	icon = 'icons/obj/item/clothing/back/backpack/explorer_pack_sniper.dmi'
