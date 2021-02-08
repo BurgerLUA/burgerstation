@@ -83,4 +83,6 @@
 
 	shoot_sounds = list('sound/weapons/freeze.ogg')
 
+	value = 4000
+
 

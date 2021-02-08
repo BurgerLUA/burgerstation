@@ -166,7 +166,7 @@
 				snagged_fish = rand(5,20) + lure.time_bonus
 				catch_time = world.time
 				if(lure.catchsound)
-					play_sound(lure.catchsound,get_turf(lure))
+					play_sound(lure.catchsound,get_turf(lure),range_min=VIEW_RANGE*0.5,range_max=VIEW_RANGE)
 				animate(fishing_bob,pixel_y=-10,pixel_x=rand(-4,4),time=5)
 				animate(fishing_bob,pixel_y=0,pixel_x=rand(-2,2),time=10)
 

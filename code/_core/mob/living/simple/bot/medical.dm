@@ -113,10 +113,10 @@
 
 		switch(rand(1,2))
 			if(1)
-				play_sound('sound/voice/medbot/feelbetter.ogg',get_turf(src))
+				play_sound('sound/voice/medbot/feelbetter.ogg',get_turf(src),range_max=VIEW_RANGE)
 				src.do_say("Feel better soon!")
 			if(2)
-				play_sound('sound/voice/medbot/patchedup.ogg',get_turf(src))
+				play_sound('sound/voice/medbot/patchedup.ogg',get_turf(src),range_max=VIEW_RANGE)
 				src.do_say("All patched up!")
 
 		update_icon()
@@ -155,7 +155,7 @@
 		PROGRESS_BAR_CONDITIONS(src,src,.proc/can_treat,target)
 		target.visible_message(span("warning","\The [src.name] is trying to inject [target.name]!"),span("danger","\The [src.name] is trying to inject you!"))
 		if(target.has_status_effect(CRIT))
-			play_sound('sound/voice/medbot/no.ogg',get_turf(src))
+			play_sound('sound/voice/medbot/no.ogg',get_turf(src),range_max=VIEW_RANGE)
 			src.do_say("No, stay with me!")
 		update_icon()
 		return TRUE

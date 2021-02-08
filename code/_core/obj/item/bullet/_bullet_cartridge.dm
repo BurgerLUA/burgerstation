@@ -244,7 +244,7 @@
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
 		if(transfer_src_to_magazine(caller,M,location,control,params))
-			play_sound(get_bullet_insert_sound(),get_turf(src))
+			play_sound(get_bullet_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)
 		return TRUE
 
 	if(is_bullet_gun(object))
@@ -254,10 +254,10 @@
 		var/obj/item/weapon/ranged/bullet/G = object
 		if(transfer_src_to_gun(caller,G,location,control,params))
 			var/turf/T = get_turf(src)
-			play_sound(get_bullet_insert_sound(),T)
+			play_sound(get_bullet_insert_sound(),T,range_max=VIEW_RANGE*0.25)
 			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
-				play_sound(M.get_cock_sound("forward"),T)
+				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
 			return TRUE
 
 	return ..()

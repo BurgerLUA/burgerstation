@@ -619,7 +619,7 @@
 			consumer.visible_message(span("notice","\The [consumer.name] [consume_verb]s \the [src.owner.name]."),span("notice","You [consume_verb] \the [src.owner.name]."))
 
 		if(consume_sound)
-			play_sound(consume_sound,get_turf(consumer))
+			play_sound(consume_sound,get_turf(consumer),range_max=VIEW_RANGE*0.5)
 
 		if(final_flavor_text)
 			consumer.to_chat(span("notice",final_flavor_text))

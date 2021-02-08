@@ -52,7 +52,7 @@
 	. = ..()
 
 	if(. && auto_open)
-		play_sound('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE * 2)
+		play_sound('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE)
 
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 

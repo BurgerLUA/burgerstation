@@ -20,9 +20,9 @@
 
 	if(world.time >= next_chain_time)
 		if(last_bump_hit >= world.time - 5)
-			play_sound('sound/weapons/chainsaw/loop_bump.ogg',get_turf(src), volume = 20)
+			play_sound('sound/weapons/chainsaw/loop_bump.ogg',get_turf(src), volume = 20,range_max=VIEW_RANGE)
 		else
-			play_sound('sound/weapons/chainsaw/loop.ogg',get_turf(src),volume = 20)
+			play_sound('sound/weapons/chainsaw/loop.ogg',get_turf(src),volume = 20,range_max=VIEW_RANGE)
 
 		if(is_inventory(loc))
 			var/obj/hud/inventory/I = loc
@@ -55,7 +55,7 @@
 	enabled = TRUE
 	start_thinking(src)
 	damage_type = /damagetype/melee/sword/chainsaw/on
-	play_sound('sound/weapons/chainsaw/start.ogg',get_turf(src))
+	play_sound('sound/weapons/chainsaw/start.ogg',get_turf(src),range_max=VIEW_RANGE)
 	update_sprite()
 	return TRUE
 
@@ -63,7 +63,7 @@
 	enabled = FALSE
 	stop_thinking(src)
 	damage_type = /damagetype/melee/sword/chainsaw
-	play_sound('sound/weapons/chainsaw/stop.ogg',get_turf(src))
+	play_sound('sound/weapons/chainsaw/stop.ogg',get_turf(src),range_max=VIEW_RANGE)
 	update_sprite()
 	return TRUE
 
@@ -83,7 +83,7 @@
 
 	PROGRESS_BAR(caller,src,20,.proc/pull_chain,caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,	.proc/can_start,caller)
-	play_sound('sound/weapons/chainsaw/pull.ogg',get_turf(src))
+	play_sound('sound/weapons/chainsaw/pull.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	return TRUE
 

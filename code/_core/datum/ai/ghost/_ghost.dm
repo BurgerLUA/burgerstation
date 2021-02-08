@@ -220,7 +220,7 @@
 				var/mob/living/advanced/ADV = LS.top_atom
 				if(anger >= 50)
 					if(talks && !annoying_player)
-						play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T)
+						play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					anger += 25
 					ADV.sanity -= 50
@@ -241,7 +241,7 @@
 					create_emf(T2,3,VIEW_RANGE*3)
 					notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 					if(talks)
-						play_sound(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2)
+						play_sound(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					last_teleport = world.time
 			else if(viewer_count || insane)
@@ -251,10 +251,10 @@
 				last_teleport = world.time
 				if(talks)
 					if(anger <= 50)
-						play_sound(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2)
+						play_sound(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					else
-						play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2)
+						play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2,range_max=VIEW_RANGE)
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 				anger += 10
 

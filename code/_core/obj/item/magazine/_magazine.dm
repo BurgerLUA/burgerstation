@@ -190,7 +190,7 @@
 		src.drop_item(G)
 		G.stored_magazine = src
 		G.open = FALSE
-		play_sound(get_magazine_insert_sound(),get_turf(src))
+		play_sound(get_magazine_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)
 		G.update_sprite()
 		return TRUE
 

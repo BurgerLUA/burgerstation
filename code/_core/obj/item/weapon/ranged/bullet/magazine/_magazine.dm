@@ -68,7 +68,7 @@
 
 	if(cock_type)
 		if(T)
-			play_sound(get_cock_sound(cock_type),T)
+			play_sound(get_cock_sound(cock_type),T,range_max=VIEW_RANGE*0.5)
 		update_sprite()
 
 	return TRUE
@@ -85,7 +85,7 @@
 		qdel(src)
 	else
 		stored_magazine.drop_item(T)
-		play_sound(stored_magazine.get_magazine_eject_sound(),T)
+		play_sound(stored_magazine.get_magazine_eject_sound(),T,range_max=VIEW_RANGE*0.5)
 		if(stored_magazine)
 			stored_magazine.update_sprite()
 			stored_magazine = null
@@ -162,7 +162,7 @@
 			sound_strength = 1 - clamp(capacity/empty_warning_percent,0,1)
 
 		if(sound_strength > 0)
-			play_sound('sound/effects/gun_empty_sound.ogg',get_turf(src), pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength)
+			play_sound('sound/effects/gun_empty_sound.ogg',get_turf(src), pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength,range_max=VIEW_RANGE)
 
 	return .
 

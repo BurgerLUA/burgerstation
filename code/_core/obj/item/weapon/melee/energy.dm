@@ -122,9 +122,9 @@
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src))
+			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src))
+			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
 	return .
 
 
@@ -241,8 +241,8 @@
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play_sound('sound/weapons/magic/ash.ogg',get_turf(src))
+			play_sound('sound/weapons/magic/ash.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play_sound('sound/weapons/magic/ash.ogg',get_turf(src))
+			play_sound('sound/weapons/magic/ash.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	return .

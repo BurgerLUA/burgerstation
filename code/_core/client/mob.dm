@@ -85,6 +85,10 @@
 
 /client/proc/load(var/savedata/client/mob/U,var/file_num)
 
+	if(restricted)
+		src.to_chat(span("danger",restricted))
+		return FALSE
+
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	U.loaded_data["id"] = file_num
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))

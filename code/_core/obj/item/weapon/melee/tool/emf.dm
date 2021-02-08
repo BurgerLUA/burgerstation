@@ -67,7 +67,7 @@
 	update_sprite()
 
 	if(emf_level >= 3)
-		play_sound('sound/effects/warning_chime.ogg', T1, volume=45+emf_level*5, pitch = 0.9 + emf_level*0.1)
+		play_sound('sound/effects/warning_chime.ogg', T1, volume=45+emf_level*5, pitch = 0.9 + emf_level*0.1,range_max=VIEW_RANGE)
 
 	return TRUE
 
@@ -91,7 +91,7 @@
 
 	caller.to_chat(span("notice","You turn [active ? "on" : "off"] \the [src.name]."))
 
-	play_sound('sound/machines/click.ogg',get_turf(src))
+	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.25)
 
 	if(active)
 		if(emf_level) start_thinking(src)

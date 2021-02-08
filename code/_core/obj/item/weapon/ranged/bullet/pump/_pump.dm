@@ -26,7 +26,7 @@
 			stored_bullets += null
 
 	if(!silent && pump_sound)
-		play_sound(pump_sound,T)
+		play_sound(pump_sound,T,range_max=VIEW_RANGE)
 	update_sprite()
 
 	return TRUE

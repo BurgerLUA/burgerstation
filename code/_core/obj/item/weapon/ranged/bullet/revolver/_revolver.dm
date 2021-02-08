@@ -45,7 +45,7 @@
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
 
-	play_sound('sound/weapons/revolver_click2.ogg',T)
+	play_sound('sound/weapons/revolver_click2.ogg',T,range_max=VIEW_RANGE*0.25)
 
 	update_sprite()
 

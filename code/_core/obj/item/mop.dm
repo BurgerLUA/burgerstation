@@ -31,7 +31,7 @@
 			object.reagents.splash(caller,T,overflow,1)
 		src.reagents.transfer_reagents_to(object.reagents,min(space_left,src.reagents.volume_current),should_update = FALSE, caller = caller)
 		object.reagents.transfer_reagents_to(src.reagents,src.reagents.volume_max, caller = caller)
-		play_sound('sound/effects/watersplash.ogg',T)
+		play_sound('sound/effects/watersplash.ogg',T,range_max=VIEW_RANGE)
 		return TRUE
 
 	if(isturf(object))
@@ -50,7 +50,7 @@
 			'sound/effects/water_wade3.ogg',
 			'sound/effects/water_wade4.ogg'
 		)
-		play_sound(pick(valid_sounds),object)
+		play_sound(pick(valid_sounds),object,range_max=VIEW_RANGE)
 		src.reagents.splash(caller,object,5,TRUE,1)
 		return TRUE
 

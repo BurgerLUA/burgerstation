@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(sound)
 	name = "Sound Subsystem"
 	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_PRELOAD
 	var/channel_hack = 100
 
 	cpu_usage_max = 75
@@ -337,7 +337,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 
 
-/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers=all_mobs_with_clients,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -361,6 +361,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	var/list/pos = vector(source_turf.x,source_turf.y,source_turf.z)
 
+	if(!hearers)
+		hearers = all_mobs_with_clients_by_z_level["[source_turf.z]"]
+
 	for(var/k in hearers)
 
 		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
@@ -371,10 +374,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 			continue
 
 		if(invisibility_check && M.see_invisible < invisibility_check)
-			continue
-
-		var/turf/T = get_turf(M)
-		if(!T || pos[3] != T.z)
 			continue
 
 		var/local_volume = volume
@@ -394,6 +393,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 			if(local_volume <= 0)
 				continue
 
+		var/turf/T = get_turf(M)
 		created_sound.x = pos[1] - T.x
 		created_sound.z = pos[2] - T.y
 		created_sound.y = 0
@@ -402,6 +402,8 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 			if(abs(created_sound.x) > range_max || abs(created_sound.y) > range_max)
 				continue
 			var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
+			if(sound_setting == SOUND_SETTING_FOOTSTEPS && distance <= 0)
+				distance = 4 //Your own footsteps are quieter.
 			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
 			if(local_volume <= 0)
 				continue

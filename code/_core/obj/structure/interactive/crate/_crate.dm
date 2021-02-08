@@ -165,7 +165,7 @@
 
 	open = FALSE
 
-	play_sound('sound/effects/click.ogg',get_turf(src))
+	play_sound('sound/effects/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
 
@@ -187,7 +187,7 @@
 
 	open = TRUE
 
-	play_sound('sound/effects/click.ogg',get_turf(src))
+	play_sound('sound/effects/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
 
