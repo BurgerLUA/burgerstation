@@ -61,3 +61,16 @@
 	value = 3.5
 
 	inaccuracy_modifer = 2
+
+/obj/item/bullet_cartridge/shotgun_23/fire
+	name = "\improper 23x75mmR incendiary shell"
+	desc = "I AM BURNING! I AM BURNING! I AM BURNING!"
+	desc_extended = "An incendiary shell designed specifically for the KS23"
+	rarity = RARITY_RARE
+	icon_state = "23fire"
+
+	projectile_count = 4
+	base_spread = 0.12
+
+	projectile = /obj/projectile/bullet/firearm/rifle
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23/fire

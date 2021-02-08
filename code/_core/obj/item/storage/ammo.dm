@@ -114,6 +114,20 @@
 		new /obj/item/bullet_cartridge/shotgun_23/slug(src)
 	return ..()
 
+/obj/item/storage/ammo/fire_23
+	name = "box of russian shotgun incendiary slugs"
+	desc_extended = "An ammo box that can hold 16 23x75mmR shotgun incendiary slugs."
+	icon_state = "23fire"
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 4
+
+/obj/item/storage/ammo/fire_23/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/shotgun_23/fire(src)
+	return ..()
+
 /obj/item/storage/ammo/grenade_40mm
 	name = "box of 40mm grenades"
 	desc_extended = "An ammo box that can hold 8 40mm high-explosive grenades."
