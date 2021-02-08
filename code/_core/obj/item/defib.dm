@@ -44,6 +44,9 @@
 	play_sound('sound/items/defib/defib_charge.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
+	paddle_left.placed_target_ref = null
+	paddle_right.placed_target_ref = null
+
 	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
 
@@ -122,6 +125,12 @@
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(is_inventory(object))
+		return ..()
+
+	if(is_busy())
+		return TRUE
+
 	if(!linked_defib)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -139,9 +148,13 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
-		caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
-		placed_target_ref = "\ref[object]"
-		linked_defib.on_paddle(caller)
+		if(placed_target_ref == "\ref[object]")
+			caller.visible_message(span("notice","\The [caller.name] removes \a [src.name] from [object.name]'s chest..."),span("warning","You remove \the [src.name] from \the [object.name]'s chest..."))
+			placed_target_ref = null
+		else
+			caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
+			placed_target_ref = "\ref[object]"
+			linked_defib.on_paddle(caller)
 		return TRUE
 
 	return ..()

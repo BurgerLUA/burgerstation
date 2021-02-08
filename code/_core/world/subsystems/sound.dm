@@ -343,6 +343,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	if(!created_sound || volume <= 0)
 		log_error("Warning: Invalid sound: [sound_path]!")
 		return FALSE
+	if(!source_turf)
+		CRASH_SAFE("Warning: play_sound passed source_turf as null!")
+		return FALSE
 
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
