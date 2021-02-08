@@ -9,7 +9,6 @@
 	var/mob/abstract/observer/ghost/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
-	O.force_move(desired_loc)
 
 /client/proc/make_observer(var/turf/desired_loc)
 	if(!desired_loc)
@@ -21,7 +20,6 @@
 	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
-	O.force_move(desired_loc)
 
 /client/proc/control_mob(var/mob/M,var/delete_last_mob = FALSE)
 
@@ -40,8 +38,14 @@
 	mob = M
 	eye = M
 	all_mobs_with_clients |= M
+	if(M.loc && M.loc.z > 0)
+		if(!all_mobs_with_clients_by_z_level["[M.loc.z]"])
+			all_mobs_with_clients_by_z_level["[M.loc.z]"] = list()
+		all_mobs_with_clients_by_z_level["[M.loc.z]"] |= M
 	all_listeners |= M
 	view = M.view
+
+
 
 	update_zoom(2)
 	update_verbs()
@@ -74,6 +78,10 @@
 		M.parallax.Cut()
 
 	all_mobs_with_clients -= M
+	if(M.loc && M.loc.z > 0)
+		if(!all_mobs_with_clients_by_z_level["[M.loc.z]"])
+			all_mobs_with_clients_by_z_level["[M.loc.z]"] = list()
+		all_mobs_with_clients_by_z_level["[M.loc.z]"] -= M
 	if(!M.listener)
 		all_listeners -= M
 	M.client = null

@@ -197,7 +197,7 @@
 
 	return TRUE
 
-/mob/Initialize()
+/mob/Finalize()
 	. = ..()
 	force_move(src.loc)
 	return .

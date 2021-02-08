@@ -226,9 +226,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	created_sound.priority = priority
 	created_sound.echo = echo
 	created_sound.channel = SSsound.channel_hack
-	SSsound.channel_hack++
+	SSsound.channel_hack += 1
 	if(SSsound.channel_hack > 1024)
-		SSsound.channel_hack = initial(SSsound.channel_hack)
+		SSsound.channel_hack = 100
 
 	if(duration > 0)
 		SSsound.active_sounds[created_sound] = duration
@@ -288,7 +288,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	created_sound.channel = SSsound.channel_hack
 	SSsound.channel_hack++
 	if(SSsound.channel_hack > 1024)
-		SSsound.channel_hack = initial(SSsound.channel_hack)
+		SSsound.channel_hack = 100
 	created_sound.x = 0
 	created_sound.z = 0
 	created_sound.y = 0
@@ -362,8 +362,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	else if(loop)
 		SSsound.active_sounds[created_sound] = -1
 
-	var/list/pos = vector(source_turf.x,source_turf.y,source_turf.z)
-
 	if(!hearers)
 		hearers = all_mobs_with_clients_by_z_level["[source_turf.z]"]
 
@@ -396,24 +394,21 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 			if(local_volume <= 0)
 				continue
 
-		var/turf/T = get_turf(M)
-		created_sound.x = pos[1] - T.x
-		created_sound.z = pos[2] - T.y
-		created_sound.y = 0
+		var/turf/mob_turf = get_turf(M)
 
 		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
-			if(abs(created_sound.x) > range_max || abs(created_sound.y) > range_max)
-				continue
-			var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
+			var/distance = max(0,get_dist(mob_turf,source_turf)-(VIEW_RANGE*0.5)) - range_min
 			if(sound_setting == SOUND_SETTING_FOOTSTEPS && distance <= 0)
-				distance = 4 //Your own footsteps are quieter.
+				distance = 4
 			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
 			if(local_volume <= 0)
 				continue
 
+		created_sound.x = source_turf.x - mob_turf.x
+		created_sound.z = source_turf.y - mob_turf.y
+		created_sound.y = 0
 		created_sound.volume = local_volume
 		created_sound.environment = M.get_sound_environment()
-
 		M.client << created_sound
 
 	return created_sound
