@@ -163,16 +163,28 @@
 
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
+	//Shitcode ahoy.
 
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
-	add_item_count(-bullets_to_add,TRUE)
-	for(var/i=1,i<=bullets_to_add,i++)
-		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
-		B.is_spent = is_spent
-		INITIALIZE(B)
-		FINALIZE(B)
-		transfer_target.stored_bullets += B
+
+	var/should_transfer_self = bullets_to_add == item_count_current
+
+	if(should_transfer_self)
+		bullets_to_add--
+
+	if(bullets_to_add)
+		add_item_count(-bullets_to_add,TRUE)
+		for(var/i=1,i<=bullets_to_add,i++)
+			var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
+			B.is_spent = is_spent
+			INITIALIZE(B)
+			FINALIZE(B)
+			transfer_target.stored_bullets += B
+	if(should_transfer_self)
+		src.drop_item(transfer_target)
+		transfer_target.stored_bullets += src
 	if(talk)
+		if(should_transfer_self) bullets_to_add++
 		caller.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
 	transfer_target.update_sprite()
 
@@ -181,27 +193,35 @@
 /obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/talk = TRUE)
 
 	if(W.can_load_chamber(caller,src))
-		var/obj/item/bullet_cartridge/B = new src.type(W)
-		B.is_spent = is_spent
-		INITIALIZE(B)
-		FINALIZE(B)
-		W.chambered_bullet += B
-		add_item_count(-1)
+		if(item_count_current <= 1)
+			src.drop_item(W)
+			W.chambered_bullet += src
+		else
+			var/obj/item/bullet_cartridge/B = new src.type(W)
+			B.is_spent = is_spent
+			INITIALIZE(B)
+			FINALIZE(B)
+			W.chambered_bullet += B
+			add_item_count(-1)
 		return TRUE
 
 	if(W.can_load_stored(caller,src))
-		var/obj/item/bullet_cartridge/B = new src.type(W)
-		B.is_spent = is_spent
-		INITIALIZE(B)
-		FINALIZE(B)
 		var/valid_slot = 0
 		for(var/i=1,i<=length(W.stored_bullets),i++)
 			if(!W.stored_bullets[i])
 				valid_slot = i
 				break
 		if(valid_slot)
-			W.stored_bullets[valid_slot] = B
-			add_item_count(-1)
+			if(item_count_current <= 1)
+				src.drop_item(W)
+				W.stored_bullets[valid_slot] = src
+			else
+				var/obj/item/bullet_cartridge/B = new src.type(W)
+				B.is_spent = is_spent
+				INITIALIZE(B)
+				FINALIZE(B)
+				W.stored_bullets[valid_slot] = B
+				add_item_count(-1)
 			return TRUE
 
 	caller.to_chat(span("warning","You can't load \the [src.name] into \the [W.name]!"))
@@ -223,8 +243,8 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
-		transfer_src_to_magazine(caller,M,location,control,params)
-		play_sound(get_bullet_insert_sound(),get_turf(src))
+		if(transfer_src_to_magazine(caller,M,location,control,params))
+			play_sound(get_bullet_insert_sound(),get_turf(src))
 		return TRUE
 
 	if(is_bullet_gun(object))

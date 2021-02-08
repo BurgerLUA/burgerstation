@@ -203,22 +203,14 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	var/sound/created_sound
 
-	/*
 	if(SSsound.sound_cache[sound_path])
 		created_sound = SSsound.sound_cache[sound_path]
 	else
-	*/
-	created_sound = sound(sound_path)
-	if(!created_sound)
-		CRASH_SAFE("Error: Invalid sound! [sound_path].")
-		return null
-
-	//SSsound.sound_cache[sound_path] = created_sound
-
-	created_sound.channel = SSsound.channel_hack
-	SSsound.channel_hack++
-	if(SSsound.channel_hack > 1024)
-		SSsound.channel_hack = initial(SSsound.channel_hack)
+		created_sound = sound(sound_path)
+		if(!created_sound)
+			CRASH_SAFE("Error: Invalid sound! [sound_path].")
+			return null
+		SSsound.sound_cache[sound_path] = created_sound
 
 	return created_sound
 
@@ -228,6 +220,15 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
 		return FALSE
+
+	created_sound.frequency = pitch
+	created_sound.repeat = loop
+	created_sound.priority = priority
+	created_sound.echo = echo
+	created_sound.channel = SSsound.channel_hack
+	SSsound.channel_hack++
+	if(SSsound.channel_hack > 1024)
+		SSsound.channel_hack = initial(SSsound.channel_hack)
 
 	if(duration > 0)
 		SSsound.active_sounds[created_sound] = duration
@@ -245,8 +246,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		return null
 
 	var/client/C = M.client
-
-	created_sound.environment = M.get_sound_environment()
 
 	var/local_volume = volume
 	if(C && C.settings)
@@ -279,8 +278,17 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
+		log_error("Warning: Invalid sound: [sound_path]!")
 		return FALSE
 
+	created_sound.frequency = pitch
+	created_sound.repeat = loop
+	created_sound.priority = priority
+	created_sound.echo = echo
+	created_sound.channel = SSsound.channel_hack
+	SSsound.channel_hack++
+	if(SSsound.channel_hack > 1024)
+		SSsound.channel_hack = initial(SSsound.channel_hack)
 	created_sound.x = 0
 	created_sound.z = 0
 	created_sound.y = 0
@@ -333,7 +341,18 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
+		log_error("Warning: Invalid sound: [sound_path]!")
 		return FALSE
+
+	created_sound.frequency = pitch
+	created_sound.repeat = loop
+	created_sound.priority = priority
+	created_sound.echo = echo
+	created_sound.channel = SSsound.channel_hack
+
+	SSsound.channel_hack++
+	if(SSsound.channel_hack > 1024)
+		SSsound.channel_hack = initial(SSsound.channel_hack)
 
 	if(duration > 0)
 		SSsound.active_sounds[created_sound] = duration
@@ -372,20 +391,22 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 					local_volume *= C.settings.loaded_data["volume_ui"] / 100
 				if(SOUND_CHANNEL_FX)
 					local_volume *= C.settings.loaded_data["volume_fx"] / 100
-
-		if(local_volume <= 0)
-			continue
-		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
-			if(created_sound.x > range_max || created_sound.y > range_max)
+			if(local_volume <= 0)
 				continue
-			var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
-			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
-		if(local_volume <= 0)
-			continue
 
 		created_sound.x = pos[1] - T.x
 		created_sound.z = pos[2] - T.y
 		created_sound.y = 0
+
+		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
+			if(abs(created_sound.x) > range_max || abs(created_sound.y) > range_max)
+				continue
+			var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
+			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
+
+			if(local_volume <= 0)
+				continue
+
 		created_sound.volume = local_volume
 
 		if(C) C.receive_sound(created_sound)
@@ -457,13 +478,12 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	created_sound.repeat = loop
 	created_sound.priority = priority
 	created_sound.echo = echo
-	//environment is handled by the hearer
 	created_sound.status = 0
 	created_sound.wait = 0
 	created_sound.channel = SSsound.channel_hack
 	SSsound.channel_hack++
 	if(SSsound.channel_hack > 1024)
-		SSsound.channel_hack = 100
+		SSsound.channel_hack = initial(SSsound.channel_hack)
 
 	if(duration > 0)
 		SSsound.active_sounds[created_sound] = duration
