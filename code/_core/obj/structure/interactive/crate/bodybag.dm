@@ -5,7 +5,7 @@
     icon = 'icons/obj/structure/crates.dmi'
     icon_state = "coffin"
 
-    value = 40 //same value as /obj/item/deployable/bodybag to avoid money dubing 
+    value = 100 //same value as /obj/item/deployable/bodybag to avoid money dubing 
     anchored = FALSE
     collision_flags = FLAG_COLLISION_NONE //Not wall because crawling.
     collision_bullet_flags = FLAG_COLLISION_BULLET_NONE //you'd always shoot OVER the body bag no?
@@ -64,7 +64,7 @@
     desc_extended = "A plastic bag meant to transport corpses."
     structure_to_deploy = /obj/structure/interactive/crate/bodybag
     icon = 'icons/obj/item/deployable/bodybag.dmi'
-    value = 40
+    value = 100
     weight = 3
 
     item_count_max = 5
