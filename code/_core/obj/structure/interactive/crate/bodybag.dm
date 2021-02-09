@@ -1,6 +1,6 @@
 /obj/structure/interactive/crate/bodybag
     name = "body bag"
-    desc = "You where loud and ugly and now your dead!"
+    desc = "You were loud and ugly and now your dead!"
     desc_extended = "A plastic bag to transport corpse."
     icon = 'icons/obj/structure/crates.dmi'
     icon_state = "coffin"
