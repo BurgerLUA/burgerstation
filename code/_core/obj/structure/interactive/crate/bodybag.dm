@@ -13,7 +13,6 @@
     layer = LAYER_OBJ_CRATE
 
 /obj/structure/interactive/crate/bodybag/proc/can_pack_up(var/mob/caller)
-
     INTERACT_CHECK_NO_DELAY(src)
 
     if(length(src.crate_contents))
