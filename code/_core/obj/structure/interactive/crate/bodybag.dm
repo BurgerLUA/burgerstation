@@ -3,7 +3,7 @@
     desc = "You where loud and ugly and now your dead!"
     desc_extended = "A plastic bag to transport corpse."
     icon = 'icons/obj/structure/crates.dmi'
-    icon_state = "crate"
+    icon_state = "coffin"
 
     anchored = FALSE
     collision_flags = FLAG_COLLISION_NONE //Not wall because crawling.
@@ -63,7 +63,7 @@
     desc = "Why would you carry these, not like you can bag yourself. Unless...."
     desc_extended = "A plastic bag meant to transport corpses."
     structure_to_deploy = /obj/structure/interactive/crate/bodybag
-    icon = 'icons/obj/item/deployable/barricade.dmi'
+    icon = 'icons/obj/item/deployable/bodybag.dmi'
     value = 40
     var/list/content = list()
     weight = 3
