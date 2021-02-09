@@ -106,8 +106,6 @@ proc/format_speaker(var/speaker,var/source,var/tag,var/frequency=-1,var/language
 			. = "[get_chat_icons(speaker)][.]"
 		tag = trim(tag)
 		tag_text += ICON_TO_HTML(chat_tags.icon,tag,32,10)
-		. = span(tag,"[tag_text][.]")
-		if(tag == "OOC")
-			. = "<span style='color:[get_ooc_color(speaker)]'>[.]</span>"
+		. = span(tag == "OOC","[tag_text][.]",tag == "OOC" ? "color:[get_ooc_color(speaker)]" : null)
 
 	return .

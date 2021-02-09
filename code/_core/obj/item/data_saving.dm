@@ -120,6 +120,9 @@
 	if(quality && quality != initial(quality))
 		.["quality"] = quality
 
+	if(luck && luck != initial(luck))
+		.["luck"] = luck
+
 	return .
 
 /obj/item/organ/save_item_data(var/save_inventory = TRUE)
@@ -166,6 +169,8 @@
 		delete_on_drop = TRUE
 	if(object_data["quality"])
 		quality = object_data["quality"]
+	if(object_data["luck"])
+		luck = object_data["luck"]
 
 	return TRUE
 

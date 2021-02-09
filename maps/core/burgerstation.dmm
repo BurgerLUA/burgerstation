@@ -2678,17 +2678,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
-"jC" = (
-/obj/structure/interactive/crate,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/mob/living/advanced/npc/beefman,
-/turf/simulated/floor/tile/coldroom,
-/area/burgerstation/cafe/kitchen)
 "jD" = (
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/grey,
@@ -5503,10 +5492,6 @@
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
-"tW" = (
-/obj/item/weapon/melee/torch/lantern,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
 "tX" = (
 /obj/structure/interactive/vending/medical/medicine,
 /turf/simulated/floor/tile/morphing/medical,
@@ -5517,18 +5502,6 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering)
-"tZ" = (
-/obj/item/weapon/melee/torch,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
-"ua" = (
-/obj/item/weapon/melee/torch/flashlight,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
-"ub" = (
-/obj/item/weapon/melee/torch/flashlight/maglight,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
 "uc" = (
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/morphing/blue,
@@ -39800,7 +39773,7 @@ hZ
 if
 dc
 iR
-jC
+kb
 kb
 ki
 eS
@@ -48550,7 +48523,7 @@ sF
 lJ
 nF
 pi
-tZ
+pi
 pi
 pi
 pi
@@ -48806,8 +48779,8 @@ jy
 sF
 lJ
 nF
-tW
-ua
+pi
+pi
 pi
 tI
 pi
@@ -49064,7 +49037,7 @@ sF
 lJ
 nF
 pi
-ub
+pi
 pi
 pi
 pi

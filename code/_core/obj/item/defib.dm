@@ -63,14 +63,17 @@
 
 	var/turf/T = get_turf(target)
 
-	target.add_status_effect(ADRENALINE,30,30)
-
 	caller.visible_message(span("notice","\The [caller.name] shocks \the [target.name] with \the [src.name]!"),span("notice","You shock \the [target.name] with \the [src.name]!"))
 
 	play_sound('sound/items/defib/defib_zap.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
-	if(target.check_death() || !target.is_player_controlled() || target.suicide)
+	var/target_dead = target.dead || target.has_status_effect(CRIT)
+
+	if(target_dead)
+		target.add_status_effect(ADRENALINE,100,100)
+
+	if(target.check_death() || (target.dead && !target.is_player_controlled()) || target.suicide)
 		target.visible_message(span("warning","Nothing happens..."))
 		play_sound('sound/items/defib/defib_failed.ogg',T,range_max=VIEW_RANGE)
 		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
@@ -79,10 +82,20 @@
 	play_sound('sound/items/defib/defib_ready.ogg',T,range_max=VIEW_RANGE*0.5)
 	create_alert(VIEW_RANGE*0.5,T,caller,ALERT_LEVEL_NOISE)
 
-	target.revive()
-	caller.visible_message(span("danger","\The [target.name] jolts to life!"))
-
-	target.add_status_effect(ADRENALINE,100,100)
+	if(target_dead) //Was dead
+		target.revive()
+		caller.visible_message(span("danger","\The [target.name] jolts to life!"))
+	else
+		target.do_emote("scream")
+		target.add_status_effect(ADRENALINE,50,100)
+		var/atom/target_to_damage = target
+		if(is_advanced(target))
+			var/mob/living/advanced/A = target
+			if(A.labeled_organs[BODY_TORSO])
+				target_to_damage = A.labeled_organs[BODY_TORSO]
+		var/damage_to_deal = caller == target ? 50 : 20
+		target_to_damage?.health?.adjust_loss_smart(PAIN=damage_to_deal,FATIGUE=damage_to_deal)
+		target.add_status_effect(STUN,20,20)
 
 	return TRUE
 
@@ -128,7 +141,7 @@
 	if(is_inventory(object))
 		return ..()
 
-	if(is_busy())
+	if(caller.is_busy())
 		return TRUE
 
 	if(!linked_defib)
