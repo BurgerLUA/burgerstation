@@ -386,7 +386,7 @@
 
 /mob/living/Initialize()
 
-	if(ai) ai = new ai(src)
+	if(ai) ai = new ai(null,src)
 
 	if(boss)
 		SSbosses.tracked_bosses += src

@@ -3,7 +3,7 @@
 	var/mob/living/simple/herald/owner_as_herald
 
 
-/ai/boss/herald/New(var/mob/living/desired_owner)
+/ai/boss/herald/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_herald = desired_owner
 	return ..()
 

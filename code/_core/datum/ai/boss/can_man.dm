@@ -15,7 +15,7 @@
 	var/strafe_count = 10
 	var/strafe_delay = 60
 
-/ai/boss/can_man/New(var/mob/living/desired_owner)
+/ai/boss/can_man/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_can_man = desired_owner
 	return ..()
 

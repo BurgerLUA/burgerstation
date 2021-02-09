@@ -51,7 +51,7 @@
 /ai/clown/mutant/
 	jokes = list()
 
-/ai/clown/mutant/New(var/mob/desired_owner)
+/ai/clown/mutant/New(var/desired_loc,var/mob/desired_owner)
 
 	. = ..()
 

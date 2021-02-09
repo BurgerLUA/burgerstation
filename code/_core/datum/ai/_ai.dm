@@ -161,7 +161,7 @@
 
 	return TRUE
 
-/ai/New(var/mob/living/desired_owner)
+/ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
 
 	owner = desired_owner
 

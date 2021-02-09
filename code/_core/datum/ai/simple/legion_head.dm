@@ -2,7 +2,7 @@
 	var/mob/living/simple/legionare_head/owner_as_legion_head
 	use_alerts = FALSE
 
-/ai/legion_head/New(var/mob/living/desired_owner)
+/ai/legion_head/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_legion_head = desired_owner
 	return ..()
 

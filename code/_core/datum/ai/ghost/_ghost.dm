@@ -52,7 +52,7 @@
 	owner_as_ghost.icon_state = ghost_type
 	owner_as_ghost.name = ghost_type
 
-/ai/ghost/New(var/mob/living/desired_owner)
+/ai/ghost/New(var/desired_loc,var/mob/living/desired_owner)
 
 	. = ..()
 
