@@ -66,7 +66,6 @@
     structure_to_deploy = /obj/structure/interactive/crate/bodybag
     icon = 'icons/obj/item/deployable/bodybag.dmi'
     value = 40
-    var/list/content = list()
     weight = 3
 
     item_count_max = 5
