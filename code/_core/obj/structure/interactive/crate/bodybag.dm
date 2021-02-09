@@ -5,6 +5,7 @@
     icon = 'icons/obj/structure/crates.dmi'
     icon_state = "coffin"
 
+    value = 40 //same value as /obj/item/deployable/bodybag to avoid money dubing 
     anchored = FALSE
     collision_flags = FLAG_COLLISION_NONE //Not wall because crawling.
     collision_bullet_flags = FLAG_COLLISION_BULLET_NONE //you'd always shoot OVER the body bag no?
