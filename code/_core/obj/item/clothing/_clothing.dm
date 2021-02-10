@@ -28,6 +28,7 @@
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = 0,
+		SANITY = 0,
 		ION = 0,
 		PAIN = 0
 	)
