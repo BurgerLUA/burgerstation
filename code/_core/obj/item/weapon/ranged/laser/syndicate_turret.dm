@@ -21,7 +21,7 @@
 
 	size = SIZE_3
 
-	value = 0
+	value = -1
 
 	battery = /obj/item/powercell/recharging
 
@@ -29,6 +29,10 @@
 
 	bullet_color = COLOR_BULLET
 
-
 /obj/item/weapon/ranged/energy/syndicate_turret/get_static_spread()
 	return 0.005
+
+/obj/item/weapon/ranged/energy/syndicate_turret/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+	if(!caller.ai)
+		return FALSE
+	return ..()

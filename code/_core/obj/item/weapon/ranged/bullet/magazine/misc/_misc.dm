@@ -2,9 +2,7 @@
 	movement_spread_base = 0
 	movement_spread_mul = 0
 
-
-
-/obj/item/weapon/ranged/bullet/magazine/misc/sentry_gun
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry
 
 	name = "\improper Sentry Gun"
 	desc = ""
@@ -45,6 +43,8 @@
 
 	value = -1
 
+	anchored = TRUE
+
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_empty(var/mob/caller)
 	next_shoot_time = world.time + 20
 	return ..()
@@ -68,3 +68,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_skill_spread(var/mob/living/L)
 	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+	if(!caller.ai)
+		return FALSE
+	return ..()
