@@ -33,6 +33,6 @@
 	return 0.005
 
 /obj/item/weapon/ranged/energy/syndicate_turret/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
-	if(!caller.ai)
+	if(caller.is_player_controlled())
 		return FALSE
 	return ..()
