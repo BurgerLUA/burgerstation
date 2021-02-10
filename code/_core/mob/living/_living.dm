@@ -17,8 +17,6 @@
 	var/ai/ai
 	//var/id //Boss ID
 
-	var/boss_icon_state
-
 	var/iff_tag
 	var/loyalty_tag
 
@@ -82,6 +80,8 @@
 
 	var/boss = FALSE
 	var/boss_music
+	var/boss_icon_state
+	var/loot/boss_loot
 
 	//var/list/mob/living/advanced/player/linked_players
 

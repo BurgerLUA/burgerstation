@@ -2,6 +2,17 @@
 	var/has_bloodoxygen = TRUE
 	organic = TRUE
 
+/health/mob/living/get_damage_multiplier()
+
+	. = ..()
+
+	var/mob/living/L = owner
+	if(L.boss)
+		var/multiplier_value = max(0.1,1 - max(1,length(L.players_fighting_boss))*0.1)
+		. *= multiplier_value
+
+	return .
+
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()

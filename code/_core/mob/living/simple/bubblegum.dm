@@ -7,6 +7,8 @@
 	class = /class/bubblegum/
 	ai = /ai/boss/bubblegum/
 
+	boss_loot = /loot/lavaland/bubblegum
+
 	pixel_x = -32
 
 	value = 4000
@@ -14,11 +16,11 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 4000
+	health_base = 16000
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = DECISECONDS_TO_TICKS(2)
+	move_delay = BOSS_TICK*3
 
 	stun_angle = 0
 
@@ -87,7 +89,6 @@
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro/bubblegum,get_turf(src))
 	charge_steps = 0
 	charge_dir = 0
 	icon_state = "dead"
@@ -123,14 +124,15 @@
 	. = ..()
 
 	if(charge_steps)
-		. = DECISECONDS_TO_TICKS(BOSS_TICK)
+		. = BOSS_TICK*1
 
 	return .
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 
+	play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src),volume = charge_steps ? 50 : 25)
+
 	if(charge_steps)
-		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 		var/turf/simulated/T0 = get_turf(src)
 		var/turf/simulated/T1 = get_step(src,turn(dir,90))
 		var/turf/simulated/T2 = get_step(src,turn(dir,-90))
@@ -142,20 +144,21 @@
 
 /mob/living/simple/bubblegum/Bump(atom/Obstacle)
 
-	if(charge_steps && Obstacle.health)
+	if(Obstacle.health)
 		var/damagetype/DT = all_damage_types[/damagetype/npc/bubblegum]
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
 		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
+		visible_message(span("danger","\The [src.name] rams into \the [Obstacle.name]!"))
 		DT.hit(src,Obstacle,src,object_to_damage,src,1)
 
 	return ..()
 
 /mob/living/simple/bubblegum/proc/start_charge()
 	charge_dir = dir
-	charge_steps = rand(5,15)
-	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/finish_charge)
+	charge_steps = 9
+	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(4),src,.proc/finish_charge) //Fallback time.
 	return TRUE
 
 /mob/living/simple/bubblegum/proc/finish_charge()

@@ -1,7 +1,5 @@
 /loot/lavaland
-	loot_multiplier = 4
-
-
+	loot_multiplier = 1
 
 /loot/lavaland/ash_drake
 	loot_table = list(

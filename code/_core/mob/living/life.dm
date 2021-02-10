@@ -30,6 +30,14 @@
 
 	var/turf/T = get_turf(src)
 
+	if(boss && boss_loot)
+		var/obj/structure/interactive/boss_loot/BL = new(T)
+		BL.loot_to_give = boss_loot
+		BL.allowed_users = players_fighting_boss.Copy()
+		INITIALIZE(BL)
+		GENERATE(BL)
+		FINALIZE(BL)
+
 	create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
 	movement_flags = 0x0

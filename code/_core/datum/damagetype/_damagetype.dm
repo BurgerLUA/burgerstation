@@ -202,7 +202,7 @@
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier*damage_mod
+	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
 
 	if(debug) log_debug("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 

@@ -1536,6 +1536,7 @@
 #include "code\_core\obj\structure\interactive\bed_sleeper_medical.dm"
 #include "code\_core\obj\structure\interactive\blocker.dm"
 #include "code\_core\obj\structure\interactive\bookcase.dm"
+#include "code\_core\obj\structure\interactive\boss_loot.dm"
 #include "code\_core\obj\structure\interactive\chair.dm"
 #include "code\_core\obj\structure\interactive\conveyor.dm"
 #include "code\_core\obj\structure\interactive\diverter.dm"

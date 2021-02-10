@@ -160,7 +160,8 @@
 
 	if(is_organ(src.loc)) //We belong to an organ, so we should attack.
 		var/obj/item/organ/O = src.loc
-		return O.attack(caller,object,params)
+		O.attack(caller,object,params)
+		return TRUE
 
 	return FALSE
 

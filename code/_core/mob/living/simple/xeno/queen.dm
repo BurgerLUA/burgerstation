@@ -8,7 +8,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	pixel_x = -16
 
 
-	health_base = 2000
+	health_base = 5000
 	stamina_base = 3000
 	mana_base = 500
 
@@ -111,7 +111,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	for(var/mob/living/L in range(src,VIEW_RANGE))
 		if(L.loyalty_tag == src.loyalty_tag)
 			continue
-		L.add_status_effect(STUN,40,40)
+		L.add_status_effect(STUN,20,20)
 
 	if(N_end)
 		var/created_paths = 0

@@ -12,9 +12,11 @@
 
 	ai = /ai/boss/can_man
 
+	boss_loot = /loot/lavaland/can_man
+
 	stun_angle = 0
 
-	health_base = 5000
+	health_base = 15000
 	stamina_base = 4000
 	mana_base = 100
 
@@ -78,7 +80,6 @@
 
 /mob/living/simple/can_man/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro/can_man,get_turf(src))
 	charge_steps = 0
 	charge_dir = 0
 	icon_state = "dead"

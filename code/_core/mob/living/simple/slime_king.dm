@@ -17,7 +17,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 2500
+	health_base = 4000
 	stamina_base = 5000
 	mana_base = 100
 

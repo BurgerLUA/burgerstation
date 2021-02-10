@@ -18,6 +18,8 @@ var/global/list/stored_bookcase_phrases = list(
 
 	var/chance_of_scroll = 0
 
+	density = TRUE
+
 /obj/structure/interactive/bookcase/Generate()
 
 	if(prob(25))
