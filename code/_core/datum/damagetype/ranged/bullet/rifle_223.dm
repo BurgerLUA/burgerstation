@@ -58,19 +58,17 @@
 		PIERCE = AP_AXE*3
 	)
 
-/damagetype/ranged/bullet/rifle_545mm
+/damagetype/ranged/bullet/rifle_545mm // pls no touchy ruski
 	name = "5.45mm rifle bullet"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD,
-		PAIN = DAMAGE_SWORD*0.25
+		PIERCE = DAMAGE_AXE
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_SWORD,
-		PAIN = AP_SWORD
+		PIERCE = AP_AXE
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
@@ -80,14 +78,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD*0.75,
-		PAIN = DAMAGE_SWORD*0.175
+		PIERCE = DAMAGE_AXE*0.75
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_SWORD*3,
-		PAIN = AP_SWORD*3
+		PIERCE = AP_AXE*3
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE

@@ -1117,6 +1117,7 @@
 #include "code\_core\obj\item\clothing\overwear\coat\brown.dm"
 #include "code\_core\obj\item\clothing\overwear\coat\cardboard.dm"
 #include "code\_core\obj\item\clothing\overwear\coat\chaplain.dm"
+#include "code\_core\obj\item\clothing\overwear\coat\ghillie.dm"
 #include "code\_core\obj\item\clothing\overwear\coat\ghost.dm"
 #include "code\_core\obj\item\clothing\overwear\coat\holster.dm"
 #include "code\_core\obj\item\clothing\overwear\coat\hoodie.dm"
