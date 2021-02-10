@@ -40,7 +40,7 @@ var/global/list/limbs_to_value = list(
 		var/defense_value = defense_rating[defense_type]
 		if(!defense_value || defense_value < 0)
 			continue
-		. += (min(200,defense_value)**2)/defense_rating_to_value[defense_type]
+		. += (min(400,defense_value)**2)/defense_rating_to_value[defense_type]
 
 	var/base_multiplier = 0
 
