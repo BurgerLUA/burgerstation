@@ -48,7 +48,7 @@ var/global/list/wishgranter_speak_lines = list(
 			log_error("Warning: Wishgranter had invalid loot ([loot_to_give]).")
 			return TRUE
 		for(var/obj/item/I in created_loot)
-			switch(pick(1,20))
+			switch(pick(1,30))
 				if(1)
 					I.quality = rand(190,200)
 				if(2 to 3)
