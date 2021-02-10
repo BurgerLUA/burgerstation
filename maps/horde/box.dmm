@@ -261,8 +261,8 @@
 /turf/simulated/wall/metal,
 /area/box/interior/station/maint/west)
 "bn" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile/morphing/virology,
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
 /area/box/interior/station/maint/east)
 "bo" = (
 /turf/simulated/wall/metal/reinforced,
@@ -752,10 +752,15 @@
 /area/box/interior/station/cafe/bar)
 "dw" = (
 /obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/glass,
+/obj/item/container/beaker/glass,
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dx" = (
 /obj/structure/smooth/table/glass,
+/obj/item/container/beaker/alcohol/absinthe,
+/obj/item/container/beaker/alcohol/cider,
+/obj/item/container/beaker/alcohol/fernet,
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dy" = (
@@ -768,9 +773,9 @@
 /area/box/interior/station/cafe/kitchen)
 "dA" = (
 /obj/structure/smooth/table/glass,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
+/obj/item/container/beaker/alcohol/grappa,
+/obj/item/container/beaker/alcohol/rum,
+/obj/item/container/beaker/alcohol/tequila,
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dB" = (
@@ -1703,8 +1708,9 @@
 	},
 /area/box/interior/station/chapel)
 "hM" = (
-/turf/simulated/floor/colored/dirt/soil,
-/area/box/interior/station/hydroponics)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
 "hN" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile/dark,
@@ -2161,8 +2167,9 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/arrivals)
 "jE" = (
-/turf/simulated/floor/tile/tint,
-/area/box/interior/station/cafe/bar)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/maint/east)
 "jF" = (
 /obj/marker/objective_spawn,
 /turf/simulated/floor/tile/grey,
@@ -2740,11 +2747,9 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/cafe/kitchen)
 "lV" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile/tint,
-/area/box/interior/station/cafe/bar)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/hydroponics)
 "lW" = (
 /obj/structure/smooth/table/reinforced,
 /turf/simulated/floor/tile,
@@ -2825,6 +2830,8 @@
 /area/box/interior/station/chapel)
 "mk" = (
 /obj/structure/interactive/crate/closet/anchored,
+/obj/item/container/food/dynamic/meat/raw_monkey,
+/obj/item/container/food/dynamic/meat/raw_monkey,
 /turf/simulated/floor/tile/tint,
 /area/box/interior/station/cafe/kitchen)
 "ml" = (
@@ -2930,6 +2937,7 @@
 /area/box/interior/station/maint/east)
 "mF" = (
 /obj/structure/interactive/crate/closet/anchored,
+/obj/item/handcuffs,
 /mob/living/advanced/npc/monkey,
 /turf/simulated/floor/tile/tint,
 /area/box/interior/station/cafe/kitchen)
@@ -2999,6 +3007,184 @@
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
+"mW" = (
+/obj/structure/interactive/reagent_tank/cheese_powder,
+/turf/simulated/floor/tile/tint,
+/area/box/interior/station/cafe/bar)
+"mX" = (
+/obj/structure/interactive/reagent_tank/cream_filling,
+/turf/simulated/floor/tile/tint,
+/area/box/interior/station/cafe/bar)
+"mY" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/obj/structure/interactive/reagent_tank/butter,
+/turf/simulated/floor/tile/tint,
+/area/box/interior/station/cafe/bar)
+"mZ" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile/tint,
+/area/box/interior/station/cafe/kitchen)
+"na" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/obj/structure/interactive/vending/hydroponics/seeds,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/hydroponics)
+"nb" = (
+/obj/structure/interactive/plant/chanterelle,
+/turf/simulated/floor/colored/dirt/soil,
+/area/box/interior/station/hydroponics)
+"nc" = (
+/obj/structure/interactive/door/airlock/station/botany/glass,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/hydroponics)
+"nd" = (
+/obj/structure/interactive/door/airlock/station/kitchen,
+/turf/simulated/floor/tile/tint,
+/area/box/interior/station/cafe/kitchen)
+"ne" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/bowl,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nf" = (
+/obj/structure/interactive/door/airlock/station/kitchen/glass,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/bar)
+"ng" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/food/dynamic/meat/raw_monkey,
+/obj/item/container/food/dynamic/meat/raw_monkey,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nh" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/food/dynamic/meat/cooked_steak,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"ni" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/food/dynamic/cheese/wheel,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nj" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/food/package/junkfood/cake,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nk" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/can/cola,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nl" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/alcohol/ale,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nm" = (
+/obj/structure/smooth/table/glass,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/obj/item/container/beaker/alcohol/wine,
+/obj/item/container/beaker/alcohol/wine/vermouth,
+/obj/item/container/beaker/alcohol/wine/lizard,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nn" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/alcohol/beer,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"no" = (
+/obj/structure/smooth/table/glass,
+/obj/item/container/beaker/alcohol/hearty_punch,
+/obj/item/container/beaker/alcohol/schnapps/gold,
+/obj/item/container/beaker/alcohol/whiskey,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"np" = (
+/obj/structure/smooth/table/glass,
+/obj/item/container/beaker/alcohol/brandy,
+/obj/item/container/beaker/alcohol/coffee_liqueur,
+/obj/item/container/beaker/alcohol/gin,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nq" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/beaker/can/space_up,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nr" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/beaker/can/cola,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"ns" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/food/milk,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nt" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/food/sugar,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nu" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/food/flour,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nv" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/food/corn_flour,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nw" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/beaker/glass,
+/obj/item/container/beaker/shot,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nx" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/beaker/glass,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"ny" = (
+/obj/structure/smooth/table/reinforced,
+/obj/item/container/cheese_mold,
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nz" = (
+/obj/structure/smooth/table,
+/obj/item/container/pill/space_drugs,
+/obj/item/container/pill/space_drugs,
+/obj/item/container/pill/space_drugs,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/hydroponics)
+"nA" = (
+/obj/structure/smooth/table,
+/obj/item/container/pill/space_dust,
+/obj/item/container/pill/space_dust,
+/obj/item/container/pill/space_dust,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/hydroponics)
+"nB" = (
+/obj/structure/smooth/table,
+/obj/item/container/pill/omnizine,
+/obj/item/container/pill/omnizine,
+/turf/simulated/floor/tile/morphing/virology,
+/area/box/interior/station/hydroponics)
+"nC" = (
+/obj/structure/smooth/table/wood,
+/obj/item/enchanting_chalk,
+/turf/simulated/floor/carpet,
+/area/box/interior/station/library)
 
 (1,1,1) = {"
 is
@@ -40638,7 +40824,7 @@ dh
 dd
 dd
 dd
-dC
+nq
 dC
 dC
 dd
@@ -41152,8 +41338,8 @@ dh
 dd
 dd
 dd
-dC
-dC
+nx
+nr
 dC
 dd
 fq
@@ -43205,11 +43391,11 @@ dd
 dd
 dd
 bN
+nl
 dw
-dw
-dw
-dw
-dw
+nn
+nw
+nn
 dd
 dd
 fq
@@ -43977,10 +44163,10 @@ dm
 dd
 bN
 dx
-dx
 dA
-dx
-dx
+nm
+no
+np
 dd
 dd
 fq
@@ -44238,7 +44424,7 @@ bN
 bN
 bN
 bN
-aB
+nf
 bN
 fp
 fs
@@ -44485,9 +44671,9 @@ aX
 aY
 eT
 bN
-jE
-jE
-lV
+mW
+mX
+mY
 mm
 bN
 lW
@@ -44749,8 +44935,8 @@ dj
 df
 dz
 dk
-dk
-dk
+nt
+dy
 dk
 dk
 dy
@@ -45006,11 +45192,11 @@ dj
 df
 dz
 dk
+nu
+ni
 dk
-dy
 dk
-dk
-dy
+nh
 fs
 fs
 fs
@@ -45259,12 +45445,12 @@ df
 mk
 dj
 dj
-dj
+mZ
 df
 dz
 dk
-dk
 dy
+ns
 dk
 dk
 dy
@@ -45515,10 +45701,10 @@ eT
 df
 df
 df
-dj
+nd
 df
 df
-dy
+ng
 dk
 dk
 dk
@@ -45777,7 +45963,7 @@ dk
 dk
 dk
 dk
-dk
+nv
 dy
 dk
 dk
@@ -46034,11 +46220,11 @@ dk
 dk
 dk
 dk
+ny
+ne
 dk
-dy
 dk
-dk
-dy
+nk
 fs
 fs
 fy
@@ -46295,7 +46481,7 @@ dk
 dk
 dk
 dk
-dy
+nj
 fs
 fs
 fs
@@ -46537,11 +46723,11 @@ eT
 eT
 eT
 eT
-eT
+bn
 fH
 eT
 df
-dk
+hM
 dk
 dk
 dk
@@ -47052,7 +47238,7 @@ eT
 fH
 eT
 fH
-bn
+jE
 dq
 mK
 df
@@ -47311,7 +47497,7 @@ eT
 be
 gC
 bK
-bl
+lV
 be
 mQ
 bK
@@ -47568,7 +47754,7 @@ eT
 be
 gC
 bK
-bl
+nB
 be
 mR
 bK
@@ -47577,7 +47763,7 @@ bK
 bK
 bK
 bK
-bK
+nb
 bK
 bK
 mN
@@ -47825,7 +48011,7 @@ eT
 bk
 bl
 bK
-bl
+nA
 be
 mR
 bK
@@ -47834,7 +48020,7 @@ mS
 mS
 bK
 bK
-bK
+nb
 bK
 ha
 mN
@@ -48082,9 +48268,9 @@ eT
 be
 mJ
 bK
-bl
+nz
 be
-hM
+mS
 bK
 bK
 mS
@@ -48339,9 +48525,9 @@ eT
 be
 mJ
 bK
-bl
+gC
 be
-hM
+mS
 bK
 bK
 mS
@@ -48598,16 +48784,16 @@ mJ
 bK
 bl
 be
-hM
+mS
 bK
 bK
 bK
 bK
 bK
-bl
+lV
 be
 be
-bl
+nc
 be
 be
 iM
@@ -48855,7 +49041,7 @@ mJ
 bK
 bl
 be
-hM
+mS
 bK
 bK
 bK
@@ -49112,7 +49298,7 @@ bl
 bK
 bl
 be
-hM
+mS
 bK
 bK
 bK
@@ -49123,7 +49309,7 @@ gz
 mI
 gB
 bl
-bl
+nc
 iM
 fs
 iR
@@ -49373,13 +49559,13 @@ bl
 bK
 bK
 bl
-bl
-dB
+mH
+na
 gC
 gz
 mC
 dB
-bl
+lV
 be
 iM
 fs
@@ -49625,7 +49811,7 @@ gC
 bK
 bK
 bl
-bl
+nc
 bl
 bK
 bK
@@ -49881,12 +50067,12 @@ fH
 gC
 bl
 dB
-bl
+mD
 gz
 gC
 mb
-gC
-gC
+bl
+lV
 be
 mc
 be
@@ -50142,7 +50328,7 @@ be
 be
 be
 be
-be
+bk
 be
 be
 mc
@@ -50658,7 +50844,7 @@ fK
 fK
 fK
 fK
-fK
+fL
 fK
 fK
 fK
@@ -52711,7 +52897,7 @@ fK
 fK
 fK
 fK
-fP
+nC
 fP
 fP
 fM

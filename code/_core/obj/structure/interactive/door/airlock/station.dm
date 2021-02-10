@@ -116,11 +116,29 @@
 	filler = "fill"
 	fill_color = COLOR_WHITE
 
+/obj/structure/interactive/door/airlock/station/botany
+	name = "botany airlock"
+	color = COLOR_GREEN
+	filler = "fill"
+	fill_color = COLOR_WHITE
+
+/obj/structure/interactive/door/airlock/station/botany/glass
+	filler = "glass"
+
 
 /obj/structure/interactive/door/airlock/station/general
 	name = "general airlock"
 	color = COLOR_METAL_DARK
 	fill_color = "#83A35D"
+
+
+/obj/structure/interactive/door/airlock/station/kitchen
+	name = "kitchen airlock"
+	color = COLOR_WHITE
+	fill_color = COLOR_WHITE
+
+/obj/structure/interactive/door/airlock/station/kitchen/glass
+	filler = "glass"
 
 /obj/structure/interactive/door/airlock/station/chemistry
 	name = "medical airlock"

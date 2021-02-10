@@ -13,7 +13,7 @@
 
 	return .
 
-/client/MouseWheel(object,delta_x,delta_y,location,control,params)
+/client/MouseWheel(var/atom/object,delta_x,delta_y,location,control,params)
 
 	var/list/new_params = params2list(params)
 
@@ -23,6 +23,8 @@
 			change_in_screen *= 0.1
 		update_zoom(zoom_level + change_in_screen)
 		return TRUE
+
+	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 

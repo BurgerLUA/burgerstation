@@ -104,14 +104,14 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 /mob/living/simple/xeno/queen/proc/screech(var/debug = FALSE)
 
-	var/obj/marker/map_node/N_end = find_closest_node(src)
-
 	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 
 	for(var/mob/living/L in range(src,VIEW_RANGE))
 		if(L.loyalty_tag == src.loyalty_tag)
 			continue
 		L.add_status_effect(STUN,20,20)
+
+	var/obj/marker/map_node/N_end = find_closest_node(src)
 
 	if(N_end)
 		var/created_paths = 0
@@ -132,7 +132,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 				continue
 			X.ai.set_path(found_path)
 			created_paths++
-		log_error("Screech: Found [created_paths] valid pathsa and [failed_paths] failed paths.")
+		log_error("Screech: Found [created_paths] valid paths and [failed_paths] failed paths.")
 	else if(debug)
 		log_error("Could not find path end for [src.get_debug_name()] queen screech!")
 
