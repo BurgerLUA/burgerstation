@@ -3,13 +3,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
-		/obj/item/magazine/shotgun_auto/buckshot,
-		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/bizon_9mm,
+		/obj/item/magazine/bizon_9mm,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon = 1,
-		/obj/item/magazine/shotgun_auto/buckshot = 4,
+		/obj/item/magazine/bizon_9mm = 4,
 	)
 	loot_count = 6
 	chance_none = 25
