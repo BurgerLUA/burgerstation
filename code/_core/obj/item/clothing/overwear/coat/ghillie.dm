@@ -5,7 +5,6 @@
 	icon = 'icons/obj/item/clothing/suit/maskcoat_grass.dmi'
 
 	hidden_organs = list(
-		BODY_HEAD = TRUE,
 		BODY_HAIR_HEAD = TRUE,
 		BODY_HAIR_FACE = TRUE
 	)
