@@ -11,6 +11,7 @@
     collision_bullet_flags = FLAG_COLLISION_BULLET_NONE //you'd always shoot OVER the body bag no?
     density = TRUE
     layer = LAYER_OBJ_CRATE
+    size = SIZE_5
 
 /obj/structure/interactive/crate/bodybag/proc/can_pack_up(var/mob/caller)
     INTERACT_CHECK_NO_DELAY(src)
