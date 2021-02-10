@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/nagant
-	name = "\improper 7.62x38mmR Nagant Revolver"
+	name = "\improper 7.62x39mmR Nagant Revolver"
 	desc = "A dusty old revolver."
 	desc_extended = "The Nagant is difficult to use, but it pays off in durability and reliability."
 	icon = 'icons/obj/item/weapons/ranged/revolver/762.dmi'
@@ -24,7 +24,7 @@
 
 
 	bullet_length_min = 36
-	bullet_length_best = 38
+	bullet_length_best = 39
 	bullet_length_max = 40
 
 	bullet_diameter_min = 7.6
