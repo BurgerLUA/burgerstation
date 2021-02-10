@@ -25,7 +25,7 @@
 	name = "SKAT-9 full-head mask/helmet assembly"
 	icon = 'icons/obj/item/clothing/hats/helmet_skat.dmi'
 	desc = "Milstalkers are just military but hetero."
-	desc_extended = "So, it's an SKAT's helmet. It protects. It is cool, because milstalkers are cool."
+	desc_extended = "So, it's a SKAT's helmet. It protects. It is cool, because milstalkers are cool."
 	rarity = RARITY_RARE
 
 	defense_rating = list(
