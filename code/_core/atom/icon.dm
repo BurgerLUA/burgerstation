@@ -30,7 +30,7 @@
 
 /atom/proc/add_underlay(var/datum/desired_underlay)
 
-	if(length(overlays) >= 100)
+	if(length(underlays) >= 100)
 		CRASH_SAFE("Warning: [get_debug_name()] exceeds 100 underlays![is_datum(desired_underlay) ? " Overlay name: [desired_underlay.get_debug_name()]." : ""]")
 		return FALSE
 
