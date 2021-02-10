@@ -24,7 +24,7 @@
 /event/supply/New()
 
 	for(var/area/A in world)
-		if(A.z < Z_LEVEL_MISSION)
+		if(A.area_identifier != "Mission")
 			continue
 		if(A.interior)
 			continue
@@ -77,7 +77,8 @@
 			INITIALIZE(M)
 			GENERATE(M)
 			FINALIZE(M)
-			S.add_to_crate(M)
+			M.force_move(S)
+
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)

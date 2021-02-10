@@ -81,7 +81,9 @@
 		return TRUE
 
 	if(objective_attack)
-		if(is_living(objective_attack))
+		if(objective_attack.qdeleting || !objective_attack.health)
+			set_objective(null)
+		else if(is_living(objective_attack))
 			if(!should_attack_mob(objective_attack,FALSE))
 				set_objective(null)
 			else

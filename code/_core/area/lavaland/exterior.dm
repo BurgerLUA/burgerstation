@@ -14,3 +14,5 @@
 	tracks = TRACKS_LAVA
 
 	cheese_type = /reagent/nutrition/cheese/guava
+
+	sound_environment = ENVIRONMENT_QUARRY

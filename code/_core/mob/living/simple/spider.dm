@@ -33,7 +33,7 @@
 		PAIN = AP_SWORD
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

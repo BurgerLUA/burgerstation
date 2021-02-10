@@ -3,7 +3,7 @@
 
 	var/next_legion = 0
 
-/ai/legion/New(var/mob/living/desired_owner)
+/ai/legion/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_legion = desired_owner
 	return ..()
 

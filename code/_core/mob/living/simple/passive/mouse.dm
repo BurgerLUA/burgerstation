@@ -16,7 +16,7 @@
 	loyalty_tag = "Mouse"
 	iff_tag = "Mouse"
 
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 	blood_type = /reagent/blood/mouse
 	blood_volume = 50

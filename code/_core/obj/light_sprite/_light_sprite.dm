@@ -12,7 +12,7 @@
 	var/atom/movable/owner //Who actually owns this.
 	var/atom/movable/top_atom //What the top atom actually is.
 
-	var/size = 1 //Transform multiplier
+	size = 1 //Transform multiplier
 
 /obj/light_sprite/force_move(var/atom/new_loc)
 	if(top_atom) glide_size = top_atom.glide_size

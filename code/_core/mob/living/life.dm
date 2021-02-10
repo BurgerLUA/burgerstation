@@ -30,6 +30,14 @@
 
 	var/turf/T = get_turf(src)
 
+	if(boss && boss_loot)
+		var/obj/structure/interactive/boss_loot/BL = new(T)
+		BL.loot_to_give = boss_loot
+		BL.allowed_users = players_fighting_boss.Copy()
+		INITIALIZE(BL)
+		GENERATE(BL)
+		FINALIZE(BL)
+
 	create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
 	movement_flags = 0x0
@@ -169,7 +177,7 @@
 		if(desired_horizontal) //KNOCK DOWN
 			if(stun_angle != 0) animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
 			update_collisions(FLAG_COLLISION_CRAWLING)
-			play(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25)
+			play_sound(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25,range_max=VIEW_RANGE*0.5)
 		else //GET UP
 			if(stun_angle != 0) animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
@@ -451,5 +459,5 @@ mob/living/proc/on_life_slow()
 			continue
 		M.client.queued_shakes += 5
 	new/obj/effect/temp/fist(T,4,"#FFFFFF")
-	play('sound/effects/anima_fragment_attack.ogg',T)
+	play_sound('sound/effects/anima_fragment_attack.ogg',T,range_max=VIEW_RANGE)
 	on_crush()

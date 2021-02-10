@@ -12,7 +12,7 @@
 	var/last_fireball = 0
 
 
-/ai/boss/ash_drake/New(var/mob/living/desired_owner)
+/ai/boss/ash_drake/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_ash_drake = desired_owner
 	return ..()
 

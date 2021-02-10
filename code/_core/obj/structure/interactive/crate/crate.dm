@@ -30,22 +30,3 @@
 	desired_light_power = 0.25
 	desired_light_range = 1
 	desired_light_color = "#FF0000"
-
-
-/obj/structure/interactive/crate/necro/herald
-	loot = /loot/lavaland/herald
-
-/obj/structure/interactive/crate/necro/bubblegum
-	loot = /loot/lavaland/bubblegum
-
-/obj/structure/interactive/crate/necro/ash_drake
-	loot = /loot/lavaland/ash_drake
-
-/obj/structure/interactive/crate/necro/can_man
-	loot = /loot/lavaland/can_man
-
-/obj/structure/interactive/crate/necro/colossus
-	loot = /loot/lavaland/colossus
-
-/obj/structure/interactive/crate/necro/broodmother
-	loot = /loot/lavaland/broodmother

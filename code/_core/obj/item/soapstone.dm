@@ -8,7 +8,8 @@
 	var/cooldown = 0
 	var/stone_color = "#FFFFFF"
 
-	value = 100
+	value = 1000
+	value_burgerbux = 10
 
 	weight = 0.5
 

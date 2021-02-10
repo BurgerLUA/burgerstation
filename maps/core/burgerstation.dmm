@@ -2581,6 +2581,7 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
 "jk" = (
+/obj/structure/interactive/reagent_tank/cheese_powder,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/dressing)
 "jl" = (
@@ -2679,16 +2680,9 @@
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
 "jC" = (
-/obj/structure/interactive/crate,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/mob/living/advanced/npc/beefman,
-/turf/simulated/floor/tile/coldroom,
-/area/burgerstation/cafe/kitchen)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile/morphing/green,
+/area/burgerstation/cafe/botany)
 "jD" = (
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/grey,
@@ -5504,9 +5498,9 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "tW" = (
-/obj/item/weapon/melee/torch/lantern,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile/coldroom,
+/area/burgerstation/cafe/kitchen)
 "tX" = (
 /obj/structure/interactive/vending/medical/medicine,
 /turf/simulated/floor/tile/morphing/medical,
@@ -5518,17 +5512,17 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering)
 "tZ" = (
-/obj/item/weapon/melee/torch,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
+/obj/structure/interactive/reagent_tank/ethanol,
+/turf/simulated/floor/tile/morphing/janitor,
+/area/burgerstation/engineering)
 "ua" = (
-/obj/item/weapon/melee/torch/flashlight,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
 "ub" = (
-/obj/item/weapon/melee/torch/flashlight/maglight,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/east)
 "uc" = (
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/morphing/blue,
@@ -6060,6 +6054,26 @@
 /obj/item/coin/antag_token,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
+"wa" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/south)
+"wb" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile,
+/area/burgerstation/cafe/kitchen)
+"wc" = (
+/obj/structure/interactive/reagent_tank/ethanol,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/south)
+"wd" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
+"we" = (
+/obj/structure/interactive/reagent_tank/ethanol,
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
 "wf" = (
 /obj/structure/interactive/bed/sleeper/cryo,
 /turf/simulated/floor/tile/morphing/cryo,
@@ -6088,6 +6102,10 @@
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/burgerstation/cryo)
+"wl" = (
+/obj/structure/interactive/reagent_tank/ethanol,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/west)
 "wm" = (
 /obj/structure/interactive/door/airlock/station/bathroom/toilet,
 /turf/simulated/floor/tile,
@@ -6121,6 +6139,14 @@
 /obj/structure/interactive/misc/toilet,
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
+"ws" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
+"wt" = (
+/obj/structure/interactive/reagent_tank/ethanol,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
 "wu" = (
 /turf/simulated/floor/tile,
 /area/burgerstation/medical/chemistry)
@@ -6146,6 +6172,14 @@
 "wy" = (
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/pvp)
+"wz" = (
+/obj/structure/interactive/reagent_tank/lube,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/hanger)
+"wA" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/north)
 "wD" = (
 /mob/living/advanced/npc/cyborg_assistant/help_desk,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -25155,7 +25189,7 @@ bK
 bK
 bK
 jd
-jd
+wz
 jd
 bK
 bK
@@ -35188,12 +35222,12 @@ bK
 bK
 bK
 bK
-bK
+we
 bI
 ne
 ne
 bI
-bK
+ws
 bK
 bK
 bK
@@ -35673,7 +35707,7 @@ mF
 an
 AA
 AB
-xX
+wd
 xX
 xX
 xX
@@ -35703,7 +35737,7 @@ mF
 mF
 mF
 bI
-mU
+wl
 xW
 xW
 fF
@@ -37229,7 +37263,7 @@ yh
 cS
 yd
 fi
-hn
+jC
 hn
 hn
 hn
@@ -37496,7 +37530,7 @@ pb
 jn
 pb
 jn
-hn
+jC
 fi
 yi
 zb
@@ -38291,18 +38325,18 @@ oV
 gf
 lt
 bu
+wa
+bB
+Au
 bB
 bB
 bB
+Au
+Au
+Au
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+Au
 xP
 mF
 rT
@@ -38550,6 +38584,7 @@ nb
 oE
 bB
 bB
+Au
 bB
 bB
 bB
@@ -38558,8 +38593,7 @@ bB
 bB
 bB
 bB
-bB
-bB
+Au
 xP
 mF
 rT
@@ -38810,13 +38844,13 @@ bB
 bB
 bB
 bB
+Au
 bB
 bB
 bB
 bB
 bB
-bB
-bB
+Au
 xP
 mF
 rT
@@ -39067,13 +39101,13 @@ bB
 bB
 bB
 bB
+Au
 bB
 bB
 bB
 bB
 bB
-bB
-bB
+Au
 xP
 mF
 rT
@@ -39321,13 +39355,13 @@ nb
 bu
 bB
 bB
+Au
 bB
 bB
 bB
 bB
 bB
-bB
-bB
+Au
 bB
 bB
 bB
@@ -39578,13 +39612,13 @@ od
 bu
 bB
 bB
+Au
 bB
 bB
 bB
 bB
 bB
-bB
-bB
+Au
 bB
 bB
 bB
@@ -39800,7 +39834,7 @@ hZ
 if
 dc
 iR
-jC
+kb
 kb
 ki
 eS
@@ -39844,7 +39878,7 @@ bB
 bB
 bB
 bB
-bB
+wc
 xP
 mF
 rT
@@ -40066,7 +40100,7 @@ lm
 kN
 kN
 kN
-kN
+wb
 vc
 id
 fM
@@ -40093,15 +40127,15 @@ bu
 bB
 bB
 bB
+Au
+Au
+Au
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
+Au
+Au
+Au
 xP
 mF
 rT
@@ -40313,7 +40347,7 @@ hX
 hZ
 if
 dc
-jf
+tW
 jL
 jf
 kk
@@ -40605,7 +40639,7 @@ vn
 oR
 bu
 bB
-pt
+pu
 px
 qd
 pZ
@@ -41119,7 +41153,7 @@ vn
 oR
 bu
 bB
-pu
+pt
 pz
 pz
 px
@@ -43134,7 +43168,7 @@ Af
 Af
 Af
 Af
-Af
+tZ
 aK
 hP
 hZ
@@ -45226,7 +45260,7 @@ ny
 ny
 gF
 pk
-dX
+ub
 dX
 gL
 ps
@@ -45950,7 +45984,7 @@ aY
 aY
 aZ
 cq
-bH
+wA
 co
 cQ
 dG
@@ -48550,7 +48584,7 @@ sF
 lJ
 nF
 pi
-tZ
+pi
 pi
 pi
 pi
@@ -48578,7 +48612,7 @@ aj
 aj
 aj
 aj
-aj
+aX
 aj
 xd
 aj
@@ -48586,11 +48620,11 @@ aj
 aj
 aj
 aj
-aj
-aj
-aj
-aX
-aj
+dX
+dX
+dX
+dX
+dX
 aj
 mF
 kF
@@ -48806,8 +48840,8 @@ jy
 sF
 lJ
 nF
-tW
-ua
+pi
+pi
 pi
 tI
 pi
@@ -48841,13 +48875,13 @@ dX
 dX
 xb
 dX
-dX
-dX
-dX
-dX
-dX
-dX
+ub
+aj
 At
+At
+At
+dX
+ub
 aj
 mF
 kF
@@ -49064,7 +49098,7 @@ sF
 lJ
 nF
 pi
-ub
+pi
 pi
 pi
 pi
@@ -50612,7 +50646,7 @@ hJ
 hJ
 hq
 aj
-dX
+ub
 dX
 dX
 nK
@@ -50835,7 +50869,7 @@ mF
 bG
 dt
 cZ
-cZ
+ua
 dp
 en
 fv
@@ -53403,7 +53437,7 @@ kF
 kF
 mF
 bE
-cZ
+wt
 cZ
 cZ
 cZ

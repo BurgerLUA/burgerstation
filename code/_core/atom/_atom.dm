@@ -28,6 +28,10 @@
 	var/attack_range = 1 //If it's a melee weapon, it needs a range.
 
 	var/reagent_container/reagents //The reagents object. If an object is supposed to hold liquid, give it a reagent_container datum.
+	//This applies to things like beakers and whatnot. This affects player-controlled transfers, and does not affect procs like add_reagent
+	var/allow_reagent_transfer_to = FALSE
+	var/allow_reagent_transfer_from = FALSE
+
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
 	var/corner_icons = FALSE

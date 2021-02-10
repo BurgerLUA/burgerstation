@@ -4,7 +4,7 @@
 	iff_tag = "Cult"
 	loyalty_tag = "Cult"
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	blood_type = /reagent/blood/unholy
 	blood_volume = BLOOD_VOLUME_DEFAULT
@@ -50,7 +50,7 @@
 /mob/living/simple/cult/construct
 	stun_angle = 0
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	blood_type = /reagent/blood/unholy
 	blood_volume = 1000

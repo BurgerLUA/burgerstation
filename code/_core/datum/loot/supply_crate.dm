@@ -14,54 +14,95 @@
 
 /loot/supply_crate/russian
 	loot_table = list(
-		/obj/item/storage/kit/ai3/filled = 10,
-		/loot/weapon/abakan = 10,
-		/loot/weapon/groza = 10,
-		/loot/weapon/ak13 = 10,
-		/loot/weapon/svt = 10,
-		/loot/weapon/val = 10,
-		/loot/weapon/vintorez = 10,
-		/loot/weapon/svd = 10,
-		/loot/weapon/nagant_revolver = 10,
-		/loot/weapon/russian_shotgun = 10,
-		/loot/weapon/gauss_rifle = 10
+		/loot/weapon/pistol/yarygin = 1,
+		/loot/weapon/pistol/nagant = 1,
+		/loot/weapon/rifle/abakan = 1,
+		/loot/weapon/rifle/ak12 = 1,
+		/loot/weapon/rifle/ak13 = 1,
+		/loot/weapon/rifle/gauss_gun = 1,
+		/loot/weapon/rifle/groza = 1,
+		/loot/weapon/rifle/rpk = 1,
+		/loot/weapon/rifle/svd = 1,
+		/loot/weapon/rifle/svt = 1,
+		/loot/weapon/rifle/val = 1,
+		/loot/weapon/rifle/vintorez = 1,
+		/loot/weapon/shotgun/ks23 = 1,
+		/loot/weapon/smg/bizon = 1
 	)
 
 /loot/supply_crate/nanotrasen
 	loot_table = list(
-		/loot/medicine/pack = 10,
-		/loot/weapon/big_game_revolver = 10,
-		/loot/weapon/assault_rifle = 10,
-		/loot/weapon/grenade = 10,
-		/loot/weapon/civilian_carbine = 10,
-		/loot/weapon/tungsten = 10,
-		/loot/weapon/commander_revolver = 10,
-		/loot/weapon/tribarrel_shotgun = 10,
-		/loot/weapon/gyrojet = 10
+		/loot/weapon/energy/freezegun = 1,
+		/loot/weapon/energy/carbine = 1,
+		/loot/weapon/energy/iongun = 1,
+		/loot/weapon/energy/rifle = 1,
+		/loot/weapon/energy/rifle/hardlight = 1,
+		/loot/weapon/energy/rifle/xray = 1,
+		/loot/weapon/pistol/high_power = 1,
+		/loot/weapon/pistol/laton = 1,
+		/loot/weapon/pistol/military/nanotrasen = 1,
+		/loot/weapon/pistol/overseer = 1,
+		/loot/weapon/pistol/commander = 1,
+		/loot/weapon/pistol/detective = 1,
+		/loot/weapon/rifle/advanced = 1,
+		/loot/weapon/rifle/burst = 1,
+		/loot/weapon/rifle/lmg_nt = 1,
+		/loot/weapon/rifle/lmg_nt_light = 1,
+		/loot/weapon/rifle/nt_carbine = 1,
+		/loot/weapon/rifle/pdw = 1,
+		/loot/weapon/rifle/pulse = 1,
+		/loot/weapon/rifle/semi = 1,
+		/loot/weapon/rifle/service = 1,
+		/loot/weapon/rifle/sniper_127 = 1,
+		/loot/weapon/rifle/sniper_nt = 1,
+		/loot/weapon/rifle/standard = 1,
+		/loot/weapon/rifle/tungsten = 1,
+		/loot/weapon/shotgun/saiga_20 = 1,
+		/loot/weapon/shotgun/nt = 1,
+		/loot/weapon/shotgun/semi = 1,
+		/loot/weapon/smg/fbi = 1,
+		/loot/weapon/smg/nanotech = 1,
+		/loot/weapon/smg/pdw = 1,
+		/loot/weapon/smg/tactical/nt = 1
 	)
 
 /loot/supply_crate/american
 	loot_table = list(
-		/loot/medicine/pack = 10,
-		//loot/weapon/deagle = 10,
-		/loot/weapon/pistol_45 = 10,
-		/loot/weapon/comp_revolver = 10,
-		/loot/weapon/horse_revolver = 10,
-		/loot/weapon/solarian_rifle = 10,
-		/loot/weapon/dynamic = 10
+		/loot/weapon/pistol/deagle = 1,
+		/loot/weapon/pistol/dynamic = 1,
+		/loot/weapon/pistol/military = 1,
+		/loot/weapon/pistol/military/mod = 1,
+		/loot/weapon/pistol/tactical = 1,
+		/loot/weapon/pistol/tranq = 1,
+		/loot/weapon/pistol/big_game = 1,
+		/loot/weapon/pistol/comp = 1,
+		/loot/weapon/pistol/horse = 1,
+		/loot/weapon/rifle/assault = 1,
+		/loot/weapon/rifle/civ_carbine = 1,
+		/loot/weapon/rifle/dmca = 1,
+		/loot/weapon/shotgun/combat = 1,
+		/loot/weapon/shotgun/lever = 1,
+		/loot/weapon/shotgun/wood = 1,
+		/loot/weapon/shotgun/dbarrel = 1,
+		/loot/weapon/shotgun/tribarrel = 1,
+		/loot/weapon/smg/tactical = 1
 	)
 
 /loot/supply_crate/syndicate
 	loot_table = list(
-		/loot/medicine/pack = 10,
-		/loot/weapon/high_cal = 10,
-		/loot/weapon/stealth_pistol = 10,
-		/loot/weapon/syndicate_carbine = 10,
-		/loot/weapon/stealth_pistol = 10,
-		/loot/weapon/marksman_mod = 10,
-		/loot/weapon/sniper_cal_50 = 10,
-		/loot/weapon/syringe_gun = 10,
-		/loot/weapon/traitor_revolver = 10
+		/loot/weapon/pistol/gyrojet = 1,
+		/loot/weapon/pistol/high_calibre = 1,
+		/loot/weapon/pistol/syndie = 1,
+		/loot/weapon/pistol/traitor_357 = 1,
+		/loot/weapon/rifle/carbine = 1,
+		/loot/weapon/rifle/heavy_sniper = 1,
+		/loot/weapon/rifle/lmg = 1,
+		/loot/weapon/rifle/marksman = 1,
+		/loot/weapon/rifle/sniper = 1,
+		/loot/weapon/rifle/syringe = 1,
+		/loot/weapon/shotgun/bulldog = 1,
+		/loot/weapon/smg/bullpup = 1,
+		/loot/weapon/smg/handheld = 1
 	)
 
 /loot/supply_crate/magic

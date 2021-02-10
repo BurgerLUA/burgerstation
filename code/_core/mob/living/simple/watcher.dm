@@ -33,7 +33,7 @@
 	iff_tag = "Watcher"
 	loyalty_tag = "Watcher"
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	pixel_x = -12
 
@@ -71,7 +71,7 @@
 
 	pixel_x = 0
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	status_immune = list()
 

@@ -8,11 +8,15 @@
 
 	ai = /ai/goliath/broodmother
 
+	boss_loot = /loot/lavaland/broodmother
+
 	value = 1000
 
 	stun_angle = 0
 
-	health_base = 2500
+	health_base = 6000
+	stamina_base = 500
+	mana_base = 2000
 
 	var/boss_state = 0
 	//0 = walking
@@ -47,7 +51,7 @@
 
 	fatigue_from_block_mul = 0
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
@@ -65,11 +69,6 @@
 		/obj/item/container/food/dynamic/meat/raw_goliath,
 		/obj/item/container/food/dynamic/meat/raw_goliath
 	)
-
-/mob/living/simple/goliath/broodmother/post_death()
-	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro/broodmother,get_turf(src))
-	return .
 
 /mob/living/simple/goliath/broodmother/on_life()
 	. = ..()

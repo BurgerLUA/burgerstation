@@ -17,7 +17,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 2500
+	health_base = 4000
 	stamina_base = 5000
 	mana_base = 100
 
@@ -65,7 +65,7 @@
 		/obj/item/soapstone/orange
 	)
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	damage_type = /damagetype/npc/slime
 

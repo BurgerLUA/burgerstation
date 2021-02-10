@@ -16,7 +16,7 @@
 /event/blob/New()
 
 	for(var/area/A in world)
-		if(A.z < Z_LEVEL_MISSION)
+		if(A.area_identifier != "Mission")
 			continue
 		if(A.interior)
 			continue

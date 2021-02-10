@@ -14,6 +14,8 @@
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
 	var/tmp/move_delay = 0
 
+	var/size = SIZE_0
+
 	var/movement_delay = 4 //Measured in ticks.
 	var/anchored = TRUE
 	var/ghost = FALSE

@@ -16,7 +16,7 @@
 	loyalty_tag = "Silicon"
 	iff_tag = "Silicon"
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	armor_base = CYBORG_ARMOR
 
@@ -146,7 +146,7 @@
 		iff_tag,
 		loyalty_tag
 	)
-	play('sound/weapons/223/shoot.ogg',get_turf(src))
+	play_sound('sound/weapons/223/shoot.ogg',get_turf(src))
 	return TRUE
 
 

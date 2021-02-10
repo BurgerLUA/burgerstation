@@ -118,7 +118,8 @@
 			INITIALIZE(M)
 			GENERATE(M)
 			FINALIZE(M)
-			SC.add_to_crate(M)
+			M.force_move(SC)
+
 		SC.close()
 		SC.lock()
 		SC.owner_name = "[found_data["Requisitioner's Name"]]"

@@ -8,7 +8,7 @@
 
 	var/next_tentacle_attack = 100
 
-/ai/goliath/New(var/mob/living/desired_owner)
+/ai/goliath/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_goliath = desired_owner
 	return ..()
 

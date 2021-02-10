@@ -41,7 +41,7 @@
 			C.to_chat(div("vote","[i]. [option]"))
 		C.to_chat(div("vote","<a href='?vote=\ref[src]'>Click here to vote.</a>"))
 
-	play('sound/ui/start_vote.ogg',all_mobs_with_clients)
+	play_sound_global('sound/ui/start_vote.ogg',all_mobs_with_clients)
 
 	return ..()
 
@@ -132,7 +132,7 @@
 		for(var/m in message_to_send)
 			C.to_chat(m)
 
-	play('sound/ui/end_vote.ogg',all_mobs_with_clients)
+	play_sound_global('sound/ui/end_vote.ogg',all_mobs_with_clients)
 	on_result(winner,results)
 
 	return ..()

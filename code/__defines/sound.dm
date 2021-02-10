@@ -1,30 +1,35 @@
 #define ENVIRONMENT_NONE -1
-#define ENVIRONMENT_GENERIC 0
-#define ENVIRONMENT_PADDED_CELL 1
-#define ENVIRONMENT_ROOM 2
+
+//Use these
+#define ENVIRONMENT_GENERIC 0 //Generic building.
+#define ENVIRONMENT_PADDED_CELL 1 //I'm in a box
+#define ENVIRONMENT_ROOM 2 //Tiny room
 #define ENVIRONMENT_BATHROOM 3 //Good for maint
-#define ENVIRONMENT_LIVINGROOM 4
-#define ENVIRONMENT_STONEROOM 5
-#define ENVIRONMENT_AUDITORIUM 6
-#define ENVIRONMENT_CONCERT_HALL 7
-#define ENVIRONMENT_CAVE 8
-#define ENVIRONMENT_ARENA 9
+#define ENVIRONMENT_LIVINGROOM 4 //Large room. Kinda muted so I don't really like this.
+#define ENVIRONMENT_STONEROOM 5 //Very large room.
+#define ENVIRONMENT_CONCERT_HALL 7 //Extremely large room, noticable echo., but feels cleaner.
 #define ENVIRONMENT_HANGAR 10 //Good for hallways
-#define ENVIRONMENT_CARPETTED_HALLWAY 12
-#define ENVIRONMENT_HALLWAY 12
-#define ENVIRONMENT_STONE_CORRIDOR 13
-#define ENVIRONMENT_ALLEY 14
-#define ENVIRONMENT_FOREST 15
-#define ENVIRONMENT_CITY 16
-#define ENVIRONMENT_MOUNTAINS 17
-#define ENVIRONMENT_QUARRY 18
-#define ENVIRONMENT_PLAIN 19
-#define ENVIRONMENT_PARKING_LOT 20
-#define ENVIRONMENT_SEWER_PIPE 21
-#define ENVIRONMENT_UNDERWATER 22
-#define ENVIRONMENT_DRUGGED 23
-#define ENVIRONMENT_DIZZY 24
-#define ENVIRONMENT_PSYCHOTIC 25
+#define ENVIRONMENT_CARPETTED_HALLWAY 11 //Maybe a better box.
+#define ENVIRONMENT_HALLWAY 12 //Maybe a better box.
+#define ENVIRONMENT_STONE_CORRIDOR 13 //Good hallway effect.
+#define ENVIRONMENT_ALLEY 14 //Clean hallway effect
+#define ENVIRONMENT_QUARRY 18 //Very echoy cave. Good for caves.
+#define ENVIRONMENT_PLAIN 19 //Very plain. Meh.
+#define ENVIRONMENT_PARKING_LOT 20 //Underground parking lot, medium size.
+#define ENVIRONMENT_SEWER_PIPE 21 //Literally in a sewer pipe. Good for lockers, maybe.
+#define ENVIRONMENT_DRUGGED 23 //The ss13 drugged hallucination effect
+#define ENVIRONMENT_DIZZY 24 //Very large cave or something. Maybe hills or something
+#define ENVIRONMENT_PSYCHOTIC 25 //Drugged on steroids
+
+//Don't use these.
+#define ENVIRONMENT_AUDITORIUM 6 //Extremely large room, noticable echo.
+#define ENVIRONMENT_ARENA 9 //Same as 6, but denser?
+#define ENVIRONMENT_CAVE 8 //Same as 6, but dirtier. Don't use.
+#define ENVIRONMENT_FOREST 15 //Eh, no words here. No echo to justify this being a forrest.
+#define ENVIRONMENT_CITY 16 //I guess it's a city.
+#define ENVIRONMENT_MOUNTAINS 17 //Feels no different from 16
+
+#define ENVIRONMENT_UNDERWATER 22 //Not underwater. Just seems like a poor effect.
 
 
 #define SOUND_CHANNEL_NONE 0

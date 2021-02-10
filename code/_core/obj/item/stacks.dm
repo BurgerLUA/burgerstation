@@ -17,7 +17,9 @@
 			"locs",
 			"parent_type",
 			"verbs",
-			"vars"
+			"vars",
+			"vis_locs",
+			"vis_contents"
 		)
 	)
 
@@ -29,7 +31,7 @@
 		try
 			N.vars[i] = A.vars[i]
 		catch()
-			log_error("Cannot write var [i]!")
+			log_error("copy() error: Cannot write var [i] for type [A.type]!")
 
 	N.loc = null
 

@@ -15,7 +15,7 @@
 	var/strafe_count = 10
 	var/strafe_delay = 60
 
-/ai/boss/can_man/New(var/mob/living/desired_owner)
+/ai/boss/can_man/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_can_man = desired_owner
 	return ..()
 
@@ -83,7 +83,7 @@
 		return FALSE
 
 	if(projectile_count > 0)
-		play('sound/weapons/canman_shot.ogg',get_turf(owner))
+		play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(owner,objective_attack,null,null,/obj/projectile/bullet/firearm/pistol,/damagetype/ranged/bullet/pistol_8mm,16,16,0,TILE_SIZE*0.5,1,"#FF4A00",0,0,1,owner.iff_tag,owner.loyalty_tag)
 		owner.set_dir(get_dir(owner,objective_attack))
 		projectile_count--

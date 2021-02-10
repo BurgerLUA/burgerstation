@@ -110,7 +110,8 @@
 		qdel(B)
 	else
 		if(B.is_spent && !ENABLE_BULLET_CASINGS)
-			if(B.drop_sound) play(B.drop_sound,src)
+			if(B.drop_sound)
+				play_sound(B.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25)
 			qdel(B)
 		else
 			B.drop_item(new_loc)
@@ -134,7 +135,8 @@
 		qdel(chambered_bullet)
 	else
 		if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
-			if(bullet_to_remove.drop_sound) play(bullet_to_remove.drop_sound,src)
+			if(bullet_to_remove.drop_sound)
+				play_sound(bullet_to_remove.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25)
 			qdel(bullet_to_remove)
 		else
 			bullet_to_remove.drop_item(new_loc)

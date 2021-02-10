@@ -16,7 +16,7 @@
 	iff_tag = "Meme"
 	loyalty_tag = "Meme"
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	armor_base = list(
 		BLADE = AP_AXE,

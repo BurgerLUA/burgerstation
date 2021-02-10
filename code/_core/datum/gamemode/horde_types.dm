@@ -72,7 +72,7 @@
 		/mob/living/advanced/npc/deathsquad/medium = 4,
 		/mob/living/advanced/npc/deathsquad/heavy = 1
 	)
-	hidden = FALSE
+	hidden = TRUE
 
 	enemies_to_spawn_base = 3
 	enemies_to_spawn_per_player = 0.25

@@ -17,8 +17,6 @@
 	var/ai/ai
 	//var/id //Boss ID
 
-	var/boss_icon_state
-
 	var/iff_tag
 	var/loyalty_tag
 
@@ -82,6 +80,8 @@
 
 	var/boss = FALSE
 	var/boss_music
+	var/boss_icon_state
+	var/loot/boss_loot
 
 	//var/list/mob/living/advanced/player/linked_players
 
@@ -164,7 +164,7 @@
 
 	var/queue_delete_on_death = TRUE
 
-	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See mob_size.dm for values
+	size = SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See size.dm for values
 
 	var/max_level = 500 //Max level for attributes of the mob.
 
@@ -240,7 +240,7 @@
 
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
-	play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
+	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	visible_message(span("danger","\The [src.name] is violently crushed!"))
 	if(blood_type)
 		var/reagent/R = REAGENT(blood_type)
@@ -386,7 +386,7 @@
 
 /mob/living/Initialize()
 
-	if(ai) ai = new ai(src)
+	if(ai) ai = new ai(null,src)
 
 	if(boss)
 		SSbosses.tracked_bosses += src

@@ -18,6 +18,9 @@
 		mob.on_life_client()
 		handle_camera()
 
+	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
+		del(src)
+
 	return TRUE
 
 /client/proc/on_life_slow()

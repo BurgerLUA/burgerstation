@@ -4,7 +4,7 @@
 
 	left_click_chance = 70
 
-/ai/advanced/ranged/wizard/New(var/mob/living/desired_owner)
+/ai/advanced/ranged/wizard/New(var/desired_loc,var/mob/living/desired_owner)
 	. = ..()
 
 	for(var/obj/marker/boss/wizard/W in world)

@@ -68,7 +68,6 @@
 		set_message("Code [alert_level]",TRUE)
 		switch(alert_level)
 			if(CODE_BLUE)
-				play("",all_mobs_with_clients)
 				CALLBACK_GLOBAL(\
 					"gamemode_announce_alert",\
 					SECONDS_TO_DECISECONDS(10),\

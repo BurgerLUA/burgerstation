@@ -2,8 +2,6 @@
 	movement_spread_base = 0
 	movement_spread_mul = 0
 
-
-
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry
 
 	name = "\improper Sentry Gun"
@@ -11,7 +9,6 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/rifle/minigun.dmi'
 	icon_state = "inventory"
-	value = 3000
 
 	shoot_delay = 2
 
@@ -38,13 +35,15 @@
 	size = 0
 	weight = 0
 
-	value = -1
-
 	ai_heat_sensitivity = 0
 
 	attachment_whitelist = list()
 
 	firing_pin = /obj/item/firing_pin/electronic
+
+	value = -1
+
+	anchored = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_empty(var/mob/caller)
 	next_shoot_time = world.time + 20
@@ -61,10 +60,16 @@
 		if(D.stored_magazine)
 			return D.stored_magazine
 
-	return ..()
+	return null
+
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_static_spread()
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_skill_spread(var/mob/living/L)
 	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+	if(caller.is_player_controlled())
+		return FALSE
+	return ..()

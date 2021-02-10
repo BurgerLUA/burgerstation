@@ -31,7 +31,7 @@
 		PAIN = INFINITY
 	)
 
-	mob_size = MOB_SIZE_GIANT
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/ancient
 	blood_volume = 1000

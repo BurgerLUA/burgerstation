@@ -8,6 +8,9 @@ SERVER_NAME Unofficial Burgerstation 13 Server
 SERVER_DESCRIPTION An unofficial server for Burgerstation.
 SERVER_DISCORD https://discord.gg/a2wHSqu
 
+# Max players that can join
+PLAYER_LIMIT 100
+
 # Pathing
 GARBAGE_LOGS_PATH data/server/garbage_logs.txt
 

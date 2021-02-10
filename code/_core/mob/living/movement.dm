@@ -36,8 +36,7 @@
 					footstep_sound = pick(F.footstep_sounds)
 
 			if(footstep_sound)
-				play(footstep_sound,all_mobs_with_clients - src, T, volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
-				if(src.client) play(footstep_sound,src,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch= 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
+				play_sound(footstep_sound, get_turf(src), volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch),range_max=VIEW_RANGE)
 
 	return TRUE
 
@@ -213,7 +212,7 @@
 				return ..()
 		if(L.horizontal || src.horizontal)
 			return ..()
-		if(L.mob_size >= mob_size && L.mob_size >= MOB_SIZE_ANIMAL)
+		if(L.size >= size && L.size >= SIZE_ANIMAL)
 			return FALSE
 
 	return ..()

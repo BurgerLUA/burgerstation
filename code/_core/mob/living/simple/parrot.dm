@@ -21,7 +21,7 @@
 	loyalty_tag = "Parrot"
 	iff_tag = "Parrot"
 
-	mob_size = MOB_SIZE_CRITTER
+	size = SIZE_CRITTER
 
 	blood_type = /reagent/blood/bird
 	blood_volume = 100

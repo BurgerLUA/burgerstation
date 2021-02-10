@@ -41,6 +41,7 @@
 /turf/unsimulated/generation
 	icon = 'icons/turf/generation.dmi'
 	var/is_different = FALSE
+	var/no_wall = FALSE
 
 /turf/unsimulated/generation/proc/pre_generate()
 
@@ -75,6 +76,10 @@
 			new /obj/marker/generation/mob/ash_walker(src)
 
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
+
+	if(no_wall)
+		new /turf/simulated/floor/basalt(src)
+		return ..()
 
 	var/noise = 0
 
@@ -130,6 +135,10 @@
 	icon_state = "snow"
 
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
+
+	if(no_wall)
+		new /turf/simulated/floor/colored/snow(src)
+		return ..()
 
 	var/noise = 0
 
@@ -192,6 +201,10 @@
 	icon_state = "jungle"
 
 /turf/unsimulated/generation/jungle/generate(var/size = WORLD_SIZE)
+
+	if(no_wall)
+		new /turf/simulated/floor/colored/dirt/jungle(src)
+		return ..()
 
 	var/noise = 0
 
@@ -292,6 +305,10 @@
 
 /turf/unsimulated/generation/cave/generate(var/size = WORLD_SIZE)
 
+	if(no_wall)
+		new /turf/simulated/floor/colored/dirt/cave(src)
+		return ..()
+
 	var/noise = 0
 
 	var/instances = 2
@@ -336,6 +353,9 @@
 
 /turf/unsimulated/generation/snow_cave/generate(var/size = WORLD_SIZE)
 
+	if(no_wall)
+		new /turf/simulated/floor/colored/dirt/cave(src)
+		return ..()
 
 	var/noise = 0
 	var/instances = 2
@@ -398,6 +418,10 @@
 	icon_state = "forest"
 
 /turf/unsimulated/generation/forest/generate(var/size = WORLD_SIZE)
+
+	if(no_wall)
+		new /turf/simulated/floor/colored/grass(src)
+		return ..()
 
 	var/noise = 0
 

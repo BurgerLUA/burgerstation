@@ -84,6 +84,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/queued_shakes = 0
 
+	var/restricted //Set to a string to prevent this person from making a character or joining as one.
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 
@@ -178,34 +180,40 @@ var/global/list/all_clients = list() //Assoc list
 			found_mob = M
 			break
 
-	if(found_mob)
-		control_mob(found_mob)
-	else
-		welcome()
-		make_observer(FALLBACK_TURF)
-		mob.show_hud(FALSE,speed = 0)
-		if(world_state == STATE_RUNNING)
-			var/list/possible_music = TRACKS_LOBBY
-			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
-			play_music_track(possible_music[lobby_track], src)
-			mob.show_hud(TRUE,speed = 2)
-			mob.force_move(get_turf(lobby_positions[1]))
-
-	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
-	update_window()
-
 	if(IsByondMember())
 		byond_member = TRUE
 
-	world.update_server_status()
+	if(found_mob)
+		control_mob(found_mob)
+	else
+		var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
+		if(player_limit_config > 0 && length(all_clients) > player_limit_config)
+			//Too many cooks!
+			var/rank_value = get_ranks()
+			if(!rank_value && !byond_member)
+				restricted = "The server is currently experiencing a massive influx of players, and is currently restricted to [player_limit_config] players. Come back another time when the population is reduced!"
+				src << "<h1>[restricted]</h1>"
+		make_observer(FALLBACK_TURF)
+		if(!restricted)
+			welcome()
+			mob.show_hud(FALSE,speed = 0)
+			if(world_state == STATE_RUNNING)
+				var/list/possible_music = TRACKS_LOBBY
+				var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
+				play_music_track(possible_music[lobby_track], src)
+				mob.show_hud(TRUE,speed = 2)
+				mob.force_move(get_turf(lobby_positions[1]))
 
-	if(SSvote && SSvote.initialized)
-		for(var/k in SSvote.active_votes)
-			var/vote/V = k
-			V.show(src)
-
-	if(SSmenu && SSmenu.initialized)
-		SSmenu.preload_assets(src)
+	if(!restricted)
+		broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
+		update_window()
+		world.update_server_status()
+		if(SSvote && SSvote.initialized)
+			for(var/k in SSvote.active_votes)
+				var/vote/V = k
+				V.show(src)
+		if(SSmenu && SSmenu.initialized)
+			SSmenu.preload_assets(src)
 
 	return mob
 
@@ -246,6 +254,3 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
       to_chat("[v] = [object.vars[v]]")
-
-/client/proc/receive_sound(var/sound/S)
-	src << S

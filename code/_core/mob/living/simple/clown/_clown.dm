@@ -24,7 +24,7 @@
 	iff_tag = "Clown"
 	loyalty_tag = "Clown"
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	blood_type = /reagent/blood/clown
 	blood_volume = 750
@@ -51,7 +51,7 @@
 
 	pixel_x = -16
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 /mob/living/simple/clown/hulk/armored
 	name = "armored clown hunk"
@@ -88,7 +88,7 @@
 
 	pixel_x = -16
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 
 
@@ -108,7 +108,7 @@
 		PAIN = INFINITY
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 /mob/living/simple/clown/pie
 	name = "pie clown"
@@ -125,7 +125,7 @@
 		PAIN = INFINITY
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 /mob/living/simple/clown/lube
 	name = "lube slime clown"
@@ -361,7 +361,7 @@
 		RAD = INFINITY
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	pixel_x = -16
 

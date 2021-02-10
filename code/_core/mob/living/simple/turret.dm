@@ -20,7 +20,7 @@
 
 	enable_security_hud = TRUE
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	armor_base = CYBORG_ARMOR
 
@@ -86,7 +86,7 @@
 
 	ai = /ai/turret/deployable
 
-	mob_size = MOB_SIZE_ANIMAL
+	size = SIZE_ANIMAL
 
 /mob/living/simple/turret/deployable/get_examine_list(var/mob/examiner)
 

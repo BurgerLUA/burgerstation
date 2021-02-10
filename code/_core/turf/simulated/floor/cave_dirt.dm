@@ -1,4 +1,4 @@
-/turf/simulated/floor/cave_dirt/
+/turf/simulated/floor/cave_dirt
 
 	name = "bedrock"
 

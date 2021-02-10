@@ -166,7 +166,7 @@
 				snagged_fish = rand(5,20) + lure.time_bonus
 				catch_time = world.time
 				if(lure.catchsound)
-					play(lure.catchsound,get_turf(lure))
+					play_sound(lure.catchsound,get_turf(lure),range_min=VIEW_RANGE*0.5,range_max=VIEW_RANGE)
 				animate(fishing_bob,pixel_y=-10,pixel_x=rand(-4,4),time=5)
 				animate(fishing_bob,pixel_y=0,pixel_x=rand(-2,2),time=10)
 
@@ -228,8 +228,8 @@
 		var/turf/simulated/hazard/H = object
 		if(!H.fishing_rewards)
 			return TRUE
-		if(!line || !lure || !bait)
-			caller.to_chat(span("warning","You need a line, a lure, and some bait in order to use \the [src.name]!"))
+		if(!line || !lure || !bait || H.type != bait.valid_turf)
+			caller.to_chat(span("warning","You need a line, a lure, and the right bait in order to use \the [src.name]!"))
 			return TRUE
 		if(!line.lavaproof && istype(object,/turf/simulated/hazard/lava))
 			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))

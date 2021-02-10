@@ -14,8 +14,6 @@
 	var/mana_current = -1
 	var/mana_regeneration = -1
 
-	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
-
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 
 	var/list/resistance = list() //How much to multiply damage
@@ -58,6 +56,9 @@
 	var/list/armor_base = list()
 
 	var/organic = FALSE
+
+/health/proc/get_damage_multiplier()
+	return 1
 
 /health/New(var/desired_owner)
 	owner = desired_owner
@@ -159,7 +160,7 @@
 	health_current = get_overall_health(FALSE,FALSE,FALSE)
 	return TRUE
 
-/health/proc/get_defense(var/atom/attacker,var/atom/hit_object)
+/health/proc/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 	return armor_base.Copy()
 
 /health/proc/adjust_mana(var/adjust_value)

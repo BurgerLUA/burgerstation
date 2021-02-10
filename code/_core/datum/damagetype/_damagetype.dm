@@ -202,7 +202,7 @@
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier*damage_mod
+	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
 
 	if(debug) log_debug("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 
@@ -333,7 +333,7 @@
 			var/mob/living/advanced/A = victim
 			if(A.parry(attacker,weapon,hit_object,src))
 				A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
-				play('sound/effects/parry.ogg',get_turf(A))
+				play_sound('sound/effects/parry.ogg',get_turf(A),range_max=VIEW_RANGE)
 				if(is_living(attacker))
 					var/mob/living/LA = attacker
 					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
@@ -357,14 +357,14 @@
 	var/fatigue_damage = 0
 
 	var/damage_blocked = 0
-	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
+	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
 		if(is_advanced(attacker))
 			var/mob/living/advanced/A = attacker
 			object_to_check = A.labeled_organs[O.id]
-	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
+	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check,TRUE) : list()
 
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
 	var/has_fatigue_damage = FALSE
@@ -565,11 +565,11 @@
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play(pick(impact_sounds_flesh),get_turf(hit_object))
+		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE)
 
 	if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
-		play(pick(impact_sounds),T)
+		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE)
 		create_alert(VIEW_RANGE,T,attacker,ALERT_LEVEL_CAUTION)
 
 	return TRUE
@@ -577,14 +577,14 @@
 /damagetype/proc/do_swing_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(swing_sounds))
 		var/turf/T = get_turf(victim)
-		play(pick(swing_sounds),T)
+		play_sound(pick(swing_sounds),T,range_max=VIEW_RANGE*0.5)
 		return TRUE
 	return FALSE
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
 		var/turf/T = get_turf(victim)
-		play(pick(miss_sounds),T)
+		play_sound(pick(miss_sounds),T,range_max=VIEW_RANGE*0.75)
 		return TRUE
 	return FALSE
 

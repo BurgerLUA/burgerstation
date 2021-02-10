@@ -17,6 +17,12 @@
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
 
+/obj/structure/interactive/door/airlock/station/chapel
+	name = "chapel airlock"
+	color = COLOR_WHITE
+	filler = "glass"
+	fill_color = "#FFFFFF"
+
 /obj/structure/interactive/door/airlock/station/command/no_access
 	no_access = TRUE
 

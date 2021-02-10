@@ -10,7 +10,7 @@
 
 	interior = TRUE
 
-	sound_environment = ENVIRONMENT_CAVE
+	sound_environment = ENVIRONMENT_QUARRY
 
 /area/lz_001/caves/lava
 	name = "\improper Magma Caves"

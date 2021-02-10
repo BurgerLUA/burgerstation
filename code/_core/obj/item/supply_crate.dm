@@ -38,7 +38,7 @@
 /obj/item/supply_crate/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/turf/T = get_turf(src)
-	play('sound/effects/crate_break.ogg',T)
+	play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(loot)

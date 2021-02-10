@@ -3,7 +3,7 @@
 	var/mob/living/simple/bubblegum/owner_as_bubblegum
 
 
-/ai/boss/bubblegum/New(var/mob/living/desired_owner)
+/ai/boss/bubblegum/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_bubblegum = desired_owner
 	return ..()
 

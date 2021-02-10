@@ -48,7 +48,7 @@
 		INITIALIZE(M)
 		GENERATE(M)
 		FINALIZE(M)
-		SP.add_to_crate(M)
+		M.force_move(SP)
 
 	INITIALIZE(SP)
 	FINALIZE(SP)

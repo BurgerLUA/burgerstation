@@ -27,14 +27,14 @@
 
 	tracks = TRACKS_JUNGLE
 
-	sound_environment = ENVIRONMENT_FOREST
+	sound_environment = ENVIRONMENT_PLAIN
 
 
 /area/lz_420/interior/
 	sunlight_freq = 0
 	interior = TRUE
 
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_420/interior/cave
 	name = "\improper Central Caves"
@@ -46,7 +46,7 @@
 	)
 	cheese_type = /reagent/nutrition/cheese/gruyere
 
-	sound_environment = ENVIRONMENT_CAVE
+	sound_environment = ENVIRONMENT_QUARRY
 
 /area/lz_420/interior/cave/north
 	name = "North Caves"
@@ -79,7 +79,7 @@
 /area/lz_420/interior/nexus
 	name = "\improper Nexus"
 	icon_state = "pink"
-	sound_environment = ENVIRONMENT_ROOM
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_420/interior/nexus/entrance
 	name = "\improper Nexus East Entrance"
@@ -89,37 +89,37 @@
 	name = "\improper Central Nexus Hallway"
 	icon_state = "hall_c"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_CONCERT_HALL
 
 /area/lz_420/interior/nexus/west
 	name = "\improper West Nexus Hallway"
 	icon_state = "hall_w"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_420/interior/nexus/east
 	name = "\improper East Nexus Hallway"
 	icon_state = "hall_e"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_420/interior/nexus/south
 	name = "\improper South Nexus Hallway"
 	icon_state = "hall_s"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_420/interior/nexus/north
 	name = "\improper North Nexus Hallway"
 	icon_state = "hall_n"
 
-	sound_environment = ENVIRONMENT_HALLWAY
+	sound_environment = ENVIRONMENT_STONEROOM
 
 /area/lz_420/interior/nexus/maint
 	name = "\improper Nexus Maintenance"
 	icon_state = "maint"
 
-	sound_environment = ENVIRONMENT_ALLEY
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/lz_420/interior/nexus/chapel
 	name = "\improper Nexus Chapel"

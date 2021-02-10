@@ -1,4 +1,5 @@
 /area/lz_001/outpost/syndicate
+	name = "Syndicate Outpost"
 	icon_state = "syndicate"
 
 /area/lz_001/outpost/syndicate/desert
@@ -15,6 +16,7 @@
 
 
 /area/lz_001/outpost/russian
+	name = "Revolutionary Outpost"
 	icon_state = "syndicate"
 
 

@@ -141,7 +141,7 @@
 	if(confirm != "Yes") return FALSE
 
 	var/turf/T = get_turf(L)
-	play('sound/meme/cbt.ogg',T)
+	play_sound('sound/meme/cbt.ogg',T)
 	CALLBACK("\ref[L]_smite",15,L,/mob/living/proc/smite)
 
 	log_admin("[L.get_debug_name()] was smited by [src.get_debug_name()].")
@@ -301,7 +301,7 @@
 			if(L.client)
 				valid_hearers += L
 				L.client.queued_shakes += 10
-		play('sound/effects/explosion/explosion_far.ogg',valid_hearers)
+		play_sound_global('sound/effects/explosion/explosion_far.ogg',valid_hearers)
 		for(var/obj/structure/interactive/lighting/T in A.contents)
 			CHECK_TICK(75,FPS_SERVER)
 			T.on_destruction(null,TRUE)

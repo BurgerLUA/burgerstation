@@ -9,7 +9,7 @@
 		BLADE = AP_DAGGER,
 		BLUNT = AP_DAGGER,
 		PIERCE = AP_DAGGER,
-		LASER = AP_GREATSWORD,
+		LASER = AP_CLUB,
 		ARCANE = -AP_CLUB,
 		HEAT = AP_SWORD
 	)
@@ -43,10 +43,29 @@
 /obj/item/clothing/glasses/sun/gar
 	name = "gar shades"
 	icon = 'icons/obj/item/clothing/glasses/gar.dmi'
+	defense_rating = list(
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = AP_GREATSWORD,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_GREATSWORD
+	)
+	damage_type = /damagetype/melee/sword/grazer
 
 /obj/item/clothing/glasses/sun/gar/giga
 	name = "gigagar shades"
 	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_GREATCLUB,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_GREATCLUB
+	)
+	damage_type = /damagetype/melee/sword/grazer
+
 
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"

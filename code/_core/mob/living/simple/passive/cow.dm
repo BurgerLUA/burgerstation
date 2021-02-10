@@ -12,7 +12,7 @@
 		/obj/item/container/food/dynamic/meat/raw
 	)
 
-	mob_size = MOB_SIZE_HUMAN
+	size = SIZE_HUMAN
 
 	iff_tag = "Cow"
 	loyalty_tag = "Cow"

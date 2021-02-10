@@ -68,9 +68,9 @@
 		. += div("warning","This secure crate will charge [credits_required] credits onec unlocked.")
 
 	var/list/contents_to_display = list()
-	for(var/k in crate_contents)
-		var/atom/A = k
-		contents_to_display += A.name
+	for(var/k in contents)
+		var/atom/movable/M = k
+		contents_to_display += M.name
 
 	. += div("notice","It contains: [english_list(contents_to_display)].")
 

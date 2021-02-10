@@ -1,9 +1,9 @@
-#define MOB_SIZE_CRITTER 0.5
-#define MOB_SIZE_ANIMAL 1
-#define MOB_SIZE_HUMAN 2
-#define MOB_SIZE_LARGE 3
-#define MOB_SIZE_GIANT 4
-#define MOB_SIZE_BOSS 5
+#define SIZE_CRITTER SIZE_2
+#define SIZE_ANIMAL SIZE_5
+#define SIZE_HUMAN SIZE_6
+#define SIZE_LARGE SIZE_7
+#define SIZE_GIANT SIZE_8
+#define SIZE_BOSS SIZE_10
 
 
 

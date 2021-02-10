@@ -5,7 +5,8 @@ var/global/list/ckey_to_globaldata = list()
 		"antag_tokens" = 0,
 		"redeemed_rewards" = list(),
 		"burgerbux" = 0,
-		"stored_experience" = list()
+		"stored_experience" = list(),
+		"new_player" = TRUE
 	)
 
 /savedata/client/globals/get_file(var/file_id)
@@ -26,6 +27,7 @@ var/global/list/ckey_to_globaldata = list()
 /savedata/client/globals/proc/save()
 	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"
+	loaded_data["new_player"] = FALSE
 	rustg_file_write(json_encode(loaded_data),full_path)
 	owner.to_chat(span("notice","Your global stats and settings have been saved."))
 	return TRUE

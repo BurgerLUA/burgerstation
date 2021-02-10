@@ -41,7 +41,7 @@
 		return FALSE
 
 	if(projectiles_to_shoot <= 0)
-		play('sound/effects/invoke_general.ogg',get_turf(owner), range_max = SOUND_RANGE * 3)
+		play_sound('sound/effects/invoke_general.ogg',get_turf(owner), range_max = SOUND_RANGE * 3)
 		switch(rand(1,10))
 			if(1 to 3)
 				projectile_mode = PROJECTILE_MODE_CLOCKWISE
@@ -91,7 +91,7 @@
 			if(PROJECTILE_MODE_BULLETHELL)
 				angle_ticks = rand(1,360)
 
-		play('sound/effects/invoke_short.ogg',get_turf(owner), range_max = SOUND_RANGE * 3)
+		play_sound('sound/effects/invoke_short.ogg',get_turf(owner), range_max = SOUND_RANGE * 3)
 
 		for(var/i=1,i<=bullet_count,i++)
 

@@ -34,7 +34,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	blood_type = /reagent/blood/plant
 	blood_volume = 400

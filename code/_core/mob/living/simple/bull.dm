@@ -33,7 +33,7 @@
 		ION = INFINITY
 	)
 
-	mob_size = MOB_SIZE_LARGE
+	size = SIZE_LARGE
 
 	iff_tag = "Cow"
 	loyalty_tag = "Cow"

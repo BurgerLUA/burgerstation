@@ -23,9 +23,11 @@
 
 	stun_angle = 0
 
-	health_base = 6000
+	health_base = 12000
 	stamina_base = 500
 	mana_base = 2000
+
+	boss_loot = /loot/lavaland/ash_drake
 
 	var/boss_state = 0
 	//0 = walking
@@ -71,7 +73,7 @@
 		FIRE = TRUE
 	)
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
@@ -192,7 +194,6 @@
 /mob/living/simple/ash_drake/post_death()
 	..()
 	icon_state = "dead"
-	CREATE(/obj/structure/interactive/crate/necro/ash_drake,get_turf(src))
 	update_sprite()
 
 

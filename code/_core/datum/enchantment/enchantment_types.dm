@@ -16,9 +16,9 @@
 	enchanting_phrase = "Oh fuck I slipped! Fucking nerf soap!"
 
 /enchantment/stagger/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-	if(is_living(victim) && prob(strength*10*(total_damage_dealt/50)))
+	if(is_living(victim) && prob(strength*5*min(1,total_damage_dealt/100)))
 		var/mob/living/L = victim
-		L.add_status_effect(STAGGER,5*(total_damage_dealt/80),5*(total_damage_dealt/80))
+		L.add_status_effect(STAGGER,3,3)
 	return ..()
 
 
@@ -28,9 +28,9 @@
 	enchanting_phrase = "Fucking stunlockers are fucking noobs, I'm tired of this shit!"
 
 /enchantment/stun/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-	if(is_living(victim) && prob(strength*5*(total_damage_dealt/50)))
+	if(is_living(victim) && prob(strength*2.5*(total_damage_dealt/100)))
 		var/mob/living/L = victim
-		L.add_status_effect(STUN,10*(total_damage_dealt/80),10*(total_damage_dealt/80))
+		L.add_status_effect(STUN,10,10)
 	return ..()
 
 

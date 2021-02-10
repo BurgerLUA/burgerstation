@@ -14,13 +14,15 @@
 
 	stun_angle = 0
 
-	health_base = 3000
+	boss_loot = /loot/lavaland/colossus
+
+	health_base = 10000
 	stamina_base = 500
 	mana_base = 2000
 
 	attack_range = 2
 
-	move_delay = DECISECONDS_TO_TICKS(10)
+	move_delay = DECISECONDS_TO_TICKS(5)
 
 	force_spawn = TRUE
 	boss = TRUE
@@ -57,7 +59,7 @@
 
 	fatigue_from_block_mul = 0
 
-	mob_size = MOB_SIZE_BOSS
+	size = SIZE_BOSS
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
@@ -76,12 +78,11 @@
 
 /mob/living/simple/colossus/pre_death()
 	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)
-	play('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
+	play_sound('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
 	return ..()
 
 /mob/living/simple/colossus/post_death()
 	. = ..()
-	CREATE(/obj/structure/interactive/crate/necro/colossus,get_turf(src))
 	animate(src, pixel_z = 64, time = 30)
 	return .
 
