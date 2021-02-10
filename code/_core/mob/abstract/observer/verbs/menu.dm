@@ -69,6 +69,10 @@
 
 		var/character_id = mobdata.get_next_character_id()
 
+		if(text2num(character_id) > MAX_CHARACTERS)
+			src.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
+			return FALSE
+
 		if(mobdata.create_new_character(character_id))
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
@@ -88,6 +92,7 @@
 		else
 			to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this."))
 			log_error("WARNING: [ckey] was unable to create a new character!")
+			return FALSE
 
 
 
