@@ -125,11 +125,10 @@
 	)
 
 	dialogue_options["get to work"] = list(
-		"In order to be a smart #1, you must be a well-equipped #2. Upon getting implanted with the #3 implant, you should first explore a little, and then head to the #4. \
-		From there, you can gear up and then head #5 to help secure the planet from #6 presence.",
+		"In order to be a smart #1, you must be a well-equipped #2. You should first explore a little, and then head to the #3. \
+		From there, you can gear up and then head #4 to help secure the planet from #6 presence.",
 		"Corporate Mercenary",
 		"Corporate Mercenary",
-		"IFF",
 		"armory",
 		"planetside",
 		"Syndicate"

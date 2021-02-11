@@ -24,8 +24,10 @@
 		update_zoom(zoom_level + change_in_screen)
 		return TRUE
 
-	object = object.defer_click_on_object(mob,location,control,new_params)
+	if(!object)
+		return FALSE
 
+	object = object.defer_click_on_object(mob,location,control,new_params)
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
 	return ..()
