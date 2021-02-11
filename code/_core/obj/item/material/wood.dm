@@ -12,5 +12,7 @@
 
 	drop_sound = 'sound/items/drop/wooden.ogg'
 
+	material_multiplier = 1
+
 /obj/item/material/wood/normal
 	material = /material/wood

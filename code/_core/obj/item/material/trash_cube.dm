@@ -9,3 +9,5 @@
 	item_count_max_icon = 3
 
 	crafting_id = "trash_cube"
+
+	material_multiplier = 1

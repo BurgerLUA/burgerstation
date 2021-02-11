@@ -10,6 +10,8 @@
 
 	crafting_id = "rod"
 
+	material_multiplier = 0.25
+
 /obj/item/material/rod/steel
 	name = "steel rod"
 	desc = "The basic building material."

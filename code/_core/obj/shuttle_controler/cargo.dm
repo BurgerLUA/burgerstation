@@ -41,6 +41,7 @@
 			if(is_living(O))
 				var/mob/living/L = O
 				if(!L.dead) L.death()
+			SSgamemode?.active_gamemode?.on_object_sold(O)
 			qdel(O)
 
 		SSpayday.stored_payday += total_value

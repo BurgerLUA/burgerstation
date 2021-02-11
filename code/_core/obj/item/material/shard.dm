@@ -10,6 +10,8 @@
 
 	crafting_id = "shard"
 
+	material_multiplier = 0.5
+
 /obj/item/material/shard/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,3)]"

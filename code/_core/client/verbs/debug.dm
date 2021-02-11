@@ -301,7 +301,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/create_vote,
 	/client/verb/var_edit,
 	/client/verb/change_variable,
-	/client/verb/set_mob_to_null
+	/client/verb/set_mob_to_null,
+	/client/verb/should_delete_atom
 )
 
 /client/verb/show_debug_verbs()
@@ -331,3 +332,17 @@ var/global/list/debug_verbs = list(
 		mob = null
 	else
 		to_chat(span("notice","You decide not to do anything."))
+
+/client/verb/should_delete_atom(O=usr as obj|mob in view())
+	set name = "Should Delete Atom"
+	set category = "Debug"
+
+	if(!O)
+		return
+
+	var/result = SSdelete.should_delete(O)
+
+	if(result)
+		src.to_chat(span("notice","The games considers [O] safe for deletion."))
+	else
+		src.to_chat(span("notice","The game does not consider [O] safe for deletion."))

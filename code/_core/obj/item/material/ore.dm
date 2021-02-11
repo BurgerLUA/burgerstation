@@ -10,6 +10,8 @@
 
 	crafting_id = "ore"
 
+	material_multiplier = 1
+
 
 /obj/item/material/ore/Crossed(atom/movable/O)
 

@@ -134,6 +134,19 @@
 	//Can we even continue?
 	return TRUE
 
+/gamemode/proc/on_object_sold(var/atom/movable/M)
+
+	for(var/k in crew_active_objectives)
+		var/objective/O = k
+		if(!O.track_cargo)
+			continue
+		O.on_object_sold(M)
+
+	return TRUE
+
+
+
+
 /gamemode/proc/add_objective(var/objective/O)
 	O = new O
 

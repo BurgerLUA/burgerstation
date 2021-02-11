@@ -1,5 +1,3 @@
-#define CHEESE_PROCESS_TIME 600
-
 /obj/item/container/cheese_mold
 	name = "cheese mold"
 	desc = "Make cheese with this."

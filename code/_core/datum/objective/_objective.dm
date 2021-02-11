@@ -11,6 +11,11 @@
 
 	var/trackable = TRUE
 
+	var/track_cargo = FALSE
+
+/objective/proc/on_object_sold(var/atom/movable/object)
+	return TRUE
+
 /objective/New()
 
 	if(!setup() || !start())

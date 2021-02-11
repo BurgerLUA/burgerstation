@@ -90,20 +90,26 @@ SUBSYSTEM_DEF(delete)
 	if(!is_atom(D))
 		log_error("Warning: Tried safe deleting a non-atom! ([D.get_debug_name()]).")
 		return TRUE
-	else
-		var/atom/A = D
-		if(!A.is_safe_to_delete())
+
+	var/atom/A = D
+	if(!A.is_safe_to_delete())
+		return FALSE
+
+	if(!isturf(A.loc))
+		return FALSE
+	var/turf/atom_turf = A.loc
+
+	var/area/atom_area = atom_turf.loc
+	if(atom_area.safe_storage)
+		return FALSE
+
+	for(var/k in all_mobs_with_clients_by_z["[atom_turf.z]"])
+		var/mob/M = k
+		if(is_observer(M))
+			continue
+		var/regisred_distance = get_dist(A,M)
+		if(regisred_distance <= VIEW_RANGE + ZOOM_RANGE)
 			return FALSE
-		if(!isturf(A.loc))
-			return FALSE
-		var/turf/T = A.loc
-		var/area/A2 = T.loc
-		if(A2.safe_storage)
-			return FALSE
-		for(var/k in all_mobs_with_clients_by_z[T.z])
-			var/mob/M = k
-			if(get_dist(A,M) <= VIEW_RANGE + ZOOM_RANGE)
-				return FALSE
 
 
 	return TRUE

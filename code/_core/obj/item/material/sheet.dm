@@ -10,6 +10,8 @@
 
 	crafting_id = "sheet"
 
+	material_multiplier = 1
+
 /obj/item/material/sheet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 

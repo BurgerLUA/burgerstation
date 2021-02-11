@@ -39,7 +39,7 @@
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/Crossed(atom/movable/O)
-	if(O.collision_flags & FLAG_COLLISION_WALKING)
+	if(O.collision_flags & (FLAG_COLLISION_WALKING | FLAG_COLLISION_ITEM))
 		O.Move(src)
 	return ..()
 

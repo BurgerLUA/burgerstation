@@ -17,9 +17,6 @@
 #define ITEM_DELETION_TIME_DROPPED 3000 //5 minutes
 #define ITEM_DELETION_TIME_NEW 600 //60 seconds.
 
-
-
-
 //Enables/disables biome music.
 #define ENABLE_TRACKS FALSE
 
