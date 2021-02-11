@@ -105,4 +105,9 @@
 		PIERCE = DAMAGE_AXE*0.5
 	)
 
+//Changes below are completely experimental to see if that'd make 9x39 perform nicely.
+	crit_multiplier = 4 //Damage multiplier.
+	crit_chance = 10 //Base crit chance.
+	crit_chance_max = 15 //Maximium crit chance at 100 luck.
+
 	falloff = VIEW_RANGE

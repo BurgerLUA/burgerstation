@@ -51,3 +51,4 @@
 /obj/projectile/bullet/firearm/pistol/stealth
 	name = "stealth pistol bullet"
 	icon_state = "stealth"
+	muzzleflash_effect = null
