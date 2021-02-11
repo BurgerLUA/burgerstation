@@ -40,3 +40,6 @@
 		BODY_HAND_RIGHT = /obj/item/organ/hand,
 		BODY_HAND_LEFT = /obj/item/organ/hand/left
 	)
+
+/species/dummy/generate_blood_type()
+	return null

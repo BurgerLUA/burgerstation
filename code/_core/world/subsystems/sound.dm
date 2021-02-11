@@ -377,10 +377,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
-		var/turf/mob_turf = get_turf(M)
-		if(!mob_turf || mob_turf.z != source_turf.z)
-			continue
-
 		var/local_volume = volume
 		if(M.client.settings)
 			local_volume *= M.client.settings.loaded_data["volume_master"] / 100
@@ -398,6 +394,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 			if(local_volume <= 0)
 				continue
 
+		var/turf/mob_turf = get_turf(M)
 		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
 			var/distance = max(0,get_dist(mob_turf,source_turf)-(VIEW_RANGE*0.5)) - range_min
 			if(sound_setting == SOUND_SETTING_FOOTSTEPS && distance <= 0)

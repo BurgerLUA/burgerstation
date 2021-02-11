@@ -36,7 +36,8 @@ SUBSYSTEM_DEF(delete)
 	for(var/k in objects_to_delete_safe)
 		var/datum/object_to_delete = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-		if(!istype(object_to_delete) || object_to_delete.qdeleting)
+
+		if(object_to_delete.qdeleting)
 			objects_to_delete_safe -= k
 			continue
 
@@ -81,36 +82,6 @@ SUBSYSTEM_DEF(delete)
 		i++
 		if(i >= max_deletions)
 			break
-
-	/*
-	var/queued_objects_to_delete = length(objects_to_delete)
-	var/queued_objects_to_delete_safe = length(objects_to_delete_safe)
-
-	if(queued_objects_to_delete >= 1000)
-		var/limit = 100
-		log_error("Cleaning System Warning: objects_to_delete is execeding 1000 queued objects ([queued_objects_to_delete]) to delete! Force deleting [limit] of the oldest entrys...")
-
-		for(var/k in objects_to_delete)
-			var/datum/D = k
-			CHECK_TICK(100,FPS_SERVER)
-			qdel(D)
-			objects_to_delete -= k
-			limit--
-			if(limit <= 0)
-				break
-
-	if(queued_objects_to_delete_safe >= 1000)
-		var/limit = 100
-		log_error("Cleaning System Warning: objects_to_delete_safe is execeding 1000 queued objects ([queued_objects_to_delete_safe]) to delete! Force deleting [limit] of the oldest entrys...")
-		for(var/k in objects_to_delete_safe)
-			var/datum/D = k
-			CHECK_TICK(100,FPS_SERVER)
-			qdel(D)
-			objects_to_delete -= k
-			limit--
-			if(limit <= 0)
-				break
-	*/
 
 	return TRUE
 
