@@ -96,13 +96,15 @@ SUBSYSTEM_DEF(delete)
 			return FALSE
 		if(!isturf(A.loc))
 			return FALSE
-		var/area/A2 = get_area(A)
+		var/turf/T = A.loc
+		var/area/A2 = T.loc
 		if(A2.safe_storage)
 			return FALSE
-		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,get_turf(A)))
-			if(!P.client)
-				continue
-			return FALSE
+		for(var/k in all_mobs_with_clients_by_z[T.z])
+			var/mob/M = k
+			if(get_dist(A,M) <= VIEW_RANGE + ZOOM_RANGE)
+				return FALSE
+
 
 	return TRUE
 
