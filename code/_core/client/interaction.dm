@@ -130,6 +130,9 @@
 
 	var/list/new_params = params2list(params)
 
+	if(!src_object || !over_object)
+		return FALSE
+
 	src_object = src_object.defer_click_on_object(mob,src_location,src_control,new_params)
 	over_object = over_object.defer_click_on_object(mob,over_location,over_control,new_params)
 

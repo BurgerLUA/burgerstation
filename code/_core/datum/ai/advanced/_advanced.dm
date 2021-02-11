@@ -140,13 +140,16 @@
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
+	var/mob/living/advanced/A = owner
+
+	if(!A)
+		return FALSE
+
 	if(next_complex > world.time)
 		return FALSE
 
 	if(!handle_gunplay())
 		return FALSE
-
-	var/mob/living/advanced/A = owner
 
 	var/list/params = list(
 		PARAM_ICON_X = num2text(pick(target_distribution_x)),

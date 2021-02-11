@@ -86,7 +86,6 @@
 /obj/structure/interactive/bed/sleeper/proc/open(var/mob/caller)
 	if(open_sound)
 		play_sound(open_sound,src.loc,range_max=VIEW_RANGE)
-		create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 	door_state = SLEEPER_OPENING
 	update_icon()
 	CALLBACK("on_open_\ref[src]",open_time,src,.proc/on_open,caller)
@@ -115,7 +114,6 @@
 		buckle(A,caller)
 	if(close_sound)
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
-		create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 	door_state = SLEEPER_CLOSING
 	update_icon()
 	CALLBACK("on_close_\ref[src]",close_time,src,.proc/on_close,caller)

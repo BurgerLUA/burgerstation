@@ -55,7 +55,6 @@
 			var/turf/T = get_turf(src)
 			if(T)
 				play_sound('sound/weapons/timer/beep.ogg',T,range_max=VIEW_RANGE)
-				create_alert(VIEW_RANGE,T,src,ALERT_LEVEL_NOISE)
 
 		if(time_set <= 0)
 			if(loc)

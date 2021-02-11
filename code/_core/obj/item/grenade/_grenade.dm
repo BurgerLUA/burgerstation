@@ -154,7 +154,7 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(I.add_object(stored_trigger))
-				caller.to_chat(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
+				caller.visible_message(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 				stored_trigger = null
 				update_sprite()
 			else
@@ -171,7 +171,7 @@
 		var/obj/item/container/beaker/B = object
 		B.drop_item(src)
 		stored_containers += B
-		caller.to_chat(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+		caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
 		update_sprite()
 		return TRUE
 

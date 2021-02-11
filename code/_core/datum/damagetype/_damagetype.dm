@@ -570,7 +570,6 @@
 	if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
 		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE)
-		create_alert(VIEW_RANGE,T,attacker,ALERT_LEVEL_CAUTION)
 
 	return TRUE
 
