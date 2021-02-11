@@ -40,7 +40,7 @@
 	desc_extended = "Storage pouches attachable to the groin or chest. This one can carry one Size 4 item, such as bulky guns."
 	icon_state = "single"
 
-	container_max_size = SIZE_3
+	container_max_size = SIZE_4
 	dynamic_inventory_count = 1
 
 	size = SIZE_4
