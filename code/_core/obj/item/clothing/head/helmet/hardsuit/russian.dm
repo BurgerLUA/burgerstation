@@ -22,6 +22,7 @@
 	value = 400
 
 /obj/item/clothing/head/helmet/hardsuit/skat
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_FACE | SLOT_EYES
 	name = "SKAT-9 full-head mask/helmet assembly"
 	icon = 'icons/obj/item/clothing/hats/helmet_skat.dmi'
 	desc = "Milstalkers are just military but hetero."
