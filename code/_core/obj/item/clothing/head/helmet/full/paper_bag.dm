@@ -1,7 +1,7 @@
 /obj/item/clothing/head/helmet/full/paperbag
 	name = "paper bag"
 	desc = "Put the MONEY in the BAG! PUT IT IN!"
-	desc_extended = "Holds items but preferably food. Can be dyed. Can apply a logo by Alt-clicking on help intent nearby, background with disarm intent. Also a fashion statement when worn (must be empty)."
+	desc_extended = "Holds items but preferably food. Can be dyed. Can change the design by Alt-clicking it in your hand. Also a fashion statement when worn (must be empty)."
 	icon = 'icons/obj/item/clothing/hats/paperbag.dmi'
 	var/logo = 0
 	var/logobg = 0
@@ -45,35 +45,44 @@
 	LOADVAR("logobg")
 	return .
 
-/obj/item/clothing/head/helmet/full/paperbag/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller,var/obj/item/D)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
-	INTERACT_DELAY(1)
+	. = ..()
 
 	var/mob/living/C = caller
 	if(C.attack_flags & CONTROL_MOD_ALT)
-		if(C.intent == INTENT_DISARM)
-			if(logobg < 2)
-				logobg++
-				caller.to_chat(span("notice","You change \the pattern from \the [src.name]."))
-			else
-				logobg = 0
-				caller.to_chat(span("notice","You wipe \the pattern from \the [src.name]."))
+		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo","Background")
+		if(choice == "Logo")
+			var/logomenu = list(
+				"none" = 0,
+				"nanotrasen" = 1,
+				"syndicate" = 3,
+				"mchonk" = 2,
+				"heart" = 4,
+				"happy" = 5
+			)
+			choice = input("What do you want to change the logo to?","Logo Selection") as null|anything in logomenu
+			if(choice)
+				logo = logomenu[choice]
+				caller.to_chat(span("notice","You change \the [src.name]'s logo."))
+		if(choice == "Background")
+			var/bgmenu = list(
+				"none" = 0,
+				"stripe" = 1,
+				"circle" = 2
+			)
+			choice = input("What do you want to change the background to?","Background Selection") as null|anything in bgmenu
+			if(choice)
+				logobg = bgmenu[choice]
+				caller.to_chat(span("notice","You change \the [src.name]'s background."))
+		if(!choice)
+			caller.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
+			return TRUE
 
-		if(C.intent == INTENT_HELP)
-			if(logo < 5)
-				logo++
-				caller.to_chat(span("notice","You change \the logo from \the [src.name]."))
-			else
-				logo = 0
-				caller.to_chat(span("notice","You wipe \the logo from \the [src.name]."))
 		update_sprite()
+		return TRUE
 
-
-	return TRUE
-
-
+	return ..()
 
 /obj/item/clothing/head/helmet/full/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
