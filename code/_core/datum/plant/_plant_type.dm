@@ -209,3 +209,17 @@
 	)
 
 	typical_volume = 10
+
+/plant_type/cannabis
+	name = "cannabis"
+	desc = "The green good good."
+	plant_icon_state = "cannabis"
+	harvest_icon_state = "cannabis"
+	seed_icon_state = "cannabis"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/lipolicide = 0.75,
+		/reagent/drug/space = 0.25
+	)
+
+	typical_volume = 10

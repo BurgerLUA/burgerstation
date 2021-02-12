@@ -149,3 +149,15 @@
 	return .
 
 
+/reagent/nutrition/lipolicide
+	name = "lipolicide"
+	desc = "Plant-based nutrition-eating germs."
+	color = "#511500"
+
+	nutrition_amount = -5
+	nutrition_quality_amount = -1
+
+	flavor = "hunger"
+
+	liquid = -0.1
+
