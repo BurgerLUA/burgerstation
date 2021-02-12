@@ -16,7 +16,7 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 16000
+	health_base = 12000
 	stamina_base = 4000
 	mana_base = 1000
 

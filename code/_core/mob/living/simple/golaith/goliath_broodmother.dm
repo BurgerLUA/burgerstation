@@ -14,7 +14,7 @@
 
 	stun_angle = 0
 
-	health_base = 6000
+	health_base = 4000
 	stamina_base = 500
 	mana_base = 2000
 

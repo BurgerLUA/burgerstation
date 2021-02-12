@@ -10,7 +10,7 @@
 
 	boss_loot = /loot/lavaland/herald
 
-	health_base = 2000
+	health_base = 1500
 	stamina_base = 2000
 	mana_base = 100
 

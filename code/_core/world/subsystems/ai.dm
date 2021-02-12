@@ -3,8 +3,8 @@ SUBSYSTEM_DEF(ai)
 	desc = "Controls the AI of mobs."
 	tick_rate = DECISECONDS_TO_TICKS(AI_TICK) //Needs to be fast to handle mob movement.
 	priority = SS_ORDER_PRELOAD
-	cpu_usage_max = 80
-	tick_usage_max = 80
+	cpu_usage_max = 85
+	tick_usage_max = 85
 
 	var/list/active_ai = list()
 	var/list/inactive_ai = list()
