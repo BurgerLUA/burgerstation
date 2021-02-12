@@ -727,6 +727,9 @@
 		var/mob/living/L = attacker
 		if(attack_delay_max < attack_delay)
 			attack_delay_max = attack_delay
-		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+		if(L.ai)
+			return attack_delay + (attack_delay_max - attack_delay)*(2-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+		else
+			return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
 
 	return attack_delay

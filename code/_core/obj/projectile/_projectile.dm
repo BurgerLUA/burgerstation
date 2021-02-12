@@ -223,15 +223,7 @@
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
-	if(!isturf(src.loc))
-		on_hit(current_loc ? current_loc : src.loc,TRUE)
-		return FALSE
-
-	if(!vel_x && !vel_y)
-		on_hit(current_loc ? current_loc : src.loc,TRUE)
-		return FALSE
-
-	if(lifetime && start_time >= lifetime)
+	if(!isturf(src.loc) || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
 		on_hit(current_loc ? current_loc : src.loc,TRUE)
 		return FALSE
 
@@ -240,11 +232,7 @@
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
 		steps_current += 1
-		if(!current_loc)
-			return FALSE
-		if(on_enter_tile(previous_loc,current_loc))
-			return FALSE
-		if(!current_loc)
+		if(!current_loc || on_enter_tile(previous_loc,current_loc) || !current_loc)
 			return FALSE
 		previous_loc = current_loc
 		last_loc_x = current_loc_x
@@ -259,7 +247,10 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
+	pixel_x = pixel_x_float
+	pixel_y = pixel_y_float
+
+	//animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 

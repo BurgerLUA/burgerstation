@@ -67,11 +67,11 @@ var/global/list/wishgranter_speak_lines = list(
 /obj/structure/interactive/boss_loot/proc/clear_self()
 	allowed_users.Cut()
 	icon_state = "wishgranter_off"
-	queue_delete(src,SECONDS_TO_DECISECONDS(60),FALSE)
+	queue_delete(src,SECONDS_TO_DECISECONDS(120),FALSE)
 	return TRUE
 
 /obj/structure/interactive/boss_loot/Finalize()
-	die_time = world.time + SECONDS_TO_DECISECONDS(60)
+	die_time = world.time + SECONDS_TO_DECISECONDS(120)
 	start_thinking(src)
 	return ..()
 
