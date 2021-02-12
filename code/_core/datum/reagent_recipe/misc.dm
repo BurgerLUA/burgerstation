@@ -104,7 +104,20 @@
 	results = list(
 		/reagent/space_cleaner = 2
 	)
+	
+/reagent_recipe/chemistry/space_lube
 
+	name = "Space Lube"
+
+	required_reagents = list(
+		/reagent/nutrition/water = 1
+		/reagent/silicon = 1,
+		/reagent/potassium = 1,
+	)
+
+	results = list(
+		/reagent/lube = 1
+	)
 
 /reagent_recipe/chemistry/acetone
 
