@@ -39,7 +39,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 			var/mob/living/advanced/player/P = buckled
 			var/area/A = get_area(P)
 			if(P.can_save(A))
-				P.force_logout()
+				P.logout()
 
 		if(!buckled)
 			cryo_spawnpoints |= src //Unoccupied!
