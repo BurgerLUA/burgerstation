@@ -100,6 +100,12 @@
 
 	potency = 10
 	yield = 3
-	growth_speed = 2
+	growth_speed = 3
 
 	delete_after_harvest = TRUE
+
+/obj/item/seed/cannabis/life
+	plant_type = /plant_type/cannabis/life
+
+/obj/item/seed/cannabis/death
+	plant_type = /plant_type/cannabis/death

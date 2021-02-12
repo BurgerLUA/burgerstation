@@ -106,3 +106,20 @@
 	yield = 1
 	growth_speed = 5
 	growth_min = 0
+
+/obj/structure/interactive/plant/cannabis
+	plant_type = /plant_type/cannabis
+	icon_state = "cannabis"
+
+	potency = 20
+	yield = 2
+	growth_speed = 4
+	growth_min = 0
+
+/obj/structure/interactive/plant/cannabis/life
+	plant_type = /plant_type/cannabis/life
+	icon_state = "whitecannabis"
+
+/obj/structure/interactive/plant/cannabis/death
+	plant_type = /plant_type/cannabis/death
+	icon_state = "blackcannabis"
