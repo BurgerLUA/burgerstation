@@ -155,7 +155,8 @@
 	if(object.clicked_on_by_object(caller,top_object ? top_object : src,location,control,params))
 		return TRUE
 
-	if(top_object && top_object.attack(caller,object,params))
+	if(top_object)
+		top_object.attack(caller,object,params)
 		return TRUE
 
 	if(is_organ(src.loc)) //We belong to an organ, so we should attack.
