@@ -45,7 +45,7 @@
 	LOADVAR("logobg")
 	return .
 
-/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller,var/obj/item/D)
+/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller)
 
 	. = ..()
 
