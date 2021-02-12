@@ -11,10 +11,11 @@
 
 	value = 35
 
-	block_defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB
+	block_defense = list(
+		ATTACK_TYPE_UNARMED = 0.5,
+		ATTACK_TYPE_MELEE = 0.9,
+		ATTACK_TYPE_RANGED = 0.25,
+		ATTACK_TYPE_MAGIC = 0.25
 	)
 
 	can_wear = TRUE
@@ -29,10 +30,11 @@
 
 	icon = 'icons/obj/item/weapons/melee/ballistic_shield.dmi'
 
-	block_defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_GREATSWORD,
-		PIERCE = AP_GREATSWORD
+	block_defense = list(
+		ATTACK_TYPE_UNARMED = 0.75,
+		ATTACK_TYPE_MELEE = 0.75,
+		ATTACK_TYPE_RANGED = 0.75,
+		ATTACK_TYPE_MAGIC = 0
 	)
 	weight = 25
 	size = SIZE_7
@@ -41,11 +43,9 @@
 	name = "glass shield"
 	icon = 'icons/obj/item/weapons/melee/glass_shield.dmi'
 
-	block_defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
-		HOLY = AP_GREATSWORD
+	block_defense = list(
+		ATTACK_TYPE_UNARMED = 0.5,
+		ATTACK_TYPE_MELEE = 0.8,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0.9
 	)

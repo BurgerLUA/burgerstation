@@ -35,6 +35,13 @@
 
 	has_pain = TRUE
 
+	block_defense = list(
+		ATTACK_TYPE_UNARMED = 1,
+		ATTACK_TYPE_MELEE = 0.25,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
+
 /obj/item/organ/hand/on_pain()
 
 	. = ..()

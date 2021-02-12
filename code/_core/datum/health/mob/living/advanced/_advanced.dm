@@ -204,29 +204,4 @@
 						clothing_defense *= 0.5
 				.[damage_type] += FLOOR(clothing_defense,1)
 
-	if((A.attack_flags & CONTROL_MOD_BLOCK) && (turn(get_dir(attacker,owner),180) & owner.dir)) //Do you even block?
-
-		var/obj/item/item_to_block_with
-
-		if(A.right_item && A.right_item.can_block())
-			if(A.left_item && A.left_item.can_block() && A.left_item.block_defense_value > A.right_item.block_defense_value)
-				item_to_block_with = A.left_item
-			else
-				item_to_block_with = A.right_item
-		else if(A.left_item && A.left_item.can_block())
-			item_to_block_with = A.left_item
-
-		if(item_to_block_with)
-			for(var/damage_type in item_to_block_with.block_defense_rating)
-				if(IS_INFINITY(.[damage_type]))
-					continue
-				.[damage_type] += item_to_block_with.block_defense_rating[damage_type]
-		else
-			for(var/damage_type in ALL_DAMAGE)
-				if(IS_INFINITY(.[damage_type]))
-					continue
-				.[damage_type] += AP_GREATSWORD*0.25 + AP_GREATSWORD*0.75*A.get_skill_power(SKILL_UNARMED)
-
-
-
 	return .

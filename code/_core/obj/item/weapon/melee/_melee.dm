@@ -4,4 +4,9 @@ obj/item/weapon/melee
 
 	drop_sound = 'sound/items/drop/sword.ogg'
 
-	block_defense_rating = DEFAULT_BLOCK_MELEE
+	block_defense = list(
+		ATTACK_TYPE_UNARMED = 0.25,
+		ATTACK_TYPE_MELEE = 0.5,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
