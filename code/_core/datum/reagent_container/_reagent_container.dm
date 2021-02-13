@@ -391,7 +391,7 @@
 			R.on_remove_living(L,src)
 
 	if(check_recipes)
-		process_recipes()
+		process_recipes(caller)
 
 	if(should_update)
 		update_container()
@@ -415,7 +415,8 @@
 	return target_container.add_reagent(reagent_type,remove_reagent(reagent_type,amount,should_update,check_recipes,caller),old_temperature,should_update,check_recipes,caller)
 */
 
-/reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE)
+/*
+/reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
 	if(amount <= 0)
 		return FALSE
@@ -435,9 +436,10 @@
 		src.update_container()
 
 	if(check_recipes)
-		src.process_recipes()
+		src.process_recipes(caller)
 
 	return total_amount_removed
+*/
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
 
@@ -486,8 +488,8 @@
 		target_container.update_container()
 
 	if(check_recipes)
-		src.process_recipes()
-		target_container.process_recipes()
+		src.process_recipes(caller)
+		target_container.process_recipes(caller)
 
 	return total_amount_transfered
 

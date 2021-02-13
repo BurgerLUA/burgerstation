@@ -110,24 +110,32 @@ SUBSYSTEM_DEF(ban)
 
 /subsystem/ban/proc/add_ckey_ban(var/desired_ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
 
+	desired_ckey = lowertext(desired_ckey)
+
 	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
 
-	for(var/ckey in all_clients)
-		var/client/C = all_clients[ckey]
-		if(desired_ckey == ckey)
-			C << span("danger","You have been banned from the server.\n\
-			Banning Admin: [admin_ckey]\n\
-			Reason: [reason]\n\
-			Duration: [expires == -1 ? "Forever" : get_nice_time(expires - world.realtime)]")
-			del(C)
+	var/client/C = all_clients[desired_ckey]
+	if(C)
+		C << span("danger","You have been banned from the server.\n\
+		Banning Admin: [admin_ckey]\n\
+		Reason: [reason]\n\
+		Duration: [expires == -1 ? "Forever" : get_nice_time(expires - world.realtime)]")
+		if(is_player(C.mob))
+			var/mob/living/advanced/player/P = C.mob
+			var/obj/marker/ban/B = locate() in world
+			if(B) P.force_move(get_turf(B))
+			if(world_state == STATE_RUNNING) P.force_logout()
+		del(C)
 
 	rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
 	log_admin("[desired_ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
-
+	broadcast_to_clients("[desired_ckey] was banned by [admin_ckey] for [get_nice_time(expires - world.realtime)] the following reason: [reason].")
 	return TRUE
 
 /subsystem/ban/proc/remove_ckey_ban(var/ckey,admin_ckey)
 	if(bans_keys[ckey])
 		bans_keys -= ckey
 		log_admin("[ckey] was removed from the ckey banlist by [admin_ckey].")
+		return TRUE
+	return FALSE

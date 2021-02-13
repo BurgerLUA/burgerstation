@@ -1,4 +1,4 @@
-#define ATTACK_TYPE_MELEE 0x1
-#define ATTACK_TYPE_RANGED 0x2
-#define ATTACK_TYPE_MAGIC 0x4
-#define ATTACK_TYPE_UNARMED 0x8
+#define ATTACK_TYPE_MELEE "melee"
+#define ATTACK_TYPE_RANGED "ranged"
+#define ATTACK_TYPE_MAGIC "magic"
+#define ATTACK_TYPE_UNARMED "unarmed"

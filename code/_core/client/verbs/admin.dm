@@ -55,7 +55,10 @@
 		src.to_chat(span("notice","You decide not to ban anyone."))
 		return TRUE
 
-	ban_raw(desired_ckey,desired_ban_duration,desired_ban_reason)
+	if(ban_raw(desired_ckey,desired_ban_duration,desired_ban_reason))
+		src.to_chat(span("notice","Ban successfully applied."))
+	else
+		src.to_chat(span("warning","There was an issue applying a ban."))
 
 	return TRUE
 
@@ -75,8 +78,7 @@
 	if(!target_ckey)
 		return FALSE
 
-	SSban.add_ckey_ban(target_ckey,ckey,ban_reason,ban_duration_minutes == -1 ? -1 : world.realtime + ban_duration_minutes*60)
-	return TRUE
+	return SSban.add_ckey_ban(target_ckey,ckey,ban_reason,ban_duration_minutes == -1 ? -1 : world.realtime + ban_duration_minutes*60)
 
 /client/verb/get_clients()
 	set name = "Get Clients"
