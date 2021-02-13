@@ -5,7 +5,7 @@
 	value = 30
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 3
+	shoot_delay = 4
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	view_punch = 6

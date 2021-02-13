@@ -3,7 +3,7 @@
 	desc = "Can't aim? Shoot balls of pure chaos around you."
 	desc_extended = "Costs mana to use."
 	cost_mana = 15
-	shoot_delay = 10
+	shoot_delay = 20
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/chaos.dmi'
 

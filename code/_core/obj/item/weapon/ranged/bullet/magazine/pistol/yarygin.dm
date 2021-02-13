@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 150
 
-	shoot_delay = 1.4
+	shoot_delay = 1.75
 	view_punch = 4
 	max_bursts = 2
 

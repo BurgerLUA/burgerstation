@@ -6,7 +6,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 

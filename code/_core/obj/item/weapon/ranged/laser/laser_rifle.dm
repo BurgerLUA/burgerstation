@@ -10,7 +10,7 @@
 	bullet_color = "#FF0000"
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -102,7 +102,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle/hardlight
 
 	projectile_speed = 26
-	shoot_delay = 2.5
+	shoot_delay = 4
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
@@ -121,7 +121,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle/xray
 
 	projectile_speed = 20
-	shoot_delay = 3
+	shoot_delay = 4
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
@@ -139,7 +139,7 @@
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special fusion battery that charges over time."
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 1.5
+	shoot_delay = 4
 
 	view_punch = 30
 

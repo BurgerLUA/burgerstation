@@ -87,7 +87,7 @@
 	size = SIZE_4
 	weight = 20
 
-	shoot_delay = SECONDS_TO_DECISECONDS(1)
+	shoot_delay = SECONDS_TO_DECISECONDS(3)
 
 	shoot_sounds = list('sound/weapons/freeze.ogg')
 

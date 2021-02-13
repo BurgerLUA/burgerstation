@@ -42,7 +42,7 @@
 	total_charge = 2500
 
 	projectile_speed = 16
-	shoot_delay = SECONDS_TO_DECISECONDS(2)
+	shoot_delay = 20
 
 	icon = 'icons/obj/item/weapons/ranged/magic/fire.dmi'
 
@@ -75,7 +75,7 @@
 	cost_charge = 250
 	total_charge = 1000
 
-	shoot_delay = 15
+	shoot_delay = 20
 
 	projectile_speed = 4
 

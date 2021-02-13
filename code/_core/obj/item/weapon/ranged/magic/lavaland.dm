@@ -5,6 +5,8 @@
 
 	icon = 'icons/obj/item/weapons/ranged/magic/lavaland.dmi'
 
+	shoot_delay = 30
+
 	cost_charge = 500
 	total_charge = 5000
 

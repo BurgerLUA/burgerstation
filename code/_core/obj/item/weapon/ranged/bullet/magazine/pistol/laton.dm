@@ -4,7 +4,7 @@
 	desc_extended = "NT's standard pistol, chambered in the superior 9mm cartridge."
 	value = 90
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt_2.dmi'
-	shoot_delay = 1.5
+	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
 	view_punch = 8

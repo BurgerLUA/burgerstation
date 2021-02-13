@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/762.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 5
+	shoot_delay = 8
 
 	automatic = FALSE
 

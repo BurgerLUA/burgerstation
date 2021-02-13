@@ -10,7 +10,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/minigun.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 

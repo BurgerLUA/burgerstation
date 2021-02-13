@@ -3,7 +3,7 @@
 	desc = "ARCANE MISSILE! ARCANE MISSILE! CLOTHING DOESN'T COUNT!"
 	desc_extended = "Fires a magical missile."
 	cost_mana = 15
-	shoot_delay = 5
+	shoot_delay = 10
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/missile.dmi'
 

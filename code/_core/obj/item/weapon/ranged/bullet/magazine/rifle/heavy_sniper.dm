@@ -18,8 +18,6 @@
 
 	view_punch = TILE_SIZE - 1
 
-
-
 	heat_per_shot = 0.1
 	heat_max = 0.1
 

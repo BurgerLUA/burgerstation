@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/misc/gm94.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = SECONDS_TO_DECISECONDS(2)
+	shoot_delay = 20
 
 	automatic = FALSE
 

@@ -3,7 +3,7 @@
 	desc = "Sprays an enemy with flames."
 	desc_extended = "Costs mana to use."
 	cost_mana = 2
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 

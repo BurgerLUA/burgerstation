@@ -83,7 +83,7 @@
 	icon_state = "inventory"
 	value = 175
 
-	shoot_delay = 1.5
+	shoot_delay = 2
 	max_bursts = 2
 	view_punch = 5
 
@@ -151,7 +151,7 @@
 	icon_state = "inventory"
 	value = 450
 
-	shoot_delay = 1.75
+	shoot_delay = 2
 	view_punch = 5
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
@@ -221,7 +221,7 @@
 	icon_state = "inventory"
 	value = 650
 
-	shoot_delay = 1.75
+	shoot_delay = 2
 	view_punch = 9
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
@@ -291,7 +291,7 @@
 	icon_state = "inventory"
 	value = 300
 
-	shoot_delay = 1.8
+	shoot_delay = 1.5
 	view_punch = 4
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
@@ -361,7 +361,7 @@
 	icon_state = "inventory"
 	value = 175
 
-	shoot_delay = 1.5
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -427,7 +427,7 @@
 	icon_state = "inventory"
 	value = 200
 
-	shoot_delay = 1.5
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -491,7 +491,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/939_vintar.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2.5
+	shoot_delay = 3
 
 	automatic = TRUE
 

@@ -6,8 +6,8 @@
 	icon_state = "inventory"
 	value = 400
 
-	shoot_delay = 1
-	burst_delay = 4
+	shoot_delay = 1.25
+	burst_delay = 5
 	max_bursts = 3
 
 	automatic = TRUE

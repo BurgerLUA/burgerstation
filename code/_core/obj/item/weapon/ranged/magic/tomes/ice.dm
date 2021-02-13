@@ -3,7 +3,7 @@
 	desc = "Cool."
 	desc_extended = "Fires a large ice crystal."
 	cost_mana = 15
-	shoot_delay = 5
+	shoot_delay = 3
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/ice.dmi'
 

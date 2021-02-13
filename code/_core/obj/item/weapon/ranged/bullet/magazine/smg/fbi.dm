@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 350
 
-	shoot_delay = 1.75
+	shoot_delay = 1.6
 
 	automatic = TRUE
 

@@ -8,7 +8,7 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1.2
+	shoot_delay = 1.3
 	view_punch = 4
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')

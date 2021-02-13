@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 4
+	shoot_delay = 5
 
 	automatic = FALSE
 

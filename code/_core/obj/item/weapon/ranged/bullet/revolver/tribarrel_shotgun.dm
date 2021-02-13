@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/power.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1.25
+	shoot_delay = 2
 
 	automatic = TRUE
 

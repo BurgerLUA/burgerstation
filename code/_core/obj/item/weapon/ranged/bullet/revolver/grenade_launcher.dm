@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1.25
+	shoot_delay = 20
 
 	automatic = TRUE
 

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/127_1.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 5
+	shoot_delay = 10
 
 	automatic = FALSE
 

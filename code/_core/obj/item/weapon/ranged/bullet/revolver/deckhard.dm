@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 
 	projectile_speed = 31
-	shoot_delay = 6
+	shoot_delay = 4
 
 	automatic = TRUE
 

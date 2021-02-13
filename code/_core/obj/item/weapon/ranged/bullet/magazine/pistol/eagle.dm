@@ -4,7 +4,7 @@
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'
 	value = 170
-	shoot_delay = 4
+	shoot_delay = 6
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	view_punch = 20
