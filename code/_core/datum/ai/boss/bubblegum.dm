@@ -29,11 +29,11 @@
 
 		var/health_prob_mod = 3 - (owner_as_bubblegum.health.health_current / owner_as_bubblegum.health.health_max)*2
 
-		if(prob(20*health_prob_mod))
+		if(prob(30*health_prob_mod))
 			owner_as_bubblegum.blood_attack()
 			return TRUE
 
-		if(!owner_as_bubblegum.charge_steps && (abs(get_angle(owner_as_bubblegum,objective_attack)) % 45 == 0) && prob(20*health_prob_mod))
+		if(!owner_as_bubblegum.charge_steps && (abs(get_angle(owner_as_bubblegum,objective_attack)) % 45 == 0) && prob(10*health_prob_mod))
 			owner_as_bubblegum.start_charge()
 			return TRUE
 

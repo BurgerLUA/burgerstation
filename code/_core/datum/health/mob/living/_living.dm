@@ -8,7 +8,7 @@
 
 	var/mob/living/L = owner
 	if(L.boss)
-		var/multiplier_value = max(0.1,1 - max(1,length(L.players_fighting_boss))*0.1)
+		var/multiplier_value = clamp(1.4 - length(L.players_fighting_boss)*0.1,0.25,1)
 		. *= multiplier_value
 
 	return .

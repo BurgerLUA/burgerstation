@@ -39,4 +39,9 @@
 		caller.to_chat(span("warning","You can't remove clothing from living people!"))
 		return FALSE
 
+	if(is_living(caller))
+		var/mob/living/CL = caller
+		if(CL.loyalty_tag != "NanoTrasen" && L.loyalty_tag != CL.loyalty_tag)
+			return FALSE
+
 	return TRUE

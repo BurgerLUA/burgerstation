@@ -46,6 +46,10 @@
 	. = ..()
 
 	if(examiner != src)
+		if(is_living(examiner))
+			var/mob/living/L = examiner
+			if(L.loyalty_tag != "NanoTrasen" && L.loyalty_tag != src.loyalty_tag)
+				return .
 		var/blocked_clothing = 0x0
 		for(var/obj/item/clothing/C in worn_objects)
 			var/bits_to_block = (C.blocks_clothing | C.hidden_clothing) & ~C.item_slot
