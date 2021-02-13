@@ -47,10 +47,10 @@
 
 /obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller)
 
-	. = ..()
-
 	var/mob/living/C = caller
 	if(C.attack_flags & CONTROL_MOD_ALT)
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo","Background")
 		if(choice == "Logo")
 			var/logomenu = list(
@@ -81,7 +81,7 @@
 
 		update_sprite()
 		return TRUE
-
+	else . = ..()
 	return ..()
 
 /obj/item/clothing/head/helmet/full/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
