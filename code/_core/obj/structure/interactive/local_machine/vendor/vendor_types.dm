@@ -265,7 +265,10 @@
 		/obj/item/seed/tomato,
 		/obj/item/seed/chanterelle,
 		/obj/item/seed/wheat,
-		/obj/item/seed/poppy
+		/obj/item/seed/poppy,
+		/obj/item/seed/cannabis,
+		/obj/item/seed/cannabis/life,
+		/obj/item/seed/cannabis/death
 	)
 
 /obj/structure/interactive/vending/soda

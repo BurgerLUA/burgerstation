@@ -209,3 +209,41 @@
 	)
 
 	typical_volume = 10
+
+/plant_type/cannabis
+	name = "cannabis"
+	desc = "The green good good."
+	plant_icon_state = "cannabis"
+	harvest_icon_state = "cannabis"
+	seed_icon_state = "cannabis"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/lipolicide = 0.5,
+		/reagent/drug/space = 0.5
+	)
+
+	typical_volume = 10
+
+/plant_type/cannabis/life
+	name = "life cannabis"
+	desc = "The white good good."
+	plant_icon_state = "whitecannabis"
+	harvest_icon_state = "whitecannabis"
+	seed_icon_state = "whitecannabis"
+	reagents = list(
+		/reagent/nutrition/lipolicide = 0.25,
+		/reagent/medicine/omnizine = 0.5,
+		/reagent/drug/space = 0.25
+	)
+
+/plant_type/cannabis/death
+	name = "death cannabis"
+	desc = "The black bad bad."
+	plant_icon_state = "blackcannabis"
+	harvest_icon_state = "blackcannabis"
+	seed_icon_state = "blackcannabis"
+	reagents = list(
+		/reagent/nutrition/lipolicide = 0.25,
+		/reagent/toxin/angel_toxin = 0.5,
+		/reagent/drug/space = 0.25
+	)
