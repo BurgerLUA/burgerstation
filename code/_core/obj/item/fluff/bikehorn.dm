@@ -18,7 +18,9 @@ obj/item/bikehorn/click_self(var/mob/caller)
 	INTERACT_DELAY(20)
 
 	var/turf/T = get_turf(src)
+  
 	play_sound('sound/items/bikehorn.ogg',T)
+
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	return TRUE

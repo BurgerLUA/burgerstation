@@ -21,5 +21,6 @@
 		/obj/item/container/beaker/bucket/water,
 		/obj/item/wet_floor_sign,
 		/obj/item/storage/lighting/tube,
-		/obj/item/storage/lighting/bulb
+		/obj/item/storage/lighting/bulb,
+		/obj/item/deployable/bodybag
 	)

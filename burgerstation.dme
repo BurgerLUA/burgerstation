@@ -1605,6 +1605,7 @@
 #include "code\_core\obj\structure\interactive\construction\grille.dm"
 #include "code\_core\obj\structure\interactive\construction\lattice.dm"
 #include "code\_core\obj\structure\interactive\crate\_crate.dm"
+#include "code\_core\obj\structure\interactive\crate\bodybag.dm"
 #include "code\_core\obj\structure\interactive\crate\crate.dm"
 #include "code\_core\obj\structure\interactive\crate\secure.dm"
 #include "code\_core\obj\structure\interactive\crate\supply_pod.dm"
