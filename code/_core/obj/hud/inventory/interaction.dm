@@ -101,7 +101,7 @@
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
 			var/turf/T = get_step(grabbed_object.loc,desired_move_dir)
-			if(C.loyalty_tag && is_living(grabbed_object) && is_living(caller))
+			if(src.loyalty_tag && is_living(grabbed_object) && is_living(caller))
 				var/mob/living/L = grabbed_object
 				var/mob/living/C = caller
 				var/turf/grabbed_object_turf = grabbed_object.loc
