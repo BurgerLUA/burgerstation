@@ -36,7 +36,7 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	if(right_hand)
 		if(right_hand.click_on_object(src,object,location,control,params))
 			return TRUE
-		if(object.click_on_object(src,right_hand,location,control,params))
+		if(object.clicked_on_by_object(src,right_hand,location,control,params))
 			return TRUE
 
 	return FALSE
@@ -61,7 +61,7 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 	if(left_hand)
 		if(left_hand.click_on_object(src,object,location,control,params))
 			return TRUE
-		if(object.click_on_object(src,left_hand,location,control,params))
+		if(object.clicked_on_by_object(src,left_hand,location,control,params))
 			return TRUE
 
 	return FALSE

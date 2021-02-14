@@ -101,11 +101,11 @@
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
 			var/turf/T = get_step(grabbed_object.loc,desired_move_dir)
-			if(src.loyalty_tag && is_living(grabbed_object) && is_living(caller))
+			if(is_living(grabbed_object) && is_living(caller))
 				var/mob/living/L = grabbed_object
 				var/mob/living/C = caller
 				var/turf/grabbed_object_turf = grabbed_object.loc
-				if(L.loyalty_tag == C.loyalty_tag && grabbed_object_turf.is_safe_teleport() && !T.is_safe_teleport())
+				if(C.loyalty_tag && L.loyalty_tag == C.loyalty_tag && grabbed_object_turf.is_safe_teleport() && !T.is_safe_teleport())
 					return TRUE
 			grabbed_object.Move(T)
 		return TRUE
@@ -171,7 +171,7 @@
 		O.attack(caller,object,params)
 		return TRUE
 
-	return FALSE
+	return TRUE //Returning TRUE here as returning false would just run the above.
 
 /obj/hud/inventory/proc/toggle_wield(var/mob/caller,var/obj/item/item_to_wield)
 

@@ -79,7 +79,8 @@
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-
+	if(object.plane >= PLANE_HUD)
+		return ..()
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

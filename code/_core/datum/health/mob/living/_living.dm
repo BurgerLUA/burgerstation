@@ -112,10 +112,17 @@
 	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100
 	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100
 
-	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+	L.queue_health_update = TRUE
 
 	return TRUE
 
+
+/health/mob/living/adjust_stamina(var/adjust_value)
+	. = ..()
+	if(. && stamina_current >= stamina_max)
+		var/mob/living/L = owner
+		if(L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
+	return .
 
 
 /health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
@@ -126,14 +133,14 @@
 		var/mob/living/L = owner
 		var/fatigue_adjusted = FALSE
 		var/mana_adjusted = FALSE
-		if(fatigue && !L.has_status_effect(STAMCRIT))
-			if(adjust_stamina(-fatigue))
-				fatigue_adjusted = TRUE
+		if(fatigue && (L.ai || !L.has_status_effect(STAMCRIT)) && adjust_stamina(-fatigue))
+			fatigue_adjusted = TRUE
 			if(stamina_current <= 0)
-				L.add_status_effect(STAMCRIT)
+				L.add_status_effect(STAMCRIT,-1,-1)
 		if(mental && adjust_mana(-mental))
 			mana_adjusted = TRUE
-		L.update_health_element_icons(mana=mana_adjusted,stamina=fatigue_adjusted)
+		if(fatigue_adjusted || mana_adjusted)
+			L.queue_health_update = TRUE
 		fatigue = 0
 		mental = 0
 

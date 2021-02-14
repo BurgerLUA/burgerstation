@@ -367,19 +367,17 @@
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check,TRUE) : list()
 
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
-	var/has_fatigue_damage = FALSE
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
-		if(damage_type == FATIGUE)
-			has_fatigue_damage = TRUE
 		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
-		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further armor.
+		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
 			damage_to_deal[damage_type] = 0
+			if(debug) log_debug("Victim has infinite [damage_type] defense.")
 			continue
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
@@ -387,8 +385,6 @@
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			if(IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any magic damage if we resist magic.
 				damage_to_deal[damage_type] = 0
-				continue
-			if(IS_INFINITY(victim_defense))
 				continue
 			victim_defense -= defense_rating_attacker[damage_type]*0.5
 			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
@@ -398,7 +394,7 @@
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
 		damage_blocked += damage_to_block
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
-		if(damage_type_to_fatigue[damage_type])
+		if(damage_type != FATIGUE && damage_type_to_fatigue[damage_type])
 			var/fatigue_damage_to_convert = damage_blocked*damage_type_to_fatigue[damage_type]
 			if(is_living(victim))
 				var/mob/living/L = victim
@@ -406,11 +402,14 @@
 			if(debug) log_debug("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
 			fatigue_damage += fatigue_damage_to_convert
 
-	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)
+	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
 		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
+		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
 
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
+		if(!damage_amount)
+			continue
 		var/real_damage_type = attack_damage_conversion[damage_type]
 		if(islist(real_damage_type))
 			var/list_length = length(real_damage_type)
@@ -452,8 +451,6 @@
 	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
-		if(has_fatigue_damage && L.ai && L.has_status_effect(STAMCRIT) && !L.has_status_effect(SLEEP))
-			L.add_status_effect(SLEEP,600,600)
 
 	if(is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed

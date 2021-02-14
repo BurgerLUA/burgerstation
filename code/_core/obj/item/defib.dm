@@ -94,7 +94,7 @@
 			if(A.labeled_organs[BODY_TORSO])
 				target_to_damage = A.labeled_organs[BODY_TORSO]
 		var/damage_to_deal = caller == target ? 50 : 20
-		target_to_damage?.health?.adjust_loss_smart(PAIN=damage_to_deal,FATIGUE=damage_to_deal)
+		target_to_damage?.health?.adjust_loss_smart(pain=damage_to_deal,fatigue=damage_to_deal)
 		target.add_status_effect(STUN,20,20)
 
 	return TRUE

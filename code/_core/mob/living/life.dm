@@ -114,15 +114,15 @@
 
 /mob/living/proc/rejuvenate()
 	if(health) health.adjust_loss_smart(
-		-health.get_loss(BRUTE),
-		-health.get_loss(BURN),
-		-health.get_loss(TOX),
-		-health.get_loss(OXY),
-		-health.get_loss(FATIGUE),
-		-health.get_loss(PAIN),
-		-health.get_loss(RAD),
-		-health.get_loss(SANITY),
-		-health.get_loss(MENTAL)
+		brute = -health.get_loss(BRUTE),
+		burn = -health.get_loss(BURN),
+		tox = -health.get_loss(TOX),
+		oxy = -health.get_loss(OXY),
+		fatigue = -health.get_loss(FATIGUE),
+		pain = -health.get_loss(PAIN),
+		rad = -health.get_loss(RAD),
+		sanity = -health.get_loss(SANITY),
+		mental = -health.get_loss(MENTAL)
 	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()

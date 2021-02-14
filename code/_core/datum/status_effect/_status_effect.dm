@@ -172,6 +172,7 @@
 
 /status_effect/stamcrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	owner.remove_status_effect(ADRENALINE)
+	owner.stamina_regen_delay = max(owner.stamina_regen_delay,owner.is_player_controlled() ? SECONDS_TO_DECISECONDS(4) : SECONDS_TO_DECISECONDS(10))
 	return ..()
 
 /status_effect/energized
@@ -182,12 +183,10 @@
 	maximum = 3 * 60 * 10 //5 minutes.
 
 /status_effect/energized/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-
 	. = ..()
-
 	if(owner.health) owner.health.update_health(check_death=FALSE)
 	owner.remove_status_effect(STAMCRIT)
-
+	owner.stamina_regen_delay = 0
 	return .
 
 /status_effect/resting

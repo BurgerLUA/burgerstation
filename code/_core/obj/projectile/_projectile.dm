@@ -250,7 +250,7 @@
 	pixel_x = pixel_x_float
 	pixel_y = pixel_y_float
 
-	//animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
+	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 

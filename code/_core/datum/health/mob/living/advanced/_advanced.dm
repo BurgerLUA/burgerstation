@@ -23,9 +23,20 @@
 		if(tox) . += adjust_loss(TOX,tox)
 		if(oxy) . += adjust_loss(OXY,oxy)
 		if(rad) . += adjust_loss(RAD,rad)
-		if(fatigue) . += adjust_loss(FATIGUE,fatigue)
 		if(sanity) . += adjust_loss(SANITY,sanity)
-		if(mental) . += adjust_loss(MENTAL,mental)
+		var/mana_adjusted = FALSE
+		var/fatigue_adjusted = FALSE
+		if(fatigue && (A.ai || !A.has_status_effect(STAMCRIT)) && adjust_stamina(-fatigue))
+			fatigue_adjusted = TRUE
+			if(stamina_current <= 0)
+				A.add_status_effect(STAMCRIT,-1,-1)
+		if(mental > 0 && adjust_mana(-mental))
+			mana_adjusted = TRUE
+		if(mana_adjusted || fatigue_adjusted)
+			A.queue_health_update = TRUE
+
+	mental = 0
+	fatigue = 0
 
 	if(brute < 0 || burn < 0 || pain < 0 || rad < 0) //Heal damage
 		var/list/damaged_organs = list()
@@ -73,7 +84,7 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[PAIN])
-				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=TRUE)
+				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=FALSE)
 
 	if(. && update)
 		A.queue_health_update = TRUE

@@ -140,6 +140,9 @@
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
+	if(!target)
+		return FALSE
+
 	var/mob/living/advanced/A = owner
 
 	if(!A)
@@ -162,25 +165,10 @@
 		"alt" = 0
 	)
 
-	var/atom/defer_left_click
-	var/atom/defer_right_click
-
-	if(A.left_hand) defer_left_click = A.left_hand.defer_click_on_object(A,params = params)
-	if(A.right_hand) defer_right_click = A.right_hand.defer_click_on_object(A,params = params)
-
-	var/list/possible_attacks = list()
-
-	if(defer_right_click && owner.can_attack(target,defer_right_click,params,null) && target.can_be_attacked(A,defer_right_click,params,null))
-		possible_attacks += defer_right_click
-
-	if(defer_left_click && owner.can_attack(target,defer_left_click,params,null) && target.can_be_attacked(A,defer_left_click,params,null))
-		possible_attacks += defer_left_click
-
-	if(!length(possible_attacks))
-		return FALSE
-
-	var/atom/W = pick(possible_attacks)
-	W.click_on_object(A,target,null,null,params)
+	if(left_click && A.right_hand)
+		A.right_hand.click_on_object(A,target,null,null,params)
+	else if(A.left_hand)
+		A.left_hand.click_on_object(A,target,null,null,params)
 
 	return TRUE
 
