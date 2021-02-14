@@ -52,6 +52,7 @@
 		/obj/item/storage/kit/brute/filled,
 		/obj/item/storage/kit/burn/filled,
 		/obj/item/storage/kit/toxin/filled,
+		/obj/item/storage/kit/ai3/filled,
 		/obj/item/container/blood_pack/full/reptile,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/beaker/vial/zombie_antidote,
@@ -94,6 +95,9 @@
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
+		/obj/item/clothing/overwear/coat/ghillie/forest,
+		/obj/item/clothing/overwear/coat/ghillie/snow,
+		/obj/item/clothing/overwear/coat/ghillie/lava,
 		/obj/item/deployable/barricade/filled,
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
@@ -102,7 +106,15 @@
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
 		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
-		/obj/item/clothing/glasses/thermal
+		/obj/item/clothing/glasses/thermal,
+		/obj/item/rcd,
+		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_wall,
+		/obj/item/matter_cartridge,
+		/obj/item/cell_charger,
+		/obj/item/powercell/industrial,
+		/obj/item/deployable/mob/sentry,
+		/obj/item/magazine/minigun_46
 	)
 	markup = 0.75
 
@@ -118,6 +130,9 @@
 		/obj/item/clothing/overwear/hardsuit/exosuit,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/hardsuit/skat,
+		/obj/item/clothing/overwear/coat/ghillie/forest,
+		/obj/item/clothing/overwear/coat/ghillie/snow,
+		/obj/item/clothing/overwear/coat/ghillie/lava,
 		/obj/item/deployable/barricade/filled,
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
@@ -125,7 +140,17 @@
 		/obj/item/weapon/melee/toolbox/syndicate,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
-		/obj/item/clothing/glasses/thermal
+		/obj/item/clothing/glasses/thermal,
+		/obj/item/rcd,
+		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_wall,
+		/obj/item/matter_cartridge,
+		/obj/item/cell_charger,
+		/obj/item/powercell/industrial,
+		/obj/item/deployable/mob/sentry,
+		/obj/item/magazine/minigun_46,
+		/obj/item/weapon/melee/sword/rev_bayonet,
+		/obj/item/weapon/melee/shield/ballistic
 	)
 
 
@@ -159,6 +184,7 @@
 		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
 		/obj/item/storage/ammo/buckshot_23,
 		/obj/item/storage/ammo/slug_23,
+		/obj/item/storage/ammo/fire_23,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/magazine/shotgun_auto/buckshot,
@@ -175,8 +201,5 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
 		/obj/item/magazine/lmg_545,
-		/obj/item/magazine/lmg_545/ap,
-
-		/obj/item/weapon/melee/sword/rev_bayonet,
-		/obj/item/weapon/melee/shield/ballistic
+		/obj/item/magazine/lmg_545/ap
 	)

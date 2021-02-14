@@ -406,7 +406,8 @@
 
 	loot_table = list(
 		/obj/item/storage/ammo/buckshot_23 = 1,
-		/obj/item/storage/ammo/slug_23 = 1
+		/obj/item/storage/ammo/slug_23 = 1,
+		/obj/item/storage/ammo/fire_23 = 1,
 	)
 	loot_count = 4
 	chance_none = 50

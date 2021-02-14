@@ -41,3 +41,26 @@
 	)
 
 	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/shotgun_23/fire
+	name = "spicy pellet"
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list( //so uuh around 90% of regular damage?
+		BLUNT = DAMAGE_GREATSWORD*0.75,
+		HEAT = DAMAGE_GREATSWORD*0.25
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = DAMAGE_GREATSWORD*0.7,
+		HEAT = DAMAGE_GREATSWORD*0.3 //I am unsure of HEAT being that good at penetrating most armors (considering they usually have neat HEAT resistances) so let's keep it fairly high for a while.
+	)
+
+	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/shotgun_23/fire/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_status_effect(FIRE,100,0,stealthy=L.on_fire) //so uuuh 10 sec of fire
+	return ..()

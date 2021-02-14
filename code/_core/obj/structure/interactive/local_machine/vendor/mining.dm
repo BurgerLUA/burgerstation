@@ -11,6 +11,7 @@
 		/obj/item/storage/glovebox/brown_padded,
 		/obj/item/clothing/belt/storage/colored/brown,
 		/obj/item/clothing/overwear/armor/explorer_suit,
+		/obj/item/clothing/mask/gas/mining,
 		/obj/item/clothing/overwear/coat/vest/colored/brown,
 		/obj/item/clothing/back/storage/backpack/explorer,
 		/obj/item/storage/pouch/single/brown,
