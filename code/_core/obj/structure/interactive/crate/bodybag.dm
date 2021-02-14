@@ -5,7 +5,7 @@
     icon = 'icons/obj/structure/crates.dmi'
     icon_state = "coffin"
 
-    value = 100 //same value as /obj/item/deployable/bodybag to avoid money dubing 
+    value = 100 //same value as /obj/item/deployable/bodybag to avoid money dubing
     anchored = FALSE
     collision_flags = FLAG_COLLISION_NONE //Not wall because crawling.
     collision_bullet_flags = FLAG_COLLISION_BULLET_NONE //you'd always shoot OVER the body bag no?
@@ -16,12 +16,8 @@
 /obj/structure/interactive/crate/bodybag/proc/can_pack_up(var/mob/caller)
     INTERACT_CHECK_NO_DELAY(src)
 
-    if(length(src.crate_contents))
+    if(length(src.contents))
         caller.to_chat(span("warning","You can't pack up \the [src.name] while its full!"))
-        return FALSE
-
-    if(get_dist(caller,src) > 1)
-        caller.to_chat(span("warning","You're too far away to pack up \the [src.name]!"))
         return FALSE
 
     if(qdeleting || !isturf(src.loc))
@@ -77,5 +73,5 @@
     if(item_count_current <= 0)
         qdel(src)
         return FALSE
-    
+
     return TRUE //to deploy structures it checks if the turf allows construction, but this would mean you cant place it on the station so not even medbay

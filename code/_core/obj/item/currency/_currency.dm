@@ -52,3 +52,18 @@
 		if(51 to item_count_max)
 			icon_state = "4"
 	return ..()
+
+
+/obj/item/currency/magic_token
+	name = "magic shard token"
+	desc = "Magically delicious!"
+	desc_extended = "A special magic shard token that is commonly used to trade with the Wizard Federation. Used to buy magic items."
+	icon = 'icons/obj/item/currency/magic_token.dmi'
+	icon_state = "1"
+	value = 200
+
+	item_count_max = 4
+
+/obj/item/currency/magic_token/update_icon()
+	icon_state = "[item_count_current]"
+	return ..()
