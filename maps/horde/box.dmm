@@ -692,7 +692,8 @@
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "di" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/smooth/table/wood,
+/obj/item/clothing/head/hat/bunny,
 /turf/simulated/floor/carpet,
 /area/box/interior/station/cafe/bar)
 "dj" = (
@@ -789,7 +790,8 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/cafe/bar)
 "dD" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
 	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
@@ -1012,10 +1014,7 @@
 /turf/simulated/floor/tile,
 /area/box/interior/station/medical)
 "ez" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/colored/dirt/snow,
 /area/box/interior/station/command)
 "eA" = (
 /obj/structure/smooth/table,
@@ -1190,9 +1189,9 @@
 /turf/simulated/floor/plating,
 /area/box/interior/station/hall/east)
 "fr" = (
-/obj/structure/interactive/door/airlock/station/glass,
+/obj/structure/interactive/door/airlock/station/bar,
 /turf/simulated/floor/wood/rich,
-/area/box/interior/station/hall/east)
+/area/box/interior/station/cafe/bar)
 "fs" = (
 /turf/simulated/floor/tile/grey,
 /area/box/interior/station/hall/east)
@@ -1457,12 +1456,6 @@
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/box/interior/station/hall/dorms)
-"gE" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/box/interior/station/command)
 "gF" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
@@ -3185,6 +3178,126 @@
 /obj/item/enchanting_chalk,
 /turf/simulated/floor/carpet,
 /area/box/interior/station/library)
+"nD" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nE" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nF" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nG" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/smooth/table/wood,
+/obj/item/clothing/head/hat/cat,
+/turf/simulated/floor/carpet,
+/area/box/interior/station/cafe/bar)
+"nH" = (
+/obj/structure/smooth/table/wood,
+/obj/item/clothing/mask/gas/clown,
+/turf/simulated/floor/carpet,
+/area/box/interior/station/cafe/bar)
+"nI" = (
+/obj/structure/smooth/table/wood,
+/obj/item/clothing/mask/emoji,
+/turf/simulated/floor/carpet,
+/area/box/interior/station/cafe/bar)
+"nJ" = (
+/obj/structure/smooth/table/wood,
+/obj/item/clothing/head/hat/sombrero,
+/turf/simulated/floor/carpet,
+/area/box/interior/station/cafe/bar)
+"nK" = (
+/obj/structure/smooth/table/wood,
+/obj/item/clothing/head/hat/top,
+/turf/simulated/floor/carpet,
+/area/box/interior/station/cafe/bar)
+"nL" = (
+/obj/structure/interactive/door/airlock/station/bar/glass,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/hall/east)
+"nM" = (
+/obj/structure/interactive/vending/soda/full,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nN" = (
+/obj/structure/interactive/vending/junk/full,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/cafe/bar)
+"nO" = (
+/obj/structure/smooth/table/wood,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/command)
+"nP" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/command)
+"nQ" = (
+/obj/structure/interactive/bed/padded,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/command)
+"nR" = (
+/obj/structure/interactive/misc/shower{
+	icon_state = "shower";
+	dir = 4
+	},
+/obj/structure/interactive/misc/curtain_open,
+/turf/simulated/floor/tile,
+/area/box/interior/station/command)
+"nS" = (
+/obj/structure/interactive/misc/toilet,
+/turf/simulated/floor/tile,
+/area/box/interior/station/command)
+"nT" = (
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 4
+	},
+/turf/simulated/floor/tile,
+/area/box/interior/station/command)
+"nU" = (
+/obj/structure/interactive/misc/dresser,
+/turf/simulated/floor/wood/rich,
+/area/box/interior/station/command)
+"nV" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile/grey,
+/area/box/interior/station/hydroponics)
+"nW" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/grey,
+/area/box/interior/station/hydroponics)
+"nX" = (
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 8
+	},
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/bar)
+"nY" = (
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 4
+	},
+/turf/simulated/floor/tile,
+/area/box/interior/station/cafe/kitchen)
+"nZ" = (
+/mob/living/simple/turret/nanotrasen,
+/turf/simulated/floor/plating,
+/area/box/interior/station/command)
 
 (1,1,1) = {"
 is
@@ -34147,12 +34260,12 @@ bv
 bf
 bh
 bh
-bV
-bV
-bV
-bV
-bV
 bh
+ez
+ez
+ez
+ez
+ez
 kG
 kG
 kG
@@ -34404,11 +34517,11 @@ bv
 bf
 bh
 bV
-bV
-bV
-bV
-bV
-bV
+bh
+bh
+bh
+bh
+bh
 bh
 kG
 kG
@@ -34661,17 +34774,17 @@ bv
 bI
 bh
 cm
+nZ
 bV
 bV
 bV
-bV
-bV
+nZ
 bh
-bh
-bh
-bh
-bh
-bh
+ez
+ez
+ez
+ez
+ez
 bh
 bh
 bh
@@ -34924,11 +35037,11 @@ bV
 bV
 bV
 bh
-bV
-bV
 ez
-bV
-bV
+ez
+ez
+ez
+ez
 bh
 bV
 bV
@@ -35180,12 +35293,12 @@ bV
 bV
 bV
 bV
-kA
-bV
-bV
-bV
-bV
-bV
+bh
+ez
+ez
+ez
+ez
+ez
 bh
 bV
 bV
@@ -35436,13 +35549,13 @@ bV
 bV
 bV
 bV
-bV
-bL
-bV
-bV
 ie
-bV
-bV
+bh
+ez
+ez
+ez
+ez
+ez
 bh
 bV
 hS
@@ -35694,12 +35807,12 @@ bV
 bV
 bV
 bV
-kB
-bV
-bV
-bV
-bV
-bV
+bh
+ez
+ez
+ez
+ez
+ez
 bh
 bV
 bV
@@ -35948,15 +36061,15 @@ bh
 bV
 bV
 bV
-bV
+hb
 bV
 bV
 bh
-bV
-bV
-gE
-bV
-bV
+ez
+ez
+ez
+ez
+ez
 bh
 bV
 bV
@@ -36203,17 +36316,17 @@ bv
 bI
 bh
 cm
+nZ
 bV
 bV
 bV
-bV
-bV
+nZ
 bh
-bh
-bh
-bh
-bh
-bh
+ez
+ez
+ez
+ez
+ez
 bh
 bh
 bh
@@ -36460,11 +36573,11 @@ bv
 bf
 bh
 bV
-bV
-bV
-hb
-bV
-bV
+bh
+bh
+bh
+bh
+bh
 bh
 kG
 kG
@@ -36717,12 +36830,12 @@ gZ
 bf
 bh
 bh
-bV
-bV
-bV
-bV
-bV
 bh
+ez
+ez
+ez
+ez
+ez
 kG
 kG
 kG
@@ -37231,14 +37344,14 @@ bv
 bv
 bI
 bh
-cn
+nP
 hc
 cn
 cn
 cn
+nO
 cn
-cn
-cn
+nP
 bh
 bh
 bh
@@ -37493,16 +37606,16 @@ cn
 cn
 cn
 cn
-cn
-cn
-cn
-kA
-cn
+nO
 cn
 cn
 kA
+cn
+nQ
+cn
+kA
 gI
-gI
+nR
 bh
 bv
 bv
@@ -37750,7 +37863,7 @@ cn
 cn
 cq
 cn
-cn
+nO
 hc
 cn
 bM
@@ -38007,16 +38120,16 @@ cn
 cn
 cn
 cn
-cn
-cn
-cn
-kB
-cn
-cn
+nO
+nO
 cn
 kB
-gI
-gI
+nO
+cn
+nU
+kB
+nS
+nT
 bh
 bv
 bv
@@ -38776,7 +38889,7 @@ bh
 cn
 cn
 cn
-cn
+hc
 cn
 cn
 cn
@@ -39030,14 +39143,14 @@ aG
 bH
 aG
 bh
-cn
-cn
-cn
-hc
-cn
-cn
-cn
-cn
+nP
+nO
+nO
+nO
+nO
+nO
+nO
+nP
 bh
 cF
 cF
@@ -40559,18 +40672,18 @@ aB
 aB
 aB
 bN
-dh
+nH
 dl
 dh
 dh
-dh
-dd
-dd
-dd
-dd
+nF
+nM
+nN
 dd
 dD
-dd
+dD
+nE
+nF
 fp
 fs
 jM
@@ -40816,11 +40929,11 @@ gV
 aB
 aS
 bN
+nI
 dh
 dh
 dh
-dh
-dh
+dd
 dd
 dd
 dd
@@ -41073,16 +41186,16 @@ aB
 aB
 aB
 bN
+nJ
 dh
 dh
 dh
-dh
-dh
+dd
 dd
 dd
 gY
-dC
-dC
+nx
+nr
 dC
 dd
 fq
@@ -41330,17 +41443,17 @@ bN
 bN
 bN
 bN
-dh
-dh
+nK
 dh
 dh
 dh
 dd
 dd
 dd
-nx
-nr
-dC
+dd
+nD
+nD
+nD
 dd
 fq
 fs
@@ -41587,11 +41700,11 @@ dd
 dd
 mV
 bN
+di
 dh
 dh
 dh
-dh
-dh
+dd
 dd
 dd
 dd
@@ -41844,14 +41957,14 @@ dd
 dd
 dd
 bN
-di
-dh
+nG
 dh
 dh
 dh
 dd
-dd
-dd
+dD
+dD
+dD
 dd
 dd
 dd
@@ -42105,15 +42218,15 @@ dh
 dh
 dp
 dh
-dh
 dd
-dd
+dC
+dC
+dC
 dh
 dh
 dh
 dh
-dh
-fr
+nL
 fs
 fs
 iQ
@@ -42362,10 +42475,10 @@ dh
 dh
 dh
 dh
-dh
 dd
-dd
-dh
+dC
+dC
+dC
 dh
 dh
 dh
@@ -42615,14 +42728,14 @@ bN
 bN
 bN
 bN
+nF
 dd
 dd
 dd
 dd
-dd
-dd
-dd
-dh
+nD
+nD
+nD
 dh
 dp
 dh
@@ -42879,12 +42992,12 @@ dd
 dd
 dd
 dd
+dd
 dh
 dh
 dh
 dh
-dh
-fr
+nL
 fs
 fs
 iQ
@@ -43897,14 +44010,14 @@ aX
 aZ
 hH
 aX
-gD
+aY
 eT
 de
 dd
 dh
 dh
 dd
-dd
+fr
 dh
 dh
 gW
@@ -44168,7 +44281,7 @@ nm
 no
 np
 dd
-dd
+nF
 fq
 fs
 fs
@@ -44411,7 +44524,7 @@ aX
 aX
 aX
 aX
-aY
+gD
 eT
 bN
 bN
@@ -44677,7 +44790,7 @@ mY
 mm
 bN
 lW
-aB
+nX
 lX
 aB
 aB
@@ -45956,11 +46069,11 @@ eT
 fH
 eT
 df
+dy
+dy
 dk
-dk
-dk
-dk
-dk
+dy
+dy
 dk
 dk
 nv
@@ -46733,7 +46846,7 @@ dk
 dk
 dt
 dk
-dk
+nY
 dk
 dk
 dk
@@ -47496,18 +47609,18 @@ fH
 eT
 be
 gC
-bK
+nW
 lV
 be
 mQ
+nV
 bK
 bK
 bK
 bK
 bK
 bK
-bK
-bK
+nW
 gB
 mM
 gz
@@ -49046,7 +49159,7 @@ bK
 bK
 bK
 bK
-bK
+nV
 mT
 gz
 mH
@@ -49809,11 +49922,11 @@ eT
 fH
 gC
 bK
-bK
+nV
 bl
 nc
 bl
-bK
+nW
 bK
 bl
 be

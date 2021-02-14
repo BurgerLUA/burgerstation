@@ -140,6 +140,14 @@
 /obj/structure/interactive/door/airlock/station/kitchen/glass
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/bar
+	name = "bar airlock"
+	color = COLOR_WHITE
+	fill_color = COLOR_WHITE
+
+/obj/structure/interactive/door/airlock/station/bar/glass
+	filler = "glass"
+
 /obj/structure/interactive/door/airlock/station/chemistry
 	name = "medical airlock"
 	color = COLOR_CHEMISTRY
