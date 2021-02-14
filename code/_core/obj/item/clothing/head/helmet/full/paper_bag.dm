@@ -50,7 +50,6 @@
 	var/mob/living/C = caller
 	if(C.attack_flags & CONTROL_MOD_ALT)
 		INTERACT_CHECK
-		INTERACT_DELAY(5)
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo","Background")
 		if(choice == "Logo")
 			var/logomenu = list(
@@ -61,7 +60,10 @@
 				"heart" = 4,
 				"happy" = 5
 			)
+
+			INTERACT_CHECK
 			choice = input("What do you want to change the logo to?","Logo Selection") as null|anything in logomenu
+			INTERACT_CHECK
 			if(choice)
 				logo = logomenu[choice]
 				caller.to_chat(span("notice","You change \the [src.name]'s logo."))
@@ -71,14 +73,16 @@
 				"stripe" = 1,
 				"circle" = 2
 			)
+
+			INTERACT_CHECK
 			choice = input("What do you want to change the background to?","Background Selection") as null|anything in bgmenu
+			INTERACT_CHECK
 			if(choice)
 				logobg = bgmenu[choice]
 				caller.to_chat(span("notice","You change \the [src.name]'s background."))
 		if(!choice)
 			caller.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
 			return TRUE
-
 		update_sprite()
 		return TRUE
 	else . = ..()
