@@ -41,7 +41,7 @@
 		/obj/item/attachment/barrel/compensator = FALSE,
 		/obj/item/attachment/barrel/extended = FALSE,
 		/obj/item/attachment/barrel/gyro = FALSE,
-		/obj/item/attachment/barrel/laser_charger = TRUE,
+		/obj/item/attachment/barrel/laser_charger = TRUE, /obj/item/attachment/barrel/laser_charger/advanced = TRUE,
 		/obj/item/attachment/barrel/suppressor = FALSE,
 
 		/obj/item/attachment/sight/laser_sight = TRUE,
