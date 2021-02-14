@@ -17,8 +17,6 @@
 
 	bullet_block_chance = 50
 
-	var/max_size = SIZE_HUMAN
-
 	var/collect_contents_on_initialize = TRUE
 
 	var/loot/loot
@@ -125,7 +123,7 @@
 /obj/structure/interactive/crate/proc/can_store(var/atom/movable/M)
 	if(M.anchored)
 		return FALSE
-	if(M.size >= src.size)
+	if(M.size > src.size)
 		return FALSE
 	if(!is_living(M) && !is_item(M))
 		return FALSE
@@ -139,7 +137,7 @@
 /obj/structure/interactive/crate/proc/can_prevent_close(var/atom/movable/M)
 	if(is_living(M))
 		var/mob/living/L = M
-		if(!L.horizontal || L.size > max_size)
+		if(!L.horizontal || L.size > size)
 			return TRUE
 	return FALSE
 

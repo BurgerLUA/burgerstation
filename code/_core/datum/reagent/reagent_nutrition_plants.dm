@@ -155,7 +155,7 @@
 	color = "#511500"
 
 	nutrition_amount = -5
-	nutrition_quality_amount = -1
+	nutrition_quality_amount = 0
 
 	flavor = "hunger"
 
