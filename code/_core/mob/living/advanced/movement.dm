@@ -78,3 +78,52 @@ mob/living/advanced/get_movement_delay()
 			return O.get_footsteps(original_footsteps,enter)
 
 	return original_footsteps
+
+
+/mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+
+	var/OldLoc = loc
+
+	if(right_hand && right_hand.grabbed_object)
+		right_hand.check_grab()
+
+	if(left_hand && left_hand.grabbed_object)
+		left_hand.check_grab()
+
+	. = ..()
+
+	if(. && isturf(OldLoc))
+		var/turf/T = OldLoc
+		//Right hand
+		if(right_hand && right_hand.grabbed_object)
+			var/distance = get_dist(src,right_hand.grabbed_object)
+			var/turf/grabbed_turf = get_turf(right_hand.grabbed_object)
+			var/bypass_safe = TRUE
+			if(src.loyalty_tag && is_living(right_hand.grabbed_object))
+				var/mob/living/L = right_hand.grabbed_object
+				if(L.loyalty_tag == src.loyalty_tag)
+					bypass_safe = FALSE
+			if(distance > 1)
+				if(bypass_safe || T.is_safe_teleport() || !grabbed_turf.is_safe_teleport())
+					right_hand.grabbed_object.glide_size = glide_size
+					right_hand.grabbed_object.Move(OldLoc)
+				else
+					right_hand.release_object()
+
+		//Left hand
+		if(left_hand && left_hand.grabbed_object)
+			var/distance = get_dist(src,left_hand.grabbed_object)
+			var/turf/grabbed_turf = get_turf(left_hand.grabbed_object)
+			var/bypass_safe = TRUE
+			if(src.loyalty_tag && is_living(left_hand.grabbed_object))
+				var/mob/living/L = left_hand.grabbed_object
+				if(L.loyalty_tag == src.loyalty_tag)
+					bypass_safe = FALSE
+			if(distance > 1)
+				if(bypass_safe || T.is_safe_teleport() || !grabbed_turf.is_safe_teleport())
+					left_hand.grabbed_object.glide_size = glide_size
+					left_hand.grabbed_object.Move(OldLoc)
+				else
+					left_hand.release_object()
+
+	return .

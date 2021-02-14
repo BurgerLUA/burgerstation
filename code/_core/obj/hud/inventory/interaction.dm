@@ -97,10 +97,17 @@
 	if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
 
-	if(grabbed_object)
+	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
-			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir))
+			var/turf/T = get_step(grabbed_object.loc,desired_move_dir)
+			if(C.loyalty_tag && is_living(grabbed_object) && is_living(caller))
+				var/mob/living/L = grabbed_object
+				var/mob/living/C = caller
+				var/turf/grabbed_object_turf = grabbed_object.loc
+				if(L.loyalty_tag == C.loyalty_tag && grabbed_object_turf.is_safe_teleport() && !T.is_safe_teleport())
+					return TRUE
+			grabbed_object.Move(T)
 		return TRUE
 
 	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)

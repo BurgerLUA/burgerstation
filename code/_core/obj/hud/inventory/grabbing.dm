@@ -1,34 +1,3 @@
-
-/mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
-
-	var/OldLoc = loc
-
-	if(right_hand && right_hand.grabbed_object)
-		right_hand.check_grab()
-
-	if(left_hand && left_hand.grabbed_object)
-		left_hand.check_grab()
-
-	. = ..()
-
-	if(.)
-		//Right hand
-		if(right_hand && right_hand.grabbed_object)
-			var/distance = get_dist(src,right_hand.grabbed_object)
-			if(distance > 1)
-				right_hand.grabbed_object.glide_size = glide_size
-				right_hand.grabbed_object.Move(OldLoc)
-
-		//Left hand
-		if(left_hand && left_hand.grabbed_object)
-			var/distance = get_dist(src,left_hand.grabbed_object)
-			if(distance > 1)
-				left_hand.grabbed_object.glide_size = glide_size
-				left_hand.grabbed_object.Move(OldLoc)
-
-	return .
-
-
 /obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/movable/object,location,control,params)
 
 	if(!ismovable(object) || !object.can_be_grabbed(caller))
