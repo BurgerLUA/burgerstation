@@ -68,9 +68,11 @@
 
 	return ..()
 
+/*
 /turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	caller.face_atom(src)
 	return ..()
+*/
 
 /turf/change_victim(var/atom/attacker,var/atom/object)
 
