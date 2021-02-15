@@ -408,7 +408,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		created_sound.y = 0
 		created_sound.volume = local_volume
 		created_sound.environment = M.get_sound_environment()
-		M.client << created_sound
+		M << created_sound
 
 	return created_sound
 
