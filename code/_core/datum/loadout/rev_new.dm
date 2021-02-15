@@ -152,6 +152,7 @@
 
 /loadout/rev/player_antagonist
 	spawning_items = list(
+		/obj/item/clothing/ears/headset,
 		/obj/item/clothing/pants/gorka,
 		/obj/item/clothing/shirt/gorka,
 		/obj/item/clothing/overwear/armor/seva/mono,
