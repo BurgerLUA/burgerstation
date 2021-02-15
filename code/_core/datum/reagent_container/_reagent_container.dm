@@ -27,6 +27,8 @@
 
 	var/allow_recipie_processing = TRUE
 
+	var/mob/process_recipes_next = null
+
 /reagent_container/Destroy()
 	owner = null
 	SSreagent.all_reagent_containers -= src
@@ -132,6 +134,7 @@
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
+		. = FALSE
 	else //If we're colder than we need to be.
 		temperature_change *= 0.5 //This means it's slow to heat up, but fast to cool down.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
@@ -157,7 +160,7 @@
 		update_container()
 		return TRUE
 
-	process_recipes() //Don't worry, this is only called when there was a temperature change and nothing else.
+	//process_recipes() //Don't worry, this is only called when there was a temperature change and nothing else.
 
 	return TRUE
 
@@ -249,6 +252,7 @@
 		var/good_recipe = TRUE
 
 		for(var/reagent_type in recipe.required_reagents)
+			CHECK_TICK(50,FPS_SERVER)
 			if(recipe.required_container && !istype(owner,recipe.required_container))
 				if(debug) log_debug("Recipe [recipe.name] invalid because of wrong container type.")
 				good_recipe = FALSE
@@ -306,6 +310,7 @@
 	update_container(FALSE)
 
 	for(var/k in found_recipe.results)
+		CHECK_TICK(75,FPS_SERVER)
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE,caller)
 
@@ -391,7 +396,7 @@
 			R.on_remove_living(L,src)
 
 	if(check_recipes)
-		process_recipes(caller)
+		process_recipes_next = caller
 
 	if(should_update)
 		update_container()
@@ -408,38 +413,6 @@
 	update_container()
 
 	return TRUE
-
-/*
-/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_type,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE,var/mob/living/caller) //Transfer a single reagent by id.
-	var/old_temperature = stored_reagents_temperature[reagent_type] ? stored_reagents_temperature[reagent_type] : T0C + 20
-	return target_container.add_reagent(reagent_type,remove_reagent(reagent_type,amount,should_update,check_recipes,caller),old_temperature,should_update,check_recipes,caller)
-*/
-
-/*
-/reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller)
-
-	if(amount <= 0)
-		return FALSE
-
-	amount = min(amount,volume_current)
-
-	var/total_amount_removed = 0
-
-	var/old_volume = volume_current
-
-	for(var/r_id in stored_reagents)
-		var/volume = stored_reagents[r_id]
-		var/ratio = volume / old_volume
-		total_amount_removed += remove_reagent(r_id,ratio*amount,FALSE,FALSE)
-
-	if(should_update)
-		src.update_container()
-
-	if(check_recipes)
-		src.process_recipes(caller)
-
-	return total_amount_removed
-*/
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
 
@@ -488,8 +461,8 @@
 		target_container.update_container()
 
 	if(check_recipes)
-		src.process_recipes(caller)
-		target_container.process_recipes(caller)
+		src.process_recipes_next = caller
+		target_container.process_recipes_next = caller
 
 	return total_amount_transfered
 

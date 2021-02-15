@@ -12,16 +12,21 @@ SUBSYSTEM_DEF(reagent)
 	var/list/all_reagent_recipes = list()
 	var/list/reagent_container/all_reagent_containers = list()
 
+	var/list/containers_to_process = list()
+
 	var/list/stored_book_data = list()
 
 /subsystem/reagent/on_life()
 
 	for(var/k in all_reagent_containers)
-		var/reagent_container/R = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*4)
+		var/reagent_container/R = k
 		if(R.flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT)
 			continue
 		R.process_temperature()
+		if(R.process_recipes_next)
+			R.process_recipes(R.process_recipes_next)
+			R.process_recipes_next = null
 
 	return TRUE
 
