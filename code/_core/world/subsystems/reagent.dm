@@ -24,9 +24,6 @@ SUBSYSTEM_DEF(reagent)
 		if(R.flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT)
 			continue
 		R.process_temperature()
-		if(R.process_recipes_next)
-			R.process_recipes(R.process_recipes_next)
-			R.process_recipes_next = null
 
 	return TRUE
 

@@ -212,7 +212,7 @@
 		B.reagents.update_container()
 
 	src.reagents.update_container()
-	src.reagents.process_recipes_next = caller
+	src.reagents.process_recipes(caller)
 
 	return ..()
 

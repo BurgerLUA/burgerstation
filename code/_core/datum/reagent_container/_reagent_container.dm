@@ -27,8 +27,6 @@
 
 	var/allow_recipie_processing = TRUE
 
-	var/mob/process_recipes_next = null
-
 /reagent_container/Destroy()
 	owner = null
 	SSreagent.all_reagent_containers -= src
@@ -396,7 +394,7 @@
 			R.on_remove_living(L,src)
 
 	if(check_recipes)
-		process_recipes_next = caller
+		process_recipes(caller)
 
 	if(should_update)
 		update_container()
@@ -461,8 +459,8 @@
 		target_container.update_container()
 
 	if(check_recipes)
-		src.process_recipes_next = caller
-		target_container.process_recipes_next = caller
+		src.process_recipes(caller)
+		target_container.process_recipes(caller)
 
 	return total_amount_transfered
 
