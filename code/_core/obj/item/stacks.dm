@@ -1,5 +1,5 @@
 /obj/item/proc/can_transfer_stacks_to(var/obj/item/I)
-	return istype(src,I) && I != src && I.item_count_max > 1
+	return (istype(I,src) || istype(src,I)) && I != src && I.item_count_max > 1
 
 //Credit goes to Unknown Person
 

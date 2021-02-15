@@ -116,3 +116,14 @@
 
 /obj/item/organ/torso/monkey/female
 	icon_state = BODY_TORSO_FEMALE
+
+
+/obj/item/organ/torso/goblin
+	name = "goblin torso"
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+	desc = "An organ."
+
+	defense_rating = GOBLIN_ARMOR
+
+/obj/item/organ/torso/goblin/female
+	icon_state = BODY_TORSO_FEMALE

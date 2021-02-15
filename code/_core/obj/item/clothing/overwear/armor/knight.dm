@@ -171,3 +171,22 @@
 
 /obj/item/clothing/overwear/armor/knight/magnus/gold
 	color = COLOR_GOLD
+
+/obj/item/clothing/overwear/armor/knight/goblin
+	name = "goblin knight torso"
+	desc = "Where's the pants?"
+	desc_extended = "A kinght suit without the pants. Good for short goblins."
+	icon = 'icons/obj/item/clothing/suit/goblin.dmi'
+
+	defense_rating = list(
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		LASER = AP_AXE,
+		HEAT = -AP_AXE,
+		ARCANE = -AP_GREATSWORD,
+		PAIN = AP_CLUB
+	)
+
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
+

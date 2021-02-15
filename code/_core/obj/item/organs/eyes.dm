@@ -86,3 +86,13 @@
 	name = "left monkey eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
+
+//goblin
+/obj/item/organ/eye/goblin
+	name = "right goblin eye"
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+
+/obj/item/organ/eye/goblin/left
+	name = "left goblin eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT

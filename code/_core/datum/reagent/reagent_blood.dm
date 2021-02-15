@@ -320,3 +320,12 @@
 	)
 
 	color = "#AE0000"
+
+/reagent/blood/goblin
+	name = "Goblin Blood"
+
+	compatible_blood = list(
+		/reagent/blood/goblin = TRUE
+	)
+
+	color = "#AE3700"

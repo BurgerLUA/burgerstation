@@ -76,3 +76,9 @@
 		"ears" = COLOR_BLACK,
 		"stripe" = COLOR_BLACK
 	)
+
+/obj/item/clothing/head/helmet/polymorphic/goblin
+	polymorphs = list(
+		"base" = COLOR_SILVER,
+		"ears" = COLOR_SILVER
+	)

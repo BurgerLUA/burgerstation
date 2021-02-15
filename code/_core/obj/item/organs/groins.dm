@@ -102,3 +102,14 @@
 
 /obj/item/organ/groin/monkey/female
 	icon_state = BODY_GROIN_FEMALE
+
+
+//goblin
+/obj/item/organ/groin/goblin
+	name = "goblin groin"
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+
+	defense_rating = GOBLIN_ARMOR
+
+/obj/item/organ/groin/goblin/female
+	icon_state = BODY_GROIN_FEMALE

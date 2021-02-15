@@ -17,6 +17,10 @@
 	icon_state = "1"
 	value = 400
 
+/obj/item/currency/telecrystals/goblin/Generate()
+	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)
+	return ..()
+
 /obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
 	item_count_current = 50
 	return ..()
@@ -63,6 +67,10 @@
 	value = 200
 
 	item_count_max = 4
+
+/obj/item/currency/magic_token/random/Generate()
+	item_count_current = pick(1,1,1,1,1,1,1,1,2,2,2,3,3,4)
+	return ..()
 
 /obj/item/currency/magic_token/update_icon()
 	icon_state = "[item_count_current]"

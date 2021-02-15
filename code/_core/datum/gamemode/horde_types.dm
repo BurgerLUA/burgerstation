@@ -112,6 +112,15 @@
 	)
 	hidden = FALSE
 
+/gamemode/horde/cultists
+	name = "Horde Mode (Space Goblins)"
+	desc = "Fight off an endless wave of Space Goblins while attempting to complete objectives."
+	enemy_types_to_spawn = list(
+		/mob/living/simple/goblin = 100,
+		/mob/living/advanced/npc/goblin/warrior = 20,
+		/mob/living/advanced/npc/goblin/mage = 10
+	)
+	hidden = FALSE
 
 /gamemode/horde/boss_rush
 	name = "Horde Mode (Boss Rush)"

@@ -118,3 +118,15 @@
 
 /obj/item/organ/head/monkey/female
 	icon_state = BODY_HEAD_FEMALE
+
+
+//skeleton
+/obj/item/organ/head/goblin
+	name = "goblin head"
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+	desc = "An organ."
+
+	defense_rating = GOBLIN_ARMOR
+
+/obj/item/organ/head/goblin/female
+	icon_state = BODY_HEAD_FEMALE

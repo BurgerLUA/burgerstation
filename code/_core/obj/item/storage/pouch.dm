@@ -43,7 +43,7 @@
 	container_max_size = SIZE_4
 	dynamic_inventory_count = 1
 
-	size = SIZE_4
+	size = SIZE_5
 
 	value = 70
 

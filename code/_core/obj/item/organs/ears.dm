@@ -63,12 +63,23 @@
 	icon_state = BODY_EAR_LEFT
 
 
-//monkey
+//Monkey
 /obj/item/organ/ear/monkey
 	name = "right monkey ear"
 	icon = 'icons/mob/living/advanced/species/monkey.dmi'
 
 /obj/item/organ/ear/monkey/left
 	name = "left monkey ear"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT
+
+
+//Goblin
+/obj/item/organ/ear/goblin
+	name = "right goblin earhole"
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+
+/obj/item/organ/ear/goblin/left
+	name = "left goblin earhole"
 	id = BODY_EAR_LEFT
 	icon_state = BODY_EAR_LEFT

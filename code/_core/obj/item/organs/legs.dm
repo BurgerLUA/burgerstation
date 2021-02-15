@@ -196,3 +196,24 @@
 
 	target_bounds_y_min = 4
 	target_bounds_y_max = 8
+
+
+//goblin
+/obj/item/organ/leg/goblin
+	name = "right goblin leg"
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+
+	defense_rating = GOBLIN_ARMOR
+
+/obj/item/organ/leg/goblin/left
+	name = "left goblin leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8

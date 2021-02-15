@@ -273,3 +273,31 @@
 
 	target_bounds_y_min = 1
 	target_bounds_y_max = 3
+
+
+//Beefman
+/obj/item/organ/foot/goblin
+	name = "right goblin foot"
+
+	icon = 'icons/mob/living/advanced/species/goblin.dmi'
+
+	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+	defense_rating = GOBLIN_ARMOR
+
+/obj/item/organ/foot/goblin/left
+	name = "left goblin foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
