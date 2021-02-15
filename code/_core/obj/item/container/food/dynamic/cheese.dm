@@ -49,7 +49,6 @@
 		qdel(src)
 
 	else if(has_prefix(icon_state,"block"))
-
 		if(original_volume > 10)
 			var/pieces = FLOOR(original_volume/10, 1)
 			if(pieces <= 1 || original_volume < pieces)

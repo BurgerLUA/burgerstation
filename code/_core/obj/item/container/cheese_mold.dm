@@ -26,20 +26,27 @@
 
 	var/original_temperature = reagents.average_temperature
 
-	var/total_non_enzyme_volume = 0
+	var/total_milk_volume = 0
 
 	for(var/reagent_path in reagents.stored_reagents)
-		if(ispath(reagent_path,/reagent/enzymes/))
+		if(!ispath(reagent_path,/reagent/nutrition/milk/))
 			continue
 		var/reagent_volume = reagents.stored_reagents[reagent_path]
-		total_non_enzyme_volume += reagent_volume
+		total_milk_volume += reagent_volume
+
+	var/best_cheese = null
+	var/best_cheese_value = 0
+
+	for(var/k in cheese_mix)
+		var/v = cheese_mix[k]
+		if(!best_cheese || v > best_cheese_value)
+			best_cheese = k
+			best_cheese_value = v
 
 	var/obj/item/container/food/dynamic/cheese/C = new(T)
 	C.icon_state = icon_state
 	INITIALIZE(C)
-	for(var/reagent_path in cheese_mix)
-		var/reagent_volume = (cheese_mix[reagent_path]/CHEESE_PROCESS_TIME)*total_non_enzyme_volume
-		C.reagents.add_reagent(reagent_path,reagent_volume,original_temperature,FALSE,FALSE)
+	C.reagents.add_reagent(best_cheese,total_milk_volume,original_temperature,FALSE,FALSE)
 	FINALIZE(C)
 
 	T.visible_message(span("notice","The cheese finishes curdling!"))

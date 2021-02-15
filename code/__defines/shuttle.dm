@@ -10,4 +10,4 @@
 #define SHUTTLE_STATE_LANDED "landed" //We have landed.
 #define SHUTTLE_STATE_WAITING "waiting" //We have enough people to launch, now we wait just for more, just in case.
 
-#define CHEESE_PROCESS_TIME SHUTTLE_DEFAULT_TRANSIT_TIME*0.75
+#define CHEESE_PROCESS_TIME 40
