@@ -15,6 +15,8 @@
 
 	var/blood_level = 0
 
+	density = FALSE
+
 /obj/effect/cleanable/blood/Cross(atom/movable/O)
 	return TRUE
 
