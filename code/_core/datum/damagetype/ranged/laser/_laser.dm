@@ -8,6 +8,6 @@
 
 	damage_mod = 1
 
-	bonus_experience = list(
+	bonus_experience_skill = list(
 		SKILL_RANGED = 50 //50%
 	)

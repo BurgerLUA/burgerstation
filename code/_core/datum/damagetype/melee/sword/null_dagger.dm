@@ -30,7 +30,7 @@
 		SKILL_PRAYER = HOLY
 	)
 
-	bonus_experience = list(
+	bonus_experience_skill = list(
 		SKILL_MELEE = 25, //25%
 		SKILL_PRAYER = 25
 	)

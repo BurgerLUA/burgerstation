@@ -23,6 +23,6 @@
 		SKILL_SORCERY = list(ARCANE,DARK)
 	)
 
-	bonus_experience = list(
-		SKILL_SORCERY = 50 //50%
+	bonus_experience_skill = list(
+		SKILL_SORCERY = 75 //75%
 	)

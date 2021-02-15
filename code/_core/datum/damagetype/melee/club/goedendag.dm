@@ -18,8 +18,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_STRENGTH = PIERCE
+		ATTRIBUTE_STRENGTH = list(BLUNT,PIERCE)
 	)
 
 	skill_stats = list(
