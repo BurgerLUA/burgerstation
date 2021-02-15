@@ -17,5 +17,5 @@
 		/obj/item/material/ingot/gold = 100,
 		/obj/item/clothing/overwear/coat/drip = 1
 	)
-	chance_none = 50
-	loot_count = 4
+	chance_none = 75
+	loot_count = 3
