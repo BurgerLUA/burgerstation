@@ -3,7 +3,7 @@
 	desc = "Be like Zeus!"
 	desc_extended = "Fires slow moving lightning bolts at foes."
 	cost_mana = 16
-	shoot_delay = SPEED_CLUB * 0.5
+	shoot_delay = SPEED_CLUB * 0.75
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/lightning.dmi'
 

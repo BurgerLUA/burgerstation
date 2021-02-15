@@ -398,7 +398,7 @@ mob/living/proc/on_life_slow()
 		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/rad_to_regen = clamp(rad_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/sanity_to_regen = clamp(sanity_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		health.adjust_loss_smart(
+		update_health = health.adjust_loss_smart(
 			brute = -brute_to_regen,
 			burn = -burn_to_regen,
 			tox=-tox_to_regen,
@@ -413,7 +413,6 @@ mob/living/proc/on_life_slow()
 		pain_regen_buffer -= pain_to_regen
 		rad_regen_buffer -= rad_to_regen
 		sanity_regen_buffer -= sanity_to_regen
-		update_health = TRUE
 
 	if(can_buffer_stamina())
 		var/stamina_to_regen = clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)

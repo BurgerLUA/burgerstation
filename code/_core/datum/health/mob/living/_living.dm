@@ -73,10 +73,6 @@
 		if(check_death && should_be_dead)
 			L.death()
 
-		if(update_hud)
-			L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
-			L.update_boss_health()
-
 		if(L.medical_hud_image)
 			var/health_icon_state
 			if(L.dead)
@@ -96,6 +92,10 @@
 
 		if(L.medical_hud_image_advanced)
 			L.medical_hud_image_advanced.icon_state = "[damage[TOX] > 0][damage[BURN] > 0][damage[BRUTE] > 0]"
+
+		if(update_hud)
+			L.update_health_element_icons(TRUE,TRUE,TRUE)
+			L.update_boss_health()
 
 	return .
 

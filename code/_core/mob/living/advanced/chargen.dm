@@ -142,7 +142,7 @@
 		B.update_sprite()
 
 	update_all_blends()
-	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+	update_health_element_icons(TRUE,TRUE,TRUE)
 
 	show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=3)
 

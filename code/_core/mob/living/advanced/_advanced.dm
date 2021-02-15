@@ -291,7 +291,7 @@ mob/living/advanced/Login()
 	restore_inventory()
 	restore_health_elements()
 	restore_local_machines()
-	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+	update_health_element_icons(TRUE,TRUE,TRUE)
 	return .
 
 /mob/living/advanced/proc/restore_local_machines()
@@ -324,7 +324,7 @@ mob/living/advanced/Login()
 	. = ..()
 
 	if(client)
-		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+		update_health_element_icons(TRUE,TRUE,TRUE)
 		add_species_buttons()
 		add_species_health_elements()
 

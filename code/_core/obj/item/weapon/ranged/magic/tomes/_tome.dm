@@ -12,7 +12,7 @@
 	. = ..()
 
 	if(caller.health)
-		. = clamp(200/max(25,caller.health.mana_current),0.5,2)
+		. = clamp(200/max(25,caller.health.mana_current),0.5,3)
 
 	. = max(.,2)
 

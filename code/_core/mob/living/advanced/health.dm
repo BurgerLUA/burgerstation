@@ -16,11 +16,11 @@
 	return ..()
 
 
-/mob/living/advanced/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE,var/update_body=FALSE)
+/mob/living/advanced/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
 	. = ..()
 
-	if(update_body && health && health_elements && health_elements["body"])
+	if(. && health && length(health_elements) && health_elements["body"])
 		var/obj/hud/button/health/body/B = health_elements["body"]
 		B.update_stats()
 

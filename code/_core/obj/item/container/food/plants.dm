@@ -141,6 +141,7 @@
 /obj/item/container/food/plant/wheat
 	name = "wheat"
 	icon_state = "wheat"
+	plant_type = /plant_type/wheat
 
 /obj/item/container/food/plant/wheat/Generate()
 	reagents.add_reagent(/reagent/nutrition/wheat_grain,10)
