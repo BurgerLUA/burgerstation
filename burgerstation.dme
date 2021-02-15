@@ -541,6 +541,7 @@
 #include "code\_core\datum\loadout\space_cop\_space_cop.dm"
 #include "code\_core\datum\loadout\syndicate\_syndicate.dm"
 #include "code\_core\datum\loot\_loot.dm"
+#include "code\_core\datum\loot\boss.dm"
 #include "code\_core\datum\loot\enchanting.dm"
 #include "code\_core\datum\loot\fishing.dm"
 #include "code\_core\datum\loot\goblin.dm"

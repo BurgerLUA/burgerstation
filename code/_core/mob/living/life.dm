@@ -85,6 +85,7 @@
 
 	return TRUE
 
+
 /*
 /mob/living/proc/do_loot_drop(var/atom/desired_loc)
 
@@ -152,7 +153,25 @@
 	return TRUE
 
 /mob/living/proc/post_death()
+
+	if(boss)
+		var/turf/T = get_turf(src)
+		if(T)
+			var/list/loot_spawned = CREATE_LOOT(/loot/boss,T)
+			for(var/k in loot_spawned)
+				var/obj/item/I = k
+				var/item_move_dir = pick(DIRECTIONS_ALL)
+				var/turf/turf_to_move_to = get_step(T,item_move_dir)
+				if(!turf_to_move_to)
+					turf_to_move_to = T
+				I.force_move(turf_to_move_to)
+				var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
+				I.pixel_x = -pixel_offsets[1]*TILE_SIZE
+				I.pixel_y = -pixel_offsets[2]*TILE_SIZE
+				animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
 	HOOK_CALL("post_death")
+
 	return TRUE
 
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)

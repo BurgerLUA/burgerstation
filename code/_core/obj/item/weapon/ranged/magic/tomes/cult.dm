@@ -3,7 +3,7 @@
 	desc = "No normies allowed."
 	desc_extended = "Costs mana to use."
 	cost_mana = 15
-	shoot_delay = SPEED_CLUB*2
+	shoot_delay = SPEED_CLUB
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/cult.dmi'
 
