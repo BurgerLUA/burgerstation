@@ -81,3 +81,15 @@
 	object_to_summon = /mob/living/simple/watcher
 
 	value = 2000
+
+/obj/item/weapon/ranged/magic/tome/summon/crystal_guardian
+	name = "summoning tome of the crystal guardians"
+	desc = "None."
+	desc_extended = "Summons a powerful Crystal Guardian to fight for you for 5 minutes. Costs mana to use."
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/crystal_guardian.dmi'
+
+	cost_mana = 150
+
+	object_to_summon = /mob/living/advanced/npc/crystal_guardian/
+
+	value = 3000
