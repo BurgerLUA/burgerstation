@@ -1,13 +1,13 @@
 /obj/item/clothing/head/helmet/hardsuit/crystal_guardian
-	name = "mining hardsuit helmet"
-	desc = "Helmet used by the mystical Crystal Guardians."
+	name = "crystal guardian's helmet"
+	desc = "A helmet forged with crystals and enchanted alloy that's used by the mystical Crystal Guardians."
 	desc_extended = "Little is known about the origin of Crystal Guardians, their attunement towards crystal based magic is unparalelled and in turn is utilized in all of their equipment."
 	icon = 'icons/obj/item/clothing/hats/crystal_guardian.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
+		BLADE = AP_CLUB,
+		BLUNT = AP_CLUB,
 		PIERCE = AP_SWORD,
 		LASER = -AP_CLUB,
 		ARCANE = AP_GREATCLUB,

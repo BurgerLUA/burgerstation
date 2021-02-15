@@ -1,18 +1,18 @@
 /obj/item/clothing/overwear/hardsuit/crystal_guardian
 	name = "crystal guardian's armor"
-	desc = "Hardsuits used by the mystical Crystal Guardians."
+	desc = "A hardsuit forged with crystals and enchanted alloy that's used by the mystical Crystal Guardians."
 	desc_extended = "Little is known about the origin of Crystal Guardians, their attunement towards crystal based magic is unparalelled and in turn is utilized in all of their equipment."
 	icon = 'icons/obj/item/clothing/suit/crystal_guardian.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_CLUB,
 		PIERCE = AP_AXE,
 		LASER = -AP_CLUB,
-		ARCANE = AP_GREATAXE,
-		HEAT = -AP_AXE,
-		COLD = AP_AXE,
+		ARCANE = AP_GREATCLUB,
+		HEAT = -AP_CLUB,
+		COLD = AP_CLUB,
 		BOMB = AP_AXE,
 		BIO = AP_SWORD,
 		RAD = AP_SWORD

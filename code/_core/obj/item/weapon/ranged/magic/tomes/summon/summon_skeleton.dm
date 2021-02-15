@@ -88,7 +88,7 @@
 	desc_extended = "Summons a powerful Crystal Guardian to fight for you for 5 minutes. Costs mana to use."
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/crystal_guardian.dmi'
 
-	cost_mana = 150
+	cost_mana = 125
 
 	object_to_summon = /mob/living/advanced/npc/crystal_guardian/
 
