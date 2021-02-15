@@ -7,6 +7,15 @@
 
 	weight = 6
 
+/obj/item/weapon/ranged/magic/tome/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
+
+	. = ..()
+
+	if(caller.health)
+		. = clamp(100/max(25,caller.health.mana_current),0.5,2)
+
+	return .
+
 /obj/item/weapon/ranged/magic/tome/get_static_spread()
 	return 0
 

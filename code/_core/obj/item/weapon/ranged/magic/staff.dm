@@ -69,7 +69,7 @@
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
-	shoot_delay = SPEED_CLUB*0.5
+	shoot_delay = SPEED_CLUB*0.25
 
 	value = 1200
 
@@ -91,7 +91,7 @@
 	cost_charge = SOUL_SIZE_UNCOMMON/20
 	total_charge = SOUL_SIZE_UNCOMMON
 
-	shoot_delay = SPEED_CLUB*0.5
+	shoot_delay = SPEED_CLUB*0.25
 
 	projectile_speed = 4
 
@@ -139,7 +139,7 @@
 
 	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 
-	shoot_delay = SPEED_CLUB*0.5
+	shoot_delay = SPEED_CLUB*0.25
 
 	value = 1000
 
@@ -173,7 +173,7 @@
 
 	projectile_speed = 15
 	bullet_count = 1
-	shoot_delay = SPEED_CLUB*0.5
+	shoot_delay = SPEED_CLUB*0.25
 
 	can_wield = TRUE
 

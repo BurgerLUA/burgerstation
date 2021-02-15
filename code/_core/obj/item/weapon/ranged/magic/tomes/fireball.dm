@@ -3,7 +3,7 @@
 	desc = "Shoot fireballs in long hallways like an asshole."
 	desc_extended = "Costs mana to use."
 	cost_mana = 50
-	shoot_delay = SPEED_CLUB*0.5
+	shoot_delay = SPEED_CLUB*0.25
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/fireball.dmi'
 
