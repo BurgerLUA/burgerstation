@@ -39,5 +39,7 @@
 
 	blood_type = null
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/halloween_spirit/blue
 	icon_state = "blue"

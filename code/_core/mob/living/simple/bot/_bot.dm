@@ -9,3 +9,5 @@
 	blood_volume = 250
 
 	armor_base = CYBORG_ARMOR
+
+	soul_size = null

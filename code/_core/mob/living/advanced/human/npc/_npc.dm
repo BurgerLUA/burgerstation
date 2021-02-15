@@ -5,6 +5,8 @@
 
 	var/dialogue_id
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/advanced/npc/proc/can_talk_to(var/mob/caller)
 
 	if(!is_living(caller))

@@ -47,6 +47,8 @@
 
 	blood_type = /reagent/blood/carp
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/spacecarp/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

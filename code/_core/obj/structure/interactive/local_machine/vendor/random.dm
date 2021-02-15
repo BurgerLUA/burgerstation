@@ -2,7 +2,7 @@
 	name = "mystery vendor"
 	desc = "What a weird selection of things.."
 	desc_extended = "An old, suprisingly intact vendor that contains... what?"
-	icon_state = "magivend"
+	icon_state = "sustenance"
 
 	stored_types = list()
 

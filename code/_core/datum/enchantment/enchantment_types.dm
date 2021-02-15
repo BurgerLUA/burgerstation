@@ -48,7 +48,7 @@
 /enchantment/blood_leech
 	name = "Blood Leech"
 	desc = "Restores blood relative to damage dealt. Only works on living targets."
-	enchanting_phrase = "Why are my fucking hands made of butter?"
+	enchanting_phrase = "Blood for the blood god!"
 
 /enchantment/blood_leech/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(attacker) && is_living(victim))
@@ -56,4 +56,15 @@
 		var/mob/living/L2 = victim
 		if(!L1.dead && !L2.dead)
 			L1.blood_volume = clamp(L1.blood_volume+total_damage_dealt*0.1*strength,0,L1.blood_volume_max)
+	return ..()
+
+/enchantment/soul_trap
+	name = "Soul Trap"
+	desc = "Traps the soul of most living beings."
+	enchanting_phrase = "Gingers have souls!"
+
+/enchantment/soul_trap/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_status_effect(SOULTRAP,10 + strength*30,10 + strength*30)
 	return ..()

@@ -40,6 +40,8 @@
 	blood_type = /reagent/blood/crab
 	blood_volume = 200
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/crab/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -119,6 +121,8 @@
 	enable_security_hud = FALSE
 
 	movement_delay = DECISECONDS_TO_TICKS(3)
+
+	soul_size = SOUL_SIZE_RARE
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

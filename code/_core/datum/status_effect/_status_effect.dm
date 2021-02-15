@@ -27,6 +27,23 @@
 /status_effect/proc/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	return TRUE
 
+/status_effect/soul_trap
+	name = "Soul Trap"
+	desc = "You've been soul trapped!"
+	id = SOULTRAP
+	minimum = 10
+	maximum = 600
+
+	affects_dead = FALSE
+
+/status_effect/soul_trap/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	if(victim.is_player_controlled())
+		return FALSE
+
+	return ..()
+
+
 /status_effect/stun
 	name = "Stunned"
 	desc = "You're stunned!"

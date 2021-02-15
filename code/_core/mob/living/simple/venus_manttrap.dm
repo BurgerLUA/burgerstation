@@ -39,6 +39,8 @@
 	blood_type = /reagent/blood/plant
 	blood_volume = 400
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/venus_human_trap/post_death()
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"

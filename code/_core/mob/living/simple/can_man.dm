@@ -78,6 +78,8 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
+	soul_size = SOUL_SIZE_RARE
+
 /mob/living/simple/can_man/post_death()
 	. = ..()
 	charge_steps = 0

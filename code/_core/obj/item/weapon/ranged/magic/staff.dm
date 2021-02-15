@@ -3,6 +3,19 @@
 	var/total_charge = 1000
 	weight = 10
 
+/obj/item/weapon/ranged/magic/staff/Finalize()
+	cost_charge = CEILING(cost_charge,10)
+	total_charge = CEILING(total_charge,100)
+	return ..()
+
+/obj/item/weapon/ranged/magic/staff/get_examine_list(var/mob/examiner)
+
+	. = ..()
+
+	if(total_charge > initial(total_charge)*2)
+		. += span("warning","Overcharged: Uses twice as many charge as it is above capacity.")
+
+	return .
 
 /obj/item/weapon/ranged/magic/staff/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -27,7 +40,10 @@
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
 /obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller,var/bullet_position=1)
-	total_charge -= cost_charge
+	var/charge_to_remove = cost_charge
+	if(total_charge > initial(total_charge)*2)
+		charge_to_remove *= 2
+	total_charge -= charge_to_remove
 	update_sprite()
 	return FALSE
 
@@ -38,8 +54,8 @@
 	name = "Wand of Fireballs"
 	desc = "Shoot fireballs!"
 	desc = "You can also use it to reheat soup in a pinch."
-	cost_charge = 100
-	total_charge = 2500
+	cost_charge = SOUL_SIZE_COMMON/10
+	total_charge = SOUL_SIZE_COMMON
 
 	projectile_speed = 16
 	shoot_delay = 20
@@ -72,8 +88,8 @@
 	name = "Staff of Chaos"
 	desc = "Summon Chaos!"
 	desc_extended = "For when you need to summon a little chaos."
-	cost_charge = 250
-	total_charge = 1000
+	cost_charge = SOUL_SIZE_UNCOMMON/20
+	total_charge = SOUL_SIZE_UNCOMMON
 
 	shoot_delay = 20
 
@@ -110,8 +126,8 @@
 	name = "Staff of Magic Missile"
 	desc = "ARCANE MISSILE!."
 	desc_extended = "Point the orb end at the enemy for best result."
-	cost_charge = 100
-	total_charge = 1000
+	cost_charge = SOUL_SIZE_COMMON/20
+	total_charge = SOUL_SIZE_COMMON
 
 	projectile_speed = 20
 	bullet_count = 1
@@ -152,8 +168,8 @@
 	name = "Staff of the Blackflame"
 	desc = "Draw unholy power to cast a flame that burns black!"
 	desc_extended = "You can also use it to reheat soup in a pinch."
-	cost_charge = 50
-	total_charge = 2000
+	cost_charge = SOUL_SIZE_UNCOMMON/10
+	total_charge = SOUL_SIZE_UNCOMMON
 
 	projectile_speed = 15
 	bullet_count = 1

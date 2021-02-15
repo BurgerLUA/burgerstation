@@ -84,6 +84,8 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
 
+	soul_size = SOUL_SIZE_RARE
+
 
 /*
 /mob/living/simple/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

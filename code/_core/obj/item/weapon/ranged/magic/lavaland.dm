@@ -7,8 +7,8 @@
 
 	shoot_delay = 30
 
-	cost_charge = 500
-	total_charge = 5000
+	cost_charge = SOUL_SIZE_UNCOMMON/10
+	total_charge = SOUL_SIZE_UNCOMMON
 
 	bullet_count = 1
 	projectile_speed = 8

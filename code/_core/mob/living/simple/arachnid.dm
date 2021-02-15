@@ -54,6 +54,8 @@
 	blood_type = /reagent/blood/alien/green
 	blood_volume = 2000
 
+	soul_size = SOUL_SIZE_UNCOMMON
+
 /mob/living/simple/arachnid/post_death()
 	. = ..()
 	icon_state = "dead"

@@ -72,3 +72,6 @@
 
 #define SLIP "slip"
 //Honk
+
+#define SOULTRAP "soultrap"
+//Converting kills to souls

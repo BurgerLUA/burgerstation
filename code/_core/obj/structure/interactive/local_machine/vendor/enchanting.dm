@@ -5,7 +5,9 @@
 	icon_state = "magivend"
 
 	stored_types = list(
-		/obj/item/enchanting_chalk,
 		/obj/item/paper/book/enchanting_guide,
-		/obj/item/soulgem/common
+		/obj/item/enchanting_chalk,
+		/obj/item/soulgem,
+		/obj/item/soulgem/common,
+		/obj/item/paper/book/enchanting/soul_trap
 	)

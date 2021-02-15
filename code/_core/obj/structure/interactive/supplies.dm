@@ -47,6 +47,9 @@
 
 /obj/structure/interactive/supplies/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+
 	if(!opened)
 		open()
 		return TRUE

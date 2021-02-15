@@ -33,6 +33,8 @@
 
 	var/loot/intial_loot = /loot/goblin
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/goblin/Generate()
 
 	if(intial_loot)

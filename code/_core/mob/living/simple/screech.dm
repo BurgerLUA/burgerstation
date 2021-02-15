@@ -26,3 +26,5 @@
 
 	blood_type = /reagent/blood/alien/red
 	blood_volume = 400
+
+	soul_size = SOUL_SIZE_COMMON

@@ -70,6 +70,8 @@
 		/obj/item/container/food/dynamic/meat/raw_goliath
 	)
 
+	soul_size = SOUL_SIZE_RARE
+
 /mob/living/simple/goliath/broodmother/on_life()
 	. = ..()
 

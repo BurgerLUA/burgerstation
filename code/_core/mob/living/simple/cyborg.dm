@@ -20,6 +20,8 @@
 
 	armor_base = CYBORG_ARMOR
 
+	soul_size = null
+
 /*
 /mob/living/simple/silicon/engineer
 	name = "engineer cyborg"

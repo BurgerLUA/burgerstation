@@ -9,6 +9,8 @@
 	blood_type = /reagent/blood/unholy
 	blood_volume = BLOOD_VOLUME_DEFAULT
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/cult/cultist
 	name = "blood cult peon"
 	icon = 'icons/mob/living/simple/cult.dmi'

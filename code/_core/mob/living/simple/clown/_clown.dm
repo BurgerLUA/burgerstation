@@ -29,6 +29,8 @@
 	blood_type = /reagent/blood/clown
 	blood_volume = 750
 
+	soul_size = SOUL_SIZE_COMMON
+
 
 /mob/living/simple/clown/hulk
 	name = "clown hunk"

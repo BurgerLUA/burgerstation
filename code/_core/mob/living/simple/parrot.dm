@@ -30,6 +30,8 @@
 		/obj/item/container/food/dynamic/chicken/raw
 	)
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
 	return ..()

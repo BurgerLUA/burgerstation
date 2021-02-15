@@ -42,6 +42,8 @@
 
 	stun_angle = 180
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/bullshark/post_death()
 	. = ..()
 	icon_state = "dead"

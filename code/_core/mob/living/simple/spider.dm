@@ -42,6 +42,8 @@
 
 	blood_type = /reagent/blood/spider
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/spider/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

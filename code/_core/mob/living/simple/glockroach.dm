@@ -33,6 +33,9 @@
 	blood_type = /reagent/blood/insect
 	blood_volume = 50
 
+	soul_size = SOUL_SIZE_COMMON
+
+
 /mob/living/simple/glockroach/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

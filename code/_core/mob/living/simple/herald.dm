@@ -79,6 +79,8 @@
 		/obj/item/container/food/dynamic/meat/raw_colossus
 	)
 
+	soul_size = SOUL_SIZE_RARE
+
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 

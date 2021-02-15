@@ -46,6 +46,8 @@ var/global/list/valid_antag_colors = list(
 
 	size = SIZE_HUMAN
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/antag/Initialize()
 	var/image/I = new/image(icon,"shadow")
 	I.blend_mode = BLEND_MULTIPLY

@@ -52,3 +52,4 @@
 	blood_type = /reagent/blood/carp
 	blood_volume = 750
 
+	soul_size = SOUL_SIZE_COMMON

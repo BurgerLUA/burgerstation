@@ -87,6 +87,8 @@
 
 	var/next_blood_attack = 0
 
+	soul_size = SOUL_SIZE_RARE
+
 /mob/living/simple/bubblegum/post_death()
 	. = ..()
 	charge_steps = 0

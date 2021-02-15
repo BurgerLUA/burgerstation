@@ -69,6 +69,16 @@
 
 	if(master)
 		dust()
+	else if(!is_player_controlled() && soul_size && has_status_effect(SOULTRAP))
+		var/obj/effect/temp/soul/S = new(get_turf(src),SECONDS_TO_DECISECONDS(20))
+		S.appearance = src.appearance
+		S.transform = matrix()
+		S.color = "#000000"
+		S.soul_size = soul_size
+		INITIALIZE(S)
+		GENERATE(S)
+		FINALIZE(S)
+		remove_status_effect(SOULTRAP)
 
 	return TRUE
 

@@ -12,7 +12,8 @@
 		/loot/supply_crate/nanotrasen = 1,
 		/loot/supply_crate/american = 1,
 		/loot/supply_crate/syndicate = 1,
-		/loot/supply_crate/magic = 1
+		/loot/supply_crate/magic = 1,
+		/loot/supply_crate/medicine = 1
 	)
 
 /loot/supply_crate/russian

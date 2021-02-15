@@ -845,6 +845,7 @@
 #include "code\_core\obj\effect\temp\landing.dm"
 #include "code\_core\obj\effect\temp\muzzleflash.dm"
 #include "code\_core\obj\effect\temp\phasing.dm"
+#include "code\_core\obj\effect\temp\soul.dm"
 #include "code\_core\obj\effect\temp\sparkles.dm"
 #include "code\_core\obj\effect\temp\stand.dm"
 #include "code\_core\obj\effect\temp\wormhole.dm"

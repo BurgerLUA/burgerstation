@@ -50,6 +50,8 @@
 		PAIN = INFINITY
 	)
 
+	soul_size = null
+
 /mob/living/simple/legionare/Destroy()
 
 	if(stored_corpse)

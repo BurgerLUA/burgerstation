@@ -51,6 +51,8 @@
 
 	blood_type = null
 
+	soul_size = SOUL_SIZE_COMMON
+
 
 /mob/living/simple/slime/create_override_contents(var/mob/living/caller)
 	var/obj/item/slime_core/SC = new(src.loc)

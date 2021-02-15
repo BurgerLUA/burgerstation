@@ -24,6 +24,8 @@
 	blood_type = /reagent/blood/bat
 	blood_volume = 100
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"

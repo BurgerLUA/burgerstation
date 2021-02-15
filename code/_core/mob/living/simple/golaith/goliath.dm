@@ -48,6 +48,8 @@
 	blood_type = /reagent/blood/goliath
 	blood_volume = 750
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/simple/goliath/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

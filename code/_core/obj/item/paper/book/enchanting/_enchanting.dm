@@ -31,21 +31,24 @@
 
 /obj/item/paper/book/enchanting/fire
 	stored_enchantment = /enchantment/fire
-	value = 1000
+	value = 2000
 
 /obj/item/paper/book/enchanting/stagger
 	stored_enchantment = /enchantment/stagger
-	value = 1500
+	value = 3000
 
 /obj/item/paper/book/enchanting/stun
 	stored_enchantment = /enchantment/stun
-	value = 2000
+	value = 4000
 
 /obj/item/paper/book/enchanting/disarm
 	stored_enchantment = /enchantment/disarm
-	value = 1500
+	value = 3000
 
 /obj/item/paper/book/enchanting/blood_leech
 	stored_enchantment = /enchantment/blood_leech
-	value = 2000
+	value = 4000
 
+/obj/item/paper/book/enchanting/soul_trap
+	stored_enchantment = /enchantment/soul_trap
+	value = 1000

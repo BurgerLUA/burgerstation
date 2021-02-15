@@ -61,6 +61,8 @@
 
 	size = SIZE_LARGE
 
+	soul_size = SOUL_SIZE_RARE
+
 
 
 /mob/living/simple/ghost/handle_alpha()

@@ -24,6 +24,8 @@
 
 	armor_base = CYBORG_ARMOR
 
+	soul_size = null
+
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 

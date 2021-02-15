@@ -41,6 +41,8 @@
 		PAIN = INFINITY
 	)
 
+	soul_size = null
+
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 
