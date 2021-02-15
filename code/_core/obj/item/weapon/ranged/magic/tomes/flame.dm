@@ -3,7 +3,7 @@
 	desc = "Sprays an enemy with flames."
 	desc_extended = "Costs mana to use."
 	cost_mana = 2
-	shoot_delay = SPEED_AXE*0.25
+	shoot_delay = SPEED_AXE
 
 	automatic = TRUE
 
