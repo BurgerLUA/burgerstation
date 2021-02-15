@@ -5,7 +5,7 @@
 
 	icon = 'icons/obj/item/weapons/ranged/magic/lavaland.dmi'
 
-	shoot_delay = 30
+	shoot_delay = SPEED_CLUB*0.5
 
 	cost_charge = SOUL_SIZE_UNCOMMON/10
 	total_charge = SOUL_SIZE_UNCOMMON
