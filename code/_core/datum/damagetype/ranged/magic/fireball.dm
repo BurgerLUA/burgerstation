@@ -3,12 +3,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = DAMAGE_AXE*0.3,
-		ARCANE = DAMAGE_AXE*0.2
+		HEAT = DAMAGE_CLUB*0.3,
+		ARCANE = DAMAGE_CLUB*0.2
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = DAMAGE_AXE*0.2
+		ATTRIBUTE_INTELLIGENCE = DAMAGE_CLUB*0.2
 	)
 
 	attribute_damage = list(
@@ -16,7 +16,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = DAMAGE_AXE*0.3,
+		SKILL_SORCERY = DAMAGE_CLUB*0.3,
 	)
 
 	skill_damage = list(
