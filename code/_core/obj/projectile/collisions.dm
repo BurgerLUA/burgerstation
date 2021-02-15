@@ -82,6 +82,14 @@
 		if(!new_turf.allow_bullet_pass && new_turf.density_east)
 			return new_turf
 
+	if(old_living)
+		for(var/k in old_living)
+			var/mob/living/L = k
+			if(P.owner == L)
+				continue
+			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0)
+				return L
+
 	return null
 
 /obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
