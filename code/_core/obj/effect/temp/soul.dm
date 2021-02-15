@@ -20,6 +20,8 @@
 	animate(f2,x=f2:x,time=0,loop=-1,flags=ANIMATION_PARALLEL)
 	animate(x=f2:x-5,time=rand(20,30))
 
+	animate(src,pixel_z=TILE_SIZE,time=duration)
+
 	CALLBACK("remove_effect_fade_\ref[src]",duration-SECONDS_TO_DECISECONDS(1),src,.proc/remove_effect_fade)
 
 	color = "#000000"

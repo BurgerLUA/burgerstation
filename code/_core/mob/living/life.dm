@@ -75,6 +75,9 @@
 		S.transform = matrix()
 		S.color = "#000000"
 		S.soul_size = soul_size
+		S.plane = PLANE_EFFECT
+		S.layer = 1000
+		S.name = "soul of [initial(name)]:"
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)

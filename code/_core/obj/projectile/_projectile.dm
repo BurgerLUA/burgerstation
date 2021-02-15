@@ -247,8 +247,8 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-	pixel_x = pixel_x_float
-	pixel_y = pixel_y_float
+	//pixel_x = pixel_x_float
+	//pixel_y = pixel_y_float
 
 	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
 
