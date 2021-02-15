@@ -11,7 +11,7 @@
 
 	var/opened = FALSE
 
-	var/loot/loot = /loot/supply
+	var/loot/loot = /loot/supply_crate/all
 
 	var/chance_none = 50
 

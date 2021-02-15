@@ -1,6 +1,9 @@
 /loot/supply_crate
+
+/loot/supply_crate/medicine
 	loot_table = list(
-		/loot/medicine/pack = 50
+		/loot/medicine/pack = 1,
+
 	)
 
 /loot/supply_crate/all

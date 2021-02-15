@@ -77,3 +77,8 @@
 	loot = /loot/supply_crate/magic
 	icon_state = "supply_magic"
 	value = 1000
+
+/obj/item/supply_crate/medicine
+	loot = /loot/supply_crate/medicine
+	icon_state = "supply_medicine"
+

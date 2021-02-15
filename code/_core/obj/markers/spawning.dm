@@ -100,5 +100,6 @@
 		/obj/item/supply_crate/magic = 1,
 		/obj/item/supply_crate/nanotrasen = 3,
 		/obj/item/supply_crate/russian = 1,
-		/obj/item/supply_crate/syndicate = 1
+		/obj/item/supply_crate/syndicate = 1,
+		/obj/item/supply_crate/medicine = 3
 	)
