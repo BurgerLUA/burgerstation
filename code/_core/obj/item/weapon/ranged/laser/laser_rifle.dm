@@ -47,8 +47,8 @@
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
-		/obj/item/attachment/sight/scope = TRUE,
-		/obj/item/attachment/sight/scope/large = TRUE,
+		/obj/item/attachment/sight/scope = FALSE,
+		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
 		/obj/item/attachment/stock/c20r = FALSE,
