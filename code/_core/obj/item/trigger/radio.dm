@@ -8,14 +8,19 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	icon_state = "inventory"
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
-	var/list/listening_frequencies = list(
-		RADIO_FREQ_COMMON
+	var/list/listening_frequencies = list( // The frequencies this radio is allowed to talk on.
+		RADIO_FREQ_COMMON,
+		RADIO_FREQ_ALPHA,
+		RADIO_FREQ_BRAVO,
+		RADIO_FREQ_CHARLIE,
+		RADIO_FREQ_DELTA,
+		RADIO_FREQ_SHIP,
 	)
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.
 	var/broadcasting = FALSE //Whether or not the radio can broadcast messages without having to press the button.
 
-	var/frequency_min = RADIO_FREQ_COMMON
+	var/frequency_min = RADIO_FREQ_ALPHA
 	var/frequency_max = RADIO_FREQ_MAX
 
 	var/spam_fix_time = 0
@@ -142,11 +147,14 @@ list(
 	value = 15
 
 /obj/item/device/radio/syndicate
-	name = "\improper NanoTrasen Radio"
+	name = "\improper Syndicate Radio"
 
 	frequency_min = RADIO_FREQ_SYNDICATE
 	frequency_max = RADIO_FREQ_COMMON
 
 	frequency = RADIO_FREQ_SYNDICATE
+	listening_frequencies = list(
+		RADIO_FREQ_SYNDICATE
+	)
 
 	value = 100

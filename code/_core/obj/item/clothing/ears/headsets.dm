@@ -40,3 +40,5 @@
 /obj/item/clothing/ears/headset/syndicate
 	name = "syndicate headset"
 	stored_radio = /obj/item/device/radio/syndicate
+
+	loyalty_tag = "Syndicate"
