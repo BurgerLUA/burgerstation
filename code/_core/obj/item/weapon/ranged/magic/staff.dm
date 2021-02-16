@@ -58,7 +58,7 @@
 	total_charge = SOUL_SIZE_COMMON
 
 	projectile_speed = 16
-	shoot_delay = 20
+	shoot_delay = 8
 
 	icon = 'icons/obj/item/weapons/ranged/magic/fire.dmi'
 
@@ -91,11 +91,11 @@
 	cost_charge = SOUL_SIZE_UNCOMMON/20
 	total_charge = SOUL_SIZE_UNCOMMON
 
-	shoot_delay = SPEED_CLUB*0.25
+	shoot_delay = 8
 
 	projectile_speed = 4
 
-	bullet_count = 9
+	bullet_count = 5
 
 	icon = 'icons/obj/item/weapons/ranged/magic/chaos.dmi'
 
@@ -121,6 +121,7 @@
 	return 0
 
 
+
 /obj/item/weapon/ranged/magic/staff/basic
 
 	name = "Staff of Magic Missile"
@@ -139,7 +140,7 @@
 
 	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 
-	shoot_delay = SPEED_CLUB*0.25
+	shoot_delay = 8
 
 	value = 1000
 
@@ -173,7 +174,7 @@
 
 	projectile_speed = 15
 	bullet_count = 1
-	shoot_delay = SPEED_CLUB*0.25
+	shoot_delay = 10
 
 	can_wield = TRUE
 
