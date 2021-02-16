@@ -48,7 +48,7 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 #define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D);FINALIZE(D)
 
 #define CREATE_SAFE(I,desired_loc) \
-	var/mob/living/advanced/player/L1234 = locate() in view(VIEW_RANGE,desired_loc);\
+	var/mob/living/advanced/player/L1234 = locate() in viewers(VIEW_RANGE,desired_loc);\
 	if(!L1234) {CREATE(I,desired_loc)};
 
 proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)

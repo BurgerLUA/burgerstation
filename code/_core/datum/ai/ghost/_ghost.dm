@@ -163,23 +163,23 @@
 
 
 	//Who is looking at us?
-	var/list/viewers = list()
+	var/list/found_viewers = list()
 	var/mob/living/advanced/insane
 	var/sanity_rating = 75
 	if(T.lightness >= 0 && owner.invisibility < 101)
-		for(var/mob/living/advanced/ADV in view(owner,owner.view))
+		for(var/mob/living/advanced/ADV in viewers(VIEW_RANGE,owner))
 			if(ADV.dead)
 				continue
 			if(!ADV.client)
 				continue
 			if(!(ADV.dir & get_dir(ADV,owner)))
 				continue
-			viewers += ADV
+			found_viewers += ADV
 			ADV.sanity -= DECISECONDS_TO_SECONDS(2)
 			if(ADV.sanity < sanity_rating)
 				insane = ADV
 				sanity_rating = ADV.sanity
-	var/viewer_count = length(viewers)
+	var/viewer_count = length(found_viewers)
 
 	//What should our alpha be?
 	var/desired_alpha = 200
@@ -245,7 +245,7 @@
 						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					last_teleport = world.time
 			else if(viewer_count || insane)
-				var/mob/living/advanced/ADV = insane ? insane : pick(viewers)
+				var/mob/living/advanced/ADV = insane ? insane : pick(found_viewers)
 				var/turf/T2 = get_turf(ADV)
 				owner.force_move(T2)
 				last_teleport = world.time

@@ -85,7 +85,7 @@
 				owner.do_say("I knew it, I should've been a plastic surgeon.")
 		next_idle_voice = world.time + SECONDS_TO_DECISECONDS(120)
 
-	for(var/mob/living/L in view(owner,8))
+	for(var/mob/living/L in viewers(VIEW_RANGE*0.5,owner))
 		if(!src.is_valid_healing_target(L))
 			continue
 		var/distance_check = get_dist(L,owner)

@@ -17,7 +17,7 @@
 
 	if(owner.iff_tag == "NanoTrasen" && prob(10))
 		var/living_count = 0
-		for(var/mob/living/L in view(owner,VIEW_RANGE))
+		for(var/mob/living/L in viewers(VIEW_RANGE,owner))
 			if(L == owner)
 				continue
 			if(L.dead)

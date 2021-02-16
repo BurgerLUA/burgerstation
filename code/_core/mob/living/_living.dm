@@ -442,7 +442,7 @@
 /mob/living/Finalize()
 	. = ..()
 	if(boss)
-		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
+		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_bosses |= src
 				B.update_stats()

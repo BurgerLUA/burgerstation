@@ -10,7 +10,7 @@
 	return !(L.dead)
 
 /ai/carp/proc/get_leader()
-	for(var/mob/living/simple/spacecarp/leader/L in view(radius_find_enemy,owner))
+	for(var/mob/living/simple/spacecarp/leader/L in viewers(radius_find_enemy,owner))
 		if(owner == L)
 			continue
 		if(is_valid_leader(L))

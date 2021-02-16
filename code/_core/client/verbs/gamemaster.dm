@@ -129,7 +129,7 @@
 	for(var/k in all_players)
 		valid_targets += k
 
-	for(var/mob/living/L in view(src.mob,VIEW_RANGE))
+	for(var/mob/living/L in viewers(VIEW_RANGE,src.mob))
 		valid_targets |= L
 
 	var/mob/living/L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets

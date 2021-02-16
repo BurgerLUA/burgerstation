@@ -146,6 +146,17 @@
 
 	return TRUE
 
+/ai/proc/get_view_range()
+	. = radius_find_enemy
+	switch(alert_level)
+		if(ALERT_LEVEL_NOISE)
+			. = radius_find_enemy_noise
+		if(ALERT_LEVEL_CAUTION)
+			. = radius_find_enemy_caution
+		if(ALERT_LEVEL_COMBAT)
+			. = radius_find_enemy_combat
+	return .
+
 /ai/proc/get_possible_targets()
 
 	. = list()
@@ -158,20 +169,13 @@
 				continue
 			.[A] = TRUE
 
-	var/range_to_use = radius_find_enemy
-	switch(alert_level)
-		if(ALERT_LEVEL_NOISE)
-			range_to_use = radius_find_enemy_noise
-		if(ALERT_LEVEL_CAUTION)
-			range_to_use = radius_find_enemy_caution
-		if(ALERT_LEVEL_COMBAT)
-			range_to_use = radius_find_enemy_combat
+	var/range_to_use = get_view_range()
 
 	if(range_to_use <= 0)
 		return .
 
 	if(aggression > 0)
-		for(var/mob/living/L in view(range_to_use,owner))
+		for(var/mob/living/L in viewers(range_to_use,owner))
 			CHECK_TICK(75,FPS_SERVER*2)
 			var/sight_chance = get_sight_chance(L,FALSE)
 			if(sight_chance < 100 && !prob(sight_chance))

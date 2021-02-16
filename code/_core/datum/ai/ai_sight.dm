@@ -1,16 +1,19 @@
-/ai/proc/is_in_view(var/atom/A)
-	return A in view(owner)
-
 /ai/proc/get_sight_chance(var/atom/A,var/check_view = TRUE)
 
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
 		return 0
 
-	if(check_view && !is_in_view(A))
-		return 0
-
 	if(owner.z != A.z)
 		return 0
+
+	if(check_view)
+		var/view_range_to_use = get_view_range()
+		if(ismob(A))
+			if(!(owner in viewers(view_range_to_use,A)))
+				return 0
+		else
+			if(!(A in view(view_range_to_use,owner)))
+				return 0
 
 	if(A in attackers)
 		return 100

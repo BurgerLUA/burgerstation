@@ -13,7 +13,7 @@
 /ai/advanced/hostage/set_path(var/list/Vector3D/desired_path = list())
 
 	if(path_end_turf && !desired_path)
-		var/obj/marker/hostage_rest/HR = locate() in view(VIEW_RANGE,src)
+		var/obj/marker/hostage_rest/HR = locate() in view(VIEW_RANGE,owner)
 		if(HR)
 			start_turf = get_turf(HR)
 			roaming_distance = 0

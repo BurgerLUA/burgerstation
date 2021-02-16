@@ -45,7 +45,7 @@
 
 		var/list/possible_targets = list()
 
-		for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
+		for(var/mob/living/advanced/A in viewers(VIEW_RANGE,src))
 			if(A.loyalty_tag != src.loyalty_tag)
 				continue
 			if(!A.dead)

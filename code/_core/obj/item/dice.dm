@@ -120,7 +120,7 @@
 		if(1)
 			L.to_chat(span("danger","You don't feel so good..."))
 			var/mob/living/advanced/player/found_player
-			for(var/mob/living/advanced/player/P in view(L))
+			for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE*0.5,L))
 				if(P == L || P.dead)
 					continue
 				found_player = P
@@ -129,6 +129,7 @@
 				var/list/split_name = splittext(found_player.name," ")
 				var/last_name = split_name[length(split_name)]
 				L.do_say("[found_player.gender == MALE ? "Mr." : "Mrs."] [last_name], I don't feel so good...")
+			L.death()
 			L.dust()
 		if(2)
 			L.to_chat(span("danger","Oh shi-"))

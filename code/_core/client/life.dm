@@ -37,7 +37,7 @@
 		stored_hud_images -= I
 
 	if(mob.vision)
-		for(var/mob/living/L in view(mob,VIEW_RANGE*0.5))
+		for(var/mob/living/L in viewers(VIEW_RANGE*0.5,mob))
 			if(mob.vision & FLAG_VISION_MEDICAL && L.medical_hud_image && L.alpha >= 255)
 				stored_hud_images += L.medical_hud_image
 				images += L.medical_hud_image
