@@ -49,3 +49,8 @@
 		/obj/item/clothing/overwear/hardsuit/ling = 1,
 		/obj/item/tempering/luck/double = 1
 	)
+
+/loot/lavaland/hierophant
+	loot_table = list(
+		/obj/item/weapon/melee/hierophant_staff = 1
+	)

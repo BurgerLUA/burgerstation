@@ -1432,7 +1432,7 @@
 /turf/simulated/floor/plating,
 /area/transit/dropship/delta/landing)
 "gr" = (
-/mob/living/simple/herald,
+/obj/marker/prefab/small,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
 "gs" = (
@@ -3988,6 +3988,10 @@
 /obj/item/container/food/dynamic/meat/raw,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
+"qG" = (
+/mob/living/simple/herald,
+/turf/simulated/floor/wood/brown,
+/area/hellscape/exterior/jungle/north)
 "qI" = (
 /obj/item/weapon/melee/energy/chainsaw,
 /turf/simulated/floor/basalt,
@@ -49419,7 +49423,7 @@ cr
 ba
 fM
 gt
-gx
+qG
 gx
 gx
 gC
@@ -51648,12 +51652,12 @@ bb
 bb
 bb
 bb
+nZ
 bb
 bb
 bb
 bb
-bb
-bb
+dH
 bb
 bb
 bb
@@ -53453,7 +53457,7 @@ bb
 bb
 bb
 bb
-bb
+gr
 bb
 bb
 cW
@@ -53966,7 +53970,7 @@ bb
 bb
 bb
 bb
-ea
+bb
 bb
 bb
 bb
@@ -54731,7 +54735,7 @@ bb
 bb
 bb
 bb
-dH
+bb
 bb
 bb
 bb
@@ -56022,7 +56026,7 @@ bb
 bb
 bb
 bb
-dC
+bb
 bb
 bb
 bb
@@ -56274,7 +56278,7 @@ bb
 bb
 bb
 bb
-nZ
+bb
 bb
 bb
 bb
@@ -56531,7 +56535,7 @@ bb
 bb
 bb
 bb
-gr
+bb
 bb
 bb
 bb

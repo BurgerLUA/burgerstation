@@ -2993,6 +2993,10 @@
 /obj/structure/interactive/lighting/bonfire/on,
 /turf/simulated/floor/colored/grass/jungle,
 /area/lz_001/jungle)
+"nd" = (
+/obj/marker/prefab/small,
+/turf/unsimulated/generation/lava,
+/area/lz_001/caves/lava)
 
 (1,1,1) = {"
 aa
@@ -5871,7 +5875,7 @@ al
 al
 al
 al
-al
+nd
 al
 al
 al
@@ -12572,7 +12576,7 @@ al
 al
 al
 al
-al
+nd
 al
 al
 al
