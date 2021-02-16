@@ -47,7 +47,7 @@
 
 /obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller)
 
-	var/mob/living/C = caller
+	var/mob/C = caller
 	if(C.attack_flags & CONTROL_MOD_ALT)
 		INTERACT_CHECK
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo","Background")
@@ -60,14 +60,13 @@
 				"heart" = 4,
 				"happy" = 5
 			)
-
 			INTERACT_CHECK
 			choice = input("What do you want to change the logo to?","Logo Selection") as null|anything in logomenu
-			INTERACT_CHECK
 			if(choice)
+				INTERACT_CHECK
 				logo = logomenu[choice]
 				caller.to_chat(span("notice","You change \the [src.name]'s logo."))
-		if(choice == "Background")
+		else if(choice == "Background")
 			var/bgmenu = list(
 				"none" = 0,
 				"stripe" = 1,
@@ -76,16 +75,16 @@
 
 			INTERACT_CHECK
 			choice = input("What do you want to change the background to?","Background Selection") as null|anything in bgmenu
-			INTERACT_CHECK
 			if(choice)
+				INTERACT_CHECK
 				logobg = bgmenu[choice]
 				caller.to_chat(span("notice","You change \the [src.name]'s background."))
-		if(!choice)
+		else
 			caller.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
 			return TRUE
 		update_sprite()
 		return TRUE
-	else . = ..()
+
 	return ..()
 
 /obj/item/clothing/head/helmet/full/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
