@@ -9,13 +9,30 @@
 	size = 0.002
 	weight = 0.002
 
-/obj/item/currency/telecrystals/
+	var/currency_class = "none"
+
+/obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
+
+	if(I != src && istype(I,/obj/item/currency/))
+		var/obj/item/currency/C = I
+		return C.currency_class == src.currency_class
+
+	return FALSE
+
+/obj/item/currency/Finalize()
+	. = ..()
+	update_sprite()
+	return .
+
+/obj/item/currency/telecrystals
 	name = "telecrystals"
 	desc = "These are pretty sus crystals."
 	desc_extended = "Currency primarily used by syndicate operatives."
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
 	value = 400
+
+	currency_class = "Telecrystals"
 
 /obj/item/currency/telecrystals/goblin/Generate()
 	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)
@@ -45,6 +62,8 @@
 	icon_state = "1"
 	value = 0.25
 
+	currency_class = "Prize Ticket"
+
 /obj/item/currency/prize_ticket/update_icon()
 	switch(item_count_current)
 		if(1)
@@ -67,6 +86,8 @@
 	value = 400
 
 	item_count_max = 4
+
+	currency_class = "Magic Shard"
 
 /obj/item/currency/magic_token/random/Generate()
 	item_count_current = pick(1,1,1,1,1,1,1,1,2,2,2,3,3,4)
