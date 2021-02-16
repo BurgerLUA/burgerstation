@@ -148,5 +148,8 @@ list(
 	frequency_max = RADIO_FREQ_COMMON
 
 	frequency = RADIO_FREQ_SYNDICATE
+	listening_frequencies = list(
+		RADIO_FREQ_SYNDICATE
+	)
 
 	value = 100
