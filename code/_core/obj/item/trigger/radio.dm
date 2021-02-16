@@ -20,7 +20,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	var/receiving = TRUE //Whether or not the radio can receive messages.
 	var/broadcasting = FALSE //Whether or not the radio can broadcast messages without having to press the button.
 
-	var/frequency_min = RADIO_FREQ_COMMON
+	var/frequency_min = RADIO_FREQ_ALPHA
 	var/frequency_max = RADIO_FREQ_MAX
 
 	var/spam_fix_time = 0
