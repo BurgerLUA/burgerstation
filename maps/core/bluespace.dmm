@@ -548,22 +548,26 @@
 /obj/structure/interactive/diverter{
 	dir = 4
 	},
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/centcomm)
 "bZ" = (
 /obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
 	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/centcomm)
 "ca" = (
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 6
-	},
+/obj/structure/interactive/conveyor,
 /turf/simulated/floor/plating,
 /area/centcomm)
 "cb" = (
+/obj/structure/interactive/door/airlock/external,
+/obj/structure/interactive/conveyor,
 /turf/simulated/floor/plating,
 /area/centcomm)
 "cc" = (
@@ -573,18 +577,12 @@
 /turf/space,
 /area/space/deep)
 "ce" = (
-/obj/structure/interactive/conveyor,
 /turf/simulated/floor/plating,
 /area/centcomm)
 "cf" = (
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/centcomm)
-"cg" = (
-/obj/structure/interactive/door/airlock/external,
-/obj/structure/interactive/conveyor,
 /turf/simulated/floor/plating,
 /area/centcomm)
 "ch" = (
@@ -53131,12 +53129,12 @@ am
 am
 aA
 bY
-cb
-cb
+ce
+ce
 cf
-cb
-cb
-cb
+ce
+ce
+ce
 aA
 bX
 bX
@@ -53388,12 +53386,12 @@ am
 am
 aA
 bZ
-cb
-cb
-cb
-cb
-cb
-cb
+ce
+ce
+ce
+ce
+ce
+ce
 aA
 bX
 bX
@@ -53645,12 +53643,12 @@ am
 am
 aA
 bZ
-cb
-cb
-cb
-cb
-cb
-cb
+ce
+ce
+ce
+ce
+ce
+ce
 aA
 bX
 bX
@@ -53902,12 +53900,12 @@ am
 am
 aA
 bZ
-cb
-cb
-cb
-cb
-cb
-cb
+ce
+ce
+ce
+ce
+ce
+ce
 aA
 bX
 bX
@@ -54159,12 +54157,12 @@ am
 am
 aA
 bZ
-cb
-cb
-cb
-cb
-cb
-cb
+ce
+ce
+ce
+ce
+ce
+ce
 aA
 bX
 bX
@@ -54416,13 +54414,13 @@ am
 am
 aA
 ca
-ce
-ce
-ce
-ce
-ce
-ce
-cg
+ca
+ca
+ca
+ca
+ca
+ca
+cb
 bX
 bX
 bX

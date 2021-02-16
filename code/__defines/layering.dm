@@ -32,6 +32,8 @@
 #define LAYER_BLOOD            LAYER_MOB_DEAD - 0.1
 #define LAYER_MOB_DEAD         6
 
+#define LAYER_OBJ_AIRLOCK      7
+
 #define LAYER_MOB_BELOW        LAYER_MOB - 0.1
 #define LAYER_MOB              8
 

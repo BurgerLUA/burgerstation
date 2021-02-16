@@ -4,6 +4,9 @@
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
 
+	plane = PLANE_OBJ
+	layer = LAYER_OBJ_AIRLOCK
+
 	var/filler = "fill"
 	var/panel = TRUE
 

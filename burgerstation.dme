@@ -1555,7 +1555,7 @@
 #include "code\_core\obj\structure\interactive\bookcase.dm"
 #include "code\_core\obj\structure\interactive\boss_loot.dm"
 #include "code\_core\obj\structure\interactive\chair.dm"
-#include "code\_core\obj\structure\interactive\conveyor.dm"
+#include "code\_core\obj\structure\interactive\conveyor_new.dm"
 #include "code\_core\obj\structure\interactive\diverter.dm"
 #include "code\_core\obj\structure\interactive\drop_pod.dm"
 #include "code\_core\obj\structure\interactive\emitter.dm"

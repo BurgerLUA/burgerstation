@@ -103,7 +103,8 @@
 /turf/simulated/floor/plating,
 /area/lavaland/exterior)
 "aB" = (
-/turf/simulated/floor/tile/grey,
+/obj/structure/smooth/table,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "aC" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
@@ -203,16 +204,15 @@
 /turf/simulated/floor/plating,
 /area/lavaland/interior/base/cargo)
 "ba" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/grey,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bb" = (
 /obj/structure/interactive/atmospherics/scrubber,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base)
 "bc" = (
-/obj/structure/interactive/chair,
-/turf/simulated/floor/tile/grey,
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bd" = (
 /turf/simulated/floor/tile/grey,
@@ -233,11 +233,8 @@
 /turf/simulated/floor/tile/dark,
 /area/lavaland/interior/base/cargo)
 "bh" = (
-/obj/structure/interactive/computer/console/remote_flight/bravo{
-	icon_state = "computer";
-	dir = 4
-	},
-/turf/simulated/floor/tile/grey,
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bi" = (
 /obj/structure/interactive/atmospherics/vent,
@@ -258,21 +255,19 @@
 /turf/simulated/floor/tile/dark,
 /area/lavaland/interior/base/cargo)
 "bn" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
+/obj/structure/interactive/computer/console/remote_flight/bravo{
+	icon_state = "computer";
 	dir = 4
 	},
-/turf/simulated/floor/tile/grey,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bo" = (
 /obj/structure/interactive/vending/engineering/wardrobe,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/lavaland/interior/base)
 "bp" = (
-/obj/structure/interactive/intercom{
-	icon_state = "intercom";
-	dir = 1
-	},
-/turf/simulated/wall/metal,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bq" = (
 /obj/decal/hazard{
@@ -282,26 +277,24 @@
 /turf/simulated/floor/plating,
 /area/lavaland/exterior)
 "br" = (
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/grey,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bs" = (
-/obj/structure/interactive/ore_box,
-/turf/simulated/floor/tile/grey,
+/obj/structure/interactive/crate/trash,
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bt" = (
-/obj/structure/interactive/conveyor,
-/obj/structure/interactive/ore_storage,
-/turf/simulated/floor/tile/grey,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
 "bu" = (
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base)
-"bv" = (
-/obj/structure/interactive/conveyor,
-/obj/structure/interactive/smelter,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
 "bw" = (
 /obj/structure/interactive/intercom{
 	icon_state = "intercom";
@@ -338,12 +331,6 @@
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/engineering)
-"bE" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
 "bF" = (
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base/armory)
@@ -965,39 +952,7 @@
 	},
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/hall/west)
-"ec" = (
-/obj/structure/interactive/conveyor,
-/obj/structure/interactive/sheet_maker,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
-"ed" = (
-/obj/structure/interactive/crate/trash,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
-"ee" = (
-/obj/structure/interactive/crate/engineering,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
-"ef" = (
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 8
-	},
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
-"eg" = (
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 8
-	},
-/obj/structure/interactive/stacker,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
 "eh" = (
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 10
-	},
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cargo)
 "ei" = (
@@ -8368,9 +8323,9 @@ ag
 ag
 ag
 ay
-aE
-bh
 aB
+bn
+ba
 ay
 bg
 bk
@@ -8625,9 +8580,9 @@ ag
 ag
 ag
 aD
-aB
+ba
 gR
-aB
+ba
 ay
 bg
 bk
@@ -8882,9 +8837,9 @@ ag
 ag
 ag
 aD
-aB
-aB
-aB
+ba
+eh
+ba
 ay
 ay
 bj
@@ -9139,16 +9094,16 @@ ay
 ay
 ay
 aT
-aB
+ba
 an
-aB
-bn
-aB
-aB
-aB
-aB
-aB
-ed
+ba
+br
+ba
+ba
+ba
+ba
+ba
+bs
 ej
 en
 eo
@@ -9396,16 +9351,16 @@ ay
 aE
 aE
 aN
-aB
+ba
 bi
-aB
-aB
-aB
+eh
+eh
+eh
 fl
-aB
-aB
+eh
+eh
 fl
-aB
+ba
 ek
 eo
 dN
@@ -9651,18 +9606,18 @@ ag
 ag
 ay
 aG
-aB
-aB
-aB
+eh
+eh
+ba
 fl
-aB
-aB
-aB
-aB
-aB
-aB
-aB
-aB
+eh
+eh
+eh
+eh
+eh
+eh
+eh
+ba
 ej
 ep
 eo
@@ -9910,16 +9865,16 @@ ay
 aJ
 aP
 aV
-aB
-aB
-aB
+ba
+eh
+eh
 fg
 fk
-aB
-aB
-aB
-aB
-aB
+eh
+eh
+eh
+eh
+ba
 el
 eo
 eo
@@ -10167,16 +10122,16 @@ ay
 aN
 aN
 aW
-ba
-aB
-aB
-aB
-aB
-aB
-aB
+bc
+eh
+eh
+eh
+eh
+eh
+eh
 an
 by
-aB
+ba
 el
 eo
 eo
@@ -10420,20 +10375,20 @@ as
 as
 ag
 aD
-aB
-aB
-aB
+eh
+eh
+eh
 gp
-aB
-aB
-aB
-aB
-aB
-aB
-aB
-aB
-bE
-ee
+ba
+eh
+eh
+eh
+eh
+eh
+eh
+eh
+eh
+ba
 el
 eo
 eo
@@ -10679,18 +10634,18 @@ ag
 ay
 aC
 an
-aB
+eh
 aX
-aB
+ba
 fl
-aB
-bp
-bs
-bs
-bs
-bs
-aN
-ef
+eh
+eh
+eh
+eh
+eh
+eh
+eh
+ba
 ej
 eq
 et
@@ -10934,20 +10889,20 @@ as
 as
 as
 ay
-aB
-aB
-aB
+eh
+eh
+eh
 aN
-aB
-aB
-aB
-aN
-aZ
-aZ
-aZ
-aZ
-aN
-eg
+ba
+eh
+eh
+eh
+eh
+eh
+eh
+eh
+eh
+bt
 em
 eq
 eu
@@ -11195,16 +11150,16 @@ ay
 ay
 ay
 ay
-bc
-fl
-aB
-br
-bt
-br
-bv
-br
-ec
-eh
+bh
+bp
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 ej
 eq
 ev

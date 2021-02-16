@@ -94,9 +94,6 @@
 	},
 /turf/simulated/floor/grass/jungle,
 /area/lz_420/interior/nexus/entrance)
-"ax" = (
-/turf/simulated/wall/metal/reinforced/syndicate/shuttle,
-/area/transit/lz420_elevator/surface)
 "ay" = (
 /turf/simulated/wall/metal,
 /area/lz_420/interior/nexus/cargo)
@@ -2433,7 +2430,6 @@
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/lz_420/interior/basement/medical)
 "jV" = (
-/obj/structure/interactive/status_display/shuttle,
 /turf/simulated/wall/metal/reinforced/syndicate/shuttle,
 /area/transit/lz420_elevator/surface)
 "jW" = (
@@ -28570,13 +28566,13 @@ ap
 ae
 af
 ao
-ax
-ax
-ax
 jV
-ax
-ax
-ax
+jV
+jV
+jV
+jV
+jV
+jV
 ao
 aj
 an
@@ -28827,13 +28823,13 @@ ap
 af
 af
 ao
-ax
+jV
 cH
 cH
 cH
 cH
 cH
-ax
+jV
 ao
 af
 aj
@@ -29084,13 +29080,13 @@ ap
 my
 af
 ao
-ax
+jV
 cH
 cH
 cH
 cH
 cH
-ax
+jV
 ao
 my
 af
@@ -29341,13 +29337,13 @@ ap
 af
 aj
 ao
-ax
+jV
 fI
 cH
 gG
 cH
 is
-ax
+jV
 ao
 af
 af
@@ -29604,7 +29600,7 @@ cH
 cH
 cH
 cH
-ax
+jV
 ao
 af
 af
@@ -29855,13 +29851,13 @@ ap
 af
 af
 ao
-ax
+jV
 cH
 cH
 cH
 cH
 cH
-ax
+jV
 ao
 af
 aj
@@ -30112,13 +30108,13 @@ ap
 ae
 af
 ao
-ax
+jV
 cT
 cT
 cT
 cT
 cT
-ax
+jV
 ao
 aj
 an
