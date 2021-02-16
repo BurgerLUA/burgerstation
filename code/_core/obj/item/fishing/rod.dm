@@ -286,6 +286,16 @@
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
 	return TRUE
 
+/obj/item/fishing/rod/telescopic/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("compact")
+	return .
+
+/obj/item/fishing/rod/telescopic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("compact")
+	return .
+
 /obj/item/fishing/rod/telescopic/update_icon()
 
 	if(!compact)
