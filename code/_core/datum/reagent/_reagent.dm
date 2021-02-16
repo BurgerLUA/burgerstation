@@ -49,6 +49,9 @@
 	var/addiction_strength = 1 //Percent chance to become addicted per unit.
 	var/addiction_threshold = 30 //The percent chance needs to be greater than this value to be considered addicted.
 
+	var/list/involved_in_recipes
+	var/has_temperature_recipe = FALSE
+
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 	return amount_added
 

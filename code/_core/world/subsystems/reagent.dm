@@ -37,8 +37,15 @@ SUBSYSTEM_DEF(reagent)
 	log_subsystem(name,"Initialized [length(all_reagents)] reagents.")
 
 	for(var/k in subtypesof(/reagent_recipe/))
-		var/reagent_recipe/R = new k
-		all_reagent_recipes[R.type] = R
+		var/reagent_recipe/RR = new k
+		all_reagent_recipes[RR.type] = RR
+		for(var/k2 in RR.required_reagents)
+			var/reagent/R = REAGENT(k2)
+			if(!R.involved_in_recipes)
+				R.involved_in_recipes = list()
+			R.involved_in_recipes += RR.type
+			if(!R.has_temperature_recipe && (length(RR.required_temperature_min) || length(RR.required_temperature_max)))
+				R.has_temperature_recipe = TRUE
 
 	sortTim(all_reagent_recipes,/proc/cmp_recipe_name_asc,associative=TRUE)
 
@@ -47,7 +54,6 @@ SUBSYSTEM_DEF(reagent)
 	var/list/cached_text = list()
 
 	var/list/item_counts = list()
-
 
 	for(var/recipe_id in all_reagent_recipes)
 		var/reagent_recipe/RR = all_reagent_recipes[recipe_id]

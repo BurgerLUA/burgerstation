@@ -158,7 +158,7 @@
 		update_container()
 		return TRUE
 
-	//process_recipes() //Don't worry, this is only called when there was a temperature change and nothing else.
+	process_recipes(from_temperature_change=TRUE) //Don't worry, this is only called when there was a temperature change and nothing else.
 
 	return TRUE
 
@@ -223,7 +223,7 @@
 	return TRUE
 
 
-/reagent_container/proc/process_recipes(var/mob/caller)
+/reagent_container/proc/process_recipes(var/mob/caller,var/from_temperature_change=FALSE)
 
 	if(!allow_recipie_processing)
 		return FALSE
@@ -232,11 +232,20 @@
 		var/obj/item/I = src.owner
 		caller = I.last_interacted
 
-	var/list/c_id_to_volume = stored_reagents.Copy()
-	var/list/c_id_to_temperature = stored_reagents_temperature.Copy()
+	var/list/c_id_to_volume = stored_reagents
+	var/list/c_id_to_temperature = stored_reagents_temperature
+
+	var/list/recipes_to_check = list()
+	for(var/k in stored_reagents)
+		var/reagent/R = REAGENT(k)
+		if(!R.involved_in_recipes)
+			continue
+		if(from_temperature_change && !R.has_temperature_recipe)
+			continue
+		recipes_to_check |= R.involved_in_recipes
 
 	var/reagent_recipe/found_recipe = null
-	for(var/k in SSreagent.all_reagent_recipes)
+	for(var/k in recipes_to_check)
 
 		CHECK_TICK(75,FPS_SERVER)
 
