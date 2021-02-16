@@ -8,8 +8,13 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	icon_state = "inventory"
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
-	var/list/listening_frequencies = list(
+	var/list/listening_frequencies = list( // The frequencies this radio is allowed to talk on.
 		RADIO_FREQ_COMMON
+		RADIO_FREQ_ALPHA
+		RADIO_FREQ_BRAVO
+		RADIO_FREQ_CHARLIE
+		RADIO_FREQ_DELTA
+		RADIO_FREQ_SHIP
 	)
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.
