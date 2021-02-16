@@ -20,10 +20,15 @@
 		if(can_temper(caller,object))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(10)
-			on_temper(caller,object)
-			return TRUE
-
+			INTERACT_DELAY(5)
+			if(caller.attack_flags & CONTROL_MOD_ALT)
+				on_temper(caller,object)
+				return TRUE
+			else
+				var/choice = input("Do you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
+				if(choice == "Yes")
+					on_temper(caller,object)
+					return TRUE
 	return ..()
 
 /obj/item/tempering/proc/can_temper(var/mob/caller,var/obj/item/I)
