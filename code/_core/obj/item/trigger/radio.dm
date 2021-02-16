@@ -142,7 +142,7 @@ list(
 	value = 15
 
 /obj/item/device/radio/syndicate
-	name = "\improper NanoTrasen Radio"
+	name = "\improper Syndicate Radio"
 
 	frequency_min = RADIO_FREQ_SYNDICATE
 	frequency_max = RADIO_FREQ_COMMON

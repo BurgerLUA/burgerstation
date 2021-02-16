@@ -47,4 +47,6 @@
 			return "Common"
 		if(RADIO_FREQ_SHIP)
 			return "ShipComm"
+		if(RADIO_FREQ_SYNDICATE)
+			return "Syndicate"
 	return "Unknown"
