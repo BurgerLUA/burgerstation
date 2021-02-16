@@ -20,12 +20,13 @@
 		if(can_temper(caller,object))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(5)
 			if(caller.attack_flags & CONTROL_MOD_ALT)
 				on_temper(caller,object)
 				return TRUE
 			else
 				var/choice = input("Do you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
 				if(choice == "Yes")
 					on_temper(caller,object)
 					return TRUE
