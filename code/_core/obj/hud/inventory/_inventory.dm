@@ -166,8 +166,8 @@
 
 	var/icon/desired_icon = initial(item_to_update.icon)
 	var/desired_icon_state = null
-	var/desired_pixel_x = 0
-	var/desired_pixel_y = 0
+	var/desired_pixel_x = item_to_update.held_pixel_x
+	var/desired_pixel_y = item_to_update.held_pixel_y
 	var/desired_layer = LAYER_MOB_HELD
 	var/matrix/desired_transform = matrix()
 

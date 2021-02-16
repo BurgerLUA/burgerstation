@@ -92,6 +92,9 @@
 	var/worn_pixel_x = 0
 	var/worn_pixel_y = 0
 
+	var/held_pixel_x = 0
+	var/held_pixel_y = 0
+
 	var/atom/last_interacted
 
 	var/dyeable = FALSE
