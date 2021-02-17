@@ -75,7 +75,7 @@
 	if(length(tracked_heads) >= head_limit)
 		return FALSE
 
-	if(istype(stored_corpse) && stored_corpse.ckey_last)
+	if(L.clone)
 		return FALSE
 
 	var/mob/living/simple/legionare_head/L = new head_type(get_turf(src))
@@ -92,7 +92,7 @@
 
 	tracked_heads += L
 
-	next_head = world.time + 10
+	next_head = world.time + 15
 
 	return TRUE
 
