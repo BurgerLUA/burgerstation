@@ -949,7 +949,6 @@
 #include "code\_core\obj\item\mop.dm"
 #include "code\_core\obj\item\pinpointer.dm"
 #include "code\_core\obj\item\plate.dm"
-#include "code\_core\obj\item\powergem.dm"
 #include "code\_core\obj\item\radio.dm"
 #include "code\_core\obj\item\soapstone.dm"
 #include "code\_core\obj\item\stacks.dm"
