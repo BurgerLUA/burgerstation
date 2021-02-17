@@ -13,8 +13,6 @@
 
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-
-
 	if(!is_item(object) || object == src)
 		return ..()
 
@@ -22,6 +20,10 @@
 	INTERACT_CHECK_OBJECT
 
 	var/obj/item/I = object
+
+	if(!I.can_rename)
+		caller.to_chat(span("warning","\The [src.name] cannot be renamed..."))
+		return TRUE
 
 	var/confrim = input("Are you sure you wish to rename \the [I.name]? The marker will be spent after this operation!","Marker Rename","Cancel") as null|anything in list("Yes","No","Cancel")
 

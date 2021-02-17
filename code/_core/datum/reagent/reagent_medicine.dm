@@ -74,8 +74,8 @@
 
 	. = ..()
 
-	if(. + current_volume >= 10)
-		if(L.dead && !L.check_death() && L.is_player_controlled() && !L.suicide)
+	if(. + current_volume >= 10 && L.dead)
+		if(!L.check_death() && L.is_player_controlled() && !L.suicide)
 			L.revive()
 			L.visible_message(span("danger","\The [L.name] jolts to life!"))
 		else

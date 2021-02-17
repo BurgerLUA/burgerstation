@@ -6,6 +6,8 @@
 
 	var/value_burgerbux
 
+	var/can_rename = FALSE //Can you rename this item?
+
 	var/last_marker //The last person to name this item. Used for moderation purposes.
 
 	layer = LAYER_OBJ_ITEM

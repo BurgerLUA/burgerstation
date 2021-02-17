@@ -1,4 +1,7 @@
 /obj/item/weapon/
+
+	can_rename = TRUE
+
 	var/wield_only = FALSE //Set to true if you can only attack with this while wielded.
 
 

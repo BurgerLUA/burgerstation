@@ -6,6 +6,8 @@
 
 	weight = 0
 
+	can_rename = TRUE
+
 	color = "#FFFFFF"
 
 	icon_state = "inventory"

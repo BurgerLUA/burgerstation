@@ -3,6 +3,8 @@
 	desc = "Activate, then throw."
 	desc_extended = "With good grenades being expensive and hard to come by, civilians often use homemade grenades filled with various chemicals, with varying degrees of success."
 
+	can_rename = TRUE
+
 	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "chem"
 
