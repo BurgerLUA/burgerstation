@@ -2,7 +2,7 @@
 	set hidden = TRUE
 	do_say(text_to_say)
 
-/mob/verb/emote(var/emote as text,var/mob/target in viewers(VIEW_RANGE,src))
+/mob/verb/emote(var/emote as text,var/mob/target in view(VIEW_RANGE,src))
 	set name = "Emote"
 	set category = "Communication"
 	do_emote(text,target)

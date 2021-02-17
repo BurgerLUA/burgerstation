@@ -112,7 +112,7 @@
 	)
 	hidden = FALSE
 
-/gamemode/horde/cultists
+/gamemode/horde/space_goblins
 	name = "Horde Mode (Space Goblins)"
 	desc = "Fight off an endless wave of Space Goblins while attempting to complete objectives."
 	enemy_types_to_spawn = list(

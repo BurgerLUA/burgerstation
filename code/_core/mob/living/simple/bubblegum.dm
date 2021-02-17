@@ -104,7 +104,7 @@
 
 	. = FALSE
 
-	for(var/mob/living/A in viewers(VIEW_RANGE,src))
+	for(var/mob/living/A in view(VIEW_RANGE,src))
 		if(A == src)
 			continue
 		if(A.dead)
@@ -132,7 +132,7 @@
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 
-	play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src),volume = charge_steps ? 50 : 25)
+	if(!horizontal) play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src),volume = charge_steps ? 50 : 25)
 
 	if(charge_steps)
 		var/turf/simulated/T0 = get_turf(src)

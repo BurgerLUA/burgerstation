@@ -2993,6 +2993,26 @@
 /obj/structure/interactive/lighting/bonfire/on,
 /turf/simulated/floor/colored/grass/jungle,
 /area/lz_001/jungle)
+"nd" = (
+/obj/marker/prefab/medium,
+/turf/unsimulated/generation/lava,
+/area/lz_001/caves/lava)
+"ne" = (
+/obj/marker/prefab/small,
+/turf/unsimulated/generation/lava,
+/area/lz_001/caves/lava)
+"nf" = (
+/obj/marker/prefab/small,
+/turf/unsimulated/generation/cave,
+/area/lz_001/caves)
+"ng" = (
+/obj/marker/prefab/small,
+/turf/unsimulated/generation/cave,
+/area/lz_001/caves/glow_cave)
+"nh" = (
+/obj/marker/prefab/medium,
+/turf/unsimulated/generation/jungle,
+/area/lz_001/jungle)
 
 (1,1,1) = {"
 aa
@@ -3570,7 +3590,7 @@ al
 al
 al
 al
-al
+nd
 al
 al
 al
@@ -11559,7 +11579,7 @@ al
 al
 al
 al
-al
+ne
 al
 al
 iT
@@ -22694,7 +22714,7 @@ bY
 bY
 bY
 bY
-bY
+nf
 ce
 ce
 ce
@@ -27464,7 +27484,7 @@ ay
 ay
 ay
 ay
-ay
+nh
 ay
 ay
 ay
@@ -28674,7 +28694,7 @@ bY
 bY
 bY
 bY
-bY
+nf
 bY
 bY
 bY
@@ -29104,7 +29124,7 @@ bY
 bY
 bY
 bY
-bY
+nf
 bY
 ce
 ce
@@ -38956,7 +38976,7 @@ cc
 cc
 cc
 aO
-aO
+ng
 bY
 ce
 ce

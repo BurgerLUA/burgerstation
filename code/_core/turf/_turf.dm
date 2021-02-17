@@ -49,7 +49,7 @@
 
 	return TRUE
 
-/turf/proc/is_safe_teleport()
+/turf/proc/is_safe_teleport(var/check_contents=TRUE)
 	return !is_space()
 
 /turf/New(loc)

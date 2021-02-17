@@ -8,12 +8,8 @@
 
 	if(check_view)
 		var/view_range_to_use = get_view_range()
-		if(ismob(A))
-			if(!(owner in viewers(view_range_to_use,A)))
-				return 0
-		else
-			if(!(A in view(view_range_to_use,owner)))
-				return 0
+		if(!(A in view(view_range_to_use,owner)))
+			return 0
 
 	if(A in attackers)
 		return 100

@@ -268,7 +268,7 @@ client/verb/air_test(var/pressure as num)
 	set name = "Force Queen Screech"
 	set category = "Debug"
 
-	var/mob/living/simple/xeno/queen/XQ = locate() in viewers(VIEW_RANGE,mob)
+	var/mob/living/simple/xeno/queen/XQ = locate() in view(VIEW_RANGE,mob)
 
 	if(XQ)
 		XQ.screech(TRUE)

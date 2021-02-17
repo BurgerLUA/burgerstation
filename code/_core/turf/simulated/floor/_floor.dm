@@ -12,19 +12,6 @@
 
 	density = FALSE
 
-/turf/simulated/floor/is_safe_teleport()
-
-	if(collision_flags & FLAG_COLLISION_WALKING)
-		return FALSE
-
-	for(var/atom/movable/M in src.contents)
-		if(!M.density)
-			continue
-		if(M.collision_flags & FLAG_COLLISION_WALKING)
-			return FALSE
-
-	return TRUE
-
 /turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(!damage_type || !damage_type.target_floors)

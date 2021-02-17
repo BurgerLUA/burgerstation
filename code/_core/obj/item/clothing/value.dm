@@ -1,4 +1,4 @@
-https://www.desmos.com/calculator/lor9o5vzic
+// https://www.desmos.com/calculator/lor9o5vzic
 
 var/global/list/defense_rating_to_value = list(
 	BLADE = 8.1,

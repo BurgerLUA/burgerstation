@@ -49,3 +49,11 @@
 		/obj/item/clothing/overwear/hardsuit/ling = 1,
 		/obj/item/tempering/luck/double = 1
 	)
+
+/loot/lavaland/hierophant
+	loot_table = list(
+		/obj/item/weapon/melee/hierophant_staff = 1,
+		/obj/item/weapon/ranged/magic/tome/crystal/true = 1,
+		/obj/item/weapon/ranged/magic/tome/summon/crystal_guardian = 1,
+		/obj/item/weapon/melee/crystal = 1
+	)
