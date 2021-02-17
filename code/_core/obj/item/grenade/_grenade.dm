@@ -70,8 +70,11 @@
 		queue_delete(src,60)
 		if(!isturf(src.loc)) drop_item(get_turf(src))
 		if(stored_trigger) stored_trigger.active = FALSE
+	/*
 	else
+		CHECK_TICK(50,FPS_SERVER*10)
 		trigger(owner,source,-1,-1)
+	*/
 
 	return .
 

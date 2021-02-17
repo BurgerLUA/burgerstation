@@ -1,5 +1,7 @@
 /proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty)
 
+	desired_range = min(desired_range,VIEW_RANGE) //Maxcap. Glueable is the new Cuban Pete.
+
 	new /obj/effect/temp/explosion(desired_turf,SECONDS_TO_DECISECONDS(desired_range))
 
 	play_sound(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)

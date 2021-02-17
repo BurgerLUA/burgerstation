@@ -85,10 +85,15 @@
 #define COLOR_URANIUM "#5B9646"
 #define COLOR_TITANIUM "#8A99AD"
 
-
 #define COLOR_BLOOD "#B20000"
 #define COLOR_OIL "#3D3D3D"
 
+//Rarity
+#define COLOR_COMMON "#404040"
+#define COLOR_UNCOMMON "#8888FF"
+#define COLOR_RARE "#FFFF88"
+#define COLOR_MYTHICAL "#FF88FF"
+#define COLOR_LEGENDARY "#D17A24"
 
 
 
