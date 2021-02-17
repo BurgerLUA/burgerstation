@@ -122,6 +122,9 @@
 	)
 	hidden = FALSE
 
+	enemies_to_spawn_base = 10
+	enemies_to_spawn_per_player = 1.5
+
 /gamemode/horde/boss_rush
 	name = "Horde Mode (Boss Rush)"
 	desc = "Oh god oh fuck."
