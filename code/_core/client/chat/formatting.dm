@@ -65,6 +65,8 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 			. += ICON_TO_HTML(chat_toolbox.icon,"gold",20,13)
 		if(C.permissions & FLAG_PERMISSION_ADMIN)
 			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
+		if(C.permissions & FLAG_PERMISSION_MODERATOR)
+			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
 	return .
 
 
@@ -74,6 +76,10 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		var/client/C = speaker
 		if(C.permissions & FLAG_PERMISSION_HOST)
 			return "#B71C00"
+		else if(C.permissions % FLAG_PERMISSION_ADMIN)
+			return "#42B500"
+		else if(C.permissions % FLAG_PERMISSION_MODERATOR)
+			return "#42B500"
 		else if(C.permissions & FLAG_PERMISSION_GOLD)
 			return "#D9B131"
 		else if(C.permissions & FLAG_PERMISSION_SILVER)
