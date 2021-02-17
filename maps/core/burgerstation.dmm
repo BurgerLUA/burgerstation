@@ -140,6 +140,10 @@
 /obj/structure/interactive/diverter{
 	dir = 4
 	},
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 1
+	},
 /turf/simulated/floor/tile/shuttle,
 /area/transit/cargo/ship)
 "aE" = (
@@ -2721,9 +2725,8 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/north)
 "jE" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
+/obj/structure/interactive/door/airlock/shuttle,
+/obj/structure/interactive/conveyor,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/transit/dropship/charlie/station)
 "jF" = (
@@ -3598,12 +3601,9 @@
 /turf/simulated/floor/tile/morphing/brown,
 /area/burgerstation/mining)
 "mX" = (
-/obj/decal/hazard{
-	dir = 8
-	},
-/obj/structure/interactive/door/airlock/external/glass/bolted,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/west)
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle,
+/area/transit/dropship/charlie/station)
 "mY" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
@@ -3710,6 +3710,13 @@
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"nw" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 "nx" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile,
@@ -4129,6 +4136,10 @@
 /obj/item/powercell/advanced,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"oW" = (
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/transit/dropship/charlie/station)
 "oX" = (
 /obj/structure/interactive/disposals/pipe/junction/sorting/flipped{
 	dir = 1;
@@ -4184,6 +4195,13 @@
 /obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
+"pi" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/transit/dropship/charlie/station)
 "pj" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/interactive/door/airlock/station/engineering/glass,
@@ -5585,6 +5603,13 @@
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"up" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/purple,
+/area/transit/dropship/charlie/station)
 "uq" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 4
@@ -5601,6 +5626,14 @@
 	},
 /turf/simulated/floor/tile/morphing/brown,
 /area/burgerstation/mining)
+"ut" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/transit/dropship/charlie/station)
 "uu" = (
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
@@ -6170,6 +6203,17 @@
 /mob/living/simple/goblin,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
+"wC" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/west)
 "wD" = (
 /mob/living/advanced/npc/cyborg_assistant/help_desk,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -6194,6 +6238,13 @@
 "wI" = (
 /turf/simulated/floor/tile,
 /area/burgerstation/cryo)
+"wJ" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/west)
 "wM" = (
 /obj/structure/interactive/scanner/iff,
 /turf/simulated/floor/plating,
@@ -33837,13 +33888,13 @@ bK
 bK
 cg
 aR
-ex
+jE
 eI
-fm
-fm
-fm
-fm
-fS
+mX
+mX
+mX
+mX
+up
 iv
 vW
 fm
@@ -34094,13 +34145,13 @@ bK
 bK
 cg
 aR
-ex
-eU
-fS
 jE
-fS
-fS
-fS
+eU
+oW
+pi
+oW
+up
+up
 iv
 iv
 fQ
@@ -34356,8 +34407,8 @@ iv
 iv
 iv
 iv
-fQ
-fQ
+ut
+ut
 iv
 hi
 hi
@@ -34613,8 +34664,8 @@ eh
 eh
 eh
 bI
-mX
-mX
+wC
+wC
 bI
 eh
 eh
@@ -34870,8 +34921,8 @@ bK
 bK
 bK
 es
-mY
-mY
+wJ
+wJ
 es
 bK
 bK
@@ -35384,8 +35435,8 @@ hL
 hL
 bI
 bI
-mY
-mY
+wJ
+wJ
 fF
 fF
 ur
@@ -35898,8 +35949,8 @@ bx
 bx
 bI
 mY
-mY
-mY
+wJ
+wJ
 fF
 ha
 uw
@@ -49011,7 +49062,7 @@ wI
 wI
 nF
 nN
-nZ
+nw
 nZ
 ny
 ny
@@ -49268,7 +49319,7 @@ wg
 wI
 wf
 nN
-nZ
+nw
 nZ
 ny
 ny
@@ -49525,7 +49576,7 @@ wI
 wI
 nF
 nN
-nZ
+nw
 nZ
 ny
 oB
@@ -49782,7 +49833,7 @@ wg
 wI
 wf
 nN
-nZ
+nw
 nZ
 ny
 qr
@@ -50039,7 +50090,7 @@ nF
 nF
 nF
 nK
-nZ
+nw
 nZ
 ny
 qs
@@ -50296,7 +50347,7 @@ qF
 wk
 qG
 oL
-nZ
+nw
 nZ
 ny
 ny
@@ -50553,7 +50604,7 @@ ub
 dX
 dX
 nK
-nZ
+nw
 nZ
 oK
 nZ
