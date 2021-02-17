@@ -75,7 +75,7 @@
 	if(length(tracked_heads) >= head_limit)
 		return FALSE
 
-	if(L.clone)
+	if(clone) //Clones cannot create heads.
 		return FALSE
 
 	var/mob/living/simple/legionare_head/L = new head_type(get_turf(src))

@@ -103,11 +103,11 @@
 	for(var/k in additional_clothing)
 		var/obj/item/C = new k(src)
 		C.should_save = FALSE
-		C.color = color
 		C.size = 0
-		C.additional_blends = additional_blends
 		C.additional_clothing_parent = src
 		additional_clothing_stored += C
+
+	sync_additional_clothing()
 
 	return ..()
 

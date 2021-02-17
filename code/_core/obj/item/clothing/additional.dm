@@ -28,3 +28,16 @@
 		C.drop_item(src,silent=TRUE)
 
 	return TRUE
+
+/obj/item/clothing/proc/sync_additional_clothing()
+
+	for(var/k in additional_clothing_stored)
+		var/obj/item/C = k
+		C.color = color
+		C.quality = quality
+		C.polymorphs = polymorphs
+		C.additional_blends = additional_blends
+		C.luck = luck
+		C.update_sprite()
+
+	return TRUE

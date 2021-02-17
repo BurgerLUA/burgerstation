@@ -10,6 +10,10 @@
 		caller.to_chat(span("warning","\The [src.name] cannot be dyed."))
 		return FALSE
 
+	if(!should_save)
+		caller.to_chat(span("warning","You can't dye \the [src.name]! Try dying the main part of this clothing set."))
+		return FALSE
+
 	var/choice
 
 	if(length(polymorphs))
@@ -30,6 +34,9 @@
 	if(choice)
 		caller.to_chat(span("notice","You dye \the [src.name]."))
 		update_sprite()
+		if(is_clothing(src))
+			var/obj/item/clothing/C = src
+			C.sync_additional_clothing()
 		if(is_inventory(loc)) //Snowflake code, do not remove.
 			var/obj/hud/inventory/I = loc
 			if(I.worn && is_advanced(I.owner))

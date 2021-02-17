@@ -36,9 +36,16 @@
 		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]!"))
 		return FALSE
 
+	if(!I.should_save)
+		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
+		return FALSE
+
 	return TRUE
 
 /obj/item/tempering/proc/on_temper(var/mob/caller,var/obj/item/I)
 	visible_message("\The [caller.name] improves \the [I.name] with \the [src.name].")
+	if(is_clothing(I))
+		var/obj/item/clothing/C = I
+		C.sync_additional_clothing()
 	qdel(src)
 	return TRUE
