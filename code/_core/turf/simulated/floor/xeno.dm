@@ -20,17 +20,12 @@
 
 	destruction_turf = /turf/simulated/floor/cave_dirt/
 
-/turf/simulated/floor/xeno/New(var/desired_loc)
-
+/turf/simulated/floor/xeno/Initialize()
 	if(prob(5))
 		real_icon = 'icons/turf/floor/resin_4.dmi'
 		glow = TRUE
 	else
 		real_icon = pick('icons/turf/floor/resin_1.dmi','icons/turf/floor/resin_2.dmi','icons/turf/floor/resin_3.dmi')
-
-	return ..()
-
-/turf/simulated/floor/xeno/Initialize()
 	if(glow)
 		set_light(VIEW_RANGE*0.5,0.25,"#A49EFF")
 	return ..()

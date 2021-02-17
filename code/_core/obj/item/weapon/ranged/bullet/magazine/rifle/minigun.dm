@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 3000
 
-	shoot_delay = 1.5 //Oh god oh fuck
+	shoot_delay = 1.25 //Oh god oh fuck
 
 	automatic = TRUE
 
@@ -51,7 +51,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
 	if(!wielded)
 		return 0.5
-	return 0.1
+	return 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
