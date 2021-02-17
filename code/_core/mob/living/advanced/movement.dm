@@ -104,7 +104,7 @@ mob/living/advanced/get_movement_delay()
 				if(L.loyalty_tag == src.loyalty_tag)
 					bypass_safe = FALSE
 			if(distance > 1)
-				if(bypass_safe || T.is_safe_teleport() || !grabbed_turf.is_safe_teleport())
+				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
 					right_hand.grabbed_object.glide_size = glide_size
 					right_hand.grabbed_object.Move(OldLoc)
 				else
@@ -120,7 +120,7 @@ mob/living/advanced/get_movement_delay()
 				if(L.loyalty_tag == src.loyalty_tag)
 					bypass_safe = FALSE
 			if(distance > 1)
-				if(bypass_safe || T.is_safe_teleport() || !grabbed_turf.is_safe_teleport())
+				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
 					left_hand.grabbed_object.glide_size = glide_size
 					left_hand.grabbed_object.Move(OldLoc)
 				else

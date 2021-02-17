@@ -42,7 +42,7 @@
 		blasts_left--
 		var/turf/T = get_step(src,dir)
 		var/turf/current_turf = get_turf(src)
-		if(!current_turf.is_safe_teleport() && !T.is_safe_teleport())
+		if(!current_turf.is_safe_teleport(FALSE) && !T.is_safe_teleport(FALSE))
 			return FALSE
 		var/obj/effect/temp/hazard/hierophant/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left
@@ -79,7 +79,7 @@
 		blasts_left--
 		var/turf/T = get_step(src,dir)
 		var/turf/current_turf = get_turf(src)
-		if(!current_turf.is_safe_teleport() && !T.is_safe_teleport())
+		if(!current_turf.is_safe_teleport(FALSE) && !T.is_safe_teleport(FALSE))
 			return FALSE
 		var/obj/effect/temp/hazard/hierophant/targeted/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left

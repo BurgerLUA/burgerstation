@@ -105,7 +105,7 @@
 				var/mob/living/L = grabbed_object
 				var/mob/living/C = caller
 				var/turf/grabbed_object_turf = grabbed_object.loc
-				if(C.loyalty_tag && L.loyalty_tag == C.loyalty_tag && grabbed_object_turf.is_safe_teleport() && !T.is_safe_teleport())
+				if(C.loyalty_tag && L.loyalty_tag == C.loyalty_tag && grabbed_object_turf.is_safe_teleport(FALSE) && !T.is_safe_teleport(FALSE))
 					return TRUE
 			grabbed_object.Move(T)
 		return TRUE
