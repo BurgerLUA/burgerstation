@@ -45,7 +45,7 @@
 		var/mob/living/advanced/A = victim
 		if(A.dead && istype(attacker,/mob/living/simple/legionare_head))
 			var/mob/living/simple/legionare_head/L = attacker
-			if(!L.qdeleting)
+			if(!L.qdeleting && !A.qdeleting)
 				L.convert(A)
 
 	return .

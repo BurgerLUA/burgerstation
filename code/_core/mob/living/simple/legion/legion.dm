@@ -92,7 +92,7 @@
 
 	tracked_heads += L
 
-	next_head = world.time + 15
+	next_head = world.time + 20
 
 	return TRUE
 
