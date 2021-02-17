@@ -23,12 +23,7 @@
 		switch(rand(1,2))
 			if(1)
 				owner_as_hierophant.chain_blast_random()
-				world.log << "CHAIN BLAST - RANDOM"
 			if(2)
 				owner_as_hierophant.chain_blast_targets()
-				world.log << "CHAIN BLAST - TARGETS"
-			if(3)
-				owner_as_hierophant.blast_all()
-				world.log << "BLAST - ALL"
 
 	return .
