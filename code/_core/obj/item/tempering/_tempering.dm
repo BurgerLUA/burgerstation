@@ -14,22 +14,20 @@
 
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-
-
-	if(is_item(object))
-		if(can_temper(caller,object))
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			if(caller.attack_flags & CONTROL_MOD_ALT)
-				on_temper(caller,object)
-				return TRUE
-			else
-				var/choice = input("Do you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
+	if(is_item(object) && can_temper(caller,object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		if(caller.attack_flags & CONTROL_MOD_ALT)
+			on_temper(caller,object)
+			return TRUE
+		else
+			var/choice = input("Do you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
+			if(choice == "Yes")
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
-				if(choice == "Yes")
-					on_temper(caller,object)
-					return TRUE
+				on_temper(caller,object)
+				return TRUE
+
 	return ..()
 
 /obj/item/tempering/proc/can_temper(var/mob/caller,var/obj/item/I)

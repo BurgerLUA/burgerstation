@@ -198,6 +198,9 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
 	INTERACT_CHECK
 
 	if(wield_only && !wielded)

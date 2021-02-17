@@ -27,7 +27,7 @@
 		var/mob/living/L = caller
 		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
 			L.to_chat(span("warning","You're dead!"))
-			return FALSE
+			return TRUE
 
 	if(caller.attack_flags & CONTROL_MOD_GRAB)
 		if(is_item(object) && is_inventory(object.loc))
@@ -85,17 +85,22 @@
 	if(caller.attack_flags & CONTROL_MOD_DROP) //Drop the object if we are telling it to drop.
 		if(parent_inventory)
 			var/obj/item/I = parent_inventory.get_top_object()
-			return unwield(caller,I)
+			unwield(caller,I)
+			return TRUE
 		if(grabbed_object)
-			return release_object(caller)
+			release_object(caller)
+			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
 		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
-			return drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
-		return drop_item_from_inventory(get_turf(src))
+			drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
+		else
+			drop_item_from_inventory(get_turf(src))
+		return TRUE
 
 	if(grabbed_object && grabbed_object == object)
-		return release_object(caller)
+		release_object(caller)
+		return TRUE
 
 	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
@@ -122,9 +127,11 @@
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
 			if(src == A.right_hand && A.left_item)
-				return A.right_hand.toggle_wield(caller,A.left_item)
+				A.right_hand.toggle_wield(caller,A.left_item)
+				return TRUE
 			if(src == A.left_hand && A.right_item)
-				return A.left_hand.toggle_wield(caller,A.right_item)
+				A.left_hand.toggle_wield(caller,A.right_item)
+				return TRUE
 
 	if(get_dist(src,object) <= 1)
 		if(is_item(object)) //We're clicking on another item.
