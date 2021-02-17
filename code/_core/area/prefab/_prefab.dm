@@ -61,3 +61,12 @@
 	sound_environment = ENVIRONMENT_CAVE
 
 	interior = TRUE
+
+/area/prefab/rev_base
+	name = "Rev Base"
+	icon_state = "red"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_AUDITORIUM
+
+	interior = TRUE

@@ -179,7 +179,7 @@
 	if(.)
 		vel_x *= 0.9
 		vel_y *= 0.9
-		alpha = clamp(alpha-5,0,255)
+		alpha = clamp(FLOOR(alpha*0.9,1),0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_hit(current_loc,TRUE)

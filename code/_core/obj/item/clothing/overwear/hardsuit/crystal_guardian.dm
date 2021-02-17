@@ -25,4 +25,4 @@
 
 	value = 2000
 
-	loyalty_tag = "NanoTrasen"
+	loyalty_tag = null //Anyone can use
