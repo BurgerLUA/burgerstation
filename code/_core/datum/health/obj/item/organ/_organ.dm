@@ -48,6 +48,7 @@
 
 			if(should_update)
 				A.update_overlay_tracked("\ref[O]")
+				A.queue_health_update = TRUE
 
 	return .
 
@@ -82,9 +83,12 @@
 
 	. += ..()
 
-	if(. && update && is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		A.queue_health_update = TRUE
+	if(. && update && is_organ(owner))
+		var/obj/item/organ/O = owner
+		if(O.health) O.health.update_health()
+		if(is_advanced(owner.loc))
+			var/mob/living/advanced/A = owner.loc
+			A.queue_health_update = TRUE
 
 	return .
 
