@@ -57,15 +57,13 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		var/client/C = speaker
 		if(C.byond_member)
 			. += ICON_TO_HTML(chat_icons.icon,"byond",20,20)
-		if(C.permissions & FLAG_PERMISSION_BRONZE)
-			. += ICON_TO_HTML(chat_toolbox.icon,"bronze",20,13)
-		if(C.permissions & FLAG_PERMISSION_SILVER)
-			. += ICON_TO_HTML(chat_toolbox.icon,"silver",20,13)
 		if(C.permissions & FLAG_PERMISSION_GOLD)
 			. += ICON_TO_HTML(chat_toolbox.icon,"gold",20,13)
-		if(C.permissions & FLAG_PERMISSION_ADMIN)
-			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
-		if(C.permissions & FLAG_PERMISSION_MODERATOR)
+		else if(C.permissions & FLAG_PERMISSION_SILVER)
+			. += ICON_TO_HTML(chat_toolbox.icon,"silver",20,13)
+		else if(C.permissions & FLAG_PERMISSION_BRONZE)
+			. += ICON_TO_HTML(chat_toolbox.icon,"bronze",20,13)
+		if(C.permissions & FLAG_PERMISSION_ADMIN || C.permissions & FLAG_PERMISSION_MODERATOR)
 			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
 
 	return .

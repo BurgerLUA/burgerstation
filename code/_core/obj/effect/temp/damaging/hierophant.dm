@@ -36,9 +36,14 @@
 
 /obj/effect/temp/hazard/hierophant/proc/copy_hazard()
 
+
+
 	if(blasts_left > 0)
 		blasts_left--
 		var/turf/T = get_step(src,dir)
+		var/turf/current_turf = get_turf(src)
+		if(!current_turf.is_safe_teleport() && !T.is_safe_teleport())
+			return FALSE
 		var/obj/effect/temp/hazard/hierophant/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left
 		H.copy_delay = copy_delay
@@ -51,7 +56,11 @@
 	else if(should_teleport && ismovable(owner))
 		var/atom/movable/M = owner
 		var/turf/T = get_turf(src)
-		if(T && T.is_safe_teleport()) M.force_move(T)
+		if(T && T.is_safe_teleport())
+			var/turf/old_turf = get_turf(M)
+			new /obj/effect/temp/phase/out(old_turf)
+			M.force_move(T)
+			new /obj/effect/temp/phase(T)
 
 	return TRUE
 
@@ -66,6 +75,9 @@
 	if(blasts_left > 0)
 		blasts_left--
 		var/turf/T = get_step(src,dir)
+		var/turf/current_turf = get_turf(src)
+		if(!current_turf.is_safe_teleport() && !T.is_safe_teleport())
+			return FALSE
 		var/obj/effect/temp/hazard/hierophant/targeted/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left
 		H.copy_delay = copy_delay
@@ -76,6 +88,10 @@
 	else if(should_teleport && ismovable(owner))
 		var/atom/movable/M = owner
 		var/turf/T = get_turf(src)
-		if(T && T.is_safe_teleport()) M.force_move(T)
+		if(T && T.is_safe_teleport())
+			var/turf/old_turf = get_turf(M)
+			new /obj/effect/temp/phase/out(old_turf)
+			M.force_move(T)
+			new /obj/effect/temp/phase(T)
 
 	return TRUE
