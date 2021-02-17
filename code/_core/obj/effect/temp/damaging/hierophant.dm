@@ -72,6 +72,9 @@
 
 /obj/effect/temp/hazard/hierophant/targeted/copy_hazard()
 
+	if(target == loc)
+		blasts_left = 0
+
 	if(blasts_left > 0)
 		blasts_left--
 		var/turf/T = get_step(src,dir)

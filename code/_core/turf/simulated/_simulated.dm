@@ -43,6 +43,19 @@ var/global/list/blood_turfs = list()
 
 	var/slip_factor = 1
 
+/turf/simulated/is_safe_teleport()
+
+	if(collision_flags & FLAG_COLLISION_WALKING)
+		return FALSE
+
+	for(var/atom/movable/M in src.contents)
+		if(!M.density)
+			continue
+		if(M.collision_flags & FLAG_COLLISION_WALKING)
+			return FALSE
+
+	return TRUE
+
 /turf/simulated/proc/get_slip_strength(var/mob/living/L)
 	return (wet_level ? 1 : 0) + (wet_level/100)*slip_factor
 

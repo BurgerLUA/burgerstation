@@ -7,16 +7,7 @@ SUBSYSTEM_DEF(admin)
 	var/list/stored_ranks = list()
 	var/list/stored_user_ranks = list()
 
-/subsystem/admin/Initialize()
-
-	for(var/k in subtypesof(/rank/))
-		var/rank/R = new k
-		stored_ranks[lowertext(R.id)] = R
-	log_subsystem(src.name,"Loaded [length(stored_ranks)] different ranks.")
-
-	if(!fexists(RANK_DIR))
-		log_subsystem(name,"Could not find an admin file ([RANK_DIR]).")
-		return ..()
+/subsystem/admin/proc/update_permissions_from_file()
 
 	var/file_text = rustg_file_read(RANK_DIR)
 	var/list/split_file = splittext(file_text,"\n")
@@ -44,6 +35,18 @@ SUBSYSTEM_DEF(admin)
 
 	log_subsystem(src.name,"Loaded [length(stored_user_ranks)] users with special permissions.")
 
+/subsystem/admin/Initialize()
+
+	for(var/k in subtypesof(/rank/))
+		var/rank/R = new k
+		stored_ranks[lowertext(R.id)] = R
+	log_subsystem(src.name,"Loaded [length(stored_ranks)] different ranks.")
+
+	if(!fexists(RANK_DIR))
+		log_subsystem(name,"Could not find an admin file ([RANK_DIR]).")
+		return ..()
+
+	update_permissions_from_file()
 	update_permissions()
 
 	return ..()
