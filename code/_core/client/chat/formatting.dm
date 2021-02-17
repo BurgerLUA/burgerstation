@@ -67,6 +67,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
 		if(C.permissions & FLAG_PERMISSION_MODERATOR)
 			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
+
 	return .
 
 
