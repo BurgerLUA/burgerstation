@@ -57,7 +57,7 @@
 				play_sound('sound/weapons/timer/beep.ogg',T,range_max=VIEW_RANGE*0.25)
 
 		if(time_set < 0 && !(time_set % 10))
-			for(var/mob/living/L in viewers(2,get_turf(src)))
+			for(var/mob/living/L in view(2,get_turf(src)))
 				loc.trigger(last_interacted,src,-1,-1)
 				play_sound('sound/weapons/timer/beep.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)
 				flick("motion_trigger",src)

@@ -104,7 +104,7 @@
 
 	. = FALSE
 
-	for(var/mob/living/A in viewers(VIEW_RANGE,src))
+	for(var/mob/living/A in view(VIEW_RANGE,src))
 		if(A == src)
 			continue
 		if(A.dead)

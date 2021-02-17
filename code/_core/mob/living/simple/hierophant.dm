@@ -71,7 +71,7 @@
 	var/teleport_num = rand(1,8)
 
 	var/i=1
-	for(var/mob/living/L in viewers(VIEW_RANGE,src))
+	for(var/mob/living/L in view(VIEW_RANGE,src))
 		if(L.loyalty_tag == src.loyalty_tag)
 			continue
 		if(L.dead)

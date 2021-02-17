@@ -175,7 +175,7 @@
 		return .
 
 	if(aggression > 0)
-		for(var/mob/living/L in viewers(range_to_use,owner))
+		for(var/mob/living/L in view(range_to_use,owner))
 			CHECK_TICK(75,FPS_SERVER*2)
 			var/sight_chance = get_sight_chance(L,FALSE)
 			if(sight_chance < 100 && !prob(sight_chance))
