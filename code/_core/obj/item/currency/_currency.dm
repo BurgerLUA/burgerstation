@@ -30,7 +30,7 @@
 	desc_extended = "Currency primarily used by syndicate operatives."
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
-	value = 400
+	value = 100
 
 	currency_class = "Telecrystals"
 

@@ -4,7 +4,6 @@
 	desc_extended = "A special gem used for augmenting melee and magic weapons with damage bonuses. Note that once applied, it can no longer be removed but instead replaced. Replacing the gem will destroy it."
 	rarity = RARITY_COMMON
 
-
 	icon = 'icons/obj/item/powergem.dmi'
 	icon_state = "gem1"
 
@@ -17,12 +16,16 @@
 
 /obj/item/powergem/save_item_data(var/save_inventory = TRUE)
 	. = ..()
+	SAVEVAR("rarity")
+	SAVEVAR("icon_state")
 	SAVEVAR("damage_type_to_add")
 	SAVEVAR("damage_to_add")
 	return .
 
 /obj/item/powergem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
+	LOADVAR("rarity")
+	LOADVAR("icon_state")
 	LOADVAR("damage_type_to_add")
 	LOADVAR("damage_to_add")
 	return .
