@@ -122,6 +122,7 @@
 		/loot/magic/book = 1,
 		/loot/magic/soulgem = 9,
 		/loot/magic/potion = 6,
-		/loot/magic/tome = 3
+		/loot/magic/tome = 3,
+		/obj/item/powergem = 3
 	)
 	loot_count = 3
