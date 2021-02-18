@@ -8,12 +8,24 @@
 	icon = 'icons/obj/item/powergem.dmi'
 	icon_state = "gem1"
 
-	var/damage_type_to_add = BLADE
+	var/damage_type_to_add = ARCANE
 	var/damage_to_add = 10
 
 	value = 1000
 
 	value_burgerbux = 1 //Not in rotation, yet.
+
+/obj/item/powergem/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("damage_type_to_add")
+	SAVEVAR("damage_to_add")
+	return .
+
+/obj/item/powergem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("damage_type_to_add")
+	LOADVAR("damage_to_add")
+	return .
 
 /obj/item/powergem/Generate()
 

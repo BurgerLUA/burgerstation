@@ -3887,12 +3887,6 @@
 /obj/item/analyzer/armor,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
-"od" = (
-/obj/structure/smooth/table/reinforced,
-/obj/structure/interactive/shop,
-/obj/item/clothing/glasses/blindfold,
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/science)
 "oe" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -6245,6 +6239,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
+"wK" = (
+/obj/structure/interactive/vending/experimental,
+/turf/simulated/floor/tile/morphing,
+/area/burgerstation/armory)
 "wM" = (
 /obj/structure/interactive/scanner/iff,
 /turf/simulated/floor/plating,
@@ -39562,7 +39560,7 @@ vn
 vn
 vn
 vn
-od
+oR
 bu
 bB
 bB
@@ -49795,7 +49793,7 @@ mF
 bh
 aE
 co
-cb
+wK
 cs
 cs
 cs

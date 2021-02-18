@@ -6,6 +6,14 @@
 
 	)
 
+/loot/supply_crate/bos
+	loot_table = list(
+		/loot/armor/t45d = 1,
+		/loot/armor/t51b = 1,
+		/loot/armor/apa = 1,
+		/loot/armor/ncrpa = 1
+	)
+
 /loot/supply_crate/all
 	loot_table = list(
 		/loot/supply_crate/russian = 1,

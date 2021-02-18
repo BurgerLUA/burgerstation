@@ -52,9 +52,7 @@
 /gamemode/proc/handle_alert_level()
 	var/desired_alert_level = CODE_GREEN //Failsafe.
 	switch(points)
-		if(-INFINITY to 0)
-			desired_alert_level = CODE_DELTA
-		if(0 to 15)
+		if(-INFINITY to 15)
 			desired_alert_level = CODE_RED
 		if(15 to 25)
 			desired_alert_level = CODE_AMBER
