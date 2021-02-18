@@ -1,6 +1,13 @@
 /obj/explosion_process
 	var/power = 0
 	var/velocity_dir = 0x0
+	var/atom/owner
+	var/atom/source
+	var/turf/epicenter
+	var/loyalty_tag
+
+	icon = 'icons/obj/effects/fire.dmi'
+	icon_state = "3"
 
 	collision_flags = FLAG_COLLISION_FLYING
 
@@ -15,7 +22,10 @@
 
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
-	maptext = "[power]"
+	loc.act_explode(owner,source,epicenter,power,loyalty_tag)
+	icon_state = "[clamp(FLOOR(power/20,1),1,3)]"
+	if(velocity_dir)
+		dir = velocity_dir
 	return ..()
 
 /obj/explosion_process/Destroy()
@@ -37,6 +47,7 @@
 		var/turf/T = get_step(src,d)
 		if(!T) continue
 		if(!T.Enter(src,src.loc))
+			T.act_explode(owner,source,epicenter,power,loyalty_tag)
 			continue
 		var/obj/explosion_process/existing = locate() in T.contents
 		var/direction_mod = 1
@@ -71,6 +82,10 @@
 			EP = new(T)
 			EP.power = power_to_give
 			EP.velocity_dir = get_dir(src,EP)
+			EP.owner = owner
+			EP.source = source
+			EP.epicenter = epicenter
+			EP.loyalty_tag = loyalty_tag
 			INITIALIZE(EP)
 			GENERATE(EP)
 			FINALIZE(EP)

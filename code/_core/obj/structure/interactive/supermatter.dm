@@ -57,7 +57,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	var/turf/T = get_turf(src)
 	qdel(src)
 	. = ..()
-	explode(T,VIEW_RANGE,src,src)
+	explode(T,120,T,T,"Supermatter")
 	return .
 
 /obj/structure/interactive/supermatter/Finalize()

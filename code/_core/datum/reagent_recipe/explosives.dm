@@ -39,6 +39,6 @@
 			shrapnel_volume += reagent_volume
 	var/shrapnel_amount = min(12,CEILING(shrapnel_volume/4,1))
 	container.owner.shoot_projectile(caller,explosion_location,null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.5,shrapnel_amount,"#FFFFFF",0,0,1,null,tag_to_use,2,2)
-	explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
+	explode(explosion_location,explosion_power*20,caller,container.owner,tag_to_use)
 
 	return TRUE

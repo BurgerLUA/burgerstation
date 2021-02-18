@@ -11,7 +11,7 @@
 		var/mob/living/advanced/A = loc
 		if(!A.dead)
 			A.health.adjust_loss_smart(brute=100,burn=100)
-			explode(T,7,A,src)
+			explode(T,40,A,src)
 			A.smite()
 
 	return .

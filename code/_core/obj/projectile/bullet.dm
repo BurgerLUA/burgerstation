@@ -55,7 +55,7 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),2,owner,src,iff_tag)
+		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
 	return .
 
@@ -68,7 +68,7 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),1,owner,src,iff_tag)
+		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
 	return .
 
@@ -103,6 +103,6 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),2,owner,src,iff_tag)
+		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
 	return .

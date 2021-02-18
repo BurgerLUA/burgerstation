@@ -129,9 +129,11 @@
 
 	flavor = "bananas"
 
-	flavor_strength = 2
+	flavor_strength = 6
 
 	liquid = -0.25
+
+	value = 4
 
 /reagent/salt
 	name = "ionized table salt"

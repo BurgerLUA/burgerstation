@@ -65,18 +65,16 @@
 	if(alpha == 0)
 		return FALSE
 
+	alpha = 0
+	mouse_opacity = 0
+	queue_delete_immune = FALSE
+	queue_delete(src,60)
+
 	if(source == src)
-		alpha = 0
-		mouse_opacity = 0
-		queue_delete_immune = FALSE
-		queue_delete(src,60)
 		if(!isturf(src.loc)) drop_item(get_turf(src))
 		if(stored_trigger) stored_trigger.active = FALSE
-	/*
 	else
-		CHECK_TICK(50,FPS_SERVER*10)
 		trigger(owner,source,-1,-1)
-	*/
 
 	return .
 
@@ -234,6 +232,16 @@
 	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 /obj/item/grenade/timed/explosive/Generate()
-	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)
-	stored_containers += new /obj/item/container/beaker/large/grenade_potassium(src)
+	stored_containers += new /obj/item/container/beaker/water(src)
+	stored_containers += new /obj/item/container/beaker/potassium(src)
+	return ..()
+
+/obj/item/grenade/timed/explosive/large
+	name = "timed large explosive grenade"
+	desc = "Kaboom!"
+	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds. This one has a larger payload."
+
+/obj/item/grenade/timed/explosive/large/Generate()
+	stored_containers += new /obj/item/container/beaker/large/water(src)
+	stored_containers += new /obj/item/container/beaker/large/potassium(src)
 	return ..()

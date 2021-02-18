@@ -22,7 +22,7 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),2,owner,src,loyalty_tag)
+		explode(get_turf(hit_atom),20,owner,src,loyalty_tag)
 
 	return .
 
