@@ -727,14 +727,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
 "cK" = (
-/obj/structure/interactive/door/airlock/external/glass/bolted,
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 4
-	},
-/obj/structure/interactive/scanner/iff{
-	dir = 8
-	},
+/obj/structure/interactive/door/airlock/station/maintenance,
+/obj/structure/interactive/scanner/iff_nanotrasen,
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "cL" = (
@@ -1417,20 +1411,26 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
 "fc" = (
-/obj/structure/interactive/door/airlock/station/command/glass,
-/obj/structure/interactive/scanner/iff{
-	dir = 8
+/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
 	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/hanger)
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
 "fd" = (
 /obj/structure/interactive/door/airlock/external/glass/bolted,
 /obj/structure/interactive/conveyor{
 	icon_state = "conveyor";
 	dir = 8
 	},
-/obj/structure/interactive/scanner/iff{
-	dir = 8
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
@@ -4365,9 +4365,13 @@
 	},
 /area/burgerstation/chapel)
 "pO" = (
-/obj/structure/interactive/scanner/iff,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/east)
+/obj/structure/interactive/door/airlock/station/glass,
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
+	dir = 4
+	},
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/east)
 "pP" = (
 /turf/simulated/wall/metal,
 /area/burgerstation/maint/east)
@@ -5151,12 +5155,13 @@
 /turf/simulated/floor/tile/nanotrasen,
 /area/burgerstation/hall/east)
 "sC" = (
-/obj/structure/interactive/door/airlock/station/glass,
-/obj/structure/interactive/scanner/iff{
-	dir = 8
+/obj/structure/interactive/door/airlock/station/command/glass,
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
+	dir = 4
 	},
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/east)
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/hanger)
 "sD" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -5625,12 +5630,16 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/cargo_inbound/ship)
 "ur" = (
-/obj/structure/interactive/door/airlock/station/maintenance,
-/obj/structure/interactive/scanner/iff{
+/obj/structure/interactive/door/airlock/station/command/glass,
+/obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/burgerstation/mining)
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/hanger)
 "us" = (
 /obj/decal/hazard{
 	dir = 8
@@ -6215,19 +6224,13 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
 "wC" = (
-/obj/decal/hazard{
-	dir = 8
-	},
-/obj/structure/interactive/door/airlock/external/glass/bolted,
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
+/obj/structure/interactive/door/airlock/station/maintenance,
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
 	dir = 4
 	},
-/obj/structure/interactive/scanner/iff{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
-/area/burgerstation/maint/west)
+/area/burgerstation/mining)
 "wD" = (
 /mob/living/advanced/npc/cyborg_assistant/help_desk,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -6274,9 +6277,20 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "wM" = (
-/obj/structure/interactive/scanner/iff,
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	icon_state = "pad";
+	dir = 4
+	},
 /turf/simulated/floor/plating,
-/area/burgerstation/maint/disposals)
+/area/burgerstation/maint/west)
 "wN" = (
 /obj/structure/interactive/disposals/pipe/labeler{
 	dir = 4;
@@ -6291,21 +6305,6 @@
 	},
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/east)
-"wP" = (
-/obj/structure/interactive/door/airlock/station/command/glass,
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/structure/interactive/scanner/iff{
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/hanger)
-"wQ" = (
-/obj/structure/interactive/door/airlock/station/maintenance,
-/obj/structure/interactive/scanner/iff,
-/turf/simulated/floor/plating,
-/area/burgerstation/cargo)
 "wT" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
@@ -34697,9 +34696,9 @@ hO
 kw
 kw
 rB
-fc
-wP
-fc
+sC
+ur
+sC
 rB
 kw
 kw
@@ -34710,8 +34709,8 @@ eh
 eh
 eh
 bI
-wC
-wC
+wM
+wM
 bI
 eh
 eh
@@ -35198,7 +35197,7 @@ eh
 eh
 eh
 an
-cK
+fc
 an
 an
 fd
@@ -35485,7 +35484,7 @@ wJ
 wJ
 fF
 fF
-ur
+wC
 fF
 fF
 fF
@@ -35711,7 +35710,7 @@ wd
 xX
 xX
 xX
-wQ
+cK
 cZ
 hu
 tx
@@ -47290,9 +47289,9 @@ sy
 kq
 kq
 sy
-sC
-sC
-sC
+pO
+pO
+pO
 sy
 kq
 kq
@@ -51163,7 +51162,7 @@ qI
 dX
 dX
 dX
-pO
+dX
 dX
 dX
 dX
@@ -53442,7 +53441,7 @@ wT
 wT
 wT
 wT
-wM
+wT
 wT
 wT
 cY

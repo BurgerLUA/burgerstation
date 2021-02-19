@@ -32,6 +32,28 @@
 
 	return ..()
 
+/obj/structure/interactive/scanner/iff_nanotrasen
+	name = "\improper NanoTrasen IFF body scanner"
+	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
+	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to prevent those without NanoTrasen IFF implants from accessing the area."
+
+/obj/structure/interactive/scanner/iff_nanotrasen/Cross(var/atom/movable/M)
+
+	if(is_living(M))
+		var/mob/living/L = M
+		if(!L.iff_tag || L.iff_tag != "NanoTrasen")
+			L.to_chat(span("warning","The barrier prevents you from moving!"))
+			src.do_say("IFF implant not detected.")
+			return FALSE
+
+	if(istype(M,/obj/structure/interactive/crate))
+		for(var/mob/living/L in M.contents)
+			if(!src.Cross(L))
+				return FALSE
+
+	return ..()
+
+
 
 /obj/structure/interactive/scanner/iff_reverse
 	name = "\improper anti-IFF body scanner"
