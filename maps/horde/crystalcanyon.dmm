@@ -136,7 +136,7 @@
 /turf/simulated/floor/brick/grey,
 /area/crystalcanyon/deltaclinic)
 "aC" = (
-/obj/structure/interactive/door/airlock/wizard/glass,
+/obj/structure/interactive/door/airlock/glass,
 /turf/simulated/floor/xeno,
 /area/crystalcanyon/charliebase)
 "aD" = (
@@ -1686,7 +1686,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/crystalcanyon/interior/cave/east)
 "Qo" = (
-/obj/structure/interactive/door/airlock/wizard/glass,
+/obj/structure/interactive/door/airlock/glass,
 /turf/simulated/floor/tile/grey,
 /area/crystalcanyon/charliebase)
 "QC" = (
