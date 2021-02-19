@@ -12,35 +12,34 @@
 	metabolism_blood = 10
 	metabolism_stomach = 2
 
+	overdose_threshold = 0
+
 	liquid = 0.4
 
 	var/list/compatible_blood = list(/reagent/blood) //If a mob has this blood type, what can it receive without poison?
 
 	value = 2
 
-/reagent/blood/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/blood/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.add_nutrition(5*.) //Blood is actually nutritious.
+	owner.add_nutrition(4*.) //Blood is actually nutritious.
 
 	return .
 
-/reagent/blood/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/blood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		if(L.blood_type)
-			var/reagent/blood/R = REAGENT(L.blood_type)
-			if(R.compatible_blood[src.type])
-				L.blood_volume += .
-				L.queue_health_update = TRUE
+	if(owner.blood_type)
+		var/reagent/blood/R = REAGENT(owner.blood_type)
+		if(R.compatible_blood[src.type])
+			owner.blood_volume += .
+			owner.queue_health_update = TRUE
 		else
-			if(owner.health) owner.health.adjust_loss_smart(tox=.*1,robotic=FALSE)
+			owner.blood_type += . *0.5
+			owner.tox_regen_buffer += .*0.5
 
 	return .
 

@@ -90,7 +90,7 @@
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/dr_gibb/
+/obj/item/container/beaker/can/dr_gibb
 	name = "\improper Dr. Gibb"
 	icon_state = "dr_gibb"
 
@@ -98,6 +98,44 @@
 	reagents.add_reagent(/reagent/nutrition/soda/dr_gibb,reagents.volume_max)
 	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/dr_gibb/explosive
+	name = "Dr. Gibbs"
+	var/explosive = TRUE
+	value = 300
+
+/obj/item/container/beaker/can/dr_gibb/explosive/get_examine_list(var/mob/examiner)
+
+	. = ..()
+
+	if(explosive)
+		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
+
+	return .
+
+/obj/item/container/beaker/can/dr_gibb/explosive/click_self(var/mob/caller)
+
+	. = ..()
+
+	if(. && explosive && open && is_living(caller))
+		var/turf/T = get_turf(src)
+		if(T)
+			T.visible_message(span("danger","You hear a mechanical click when you open the tab... oh fu-"))
+			var/mob/living/L = caller
+			explode(T,10,caller,src,L.loyalty_tag)
+			explosive = FALSE
+
+	return .
+
+/obj/item/container/beaker/can/dr_gibb/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("explosive")
+	return .
+
+/obj/item/container/beaker/can/dr_gibb/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("explosive")
+	return .
 
 /obj/item/container/beaker/can/space_up/
 	name = "\improper Space Up!"

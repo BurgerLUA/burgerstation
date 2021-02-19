@@ -29,7 +29,7 @@
 
 /reagent_container/Destroy()
 	owner = null
-	SSreagent.all_reagent_containers -= src
+	SSreagent.all_temperature_reagent_containers -= src
 	return ..()
 
 /reagent_container/proc/get_contents_english()
@@ -53,11 +53,12 @@
 
 	. = ..()
 
-	SSreagent.all_reagent_containers += src
+	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
+		SSreagent.all_temperature_reagent_containers += src
 
 	return .
 
-/reagent_container/proc/metabolize(var/multiplier=1)
+/reagent_container/proc/metabolize(var/mob/living/living_owner,var/multiplier=1)
 
 	if(!volume_current)
 		return
@@ -80,12 +81,7 @@
 		if(!(flags_metabolism & R.flags_metabolism))
 			continue
 
-		var/atom/owner_to_use = owner
-
-		if(owner && is_organ(owner) && owner.loc && flags_metabolism & REAGENT_METABOLISM_INGEST)
-			owner_to_use = owner.loc
-
-		var/metabolize_amount = R.metabolize(owner,owner_to_use,src,volume,multiplier)
+		var/metabolize_amount = R.metabolize(living_owner,src,volume,multiplier)
 
 		if(metabolize_amount)
 			remove_reagent(r_id,metabolize_amount,FALSE)

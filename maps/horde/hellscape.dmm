@@ -1431,10 +1431,6 @@
 "gq" = (
 /turf/simulated/floor/plating,
 /area/transit/dropship/delta/landing)
-"gr" = (
-/obj/marker/prefab/small,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/hellchamber)
 "gs" = (
 /obj/structure/smooth/table/cult,
 /obj/item/weapon/melee/energy/sword/katana/black,
@@ -3992,10 +3988,18 @@
 /mob/living/simple/herald,
 /turf/simulated/floor/wood/brown,
 /area/hellscape/exterior/jungle/north)
+"qH" = (
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/exterior/jungle/south)
 "qI" = (
 /obj/item/weapon/melee/energy/chainsaw,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
+"qJ" = (
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/hellchamber)
 "qN" = (
 /turf/simulated/floor/colored/dirt/soil,
 /area/hellscape/interior/caves/lava_lake)
@@ -47256,7 +47260,7 @@ ks
 ks
 ks
 ks
-ks
+qH
 ks
 ks
 ks
@@ -53457,7 +53461,7 @@ bb
 bb
 bb
 bb
-gr
+bb
 bb
 bb
 cW
@@ -58846,7 +58850,7 @@ bb
 bb
 bb
 bb
-bb
+qJ
 bb
 bb
 bb

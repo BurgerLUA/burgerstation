@@ -25,3 +25,18 @@
 
 /obj/item/clothing/head/hat/wizard/red
 	color = "#FF0000"
+
+/obj/item/clothing/head/hat/wizard/purple
+	name = "authentic wizard hat"
+	desc = "The real deal."
+	rarity = RARITY_MYTHICAL
+	desc_extended = "A real, totally authentic wizard hat with all the protection a wizard needs."
+	color = COLOR_PURPLE
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		ARCANE = AP_GREATSWORD,
+		DARK = -AP_AXE,
+		HOLY = -AP_AXE
+	)

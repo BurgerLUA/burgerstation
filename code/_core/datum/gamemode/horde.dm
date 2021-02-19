@@ -348,6 +348,9 @@
 
 /gamemode/horde/proc/find_horde_spawn()
 
+	if(!length(all_syndicate_spawns))
+		return null
+
 	var/picks_remaining = 3
 
 	while(picks_remaining > 0)

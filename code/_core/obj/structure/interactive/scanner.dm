@@ -16,14 +16,19 @@
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
 	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to prevent those without IFF implants from accessing the area."
 
-/obj/structure/interactive/scanner/iff/Cross/(var/atom/movable/M)
+/obj/structure/interactive/scanner/iff/Cross(var/atom/movable/M)
 
-	if(is_advanced(M))
-		var/mob/living/advanced/A = M
-		if(!A.iff_tag)
-			A.to_chat(span("warning","The barrier prevents you from moving!"))
+	if(is_living(M))
+		var/mob/living/L = M
+		if(!L.iff_tag)
+			L.to_chat(span("warning","The barrier prevents you from moving!"))
 			src.do_say("IFF implant not detected.")
 			return FALSE
+
+	if(istype(M,/obj/structure/interactive/crate))
+		for(var/mob/living/L in M.contents)
+			if(!src.Cross(L))
+				return FALSE
 
 	return ..()
 

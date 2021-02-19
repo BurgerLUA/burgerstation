@@ -1,5 +1,3 @@
-var/global/list/obj/structure/interactive/gateway/all_gateways = list()
-
 /obj/structure/interactive/gateway
 	name = "gateway"
 	desc = "Brings you to places!"

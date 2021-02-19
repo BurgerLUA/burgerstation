@@ -118,7 +118,7 @@
 		.["reagents"] = reagents.stored_reagents
 
 	if(quality && quality != initial(quality))
-		.["quality"] = quality
+		.["quality"] = min(quality,140)
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck
@@ -168,7 +168,7 @@
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
 	if(object_data["quality"])
-		quality = object_data["quality"]
+		quality = min(object_data["quality"],140)
 	if(object_data["luck"])
 		luck = object_data["luck"]
 

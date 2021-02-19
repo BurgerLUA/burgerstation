@@ -25,3 +25,6 @@
 
 /obj/item/clothing/belt/storage/colored/janitor
 	color = COLOR_JANITOR
+
+/obj/item/clothing/belt/storage/colored/purple
+	color = COLOR_PURPLE

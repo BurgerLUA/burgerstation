@@ -71,6 +71,10 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/nanotrasen_turret
 
+/mob/living/simple/turret/nanotrasen/immortal
+	name = "immortal nanotrasen turret"
+	immortal = TRUE
+
 /mob/living/simple/turret/nanotrasen/post_death()
 	icon_state = "dead"
 	return ..()

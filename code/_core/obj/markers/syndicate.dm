@@ -2,7 +2,7 @@ var/global/list/turf/all_syndicate_spawns = list()
 
 
 /obj/marker/syndicate
-	name = "syndicate spawn marker"
+	name = "horde spawn marker"
 	icon = 'icons/obj/markers/markers.dmi'
 	icon_state = "syndie"
 

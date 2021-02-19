@@ -151,7 +151,7 @@
 
 	var/client/C = src.client
 
-	var/choice = input("Are you sure you wish to spend an antag token to become an antagonist? You will spawn in as a Syndicate Assassin with predetermined gear.") as null|anything in list("Yes","No","Cancel")
+	var/choice = input("Are you sure you wish to spend an antag token to become an antagonist?") as null|anything in list("Yes","No","Cancel")
 
 	if(choice != "Yes")
 		src.to_chat(span("notice","Good choice."))

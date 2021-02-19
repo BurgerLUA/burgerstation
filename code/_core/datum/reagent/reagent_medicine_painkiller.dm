@@ -52,28 +52,22 @@
 	addiction = /addiction/opium
 
 
-/reagent/medicine/painkiller/opium/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/painkiller/opium/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		if(L.health)
-			L.brute_regen_buffer += .*3
-			L.burn_regen_buffer += .*2
-			L.pain_regen_buffer += .*5
+	owner.brute_regen_buffer += .*3
+	owner.burn_regen_buffer += .*2
+	owner.pain_regen_buffer += .*5
 
 	return .
 
-/reagent/medicine/painkiller/opium/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/painkiller/opium/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		if(L.health)
-			L.brute_regen_buffer += .*1.5
-			L.burn_regen_buffer += .*1
-			L.pain_regen_buffer += .*2.5
+	owner.brute_regen_buffer += .*1.5
+	owner.burn_regen_buffer += .*1
+	owner.pain_regen_buffer += .*2.5
 
 	return .

@@ -22,6 +22,18 @@
 
 	liquid = 0.3
 
+/reagent/nutrition/mustard
+	name = "mustard paste"
+	desc = "Nutrition and flavor from mustard seeds."
+	color = "#EAC300"
+
+	nutrition_amount = 6
+	nutrition_quality_amount = 2
+
+	flavor = "mustard"
+
+	liquid = 0.1
+
 /reagent/nutrition/pineapple
 	name = "pineapple"
 	desc = "Nutrition and flavor from a pineapple."
@@ -127,7 +139,7 @@
 	processed_reagent = /reagent/medicine/painkiller/opium
 
 
-/reagent/nutrition/poppy_seed/raw/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/poppy_seed/raw/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -138,7 +150,7 @@
 	return .
 
 
-/reagent/nutrition/poppy_seed/raw/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/poppy_seed/raw/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 

@@ -17,6 +17,7 @@
 	var/obj/item/fishing/bait/bait
 
 	var/obj/effect/fishing_bob/fishing_bob
+	var/obj/effect/alert/exclaim/fishing_alert
 
 	var/turf/simulated/hazard/fishing_turf
 
@@ -27,6 +28,7 @@
 
 	var/next_tick = 0
 	var/nospam
+	var/compact = FALSE
 
 	value = 200
 
@@ -46,7 +48,7 @@
 
 /obj/item/fishing/rod/update_overlays()
 	. = ..()
-	if(line)
+	if(line && !compact)
 		var/obj/item/fishing/line/L = line
 		var/image/I = new/image('icons/obj/item/fishing/rod.dmi',"string")
 		I.color = L.color
@@ -141,6 +143,7 @@
 					QDEL_NULL(bait)
 					QDEL_NULL(lure)
 					QDEL_NULL(fishing_bob)
+					QDEL_NULL(fishing_alert)
 					update_sprite()
 					fishing_turf = null
 					return FALSE
@@ -150,6 +153,7 @@
 					snagged_fish = null
 					fishing_turf = null
 					QDEL_NULL(fishing_bob)
+					QDEL_NULL(fishing_alert)
 					bait.add_item_count(-1)
 					if(bait.qdeleting) bait = null
 					return FALSE
@@ -163,6 +167,7 @@
 				last_caller = null
 				QDEL_NULL(fishing_bob)
 			else if(prob(5 + lure.chance_bonus) && nospam <= world.time)
+				fishing_alert = new(fishing_turf)
 				snagged_fish = rand(5,20) + lure.time_bonus
 				catch_time = world.time
 				if(lure.catchsound)
@@ -179,6 +184,9 @@
 
 	INTERACT_CHECK
 
+	if(compact)
+		caller.to_chat(span("notice","Extend your fishing rod first!"))
+		return TRUE
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
@@ -215,6 +223,7 @@
 			nospam = null
 			snagged_fish = null
 			QDEL_NULL(fishing_bob)
+			QDEL_NULL(fishing_alert)
 			return TRUE
 		else //Reel it in without catching anything.
 			stop_thinking(src)
@@ -259,3 +268,46 @@
 	if(bait) . += span("notice","It has \the [bait.name] equipped.")
 	else . += span("notice","It has no bait.")
 	return .
+
+/obj/item/fishing/rod/telescopic
+	name = "telescopic fishing rod"
+	desc = "Bass pro certified!"
+	desc_extended = "A collapsable fishing rod that allows you to fish in areas containing water. Requires a lure, a line, and some bait to function."
+	value = 2000
+	icon = 'icons/obj/item/fishing/rodtelescopic.dmi'
+	compact = TRUE
+	size = SIZE_1
+
+/obj/item/fishing/rod/telescopic/click_self(var/mob/caller)
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+	compact = !compact
+	update_sprite()
+	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
+	return TRUE
+
+/obj/item/fishing/rod/telescopic/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("compact")
+	return .
+
+/obj/item/fishing/rod/telescopic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("compact")
+	return .
+
+/obj/item/fishing/rod/telescopic/update_icon()
+
+	if(!compact)
+		icon_state = "[initial(icon_state)]_out"
+		icon_state_held_left = "[initial(icon_state_held_left)]_out"
+		icon_state_held_right = "[initial(icon_state_held_right)]_out"
+		size = SIZE_3
+	else
+		icon_state = initial(icon_state)
+		icon_state_held_left = initial(icon_state_held_left)
+		icon_state_held_right = initial(icon_state_held_right)
+		size = SIZE_1
+	update_held_icon()
+
+	return ..()

@@ -10,6 +10,8 @@
 
 	value = 200
 
+	var/broom_range = 1
+
 /obj/item/broom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(isturf(object))
@@ -17,10 +19,15 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		var/turf/T = object
-		for(var/obj/item/I in orange(T,1))
+		for(var/obj/item/I in oview(T,broom_range))
 			if(I.anchored)
 				continue
-			I.Move(T)
+			I.Move(get_step(I,get_dir(I,T)))
 		return TRUE
 
 	return ..()
+
+/obj/item/broom/magic
+	name = "magic broom"
+	broom_range = 4
+	value = 800

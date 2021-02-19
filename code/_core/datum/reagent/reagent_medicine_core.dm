@@ -14,25 +14,14 @@
 
 	liquid = 0.6
 
-/reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-
+/reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 5*.
-
+	owner.brute_regen_buffer += 5*.
 	return .
 
-/reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-
+/reagent/medicine/bicaridine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 4*.
-
-
+	owner.brute_regen_buffer += 4*.
 	return .
 
 /reagent/medicine/bicaridine_plus
@@ -46,24 +35,14 @@
 
 	value = 3
 
-/reagent/medicine/bicaridine_plus/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 10*.
-
-
+	owner.brute_regen_buffer += 10*.
 	return .
 
-/reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 8*.
-
-
+	owner.brute_regen_buffer += 8*.
 	return .
 
 /reagent/medicine/kelotane
@@ -80,22 +59,14 @@
 
 	value = 1
 
-/reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/kelotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.burn_regen_buffer += 5*.
-
+	owner.burn_regen_buffer += 5*.
 	return .
 
-/reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/kelotane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.burn_regen_buffer += 4*.
-
+	owner.burn_regen_buffer += 4*.
 	return .
 
 /reagent/medicine/dylovene
@@ -112,23 +83,14 @@
 
 	value = 1.25
 
-/reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/dylovene/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.tox_regen_buffer += ((L.health ? L.health.get_loss(TOX)*0.05 : 0) + 5)*.
-
+	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.05 : 0) + 5)*.
 	return .
 
-/reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/dylovene/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.tox_regen_buffer += ((L.health ? L.health.get_loss(TOX)*0.04 : 0) + 4)*.
-
-
+	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.04 : 0) + 4)*.
 	return .
 
 /reagent/medicine/dexalin
@@ -145,19 +107,13 @@
 	value = 1.5
 
 /reagent/medicine/dexalin/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
-
 	. = ..()
-
 	L.blood_oxygen += 0.2
-
 	return .
 
 /reagent/medicine/dexalin/on_remove_living(var/mob/living/L,var/reagent_container/container)
-
 	. = ..()
-
 	L.blood_oxygen -= 0.2
-
 	return .
 
 /reagent/medicine/tricordrazine
@@ -174,28 +130,18 @@
 
 	value = 1.5
 
-/reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/tricordrazine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 4*.
-		L.burn_regen_buffer += 4*.
-		L.tox_regen_buffer += 4*.
-
-
+	owner.brute_regen_buffer += 4*.
+	owner.burn_regen_buffer += 4*.
+	owner.tox_regen_buffer += 4*.
 	return .
 
-/reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/tricordrazine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 3*.
-		L.burn_regen_buffer += 3*.
-		L.tox_regen_buffer += 3*.
-
-
+	owner.brute_regen_buffer += 3*.
+	owner.burn_regen_buffer += 3*.
+	owner.tox_regen_buffer += 3*.
 	return .
 
 /reagent/medicine/omnizine
@@ -213,29 +159,18 @@
 
 	value = 2
 
-/reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/omnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 3*.
-		L.burn_regen_buffer += 3*.
-		L.tox_regen_buffer += 3*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-
-
+	owner.brute_regen_buffer += 3*.
+	owner.burn_regen_buffer += 3*.
+	owner.tox_regen_buffer += 3*.
 	return .
 
-/reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/omnizine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer += 3*.
-		L.burn_regen_buffer += 3*.
-		L.tox_regen_buffer += 3*.
-		L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-
+	owner.brute_regen_buffer += 3*.
+	owner.burn_regen_buffer += 3*.
+	owner.tox_regen_buffer += 3*.
 	return .
 
 /reagent/medicine/adminomnizine
@@ -253,31 +188,21 @@
 
 	value = 5000
 
-/reagent/medicine/adminomnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/adminomnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer = max(L.brute_regen_buffer,500*.)
-		L.burn_regen_buffer = max(L.burn_regen_buffer,500*.)
-		L.tox_regen_buffer = max(L.tox_regen_buffer,500*.)
-		L.health_regen_delay = 0
-
+	owner.brute_regen_buffer = max(owner.brute_regen_buffer,500*.)
+	owner.burn_regen_buffer = max(owner.burn_regen_buffer,500*.)
+	owner.tox_regen_buffer = max(owner.tox_regen_buffer,500*.)
+	owner.health_regen_delay = 0
 	return .
 
-/reagent/medicine/adminomnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/adminomnizine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.brute_regen_buffer = max(L.brute_regen_buffer,500*.)
-		L.burn_regen_buffer = max(L.burn_regen_buffer,500*.)
-		L.tox_regen_buffer = max(L.tox_regen_buffer,500*.)
-		L.health_regen_delay = 0
-
+	owner.brute_regen_buffer = max(owner.brute_regen_buffer,500*.)
+	owner.burn_regen_buffer = max(owner.burn_regen_buffer,500*.)
+	owner.tox_regen_buffer = max(owner.tox_regen_buffer,500*.)
+	owner.health_regen_delay = 0
 	return .
-
-
 
 /reagent/medicine/silver_sulfadiazine
 	name = "Silver Sulfadiazine"
@@ -297,41 +222,26 @@
 	experience_per_unit = 5
 
 /reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
-
 	. = ..()
-
-	if(. && is_living(target))
+	if(.)
 		on_add(container,volume_to_splash*strength_mod,0)
-
 	return .
 
 /reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
-
 	. = ..()
-
-	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+	if(current_volume == 0 && container.owner && container.owner.health && container.owner.health.organic) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(burn=.*-10,robotic=FALSE)
 		if(is_organ(container.owner))
 			var/obj/item/organ/O = container.owner
 			O.send_pain(50)
-
 	return .
 
-/reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(owner && owner.health)
-		if(is_living(owner.loc))
-			var/mob/living/L = owner.loc
-			if(L.health)
-				owner.health.adjust_loss_smart(burn=.*-5,robotic=FALSE)
-				L.burn_regen_buffer += 3*.
-				L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-		else
-			owner.health.adjust_loss_smart(burn=.*-5,robotic=FALSE)
-
-
+	if(container.owner.health && container.owner.health.organic)
+		container.owner.health.adjust_loss_smart(burn=.*-5,robotic=FALSE)
+		owner.burn_regen_buffer += 3*.
 	return .
 
 /reagent/medicine/styptic_powder
@@ -352,49 +262,33 @@
 	experience_per_unit = 5
 
 /reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
-
 	. = ..()
-
 	if(. && is_living(target))
 		on_add(container,volume_to_splash*strength_mod,0)
-
 	return .
 
 
 /reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
-
 	. = ..()
-
-	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+	if(current_volume == 0 && container.owner && container.owner.health && container.owner.health.organic) //Added for the first time.
 		. *= 0.5
 		container.owner.health.adjust_loss_smart(brute=.*-10,robotic=FALSE)
 		if(is_organ(container.owner))
 			var/obj/item/organ/O = container.owner
 			O.send_pain(50)
-
 	return .
 
-/reagent/medicine/styptic_powder/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-
+/reagent/medicine/styptic_powder/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-
-	if(owner && owner.health)
-		if(is_living(owner.loc))
-			var/mob/living/L = owner.loc
-			if(L.health)
-				owner.health.adjust_loss_smart(brute=.*-5,robotic=FALSE)
-				L.brute_regen_buffer += 3*.
-				L.health_regen_delay = max(0,L.health_regen_delay - .*2)
-
-		else
-			owner.health.adjust_loss_smart(brute=.*-5,robotic=FALSE)
-
+	if(container.owner.health && container.owner.health.organic)
+		container.owner.health.adjust_loss_smart(brute=.*-5,robotic=FALSE)
+		owner.brute_regen_buffer += 3*.
 	return .
 
 
 /reagent/medicine/synthflesh
 	name = "synthflesh"
-	desc = "Experimental synthetic flesh. Significantly heals brute and burn damage of the affected limb instantly while dealing slight toxin damage. Also decreases natural healing regeneration delay."
+	desc = "Experimental synthetic flesh. Significantly heals brute and burn damage of the affected limb instantly. Warning: Do not use on open cuts."
 	color = "#FFEBEB"
 	flavor = "rotten flesh"
 	metabolism_skin = 1
@@ -409,7 +303,7 @@
 
 	. = ..()
 
-	if(. && is_living(target))
+	if(.)
 		on_add(container,volume_to_splash*strength_mod,0)
 
 	return .
@@ -419,20 +313,23 @@
 
 	. = ..()
 
-	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
-		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=.,robotic=FALSE)
-		. = 0
+	if(current_volume == 0 && container.owner && container.owner.health && container.owner.health.organic) //Added for the first time.
+		. *= 0.5
+		var/tox_to_adjust = 0
+		if(is_organ(container.owner))
+			var/obj/item/organ/O = container.owner
+			if(O.bleeding >= 0.5)
+				tox_to_adjust = .*5
+				O.bleeding = 0
+				O.send_pain(50)
+		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=tox_to_adjust,robotic=FALSE)
 
 	return .
 
 
-/reagent/medicine/synthflesh/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/synthflesh/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
-
-	if(owner && owner.health)
-		if(is_living(owner.loc))
-			var/mob/living/L = owner.loc
-			L.health_regen_delay = max(0,L.health_regen_delay - .*10)
-
+	owner.brute_regen_buffer += .*2
+	owner.burn_regen_buffer += .*2
 	return .

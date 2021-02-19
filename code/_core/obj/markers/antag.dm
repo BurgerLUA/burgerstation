@@ -23,3 +23,7 @@ var/global/list/all_antag_markers = list()
 /obj/marker/antag/revolutionary
 	name = "Revolutionary Soldier"
 	spawn_type = /mob/living/advanced/player/antagonist/revolutionary
+
+/obj/marker/antag/wizard
+	name = "Wizard Federation Wizard"
+	spawn_type = /mob/living/advanced/player/antagonist/wizard

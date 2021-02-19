@@ -13,7 +13,7 @@
 
 	heal_factor = 0
 
-/reagent/nutrition/energy/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/energy/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -21,7 +21,7 @@
 
 	return .
 
-/reagent/nutrition/energy/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/energy/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 

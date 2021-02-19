@@ -15,7 +15,8 @@
 	container_whitelist = list(
 		/obj/item/fishing/line/,
 		/obj/item/fishing/lure/,
-		/obj/item/fishing/bait/
+		/obj/item/fishing/bait/,
+		/obj/item/fishing/rod/telescopic
 	)
 
 	value = 100

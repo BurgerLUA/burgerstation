@@ -82,12 +82,14 @@
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
+	var/atom/possible_organ = null
+
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
+		possible_organ = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
 	if(!object.reagents)
 		return ..()
@@ -106,8 +108,8 @@
 
 		var/real_object_name = object.name
 
-		if(is_organ(object) && is_living(object))
-			real_object_name = "[object.name]'s [object.name]"
+		if(possible_organ)
+			real_object_name = "[object.name]'s [possible_organ.name]"
 			if(object == caller)
 				self_inject = TRUE
 
@@ -175,6 +177,14 @@
 /obj/item/container/syringe/opium/Generate()
 	reagents.add_reagent(/reagent/medicine/painkiller/opium,reagents.volume_max)
 	return ..()
+
+/obj/item/container/syringe/omnizine
+	name = "syringe (omnizine)"
+
+/obj/item/container/syringe/omnizine/Generate()
+	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max)
+	return ..()
+
 
 /obj/item/container/syringe/medipen
 	name = "medipen"

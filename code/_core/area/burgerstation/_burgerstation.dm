@@ -1,7 +1,7 @@
 /area/burgerstation
 	name = "\improper NSS Burger"
 	icon_state = "ship"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
@@ -40,7 +40,7 @@
 	name = "\improper East Hallway"
 	icon_state = "hall_e"
 
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/burgerstation/hall/south
 	name = "\improper South Hallway"
@@ -90,7 +90,7 @@
 /area/burgerstation/dorm
 	name = "\improper Dorm"
 	icon_state = "dorm"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE
 
 	sound_environment = ENVIRONMENT_ROOM
 
@@ -98,7 +98,7 @@
 	name = "\improper Help Desk"
 	icon_state = "help"
 
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/burgerstation/cloning
 	name = "\improper Cloning"
@@ -111,12 +111,12 @@
 /area/burgerstation/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "cryo"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE | FLAGS_AREA_NO_EVENTS
 
 /area/burgerstation/arrivals
 	name = "\improper Arrivals Dock"
 	icon_state = "ariv"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
@@ -141,7 +141,7 @@
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 
 /area/burgerstation/medical
 	name = "\improper Medical"
@@ -150,7 +150,7 @@
 /area/burgerstation/medical/cmo
 	name = "\improper Chief Medical Officer's Office"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 
 /area/burgerstation/medical/chemistry
 	name = "\improper Chemistry"
@@ -239,6 +239,6 @@
 /area/burgerstation/pvp
 	name = "ERROR"
 	icon_state = "pvp"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 
 	sound_environment = ENVIRONMENT_ALLEY

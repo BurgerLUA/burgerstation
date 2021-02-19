@@ -48,8 +48,8 @@ var/global/list/wishgranter_speak_lines = list(
 			log_error("Warning: Wishgranter had invalid loot ([loot_to_give]).")
 			return TRUE
 		for(var/obj/item/I in created_loot)
-			// https://www.desmos.com/calculator/hjbctiotxi
-			I.quality = FLOOR(100 + rand(0,clamp(100/(rand(1,1000)*0.2),0,100)),1)
+			// https://www.desmos.com/calculator/78f8zulsjq
+			if(prob(25)) I.quality = min(CEILING(4 + ((rand(1,1000)*0.0025)**4),1),40)
 
 		caller.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
 		var/obj/hud/inventory/I = object

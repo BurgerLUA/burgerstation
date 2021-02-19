@@ -27,23 +27,27 @@
 	return ..()
 
 
-/reagent/nutrition/ethanol/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/ethanol/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(is_living(owner) && owner.health && owner.health.organic)
-		var/mob/living/L = owner
-		L.intoxication += power*.
+	if(owner.health)
+		if(owner.health.organic)
+			owner.intoxication += power*.
+		else
+			owner.intoxication -= power*.
 
 	return .
 
-/reagent/nutrition/ethanol/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/ethanol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(is_living(owner) && owner.health && owner.health.organic)
-		var/mob/living/L = owner
-		L.intoxication += power*.*0.5
+	if(owner.health)
+		if(owner.health.organic)
+			owner.intoxication += power*.*0.5
+		else
+			owner.intoxication -= power*.
 
 	return .
 
