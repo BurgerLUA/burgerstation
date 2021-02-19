@@ -1,3 +1,8 @@
+
+/area/crystalcanyon
+	trackable = TRUE
+	area_identifier = "Mission"
+
 /area/crystalcanyon/outside
 	name = "\improper Crystal Plains"
 	icon_state = "snow"
