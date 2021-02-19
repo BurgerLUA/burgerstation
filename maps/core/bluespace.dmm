@@ -1182,6 +1182,18 @@
 /obj/marker/antag/wizard,
 /turf/simulated/floor/wood/rich,
 /area/wizard)
+"em" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/tile,
+/area/centcomm)
+"en" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/turf/simulated/floor/tile,
+/area/centcomm)
 
 (1,1,1) = {"
 aa
@@ -58219,13 +58231,13 @@ am
 am
 an
 aA
-cl
-cs
-cl
-ct
-cl
-cs
-cl
+bt
+bt
+bt
+em
+bt
+bt
+bt
 aA
 cd
 cd
@@ -58476,13 +58488,13 @@ an
 an
 an
 aA
-cs
 bt
 bt
 bt
 bt
 bt
-cs
+bt
+bt
 aA
 cd
 cd
@@ -58733,13 +58745,13 @@ aA
 aA
 aA
 aA
-cl
 bt
-by
 bt
-by
 bt
-cl
+bt
+bt
+bt
+bt
 aA
 aA
 aA
@@ -58990,13 +59002,13 @@ be
 be
 be
 aA
-cs
 bt
 bt
 bt
 bt
 bt
-cs
+bt
+bt
 aA
 aA
 aA
@@ -59246,14 +59258,14 @@ bj
 bf
 bk
 be
-bn
-cs
+aA
 bt
 bt
 bt
 bt
 bt
-cs
+bt
+bt
 aA
 aA
 aA
@@ -59504,13 +59516,13 @@ bf
 bf
 be
 aA
-cs
-cs
-cs
-cA
-cs
-cs
-cs
+bt
+bt
+bt
+en
+bt
+bt
+bt
 aA
 aA
 aA
@@ -59762,7 +59774,7 @@ bf
 bl
 aA
 aA
-bn
+aA
 aA
 aA
 bN
