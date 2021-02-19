@@ -29,7 +29,7 @@
 
 /reagent_container/Destroy()
 	owner = null
-	SSreagent.all_reagent_containers -= src
+	SSreagent.all_temperature_reagent_containers -= src
 	return ..()
 
 /reagent_container/proc/get_contents_english()
@@ -53,7 +53,8 @@
 
 	. = ..()
 
-	SSreagent.all_reagent_containers += src
+	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
+		SSreagent.all_temperature_reagent_containers += src
 
 	return .
 

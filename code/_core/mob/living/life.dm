@@ -217,7 +217,7 @@
 
 	return desired_horizontal
 
-/mob/living/proc/on_life()
+/mob/living/proc/on_life() //TODO: Find out why this has so much self cpu
 
 	if(!initialized || qdeleting)
 		return FALSE

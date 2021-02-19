@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(reagent)
 	tick_usage_max = 70
 
 	var/list/all_reagent_recipes = list()
-	var/list/reagent_container/all_reagent_containers = list()
+	var/list/reagent_container/all_temperature_reagent_containers = list()
 
 	var/list/containers_to_process = list()
 
@@ -18,11 +18,9 @@ SUBSYSTEM_DEF(reagent)
 
 /subsystem/reagent/on_life()
 
-	for(var/k in all_reagent_containers)
+	for(var/k in all_temperature_reagent_containers)
 		CHECK_TICK(tick_usage_max,FPS_SERVER*4)
 		var/reagent_container/R = k
-		if(R.flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT)
-			continue
 		R.process_temperature()
 
 	return TRUE
