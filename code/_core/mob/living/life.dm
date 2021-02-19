@@ -309,7 +309,7 @@ mob/living/proc/on_life_slow()
 	handle_regen()
 
 	if(reagents)
-		reagents.metabolize()
+		reagents.metabolize(src)
 
 	//handle_charges(LIFE_TICK_SLOW)
 

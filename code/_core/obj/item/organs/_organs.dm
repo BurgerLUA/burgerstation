@@ -217,9 +217,9 @@
 /obj/item/organ/proc/on_life()
 
 	if(reagents)
-		reagents.metabolize()
+		reagents.metabolize(is_advanced(src.loc) ? src.loc : null)
 
-	if(bleeding >= 1 && is_advanced(src.loc))
+	if(bleeding >= 0.5 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		if(A.blood_type && A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
 			var/bleed_amount = bleeding*DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
@@ -284,7 +284,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 
 
 	switch(bleeding)
-		if(1 to 2)
+		if(0.5 to 2)
 			damage_desc += "trickling blood"
 		if(2 to 4)
 			damage_desc += "<b>bleeding</b>"
