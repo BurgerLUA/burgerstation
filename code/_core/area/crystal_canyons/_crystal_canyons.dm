@@ -1,5 +1,5 @@
-/area/crystalcanyon/Outside
-	name = "CrystalPlains"
+/area/crystalcanyon/outside
+	name = "\improper Crystal Plains"
 	icon_state = "snow"
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20
@@ -13,7 +13,7 @@
 
 	sound_environment = ENVIRONMENT_PLAIN
 /area/crystalcanyon/interior/cave
-	name = "Central Caves"
+	name = "\improper Central Crystal Caves"
 	icon_state = "cave"
 	tracks = TRACKS_CAVE
 	random_sounds = list(
@@ -25,7 +25,7 @@
 	sound_environment = ENVIRONMENT_QUARRY
 
 /area/crystalcanyon/interior/cave/north
-	name = "Northern Caves"
+	name = "\improper Northern Crystal Caves"
 	icon_state = "blue"
 
 	sunlight_freq = 8
@@ -41,39 +41,39 @@
 	cheese_type = /reagent/nutrition/cheese/guava
 
 /area/crystalcanyon/interior/cave/south
-	name = "Southern Caves"
+	name = "\improper Southern Crystal Caves"
 	icon_state = "red"
 
 /area/crystalcanyon/interior/cave/east
-	name = "Eastern Caves"
+	name = "\improper Eastern Crystal Caves"
 	icon_state = "green"
 
 /area/crystalcanyon/interior/cave/west
-	name = "Western Caves"
+	name = "\improper Western Crystal Caves"
 	icon_state = "yellow"
 
 /area/crystalcanyon/caves/xenohive
-	name = "Xenomorph Hive"
+	name = "\improper Xenomorph Hive"
 	icon_state = "hive"
 
 	tracks = null
 
 /area/crystalcanyon/deltaclinic
-	name = "Delta Clinic"
+	name = "\improper Crystal Caves  Delta Clinic"
 	icon_state = "med"
 
 /area/crystalcanyon/bravobngine
-	name = "Engineering outpost"
+	name = "\improper Crystal Caves  Engineering Outpost"
 	icon_state = "eng"
 
 /area/crystalcanyon/charliebase
-	name = "Mining base"
+	name = "\improper Crystal Caves Mining Base"
 	icon_state = "mining"
 
 /area/crystalcanyon/interior/revbar
-	name = "Revolutionary Bar"
+	name = "\improper Revolutionary Bar"
 	icon_state = "red"
 
 /area/crystalcanyon/interior/playerrev
-	name = "Revolutionary Base"
+	name = "\improper Revolutionary Base"
 	icon_state = "red"

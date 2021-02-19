@@ -141,6 +141,7 @@
 #include "code\_core\area\burgerstation\_burgerstation.dm"
 #include "code\_core\area\burgerstation\herald.dm"
 #include "code\_core\area\centcomm\_centcomm.dm"
+#include "code\_core\area\crystal_canyons\_crystal_canyons.dm"
 #include "code\_core\area\hellscape\_hellscape.dm"
 #include "code\_core\area\hellscape\exterior.dm"
 #include "code\_core\area\icebox\_icebox.dm"
