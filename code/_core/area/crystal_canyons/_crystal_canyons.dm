@@ -82,3 +82,15 @@
 /area/crystalcanyon/interior/playerrev
 	name = "\improper Revolutionary Base"
 	icon_state = "red"
+
+/area/crystalcanyon/downedshuttle
+	name = "\improper Crystal Caves Downed Gulf"
+	icon_state = "red"
+
+/area/crystalcanyon/clownplace
+	name = "\improper Crystal Caves Honk Lab"
+	icon_state = "green"
+
+area/crystalcanyon/interior/syndiship
+	name = "\improper Syndicate Ship"
+	icon_state = "red"
