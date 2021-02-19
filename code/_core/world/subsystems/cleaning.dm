@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(delete)
 	cpu_usage_max = 50
 	tick_usage_max = 50
 
-	var/max_deletions = 50
+	var/max_deletions = 20
 
 	var/list/cleaning_log = list()
 
@@ -52,14 +52,15 @@ SUBSYSTEM_DEF(delete)
 		objects_to_delete_safe -= k
 		objects_to_delete -= k
 		cleaning_log += "Safe deleted [object_to_delete.get_debug_name()]."
+		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		qdel(object_to_delete)
 		i++
 		if(i >= max_deletions)
 			break
 
 	for(var/k in objects_to_delete)
-		var/datum/object_to_delete = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
+		var/datum/object_to_delete = k
 
 		if(object_to_delete.qdeleting)
 			objects_to_delete -= k
@@ -78,6 +79,7 @@ SUBSYSTEM_DEF(delete)
 		objects_to_delete -= k
 		objects_to_delete_safe -= k
 		cleaning_log += "Deleted [object_to_delete.get_debug_name()]."
+		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		qdel(object_to_delete)
 		i++
 		if(i >= max_deletions)
@@ -97,6 +99,7 @@ SUBSYSTEM_DEF(delete)
 
 	if(!isturf(A.loc))
 		return FALSE
+
 	var/turf/atom_turf = A.loc
 
 	var/area/atom_area = atom_turf.loc

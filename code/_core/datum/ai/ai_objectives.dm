@@ -161,7 +161,7 @@
 
 	. = list()
 
-	if(retaliate && length(attackers))
+	if(retaliate && attackers)
 		for(var/k in attackers)
 			var/atom/A = k
 			if(A.qdeleting)

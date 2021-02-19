@@ -732,6 +732,9 @@
 	icon_state = "conveyor";
 	dir = 4
 	},
+/obj/structure/interactive/scanner/iff{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "cL" = (
@@ -1415,7 +1418,7 @@
 /area/burgerstation/hanger)
 "fc" = (
 /obj/structure/interactive/door/airlock/station/command/glass,
-/obj/structure/interactive/disposals/pipe{
+/obj/structure/interactive/scanner/iff{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
@@ -1424,6 +1427,9 @@
 /obj/structure/interactive/door/airlock/external/glass/bolted,
 /obj/structure/interactive/conveyor{
 	icon_state = "conveyor";
+	dir = 8
+	},
+/obj/structure/interactive/scanner/iff{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -3887,6 +3893,14 @@
 /obj/item/analyzer/armor,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"od" = (
+/obj/decal/hazard,
+/mob/living/simple/turret/nanotrasen{
+	icon_state = "active";
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
 "oe" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -5612,6 +5626,9 @@
 /area/transit/cargo_inbound/ship)
 "ur" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
+/obj/structure/interactive/scanner/iff{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/burgerstation/mining)
 "us" = (
@@ -6206,6 +6223,9 @@
 	icon_state = "conveyor";
 	dir = 4
 	},
+/obj/structure/interactive/scanner/iff{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
 "wD" = (
@@ -6243,6 +6263,16 @@
 /obj/structure/interactive/vending/experimental,
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
+"wL" = (
+/obj/decal/hazard{
+	dir = 1
+	},
+/mob/living/simple/turret/nanotrasen{
+	icon_state = "active";
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
 "wM" = (
 /obj/structure/interactive/scanner/iff,
 /turf/simulated/floor/plating,
@@ -6254,6 +6284,28 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"wO" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 4
+	},
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/east)
+"wP" = (
+/obj/structure/interactive/door/airlock/station/command/glass,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/obj/structure/interactive/scanner/iff{
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/hanger)
+"wQ" = (
+/obj/structure/interactive/door/airlock/station/maintenance,
+/obj/structure/interactive/scanner/iff,
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
 "wT" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
@@ -6464,10 +6516,6 @@
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/west)
-"yo" = (
-/obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
-/area/burgerstation/cargo)
 "yq" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/green,
@@ -34391,11 +34439,11 @@ iy
 hO
 bK
 jx
-cg
+od
 jd
 fa
 jd
-hO
+wL
 jx
 bK
 cg
@@ -34649,9 +34697,9 @@ hO
 kw
 kw
 rB
-rD
 fc
-rD
+wP
+fc
 rB
 kw
 kw
@@ -35663,7 +35711,7 @@ wd
 xX
 xX
 xX
-yo
+wQ
 cZ
 hu
 tx
@@ -47754,13 +47802,13 @@ dm
 ih
 wH
 mh
+wO
 jy
 jy
 jy
 jy
 jy
-jy
-jy
+wO
 mh
 lE
 lN
