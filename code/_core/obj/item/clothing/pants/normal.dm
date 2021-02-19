@@ -59,6 +59,14 @@
 		"pants" = COLOR_SECURITY_DARK
 	)
 
+/obj/item/clothing/pants/normal/wizard
+	name = "wizard pants"
+	desc = "Wizarding!"
+	desc_extended = "Standard issue Wizard pants."
+	polymorphs = list(
+		"pants" = COLOR_PURPLE
+	)
+
 /obj/item/clothing/pants/normal/security/ancient
 	name = "ancient security pants"
 	desc = "From a forgotten age."

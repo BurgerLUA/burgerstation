@@ -1128,9 +1128,9 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/garden)
 "eR" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/wood/rich,
-/area/lz_420/interior/nexus/armory)
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/plating,
+/area/lz_420/interior/nexus/cargo)
 "eS" = (
 /obj/structure/interactive/door/airlock/station/command/no_access,
 /turf/simulated/floor/wood/rich,
@@ -2011,6 +2011,22 @@
 /obj/marker/prefab/small,
 /turf/unsimulated/generation/cave,
 /area/lz_420/interior/cave)
+"im" = (
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/plating,
+/area/lz_420/interior/nexus/chapel)
+"in" = (
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/plating,
+/area/lz_420/interior/nexus/armory)
+"io" = (
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/tile/tan,
+/area/lz_420/interior/nexus/medical)
+"ip" = (
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/tile/dark,
+/area/lz_420/interior/nexus/wip)
 "ir" = (
 /obj/structure/interactive/chair{
 	dir = 4
@@ -26698,7 +26714,7 @@ au
 cJ
 fd
 fe
-fe
+io
 fx
 ck
 fu
@@ -34752,7 +34768,7 @@ af
 af
 af
 af
-af
+ip
 bA
 au
 au
@@ -37793,7 +37809,7 @@ aD
 aC
 aD
 aD
-aD
+im
 aD
 aD
 id
@@ -39358,7 +39374,7 @@ dH
 cR
 cx
 cQ
-cQ
+in
 cQ
 cx
 cQ
@@ -40644,7 +40660,7 @@ cR
 cx
 bB
 bB
-eR
+bB
 eH
 et
 cx
@@ -41158,7 +41174,7 @@ cR
 cx
 bB
 bB
-gB
+bB
 bB
 bB
 cx
@@ -44986,7 +45002,7 @@ aA
 aA
 ay
 aA
-aA
+eR
 ay
 hY
 aH

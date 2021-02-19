@@ -22,6 +22,18 @@
 
 	liquid = 0.3
 
+/reagent/nutrition/mustard
+	name = "mustard paste"
+	desc = "Nutrition and flavor from mustard seeds."
+	color = "#EAC300"
+
+	nutrition_amount = 6
+	nutrition_quality_amount = 2
+
+	flavor = "mustard"
+
+	liquid = 0.1
+
 /reagent/nutrition/pineapple
 	name = "pineapple"
 	desc = "Nutrition and flavor from a pineapple."

@@ -30,6 +30,13 @@
 
 	value = 60
 
+/obj/item/clothing/neck/cape/wizard
+	polymorphs = list(
+		"base" = COLOR_PURPLE,
+		"design" = COLOR_BLUE,
+		"trim" = COLOR_BLUE
+	)
+
 /obj/item/clothing/neck/cape/hunter
 	polymorphs = list(
 		"base" = COLOR_CRIMSON,

@@ -35,6 +35,8 @@ var/global/list/equipped_antags = list()
 	desired_light_range = 2
 	desired_light_color = "#FFFFFF"
 
+	var/price_max = 0
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
@@ -51,6 +53,7 @@ var/global/list/equipped_antags = list()
 		else
 			P.to_chat(span("warning","You don't have enough [accepts_item.name]s to purchase this!"))
 			return FALSE
+		return TRUE
 
 	if(!is_free && !P.spend_currency(amount))
 		P.to_chat(span("notice","You don't have enough credits to purchase this item!"))
@@ -108,12 +111,15 @@ var/global/list/equipped_antags = list()
 		GENERATE(accepts_item)
 		FINALIZE(accepts_item)
 		markup *= 1/accepts_item.value
+		price_max = accepts_item.item_count_max
 
 
 	for(var/obj/item/I in stored_objects)
 		if(stored_cost[I.type])
 			continue
 		stored_cost[I.type] = CEILING(I.get_value()*markup,1)
+		if(price_max)
+			stored_cost[I.type] = min(price_max,stored_cost[I.type])
 		if(stored_cost[I.type] <= 0)
 			log_error("Warning: [I.type] is for sale, yet it has no value!")
 			stored_cost -= I.type

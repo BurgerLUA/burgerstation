@@ -96,5 +96,5 @@
 		CALLBACK("\ref[emoter]_spin",1,src,.proc/spin,emoter,spins_remaining-1)
 
 /emote/spin/on_emote(var/atom/emoter,var/atom/target)
-	spin(emoter,12)
+	spin(emoter,11)
 	return ..()

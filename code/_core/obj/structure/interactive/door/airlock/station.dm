@@ -181,3 +181,9 @@
 
 /obj/structure/interactive/door/airlock/station/bathroom/toilet
 	name = "toilet airlock"
+
+/obj/structure/interactive/door/airlock/wizard
+	color = COLOR_PURPLE
+
+/obj/structure/interactive/door/airlock/wizard/glass
+	filler = "glass"

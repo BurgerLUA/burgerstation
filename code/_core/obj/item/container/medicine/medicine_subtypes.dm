@@ -12,6 +12,13 @@
 
 	value = 10
 
+/obj/item/container/medicine/bandage/prank
+	name = "badages"
+	desc = "Fucking puns."
+	desc_extended = "A pair of bandages with spikes on them. This will hurt..."
+	heal_brute = -30
+	value = 100
+
 /obj/item/container/medicine/bandage/advanced
 	name = "infused bandages (styptic powder)"
 	desc = "Allows wounds to recover further than simple cloth."

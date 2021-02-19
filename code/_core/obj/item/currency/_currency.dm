@@ -30,7 +30,7 @@
 	desc_extended = "Currency primarily used by syndicate operatives."
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
-	value = 100
+	value = 200
 
 	currency_class = "Telecrystals"
 
@@ -83,7 +83,7 @@
 	desc_extended = "A special magic shard token that is commonly used to trade with the Wizard Federation. Used to buy magic items."
 	icon = 'icons/obj/item/currency/magic_token.dmi'
 	icon_state = "1"
-	value = 400
+	value = 800
 
 	item_count_max = 4
 
@@ -96,3 +96,6 @@
 /obj/item/currency/magic_token/update_icon()
 	icon_state = "[item_count_current]"
 	return ..()
+
+/obj/item/currency/magic_token/max/Generate()
+	item_count_current = item_count_max

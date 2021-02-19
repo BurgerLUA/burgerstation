@@ -18,6 +18,7 @@
 
 /obj/item/firing_pin/electronic
 	name = "electronic firing pin"
+	value_burgerbux = 1
 
 /obj/item/firing_pin/mechanical //YOU SHOULDN'T HAVE THIS.
 	name = "mechanical firing pin"
@@ -25,6 +26,7 @@
 	desc_extended = "A completely mechanical firing pin that has no digital IFF technology and thus can be shot by anyone and aimed at anybody. These are extremely rare and extremely illegal. Having one may result in contract termination."
 	rarity = RARITY_LEGENDARY
 	value = 50000
+	value_burgerbux = 1
 
 /obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon)
 
@@ -63,6 +65,17 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen
+	name = "electronic nyantrasen firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. This one seems to have some sort of speaker..."
+	iff_tag = "NanoTrasen"
+	icon_state = "nanotrasen"
+	value = 200
+
+/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen/on_shoot(var/mob/caller,var/obj/item/weapon)
+	play_sound(get_turf(caller),'sound/voice/catgirl/meow.ogg')
+	return ..()
 
 /obj/item/firing_pin/electronic/iff/syndicate
 	name = "syndicate firing pin"

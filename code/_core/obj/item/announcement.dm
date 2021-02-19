@@ -95,8 +95,36 @@ var/global/next_announcement = 0
 
 /obj/item/announcement/syndicate/can_use(var/mob/caller)
 
-	if(!istype(caller,/mob/living/advanced/player/antagonist))
+	if(!is_living(caller))
 		caller.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
 
+	var/mob/living/L = caller
+	if(L.loyalty_tag != "Syndicate")
+		L.to_chat(span("warning","You don't seem to know how to use this..."))
+		return FALSE
+
 	return TRUE
+
+
+/obj/item/announcement/wizard
+	desc_extended = "A one time use announcement system that sends a taunt to the crew. This one is for wizard. Automatically signs your name in the message."
+	icon_state = "syndicate"
+	title = "Declaration of Wizarding"
+	sender = "The Wizard Federation"
+	value = 500
+	sound_to_play = 'sound/alert/warning.ogg'
+
+/obj/item/announcement/wizard/can_use(var/mob/caller)
+
+	if(!is_living(caller))
+		caller.to_chat(span("warning","You don't seem to know how to use this..."))
+		return FALSE
+
+	var/mob/living/L = caller
+	if(L.loyalty_tag != "Wizard Federation")
+		L.to_chat(span("warning","You don't seem to know how to use this..."))
+		return FALSE
+
+	return TRUE
+

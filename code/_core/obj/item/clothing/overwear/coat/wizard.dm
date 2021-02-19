@@ -22,3 +22,18 @@
 
 /obj/item/clothing/overwear/coat/wizard/blue
 	color = "#0065FF"
+
+/obj/item/clothing/overwear/coat/wizard/purple
+	name = "authentic wizard robes"
+	desc = "The real deal."
+	rarity = RARITY_MYTHICAL
+	desc_extended = "A real, totally authentic wizard robes with all the protection a wizard needs."
+	color = COLOR_PURPLE
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_AXE,
+		PIERCE = AP_AXE,
+		ARCANE = AP_GREATSWORD,
+		DARK = -AP_AXE,
+		HOLY = -AP_AXE
+	)

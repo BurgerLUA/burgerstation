@@ -22,3 +22,10 @@
 /turf/simulated/wall/brick/banana
 	name = "banana brick wall"
 	color = "#FFFF00"
+
+/turf/simulated/wall/brick/uranium
+	name = "uranium brick wall"
+	color = COLOR_URANIUM
+	//material = /material/uranium
+
+

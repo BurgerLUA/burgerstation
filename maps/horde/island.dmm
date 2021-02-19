@@ -1161,7 +1161,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/lz_001/forest/village)
 "fn" = (
-/mob/living/advanced/npc/unique/knight/green,
+/obj/marker/wizard_rift_location,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/knight/cave)
 "fo" = (
@@ -2221,8 +2221,8 @@
 /turf/simulated/floor/colored/sand,
 /area/lz_001/forest)
 "jz" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/carpet,
+/obj/marker/wizard_rift_location,
+/turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/shack)
 "jA" = (
 /obj/marker/spawnpoint/horde,
@@ -2425,10 +2425,7 @@
 /turf/simulated/floor/colored/dirt,
 /area/lz_001/caves/ocean_pass)
 "kt" = (
-/mob/living/advanced/npc/mage{
-	icon_state = "directional";
-	dir = 8
-	},
+/obj/marker/wizard_rift_location,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "ku" = (
@@ -2443,12 +2440,9 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/lz_001/caves/ocean_pass)
 "kx" = (
-/mob/living/advanced/npc/mage{
-	icon_state = "directional";
-	dir = 8
-	},
+/obj/marker/wizard_rift_location,
 /turf/simulated/floor/cave_dirt,
-/area/lz_001/caves/desert_cave)
+/area/lz_001/outpost/syndicate/canman)
 "ky" = (
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/cave_dirt,
@@ -2616,10 +2610,6 @@
 "lq" = (
 /turf/simulated/hazard/water/sea,
 /area/lz_001/caves/glow_cave)
-"lr" = (
-/obj/marker/syndicate,
-/turf/simulated/floor/cave_dirt,
-/area/lz_001/outpost/syndicate/canman)
 "ls" = (
 /obj/marker/syndicate,
 /turf/simulated/floor/cave_dirt,
@@ -2639,10 +2629,6 @@
 "lw" = (
 /obj/marker/syndicate,
 /turf/simulated/floor/cave_dirt,
-/area/lz_001/caves/desert_cave)
-"lx" = (
-/obj/marker/syndicate,
-/turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "ly" = (
 /obj/marker/map_node,
@@ -7012,7 +6998,7 @@ fs
 fs
 fs
 fs
-fs
+fn
 fg
 eF
 eF
@@ -7776,7 +7762,7 @@ fg
 fg
 fg
 fs
-fn
+fs
 fs
 fs
 fs
@@ -23050,7 +23036,7 @@ ec
 ec
 ec
 ec
-ec
+kx
 ec
 ec
 ec
@@ -25613,7 +25599,7 @@ cw
 ec
 ec
 ec
-lr
+ec
 ec
 ec
 kT
@@ -50390,7 +50376,7 @@ dq
 cC
 cC
 cC
-cC
+jz
 cB
 gV
 aw
@@ -51930,7 +51916,7 @@ af
 cB
 cE
 cH
-jz
+cH
 cH
 cC
 cB
@@ -52443,7 +52429,7 @@ af
 af
 cB
 cC
-jz
+cH
 cH
 cH
 cC
@@ -61335,7 +61321,7 @@ md
 md
 kG
 md
-lx
+md
 md
 md
 md
@@ -62111,7 +62097,7 @@ md
 md
 md
 md
-kR
+mn
 kR
 kR
 mn
@@ -62368,9 +62354,9 @@ md
 md
 md
 md
-kR
-kR
-kR
+mn
+mn
+mn
 mn
 mn
 mn
@@ -62627,7 +62613,7 @@ md
 kR
 kR
 kR
-kR
+mn
 mn
 mn
 mn
@@ -65454,7 +65440,7 @@ kR
 kR
 md
 mn
-kx
+mn
 mn
 mn
 mn
@@ -66480,7 +66466,7 @@ md
 md
 md
 md
-kt
+md
 md
 md
 md
@@ -66742,7 +66728,7 @@ md
 md
 md
 md
-kt
+md
 md
 md
 md
@@ -66993,7 +66979,7 @@ md
 md
 md
 md
-md
+kt
 md
 md
 md
