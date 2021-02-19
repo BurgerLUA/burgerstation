@@ -74,7 +74,9 @@
 	value = 200
 
 /obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen/on_shoot(var/mob/caller,var/obj/item/weapon)
-	play_sound(get_turf(caller),'sound/voice/catgirl/meow.ogg')
+	if(caller && weapon)
+		var/turf/T = get_turf(weapon)
+		if(T) play_sound(T,'sound/voice/catgirl/meow.ogg')
 	return ..()
 
 /obj/item/firing_pin/electronic/iff/syndicate
