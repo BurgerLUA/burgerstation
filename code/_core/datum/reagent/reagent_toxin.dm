@@ -65,14 +65,14 @@
 	damage_per_unit = 1
 
 
-/reagent/toxin/zombie_toxin/on_metabolize_blood(var/mob/living/living_owner,var/atom/atom_owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/toxin/zombie_toxin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	if(container.get_reagent_volume(/reagent/medicine/zombie_antidote) >= container.get_reagent_volume(src.type))
 		return 0
 
 	..()
 
-	return 0
+	return 0 //Cannot be removed via metabolism
 
 
 /reagent/toxin/sulfur_dioxide
