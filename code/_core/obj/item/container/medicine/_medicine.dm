@@ -107,7 +107,7 @@
 		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
 		return FALSE
 
-	if(heal_brute <= 0 || heal_burn <= 0)
+	if(heal_brute < 0 || heal_burn < 0)
 		if(!is_living(caller))
 			return FALSE
 		var/mob/living/caller_as_living = caller
