@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/interactive/disposals/machine/inlet,
-/obj/structure/interactive/disposals/pipe/ending,
-/turf/simulated/floor/plating,
+/turf/space,
 /area/burgerstation/cargo)
 "ab" = (
 /turf/space,
@@ -357,16 +355,12 @@
 /turf/simulated/floor/tile/shuttle/engineering,
 /area/transit/dropship/bravo/station)
 "bs" = (
-/obj/structure/interactive/limiter,
-/obj/structure/interactive/diverter/living{
-	dir = 1
-	},
-/obj/structure/interactive/disposals/pipe{
-	dir = 5
-	},
 /obj/structure/interactive/conveyor{
 	icon_state = "conveyor";
 	dir = 4
+	},
+/obj/structure/interactive/limiter{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
@@ -449,30 +443,20 @@
 /area/burgerstation/hanger)
 "bM" = (
 /obj/structure/interactive/limiter{
-	dir = 1
-	},
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/interactive/conveyor{
 	icon_state = "conveyor";
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "bN" = (
-/obj/structure/interactive/limiter{
-	dir = 4
-	},
 /obj/structure/interactive/disposals/pipe{
-	dir = 8
+	dir = 5
 	},
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/cargo)
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/engineering)
 "bO" = (
 /obj/structure/interactive/limiter{
 	dir = 8
@@ -492,11 +476,10 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "bQ" = (
-/obj/marker/spawning/window/reinforced,
-/obj/structure/interactive/disposals/pipe{
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "bR" = (
 /obj/structure/interactive/conveyor{
@@ -505,13 +488,6 @@
 	},
 /turf/simulated/floor/tile/shuttle/engineering,
 /area/transit/dropship/bravo/station)
-"bS" = (
-/obj/structure/interactive/disposals/pipe/labeler{
-	dir = 4;
-	sorting_tab_label = "medical"
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "bT" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/tile/dark,
@@ -783,15 +759,6 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
-"cV" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/decal/hazard{
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "cW" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -846,12 +813,6 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
-"dg" = (
-/obj/structure/interactive/disposals/pipe/junction/flipped{
-	dir = 4
-	},
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/engineering)
 "dh" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -873,12 +834,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
-"dl" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 10
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "dm" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
@@ -940,13 +895,6 @@
 /obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/bar)
-"dx" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
-/area/burgerstation/cargo)
 "dy" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -1559,16 +1507,6 @@
 /obj/structure/interactive/conveyor,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
-"fB" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "fC" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -2137,12 +2075,6 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/burgerstation/cargo)
-"hv" = (
-/obj/structure/interactive/disposals/pipe/junction{
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "hw" = (
 /obj/structure/interactive/chair{
@@ -6193,16 +6125,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical)
-"wx" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/obj/structure/interactive/disposals/machine/chute,
-/obj/structure/interactive/disposals/pipe/ending{
-	dir = 1
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "wy" = (
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/pvp)
@@ -6514,12 +6436,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/hall/central)
-"yr" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 5
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "yt" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -36725,7 +36641,7 @@ mF
 mF
 mF
 mF
-an
+aa
 an
 bj
 cH
@@ -36982,8 +36898,8 @@ rR
 rR
 rR
 rR
-an
 aa
+an
 bs
 cd
 gQ
@@ -37241,7 +37157,7 @@ ad
 ad
 an
 an
-bM
+bj
 an
 dA
 gJ
@@ -37498,7 +37414,7 @@ aD
 ae
 ap
 aV
-bN
+bM
 cI
 gQ
 gQ
@@ -37755,7 +37671,7 @@ ks
 ad
 an
 aW
-bQ
+cd
 cJ
 gQ
 gQ
@@ -38012,7 +37928,7 @@ aG
 sm
 aL
 yE
-bS
+gQ
 gQ
 gQ
 gQ
@@ -38269,9 +38185,9 @@ aG
 ar
 aL
 yE
-dl
-da
-yr
+gQ
+gQ
+gQ
 gQ
 tB
 gQ
@@ -38528,7 +38444,7 @@ aT
 yE
 uo
 gQ
-ux
+gQ
 gQ
 gQ
 gQ
@@ -38785,7 +38701,7 @@ cd
 yE
 gQ
 gQ
-ux
+gQ
 gQ
 gQ
 gQ
@@ -39042,7 +38958,7 @@ an
 yE
 gQ
 gQ
-ux
+gQ
 gQ
 gQ
 gQ
@@ -39299,8 +39215,8 @@ an
 yE
 gQ
 gQ
-hv
-wx
+gQ
+bQ
 gQ
 gQ
 gQ
@@ -39556,7 +39472,7 @@ an
 yK
 gQ
 gQ
-ux
+gQ
 dC
 eu
 gQ
@@ -39813,7 +39729,7 @@ cd
 yE
 gQ
 gQ
-ux
+gQ
 cd
 eu
 ed
@@ -40070,7 +39986,7 @@ cd
 yE
 gQ
 gQ
-ux
+gQ
 cd
 cd
 dD
@@ -40327,7 +40243,7 @@ cd
 yE
 gQ
 gQ
-ux
+gQ
 cd
 bT
 eJ
@@ -40584,7 +40500,7 @@ cd
 yE
 gJ
 vu
-cV
+fw
 cd
 vD
 fl
@@ -40841,7 +40757,7 @@ kE
 du
 fw
 gK
-fB
+eK
 cd
 cL
 cO
@@ -41098,7 +41014,7 @@ dW
 fx
 fA
 fA
-fB
+eK
 aT
 jm
 cO
@@ -41355,7 +41271,7 @@ an
 an
 cd
 db
-dx
+cd
 kE
 jm
 cO
@@ -41612,7 +41528,7 @@ bW
 bZ
 cN
 cN
-dg
+bN
 dE
 jm
 cO
