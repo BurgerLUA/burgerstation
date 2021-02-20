@@ -924,10 +924,6 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
-"dD" = (
-/obj/structure/smooth/table/reinforced,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "dE" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -1077,13 +1073,6 @@
 	},
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
-"ed" = (
-/obj/structure/interactive/chair{
-	dir = 4
-	},
-/obj/marker/hostage_rest,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cargo)
 "ee" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
@@ -1249,12 +1238,6 @@
 /obj/structure/interactive/ore_storage,
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/charlie/station)
-"eJ" = (
-/obj/structure/interactive/chair{
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/engineering)
 "eK" = (
 /obj/structure/interactive/conveyor{
 	icon_state = "conveyor";
@@ -39732,7 +39715,7 @@ gQ
 gQ
 cd
 eu
-ed
+gQ
 gQ
 ux
 gQ
@@ -39989,7 +39972,7 @@ gQ
 gQ
 cd
 cd
-dD
+cd
 cd
 cj
 cd
@@ -40246,7 +40229,7 @@ gQ
 gQ
 cd
 bT
-eJ
+fk
 fk
 gm
 fk
