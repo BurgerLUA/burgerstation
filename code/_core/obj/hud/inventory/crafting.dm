@@ -1,4 +1,4 @@
-/obj/hud/inventory/crafting/
+/obj/hud/inventory/crafting
 	max_slots = 1
 	icon_state = "square_round"
 
@@ -14,6 +14,15 @@
 	item_blacklist = list(
 		/obj/item/crafting/
 	)
+
+
+/obj/hud/inventory/crafting/obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE)
+
+	if(I.is_container)
+		owner.to_chat(span("notice","\The [I.name] cannot be fit inside \the [src.name]!"))
+		return FALSE
+
+	return ..()
 
 //A
 /obj/hud/inventory/crafting/slotA1

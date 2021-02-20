@@ -365,7 +365,10 @@
 	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
-		owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
+		if(!owner)
+			usr.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
+		else
+			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
 
 	return TRUE
