@@ -105,7 +105,7 @@
 	if(dead)
 		return FALSE
 
-	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN,PARRIED))
 		return FALSE
 
 	if(buckled_object && !buckled_object.unbuckle(src))

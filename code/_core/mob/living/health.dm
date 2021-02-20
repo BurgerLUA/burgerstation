@@ -115,11 +115,11 @@
 			PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
 
-	if(!dead && has_status_effect(STAGGER))
-		var/stagger_duration = get_status_effect_duration(STUN)*2
-		var/stagger_magnitude = get_status_effect_magnitude(STUN)*2
-		remove_status_effect(STAGGER)
-		add_status_effect(STUN,stagger_magnitude,stagger_duration)
+	if(!dead && has_status_effect(PARRIED))
+		var/stun_duration = get_status_effect_duration(STUN)*2
+		var/stun_magnitude = get_status_effect_magnitude(STUN)*2
+		remove_status_effect(PARRIED)
+		add_status_effect(STUN,stun_magnitude,stun_duration)
 
 	return .
 

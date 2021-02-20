@@ -75,3 +75,5 @@
 
 #define SOULTRAP "soultrap"
 //Converting kills to souls
+
+#define PARRIED "parried"
