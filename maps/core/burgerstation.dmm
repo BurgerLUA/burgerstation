@@ -488,6 +488,14 @@
 	},
 /turf/simulated/floor/tile/shuttle/engineering,
 /area/transit/dropship/bravo/station)
+"bS" = (
+/obj/structure/interactive/smelter,
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/west)
 "bT" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/tile/dark,
@@ -759,6 +767,14 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
+"cV" = (
+/obj/structure/interactive/stacker,
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/west)
 "cW" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -3548,10 +3564,6 @@
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/arrivals)
-"ne" = (
-/obj/structure/interactive/smelter,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/west)
 "nf" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -6358,10 +6370,6 @@
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/north)
-"xW" = (
-/obj/structure/interactive/stacker,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/west)
 "xX" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
@@ -35117,8 +35125,8 @@ bK
 bK
 we
 bI
-ne
-ne
+bS
+bS
 bI
 ws
 bK
@@ -35631,8 +35639,8 @@ mF
 mF
 bI
 wl
-xW
-xW
+cV
+cV
 fF
 gW
 us
