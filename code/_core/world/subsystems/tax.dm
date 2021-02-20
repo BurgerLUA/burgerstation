@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(tax)
 
 /subsystem/tax/proc/check_delinquent(var/mob/living/advanced/player/P)
 
-	if(P.last_tax_payment == 0)
+	if(P.last_tax_payment <= 0)
 		return -1 //Never paid taxes.
 
 	var/yes = world.realtime - (P.last_tax_payment + 604800)
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(tax)
 		P.to_chat(span("danger","You don't have enough credits to pay your taxes!"))
 		return FALSE
 
-	var/pay_amount = P.adjust_currency(-taxes_to_pay,FALSE)
+	var/pay_amount = -P.adjust_currency(-taxes_to_pay,FALSE)
 	P.to_chat(span("notice","You have successfully paid [pay_amount] your taxes. Check back in 1 week ([time2text(world.realtime+6048000,"Month DD")]) to pay your taxes again!"))
 
 	P.last_tax_payment = world.realtime

@@ -15,6 +15,7 @@
 		)
 	else
 		var/delinq = SStax.check_delinquent(P)
+		delinq *= 1/(86400*10)
 		.["hello"] = list(
 			"Greetings, [P.real_name]. Have you come to #1, or perhaps #2? Your taxes are currently [delinq <= 1 ? "due today" : "overdue by [CEILING(delinq,1)] days"].",
 			"*pay your taxes",
