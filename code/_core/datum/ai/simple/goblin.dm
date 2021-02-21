@@ -47,7 +47,7 @@
 			owner.movement_flags = MOVEMENT_RUNNING
 			return TRUE
 
-	if(objective_attack && owner.health.health_current <= owner.health.health_max.*0.5)
+	if(objective_attack && owner.health.health_current <= (owner.health.health_max * 0.5))
 		//Flee
 		owner.move_dir = get_dir(objective_attack,owner)
 		owner.movement_flags = MOVEMENT_RUNNING

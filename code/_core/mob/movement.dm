@@ -38,7 +38,7 @@
 
 	switch(move_mod)
 		if(1)
-			.return walk_delay_mul
+			return walk_delay_mul
 		if(2)
 			return jog_delay_mul
 		if(3)
