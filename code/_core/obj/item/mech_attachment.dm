@@ -43,8 +43,7 @@
 		I.appearance = attached_item.appearance
 		underlays += I
 
-	return .
-
+	
 /obj/item/mech_attachment/update_sprite()
 
 	. = ..()
@@ -54,9 +53,7 @@
 	if(attached_item)
 		name = "[name] ([attached_item.name])"
 
-	return .
-
-
+	
 /obj/item/mech_attachment/proc/attach(var/mob/caller,var/obj/item/I)
 	if(attached_item)
 		caller?.to_chat(span("warning","There is already a [attached_item.name] attached to \the [src.name]!"))

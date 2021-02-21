@@ -31,8 +31,6 @@
 
 	equip_loadout(loadout_to_use)
 
-	return .
-
 /mob/living/advanced/npc/goblin/warrior
 	name = "goblin warrior"
 	loadout_to_use = /loadout/goblin/warrior

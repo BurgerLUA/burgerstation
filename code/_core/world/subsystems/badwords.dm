@@ -39,4 +39,4 @@ SUBSYSTEM_DEF(badwords)
 			. = result
 			break
 
-	return .
+	

@@ -12,4 +12,4 @@
 	. = ..()
 	var/image/I = new/image(initial(icon),"[initial(icon_state)]_underlay")
 	underlays += I
-	return .
+	

@@ -80,20 +80,17 @@
 /obj/item/clothing/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
-	return .
-
+	
 /obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
-	return .
-
+	
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	weight = calculate_weight()
 	. = ..()
 	initialize_blends()
-	return .
-
+	
 /obj/item/clothing/Destroy()
 	additional_clothing_stored.Cut()
 	return ..()
@@ -132,7 +129,6 @@
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()
 	remove_additonal_clothing()
-	return .
-
+	
 /obj/item/clothing/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps

@@ -55,9 +55,6 @@ var/global/list/space_cop_tag_shitlist = list()
 		if(L.loyalty_tag && L.loyalty_tag != owner.loyalty_tag && !space_cop_tag_shitlist[L.loyalty_tag])
 			space_cop_tag_shitlist[L.loyalty_tag] = TRUE
 
-	return .
-
-
 /ai/advanced/space_cop/is_enemy(var/atom/A,var/safety_check=TRUE)
 	if(is_living(A))
 		var/mob/living/L = A

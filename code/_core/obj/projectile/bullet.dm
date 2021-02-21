@@ -101,4 +101,4 @@
 	if(.)
 		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
-	return .
+	

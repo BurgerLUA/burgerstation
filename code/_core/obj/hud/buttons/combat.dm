@@ -15,8 +15,7 @@
 		var/mob/living/L = owner
 		L.resist()
 
-	return .
-
+	
 /obj/hud/button/resist_auto
 	name = "toggle auto resist"
 	desc = "For when you don't like clicking."
@@ -43,8 +42,7 @@
 		owner.auto_resist = !owner.auto_resist
 		update_sprite()
 
-	return .
-
+	
 /*
 /obj/hud/button/targeting
 	name = "limb targeting"

@@ -139,8 +139,6 @@
 
 	update_items(force=TRUE)
 
-	return .
-
 /mob/living/advanced/on_crush()
 	if(driving)
 		return FALSE
@@ -188,8 +186,6 @@
 		see_invisible = max(G.see_invisible,see_invisible)
 		see_in_dark = max(see_in_dark,G.see_in_dark)
 
-	return .
-
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
 	if(driving)
@@ -207,9 +203,6 @@
 			right_hand.update_held_icon(right_item)
 		if(holster && holster_item && holster_item.dan_mode)
 			holster.update_held_icon(holster_item)
-
-	return .
-
 
 /mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
@@ -241,8 +234,6 @@
 
 	slowdown_mul = .
 
-	return .
-
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
 	real_name = name
@@ -259,8 +250,6 @@
 	tracked_hidden_organs = list()
 
 	. = ..()
-
-	return .
 
 /mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=TRUE)
 
@@ -292,7 +281,6 @@ mob/living/advanced/Login()
 	restore_health_elements()
 	restore_local_machines()
 	update_health_element_icons(TRUE,TRUE,TRUE)
-	return .
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/k in local_machines)
@@ -317,8 +305,6 @@ mob/living/advanced/Login()
 	if(S && S.health)
 		health = S.health
 
-	return .
-
 /mob/living/advanced/PostInitialize()
 
 	. = ..()
@@ -328,13 +314,9 @@ mob/living/advanced/Login()
 		add_species_buttons()
 		add_species_health_elements()
 
-	return .
-
-
 /mob/living/advanced/Finalize()
 	. = ..()
 	update_items()
-	return .
 
 /mob/living/advanced/setup_name()
 

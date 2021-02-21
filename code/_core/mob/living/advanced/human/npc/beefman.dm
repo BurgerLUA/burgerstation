@@ -27,8 +27,6 @@
 	. = ..()
 	change_organ_visual("skin", desired_color = pick("#C42F36","#A02518","#742210","#541900","#261007"))
 	update_all_blends()
-	return .
-
 
 /mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -57,4 +55,4 @@
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()
 	update_all_blends()
-	return .
+	

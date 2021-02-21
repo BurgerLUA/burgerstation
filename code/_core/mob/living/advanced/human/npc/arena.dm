@@ -6,7 +6,6 @@
 	. = ..()
 	var/obj/item/weapon/W1 = new /obj/item/weapon/ranged/energy/unlimited(src.loc)
 	pickup(W1)
-	return .
 
 /mob/living/advanced/npc/arena_guard/red
 	name = "red team guard"

@@ -47,7 +47,6 @@
 /mob/living/simple/cult/cultist/post_death()
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"
-	return .
 
 /mob/living/simple/cult/construct
 	stun_angle = 0
@@ -62,7 +61,6 @@
 /mob/living/simple/cult/construct/post_death()
 	. = ..()
 	icon_state = "construct_dead"
-	return .
 
 /mob/living/simple/cult/construct/behemoth
 	name = "blood cult behemoth"

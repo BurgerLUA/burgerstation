@@ -27,8 +27,6 @@
 			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 
-	return .
-
 /ai/boss/xeno_queen/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
@@ -37,4 +35,4 @@
 		owner_as_queen.next_screech = world.time + SECONDS_TO_DECISECONDS(60)
 		owner_as_queen.inhale()
 
-	return .
+	

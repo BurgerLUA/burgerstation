@@ -22,12 +22,10 @@
 /obj/item/cell_charger/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("battery")
-	return .
 
 /obj/item/cell_charger/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("battery")
-	return .
 
 /obj/item/cell_charger/Finalize()
 	update_sprite()
@@ -78,7 +76,6 @@
 		icon_state = "inventory"
 	else
 		icon_state = "inventory_open"
-	return .
 
 /obj/item/cell_charger/proc/check_device_move()
 
@@ -106,7 +103,6 @@
 			visible_message(span("notice","\The [src.name] dings as \the [I.name] is placed on top of it."))
 			start_thinking(src)
 
-	return .
 
 /obj/item/cell_charger/think()
 
@@ -137,7 +133,6 @@
 		visible_message(span("notice","\The [src.name] emits a bright ding."))
 		return FALSE
 
-	return .
 
 /obj/item/cell_charger/get_examine_list(var/mob/caller)
 
@@ -146,4 +141,4 @@
 	if(battery)
 		. += div("notice","Charge Remaining: [battery.charge_current]")
 
-	return .
+	return

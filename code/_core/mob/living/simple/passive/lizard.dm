@@ -30,4 +30,4 @@
 	. = ..()
 	icon_state = "dead"
 	update_sprite()
-	return .
+	

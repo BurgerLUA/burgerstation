@@ -40,4 +40,4 @@
 	if(prob(1))
 		name = "black cock"
 		desc = "Comedy achieved."
-	return .
+	

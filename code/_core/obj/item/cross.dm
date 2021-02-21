@@ -20,13 +20,11 @@
 /obj/item/cross/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("broken")
-	return .
-
+	
 /obj/item/cross/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("broken")
-	return .
-
+	
 /obj/item/cross/Finalize()
 	update_sprite()
 	return ..()
@@ -42,8 +40,7 @@
 
 	. = ..()
 
-	return .
-
+	
 /obj/item/cross/update_icon()
 	icon_state = initial(icon_state)
 	if(broken) icon_state = "[icon_state]_broken"

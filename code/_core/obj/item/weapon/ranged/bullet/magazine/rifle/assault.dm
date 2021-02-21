@@ -108,4 +108,4 @@
 	update_attachment_stats()
 	update_sprite()
 
-	return .
+	

@@ -227,4 +227,4 @@
 	if(!found_curse)
 		new /obj/effect/temp/hazard/curse(new_loc,SECONDS_TO_DECISECONDS(10),owner)
 
-	return .
+	

@@ -111,8 +111,7 @@
 	if(explosive)
 		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
 
-	return .
-
+	
 /obj/item/container/beaker/can/dr_gibb/explosive/click_self(var/mob/caller)
 
 	. = ..()
@@ -125,18 +124,15 @@
 			explode(T,10,caller,src,L.loyalty_tag)
 			explosive = FALSE
 
-	return .
-
+	
 /obj/item/container/beaker/can/dr_gibb/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("explosive")
-	return .
-
+	
 /obj/item/container/beaker/can/dr_gibb/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("explosive")
-	return .
-
+	
 /obj/item/container/beaker/can/space_up/
 	name = "\improper Space Up!"
 	icon_state = "space_up"

@@ -37,20 +37,15 @@
 				"You already have too many people with you."
 			)
 
-	return .
-
-
 /dialogue/npc/soldier/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()
 
-	if(!is_living(P.dialogue_target))
-		return .
+	if(!is_living(P.dialogue_target)) return
 
 	var/mob/living/L = P.dialogue_target
 
-	if(!L.ai)
-		return .
+	if(!L.ai) return
 
 	switch(topic)
 		if("*stop following me")
@@ -63,4 +58,3 @@
 				P.followers += L
 				L.ai.set_move_objective(P,TRUE)
 				L.following = P
-	return .

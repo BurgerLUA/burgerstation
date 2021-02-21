@@ -19,7 +19,7 @@
 			.["*handcuffs"] = list(
 				"bruh how do you not know how to remove them, just examine me and hit remove dude"
 			)
-			return .
+			return
 
 		if(L.following) //If we're following someone
 			if(L.following == P) //If we're following the person we're talking to.
@@ -52,4 +52,3 @@
 					"bruh you already have too many people with you, it might be gay that way"
 				)
 
-	return .

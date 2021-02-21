@@ -35,8 +35,7 @@
 /obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/container/syringe/update_icon()
 
 	icon = initial(icon)

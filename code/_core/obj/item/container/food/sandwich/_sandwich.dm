@@ -55,15 +55,12 @@
 		add_overlay(IM)
 		offset_y += IT.pixel_height
 
-	return .
-
-
+	
 /obj/item/container/food/sandwich/update_inventory()
 	. = ..()
 	if(initialized)
 		update_sprite()
-	return .
-
+	
 /obj/item/container/food/sandwich/burger
 	name = "burger"
 	icon_state = "bun_bottom"

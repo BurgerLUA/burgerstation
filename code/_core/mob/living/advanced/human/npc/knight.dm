@@ -28,4 +28,4 @@
 		B.update_icon()
 		pickup(B)
 
-	return .
+	

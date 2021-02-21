@@ -17,8 +17,6 @@
 	if(length(possible_weapon))
 		. += pickweight(possible_weapon)
 
-	return .
-
 /loadout/goblin/mage
 	spawning_items = list(
 		/obj/item/clothing/overwear/coat/sorcerer

@@ -43,8 +43,6 @@ mob/living/advanced/get_movement_delay()
 
 	. *= slowdown_mul * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
 
-	return .
-
 /mob/living/advanced/toggle_sneak(var/on = TRUE)
 
 	if(on && health && !health.adjust_stamina(-10))
@@ -126,4 +124,4 @@ mob/living/advanced/get_movement_delay()
 				else
 					left_hand.release_object()
 
-	return .
+	

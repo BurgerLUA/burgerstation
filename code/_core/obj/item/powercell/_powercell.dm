@@ -22,24 +22,20 @@
 	. = ..()
 	. += CEILING(charge_current*0.01,1)
 	. += CEILING(charge_max*0.003,1)
-	return .
-
+	
 /obj/item/powercell/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("charge_current")
-	return .
-
+	
 /obj/item/powercell/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("charge_current")
-	return .
-
+	
 /obj/item/powercell/Generate()
 	charge_current = charge_max
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/powercell/update_icon()
 
 	icon = initial(icon)

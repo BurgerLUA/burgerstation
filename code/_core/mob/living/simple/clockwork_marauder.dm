@@ -28,4 +28,4 @@
 /mob/living/simple/clockwork_marauder/post_death()
 	. = ..()
 	icon_state = "dead"
-	return .
+	

@@ -55,8 +55,7 @@
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)
 
-	return .
-
+	
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	var/atom/old_loc = loc
@@ -75,9 +74,7 @@
 		if(loc != old_loc)
 			post_move(old_loc)
 
-	return .
-
-
+	
 /mob/proc/update_rs_chat()
 	for(var/k in stored_chat_text)
 		var/obj/effect/chat_text/CT = k
@@ -113,4 +110,4 @@
 		else
 			last_z = 0
 
-	return .
+	

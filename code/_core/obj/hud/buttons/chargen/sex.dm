@@ -18,6 +18,3 @@
 
 		if(choice == "Yes")
 			A.perform_sexchange(desired_sex,TRUE,TRUE)
-
-	return .
-

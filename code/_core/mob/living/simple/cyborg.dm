@@ -22,18 +22,6 @@
 
 	soul_size = null
 
-/*
-/mob/living/simple/silicon/engineer
-	name = "engineer cyborg"
-	icon_state = "engineer"
-
-/mob/living/simple/silicon/engineer/PostInitialize()
-	. = ..()
-	flick("engineer_transform",src)
-	return .
-*/
-
-
 /mob/living/simple/silicon/squats
 	name = "S.Q.U.A.T.S."
 	icon_state = "squats"
@@ -80,20 +68,16 @@
 /mob/living/simple/silicon/squats/post_death()
 	. = ..()
 	icon_state = "squats-dead"
-	return .
 
 /mob/living/simple/silicon/squats/Finalize()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/simple/silicon/squats/update_overlays()
 	. = ..()
 	if(!dead && health && health.health_current >= health.health_max * 0.5)
 		var/icon/I = new/icon(initial(icon),"squats-shield")
 		add_overlay(I)
-	return .
-
 
 /mob/living/simple/silicon/syndieborg
 	name = "\improper Syndicate Battleborg"
@@ -155,12 +139,10 @@
 /mob/living/simple/silicon/syndieborg/Finalize()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/simple/silicon/syndieborg/post_death()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/simple/silicon/syndieborg/update_overlays()
 

@@ -35,5 +35,5 @@ mob/living/advanced/proc/handle_eyecolor_chargen(var/desired_color,var/update_bl
 		if(desired_color)
 			A.handle_eyecolor_chargen(desired_color)
 
-	return .
+	return
 

@@ -32,8 +32,7 @@
 		if(A.driving && length(A.driving.equipment) >= weapon_slot && A.driving.equipment[weapon_slot])
 			set_map_text(A.driving.equipment[weapon_slot].name)
 
-	return .
-
+	
 /obj/hud/button/vehicle/weapon/right
 	name = "right weapon"
 	icon_state = "left"
@@ -62,9 +61,7 @@
 		if(A.driving)
 			A.driving.exit_vehicle(A,get_turf(A.driving))
 
-	return .
-
-
+	
 /obj/hud/button/vehicle/ammo_display
 	name = "ammo display"
 	icon_state = "none"
@@ -84,8 +81,7 @@
 	else
 		stop_thinking(src)
 
-	return .
-
+	
 /obj/hud/button/vehicle/ammo_display/think()
 	update_ammo() //I really hate having to do this but whatever.
 	return ..()

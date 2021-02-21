@@ -29,13 +29,11 @@
 /obj/item/container/pill/feed(var/mob/caller,var/mob/living/target)
 	. = ..()
 	if(.) qdel(src)
-	return .
-
+	
 /obj/item/container/pill/Generate()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/container/pill/update_sprite()
 
 	. = ..()
@@ -77,4 +75,4 @@
 	else
 		color = reagents.color
 
-	return .
+	

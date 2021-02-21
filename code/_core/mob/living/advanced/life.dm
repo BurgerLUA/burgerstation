@@ -11,9 +11,6 @@
 		handle_organs()
 		handle_sanity()
 
-
-	return .
-
 /*
 /mob/living/advanced/pre_death()
 
@@ -29,8 +26,6 @@ mob/living/advanced/revive()
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)
-
-	return .
 
 /mob/living/advanced/post_death()
 

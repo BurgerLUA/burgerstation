@@ -21,8 +21,6 @@
 		duration = . * duration_mod //Every 20 units should last 5 minutes.
 	)
 
-	return .
-
 /reagent/drug/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -32,8 +30,6 @@
 		magnitude = strength*2,
 		duration = . * duration_mod //Every 20 units should last 5 minutes.
 	)
-
-	return .
 
 /reagent/drug/liberty_dust
 	name = "space liberty dust"

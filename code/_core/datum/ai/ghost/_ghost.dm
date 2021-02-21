@@ -73,9 +73,6 @@
 		owner.force_move(T2)
 		notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 
-	return .
-
-
 /ai/ghost/proc/create_emf(var/turf/loc,var/desired_level=3,var/desired_range=VIEW_RANGE)
 
 	if(!desired_level || !desired_range)

@@ -22,8 +22,7 @@
 /obj/item/container/blood_pack/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/container/blood_pack/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
 	update_sprite()
 	return ..()
@@ -134,8 +133,7 @@
 	else
 		draw_delay--
 
-	return .
-
+	
 /obj/item/container/blood_pack/update_icon()
 	icon = initial(icon)
 	icon_state = "liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]"

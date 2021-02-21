@@ -8,7 +8,6 @@
 /gamemode/lobby/New()
 	. = ..()
 	round_time_next = 30
-	return .
 
 /gamemode/lobby/on_life()
 

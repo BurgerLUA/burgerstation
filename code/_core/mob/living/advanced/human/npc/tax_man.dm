@@ -30,9 +30,6 @@
 
 	equip_loadout(/loadout/taxman)
 
-	return .
-
-
 /mob/living/advanced/npc/tax_man/helper
 	name = "tax assistant"
 	desc = "Explains things to you."

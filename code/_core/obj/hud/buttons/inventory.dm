@@ -38,8 +38,7 @@
 	if(.)
 		close(caller)
 
-	return .
-
+	
 /*
 /obj/hud/button/drop
 	name = "drop item"
@@ -93,8 +92,7 @@
 		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 		update_sprite()
 
-	return .
-
+	
 /obj/hud/button/hide_show_inventory/update_icon()
 
 	if(!is_advanced(owner))

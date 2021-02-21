@@ -76,7 +76,6 @@
 	IM.plane = PLANE_HUD_OBJ
 	add_overlay(IM)
 
-	return .
 
 /obj/hud/button/vendor/update_sprite()
 
@@ -89,7 +88,6 @@
 	maptext_x = 2
 	maptext_y = 2
 
-	return .
 
 /obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -98,12 +96,10 @@
 	if(!associated_item)
 		CRASH_SAFE("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
 		update_owner(null)
-		return .
+		return
 
 	if(.)
 		associated_vendor.purchase_item(caller,associated_item,associated_cost)
-
-	return .
 
 
 /obj/hud/button/close_vendor
@@ -127,4 +123,3 @@
 		var/mob/living/advanced/player/P = caller
 		P.set_structure_unactive()
 
-	return .

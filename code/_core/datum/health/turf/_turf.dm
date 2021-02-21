@@ -20,6 +20,4 @@
 		var/turf/simulated/T = owner
 		T.on_destruction(attacker,TRUE)
 
-	return .
-
 

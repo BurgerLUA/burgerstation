@@ -145,9 +145,7 @@
 			I.alpha = clamp((icing_amount/10)*225,100,255)
 			add_overlay(I)
 
-	return .
-
-
+	
 /obj/item/container/food/dynamic/cake/update_icon()
 
 	if(last_cooked)

@@ -20,9 +20,6 @@
 		var/turf/simulated/S = target
 		S.add_wet(volume_to_splash*100*strength_mod)
 
-	return .
-
-
 /reagent/carbon //Found while mining carbon ore deposits. Or burning food.
 	name = "Carbon"
 	desc = "What most lifeforms are made out of."
@@ -59,8 +56,6 @@
 		owner.queue_health_update = TRUE
 		owner.tox_regen_buffer -= . * 0.5
 
-	return .
-
 /reagent/iron/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -68,8 +63,6 @@
 	if(owner.blood_type)
 		owner.blood_volume = clamp(owner.blood_volume + .*2,0,owner.blood_volume_max)
 		owner.queue_health_update = TRUE
-
-	return .
 
 /reagent/steel
 	name = "Steel"
@@ -159,7 +152,6 @@
 /reagent/salt/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.add_hydration(.*-5)
-	return .
 
 /reagent/salt/sodium_chloride
 	name = "sodium chloride"
@@ -239,15 +231,11 @@
 
 	owner.tox_regen_buffer += .*1
 
-	return .
-
 /reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	owner.tox_regen_buffer += .*2
-
-	return .
 
 /reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
@@ -261,9 +249,6 @@
 				break
 			qdel(C)
 			cleaning_power -= 10
-
-	return .
-
 
 /reagent/phenol
 	name = "Phenol"

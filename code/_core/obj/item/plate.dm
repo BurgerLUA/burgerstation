@@ -27,9 +27,7 @@
 			continue
 		. += armor_base[k] * armor_slowdown_values[k]
 
-	return .
-
-
+	
 /obj/item/armor_plate/get_examine_list(var/mob/examiner)
 	. = ..()
 	var/list/armor_list = list()

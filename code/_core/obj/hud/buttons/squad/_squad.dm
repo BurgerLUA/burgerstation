@@ -70,8 +70,7 @@
 			if(answer == "Yes")
 				new_squad(P)
 
-	return .
-
+	
 /obj/hud/button/squad/main/proc/new_squad(var/mob/living/advanced/player/P)
 	while(P.client)
 		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation",null) as text|null
@@ -136,23 +135,20 @@
 	if(.)
 		update_sprite()
 
-	return .
-
+	
 /obj/hud/button/squad/member/update_underlays()
 	. = ..()
 	var/icon/I = new(initial(icon),initial(icon_state))
 	swap_colors(I)
 	underlays += I
-	return .
-
+	
 /obj/hud/button/squad/member/update_icon()
 	. = ..()
 	if(tracked_mob && tracked_mob.health)
 		var/desired_num = FLOOR((tracked_mob.health.health_current/tracked_mob.health.health_max) * 26, 1)
 		icon_state = "bar_[desired_num]"
 
-	return .
-
+	
 /obj/hud/button/squad/member/update_sprite()
 	maptext = tracked_mob.name
 	return ..()

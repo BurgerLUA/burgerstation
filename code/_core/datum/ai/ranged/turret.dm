@@ -8,8 +8,6 @@
 	if(objective_attack)
 		owner.face_atom(objective_attack)
 
-	return .
-
 /ai/ranged/immobile/turret/port/handle_objectives()
 
 	. = ..()
@@ -20,4 +18,4 @@
 	else
 		T.close()
 
-	return .
+	

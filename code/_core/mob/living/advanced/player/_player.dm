@@ -108,8 +108,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(.)
 		client.screen += click_and_drag_icon
 
-	return .
-
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
@@ -126,7 +124,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 /mob/living/advanced/player/Initialize()
 	. = ..()
 	all_players += src
-	return .
 
 /mob/living/advanced/player/setup_name()
 
@@ -165,7 +162,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 mob/living/advanced/player/on_life_client()
 	. = ..()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
-	return .
 
 /mob/living/advanced/player/post_move(var/atom/old_loc)
 
@@ -197,9 +193,6 @@ mob/living/advanced/player/on_life_client()
 					continue
 				A.set_active(TRUE)
 			ai_steps = 0
-
-
-	return .
 
 /mob/living/advanced/player/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
 	// only prevent dead bodies from being grabbed if person grabbing is antag

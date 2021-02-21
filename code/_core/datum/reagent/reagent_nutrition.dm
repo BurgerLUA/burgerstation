@@ -25,7 +25,6 @@
 	value *= 0.1 + max(0.1,(nutrition_amount-nutrition_quality_amount)*0.035) + max(0,hydration_amount*0.015) + max(0,heal_factor) + max(0,0.05*flavor_strength)
 	. = ..()
 	value = CEILING(value,0.01)
-	return .
 
 /reagent/nutrition/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -41,9 +40,6 @@
 			L.add_hydration(hydration_amount*.)
 		if(nutrition_quality_amount)
 			L.add_nutrition_quality(nutrition_quality_amount*.)
-
-	return .
-
 
 /reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -71,8 +67,6 @@
 			owner.burn_regen_buffer += amount_to_heal
 		else if(amount_to_heal < 0)
 			owner.tox_regen_buffer += amount_to_heal
-
-	return .
 
 /reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

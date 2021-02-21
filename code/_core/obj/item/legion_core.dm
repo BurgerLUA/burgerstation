@@ -31,8 +31,7 @@
 	if(expiry_time == -1)
 		. += div("warning","It has expired.")
 
-	return .
-
+	
 /obj/item/legion_core/update_icon()
 
 	if(expiry_time == -1)

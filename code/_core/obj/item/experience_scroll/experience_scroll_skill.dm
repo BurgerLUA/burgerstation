@@ -7,8 +7,7 @@
 /obj/item/experience_scroll/skill/get_examine_list()
 	. = ..()
 	. += div("notice","Reading \the [src.name] will grant [experience_amount]xp into [skill].")
-	return .
-
+	
 /obj/item/experience_scroll/skill/gain_knowledge(var/mob/living/advanced/A)
 	if(!skill || !experience_amount)
 		return FALSE

@@ -205,4 +205,4 @@
 			else
 				P.to_chat(span("notice","You can redeem any experience gained as an antagonist here to any character. Come back when you've played an antagonist role!"))
 
-	return .
+	

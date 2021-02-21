@@ -31,4 +31,4 @@
 
 	equip_loadout(/loadout/space_soldier)
 
-	return .
+	

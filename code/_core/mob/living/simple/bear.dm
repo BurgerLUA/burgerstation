@@ -54,12 +54,9 @@
 		var/image/I = new/image(initial(icon),"armor")
 		add_overlay(I)
 
-	return .
-
 /mob/living/simple/bear/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/simple/bear/post_death()
 	. = ..()

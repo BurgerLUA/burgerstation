@@ -15,7 +15,6 @@
 
 	update_sprite()
 
-	return .
 
 /obj/hud/button/evade/update_overlays()
 
@@ -24,7 +23,7 @@
 	. = ..()
 
 	if(!is_living(owner))
-		return .
+		return
 
 	var/mob/living/L = owner
 
@@ -45,7 +44,6 @@
 
 	add_overlay(I)
 
-	return .
 
 /obj/hud/button/evade/block
 	name = "block"

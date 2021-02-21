@@ -37,8 +37,6 @@
 
 		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
 
-	return .
-
 /mob/living/advanced/get_examine_list(var/mob/examiner)
 
 	var/pronoun = get_pronoun_he_she_it(src)
@@ -66,8 +64,6 @@
 			var/obj/item/I = k
 			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [capitalize(pronoun)] is holding \the <b>[I.name]</b> on their [initial(I.loc.name)].")
 
-	return .
-
 mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	var/pronoun = get_pronoun_he_she_it(src)
@@ -91,4 +87,3 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	. += ..()
 
-	return .

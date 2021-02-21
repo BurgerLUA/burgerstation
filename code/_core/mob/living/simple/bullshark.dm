@@ -47,5 +47,4 @@
 /mob/living/simple/bullshark/post_death()
 	. = ..()
 	icon_state = "dead"
-	return .
 

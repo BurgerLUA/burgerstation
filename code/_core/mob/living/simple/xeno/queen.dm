@@ -102,8 +102,6 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	tracked_xeno_queen = null
 
-	return .
-
 /mob/living/simple/xeno/queen/proc/inhale()
 	do_say("&#42;inhales&#42;",should_sanitize = FALSE)
 	CALLBACK("queen_screech_\ref[src]",SECONDS_TO_DECISECONDS(4),src,.proc/screech)

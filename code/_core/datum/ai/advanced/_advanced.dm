@@ -172,44 +172,6 @@
 
 	return TRUE
 
-
-
-/*
-/ai/advanced/can_attack(var/atom/target,var/left_click=FALSE)
-
-	ranged_attack_cooldown = max(0,ranged_attack_cooldown - 1)
-
-	var/mob/living/advanced/A = owner
-	if(!left_click)
-		if(A.left_item && is_ranged_gun(A.left_item) && !can_fire_gun(A.left_item,target))
-			return FALSE
-	else
-		if(A.right_item && is_ranged_gun(A.right_item) && !can_fire_gun(A.right_item,target))
-			return FALSE
-
-	return ..()
-
-/ai/advanced/proc/can_fire_gun(var/obj/item/weapon/ranged/R,var/atom/target)
-
-	if(ranged_attack_cooldown > 0)
-		return FALSE
-
-	var/distance_mod = get_dist(owner,target)
-	var/heat_limit = max(0,(1 - (distance_mod * 0.01)) * R.heat_max)
-
-	return R.heat_current <= heat_limit
-
-
-/ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
-
-	. = ..()
-
-	if(.)
-		ranged_attack_cooldown = pick(TRUE,FALSE,FALSE,FALSE,FALSE) ? rand(10,20) : 0
-
-	return .
-*/
-
 /ai/advanced/proc/find_best_weapon(var/atom/possible_target)
 
 	var/mob/living/advanced/A = owner
@@ -260,8 +222,6 @@
 	if(. && istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(!E.enabled) E.click_self(A)
-
-	return .
 
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner

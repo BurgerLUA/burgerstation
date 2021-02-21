@@ -78,8 +78,6 @@
 		objects -= object_two
 		jokes += "What did the [object_one] say to the [object_two]? JOIN US."
 
-	return .
-
 /ai/clown/blob/
 	jokes = list(
 		"What did the man say to the female? FEMALES SUCK.",

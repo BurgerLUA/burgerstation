@@ -62,7 +62,6 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,32)
-	return .
 
 /obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
 
@@ -144,7 +143,6 @@ obj/effect/temp/hazard/tentacle/
 obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/desired_owner)
 	. = ..()
 	CALLBACK("deactivate_hazard_\ref[src]",9,src,.proc/deactivate_hazard)
-	return .
 
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1)
 	if(istype(victim,/mob/living/simple/goliath/)) //This bug is hilarious but we don't want to have it.
@@ -172,9 +170,7 @@ obj/effect/temp/hazard/bubblefist/update_overlays()
 	var/image/I = new/image(icon,overlay_state)
 	I.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 	I.plane = PLANE_EFFECT
-
 	add_overlay(I)
-	return .
 
 obj/effect/temp/hazard/bubblefist/New(var/desired_location,var/desired_time,var/desired_owner)
 	if(prob(50))
@@ -183,8 +179,6 @@ obj/effect/temp/hazard/bubblefist/New(var/desired_location,var/desired_time,var/
 	. = ..()
 	CALLBACK("deactivate_hazard_\ref[src]",7,src,.proc/deactivate_hazard)
 	update_sprite()
-
-	return .
 
 obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1)
 	if(istype(victim,/mob/living/simple/bubblegum)) //This bug is hilarious but we don't want to have it.
@@ -214,9 +208,6 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0.14)
-
-	return .
-
 
 
 /obj/effect/temp/hazard/curse
@@ -248,4 +239,3 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,14)
 
-	return .

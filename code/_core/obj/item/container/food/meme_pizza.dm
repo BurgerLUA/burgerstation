@@ -33,13 +33,11 @@
 /obj/item/container/food/meme_pizza/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("servings_left")
-	return .
-
+	
 /obj/item/container/food/meme_pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("servings_left")
-	return .
-
+	
 /obj/item/container/food/meme_pizza/Finalize()
 	value = servings_left*0.5*initial(value)
 	update_sprite()
@@ -56,4 +54,4 @@
 		if(!target.dead) target.rejuvenate()
 		update_sprite()
 
-	return .
+	

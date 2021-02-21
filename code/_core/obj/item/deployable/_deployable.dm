@@ -143,18 +143,13 @@
 		if(C.iff_tag)
 			TD.set_iff_tag(C.iff_tag)
 
-	return .
 
 /obj/item/deployable/mob/sentry/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_battery")
 	SAVEATOM("stored_magazine")
-	return .
 
 /obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_battery")
 	LOADATOM("stored_magazine")
-	return .
-
-

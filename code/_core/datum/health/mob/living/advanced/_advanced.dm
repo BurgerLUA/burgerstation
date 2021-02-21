@@ -89,8 +89,6 @@
 	if(. && update)
 		A.queue_health_update = TRUE
 
-	return .
-
 /*
 /health/mob/living/advanced/adjust_tox_loss(var/value)
 
@@ -170,9 +168,6 @@
 		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
 			A.remove_status_effect(PAINCRIT)
 
-	return .
-
-
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	if(!is_advanced(owner))
@@ -215,4 +210,4 @@
 						clothing_defense *= 0.5
 				.[damage_type] += FLOOR(clothing_defense,1)
 
-	return .
+	

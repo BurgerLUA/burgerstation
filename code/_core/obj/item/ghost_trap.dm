@@ -16,13 +16,11 @@
 /obj/item/ghost_box/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("stored_ghost")
-	return .
-
+	
 /obj/item/ghost_box/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("stored_ghost")
-	return .
-
+	
 /obj/item/ghost_box/Finalize()
 	update_sprite()
 	return ..()
@@ -34,8 +32,7 @@
 	if(stored_ghost)
 		. += 10000
 
-	return .
-
+	
 /obj/item/ghost_box/Crossed(atom/movable/O)
 
 	if(stored_ghost)
@@ -52,8 +49,7 @@
 				update_sprite()
 				qdel(G)
 
-	return .
-
+	
 /obj/item/ghost_box/click_self(var/mob/caller)
 
 	INTERACT_CHECK

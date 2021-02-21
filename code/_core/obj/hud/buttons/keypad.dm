@@ -20,7 +20,6 @@
 		var/mob/living/advanced/player/P = caller
 		P.set_device_unactive()
 
-	return .
 
 /obj/hud/button/keypad/top
 	icon_state = "keypad_top"
@@ -116,23 +115,17 @@
 		if(number_selected == -1)
 			//Clear
 			stored_keypad = 0
-
 		else if(number_selected == -2)
 			//Submit
 			if(is_player(caller))
 				var/mob/living/advanced/player/P = caller
 				if(P.active_device)
 					P.active_device.trigger(caller,src,-1,stored_keypad)
-
-			return .
-
+			return //Return default
 		else if(number_selected == -100)
-			//Pressed Nothing
 			return TRUE
-
 		else if(stored_keypad > 999)
-			return .
-
+			return //Return default
 		else if(stored_keypad >= 0)
 			stored_keypad = (stored_keypad*10) + number_selected
 
@@ -140,4 +133,4 @@
 			K.stored_keypad = stored_keypad
 			K.update_sprite()
 
-	return ..()
+	return .

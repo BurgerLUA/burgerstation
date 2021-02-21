@@ -16,4 +16,4 @@
 				continue
 			.[damage_type] += O_defense_rating[damage_type]
 
-	return .
+	

@@ -31,9 +31,6 @@
 
 	equip_loadout(loadout_to_use)
 
-	return .
-
-
 /mob/living/advanced/npc/nanotrasen/shaft_miner
 	name = "shaft miner"
 	desc = "Someone didn't do their job."

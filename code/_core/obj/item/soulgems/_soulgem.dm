@@ -15,26 +15,22 @@
 /obj/item/soulgem/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("total_charge")
-	return .
-
+	
 /obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("total_charge")
-	return .
-
+	
 /obj/item/soulgem/Finalize()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/soulgem/get_value()
 
 	. = ..()
 
 	. += (total_charge/16)**1.5
 
-	return .
-
+	
 /obj/item/soulgem/get_examine_list(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 

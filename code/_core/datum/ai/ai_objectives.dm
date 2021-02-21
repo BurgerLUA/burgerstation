@@ -155,7 +155,6 @@
 			. = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			. = radius_find_enemy_combat
-	return .
 
 /ai/proc/get_possible_targets()
 
@@ -171,8 +170,7 @@
 
 	var/range_to_use = get_view_range()
 
-	if(range_to_use <= 0)
-		return .
+	if(range_to_use <= 0) return
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
@@ -184,9 +182,6 @@
 			if(!should_attack_mob(L))
 				continue
 			.[L] = TRUE
-
-	return .
-
 
 /ai/proc/investigate(var/atom/desired_target)
 

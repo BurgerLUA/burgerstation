@@ -158,9 +158,6 @@
 		var/turf/simulated/S = loc
 		S.add_wet(1000)
 
-	return .
-
-
 /*
 /mob/living/simple/clown/creep
 	name = "clown creep"

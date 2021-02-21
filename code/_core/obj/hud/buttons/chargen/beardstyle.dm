@@ -86,9 +86,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_face))
 		A.handle_beardstyle_chargen(hair_num)
 
-	return .
-
-
+	
 /obj/hud/button/chargen/change_beardstyle/main/update_owner(var/mob/desired_owner)
 	. = ..()
 	if(. && is_advanced(desired_owner))
@@ -96,8 +94,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		hair_num = 1
 		A.handle_beardstyle_chargen(1)
 
-	return .
-
+	
 /obj/hud/button/chargen/change_beardstyle/left
 	name = "cycle beardstyle left"
 	dir = WEST
@@ -144,8 +141,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.handle_beardstyle_chargen(hair_num)
-	return .
-
+	
 /obj/hud/button/chargen/beardstyle/main
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+3"
@@ -160,8 +156,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		if(desired_color)
 			A.handle_beardstyle_chargen(hair_num,desired_color)
 
-	return .
-
+	
 /obj/hud/button/chargen/beardstyle/slot01
 	icon_state = "square_trim"
 	screen_loc = "CENTER-2,CENTER+3"

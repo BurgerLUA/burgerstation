@@ -53,12 +53,9 @@
 
 	qdel(src)
 
-	return .
-
 /mob/living/simple/bot/medibot/Finalize()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/simple/bot/medibot/update_icon()
 
@@ -71,16 +68,12 @@
 	else
 		icon_state = "blue"
 
-	return .
-
 /mob/living/simple/bot/medibot/update_underlays()
 
 	. = ..()
 
 	var/image/I = new(overlay_icon,overlay_icon_state)
 	underlays += I
-
-	return .
 
 /mob/living/simple/bot/medibot/proc/get_inject_amount(var/mob/living/target)
 

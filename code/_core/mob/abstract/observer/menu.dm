@@ -36,9 +36,7 @@
 			force_move(get_turf(lobby_positions[current_lobby_position]))
 			next_lobby_cycle = initial(next_lobby_cycle)
 
-	return .
-
 /mob/abstract/observer/menu/PostInitialize()
 	. = ..()
 	start_thinking(src)
-	return .
+	

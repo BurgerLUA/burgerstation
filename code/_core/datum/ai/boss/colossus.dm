@@ -25,8 +25,6 @@
 	if(.)
 		handle_projectiles()
 
-	return .
-
 /ai/boss/colossus/proc/handle_projectiles()
 
 	if(!objective_attack)

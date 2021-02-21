@@ -17,12 +17,10 @@
 /reagent/toxin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.tox_regen_buffer -= .*damage_per_unit*0.75
-	return .
 
 /reagent/toxin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.tox_regen_buffer -= .*damage_per_unit
-	return .
 
 /reagent/toxin/angel_toxin
 	name = "angel toxin"

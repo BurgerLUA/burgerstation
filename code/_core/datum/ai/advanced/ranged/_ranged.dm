@@ -51,4 +51,4 @@
 		ranged_attack_cooldown = pick(TRUE,FALSE,FALSE,FALSE,FALSE) ? rand(10,20) : 0
 		movement_delay = SECONDS_TO_TICKS(1)
 
-	return .
+	

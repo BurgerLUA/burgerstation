@@ -61,4 +61,4 @@
 	. = ..()
 	stored_radio.broadcasting_range = 3
 	stored_radio.listen_range = 3
-	return .
+	

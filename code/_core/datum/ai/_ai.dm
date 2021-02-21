@@ -178,4 +178,4 @@
 /ai/PostInitialize()
 	. = ..()
 	set_active(active,TRUE)
-	return .
+	

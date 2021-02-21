@@ -29,9 +29,6 @@
 		var/atom/C = owner
 		C.on_destruction(attacker,TRUE)
 
-	return .
-
-
 /health/construction/glass
 
 
@@ -44,7 +41,5 @@
 		if(old_damage_number != damage_number)
 			owner.update_sprite()
 			old_damage_number = damage_number
-
-	return .
 
 /health/construction/glass/reinforced

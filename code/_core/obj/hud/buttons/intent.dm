@@ -20,9 +20,7 @@
 		active = L.intent == intent
 		update_overlays()
 
-	return .
-
-
+	
 /mob/living/proc/set_mouse_pointer(var/desired_icon)
 	if(!client)
 		return FALSE
@@ -71,8 +69,7 @@
 		var/mob/living/L = caller
 		L.set_intent(intent)
 
-	return .
-
+	
 /obj/hud/button/intent/update_overlays()
 
 	overlays.Cut()
@@ -83,8 +80,7 @@
 		var/icon/I = new/icon(initial(icon),"[icon_state]_active")
 		add_overlay(I)
 
-	return .
-
+	
 //The reason why this isn't one button is to support button binds.
 /obj/hud/button/intent/help
 	name = "help intent"

@@ -15,16 +15,12 @@
 /obj/item/light_sensor/Finalize()
 	. = ..()
 	update_sprite()
-	return .
-
-
+	
 /obj/item/light_sensor/update_underlays()
 	. = ..()
 	var/icon/I = new/icon(initial(icon),initial(icon_state))
 	underlays += I
-	return .
-
-
+	
 /obj/item/light_sensor/click_self(var/mob/caller)
 
 	INTERACT_CHECK

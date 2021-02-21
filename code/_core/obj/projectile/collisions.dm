@@ -26,13 +26,12 @@
 	. = ..()
 
 	if(.)
-		return
+		return //Don't run the rest
 
 	for(var/k in P.contents)
 		var/atom/movable/M = k
 		if(!src.Cross(M))
 			return src
-
 
 /atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return null
@@ -126,4 +125,3 @@
 		else if(luck(P.owner,bullet_block_chance,FALSE))
 			return null
 
-	return .

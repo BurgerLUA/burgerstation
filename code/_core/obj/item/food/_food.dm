@@ -80,4 +80,4 @@
 	if(heal_amount_mana)
 		. += div("notice","Mana Restore: [heal_amount_mana].")
 
-	return .
+	

@@ -97,7 +97,6 @@
 	animate(src, pixel_z = 64, time = 30)
 	icon_state = "dead"
 	update_sprite()
-	return .
 
 /mob/living/simple/herald/proc/teleport_random()
 

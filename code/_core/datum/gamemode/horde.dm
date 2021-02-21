@@ -33,8 +33,6 @@
 		else
 			world.end(WORLD_END_NANOTRASEN_VICTORY)
 
-	return .
-
 /gamemode/horde/proc/create_horde_mob(var/desired_loc)
 	var/mob/living/L = pickweight(enemy_types_to_spawn)
 	L = new L(desired_loc)

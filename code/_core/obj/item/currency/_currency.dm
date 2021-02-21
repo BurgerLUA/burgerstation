@@ -22,8 +22,7 @@
 /obj/item/currency/Finalize()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/currency/telecrystals
 	name = "telecrystals"
 	desc = "These are pretty sus crystals."

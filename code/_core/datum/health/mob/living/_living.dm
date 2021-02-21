@@ -11,8 +11,6 @@
 		var/multiplier_value = clamp(1.4 - length(L.players_fighting_boss)*0.1,0.25,1)
 		. *= multiplier_value
 
-	return .
-
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
@@ -49,18 +47,13 @@
 			else
 				.[damage_type] = bonus[damage_type]
 
-	return .
-
-
-
 /health/mob/living/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
 
 	if(.)
 
-		if(!is_living(owner))
-			return .
+		if(!is_living(owner)) return
 
 		var/mob/living/L = owner
 
@@ -97,14 +90,11 @@
 			L.update_health_element_icons(TRUE,TRUE,TRUE)
 			L.update_boss_health()
 
-	return .
-
 /health/mob/living/update_health_stats()
 
 	. = ..()
 
-	if(!is_living(owner))
-		return .
+	if(!is_living(owner)) return
 
 	var/mob/living/L = owner
 
@@ -122,8 +112,6 @@
 	if(. && stamina_current >= stamina_max)
 		var/mob/living/L = owner
 		if(L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
-	return .
-
 
 /health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
 

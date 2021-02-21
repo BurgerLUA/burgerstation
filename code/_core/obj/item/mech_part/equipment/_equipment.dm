@@ -30,15 +30,13 @@
 /obj/item/mech_part/equipment/weapon/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_weapon")
-	return .
-
+	
 /obj/item/mech_part/equipment/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_weapon")
 	if(stored_weapon) stored_weapon.update_sprite()
 	update_sprite()
-	return .
-
+	
 /obj/item/mech_part/equipment/weapon/Generate()
 	stored_weapon = new stored_weapon(src)
 	INITIALIZE(stored_weapon)

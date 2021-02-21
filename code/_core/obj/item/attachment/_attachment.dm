@@ -43,4 +43,4 @@
 		var/v = attachment_stats[k]
 		. += span("notice","[k]: [v]")
 
-	return .
+	

@@ -61,7 +61,6 @@
 /mob/living/simple/blobbernaught/PostInitialize()
 	. = ..()
 	flick("blobbernaut_produce",src)
-	return .
 
 /mob/living/simple/blobbernaught/post_death()
 	. = ..()

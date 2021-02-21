@@ -24,13 +24,11 @@ var/global/obj/item/device/signaller/all_signalers = list()
 	. = ..()
 	SAVEVAR("frequency")
 	SAVEVAR("signal_current")
-	return .
 
 /obj/item/device/signaller/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("frequency")
 	LOADVAR("signal_current")
-	return .
 
 /obj/item/device/signaller/door
 	frequency_current = RADIO_FREQ_DOOR

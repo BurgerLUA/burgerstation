@@ -14,9 +14,6 @@
 	if(.)
 		do_type(TALK_TYPE_EXCLAIMATION)
 
-	return .
-
-
 /mob/living/proc/do_type(var/type_type)
 	talk_duration = SECONDS_TO_DECISECONDS(4)
 	chat_overlay.icon_state = type_type

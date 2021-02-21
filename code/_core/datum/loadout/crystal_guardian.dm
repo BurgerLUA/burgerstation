@@ -14,4 +14,4 @@
 /loadout/crystal_guardian/get_spawning_items()
 	. = ..()
 	. += pick(random_weapon)
-	return .
+	

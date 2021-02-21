@@ -15,4 +15,4 @@
 		spawn(duration-5)
 			animate(src, alpha=0, time=5)
 
-	return .
+	

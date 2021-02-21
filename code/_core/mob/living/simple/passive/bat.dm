@@ -29,4 +29,4 @@
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"
-	return .
+	

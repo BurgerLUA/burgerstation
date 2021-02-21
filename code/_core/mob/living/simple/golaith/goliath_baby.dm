@@ -20,4 +20,4 @@
 	. = ..()
 	explode(get_turf(src),40,src,src,loyalty_tag)
 	qdel(src)
-	return .
+	

@@ -44,9 +44,6 @@
 		bounty hunters after you to repo your possessions until debts are satisfied."
 	)
 
-	return .
-
-
 /dialogue/npc/taxman/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()
@@ -59,4 +56,4 @@
 		else
 			P.to_chat(span("warning","You can't pay your taxes yet, you're too early!"))
 
-	return .
+	

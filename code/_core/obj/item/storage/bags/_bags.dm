@@ -171,25 +171,21 @@
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
 	SAVEVAR("color_canister")
-	return .
-
+	
 /obj/item/storage/pillbottle/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("color_lid")
 	LOADVAR("color_label")
 	LOADVAR("color_canister")
-	return .
-
+	
 /obj/item/storage/pillbottle/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/storage/pillbottle/update_inventory()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/storage/pillbottle/update_overlays()
 
 	. = ..()
@@ -209,8 +205,7 @@
 	label.color = color_label
 	add_overlay(label)
 
-	return .
-
+	
 /obj/item/storage/pillbottle/update_icon()
 
 	. = ..()
@@ -228,9 +223,7 @@
 	icon_state = "contents_[icon_mod]"
 	color = chosen_color
 
-	return .
-
-
+	
 /obj/item/storage/pillbottle/bicaridine
 	name = "bicaridine pill bottle"
 	desc = "Contains 20 20u bicaridine pills."

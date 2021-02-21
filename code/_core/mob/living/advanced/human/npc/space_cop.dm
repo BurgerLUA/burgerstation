@@ -29,4 +29,4 @@
 
 	equip_loadout(/loadout/space_cop)
 
-	return .
+	

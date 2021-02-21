@@ -167,4 +167,4 @@
 			P.to_chat(span("thought","My shift starts in one hour! I should check if I'm ready, then catch the next shuttle!"))
 
 
-	return .
+	

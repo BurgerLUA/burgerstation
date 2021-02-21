@@ -24,10 +24,6 @@
 		var/obj/hud/button/health/body/B = health_elements["body"]
 		B.update_stats()
 
-	return .
-
-
-
 /mob/living/advanced/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
@@ -39,4 +35,4 @@
 
 	HOOK_CALL("on_damage_received") //For hulking and whatnot.
 
-	return .
+	

@@ -14,4 +14,4 @@
 
 	equip_loadout("shopkeeper_outfit")
 
-	return .
+	

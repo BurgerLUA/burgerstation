@@ -18,8 +18,7 @@
 		L.sneak()
 		sneaking = L.is_sneaking
 
-	return .
-
+	
 /obj/hud/button/sneak/update_icon()
 	icon_state = "sneak_[sneaking]"
 	..()
@@ -62,8 +61,7 @@
 
 		update_sprite()
 
-	return .
-
+	
 /obj/hud/button/rest
 	name = "rest"
 	desc = "No sleeping on the job!"
@@ -81,9 +79,7 @@
 		var/mob/living/L = caller
 		L.rest()
 
-	return .
-
-
+	
 /obj/hud/button/stand
 	name = "stand"
 	desc = "Summons and unsummons your stand."
@@ -104,4 +100,4 @@
 		else
 			L.to_chat(span("danger","You don't have a stand for some reason!"))
 
-	return .
+	

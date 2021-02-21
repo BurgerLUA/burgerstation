@@ -71,8 +71,6 @@
 		var/area/A2 = get_area(A)
 		if(A2) . += A2
 
-	return .
-
 /objective/proc/get_description()
 	return "[initial(desc)] ([completion_state])"
 
@@ -117,4 +115,4 @@
 		if(completion_state == COMPLETED)
 			on_completion()
 
-	return .
+	

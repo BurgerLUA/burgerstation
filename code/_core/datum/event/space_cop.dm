@@ -88,13 +88,13 @@
 
 			if(!associated_shuttle_controller)
 				log_error("Space Cops  Couldn't find an associated shuttle controller for a return trip!")
-				return .
+				return
 
 			var/obj/marker/map_node/N_end = find_closest_node(associated_shuttle_controller)
 
 			if(!N_end)
 				log_error("Space Cops Path Error: Couldn't find closet node to [associated_shuttle_controller] for a return trip!")
-				return .
+				return
 
 			for(var/mob/living/L in tracked_space_cops)
 				if(L.qdeleting || L.dead || !L.ai)
@@ -112,11 +112,6 @@
 
 				L.ai.set_path(found_path)
 				L.ai.roam = FALSE
-
-
-
-
-	return .
 
 /event/space_cop/on_end()
 	log_debug("Ending Space Cop Event")

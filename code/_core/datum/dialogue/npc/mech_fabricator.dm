@@ -55,13 +55,3 @@
 
 
 	return dialogue_options
-/*
-/dialogue/npc/mech_fabricator/set_topic(var/mob/living/advanced/player/P,var/topic)
-
-	. = ..()
-
-	switch(topic)
-
-
-	return .
-*/

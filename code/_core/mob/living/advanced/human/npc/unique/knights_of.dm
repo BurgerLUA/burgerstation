@@ -39,8 +39,6 @@
 
 	update_all_blends()
 
-	return .
-
 /mob/living/advanced/npc/unique/knight/red
 	name = "Red Knight"
 	loadout = /loadout/knight/red

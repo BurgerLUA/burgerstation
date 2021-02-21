@@ -42,14 +42,13 @@
 
 		update_sprite()
 
-	return .
 
 /obj/hud/button/health/body/update_overlays()
 
 	. = ..()
 
 	if(!is_advanced(owner))
-		return .
+		return
 
 	var/mob/living/advanced/A = owner
 
@@ -96,7 +95,6 @@
 		labeled_overlays[o_id] = I
 		add_overlay(I)
 
-	return .
 
 /obj/hud/button/health/body/get_examine_list(var/mob/examiner)
 	return examiner.get_examine_list(examiner)

@@ -155,4 +155,4 @@
 	if(.)
 		owner.luck = clamp(level,1,owner.max_level)
 
-	return .
+	

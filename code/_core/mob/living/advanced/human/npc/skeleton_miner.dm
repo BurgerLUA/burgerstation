@@ -17,7 +17,6 @@
 /mob/living/advanced/npc/skeleton_miner/Initialize()
 	. = ..()
 	equip_loadout(desired_loadout)
-	return .
 
 /mob/living/advanced/npc/skeleton_miner/shovel
 	desired_loadout = /loadout/skeleton_miner/skeleton/shovel

@@ -19,16 +19,12 @@
 	if(owner && owner.health)
 		owner.health.adjust_stamina(.*stamina_strength)
 
-	return .
-
 /reagent/nutrition/energy/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	if(owner && owner.health)
 		owner.health.adjust_stamina(.*stamina_strength)
-
-	return .
 
 /reagent/nutrition/energy/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -37,16 +33,12 @@
 	if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
 		L.add_status_effect(ADRENALINE,adrenaline_strength,-1)
 
-	return .
-
 /reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
 	if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
 		L.remove_status_effect(ADRENALINE)
-
-	return .
 
 /reagent/nutrition/energy/grey_bull
 	name = "\improper Grey Bull"

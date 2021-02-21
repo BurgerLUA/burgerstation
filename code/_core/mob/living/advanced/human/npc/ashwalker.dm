@@ -24,9 +24,6 @@
 
 	level_multiplier *= rand(90,150)/100 //Randomness.
 
-	return .
-
-
 /mob/living/advanced/npc/ashwalker/Initialize()
 
 	. = ..()
@@ -46,10 +43,6 @@
 		equip_loadout(loadout_to_use_female)
 
 	update_all_blends()
-
-
-
-	return .
 
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"

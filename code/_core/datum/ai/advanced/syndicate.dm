@@ -36,9 +36,6 @@
 			)
 			owner.do_say(pick(responses),language_to_use = language_to_use)
 
-	return .
-
-
 /ai/advanced/syndicate/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
 	. = ..()
@@ -89,4 +86,4 @@
 		if(length(responses))
 			owner.do_say(pick(responses),language_to_use = language_to_use)
 
-	return .
+	

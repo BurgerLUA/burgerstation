@@ -10,5 +10,4 @@ obj/effect/temp/fist/New(var/desired_location,var/desired_time,var/desired_color
 	. = ..()
 	pixel_z = TILE_SIZE*2
 	animate(src,pixel_z=0,time=desired_time*0.25)
-	return .
 

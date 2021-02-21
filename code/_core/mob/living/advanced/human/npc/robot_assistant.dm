@@ -17,19 +17,13 @@
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	update_all_blends()
 
-	return .
-
 /mob/living/advanced/npc/cyborg_assistant/bartender/Initialize()
 	. = ..()
 	equip_loadout(/loadout/cyborg_assistant/bartender)
-	return .
-
 
 /mob/living/advanced/npc/cyborg_assistant/help_desk/Initialize()
 	. = ..()
 	equip_loadout(/loadout/cyborg_assistant/help_desk)
-	return .
-
 
 /mob/living/advanced/npc/cyborg_assistant/debug
 	dialogue_id = null

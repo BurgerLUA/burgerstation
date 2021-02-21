@@ -26,13 +26,11 @@
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("open")
-	return .
-
+	
 /obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("open")
-	return .
-
+	
 /obj/item/grenade/Destroy()
 
 	QDEL_NULL(stored_trigger)
@@ -56,8 +54,7 @@
 			var/obj/item/container/beaker/B = k
 			.["stored_containers"] += list(B.save_item_data(save_inventory))
 
-	return .
-
+	
 /obj/item/grenade/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
@@ -68,8 +65,7 @@
 		for(var/k in object_data["stored_containers"])
 			stored_containers += load_and_create(P,k,src)
 
-	return .
-
+	
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
 	if(alpha == 0)
@@ -86,13 +82,11 @@
 	else
 		trigger(owner,source,-1,-1)
 
-	return .
-
+	
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/grenade/Generate()
 
 	. = ..()
@@ -110,8 +104,7 @@
 
 	update_sprite()
 
-	return .
-
+	
 /obj/item/grenade/update_icon()
 
 	if(length(stored_containers) && stored_trigger)

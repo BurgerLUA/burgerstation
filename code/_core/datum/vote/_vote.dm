@@ -155,5 +155,3 @@
 		var/real_option = options[option_num]
 		.[real_option] += ckey
 
-	return .
-

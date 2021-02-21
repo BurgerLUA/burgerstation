@@ -15,4 +15,4 @@
 			var/reagent/R = REAGENT(reagent_type)
 			. += R.value*reagent_volume
 
-	return .
+	

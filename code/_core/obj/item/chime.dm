@@ -14,13 +14,11 @@
 /obj/item/chime/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_device")
-	return .
-
+	
 /obj/item/chime/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_device")
-	return .
-
+	
 /obj/item/chime/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(sound_to_play)

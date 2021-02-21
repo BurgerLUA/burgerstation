@@ -31,8 +31,7 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	if(. && SSgamemode && SSgamemode.active_gamemode && SSgamemode.active_gamemode.objective_text)
 		set_stored_text(SSgamemode.active_gamemode.objective_text)
 
-	return .
-
+	
 /obj/hud/button/objectives/Destroy()
 	all_objective_buttons -= src
 	return ..()
@@ -51,4 +50,4 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 			maptext = null
 			animate(src,alpha = 100,time = 1)
 
-	return .
+	

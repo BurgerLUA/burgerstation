@@ -94,4 +94,4 @@
 	. = list()
 	for(var/d in DIRECTIONS_CARDINAL)
 		.["[d]"] = d == dir
-	return .
+	

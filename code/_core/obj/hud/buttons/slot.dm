@@ -37,7 +37,6 @@
 	else
 		color = "#FFFFFF"
 
-	return .
 
 /obj/hud/button/slot/update_overlays()
 
@@ -49,7 +48,6 @@
 		I.plane = PLANE_HUD_OBJ
 		add_overlay(I)
 
-	return .
 
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
@@ -102,7 +100,6 @@
 	if(.)
 		clear_object(caller)
 
-	return .
 
 /obj/hud/button/slot/proc/store_atom(var/mob/caller,var/atom/object,location,control,params)
 
@@ -180,28 +177,3 @@
 	id = "0"
 	maptext = "0"
 	screen_loc = "LEFT+9,TOP"
-
-/*
-/obj/hud/button/close_slots
-	name = "close hotkeys"
-	icon_state = "close_hotkeys"
-	screen_loc = "CENTER,CENTER"
-
-	essential = TRUE
-
-	flags = FLAGS_HUD_SPECIAL
-
-	has_quick_function = FALSE
-
-/obj/hud/button/close_slots/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(!is_player(caller))
-		return TRUE
-
-	. = ..()
-
-	var/mob/living/advanced/player/P = caller
-	P.set_structure_unactive()
-
-	return .
-*/

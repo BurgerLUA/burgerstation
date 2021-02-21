@@ -37,8 +37,6 @@
 		else
 			owner.intoxication -= power*.
 
-	return .
-
 /reagent/nutrition/ethanol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -48,9 +46,6 @@
 			owner.intoxication += power*.*0.5
 		else
 			owner.intoxication -= power*.
-
-	return .
-
 
 /reagent/nutrition/ethanol/fernet
 	name = "fernet"

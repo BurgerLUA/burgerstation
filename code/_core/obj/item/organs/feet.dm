@@ -44,8 +44,7 @@
 			A.visible_message(span("warning","\The [A.name]'s [src.name] recoils in pain!"),span("danger","Your [src.name] recoils in pain!"))
 			return TRUE
 
-	return .
-
+	
 /obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 
 	for(var/k in src.inventories)

@@ -34,8 +34,7 @@
 	if(reagents)
 		reagents.volume_max = item_count_current*10
 
-	return .
-
+	
 /obj/item/container/medicine/update_icon()
 
 	if(!override_icon_state)

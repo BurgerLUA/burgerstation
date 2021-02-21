@@ -35,8 +35,7 @@
 			log_error("Warning: [A.get_debug_name()] tried to craft without a stored crafting table!")
 
 
-	return .
-
+	
 /obj/hud/button/crafting/close
 	name = "close crafting menu"
 	icon_state = "close_crafting"
@@ -58,4 +57,4 @@
 			B.mouse_opacity = 0
 			B.stored_crafting_table = null
 
-	return .
+	

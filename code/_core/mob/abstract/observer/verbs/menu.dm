@@ -49,8 +49,6 @@
 
 	. = client.load(mobdata,file_num)
 
-	return .
-
 /mob/abstract/observer/verb/new_character()
 	set name = "New Character"
 	set category = "Menu"

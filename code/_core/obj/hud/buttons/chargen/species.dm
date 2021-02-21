@@ -28,6 +28,3 @@
 
 		if(choice == "Yes")
 			A.perform_specieschange(choice_to_species[species_choice],TRUE,TRUE)
-
-	return .
-

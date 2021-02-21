@@ -14,4 +14,4 @@
 	change_organ_visual("hair_head", desired_color = "#6E543C", desired_icon_state = "hair_topknot_s")
 	update_all_blends()
 	equip_loadout(/loadout/hos)
-	return .
+	

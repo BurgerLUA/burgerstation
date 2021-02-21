@@ -11,8 +11,6 @@
 	if("middle" in params)
 		. |= CLICK_MIDDLE
 
-	return .
-
 /client/MouseWheel(var/atom/object,delta_x,delta_y,location,control,params)
 
 	var/list/new_params = params2list(params)

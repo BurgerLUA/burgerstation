@@ -11,8 +11,7 @@
 	. = ..()
 	current_song = new current_song(src)
 	current_song.instrument_directory = instrument_type
-	return .
-
+	
 /obj/item/instrument/click_self(var/mob/caller,location,control,params)
 	if(caller && current_song)
 		current_song.interact(caller)

@@ -17,8 +17,6 @@
 	if(prob(extra_clothing_chance))
 		. += pickweight(possible_extra_clothing)
 
-	return .
-
 /loadout/zombie/winter
 	spawning_items = list(
 		/obj/item/clothing/pants/brown,

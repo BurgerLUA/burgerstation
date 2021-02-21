@@ -26,8 +26,7 @@
 		if(x % 5 == 0)
 			icon_state = "[initial(icon_state)]_[id]"
 
-	return .
-
+	
 /obj/decal/directions/security
 	id = "sec"
 	color = COLOR_SECURITY

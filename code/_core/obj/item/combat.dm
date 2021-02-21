@@ -54,8 +54,7 @@
 	else
 		. += div("notice","Damage not affected by skills or attributes.")
 
-	return .
-
+	
 /*
 /obj/item/proc/get_damage_type_text(var/mob/living/L)
 

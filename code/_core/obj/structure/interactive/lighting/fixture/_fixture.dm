@@ -80,4 +80,4 @@
 		IS.alpha = 255*(light_power/1)
 		add_overlay(IS)
 
-	return .
+	

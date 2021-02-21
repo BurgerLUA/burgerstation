@@ -88,4 +88,4 @@ var/global/list/wishgranter_speak_lines = list(
 		do_say(line_to_say, language_to_use = LANGUAGE_RUSSIAN)
 		next_speak = world.time + SECONDS_TO_DECISECONDS(30)
 
-	return .
+	

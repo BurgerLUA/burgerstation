@@ -23,13 +23,11 @@
 /obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVELISTATOM("installed_plate_carriers")
-	return .
-
+	
 /obj/item/clothing/overwear/armor/plate_carrier/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADLISTATOM("installed_plate_carriers")
-	return .
-
+	
 /obj/item/clothing/overwear/armor/plate_carrier/get_defense_rating()
 
 	. = ..()
@@ -41,8 +39,7 @@
 		for(var/damagetype in P.armor_base)
 			.[damagetype] += P.armor_base[damagetype] > 0 ? P.armor_base[damagetype] * power_mul : P.armor_base[damagetype]
 
-	return .
-
+	
 /obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/armor_plate/))
