@@ -159,6 +159,8 @@
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/belt/storage/colored/black,
