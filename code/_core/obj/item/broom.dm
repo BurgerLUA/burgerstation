@@ -19,10 +19,15 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		var/turf/T = object
+		var/broom_limit = 10
 		for(var/obj/item/I in oview(T,broom_range))
+			CHECK_TICK(50,FPS_SERVER)
+			broom_limit--
 			if(I.anchored)
 				continue
 			I.Move(get_step(I,get_dir(I,T)))
+			if(broom_limit <= 0)
+				break
 		return TRUE
 
 	return ..()
