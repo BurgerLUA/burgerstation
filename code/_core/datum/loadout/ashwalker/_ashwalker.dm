@@ -21,7 +21,6 @@
 /loadout/ashwalker/get_spawning_items()
 	. = ..()
 	. += pick(random_weapon)
-	return .
 
 /loadout/ashwalker/female
 	spawning_items = list(

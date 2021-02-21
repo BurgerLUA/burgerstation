@@ -30,8 +30,6 @@
 
 	equip_loadout(desired_loadout)
 
-	return .
-
 /mob/living/advanced/npc/deathsquad/light
 	desired_loadout = /loadout/deathsquad/light
 	level_multiplier = 1

@@ -28,13 +28,12 @@ var/global/mob/abstract/node_checker
 	anchored = TRUE
 
 /obj/marker/map_node/get_examine_list(var/mob/examiner)
+
 	. = ..()
 
 	for(var/k in adjacent_map_nodes)
 		var/obj/marker/map_node/MN = adjacent_map_nodes[k]
 		. += div("notice",MN.get_debug_name())
-
-	return .
 
 /obj/marker/map_node/New(var/desired_loc)
 	plane = PLANE_HIDDEN
@@ -125,9 +124,6 @@ var/global/list/stored_paths = list()
 		NC.loc = T
 
 	qdel(NC)
-
-	return .
-
 
 /proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE)
 

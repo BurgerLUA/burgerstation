@@ -56,8 +56,6 @@
 	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
 		SSreagent.all_temperature_reagent_containers += src
 
-	return .
-
 /reagent_container/proc/metabolize(var/mob/living/living_owner,var/multiplier=1)
 
 	if(!volume_current)
@@ -403,8 +401,6 @@
 
 	if(should_update)
 		update_container()
-
-	return .
 
 /reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes,caller)

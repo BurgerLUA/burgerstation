@@ -26,8 +26,6 @@
 
 	owner.add_nutrition(4*.) //Blood is actually nutritious.
 
-	return .
-
 /reagent/blood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -40,8 +38,6 @@
 		else
 			owner.blood_type += . *0.5
 			owner.tox_regen_buffer += .*0.5
-
-	return .
 
 /reagent/blood/human/ab_negative
 	name = "AB Negative Human Blood"

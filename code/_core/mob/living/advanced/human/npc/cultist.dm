@@ -42,8 +42,6 @@
 
 	equip_loadout(loadout_to_use)
 
-	return .
-
 /mob/living/advanced/npc/cultist/old
 	name = "ancient cultist"
 	loadout_to_use = /loadout/cultist/old

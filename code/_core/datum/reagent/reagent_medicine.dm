@@ -15,16 +15,12 @@
 	if(!L.dead && experience_per_unit && caller && is_player(caller))
 		caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
 
-	return .
-
 /reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 
 	. = ..()
 
 	if(owner)
 		owner.tox_regen_buffer -= . //Deal tox damage.
-
-	return .
 
 /reagent/medicine/adrenaline
 	name = "adrenaline"
@@ -47,17 +43,12 @@
 	if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
 		L.add_status_effect(ADRENALINE,strength,-1)
 
-	return .
-
 /reagent/medicine/adrenaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
 	if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
 		L.remove_status_effect(ADRENALINE)
-
-	return .
-
 
 /reagent/medicine/adrenaline/epinephrine
 	name = "epinephrine"
@@ -81,10 +72,6 @@
 		else
 			L.visible_message(span("warning","\The [L.name] twitches for a moment, but falls back limp..."))
 
-	return .
-
-
-
 /reagent/medicine/health_potion
 	name = "Healing Juice"
 	desc = "Heals brute and burn damage. Metabolizes fast."
@@ -106,15 +93,12 @@
 	owner.brute_regen_buffer += 6*.
 	owner.burn_regen_buffer += 6*.
 	owner.tox_regen_buffer += 6*.
-	return .
 
 /reagent/medicine/health_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 3*.
 	owner.burn_regen_buffer += 3*.
 	owner.tox_regen_buffer += 3*.
-	return .
-
 
 /reagent/medicine/stamina_potion
 	name = "Stamina Juice"
@@ -138,16 +122,11 @@
 	if(owner && owner.health)
 		owner.health.adjust_stamina(.*5)
 
-	return .
-
 /reagent/medicine/stamina_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
 		owner.health.adjust_stamina(.*5)
-
-	return .
-
 
 /reagent/medicine/mana_potion
 	name = "Mana Juice"
@@ -171,16 +150,11 @@
 	if(owner && owner.health)
 		owner.health.adjust_mana(.*5)
 
-	return .
-
 /reagent/medicine/mana_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
 		owner.health.adjust_mana(.*5)
-
-	return .
-
 
 /reagent/medicine/antihol
 	name = "Antihol"
@@ -214,8 +188,6 @@
 		if(istype(R,/reagent/nutrition/ethanol))
 			container.remove_reagent(reagent_id,.*3)
 
-	return .
-
 /reagent/medicine/antihol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -230,9 +202,6 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(istype(R,/reagent/nutrition/ethanol))
 			container.remove_reagent(reagent_id,.*3)
-
-	return .
-
 
 /reagent/medicine/purge
 	name = "Calomel"
@@ -259,8 +228,6 @@
 			continue
 		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4)
 
-	return .
-
 /reagent/medicine/purge/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -272,10 +239,6 @@
 		if(R.type == src.type)
 			continue
 		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4)
-
-	return .
-
-
 
 /reagent/medicine/charcoal
 	name = "charcoal"
@@ -303,8 +266,6 @@
 		container.remove_reagent(reagent_id,.)
 		owner.tox_regen_buffer += 3*.
 
-	return .
-
 /reagent/medicine/charcoal/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -317,9 +278,6 @@
 			continue
 		container.remove_reagent(reagent_id,.*2)
 		owner.tox_regen_buffer += 2*.
-
-	return .
-
 
 /reagent/medicine/zombie_antidote
 	name = "zombie antidote"
@@ -334,12 +292,10 @@
 /reagent/medicine/zombie_antidote/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.reagents.remove_reagent(/reagent/toxin/zombie_toxin,.)
-	return .
 
 /reagent/medicine/zombie_antidote/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.reagents.add_reagent(/reagent/medicine/zombie_antidote/,.*0.75)
-	return .
 
 /reagent/medicine/mitogen
 	name = "Mitogen"
@@ -364,8 +320,6 @@
 	if(owner.health)
 		owner.brute_regen_buffer += 10*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)
 		owner.tox_regen_buffer -= 0.1*.
-
-	return .
 
 /reagent/medicine/mitogen/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

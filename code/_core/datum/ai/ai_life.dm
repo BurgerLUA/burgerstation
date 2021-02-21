@@ -66,8 +66,6 @@
 		. *= 4
 	*/
 
-	return .
-
 /ai/proc/on_death()
 	set_objective(null)
 	set_active(FALSE)

@@ -42,8 +42,6 @@
 			if(can_absorb_slime(S))
 				.[S] = TRUE
 
-	return .
-
 /ai/slime/do_attack(var/atom/atom_to_attack)
 
 	if(!is_slime(atom_to_attack) || !can_absorb_slime(atom_to_attack))

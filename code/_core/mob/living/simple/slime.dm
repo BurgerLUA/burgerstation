@@ -64,7 +64,6 @@
 /mob/living/simple/slime/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/simple/slime/post_death()
 
@@ -89,8 +88,6 @@
 	stored_slimes = 0
 
 	update_sprite()
-
-	return .
 
 /mob/living/simple/slime/update_icon()
 

@@ -113,11 +113,6 @@
 				L.ai.set_path(found_path)
 				L.ai.roam = FALSE
 
-
-
-
-	return .
-
 /event/space_cop/on_end()
 	log_debug("Ending Space Cop Event")
 

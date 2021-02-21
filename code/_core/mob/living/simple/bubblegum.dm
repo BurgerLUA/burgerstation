@@ -95,7 +95,6 @@
 	charge_dir = 0
 	icon_state = "dead"
 	update_sprite()
-	return .
 
 /mob/living/simple/bubblegum/proc/blood_attack()
 
@@ -119,16 +118,12 @@
 
 	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
-	return .
-
 /mob/living/simple/bubblegum/get_movement_delay()
 
 	. = ..()
 
 	if(charge_steps)
 		. = BOSS_TICK*1
-
-	return .
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 

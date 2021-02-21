@@ -126,8 +126,6 @@
 	if(update && .)
 		update_health()
 
-	return .
-
 /health/proc/adjust_loss(var/loss_type,var/value)
 	if(resistance[loss_type] && value > 0) value *= resistance[loss_type]
 	value -= min(0,damage[loss_type] + value)

@@ -20,8 +20,6 @@
 	. = ..()
 	. += pick(random_weapon)
 	if(prob(25)) . += pick(random_tome)
-	return .
-
 
 /loadout/cultist/old
 	spawning_items = list(

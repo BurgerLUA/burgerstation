@@ -121,8 +121,6 @@
 		remove_status_effect(PARRIED)
 		add_status_effect(STUN,stun_magnitude,stun_duration)
 
-	return .
-
 /mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item)
 
 	INTERACT_CHECK_NO_DELAY(src)

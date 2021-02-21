@@ -10,8 +10,6 @@
 	for(var/obj/marker/boss/wizard/W in world)
 		teleport_locations += get_turf(W)
 
-	return .
-
 /ai/advanced/ranged/wizard/handle_attacking()
 
 	. = ..()

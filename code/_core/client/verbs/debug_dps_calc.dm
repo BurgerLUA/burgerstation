@@ -12,8 +12,6 @@
 		for(var/skill in DT.skill_stats)
 			. += DT.skill_stats[skill] * 0.01 * level
 
-	return .
-
 /proc/calculate_damage_per_second(var/obj/item/I,var/level=50)
 
 	var/damagetype/DT

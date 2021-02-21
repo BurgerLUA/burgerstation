@@ -155,7 +155,6 @@
 			. = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			. = radius_find_enemy_combat
-	return .
 
 /ai/proc/get_possible_targets()
 
@@ -184,9 +183,6 @@
 			if(!should_attack_mob(L))
 				continue
 			.[L] = TRUE
-
-	return .
-
 
 /ai/proc/investigate(var/atom/desired_target)
 

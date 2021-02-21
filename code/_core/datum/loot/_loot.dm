@@ -19,8 +19,6 @@
 	for(var/i=1,i<=loot_multiplier,i++)
 		. += new type_to_spawn(spawn_loc)
 
-	return .
-
 /loot/proc/pre_spawn(var/atom/movable/M)
 	return TRUE
 
@@ -37,7 +35,6 @@
 		FINALIZE(M)
 		post_spawn(M)
 		//animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
-	return .
 
 /loot/proc/create_loot_table(var/spawn_loc) //Use this to spawn the loot.
 

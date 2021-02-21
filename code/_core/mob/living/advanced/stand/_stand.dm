@@ -61,7 +61,6 @@
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 	. = ..()
 	update_offsets()
-	return .
 
 /mob/living/advanced/stand/on_life()
 	. = ..()
@@ -73,13 +72,11 @@
 			display_menacing = FALSE
 		else
 			display_menacing = TRUE
-	return .
 
 /mob/living/advanced/stand/on_life_slow()
 	. = ..()
 	if(.)
 		update_offsets()
-	return .
 
 /mob/living/advanced/stand/proc/update_offsets()
 	var/desired_x = -4

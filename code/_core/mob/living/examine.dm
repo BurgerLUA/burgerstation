@@ -35,9 +35,6 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] hurting.</u></b>")
 
-	return .
-
-
 /mob/living/get_examine_list(var/mob/examiner)
 
 	. = ..()
@@ -47,9 +44,6 @@
 		. += activity_text
 
 	. += get_damage_description(examiner,FALSE)
-
-	return .
-
 
 /mob/living/proc/get_activity_text()
 

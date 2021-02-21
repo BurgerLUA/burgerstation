@@ -42,7 +42,6 @@
 /mob/abstract/observer/Logout()
 	. = ..()
 	if(!src.qdeleting) qdel(src)
-	return .
 
 /mob/abstract/observer/Initialize()
 
@@ -60,9 +59,6 @@
 		B.update_owner(src)
 
 	to_chat(span("notice","Please load a character or create a new character to play using the buttons below."))
-
-	return .
-
 
 /mob/abstract/observer/update_eyes()
 

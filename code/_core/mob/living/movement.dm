@@ -57,8 +57,6 @@
 	if(stand)
 		stand.on_move(.,NewLoc,Dir)
 
-	return .
-
 /mob/living/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -91,9 +89,6 @@
 		T.old_living |= src
 
 	handle_tabled()
-
-	return .
-
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
@@ -147,8 +142,6 @@
 		if(has_status_effect(CONFUSED))
 			move_dir = turn(move_dir,180)
 
-	return .
-
 /mob/living/get_stance_movement_mul()
 
 	if(horizontal)
@@ -171,10 +164,6 @@
 
 	if(intoxication)
 		. += intoxication*0.003
-
-
-	return .
-
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 

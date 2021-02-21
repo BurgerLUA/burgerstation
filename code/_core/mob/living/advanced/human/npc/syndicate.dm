@@ -47,8 +47,6 @@
 
 	equip_loadout(loadout_to_use)
 
-	return .
-
 /mob/living/advanced/npc/syndicate/double
 	level_multiplier = 2
 

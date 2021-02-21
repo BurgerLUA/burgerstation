@@ -17,7 +17,6 @@
 	. = ..()
 	next_idle_voice = world.time + rand(100,300)
 	owner_as_bot = owner
-	return .
 
 /ai/bot/medical/Destroy()
 	owner_as_bot = null

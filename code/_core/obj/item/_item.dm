@@ -169,7 +169,6 @@
 	. = ..()
 	if(length(polymorphs))
 		update_sprite()
-	return .
 
 /obj/item/get_base_value()
 	return value * item_count_current * price_multiplier
@@ -457,13 +456,10 @@
 /obj/item/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
 	update_lighting_for_owner()
-	return .
 
 /obj/item/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
 	update_lighting_for_owner()
-	return .
-
 /obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 
 	if(additional_clothing_parent)
@@ -490,9 +486,6 @@
 		var/obj/hud/inventory/I = k
 		var/obj/item/I2 = I.get_top_object()
 		if(I2) . += I2
-
-	return .
-
 
 /obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	if(delete_on_drop)
@@ -563,7 +556,6 @@
 		if(A.species)
 			var/species/S = SSspecies.all_species[A.species]
 			. = S.bite_size
-	return .
 
 /obj/item/proc/feed(var/mob/caller,var/mob/living/target)
 	var/reagent_container/R = get_reagents_to_consume(target)

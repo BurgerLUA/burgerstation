@@ -66,9 +66,6 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		if(C.permissions & FLAG_PERMISSION_ADMIN || C.permissions & FLAG_PERMISSION_MODERATOR)
 			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
 
-	return .
-
-
 /proc/get_ooc_color(var/datum/speaker) //WIP
 
 	if(is_client(speaker))

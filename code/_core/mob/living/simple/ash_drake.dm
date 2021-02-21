@@ -188,8 +188,6 @@
 	if(boss_state)
 		. *= 0.5
 
-	return .
-
 /mob/living/simple/ash_drake/proc/shoot_fireball(var/atom/desired_target)
 	shoot_projectile(src,desired_target,null,null,/obj/projectile/magic/fireball/lava,/damagetype/ranged/magic/fireball,16,16,0,TILE_SIZE*0.75,1,"#FFFFFF",0,0,1,iff_tag,loyalty_tag)
 

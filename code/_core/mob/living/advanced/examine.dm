@@ -37,8 +37,6 @@
 
 		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
 
-	return .
-
 /mob/living/advanced/get_examine_list(var/mob/examiner)
 
 	var/pronoun = get_pronoun_he_she_it(src)

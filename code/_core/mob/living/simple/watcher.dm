@@ -48,8 +48,6 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
-	return .
-
 
 /mob/living/simple/watcher/clockwork
 	name = "clockwork watcher"

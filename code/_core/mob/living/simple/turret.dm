@@ -109,10 +109,6 @@
 	else
 		. += div("warning","It is missing a magazine.")
 
-	return .
-
-
-
 /mob/living/simple/turret/deployable/proc/get_battery()
 	return stored_battery
 

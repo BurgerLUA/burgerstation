@@ -29,7 +29,5 @@
 			else
 				L.add_status_effect(SLEEP,600,600) //1 minute of sleep
 
-	return .
-
 /damagetype/ranged/bullet/tranq/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return istype(hit_object,/obj/item/organ/head)

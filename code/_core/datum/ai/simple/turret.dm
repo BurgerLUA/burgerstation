@@ -35,8 +35,6 @@
 	valid_scan_dirs += turn(initial_dir,-45)
 	valid_scan_dirs += turn(initial_dir,-90)
 
-	return .
-
 /ai/turret/on_life()
 
 	. = ..()
@@ -72,8 +70,6 @@
 /ai/turret/deployable/New(var/desired_loc,var/mob/living/desired_owner)
 	. = ..()
 	owner_as_turret = owner
-	return .
-
 
 /ai/turret/deployable/should_life()
 

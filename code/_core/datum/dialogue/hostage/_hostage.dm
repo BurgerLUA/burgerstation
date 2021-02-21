@@ -37,9 +37,6 @@
 				"You already have someone with you."
 			)
 
-	return .
-
-
 /dialogue/npc/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()

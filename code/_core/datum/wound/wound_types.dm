@@ -27,8 +27,6 @@
 
 	. = ..()
 
-	return .
-
 /wound/penetration/
 	name = "penetration"
 	id = "penetration"

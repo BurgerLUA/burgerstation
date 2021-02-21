@@ -19,17 +19,12 @@
 	if(L.get_status_effect_magnitude(PAINKILLER) <= strength)
 		L.add_status_effect(PAINKILLER,strength,-1)
 
-	return .
-
 /reagent/medicine/painkiller/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
 	if(L.get_status_effect_magnitude(PAINKILLER) <= strength)
 		L.remove_status_effect(PAINKILLER)
-
-	return .
-
 
 /reagent/medicine/painkiller/opium
 	name = "Opium"
@@ -59,8 +54,6 @@
 	owner.brute_regen_buffer += .*3
 	owner.burn_regen_buffer += .*2
 	owner.pain_regen_buffer += .*5
-
-	return .
 
 /reagent/medicine/painkiller/opium/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

@@ -20,8 +20,6 @@
 		loaded_data = json_decode(rustg_file_read(full_path))
 		owner.macros.macros = loaded_data
 
-	return .
-
 /savedata/client/controls/proc/save()
 	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"

@@ -76,7 +76,6 @@
 /mob/living/simple/spider/desert/Initialize()
 	. = ..()
 	set_light(4,0.25,"#00FF00")
-	return .
 
 /mob/living/simple/spider/twilight
 	name = "twilight spider"

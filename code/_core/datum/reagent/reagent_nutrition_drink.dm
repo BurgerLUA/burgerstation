@@ -33,8 +33,6 @@
 			var/turf/simulated/S = target
 			S.add_wet(volume_to_splash*10*strength_mod)
 
-	return .
-
 /reagent/nutrition/ice
 	name = "ice"
 	desc = "What most lifeforms use to cool their drinks."

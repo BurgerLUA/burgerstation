@@ -104,9 +104,6 @@
 		INITIALIZE(S)
 		FINALIZE(S)
 
-	return .
-
-
 /mob/living/simple/slime_king/post_death()
 	..()
 	icon_state = "death"

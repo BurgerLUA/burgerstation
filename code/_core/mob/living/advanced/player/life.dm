@@ -6,8 +6,6 @@
 	if(mobdata)
 		mobdata.save_character(src,save_inventory = FALSE,died = TRUE,force = TRUE)
 
-	return .
-
 /mob/living/advanced/player/post_death()
 
 	play_sound_target(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src,channel=SOUND_CHANNEL_MUSIC)

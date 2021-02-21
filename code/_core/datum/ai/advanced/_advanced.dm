@@ -261,8 +261,6 @@
 		var/obj/item/weapon/melee/energy/E = W
 		if(!E.enabled) E.click_self(A)
 
-	return .
-
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
 	if(istype(W,/obj/item/weapon/melee/energy))

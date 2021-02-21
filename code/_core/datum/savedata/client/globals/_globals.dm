@@ -22,8 +22,6 @@ var/global/list/ckey_to_globaldata = list()
 	if(owner)
 		ckey_to_globaldata[ckey] = src
 
-	return .
-
 /savedata/client/globals/proc/save()
 	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"

@@ -26,8 +26,6 @@
 	if(ai && ai.objective_attack)
 		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
 
-	return .
-
 /mob/living/advanced/npc/zombie/post_death()
 	CALLBACK("zombie_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/zombie_revive)
 	return ..()
@@ -72,8 +70,6 @@
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
-	return .
-
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 	setup_sex()
 	return ..()
@@ -99,9 +95,6 @@
 	setup_appearance()
 	update_all_blends()
 	equip_loadout(loadout_to_use)
-
-	return .
-
 
 /mob/living/advanced/npc/zombie/get_emote_sound(var/emote_id)
 
@@ -143,9 +136,6 @@
 
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
-	return .
-
-
 /mob/living/advanced/npc/zombie/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
 
 	. = ..()
@@ -159,7 +149,6 @@
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
-	return .
 
 /mob/living/advanced/npc/zombie/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -176,9 +165,6 @@
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
-	return .
-
-
 /mob/living/advanced/npc/zombie/post_death()
 
 	. = ..()
@@ -188,8 +174,6 @@
 			'sound/voice/zombie/death_01.ogg'
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-
-	return .
 
 /mob/living/advanced/npc/zombie/winter
 	loadout_to_use = /loadout/zombie/winter

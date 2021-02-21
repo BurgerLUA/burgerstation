@@ -47,8 +47,6 @@
 		qdel(src)
 		return FALSE
 
-	return .
-
 /wound/proc/get_infection_modifier()
 	return clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
 

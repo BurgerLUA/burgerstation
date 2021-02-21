@@ -37,9 +37,6 @@
 				"You already have too many people with you."
 			)
 
-	return .
-
-
 /dialogue/npc/soldier/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()

@@ -46,8 +46,6 @@
 
 	owner.update_window()
 
-	return .
-
 /savedata/client/settings/proc/change_setting(var/setting_id,var/setting_value)
 	loaded_data[setting_id] = setting_value
 	save()

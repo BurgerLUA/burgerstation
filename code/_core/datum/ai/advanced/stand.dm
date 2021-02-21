@@ -19,7 +19,6 @@
 /ai/advanced/stand/set_objective(var/mob/living/L)
 	. = ..()
 	owner.set_dir(owner.dir,TRUE)
-	return .
 
 /ai/advanced/stand/is_enemy(var/atom/A,var/safety_check=TRUE)
 	if(is_living(A))

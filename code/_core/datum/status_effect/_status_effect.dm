@@ -87,9 +87,6 @@
 	if(owner.ignite(magnitude) && !initial_fire)
 		owner.visible_message(span("danger","\The [owner.name] is set on fire!"),span("danger","You're set on fire!"))
 
-	return .
-
-
 /status_effect/parried
 	name = "Parried"
 	desc = "You're parried!"
@@ -117,9 +114,6 @@
 				owner.add_status_effect(STUN,stun_time,stun_time)
 				animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
-	return .
-
-
 /status_effect/staggered
 	name = "Staggered"
 	desc = "You're staggered!"
@@ -143,8 +137,6 @@
 	if(source)
 		owner.move_delay = max(owner.move_delay,duration)
 
-	return .
-
 /status_effect/slip
 	name = "Slipped"
 	desc = "You slipped!"
@@ -162,7 +154,6 @@
 	var/list/throw_offset = direction_to_pixel_offset(throw_dir)
 	var/vel_magnitude = clamp(magnitude * 0.5,TILE_SIZE*0.5,TILE_SIZE-1)
 	owner.throw_self(owner,null,16,16,throw_offset[1]*vel_magnitude,throw_offset[2]*vel_magnitude, steps_allowed = clamp(CEILING(magnitude/20,1),1,6))
-	return .
 
 /status_effect/confused
 	name = "Confused"
@@ -221,7 +212,6 @@
 	if(owner.health) owner.health.update_health(check_death=FALSE)
 	owner.remove_status_effect(STAMCRIT)
 	owner.stamina_regen_delay = 0
-	return .
 
 /status_effect/resting
 	name = "Resting"

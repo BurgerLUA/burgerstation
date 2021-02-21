@@ -34,9 +34,6 @@
 
 	rustg_file_write(new_file_data,new_file_name)
 
-	return .
-
-
 /savedata/client/connection_history/get_folder(var/folder_id)
 	return replacetext(CONNECTION_PATH_FORMAT,"%CKEY",folder_id)
 

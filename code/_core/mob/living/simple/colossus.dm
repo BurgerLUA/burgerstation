@@ -86,7 +86,6 @@
 /mob/living/simple/colossus/post_death()
 	. = ..()
 	animate(src, pixel_z = 64, time = 30)
-	return .
 
 /mob/living/simple/colossus/handle_alpha()
 

@@ -46,8 +46,6 @@
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
 		handle_horizontal()
 
-	return .
-
 /mob/living/proc/remove_status_effect(var/status_type,var/fuck_you=FALSE)
 	if(!has_status_effect(status_type))
 		return FALSE

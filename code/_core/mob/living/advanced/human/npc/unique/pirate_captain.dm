@@ -59,13 +59,9 @@
 
 			next_revive = world.time + SECONDS_TO_DECISECONDS(5)
 
-
-	return .
-
 /mob/living/advanced/npc/unique/pirate_captain/Initialize()
 	. = ..()
 	equip_loadout(/loadout/pirate/captain)
-	return .
 
 /mob/living/advanced/npc/unique/pirate_mate
 	name = "HOS COOL"
@@ -87,7 +83,6 @@
 /mob/living/advanced/npc/unique/pirate_mate/Initialize()
 	. = ..()
 	equip_loadout(/loadout/pirate/mate)
-	return .
 
 /mob/living/advanced/npc/pirate_crew
 	name = "skeleton crew"
@@ -107,7 +102,6 @@
 /mob/living/advanced/npc/pirate_crew/Initialize()
 	. = ..()
 	equip_loadout(desired_loadout)
-	return .
 
 /mob/living/advanced/npc/pirate_crew/ranged
 	name = "skeleton crew marksman"

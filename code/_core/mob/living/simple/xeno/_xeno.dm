@@ -89,9 +89,6 @@
 
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
-	return .
-
-
 /mob/living/simple/xeno/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
 
 	. = ..()
@@ -105,7 +102,6 @@
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
-	return .
 
 /mob/living/simple/xeno/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -117,9 +113,6 @@
 			'sound/voice/xeno/hurt2.ogg'
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-
-	return .
-
 
 /mob/living/simple/xeno/post_death()
 
@@ -133,9 +126,6 @@
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
-
-	return .
-
 
 /mob/living/simple/xeno/Cross(atom/movable/O)
 
@@ -185,13 +175,10 @@
 	leaping = FALSE
 	update_sprite()
 
-	return .
-
 /mob/living/simple/xeno/post_move(var/old_loc)
 	. = ..()
 	if(.)
 		update_icon()
-	return .
 
 /mob/living/simple/xeno/update_icon()
 
