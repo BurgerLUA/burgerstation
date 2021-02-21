@@ -66,6 +66,7 @@
 #include "code\__defines\permissions.dm"
 #include "code\__defines\placement.dm"
 #include "code\__defines\plane.dm"
+#include "code\__defines\projectiles.dm"
 #include "code\__defines\qdel.dm"
 #include "code\__defines\radio.dm"
 #include "code\__defines\range.dm"
