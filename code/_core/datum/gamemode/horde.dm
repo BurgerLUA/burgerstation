@@ -103,11 +103,9 @@
 
 /gamemode/horde/on_continue()
 
-	if(!add_objective(/objective/kill_boss))
+	if(!add_objective(/objective/kill_boss) && !add_objective(/objective/artifact))
 		state = GAMEMODE_BREAK
 		SSvote.create_vote(/vote/continue_round)
-	else
-		add_objective(/objective/artifact)
 
 	points += 20
 

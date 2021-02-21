@@ -39,6 +39,7 @@
 				if(!L.add_status_effect(GRAB, source = caller))
 					caller.to_chat(span("warning","\The [object.name] is too strong to be grabbed!"))
 					return TRUE
+			SPAM_CHECK(5)
 			grab_object(caller,object,location,control,params)
 			return TRUE
 
