@@ -26,7 +26,6 @@
 	add_overlay(I1)
 	add_overlay(I2)
 
-	return .
 
 
 /obj/structure/interactive/power/apc/Initialize()
@@ -36,4 +35,3 @@
 /obj/structure/interactive/power/apc/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .

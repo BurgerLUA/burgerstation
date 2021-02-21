@@ -23,7 +23,6 @@ obj/structure/interactive/get_examine_list(var/mob/examiner)
 			if(0.9 to 0.95)
 				. += div("notice","It has a few scrapes.")
 
-	return .
 
 obj/structure/interactive/proc/can_repair(var/mob/living/advanced/caller,var/obj/item/I)
 

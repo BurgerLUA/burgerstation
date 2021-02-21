@@ -39,7 +39,6 @@
 		. = ..()
 		qdel(src)
 
-	return .
 
 /obj/structure/interactive/lighting/fixture/Finalize()
 	update_sprite()
@@ -67,7 +66,6 @@
 	IS.appearance_flags = RESET_COLOR | RESET_ALPHA
 	IS.color = color_frame
 	add_underlay(IS)
-	return .
 
 /obj/structure/interactive/lighting/fixture/update_overlays()
 

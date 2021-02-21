@@ -177,7 +177,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	. = list()
 	for(var/mob/M in range(range,epicenter))
 		. += M
-	return .
 
 /proc/get_clients_in_range(var/range,var/atom/epicenter=usr)
 
@@ -187,7 +186,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		if(get_dist(epicenter,M) > range)
 			continue
 		. += M
-	return .
 
 //Example Formats
 /*

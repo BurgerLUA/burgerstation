@@ -33,7 +33,7 @@
 
 	if(!length(possible_items))
 		qdel(src)
-		return .
+		return
 
 	stored_item = pick(possible_items)
 	stored_item.drop_item(src)
@@ -43,7 +43,6 @@
 		var/obj/item/I = k
 		qdel(I)
 
-	return .
 
 /obj/structure/interactive/shop/PostInitialize()
 
@@ -64,7 +63,6 @@
 				log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
 			name = "[stored_item.name] - [stored_item_cost] credits"
 
-	return .
 
 
 /obj/structure/interactive/shop/update_overlays()
@@ -89,7 +87,6 @@
 	O.pixel_x = -2
 	O.pixel_y = -4
 	add_overlay(O)
-	return .
 
 /obj/structure/interactive/shop/update_icon()
 	icon = ICON_INVISIBLE
@@ -118,7 +115,6 @@
 	else
 		. += div("notice","This item is being sold for [stored_item_cost] credits.")
 
-	return .
 
 /obj/structure/interactive/shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

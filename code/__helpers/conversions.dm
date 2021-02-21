@@ -66,7 +66,6 @@
 			else
 				. = "0" + .
 		i++
-	return .
 
 //Splits the text of a file at seperator and returns them in a list.
 //returns an empty list if the file doesn't exist

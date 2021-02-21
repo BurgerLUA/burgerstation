@@ -62,7 +62,7 @@
 				var/savedata/client/mob/U = P.mobdata
 				U.loaded_data["tutorial"] = 0
 				U.save_current_character()
-			return .
+			return
 		else
 			var/savedata/client/mob/U = P.mobdata
 			U.loaded_data["tutorial"] = 0

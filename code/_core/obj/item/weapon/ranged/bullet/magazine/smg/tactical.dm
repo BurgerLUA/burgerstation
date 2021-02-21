@@ -110,7 +110,6 @@
 	update_attachment_stats()
 	update_sprite()
 
-	return .
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt

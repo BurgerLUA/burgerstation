@@ -41,7 +41,6 @@ var/global/list/status_displays = list()
 	var/image/I = new(icon,"screen")
 	I.color = screen_color
 	underlays += I
-	return .
 
 /obj/structure/interactive/status_display/update_overlays()
 	. = ..()
@@ -51,13 +50,11 @@ var/global/list/status_displays = list()
 	var/image/I2 = new(icon,"reflection")
 	add_overlay(I2)
 
-	return .
 
 /obj/structure/interactive/status_display/New(var/desired_loc)
 	. = ..()
 	update_sprite()
 	set_text("Hello")
-	return .
 
 /obj/structure/interactive/status_display/proc/set_text(var/desired_text)
 	maptext = "<center style='font-size:1px'>[desired_text]</center>"

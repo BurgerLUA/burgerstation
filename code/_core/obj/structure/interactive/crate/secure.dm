@@ -12,7 +12,6 @@
 	. = ..()
 	var/image/I = new/image(icon,locked ? "secure_red" : "secure_green")
 	add_overlay(I)
-	return .
 
 
 /obj/structure/interactive/crate/secure/open(var/mob/caller)
@@ -74,7 +73,6 @@
 
 	. += div("notice","It contains: [english_list(contents_to_display)].")
 
-	return .
 
 /obj/structure/interactive/crate/secure/cargo/lock(var/mob/caller)
 
@@ -123,4 +121,3 @@
 		src.do_say("Transaction complete.")
 		credits_required = null
 
-	return .

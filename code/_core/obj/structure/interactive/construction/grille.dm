@@ -65,7 +65,6 @@
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/structure/interactive/construction/grille/plasteel
 	name = "plasteel grille"

@@ -40,7 +40,6 @@
 	I.layer = -100
 	I.color = base_color
 	underlays += I
-	return .
 
 /obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

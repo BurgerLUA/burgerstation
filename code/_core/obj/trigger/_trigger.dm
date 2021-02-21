@@ -5,7 +5,6 @@
 /obj/trigger/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	. = ..()
 	on_trigger(O)
-	return .
 
 /obj/trigger/proc/on_trigger(var/atom/triggerer)
 	return TRUE

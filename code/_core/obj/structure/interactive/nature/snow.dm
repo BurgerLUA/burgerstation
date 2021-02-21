@@ -70,7 +70,6 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "pine_stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
-	return .
 
 /obj/structure/interactive/tree/pine/New(var/desired_loc)
 	icon_state = "pine_[rand(1,3)]"
@@ -90,7 +89,6 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "evergreen_stump"
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
-	return .
 
 /obj/structure/interactive/tree/evergreen/New(var/desired_loc)
 	icon_state = "evergreen_[rand(1,3)]"
@@ -109,7 +107,6 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
-	return .
 
 /obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
@@ -128,7 +125,6 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
-	return .
 
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"

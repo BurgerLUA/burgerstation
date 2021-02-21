@@ -27,7 +27,6 @@
 	. = ..()
 	loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
 	qdel(src)
-	return .
 
 /obj/structure/should_smooth_with(var/turf/T)
 
@@ -47,7 +46,6 @@
 	if(desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color)
 
-	return .
 
 /obj/structure/proc/on_active(var/mob/living/advanced/player/P)
 	return TRUE

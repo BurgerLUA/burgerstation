@@ -29,7 +29,6 @@
 /obj/structure/interactive/plant/Finalize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/plant/Destroy()
 	SSbotany.all_plants -= src

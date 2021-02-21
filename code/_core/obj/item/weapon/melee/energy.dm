@@ -15,7 +15,6 @@
 /obj/item/weapon/melee/energy/get_examine_details_list(var/mob/examiner)
 	. = ..()
 	if(enabled) . += span("notice","It is active.")
-	return .
 
 /obj/item/weapon/melee/energy/click_self(var/mob/caller)
 	INTERACT_CHECK
@@ -125,7 +124,6 @@
 			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
 			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
-	return .
 
 
 /obj/item/weapon/melee/energy/sword/blue

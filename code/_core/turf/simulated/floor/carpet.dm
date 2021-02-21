@@ -22,4 +22,4 @@
 /turf/simulated/floor/carpet/office/New(var/desired_loc)
 	. = ..()
 	icon_state = "[rand(1,4)]"
-	return .
+	

@@ -123,7 +123,7 @@
 	)
 
 	value = 300
-	
+
 /obj/item/attachment/barrel/laser_charger/advanced
 	name = "experimental laser charger"
 	desc = "HYPERCHARGE."

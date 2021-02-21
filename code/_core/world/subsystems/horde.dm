@@ -346,7 +346,6 @@ SUBSYSTEM_DEF(horde)
 
 	. += FLOOR(DECISECONDS_TO_SECONDS(world.time)/60,2) //Every 60 seconds is two points.
 
-	return .
 
 /subsystem/horde/proc/check_threat_level()
 

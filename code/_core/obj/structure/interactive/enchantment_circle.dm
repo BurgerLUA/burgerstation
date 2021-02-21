@@ -99,7 +99,6 @@
 		var/obj/item/I = locate() in T.contents
 		if(I) . += I
 
-	return .
 
 /obj/structure/interactive/enchantment_circle/proc/try_enchant(var/mob/living/caller)
 

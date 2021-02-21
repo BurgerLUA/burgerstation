@@ -78,7 +78,6 @@ SUBSYSTEM_DEF(tax)
 
 	. = CEILING(.,1)
 
-	return .
 
 /subsystem/tax/proc/get_tax_amount(var/mob/living/advanced/player/P)
 
@@ -91,7 +90,6 @@ SUBSYSTEM_DEF(tax)
 	var/profit = P.revenue - P.expenses
 	. += get_bracket_tax(profit)
 
-	return .
 
 /subsystem/tax/proc/get_explaination(var/mob/living/advanced/player/P)
 

@@ -15,7 +15,6 @@
 
 
 /proc/scramble(var/text,var/strength = 50)
-
 	. = ""
 
 	for(var/word in splittext(text," "))
@@ -24,8 +23,6 @@
 				. += pick("!","@","#","$","%","^","&","*","(",")")
 			else
 				. += letter
-
-	return .
 
 
 

@@ -25,7 +25,6 @@
 		update_collisions(c_dir = desired_c_dir)
 
 
-	return .
 
 /obj/structure/interactive/disposals/machine/inlet/Crossed(atom/movable/O)
 	if(O.collision_flags & FLAG_COLLISION_ETHEREAL)

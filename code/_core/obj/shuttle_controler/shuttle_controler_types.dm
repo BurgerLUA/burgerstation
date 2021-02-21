@@ -48,7 +48,6 @@
 			start_thinking(OS)
 			OS.update_sprite()
 
-	return .
 
 /obj/shuttle_controller/delta
 	name = "delta shuttle controler"

@@ -47,7 +47,6 @@ obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 obj/structure/interactive/atmospherics/air_alarm/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 
 obj/structure/interactive/atmospherics/air_alarm/update_overlays()
@@ -55,7 +54,6 @@ obj/structure/interactive/atmospherics/air_alarm/update_overlays()
 	var/image/I = new /image(initial(icon),"air_alarm_light")
 	I.plane = PLANE_EFFECT_LIGHTING
 	add_overlay(I)
-	return .
 
 
 obj/structure/interactive/atmospherics/fan

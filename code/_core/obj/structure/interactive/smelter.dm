@@ -20,7 +20,6 @@
 /obj/structure/interactive/smelter/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/smelter/update_overlays()
 
@@ -37,7 +36,6 @@
 	add_overlay(I1)
 	add_overlay(I2)
 
-	return .
 
 /obj/structure/interactive/smelter/proc/smelt(var/atom/movable/O)
 

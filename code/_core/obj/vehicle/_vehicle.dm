@@ -40,7 +40,6 @@
 		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
 
-	return .
 
 
 /mob/living/vehicle/on_crush()
@@ -228,7 +227,6 @@
 			var/mob/living/L = k
 			L.set_dir(.)
 
-	return .
 
 /mob/living/vehicle/proc/enter_vehicle(atom/movable/Obj,atom/OldLoc)
 
@@ -267,7 +265,6 @@
 		var/atom/movable/M = k
 		M.force_move(src.loc)
 
-	return .
 
 /mob/living/vehicle/proc/exit_vehicle(atom/movable/Obj, atom/newloc)
 

@@ -13,18 +13,15 @@
 
 	if(battery) . += battery.get_value()
 
-	return .
 
 
 /obj/item/weapon/ranged/energy/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("battery")
-	return .
 
 /obj/item/weapon/ranged/energy/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("battery")
-	return .
 
 /obj/item/weapon/ranged/energy/Finalize()
 
@@ -33,7 +30,6 @@
 	if(!istype(battery))
 		battery = null
 
-	return .
 
 
 /obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

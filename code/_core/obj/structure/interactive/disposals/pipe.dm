@@ -18,7 +18,6 @@
 			.["[c_dir]"] = TRUE
 
 
-	return .
 
 /obj/structure/interactive/disposals/pipe/Finalize()
 
@@ -46,7 +45,6 @@
 	. = list()
 	.["[dir]"] = TRUE
 	.["0"] = TRUE
-	return .
 
 /obj/structure/interactive/disposals/pipe/junction
 	name = "junction disposals pipe"
@@ -57,7 +55,6 @@
 	.["[dir]"] = TRUE
 	.["[turn(dir,180)]"] = FALSE
 	.["[turn(dir,-90)]"] = FALSE
-	return .
 
 /obj/structure/interactive/disposals/pipe/junction/flipped
 	icon_state = "pipe-j2"
@@ -67,7 +64,6 @@
 	.["[dir]"] = TRUE
 	.["[turn(dir,180)]"] = FALSE
 	.["[turn(dir,90)]"] = FALSE
-	return .
 
 /obj/structure/interactive/disposals/pipe/junction/sorting
 	name = "junction sorting disposals pipe"
@@ -78,7 +74,6 @@
 	.["[dir]"] = TRUE
 	.["[turn(dir,180)]"] = FALSE
 	.["[turn(dir,-90)]"] = sorting_tag
-	return .
 
 
 /obj/structure/interactive/disposals/pipe/junction/sorting/flipped
@@ -90,7 +85,6 @@
 	.["[dir]"] = TRUE
 	.["[turn(dir,180)]"] = FALSE
 	.["[turn(dir,90)]"] = sorting_tag
-	return .
 
 /obj/structure/interactive/disposals/pipe/x
 	name = "4-way junction disposals pipe"

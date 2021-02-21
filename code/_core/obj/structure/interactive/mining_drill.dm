@@ -27,7 +27,6 @@
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/structure/interactive/mining_drill/update_icon()
 
@@ -56,7 +55,6 @@
 /obj/structure/interactive/mining_drill/post_move()
 	drill_depth = 0
 	found_deposit = null
-	return .
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
 	if(!check_valid())
@@ -135,7 +133,6 @@
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/structure/interactive/mining_brace/Destroy()
 	var/obj/structure/interactive/mining_drill/MD = locate() in get_step(src,dir)

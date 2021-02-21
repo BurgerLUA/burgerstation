@@ -31,7 +31,6 @@
 		if(length(passengers) && passengers[1])
 			create_alert(VIEW_RANGE,T,passengers[1],ALERT_LEVEL_NOISE)
 
-	return .
 
 /mob/living/vehicle/mech/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 	var/real_dir = get_dir(src,NewLoc)
@@ -43,7 +42,6 @@
 /mob/living/vehicle/mech/post_death()
 	. = ..()
 	update_sprite()
-	return .
 
 /mob/living/vehicle/mech/get_movement_delay()
 	return movement_delay
@@ -153,7 +151,6 @@
 	FINALIZE(M2)
 	src.attach_equipment(null,M2)
 
-	return .
 
 
 /mob/living/vehicle/mech/durand

@@ -144,7 +144,6 @@ proc/undelete(var/datum/object_to_delete)
 		SSdelete.objects_to_delete_safe -= object_to_delete
 		. = TRUE
 
-	return .
 
 
 

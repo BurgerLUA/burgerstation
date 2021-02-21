@@ -25,7 +25,6 @@
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/structure/smooth/wall/wood
 	name = "short wood wall"

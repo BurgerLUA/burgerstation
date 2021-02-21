@@ -16,17 +16,14 @@
 /obj/item/weapon/melee/crystal/Finalize()
 	. = ..()
 	update_inventory()
-	return .
 
 /obj/item/weapon/melee/crystal/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("shape")
-	return .
 
 /obj/item/weapon/melee/crystal/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("shape")
-	return .
 
 /obj/item/weapon/melee/crystal/click_self(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 

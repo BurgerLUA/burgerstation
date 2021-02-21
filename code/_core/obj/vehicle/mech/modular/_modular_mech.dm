@@ -116,7 +116,6 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	if(battery) . += span("notice","It has \the [battery.name] inserted in the chassis. It has a charge rating of ([battery.charge_current]/[battery.charge_max]).")
 
-	return .
 
 
 /mob/living/vehicle/mech/modular/attach_equipment(var/mob/caller,var/obj/item/I)
@@ -137,7 +136,6 @@ var/global/list/stored_mechs_by_ckey = list()
 			stored_mechs_by_ckey[owner_ckey] = list()
 		stored_mechs_by_ckey[owner_ckey] += src
 
-	return .
 
 /mob/living/vehicle/mech/modular/proc/generate_name()
 	name = "Mech Unit [uppertext(copytext(owner_ckey,1,4))]-[uppertext(copytext(mech_id,1,4))]"
@@ -184,7 +182,6 @@ var/global/list/stored_mechs_by_ckey = list()
 	SAVEATOM("battery")
 
 
-	return .
 
 /mob/living/vehicle/mech/modular/proc/load_mech_data(var/mob/living/advanced/player/P,var/list/object_data)
 
@@ -237,7 +234,6 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	update_sprite()
 
-	return .
 
 /mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/I)
 
@@ -483,7 +479,6 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	if(head) add_overlay(head)
 
-	return .
 
 /mob/living/vehicle/mech/modular/update_icon()
 
@@ -495,7 +490,6 @@ var/global/list/stored_mechs_by_ckey = list()
 		icon_state = "backbone"
 		set_dir(SOUTH)
 
-	return .
 
 /mob/living/vehicle/mech/modular/set_dir(var/desired_dir,var/force=FALSE)
 

@@ -34,7 +34,6 @@
 	if(desired_owner)
 		desired_owner.linked_nodes += src
 
-	return .
 
 /obj/structure/interactive/blob/node/update_overlays()
 	. = ..()

@@ -15,7 +15,6 @@ obj/structure/interactive/computer/wall/Initialize()
 obj/structure/interactive/computer/wall/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 obj/structure/interactive/computer/wall/update_icon()
 

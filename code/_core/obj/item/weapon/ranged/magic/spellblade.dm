@@ -59,7 +59,6 @@
 	if(.)
 		src.attack_next = world.time + shoot_delay
 
-	return .
 
 /obj/item/weapon/ranged/magic/spellblade/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
 	if(caller.attack_next > world.time)

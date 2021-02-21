@@ -21,17 +21,14 @@
 /obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("scroll_count")
-	return .
 
 /obj/item/weapon/ranged/magic/scroll/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("scroll_count")
-	return .
 
 /obj/item/weapon/ranged/magic/scroll/get_value()
 	. = ..()
 	. *= (1 + scroll_count)
-	return .
 
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
 	shoot(caller,object,location,params)

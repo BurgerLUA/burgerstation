@@ -53,5 +53,4 @@ SUBSYSTEM_DEF(text)
 		return name
 	. = "[name] the [player_names[name][ckey]]\th"
 	SSlogging.log_chat("[name] ([ckey]) had their name forced to [.] due to duplication.")
-	return .
 

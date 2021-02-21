@@ -85,8 +85,6 @@
 			var/obj/light_sprite/LS = k
 			LS.set_dir(desired_dir,force)
 
-	return .
-
 /atom/movable/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -95,8 +93,6 @@
 		for(var/k in light_sprite_sources)
 			var/obj/light_sprite/LS = k
 			LS.force_move(src.loc)
-
-	return .
 
 
 /atom/movable/New(var/desired_loc)
@@ -132,8 +128,6 @@
 		T.blocks_air |= blocks_air
 		if(T && is_simulated(T))
 			QUEUE_AIR_TURF(T)
-
-	return .
 
 /atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
 

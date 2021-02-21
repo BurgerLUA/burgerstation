@@ -207,10 +207,10 @@ mob/living/advanced/player/on_life_client()
 	if(dead && istype(grabber, /mob/living/advanced/player/antagonist/))
 		if(istype(src, /mob/living/advanced/player/antagonist/))
 			return ..() // person being grabbed is also antag, allows revs and syndies to grab each other (maybe check IFF?)
-		
+
 		if(messages)
 			var/mob/living/grabberMob = grabber
 			grabberMob.to_chat(span("warning", "Ew! Why would I touch a disgusting [name]!"))
-		
+
 		return FALSE
 	return ..()

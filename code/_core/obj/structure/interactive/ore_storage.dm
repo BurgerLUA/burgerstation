@@ -21,12 +21,10 @@
 	. = ..()
 	start_thinking(src)
 	update_sprite()
-	return .
 
 /obj/structure/interactive/ore_storage/update_icon()
 	. = ..()
 	icon_state = "ore_storage"
-	return .
 
 /obj/structure/interactive/ore_storage/Cross(atom/movable/O)
 

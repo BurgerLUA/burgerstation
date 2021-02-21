@@ -32,11 +32,9 @@
 				INITIALIZE(GOD)
 				FINALIZE(GOD)
 
-	return .
 /obj/structure/interactive/ground_ore_deposit/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/ground_ore_deposit/proc/mine()
 	if(src.ore_score <= 0)
@@ -61,7 +59,6 @@
 /obj/structure/interactive/ground_ore_deposit/get_examine_list(var/mob/examiner)
 	. = ..()
 	. += div("notice","The meter detects an ore concentration of [ore_score]%.")
-	return .
 
 /obj/structure/interactive/ground_ore_deposit/update_sprite()
 
@@ -71,7 +68,7 @@
 
 	if(!M)
 		log_error("Warning: Material id [material_id] does not exist for ground deposit!")
-		return .
+		return
 
 
 	if(M.icon_state_ore_deposit)
@@ -83,7 +80,6 @@
 
 	alpha = min(40 + (ore_score/100)*255,255)
 
-	return .
 
 /obj/structure/interactive/ground_ore_deposit/map
 	ore_score = 200

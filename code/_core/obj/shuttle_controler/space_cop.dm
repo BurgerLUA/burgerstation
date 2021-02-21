@@ -30,7 +30,7 @@
 			if(!length(possible_destinations))
 				log_error("Space Cops Path Error: Couldn't find a shuttle controller to go to!")
 				announce("Space Cops","Space Cops Investigation","We currently arrived at the LZ. We've parked our ship in a secure area, please do not distrub us.")
-				return .
+				return
 
 			var/obj/structure/interactive/computer/console/remote_flight/RF = pick(possible_destinations)
 
@@ -41,7 +41,7 @@
 			if(!N_end)
 				log_error("Space Cops Path Error: Couldn't find closet node to [RF]!")
 				announce("Space Cops","Space Cops Investigation","We currently arrived at the LZ. We've parked our ship in a secure area, please do not distrub us.")
-				return .
+				return
 
 			announce("Space Cops","Space Cops Investigation","We currently arrived at the LZ, and are begining our investigation at [A2.name].")
 

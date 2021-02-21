@@ -141,7 +141,6 @@
 /atom/Finalize()
 	. = ..()
 	update_name(name) //Setup labels
-	return .
 
 /atom/New()
 
@@ -152,8 +151,6 @@
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
 	set_dir(dir,TRUE)
-
-	return .
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src
@@ -184,8 +181,6 @@
 		var/turf/T2 = get_step(T,dir)
 		if(T2.is_space())
 			. |= dir
-
-	return .
 
 
 /atom/proc/get_best_touching_space(var/intercardinal = TRUE)

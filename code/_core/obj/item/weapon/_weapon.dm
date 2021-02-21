@@ -27,7 +27,6 @@
 	if(enchantment)
 		. += div("notice","It's enchanted with [enchantment.name].")
 
-	return .
 
 /obj/item/weapon/update_icon()
 
@@ -85,12 +84,10 @@
 
 
 
-	return .
 
 /obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
-	return .
 
 /obj/item/weapon/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 

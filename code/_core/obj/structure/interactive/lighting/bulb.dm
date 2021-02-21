@@ -45,7 +45,6 @@
 		. = ..()
 		qdel(src)
 
-	return .
 
 /obj/structure/interactive/lighting/bulb/Initialize()
 
@@ -58,7 +57,6 @@
 /obj/structure/interactive/lighting/bulb/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/lighting/tube/update_atom_light()
 	if(on && desired_light_color)
@@ -94,4 +92,3 @@
 		IS.alpha = 100
 		add_overlay(IS)
 
-	return .

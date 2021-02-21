@@ -15,17 +15,14 @@
 	if(total_charge > initial(total_charge)*2)
 		. += span("warning","Overcharged: Uses twice as many charge as it is above capacity.")
 
-	return .
 
 /obj/item/weapon/ranged/magic/staff/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("total_charge")
-	return .
 
 /obj/item/weapon/ranged/magic/staff/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("total_charge")
-	return .
 
 
 /obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller)

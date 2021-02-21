@@ -73,13 +73,11 @@
 
 	. = ..()
 
-	return .
 
 
 /obj/marker/generation/PostInitialize()
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/marker/generation/grass
 	object_to_place = /obj/structure/scenery/grass

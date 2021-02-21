@@ -3,8 +3,6 @@
 	for(var/dir in DIRECTIONS_CARDINAL)
 		if(input & dir)
 			. += dir
-	return .
-
 
 
 /proc/nice_number(var/input)

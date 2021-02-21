@@ -314,13 +314,11 @@
 	if(. && P && (P in equipped_players))
 		P.to_chat(span("notice","You already selected your equipment!"))
 		return FALSE
-	return .
 
 /obj/structure/interactive/vending/autolocker/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 	. = ..()
 	if(. && P && !(P in equipped_players))
 		equipped_players += P
-	return .
 */
 
 /obj/structure/interactive/vending/junk
@@ -385,7 +383,6 @@
 		B.name = "beaker of [R.name]"
 		FINALIZE(B)
 
-	return .
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
@@ -399,12 +396,10 @@
 			I2.reagents.add_reagent(r_id,amount,should_update = FALSE)
 		I2.reagents.update_container()
 
-	return .
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/Finalize()
 	. = ..()
 	sortTim(stored_objects, /proc/cmp_name_dsc)
-	return .
 
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"

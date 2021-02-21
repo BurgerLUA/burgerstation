@@ -16,7 +16,6 @@
 			qdel(mob_to_image[M])
 			mob_to_image[M] = null
 
-	return .
 
 /obj/structure/interactive/localmachine/snowflake/proc/set_icon_state_mob(var/mob/M,var/icon_state)
 

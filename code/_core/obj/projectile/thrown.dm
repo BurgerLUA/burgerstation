@@ -33,7 +33,6 @@
 				hit_wall = current_loc
 		A.on_thrown(owner,hit_atom,hit_wall)
 
-	return .
 
 /*Old
 /obj/projectile/bullet/thrown/post_on_hit(var/atom/hit_atom)
@@ -63,6 +62,4 @@
 				if(!L.dead)
 					L.add_stun(10)
 
-
-	return .
 */

@@ -65,7 +65,6 @@
 	if(!.)
 		active = FALSE
 
-	return .
 
 
 /obj/structure/interactive/emitter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

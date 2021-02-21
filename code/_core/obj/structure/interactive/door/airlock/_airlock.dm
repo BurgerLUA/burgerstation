@@ -48,7 +48,6 @@
 	else
 		. = ..()
 		qdel(src)
-		return .
 
 
 
@@ -318,7 +317,6 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		if(!L.dead)
 			open(L)
 
-	return .
 
 /obj/structure/interactive/door/airlock/glass
 	filler = "glass"

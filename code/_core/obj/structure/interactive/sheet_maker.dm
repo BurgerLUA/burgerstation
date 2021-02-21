@@ -17,12 +17,10 @@ obj/structure/interactive/sheet_maker
 obj/structure/interactive/sheet_maker/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 obj/structure/interactive/sheet_maker/update_icon()
 	. = ..()
 	icon_state = "sheet_maker"
-	return .
 
 obj/structure/interactive/sheet_maker/Cross(atom/movable/O)
 	if(make_sheet(O))

@@ -27,7 +27,6 @@
 		var/atom/movable/M = k
 		. += span("notice","It contains \the [M.name].")
 
-	return .
 
 /obj/structure/smooth/table/grill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

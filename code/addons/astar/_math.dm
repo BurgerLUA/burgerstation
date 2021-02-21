@@ -6,7 +6,6 @@
 	for(var/turf/T in range(radius+3,A))
 		if(get_dist_real(T,A) < radius + 0.5)
 			. += T
-	return .
 
 /proc/sign(var/x)
 	return ((x<0)?-1:((x>0)?1:0))

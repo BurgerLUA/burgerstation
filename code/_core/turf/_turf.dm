@@ -59,7 +59,6 @@
 	if(opacity)
 		has_opaque_atom = TRUE
 
-	return .
 
 /turf/Destroy()
 
@@ -119,7 +118,6 @@
 	if(!enterer.qdeleting && is_living(enterer))
 		do_footstep(enterer,TRUE)
 
-	return .
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
@@ -131,7 +129,6 @@
 	if(!exiter.qdeleting && is_living(exiter))
 		do_footstep(exiter,FALSE)
 
-	return .
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return istype(health)

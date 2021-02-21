@@ -42,7 +42,6 @@
 			var/obj/item/bullet_cartridge/B = src.stored_bullets[i]
 			if(B) .["stored_bullets"][i] = B.type
 
-	return .
 
 /obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
@@ -63,7 +62,6 @@
 				FINALIZE(B)
 				src.stored_bullets[i] = B
 
-	return .
 
 
 /obj/item/weapon/ranged/bullet/get_examine_list(var/mob/examiner)
@@ -73,7 +71,6 @@
 	if(chambered_bullet)
 		. += div("notice","There is a bullet loaded in the chamber.")
 
-	return .
 
 /obj/item/weapon/ranged/bullet/Destroy()
 	QDEL_NULL(chambered_bullet)
@@ -181,7 +178,6 @@
 	if(chambered_bullet.qdeleting)
 		chambered_bullet = null
 
-	return .
 
 /obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
 
@@ -209,7 +205,6 @@
 		stored_bullets = null
 
 	update_sprite()
-	return .
 
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return chambered_bullet ? 1 : 0
