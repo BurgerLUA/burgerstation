@@ -18,7 +18,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          curl https://raw.githubusercontent.com/goonstation/goonstation/master/tools/ci/sources.list | sudo tee /etc/apt/sources.list
+          curl https://raw.githubusercontent.com/BurgerLUA/burgerstation/master/tools/ci/sources.list | sudo tee /etc/apt/sources.list
           sudo dpkg --add-architecture i386
           sudo apt-get update
           sudo apt install libstdc++6:i386
