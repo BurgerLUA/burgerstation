@@ -33,4 +33,4 @@ jobs:
           echo "MANPATH=/home/runner/BYOND/byond/man:$MANPATH" >> $GITHUB_ENV
       - name: Compile
         run: |
-          tools/ci/dm.sh -DCIBUILD goonstation.dme
+          tools/ci/dm.sh -DCIBUILD burgerstation.dme
