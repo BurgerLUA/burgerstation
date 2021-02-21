@@ -73,7 +73,6 @@
 
 	return "#[num2hex(lum_r, 2)][num2hex(lum_g, 2)][num2hex(lum_g, 2)]"
 
-#define SCALE(targ,min,max) (targ - min) / (max - min)
 
 // Used to get a scaled lumcount.
 /turf/proc/get_lumcount(minlum = 0, maxlum = 1)
