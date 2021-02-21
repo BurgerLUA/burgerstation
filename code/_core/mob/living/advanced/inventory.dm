@@ -66,4 +66,3 @@
 	. = list()
 	if(left_hand) . += left_hand.drop_objects(T)
 	if(right_hand) . += right_hand.drop_objects(T)
-	return .

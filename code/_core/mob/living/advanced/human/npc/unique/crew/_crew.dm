@@ -24,5 +24,3 @@
 	change_organ_visual("hair_head", desired_color = "#FFFFFF", desired_icon_state = "none")
 	update_all_blends()
 	equip_loadout(/loadout/bartender)
-
-	return .

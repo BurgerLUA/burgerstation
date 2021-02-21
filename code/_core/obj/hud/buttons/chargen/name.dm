@@ -30,17 +30,14 @@
 
 		var/choice = input(P,"What would you like your name to be?","Name Change",P.real_name) as text|null
 
-		if(!choice)
-			return .
+		if(!choice) return
 
 		if(caller.client)
 			choice = police_input(caller.client,choice,40)
 
-		if(!choice)
-			return .
+		if(!choice) return
 
 		P.real_name = choice
 		P.setup_name()
 		maptext = "<center>[P.real_name]</center>"
 
-	

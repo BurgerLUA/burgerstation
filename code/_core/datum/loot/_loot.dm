@@ -14,7 +14,7 @@
 		var/loot/L = LOOT(type_to_spawn)
 		for(var/i=1,i<=loot_multiplier,i++)
 			. += L.create_loot_table(spawn_loc)
-		return .
+		return
 
 	for(var/i=1,i<=loot_multiplier,i++)
 		. += new type_to_spawn(spawn_loc)
@@ -55,5 +55,3 @@
 			if(!allow_duplicates)
 				new_table -= selection
 			. += create_loot(selection,spawn_loc)
-
-	return .

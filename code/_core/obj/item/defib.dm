@@ -179,5 +179,3 @@
 	if(. && linked_defib && isturf(loc))
 		placed_target_ref = null
 		src.drop_item(linked_defib)
-
-	return .

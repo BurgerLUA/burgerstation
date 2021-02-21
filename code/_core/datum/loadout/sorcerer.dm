@@ -33,4 +33,3 @@
 	. = ..()
 	. += pick(random_weapon)
 	. += pick(random_tome)
-	return .

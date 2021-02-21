@@ -48,5 +48,3 @@
 			if(!L.qdeleting && !A.qdeleting)
 				L.convert(A)
 
-	return .
-

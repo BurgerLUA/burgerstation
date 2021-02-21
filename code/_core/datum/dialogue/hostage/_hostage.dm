@@ -43,8 +43,7 @@
 
 	var/mob/living/advanced/npc/unique/hostage/L = P.dialogue_target
 
-	if(!L.ai)
-		return .
+	if(!L.ai) return
 
 	if(L.hostage)
 		switch(topic)
@@ -58,4 +57,3 @@
 					P.followers += L
 					L.ai.set_move_objective(P,TRUE)
 					L.following = P
-	

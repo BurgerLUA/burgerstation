@@ -56,8 +56,7 @@
 
 	. = ..()
 
-	if(!.)
-		return .
+	if(!.) return
 
 	var/area/A = get_area(caller)
 	if(A.flags_area & FLAGS_AREA_TUTORIAL)

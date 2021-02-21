@@ -22,18 +22,6 @@
 
 	soul_size = null
 
-/*
-/mob/living/simple/silicon/engineer
-	name = "engineer cyborg"
-	icon_state = "engineer"
-
-/mob/living/simple/silicon/engineer/PostInitialize()
-	. = ..()
-	flick("engineer_transform",src)
-	return .
-*/
-
-
 /mob/living/simple/silicon/squats
 	name = "S.Q.U.A.T.S."
 	icon_state = "squats"

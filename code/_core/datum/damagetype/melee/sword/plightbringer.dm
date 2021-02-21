@@ -81,5 +81,3 @@
 	if(total_damage_dealt && is_living(victim))
 		var/mob/living/L = victim
 		L.ignite(SPEED_GREATAXE*2)
-
-	return .

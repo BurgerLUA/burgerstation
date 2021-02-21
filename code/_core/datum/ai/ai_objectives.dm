@@ -170,8 +170,7 @@
 
 	var/range_to_use = get_view_range()
 
-	if(range_to_use <= 0)
-		return .
+	if(range_to_use <= 0) return
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))

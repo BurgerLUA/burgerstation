@@ -22,11 +22,9 @@
 
 	if(. && owner.initialized)
 
-		if(!health_max)
-			return .
+		if(!health_max)	return
 
-		if(!is_organ(owner))
-			return .
+		if(!is_organ(owner)) return
 
 		var/obj/item/organ/O = owner
 

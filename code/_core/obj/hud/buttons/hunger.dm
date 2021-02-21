@@ -23,7 +23,7 @@
 	update_underlays()
 	update_overlays()
 
-	
+
 /obj/hud/button/hunger/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -37,7 +37,7 @@
 		. += "Your energy level is [FLOOR(100 * L.get_nutrition_mod() * L.get_hydration_mod() * quality_mod,1)]%."
 
 
-	
+
 /obj/hud/button/hunger/update_underlays()
 
 	. = ..()
@@ -46,13 +46,12 @@
 	swap_colors(I)
 	underlays += I
 
-	
+
 /obj/hud/button/hunger/update_overlays()
 
 	. = ..()
 
-	if(!is_living(owner))
-		return .
+	if(!is_living(owner)) return
 
 	var/initial_icon = initial(icon)
 
@@ -82,4 +81,3 @@
 	var/icon/I2 = new/icon(icon,"hunger_thirst_detail")
 	add_overlay(I2)
 
-	

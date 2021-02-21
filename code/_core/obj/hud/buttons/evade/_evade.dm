@@ -15,7 +15,7 @@
 
 	update_sprite()
 
-	
+
 /obj/hud/button/evade/update_overlays()
 
 	overlays.Cut()
@@ -23,7 +23,7 @@
 	. = ..()
 
 	if(!is_living(owner))
-		return .
+		return
 
 	var/mob/living/L = owner
 
@@ -44,7 +44,7 @@
 
 	add_overlay(I)
 
-	
+
 /obj/hud/button/evade/block
 	name = "block"
 	desc = "Easily blocked!"

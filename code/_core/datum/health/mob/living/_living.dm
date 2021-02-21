@@ -53,8 +53,7 @@
 
 	if(.)
 
-		if(!is_living(owner))
-			return .
+		if(!is_living(owner)) return
 
 		var/mob/living/L = owner
 
@@ -95,8 +94,7 @@
 
 	. = ..()
 
-	if(!is_living(owner))
-		return .
+	if(!is_living(owner)) return
 
 	var/mob/living/L = owner
 

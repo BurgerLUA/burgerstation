@@ -9,5 +9,3 @@
 			if(drug_mod >= 100)
 				sight |= SEE_MOBS
 				sight &= ~BLIND
-
-	return .

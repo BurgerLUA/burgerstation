@@ -30,7 +30,7 @@
 	if(. && owner)
 		update_overlays()
 
-	
+
 /obj/hud/button/targeting_new/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -38,8 +38,7 @@
 	if(. && is_player(caller) && caller.client)
 		var/mob/living/advanced/player/P = caller
 		var/click_flags = P.client.get_click_flags(params,TRUE)
-		if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y])
-			return .
+		if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y]) return
 		var/x_click = text2num(params[PARAM_ICON_X])/2
 		var/y_click = text2num(params[PARAM_ICON_Y])/2
 
@@ -62,7 +61,7 @@
 		P.attack_left = left
 		update_overlays()
 
-	
+
 /obj/hud/button/targeting_new/update_overlays()
 
 	overlays.Cut()
@@ -85,4 +84,3 @@
 	add_overlay(right_overlay)
 	add_overlay(preset_overlay)
 
-	

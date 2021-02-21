@@ -25,5 +25,3 @@
 				owner_as_hierophant.chain_blast_random()
 			if(2)
 				owner_as_hierophant.chain_blast_targets()
-
-	return .

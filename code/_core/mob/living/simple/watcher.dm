@@ -89,4 +89,3 @@
 /mob/living/simple/watcher/clockwork/post_death()
 	. = ..()
 	anchored = FALSE
-	return .

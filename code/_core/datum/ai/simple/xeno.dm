@@ -10,8 +10,7 @@
 
 	. = ..()
 
-	if(!istype(owner,/mob/living/simple/xeno/))
-		return .
+	if(!istype(owner,/mob/living/simple/xeno/)) return
 
 	var/mob/living/simple/xeno/X = owner
 
@@ -28,4 +27,3 @@
 			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 
-	

@@ -10,7 +10,6 @@ obj/effect/temp/impact/bullet/New(var/desired_location,var/desired_time,var/desi
 	color = desired_color
 	pixel_x = desired_pixel_x
 	pixel_y = desired_pixel_y
-	return .
 
 
 obj/effect/temp/impact/bullet/laser

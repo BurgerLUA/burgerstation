@@ -48,9 +48,7 @@
 
 	if(client) //Sometimes antags go afk.
 		var/savedata/client/globals/G = GLOBALDATA(client.ckey)
-		if(!G) return .
+		if(!G) return
 		if(!G.loaded_data["stored_experience"]) G.loaded_data["stored_experience"] = list()
 		G.loaded_data["stored_experience"][E.id] += added_xp
-
-	return .
 

@@ -2,7 +2,7 @@
 
 	. = ..()
 
-	if(.) return .
+	if(.) return
 
 	var/species/S = SPECIES(species)
 	if(gender == MALE)

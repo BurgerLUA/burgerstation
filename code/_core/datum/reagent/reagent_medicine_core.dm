@@ -298,8 +298,6 @@
 		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=tox_to_adjust,robotic=FALSE)
 
 /reagent/medicine/synthflesh/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-
 	. = ..()
 	owner.brute_regen_buffer += .*2
 	owner.burn_regen_buffer += .*2
-	return .

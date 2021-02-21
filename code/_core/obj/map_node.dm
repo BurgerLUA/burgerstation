@@ -105,8 +105,7 @@ var/global/list/stored_paths = list()
 
 	. = list()
 
-	if(!point_A || !point_B)
-		return .
+	if(!point_A || !point_B) return .
 
 	var/mob/abstract/node_checker/NC = new /mob/abstract/node_checker(point_A)
 	var/limit = 10

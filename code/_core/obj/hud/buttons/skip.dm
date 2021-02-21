@@ -13,9 +13,8 @@
 
 
 /obj/hud/button/skip/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
 	. = ..()
 
 	if(.)
 		caller.skip_cutscene = TRUE
-
-	return .
