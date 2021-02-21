@@ -49,6 +49,7 @@
 				var/mob/living/L = caller
 				L.visible_message(span("notice","\The [caller.name] adds \the [name] to \the [B.name]."),span("notice","You add \the [name] to \the [B.name]."))
 			reagents.transfer_reagents_to(B.reagents,amount_to_transfer)
+			if(reagents.volume_current <= 0) qdel(src)
 			return TRUE
 
 	return ..()

@@ -20,6 +20,20 @@
 
 	return src
 
+
+/obj/structure/interactive/scanner/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	. = ..()
+
+	if(.) return .
+
+	for(var/k in P.contents)
+		var/atom/movable/M = k
+		if(!src.Cross(M))
+			return src
+
+	return .
+
 /atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return null
 
