@@ -24,4 +24,4 @@
 	put_in_hands(B,FALSE)
 	put_in_hands(L,TRUE)
 
-	return .
+	

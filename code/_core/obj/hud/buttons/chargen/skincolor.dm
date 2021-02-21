@@ -31,4 +31,4 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 		if(desired_color)
 			A.handle_skincolor_chargen(desired_color)
 
-	return .
+	

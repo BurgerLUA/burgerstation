@@ -242,4 +242,4 @@
 		else
 			play_sound('sound/weapons/magic/ash.ogg',get_turf(src),range_max=VIEW_RANGE)
 
-	return .
+	

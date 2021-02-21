@@ -77,4 +77,4 @@
 			if(ALERT_LEVEL_COMBAT)
 				. += div("danger","[capitalize(pronoun)] appears to be in a combative stance, with intent to fight [ai.objective_attack]!")
 
-	return .
+	

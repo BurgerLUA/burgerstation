@@ -7,4 +7,4 @@ var/global/list/obj/marker/chasm_fall/all_fall_markers = list()
 /obj/marker/chasm_fall/Initialize()
 	. = ..()
 	all_fall_markers += src
-	return .
+	

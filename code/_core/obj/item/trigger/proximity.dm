@@ -21,12 +21,10 @@
 /obj/item/device/proximity/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("time_set")
-	return .
 
 /obj/item/device/proximity/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("time_set")
-	return .
 
 /obj/item/device/proximity/click_self(var/mob/caller)
 	INTERACT_CHECK

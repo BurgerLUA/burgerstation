@@ -56,4 +56,4 @@
 		if(!target.dead) target.rejuvenate()
 		update_sprite()
 
-	return .
+	

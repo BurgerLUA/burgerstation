@@ -124,4 +124,4 @@ mob/living/advanced/get_movement_delay()
 				else
 					left_hand.release_object()
 
-	return .
+	

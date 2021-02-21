@@ -113,4 +113,4 @@
 
 	next_allowed_topic = world.time + 1
 
-	return .
+	

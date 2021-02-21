@@ -80,4 +80,4 @@
 		. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
 		. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")
 
-	return .
+	

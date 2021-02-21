@@ -222,4 +222,4 @@
 	for(var/i=1,i<=content_length,i++)
 		.[i] = contents[i].save_item_data(save_inventory)
 
-	return .
+	

@@ -17,4 +17,4 @@
 
 	animate(src, alpha = 175, pixel_x = offset_x, pixel_y = offset_y, time = duration*0.4, easing = QUAD_EASING | EASE_OUT)
 
-	return .
+	

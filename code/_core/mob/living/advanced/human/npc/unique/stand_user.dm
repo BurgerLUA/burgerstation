@@ -17,4 +17,4 @@
 	stand.generate()
 	stand.linked_stand.set_enabled(TRUE)
 
-	return .
+	

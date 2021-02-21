@@ -89,4 +89,4 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	. += ..()
 
-	return .
+	

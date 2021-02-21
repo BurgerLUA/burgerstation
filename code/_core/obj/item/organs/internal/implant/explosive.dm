@@ -14,4 +14,4 @@
 			explode(T,40,A,src)
 			A.smite()
 
-	return .
+	

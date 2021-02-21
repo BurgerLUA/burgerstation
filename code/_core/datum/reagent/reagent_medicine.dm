@@ -329,4 +329,4 @@
 		owner.brute_regen_buffer += 8*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)
 		owner.tox_regen_buffer -= 0.1*.
 
-	return .
+	

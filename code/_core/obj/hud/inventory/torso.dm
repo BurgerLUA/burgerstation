@@ -90,4 +90,4 @@
 		if(A.holster_item == I)
 			A.holster_item = null
 
-	return .
+	

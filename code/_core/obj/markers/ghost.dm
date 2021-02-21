@@ -10,4 +10,4 @@ var/global/list/turf/ghost_markers = list()
 /obj/marker/ghost/Finalize()
 	. = ..()
 	qdel(src)
-	return .
+	

@@ -127,4 +127,4 @@
 		var/mob/living/advanced/player/P = caller
 		P.set_structure_unactive()
 
-	return .
+	

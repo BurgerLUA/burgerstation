@@ -54,4 +54,4 @@ var/global/list/limbs_to_value = list(
 	if(is_container)
 		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.35
 
-	return .
+	

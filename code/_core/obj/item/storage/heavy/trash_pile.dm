@@ -62,4 +62,4 @@
 		stored_beefman.ai.set_objective(caller)
 		stored_beefman = null
 
-	return .
+	

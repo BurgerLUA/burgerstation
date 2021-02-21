@@ -162,4 +162,4 @@
 	else
 		stop_thinking(src)
 
-	return .
+	

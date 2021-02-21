@@ -63,4 +63,4 @@
 	owner.burn_regen_buffer += .*1
 	owner.pain_regen_buffer += .*2.5
 
-	return .
+	

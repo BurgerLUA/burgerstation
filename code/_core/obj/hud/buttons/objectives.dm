@@ -51,4 +51,4 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 			maptext = null
 			animate(src,alpha = 100,time = 1)
 
-	return .
+	

@@ -120,4 +120,4 @@
 	I.blend_mode = BLEND_ADD
 	I.plane = PLANE_LIGHTING
 	add_overlay(I)
-	return .
+	

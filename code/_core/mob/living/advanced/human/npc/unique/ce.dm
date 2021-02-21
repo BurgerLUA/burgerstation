@@ -15,4 +15,4 @@
 	change_organ_visual("hair_face", desired_color = "#291F1D", desired_icon_state = "facial_muttonmus_s")
 	update_all_blends()
 	equip_loadout(/loadout/chief_engineer)
-	return .
+	

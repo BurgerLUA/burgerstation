@@ -104,4 +104,4 @@
 		else
 			L.to_chat(span("danger","You don't have a stand for some reason!"))
 
-	return .
+	

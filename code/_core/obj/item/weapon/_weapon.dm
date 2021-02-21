@@ -100,4 +100,4 @@
 		enchantment.name = enchant_data["name"]
 		enchantment.strength = enchant_data["strength"]
 
-	return .
+	

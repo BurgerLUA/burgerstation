@@ -45,4 +45,4 @@
 	desc = "Don't ERP."
 	desc_extended = "A guide on how to master the art of enchanting."
 	data = SSpaper.all_paper_data["a guide to enchanting"].Copy()
-	return .
+	

@@ -536,4 +536,4 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)
 
-	return .
+	

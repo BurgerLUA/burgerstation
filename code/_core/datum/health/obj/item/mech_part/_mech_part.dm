@@ -35,4 +35,4 @@
 		var/mob/living/vehicle/mech/modular/A = owner.loc
 		A.queue_health_update = TRUE
 
-	return .
+	

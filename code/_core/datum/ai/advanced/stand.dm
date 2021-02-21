@@ -64,4 +64,4 @@
 	. = ..()
 	if(istype(L,/mob/living/advanced/stand/))
 		. += 10
-	return .
+	

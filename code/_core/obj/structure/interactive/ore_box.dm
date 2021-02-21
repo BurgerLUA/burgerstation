@@ -41,4 +41,4 @@
 
 	. += div("notice","The counter shows [length(contents)] objects inside.")
 
-	return .
+	

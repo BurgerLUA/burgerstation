@@ -55,4 +55,4 @@
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()
 	update_all_blends()
-	return .
+	

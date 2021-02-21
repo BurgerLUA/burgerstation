@@ -12,4 +12,4 @@
 	desc = "Winners don't drugs! Besides meth."
 	desc_extended = "A catalog featuring all the medical recipes known to man."
 	data = SSreagent.stored_book_data["Chemistry"].Copy()
-	return .
+	

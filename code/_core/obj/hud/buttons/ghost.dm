@@ -150,4 +150,4 @@
 	. = ..()
 	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
-	return .
+	

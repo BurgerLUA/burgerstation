@@ -25,7 +25,8 @@
 
 	. = ..()
 
-	if(.) return .
+	if(.)
+		return //Don't run the rest
 
 	for(var/k in P.contents)
 		var/atom/movable/M = k
@@ -124,4 +125,3 @@
 		else if(luck(P.owner,bullet_block_chance,FALSE))
 			return null
 
-	return .

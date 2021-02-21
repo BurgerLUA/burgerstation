@@ -14,4 +14,4 @@
 	change_organ_visual("hair_head", desired_color = "#634933", desired_icon_state = "hair_long")
 	update_all_blends()
 	equip_loadout(/loadout/hop)
-	return .
+	

@@ -36,4 +36,4 @@
 /obj/item/storage/egg_carton/update_inventory()
 	. = ..()
 	update_sprite()
-	return .
+	

@@ -248,4 +248,4 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,14)
 
-	return .
+	

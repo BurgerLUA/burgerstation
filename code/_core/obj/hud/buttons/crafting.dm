@@ -58,4 +58,4 @@
 			B.mouse_opacity = 0
 			B.stored_crafting_table = null
 
-	return .
+	

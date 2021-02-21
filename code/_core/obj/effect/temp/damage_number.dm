@@ -34,4 +34,4 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 		spawn(duration - 5)
 			animate(src,alpha=0,time = 5)
 
-	return .
+	

@@ -85,4 +85,4 @@
 	var/icon/I2 = new/icon(icon,"hunger_thirst_detail")
 	add_overlay(I2)
 
-	return .
+	

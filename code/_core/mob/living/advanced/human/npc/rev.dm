@@ -52,4 +52,4 @@
 
 	equip_loadout(loadout_to_use)
 
-	return .
+	

@@ -37,4 +37,4 @@ var/global/list/armor_slowdown_values = list(
 
 	. = max(.,0)
 
-	return .
+	

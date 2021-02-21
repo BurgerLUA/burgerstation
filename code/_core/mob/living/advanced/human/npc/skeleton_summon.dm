@@ -12,4 +12,4 @@
 /mob/living/advanced/npc/skeleton_summon/Initialize()
 	. = ..()
 	equip_loadout(desired_loadout)
-	return .
+	

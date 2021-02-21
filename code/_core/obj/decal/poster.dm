@@ -21,4 +21,4 @@
 /obj/decal/poster/syndicate/PostInitialize() //Random negative poster.
 	. = ..()
 	icon_state = "poster[rand(1,44)]"
-	return .
+	

@@ -58,4 +58,4 @@
 					P.followers += L
 					L.ai.set_move_objective(P,TRUE)
 					L.following = P
-	return .
+	

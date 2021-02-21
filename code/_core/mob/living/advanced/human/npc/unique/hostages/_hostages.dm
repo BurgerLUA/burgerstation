@@ -41,4 +41,4 @@
 	. = ..()
 	update_all_blends()
 	equip_loadout(/loadout/scientist)
-	return .
+	

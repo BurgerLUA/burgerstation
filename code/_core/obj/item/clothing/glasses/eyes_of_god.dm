@@ -34,4 +34,4 @@
 		new_location.owner.add_color_mod("eyes",desired_color)
 		new_location.owner.add_lighting_mod("\ref[src]",100)
 
-	return .
+	

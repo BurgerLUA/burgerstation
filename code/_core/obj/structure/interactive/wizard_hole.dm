@@ -41,4 +41,4 @@
 			else
 				L.force_move(get_step(linked_wormhole,L.dir))
 
-	return .
+	

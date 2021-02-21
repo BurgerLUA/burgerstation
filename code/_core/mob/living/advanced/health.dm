@@ -35,4 +35,4 @@
 
 	HOOK_CALL("on_damage_received") //For hulking and whatnot.
 
-	return .
+	

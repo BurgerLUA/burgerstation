@@ -43,4 +43,4 @@
 		P.setup_name()
 		maptext = "<center>[P.real_name]</center>"
 
-	return .
+	

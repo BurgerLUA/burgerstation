@@ -28,4 +28,4 @@
 			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 
-	return .
+	

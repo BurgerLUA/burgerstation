@@ -94,4 +94,4 @@ var/global/list/obj/structure/interactive/localmachine/snowflake/airlock/externa
 /obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/New(var/desired_loc)
 	. = ..()
 	tutorial_docks += src
-	return .
+	

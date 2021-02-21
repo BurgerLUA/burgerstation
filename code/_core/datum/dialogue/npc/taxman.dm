@@ -56,4 +56,4 @@
 		else
 			P.to_chat(span("warning","You can't pay your taxes yet, you're too early!"))
 
-	return .
+	

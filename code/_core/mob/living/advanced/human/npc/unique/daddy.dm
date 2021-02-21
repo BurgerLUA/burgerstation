@@ -16,4 +16,4 @@
 
 	equip_loadout(/loadout/daddy)
 
-	return .
+	

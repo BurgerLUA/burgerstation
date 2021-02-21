@@ -69,4 +69,4 @@
 
 	. *= clamp(atom_alpha/255,0,1) * lightness
 
-	return .
+	

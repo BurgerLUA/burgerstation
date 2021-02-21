@@ -210,4 +210,4 @@
 						clothing_defense *= 0.5
 				.[damage_type] += FLOOR(clothing_defense,1)
 
-	return .
+	
