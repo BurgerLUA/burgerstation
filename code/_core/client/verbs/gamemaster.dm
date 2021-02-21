@@ -151,7 +151,7 @@
 	set name = "Give Dosh"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to give money to?") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to give money to?") as mob|null in all_players
 
 	if(!P)
 		return FALSE
@@ -226,7 +226,7 @@
 	set name = "Rejuvenate Player"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to rejuvenate?","Player Rejuvenation") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to rejuvenate?","Player Rejuvenation") as mob|null in all_players
 
 	if(!P)
 		return FALSE
@@ -352,7 +352,7 @@
 	set name = "Add Language"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") as mob|null in all_players
 
 	if(!P)
 		return FALSE
@@ -379,7 +379,7 @@
 	set name = "Remove Language"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") as mob|null in all_players
 
 	if(!P)
 		return FALSE
