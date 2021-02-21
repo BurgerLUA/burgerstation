@@ -34,8 +34,7 @@
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.death()
-	return .
-
+	
 /obj/item/organ/torso/female
 	desc = "A torso. Female variant"
 	icon_state = BODY_TORSO_FEMALE

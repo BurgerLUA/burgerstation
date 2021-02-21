@@ -16,14 +16,12 @@
 /obj/item/storage/kit/New(var/desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)][rand(1,4)]"
-	return .
-
+	
 /*
 /obj/item/storage/kit/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("icon_state")
-	return .
-
+	
 /obj/item/storage/kit/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("icon_state")

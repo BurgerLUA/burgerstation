@@ -82,8 +82,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		var/mob/living/advanced/A = desired_owner
 		A.handle_hairstyle_chargen(A.sex == MALE ? 2 : 16)
 
-	return .
-
+	
 /obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -94,8 +93,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_head))
 		A.handle_hairstyle_chargen(hair_num)
 
-	return .
-
+	
 /obj/hud/button/chargen/change_hairstyle/left
 	name = "cycle hairstyle left"
 	dir = WEST
@@ -161,8 +159,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		if(desired_color)
 			A.handle_hairstyle_chargen(hair_num,desired_color)
 
-	return .
-
+	
 /obj/hud/button/chargen/hairstyle/slot01
 	icon_state = "square_trim"
 	screen_loc = "CENTER-2,CENTER+4"

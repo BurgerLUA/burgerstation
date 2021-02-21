@@ -20,16 +20,14 @@
 	SAVEVAR("icon_state")
 	SAVEVAR("damage_type_to_add")
 	SAVEVAR("damage_to_add")
-	return .
-
+	
 /obj/item/powergem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("rarity")
 	LOADVAR("icon_state")
 	LOADVAR("damage_type_to_add")
 	LOADVAR("damage_to_add")
-	return .
-
+	
 /obj/item/powergem/Generate()
 
 	icon_state = "gem[rand(1,5)]"
@@ -67,8 +65,7 @@
 
 	. += span("notice","Adds [damage_to_add] [damage_type_to_add] damage to attacks.")
 
-	return .
-
+	
 /obj/item/powergem/Finalize()
 
 	name = "[rarity] power gem of [damage_type_to_add]"

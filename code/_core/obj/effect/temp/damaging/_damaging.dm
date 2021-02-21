@@ -62,8 +62,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,32)
-	return .
-
+	
 /obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
 
 	if(is_living(victim) && is_living(owner) && owner != victim)
@@ -215,10 +214,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0.14)
 
-	return .
-
-
-
+	
 /obj/effect/temp/hazard/curse
 	name = "lava"
 	icon = 'icons/obj/structure/cult/effects.dmi'

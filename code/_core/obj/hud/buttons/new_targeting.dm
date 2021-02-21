@@ -30,9 +30,7 @@
 	if(. && owner)
 		update_overlays()
 
-	return .
-
-
+	
 /obj/hud/button/targeting_new/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -64,8 +62,7 @@
 		P.attack_left = left
 		update_overlays()
 
-	return .
-
+	
 /obj/hud/button/targeting_new/update_overlays()
 
 	overlays.Cut()

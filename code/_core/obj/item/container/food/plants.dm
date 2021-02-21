@@ -98,8 +98,7 @@
 
 	SAVEVAR("delete_after_harvest")
 
-	return .
-
+	
 /obj/item/container/food/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 
@@ -120,8 +119,7 @@
 
 	LOADVAR("delete_after_harvest")
 
-	return .
-
+	
 /obj/item/container/food/plant/nitrogen_flower
 	name = "nitrogen flower"
 	icon_state = "nitrogen_flower"

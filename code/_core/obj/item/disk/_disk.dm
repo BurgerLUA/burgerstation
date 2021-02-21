@@ -20,8 +20,7 @@
 /obj/item/disk/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("data")
-	return .
-
+	
 /obj/item/disk/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("data")
@@ -30,8 +29,7 @@
 /obj/item/disk/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/disk/update_icon()
 
 	icon = initial(icon)

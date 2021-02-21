@@ -21,9 +21,7 @@
 	I.color = COLOR_STEEL
 	add_overlay(I)
 
-	return .
-
-
+	
 /obj/item/container/beaker/bucket/water
 	name = "water bucket"
 	color = COLOR_BLUE

@@ -84,18 +84,15 @@
 
 	icon_state = "blank"
 
-	return .
-
+	
 /obj/item/dice/d20/cursed/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("used")
-	return .
-
+	
 /obj/item/dice/d20/cursed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("used")
-	return .
-
+	
 /obj/item/dice/d20/cursed/roll_dice(var/mob/caller,var/silent=FALSE)
 
 	if(used)
@@ -226,10 +223,7 @@
 
 	used = chosen_number
 
-	return .
-
-
-
+	
 /obj/item/dice/d2
 	name = "d2"
 	icon_state = "d2"

@@ -4,8 +4,7 @@
 	desc = "FIRE SALE ON TOOTHPASTE? FINALLY"
 	desc_extended = "A catalog featuring the many items you can buy from cargo."
 	data = SScargo.catalog_data.Copy()
-	return .
-
+	
 /obj/item/paper/book/chemistry/Initialize()
 	. = ..()
 	name = "reference: Chemistry"

@@ -11,8 +11,7 @@
 	update_sprite()
 	. = ..()
 	update_stats()
-	return .
-
+	
 /obj/hud/button/health/bar/update_stats(var/mob/living/M)
 	var/math = FLOOR((current/max) * 28, 1)
 	icon_state = "bar_[clamp(math,0,28)]"

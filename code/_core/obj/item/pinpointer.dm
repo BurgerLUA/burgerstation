@@ -26,8 +26,7 @@
 	else
 		. += div("notice","It's off.")
 
-	return .
-
+	
 /obj/item/pinpointer/proc/can_track(var/atom/A)
 
 	if(!A)
@@ -55,15 +54,13 @@
 /obj/item/pinpointer/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/pinpointer/update_underlays()
 	. = ..()
 	if(!length(underlays))
 		var/image/I = new/image(initial(icon),initial(icon_state))
 		underlays += I
-	return .
-
+	
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
 	return ..()
@@ -89,8 +86,7 @@
 	else
 		icon_state = "null"
 
-	return .
-
+	
 /obj/item/pinpointer/think()
 
 	if(scan_mode || !can_track(tracked_atom) )

@@ -370,8 +370,7 @@
 		I.overlays.Cut()
 		I.update_overlays()
 
-	return .
-
+	
 /obj/item/get_examine_list(var/mob/examiner)
 
 	. = list()
@@ -399,8 +398,7 @@
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
-	return .
-
+	
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
 
 	var/obj/hud/inventory/I = inventory_override || src.loc

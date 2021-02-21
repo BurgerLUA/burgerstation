@@ -23,8 +23,7 @@
 	update_underlays()
 	update_overlays()
 
-	return .
-
+	
 /obj/hud/button/hunger/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -38,8 +37,7 @@
 		. += "Your energy level is [FLOOR(100 * L.get_nutrition_mod() * L.get_hydration_mod() * quality_mod,1)]%."
 
 
-	return .
-
+	
 /obj/hud/button/hunger/update_underlays()
 
 	. = ..()
@@ -48,8 +46,7 @@
 	swap_colors(I)
 	underlays += I
 
-	return .
-
+	
 /obj/hud/button/hunger/update_overlays()
 
 	. = ..()

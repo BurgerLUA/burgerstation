@@ -74,8 +74,7 @@
 
 				return FALSE
 
-	return .
-
+	
 /obj/hud/button/research/board/proc/add_points(var/points_to_add)
 	level = 1 + FLOOR(points/5,1)
 	time_left += (points_to_add)*10 //In Deciseconds

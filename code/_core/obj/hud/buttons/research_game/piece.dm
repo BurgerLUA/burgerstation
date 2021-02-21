@@ -249,14 +249,11 @@
 /obj/hud/button/research/piece/update_sprite()
 	. = ..()
 	screen_loc = "CENTER+[x_p-RESEARCH_BOARD_SIZE*0.5],CENTER+[y_p-RESEARCH_BOARD_SIZE*0.5]"
-	return .
-
-
+	
 /obj/hud/button/research/piece/update_icon()
 	. = ..()
 	icon_state = "piece_static"
-	return .
-
+	
 /obj/hud/button/research/piece/update_underlays()
 
 	. = ..()

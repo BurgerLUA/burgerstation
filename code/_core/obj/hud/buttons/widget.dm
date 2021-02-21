@@ -56,8 +56,7 @@
 				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)]</b>\n")
 		L.to_chat(final_text)
 
-	return .
-
+	
 /obj/hud/button/widget/logout
 	name = "Logout"
 	icon_state = "logout_new"
@@ -71,8 +70,7 @@
 		var/mob/living/advanced/player/P = caller
 		P.logout()
 
-	return .
-
+	
 /obj/hud/button/widget/change_theme
 	name = "Change Theme"
 	icon_state = "theme_new"

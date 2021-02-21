@@ -34,9 +34,7 @@
 
 	update_sprite()
 
-	return .
-
-
+	
 /obj/item/hand_teleporter/update_icon()
 
 	icon_state = initial(icon_state)
@@ -54,13 +52,11 @@
 /obj/item/hand_teleporter/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("battery")
-	return .
-
+	
 /obj/item/hand_teleporter/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("battery")
-	return .
-
+	
 /obj/item/hand_teleporter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)

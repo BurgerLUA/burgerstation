@@ -32,8 +32,7 @@
 /obj/item/radio/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(stored_radio) .["stored_radio"] = stored_radio.save_item_data(save_inventory)
-	return .
-
+	
 /obj/item/radio/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["stored_radio"]) stored_radio = load_and_create(P,object_data["stored_radio"],src)

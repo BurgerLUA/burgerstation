@@ -34,8 +34,6 @@
 		hidden_organs = list(BODY_HAIR_HEAD = TRUE, BODY_HAIR_FACE = TRUE)
 		worn_layer = LAYER_MOB_CLOTHING_MASK
 
-	return .
-
-
+	
 /obj/item/clothing/head/hat/bandana/red
 	color = "#880000"

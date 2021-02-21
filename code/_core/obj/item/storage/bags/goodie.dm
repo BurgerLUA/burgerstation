@@ -14,13 +14,11 @@
 /obj/item/storage/bags/goodie/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("loot_generated")
-	return .
-
+	
 /obj/item/storage/bags/goodie/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("loot_generated")
-	return .
-
+	
 /obj/item/storage/bags/goodie/click_self(var/mob/caller)
 
 	if(!loot_generated)

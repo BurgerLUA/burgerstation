@@ -15,8 +15,7 @@
 /obj/effect/temp/hazard/hierophant/New(var/desired_location,var/desired_time,var/desired_owner)
 	. = ..()
 	play_sound('sound/effects/wand_teleport.ogg',get_turf(src))
-	return .
-
+	
 /obj/effect/temp/hazard/hierophant/Initialize()
 	CALLBACK("copy_hazard_\ref[src]",copy_delay,src,.proc/copy_hazard)
 	return ..()
@@ -32,8 +31,7 @@
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,14)
 
-	return .
-
+	
 /obj/effect/temp/hazard/hierophant/proc/copy_hazard()
 
 

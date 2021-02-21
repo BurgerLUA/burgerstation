@@ -9,8 +9,7 @@ obj/effect/temp/impact/combat/New(var/desired_loc,var/desired_pixel_x,var/desire
 	. = ..()
 	pixel_x = desired_pixel_x
 	pixel_y = desired_pixel_y
-	return .
-
+	
 /obj/effect/temp/impact/combat/smash
 	icon_state = "smash"
 

@@ -126,8 +126,7 @@
 /obj/hud/inventory/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/hud/inventory/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
@@ -151,8 +150,7 @@
 	else
 		color = initial(color)
 
-	return .
-
+	
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
 	//OVERLAY BUG, NOT THIS.

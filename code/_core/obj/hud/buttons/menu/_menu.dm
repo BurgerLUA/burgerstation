@@ -22,8 +22,7 @@
 	if(. && caller.client && command_to_run)
 		winset(caller.client,null,"command=[command_to_run]")
 
-	return .
-
+	
 /obj/hud/button/menu/selection/New(var/desired_loc)
 	color = null
 	return ..()

@@ -15,8 +15,7 @@
 
 	update_sprite()
 
-	return .
-
+	
 /obj/hud/button/evade/update_overlays()
 
 	overlays.Cut()
@@ -45,8 +44,7 @@
 
 	add_overlay(I)
 
-	return .
-
+	
 /obj/hud/button/evade/block
 	name = "block"
 	desc = "Easily blocked!"

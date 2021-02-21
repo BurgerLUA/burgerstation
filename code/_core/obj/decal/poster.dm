@@ -16,8 +16,7 @@
 /obj/decal/poster/nanotrasen/PostInitialize() //Random positive poster.
 	. = ..()
 	icon_state = "poster[rand(1,35)]_legit"
-	return .
-
+	
 /obj/decal/poster/syndicate/PostInitialize() //Random negative poster.
 	. = ..()
 	icon_state = "poster[rand(1,44)]"

@@ -109,8 +109,7 @@
 
 	if(.) update_sprite()
 
-	return .
-
+	
 /obj/item/container/food/package/junkfood/halloween/create_packaging()
 	var/obj/item/trash/T = ..()
 	T.icon = icon

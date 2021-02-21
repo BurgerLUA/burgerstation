@@ -54,8 +54,7 @@
 	if(is_spent)
 		. *= 0.05
 
-	return .
-
+	
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
 	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
 
@@ -65,18 +64,15 @@
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/bullet_cartridge/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/bullet_cartridge/update_icon()
 
 	if(!is_spent)
@@ -101,8 +97,7 @@
 			I.pixel_y = cos(i*bullet_seed)*TILE_SIZE % 16
 			add_overlay(I)
 
-	return .
-
+	
 /obj/item/bullet_cartridge/get_examine_list(var/mob/examiner)
 
 	. = ..()
@@ -113,8 +108,7 @@
 	if(item_count_current > 1)
 		. += div("notice","It contains [item_count_current] [src.name]\s.")
 
-	return .
-
+	
 /obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
 
 	if(!is_spent)

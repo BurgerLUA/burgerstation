@@ -28,8 +28,7 @@
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 	update_sprite()
-	return .
-
+	
 /obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(caller != object || !is_advanced(caller))

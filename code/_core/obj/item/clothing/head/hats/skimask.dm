@@ -42,9 +42,7 @@
 		hidden_organs = list(BODY_HAIR_HEAD = TRUE, BODY_HAIR_FACE = TRUE)
 		worn_layer = LAYER_MOB_CLOTHING_HEADWRAP
 
-	return .
-
-
+	
 /obj/item/clothing/head/hat/skimask/black
 	color = COLOR_BLACK
 

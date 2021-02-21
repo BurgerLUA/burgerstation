@@ -46,8 +46,7 @@
 	. += growth_min
 	. += max(0,100-growth_max)*0.25
 	. += max(0,200-growth_produce_max)*0.25
-	return .
-
+	
 /obj/item/seed/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 
@@ -65,8 +64,7 @@
 
 	SAVEVAR("delete_after_harvest")
 
-	return .
-
+	
 /obj/item/seed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 
@@ -84,9 +82,7 @@
 
 	LOADVAR("delete_after_harvest")
 
-	return .
-
-
+	
 /obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(isturf(object))

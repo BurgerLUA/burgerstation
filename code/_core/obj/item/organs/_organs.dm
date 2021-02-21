@@ -144,13 +144,11 @@
 /obj/item/organ/New()
 	. = ..()
 	attached_organs = list()
-	return .
-
+	
 /obj/item/organ/PostInitialize()
 	. = ..()
 	initialize_blends()
-	return .
-
+	
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 
 	if(inventories)

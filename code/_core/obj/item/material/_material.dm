@@ -22,13 +22,11 @@
 /obj/item/material/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEPATH("material_id")
-	return .
-
+	
 /obj/item/material/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADPATH("material_id")
-	return .
-
+	
 /obj/item/material/Initialize()
 	if(!SSmaterials.all_materials[material_id])
 		log_error("Warning: [src.get_debug_name()] had invalid material id \"[material_id]\".")
@@ -43,8 +41,7 @@
 /obj/item/material/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/material/get_base_value()
 	var/material/M = SSmaterials.all_materials[material_id]
 	return ..() * M.value_per_unit * material_multiplier

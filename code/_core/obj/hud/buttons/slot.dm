@@ -37,8 +37,7 @@
 	else
 		color = "#FFFFFF"
 
-	return .
-
+	
 /obj/hud/button/slot/update_overlays()
 
 	. = ..()
@@ -49,8 +48,7 @@
 		I.plane = PLANE_HUD_OBJ
 		add_overlay(I)
 
-	return .
-
+	
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
 	if(stored_atom && stored_atom.qdeleting)
@@ -102,8 +100,7 @@
 	if(.)
 		clear_object(caller)
 
-	return .
-
+	
 /obj/hud/button/slot/proc/store_atom(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))

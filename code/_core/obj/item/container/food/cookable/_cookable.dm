@@ -7,8 +7,7 @@
 /obj/item/container/food/cookable/update_icon()
 	. = ..()
 	icon_state = "[initial(icon_state)][cooked ? "_cooked" : ""]"
-	return .
-
+	
 /obj/item/container/food/cookable/dough
 	name = "dough"
 	desc = "Get that dough"

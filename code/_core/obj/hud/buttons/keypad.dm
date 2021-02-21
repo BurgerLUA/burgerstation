@@ -20,8 +20,7 @@
 		var/mob/living/advanced/player/P = caller
 		P.set_device_unactive()
 
-	return .
-
+	
 /obj/hud/button/keypad/top
 	icon_state = "keypad_top"
 	screen_loc = "CENTER+2,CENTER+2"

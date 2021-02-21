@@ -50,8 +50,7 @@
 			var/obj/item/bullet_cartridge/B = stored_bullets[i]
 			if(B) .["stored_bullets"][B.type] += 1
 
-	return .
-
+	
 /obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
@@ -65,8 +64,7 @@
 				FINALIZE(B)
 				stored_bullets += B
 
-	return .
-
+	
 /obj/item/magazine/Generate()
 
 	if(ammo)
@@ -94,8 +92,7 @@
 /obj/item/magazine/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
-
+	
 /obj/item/magazine/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","It contains [length(stored_bullets)] bullets.")
 

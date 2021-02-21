@@ -27,8 +27,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 		A.remove_color_scheme_buttons()
 		A.client.settings.save()
 
-	return .
-
+	
 /obj/hud/button/default_color_scheme
 	name = "close color scheme"
 	icon_state = "default"
@@ -58,8 +57,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 		A.client.update_window()
 
-	return .
-
+	
 /obj/hud/button/color_scheme
 	name = "color scheme button changer"
 	desc = "Press this."
@@ -99,8 +97,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 			A.client.update_window()
 
-	return .
-
+	
 /obj/hud/button/color_scheme/update_icon()
 
 	if(!owner || !is_advanced(owner))

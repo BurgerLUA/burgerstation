@@ -79,8 +79,7 @@
 		var/mob/living/advanced/A = owner
 		A.holster_item = I.defer_click_on_object(null,null,null)
 
-	return .
-
+	
 /obj/hud/inventory/organs/torso_ob/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
 
 	. = ..()

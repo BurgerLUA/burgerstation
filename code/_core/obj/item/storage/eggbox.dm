@@ -26,8 +26,7 @@
 
 	icon_state = "[initial(icon_state)][clamp(filled_slots,0,12)]"
 
-	return .
-
+	
 /obj/item/storage/egg_carton/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)
 		new/obj/item/container/food/egg/chicken(src)
