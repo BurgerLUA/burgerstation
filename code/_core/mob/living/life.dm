@@ -174,7 +174,7 @@
 
 	return TRUE
 
-/mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(dead)
 		return FALSE

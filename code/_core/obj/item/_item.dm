@@ -673,8 +673,11 @@
 	return null
 
 
-/obj/item/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	if(quality <= 0)
+		if(ismob(attacker))
+			var/mob/M = attacker
+			M.to_chat(span("danger","\The [src.name] is broken!"))
 		return FALSE
 	return ..()
 

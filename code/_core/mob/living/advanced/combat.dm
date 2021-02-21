@@ -18,9 +18,9 @@
 
 	return ..()
 
-/mob/living/advanced/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/advanced/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(driving && !driving.can_attack(victim,weapon,params,damage_type))
+	if(driving && !driving.can_attack(attacker,victim,weapon,params,damage_type))
 		return FALSE
 
 	if(attack_flags & CONTROL_MOD_BLOCK)

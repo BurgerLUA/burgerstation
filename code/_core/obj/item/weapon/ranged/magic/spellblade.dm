@@ -57,7 +57,7 @@
 	. = ..()
 
 	if(.)
-		caller.attack_next = max(caller.attack_next,world.time + shoot_delay)
+		src.attack_next = world.time + shoot_delay
 
 	return .
 

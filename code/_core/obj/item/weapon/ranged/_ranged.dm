@@ -159,7 +159,7 @@
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
 
-	if(!caller.can_attack(object,src,location,params))
+	if(!caller.can_attack(caller,object,src,location,params))
 		return FALSE
 
 	return TRUE

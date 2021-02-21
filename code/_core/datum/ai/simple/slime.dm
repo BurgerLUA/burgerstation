@@ -20,7 +20,7 @@
 	if(self.stored_slimes + S.stored_slimes > self.stored_slimes_max)
 		return FALSE
 
-	if(!S.can_attack(self,S,null,null))
+	if(!S.can_attack(S,self,S,null,null))
 		return FALSE
 
 	return TRUE

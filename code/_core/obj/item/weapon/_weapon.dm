@@ -52,13 +52,16 @@
 
 	return ..()
 
-/obj/item/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(wield_only && !wielded && !is_inventory(object))
-		caller.to_chat(span("warning","You can only attack with this when wielded! (CTRL+CLICK)"))
-		return TRUE
+	if(wield_only && !wielded)
+		if(ismob(attacker))
+			var/mob/M = attacker
+			M.to_chat(span("warning","You can only attack with this when wielded! (CTRL+CLICK)"))
+		return FALSE
 
 	return ..()
+
 
 /obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	wielded = FALSE

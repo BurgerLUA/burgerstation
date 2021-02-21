@@ -133,7 +133,7 @@
 
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
-		var/can_attack = attacker.can_attack(v,object_to_damage_with,params,DT)
+		var/can_attack = attacker.can_attack(attacker,v,object_to_damage_with,params,DT)
 		var/can_be_attacked = v.can_be_attacked(attacker,object_to_damage_with,params,DT)
 		if(can_attack && can_be_attacked)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
@@ -171,7 +171,7 @@
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
 	return src
 
-/atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/atom/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(attack_next > world.time)
 		return FALSE

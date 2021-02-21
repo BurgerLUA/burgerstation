@@ -29,7 +29,7 @@
 	qdel(src)
 	return .
 
-/obj/structure/interactive/blob/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/structure/interactive/blob/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(!health || health.health_current <= 0 || !color || color == "#FFFFFF")
 		return FALSE
@@ -50,7 +50,7 @@
 	. = FALSE
 
 	for(var/mob/living/L in range(1,src))
-		if(!src.can_attack(L,src,null,damage_type))
+		if(!src.can_attack(src,L,src,null,damage_type))
 			continue
 		if(!L.can_be_attacked(src,src,null,damage_type))
 			continue
