@@ -18,7 +18,7 @@
 /obj/projectile/spray/post_on_hit(var/atom/hit_atom)
 	if(reagents.volume_current)
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
-	. = return ..()
+	. = ..()
 
 /obj/projectile/spray/update_projectile(var/tick_rate=1)
 	. = ..()
