@@ -17,7 +17,6 @@
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 
-	return .
 
 /obj/structure/interactive/hand_implanter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

@@ -12,7 +12,6 @@ obj/structure/smooth/
 obj/structure/smooth/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 obj/structure/smooth/update_icon()
 
@@ -98,5 +97,4 @@ obj/structure/smooth/update_icon()
 		I.alpha = 100
 		add_overlay(I)
 
-	return .
 

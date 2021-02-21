@@ -33,13 +33,11 @@
 		if(damage_number > 0)
 			var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
 			add_overlay(I)
-	return .
 
 /obj/structure/smooth/window/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/structure/smooth/window/Destroy()
 	queue_update_smooth_edges(src,include_self = FALSE)

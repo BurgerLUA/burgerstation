@@ -34,7 +34,7 @@
 
 			for(var/mob/living/L in A.contents)
 				if(!L.dead && L.client)
-					return .
+					return
 				if(L.loyalty_tag == "Syndicate")
 					found_syndicate += L
 				else if(!L.is_player_controlled())
@@ -50,7 +50,7 @@
 
 			if(!length(valid_spots))
 				log_error("Spawn Error: Couldn't find any chairs to spawn syndicate on!")
-				return .
+				return
 
 			spawn for(var/i=1,i<=min(5-length(found_syndicate),SShorde.get_enemies_to_spawn()),i++)
 				CHECK_TICK(75,0)
@@ -69,13 +69,13 @@
 
 			if(!B || !B.loc)
 				log_error("Path Error: Couldn't find a landmark to go to!")
-				return .
+				return
 
 			var/obj/marker/map_node/N_end = find_closest_node(B)
 
 			if(!N_end)
 				log_error("Path Error: Couldn't find closet node to [B]!")
-				return .
+				return
 
 			for(var/mob/living/L in A.contents)
 				if(L.loyalty_tag != "Syndicate")

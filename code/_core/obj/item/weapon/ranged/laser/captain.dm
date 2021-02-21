@@ -40,7 +40,6 @@
 	else
 		var/image/I = new/icon(initial(icon),"charge[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]")
 		add_overlay(I)
-	return .
 
 
 /obj/item/weapon/ranged/energy/captain/get_static_spread()

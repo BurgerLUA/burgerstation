@@ -49,12 +49,10 @@
 /obj/item/weapon/melee/tool/welder/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("fuel_current")
-	return .
 
 /obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("fuel_current")
-	return .
 
 /obj/item/weapon/melee/tool/welder/Generate()
 	fuel_current = fuel_max
@@ -76,7 +74,6 @@
 	if(!active)
 		return FALSE
 
-	return .
 
 /obj/item/weapon/melee/tool/welder/proc/add_fuel(var/fuel_amount = 0)
 
@@ -87,7 +84,6 @@
 
 	fuel_current += .
 
-	return .
 
 
 /obj/item/weapon/melee/tool/welder/click_self(var/mob/caller)

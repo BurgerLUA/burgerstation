@@ -15,14 +15,12 @@
 /obj/structure/interactive/reagent_tank/update_icon()
 	. = ..()
 	icon_state = "tank_liquid"
-	return .
 
 /obj/structure/interactive/reagent_tank/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"tank")
 	I.appearance_flags = RESET_COLOR | PIXEL_SCALE
 	add_underlay(I)
-	return .
 
 /obj/structure/interactive/reagent_tank/update_overlays()
 
@@ -33,7 +31,6 @@
 	I2.color = initial(color)
 	add_overlay(I2)
 
-	return .
 
 /obj/structure/interactive/reagent_tank/Finalize()
 	update_sprite()

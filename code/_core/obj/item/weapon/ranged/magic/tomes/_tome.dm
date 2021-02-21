@@ -16,7 +16,6 @@
 
 	. = max(.,2)
 
-	return .
 
 /obj/item/weapon/ranged/magic/tome/get_static_spread()
 	return 0

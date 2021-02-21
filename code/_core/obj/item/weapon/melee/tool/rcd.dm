@@ -17,14 +17,12 @@
 	. = ..()
 	SAVEATOM("rcd_disk")
 	SAVEVAR("matter_current")
-	return .
 
 /obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("rcd_disk")
 	LOADVAR("matter_current")
 	update_sprite()
-	return .
 
 /obj/item/rcd/Generate()
 	matter_current = matter_max
@@ -51,7 +49,6 @@
 		var/image/I = new/image(initial(icon),"charge_[charge_level]")
 		add_overlay(I)
 
-	return .
 
 /obj/item/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -125,7 +122,6 @@
 	rcd_disk.drop_item(get_turf(src))
 	. = rcd_disk
 	rcd_disk = null
-	return .
 
 /obj/item/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 

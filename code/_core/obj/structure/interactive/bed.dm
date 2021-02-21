@@ -24,7 +24,6 @@ obj/structure/interactive/bed
 		victim.pixel_x = pixel_offset_x
 		victim.pixel_y = pixel_offset_y
 
-	return .
 
 /obj/structure/interactive/bed/unbuckle(var/mob/caller,var/silent=FALSE)
 
@@ -36,7 +35,6 @@ obj/structure/interactive/bed
 		L.remove_status_effect(REST)
 		animate(L,pixel_x = initial(L.pixel_x), pixel_y = initial(L.pixel_y),time = 5)
 
-	return .
 
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -64,7 +62,6 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/objec
 obj/structure/interactive/bed/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 obj/structure/interactive/bed/padded
 	name = "padded bed"
@@ -78,7 +75,6 @@ obj/structure/interactive/bed/padded/update_overlays()
 	sheets.color = secondary_color
 	add_overlay(sheets)
 
-	return .
 
 /*
 

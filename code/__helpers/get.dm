@@ -5,4 +5,3 @@
 		var/mob/M = k
 		if(get_dist(T,M) <= range)
 			. += M
-	return .

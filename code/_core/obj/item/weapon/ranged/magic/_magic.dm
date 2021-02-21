@@ -21,7 +21,6 @@
 	else
 		. += div("notice","It has an empty gem slot.")
 
-	return .
 
 /obj/item/weapon/ranged/magic/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -60,12 +59,10 @@
 /obj/item/weapon/ranged/magic/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_powergem")
-	return .
 
 /obj/item/weapon/ranged/magic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_powergem")
-	return .
 
 /obj/item/weapon/ranged/magic/get_static_spread()
 	return 0

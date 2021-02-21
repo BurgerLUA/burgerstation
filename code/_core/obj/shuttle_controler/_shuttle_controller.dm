@@ -70,7 +70,6 @@ var/global/list/all_shuttle_controlers = list()
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
-	return .
 
 /obj/shuttle_controller/proc/signal_landing(var/area/transit/landing_area)
 	for(var/turf/T in landing_area.contents)
@@ -139,7 +138,6 @@ var/global/list/all_shuttle_controlers = list()
 			else
 				S.close(null,lock,force)
 
-	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()
 

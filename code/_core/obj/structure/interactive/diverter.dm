@@ -26,12 +26,10 @@
 /obj/structure/interactive/diverter/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/diverter/update_icon()
 	. = ..()
 	icon_state = "diverter_on"
-	return .
 
 /obj/structure/interactive/diverter/proc/should_push(var/atom/movable/M)
 	return TRUE

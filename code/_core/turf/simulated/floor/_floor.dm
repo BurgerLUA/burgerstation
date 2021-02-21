@@ -29,7 +29,6 @@
 		TR.desired_reagent = water_reagent
 		TR.update_container()
 
-	return .
 
 /turf/simulated/floor/update_sprite()
 
@@ -46,7 +45,6 @@
 
 		stored_water_overlay.color = reagents.color
 
-	return .
 
 /turf/simulated/floor/Exited(var/atom/movable/O,var/atom/new_loc)
 
@@ -55,7 +53,6 @@
 	if(O && stored_water_overlay)
 		O.overlays -= stored_water_overlay
 
-	return .
 
 
 /turf/simulated/floor/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)

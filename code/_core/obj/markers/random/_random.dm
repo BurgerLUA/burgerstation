@@ -19,8 +19,6 @@
 
 	qdel(src)
 
-	return .
-
 /obj/marker/random/disposals_trash
 	name = "disposals trash random loot"
 	loot_to_spawn = "disposals_trash"

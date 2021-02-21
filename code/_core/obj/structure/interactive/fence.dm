@@ -20,7 +20,6 @@ obj/structure/interactive/fence
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 4),/material/steel)
 	. = ..()
 	qdel(src)
-	return .
 
 obj/structure/interactive/fence/end
 	icon_state = "end"

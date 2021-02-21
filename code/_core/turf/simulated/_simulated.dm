@@ -82,13 +82,11 @@ var/global/list/blood_turfs = list()
 				if(!WFS || L.move_mod > 2)
 					L.add_status_effect(SLIP,slip_strength*10,slip_strength*10)
 
-	return .
 
 /turf/simulated/get_examine_list(var/mob/caller)
 	. = ..()
 	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
 	. += div("notice","The slippery percentage is [get_slip_strength()*100]%.")
-	return .
 
 /*
 /turf/simulated/New(var/atom/desired_loc)
@@ -117,7 +115,6 @@ var/global/list/blood_turfs = list()
 
 	change_turf(destruction_turf)
 
-	return .
 
 /turf/simulated/Initialize()
 	var/area/A = loc
@@ -135,7 +132,6 @@ var/global/list/blood_turfs = list()
 /turf/simulated/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /turf/simulated/proc/get_smooth_code()
 
@@ -267,7 +263,6 @@ var/global/list/blood_turfs = list()
 		var/image/I = new/image('icons/obj/effects/water.dmi',"wet_floor")
 		add_overlay(I)
 
-	return .
 
 /turf/simulated/proc/set_exposed(var/desired_exposed = FALSE,var/force=FALSE)
 

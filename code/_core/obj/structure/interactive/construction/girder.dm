@@ -42,7 +42,6 @@
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	. = ..()
 	qdel(src)
-	return .
 
 
 obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

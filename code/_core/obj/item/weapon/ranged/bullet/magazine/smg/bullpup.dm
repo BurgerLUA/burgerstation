@@ -87,7 +87,6 @@
 	update_attachment_stats()
 	update_sprite()
 
-	return .
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 

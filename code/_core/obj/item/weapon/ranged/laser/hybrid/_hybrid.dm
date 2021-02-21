@@ -27,7 +27,6 @@
 
 	update_sprite()
 
-	return .
 
 /obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller)
 

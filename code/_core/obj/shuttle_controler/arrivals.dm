@@ -15,7 +15,6 @@
 /obj/shuttle_controller/arrivals/Initialize()
 	. = ..()
 	linked_beepsky = locate() in get_area(src)
-	return .
 
 /obj/shuttle_controller/arrivals/launch(var/mob/caller,var/desired_transit_time)
 
@@ -44,7 +43,6 @@
 				mobdata.save_character(P)
 			P.tutorial = FALSE
 
-	return .
 
 /obj/shuttle_controller/arrivals/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 

@@ -75,7 +75,7 @@
 /obj/item/emf/New(var/desired_loc)
 	. = ..()
 	SSghost.all_emf_trackers += src
-	return .
+	return
 
 /obj/item/emf/Destroy()
 	SSghost.all_emf_trackers -= src

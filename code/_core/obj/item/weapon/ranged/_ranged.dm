@@ -65,7 +65,6 @@
 	SAVEATOM("attachment_sight")
 	SAVEATOM("attachment_undermount")
 	SAVEATOM("attachment_stock")
-	return .
 
 /obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
@@ -75,7 +74,6 @@
 	LOADATOM("attachment_undermount")
 	LOADATOM("attachment_stock")
 	update_attachment_stats()
-	return .
 
 /obj/item/weapon/ranged/Finalize()
 
@@ -84,7 +82,6 @@
 	if(!istype(firing_pin))
 		firing_pin = null
 
-	return .
 
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
@@ -235,7 +232,6 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 		if(A.ai)
 			. *= max(1,(heat_current*ai_heat_sensitivity)*(get_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
 
-	return .
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 
@@ -479,7 +475,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			FINALIZE(P)
 			. += P
 
-	return .
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
 	return 0

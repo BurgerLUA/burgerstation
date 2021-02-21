@@ -12,7 +12,6 @@
 /obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
-	return .
 
 /obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
 	return stored_magazine
@@ -26,7 +25,6 @@
 		src.stored_magazine = load_and_create(P,object_data["stored_magazine"],src)
 		src.open = FALSE
 
-	return .
 
 
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
@@ -137,7 +135,6 @@
 		if(!requires_cock_each_shot)
 			load_new_bullet_from_magazine(caller)
 
-	return .
 
 
 /obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/I)
@@ -164,7 +161,6 @@
 		if(sound_strength > 0)
 			play_sound('sound/effects/gun_empty_sound.ogg',get_turf(src), pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength,range_max=VIEW_RANGE)
 
-	return .
 
 /obj/item/weapon/ranged/bullet/magazine/get_examine_list(var/mob/caller)
 
@@ -173,4 +169,3 @@
 	if(stored_magazine)
 		. += div("notice","[length(stored_magazine.stored_bullets)] bullet\s remaining in the magazine.")
 
-	return .

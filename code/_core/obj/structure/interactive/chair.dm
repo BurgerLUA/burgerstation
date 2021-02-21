@@ -20,7 +20,6 @@ obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 		else
 			plane = initial(plane)
 
-	return .
 
 obj/structure/interactive/chair/Crossed(atom/movable/O)
 
@@ -29,7 +28,6 @@ obj/structure/interactive/chair/Crossed(atom/movable/O)
 	if(is_living(O))
 		CALLBACK("sit_down_\ref[src]",SECONDS_TO_DECISECONDS(1),src,.proc/sit_your_ass_down,O)
 
-	return .
 
 obj/structure/interactive/chair/proc/sit_your_ass_down(var/mob/living/L)
 

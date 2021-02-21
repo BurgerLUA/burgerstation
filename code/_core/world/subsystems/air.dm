@@ -69,7 +69,6 @@ SUBSYSTEM_DEF(air)
 		source_turf.color = blend_colors(COLOR_BLACK,COLOR_RED,source_turf.air_contents["oxygen"]/40)
 		queued_atmos_updates -= source_turf
 
-	return .
 
 /subsystem/air/on_life()
 

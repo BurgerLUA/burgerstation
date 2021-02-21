@@ -9,7 +9,6 @@
 /obj/projectile/bullet/update_icon()
 	. = ..()
 	color = bullet_color
-	return .
 
 /obj/projectile/bullet/bolt
 	name = "crossbow bolt"
@@ -57,7 +56,6 @@
 	if(.)
 		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
-	return .
 
 /obj/projectile/bullet/gyrojet
 	name = "gyrojet"
@@ -70,7 +68,6 @@
 	if(.)
 		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
-	return .
 
 /obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
 
@@ -91,7 +88,6 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-	return .
 
 
 /obj/projectile/bullet/rocket

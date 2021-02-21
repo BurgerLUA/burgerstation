@@ -31,7 +31,6 @@
 	if(!filled)
 		. += div("notice","It is empty.")
 
-	return .
 
 /obj/structure/interactive/fountain/Finalize()
 	update_sprite()

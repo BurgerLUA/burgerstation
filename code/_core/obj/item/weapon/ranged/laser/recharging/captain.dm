@@ -37,7 +37,6 @@
 	else
 		var/image/I = new/icon(initial(icon),"charge[FLOOR((battery.charge_current/battery.charge_max) * 4, 1)]")
 		add_overlay(I)
-	return .
 
 
 /obj/item/weapon/ranged/energy/recharging/captain/get_static_spread() //Base spread

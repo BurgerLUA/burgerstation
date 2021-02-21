@@ -24,7 +24,6 @@
 		if(WEST)
 			pixel_x = 2
 
-	return .
 
 
 /obj/structure/interactive/lighting/fixture/tube/color

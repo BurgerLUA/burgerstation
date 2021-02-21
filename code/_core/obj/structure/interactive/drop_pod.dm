@@ -35,7 +35,6 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 		var/atom/movable/M = k
 		M.post_move(old_loc)
 
-	return .
 
 
 /obj/structure/interactive/drop_pod/Cross(atom/movable/O)

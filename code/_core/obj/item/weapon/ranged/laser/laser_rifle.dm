@@ -78,7 +78,6 @@
 /obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/item/weapon/ranged/energy/rifle/update_overlays()
 
@@ -94,7 +93,6 @@
 /obj/item/weapon/ranged/energy/rifle/update_sprite()
 	. = ..()
 	bullet_color = polymorphs["barrel"]
-	return .
 
 /obj/item/weapon/ranged/energy/rifle/hardlight
 	name = "AER13b Hardlight Rifle"
@@ -169,4 +167,3 @@
 	update_attachment_stats()
 	update_sprite()
 
-	return .

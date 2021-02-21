@@ -80,7 +80,6 @@
 obj/structure/interactive/barricade/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/barricade/update_sprite()
 
@@ -107,7 +106,6 @@ obj/structure/interactive/barricade/PostInitialize()
 
 	update_collisions(c_dir = desired_dense)
 
-	return .
 
 /obj/structure/interactive/barricade/update_overlays()
 
@@ -123,11 +121,9 @@ obj/structure/interactive/barricade/PostInitialize()
 	add_overlay(below)
 	add_overlay(above)
 
-	return .
 
 
 /obj/structure/interactive/barricade/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),/material/steel)
 	. = ..()
 	qdel(src)
-	return .

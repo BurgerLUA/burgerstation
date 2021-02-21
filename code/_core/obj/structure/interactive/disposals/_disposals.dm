@@ -9,7 +9,6 @@
 /obj/structure/interactive/disposals/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/disposals/update_icon()
 

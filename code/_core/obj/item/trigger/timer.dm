@@ -21,12 +21,10 @@
 /obj/item/device/timer/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("time_set")
-	return .
 
 /obj/item/device/timer/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("time_set")
-	return .
 
 /obj/item/device/timer/click_self(var/mob/caller)
 	INTERACT_CHECK
@@ -63,7 +61,6 @@
 			time_set = 0
 			return FALSE
 
-	return .
 
 /obj/item/device/timer/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 

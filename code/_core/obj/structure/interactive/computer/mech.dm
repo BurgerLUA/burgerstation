@@ -18,7 +18,6 @@
 		log_error("WARNING: Could not find a linked mech fabricator marker for [src.get_debug_name()]!")
 		qdel(src)
 
-	return .
 
 
 /obj/structure/interactive/computer/console/mech_fabricator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

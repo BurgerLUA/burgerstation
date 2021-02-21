@@ -56,8 +56,6 @@
 		//if(enable_message) caller.to_chat(span("warning","You're too far away to interact with \the [src.name]!")) THIS WAS ANNOYING
 		return FALSE
 
-	return .
-
 /atom/proc/click_self(var/mob/caller as mob,location,control,params)
 	return FALSE
 

@@ -21,7 +21,6 @@
 	if(prob(chance_none))
 		qdel(src)
 
-	return .
 
 /obj/structure/interactive/supplies/update_icon()
 

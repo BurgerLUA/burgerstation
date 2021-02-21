@@ -8,7 +8,6 @@
 	do_spawn(src.loc)
 	. = ..()
 	qdel(src)
-	return .
 
 /obj/marker/spawning/proc/do_spawn(var/turf/T)
 	return TRUE

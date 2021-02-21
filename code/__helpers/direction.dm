@@ -60,7 +60,6 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 
 /proc/sanitize_direction(var/dir)
-
 	. = 0x0
 
 	var/north = dir & NORTH
@@ -79,5 +78,3 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 	if(west && !east)
 		. |= WEST
-
-	return .

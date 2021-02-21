@@ -35,7 +35,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 	. += div("notice","It is [FLOOR(charge,1)]/[charge_max]([FLOOR(100*(charge/charge_max),1)]%) charged.")
 
-	return .
 
 /obj/structure/interactive/supermatter/proc/add_charge(var/charge_amount=0)
 	charge += charge_amount
@@ -58,7 +57,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	qdel(src)
 	. = ..()
 	explode(T,120,T,T,"Supermatter")
-	return .
 
 /obj/structure/interactive/supermatter/Finalize()
 	update_map_text()
@@ -82,7 +80,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 		update_map_text()
 
-	return .
 
 /obj/structure/interactive/supermatter/unanchored
 	anchored = FALSE

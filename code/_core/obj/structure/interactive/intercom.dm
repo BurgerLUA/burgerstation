@@ -25,7 +25,6 @@
 	var/image/I = new/image(initial(icon),"intercom_light")
 	I.plane = PLANE_EFFECT_LIGHTING
 	add_overlay(I)
-	return .
 
 /obj/structure/interactive/intercom/Initialize()
 	setup_dir_offsets()
@@ -34,7 +33,6 @@
 /obj/structure/interactive/intercom/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -57,7 +55,6 @@
 /obj/structure/interactive/intercom/active/Finalize()
 	. = ..()
 	stored_radio.broadcasting = TRUE
-	return .
 
 
 /obj/structure/interactive/intercom/active/poly/Finalize()

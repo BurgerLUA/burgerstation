@@ -29,7 +29,6 @@
 /obj/structure/interactive/blob/core/PostInitialize()
 	. = ..()
 	start_thinking(src)
-	return .
 
 /obj/structure/interactive/blob/core/Destroy()
 
@@ -66,7 +65,6 @@
 		if(!B && !is_wall(T) && !istype(T,/turf/simulated/hazard/))
 			. += T
 
-	return .
 
 /obj/structure/interactive/blob/core/think()
 

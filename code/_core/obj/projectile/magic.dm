@@ -24,7 +24,6 @@
 	if(.)
 		explode(get_turf(hit_atom),20,owner,src,loyalty_tag)
 
-	return .
 
 
 /obj/projectile/magic/fireball/lava
@@ -41,7 +40,6 @@
 		GENERATE(L)
 		FINALIZE(L)
 
-	return .
 
 
 
@@ -81,7 +79,6 @@
 		if(L.dead && L.loyalty_tag == src.loyalty_tag)
 			L.resurrect()
 
-	return .
 
 /obj/projectile/magic/lightning
 	name = "lightning"
@@ -104,7 +101,6 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-	return .
 
 /obj/projectile/magic/frost
 	name = "frost"
@@ -123,7 +119,6 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-	return .
 
 
 /obj/projectile/magic/lesser_fire
@@ -143,7 +138,6 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-	return .
 
 
 /obj/projectile/magic/lightning_bolt
@@ -163,7 +157,6 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-	return .
 
 /obj/projectile/magic/crystal
 	name = "magic crystal"
@@ -185,7 +178,6 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-	return .
 
 
 /obj/projectile/magic/crystal/fire

@@ -43,7 +43,6 @@
 		. = ..()
 		qdel(src)
 
-	return .
 
 
 /obj/structure/interactive/lighting/floor/Initialize()
@@ -57,7 +56,6 @@
 /obj/structure/interactive/lighting/floor/PostInitialize()
 	. = ..()
 	update_sprite()
-	return .
 
 /obj/structure/interactive/lighting/floor/update_icon()
 

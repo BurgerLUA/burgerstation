@@ -126,7 +126,6 @@ var/global/list/equipped_antags = list()
 			stored_objects -= I
 			qdel(I)
 
-	return .
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

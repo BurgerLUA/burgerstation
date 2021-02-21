@@ -33,7 +33,6 @@
 
 	verbs.Cut()
 
-	return .
 
 /atom/movable/lighting_overlay/Destroy()
 
