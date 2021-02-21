@@ -225,6 +225,41 @@
 /obj/marker/syndicate,
 /turf/simulated/floor/cave_dirt,
 /area/crystalcanyon/interior/cave/east)
+"aY" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/cave_dirt,
+/area/crystalcanyon/interior/cave/west)
+"aZ" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/colored/snow,
+/area/crystalcanyon/outside)
+"ba" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/colored/dirt/snow,
+/area/crystalcanyon/outside)
+"bb" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/tile/overlapping/dark,
+/area/crystalcanyon/interior/revbar)
+"bc" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/tile/overlapping/dark,
+/area/crystalcanyon/interior/revbar)
+"bd" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/brick/grey,
+/area/crystalcanyon/deltaclinic)
+"be" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/cave_dirt,
+/area/crystalcanyon/interior/cave/east)
 "bh" = (
 /turf/simulated/floor/cult,
 /area/crystalcanyon/interior/cave/west)
@@ -1059,16 +1094,6 @@
 /obj/structure/smooth/table/glass,
 /turf/simulated/floor/tile/grey,
 /area/crystalcanyon/interior/revbar)
-"yu" = (
-/obj/structure/interactive/chair{
-	dir = 1
-	},
-/mob/living/advanced/npc/rev,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/turf/simulated/floor/tile/overlapping/dark,
-/area/crystalcanyon/interior/revbar)
 "yD" = (
 /turf/simulated/floor/xeno,
 /area/crystalcanyon/caves/xenohive)
@@ -1117,11 +1142,6 @@
 	},
 /turf/simulated/floor/tile/grey,
 /area/crystalcanyon/charliebase)
-"zC" = (
-/mob/living/advanced/npc/rev,
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/overlapping/dark,
-/area/crystalcanyon/interior/revbar)
 "zF" = (
 /obj/structure/interactive/mining_drill,
 /turf/simulated/floor/tile/purple,
@@ -5932,7 +5952,7 @@ Pf
 KV
 gc
 gc
-KV
+aZ
 KV
 KV
 Ry
@@ -7423,7 +7443,7 @@ PE
 PE
 JQ
 JQ
-JQ
+aY
 PE
 PE
 PE
@@ -8819,7 +8839,7 @@ Ry
 Ry
 Ry
 ph
-ph
+ba
 ph
 Ry
 Ry
@@ -9307,7 +9327,7 @@ Ry
 Ry
 Ry
 EP
-zC
+bb
 UD
 UD
 UD
@@ -11634,7 +11654,7 @@ EP
 RM
 UD
 UD
-yu
+bc
 EP
 Ry
 Ry
@@ -15030,7 +15050,7 @@ Ry
 KV
 SA
 zb
-Fo
+bd
 Fo
 zb
 wO
@@ -17980,7 +18000,7 @@ PE
 PE
 JQ
 JQ
-JQ
+aY
 JQ
 gD
 JQ
@@ -21381,7 +21401,7 @@ Ry
 Ry
 Ry
 ph
-ph
+ba
 ph
 Ry
 Ry
@@ -25284,7 +25304,7 @@ Ry
 Ry
 ph
 ph
-ph
+ba
 ph
 ph
 ph
@@ -48355,7 +48375,7 @@ Ry
 Ry
 Ry
 in
-KV
+aZ
 KV
 Ry
 BD
@@ -53603,7 +53623,7 @@ Ry
 Ry
 Ry
 ph
-ph
+ba
 ph
 vA
 vA
@@ -58750,7 +58770,7 @@ vA
 vA
 vA
 QW
-QW
+be
 QW
 QW
 vA
@@ -62809,7 +62829,7 @@ QW
 QW
 QW
 QW
-QW
+be
 QW
 QW
 QW
