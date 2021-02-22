@@ -178,8 +178,7 @@
 		var/reagent/R = REAGENT(r_id)
 		stored_reagents[r_id] = round(stored_reagents[r_id],REAGENT_ROUNDING)
 
-		if(R.lethal)
-			contains_lethal = TRUE
+		if(R.lethal) contains_lethal = TRUE
 
 		var/volume = stored_reagents[r_id]
 		var/temperature = stored_reagents_temperature[r_id] ? stored_reagents_temperature[r_id] : T0C + 20
@@ -436,10 +435,11 @@
 		else if(target_container.owner && is_living(target_container.owner.loc))
 			L2 = target_container.owner.loc
 
-		if(L2 && L1.loyalty_tag && L1.loyalty_tag == L2.loyalty_tag)
+		if(L2 && L1 != L2 && L1.loyalty_tag && L1.loyalty_tag == L2.loyalty_tag)
 			for(var/r_id in stored_reagents)
 				var/reagent/R = REAGENT(r_id)
 				if(R.lethal)
+					caller.to_chat(span("warning","Your loyalty prevents you from giving lethal reagents to your allies!"))
 					return 0
 
 	var/total_amount_transfered = 0
@@ -603,4 +603,3 @@
 	else
 		. = transfer_reagents_to(consumer.reagents,volume_current, caller = caller)
 
-	

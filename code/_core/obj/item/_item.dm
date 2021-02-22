@@ -370,7 +370,7 @@
 		I.overlays.Cut()
 		I.update_overlays()
 
-	
+
 /obj/item/get_examine_list(var/mob/examiner)
 
 	. = list()
@@ -398,7 +398,7 @@
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
-	
+
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
 
 	var/obj/hud/inventory/I = inventory_override || src.loc
@@ -611,18 +611,22 @@
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
+	if(!reagents)
+		return FALSE
+
 	if(!is_living(target))
 		return FALSE
+
+	var/mob/living/L = target
 
 	if(is_living(caller))
 		var/mob/living/C = caller
 		if(C.attack_flags & CONTROL_MOD_ALT) //Splash
 			return FALSE
+		if(reagents.contains_lethal && L != C && L.loyalty_tag == C.loyalty_tag)
+			caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
+			return FALSE
 
-	if(!reagents)
-		return FALSE
-
-	var/mob/living/L = target
 
 	if(L.dead)
 		caller.to_chat(span("warning","\The [L.name] is dead!"))

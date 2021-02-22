@@ -41,7 +41,7 @@
 	var/cooled_reagent_amount //Amount (units) to add per reagent tick.
 	var/cooled_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
 
-	var/lethal = FALSE //Used by loyalty tags, checks if this reagent is lethal or not. TODO: WIP
+	var/lethal = FALSE //Used by loyalty and charcoal checks if this reagent is lethal or not.
 
 	var/flags_reagent
 
