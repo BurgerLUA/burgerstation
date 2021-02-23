@@ -5,10 +5,10 @@
 		cqc = copytext(cqc,1 + (tag_length-5),0)
 	return TRUE
 
-/mob/living/advanced/proc/check_cqc(var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
+/mob/living/advanced/proc/check_cqc(var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	for(var/k in known_cqc)
 		var/cqc/C = SScqc.all_cqc[k]
-		if(C.should_apply(src,victim,weapon,hit_object,blamed))
+		if(C.should_apply(src,victim,weapon,hit_object,blamed,DT))
 			if(C.combo_breaker)
 				src.cqc = ""
 			return all_damage_types[C.damage_type]

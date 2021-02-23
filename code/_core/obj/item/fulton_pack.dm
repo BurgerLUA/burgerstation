@@ -49,6 +49,12 @@
 			caller.to_chat(span("warning","\The [L.name] is too large to be extracted!"))
 			return FALSE
 
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.value_burgerbux > 0)
+			caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
+			return FALSE
+
 	if(value_check && object.get_value() <= 0)
 		caller.to_chat(span("warning","\The [object.name] cannot be sold!"))
 		return FALSE

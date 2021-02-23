@@ -28,8 +28,8 @@ SUBSYSTEM_DEF(text)
 	verbs = splittext(rustg_file_read("text/names/verbs.txt"),"\n")
 	wisdoms = splittext(rustg_file_read("text/names/wisdoms.txt"),"\n")
 
-	first_codenames = splittext(rustg_file_read("text/names/first_codenames.txt"),"\n")
-	last_codenames = splittext(rustg_file_read("text/names/last_codenames.txt"),"\n")
+	first_codenames = splittext(rustg_file_read("text/names/codenames_first.txt"),"\n")
+	last_codenames = splittext(rustg_file_read("text/names/codenames_last.txt"),"\n")
 
 	log_subsystem(name,"Found [length(adjectives)] adjectives.")
 	log_subsystem(name,"Found [length(verbs)] verbs.")
