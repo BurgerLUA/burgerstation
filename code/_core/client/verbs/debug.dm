@@ -1,3 +1,39 @@
+var/global/list/debug_verbs = list(
+	/client/verb/print_cleaning_log,
+	/client/verb/air_test,
+	/client/verb/make_war,
+	/client/verb/generate_map_icon,
+	/client/verb/stealth_test,
+	/client/verb/check_lights,
+	/client/verb/subsystem_report,
+	/client/verb/reload_badwords,
+	/client/verb/force_save_all,
+	/client/verb/stress_test,
+	/client/verb/force_screech,
+	/client/verb/create_vote,
+	/client/verb/var_edit,
+	/client/verb/change_variable,
+	/client/verb/set_mob_to_null,
+	/client/verb/should_delete_atom,
+	/client/verb/add_loadout_to_mob
+)
+
+/client/verb/show_debug_verbs()
+	set name = "Show Debug Verbs"
+	set category = "Menu"
+	for(var/k in debug_verbs)
+		verbs += debug_verbs
+	verbs -= /client/verb/show_debug_verbs
+	verbs += /client/verb/hide_debug_verbs
+
+/client/verb/hide_debug_verbs()
+	set name = "Hide Debug Verbs"
+	set category = "Menu"
+	for(var/k in debug_verbs)
+		verbs -= debug_verbs
+	verbs += /client/verb/show_debug_verbs
+	verbs -= /client/verb/hide_debug_verbs
+
 /client/verb/print_cleaning_log()
 
 	set name = "Print Cleaning Log (DANGER)"
@@ -285,42 +321,6 @@ client/verb/air_test(var/pressure as num)
 		src.to_chat("[k]: [v]")
 */
 
-
-var/global/list/debug_verbs = list(
-	/client/verb/print_cleaning_log,
-	/client/verb/air_test,
-	/client/verb/make_war,
-	/client/verb/generate_map_icon,
-	/client/verb/stealth_test,
-	/client/verb/check_lights,
-	/client/verb/subsystem_report,
-	/client/verb/reload_badwords,
-	/client/verb/force_save_all,
-	/client/verb/stress_test,
-	/client/verb/force_screech,
-	/client/verb/create_vote,
-	/client/verb/var_edit,
-	/client/verb/change_variable,
-	/client/verb/set_mob_to_null,
-	/client/verb/should_delete_atom
-)
-
-/client/verb/show_debug_verbs()
-	set name = "Show Debug Verbs"
-	set category = "Menu"
-	for(var/k in debug_verbs)
-		verbs += debug_verbs
-	verbs -= /client/verb/show_debug_verbs
-	verbs += /client/verb/hide_debug_verbs
-
-/client/verb/hide_debug_verbs()
-	set name = "Hide Debug Verbs"
-	set category = "Menu"
-	for(var/k in debug_verbs)
-		verbs -= debug_verbs
-	verbs += /client/verb/show_debug_verbs
-	verbs -= /client/verb/hide_debug_verbs
-
 /client/verb/set_mob_to_null()
 	set name = "Set Mob to Null (DANGER)"
 	set category = "Debug"
@@ -346,3 +346,35 @@ var/global/list/debug_verbs = list(
 		src.to_chat(span("notice","The games considers [O] safe for deletion."))
 	else
 		src.to_chat(span("notice","The game does not consider [O] safe for deletion."))
+
+
+/client/verb/add_loadout_to_mob()
+	set name = "Add Loadout to Mob"
+	set category = "Debug"
+
+	var/list/possible_mobs = list()
+	for(var/mob/living/advanced/A in view(src))
+		possible_mobs += A
+	for(var/mob/living/advanced/A in all_mobs_with_clients)
+		possible_mobs |= A
+
+	possible_mobs += "Cancel"
+
+	var/mob/living/advanced/desired_mob = input("What mob would you like to give a loadout to?","Loadout Mob","Cancel") as null|anything in possible_mobs
+	if(!desired_mob || desired_mob == "Cancel")
+		to_chat(span("notice","You decide not to give a mob a loadout."))
+		return FALSE
+
+	var/loadouts_with_cancel = all_loadouts.Copy()
+	loadouts_with_cancel["Cancel"] = "Cancel"
+
+	var/desired_loadout = input("What loadout would you like to add to [desired_mob.name]?","Loadout Mob","Cancel") as null|anything in loadouts_with_cancel
+	if(!desired_loadout || desired_loadout == "Cancel")
+		to_chat(span("notice","You decide not to give a mob a loadout."))
+		return FALSE
+
+	desired_mob.equip_loadout(desired_loadout)
+
+	log_admin("[src.get_debug_name()] gave a loadout ([desired_loadout]) to [desired_mob.get_debug_name()].")
+
+

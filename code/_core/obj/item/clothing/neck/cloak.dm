@@ -35,3 +35,6 @@
 
 /obj/item/clothing/neck/cloak/black
 	color = COLOR_BLACK
+
+/obj/item/clothing/neck/cloak/mercenary
+	color = COLOR_OLIVE_DRAB

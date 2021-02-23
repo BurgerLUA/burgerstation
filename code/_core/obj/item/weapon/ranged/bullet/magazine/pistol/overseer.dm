@@ -67,3 +67,61 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype
+	name = "\improper 12.7mm Prototype High-Power Auto"
+	desc = "The \"Auto\" is for semiauto."
+	desc_extended = "A prototype of the High-Power Auto commonly seen in the hands of NanoTrasen commanders. This variant is made with higher quality parts and is commonly used by mercenaries."
+	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt_proto.dmi'
+	icon_state = "inventory"
+	value = 1400
+
+	shoot_delay = 3
+
+	heat_per_shot = 0.02
+	heat_max = 0.06
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/gyro = TRUE,
+		/obj/item/attachment/barrel/laser_charger = FALSE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+
+		/obj/item/attachment/sight/laser_sight = FALSE,
+		/obj/item/attachment/sight/quickfire_adapter = FALSE,
+		/obj/item/attachment/sight/red_dot = FALSE,
+		/obj/item/attachment/sight/scope = FALSE,
+		/obj/item/attachment/sight/scope/large = FALSE,
+		/obj/item/attachment/sight/targeting_computer = FALSE,
+
+		/obj/item/attachment/stock/c20r = FALSE,
+
+		/obj/item/attachment/undermount/angled_grip = FALSE,
+		/obj/item/attachment/undermount/bipod = FALSE,
+		/obj/item/attachment/undermount/burst_adapter = FALSE,
+		/obj/item/attachment/undermount/vertical_grip = FALSE
+	)
+
+	attachment_barrel_offset_x = 28 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 18 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 21 - 16
+	attachment_undermount_offset_y = 14 - 16
+
+	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype/equipped/Generate()
+
+	. = ..()
+
+	attachment_barrel = /obj/item/attachment/barrel/suppressor
+	attachment_barrel = new attachment_barrel(src)
+
+	update_attachment_stats()
+	update_sprite()

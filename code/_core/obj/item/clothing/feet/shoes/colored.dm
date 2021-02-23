@@ -98,3 +98,19 @@
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
 	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
+
+/obj/item/clothing/feet/shoes/colored/merc
+	polymorphs = list(
+		"base" = "#3E5254",
+		"ankle" = "#475A61",
+		"sole" = "#687E8E"
+	)
+
+/obj/item/clothing/feet/shoes/colored/merc/left
+	name = "left shoe"
+	icon_state = "inventory_left"
+	icon_state_worn = "worn_left"
+
+	item_slot = SLOT_FOOT_LEFT
+	protected_limbs = list(BODY_FOOT_LEFT)
+	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U

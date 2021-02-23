@@ -200,3 +200,36 @@
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
 	)
+
+
+/obj/item/clothing/hands/gloves/colored/padded/merc
+	color = "#6C8A97"
+
+/obj/item/clothing/hands/gloves/colored/padded/merc/left
+	name = "left padded glove"
+	icon_state = "inventory_left"
+	icon_state_worn = "worn_left"
+
+	item_slot = SLOT_HAND_LEFT
+	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
+
+	protection_cold = list(
+		BODY_HAND_LEFT = 3
+	)
+
+/obj/item/clothing/hands/gloves/colored/padded/merc_alt
+	color = "#48482D"
+
+/obj/item/clothing/hands/gloves/colored/padded/merc_alt/left
+	name = "left padded glove"
+	icon_state = "inventory_left"
+	icon_state_worn = "worn_left"
+
+	item_slot = SLOT_HAND_LEFT
+	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
+
+	protection_cold = list(
+		BODY_HAND_LEFT = 3
+	)

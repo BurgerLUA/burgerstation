@@ -2425,7 +2425,7 @@
 /turf/simulated/floor/colored/dirt,
 /area/lz_001/caves/ocean_pass)
 "kt" = (
-/obj/marker/wizard_rift_location,
+/obj/structure/interactive/lighting/bonfire/on,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "ku" = (
@@ -2610,6 +2610,10 @@
 "lq" = (
 /turf/simulated/hazard/water/sea,
 /area/lz_001/caves/glow_cave)
+"lr" = (
+/obj/marker/antag/merc,
+/turf/simulated/floor/colored/sand,
+/area/lz_001/caves/desert_cave)
 "ls" = (
 /obj/marker/syndicate,
 /turf/simulated/floor/cave_dirt,
@@ -59273,7 +59277,7 @@ md
 md
 mw
 mA
-jA
+mA
 mU
 mw
 md
@@ -66721,9 +66725,9 @@ jB
 md
 md
 md
+lr
 md
-md
-md
+lr
 md
 md
 md
@@ -67235,9 +67239,9 @@ jB
 jB
 md
 md
+lr
 md
-md
-md
+lr
 md
 md
 md

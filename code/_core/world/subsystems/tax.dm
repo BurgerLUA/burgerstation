@@ -52,18 +52,25 @@ SUBSYSTEM_DEF(tax)
 
 	var/taxes_to_pay = get_tax_amount(P)
 
+	var/partial_tax = FALSE
+
 	if(P.currency < taxes_to_pay)
-		P.to_chat(span("danger","You don't have enough credits to pay your taxes!"))
-		return FALSE
+		P.to_chat(span("danger","You don't have enough credits to pay your taxes in full! You paid what you could..."))
+		partial_tax = TRUE
 
 	var/pay_amount = -P.adjust_currency(-taxes_to_pay,FALSE)
-	P.to_chat(span("notice","You have successfully paid [pay_amount] your taxes. Check back in 1 week ([time2text(world.realtime+6048000,"Month DD")]) to pay your taxes again!"))
 
-	P.last_tax_payment = world.realtime
+	if(partial_tax)
+		P.to_chat(span("warning","You have partially paid [pay_amount] of your taxes..."))
+	else
+		P.to_chat(span("notice","You have successfully paid [pay_amount] of your taxes. Check back in 1 week ([time2text(world.realtime+6048000,"Month DD")]) to pay your taxes again!"))
+		P.last_tax_payment = world.realtime
+
 	P.revenue = 0
 	P.expenses = 0
+	P.partial_tax = taxes_to_pay - pay_amount
 
-	return TRUE
+	return pay_amount
 
 /subsystem/tax/proc/get_bracket_tax(var/profit)
 
@@ -86,6 +93,7 @@ SUBSYSTEM_DEF(tax)
 
 	. += CEILING(P.revenue * revenue_tax * 0.01,1) //Taxing revenue
 	. += CEILING(P.expenses * sales_tax * 0.01,1) //Taxing expenses.
+	. += CEILING(P.partial_tax,1) //Taxing taxes you didn't pay last time.
 
 	var/profit = P.revenue - P.expenses
 	. += get_bracket_tax(profit)
@@ -102,8 +110,9 @@ SUBSYSTEM_DEF(tax)
 	return "Your tax total is the following:\n\
 	[revenue_tax]% of your revenue (which is currently [revenue_tax_amount] credits) is taxed as revenue tax. \
 	[sales_tax]% of your expenses, which are classified as \"sales\" under the current tax code, (which is currently [sales_tax_amount] credits) is taxed as sales tax. \
+	You currently owe [P.partial_tax] credits in outstanding tax amount owed, interest free... \
 	Your bracket tax is a bit more complex, with [length(business_tax_percent)] different brackets between [business_tax_percent[1]]% and [business_tax_percent[length(business_tax_percent)]]% taxed on a per bracket basis, which is based on your total profit (before taxes)...\n\
 	... with the math all together, you will be paying [bracket_tax_amount] credits in business tax...\n\
 	... and your total tax for this week and all possible weeks you missed is [total_tax] credits...\n\
 	and with eligible beneifts and processing fees added, the amount you pay will be... \
-	[-processing_fee + total_tax + tax_credit_this_round] credits."
+	[-processing_fee + total_tax + tax_credit_this_round + P.partial_tax] credits."

@@ -41,7 +41,9 @@
 		"As a working private mercenary of the Solarian Government, you are subject to all laws and regulations under Solarian Law, as well as its tax code. \
 		As per the Ground Freedom Act of 2104, subsection 24b, you must pay a weekly tax before setting foot on any soil belonging to the Solarian Government \
 		or else you waive all legal rights, life, liberties, freedoms, property, and happiness until the amount due is paid. In er... other words, we will send \
-		bounty hunters after you to repo your possessions until debts are satisfied."
+		bounty hunters after you to repo your possessions until debts are satisfied. In the unfortunate event that you cannot pay your taxes, we will charge you \
+		what you can pay and then charge you the rest later when you can actually pay. Note that paying your taxes partially does not remove your delinquent status, \
+		however it may save you from being placed in a higher tax bracket if you didn't pay."
 	)
 
 /dialogue/npc/taxman/set_topic(var/mob/living/advanced/player/P,var/topic)
@@ -56,4 +58,3 @@
 		else
 			P.to_chat(span("warning","You can't pay your taxes yet, you're too early!"))
 
-	

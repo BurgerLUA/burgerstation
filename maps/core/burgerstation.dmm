@@ -829,6 +829,9 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
+"dg" = (
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/maint/south)
 "dh" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -850,6 +853,9 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
+"dl" = (
+/turf/simulated/floor/tile/overlapping/dark,
+/area/burgerstation/maint/south)
 "dm" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
@@ -911,6 +917,12 @@
 /obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/bar)
+"dx" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/maint/south)
 "dy" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -940,6 +952,12 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
+"dD" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/maint/south)
 "dE" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -1089,6 +1107,10 @@
 	},
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
+"ed" = (
+/obj/structure/interactive/fulton_beacon,
+/turf/simulated/floor/tile/overlapping/dark,
+/area/burgerstation/maint/south)
 "ee" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
@@ -5953,10 +5975,6 @@
 /obj/decal/hazard,
 /turf/simulated/floor/tile/morphing/brown,
 /area/burgerstation/mining)
-"vN" = (
-/obj/structure/interactive/fulton_beacon,
-/turf/simulated/floor/tile/shuttle/blue,
-/area/transit/dropship/delta/station)
 "vO" = (
 /obj/decal/hazard{
 	dir = 9
@@ -6015,10 +6033,6 @@
 /obj/item/coin/antag_token,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
-"wa" = (
-/obj/structure/interactive/reagent_tank/water,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/south)
 "wb" = (
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/tile,
@@ -29470,7 +29484,7 @@ ug
 eA
 eA
 eA
-vN
+eA
 tR
 eA
 eA
@@ -37970,10 +37984,10 @@ mL
 bu
 bu
 xP
-xR
-xR
-xR
-xR
+xP
+xP
+xP
+xP
 xR
 xR
 xR
@@ -38226,11 +38240,11 @@ oV
 gf
 lt
 bu
-wa
-bB
-Au
-bB
-bB
+dg
+dg
+dx
+dg
+xP
 bB
 Au
 Au
@@ -38482,12 +38496,12 @@ vn
 vn
 vn
 nb
-oE
-bB
-bB
-Au
-bB
-bB
+nb
+dg
+dl
+dl
+dg
+om
 bB
 bB
 bB
@@ -38738,13 +38752,13 @@ vn
 vn
 vn
 vn
-nb
-bu
-bB
-bB
-bB
-bB
-bB
+vn
+vn
+dl
+dl
+ed
+dg
+xP
 Au
 bB
 bB
@@ -38996,12 +39010,12 @@ vn
 vn
 vn
 nb
-bu
-bB
-bB
-bB
-bB
-bB
+nb
+dg
+dl
+dl
+dg
+xP
 Au
 bB
 bB
@@ -39254,11 +39268,11 @@ vn
 vn
 nb
 bu
-bB
-bB
-Au
-bB
-bB
+dg
+dg
+dD
+dg
+xP
 bB
 bB
 bB
@@ -39511,11 +39525,11 @@ vn
 vn
 oR
 bu
-bB
-bB
-Au
-bB
-bB
+xP
+xP
+xP
+xP
+xP
 bB
 bB
 bB

@@ -42,6 +42,7 @@
 #define COLOR_NANOTRASEN "#10436B"
 #define COLOR_VISIBLE_GREEN "#B6FF00"
 #define COLOR_BULLET "#BCA258"
+#define COLOR_OLIVE_DRAB "#797659"
 
 //Department Colors
 #define COLOR_CARGO "#BB9042"

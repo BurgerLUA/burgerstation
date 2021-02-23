@@ -8,7 +8,9 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night/equipped = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_50
@@ -26,3 +28,10 @@
 	icon_states = 7
 
 	value = 5
+
+/obj/item/magazine/pistol_50/heartbreaker
+	name = "\improper .50 heartbreaker pistol magazine"
+	desc = "Not compatible with the 'Degle'."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+
+	ammo = /obj/item/bullet_cartridge/pistol_50/heartbreaker

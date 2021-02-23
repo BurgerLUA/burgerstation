@@ -57,3 +57,35 @@
 		"detail" = COLOR_BLACK,
 		"buckle" = COLOR_SILVER
 	)
+
+/obj/item/clothing/back/storage/satchel/poly/brown
+	polymorphs = list(
+		"body" = COLOR_BROWN,
+		"straps" = COLOR_BROWN,
+		"detail" = COLOR_BLACK,
+		"buckle" = COLOR_SILVER
+	)
+
+/obj/item/clothing/back/storage/satchel/poly/merc
+	polymorphs = list(
+		"body" = COLOR_BLACK,
+		"straps" = COLOR_BLACK,
+		"detail" = COLOR_BLACK,
+		"buckle" = COLOR_SILVER
+	)
+
+/obj/item/clothing/back/storage/satchel/poly/merc_alt
+	polymorphs = list(
+		"body" = "#4B5D54",
+		"straps" = "#2E3A36",
+		"detail" = "#2E3A36",
+		"buckle" = "#CCDCF0"
+	)
+
+/obj/item/clothing/back/storage/satchel/poly/merc_alt_alt
+	polymorphs = list(
+		"body" = "#BFAF8A",
+		"straps" = "#C6B189",
+		"detail" = "#998969",
+		"buckle" = "#625C59"
+	)

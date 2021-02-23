@@ -68,6 +68,16 @@
 
 	value = 2.6
 
+/obj/item/bullet_cartridge/pistol_50/heartbreaker
+	name = "\improper heartbreaker .50 pistol cartridge"
+	desc_extended = "For pistols that require .50. This one has an armor piercing tip with an exploding shrapnel bullet."
+	rarity = RARITY_RARE
+	icon = 'icons/obj/item/bullet/50ae_ap.dmi'
+
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_50/heartbreaker
+
+	value = 6
+
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
 	desc = "The pistol round of the future, today!"
@@ -200,6 +210,19 @@
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/ap
 
 	value = 2
+
+/obj/item/bullet_cartridge/pistol_40/tranq
+	name = "\improper tranq .40 pistol cartridge"
+	desc = "Different than 9mm!"
+	desc_extended = "For pistols, revolvers, and smgs that require .40 ammo. This one has a chemical casing with sedatives in it."
+	rarity = RARITY_RARE
+	icon = 'icons/obj/item/bullet/40_tranq.dmi'
+
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/tranq
+
+	value = 6
+
+	jam_chance = 100 //Required.
 
 /obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"

@@ -162,3 +162,14 @@
 		"shirt" = COLOR_WHITE,
 		"shoulders" = COLOR_BLACK
 	)
+
+/obj/item/clothing/shirt/normal/reinforced/merc
+	name = "mercenary reinforced shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_OLIVE_DRAB
+	)
+
+/obj/item/clothing/shirt/normal/reinforced/merc_alt
+	polymorphs = list(
+		"shirt_tee" = "#626C65"
+	)

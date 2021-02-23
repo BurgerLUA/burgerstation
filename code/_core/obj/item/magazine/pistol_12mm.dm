@@ -9,7 +9,9 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype/equipped = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_12mm

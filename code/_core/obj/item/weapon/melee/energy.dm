@@ -214,7 +214,22 @@
 		"blade" = "#FFFFFF"
 	)
 
+/obj/item/weapon/melee/energy/sword/katana/merc
+	polymorphs = list(
+		"base" = "#415252",
+		"core" = "#F9FDFE",
+		"blade" = "#BACADC"
+	)
+	size = SIZE_3
+	weight = 12
 
+/obj/item/weapon/melee/energy/sword/katana/merc/click_self(var/mob/caller)
+	return TRUE
+
+/obj/item/weapon/melee/energy/sword/katana/merc/Initialize()
+	enabled = TRUE
+	update_sprite()
+	. = ..()
 
 /obj/item/weapon/melee/energy/plightbringer
 	name = "\improper Plightbringer's Sword"
@@ -242,4 +257,3 @@
 		else
 			play_sound('sound/weapons/magic/ash.ogg',get_turf(src),range_max=VIEW_RANGE)
 
-	

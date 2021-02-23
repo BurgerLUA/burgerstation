@@ -2,7 +2,7 @@
 	src.visible_message("<b>\The [src.name]</b> seizes up and falls limp, their eyes dead and lifeless...")
 	return TRUE
 
-/mob/living/proc/death()
+/mob/living/proc/death(var/silent=FALSE)
 
 	if(dead)
 		return FALSE
@@ -10,13 +10,14 @@
 	if(boss)
 		SSbosses.living_bosses -= src
 
-	death_message()
+	if(!silent) death_message()
 
 	pre_death()
 
-	src.to_chat(span("danger","<h1>You died!</h1>"))
-	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
-	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved again!."))
+	if(!silent)
+		src.to_chat(span("danger","<h1>You died!</h1>"))
+		src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
+		src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved again!."))
 
 	dead = TRUE
 	time_of_death = world.time
