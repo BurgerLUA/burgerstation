@@ -7,11 +7,12 @@
 
 /cqc/New(var/desired_loc)
 
-	if(!priority) priority = 1000 - length(combo)
+	if(!priority)
+		priority = 1000 - length(combo)
 
 	 . = ..()
 
-/cqc/proc/should_apply(var/mob/living/advanced/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0,var/damagetype/DT)
+/cqc/proc/should_apply(var/mob/living/advanced/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
 	var/combo_length = length(combo)
 

@@ -11,6 +11,15 @@ var/global/list/possible_merc_loadouts = list(
 
 	damage_received_multiplier = 0.25 //Take way less damage, but if they kill a player, it resets to 0.75 (25% penalty, as players get 50% resist)!
 
+	known_cqc = list(
+		/cqc/boss/fast_grab,
+		/cqc/boss/grab_slam,
+		/cqc/boss/staggering_punch,
+		/cqc/boss/stunning_punch,
+		/cqc/boss/disarm_theft,
+		/cqc/boss/tactical_hug
+	)
+
 
 /mob/living/advanced/player/antagonist/merc/default_appearance()
 	. = ..()

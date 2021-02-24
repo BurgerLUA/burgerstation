@@ -9,7 +9,7 @@
 	for(var/k in known_cqc)
 		var/cqc/C = SScqc.all_cqc[k]
 		if(C.should_apply(src,victim,weapon,hit_object,blamed,DT))
-			if(C.combo_breaker)
+			if(C.combo_breaker && length(C.combo) > 1)
 				src.cqc = ""
 			return all_damage_types[C.damage_type]
 	return null

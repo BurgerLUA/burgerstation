@@ -70,7 +70,7 @@
 					has_tax = TRUE
 			if(has_tax)
 				L.to_chat(span("danger","You were forced to pay your taxes and sold back to NanoTrasen!"))
-				. = SStax.pay_taxes(L)
+				. = SStax.pay_taxes(L)*0.25
 			else
 				L.to_chat(span("danger","You were sold back to NanoTrasen!"))
 				. = 3000

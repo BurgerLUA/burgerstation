@@ -10,7 +10,7 @@
 
 	blood_type = null
 
-	anchored = TRUE
+	anchored = FALSE
 
 /mob/living/advanced/npc/dummy/get_xp_multiplier()
 	return 0.1
