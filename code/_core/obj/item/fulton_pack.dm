@@ -34,6 +34,9 @@
 
 	if(is_living(object))
 		var/mob/living/L = object
+		if(L.master)
+			caller.to_chat(span("warning","Minions cannot be fultoned!"))
+			return FALSE
 		if(!L.horizontal)
 			caller.to_chat(span("warning","\The [L.name] must be laying on the ground to allow a successful extraction!"))
 			return FALSE
