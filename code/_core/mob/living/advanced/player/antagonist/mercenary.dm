@@ -47,7 +47,7 @@ var/global/list/possible_merc_loadouts = list(
 
 	to_chat(span("danger","You are a trained Mercenary hired by the Solarian Government tasked with securing owed taxes from NanoTrasen, non-lethally."))
 	to_chat(span("danger","Work with your team, if any, to fulton extract NanoTrasen Soldiers and equipment. Note that they must be laying on the floor alive in order to extract them. You are given lethal and non-lethal equipment to defend yourself."))
-	to_chat(span("danger","<h1>Killing NanoTrasen operatives is not recommended as it is considered an act of war. We will have to disable the NanoMachines in your body that give you increased resistances if we witness you kill a NanoTrasen soldier. Plausible deniability, and all that.</h1>"))
+	to_chat(span("danger","<h1>Killing NanoTrasen operatives is not recommended as it is considered an act of war. We will disable the damage-resistant NanoMachines in your body if we witness you kill a NanoTrasen soldier.</h1>"))
 
 	do_say("; This is [name]. Kept you waiting, huh?")
 

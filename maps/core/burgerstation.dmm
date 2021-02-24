@@ -1276,6 +1276,18 @@
 /obj/structure/interactive/ore_storage,
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/charlie/station)
+"eJ" = (
+/obj/structure/smooth/table/wood,
+/obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/tome/summon/crab,
+/obj/item/weapon/ranged/magic/tome/summon/bull,
+/obj/item/weapon/ranged/magic/tome/summon/goliath,
+/obj/item/weapon/ranged/magic/tome/summon/skeleton,
+/obj/item/weapon/ranged/magic/tome/summon/space_bear,
+/obj/item/weapon/ranged/magic/tome/summon/twilight,
+/obj/item/weapon/ranged/magic/tome/summon/watcher,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/library)
 "eK" = (
 /obj/structure/interactive/conveyor{
 	icon_state = "conveyor";
@@ -4696,12 +4708,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/burgerstation/maint/garden)
-"rc" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/crab,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 "rd" = (
 /obj/marker/spawning/window,
 /turf/simulated/floor/plating,
@@ -44671,7 +44677,7 @@ pB
 pB
 pB
 pB
-rc
+eJ
 gL
 pK
 rf
