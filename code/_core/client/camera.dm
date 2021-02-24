@@ -27,7 +27,6 @@
 	var/zoom_offset_y = 0
 
 	if(is_zoomed)
-
 		var/zoom_mul = 1
 		if(is_advanced(mob))
 			var/mob/living/advanced/A = mob

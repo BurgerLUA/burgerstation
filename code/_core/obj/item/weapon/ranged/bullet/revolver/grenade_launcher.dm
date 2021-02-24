@@ -35,8 +35,6 @@
 
 	open = TRUE
 
-	inaccuracy_modifer = 1
-
 	attachment_whitelist = list(
 		/obj/item/attachment/sight/laser_sight = FALSE,
 		/obj/item/attachment/sight/quickfire_adapter = FALSE,

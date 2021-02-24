@@ -36,7 +36,7 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
-	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
 
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 
@@ -73,7 +73,6 @@
 	LOADATOM("attachment_sight")
 	LOADATOM("attachment_undermount")
 	LOADATOM("attachment_stock")
-	update_attachment_stats()
 
 /obj/item/weapon/ranged/Finalize()
 
@@ -82,14 +81,12 @@
 	if(!istype(firing_pin))
 		firing_pin = null
 
-
+	update_attachment_stats()
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-
-
 
 	if(istype(object,/obj/item/attachment))
 		INTERACT_CHECK
@@ -279,7 +276,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/bullet_spread_to_use = 0
 	var/projectile_speed_to_use = projectile_speed*quality_penalty
 	var/bullet_color_to_use = bullet_color
-	var/inaccuracy_modifer_to_use = inaccuracy_modifer
+	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
 	var/view_punch_to_use = view_punch
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
 	var/max_bursts_to_use = max_bursts
@@ -501,8 +498,28 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(bullet_num_max > 1) new_angle += RAND_PRECISE(-accuracy,accuracy)*90
 	return list(cos(new_angle),sin(new_angle))
 
-/obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
-	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(1 + get_dist(L,target))*inaccuracy_modifier
+/obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+
+	. = inaccuracy_modifier //Base var
+	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION)*0.75) //Based on skill
+	//. *= (1 + get_dist(L,target)) //Based on distance
+
+	if(L.move_delay >= 0)
+		. *= 2 //If you're moving, harder to be precise.
+		. += 1 //If you're moving, harder to be precise.
+
+	if(L.client)
+		var/total_zoom_mul = zoom_mul
+		if(attachment_stats["zoom_mul"])
+			total_zoom_mul *= attachment_stats["zoom_mul"]
+		if(L.client.is_zoomed)
+			. *= 1/total_zoom_mul
+		else
+			. *= total_zoom_mul/1
+
+	L << "Inaccuracy: [.]."
+
+
 
 /obj/item/weapon/ranged/update_overlays()
 
@@ -536,4 +553,3 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)
 
-	

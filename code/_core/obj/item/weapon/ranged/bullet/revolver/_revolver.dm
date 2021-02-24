@@ -4,8 +4,6 @@
 
 	var/can_shoot_while_open = FALSE
 
-	inaccuracy_modifer = 0.5
-
 	movement_spread_base = 0.02
 	movement_spread_mul = 0.05
 

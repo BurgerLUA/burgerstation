@@ -38,8 +38,6 @@
 
 	can_shoot_while_open = TRUE
 
-	inaccuracy_modifer = 0.25
-
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,

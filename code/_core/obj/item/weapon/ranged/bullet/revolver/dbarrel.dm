@@ -36,8 +36,6 @@
 
 	value = 60
 
-	inaccuracy_modifer = 1
-
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()

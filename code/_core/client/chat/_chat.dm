@@ -30,10 +30,20 @@
 
 	var/turf/T1 = get_turf(source)
 
+	if(!T1)
+		log_error("Warning: Tried to use use_ears on [source], but the turf was null.")
+		return FALSE
+
 	for(var/k in all_listeners)
 		CHECK_TICK(75,FPS_SERVER)
 		var/atom/A = k
+		if(!A)
+			all_listeners -= k
+			continue
 		var/turf/T2 = get_turf(A)
+		if(!T2)
+			log_error("Warning: Tried to send a message to a listener [A.get_debug_name()], but it didn't have a valid turf.")
+			continue
 		if(!within_range(T1,T2,talk_range))
 			continue
 		A.on_listen(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
