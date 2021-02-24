@@ -517,10 +517,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		else
 			. *= total_zoom_mul/1
 
-	L << "Inaccuracy: [.]."
-
-
-
 /obj/item/weapon/ranged/update_overlays()
 
 	. = ..()
