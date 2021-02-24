@@ -504,10 +504,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION)*0.75) //Based on skill
 	//. *= (1 + get_dist(L,target)) //Based on distance
 
-	if(L.move_delay >= 0)
-		. *= 2 //If you're moving, harder to be precise.
-		. += 1 //If you're moving, harder to be precise.
-
 	if(L.client)
 		var/total_zoom_mul = zoom_mul
 		if(attachment_stats["zoom_mul"])
@@ -516,6 +512,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			. *= 1/total_zoom_mul
 		else
 			. *= total_zoom_mul/1
+
+	if(L.move_delay >= 0)
+		. *= 2 //If you're moving, harder to be precise.
+		. += 1 //If you're moving, harder to be precise.
 
 /obj/item/weapon/ranged/update_overlays()
 
