@@ -13,6 +13,10 @@
 	FINALIZE(stored_radio)
 	return ..()
 
+/obj/item/clothing/ears/headset/Destroy()
+	QDEL_NULL(stored_radio)
+	return ..()
+
 /obj/item/clothing/ears/headset/click_self(var/mob/caller,location,control,params)
 	return stored_radio.click_self(caller,location,control,params)
 
