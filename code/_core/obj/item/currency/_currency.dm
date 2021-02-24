@@ -11,6 +11,8 @@
 
 	var/currency_class = "none"
 
+	value_burgerbux = 1 //Prevents being sold in vendors.
+
 /obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
 
 	if(I != src && istype(I,/obj/item/currency/))
@@ -22,7 +24,7 @@
 /obj/item/currency/Finalize()
 	. = ..()
 	update_sprite()
-	
+
 /obj/item/currency/telecrystals
 	name = "telecrystals"
 	desc = "These are pretty sus crystals."

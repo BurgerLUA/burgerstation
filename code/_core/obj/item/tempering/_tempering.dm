@@ -11,6 +11,7 @@
 	var/limit = 125
 	var/minimum = 100
 
+	value_burgerbux = 1 //Prevents being sold in vendors.
 
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 

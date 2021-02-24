@@ -11,7 +11,7 @@
 		var/multiplier_value = clamp(1.4 - length(L.players_fighting_boss)*0.1,0.25,1)
 		. *= multiplier_value
 
-	if(has_status_effect(STRESSED))
+	if(L.has_status_effect(STRESSED))
 		. += 0.5
 
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)

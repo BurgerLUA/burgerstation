@@ -18,6 +18,8 @@
 	var/overlay_icon_state = "gem"
 	var/overlay_color = "#FFFFFF"
 
+	value_burgerbux = 1 //Prevents being sold in vendors.
+
 /obj/item/experience_scroll/update_overlays()
 	var/image/I = new/image(icon,overlay_icon_state)
 	I.color = overlay_color
