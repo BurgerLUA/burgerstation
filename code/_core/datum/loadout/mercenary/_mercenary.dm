@@ -10,8 +10,8 @@
 /obj/item/deployable/barricade/filled, \
 /obj/item/firing_pin/electronic/iff/mercenary, \
 /obj/item/fulton_pack, \
-/obj/item/handcuffs, \
-/obj/item/handcuffs, \
+/obj/item/weapon/melee/tool/screwdriver,\
+/obj/item/firing_pin/electronic/iff/mercenary, \
 /obj/item/storage/kit/advanced/filled, \
 /obj/item/weapon/melee/torch/flashlight/maglight, \
 /obj/item/supply_remote/ammo,
