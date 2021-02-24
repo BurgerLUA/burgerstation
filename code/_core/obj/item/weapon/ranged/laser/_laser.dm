@@ -7,6 +7,9 @@
 
 	var/obj/item/powercell/battery = /obj/item/powercell/
 
+	inaccuracy_modifier = 0.25
+	movement_spread_base = 0.02
+
 /obj/item/weapon/ranged/energy/get_value()
 
 	. = ..()

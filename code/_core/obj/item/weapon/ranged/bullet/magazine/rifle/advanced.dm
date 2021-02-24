@@ -68,3 +68,6 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 	dan_mode = TRUE
+
+	movement_spread_base = 0.02
+	inaccuracy_modifier = 0.5

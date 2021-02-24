@@ -70,6 +70,10 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
+	inaccuracy_modifier = 0.5
+	movement_spread_base = 0.04
+
+
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread()
 	return 0
 

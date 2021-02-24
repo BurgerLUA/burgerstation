@@ -64,6 +64,9 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.015
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi/get_static_spread()
 	return 0.01

@@ -4,8 +4,9 @@
 
 	var/can_shoot_while_open = FALSE
 
-	movement_spread_base = 0.02
-	movement_spread_mul = 0.05
+	movement_spread_base = 0.03
+
+	inaccuracy_modifier = 0.5
 
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()

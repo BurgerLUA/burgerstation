@@ -5,10 +5,8 @@
 
 	var/pump_sound = 'sound/weapons/shotgun_pump.ogg'
 
-
-
 	movement_spread_base = 0.03
-	movement_spread_mul = 0.05
+
 
 /obj/item/weapon/ranged/bullet/pump/proc/pump(var/mob/caller,var/silent=FALSE)
 

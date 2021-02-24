@@ -7,6 +7,9 @@
 	shoot_delay = 6
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
+	movement_spread_base = 0.01
+	inaccuracy_modifier = 0.25
+
 	view_punch = 20
 
 	size = SIZE_2

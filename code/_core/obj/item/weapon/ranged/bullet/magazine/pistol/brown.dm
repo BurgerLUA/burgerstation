@@ -8,10 +8,12 @@
 
 	view_punch = 8
 
+	movement_spread_base = 0.0075
+	inaccuracy_modifier = 0.5
+
 	automatic = FALSE
 
 	size = SIZE_2
-
 
 	heat_per_shot = 0.025
 	heat_max = 0.10

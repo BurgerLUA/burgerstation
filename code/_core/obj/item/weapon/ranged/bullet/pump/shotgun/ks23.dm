@@ -73,6 +73,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
+	inaccuracy_modifier = 1.25
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
 	return 0.03
 

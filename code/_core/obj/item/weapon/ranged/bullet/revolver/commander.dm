@@ -68,6 +68,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
+	inaccuracy_modifier = 0.5
+	movement_spread_base = 0.08
+
 /obj/item/weapon/ranged/bullet/revolver/commander/get_static_spread()
 	return 0
 

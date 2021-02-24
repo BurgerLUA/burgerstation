@@ -6,6 +6,9 @@
 	icon_state = "inventory"
 	value = 400
 
+	movement_spread_base = 0
+	inaccuracy_modifier = 0.25
+
 	shoot_delay = 5
 
 	automatic = FALSE

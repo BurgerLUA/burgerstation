@@ -62,6 +62,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
+	inaccuracy_modifier = 0.25
+	movement_spread_base = 0.04
+
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.1
 

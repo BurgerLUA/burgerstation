@@ -62,6 +62,8 @@
 
 	dan_mode = TRUE
 
+	inaccuracy_modifier = 1.5
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_static_spread()
@@ -82,4 +84,3 @@
 
 	pump(silent = TRUE)
 
-	

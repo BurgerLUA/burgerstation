@@ -66,6 +66,9 @@
 
 	dan_mode = TRUE
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.005
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread()
 	if(wielded) return 0.005

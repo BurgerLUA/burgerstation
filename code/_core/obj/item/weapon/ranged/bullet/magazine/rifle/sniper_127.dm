@@ -72,7 +72,8 @@
 
 	requires_cock_each_shot = TRUE
 
-	zoom_mul = 1
+	inaccuracy_modifier = 0.1
+	movement_spread_base = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0

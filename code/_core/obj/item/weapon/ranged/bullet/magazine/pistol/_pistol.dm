@@ -1,7 +1,8 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/
 	override_icon_state = TRUE
+
 	movement_spread_base = 0.01
-	movement_spread_mul = 0.05
+	inaccuracy_modifier = 0.75
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 

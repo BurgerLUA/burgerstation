@@ -65,6 +65,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
+	inaccuracy_modifier = 0.5
+	movement_spread_base = 0.1
+
 /obj/item/weapon/ranged/bullet/revolver/gm94/get_base_spread()
 	return 0.1
 

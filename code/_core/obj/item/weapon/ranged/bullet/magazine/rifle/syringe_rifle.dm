@@ -77,6 +77,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.03
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

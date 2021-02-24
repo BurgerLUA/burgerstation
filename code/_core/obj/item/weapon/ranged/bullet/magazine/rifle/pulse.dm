@@ -19,7 +19,7 @@
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.05
+	heat_per_shot = 0.03
 	heat_max = 0.1
 
 	bullet_length_min = 52
@@ -70,6 +70,9 @@
 	override_icon_state = TRUE
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
+	inaccuracy_modifier = 0.25
+	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/get_static_spread()
 	if(wielded) return 0

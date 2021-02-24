@@ -68,6 +68,9 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 12 - 16
 
+	inaccuracy_modifier = 0.5
+	movement_spread_base = 0.04
+
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
 	if(wielded) return 0
 	return 0.0005

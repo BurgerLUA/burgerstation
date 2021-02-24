@@ -31,6 +31,9 @@
 
 	battery = /obj/item/powercell/recharging
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.02
+
 /obj/item/weapon/ranged/energy/captain/update_overlays()
 	. = ..()
 	var/obj/item/powercell/PC = get_battery()

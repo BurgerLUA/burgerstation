@@ -36,6 +36,9 @@
 
 	value = 600
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.01
+
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/update_icon()
 

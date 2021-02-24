@@ -10,6 +10,9 @@
 
 	view_punch = 6
 
+	movement_spread_base = 0.008
+	inaccuracy_modifier = 0.5
+
 	automatic = FALSE
 
 	size = SIZE_2

@@ -66,6 +66,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.01
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_static_spread()
 	if(!wielded) return 0.2
 	return 0.001
@@ -108,4 +111,3 @@
 	update_attachment_stats()
 	update_sprite()
 
-	

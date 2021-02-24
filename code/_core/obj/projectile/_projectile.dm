@@ -120,6 +120,8 @@
 
 	color = bullet_color
 
+	inaccuracy_modifier = desired_inaccuracy_modifier
+
 	return ..()
 
 
@@ -322,3 +324,4 @@
 		if(target_atom)
 			. *= max(1,get_dist(target_atom,target)/(VIEW_RANGE*0.5))
 
+	. *= 10

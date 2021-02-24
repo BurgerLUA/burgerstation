@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/misc/
 	movement_spread_base = 0
-	movement_spread_mul = 0
+
+	inaccuracy_modifier = 1
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry
 

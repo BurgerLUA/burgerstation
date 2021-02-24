@@ -14,10 +14,11 @@
 	shoot_sounds = list('sound/effects/window_spray.ogg')
 
 	movement_spread_base = 0.01
-	movement_spread_mul = 0.01
 
 	use_loyalty_tag = TRUE
 	firing_pin = null
+
+	inaccuracy_modifier = 0.5
 
 /obj/item/weapon/ranged/reagent_sprayer/get_ammo_count()
 	return CEILING(reagents.volume_current / (reagent_per_shot*bullet_count),1)

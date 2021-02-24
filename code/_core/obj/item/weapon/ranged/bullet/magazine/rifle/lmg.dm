@@ -74,6 +74,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
+	inaccuracy_modifier = 1
+	movement_spread_base = 0.1
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()
 

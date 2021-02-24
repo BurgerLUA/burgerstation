@@ -64,6 +64,9 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 12 - 14
 
+	inaccuracy_modifier = 0.25
+	movement_spread_base = 0.05
+
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread()
 	return 0.001
 

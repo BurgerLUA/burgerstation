@@ -12,6 +12,9 @@
 
 	var/obj/item/powergem/stored_powergem
 
+	inaccuracy_modifier = 1
+	movement_spread_base = 0.05
+
 /obj/item/weapon/ranged/magic/get_examine_list(var/mob/examiner)
 
 	. = ..()

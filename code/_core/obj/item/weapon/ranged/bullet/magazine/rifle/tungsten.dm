@@ -64,6 +64,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.01
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/update_icon()
 
 	icon_state = initial(icon_state)

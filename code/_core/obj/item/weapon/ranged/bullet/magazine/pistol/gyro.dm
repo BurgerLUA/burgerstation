@@ -8,6 +8,9 @@
 
 	shoot_delay = 8
 
+	movement_spread_base = 0.01
+	inaccuracy_modifier = 1
+
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')

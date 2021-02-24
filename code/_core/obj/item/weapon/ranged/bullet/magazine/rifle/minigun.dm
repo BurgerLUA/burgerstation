@@ -48,6 +48,9 @@
 
 	dan_mode = TRUE
 
+	inaccuracy_modifier = 1.25
+	movement_spread_base = 0.3
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
 	if(!wielded)
 		return 0.5
@@ -60,4 +63,3 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 	. = ..()
 	. += (heat_max - heat_current)*10
-	

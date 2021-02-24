@@ -23,8 +23,7 @@
 	var/heat_current = 0
 	var/heat_max = 0.2
 
-	var/movement_spread_base = 0.05
-	var/movement_spread_mul = 0.1
+	var/movement_spread_base = 0.05 //half this at walking speed, this at running speed, this times two at sprinting speed
 
 	var/bullet_color = "#FFFFFF"
 
@@ -146,7 +145,17 @@
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
-	return clamp(movement_spread_base + movement_spread_mul*(TICKS_TO_SECONDS(L.move_delay)),0,movement_spread_base)
+	if(L.move_delay < 0)
+		return 0
+
+	. = movement_spread_base
+
+	switch(L.move_mod)
+		if(1)
+			. *= 0.5
+		if(3)
+			. *= 3
+
 
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited
@@ -514,8 +523,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			. *= total_zoom_mul/1
 
 	if(L.move_delay >= 0)
-		. *= 2 //If you're moving, harder to be precise.
-		. += 1 //If you're moving, harder to be precise.
+		. *= 1.5 //If you're moving, harder to be precise.
+		. += 0.5 //If you're moving, harder to be precise.
 
 /obj/item/weapon/ranged/update_overlays()
 

@@ -70,6 +70,9 @@
 
 	value = 1000
 
+	inaccuracy_modifier = 1
+	movement_spread_base = 0.1
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light/get_static_spread()
 	if(!wielded)
 		return 0.1

@@ -58,6 +58,12 @@
 			caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
 			return FALSE
 
+	if(istype(object,/obj/structure/interactive/crate/secure))
+		var/obj/structure/interactive/crate/secure/S = object
+		if(S.locked)
+			caller.to_chat(span("warning","\The [S.name] needs to be open in order to be sold!"))
+			return FALSE
+
 	if(value_check && object.get_value() <= 0)
 		caller.to_chat(span("warning","\The [object.name] cannot be sold!"))
 		return FALSE

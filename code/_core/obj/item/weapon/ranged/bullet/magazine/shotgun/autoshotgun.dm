@@ -69,6 +69,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
+	inaccuracy_modifier = 1.5
+	movement_spread_base = 0.03
+
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_base_spread()
 	return 0.2
 

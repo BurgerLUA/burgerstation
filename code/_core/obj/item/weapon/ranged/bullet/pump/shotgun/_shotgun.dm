@@ -7,3 +7,5 @@
 	bullet_diameter_min = 18
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
+
+	inaccuracy_modifier = 1.25

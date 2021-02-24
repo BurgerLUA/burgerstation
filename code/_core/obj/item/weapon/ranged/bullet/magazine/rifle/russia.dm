@@ -66,6 +66,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.02
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread()
 	if(!wielded)
 		return 0.15
@@ -132,6 +135,9 @@
 	attachment_undermount_offset_y = 18 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread()
 	if(!wielded)
@@ -203,6 +209,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.02
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_static_spread()
 	if(!wielded)
 		return 0.12
@@ -272,6 +281,9 @@
 	attachment_undermount_offset_y = 18 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+	inaccuracy_modifier = 1.25
+	movement_spread_base = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
 	if(!wielded)
@@ -343,6 +355,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
+	inaccuracy_modifier = 1
+	movement_spread_base = 0.005
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
 	if(!wielded)
 		return 0.16
@@ -408,6 +423,9 @@
 	attachment_undermount_offset_y = 16 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+	inaccuracy_modifier = 1
+	movement_spread_base = 0.005
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_static_spread()
@@ -476,6 +494,9 @@
 	attachment_undermount_offset_y = 18 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+	inaccuracy_modifier = 0.75
+	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread()
 	if(!wielded) return 0.04
@@ -548,6 +569,9 @@
 	attachment_undermount_offset_y = 17 - 16
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+	inaccuracy_modifier = 0.25
+	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread()
 	if(!wielded) return 0.005

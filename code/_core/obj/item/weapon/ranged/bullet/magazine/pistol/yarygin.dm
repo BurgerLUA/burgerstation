@@ -10,6 +10,9 @@
 	view_punch = 4
 	max_bursts = 2
 
+	movement_spread_base = 0.01
+	inaccuracy_modifier = 0.5
+
 	shoot_sounds = list('sound/weapons/10/shoot.ogg')
 
 	can_wield = FALSE
