@@ -22,7 +22,7 @@
 			if(has_purged)
 				A.to_chat(span("danger","\The [src.name] in your [attached_organ.name] beeps..."))
 
-	
+
 /obj/item/organ/internal/implant/torso/death_alarm
 	name = "death alarm implant"
 	desc = "I died, please restart."
@@ -31,14 +31,14 @@
 /obj/item/organ/internal/implant/torso/death_alarm/on_organ_add(var/mob/living/advanced/new_owner)
 	. = ..()
 	HOOK_ADD("post_death","\ref[src]_implant_post_death",new_owner,src,.proc/trigger_implant)
-	
+
 /obj/item/organ/internal/implant/torso/death_alarm/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
 	HOOK_REMOVE("post_death","\ref[src]_implant_post_death",old_owner)
-	
+
 /obj/item/organ/internal/implant/torso/death_alarm/proc/trigger_implant()
 
-	if(loc && is_advanced(loc))
+	if(loc && is_advanced(loc) && loc.loc)
 		var/mob/living/advanced/A = loc
 		A.to_chat(span("danger","Your [src.name] in your [attached_organ.name] beeps..."))
 		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_COMMON,talk_range = YELL_RANGE)
