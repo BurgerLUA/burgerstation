@@ -290,3 +290,31 @@
 	if(owner && owner.client)
 		owner.remove_color_mod("druggy")
 	return TRUE
+
+
+/status_effect/stressed
+	name = "Stressed"
+	desc = "You're stressed!"
+	id = STRESSED
+	minimum = 10
+	maximum = 30
+
+	affects_dead = FALSE
+
+/status_effect/stressed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+
+	if(owner && owner.client)
+		var/list/desired_color_mod = list(
+			0.33,0.33,0.33,0,
+			0.33,0.33,0.33,0,
+			0.33,0.33,0.33,0,
+			0,0,0,1,
+			0,0,0,0
+		)
+		owner.update_eyes()
+		owner.add_color_mod("stressed",desired_color_mod)
+
+/status_effect/stressed/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+	if(owner && owner.client)
+		owner.remove_color_mod("stressed")
+	return TRUE

@@ -13,6 +13,6 @@
 
 	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 
-	projectile_speed = 20
+	projectile_speed = TILE_SIZE - 1
 
 	value = 500

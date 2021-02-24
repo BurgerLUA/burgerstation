@@ -13,6 +13,6 @@
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
-	projectile_speed = 8
+	projectile_speed = TILE_SIZE*0.75 - 1
 
 	value = 600

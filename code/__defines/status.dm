@@ -77,3 +77,5 @@
 //Converting kills to souls
 
 #define PARRIED "parried"
+
+#define STRESSED "stressed"

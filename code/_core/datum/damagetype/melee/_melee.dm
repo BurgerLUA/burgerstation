@@ -3,6 +3,7 @@
 	draw_weapon = TRUE
 
 	damage_mod = 1.25
+	penetration_mod = 2
 
 	experience_mod = 2
 

@@ -8,7 +8,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/cult.dmi'
 
 	bullet_count = 1
-	projectile_speed = TILE_SIZE*0.75
+	projectile_speed = TILE_SIZE*0.5
 
 	projectile = /obj/projectile/magic/cultist
 	ranged_damage_type = /damagetype/ranged/magic/cult

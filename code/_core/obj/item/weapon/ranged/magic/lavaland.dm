@@ -11,7 +11,7 @@
 	total_charge = SOUL_SIZE_UNCOMMON
 
 	bullet_count = 1
-	projectile_speed = 8
+	projectile_speed = TILE_SIZE*0.75 - 1
 
 	projectile = /obj/projectile/magic/fireball/lava/
 	ranged_damage_type = /damagetype/ranged/magic/fireball

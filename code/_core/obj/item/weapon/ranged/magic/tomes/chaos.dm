@@ -8,7 +8,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/chaos.dmi'
 
 	bullet_count = 5
-	projectile_speed = 4
+	projectile_speed = TILE_SIZE*0.25 - 1
 
 	projectile = /obj/projectile/magic/chaos
 	ranged_damage_type = /damagetype/ranged/magic/chaos

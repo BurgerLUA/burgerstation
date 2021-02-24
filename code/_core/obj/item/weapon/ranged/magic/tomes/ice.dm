@@ -13,6 +13,6 @@
 
 	shoot_sounds = list('sound/weapons/freeze.ogg')
 
-	projectile_speed = 15
+	projectile_speed = TILE_SIZE*0.75 - 1
 
 	value = 500

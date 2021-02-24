@@ -23,7 +23,15 @@
 		if(tox) . += adjust_loss(TOX,tox)
 		if(oxy) . += adjust_loss(OXY,oxy)
 		if(rad) . += adjust_loss(RAD,rad)
-		if(sanity) . += adjust_loss(SANITY,sanity)
+		if(sanity)
+			. += adjust_loss(SANITY,sanity)
+			var/sanity_loss = get_loss(SANITY)
+			if(sanity_loss >= 100)
+				if(!A.has_status_effect(STRESSED))
+					A.add_status_effect(STRESSED,-1,-1)
+			else if(sanity_loss <= 0)
+				if(A.has_status_effect(STRESSED))
+					A.remove_status_effect(STRESSED)
 		var/mana_adjusted = FALSE
 		var/fatigue_adjusted = FALSE
 		if(fatigue && (A.ai || !A.has_status_effect(STAMCRIT)) && adjust_stamina(-fatigue))
@@ -210,4 +218,3 @@
 						clothing_defense *= 0.5
 				.[damage_type] += FLOOR(clothing_defense,1)
 
-	

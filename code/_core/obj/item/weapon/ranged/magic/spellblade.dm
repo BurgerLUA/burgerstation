@@ -78,6 +78,8 @@
 	value = 1500
 	rarity = RARITY_RARE
 
+	projectile_speed = TILE_SIZE*0.25 - 1
+
 	projectile = /obj/projectile/magic/blade
 	damage_type = /damagetype/melee/sword/claymore
 	damage_type_on = /damagetype/melee/sword/spellblade

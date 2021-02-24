@@ -11,6 +11,9 @@
 		var/multiplier_value = clamp(1.4 - length(L.players_fighting_boss)*0.1,0.25,1)
 		. *= multiplier_value
 
+	if(has_status_effect(STRESSED))
+		. += 0.5
+
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
@@ -129,10 +132,22 @@
 			mana_adjusted = TRUE
 		if(fatigue_adjusted || mana_adjusted)
 			L.queue_health_update = TRUE
+		. += fatigue + mental
 		fatigue = 0
 		mental = 0
 
-	return . + ..()
+	. += ..()
+
+	if(sanity)
+		var/mob/living/L = owner
+		var/sanity_loss = get_loss(SANITY)
+		if(sanity_loss >= 100)
+			if(!L.has_status_effect(STRESSED))
+				L.add_status_effect(STRESSED,-1,1)
+		else if(sanity_loss == 0)
+			L.remove_status_effect(STRESSED)
+
+	return .
 
 /health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
 

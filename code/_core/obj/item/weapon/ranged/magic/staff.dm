@@ -54,7 +54,7 @@
 	cost_charge = SOUL_SIZE_COMMON/10
 	total_charge = SOUL_SIZE_COMMON
 
-	projectile_speed = 16
+	projectile_speed = TILE_SIZE*0.75 - 1
 	shoot_delay = 8
 
 	icon = 'icons/obj/item/weapons/ranged/magic/fire.dmi'
@@ -90,7 +90,7 @@
 
 	shoot_delay = 8
 
-	projectile_speed = 4
+	projectile_speed = TILE_SIZE*0.25 - 1
 
 	bullet_count = 5
 
@@ -127,7 +127,7 @@
 	cost_charge = SOUL_SIZE_COMMON/20
 	total_charge = SOUL_SIZE_COMMON
 
-	projectile_speed = 20
+	projectile_speed = TILE_SIZE - 1
 	bullet_count = 1
 
 	icon = 'icons/obj/item/weapons/ranged/magic/basic.dmi'
@@ -169,7 +169,7 @@
 	cost_charge = SOUL_SIZE_UNCOMMON/10
 	total_charge = SOUL_SIZE_UNCOMMON
 
-	projectile_speed = 15
+	projectile_speed = TILE_SIZE - 1
 	bullet_count = 1
 	shoot_delay = 10
 

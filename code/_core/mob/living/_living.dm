@@ -250,7 +250,7 @@
 			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
 	death()
 	if(!qdeleting) qdel(src)
-	
+
 /mob/living/get_value()
 
 	. = ..()
@@ -258,7 +258,7 @@
 	if(!dead)
 		. += value * 3
 
-	
+
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
 
@@ -382,7 +382,7 @@
 
 	all_living += src
 
-	
+
 /mob/living/Initialize()
 
 	if(ai) ai = new ai(null,src)
@@ -422,7 +422,7 @@
 	shield_overlay.icon_state = "block"
 	shield_overlay.alpha = 0
 
-	
+
 /mob/living/PostInitialize()
 	. = ..()
 	if(health)
@@ -433,7 +433,7 @@
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
-	
+
 /mob/living/Finalize()
 	. = ..()
 	if(boss)
@@ -441,7 +441,7 @@
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_bosses |= src
 				B.update_stats()
-	
+
 /mob/living/proc/setup_name()
 	if(boss)
 		return FALSE

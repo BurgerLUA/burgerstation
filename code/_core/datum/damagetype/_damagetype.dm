@@ -110,6 +110,7 @@
 	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
 
 	var/damage_mod = 1 //Simple multiplier for all damage of this type
+	var/penetration_mod = 1 //Simple multiplier for all penetration of this type
 
 	var/experience_mod = 1 //Simple multiplier for all experience gains via this type.
 
@@ -381,7 +382,7 @@
 			if(debug) log_debug("Victim has infinite [damage_type] defense.")
 			continue
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
-			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
+			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			if(IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any magic damage if we resist magic.

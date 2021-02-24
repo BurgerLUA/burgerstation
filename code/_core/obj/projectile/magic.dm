@@ -40,10 +40,6 @@
 		GENERATE(L)
 		FINALIZE(L)
 
-
-
-
-
 /obj/projectile/magic/chaos
 	name = "chaos ball"
 	icon_state = "chaos"
@@ -59,6 +55,19 @@
 	icon_state = "blade"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/blade/update_projectile(var/tick_rate=1)
+
+	. = ..()
+
+	if(.)
+		vel_x *= 0.8
+		vel_y *= 0.8
+		alpha = clamp(alpha-5,0,255)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_hit(current_loc,TRUE)
+			return FALSE
 
 /obj/projectile/magic/rift
 	name = "magic rift"
@@ -227,4 +236,3 @@
 	if(!found_curse)
 		new /obj/effect/temp/hazard/curse(new_loc,SECONDS_TO_DECISECONDS(10),owner)
 
-	
