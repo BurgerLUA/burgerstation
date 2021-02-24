@@ -41,7 +41,7 @@
 	var/mob/living/L = get_random_target()
 	tracked_atoms += L
 	HOOK_ADD("post_death","kill_ghost_death",L,src,.proc/kill_ghost_post_death)
-	HOOK_ADD("destroy","kill_ghost_destroy",L,src,.proc/kill_ghost_post_death)
+	HOOK_ADD("Destroy","kill_ghost_destroy",L,src,.proc/kill_ghost_post_death)
 	update()
 	return ..()
 
