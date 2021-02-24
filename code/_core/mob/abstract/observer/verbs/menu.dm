@@ -1,3 +1,6 @@
+var/global/list/antag_count = 0
+
+
 /mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Quickload Character"
 	set category = "Menu"
@@ -132,13 +135,17 @@
 		src.to_chat(span("warning","The round is currently ending!"))
 		return FALSE
 
+	var/antag_limit = 2 + length(all_mobs_with_clients)*0.2
+
+	if(antag_count > antag_limit)
+		src.to_chat(span("warning","There are no available antag types!"))
+		return FALSE
+
 	if(length(all_antag_markers) <= 0)
 		src.to_chat(span("warning","There are no available antag types!"))
 		return FALSE
 
 	return TRUE
-
-
 
 /mob/abstract/observer/verb/become_antagonist()
 	set name = "Become Antagonist"
@@ -193,3 +200,5 @@
 
 	var/mob/living/advanced/player/antagonist/P = new chosen_marker.spawn_type(get_turf(chosen_marker),C)
 	P.prepare()
+
+	antag_count++
