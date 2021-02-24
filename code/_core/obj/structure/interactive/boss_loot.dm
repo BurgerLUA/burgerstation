@@ -49,7 +49,7 @@ var/global/list/wishgranter_speak_lines = list(
 			return TRUE
 		for(var/obj/item/I in created_loot)
 			// https://www.desmos.com/calculator/78f8zulsjq
-			if(prob(10)) I.quality = min(round(5 + ((rand(1,1000)*0.0025)**4),5),140)
+			if(prob(10)) I.quality = 100 + min(round(5 + ((rand(1,1000)*0.0025)**4),5),40)
 
 		caller.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
 		var/obj/hud/inventory/I = object
@@ -88,4 +88,3 @@ var/global/list/wishgranter_speak_lines = list(
 		do_say(line_to_say, language_to_use = LANGUAGE_RUSSIAN)
 		next_speak = world.time + SECONDS_TO_DECISECONDS(30)
 
-	
