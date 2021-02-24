@@ -124,15 +124,22 @@ var/global/list/stored_paths = list()
 
 	qdel(NC)
 
-/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE)
+/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE,var/check_view=FALSE)
 
 	var/obj/marker/map_node/best_node = null
 	var/best_distance = INFINITY
 
-	for(var/obj/marker/map_node/N in range(distance,A))
-		var/N_distance = get_dist_real(A,N)
-		if(!best_node || best_distance > N_distance)
-			best_node = N
-			best_distance = N_distance
+	if(check_view)
+		for(var/obj/marker/map_node/N in view(distance,A))
+			var/N_distance = get_dist_real(A,N)
+			if(!best_node || best_distance > N_distance)
+				best_node = N
+				best_distance = N_distance
+	else
+		for(var/obj/marker/map_node/N in range(distance,A))
+			var/N_distance = get_dist_real(A,N)
+			if(!best_node || best_distance > N_distance)
+				best_node = N
+				best_distance = N_distance
 
 	return best_node

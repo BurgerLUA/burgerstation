@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(ai)
 	var/list/active_ai = list()
 	var/list/inactive_ai = list()
 
+	var/list/path_stuck_ai = list()
+
 	use_time_dialation = FALSE
 
 /subsystem/ai/unclog(var/mob/caller)

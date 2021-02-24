@@ -134,6 +134,8 @@
 	SSai.active_ai -= src
 	SSai.inactive_ai -= src
 
+	SSai.path_stuck_ai -= src
+
 	SSbossai.active_ai -= src
 	SSbossai.inactive_ai -= src
 
@@ -178,4 +180,3 @@
 /ai/PostInitialize()
 	. = ..()
 	set_active(active,TRUE)
-	

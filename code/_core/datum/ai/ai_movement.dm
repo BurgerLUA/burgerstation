@@ -10,7 +10,7 @@
 
 	var/turf/T
 
-	if(owner.move_dir)
+	if(owner.move_dir) //Checking safety.
 		T = get_step(owner,owner.move_dir)
 		var/turf/T2 = get_turf(owner)
 		if(!can_enter_turf(T) && can_enter_turf(T2))
@@ -122,9 +122,9 @@
 
 		frustration_path = 0
 
-		var/obj/marker/map_node/N_start = find_closest_node(owner)
+		var/obj/marker/map_node/N_start = find_closest_node(owner,check_view=TRUE)
 		if(!N_start)
-			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path start!")
+			SSai.path_stuck_ai |= src
 			set_path(null)
 			if(delete_on_no_path)
 				queue_delete(owner,0,TRUE)

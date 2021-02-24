@@ -229,6 +229,22 @@
 	next_spawn_check = world.time + get_wave_frequency()
 
 	var/turf/T = get_turf(spawn_node)
+	for(var/k in SSai.path_stuck_ai) //Unclog stuck AI.
+		CHECK_TICK(50,FPS_SERVER*5)
+		var/ai/AI = k
+		var/mob/living/L = AI.owner
+		var/should_spawn = TRUE
+		for(var/mob/living/advanced/P in all_mobs_with_clients_by_z["[L.z]"])
+			if(P.dead)
+				continue
+			if(get_dist(P,L) <= VIEW_RANGE + ZOOM_RANGE)
+				should_spawn = FALSE
+				break
+		if(!should_spawn)
+			continue
+		L.force_move(T)
+		wave_to_spawn--
+
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
