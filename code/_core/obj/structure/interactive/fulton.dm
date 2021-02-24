@@ -99,7 +99,7 @@
 	stored_movable = null
 
 /obj/structure/interactive/fulton/proc/can_be_extracted(var/mob/caller,var/atom/movable/M)
-	if(!M.is_safe_to_delete(check_loc = FALSE))
+	if(!M.is_player_controlled() && !M.is_safe_to_delete(check_loc = FALSE))
 		return FALSE
 	return TRUE
 
