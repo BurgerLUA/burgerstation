@@ -49,16 +49,19 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night,
 
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/equipped,
+
 		MERC_ESSENTIALS
 
 		/obj/item/magazine/pistol_50/heartbreaker,
 		/obj/item/magazine/pistol_50/heartbreaker,
 		/obj/item/magazine/pistol_50/heartbreaker,
 		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
 
-		/obj/item/magazine/sniper_50,
+		/obj/item/magazine/pistol_40/tranq,
+		/obj/item/magazine/pistol_40/tranq,
+		/obj/item/magazine/pistol_40/tranq,
+
 		/obj/item/magazine/sniper_50,
 		/obj/item/magazine/sniper_50,
 		/obj/item/magazine/sniper_50/ap,

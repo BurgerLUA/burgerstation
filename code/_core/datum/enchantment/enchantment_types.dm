@@ -52,10 +52,14 @@
 
 /enchantment/blood_leech/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(attacker) && is_living(victim))
-		var/mob/living/L1 = victim
-		var/mob/living/L2 = victim
-		if(!L1.dead && !L2.dead)
-			L1.blood_volume = clamp(L1.blood_volume+total_damage_dealt*0.1*strength,0,L1.blood_volume_max)
+		var/mob/living/V = victim
+		var/mob/living/A = attacker
+		if(!A.dead && !V.dead)
+			var/blood_to_steal = min(total_damage_dealt*0.1*strength,V.blood_volume,A.blood_volume_max - A.blood_volume)
+			if(blood_to_steal > 0)
+				V.blood_volume -= blood_to_steal
+				A.blood_volume = clamp(A.blood_volume+blood_to_steal,0,A.blood_volume_max)
+
 	return ..()
 
 /enchantment/soul_trap
