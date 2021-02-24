@@ -26,13 +26,16 @@
 
 	return TRUE
 
-/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/talk_range_override=0)
 
 	var/turf/T1 = get_turf(source)
 
 	if(!T1)
 		log_error("Warning: Tried to use use_ears on [source], but the turf was null.")
 		return FALSE
+
+	if(!talk_range_override)
+		talk_range_override = talk_range
 
 	for(var/k in all_listeners)
 		CHECK_TICK(75,FPS_SERVER)
@@ -44,7 +47,7 @@
 		if(!T2)
 			log_error("Warning: Tried to send a message to a listener [A.get_debug_name()], but it didn't have a valid turf.")
 			continue
-		if(!within_range(T1,T2,talk_range))
+		if(!within_range(T1,T2,talk_range_override))
 			continue
 		A.on_listen(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 

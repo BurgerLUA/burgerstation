@@ -37,6 +37,9 @@
 
 		for(var/instance in formatted_data)
 
+			if(prob(10))
+				continue
+
 			var/x_cord = formatted_data[instance]["x"]
 			var/y_cord = formatted_data[instance]["y"]
 			var/z_cord = formatted_data[instance]["z"]

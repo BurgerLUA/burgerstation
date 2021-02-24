@@ -69,7 +69,7 @@ var/global/list/all_telecomms = list()
 		var/area/A = get_area(R)
 		if(!A.area_identifier || !broadcasting_areas[A.area_identifier])
 			continue
-		use_ears(data_to_process["speaker"],R,data_to_process["text_to_say"],data_to_process["language_text_to_say"],data_to_process["text_type"],data_to_process["frequency"],data_to_process["language"],data_to_process["talk_range"])
+		use_ears(data_to_process["speaker"],R,data_to_process["text_to_say"],data_to_process["language_text_to_say"],data_to_process["text_type"],data_to_process["frequency"],data_to_process["language"],data_to_process["talk_range"],R.broadcasting_range)
 
 	return TRUE
 
