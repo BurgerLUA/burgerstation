@@ -178,3 +178,17 @@
 		"pants" = COLOR_WHITE,
 		"stripes" = COLOR_BLACK
 	)
+
+/obj/item/clothing/pants/normal/reinforced/merc
+	name = "mercenary reinforced pants"
+	polymorphs = list(
+		"pants" = COLOR_OLIVE_DRAB,
+		"kneepad" = COLOR_WHITE
+	)
+
+/obj/item/clothing/pants/normal/reinforced/merc_alt
+	name = "mercenary reinforced pants"
+	polymorphs = list(
+		"pants" = "#A39D86",
+		"kneepad" = COLOR_WHITE
+	)

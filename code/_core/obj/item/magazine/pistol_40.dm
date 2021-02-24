@@ -7,7 +7,9 @@
 	bullet_count_max = 14
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/equipped = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_40
@@ -25,3 +27,8 @@
 	icon_states = 7
 
 	value = 5
+
+/obj/item/magazine/pistol_40/tranq
+	name = "\improper .40 tranq pistol magazine"
+	icon = 'icons/obj/item/magazine/40pistol_tranq.dmi'
+	ammo = /obj/item/bullet_cartridge/pistol_40/tranq

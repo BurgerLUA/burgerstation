@@ -53,6 +53,10 @@
 	name = "grey vest"
 	color = COLOR_GREY
 
+/obj/item/clothing/overwear/coat/vest/colored/merc
+	name = "merc vest"
+	color = "#BCAC86"
+
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'
@@ -89,3 +93,30 @@
 	container_max_size = SIZE_2
 
 	value = 100
+
+
+/obj/item/clothing/overwear/coat/vest/poly
+	name = "polycolored vest"
+	icon = 'icons/obj/item/clothing/suit/white_vest_poly.dmi'
+
+	dyeable = TRUE
+
+	polymorphs = list(
+		"shirt" = COLOR_WHITE,
+		"pockets" = COLOR_WHITE
+	)
+
+/obj/item/clothing/overwear/coat/vest/poly/merc
+	name = "mercenary polycolored vest"
+
+	polymorphs = list(
+		"shirt" = COLOR_OLIVE_DRAB,
+		"pockets" = COLOR_BLACK
+	)
+
+/obj/item/clothing/overwear/coat/vest/poly/pockets_only
+	name = "webbing pcokets"
+
+	polymorphs = list(
+		"pockets" = COLOR_BLACK
+	)

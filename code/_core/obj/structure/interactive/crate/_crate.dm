@@ -141,6 +141,10 @@
 
 /obj/structure/interactive/crate/proc/close(var/mob/caller)
 
+	if(!isturf(loc))
+		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being closed!"))
+		return FALSE
+
 	var/atom/blocking
 	for(var/k in loc.contents)
 		var/atom/movable/M = k
@@ -176,6 +180,10 @@
 	return TRUE
 
 /obj/structure/interactive/crate/proc/open(var/mob/caller)
+
+	if(!isturf(loc))
+		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being opened!"))
+		return FALSE
 
 	if(loot)
 		var/loot/L = LOOT(loot)

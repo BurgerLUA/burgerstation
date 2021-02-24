@@ -24,3 +24,6 @@
 
 
 	value = 200
+
+/obj/item/clothing/overwear/armor/molded_armor/merc
+	color = "#BCAC86"

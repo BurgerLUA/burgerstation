@@ -8,6 +8,9 @@ SUBSYSTEM_DEF(text)
 	var/list/last_names = list()
 	var/list/name_count = list()
 
+	var/list/first_codenames = list()
+	var/list/last_codenames = list()
+
 	var/list/adjectives = list()
 	var/list/verbs = list()
 
@@ -25,6 +28,9 @@ SUBSYSTEM_DEF(text)
 	verbs = splittext(rustg_file_read("text/names/verbs.txt"),"\n")
 	wisdoms = splittext(rustg_file_read("text/names/wisdoms.txt"),"\n")
 
+	first_codenames = splittext(rustg_file_read("text/names/codenames_first.txt"),"\n")
+	last_codenames = splittext(rustg_file_read("text/names/codenames_last.txt"),"\n")
+
 	log_subsystem(name,"Found [length(adjectives)] adjectives.")
 	log_subsystem(name,"Found [length(verbs)] verbs.")
 	log_subsystem(name,"Found [length(wisdoms)] verbs.")
@@ -32,6 +38,9 @@ SUBSYSTEM_DEF(text)
 	log_subsystem(name,"Found [length(first_names_male)] male first names.")
 	log_subsystem(name,"Found [length(first_names_female)] female first names.")
 	log_subsystem(name,"Found [length(last_names)] last names.")
+
+	log_subsystem(name,"Found [length(first_codenames)] first codenames.")
+	log_subsystem(name,"Found [length(last_codenames)] last codenames.")
 
 	return ..()
 

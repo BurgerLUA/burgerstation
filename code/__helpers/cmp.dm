@@ -53,6 +53,9 @@
 /proc/cmp_subsystem_priority(subsystem/a, subsystem/b)
 	return cmp_numeric_asc(a.priority,b.priority)
 
+/proc/cmp_cqc_priority(cqc/a, cqc/b)
+	return cmp_numeric_asc(a.priority,b.priority)
+
 /proc/cmp_layer(atom/a, atom/b)
 	return cmp_numeric_asc(a.layer,b.layer)
 

@@ -110,3 +110,9 @@
 	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Space Cop IFF implant, and prevents firing at those with one."
 	iff_tag = "Space Cop"
 	icon_state = "deathsquad"
+
+/obj/item/firing_pin/electronic/iff/mercenary
+	name = "mercenary firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Mercenary IFF implant, and prevents firing at those with one."
+	iff_tag = "Mercenary"
+	icon_state = "deathsquad"

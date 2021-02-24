@@ -29,13 +29,15 @@
 /obj/item/clothing/ears/headset/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_radio")
-	
+
 /obj/item/clothing/ears/headset/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_radio")
-	
+
 /obj/item/clothing/ears/headset/syndicate
 	name = "syndicate headset"
 	stored_radio = /obj/item/device/radio/syndicate
 
-	loyalty_tag = "Syndicate"
+/obj/item/clothing/ears/headset/mercenary
+	name = "mercenary headset"
+	stored_radio = /obj/item/device/radio/mercenary

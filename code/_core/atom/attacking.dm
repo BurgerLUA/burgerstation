@@ -142,7 +142,7 @@
 				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
 					var/mob/living/advanced/A = attacker
 					A.add_cqc(DT.cqc_tag)
-					var/damagetype/DT2 = A.check_cqc(v,object_to_damage_with,hit_object,blamed)
+					var/damagetype/DT2 = A.check_cqc(v,object_to_damage_with,hit_object,blamed,DT)
 					if(DT2) DT = DT2
 				continue
 			//No hit object means we missed.

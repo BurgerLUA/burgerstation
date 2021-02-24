@@ -29,6 +29,7 @@
 	currency = loaded_data["currency"]
 	revenue = loaded_data["revenue"] ? loaded_data["revenue"] : 0
 	expenses = loaded_data["expenses"] ? loaded_data["expenses"] : 0
+	partial_tax = loaded_data["partial_tax"] ? loaded_data["partial_tax"] : 0
 	last_tax_payment = loaded_data["last_tax_payment"] ? loaded_data["last_tax_payment"] : world.realtime
 	species = loaded_data["species"]
 	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
@@ -140,6 +141,7 @@
 	.["revenue"] = revenue
 	.["expenses"] = expenses
 	.["last_tax_payment"] = last_tax_payment
+	.["partial_tax"] = partial_tax
 
 	if(M && M.loaded_data)
 		.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.

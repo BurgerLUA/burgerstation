@@ -59,8 +59,10 @@
 				var/obj/item/device/radio/R = k
 				var/turf/T = get_turf(R)
 				if(T == source_turf)
-					R.on_listen(speaker,source,text_to_say,language_text_to_say,TEXT_TALK,R.frequency,language,talk_range)
-					if(speaker.is_player_controlled()) log_chat("RADIO [frequency_to_name(R.frequency)]: [speaker.get_log_name()]: [text_to_say]")
+					if(frequency == -1)
+						frequency = R.frequency
+					R.on_listen(speaker,source,text_to_say,language_text_to_say,TEXT_TALK,frequency,language,talk_range)
+					if(speaker.is_player_controlled()) log_chat("RADIO [frequency_to_name(frequency)]: [speaker.get_log_name()]: [text_to_say]")
 					break
 		if(TEXT_TALK)
 			use_ears(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)

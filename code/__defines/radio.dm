@@ -15,7 +15,9 @@
 
 
 //In use.
-#define RADIO_FREQ_MIN 110.1
+#define RADIO_FREQ_MIN 1101
+
+#define RADIO_FREQ_MERCENARY 1107
 
 #define RADIO_FREQ_SYNDICATE 1213
 
@@ -49,4 +51,6 @@
 			return "ShipComm"
 		if(RADIO_FREQ_SYNDICATE)
 			return "Syndicate"
+		if(RADIO_FREQ_MERCENARY)
+			return "Mercenary"
 	return "Unknown"

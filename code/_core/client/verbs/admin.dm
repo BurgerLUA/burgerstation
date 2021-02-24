@@ -104,14 +104,17 @@
 	if(!desired_varable_value)
 		if(isnum(object.vars[desired_varable_key]))
 			desired_varable_value = input("Desired Number") as num|null
-
+			if(!isnum(desired_varable_value))
+				return FALSE
 		else if(istext(object.vars[desired_varable_key]))
-			desired_varable_value = input("Desired Number") as text|null
+			desired_varable_value = input("Desired Text") as text|null
+			if(!desired_varable_value)
+				return FALSE
 
 	if(desired_varable_value && istext(desired_varable_value))
 		desired_varable_value = sanitize(desired_varable_value)
 
-	if(object && is_datum(object) && desired_varable_key && desired_varable_value)
+	if(object && is_datum(object) && desired_varable_key)
 		object.vars[desired_varable_key] = desired_varable_value
 		var_edit(object)
 

@@ -6,6 +6,7 @@ var/global/list/ckey_to_globaldata = list()
 		"redeemed_rewards" = list(),
 		"burgerbux" = 0,
 		"stored_experience" = list(),
+		"stored_credits" = 0,
 		"new_player" = TRUE
 	)
 

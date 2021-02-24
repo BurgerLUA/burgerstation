@@ -33,6 +33,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	var/currency = 3000
 	var/revenue = 0
 	var/expenses = 0
+	var/partial_tax = 0 //Taxes you couldn't pay.
 	var/last_tax_payment = 0
 
 	var/insurance = INSURANCE_PAYOUT * 4 //How much insurance the user has. This amount is paid out in death, up to 8000 credits.

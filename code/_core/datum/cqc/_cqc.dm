@@ -3,12 +3,24 @@
 	var/combo = "" //The combo to trigger.
 	var/damagetype/damage_type //The damage type that is applied on target.
 	var/combo_breaker = FALSE //Should we clear the current combo when this combo is finished?
+	var/priority = 0 //Lower values get more priority. Automatically assigned based on combo length
 
-/cqc/proc/should_apply(var/mob/living/advanced/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/cqc/New(var/desired_loc)
+
+	if(!priority)
+		priority = 1000 - length(combo)
+
+	 . = ..()
+
+/cqc/proc/should_apply(var/mob/living/advanced/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+
+	var/combo_length = length(combo)
+
+	if(combo_length == 1 && DT.cqc_tag == combo)
+		return TRUE
 
 	var/cqc_string = attacker.cqc
 
-	var/combo_length = length(combo)
 	var/cqc_length = length(cqc_string)
 
 	if(cqc_length < combo_length)

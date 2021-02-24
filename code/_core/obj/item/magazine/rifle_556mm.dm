@@ -12,7 +12,10 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/merc = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype = TRUE
 
 	)
 
