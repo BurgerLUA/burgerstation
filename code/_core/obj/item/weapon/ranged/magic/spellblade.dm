@@ -81,7 +81,7 @@
 	projectile_speed = TILE_SIZE*0.25 - 1
 
 	projectile = /obj/projectile/magic/blade
-	damage_type = /damagetype/melee/sword/claymore
+	damage_type = /damagetype/melee/sword/spellblade
 	damage_type_on = /damagetype/melee/sword/spellblade
 	ranged_damage_type = /damagetype/ranged/magic/spellblade
 
