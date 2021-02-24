@@ -233,6 +233,9 @@
 		CHECK_TICK(50,FPS_SERVER*5)
 		var/ai/AI = k
 		var/mob/living/L = AI.owner
+		if(L.dead)
+			SSai.path_stuck_ai -= k
+			continue
 		var/should_spawn = TRUE
 		for(var/mob/living/advanced/P in all_mobs_with_clients_by_z["[L.z]"])
 			if(P.dead)
@@ -244,6 +247,7 @@
 			continue
 		L.force_move(T)
 		wave_to_spawn--
+		SSai.path_stuck_ai -= k
 
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
