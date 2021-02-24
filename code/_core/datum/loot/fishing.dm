@@ -12,12 +12,6 @@
 /loot/fishing/sea
 	loot_table = list(
 		null = 500,
-		/obj/item/trash/candy = CHANCE_JUNK,
-		/obj/item/trash/cheese_chips = CHANCE_JUNK,
-		/obj/item/trash/chips = CHANCE_JUNK,
-		/obj/item/trash/jerky = CHANCE_JUNK,
-		/obj/item/trash/raisins = CHANCE_JUNK,
-		/obj/item/trash/syndicate = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/sandal = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/sandal/left = CHANCE_JUNK,
 		/obj/item/clothing/head/hat/sombrero = CHANCE_JUNK,
@@ -47,12 +41,6 @@
 /loot/fishing/river
 	loot_table = list(
 		null = 500,
-		/obj/item/trash/candy = CHANCE_JUNK,
-		/obj/item/trash/cheese_chips = CHANCE_JUNK,
-		/obj/item/trash/chips = CHANCE_JUNK,
-		/obj/item/trash/jerky = CHANCE_JUNK,
-		/obj/item/trash/raisins = CHANCE_JUNK,
-		/obj/item/trash/syndicate = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/workboot = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/workboot/left = CHANCE_JUNK,
 		/obj/item/clothing/head/hat/beaver = CHANCE_JUNK,
