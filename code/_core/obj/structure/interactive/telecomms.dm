@@ -64,7 +64,7 @@ var/global/list/all_telecomms = list()
 		var/obj/item/device/radio/R = k
 		if(!R || R.qdeleting)
 			continue
-		if(!(data_to_process["frequency"] in R.listening_frequencies))
+		if(R.frequency != data_to_process["frequency"] && !(data_to_process["frequency"] in R.listening_frequencies))
 			continue
 		var/area/A = get_area(R)
 		if(!A.area_identifier || !broadcasting_areas[A.area_identifier])
@@ -78,9 +78,7 @@ var/global/list/all_telecomms = list()
 	name = "station telecomms system"
 
 /obj/structure/interactive/telecomms/station/Initialize()
-
 	add_telecomm("Burgerstation")
 	add_telecomm("Mission")
 	add_telecomm("Central Command")
-
 	return ..()

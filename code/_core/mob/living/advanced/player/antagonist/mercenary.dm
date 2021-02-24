@@ -49,6 +49,8 @@ var/global/list/possible_merc_loadouts = list(
 	to_chat(span("danger","Work with your team, if any, to fulton extract NanoTrasen Soldiers and equipment. Note that they must be laying on the floor alive in order to extract them. You are given lethal and non-lethal equipment to defend yourself."))
 	to_chat(span("danger","<h1>Killing NanoTrasen operatives is not recommended as it is considered an act of war. We will have to disable the NanoMachines in your body that give you increased resistances if we witness you kill a NanoTrasen soldier. Plausible deniability, and all that.</h1>"))
 
+	do_say("; This is [name]. Kept you waiting, huh?")
+
 /mob/living/advanced/player/antagonist/merc/setup_name() //Don't do anything special
 	return TRUE
 

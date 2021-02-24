@@ -1,7 +1,6 @@
 #define MERC_ESSENTIALS \
 /obj/item/analyzer/health, \
 /obj/item/attachment/barrel/suppressor, \
-/obj/item/attachment/barrel/suppressor, \
 /obj/item/container/beaker/can/grey_bull, \
 /obj/item/container/beaker/vial/zombie_antidote, \
 /obj/item/container/blood_pack/full/o_negative, \
@@ -18,7 +17,7 @@
 /obj/item/supply_remote/ammo,
 
 
-/loadout/deathsquad/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+/loadout/mercenary/pre_add(var/mob/living/advanced/A,var/obj/item/I)
 
 	if(!I.value_burgerbux) //Prevents antagonists from selling their own items.
 		I.value_burgerbux = 1
@@ -27,7 +26,7 @@
 
 /loadout/mercenary/rat
 	spawning_items = list(
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/mercenary,
 
 		/obj/item/clothing/shirt/normal/reinforced/merc_alt,
 		/obj/item/clothing/pants/normal/reinforced/merc_alt,
@@ -46,8 +45,9 @@
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
 
+		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper{firing_pin = /obj/item/firing_pin/electronic/iff/mercenary},
+
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night/equipped,
 
 		MERC_ESSENTIALS
 
@@ -57,17 +57,15 @@
 		/obj/item/magazine/pistol_50/heartbreaker,
 		/obj/item/magazine/pistol_50/heartbreaker,
 		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
 
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
-		/obj/item/magazine/pistol_50/heartbreaker,
+		/obj/item/magazine/sniper_50,
+		/obj/item/magazine/sniper_50,
+		/obj/item/magazine/sniper_50,
+		/obj/item/magazine/sniper_50/ap,
+		/obj/item/magazine/sniper_50/ap,
+		/obj/item/magazine/sniper_50/explosive,
+		/obj/item/magazine/sniper_50/incendiary,
+
 	)
 
 
@@ -83,7 +81,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/merc,
 		/obj/item/clothing/hands/gloves/colored/padded/merc/left,
 
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/mercenary,
 
 		/obj/item/clothing/belt/storage/colored/merc,
 		/obj/item/clothing/back/storage/satchel/poly/merc_alt,
@@ -128,7 +126,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/mercenary,
 		/obj/item/clothing/head/hat/headband/dark_grey,
 
 		/obj/item/clothing/belt/storage/colored/black,
@@ -180,7 +178,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 
 
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/mercenary,
 		/obj/item/clothing/glasses/eyepatch,
 
 		/obj/item/clothing/belt/storage/colored/black,

@@ -9,12 +9,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
 	var/list/listening_frequencies = list( // The frequencies this radio is allowed to talk on.
-		RADIO_FREQ_COMMON,
-		RADIO_FREQ_ALPHA,
-		RADIO_FREQ_BRAVO,
-		RADIO_FREQ_CHARLIE,
-		RADIO_FREQ_DELTA,
-		RADIO_FREQ_SHIP,
+		RADIO_FREQ_COMMON //Can always hear common, no matter what.
 	)
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.
@@ -142,7 +137,26 @@ list(
 	frequency_min = RADIO_FREQ_ALPHA - 20
 	frequency_max = RADIO_FREQ_SHIP + 20
 
+	broadcasting_range = 1
+
 	value = 15
+
+/obj/item/device/radio/mercenary
+	name = "\improper Mercenary Radio"
+
+	frequency_min = RADIO_FREQ_MERCENARY
+	frequency_max = RADIO_FREQ_COMMON
+
+	frequency = RADIO_FREQ_MERCENARY
+
+	listening_frequencies = list(
+		RADIO_FREQ_COMMON,
+		RADIO_FREQ_MERCENARY
+	)
+
+	broadcasting_range = 1
+
+	value = 300
 
 /obj/item/device/radio/syndicate
 	name = "\improper Syndicate Radio"
@@ -151,8 +165,12 @@ list(
 	frequency_max = RADIO_FREQ_COMMON
 
 	frequency = RADIO_FREQ_SYNDICATE
+
 	listening_frequencies = list(
+		RADIO_FREQ_COMMON,
 		RADIO_FREQ_SYNDICATE
 	)
 
-	value = 100
+	broadcasting_range = 1
+
+	value = 300

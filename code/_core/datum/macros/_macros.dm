@@ -3,7 +3,6 @@
 	var/list/macros = QWERTY_MACROS
 
 	var/list/radio_keys = list(
-		";" = RADIO_FREQ_COMMON,
 		"g" = RADIO_FREQ_COMMON,
 		"s" = RADIO_FREQ_SHIP,
 		"a" = RADIO_FREQ_ALPHA,
@@ -13,7 +12,8 @@
 		"c" = RADIO_FREQ_CHARLIE,
 		"3" = RADIO_FREQ_CHARLIE,
 		"4" = RADIO_FREQ_DELTA,
-		"d" = RADIO_FREQ_DELTA
+		"d" = RADIO_FREQ_DELTA,
+		"t" = RADIO_FREQ_SYNDICATE
 	)
 
 	var/list/language_keys = list(
