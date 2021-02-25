@@ -240,6 +240,8 @@
 
 	var/soul_size = null
 
+	var/list/traits = list()
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))

@@ -1,0 +1,1 @@
+#define TRAIT(x) SStraits.all_traits[x]
