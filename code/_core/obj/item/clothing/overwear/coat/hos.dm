@@ -17,4 +17,9 @@
 
 	size = SIZE_4
 
+	dyeable = TRUE
+
 	value = 800
+
+/obj/item/clothing/overwear/coat/hos/gray
+	color = "#404040"
