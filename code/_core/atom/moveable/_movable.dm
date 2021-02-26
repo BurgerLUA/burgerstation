@@ -12,7 +12,7 @@
 	var/tmp/move_dir = 0x0
 	var/tmp/move_dir_last = 0x0 //Used for momentum and speed.
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
-	var/tmp/move_delay = 0
+	var/tmp/move_delay = 0 //How long until you can move again, in ticks.
 
 	var/size = SIZE_0
 

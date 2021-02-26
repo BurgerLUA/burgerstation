@@ -240,7 +240,8 @@
 
 	var/soul_size = null
 
-	var/list/traits = list()
+	var/list/traits = list() //Assoc list. This is saved.
+	var/list/traits_by_category = list() //Assoc list. This isn't saved.
 
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()

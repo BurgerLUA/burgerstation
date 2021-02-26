@@ -22,7 +22,7 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		if(can_scan(caller,object))
-			caller.visible_message(span("\The [caller.name] scans \the [object.name]."),span("You scan \the [object.name]."))
+			caller.visible_message(span("notice","\The [caller.name] scans \the [object.name]."),span("notice","You scan \the [object.name]."))
 			on_scan(caller,object,location,control,params)
 		return TRUE
 

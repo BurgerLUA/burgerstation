@@ -1,3 +1,4 @@
+
 /proc/span(var/class,var/text,var/style)
 	return "<span class='[class]' [style ? "style='[style]'" : ""]>[text]</span>"
 

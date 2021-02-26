@@ -222,19 +222,27 @@
 
 	to_chat(span("notice","Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."))
 
-/client/verb/rejuvenate_player()
-	set name = "Rejuvenate Player"
+/client/verb/rejuvenate()
+	set name = "Rejuvenate"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to rejuvenate?","Player Rejuvenation") in all_players as mob|null
+	var/list/valid_players = list()
 
-	if(!P)
-		return FALSE
+	for(var/mob/living/L in all_mobs_with_clients)
+		if(!L.ckey)
+			continue
+		valid_players[L.get_debug_name()] = L
 
-	P.resurrect()
-	to_chat(span("notice","You rejuvenated [P.name]."))
+	var/choice = input("Who do you want to rejuvenate?","Player Rejuvenation") in valid_players as mob|null
 
-	log_admin("[src.get_debug_name()] rejuvenated [P.get_debug_name()].")
+	var/mob/living/L = valid_players[choice]
+
+	if(!L) return FALSE
+
+	L.resurrect()
+	to_chat(span("notice","You rejuvenated [L.name]."))
+
+	log_admin("[src.get_debug_name()] rejuvenated [L.get_debug_name()].")
 
 /client/verb/force_round_end()
 	set name = "Force Round End (DANGER)"
@@ -398,5 +406,59 @@
 	P.known_languages -= L.id
 
 	log_admin("[src.get_debug_name()] removed the language [L.get_debug_name()] to [P.get_debug_name()].")
+
+	return TRUE
+
+
+/client/verb/add_trait()
+	set name = "Add Trait"
+	set category = "GameMaster"
+
+	var/mob/living/advanced/player/P = input("Who do you want to add a trait to?","Add Trait") in all_players as mob|null
+
+	if(!P)
+		return FALSE
+
+	var/list/valid_traits = list()
+
+	for(var/k in SStraits.all_traits)
+		var/trait/T = SStraits.all_traits[k]
+		valid_traits += T
+
+	var/trait/T = input("What trait do you wish to add to \the [P.name]?","Add Trait") as null|anything in valid_traits
+
+	if(!T)
+		return FALSE
+
+	P.add_trait(T.type)
+
+	log_admin("[src.get_debug_name()] added the trait [T.get_debug_name()] to [P.get_debug_name()].")
+
+	return TRUE
+
+
+/client/verb/remove_trait()
+	set name = "Remove Trait"
+	set category = "GameMaster"
+
+	var/mob/living/advanced/player/P = input("Who do you want to remove a trait from?","Remove Trait") in all_players as mob|null
+
+	if(!P)
+		return FALSE
+
+	var/list/valid_traits = list()
+
+	for(var/k in P.traits)
+		var/trait/T = SStraits.all_traits[k]
+		valid_traits += T
+
+	var/trait/T = input("What trait do you wish to remove from \the [P.name]?","Remove Trait") as null|anything in valid_traits
+
+	if(!T)
+		return FALSE
+
+	P.remove_trait(T.type)
+
+	log_admin("[src.get_debug_name()] removed the trait [T.get_debug_name()] to [P.get_debug_name()].")
 
 	return TRUE

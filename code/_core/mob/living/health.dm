@@ -57,7 +57,10 @@
 	if(has_status_effect(ADRENALINE))
 		health_added = get_status_effect_magnitude(ADRENALINE)
 
-	if( (health.health_current + health_added) <= death_threshold)
+	var/trait/death_check/DC = get_trait_by_category(/trait/death_check)
+	if(DC) health_added += DC.extra_health
+
+	if((health.health_current + health_added) <= death_threshold)
 		return TRUE
 
 	return FALSE
@@ -70,6 +73,9 @@
 	. = ..()
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2 + SAFENUM(damage_table[BLUNT])*0.5 + SAFENUM(damage_table[PIERCE])
+
+	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
+	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
 	if(blood_type && total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
 
@@ -163,7 +169,5 @@
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return damage_received_multiplier
 
-
 /mob/living/proc/create_override_contents(var/mob/living/caller)
-
 	return TRUE

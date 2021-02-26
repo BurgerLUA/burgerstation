@@ -251,6 +251,9 @@
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
 	var/quality_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
 
+	var/trait/metabolism/M = get_trait_by_category(/trait/metabolism/)
+	if(M) quality_mod *= M.hunger_multiplier
+
 	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*quality_mod)
 	add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*quality_mod)
 	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
@@ -285,7 +288,10 @@ mob/living/proc/on_life_slow()
 		return FALSE
 
 	if(blood_volume < blood_volume_max)
-		var/blood_volume_to_add = -(add_hydration(-0.05) + add_nutrition(-0.3))*0.5
+		var/consume_multiplier = 1
+		var/trait/blood_regen/M = get_trait_by_category(/trait/blood_regen/)
+		if(M) consume_multiplier *= M.consume_multiplier
+		var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)

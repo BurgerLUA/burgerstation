@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(traits)
 
 	for(var/k in subtypesof(/trait/))
 		var/trait/T = new k
-		all_traits[T.id] = T
+		all_traits[T.type] = T
 
 	log_subsystem(name,"Stored [length(all_traits)] traits.")
 

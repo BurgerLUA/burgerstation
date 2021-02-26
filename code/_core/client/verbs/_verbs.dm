@@ -54,7 +54,7 @@
 		verbs += /client/verb/bring_player
 		verbs += /client/verb/jump_to_mob
 		verbs += /client/verb/ic_announcement
-		verbs += /client/verb/rejuvenate_player
+		verbs += /client/verb/rejuvenate
 		verbs += /client/verb/force_round_end
 
 	//Dev
@@ -77,5 +77,7 @@
 		verbs += /client/verb/force_vote
 		verbs += /client/verb/add_language
 		verbs += /client/verb/remove_language
+		verbs += /client/verb/remove_trait
+		verbs += /client/verb/add_trait
 
 	return TRUE

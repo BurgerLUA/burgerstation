@@ -18,8 +18,9 @@
 
 
 /mob/living/proc/send_pain(var/pain_strength=50)
-	if(pain_strength < 75)
-		do_emote("pain")
-	else
-		do_emote("scream")
+	if(!has_trait(/trait/pain_tolerant))
+		if(pain_strength < 75)
+			do_emote("pain")
+		else
+			do_emote("scream")
 	return TRUE

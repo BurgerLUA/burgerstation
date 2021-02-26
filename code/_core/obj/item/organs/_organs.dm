@@ -20,9 +20,7 @@
 	var/list/obj/item/organ/attached_organs //The organs that are attached to it.
 	var/attach_method = 0 //0 Means it's attached to it. 1 means inside it. TODO: Flags.
 
-	var/style
-
-	color = "#FFFFFF"
+	//var/style
 
 	no_held_draw = TRUE
 
