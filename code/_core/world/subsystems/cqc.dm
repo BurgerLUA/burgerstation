@@ -14,6 +14,6 @@ SUBSYSTEM_DEF(cqc)
 		C = new k
 		all_cqc[C.type] = C
 
-	sortTim(all_cqc, /proc/cmp_cqc_priority)
+	sortTim(all_cqc, /proc/cmp_cqc_priority, associative = TRUE)
 
 	return ..()
