@@ -55,7 +55,7 @@
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)
 
-	
+
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	var/atom/old_loc = loc
@@ -74,7 +74,7 @@
 		if(loc != old_loc)
 			post_move(old_loc)
 
-	
+
 /mob/proc/update_rs_chat()
 	for(var/k in stored_chat_text)
 		var/obj/effect/chat_text/CT = k
@@ -82,7 +82,10 @@
 		CT.force_move(src.loc)
 
 
-/mob/post_move(var/atom/old_loc)
+/mob/proc/update_parallax()
+
+	if(!ckey_last)
+		return FALSE
 
 	var/turf/T = get_turf(src.loc)
 
@@ -92,14 +95,16 @@
 		var/desired_y = FLOOR(-(T.y - (WORLD_SIZE*0.5)) * P.ratio,1)
 		P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
 
-	. = ..()
+	return TRUE
 
-	if(client)
-		client.post_move(loc,old_loc)
+/mob/proc/update_z_position()
 
-	update_rs_chat()
+	if(!ckey_last)
+		return FALSE
 
-	if(ckey_last && (!T || last_z != T.z))
+	var/turf/T = get_turf(src)
+
+	if((!T || last_z != T.z))
 		if(last_z && all_mobs_with_clients_by_z["[last_z]"])
 			all_mobs_with_clients_by_z["[last_z]"] -= src
 		if(T && T.z)
@@ -110,4 +115,19 @@
 		else
 			last_z = 0
 
-	
+	return TRUE
+
+
+/mob/post_move(var/atom/old_loc)
+
+	update_parallax()
+
+	. = ..()
+
+	if(client)
+		client.post_move(loc,old_loc)
+
+	update_rs_chat()
+
+	update_z_position()
+

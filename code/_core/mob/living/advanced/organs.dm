@@ -54,11 +54,17 @@
 	if(sex == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
 		for(var/key in S.spawning_organs_female)
 			add_organ(S.spawning_organs_female[key])
-			if(world_state == STATE_RUNNING) sleep(world.tick_lag)
+			if(world_state == STATE_RUNNING)
+				sleep(world.tick_lag)
+			else
+				sleep(-1)
 	else
 		for(var/key in S.spawning_organs_male)
 			add_organ(S.spawning_organs_male[key])
-			if(world_state == STATE_RUNNING) sleep(world.tick_lag)
+			if(world_state == STATE_RUNNING)
+				sleep(world.tick_lag)
+			else
+				sleep(-1)
 
 	if(client)
 		if(B)

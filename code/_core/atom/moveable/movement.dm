@@ -134,6 +134,11 @@
 		L = thing
 		L.source_atom.update_light()
 
+	if(isturf(src.loc))
+		for(var/k in light_sprite_sources)
+			var/obj/light_sprite/LS = k
+			LS.force_move(src.loc)
+
 	HOOK_CALL("post_move")
 	return TRUE
 

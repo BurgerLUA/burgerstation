@@ -85,16 +85,6 @@
 			var/obj/light_sprite/LS = k
 			LS.set_dir(desired_dir,force)
 
-/atom/movable/post_move(var/atom/old_loc)
-
-	. = ..()
-
-	if(isturf(src.loc))
-		for(var/k in light_sprite_sources)
-			var/obj/light_sprite/LS = k
-			LS.force_move(src.loc)
-
-
 /atom/movable/New(var/desired_loc)
 	light_sprite_sources = list()
 	return ..()

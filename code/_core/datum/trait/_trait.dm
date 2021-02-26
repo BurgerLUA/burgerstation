@@ -97,7 +97,7 @@
 
 /trait/blood_regen/
 	category = /trait/blood_regen/
-	var/regen_multiplier = 0
+	var/regen_multiplier = 1
 
 /trait/blood_regen/blood_degen
 	name = "Anemia"

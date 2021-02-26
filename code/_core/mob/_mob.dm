@@ -201,8 +201,9 @@
 
 /mob/Finalize()
 	. = ..()
-	force_move(src.loc)
-	
+	update_parallax()
+	update_z_position()
+
 /mob/New(var/loc/spawning_location,var/client/C)
 
 	parallax = list()

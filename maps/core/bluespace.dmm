@@ -74,7 +74,7 @@
 /turf/space,
 /area/transit/arrivals_shuttle_02/centcomm)
 "av" = (
-/obj/structure/interactive/status_display/global_display/arrivals_01,
+/obj/structure/interactive/status_display/global_display/arrivals_02,
 /turf/simulated/wall/shuttle,
 /area/transit/arrivals_shuttle_02/centcomm)
 "aw" = (

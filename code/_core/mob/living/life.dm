@@ -289,8 +289,8 @@ mob/living/proc/on_life_slow()
 
 	if(blood_volume < blood_volume_max)
 		var/consume_multiplier = 1
-		var/trait/blood_regen/M = get_trait_by_category(/trait/blood_regen/)
-		if(M) consume_multiplier *= M.consume_multiplier
+		var/trait/blood_regen/BR = get_trait_by_category(/trait/blood_regen/)
+		if(BR) consume_multiplier *= BR.regen_multiplier
 		var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
