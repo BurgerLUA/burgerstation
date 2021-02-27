@@ -110,7 +110,7 @@
 	name = "Space Lube"
 
 	required_reagents = list(
-		/reagent/oxygen = 1,
+		/reagent/nutrition/water = 1,
 		/reagent/silicon = 1,
 		/reagent/potassium = 1,
 	)
