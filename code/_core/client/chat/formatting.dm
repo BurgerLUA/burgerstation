@@ -111,8 +111,6 @@ proc/format_speaker(var/speaker,var/source,var/tag,var/frequency=-1,var/language
 
 		if(tag == "OOC")
 			. = style("color:[get_ooc_color(speaker)]","[tag_text][.]")
-		else
-			. = span("OOC","[tag_text][.]")
 
 
 		///. = span(tag == "OOC","[tag_text][.]",tag == "OOC" ? "color:[get_ooc_color(speaker)]" : null)
