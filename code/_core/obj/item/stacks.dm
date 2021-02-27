@@ -51,8 +51,6 @@
 
 /obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-
-
 	if(try_transfer_reagents(caller,object,location,control,params))
 		return TRUE
 
