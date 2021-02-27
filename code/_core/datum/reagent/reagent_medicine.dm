@@ -90,9 +90,9 @@
 
 /reagent/medicine/health_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 6*.
-	owner.burn_regen_buffer += 6*.
-	owner.tox_regen_buffer += 6*.
+	owner.brute_regen_buffer += 2*.
+	owner.burn_regen_buffer += 2*.
+	owner.tox_regen_buffer += 2*.
 
 /reagent/medicine/health_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -103,7 +103,7 @@
 /reagent/medicine/stamina_potion
 	name = "Stamina Juice"
 	desc = "Restores your energy. Magical!"
-	desc_extended = "Works just as good when consumed."
+	desc_extended = "Works better when consumed."
 	color = "#00FF00"
 	alpha = 255
 
@@ -120,18 +120,18 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*5)
+		owner.health.adjust_stamina(.*2)
 
 /reagent/medicine/stamina_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*5)
+		owner.health.adjust_stamina(.*3)
 
 /reagent/medicine/mana_potion
 	name = "Mana Juice"
 	desc = "Restores your magical powers. Super magical!"
-	desc_extended = "Works just as good when consumed."
+	desc_extended = "Works better when consumed."
 	color = "#0000FF"
 	alpha = 255
 
@@ -148,13 +148,13 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*5)
+		owner.health.adjust_mana(.*2)
 
 /reagent/medicine/mana_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*5)
+		owner.health.adjust_mana(.*3)
 
 /reagent/medicine/antihol
 	name = "Antihol"
@@ -329,4 +329,3 @@
 		owner.brute_regen_buffer += 8*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)
 		owner.tox_regen_buffer -= 0.1*.
 
-	

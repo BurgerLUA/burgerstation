@@ -25,7 +25,7 @@
 
 	can_rotate = FALSE
 
-	size = SIZE_10
+	size = SIZE_LARGE
 
 /obj/structure/interactive/crate/post_move(var/atom/old_loc)
 

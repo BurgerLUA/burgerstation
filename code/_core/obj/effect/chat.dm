@@ -1,3 +1,3 @@
 obj/effect/chat
-	name = "chat box"
+	name = "chat effect"
 	mouse_opacity = 0

@@ -13,16 +13,17 @@
 	item_count_current = item_count_max
 	return ..()
 
-/obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE)
+/obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE,var/turf_check=FALSE)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(object)
 
-	if(!isturf(caller.loc))
-		return FALSE
+	if(turf_check)
+		if(!isturf(caller.loc))
+			return FALSE
 
-	if(!isturf(object.loc))
-		return FALSE
+		if(!isturf(object.loc))
+			return FALSE
 
 	if(object.anchored)
 		caller.to_chat(span("warning","\The [object.name] is anchored to the floor!"))
@@ -37,7 +38,7 @@
 		if(L.master)
 			caller.to_chat(span("warning","Minions cannot be fultoned!"))
 			return FALSE
-		if(!L.horizontal)
+		if(isturf(L.loc) && !L.horizontal)
 			caller.to_chat(span("warning","\The [L.name] must be laying on the ground to allow a successful extraction!"))
 			return FALSE
 		if(L.dead)
@@ -52,17 +53,17 @@
 			caller.to_chat(span("warning","\The [L.name] is too large to be extracted!"))
 			return FALSE
 
-	if(is_item(object))
-		var/obj/item/I = object
-		if(I.value_burgerbux > 0)
-			caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
-			return FALSE
-
-	if(istype(object,/obj/structure/interactive/crate/secure))
-		var/obj/structure/interactive/crate/secure/S = object
-		if(S.locked)
-			caller.to_chat(span("warning","\The [S.name] needs to be open in order to be sold!"))
-			return FALSE
+	if(istype(object,/obj/structure/interactive/crate/))
+		var/obj/structure/interactive/crate/C = object
+		if(istype(object,/obj/structure/interactive/crate/secure))
+			var/obj/structure/interactive/crate/secure/S = object
+			if(S.locked)
+				caller.to_chat(span("warning","\The [S.name] needs to be open in order to be sold!"))
+				return FALSE
+		for(var/k in C.contents)
+			var/atom/movable/M = k
+			if(!can_attach_fulton(caller,M,FALSE,FALSE))
+				return FALSE
 
 	if(value_check && object.get_value() <= 0)
 		caller.to_chat(span("warning","\The [object.name] cannot be sold!"))
@@ -98,7 +99,7 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(10)
 
-	if(!can_attach_fulton(caller,object,TRUE))
+	if(!can_attach_fulton(caller,object,TRUE,TRUE))
 		return TRUE
 
 	caller.visible_message(span("warning","\The [caller.name] begins to attach \the [src.name] to \the [object.name]!"),span("warning","You begin to attach \the [src.name] to \the [object.name]."))

@@ -1,6 +1,5 @@
 /obj/effect/chat_text
-	name = "overlay"
-	desc = "overlay object"
+	name = "chat text effect"
 	plane = PLANE_HUD_CHAT
 
 	icon = null

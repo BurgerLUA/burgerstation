@@ -1,4 +1,5 @@
 /obj/effect/fake_lighting
+	name = "fake lighting effect"
 	icon = 'icons/obj/effects/fake_lighting.dmi'
 
 /obj/effect/fake_lighting/gradient

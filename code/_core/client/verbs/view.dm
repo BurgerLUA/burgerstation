@@ -2,7 +2,7 @@
 	set name = "Jump to Player"
 	set category = "View"
 
-	sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
+	//sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
 
 	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in all_mobs_with_clients
 	if(!choice || choice == mob)
@@ -23,7 +23,7 @@
 	set name = "Jump to Mob"
 	set category = "View"
 
-	sortTim(all_mobs,/proc/cmp_path_asc)
+	//sortTim(all_mobs,/proc/cmp_path_asc)
 
 	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in all_mobs
 	if(!choice || choice == mob)

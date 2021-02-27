@@ -1,4 +1,5 @@
 /obj/effect/temp/construction/
+	name = "construction effect"
 
 /obj/effect/temp/construction/wall
 	name = "wall construction effect"
