@@ -83,7 +83,10 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 		. += div("notice","Speed: [FLOOR(steps_per_second,0.1)] steps per second.")
 
 	if(handcuffed)
-		. += div("warning","(<a href='?src=\ref[examiner];uncuff=\ref[src]'>Remove</a>) [capitalize(pronoun)] is handcuffed!")
+		if(examiner == src)
+			. += div("danger","You are handcuffed!")
+		else
+			. += div("warning","(<a href='?src=\ref[examiner];uncuff=\ref[src]'>Remove</a>) [capitalize(pronoun)] is handcuffed!")
 
 	. += ..()
 

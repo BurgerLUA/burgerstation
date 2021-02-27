@@ -491,11 +491,3 @@ mob/living/advanced/Login()
 		return text
 	text = S.mod_speech(src,text)
 	return ..()
-
-
-
-/mob/living/advanced/can_use_controls()
-	if(handcuffed)
-		return FALSE
-
-	return ..()

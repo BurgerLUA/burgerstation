@@ -36,4 +36,7 @@
 		caller.to_chat(span("warning","They're already free!"))
 		return FALSE
 
+	if(caller == src)
+		return FALSE
+
 	return TRUE
