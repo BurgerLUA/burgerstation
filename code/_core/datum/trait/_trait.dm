@@ -106,6 +106,94 @@
 
 /trait/blood_regen/blood_regen
 	name = "Polycythemia Vera"
-	desc = "Your bodyt regenerates blood at a increased rate, consuming more nutrition over time while at low blood."
+	desc = "Your body regenerates blood at a increased rate, consuming more nutrition over time while at low blood."
 	regen_multiplier = 1.5
 
+
+
+/trait/intoxication_regen/
+	category = /trait/intoxication_regen/
+	var/alcohol_threshold_multiplier = 1
+	var/intoxication_removal_multiplier = 1
+	var/should_apply_drunk_status_effects = TRUE
+
+/trait/intoxication_regen/light_drinker
+	name = "Light Drinker"
+	desc = "You can't hold your liquor, and don't sober up as quick."
+	alcohol_threshold_multiplier = 0.75
+	intoxication_removal_multiplier = 0.5
+	should_apply_drunk_status_effects = TRUE
+
+/trait/intoxication_regen/seasoned_drinker
+	name = "Seasoned Drinker"
+	desc = "You can hold your liquor well, but don't sober up as quick."
+	alcohol_threshold_multiplier = 2
+	intoxication_removal_multiplier = 0.5
+	should_apply_drunk_status_effects = FALSE
+
+/trait/general_regen/
+	category = /trait/general_regen/
+	var/health_regen_mul = 1
+	var/stamina_regen_mul = 1
+	var/mana_regen_mul = 1
+
+/trait/general_regen/mind_over_matter
+	name = "Mind Over Matter"
+	desc = "You regenerate mana twice as much, but regenerate health half as much."
+	health_regen_mul = 0.5
+	mana_regen_mul = 2
+
+/trait/general_regen/jock
+	name = "Jock"
+	desc = "You regenerate stamina twice as much, but regenerate mana half as much."
+	stamina_regen_mul = 2
+	mana_regen_mul = 0.5
+
+/trait/general_regen/nerd
+	name = "Nerd"
+	desc = "You regenerate mana twice as much, but regenerate stamina half as much."
+	stamina_regen_mul = 0.5
+	mana_regen_mul = 2
+
+/trait/speed/
+	category = /trait/speed/
+	var/move_delay_mul = 1
+
+/trait/speed/overweight
+	name = "Overweight"
+	desc = "You have a habbit for eating too much, and thus suffer a movement speed penalty."
+	move_delay_mul = 0.9
+
+/trait/speed/quick
+	name = "Quick"
+	desc = "You're quite athletic and are quick to move with a bonus to movement speed."
+	move_delay_mul = 1.1
+
+/trait/nutrition/
+	category = /trait/nutrition/
+	var/nutrition_multiplier = 1
+
+/trait/nutrition/malnutrition
+	name = "Malnutrition"
+	desc = "You have a poor diet and suffer a penalty to nutritional quality."
+	nutrition_multiplier = 0.9
+
+/trait/nutrition/vigorous
+	name = "Vigorous"
+	desc = "You have a good diet and gain a bonus to nutritional quality."
+	nutrition_multiplier = 1.1
+
+
+/trait/handcuffs/
+	category = /trait/handcuffs
+	var/handcuff_escape_multiplier = 1
+
+/trait/handcuffs/escape_artist
+	name = "Escape Artist"
+	desc = "You can escape handcuffs quicker and easier."
+	handcuff_escape_multiplier = 2
+
+/trait/handcuffs/unsmooth_criminal
+	name = "Unsmooth Criminal"
+	desc = "You seem to have a difficult time removing handcuffs."
+	handcuff_escape_multiplier = 0.75

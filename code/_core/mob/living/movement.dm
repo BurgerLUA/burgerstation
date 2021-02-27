@@ -166,6 +166,9 @@
 	if(intoxication)
 		. += intoxication*0.003
 
+	var/trait/speed/S = get_trait_by_category(/trait/speed/)
+	if(S) . *= S.move_delay_mul
+
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
 	for(var/k in buttons)
@@ -195,7 +198,7 @@
 
 /mob/living/Cross(atom/movable/O)
 
-	if(is_living(O))
+	if(O.density && is_living(O))
 		var/mob/living/L = O
 		if(L.loyalty_tag == src.loyalty_tag)
 			if(!src.ai || L.is_moving || !L.ai)

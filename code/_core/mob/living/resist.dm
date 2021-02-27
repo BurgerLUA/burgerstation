@@ -91,6 +91,9 @@
 
 		var/counter_to_add = src.get_attribute_power(ATTRIBUTE_STRENGTH)*10*(client ? 3 : 1)
 
+		var/trait/handcuffs/H = get_trait_by_category(/trait/handcuffs/)
+		if(H) counter_to_add *= H.handcuff_escape_multiplier
+
 		if(stored_handcuffs && stored_handcuffs.strength)
 			counter_to_add *= (1/stored_handcuffs.strength)
 
@@ -123,4 +126,3 @@
 				)
 
 
-	

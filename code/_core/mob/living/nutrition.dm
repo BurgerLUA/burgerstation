@@ -27,4 +27,7 @@
 	return clamp(hydration/(initial(hydration)*0.50),0,1)
 
 /mob/living/proc/get_nutrition_quality_mod()
-	return clamp(nutrition_quality/initial(nutrition_quality),0,1.25)
+	. = nutrition_quality
+	var/trait/nutrition/N = get_trait_by_category(/trait/nutrition/)
+	if(N) . *= N.nutrition_multiplier
+	return clamp(. / initial(nutrition_quality),0,1.25)
