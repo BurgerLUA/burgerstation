@@ -93,5 +93,7 @@
 		B.associated_loc = T
 		B.update_owner(src)
 		i++
+		if(i >= 10)
+			break
 
 	return TRUE
