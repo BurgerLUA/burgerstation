@@ -565,7 +565,6 @@
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
 	INTERACT_CHECK
-	INTERACT_DELAY(10)
 	INTERACT_CHECK_OBJECT
 
 	var/self_feed = caller == object
