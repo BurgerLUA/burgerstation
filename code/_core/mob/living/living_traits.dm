@@ -1,3 +1,24 @@
+/mob/living/proc/add_random_trait()
+
+	var/trait/trait_to_add = pick(SStraits.all_traits)
+
+	if(!trait_to_add || !add_trait(trait_to_add))
+		log_error("Error! Could not add a trait via add_random_trait() to [src.get_debug_name()].")
+		return FALSE
+
+	return TRUE
+
+/mob/living/proc/remove_random_trait()
+	var/trait_to_remove = pick(traits)
+	return remove_trait(trait_to_remove)
+
+/mob/living/proc/remove_all_traits()
+
+	for(var/k in traits)
+		remove_trait(k)
+
+	return TRUE
+
 /mob/living/proc/add_trait(var/trait_to_add)
 
 	var/trait/T = TRAIT(trait_to_add)
@@ -35,3 +56,37 @@
 
 /mob/living/proc/has_trait(var/trait_to_check)
 	return traits[trait_to_check] ? TRUE : FALSE
+
+/proc/get_trait_limit(rarity)
+
+	switch(rarity)
+		if(RARITY_COMMON)
+			return 2
+		if(RARITY_UNCOMMON)
+			return 3
+		if(RARITY_RARE)
+			return 4
+		if(RARITY_MYSTIC)
+			return 5
+		if(RARITY_LEGENDARY)
+			return 6
+
+	return 0
+
+/mob/living/proc/can_add_trait()
+
+	var/positive_traits = 0
+	var/trait_limit = get_trait_limit(rarity) //Positive and Neutral traits
+
+	if(!trait_limit)
+		log_error("Error: [src.get_debug_name()] didn't have a valid rarity ([rarity])!")
+		return FALSE
+
+	for(var/k in traits)
+		var/trait/T = TRAIT(k)
+		if(T.trait_tag == TRAIT_POSITIVE || T.trait_tag == TRAIT_NEUTRAL)
+			positive_traits++
+			if(positive_traits >= trait_limit)
+				return FALSE
+
+	return TRUE

@@ -4,6 +4,8 @@
 	stamina_base = 50
 	mana_base = 50
 
+	var/rarity = RARITY_COMMON
+
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
