@@ -1,8 +1,8 @@
-#define GENETIC_INERT "inert" //Scouring
-#define GENETIC_UPGRADE "upgrade"
-#define GENETIC_ADD "add"
-#define GENETIC_SUBTRACT "subtract"
-#define GENETIC_RANDOM "random"
+#define GENETIC_INERT "purging"
+#define GENETIC_UPGRADE "upgrading"
+#define GENETIC_ADD "exalting"
+#define GENETIC_SUBTRACT "splicing"
+#define GENETIC_RANDOM "scrambling"
 
 var/global/list/rarity_table = list(
 	RARITY_COMMON = 12000,
