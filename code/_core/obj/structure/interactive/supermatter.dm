@@ -56,7 +56,11 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	var/turf/T = get_turf(src)
 	qdel(src)
 	. = ..()
-	explode(T,120,T,T,"Supermatter")
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(L.is_player_controlled())
+			log_admin("Player [L.get_debug_name()] belonging to [L.loyalty_tag] destroyed the supermatter.")
+	explode(T,10000,T,T,"Supermatter")
 
 /obj/structure/interactive/supermatter/Finalize()
 	update_map_text()
@@ -77,7 +81,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		var/threshold = max(0.01,health_percent*0.2)
 		if((last_warning_percent - health_percent) >= threshold && last_warning_time + SECONDS_TO_DECISECONDS(3) <= world.time)
 			trigger_warning()
-
 		update_map_text()
 
 

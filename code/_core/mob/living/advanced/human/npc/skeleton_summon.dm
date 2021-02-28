@@ -6,10 +6,9 @@
 	gender = MALE
 	var/desired_loadout = /loadout/skeleton_summon/summoned
 	class = /class/summoned_skeleton
-	ai = /ai/advanced/skeleton_summon
+	ai = /ai/advanced
 
 
 /mob/living/advanced/npc/skeleton_summon/Initialize()
 	. = ..()
 	equip_loadout(desired_loadout)
-	

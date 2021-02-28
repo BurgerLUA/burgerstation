@@ -10,7 +10,7 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
 
-	delay_modifier = 1.05
+	move_delay_modifier = 1.05
 
 	material_id = /material/grass/
 

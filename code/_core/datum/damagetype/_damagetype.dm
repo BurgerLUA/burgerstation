@@ -224,6 +224,9 @@
 	if(!attacker.is_player_controlled() || victim.is_player_controlled())
 		return FALSE
 
+	if(!is_living(attacker)) //Ghost Admins causing explosions.
+		return FALSE
+
 	if(ismovable(victim))
 		var/atom/movable/M = victim
 		if(M.grabbing_hand)

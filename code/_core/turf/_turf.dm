@@ -25,7 +25,7 @@
 
 	var/material_id
 
-	var/delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier.
+	var/move_delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier. Only applies to mobs that touch the floor.
 
 	var/world_spawn = FALSE
 

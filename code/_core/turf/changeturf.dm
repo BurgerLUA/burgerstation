@@ -18,6 +18,8 @@
 	if(src in SSturfs.wet_turfs)
 		SSturfs.wet_turfs -= src
 
+	var/old_turf_type = src.type
+
 	var/turf/W = new N(src)
 	W.initialized = FALSE
 	INITIALIZE(W)
@@ -42,4 +44,7 @@
 	else
 		queue_update_turf_edges(src)
 
-	
+	W.post_change_turf(old_turf_type)
+
+/turf/proc/post_change_turf(var/old_turf_type)
+	return TRUE

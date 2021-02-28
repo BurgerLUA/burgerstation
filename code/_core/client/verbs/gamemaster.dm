@@ -462,3 +462,20 @@
 	log_admin("[src.get_debug_name()] removed the trait [T.get_debug_name()] to [P.get_debug_name()].")
 
 	return TRUE
+
+/client/verb/create_explosion()
+	set name = "Create Explosion"
+	set category = "GameMaster"
+
+	var/turf/T = get_turf(mob)
+
+	var/desired_strength = input("What do you wish the explosion strength to be? Max: 10000","Explosion Strength",40) as num|null
+
+	if(!desired_strength || desired_strength <= 0)
+		return FALSE
+
+	desired_strength = min(desired_strength,10000)
+
+	log_admin("[src.get_debug_name()] created a [desired_strength] strength explosion at [T.get_debug_name()].")
+
+	explode(T,desired_strength,mob,mob,"Admin")

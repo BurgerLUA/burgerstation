@@ -14,7 +14,7 @@
 
 	footstep = /footstep/concrete
 
-	delay_modifier = 1.05
+	move_delay_modifier = 1.05
 
 	destruction_turf = /turf/simulated/hazard/lava/
 

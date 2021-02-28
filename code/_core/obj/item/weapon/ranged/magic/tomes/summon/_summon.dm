@@ -45,5 +45,9 @@
 					L.ai.reaction_time = 0
 					L.ai.resist_grabs = FALSE
 					L.ai.set_move_objective(L2,TRUE)
+					if(istype(L.ai,/ai/advanced/))
+						var/ai/advanced/AI = L.ai
+						AI.should_find_weapon = FALSE
+						AI.checked_weapons = FALSE
 
 	return ..()

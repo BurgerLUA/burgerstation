@@ -11,7 +11,7 @@
 
 	footstep = /footstep/concrete
 
-	delay_modifier = 2
+	move_delay_modifier = 0.75
 
 	desired_light_frequency = 2
 	desired_light_power = 0.5

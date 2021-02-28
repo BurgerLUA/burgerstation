@@ -15,6 +15,6 @@
 
 	footstep = /footstep/asteroid
 
-	delay_modifier = 1
+	move_delay_modifier = 1
 
 	health = null

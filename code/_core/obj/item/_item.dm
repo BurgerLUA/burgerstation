@@ -416,7 +416,7 @@
 
 /obj/item/post_move(var/atom/old_loc)
 
-	if(isturf(loc))
+	if(isturf(loc) && is_inventory(old_loc))
 		if(delete_on_drop)
 			qdel(src)
 			return TRUE

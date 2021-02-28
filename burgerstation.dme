@@ -229,7 +229,6 @@
 #include "code\_core\datum\ai\advanced\monkey.dm"
 #include "code\_core\datum\ai\advanced\nanotrasen.dm"
 #include "code\_core\datum\ai\advanced\skeleton.dm"
-#include "code\_core\datum\ai\advanced\skeleton_summon.dm"
 #include "code\_core\datum\ai\advanced\space_cop.dm"
 #include "code\_core\datum\ai\advanced\stand.dm"
 #include "code\_core\datum\ai\advanced\syndicate.dm"

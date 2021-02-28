@@ -66,4 +66,3 @@
 
 	sight |= SEE_THRU
 
-	

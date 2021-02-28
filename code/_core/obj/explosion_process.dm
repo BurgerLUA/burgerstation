@@ -11,18 +11,9 @@
 
 	collision_flags = FLAG_COLLISION_FLYING
 
-/obj/explosion_process/debug/small
-	power = 20
-
-/obj/explosion_process/debug/medium
-	power = 40
-
-/obj/explosion_process/debug/large
-	power = 80
-
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
-	loc.act_explode(owner,source,epicenter,power,loyalty_tag)
+	SSexplosion.add_data(loc,owner,source,epicenter,power,loyalty_tag)
 	icon_state = "[clamp(FLOOR(power/20,1),1,3)]"
 	if(velocity_dir)
 		dir = velocity_dir
@@ -47,7 +38,7 @@
 		var/turf/T = get_step(src,d)
 		if(!T) continue
 		if(!T.Enter(src,src.loc))
-			T.act_explode(owner,source,epicenter,power,loyalty_tag)
+			SSexplosion.add_data(T,owner,source,epicenter,power,loyalty_tag)
 			continue
 		var/obj/explosion_process/existing = locate() in T.contents
 		var/direction_mod = 1
@@ -90,7 +81,7 @@
 			GENERATE(EP)
 			FINALIZE(EP)
 
-	power = (power*0.5) - 1
+	power = (power*0.8) - 1
 
 	if(power <= 1)
 		qdel(src)

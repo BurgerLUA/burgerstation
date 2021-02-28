@@ -6,7 +6,7 @@
 
 	footstep = /footstep/snow
 
-	delay_modifier = 1.2
+	move_delay_modifier = 1.2
 
 	material_id = /material/dirt/
 

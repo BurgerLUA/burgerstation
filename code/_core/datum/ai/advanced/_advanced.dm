@@ -287,7 +287,11 @@
 
 	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4)
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
-		if(is_ranged_gun(W))
+		if(W)
+			if(A.right_item == W)
+				return ..()
+			if(A.left_item == W)
+				return ..()
 			if(A.right_item) unequip_weapon(A.right_item)
 			if(A.left_item) unequip_weapon(A.left_item)
 			equip_weapon(W)

@@ -9,7 +9,7 @@
 
 	footstep = /footstep/asteroid
 
-	delay_modifier = 1.1
+	move_delay_modifier = 1.1
 
 	material_id = /material/dirt/
 

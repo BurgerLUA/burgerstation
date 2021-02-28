@@ -128,7 +128,7 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 			icon_state = "pod_closed"
 			flick("land_anim",src)
 			CALLBACK("set_state_\ref[src]",50,src,.proc/set_state,POD_OPENING,desired_loc)
-			explode(desired_loc,20,src,src)
+			explode(desired_loc,20,src,src,"NanoTrasen")
 		if(POD_OPENING)
 			play_sound('sound/machines/droppod_land.ogg',get_turf(src))
 			icon_state = "pod"

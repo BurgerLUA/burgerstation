@@ -11,7 +11,7 @@
 
 	footstep = /footstep/asteroid
 
-	delay_modifier = 1.1
+	move_delay_modifier = 1.1
 
 	layer = LAYER_FLOOR_WEATHER
 

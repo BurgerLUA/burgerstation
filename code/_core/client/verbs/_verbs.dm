@@ -79,5 +79,6 @@
 		verbs += /client/verb/remove_language
 		verbs += /client/verb/remove_trait
 		verbs += /client/verb/add_trait
+		verbs += /client/verb/create_explosion
 
 	return TRUE

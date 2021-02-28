@@ -505,16 +505,28 @@
 		add_status_effect(STAGGER,magnitude,magnitude, source = epicenter)
 
 	if(health)
-		for(var/i=1,i<=clamp(2+(magnitude),1,5),i++)
-			var/list/params = list()
-			params[PARAM_ICON_X] = rand(0,32)
-			params[PARAM_ICON_Y] = rand(0,32)
-			var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
-			var/damagetype/D = all_damage_types[/damagetype/explosion/]
-			D.hit(source,src,source,object_to_damage,owner,magnitude)
+		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return TRUE
 
+/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	var/list/params = list()
+	params[PARAM_ICON_X] = 16
+	params[PARAM_ICON_Y] = 16
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
+	var/damagetype/D = all_damage_types[/damagetype/explosion/]
+	D.hit(source,src,source,object_to_damage,owner,magnitude)
+	return TRUE
+
+/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	for(var/i=1,i<=5,i++)
+		var/list/params = list()
+		params[PARAM_ICON_X] = rand(0,32)
+		params[PARAM_ICON_Y] = rand(0,32)
+		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
+		var/damagetype/D = all_damage_types[/damagetype/explosion/]
+		D.hit(source,src,source,object_to_damage,owner,magnitude*(1/5))
+	return TRUE
 
 /mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)
 
