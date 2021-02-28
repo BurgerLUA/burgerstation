@@ -53,6 +53,11 @@
 			adjust_currency(insurance_to_pay)
 			update_premiums()
 
+	if(loaded_data["traits"])
+		for(var/k in loaded_data["traits"])
+			k = text2path(k)
+			if(k) src.add_trait(k)
+
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 
@@ -142,6 +147,11 @@
 	.["expenses"] = expenses
 	.["last_tax_payment"] = last_tax_payment
 	.["partial_tax"] = partial_tax
+
+	if(length(traits))
+		.["traits"] = list()
+		for(var/k in traits)
+			.["traits"] |= k
 
 	if(M && M.loaded_data)
 		.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.
