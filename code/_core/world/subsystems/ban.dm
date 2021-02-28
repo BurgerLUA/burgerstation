@@ -83,25 +83,27 @@ SUBSYSTEM_DEF(ban)
 
 /world/IsBanned(key,address,computer_id,type)
 
-	log_admin("New [type] connection from [address](ckey: [key], computer_id: [computer_id]).")
+	var/ckey_sanitized = ckey(key)
+
+	log_admin("New [type] connection from [address](key: [key], ckey: [ckey_sanitized], computer_id: [computer_id]).")
 
 	if(!SSban || !SSban.initialized)
 		return list("Login" = FALSE, "reason" = "Server isn't setup!",message = "Try rejoining again in a minute!")
 
 	if(SSban.bans_keys[key])
-		log_admin("Ckey [key]([address]) tried connecting to the server, but they were ckey banned.")
-		var/list/ban_data = SSban.bans_keys[key]
+		log_admin("key [key]([address]) tried connecting to the server, but they were ckey banned.")
+		var/list/ban_data = SSban.bans_keys[ckey_sanitized]
 		var/message = "Adminstrator [ban_data["admin"]] banned this ckey [ban_data["expires"] == -1 ? "forever" : "for [get_nice_time(ban_data["expires"] - world.realtime)]"] with the reason of: [ban_data["reason"]]"
 		return list("Login" = FALSE, "reason" = "Your ckey has been banned from accessing the server.", "message" = message)
 
 	if(SSban.bans_computer_ids[computer_id])
-		log_admin("Ckey [key]([address]) tried connecting to the server, but they were computer id banned.")
+		log_admin("key [key]([address]) tried connecting to the server, but they were computer id banned.")
 		var/list/ban_data = SSban.bans_computer_ids[computer_id]
 		var/message = "Adminstrator [ban_data["admin"]] banned this computer [ban_data["expires"] == -1 ? "forever" : "for [get_nice_time(ban_data["expires"] - world.realtime)]"] with the reason of: [ban_data["reason"]]"
 		return list("Login" = FALSE, "reason" = "Your computer ID has been banned from accessing the server.", "message" = message)
 
 	if(SSban.bans_address[address])
-		log_admin("Ckey [key]([address]) tried connecting to the server, but they were IP banned.")
+		log_admin("key [key]([address]) tried connecting to the server, but they were IP banned.")
 		var/list/ban_data = SSban.bans_address[address]
 		var/message = "Adminstrator [ban_data["admin"]] banned this IP address [ban_data["expires"] == -1 ? "forever" : "for [get_nice_time(ban_data["expires"] - world.realtime)]"] with the reason of: [ban_data["reason"]]"
 		return list("Login" = FALSE, "reason" = "Your IP address has been banned from accessing the server.", "message" = message)
@@ -109,8 +111,6 @@ SUBSYSTEM_DEF(ban)
 	return FALSE
 
 /subsystem/ban/proc/add_ckey_ban(var/desired_ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
-
-	desired_ckey = lowertext(desired_ckey)
 
 	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
 
