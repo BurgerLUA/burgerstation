@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(ban)
 	if(!SSban || !SSban.initialized)
 		return list("Login" = FALSE, "reason" = "Server isn't setup!",message = "Try rejoining again in a minute!")
 
-	if(SSban.bans_keys[key])
+	if(SSban.bans_keys[ckey_sanitized])
 		log_admin("key [key]([address]) tried connecting to the server, but they were ckey banned.")
 		var/list/ban_data = SSban.bans_keys[ckey_sanitized]
 		var/message = "Adminstrator [ban_data["admin"]] banned this ckey [ban_data["expires"] == -1 ? "forever" : "for [get_nice_time(ban_data["expires"] - world.realtime)]"] with the reason of: [ban_data["reason"]]"
@@ -113,6 +113,7 @@ SUBSYSTEM_DEF(ban)
 /subsystem/ban/proc/add_ckey_ban(var/desired_ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
 
 	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
+	rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
 	var/client/C = all_clients[desired_ckey]
 	if(C)
@@ -125,12 +126,16 @@ SUBSYSTEM_DEF(ban)
 			var/obj/marker/ban/B = locate() in world
 			if(B) P.force_move(get_turf(B))
 			if(world_state == STATE_RUNNING) P.force_logout()
+		//Todo: Make it load their connections history and ban all the ips/computer ids from their connection.
+		bans_computer_ids[C.computer_id] = bans_keys[desired_ckey]
+		bans_address[C.address] = bans_keys[desired_ckey]
+		rustg_file_write(json_encode(bans_computer_ids),BANLIST_COMPUTER_DIR)
+		rustg_file_write(json_encode(bans_address),BANLIST_ADDRESS_DIR)
 		del(C)
 
-	rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
-
 	log_admin("[desired_ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
-	broadcast_to_clients("[desired_ckey] was banned by [admin_ckey] for [get_nice_time(expires - world.realtime)] the following reason: [reason].")
+	broadcast_to_clients(span("ooc","[desired_ckey] was banned by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the following reason: [reason]."))
+
 	return TRUE
 
 /subsystem/ban/proc/remove_ckey_ban(var/ckey,admin_ckey)
