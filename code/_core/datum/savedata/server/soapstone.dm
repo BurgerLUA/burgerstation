@@ -37,7 +37,7 @@
 
 		for(var/instance in formatted_data)
 
-			if(prob(10))
+			if(prob(90))
 				continue
 
 			var/x_cord = formatted_data[instance]["x"]
