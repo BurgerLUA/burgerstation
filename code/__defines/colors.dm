@@ -90,6 +90,7 @@
 #define COLOR_OIL "#3D3D3D"
 
 //Rarity
+#define COLOR_BROKEN "#FFFFFF"
 #define COLOR_COMMON "#404040"
 #define COLOR_UNCOMMON "#8888FF"
 #define COLOR_RARE "#FFFF88"

@@ -949,6 +949,7 @@
 #include "code\_core\obj\item\dying.dm"
 #include "code\_core\obj\item\enchanting_chalk.dm"
 #include "code\_core\obj\item\fulton_pack.dm"
+#include "code\_core\obj\item\genetic_ball.dm"
 #include "code\_core\obj\item\ghost_trap.dm"
 #include "code\_core\obj\item\handcuffs.dm"
 #include "code\_core\obj\item\herald_mirror.dm"

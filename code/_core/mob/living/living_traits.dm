@@ -66,7 +66,7 @@
 			return 3
 		if(RARITY_RARE)
 			return 4
-		if(RARITY_MYSTIC)
+		if(RARITY_MYTHICAL)
 			return 5
 		if(RARITY_LEGENDARY)
 			return 6
