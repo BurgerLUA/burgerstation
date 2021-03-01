@@ -103,6 +103,12 @@ body {
 .good{
 	color: green;
 }
+.positive{
+	color: green;
+}
+.negative{
+	color: red;
+}
 .examine_title{
 	font-size: 200%;
 	text-align: center;
