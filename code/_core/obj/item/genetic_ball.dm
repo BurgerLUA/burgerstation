@@ -83,6 +83,7 @@ var/global/list/rarity_to_number = list(
 				caller.to_chat(span("warning","Failed to use the [src.name]: Your genetic rarity is already [src.rarity]!"))
 				return FALSE
 			caller.rarity = src.rarity
+			caller.to_chat(span("notice","Your genetic rarity was upgraded to [caller.rarity]."))
 		if(GENETIC_ADD)
 			if(!caller.can_add_trait())
 				caller.to_chat(span("warning","Failed to use the [src.name]: You have too many traits! Upgrade your genetic rarity or remove more positive traits to add more."))
@@ -186,7 +187,7 @@ var/global/list/rarity_to_number = list(
 /obj/item/genetic_ball/update_overlays()
 	. = ..()
 	if(action_type != GENETIC_INERT)
-		var/image/I = new(initial(icon),action_type)
+		var/image/I = new(initial(icon),"ball_detail")
 		switch(action_type)
 			if(GENETIC_ADD)
 				I.color = COLOR_GREEN
@@ -215,6 +216,10 @@ var/global/list/rarity_to_number = list(
 		if(RARITY_LEGENDARY)
 			I.color = RARITY_LEGENDARY
 	add_underlay(I)
+
+
+
+
 
 /obj/item/genetic_ball/Generate()
 
