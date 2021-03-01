@@ -9,7 +9,7 @@ var/global/list/rarity_table = list(
 	RARITY_UNCOMMON = 2400,
 	RARITY_RARE = 1200,
 	RARITY_MYTHICAL = 600,
-	RARITY_LEGENDATY = 300
+	RARITY_LEGENDARY = 300
 )
 
 var/global/list/genetic_upgrade_table = list(
