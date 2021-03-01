@@ -41,5 +41,9 @@
 
 	health = /health/mob/living/advanced/robotic
 
+	valid_blood_types = list(
+		/reagent/blood/robot
+	)
+
 /species/cyborg/generate_blood_type()
 	return /reagent/blood/robot

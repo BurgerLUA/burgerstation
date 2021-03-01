@@ -36,6 +36,16 @@ var/global/list/genetic_upgrade_table = list(
 	value = 0
 	value_burgerbux = 1 //Not in normal loot rotation.
 
+/obj/item/genetic_ball/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("action_type")
+	SAVEVAR("rarity")
+
+/obj/item/genetic_ball/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("action_type")
+	LOADVAR("rarity")
+
 var/global/list/rarity_to_number = list(
 	RARITY_BROKEN = 0,
 	RARITY_COMMON = 1,

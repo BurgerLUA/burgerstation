@@ -66,6 +66,3 @@
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
-
-/species/reptile/advanced/generate_blood_type()
-	return /reagent/blood/reptile

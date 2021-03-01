@@ -142,6 +142,17 @@
 		/obj/hud/button/health/body
 	)
 
+	var/list/valid_blood_types = list(
+		/reagent/blood/human/ab_negative,
+		/reagent/blood/human/b_negative,
+		/reagent/blood/human/ab_positive,
+		/reagent/blood/human/a_negative,
+		/reagent/blood/human/o_negative,
+		/reagent/blood/human/b_positive,
+		/reagent/blood/human/a_positive,
+		/reagent/blood/human/o_positive
+	)
+
 /species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
 
 	if(!accent || !length(accent))

@@ -131,8 +131,8 @@
 
 /mob/living/advanced/Finalize()
 
-	if(blood_type == /reagent/blood || species != "human") //Uninitialized blood.
-		var/species/S = SPECIES(species)
+	var/species/S = SPECIES(species)
+	if(!(blood_type in S.valid_blood_types))
 		blood_type = S.generate_blood_type()
 
 	. = ..()

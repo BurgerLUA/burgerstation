@@ -36,7 +36,7 @@
 			owner.blood_volume += .
 			owner.queue_health_update = TRUE
 		else
-			owner.blood_type += . *0.5
+			owner.blood_volume += . *0.5
 			owner.tox_regen_buffer += .*0.5
 
 /reagent/blood/human/ab_negative
