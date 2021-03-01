@@ -2604,6 +2604,14 @@
 /obj/marker/antag/merc,
 /turf/simulated/floor/colored/sand/oasis,
 /area/lz_420/exterior)
+"kH" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/grass/jungle,
+/area/lz_420/exterior)
+"kI" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/cave_dirt,
+/area/lz_420/interior/cave/east)
 "kM" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cave_dirt,
@@ -15678,7 +15686,7 @@ au
 au
 au
 mK
-mK
+kH
 mK
 mK
 mK
@@ -65333,7 +65341,7 @@ lC
 lC
 lC
 lC
-lG
+kI
 lG
 lG
 lG

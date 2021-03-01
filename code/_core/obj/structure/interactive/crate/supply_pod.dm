@@ -15,6 +15,8 @@
 
 	var/auto_open = TRUE
 
+	pixel_y = 2
+
 /obj/structure/interactive/crate/closet/supply_pod/PostInitialize()
 
 	. = ..()

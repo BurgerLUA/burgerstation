@@ -39,6 +39,9 @@
 	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)
 	return ..()
 
+/obj/item/currency/telecrystals/treasure/Generate()
+	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)*5
+
 /obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
 	item_count_current = 50
 	return ..()

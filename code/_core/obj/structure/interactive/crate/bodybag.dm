@@ -13,6 +13,8 @@
     layer = LAYER_OBJ_CRATE
     size = SIZE_HUMAN
 
+    pixel_y = 2
+
 /obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 

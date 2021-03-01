@@ -2634,6 +2634,10 @@
 /obj/marker/syndicate,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/desert_cave)
+"lx" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/boat/starting,
+/area/lz_001/caves/lagoon/ship)
 "ly" = (
 /obj/marker/map_node,
 /turf/simulated/floor/wood/dock,
@@ -2674,7 +2678,7 @@
 /turf/simulated/floor/colored/grass,
 /area/lz_001/forest/village)
 "lI" = (
-/obj/structure/interactive/supplies,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/outpost/syndicate/canman)
 "lJ" = (
@@ -2682,7 +2686,7 @@
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "lK" = (
-/obj/structure/interactive/supplies,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/colored/dirt/cave,
 /area/lz_001/caves/knight/cave)
 "lL" = (
@@ -2709,7 +2713,7 @@
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves)
 "lR" = (
-/obj/structure/interactive/supplies,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/jungle)
 "lS" = (
@@ -3003,6 +3007,30 @@
 /obj/marker/prefab/medium,
 /turf/unsimulated/generation/jungle,
 /area/lz_001/jungle)
+"ni" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/cave_dirt,
+/area/lz_001/caves/crab)
+"nj" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
+/area/lz_001/forest/village/interior/armory)
+"nk" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
+/area/lz_001/forest/village/interior/bar)
+"nl" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
+/area/lz_001/forest/village/interior/mining)
+"nm" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
+/area/lz_001/snow/interior/lodge)
+"nn" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/cave_dirt,
+/area/lz_001/caves)
 
 (1,1,1) = {"
 aa
@@ -7350,7 +7378,7 @@ hp
 hp
 hp
 hp
-hp
+lD
 hh
 dT
 dT
@@ -8277,7 +8305,7 @@ eF
 fY
 fY
 fY
-lK
+fg
 fg
 fg
 fs
@@ -8373,11 +8401,11 @@ jV
 hp
 hp
 hg
-hp
+lx
 hp
 hp
 hg
-lJ
+hp
 hp
 jV
 hg
@@ -8534,7 +8562,7 @@ eF
 eF
 fY
 fY
-fg
+lK
 fg
 fg
 fs
@@ -8634,7 +8662,7 @@ is
 hp
 jv
 hg
-hp
+lx
 hp
 jV
 hg
@@ -9144,7 +9172,7 @@ jV
 hs
 hp
 hg
-lD
+lx
 hs
 hp
 hg
@@ -17110,7 +17138,7 @@ dT
 dT
 hh
 hh
-lJ
+hp
 hp
 hp
 hp
@@ -17367,7 +17395,7 @@ dT
 dT
 dT
 hh
-hp
+lx
 hp
 hp
 hp
@@ -24580,7 +24608,7 @@ kT
 kT
 kT
 bp
-lI
+ec
 ec
 ec
 ec
@@ -24837,7 +24865,7 @@ kT
 kT
 kT
 kT
-ec
+lI
 ec
 ec
 ec
@@ -51996,7 +52024,7 @@ fe
 eX
 eQ
 hD
-hM
+nk
 hM
 hM
 if
@@ -53830,7 +53858,7 @@ eP
 eK
 eK
 eK
-kd
+ni
 ki
 kd
 ki
@@ -56590,7 +56618,7 @@ dp
 ew
 mm
 ff
-it
+nl
 iu
 iu
 iu
@@ -57599,7 +57627,7 @@ gV
 gV
 gV
 ek
-en
+nm
 en
 fZ
 en
@@ -60481,7 +60509,7 @@ eQ
 fU
 gc
 iE
-iQ
+nj
 jw
 jw
 jw
@@ -61168,7 +61196,7 @@ ca
 ca
 br
 ca
-lQ
+nn
 ce
 ce
 ca

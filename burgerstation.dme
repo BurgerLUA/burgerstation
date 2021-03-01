@@ -563,6 +563,7 @@
 #include "code\_core\datum\loot\halloween.dm"
 #include "code\_core\datum\loot\lavaland.dm"
 #include "code\_core\datum\loot\medicine.dm"
+#include "code\_core\datum\loot\player_currency.dm"
 #include "code\_core\datum\loot\skill_scroll.dm"
 #include "code\_core\datum\loot\supply_crate.dm"
 #include "code\_core\datum\loot\trash_pile.dm"

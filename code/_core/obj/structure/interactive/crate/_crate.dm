@@ -27,6 +27,8 @@
 
 	size = SIZE_LARGE
 
+	pixel_y = 8
+
 /obj/structure/interactive/crate/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -195,8 +197,6 @@
 		var/atom/movable/M = k
 		if(!M.force_move(src.loc))
 			log_error("Warning: [M.get_debug_name()] is stuck in a crate!")
-
-
 
 	open = TRUE
 

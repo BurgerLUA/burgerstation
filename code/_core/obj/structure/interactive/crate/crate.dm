@@ -6,6 +6,8 @@
 	icon = 'icons/obj/structure/closet.dmi'
 	icon_state = "closet"
 
+	pixel_y = 2
+
 /obj/structure/interactive/crate/closet/anchored
 	anchored = TRUE
 

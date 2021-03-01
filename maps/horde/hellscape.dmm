@@ -2524,7 +2524,6 @@
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/caves/watersource)
 "kQ" = (
-/obj/structure/interactive/door/airlock/station/dark,
 /obj/structure/interactive/door/wood,
 /turf/simulated/floor/tile/dark/single,
 /area/hellscape/interior/caves/watersource)
@@ -3227,11 +3226,9 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
 "nE" = (
-/mob/living/advanced/npc/skeleton_miner/pickaxe{
-	dir = 4
-	},
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/watersource)
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/ash/necro,
+/area/hellscape/interior/caves/ashwalker_village)
 "nF" = (
 /obj/structure/interactive/bed,
 /mob/living/advanced/npc/skeleton_miner,
@@ -4347,8 +4344,8 @@
 /turf/simulated/wall/rock/indestructable,
 /area/hellscape/interior/caves/watersource)
 "si" = (
-/obj/structure/interactive/supplies,
-/turf/simulated/floor/basalt,
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/ashwalker_village)
 "sj" = (
 /obj/structure/interactive/supplies,
@@ -4359,7 +4356,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "sl" = (
-/obj/structure/interactive/supplies,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/crab)
 "sm" = (
@@ -4370,6 +4367,18 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
+"so" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/watersource)
+"sp" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/ancient)
+"sq" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/containment)
 
 (1,1,1) = {"
 ja
@@ -5012,7 +5021,7 @@ av
 av
 av
 du
-cf
+nE
 dE
 dL
 cf
@@ -5131,7 +5140,7 @@ ft
 ft
 gT
 nv
-nE
+so
 ar
 ar
 ar
@@ -5276,7 +5285,7 @@ cf
 du
 av
 du
-cf
+nE
 cf
 cf
 bn
@@ -7203,7 +7212,7 @@ ja
 jq
 jq
 jq
-pW
+sq
 pY
 pZ
 pY
@@ -9639,7 +9648,7 @@ av
 av
 av
 du
-cf
+nE
 cf
 dE
 du
@@ -10945,7 +10954,7 @@ av
 bn
 bn
 bn
-hV
+si
 ju
 oG
 ju
@@ -11189,7 +11198,7 @@ av
 av
 av
 du
-cf
+nE
 cf
 cf
 cf
@@ -11442,7 +11451,7 @@ du
 du
 du
 du
-si
+av
 av
 av
 du
@@ -12738,7 +12747,7 @@ cf
 cf
 cf
 du
-si
+av
 av
 av
 av
@@ -34711,7 +34720,7 @@ bT
 bT
 bT
 cH
-hf
+sp
 mW
 bT
 ps
@@ -67554,7 +67563,7 @@ aD
 eq
 eq
 eq
-sl
+fg
 fg
 fg
 fg
@@ -67811,7 +67820,7 @@ eq
 eq
 eq
 eq
-fg
+sl
 fg
 fg
 fg
