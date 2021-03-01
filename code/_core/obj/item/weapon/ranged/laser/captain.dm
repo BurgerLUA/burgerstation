@@ -21,8 +21,8 @@
 
 	view_punch = 4
 
-	heat_per_shot = 0
-	heat_max = 0
+	heat_per_shot = 0.01
+	heat_max = 0.05
 
 	size = SIZE_3
 	weight = 10
@@ -50,3 +50,21 @@
 
 /obj/item/weapon/ranged/energy/captain/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+
+
+	if(istype(object,/obj/item/))
+
+		var/obj/item/I = object
+
+		if(I.flags_tool & FLAG_TOOL_CROWBAR)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			if(battery)
+				caller.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
+			else
+				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
+			return

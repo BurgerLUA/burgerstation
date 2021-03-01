@@ -23,8 +23,8 @@
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
-	heat_per_shot = 0.01
-	heat_max = 0.06
+	heat_per_shot = 0.005
+	heat_max = 0.1
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
