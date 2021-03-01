@@ -19,7 +19,7 @@
 
 	return TRUE
 
-/mob/living/proc/add_trait(var/trait_to_add)
+/mob/living/proc/add_trait(var/trait_to_add,var/messages=TRUE)
 
 	var/trait/T = TRAIT(trait_to_add)
 	if(!T)
@@ -30,11 +30,11 @@
 		var/trait/T2 = TRAIT(k)
 		if(T2.category == T.category) //Cannot have trait that have the same category.
 			traits -= T2.type
-			T2.on_remove(src)
+			T2.on_remove(src,messages)
 
 	traits[trait_to_add] = TRUE
 	traits_by_category[T.category] = trait_to_add
-	T.on_add(src)
+	T.on_add(src,messages)
 
 	return TRUE
 

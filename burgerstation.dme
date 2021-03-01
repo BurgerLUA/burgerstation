@@ -974,6 +974,7 @@
 #include "code\_core\obj\item\analyzer\_analyzer.dm"
 #include "code\_core\obj\item\analyzer\angle.dm"
 #include "code\_core\obj\item\analyzer\armor.dm"
+#include "code\_core\obj\item\analyzer\genetics.dm"
 #include "code\_core\obj\item\analyzer\health.dm"
 #include "code\_core\obj\item\analyzer\value.dm"
 #include "code\_core\obj\item\attachment\_attachment.dm"
