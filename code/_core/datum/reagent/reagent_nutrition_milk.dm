@@ -68,7 +68,7 @@
 	color = "#FF9F00"
 
 	nutrition_amount = 35
-	nutrition_quality_amount = 0
+	nutrition_quality_amount = -9
 
 	flavor = "sharp cheddar cheese"
 
