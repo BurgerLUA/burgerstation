@@ -851,6 +851,7 @@
 #include "code\_core\obj\effect\cleanable\blood.dm"
 #include "code\_core\obj\effect\temp\_temp.dm"
 #include "code\_core\obj\effect\temp\alert.dm"
+#include "code\_core\obj\effect\temp\arrow.dm"
 #include "code\_core\obj\effect\temp\ash_drake.dm"
 #include "code\_core\obj\effect\temp\chat_icon.dm"
 #include "code\_core\obj\effect\temp\construction.dm"
