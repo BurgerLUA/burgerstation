@@ -26,10 +26,9 @@
 
 	anchored = FALSE
 
-/obj/structure/interactive/the_curse/spawn_chance/Finalize()
-	. = ..()
-	if(prob(90))
-		qdel(src)
+	value = 10000
+
+	size = SIZE_BOSS
 
 /obj/structure/interactive/the_curse/debug
 	debug = TRUE

@@ -78,6 +78,7 @@
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
 	add_objective(/objective/defense)
+	add_objective(/objective/abnormality)
 
 	if(player_count >= 10)
 		add_objective(/objective/hostage)
