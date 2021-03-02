@@ -25,6 +25,7 @@
 		'sound/ambient/cave_1.ogg',
 		'sound/ambient/cave_2.ogg',
 	)
+
 	cheese_type = /reagent/nutrition/cheese/gruyere
 
 	sound_environment = ENVIRONMENT_QUARRY
