@@ -54,7 +54,7 @@
 	return ..()
 
 /obj/effect/falling_fireball/proc/land()
-	explode(get_turf(src),20,src,src)
+	explode(get_turf(src),10,src,src)
 	src.alpha = 0
 	queue_delete(src,10)
 	return TRUE
