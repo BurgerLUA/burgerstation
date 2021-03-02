@@ -2612,6 +2612,10 @@
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/cave_dirt,
 /area/lz_420/interior/cave/east)
+"kJ" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/lz_420/interior/cave/north)
 "kM" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cave_dirt,
@@ -28389,7 +28393,7 @@ bM
 bM
 bM
 bM
-lp
+kJ
 lp
 lp
 lp
@@ -58319,7 +58323,7 @@ lC
 lC
 lC
 lC
-lG
+kI
 lG
 lG
 lG
@@ -62568,7 +62572,7 @@ ak
 bM
 bM
 bM
-lp
+kJ
 lp
 lp
 lp

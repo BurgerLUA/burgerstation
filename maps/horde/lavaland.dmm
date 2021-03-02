@@ -335,6 +335,10 @@
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/engineering)
+"bE" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/lavaland/exterior)
 "bF" = (
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base/armory)
@@ -5818,7 +5822,7 @@ ae
 ae
 ae
 ae
-ag
+bE
 ag
 ag
 ag
@@ -10336,7 +10340,7 @@ ae
 ae
 ae
 ae
-ag
+bE
 ag
 ag
 ag
@@ -64904,7 +64908,7 @@ ae
 ae
 ae
 ae
-ag
+bE
 ag
 ag
 ag
@@ -65180,7 +65184,7 @@ aa
 aa
 ae
 ae
-ag
+bE
 ag
 ag
 ag
