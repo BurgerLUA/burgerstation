@@ -29,6 +29,28 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	var/charge = 0
 	var/charge_max = SECONDS_TO_DECISECONDS(600)
 
+/obj/structure/interactive/supermatter/defense
+	health_base = 3000
+	charge_max = SECONDS_TO_DECISECONDS(1200)
+
+/obj/structure/interactive/supermatter/defense/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.loyalty_tag == "NanoTrasen")
+			return FALSE
+
+	. = ..()
+
+/obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	if(is_living(P.owner))
+		var/mob/living/L = P.owner
+		if(L.iff_tag == "NanoTrasen")
+			return FALSE
+
+	. = ..()
+
 /obj/structure/interactive/supermatter/get_examine_list(var/mob/examiner)
 
 	. = ..()
