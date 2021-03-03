@@ -11,7 +11,7 @@
 
 	movement_delay = 1
 
-	health_base = 50
+	health_base = 100
 
 	butcher_contents = list(
 		/obj/item/soulgem/rare,
@@ -55,4 +55,3 @@
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()
 	update_all_blends()
-	
