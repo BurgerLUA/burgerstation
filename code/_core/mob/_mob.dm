@@ -204,7 +204,7 @@
 	update_parallax()
 	update_z_position()
 
-/mob/New(var/loc/spawning_location,var/client/C)
+/mob/New(var/desired_loc,var/client/C)
 
 	parallax = list()
 	buttons = list()

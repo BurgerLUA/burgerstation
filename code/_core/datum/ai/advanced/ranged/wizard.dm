@@ -1,6 +1,6 @@
 /ai/advanced/ranged/wizard
 
-	var/turf/list/teleport_locations = list()
+	var/list/turf/teleport_locations = list()
 
 	left_click_chance = 70
 
@@ -21,4 +21,3 @@
 		new /obj/effect/temp/phase(desired_location)
 
 
-	

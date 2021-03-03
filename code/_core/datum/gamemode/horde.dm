@@ -20,7 +20,7 @@
 
 	var/spawn_on_markers = TRUE
 
-	var/atom/list/priority_targets  = list()
+	var/list/atom/priority_targets  = list()
 
 /gamemode/horde/update_objectives()
 
@@ -222,7 +222,7 @@
 		log_error("ERROR: Could not find a valid horde target!")
 		return TRUE
 
-	var/obj/marker/map_node/list/found_path = spawn_node.find_path(target_node)
+	var/list/obj/marker/map_node/found_path = spawn_node.find_path(target_node)
 	if(!found_path)
 		log_error("ERROR: Could not find a valid path from [spawn_node.get_debug_name()] to [target_node.get_debug_name()]!")
 		return TRUE

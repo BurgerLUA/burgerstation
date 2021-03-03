@@ -104,12 +104,12 @@
 /obj/hud/button/slot/proc/store_atom(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
-		return ..()
+		return FALSE
+
+	if(!is_item(object))
+		return FALSE
 
 	var/mob/living/advanced/A = caller
-
-	if(!is_atom(object))
-		return ..()
 
 	var/obj/item/I = object
 
@@ -124,7 +124,6 @@
 	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	active = FALSE
 	update_sprite()
-
 
 	return TRUE
 

@@ -1,5 +1,4 @@
-var/global/list/antag_count = 0
-
+var/global/antag_count = 0
 
 /mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Quickload Character"
@@ -178,14 +177,14 @@ var/global/list/antag_count = 0
 
 	if(!length(all_antag_markers))
 		src.to_chat(span("warning","Someone stole your slot! There are no antagonist slots left!"))
-		return ..()
+		return FALSE
 
 	if(!antagonist_choice || !length(all_antag_markers[antagonist_choice]))
 		src.to_chat(span("warning","Someone stole your slot! Pick another antagonist type!"))
-		return ..()
+		return FALSE
 
 	if(!can_become_antagonist())
-		return ..()
+		return FALSE
 
 	var/obj/marker/antag/chosen_marker = pick(all_antag_markers[antagonist_choice])
 	all_antag_markers[antagonist_choice] -= chosen_marker

@@ -4,7 +4,7 @@
 		return FALSE
 
 	if(!isnum(chat_type))
-		CRASH("chat_type was not a number!")
+		CRASH_SAFE("chat_type ([chat_type]) was not a number!")
 		return FALSE
 
 	if(!queued_chat_messages)

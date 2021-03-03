@@ -25,7 +25,7 @@
 /loot/proc/post_spawn(var/atom/movable/M)
 	return TRUE
 
-/loot/proc/do_spawn(var/spawn_loc)
+/loot/proc/do_spawn(var/atom/spawn_loc)
 	. = create_loot_table(spawn_loc)
 	for(var/k in .)
 		var/atom/movable/M = k

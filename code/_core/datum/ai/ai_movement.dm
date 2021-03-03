@@ -138,7 +138,7 @@
 				queue_delete(owner,0,TRUE)
 			return FALSE
 
-		var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
+		var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
 		if(!found_path)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
 			set_path(null)

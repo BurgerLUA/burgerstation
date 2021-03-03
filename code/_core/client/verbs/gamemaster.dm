@@ -151,7 +151,7 @@
 	set name = "Give Dosh"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to give money to?") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to give money to?") as null|mob in all_players
 
 	if(!P)
 		return FALSE
@@ -233,7 +233,7 @@
 			continue
 		valid_players[L.get_debug_name()] = L
 
-	var/choice = input("Who do you want to rejuvenate?","Player Rejuvenation") in valid_players as mob|null
+	var/choice = input("Who do you want to rejuvenate?","Player Rejuvenation") as null|mob in valid_players
 
 	var/mob/living/L = valid_players[choice]
 
@@ -360,7 +360,7 @@
 	set name = "Add Language"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") as null|mob in all_players
 
 	if(!P)
 		return FALSE
@@ -387,7 +387,7 @@
 	set name = "Remove Language"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") as null|mob in all_players
 
 	if(!P)
 		return FALSE
@@ -398,7 +398,7 @@
 		var/language/L = SSlanguage.all_languages[k]
 		valid_languages += L
 
-	var/language/L = input("What language do you wish to remvoe from \the [P.name]?","Remove Language") as null|anything in valid_languages
+	var/language/L = input("What language do you wish to remove from \the [P.name]?","Remove Language") as null|anything in valid_languages
 
 	if(!L)
 		return FALSE
@@ -414,7 +414,7 @@
 	set name = "Add Trait"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to add a trait to?","Add Trait") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to add a trait to?","Add Trait") as null|mob in all_players
 
 	if(!P)
 		return FALSE
@@ -441,7 +441,7 @@
 	set name = "Remove Trait"
 	set category = "GameMaster"
 
-	var/mob/living/advanced/player/P = input("Who do you want to remove a trait from?","Remove Trait") in all_players as mob|null
+	var/mob/living/advanced/player/P = input("Who do you want to remove a trait from?","Remove Trait") as null|mob in all_players
 
 	if(!P)
 		return FALSE

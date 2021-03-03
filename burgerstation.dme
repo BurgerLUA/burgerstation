@@ -945,7 +945,6 @@
 #include "code\_core\obj\item\combat.dm"
 #include "code\_core\obj\item\cross.dm"
 #include "code\_core\obj\item\data_saving.dm"
-#include "code\_core\obj\item\debug.dm"
 #include "code\_core\obj\item\defib.dm"
 #include "code\_core\obj\item\dice.dm"
 #include "code\_core\obj\item\dying.dm"
