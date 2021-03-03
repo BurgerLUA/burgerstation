@@ -1866,6 +1866,5 @@
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
 #include "maps\_maps.dm"
-#include "maps\defense\supermatter.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
