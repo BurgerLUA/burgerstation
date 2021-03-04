@@ -16,7 +16,7 @@
 
 	size = SIZE_1
 
-	value = 50
+	value = 20
 
 /obj/item/flare/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -42,7 +42,7 @@
 		INTERACT_DELAY(10)
 		if(is_living(caller))
 			var/mob/living/L = caller
-			if(L.movement_flags & MOVEMENT_WALKING)
+			if(l.attack_flags & CONTROL_MOD_ALT)
 				stored_cap.drop_item(src)
 				stored_cap = object
 				caller.to_chat(span("notice","You put \the [object.name] back on \the [src.name]."))

@@ -31,17 +31,17 @@
 /obj/item/clothing/head/helmet/full/paperbag/Finalize()
 	. = ..()
 	update_inventory()
-	
+
 /obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("logo")
 	SAVEVAR("logobg")
-	
+
 /obj/item/clothing/head/helmet/full/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("logo")
 	LOADVAR("logobg")
-	
+
 /obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller)
 
 	var/mob/C = caller
@@ -102,7 +102,7 @@
 	else
 		dynamic_inventory_count = 7
 		is_container = TRUE
-	
+
 /obj/item/clothing/head/helmet/full/paperbag/update_inventory()
 	. = ..()
 	var/filled_slots = 1
@@ -118,7 +118,7 @@
 		icon_state = "[initial(icon_state)]2"
 	update_sprite()
 	update_overlays()
-	
+
 /obj/item/clothing/head/helmet/full/paperbag/update_overlays()
 
 	var/content_count = 1
