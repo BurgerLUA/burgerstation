@@ -10,5 +10,5 @@
 
 /obj/item/container/food/egg/chicken/Generate()
 	reagents.add_reagent(/reagent/nutrition/egg_white,3)
-	reagents.add_reagent(/reagent/nutrition/egg_yellow,3)
+	reagents.add_reagent(/reagent/nutrition/egg_yellow,2)
 	return ..()
