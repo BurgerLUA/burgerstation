@@ -24,5 +24,6 @@
 		/obj/item/weapon/melee/tool/shovel,
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/wrench,
-		/obj/item/supply_remote/drill
+		/obj/item/supply_remote/drill,
+		/obj/item/flare
 	)

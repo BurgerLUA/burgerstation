@@ -25,7 +25,8 @@
 		/obj/item/clothing/head/helmet/polymorphic/security,
 		/obj/item/clothing/overwear/armor/medium_armor/security,
 		/obj/item/clothing/overwear/armor/molded_armor/security,
-		/obj/item/weapon/melee/energy/grazer
+		/obj/item/weapon/melee/energy/grazer,
+		/obj/item/flare
 	)
 
 /obj/structure/interactive/vending/security/wardrobe/ops
