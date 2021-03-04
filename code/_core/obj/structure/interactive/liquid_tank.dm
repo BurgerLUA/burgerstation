@@ -12,6 +12,11 @@
 
 	anchored = FALSE
 
+	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	density = TRUE
+
 /obj/structure/interactive/reagent_tank/update_icon()
 	. = ..()
 	icon_state = "tank_liquid"

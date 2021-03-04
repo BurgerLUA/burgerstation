@@ -4329,11 +4329,11 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "sj" = (
-/obj/structure/interactive/supplies,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/broodmother)
 "sk" = (
-/obj/structure/interactive/supplies,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "sl" = (
@@ -4348,6 +4348,26 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
+"so" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/watersource)
+"sp" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/ancient)
+"sq" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/containment)
+"sr" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/interior/caves/watersource)
+"ss" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/hellchamber)
 
 (1,1,1) = {"
 ja
@@ -5090,7 +5110,7 @@ aw
 aw
 aw
 aw
-fw
+so
 gT
 gT
 ft
@@ -16599,7 +16619,7 @@ aq
 aq
 aq
 aq
-ay
+ar
 ar
 ar
 ar
@@ -16856,7 +16876,7 @@ aq
 aq
 aq
 aq
-ar
+sr
 ar
 ar
 cd
@@ -22250,7 +22270,7 @@ aq
 aq
 aq
 aq
-ay
+sr
 ar
 ar
 ar
@@ -31577,7 +31597,7 @@ ar
 ar
 aq
 aq
-ay
+sr
 ar
 ar
 ar
@@ -58321,7 +58341,7 @@ ia
 "}
 (211,1,1) = {"
 ac
-bb
+ss
 bb
 bb
 bb

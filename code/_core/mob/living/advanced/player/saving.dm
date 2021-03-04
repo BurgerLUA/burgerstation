@@ -25,6 +25,7 @@
 	//Name
 	real_name = loaded_data["name"]
 	sex = loaded_data["sex"]
+	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON
 	gender = loaded_data["gender"]
 	currency = loaded_data["currency"]
 	revenue = loaded_data["revenue"] ? loaded_data["revenue"] : 0
@@ -147,6 +148,7 @@
 	.["expenses"] = expenses
 	.["last_tax_payment"] = last_tax_payment
 	.["partial_tax"] = partial_tax
+	.["rarity"] = rarity
 
 	if(length(traits))
 		.["traits"] = list()

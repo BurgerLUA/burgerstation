@@ -26,6 +26,14 @@
 	. = ..()
 	value = CEILING(value,0.01)
 
+/reagent/nutrition/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+
+	. = ..()
+
+	if(. && hydration_amount > 0 && is_living(target))
+		var/mob/living/L = target
+		L.adjust_fire_stacks(-hydration_amount*volume_to_splash*0.01*strength_mod)
+
 /reagent/nutrition/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()

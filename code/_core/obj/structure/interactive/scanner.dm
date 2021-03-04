@@ -11,6 +11,16 @@
 	desired_light_range = 2
 	desired_light_color = "#00FF00"
 
+/obj/structure/interactive/scanner/abnormality
+	name = "abnormality scanner"
+
+/obj/structure/interactive/scanner/abnormality/Cross(var/atom/movable/M)
+
+	if(!istype(M,/obj/structure/interactive/the_curse))
+		return FALSE
+
+	return ..()
+
 /obj/structure/interactive/scanner/iff
 	name = "\improper IFF body scanner"
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."

@@ -29,11 +29,11 @@
 /obj/item/container/pill/feed(var/mob/caller,var/mob/living/target)
 	. = ..()
 	if(.) qdel(src)
-	
+
 /obj/item/container/pill/Generate()
 	. = ..()
 	update_sprite()
-	
+
 /obj/item/container/pill/update_sprite()
 
 	. = ..()
@@ -50,7 +50,7 @@
 		var/volume_02
 
 		var/i=0
-		for(var/k in reagents)
+		for(var/k in reagents.stored_reagents)
 			var/reagent/R = REAGENT(k)
 			var/volume = reagents.volume_current
 			i++
@@ -75,4 +75,3 @@
 	else
 		color = reagents.color
 
-	

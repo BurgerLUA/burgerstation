@@ -54,7 +54,7 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),20,owner,src,iff_tag)
+		explode(get_turf(hit_atom),20,owner,weapon,iff_tag)
 
 
 /obj/projectile/bullet/gyrojet
@@ -63,11 +63,8 @@
 	icon_state = "gyrojet"
 
 /obj/projectile/bullet/gyrojet/post_on_hit(var/atom/hit_atom)
+	explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
 	. = ..()
-
-	if(.)
-		explode(get_turf(hit_atom),20,owner,src,iff_tag)
-
 
 /obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
 
@@ -101,4 +98,3 @@
 	if(.)
 		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
-	

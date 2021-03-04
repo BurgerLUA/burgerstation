@@ -7,13 +7,15 @@
 
     value = 100 //same value as /obj/item/deployable/bodybag to avoid money dubing
     anchored = FALSE
-    collision_flags = FLAG_COLLISION_NONE //Not wall because crawling.
-    collision_bullet_flags = FLAG_COLLISION_BULLET_NONE //you'd always shoot OVER the body bag no?
+    collision_flags = FLAG_COLLISION_ITEM
+    collision_bullet_flags = FLAG_COLLISION_SPECIFIC
     density = TRUE
     layer = LAYER_OBJ_CRATE
     size = SIZE_HUMAN
 
     pixel_y = 2
+
+    density = TRUE
 
 /obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

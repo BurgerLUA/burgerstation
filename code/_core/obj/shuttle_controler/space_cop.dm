@@ -56,7 +56,7 @@
 				if(!N_start)
 					log_error("Space Cops Path Error: Couldn't find closet node to [L.get_debug_name()]!")
 					return .
-				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
+				var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
 				if(!found_path || !length(found_path))
 					log_error("Space Cops Path Error: Couldn't find a path from [src] to [RF]!")
 					return .
@@ -69,4 +69,3 @@
 
 
 
-	
