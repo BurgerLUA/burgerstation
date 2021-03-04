@@ -47,7 +47,7 @@
 	icon = 'icons/obj/item/container/spray_bottle.dmi'
 
 	size = SIZE_2
-	weight = 4
+	weight = 2
 
 	value = 50
 
@@ -71,3 +71,53 @@
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner/Generate()
 	reagents.add_reagent(/reagent/space_cleaner,reagents.volume_max)
 	return ..()
+
+
+/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher
+	name = "fire extinguisher"
+	reagents = /reagent_container/beaker/large
+	reagent_per_shot = 3
+	icon = 'icons/obj/item/extinguisher.dmi'
+
+	projectile = /obj/projectile/extinguisher_spray
+
+	size = SIZE_3
+	weight = 8
+
+	value = 100
+
+	dan_mode = TRUE
+
+	projectile_speed = 15
+
+	automatic = TRUE
+
+	shoot_delay = 2
+
+	bullet_count = 3
+
+	reagents = /reagent_container/beaker/bucket
+
+/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(istype(object,/obj/structure/interactive/fire_closet))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
+		var/obj/structure/interactive/fire_closet/FC = object
+		if(FC.stored_extinguisher)
+			caller.to_chat(span("warning","There is already a [FC.stored_extinguisher.name] in \the [FC.name]!"))
+			return TRUE
+		src.drop_item(FC)
+		FC.stored_extinguisher = src
+		FC.update_sprite()
+		return TRUE
+
+	. = ..()
+
+/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/Generate()
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
+	return ..()
+
+/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/get_base_spread()
+	return 0.1
