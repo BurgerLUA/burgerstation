@@ -37,7 +37,7 @@
 	color = "#FFC237"
 
 	nutrition_amount = 20
-	nutrition_quality_amount = -6
+	nutrition_quality_amount = -9
 
 	flavor = "processed cheese"
 
@@ -52,8 +52,9 @@
 	desc = "Nutrition and flavor from Kadchgall cheese."
 	color = "#FFE8AA"
 
-	nutrition_amount = 30
-	nutrition_quality_amount = -3
+	nutrition_amount = 40
+	nutrition_quality_amount = 6
+	hydration_amount = -15
 
 	flavor = "processed cheese"
 
@@ -66,8 +67,8 @@
 	desc = "Nutrition and flavor from cheddar cheese."
 	color = "#FF9F00"
 
-	nutrition_amount = 30
-	nutrition_quality_amount = -6
+	nutrition_amount = 35
+	nutrition_quality_amount = -9
 
 	flavor = "sharp cheddar cheese"
 
@@ -81,8 +82,9 @@
 	desc = "Nutrition and flavor from Old Brabander Jungle cheese."
 	color = "#FFFCE8"
 
-	nutrition_amount = 30
-	nutrition_quality_amount = -3
+	nutrition_amount = 20
+	nutrition_quality_amount = 9
+
 
 	flavor = "sweet and creamy caramel cheese"
 
@@ -97,8 +99,10 @@
 	desc = "Nutrition and flavor from Raclette Alpine cheese."
 	color = "#FFF09F"
 
-	nutrition_amount = 30
-	nutrition_quality_amount = -3
+	nutrition_amount = 15 //less nutrition is stronger in this case, preventing the gaining of weight that would further hinder stamina
+	nutrition_quality_amount = -6
+	heal_factor = 9 //supposed to be healing at the cost of nutrition, probably not going to be balanced properly without extensive testing post-merge
+
 
 	flavor = "sweet nutty cheese"
 
@@ -112,8 +116,8 @@
 	desc = "Nutrition and flavor from Gruyère cave cheese."
 	color = "#E4A300"
 
-	nutrition_amount = 30
-	nutrition_quality_amount = -3
+	nutrition_amount = 25
+	nutrition_quality_amount = 6
 
 	flavor = "sweet and salty nutty cream cheese"
 
@@ -127,8 +131,8 @@
 	desc = "Nutrition and flavor from Smoked Guava cheese."
 	color = "#704226"
 
-	nutrition_amount = 30
-	nutrition_quality_amount = -3
+	nutrition_amount = 20
+	nutrition_quality_amount = 9
 
 	flavor = "sweet fudge cheese"
 
@@ -142,10 +146,41 @@
 	desc = "Nutrition and flavor from bluespace cheese."
 	color = "#78A093"
 
-	nutrition_amount = 30
+	nutrition_amount = 20
 	nutrition_quality_amount = 0
 
 	flavor = "bluespace cheese"
+
+	liquid = 0.2
+
+	flags_flavor = FLAG_FLAVOR_DAIRY | FLAG_FLAVOR_LOVE | FLAG_FLAVOR_FAT
+
+
+/reagent/nutrition/cheese/oasis
+	name = "Glardin Oasis cheese"
+	desc = "Nutrition and flavor from Glardin Oasis cheese."
+	color = "#3D62C3"
+
+	nutrition_amount = 10
+	nutrition_quality_amount = 3
+	hydration_amount = 20
+
+	flavor = "salty waterlogged cheese"
+
+	liquid = 0.2
+
+	flags_flavor = FLAG_FLAVOR_DAIRY | FLAG_FLAVOR_LOVE | FLAG_FLAVOR_FAT
+
+/reagent/nutrition/cheese/blackash
+	name = "Black Ash cheese"
+	desc = "Nutrition and flavor from Black Ash cheese."
+	color = "#3f3f3f"
+
+	nutrition_amount = -30
+	nutrition_quality_amount = 0
+	hydration_amount = -20
+
+	flavor = "scorched rocks and smokey ash cheese"
 
 	liquid = 0.2
 
@@ -165,4 +200,3 @@
 	value = 2
 
 	flags_flavor = FLAG_FLAVOR_LOVE | FLAG_FLAVOR_FAT
-
