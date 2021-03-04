@@ -1,7 +1,7 @@
 /obj/item/flare
 	name = "flare"
 	desc = "Light your way."
-	desc_extended = "A high power portable flare stick meant to light dark areas. Instructions: Remove cap, strike rough black part of cap against the red igniter pad, throw flare."
+	desc_extended = "A high power portable flare stick meant to light dark areas. Lasts about 5 minutes. Instructions: Remove cap, strike rough black part of cap against the red igniter pad, throw flare."
 	icon = 'icons/obj/item/flare.dmi'
 	icon_state = "flare"
 
@@ -15,6 +15,8 @@
 	desired_light_color = "#FF7777"
 
 	size = SIZE_1
+
+	value = 50
 
 /obj/item/flare/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -88,7 +90,8 @@
 
 	caller?.visible_message(span("notice","\The [caller.name] ignites \the [src.name]."),span("notice","You ignite \the [src.name]."))
 
-	CALLBACK("\ref[src]_flare_time",SECONDS_TO_DECISECONDS(300),src,.proc/expire)
+	var/flare_time = rand(280,320)
+	CALLBACK("\ref[src]_flare_time",,src,SECONDS_TO_DECISECONDS(flare_time).proc/expire)
 
 	play_sound('sound/items/flare_in.ogg',get_turf(src))
 
@@ -163,5 +166,10 @@
 /obj/item/flare_cap
 	name = "flare cap"
 	desc = "Do not swallow."
+	desc_extended = "A discarded flare cap with a rough striker on the top of it."
 	icon = 'icons/obj/item/flare.dmi'
 	icon_state = "cap"
+
+	size = SIZE_1
+
+	value = 1
