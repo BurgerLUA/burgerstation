@@ -26,15 +26,15 @@
 		params = list()
 
 	if(!victim)
-		CRASH_SAFE("Tried attacking without a victim!")
+		CRASH_SAFE("[src.get_debug_name()] tried attacking without a victim!")
 		return FALSE
 
 	if(qdeleting)
-		CRASH("[src.get_debug_name()] tried attacking, but it was deleting!")
+		CRASH_SAFE("[src.get_debug_name()] tried attacking, but it was deleting!")
 		return FALSE
 
 	if(attacker.qdeleting)
-		CRASH("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
+		CRASH_SAFE("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
 		return FALSE
 
 	/* GOTTA TEST THIS

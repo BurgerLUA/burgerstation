@@ -830,8 +830,8 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
 "dg" = (
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/maint/south)
+/turf/simulated/floor/plating/shuttle,
+/area/burgerstation/science)
 "dh" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -854,8 +854,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
 "dl" = (
+/obj/structure/interactive/conveyor,
 /turf/simulated/floor/tile/overlapping/dark,
-/area/burgerstation/maint/south)
+/area/burgerstation/science)
 "dm" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
@@ -918,11 +919,11 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/bar)
 "dx" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/maint/south)
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/plastic_flaps,
+/obj/structure/interactive/scanner/abnormality,
+/turf/simulated/floor/plating/shuttle,
+/area/burgerstation/science)
 "dy" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -953,10 +954,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
 "dD" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/science,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/plating/shuttle,
 /area/burgerstation/maint/south)
 "dE" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -1108,9 +1107,8 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "ed" = (
-/obj/structure/interactive/fulton_beacon,
-/turf/simulated/floor/tile/overlapping/dark,
-/area/burgerstation/maint/south)
+/turf/simulated/floor/plating/shuttle,
+/area/burgerstation/science/containment)
 "ee" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
@@ -1540,6 +1538,10 @@
 /obj/structure/interactive/conveyor,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"fB" = (
+/obj/structure/interactive/fulton_beacon,
+/turf/simulated/floor/carpet,
+/area/burgerstation/tax)
 "fC" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -3598,6 +3600,10 @@
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/arrivals)
+"ne" = (
+/obj/structure/sign/secure,
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/science)
 "nf" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -37989,11 +37995,11 @@ mL
 mL
 bu
 bu
-xP
-xP
-xP
-xP
-xP
+bu
+bu
+bu
+bu
+bu
 xR
 xR
 xR
@@ -38248,9 +38254,9 @@ lt
 bu
 dg
 dg
-dx
 dg
-xP
+dg
+bu
 bB
 Au
 Au
@@ -38502,12 +38508,12 @@ vn
 vn
 vn
 nb
-nb
+ne
 dg
-dl
-dl
 dg
-om
+dg
+dg
+bu
 bB
 bB
 bB
@@ -38758,13 +38764,13 @@ vn
 vn
 vn
 vn
-vn
-vn
 dl
-dl
+dx
+dD
+dD
+dD
 ed
-dg
-xP
+bu
 Au
 bB
 bB
@@ -39016,12 +39022,12 @@ vn
 vn
 vn
 nb
-nb
+ne
 dg
-dl
-dl
 dg
-xP
+dg
+dg
+bu
 Au
 bB
 bB
@@ -39276,9 +39282,9 @@ nb
 bu
 dg
 dg
-dD
 dg
-xP
+dg
+bu
 bB
 bB
 bB
@@ -39531,11 +39537,11 @@ vn
 vn
 oR
 bu
-xP
-xP
-xP
-xP
-xP
+bu
+bu
+bu
+bu
+bu
 bB
 bB
 bB
@@ -44940,7 +44946,7 @@ pK
 rg
 rl
 rk
-rk
+fB
 rk
 rl
 rh

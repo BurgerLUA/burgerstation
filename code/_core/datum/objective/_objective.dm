@@ -1,7 +1,7 @@
 /objective/
 	var/name = "Objective Name"
 	var/desc = "Objective Description"
-	var/atom/list/tracked_atoms = list()
+	var/list/atom/tracked_atoms = list()
 	var/completion_state = ACTIVE
 	var/credit_reward = 0
 	var/burgerbux_reward = 0
@@ -115,4 +115,3 @@
 		if(completion_state == COMPLETED)
 			on_completion()
 
-	

@@ -22,6 +22,9 @@ SUBSYSTEM_DEF(dmm_suite)
 			"maps/prefabs/32x32/rng_shrine.dmm",
 			"maps/prefabs/32x32/hierophant.dmm"
 		),
+		"16x16" = list(
+			"maps/prefabs/16x16/abnormality.dmm"
+		),
 		"antag" = list(
 			"maps/prefabs/antag/rev_compound.dmm",
 			"maps/prefabs/antag/syndicate_ship.dmm"

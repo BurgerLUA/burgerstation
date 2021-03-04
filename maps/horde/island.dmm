@@ -376,7 +376,7 @@
 	icon_state = "end";
 	dir = 4
 	},
-/turf/unsimulated/generation/snow,
+/turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "bJ" = (
 /obj/marker/map_node,
@@ -387,35 +387,26 @@
 	icon_state = "post";
 	dir = 4
 	},
-/turf/unsimulated/generation/snow,
+/turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "bL" = (
 /obj/structure/interactive/fence{
 	icon_state = "straight";
 	dir = 4
 	},
-/turf/unsimulated/generation/snow,
+/turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "bM" = (
 /obj/structure/interactive/fence/end{
 	icon_state = "end";
 	dir = 8
 	},
-/turf/unsimulated/generation/snow,
-/area/lz_001/snow)
-"bN" = (
-/obj/structure/interactive/barricade,
-/turf/unsimulated/generation/snow,
+/turf/simulated/floor/colored/dirt/snow,
 /area/lz_001/snow)
 "bO" = (
 /obj/marker/map_node,
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
-"bP" = (
-/obj/structure/interactive/barricade,
-/mob/living/advanced/npc/rev,
-/turf/unsimulated/generation/snow,
-/area/lz_001/snow)
 "bQ" = (
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves/knight)
@@ -3031,6 +3022,14 @@
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/cave_dirt,
 /area/lz_001/caves)
+"no" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/lz_001/caves/lava)
+"np" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/dirt/snow,
+/area/lz_001/snow)
 
 (1,1,1) = {"
 aa
@@ -6190,7 +6189,7 @@ al
 al
 al
 iT
-iT
+no
 iT
 iT
 iT
@@ -17779,7 +17778,7 @@ ay
 ay
 ay
 cS
-da
+lR
 da
 da
 da
@@ -40245,7 +40244,7 @@ eP
 eM
 ca
 ca
-ce
+nn
 ce
 cc
 eL
@@ -62431,8 +62430,8 @@ bz
 bz
 bz
 bI
-gV
-bN
+bz
+bT
 gV
 gV
 bz
@@ -62688,8 +62687,8 @@ bz
 bz
 bz
 bK
-gV
-bP
+bz
+bU
 gV
 bz
 bz
@@ -62945,8 +62944,8 @@ bz
 bz
 bz
 bL
-gV
-gV
+bz
+bz
 bz
 bz
 bz
@@ -63202,7 +63201,7 @@ bv
 bz
 bz
 bK
-gV
+bz
 bz
 bz
 bz
@@ -64487,8 +64486,8 @@ gV
 gV
 bz
 bL
-gV
-gV
+bz
+bz
 gV
 gV
 gV
@@ -64744,8 +64743,8 @@ gV
 gV
 bz
 bK
-gV
-bP
+bz
+bU
 gV
 gV
 gV
@@ -65001,8 +65000,8 @@ gV
 bz
 bz
 bM
-gV
-bN
+bz
+bT
 gV
 gV
 gV
@@ -65564,7 +65563,7 @@ ca
 kg
 cl
 cl
-bz
+np
 bz
 bz
 bz

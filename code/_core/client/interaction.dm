@@ -91,7 +91,18 @@
 		mob.on_right_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
-		examine(object)
+		if(mob && mob.movement_flags & MOVEMENT_RUNNING && object.plane < PLANE_HUD)
+			if(spam_protection_interact <= 10)
+				var/obj/effect/temp/arrow/A = new(get_turf(object))
+				A.pixel_x = text2num(new_params[PARAM_ICON_X]) - 16
+				A.pixel_y = text2num(new_params[PARAM_ICON_Y]) - 16
+				A.invisibility = mob.invisibility
+				INITIALIZE(A)
+				FINALIZE(A)
+				mob.visible_message("<b>\The [mob.name]</b> points to <b>\the [object.name]</b>.")
+				spam_protection_interact += 10
+		else
+			examine(object)
 
 	return ..()
 

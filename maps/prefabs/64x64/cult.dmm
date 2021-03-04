@@ -98,6 +98,10 @@
 "w" = (
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"x" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/cult,
+/area/prefab/blood_cult)
 
 (1,1,1) = {"
 a
@@ -904,7 +908,7 @@ a
 a
 w
 b
-c
+x
 c
 c
 c
@@ -1136,7 +1140,7 @@ c
 c
 c
 b
-c
+x
 c
 e
 c
@@ -1584,7 +1588,7 @@ b
 b
 b
 b
-c
+x
 c
 c
 c
@@ -1765,7 +1769,7 @@ b
 c
 c
 b
-c
+x
 c
 c
 c
@@ -1848,7 +1852,7 @@ m
 m
 m
 b
-c
+x
 c
 c
 c
@@ -1857,7 +1861,7 @@ c
 c
 c
 b
-c
+x
 c
 c
 c
@@ -3160,7 +3164,7 @@ c
 c
 c
 b
-c
+x
 c
 c
 c

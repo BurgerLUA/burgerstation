@@ -107,6 +107,11 @@
 /area/burgerstation/science
 	name = "\improper Science"
 	icon_state = "science"
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+
+/area/burgerstation/science/containment
+	name = "\improper Science Containment Area"
+	icon_state = "red"
 
 /area/burgerstation/cryo
 	name = "\improper Cryogenic Storage"

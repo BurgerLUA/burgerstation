@@ -277,6 +277,10 @@
 /obj/structure/smooth/table/wood,
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
+"bc" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/grass/jungle,
+/area/prefab/rev_base)
 "bd" = (
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
@@ -1321,7 +1325,7 @@ ak
 ak
 ao
 ai
-ad
+bc
 ad
 ad
 ad

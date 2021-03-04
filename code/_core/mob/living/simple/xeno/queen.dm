@@ -130,7 +130,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 			var/obj/marker/map_node/N_start = find_closest_node(X)
 			if(!N_start)
 				continue
-			var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
+			var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
 			if(!found_path)
 				continue
 			X.ai.set_path(found_path)

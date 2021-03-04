@@ -2,13 +2,13 @@
 	var/name = "Gamemode Name"
 	var/desc = "Gamemode Description"
 
-	var/objective/list/crew_active_objectives = list()
-	var/objective/list/crew_completed_objectives = list()
-	var/objective/list/crew_failed_objectives = list()
+	var/list/objective/crew_active_objectives = list()
+	var/list/objective/crew_completed_objectives = list()
+	var/list/objective/crew_failed_objectives = list()
 
-	var/objective/list/antagonist_active_objectives = list()
-	var/objective/list/antagonist_completed_objectives = list()
-	var/objective/list/antagonist_failed_objectives = list()
+	var/list/objective/antagonist_active_objectives = list()
+	var/list/objective/antagonist_completed_objectives = list()
+	var/list/objective/antagonist_failed_objectives = list()
 
 	var/allow_launch = FALSE
 

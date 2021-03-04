@@ -36,7 +36,8 @@
 			if(FS)
 				M.force_move(FS.loc)
 			else
-				M.force_move(pick(cryo_spawnpoints).loc)
+				var/atom/movable/fallback = pick(cryo_spawnpoints)
+				M.force_move(get_turf(fallback))
 
 	return ..()
 
