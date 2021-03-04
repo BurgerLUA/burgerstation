@@ -4417,29 +4417,48 @@
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
-"ws" = (
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/hellscape/interior/caves/watersource)
-"xm" = (
+"vu" = (
 /obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/watersource)
-"yx" = (
-/obj/structure/scenery/rocks,
+"wj" = (
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/watersource)
-"yP" = (
+"wr" = (
+/obj/structure/smooth/table/dark,
+/obj/item/weapon/melee/tool/wirecutters,
+/turf/simulated/floor/plating,
+/area/hellscape/interior/supermatter)
+"xU" = (
+/obj/structure/smooth/table/dark,
+/obj/item/weapon/melee/toolbox/blue,
+/turf/simulated/floor/plating,
+/area/hellscape/interior/supermatter)
+"zH" = (
+/obj/structure/smooth/table/dark,
+/obj/structure/interactive/computer/console/laptop,
+/turf/simulated/floor/plating,
+/area/hellscape/interior/supermatter)
+"Fj" = (
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/hellscape/interior/supermatter)
+"JA" = (
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/hellscape/interior/caves/watersource)
+"Qg" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/hellscape/interior/supermatter)
-"Ck" = (
-/obj/marker/spawning/window/reinforced,
+"Qo" = (
+/obj/structure/smooth/table/dark,
+/obj/item/weapon/melee/toolbox/red,
 /turf/simulated/floor/plating,
 /area/hellscape/interior/supermatter)
-"CI" = (
+"RM" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
@@ -4448,43 +4467,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/hellscape/interior/supermatter)
-"Ek" = (
-/obj/structure/smooth/table/dark,
-/obj/item/weapon/melee/toolbox/blue,
-/turf/simulated/floor/plating,
-/area/hellscape/interior/supermatter)
-"FG" = (
+"RZ" = (
 /obj/structure/interactive/emitter{
 	dir = 8;
 	icon_state = "emitter"
 	},
 /turf/simulated/floor/plating,
 /area/hellscape/interior/supermatter)
-"NR" = (
-/turf/simulated/floor/plating,
-/area/hellscape/interior/caves/watersource)
-"Ss" = (
+"Vp" = (
 /obj/structure/interactive/emitter{
 	dir = 1;
 	icon_state = "emitter"
 	},
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/supermatter)
-"Wi" = (
-/obj/structure/smooth/table/dark,
-/obj/item/weapon/melee/toolbox/red,
+"WJ" = (
+/obj/structure/scenery/rocks,
 /turf/simulated/floor/plating,
-/area/hellscape/interior/supermatter)
-"Xw" = (
-/obj/structure/smooth/table/dark,
-/obj/item/weapon/melee/tool/wirecutters,
-/turf/simulated/floor/plating,
-/area/hellscape/interior/supermatter)
-"Zd" = (
-/obj/structure/smooth/table/dark,
-/obj/structure/interactive/computer/console/laptop,
-/turf/simulated/floor/plating,
-/area/hellscape/interior/supermatter)
+/area/hellscape/interior/caves/watersource)
 
 (1,1,1) = {"
 ja
@@ -36050,7 +36050,7 @@ eU
 eU
 eU
 eU
-eU
+fv
 cj
 ar
 cd
@@ -36306,7 +36306,7 @@ eU
 ar
 eU
 hq
-fv
+eU
 eU
 ar
 eU
@@ -36556,8 +36556,8 @@ cd
 eU
 eU
 hq
-eU
 fv
+eU
 eU
 eU
 eU
@@ -37073,11 +37073,11 @@ ar
 eU
 rb
 rb
-Zd
-Ek
-CI
-Xw
-Wi
+zH
+xU
+RM
+wr
+Qo
 rb
 rb
 eU
@@ -37580,11 +37580,11 @@ aq
 aq
 aq
 eU
-xm
-NR
-NR
-NR
-ws
+vu
+wj
+wj
+wj
+JA
 rb
 rm
 rm
@@ -37594,11 +37594,11 @@ rm
 rm
 rm
 rb
-ws
-NR
-NR
-NR
-xm
+JA
+wj
+wj
+wj
+vu
 eU
 eU
 aq
@@ -37837,7 +37837,7 @@ aq
 aq
 aq
 eU
-NR
+wj
 rb
 rb
 rb
@@ -37845,9 +37845,9 @@ rh
 rb
 rk
 rb
-Ck
-Ck
-Ck
+Fj
+Fj
+Fj
 rb
 rk
 rb
@@ -37855,7 +37855,7 @@ ro
 rd
 rd
 rd
-NR
+wj
 eU
 aq
 aq
@@ -38094,7 +38094,7 @@ aq
 aq
 aq
 aq
-NR
+wj
 rb
 re
 re
@@ -38112,7 +38112,7 @@ rg
 re
 re
 rb
-yx
+WJ
 aq
 aq
 aq
@@ -39910,7 +39910,7 @@ re
 re
 rg
 re
-Ss
+Vp
 rb
 aq
 aq
@@ -41443,9 +41443,9 @@ rh
 rb
 rk
 rb
-Ck
-Ck
-Ck
+Fj
+Fj
+Fj
 rb
 rk
 rb
@@ -41958,7 +41958,7 @@ rb
 rm
 rm
 rm
-FG
+RZ
 rm
 rm
 rm
@@ -42215,7 +42215,7 @@ rb
 rb
 rm
 rm
-yP
+Qg
 rm
 rm
 rb
