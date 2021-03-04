@@ -240,11 +240,12 @@
 /ai/proc/on_move(var/success,var/atom/NewLoc,Dir=0)
 
 	if(!success)
-		frustration_move++
+		frustration_move += 1
 		if(length(current_path))
 			frustration_path++
 		if(frustration_move >= frustration_move_threshold)
 			sidestep_next = TRUE
+			frustration_move = 0
 
 	return TRUE
 

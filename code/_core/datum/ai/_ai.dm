@@ -40,13 +40,13 @@
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
 	var/frustration_attack = 0
-	var/frustration_attack_threshold = 4 //Above this means they'll try to find a new target.
+	var/frustration_attack_threshold = SECONDS_TO_TICKS(6) //Above this means they'll try to find a new target. THIS IS MEASURED IN TICKS.
 
 	var/frustration_move = 0
-	var/frustration_move_threshold = 4 //Above this means they'll try to alter their movement.
+	var/frustration_move_threshold = 5 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/frustration_path = 0
-	var/frustration_path_threshold = 10 //Above this means they'll try to find a new path.
+	var/frustration_path_threshold = 20 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/turf/path_start_turf
 	var/turf/path_end_turf
