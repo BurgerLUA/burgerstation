@@ -14,19 +14,21 @@
 	if(A in attackers)
 		return 100
 
-	var/distance
+	var/true_distance = get_dist(owner,A)
+	if(true_distance <= 1)
+		return 100
 
+	var/vision_distance = true_distance
 	if(objective_attack)
-		distance = get_dist(objective_attack,A)
-	else
-		distance = get_dist(owner,A)
-		if(distance <= 1)
-			return 100
+		vision_distance = get_dist(objective_attack,A) //Objective attack is the central focus point.
 
-	if(distance > radius_find_enemy_combat)
+	if(true_distance > radius_find_enemy_combat)
 		return 0
 
-	switch(distance)
+	if(vision_distance > radius_find_enemy_combat)
+		return 0
+
+	switch(vision_distance)
 		if(1 to VIEW_RANGE*0.75)
 			. = 100
 		if(VIEW_RANGE*0.75 to VIEW_RANGE+ZOOM_RANGE)
