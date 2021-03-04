@@ -2,8 +2,7 @@
 	name = "specific item type bags"
 	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
-
-	value = 20
+	value = -1
 
 /obj/item/storage/bags/click_on_object(var/mob/caller as mob, var/atom/object, location, contmrol, params)
 
@@ -43,6 +42,8 @@
 		/obj/item/seed,
 		/obj/item/container/food/plant
 	)
+
+	value = 30
 
 /obj/item/storage/bags/botany/processor
 	name = "botany seed processing bag"
@@ -124,6 +125,8 @@
 	container_max_size = SIZE_4
 	container_max_slots = 30
 
+	value = 100
+
 
 /obj/item/storage/bags/chemistry
 	name = "chemistry bag"
@@ -139,8 +142,7 @@
 		/obj/item/container/syringe
 	)
 
-/obj/item/storage/bags/chemistry/filled/fill_inventory()
-
+	value = 30
 
 /obj/item/storage/pillbottle
 	name = "pill bottle"
