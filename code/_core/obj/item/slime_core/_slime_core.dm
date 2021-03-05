@@ -46,6 +46,7 @@
 
 /obj/item/slime_core/custom
 	name = "custom slime core"
+	desc_extended = "Can change into any color. Alt-clicking other items copies the color instead."
 	value = 1000
 	alpha = 255
 
