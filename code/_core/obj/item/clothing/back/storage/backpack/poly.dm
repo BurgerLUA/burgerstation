@@ -1,5 +1,6 @@
 /obj/item/clothing/back/storage/backpack/poly
 	icon = 'icons/obj/item/clothing/back/backpack/poly.dmi'
+	dyeable = TRUE
 	polymorphs = list(
 		"body" = COLOR_WHITE,
 		"straps" = COLOR_WHITE,

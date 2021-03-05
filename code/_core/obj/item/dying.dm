@@ -15,14 +15,29 @@
 		return FALSE
 
 	var/choice
-
+	var/mob/E = caller
 	if(length(polymorphs))
+		if(E.attack_flags & CONTROL_MOD_ALT && D.type == /obj/item/slime_core/custom)
+			choice = input("What do you want to copy?","Dye Selection") as null|anything in polymorphs
+			if(choice)
+				INTERACT_CHECK_NO_DELAY(src)
+				INTERACT_CHECK_NO_DELAY(D)
+				D.color = polymorphs[choice]
+				caller.to_chat(span("notice","You copy \the color from \the [src.name]."))
+				return TRUE
+			else return FALSE
 		choice = input("What do you want to dye?","Dye Selection") as null|anything in polymorphs
 		if(choice)
 			INTERACT_CHECK_NO_DELAY(src)
 			INTERACT_CHECK_NO_DELAY(D)
 			polymorphs[choice] = blend_colors(polymorphs[choice] ? polymorphs[choice] : "#FFFFFF",dye_color,dye_strength)
 	else
+		if(E.attack_flags & CONTROL_MOD_ALT && D.type == /obj/item/slime_core/custom)
+			INTERACT_CHECK_NO_DELAY(src)
+			INTERACT_CHECK_NO_DELAY(D)
+			D.color = color
+			caller.to_chat(span("notice","You copy \the color from \the [src.name]."))
+			return TRUE
 		choice = input("Are you sure you want to dye \the [src.name]?","Dye Selection") as null|anything in list("Yes","No","Cancel")
 		if(choice == "Yes")
 			INTERACT_CHECK_NO_DELAY(src)
