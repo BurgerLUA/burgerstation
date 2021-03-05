@@ -33,15 +33,9 @@
 	if(is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(L.iff_tag == iff_tag)
-			var/list/params = list()
-			params[PARAM_ICON_X] = shoot_x
-			params[PARAM_ICON_Y] = shoot_y
-			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,FALSE,FALSE)
-			if(ismovable(object_to_damage))
-				var/atom/movable/M = object_to_damage
-				if(M.reagents)
-					M.reagents.add_reagent(reagent_to_add,volume_to_add,caller=owner)
-				return TRUE
+			if(L.reagents)
+				L.reagents.add_reagent(reagent_to_add,volume_to_add,caller=owner)
+			return TRUE
 
 	return ..()
 
