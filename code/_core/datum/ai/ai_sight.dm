@@ -28,8 +28,10 @@
 	if(vision_distance > radius_find_enemy_combat)
 		return 0
 
+	. = 100
+
 	switch(vision_distance)
-		if(1 to VIEW_RANGE*0.75)
+		if(-INFINITY to VIEW_RANGE*0.75)
 			. = 100
 		if(VIEW_RANGE*0.75 to VIEW_RANGE+ZOOM_RANGE)
 			. = 50
@@ -55,5 +57,8 @@
 			final_night_vision *= 2
 			atom_alpha *= 2
 
-	. *= clamp(atom_alpha/255,0,1) * (lightness/final_night_vision)
+	if(final_night_vision <= 0)
+		. = 0
+	else
+		. *= clamp(atom_alpha/255,0,1) * (lightness/final_night_vision)
 
