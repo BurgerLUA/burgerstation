@@ -37,30 +37,23 @@
 			. = 10
 
 	var/turf/T = get_turf(A)
-	var/lightness = min(T.lightness/night_vision,1)
+	var/lightness = T.lightness
 	if(ismovable(A))
 		var/atom/movable/M = A
 		if(length(M.light_sprite_sources))
 			lightness = 3
-
+	var/final_night_vision = night_vision
 	var/atom_alpha = A.alpha
 	switch(alert_level)
 		if(ALERT_LEVEL_COMBAT)
-			atom_alpha += 50
-			atom_alpha *= 2
-			lightness *= 2
+			final_night_vision *= 4
+			atom_alpha *= 4
 		if(ALERT_LEVEL_CAUTION)
-			atom_alpha += 25
-			atom_alpha *= 1.5
-			lightness *= 1.5
+			final_night_vision *= 3
+			atom_alpha *= 3
 		if(ALERT_LEVEL_NOISE)
-			atom_alpha += 10
-			atom_alpha *= 1.25
-			lightness *= 1.25
+			final_night_vision *= 2
+			atom_alpha *= 2
 
-	if(A == objective_attack)
-		atom_alpha += 50
-		atom_alpha *= 2
-
-	. *= clamp(atom_alpha/255,0,1) * lightness
+	. *= clamp(atom_alpha/255,0,1) * (lightness/final_night_vision)
 
