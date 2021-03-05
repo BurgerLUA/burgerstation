@@ -51,14 +51,10 @@
 /obj/item/weapon/ranged/energy/captain/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/captain/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-
-
-	if(istype(object,/obj/item/))
-
+	if(is_item(object))
 		var/obj/item/I = object
-
 		if(I.flags_tool & FLAG_TOOL_CROWBAR)
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
@@ -67,4 +63,6 @@
 				caller.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
 			else
 				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
-			return
+			return TRUE
+
+	. = ..()

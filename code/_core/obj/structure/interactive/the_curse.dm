@@ -26,7 +26,7 @@
 
 	anchored = FALSE
 
-	value = 10000
+	value = 0
 
 	size = SIZE_BOSS
 
