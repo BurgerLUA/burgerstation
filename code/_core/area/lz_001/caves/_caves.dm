@@ -66,11 +66,34 @@
 
 	tracks = null
 
+	cheese_type = /reagent/nutrition/cheese/oasis
+
 /area/lz_001/caves/desert_cave
 	name = "Sandraider's Cave"
 	icon_state = "desert_cave"
 
 	tracks = null
+
+	cheese_type = /reagent/nutrition/cheese/kadchgall
+
+/area/lz_001/caves/desert_oasis
+	name = "Sandraider's Oasis"
+	icon_state = "glow_cave"
+
+	tracks = null
+
+	cheese_type = /reagent/nutrition/cheese/oasis
+
+/area/lz_001/caves/east_ocean
+	name = "Eastern Ocean"
+	icon_state = "lagoon"
+
+	sunlight_freq = 8
+	sunlight_color ="#8CB08F"
+
+	tracks = null
+
+	cheese_type = /reagent/nutrition/cheese/oasis
 
 /area/lz_001/caves/lagoon
 	name = "Pirate's Lagoon"
@@ -81,6 +104,8 @@
 
 	tracks = null
 
+	cheese_type = /reagent/nutrition/cheese/oasis
+
 /area/lz_001/caves/lagoon/ship
 	name = "Captain Condom's Ship"
 	icon_state = "ship"
@@ -89,6 +114,8 @@
 	sunlight_color ="#8CB08F"
 
 	tracks = null
+
+	cheese_type = /reagent/nutrition/cheese/oasis
 
 /area/lz_001/caves/knight/
 	name = "Knight's Landing"

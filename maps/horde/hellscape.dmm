@@ -130,22 +130,22 @@
 /area/hellscape/interior/syndicate/canman)
 "aJ" = (
 /obj/structure/shuttle_engine/burst/right{
-	icon_state = "burst_r";
-	dir = 1
+	dir = 1;
+	icon_state = "burst_r"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
 "aK" = (
 /obj/structure/shuttle_engine/propulsion{
-	icon_state = "propulsion";
-	dir = 1
+	dir = 1;
+	icon_state = "propulsion"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
 "aL" = (
 /obj/structure/shuttle_engine/burst/left{
-	icon_state = "burst_l";
-	dir = 1
+	dir = 1;
+	icon_state = "burst_l"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
@@ -232,24 +232,21 @@
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
-"bg" = (
-/turf/simulated/floor/colored/sand/beach,
-/area/hellscape/interior/caves/watersource)
 "bh" = (
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "bi" = (
 /obj/structure/scenery/jungle_grass,
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "bj" = (
 /obj/structure/interactive/fence,
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "bk" = (
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "bl" = (
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 8
@@ -279,7 +276,7 @@
 /area/hellscape/interior/rev)
 "bq" = (
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "br" = (
 /obj/structure/scenery/grass,
 /turf/simulated/floor/grass/jungle,
@@ -409,7 +406,7 @@
 "bW" = (
 /obj/structure/scenery/jungle_grass,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "bX" = (
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
 	dir = 1
@@ -424,18 +421,18 @@
 /obj/structure/scenery/jungle_rock,
 /obj/item/container/beaker/bottle/large/mana_potion,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "ca" = (
 /obj/structure/interactive/fence,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cb" = (
 /turf/simulated/floor/basalt,
 /area/hellscape/exterior/death_plains)
 "cc" = (
 /obj/structure/scenery/jungle_rock,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cd" = (
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/watersource)
@@ -466,20 +463,20 @@
 /area/hellscape/interior/caves/ashwalker_village)
 "cm" = (
 /mob/living/advanced/npc/ashwalker/warrior{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "cn" = (
 /obj/structure/scenery/jungle_rock,
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "co" = (
 /obj/structure/scenery/jungle_rock,
 /obj/item/weapon/ranged/magic/tome/missile,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cp" = (
 /obj/structure/scenery/grass,
 /obj/structure/scenery/grass,
@@ -515,7 +512,7 @@
 /obj/item/clothing/head/hat/wizard/gold,
 /obj/item/clothing/overwear/coat/wizard,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cx" = (
 /turf/simulated/wall/rock/basalt,
 /area/hellscape/interior/caves/hive)
@@ -526,7 +523,7 @@
 "cz" = (
 /mob/living/simple/crab,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cA" = (
 /turf/simulated/wall/dark/shuttle,
 /area/hellscape/interior/caves/crash)
@@ -541,7 +538,7 @@
 /obj/structure/interactive/fence,
 /obj/structure/scenery/jungle_grass,
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cE" = (
 /obj/structure/interactive/tree/jungle_large,
 /obj/structure/scenery/grass,
@@ -553,8 +550,8 @@
 /area/hellscape/exterior/jungle/north)
 "cG" = (
 /mob/living/advanced/npc/deathsquad/heavy{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/hellscape/interior/caves/watersource)
@@ -569,7 +566,7 @@
 "cJ" = (
 /obj/marker/lobby,
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "cK" = (
 /mob/living/simple/venus_human_trap,
 /turf/simulated/floor/grass/jungle,
@@ -870,8 +867,8 @@
 /area/hellscape/exterior/jungle/north)
 "dU" = (
 /mob/living/advanced/npc/deathsquad/medium{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/watersource)
@@ -999,7 +996,7 @@
 "ey" = (
 /obj/marker/map_node,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "ez" = (
 /obj/structure/scenery/rocks,
 /obj/marker/map_node,
@@ -1138,8 +1135,8 @@
 /area/hellscape/interior/syndicate/aux)
 "fd" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 8
+	dir = 8;
+	icon_state = ""
 	},
 /turf/simulated/wall/dark,
 /area/hellscape/interior/syndicate/aux)
@@ -1179,7 +1176,7 @@
 "fm" = (
 /mob/living/simple/spacecarp,
 /turf/simulated/hazard/water,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "fn" = (
 /turf/simulated/floor/colored/ash/dark{
 	icon_state = "ash_rocky"
@@ -1234,8 +1231,8 @@
 /area/hellscape/interior/caves/broodmother)
 "fz" = (
 /mob/living/advanced/npc/ashwalker/assassin{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/colored/ash/necro,
 /area/hellscape/interior/caves/ashwalker_village)
@@ -1273,7 +1270,7 @@
 "fG" = (
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "fH" = (
 /obj/item/container/beaker/bottle/large/water,
 /turf/simulated/floor/basalt,
@@ -1371,15 +1368,15 @@
 /area/hellscape/interior/caves/ashwalker_village)
 "gc" = (
 /mob/living/advanced/npc/ashwalker/assassin{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "gd" = (
 /mob/living/advanced/npc/ashwalker/assassin{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/colored/ash/necro,
 /area/hellscape/interior/caves/ashwalker_village)
@@ -1508,8 +1505,8 @@
 /area/hellscape/interior/syndicate/aux)
 "gI" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 8
+	dir = 8;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/hellscape/interior/syndicate/aux)
@@ -1601,7 +1598,7 @@
 "he" = (
 /obj/marker/spawning/random/object_of_interest,
 /turf/simulated/floor/colored/dirt/jungle,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "hf" = (
 /obj/structure/interactive/fountain,
 /turf/simulated/floor/basalt,
@@ -1609,7 +1606,7 @@
 "hg" = (
 /obj/marker/lobby,
 /turf/simulated/floor/colored/dirt/jungle,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "hh" = (
 /obj/marker/map_node,
 /turf/simulated/floor/colored/sand/beach,
@@ -1617,7 +1614,7 @@
 "hi" = (
 /mob/living/simple/spacecarp,
 /turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "hj" = (
 /obj/structure/scenery/jungle_rock,
 /turf/simulated/floor/colored/dirt/soil,
@@ -1659,15 +1656,15 @@
 /area/hellscape/interior/caves/watersource)
 "hr" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 1
+	dir = 1;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/hellscape/interior/syndicate/aux)
 "hs" = (
 /obj/marker/map_node,
 /turf/simulated/floor/colored/sand/beach,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/cave_river)
 "ht" = (
 /obj/structure/interactive/door/airlock/station/dark,
 /turf/simulated/floor/tile/dark,
@@ -1745,8 +1742,8 @@
 /area/hellscape/interior/caves/broodmother)
 "hJ" = (
 /mob/living/advanced/npc/ashwalker/assassin{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
@@ -1786,8 +1783,8 @@
 /area/hellscape/interior/syndicate/aux)
 "hR" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 4
+	dir = 4;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/hellscape/interior/syndicate/aux)
@@ -1833,8 +1830,8 @@
 /area/hellscape/interior/pirate_landing)
 "ib" = (
 /mob/living/advanced/npc/pirate_crew/ranged{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
@@ -1871,8 +1868,8 @@
 /area/hellscape/exterior/jungle/north)
 "ii" = (
 /mob/living/advanced/npc/pirate_crew/magic{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/dock,
 /area/hellscape/interior/pirate_landing)
@@ -1898,15 +1895,15 @@
 /area/hellscape/interior/pirate_landing)
 "io" = (
 /mob/living/advanced/npc/unique/pirate_mate{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
 "ip" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
@@ -1920,8 +1917,8 @@
 /area/hellscape/interior/pirate_landing)
 "is" = (
 /mob/living/advanced/npc/unique/pirate_captain{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/hellscape/interior/pirate_landing)
@@ -2097,8 +2094,8 @@
 /area/hellscape/interior/caves/lava_lake)
 "jf" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 1
+	dir = 1;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/hellscape/interior/syndicate)
@@ -2134,8 +2131,8 @@
 /area/hellscape/exterior/jungle/south)
 "jn" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 4
+	dir = 4;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/hellscape/interior/syndicate)
@@ -2210,8 +2207,8 @@
 /area/hellscape/interior/caves/hellchamber)
 "jE" = (
 /obj/structure/interactive/computer/console/remote_flight/charlie{
-	icon_state = "computer";
-	dir = 8
+	dir = 8;
+	icon_state = "computer"
 	},
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/hellchamber)
@@ -2243,8 +2240,8 @@
 /area/hellscape/exterior/jungle/south)
 "jJ" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 8
+	dir = 8;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/hellscape/interior/syndicate)
@@ -2443,8 +2440,8 @@
 /area/hellscape/exterior/jungle/south)
 "kA" = (
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
@@ -2529,8 +2526,8 @@
 /area/hellscape/interior/caves/watersource)
 "kR" = (
 /mob/living/advanced/npc/syndicate/double{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
@@ -2548,8 +2545,8 @@
 /area/hellscape/interior/syndicate)
 "kU" = (
 /obj/decal/hazard/black/corner{
-	icon_state = "corner";
-	dir = 1
+	dir = 1;
+	icon_state = "corner"
 	},
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
@@ -2568,22 +2565,22 @@
 /area/hellscape/interior/caves/watersource)
 "kX" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "kY" = (
 /mob/living/simple/turret/syndicate{
-	icon_state = "active";
-	dir = 4
+	dir = 4;
+	icon_state = "active"
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "kZ" = (
 /mob/living/simple/turret/syndicate{
-	icon_state = "active";
-	dir = 8
+	dir = 8;
+	icon_state = "active"
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
@@ -2605,53 +2602,53 @@
 /area/hellscape/exterior/jungle/south)
 "ld" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 1
+	dir = 1;
+	icon_state = "line"
 	},
 /obj/structure/interactive/atmospherics/fan,
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "le" = (
 /obj/decal/hazard/black/corner{
-	icon_state = "corner";
-	dir = 4
+	dir = 4;
+	icon_state = "corner"
 	},
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "lf" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "lg" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /mob/living/advanced/npc/syndicate/double{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/dark/er,
 /area/hellscape/interior/syndicate)
 "lh" = (
 /mob/living/advanced/npc/syndicate/triple{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
 "li" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /mob/living/advanced/npc/syndicate/double{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
@@ -2827,8 +2824,8 @@
 /area/hellscape/interior/syndicate)
 "lT" = (
 /mob/living/advanced/npc/syndicate/triple{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/hellscape/interior/syndicate)
@@ -3020,11 +3017,12 @@
 /turf/simulated/hazard/water/sea,
 /area/hellscape/exterior/jungle/south)
 "mJ" = (
-/turf/simulated/floor/colored/sand/underwater,
-/area/hellscape/exterior/jungle/south)
+/obj/structure/scenery/grass,
+/turf/simulated/floor/colored/dirt/jungle,
+/area/hellscape/interior/caves/cave_river)
 "mK" = (
-/turf/simulated/floor/colored/sand/beach,
-/area/hellscape/exterior/jungle/south)
+/turf/simulated/floor/colored/dirt/jungle,
+/area/hellscape/interior/caves/cave_river)
 "mL" = (
 /obj/structure/interactive/ore_box,
 /turf/simulated/floor/cave_dirt,
@@ -3202,7 +3200,7 @@
 "ny" = (
 /obj/structure/interactive/ore_box,
 /turf/simulated/floor/colored/dirt/jungle,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/puddle)
 "nz" = (
 /obj/marker/objective_spawn,
 /turf/simulated/floor/cave_dirt,
@@ -3314,7 +3312,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/colored/dirt/cave,
-/area/hellscape/interior/caves/watersource)
+/area/hellscape/interior/caves/puddle)
 "nX" = (
 /obj/structure/interactive/lighting/bonfire/on,
 /turf/simulated/floor/colored/dirt/cave,
@@ -3565,7 +3563,7 @@
 /area/hellscape/interior/caves/ashwalker_village)
 "oU" = (
 /turf/simulated/floor/colored/sand/beach,
-/area/hellscape/interior/caves/ashwalker_village)
+/area/hellscape/interior/caves/cave_river)
 "oV" = (
 /turf/simulated/wall/rock/moss,
 /area/hellscape/interior/caves/ashwalker_village)
@@ -3785,15 +3783,15 @@
 /area/hellscape/interior/caves/ancient)
 "pP" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/pirate_landing)
 "pQ" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/colored/sand/beach,
 /area/hellscape/interior/pirate_landing)
@@ -4035,8 +4033,8 @@
 /area/hellscape/interior/caves/watersource)
 "qT" = (
 /obj/decal/poster/syndicate{
-	icon_state = "";
-	dir = 4
+	dir = 4;
+	icon_state = ""
 	},
 /turf/simulated/wall/dark,
 /area/hellscape/interior/syndicate/aux)
@@ -4137,8 +4135,8 @@
 	dir = 8
 	},
 /obj/structure/interactive/emitter{
-	icon_state = "emitter";
-	dir = 8
+	dir = 8;
+	icon_state = "emitter"
 	},
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/supermatter)
@@ -4148,8 +4146,8 @@
 /area/hellscape/interior/caves/watersource)
 "rs" = (
 /obj/structure/interactive/computer/console/remote_flight/delta{
-	icon_state = "computer";
-	dir = 4
+	dir = 4;
+	icon_state = "computer"
 	},
 /turf/simulated/floor/plating,
 /area/hellscape/interior/caves/hellchamber)
@@ -4175,8 +4173,8 @@
 /area/hellscape/exterior/jungle/south)
 "ry" = (
 /obj/structure/interactive/emitter{
-	icon_state = "emitter";
-	dir = 1
+	dir = 1;
+	icon_state = "emitter"
 	},
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/supermatter)
@@ -4387,6 +4385,27 @@
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
+"ue" = (
+/obj/structure/scenery/jungle_rock,
+/turf/simulated/floor/colored/dirt/jungle,
+/area/hellscape/interior/caves/cave_river)
+"wj" = (
+/turf/simulated/floor/colored/dirt/jungle,
+/area/hellscape/interior/caves/puddle)
+"HH" = (
+/obj/structure/scenery/grass,
+/turf/simulated/floor/colored/dirt/jungle,
+/area/hellscape/interior/caves/puddle)
+"OL" = (
+/turf/simulated/hazard/water,
+/area/hellscape/interior/caves/puddle)
+"Pt" = (
+/turf/simulated/floor/colored/dirt/cave,
+/area/hellscape/interior/caves/puddle)
+"QV" = (
+/obj/structure/scenery/jungle_rock,
+/turf/simulated/hazard/water,
+/area/hellscape/interior/caves/puddle)
 
 (1,1,1) = {"
 ja
@@ -7635,7 +7654,7 @@ av
 bn
 bn
 bn
-bn
+ft
 bd
 bh
 bh
@@ -9177,7 +9196,7 @@ av
 nd
 bn
 bn
-bn
+ft
 bd
 bq
 bq
@@ -9435,7 +9454,7 @@ av
 oV
 oV
 bd
-bg
+oU
 bq
 bq
 bq
@@ -9691,9 +9710,9 @@ av
 nd
 oU
 oU
-bg
-bg
-bg
+oU
+oU
+oU
 bq
 bq
 bq
@@ -9948,9 +9967,9 @@ nd
 oU
 oU
 oU
-bg
-bg
-bg
+oU
+oU
+oU
 bq
 bq
 bq
@@ -10721,7 +10740,7 @@ bn
 bn
 bn
 bn
-bn
+ft
 bd
 bq
 bh
@@ -10978,7 +10997,7 @@ bn
 bn
 bn
 bn
-bn
+ft
 bd
 ca
 bj
@@ -11235,7 +11254,7 @@ bn
 bn
 bn
 bn
-bn
+ft
 bd
 cc
 bq
@@ -11492,8 +11511,8 @@ bn
 bn
 bn
 bn
-bn
-bn
+ft
+ft
 bd
 bq
 bh
@@ -11749,8 +11768,8 @@ bn
 bn
 bn
 bn
-bn
-bn
+ft
+ft
 bd
 bq
 cz
@@ -12006,8 +12025,8 @@ bn
 bn
 bn
 bn
-bn
-bn
+ft
+ft
 bd
 bq
 bq
@@ -12263,15 +12282,15 @@ bn
 bn
 bn
 bn
-bn
-bn
-bn
+ft
+ft
+ft
 bd
 bq
 bh
 bq
 bq
-bg
+oU
 bd
 cd
 ar
@@ -12520,16 +12539,16 @@ bn
 bn
 bn
 bn
-bn
-bn
-bn
+ft
+ft
+ft
 bd
 bq
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -12777,16 +12796,16 @@ bn
 bn
 bn
 bn
-bn
-bn
-bn
+ft
+ft
+ft
 bd
-bg
+oU
 bq
 cz
 bq
 bq
-bg
+oU
 cd
 cd
 eB
@@ -13034,17 +13053,17 @@ cl
 bn
 bn
 bn
-bn
-bn
-bn
-bn
+ft
+ft
+ft
+ft
 bd
 bi
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -13291,17 +13310,17 @@ bv
 bv
 gW
 gW
-bn
-bn
-bn
-bn
-bn
-bg
+ft
+ft
+ft
+ft
+ft
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -13549,17 +13568,17 @@ bv
 gW
 gW
 ar
-bn
-bn
-bn
-bn
-bn
+ft
+ft
+ft
+ft
+ft
 bq
 bq
 bq
 bq
 bW
-bg
+oU
 cd
 cd
 ar
@@ -13810,14 +13829,14 @@ ar
 ar
 cd
 cd
-bg
+oU
 bW
 bq
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -14068,13 +14087,13 @@ cd
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 cd
@@ -14325,14 +14344,14 @@ ar
 ar
 ar
 cd
-bg
+oU
 bq
 bq
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 cd
@@ -14583,13 +14602,13 @@ ar
 cd
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -14841,12 +14860,12 @@ cB
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 ey
 bq
-bg
+oU
 cd
 cd
 ar
@@ -15098,13 +15117,13 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 cc
 bq
 bq
-bg
+oU
 eO
 cd
 ar
@@ -15356,12 +15375,12 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 cd
@@ -15614,12 +15633,12 @@ ar
 cd
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -15872,12 +15891,12 @@ ar
 cd
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bW
-bg
+oU
 cd
 cd
 ar
@@ -16129,12 +16148,12 @@ bE
 cd
 ar
 cd
-bg
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -16387,12 +16406,12 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -16401,11 +16420,11 @@ cd
 cd
 cd
 cd
-bg
-bg
-bg
-bg
-bg
+oU
+oU
+oU
+oU
+oU
 cd
 cd
 cd
@@ -16644,26 +16663,26 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 cd
 cd
 cd
-bg
-bg
-bg
+oU
+oU
+oU
 bW
 bq
 bq
 bW
 bq
-bg
+oU
 cd
 cd
 cd
@@ -16902,16 +16921,16 @@ cd
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
-bg
-bg
+oU
+oU
 bq
 bq
 bq
@@ -16921,7 +16940,7 @@ bh
 bh
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -17159,14 +17178,14 @@ cd
 ar
 ar
 cd
-bg
+oU
 bq
 bq
 bq
 bq
 bq
-bg
-bg
+oU
+oU
 bq
 bq
 bq
@@ -17178,7 +17197,7 @@ bh
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 cd
@@ -17417,7 +17436,7 @@ ar
 ar
 ar
 cd
-bg
+oU
 bq
 bq
 bq
@@ -17436,7 +17455,7 @@ bh
 bh
 bq
 bq
-bg
+oU
 cd
 cd
 cd
@@ -17674,7 +17693,7 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
@@ -17693,7 +17712,7 @@ bh
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 ar
@@ -17932,7 +17951,7 @@ ar
 ar
 ar
 cd
-bg
+oU
 bq
 bq
 bq
@@ -17951,7 +17970,7 @@ bh
 bh
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -18190,7 +18209,7 @@ cd
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bh
@@ -18208,7 +18227,7 @@ bh
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 cB
@@ -18447,7 +18466,7 @@ ar
 cd
 ar
 cd
-bg
+oU
 bq
 bq
 bh
@@ -18466,7 +18485,7 @@ bh
 bh
 bq
 bW
-bg
+oU
 cd
 cd
 ar
@@ -18705,7 +18724,7 @@ ar
 cd
 cd
 cd
-bg
+oU
 bq
 bh
 bh
@@ -18723,7 +18742,7 @@ bh
 bh
 bq
 bq
-bg
+oU
 cd
 cd
 cd
@@ -18962,7 +18981,7 @@ ar
 ar
 ar
 cd
-bg
+oU
 bq
 bq
 bh
@@ -18981,7 +19000,7 @@ bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -19220,7 +19239,7 @@ cd
 ar
 cd
 cd
-bg
+oU
 bq
 bh
 bh
@@ -19229,7 +19248,7 @@ bh
 bh
 bh
 bh
-bg
+oU
 bh
 bh
 bh
@@ -19238,7 +19257,7 @@ bq
 bq
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -19477,7 +19496,7 @@ ar
 cd
 ar
 cd
-bg
+oU
 bq
 bh
 bh
@@ -19486,16 +19505,16 @@ bh
 bh
 bh
 bh
-cd
-gj
+mK
+mJ
 bh
-bg
+oU
 bq
 bq
 bq
 bh
 bq
-bg
+oU
 cd
 cd
 cd
@@ -19734,25 +19753,25 @@ ar
 ar
 ar
 cd
-bg
+oU
 bq
 bh
 bh
 bh
 bh
 bq
-bg
-gj
-eO
+oU
+mJ
+ue
 he
-cd
-bg
+mK
+oU
 bq
 bq
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 ar
@@ -19797,10 +19816,10 @@ aq
 aq
 aq
 aq
-cd
-cd
-cd
-eU
+wj
+wj
+wj
+Pt
 eU
 eU
 ar
@@ -19991,7 +20010,7 @@ ar
 cd
 ar
 cd
-bg
+oU
 cc
 bq
 bh
@@ -20000,17 +20019,17 @@ bq
 bq
 bh
 bh
-gj
+mJ
 hg
-gj
-bg
+mJ
+oU
 bh
 bh
 bh
 bh
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -20054,11 +20073,11 @@ aq
 aq
 aq
 ny
-gj
-bh
-bh
-cd
-eU
+HH
+OL
+OL
+wj
+Pt
 eU
 eU
 ar
@@ -20249,7 +20268,7 @@ ar
 cd
 cd
 cd
-bg
+oU
 bq
 bq
 bq
@@ -20258,7 +20277,7 @@ fm
 bh
 bi
 bh
-cd
+mK
 bh
 bh
 bh
@@ -20267,7 +20286,7 @@ bh
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 ar
@@ -20309,13 +20328,13 @@ cd
 eU
 eU
 cd
-cd
-cd
-bh
-bh
-bh
-bh
-cd
+wj
+wj
+OL
+OL
+OL
+OL
+wj
 hq
 eU
 aq
@@ -20506,7 +20525,7 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bq
@@ -20524,7 +20543,7 @@ bh
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 ar
@@ -20566,13 +20585,13 @@ ar
 ar
 eU
 np
-cd
-bh
-bh
-cn
-bh
-bh
-cd
+wj
+OL
+OL
+QV
+OL
+OL
+wj
 eU
 eU
 aq
@@ -20763,7 +20782,7 @@ cj
 ar
 ar
 cd
-bg
+oU
 bq
 bq
 bh
@@ -20781,7 +20800,7 @@ bh
 bh
 bi
 bq
-bg
+oU
 cd
 cd
 cd
@@ -20823,13 +20842,13 @@ ar
 ar
 eU
 ge
-cd
-bh
-bh
-bh
-bh
-bh
-cd
+wj
+OL
+OL
+OL
+OL
+OL
+wj
 eU
 ar
 aq
@@ -21021,7 +21040,7 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bh
 bh
@@ -21038,7 +21057,7 @@ bh
 bh
 bh
 bq
-bg
+oU
 cd
 cd
 ar
@@ -21080,13 +21099,13 @@ ar
 ar
 eU
 eU
-eU
-cd
-bh
-bh
-bh
-gj
-eU
+Pt
+wj
+OL
+OL
+OL
+HH
+Pt
 eU
 ar
 ar
@@ -21278,7 +21297,7 @@ cd
 ar
 ar
 cd
-bg
+oU
 bW
 bq
 bh
@@ -21295,7 +21314,7 @@ bh
 bh
 fm
 bq
-bg
+oU
 cd
 cd
 ar
@@ -21338,10 +21357,10 @@ ar
 ar
 eU
 eU
-eU
-cd
-cd
-cd
+Pt
+wj
+wj
+wj
 nW
 eU
 ar
@@ -21536,7 +21555,7 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bq
 bh
@@ -21794,7 +21813,7 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bh
 bh
@@ -21809,7 +21828,7 @@ bh
 bh
 bq
 bq
-bg
+oU
 cd
 cd
 ar
@@ -22051,7 +22070,7 @@ cd
 eV
 ar
 cd
-bg
+oU
 bq
 bq
 bh
@@ -22065,7 +22084,7 @@ bh
 bh
 bq
 bq
-bg
+oU
 aq
 aq
 aq
@@ -22309,7 +22328,7 @@ ar
 ar
 cd
 cd
-bg
+oU
 bq
 bh
 bh
@@ -22321,7 +22340,7 @@ bh
 bh
 bq
 bW
-bg
+oU
 aq
 aq
 aq
@@ -22566,7 +22585,7 @@ ar
 cd
 ar
 cd
-bg
+oU
 bq
 bq
 bh
@@ -22577,7 +22596,7 @@ bh
 bh
 bq
 ey
-bg
+oU
 aq
 aq
 aq
@@ -22824,7 +22843,7 @@ cd
 ar
 cd
 cd
-bg
+oU
 bq
 bW
 bq
@@ -22834,7 +22853,7 @@ bh
 bq
 bq
 bq
-bg
+oU
 aq
 aq
 aq
@@ -23082,15 +23101,15 @@ cd
 ar
 cd
 cd
-bg
-bg
+oU
+oU
 bq
 hi
 bq
 bq
 bq
 bW
-bg
+oU
 aq
 aq
 aq
@@ -23341,12 +23360,12 @@ ar
 cd
 cd
 cd
-bg
-bg
-bg
-bg
-bg
-bg
+oU
+oU
+oU
+oU
+oU
+oU
 aq
 aq
 aq
@@ -56023,12 +56042,12 @@ aP
 aP
 bK
 aP
-aP
-aP
-mJ
-mK
-mK
-mK
+oH
+oH
+aD
+gE
+gE
+gE
 jI
 iC
 iC
@@ -56278,15 +56297,15 @@ bK
 aP
 aP
 aP
-aP
-aP
-aP
-aP
-mJ
-mJ
-mK
-mK
-mK
+oH
+oH
+oH
+oH
+aD
+aD
+gE
+gE
+gE
 iq
 be
 be
@@ -56532,16 +56551,16 @@ iC
 aP
 aP
 aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-mJ
-mJ
+oH
+oH
+oH
+oH
+oH
+oH
+oH
+oH
+aD
+aD
 gE
 gE
 gE
@@ -56787,17 +56806,17 @@ iI
 iD
 iC
 iC
-mJ
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
+aD
+oH
+oH
+oH
+oH
+oH
+oH
+oH
+oH
+oH
+oH
 aD
 aD
 aD
@@ -57044,16 +57063,16 @@ iC
 iC
 iD
 iC
-mJ
-mJ
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
+aD
+aD
+oH
+oH
+oH
+oH
+oH
+oH
+oH
+oH
 oH
 oH
 oH
@@ -57301,14 +57320,14 @@ iD
 iD
 iD
 iC
-mK
-mJ
-mJ
-aP
-aP
-aP
-aP
-aP
+gE
+aD
+aD
+oH
+oH
+oH
+oH
+oH
 oH
 oH
 oH
@@ -57558,13 +57577,13 @@ iC
 iC
 iD
 iC
-mK
-mK
-mJ
-mJ
-aP
-aP
-aP
+gE
+gE
+aD
+aD
+oH
+oH
+oH
 oH
 oH
 oH
@@ -57816,10 +57835,10 @@ iC
 iD
 iC
 iD
-mK
-mK
-mJ
-mJ
+gE
+gE
+aD
+aD
 oH
 oH
 oH
@@ -58073,9 +58092,9 @@ iD
 iC
 iC
 iC
-mK
-mK
-mK
+gE
+gE
+gE
 aD
 oH
 oH
@@ -58330,7 +58349,7 @@ iD
 iC
 iD
 iD
-mK
+gE
 gE
 gE
 aD
