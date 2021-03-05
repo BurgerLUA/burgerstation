@@ -115,8 +115,6 @@
 
 	tracks = null
 
-	cheese_type = /reagent/nutrition/cheese/oasis
-
 /area/lz_001/caves/knight/
 	name = "Knight's Landing"
 	icon_state = "day"
