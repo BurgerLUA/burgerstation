@@ -93,7 +93,7 @@
 		var/mob/living/advanced/player/P = owner
 		. = FLOOR(.,1)
 		var/added_funds = P.adjust_currency(.)
-		P.to_chat(span("notice","You've been given a share of [added_funds] credits for selling \the [stored_movable.name]."))
+		P.to_chat(span("notice","You've been given a share of [nice_number(added_funds)] credits for selling \the [stored_movable.name]."))
 
 	qdel(stored_movable)
 	stored_movable = null
