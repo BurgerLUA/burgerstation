@@ -152,9 +152,12 @@
 	return ..()
 
 /atom/movable/Finalize()
-	value = get_base_value()
+	update_value()
 	return ..()
 
+/atom/movable/proc/update_value()
+	value = get_base_value()
+	return TRUE
 
 /atom/movable/Destroy()
 	QDEL_NULL(light_sprite)

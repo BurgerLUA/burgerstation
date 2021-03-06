@@ -206,6 +206,7 @@
 		qdel(src)
 	else
 		update_sprite()
+		update_value()
 
 	return amount_to_add
 
