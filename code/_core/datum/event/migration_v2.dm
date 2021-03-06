@@ -9,12 +9,6 @@
 	occurances_max = 10
 
 	var/list/possible_enemy_types = list(
-		/mob/living/advanced/npc/ashwalker/hunter,
-		/mob/living/advanced/npc/beefman,
-		/mob/living/advanced/npc/pirate_crew/magic,
-		/mob/living/advanced/npc/rev,
-		/mob/living/advanced/npc/sorcerer,
-		/mob/living/advanced/npc/syndicate/quadruple,
 		/mob/living/simple/arachnid,
 		/mob/living/simple/bear/space,
 		/mob/living/simple/bull,
@@ -91,9 +85,10 @@
 		if(!T)
 			break
 		CREATE_SAFE(enemy_type_to_spawn,T)
+		valid_turfs -= T
 
-	return ..()
+	. = ..()
 
 /event/migration/on_end()
 	log_debug("Ending Migration Event")
-	return ..()
+	. = ..()

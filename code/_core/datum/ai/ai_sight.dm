@@ -60,5 +60,5 @@
 	if(final_night_vision <= 0)
 		. = 0
 	else
-		. *= clamp(atom_alpha/255,0,1) * (lightness/final_night_vision)
+		. *= clamp(atom_alpha/255,0,1) * max(final_night_vision,lightness) * 3
 
