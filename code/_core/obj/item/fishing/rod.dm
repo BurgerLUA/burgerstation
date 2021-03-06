@@ -44,6 +44,13 @@
 	LOADATOM("line")
 	LOADATOM("bait")
 	
+/obj/item/fishing/rod/update_value()
+	value = initial(value)
+	if(line) value += line.value
+	if(lure) value += lure.value
+	if(bait) value += bait.value
+	return TRUE
+
 /obj/item/fishing/rod/update_overlays()
 	. = ..()
 	if(line && !compact)
@@ -78,6 +85,7 @@
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
 		I.add_object(object_removed)
+		update_value()
 		return TRUE
 
 	if(is_item(object))
@@ -93,6 +101,7 @@
 			line = P
 			P.drop_item(src)
 			update_sprite()
+			update_value()
 			return TRUE
 
 		if(istype(object,/obj/item/fishing/lure/))
@@ -106,7 +115,7 @@
 
 			lure = P
 			P.drop_item(src)
-
+			update_value()
 			return TRUE
 
 		if(istype(object,/obj/item/fishing/bait/))
@@ -120,7 +129,7 @@
 
 			bait = P
 			P.drop_item(src)
-
+			update_value()
 			return TRUE
 
 	return ..()
@@ -188,8 +197,14 @@
 
 	if(fishing_turf)
 		if(snagged_fish) //Caught something!
+			var/mob/living/C = caller // here comes the luck calc
+			var/lucktotal = clamp((C.get_attribute_level(ATTRIBUTE_LUCK) + (src.luck/2)- 75),1,75)	//base player+rod is 0 unless boosted, item luck affects it by half
+			var/luckroll = rand(0,100)
+			var/luckmod
+			if(luckroll <= lucktotal)
+				luckmod = (rand(1,5)/10)
 			var/score_add = (20/snagged_fish)
-			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish)
+			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish) + luckmod
 			var/loot/L = LOOT(fishing_turf.fishing_rewards)
 			var/list/loot_table = L.loot_table.Copy()
 			for(var/k in loot_table)
