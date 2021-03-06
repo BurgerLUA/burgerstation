@@ -62,9 +62,6 @@
 
 	return TRUE
 
-
-
-
 /client/proc/ban_raw(var/target_ckey as text,var/ban_duration_minutes = -1 as num, var/ban_reason = "No reason given." as message)
 
 	ban_duration_minutes = text2num(ban_duration_minutes)
@@ -176,3 +173,30 @@
 
 	to_chat(span("notice","You brought \the [choice.name] to you."))
 	log_admin("[src] brought [choice] to their location.")
+
+
+/client/verb/apply_fuckup()
+	set name = "Apply Fuckup (DANGER)"
+	set category = "Admin"
+
+	var/list/valid_fuckups = list()
+	for(var/k in SSfuckup.all_fuckups)
+		var/fuckup/FU = k
+		valid_fuckups[FU.name] = FU
+
+	valid_fuckups["Cancel"] = "Cancel"
+
+	var/fuckup_choice = input("What fuckup would you like to apply?","Fuckup","Cancel") as null|anything in valid_fuckups
+
+	if(!fuckup_choice || fuckup_choice == "Cancel")
+		return TRUE
+
+	var/confirm = input("Are you absolutely sure you wish to apply this fuckup? Type \"Confirm\" to confirm.") as null|text
+	if(confirm != "Confirm")
+		return TRUE
+
+	src.to_chat(span("notice","Applying [fuckup_choice] fuckup..."))
+
+	var/fuckup/FU = valid_fuckups[fuckup_choice]
+
+	SSfuckup.apply_fuckup(FU)

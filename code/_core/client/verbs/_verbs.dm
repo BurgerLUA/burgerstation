@@ -44,6 +44,10 @@
 	verbs += /client/verb/ghost
 	verbs += /client/verb/check_objectives
 
+
+	if(permissions & FLAG_PERMISSION_HOST)
+		verbs += /client/verb/apply_fuckup
+
 	//Moderator/Admin
 	if(permissions & FLAG_PERMISSION_MODERATOR || permissions & FLAG_PERMISSION_ADMIN)
 		verbs += /client/verb/ban
