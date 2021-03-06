@@ -1,5 +1,5 @@
 /atom/movable/proc/get_base_value()
-	return value
+	return initial(value)
 
 /atom/movable/proc/get_value()
 
