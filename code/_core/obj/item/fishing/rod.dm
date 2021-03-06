@@ -189,9 +189,6 @@
 
 	INTERACT_CHECK
 
-	if(compact)
-		caller.to_chat(span("notice","Extend your fishing rod first!"))
-		return TRUE
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
@@ -245,6 +242,9 @@
 			return TRUE
 
 	if(istype(object,/turf/simulated/hazard/))
+		if(compact)
+			caller.to_chat(span("notice","Extend your fishing rod first!"))
+			return TRUE
 		var/turf/simulated/hazard/H = object
 		if(!H.fishing_rewards)
 			return TRUE
@@ -291,6 +291,8 @@
 /obj/item/fishing/rod/telescopic/click_self(var/mob/caller)
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
+	if(fishing_turf)
+		return TRUE
 	compact = !compact
 	update_sprite()
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
