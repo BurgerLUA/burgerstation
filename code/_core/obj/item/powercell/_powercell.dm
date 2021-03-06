@@ -17,25 +17,24 @@
 /obj/item/powercell/get_battery()
 	return src
 
-/obj/item/powercell/get_value()
-
+/obj/item/powercell/get_base_value()
 	. = ..()
 	. += CEILING(charge_current*0.01,1)
 	. += CEILING(charge_max*0.003,1)
-	
+
 /obj/item/powercell/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("charge_current")
-	
+
 /obj/item/powercell/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("charge_current")
-	
+
 /obj/item/powercell/Generate()
 	charge_current = charge_max
 	. = ..()
 	update_sprite()
-	
+
 /obj/item/powercell/update_icon()
 
 	icon = initial(icon)

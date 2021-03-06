@@ -3,7 +3,7 @@
 
 /atom/movable/proc/get_value()
 
-	. = value
+	. = get_base_value()
 
 	for(var/k in contents)
 		var/atom/movable/M = k
@@ -15,4 +15,3 @@
 			var/reagent/R = REAGENT(reagent_type)
 			. += R.value*reagent_volume
 
-	

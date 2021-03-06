@@ -29,8 +29,9 @@
 	return ..()
 
 
-/obj/item/slime_core/get_value()
-	return ..() * (1 + (alpha/255)) ** 2
+/obj/item/slime_core/get_base_value()
+	. = ..()
+	. *= (1 + (alpha/255)) ** 2
 
 /obj/item/slime_core/proc/generate_name()
 
@@ -57,9 +58,6 @@
 		color = choice
 		update_sprite()
 	return TRUE
-
-/obj/item/slime_core/get_value()
-	return value
 
 /obj/item/slime_core/red
 	color = "#FF0000"
