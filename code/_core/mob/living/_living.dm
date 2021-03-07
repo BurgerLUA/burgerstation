@@ -201,6 +201,8 @@
 	var/mob/living/master //This object's master.
 	var/minion_remove_time = 0
 
+	var/obj/structure/totem/totem //This object's totem.
+
 	var/queue_health_update = FALSE //From automated processes like reagent and health updating. Should not be used for bullet impacts and whatnot.
 
 	known_emotes = list(
