@@ -47,13 +47,36 @@
 
 /obj/item/slime_core/custom
 	name = "custom slime core"
+	desc_extended = "Can change into any color. Alt-clicking other items copies the color instead."
 	value = 1000
 	alpha = 255
+
+/obj/item/slime_core/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+	var/mob/E = caller
+	var/obj/item/O = object
+	if(E.attack_flags & CONTROL_MOD_ALT && O.dyeable)
+		var/choice
+		if(O.polymorphs)
+			choice = input("What do you want to copy?","Dye Selection") as null|anything in O.polymorphs
+			if(choice)
+				INTERACT_CHECK_NO_DELAY(src)
+				INTERACT_CHECK_NO_DELAY(object)
+				color = O.polymorphs[choice]
+				caller.to_chat(span("notice","You copy \the color from \the [O.name]."))
+				return TRUE
+			else return TRUE
+		else
+			INTERACT_CHECK_NO_DELAY(src)
+			INTERACT_CHECK_NO_DELAY(object)
+			color = O.color
+			caller.to_chat(span("notice","You copy \the color from \the [O.name]."))
+			return TRUE
+	. = ..()
 
 /obj/item/slime_core/custom/click_self(var/mob/caller)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
-	var/choice = input("What would you like the color to be?") as color|null
+	var/choice = input("What would you like the color to be?", null, color) as color|null
 	if(choice)
 		color = choice
 		update_sprite()
