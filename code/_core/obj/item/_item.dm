@@ -171,7 +171,7 @@
 		update_sprite()
 
 /obj/item/get_base_value()
-	return value * item_count_current * price_multiplier
+	return initial(value) * item_count_current * price_multiplier
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
 	if(!amount_to_transfer) return 0
