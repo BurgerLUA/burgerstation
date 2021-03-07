@@ -14,6 +14,10 @@
 
 	var/affecting_faction //which faction it should affect
 
+/obj/structure/totem/Finalize()
+	. = ..()
+	start_thinking(src)
+
 /obj/structure/totem/Destroy()
 	if(owner)
 		owner.totem = null
@@ -22,11 +26,12 @@
 /obj/structure/totem/think()
 	if(world.time >= totem_remove_time)
 		Destroy()
-		return
+		return FALSE
 	if(world.time <= next_fire)
-		return
+		return TRUE
 	next_fire = world.time + cooldown_fire
 	totemic_effect()
+	return TRUE
 
 /obj/structure/totem/proc/totemic_effect()
 	return
@@ -42,7 +47,7 @@
 
 /obj/structure/totem/health_heal/totemic_effect() //copy paste from staff of healing's think, with slight modifications
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in oview(T,5))
+	for(var/mob/living/L in viewers(5,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
@@ -52,6 +57,7 @@
 		if(L.health.health_current >= L.health.health_max)
 			continue
 		if(L.health.get_loss(BRUTE))
+			L.health.adjust_loss()
 			L.brute_regen_buffer += (3 + (3 * leveled_effect))
 		if(L.health.get_loss(BURN))
 			L.burn_regen_buffer += (3 + (3 * leveled_effect))
@@ -69,7 +75,7 @@
 
 /obj/structure/totem/stamina_heal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in oview(T,5))
+	for(var/mob/living/L in viewers(5,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
@@ -90,9 +96,9 @@
 	desc_extended = "A totem that will restore the caster's and their allies' mana."
 	icon_state = "mana"
 
-/obj/structure/totem/stamina_heal/totemic_effect() //will need testing and help to balance this
+/obj/structure/totem/mana_heal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in oview(T,5))
+	for(var/mob/living/L in viewers(5,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
