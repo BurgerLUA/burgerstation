@@ -9,6 +9,8 @@
 	var/obj/marker/herald/destination/linked_destination
 	var/obj/marker/herald/returning/linked_returning
 
+	value = 5000
+
 /obj/item/herald_mirror/Finalize()
 	linked_destination = locate() in world
 	return ..()
