@@ -15,6 +15,7 @@
 	var/obj/structure/totem/totem_to_spawn = /obj/structure/totem
 	object_to_summon = /obj/structure/totem
 	value = 3000
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/magic/tome/summon/totem/on_projectile_hit(obj/projectile/P, atom/hit_atom)
 	if(istype(P,/obj/projectile/bullet/thrown/))
