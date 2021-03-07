@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/totem.dmi'
 
 	var/next_fire = 0
-	var/cooldown_fire = SECONDS_TO_DECISECONDS(5)
+	var/cooldown_fire = SECONDS_TO_DECISECONDS(1)
 
 	var/mob/living/owner //the object's owner
 	var/totem_remove_time = 0
@@ -40,9 +40,9 @@
 	desc_extended = "A totem that will restore the caster's and their allies' health."
 	icon_state = "health"
 
-/obj/structure/totem/health_heal/totemic_effect() //copy paste from staff of healing's think, adjusted for 5 seconds
+/obj/structure/totem/health_heal/totemic_effect() //copy paste from staff of healing's think, with slight modifications
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in oview(T,4))
+	for(var/mob/living/L in oview(T,5))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
@@ -52,11 +52,11 @@
 		if(L.health.health_current >= L.health.health_max)
 			continue
 		if(L.health.get_loss(BRUTE))
-			L.brute_regen_buffer += (15 + (15 * leveled_effect))
+			L.brute_regen_buffer += (3 + (3 * leveled_effect))
 		if(L.health.get_loss(BURN))
-			L.burn_regen_buffer += (15 + (15 * leveled_effect))
+			L.burn_regen_buffer += (3 + (3 * leveled_effect))
 		if(L.health.get_loss(TOX))
-			L.tox_regen_buffer += (15 + (15 * leveled_effect))
+			L.tox_regen_buffer += (3 + (3 * leveled_effect))
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_RED)
 		INITIALIZE(H)
 		GENERATE(H)
@@ -69,17 +69,17 @@
 
 /obj/structure/totem/stamina_heal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in oview(T,4))
+	for(var/mob/living/L in oview(T,5))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
 			continue
 		if(!istype(L.health))
 			continue
-		if(L.health.health_current >= L.health.health_max)
+		if(L.health.stamina_current >= L.health.stamina_max)
 			continue
 		if(L.health.get_stamina_loss())
-			L.stamina_regen_buffer += (15 + (15 * leveled_effect))
+			L.stamina_regen_buffer += (3 + (3 * leveled_effect))
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_GREEN)
 		INITIALIZE(H)
 		GENERATE(H)
@@ -92,17 +92,17 @@
 
 /obj/structure/totem/stamina_heal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in oview(T,4))
+	for(var/mob/living/L in oview(T,5))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
 			continue
 		if(!istype(L.health))
 			continue
-		if(L.health.health_current >= L.health.health_max)
+		if(L.health.mana_current >= L.health.mana_max)
 			continue
 		if(L.health.get_mana_loss())
-			L.mana_regen_buffer += (15 + (15 * leveled_effect))
+			L.mana_regen_buffer += (3 + (3 * leveled_effect))
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_BLUE)
 		INITIALIZE(H)
 		GENERATE(H)
