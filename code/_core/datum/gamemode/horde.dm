@@ -97,7 +97,6 @@
 		log_debug("Adding player count 40 objectives.")
 
 	next_objective_update = world.time + 100
-
 	return TRUE
 
 /gamemode/horde/on_continue()
@@ -137,6 +136,7 @@
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
 	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*10 + 10)
+	add_objectives()
 	announce(
 		"Central Command Update",
 		"Prepare for Landfall",
@@ -144,7 +144,6 @@
 		ANNOUNCEMENT_STATION,
 		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
 	)
-	add_objectives()
 	return TRUE
 
 /gamemode/horde/proc/on_gearing()

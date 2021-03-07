@@ -45,7 +45,7 @@
 */
 
 
-//https://www.desmos.com/calculator/bjhgq1m6e0
+//https://www.desmos.com/calculator/ihpykmskji
 /proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
 	if(damage_dealt < 0)
 		CRASH_SAFE("Damage [damage_dealt] was negative!")
