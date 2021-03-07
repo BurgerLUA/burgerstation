@@ -44,12 +44,11 @@
 	LOADATOM("line")
 	LOADATOM("bait")
 	
-/obj/item/fishing/rod/update_value()
-	value = initial(value)
-	if(line) value += line.value
-	if(lure) value += lure.value
-	if(bait) value += bait.value
-	return TRUE
+/obj/item/fishing/rod/get_value()
+	. = ..()
+	if(line) . += line.get_value()
+	if(lure) . += lure.get_value()
+	if(bait) . += bait.get_value()
 
 /obj/item/fishing/rod/update_overlays()
 	. = ..()
@@ -85,7 +84,6 @@
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
 		I.add_object(object_removed)
-		update_value()
 		return TRUE
 
 	if(is_item(object))
@@ -101,7 +99,6 @@
 			line = P
 			P.drop_item(src)
 			update_sprite()
-			update_value()
 			return TRUE
 
 		if(istype(object,/obj/item/fishing/lure/))
@@ -115,7 +112,6 @@
 
 			lure = P
 			P.drop_item(src)
-			update_value()
 			return TRUE
 
 		if(istype(object,/obj/item/fishing/bait/))
@@ -129,7 +125,6 @@
 
 			bait = P
 			P.drop_item(src)
-			update_value()
 			return TRUE
 
 	return ..()
