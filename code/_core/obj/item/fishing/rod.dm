@@ -190,11 +190,9 @@
 	if(fishing_turf)
 		if(snagged_fish) //Caught something!
 			var/mob/living/C = caller // here comes the luck calc
-			var/lucktotal = clamp((C.get_attribute_level(ATTRIBUTE_LUCK) + (src.luck/2)- 75),1,75)	//base player+rod is 0 unless boosted, item luck affects it by half
-			var/luckroll = rand(0,100)
 			var/luckmod
-			if(luckroll <= lucktotal)
-				luckmod = (rand(1,5)/10)
+			if(luck(list(C,src),25))
+				luckmod = (rand(1,5)*0.1)
 			var/score_add = (20/snagged_fish)
 			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish) + luckmod
 			var/loot/L = LOOT(fishing_turf.fishing_rewards)
