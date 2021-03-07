@@ -9,6 +9,7 @@
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
 	size = SIZE_3
+	can_rename = TRUE
 
 	weight = 5
 
