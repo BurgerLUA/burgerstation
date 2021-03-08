@@ -37,4 +37,4 @@
 	FINALIZE(summoned_totem)
 	if(summoned_totem)
 		summoned_totem.Move(get_turf(hit_atom))
-	return ..()
+	. = ..()

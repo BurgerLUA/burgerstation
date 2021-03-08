@@ -42,6 +42,7 @@
 
 /obj/structure/totem/health_heal
 	name = "totem of health regeneration"
+	desc = "Patch them up, they said. Don't make me cry, they said."
 	desc_extended = "A totem that will restore the caster's and their allies' health."
 	icon_state = "health"
 
@@ -69,6 +70,7 @@
 
 /obj/structure/totem/health_deal
 	name = "totem of health degeneration"
+	desc = "Pain and Suffering, two of my favorite toys!"
 	desc_extended = "A totem that will damage the caster's enemies' health."
 	icon_state = "healthloss"
 
@@ -91,6 +93,7 @@
 
 /obj/structure/totem/stamina_heal
 	name = "totem of stamina regeneration"
+	desc = "Someone hasn't been working out, they'd rather drug up..."
 	desc_extended = "A totem that will restore the caster's and their allies' stamina."
 	icon_state = "stamina"
 
@@ -114,6 +117,7 @@
 
 /obj/structure/totem/stamina_deal
 	name = "totem of stamina degeneration"
+	desc = "It is a fast acting paralyzing agent that will render them useless!"
 	desc_extended = "A totem that will damage the caster's enemies' stamina."
 	icon_state = "staminaloss"
 
@@ -134,6 +138,7 @@
 
 /obj/structure/totem/mana_heal
 	name = "totem of mana regeneration"
+	desc = "Don't ask how many years it took for me to reach this state of wizardry."
 	desc_extended = "A totem that will restore the caster's and their allies' mana."
 	icon_state = "mana"
 
@@ -156,7 +161,8 @@
 		FINALIZE(H)
 
 /obj/structure/totem/mana_deal
-	name = "totem of mana regeneration"
+	name = "totem of mana degeneration"
+	desc = "I'm melting, I'm melting!"
 	desc_extended = "A totem that will damage the caster's enemies' mana."
 	icon_state = "manaloss"
 
@@ -177,6 +183,7 @@
 
 /obj/structure/totem/sacred_flame
 	name = "totem of sacred flame"
+	desc = "Can you hear the voice of god through this bush flame?"
 	desc = "Someone thought to take a book and stick it inside the totem."
 	desc_extended = "A totem that will set ablaze the caster's enemies."
 	icon_state = "flame"
