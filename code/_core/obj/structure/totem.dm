@@ -50,20 +50,41 @@
 	for(var/mob/living/L in viewers(5,T))
 		if(L.dead)
 			continue
-		if(L.loyalty_tag != affecting_faction)
+		if(L.loyalty_tag != affecting_faction) //!= because we want to only affect allies
 			continue
 		if(!istype(L.health))
 			continue
 		if(L.health.health_current >= L.health.health_max)
 			continue
 		if(L.health.get_loss(BRUTE))
-			L.health.adjust_loss()
 			L.brute_regen_buffer += (3 + (3 * leveled_effect))
 		if(L.health.get_loss(BURN))
 			L.burn_regen_buffer += (3 + (3 * leveled_effect))
 		if(L.health.get_loss(TOX))
 			L.tox_regen_buffer += (3 + (3 * leveled_effect))
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_RED)
+		INITIALIZE(H)
+		GENERATE(H)
+		FINALIZE(H)
+
+/obj/structure/totem/health_deal
+	name = "totem of health degeneration"
+	desc_extended = "A totem that will damage the caster's enemies' health."
+	icon_state = "healthloss"
+
+/obj/structure/totem/health_deal/totemic_effect() //copy paste from staff of healing's think, with slight modifications
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(5,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction) //== because we dont want to affect allies
+			continue
+		if(!istype(L.health))
+			continue
+		L.brute_regen_buffer -= (3 + (3 * leveled_effect))
+		L.burn_regen_buffer -= (3 + (3 * leveled_effect))
+		L.tox_regen_buffer -= (3 + (3 * leveled_effect))
+		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_RED)
 		INITIALIZE(H)
 		GENERATE(H)
 		FINALIZE(H)
@@ -91,6 +112,26 @@
 		GENERATE(H)
 		FINALIZE(H)
 
+/obj/structure/totem/stamina_deal
+	name = "totem of stamina degeneration"
+	desc_extended = "A totem that will damage the caster's enemies' stamina."
+	icon_state = "staminaloss"
+
+/obj/structure/totem/stamina_deal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(5,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		L.stamina_regen_buffer -= (3 + (3 * leveled_effect))
+		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_GREEN)
+		INITIALIZE(H)
+		GENERATE(H)
+		FINALIZE(H)
+
 /obj/structure/totem/mana_heal
 	name = "totem of mana regeneration"
 	desc_extended = "A totem that will restore the caster's and their allies' mana."
@@ -110,6 +151,47 @@
 		if(L.health.get_mana_loss())
 			L.mana_regen_buffer += (3 + (3 * leveled_effect))
 		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_BLUE)
+		INITIALIZE(H)
+		GENERATE(H)
+		FINALIZE(H)
+
+/obj/structure/totem/mana_deal
+	name = "totem of mana regeneration"
+	desc_extended = "A totem that will damage the caster's enemies' mana."
+	icon_state = "manaloss"
+
+/obj/structure/totem/mana_deal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(5,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		L.mana_regen_buffer -= (3 + (3 * leveled_effect))
+		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
+		INITIALIZE(H)
+		GENERATE(H)
+		FINALIZE(H)
+
+/obj/structure/totem/sacred_flame
+	name = "totem of sacred flame"
+	desc = "Someone thought to take a book and stick it inside the totem."
+	desc_extended = "A totem that will set ablaze the caster's enemies."
+	icon_state = "flame"
+
+/obj/structure/totem/sacred_flame/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(5,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		L.ignite(SECONDS_TO_DECISECONDS(1.5))
+		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
 		INITIALIZE(H)
 		GENERATE(H)
 		FINALIZE(H)
