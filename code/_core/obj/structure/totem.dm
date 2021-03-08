@@ -84,7 +84,6 @@
 		L.brute_regen_buffer -= (3 + (3 * leveled_effect))
 		L.burn_regen_buffer -= (3 + (3 * leveled_effect))
 		L.tox_regen_buffer -= (3 + (3 * leveled_effect))
-		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_RED)
 		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/stamina_heal
