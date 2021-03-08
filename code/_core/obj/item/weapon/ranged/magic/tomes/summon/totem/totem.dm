@@ -25,3 +25,11 @@
 /obj/item/weapon/ranged/magic/tome/summon/totem/sacred_flame
 	name = "totemic tome of sacred flame"
 	totem_to_spawn = /obj/structure/totem/sacred_flame
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/repelling //follow-up: check to see if it's worth keeping (read: balance nightmare)
+	name = "totemic tome of repelling"
+	totem_to_spawn = /obj/structure/totem/repelling
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/attracting //follow-up: check to see if it's worth keeping (read: balance nightmare)
+	name = "totemic tome of attracting"
+	totem_to_spawn = /obj/structure/totem/attracting

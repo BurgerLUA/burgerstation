@@ -47,7 +47,7 @@
 
 /obj/structure/totem/health_heal/totemic_effect() //copy paste from staff of healing's think, with slight modifications
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction) //!= because we want to only affect allies
@@ -74,7 +74,7 @@
 
 /obj/structure/totem/health_deal/totemic_effect() //copy paste from staff of healing's think, with slight modifications
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag == affecting_faction) //== because we dont want to affect allies
@@ -96,7 +96,7 @@
 
 /obj/structure/totem/stamina_heal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
@@ -119,7 +119,7 @@
 
 /obj/structure/totem/stamina_deal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag == affecting_faction)
@@ -139,7 +139,7 @@
 
 /obj/structure/totem/mana_heal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
@@ -162,7 +162,7 @@
 
 /obj/structure/totem/mana_deal/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag == affecting_faction)
@@ -183,7 +183,7 @@
 
 /obj/structure/totem/sacred_flame/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(5,T))
+	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
 		if(L.loyalty_tag == affecting_faction)
@@ -191,6 +191,52 @@
 		if(!istype(L.health))
 			continue
 		L.ignite(SECONDS_TO_DECISECONDS(1.5))
+		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_RED)
+		INITIALIZE(H)
+		GENERATE(H)
+		FINALIZE(H)
+
+/obj/structure/totem/repelling
+	name = "totem of repelling"
+	desc = "They thought it meant aggro, what suckers."
+	desc_extended = "A totem that will repel the caster's enemies."
+	icon_state = "flame"
+
+/obj/structure/totem/repelling/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.boss) //yea, no repelling bosses, sorry
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		L.Move(get_step(L.loc,get_dir(src,L)))
+		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
+		INITIALIZE(H)
+		GENERATE(H)
+		FINALIZE(H)
+
+/obj/structure/totem/attracting
+	name = "totem of attracting"
+	desc = "They thought it meant aggro, what suckers."
+	desc_extended = "A totem that will attract the caster's enemies."
+	icon_state = "flame"
+
+/obj/structure/totem/attracting/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.boss) //yea, no attracting bosses, sorry
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		L.Move(get_step(L.loc,get_dir(L,src)))
 		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
 		INITIALIZE(H)
 		GENERATE(H)
