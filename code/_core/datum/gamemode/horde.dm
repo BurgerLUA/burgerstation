@@ -273,8 +273,8 @@
 	var/player_count = length(all_clients)
 
 	switch(player_count)
-		if(0 to 10)
-			return SECONDS_TO_DECISECONDS(60)
+		if(-INFINITY to 10)
+			return SECONDS_TO_DECISECONDS(90)
 		if(10 to 20)
 			return SECONDS_TO_DECISECONDS(45)
 		if(20 to 30)
@@ -282,7 +282,7 @@
 		if(30 to INFINITY)
 			return SECONDS_TO_DECISECONDS(15)
 
-	return SECONDS_TO_DECISECONDS(60)
+	return SECONDS_TO_DECISECONDS(60) //Fallback lol
 
 /gamemode/horde/proc/get_wave_size()
 
