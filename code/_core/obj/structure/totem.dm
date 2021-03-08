@@ -200,7 +200,7 @@
 	name = "totem of repelling"
 	desc = "They thought it meant aggro, what suckers."
 	desc_extended = "A totem that will repel the caster's enemies."
-	icon_state = "flame"
+	icon_state = "magnet"
 
 /obj/structure/totem/repelling/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
@@ -223,7 +223,7 @@
 	name = "totem of attracting"
 	desc = "They thought it meant aggro, what suckers."
 	desc_extended = "A totem that will attract the caster's enemies."
-	icon_state = "flame"
+	icon_state = "magnet"
 
 /obj/structure/totem/attracting/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
