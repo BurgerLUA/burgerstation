@@ -21,8 +21,9 @@
 	. = ..()
 	LOADVAR("charges")
 
-/obj/item/supply_remote/get_value()
-	return  charges ? charges * value : 10
+/obj/item/supply_remote/get_base_value()
+	. = ..()
+	. *= (1 + charges)
 
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -39,6 +40,10 @@
 	charges--
 
 	var/turf/T = get_turf(object)
+
+	if(T.z != Z_LEVEL_MISSION)
+		caller.to_chat(span("warning","This can only be used on the planet!"))
+		return TRUE
 
 	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)
 	for(var/k in stored_object_types)

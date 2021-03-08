@@ -251,7 +251,8 @@
 	name = "nutriment vendor"
 	icon_state = "nutri"
 	stored_types = list(
-		/obj/item/container/beaker/bucket/water
+		/obj/item/container/beaker/bucket/water,
+		/obj/item/storage/bags/botany/processor
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds

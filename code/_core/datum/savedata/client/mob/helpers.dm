@@ -1,3 +1,6 @@
+var/global/allow_loading = TRUE
+
+
 /savedata/client/mob/proc/get_proper_id_from_filepath(var/file_string)
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
@@ -65,6 +68,10 @@
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
 	var/client/owner = CLIENT(ckey)
+
+	if(!allow_loading)
+		owner?.mob?.to_chat(span("danger","Loading is currently disabled due to cleaning feature. Please wait."))
+		return FALSE
 
 	if(world_state != STATE_RUNNING)
 		owner?.mob?.to_chat(span("warning","The round is currently ending! Wait until next round!"))

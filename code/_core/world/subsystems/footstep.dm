@@ -9,8 +9,8 @@ SUBSYSTEM_DEF(footstep)
 	for(var/k in subtypesof(/footstep/))
 		var/footstep/F = k
 		F = new k
-		SSfootstep.all_footsteps[F.type] = F
+		all_footsteps[F.type] = F
 
-	log_subsystem(name,"Initialized [length(SSfootstep.all_footsteps)] footstep types.")
+	log_subsystem(name,"Initialized [length(all_footsteps)] footstep types.")
 
 	return ..()

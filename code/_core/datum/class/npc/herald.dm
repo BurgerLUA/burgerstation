@@ -8,7 +8,7 @@
 	//Luck untouched
 	//10 total attributes
 	attributes = list(
-		ATTRIBUTE_STRENGTH = 50,
+		ATTRIBUTE_STRENGTH = 65,
 		ATTRIBUTE_VITALITY = 75,
 		ATTRIBUTE_FORTITUDE = 25,
 
@@ -38,7 +38,7 @@
 
 		SKILL_MELEE = 5,
 		//SKILL_BLOCK = 50,
-		SKILL_UNARMED = 50,
+		SKILL_UNARMED = 65,
 		SKILL_PRAYER = 5,
 
 		SKILL_MEDICINE = 5,

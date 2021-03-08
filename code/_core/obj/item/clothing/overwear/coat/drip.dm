@@ -22,4 +22,5 @@
 	)
 
 /obj/item/clothing/overwear/coat/drip/get_base_value()
-	return ..() + 20000
+	. = ..()
+	. += 20000

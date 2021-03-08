@@ -256,13 +256,9 @@
 	death()
 	if(!qdeleting) qdel(src)
 
-/mob/living/get_value()
-
+/mob/living/get_base_value()
 	. = ..()
-
-	if(!dead)
-		. += value * 3
-
+	if(!dead) . *= 3
 
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"

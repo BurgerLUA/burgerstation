@@ -59,7 +59,7 @@
 	if(currency_to_add > 0 && client)
 		var/savedata/client/globals/G = GLOBALDATA(client.ckey)
 		if(!G) return
-		G.loaded_data["stored_credits"] += currency_to_add
+		G.loaded_data["stored_currency"] += currency_to_add
 
 
 

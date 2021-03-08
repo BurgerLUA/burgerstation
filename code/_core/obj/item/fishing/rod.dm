@@ -9,6 +9,7 @@
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
 	size = SIZE_3
+	can_rename = TRUE
 
 	weight = 5
 
@@ -44,6 +45,12 @@
 	LOADATOM("line")
 	LOADATOM("bait")
 	
+/obj/item/fishing/rod/get_value()
+	. = ..()
+	if(line) . += line.get_value()
+	if(lure) . += lure.get_value()
+	if(bait) . += bait.get_value()
+
 /obj/item/fishing/rod/update_overlays()
 	. = ..()
 	if(line && !compact)
@@ -106,7 +113,6 @@
 
 			lure = P
 			P.drop_item(src)
-
 			return TRUE
 
 		if(istype(object,/obj/item/fishing/bait/))
@@ -120,7 +126,6 @@
 
 			bait = P
 			P.drop_item(src)
-
 			return TRUE
 
 	return ..()
@@ -180,16 +185,17 @@
 
 	INTERACT_CHECK
 
-	if(compact)
-		caller.to_chat(span("notice","Extend your fishing rod first!"))
-		return TRUE
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	if(fishing_turf)
 		if(snagged_fish) //Caught something!
+			var/mob/living/C = caller // here comes the luck calc
+			var/luckmod
+			if(luck(list(C,src),25))
+				luckmod = (rand(1,5)*0.1)
 			var/score_add = (20/snagged_fish)
-			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish)
+			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish) + luckmod
 			var/loot/L = LOOT(fishing_turf.fishing_rewards)
 			var/list/loot_table = L.loot_table.Copy()
 			for(var/k in loot_table)
@@ -230,6 +236,9 @@
 			return TRUE
 
 	if(istype(object,/turf/simulated/hazard/))
+		if(compact)
+			caller.to_chat(span("notice","Extend your fishing rod first!"))
+			return TRUE
 		var/turf/simulated/hazard/H = object
 		if(!H.fishing_rewards)
 			return TRUE
@@ -276,6 +285,8 @@
 /obj/item/fishing/rod/telescopic/click_self(var/mob/caller)
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
+	if(fishing_turf)
+		return TRUE
 	compact = !compact
 	update_sprite()
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)

@@ -11,12 +11,8 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/energy/get_value()
-
 	. = ..()
-
 	if(battery) . += battery.get_value()
-
-
 
 /obj/item/weapon/ranged/energy/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -27,13 +23,9 @@
 	LOADATOM("battery")
 
 /obj/item/weapon/ranged/energy/Finalize()
-
 	. = ..()
-
 	if(!istype(battery))
 		battery = null
-
-
 
 /obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

@@ -97,7 +97,6 @@
 		log_debug("Adding player count 40 objectives.")
 
 	next_objective_update = world.time + 100
-
 	return TRUE
 
 /gamemode/horde/on_continue()
@@ -137,6 +136,7 @@
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
 	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*10 + 10)
+	add_objectives()
 	announce(
 		"Central Command Update",
 		"Prepare for Landfall",
@@ -144,7 +144,6 @@
 		ANNOUNCEMENT_STATION,
 		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
 	)
-	add_objectives()
 	return TRUE
 
 /gamemode/horde/proc/on_gearing()
@@ -274,8 +273,8 @@
 	var/player_count = length(all_clients)
 
 	switch(player_count)
-		if(0 to 10)
-			return SECONDS_TO_DECISECONDS(60)
+		if(-INFINITY to 10)
+			return SECONDS_TO_DECISECONDS(90)
 		if(10 to 20)
 			return SECONDS_TO_DECISECONDS(45)
 		if(20 to 30)
@@ -283,7 +282,7 @@
 		if(30 to INFINITY)
 			return SECONDS_TO_DECISECONDS(15)
 
-	return SECONDS_TO_DECISECONDS(60)
+	return SECONDS_TO_DECISECONDS(60) //Fallback lol
 
 /gamemode/horde/proc/get_wave_size()
 

@@ -193,6 +193,16 @@ mob/living/advanced/player/on_life_client()
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
 				A.set_active(TRUE)
+			for(var/k in SSbossai.inactive_ai)
+				var/ai/A = k
+				if(!A.owner)
+					log_error("Warning! [A.get_debug_name()] had no owner!")
+					qdel(A)
+					continue
+				var/dist = get_dist(src,A.owner)
+				if(dist > VIEW_RANGE + ZOOM_RANGE)
+					continue
+				A.set_active(TRUE)
 			ai_steps = 0
 
 /mob/living/advanced/player/can_be_grabbed(var/atom/grabber,var/messages=TRUE)

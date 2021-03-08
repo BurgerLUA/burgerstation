@@ -93,7 +93,7 @@
 	name = "Magic"
 	id = SKILL_MAGIC
 	desc = "Not to be confused with sorcery."
-	desc_extended = "Your skill in casting damage-dealing subjugation magic such as fireball, lightning bolt, and frostwave."
+	desc_extended = "Your skill in casting support and defensive spells like summoning magic."
 	experience_power = 1.5
 	experience_multiplier = 21
 	combat_level_mul = 1
@@ -102,7 +102,7 @@
 	name = "Sorcery"
 	id = SKILL_SORCERY
 	desc = "Not to be confused with magic."
-	desc_extended = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
+	desc_extended = "Your skill in casting damage-dealing magic such as fireball."
 	experience_power = 1.5
 	experience_multiplier = 21
 	combat_level_mul = 0.75

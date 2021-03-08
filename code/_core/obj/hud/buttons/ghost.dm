@@ -26,7 +26,7 @@
 		var/mob/abstract/observer/O = caller
 		O.new_character()
 
-	
+
 /obj/hud/button/load_character/
 	name = "load an existing character"
 	desc = ""
@@ -50,11 +50,14 @@
 		if(world_state != STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
+		if(!allow_loading)
+			caller.to_chat(span("danger","Cannot load your character currently as the server is undergoing a cleaning process."))
+			return TRUE
 
 		var/mob/abstract/observer/O = caller
 		O.load_character()
 
-	
+
 /obj/hud/button/become_antag/
 	name = "become antagonist"
 	desc = ""
@@ -75,7 +78,7 @@
 		var/mob/abstract/observer/O = caller
 		O.become_antagonist()
 
-	
+
 /obj/hud/button/teleport_to_player/
 	name = "spectate player"
 	desc = ""
@@ -92,7 +95,7 @@
 	. = ..()
 	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
-	
+
 /obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -118,7 +121,7 @@
 			caller.to_chat(span("notice","You are now spectating [M.name]."))
 			caller.force_move(M.loc)
 
-	
+
 /obj/hud/button/dead_ghost/
 	name = "ghost"
 	desc = ""
@@ -138,9 +141,8 @@
 	if(. && caller.client)
 		caller.client.ghost()
 
-	
+
 /obj/hud/button/dead_ghost/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
-	
