@@ -41,6 +41,10 @@
 
 	var/turf/T = get_turf(object)
 
+	if(T.z != Z_LEVEL_MISSION)
+		caller.to_chat(span("warning","This can only be used on the planet!"))
+		return TRUE
+
 	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)
 	for(var/k in stored_object_types)
 		var/atom/movable/M = new k(T)
