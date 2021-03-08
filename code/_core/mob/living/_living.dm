@@ -283,6 +283,10 @@
 		master.minion = null
 		master = null
 
+	if(totem)
+		QDEL_NULL(totem)
+		totem = null
+
 	if(following)
 		following.followers -= src
 		following = null

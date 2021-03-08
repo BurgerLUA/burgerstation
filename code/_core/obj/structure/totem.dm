@@ -21,11 +21,12 @@
 /obj/structure/totem/Destroy()
 	if(owner)
 		owner.totem = null
+	owner = null
 	return ..()
 
 /obj/structure/totem/think()
 	if(world.time >= totem_remove_time)
-		Destroy()
+		qdel(src)
 		return FALSE
 	if(world.time <= next_fire)
 		return TRUE
@@ -63,10 +64,7 @@
 			L.burn_regen_buffer += (3 + (3 * leveled_effect))
 		if(L.health.get_loss(TOX))
 			L.tox_regen_buffer += (3 + (3 * leveled_effect))
-		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_RED)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/healing,L.loc)
 
 /obj/structure/totem/health_deal
 	name = "totem of health degeneration"
@@ -87,9 +85,7 @@
 		L.burn_regen_buffer -= (3 + (3 * leveled_effect))
 		L.tox_regen_buffer -= (3 + (3 * leveled_effect))
 		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_RED)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/stamina_heal
 	name = "totem of stamina regeneration"
@@ -110,10 +106,7 @@
 			continue
 		if(L.health.get_stamina_loss())
 			L.stamina_regen_buffer += (3 + (3 * leveled_effect))
-		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_GREEN)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/healing,L.loc)
 
 /obj/structure/totem/stamina_deal
 	name = "totem of stamina degeneration"
@@ -131,10 +124,7 @@
 		if(!istype(L.health))
 			continue
 		L.stamina_regen_buffer -= (3 + (3 * leveled_effect))
-		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_GREEN)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/mana_heal
 	name = "totem of mana regeneration"
@@ -155,10 +145,7 @@
 			continue
 		if(L.health.get_mana_loss())
 			L.mana_regen_buffer += (3 + (3 * leveled_effect))
-		var/obj/effect/temp/healing/H = new(L.loc,10,COLOR_BLUE)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/healing,L.loc)
 
 /obj/structure/totem/mana_deal
 	name = "totem of mana degeneration"
@@ -176,10 +163,7 @@
 		if(!istype(L.health))
 			continue
 		L.mana_regen_buffer -= (3 + (3 * leveled_effect))
-		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/sacred_flame
 	name = "totem of sacred flame"
@@ -198,10 +182,7 @@
 		if(!istype(L.health))
 			continue
 		L.ignite(SECONDS_TO_DECISECONDS(1.5))
-		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_RED)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/repelling
 	name = "totem of repelling"
@@ -218,13 +199,12 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(!istype(L.health))
+		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
+			continue
+		if(L.loc == loc) //if they are on the same turf, skip them
 			continue
 		L.Move(get_step(L.loc,get_dir(src,L)))
-		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/attracting
 	name = "totem of attracting"
@@ -241,10 +221,9 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(!istype(L.health))
+		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
+			continue
+		if(L.loc == loc) //if they are on the same turf, skip them
 			continue
 		L.Move(get_step(L.loc,get_dir(L,src)))
-		var/obj/effect/temp/electricity/H = new(L.loc,10,COLOR_BLUE)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
+		CREATE(/obj/effect/temp/electricity,L.loc)
