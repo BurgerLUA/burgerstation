@@ -17,6 +17,19 @@
 	var/list/stored_arrows = list()
 	var/arrow_count = 0
 
+/obj/item/clothing/belt/belt_quiver/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	.["stored_arrows"] = list()
+	for(var/k in stored_arrows)
+		var/v = stored_arrows[k]
+		.["stored_arrows"][k] = v
+
+/obj/item/clothing/belt/belt_quiver/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	for(var/k in object_data["stored_arrows"])
+		var/v = object_data["stored_arrows"][k]
+		stored_arrows[text2path(k)] = v
+
 /obj/item/clothing/belt/belt_quiver/proc/get_arrow_count()
 	. = 0
 	for(var/k in stored_arrows)

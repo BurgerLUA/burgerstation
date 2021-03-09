@@ -36,6 +36,8 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bow/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+	if(object.plane >= PLANE_HUD)
+		return ..()
 	if(!is_advanced(caller))
 		return TRUE
 	current_shooter = caller
