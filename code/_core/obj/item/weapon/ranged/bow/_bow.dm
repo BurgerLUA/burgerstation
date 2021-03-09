@@ -30,6 +30,8 @@
 
 	var/damage_multiplier = 1
 
+	var/spam_prevention = 0
+
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
 
@@ -53,7 +55,9 @@
 		return ..()
 	current_shooter = caller
 	start_thinking(src)
-	play_sound(draw_sound,get_turf(src))
+	if(world.time >= spam_prevention)
+		play_sound(draw_sound,get_turf(src))
+		spam_prevention = world.time + 5
 	return TRUE
 
 /obj/item/weapon/ranged/bow/update_icon()
