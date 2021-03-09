@@ -22,7 +22,8 @@
 		/obj/item/clothing/glasses/eyes_of_god = 1,
 		/obj/item/clothing/back/wings/angel = 1,
 		/obj/item/clothing/overwear/armor/knight/battlemage = 1,
-		/obj/item/clothing/glasses/sun/gar/giga = 1
+		/obj/item/clothing/glasses/sun/gar/giga = 1,
+		/obj/item/weapon/ranged/bow/hardlight = 1
 	)
 
 
@@ -47,7 +48,8 @@
 	loot_table = list(
 		/obj/item/herald_mirror = 1,
 		/obj/item/clothing/overwear/hardsuit/ling = 1,
-		/obj/item/tempering/luck/double = 1
+		/obj/item/tempering/luck/double = 1,
+		/obj/item/weapon/ranged/bow/ashen = 1
 	)
 
 /loot/lavaland/hierophant

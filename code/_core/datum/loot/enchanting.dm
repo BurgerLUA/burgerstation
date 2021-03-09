@@ -48,3 +48,17 @@
 		/obj/item/weapon/ranged/magic/tome/shock = 1
 	)
 	loot_count = 1
+
+/loot/magic/totem
+	loot_table = list(
+		/obj/item/weapon/ranged/magic/tome/summon/totem/health_heal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/health_deal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/stamina_heal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/stamina_deal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/mana_heal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/mana_deal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/sacred_flame,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/repelling,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/attracting
+	)
+	loot_count = 1

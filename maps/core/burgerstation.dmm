@@ -1110,11 +1110,9 @@
 /turf/simulated/floor/plating/shuttle,
 /area/burgerstation/science/containment)
 "ee" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/vampire_killer,
-/turf/simulated/floor/carpet,
-/area/burgerstation/chapel)
+/obj/structure/interactive/status_display/global_display/round,
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/maint/south)
 "ef" = (
 /obj/decal/hazard{
 	dir = 4
@@ -1479,6 +1477,9 @@
 "fq" = (
 /turf/simulated/floor/tile/morphing/brown,
 /area/burgerstation/hall/central)
+"fr" = (
+/turf/simulated/floor/tile/chapel,
+/area/burgerstation/chapel)
 "fs" = (
 /obj/structure/interactive/status_display/global_display/round,
 /turf/simulated/wall/metal/reinforced,
@@ -1895,11 +1896,8 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/library)
 "gM" = (
-/obj/structure/interactive/door/airlock/station/glass,
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/chapel,
+/obj/structure/interactive/vending/chaplain/equipment,
+/turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "gN" = (
 /obj/structure/interactive/disposals/pipe{
@@ -1952,6 +1950,10 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
+"gV" = (
+/obj/structure/interactive/vending/chaplain/wardrobe,
+/turf/simulated/floor/tile/chapel,
+/area/burgerstation/chapel)
 "gW" = (
 /obj/structure/interactive/vending/mining,
 /obj/decal/hazard{
@@ -1969,11 +1971,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "gY" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/chapel,
-/area/burgerstation/hall/south)
+/turf/simulated/wall/brick/chapel,
+/area/burgerstation/chapel)
 "gZ" = (
 /obj/structure/interactive/light_switch{
 	icon_state = "setup";
@@ -2497,11 +2496,8 @@
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen)
 "iS" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/metal/reinforced,
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "iT" = (
 /turf/simulated/wall/metal,
@@ -2630,9 +2626,6 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "js" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/cross,
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "jt" = (
@@ -4214,21 +4207,23 @@
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pr" = (
-/obj/marker/map_node,
-/obj/structure/interactive/disposals/pipe{
-	dir = 9
-	},
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/south)
+/obj/structure/smooth/table/fancy,
+/turf/simulated/floor/carpet,
+/area/burgerstation/chapel)
 "ps" = (
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pt" = (
-/obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 9
+	},
 /area/burgerstation/chapel)
 "pu" = (
-/turf/simulated/wall/metal/reinforced,
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 5
+	},
 /area/burgerstation/chapel)
 "pv" = (
 /obj/marker/spawning/window/reinforced,
@@ -4240,17 +4235,17 @@
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
 "px" = (
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 8
-	},
+/obj/structure/smooth/table/wood,
+/turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "py" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/carpet,
+/obj/structure/interactive/door/airlock/station/maintenance/chapel,
+/turf/simulated/floor/wood/rich,
 /area/burgerstation/chapel)
 "pz" = (
-/turf/simulated/floor/carpet,
+/obj/structure/smooth/table/wood,
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "pA" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
@@ -4271,21 +4266,19 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "pE" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/null_rod/staff,
-/turf/simulated/floor/carpet,
-/area/burgerstation/chapel)
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/disposals/pipe/ending,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/tax)
 "pF" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/null_rod/dagger,
-/turf/simulated/floor/carpet,
+/obj/structure/interactive/door/airlock/station/chapel,
+/turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "pG" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/null_rod,
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 1
+	},
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "pH" = (
@@ -4294,21 +4287,19 @@
 /area/burgerstation/maint/east)
 "pI" = (
 /obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/lightning,
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "pJ" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/chapel,
+/obj/structure/scenery/flowers,
+/turf/simulated/floor/colored/grass,
 /area/burgerstation/chapel)
 "pK" = (
 /turf/simulated/wall/wood,
 /area/burgerstation/tax)
 "pL" = (
-/obj/structure/interactive/status_display/global_display/round,
-/turf/simulated/wall/metal/reinforced,
-/area/burgerstation/chapel)
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/tax)
 "pM" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -4317,11 +4308,9 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/help_desk)
 "pN" = (
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 4
-	},
-/area/burgerstation/chapel)
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/carpet,
+/area/burgerstation/tax)
 "pO" = (
 /obj/structure/interactive/door/airlock/station/glass,
 /obj/structure/interactive/scanner/iff_nanotrasen{
@@ -4384,62 +4373,51 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/pvp)
 "pZ" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/shield,
+/obj/structure/interactive/disposals/pipe{
+	dir = 9
+	},
 /turf/simulated/floor/carpet,
-/area/burgerstation/chapel)
+/area/burgerstation/tax)
 "qa" = (
-/turf/simulated/floor/tile/chapel,
-/area/burgerstation/chapel)
-"qb" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/torch,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 1
-	},
-/area/burgerstation/chapel)
-"qc" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 1
-	},
-/turf/simulated/floor/carpet,
-/area/burgerstation/chapel)
-"qd" = (
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 1
-	},
-/area/burgerstation/chapel)
-"qe" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/sword/zweihander,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
+/obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/south)
+"qb" = (
+/obj/structure/interactive/door/airlock/wood,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/tax)
+"qc" = (
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/tax)
+"qd" = (
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/burgerstation/tax)
+"qe" = (
+/obj/structure/interactive/door/airlock/station/maintenance/chapel,
+/turf/simulated/floor/plating,
 /area/burgerstation/chapel)
 "qf" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/sword/claymore,
-/turf/simulated/floor/tile/chapel{
+/turf/simulated/floor/tile/chapel/decor{
 	icon_state = "floor";
-	dir = 1
+	dir = 10
 	},
 /area/burgerstation/chapel)
 "qg" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/storage/shoebox/jackboot,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
+/obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
+/turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "qh" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -4782,12 +4760,18 @@
 /turf/simulated/floor/carpet,
 /area/burgerstation/tax)
 "rr" = (
-/turf/simulated/wall/metal/reinforced,
-/area/burgerstation/hall/south)
+/obj/structure/interactive/door/airlock/station/chapel,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/tile/chapel,
+/area/burgerstation/chapel)
 "rs" = (
-/obj/structure/interactive/door/airlock/wood,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/tax)
+/obj/structure/interactive/chair/wood{
+	dir = 4
+	},
+/turf/simulated/floor/tile/chapel,
+/area/burgerstation/chapel)
 "rt" = (
 /obj/marker/lobby,
 /turf/simulated/floor/carpet,
@@ -4811,18 +4795,20 @@
 /turf/simulated/floor/carpet,
 /area/burgerstation/tax)
 "rx" = (
-/obj/structure/interactive/chair{
-	dir = 4
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/chapel,
 /area/burgerstation/hall/south)
 "ry" = (
-/obj/structure/smooth/table,
+/obj/structure/interactive/disposals/pipe/junction{
+	dir = 1
+	},
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/south)
 "rz" = (
-/obj/structure/interactive/chair{
-	dir = 8
+/obj/structure/interactive/disposals/pipe/junction/flipped{
+	dir = 1
 	},
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/south)
@@ -5020,11 +5006,11 @@
 /turf/simulated/floor/tile/morphing/chapel,
 /area/burgerstation/hall/south)
 "sl" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 6
 	},
-/turf/simulated/floor/tile/morphing/library,
-/area/burgerstation/hall/south)
+/area/burgerstation/chapel)
 "sm" = (
 /obj/structure/interactive/door/airlock/shuttle{
 	debug = 1
@@ -5311,12 +5297,10 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "tm" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
 	dir = 1
 	},
-/obj/marker/lobby,
-/turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "tn" = (
 /obj/decal/hazard,
@@ -5886,61 +5870,43 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/science)
 "vw" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/clothing/head/helmet/knight/templar,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/disposals/pipe/ending{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/chapel,
+/area/burgerstation/hall/south)
+"vx" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
-/area/burgerstation/chapel)
-"vx" = (
-/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "vy" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/clothing/overwear/armor/knight/templar,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 8
+/obj/structure/interactive/disposals/pipe{
+	dir = 9
 	},
-/area/burgerstation/chapel)
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/south)
 "vz" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/clothing/overwear/coat/chaplain,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 1
-	},
-/area/burgerstation/chapel)
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/space)
 "vA" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 4
-	},
-/area/burgerstation/chapel)
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/space/light)
 "vB" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 1
-	},
-/area/burgerstation/chapel)
-"vC" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
 	dir = 4
 	},
-/area/burgerstation/chapel)
+/obj/structure/interactive/vending/coffee,
+/turf/simulated/floor/tile/morphing/chapel,
+/area/burgerstation/hall/south)
+"vC" = (
+/obj/structure/interactive/vending/soda/full,
+/turf/simulated/floor/tile/morphing/chapel,
+/area/burgerstation/hall/south)
 "vD" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -5964,8 +5930,8 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/south)
 "vH" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
+/obj/structure/interactive/vending/junk/full,
+/turf/simulated/floor/tile/morphing/chapel,
 /area/burgerstation/hall/south)
 "vI" = (
 /obj/marker/spawning/window/reinforced,
@@ -6062,9 +6028,9 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "wc" = (
-/obj/structure/interactive/reagent_tank/ethanol,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/south)
+/obj/decal/poster/painting,
+/turf/simulated/wall/brick/chapel,
+/area/burgerstation/chapel)
 "wd" = (
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/plating,
@@ -6175,10 +6141,6 @@
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
-"wB" = (
-/mob/living/simple/goblin,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/south)
 "wC" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /obj/structure/interactive/scanner/iff_nanotrasen{
@@ -6587,6 +6549,13 @@
 	},
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
+"xW" = (
+/obj/structure/smooth/table/wood,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
+/turf/simulated/floor/tile/chapel,
+/area/burgerstation/chapel)
 "xX" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
@@ -6605,6 +6574,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
+"ya" = (
+/obj/decal/poster/painting{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/brick/chapel,
+/area/burgerstation/chapel)
 "yb" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
 	dir = 1
@@ -6626,6 +6602,10 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
+"yf" = (
+/obj/marker/spawning/window,
+/turf/simulated/wall/brick/chapel,
+/area/burgerstation/chapel)
 "yg" = (
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/morphing/green,
@@ -6636,14 +6616,57 @@
 "yi" = (
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/hall/central)
+"yj" = (
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/disposals/pipe/ending{
+	dir = 1
+	},
+/turf/simulated/floor/tile/chapel,
+/area/burgerstation/chapel)
 "yk" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/west)
+"yl" = (
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 4
+	},
+/area/burgerstation/chapel)
+"ym" = (
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 8
+	},
+/area/burgerstation/chapel)
+"yn" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 1
+	},
+/obj/marker/lobby,
+/turf/simulated/floor/carpet,
+/area/burgerstation/chapel)
+"yo" = (
+/obj/structure/interactive/chair/wood,
+/turf/simulated/floor/carpet,
+/area/burgerstation/chapel)
+"yp" = (
+/turf/simulated/floor/tile/chapel/decor,
+/area/burgerstation/chapel)
 "yq" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/hall/central)
+"yr" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 9
+	},
+/area/burgerstation/chapel)
 "yt" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -6657,6 +6680,15 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/cargo_inbound/ship)
+"yv" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 5
+	},
+/area/burgerstation/chapel)
 "yw" = (
 /obj/structure/shuttle_engine,
 /obj/shuttle_controller/cargo_inbound{
@@ -6665,18 +6697,52 @@
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo_inbound/ship)
+"yB" = (
+/obj/structure/interactive/disposals/pipe{
+	dir = 6
+	},
+/turf/simulated/floor/tile/chapel/decor,
+/area/burgerstation/chapel)
+"yD" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 5
+	},
+/area/burgerstation/chapel)
 "yE" = (
 /obj/decal/hazard{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"yF" = (
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 6
+	},
+/area/burgerstation/chapel)
+"yG" = (
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile/chapel/decor{
+	icon_state = "floor";
+	dir = 4
+	},
+/area/burgerstation/chapel)
 "yH" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"yI" = (
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile/chapel/decor,
+/area/burgerstation/chapel)
 "yJ" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
 	dir = 1
@@ -6695,30 +6761,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/south)
-"yQ" = (
-/obj/structure/interactive/disposals/machine/chute,
-/obj/structure/interactive/disposals/pipe/ending,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 4
-	},
-/area/burgerstation/chapel)
-"yR" = (
-/obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 4
-	},
-/area/burgerstation/chapel)
-"yS" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 5
-	},
-/turf/simulated/floor/tile/chapel{
-	icon_state = "floor";
-	dir = 4
-	},
-/area/burgerstation/chapel)
 "yX" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -37930,27 +37972,27 @@ mF
 mF
 dH
 mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-mF
-rT
 kF
 kF
-kF
-kF
-kF
-kF
-kF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+dH
+mF
+mF
+mF
+mF
+mF
+mF
+mF
 kF
 kF
 kF
@@ -38186,11 +38228,11 @@ mL
 mL
 bu
 bu
-bu
-bu
-bu
-bu
-bu
+mF
+mF
+mF
+mF
+xP
 xR
 xR
 xR
@@ -38199,15 +38241,15 @@ xR
 xR
 xP
 xP
-dH
-rT
-rT
-rT
-rT
-rT
-kF
-kF
-kF
+xP
+xP
+xP
+xP
+xP
+xP
+xP
+xP
+mF
 kF
 kF
 kF
@@ -38443,28 +38485,28 @@ oV
 gf
 lt
 bu
-dg
-dg
-dg
-dg
 bu
+bu
+bu
+bu
+bu
+Au
 bB
-Au
-Au
-Au
 bB
-wB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
 Au
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -38705,23 +38747,23 @@ dg
 dg
 dg
 bu
+Au
 bB
 bB
 bB
-bB
-bB
+gY
+gY
+gY
+gY
+gY
+gY
+gY
+gY
+gY
 bB
 Au
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -38966,19 +39008,19 @@ Au
 bB
 bB
 bB
-bB
+gY
+px
+fr
+fr
+rs
+fr
+fr
+fr
+gY
 bB
 Au
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -39223,19 +39265,19 @@ Au
 bB
 bB
 bB
+gY
+px
+fr
+pI
+pI
+pI
+js
+fr
+py
 bB
 bB
-Au
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -39471,28 +39513,28 @@ vn
 vn
 nb
 bu
-dg
-dg
-dg
-dg
 bu
+bu
+bu
+bu
+bu
+xP
+xP
+xP
 bB
-bB
-bB
-Au
-bB
+gY
+pz
+fr
+yo
+js
+js
+js
+vx
+gY
 bB
 bB
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -39728,28 +39770,28 @@ vn
 vn
 oR
 bu
-bu
-bu
-bu
-bu
-bu
-bB
-bB
-bB
+Au
+xP
 Au
 bB
 bB
 bB
+bB
+bB
+bB
+gY
+gM
+fr
+js
+js
+js
+js
+fr
+gY
+bB
+bB
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -39986,6 +40028,7 @@ vn
 jl
 bu
 bB
+om
 bB
 bB
 bB
@@ -39993,20 +40036,19 @@ bB
 bB
 bB
 bB
+gY
+gV
+fr
+fr
+fr
+fr
+fr
+fr
+gY
 bB
 bB
-bB
-wc
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -40243,27 +40285,27 @@ vn
 oR
 bu
 bB
-bB
-bB
-Au
-Au
-Au
+xP
 bB
 bB
 bB
+gY
+gY
+gY
+gY
+gY
+gY
+pF
+gY
+gY
+gY
+gY
+gY
+gY
 Au
-Au
-Au
+bB
 xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -40500,27 +40542,27 @@ vn
 oR
 ns
 bB
-pu
-pu
-pu
-pu
-pu
-pu
-pu
-pu
-pu
-pu
-pu
-pu
+xP
+bB
+bB
+bB
+gY
+pJ
+pJ
+pJ
+wc
+fr
+fr
+fr
+ya
+pJ
+pJ
+pJ
+gY
+Au
+bB
+xP
 mF
-rT
-kF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -40757,27 +40799,27 @@ vn
 oR
 bu
 bB
-pu
-px
-qd
-pZ
-qb
+xP
+bB
+gY
 qe
-qf
-qg
-vw
-vy
-vz
-pu
+gY
+pQ
+pQ
+pQ
+wc
+fr
+fr
+fr
+ya
+yf
+yf
+yf
+gY
+gY
+bB
+xP
 mF
-dH
-mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -41014,27 +41056,27 @@ vn
 oR
 bu
 bB
-pu
-py
-pz
-qa
-pN
-qa
-pN
-qa
-pN
-qa
-vA
-pu
-pv
-pv
+xP
+bB
+gY
+fr
+pt
+qf
+tm
+ym
+yr
+qf
+tm
+ym
+yr
+qf
+tm
+ym
+px
+pQ
+bB
+xR
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -41271,27 +41313,27 @@ vn
 oR
 bu
 bB
-pt
-pz
-pz
+xP
+bB
+gY
+gM
+js
+js
+js
+pG
+pG
+pG
+pG
+pG
+pG
+sl
+yl
+yp
 px
-qc
-qc
-qc
-qc
-qc
-qc
-qd
-px
-qd
-pv
+pQ
+bB
+xR
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -41528,27 +41570,27 @@ nb
 oR
 bu
 bB
-pu
-pE
-pz
-qa
-qc
-qc
-qc
-qc
-qc
-qc
-pN
-qa
-pN
-pv
+xP
+bB
+gY
+gV
+js
+pr
+js
+pG
+pG
+pG
+pG
+pG
+pG
+fr
+fr
+fr
+px
+pQ
+bB
+xR
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -41785,27 +41827,27 @@ oE
 bu
 bu
 bB
-pu
-pF
-pz
-px
-qc
-qc
-qc
-qc
-qc
-qc
-qd
-px
+xP
+bB
+gY
+iS
 js
-pv
+pr
+js
+pG
+pG
+pG
+yn
+pG
+pG
+fr
+fr
+fr
+xW
+gY
+bB
+xP
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -42042,27 +42084,27 @@ bB
 bB
 bB
 bB
-pu
+xP
+bB
+gY
+gM
+js
+pr
+js
 pG
-pz
-qa
-qc
-qc
-tm
-qc
-qc
-qc
-pN
-qa
-ee
-pv
+pG
+pG
+pG
+pG
+pG
+fr
+fr
+fr
+px
+pQ
+bB
+xR
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -42299,27 +42341,27 @@ bB
 bB
 Au
 Au
-pu
-pI
-pz
+xP
+bB
+gY
+gV
+js
+js
+js
+pG
+pG
+pG
+pG
+pG
+pG
+qf
+tm
+ym
 px
-qc
-qc
-qc
-qc
-qc
-qc
-qd
-px
-qd
-pv
+pQ
+bB
+xR
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -42556,27 +42598,27 @@ bB
 xP
 xR
 xR
+xP
+bB
+gY
+fr
 pu
-pz
-pz
-qa
-qc
-qc
-qc
-qc
-qc
-qc
-pN
-qa
-pN
-pv
+sl
+yl
+yp
+yv
+sl
+yl
+yB
+yD
+yF
+yG
+yI
+yj
+pQ
+bB
+xR
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -42813,27 +42855,27 @@ bB
 xR
 mF
 mF
-pu
-py
-pz
-px
-qd
-px
-qd
-px
-qd
-px
-vB
-pu
-pv
-pv
+xP
+bB
+gY
+qe
+gY
+pQ
+pQ
+pQ
+wc
+fr
+fr
+qg
+ya
+pQ
+pQ
+pQ
+gY
+gY
+bB
+xP
 mF
-kF
-kF
-rT
-kF
-kF
-kF
 kF
 kF
 kF
@@ -43070,27 +43112,27 @@ bB
 xR
 mF
 mF
-pu
+xP
+bB
+bB
+bB
+gY
 pJ
-yQ
-vx
-yR
-vx
-yR
-vx
-yS
-qa
-vC
-pu
+pJ
+pJ
+wc
+fr
+fr
+qg
+ya
+pJ
+pJ
+pJ
+gY
+Au
+bB
+xP
 mF
-dH
-mF
-mF
-mF
-dH
-mF
-kF
-kF
 kF
 kF
 kF
@@ -43327,27 +43369,27 @@ om
 xP
 pv
 pv
-pu
-pL
+xP
+ee
+om
+xP
+gY
 pQ
 pQ
 pQ
-pQ
-pQ
-pQ
-gM
-pQ
-iS
-pu
+gY
+pF
+pF
 rr
-rr
-vH
-vH
-vH
-rr
+gY
+pQ
+pQ
+pQ
+gY
+xP
+om
+xP
 mF
-kF
-kF
 kF
 kF
 kF
@@ -43584,27 +43626,27 @@ nT
 nT
 si
 si
+si
+si
+si
+si
 sk
 si
-si
-si
-si
-si
-si
-si
-gY
-si
-sk
 si
 si
 si
 si
 si
 rx
+si
+si
 vH
+vC
+vB
+vw
+si
+vz
 mF
-kF
-kF
 kF
 kF
 kF
@@ -43849,19 +43891,19 @@ uN
 uN
 uN
 uN
-pr
-nT
-nT
-nT
-nT
-nT
-nT
-nT
+uN
+uN
+uN
+rz
 ry
-vH
+uN
+uN
+uN
+uN
+vy
+nT
+vz
 mF
-kF
-kF
 kF
 kF
 kF
@@ -44093,9 +44135,9 @@ sg
 oG
 oG
 oG
+nT
+nT
 sh
-nT
-nT
 sj
 sj
 sj
@@ -44103,21 +44145,21 @@ sj
 sj
 gH
 sj
-sl
+sj
 sj
 nT
 nT
 nT
 nT
+sh
+qa
 nT
 nT
 nT
 nT
 nT
-rz
-vH
-mF
-mF
+nT
+vA
 mF
 kF
 kF
@@ -44367,13 +44409,13 @@ rd
 rd
 rp
 pK
-rs
+qb
 pK
 rp
 rd
 rp
 pK
-aj
+aX
 aj
 mF
 kF
@@ -44624,7 +44666,7 @@ re
 rl
 rl
 rl
-rl
+qc
 rl
 rl
 rl
@@ -44881,7 +44923,7 @@ rf
 rl
 rk
 rk
-rk
+qd
 rl
 rk
 rk
@@ -45138,7 +45180,7 @@ rg
 rl
 rk
 fB
-rk
+qd
 rl
 rh
 rh
@@ -45395,7 +45437,7 @@ rg
 rl
 rk
 rk
-rk
+qd
 rl
 rh
 rw
@@ -45648,11 +45690,11 @@ ps
 pT
 gL
 pK
-rg
-rl
-rk
-rk
-rk
+pE
+pL
+pN
+pN
+pZ
 rl
 pK
 pK

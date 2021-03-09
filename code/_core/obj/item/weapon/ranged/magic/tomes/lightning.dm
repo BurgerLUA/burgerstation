@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/magic/tome/lightning
-	name = "tome of the lightning bolt"
+	name = "tome of the holy lightning bolt"
 	desc = "Be like Zeus!"
 	desc_extended = "Fires slow moving lightning bolts at foes."
 	cost_mana = 16

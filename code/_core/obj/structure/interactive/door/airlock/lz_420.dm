@@ -32,6 +32,7 @@
 	color = COLOR_IRON
 	fill_color = COLOR_ENGINEERING
 
+
 /obj/structure/interactive/door/airlock/lz_420/basement/bathroom
 	color = COLOR_GREY
 	fill_color = COLOR_GREY_LIGHT

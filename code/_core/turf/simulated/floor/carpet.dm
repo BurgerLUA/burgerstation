@@ -12,6 +12,8 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	exposed = FALSE
+
 /turf/simulated/floor/carpet/office
 	name = "office carpet"
 	icon = 'icons/turf/floor/carpet_office.dmi'
@@ -22,4 +24,3 @@
 /turf/simulated/floor/carpet/office/New(var/desired_loc)
 	. = ..()
 	icon_state = "[rand(1,4)]"
-	

@@ -19,7 +19,7 @@
 
 /obj/structure/interactive/door/airlock/station/chapel
 	name = "chapel airlock"
-	color = COLOR_WHITE
+	color = "#E1DFD2"
 	filler = "glass"
 	fill_color = "#FFFFFF"
 
@@ -55,6 +55,12 @@
 	name = "maintenance airlock"
 	color = COLOR_METAL_DARK
 	fill_color = "#B69F3C"
+
+/obj/structure/interactive/door/airlock/station/maintenance/chapel
+	name = "maintenance airlock"
+	color = COLOR_METAL_DARK
+	fill_color = "#E1DFD2"
+
 
 /obj/structure/interactive/door/airlock/station/maintenance/no_access
 	no_access = TRUE

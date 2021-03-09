@@ -16,11 +16,15 @@
 
 
 /turf/simulated/floor/tile/chapel/
+	color = COLOR_GREY_DARK
+
+/turf/simulated/floor/tile/chapel/decor
 	name = "chapel floor"
 	icon = 'icons/turf/floor/chapel.dmi'
 	icon_state = "floor"
 	desc = "A holy floor"
 	desc_extended = "Doesn't actually increase the strength of religious magic while standing on it."
+	color = "#FFFFFF"
 
 /turf/simulated/floor/tile/grey
 	color = COLOR_GREY

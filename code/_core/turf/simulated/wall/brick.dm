@@ -18,6 +18,13 @@
 	name = "sandstone wall"
 	color = "#FFC68C"
 
+/turf/simulated/wall/brick/marble
+	name = "marble wall"
+	color = "#E1DFD2"
+
+/turf/simulated/wall/brick/chapel
+	name = "chapel wall"
+	color = COLOR_GREY_DARK
 
 /turf/simulated/wall/brick/banana
 	name = "banana brick wall"
