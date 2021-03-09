@@ -24,9 +24,11 @@
 	heat_max = 0.03
 
 	inaccuracy_modifier = 0.1
-	movement_spread_base = 1
+	movement_spread_base = 0.05
 
 	var/draw_sound = 'sound/weapons/bow/draw_steel.ogg'
+
+	var/damage_multiplier = 1
 
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
@@ -37,7 +39,7 @@
 
 /obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
 	if(current_stage > 0 )
-		shoot(caller,object,location,params,max(current_stage/40,0.25))
+		shoot(caller,object,location,params,damage_multiplier*max(current_stage/40,0.25))
 		current_stage = 0
 		update_sprite()
 	return TRUE
@@ -45,8 +47,10 @@
 /obj/item/weapon/ranged/bow/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 	if(object.plane >= PLANE_HUD)
 		return ..()
+	if(object.loc && object.loc.plane >= PLANE_HUD)
+		return ..()
 	if(!is_advanced(caller))
-		return TRUE
+		return ..()
 	current_shooter = caller
 	start_thinking(src)
 	play_sound(draw_sound,get_turf(src))
@@ -115,29 +119,36 @@
 
 	value = 200
 
+/obj/item/weapon/ranged/bow/wood/get_static_spread()
+	return 0.005
+
 /obj/item/weapon/ranged/bow/steel
 	name = "steel bow"
 	desc = "For ranged ungas who like steel."
-	desc_extended = "An upgraded bow that is harder to pull back, but kicks more of a punch."
+	desc_extended = "An upgraded bow that is harder to pull back, but is more accurate and fires more of a punch."
 	icon = 'icons/obj/item/weapons/ranged/bow/steel.dmi'
 
 	stage_per_decisecond = 1
 
 	value = 300
 
+	damage_multiplier = 1.25
+
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
 	desc = "How can light be hard? :flushed:"
-	desc_extended = "A space-age bow that somehow uses the power of light to conjure arrows if none are provided."
+	desc_extended = "A space-age bow that somehow uses the power of light to conjure arrows if none are provided. Fires really fast, regardless."
 	icon = 'icons/obj/item/weapons/ranged/bow/hardlight.dmi'
 
-	stage_per_decisecond = 2
+	stage_per_decisecond = 5
 
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
 	draw_sound = 'sound/weapons/bow/draw_hardlight.ogg'
 
 	value = 3000
+
+	damage_multiplier = 0.75
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -157,10 +168,11 @@
 	desc_extended = "A special masterfully crafted ashen bow that somehow invokes the strength of ancient megafauna when drawing arrows."
 	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
 
-	stage_per_decisecond = 5
+	stage_per_decisecond = 2
 
 	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
 
+	damage_multiplier = 1.25
 
 	value = 2000
 

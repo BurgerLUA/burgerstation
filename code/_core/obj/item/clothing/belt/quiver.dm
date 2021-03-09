@@ -1,7 +1,7 @@
 /obj/item/clothing/belt/belt_quiver
 	name = "belt quiver"
 	desc = "For the aspiring archer."
-	desc_extended = "A not-so-fancy belt quiver meant to hold a number of arrows. CTRL+Click to grab additional arrows while already holding an arrow."
+	desc_extended = "A not-so-fancy belt quiver meant to hold a number of arrows. ALT+Click to grab additional arrows while already holding an arrow."
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/clothing/belts/belt_quiver.dmi'
 
