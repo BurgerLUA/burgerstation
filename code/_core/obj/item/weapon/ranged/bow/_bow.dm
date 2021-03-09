@@ -29,9 +29,10 @@
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
-	shoot(caller,object,location,params,max(current_stage/40,0.25))
-	current_stage = 0
-	update_sprite()
+	if(current_stage > 0 )
+		shoot(caller,object,location,params,max(current_stage/40,0.25))
+		current_stage = 0
+		update_sprite()
 	return TRUE
 
 /obj/item/weapon/ranged/bow/click_on_object(var/mob/caller,var/atom/object,location,control,params)
@@ -59,6 +60,8 @@
 			update_sprite()
 
 		. = TRUE
+	else
+		current_stage = 0
 
 	. = ..() || . //weirdest statement I ever wrote.
 
