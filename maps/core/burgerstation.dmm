@@ -6141,6 +6141,12 @@
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
+"wB" = (
+/obj/structure/smooth/table/reinforced,
+/obj/structure/interactive/shop,
+/obj/item/analyzer/genetic,
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/science)
 "wC" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /obj/structure/interactive/scanner/iff_nanotrasen{
@@ -39247,7 +39253,7 @@ vr
 vr
 vT
 gn
-nb
+wB
 vn
 vn
 vn

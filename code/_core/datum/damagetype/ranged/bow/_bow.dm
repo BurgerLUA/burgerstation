@@ -1,6 +1,6 @@
 /damagetype/ranged/bow/
 	name = "bow"
-	damage_mod = 2
+	damage_mod = 1.75
 
 	bonus_experience_skill = list(
 		SKILL_RANGED = 50 //100%

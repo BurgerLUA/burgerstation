@@ -15,7 +15,9 @@
 	bullet_diameter = -1
 
 	size = SIZE_1
-	value = 5
+	value = 2
+
+	caseless = TRUE
 
 /obj/item/bullet_cartridge/arrow/Generate()
 	item_count_current = item_count_max
@@ -39,7 +41,7 @@
 	item_count_max = 3
 	item_count_max_icon = 3
 
-	value = 30
+	value = 10
 
 /obj/item/bullet_cartridge/arrow/hardlight
 	name = "hardlight arrow"
