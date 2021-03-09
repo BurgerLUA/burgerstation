@@ -17,6 +17,8 @@
 	var/list/stored_arrows = list()
 	var/arrow_count = 0
 
+	var/max_arrows = 200
+
 /obj/item/clothing/belt/belt_quiver/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["stored_arrows"] = list()
@@ -76,7 +78,7 @@
 					stored_arrows -= A.type
 				update_sprite()
 		else
-			var/amount_added = -A.add_item_count(-A.item_count_current)
+			var/amount_added = -A.add_item_count(-min(A.item_count_current,max(0,max_arrows - get_arrow_count())))
 			if(amount_added)
 				if(!stored_arrows[A.type])
 					stored_arrows[A.type] = amount_added

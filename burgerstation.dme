@@ -397,6 +397,8 @@
 #include "code\_core\datum\damagetype\ranged\shrapnel.dm"
 #include "code\_core\datum\damagetype\ranged\spit.dm"
 #include "code\_core\datum\damagetype\ranged\bow\_bow.dm"
+#include "code\_core\datum\damagetype\ranged\bow\ashen.dm"
+#include "code\_core\datum\damagetype\ranged\bow\hardlight.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\_bullet.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\bolt.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\gauss.dm"

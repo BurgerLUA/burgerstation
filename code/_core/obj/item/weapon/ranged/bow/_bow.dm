@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/bow
 
+	icon_state = "inventory"
+
 	requires_bullets = TRUE
 
 	empty_sounds = list(
@@ -71,11 +73,6 @@
 /obj/item/weapon/ranged/bow/get_base_spread()
 	return 0.1
 
-/obj/item/weapon/ranged/bow/wood
-	name = "wood bow"
-	icon = 'icons/obj/item/weapons/ranged/bow/wood.dmi'
-	icon_state = "inventory"
-
 /obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
 
 	if(!is_advanced(caller))
@@ -99,3 +96,52 @@
 
 /obj/item/weapon/ranged/bow/handle_empty(var/mob/caller)
 	return FALSE
+
+
+
+/obj/item/weapon/ranged/bow/wood
+	name = "wood bow"
+	desc = "For ranged ungas."
+	desc_extended = "A classic wooden bow. Overall, it's reliable and has no gimmick."
+	icon = 'icons/obj/item/weapons/ranged/bow/wood.dmi'
+
+	stage_per_decisecond = 2
+
+/obj/item/weapon/ranged/bow/steel
+	name = "steel bow"
+	desc = "For ranged ungas who like steel."
+	desc_extended = "An upgraded bow that is harder to pull back, but kicks more of a punch."
+	icon = 'icons/obj/item/weapons/ranged/bow/steel.dmi'
+
+	stage_per_decisecond = 1
+
+/obj/item/weapon/ranged/bow/hardlight
+	name = "hardlight bow"
+	desc = "How can light be hard? :flushed:"
+	desc_extended = "A space-age bow that somehow uses the power of light to conjure arrows if none are provided."
+	icon = 'icons/obj/item/weapons/ranged/bow/hardlight.dmi'
+
+	stage_per_decisecond = 2
+
+	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
+
+/obj/item/weapon/ranged/bow/hardlight/Initialize()
+	. = ..()
+	stored_arrow = new stored_arrow(src)
+	INITIALIZE(stored_arrow)
+	GENERATE(stored_arrow)
+	FINALIZE(stored_arrow)
+
+/obj/item/weapon/ranged/bow/hardlight/handle_ammo(var/mob/caller)
+	. = ..()
+	if(!.)
+		return stored_arrow
+
+/obj/item/weapon/ranged/bow/ashen
+	name = "ashen bow"
+	desc = "So sacred, not even ashwalkers use it."
+	desc_extended = "A special masterfully crafted ashen bow that somehow invokes the strength of ancient megafauna when drawing arrows."
+	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
+
+	stage_per_decisecond = 5
+

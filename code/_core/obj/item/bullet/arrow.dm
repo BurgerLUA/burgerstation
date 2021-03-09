@@ -26,3 +26,34 @@
 	src.projectile_count = item_count_current
 	qdel(src)
 	return src
+
+/obj/item/bullet_cartridge/arrow/ashen
+	name = "ashen arrow"
+	icon = 'icons/obj/item/bullet/arrow_ashen.dmi'
+
+	projectile = /obj/projectile/bullet/arrow/ashen
+	damage_type_bullet = /damagetype/ranged/bow/ashen
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	item_count_max = 3
+	item_count_max_icon = 3
+
+	value = 30
+
+/obj/item/bullet_cartridge/arrow/hardlight
+	name = "hardlight arrow"
+	icon = 'icons/obj/item/bullet/arrow_hardlight.dmi'
+
+	projectile = /obj/projectile/bullet/arrow/hardlight
+	damage_type_bullet = /damagetype/ranged/bow/hardlight
+
+	projectile_speed = TILE_SIZE-1
+
+	item_count_max = 1
+	item_count_max_icon = 1
+
+	value = -1
+
+/obj/item/bullet_cartridge/arrow/hardlight/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
+	return src

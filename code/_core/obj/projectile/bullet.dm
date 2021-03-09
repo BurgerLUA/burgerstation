@@ -20,6 +20,16 @@
 	icon = 'icons/obj/projectiles/arrow.dmi'
 	icon_state = "normal"
 
+/obj/projectile/bullet/arrow/ashen
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "ashen"
+
+/obj/projectile/bullet/arrow/hardlight
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "hardlight"
+
 /obj/projectile/bullet/tungsten
 	name = "tungsten bolt"
 	icon = 'icons/obj/projectiles/bolt.dmi'
