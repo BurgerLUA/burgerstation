@@ -113,6 +113,8 @@
 
 	stage_per_decisecond = 2
 
+	value = 200
+
 /obj/item/weapon/ranged/bow/steel
 	name = "steel bow"
 	desc = "For ranged ungas who like steel."
@@ -120,6 +122,8 @@
 	icon = 'icons/obj/item/weapons/ranged/bow/steel.dmi'
 
 	stage_per_decisecond = 1
+
+	value = 300
 
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
@@ -132,6 +136,8 @@
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
 	draw_sound = 'sound/weapons/bow/draw_hardlight.ogg'
+
+	value = 3000
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -154,4 +160,7 @@
 	stage_per_decisecond = 5
 
 	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
+
+
+	value = 2000
 

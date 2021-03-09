@@ -195,7 +195,7 @@
 	if(reagents)
 		reagents.metabolize(is_advanced(src.loc) ? src.loc : null)
 
-	if(bleeding >= 0.5 && is_advanced(src.loc))
+	if(bleeding >= 0.25 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		if(A.blood_type && A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
 			var/bleed_amount = bleeding*DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
