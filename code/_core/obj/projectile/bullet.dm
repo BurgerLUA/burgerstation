@@ -14,6 +14,23 @@
 	name = "crossbow bolt"
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "bolt"
+	muzzleflash_effect = null
+
+/obj/projectile/bullet/arrow
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "normal"
+	muzzleflash_effect = null
+
+/obj/projectile/bullet/arrow/ashen
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "ashen"
+
+/obj/projectile/bullet/arrow/hardlight
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "hardlight"
 
 /obj/projectile/bullet/tungsten
 	name = "tungsten bolt"
