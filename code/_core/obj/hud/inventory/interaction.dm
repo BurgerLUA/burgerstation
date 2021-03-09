@@ -149,10 +149,8 @@
 					if(!INV.click_flags && (!INV.drag_to_take || is_weapon(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
 						src.add_object(object)
 						return TRUE
-				else if(INV.worn && !I.is_container) //The item we're clicking on is not a container and it's in a worn inventory.
-					INV.add_object(top_object)
+				else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory.
 					return TRUE
-
 			else if(!top_object) //If we don't have a top object, pick it up.
 				src.add_object(object)
 				return TRUE
@@ -302,3 +300,13 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 	if(I) return I
 
 	return src
+
+
+/obj/hud/inventory/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params)
+
+	var/atom/top_object = get_top_object()
+
+	if(top_object && top_object.on_mouse_up(caller,object,location,control,params))
+		return TRUE
+
+	. = ..()

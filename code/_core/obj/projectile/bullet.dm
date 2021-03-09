@@ -15,6 +15,11 @@
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "bolt"
 
+/obj/projectile/bullet/arrow
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "normal"
+
 /obj/projectile/bullet/tungsten
 	name = "tungsten bolt"
 	icon = 'icons/obj/projectiles/bolt.dmi'
