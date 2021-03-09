@@ -4,9 +4,12 @@
 
 	requires_bullets = TRUE
 
-	empty_sounds = list(
-
+	shoot_sounds = list(
+		'sound/weapons/bow/fire.ogg'
 	)
+	empty_sounds = list()
+
+	shoot_alert = ALERT_LEVEL_NONE
 
 	automatic = FALSE
 
@@ -22,6 +25,8 @@
 
 	inaccuracy_modifier = 0.1
 	movement_spread_base = 1
+
+	var/draw_sound = 'sound/weapons/bow/draw_steel.ogg'
 
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
@@ -44,6 +49,7 @@
 		return TRUE
 	current_shooter = caller
 	start_thinking(src)
+	play_sound(draw_sound,get_turf(src))
 	return TRUE
 
 /obj/item/weapon/ranged/bow/update_icon()
@@ -125,6 +131,8 @@
 
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
+	draw_sound = 'sound/weapons/bow/draw_hardlight.ogg'
+
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
 	stored_arrow = new stored_arrow(src)
@@ -144,4 +152,6 @@
 	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
 
 	stage_per_decisecond = 5
+
+	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
 
