@@ -79,6 +79,13 @@
 	name = "centcomm supply pod"
 	icon_state = "centcommpod"
 
+/obj/structure/interactive/crate/closet/supply_pod/centcomm/meme
+	auto_open = FALSE
+
+/obj/structure/interactive/crate/closet/supply_pod/centcomm/meme/Generate()
+	CREATE(/obj/structure/interactive/dont_look,src)
+	. = ..()
+
 /obj/structure/interactive/crate/closet/supply_pod/syndicate
 	name = "syndicate supply pod"
 	icon_state = "syndiepod"
