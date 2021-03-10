@@ -172,7 +172,7 @@
 	metabolism_stomach = 1
 	experience_per_unit = 10
 
-	value = 5000
+	value = 500
 
 /reagent/medicine/adminomnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()

@@ -162,6 +162,7 @@
 
 	if(retaliate && attackers)
 		for(var/k in attackers)
+			CHECK_TICK(75,FPS_SERVER*2)
 			var/atom/A = k
 			if(A.qdeleting)
 				attackers -= k
@@ -169,8 +170,8 @@
 			.[A] = TRUE
 
 	var/range_to_use = get_view_range()
-
-	if(range_to_use <= 0) return
+	if(range_to_use <= 0)
+		return .
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
