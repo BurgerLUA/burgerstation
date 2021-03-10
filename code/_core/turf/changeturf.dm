@@ -42,9 +42,12 @@
 	if(force_edges_update)
 		update_edges()
 	else
-		queue_update_turf_edges(src)
+		queue_update_turf_edges(W)
 
 	W.post_change_turf(old_turf_type)
+
+	var/area/A = W.loc
+	if(A) A.setup_sunlight(W)
 
 /turf/proc/post_change_turf(var/old_turf_type)
 	return TRUE

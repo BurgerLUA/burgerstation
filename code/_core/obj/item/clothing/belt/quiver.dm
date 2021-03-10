@@ -32,6 +32,10 @@
 		var/v = object_data["stored_arrows"][k]
 		stored_arrows[text2path(k)] = v
 
+/obj/item/clothing/belt/belt_quiver/Finalize()
+	. = ..()
+	update_sprite()
+
 /obj/item/clothing/belt/belt_quiver/proc/get_arrow_count()
 	. = 0
 	for(var/k in stored_arrows)
