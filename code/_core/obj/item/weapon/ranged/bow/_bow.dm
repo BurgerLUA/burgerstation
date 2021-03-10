@@ -78,9 +78,10 @@
 			update_sprite()
 
 		. = TRUE
-	else if(current_stage > 0)
-		current_stage = 0
-		update_sprite()
+	else
+		if(current_stage > 0)
+			current_stage = 0
+			update_sprite()
 		. = FALSE
 
 	. = ..() || . //weirdest statement I ever wrote.
