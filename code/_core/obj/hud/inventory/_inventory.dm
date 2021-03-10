@@ -126,7 +126,7 @@
 /obj/hud/inventory/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	
+
 /obj/hud/inventory/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
@@ -150,7 +150,7 @@
 	else
 		color = initial(color)
 
-	
+
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
 	//OVERLAY BUG, NOT THIS.
@@ -431,7 +431,7 @@
 		else
 			A.remove_overlay("\ref[I]")
 
-	if(owner)
+	if(owner && !owner.qdeleting)
 		I.set_dir(owner.dir)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner

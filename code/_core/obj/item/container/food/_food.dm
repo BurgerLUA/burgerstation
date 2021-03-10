@@ -51,7 +51,7 @@
 	if(reagents.volume_current <= 0)
 		on_consumed(caller,target)
 
-	
+
 /obj/item/container/food/proc/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
 	return CEILING(total_reagents/get_consume_size(caller),1)
 
@@ -76,6 +76,9 @@
 			continue
 		IT.reagents.transfer_reagents_to(T, IT.reagents.volume_current/calculated_bites, FALSE )
 		IT.reagents.update_container()
+
+	if(calculated_bites < 1)
+		calculated_bites = 1
 
 	reagents.transfer_reagents_to(T, reagents.volume_current/calculated_bites)
 

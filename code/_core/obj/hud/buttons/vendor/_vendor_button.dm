@@ -22,6 +22,8 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/vendor/get_examine_list(var/mob/caller)
+	if(!associated_item)
+		return ..()
 	return associated_item.get_examine_list(caller)
 
 /obj/hud/button/vendor/Destroy()
