@@ -51,3 +51,21 @@
 	totem_to_spawn = /obj/structure/totem/attracting
 
 	value = 5000
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/frost_spray
+	name = "totemic tome of frost spray"
+	totem_to_spawn = /obj/structure/totem/frost_spray
+
+	value = 5000
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/flame_spray
+	name = "totemic tome of flame spray"
+	totem_to_spawn = /obj/structure/totem/flame_spray
+
+	value = 5000
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/shock_spray
+	name = "totemic tome of shock spray"
+	totem_to_spawn = /obj/structure/totem/shock_spray
+
+	value = 5000

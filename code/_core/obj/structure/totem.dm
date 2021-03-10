@@ -4,6 +4,8 @@
 	desc_extended = "A totem that will produce a buff for the caster and their allies."
 	icon = 'icons/obj/structure/totem.dmi'
 
+	health_base = 200
+
 	var/next_fire = 0
 	var/cooldown_fire = SECONDS_TO_DECISECONDS(1)
 
@@ -169,7 +171,7 @@
 	desc = "Can you hear the voice of god through this bush flame?"
 	desc = "Someone thought to take a book and stick it inside the totem."
 	desc_extended = "A totem that will set ablaze the caster's enemies."
-	icon_state = "flame"
+	icon_state = "sacred_flame"
 
 /obj/structure/totem/sacred_flame/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
@@ -181,6 +183,7 @@
 		if(!istype(L.health))
 			continue
 		L.ignite(SECONDS_TO_DECISECONDS(1.5))
+		L.health.adjust_loss_smart(burn = 5 * leveled_effect)
 		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/repelling
@@ -191,7 +194,7 @@
 
 /obj/structure/totem/repelling/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(4,T))
+	for(var/mob/living/L in viewers(4*leveled_effect,T))
 		if(L.dead)
 			continue
 		if(L.boss) //yea, no repelling bosses, sorry
@@ -213,7 +216,7 @@
 
 /obj/structure/totem/attracting/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(4,T))
+	for(var/mob/living/L in viewers(4*leveled_effect,T))
 		if(L.dead)
 			continue
 		if(L.boss) //yea, no attracting bosses, sorry
@@ -226,3 +229,57 @@
 			continue
 		L.Move(get_step(L.loc,get_dir(L,src)))
 		CREATE(/obj/effect/temp/electricity,L.loc)
+
+/obj/structure/totem/frost_spray
+	name = "totem of frost spray"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire frost spray at the caster's enemies."
+	icon_state = "frost"
+
+/obj/structure/totem/frost_spray/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		for(var/i in 1 to leveled_effect)
+			shoot_projectile(src, L, null, null, /obj/projectile/magic/frost, /damagetype/ranged/magic/frost, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/flame_spray
+	name = "totem of flame spray"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire flame spray at the caster's enemies."
+	icon_state = "flame"
+
+/obj/structure/totem/flame_spray/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		for(var/i in 1 to leveled_effect)
+			shoot_projectile(src, L, null, null, /obj/projectile/magic/lesser_fire, /damagetype/ranged/magic/flame, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/shock_spray
+	name = "totem of shock spray"
+	desc = "Listen to be baby, you've got to understand, lightning striking again!"
+	desc_extended = "A totem that will fire shock spray at the caster's enemies."
+	icon_state = "shock"
+
+/obj/structure/totem/shock_spray/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		for(var/i in 1 to leveled_effect)
+			shoot_projectile(src, L, null, null, /obj/projectile/magic/lightning, /damagetype/ranged/magic/shock, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
