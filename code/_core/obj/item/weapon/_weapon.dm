@@ -47,8 +47,6 @@
 	if(!override_icon_state)
 		icon_state = "[initial(icon_state)][open_text]"
 
-
-
 	return ..()
 
 /obj/item/weapon/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)

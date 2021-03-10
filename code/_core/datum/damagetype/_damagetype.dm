@@ -116,6 +116,8 @@
 
 	var/target_floors = FALSE //Can this damagetype target floors?
 
+	var/attack_animation_distance = 18
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -166,10 +168,9 @@
 	return ATTACK_TYPE_MELEE
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
-	var/time_to_wait = do_attack_animation(attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",time_to_wait,src,.proc/do_miss_sound,attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",time_to_wait,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
-	return time_to_wait
+	. = do_attack_animation(attacker,victim,weapon)
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.,src,.proc/do_miss_sound,attacker,victim,weapon)
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
@@ -252,7 +253,7 @@
 	if(!length(hit_objects))
 		return perform_miss(attacker,victims[1],weapon)
 
-	var/swing_time = 0
+	. = 0
 
 	for(var/i=1,i<=length(victims),i++)
 		var/atom/victim = victims[i]
@@ -292,11 +293,11 @@
 			return FALSE
 
 		if(i==1)
-			swing_time = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
+			. = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
 
-		CALLBACK("\ref[weapon]_\ref[hit_object]",swing_time,src,.proc/hit,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
+		CALLBACK("\ref[weapon]_\ref[hit_object]",CEILING(.*0.125,1),src,.proc/hit,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
 
-	return swing_time
+	return .
 
 /damagetype/proc/hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 	return process_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier)
@@ -599,10 +600,8 @@
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	var/caller_attack_delay = attacker.attack_next - world.time
-	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? caller_attack_delay : ATTACK_ANIMATION_LENGTH * 2
+	var/attack_delay = get_attack_delay(attacker)
 
-	var/punch_distance = 12
 	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
 
 	if(is_living(attacker))
@@ -611,23 +610,21 @@
 		if(L.horizontal)
 			attack_matrix = turn(attack_matrix,L.stun_angle)
 
-		attack_matrix.Translate(pixel_offset[1]*punch_distance,pixel_offset[2]*punch_distance)
+		attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
 
-		animate(L, transform = attack_matrix, time = FLOOR(weapon_attack_delay*0.125,1), flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(L, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
 
 		if(L.horizontal)
-			animate(transform = turn(matrix(), L.stun_angle), time = FLOOR(caller_attack_delay*0.99,1), flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(transform = turn(matrix(), L.stun_angle), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset
 		else
-			animate(transform = matrix(), time = FLOOR(caller_attack_delay*0.99,1), flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(transform = matrix(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
 
-	. = CEILING(weapon_attack_delay*0.125,1)
+	. = CEILING(attack_delay,1)
 
 	do_swing_sound(attacker,victim,weapon)
 
 	if(draw_weapon)
-		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 2,victim,attacker,weapon)
-
-	return
+		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 0.5,victim,attacker,weapon)
 
 /damagetype/proc/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0

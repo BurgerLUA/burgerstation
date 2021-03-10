@@ -141,11 +141,11 @@
 			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
 		victims -= v //Needs to be here.
 
-	if(DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker))
-		var/object_attack_delay = DT.get_attack_delay(attacker)
+	var/swing_result = DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
+	if(swing_result)
 		if(attacker != object_to_damage_with)
-			object_to_damage_with.attack_next = world.time + object_attack_delay
-		attacker.attack_next = world.time + object_attack_delay*0.5
+			object_to_damage_with.attack_next = world.time + swing_result
+		attacker.attack_next = world.time + swing_result*0.5
 	else
 		attacker.attack_next = world.time + 1
 
