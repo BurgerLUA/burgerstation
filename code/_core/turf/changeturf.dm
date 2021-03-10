@@ -47,7 +47,8 @@
 	W.post_change_turf(old_turf_type)
 
 	var/area/A = W.loc
-	if(A) A.setup_sunlight(W)
+	if(A && A.sunlight_freq > 0 && A.sunlight_color)
+		A.setup_sunlight(W)
 
 /turf/proc/post_change_turf(var/old_turf_type)
 	return TRUE
