@@ -10,23 +10,17 @@
 	if(is_living(A1) && is_living(A2))
 		var/mob/living/L1 = A1
 		var/mob/living/L2 = A2
-		if(L1.move_delay > 0 && L2.move_delay > 0)
-			var/calc1 = get_dist(L1.old_turf,L2)
-			var/calc2 = get_dist(L1,L2.old_turf)
-			var/calc3 = get_dist(L2.old_turf,L1.old_turf)
-			if(calc1 < best_distance)
-				best_distance = calc1
-			if(calc2 < best_distance)
-				best_distance = calc2
-			if(calc3 < best_distance)
-				best_distance = calc3
-		else if(L1.move_delay > 0)
-			var/calc = get_dist(L1.old_turf,L2)
-			if(calc < best_distance)
+		if(L1.move_delay > 0 && L2.move_delay > 0 && L1.old_turf && L2.old_turf)
+			var/calc = get_dist(L2.old_turf,L1.old_turf)
+			if(calc >= 0 && calc < best_distance)
 				best_distance = calc
-		else if(L2.move_delay > 0)
+		if(L1.move_delay > 0 && L1.old_turf)
+			var/calc = get_dist(L1.old_turf,L2)
+			if(calc >= 0 && calc < best_distance)
+				best_distance = calc
+		if(L2.move_delay > 0 && L2.old_turf)
 			var/calc = get_dist(L1,L2.old_turf)
-			if(calc < best_distance)
+			if(calc >= 0 && calc < best_distance)
 				best_distance = calc
 
 	best_distance -= ( (A1.object_size-1) + (A2.object_size-1) )
