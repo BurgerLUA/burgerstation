@@ -4748,10 +4748,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/burgerstation/tax)
-"rp" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
-/area/burgerstation/tax)
 "rq" = (
 /obj/structure/interactive/chair/wood{
 	icon_state = "wooden_chair";
@@ -38239,7 +38235,7 @@ mF
 mF
 mF
 xP
-xR
+xP
 xR
 xR
 xR
@@ -44413,13 +44409,13 @@ gL
 pK
 rd
 rd
-rp
+rd
 pK
 qb
 pK
-rp
 rd
-rp
+rd
+rd
 pK
 aX
 aj

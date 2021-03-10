@@ -7,15 +7,18 @@
 
 	var/max_states = 6
 
-
-/obj/item/dice/Finalize()
-
+/obj/item/dice/update_underlays()
 	var/image/I = new(icon,initial(icon_state))
 	add_underlay(I)
+	. = ..()
 
-	icon_state = "[icon_state]-[max_states]"
+/obj/item/dice/update_icon()
+	icon_state = "[initial(icon_state)]-[max_states]"
+	. = ..()
 
-	return ..()
+/obj/item/dice/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/dice/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown and it hits an object.
 	roll_dice(owner)
@@ -78,12 +81,11 @@
 
 	value = 2000
 
-/obj/item/dice/d20/cursed/Finalize()
+	value_burgerbux = 1
 
+/obj/item/dice/d20/cursed/update_icon()
 	. = ..()
-
-	icon_state = "blank"
-
+	if(!used) icon_state = "blank"
 
 /obj/item/dice/d20/cursed/save_item_data(var/save_inventory = TRUE)
 	. = ..()
