@@ -143,8 +143,6 @@
 
 	var/object_attack_delay = DT.get_attack_delay(attacker)
 
-	attacker << "Attempt."
-
 	if(DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker))
 		if(attacker != object_to_damage_with)
 			object_to_damage_with.attack_next = world.time + object_attack_delay
