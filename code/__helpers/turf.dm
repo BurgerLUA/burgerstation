@@ -1,6 +1,5 @@
 /proc/get_area(A)
-	if(isarea(A))
-		return A
+	if(isarea(A)) return A
 	var/turf/T = get_turf(A)
 	return T ? T.loc : null
 
@@ -17,12 +16,11 @@
 			if(calc1 < best_distance)
 				best_distance = calc1
 			if(calc2 < best_distance)
-				best_distance = calc1
+				best_distance = calc2
 		else if(L1.move_delay > 0)
 			var/calc = get_dist(L1.old_turf,L2)
 			if(calc < best_distance)
 				best_distance = calc
-
 		else if(L2.move_delay > 0)
 			var/calc = get_dist(L1,L2.old_turf)
 			if(calc < best_distance)

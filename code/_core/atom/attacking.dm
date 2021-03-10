@@ -37,16 +37,6 @@
 		CRASH_SAFE("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
 		return FALSE
 
-	/* GOTTA TEST THIS
-	if(invisibility >= 101 || alpha == 0)
-		log_error("Warning: [src.get_debug_name()] tried attacking, but it was invisible!")
-		return FALSE
-
-	if(attacker.invisibility >= 101 || attacker.alpha == 0)
-		log_error("Warning: [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was invisible!")
-		return FALSE
-	*/
-
 	var/atom/changed_target = victim.change_victim(attacker,src)
 	if(changed_target)
 		victim = changed_target
