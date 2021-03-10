@@ -239,6 +239,7 @@
 
 /obj/structure/totem/frost_spray/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
@@ -246,8 +247,11 @@
 			continue
 		if(!istype(L.health))
 			continue
-		for(var/i in 1 to leveled_effect)
-			shoot_projectile(src, L, null, null, /obj/projectile/magic/frost, /damagetype/ranged/magic/frost, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+		chooseEnemies += L
+	if(chooseEnemies == list())
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/frost, /damagetype/ranged/magic/frost, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
 
 /obj/structure/totem/flame_spray
 	name = "totem of flame spray"
@@ -257,6 +261,7 @@
 
 /obj/structure/totem/flame_spray/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
@@ -264,8 +269,11 @@
 			continue
 		if(!istype(L.health))
 			continue
-		for(var/i in 1 to leveled_effect)
-			shoot_projectile(src, L, null, null, /obj/projectile/magic/lesser_fire, /damagetype/ranged/magic/flame, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+		chooseEnemies += L
+	if(chooseEnemies == list())
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lesser_fire, /damagetype/ranged/magic/flame, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
 
 /obj/structure/totem/shock_spray
 	name = "totem of shock spray"
@@ -275,6 +283,7 @@
 
 /obj/structure/totem/shock_spray/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
@@ -282,5 +291,8 @@
 			continue
 		if(!istype(L.health))
 			continue
-		for(var/i in 1 to leveled_effect)
-			shoot_projectile(src, L, null, null, /obj/projectile/magic/lightning, /damagetype/ranged/magic/shock, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+		chooseEnemies += L
+	if(chooseEnemies == list())
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lightning, /damagetype/ranged/magic/shock, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
