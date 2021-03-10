@@ -13,10 +13,13 @@
 		if(L1.move_delay > 0 && L2.move_delay > 0)
 			var/calc1 = get_dist(L1.old_turf,L2)
 			var/calc2 = get_dist(L1,L2.old_turf)
+			var/calc3 = get_dist(L2.old_turf,L1.old_turf)
 			if(calc1 < best_distance)
 				best_distance = calc1
 			if(calc2 < best_distance)
 				best_distance = calc2
+			if(calc3 < best_distance)
+				best_distance = calc3
 		else if(L1.move_delay > 0)
 			var/calc = get_dist(L1.old_turf,L2)
 			if(calc < best_distance)
