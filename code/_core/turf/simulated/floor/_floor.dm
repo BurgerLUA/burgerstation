@@ -29,7 +29,7 @@
 		TR.desired_reagent = water_reagent
 		TR.update_container()
 
-
+/*
 /turf/simulated/floor/update_sprite()
 
 	. = ..()
@@ -44,6 +44,7 @@
 			stored_water_overlay.blend_mode = BLEND_SUBTRACT
 
 		stored_water_overlay.color = reagents.color
+*/
 
 
 /turf/simulated/floor/Exited(var/atom/movable/O,var/atom/new_loc)
