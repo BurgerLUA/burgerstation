@@ -59,6 +59,12 @@
 		/obj/item/weapon/ranged/magic/tome/summon/totem/mana_deal,
 		/obj/item/weapon/ranged/magic/tome/summon/totem/sacred_flame,
 		/obj/item/weapon/ranged/magic/tome/summon/totem/repelling,
-		/obj/item/weapon/ranged/magic/tome/summon/totem/attracting
+		/obj/item/weapon/ranged/magic/tome/summon/totem/attracting,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/frost_spray,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/flame_spray,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/shock_spray,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/ice_crystal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/fireball,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/lightning_bolt
 	)
 	loot_count = 1
