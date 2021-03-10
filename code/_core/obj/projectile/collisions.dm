@@ -51,13 +51,13 @@
 
 /mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	if(!P.hit_laying && dead && P.target_atom != src)
-		return null
-
 	if(P && !P.ignore_iff && P.iff_tag && src.iff_tag == P.iff_tag)
 		return null
 
 	if(P && !P.ignore_loyalty && P.loyalty_tag && src.loyalty_tag == P.loyalty_tag)
+		return null
+
+	if(!P.hit_laying && dead && get_dist(src,P.target_atom) > 0)
 		return null
 
 	return ..()

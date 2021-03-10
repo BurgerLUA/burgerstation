@@ -169,6 +169,9 @@
 	var/trait/speed/S = get_trait_by_category(/trait/speed/)
 	if(S) . *= S.move_delay_mul
 
+	if(horizontal)
+		. = max(.,SECONDS_TO_TICKS(1))
+
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
 	for(var/k in buttons)

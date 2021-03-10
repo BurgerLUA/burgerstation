@@ -12,6 +12,8 @@
 
 	anchored = TRUE
 
+	reagents = null
+
 /mob/living/advanced/npc/dummy/get_xp_multiplier()
 	return 0.1
 

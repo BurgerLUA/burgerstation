@@ -448,6 +448,9 @@
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_bosses |= src
 				B.update_stats()
+	if(dead)
+		dead = FALSE //I know this feels like shitcode but *dab
+		death()
 
 /mob/living/proc/setup_name()
 	if(boss)
