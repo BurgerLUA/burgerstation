@@ -33,7 +33,8 @@
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
-	totemic_effect()
+	if(owner in viewers(11,loc))
+		totemic_effect()
 	return TRUE
 
 /obj/structure/totem/proc/totemic_effect()
