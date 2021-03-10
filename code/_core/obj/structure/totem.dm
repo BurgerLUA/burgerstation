@@ -296,3 +296,69 @@
 		return
 	for(var/i in 1 to leveled_effect)
 		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lightning, /damagetype/ranged/magic/shock, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/ice_crystal
+	name = "totem of ice crystal"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire an ice crystal at the caster's enemies."
+	icon_state = "frost"
+
+/obj/structure/totem/ice_crystal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		chooseEnemies += L
+	if(chooseEnemies == list())
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/crystal/ice, /damagetype/ranged/magic/ice, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/fireball
+	name = "totem of fireball"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire a fireball at the caster's enemies."
+	icon_state = "flame"
+
+/obj/structure/totem/fireball/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		chooseEnemies += L
+	if(chooseEnemies == list())
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/fireball, /damagetype/ranged/magic/fireball, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/lightning_bolt
+	name = "totem of lightning bolt"
+	desc = "Listen to be baby, you've got to understand, lightning striking again!"
+	desc_extended = "A totem that will fire a lightning bolt at the caster's enemies."
+	icon_state = "shock"
+
+/obj/structure/totem/lightning_bolt/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		chooseEnemies += L
+	if(chooseEnemies == list())
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lightning_bolt, /damagetype/ranged/magic/lightning, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
