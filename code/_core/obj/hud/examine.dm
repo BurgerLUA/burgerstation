@@ -21,7 +21,7 @@
 /obj/hud/examine/New(var/desired_loc)
 
 	if(ismob(desired_loc))
-		screen_loc = "CENTER,CENTER"
+		screen_loc = "CENTER,TOP - 2"
 		loc = desired_loc
 		var/mob/ME = desired_loc
 		if(ME.client)

@@ -69,6 +69,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/permissions = FLAG_PERMISSION_NONE
 
+	var/zoom_pixel_x = 0
+	var/zoom_pixel_y = 0
+
 	var/desired_pixel_x = 0
 	var/desired_pixel_y = 0
 
