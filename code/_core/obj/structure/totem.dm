@@ -60,6 +60,8 @@
 			continue
 		if(L.loyalty_tag != affecting_faction) //!= because we want to only affect allies
 			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
+			continue
 		if(!istype(L.health))
 			continue
 		if(L.health.health_current >= L.health.health_max)
@@ -85,6 +87,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction) //== because we dont want to affect allies
 			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
+			continue
 		if(!istype(L.health))
 			continue
 		L.brute_regen_buffer -= (3 + (3 * leveled_effect))
@@ -104,6 +108,8 @@
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
+			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
 			continue
 		if(!istype(L.health))
 			continue
@@ -126,6 +132,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
+			continue
 		if(!istype(L.health))
 			continue
 		L.stamina_regen_buffer -= (3 + (3 * leveled_effect))
@@ -143,6 +151,8 @@
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
+			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
 			continue
 		if(!istype(L.health))
 			continue
@@ -165,6 +175,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
+			continue
 		if(!istype(L.health))
 			continue
 		L.mana_regen_buffer -= (3 + (3 * leveled_effect))
@@ -183,6 +195,8 @@
 		if(L.dead)
 			continue
 		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
 			continue
 		if(!istype(L.health))
 			continue
@@ -205,6 +219,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
+			continue
 		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
 		if(L.loc == loc) //if they are on the same turf, skip them
@@ -226,6 +242,8 @@
 		if(L.boss) //yea, no attracting bosses, sorry
 			continue
 		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(istype(L, /mob/living/advanced/npc/dummy))
 			continue
 		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
