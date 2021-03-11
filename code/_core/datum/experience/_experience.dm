@@ -56,6 +56,7 @@
 	if(!ENABLE_XP)
 		return FALSE
 	experience = level_to_xp(clamp(level,1,owner.max_level))
+	last_level = get_current_level()
 	return experience
 
 /experience/proc/get_current_level()

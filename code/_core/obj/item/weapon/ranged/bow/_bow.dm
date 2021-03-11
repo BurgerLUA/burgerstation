@@ -13,8 +13,9 @@
 
 	automatic = FALSE
 
-	var/stage_per_decisecond = 2 //There are 40 stages. 40 is max.
-	var/current_stage = 0
+	var/stage_per_decisecond = 30 //At 100 dex.
+	var/stage_max = 100 //At 100 strength.
+	var/stage_current = 0
 
 	var/mob/living/advanced/current_shooter
 
@@ -28,9 +29,27 @@
 
 	var/draw_sound = 'sound/weapons/bow/draw_steel.ogg'
 
-	var/damage_multiplier = 1
-
 	var/spam_prevention = 0
+
+/obj/item/weapon/ranged/bow/post_move(var/atom/old_loc)
+	. = ..()
+
+	stage_max = initial(stage_max)
+	stage_per_decisecond = initial(stage_per_decisecond)
+
+	if(is_inventory(loc))
+		var/obj/hud/inventory/I = loc
+		if(is_living(I.owner))
+			var/mob/living/L = I.owner
+			var/strength_mod = L.get_attribute_power(ATTRIBUTE_STRENGTH)
+			strength_mod = clamp(0.25 + strength_mod*0.75,0,1)
+			var/dex_mod = L.get_attribute_power(ATTRIBUTE_DEXTERITY)
+			dex_mod = clamp(0.5 + dex_mod*0.5,0,1)
+			stage_per_decisecond *= dex_mod
+			stage_per_decisecond = CEILING(stage_per_decisecond,1)
+			stage_max *= strength_mod
+			stage_max = CEILING(stage_max,1)
+			return .
 
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
@@ -40,9 +59,9 @@
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
-	if(current_stage > 0 )
-		shoot(caller,object,location,params,damage_multiplier*max(current_stage/40,0.25))
-		current_stage = 0
+	if(stage_current > 0 )
+		shoot(caller,object,location,params,max(stage_current/100,0.25))
+		stage_current = 0
 		update_sprite()
 	return TRUE
 
@@ -61,8 +80,10 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bow/update_icon()
-	var/icon_num = FLOOR(current_stage/10,1)
-	icon_state = "[initial(icon_state)]_[icon_num]"
+	var/icon_num = 0
+	if(stage_current)
+		icon_num = 1 + ((stage_current/initial(stage_max)) * 3)
+	icon_state = "[initial(icon_state)]_[FLOOR(icon_num,1)]"
 	. = ..()
 
 /obj/item/weapon/ranged/bow/think()
@@ -70,18 +91,13 @@
 	var/held_down = current_shooter && !current_shooter.qdeleting && ((current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_ALT)
 
 	if(held_down)
-		current_stage += stage_per_decisecond
-
-		if(current_stage > 40)
-			current_stage = 40
-		else if(!(current_stage % 10))
-			update_sprite()
-
+		stage_current = min(stage_max,stage_current + stage_per_decisecond)
+		update_icon() //update_sprite isn't called here as it is intensive.
 		. = TRUE
 	else
-		if(current_stage > 0)
-			current_stage = 0
-			update_sprite()
+		if(stage_current > 0)
+			stage_current = 0
+			update_icon()
 		. = FALSE
 
 	. = ..() || . //weirdest statement I ever wrote.
@@ -114,15 +130,14 @@
 /obj/item/weapon/ranged/bow/handle_empty(var/mob/caller)
 	return FALSE
 
-
-
 /obj/item/weapon/ranged/bow/wood
 	name = "wood bow"
 	desc = "For ranged ungas."
 	desc_extended = "A classic wooden bow. Overall, it's reliable and has no gimmick."
 	icon = 'icons/obj/item/weapons/ranged/bow/wood.dmi'
 
-	stage_per_decisecond = 2
+	stage_per_decisecond = 10
+	stage_max = 100
 
 	value = 200
 
@@ -135,11 +150,10 @@
 	desc_extended = "An upgraded bow that is harder to pull back, but is more accurate and fires more of a punch."
 	icon = 'icons/obj/item/weapons/ranged/bow/steel.dmi'
 
-	stage_per_decisecond = 1
+	stage_per_decisecond = 8
+	stage_max = 150
 
 	value = 300
-
-	damage_multiplier = 1.25
 
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
@@ -147,15 +161,14 @@
 	desc_extended = "A space-age bow that somehow uses the power of light to conjure arrows if none are provided. Fires really fast, regardless."
 	icon = 'icons/obj/item/weapons/ranged/bow/hardlight.dmi'
 
-	stage_per_decisecond = 5
-
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
 	draw_sound = 'sound/weapons/bow/draw_hardlight.ogg'
 
 	value = 3000
 
-	damage_multiplier = 0.75
+	stage_per_decisecond = 10
+	stage_max = 50
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -166,8 +179,7 @@
 
 /obj/item/weapon/ranged/bow/hardlight/handle_ammo(var/mob/caller)
 	. = ..()
-	if(!.)
-		return stored_arrow
+	if(!.) return stored_arrow
 
 /obj/item/weapon/ranged/bow/ashen
 	name = "ashen bow"
@@ -175,11 +187,10 @@
 	desc_extended = "A special masterfully crafted ashen bow that somehow invokes the strength of ancient megafauna when drawing arrows."
 	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
 
-	stage_per_decisecond = 2
-
 	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
 
-	damage_multiplier = 1.25
-
 	value = 2000
+
+	stage_per_decisecond = 15
+	stage_max = 125
 

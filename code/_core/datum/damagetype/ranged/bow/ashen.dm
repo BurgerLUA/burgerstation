@@ -1,31 +1,16 @@
 /damagetype/ranged/bow/ashen
 	name = "bow"
-	damage_mod = 2
-
-	bonus_experience_skill = list(
-		SKILL_RANGED = 50 //100%
-	)
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATSWORD*0.2,
+		PIERCE = DAMAGE_GREATCLUB*0.75,
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATSWORD*2,
-	)
-
-	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_GREATSWORD*0.3,
-		ATTRIBUTE_DEXTERITY = DAMAGE_GREATSWORD*0.2
-	)
-
-	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = PIERCE,
-		ATTRIBUTE_DEXTERITY = PIERCE
+		PIERCE = AP_GREATCLUB*2,
 	)
 
 	skill_stats = list(
-		SKILL_RANGED = DAMAGE_AXE*0.3
+		SKILL_RANGED = DAMAGE_GREATAXE*0.25
 	)
 
 	skill_damage = list(
