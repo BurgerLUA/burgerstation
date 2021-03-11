@@ -2,7 +2,7 @@
 	name = "null rod"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_SWORD*0.2*BASE_MELEE_MUL,
+		BLUNT = DAMAGE_SWORD*0.2,
 		HOLY = 0
 	)
 

@@ -2,7 +2,7 @@
 	name = "vampire killer"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_CLUB*0.2*BASE_MELEE_MUL,
+		BLUNT = DAMAGE_CLUB*0.2,
 		HOLY = 0
 	)
 

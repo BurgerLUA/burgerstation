@@ -2,7 +2,7 @@
 	name = "inactive grazer"
 
 	attack_damage_base = list(
-		BLADE = DAMAGE_DAGGER*0.5*BASE_MELEE_MUL,
+		BLADE = DAMAGE_DAGGER*0.5,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -35,8 +35,8 @@
 	name = "active grazer"
 
 	attack_damage_base = list(
-		LASER = DAMAGE_SWORD*0.4*BASE_MELEE_MUL,
-		HEAT = DAMAGE_SWORD*0.1*BASE_MELEE_MUL,
+		LASER = DAMAGE_SWORD*0.4,
+		HEAT = DAMAGE_SWORD*0.1,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

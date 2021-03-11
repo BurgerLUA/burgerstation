@@ -2,9 +2,9 @@
 	name = "spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.2*BASE_MELEE_MUL,
-		BLADE = DAMAGE_AXE*0.2*BASE_MELEE_MUL,
-		HOLY = DAMAGE_AXE*0.1*BASE_MELEE_MUL
+		PIERCE = DAMAGE_AXE*0.2,
+		BLADE = DAMAGE_AXE*0.2,
+		HOLY = DAMAGE_AXE*0.1
 	)
 
 	attack_damage_penetration = list(

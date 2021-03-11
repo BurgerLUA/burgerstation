@@ -2,8 +2,8 @@
 	name = "bayonet"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD*0.4*BASE_MELEE_MUL,
-		BLADE = DAMAGE_SWORD*0.1*BASE_MELEE_MUL,
+		PIERCE = DAMAGE_SWORD*0.4,
+		BLADE = DAMAGE_SWORD*0.1,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

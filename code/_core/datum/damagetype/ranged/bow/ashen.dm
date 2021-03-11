@@ -7,7 +7,7 @@
 	)
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATSWORD*0.2*BASE_MELEE_MUL,
+		PIERCE = DAMAGE_GREATSWORD*0.2,
 	)
 
 	attack_damage_penetration = list(
