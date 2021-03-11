@@ -6555,10 +6555,6 @@
 	},
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
-"xV" = (
-/obj/item/container/cigarette/water,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
 "xW" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -6677,10 +6673,6 @@
 	dir = 9
 	},
 /area/burgerstation/chapel)
-"ys" = (
-/obj/item/lighter,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
 "yt" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -6711,10 +6703,6 @@
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo_inbound/ship)
-"yx" = (
-/obj/item/weapon/melee/energy/sword/blue,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
 "yB" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 6
@@ -48762,7 +48750,7 @@ sF
 lJ
 nF
 wI
-yx
+wI
 wI
 wI
 wI
@@ -49019,7 +49007,7 @@ sF
 lJ
 nF
 wI
-xV
+wI
 wI
 tI
 wI
@@ -49276,7 +49264,7 @@ sF
 lJ
 nF
 wI
-ys
+wI
 wI
 wI
 wI
