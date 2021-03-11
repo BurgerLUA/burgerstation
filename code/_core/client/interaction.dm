@@ -2,10 +2,10 @@
 
 	. = 0x0
 
-	if((swap_mouse && check_swap) ? ("left" in params) :("right" in params))
+	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("left" in params) :("right" in params))
 		. |= CLICK_RIGHT
 
-	if((swap_mouse && check_swap) ? ("right" in params) : ("left" in params))
+	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
 		. |= CLICK_LEFT
 
 	if("middle" in params)

@@ -31,8 +31,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
-	var/swap_mouse = FALSE
-
 	perspective = EYE_PERSPECTIVE
 
 	var/current_music_track //Id of music track that last played.

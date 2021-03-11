@@ -65,7 +65,7 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/equipped/Generate()
 

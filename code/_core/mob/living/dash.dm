@@ -2,6 +2,9 @@
 
 /mob/living/proc/dash(var/atom/dash_target,var/dash_direction=0x0,var/instances_left = 0)//Can either input dash target or dash direction.
 
+	if(horizontal)
+		return FALSE
+
 	if(!can_move())
 		return FALSE
 

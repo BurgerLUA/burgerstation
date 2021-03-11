@@ -7,7 +7,8 @@
 		"volume_footsteps" = 50,
 		"view_range" = VIEW_RANGE,
 		"fps_client" = FPS_CLIENT,
-		"hud_colors" = DEFAULT_COLORS
+		"hud_colors" = DEFAULT_COLORS,
+		"enable_zoom_view_lock" = 0
 	)
 
 /savedata/client/settings/get_file(var/file_id)
