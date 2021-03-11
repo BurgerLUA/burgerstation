@@ -87,43 +87,46 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(istype(object,/obj/item/attachment))
+	if(is_inventory(object) && (caller.attack_flags & CONTROL_MOD_ALT))
+		var/obj/hud/inventory/INV = object
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		add_attachment(caller,object)
+		var/obj/item/I = remove_attachment(caller)
+		if(I) INV.add_object(I)
 		return TRUE
 
-	else if(!use_loyalty_tag && is_item(object))
+	else if(is_item(object))
 		var/obj/item/I = object
-		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
+		if(istype(I,/obj/item/attachment))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			remove_attachment(caller)
+			add_attachment(caller,I)
 			return TRUE
-		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(5)
-			if(istype(firing_pin))
-				firing_pin.drop_item(get_turf(src))
-				caller.visible_message(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
-				firing_pin = null
-			else
-				caller.to_chat(span("warning","There is no firing pin inside \the [src.name]!"))
-			return TRUE
-		if(istype(I,/obj/item/firing_pin/))
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(5)
-			if(istype(firing_pin))
-				caller.to_chat(span("warning","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
-			else
-				I.drop_item(src)
-				firing_pin = I
-				caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name]."),span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
-			return TRUE
+		if(!use_loyalty_tag)
+			if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(5)
+				if(istype(firing_pin))
+					firing_pin.drop_item(get_turf(src))
+					caller.visible_message(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
+					firing_pin = null
+				else
+					caller.to_chat(span("warning","There is no firing pin inside \the [src.name]!"))
+				return TRUE
+			if(istype(I,/obj/item/firing_pin/))
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(5)
+				if(istype(firing_pin))
+					caller.to_chat(span("warning","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
+				else
+					I.drop_item(src)
+					firing_pin = I
+					caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name]."),span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
+				return TRUE
 
 	return ..()
 
