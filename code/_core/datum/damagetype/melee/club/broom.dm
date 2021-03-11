@@ -3,7 +3,7 @@
 	attack_verbs = list("sweeps")
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_SWORD*0.1*BASE_MELEE_MUL
+		BLUNT = DAMAGE_SWORD*0.1
 	)
 
 	attack_damage_penetration = list(

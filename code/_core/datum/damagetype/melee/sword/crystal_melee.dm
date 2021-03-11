@@ -3,8 +3,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_DAGGER*0.1*BASE_MELEE_MUL,
-		FATIGUE = DAMAGE_DAGGER*0.5*BASE_MELEE_MUL
+		BLUNT = DAMAGE_DAGGER*0.1,
+		FATIGUE = DAMAGE_DAGGER*0.5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -37,8 +37,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD*0.2*BASE_MELEE_MUL,
-		ARCANE = DAMAGE_SWORD*0.3*BASE_MELEE_MUL
+		PIERCE = DAMAGE_SWORD*0.2,
+		ARCANE = DAMAGE_SWORD*0.3
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -73,8 +73,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.2*BASE_MELEE_MUL,
-		ARCANE = DAMAGE_CLUB*0.3*BASE_MELEE_MUL
+		PIERCE = DAMAGE_AXE*0.2,
+		ARCANE = DAMAGE_CLUB*0.3
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

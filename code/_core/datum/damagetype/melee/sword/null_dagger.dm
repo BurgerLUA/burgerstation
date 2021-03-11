@@ -2,8 +2,8 @@
 	name = "null dagger"
 
 	attack_damage_base = list(
-		BLADE = DAMAGE_DAGGER*0.1*BASE_MELEE_MUL,
-		PIERCE = DAMAGE_DAGGER*0.1*BASE_MELEE_MUL,
+		BLADE = DAMAGE_DAGGER*0.1,
+		PIERCE = DAMAGE_DAGGER*0.1,
 		HOLY = 0
 	)
 

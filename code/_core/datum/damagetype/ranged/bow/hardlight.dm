@@ -7,8 +7,8 @@
 	)
 
 	attack_damage_base = list(
-		LASER = DAMAGE_GREATSWORD*0.3*BASE_MELEE_MUL,
-		HEAT = DAMAGE_GREATSWORD*0.1*BASE_MELEE_MUL
+		LASER = DAMAGE_GREATSWORD*0.3,
+		HEAT = DAMAGE_GREATSWORD*0.1
 	)
 
 	attack_damage_penetration = list(
