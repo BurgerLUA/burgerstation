@@ -448,7 +448,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		target_fake_x = target.x*TILE_SIZE + icon_pos_x
 		target_fake_y = target.y*TILE_SIZE + icon_pos_y
 
-	var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,accuracy_loss)
+	var/list/xy_list = get_projectile_path(caller ? caller : src,target_fake_x,target_fake_y,accuracy_loss)
 
 	. = list()
 
