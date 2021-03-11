@@ -16,6 +16,8 @@
 
 	var/affecting_faction //which faction it should affect
 
+	var/ranged_limited = TRUE //if a totem isn't too strong, be nice and don't limit the totem to only work within a range
+
 /obj/structure/totem/Finalize()
 	. = ..()
 	start_thinking(src)
@@ -33,8 +35,9 @@
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
-	if(owner in viewers(11,loc))
-		totemic_effect()
+	if(get_dist(owner.loc, loc) > 11 && ranged_limited)
+		return TRUE
+	totemic_effect()
 	return TRUE
 
 /obj/structure/totem/proc/totemic_effect()
@@ -231,134 +234,73 @@
 		L.Move(get_step(L.loc,get_dir(L,src)))
 		CREATE(/obj/effect/temp/electricity,L.loc)
 
-/obj/structure/totem/frost_spray
+/obj/structure/totem/projectile
+	name = "totem of projectile"
+	desc = "None."
+	desc_extended = "A totem that will fire projectiles at the caster's enemies."
+	var/chosenProjectile
+	var/chosenDamageType
+
+/obj/structure/totem/projectile/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		chooseEnemies += L
+	if(!length(chooseEnemies))
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, chosenProjectile, chosenDamageType, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/projectile/frost_spray
 	name = "totem of frost spray"
 	desc = "The weather outside is frightful, but the fire is so delightful."
 	desc_extended = "A totem that will fire frost spray at the caster's enemies."
 	icon_state = "frost"
+	chosenProjectile = /obj/projectile/magic/frost
+	chosenDamageType = /damagetype/ranged/magic/frost
 
-/obj/structure/totem/frost_spray/totemic_effect() //will need testing and help to balance this
-	var/turf/T = get_turf(src)
-	var/list/chooseEnemies = list()
-	for(var/mob/living/L in viewers(4,T))
-		if(L.dead)
-			continue
-		if(L.loyalty_tag == affecting_faction)
-			continue
-		if(!istype(L.health))
-			continue
-		chooseEnemies += L
-	if(chooseEnemies == list())
-		return
-	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/frost, /damagetype/ranged/magic/frost, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
-
-/obj/structure/totem/flame_spray
+/obj/structure/totem/projectile/flame_spray
 	name = "totem of flame spray"
 	desc = "The weather outside is frightful, but the fire is so delightful."
 	desc_extended = "A totem that will fire flame spray at the caster's enemies."
 	icon_state = "flame"
+	chosenProjectile = /obj/projectile/magic/lesser_fire
+	chosenDamageType = /damagetype/ranged/magic/flame
 
-/obj/structure/totem/flame_spray/totemic_effect() //will need testing and help to balance this
-	var/turf/T = get_turf(src)
-	var/list/chooseEnemies = list()
-	for(var/mob/living/L in viewers(4,T))
-		if(L.dead)
-			continue
-		if(L.loyalty_tag == affecting_faction)
-			continue
-		if(!istype(L.health))
-			continue
-		chooseEnemies += L
-	if(chooseEnemies == list())
-		return
-	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lesser_fire, /damagetype/ranged/magic/flame, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
-
-/obj/structure/totem/shock_spray
+/obj/structure/totem/projectile/shock_spray
 	name = "totem of shock spray"
 	desc = "Listen to be baby, you've got to understand, lightning striking again!"
 	desc_extended = "A totem that will fire shock spray at the caster's enemies."
 	icon_state = "shock"
+	chosenProjectile = /obj/projectile/magic/lightning
+	chosenDamageType = /damagetype/ranged/magic/shock
 
-/obj/structure/totem/shock_spray/totemic_effect() //will need testing and help to balance this
-	var/turf/T = get_turf(src)
-	var/list/chooseEnemies = list()
-	for(var/mob/living/L in viewers(4,T))
-		if(L.dead)
-			continue
-		if(L.loyalty_tag == affecting_faction)
-			continue
-		if(!istype(L.health))
-			continue
-		chooseEnemies += L
-	if(chooseEnemies == list())
-		return
-	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lightning, /damagetype/ranged/magic/shock, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
-
-/obj/structure/totem/ice_crystal
+/obj/structure/totem/projectile/ice_crystal
 	name = "totem of ice crystal"
 	desc = "The weather outside is frightful, but the fire is so delightful."
 	desc_extended = "A totem that will fire an ice crystal at the caster's enemies."
 	icon_state = "frost"
+	chosenProjectile = /obj/projectile/magic/crystal/ice
+	chosenDamageType = /damagetype/ranged/magic/ice
 
-/obj/structure/totem/ice_crystal/totemic_effect() //will need testing and help to balance this
-	var/turf/T = get_turf(src)
-	var/list/chooseEnemies = list()
-	for(var/mob/living/L in viewers(4,T))
-		if(L.dead)
-			continue
-		if(L.loyalty_tag == affecting_faction)
-			continue
-		if(!istype(L.health))
-			continue
-		chooseEnemies += L
-	if(chooseEnemies == list())
-		return
-	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/crystal/ice, /damagetype/ranged/magic/ice, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
-
-/obj/structure/totem/fireball
+/obj/structure/totem/projectile/fireball
 	name = "totem of fireball"
 	desc = "The weather outside is frightful, but the fire is so delightful."
 	desc_extended = "A totem that will fire a fireball at the caster's enemies."
 	icon_state = "flame"
+	chosenProjectile = /obj/projectile/magic/fireball
+	chosenDamageType = /damagetype/ranged/magic/fireball
 
-/obj/structure/totem/fireball/totemic_effect() //will need testing and help to balance this
-	var/turf/T = get_turf(src)
-	var/list/chooseEnemies = list()
-	for(var/mob/living/L in viewers(4,T))
-		if(L.dead)
-			continue
-		if(L.loyalty_tag == affecting_faction)
-			continue
-		if(!istype(L.health))
-			continue
-		chooseEnemies += L
-	if(chooseEnemies == list())
-		return
-	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/fireball, /damagetype/ranged/magic/fireball, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
-
-/obj/structure/totem/lightning_bolt
+/obj/structure/totem/projectile/lightning_bolt
 	name = "totem of lightning bolt"
 	desc = "Listen to be baby, you've got to understand, lightning striking again!"
 	desc_extended = "A totem that will fire a lightning bolt at the caster's enemies."
 	icon_state = "shock"
-
-/obj/structure/totem/lightning_bolt/totemic_effect() //will need testing and help to balance this
-	var/turf/T = get_turf(src)
-	var/list/chooseEnemies = list()
-	for(var/mob/living/L in viewers(4,T))
-		if(L.dead)
-			continue
-		if(L.loyalty_tag == affecting_faction)
-			continue
-		if(!istype(L.health))
-			continue
-		chooseEnemies += L
-	if(chooseEnemies == list())
-		return
-	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, /obj/projectile/magic/lightning_bolt, /damagetype/ranged/magic/lightning, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+	chosenProjectile = /obj/projectile/magic/lightning_bolt
+	chosenDamageType = /damagetype/ranged/magic/lightning
