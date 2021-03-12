@@ -117,7 +117,6 @@
 		return TRUE
 
 	if(owner.move_delay <= 0)
-		//handle_movement_reset()
 		handle_movement()
 
 	if(owner.attack_next <= world.time)

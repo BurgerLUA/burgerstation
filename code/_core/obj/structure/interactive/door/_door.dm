@@ -43,6 +43,8 @@ obj/structure/interactive/door
 
 	density = TRUE
 
+	allow_path = TRUE
+
 /obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)

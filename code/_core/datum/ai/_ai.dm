@@ -4,6 +4,7 @@
 
 	var/atom/objective_move
 	var/should_follow_objective_move = FALSE
+	var/should_burger_star_objective_move = FALSE
 
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
@@ -59,6 +60,8 @@
 
 	var/path_steps = 1
 	var/list/Vector3D/current_path = list()
+
+	var/list/current_burger_star_path = list()
 
 	var/list/obstacles = list()
 

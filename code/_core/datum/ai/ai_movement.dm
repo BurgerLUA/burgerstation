@@ -30,7 +30,8 @@
 	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
-	if(desired_objective) set_active(TRUE)
+	if(desired_objective)
+		set_active(TRUE)
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	return TRUE
@@ -93,6 +94,28 @@
 
 	return TRUE
 
+/ai/proc/handle_movement_burger_star()
+
+	if(current_burger_star_path && length(current_burger_star_path))
+		owner.movement_flags = MOVEMENT_NORMAL
+		var/turf/T = get_turf(owner)
+		var/turf/desired_turf = current_burger_star_path[1]
+		if(T == desired_turf)
+			current_burger_star_path -= desired_turf
+			if(length(current_burger_star_path))
+				desired_turf = current_burger_star_path[1]
+			else
+				desired_turf = null
+		if(desired_turf)
+			owner.move_dir = get_dir(owner,desired_turf)
+		else
+			owner.move_dir = 0x0
+			set_burger_star_path(null)
+		return TRUE
+
+	return FALSE
+
+
 /ai/proc/handle_movement_path()
 	if(current_path && length(current_path))
 		owner.movement_flags = MOVEMENT_NORMAL
@@ -143,6 +166,7 @@
 				queue_delete(owner,0,TRUE)
 			return FALSE
 
+		set_burger_star_path(get_turf(N_start))
 		set_path(found_path)
 
 		return TRUE
@@ -210,6 +234,9 @@
 
 /ai/proc/handle_movement()
 
+	if(handle_movement_burger_star())
+		return TRUE
+
 	if(handle_movement_sidestep())
 		return TRUE
 
@@ -231,17 +258,24 @@
 	if(handle_movement_roaming())
 		return TRUE
 
+	handle_movement_reset()
+
 	return FALSE
 
 
 /ai/proc/on_move(var/success,var/atom/NewLoc,Dir=0)
 
 	if(!success)
-		frustration_move += 1
+		frustration_move++
 		if(length(current_path))
 			frustration_path++
 		if(frustration_move >= frustration_move_threshold)
-			sidestep_next = TRUE
+			if(objective_move)
+				set_burger_star_path(get_turf(objective_move))
+			else if(objective_attack)
+				set_burger_star_path(get_turf(objective_attack))
+			else
+				sidestep_next = TRUE
 			frustration_move = 0
 
 	return TRUE
