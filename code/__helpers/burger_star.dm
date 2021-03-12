@@ -231,6 +231,8 @@
 
 /burger_star_data/proc/check_valid()
 
+	set background = TRUE
+
 	//Don't check if it's the destination or starting point.
 	if(parent_turf == starting_turf || parent_turf == ending_turf)
 		return TRUE
