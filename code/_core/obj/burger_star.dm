@@ -19,7 +19,7 @@
 	if(!linked_end)
 		return TRUE
 
-	burger_star(linked_spider,linked_end,FALSE,TRUE)
+	burger_star(linked_spider,linked_end, stop_at_obstacles = list(/obj/structure/interactive/door), debug = TRUE)
 
 	return TRUE
 

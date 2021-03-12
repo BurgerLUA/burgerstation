@@ -1,4 +1,4 @@
-/proc/burger_star(var/atom/movable/mover,var/turf/destination,var/ignore_destructables=FALSE,var/debug=FALSE)
+/proc/burger_star(var/atom/movable/mover,var/turf/destination,var/ignore_destructables=FALSE,var/list/stop_at_obstacles,var/debug=FALSE)
 
 	set background = TRUE
 
@@ -39,6 +39,8 @@
 		if(debug) log_debug("No block turfs found!")
 		return null
 
+	var/list/special_turfs = list()
+
 	//Step 1: Go through the block turfs and give them a BSD datum if you can move through them.
 	for(var/k in block_turfs)
 		CHECK_TICK(50,FPS_SERVER)
@@ -51,6 +53,11 @@
 			var/occupied = FALSE
 			for(var/m in T.contents)
 				var/atom/movable/M = m
+				if(!special_turfs[T] && stop_at_obstacles)
+					for(var/j in stop_at_obstacles)
+						if(istype(M,j))
+							special_turfs[T] = TRUE
+							break
 				var/can_destroy = ignore_destructables && M.health && !(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))
 				if(M.density && M.anchored && !M.allow_path && !can_destroy)
 					occupied = TRUE
@@ -128,7 +135,7 @@
 		if(attempts_left <= 0)
 			if(debug) log_debug("Failed to find a path, ran out of attempts.")
 			return null
-		if(current_turf == destination)
+		if(current_turf == destination || special_turfs[current_turf])
 			break //We're on the right path!
 		turf_blacklist[current_turf] = TRUE
 		var/burger_star_data/BSD = master_list[current_turf]
