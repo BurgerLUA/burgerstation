@@ -78,6 +78,10 @@
 				var/mob/living/L = k
 				if(L.qdeleting || L.dead)
 					tracked_targets -= k
+					continue
+				if(L.z != src.z)
+					tracked_targets -= k
+					continue
 				var/distance = get_dist(src,L)
 				if(distance >= 75) //Too far.
 					tracked_targets -= L
