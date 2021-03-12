@@ -51,8 +51,8 @@
 			var/occupied = FALSE
 			for(var/m in T.contents)
 				var/atom/movable/M = m
-				var/can_destroy = ignore_destructables && M.health && (A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))
-				if(M.density && !M.allow_path && !can_destroy)
+				var/can_destroy = ignore_destructables && M.health && !(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))
+				if(M.density && M.anchored && !M.allow_path && !can_destroy)
 					occupied = TRUE
 					continue
 			if(occupied)
@@ -108,10 +108,12 @@
 			T.color = COLOR_BLUE
 
 	var/turf/current_turf = starting_turf
-	var/list/current_subpath = list(current_turf)
+	var/turf/last_turf
+	//var/list/current_subpath = list(current_turf)
 
-	var/turf/junctions = list()
+	var/turf/junctions = list(current_turf)
 	var/turf/junction_paths = list()
+	junction_paths[current_turf] = list()
 	var/turf/revert_blacklist = list()
 
 	var/list/turf_blacklist = list(current_turf = TRUE)
@@ -119,7 +121,7 @@
 	var/attempts_left = 300
 
 	while(TRUE)
-		sleep(4)
+		sleep(3)
 		CHECK_TICK(50,FPS_SERVER)
 		if(debug) current_turf.color = "#FFFFFF"
 		attempts_left--
@@ -137,9 +139,12 @@
 		for(var/k in possible_turfs)
 			var/turf/T = k
 			if(turf_blacklist[T])
+				if(last_turf && junction_paths[T] && T != last_turf)
+					possible_turfs = list()
+					break
 				possible_turfs -= T
 				continue
-		if(!length(possible_turfs)) //We've reached a dead end.
+		if(!length(possible_turfs)) //We've reached a dead end or a redundancy.
 			if(!length(junctions)) //Yeah we've really hit a dead end.
 				if(debug) log_debug("Total dead end detected...")
 				return null
@@ -153,17 +158,13 @@
 				if(revert_blacklist[last_junction] < length(BSD2.connected_turfs))
 					break //We can go back.
 				path_num--	//Can't go back!
+			last_turf = current_turf
 			current_turf = last_junction
 			if(!revert_blacklist[last_junction])
 				revert_blacklist[last_junction] = 1
 			else
 				revert_blacklist[last_junction] += 1
-			if(debug)
-				log_debug("Resetting to previous junction [current_turf.get_debug_name()].")
-				for(var/k in current_subpath)
-					var/turf/T = k
-					T.color = "#FF00DC"
-			current_subpath.Cut() //Reset
+			if(debug) log_debug("Resetting to previous junction [current_turf.get_debug_name()].")
 			continue
 		if(length(possible_turfs) >= 2) //We've hit a junction.
 			junctions += current_turf
@@ -179,9 +180,9 @@
 				continue
 			if(get_dist(best_turf,destination) > get_dist(T,destination))
 				best_turf = T
+		last_turf = current_turf
 		current_turf = best_turf
-		current_subpath += current_turf
-		current_subpath.Cut()
+		junction_paths[junctions[length(junctions)]] += current_turf
 
 	var/list/current_path = list()
 

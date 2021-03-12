@@ -32,6 +32,9 @@
 
 /ai/doorman/handle_movement()
 
+	if(handle_movement_burger_star())
+		return TRUE
+
 	if(!beepsky_marker)
 		beepsky_marker = locate() in owner.loc.loc.contents
 
