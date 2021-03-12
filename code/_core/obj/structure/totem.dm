@@ -20,6 +20,7 @@
 
 /obj/structure/totem/Finalize()
 	. = ..()
+	flick("appear", src)
 	start_thinking(src)
 
 /obj/structure/totem/Destroy()
