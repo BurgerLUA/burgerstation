@@ -127,6 +127,7 @@
 
 	var/attempts_left = 300
 
+	//Step 4: Path to it!
 	while(TRUE)
 		sleep(3)
 		CHECK_TICK(50,FPS_SERVER)
