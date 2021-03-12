@@ -107,10 +107,12 @@
 			var/turf/T = k
 			T.color = COLOR_BLUE
 
-	var/turf/last_junction
 	var/turf/current_turf = starting_turf
-	var/list/current_path = list()
-	var/list/current_sub_path = list(current_turf)
+	var/list/current_subpath = list(current_turf)
+
+	var/turf/junctions = list()
+	var/turf/junction_paths = list()
+
 	var/list/turf_blacklist = list(current_turf = TRUE)
 
 	var/attempts_left = 300
@@ -124,8 +126,7 @@
 			if(debug) log_debug("Failed to find a path, ran out of attempts.")
 			return null
 		if(current_turf == destination)
-			//current_path += current_sub_path
-			break //WEW!
+			break //We're on the right path!
 		turf_blacklist[current_turf] = TRUE
 		var/burger_star_data/BSD = master_list[current_turf]
 		if(!BSD)
@@ -137,32 +138,51 @@
 			if(turf_blacklist[T])
 				possible_turfs -= T
 				continue
-		if(!length(possible_turfs))
-			if(!last_junction)
+		if(!length(possible_turfs)) //We've reached a dead end.
+			if(!length(junctions)) //Yeah we've really hit a dead end.
+				if(debug) log_debug("Total dead end detected...")
 				return null
+			var/turf/last_junction = junctions[length(junctions)]
+			junction_paths[last_junction].Cut() //Reset
+			if(current_turf == last_junction)
+				var/point = length(junctions)-1
+				if(point <= 0)
+					if(debug) log_debug("Total dead end detected from double revert...")
+					break
+				last_junction = junctions[point]
+				junction_paths[last_junction].Cut() //Reset
 			current_turf = last_junction
 			if(debug)
-				for(var/k in current_sub_path)
+				log_debug("Resetting to previous junction [current_turf.get_debug_name()].")
+				for(var/k in current_subpath)
 					var/turf/T = k
 					T.color = "#FF00DC"
-			current_sub_path.Cut()
+			current_subpath.Cut() //Reset
 			continue
-		if(length(possible_turfs) >= 2)
-			if(last_junction)
-				current_path += current_sub_path
-			last_junction = current_turf
-			if(debug) last_junction.color = "#B200FF"
+		if(length(possible_turfs) >= 2) //We've hit a junction.
+			junctions += current_turf
+			junction_paths[current_turf] = list()
+			if(debug)
+				log_debug("Adding junction .[current_turf.get_debug_name()].")
+				current_turf.color = "#B200FF"
 		var/turf/best_turf
 		for(var/k in possible_turfs)
 			var/turf/T = k
 			if(!best_turf)
 				best_turf = T
-				break
-			if(get_dist(best_turf,destination) < get_dist(T,destination))
+				continue
+			if(get_dist(best_turf,destination) > get_dist(T,destination))
 				best_turf = T
 		current_turf = best_turf
-		current_sub_path += current_turf
-		current_sub_path.Cut()
+		current_subpath += current_turf
+		current_subpath.Cut()
+
+	var/list/current_path = list()
+
+	for(var/k in junctions)
+		var/turf/T = k
+		var/list/junction_list = junction_paths[T]
+		current_path += junction_list
 
 	if(debug)
 		for(var/k in current_path)
