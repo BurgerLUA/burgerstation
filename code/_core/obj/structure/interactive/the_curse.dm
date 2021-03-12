@@ -117,6 +117,8 @@
 								D.open()
 						did_move = TRUE
 						break
+				else
+					tracked_targets -= k //Eh whatever.
 				if(did_move)
 					if(debug) log_subsystem("Peanut","We've move to a safe path location.")
 					break

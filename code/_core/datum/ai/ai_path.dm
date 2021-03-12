@@ -33,7 +33,7 @@
 		current_burger_star_path = null
 
 	if(destination)
-		var/list/returning_path = burger_star(owner,destination,TRUE,debug=TRUE)
+		var/list/returning_path = burger_star(owner,destination,TRUE)
 		if(returning_path)
 			current_burger_star_path = returning_path
 			set_active(TRUE)
