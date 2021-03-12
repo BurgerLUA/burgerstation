@@ -112,6 +112,7 @@
 
 	var/turf/junctions = list()
 	var/turf/junction_paths = list()
+	var/turf/revert_blacklist = list()
 
 	var/list/turf_blacklist = list(current_turf = TRUE)
 
@@ -142,16 +143,21 @@
 			if(!length(junctions)) //Yeah we've really hit a dead end.
 				if(debug) log_debug("Total dead end detected...")
 				return null
-			var/turf/last_junction = junctions[length(junctions)]
-			junction_paths[last_junction].Cut() //Reset
-			if(current_turf == last_junction)
-				var/point = length(junctions)-1
-				if(point <= 0)
-					if(debug) log_debug("Total dead end detected from double revert...")
-					break
-				last_junction = junctions[point]
+			var/path_num = length(junctions)
+			var/turf/last_junction
+			while(path_num > 0)
+				CHECK_TICK(75,FPS_SERVER)
+				last_junction = junctions[path_num]
 				junction_paths[last_junction].Cut() //Reset
+				var/burger_star_data/BSD2 = master_list[last_junction]
+				if(revert_blacklist[last_junction] < length(BSD2.connected_turfs))
+					break //We can go back.
+				path_num--	//Can't go back!
 			current_turf = last_junction
+			if(!revert_blacklist[last_junction])
+				revert_blacklist[last_junction] = 1
+			else
+				revert_blacklist[last_junction] += 1
 			if(debug)
 				log_debug("Resetting to previous junction [current_turf.get_debug_name()].")
 				for(var/k in current_subpath)
@@ -189,6 +195,12 @@
 			var/turf/T = k
 			T.color = COLOR_GREEN
 		log_debug("Pathfinding took [world.time - start_time] deciseconds and [300 - attempts_left] steps.")
+
+	for(var/k in master_list)
+		var/burger_star_data/BSD = master_list[k]
+		qdel(BSD)
+
+	master_list.Cut()
 
 	return current_path
 
