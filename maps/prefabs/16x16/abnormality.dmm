@@ -5,10 +5,6 @@
 "b" = (
 /turf/simulated/wall/metal/reinforced,
 /area/dmm_suite/clear_area)
-"c" = (
-/obj/marker/abnormality_spawn,
-/turf/simulated/floor/plating/shuttle,
-/area/dmm_suite/clear_area)
 "d" = (
 /turf/simulated/floor/plating/shuttle,
 /area/dmm_suite/clear_area)
@@ -152,7 +148,7 @@ a
 a
 b
 d
-c
+d
 d
 d
 d
