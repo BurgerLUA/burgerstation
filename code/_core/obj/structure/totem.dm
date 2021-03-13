@@ -61,7 +61,7 @@
 			continue
 		if(L.loyalty_tag != affecting_faction) //!= because we want to only affect allies
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -88,7 +88,7 @@
 			continue
 		if(L.loyalty_tag == affecting_faction) //== because we dont want to affect allies
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -110,7 +110,7 @@
 			continue
 		if(L.loyalty_tag != affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -133,7 +133,7 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -153,7 +153,7 @@
 			continue
 		if(L.loyalty_tag != affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -176,7 +176,7 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -197,7 +197,7 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -220,7 +220,7 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
@@ -244,7 +244,7 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
-		if(istype(L, /mob/living/advanced/npc/dummy))
+		if(L.immortal)
 			continue
 		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
