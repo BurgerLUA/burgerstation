@@ -18,12 +18,12 @@ SUBSYSTEM_DEF(bosses)
 	if(L.ai)
 		var/ai/AI = L.ai
 		if(AI.objective_attack)
-			for(var/mob/living/advanced/P in viewers(L.boss_range,L))
+			for(var/mob/living/advanced/player/P in viewers(L.boss_range,L))
 				CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 				L.add_player_to_boss(P)
 
 	for(var/v in L.players_fighting_boss)
-		var/mob/living/advanced/P = v
+		var/mob/living/advanced/player/P = v
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		if(get_dist(P,L) >= L.boss_range*2)
 			L.remove_player_from_boss(P)

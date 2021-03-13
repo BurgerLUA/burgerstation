@@ -49,7 +49,6 @@
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(owner.move_delay <= 0)
-		//handle_movement_reset()
 		handle_movement()
 
 	handle_movement_checks()
