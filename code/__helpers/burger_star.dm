@@ -14,7 +14,12 @@
 	if(destination == starting_turf)
 		return null
 
-	var/distance = get_dist(mover,destination) + VIEW_RANGE
+	var/distance = get_dist(mover,destination)
+	if(distance >= 64)
+		return null
+
+	distance += VIEW_RANGE
+
 	var/center_x = (mover.x + destination.x)/2
 	var/center_y = (mover.y + destination.y)/2
 	center_x = round(center_x)
