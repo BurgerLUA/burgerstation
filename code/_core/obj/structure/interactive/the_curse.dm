@@ -63,7 +63,7 @@
 		tracked_targets |= L
 		if(is_seen_by(src,L))
 			current_viewers += L
-		else
+		else if(get_dist(L,src) <= VIEW_RANGE*0.5)
 			current_targets += L
 
 	if(!length(current_viewers))
