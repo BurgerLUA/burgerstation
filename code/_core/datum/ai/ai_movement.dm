@@ -146,10 +146,11 @@
 
 		var/obj/marker/map_node/N_start = find_closest_node(owner,check_view=TRUE)
 		if(!N_start)
-			SSai.path_stuck_ai |= src
 			set_path(null)
 			if(delete_on_no_path)
 				queue_delete(owner,0,TRUE)
+			else
+				SSai.path_stuck_ai |= src
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
@@ -158,6 +159,8 @@
 			set_path(null)
 			if(delete_on_no_path)
 				queue_delete(owner,0,TRUE)
+			else
+				SSai.path_stuck_ai |= src
 			return FALSE
 
 		var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
@@ -166,9 +169,11 @@
 			set_path(null)
 			if(delete_on_no_path)
 				queue_delete(owner,0,TRUE)
+			else
+				SSai.path_stuck_ai |= src
 			return FALSE
 
-		set_burger_star_path(get_turf(N_start))
+		//set_burger_star_path(get_turf(N_start))
 		set_path(found_path)
 
 		return TRUE
