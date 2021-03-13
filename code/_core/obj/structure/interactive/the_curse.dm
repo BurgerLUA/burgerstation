@@ -143,6 +143,6 @@
 				play_sound('sound/effects/neck_snap.ogg',T)
 				if(debug) log_subsystem("Peanut","Found a target. We've killed them.")
 
-		log_subsystem("Peanut","Took [world.time-start_time] deciseconds to think.")
+		if(debug) log_subsystem("Peanut","Took [world.time-start_time] deciseconds to think.")
 
 	return TRUE
