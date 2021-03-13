@@ -72,6 +72,9 @@
 	alpha = 255
 	flavor = "nicotine"
 
+	metabolism_stomach = 1/60 // Lasts a minute per 1u
+	metabolism_blood = 1/60 // Lasts a minute per 1u
+
 	experience_per_unit = 0
 
 	value = 1
