@@ -63,8 +63,7 @@
 						if(istype(M,j))
 							special_turfs[T] = TRUE
 							break
-				var/can_destroy = ignore_destructables && M.health && !(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))
-				if(M.density && M.anchored && !M.allow_path && !can_destroy)
+				if(M.density && M.anchored && !M.allow_path && (M.collision_flags & mover.collision_flags) && (ignore_destructables && M.health && !(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))))
 					occupied = TRUE
 					continue
 			if(occupied)
