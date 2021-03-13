@@ -31,6 +31,8 @@
 
 	damage_type = /damagetype/melee/club/lighter
 
+	size = SIZE_1
+
 /obj/item/container/cigarette/get_damage_type(var/atom/attacker,var/atom/victim)
 	if(lit) return /damagetype/melee/club/lighter/on
 	return ..()
@@ -44,13 +46,6 @@
 		set_lit(TRUE)
 
 	. = ..()
-
-/obj/item/container/cigarette/water
-	name = "water cigarette"
-
-/obj/item/container/cigarette/water/Generate()
-	. = ..()
-	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 
 /obj/item/container/cigarette/proc/set_lit(var/desired_lit=TRUE)
 
@@ -129,3 +124,44 @@
 
 	return TRUE
 
+
+/obj/item/container/cigarette/water/Generate()
+	. = ..()
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
+
+/obj/item/container/cigarette/red/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/tobacco/cigarette,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/bicaridine,6)
+
+/obj/item/container/cigarette/green/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/tobacco/cigarette,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/dylovene,6)
+
+/obj/item/container/cigarette/blue/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/tobacco/cigarette,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/dexalin,6)
+
+/obj/item/container/cigarette/gold/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/tobacco/cigarette,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/kelotane,6)
+
+/obj/item/container/cigarette/purple/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/tobacco/cigarette,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/tricordrazine,6)
+
+/obj/item/container/cigarette/orange/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/tobacco/cigarette,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/kelotane,3)
+	reagents.add_reagent(/reagent/medicine/bicaridine,3)
