@@ -228,7 +228,9 @@
 		"cry",
 		"clap",
 		"salute",
-		"spin"
+		"spin",
+		"inhale",
+		"drag"
 	)
 
 	var/tabled = FALSE

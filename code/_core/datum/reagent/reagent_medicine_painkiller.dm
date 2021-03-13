@@ -72,8 +72,6 @@
 	alpha = 255
 	flavor = "nicotine"
 
-	metabolism_blood = 0.1
-	metabolism_stomach = 0.1
 	experience_per_unit = 0
 
 	value = 1

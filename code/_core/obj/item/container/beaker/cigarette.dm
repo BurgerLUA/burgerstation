@@ -25,13 +25,16 @@
 	desired_light_color = "#FFC58C"
 	desired_light_angle = LIGHT_OMNI
 
-	value = 200 //Smoking isn't cheap.
+	value = 10
 
 	health = /health/obj/item/misc/
 
 	damage_type = /damagetype/melee/club/lighter
 
 	size = SIZE_1
+
+/obj/item/container/cigarette/feed(var/mob/caller,var/mob/living/target)
+	return FALSE
 
 /obj/item/container/cigarette/get_damage_type(var/atom/attacker,var/atom/victim)
 	if(lit) return /damagetype/melee/club/lighter/on
@@ -103,24 +106,28 @@
 		add_overlay(I)
 	. = ..()
 
+/obj/item/container/cigarette/proc/consume(var/multiplier=1)
+	if(istype(src.loc,/obj/hud/inventory/organs/face))
+		var/obj/hud/inventory/organs/face/I = src.loc
+		if(I.owner && I.owner.reagents)
+			I.owner << reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier)
+			return TRUE
+	reagents.splash(null,get_turf(src),consume_amount,TRUE,1) //Just remove the reagents if there is no one to add it to.
+	return TRUE
+
 /obj/item/container/cigarette/think()
 
 	if(!lit)
 		return FALSE
 
 	if(reagents.volume_current <= 0)
-		qdel(src)
 		CREATE(/obj/item/trash/butt,get_turf(src))
+		qdel(src)
 		return FALSE
 
 	if(next_consume <= world.time)
 		next_consume = world.time + SECONDS_TO_DECISECONDS(10)
-		if(istype(src.loc,/obj/hud/inventory/organs/face))
-			var/obj/hud/inventory/organs/face/I = src.loc
-			if(I.owner && I.owner.reagents)
-				reagents.transfer_reagents_to(I.owner.reagents,consume_amount)
-				return TRUE
-		reagents.splash(null,get_turf(src),consume_amount,TRUE,1) //Just remove the reagents if there is no one to add it to.
+		consume(1)
 
 	return TRUE
 
@@ -165,3 +172,17 @@
 	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/kelotane,3)
 	reagents.add_reagent(/reagent/medicine/bicaridine,3)
+
+/obj/item/container/cigarette/syndicate
+	consume_amount = 0.5
+
+/obj/item/container/cigarette/syndicate/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/medicine/omnizine,20)
+
+/obj/item/container/cigarette/russian
+	consume_amount = 0.5
+
+/obj/item/container/cigarette/russian/Generate()
+	. = ..() //Each contain 20
+	reagents.add_reagent(/reagent/medicine/omnizine,20)

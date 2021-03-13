@@ -40,6 +40,7 @@
 	var/container_max_slots = 0 //How much each inventory slot can hold.
 	var/container_blacklist = list()
 	var/container_whitelist = list()
+	var/max_inventory_x = MAX_INVENTORY_X
 
 	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod = 1 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.

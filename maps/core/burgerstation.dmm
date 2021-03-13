@@ -1793,7 +1793,7 @@
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/delta/station)
 "gu" = (
-/obj/marker/hostage_rest,
+/obj/structure/interactive/vending/soda/full,
 /turf/simulated/floor/tile/tint,
 /area/burgerstation/armory)
 "gv" = (
@@ -2365,10 +2365,9 @@
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/charlie/station)
 "is" = (
-/obj/decal/hazard,
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/plating,
-/area/burgerstation/hanger)
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 "it" = (
 /obj/structure/interactive/restocker/ammo,
 /turf/simulated/floor/tile/dark,
@@ -3078,8 +3077,11 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "ld" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/mob/living/advanced/npc/nanotrasen,
+/obj/structure/interactive/disposals/pipe/ending,
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "le" = (
@@ -3102,12 +3104,9 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "li" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
 /obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/mob/living/advanced/npc/nanotrasen{
-	icon_state = "directional";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
@@ -3370,8 +3369,10 @@
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/hall/north)
 "mk" = (
-/obj/structure/interactive/disposals/pipe/ending,
-/obj/structure/interactive/disposals/machine/chute,
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 1
+	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "ml" = (
@@ -3512,6 +3513,7 @@
 /obj/structure/interactive/disposals/pipe{
 	dir = 5
 	},
+/obj/structure/interactive/vending/coffee,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "mP" = (
@@ -5066,7 +5068,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "sw" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
+/obj/structure/interactive/vending/junk/full,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "sx" = (
@@ -6021,7 +6023,7 @@
 /area/burgerstation/maint/east)
 "wa" = (
 /obj/structure/interactive/fire_closet,
-/turf/simulated/wall/metal/reinforced,
+/turf/simulated/wall/metal,
 /area/burgerstation/maint/disposals)
 "wb" = (
 /obj/structure/interactive/reagent_tank/water,
@@ -6223,18 +6225,13 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "wO" = (
-/mob/living/simple/turret/nanotrasen/immortal{
-	icon_state = "active";
-	dir = 4
-	},
-/turf/simulated/floor/tile/grey,
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/east)
 "wP" = (
-/obj/structure/interactive/fire_closet{
-	dir = 1
-	},
-/turf/simulated/wall/metal,
-/area/burgerstation/bathrooms)
+/obj/structure/interactive/vending/junk/full,
+/turf/simulated/floor/tile/tint,
+/area/burgerstation/armory)
 "wQ" = (
 /obj/structure/interactive/fire_closet{
 	dir = 4
@@ -6711,12 +6708,32 @@
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo_inbound/ship)
+"yx" = (
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/burgerstation/arrivals)
+"yy" = (
+/obj/structure/interactive/vending/coffee,
+/turf/simulated/floor/tile/tint,
+/area/burgerstation/armory)
+"yz" = (
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/dark/ish,
+/area/burgerstation/cafe)
+"yA" = (
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/burgerstation/hall/north)
 "yB" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 6
 	},
 /turf/simulated/floor/tile/chapel/decor,
 /area/burgerstation/chapel)
+"yC" = (
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/morphing/chapel,
+/area/burgerstation/hall/south)
 "yD" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -6770,6 +6787,24 @@
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"yL" = (
+/obj/structure/interactive/vending/soda/full,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/hall/west)
+"yM" = (
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/hall/west)
+"yN" = (
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/burgerstation/hall/east)
 "yO" = (
 /obj/marker/map_node,
 /obj/structure/interactive/disposals/pipe,
@@ -31014,7 +31049,7 @@ eh
 eh
 iZ
 bK
-bK
+hB
 cg
 jd
 eW
@@ -31272,7 +31307,7 @@ bK
 bK
 bK
 hB
-is
+cg
 jd
 eW
 jd
@@ -31529,7 +31564,7 @@ bK
 bK
 bK
 hB
-is
+cg
 jd
 eW
 jd
@@ -31785,7 +31820,7 @@ dS
 dS
 ei
 bK
-bK
+hB
 cg
 jd
 eW
@@ -35126,13 +35161,13 @@ bi
 iy
 hO
 kw
-mk
+ld
 rC
 rC
 sr
 mn
 mn
-sw
+li
 kw
 bK
 bK
@@ -35383,7 +35418,7 @@ eh
 eh
 iZ
 lr
-mn
+sw
 me
 me
 cS
@@ -35640,13 +35675,13 @@ hL
 hL
 hL
 kw
-ld
+yL
 so
 me
 cS
 me
 me
-li
+mk
 kw
 hL
 hL
@@ -36154,7 +36189,7 @@ bx
 bx
 bx
 bx
-mV
+yM
 me
 me
 cS
@@ -41287,7 +41322,7 @@ gN
 cO
 jm
 kk
-hP
+yA
 hZ
 hZ
 if
@@ -42324,7 +42359,7 @@ uD
 mF
 mF
 km
-kT
+yz
 kU
 kT
 kU
@@ -43653,7 +43688,7 @@ si
 si
 rx
 si
-si
+yC
 vH
 vC
 vB
@@ -45164,7 +45199,7 @@ fM
 sd
 iT
 iT
-mR
+is
 nZ
 nZ
 nZ
@@ -47193,7 +47228,7 @@ dG
 cs
 xz
 ct
-gr
+gu
 gr
 hk
 tg
@@ -47450,7 +47485,7 @@ dG
 cs
 aN
 fC
-gu
+wP
 gr
 hk
 ti
@@ -47707,7 +47742,7 @@ dG
 cs
 xC
 fC
-fI
+yy
 gr
 hk
 tf
@@ -47975,14 +48010,14 @@ hr
 dm
 ih
 wH
-mh
 wO
 jy
 jy
 jy
 jy
 jy
-wO
+jy
+jy
 mh
 lE
 lN
@@ -48497,7 +48532,7 @@ sB
 sB
 sB
 jy
-mh
+yN
 lI
 lQ
 wI
@@ -49525,7 +49560,7 @@ tC
 sB
 sB
 jy
-mh
+yN
 lK
 ml
 wI
@@ -50817,7 +50852,7 @@ hJ
 hJ
 mJ
 hJ
-hJ
+kL
 hq
 aj
 ub
@@ -51849,7 +51884,7 @@ hU
 hJ
 nh
 nu
-wP
+wx
 wp
 wp
 wp
@@ -52593,7 +52628,7 @@ dp
 dV
 gg
 dp
-hq
+yx
 cG
 mx
 sI
@@ -52849,8 +52884,8 @@ fY
 iq
 fY
 wU
-bG
-hJ
+dp
+hq
 cG
 mG
 fO
@@ -53106,7 +53141,7 @@ dp
 bE
 dp
 cB
-wX
+dp
 hJ
 cG
 mG
@@ -53363,7 +53398,7 @@ dp
 wT
 wT
 dt
-bG
+dp
 hJ
 cG
 mG
@@ -53877,7 +53912,7 @@ bG
 wT
 wT
 wT
-wX
+dp
 hJ
 hU
 mG

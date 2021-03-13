@@ -306,26 +306,32 @@
 
 	liquid = -0.75
 
+	var/hidden_chance = 0
 	var/list/hidden_reagents = list()
 
-
-/reagent/tobacco/cigarette
-	name = "Low-grade Tobacco"
-	flavor = "cheap tobacco"
-	hidden_reagents = list(
-		/reagent/medicine/painkiller/nicotine = 50,
-		/reagent/fuel/welding = 25,
-		/reagent/fuel/acetone = 10,
-		/reagent/ammonia = 10,
-		/reagent/toxin/spider_toxin = 1,
-		/reagent/toxin/xeno_acid = 1,
-
-	)
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.5
+	metabolism_skin = 10
 
 /reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if(container && length(hidden_reagents) && prob(25))
-		var/reagent/R = pickweight(hidden_reagents)
+	if(container)
+		var/reagent/R = /reagent/medicine/painkiller/nicotine
+		if(hidden_chance && prob(hidden_chance))
+			R = pickweight(hidden_reagents)
 		container.add_reagent(R,.)
+
+/reagent/tobacco/cigarette
+	name = "Low-grade Tobacco"
+	flavor = "cheap tobacco"
+	hidden_chance = 25
+	hidden_reagents = list(
+		/reagent/fuel/welding = 25,
+		/reagent/fuel/acetone = 10,
+		/reagent/ammonia = 10,
+		/reagent/toxin/spider_toxin = 1,
+		/reagent/toxin/xeno_acid = 1
+	)
+

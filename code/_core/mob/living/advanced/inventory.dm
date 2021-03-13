@@ -11,6 +11,9 @@
 	if(I.id == BODY_TORSO_OB)
 		holster = I
 
+	if(I.id == BODY_FACE)
+		face = I
+
 	inventory += I
 
 	if(client)
@@ -29,6 +32,9 @@
 
 	if(I.id == BODY_TORSO_OB)
 		holster = null
+
+	if(I.id == BODY_FACE)
+		face = null
 
 	inventory -= I
 

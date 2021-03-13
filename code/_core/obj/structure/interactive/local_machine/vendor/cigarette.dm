@@ -8,5 +8,6 @@
 		/obj/item/storage/cigarettes/blue,
 		/obj/item/storage/cigarettes/green,
 		/obj/item/storage/cigarettes/purple,
-		/obj/item/storage/cigarettes/orange
+		/obj/item/storage/cigarettes/orange,
+		/obj/item/lighter
 	)
