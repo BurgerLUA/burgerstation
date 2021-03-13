@@ -84,6 +84,7 @@
 #include "code\__defines\temperature.dm"
 #include "code\__defines\ticks.dm"
 #include "code\__defines\time.dm"
+#include "code\__defines\track.dm"
 #include "code\__defines\trait.dm"
 #include "code\__defines\turf.dm"
 #include "code\__defines\types.dm"
