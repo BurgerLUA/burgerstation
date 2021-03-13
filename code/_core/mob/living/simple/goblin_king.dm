@@ -1,0 +1,111 @@
+/mob/living/simple/goblin_king
+	name = "goblin king"
+	boss_icon_state = "goblin_king"
+	icon = 'icons/mob/living/simple/goblin_king.dmi'
+	icon_state = "living"
+	damage_type = /damagetype/unarmed/claw/
+	class = /class/goblin_king/
+	ai = /ai/boss/goblin_king/
+
+	boss_loot = /loot/lavaland/goblin_king
+
+	value = 4000
+
+	health_base = 15000
+	stamina_base = 4000
+	mana_base = 1000
+
+	move_delay = BOSS_TICK*3
+
+	stun_angle = 0
+
+	attack_range = 2
+
+	force_spawn = TRUE
+	boss = TRUE
+
+	armor_base = list(
+		BLADE = AP_GREATSWORD,
+		BLUNT = AP_GREATSWORD,
+		LASER = AP_GREATSWORD,
+		HEAT = AP_GREATSWORD,
+		COLD = AP_GREATSWORD,
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD,
+		FATIGUE = AP_GREATSWORD,
+		ION = INFINITY,
+		PAIN = INFINITY
+	)
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		STAMCRIT = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
+		DISARM = TRUE,
+		DRUGGY = TRUE,
+		FIRE = FALSE
+	)
+
+	iff_tag = "Goblin"
+	loyalty_tag = "Goblin"
+
+	fatigue_from_block_mul = 0
+
+	size = SIZE_BOSS
+
+	sprint_delay_mul = 1
+	jog_delay_mul = 3
+	walk_delay_mul = 4
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
+	blood_volume = 1000
+	blood_type = /reagent/blood/goblin
+
+	soul_size = SOUL_SIZE_RARE
+
+/mob/living/simple/goblin_king/post_death()
+	. = ..()
+	icon_state = "dead"
+	update_sprite()
+
+/mob/living/simple/goblin_king/proc/summon_goblins(var/angered = FALSE)
+	var/spawn_amount = (((angered ? 2 : 1)*length(players_fighting_boss))+2)
+	spawn_amount = min(spawn_amount, 10)
+	do_say("Come to us our brethren, we are being slain!")
+	var/turf/T = get_turf(src)
+	for(var/i=1,i<=spawn_amount,i++)
+		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
+		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
+		CREATE(choose_goblin, turf_to_spawn)
+
+/mob/living/simple/goblin_king/proc/summon_totems(var/angered = FALSE)
+	var/spawn_amount = angered ? 3 : 1
+	do_say("We refuse to die, the totems will aid us!")
+	var/turf/T = get_turf(src)
+	for(var/i=1,i<=spawn_amount,i++)
+		var/totem_to_spawn = pick(/obj/structure/totem/sacred_flame, /obj/structure/totem/stamina_deal, /obj/structure/totem/health_heal)
+		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
+		var/obj/structure/totem/summoned_totem = new totem_to_spawn(turf_to_spawn)
+		summoned_totem.affecting_faction = loyalty_tag
+		summoned_totem.totem_remove_time = SECONDS_TO_DECISECONDS(120) + world.time
+		summoned_totem.leveled_effect = 3 //basically, a person with lvl.100 magic
+		INITIALIZE(summoned_totem)
+		GENERATE(summoned_totem)
+		FINALIZE(summoned_totem)
+
+/mob/living/simple/goblin_king/proc/screech(var/angered = FALSE)
+	do_say("Suffer our wraith invaders, suffer!")
+	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+	var/stun_time = angered ? 40 : 20
+	for(var/mob/living/L in view(VIEW_RANGE,src))
+		if(L.loyalty_tag == src.loyalty_tag)
+			continue
+		L.add_status_effect(STUN,20,stun_time)

@@ -51,6 +51,8 @@ SUBSYSTEM_DEF(bosses)
 /mob/living/proc/add_player_to_boss(var/mob/living/advanced/player/P)
 	if(P in src.players_fighting_boss)
 		return FALSE
+	if(!istype(P))
+		return FALSE
 	players_fighting_boss += P
 	for(var/obj/hud/button/boss_health/B in P.buttons)
 		B.target_bosses |= src
