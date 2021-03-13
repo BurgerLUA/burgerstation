@@ -255,15 +255,26 @@ client/verb/air_test(var/pressure as num)
 
 	var/list/valid_turfs = list()
 
-	for(var/turf/simulated/floor/S in view(VIEW_RANGE + ZOOM_RANGE,mob))
+	for(var/turf/simulated/floor/S in range(VIEW_RANGE + ZOOM_RANGE,mob))
+		if(!S.is_safe_teleport())
+			continue
 		valid_turfs += S
 
-	for(var/i=1,i<=60,i++)
-		spawn
-			var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
-			INITIALIZE(ST)
-			GENERATE(ST)
-			FINALIZE(ST)
+	var/list/spawned_mobs = list()
+
+	for(var/i=1,i<=50,i++)
+		CHECK_TICK(50,FPS_SERVER)
+		var/mob/living/advanced/npc/nanotrasen/ST = new(pick(valid_turfs))
+		INITIALIZE(ST)
+		GENERATE(ST)
+		FINALIZE(ST)
+		spawned_mobs += ST
+
+	if(is_living(src.mob))
+		for(var/k in spawned_mobs)
+			var/mob/living/L = k
+			if(L.ai)
+				L.ai.set_move_objective(src.mob,TRUE)
 
 
 /client/verb/create_vote()

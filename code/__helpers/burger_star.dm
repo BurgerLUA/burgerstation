@@ -1,5 +1,7 @@
 /proc/burger_star(var/atom/movable/mover,var/turf/destination,var/ignore_destructables=FALSE,var/list/stop_at_obstacles,var/debug=FALSE)
 
+	set background = 1
+
 	if(debug) log_debug("Running burger_star([mover],[destination],[ignore_destructables],[debug])")
 
 	if(!destination || !mover || mover.z != destination.z)
@@ -43,6 +45,7 @@
 		return null
 
 	var/list/special_turfs = list()
+	var/list/bsd_to_validate = list()
 
 	//Step 1: Go through the block turfs and give them a BSD datum if you can move through them.
 	for(var/k in block_turfs)
@@ -55,15 +58,17 @@
 				continue
 			var/occupied = FALSE
 			for(var/m in T.contents)
+				CHECK_TICK(50,FPS_SERVER)
 				var/atom/movable/M = m
 				if(!special_turfs[T] && stop_at_obstacles)
 					for(var/j in stop_at_obstacles)
+						CHECK_TICK(50,FPS_SERVER)
 						if(istype(M,j))
 							special_turfs[T] = TRUE
 							break
-				if(M.density && M.anchored && !M.allow_path && (M.collision_flags & mover.collision_flags) && (ignore_destructables && M.health && !(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))))
+				if(M.density && M.anchored && !M.allow_path && (M.collision_flags & mover.collision_flags) && !(ignore_destructables && M.health && !(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION))))
 					occupied = TRUE
-					continue
+					break
 			if(occupied)
 				if(debug) T.color = COLOR_RED_DARK
 				continue
@@ -76,6 +81,8 @@
 		BSD.connected_turfs = list()
 		BSD.intercardinal_turfs = list()
 		master_list[T] = BSD
+		bsd_to_validate += BSD
+
 
 	//Step 2: Setup connections.
 	for(var/k in master_list)
@@ -98,14 +105,19 @@
 			BSD.intercardinal_turfs[T2] = j
 
 	//Step 3: Validate connections.
-	for(var/k in master_list)
+	var/validation_counts = 0
+	while(length(bsd_to_validate) > 0)
 		CHECK_TICK(50,FPS_SERVER)
-		var/burger_star_data/BSD = master_list[k]
-		if(!BSD) //Could've been deleted.
-			continue
-		if(!BSD.check_valid())
-			BSD.set_invalid(debug)
-			continue
+		validation_counts += 1
+		if(debug && !(validation_counts % 100))
+			log_debug("Validation counts exceeding [validation_counts]...")
+		var/burger_star_data/BSD = bsd_to_validate[1]
+		if(BSD && !BSD.qdeleting && !BSD.check_valid())
+			if(debug) BSD.parent_turf.color = COLOR_ORANGE
+			BSD.set_invalid(bsd_to_validate)
+		bsd_to_validate -= BSD
+
+	if(debug) log_debug("Checked the validity of [validation_counts] BSDs.")
 
 	if(!length(master_list))
 		if(debug) log_debug("No master turfs found!")
@@ -113,13 +125,11 @@
 
 	if(debug)
 		for(var/k in master_list)
+			CHECK_TICK(50,FPS_SERVER)
 			var/turf/T = k
 			T.color = COLOR_BLUE
 
 	var/turf/current_turf = starting_turf
-	var/turf/last_turf
-	//var/list/current_subpath = list(current_turf)
-
 	var/turf/junctions = list(current_turf)
 	var/turf/junction_paths = list()
 	junction_paths[current_turf] = list()
@@ -131,7 +141,7 @@
 
 	//Step 4: Path to it!
 	while(TRUE)
-		sleep(3)
+		if(debug) sleep(3)
 		CHECK_TICK(50,FPS_SERVER)
 		if(debug) current_turf.color = "#FFFFFF"
 		attempts_left--
@@ -147,11 +157,9 @@
 			return null
 		var/list/possible_turfs = BSD.connected_turfs.Copy()
 		for(var/k in possible_turfs)
+			CHECK_TICK(50,FPS_SERVER)
 			var/turf/T = k
 			if(turf_blacklist[T])
-				if(last_turf && junction_paths[T] && T != last_turf)
-					possible_turfs = list()
-					break
 				possible_turfs -= T
 				continue
 		if(!length(possible_turfs)) //We've reached a dead end or a redundancy.
@@ -161,14 +169,13 @@
 			var/path_num = length(junctions)
 			var/turf/last_junction
 			while(path_num > 0)
-				CHECK_TICK(75,FPS_SERVER)
+				CHECK_TICK(50,FPS_SERVER)
 				last_junction = junctions[path_num]
 				junction_paths[last_junction].Cut() //Reset
 				var/burger_star_data/BSD2 = master_list[last_junction]
 				if(revert_blacklist[last_junction] < length(BSD2.connected_turfs))
 					break //We can go back.
 				path_num--	//Can't go back!
-			last_turf = current_turf
 			current_turf = last_junction
 			if(!revert_blacklist[last_junction])
 				revert_blacklist[last_junction] = 1
@@ -184,30 +191,33 @@
 				current_turf.color = "#B200FF"
 		var/turf/best_turf
 		for(var/k in possible_turfs)
+			CHECK_TICK(50,FPS_SERVER)
 			var/turf/T = k
 			if(!best_turf)
 				best_turf = T
 				continue
 			if(get_dist(best_turf,destination) > get_dist(T,destination))
 				best_turf = T
-		last_turf = current_turf
 		current_turf = best_turf
 		junction_paths[junctions[length(junctions)]] += current_turf
 
 	var/list/current_path = list()
 
 	for(var/k in junctions)
+		CHECK_TICK(50,FPS_SERVER)
 		var/turf/T = k
 		var/list/junction_list = junction_paths[T]
 		current_path += junction_list
 
 	if(debug)
 		for(var/k in current_path)
+			CHECK_TICK(50,FPS_SERVER)
 			var/turf/T = k
 			T.color = COLOR_GREEN
 		log_debug("Pathfinding took [world.time - start_time] deciseconds and [300 - attempts_left] steps.")
 
 	for(var/k in master_list)
+		CHECK_TICK(50,FPS_SERVER)
 		var/burger_star_data/BSD = master_list[k]
 		qdel(BSD)
 
@@ -245,11 +255,14 @@
 	if(length(intercardinal_turfs))
 		var/direction_to_turf = list()
 		for(var/k in connected_turfs)
+			CHECK_TICK(50,FPS_SERVER)
 			direction_to_turf["[connected_turfs[k]]"] = k
 		for(var/k in intercardinal_turfs)
+			CHECK_TICK(50,FPS_SERVER)
 			var/direction = intercardinal_turfs[k]
 			var/valid_count = 0
 			for(var/j in DIRECTIONS_CARDINAL)
+				CHECK_TICK(50,FPS_SERVER)
 				var/j_inverse = turn(j,180)
 				if((direction & j) && direction_to_turf["[j]"] && !direction_to_turf["[j_inverse]"])
 					valid_count++
@@ -259,7 +272,7 @@
 	return TRUE
 
 
-/burger_star_data/proc/set_invalid(var/debug=FALSE)
+/burger_star_data/proc/set_invalid(var/list/bsd_to_validate)
 
 	master_list -= parent_turf
 
@@ -267,25 +280,21 @@
 		CHECK_TICK(50,FPS_SERVER)
 		var/turf/T = k
 		if(!master_list[T]) //Already processed.
-			connected_turfs -= k
+			connected_turfs -= T
 			continue
-		var/burger_star_data/BSD = master_list[k]
+		var/burger_star_data/BSD = master_list[T]
 		BSD.connected_turfs -= parent_turf
-		if(!BSD.check_valid())
-			BSD.set_invalid(debug)
+		bsd_to_validate |= BSD
 
 	for(var/k in intercardinal_turfs)
 		CHECK_TICK(50,FPS_SERVER)
 		var/turf/T = k
 		if(!master_list[T]) //Already processed.
-			intercardinal_turfs -= k
+			intercardinal_turfs -= T
 			continue
-		var/burger_star_data/BSD = master_list[k]
+		var/burger_star_data/BSD = master_list[T]
 		BSD.intercardinal_turfs -= parent_turf
-		if(!BSD.check_valid())
-			BSD.set_invalid(debug)
-
-	if(debug) parent_turf.color = COLOR_ORANGE
+		bsd_to_validate |= BSD
 
 	qdel(src)
 

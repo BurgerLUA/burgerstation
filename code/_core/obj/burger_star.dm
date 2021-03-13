@@ -2,6 +2,7 @@
 	name = "start point"
 	var/mob/living/simple/spider/linked_spider
 	var/obj/burger_star_test_end/linked_end
+	invisibility = 101
 
 /obj/burger_star_test_start/proc/activate(var/mob/caller,var/atom/object,location,control,params)
 
@@ -19,11 +20,12 @@
 	if(!linked_end)
 		return TRUE
 
-	burger_star(linked_spider,linked_end, stop_at_obstacles = list(/obj/structure/interactive/door), debug = TRUE)
+	burger_star(linked_spider,linked_end, debug = TRUE)
 
 	return TRUE
 
 /obj/burger_star_test_end
 	name = "end point"
+	invisibility = 101
 
 

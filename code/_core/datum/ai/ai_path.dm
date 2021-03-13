@@ -26,7 +26,7 @@
 
 	return TRUE
 
-/ai/proc/set_burger_star_path(var/turf/destination)
+/ai/proc/set_burger_star_path(var/turf/destination) //Very expensive.
 
 	if(current_burger_star_path)
 		current_burger_star_path.Cut()
