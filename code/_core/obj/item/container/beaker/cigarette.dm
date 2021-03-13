@@ -27,11 +27,18 @@
 
 	value = 10
 
-	health = /health/obj/item/misc/
-
 	damage_type = /damagetype/melee/club/lighter
 
 	size = SIZE_1
+
+
+/obj/item/container/cigarette/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+	if(!lit)
+		var/damagetype/DT = all_damage_types[object.get_damage_type(caller,src)]
+		if(DT.attack_damage_base[FIRE] || DT.attack_damage_base[LASER])
+			set_lit(TRUE)
+			return TRUE
+	. = ..()
 
 /obj/item/container/cigarette/feed(var/mob/caller,var/mob/living/target)
 	return FALSE
@@ -39,16 +46,6 @@
 /obj/item/container/cigarette/get_damage_type(var/atom/attacker,var/atom/victim)
 	if(lit) return /damagetype/melee/club/lighter/on
 	return ..()
-
-/obj/item/container/cigarette/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-	return !lit
-
-/obj/item/container/cigarette/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
-	if(damage_table[FIRE] || damage_table[LASER])
-		set_lit(TRUE)
-
-	. = ..()
 
 /obj/item/container/cigarette/proc/set_lit(var/desired_lit=TRUE)
 
@@ -139,37 +136,37 @@
 /obj/item/container/cigarette/red/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/tobacco/cigarette,10)
-	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/bicaridine,6)
 
 /obj/item/container/cigarette/green/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/tobacco/cigarette,10)
-	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/dylovene,6)
 
 /obj/item/container/cigarette/blue/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/tobacco/cigarette,10)
-	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/dexalin,6)
 
 /obj/item/container/cigarette/gold/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/tobacco/cigarette,10)
-	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/kelotane,6)
 
 /obj/item/container/cigarette/purple/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/tobacco/cigarette,10)
-	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/tricordrazine,6)
 
 /obj/item/container/cigarette/orange/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/tobacco/cigarette,10)
-	reagents.add_reagent(/reagent/medicine/painkiller/nicotine,4)
+	reagents.add_reagent(/reagent/medicine/nicotine,4)
 	reagents.add_reagent(/reagent/medicine/kelotane,3)
 	reagents.add_reagent(/reagent/medicine/bicaridine,3)
 

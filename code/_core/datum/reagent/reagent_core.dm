@@ -318,7 +318,7 @@
 	. = ..()
 
 	if(container)
-		var/reagent/R = /reagent/medicine/painkiller/nicotine
+		var/reagent/R = /reagent/medicine/nicotine
 		if(hidden_chance && prob(hidden_chance))
 			R = pickweight(hidden_reagents)
 		container.add_reagent(R,.)

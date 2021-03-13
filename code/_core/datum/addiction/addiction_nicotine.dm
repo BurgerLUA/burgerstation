@@ -14,7 +14,7 @@
 				A.brute_regen_buffer -= LIFE_TICK_SLOW
 				A.to_chat(span("warning","Your body itches..."))
 			if(2)
-				A.to_chat(span("warning","You feel depressed..."))
+				A.to_chat(span("warning","You feel moody..."))
 				A.health?.adjust_loss_smart(sanity=-LIFE_TICK_SLOW)
 			if(2)
 				A.to_chat(span("warning","You can't seem to think..."))

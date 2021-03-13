@@ -62,22 +62,3 @@
 	owner.brute_regen_buffer += .*1.5
 	owner.burn_regen_buffer += .*1
 	owner.pain_regen_buffer += .*2.5
-
-
-
-/reagent/medicine/painkiller/nicotine
-	name = "Nicotine"
-	desc = "A very addictive pesticide commonly found in household products such as Bugs-B-Gone and Space Cigarettes."
-	color = "#E2E2E2"
-	alpha = 255
-	flavor = "nicotine"
-
-	metabolism_stomach = 1/60 // Lasts a minute per 1u
-	metabolism_blood = 1/60 // Lasts a minute per 1u
-
-	experience_per_unit = 0
-
-	value = 1
-	strength = 10
-
-	addiction = /addiction/nicotine
