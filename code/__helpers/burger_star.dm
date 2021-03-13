@@ -1,7 +1,5 @@
 /proc/burger_star(var/atom/movable/mover,var/turf/destination,var/ignore_destructables=FALSE,var/list/stop_at_obstacles,var/debug=FALSE)
 
-	set background = TRUE
-
 	if(debug) log_debug("Running burger_star([mover],[destination],[ignore_destructables],[debug])")
 
 	if(!destination || !mover || mover.z != destination.z)
@@ -235,8 +233,6 @@
 
 /burger_star_data/proc/check_valid()
 
-	set background = TRUE
-
 	//Don't check if it's the destination or starting point.
 	if(parent_turf == starting_turf || parent_turf == ending_turf)
 		return TRUE
@@ -264,8 +260,6 @@
 
 
 /burger_star_data/proc/set_invalid(var/debug=FALSE)
-
-	set background = TRUE
 
 	master_list -= parent_turf
 
