@@ -104,13 +104,23 @@
 	if(!selection)
 		return FALSE
 
+	var/turf/T
+	if(mob)
+		T = get_step(src.mob,src.mob.dir)
+
+	if(!T)
+		T = get_turf(src.mob)
+
 	var/datum/A = selection
-	A = new A(usr.loc)
+	A = new A(T)
 	INITIALIZE(A)
-	FINALIZE(A)
-	if(isobj(A))
-		var/obj/O = A
+	if(is_atom(A))
+		var/atom/O = A
+		O.set_dir(mob ? mob.dir : SOUTH)
 		GENERATE(O)
+	FINALIZE(A)
+
+
 
 	log_admin("[src.get_debug_name()] spawned [A.get_debug_name()].")
 

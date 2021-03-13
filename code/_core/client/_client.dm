@@ -221,7 +221,9 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/get_ranks()
 
 	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
-	if(world.port == 0) ranks |= SSadmin.stored_ranks["host"]
+	if(world.port == 0)
+		log_debug("Giving [src] the HOST rank as the world port is 0.")
+		ranks |= SSadmin.stored_ranks["host"]
 	if(SSadmin.stored_user_ranks[ckey])
 		for(var/k in SSadmin.stored_user_ranks[ckey])
 			var/rank/R = k

@@ -5,6 +5,8 @@
 	layer = LAYER_EFFECT
 	plane = PLANE_EFFECT
 
+	allow_path = TRUE
+
 /obj/effect/logo
 	name = "Burgerstation 13"
 	desc = "Welcome to Burgerstation 13"

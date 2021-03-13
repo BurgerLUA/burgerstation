@@ -55,14 +55,14 @@
 		for(var/key in S.spawning_organs_female)
 			add_organ(S.spawning_organs_female[key])
 			if(world_state == STATE_RUNNING)
-				sleep(world.tick_lag)
+				CHECK_TICK(50,FPS_SERVER)
 			else
 				sleep(-1)
 	else
 		for(var/key in S.spawning_organs_male)
 			add_organ(S.spawning_organs_male[key])
 			if(world_state == STATE_RUNNING)
-				sleep(world.tick_lag)
+				CHECK_TICK(50,FPS_SERVER)
 			else
 				sleep(-1)
 

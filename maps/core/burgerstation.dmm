@@ -6555,6 +6555,10 @@
 	},
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
+"xV" = (
+/obj/burger_star_test_start,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "xW" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -6673,6 +6677,10 @@
 	dir = 9
 	},
 /area/burgerstation/chapel)
+"ys" = (
+/obj/burger_star_test_end,
+/turf/simulated/floor/carpet,
+/area/burgerstation/library)
 "yt" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -45175,7 +45183,7 @@ gL
 nD
 pB
 pB
-pB
+ys
 pB
 pB
 pB
@@ -49014,7 +49022,7 @@ wI
 wI
 wI
 wI
-wI
+xV
 wj
 nK
 nX

@@ -136,14 +136,17 @@
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
 	if(density && (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags))
-		var/enter_direction = get_dir(oldloc,src)
-		if((enter_direction & NORTH) && density_north)
-			return FALSE
-		if((enter_direction & EAST) && density_east)
-			return FALSE
-		if((enter_direction & SOUTH) && density_south)
-			return FALSE
-		if((enter_direction & WEST) && density_west)
+		if(oldloc)
+			var/enter_direction = get_dir(oldloc,src)
+			if((enter_direction & NORTH) && density_north)
+				return FALSE
+			if((enter_direction & EAST) && density_east)
+				return FALSE
+			if((enter_direction & SOUTH) && density_south)
+				return FALSE
+			if((enter_direction & WEST) && density_west)
+				return FALSE
+		else if(density_west || density_east || density_south || density_north)
 			return FALSE
 
 	return ..()
