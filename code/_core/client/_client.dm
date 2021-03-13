@@ -31,8 +31,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
-	var/swap_mouse = FALSE
-
 	perspective = EYE_PERSPECTIVE
 
 	var/current_music_track //Id of music track that last played.
@@ -68,6 +66,9 @@ var/global/list/all_clients = list() //Assoc list
 	var/examine_mode = FALSE
 
 	var/permissions = FLAG_PERMISSION_NONE
+
+	var/zoom_pixel_x = 0
+	var/zoom_pixel_y = 0
 
 	var/desired_pixel_x = 0
 	var/desired_pixel_y = 0
@@ -220,7 +221,9 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/get_ranks()
 
 	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
-	if(world.port == 0) ranks |= SSadmin.stored_ranks["host"]
+	if(world.port == 0)
+		log_debug("Giving [src] the HOST rank as the world port is 0.")
+		ranks |= SSadmin.stored_ranks["host"]
 	if(SSadmin.stored_user_ranks[ckey])
 		for(var/k in SSadmin.stored_user_ranks[ckey])
 			var/rank/R = k

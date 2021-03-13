@@ -8,7 +8,6 @@
 		caller.to_chat(span("warning","\The [A.name] cannot fit on \the [src.name]!"))
 		return FALSE
 
-
 	var/list/type_to_var = list(
 		/obj/item/attachment/barrel/ = "attachment_barrel",
 		/obj/item/attachment/sight/ = "attachment_sight",
@@ -20,15 +19,23 @@
 		var/v = type_to_var[k]
 		if(!istype(A,k))
 			continue
+		var/obj/hud/inventory/INV
+		var/obj/item/I
 		if(vars[v])
-			var/obj/item/I = vars[v]
-			caller.to_chat(span("warning","There is already \a [I.name] attached to \the [src.name]!"))
-			return FALSE
-		caller.visible_message(span("notice","\The [caller.name] attaches \the [A.name] to \the [src.name]."),span("notice","You attach \the [A.name] to \the [src.name]."))
+			I = vars[v]
+			caller.visible_message(span("notice","\The [caller.name] swaps out \the [I.name] on \the [src.name] for \the [A.name]."),span("notice","You swap out \the [A.name] on \the [src.name] for \the [I.name]."))
+			I.drop_item(get_turf(src))
+			vars[v] = null
+			if(is_inventory(A.loc))
+				INV = A.loc
+		else
+			caller.visible_message(span("notice","\The [caller.name] attaches \the [A.name] to \the [src.name]."),span("notice","You attach \the [A.name] to \the [src.name]."))
 		A.drop_item(src)
 		vars[v] = A
 		update_sprite()
 		update_attachment_stats()
+		if(I && INV)
+			INV.add_object(I)
 		return TRUE
 
 	return FALSE
@@ -71,7 +78,7 @@
 	vars[attachment_choice] = null
 	update_sprite()
 	update_attachment_stats()
-	return TRUE
+	return I
 
 /obj/item/weapon/ranged/proc/update_attachment_stats()
 

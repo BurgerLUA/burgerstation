@@ -28,8 +28,6 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/Initialize()
 
-	set background = TRUE
-
 	for(var/i=1,i<=10,i++) //Generate 10 seeds.
 		seeds += rand(1,99999)
 

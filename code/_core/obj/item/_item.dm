@@ -147,6 +147,8 @@
 
 	value = -1
 
+	allow_path = TRUE
+
 /obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
 	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
 

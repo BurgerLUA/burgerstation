@@ -2,10 +2,10 @@
 
 	. = 0x0
 
-	if((swap_mouse && check_swap) ? ("left" in params) :("right" in params))
+	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("left" in params) :("right" in params))
 		. |= CLICK_RIGHT
 
-	if((swap_mouse && check_swap) ? ("right" in params) : ("left" in params))
+	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
 		. |= CLICK_LEFT
 
 	if("middle" in params)
@@ -170,15 +170,17 @@
 
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 
+	MouseEntered(over_object,over_location,over_control,params) //God I hate this.
+
 	var/list/new_params = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
-		return FALSE
+		return ..()
 
 	store_new_params(over_object,over_location,new_params)
 
-	return ..()
+	. = ..()
 
 /client/proc/store_new_params(over_object,over_location,params)
 	last_params = params

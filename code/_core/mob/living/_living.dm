@@ -549,15 +549,3 @@
 		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
-
-
-/mob/living/set_dir(var/desired_dir,var/force=FALSE)
-
-	if(client && client.is_zoomed)
-		desired_dir = client.is_zoomed
-		return ..()
-
-	if(attack_flags & CONTROL_MOD_BLOCK)
-		return FALSE
-
-	return ..()

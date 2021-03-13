@@ -104,8 +104,8 @@
 
 /client/verb/change_click_mode()
 	set hidden = TRUE
-	swap_mouse = !swap_mouse
-	if(swap_mouse)
-		to_chat(span("ui notice","Right clicking will now activate the object in your right hand, and vice versa."))
-	else
-		to_chat(span("ui notice","Left clicking will now activate the object in your right hand, and vice versa."))
+	settings.change_setting("swap_mouse",!settings.loaded_data["swap_mouse"])
+
+/client/verb/toggle_zoom_view_lock()
+	set hidden = TRUE
+	settings.change_setting("enable_zoom_view_lock",!settings.loaded_data["enable_zoom_view_lock"])

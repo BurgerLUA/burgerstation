@@ -87,6 +87,7 @@
 			owner.mob.attack_flags |= CONTROL_MOD_DROP
 		if("hold")
 			owner.mob.attack_flags |= CONTROL_MOD_BLOCK
+			owner.is_zoomed = 0x0
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
 				L.handle_blocking()
@@ -105,7 +106,7 @@
 		if("kick")
 			owner.mob.attack_flags |= CONTROL_MOD_KICK
 		if("zoom")
-			if(owner.is_zoomed)
+			if((owner.mob.attack_flags & CONTROL_MOD_BLOCK) || owner.is_zoomed)
 				owner.is_zoomed = 0x0
 			else
 				owner.is_zoomed = owner.mob.dir
