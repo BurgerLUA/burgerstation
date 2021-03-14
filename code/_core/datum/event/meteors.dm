@@ -48,8 +48,6 @@
 	if(!length(valid_turfs))
 		return FALSE
 
-
-
 	announce(
 		"Central Command Meteorology Division",
 		"Meteor Storm Inbound",

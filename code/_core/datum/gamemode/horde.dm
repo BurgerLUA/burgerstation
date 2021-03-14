@@ -254,8 +254,6 @@
 		CHECK_TICK(50,FPS_SERVER*5)
 		var/mob/living/L = create_horde_mob(T)
 		L.ai.set_path(found_path)
-		for(var/k in priority_targets)
-			L.ai.obstacles[k] = TRUE
 		tracked_enemies += L
 		points -= 0.1
 
