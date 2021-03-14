@@ -35,7 +35,7 @@
 /obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	. = ..()
 	update_sprite()
-	
+
 /obj/item/container/syringe/update_icon()
 
 	icon = initial(icon)
@@ -146,7 +146,7 @@
 			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object.name] with \the [src.name]!"))
 
 	else if(amount > 0) //Inject
-		if(object.reagents)
+		if(object.reagents && object.reagents.volume_current < object.reagents.volume_max)
 			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount, caller = caller)
 			if(transfer_amount)
 				caller.visible_message(span("warning","\The [caller.name] injects \the [src.name] into \the [object.name]."),span("notice","You inject [transfer_amount] units of liquid into \the [object.name]."))

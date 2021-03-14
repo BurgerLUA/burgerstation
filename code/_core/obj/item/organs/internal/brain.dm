@@ -19,6 +19,7 @@
 			var/addiction/D = SSliving.stored_addictions[k]
 			if(addictions[k] <= 0)
 				D.on_remove(A,src)
+				addictions -= k
 				continue
 			D.on_life(A,src,addictions[k],withdrawal[k])
 
