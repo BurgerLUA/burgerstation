@@ -497,7 +497,6 @@
 #include "code\_core\datum\experience\_experience.dm"
 #include "code\_core\datum\experience\attributes.dm"
 #include "code\_core\datum\experience\skills.dm"
-#include "code\_core\datum\explosion\_explosion.dm"
 #include "code\_core\datum\footstep\_footstep.dm"
 #include "code\_core\datum\footstep\footstep_types.dm"
 #include "code\_core\datum\fuckup\_fuckup.dm"

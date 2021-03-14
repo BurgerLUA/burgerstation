@@ -12,17 +12,17 @@ SUBSYSTEM_DEF(explosion)
 
 	var/explosion_ticks = 0
 
-/subsystem/explosion/proc/add_data(target,owner,source,epicenter,power,loyalty_tag)
+/subsystem/explosion/proc/add_data(target,owner,source,epicenter,magnitude,loyalty_tag)
 	if(!damage_to_process[target])
 		damage_to_process[target] = list()
 
 	if(damage_to_process[target][owner])
-		damage_to_process[target][owner]["power"] += power
+		damage_to_process[target][owner]["magnitude"] += magnitude
 	else
 		damage_to_process[target][owner] = list()
 		damage_to_process[target][owner]["source"] = source
 		damage_to_process[target][owner]["epicenter"] = epicenter
-		damage_to_process[target][owner]["magnitude"] = power
+		damage_to_process[target][owner]["magnitude"] = magnitude
 		damage_to_process[target][owner]["loyalty_tag"] = loyalty_tag
 
 /subsystem/explosion/on_life()
@@ -51,3 +51,23 @@ SUBSYSTEM_DEF(explosion)
 		EP.process()
 
 	return TRUE
+
+/proc/explode(var/turf/desired_turf,var/desired_power,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty)
+
+	var/obj/explosion_process/EP = locate() in desired_turf
+
+	if(!EP)
+		play_sound(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)
+		EP = new(desired_turf)
+		EP.power = desired_power
+		EP.owner = desired_owner
+		EP.source = desired_source
+		EP.epicenter = desired_turf
+		EP.loyalty_tag = desired_loyalty
+		INITIALIZE(EP)
+		GENERATE(EP)
+		FINALIZE(EP)
+	else
+		EP.power += desired_power
+
+// /proc/smoke(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty,var/reagent_container/desired_reagents)

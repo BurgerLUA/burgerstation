@@ -4,7 +4,13 @@
 		health.update_health(attacker,damage_amount)
 
 	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0)
-		if(isturf(src.loc)) new/obj/effect/temp/damage_number(src.loc,null,damage_amount)
+		var/turf/T = get_turf(src)
+		if(T)
+			var/obj/effect/damage_number/DN = locate() in T.contents
+			if(DN)
+				DN.add_value(damage_amount)
+			else
+				DN = new(T,null,damage_amount)
 
 	return TRUE
 

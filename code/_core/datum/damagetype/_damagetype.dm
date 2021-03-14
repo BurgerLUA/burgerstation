@@ -177,46 +177,36 @@
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
-	if(!is_living(attacker))
-		return attack_damage_base.Copy()
-
-	var/mob/living/L = attacker
 	var/list/new_attack_damage = attack_damage_base.Copy()
 
-	for(var/attribute in attribute_stats)
-		if(!islist(attribute_damage[attribute]))
-			var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01
-			new_attack_damage[attribute_damage[attribute]] += attack_damage
-			if(debug) log_debug("Getting [attack_damage] [attribute_damage[attribute]] damage from [attribute].")
-		else
-			for(var/damage_type in attribute_damage[attribute])
-				var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01 * (1/length(attribute_damage[attribute]))
-				new_attack_damage[damage_type] += attack_damage
-				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [attribute].")
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		for(var/attribute in attribute_stats)
+			if(!islist(attribute_damage[attribute]))
+				var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01
+				new_attack_damage[attribute_damage[attribute]] += attack_damage
+				if(debug) log_debug("Getting [attack_damage] [attribute_damage[attribute]] damage from [attribute].")
+			else
+				for(var/damage_type in attribute_damage[attribute])
+					var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01 * (1/length(attribute_damage[attribute]))
+					new_attack_damage[damage_type] += attack_damage
+					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [attribute].")
 
-	for(var/skill in skill_stats)
-		if(!islist(skill_damage[skill]))
-			var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01
-			new_attack_damage[skill_damage[skill]] += attack_damage
-			if(debug) log_debug("Getting [attack_damage] [skill_damage[skill]] damage from [skill].")
-		else
-			for(var/damage_type in skill_damage[skill])
-				var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01 * (1/length(skill_damage[skill]))
-				new_attack_damage[damage_type] += attack_damage
-				if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
+		for(var/skill in skill_stats)
+			if(!islist(skill_damage[skill]))
+				var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01
+				new_attack_damage[skill_damage[skill]] += attack_damage
+				if(debug) log_debug("Getting [attack_damage] [skill_damage[skill]] damage from [skill].")
+			else
+				for(var/damage_type in skill_damage[skill])
+					var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01 * (1/length(skill_damage[skill]))
+					new_attack_damage[damage_type] += attack_damage
+					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
-
-	if(debug) log_debug("Getting final damage by [bonus_damage_multiplier] from bonuses.")
-
+	var/final_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
+	if(debug) log_debug("Multiplying final damage by [final_damage_multiplier] from bonuses.")
 	for(var/k in new_attack_damage)
-		new_attack_damage[k] *= bonus_damage_multiplier
-		/*
-		if(victim.health && victim.health.damage_multipliers[k])
-			new_attack_damage[k] *= victim.health.damage_multipliers[k]
-		if(hit_object.health && hit_object.health.damage_multipliers[k])
-			new_attack_damage[k] *= hit_object.health.damage_multipliers[k]
-		*/
+		new_attack_damage[k] *= final_damage_multiplier
 
 	return new_attack_damage
 
