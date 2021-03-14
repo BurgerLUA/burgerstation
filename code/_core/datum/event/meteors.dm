@@ -43,10 +43,12 @@
 		for(var/turf/T in A.contents)
 			CHECK_TICK(25,FPS_SERVER*10)
 			if(T.is_safe_teleport(FALSE))
-				valid_turfs += T
+				valid_turfs[T] = TRUE
 
 	if(!length(valid_turfs))
 		return FALSE
+
+
 
 	announce(
 		"Central Command Meteorology Division",
@@ -63,11 +65,17 @@
 
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
 		CHECK_TICK(50,FPS_SERVER*10)
-		for(var/i=1,i<=5,i++)
+		for(var/i=1,i<=3,i++)
 			var/turf/T = pick(valid_turfs)
 			new/obj/effect/falling_meteor(T)
+		var/number_of_players = length(all_players)
+		if(number_of_players >= 10 && prob(number_of_players*0.25))
+			var/mob/living/advanced/player/P = pick(all_players)
+			var/turf/T = get_turf(P)
+			if(T && valid_turfs[T])
+				new/obj/effect/falling_meteor(T)
 
-	return ..()
+	. = ..()
 
 /event/meteors/on_end()
 	log_debug("Ending Meteor Event")
