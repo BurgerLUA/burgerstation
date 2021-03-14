@@ -91,7 +91,9 @@
 	do_say("We refuse to die, the totems will aid us!")
 	var/turf/T = get_turf(src)
 	for(var/i=1,i<=spawn_amount,i++)
-		var/totem_to_spawn = pick(/obj/structure/totem/sacred_flame, /obj/structure/totem/stamina_deal, /obj/structure/totem/health_heal)
+		var/totem_to_spawn = pick(
+			/obj/structure/totem/sacred_flame, /obj/structure/totem/stamina_deal, /obj/structure/totem/health_heal,
+			/obj/structure/totem/projectile/ice_crystal, /obj/structure/totem/projectile/fireball, /obj/structure/totem/projectile/lightning_bolt)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
 		var/obj/structure/totem/summoned_totem = new totem_to_spawn(turf_to_spawn)
 		summoned_totem.affecting_faction = loyalty_tag
