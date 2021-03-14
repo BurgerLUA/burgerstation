@@ -29,7 +29,7 @@
 	alpha = 255
 
 /reagent/fuel/acetone
-	name = "Dcetone"
+	name = "Acetone"
 	desc = "A colorless, corrosive flammable liquid used for solvents."
 	alpha = 100
 

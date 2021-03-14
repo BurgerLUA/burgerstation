@@ -15,7 +15,7 @@
 	var/mob/living/advanced/A = caller
 
 	var/opening = FALSE
-	var/should_center = length(inventories) <= MAX_INVENTORY_X
+	var/should_center = length(inventories) <= max_inventory_x
 
 	for(var/k in A.inventory)
 		var/obj/hud/inventory/I = k
@@ -40,7 +40,7 @@
 		if(should_center)
 			I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
 		else
-			I.screen_loc = "CENTER+[-MAX_INVENTORY_X*0.5 + i - 0.5 - FLOOR((i-1)/MAX_INVENTORY_X, 1)*MAX_INVENTORY_X],BOTTOM+[1.25 + FLOOR((i-1)/MAX_INVENTORY_X, 1)]"
+			I.screen_loc = "CENTER+[-max_inventory_x*0.5 + i - 0.5 - FLOOR((i-1)/max_inventory_x, 1)*max_inventory_x],BOTTOM+[1.25 + FLOOR((i-1)/max_inventory_x, 1)]"
 
 		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)
@@ -58,7 +58,7 @@
 		if(should_center)
 			B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
 		else
-			B.screen_loc = "CENTER+[0.5+MAX_INVENTORY_X*0.5],BOTTOM+1.25"
+			B.screen_loc = "CENTER+[0.5+max_inventory_x*0.5],BOTTOM+1.25"
 		if(opening)
 			animate(B,alpha=255,time=4)
 			B.mouse_opacity = 2

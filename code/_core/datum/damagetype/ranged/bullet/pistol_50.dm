@@ -44,6 +44,8 @@
 		BLADE = AP_CLUB*0.5,
 		PIERCE = AP_CLUB*2,
 		BLUNT = AP_CLUB*0.5
-
-
 	)
+
+/damagetype/ranged/bullet/pistol_50/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

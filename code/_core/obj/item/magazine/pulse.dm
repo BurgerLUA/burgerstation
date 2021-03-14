@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pulse
+	ammo_surplus = /obj/item/bullet_cartridge/pulse/surplus
 
 	bullet_length_min = 52
 	bullet_length_best = 52

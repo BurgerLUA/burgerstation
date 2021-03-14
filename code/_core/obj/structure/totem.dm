@@ -4,6 +4,8 @@
 	desc_extended = "A totem that will produce a buff for the caster and their allies."
 	icon = 'icons/obj/structure/totem.dmi'
 
+	health_base = 200
+
 	var/next_fire = 0
 	var/cooldown_fire = SECONDS_TO_DECISECONDS(1)
 
@@ -14,8 +16,11 @@
 
 	var/affecting_faction //which faction it should affect
 
+	var/ranged_limited = TRUE //if a totem isn't too strong, be nice and don't limit the totem to only work within a range
+
 /obj/structure/totem/Finalize()
 	. = ..()
+	flick("appear", src)
 	start_thinking(src)
 
 /obj/structure/totem/Destroy()
@@ -31,6 +36,8 @@
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
+	if(get_dist(owner.loc, loc) > 11 && ranged_limited)
+		return TRUE
 	totemic_effect()
 	return TRUE
 
@@ -53,6 +60,8 @@
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction) //!= because we want to only affect allies
+			continue
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -79,6 +88,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction) //== because we dont want to affect allies
 			continue
+		if(L.immortal)
+			continue
 		if(!istype(L.health))
 			continue
 		L.brute_regen_buffer -= (3 + (3 * leveled_effect))
@@ -98,6 +109,8 @@
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
+			continue
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -120,6 +133,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
+		if(L.immortal)
+			continue
 		if(!istype(L.health))
 			continue
 		L.stamina_regen_buffer -= (3 + (3 * leveled_effect))
@@ -137,6 +152,8 @@
 		if(L.dead)
 			continue
 		if(L.loyalty_tag != affecting_faction)
+			continue
+		if(L.immortal)
 			continue
 		if(!istype(L.health))
 			continue
@@ -159,6 +176,8 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
+		if(L.immortal)
+			continue
 		if(!istype(L.health))
 			continue
 		L.mana_regen_buffer -= (3 + (3 * leveled_effect))
@@ -169,7 +188,7 @@
 	desc = "Can you hear the voice of god through this bush flame?"
 	desc = "Someone thought to take a book and stick it inside the totem."
 	desc_extended = "A totem that will set ablaze the caster's enemies."
-	icon_state = "flame"
+	icon_state = "sacred_flame"
 
 /obj/structure/totem/sacred_flame/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
@@ -178,9 +197,12 @@
 			continue
 		if(L.loyalty_tag == affecting_faction)
 			continue
+		if(L.immortal)
+			continue
 		if(!istype(L.health))
 			continue
 		L.ignite(SECONDS_TO_DECISECONDS(1.5))
+		L.health.adjust_loss_smart(burn = 5 * leveled_effect)
 		CREATE(/obj/effect/temp/electricity,L.loc)
 
 /obj/structure/totem/repelling
@@ -191,12 +213,14 @@
 
 /obj/structure/totem/repelling/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(4,T))
+	for(var/mob/living/L in viewers(4*leveled_effect,T))
 		if(L.dead)
 			continue
 		if(L.boss) //yea, no repelling bosses, sorry
 			continue
 		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(L.immortal)
 			continue
 		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
@@ -213,12 +237,14 @@
 
 /obj/structure/totem/attracting/totemic_effect() //will need testing and help to balance this
 	var/turf/T = get_turf(src)
-	for(var/mob/living/L in viewers(4,T))
+	for(var/mob/living/L in viewers(4*leveled_effect,T))
 		if(L.dead)
 			continue
 		if(L.boss) //yea, no attracting bosses, sorry
 			continue
 		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(L.immortal)
 			continue
 		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
@@ -226,3 +252,74 @@
 			continue
 		L.Move(get_step(L.loc,get_dir(L,src)))
 		CREATE(/obj/effect/temp/electricity,L.loc)
+
+/obj/structure/totem/projectile
+	name = "totem of projectile"
+	desc = "None."
+	desc_extended = "A totem that will fire projectiles at the caster's enemies."
+	var/chosenProjectile
+	var/chosenDamageType
+
+/obj/structure/totem/projectile/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	var/list/chooseEnemies = list()
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(!istype(L.health))
+			continue
+		chooseEnemies += L
+	if(!length(chooseEnemies))
+		return
+	for(var/i in 1 to leveled_effect)
+		shoot_projectile(src, pick(chooseEnemies), null, null, chosenProjectile, chosenDamageType, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+
+/obj/structure/totem/projectile/frost_spray
+	name = "totem of frost spray"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire frost spray at the caster's enemies."
+	icon_state = "frost"
+	chosenProjectile = /obj/projectile/magic/frost
+	chosenDamageType = /damagetype/ranged/magic/frost
+
+/obj/structure/totem/projectile/flame_spray
+	name = "totem of flame spray"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire flame spray at the caster's enemies."
+	icon_state = "flame"
+	chosenProjectile = /obj/projectile/magic/lesser_fire
+	chosenDamageType = /damagetype/ranged/magic/flame
+
+/obj/structure/totem/projectile/shock_spray
+	name = "totem of shock spray"
+	desc = "Listen to be baby, you've got to understand, lightning striking again!"
+	desc_extended = "A totem that will fire shock spray at the caster's enemies."
+	icon_state = "shock"
+	chosenProjectile = /obj/projectile/magic/lightning
+	chosenDamageType = /damagetype/ranged/magic/shock
+
+/obj/structure/totem/projectile/ice_crystal
+	name = "totem of ice crystal"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire an ice crystal at the caster's enemies."
+	icon_state = "frost"
+	chosenProjectile = /obj/projectile/magic/crystal/ice
+	chosenDamageType = /damagetype/ranged/magic/ice
+
+/obj/structure/totem/projectile/fireball
+	name = "totem of fireball"
+	desc = "The weather outside is frightful, but the fire is so delightful."
+	desc_extended = "A totem that will fire a fireball at the caster's enemies."
+	icon_state = "flame"
+	chosenProjectile = /obj/projectile/magic/fireball
+	chosenDamageType = /damagetype/ranged/magic/fireball
+
+/obj/structure/totem/projectile/lightning_bolt
+	name = "totem of lightning bolt"
+	desc = "Listen to be baby, you've got to understand, lightning striking again!"
+	desc_extended = "A totem that will fire a lightning bolt at the caster's enemies."
+	icon_state = "shock"
+	chosenProjectile = /obj/projectile/magic/lightning_bolt
+	chosenDamageType = /damagetype/ranged/magic/lightning

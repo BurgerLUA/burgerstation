@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_38
+	ammo_surplus = /obj/item/bullet_cartridge/revolver_38/surplus
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -53,6 +54,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_44
+	ammo_surplus = /obj/item/bullet_cartridge/revolver_44/surplus
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -79,6 +81,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_357
+	ammo_surplus = /obj/item/bullet_cartridge/revolver_357/surplus
 
 	bullet_length_min = 20
 	bullet_length_best = 33

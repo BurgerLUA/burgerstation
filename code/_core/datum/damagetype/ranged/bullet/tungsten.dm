@@ -14,3 +14,7 @@
 	)
 
 	falloff = VIEW_RANGE*2
+
+/damagetype/ranged/bullet/tungsten/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

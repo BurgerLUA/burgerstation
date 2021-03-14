@@ -52,14 +52,14 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
-		if(!M.ammo)
+		if(!M.ammo_surplus)
 			caller.to_chat(span("warning","That magazine isn't registered in our system!"))
 			return TRUE
 		var/bullets_to_add = M.bullet_count_max - M.get_ammo_count()
 		if(bullets_to_add <= 0)
 			caller.to_chat(span("warning","\The [M.name] is already full!"))
 			return TRUE
-		var/obj/item/bullet_cartridge/B = new M.ammo(src.loc)
+		var/obj/item/bullet_cartridge/B = new M.ammo_surplus(src.loc)
 		INITIALIZE(B)
 		FINALIZE(B)
 		B.add_item_count(bullets_to_add - B.item_count_current,TRUE)

@@ -15,6 +15,10 @@
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
 
+/damagetype/ranged/bullet/rifle_223/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/rifle_223/ap
 	name = "ap .223 rifle bullet"
 
@@ -45,6 +49,10 @@
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
 
+/damagetype/ranged/bullet/rifle_556mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/rifle_556mm/ap
 	name = "AP 5.56mm rifle bullet"
 
@@ -72,6 +80,10 @@
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
+
+/damagetype/ranged/bullet/rifle_545mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/rifle_545mm/ap
 	name = "AP 5.45mm rifle bullet"
@@ -111,3 +123,7 @@
 	crit_chance_max = 15 //Maximium crit chance at 100 luck.
 
 	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/rifle_939mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

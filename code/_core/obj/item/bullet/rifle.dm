@@ -24,6 +24,12 @@
 
 	inaccuracy_modifer = 0.75
 
+/obj/item/bullet_cartridge/rifle_308/surplus
+	name = "\improper surplus .308 rifle cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_308/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/rifle_308/ap
 	name = "\improper AP .308 rifle bullet"
 	desc_extended = "For rifles that require .308. This one has a steel tip."
@@ -50,6 +56,12 @@
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 	value = 1.1
 
+/obj/item/bullet_cartridge/rifle_308/nato/surplus
+	name = "\improper surplus .308 rifle cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/rifle_308/nato/ap
 	name = "\improper AP 7.62mm rifle bullet"
 	desc_extended = "For rifles that require 7.62mm. This one has a steel tip."
@@ -71,6 +83,12 @@
 
 	value = 1.3
 
+/obj/item/bullet_cartridge/rifle_308/short/surplus
+	name = "\improper surplus 7.62x39mmR Soviet rifle cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/short/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/rifle_308/long
 	name = "\improper 7.62x54mmR Soviet rifle bullet"
 	desc = "Killed more Fascists than any competing round!"
@@ -83,6 +101,11 @@
 
 	value = 1.4
 
+/obj/item/bullet_cartridge/rifle_308/long/surplus
+	name = "\improper surplus 7.62x54mmR Soviet rifle cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/long/surplus
+	jam_chance = 1
+	value = 0
 
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"
@@ -106,6 +129,12 @@
 
 	size = 0.03
 	value = 1.1
+
+/obj/item/bullet_cartridge/rifle_223/surplus
+	name = "\improper surplus .223 rifle cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_223/surplus
+	jam_chance = 1
+	value = 0
 
 /obj/item/bullet_cartridge/rifle_223/ap
 	name = "\improper .223 AP rifle bullet"
@@ -135,6 +164,12 @@
 
 	value = 0.9
 
+/obj/item/bullet_cartridge/rifle_223/nato/surplus
+	name = "\improper surplus 5.56mm rifle bullet"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/rifle_223/nato/caseless
 	name = "\improper 5.56mm caseless rifle bullet"
 	desc = "The poodle shooter's favorite. Now in caseless!"
@@ -153,6 +188,11 @@
 
 	caseless = TRUE
 
+/obj/item/bullet_cartridge/rifle_223/caseless/surplus
+	name = "\improper surplus 5.56mm rifle bullet"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm/surplus
+	jam_chance = 1
+	value = 0
 
 
 
@@ -192,6 +232,12 @@
 
 	value = 1
 
+/obj/item/bullet_cartridge/rifle_545mm/surplus
+	name = "\improper surplus 5.45mm rifle bullet"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_545mm/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/rifle_545mm/ap
 	name = "\improper 5.45mm AP rifle bullet"
 	desc = "Smaller than 7.62x39, but boy does it leave a nasty wound! Now comes with a shiny tombac-plated jacket!"
@@ -221,7 +267,6 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/223.dmi'
 
-
 	bullet_diameter = 9
 	bullet_length = 39
 	bullet_color = COLOR_BULLET
@@ -244,3 +289,9 @@
 /obj/item/bullet_cartridge/rifle_939mm/Generate()
 	item_count_current = 5
 	return ..()
+
+/obj/item/bullet_cartridge/rifle_939mm/surplus
+	name = "\improper surplus 9x39mm subsonic rifle rifle bullet"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_939mm/surplus
+	jam_chance = 1
+	value = 0

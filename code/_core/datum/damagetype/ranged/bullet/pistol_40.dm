@@ -30,9 +30,6 @@
 
 	falloff = VIEW_RANGE
 
-
-
-
 /damagetype/ranged/bullet/pistol_40/tranq
 
 	name = "tranq pistol bullet"
@@ -67,3 +64,11 @@
 
 /damagetype/ranged/bullet/pistol_40/tranq/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return istype(hit_object,/obj/item/organ/head)
+
+/damagetype/ranged/bullet/pistol_40/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
+/damagetype/ranged/bullet/pistol_40/tranq/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

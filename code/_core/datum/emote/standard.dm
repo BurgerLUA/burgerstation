@@ -82,6 +82,56 @@
 	action = "\The #USER salutes!"
 	action_target = "\The #USER salutes #TARGET!"
 
+/emote/inhale
+	name = "Inhale"
+	id = "inhale"
+	action = "\The #USER inhales!"
+
+/emote/inhale/can_emote(var/atom/emoter,var/atom/target)
+	. = ..()
+	if(!.) return FALSE
+	if(is_advanced(emoter))
+		var/mob/living/advanced/A = emoter
+		if(A.face)
+			var/obj/item/I = A.face.get_top_object()
+			if(istype(I,/obj/item/container/cigarette))
+				return TRUE
+
+/emote/inhale/on_emote(var/atom/emoter,var/atom/target)
+	if(is_advanced(emoter))
+		var/mob/living/advanced/A = emoter
+		if(A.face)
+			var/obj/item/I = A.face.get_top_object()
+			if(istype(I,/obj/item/container/cigarette))
+				var/obj/item/container/cigarette/C = I
+				C.consume(5)
+	. = ..()
+
+/emote/drag
+	name = "Drag"
+	id = "drag"
+	action = "\The #USER takes a drag from their smoke!"
+
+/emote/drag/can_emote(var/atom/emoter,var/atom/target)
+	. = ..()
+	if(!.) return FALSE
+	if(is_advanced(emoter))
+		var/mob/living/advanced/A = emoter
+		if(A.face)
+			var/obj/item/I = A.face.get_top_object()
+			if(istype(I,/obj/item/container/cigarette))
+				return TRUE
+
+/emote/drag/on_emote(var/atom/emoter,var/atom/target)
+	if(is_advanced(emoter))
+		var/mob/living/advanced/A = emoter
+		if(A.face)
+			var/obj/item/I = A.face.get_top_object()
+			if(istype(I,/obj/item/container/cigarette))
+				var/obj/item/container/cigarette/C = I
+				C.consume(10)
+	. = ..()
+
 /emote/spin
 	name = "Spin"
 	id = "spin"
@@ -97,4 +147,15 @@
 
 /emote/spin/on_emote(var/atom/emoter,var/atom/target)
 	spin(emoter,11)
+	return ..()
+
+/emote/help
+	name = "Help"
+	id = "help"
+	action = null
+	action_target = null
+
+/emote/help/on_emote(var/atom/emoter,var/atom/target)
+	var/mob/M = emoter
+	M.view_emotes()
 	return ..()

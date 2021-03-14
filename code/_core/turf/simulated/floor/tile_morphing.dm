@@ -19,7 +19,7 @@
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
-		var/dir_to_text = dir2text(d)
+		var/dir_to_text = "[d]"
 		var/turf/T = get_step(src,d)
 
 		calc_list[dir_to_text] = FALSE //Default
@@ -37,27 +37,27 @@
 	var/sw = 0
 	var/se = 0
 
-	if(calc_list["north"])
-		ne = calc_list["north"]
-		nw = calc_list["north"]
-	if(calc_list["south"])
-		se = calc_list["south"]
-		sw = calc_list["south"]
-	if(calc_list["east"])
-		ne = calc_list["east"]
-		se = calc_list["east"]
-	if(calc_list["west"])
-		nw = calc_list["west"]
-		sw = calc_list["west"]
+	if(calc_list["[NORTH]"])
+		ne = calc_list["[NORTH]"]
+		nw = calc_list["[NORTH]"]
+	if(calc_list["[SOUTH]"])
+		se = calc_list["[SOUTH]"]
+		sw = calc_list["[SOUTH]"]
+	if(calc_list["[EAST]"])
+		ne = calc_list["[EAST]"]
+		se = calc_list["[EAST]"]
+	if(calc_list["[WEST]"])
+		nw = calc_list["[WEST]"]
+		sw = calc_list["[WEST]"]
 
-	if(calc_list["north-east"])
-		ne = calc_list["north-east"]
-	if(calc_list["south-east"])
-		se = calc_list["south-east"]
-	if(calc_list["north-west"])
-		nw = calc_list["north-west"]
-	if(calc_list["south-west"])
-		sw = calc_list["south-west"]
+	if(calc_list["[NORTHEAST]"])
+		ne = calc_list["[NORTHEAST]"]
+	if(calc_list["[SOUTHEAST]"])
+		se = calc_list["[SOUTHEAST]"]
+	if(calc_list["[NORTHWEST]"])
+		nw = calc_list["[NORTHWEST]"]
+	if(calc_list["[SOUTHWEST]"])
+		sw = calc_list["[SOUTHWEST]"]
 
 	if(!ne & !nw & !sw & !se)
 		color = original_color
@@ -66,8 +66,6 @@
 	color = "#FFFFFF"
 
 	var/full_icon_string = "[type]_[ne]_[nw]_[se]_[sw]"
-
-	desc = full_icon_string
 
 	var/icon/I
 

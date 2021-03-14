@@ -290,7 +290,7 @@
 			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
 		if(damage_multiplier > 0)
-			DT.hit(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+			DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 

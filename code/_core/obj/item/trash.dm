@@ -1,9 +1,15 @@
 /obj/item/trash
 	name = "trash"
 	icon = 'icons/obj/item/trash.dmi'
+	icon_state = "candy"
 	value = 1
 
 	weight = 0.25
+
+/obj/item/trash/random/Generate()
+	. = ..()
+	var/list/states = icon_states(icon)
+	icon_state = pick(states)
 
 /obj/item/trash/raisins
 	icon_state = "raisins"
@@ -22,3 +28,6 @@
 
 /obj/item/trash/syndicate
 	icon_state = "syndicate"
+
+/obj/item/trash/butt
+	icon_state = "butt"

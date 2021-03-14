@@ -1,6 +1,6 @@
 /addiction/opium
 	name = "Opium Addiction"
-	reagent_name = "opium"
+	reagent_name = "Opium"
 
 
 /addiction/opium/on_life(var/mob/living/advanced/A,var/obj/item/organ/internal/brain/B,var/addiction_value=0,var/withdrawal_value=0)

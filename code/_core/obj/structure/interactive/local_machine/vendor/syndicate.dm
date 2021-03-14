@@ -114,7 +114,9 @@
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,
 		/obj/item/deployable/mob/sentry,
-		/obj/item/magazine/minigun_46
+		/obj/item/magazine/minigun_46,
+		/obj/item/storage/cigarettes/syndicate,
+		/obj/item/lighter
 	)
 	markup = 0.75
 
@@ -150,7 +152,9 @@
 		/obj/item/deployable/mob/sentry,
 		/obj/item/magazine/minigun_46,
 		/obj/item/weapon/melee/sword/rev_bayonet,
-		/obj/item/weapon/melee/shield/ballistic
+		/obj/item/weapon/melee/shield/ballistic,
+		/obj/item/storage/cigarettes/russian,
+		/obj/item/lighter
 	)
 
 

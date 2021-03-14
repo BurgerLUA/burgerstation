@@ -6,6 +6,7 @@
 	var/turf/epicenter
 	var/loyalty_tag
 
+
 	icon = 'icons/obj/effects/fire.dmi'
 	icon_state = "3"
 
@@ -14,7 +15,7 @@
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
 	SSexplosion.add_data(loc,owner,source,epicenter,power,loyalty_tag)
-	icon_state = "[clamp(FLOOR(power/20,1),1,3)]"
+	icon_state = "[clamp(FLOOR(power/30,1),1,3)]"
 	if(velocity_dir)
 		dir = velocity_dir
 	return ..()
@@ -35,6 +36,7 @@
 	var/total_direction_mod = 0
 
 	for(var/d in DIRECTIONS_CARDINAL)
+		CHECK_TICK(50,FPS_SERVER)
 		var/turf/T = get_step(src,d)
 		if(!T) continue
 		if(!T.Enter(src,src.loc))
@@ -48,7 +50,7 @@
 				if(d == velocity_dir)
 					direction_mod *= 2
 				else if(d == turn(velocity_dir,180))
-					direction_mod *= 0.5
+					direction_mod *= 0.1
 			if(existing.velocity_dir)
 				if(d == existing.velocity_dir)
 					direction_mod *= 2
@@ -61,6 +63,7 @@
 	var/has_existing = length(valid_existing)
 
 	for(var/k in valid_turfs)
+		CHECK_TICK(50,FPS_SERVER)
 		if(!total_direction_mod)
 			break
 		var/new_power_value = valid_turfs[k]
@@ -86,5 +89,7 @@
 	if(power <= 1)
 		qdel(src)
 		return FALSE
+	else
+		icon_state = "[clamp(FLOOR(power/30,1),1,3)]"
 
 	return TRUE

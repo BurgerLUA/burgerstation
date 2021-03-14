@@ -133,17 +133,18 @@
 	return value
 
 /health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
-	var/returning_value = 0
-	for(var/damage_type in damage)
-		if(!include_fatigue && damage_type == FATIGUE)
-			continue
-		if(!include_pain && damage_type == PAIN)
-			continue
-		if(!include_sanity && damage_type == SANITY)
-			continue
-		returning_value += damage[damage_type]
 
-	return returning_value
+	var/list/damage_list = damage.Copy()
+	if(!include_fatigue)
+		damage_list -= FATIGUE
+	if(!include_pain)
+		damage_list -= PAIN
+	if(!include_sanity)
+		damage_list -= SANITY
+
+	. = 0
+	for(var/damage_type in damage_list)
+		. += damage[damage_type]
 
 /health/proc/get_loss(var/damage_type)
 	return damage[damage_type]

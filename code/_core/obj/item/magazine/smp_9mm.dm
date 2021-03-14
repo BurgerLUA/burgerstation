@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_9mm/surplus
 
 	bullet_length_min = 16
 	bullet_length_best = 19

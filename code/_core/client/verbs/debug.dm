@@ -15,7 +15,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/change_variable,
 	/client/verb/set_mob_to_null,
 	/client/verb/should_delete_atom,
-	/client/verb/add_loadout_to_mob
+	/client/verb/add_loadout_to_mob,
+	/client/verb/test_pathfinding
 )
 
 /client/verb/show_debug_verbs()
@@ -254,15 +255,26 @@ client/verb/air_test(var/pressure as num)
 
 	var/list/valid_turfs = list()
 
-	for(var/turf/simulated/floor/S in view(VIEW_RANGE + ZOOM_RANGE,mob))
+	for(var/turf/simulated/floor/S in range(VIEW_RANGE + ZOOM_RANGE,mob))
+		if(!S.is_safe_teleport())
+			continue
 		valid_turfs += S
 
-	for(var/i=1,i<=60,i++)
-		spawn
-			var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
-			INITIALIZE(ST)
-			GENERATE(ST)
-			FINALIZE(ST)
+	var/list/spawned_mobs = list()
+
+	for(var/i=1,i<=50,i++)
+		CHECK_TICK(50,FPS_SERVER)
+		var/mob/living/advanced/npc/nanotrasen/ST = new(pick(valid_turfs))
+		INITIALIZE(ST)
+		GENERATE(ST)
+		FINALIZE(ST)
+		spawned_mobs += ST
+
+	if(is_living(src.mob))
+		for(var/k in spawned_mobs)
+			var/mob/living/L = k
+			if(L.ai)
+				L.ai.set_move_objective(src.mob,TRUE)
 
 
 /client/verb/create_vote()
@@ -378,3 +390,19 @@ client/verb/air_test(var/pressure as num)
 	log_admin("[src.get_debug_name()] gave a loadout ([desired_loadout]) to [desired_mob.get_debug_name()].")
 
 
+
+
+/client/verb/test_pathfinding()
+	set name = "Test Pathfinding"
+	set category = "Debug"
+
+	var/obj/burger_star_test_start/B = locate() in world
+	if(!B)
+		return FALSE
+
+	if(mob)
+		mob.force_move(get_turf(B))
+
+	B.activate()
+
+	return TRUE

@@ -15,6 +15,10 @@
 
 	falloff = VIEW_RANGE + ZOOM_RANGE*3
 
+/damagetype/ranged/bullet/rifle_308/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 
 /damagetype/ranged/bullet/rifle_308/ap
 	name = ".308 ap rifle bullet"
@@ -49,6 +53,10 @@
 
 	falloff = VIEW_RANGE + ZOOM_RANGE*3
 
+/damagetype/ranged/bullet/rifle_762mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/rifle_762mm/ap
 	name = "AP 7.62mm rifle bullet"
 
@@ -61,8 +69,6 @@
 	attack_damage_penetration = list(
 		PIERCE = AP_CLUB*3
 	)
-
-
 
 /damagetype/ranged/bullet/rifle_762mm/short
 	name = "7.62mm short rifle bullet"
@@ -81,6 +87,10 @@
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
 
+/damagetype/ranged/bullet/rifle_762mm/short/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/rifle_762mm/long
 	name = "7.62mm long rifle bullet"
 
@@ -97,3 +107,7 @@
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE*3
+
+/damagetype/ranged/bullet/rifle_762mm/long/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

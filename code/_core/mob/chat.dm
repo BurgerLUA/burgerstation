@@ -183,10 +183,14 @@ var/regex/vowels = new("\[aeiou\]", "i")
 		if(messages) to_chat(span("warning","Unknown emote: \"[emote_text]\"."))
 		return FALSE
 
-	var/emote/E = SSemote.all_emotes[emote_text]
-	E.on_emote(src,target)
-
 	next_emote = world.time + 5
+
+	var/emote/E = SSemote.all_emotes[emote_text]
+	if(!E.can_emote(src,target))
+		if(messages) to_chat(span("warning","You can't do this emote!"))
+		return FALSE
+
+	E.on_emote(src,target)
 
 	return TRUE
 

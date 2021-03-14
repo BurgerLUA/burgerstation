@@ -21,3 +21,9 @@
 
 	size = 0.5
 	value = 3
+
+/obj/item/bullet_cartridge/tungsten/surplus
+	name = "\improper surplus tungsten bolt"
+	damage_type_bullet = /damagetype/ranged/bullet/tungsten/surplus
+	misfire_chance = 1
+	value = 0

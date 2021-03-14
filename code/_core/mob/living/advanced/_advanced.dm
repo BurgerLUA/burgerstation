@@ -21,6 +21,7 @@
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand
 	var/obj/hud/inventory/holster
+	var/obj/hud/inventory/face
 
 	var/obj/item/left_item
 	var/obj/item/right_item

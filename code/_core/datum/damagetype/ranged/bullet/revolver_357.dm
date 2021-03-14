@@ -30,3 +30,7 @@
 	)
 
 	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/revolver_357/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

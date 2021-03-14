@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_223/nato
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_223/nato/surplus
 
 	bullet_length_min = 40
 	bullet_length_best = 45

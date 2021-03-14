@@ -62,5 +62,3 @@
 	owner.brute_regen_buffer += .*1.5
 	owner.burn_regen_buffer += .*1
 	owner.pain_regen_buffer += .*2.5
-
-	

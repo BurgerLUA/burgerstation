@@ -2,7 +2,9 @@
 
 	if(!force && length(status_immune) && status_immune[status_type])
 		if(isnum(status_immune[status_type]))
-			if(ENABLE_DAMAGE_NUMBERS && !stealthy) new/obj/effect/temp/damage_number(src.loc,duration,"IMMUNE!")
+			if(ENABLE_DAMAGE_NUMBERS && !stealthy)
+				var/turf/T = get_turf(src)
+				if(T) new/obj/effect/temp/status_effect(T,duration,"IMMUNE!")
 			return FALSE
 		else
 			status_type = status_immune[status_type]

@@ -15,7 +15,6 @@
 
 	falloff = VIEW_RANGE
 
-
 /damagetype/ranged/bullet/pistol_10mm/ap
 	name = "ap pistol bullet"
 
@@ -30,3 +29,7 @@
 	)
 
 	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/pistol_10mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

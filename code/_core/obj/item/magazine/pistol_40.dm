@@ -13,6 +13,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_40
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_40/surplus
 
 	bullet_length_min = 21
 	bullet_length_best = 22

@@ -329,3 +329,35 @@
 		owner.brute_regen_buffer += 8*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)
 		owner.tox_regen_buffer -= 0.1*.
 
+
+
+/reagent/medicine/nicotine
+	name = "Nicotine"
+	desc = "A very addictive pesticide commonly found in household products such as Bugs-B-Gone and Space Cigarettes."
+	color = "#E2E2E2"
+	alpha = 255
+	flavor = "nicotine"
+
+	metabolism_stomach = 2/60 // Lasts a minute per 2u
+	metabolism_blood = 2/60 // Lasts a minute per 2u
+
+	experience_per_unit = 0
+
+	value = 1
+
+	addiction_strength = 0.5
+	addiction_threshold = 5
+	addiction = /addiction/nicotine
+
+	lethal = TRUE //For now...
+
+/reagent/medicine/nicotine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	//Regenerate 5 sanity per second while nicotine is in your system, as long as the metabolism exceeds metabolism_blood
+	//You also get hungrier and thirstier.
+	if(. >= metabolism_blood)
+		var/true_multiplier = DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW) * (. / metabolism_blood) * multiplier
+		owner.sanity_regen_buffer += 5*true_multiplier
+		owner.add_hydration(-0.05*true_multiplier)
+		owner.add_nutrition(-0.1*true_multiplier)
