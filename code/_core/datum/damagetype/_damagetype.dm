@@ -285,13 +285,9 @@
 		if(i==1)
 			. = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
 
-		CALLBACK("\ref[weapon]_\ref[hit_object]",CEILING(.*0.125,1),src,.proc/hit,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
+		CALLBACK("\ref[weapon]_\ref[hit_object]",CEILING(.*0.125,1),src,.proc/process_damage,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
 
 	return .
-
-/damagetype/proc/hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
-	return process_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier)
-
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 

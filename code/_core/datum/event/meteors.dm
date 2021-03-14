@@ -35,15 +35,15 @@
 
 	log_debug("Starting Meteor Event")
 
-	var/list/announce_areas = list()
+	var/start_time = world.time
 
-	for(var/i=1,i<=3,i++)
-		if(!length(valid_areas))
-			return FALSE
-		var/area/A = pick(valid_areas)
-		announce_areas |= A.name
-		for(var/turf/simulated/T in A.contents)
-			valid_turfs |= T
+	for(var/k in valid_areas)
+		CHECK_TICK(25,FPS_SERVER*10)
+		var/area/A = k
+		for(var/turf/T in A.contents)
+			CHECK_TICK(25,FPS_SERVER*10)
+			if(T.is_safe_teleport(FALSE))
+				valid_turfs += T
 
 	if(!length(valid_turfs))
 		return FALSE
@@ -51,9 +51,11 @@
 	announce(
 		"Central Command Meteorology Division",
 		"Meteor Storm Inbound",
-		"Meteors have been detected near the area of operations. Predicted landing areas: [english_list(announce_areas)].",
+		"Meteors have been detected near the area of operations.",
 		sound_to_play = 'sound/voice/announcement/meteors.ogg'
 	)
+
+	log_debug("Took [world.time - start_time] deciseconds to initialize meteor turfs.")
 
 	return ..()
 

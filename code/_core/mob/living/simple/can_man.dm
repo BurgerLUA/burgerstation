@@ -110,7 +110,7 @@
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
 		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
-		DT.hit(src,Obstacle,src,object_to_damage,src,1)
+		DT.process_damage(src,Obstacle,src,object_to_damage,src,1)
 
 	return ..()
 
