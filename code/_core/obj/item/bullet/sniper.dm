@@ -21,6 +21,12 @@
 	size = 0.1
 	value = 12
 
+/obj/item/bullet_cartridge/sniper_50/surplus
+	name = "\improper surplus .50 sniper round"
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/sniper_50/explosive
 	name = "\improper .50 explosive sniper round"
 	icon = 'icons/obj/item/bullet/50_explosive.dmi'

@@ -41,6 +41,12 @@
 	size = 0.04
 	value = 1.8
 
+/obj/item/bullet_cartridge/shotgun_12/surplus
+	name = "\improper surplus 12 gauge slug"
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug/surplus
+	jam_chance = 1
+	value = 0
+
 /obj/item/bullet_cartridge/shotgun_12/buckshot
 	name = "\improper 12 gauge buckshot shell"
 	desc = "Shoots a lot of small bullets at once."
@@ -60,6 +66,11 @@
 
 	inaccuracy_modifer = 1.5
 
+/obj/item/bullet_cartridge/shotgun_12/buckshot
+	name = "\improper surplus 12 gauge buckshot"
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot/surplus
+	jam_chance = 1
+	value = 0
 
 /obj/item/bullet_cartridge/shotgun_12/fire
 	name = "\improper 12 gauge drake breath shell"
@@ -101,5 +112,9 @@
 
 	inaccuracy_modifer = 1.3
 
-
+/obj/item/bullet_cartridge/shotgun_12/flechette
+	name = "\improper surplus 12 gauge flechette"
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun/flechette/surplus
+	jam_chance = 1
+	value = 0
 

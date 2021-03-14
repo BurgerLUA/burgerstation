@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/gyrojet
+	ammo_surplus = /obj/item/bullet_cartridge/gyrojet/surplus
 
 	bullet_length_min = 48
 	bullet_length_best = 50

@@ -25,6 +25,10 @@
 
 	falloff = 3
 
+/damagetype/ranged/bullet/shotgun_23/buckshot/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/shotgun_23/slug
 	name = "shotgun slug"
 
@@ -41,6 +45,10 @@
 	)
 
 	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/shotgun_23/slug/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/shotgun_23/fire
 	name = "spicy pellet"
@@ -64,3 +72,7 @@
 		var/mob/living/L = victim
 		L.add_status_effect(FIRE,100,0,stealthy=L.on_fire) //so uuuh 10 sec of fire
 	return ..()
+
+/damagetype/ranged/bullet/shotgun_23/fire/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

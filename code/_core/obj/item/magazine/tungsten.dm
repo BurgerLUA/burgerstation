@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/tungsten
+	ammo_surplus = /obj/item/bullet_cartridge/tungsten/surplus
 
 	bullet_length_min = 15
 	bullet_length_best = 20

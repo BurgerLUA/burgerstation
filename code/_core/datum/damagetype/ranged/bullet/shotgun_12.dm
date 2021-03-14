@@ -25,6 +25,10 @@
 
 	falloff = 3
 
+/damagetype/ranged/bullet/shotgun/buckshot/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/shotgun/slug
 	name = "shotgun slug"
 
@@ -42,6 +46,10 @@
 
 	falloff = VIEW_RANGE
 
+/damagetype/ranged/bullet/shotgun/slug/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/shotgun/flechette
 	name = "shotgun flechette"
 
@@ -56,3 +64,7 @@
 	)
 
 	falloff = 3
+
+/damagetype/ranged/bullet/shotgun/flechette/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

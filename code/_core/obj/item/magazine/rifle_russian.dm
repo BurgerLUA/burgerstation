@@ -6,6 +6,7 @@
 	icon_state = "939"
 
 	ammo = /obj/item/bullet_cartridge/rifle_939mm
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_939mm/surplus
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val = TRUE,

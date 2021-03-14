@@ -17,6 +17,10 @@
 
 	crit_multiplier = 3
 
+/damagetype/ranged/bullet/tranq/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
+
 /damagetype/ranged/bullet/tranq/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	. = ..()

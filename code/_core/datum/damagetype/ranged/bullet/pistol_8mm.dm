@@ -14,3 +14,7 @@
 	)
 
 	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/pistol_8mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

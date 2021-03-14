@@ -20,3 +20,10 @@
 
 	size = 0.04
 	value = 50
+
+
+/obj/item/bullet_cartridge/gauss/surplus
+	name = "\improper surplus 2x12mm steel ball gauss cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun/surplus
+	jam_chance = 1
+	value = 0

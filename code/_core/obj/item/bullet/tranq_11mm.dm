@@ -21,3 +21,9 @@
 	value = 2
 
 	jam_chance = 100 //Required.
+
+/obj/item/bullet_cartridge/tranq_11m/surplus
+	name = "\improper surplus 11.43x25mm tranquilizer cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/tranq/surplus
+	misfire_chance = 1
+	value = 0

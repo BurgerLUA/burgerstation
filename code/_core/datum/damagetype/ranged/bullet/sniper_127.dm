@@ -13,3 +13,7 @@
 	)
 
 	falloff = VIEW_RANGE*3
+
+/damagetype/ranged/bullet/sniper_127/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

@@ -15,6 +15,9 @@
 
 	falloff = VIEW_RANGE*3
 
+/damagetype/ranged/bullet/sniper_50/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/sniper_50/explosive
 	name = "sniper rifle bullet"

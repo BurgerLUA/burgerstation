@@ -28,3 +28,7 @@
 	attack_damage_penetration = list(
 		PIERCE = AP_CLUB*3
 	)
+
+/damagetype/ranged/bullet/pistol_12mm/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

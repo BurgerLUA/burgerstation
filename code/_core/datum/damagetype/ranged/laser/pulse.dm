@@ -12,3 +12,7 @@
 		LASER = AP_GREATAXE,
 		HEAT = 0
 	)
+
+/damagetype/ranged/laser/pulse/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

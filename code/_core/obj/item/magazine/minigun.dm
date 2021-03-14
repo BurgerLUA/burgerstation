@@ -13,6 +13,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/caseless
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_4mm/caseless/surplus
 
 	bullet_length_min = 25
 	bullet_length_best = 30

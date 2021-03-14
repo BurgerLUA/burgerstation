@@ -12,3 +12,7 @@
 	)
 
 	falloff = VIEW_RANGE*3
+
+/damagetype/ranged/bullet/gauss_gun/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL

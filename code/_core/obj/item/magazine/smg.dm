@@ -20,6 +20,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_45
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_45/surplus
 
 	size = SIZE_2
 

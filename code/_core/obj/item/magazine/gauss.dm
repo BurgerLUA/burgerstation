@@ -11,6 +11,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/gauss
+	ammo_surplus = /obj/item/bullet_cartridge/gauss/surplus
 
 	bullet_length_min = 11
 	bullet_length_best = 12

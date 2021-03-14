@@ -14,6 +14,7 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_9mm/surplus
 
 	bullet_diameter_min = 8
 	bullet_diameter_best = 9
