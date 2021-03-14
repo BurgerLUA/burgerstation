@@ -230,7 +230,8 @@
 		"salute",
 		"spin",
 		"inhale",
-		"drag"
+		"drag",
+		"help"
 	)
 
 	var/tabled = FALSE

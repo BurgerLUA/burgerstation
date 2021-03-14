@@ -55,3 +55,8 @@
 		return FALSE
 
 	talk(src,src,text_to_say,TEXT_LOOC)
+
+/mob/verb/view_emotes()
+	set name = "View Emotes"
+	set category = "Communication"
+	src.to_chat("<b>Known emotes:</b> [english_list(known_emotes)].")

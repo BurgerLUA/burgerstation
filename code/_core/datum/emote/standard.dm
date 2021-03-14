@@ -148,3 +148,14 @@
 /emote/spin/on_emote(var/atom/emoter,var/atom/target)
 	spin(emoter,11)
 	return ..()
+
+/emote/help
+	name = "Help"
+	id = "help"
+	action = null
+	action_target = null
+
+/emote/help/on_emote(var/atom/emoter,var/atom/target)
+	var/mob/M = emoter
+	M.view_emotes()
+	return ..()
