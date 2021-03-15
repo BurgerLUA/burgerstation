@@ -61,5 +61,5 @@ SUBSYSTEM_DEF(text)
 	if(player_names[name][ckey] == 0)
 		return name
 	. = "[name] the [player_names[name][ckey]]\th"
-	SSlogging.log_chat("[name] ([ckey]) had their name forced to [.] due to duplication.")
+	log_admin("[name] ([ckey]) had their name forced to [.] due to duplication.")
 

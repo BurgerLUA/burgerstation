@@ -282,7 +282,7 @@
 /client/verb/ic_announcement()
 
 	set name = "Make IC Announcement"
-	set category = "Admin"
+	set category = "Fun"
 
 	var/sender = input("Who should the sender be?","Message Sender") as text | null
 	if(!sender)
@@ -301,6 +301,25 @@
 	log_admin("[src.get_debug_name()] made an IC announcement from [sender].")
 
 	return TRUE
+
+
+/client/verb/ooc_announcement()
+
+	set name = "Make OOC Announcement"
+	set category = "Admin"
+
+
+	var/message = input("What should the message be?", "Message") as message | null
+	if(!message)
+		return FALSE
+
+	broadcast_to_clients("<b>[src] announces:</b><p>&emsp;[message]</p>")
+
+	log_admin("[src.get_debug_name()] made an OOC announcement: [message]")
+
+	return TRUE
+
+
 
 /client/verb/test_spook_station()
 	set name = "Spook Station (DANGER)"

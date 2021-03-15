@@ -59,6 +59,7 @@
 		verbs += /client/verb/bring_player
 		verbs += /client/verb/ic_announcement
 		verbs += /client/verb/rejuvenate
+		verbs += /client/verb/ooc_announcement
 
 	if(permissions & FLAG_PERMISSION_ADMIN)
 		verbs += /client/verb/force_round_end

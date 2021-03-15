@@ -24,11 +24,9 @@
 		var/v = L[k]
 		log_debug("[dir2text(text2num(k))]: [v]")
 
-
-//Completed
 /proc/log_subsystem(var/subsystem_name,var/log_text)
 	world_log("<span class='subsystem'><b>[subsystem_name]</b>: [log_text]</span>")
-	SSlogging.buffered_log_debug += "[subsystem_name]: [log_text]"
+	SSlogging.buffered_log_subsystem += "[subsystem_name]: [log_text]"
 
 /proc/log_error(var/log_text)
 	world_log("<span class='error'>[log_text]</span>")
@@ -44,7 +42,6 @@
 
 /proc/log_chat(var/log_text)
 	SSlogging.buffered_log_chat += log_text
-
 
 /proc/world_log(var/log_text)
 	world.log << log_text
