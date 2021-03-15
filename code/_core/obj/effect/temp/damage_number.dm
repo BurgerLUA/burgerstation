@@ -16,6 +16,8 @@
 
 	var/current_value
 
+	maptext = "Bug"
+
 /obj/effect/damage_number/New(var/desired_location,var/desired_value)
 	. = ..()
 	if(desired_value) add_value(desired_value)
@@ -38,6 +40,7 @@
 		CALLBACK_REMOVE("\ref[src]_fade")
 	else
 		current_value = desired_value
+		alpha = 255
 		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=30,easing = CIRCULAR_EASING | EASE_OUT)
 	current_value = clamp(current_value,1,9999999)
 	var/damage_color_math = clamp(255 - (current_value/200)*255,0,255)

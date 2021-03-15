@@ -1,5 +1,5 @@
 /obj/item/container/cigarette
-	name = "blank cigarette"
+	name = "cigarette"
 	desc = "Kills you slowly."
 	desc_extended = "An old cigarette containing all the dangerous toxins that you crave."
 	icon = 'icons/obj/item/smoking/cigarette.dmi'

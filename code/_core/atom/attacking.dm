@@ -10,7 +10,7 @@
 			if(DN)
 				DN.add_value(damage_amount)
 			else
-				DN = new(T,null,damage_amount)
+				new /obj/effect/damage_number(T,damage_amount)
 
 	return TRUE
 
