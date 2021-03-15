@@ -93,6 +93,9 @@
 
 	var/last_z = 0
 
+	var/list/observers = list() //A list of observers/ghosts
+	var/mob/observed //who is being observed
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)
