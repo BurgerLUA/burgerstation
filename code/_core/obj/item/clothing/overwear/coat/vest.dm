@@ -115,7 +115,7 @@
 	)
 
 /obj/item/clothing/overwear/coat/vest/poly/pockets_only
-	name = "webbing pcokets"
+	name = "webbing pockets"
 
 	polymorphs = list(
 		"pockets" = COLOR_BLACK
