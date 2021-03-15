@@ -97,6 +97,8 @@
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
 		var/obj/structure/totem/summoned_totem = new totem_to_spawn(turf_to_spawn)
 		summoned_totem.affecting_faction = loyalty_tag
+		summoned_totem.ranged_limited = FALSE
+		summoned_totem.owner = src
 		summoned_totem.totem_remove_time = SECONDS_TO_DECISECONDS(120) + world.time
 		summoned_totem.leveled_effect = 3 //basically, a person with lvl.100 magic
 		INITIALIZE(summoned_totem)

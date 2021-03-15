@@ -37,6 +37,10 @@
 
 /ai/boss/goblin_king/on_damage_received(atom/atom_damaged, atom/attacker, atom/weapon, list/damage_table, damage_amount, critical_hit_multiplier, stealthy)
 	. = ..()
-	if(prob(1))
+	if(prob(25))
+		last_goblin_spawn -= 10
+		last_totem_spawn -= 10
+		last_screech -= 10
+	if(prob(10))
 		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
 		CREATE(choose_goblin, owner_as_goblin_king.loc)
