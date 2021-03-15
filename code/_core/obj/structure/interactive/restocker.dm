@@ -26,7 +26,7 @@
 /obj/structure/interactive/restocker/ammo
 	name = "portable magazine restocker"
 	desc = "Warning: Does not contain literature."
-	desc_extended = "A machine that automatically fills magazines inserted into the machine with the magazine's purchased ammo type."
+	desc_extended = "A machine that automatically fills magazines inserted into the machine with cheap surplus rounds."
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "gear2_ammo"
 	anchored = FALSE
