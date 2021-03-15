@@ -55,7 +55,7 @@
 
 	qdel(src)
 
-	
+
 /obj/item/supply_crate/russian
 	loot = /loot/supply_crate/russian
 	icon_state = "supply_russian"

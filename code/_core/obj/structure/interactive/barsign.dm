@@ -22,6 +22,10 @@ obj/structure/interactive/bar_sign/traitor
 	desc = "For all your traitor needs!"
 	icon_state = "traitor"
 
+obj/structure/interactive/bar_sign/bawse_loot
+	name = "Bawse Loot"
+	desc = "Nothing is stolen*! We promise!"
+	icon_state = "bawse_loot"
 
 obj/structure/interactive/bar_sign/dan
 	name = "Discount Dan's"

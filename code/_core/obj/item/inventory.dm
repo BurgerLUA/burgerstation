@@ -10,7 +10,7 @@
 		else
 			good_inventory_count += 1
 
-	var/delete_until = good_inventory_count < 8 ? good_inventory_count : CEILING(good_inventory_count,8)
+	var/delete_until = good_inventory_count < max_inventory_x ? good_inventory_count : CEILING(good_inventory_count,8)
 
 	for(var/k in bad_inventories)
 		var/obj/hud/inventory/dynamic/I = k

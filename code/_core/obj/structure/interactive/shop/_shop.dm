@@ -17,6 +17,11 @@
 
 	value = 0
 
+	var/markup = 1.25
+
+/obj/structure/interactive/shop/high_markup
+	markup = 6
+
 /obj/structure/interactive/shop/Destroy()
 
 	QDEL_NULL(stored_item)
@@ -58,7 +63,7 @@
 			stored_item_cost = 0
 			name = "[stored_item.name] - [stored_item_burgerbux_cost] burgerbux"
 		else
-			stored_item_cost = max(1,CEILING(stored_item.get_value(),1))
+			stored_item_cost = max(1,CEILING(stored_item.get_value()*markup,1))
 			if(stored_item_cost == 1)
 				log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
 			name = "[stored_item.name] - [stored_item_cost] credits"

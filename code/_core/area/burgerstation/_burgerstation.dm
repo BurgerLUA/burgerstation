@@ -169,6 +169,10 @@
 	name = "\improper Bait Shop"
 	icon_state = "bait"
 
+/area/burgerstation/goblin_shop
+	name = "\improper Bawse Loot"
+	icon_state = "bait"
+
 /area/burgerstation/mining
 	name = "\improper Mining"
 	icon_state = "mining"

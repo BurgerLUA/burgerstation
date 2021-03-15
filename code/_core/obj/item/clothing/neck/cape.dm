@@ -86,3 +86,10 @@
 	value = 200
 
 	dyeable = FALSE
+
+/obj/item/clothing/neck/cape/black
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"design" = COLOR_BLACK,
+		"trim" = COLOR_BLACK
+	)

@@ -47,9 +47,16 @@
 
 	attack_logs = list()
 
+	if(ckey_last)
+		dead_player_mobs |= src
+		death_ckey = ckey_last
+
 	return ..()
 
+/mob/living/advanced/player/revive()
+	. = ..()
+	dead_player_mobs -= src
+	death_ckey = null
+
 /mob/living/advanced/player/proc/on_kill_player(var/mob/living/advanced/player/P)
-
-
 	return TRUE
