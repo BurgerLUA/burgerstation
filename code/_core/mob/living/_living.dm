@@ -525,7 +525,8 @@
 	params[PARAM_ICON_Y] = 16
 	var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 	var/damagetype/D = all_damage_types[/damagetype/explosion/]
-	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
+	var/damage_to_do = 40+(magnitude**(1.5))
+	D.process_damage(source,src,source,object_to_damage,owner,damage_to_do)
 	return TRUE
 
 /mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
@@ -535,7 +536,8 @@
 		params[PARAM_ICON_Y] = rand(0,32)
 		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 		var/damagetype/D = all_damage_types[/damagetype/explosion/]
-		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
+		var/damage_to_do = 40+(magnitude**(1.5))*(1/5)
+		D.process_damage(source,src,source,object_to_damage,owner,damage_to_do)
 	return TRUE
 
 /mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)
