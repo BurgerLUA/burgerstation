@@ -191,6 +191,52 @@
 	size = 0.01
 	value = 0.4
 
+
+/obj/item/bullet_cartridge/pistol_4mm/toxin
+	name = "\improper toxin 4.6x30mm smg cartridge"
+	caseless = TRUE
+
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/toxin
+
+	value = 0.5
+
+/obj/item/bullet_cartridge/pistol_4mm/ion
+	name = "\improper ion 4.6x30mm smg cartridge"
+	caseless = TRUE
+
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ion
+
+	value = 0.5
+
+/obj/item/bullet_cartridge/pistol_4mm/ap
+	name = "\improper AP 4.6x30mm smg cartridge"
+	caseless = TRUE
+
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ap
+
+	value = 0.5
+
+/obj/item/bullet_cartridge/pistol_4mm/incendiary
+	name = "\improper incendiary 4.6x30mm smg cartridge"
+	caseless = TRUE
+
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/incendiary
+
+	value = 0.5
+
+/obj/item/bullet_cartridge/pistol_4mm/subsonic
+	name = "\improper subsonic 4.6x30mm smg cartridge"
+	icon = 'icons/obj/item/bullet/46mm.dmi'
+
+	projectile = /obj/projectile/bullet/firearm/pistol/stealth
+
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/subsonic
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	caseless = TRUE
+	value = 0.5
+
 /obj/item/bullet_cartridge/pistol_4mm/surplus
 	name = "\improper surplus 4.6x30mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/surplus

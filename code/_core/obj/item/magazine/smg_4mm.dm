@@ -19,10 +19,35 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/
-	ammo_surplus = /obj/item/bullet_cartridge/pistol_4mm/surplus
 
 	size = SIZE_2
 
 	icon_states = 5
 
 	value = 10
+
+
+/obj/item/magazine/smg_46/toxin
+	name = "\improper 4.6x30mm WT-550 magazine - toxin"
+	icon_state = "TOX"
+	ammo = /obj/item/bullet_cartridge/pistol_4mm/toxin
+
+/obj/item/magazine/smg_46/ion
+	name = "\improper 4.6x30mm WT-550 magazine - ion"
+	icon_state = "ION"
+	ammo = /obj/item/bullet_cartridge/pistol_4mm/ion
+
+/obj/item/magazine/smg_46/incendiary
+	name = "\improper .4.6x30mm WT-550 - incendiary"
+	icon_state = "INC"
+	ammo = /obj/item/bullet_cartridge/pistol_4mm/incendiary
+
+/obj/item/magazine/smg_46/ap
+	name = "\improper .4.6x30mm WT-550 - armor piercing"
+	icon_state = "AP"
+	ammo = /obj/item/bullet_cartridge/pistol_4mm/ap
+
+/obj/item/magazine/smg_46/subsonic
+	name = "\improper .4.6x30mm WT-550 - subsonic"
+	icon_state = "SUB"
+	ammo = /obj/item/bullet_cartridge/pistol_4mm/subsonic
