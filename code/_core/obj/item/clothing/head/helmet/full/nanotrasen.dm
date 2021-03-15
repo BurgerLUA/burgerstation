@@ -32,7 +32,7 @@
 
 
 /obj/item/clothing/head/helmet/full/nanotrasen/medium
-	name = "medium Jaeger hemlet"
+	name = "medium Jaeger helmet"
 	polymorphs = list(
 		"helmet_medium" = "#FFFFFF",
 		"visor_medium" = "#FFFFFF"
@@ -57,7 +57,7 @@
 
 
 /obj/item/clothing/head/helmet/full/nanotrasen/heavy
-	name = "heavy Jaeger hemlet"
+	name = "heavy Jaeger helmet"
 	polymorphs = list(
 		"helmet_heavy" = "#FFFFFF",
 		"visor_heavy" = "#FFFFFF"
