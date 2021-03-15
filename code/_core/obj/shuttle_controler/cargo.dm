@@ -40,7 +40,7 @@
 			total_value += calculated_value
 			if(is_living(O))
 				var/mob/living/L = O
-				if(!L.dead) L.death()
+				L.death(TRUE)
 			SSgamemode?.active_gamemode?.on_object_sold(O)
 			qdel(O)
 

@@ -36,12 +36,32 @@ SUBSYSTEM_DEF(logging)
 	return "data/server/logging/[round_id]-[start_date]/[type].txt"
 
 /subsystem/logging/proc/log_from_list(var/identifier,var/list/desired_list)
-	if(length(desired_list))
-		var/log_string = english_list(desired_list,"LIST ERROR","\n","\n")
-		rustg_log_write(get_logging_dir(identifier),log_string,"true")
-		desired_list.Cut()
-		return TRUE
-	return FALSE
+	if(!length(desired_list))
+		return FALSE
+	var/log_string = english_list(desired_list,"LIST ERROR","\n","\n")
+	rustg_log_write(get_logging_dir(identifier),log_string,"true")
+
+	var/list/identifier_to_rank = list(
+		"admin" = FLAG_PERMISSION_ADMIN,
+		"error" = FLAG_PERMISSION_DEVELOPER,
+		"debug" = FLAG_PERMISSION_DEVELOPER
+	)
+
+	if(identifier_to_rank[identifier])
+		for(var/k in all_clients)
+			var/client/C = all_clients[k]
+			if(C.permissions & identifier_to_rank[identifier])
+				C.queued_chat_messages.Add(
+					list(
+						list(
+							"text" = log_string,
+							"output_target_list" = list("chat_ooc.output")
+						)
+					)
+				)
+
+
+	return TRUE
 
 /subsystem/logging/on_life()
 

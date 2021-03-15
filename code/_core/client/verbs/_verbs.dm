@@ -44,7 +44,6 @@
 	verbs += /client/verb/ghost
 	verbs += /client/verb/check_objectives
 
-
 	if(permissions & FLAG_PERMISSION_HOST)
 		verbs += /client/verb/apply_fuckup
 
@@ -54,12 +53,22 @@
 		verbs += /client/verb/get_clients
 		verbs += /client/verb/jump_to_player
 		verbs += /client/verb/jump_to_area
+		verbs += /client/verb/jump_to_client
+		verbs += /client/verb/jump_to_mob
 		verbs += /client/verb/adjust_nightvision
 		verbs += /client/verb/bring_player
-		verbs += /client/verb/jump_to_mob
 		verbs += /client/verb/ic_announcement
 		verbs += /client/verb/rejuvenate
+
+	if(permissions & FLAG_PERMISSION_ADMIN)
 		verbs += /client/verb/force_round_end
+		verbs += /client/verb/force_random_event
+		verbs += /client/verb/force_specific_event
+		verbs += /client/verb/force_vote
+		verbs += /client/verb/add_points
+		verbs += /client/verb/create_explosion
+		verbs += /client/verb/smite_living
+		verbs += /client/verb/spawn_from_path
 
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)
@@ -68,21 +77,15 @@
 
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)
 		verbs += /client/verb/speed_up_setup
-		verbs += /client/verb/force_random_event
 		verbs += /client/verb/set_skill
 		verbs += /client/verb/set_attribute
-		verbs += /client/verb/spawn_from_path
-		verbs += /client/verb/smite_living
-		verbs += /client/verb/add_points
-		verbs += /client/verb/give_dosh
+		verbs += /client/verb/give_credits
 		verbs += /client/verb/test_spook_station
 		verbs += /client/verb/test_syndicate_raid
-		verbs += /client/verb/force_specific_event
-		verbs += /client/verb/force_vote
 		verbs += /client/verb/add_language
 		verbs += /client/verb/remove_language
 		verbs += /client/verb/remove_trait
 		verbs += /client/verb/add_trait
-		verbs += /client/verb/create_explosion
+
 
 	return TRUE

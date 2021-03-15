@@ -31,6 +31,7 @@
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.death()
+		A.health?.update_health()
 	return ..()
 
 

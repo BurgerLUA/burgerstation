@@ -153,4 +153,3 @@
 /mob/living/simple/legionare/snow/post_death()
 	. = ..()
 	icon_state = "dead"
-	

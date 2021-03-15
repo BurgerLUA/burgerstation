@@ -1,7 +1,7 @@
 /client/verb/speed_up_setup()
 
 	set name = "Speed up Setup"
-	set category = "GameMaster"
+	set category = "Admin"
 
 	if(!SSgamemode || !SSgamemode.active_gamemode)
 		to_chat(span("warning","The gamemode is still being setup!"))
@@ -14,7 +14,7 @@
 
 /client/verb/force_random_event()
 	set name = "Force Random Event"
-	set category = "GameMaster"
+	set category = "Fun"
 
 	var/confirm = input("Are you sure you want to trigger a random event?","Random Event Trigger.") in list("Yes","No","Cancel")|null
 
@@ -27,7 +27,7 @@
 
 /client/verb/force_specific_event()
 	set name = "Force Specific Event"
-	set category = "GameMaster"
+	set category = "Fun"
 
 	var/list/refactored_list = list()
 
@@ -52,7 +52,7 @@
 /client/verb/add_points()
 
 	set name = "Add Gamemode Points"
-	set category = "GameMaster"
+	set category = "Fun"
 
 	var/gamemode/G = SSgamemode.active_gamemode
 
@@ -65,7 +65,7 @@
 /client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
 	set name = "Spawn Object"
 	set desc = "Spawn an object."
-	set category = "GameMaster"
+	set category = "Fun"
 
 	if(!object)
 		return FALSE
@@ -132,7 +132,7 @@
 /client/verb/smite_living()
 
 	set name = "Smite Living"
-	set category = "GameMaster"
+	set category = "Fun"
 
 	var/list/valid_targets = list()
 
@@ -157,9 +157,9 @@
 	log_admin("[L.get_debug_name()] was smited by [src.get_debug_name()].")
 
 
-/client/verb/give_dosh(var/dosh_amount as num)
-	set name = "Give Dosh"
-	set category = "GameMaster"
+/client/verb/give_credits(var/dosh_amount as num)
+	set name = "Give Credits"
+	set category = "Cheat"
 
 	var/mob/living/advanced/player/P = input("Who do you want to give money to?") as null|mob in all_players
 
@@ -174,7 +174,7 @@
 /client/verb/set_attribute(var/mob/mob as mob)
 
 	set name = "Set Attribute Level"
-	set category = "GameMaster"
+	set category = "Cheat"
 
 	if(!is_living(mob))
 		return
@@ -195,17 +195,19 @@
 	if(!chosen_value)
 		return
 
-	chosen_value = chosen_value
+	var/old_level = L.get_attribute_level(chosen_attribute)
 
 	L.set_attribute_level(chosen_attribute,chosen_value)
 
 	to_chat(span("notice","Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."))
 
+	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_attribute] from [old_level] to [chosen_value].")
+
 
 /client/verb/set_skill(var/mob/mob as mob)
 
 	set name = "Set Skill Level"
-	set category = "GameMaster"
+	set category = "Cheat"
 
 	if(!is_living(mob))
 		return
@@ -226,24 +228,33 @@
 	if(!chosen_value)
 		return
 
-	chosen_value = chosen_value
+	var/old_level = L.get_skill_level(chosen_skill)
 
 	L.set_skill_level(chosen_skill,chosen_value)
 
 	to_chat(span("notice","Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."))
 
+	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_skill] from [old_level] to [chosen_value].")
+
 /client/verb/rejuvenate()
-	set name = "Rejuvenate"
-	set category = "GameMaster"
+	set name = "Rejuvenate Player"
+	set category = "Admin"
 
 	var/list/valid_players = list()
 
 	for(var/mob/living/L in all_mobs_with_clients)
 		if(!L.ckey)
 			continue
-		valid_players[L.get_debug_name()] = L
+		var/final_name = "[L.name][L.dead ? "(DEAD)" : ""]"
+		valid_players[final_name] = L
 
-	var/choice = input("Who do you want to rejuvenate?","Player Rejuvenation") as null|mob in valid_players
+	valid_players["Cancel"] = "Cancel"
+
+	var/choice = input("Who do you want to rejuvenate?","Player Rejuvenation") as null|anything in valid_players
+
+	if(!choice || choice == "Cancel")
+		to_chat(span("notice","You decide not to revive anyone."))
+		return FALSE
 
 	var/mob/living/L = valid_players[choice]
 
@@ -256,7 +267,7 @@
 
 /client/verb/force_round_end()
 	set name = "Force Round End (DANGER)"
-	set category = "GameMaster"
+	set category = "Admin"
 
 	var/confirm = input("Are you sure you want to end the round in a NanoTrasen Victory?","NanoTrasen Victory") in list("Yes","No","Cancel")|null
 
@@ -271,7 +282,7 @@
 /client/verb/ic_announcement()
 
 	set name = "Make IC Announcement"
-	set category = "GameMaster"
+	set category = "Admin"
 
 	var/sender = input("Who should the sender be?","Message Sender") as text | null
 	if(!sender)
@@ -293,7 +304,7 @@
 
 /client/verb/test_spook_station()
 	set name = "Spook Station (DANGER)"
-	set category = "GameMaster"
+	set category = "Fun"
 
 	var/confirm = input("Are you sure you wish to spook the station? This will kill all lights, batton all hatches, and stun everyone on board.","Oh god oh fuck.") as null|anything in list("Yes","No","Cancel")
 
@@ -328,8 +339,8 @@
 			D.close(null,TRUE,TRUE)
 
 /client/verb/test_syndicate_raid()
-	set name = "Syndicate Raid (DANGER)"
-	set category = "GameMaster"
+	set name = "Trigger Syndicate Raid (DANGER)"
+	set category = "Fun"
 
 	var/confirm = input("Are you sure you wish to raid the station? This will kill all lights, batton all hatches, and stun everyone on board.","Oh god oh fuck.") as null|anything in list("Yes","No","Cancel")
 	if(confirm != "Yes")
@@ -357,7 +368,7 @@
 
 /client/verb/force_vote()
 	set name = "Force Vote End"
-	set category = "GameMaster"
+	set category = "Admin"
 
 	for(var/k in SSvote.active_votes)
 		var/vote/V = k
@@ -368,7 +379,7 @@
 
 /client/verb/add_language()
 	set name = "Add Language"
-	set category = "GameMaster"
+	set category = "Cheat"
 
 	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") as null|mob in all_players
 
@@ -395,7 +406,7 @@
 
 /client/verb/remove_language()
 	set name = "Remove Language"
-	set category = "GameMaster"
+	set category = "Cheat"
 
 	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") as null|mob in all_players
 
@@ -422,7 +433,7 @@
 
 /client/verb/add_trait()
 	set name = "Add Trait"
-	set category = "GameMaster"
+	set category = "Cheat"
 
 	var/mob/living/advanced/player/P = input("Who do you want to add a trait to?","Add Trait") as null|mob in all_players
 
@@ -449,7 +460,7 @@
 
 /client/verb/remove_trait()
 	set name = "Remove Trait"
-	set category = "GameMaster"
+	set category = "Cheat"
 
 	var/mob/living/advanced/player/P = input("Who do you want to remove a trait from?","Remove Trait") as null|mob in all_players
 
@@ -475,7 +486,7 @@
 
 /client/verb/create_explosion()
 	set name = "Create Explosion"
-	set category = "GameMaster"
+	set category = "Fun"
 
 	var/turf/T = get_turf(mob)
 

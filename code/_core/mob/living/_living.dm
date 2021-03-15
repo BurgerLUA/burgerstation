@@ -258,7 +258,7 @@
 		var/reagent/R = REAGENT(blood_type)
 		for(var/i=1,i<=9,i++)
 			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
-	death()
+	death(TRUE)
 	if(!qdeleting) qdel(src)
 
 /mob/living/get_base_value()

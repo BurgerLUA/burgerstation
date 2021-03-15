@@ -17,14 +17,14 @@
 			return TRUE
 		return FALSE
 
-	var/choice = input("Are you sure you want to kill yourself?","Suicide","Cancel") in list("Yes","No","Cancel")
+	var/choice = input("Are you sure you want to kill yourself? This will make you unrevivable.","Suicide","Cancel") in list("Yes","No","Cancel")
 
 	if(dead)
 		to_chat(span("danger","You are already dead!"))
 		return FALSE
 
 	if(choice == "Yes")
-		death()
+		death(TRUE)
 		visible_message(span("danger","[src.name] kills themselves!"),span("danger","You kill yourself!"))
 		suicide = TRUE
 		client.make_ghost(get_turf(src))

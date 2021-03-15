@@ -140,6 +140,7 @@
 				src.force_move(T)
 				src.set_dir(L.dir)
 				L.death()
+				L.health?.update_health()
 				play_sound('sound/effects/neck_snap.ogg',T)
 				if(debug) log_subsystem("Peanut","Found a target. We've killed them.")
 
