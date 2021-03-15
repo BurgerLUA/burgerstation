@@ -6,4 +6,5 @@
 		/obj/item/clothing/hands/gloves/colored/left,
 		/obj/item/clothing/head/hat/top,
 		/obj/item/clothing/neck/cape/black,
+		/obj/item/weapon/ranged/energy/captain
 	)

@@ -64,14 +64,21 @@ var/global/list/ckey_to_death_box_data = list()
 /proc/load_deathbox(var/mob/living/advanced/player/P,var/atom/A)
 
 	if(!P || P.dead || P.qdeleting)
+		P?.to_chat(span("warning","You can't do this while dead!"))
 		return null
 
-	if(A && get_dist(A,P) > 1)
+	if(A && get_dist(A,P) > 3)
+		P.to_chat(span("warning","You're too far away!"))
 		return null
 
 	var/savedata/client/death_box/DB = ckey_to_death_box_data[P.ckey_last]
 
 	if(!DB)
+		P.to_chat(span("danger","Deathbox Data error detected. Report this bug on discord."))
+		return null
+
+	if(!length(DB.loaded_data))
+		P.to_chat(span("warning","You don't have any deathboxes to purchase!"))
 		return null
 
 	var/list/valid_choices = list()
@@ -89,22 +96,28 @@ var/global/list/ckey_to_death_box_data = list()
 
 	var/selection = input("What deathbox do you wish for the Goblins to retrieve?","Goblin Retrival","Cancel") as null|anything in valid_choices
 	if(!selection || selection == "Cancel")
+		P.to_chat(span("notice","You decide not to purchase any deathboxes."))
 		return null
 
 	if(!P || P.dead || P.qdeleting)
+		P?.to_chat(span("warning","You can't do this while dead!"))
 		return null
 
-	if(A && get_dist(A,P) > 1)
+	if(A && get_dist(A,P) > 3)
+		P.to_chat(span("warning","You're too far away!"))
 		return null
 
 	var/confirmation = input("Are you sure you want to load [selection]? You will be charged [valid_choices[selection]["value"]] credits for this purchase.") as null|anything in list("Yes","No","Cancel")
 	if(!confirmation || confirmation != "Yes")
+		P.to_chat(span("notice","You decide not to purchase any deathboxes."))
 		return null
 
 	if(!P || P.dead || P.qdeleting)
+		P?.to_chat(span("warning","You can't do this while dead!"))
 		return null
 
-	if(A && get_dist(A,P) > 1)
+	if(A && get_dist(A,P) > 3)
+		P.to_chat(span("warning","You're too far away!"))
 		return null
 
 	if(!P.adjust_currency(-text2num(valid_choices[selection]["value"])))
@@ -129,6 +142,8 @@ var/global/list/ckey_to_death_box_data = list()
 	DB.loaded_data.Cut(instance_list[selection],instance_list[selection]+1)
 
 	DB.save()
+
+	P.to_chat(span("notice","You purchase a deathbox.."))
 
 	return created_box
 

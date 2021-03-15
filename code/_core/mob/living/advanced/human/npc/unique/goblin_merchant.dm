@@ -15,6 +15,14 @@
 
 	dir = EAST
 
+	dialogue_id = /dialogue/npc/goblin_merchant/
+
+	immortal = TRUE
+
+	anchored = TRUE
+
+
+
 /mob/living/advanced/npc/unique/goblin_merchant/Initialize()
 
 	. = ..()

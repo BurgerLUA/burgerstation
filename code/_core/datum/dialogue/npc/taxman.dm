@@ -9,7 +9,7 @@
 
 	if(world.realtime < next_pay)
 		.["hello"] = list(
-			"Greetings, [P.real_name]. It seems that you are all caught up on your taxes. Your next tax due date is [time2text(next_pay,"Month DD")]. \
+			"Hello, [P.real_name]. It seems that you are all caught up on your taxes. Your next tax due date is [time2text(next_pay,"Month DD")]. \
 			Perhaps you have come to just #1?",
 			"*learn about taxes"
 		)
@@ -17,7 +17,7 @@
 		var/delinq = SStax.check_delinquent(P)
 		delinq *= 1/(86400*10)
 		.["hello"] = list(
-			"Greetings, [P.real_name]. Have you come to #1, or perhaps #2? Your taxes are currently [delinq <= 1 ? "due today" : "overdue by [CEILING(delinq,1)] days"].",
+			"Hello, [P.real_name]. Have you come to #1, or perhaps #2? Your taxes are currently [delinq <= 1 ? "due today" : "overdue by [CEILING(delinq,1)] days"].",
 			"*pay your taxes",
 			"*learn about taxes"
 		)
