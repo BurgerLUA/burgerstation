@@ -11,6 +11,9 @@
 
 	pixel_z = -2
 
+	iff_tag = "Goblin"
+	loyalty_tag = "Goblin"
+
 	var/loadout_to_use = /loadout/goblin
 
 	blood_type = /reagent/blood/goblin
@@ -23,9 +26,6 @@
 	gender = sex
 
 	change_organ_visual("skin", desired_color = pick("#3D6300","#425125","#4E5B0E","#686342"))
-
-	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/goblin)
-	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/goblin)
 
 	update_all_blends()
 

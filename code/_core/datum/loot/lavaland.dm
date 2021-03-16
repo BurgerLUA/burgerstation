@@ -59,3 +59,12 @@
 		/obj/item/weapon/ranged/magic/tome/summon/crystal_guardian = 1,
 		/obj/item/weapon/melee/crystal = 1
 	)
+
+/loot/lavaland/goblin_king
+	loot_table = list(
+		/obj/item/clothing/head/hat/goblin_crown = 1,
+		/obj/item/clothing/neck/goblin_necklace = 1,
+		/obj/item/clothing/pants/goblin_loin = 1,
+		/obj/item/weapon/ranged/magic/tome/summon/goblin_warrior = 1,
+		/obj/item/weapon/ranged/magic/tome/summon/goblin_mage = 1
+	)
