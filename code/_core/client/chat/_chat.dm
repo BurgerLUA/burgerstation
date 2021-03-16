@@ -10,7 +10,7 @@
 		"source" = source,
 		"text_to_say" = text_to_say,
 		"language_text_to_say" = language_text_to_say,
-		"text_type" = text_type,
+		"text_type" = TEXT_RADIO,
 		"frequency" = frequency,
 		"language" = language,
 		"talk_range" = talk_range
@@ -26,7 +26,7 @@
 
 	return TRUE
 
-/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/talk_range_override=0)
+/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/talk_range_override)
 
 	var/turf/T1 = get_turf(source)
 
@@ -47,7 +47,9 @@
 		if(!T2)
 			log_error("Warning: Tried to send a message to a listener [A.get_debug_name()], but it didn't have a valid turf.")
 			continue
-		if(!within_range(T1,T2,talk_range_override))
+		if(T1.z != T2.z)
+			continue
+		if(get_dist(T1,T2) > talk_range_override)
 			continue
 		A.on_listen(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 

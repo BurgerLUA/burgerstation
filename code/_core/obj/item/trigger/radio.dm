@@ -127,9 +127,9 @@ list(
 		return FALSE
 	if(!broadcasting && !(frequency > 0)) //Dumb logic here, but it catches null as well as null (greater,less,equal) 0 is always 0.
 		return FALSE
-	if(frequency < frequency_min || frequency > frequency_max)
+	if(frequency > 0 && (frequency < frequency_min || frequency > frequency_max))
 		return FALSE
-	use_radio(speaker,src,text,language_text,TEXT_RADIO,frequency,language,talk_range)
+	use_radio(speaker,src,text,language_text,talk_type,src.frequency,language,talk_range)
 	return ..()
 
 

@@ -46,9 +46,13 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	stored_radio.broadcasting = !stored_radio.broadcasting
-	caller.to_chat(span("notice","You toggle the intercomm microphone [stored_radio.broadcasting ? "on" : "off"]."))
-	icon_state = stored_radio.broadcasting ? "intercom_speak" : "intercom"
+	if(caller.attack_flags & CONTROL_MOD_ALT)
+		stored_radio.receiving = !stored_radio.receiving
+		caller.to_chat(span("notice","You toggle the intercomm receiver [stored_radio.receiving ? "on" : "off"]."))
+	else
+		stored_radio.broadcasting = !stored_radio.broadcasting
+		caller.to_chat(span("notice","You toggle the intercomm microphone [stored_radio.broadcasting ? "on" : "off"]."))
+		icon_state = stored_radio.broadcasting ? "intercom_speak" : "intercom"
 
 	return TRUE
 
@@ -61,4 +65,3 @@
 	. = ..()
 	stored_radio.broadcasting_range = 3
 	stored_radio.listen_range = 3
-	
