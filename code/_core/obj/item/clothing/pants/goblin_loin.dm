@@ -18,9 +18,12 @@
 
 	var/cooldown_effect = 0
 
-/obj/item/clothing/pants/goblin_loin/Finalize()
+/obj/item/clothing/pants/goblin_loin/post_move(atom/old_loc)
 	. = ..()
-	start_thinking(src)
+	if(istype(loc, /obj/hud/inventory/organs/groin))
+		start_thinking(src)
+	else
+		stop_thinking(src)
 
 /obj/item/clothing/pants/goblin_loin/think()
 	if(cooldown_effect > world.time)
