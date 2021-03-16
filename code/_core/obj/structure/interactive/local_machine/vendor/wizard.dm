@@ -39,6 +39,16 @@
 
 	accepts_item = /obj/item/currency/magic_token
 
+/obj/structure/interactive/vending/wizard/nanotrasen
+
+	stored_types = list(
+		/obj/item/container/beaker/bottle/health_potion,
+		/obj/item/container/beaker/bottle/stamina_potion,
+		/obj/item/container/beaker/bottle/mana_potion
+	)
+
+
+
 /obj/structure/interactive/vending/wizard/prank
 	name = "magic prank vendor"
 	desc = "... we swear these are pranks and not murder."

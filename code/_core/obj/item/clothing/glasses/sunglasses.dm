@@ -34,7 +34,7 @@
 		)
 		new_location.owner.add_color_mod("eyes",desired_color)
 
-	
+
 /obj/item/clothing/glasses/sun/big
 	name = "big shades"
 	icon = 'icons/obj/item/clothing/glasses/sunglasses_big.dmi'

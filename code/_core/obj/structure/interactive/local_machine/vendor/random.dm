@@ -8,7 +8,7 @@
 
 /obj/structure/interactive/vending/random/Finalize()
 
-	markup = rand(2,4)
+	markup = rand(4,8)
 
 	CREATE_LOOT(/loot/trash_pile,src.loc)
 

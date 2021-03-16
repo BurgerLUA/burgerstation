@@ -254,16 +254,16 @@
 
 /mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=TRUE)
 
-	var/dropped_objects = list()
+	. = list()
 
 	for(var/obj/hud/inventory/organs/O in inventory)
 		if(exclude_containers && is_item(O.loc))
 			var/obj/item/I = O.loc
 			if(I.is_container)
 				continue
-		dropped_objects += O.drop_objects(drop_location,exclude_soulbound)
+		. += O.drop_objects(drop_location,exclude_soulbound)
 
-	return dropped_objects
+	return .
 
 /mob/living/advanced/proc/delete_all_items()
 	for(var/v in inventory)

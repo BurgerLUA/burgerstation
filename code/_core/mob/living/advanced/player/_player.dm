@@ -1,4 +1,5 @@
 var/global/list/mob/living/advanced/player/all_players = list()
+var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 /mob/living/advanced/player/
 	desc = "Seems a little smarter than most, you think."
@@ -95,6 +96,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	var/tutorial = FALSE
 
 	damage_received_multiplier = 0.75
+
+	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)

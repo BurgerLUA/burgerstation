@@ -91,7 +91,7 @@
 	if(last_marker)
 		.["last_marker"] = last_marker
 
-	.["type"] = type
+	.["type"] = "[type]" //Type is a path. This makes it a string just in case.
 
 	if(color && lowertext(color) != "#ffffff")
 		.["color"] = color
@@ -185,23 +185,25 @@
 		log_error("Warning: [src.get_debug_name()] in [P.get_debug_name()] had no inventory data!")
 		return TRUE
 
+	var/turf/T = get_turf(src)
+
 	if(is_assoc_list(inventory_data))
 		if(inventory_data["held"])
 			for(var/i=1,i<=length(inventory_data["held"]),i++)
-				var/obj/item/I = load_and_create(P,inventory_data["held"][i],get_turf(src))
+				var/obj/item/I = load_and_create(P,inventory_data["held"][i],T)
 				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
 					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 					I.drop_item(get_step(P,P.dir),silent=TRUE)
 
 		if(inventory_data["worn"])
 			for(var/i=1,i<=length(inventory_data["worn"]),i++)
-				var/obj/item/I = load_and_create(P,inventory_data["worn"][i],get_turf(src))
+				var/obj/item/I = load_and_create(P,inventory_data["worn"][i],T)
 				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
 					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 					I.drop_item(get_step(P,P.dir),silent=TRUE)
 	else
 		for(var/i=1,i<=length(inventory_data),i++)
-			var/obj/item/I = load_and_create(P,inventory_data[i],get_turf(src))
+			var/obj/item/I = load_and_create(P,inventory_data[i],T)
 			if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
 				log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 				I.drop_item(get_step(P,P.dir),silent=TRUE)
@@ -217,8 +219,9 @@
 
 	for(var/i=1,i<=content_length,i++)
 		var/obj/item/I = contents[i]
-		if(istype(I))
+		if(istype(I) && I.can_save)
 			.[i] = I.save_item_data(save_inventory)
 		else
+			log_error("Tried saving invalid object in an inventory, [I ? I.get_debug_name() : "NULL"].")
 			.[i] = list()
 
