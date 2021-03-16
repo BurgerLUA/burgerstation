@@ -20,6 +20,8 @@
 
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/
 
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_4mm/surplus
+
 	size = SIZE_2
 
 	icon_states = 5

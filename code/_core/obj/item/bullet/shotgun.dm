@@ -41,7 +41,7 @@
 	size = 0.04
 	value = 1.8
 
-/obj/item/bullet_cartridge/shotgun_12/surplus
+/obj/item/bullet_cartridge/shotgun_12/slug/surplus
 	name = "\improper surplus 12 gauge slug"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug/surplus
 	jam_chance = 1
@@ -66,7 +66,7 @@
 
 	inaccuracy_modifer = 1.5
 
-/obj/item/bullet_cartridge/shotgun_12/buckshot
+/obj/item/bullet_cartridge/shotgun_12/buckshot/surplus
 	name = "\improper surplus 12 gauge buckshot"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot/surplus
 	jam_chance = 1
@@ -112,7 +112,7 @@
 
 	inaccuracy_modifer = 1.3
 
-/obj/item/bullet_cartridge/shotgun_12/flechette
+/obj/item/bullet_cartridge/shotgun_12/flechette/surplus
 	name = "\improper surplus 12 gauge flechette"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/flechette/surplus
 	jam_chance = 1
