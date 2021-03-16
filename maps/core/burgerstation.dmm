@@ -3828,13 +3828,9 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "od" = (
-/obj/decal/hazard,
-/mob/living/simple/turret/nanotrasen{
-	icon_state = "active";
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/hanger)
+/mob/living/advanced/npc/nanotrasen,
+/turf/simulated/floor/tile/morphing/security,
+/area/burgerstation/hall/north)
 "oe" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -6176,15 +6172,12 @@
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
 "wL" = (
-/obj/decal/hazard{
-	dir = 1
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 4
 	},
-/mob/living/simple/turret/nanotrasen{
-	icon_state = "active";
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/hanger)
+/turf/simulated/floor/tile/morphing/chapel,
+/area/burgerstation/hall/south)
 "wM" = (
 /obj/decal/hazard{
 	dir = 8
@@ -6949,6 +6942,13 @@
 /obj/marker/hostage_rest,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"zo" = (
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/hall/south)
 "zp" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending,
@@ -7010,6 +7010,40 @@
 /obj/structure/interactive/vending/smart_fridge/bar,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
+"zB" = (
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/hall/south)
+"zC" = (
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/central)
+"zD" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/north)
+"zE" = (
+/obj/decal/hazard{
+	dir = 1
+	},
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
 "zK" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
@@ -28294,7 +28328,7 @@ jz
 kf
 kr
 jd
-hO
+zE
 jr
 bK
 bK
@@ -34715,11 +34749,11 @@ iy
 hO
 bK
 jx
-od
+cg
 jd
 fa
 jd
-wL
+hO
 jx
 bK
 cg
@@ -38328,7 +38362,7 @@ id
 id
 id
 id
-id
+zC
 wi
 wx
 wx
@@ -43208,7 +43242,7 @@ uE
 id
 fT
 id
-ng
+zo
 mo
 nk
 ng
@@ -43754,7 +43788,7 @@ si
 si
 si
 rx
-si
+wL
 yC
 vH
 vC
@@ -44750,7 +44784,7 @@ uF
 id
 gk
 id
-oG
+zB
 iT
 mz
 oG
@@ -45226,7 +45260,7 @@ if
 if
 if
 if
-sz
+zD
 if
 if
 if
@@ -46529,7 +46563,7 @@ fC
 hh
 fC
 gw
-iM
+od
 if
 hZ
 im
@@ -47557,7 +47591,7 @@ tv
 gr
 tg
 gw
-iM
+od
 jD
 if
 hZ
