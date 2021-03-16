@@ -114,11 +114,11 @@ var/global/list/stored_paths = list()
 		CHECK_TICK(75,FPS_SERVER)
 		var/desired_dir = get_dir(NC,point_B)
 		var/turf/T = get_step(NC,desired_dir)
-		if(!T.Enter(NC,NC.loc))
+		if(T.density && !T.Enter(NC,NC.loc))
 			. |= T
 		for(var/k in T.contents)
 			var/atom/movable/M = k
-			if(!M.Cross(NC))
+			if(!M.allow_path && M.density && M.anchored && !M.Cross(NC))
 				. |= M
 		NC.loc = T
 
