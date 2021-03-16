@@ -66,7 +66,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	blood_volume = 1000
+	blood_volume = 5000
 	blood_type = /reagent/blood/goblin
 
 	soul_size = SOUL_SIZE_RARE
