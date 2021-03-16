@@ -74,6 +74,13 @@
 		if(loc != old_loc)
 			post_move(old_loc)
 
+	for(var/k in observers)
+		var/mob/chosenObserver = k
+		chosenObserver.glide_size = glide_size
+		chosenObserver.Move(NewLoc, Dir, step_x, step_y)
+	if(move_dir && observed)
+		observed.observers -= src
+		observed = null
 
 /mob/proc/update_rs_chat()
 	for(var/k in stored_chat_text)

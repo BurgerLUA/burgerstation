@@ -79,6 +79,58 @@
 	if(is_living(mob))
 		log_admin("[src.get_debug_name()] jumped to [C.mob.get_debug_name()]'s location.")
 
+/client/verb/orbit_player()
+	set name = "Orbit Player"
+	set category = "View"
+
+	//sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
+
+	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in all_mobs_with_clients
+	if(!choice || choice == mob)
+		to_chat(span("warning","Invalid mob."))
+		return FALSE
+
+	var/turf/T = get_turf(choice)
+	if(!T)
+		to_chat(span("warning","Invalid turf."))
+		return FALSE
+
+	if(is_living(mob))
+		to_chat(span("warning","Cannot orbit as a living mob."))
+		return FALSE
+
+	mob.force_move(T)
+	choice.observers += mob
+	mob.observed = choice
+
+	to_chat(span("notice","You orbit [choice]."))
+
+/client/verb/orbit_mob()
+	set name = "Orbit Mob"
+	set category = "View"
+
+	//sortTim(all_mobs,/proc/cmp_path_asc)
+
+	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in all_mobs
+	if(!choice || choice == mob)
+		to_chat(span("warning","Invalid mob."))
+		return FALSE
+
+	var/turf/T = get_turf(choice)
+	if(!T)
+		to_chat(span("warning","Invalid turf."))
+		return FALSE
+
+	if(is_living(mob))
+		to_chat(span("warning","Cannot orbit as a living mob."))
+		return FALSE
+
+	mob.force_move(T)
+	choice.observers += mob
+	mob.observed = choice
+
+	to_chat(span("notice","You orbit [choice]."))
+
 /client/verb/jump_to_area()
 	set name = "Jump to Area"
 	set category = "View"

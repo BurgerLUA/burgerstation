@@ -93,6 +93,9 @@
 
 	var/last_z = 0
 
+	var/list/observers = list() //A list of observers/ghosts
+	var/mob/observed //who is being observed
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)
@@ -112,6 +115,9 @@
 
 	all_mobs -= src
 	all_mobs_with_clients -= src
+
+	observers.Cut()
+	observed = null
 
 	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
