@@ -6310,9 +6310,6 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering)
 "xj" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
 /obj/structure/interactive/disposals/pipe/junction/flipped{
 	dir = 4
 	},
@@ -44492,8 +44489,8 @@ kR
 nS
 lY
 mp
-lY
-lY
+pw
+mp
 lY
 lY
 lY

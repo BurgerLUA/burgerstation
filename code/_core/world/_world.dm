@@ -105,6 +105,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/save()
 	save_all_globals()
 	//save_all_mechs()
+	save_deathboxes()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		if(P.dead)
