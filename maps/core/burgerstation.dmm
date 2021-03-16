@@ -4576,7 +4576,7 @@
 /area/burgerstation/bathrooms)
 "qL" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/wall/metal,
+/turf/simulated/floor/plating,
 /area/burgerstation/medical)
 "qM" = (
 /turf/simulated/wall/metal,
