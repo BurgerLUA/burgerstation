@@ -107,6 +107,7 @@
 
 	size = SIZE_2
 	container_max_size = SIZE_1
+	max_inventory_x = 5
 	dynamic_inventory_count = 10
 
 /obj/item/storage/kit/ai3/filled/fill_inventory()

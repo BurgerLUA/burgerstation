@@ -17,6 +17,8 @@
 
 	value = 25
 
+	size = SIZE_4
+
 /obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/item/container/C //Final slot container.

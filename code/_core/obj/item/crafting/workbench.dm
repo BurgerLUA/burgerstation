@@ -24,3 +24,5 @@
 	crafting_type = /recipe/workbench/
 
 	value = 25
+
+	size = SIZE_4

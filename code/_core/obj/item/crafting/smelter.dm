@@ -20,3 +20,5 @@
 	crafting_type = /recipe/smelter/
 
 	value = 25
+
+	size = SIZE_4
