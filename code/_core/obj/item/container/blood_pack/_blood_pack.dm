@@ -53,18 +53,17 @@
 
 /obj/item/container/blood_pack/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_living(object) && is_living(caller))
+	if(is_living(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/mob/living/L = object
-		var/mob/living/C = caller
 		if(attached_to == L)
 			detach(caller)
 			return TRUE
 		if(attached_to) //This statement and the above is weird and I hate it.
 			detach(caller)
-		if(is_safe_to_attach(caller,object))
+		if(!is_living(caller) || is_safe_to_attach(caller,object))
 			try_attach(caller,object)
 		return TRUE
 
