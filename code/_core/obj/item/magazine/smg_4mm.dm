@@ -38,16 +38,16 @@
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ion
 
 /obj/item/magazine/smg_46/incendiary
-	name = "\improper .4.6x30mm WT-550 - incendiary"
+	name = "\improper 4.6x30mm WT-550 magazine - incendiary"
 	icon_state = "INC"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/incendiary
 
 /obj/item/magazine/smg_46/ap
-	name = "\improper .4.6x30mm WT-550 - armor piercing"
+	name = "\improper 4.6x30mm WT-550 magazine - armor piercing"
 	icon_state = "AP"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ap
 
 /obj/item/magazine/smg_46/subsonic
-	name = "\improper .4.6x30mm WT-550 - subsonic"
+	name = "\improper 4.6x30mm WT-550 magazine - subsonic"
 	icon_state = "SUB"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/subsonic
