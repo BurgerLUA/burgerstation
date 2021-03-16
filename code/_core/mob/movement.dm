@@ -56,7 +56,7 @@
 		. *= 2 - (health.health_current/health.health_max)
 
 
-/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0,var/control_move = TRUE)
+/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	var/atom/old_loc = loc
 
@@ -74,11 +74,11 @@
 		if(loc != old_loc)
 			post_move(old_loc)
 
-	if(length(observers))
-		for(var/mob/chosenObserver in observers)
-			chosenObserver.glide_size = glide_size
-			chosenObserver.Move(NewLoc, Dir, step_x, step_y, control_move = FALSE)
-	if(observed && control_move)
+	for(var/k in observers)
+		var/mob/chosenObserver = k
+		chosenObserver.glide_size = glide_size
+		chosenObserver.Move(NewLoc, Dir, step_x, step_y)
+	if(move_dir && observed)
 		observed.observers -= src
 		observed = null
 

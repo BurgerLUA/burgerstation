@@ -116,6 +116,9 @@
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
+	observers.Cut()
+	observed = null
+
 	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
