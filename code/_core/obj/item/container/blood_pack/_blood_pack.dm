@@ -30,19 +30,42 @@
 	update_sprite()
 	return ..()
 
+/obj/item/container/blood_pack/proc/is_safe_to_attach(var/mob/living/caller,var/mob/living/target,var/messages=TRUE,var/desired_inject)
+
+	if(!isnum(desired_inject))
+		desired_inject = injecting
+
+	if(caller == target)
+		return TRUE
+
+	if(caller.loyalty_tag != target.loyalty_tag)
+		return TRUE
+
+	if(desired_inject)
+		if(reagents.contains_lethal)
+			if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
+			return FALSE
+	else
+		if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
+		return FALSE
+
+	return TRUE
+
 /obj/item/container/blood_pack/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_living(object))
+	if(is_living(object) && is_living(caller))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/mob/living/L = object
+		var/mob/living/C = caller
 		if(attached_to == L)
 			detach(caller)
 			return TRUE
 		if(attached_to) //This statement and the above is weird and I hate it.
 			detach(caller)
-		try_attach(caller,object)
+		if(is_safe_to_attach(caller,object))
+			try_attach(caller,object)
 		return TRUE
 
 	return ..()
@@ -72,15 +95,24 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
+	if(!is_living(caller))
+		return ..()
+
+	var/mob/living/L = caller
+
+	if(L.is_busy())
+		return FALSE
+
 	if(caller.attack_flags & CONTROL_MOD_ALT)
 		if(attached_to)
 			detach(caller)
 		else
 			caller.to_chat(span("warning","There is nothing to detach \the [src.name] from!"))
 	else
-		injecting = !injecting
-		caller.to_chat(span("notice","You toggle \the [src.name] to [injecting ? "inject" : "draw"] its contents."))
-		update_sprite()
+		if(!attached_to || is_safe_to_attach(caller,attached_to,desired_inject = !injecting))
+			injecting = !injecting
+			caller.to_chat(span("notice","You toggle \the [src.name] to [injecting ? "inject" : "draw"] its contents."))
+			update_sprite()
 
 	return TRUE
 
