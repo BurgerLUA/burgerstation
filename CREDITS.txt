@@ -1,10 +1,15 @@
 PATREONS
 	Sancronis
 	Kevvy-D
-
-
-
-
+	goldnharl
+	Rabbit Stewart
+	Zandario
+	AshOfTheFlame
+	Telmia Boutbnane
+	Tasald C.
+	G Sharp
+	Moltov
+	Vyzo_LTNTS
 
 ADDITIONAL CREDITS
 	UI Sounds obtained from: http://raisedbeaches.com/octave/
