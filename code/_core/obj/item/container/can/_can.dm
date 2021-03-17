@@ -125,11 +125,11 @@
 			explosive = FALSE
 
 
-/obj/item/container/beaker/can/dr_gibb/save_item_data(var/save_inventory = TRUE)
+/obj/item/container/beaker/can/dr_gibb/explosive/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("explosive")
 
-/obj/item/container/beaker/can/dr_gibb/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/container/beaker/can/dr_gibb/explosive/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("explosive")
 
