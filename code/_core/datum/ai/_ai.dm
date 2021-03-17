@@ -117,6 +117,7 @@
 	var/boss = FALSE
 	var/list/active_ai_list
 	var/list/inactive_ai_list
+	var/last_z = null
 
 /ai/Destroy()
 
@@ -227,9 +228,11 @@
 /ai/proc/post_move(var/mob/living/L,args)
 
 	var/atom/old_loc = args[1]
-	if(L.loc && old_loc)
-		var/turf/old_turf = get_turf(old_loc)
-		var/turf/new_turf = get_turf(L.loc)
+
+	var/turf/old_turf = get_turf(old_loc)
+	var/turf/new_turf = get_turf(L.loc)
+
+	if(old_turf && new_turf)
 		if(old_turf == new_turf)
 			frustration_move++
 			if(length(current_path))
@@ -241,13 +244,15 @@
 		else
 			frustration_move = 0
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
-			if(new_turf.z != old_turf.z)
-				if(active)
-					remove_from_active_list(old_turf.z)
-					add_to_active_list(new_turf.z)
-				else
-					remove_from_inactive_list(old_turf.z)
-					add_to_inactive_list(new_turf.z)
+
+	if(!new_turf || new_turf.z != last_z)
+		if(active)
+			if(last_z) remove_from_active_list(last_z)
+			if(new_turf) add_to_active_list(new_turf.z)
+		else
+			if(last_z) remove_from_inactive_list(last_z)
+			if(new_turf) add_to_inactive_list(new_turf.z)
+		if(new_turf) last_z = new_turf.z
 
 	return TRUE
 
