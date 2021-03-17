@@ -20,8 +20,8 @@
 
 	if(is_inventory(old_location))
 		var/obj/hud/inventory/I = old_location
-		I.owner.remove_color_mod("eyes")
-		I.owner.remove_lighting_mod("\ref[src]")
+		I.owner?.remove_color_mod("eyes")
+		I.owner?.remove_lighting_mod("\ref[src]")
 
 	if(new_location.item_slot & SLOT_EYES)
 		var/list/desired_color = list(
@@ -34,4 +34,3 @@
 		new_location.owner.add_color_mod("eyes",desired_color)
 		new_location.owner.add_lighting_mod("\ref[src]",100)
 
-	
