@@ -119,6 +119,14 @@
 	var/list/inactive_ai_list
 
 /ai/Destroy()
+
+	var/turf/T = get_turf(owner)
+	if(T)
+		remove_from_active_list(T.z)
+		remove_from_inactive_list(T.z)
+	else
+		log_error("Warning: [src.get_debug_name()] couldn't be cleared properly as it had a null turf.")
+
 	if(owner) owner.ai = null
 	owner = null
 	objective_move = null
@@ -141,11 +149,6 @@
 		current_path = null
 
 	SSai.path_stuck_ai -= src
-
-	var/turf/T = get_turf(owner)
-	if(T)
-		remove_from_active_list(T.z)
-		remove_from_inactive_list(T.z)
 
 	return ..()
 
