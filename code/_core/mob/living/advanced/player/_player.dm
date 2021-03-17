@@ -185,12 +185,15 @@ mob/living/advanced/player/on_life_client()
 
 		ai_steps++
 
-		if(ai_steps >= VIEW_RANGE || (old_loc && src.loc && old_loc.z != src.loc.z))
+		if(src.loc && (ai_steps >= VIEW_RANGE || (old_loc && old_loc.z != src.loc.z)))
 			for(var/k in SSai.inactive_ai_by_z["[src.loc.z]"])
 				var/ai/A = k
 				if(!A.owner)
 					log_error("Warning! [A.get_debug_name()] had no owner!")
 					qdel(A)
+					if(SSai.inactive_ai_by_z["[src.loc.z]"])
+						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
+						SSai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
@@ -201,6 +204,9 @@ mob/living/advanced/player/on_life_client()
 				if(!A.owner)
 					log_error("Warning! [A.get_debug_name()] had no owner!")
 					qdel(A)
+					if(SSbossai.inactive_ai_by_z["[src.loc.z]"])
+						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
+						SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
