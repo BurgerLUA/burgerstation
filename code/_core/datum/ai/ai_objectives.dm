@@ -95,6 +95,8 @@
 					frustration_attack += tick_rate
 				else
 					frustration_attack = 0
+		else if(isturf(objective_attack) && objective_attack.Enter(owner))
+			set_objective(null)
 		else if(get_dist(owner,objective_attack) > attack_distance_max)
 			frustration_attack += tick_rate
 		else
