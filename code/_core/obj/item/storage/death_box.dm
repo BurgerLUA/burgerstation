@@ -20,7 +20,7 @@
 	container_max_size = 999
 
 	max_inventory_x = MAX_INVENTORY_X
-	dynamic_inventory_count = MAX_INVENTORY_X*5
+	dynamic_inventory_count = MAX_INVENTORY_X*6
 
 	can_save = FALSE
 
