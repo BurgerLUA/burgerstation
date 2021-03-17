@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(tips)
 
 	var/list/stored_tips = list()
 	var/list/stored_facts = list()
-	var/list/stored_jokes  list()
+	var/list/stored_jokes = list()
 
 /subsystem/tips/Initialize()
 
