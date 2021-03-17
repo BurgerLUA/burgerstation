@@ -170,7 +170,7 @@ var/global/list/ckey_to_death_box_data = list()
 	if(length_of_data > 5)
 		loaded_data.Cut(1,length_of_data - (DEATH_BOX_LIMIT-1))
 	rustg_file_write(json_encode(loaded_data),full_path)
-	owner.to_chat(span("notice","Your deathbox data has been saved."))
+	owner?.to_chat(span("notice","Your deathbox data has been saved."))
 	return TRUE
 
 /savedata/client/death_box/proc/load()

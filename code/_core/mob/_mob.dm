@@ -116,8 +116,15 @@
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
+	for(var/k in observers)
+		var/mob/M = k
+		M.observed = null
 	observers.Cut()
-	observed = null
+
+	if(observed)
+		observed.observers = null
+		observed = null
+
 
 	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)

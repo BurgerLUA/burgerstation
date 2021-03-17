@@ -99,6 +99,10 @@
 		to_chat(span("warning","Cannot orbit as a living mob."))
 		return FALSE
 
+	if(mob.observed)
+		mob.observed.observers -= src
+		mob.observed = null
+
 	mob.force_move(T)
 	choice.observers += mob
 	mob.observed = choice
@@ -124,6 +128,10 @@
 	if(is_living(mob))
 		to_chat(span("warning","Cannot orbit as a living mob."))
 		return FALSE
+
+	if(mob.observed)
+		mob.observed.observers -= src
+		mob.observed = null
 
 	mob.force_move(T)
 	choice.observers += mob
