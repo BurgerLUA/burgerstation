@@ -34,7 +34,7 @@
 /area/space/deep)
 "al" = (
 /turf/bluespace,
-/area/transit/cargo_inbound/bluespace)
+/area/transit/cargo_inbound)
 "am" = (
 /turf/space,
 /area/space)
@@ -4029,8 +4029,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -4286,8 +4286,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -4543,8 +4543,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -4800,8 +4800,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -5057,8 +5057,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -5314,8 +5314,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -5571,8 +5571,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -5828,8 +5828,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -6085,8 +6085,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -6337,13 +6337,13 @@ ak
 "}
 (21,1,1) = {"
 aa
-al
-al
-al
-al
-al
-al
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
