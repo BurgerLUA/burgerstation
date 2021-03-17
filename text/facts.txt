@@ -1,0 +1,11 @@
+Burgerstation was created as a joke during December 2019. Some scholars say it still is.
+Burgerstation was going to be a PvP heavy RPG called "The Realm of Nar'sie" but they thought that was a bad idea.
+The early tests for Burgerstation was a team-based deathmatch with limited weapons.
+BurgerBB has two todo lists; one on Trello and one on a noteboard attached to a wall near his computer.
+BurgerBB made all the menu music for Burgerstation, but can't make combat music to save his life.
+The server running Burgerstation is hosted inside a cardboard pizza box. This isn't a joke.
+The first Burgerstation map was a detailess flat grass area. The first public Burgerstation map was a bunch of houses with sabre swords in them.
+The sabre sword was the first weapon in Burgerstation.
+You can download and play the very first version of Burgerstation here: https://github.com/BurgerLUA/burgerstation/releases/tag/1.1
+Did you know that Byond Games can be played in your browser? I don't recommend it.
+BurgerBB, being the sole Host, Head Admin, and Head developer, is one of the few hosts who has access to Hostchat as well as the Headcoderbus.
