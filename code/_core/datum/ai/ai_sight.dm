@@ -1,15 +1,10 @@
-/ai/proc/get_sight_chance(var/atom/A,var/check_view = TRUE)
+/ai/proc/get_sight_chance(var/atom/A)
 
 	if(owner.z != A.z)
 		return 0
 
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
 		return 0
-
-	if(check_view)
-		var/view_range_to_use = get_view_range()
-		if(!(owner in viewers(view_range_to_use,A)))
-			return 0
 
 	if(A in attackers)
 		return 100
@@ -27,6 +22,9 @@
 
 	if(vision_distance > radius_find_enemy_combat)
 		return 0
+
+	if(night_vision <= 0)
+		return 100
 
 	. = 100
 

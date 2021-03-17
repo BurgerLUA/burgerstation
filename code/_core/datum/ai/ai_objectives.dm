@@ -160,7 +160,7 @@
 
 	. = list()
 
-	if(retaliate && attackers)
+	if(retaliate && length(attackers))
 		for(var/k in attackers)
 			CHECK_TICK(75,FPS_SERVER*2)
 			var/atom/A = k
@@ -168,21 +168,24 @@
 				attackers -= k
 				continue
 			.[A] = TRUE
+		if(prob(80)) //Optimization
+			return .
+
+	if(aggression <= 0)
+		return .
 
 	var/range_to_use = get_view_range()
 	if(range_to_use <= 0)
 		return .
 
-	if(aggression > 0)
-		for(var/mob/living/L in view(range_to_use,owner))
-			CHECK_TICK(75,FPS_SERVER*2)
-			var/sight_chance = get_sight_chance(L,FALSE)
-			if(sight_chance < 100 && !prob(sight_chance))
-				continue
-			CHECK_TICK(75,FPS_SERVER*2)
-			if(!should_attack_mob(L))
-				continue
-			.[L] = TRUE
+	for(var/mob/living/L in view(range_to_use,owner))
+		CHECK_TICK(75,FPS_SERVER*2)
+		var/sight_chance = get_sight_chance(L)
+		if(sight_chance < 100 && !prob(sight_chance))
+			continue
+		if(!should_attack_mob(L))
+			continue
+		.[L] = TRUE
 
 /ai/proc/investigate(var/atom/desired_target)
 
