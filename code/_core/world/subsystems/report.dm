@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(report)
 	average_cpu = FLOOR( (average_cpu + world.cpu) / 2 , 1)
 	average_tick = FLOOR( (average_tick + world.tick_usage) / 2, 1)
 
-	if(world.time >= SECONDS_TO_TICKS(300))
+	if(world.time >= next_report)
 		log_subsystem(src.name,"Average CPU Rate: [average_cpu], Average Tick Rate: [average_tick].")
 		next_report = world.time + SECONDS_TO_DECISECONDS(300)
 
