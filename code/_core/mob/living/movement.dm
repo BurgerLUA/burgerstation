@@ -51,12 +51,6 @@
 
 	. = ..()
 
-	if(ai)
-		ai.on_move(.,NewLoc,Dir)
-
-	if(stand)
-		stand.on_move(.,NewLoc,Dir)
-
 /mob/living/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -119,29 +113,19 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
-
 	if(move_dir) //If you're actuall moving.
-
 		if(!can_move())
 			return FALSE
-
 		if(grabbing_hand)
 			resist()
 			return FALSE
-
 		if(get_status_effect_magnitude(SLEEP) == -1)
 			remove_status_effect(SLEEP)
 			return FALSE
 
-		if(has_status_effect(CONFUSED))
-			move_dir = turn(move_dir,180)
-
 	. = ..()
 
-	if(.)
 
-		if(has_status_effect(CONFUSED))
-			move_dir = turn(move_dir,180)
 
 /mob/living/get_stance_movement_mul()
 

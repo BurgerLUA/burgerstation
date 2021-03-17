@@ -108,6 +108,7 @@ client/verb/air_test(var/pressure as num)
 		M.dir = mob.dir
 		INITIALIZE(M)
 		FINALIZE(M)
+		M.ai.debug = TRUE
 		M.ai.set_active(TRUE)
 
 /client/verb/generate_map_icon()

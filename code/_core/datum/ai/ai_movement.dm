@@ -271,27 +271,6 @@
 
 	return FALSE
 
-
-/ai/proc/on_move(var/success,var/atom/NewLoc,Dir=0)
-
-	if(!success)
-		frustration_move++
-		if(length(current_path))
-			frustration_path++
-		if(frustration_move >= frustration_move_threshold)
-			/*
-			if(objective_move)
-				set_burger_star_path(get_turf(objective_move))
-			else if(objective_attack)
-				set_burger_star_path(get_turf(objective_attack))
-			else
-				sidestep_next = TRUE
-			*/
-			sidestep_next = TRUE
-			frustration_move = 0
-
-	return TRUE
-
 /ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
 	if(obstacle && is_living(obstacle))

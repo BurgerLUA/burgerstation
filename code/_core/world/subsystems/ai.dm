@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(ai)
 	cpu_usage_max = 85
 	tick_usage_max = 85
 
-	var/list/active_ai = list()
-	var/list/inactive_ai = list()
+	var/list/active_ai_by_z = list()
+	var/list/inactive_ai_by_z = list()
 
 	var/list/path_stuck_ai = list()
 
@@ -15,32 +15,34 @@ SUBSYSTEM_DEF(ai)
 
 /subsystem/ai/unclog(var/mob/caller)
 
-	for(var/k in active_ai)
-		var/ai/AI = k
-		if(AI.owner)
-			qdel(AI.owner)
-		else
-			qdel(AI)
+	for(var/z in active_ai_by_z)
+		for(var/k in active_ai_by_z[z])
+			var/ai/AI = k
+			if(AI.owner)
+				qdel(AI.owner)
+			else
+				qdel(AI)
 	broadcast_to_clients(span("danger","Deleted all non-boss mobs and AIs."))
 
 	return ..()
 
 /subsystem/ai/on_life()
 
-	for(var/k in active_ai)
-		var/ai/AI = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
-		if(!AI)
-			log_error("Invalid AI detected. Removing...")
-			active_ai -= k
-			continue
-		if(!AI.owner)
-			log_error("WARING! AI of type [AI.type] didn't have an owner!")
-			qdel(AI)
-			continue
-		var/should_life = AI.should_life()
-		if(should_life == null || (should_life && AI.on_life(tick_rate) == null))
-			log_error("WARING! AI of type [AI.type] in [AI.owner ? AI.owner.get_debug_name() : "NULL OWNER"] likely hit a runtime and was deleted, along with its owner.")
-			qdel(AI.owner)
+	for(var/z in active_ai_by_z)
+		for(var/k in active_ai_by_z[z])
+			var/ai/AI = k
+			CHECK_TICK(tick_usage_max,FPS_SERVER)
+			if(AI.qdeleting)
+				log_error("WARNING: AI of type [AI.type] was dqeleting!")
+				active_ai_by_z[z] -= k
+				continue
+			if(!AI.owner)
+				log_error("WARING! AI of type [AI.type] didn't have an owner!")
+				qdel(AI)
+				continue
+			var/should_life = AI.should_life()
+			if(should_life == null || (should_life && AI.on_life(tick_rate) == null))
+				log_error("WARING! AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
+				qdel(AI.owner)
 
 	return TRUE

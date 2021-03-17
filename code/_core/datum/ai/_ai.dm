@@ -114,6 +114,10 @@
 
 	var/ignore_hazard_turfs = FALSE
 
+	var/boss = FALSE
+	var/list/active_ai_list
+	var/list/inactive_ai_list
+
 /ai/Destroy()
 	if(owner) owner.ai = null
 	owner = null
@@ -136,15 +140,32 @@
 		current_path.Cut()
 		current_path = null
 
-	SSai.active_ai -= src
-	SSai.inactive_ai -= src
-
 	SSai.path_stuck_ai -= src
 
-	SSbossai.active_ai -= src
-	SSbossai.inactive_ai -= src
+	var/turf/T = get_turf(owner)
+	if(T)
+		remove_from_active_list(T.z)
+		remove_from_inactive_list(T.z)
 
 	return ..()
+
+/ai/proc/add_to_active_list(var/z)
+	if(!active_ai_list["[z]"])
+		active_ai_list["[z]"] = list()
+	active_ai_list["[z]"] |= src
+
+/ai/proc/remove_from_active_list(var/z)
+	if(active_ai_list["[z]"])
+		active_ai_list["[z]"] -= src
+
+/ai/proc/add_to_inactive_list(var/z)
+	if(!inactive_ai_list["[z]"])
+		inactive_ai_list["[z]"] = list()
+	inactive_ai_list["[z]"] |= src
+
+/ai/proc/remove_from_inactive_list(var/z)
+	if(inactive_ai_list["[z]"])
+		inactive_ai_list["[z]"] -= src
 
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
 
@@ -153,18 +174,24 @@
 
 	active = desired_active
 
-	if(active)
-		SSai.active_ai |= src
-		SSai.inactive_ai -= src
-	else
-		SSai.active_ai -= src
-		SSai.inactive_ai |= src
+	var/turf/T = get_turf(owner)
 
+	if(active)
+		add_to_active_list(T.z)
+		remove_from_inactive_list(T.z)
+		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
+		HOOK_ADD("post_death","\ref[src]_post_death",owner,src,.proc/post_death)
+	else
+		add_to_inactive_list(T.z)
+		remove_from_active_list(T.z)
+		set_alert_level(ALERT_LEVEL_NONE,TRUE)
 		set_objective(null)
 		set_move_objective(null)
 		CALLBACK_REMOVE("set_new_objective_\ref[src]")
 		attackers.Cut()
 		obstacles.Cut()
+		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
+		HOOK_REMOVE("post_death","\ref[src]_post_death",owner)
 
 	return TRUE
 
@@ -176,6 +203,13 @@
 
 	start_turf = get_turf(owner)
 
+	if(boss)
+		active_ai_list = SSbossai.active_ai_by_z
+		inactive_ai_list = SSbossai.inactive_ai_by_z
+	else
+		active_ai_list = SSai.active_ai_by_z
+		inactive_ai_list = SSai.inactive_ai_by_z
+
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
@@ -185,3 +219,36 @@
 /ai/PostInitialize()
 	. = ..()
 	set_active(active,TRUE)
+
+
+/ai/proc/post_move(var/mob/living/L,args)
+
+	var/atom/old_loc = args[1]
+	if(L.loc && old_loc)
+		var/turf/old_turf = get_turf(old_loc)
+		var/turf/new_turf = get_turf(L.loc)
+		if(old_turf == new_turf)
+			frustration_move++
+			if(length(current_path))
+				frustration_path++
+			if(frustration_move >= frustration_move_threshold)
+				sidestep_next = TRUE
+				frustration_move = 0
+			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
+		else
+			frustration_move = 0
+			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
+			if(new_turf.z != old_turf.z)
+				if(active)
+					remove_from_active_list(old_turf.z)
+					add_to_active_list(new_turf.z)
+				else
+					remove_from_inactive_list(old_turf.z)
+					add_to_inactive_list(new_turf.z)
+
+	return TRUE
+
+/ai/proc/post_death(var/mob/living/L,args)
+	set_active(FALSE)
+	return TRUE
+

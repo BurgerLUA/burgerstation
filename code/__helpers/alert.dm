@@ -25,7 +25,9 @@
 		CRASH_SAFE("create_alert() had a non-turf as an epicenter!")
 		return FALSE
 
-	create_alert_process(SSbossai.active_ai,range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSai.active_ai,range,epicenter,alert_source,alert_level,visual)
+	var/z = "[epicenter.z]"
+
+	create_alert_process(SSbossai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
+	create_alert_process(SSai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
 
 	return TRUE

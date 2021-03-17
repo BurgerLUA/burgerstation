@@ -143,7 +143,7 @@
 		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
-			if(!objective_attack && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+			if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*2)))
 				if(reaction_time)
 					CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
 				else

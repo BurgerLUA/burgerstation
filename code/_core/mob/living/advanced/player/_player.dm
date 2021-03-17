@@ -186,7 +186,7 @@ mob/living/advanced/player/on_life_client()
 		ai_steps++
 
 		if(ai_steps >= VIEW_RANGE || (old_loc && src.loc && old_loc.z != src.loc.z))
-			for(var/k in SSai.inactive_ai)
+			for(var/k in SSai.inactive_ai_by_z["[src.loc.z]"])
 				var/ai/A = k
 				if(!A.owner)
 					log_error("Warning! [A.get_debug_name()] had no owner!")
@@ -196,7 +196,7 @@ mob/living/advanced/player/on_life_client()
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
 				A.set_active(TRUE)
-			for(var/k in SSbossai.inactive_ai)
+			for(var/k in SSbossai.inactive_ai_by_z["[src.loc.z]"])
 				var/ai/A = k
 				if(!A.owner)
 					log_error("Warning! [A.get_debug_name()] had no owner!")
