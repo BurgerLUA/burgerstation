@@ -61,13 +61,13 @@
 		src.to_chat(span("notice","You decide not to jump to anyone."))
 		return FALSE
 
-	var/client/C = valid_choices[choice]
+	var/mob/M = valid_choices[choice]
 
-	if(!C)
-		src.to_chat(span("warning","Invalid client."))
+	if(!M)
+		src.to_chat(span("warning","Invalid mob."))
 		return FALSE
 
-	var/turf/T = get_turf(C.mob)
+	var/turf/T = get_turf(M)
 
 	if(!T)
 		src.to_chat(span("warning","Invalid turf."))
@@ -75,9 +75,9 @@
 
 	mob.force_move(T)
 
-	to_chat(span("notice","You jumped to [C]'s location."))
+	to_chat(span("notice","You jumped to [M.client]'s location."))
 	if(is_living(mob))
-		log_admin("[src.get_debug_name()] jumped to [C.mob.get_debug_name()]'s location.")
+		log_admin("[src.get_debug_name()] jumped to [M.get_debug_name()]'s location.")
 
 /client/verb/orbit_player()
 	set name = "Orbit Player"
