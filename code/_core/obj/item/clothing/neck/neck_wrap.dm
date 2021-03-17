@@ -1,4 +1,4 @@
-/obj/item/clothing/neck/miner_talisman
+/obj/item/clothing/neck/neck_wrap
 	name = "\improper neck wrap"
 	icon = 'icons/obj/item/clothing/neck/neck_wrap.dmi'
 	desc = "Seems as if it was stained red."
