@@ -1873,6 +1873,7 @@
 #include "code\_core\world\subsystems\radio.dm"
 #include "code\_core\world\subsystems\reagent.dm"
 #include "code\_core\world\subsystems\recipe.dm"
+#include "code\_core\world\subsystems\report.dm"
 #include "code\_core\world\subsystems\research.dm"
 #include "code\_core\world\subsystems\reward.dm"
 #include "code\_core\world\subsystems\shuttle.dm"

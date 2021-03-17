@@ -206,9 +206,6 @@
 
 /mob/living/proc/on_life() //TODO: Find out why this has so much self cpu
 
-	if(!initialized || qdeleting)
-		return FALSE
-
 	handle_status_effects()
 
 	handle_blocking()
@@ -267,9 +264,6 @@
 
 mob/living/proc/on_life_slow()
 
-	if(!initialized)
-		return FALSE
-
 	if(minion_remove_time && minion_remove_time <= world.time)
 		dust()
 		return TRUE
@@ -282,9 +276,6 @@ mob/living/proc/on_life_slow()
 	handle_fire()
 
 	if(dead)
-		return FALSE
-
-	if(ai && !ai.active)
 		return FALSE
 
 	if(blood_volume < blood_volume_max)

@@ -1,39 +1,27 @@
 SUBSYSTEM_DEF(report)
-	name = "Report Subsystem"
-	desc = "Constrols statistics to display"
-	tick_rate = SECONDS_TO_TICKS(5)
+	name = "Tick Report Subsystem"
+	desc = "Makes a report of performance."
+	tick_rate = 1
 	priority = SS_ORDER_REPORT
-
 
 	var/list/stored_tick_reports = list()
 
-	var/passes = 60
+	var/average_cpu = 0
+	var/average_tick = 0
+
+	var/next_report = 0
+
+/subsystem/report/Initialize()
+	next_report = world.time + SECONDS_TO_DECISECONDS(300)
+	. = ..()
 
 /subsystem/report/on_life()
 
-	stored_tick_reports += world.tick_usage
+	average_cpu = FLOOR( (average_cpu + world.cpu) / 2 , 1)
+	average_tick = FLOOR( (average_tick + world.tick_usage) / 2, 1)
 
-	if(passes > 60)
+	if(world.time >= SECONDS_TO_TICKS(300))
+		log_subsystem(src.name,"Average CPU Rate: [average_cpu], Average Tick Rate: [average_tick].")
+		next_report = world.time + SECONDS_TO_DECISECONDS(300)
 
-		var/average = 0
-		var/lowest = 100
-		var/highest = 0
-
-		for(var/num in stored_tick_reports)
-			if(num > highest)
-				highest = round(num)
-
-			if(num < lowest)
-				lowest = round(num)
-
-			average += round(num)
-
-		average = round(average / length(stored_tick_reports))
-		stored_tick_reports = list()
-		passes = 0
-
-		var/text_to_broadcast = "<title>Tick Report</title> Lowest: [lowest]%, Highest: [highest]%, Average: [average]%.<br><i>Values over 100% means the server is experiencing CPU lag and you should yell and scream at Burger. Values less than 100% mean the server is functioning normally.</i>"
-		broadcast_to_clients(text_to_broadcast)
-
-	passes++
 	return TRUE

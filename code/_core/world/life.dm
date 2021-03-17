@@ -30,12 +30,7 @@ var/global/time_dialation = 0
 		log_subsystem(SS.name,"Initialization took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds.")
 
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
-
 	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds.")
-
-	//log_debug("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
-
-	//SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
 
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k

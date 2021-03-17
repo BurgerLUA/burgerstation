@@ -35,6 +35,10 @@ SUBSYSTEM_DEF(living)
 	return ..()
 
 /subsystem/living/proc/process_living(var/mob/living/L,var/do_slow=FALSE)
+	if(!L.initialized || L.qdeleting)
+		return TRUE
+	if(L.ai && !L.ai.active)
+		return TRUE
 	L.on_life()
 	if(do_slow)
 		L.on_life_slow()
