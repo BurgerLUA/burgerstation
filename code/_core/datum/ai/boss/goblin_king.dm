@@ -14,7 +14,7 @@
 
 /ai/boss/goblin_king/on_damage_received(atom/atom_damaged, atom/attacker, atom/weapon, list/damage_table, damage_amount, critical_hit_multiplier, stealthy)
 	. = ..()
-	if(!dead && objective_attack)
+	if(owner && !owner.dead && objective_attack)
 		var/choose_attack = rand(1,3)
 		var/is_angry = owner_as_goblin_king.health.health_current <= owner_as_goblin_king.health.health_max/2
 		var/cooldown = is_angry ? 15 : 30

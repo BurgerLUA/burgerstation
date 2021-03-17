@@ -123,6 +123,7 @@
 	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		var/atom/closest_obstacle
 		var/best_distance = INFINITY
+		var/view_range = get_view_range()
 		for(var/k in obstacles)
 			var/atom/A = k
 			if(A.qdeleting)
@@ -136,7 +137,8 @@
 				if(A.Cross(owner))
 					obstacles -= k
 					continue
-			if(!closest_obstacle || get_dist(owner,A) < best_distance)
+			var/distance_check = get_dist(owner,A)
+			if(distance_check <= view_range && (!closest_obstacle || distance_check < best_distance))
 				closest_obstacle = A
 		if(closest_obstacle)
 			if(reaction_time)
