@@ -45,6 +45,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
 	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.075
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_static_spread()

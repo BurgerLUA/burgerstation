@@ -189,7 +189,7 @@
 	)
 	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
 
-/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
+/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(is_living(source))
 		var/mob/living/L = source
 		return (1 - L.get_skill_power(SKILL_PRECISION))*inaccuracy_modifier*8

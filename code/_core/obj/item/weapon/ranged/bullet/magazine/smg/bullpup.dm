@@ -69,6 +69,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0
+
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard/Generate()
 
 	. = ..()

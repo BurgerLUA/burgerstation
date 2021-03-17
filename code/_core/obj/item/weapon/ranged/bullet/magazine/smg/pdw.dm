@@ -65,6 +65,9 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0
+
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread()
 	return 0.005
 

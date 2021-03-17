@@ -49,6 +49,7 @@
 	dan_mode = TRUE
 
 	inaccuracy_modifier = 1.25
+	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.3
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()

@@ -69,7 +69,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 1.5
+	inaccuracy_modifier = 1
+	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.04
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20/get_base_spread()

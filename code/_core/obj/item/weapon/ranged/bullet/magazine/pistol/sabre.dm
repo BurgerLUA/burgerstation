@@ -11,7 +11,8 @@
 	automatic = FALSE
 
 	movement_spread_base = 0.005
-	inaccuracy_modifier = 0.5
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.75
 
 	shoot_sounds = list('sound/weapons/12/shoot.ogg')
 

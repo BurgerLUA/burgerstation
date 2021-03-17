@@ -9,6 +9,7 @@
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.5
 
 	view_punch = 20
 

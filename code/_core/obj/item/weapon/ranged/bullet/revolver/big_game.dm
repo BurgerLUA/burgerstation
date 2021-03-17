@@ -18,9 +18,6 @@
 	size = SIZE_3
 	weight = 10
 
-
-
-
 	bullet_length_min = 40
 	bullet_length_best = 46
 	bullet_length_max = 52
@@ -69,6 +66,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.2
 
 /obj/item/weapon/ranged/bullet/revolver/big_game/get_static_spread()

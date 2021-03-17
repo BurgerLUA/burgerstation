@@ -25,11 +25,15 @@
 	heat_max = 0.03
 
 	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 0.9
 	movement_spread_base = 0.05
 
 	var/draw_sound = 'sound/weapons/bow/draw_steel.ogg'
 
 	var/spam_prevention = 0
+
+	size = SIZE_3
+	weight = 10
 
 /obj/item/weapon/ranged/bow/post_move(var/atom/old_loc)
 	. = ..()

@@ -18,7 +18,7 @@
 	use_loyalty_tag = TRUE
 	firing_pin = null
 
-	inaccuracy_modifier = 0.5
+	inaccuracy_modifier = 0
 
 /obj/item/weapon/ranged/reagent_sprayer/get_ammo_count()
 	return CEILING(reagents.volume_current / (reagent_per_shot*bullet_count),1)

@@ -36,6 +36,7 @@
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
 
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 
@@ -513,8 +514,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 
 	. = inaccuracy_modifier //Base var
-	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION)*0.75) //Based on skill
-	//. *= (1 + get_dist(L,target)) //Based on distance
+
+	if(L.move_delay >= 0)
+		. += movement_inaccuracy_modifier
+
+	if(. <= 0)
+		return .
 
 	if(L.client)
 		var/total_zoom_mul = zoom_mul
@@ -525,9 +530,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		else
 			. *= total_zoom_mul/1
 
-	if(L.move_delay >= 0)
-		. *= 1.5 //If you're moving, harder to be precise.
-		. += 0.5 //If you're moving, harder to be precise.
+	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION)*0.75) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 

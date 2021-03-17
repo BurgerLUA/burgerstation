@@ -23,11 +23,8 @@
 
 	view_punch = 12
 
-
-
 	size = SIZE_4
 	weight = 12
-
 
 	value = 130
 
@@ -68,7 +65,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-	inaccuracy_modifier = 1.25
+	inaccuracy_modifier = 0.5
+	movement_inaccuracy_modifier = 0.25
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread()
 	return 0.002

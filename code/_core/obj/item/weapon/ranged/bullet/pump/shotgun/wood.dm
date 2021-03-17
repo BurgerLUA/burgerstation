@@ -61,6 +61,9 @@
 
 	inaccuracy_modifier = 1.25
 
+	inaccuracy_modifier = 0.5
+	movement_inaccuracy_modifier = 0.25
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread()
 	return 0.005
 

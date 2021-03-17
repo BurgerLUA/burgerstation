@@ -67,7 +67,8 @@
 
 	dan_mode = TRUE
 
-	inaccuracy_modifier = 0.25
+	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.03
 
 

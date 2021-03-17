@@ -69,7 +69,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 0.5
+	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_static_spread()

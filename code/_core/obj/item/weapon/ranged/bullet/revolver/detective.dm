@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/revolver/38.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = FALSE
 
@@ -15,11 +15,8 @@
 
 	view_punch = 4
 
-
-
 	size = SIZE_1
 	weight = 5
-
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -32,7 +29,7 @@
 	heat_per_shot = 0.03
 	heat_max = 0.1
 
-	value = 50
+	value = 75
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -66,7 +63,8 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	inaccuracy_modifier = 0.5
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread()

@@ -38,7 +38,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-	inaccuracy_modifier = 2
+	inaccuracy_modifier = 1
+	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()

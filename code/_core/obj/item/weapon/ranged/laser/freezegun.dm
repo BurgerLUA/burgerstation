@@ -65,6 +65,7 @@
 	attachment_undermount_offset_y = 12 - 14
 
 	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
 
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread()

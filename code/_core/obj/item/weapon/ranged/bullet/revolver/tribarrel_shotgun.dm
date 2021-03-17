@@ -62,7 +62,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-	inaccuracy_modifier = 1.25
+	inaccuracy_modifier = 0.5
+	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.06
 
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_base_spread()

@@ -62,7 +62,8 @@
 
 	dan_mode = TRUE
 
-	inaccuracy_modifier = 1.5
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0.5
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 

@@ -66,7 +66,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 0.75
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread()
@@ -136,7 +137,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 0.75
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread()
@@ -209,7 +211,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 0.75
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_static_spread()
@@ -282,7 +285,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 1.25
+	inaccuracy_modifier = 1
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
@@ -355,7 +359,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 1
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
@@ -424,7 +429,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 1
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.005
 
 
@@ -495,7 +501,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 0.75
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread()
@@ -570,7 +577,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 0.25
+	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread()

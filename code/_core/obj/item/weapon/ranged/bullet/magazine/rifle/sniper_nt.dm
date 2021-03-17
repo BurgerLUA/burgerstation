@@ -64,6 +64,7 @@
 	attachment_undermount_offset_y = 18 - 16
 
 	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 1.25
 	movement_spread_base = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_static_spread()

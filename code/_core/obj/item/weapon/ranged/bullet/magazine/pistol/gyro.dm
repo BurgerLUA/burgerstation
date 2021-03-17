@@ -10,6 +10,7 @@
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 1
+	movement_inaccuracy_modifier = 0.75
 
 	automatic = TRUE
 

@@ -64,6 +64,9 @@
 	attachment_undermount_offset_x = 0
 	attachment_undermount_offset_y = 0
 
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0
+
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
