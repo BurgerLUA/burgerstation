@@ -1665,6 +1665,7 @@
 #include "code\_core\obj\structure\interactive\supermatter.dm"
 #include "code\_core\obj\structure\interactive\supplies.dm"
 #include "code\_core\obj\structure\interactive\telecomms.dm"
+#include "code\_core\obj\structure\interactive\teleporter.dm"
 #include "code\_core\obj\structure\interactive\the_curse.dm"
 #include "code\_core\obj\structure\interactive\wall_ore_deposit.dm"
 #include "code\_core\obj\structure\interactive\wizard_hole.dm"

@@ -1,3 +1,5 @@
+var/global/list/gps_list = list()
+
 /obj/item/analyzer/gps
 	name = "gps"
 	desc = "Where are you?"
@@ -6,6 +8,15 @@
 	icon = 'icons/obj/item/analyzers/gps.dmi'
 	icon_state = "inventory"
 	value = 700
+
+/obj/item/analyzer/gps/Finalize()
+	. = ..()
+	name = "gps ([rand(111111,999999)])"
+	gps_list += src
+
+/obj/item/analyzer/gps/Destroy()
+	. = ..()
+	gps_list -= src
 
 /obj/item/analyzer/gps/can_be_scanned(var/mob/caller,var/atom/target)
 	return TRUE
