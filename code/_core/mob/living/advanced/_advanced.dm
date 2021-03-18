@@ -106,6 +106,8 @@
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 
+	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

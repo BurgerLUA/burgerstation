@@ -23,6 +23,8 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
+	var/delete_on_no_owner = TRUE
+
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 
 	if(alpha == 0)
@@ -57,13 +59,14 @@
 	if(owner && !desired_owner)
 		owner.remove_button(src)
 
-	if(!desired_owner)
+	if(!desired_owner && delete_on_no_owner)
 		qdel(src)
 		return FALSE
 
 	owner = desired_owner
-	owner.add_button(src)
-	update_sprite()
+	if(owner)
+		owner.add_button(src)
+		update_sprite()
 	return TRUE
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

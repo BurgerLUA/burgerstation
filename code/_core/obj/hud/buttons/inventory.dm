@@ -12,6 +12,8 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
+	var/inventory_category = "none"
+
 
 /obj/hud/button/close_inventory/proc/close(var/mob/caller)
 
@@ -19,15 +21,11 @@
 
 		var/mob/living/advanced/A = caller
 
-		for(var/k in A.inventory)
-			var/obj/hud/inventory/I = k
-			if(!(I.flags & FLAGS_HUD_CONTAINER))
+		for(var/k in A.using_inventories)
+			var/obj/item/I = k
+			if(I.inventory_category != inventory_category)
 				continue
-			animate(I,alpha=0,time=4)
-			I.mouse_opacity = 0
-
-		animate(src,alpha=0,time=4)
-		src.mouse_opacity = 0
+			I.close_inventory(A)
 
 	return TRUE
 
@@ -38,7 +36,7 @@
 	if(.)
 		close(caller)
 
-	
+
 /*
 /obj/hud/button/drop
 	name = "drop item"
@@ -92,7 +90,7 @@
 		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 		update_sprite()
 
-	
+
 /obj/hud/button/hide_show_inventory/update_icon()
 
 	if(!is_advanced(owner))
