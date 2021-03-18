@@ -37,9 +37,12 @@
 		return FALSE
 	if(get_dist(srcTURF, callerTURF) > 1)
 		return FALSE
+	var/item_counter = 0
 	switch(choice1)
 		if("Send")
 			for(var/atom/movable/A in srcTURF.contents)
+				if(item_counter >= 25)
+					break
 				if(A.anchored)
 					continue
 				if(is_living(A))
@@ -49,8 +52,11 @@
 					if(aLiving.immortal)
 						continue
 				A.force_move(gpsTURF)
+				item_counter++
 		if("Receive")
 			for(var/atom/movable/A in gpsTURF.contents)
+				if(item_counter >= 25)
+					break
 				if(A.anchored)
 					continue
 				if(is_living(A))
@@ -60,5 +66,6 @@
 					if(aLiving.immortal)
 						continue
 				A.force_move(srcTURF)
+				item_counter++
 	teleport_cooldown = world.time + SECONDS_TO_DECISECONDS(second_cooldown)
 	flick(icon, "pad-beam")
