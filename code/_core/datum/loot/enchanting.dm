@@ -65,6 +65,8 @@
 		/obj/item/weapon/ranged/magic/tome/summon/totem/shock_spray,
 		/obj/item/weapon/ranged/magic/tome/summon/totem/ice_crystal,
 		/obj/item/weapon/ranged/magic/tome/summon/totem/fireball,
-		/obj/item/weapon/ranged/magic/tome/summon/totem/lightning_bolt
+		/obj/item/weapon/ranged/magic/tome/summon/totem/lightning_bolt,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/blood_heal,
+		/obj/item/weapon/ranged/magic/tome/summon/totem/blood_deal
 	)
 	loot_count = 1
