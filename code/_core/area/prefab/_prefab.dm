@@ -1,7 +1,7 @@
 /area/prefab
 	name = "prefab area"
 	area_identifier = "Mission"
-
+	trackable = TRUE
 
 /area/prefab/clockwork_cult
 	name = "Clockwork Hideout"

@@ -1,5 +1,6 @@
 /area/lz_420
 	name = "LZ 420"
+	trackable = TRUE
 	area_identifier = "Mission"
 
 /area/lz_420/exterior/
