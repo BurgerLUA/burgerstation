@@ -85,3 +85,9 @@
 	desc = "A 20 burgerbux reward for completing the October 2020 Player Survey"
 	flags_reward = FLAG_REWARD_ONCE
 	burgerbux_to_give = 20
+
+/reward/burgerbux/survey_mar_2021
+	name = "March 2021 Survey Reward"
+	desc = "A 20 burgerbux reward for completing the March 2021 Player Survey"
+	flags_reward = FLAG_REWARD_ONCE
+	burgerbux_to_give = 20
