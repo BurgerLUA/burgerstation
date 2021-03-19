@@ -26,7 +26,15 @@
 	if(choice1 == "Cancel")
 		caller.to_chat(span("notice","You decided against using the teleporter."))
 		return FALSE
-	var/choice2 = input("Select the GPS for coordinates.", "GPS Selection") in gps_list|null
+	var/choice2 = input("Select the GPS for coordinates.", "GPS Selection") as num|null
+	for(var/k2 in gps_list)
+		var/obj/item/analyzer/gps/kGPS
+		if(choice2 != kGPS.assigned_number)
+			continue
+		choice2 = kGPS
+	if(!istype(choice2, /obj/item/analyzer/gps))
+		caller.to_chat(span("warning","The number you have entered is not assigned to a GPS!"))
+		return FALSE
 	var/turf/gpsTURF = get_turf(choice2)
 	var/turf/srcTURF = get_turf(src)
 	var/turf/callerTURF = get_turf(caller)

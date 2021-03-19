@@ -8,10 +8,12 @@ var/global/list/gps_list = list()
 	icon = 'icons/obj/item/analyzers/gps.dmi'
 	icon_state = "inventory"
 	value = 700
+	var/assigned_number
 
 /obj/item/analyzer/gps/Finalize()
 	. = ..()
-	name = "gps ([rand(111111,999999)])"
+	assigned_number = rand(111111,999999)
+	name = "gps ([assigned_number])"
 	gps_list += src
 
 /obj/item/analyzer/gps/Destroy()
