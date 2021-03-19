@@ -7041,6 +7041,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
+"zF" = (
+/obj/structure/shuttle_engine,
+/obj/shuttle_controller/cargo_inbound{
+	icon_state = "shuttle";
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/transit/cargo_inbound/ship)
 "zK" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
@@ -41661,7 +41669,7 @@ dH
 tn
 bv
 xn
-xn
+zF
 xn
 bv
 bY
