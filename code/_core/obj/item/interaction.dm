@@ -37,8 +37,9 @@
 			animate(I.assoc_button,alpha=0,time=4)
 			I.assoc_button.mouse_opacity = 0
 
-	inventory_user.using_inventories -= src
-	inventory_user = null
+	if(inventory_user)
+		inventory_user.using_inventories -= src
+		inventory_user = null
 
 	return TRUE
 

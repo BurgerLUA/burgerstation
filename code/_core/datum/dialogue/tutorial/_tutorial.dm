@@ -173,6 +173,11 @@
 				set_topic(P,"*rewardfail")
 		if("*Experience Redemption")
 			var/savedata/client/globals/G = GLOBALDATA(P.ckey)
+			if(!G)
+				P.to_chat(span("danger","Your global data appears to be bugged! Report this to burger on discord!"))
+				return FALSE
+
+
 			var/list/data_to_use = G.loaded_data["stored_experience"]
 
 			if(length(data_to_use))
@@ -205,4 +210,3 @@
 			else
 				P.to_chat(span("notice","You can redeem any experience gained as an antagonist here to any character. Come back when you've played an antagonist role!"))
 
-	

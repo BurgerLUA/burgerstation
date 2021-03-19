@@ -11,7 +11,8 @@
 /reward/proc/can_reward(var/client/C)
 
 	if(flags_reward & FLAG_REWARD_ONCE)
-		if(C.globals.loaded_data["redeemed_rewards"] && (src.type in C.globals.loaded_data["redeemed_rewards"]))
+		var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
+		if(!GD || GD.loaded_data["redeemed_rewards"] && (src.type in GD.loaded_data["redeemed_rewards"]))
 			C.to_chat(span("warning","You already redeemed this reward!"))
 			return FALSE
 
@@ -25,9 +26,10 @@
 /reward/proc/on_reward(var/client/C)
 
 	if(flags_reward & FLAG_REWARD_ONCE)
-		if(!C.globals.loaded_data["redeemed_rewards"])
-			C.globals.loaded_data["redeemed_rewards"] = list()
-		C.globals.loaded_data["redeemed_rewards"] |= src.type
+		var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
+		if(!GD || !GD.loaded_data["redeemed_rewards"])
+			GD.loaded_data["redeemed_rewards"] = list()
+		GD.loaded_data["redeemed_rewards"] |= src.type
 
 	if(flags_reward & FLAG_REWARD_ONCE_PER_ROUND)
 		if(!SSreward.redeemed_rewards_by_ckey[C.ckey])

@@ -18,7 +18,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/add_loadout_to_mob,
 	/client/verb/test_pathfinding,
 	/client/verb/force_save_deathbox,
-	/client/verb/force_load_deathbox
+	/client/verb/force_load_deathbox,
+	/client/verb/force_save_banks
 )
 
 /client/verb/show_debug_verbs()
@@ -422,3 +423,8 @@ client/verb/air_test(var/pressure as num)
 
 	var/mob/living/advanced/player/P = mob
 	load_deathbox(P,null)
+
+/client/verb/force_save_banks()
+	set name = "Force Save Banks"
+	set category = "Debug"
+	save_banks()

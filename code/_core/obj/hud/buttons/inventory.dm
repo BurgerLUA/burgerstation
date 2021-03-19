@@ -18,9 +18,7 @@
 /obj/hud/button/close_inventory/proc/close(var/mob/caller)
 
 	if(is_advanced(caller))
-
 		var/mob/living/advanced/A = caller
-
 		for(var/k in A.using_inventories)
 			var/obj/item/I = k
 			if(I.inventory_category != inventory_category)

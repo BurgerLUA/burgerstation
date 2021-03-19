@@ -26,13 +26,15 @@
 	if(!currency_to_add)
 		return FALSE
 	if(!client)
-		return 0
-	var/savedata/client/globals/globals = GLOBALDATA(client.ckey)
-	var/old_currency = globals.loaded_data["burgerbux"]
-	globals.loaded_data["burgerbux"] = max(globals.loaded_data["burgerbux"] + currency_to_add,0)
-	var/difference = globals.loaded_data["burgerbux"] - old_currency
+		return FALSE
+	var/savedata/client/globals/GD = GLOBALDATA(client.ckey)
+	if(!GD)
+		return FALSE
+	var/old_currency = GD.loaded_data["burgerbux"]
+	GD.loaded_data["burgerbux"] = max(GD.loaded_data["burgerbux"] + currency_to_add,0)
+	var/difference = GD.loaded_data["burgerbux"] - old_currency
 	for(var/obj/hud/button/microstransactions/B in src.buttons)
-		B.update_stats(globals.loaded_data["burgerbux"])
+		B.update_stats(GD.loaded_data["burgerbux"])
 
 	return difference
 

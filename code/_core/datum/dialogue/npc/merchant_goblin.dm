@@ -5,10 +5,11 @@
 	. = list()
 
 	.["hello"] = list(
-		"Welcome to Bawse loot. We don't actually sell boss loot, but we do sell #1! We also provide #2, where you can #3, for a small price.",
+		"Welcome to Bawse loot. We don't actually sell boss loot, but we do sell #1! We also provide #2, where you can #3, for a small price. We also provide banking services where you can #4.",
 		"*supply crates",
 		"*deathbox services",
-		"*reclaim deathbox"
+		"*reclaim deathbox",
+		"*access bank"
 	)
 
 	.["*supply crates"] = list(
@@ -24,6 +25,8 @@
 
 	.["*reclaim deathbox"] = list("...")
 
+	.["*access bank"] = list("...")
+
 
 /dialogue/npc/goblin_merchant/set_topic(var/mob/living/advanced/player/P,var/topic)
 
@@ -31,5 +34,10 @@
 
 	if(topic == "*reclaim deathbox")
 		load_deathbox(P,P.dialogue_target)
+		P.dialogue_target_id = null
+		close_menu(P,/menu/dialogue/)
+
+	if(topic == "*access bank")
+		P.access_bank()
 		P.dialogue_target_id = null
 		close_menu(P,/menu/dialogue/)
