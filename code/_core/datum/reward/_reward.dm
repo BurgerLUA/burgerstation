@@ -17,7 +17,7 @@
 			return FALSE
 
 	if(flags_reward & FLAG_REWARD_ONCE_PER_ROUND)
-		if(SSreward.redeemed_rewards_by_ckey[C.ckey] && SSreward.redeemed_rewards_by_ckey[C.ckey][type])
+		if(SSreward.redeemed_rewards_by_ckey[C.ckey] && SSreward.redeemed_rewards_by_ckey[C.ckey]["[src.type]"])
 			C.to_chat(span("warning","You already redeemed this reward this round!"))
 			return FALSE
 
