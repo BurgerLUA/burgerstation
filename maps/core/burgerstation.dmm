@@ -991,9 +991,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "dL" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/pinpointer/boss,
+/obj/structure/smooth/table,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
 "dM" = (
@@ -3600,8 +3600,8 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/science)
 "nj" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
+/obj/structure/interactive/disposals/pipe{
+	dir = 9
 	},
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
@@ -6892,10 +6892,9 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "zh" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
+/obj/structure/interactive/disposals/pipe/junction{
+	dir = 1
 	},
-/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "zi" = (
@@ -6952,15 +6951,17 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "zq" = (
-/obj/structure/interactive/disposals/pipe/junction{
-	dir = 1
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
 	},
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "zr" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 9
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
 	},
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "zs" = (
@@ -41972,8 +41973,8 @@ zd
 zf
 mo
 iG
-gp
 mo
+gp
 ni
 mo
 mo
