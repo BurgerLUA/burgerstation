@@ -216,7 +216,7 @@
 
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
-		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
+		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
 
 	return ..()
 

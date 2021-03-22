@@ -35,7 +35,7 @@
 			var/current_level = A.get_current_level()
 			var/current_xp = A.get_xp()
 			var/last_xp = A.level_to_xp(current_level)
-			var/next_xp = A.level_to_xp(min(current_level+1,L.max_level))
+			var/next_xp = A.level_to_xp(min(current_level+1,A.get_max_level()))
 			var/information_link = "<a href='?examine=\ref[A]'>?</a>"
 			if(next_xp - last_xp > 0)
 				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
@@ -48,15 +48,21 @@
 			var/current_level = A.get_current_level()
 			var/current_xp = A.get_xp()
 			var/last_xp = A.level_to_xp(current_level)
-			var/next_xp = A.level_to_xp(min(current_level+1,L.max_level))
+			var/next_xp = A.level_to_xp(min(current_level+1,A.get_max_level()))
 			var/information_link = "<a href='?examine=\ref[A]'>?</a>"
+			var/prestige_text = ""
+			if(is_player(L))
+				var/mob/living/advanced/player/P = L
+				if(P.prestige_count[k])
+					prestige_text = " Prestige [P.prestige_count[k]]\Roman"
+
 			if(next_xp - last_xp > 0)
-				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
+				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)][prestige_text] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
 			else
-				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)]</b>\n")
+				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)][prestige_text]</b>\n")
 		L.to_chat(final_text)
 
-	
+
 /obj/hud/button/widget/logout
 	name = "Logout"
 	icon_state = "logout_new"
@@ -70,7 +76,7 @@
 		var/mob/living/advanced/player/P = caller
 		P.logout()
 
-	
+
 /obj/hud/button/widget/change_theme
 	name = "Change Theme"
 	icon_state = "theme_new"

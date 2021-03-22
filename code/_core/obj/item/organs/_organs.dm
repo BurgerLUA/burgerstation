@@ -268,35 +268,3 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 			damage_desc += "<u><b>gushing blood</b></u>"
 
 	return damage_desc
-
-/*
-/obj/item/organ/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		if(istype(DT,/damagetype/unarmed/))
-			return V.get_skill_power(SKILL_UNARMED) * V.get_skill_power(SKILL_BLOCK)
-		return V.get_skill_power(SKILL_UNARMED) * V.get_skill_power(SKILL_BLOCK) * 0.75
-
-	return ..()
-
-/obj/item/organ/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_BLOCK)) >= block_difficulty[DT.get_attack_type()] ? src : null
-
-	return null
-
-
-/obj/item/organ/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(istype(DT,/damagetype/unarmed/))
-		return src
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_PARRY)) >= block_difficulty[DT.get_attack_type()] ? src : null
-
-	return null
-*/

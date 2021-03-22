@@ -42,6 +42,9 @@
 	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
+	if(loaded_data["prestige_count"])
+		prestige_count =  loaded_data["prestige_count"]
+
 	if(loaded_data["dead"]) //New body!
 		nutrition = initial(nutrition)*0.25
 		nutrition_fast = nutrition
@@ -149,6 +152,7 @@
 	.["last_tax_payment"] = last_tax_payment
 	.["partial_tax"] = partial_tax
 	.["rarity"] = rarity
+	.["prestige_count"] = prestige_count
 
 	if(length(traits))
 		.["traits"] = list()
