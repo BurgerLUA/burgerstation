@@ -7168,6 +7168,12 @@
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"Gu" = (
+/obj/structure/smooth/table/reinforced,
+/obj/structure/interactive/shop,
+/obj/item/analyzer/gps/advanced,
+/turf/simulated/floor/tile/morphing/science,
+/area/burgerstation/science)
 "GA" = (
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/plating,
@@ -41720,7 +41726,7 @@ zq
 zh
 zi
 fo
-oR
+Gu
 oR
 nb
 oR

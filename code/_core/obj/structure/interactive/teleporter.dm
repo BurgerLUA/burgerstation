@@ -5,7 +5,6 @@
 	icon = 'icons/obj/structure/telesciencepads.dmi'
 	icon_state = "pad-idle"
 	var/teleport_cooldown = 0
-	var/second_cooldown = 60 //how many seconds its on cooldown for
 
 /obj/structure/interactive/teleporter/clicked_on_by_object(mob/caller, atom/object, location, control, params)
 
@@ -26,15 +25,14 @@
 	if(choice1 == "Cancel")
 		caller.to_chat(span("notice","You decided against using the teleporter."))
 		return FALSE
-	var/choice2 = input("Select the GPS for coordinates.", "GPS Selection") as num|null
-	for(var/k2 in gps_list)
-		var/obj/item/analyzer/gps/kGPS
-		if(choice2 != kGPS.assigned_number)
-			continue
-		choice2 = kGPS
-	if(!istype(choice2, /obj/item/analyzer/gps))
-		caller.to_chat(span("warning","The number you have entered is not assigned to a GPS!"))
-		return FALSE
+	var/obj/item/analyzer/gps/choice2 = input("Select the GPS for coordinates.", "GPS Selection") as null|anything in gps_list
+	if(!choice2)
+		return
+	if(choice2.need_password)
+		var/passwordcheck = input("Enter the password for this GPS.","GPS Password Entry") as null|text
+		if(passwordcheck != choice2.assigned_number)
+			caller.to_chat(span("notice","You entered the wrong password."))
+			return FALSE
 	var/turf/gpsTURF = get_turf(choice2)
 	var/turf/srcTURF = get_turf(src)
 	var/turf/callerTURF = get_turf(caller)
@@ -46,6 +44,7 @@
 	if(get_dist(srcTURF, callerTURF) > 1)
 		return FALSE
 	var/item_counter = 0
+	var/second_cooldown = 0
 	switch(choice1)
 		if("Send")
 			for(var/atom/movable/A in srcTURF.contents)
@@ -59,8 +58,16 @@
 						continue
 					if(aLiving.immortal)
 						continue
+					if(aLiving.ckey)
+						second_cooldown += 15
+					second_cooldown += 3
+				if(istype(A, /obj/structure/interactive/crate))
+					second_cooldown += 8
+				play_sound('sound/effects/sparks4.ogg',get_turf(A),range_max=VIEW_RANGE)
 				A.force_move(gpsTURF)
+				play_sound('sound/effects/sparks4.ogg',get_turf(A),range_max=VIEW_RANGE)
 				item_counter++
+				second_cooldown += 2
 		if("Receive")
 			for(var/atom/movable/A in gpsTURF.contents)
 				if(item_counter >= 25)
@@ -73,7 +80,15 @@
 						continue
 					if(aLiving.immortal)
 						continue
+					if(aLiving.ckey)
+						second_cooldown += 15
+					second_cooldown += 3
+				if(istype(A, /obj/structure/interactive/crate))
+					second_cooldown += 8
+				play_sound('sound/effects/sparks4.ogg',get_turf(A),range_max=VIEW_RANGE)
 				A.force_move(srcTURF)
+				play_sound('sound/effects/sparks4.ogg',get_turf(A),range_max=VIEW_RANGE)
 				item_counter++
+				second_cooldown += 2
 	teleport_cooldown = world.time + SECONDS_TO_DECISECONDS(second_cooldown)
 	flick(icon, "pad-beam")
