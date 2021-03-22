@@ -5034,11 +5034,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "sx" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
 /turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/north)
+/area/space)
 "sy" = (
 /turf/simulated/wall/metal,
 /area/burgerstation/hall/east)
@@ -7022,13 +7019,7 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "zD" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/mob/living/advanced/npc/nanotrasen{
-	icon_state = "directional";
-	dir = 8
-	},
+/mob/living/advanced/npc/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/north)
 "zE" = (
@@ -7049,6 +7040,23 @@
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo_inbound/ship)
+"zG" = (
+/turf/simulated/wall/metal/reinforced,
+/area/space)
+"zH" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/goblin_shop)
+"zI" = (
+/turf/simulated/floor/tile/grey,
+/area/space/light)
+"zJ" = (
+/obj/structure/smooth/table,
+/turf/simulated/floor/tile/grey,
+/area/space)
 "zK" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
@@ -7068,12 +7076,28 @@
 /obj/item/crafting/pill_press,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
+"zN" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/burgerstation/hall/north)
 "zO" = (
 /obj/structure/interactive/chair{
 	dir = 8
 	},
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
+"zP" = (
+/mob/living/advanced/npc/unique/master,
+/turf/simulated/floor/tile/grey,
+/area/space)
+"zQ" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/reinforced,
+/area/space)
+"zR" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal,
+/area/burgerstation/goblin_shop)
 "zS" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
@@ -7144,13 +7168,84 @@
 /mob/living/simple/bot/medibot,
 /turf/simulated/floor/tile,
 /area/burgerstation/medical)
+"Ae" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/goblin_shop)
 "Af" = (
 /turf/simulated/floor/tile/morphing/janitor,
 /area/burgerstation/engineering)
+"Ag" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/goblin_shop)
+"Ah" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/armory/shooting_range)
 "Ai" = (
 /obj/structure/interactive/door/airlock/station/janitor,
 /turf/simulated/floor/tile/morphing/janitor,
 /area/burgerstation/engineering)
+"Aj" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/goblin_shop)
+"Ak" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/maint/north)
+"Al" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/armory)
+"Am" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/armory)
+"An" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/engineering)
+"Ao" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/hall/north)
+"Ap" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/grey,
+/area/space)
+"Aq" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/grey,
+/area/space/light)
 "As" = (
 /obj/structure/smooth/table/fancy,
 /turf/simulated/floor/carpet,
@@ -42431,17 +42526,17 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
+zG
+vz
+vz
+vz
+vz
+vA
 kR
 kR
 yT
 kR
-kR
+Ae
 kR
 kR
 lS
@@ -42688,13 +42783,13 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
-lY
+zQ
+Ap
+sx
+zJ
+sx
+Aq
+nS
 mc
 mp
 rP
@@ -42945,13 +43040,13 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
-lY
+zQ
+sx
+zP
+zJ
+sx
+zI
+zR
 mp
 po
 mp
@@ -43202,13 +43297,13 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
-kR
+zQ
+sx
+sx
+zJ
+sx
+zI
+nS
 mQ
 nL
 nH
@@ -43216,7 +43311,7 @@ nL
 nH
 kR
 kR
-kR
+Ae
 kR
 kR
 kR
@@ -43459,13 +43554,13 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
-kR
+zG
+zJ
+zJ
+zJ
+sx
+zI
+nS
 nG
 pw
 mp
@@ -43716,13 +43811,13 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
-lY
+vz
+sx
+sx
+sx
+sx
+zI
+nS
 sn
 mp
 pw
@@ -43733,7 +43828,7 @@ pw
 mp
 pw
 tU
-kR
+Ag
 lX
 hd
 fk
@@ -43973,13 +44068,13 @@ kF
 kF
 kF
 kF
-rT
-kF
-rT
-kF
-kF
-dH
-lY
+vz
+sx
+sx
+sx
+sx
+zI
+zH
 tZ
 pw
 mp
@@ -43994,7 +44089,7 @@ kR
 lZ
 hd
 fk
-aK
+An
 mF
 mF
 mF
@@ -44230,13 +44325,13 @@ kF
 kF
 kF
 mF
-dH
-mF
-dH
-mF
-mF
-dH
-lY
+vA
+Aq
+zI
+zI
+zI
+Aq
+nS
 sn
 mp
 pw
@@ -44488,12 +44583,12 @@ kF
 kF
 mF
 dY
-uD
-dY
-uD
-uD
-dY
-kR
+zN
+if
+zN
+if
+zN
+Aj
 nS
 lY
 mp
@@ -44504,7 +44599,7 @@ lY
 lY
 lY
 nS
-kR
+Ae
 yR
 aK
 Ai
@@ -44512,7 +44607,7 @@ aK
 uD
 uD
 uD
-dY
+Ao
 if
 hZ
 if
@@ -44745,11 +44840,11 @@ kF
 kF
 mF
 uD
-if
-sx
-if
-if
-if
+rS
+rS
+rS
+rS
+rS
 rS
 rS
 rS
@@ -45002,7 +45097,7 @@ kF
 kF
 mF
 uD
-if
+zD
 if
 if
 if
@@ -45259,13 +45354,13 @@ kF
 kF
 mF
 uD
+mg
 if
 if
 if
 if
 if
-if
-zD
+sz
 if
 if
 if
@@ -45520,7 +45615,7 @@ am
 cP
 am
 am
-ac
+Ah
 am
 ac
 cP
@@ -45531,7 +45626,7 @@ bh
 wZ
 co
 xQ
-co
+tc
 co
 fC
 fC
@@ -45784,7 +45879,7 @@ it
 te
 av
 bC
-bh
+Ak
 bH
 fU
 tg
@@ -48097,7 +48192,7 @@ aH
 aY
 aY
 cy
-bh
+Ak
 bh
 co
 cQ
@@ -49642,11 +49737,11 @@ am
 bh
 aE
 co
-co
+Al
 fC
 fC
 fC
-co
+tc
 co
 cT
 cT
@@ -50934,7 +51029,7 @@ cv
 cC
 aM
 cT
-co
+Am
 yt
 hJ
 hJ

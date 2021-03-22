@@ -220,29 +220,6 @@
 
 	return TRUE
 
-/*
-/mob/living/proc/handle_charges(var/charge_gain = 0)
-
-	var/dodge_power = src.get_skill_power(SKILL_DODGE)
-	var/block_power = src.get_skill_power(SKILL_BLOCK)
-	var/parry_power = src.get_skill_power(SKILL_PARRY)
-
-	var/old_dodge = charge_dodge
-	var/old_block = charge_block
-	var/old_parry = charge_parry
-
-	charge_dodge = min(charge_dodge + charge_gain*dodge_power,CEILING(dodge_power*500,100))
-	charge_block = min(charge_block + charge_gain*block_power,CEILING(block_power*500,100))
-	charge_parry = min(charge_parry + charge_gain*parry_power,CEILING(parry_power*500,100))
-
-	if(!charge_gain || old_dodge != charge_dodge || old_block != charge_block || !old_parry != charge_parry)
-		for(var/obj/hud/button/evade/B in buttons)
-			B.update_overlays()
-		return TRUE
-
-	return FALSE
-*/
-
 /mob/living/proc/handle_hunger()
 
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1

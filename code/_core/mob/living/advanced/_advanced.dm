@@ -70,7 +70,7 @@
 
 	size = SIZE_HUMAN
 
-	max_level = 100 //Max level for skills and attributes of the mob.
+	max_level = 100 //Base max level for skills and attributes of the mob.
 
 	death_threshold = -50
 

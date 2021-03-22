@@ -37,30 +37,30 @@
 /experience/proc/update_experience(var/desired_xp)
 	desired_xp = max(0,desired_xp)
 	experience = desired_xp
-	last_level = min(xp_to_level(experience),100)
+	last_level = min(xp_to_level(experience),get_max_level())
 	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
 	if(xp < 0)
 		owner.to_chat(span("danger","Your [src.name] experience is negative! Report this bug on discord!"))
 		return 1
-	return FLOOR((xp ** (1/experience_power)) / experience_multiplier, 1)
+	return FLOOR((xp ** (1/experience_power)) / (experience_multiplier * (1 + src.get_prestige_count()*0.1)), 1)
 
 /experience/proc/level_to_xp(var/level) //Convert level to xp
 	if(level < 0)
 		owner.to_chat(span("danger","Your [src.name] level is negative! Report this bug on discord!"))
 		return 0
-	return CEILING((level*experience_multiplier) ** experience_power,1)
+	return CEILING((level*experience_multiplier*(1 + src.get_prestige_count()*0.1)) ** experience_power,1)
 
 /experience/proc/set_level(var/level)
 	if(!ENABLE_XP)
 		return FALSE
-	experience = level_to_xp(clamp(level,1,owner.max_level))
+	experience = level_to_xp(clamp(level,1,get_max_level()))
 	last_level = get_current_level()
 	return experience
 
 /experience/proc/get_current_level()
-	return min(owner.max_level,xp_to_level(experience))
+	return min(get_max_level(),xp_to_level(experience))
 
 /experience/proc/get_xp()
 	return experience
@@ -91,12 +91,23 @@
 	experience = new_xp
 	return experience
 
-/experience/proc/get_power(var/min_power = 0.25,var/max_power = 1)
-	return clamp(last_level / 100,min_power,max_power)
+// https://www.desmos.com/calculator/ujqppki2oz
+/experience/proc/get_power(var/min_power = 0.25,var/max_power = 1,var/absolute_max_power)
+	if(!absolute_max_power)
+		absolute_max_power = max_power
+	return min( (min_power + (last_level/100)*(max_power-min_power)) / (max_power), absolute_max_power)
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
 	owner.on_level_up(src,old_level,new_level)
 	return new_level
 
+/experience/proc/get_max_level()
+	return owner.max_level + src.get_prestige_count()
 
-
+/experience/proc/get_prestige_count() //Only used for Skills, currently.
+	if(!is_player(owner))
+		return 0
+	var/mob/living/advanced/player/P = owner
+	if(!P.prestige_count[id])
+		return 0
+	return P.prestige_count[id]

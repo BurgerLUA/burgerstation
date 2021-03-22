@@ -45,10 +45,8 @@
 		var/obj/hud/inventory/I = loc
 		if(is_living(I.owner))
 			var/mob/living/L = I.owner
-			var/strength_mod = L.get_attribute_power(ATTRIBUTE_STRENGTH)
-			strength_mod = clamp(0.25 + strength_mod*0.75,0,1)
-			var/dex_mod = L.get_attribute_power(ATTRIBUTE_DEXTERITY)
-			dex_mod = clamp(0.5 + dex_mod*0.5,0,1)
+			var/strength_mod = L.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)
+			var/dex_mod = L.get_attribute_power(ATTRIBUTE_DEXTERITY,0.5,1,2)
 			stage_per_decisecond *= dex_mod
 			stage_per_decisecond = CEILING(stage_per_decisecond,1)
 			stage_max *= strength_mod

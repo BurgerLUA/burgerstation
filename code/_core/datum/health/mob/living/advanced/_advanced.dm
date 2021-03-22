@@ -127,16 +127,16 @@
 	var/mob/living/advanced/A = owner
 
 	if(health_current <= 0) //In crit.
-		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*19)
+		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*19)
 	else
-		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*9)
+		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
 
 	if(A.has_status_effects(STAMCRIT,SLEEP,REST))
-		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*29)
+		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*29)
 	else
-		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*19)
+		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*19)
 
-	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*19)
+	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*19)
 
 	return ..()
 

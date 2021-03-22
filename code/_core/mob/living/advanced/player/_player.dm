@@ -99,6 +99,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
 
+	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
@@ -227,3 +229,15 @@ mob/living/advanced/player/on_life_client()
 
 		return FALSE
 	return ..()
+
+
+/mob/living/advanced/player/proc/prestige(var/skill_id)
+	if(!prestige_count[skill_id])
+		prestige_count[skill_id] = 1
+	else
+		prestige_count[skill_id] += 1
+	set_skill_level(skill_id,5)
+	src.to_chat(span("warning","Your loyalty implant buzzes as you feel your brain tampered with... seems like you've forgot everything about [skill_id]..."))
+	src.to_chat(span("notice","You have prestiged your [skill_id]. It is now at prestige level [prestige_count[skill_id]], requiring skill level [100 + prestige_count[skill_id]*5] to prestige again."))
+	//broadcast_to_clients(span("notice","[src.real_name] prestiged their [skill_id] to level [prestige_count[skill_id]]!"))
+	return TRUE
