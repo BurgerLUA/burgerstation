@@ -52,19 +52,22 @@
 	)
 	damage_type = /damagetype/melee/sword/grazer
 
+	value = 1000
+
 /obj/item/clothing/glasses/sun/gar/giga
 	name = "gigagar shades"
 	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLADE = AP_CLUB,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
 		LASER = AP_GREATCLUB,
 		ARCANE = -AP_CLUB,
 		HEAT = AP_GREATCLUB
 	)
 	damage_type = /damagetype/melee/sword/grazer
 
+	value = 2500
 
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"
