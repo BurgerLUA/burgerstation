@@ -17,8 +17,8 @@
 
 	.["*Prestige Program"] = list(
 		"The Prestige Program, or PP for short, is an experimental and questionably legal brain surgery procedure that alters certain areas of the brain to be more compact \
-		to allow a broader understanding of the subject. As a consequence, you'll have to relearn everything you know, but once you've done so, you'll be smarter in the subject matter! #NEWLINE\
-		So, are you ready to be a part of the Prestige Program? Only masters of a skill can participate! NEWLINE\
+		to allow a broader understanding of the subject. As a consequence, you'll have to relearn everything you know, but once you've done so, you'll be smarter in the subject matter! NEWLINENEWLINE\
+		So, are you ready to be a part of the Prestige Program? Only masters of a skill can participate! NEWLINENEWLINE\
 		#1 NEWLINE\
 		#2",
 		"*Yes, enter the prestige program",

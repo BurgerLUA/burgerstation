@@ -102,7 +102,7 @@
 	return new_level
 
 /experience/proc/get_max_level()
-	return owner.max_level + src.get_prestige_count()
+	return owner.max_level + src.get_prestige_count()*5
 
 /experience/proc/get_prestige_count() //Only used for Skills, currently.
 	if(!is_player(owner))

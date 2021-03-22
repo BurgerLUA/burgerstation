@@ -5034,8 +5034,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "sx" = (
-/turf/simulated/floor/tile/grey,
-/area/space)
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/prestige)
 "sy" = (
 /turf/simulated/wall/metal,
 /area/burgerstation/hall/east)
@@ -7041,22 +7041,20 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo_inbound/ship)
 "zG" = (
+/obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal/reinforced,
-/area/space)
+/area/burgerstation/prestige)
 "zH" = (
-/obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 1
-	},
-/turf/simulated/wall/metal,
-/area/burgerstation/goblin_shop)
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/burgerstation/prestige)
 "zI" = (
-/turf/simulated/floor/tile/grey,
-/area/space/light)
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/prestige)
 "zJ" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile/grey,
-/area/space)
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/prestige)
 "zK" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
@@ -7077,9 +7075,10 @@
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "zN" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/plating,
-/area/burgerstation/hall/north)
+/obj/structure/smooth/table,
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/prestige)
 "zO" = (
 /obj/structure/interactive/chair{
 	dir = 8
@@ -7087,17 +7086,16 @@
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "zP" = (
-/mob/living/advanced/npc/unique/master,
-/turf/simulated/floor/tile/grey,
-/area/space)
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/burgerstation/prestige)
 "zQ" = (
-/obj/decal/poster/nanotrasen,
-/turf/simulated/wall/metal/reinforced,
-/area/space)
+/mob/living/advanced/npc/unique/master,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/prestige)
 "zR" = (
-/obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal,
-/area/burgerstation/goblin_shop)
+/area/burgerstation/prestige)
 "zS" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
@@ -7197,12 +7195,9 @@
 /turf/simulated/floor/tile/morphing/janitor,
 /area/burgerstation/engineering)
 "Aj" = (
-/obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 4
-	},
+/obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal,
-/area/burgerstation/goblin_shop)
+/area/burgerstation/prestige)
 "Ak" = (
 /obj/decal/poster/nanotrasen{
 	icon_state = "";
@@ -7239,13 +7234,21 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/hall/north)
 "Ap" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/grey,
-/area/space)
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 1
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/prestige)
 "Aq" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/grey,
-/area/space/light)
+/obj/structure/interactive/intercom{
+	dir = 1
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/prestige)
+"Ar" = (
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/prestige)
 "As" = (
 /obj/structure/smooth/table/fancy,
 /turf/simulated/floor/carpet,
@@ -7258,6 +7261,30 @@
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
+"Av" = (
+/obj/structure/smooth/table,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/prestige)
+"Aw" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/goblin_shop)
+"Ax" = (
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/hall/north)
+"Ay" = (
+/obj/structure/smooth/table,
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/prestige)
+"Az" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/prestige)
 "AA" = (
 /obj/structure/smooth/table,
 /turf/simulated/floor/plating,
@@ -7266,6 +7293,12 @@
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
+"AC" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/yellow,
+/area/burgerstation/hall/north)
 "AD" = (
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
@@ -42268,12 +42301,12 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
+mF
+dH
+mF
+dH
+mF
+mF
 dH
 tw
 rY
@@ -42525,14 +42558,14 @@ kF
 kF
 kF
 kF
-kF
-zG
-vz
-vz
-vz
-vz
-vA
-kR
+mF
+sx
+zH
+zH
+zH
+zH
+zH
+sx
 kR
 yT
 kR
@@ -42782,14 +42815,14 @@ kF
 kF
 kF
 kF
-kF
-zQ
-Ap
-sx
+mF
+zG
+zI
 zJ
-sx
+Ay
+zJ
+zI
 Aq
-nS
 mc
 mp
 rP
@@ -43039,14 +43072,14 @@ kF
 kF
 kF
 kF
-kF
-zQ
-sx
-zP
+mF
+zG
 zJ
-sx
-zI
-zR
+zQ
+Av
+Ar
+zJ
+Aj
 mp
 po
 mp
@@ -43296,14 +43329,14 @@ kF
 kF
 kF
 kF
-kF
-zQ
-sx
-sx
+mF
+zG
 zJ
-sx
-zI
-nS
+Ar
+Av
+Ar
+zJ
+zR
 mQ
 nL
 nH
@@ -43553,14 +43586,14 @@ kF
 kF
 kF
 kF
-kF
-zG
-zJ
-zJ
-zJ
+mF
 sx
-zI
-nS
+zN
+Av
+Av
+Ar
+Az
+zR
 nG
 pw
 mp
@@ -43810,14 +43843,14 @@ kF
 kF
 kF
 kF
-kF
-vz
-sx
-sx
-sx
-sx
-zI
-nS
+mF
+zH
+zJ
+Ar
+Ar
+Ar
+zJ
+zR
 sn
 mp
 pw
@@ -44067,14 +44100,14 @@ kF
 kF
 kF
 kF
-kF
-vz
-sx
-sx
-sx
-sx
-zI
+mF
 zH
+zJ
+Ar
+Ar
+Ar
+zJ
+Ap
 tZ
 pw
 mp
@@ -44325,13 +44358,13 @@ kF
 kF
 kF
 mF
-vA
-Aq
+zH
 zI
+zJ
+zJ
+zJ
 zI
-zI
-Aq
-nS
+zR
 sn
 mp
 pw
@@ -44582,14 +44615,14 @@ kF
 kF
 kF
 mF
-dY
-zN
-if
-zN
-if
-zN
-Aj
-nS
+sx
+zP
+zJ
+zP
+zJ
+zP
+zR
+Aw
 lY
 mp
 pw
@@ -44840,12 +44873,12 @@ kF
 kF
 mF
 uD
-rS
-rS
-rS
-rS
-rS
-rS
+Ax
+Ax
+Ax
+Ax
+Ax
+AC
 rS
 rS
 rS
@@ -45360,7 +45393,7 @@ if
 if
 if
 if
-sz
+if
 if
 if
 if
@@ -45612,7 +45645,7 @@ mF
 mF
 ac
 am
-cP
+ac
 am
 am
 Ah

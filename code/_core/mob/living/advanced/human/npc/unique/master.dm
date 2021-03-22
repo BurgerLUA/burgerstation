@@ -30,6 +30,9 @@
 
 	change_organ_visual("hair_head", desired_color = "#E3D5AF", desired_icon_state = "hair_pompadour_s")
 
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+
 	equip_loadout(/loadout/master)
 
 	update_all_blends()
