@@ -341,9 +341,9 @@
 			continue
 		if(!istype(L.health))
 			continue
-		if(L.blood_volume + (5*leveled_effect) >= L.blood_volume_max)
+		if(L.blood_volume >= L.blood_volume_max)
 			continue
-		L.blood_volume += (5*leveled_effect)
+		L.blood_volume += min(blood_volume_max - blood_volume_current,leveled_effect*5)
 		CREATE(/obj/effect/temp/healing,L.loc)
 
 /obj/structure/totem/blood_deal
@@ -363,7 +363,7 @@
 			continue
 		if(!istype(L.health))
 			continue
-		if(L.blood_volume - (5*leveled_effect) <= 0)
+		if(L.blood_volume <= 0)
 			continue
-		L.blood_volume -= (5*leveled_effect)
+		L.blood_volume -= min(blood_volume_current,leveled_effect*5)
 		CREATE(/obj/effect/temp/electricity,L.loc)
