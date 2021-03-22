@@ -284,6 +284,7 @@
 #include "code\_core\datum\class\passive.dm"
 #include "code\_core\datum\class\player.dm"
 #include "code\_core\datum\class\robust.dm"
+#include "code\_core\datum\class\unrobust.dm"
 #include "code\_core\datum\class\mech\durand.dm"
 #include "code\_core\datum\class\mech\gygax.dm"
 #include "code\_core\datum\class\npc\arachnid.dm"

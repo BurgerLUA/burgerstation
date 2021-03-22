@@ -89,7 +89,7 @@
 		var/v = SSexperience.all_skills[k]
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
-		S.update_experience(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
+		S.update_experience(S.level_to_xp(desired_level*level_multiplier))
 		skills[S.id] = S
 
 /mob/living/proc/update_level(var/first=FALSE)

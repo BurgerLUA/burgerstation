@@ -20,15 +20,19 @@
 	if(is_living(P.owner))
 		var/mob/living/L2 = P.owner
 		if(is_living(summoned_object))
-			var/mob/living/L = summoned_object
-			L.set_iff_tag(L2.iff_tag)
-			L.set_loyalty_tag(L2.loyalty_tag)
 			if(L2.minion)
 				L2.minion.dust()
-			L2.minion = L
+			var/mob/living/L = summoned_object
+			L.class = /class/npc/unrobust
+			L.health_base = 100
+			L.stamina_base = 100
+			L.mana_base = 100
+			L.set_iff_tag(L2.iff_tag)
+			L.set_loyalty_tag(L2.loyalty_tag)
 			L.master = L2
 			L.minion_remove_time = world.time + duration
-			L.level_multiplier *= L2.get_skill_power(SKILL_MAGIC,1,20,40)
+			L.level_multiplier = L2.get_skill_power(SKILL_MAGIC,1,100,200)
+			L2.minion = L
 		if(L2.is_player_controlled())
 			L2.add_skill_xp(SKILL_MAGIC,cost_mana*1.5)
 	INITIALIZE(summoned_object)
