@@ -127,8 +127,6 @@
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
-	var/savedata/client/mob/M = MOBDATA(ckey)
-
 	. = list()
 
 	//Basic Information
@@ -159,11 +157,6 @@
 		for(var/k in traits)
 			.["traits"] |= k
 
-	if(M && M.loaded_data)
-		.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.
-	else
-		CRASH_SAFE("WARNING: Could not get_mob_data() [src.get_debug_name()]'s mechs!")
-
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[id]
@@ -171,7 +164,6 @@
 			final_organ_list[id] = O.save_item_data(save_inventory)
 		catch(var/exception/e)
 			log_error("get_mob_data:() [e] on [e.file]:[e.line]\n[e.desc]!")
-
 	.["organs"] = final_organ_list
 
 	//Skills
