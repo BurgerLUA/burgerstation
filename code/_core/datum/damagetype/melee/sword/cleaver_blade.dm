@@ -8,7 +8,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_DAGGER
+		BLADE = AP_AXE
 	)
 
 	attribute_stats = list(
@@ -29,5 +29,5 @@
 		SKILL_MELEE = list(BLADE,PIERCE)
 	)
 
-	attack_delay = SPEED_DAGGER
+	attack_delay = SPEED_AXE*0.5
 	attack_delay_max = SPEED_SWORD

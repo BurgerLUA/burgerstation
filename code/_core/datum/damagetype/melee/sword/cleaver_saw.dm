@@ -30,5 +30,5 @@
 		SKILL_MELEE = list(BLADE,PIERCE)
 	)
 
-	attack_delay = SPEED_AXE*0.5
+	attack_delay = SPEED_AXE
 	attack_delay_max = SPEED_AXE
