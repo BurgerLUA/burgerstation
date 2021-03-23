@@ -67,6 +67,9 @@
 /mob/living/get_xp_multiplier()
 	if(master)
 		return 0
+	var/turf/srcTurf = get_turf(src)
+	if(srcTurf.z != Z_LEVEL_MISSION)
+		return 0
 	return 1
 
 /mob/living/proc/initialize_attributes()
