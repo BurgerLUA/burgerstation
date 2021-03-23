@@ -454,34 +454,35 @@
 			var/mob/living/A = attacker
 			var/mob/living/V = victim
 			var/list/experience_gained = list()
+			var/experience_damage = SAFENUM(damage_to_deal_main[BRUTE]) + SAFENUM(damage_to_deal_main[BURN]) + SAFENUM(damage_to_deal_main[TOX]) + SAFENUM(damage_to_deal_main[RAD])
 			if(!V.dead && A.is_player_controlled())
 				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
-					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
+					var/xp_to_give = CEILING((experience_damage*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 						experience_gained += "[xp_to_give] [SKILL_PRECISION] xp"
 
 				for(var/skill in skill_stats)
-					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * experience_damage * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained += "[xp_to_give] [skill] xp"
 
 				for(var/attribute in attribute_stats)
-					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * experience_damage * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained += "[xp_to_give] [attribute] xp"
 
 				for(var/skill in bonus_experience_skill)
-					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
+					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * experience_damage * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained += "[xp_to_give] [skill] xp"
 
 				for(var/attribute in bonus_experience_attribute)
-					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * total_damage_dealt * experience_multiplier,1)
+					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * experience_damage * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained += "[xp_to_give] [attribute] xp"
