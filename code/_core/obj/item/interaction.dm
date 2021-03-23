@@ -28,18 +28,17 @@
 
 /obj/item/proc/close_inventory(var/mob/living/advanced/A)
 
+	if(inventory_user)
+		inventory_user.using_inventories -= src
+		inventory_user = null
+
 	for(var/i=1,i<=length(inventories),i++) //Close all the inventories.
-		CHECK_TICK(100,FPS_SERVER*0.5)
 		var/obj/hud/inventory/I = inventories[i]
 		animate(I,alpha=0,time=4)
 		I.mouse_opacity = 0
 		if(I.assoc_button)
 			animate(I.assoc_button,alpha=0,time=4)
 			I.assoc_button.mouse_opacity = 0
-
-	if(inventory_user)
-		inventory_user.using_inventories -= src
-		inventory_user = null
 
 	return TRUE
 
@@ -56,7 +55,6 @@
 	var/should_center = length(inventories) <= max_inventory_x
 
 	for(var/i=1,i<=length(inventories),i++) //Open all the inventories.
-		CHECK_TICK(100,FPS_SERVER*0.5)
 		var/obj/hud/inventory/I = inventories[i]
 
 		I.update_owner(A)
