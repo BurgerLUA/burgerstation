@@ -22,8 +22,6 @@ var/global/list/all_clients = list() //Assoc list
 	var/savedata/client/connection_history/connection_data
 	var/savedata/client/settings/settings
 	var/savedata/client/controls/controls
-	var/savedata/client/globals/globals
-	var/savedata/client/death_box/death_box
 
 	//var/save_slot //The character slot that the client wishes to overwrite.
 	var/list/last_params
@@ -117,9 +115,10 @@ var/global/list/all_clients = list() //Assoc list
 	last_location = null
 	last_object = null
 
+	QDEL_NULL(macros)
+
 	QDEL_NULL(connection_data)
 	QDEL_NULL(settings)
-	QDEL_NULL(macros)
 	QDEL_NULL(controls)
 
 	clear_mob(mob)
@@ -159,11 +158,17 @@ var/global/list/all_clients = list() //Assoc list
 	if(!connection_data)
 		connection_data = new(ckey)
 
-	if(!globals)
-		globals = new(ckey)
+	var/savedata/client/globals/GD = ckey_to_globaldata[ckey]
+	if(!GD)
+		new/savedata/client/globals(ckey)
 
-	if(!death_box)
-		death_box = new(ckey)
+	var/savedata/client/death_box/deathbox_data = ckey_to_death_box_data[ckey]
+	if(!deathbox_data)
+		new/savedata/client/death_box(ckey)
+
+	var/savedata/client/bank/bankdata = ckey_to_bank_data[ckey]
+	if(!bankdata)
+		new/savedata/client/bank(ckey)
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)

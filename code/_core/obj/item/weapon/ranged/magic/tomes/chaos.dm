@@ -25,6 +25,8 @@
 	var/norm_y = initial_offset_y + cos(num*360)
 
 	var/mul = max(abs(norm_x),abs(norm_y))
+	if(!mul)
+		return list(0,0)
 
 	return list(norm_x/mul,norm_y/mul)
 

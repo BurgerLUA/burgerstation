@@ -131,7 +131,7 @@
 	return list()
 
 /damagetype/proc/get_crit_chance(var/mob/living/L)
-	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION)*0.75 + (L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)*0.25)
+	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION,0,1,2)*0.75 + (L.get_attribute_power(ATTRIBUTE_LUCK,0,1) - 0.5)*0.25)
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -142,22 +142,6 @@
 	for(var/damage_type in attack_damage)
 		var/damage = attack_damage[damage_type]
 		combat_rating += damage
-
-	/*
-	if(!allow_parry)
-		combat_rating *= 1.1
-
-	if(!allow_block)
-		combat_rating *= 1.1
-
-	if(!allow_dodge)
-		combat_rating *= 1.1
-
-	if(allow_miss)
-		combat_rating *= (100-get_miss_chance())/100
-	else
-		combat_rating *= 1.1
-	*/
 
 	return round(combat_rating*0.25,1)
 
@@ -721,8 +705,8 @@
 		if(attack_delay_max < attack_delay)
 			attack_delay_max = attack_delay
 		if(L.ai)
-			return attack_delay + (attack_delay_max - attack_delay)*(2-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+			return attack_delay + (attack_delay_max - attack_delay)*(2-L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1))
 		else
-			return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+			return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1))
 
 	return attack_delay

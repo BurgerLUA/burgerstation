@@ -29,8 +29,8 @@
 		ARCANE = -armor_bonus,
 		COLD = armor_bonus*2,
 		PAIN = armor_bonus*2,
-		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE)*100,1),
-		SANITY = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM)*100,1)
+		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,2)*100,1),
+		SANITY = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,2)*100,1)
 	)
 
 	for(var/damage_type in bonus_armor)
@@ -101,9 +101,9 @@
 
 	var/mob/living/L = owner
 
-	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*100
-	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100
-	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100
+	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10)*100
+	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*100
+	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*100
 
 	L.queue_health_update = TRUE
 

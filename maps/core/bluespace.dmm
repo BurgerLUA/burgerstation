@@ -34,7 +34,7 @@
 /area/space/deep)
 "al" = (
 /turf/bluespace,
-/area/transit/cargo_inbound)
+/area/transit/cargo_inbound/bluespace)
 "am" = (
 /turf/space,
 /area/space)

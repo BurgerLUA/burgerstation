@@ -106,12 +106,19 @@ var/global/world_state = STATE_STARTING
 	save_all_globals()
 	//save_all_mechs()
 	save_deathboxes()
+	save_banks()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
+		if(!istype(P))
+			log_error("Could not save a player as it was the wrong type or null ([P]).")
+			continue
 		if(P.dead)
 			P.to_chat(span("danger","Could not save your character because you were dead."))
 			continue
 		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+		if(!istype(mobdata))
+			log_error(span("danger","FATAL ERROR: Tried saving [P.get_debug_name()], but they had no mob data!"))
+			continue
 		mobdata.save_character(P,force = TRUE)
 		P.to_chat(span("notice","Your character was automatically saved."))
 		sleep(-1)

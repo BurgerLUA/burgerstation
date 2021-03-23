@@ -140,8 +140,11 @@
 		return TRUE
 
 	if(stored_item_burgerbux_cost)
-		var/savedata/client/globals/globals = GLOBALDATA(caller.client.ckey)
-		var/currency = globals.loaded_data["burgerbux"]
+		var/savedata/client/globals/GD = GLOBALDATA(caller.client.ckey)
+		if(!GD)
+			caller.to_chat(span("danger","Globaldata error detected. Report this to burger on discord with error code: Burgerbux."))
+			return TRUE
+		var/currency = GD.loaded_data["burgerbux"]
 		if(currency >= stored_item_burgerbux_cost && P.spend_burgerbux(stored_item_burgerbux_cost))
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
 			INITIALIZE(new_item)

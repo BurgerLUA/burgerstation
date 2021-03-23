@@ -14,7 +14,7 @@
 
 	. = ..()
 
-	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY)*A.size)
+	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10))
 
 /health/obj/item/organ/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 

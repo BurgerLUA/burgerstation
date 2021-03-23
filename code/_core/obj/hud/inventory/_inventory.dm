@@ -77,6 +77,10 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_NO_DISTANCE
 
+	var/inventory_category = "none"
+
+	var/obj/hud/button/close_inventory/assoc_button //The associated close button for this inventory object.
+
 /obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
 
 	if(!ignore_contents && length(contents))
@@ -112,6 +116,8 @@
 	parent_inventory = null
 	child_inventory = null
 	grabbed_object = null
+
+	QDEL_NULL(assoc_button)
 
 	return ..()
 

@@ -70,7 +70,7 @@
 
 	size = SIZE_HUMAN
 
-	max_level = 100 //Max level for skills and attributes of the mob.
+	max_level = 100 //Base max level for skills and attributes of the mob.
 
 	death_threshold = -50
 
@@ -105,6 +105,8 @@
 
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
+
+	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 /mob/living/advanced/Destroy()
 

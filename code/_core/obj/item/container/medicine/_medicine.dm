@@ -34,7 +34,7 @@
 	if(reagents)
 		reagents.volume_max = item_count_current*10
 
-	
+
 /obj/item/container/medicine/update_icon()
 
 	if(!override_icon_state)
@@ -57,7 +57,7 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		heal_multiplier += L.get_skill_power(SKILL_MEDICINE)
+		heal_multiplier += L.get_skill_power(SKILL_MEDICINE,0,1,2)
 
 	. = 0
 

@@ -104,11 +104,13 @@ var/global/antag_count = 0
 
 	var/client/C = src.client
 
-	if(!C.globals || !C.globals.loaded_data)
+	var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
+
+	if(!GD || !GD.loaded_data)
 		src.to_chat(span("danger","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
 		return FALSE
 
-	if(C.globals.loaded_data["antag_tokens"] <= 0)
+	if(GD.loaded_data["antag_tokens"] <= 0)
 		src.to_chat(span("danger","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
 		return FALSE
 
@@ -186,13 +188,18 @@ var/global/antag_count = 0
 	if(!can_become_antagonist())
 		return FALSE
 
+	var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
+	if(!GD)
+		src.to_chat(span("danger","Globaldata error detected. Report this to Burger on discord with error code: WEWLAD. Rejoining may fix this."))
+		return FALSE
+
 	var/obj/marker/antag/chosen_marker = pick(all_antag_markers[antagonist_choice])
 	all_antag_markers[antagonist_choice] -= chosen_marker
 	if(!length(all_antag_markers[antagonist_choice]))
 		all_antag_markers -= antagonist_choice
 
-	C.globals.loaded_data["antag_tokens"] -= 1
-	src.to_chat(span("notice","You spend an antag token to become an antagonist. You now have <b>[C.globals.loaded_data["antag_tokens"]]</b> antag token(s)."))
+	GD.loaded_data["antag_tokens"] -= 1
+	src.to_chat(span("notice","You spend an antag token to become an antagonist. You now have <b>[GD.loaded_data["antag_tokens"]]</b> antag token(s)."))
 
 	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
 	mobdata.reset_data()

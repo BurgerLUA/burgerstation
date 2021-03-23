@@ -166,7 +166,7 @@
 			S.update_sprite()
 
 	if(on && !dead)
-		stealth_mod = get_skill_power(SKILL_SURVIVAL)
+		stealth_mod = get_skill_power(SKILL_SURVIVAL,0,1,2)
 		is_sneaking = TRUE
 		return TRUE
 	else

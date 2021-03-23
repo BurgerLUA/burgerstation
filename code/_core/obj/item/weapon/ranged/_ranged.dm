@@ -146,7 +146,7 @@
 	return 0.025
 
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L)
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.025 - (0.05 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
 	if(L.move_delay < 0)
@@ -342,7 +342,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/mob/living/L = caller
 			skill_spread = get_skill_spread(L)
 			movement_spread = get_movement_spread(L)
-			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED)*0.5)
+			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED,0,0.5,1))
 			if(L.horizontal) prone = TRUE
 			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
 
@@ -530,7 +530,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		else
 			. *= total_zoom_mul/1
 
-	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION)*0.75) //Based on skill
+	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1)) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 

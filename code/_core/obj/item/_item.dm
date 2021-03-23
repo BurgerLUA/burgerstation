@@ -41,6 +41,9 @@
 	var/container_blacklist = list()
 	var/container_whitelist = list()
 	var/max_inventory_x = MAX_INVENTORY_X
+	var/inventory_category = "dynamic"
+	var/starting_inventory_y = "BOTTOM+1.25"
+	var/inventory_y_multiplier = 1
 
 	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod = 1 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
@@ -192,7 +195,7 @@
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(is_living(source))
 		var/mob/living/L = source
-		return (1 - L.get_skill_power(SKILL_PRECISION))*inaccuracy_modifier*8
+		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
 	return 0
 
 /obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
@@ -214,24 +217,6 @@
 		update_value()
 
 	return amount_to_add
-
-/*
-/obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		return (V.get_skill_power(SKILL_BLOCK)) >= block_difficulty[DT.get_attack_type()] ? src : null
-
-	return src
-
-/obj/item/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		return (V.get_skill_power(SKILL_PARRY)) >= block_difficulty[DT.get_attack_type()] ? src : null
-
-	return src
-*/
 
 
 /obj/item/Destroy()
@@ -339,6 +324,7 @@
 		//Doesn't need to be initialized as it's done later.
 		D.id = "dynamic_[i]"
 		D.slot_num = i
+		D.inventory_category = inventory_category
 		if(container_max_slots)
 			D.max_slots = container_max_slots
 		if(container_max_size)
@@ -351,6 +337,9 @@
 			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
 			D.inventory_temperature_mod_mod = container_temperature_mod
+		if(i==1)
+			D.assoc_button = new /obj/hud/button/close_inventory
+			D.assoc_button.inventory_category = inventory_category
 		inventories += D
 
 	return ..()
@@ -422,6 +411,15 @@
 
 /obj/item/post_move(var/atom/old_loc)
 
+	if(is_container && inventory_user)
+		if(is_inventory(old_loc) && is_inventory(loc))
+			var/obj/hud/inventory/I1 = old_loc
+			var/obj/hud/inventory/I2 = loc
+			if(I1.owner != I2.owner)
+				close_inventory(null)
+		else if(!can_interact_with_inventory(inventory_user))
+			close_inventory(null)
+
 	if(isturf(loc) && is_inventory(old_loc))
 		if(delete_on_drop)
 			qdel(src)
@@ -434,11 +432,6 @@
 	return ..()
 
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
-
-	if(is_container)
-		for(var/k in inventories)
-			var/obj/hud/inventory/I = k
-			I.update_owner(new_location.owner)
 
 	if(old_location && new_location)
 		var/turf/OL = get_turf(old_location)

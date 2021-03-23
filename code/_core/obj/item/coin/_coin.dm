@@ -22,12 +22,17 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	if(!caller.client || !caller.client.globals)
+	if(!caller.client)
+		return TRUE //literally how
+
+	var/savedata/client/globals/GD = GLOBALDATA(caller.client.ckey)
+
+	if(!GD)
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
-	caller.client.globals.loaded_data["antag_tokens"] += 1 //We don't save here because there might be an exploit where you don't save or something.
-	caller.to_chat(span("warning","Your antag token count has increased by 1! It is now [caller.client.globals.loaded_data["antag_tokens"]]."))
+	GD.loaded_data["antag_tokens"] += 1 //We don't save here because there might be an exploit where you don't save or something.
+	caller.to_chat(span("warning","Your antag token count has increased by 1! It is now [GD.loaded_data["antag_tokens"]]."))
 	qdel(src)
 
 	return TRUE

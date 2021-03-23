@@ -119,6 +119,4 @@ var/global/allow_loading = TRUE
 	else
 		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
 
-	A.client?.globals?.save() //Save globals too. TODO: FIX THIS
-
 	return TRUE
