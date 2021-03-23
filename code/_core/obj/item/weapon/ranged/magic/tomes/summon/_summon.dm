@@ -31,13 +31,21 @@
 			L.set_loyalty_tag(L2.loyalty_tag)
 			L.master = L2
 			L.minion_remove_time = world.time + duration
-			L.level_multiplier = L2.get_skill_power(SKILL_MAGIC,1,100,200)
+			L.level_multiplier = L2.get_skill_power(SKILL_MAGIC,1,100,200) * (cost_mana/100)
+			//log_debug("Level multiplier: [L.level_multiplier].")
 			L2.minion = L
 		if(L2.is_player_controlled())
 			L2.add_skill_xp(SKILL_MAGIC,cost_mana*1.5)
 	INITIALIZE(summoned_object)
 	GENERATE(summoned_object)
 	FINALIZE(summoned_object)
+
+	/*
+	if(is_living(summoned_object))
+		var/mob/living/L = summoned_object
+		log_debug("Strength Value: [L.get_attribute_level(ATTRIBUTE_STRENGTH)].")
+	*/
+
 	if(summoned_object)
 		summoned_object.Move(T)
 		if(is_living(summoned_object))

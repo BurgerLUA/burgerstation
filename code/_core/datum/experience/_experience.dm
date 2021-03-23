@@ -91,11 +91,12 @@
 	experience = new_xp
 	return experience
 
-// https://www.desmos.com/calculator/ujqppki2oz
+// https://www.desmos.com/calculator/bwdfwyg3ae
 /experience/proc/get_power(var/min_power = 0.25,var/max_power = 1,var/absolute_max_power)
 	if(!absolute_max_power)
 		absolute_max_power = max_power
-	return min( (min_power + (last_level/100)*(max_power-min_power)) / (max_power), absolute_max_power)
+	return min(absolute_max_power,(min_power + get_current_level()*max_power*0.01)*(1-(min_power/max_power)))
+
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
 	owner.on_level_up(src,old_level,new_level)
