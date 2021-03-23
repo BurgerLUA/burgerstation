@@ -5,6 +5,9 @@
 	desc_extended = "A talisman made from sinew and shards of bone."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER
 
+	item_slot = SLOT_NECK_O
+	blocks_clothing = SLOT_NECK_O
+
 	protected_limbs = list(BODY_TORSO)
 
 	rarity = RARITY_RARE

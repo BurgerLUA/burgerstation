@@ -4,9 +4,9 @@
 	icon_state = "slot_hand_left"
 	id = BODY_HAND_LEFT + "_worn"
 	screen_loc = "LEFT+2,BOTTOM+1"
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND_LEFT | SLOT_HAND_LEFT_O
 
-	max_slots = 1
+	max_slots = 2
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
@@ -20,9 +20,9 @@
 	icon_state = "slot_hand_right"
 	id = BODY_HAND_RIGHT + "_worn"
 	screen_loc = "LEFT,BOTTOM+1"
-	item_slot = SLOT_HAND_RIGHT
+	item_slot = SLOT_HAND_RIGHT | SLOT_HAND_RIGHT_O
 
-	max_slots = 1
+	max_slots = 2
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
