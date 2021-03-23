@@ -23,7 +23,10 @@
 /mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/do_teleport = TRUE,var/update_blends=TRUE)
 
 	//Name
-	real_name = loaded_data["name"]
+	real_name = sanitize_name(client,loaded_data["name"])
+	if(!real_name)
+		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+
 	sex = loaded_data["sex"]
 	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON
 	gender = loaded_data["gender"]

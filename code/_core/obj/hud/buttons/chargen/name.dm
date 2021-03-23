@@ -33,7 +33,7 @@
 		if(!choice) return
 
 		if(caller.client)
-			choice = police_input(caller.client,choice,40)
+			choice = sanitize_name(P.client,choice,50)
 
 		if(!choice) return
 

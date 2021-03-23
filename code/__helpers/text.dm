@@ -160,3 +160,30 @@
 
 /proc/proper_url_encode(var/input)
 	return url_encode(replacetextEx(input,"\n",""))
+
+var/global/regex/illegal_name_characters = regex("\[^(A-Z,a-z,\\s,&,',0-9,\\-)\]")
+
+/proc/sanitize_name(var/client/caller,var/text,var/limit=50)
+
+	. = text
+
+	if(!.)
+		return null
+
+	var/has_forbidden = FALSE
+	if(illegal_name_characters.Find(text))
+		has_forbidden = TRUE
+		. = illegal_name_characters.Replace(.,"")
+
+	. = trim(.)
+
+	if(SSbadwords.has_badword(.))
+		caller?.to_chat(span("danger","The name \"[.]\" contains a forbidden word."))
+		return null
+
+	if(length(.) <= 2)
+		caller?.to_chat(span("warning","The name \"[.]\" is too short!"))
+		return null
+
+	if(has_forbidden)
+		caller?.to_chat(span("warning","Your name contained forbidden characters, and thus was removed of them."))
