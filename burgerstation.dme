@@ -230,7 +230,6 @@
 #include "code\_core\datum\ai\advanced\ashwalker.dm"
 #include "code\_core\datum\ai\advanced\beef.dm"
 #include "code\_core\datum\ai\advanced\clockwork_cult.dm"
-#include "code\_core\datum\ai\advanced\crystal_guardian.dm"
 #include "code\_core\datum\ai\advanced\cult.dm"
 #include "code\_core\datum\ai\advanced\daddy.dm"
 #include "code\_core\datum\ai\advanced\hostage.dm"

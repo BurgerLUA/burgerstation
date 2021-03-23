@@ -65,7 +65,7 @@
 	return A.add_xp(xp_to_add)
 
 /mob/living/get_xp_multiplier()
-	if(minion)
+	if(master)
 		return 0
 	return 1
 
