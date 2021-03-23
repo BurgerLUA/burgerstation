@@ -22,12 +22,12 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	SAVEVAR("frequency")
+	SAVEVAR("frequency_current")
 	SAVEVAR("signal_current")
 
 /obj/item/device/signaller/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	LOADVAR("frequency")
+	LOADVAR("frequency_current")
 	LOADVAR("signal_current")
 
 /obj/item/device/signaller/door

@@ -177,29 +177,24 @@
 	var/mob/living/advanced/A = owner
 
 	var/obj/item/weapon/best_weapon
-	var/best_weapon_value = -1
+	var/best_weapon_value = 0
 
 	var/distance_check = possible_target ? get_dist(owner,possible_target) : VIEW_RANGE
 
 	var/list/lists_to_check = A.worn_objects + A.held_objects
 
 	for(var/obj/item/weapon/W in lists_to_check)
-
 		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = W
 			if(!M.stored_magazine) continue
-
 		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 4 : 1)
-
-		if(!best_weapon || !best_weapon_value)
+		weapon_value *= W.value
+		if(!best_weapon || weapon_value > best_weapon_value)
 			best_weapon = W
 			best_weapon_value = weapon_value
 			continue
 
-		if(weapon_value > best_weapon_value)
-			best_weapon = W
-			best_weapon_value = weapon_value
-			continue
+	log_debug("Best weapon: [best_weapon].")
 
 	return best_weapon
 

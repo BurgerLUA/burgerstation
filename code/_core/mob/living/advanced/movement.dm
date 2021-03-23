@@ -83,7 +83,7 @@ mob/living/advanced/get_movement_delay()
 
 	for(var/k in using_inventories)
 		var/obj/item/I = k
-		if(get_dist(src,I) >= 1)
+		if(get_dist(src,I) > 1)
 			I.close_inventory(src)
 
 	if(. && isturf(old_loc))

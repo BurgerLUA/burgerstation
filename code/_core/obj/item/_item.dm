@@ -195,7 +195,7 @@
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(is_living(source))
 		var/mob/living/L = source
-		return (1 - L.get_skill_power(SKILL_PRECISION))*inaccuracy_modifier*8
+		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
 	return 0
 
 /obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
@@ -217,24 +217,6 @@
 		update_value()
 
 	return amount_to_add
-
-/*
-/obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		return (V.get_skill_power(SKILL_BLOCK)) >= block_difficulty[DT.get_attack_type()] ? src : null
-
-	return src
-
-/obj/item/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(is_living(victim))
-		var/mob/living/V = victim
-		return (V.get_skill_power(SKILL_PARRY)) >= block_difficulty[DT.get_attack_type()] ? src : null
-
-	return src
-*/
 
 
 /obj/item/Destroy()

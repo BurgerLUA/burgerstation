@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/crystal/
+/obj/item/weapon/melee/crystal
 	name = "conjuring crystals"
 	icon = 'icons/obj/item/weapons/melee/swords/crystal.dmi'
 	icon_state = "inventory"
@@ -97,9 +97,6 @@
 
 /obj/item/weapon/melee/crystal/rapier
 	name = "crystal rapier"
-	icon_state = "inventory_r"
-	icon_state_held_left = "held_left_r"
-	icon_state_held_right = "held_right_r"
 	damage_type = /damagetype/melee/sword/crystal/rapier
 	size = SIZE_4
 	weight = 5
@@ -108,9 +105,6 @@
 
 /obj/item/weapon/melee/crystal/longsword
 	name = "crystal longsword"
-	icon_state = "inventory_ls"
-	icon_state_held_left = "held_left_ls"
-	icon_state_held_right = "held_right_ls"
 	damage_type = /damagetype/melee/sword/crystal/longsword
 	size = SIZE_5
 	weight = 8

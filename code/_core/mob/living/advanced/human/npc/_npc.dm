@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/
 	name = "greytide"
 	enable_AI = TRUE
-	ai = /ai/
+	ai = /ai/advanced/
 
 	var/dialogue_id
 

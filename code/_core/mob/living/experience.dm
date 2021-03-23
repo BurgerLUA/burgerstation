@@ -12,12 +12,12 @@
 		return 25
 	return S.get_current_level()
 
-/mob/living/proc/get_skill_power(var/id)
+/mob/living/proc/get_skill_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
 		CRASH_SAFE("Warning! Tried getting skill power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
-	return S.get_power()
+	return S.get_power(min_power,max_power,absolute_max_power)
 
 /mob/living/proc/set_skill_level(var/id,var/desired_level)
 	var/experience/skill/S = get_skill(id)
@@ -45,12 +45,12 @@
 		return 25
 	return A.get_current_level()
 
-/mob/living/proc/get_attribute_power(var/id)
+/mob/living/proc/get_attribute_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
 		CRASH_SAFE("Warning! Tried getting attribute power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
-	return A.get_power()
+	return A.get_power(min_power,max_power,absolute_max_power)
 
 /mob/living/proc/set_attribute_level(var/id,var/desired_level)
 	var/experience/attribute/A = get_attribute(id)
@@ -65,6 +65,8 @@
 	return A.add_xp(xp_to_add)
 
 /mob/living/get_xp_multiplier()
+	if(master)
+		return 0
 	return 1
 
 /mob/living/proc/initialize_attributes()
@@ -89,7 +91,7 @@
 		var/v = SSexperience.all_skills[k]
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
-		S.update_experience(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
+		S.update_experience(S.level_to_xp(desired_level*level_multiplier))
 		skills[S.id] = S
 
 /mob/living/proc/update_level(var/first=FALSE)

@@ -50,6 +50,11 @@
 	return TRUE
 
 /turf/proc/is_safe_teleport(var/check_contents=TRUE)
+
+	var/area/A = loc
+	if(A && A.flags_area & FLAG_AREA_NO_LOYALTY)
+		return FALSE
+
 	return !is_space()
 
 /turf/New(loc)

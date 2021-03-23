@@ -42,6 +42,9 @@
 	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
+	if(loaded_data["prestige_count"])
+		prestige_count =  loaded_data["prestige_count"]
+
 	if(loaded_data["dead"]) //New body!
 		nutrition = initial(nutrition)*0.25
 		nutrition_fast = nutrition
@@ -124,8 +127,6 @@
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
-	var/savedata/client/mob/M = MOBDATA(ckey)
-
 	. = list()
 
 	//Basic Information
@@ -149,16 +150,12 @@
 	.["last_tax_payment"] = last_tax_payment
 	.["partial_tax"] = partial_tax
 	.["rarity"] = rarity
+	.["prestige_count"] = prestige_count
 
 	if(length(traits))
 		.["traits"] = list()
 		for(var/k in traits)
 			.["traits"] |= k
-
-	if(M && M.loaded_data)
-		.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.
-	else
-		CRASH_SAFE("WARNING: Could not get_mob_data() [src.get_debug_name()]'s mechs!")
 
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
@@ -167,7 +164,6 @@
 			final_organ_list[id] = O.save_item_data(save_inventory)
 		catch(var/exception/e)
 			log_error("get_mob_data:() [e] on [e.file]:[e.line]\n[e.desc]!")
-
 	.["organs"] = final_organ_list
 
 	//Skills

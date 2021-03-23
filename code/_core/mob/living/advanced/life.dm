@@ -31,10 +31,10 @@ mob/living/advanced/revive()
 
 	. = ..()
 
-	drop_hands(src.loc)
-
-	right_hand?.release_object()
-	left_hand?.release_object()
+	if(!master)
+		drop_hands(src.loc)
+		right_hand?.release_object()
+		left_hand?.release_object()
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)
