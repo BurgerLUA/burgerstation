@@ -323,3 +323,47 @@
 	icon_state = "shock"
 	chosenProjectile = /obj/projectile/magic/lightning_bolt
 	chosenDamageType = /damagetype/ranged/magic/lightning
+
+/obj/structure/totem/blood_heal
+	name = "totem of blood regeneration"
+	desc = "I'm melting, I'm melting!"
+	desc_extended = "A totem that will restore the caster's and allies blood."
+	icon_state = "blood"
+
+/obj/structure/totem/blood_heal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag != affecting_faction)
+			continue
+		if(L.immortal)
+			continue
+		if(!istype(L.health))
+			continue
+		if(L.blood_volume >= L.blood_volume_max)
+			continue
+		L.blood_volume += min(L.blood_volume_max - L.blood_volume,leveled_effect*5)
+		CREATE(/obj/effect/temp/healing,L.loc)
+
+/obj/structure/totem/blood_deal
+	name = "totem of blood degeneration"
+	desc = "It is water bending, but for blood"
+	desc_extended = "A totem that will bleed the caster's enemies."
+	icon_state = "bloodloss"
+
+/obj/structure/totem/blood_deal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(L.immortal)
+			continue
+		if(!istype(L.health))
+			continue
+		if(L.blood_volume <= 0)
+			continue
+		L.blood_volume -= min(L.blood_volume,leveled_effect*5)
+		CREATE(/obj/effect/temp/electricity,L.loc)
