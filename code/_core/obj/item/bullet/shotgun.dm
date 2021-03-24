@@ -64,7 +64,7 @@
 	size = 0.04
 	value = 1.6
 
-	inaccuracy_modifer = 1.5
+	inaccuracy_modifer = 1.25
 
 /obj/item/bullet_cartridge/shotgun_12/buckshot/surplus
 	name = "\improper surplus 12 gauge buckshot"
@@ -110,7 +110,7 @@
 	size = 0.04
 	value = 1.8
 
-	inaccuracy_modifer = 1.3
+	inaccuracy_modifer = 1.1
 
 /obj/item/bullet_cartridge/shotgun_12/flechette/surplus
 	name = "\improper surplus 12 gauge flechette"

@@ -60,7 +60,7 @@
 	size = 0.04
 	value = 3.5
 
-	inaccuracy_modifer = 2
+	inaccuracy_modifer = 1.5
 
 /obj/item/bullet_cartridge/shotgun_23/fire
 	name = "\improper 23x75mmR incendiary shell"

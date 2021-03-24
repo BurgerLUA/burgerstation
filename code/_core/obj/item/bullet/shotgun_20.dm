@@ -64,7 +64,7 @@
 	size = 0.04
 	value = 1.6
 
-	inaccuracy_modifer = 1.5
+	inaccuracy_modifer = 1.25
 
 /obj/item/bullet_cartridge/shotgun_20/buckshot/surplus
 	name = "\improper surplus 20 gauge slug"
