@@ -54,6 +54,8 @@
 			return TRUE //Needs to be here. At this level.
 
 	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+		if(!isturf(caller.loc))
+			return TRUE
 		var/mob/living/L = caller
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = top_object
@@ -90,6 +92,8 @@
 			return TRUE
 		if(grabbed_object)
 			release_object(caller)
+			return TRUE
+		if(!isturf(caller.loc))
 			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
@@ -134,7 +138,7 @@
 				A.left_hand.toggle_wield(caller,A.right_item)
 				return TRUE
 
-	if(get_dist(src,object) <= 1)
+	if(get_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
 			if(I.anchored) //If it's anchored, we just call click_self on it.

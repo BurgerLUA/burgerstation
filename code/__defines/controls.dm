@@ -24,6 +24,7 @@
 #define FLAG_INTERACTION_DEAD 0x2
 #define FLAG_INTERACTION_NO_HORIZONTAL 0x4 //Disallow horizontal users.
 #define FLAG_INTERACTION_NO_DISTANCE 0x8 //Ignore distance checks.
+#define FLAG_INTERACTION_NO_TURF_CHECKING 0x10 //Ignore turf checks.
 
 #define INTENT_HELP "help"
 #define INTENT_DISARM "disarm"
