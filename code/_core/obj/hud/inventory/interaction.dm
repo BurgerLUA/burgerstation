@@ -287,8 +287,6 @@
 
 	return TRUE
 
-
-
 /obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 
 	DEFER_OBJECT

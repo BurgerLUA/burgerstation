@@ -159,8 +159,9 @@
 
 /turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	for(var/atom/A in src.contents)
-		A.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
+	for(var/k in src.contents)
+		var/atom/movable/M = k
+		M.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return ..()
 

@@ -1,10 +1,12 @@
 /obj/explosion_process
+	var/original_power = 0
 	var/power = 0
 	var/velocity_dir = 0x0
 	var/atom/owner
 	var/atom/source
 	var/turf/epicenter
 	var/loyalty_tag
+	var/multiplier = 1
 
 
 	icon = 'icons/obj/effects/fire.dmi'
@@ -14,7 +16,7 @@
 
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
-	SSexplosion.add_data(loc,owner,source,epicenter,power,loyalty_tag)
+	SSexplosion.add_data(loc,owner,source,epicenter,(power*0.9 + original_power*0.1)*multiplier,loyalty_tag)
 	icon_state = "[clamp(FLOOR(power/30,1),1,3)]"
 	if(velocity_dir)
 		dir = velocity_dir
@@ -40,7 +42,7 @@
 		var/turf/T = get_step(src,d)
 		if(!T) continue
 		if(!T.Enter(src,src.loc))
-			SSexplosion.add_data(T,owner,source,epicenter,power,loyalty_tag)
+			SSexplosion.add_data(T,owner,source,epicenter,(power*0.9 + original_power*0.1)*multiplier,loyalty_tag)
 			continue
 		var/obj/explosion_process/existing = locate() in T.contents
 		var/direction_mod = 1
@@ -71,15 +73,20 @@
 		var/obj/explosion_process/EP = has_existing ? valid_existing[k] : null
 		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))
 		if(EP)
+			if(multiplier > EP.multiplier)
+				power_to_give *= EP.multiplier ? multiplier/EP.multiplier : multiplier
 			EP.power = max(EP.power,power_to_give)
+			EP.original_power = max(EP.original_power,original_power)
 		else
 			EP = new(T)
+			EP.original_power = original_power
 			EP.power = power_to_give
 			EP.velocity_dir = get_dir(src,EP)
 			EP.owner = owner
 			EP.source = source
 			EP.epicenter = epicenter
 			EP.loyalty_tag = loyalty_tag
+			EP.multiplier = multiplier
 			INITIALIZE(EP)
 			GENERATE(EP)
 			FINALIZE(EP)

@@ -650,7 +650,7 @@
 			x_mod *= 1/max
 			y_mod *= 1/max
 
-		throw_self(owner,null,null,null,x_mod*magnitude*2,y_mod*magnitude*2)
+		throw_self(owner,null,null,null,max(TILE_SIZE-1,x_mod*magnitude*2),max(TILE_SIZE-1,y_mod*magnitude*2))
 
 	return ..()
 
