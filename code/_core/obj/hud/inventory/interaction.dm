@@ -157,6 +157,14 @@
 			if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
 				var/obj/hud/inventory/INV = I.loc
 				if(!top_object)
+					if(INV.worn)
+						var/content_length = length(INV.contents)
+						if(content_length > 1 && caller.attack_flags & CONTROL_MOD_ALT) //Force
+							content_length -= 1
+						for(var/i=content_length,i>0,i--)
+							var/obj/item/ITM = INV.contents[i]
+							if(ITM.click_self(caller))
+								return TRUE
 					if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
 						I.click_self(caller)
 						return TRUE
@@ -166,7 +174,14 @@
 						else
 							src.add_object(object)
 						return TRUE
-				else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory.
+				/*
+				else if(INV.worn && I.is_container && is_item(top_object)) //The item we're clicking on is an inventory and a worn container, and we're clicking on it with a clorthing.
+					var/obj/item/ITO = top_object
+					if(ITO.item_slot & INV.item_slot)
+						INV.add_object(ITO)
+						return TRUE
+				*/
+				else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
 					return TRUE
 			else if(!top_object) //If we don't have a top object, pick it up.
 				src.add_object(object)
@@ -278,7 +293,7 @@
 
 	DEFER_OBJECT
 
-	if(is_item(defer_object)) //Put the item in the inventory slot.
+	if(is_item(defer_object)) //Put the item in this inventory slot.
 		var/obj/item/object_as_item = defer_object
 		INTERACT_CHECK
 		INTERACT_CHECK_DEFER
