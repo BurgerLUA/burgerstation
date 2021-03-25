@@ -17,6 +17,7 @@
 	var/affecting_faction //which faction it should affect
 
 	var/ranged_limited = TRUE //if a totem isn't too strong, be nice and don't limit the totem to only work within a range
+	var/required_range = 11
 
 /obj/structure/totem/Finalize()
 	. = ..()
@@ -36,7 +37,7 @@
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
-	if(get_dist(owner.loc, loc) > 11 && ranged_limited)
+	if(get_dist(owner.loc, loc) > required_range && ranged_limited)
 		return TRUE
 	totemic_effect()
 	return TRUE
