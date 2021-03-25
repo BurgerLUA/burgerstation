@@ -326,7 +326,7 @@
 
 /obj/structure/totem/blood_heal
 	name = "totem of blood regeneration"
-	desc = "I'm melting, I'm melting!"
+	desc = "It is water bending, but for blood."
 	desc_extended = "A totem that will restore the caster's and allies blood."
 	icon_state = "blood"
 
@@ -348,7 +348,7 @@
 
 /obj/structure/totem/blood_deal
 	name = "totem of blood degeneration"
-	desc = "It is water bending, but for blood"
+	desc = "It is water bending, but for blood."
 	desc_extended = "A totem that will bleed the caster's enemies."
 	icon_state = "bloodloss"
 
