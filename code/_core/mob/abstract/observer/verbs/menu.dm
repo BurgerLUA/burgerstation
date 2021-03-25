@@ -104,6 +104,9 @@ var/global/antag_count = 0
 
 	var/client/C = src.client
 
+	if(!C)
+		return FALSE
+
 	var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
 
 	if(!GD || !GD.loaded_data)

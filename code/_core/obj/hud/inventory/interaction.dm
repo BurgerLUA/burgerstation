@@ -29,7 +29,7 @@
 			L.to_chat(span("warning","You're dead!"))
 			return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_GRAB)
+	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
 		if(is_item(object) && is_inventory(object.loc))
 			var/obj/item/I = object
 			if(!I.is_container)
@@ -45,7 +45,7 @@
 			grab_object(caller,object,location,control,params)
 			return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_ALT && ismovable(object))
+	if(!top_object && caller.attack_flags & CONTROL_MOD_ALT && ismovable(object)) //Alt clicking wtih an empty hand.
 		var/atom/movable/M = object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
