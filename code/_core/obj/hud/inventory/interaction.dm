@@ -31,8 +31,10 @@
 
 	if(caller.attack_flags & CONTROL_MOD_GRAB)
 		if(is_item(object) && is_inventory(object.loc))
-			toggle_wield(caller,object)
-			return TRUE
+			var/obj/item/I = object
+			if(!I.is_container)
+				toggle_wield(caller,object)
+				return TRUE
 		if(isturf(object.loc) && get_dist(caller,object) <= 1)
 			if(is_living(object))
 				var/mob/living/L = object
@@ -141,6 +143,14 @@
 	if(get_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
+			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB)
+				var/obj/item/found_item
+				for(var/k in I.inventories)
+					var/obj/hud/inventory/INV = k
+					found_item = INV.get_top_object()
+					if(found_item)
+						src.add_object(found_item)
+						return TRUE
 			if(I.anchored) //If it's anchored, we just call click_self on it.
 				I.click_self(caller) //works
 				return TRUE
@@ -148,10 +158,13 @@
 				var/obj/hud/inventory/INV = I.loc
 				if(!top_object)
 					if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
-						I.click_self(caller) //works
+						I.click_self(caller)
 						return TRUE
 					if(!INV.click_flags && (!INV.drag_to_take || is_weapon(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
-						src.add_object(object)
+						if(caller.attack_flags & CONTROL_MOD_ALT)
+							I.click_self(caller)
+						else
+							src.add_object(object)
 						return TRUE
 				else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory.
 					return TRUE
