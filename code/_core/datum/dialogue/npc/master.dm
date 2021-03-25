@@ -62,6 +62,6 @@
 		return FALSE
 
 	var/experience/E = desired_choice
-	if(E.get_max_level() > E.get_current_level())
+	if(E.get_max_level() <= E.get_current_level())
 		P.prestige(E.id)
 	return TRUE
