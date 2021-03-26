@@ -6,6 +6,20 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+/turf/simulated/floor/stair/Exit(atom/movable/O, atom/newloc)
+	var/turf/above_turf = locate(x,y,z+1)
+	var/turf/targeted_above_turf = get_step(above_turf, dir)
+	if(get_turf(newloc) == get_step(src, dir))
+		if(!is_floor(targeted_above_turf))
+			return ..()
+		O.force_move(targeted_above_turf)
+	return ..()
+
+/turf/simulated/floor/stair/Enter(atom/movable/enterer, atom/oldloc)
+	if(get_step(oldloc, dir) != get_turf(src))
+		return FALSE
+	return ..()
+
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
 	footstep = /footstep/wood

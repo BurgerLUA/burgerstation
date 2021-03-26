@@ -38,17 +38,23 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	dmm_suite = new()
 
+	//Load the lower portion of the station.
+	var/station_lower_map = rustg_file_read("maps/core/burgerstation_lower.dmm")
+	dmm_suite.read_map(station_lower_map,1,1,1)
+	log_subsystem(name,"Loaded station map.")
+	z_level_to_file["1"] = "burgerstation_lower.dmm"
+
 	//Load the station.
 	var/station_map = rustg_file_read("maps/core/burgerstation.dmm")
-	dmm_suite.read_map(station_map,1,1,1)
+	dmm_suite.read_map(station_map,1,1,2)
 	log_subsystem(name,"Loaded station map.")
-	z_level_to_file["1"] = "burgerstation.dmm"
+	z_level_to_file["2"] = "burgerstation.dmm"
 
 	//Load bluespace.
 	var/bluespace_map = rustg_file_read("maps/core/bluespace.dmm")
-	dmm_suite.read_map(bluespace_map,1,1,2)
+	dmm_suite.read_map(bluespace_map,1,1,3)
 	log_subsystem(name,"Loaded bluespace map.")
-	z_level_to_file["2"] = "bluespace.dmm"
+	z_level_to_file["3"] = "bluespace.dmm"
 
 	//Load the map
 	var/voted_map = "Island"
@@ -61,11 +67,11 @@ SUBSYSTEM_DEF(dmm_suite)
 			log_debug("Invalid map: [found_map]! Defaulting to [voted_map]...")
 	log_debug("Found file: [horde_maps[voted_map]]...")
 	var/ground_map = file2text(horde_maps[voted_map])
-	dmm_suite.read_map(ground_map,1,1,3)
+	dmm_suite.read_map(ground_map,1,1,4)
 	log_subsystem(name,"Loaded ground map.")
 	map_name = voted_map
 	map_path = "[horde_maps[voted_map]]"
-	z_level_to_file["3"] = get_filename(map_path)
+	z_level_to_file["4"] = get_filename(map_path)
 
 	//Load prefabs
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")

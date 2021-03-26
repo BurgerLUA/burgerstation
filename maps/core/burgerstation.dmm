@@ -7302,6 +7302,9 @@
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"Bm" = (
+/turf/simulated/floor/openspace,
+/area/burgerstation/arrivals)
 "OQ" = (
 /obj/structure/interactive/atmospherics/air_alarm{
 	dir = 4
@@ -51598,11 +51601,11 @@ hJ
 hJ
 hJ
 hU
-hJ
-hJ
-hJ
-hJ
-hJ
+Bm
+Bm
+Bm
+Bm
+Bm
 hU
 hJ
 hJ
@@ -51855,11 +51858,11 @@ nd
 nd
 hJ
 hU
-hJ
-nd
-nd
-nd
-hJ
+Bm
+Bm
+Bm
+Bm
+Bm
 hU
 hJ
 nd
@@ -52112,11 +52115,11 @@ nd
 nd
 hJ
 hU
-hJ
-nd
-nd
-nd
-hJ
+Bm
+Bm
+Bm
+Bm
+Bm
 hU
 hJ
 nd
@@ -52369,11 +52372,11 @@ hJ
 hJ
 hJ
 hU
-hJ
-hJ
-hJ
-hJ
-hJ
+Bm
+Bm
+Bm
+Bm
+Bm
 hU
 hJ
 hJ
