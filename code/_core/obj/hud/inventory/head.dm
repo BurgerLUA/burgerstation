@@ -19,9 +19,9 @@
 	icon_state = "slot_neck"
 	id = BODY_NECK
 	screen_loc = "LEFT+2,BOTTOM+2"
-	item_slot = SLOT_NECK
+	item_slot = SLOT_NECK | SLOT_NECK_O
 
-	max_slots = 1
+	max_slots = 2
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB

@@ -50,7 +50,9 @@
 #define SLOT_FACE         0x80  //Masks
 #define SLOT_EAR          0x100 //Headsets
 #define SLOT_EYES         0x200 //Glasses
-#define SLOT_NECK         0x400 //Neck
+
+#define SLOT_NECK         0x400 //Cloaks
+#define SLOT_NECK_O       0x600 //Necklace, Tie
 
 #define SLOT_GROIN        0x800  //Pants
 #define SLOT_GROIN_O      0x1000 //Belts, mainly
@@ -65,7 +67,9 @@
 #define SLOT_FOOT_LEFT_O  0x80000 //Magboots
 
 #define SLOT_HAND_LEFT    0x100000  //Gloves/Gauntlets
+#define SLOT_HAND_LEFT_O    0x110000  //Rings
 #define SLOT_HAND_RIGHT   0x200000  //Gloves/Gauntlets
+#define SLOT_HAND_RIGHT_O   0x220000  //Rings
 
 
 #define SLOT_SPECIAL      0x400000 //Special items
