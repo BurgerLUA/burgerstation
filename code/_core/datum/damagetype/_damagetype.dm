@@ -152,9 +152,9 @@
 	return ATTACK_TYPE_MELEE
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
-	. = do_attack_animation(attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.,src,.proc/do_miss_sound,attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
+	. = max(1,do_attack_animation(attacker,victim,weapon))
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
