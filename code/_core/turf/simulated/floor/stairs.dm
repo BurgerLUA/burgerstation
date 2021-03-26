@@ -18,7 +18,7 @@
 	return ..()
 
 /turf/simulated/floor/stair/Enter(atom/movable/enterer, atom/oldloc)
-	if(is_observer(O))
+	if(is_observer(enterer))
 		return ..()
 	if(get_step(oldloc, dir) != get_turf(src))
 		return FALSE

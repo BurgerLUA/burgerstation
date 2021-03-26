@@ -5,7 +5,6 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
     anchored = TRUE
     icon = 'icons/turf/floor/openspace.dmi'
     icon_state = "openspace_background"
-    plane = PLANE_FLOOR
 
 /turf/simulated/floor/openspace
     name = "openspace"
@@ -13,7 +12,6 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
     desc_extended = "A hole that leads to a lower level, be careful as they can hurt."
     icon = 'icons/turf/floor/openspace.dmi'
     icon_state = "openspace_background"
-    plane = PLANE_OPENSPACE
     destruction_turf = /turf/simulated/floor/openspace
 
 /turf/simulated/floor/openspace/Finalize()

@@ -6,8 +6,6 @@
 
 #define PLANE_DARKNESS 0
 
-#define PLANE_OPENSPACE 0.1
-
 #define PLANE_FLOOR 1
 
 #define PLANE_SHUTTLE 2
