@@ -43,7 +43,9 @@
 
 #define LAYER_PROJECTILE 13
 
-#define LAYER_EFFECT 14
+#define LAYER_EFFECT        14
+
+#define LAYER_OPENSPACE     LAYER_EFFECT + 0.11
 
 #define LAYER_GHOST 15
 

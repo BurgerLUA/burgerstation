@@ -1,10 +1,10 @@
-var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
+var/global/datum/openspace_background = new /atom/movable/openspace_background
 
-/atom/movable/openspace_backdrop
-    name = "openspace_backdrop"
-    anchored = TRUE
+/atom/movable/openspace_background
+    name = "openspace_background"
     icon = 'icons/turf/floor/openspace.dmi'
     icon_state = "openspace_background"
+    layer = LAYER_OPENSPACE
 
 /turf/simulated/floor/openspace
     name = "openspace"
@@ -17,7 +17,7 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
 /turf/simulated/floor/openspace/Finalize()
     . = ..()
     update_icon()
-    vis_contents += openspace_backdrop
+    vis_contents += openspace_background
     update_multiz()
 
 /turf/simulated/floor/openspace/update_icon()
@@ -25,6 +25,7 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
     icon = belowTurf.icon
     icon_state = belowTurf.icon_state
     dir = belowTurf.dir
+    color = belowTurf.color
     return ..()
 
 /turf/simulated/floor/openspace/proc/update_multiz(prune_on_fail = FALSE, init = FALSE)
@@ -37,6 +38,8 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
 
 /turf/simulated/floor/openspace/Entered(atom/movable/O, atom/new_loc)
     . = ..()
+    if(is_observer(O))
+        return
     var/turf/belowTurf = locate(x,y,z-1)
     if(!istype(belowTurf, /turf/simulated/floor/stair))
         if(is_living(O))
