@@ -83,7 +83,7 @@
 			else
 				acceleration_value *= 0.5
 
-	if(move_delay < 0)
+	if(move_delay <= 0)
 		is_moving = FALSE
 
 	if(adjust_delay)
@@ -147,7 +147,7 @@
 
 	if(ismovable(Obstacle) && src.loc != Obstacle)
 		var/atom/movable/M = Obstacle
-		if(!M.anchored && (!grabbing_hand || Obstacle != grabbing_hand.owner))
+		if(!M.anchored && (!grabbing_hand || Obstacle != grabbing_hand.owner) && M.can_be_bumped)
 			M.glide_size = src.glide_size
 			return M.Move(get_step(M,get_dir(src,Obstacle)))
 

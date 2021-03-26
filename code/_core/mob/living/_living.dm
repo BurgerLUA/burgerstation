@@ -250,6 +250,8 @@
 	var/list/traits = list() //Assoc list. This is saved.
 	var/list/traits_by_category = list() //Assoc list. This isn't saved.
 
+	can_be_bumped = FALSE
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))

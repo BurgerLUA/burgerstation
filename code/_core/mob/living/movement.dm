@@ -187,12 +187,14 @@
 
 	if(O.density && is_living(O))
 		var/mob/living/L = O
-		if(L.loyalty_tag == src.loyalty_tag)
-			if(!src.ai || L.is_moving || !L.ai)
-				return ..()
 		if(L.horizontal || src.horizontal)
+			//If the crosser is horizontal, or the src is horizontal, who cares.
 			return ..()
-		if(L.size >= size && L.size >= SIZE_ANIMAL)
+		if(L.loyalty_tag == src.loyalty_tag && !L.ai)
+			//If the crosser is not an AI, who cares.
+			return ..()
+		if(L.size >= SIZE_ANIMAL)
+			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE
 
 	return ..()

@@ -51,8 +51,6 @@
 	if(owner.move_delay <= 0)
 		handle_movement()
 
-	handle_movement_checks()
-
 	owner.handle_movement(tick_rate)
 
 	return TRUE
