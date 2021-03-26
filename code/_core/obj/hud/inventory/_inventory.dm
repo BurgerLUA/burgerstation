@@ -473,7 +473,7 @@
 
 /obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
 
-	if(!I.item_slot)
+	if(!I.item_slot || !(I.item_slot & item_slot))
 		return FALSE
 
 	if(!is_advanced(owner))
