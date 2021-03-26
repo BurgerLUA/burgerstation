@@ -4,11 +4,10 @@ var/global/list/horde_maps = list(
 	"LZ-420" = "maps/horde/lz_420.dmm",
 	//"Crystal Canyon" = "maps/horde/crystalcanyon.dmm",
 	//"Jungle B-0X (WIP)" = "maps/horde/box.dmm",
-	"Lavaland" = "maps/horde/lavaland.dmm",
-	//"Supermatter Defense" = "maps/horde/supermatter.dmm"
+	"Lavaland" = "maps/horde/lavaland.dmm"
 )
 
 
-var/global/list/vr_maps = list(
-	"Free-For-All Deathmatch"
+var/global/list/defense_maps = list(
+	"Supermatter Defense" = "maps/horde/supermatter.dmm"
 )

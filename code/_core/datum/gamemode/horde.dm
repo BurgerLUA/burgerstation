@@ -3,11 +3,6 @@
 	desc = "Fight off a near endless wave of enemies while attempting to complete objectives scattered across the map."
 
 	var/list/horde_targets = list()
-
-	var/list/tracked_enemies = list()
-
-	var/total_killed_enemies = 0
-
 	var/list/mob/living/enemy_types_to_spawn = list()
 
 	hidden = TRUE
@@ -33,15 +28,6 @@
 		else
 			world.end(WORLD_END_NANOTRASEN_VICTORY)
 
-/gamemode/horde/proc/create_horde_mob(var/desired_loc)
-	var/mob/living/L = pickweight(enemy_types_to_spawn)
-	L = new L(desired_loc)
-	INITIALIZE(L)
-	FINALIZE(L)
-	GENERATE(L)
-	HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
-	return L
-
 /gamemode/horde/New()
 
 	state = GAMEMODE_WAITING
@@ -52,7 +38,7 @@
 	if(spawn_on_markers)
 		for(var/k in horde_spawnpoints)
 			var/turf/T = k
-			create_horde_mob(T)
+			create_mob(T,enemy_types_to_spawn)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
 		if(O.z != Z_LEVEL_MISSION)
@@ -252,7 +238,7 @@
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
-		var/mob/living/L = create_horde_mob(T)
+		var/mob/living/L = create_mob(T,enemy_types_to_spawn)
 		L.ai.set_path(found_path)
 		tracked_enemies += L
 		points -= 0.1
@@ -302,22 +288,6 @@
 
 /gamemode/horde/proc/get_enemy_types_to_spawn()
 	return enemy_types_to_spawn
-
-/gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
-
-	for(var/k in SSholiday.holidays)
-		var/holiday/H = SSholiday.holidays[k]
-		H.horde_post_death(L)
-
-	if(!(L in tracked_enemies))
-		return FALSE
-
-	total_killed_enemies++
-	tracked_enemies -= L
-
-	points += 0.1
-
-	return TRUE
 
 /gamemode/horde/proc/get_enemies_to_spawn()
 	. = enemies_to_spawn_base

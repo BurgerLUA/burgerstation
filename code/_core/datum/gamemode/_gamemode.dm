@@ -27,6 +27,9 @@
 	//0 means failure.
 	var/alert_level = CODE_GREEN
 
+	var/list/tracked_enemies = list()
+	var/total_killed_enemies = 0
+
 /gamemode/Destroy()
 
 	QDEL_CUT(crew_active_objectives)
@@ -181,5 +184,30 @@
 	announce("Central Command Mission Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
 
 	next_objective_update = -1
+
+	return TRUE
+
+/gamemode/proc/create_mob(var/desired_loc,var/list/possible_enemies)
+	var/mob/living/L = pickweight(possible_enemies)
+	L = new L(desired_loc)
+	INITIALIZE(L)
+	FINALIZE(L)
+	GENERATE(L)
+	HOOK_ADD("post_death","gamemode_post_death",L,src,.proc/on_killed_enemy)
+	return L
+
+/gamemode/proc/on_killed_enemy(var/mob/living/L,var/args)
+
+	for(var/k in SSholiday.holidays)
+		var/holiday/H = SSholiday.holidays[k]
+		H.horde_post_death(L)
+
+	if(!(L in tracked_enemies))
+		return FALSE
+
+	total_killed_enemies++
+	tracked_enemies -= L
+
+	points += 0.1
 
 	return TRUE

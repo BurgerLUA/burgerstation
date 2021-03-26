@@ -508,6 +508,7 @@
 #include "code\_core\datum\footstep\footstep_types.dm"
 #include "code\_core\datum\fuckup\_fuckup.dm"
 #include "code\_core\datum\gamemode\_gamemode.dm"
+#include "code\_core\datum\gamemode\defense.dm"
 #include "code\_core\datum\gamemode\horde.dm"
 #include "code\_core\datum\gamemode\horde_types.dm"
 #include "code\_core\datum\gamemode\lobby.dm"
