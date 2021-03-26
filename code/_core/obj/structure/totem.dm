@@ -17,6 +17,7 @@
 	var/affecting_faction //which faction it should affect
 
 	var/ranged_limited = TRUE //if a totem isn't too strong, be nice and don't limit the totem to only work within a range
+	var/required_range = 11
 
 /obj/structure/totem/Finalize()
 	. = ..()
@@ -36,7 +37,7 @@
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
-	if(get_dist(owner.loc, loc) > 11 && ranged_limited)
+	if(get_dist(owner.loc, loc) > required_range && ranged_limited)
 		return TRUE
 	totemic_effect()
 	return TRUE
@@ -326,7 +327,7 @@
 
 /obj/structure/totem/blood_heal
 	name = "totem of blood regeneration"
-	desc = "I'm melting, I'm melting!"
+	desc = "It is water bending, but for blood."
 	desc_extended = "A totem that will restore the caster's and allies blood."
 	icon_state = "blood"
 
@@ -348,7 +349,7 @@
 
 /obj/structure/totem/blood_deal
 	name = "totem of blood degeneration"
-	desc = "It is water bending, but for blood"
+	desc = "It is water bending, but for blood."
 	desc_extended = "A totem that will bleed the caster's enemies."
 	icon_state = "bloodloss"
 

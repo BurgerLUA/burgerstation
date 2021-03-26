@@ -29,7 +29,9 @@
 		summoned_totem.owner = livingOwner
 		summoned_totem.affecting_faction = livingOwner.loyalty_tag
 		summoned_totem.totem_remove_time = duration + world.time
-		summoned_totem.leveled_effect = round(livingOwner.get_skill_level(SKILL_MAGIC)/50) + 1 //send help
+		var/calculate_leveled_effect = livingOwner.get_skill_level(SKILL_MAGIC) + stored_powergem.damage_to_add + (quality - 100)
+		summoned_totem.leveled_effect = round(calculate_leveled_effect / 50) + 1 //send help
+		summoned_totem.required_range = 11 + (summoned_totem.leveled_effect * 2)
 		if(livingOwner.is_player_controlled())
 			livingOwner.add_skill_xp(SKILL_MAGIC,cost_mana*1.5)
 	INITIALIZE(summoned_totem)
