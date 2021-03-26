@@ -1,10 +1,11 @@
 var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
 
 /atom/movable/openspace_backdrop
-    name			= "openspace_backdrop"
-    anchored		= TRUE
+    name = "openspace_backdrop"
+    anchored = TRUE
     icon = 'icons/turf/floor/openspace.dmi'
     icon_state = "openspace_background"
+    plane = PLANE_FLOOR
 
 /turf/simulated/floor/openspace
     name = "openspace"
@@ -17,6 +18,7 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
 
 /turf/simulated/floor/openspace/Finalize()
     . = ..()
+    update_icon()
     vis_contents += openspace_backdrop
     update_multiz()
 
@@ -24,8 +26,8 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
     var/turf/belowTurf = locate(x,y,z-1)
     icon = belowTurf.icon
     icon_state = belowTurf.icon_state
+    dir = belowTurf.dir
     return ..()
-
 
 /turf/simulated/floor/openspace/proc/update_multiz(prune_on_fail = FALSE, init = FALSE)
     var/turf/belowTurf = locate(x,y,z-1)
@@ -33,7 +35,6 @@ var/global/datum/openspace_backdrop = new /atom/movable/openspace_backdrop
         vis_contents.len = 0
         change_turf(/turf/simulated/floor/plating)
         return
-    update_icon()
     vis_contents += belowTurf
 
 /turf/simulated/floor/openspace/Entered(atom/movable/O, atom/new_loc)

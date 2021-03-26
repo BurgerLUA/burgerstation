@@ -1,12 +1,12 @@
 #define PLANE_HIDDEN -100
 
-#define PLANE_SPACE -3
+#define PLANE_SPACE -2
 
-#define PLANE_PARALLAX -2
+#define PLANE_PARALLAX -1
 
-#define PLANE_DARKNESS -1
+#define PLANE_DARKNESS 0
 
-#define PLANE_OPENSPACE 0
+#define PLANE_OPENSPACE 0.1
 
 #define PLANE_FLOOR 1
 

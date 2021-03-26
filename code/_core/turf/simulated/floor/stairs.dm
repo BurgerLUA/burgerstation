@@ -7,6 +7,8 @@
 	destruction_turf = /turf/simulated/floor/plating
 
 /turf/simulated/floor/stair/Exit(atom/movable/O, atom/newloc)
+	if(is_observer(O))
+		return ..()
 	var/turf/above_turf = locate(x,y,z+1)
 	var/turf/targeted_above_turf = get_step(above_turf, dir)
 	if(get_turf(newloc) == get_step(src, dir))
@@ -16,6 +18,8 @@
 	return ..()
 
 /turf/simulated/floor/stair/Enter(atom/movable/enterer, atom/oldloc)
+	if(is_observer(O))
+		return ..()
 	if(get_step(oldloc, dir) != get_turf(src))
 		return FALSE
 	return ..()
