@@ -28,8 +28,6 @@
 
 	value = 80
 
-
-
 /obj/item/clothing/feet/shoes/miner/left
 	name = "left mining boot"
 	icon_state = "inventory_left"
@@ -38,4 +36,3 @@
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
 	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
-
