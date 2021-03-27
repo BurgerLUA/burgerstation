@@ -41,8 +41,9 @@
 #define SLOT_TORSO        (1<<1)
 #define SLOT_TORSO_ARMOR  (1<<3)
 #define SLOT_TORSO_BACK   (1<<4)
-#define SLOT_TORSO_BELT   (1<<5)
-#define SLOT_GROIN        (1<<6)
+
+#define SLOT_GROIN        (1<<5)
+#define SLOT_GROIN_BELT   (1<<6)
 
 #define SLOT_HEAD         (1<<7)
 #define SLOT_FACE         (1<<8)

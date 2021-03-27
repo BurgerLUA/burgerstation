@@ -7,7 +7,7 @@
 	max_slots = 1
 	worn = TRUE
 
-	item_slot = SLOT_GROIN
+	item_slot = SLOT_GROIN_BELT
 
 
 	essential = TRUE

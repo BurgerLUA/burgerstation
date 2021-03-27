@@ -15,3 +15,5 @@
 
 	size = SIZE_5
 	weight = 40
+
+	item_slot = SLOT_TORSO_BACK
