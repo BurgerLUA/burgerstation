@@ -28,8 +28,6 @@
 
 	value = 80
 
-
-
 /obj/item/clothing/feet/shoes/miner/left
 	name = "left mining boot"
 	icon_state = "inventory_left"
