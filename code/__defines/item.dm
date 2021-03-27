@@ -52,28 +52,27 @@
 #define SLOT_EYES         (1<<10) //Glasses
 
 #define SLOT_NECK         (1<<11) //Cloaks
-#define SLOT_NECK_O       (1<<12) //Necklace, Tie
+#define SLOT_NECK_O       (1<<11) //Necklace, Tie
 
-#define SLOT_GROIN        (1<<13)  //Pants
-#define SLOT_GROIN_O      (1<<14) //Belts, mainly
-#define SLOT_GROIN_U      (1<<15) //Groin covering underwear
+#define SLOT_GROIN        (1<<12)  //Pants
+#define SLOT_GROIN_O      (1<<13) //Belts, mainly
+#define SLOT_GROIN_U      (1<<14) //Groin covering underwear
 
-#define SLOT_FOOT_RIGHT   (1<<16)  //Shoes
-#define SLOT_FOOT_RIGHT_U (1<<17)  //Socks
-#define SLOT_FOOT_RIGHT_O (1<<18) //Magboots
+#define SLOT_FOOT_RIGHT   (1<<15)  //Shoes
+#define SLOT_FOOT_RIGHT_U (1<<16)  //Socks
+#define SLOT_FOOT_RIGHT_O (1<<17) //Magboots
 
-#define SLOT_FOOT_LEFT    (1<<19) //Shoes
-#define SLOT_FOOT_LEFT_U  (1<<20) //Socks
-#define SLOT_FOOT_LEFT_O  (1<<21) //Magboots
+#define SLOT_FOOT_LEFT    (1<<18) //Shoes
+#define SLOT_FOOT_LEFT_U  (1<<19) //Socks
+#define SLOT_FOOT_LEFT_O  (1<<20) //Magboots
 
-#define SLOT_HAND_LEFT    (1<<22)  //Gloves/Gauntlets
-#define SLOT_HAND_LEFT_O  (1<<23)  //Rings
-#define SLOT_HAND_RIGHT   (1<<24)  //Gloves/Gauntlets
-#define SLOT_HAND_RIGHT_O (1<<25)  //Rings
+#define SLOT_HAND_LEFT    (1<<21)  //Gloves/Gauntlets
+#define SLOT_HAND_LEFT_O  (1<<21)  //Rings
+#define SLOT_HAND_RIGHT   (1<<22)  //Gloves/Gauntlets
+#define SLOT_HAND_RIGHT_O (1<<22)  //Rings
 
-
-#define SLOT_SPECIAL      (1<<26) //Special items
-#define SLOT_FACE_WRAP    (1<<27) //Face wraps, like balaclava
+#define SLOT_SPECIAL      (1<<23) //Special items
+#define SLOT_FACE_WRAP    (1<<24) //Face wraps, like balaclava
 
 //Tools
 #define FLAG_TOOL_NONE 0x0
