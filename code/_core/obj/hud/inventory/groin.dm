@@ -8,7 +8,7 @@
 	worn = TRUE
 
 	item_slot = SLOT_GROIN
-	item_slot_mod = SLOT_MOD_OVER
+
 
 	essential = TRUE
 
@@ -28,7 +28,6 @@
 	worn = TRUE
 
 	item_slot = SLOT_GROIN
-	item_slot_mod = SLOT_MOD_NORMAL | SLOT_MOD_UNDER
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 

@@ -6,7 +6,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER
 
 	item_slot = SLOT_NECK
-	item_slot_mod = SLOT_MOD_UNDER
+
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -20,6 +20,8 @@
 	value = 5
 
 	dyeable = TRUE
+
+	item_slot_layer = 2
 
 /obj/item/clothing/neck/tie/red
 	color = "#FF0000"

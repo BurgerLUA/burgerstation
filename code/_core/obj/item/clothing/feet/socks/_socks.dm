@@ -7,7 +7,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	worn_layer = LAYER_MOB_CLOTHING_SOCKS
 	item_slot = SLOT_FOOT
-	item_slot_mod = SLOT_MOD_UNDER
+
 
 	ignore_other_slots = TRUE
 
@@ -26,6 +26,8 @@
 	size = SIZE_0
 
 	speed_bonus = 0.05
+
+	item_slot_layer = 1
 
 
 

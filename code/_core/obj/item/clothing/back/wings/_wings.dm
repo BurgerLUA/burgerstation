@@ -11,3 +11,4 @@ obj/item/clothing/back/wings
 
 	protected_limbs = TARGETABLE_LIMBS
 
+	item_slot_layer = 3

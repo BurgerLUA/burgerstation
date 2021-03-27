@@ -13,6 +13,7 @@
 
 	size = SIZE_1
 
+	item_slot_layer = 3
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 

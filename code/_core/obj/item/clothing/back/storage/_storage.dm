@@ -11,3 +11,5 @@ obj/item/clothing/back/storage
 	container_max_size = SIZE_3
 
 	drop_sound = 'sound/items/drop/backpack.ogg'
+
+	item_slot_layer = 1

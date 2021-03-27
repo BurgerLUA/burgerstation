@@ -10,7 +10,7 @@
 	icon = 'icons/obj/item/clothing/shoes/magboots.dmi'
 
 	item_slot = SLOT_FOOT
-	item_slot_mod = SLOT_MOD_LEFT | SLOT_MOD_OVER
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
@@ -30,13 +30,15 @@
 
 	speed_bonus = -0.2
 
+	item_slot_layer = 3
+
 /obj/item/clothing/feet/shoes/magboot/left
 	name = "left magboot"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_FOOT
-	item_slot_mod = SLOT_MOD_LEFT | SLOT_MOD_OVER
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
 
 

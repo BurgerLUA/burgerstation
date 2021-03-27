@@ -15,3 +15,6 @@
 	item_slot = SLOT_FOOT
 	item_slot_mod = SLOT_MOD_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)
+
+	item_slot_layer = 2
+

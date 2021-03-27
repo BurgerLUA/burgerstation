@@ -3,3 +3,5 @@ obj/item/clothing/ears
 	item_slot = SLOT_EAR
 
 	protected_limbs = list(BODY_HEAD)
+
+	item_slot_layer = 1

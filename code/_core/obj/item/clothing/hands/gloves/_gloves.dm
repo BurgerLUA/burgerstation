@@ -6,3 +6,5 @@
 	protected_limbs = list(BODY_HAND_RIGHT)
 
 	drop_sound = 'sound/items/drop/gloves.ogg'
+
+	item_slot_layer = 2

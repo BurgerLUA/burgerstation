@@ -14,6 +14,8 @@
 	see_invisible = INVISIBLITY_GHOST
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
+	item_slot_layer = 1
+
 /obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()

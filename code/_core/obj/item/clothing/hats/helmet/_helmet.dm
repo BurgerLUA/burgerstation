@@ -3,3 +3,4 @@
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE
 	)
+	item_slot_layer = 2

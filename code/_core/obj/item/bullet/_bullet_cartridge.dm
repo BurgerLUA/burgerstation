@@ -15,7 +15,7 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN
-	item_slot_mod = SLOT_MOD_OVER
+
 
 	var/is_spent = FALSE
 	var/obj/projectile/projectile //The projectile to create when the bullet is fired. Optional. Overrides the gun's settings.

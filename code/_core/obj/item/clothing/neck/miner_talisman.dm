@@ -6,7 +6,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
 	item_slot = SLOT_NECK
-	item_slot_mod = SLOT_MOD_NORMAL
+
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -22,3 +22,5 @@
 
 
 	value = 300
+
+	item_slot_layer = 1

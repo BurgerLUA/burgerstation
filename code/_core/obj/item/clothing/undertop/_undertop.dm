@@ -6,3 +6,5 @@
 	item_slot = SLOT_TORSO
 
 	protected_limbs = list(BODY_TORSO)
+
+	item_slot_layer = 1

@@ -7,7 +7,7 @@
 	slot_icons = TRUE
 
 	item_slot = SLOT_HEAD | SLOT_FACE
-	item_slot_mod = SLOT_MOD_UNDER
+
 	ignore_other_slots = TRUE
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD

@@ -6,7 +6,7 @@
 	screen_loc = "LEFT+2,BOTTOM+1"
 
 	item_slot = SLOT_HAND
-	item_slot_mod = SLOT_MOD_LEFT | SLOT_MOD_NORMAL | SLOT_MOD_OVER
+	item_slot_mod = SLOT_MOD_LEFT
 
 	max_slots = 2
 	worn = TRUE
@@ -24,7 +24,7 @@
 	screen_loc = "LEFT,BOTTOM+1"
 
 	item_slot = SLOT_HAND
-	item_slot_mod = SLOT_MOD_RIGHT | SLOT_MOD_NORMAL | SLOT_MOD_OVER
+	item_slot_mod = SLOT_MOD_RIGHT
 
 	max_slots = 2
 	worn = TRUE

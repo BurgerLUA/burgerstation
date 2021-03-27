@@ -568,10 +568,11 @@
 							return FALSE
 				if(C.item_slot)
 					for(var/obj/item/clothing/existing_clothing in src.contents)
-						if(existing_clothing.worn_layer >= C.worn_layer)
-							if(messages)
-								owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [C.name]!"))
-							return FALSE
+						if(existing_clothing.item_slot_layer < C.item_slot_layer)
+							continue
+						if(messages)
+							owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [C.name]!"))
+						return FALSE
 
 		if(!(I.item_slot & item_slot))
 			if(messages)
@@ -585,15 +586,6 @@
 				if(messages)
 					owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 				return FALSE
-
-
-
-
-
-
-
-
-
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
 		if(max_size >= 0 && I.size > max_size)

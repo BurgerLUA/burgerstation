@@ -7,3 +7,5 @@
 	protected_limbs = list(BODY_GROIN,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	size = SIZE_3
+
+	item_slot_layer = 2

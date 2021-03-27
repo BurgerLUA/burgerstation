@@ -5,7 +5,7 @@
 	screen_loc = "LEFT,BOTTOM+3"
 
 	item_slot = SLOT_HEAD
-	item_slot_mod = SLOT_MOD_NORMAL
+
 
 	max_slots = 1
 	worn = TRUE
@@ -23,7 +23,6 @@
 	screen_loc = "LEFT+2,BOTTOM+2"
 
 	item_slot = SLOT_NECK
-	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL | SLOT_MOD_OVER
 
 	max_slots = 3
 	worn = TRUE
@@ -41,7 +40,6 @@
 	screen_loc = "LEFT+1,BOTTOM+3"
 
 	item_slot = SLOT_FACE
-	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL | SLOT_MOD_OVER
 
 	max_slots = 3
 	worn = TRUE
@@ -60,7 +58,7 @@
 	screen_loc = "LEFT+2,BOTTOM+3"
 
 	item_slot = SLOT_EAR
-	item_slot_mod = SLOT_MOD_NORMAL
+
 
 
 	max_slots = 1

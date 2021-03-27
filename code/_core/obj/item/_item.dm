@@ -64,6 +64,7 @@
 	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to non-held slots only. See _defines/item.dm for info.
 	var/item_slot_additional = SLOT_NONE //For stuff like jumpsuits which take both the pant and shirt slot.
 	var/item_slot_mod = SLOT_MOD_NONE //The slot mod. See _defines/item.dm for info.
+	var/item_slot_layer = SLOT_LAYER_NORMAL //The layer of the clothing. See _defines/item.dm for info.
 
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER

@@ -6,7 +6,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	item_slot = SLOT_NECK
-	item_slot_mod = SLOT_MOD_OVER
+
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -18,6 +18,8 @@
 	value = 20
 
 	dyeable = TRUE
+
+	item_slot_layer = 3
 
 
 /obj/item/clothing/neck/cloak/green

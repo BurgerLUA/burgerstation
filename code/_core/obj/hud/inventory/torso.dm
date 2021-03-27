@@ -7,7 +7,6 @@
 	worn = TRUE
 
 	item_slot = SLOT_TORSO
-	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -22,7 +21,6 @@
 	worn = TRUE
 
 	item_slot = SLOT_TORSO_ARMOR
-	item_slot_mod = SLOT_MOD_NORMAL | SLOT_MOD_OVER
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 

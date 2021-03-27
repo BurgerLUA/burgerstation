@@ -6,7 +6,7 @@
 	click_flags = LEFT_FOOT
 
 	item_slot = SLOT_FOOT
-	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL | SLOT_MOD_OVER | SLOT_MOD_LEFT
+	item_slot_mod = SLOT_MOD_LEFT
 
 	max_slots = 3
 	worn = TRUE
@@ -23,7 +23,7 @@
 	click_flags = RIGHT_FOOT
 
 	item_slot = SLOT_FOOT
-	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL | SLOT_MOD_OVER | SLOT_MOD_RIGHT
+	item_slot_mod = SLOT_MOD_RIGHT
 
 	max_slots = 3
 	worn = TRUE

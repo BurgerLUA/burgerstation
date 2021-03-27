@@ -6,7 +6,7 @@
 	rarity = RARITY_UNCOMMON
 
 	item_slot = SLOT_TORSO_ARMOR
-	item_slot_mod = SLOT_MOD_NORMAL
+
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	defense_rating = list(

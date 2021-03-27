@@ -6,7 +6,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
 	item_slot = SLOT_NECK
-	item_slot_mod = SLOT_MOD_NORMAL
+
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -24,6 +24,8 @@
 	value = 1000
 
 	var/cooldown_effect = 0
+
+	item_slot_layer = 1
 
 /obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
 	. = ..()

@@ -16,6 +16,8 @@
 
 	value = 30
 
+	item_slot_layer = 3
+
 /obj/item/clothing/glasses/sun/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()

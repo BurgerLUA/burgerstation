@@ -14,3 +14,5 @@
 
 
 	value = 10
+
+	item_slot_layer = 2

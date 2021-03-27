@@ -8,3 +8,5 @@
 	size = SIZE_3
 
 	item_slot_additional = SLOT_GROIN
+
+	item_slot_layer = 2
