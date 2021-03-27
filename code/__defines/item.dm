@@ -67,7 +67,6 @@
 #define SLOT_LAYER_NORMAL 2
 #define SLOT_LAYER_OVER 3
 
-
 //Tools
 #define FLAG_TOOL_NONE 0x0
 #define FLAG_TOOL_SCREWDRIVER 0x1
