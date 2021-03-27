@@ -31,6 +31,9 @@
 	return ..()
 
 /obj/structure/totem/think()
+	if(owner?.dead)
+		qdel(src)
+		return FALSE
 	if(world.time >= totem_remove_time)
 		qdel(src)
 		return FALSE
