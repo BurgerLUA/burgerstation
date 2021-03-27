@@ -20,7 +20,9 @@
 /obj/item/weapon/ranged/magic/tome/summon/totem/on_projectile_hit(obj/projectile/P, atom/hit_atom)
 	if(istype(P,/obj/projectile/bullet/thrown/))
 		return ..()
-	var/obj/structure/totem/summoned_totem = new totem_to_spawn(P.previous_loc)
+	if(is_wall(hit_atom))
+		return ..()
+	var/obj/structure/totem/summoned_totem = new totem_to_spawn(get_turf(hit_atom))
 	if(is_living(P.owner))
 		var/mob/living/livingOwner = P.owner
 		if(livingOwner.totem)
