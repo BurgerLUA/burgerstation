@@ -31,7 +31,8 @@
 
 	var/worn_allow_duplicate = FALSE //Can you wear more than one item of the same slot at once?
 
-	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to clothing only.
+	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to non-held slots only. See _defines/item.dm for info.
+	var/item_slot_mod = SLOT_MOD_NONE //The slot mod. See _defines/item.dm for info.
 
 	var/priority = 0 //The priority level of the inventory. Item transfer favors inventories with higher values.
 
@@ -175,7 +176,7 @@
 	var/desired_layer = LAYER_MOB_HELD
 	var/matrix/desired_transform = matrix()
 
-	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT || id == BODY_HAND_RIGHT || id == BODY_TORSO_OB) )
+	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT_HELD || id == BODY_HAND_RIGHT_HELD || id == BODY_TORSO_OB) )
 		if(id == BODY_TORSO_OB)
 			desired_icon_state = item_to_update.dan_icon_state_back
 		else
@@ -253,9 +254,9 @@
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[4]
 							desired_pixel_y = -item_to_update.dan_offset_pixel_y[4]
 
-	else if(id == BODY_HAND_LEFT)
+	else if(id == BODY_HAND_LEFT_HELD)
 		desired_icon_state = item_to_update.icon_state_held_left
-	else if(id == BODY_HAND_RIGHT)
+	else if(id == BODY_HAND_RIGHT_HELD)
 		desired_icon_state = item_to_update.icon_state_held_right
 
 	if(desired_icon_state == null)
@@ -572,7 +573,8 @@
 
 		if(!(I.item_slot & item_slot))
 			if(messages)
-				owner.to_chat(span("notice","You cannot wear \the [I.name] like this!"))
+				owner << "[I.item_slot] & [item_slot], (SLOT_HAND_LEFT_O: [SLOT_HAND_RIGHT])"
+				owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 			return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)

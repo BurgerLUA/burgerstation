@@ -2,7 +2,7 @@
 /obj/hud/inventory/organs/left_hand_worn
 	name = "left glove"
 	icon_state = "slot_hand_left"
-	id = BODY_HAND_LEFT + "_worn"
+	id = BODY_HAND_LEFT
 	screen_loc = "LEFT+2,BOTTOM+1"
 	item_slot = SLOT_HAND_LEFT | SLOT_HAND_LEFT_O
 
@@ -18,7 +18,7 @@
 /obj/hud/inventory/organs/right_hand_worn
 	name = "right glove"
 	icon_state = "slot_hand_right"
-	id = BODY_HAND_RIGHT + "_worn"
+	id = BODY_HAND_RIGHT
 	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT | SLOT_HAND_RIGHT_O
 
@@ -34,7 +34,7 @@
 //Holding
 /obj/hud/inventory/organs/left_hand_held
 	name = "left hand slot"
-	id = BODY_HAND_LEFT
+	id = BODY_HAND_LEFT_HELD
 	icon_state = "left_hand"
 	screen_loc = "CENTER+0.5,BOTTOM"
 	click_flags = LEFT_HAND
@@ -69,7 +69,7 @@
 
 /obj/hud/inventory/organs/right_hand_held
 	name = "right hand slot"
-	id = BODY_HAND_RIGHT
+	id = BODY_HAND_RIGHT_HELD
 	icon_state = "right_hand"
 	screen_loc = "CENTER-0.5,BOTTOM"
 	click_flags = RIGHT_HAND

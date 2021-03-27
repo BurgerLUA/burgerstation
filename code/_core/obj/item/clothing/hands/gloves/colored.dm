@@ -7,9 +7,6 @@
 	icon = 'icons/obj/item/clothing/gloves/regular.dmi'
 	color = "#FFFFFF"
 
-	item_slot = SLOT_HAND_RIGHT
-	protected_limbs = list(BODY_HAND_RIGHT)
-
 	defense_rating = list(
 		BLADE = AP_DAGGER,
 		BLUNT = AP_DAGGER,
