@@ -2,10 +2,10 @@
 
 	I.update_sprite()
 
-	if(I.id == BODY_HAND_LEFT)
+	if(I.id == BODY_HAND_LEFT_HELD)
 		left_hand = I
 
-	if(I.id == BODY_HAND_RIGHT)
+	if(I.id == BODY_HAND_RIGHT_HELD)
 		right_hand = I
 
 	if(I.id == BODY_TORSO_OB)
@@ -24,10 +24,10 @@
 
 /mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
 
-	if(I.id == BODY_HAND_LEFT)
+	if(I.id == BODY_HAND_LEFT_HELD)
 		left_hand = null
 
-	if(I.id == BODY_HAND_RIGHT)
+	if(I.id == BODY_HAND_RIGHT_HELD)
 		right_hand = null
 
 	if(I.id == BODY_TORSO_OB)

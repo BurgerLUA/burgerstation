@@ -9,10 +9,6 @@
 
 	damage_type = /damagetype/melee/club/mace/
 
-	item_slot = SLOT_GROIN_O
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
-
 	value = 80
 
 	size = SIZE_3

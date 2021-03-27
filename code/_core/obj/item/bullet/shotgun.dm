@@ -9,9 +9,6 @@
 	bullet_length = 18.5
 	bullet_color = COLOR_BULLET
 
-	worn_layer = LAYER_MOB_CLOTHING_BELT
-	item_slot = SLOT_GROIN_O
-
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04

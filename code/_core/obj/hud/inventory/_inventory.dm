@@ -31,7 +31,8 @@
 
 	var/worn_allow_duplicate = FALSE //Can you wear more than one item of the same slot at once?
 
-	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to clothing only.
+	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to non-held slots only. See _defines/item.dm for info.
+	var/item_slot_mod = SLOT_MOD_NONE //The slot mod. See _defines/item.dm for info.
 
 	var/priority = 0 //The priority level of the inventory. Item transfer favors inventories with higher values.
 
@@ -175,7 +176,7 @@
 	var/desired_layer = LAYER_MOB_HELD
 	var/matrix/desired_transform = matrix()
 
-	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT || id == BODY_HAND_RIGHT || id == BODY_TORSO_OB) )
+	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT_HELD || id == BODY_HAND_RIGHT_HELD || id == BODY_TORSO_OB) )
 		if(id == BODY_TORSO_OB)
 			desired_icon_state = item_to_update.dan_icon_state_back
 		else
@@ -253,9 +254,9 @@
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[4]
 							desired_pixel_y = -item_to_update.dan_offset_pixel_y[4]
 
-	else if(id == BODY_HAND_LEFT)
+	else if(id == BODY_HAND_LEFT_HELD)
 		desired_icon_state = item_to_update.icon_state_held_left
-	else if(id == BODY_HAND_RIGHT)
+	else if(id == BODY_HAND_RIGHT_HELD)
 		desired_icon_state = item_to_update.icon_state_held_right
 
 	if(desired_icon_state == null)
@@ -472,9 +473,11 @@
 		I2.update_inventory()
 
 /obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
+	return TRUE
 
+	/* Slot overhaul, might need this.
 	if(!I.item_slot || !(I.item_slot & item_slot))
-		return FALSE
+		return TRUE
 
 	if(!is_advanced(owner))
 		return TRUE
@@ -490,6 +493,7 @@
 			return FALSE
 
 	return TRUE
+	*/
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE)
 
@@ -563,17 +567,25 @@
 								owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human head..."))
 							return FALSE
 				if(C.item_slot)
-					var/list/list_to_check = C.ignore_other_slots ? src.contents : A.worn_objects
-					for(var/obj/item/clothing/C2 in list_to_check)
-						if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
-							if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
-							return FALSE
-
+					for(var/obj/item/clothing/existing_clothing in src.contents)
+						if(existing_clothing.item_slot_layer < C.item_slot_layer)
+							continue
+						if(messages)
+							owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [C.name]!"))
+						return FALSE
 
 		if(!(I.item_slot & item_slot))
 			if(messages)
-				owner.to_chat(span("notice","You cannot wear \the [I.name] like this!"))
+				owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 			return FALSE
+
+		if(item_slot_mod & (SLOT_MOD_LEFT | SLOT_MOD_RIGHT) && !((I.item_slot_mod & SLOT_MOD_RIGHT) && (I.item_slot_mod & SLOT_MOD_LEFT)))
+			var/is_right_hand = item_slot_mod & SLOT_MOD_RIGHT
+			var/is_right_item = I.item_slot_mod & SLOT_MOD_RIGHT
+			if(is_right_hand != is_right_item)
+				if(messages)
+					owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
+				return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
 		if(max_size >= 0 && I.size > max_size)
@@ -582,6 +594,8 @@
 			return FALSE
 
 	return TRUE
+
+
 
 /atom/proc/get_top_object()
 

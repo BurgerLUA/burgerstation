@@ -50,7 +50,7 @@
 				return .
 		var/blocked_clothing = 0x0
 		for(var/obj/item/clothing/C in worn_objects)
-			var/bits_to_block = (C.blocks_clothing | C.hidden_clothing) & ~C.item_slot
+			var/bits_to_block = C.hidden_clothing & ~C.item_slot
 			blocked_clothing |= bits_to_block
 		for(var/k in worn_objects)
 			var/obj/item/C = k

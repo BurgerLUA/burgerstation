@@ -1,23 +1,3 @@
-/*
-/obj/hud/inventory/click_self(var/mob/caller)
-
-	if(src.defer_click_on_object() != src)
-		return ..()
-
-	var/mob/living/advanced/A = caller
-
-	if(id == BODY_HAND_LEFT)
-		if(!A.right_hand)
-			return FALSE
-		return src.click_on_object(caller,A.right_hand)
-	else if(id == BODY_HAND_RIGHT)
-		if(!A.left_hand)
-			return FALSE
-		return src.click_on_object(caller,A.left_hand)
-
-	return ..()
-*/
-
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	var/atom/top_object = get_top_object()

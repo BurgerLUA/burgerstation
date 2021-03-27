@@ -95,6 +95,8 @@
 			/obj/structure/totem/sacred_flame, /obj/structure/totem/stamina_deal, /obj/structure/totem/health_heal,
 			/obj/structure/totem/projectile/ice_crystal, /obj/structure/totem/projectile/fireball, /obj/structure/totem/projectile/lightning_bolt)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
+		if(is_wall(turf_to_spawn))
+			continue
 		var/obj/structure/totem/summoned_totem = new totem_to_spawn(turf_to_spawn)
 		summoned_totem.affecting_faction = loyalty_tag
 		summoned_totem.ranged_limited = FALSE

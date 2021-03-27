@@ -3,10 +3,10 @@
 	icon = 'icons/obj/item/clothing/neck/goblin_necklace.dmi'
 	desc = "You monster, stealing from the little green men."
 	desc_extended = "The loin is imbued with the life essence of the late Goblin King. Greatly desired by mages."
-	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER
+	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	item_slot = SLOT_NECK_O
-	blocks_clothing = SLOT_NECK_O
+	item_slot = SLOT_NECK
+
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -24,6 +24,8 @@
 	value = 1000
 
 	var/cooldown_effect = 0
+
+	item_slot_layer = 1
 
 /obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
 	. = ..()
