@@ -1,11 +1,3 @@
-var/global/datum/openspace_background = new /atom/movable/openspace_background
-
-/atom/movable/openspace_background
-    name = "openspace_background"
-    icon = 'icons/turf/floor/openspace.dmi'
-    icon_state = "openspace_background"
-    layer = LAYER_OPENSPACE
-
 /turf/simulated/floor/openspace
     name = "openspace"
     desc = "Down the rabbit hole you go!"
@@ -17,8 +9,8 @@ var/global/datum/openspace_background = new /atom/movable/openspace_background
 /turf/simulated/floor/openspace/Finalize()
     . = ..()
     update_icon()
-    vis_contents += openspace_background
-    update_multiz()
+    var/image/darkness_over = new/image('icons/turf/floor/openspace.dmi', "openspace_background")
+    add_overlay(darkness_over)
 
 /turf/simulated/floor/openspace/update_icon()
     var/turf/belowTurf = locate(x,y,z-1)
@@ -28,17 +20,9 @@ var/global/datum/openspace_background = new /atom/movable/openspace_background
     color = belowTurf.color
     return ..()
 
-/turf/simulated/floor/openspace/proc/update_multiz(prune_on_fail = FALSE, init = FALSE)
-    var/turf/belowTurf = locate(x,y,z-1)
-    if(!belowTurf)
-        vis_contents.len = 0
-        change_turf(/turf/simulated/floor/plating)
-        return
-    vis_contents += belowTurf
-
 /turf/simulated/floor/openspace/Entered(atom/movable/O, atom/new_loc)
     . = ..()
-    if(is_observer(O))
+    if(is_observer(O) || O.anchored)
         return
     var/turf/belowTurf = locate(x,y,z-1)
     if(!istype(belowTurf, /turf/simulated/floor/stair))
