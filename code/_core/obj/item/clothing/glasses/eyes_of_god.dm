@@ -23,7 +23,7 @@
 		I.owner?.remove_color_mod("eyes")
 		I.owner?.remove_lighting_mod("\ref[src]")
 
-	if(new_location.item_slot & SLOT_EYES)
+	if(new_location.item_slot & SLOT_FACE)
 		var/list/desired_color = list(
 			1.25,0,0,0,
 			0,1.25,0,0,

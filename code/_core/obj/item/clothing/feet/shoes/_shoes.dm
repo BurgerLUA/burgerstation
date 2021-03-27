@@ -7,10 +7,11 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_SHOES
 
-
-
-	blocks_clothing = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U
-
 	drop_sound = 'sound/items/drop/boots.ogg'
 
 	speed_bonus = 0.05 //5% faster per shoe.
+
+	//By default, it's a right foot item.
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_RIGHT
+	protected_limbs = list(BODY_FOOT_RIGHT)

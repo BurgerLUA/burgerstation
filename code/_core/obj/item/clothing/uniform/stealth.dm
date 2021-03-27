@@ -45,6 +45,6 @@
 		BOMB = AP_AXE //Laugh, and grow fat.
 	)
 
-	blocks_clothing = SLOT_TORSO | SLOT_GROIN | SLOT_TORSO_U | SLOT_GROIN_U | SLOT_TORSO_A
-
 	speed_bonus = 0.25
+
+	item_slot_additional = SLOT_GROIN | SLOT_TORSO_ARMOR

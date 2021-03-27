@@ -6,10 +6,6 @@
 	icon = 'icons/obj/item/weapons/melee/polearms/goedendag.dmi'
 	damage_type = /damagetype/melee/club/goedendag
 
-	item_slot = SLOT_TORSO_B
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
-
 	can_wield = TRUE
 	wield_only = TRUE
 

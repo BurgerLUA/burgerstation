@@ -30,9 +30,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
@@ -68,9 +68,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 1
@@ -114,9 +114,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 2
@@ -156,9 +156,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -172,9 +172,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -190,9 +190,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -207,9 +207,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -223,9 +223,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3

@@ -4,7 +4,9 @@
 	icon_state = "slot_hand_left"
 	id = BODY_HAND_LEFT
 	screen_loc = "LEFT+2,BOTTOM+1"
-	item_slot = SLOT_HAND_LEFT | SLOT_HAND_LEFT_O
+
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT | SLOT_MOD_NORMAL | SLOT_MOD_OVER
 
 	max_slots = 2
 	worn = TRUE
@@ -20,7 +22,9 @@
 	icon_state = "slot_hand_right"
 	id = BODY_HAND_RIGHT
 	screen_loc = "LEFT,BOTTOM+1"
-	item_slot = SLOT_HAND_RIGHT | SLOT_HAND_RIGHT_O
+
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_RIGHT | SLOT_MOD_NORMAL | SLOT_MOD_OVER
 
 	max_slots = 2
 	worn = TRUE
@@ -38,7 +42,9 @@
 	icon_state = "left_hand"
 	screen_loc = "CENTER+0.5,BOTTOM"
 	click_flags = LEFT_HAND
-	item_slot = SLOT_HAND_LEFT
+
+	item_slot = SLOT_NONE
+	item_slot_mod = SLOT_MOD_NONE
 
 	max_slots = 1
 
@@ -73,7 +79,9 @@
 	icon_state = "right_hand"
 	screen_loc = "CENTER-0.5,BOTTOM"
 	click_flags = RIGHT_HAND
-	item_slot = SLOT_HAND_RIGHT
+
+	item_slot = SLOT_NONE
+	item_slot_mod = SLOT_MOD_NONE
 
 	max_slots = 1
 

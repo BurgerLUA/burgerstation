@@ -473,9 +473,11 @@
 		I2.update_inventory()
 
 /obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
+	return TRUE
 
+	/* Slot overhaul, might need this.
 	if(!I.item_slot || !(I.item_slot & item_slot))
-		return FALSE
+		return TRUE
 
 	if(!is_advanced(owner))
 		return TRUE
@@ -491,6 +493,7 @@
 			return FALSE
 
 	return TRUE
+	*/
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE)
 
@@ -564,18 +567,33 @@
 								owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-human head..."))
 							return FALSE
 				if(C.item_slot)
-					var/list/list_to_check = C.ignore_other_slots ? src.contents : A.worn_objects
-					for(var/obj/item/clothing/C2 in list_to_check)
-						if(C2.blocks_clothing && (C.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
-							if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
+					for(var/obj/item/clothing/existing_clothing in src.contents)
+						if(existing_clothing.worn_layer >= C.worn_layer)
+							if(messages)
+								owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [C.name]!"))
 							return FALSE
-
 
 		if(!(I.item_slot & item_slot))
 			if(messages)
-				owner << "[I.item_slot] & [item_slot], (SLOT_HAND_LEFT_O: [SLOT_HAND_RIGHT])"
 				owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 			return FALSE
+
+		if(item_slot_mod & (SLOT_MOD_LEFT | SLOT_MOD_RIGHT) && !((I.item_slot_mod & SLOT_MOD_RIGHT) && (I.item_slot_mod & SLOT_MOD_LEFT)))
+			var/is_right_hand = item_slot_mod & SLOT_MOD_RIGHT
+			var/is_right_item = I.item_slot_mod & SLOT_MOD_RIGHT
+			if(is_right_hand != is_right_item)
+				if(messages)
+					owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
+				return FALSE
+
+
+
+
+
+
+
+
+
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
 		if(max_size >= 0 && I.size > max_size)
@@ -584,6 +602,8 @@
 			return FALSE
 
 	return TRUE
+
+
 
 /atom/proc/get_top_object()
 

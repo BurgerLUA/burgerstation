@@ -6,7 +6,8 @@
 	max_slots = 2
 	worn = TRUE
 
-	item_slot = SLOT_TORSO | SLOT_TORSO_U
+	item_slot = SLOT_TORSO
+	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -20,7 +21,8 @@
 	max_slots = 2
 	worn = TRUE
 
-	item_slot = SLOT_TORSO_O | SLOT_TORSO_A
+	item_slot = SLOT_TORSO_ARMOR
+	item_slot_mod = SLOT_MOD_NORMAL | SLOT_MOD_OVER
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -36,7 +38,8 @@
 	max_slots = 1
 	worn = TRUE
 
-	item_slot = SLOT_TORSO_B
+	item_slot = SLOT_TORSO_BACK
+	item_slot_mod = SLOT_MOD_NONE
 
 	essential = TRUE
 
@@ -52,16 +55,16 @@
 	id = BODY_TORSO_OB
 	screen_loc = "CENTER-4,BOTTOM"
 	max_slots = 1
+	worn = FALSE
 
-	item_slot = SLOT_TORSO_OB
+	item_slot = SLOT_NONE
+	item_slot_mod = SLOT_MOD_NONE
 
 	essential = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
-	max_size = 1000
+	max_size = SIZE_10
 
 	drag_to_take = FALSE
 
@@ -79,7 +82,7 @@
 		var/mob/living/advanced/A = owner
 		A.holster_item = I.defer_click_on_object(null,null,null)
 
-	
+
 /obj/hud/inventory/organs/torso_ob/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
 
 	. = ..()
@@ -89,4 +92,3 @@
 		if(A.holster_item == I)
 			A.holster_item = null
 
-	

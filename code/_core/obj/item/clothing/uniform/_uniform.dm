@@ -7,4 +7,4 @@
 
 	size = SIZE_3
 
-	blocks_clothing = SLOT_TORSO | SLOT_GROIN | SLOT_TORSO_U | SLOT_GROIN_U
+	item_slot_additional = SLOT_GROIN

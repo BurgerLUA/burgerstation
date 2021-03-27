@@ -8,7 +8,7 @@
 	var/obj/item/defib_paddle/paddle_right
 
 	worn_layer = LAYER_MOB_CLOTHING_BACK
-	item_slot = SLOT_TORSO_B
+	item_slot = SLOT_TORSO_BACK
 	slot_icons = TRUE
 
 

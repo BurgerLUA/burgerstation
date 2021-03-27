@@ -3,10 +3,10 @@
 	icon = 'icons/obj/item/clothing/neck/talisman.dmi'
 	desc = "Grody."
 	desc_extended = "A talisman made from sinew and shards of bone."
-	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER
+	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	item_slot = SLOT_NECK_O
-	blocks_clothing = SLOT_NECK_O
+	item_slot = SLOT_NECK
+	item_slot_mod = SLOT_MOD_NORMAL
 
 	protected_limbs = list(BODY_TORSO)
 

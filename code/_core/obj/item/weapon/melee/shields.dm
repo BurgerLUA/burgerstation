@@ -5,10 +5,6 @@
 	icon = 'icons/obj/item/weapons/melee/shield.dmi'
 	damage_type = /damagetype/melee/club/shield
 
-	item_slot = SLOT_TORSO_B
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
-
 	value = 35
 
 	block_defense = list(

@@ -47,7 +47,6 @@
 #define SLOT_HEAD         (1<<7)
 #define SLOT_FACE         (1<<8)
 #define SLOT_EAR          (1<<9)
-#define SLOT_EYES         (1<<10)
 #define SLOT_NECK         (1<<11)
 
 #define SLOT_FOOT         (1<<12)
@@ -56,11 +55,16 @@
 
 #define SLOT_SPECIAL      (1<<14)
 
-#define SLOT_MOD_NONE      (1<<0)
-#define SLOT_MOD_LEFT      (1<<1)
-#define SLOT_MOD_RIGHT     (1<<2)
-#define SLOT_MOD_OVER      (1<<3)
-#define SLOT_MOD_UNDER     (1<<4)
+#define SLOT_MOD_NONE     (1<<0)
+
+#define SLOT_MOD_CENTER   (1<<1)
+#define SLOT_MOD_LEFT     (1<<2)
+#define SLOT_MOD_RIGHT    (1<<3)
+
+#define SLOT_LAYER_NONE 0
+#define SLOT_LAYER_UNDER 1
+#define SLOT_LAYER_NORMAL 2
+#define SLOT_LAYER_OVER 3
 
 
 //Tools

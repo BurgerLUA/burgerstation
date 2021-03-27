@@ -4,7 +4,9 @@
 	id = BODY_FOOT_LEFT
 	screen_loc = "LEFT+2,BOTTOM"
 	click_flags = LEFT_FOOT
-	item_slot = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U | SLOT_FOOT_LEFT_O
+
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL | SLOT_MOD_OVER | SLOT_MOD_LEFT
 
 	max_slots = 3
 	worn = TRUE
@@ -19,7 +21,9 @@
 	id = BODY_FOOT_RIGHT
 	screen_loc = "LEFT+1,BOTTOM"
 	click_flags = RIGHT_FOOT
-	item_slot = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U | SLOT_FOOT_RIGHT_O
+
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_UNDER | SLOT_MOD_NORMAL | SLOT_MOD_OVER | SLOT_MOD_RIGHT
 
 	max_slots = 3
 	worn = TRUE

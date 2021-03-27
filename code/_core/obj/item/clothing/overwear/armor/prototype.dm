@@ -4,7 +4,6 @@
 	desc_extended = "A suit made from hardened carbon fibres, currently undergoing testing by the Nanotrasen Science Division."
 	icon = 'icons/obj/item/clothing/suit/captain_suit.dmi'
 
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	rarity = RARITY_MYTHICAL

@@ -4,6 +4,8 @@
 	desc = "A sorcerer's cape. Frequently dyed to show one's proficiency in a specific magical art."
 	desc_extended = "A cape donning colors that represent one's proficiency in a specific magical art."
 
+	item_slot = SLOT_NECK
+	item_slot_mod = SLOT_MOD_OVER
 
 	protected_limbs = list(BODY_TORSO)
 

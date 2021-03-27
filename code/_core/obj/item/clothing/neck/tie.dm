@@ -5,8 +5,8 @@
 	desc_extended = "A sleek tie."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER
 
-	item_slot = SLOT_NECK_O
-	blocks_clothing = SLOT_NECK_O
+	item_slot = SLOT_NECK
+	item_slot_mod = SLOT_MOD_UNDER
 
 	protected_limbs = list(BODY_TORSO)
 

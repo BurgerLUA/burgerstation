@@ -3,7 +3,6 @@
 	desc = "We all have to start somewhere. Even if you're joining a blood cult."
 	desc_extended = "A set of robes often worn by the low-ranking acolytes of the cult of Nar-sie. Has no supernatural qualities, but it's padded."
 	icon = 'icons/obj/item/clothing/suit/cult.dmi'
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	rarity = RARITY_UNCOMMON

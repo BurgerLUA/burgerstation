@@ -24,7 +24,7 @@
 		var/obj/hud/inventory/I = old_location
 		I.owner?.remove_color_mod("eyes")
 
-	if(new_location.item_slot & SLOT_EYES)
+	if(new_location.item_slot & SLOT_FACE)
 		var/list/desired_color = list(
 			0.9,0,0,0,
 			0,0.9,0,0,

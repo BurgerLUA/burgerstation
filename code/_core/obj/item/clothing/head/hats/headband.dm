@@ -4,7 +4,8 @@
 	desc = "Be an action hero!"
 	desc_extended = "A generic colorable headband."
 
-	item_slot = SLOT_FACE_WRAP
+	item_slot = SLOT_FACE
+	item_slot_mod = SLOT_MOD_UNDER
 
 	defense_rating = list(,
 		ARCANE = AP_SWORD,

@@ -4,6 +4,8 @@
 	desc_extended = "Attaches to the neck slot for extra fashion."
 	icon = 'icons/obj/item/clothing/suit/cape.dmi'
 
+	item_slot = SLOT_NECK
+	item_slot_mod = SLOT_MOD_OVER
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -15,7 +17,6 @@
 	rarity = RARITY_UNCOMMON
 
 	size = SIZE_2
-
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
