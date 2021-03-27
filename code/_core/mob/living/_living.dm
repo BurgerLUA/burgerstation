@@ -4,7 +4,7 @@
 	stamina_base = 50
 	mana_base = 50
 
-	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	vis_flags = VIS_INHERIT_ID
 
 	var/rarity = RARITY_COMMON
 

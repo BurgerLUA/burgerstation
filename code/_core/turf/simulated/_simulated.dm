@@ -10,7 +10,7 @@ var/global/list/blood_turfs = list()
 
 	dynamic_lighting = TRUE
 
-	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	vis_flags = VIS_INHERIT_ID
 
 	var/fade = FALSE
 
