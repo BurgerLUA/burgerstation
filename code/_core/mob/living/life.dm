@@ -84,6 +84,9 @@
 		FINALIZE(S)
 		remove_status_effect(SOULTRAP)
 
+	if(one_time_life)
+		dust()
+
 	return TRUE
 
 
