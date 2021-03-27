@@ -32,3 +32,5 @@ var/global/datum/dark_shadow = new /atom/movable/openspace_backdrop
             livingO.add_status_effect(STUN,10,10)
             livingO.health.adjust_loss_smart(brute = 75)
     O.force_move(belowTurf)
+    if(O.grabbing_hand.grabbed_object)
+        O.grabbing_hand.grabbed_object.force_move(belowTurf)

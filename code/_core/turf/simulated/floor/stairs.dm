@@ -15,6 +15,8 @@
 		if(!is_floor(targeted_above_turf))
 			return ..()
 		O.force_move(targeted_above_turf)
+		if(O.grabbing_hand.grabbed_object)
+			O.grabbing_hand.grabbed_object.force_move(targeted_above_turf)
 	return ..()
 
 /turf/simulated/floor/stair/Enter(atom/movable/enterer, atom/oldloc)
