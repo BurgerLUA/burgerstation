@@ -22,7 +22,7 @@
 
 /turf/simulated/floor/openspace/Entered(atom/movable/O, atom/new_loc)
     . = ..()
-    if(is_observer(O) || O.anchored)
+    if(is_observer(O))
         return
     var/turf/belowTurf = locate(x,y,z-1)
     if(!istype(belowTurf, /turf/simulated/floor/stair))
