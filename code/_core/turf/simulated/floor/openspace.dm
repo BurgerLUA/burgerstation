@@ -4,8 +4,7 @@ var/global/datum/dark_shadow = new /atom/movable/openspace_backdrop
     icon = 'icons/turf/floor/openspace.dmi'
     icon_state = "openspace_background"
     anchored = TRUE
-    plane = PLANE_OPENSPACE_FLOOR
-    layer = LAYER_OPENSPACE
+    vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 /turf/simulated/floor/openspace
     name = "openspace"
@@ -14,25 +13,19 @@ var/global/datum/dark_shadow = new /atom/movable/openspace_backdrop
     icon = 'icons/turf/floor/openspace.dmi'
     icon_state = "openspace_background"
     destruction_turf = /turf/simulated/floor/openspace
+    var/turf/belowTurf
 
-/turf/simulated/floor/openspace/Finalize()
+/turf/simulated/floor/openspace/Initialize()
     . = ..()
-    update_icon()
     vis_contents += dark_shadow
-
-/turf/simulated/floor/openspace/update_icon()
-    var/turf/belowTurf = locate(x,y,z-1)
-    icon = belowTurf.icon
-    icon_state = belowTurf.icon_state
-    dir = belowTurf.dir
-    color = belowTurf.color
-    return ..()
+    belowTurf = locate(x,y,z-1)
+    if(belowTurf)
+        vis_contents += belowTurf
 
 /turf/simulated/floor/openspace/Entered(atom/movable/O, atom/new_loc)
     . = ..()
     if(is_observer(O))
         return
-    var/turf/belowTurf = locate(x,y,z-1)
     if(!istype(belowTurf, /turf/simulated/floor/stair))
         if(is_living(O))
             var/mob/living/livingO = O
