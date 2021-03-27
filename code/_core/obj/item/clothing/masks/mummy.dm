@@ -21,11 +21,10 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
-	item_slot = SLOT_FACE_WRAP
+	item_slot = SLOT_FACE
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE,
 		BODY_HAIR_FACE = TRUE
 	)
-
-	blocks_clothing = SLOT_FACE_WRAP

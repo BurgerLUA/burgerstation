@@ -5,6 +5,9 @@
 	desc_extended = "Attaches to the neck slot for extra fashion, and in this case, for team identification if dyed correctly."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
+	item_slot = SLOT_NECK
+
+
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
@@ -15,6 +18,8 @@
 	value = 20
 
 	dyeable = TRUE
+
+	item_slot_layer = 3
 
 
 /obj/item/clothing/neck/cloak/green

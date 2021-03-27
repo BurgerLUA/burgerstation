@@ -12,3 +12,5 @@
 	size = SIZE_1
 
 	value = 100
+
+	item_slot_layer = 3

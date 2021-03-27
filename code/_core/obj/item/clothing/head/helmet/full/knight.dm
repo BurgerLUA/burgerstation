@@ -22,8 +22,6 @@
 
 	size = SIZE_3
 
-	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
-
 /obj/item/clothing/head/helmet/knight/red
 	name = "red knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_red.dmi'

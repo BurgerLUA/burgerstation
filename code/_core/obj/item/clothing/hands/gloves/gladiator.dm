@@ -7,8 +7,7 @@
 	icon = 'icons/obj/item/clothing/gloves/gladiator.dmi'
 	color = "#FFFFFF"
 
-	item_slot = SLOT_HAND_RIGHT
-	protected_limbs = list(BODY_HAND_RIGHT)
+	protected_limbs = list(BODY_ARM_RIGHT,BODY_HAND_RIGHT)
 
 	defense_rating = list(
 		BLADE = AP_AXE,
@@ -28,9 +27,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
-	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
+	protected_limbs = list(BODY_ARM_LEFT,BODY_HAND_LEFT)
 
 
 /obj/item/clothing/hands/gloves/colored/gladiator/gold
@@ -44,8 +43,8 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_HAND_LEFT
-	protected_limbs = list(BODY_HAND_LEFT)
-	blocks_clothing = SLOT_HAND_LEFT
+	item_slot = SLOT_HAND
+	item_slot_mod = SLOT_MOD_LEFT
+	protected_limbs = list(BODY_ARM_LEFT,BODY_HAND_LEFT)
 
 	color = COLOR_GOLD

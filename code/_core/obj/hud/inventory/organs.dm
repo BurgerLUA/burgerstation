@@ -13,4 +13,7 @@
 
 	screen_loc = "CENTER,CENTER"
 
+	item_slot = SLOT_NONE
+	item_slot_mod = SLOT_MOD_NONE
+
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB

@@ -15,6 +15,8 @@
 
 	value = 100
 
+	item_slot_layer = 2
+
 
 /obj/item/clothing/glasses/blindfold/white
 	name = "white blindfold"
