@@ -8,8 +8,11 @@
 	item_count_max = 10
 	item_count_max_icon = 3
 
-/obj/item/deployable/proc/get_deploy_time(var/mob/caller)
-	return SECONDS_TO_DECISECONDS(3)
+/obj/item/deployable/proc/get_deploy_time(var/mob/caller, var/obj/item/deployable/D)
+	if(istype(D, /obj/item/deployable/mountable))
+		return SECONDS_TO_DECISECONDS(10)
+	else
+		return SECONDS_TO_DECISECONDS(3)
 
 /obj/item/deployable/proc/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
 	S.dir = caller.dir
@@ -47,7 +50,7 @@
 		if(caller.loc != object)
 			caller.face_atom(object) //Only face the atom if we're not on the tile.
 		caller.visible_message(span("warning","\The [caller.name] starts to deploy \the [src.name]..."),span("notice","You start to deploy \the [src.name]..."))
-		PROGRESS_BAR(caller,src,get_deploy_time(caller),.proc/deploy,caller,object)
+		PROGRESS_BAR(caller,src,get_deploy_time(caller,src),.proc/deploy,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_deploy_to,caller,object)
 		return TRUE
 
@@ -66,6 +69,23 @@
 	item_count_max = 5
 
 	size = SIZE_3
+
+/obj/item/deployable/mountable/browning
+	name = "field browning kit"
+	desc = "WW2 warfare."
+	desc_extended = "An old-fashioned field kit that lets you set up your very own Browning heavy machinegun, for all the suppressive fire you will ever need. It seems the mount can only turn so far..."
+	structure_to_deploy = /obj/structure/interactive/mountable/browning/
+	icon = 'icons/obj/item/deployable/browning.dmi'
+	dan_mode = TRUE
+	dan_icon_state_back = "back"
+	value = 6900
+	weight = 58
+
+	item_count_max = 1
+
+	size = SIZE_9
+
+	var/obj/item/magazine/stored_magazine
 
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
@@ -152,4 +172,24 @@
 /obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_battery")
+	LOADATOM("stored_magazine")
+
+//saves deployment item's mag
+/obj/item/deployable/mountable/browning/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/interactive/mountable/browning/B)
+
+	. = ..()
+
+	if(stored_magazine)
+		B.stored_magazine = stored_magazine
+		stored_magazine.force_move(B)
+		B.mag_check()
+
+	return TRUE
+
+/obj/item/deployable/mountable/browning/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEATOM("stored_magazine")
+
+/obj/item/deployable/mountable/browning/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
 	LOADATOM("stored_magazine")
