@@ -103,3 +103,25 @@
 		icon_state = "[initial(icon_state)]_off"
 
 	..()
+
+/obj/hud/button/close_inventory_defers
+
+	icon_state = "close_inventory"
+	screen_loc = "CENTER,CENTER"
+
+	essential = TRUE
+
+	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL
+
+	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
+/obj/hud/button/close_inventory_defers/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	. = ..()
+
+	if(. && is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		A.clear_inventory_defers()
+

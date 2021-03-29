@@ -39,30 +39,9 @@
 
 /mob/living/advanced/get_examine_list(var/mob/examiner)
 
-	var/pronoun = get_pronoun_he_she_it(src)
-
 	. = ..()
 
-	if(examiner != src)
-		if(is_living(examiner))
-			var/mob/living/L = examiner
-			if(L.loyalty_tag != "NanoTrasen" && L.loyalty_tag != src.loyalty_tag)
-				return .
-		var/blocked_clothing = 0x0
-		for(var/obj/item/clothing/C in worn_objects)
-			var/bits_to_block = C.hidden_clothing & ~C.item_slot
-			blocked_clothing |= bits_to_block
-		for(var/k in worn_objects)
-			var/obj/item/C = k
-			if(!is_inventory(C.loc))
-				continue
-			var/obj/hud/inventory/I = C.loc
-			if((C.item_slot & I.item_slot) & blocked_clothing)
-				continue
-			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[C]'>Strip</a>) [capitalize(pronoun)] is wearing \the <b>[C.name]</b> on their [initial(I.loc.name)].")
-		for(var/k in held_objects)
-			var/obj/item/I = k
-			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [capitalize(pronoun)] is holding \the <b>[I.name]</b> on their [initial(I.loc.name)].")
+	. += div("notice bold","<a href='?src=\ref[examiner];view_inventory=\ref[src]'>(View inventory...)</a>")
 
 mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
@@ -90,3 +69,11 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	. += ..()
 
+
+/mob/living/advanced/proc/on_strip(var/obj/item/I,var/atom/old_loc)
+
+	for(var/k in inventory_defers)
+		var/obj/hud/button/inventory_defer/ID = k
+		ID.update_vis_contents()
+
+	return TRUE
