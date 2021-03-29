@@ -251,11 +251,12 @@
 
 	if(obstacle && is_living(obstacle))
 		var/mob/living/L = obstacle
-		if(is_enemy(L)) set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+		if(is_enemy(L))
+			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+			if(attack_on_block)
+				spawn do_attack(obstacle,prob(left_click_chance))
+
 		if(trigger_other_bump && L.ai)
 			L.ai.Bump(owner,FALSE)
-
-		if(attack_on_block)
-			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

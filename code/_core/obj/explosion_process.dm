@@ -8,11 +8,12 @@
 	var/loyalty_tag
 	var/multiplier = 1
 
-
 	icon = 'icons/obj/effects/fire.dmi'
 	icon_state = "3"
 
 	collision_flags = FLAG_COLLISION_FLYING
+
+	//var/list/turf/blacklist = list()
 
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
@@ -71,12 +72,12 @@
 		var/new_power_value = valid_turfs[k]
 		var/turf/T = k
 		var/obj/explosion_process/EP = has_existing ? valid_existing[k] : null
-		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))
+		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))*0.75
 		if(EP)
-			if(multiplier > EP.multiplier)
-				power_to_give *= EP.multiplier ? multiplier/EP.multiplier : multiplier
-			EP.power = max(EP.power,power_to_give)
-			EP.original_power = max(EP.original_power,original_power)
+			if(EP.power <= power_to_give)
+				EP.power += power_to_give
+				EP.original_power = max(EP.original_power,original_power)
+				power -= power_to_give
 		else
 			EP = new(T)
 			EP.original_power = original_power
@@ -91,7 +92,8 @@
 			GENERATE(EP)
 			FINALIZE(EP)
 
-	power = (power*0.8) - 1
+	power = FLOOR((power*0.9) - 1,0.1)
+	power = clamp(power,0,1000)
 
 	if(power <= 1)
 		qdel(src)
