@@ -2,6 +2,7 @@
 	name = "white chicken"
 	desc = "Cluck cluck."
 	desc_extended = "A harmless critter."
+	icon = 'icons/mob/living/simple/chicken.dmi'
 	icon_state = "chicken_white"
 	damage_type = /damagetype/npc/chicken
 	class = /class/chicken
@@ -40,4 +41,3 @@
 	if(prob(1))
 		name = "black cock"
 		desc = "Comedy achieved."
-	

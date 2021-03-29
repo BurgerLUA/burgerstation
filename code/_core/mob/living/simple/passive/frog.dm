@@ -1,8 +1,8 @@
-/mob/living/simple/passive/lizard
-	name = "lizard"
-	desc = "*Lizard Sounds*"
-	desc_extended = "A harmles lizard."
-	icon = 'icons/mob/living/simple/lizard.dmi'
+/mob/living/simple/passive/frog
+	name = "frog"
+	desc = "*Frog Sounds*"
+	desc_extended = "A docile frog."
+	icon = 'icons/mob/living/simple/frog.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/crab
@@ -23,7 +23,7 @@
 	stamina_base = 50
 	mana_base = 25
 
-/mob/living/simple/passive/lizard/post_death()
+/mob/living/simple/passive/frog/post_death()
 	. = ..()
 	icon_state = "dead"
 	update_sprite()
