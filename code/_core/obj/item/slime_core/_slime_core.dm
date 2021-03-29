@@ -58,7 +58,7 @@
 		var/obj/item/O = object
 		if(E.attack_flags & CONTROL_MOD_ALT && O.dyeable)
 			var/choice
-			if(O.polymorphs)
+			if(length(O.polymorphs)>1)
 				choice = input("What do you want to copy?","Dye Selection") as null|anything in O.polymorphs
 				if(choice)
 					INTERACT_CHECK_NO_DELAY(src)
