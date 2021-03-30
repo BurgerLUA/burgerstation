@@ -1,0 +1,194 @@
+/mob/living/simple/leaper
+	name = "leaper"
+	boss_icon_state = "leaper"
+	icon = 'icons/mob/living/simple/jungle/leaper.dmi'
+	icon_state = "living"
+	damage_type = /damagetype/unarmed/claw/
+	class = /class/leaper
+
+	value = 6000
+
+	pixel_w = -16
+
+	ai = /ai/boss/leaper
+
+	butcher_contents = list(
+
+	)
+
+	stun_angle = 0
+
+	health_base = 40000
+	stamina_base = 500
+	mana_base = 2000
+
+	boss_loot = /loot/lavaland/leaper
+
+	attack_range = 2
+
+	force_spawn = TRUE
+	boss = TRUE
+
+	armor_base = list(
+		BLADE = AP_SWORD,
+		BLUNT = AP_SWORD,
+		PIERCE = AP_AXE,
+		LASER = AP_GREATSWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_GREATSWORD,
+		COLD = -AP_AXE,
+		BIO = AP_GREATCLUB,
+		RAD = AP_GREATCLUB,
+		HOLY = -AP_SWORD,
+		DARK = AP_GREATCLUB,
+		FATIGUE = AP_GREATCLUB,
+		ION = INFINITY,
+		PAIN = AP_SWORD
+	)
+
+	fatigue_from_block_mul = 0
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		STAMCRIT = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
+		DISARM = TRUE,
+		DRUGGY = TRUE
+	)
+
+	size = SIZE_BOSS
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
+	iff_tag = "Leaper"
+	loyalty_tag = "Leaper"
+
+	blood_type = /reagent/blood/ancient
+	blood_volume = 3000
+
+	soul_size = SOUL_SIZE_RARE
+
+	anchored = TRUE
+
+/mob/living/simple/leaper/handle_alpha()
+	if(immortal)
+		return 0
+	. = ..()
+
+/mob/living/simple/leaper/post_death()
+	..()
+	icon_state = "dead"
+	update_sprite()
+	anchored = FALSE
+
+/mob/living/simple/leaper/proc/try_teleport()
+
+	if(CALLBACK_EXISTS("\ref[src]_leaper_teleport"))
+		return FALSE
+
+	var/list/valid_turfs = list()
+
+	var/turf_limit = (VIEW_RANGE*VIEW_RANGE)*0.25
+	for(var/turf/simulated/floor/T in view(VIEW_RANGE,src))
+		CHECK_TICK(50,FPS_SERVER)
+		turf_limit--
+		if(turf_limit <= 0)
+			break
+		if(get_dist(T,src) <= 2)
+			continue
+		if(!T.is_safe_teleport())
+			continue
+		valid_turfs += T
+
+	if(!length(valid_turfs))
+		return FALSE
+
+	var/turf/desired_turf = pick(valid_turfs)
+
+	immortal = TRUE
+	density = FALSE
+	CALLBACK("\ref[src]_leaper_teleport",10,src,.proc/teleport,desired_turf)
+
+	return TRUE
+
+/mob/living/simple/leaper/proc/teleport(var/turf/desired_turf)
+
+	if(desired_turf) src.force_move(desired_turf)
+	immortal = FALSE
+	density = TRUE
+
+	return TRUE
+
+
+/mob/living/simple/leaper/proc/volley_bubbles()
+
+	if(!ai || !ai.objective_attack)
+		return FALSE
+
+	if(CALLBACK_EXISTS("\ref[src]_shoot_bubble5"))
+		return FALSE
+
+	for(var/i=1,i<=5,i++)
+		CALLBACK("\ref[src]_shoot_bubble[i]",5+i*3,src,.proc/shoot_bubble,ai.objective_attack)
+
+	return TRUE
+
+/mob/living/simple/leaper/proc/spam_bubbles()
+
+	for(var/mob/living/L in view(VIEW_RANGE,src))
+		if(L.dead)
+			continue
+		if(L.iff_tag == src.iff_tag)
+			continue
+		shoot_bubble(L,play_sound=FALSE)
+
+	play_sound('sound/weapons/magic/generic_conjure_multi.ogg',get_turf(src),volume=75)
+
+	return TRUE
+
+/mob/living/simple/leaper/proc/shoot_bubble(var/atom/desired_target,var/play_sound=TRUE)
+
+	if(dead)
+		return FALSE
+
+	if(!desired_target || desired_target.qdeleting || desired_target.z != src.z)
+		return FALSE
+
+	flick("shoot",src)
+
+	shoot_projectile(
+		src,
+		desired_target,
+		null,
+		null,
+		/obj/projectile/leaper,
+		/damagetype/ranged/leaper_bubble,
+		16,
+		16,
+		0,
+		4,
+		1,
+		"#FFFFFF",
+		0,
+		0,
+		1,
+		iff_tag,
+		loyalty_tag
+	)
+
+	if(play_sound)
+		play_sound('sound/weapons/magic/generic_conjure.ogg',get_turf(src))
+
+	return TRUE
+
+
+
+
+
