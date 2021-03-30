@@ -1,4 +1,4 @@
-//This mimicks an inventory object.
+//This mimicks an inventory object. Used for examing mob's items.
 
 /obj/hud/button/inventory_defer
 	name = "inventory"
@@ -7,7 +7,7 @@
 
 /obj/hud/button/inventory_defer/Destroy()
 	referencing = null
-	assoc_button = null
+	QDEL_NULL(assoc_button)
 	. = ..()
 
 /obj/hud/button/inventory_defer/proc/get_top_vis_object()

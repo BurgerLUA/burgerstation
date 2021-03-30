@@ -44,6 +44,9 @@
 
 /obj/item/proc/open_inventory(var/mob/living/advanced/A)
 
+	if(inventory_user)
+		src.close_inventory(inventory_user)
+
 	for(var/k in A.using_inventories)
 		var/obj/item/I = k
 		if(I == src)

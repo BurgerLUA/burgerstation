@@ -14,7 +14,6 @@
 
 	var/inventory_category = "none"
 
-
 /obj/hud/button/close_inventory/proc/close(var/mob/caller)
 
 	if(is_advanced(caller))
