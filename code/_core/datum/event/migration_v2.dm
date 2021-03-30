@@ -12,13 +12,13 @@
 		/mob/living/simple/arachnid,
 		/mob/living/simple/bear/space,
 		/mob/living/simple/bull,
-		/mob/living/simple/crab,
 		/mob/living/simple/goliath,
 		/mob/living/simple/spacecarp,
 		/mob/living/simple/spider,
 		/mob/living/simple/venus_human_trap,
 		/mob/living/simple/watcher,
-		/mob/living/simple/xeno/hunter
+		/mob/living/simple/xeno/hunter,
+		/mob/living/simple/gorilla
 	)
 
 	var/mob/living/enemy_type_to_spawn
