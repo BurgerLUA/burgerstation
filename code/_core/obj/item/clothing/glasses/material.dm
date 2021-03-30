@@ -15,4 +15,4 @@
 
 	value = 100
 
-	item_slot_layer = 3
+	item_slot_layer = 2

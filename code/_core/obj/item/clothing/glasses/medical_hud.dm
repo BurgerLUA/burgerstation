@@ -13,7 +13,7 @@
 		ARCANE = -AP_SWORD,
 	)
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 /obj/item/clothing/glasses/medical_hud/advanced
 	name = "advanced medical hud"

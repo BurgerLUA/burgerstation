@@ -6188,13 +6188,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
-"wN" = (
-/obj/structure/interactive/disposals/pipe/labeler{
-	dir = 4;
-	sorting_tab_label = "security"
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/disposals)
 "wO" = (
 /obj/structure/interactive/vending/cigarette,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -51841,7 +51834,7 @@ ua
 dp
 en
 fv
-wN
+fv
 cX
 wT
 dp

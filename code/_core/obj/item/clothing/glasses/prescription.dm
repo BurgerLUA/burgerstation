@@ -13,7 +13,7 @@
 
 	value = 40
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 /obj/item/clothing/glasses/prescription/blue
 	name = "blue prescription glasses"

@@ -15,7 +15,7 @@
 
 	value = 100
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 
 /obj/item/clothing/glasses/nightvision/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)

@@ -15,7 +15,7 @@
 
 	value = 100
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 /obj/item/clothing/glasses/meson/night_vision
 	name = "night vision meson goggles"
