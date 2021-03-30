@@ -28,7 +28,7 @@
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 	update_sprite()
-	
+
 /obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(caller != object || !is_advanced(caller))
@@ -65,13 +65,13 @@
 	return TRUE
 
 /obj/item/implanter/IFF
-		stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
-		removes_existing = FALSE
+	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
+	removes_existing = FALSE
 
 /obj/item/implanter/od_purge
-		stored_implant = /obj/item/organ/internal/implant/torso/od_purge
-		removes_existing = TRUE
+	stored_implant = /obj/item/organ/internal/implant/torso/od_purge
+	removes_existing = TRUE
 
 /obj/item/implanter/death_alarm
-		stored_implant = /obj/item/organ/internal/implant/torso/death_alarm
-		removes_existing = TRUE
+	stored_implant = /obj/item/organ/internal/implant/torso/death_alarm
+	removes_existing = TRUE

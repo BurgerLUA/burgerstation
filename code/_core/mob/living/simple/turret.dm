@@ -224,3 +224,18 @@
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_pack_up,caller)
 
 	return TRUE
+
+
+/mob/living/simple/turret/clockwork/
+	name = "clockwork turret"
+	icon = 'icons/mob/living/simple/clockwork_turret.dmi'
+	icon_state = "active"
+
+	iff_tag = "Clockwork"
+	loyalty_tag = "Clockwork"
+
+	stored_weapon = /obj/item/weapon/ranged/energy/clockwork_turret
+
+/mob/living/simple/turret/clockwork/post_death()
+	icon_state = "dead"
+	return ..()

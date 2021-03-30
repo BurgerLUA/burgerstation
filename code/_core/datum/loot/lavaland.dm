@@ -68,3 +68,11 @@
 		/obj/item/weapon/ranged/magic/tome/summon/goblin_warrior = 1,
 		/obj/item/weapon/ranged/magic/tome/summon/goblin_mage = 1
 	)
+
+/loot/lavaland/leaper
+	loot_table = list(
+		/obj/item/weapon/ranged/magic/tome/summon/exploding_frog,
+		/obj/item/weapon/melee/sword/cblade,
+		/obj/item/weapon/melee/sword/csaw,
+		/obj/item/storage/blood_box
+	)

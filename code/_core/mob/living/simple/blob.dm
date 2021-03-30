@@ -14,7 +14,7 @@
 
 	ai = /ai/
 	class = /class/bull
-	damage_type = /damagetype/npc/bull
+	damage_type = /damagetype/npc/blobbernaut
 
 	armor_base = list(
 		BLUNT = AP_AXE,
