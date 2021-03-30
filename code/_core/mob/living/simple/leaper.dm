@@ -67,8 +67,8 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	iff_tag = "Leaper"
-	loyalty_tag = "Leaper"
+	iff_tag = "Jungle"
+	loyalty_tag = "Jungle"
 
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
