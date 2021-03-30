@@ -15,7 +15,7 @@
 		return FALSE
 
 	var/choice
-	if(length(polymorphs))
+	if(length(polymorphs)>1)
 		choice = input("What do you want to dye?","Dye Selection") as null|anything in polymorphs
 		if(choice)
 			INTERACT_CHECK_NO_DELAY(src)
