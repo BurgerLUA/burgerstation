@@ -52,6 +52,9 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.on_right_click(object,location,control,new_params)
 
+	if(click_flags & CLICK_MIDDLE)
+		examine(object)
+
 	return ..()
 
 /client/MouseDown(var/atom/object,location,control,params)
