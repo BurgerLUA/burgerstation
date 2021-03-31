@@ -48,6 +48,8 @@
 
 #define BODY_WINGS "wings"
 
+#define BODY_ANTENNAE "antennae"
+
 #define BODY_HAIR_HEAD "hair_head"
 #define BODY_HAIR_FACE "hair_face"
 

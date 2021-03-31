@@ -14,9 +14,6 @@
 	default_color_skin = "#F7D896"
 	default_color_hair = "#FFFFFF"
 
-	default_icon_hair = null
-	default_icon_state_hair = null
-
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/moth,
 		BODY_HEAD = /obj/item/organ/head/moth,
@@ -33,6 +30,8 @@
 		BODY_EYE_LEFT = /obj/item/organ/eye/moth/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/moth,
 		BODY_EAR_LEFT = /obj/item/organ/ear/moth/left,
+		BODY_WINGS = /obj/item/organ/wings/moth,
+		BODY_ANTENNAE = /obj/item/organ/antennae/moth,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_HEART = /obj/item/organ/internal/heart,
@@ -60,6 +59,8 @@
 		BODY_EYE_LEFT = /obj/item/organ/eye/moth/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/moth,
 		BODY_EAR_LEFT = /obj/item/organ/ear/moth/left,
+		BODY_WINGS = /obj/item/organ/wings/moth,
+		BODY_ANTENNAE = /obj/item/organ/antennae/moth,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_HEART = /obj/item/organ/internal/heart,
