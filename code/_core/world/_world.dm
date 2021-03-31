@@ -142,7 +142,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Adminbus."
 		if(WORLD_END_NANOTRASEN_VICTORY)
 			nice_reason = "Nanotrasen Victory"
-			SSpayday.stored_payday += 10000
+			SSpayday.stored_payday += 5000
 			SSpayday.trigger_payday()
 			announce("Central Command Mission Update","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
 		if(WORLD_END_SYNDICATE_VICTORY)
