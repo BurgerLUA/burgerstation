@@ -583,7 +583,6 @@
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
 		return TRUE
 
-
 	if(object.reagents)
 		//Find out the behavior.
 		//TODO: Add liquid transfer sounds.
@@ -630,7 +629,6 @@
 		if(reagents.contains_lethal && L != C && L.loyalty_tag == C.loyalty_tag)
 			caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
 			return FALSE
-
 
 	if(L.dead)
 		caller.to_chat(span("warning","\The [L.name] is dead!"))

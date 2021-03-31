@@ -487,7 +487,6 @@
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained += "[xp_to_give] [attribute] xp"
 
-
 			if(length(experience_gained))
 				A.to_chat(span("notice","You gained [english_list(experience_gained)]."),CHAT_TYPE_COMBAT)
 
@@ -497,6 +496,9 @@
 		var/obj/item/weapon/W = weapon
 		if(W.enchantment)
 			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+		if(W.reagents && victim.reagents)
+			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
+			W.reagents.remove_all_reagents()
 
 	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)

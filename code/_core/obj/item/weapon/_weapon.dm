@@ -23,6 +23,9 @@
 	can_wear = TRUE
 	item_slot = -1
 
+/obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
+	return FALSE
+
 /obj/item/weapon/PostInitialize()
 	. = ..()
 	if(can_wear && item_slot == -1)

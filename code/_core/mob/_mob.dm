@@ -5,7 +5,8 @@
 	layer = LAYER_MOB
 	plane = PLANE_MOB
 
-	var/ckey_last
+	var/ckey_last //The person controlling this. Can be null if control is given up.
+	var/ckey_owner //The one who spawned it in.
 
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0

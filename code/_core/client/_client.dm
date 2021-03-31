@@ -137,6 +137,22 @@ var/global/list/all_clients = list() //Assoc list
 
 	return TRUE
 
+/client/proc/find_controlling_mob()
+
+	if(mob)
+		return mob
+
+	. = null
+
+	for(var/k in all_mobs)
+		var/mob/M = k
+		if(M.ckey_last == ckey)
+			. = M
+			return .
+		if(M.ckey_owner == ckey && !M.ckey_last)
+			. = M
+			//No break here as ckey_last needs a priority.
+
 /client/New()
 
 	all_clients[src.ckey] = src
@@ -183,15 +199,10 @@ var/global/list/all_clients = list() //Assoc list
 	if(SSadmin.initialized)
 		sync_permissions()
 
-	var/mob/found_mob = null
-	for(var/k in all_mobs)
-		var/mob/M = k
-		if(M.ckey_last == ckey)
-			found_mob = M
-			break
-
 	if(IsByondMember())
 		byond_member = TRUE
+
+	var/mob/found_mob = find_controlling_mob()
 
 	if(found_mob)
 		control_mob(found_mob)

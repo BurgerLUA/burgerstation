@@ -5,8 +5,6 @@
 			var/obj/hud/inventory/I = k
 			I.delete_objects()
 			I.remove_from_owner()
-
-
 	if(istype(O,/obj/item/organ/antennae))
 		remove_overlay("antennae_behind")
 		remove_overlay("antennae_front")
