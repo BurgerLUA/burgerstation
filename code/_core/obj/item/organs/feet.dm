@@ -44,7 +44,7 @@
 			A.visible_message(span("warning","\The [A.name]'s [src.name] recoils in pain!"),span("danger","Your [src.name] recoils in pain!"))
 			return TRUE
 
-	
+
 /obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 
 	for(var/k in src.inventories)
@@ -286,6 +286,32 @@
 
 /obj/item/organ/foot/goblin/left
 	name = "left goblin foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
+
+
+//Monkey
+/obj/item/organ/foot/moth
+	name = "right moth foot"
+
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+
+	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+/obj/item/organ/foot/moth/left
+	name = "left moth foot"
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 

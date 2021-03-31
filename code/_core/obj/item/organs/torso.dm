@@ -127,3 +127,12 @@
 
 /obj/item/organ/torso/goblin/female
 	icon_state = BODY_TORSO_FEMALE
+
+
+/obj/item/organ/torso/moth
+	name = "moth torso"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+	desc = "An organ."
+
+/obj/item/organ/torso/moth/female
+	icon_state = BODY_TORSO_FEMALE

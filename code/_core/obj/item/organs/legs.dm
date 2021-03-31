@@ -217,3 +217,22 @@
 
 	target_bounds_y_min = 4
 	target_bounds_y_max = 8
+
+//Moth
+/obj/item/organ/leg/moth
+	name = "right moth leg"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+
+
+/obj/item/organ/leg/moth/left
+	name = "left moth leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
