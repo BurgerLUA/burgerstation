@@ -27,5 +27,3 @@
 	)
 
 	item_slot = SLOT_HEAD | SLOT_FACE
-
-	blocks_clothing = SLOT_HEAD | SLOT_FACE

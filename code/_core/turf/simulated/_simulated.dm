@@ -113,8 +113,12 @@ var/global/list/blood_turfs = list()
 	pixel_x = 0
 	pixel_y = 0
 
-	change_turf(destruction_turf)
+	var/missing_health = health.health_current < 0 ? -health.health_current : 0
 
+	change_turf(destruction_turf)
+	if(missing_health && src.health)
+		src.health.health_current -= missing_health
+		src.health.update_health(caller,missing_health)
 
 /turf/simulated/Initialize()
 	var/area/A = loc

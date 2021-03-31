@@ -7,9 +7,9 @@
 
 	icon = 'icons/obj/item/clothing/shoes/colored.dmi'
 
-	item_slot = SLOT_FOOT_RIGHT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)
-	blocks_clothing = SLOT_FOOT_RIGHT_U | SLOT_FOOT_RIGHT
 
 	no_initial_blend = TRUE
 
@@ -44,9 +44,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 
 /obj/item/clothing/feet/shoes/colored/black
@@ -62,9 +62,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 /obj/item/clothing/feet/shoes/colored/blacker
 	polymorphs = list(
@@ -78,9 +78,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 
 /obj/item/clothing/feet/shoes/colored/brown
@@ -95,9 +95,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 /obj/item/clothing/feet/shoes/colored/merc
 	polymorphs = list(
@@ -111,6 +111,6 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U

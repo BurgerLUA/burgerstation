@@ -19,6 +19,8 @@
 
 	var/next_teleport_command = 0
 
+	item_slot = SLOT_TORSO_BACK
+
 /obj/item/weapon/melee/hierophant_staff/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(isturf(object) && next_teleport_command <= world.time)

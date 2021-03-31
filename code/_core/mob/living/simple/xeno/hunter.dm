@@ -85,3 +85,37 @@
 
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
+
+
+
+
+/mob/living/simple/xeno/predatorian
+	name = "xeno predatorian"
+	icon = 'icons/mob/living/simple/alien_predatorian.dmi'
+
+	health_base = 400
+	stamina_base = 200
+	mana_base = 50
+
+	level_multiplier = 4
+
+	movement_delay = 4
+
+	armor_base = list(
+		BLADE = AP_DAGGER,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		HEAT = AP_DAGGER,
+		COLD = AP_GREATSWORD,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY
+	)
+
+	can_spit = FALSE
+	can_leap = FALSE
+
+	blood_type = /reagent/blood/xeno
+	blood_volume = 480

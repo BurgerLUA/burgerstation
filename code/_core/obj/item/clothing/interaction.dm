@@ -8,18 +8,17 @@
 	return ..()
 
 
-/obj/item/clothing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/click_self(var/mob/caller)
 
-	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(object) && is_inventory(src.loc))
+	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		if(src in I.contents)
+		if(I.worn)
 			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			equip_additional_clothing(caller,object,location,control,params)
+			equip_additional_clothing(caller)
 			return TRUE
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE,var/silent=FALSE)
 
@@ -80,4 +79,3 @@
 		. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
 		. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")
 
-	

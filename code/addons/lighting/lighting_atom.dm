@@ -114,4 +114,3 @@
 		L = thing
 		L.source_atom.update_light()
 
-	

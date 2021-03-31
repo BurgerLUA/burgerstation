@@ -176,7 +176,7 @@
 
 	for(var/i=1,i<=amount_multiplier,i++)
 		var/turf/T = pick(valid_floors)
-		new/obj/effect/temp/ash_drake/target/(T)
+		new/obj/effect/temp/target(T)
 		new/obj/effect/falling_fireball(T)
 
 	return TRUE

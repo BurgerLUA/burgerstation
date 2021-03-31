@@ -11,9 +11,6 @@
 	bullet_length = -1
 	bullet_diameter = -1
 
-	worn_layer = LAYER_MOB_CLOTHING_BELT
-	item_slot = SLOT_GROIN_O
-
 	projectile = /obj/projectile/bullet/bolt
 	damage_type_bullet = /damagetype/ranged/bullet/crossbow_bolt
 

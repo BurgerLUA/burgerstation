@@ -22,10 +22,10 @@
 		#1 NEWLINE\
 		#2",
 		"*Yes, enter the prestige program",
-		"*No, don't enter the prestige program"
+		"*No, do not enter the prestige program"
 	)
 
-	.["*No, don't enter the prestige program"] = list("That's a shame. You can enter the program at any time you wish.")
+	.["*No, do not enter the prestige program"] = list("That's a shame. You can enter the program at any time you wish.")
 
 	.["*Yes, enter the prestige program"] = list("...")
 
@@ -62,6 +62,6 @@
 		return FALSE
 
 	var/experience/E = desired_choice
-	if(E.get_max_level() > E.get_current_level())
+	if(E.get_max_level() <= E.get_current_level())
 		P.prestige(E.id)
 	return TRUE

@@ -26,8 +26,8 @@ obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
 	animate(src,pixel_x = initial(src.pixel_x), pixel_z = initial(src.pixel_z), alpha=255, duration)
 
 
-/obj/effect/temp/ash_drake/target/
-	name = "ash drake swoop up effect"
+/obj/effect/temp/target/
+	name = "target"
 	icon = 'icons/obj/effects/targets.dmi'
 	icon_state = "basic"
 	duration = SECONDS_TO_DECISECONDS(2)

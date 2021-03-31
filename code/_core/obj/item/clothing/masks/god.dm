@@ -39,5 +39,3 @@
 	value_burgerbux = 20000
 
 	item_slot = SLOT_HEAD | SLOT_FACE
-
-	blocks_clothing = SLOT_HEAD | SLOT_FACE

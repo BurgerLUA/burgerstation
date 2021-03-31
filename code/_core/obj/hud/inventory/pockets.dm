@@ -5,6 +5,10 @@
 	screen_loc = "CENTER,BOTTOM+3"
 	max_slots = 1
 	worn = FALSE
+
+	item_slot = SLOT_NONE
+	item_slot_mod = SLOT_MOD_NONE
+
 	max_size = SIZE_2
 	//should_draw = FALSE
 	drag_to_take = FALSE

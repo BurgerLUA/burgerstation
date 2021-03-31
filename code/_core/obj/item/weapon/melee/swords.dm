@@ -13,11 +13,6 @@
 
 	damage_type = /damagetype/melee/sword/sabre
 
-	item_slot = SLOT_GROIN_O
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-
-	slot_icons = TRUE
-
 	size = SIZE_3
 	weight = 6
 
@@ -32,11 +27,6 @@
 	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe. It is one of the most common weapons in The Realm, as it is a un-cursed version of the unholy cult blade."
 
 	icon = 'icons/obj/item/weapons/melee/swords/claymore.dmi'
-	icon_state_worn = "worn"
-
-	item_slot = SLOT_GROIN_O | SLOT_TORSO_B
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
 
 	damage_type = /damagetype/melee/sword/claymore
 
@@ -121,10 +111,6 @@
 
 	dan_mode = TRUE
 
-	item_slot = SLOT_GROIN_O
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
-
 	damage_type = /damagetype/melee/sword/curvedsword
 
 	size = SIZE_3
@@ -140,8 +126,6 @@
 	icon = 'icons/obj/item/weapons/melee/swords/skana.dmi'
 
 	dan_mode = TRUE
-
-	item_slot = SLOT_GROIN_O
 
 	damage_type = /damagetype/melee/sword/skana
 
@@ -159,8 +143,6 @@
 
 	dan_mode = TRUE
 
-	item_slot = SLOT_GROIN_O
-
 	damage_type = /damagetype/melee/sword/gladius
 
 	size = SIZE_2
@@ -176,8 +158,6 @@
 	icon = 'icons/obj/item/weapons/melee/swords/allium.dmi'
 
 	dan_mode = TRUE
-
-	item_slot = SLOT_GROIN_O
 
 	damage_type = /damagetype/melee/sword/allium
 

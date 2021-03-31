@@ -53,6 +53,15 @@
 
 	interior = TRUE
 
+/area/prefab/frog
+	name = "Leaper's Arena"
+	icon_state = "purple"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_CAVE
+
+	interior = TRUE
+
 /area/prefab/rng_shrine
 	name = "Shrine of RNG"
 	icon_state = "green"

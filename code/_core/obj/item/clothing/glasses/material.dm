@@ -14,3 +14,5 @@
 	sight_mod = SEE_OBJS
 
 	value = 100
+
+	item_slot_layer = 2

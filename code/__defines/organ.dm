@@ -27,6 +27,9 @@
 #define BODY_HAND_LEFT "hand_l"
 #define BODY_HAND_RIGHT "hand_r"
 
+#define BODY_HAND_LEFT_HELD "hand_l_held"
+#define BODY_HAND_RIGHT_HELD "hand_r_held"
+
 #define BODY_LEG_LEFT "leg_l"
 #define BODY_LEG_RIGHT "leg_r"
 

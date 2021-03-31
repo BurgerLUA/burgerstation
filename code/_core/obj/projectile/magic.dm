@@ -212,6 +212,7 @@
 	steps_allowed = 6
 	hit_target_turf = TRUE
 	lifetime = SECONDS_TO_DECISECONDS(2)
+	impact_effect_turf = null
 
 /obj/projectile/magic/blackflame
 	name = "blackflame"

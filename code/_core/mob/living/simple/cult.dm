@@ -215,3 +215,34 @@
 	)
 
 	level_multiplier = 3
+
+
+/mob/living/simple/cult/construct/proteon
+	name = "blood cult proteon"
+	icon = 'icons/mob/living/simple/cult.dmi'
+	icon_state = "proteon"
+
+	damage_type = /damagetype/unarmed/claw/
+
+	ai = /ai
+
+	health_base = 25
+	stamina_base = 100
+	mana_base = 50
+
+	movement_delay = 1
+
+	armor_base = list(
+		BLADE = AP_SWORD,
+		PIERCE = AP_SWORD,
+		LASER = -AP_SWORD,
+		ARCANE = AP_SWORD,
+		HEAT = AP_GREATSWORD,
+		COLD = AP_GREATSWORD,
+		HOLY = -AP_GREATSWORD,
+		DARK = AP_GREATSWORD,
+		FATIGUE = INFINITY,
+		PAIN = INFINITY
+	)
+
+	level_multiplier = 1

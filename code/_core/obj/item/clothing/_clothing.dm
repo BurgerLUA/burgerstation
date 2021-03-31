@@ -52,7 +52,6 @@
 	var/list/obj/item/additional_clothing = list()
 	var/list/obj/item/additional_clothing_stored
 
-	var/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
 	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
 	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
 

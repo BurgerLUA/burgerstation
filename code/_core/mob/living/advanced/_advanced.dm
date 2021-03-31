@@ -108,6 +108,8 @@
 
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
+	var/list/inventory_defers = list() //inventory ref to button
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -127,6 +129,14 @@
 	holster_item = null
 	active_inventory = null
 	driving = null
+
+	inventory_defers.Cut()
+
+	for(var/k in using_inventories)
+		var/obj/item/I = k
+		I.close_inventory(src)
+
+	using_inventories.Cut()
 
 	QDEL_NULL(stored_handcuffs)
 

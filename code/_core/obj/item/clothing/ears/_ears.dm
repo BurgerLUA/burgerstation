@@ -4,4 +4,4 @@ obj/item/clothing/ears
 
 	protected_limbs = list(BODY_HEAD)
 
-	blocks_clothing = SLOT_EAR
+	item_slot_layer = 1

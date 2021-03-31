@@ -4,6 +4,7 @@
 	desc_extended = "Attaches to the neck slot for extra fashion."
 	icon = 'icons/obj/item/clothing/suit/cape.dmi'
 
+	item_slot = SLOT_NECK
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -16,7 +17,6 @@
 
 	size = SIZE_2
 
-
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	dyeable = TRUE
@@ -27,8 +27,9 @@
 		"trim" = COLOR_WHITE
 	)
 
-
 	value = 60
+
+	item_slot_layer = 3
 
 /obj/item/clothing/neck/cape/wizard
 	polymorphs = list(
