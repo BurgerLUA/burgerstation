@@ -122,8 +122,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
 		/obj/item/magazine/dip_22,
 		/obj/item/magazine/dip_22,
 		/obj/item/magazine/dip_22,
