@@ -54,10 +54,14 @@
 					direction_mod *= 2
 				else if(d == turn(velocity_dir,180))
 					direction_mod *= 0.1
+				else
+					direction_mod *= 0.5
 			if(existing.velocity_dir)
 				if(d == existing.velocity_dir)
 					direction_mod *= 2
 				else if(d == turn(existing.velocity_dir,180))
+					direction_mod *= 0.1
+				else
 					direction_mod *= 0.5
 			valid_existing[T] = existing
 		valid_turfs[T] = direction_mod
@@ -72,7 +76,7 @@
 		var/new_power_value = valid_turfs[k]
 		var/turf/T = k
 		var/obj/explosion_process/EP = has_existing ? valid_existing[k] : null
-		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))*0.75
+		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))*0.5
 		if(EP)
 			if(EP.power <= power_to_give)
 				EP.power += power_to_give
@@ -93,7 +97,7 @@
 			GENERATE(EP)
 			FINALIZE(EP)
 
-	power = FLOOR((power*0.9) - 1,0.1)
+	power = FLOOR((power*0.9) - 0.5,0.1)
 	power = clamp(power,0,1000)
 
 	if(power <= 1)
