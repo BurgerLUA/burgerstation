@@ -25,7 +25,7 @@
 
 	var/contains_lethal = FALSE
 
-	var/allow_recipie_processing = TRUE
+	var/allow_recipe_processing = TRUE
 
 /reagent_container/Destroy()
 	owner = null
@@ -221,7 +221,7 @@
 
 /reagent_container/proc/process_recipes(var/mob/caller,var/from_temperature_change=FALSE)
 
-	if(!allow_recipie_processing)
+	if(!allow_recipe_processing)
 		return FALSE
 
 	if(!caller && is_item(src.owner))

@@ -3,7 +3,7 @@
 	volume_max = 1000
 	should_update_owner = TRUE
 
-	allow_recipie_processing = FALSE
+	allow_recipe_processing = FALSE
 
 	var/desired_reagent
 
@@ -16,4 +16,3 @@
 		stored_reagents_temperature.Cut()
 		add_reagent(desired_reagent,500)
 
-	
