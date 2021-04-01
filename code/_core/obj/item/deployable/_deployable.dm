@@ -87,6 +87,9 @@
 
 	var/obj/item/magazine/stored_magazine
 
+/obj/item/deployable/mountable/browning/Destroy()
+	QDEL_NULL(stored_magazine)
+
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
 	return ..()
