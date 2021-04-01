@@ -64,6 +64,11 @@
 				else
 					direction_mod *= 0.5
 			valid_existing[T] = existing
+		else if(velocity_dir && velocity_dir == d)
+			direction_mod *= 4
+		else if(velocity_dir && turn(velocity_dir,180) == d)
+			direction_mod *= 0.1
+
 		valid_turfs[T] = direction_mod
 		total_direction_mod += direction_mod
 
