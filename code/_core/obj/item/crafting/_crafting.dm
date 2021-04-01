@@ -50,7 +50,7 @@
 			B.stored_crafting_table = null
 
 	var/opening = FALSE
-	for(var/obj/hud/inventory/crafting/I in A.inventory)
+	for(var/obj/hud/inventory/crafting/I in A.inventory) //Hide other inventory buttons
 		CHECK_TICK(100,FPS_SERVER*0.5)
 		I.alpha = 0
 		I.mouse_opacity = 0
