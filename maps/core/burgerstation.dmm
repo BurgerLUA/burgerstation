@@ -2782,6 +2782,7 @@
 "ka" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
+/obj/item/crafting/filter,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "kb" = (
@@ -5019,11 +5020,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
-"su" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/shop/high_markup,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/goblin_shop)
 "sv" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/marker/spawning/window/reinforced,
@@ -5292,15 +5288,6 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/cafe)
-"tu" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/obj/structure/interactive/shop/high_markup,
-/obj/item/supply_crate/american,
-/turf/simulated/floor/tile/grey/single,
-/area/burgerstation/goblin_shop)
 "tv" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile/tint,
@@ -5321,18 +5308,6 @@
 /obj/marker/lobby,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
-"tz" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/shop/high_markup,
-/obj/item/supply_crate/nanotrasen,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/goblin_shop)
-"tA" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/shop/high_markup,
-/obj/item/supply_crate/bos,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/goblin_shop)
 "tB" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile/dark,
@@ -5420,31 +5395,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile/shuttle/blue,
 /area/transit/dropship/delta/station)
-"tS" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/shop/high_markup,
-/obj/item/supply_crate/medicine,
-/turf/simulated/floor/tile/grey/single,
-/area/burgerstation/goblin_shop)
 "tT" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/hall/north)
-"tU" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/shop/high_markup,
-/obj/item/supply_crate/russian,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/goblin_shop)
-"tV" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/obj/structure/interactive/shop/high_markup,
-/obj/item/supply_crate/syndicate,
-/turf/simulated/floor/tile/grey/single,
-/area/burgerstation/goblin_shop)
 "tW" = (
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/tile/coldroom,
@@ -6188,6 +6142,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
+"wN" = (
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/north)
 "wO" = (
 /obj/structure/interactive/vending/cigarette,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -7295,6 +7253,27 @@
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"AE" = (
+/obj/structure/interactive/disposals/pipe,
+/obj/structure/interactive/door/airlock/station/glass,
+/turf/simulated/floor/tile/morphing/security,
+/area/burgerstation/armory)
+"AF" = (
+/obj/structure/interactive/door/airlock/station/glass,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/armory)
+"AG" = (
+/obj/structure/interactive/door/airlock/station/glass,
+/turf/simulated/floor/tile/morphing/security,
+/area/burgerstation/armory)
+"AH" = (
+/obj/structure/interactive/vending/security/gundrobe,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/north)
+"AI" = (
+/obj/structure/interactive/vending/security/ammo,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/north)
 "OQ" = (
 /obj/structure/interactive/atmospherics/air_alarm{
 	dir = 4
@@ -43348,7 +43327,7 @@ nL
 nH
 kR
 kR
-Ae
+kR
 kR
 kR
 kR
@@ -43603,11 +43582,11 @@ pw
 mp
 pw
 nG
-tu
-tA
-tS
-tz
-nG
+pw
+mp
+rP
+mp
+mc
 kR
 aK
 gT
@@ -43864,7 +43843,7 @@ mp
 pw
 mp
 pw
-tU
+mp
 Ag
 lX
 hd
@@ -44121,7 +44100,7 @@ pw
 mp
 pw
 mp
-tV
+pw
 kR
 lZ
 hd
@@ -44378,7 +44357,7 @@ mp
 pw
 mp
 pw
-su
+nG
 yS
 gK
 hk
@@ -45387,8 +45366,8 @@ kF
 kF
 kF
 kF
-kF
-kF
+mF
+mF
 mF
 uD
 mg
@@ -45401,8 +45380,8 @@ if
 if
 if
 if
-if
 sz
+if
 if
 if
 if
@@ -45643,8 +45622,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 mF
 ac
@@ -45659,6 +45636,8 @@ cP
 am
 am
 am
+bh
+bh
 bh
 wZ
 co
@@ -45900,8 +45879,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ac
@@ -45917,6 +45894,8 @@ te
 av
 bC
 Ak
+AH
+bH
 bH
 fU
 tg
@@ -46156,8 +46135,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 mF
 ac
@@ -46174,6 +46151,8 @@ aY
 aY
 aZ
 xN
+AH
+bH
 bH
 co
 tf
@@ -46413,8 +46392,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ac
@@ -46431,6 +46408,8 @@ aY
 bA
 aZ
 wZ
+bH
+bH
 bH
 co
 cQ
@@ -46670,8 +46649,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ag
@@ -46688,6 +46665,8 @@ aY
 aY
 cw
 bh
+AI
+bH
 bH
 co
 eP
@@ -46926,8 +46905,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 mF
 ac
@@ -46945,6 +46922,8 @@ aY
 aY
 aZ
 cq
+AI
+bH
 aD
 co
 ke
@@ -47183,8 +47162,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ac
@@ -47202,6 +47179,8 @@ aY
 aY
 aZ
 at
+bh
+bh
 bh
 co
 eb
@@ -47440,8 +47419,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ag
@@ -47458,9 +47435,11 @@ aI
 tO
 tO
 cx
-hz
 iN
-th
+hz
+hz
+hz
+AE
 th
 dJ
 dT
@@ -47697,8 +47676,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ag
@@ -47715,9 +47692,11 @@ aJ
 aY
 aY
 tE
-aY
 fh
-cs
+aY
+aY
+aY
+AF
 cs
 dG
 tF
@@ -47954,8 +47933,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ag
@@ -47972,9 +47949,11 @@ aH
 aY
 aY
 cy
-aZ
 fW
-tg
+aZ
+aZ
+aZ
+AG
 tg
 dG
 cs
@@ -48211,8 +48190,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ac
@@ -48230,6 +48207,8 @@ aY
 aY
 cy
 Ak
+bh
+bh
 bh
 co
 cQ
@@ -48468,8 +48447,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 mF
 ac
@@ -48487,6 +48464,8 @@ aY
 aY
 cy
 gZ
+AH
+bH
 tD
 ct
 eP
@@ -48726,8 +48705,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ag
@@ -48744,6 +48721,8 @@ aY
 aY
 cz
 bh
+AH
+bH
 bH
 co
 ke
@@ -48983,8 +48962,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ac
@@ -49001,6 +48978,8 @@ aY
 cr
 cA
 oa
+wN
+wN
 ce
 co
 eb
@@ -49240,8 +49219,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 mF
 ac
@@ -49258,6 +49235,8 @@ aY
 aY
 aZ
 xN
+AI
+bH
 aE
 co
 tf
@@ -49498,8 +49477,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 ac
 ac
@@ -49515,6 +49492,8 @@ te
 av
 bC
 cq
+AI
+bH
 aE
 fU
 tg
@@ -49755,8 +49734,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 mF
 ac
@@ -49771,6 +49748,8 @@ ac
 am
 am
 am
+bh
+bh
 bh
 aE
 co
@@ -50013,8 +49992,6 @@ kF
 kF
 kF
 kF
-kF
-kF
 mF
 dH
 mF
@@ -50024,6 +50001,8 @@ mF
 mF
 mF
 dH
+mF
+mF
 mF
 mF
 mF
@@ -50278,9 +50257,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -50535,9 +50514,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -50792,9 +50771,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -51049,9 +51028,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -51306,9 +51285,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -51563,9 +51542,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -51820,9 +51799,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -52077,9 +52056,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -52334,9 +52313,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -52591,9 +52570,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -52848,9 +52827,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -53105,9 +53084,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -53362,9 +53341,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -53619,9 +53598,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -53876,9 +53855,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -54133,9 +54112,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -54647,9 +54626,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -54904,9 +54883,9 @@ kF
 kF
 kF
 kF
-kF
-kF
 rT
+kF
+kF
 kF
 kF
 kF
@@ -55163,7 +55142,7 @@ rT
 rT
 rT
 rT
-rT
+kF
 rT
 rT
 rT
@@ -55420,7 +55399,7 @@ kF
 kF
 kF
 kF
-kF
+rT
 kF
 kF
 kF
