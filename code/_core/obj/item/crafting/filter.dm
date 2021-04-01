@@ -76,13 +76,14 @@
 		var/transfered = FALSE
 
 		for(var/k in I.reagents.stored_reagents)
-			//var/volume = I.reagents.stored_reagents[k]
 			var/reagent/R = REAGENT(k)
+			var/volume = I.reagents.stored_reagents[k]
 			if(R.particle_size < filter_setting)
 				var/temperature = I.reagents.stored_reagents_temperature[k]
-				var/amount_removed = I.reagents.remove_reagent(k,10 + FLOOR(5*R.liquid,1),should_update=FALSE,check_recipes=FALSE,caller=caller)
+				var/amount_removed = I.reagents.remove_reagent(k,volume,should_update=FALSE,check_recipes=FALSE,caller=caller)
 				C.reagents.add_reagent(k,amount_removed,temperature,should_update=FALSE,check_recipes=FALSE,caller=caller)
 				transfered = TRUE
+				success = TRUE
 
 		if(transfered)
 			I.reagents.update_container()
