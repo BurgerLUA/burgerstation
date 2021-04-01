@@ -11,7 +11,7 @@
 	value = 10
 
 /obj/item/storage/ammo/bullet_22/
-	name = "box of surplus .22 LR bullets"
+	name = "box of .22 LR bullets"
 	desc_extended = "An ammo box that can hold 36 .22 LR bullets."
 	icon_state = "22"
 	size = SIZE_3
