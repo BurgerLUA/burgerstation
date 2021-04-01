@@ -10,6 +10,8 @@
 
 	liquid = 0.5
 
+	particle_size = 0.6
+
 /reagent/toxin/New(var/desired_loc)
 	value *= 1+(damage_per_unit*3)
 	return ..()
@@ -30,6 +32,8 @@
 
 	flavor = "mushroom"
 
+	particle_size = 0.4
+
 
 /reagent/toxin/fly_amanita_toxin
 	name = "fly amanita toxin"
@@ -39,6 +43,8 @@
 
 	flavor = "mushroom"
 
+	particle_size = 0.5
+
 /reagent/toxin/xeno_acid
 	name = "xeno acid"
 	desc = "Literal fucking acid."
@@ -46,6 +52,8 @@
 	damage_per_unit = 2
 
 	flavor = "pain"
+
+	particle_size = 0.3
 
 /reagent/toxin/spider_toxin
 	name = "spider toxin"
@@ -55,12 +63,16 @@
 
 	flavor = "arachnophobia"
 
+	particle_size = 0.2
+
 
 /reagent/toxin/zombie_toxin
 	name = "zombie toxin"
 	desc = "Toxins from a zombie. Doesn't go away when metabolized in the bloodstream and deals constant toxic damage based on the volume."
 
 	damage_per_unit = 1
+
+	particle_size = 0.4
 
 
 /reagent/toxin/zombie_toxin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -83,3 +95,5 @@
 	heated_reagent_temp = 600
 	heated_reagent_amount = 1
 	heated_reagent_mul = 0.01
+
+	particle_size = 0.7

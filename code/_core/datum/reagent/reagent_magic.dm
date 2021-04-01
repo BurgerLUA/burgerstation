@@ -25,4 +25,3 @@
 		if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
 		return 0
 
-	

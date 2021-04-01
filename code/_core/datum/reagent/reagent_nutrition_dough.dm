@@ -9,6 +9,7 @@
 	flavor = "raw oaty dough"
 
 	liquid = 0.25
+	particle_size = 1
 
 	flags_reagent = FLAG_REAGENT_RAW
 

@@ -7,3 +7,5 @@
 	liquid = 0.6
 
 	value = 10
+
+	particle_size = 0.3

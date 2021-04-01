@@ -36,6 +36,8 @@
 
 	value = 2
 
+	particle_size = 0.5
+
 /reagent/medicine/adrenaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
@@ -60,6 +62,8 @@
 	strength = 50
 
 	value = 1.5
+
+	particle_size = 0.25
 
 /reagent/medicine/adrenaline/epinephrine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -87,6 +91,8 @@
 	experience_per_unit = 5
 
 	value = 3
+
+	particle_size = 0.4
 
 /reagent/medicine/health_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -116,6 +122,8 @@
 
 	value = 3
 
+	particle_size = 0.5
+
 /reagent/medicine/stamina_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -143,6 +151,8 @@
 	experience_per_unit = 5
 
 	value = 3
+
+	particle_size = 0.3
 
 /reagent/medicine/mana_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -172,6 +182,8 @@
 	experience_per_unit = 2
 
 	value = 3
+
+	particle_size = 0.6
 
 /reagent/medicine/antihol/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -216,6 +228,8 @@
 
 	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
 
+	particle_size = 0.8
+
 /reagent/medicine/purge/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -253,6 +267,8 @@
 
 	value = 8
 
+	particle_size = 1
+
 /reagent/medicine/charcoal/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -289,6 +305,10 @@
 
 	experience_per_unit = 3
 
+	liquid = 0.25
+
+	particle_size = 0.5
+
 /reagent/medicine/zombie_antidote/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.reagents.remove_reagent(/reagent/toxin/zombie_toxin,.)
@@ -312,6 +332,8 @@
 	value = 1.75
 
 	liquid = 0.5
+
+	particle_size = 0.6
 
 /reagent/medicine/mitogen/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -350,6 +372,8 @@
 	addiction = /addiction/nicotine
 
 	lethal = TRUE //For now...
+
+	particle_size = 0.4
 
 /reagent/medicine/nicotine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()

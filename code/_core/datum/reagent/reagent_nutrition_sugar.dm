@@ -15,6 +15,8 @@
 
 	flavor_strength = 3
 
+	particle_size = 0.2
+
 /reagent/nutrition/sugar/glucose
 	name = "glucose"
 	desc = "sugar broken down into its purest form: glucose"
@@ -27,6 +29,8 @@
 
 	value = 0.25
 
+	particle_size = 0.1
+
 /reagent/nutrition/sugar/cane
 	name = "cane sugar"
 	desc = "Unprocessed sugarcane sugar."
@@ -37,6 +41,8 @@
 	coma_rating = 4
 
 	flavor = "sweetness"
+
+	particle_size = 0.3
 
 /reagent/nutrition/sugar/icing
 	name = "icing sugar"
@@ -49,6 +55,8 @@
 
 	flavor = "icing sugar"
 
+	particle_size = 0.25
+
 /reagent/nutrition/icing
 	name = "white icing"
 	desc = "White icing."
@@ -58,6 +66,8 @@
 	nutrition_quality_amount = -4
 
 	flavor = "icing"
+
+	particle_size = 0.3
 
 
 /reagent/nutrition/sugar/caramel
@@ -74,3 +84,5 @@
 	liquid = -0.2
 
 	flavor_strength = 2
+
+	particle_size = 0.4

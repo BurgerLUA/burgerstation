@@ -8,6 +8,8 @@
 
 	liquid = 0.9
 
+	particle_size = 0.25
+
 
 
 /reagent/acid/sulphuric
