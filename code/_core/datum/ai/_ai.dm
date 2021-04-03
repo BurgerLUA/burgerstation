@@ -36,7 +36,7 @@
 
 	var/left_click_chance = 90
 
-	var/night_vision = 0.25 //What level of darkness the mob can see in.
+	var/night_vision = 0.25 //What level of darkness the mob can see in. Basically if light is above this value, it can see it.
 
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 

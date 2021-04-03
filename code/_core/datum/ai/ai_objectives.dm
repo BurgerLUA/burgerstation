@@ -87,7 +87,7 @@
 			if(!should_attack_mob(objective_attack,FALSE))
 				set_objective(null)
 			else
-				var/sight_chance = get_sight_chance(objective_attack)
+				var/sight_chance = get_sight_chance(objective_attack,view_check=TRUE)
 				if(sight_chance <= 0)
 					set_objective(null)
 					frustration_attack = 0
@@ -184,7 +184,7 @@
 
 	for(var/mob/living/L in view(range_to_use,owner))
 		CHECK_TICK(75,FPS_SERVER*2)
-		var/sight_chance = get_sight_chance(L)
+		var/sight_chance = get_sight_chance(L,range_to_use)
 		if(sight_chance < 100 && !prob(sight_chance))
 			continue
 		if(!should_attack_mob(L))

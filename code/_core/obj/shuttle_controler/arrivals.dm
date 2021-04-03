@@ -53,7 +53,7 @@
 	griefers[caller_ref] += 1
 
 	if(griefers[caller_ref] >= 3)
-		linked_beepsky.ai.attackers += caller
+		linked_beepsky.ai.attackers[caller] = TRUE
 		griefers -= caller_ref
 
 	return ..()
