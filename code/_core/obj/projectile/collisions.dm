@@ -1,8 +1,5 @@
 /atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	if(P == src)
-		return null
-
 	if(P.owner == src)
 		return null
 
@@ -26,7 +23,7 @@
 	. = ..()
 
 	if(.)
-		return //Don't run the rest
+		return . //Don't run the rest
 
 	for(var/k in P.contents)
 		var/atom/movable/M = k
@@ -64,44 +61,47 @@
 
 /turf/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	for(var/k in P.contents)
-		var/atom/movable/M = k
-		if(!src.Enter(M))
-			return src
-
 	. = ..()
 
-	if(!.)
-		return null
+	if(.)
+		if(P.vel_y > 0)
+			if(!old_turf.allow_bullet_pass && old_turf.density_north)
+				return old_turf
+			if(!new_turf.allow_bullet_pass && new_turf.density_south)
+				return new_turf
+		else if(P.vel_y < 0)
+			if(!old_turf.allow_bullet_pass && old_turf.density_south)
+				return old_turf
+			if(!new_turf.allow_bullet_pass && new_turf.density_north)
+				return new_turf
+		if(P.vel_x > 0)
+			if(!old_turf.allow_bullet_pass && old_turf.density_east)
+				return old_turf
+			if(!new_turf.allow_bullet_pass && new_turf.density_west)
+				return new_turf
+		else if(P.vel_x < 0)
+			if(!old_turf.allow_bullet_pass && old_turf.density_west)
+				return old_turf
+			if(!new_turf.allow_bullet_pass && new_turf.density_east)
+				return new_turf
+		return . //Something went wrong.
 
-	if(P.vel_y > 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_north)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_south)
-			return new_turf
-	else if(P.vel_y < 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_south)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_north)
-			return new_turf
-	if(P.vel_x > 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_east)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_west)
-			return new_turf
-	else if(P.vel_x < 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_west)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_east)
-			return new_turf
+	//Take priority of existing targets on a turf before ones that existed before.
+	for(var/k in src.contents)
+		var/atom/movable/A = k
+		if(!A.density)
+			continue
+		if(A.projectile_should_collide(P,new_turf,old_turf))
+			return A
 
-	if(old_living)
-		for(var/k in old_living)
-			var/mob/living/L = k
-			if(P.owner == L)
-				continue
-			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0)
-				return L
+	for(var/k in src.old_living)
+		var/mob/living/L = k
+		if(!L.density)
+			continue
+		if(L.mouse_opacity <= 0 || L.dead || L.move_delay <= 0 || get_dist(L,src) > 1)
+			continue
+		if(L.projectile_should_collide(P,new_turf,old_turf))
+			return L
 
 	return null
 

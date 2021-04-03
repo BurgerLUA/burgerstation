@@ -163,65 +163,37 @@
 		damage_atom(src.loc)
 		on_hit(src.loc,TRUE)
 		log_error("Warning: Projectile didn't have a new loc.")
-		return TRUE
+		return TRUE //Always destroy.
 
 	if(!old_loc)
 		damage_atom(src.loc)
 		on_hit(src.loc,TRUE)
 		log_error("Warning: Projectile didn't have an old loc.")
-		return TRUE
+		return TRUE //Always destroy.
 
 	if(!isturf(old_loc))
 		damage_atom(old_loc)
 		on_hit(old_loc,TRUE)
 		log_error("Warning: Projectile didn't have a valid old loc.")
-		return TRUE
+		return TRUE //Always destroy.
 
 	if(hit_target_turf && new_loc == target_turf)
 		damage_atom(new_loc)
 		on_hit(new_loc)
-		return TRUE
+		return TRUE //Always destroy.
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		damage_atom(new_loc)
 		on_hit(new_loc,TRUE)
-		return TRUE
+		return TRUE //Always destroy.
 
-	var/atom/collide_with_turf = current_loc.projectile_should_collide(src,new_loc,old_loc)
-	if(collide_with_turf)
-		damage_atom(collide_with_turf)
-		on_hit(collide_with_turf)
-		return TRUE
+	var/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
+	if(collide_with)
+		damage_atom(collide_with)
+		return on_hit(collide_with) //Destroy based on the object we hit.
+		//TODO: Convert on_hit return to a list.
 
-	for(var/k in new_loc.contents)
-		var/atom/movable/A = k
-		if(!A.density)
-			continue
-		if(check_hit(A,old_loc,new_loc))
-			return TRUE
-
-	for(var/k in new_loc.old_living)
-		var/mob/living/L = k
-		if(!L.density)
-			continue
-		if(L.dead)
-			continue
-		if(L.move_delay <= 0)
-			continue
-		if(check_hit(L,old_loc,new_loc))
-			return TRUE
-
-	return FALSE
-
-/obj/projectile/proc/check_hit(var/atom/movable/A,var/atom/old_loc,var/atom/new_loc)
-	if(A == owner || A == weapon)
-		return FALSE
-	var/atom/collide_atom = A.projectile_should_collide(src,new_loc,old_loc)
-	if(!collide_atom)
-		return FALSE
-	if(!damage_atom(collide_atom))
-		return FALSE
-	return on_hit(collide_atom)
+	return FALSE //Do not destroy.
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 

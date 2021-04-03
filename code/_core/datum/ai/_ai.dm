@@ -224,38 +224,6 @@
 	. = ..()
 	set_active(active,TRUE)
 
-
-/ai/proc/post_move(var/mob/living/L,args)
-
-	var/atom/old_loc = args[1]
-
-	var/turf/old_turf = get_turf(old_loc)
-	var/turf/new_turf = get_turf(L.loc)
-
-	if(old_turf && new_turf)
-		if(old_turf == new_turf)
-			frustration_move++
-			if(length(current_path))
-				frustration_path++
-			if(frustration_move >= frustration_move_threshold)
-				sidestep_next = TRUE
-				frustration_move = 0
-			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
-		else
-			frustration_move = 0
-			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
-
-	if(!new_turf || new_turf.z != last_z)
-		if(active)
-			if(last_z) remove_from_active_list(last_z)
-			if(new_turf) add_to_active_list(new_turf.z)
-		else
-			if(last_z) remove_from_inactive_list(last_z)
-			if(new_turf) add_to_inactive_list(new_turf.z)
-		if(new_turf) last_z = new_turf.z
-
-	return TRUE
-
 /ai/proc/post_death(var/mob/living/L,args)
 	set_active(FALSE)
 	return TRUE
