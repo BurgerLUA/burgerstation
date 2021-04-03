@@ -16,7 +16,7 @@
 
 	var/objective_distance = get_dist(owner,objective_attack)
 
-	if(!. && objective_attack && objective_distance <= VIEW_RANGE)
+	if(!. && objective_attack && objective_distance <= VIEW_RANGE && is_living(objective_attack))
 		if(X.can_leap && world.time >= next_leap && objective_distance >= 3)
 			var/list/offsets = direction_to_pixel_offset(get_dir(owner,objective_attack))
 			var/throw_velocity = 20
