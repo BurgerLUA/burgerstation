@@ -2,10 +2,6 @@
 	var/list/sounds_male = list()
 	var/list/sounds_female = list()
 
-
-	var/list/sounds_male_meme = list()
-	var/list/sounds_female_meme = list()
-
 /emote/sound/on_emote(var/atom/emoter,var/atom/target)
 	. = ..()
 	if(.)
@@ -55,12 +51,8 @@
 	id = "pain"
 	action = "\The #USER cries in pain!"
 
-	//sounds_male_meme = list('sound/voice/human/human_male_pain_9.ogg','sound/voice/human/human_male_pain_10.ogg')
-
 /emote/sound/scream
 	name = "Scream"
 	id = "scream"
 	action = "\The #USER screams!"
 	action_target = "\The #USER screams at #TARGET!"
-
-	//sounds_male_meme = list('sound/voice/human/human_male_scream_7.ogg')
