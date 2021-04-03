@@ -1,11 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/dip
-	name = ".22 Z-Drip Gun"
+	name = ".22 Z-Dip Gun"
 	desc = "The best in manufactured pistols."
-	desc_extended = "The Dip Gun is one of the strongest and most versitle pistols on the market. Not only does it use a powerful .22 cartridge, its plastic polymer casing boasts high reliability and high firerate. We have truely peaked in warfare."
-	quality = 25
-	value = 50
+	desc_extended = "The Z-Dip Gun is a relatively inexpensive pistol meant for civilian self-defense. The low caliber makes it difficult to use as a serious weapon, however."
+	value = 120
 	icon = 'icons/obj/item/weapons/ranged/pistol/dip_gun.dmi'
-	shoot_delay = 4
+	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
 
 	view_punch = 1
@@ -14,20 +13,20 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0
 
-	automatic = FALSE
+	automatic = TRUE
 
 	size = SIZE_2
 	weight = 1
 
-	heat_per_shot = 0.01
-	heat_max = 0.075
+	heat_per_shot = 0.001
+	heat_max = 0.005
 
 	bullet_length_min = 17
-	bullet_length_best = 17
+	bullet_length_best = 17.7
 	bullet_length_max = 18
 
 	bullet_diameter_min = 5
-	bullet_diameter_best = 5
+	bullet_diameter_best = 5.6
 	bullet_diameter_max = 6
 
 	attachment_whitelist = list(
@@ -67,4 +66,4 @@
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/dip/get_skill_spread(var/mob/living/L)
-	return max(0,0.08 - (0.04 * L.get_skill_power(SKILL_RANGED)) )
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)) )
