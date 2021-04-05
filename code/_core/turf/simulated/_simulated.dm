@@ -10,8 +10,6 @@ var/global/list/blood_turfs = list()
 
 	dynamic_lighting = TRUE
 
-	vis_flags = VIS_INHERIT_ID
-
 	var/fade = FALSE
 
 	var/tile = FALSE //Set to true if this is a tile.
@@ -44,6 +42,8 @@ var/global/list/blood_turfs = list()
 	var/drying_mul = 0.02
 
 	var/slip_factor = 1
+
+	var/organic = FALSE
 
 /turf/simulated/is_safe_teleport(var/check_contents=TRUE)
 
@@ -137,6 +137,8 @@ var/global/list/blood_turfs = list()
 
 /turf/simulated/PostInitialize()
 	. = ..()
+	if(istype(health))
+		health.organic = organic
 	update_sprite()
 
 /turf/simulated/proc/get_smooth_code()

@@ -54,7 +54,7 @@
 			continue
 		if(L.loyalty_tag == owner.loyalty_tag)
 			continue
-		L.ignite(SECONDS_TO_DECISECONDS(1.5))
+		L.ignite(SECONDS_TO_DECISECONDS(1.5),owner)
 		var/obj/effect/temp/electricity/H = new(owner,10,COLOR_MEDICAL)
 		INITIALIZE(H)
 		GENERATE(H)

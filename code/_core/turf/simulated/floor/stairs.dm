@@ -6,25 +6,22 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-/turf/simulated/floor/stair/Exit(atom/movable/O, atom/newloc)
-	if(is_observer(O))
-		return ..()
-	var/turf/above_turf = locate(x,y,z+1)
-	var/turf/targeted_above_turf = get_step(above_turf, dir)
-	if(get_turf(newloc) == get_step(src, dir))
-		if(!is_floor(targeted_above_turf))
-			return ..()
-		O.force_move(targeted_above_turf)
-		if(O.grabbing_hand.grabbed_object)
-			O.grabbing_hand.grabbed_object.force_move(targeted_above_turf)
-	return ..()
+	safe_fall = TRUE
 
-/turf/simulated/floor/stair/Enter(atom/movable/enterer, atom/oldloc)
-	if(is_observer(enterer))
-		return ..()
-	if(get_step(oldloc, dir) != get_turf(src))
-		return FALSE
-	return ..()
+/turf/simulated/floor/stair/Exit(atom/movable/O, atom/newloc)
+
+	. = ..()
+
+	if(is_observer(O))
+		return .
+
+	if(. && get_step(src,dir) == newloc) //Going uuuuuuuup.
+		var/turf/T = locate(x,y,z+1)
+		if(T && !T.density_down)
+			var/turf/T2 = get_step(T,dir)
+			if(T2)
+				O.Move(T2)
+			return FALSE //Don't do regular movement.
 
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"

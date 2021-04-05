@@ -167,12 +167,12 @@
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 
-	//Try: Enter the new turf.
-	if(src.density && !NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
-		return FALSE
-
 	//Try: Exit the old turf.
 	if(src.density && OldLoc && !OldLoc.Exit(src,NewLoc))
+		return FALSE
+
+	//Try: Enter the new turf.
+	if(src.density && !NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
 		return FALSE
 
 	//Try: Cross the Contents
@@ -228,6 +228,9 @@
 
 	post_move(OldLoc)
 
+	return TRUE
+
+/atom/movable/proc/on_fall(var/turf/old_turf)
 	return TRUE
 
 

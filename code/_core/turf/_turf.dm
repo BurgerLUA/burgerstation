@@ -33,6 +33,10 @@
 
 	var/list/stored_shuttle_items
 
+	var/safe_fall = FALSE //Set to true if it's safe to fall on this tile.
+
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_LAYER | VIS_INHERIT_ID
+
 /turf/proc/on_step()
 	return TRUE
 
@@ -123,6 +127,10 @@
 	if(!enterer.qdeleting && is_living(enterer))
 		do_footstep(enterer,TRUE)
 
+	if(!density_down)
+		var/turf/T = locate(x,y,z-1)
+		if(T && !T.density_up && enterer.Move(T) && !T.safe_fall)
+			enterer.on_fall(src)
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
