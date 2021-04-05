@@ -267,6 +267,11 @@
 	death(TRUE)
 	if(!qdeleting) qdel(src)
 
+/mob/living/on_fall(var/turf/old_loc)
+	. = ..()
+	health?.adjust_loss_smart(brute=100)
+	add_status_effect(STUN,40,40)
+
 /mob/living/get_base_value()
 	. = ..()
 	if(!dead) . *= 3
