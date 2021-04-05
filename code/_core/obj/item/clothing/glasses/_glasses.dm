@@ -1,6 +1,7 @@
 /obj/item/clothing/glasses/
 	worn_layer = LAYER_MOB_CLOTHING_EYE
-	item_slot = SLOT_EYES
+	item_slot = SLOT_FACE
+
 
 	protected_limbs = list(BODY_HEAD)
 
@@ -11,8 +12,6 @@
 	var/sight_mod = 0x0
 	var/see_invisible = 0
 	var/see_in_dark = 0
-
-	blocks_clothing = SLOT_EYES | SLOT_FACE_WRAP
 
 
 /obj/item/clothing/glasses/get_base_value()
@@ -43,4 +42,3 @@
 
 	. += (see_in_dark/VIEW_RANGE)*500
 
-	

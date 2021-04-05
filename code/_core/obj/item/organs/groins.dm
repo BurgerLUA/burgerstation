@@ -113,3 +113,12 @@
 
 /obj/item/organ/groin/goblin/female
 	icon_state = BODY_GROIN_FEMALE
+
+
+//Monkey
+/obj/item/organ/groin/moth
+	name = "moth groin"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+
+/obj/item/organ/groin/moth/female
+	icon_state = BODY_GROIN_FEMALE

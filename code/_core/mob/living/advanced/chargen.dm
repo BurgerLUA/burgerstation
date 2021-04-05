@@ -97,11 +97,10 @@
 
 /mob/living/advanced/proc/pre_perform_change(var/keep_items)
 
-
 	var/list/kept_items = list()
 
 	if(keep_items)
-		kept_items = drop_all_items(src,FALSE,TRUE)
+		kept_items = drop_all_items(get_turf(src))
 	else
 		for(var/k in inventory)
 			var/obj/hud/inventory/I = k
@@ -118,6 +117,8 @@
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)
 	handle_eyecolor_chargen(S.default_color_eye,FALSE)
+	handle_detail_chargen(S.default_color_detail,FALSE)
+	handle_glow_chargen(S.default_color_glow,FALSE)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	update_all_blends()

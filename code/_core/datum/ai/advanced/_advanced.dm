@@ -194,8 +194,6 @@
 			best_weapon_value = weapon_value
 			continue
 
-	log_debug("Best weapon: [best_weapon].")
-
 	return best_weapon
 
 /ai/advanced/proc/equip_weapon(var/obj/item/weapon/W)

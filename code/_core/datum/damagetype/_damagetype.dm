@@ -152,9 +152,9 @@
 	return ATTACK_TYPE_MELEE
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
-	. = do_attack_animation(attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.,src,.proc/do_miss_sound,attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
+	. = max(1,do_attack_animation(attacker,victim,weapon))
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
@@ -454,38 +454,38 @@
 			var/mob/living/A = attacker
 			var/mob/living/V = victim
 			var/list/experience_gained = list()
+			var/experience_damage = SAFENUM(damage_to_deal_main[BRUTE]) + SAFENUM(damage_to_deal_main[BURN]) + SAFENUM(damage_to_deal_main[TOX]) + SAFENUM(damage_to_deal_main[RAD])
 			if(!V.dead && A.is_player_controlled())
 				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
-					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
+					var/xp_to_give = CEILING((experience_damage*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 						experience_gained += "[xp_to_give] [SKILL_PRECISION] xp"
 
 				for(var/skill in skill_stats)
-					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * experience_damage * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained += "[xp_to_give] [skill] xp"
 
 				for(var/attribute in attribute_stats)
-					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * experience_damage * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained += "[xp_to_give] [attribute] xp"
 
 				for(var/skill in bonus_experience_skill)
-					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
+					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * experience_damage * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained += "[xp_to_give] [skill] xp"
 
 				for(var/attribute in bonus_experience_attribute)
-					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * total_damage_dealt * experience_multiplier,1)
+					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * experience_damage * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained += "[xp_to_give] [attribute] xp"
-
 
 			if(length(experience_gained))
 				A.to_chat(span("notice","You gained [english_list(experience_gained)]."),CHAT_TYPE_COMBAT)
@@ -496,6 +496,9 @@
 		var/obj/item/weapon/W = weapon
 		if(W.enchantment)
 			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+		if(W.reagents && victim.reagents)
+			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
+			W.reagents.remove_all_reagents()
 
 	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)

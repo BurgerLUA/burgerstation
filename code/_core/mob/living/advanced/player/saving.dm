@@ -23,7 +23,10 @@
 /mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/do_teleport = TRUE,var/update_blends=TRUE)
 
 	//Name
-	real_name = loaded_data["name"]
+	real_name = sanitize_name(client,loaded_data["name"])
+	if(!real_name)
+		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+
 	sex = loaded_data["sex"]
 	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON
 	gender = loaded_data["gender"]
@@ -50,12 +53,20 @@
 		nutrition_fast = nutrition
 		hydration = initial(hydration)*0.5
 		nutrition_quality = initial(nutrition_quality)
+		var/currency_to_give = 0
 		if(isnum(insurance))
 			var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
 			insurance -= insurance_to_pay
 			to_chat(span("notice","You were paid <b>[insurance_to_pay] credits</b> in insurance. You have <b>[insurance] credits</b> left in your insurance pool."))
-			adjust_currency(insurance_to_pay)
+			currency_to_give = insurance_to_pay
 			update_premiums()
+		if(currency >= 10000)
+			var/death_tax = FLOOR(currency*0.1,1)
+			if(death_tax)
+				currency_to_give -= death_tax
+				to_chat(span("warning","You paid [death_tax] credits in cloning fees."))
+		if(currency_to_give)
+			adjust_currency(currency_to_give)
 
 	if(loaded_data["traits"])
 		for(var/k in loaded_data["traits"])
@@ -66,8 +77,8 @@
 		known_languages |= loaded_data["known_languages"]
 
 	if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
-		to_chat(span("notice","<h2>You are rewarded 2000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
-		adjust_currency(2000)
+		to_chat(span("notice","<h2>You are rewarded 1000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
+		adjust_currency(1000)
 
 	/*
 	for(var/id in loaded_data["organs"])

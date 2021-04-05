@@ -26,7 +26,7 @@
 	else
 		. += div("notice","It's off.")
 
-	
+
 /obj/item/pinpointer/proc/can_track(var/atom/A)
 
 	if(!A)
@@ -54,13 +54,13 @@
 /obj/item/pinpointer/PostInitialize()
 	. = ..()
 	update_sprite()
-	
+
 /obj/item/pinpointer/update_underlays()
 	. = ..()
 	if(!length(underlays))
 		var/image/I = new/image(initial(icon),initial(icon_state))
 		underlays += I
-	
+
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
 	return ..()
@@ -86,7 +86,7 @@
 	else
 		icon_state = "null"
 
-	
+
 /obj/item/pinpointer/think()
 
 	if(scan_mode || !can_track(tracked_atom) )
@@ -186,10 +186,29 @@
 
 	return TRUE
 
+
+/obj/item/pinpointer/crew/death
+	name = "death pinpointer"
+	icon_state = "grey"
+	desc_extended = "Use this to track and locate objects. This is used to exclusively track corpses of NanoTrasen Crew."
+	value = 100
+
+/obj/item/pinpointer/crew/death/can_track(var/atom/A)
+
+	var/mob/living/advanced/player/P = A
+	if(!istype(P))
+		return FALSE
+
+	if(!P.dead)
+		return FALSE
+
+	. = ..()
+
+
 /obj/item/pinpointer/crew/syndicate
-	name = "syndicate pinpointer"
+	name = "syndicate operative pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of Syndicate Raiders."
-	icon_state = "red"
+	icon_state = "syndicate"
 	desired_loyalty = "Syndicate"
 	value = 1000
 	encoded = TRUE

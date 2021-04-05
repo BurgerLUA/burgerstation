@@ -84,7 +84,11 @@
 	for(var/i=1,i<=spawn_amount,i++)
 		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
-		CREATE(choose_goblin, turf_to_spawn)
+		var/mob/living/spawnGoblin = new choose_goblin(turf_to_spawn)
+		spawnGoblin.one_time_life = TRUE
+		INITIALIZE(spawnGoblin)
+		GENERATE(spawnGoblin)
+		FINALIZE(spawnGoblin)
 
 /mob/living/simple/goblin_king/proc/summon_totems(var/angered = FALSE)
 	var/spawn_amount = angered ? 3 : 1
@@ -95,6 +99,8 @@
 			/obj/structure/totem/sacred_flame, /obj/structure/totem/stamina_deal, /obj/structure/totem/health_heal,
 			/obj/structure/totem/projectile/ice_crystal, /obj/structure/totem/projectile/fireball, /obj/structure/totem/projectile/lightning_bolt)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
+		if(is_wall(turf_to_spawn))
+			continue
 		var/obj/structure/totem/summoned_totem = new totem_to_spawn(turf_to_spawn)
 		summoned_totem.affecting_faction = loyalty_tag
 		summoned_totem.ranged_limited = FALSE

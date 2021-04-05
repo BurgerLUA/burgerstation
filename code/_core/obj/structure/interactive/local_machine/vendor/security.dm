@@ -106,6 +106,29 @@
 		/obj/item/deployable/mob/sentry
 	)
 
+/obj/structure/interactive/vending/security/gundrobe/dip
+	name = "drip gun vendor"
+	icon_state = "dipdrobe"
+
+	stored_types = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/magazine/dip_22,
+		/obj/item/magazine/dip_22,
+		/obj/item/magazine/dip_22,
+		/obj/item/magazine/dip_22,
+		/obj/item/storage/ammo/bullet_22
+	)
+
 
 /obj/structure/interactive/vending/security/ammo
 	name = "ammo vendor"

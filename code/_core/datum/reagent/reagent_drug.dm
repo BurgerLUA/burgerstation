@@ -46,6 +46,8 @@
 
 	liquid = -0.6
 
+	particle_size = 0.4
+
 /reagent/drug/space
 	name = "space drugs"
 	desc = "It's like space weed."
@@ -58,6 +60,8 @@
 	duration_mod = 15
 
 	value = 4.5
+
+	particle_size = 0.6
 
 
 /reagent/drug/dust
@@ -74,3 +78,5 @@
 	value = 12
 
 	liquid = -0.6
+
+	particle_size = 0.4

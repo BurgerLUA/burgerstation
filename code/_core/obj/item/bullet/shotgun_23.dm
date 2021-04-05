@@ -9,9 +9,6 @@
 	bullet_length = 75
 	bullet_color = COLOR_BULLET
 
-	worn_layer = LAYER_MOB_CLOTHING_BELT
-	item_slot = SLOT_GROIN_O
-
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04
@@ -60,7 +57,7 @@
 	size = 0.04
 	value = 3.5
 
-	inaccuracy_modifer = 2
+	inaccuracy_modifer = 1.5
 
 /obj/item/bullet_cartridge/shotgun_23/fire
 	name = "\improper 23x75mmR incendiary shell"

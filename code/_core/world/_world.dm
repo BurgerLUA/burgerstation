@@ -70,8 +70,16 @@ var/global/world_state = STATE_STARTING
 	SSdiscord.send_message("Shutting down world...")
 	return ..()
 
+/world/proc/play_round_end_sound()
+	sleep(-1)
+	var/chosen_sound = pick(SSsound.round_end_sounds)
+	play_sound_global(chosen_sound,all_mobs_with_clients)
+	sleep(30)
+	return TRUE
+
 /world/proc/shutdown_server()
 	save()
+	play_round_end_sound()
 	world_state = STATE_SHUTDOWN
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
@@ -82,11 +90,12 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/reboot_server()
 	save()
+	play_round_end_sound()
 	world_state = STATE_SHUTDOWN
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
-	sleep(0)
+	sleep(-1)
 	Reboot(0)
 	return TRUE
 
@@ -122,9 +131,6 @@ var/global/world_state = STATE_STARTING
 		mobdata.save_character(P,force = TRUE)
 		P.to_chat(span("notice","Your character was automatically saved."))
 		sleep(-1)
-	var/chosen_sound = pick(SSsound.round_end_sounds)
-	play_sound_global(chosen_sound,all_mobs_with_clients)
-	sleep(100)
 	return TRUE
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
@@ -142,7 +148,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Adminbus."
 		if(WORLD_END_NANOTRASEN_VICTORY)
 			nice_reason = "Nanotrasen Victory"
-			SSpayday.stored_payday += 10000
+			SSpayday.stored_payday += 5000
 			SSpayday.trigger_payday()
 			announce("Central Command Mission Update","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
 		if(WORLD_END_SYNDICATE_VICTORY)

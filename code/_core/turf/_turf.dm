@@ -97,7 +97,7 @@
 			var/mob/living/L = k
 			if(attacker == L)
 				continue
-			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0)
+			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && get_dist(L,src) <= 1)
 				return L
 
 	return src
@@ -159,8 +159,9 @@
 
 /turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	for(var/atom/A in src.contents)
-		A.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
+	for(var/k in src.contents)
+		var/atom/movable/M = k
+		M.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return ..()
 

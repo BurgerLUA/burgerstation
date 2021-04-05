@@ -15,7 +15,8 @@
 /turf/unsimulated/abyss,
 /area/prefab/clockwork_cult)
 "f" = (
-/turf/simulated/floor/clockwork/alt2,
+/mob/living/simple/parrot/clockwork,
+/turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
 "g" = (
 /turf/simulated/floor/clockwork/alt1,
@@ -142,6 +143,14 @@
 "F" = (
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"G" = (
+/mob/living/simple/turret/clockwork,
+/turf/simulated/floor/clockwork/alt2,
+/area/prefab/clockwork_cult)
+"H" = (
+/mob/living/simple/watcher/clockwork_mobile,
+/turf/simulated/floor/clockwork/reebe,
+/area/prefab/clockwork_cult)
 
 (1,1,1) = {"
 a
@@ -984,7 +993,7 @@ e
 e
 e
 d
-f
+G
 g
 q
 q
@@ -993,7 +1002,7 @@ q
 q
 q
 g
-f
+G
 d
 F
 a
@@ -1419,7 +1428,7 @@ e
 e
 e
 d
-f
+G
 h
 r
 d
@@ -1436,7 +1445,7 @@ h
 h
 s
 g
-f
+G
 d
 e
 e
@@ -1900,12 +1909,12 @@ s
 h
 q
 h
+H
 h
 h
 h
 h
-h
-h
+H
 h
 h
 q
@@ -1940,7 +1949,7 @@ a
 a
 b
 d
-f
+G
 g
 h
 k
@@ -2092,7 +2101,7 @@ h
 n
 i
 h
-h
+H
 h
 h
 h
@@ -2139,7 +2148,7 @@ a
 b
 d
 h
-h
+f
 j
 h
 k
@@ -2290,7 +2299,7 @@ h
 n
 i
 h
-h
+H
 h
 h
 h
@@ -2336,7 +2345,7 @@ a
 a
 b
 d
-f
+G
 g
 h
 k
@@ -2428,12 +2437,12 @@ s
 h
 q
 h
+H
 h
 h
 h
 h
-h
-h
+H
 h
 h
 q
@@ -2871,7 +2880,7 @@ e
 e
 e
 d
-f
+G
 h
 r
 d
@@ -2888,7 +2897,7 @@ h
 h
 s
 g
-f
+G
 d
 e
 e
@@ -3360,7 +3369,7 @@ e
 e
 e
 d
-f
+G
 g
 q
 q
@@ -3369,7 +3378,7 @@ q
 q
 q
 g
-f
+G
 d
 a
 a

@@ -69,7 +69,7 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
-	inaccuracy_modifier = 1
+	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.03
 

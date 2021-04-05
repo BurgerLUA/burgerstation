@@ -14,6 +14,8 @@
 
 	liquid = 0.6
 
+	particle_size = 0.3
+
 /reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 5*.
@@ -32,6 +34,8 @@
 	experience_per_unit = 5
 
 	value = 3
+
+	particle_size = 0.4
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -55,6 +59,8 @@
 
 	value = 1
 
+	particle_size = 0.4
+
 /reagent/medicine/kelotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.burn_regen_buffer += 5*.
@@ -77,6 +83,8 @@
 
 	value = 1.25
 
+	particle_size = 0.2
+
 /reagent/medicine/dylovene/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.05 : 0) + 5)*.
@@ -97,6 +105,8 @@
 	metabolism_stomach = 0.25
 
 	value = 1.5
+
+	particle_size = 0.2
 
 /reagent/medicine/dexalin/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 	. = ..()
@@ -119,6 +129,8 @@
 	experience_per_unit = 4
 
 	value = 1.5
+
+	particle_size = 0.5
 
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -147,6 +159,8 @@
 
 	value = 2
 
+	particle_size = 0.75
+
 /reagent/medicine/omnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 3*.
@@ -173,6 +187,8 @@
 	experience_per_unit = 10
 
 	value = 500
+
+	particle_size = 0
 
 /reagent/medicine/adminomnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -204,6 +220,8 @@
 	liquid = -0.5
 
 	experience_per_unit = 5
+
+	particle_size = 0.5
 
 /reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
@@ -242,6 +260,8 @@
 
 	experience_per_unit = 5
 
+	particle_size = 0.5
+
 /reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
 	if(. && is_living(target))
@@ -273,6 +293,8 @@
 	alpha = 255
 
 	experience_per_unit = 5
+
+	particle_size = 0.75
 
 
 /reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)

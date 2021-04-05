@@ -20,6 +20,8 @@
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
+	particle_size = 0.5
+
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
 	value *= 0.1 + max(0.1,(nutrition_amount-nutrition_quality_amount)*0.035) + max(0,hydration_amount*0.015) + max(0,heal_factor) + max(0,0.05*flavor_strength)

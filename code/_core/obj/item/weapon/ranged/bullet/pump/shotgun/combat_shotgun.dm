@@ -16,11 +16,6 @@
 
 	can_wield = TRUE
 
-	icon_state_worn = "worn"
-	item_slot = SLOT_TORSO_B
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
-
 	view_punch = 12
 
 	size = SIZE_4

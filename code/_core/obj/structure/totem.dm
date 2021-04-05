@@ -17,6 +17,7 @@
 	var/affecting_faction //which faction it should affect
 
 	var/ranged_limited = TRUE //if a totem isn't too strong, be nice and don't limit the totem to only work within a range
+	var/required_range = 11
 
 /obj/structure/totem/Finalize()
 	. = ..()
@@ -30,13 +31,16 @@
 	return ..()
 
 /obj/structure/totem/think()
+	if(owner?.dead)
+		qdel(src)
+		return FALSE
 	if(world.time >= totem_remove_time)
 		qdel(src)
 		return FALSE
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
-	if(get_dist(owner.loc, loc) > 11 && ranged_limited)
+	if(get_dist(owner.loc, loc) > required_range && ranged_limited)
 		return TRUE
 	totemic_effect()
 	return TRUE
@@ -323,3 +327,47 @@
 	icon_state = "shock"
 	chosenProjectile = /obj/projectile/magic/lightning_bolt
 	chosenDamageType = /damagetype/ranged/magic/lightning
+
+/obj/structure/totem/blood_heal
+	name = "totem of blood regeneration"
+	desc = "It is water bending, but for blood."
+	desc_extended = "A totem that will restore the caster's and allies blood."
+	icon_state = "blood"
+
+/obj/structure/totem/blood_heal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag != affecting_faction)
+			continue
+		if(L.immortal)
+			continue
+		if(!istype(L.health))
+			continue
+		if(L.blood_volume >= L.blood_volume_max)
+			continue
+		L.blood_volume += min(L.blood_volume_max - L.blood_volume,leveled_effect*5)
+		CREATE(/obj/effect/temp/healing,L.loc)
+
+/obj/structure/totem/blood_deal
+	name = "totem of blood degeneration"
+	desc = "It is water bending, but for blood."
+	desc_extended = "A totem that will bleed the caster's enemies."
+	icon_state = "bloodloss"
+
+/obj/structure/totem/blood_deal/totemic_effect() //will need testing and help to balance this
+	var/turf/T = get_turf(src)
+	for(var/mob/living/L in viewers(4,T))
+		if(L.dead)
+			continue
+		if(L.loyalty_tag == affecting_faction)
+			continue
+		if(L.immortal)
+			continue
+		if(!istype(L.health))
+			continue
+		if(L.blood_volume <= 0)
+			continue
+		L.blood_volume -= min(L.blood_volume,leveled_effect*5)
+		CREATE(/obj/effect/temp/electricity,L.loc)

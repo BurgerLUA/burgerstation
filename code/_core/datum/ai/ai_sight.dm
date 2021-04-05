@@ -1,4 +1,4 @@
-/ai/proc/get_sight_chance(var/atom/A)
+/ai/proc/get_sight_chance(var/atom/A,var/view_check=FALSE)
 
 	if(owner.z != A.z)
 		return 0
@@ -6,35 +6,27 @@
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
 		return 0
 
-	if(A in attackers)
-		return 100
-
 	var/true_distance = get_dist(owner,A)
 	if(true_distance <= 1)
 		return 100
 
-	var/vision_distance = true_distance
-	if(objective_attack)
-		vision_distance = get_dist(objective_attack,A) //Objective attack is the central focus point.
-
-	if(true_distance > radius_find_enemy_combat)
-		return 0
-
-	if(vision_distance > radius_find_enemy_combat)
-		return 0
-
-	if(night_vision <= 0)
+	if(attackers[A])
 		return 100
 
-	. = 100
+	var/vision_distance = true_distance
+	if(objective_attack)
+		vision_distance = get_dist(objective_attack,A) //Objective attack is the central focus point, if there is one.
 
-	switch(vision_distance)
-		if(-INFINITY to VIEW_RANGE*0.75)
-			. = 100
-		if(VIEW_RANGE*0.75 to VIEW_RANGE+ZOOM_RANGE)
-			. = 50
-		if(VIEW_RANGE+ZOOM_RANGE to INFINITY)
-			. = 10
+	if(true_distance >= min(VIEW_RANGE+ZOOM_RANGE,radius_find_enemy_combat))
+		return 0
+
+	if(vision_distance > radius_find_enemy_combat) //We're too focused on another enemy.
+		return 0
+
+	if(view_check && !(A in view(true_distance,owner))) //I hate how expensive this is.
+		return 0
+
+	. = 100
 
 	var/turf/T = get_turf(A)
 	var/lightness = T.lightness

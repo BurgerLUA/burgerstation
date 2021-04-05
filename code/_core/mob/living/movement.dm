@@ -72,16 +72,15 @@
 	if(is_sneaking)
 		on_sneak()
 
+	if(old_turf && length(old_turf.old_living))
+		old_turf.old_living -= src
+
 	if(isturf(old_loc))
 		var/turf/T = old_loc
-		if(T.old_living)
-			T.old_living -= src
-
-	if(isturf(loc))
-		var/turf/T = loc
 		if(!T.old_living)
 			T.old_living = list()
 		T.old_living |= src
+		src.old_turf = T
 
 	handle_tabled()
 
@@ -187,12 +186,14 @@
 
 	if(O.density && is_living(O))
 		var/mob/living/L = O
-		if(L.loyalty_tag == src.loyalty_tag)
-			if(!src.ai || L.is_moving || !L.ai)
-				return ..()
 		if(L.horizontal || src.horizontal)
+			//If the crosser is horizontal, or the src is horizontal, who cares.
 			return ..()
-		if(L.size >= size && L.size >= SIZE_ANIMAL)
+		if(L.loyalty_tag == src.loyalty_tag && !L.ai)
+			//If the crosser is not an AI, who cares.
+			return ..()
+		if(L.size >= SIZE_ANIMAL)
+			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE
 
 	return ..()

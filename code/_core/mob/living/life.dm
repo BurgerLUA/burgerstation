@@ -26,8 +26,7 @@
 		stand.linked_stand.set_enabled(FALSE)
 		remove_stand()
 
-	if(ai)
-		ai.on_death()
+	if(ai) ai.on_death()
 
 	var/turf/T = get_turf(src)
 
@@ -83,6 +82,9 @@
 		GENERATE(S)
 		FINALIZE(S)
 		remove_status_effect(SOULTRAP)
+
+	if(one_time_life)
+		dust()
 
 	return TRUE
 

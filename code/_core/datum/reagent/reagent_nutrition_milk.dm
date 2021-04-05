@@ -15,6 +15,8 @@
 
 	flags_flavor = FLAG_FLAVOR_DAIRY
 
+	particle_size = 0.2
+
 /reagent/nutrition/cream
 	name = "milk cream"
 	desc = "Nutrition and flavor from milk cream."
@@ -29,6 +31,8 @@
 	liquid = 0.5
 
 	processed_reagent = /reagent/nutrition/butter
+
+	particle_size = 0.3
 
 //Cheese
 /reagent/nutrition/cheese/
@@ -46,6 +50,8 @@
 	flavor_strength = 3
 
 	flags_flavor = FLAG_FLAVOR_DAIRY | FLAG_FLAVOR_FAT
+
+	particle_size = 0.8
 
 /reagent/nutrition/cheese/kadchgall
 	name = "Kadchgall Desert cheese"

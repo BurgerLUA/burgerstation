@@ -1,5 +1,4 @@
 /obj/item/clothing/head/helmet/full/ghillie
-	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD
 	name = "SKAT-9M patterned ghillie head cover"
 	desc = "Sneeki breeki like."
 	desc_extended = "Professionally-made piece of colored clothes that's meant to be worn over SKAT-9. Provides almost no protection on its own, but allows you to blend in with the surroundings."

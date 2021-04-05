@@ -5,29 +5,36 @@
 
 	return TRUE
 
-/ai/proc/handle_movement_checks() //Stops crowding/stacking/grouping.
+/ai/proc/post_move(var/mob/living/L,args)
 
-	var/turf/T
+	var/atom/old_loc = args[1]
 
-	if(owner.move_dir) //Checking safety, like lava.
-		T = get_step(owner,owner.move_dir)
-		var/turf/T2 = get_turf(owner)
-		if(!can_enter_turf(T) && can_enter_turf(T2))
-			owner.move_dir = 0x0
-			owner.movement_flags = MOVEMENT_NORMAL
-			return TRUE
-	else
-		T = get_turf(owner)
+	var/turf/old_turf = get_turf(old_loc)
+	var/turf/new_turf = get_turf(L.loc)
 
-	for(var/mob/living/L in T.contents)
-		if(L == owner || L.dead)
-			continue
-		if(owner.move_dir && !L.move_dir)
-			owner.move_dir = 0x0
-			owner.movement_flags = MOVEMENT_NORMAL
-			return TRUE
+	if(old_turf && new_turf)
+		if(old_turf == new_turf)
+			frustration_move++
+			if(length(current_path))
+				frustration_path++
+			if(frustration_move >= frustration_move_threshold)
+				sidestep_next = TRUE
+				frustration_move = 0
+			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
+		else
+			frustration_move = 0
+			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
-	return FALSE
+	if(!new_turf || new_turf.z != last_z)
+		if(active)
+			if(last_z) remove_from_active_list(last_z)
+			if(new_turf) add_to_active_list(new_turf.z)
+		else
+			if(last_z) remove_from_inactive_list(last_z)
+			if(new_turf) add_to_inactive_list(new_turf.z); set_active(TRUE) //Wake up the AI if we can.
+		if(new_turf) last_z = new_turf.z
+
+	return TRUE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
 	if(desired_objective)
@@ -275,11 +282,12 @@
 
 	if(obstacle && is_living(obstacle))
 		var/mob/living/L = obstacle
-		if(is_enemy(L)) set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+		if(is_enemy(L))
+			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+			if(attack_on_block)
+				spawn do_attack(obstacle,prob(left_click_chance))
+
 		if(trigger_other_bump && L.ai)
 			L.ai.Bump(owner,FALSE)
-
-		if(attack_on_block)
-			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

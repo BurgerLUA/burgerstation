@@ -14,6 +14,8 @@
 	see_invisible = INVISIBLITY_GHOST
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
+	item_slot_layer = 1
+
 /obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
@@ -23,7 +25,7 @@
 		I.owner?.remove_color_mod("eyes")
 		I.owner?.remove_lighting_mod("\ref[src]")
 
-	if(new_location.item_slot & SLOT_EYES)
+	if(new_location.item_slot & SLOT_FACE)
 		var/list/desired_color = list(
 			1.25,0,0,0,
 			0,1.25,0,0,

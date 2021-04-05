@@ -11,6 +11,8 @@
 
 	value = 2
 
+	particle_size = 0.1
+
 
 /reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 

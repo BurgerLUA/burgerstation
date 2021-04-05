@@ -59,6 +59,8 @@
 
 	var/allow_path = FALSE //Set to true to allow node checking to pass this object.
 
+	var/can_be_bumped = TRUE
+
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 
 	if(l_range)

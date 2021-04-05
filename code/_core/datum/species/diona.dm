@@ -4,7 +4,7 @@
 	id = "diona"
 	flags_species = SPECIES_DIONA
 
-	bite_size = 20
+	bite_size = 100
 
 	flags_chargen = CHARGEN_SKIN | CHARGEN_DETAIL | CHARGEN_GLOW
 
@@ -30,6 +30,9 @@
 		BODY_ARM_LEFT = /obj/item/organ/arm/diona/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand/diona,
 		BODY_HAND_LEFT = /obj/item/organ/hand/diona/left,
+
+		BODY_EYE_RIGHT = /obj/item/organ/eye/diona,
+		BODY_EYE_LEFT = /obj/item/organ/eye/diona/left,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_LUNGS = /obj/item/organ/internal/lungs,

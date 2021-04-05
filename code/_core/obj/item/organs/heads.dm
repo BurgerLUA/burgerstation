@@ -130,3 +130,12 @@
 
 /obj/item/organ/head/goblin/female
 	icon_state = BODY_HEAD_FEMALE
+
+
+/obj/item/organ/head/moth
+	name = "moth head"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+	desc = "An organ."
+
+/obj/item/organ/head/moth/female
+	icon_state = BODY_HEAD_FEMALE

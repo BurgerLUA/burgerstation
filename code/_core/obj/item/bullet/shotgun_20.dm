@@ -9,9 +9,6 @@
 	bullet_length = 17.5
 	bullet_color = COLOR_BULLET
 
-	worn_layer = LAYER_MOB_CLOTHING_BELT
-	item_slot = SLOT_GROIN_O
-
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04
@@ -64,7 +61,7 @@
 	size = 0.04
 	value = 1.6
 
-	inaccuracy_modifer = 1.5
+	inaccuracy_modifer = 1.25
 
 /obj/item/bullet_cartridge/shotgun_20/buckshot/surplus
 	name = "\improper surplus 20 gauge slug"

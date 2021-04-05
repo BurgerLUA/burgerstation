@@ -30,5 +30,3 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 		var/desired_color = input("Skin Color","Skin Color",skin_color) as color|null
 		if(desired_color)
 			A.handle_skincolor_chargen(desired_color)
-
-	

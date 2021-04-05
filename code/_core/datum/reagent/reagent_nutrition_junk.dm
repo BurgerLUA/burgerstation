@@ -11,6 +11,8 @@
 
 	liquid = -0.75
 
+	particle_size = 0.8
+
 /reagent/nutrition/junk/New(var/desired_loc)
 	nutrition_quality_amount = -nutrition_amount*0.4 //Automation!
 	return ..()

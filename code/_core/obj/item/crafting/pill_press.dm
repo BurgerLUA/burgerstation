@@ -24,7 +24,7 @@
 	var/obj/hud/inventory/crafting/result/product_slot
 	var/obj/item/product_container
 
-	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
+	for(var/obj/hud/inventory/crafting/result/R in src.inventories)
 		var/obj/item/I = R.get_top_object()
 		if(I)
 			if(I.is_container)

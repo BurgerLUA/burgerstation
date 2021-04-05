@@ -87,3 +87,15 @@
 	totem_to_spawn = /obj/structure/totem/projectile/lightning_bolt
 
 	value = 5000
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/blood_heal
+	name = "totemic tome of blood regeneration"
+	totem_to_spawn = /obj/structure/totem/blood_heal
+
+	value = 5000
+
+/obj/item/weapon/ranged/magic/tome/summon/totem/blood_deal
+	name = "totemic tome of blood degeneration"
+	totem_to_spawn = /obj/structure/totem/blood_deal
+
+	value = 5000

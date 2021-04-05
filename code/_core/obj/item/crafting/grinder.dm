@@ -24,13 +24,13 @@
 
 	var/obj/item/container/C //Final slot container.
 
-	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
+	for(var/obj/hud/inventory/crafting/result/R in src.inventories)
 		var/obj/item/top_object = R.get_top_object()
 		C = top_object
 		break
 
 	if(!C)
-		for(var/obj/hud/inventory/crafting/R in caller.inventory)
+		for(var/obj/hud/inventory/crafting/R in src.inventories)
 			var/obj/item/top_object = R.get_top_object()
 			if(is_beaker(top_object))
 				C = top_object

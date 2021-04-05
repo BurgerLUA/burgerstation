@@ -227,3 +227,21 @@
 
 	target_bounds_y_min = 15
 	target_bounds_y_max = 22
+
+//Moth
+/obj/item/organ/arm/moth
+	name = "moth right arm"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+
+/obj/item/organ/arm/moth/left
+	name = "moth left arm"
+	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT
+
+	hud_id = "body_arm_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 15
+	target_bounds_y_max = 22

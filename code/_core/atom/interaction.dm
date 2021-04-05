@@ -20,7 +20,7 @@
 	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
 	return list(div("examine_title","[object_icon][src.name]"),div("examine_description","\"[src.desc]\""),div("examine_description_long",src.desc_extended))
 
-/atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE,var/delay_checks=TRUE,var/distance_checks=TRUE)
+/atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE,var/delay_checks=TRUE,var/distance_checks=TRUE,var/turf_checks=TRUE)
 
 	if(src.qdeleting)
 		return FALSE
@@ -52,8 +52,10 @@
 		if(enable_message) caller.to_chat(span("warning","The dead cannot interact with \the [src.name]!"))
 		return FALSE
 
+	if(turf_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_TURF_CHECKING) && src.plane < PLANE_HUD && isturf(src.loc) && !isturf(caller.loc))
+		return FALSE
+
 	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(src,caller) > interact_distance)
-		//if(enable_message) caller.to_chat(span("warning","You're too far away to interact with \the [src.name]!")) THIS WAS ANNOYING
 		return FALSE
 
 /atom/proc/click_self(var/mob/caller as mob,location,control,params)

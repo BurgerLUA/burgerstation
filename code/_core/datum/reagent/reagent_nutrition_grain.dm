@@ -16,6 +16,8 @@
 
 	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_GRAIN
 
+	particle_size = 0.8
+
 /reagent/nutrition/wheat_grain/flour
 	name = "whole wheat flour"
 	desc = "Processed wheat grains for use in baking. Process this some more to get white flour."
@@ -33,6 +35,8 @@
 
 	flags_flavor = FLAG_FLAVOR_GRAIN
 
+	particle_size = 0.6
+
 /reagent/nutrition/wheat_grain/flour/processed
 	name = "white flour"
 	desc = "Finely processed white flour for use in baking."
@@ -48,6 +52,8 @@
 
 	flags_flavor = FLAG_FLAVOR_GRAIN
 
+	particle_size = 0.3
+
 /reagent/nutrition/corn_flour
 	name = "corn flour"
 	desc = "Also called corn starch. One of the biproducts of processing corn."
@@ -62,3 +68,5 @@
 	flavor_strength = 4
 
 	flags_flavor = FLAG_FLAVOR_GRAIN
+
+	particle_size = 0.25

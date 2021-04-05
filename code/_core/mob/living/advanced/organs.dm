@@ -5,8 +5,13 @@
 			var/obj/hud/inventory/I = k
 			I.delete_objects()
 			I.remove_from_owner()
-
-	if(is_tail(O))
+	if(istype(O,/obj/item/organ/antennae))
+		remove_overlay("antennae_behind")
+		remove_overlay("antennae_front")
+	else if(istype(O,/obj/item/organ/wings))
+		remove_overlay("natural_wings_behind")
+		remove_overlay("natural_wings_front")
+	else if(istype(O,/obj/item/organ/tail))
 		remove_overlay("tail_behind")
 		remove_overlay("tail_front")
 	else
@@ -92,7 +97,13 @@
 		INITIALIZE(O)
 		FINALIZE(O)
 
-	if(is_tail(O))
+	if(istype(O,/obj/item/organ/antennae))
+		add_overlay_tracked("antennae_behind",O,desired_layer = LAYER_MOB_ANTENNAE_BEHIND, desired_icon_state = "[O.icon_state]_BEHIND",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
+		add_overlay_tracked("antennae_front",O,desired_layer = LAYER_MOB_ANTENNAE_FRONT, desired_icon_state = "[O.icon_state]_FRONT",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
+	else if(istype(O,/obj/item/organ/wings))
+		add_overlay_tracked("natural_wings_behind",O,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon_state = "[O.icon_state]_BEHIND",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
+		add_overlay_tracked("natural_wings_front",O,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon_state = "[O.icon_state]_FRONT",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
+	else if(istype(O,/obj/item/organ/tail))
 		add_overlay_tracked("tail_behind",O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")
 		add_overlay_tracked("tail_front",O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
 	else

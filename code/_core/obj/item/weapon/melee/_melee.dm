@@ -10,3 +10,8 @@ obj/item/weapon/melee
 		ATTACK_TYPE_RANGED = 0,
 		ATTACK_TYPE_MAGIC = 0
 	)
+
+	reagents = /reagent_container/weapon
+
+	allow_reagent_transfer_to = FALSE
+	allow_reagent_transfer_from = FALSE

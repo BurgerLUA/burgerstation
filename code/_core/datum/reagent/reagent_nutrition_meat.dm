@@ -20,6 +20,8 @@
 
 	value = 2
 
+	particle_size = 0.7
+
 /reagent/nutrition/fat/
 	name = "fat"
 	desc = "Nutrition and flavor from fat."
@@ -39,6 +41,8 @@
 	heated_reagent_mul = 0.01
 
 	flags_flavor = FLAG_FLAVOR_FAT
+
+	particle_size = 0.8
 
 /reagent/nutrition/fat/New(var/desired_loc)
 	nutrition_quality_amount = -nutrition_amount*0.25

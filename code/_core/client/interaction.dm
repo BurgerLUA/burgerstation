@@ -101,6 +101,9 @@
 				FINALIZE(A)
 				mob.visible_message("<b>\The [mob.name]</b> points to <b>\the [object.name]</b>.")
 				spam_protection_interact += 10
+		else if(is_advanced(mob) && mob.attack_flags & CONTROL_MOD_GRAB && is_advanced(object))
+			var/mob/living/advanced/A = object
+			A.examine_body_inventory(mob)
 		else
 			examine(object)
 

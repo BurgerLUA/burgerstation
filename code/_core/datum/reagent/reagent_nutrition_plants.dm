@@ -10,6 +10,8 @@
 
 	liquid = -0.2
 
+	particle_size = 0.6
+
 /reagent/nutrition/tomato
 	name = "tomato paste"
 	desc = "Nutrition and flavor from a tomato."
@@ -21,6 +23,8 @@
 	flavor = "tomato"
 
 	liquid = 0.3
+
+	particle_size = 0.4
 
 /reagent/nutrition/mustard
 	name = "mustard paste"
@@ -34,6 +38,8 @@
 
 	liquid = 0.1
 
+	particle_size = 0.4
+
 /reagent/nutrition/pineapple
 	name = "pineapple"
 	desc = "Nutrition and flavor from a pineapple."
@@ -45,6 +51,8 @@
 	flavor = "pineapple"
 
 	liquid = 0.5
+
+	particle_size = 0.6
 
 /reagent/nutrition/cabbage
 	name = "cabbage"
@@ -58,6 +66,8 @@
 
 	liquid = 0
 
+	particle_size = 0.7
+
 /reagent/nutrition/lettuce
 	name = "lettuce"
 	desc = "Nutrition and flavor from lettuce."
@@ -70,6 +80,8 @@
 
 	liquid = 0
 
+	particle_size = 0.7
+
 /reagent/nutrition/coconut
 	name = "coconut"
 	desc = "Nutrition and flavor from a coconut."
@@ -81,6 +93,8 @@
 	flavor = "coconut"
 
 	liquid = -0.25
+
+	particle_size = 0.6
 
 
 /reagent/nutrition/nut
@@ -95,6 +109,8 @@
 
 	liquid = -0.5
 
+	particle_size = 0.8
+
 /reagent/nutrition/nut/butter
 	name = "nut butter"
 	desc = "Nutrition and flavor from nut butter."
@@ -106,6 +122,8 @@
 	flavor = "nut butter"
 
 	liquid = 0.25
+
+	particle_size = 0.4
 
 
 /reagent/nutrition/flower_petal
@@ -120,6 +138,8 @@
 
 	liquid = 0
 
+	particle_size = 0.7
+
 /reagent/nutrition/poppy_seed
 	name = "poppy seed"
 	desc = "Opium-free washed poppy seeds."
@@ -132,11 +152,15 @@
 
 	liquid = 0
 
+	particle_size = 0.3
+
 /reagent/nutrition/poppy_seed/raw
 	name = "raw poppy seed"
 	desc = "Pure unrefined poppy seeds. It's unwashed and contains traces of opium."
 
 	processed_reagent = /reagent/medicine/painkiller/opium
+
+	particle_size = 0.4
 
 
 /reagent/nutrition/poppy_seed/raw/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -166,4 +190,6 @@
 	flavor = "hunger"
 
 	liquid = -0.1
+
+	particle_size = 0.1
 

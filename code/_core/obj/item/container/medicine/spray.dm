@@ -42,6 +42,22 @@
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
+	if(istype(object,/obj/item/container/medicine))
+		var/obj/item/container/medicine/M = object
+		if(M.robotic)
+			caller.to_chat(span("warning","\The [M.name] cannot be infused!"))
+			return TRUE
+		var/reagent_transfer = min(5,reagents.volume_current)
+		if(reagent_transfer <= 0)
+			caller.to_chat(span("warning","\The [src.name] is empty!"))
+			return TRUE
+		if(M.reagents.volume_current >= M.reagents.volume_max)
+			caller.to_chat(span("warning","\The [M.name] is full!"))
+			return TRUE
+		reagents.transfer_reagents_to(M.reagents,reagent_transfer, caller = caller)
+		caller.visible_message(span("warning","\The [caller.name] sprays \the [M.name] with \the [src.name], infusing it."),span("notice","You spray \the [M.name] with \the [src.name], infusing it."))
+		return TRUE
+
 	if(is_advanced(object) && is_advanced(caller))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
