@@ -65,6 +65,6 @@
 
 /ai/proc/on_death()
 	set_objective(null)
-	set_active(FALSE)
 	set_path(null)
+	set_active(FALSE)
 	return TRUE
