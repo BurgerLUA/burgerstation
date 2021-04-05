@@ -18,3 +18,5 @@
 	move_delay_modifier = 1
 
 	health = null
+
+	organic = TRUE
