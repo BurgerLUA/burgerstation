@@ -44,7 +44,7 @@
 
 	add_overlay(I)
 
-
+/*
 /obj/hud/button/evade/block
 	name = "block"
 	desc = "Easily blocked!"
@@ -71,6 +71,7 @@
 
 /obj/hud/button/evade/dodge/get_charge_level(var/mob/living/caller)
 	return caller.charge_dodge
+*/
 
 
 

@@ -439,10 +439,7 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/can_sprint()
 
-	if(!health)
-		return ..()
-
-	if(health.stamina_current <= 0)
+	if(health?.stamina_current <= 0 || has_status_effect(STAMCRIT))
 		return FALSE
 
 	var/list/organs_to_check = list(

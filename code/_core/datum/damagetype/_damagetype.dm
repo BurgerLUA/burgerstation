@@ -303,8 +303,12 @@
 		log_debug("**************************************")
 		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
 
+	var/block_multiplier = 0 //Different from damage_multiplier.
 	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
+		if(L.attack_flags & CONTROL_MOD_BLOCK)
+			var/block_angle = abs(get_angle(victim,attacker))
+			if(block_angle <= 90) block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
 		if(is_advanced(victim) && can_be_parried)
 			var/mob/living/advanced/A = victim
 			if(A.parry(attacker,weapon,hit_object,src))
@@ -341,13 +345,17 @@
 			var/mob/living/advanced/A = attacker
 			object_to_check = A.labeled_organs[O.id]
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check,TRUE) : list()
-
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
 		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
+		if(damage_type != FATIGUE && block_multiplier > 0)
+			if(debug) log_debug("Calculating [damage_type] with shield...")
+			var/blocked_damage = block_multiplier * old_damage_amount
+			old_damage_amount -= blocked_damage
+			fatigue_damage += blocked_damage
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
