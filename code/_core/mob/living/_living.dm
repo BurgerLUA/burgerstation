@@ -239,7 +239,7 @@
 	var/tabled = FALSE
 	var/currently_tabled = FALSE
 
-	density = 1
+	density = TRUE
 
 	var/list/defense_bonuses = list() //From perks, powers, and whatever.
 

@@ -116,8 +116,6 @@
 	var/wielded = FALSE
 	var/can_wield = FALSE
 
-	ignore_incoming_collisons = TRUE
-
 	anchored = FALSE
 
 	var/block_power = 0.5 //Higher values means it blocks more. Normal weapons should have 1, while stronger items should have between 2-5

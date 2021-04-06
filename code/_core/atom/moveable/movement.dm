@@ -201,9 +201,6 @@
 	//Do: Exit the turf.
 	if(src.density) NewLoc.Exited(src,NewLoc)
 
-	if(!OldLoc || OldLoc == loc)
-		loc = NewLoc
-
 	//Do: Crossed the contents
 	if(src.density)
 		for(var/k in NewLoc.contents)
@@ -225,6 +222,9 @@
 			if(!M.density)
 				continue
 			M.Uncrossed(src)
+
+	if(!OldLoc || OldLoc == loc)
+		loc = NewLoc
 
 	post_move(OldLoc)
 
