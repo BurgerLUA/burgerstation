@@ -545,7 +545,10 @@
 	accepts_item = /obj/item/currency/prize_ticket
 
 	stored_types = list(
-		/obj/item/bikehorn
+		/obj/item/bikehorn,
+		/obj/item/ball/soccer,
+		/obj/item/dice/d6,
+		/obj/item/dice/d20
 	)
 
 

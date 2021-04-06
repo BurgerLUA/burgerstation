@@ -9,13 +9,14 @@
 	var/north_momentum = 0
 	var/east_momentum = 0
 
-	var/bounciness = 0.5
+	var/bounciness = 0.75
 
 	movement_delay = 1
 
 	density = TRUE
 
 	var/dribbling = FALSE
+	var/dribble_counter = 0
 
 	value = 500
 
@@ -34,9 +35,9 @@
 	SSball.all_balls -= src
 	. = ..()
 
-/obj/item/ball/post_move(var/atom/new_loc)
+/obj/item/ball/post_move(var/atom/old_loc)
 	. = ..()
-	if(isturf(new_loc))
+	if(isturf(loc))
 		SSball.all_balls |= src
 	else
 		SSball.all_balls -= src
@@ -91,25 +92,30 @@
 /obj/item/ball/soccer/Cross(atom/movable/O)
 	return TRUE
 
-/obj/item/ball/soccer/Uncrossed(atom/movable/O)
-	return Crossed(O)
-
 /obj/item/ball/soccer/Crossed(atom/movable/O)
 	. = ..()
+	on_kick(O)
+
+/obj/item/ball/soccer/Uncrossed(atom/movable/O)
+	. = ..()
+	on_kick(O,pull=TRUE)
+
+/obj/item/ball/soccer/proc/on_kick(var/atom/movable/O,var/pull=FALSE)
 	if(is_living(O))
 		var/mob/living/L = O
 		if(L.horizontal)
 			return .
-
 		if(L.attack_flags & CONTROL_MOD_ALT)
 			return .
+
+
 
 		var/bump_dir = get_dir(src,O)
 
 		var/move_mod = max(1,(L.move_mod-1)**2)
 
-		if(L.loc == src.loc)
-			bump_dir = turn(L.dir,180)
+		if(pull)
+			bump_dir = L.dir //Push back.
 			move_mod *= 2
 		else if(L.attack_flags & CONTROL_MOD_KICK)
 			move_mod *= 3
@@ -134,8 +140,15 @@
 		if(move_mod == 1 && O.move_delay > 0)
 			movement_delay = O.move_delay
 			dribbling = TRUE
+			dribble_counter = !dribble_counter
 		else
 			dribbling = FALSE
+			dribble_counter = 0
+
+		if(!dribble_counter)
+			play_sound('sound/effects/ball_kick.ogg',get_turf(src),volume=30+move_mod*10,pitch=RAND_PRECISE(0.95,1.05)+move_mod*0.05)
+
+	return TRUE
 
 /obj/item/ball/soccer/Bump(atom/Obstacle)
 
