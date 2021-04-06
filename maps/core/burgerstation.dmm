@@ -4654,6 +4654,9 @@
 	},
 /turf/simulated/openspace,
 /area/burgerstation/maint/garden)
+"rb" = (
+/turf/simulated/floor/stair,
+/area/burgerstation/cryo)
 "rc" = (
 /obj/structure/interactive/fire_closet{
 	dir = 8
@@ -48997,7 +49000,7 @@ sB
 jy
 sF
 lJ
-nF
+rb
 wI
 wI
 wI
@@ -49254,7 +49257,7 @@ cR
 jy
 sF
 lJ
-nF
+rb
 wI
 wI
 wI
@@ -49511,7 +49514,7 @@ sB
 jy
 sF
 lJ
-nF
+rb
 wI
 wI
 wI

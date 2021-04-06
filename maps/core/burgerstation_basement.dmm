@@ -12,13 +12,25 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/garden)
 "e" = (
-/turf/simulated/floor/stair{
-	icon_state = "stair";
+/turf/simulated/floor/stair/ztravel{
+	icon_state = "stair_middle";
 	dir = 1
 	},
 /area/burgerstation/maint/garden)
 "f" = (
 /turf/simulated/floor/plating,
+/area/burgerstation/maint/garden)
+"g" = (
+/turf/simulated/floor/stair/ztravel{
+	icon_state = "stair_right";
+	dir = 1
+	},
+/area/burgerstation/maint/garden)
+"h" = (
+/turf/simulated/floor/stair/ztravel{
+	icon_state = "stair_left";
+	dir = 1
+	},
 /area/burgerstation/maint/garden)
 
 (1,1,1) = {"
@@ -45619,7 +45631,7 @@ b
 b
 b
 d
-e
+h
 f
 f
 f
@@ -46133,7 +46145,7 @@ b
 b
 b
 d
-e
+g
 f
 f
 f

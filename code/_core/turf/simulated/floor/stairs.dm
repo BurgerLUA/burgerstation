@@ -8,7 +8,7 @@
 
 	safe_fall = TRUE
 
-/turf/simulated/floor/stair/Exit(atom/movable/O, atom/newloc)
+/turf/simulated/floor/stair/ztravel/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()
 

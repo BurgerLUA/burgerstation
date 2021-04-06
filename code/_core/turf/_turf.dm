@@ -16,7 +16,7 @@
 	var/density_east  = FALSE
 	var/density_west  = FALSE
 	var/density_up    = FALSE
-	var/density_down  = FALSE
+	var/density_down  = TRUE
 	var/allow_bullet_pass = FALSE
 
 	var/footstep/footstep //The footstep sounds that play.
