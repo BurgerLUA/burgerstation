@@ -1,5 +1,6 @@
 /obj/item/ball
 	name = "ball"
+	rarity = RARITY_RARE
 	icon = 'icons/obj/item/ball.dmi'
 
 	collision_flags = FLAG_COLLISION_WALKING
@@ -16,6 +17,8 @@
 
 	var/dribbling = FALSE
 
+	value = 500
+
 /obj/item/ball/update_overlays()
 	. = ..()
 	var/image/I = new/icon(initial(icon),"[initial(icon_state)]_shading")
@@ -24,16 +27,21 @@
 /obj/item/ball/Finalize()
 	. = ..()
 	update_sprite()
-
-	SSball.all_balls |= src
+	if(isturf(loc))
+		SSball.all_balls |= src
 
 /obj/item/ball/Destroy()
 	SSball.all_balls -= src
 	. = ..()
 
-/obj/item/ball/proc/ball_think(var/tick_rate=1)
+/obj/item/ball/post_move(var/atom/new_loc)
+	. = ..()
+	if(isturf(new_loc))
+		SSball.all_balls |= src
+	else
+		SSball.all_balls -= src
 
-	//color = "#00FF00"
+/obj/item/ball/proc/ball_think(var/tick_rate=1)
 
 	var/desired_move_dir = 0x0
 
@@ -105,8 +113,6 @@
 			move_mod *= 2
 		else if(L.attack_flags & CONTROL_MOD_KICK)
 			move_mod *= 3
-
-
 
 		if(bump_dir & NORTH)
 			if(north_momentum > 0)
