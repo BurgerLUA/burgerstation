@@ -4654,6 +4654,9 @@
 	},
 /turf/simulated/openspace,
 /area/burgerstation/maint/garden)
+"rb" = (
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "rc" = (
 /obj/structure/interactive/fire_closet{
 	dir = 8
@@ -5017,6 +5020,17 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
+"su" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 9
+	},
+/obj/structure/interactive/barricade{
+	icon_state = "metal";
+	dir = 8
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "sv" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/marker/spawning/window/reinforced,
@@ -5285,6 +5299,13 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/cafe)
+"tu" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 1
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "tv" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile/tint,
@@ -5305,6 +5326,23 @@
 /obj/marker/lobby,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
+"tz" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 5
+	},
+/obj/structure/interactive/barricade{
+	icon_state = "metal";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"tA" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "tB" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile/dark,
@@ -5392,10 +5430,39 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile/shuttle/blue,
 /area/transit/dropship/delta/station)
+"tS" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 9
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "tT" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/hall/north)
+"tU" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 1
+	},
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 8
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"tV" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 1
+	},
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "tW" = (
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/tile/coldroom,
@@ -5810,13 +5877,18 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/south)
 "vz" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 5
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "vA" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
-/area/space/light)
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "vB" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
@@ -7263,6 +7335,174 @@
 /obj/structure/interactive/door/airlock/station/glass,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
+"AH" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 8
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AI" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 10
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AJ" = (
+/obj/decal/soccer/corner,
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AK" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 6
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AL" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AM" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 10
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AN" = (
+/obj/decal/soccer/circle,
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AO" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 6
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AP" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 9
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AQ" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 1
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AR" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 5
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AS" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 8
+	},
+/obj/decal/soccer{
+	icon_state = "center_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AT" = (
+/obj/decal/soccer{
+	icon_state = "center_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AU" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 8
+	},
+/obj/decal/soccer{
+	icon_state = "center_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AV" = (
+/obj/decal/soccer{
+	icon_state = "center_line";
+	dir = 4
+	},
+/obj/item/ball/soccer,
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AW" = (
+/obj/decal/soccer/circle{
+	icon_state = "circle";
+	dir = 4
+	},
+/obj/decal/soccer{
+	icon_state = "center_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AX" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 4
+	},
+/obj/decal/soccer{
+	icon_state = "center_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AY" = (
+/obj/decal/soccer/corner,
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 8
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"AZ" = (
+/obj/decal/soccer/corner,
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"Ba" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 10
+	},
+/obj/structure/interactive/barricade{
+	icon_state = "metal";
+	dir = 8
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
+"Bb" = (
+/obj/decal/soccer/corner{
+	icon_state = "corner_line";
+	dir = 6
+	},
+/obj/structure/interactive/barricade{
+	icon_state = "metal";
+	dir = 4
+	},
+/turf/simulated/floor/colored/grass,
+/area/burgerstation/maint/south)
 "OQ" = (
 /obj/structure/interactive/atmospherics/air_alarm{
 	dir = 4
@@ -35913,21 +36153,21 @@ kB
 kB
 kB
 kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
-kB
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ab
 ab
@@ -36184,7 +36424,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -36441,7 +36681,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -36698,7 +36938,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -36955,7 +37195,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -37212,7 +37452,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -37469,7 +37709,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -37726,7 +37966,7 @@ ab
 ab
 ab
 ab
-kB
+ab
 ab
 ab
 ab
@@ -37983,7 +38223,7 @@ kF
 kF
 kF
 kF
-rT
+kF
 kF
 kF
 kF
@@ -38240,7 +38480,7 @@ mF
 mF
 mF
 mF
-dH
+mF
 mF
 mF
 mF
@@ -38489,11 +38729,11 @@ mF
 mF
 xP
 xP
-xR
-xR
-xR
-xR
-xR
+xP
+xP
+xP
+xP
+xP
 xP
 xP
 xP
@@ -38745,7 +38985,7 @@ bu
 bu
 bu
 bu
-Au
+bB
 bB
 bB
 bB
@@ -41328,7 +41568,7 @@ qf
 tm
 ym
 px
-pQ
+gY
 bB
 xR
 mF
@@ -41585,7 +41825,7 @@ sl
 yl
 yp
 px
-pQ
+gY
 bB
 xR
 mF
@@ -41842,7 +42082,7 @@ fr
 fr
 fr
 px
-pQ
+gY
 bB
 xR
 mF
@@ -42103,8 +42343,8 @@ gY
 bB
 xP
 mF
-kF
-kF
+mF
+mF
 kF
 kF
 kF
@@ -42356,28 +42596,28 @@ fr
 fr
 fr
 px
-pQ
+gY
 bB
-xR
+xP
+xP
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
 kQ
 kQ
 kQ
@@ -42613,28 +42853,28 @@ qf
 tm
 ym
 px
-pQ
+gY
 bB
+om
+bB
+xP
+xP
+xP
 xR
+xR
+xR
+xR
+xR
+xP
+xR
+xR
+xR
+xR
+xR
+xP
+xP
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -42870,28 +43110,28 @@ yF
 yG
 yI
 yj
-pQ
+gY
 bB
-xR
+ee
+bB
+om
+rb
+tA
+rb
+rb
+rb
+rb
+rb
+tA
+rb
+rb
+rb
+rb
+rb
+tA
+rb
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -43129,26 +43369,26 @@ pQ
 gY
 gY
 bB
+ee
+bB
+xP
+rb
+tS
+AH
+AH
+AH
+AH
+AH
+AS
+AH
+AH
+AH
+AH
+AH
+AI
+rb
 xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -43386,26 +43626,26 @@ pJ
 gY
 Au
 bB
+ee
+bB
+xP
+rb
+tu
+rb
+rb
+rb
+rb
+rb
+AT
+rb
+rb
+rb
+rb
+rb
+AJ
+rb
 xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -43643,26 +43883,26 @@ pQ
 gY
 ee
 om
+ee
+bB
+xP
+rb
+tU
+AI
+rb
+rb
+rb
+rb
+AT
+rb
+rb
+rb
+rb
+tS
+AY
+rb
 xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -43900,26 +44140,26 @@ vC
 vB
 vw
 si
-vz
+ee
+bB
+xP
+su
+tu
+AJ
+AM
+rb
+rb
+AP
+AU
+AM
+rb
+rb
+AP
+tu
+AJ
+Ba
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -44157,26 +44397,26 @@ uN
 uN
 vy
 nT
-vz
+ee
+bB
+xP
+tu
+tu
+AJ
+AN
+rb
+rb
+AQ
+AV
+AN
+rb
+rb
+AQ
+tu
+AJ
+AJ
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -44414,26 +44654,26 @@ nT
 nT
 nT
 nT
-vA
+ee
+bB
+xP
+tz
+tu
+AJ
+AO
+rb
+rb
+AR
+AW
+AO
+rb
+rb
+AR
+tu
+AJ
+Bb
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -44671,26 +44911,26 @@ rd
 rd
 pK
 aX
-aj
+ee
+bB
+xP
+rb
+tV
+AK
+rb
+rb
+rb
+rb
+AT
+rb
+rb
+rb
+rb
+vz
+AZ
+rb
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -44928,26 +45168,26 @@ rl
 rl
 ru
 dX
-aj
+ee
+bB
+xP
+rb
+tu
+rb
+rb
+rb
+rb
+rb
+AT
+rb
+rb
+rb
+rb
+rb
+AJ
+rb
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -45185,26 +45425,26 @@ rk
 rF
 pK
 dX
-pH
+ee
+bB
+xP
+rb
+vz
+AL
+AL
+AL
+AL
+AL
+AX
+AL
+AL
+AL
+AL
+AL
+AK
+rb
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -45442,26 +45682,26 @@ rh
 rh
 pK
 dX
-pH
+ee
+bB
+om
+rb
+vA
+rb
+rb
+rb
+rb
+rb
+vA
+rb
+rb
+rb
+rb
+rb
+vA
+rb
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -45699,26 +45939,26 @@ rw
 rk
 pK
 dX
-pH
+om
+bB
+xP
+xP
+xP
+xR
+xR
+xR
+xR
+xR
+xP
+xR
+xR
+xR
+xR
+xR
+xP
+xP
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
 kQ
 kQ
 kQ
@@ -45956,26 +46196,26 @@ pK
 rl
 pK
 dX
-aj
+xP
+xP
+xP
 mF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
-kF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
 kQ
 kQ
 kQ
@@ -46215,8 +46455,8 @@ rK
 dX
 pH
 mF
-kF
-kF
+mF
+mF
 kF
 kF
 kF

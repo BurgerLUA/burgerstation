@@ -887,6 +887,7 @@
 #include "code\_core\obj\decal\ego.dm"
 #include "code\_core\obj\decal\hazard.dm"
 #include "code\_core\obj\decal\poster.dm"
+#include "code\_core\obj\decal\soccer.dm"
 #include "code\_core\obj\decal\tile.dm"
 #include "code\_core\obj\effect\_effect.dm"
 #include "code\_core\obj\effect\chat.dm"

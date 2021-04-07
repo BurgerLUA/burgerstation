@@ -108,8 +108,6 @@
 		if(L.attack_flags & CONTROL_MOD_ALT)
 			return .
 
-
-
 		var/bump_dir = get_dir(src,O)
 
 		var/move_mod = max(1,(L.move_mod-1)**2)
@@ -138,7 +136,7 @@
 			east_momentum += move_mod
 
 		if(move_mod == 1 && O.move_delay > 0)
-			movement_delay = O.move_delay
+			movement_delay = max(1,O.move_delay - 1)
 			dribbling = TRUE
 			dribble_counter = !dribble_counter
 		else
@@ -167,6 +165,10 @@
 	else if(bump_dir & WEST)
 		if(east_momentum < 0)
 			east_momentum = FLOOR(-east_momentum*bounciness,1)
+
+	var/momentum = max(abs(north_momentum),abs(east_momentum))
+
+	play_sound('sound/effects/ball_kick.ogg',get_turf(src),volume=20+momentum*10,pitch=RAND_PRECISE(0.8,0.9)+momentum*0.05)
 
 	. = ..()
 
