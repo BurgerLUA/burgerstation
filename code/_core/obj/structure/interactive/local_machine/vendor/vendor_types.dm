@@ -135,7 +135,8 @@
 		/obj/item/storage/pillbottle/antihol_small,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/reptile,
-		/obj/item/container/medicine/nanopaste
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
@@ -420,19 +421,23 @@
 	var/list/chemicals_to_make = list(
 		/reagent/carbon,
 		/reagent/iron,
+		/reagent/copper,
+		/reagent/silver,
+		/reagent/aluminium,
 		/reagent/oxygen,
 		/reagent/nitrogen,
 		/reagent/silicon,
 		/reagent/potassium,
 		/reagent/salt/sodium_chloride,
-		/reagent/nutrition/sugar/glucose,
-		/reagent/fuel/welding,
-		/reagent/fuel/hydrogen,
 		/reagent/ammonia,
 		/reagent/sulfur,
 		/reagent/chlorine,
-		/reagent/nutrition/water,
-		/reagent/aluminium
+		/reagent/phenol,
+		/reagent/sodium,
+		/reagent/acid/sulphuric,
+		/reagent/fuel/acetone,
+		/reagent/toxin/mercury,
+		/reagent/drug/lithium
 	)
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
@@ -440,6 +445,8 @@
 	. = ..()
 
 	var/turf/T = get_turf(src)
+
+
 
 	for(var/k in chemicals_to_make)
 		var/reagent/R = REAGENT(k)

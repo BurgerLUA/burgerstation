@@ -298,6 +298,11 @@
 		/reagent/blood/plant = TRUE
 	)
 
+	heated_reagent = /reagent/medicine/mitogen
+	heated_reagent_temp = 300
+	heated_reagent_amount = 0
+	heated_reagent_mul = 0.01
+
 	color = "#A5FF7F"
 
 /reagent/blood/chicken

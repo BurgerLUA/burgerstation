@@ -65,7 +65,6 @@
 
 	particle_size = 0.2
 
-
 /reagent/toxin/zombie_toxin
 	name = "zombie toxin"
 	desc = "Toxins from a zombie. Doesn't go away when metabolized in the bloodstream and deals constant toxic damage based on the volume."
@@ -97,3 +96,16 @@
 	heated_reagent_mul = 0.01
 
 	particle_size = 0.7
+
+/reagent/toxin/mercury
+	name = "mercury"
+	desc = "Toxins bad."
+
+	color = "#808080"
+	alpha = 255
+
+	damage_per_unit = 5
+
+	flavor = "venus"
+
+	particle_size = 1

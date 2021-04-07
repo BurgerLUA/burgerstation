@@ -135,7 +135,6 @@
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
 	 . = FALSE
 
-
 	for(var/r_id in stored_reagents_temperature)
 		var/reagent/R = REAGENT(r_id)
 		var/volume = stored_reagents[r_id]

@@ -53,10 +53,12 @@
 		/obj/item/storage/kit/burn/filled,
 		/obj/item/storage/kit/toxin/filled,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/container/blood_pack/full/reptile,
-		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/storage/kit/syndicate/filled,
+		/obj/item/container/blood_pack/full/synthblood,
 		/obj/item/container/beaker/vial/zombie_antidote,
-		/obj/item/container/medicine/nanopaste
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone,
+
 	)
 	markup = 0.75
 

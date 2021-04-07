@@ -76,6 +76,16 @@
 
 	liquid = -0.25
 
+/reagent/copper
+	name = "Copper"
+	desc = "What most lifeforms build low-level currency out of."
+	color = "#DD842F"
+	alpha = 255
+
+	flavor = "copper"
+
+	liquid = -0.25
+
 /reagent/silver
 	name = "Silver"
 	desc = "What most lifeforms build weapons out of."
@@ -336,4 +346,10 @@
 		/reagent/toxin/spider_toxin = 1,
 		/reagent/toxin/xeno_acid = 1
 	)
+
+/reagent/hydrogen_peroxide
+	name = "hydrogen peroxide"
+	color = "#FFFFFF"
+
+	alpha = 100
 
