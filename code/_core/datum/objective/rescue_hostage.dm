@@ -68,7 +68,7 @@ var/global/list/possible_hostage_types = list(
 
 /objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/unique/hostage/H,args)
 
-	if(!completed && H.z == Z_LEVEL_STATION && !H.dead)
+	if(!completed && !H.dead)
 		var/area/A = get_area(H)
 		if(istype(A,/area/burgerstation))
 			completed = TRUE

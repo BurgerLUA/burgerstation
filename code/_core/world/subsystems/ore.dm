@@ -7,21 +7,26 @@ SUBSYSTEM_DEF(ore)
 
 	var/spawned_ore_chunks = 0
 
-	for(var/k in Z_ALL_TURFS(Z_LEVEL_MISSION))
-		var/turf/simulated/S = k
-		if(istype(S,/turf/simulated/floor))
-			if(prob(1))
-				var/obj/structure/interactive/ground_ore_deposit/map/random/GOD = new(S)
-				INITIALIZE(GOD)
-				GENERATE(GOD)
-				spawned_ore_chunks++
-		else if (istype(S,/turf/simulated/wall))
-			if(prob(1))
-				var/obj/structure/interactive/wall_ore_deposit/map/random/WOD = new(S)
-				INITIALIZE(WOD)
-				GENERATE(WOD)
-				FINALIZE(WOD)
-				spawned_ore_chunks++
+	for(var/turf/simulated/floor/S in world)
+		if(!S.organic)
+			continue
+		if(!prob(1))
+			continue
+		var/obj/structure/interactive/ground_ore_deposit/map/random/GOD = new(S)
+		INITIALIZE(GOD)
+		GENERATE(GOD)
+		spawned_ore_chunks++
+
+	for(var/turf/simulated/wall/rock/S in world)
+		if(!S.organic || !S.health)
+			continue
+		if(!prob(1))
+			continue
+		var/obj/structure/interactive/wall_ore_deposit/map/random/WOD = new(S)
+		INITIALIZE(WOD)
+		GENERATE(WOD)
+		FINALIZE(WOD)
+		spawned_ore_chunks++
 
 	log_subsystem(name,"Spawned [spawned_ore_chunks] ore chunks.")
 

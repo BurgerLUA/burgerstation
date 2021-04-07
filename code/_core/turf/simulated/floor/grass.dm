@@ -20,6 +20,8 @@
 
 	material_id = /material/grass/
 
+	organic = TRUE
+
 /turf/simulated/floor/grass/jungle
 	name = "dense jungle grass"
 	color = "#969696"

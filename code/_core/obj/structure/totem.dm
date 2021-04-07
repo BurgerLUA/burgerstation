@@ -205,7 +205,7 @@
 			continue
 		if(!istype(L.health))
 			continue
-		L.ignite(SECONDS_TO_DECISECONDS(1.5))
+		L.ignite(SECONDS_TO_DECISECONDS(1.5),src)
 		L.health.adjust_loss_smart(burn = 5 * leveled_effect)
 		CREATE(/obj/effect/temp/electricity,L.loc)
 

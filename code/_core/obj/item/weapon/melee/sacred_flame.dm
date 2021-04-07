@@ -60,7 +60,7 @@
 		if(L.loyalty_tag == owner.loyalty_tag)
 			continue
 		var/ignite_effect = 1.5 + (0.1 * leveled_effect)
-		L.ignite(SECONDS_TO_DECISECONDS(ignite_effect)) //min of 1.5 sec, max of 3.0 sec
+		L.ignite(SECONDS_TO_DECISECONDS(ignite_effect),owner) //min of 1.5 sec, max of 3.0 sec
 		L.health.adjust_loss_smart(burn = ignite_effect * 6) //min of 9 damage, max of 18 damage
 
 		CREATE(/obj/effect/temp/electricity,get_turf(L))

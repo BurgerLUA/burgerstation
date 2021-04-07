@@ -18,6 +18,8 @@
 
 	destruction_turf = /turf/simulated/floor/cave_dirt
 
+	organic = TRUE
+
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
 	CREATE(/obj/structure/scenery/rocks,src)
 	return ..()
@@ -85,6 +87,8 @@
 	health = null
 	health_base = null
 	destruction_turf = null
+
+	organic = FALSE
 
 /turf/simulated/wall/rock/indestructable/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE

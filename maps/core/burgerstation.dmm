@@ -4643,22 +4643,16 @@
 /turf/simulated/wall/wood,
 /area/burgerstation/maint/garden)
 "qY" = (
-/turf/simulated/floor/stair/wood{
-	dir = 1;
-	icon_state = "stair"
-	},
+/turf/simulated/floor/plating,
 /area/burgerstation/maint/garden)
 "qZ" = (
-/turf/simulated/floor/wood/boat,
+/turf/simulated/openspace,
 /area/burgerstation/maint/garden)
 "ra" = (
-/turf/simulated/floor/carpet,
-/area/burgerstation/maint/garden)
-"rb" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/openspace,
 /area/burgerstation/maint/garden)
 "rc" = (
 /obj/structure/interactive/fire_closet{
@@ -52882,7 +52876,7 @@ nt
 qY
 qZ
 qZ
-ra
+qZ
 qX
 aj
 mF
@@ -53139,7 +53133,7 @@ nt
 qY
 qZ
 qZ
-rb
+ra
 qX
 aj
 mF
@@ -53396,7 +53390,7 @@ nt
 qY
 qZ
 qZ
-ra
+qZ
 qX
 aj
 mF
@@ -53651,9 +53645,9 @@ nt
 nt
 qW
 qX
-qX
-qX
-qX
+qZ
+nt
+qZ
 qX
 aj
 mF

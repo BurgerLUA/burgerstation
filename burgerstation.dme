@@ -1423,7 +1423,6 @@
 #include "code\_core\obj\item\organs\internal\lungs.dm"
 #include "code\_core\obj\item\organs\internal\stomach.dm"
 #include "code\_core\obj\item\organs\internal\implant\_implant.dm"
-#include "code\_core\obj\item\organs\internal\implant\explosive.dm"
 #include "code\_core\obj\item\organs\internal\implant\iff.dm"
 #include "code\_core\obj\item\organs\internal\implant\loyalty.dm"
 #include "code\_core\obj\item\organs\internal\implant\misc.dm"

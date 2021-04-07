@@ -44,6 +44,9 @@
 	update_vis_contents()
 
 	var/obj/item/top_object = get_top_vis_object()
+	if(!top_object)
+		caller.to_chat(span("warning","There is nothing to strip!"))
+		return FALSE
 
 	top_object.try_strip(caller)
 

@@ -189,9 +189,8 @@
 
 	var/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	if(collide_with)
-		damage_atom(collide_with)
-		return on_hit(collide_with) //Destroy based on the object we hit.
-		//TODO: Convert on_hit return to a list.
+		return damage_atom(collide_with) && on_hit(collide_with)
+		//TODO: Convert on_hit return to a list to allow for penetration framework.
 
 	return FALSE //Do not destroy.
 
