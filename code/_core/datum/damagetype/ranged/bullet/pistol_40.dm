@@ -56,7 +56,7 @@
 
 	if(victim.health && is_living(victim))
 		var/mob/living/L = victim
-		if(L.health.stamina_current <= 0)
+		if(L.has_status_effect(STAMCRIT))
 			if(L.ckey_last)
 				L.add_status_effect(SLEEP,100,100) //10 seconds of sleep
 			else

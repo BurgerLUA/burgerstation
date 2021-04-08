@@ -267,7 +267,10 @@
 		/obj/item/light_sensor,
 
 		/obj/item/weapon/melee/shield,
-		/obj/item/weapon/melee/shield/glass,
+		/obj/item/weapon/melee/shield/buckler,
+		/obj/item/weapon/melee/shield/leather,
+		/obj/item/weapon/melee/shield/target,
+		/obj/item/weapon/melee/shield/sun,
 
 		/obj/item/weapon/melee/null_rod,
 		/obj/item/weapon/melee/null_rod/dagger,

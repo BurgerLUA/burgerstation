@@ -231,29 +231,21 @@
 		var/obj/item/organ/O = hit_object
 		. *= O.damage_coefficient
 
-	if((src.attack_flags & CONTROL_MOD_BLOCK)) //Do you even block?
-		var/block_angle = abs(get_angle(victim,attacker))
-		if(block_angle <= 90)
-			var/attack_type = DT.get_attack_type()
-			var/block_strength = 0
-			if(left_item)
-				if(left_item.can_block(attacker,weapon,src,DT))
-					block_strength = max(block_strength,left_item.block_defense[attack_type])
-			else if(src.labeled_organs[BODY_HAND_LEFT])
-				var/obj/item/organ/O = src.labeled_organs[BODY_HAND_LEFT]
-				if(O.can_block(attacker,weapon,src,DT))
-					block_strength = max(block_strength,O.block_defense[attack_type])
-			if(right_item)
-				if(right_item.can_block(attacker,weapon,src,DT))
-					block_strength = max(block_strength,right_item.block_defense[attack_type])
-			else if(src.labeled_organs[BODY_HAND_RIGHT])
-				var/obj/item/organ/O = src.labeled_organs[BODY_HAND_RIGHT]
-				if(O.can_block(attacker,weapon,src,DT))
-					block_strength = max(block_strength,O.block_defense[attack_type])
-			if(block_strength)
-				. *= max(0,1-block_strength)
-
-
-
-
+/mob/living/advanced/get_block_multiplier(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+	. = ..()
+	var/attack_type = DT.get_attack_type()
+	if(left_item)
+		if(left_item.can_block(attacker,weapon,src,DT))
+			. = max(.,left_item.block_defense[attack_type])
+	else if(src.labeled_organs[BODY_HAND_LEFT])
+		var/obj/item/organ/O = src.labeled_organs[BODY_HAND_LEFT]
+		if(O.can_block(attacker,weapon,src,DT))
+			. = max(.,O.block_defense[attack_type])
+	if(right_item)
+		if(right_item.can_block(attacker,weapon,src,DT))
+			. = max(.,right_item.block_defense[attack_type])
+	else if(src.labeled_organs[BODY_HAND_RIGHT])
+		var/obj/item/organ/O = src.labeled_organs[BODY_HAND_RIGHT]
+		if(O.can_block(attacker,weapon,src,DT))
+			. = max(.,O.block_defense[attack_type])
 

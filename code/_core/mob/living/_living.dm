@@ -32,10 +32,6 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/charge_block = 500
-	var/charge_parry = 500
-	var/charge_dodge = 500
-
 	var/nutrition = 1000
 	var/nutrition_fast = 0
 	var/hydration = 1000

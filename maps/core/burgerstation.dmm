@@ -1140,7 +1140,7 @@
 "ek" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
-/obj/item/weapon/melee/energy/shield/classic,
+/obj/item/weapon/melee/shield/buckler,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
 "el" = (
