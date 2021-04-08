@@ -40,9 +40,10 @@
 	charges--
 
 	var/turf/T = get_turf(object)
+	var/area/A = T.loc
 
-	if(T.z != Z_LEVEL_MISSION)
-		caller.to_chat(span("warning","This can only be used on the planet!"))
+	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+		caller.to_chat(span("warning","Invalid landing zone!"))
 		return TRUE
 
 	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)

@@ -9,3 +9,5 @@
 	real_icon = 'icons/turf/floor/ground.dmi'
 	real_icon_state = "grass"
 	corner_icons = TRUE
+
+	organic = TRUE

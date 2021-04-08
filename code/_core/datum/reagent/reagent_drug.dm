@@ -11,12 +11,14 @@
 
 	liquid = -0.4
 
+	var/status_effect = DRUGGY
+
 /reagent/drug/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	owner.add_status_effect(
-		DRUGGY,
+		status_effect,
 		magnitude = strength,
 		duration = . * duration_mod //Every 20 units should last 5 minutes.
 	)
@@ -26,7 +28,7 @@
 	. = ..()
 
 	owner.add_status_effect(
-		DRUGGY,
+		status_effect,
 		magnitude = strength*2,
 		duration = . * duration_mod //Every 20 units should last 5 minutes.
 	)
@@ -80,3 +82,23 @@
 	liquid = -0.6
 
 	particle_size = 0.4
+
+
+/reagent/drug/lithium
+	name = "lithium"
+	desc = "Batteries!"
+	color = "#B6D8D8"
+	alpha = 255
+
+	flavor = "batteries"
+
+	strength = 100
+	duration_mod = 10
+
+	value = 4
+
+	liquid = -0.8
+
+	particle_size = 0.7
+
+	status_effect = CONFUSED

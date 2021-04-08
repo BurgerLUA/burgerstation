@@ -385,3 +385,39 @@
 		owner.sanity_regen_buffer += 5*true_multiplier
 		owner.add_hydration(-0.05*true_multiplier)
 		owner.add_nutrition(-0.1*true_multiplier)
+
+/reagent/medicine/synthblood
+	name = "synthblood"
+	desc = "A special synthetic blood that replicates the blood type of any organic being when injected. Usually more expensive than just using real blood, however it has some chemical applications."
+	color = "#D50052"
+	alpha = 225
+	flavor = "melted wax putty"
+	value = 5
+
+	experience_per_unit = 2
+
+	liquid = 0.25
+
+	particle_size = 0.1
+
+/reagent/medicine/synthblood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.blood_type && owner.health.organic)
+		owner.blood_volume += .*0.75
+
+/reagent/medicine/rad_b_gone
+	name = "Rad-B-Gone"
+	desc = "A special mixture of radiation treating chemicals. Use for when you're heavily irradiated. Injection only."
+	color = "#BA7C00"
+	alpha = 225
+	flavor = "gunk"
+	value = 3
+
+	experience_per_unit = 2
+
+	liquid = 0.5
+	particle_size = 0.2
+
+/reagent/medicine/rad_b_gone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.rad_regen_buffer += .*5

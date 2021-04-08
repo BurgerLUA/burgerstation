@@ -84,6 +84,26 @@
 		"shoulders" = COLOR_CHEMISTRY
 	)
 
+/obj/item/clothing/shirt/normal/uniform/red_soccer
+	name = "red soccer shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_RED,
+		"shoulders" = COLOR_WHITE
+	)
+
+/obj/item/clothing/shirt/normal/uniform/blue_soccer
+	name = "blue soccer shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_BLUE,
+		"shoulders" = COLOR_BLACK
+	)
+
+/obj/item/clothing/shirt/normal/uniform/ref_soccer
+	name = "soccer ref shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_YELLOW,
+	)
+
 
 /obj/item/clothing/shirt/normal/security
 	name = "security shirt"

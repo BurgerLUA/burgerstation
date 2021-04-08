@@ -56,7 +56,7 @@ var/global/list/atom/movable/possible_abnormalities = list(
 	return ..()
 
 /objective/abnormality/proc/abnormality_post_move(var/atom/movable/M,args)
-	if(!completed && M.z == Z_LEVEL_STATION)
+	if(!completed)
 		var/area/A = get_area(M)
 		if(istype(A,/area/burgerstation/science/containment))
 			completed = TRUE

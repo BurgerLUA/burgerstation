@@ -47,7 +47,7 @@
 	objective_attack = null
 	owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
 
-	if(old_attack && !old_attack.qdeleting)
+	if(!owner.dead && old_attack && !old_attack.qdeleting)
 		if(is_living(old_attack))
 			var/mob/living/L2 = old_attack
 			if(L2.dead)
@@ -213,6 +213,7 @@
 		return FALSE
 
 	if(!owner || owner.dead)
+		alert_level = ALERT_LEVEL_NONE
 		return FALSE
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))

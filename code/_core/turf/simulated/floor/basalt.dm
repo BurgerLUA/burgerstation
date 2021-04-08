@@ -20,6 +20,8 @@
 
 	health_base = 300
 
+	organic = TRUE
+
 /turf/simulated/floor/basalt/setup_turf_light(var/sunlight_freq)
 	if(prob(10))
 		icon_state = "basalt[rand(1,4)]"

@@ -27,6 +27,20 @@
 		/obj/item/clothing/undertop/underwear/shirt
 	)
 
+/obj/structure/interactive/vending/clothes/shirt/soccer
+	name = "soccer uniform vendor"
+	stored_types = list(
+		/obj/item/clothing/pants/shorts/red_soccer,
+		/obj/item/clothing/shirt/normal/uniform/red_soccer,
+		/obj/item/clothing/pants/shorts/blue_soccer,
+		/obj/item/clothing/shirt/normal/uniform/blue_soccer,
+		/obj/item/clothing/pants/shorts/ref_soccer,
+		/obj/item/clothing/shirt/normal/uniform/ref_soccer,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/storage/shoebox/colored,
+		/obj/item/whistle
+	)
+
 
 /obj/structure/interactive/vending/clothes/overshirt
 	name = "overwear vendor"
@@ -135,7 +149,8 @@
 		/obj/item/storage/pillbottle/antihol_small,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/reptile,
-		/obj/item/container/medicine/nanopaste
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
@@ -420,19 +435,23 @@
 	var/list/chemicals_to_make = list(
 		/reagent/carbon,
 		/reagent/iron,
+		/reagent/copper,
+		/reagent/silver,
+		/reagent/aluminium,
 		/reagent/oxygen,
 		/reagent/nitrogen,
 		/reagent/silicon,
 		/reagent/potassium,
 		/reagent/salt/sodium_chloride,
-		/reagent/nutrition/sugar/glucose,
-		/reagent/fuel/welding,
-		/reagent/fuel/hydrogen,
 		/reagent/ammonia,
 		/reagent/sulfur,
 		/reagent/chlorine,
-		/reagent/nutrition/water,
-		/reagent/aluminium
+		/reagent/phenol,
+		/reagent/sodium,
+		/reagent/acid/sulphuric,
+		/reagent/fuel/acetone,
+		/reagent/toxin/mercury,
+		/reagent/drug/lithium
 	)
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
@@ -440,6 +459,8 @@
 	. = ..()
 
 	var/turf/T = get_turf(src)
+
+
 
 	for(var/k in chemicals_to_make)
 		var/reagent/R = REAGENT(k)
@@ -545,7 +566,10 @@
 	accepts_item = /obj/item/currency/prize_ticket
 
 	stored_types = list(
-		/obj/item/bikehorn
+		/obj/item/bikehorn,
+		/obj/item/ball/soccer,
+		/obj/item/dice/d6,
+		/obj/item/dice/d20
 	)
 
 

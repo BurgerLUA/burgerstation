@@ -60,6 +60,7 @@
 	var/obj/plane_master/scenery/plane_master_scenery
 	var/obj/plane_master/lighting/plane_master_lighting
 	var/obj/plane_master/floor/plane_master_floor
+	var/obj/plane_master/openspace/plane_master_openspace
 
 	var/list/parallax
 
@@ -134,6 +135,8 @@
 	QDEL_NULL(plane_master_shuttle)
 	QDEL_NULL(plane_master_scenery)
 	QDEL_NULL(plane_master_lighting)
+	QDEL_NULL(plane_master_openspace)
+
 	QDEL_NULL(examine_overlay)
 
 	return ..()
@@ -179,6 +182,10 @@
 	if(!plane_master_lighting)
 		plane_master_lighting = new(src)
 	C.screen += plane_master_lighting
+
+	if(!plane_master_openspace)
+		plane_master_openspace = new(src)
+	C.screen += plane_master_openspace
 
 	if(!examine_overlay)
 		examine_overlay = new(src)
