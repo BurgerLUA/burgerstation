@@ -20,7 +20,7 @@
 		if(messages) to_chat(span("notice","Your insurance premiums have decreased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>!"))
 		insurance_premiums = desired_premium_amount
 
-/mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/do_teleport = TRUE,var/update_blends=TRUE)
+/mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/do_teleport = TRUE,var/update_blends=TRUE,var/appearance_only=FALSE)
 
 	//Name
 	real_name = sanitize_name(client,loaded_data["name"])
@@ -30,43 +30,49 @@
 	sex = loaded_data["sex"]
 	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON
 	gender = loaded_data["gender"]
-	currency = loaded_data["currency"]
-	revenue = loaded_data["revenue"] ? loaded_data["revenue"] : 0
-	expenses = loaded_data["expenses"] ? loaded_data["expenses"] : 0
-	partial_tax = loaded_data["partial_tax"] ? loaded_data["partial_tax"] : 0
-	last_tax_payment = loaded_data["last_tax_payment"] ? loaded_data["last_tax_payment"] : world.realtime
 	species = loaded_data["species"]
-	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
-	hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : initial(hydration)*0.5
-	nutrition_fast = isnum(loaded_data["nutrition_fast"]) ? loaded_data["nutrition_fast"] : 0
-	nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
-	save_id = loaded_data["id"]
-	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 4
-	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
-	if(loaded_data["prestige_count"])
-		prestige_count =  loaded_data["prestige_count"]
+	if(!appearance_only)
+		save_id = loaded_data["id"]
+		currency = loaded_data["currency"]
+		revenue = loaded_data["revenue"] ? loaded_data["revenue"] : 0
+		expenses = loaded_data["expenses"] ? loaded_data["expenses"] : 0
+		partial_tax = loaded_data["partial_tax"] ? loaded_data["partial_tax"] : 0
+		last_tax_payment = loaded_data["last_tax_payment"] ? loaded_data["last_tax_payment"] : world.realtime
+		insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 4
+		insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
+		nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
+		hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : initial(hydration)*0.5
+		nutrition_fast = isnum(loaded_data["nutrition_fast"]) ? loaded_data["nutrition_fast"] : 0
+		nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
 
-	if(loaded_data["dead"]) //New body!
-		nutrition = initial(nutrition)*0.25
-		nutrition_fast = nutrition
-		hydration = initial(hydration)*0.5
-		nutrition_quality = initial(nutrition_quality)
-		var/currency_to_give = 0
-		if(isnum(insurance))
-			var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
-			insurance -= insurance_to_pay
-			to_chat(span("notice","You were paid <b>[insurance_to_pay] credits</b> in insurance. You have <b>[insurance] credits</b> left in your insurance pool."))
-			currency_to_give = insurance_to_pay
-			update_premiums()
-		if(currency >= 10000)
-			var/death_tax = FLOOR(currency*0.1,1)
-			if(death_tax)
-				currency_to_give -= death_tax
-				to_chat(span("warning","You paid [death_tax] credits in cloning fees."))
-		if(currency_to_give)
-			adjust_currency(currency_to_give)
+		if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
+			to_chat(span("notice","<h2>You are rewarded 1000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
+			adjust_currency(1000)
+
+		if(loaded_data["prestige_count"])
+			prestige_count =  loaded_data["prestige_count"]
+
+		if(loaded_data["dead"]) //New body!
+			nutrition = initial(nutrition)*0.25
+			nutrition_fast = nutrition
+			hydration = initial(hydration)*0.5
+			nutrition_quality = initial(nutrition_quality)
+			var/currency_to_give = 0
+			if(isnum(insurance))
+				var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
+				insurance -= insurance_to_pay
+				to_chat(span("notice","You were paid <b>[insurance_to_pay] credits</b> in insurance. You have <b>[insurance] credits</b> left in your insurance pool."))
+				currency_to_give = insurance_to_pay
+				update_premiums()
+			if(currency >= 10000)
+				var/death_tax = FLOOR(currency*0.1,1)
+				if(death_tax)
+					currency_to_give -= death_tax
+					to_chat(span("warning","You paid [death_tax] credits in cloning fees."))
+			if(currency_to_give)
+				adjust_currency(currency_to_give)
 
 	if(loaded_data["traits"])
 		for(var/k in loaded_data["traits"])
@@ -76,17 +82,6 @@
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 
-	if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
-		to_chat(span("notice","<h2>You are rewarded 1000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
-		adjust_currency(1000)
-
-	/*
-	for(var/id in loaded_data["organs"])
-		var/obj/item/organ/O = load_and_create(src,loaded_data["organs"][id],src,FALSE)
-		attach_organ(O,FALSE)
-		O.update_sprite()
-	*/
-
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special. TODO: IT SHOULD THOUGH.
 		var/o_type = loaded_data["organs"][id]["type"]
 		var/obj/item/organ/O = add_organ(o_type)
@@ -95,10 +90,11 @@
 			continue
 		if(loaded_data["organs"][id]["blend_data"])
 			O.set_blend_data(loaded_data["organs"][id]["blend_data"])
-		if(loaded_data["organs"][id]["inventories"])
-			for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
-				var/obj/hud/inventory/I = O.inventories[i]
-				I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
+		if(!appearance_only)
+			if(loaded_data["organs"][id]["inventories"])
+				for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
+					var/obj/hud/inventory/I = O.inventories[i]
+					I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
 		O.update_sprite()
 
 	//Skills

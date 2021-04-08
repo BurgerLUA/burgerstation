@@ -135,22 +135,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	return TRUE
 
-/client/proc/find_controlling_mob()
-
-	if(mob)
-		return mob
-
-	. = null
-
-	for(var/k in all_mobs)
-		var/mob/M = k
-		if(M.ckey_last == ckey)
-			. = M
-			return .
-		if(M.ckey_owner == ckey && !M.ckey_last)
-			. = M
-			//No break here as ckey_last needs a priority.
-
 /client/New()
 
 	all_clients[src.ckey] = src

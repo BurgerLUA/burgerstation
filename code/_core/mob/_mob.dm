@@ -6,7 +6,7 @@
 	plane = PLANE_MOB
 
 	var/ckey_last //The person controlling this. Can be null if control is given up.
-	var/ckey_owner //The one who spawned it in.
+	var/ckey_owner //The one who spawned it in. Only null if deleting.
 
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0
@@ -98,6 +98,8 @@
 	var/list/observers = list() //A list of observers/ghosts observing this mob
 	var/mob/observing //Who is this mob observing.
 
+	var/mob/fallback_mob //The mob that this mob is slaved to. Basically if this mob tries to turn into a ghost, it will instead control this mob.
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)
@@ -109,6 +111,7 @@
 	if(client)
 		client.clear_mob(src,TRUE)
 
+	ckey_owner = null
 	key = null // required to GC
 	buttons.Cut()
 	health_elements.Cut()
