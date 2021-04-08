@@ -201,3 +201,17 @@
 /obj/item/container/blood_pack/full/reptile/Generate()
 	reagents.add_reagent(/reagent/blood/reptile,reagents.volume_max)
 	return ..()
+
+/obj/item/container/blood_pack/full/rad_be_gone
+	name = "rad-b-gone pack"
+
+/obj/item/container/blood_pack/full/rad_be_gone/Generate()
+	reagents.add_reagent(/reagent/medicine/rad_b_gone,reagents.volume_max)
+	return ..()
+
+/obj/item/container/blood_pack/full/synthblood/
+	name = "blood pack (synthblood)"
+
+/obj/item/container/blood_pack/full/synthblood/Generate()
+	reagents.add_reagent(/reagent/medicine/synthblood,reagents.volume_max)
+	return ..()

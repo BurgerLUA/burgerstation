@@ -19,12 +19,22 @@
 
 	particle_size = 0.5
 
+	heated_reagent = /reagent/fuel/oil
+	heated_reagent_temp = 800
+	heated_reagent_amount = 0
+	heated_reagent_mul = 0.01
+
 /reagent/fuel/oil/carbon
 	name = "Carbonized Oil"
 	color = "#000000"
 	alpha = 255
 
-	particle_size = 0.4
+	particle_size = 0.75
+
+	heated_reagent = /reagent/ash
+	heated_reagent_temp = 480
+	heated_reagent_amount = 0
+	heated_reagent_mul = 0.01
 
 /reagent/fuel/welding
 	name = "Welding Fuel"
@@ -39,6 +49,13 @@
 	alpha = 255
 
 	particle_size = 0.75
+
+/reagent/fuel/phoron
+	name = "Solid Phoron"
+	color = "#FF00DC"
+	alpha = 255
+
+	particle_size = 1
 
 /reagent/fuel/acetone
 	name = "Acetone"

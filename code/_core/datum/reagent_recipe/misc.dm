@@ -1,48 +1,17 @@
 /reagent_recipe/chemistry/
 	category = "Chemistry"
 
-/reagent_recipe/chemistry/ash
-
-	name = "Ash"
-
+/reagent_recipe/chemistry/sodium_chloride
+	name = "Sodium Chloride"
 	required_reagents = list(
-		/reagent/fuel/oil/carbon = 1
+		/reagent/sodium = 1,
+		/reagent/chlorine = 1,
+		/reagent/nutrition/water = 1
 	)
 
 	results = list(
-		/reagent/ash = 1
+		/reagent/salt/sodium_chloride = 1
 	)
-
-	required_temperature_min = list(
-		/reagent/fuel/oil/carbon = 480
-	)
-
-/reagent_recipe/chemistry/oil/
-
-	name = "Crude Oil"
-
-	required_reagents = list(
-		/reagent/fuel/welding = 1,
-		/reagent/fuel/hydrogen = 1
-	)
-
-	results = list(
-		/reagent/fuel/oil/crude = 2
-	)
-
-/reagent_recipe/chemistry/oil/carbon
-
-	name = "Carbonized Oil"
-
-	required_reagents = list(
-		/reagent/fuel/oil/crude = 2,
-		/reagent/carbon = 1,
-	)
-
-	results = list(
-		/reagent/fuel/oil/carbon = 3
-	)
-
 
 /reagent_recipe/chemistry/ammonia
 
@@ -188,4 +157,20 @@
 
 	results = list(
 		/reagent/lye  = 3
+	)
+
+
+
+/reagent_recipe/chemistry/hydrogen_peroxide
+
+	name = "Hydrogen Peroxide"
+
+	required_reagents = list(
+		/reagent/chlorine = 1,
+		/reagent/oxygen = 1,
+		/reagent/nutrition/water = 1
+	)
+
+	results = list(
+		/reagent/hydrogen_peroxide  = 3
 	)
