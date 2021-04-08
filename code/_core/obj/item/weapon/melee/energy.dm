@@ -169,14 +169,16 @@
 	polymorphs = list(base = "#FFFFFF")
 
 	block_defense = list(
-		ATTACK_TYPE_UNARMED = 0.25,
-		ATTACK_TYPE_MELEE = 0.5,
-		ATTACK_TYPE_RANGED = 0.9,
+		ATTACK_TYPE_UNARMED = 0.5,
+		ATTACK_TYPE_MELEE = 0.75,
+		ATTACK_TYPE_RANGED = 0.75,
 		ATTACK_TYPE_MAGIC = 0
 	)
 
 	weight = 2
 	size = SIZE_2
+
+	value = 1000
 
 /obj/item/weapon/melee/energy/shield/blue
 	polymorphs = list(base = "#0000FF")

@@ -355,7 +355,7 @@
 			if(debug) log_debug("Calculating [damage_type] with shield...")
 			var/blocked_damage = block_multiplier * old_damage_amount
 			old_damage_amount -= blocked_damage
-			fatigue_damage += blocked_damage
+			fatigue_damage += blocked_damage*0.5
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")

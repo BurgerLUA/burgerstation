@@ -154,7 +154,7 @@
 		/obj/item/deployable/mob/sentry,
 		/obj/item/magazine/minigun_46,
 		/obj/item/weapon/melee/sword/rev_bayonet,
-		/obj/item/weapon/melee/shield/ballistic,
+		/obj/item/weapon/melee/shield/redstar,
 		/obj/item/storage/cigarettes/russian,
 		/obj/item/lighter
 	)
