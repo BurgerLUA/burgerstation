@@ -1183,15 +1183,7 @@
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "em" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/centcomm)
-"en" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
+/obj/structure/interactive/door/airlock/glass,
 /turf/simulated/floor/tile,
 /area/centcomm)
 
@@ -58231,13 +58223,13 @@ am
 am
 an
 aA
-bt
-bt
-bt
-em
-bt
-bt
-bt
+cl
+cs
+cl
+ct
+cl
+cs
+cl
 aA
 cd
 cd
@@ -58488,13 +58480,13 @@ an
 an
 an
 aA
+cs
 bt
 bt
 bt
 bt
 bt
-bt
-bt
+cs
 aA
 cd
 cd
@@ -58745,13 +58737,13 @@ aA
 aA
 aA
 aA
+cs
 bt
 bt
 bt
 bt
 bt
-bt
-bt
+cs
 aA
 aA
 aA
@@ -59002,13 +58994,13 @@ be
 be
 be
 aA
+cs
 bt
 bt
 bt
 bt
 bt
-bt
-bt
+cs
 aA
 aA
 aA
@@ -59259,13 +59251,13 @@ bf
 bk
 be
 aA
+cl
 bt
+by
 bt
+by
 bt
-bt
-bt
-bt
-bt
+cl
 aA
 aA
 aA
@@ -59516,13 +59508,13 @@ bf
 bf
 be
 aA
+cs
 bt
-bt
-bt
-en
-bt
-bt
-bt
+cs
+cA
+cs
+cs
+cs
 aA
 aA
 aA
@@ -59774,7 +59766,7 @@ bf
 bl
 aA
 aA
-aA
+em
 aA
 aA
 bN
