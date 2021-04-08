@@ -1,6 +1,5 @@
 /reagent_recipe/magic/
-	name = "Wizard Chemistry"
-
+	category = "Chemistry"
 
 /reagent_recipe/magic/health_potion
 

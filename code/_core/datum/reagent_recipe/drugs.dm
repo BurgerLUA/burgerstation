@@ -1,5 +1,5 @@
 /reagent_recipe/drugs/
-	category = "Contraband"
+	category = "Chemistry"
 
 /reagent_recipe/drugs/space_drugs
 

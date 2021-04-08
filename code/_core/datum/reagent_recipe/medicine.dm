@@ -3,7 +3,7 @@
 
 /reagent_recipe/medicine/dexalin
 
-	name = "Bicaridine"
+	name = "Dexalin"
 
 	required_reagents = list(
 		/reagent/fuel/acetone = 1,
