@@ -16,6 +16,8 @@
 
 	var/next_fire = 0
 
+	var/leveled_effect = 0
+
 
 /obj/item/weapon/melee/sacred_flame/click_self(var/mob/caller)
 
@@ -25,6 +27,9 @@
 	if(!SSthinking.all_thinkers[src])
 		start_thinking(src)
 		caller.to_chat(span("notice","You activate \the [src.name]'s passive igniting effect."))
+		if(is_living(caller))
+			var/mob/living/liveCaller = caller
+			leveled_effect = round((liveCaller.get_skill_level(SKILL_MAGIC)/20) + (liveCaller.get_skill_level(SKILL_PRAYER)/20) + ((quality - 100)/5)) //15 is the "max" when 100 skill is your max
 	else
 		caller.to_chat(span("notice","You deactivate \the [src.name]'s passive igniting effect."))
 		stop_thinking(src)
@@ -54,12 +59,11 @@
 			continue
 		if(L.loyalty_tag == owner.loyalty_tag)
 			continue
-		L.ignite(SECONDS_TO_DECISECONDS(1.5),owner)
-		var/obj/effect/temp/electricity/H = new(owner,10,COLOR_MEDICAL)
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
-		H.Move(get_step(owner,get_dir(owner,L)))
+		var/ignite_effect = 1.5 + (0.1 * leveled_effect)
+		L.ignite(SECONDS_TO_DECISECONDS(ignite_effect),owner) //min of 1.5 sec, max of 3.0 sec
+		L.health.adjust_loss_smart(burn = ignite_effect * 6) //min of 9 damage, max of 18 damage
+
+		CREATE(/obj/effect/temp/electricity,get_turf(L))
 
 	next_fire = world.time + SECONDS_TO_DECISECONDS(1)
 
