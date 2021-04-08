@@ -62,6 +62,27 @@
 	)
 	markup = 0.75
 
+/obj/structure/interactive/vending/rev/medicine
+	name = "russian medicine vendor"
+	icon_state = "boozeomat"
+
+	stored_types = list(
+		/obj/item/storage/kit/filled,
+		/obj/item/storage/kit/brute/filled,
+		/obj/item/storage/kit/burn/filled,
+		/obj/item/storage/kit/toxin/filled,
+		/obj/item/storage/kit/ai3/filled,
+		/obj/item/storage/kit/syndicate/filled,
+		/obj/item/container/blood_pack/full/synthblood,
+		/obj/item/container/beaker/vial/zombie_antidote,
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone,
+
+	)
+	accepts_item = /obj/item/currency/rubles
+	markup = 0.75
+
+
 /obj/structure/interactive/vending/syndicate/attachment
 	name = "syndicate attachment vendor"
 	icon_state = "attachment"
@@ -83,6 +104,30 @@
 		/obj/item/attachment/undermount/burst_adapter,
 		/obj/item/attachment/undermount/vertical_grip
 	)
+	markup = 0.5
+
+/obj/structure/interactive/vending/rev/attachment
+	name = "russian attachment vendor"
+	icon_state = "attachment"
+	stored_types = list(
+		/obj/item/attachment/barrel/charger,
+		/obj/item/attachment/barrel/compensator,
+		/obj/item/attachment/barrel/extended,
+		/obj/item/attachment/barrel/gyro,
+		/obj/item/attachment/barrel/laser_charger,
+		/obj/item/attachment/barrel/suppressor,
+		/obj/item/attachment/sight/laser_sight,
+		/obj/item/attachment/sight/quickfire_adapter,
+		/obj/item/attachment/sight/red_dot,
+		/obj/item/attachment/sight/scope,
+		/obj/item/attachment/sight/scope/large,
+		/obj/item/attachment/sight/targeting_computer,
+		/obj/item/attachment/undermount/angled_grip,
+		/obj/item/attachment/undermount/bipod,
+		/obj/item/attachment/undermount/burst_adapter,
+		/obj/item/attachment/undermount/vertical_grip
+	)
+	accepts_item = /obj/item/currency/rubles
 	markup = 0.5
 
 /obj/structure/interactive/vending/syndicate/prize
@@ -158,7 +203,8 @@
 		/obj/item/storage/cigarettes/russian,
 		/obj/item/lighter
 	)
-
+	accepts_item = /obj/item/currency/rubles
+	markup = 0.75
 
 /obj/structure/interactive/vending/syndicate/guns/rev
 	name = "revolutionary armaments vendor"
@@ -209,3 +255,4 @@
 		/obj/item/magazine/lmg_545,
 		/obj/item/magazine/lmg_545/ap
 	)
+	accepts_item = /obj/item/currency/rubles

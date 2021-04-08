@@ -285,9 +285,9 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
-	inaccuracy_modifier = 1
+	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 1
-	movement_spread_base = 0.1
+	movement_spread_base = 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
 	if(!wielded)
@@ -385,7 +385,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
+	shoot_sounds = list('sound/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild. (LOL NEVER)
 
 	can_wield = FALSE
 

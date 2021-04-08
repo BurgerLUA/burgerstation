@@ -41,11 +41,11 @@
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLADE = AP_AXE*1.25,
+		BLUNT = AP_CLUB*1.25,
+		PIERCE = AP_CLUB*1.25,
 		LASER = AP_AXE,
-		ARCANE = -AP_GREATAXE,
+		ARCANE = -AP_GREATAXE*0.8,
 		HEAT = AP_AXE,
 		COLD = AP_AXE,
 		BOMB = AP_AXE
@@ -59,3 +59,33 @@
 	value = 1050
 
 	loyalty_tag = "Revolutionary"
+
+/obj/item/clothing/overwear/hardsuit/skat/nt
+	name = "NT SKAT-10"
+	icon = 'icons/obj/item/clothing/suit/skat_nt.dmi'
+	desc = "RIP Stingray."
+	desc_extended = "Modified version of revolutionaries' SKAT-9 combat suit, featuring scarce NT paintjob and, obviously, changed IFFs."
+	rarity = RARITY_UNCOMMON
+
+	item_slot = SLOT_TORSO_ARMOR
+	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
+
+	defense_rating = list(
+		BLADE = AP_AXE*1.25,
+		BLUNT = AP_CLUB*1.25,
+		PIERCE = AP_CLUB*1.25,
+		LASER = AP_AXE,
+		ARCANE = -AP_GREATAXE*0.8,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE
+	)
+
+	size = SIZE_7
+
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/skat/nt)
+
+	value = 1050
+
+	loyalty_tag = "NanoTrasen"

@@ -52,4 +52,7 @@
 
 	equip_loadout(loadout_to_use)
 
-	
+//This is very retarded, but I'm fucking tired of reverse-engineering goblin code for the whole night long. Idc.
+/mob/living/advanced/npc/rev/pre_death()
+	CREATE_LOOT(/loot/rev,src)
+	return

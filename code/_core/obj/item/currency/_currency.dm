@@ -103,3 +103,33 @@
 
 /obj/item/currency/magic_token/max/Generate()
 	item_count_current = item_count_max
+
+/obj/item/currency/rubles
+	name = "Neo-Russian rubles"
+	desc = "Works as a good toilet paper substitute."
+	desc_extended = "Currency primarily used by russian-funded guerilla. Features experimental in-built convertational technology that changes its appearance based on the amount of money in close proximity. In layman's terms, it 'merges' itself."
+	icon = 'icons/obj/item/currency/rubles.dmi'
+	icon_state = "1"
+	value = 10
+
+	currency_class = "Rubles"
+
+/obj/item/currency/rubles/loot/Generate()
+	item_count_current = pick(20,20,20,20,20,20,40,40,60,60,80,100)
+	return ..()
+
+/obj/item/currency/rubles/player_antagonist_spawn/Generate()
+	item_count_current = 1000
+	return ..()
+
+/obj/item/currency/rubles/update_icon()
+	switch(item_count_current)
+		if(1 to 10)
+			icon_state = "[item_count_current]"
+		if(11 to 100)
+			icon_state = "[FLOOR(item_count_current/10, 1)*10]"
+		if(101 to 1000)
+			icon_state = "[FLOOR(item_count_current/100, 1)*100]"
+		if(1001 to 5000)
+			icon_state = "[FLOOR(value/1000, 1)*1000]"
+	return ..()
