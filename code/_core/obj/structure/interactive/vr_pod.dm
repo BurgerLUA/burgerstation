@@ -1,3 +1,5 @@
+#define VR_BUTTONS list(/obj/hud/button/virtual_reality/info,/obj/hud/button/virtual_reality/exit,/obj/hud/button/virtual_reality/enter)
+
 /obj/structure/interactive/vr_pod
 	name = "virtual reality pod"
 	desc = "Learn something new without the risk of death in here!"
@@ -8,6 +10,25 @@
 	var/mob/living/advanced/player/user
 
 	var/mob/living/advanced/player/virtual_avatar = /mob/living/advanced/player/virtual
+
+/obj/structure/interactive/vr_pod/proc/print_information()
+	return TRUE
+
+/obj/structure/interactive/vr_pod/proc/enter_virtual_reality()
+	check_virtual_avatar()
+	return TRUE
+
+/obj/structure/interactive/vr_pod/proc/add_buttons()
+
+	for(var/k in VR_BUTTONS)
+		var/obj/hud/button/virtual_reality/B = new k
+		B.linked_pod = src
+		B.update_owner(user)
+
+/obj/structure/interactive/vr_pod/proc/remove_buttons()
+
+	for(var/obj/hud/button/virtual_reality/B in user.buttons)
+		B.update_owner(null)
 
 /obj/structure/interactive/vr_pod/proc/check_virtual_avatar()
 
@@ -23,6 +44,7 @@
 		user.to_chat(span("notice","Initializing new virtual avatar..."))
 		virtual_avatar = new virtual_avatar(get_turf(src),user.client,1)
 		virtual_avatar.fallback_mob = user
+		user.linked_mobs += virtual_avatar
 		INITIALIZE(virtual_avatar)
 		GENERATE(virtual_avatar)
 		FINALIZE(virtual_avatar)
@@ -32,11 +54,15 @@
 /obj/structure/interactive/vr_pod/Entered(var/atom/movable/enterer,var/atom/oldloc)
 	if(is_player(enterer))
 		user = enterer
-		check_virtual_avatar()
+		add_buttons()
 	. = ..()
 
 /obj/structure/interactive/vr_pod/Exited(var/atom/movable/exiter,var/atom/newloc)
 	if(exiter == user)
+		remove_buttons()
+		if(istype(virtual_avatar))
+			qdel(virtual_avatar)
+			virtual_avatar = null
 		user = null
 	. = ..()
 

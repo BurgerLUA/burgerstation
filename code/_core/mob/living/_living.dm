@@ -301,17 +301,25 @@
 		following.followers -= src
 		following = null
 
-	for(var/k in attributes)
-		var/experience/E = attributes[k]
-		qdel(E)
+	if(linked_mobs)
+		for(var/k in linked_mobs)
+			var/mob/M = k
+			qdel(M)
+		linked_mobs.Cut()
 
-	attributes.Cut()
-
-	for(var/k in skills)
-		var/experience/E = skills[k]
-		qdel(E)
-
-	skills.Cut()
+	if(fallback_mob)
+		fallback_mob.linked_mobs -= src
+		attributes = null
+		skills = null
+	else
+		for(var/k in attributes)
+			var/experience/E = attributes[k]
+			qdel(E)
+		attributes.Cut()
+		for(var/k in skills)
+			var/experience/E = skills[k]
+			qdel(E)
+		skills.Cut()
 
 	QDEL_NULL(ai)
 

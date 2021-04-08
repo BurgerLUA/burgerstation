@@ -74,6 +74,21 @@
 			if(currency_to_give)
 				adjust_currency(currency_to_give)
 
+		//Skills
+		for(var/id in loaded_data["skills"])
+			var/experience/skill/S = get_skill(id,FALSE)
+			if(S)
+				var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.chargen_max_level)
+				S.update_experience(xp)
+
+		//Attributes
+		for(var/id in loaded_data["attributes"])
+			var/experience/attribute/S = get_attribute(id,FALSE)
+			if(S)
+				var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.chargen_max_level)
+				S.update_experience(xp)
+
+
 	if(loaded_data["traits"])
 		for(var/k in loaded_data["traits"])
 			k = text2path(k)
@@ -96,20 +111,6 @@
 					var/obj/hud/inventory/I = O.inventories[i]
 					I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
 		O.update_sprite()
-
-	//Skills
-	for(var/id in loaded_data["skills"])
-		var/experience/skill/S = get_skill(id,FALSE)
-		if(S)
-			var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.chargen_max_level)
-			S.update_experience(xp)
-
-	//Attributes
-	for(var/id in loaded_data["attributes"])
-		var/experience/attribute/S = get_attribute(id,FALSE)
-		if(S)
-			var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.chargen_max_level)
-			S.update_experience(xp)
 
 	if(do_teleport)
 		if(length(cryo_spawnpoints))
