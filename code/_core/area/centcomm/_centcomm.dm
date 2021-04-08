@@ -1,7 +1,7 @@
 /area/centcomm
 	name = "Central Command"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_TUTORIAL | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_TUTORIAL | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_SAVEZONE
 
 	ambient_sound = 'sound/ambient/station_loop.ogg'
 	random_sounds = list(

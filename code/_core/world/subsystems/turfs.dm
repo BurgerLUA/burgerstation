@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/Initialize()
 
+	set background = 1 //Needed because it thinks it's doing an infinite loop.
+
 	for(var/i=1,i<=10,i++) //Generate 10 seeds.
 		seeds += rand(1,99999)
 
@@ -36,15 +38,18 @@ SUBSYSTEM_DEF(turfs)
 	var/object_generation_count = 0
 
 	for(var/turf/simulated/T in world)
+		sleep(-1)
 		T.world_spawn = TRUE
 		found_turfs++
 
 	log_subsystem(name,"Found [found_turfs] simulated turfs.")
 
 	for(var/turf/unsimulated/generation/G in world)
+		sleep(-1)
 		G.pre_generate()
 
 	for(var/turf/unsimulated/generation/G in world)
+		sleep(-1)
 		G.generate()
 		turf_generation_count++
 
@@ -59,6 +64,7 @@ SUBSYSTEM_DEF(turfs)
 	var/turf_count = 0
 
 	for(var/turf/simulated/S in world)
+		sleep(-1)
 		INITIALIZE(S)
 		turf_count++
 

@@ -18,6 +18,8 @@
 
 	if(ore_score > 10)
 		for(var/turf/simulated/wall/rock/T in orange(1,src)) //Rock Wall only.
+			if(!T.organic)
+				continue
 			if(locate(/obj/structure/interactive/wall_ore_deposit/) in T.contents)
 				continue
 			if(prob(25 + ore_score))

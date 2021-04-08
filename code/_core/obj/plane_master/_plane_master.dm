@@ -87,8 +87,18 @@
 
 //Lighting
 /obj/plane_master/lighting
-	name = "plane master"
 	plane = PLANE_LIGHTING
 	blend_mode = BLEND_MULTIPLY
 	mouse_opacity = 0
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+
+/obj/plane_master/openspace
+	plane = PLANE_FLOOR_BELOW
+	appearance_flags = PLANE_MASTER
+	color = "#333333"
+
+/obj/plane_master/openspace/New(var/desired_loc)
+	. = ..()
+	filters += filter(type="outline",size=TILE_SIZE*0.5,color="#000000",flags=OUTLINE_SQUARE)
+	filters += filter(type="blur", size=1)
+	filters += filter(type="drop_shadow", x=0, y=0, size=-4, offset=0, color=rgb(0,0,0))

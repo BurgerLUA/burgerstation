@@ -9,7 +9,7 @@
 
 	var/required_container //The type of container that is required for this reaction to occur.
 
-	var/list/results = list()
+	var/list/results = null
 
 	var/atom/result
 

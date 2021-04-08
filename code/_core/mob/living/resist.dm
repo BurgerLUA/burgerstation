@@ -8,11 +8,11 @@
 		if(messages) to_chat(span("warning","You can't resist while dead!"))
 		return FALSE
 
-	if(health.stamina_current < 20)
+	if(health?.stamina_current < 20)
 		if(messages) to_chat(span("warning","You're too exhausted to resist!"))
 		return FALSE
 
-	if(has_status_effects(PARALYZE,SLEEP,PARRIED,FATIGUE,STUN))
+	if(has_status_effects(STAMCRIT,PARALYZE,SLEEP,PARRIED,FATIGUE,STUN))
 		if(messages) to_chat(span("warning","You can't resist in this state!"))
 		return FALSE
 

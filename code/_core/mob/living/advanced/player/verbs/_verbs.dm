@@ -22,7 +22,7 @@
 		src.to_chat(span("warning","You can't logout now! The game isn't running!"))
 		return FALSE
 
-	if(A.flags_area & FLAGS_AREA_TUTORIAL)
+	if(!buckled_object && tutorial && A.flags_area & FLAGS_AREA_TUTORIAL)
 		var/question = input("Are you sure you want to cancel character creation? Your character won't be saved, and it will be deleted from the game.") in list("Yes","No")
 		if(question == "Yes" && A.flags_area & FLAGS_AREA_TUTORIAL)
 			client.make_ghost(get_turf(src))
