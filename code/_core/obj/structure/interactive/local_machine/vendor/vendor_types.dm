@@ -27,6 +27,20 @@
 		/obj/item/clothing/undertop/underwear/shirt
 	)
 
+/obj/structure/interactive/vending/clothes/shirt/soccer
+	name = "soccer uniform vendor"
+	stored_types = list(
+		/obj/item/clothing/pants/shorts/red_soccer,
+		/obj/item/clothing/shirt/normal/uniform/red_soccer,
+		/obj/item/clothing/pants/shorts/blue_soccer,
+		/obj/item/clothing/shirt/normal/uniform/blue_soccer,
+		/obj/item/clothing/pants/shorts/ref_soccer,
+		/obj/item/clothing/shirt/normal/uniform/ref_soccer,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/storage/shoebox/colored,
+		/obj/item/whistle
+	)
+
 
 /obj/structure/interactive/vending/clothes/overshirt
 	name = "overwear vendor"
@@ -552,7 +566,10 @@
 	accepts_item = /obj/item/currency/prize_ticket
 
 	stored_types = list(
-		/obj/item/bikehorn
+		/obj/item/bikehorn,
+		/obj/item/ball/soccer,
+		/obj/item/dice/d6,
+		/obj/item/dice/d20
 	)
 
 

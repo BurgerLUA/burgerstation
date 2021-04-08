@@ -196,7 +196,7 @@
 			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE
 
-	return ..()
+	. = ..()
 
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
