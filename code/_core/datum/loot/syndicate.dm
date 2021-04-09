@@ -1,11 +1,11 @@
-/loot/rev
+/loot/syndicate
 	loot_table = list(
-		/obj/item/storage/kit/ai3 = 250
-		/obj/item/storage/kit/ai3/filled = 200,
-		/obj/item/currency/rubles/loot = 500,
+		/obj/item/storage/kit/syndicate = 250
+		/obj/item/storage/kit/syndicate/filled = 200,
+		/obj/item/currency/telecrystals/loot = 500,
 		/obj/item/powergem = 20,
-		/obj/item/tempering/quality/ranged = 60,
-		/obj/item/tempering/quality/clothing = 30,
+		/obj/item/tempering/quality/ranged = 30,
+		/obj/item/tempering/quality/clothing = 60,
 		/obj/item/tempering/luck = 60,
 		/obj/item/tempering/luck/double = 15,
 		/obj/item/analyzer/armor = 100,

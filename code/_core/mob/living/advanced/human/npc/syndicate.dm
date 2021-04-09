@@ -47,6 +47,11 @@
 
 	equip_loadout(loadout_to_use)
 
+/mob/living/advanced/npc/syndicate/post_death()
+	var/turf/T = get_turf(src)
+	CREATE_LOOT(/loot/syndicate,T)
+	return
+
 /mob/living/advanced/npc/syndicate/double
 	level_multiplier = 2
 

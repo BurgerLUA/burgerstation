@@ -8,6 +8,7 @@
 		/obj/item/tempering/quality/ranged = 100,
 		/obj/item/currency/magic_token/random = 50,
 		/obj/item/currency/telecrystals/treasure = 50,
+		/obj/item/currency/rubles/loot = 50,
 		/obj/item/fulton_pack = 50,
 		/loot/magic/book = 50,
 		/loot/magic/soulgem = 50,

@@ -38,6 +38,7 @@
 
 	equip_loadout(loadout_to_use)
 
-
-
-	
+/mob/living/advanced/npc/sorcerer/post_death()
+	var/turf/T = get_turf(src)
+	CREATE_LOOT(/loot/syndicate,T)
+	return
