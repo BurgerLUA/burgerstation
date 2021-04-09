@@ -4,6 +4,7 @@ var/global/list/world_spawnpoints = list()
 var/global/list/mob_spawnpoints = list()
 var/global/list/chargen_spawnpoints = list()
 var/global/list/horde_spawnpoints = list()
+var/global/list/free_for_all_spawnpoints = list()
 
 /obj/marker/spawnpoint
 	name = "GENERATEPOINT"
@@ -42,3 +43,16 @@ var/global/list/horde_spawnpoints = list()
 
 /obj/marker/spawnpoint/horde/New()
 	horde_spawnpoints += get_turf(src)
+
+
+/obj/marker/spawnpoint/vr/
+	icon_state = "spawn"
+
+
+/obj/marker/spawnpoint/vr/free_for_all
+	name = "free for all spawnpoint"
+	desc = "For the free for all VR gamemode."
+	color = "#00FF00"
+
+/obj/marker/spawnpoint/vr/free_for_all/New()
+	free_for_all_spawnpoints += get_turf(src)

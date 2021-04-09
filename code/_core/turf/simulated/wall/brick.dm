@@ -36,3 +36,6 @@
 	//material = /material/uranium
 
 
+/turf/simulated/wall/brick/grey
+	color = COLOR_GREY
+

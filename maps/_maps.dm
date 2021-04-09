@@ -5,7 +5,8 @@ var/global/list/horde_maps = list(
 	//"Crystal Canyon" = "maps/horde/crystalcanyon.dmm",
 	//"Jungle B-0X (WIP)" = "maps/horde/box.dmm",
 	"Lavaland" = "maps/horde/lavaland.dmm",
-	//"Supermatter Defense" = "maps/horde/supermatter.dmm"
+	//"Supermatter Defense" = "maps/horde/supermatter.dmm",
+	"Debug" = "maps/virtual_reality/deathmatch.dmm"
 )
 
 

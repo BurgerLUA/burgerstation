@@ -69,6 +69,15 @@ SUBSYSTEM_DEF(turfs)
 		turf_count++
 
 	log_subsystem(name,"Initialized [turf_count] turfs.")
+	turf_count = 0
+
+	for(var/turf/simulated/S in world)
+		sleep(-1)
+		FINALIZE(S)
+		turf_count++
+
+	log_subsystem(name,"Finalized [turf_count] turfs.")
+
 	log_subsystem(name,"Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
 
 	return ..()
@@ -88,18 +97,26 @@ SUBSYSTEM_DEF(turfs)
 		T.update_overlays()
 	return TRUE
 
-
-/subsystem/turfs/on_life()
+/subsystem/turfs/proc/process_edges()
 
 	for(var/k in queued_edges)
 		var/turf/T = k
 		if(process_queued_edge(T) == null)
 			queued_edges -= k
 
+/subsystem/turfs/proc/process_wet_turfs()
+
 	for(var/k in wet_turfs)
 		var/turf/simulated/T = k
 		if(process_wet_turf(T) == null)
 			wet_turfs -= k
+
+
+/subsystem/turfs/on_life()
+
+	process_edges()
+	process_wet_turfs()
+
 
 	return TRUE
 

@@ -113,7 +113,10 @@
 		O.update_sprite()
 
 	if(do_teleport)
-		if(length(cryo_spawnpoints))
+		var/obj/marker/dev/D = locate() in world
+		if(ENABLE_INSTALOAD && D)
+			force_move(get_turf(D))
+		else if(length(cryo_spawnpoints))
 			var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
 			force_move(get_turf(C))
 			C.door_state = SLEEPER_OPENED

@@ -200,3 +200,8 @@
 /turf/proc/can_construct_on(var/mob/caller)
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
+
+
+/turf/Finalize()
+	. = ..()
+	update_sprite()

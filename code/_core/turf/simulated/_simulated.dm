@@ -139,7 +139,6 @@ var/global/list/blood_turfs = list()
 	. = ..()
 	if(istype(health))
 		health.organic = organic
-	update_sprite()
 
 /turf/simulated/proc/get_smooth_code()
 
