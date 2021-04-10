@@ -112,3 +112,5 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced/nt)
 
 	value = 600
+
+	loyalty_tag = "NanoTrasen"
