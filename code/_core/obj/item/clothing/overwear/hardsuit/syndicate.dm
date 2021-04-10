@@ -84,3 +84,31 @@
 	value = 1200
 
 	speed_bonus = 0.1
+
+/obj/item/clothing/overwear/hardsuit/syndie/advanced/nt
+	name = "NT mauler hardsuit mk2"
+	desc = "Perimeter Secured."
+	desc_extended = "The current model in service by medium to high level Syndicate operatives. People wearing this are not to be treated lightly. Had some scarce NT paintjob applied."
+	icon = 'icons/obj/item/clothing/suit/syndie_advanced_nt.dmi'
+	rarity = RARITY_RARE
+
+	defense_rating = list(
+		BLADE = AP_AXE,
+		BLUNT = AP_CLUB,
+		PIERCE = AP_CLUB,
+		LASER = AP_CLUB,
+		ARCANE = -AP_CLUB,
+		HEAT = AP_AXE,
+		COLD = AP_AXE,
+		BOMB = AP_AXE,
+		BIO = AP_SWORD,
+		RAD = AP_SWORD,
+		PAIN = AP_CLUB
+	)
+
+	size = SIZE_6
+
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced/nt)
+
+	value = 600

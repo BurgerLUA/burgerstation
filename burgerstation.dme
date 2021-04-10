@@ -597,6 +597,7 @@
 #include "code\_core\datum\loot\rev.dm"
 #include "code\_core\datum\loot\skill_scroll.dm"
 #include "code\_core\datum\loot\supply_crate.dm"
+#include "code\_core\datum\loot\syndicate.dm"
 #include "code\_core\datum\loot\trash_pile.dm"
 #include "code\_core\datum\loot\weapon_energys.dm"
 #include "code\_core\datum\loot\weapon_pistols.dm"
