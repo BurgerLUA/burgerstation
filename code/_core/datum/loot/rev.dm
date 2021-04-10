@@ -1,6 +1,6 @@
 /loot/rev
 	loot_table = list(
-		/obj/item/storage/kit/ai3 = 250
+		/obj/item/storage/kit/ai3 = 250,
 		/obj/item/storage/kit/ai3/filled = 200,
 		/obj/item/currency/rubles/loot = 500,
 		/obj/item/powergem = 20,

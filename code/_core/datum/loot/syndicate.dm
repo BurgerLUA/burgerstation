@@ -1,6 +1,6 @@
 /loot/syndicate
 	loot_table = list(
-		/obj/item/storage/kit/syndicate = 250
+		/obj/item/storage/kit/syndicate = 250,
 		/obj/item/storage/kit/syndicate/filled = 200,
 		/obj/item/currency/telecrystals/loot = 500,
 		/obj/item/powergem = 20,
