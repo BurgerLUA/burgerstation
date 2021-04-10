@@ -2,7 +2,7 @@
 	loot_table = list(
 		/obj/item/storage/kit/syndicate = 250,
 		/obj/item/storage/kit/syndicate/filled = 200,
-		/obj/item/currency/telecrystals/loot = 500,
+		/obj/item/currency/telecrystals/goblin = 500,
 		/obj/item/powergem = 20,
 		/obj/item/tempering/quality/ranged = 30,
 		/obj/item/tempering/quality/clothing = 60,
