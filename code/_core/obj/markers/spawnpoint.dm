@@ -6,6 +6,7 @@ var/global/list/chargen_spawnpoints = list()
 var/global/list/horde_spawnpoints = list()
 var/global/list/free_for_all_spawnpoints = list()
 var/global/list/tdm_spawnpoints = list()
+var/global/list/vr_lobby_spawnpoints = list()
 
 /obj/marker/spawnpoint
 	name = "GENERATEPOINT"
@@ -66,3 +67,11 @@ var/global/list/tdm_spawnpoints = list()
 
 /obj/marker/spawnpoint/vr/team_deathmatch/New()
 	tdm_spawnpoints += get_turf(src)
+
+/obj/marker/spawnpoint/vr/lobby
+	name = "lobby spawnpoint"
+	desc = "For placing people in the lobby."
+	color = "#FF0000"
+
+/obj/marker/spawnpoint/vr/lobby/New()
+	vr_lobby_spawnpoints += get_turf(src)

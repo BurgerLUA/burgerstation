@@ -1,6 +1,6 @@
 /obj/structure/interactive/vending/virtual_reality
 	name = "magic loadout vendor"
-	icon_state = "vr"
+	icon_state = "vr_platform"
 	var/vendor_type = "ammo"
 
 /obj/structure/interactive/vending/virtual_reality/Finalize()
@@ -15,6 +15,12 @@
 	I.pixel_z = TILE_SIZE*0.5
 	I.alpha = 200
 	add_overlay(I)
+
+	var/image/I2 = new/image(initial(icon),"vr_gem")
+	I2.plane = PLANE_EFFECT_LIGHTING
+	I2.layer = 999
+	I2.alpha = 200
+	add_overlay(I2)
 
 /obj/structure/interactive/vending/virtual_reality/modify_item(var/obj/item/I)
 
