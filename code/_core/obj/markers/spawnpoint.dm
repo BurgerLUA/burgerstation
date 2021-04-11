@@ -5,6 +5,7 @@ var/global/list/mob_spawnpoints = list()
 var/global/list/chargen_spawnpoints = list()
 var/global/list/horde_spawnpoints = list()
 var/global/list/free_for_all_spawnpoints = list()
+var/global/list/tdm_spawnpoints = list()
 
 /obj/marker/spawnpoint
 	name = "GENERATEPOINT"
@@ -56,3 +57,12 @@ var/global/list/free_for_all_spawnpoints = list()
 
 /obj/marker/spawnpoint/vr/free_for_all/New()
 	free_for_all_spawnpoints += get_turf(src)
+
+
+/obj/marker/spawnpoint/vr/team_deathmatch
+	name = "team deathmatch spawnpoint"
+	desc = "For the team deathmatch gamemode"
+	color = "#0000FF"
+
+/obj/marker/spawnpoint/vr/team_deathmatch/New()
+	tdm_spawnpoints += get_turf(src)

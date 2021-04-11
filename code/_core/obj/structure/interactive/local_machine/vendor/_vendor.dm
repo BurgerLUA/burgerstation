@@ -61,6 +61,8 @@ var/global/list/equipped_antags = list()
 
 	return TRUE
 
+/obj/structure/interactive/vending/proc/modify_item(var/obj/item/I)
+	return TRUE
 
 /obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0)
 
@@ -69,6 +71,7 @@ var/global/list/equipped_antags = list()
 
 	var/obj/item/new_item
 	new_item = new associated_item.type(get_turf(src))
+	modify_item(new_item)
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	FINALIZE(new_item)
