@@ -45,7 +45,12 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 		D.finalized = TRUE;																							\
 	}
 
-#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D);FINALIZE(D)
+/proc/CREATE(I,desired_loc)
+	var/datum/D = new I(desired_loc)
+	INITIALIZE(D)
+	GENERATE(D)
+	FINALIZE(D)
+	return D
 
 #define CREATE_SAFE(I,desired_loc) \
 	var/mob/living/advanced/player/L1234 = locate() in viewers(VIEW_RANGE,desired_loc);\

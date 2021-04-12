@@ -60,6 +60,12 @@
 		"NanoTrasen" = list()
 	)
 
+
+	var/list/needs_loadout = list()
+
+	var/list/valid_syndicate_turfs = list()
+	var/list/valid_nanotrasen_turfs = list()
+
 	var/turf/syndicate_marker
 	var/turf/nanotrasen_marker
 	var/turf/objective_marker
@@ -91,6 +97,11 @@
 
 	. = ..()
 
+/virtual_reality/team/nuke_ops/proc/give_loadout(var/mob/living/advanced/A)
+
+	if(length(team_loadouts[A.loyalty_tag]))
+		var/loadout/L = pick(team_loadouts[A.loyalty_tag])
+		A.equip_loadout(L)
 
 /virtual_reality/team/nuke_ops/proc/on_player_ready(var/mob/living/L)
 
@@ -109,19 +120,69 @@
 
 	return TRUE
 
-/virtual_reality/team/nuke_ops/proc/reset_income()
-	for(var/mob/living/advanced/player/P in active_players)
-		P.adjust_currency(500-P.currency)
+/virtual_reality/team/nuke_ops/proc/cleanup_map()
+	for(var/mob/living/L in all_mobs_with_clients)
+		if(L.z != 1)
+			continue
+	var/mission_map = rustg_file_read(SSdmm_suite.map_path)
+	dmm_suite.read_map(mission_map,1,1,1,overwrite=DMM_OVERWRITE_OBJS)
+	log_subsystem(name,"Cleaned up mission map.")
+
+/virtual_reality/team/nuke_ops/proc/place_mobs_at_spawn()
+
+	for(var/k in teams["NanoTrasen"])
+		var/mob/living/L = k
+		var/turf/T = pick(valid_nanotrasen_turfs)
+		if(length(valid_nanotrasen_turfs) > 4)
+			valid_nanotrasen_turfs -= T
+		L.force_move(T)
+		L.rejuvenate()
+		if(needs_loadout[L] && is_player(L))
+			var/mob/living/advanced/player/P = L
+			P.adjust_currency(500-P.currency)
+		if(L.dead)
+			L.revive()
+			if(is_advanced(L))
+				var/mob/living/advanced/A = L
+				A.strip_and_delete_items()
+				give_loadout(A)
+		else if(needs_loadout[L] && is_advanced(L))
+			var/mob/living/advanced/A = L
+			A.strip_and_delete_items()
+			give_loadout(A)
+		needs_loadout -= L
+
+	for(var/k in teams["Syndicate"])
+		var/mob/living/L = k
+		var/turf/T = pick(valid_syndicate_turfs)
+		if(length(valid_syndicate_turfs) > 4)
+			valid_syndicate_turfs -= T
+		L.force_move(T)
+		L.rejuvenate()
+		if(needs_loadout[L] && is_player(L))
+			var/mob/living/advanced/player/P = L
+			P.adjust_currency(500-P.currency)
+		if(L.dead)
+			L.revive()
+			if(is_advanced(L))
+				var/mob/living/advanced/A = L
+				A.strip_and_delete_items()
+				give_loadout(A)
+		else if(needs_loadout[L] && is_advanced(L))
+			var/mob/living/advanced/A = L
+			A.strip_and_delete_items()
+			give_loadout(A)
+		needs_loadout -= L
+
+/virtual_reality/team/nuke_ops/move_to_team(var/mob/living/L,var/desired_team)
+
+	. = ..()
+
+	if(. && is_advanced(L) && (desired_team == "Syndicate" || desired_team == "NanoTrasen"))
+		needs_loadout |= L
 
 
-/virtual_reality/team/nuke_ops/proc/round_start()
-	set_markers()
-	if(round == 0)
-		reset_income()
-		set_teams()
-	else if(!(round % 5))
-		reset_income()
-		swap_teams()
+/virtual_reality/team/nuke_ops/proc/generate_spawnpoints()
 
 	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,syndicate_marker)
 	var/turf/syndicate_marker_2 = get_step(syndicate_marker,EAST)
@@ -131,19 +192,27 @@
 	var/turf/nanotrasen_marker_2 = get_step(nanotrasen_marker,EAST)
 	CREATE(/obj/structure/interactive/vending/virtual_reality/weapons,nanotrasen_marker_2)
 
-	var/list/valid_syndicate_turfs = list()
+	valid_syndicate_turfs = list()
 	for(var/turf/simulated/floor/F in view(VIEW_RANGE*0.5,syndicate_marker))
 		if(!F.is_safe_teleport())
 			continue
 		valid_syndicate_turfs += F
 
-	var/list/valid_nanotrasen_turfs = list()
+	valid_nanotrasen_turfs = list()
 	for(var/turf/simulated/floor/F in view(VIEW_RANGE*0.5,nanotrasen_marker))
 		if(!F.is_safe_teleport())
 			continue
 		valid_nanotrasen_turfs += F
 
-
+/virtual_reality/team/nuke_ops/proc/round_start()
+	cleanup_map()
+	set_markers()
+	generate_spawnpoints()
+	if(round == 0)
+		set_teams()
+	else if(!(round % 5))
+		swap_teams()
+	place_mobs_at_spawn()
 
 	round = 1
 	state = 3
