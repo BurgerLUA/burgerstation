@@ -132,7 +132,6 @@
 	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","PREP\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
-		set_message("Round starts in: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
 	state = GAMEMODE_GEARING
 	round_time = 0
@@ -152,7 +151,6 @@
 	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","GEAR\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
-		set_message("Loadout Period: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
 	state = GAMEMODE_BOARDING
 	round_time = 0
@@ -170,7 +168,6 @@
 	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","BRDN\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
-		set_message("Boarding Period: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
 	state = GAMEMODE_LAUNCHING
 	round_time = 0
@@ -184,7 +181,6 @@
 	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","LNCH\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
-		set_message("Launch Period: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
 	state = GAMEMODE_FIGHTING
 	round_time = 0

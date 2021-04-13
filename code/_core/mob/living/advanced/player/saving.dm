@@ -99,6 +99,8 @@
 
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special. TODO: IT SHOULD THOUGH.
 		var/o_type = loaded_data["organs"][id]["type"]
+		if(appearance_only && ispath(o_type,/obj/item/organ/internal/implant))
+			continue
 		var/obj/item/organ/O = add_organ(o_type)
 		if(!O)
 			log_error("Invalid Organ: [o_type].")
