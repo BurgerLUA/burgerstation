@@ -114,9 +114,11 @@ dmm_suite
 						for(var/k in T)
 							CHECK_TICK(50,FPS_SERVER)
 							var/datum/x = k
-							if(istype(x, /obj) && overwrite & DMM_OVERWRITE_OBJS)
+							if(overwrite & DMM_OVERWRITE_OBJS && istype(x, /obj))
 								qdel(x)
-							else if(istype(x, /mob) && overwrite & DMM_OVERWRITE_MOBS)
+								if(overwrite & DMM_OVERWRITE_MARKERS && istype(x,/obj/marker/))
+									qdel(x)
+							else if(overwrite & DMM_OVERWRITE_MOBS && istype(x, /mob))
 								qdel(x)
 
 

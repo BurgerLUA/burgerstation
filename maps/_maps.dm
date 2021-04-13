@@ -11,5 +11,7 @@ var/global/list/horde_maps = list(
 
 
 var/global/list/vr_maps = list(
-	"Free-For-All Deathmatch"
+	"Debug" = list(
+		/virtual_reality/team/nuke_ops/
+	)
 )

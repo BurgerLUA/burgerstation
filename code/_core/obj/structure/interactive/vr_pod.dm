@@ -15,7 +15,19 @@
 	return TRUE
 
 /obj/structure/interactive/vr_pod/proc/enter_virtual_reality()
+	if(!SSvirtual_reality.current_virtual_reality || !SSvirtual_reality.current_virtual_reality)
+		user.to_chat(span("warning","The Virtual Reality program has not loaded yet!"))
+		return FALSE
 	check_virtual_avatar()
+	if(istype(virtual_avatar))
+		SSvirtual_reality.current_virtual_reality.on_player_join(virtual_avatar)
+	return TRUE
+
+/obj/structure/interactive/vr_pod/proc/exit_virtual_reality()
+	if(istype(virtual_avatar))
+		SSvirtual_reality.current_virtual_reality.on_player_leave(virtual_avatar)
+		qdel(virtual_avatar)
+		virtual_avatar = null
 	return TRUE
 
 /obj/structure/interactive/vr_pod/proc/add_buttons()
@@ -60,9 +72,7 @@
 /obj/structure/interactive/vr_pod/Exited(var/atom/movable/exiter,var/atom/newloc)
 	if(exiter == user)
 		remove_buttons()
-		if(istype(virtual_avatar))
-			qdel(virtual_avatar)
-			virtual_avatar = null
+		exit_virtual_reality()
 		user = null
 	. = ..()
 
