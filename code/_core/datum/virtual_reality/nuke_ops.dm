@@ -11,8 +11,12 @@
 	)
 
 	team_loadouts = list(
-		"Syndicate" = list(),
-		"NanoTrasen" = list(),
+		"Syndicate" = list(
+			/loadout/virtual_reality/syndicate
+		),
+		"NanoTrasen" = list(
+			/loadout/virtual_reality/nanotrasen
+		),
 		"Lobby" = list()
 	)
 
@@ -29,6 +33,13 @@
 	var/round = 0 //Every 5 rounds is a team swap..
 
 	var/state = 1
+
+	var/list/score = list(
+		"NanoTrasen" = 0,
+		"Syndicate" = 0
+
+
+	)
 
 	//1 = waiting for players
 
@@ -143,7 +154,7 @@
 	. = ..()
 
 	if(. && is_advanced(L) && team_loadouts[desired_team])
-		needs_loadout |= L
+		needs_loadout[L] = TRUE
 
 	if(desired_team == "Ready")
 		on_player_ready(L)
@@ -153,6 +164,8 @@
 	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,syndicate_marker)
 	var/turf/syndicate_marker_2 = get_step(syndicate_marker,EAST)
 	CREATE(/obj/structure/interactive/vending/virtual_reality/weapons,syndicate_marker_2)
+	var/turf/syndicate_marker_3 = get_step(syndicate_marker,WEST)
+	CREATE(/obj/structure/interactive/vr_nuke,syndicate_marker_3)
 
 	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,nanotrasen_marker)
 	var/turf/nanotrasen_marker_2 = get_step(nanotrasen_marker,EAST)
@@ -267,7 +280,7 @@
 		if(4)
 			set_message("Buy period: [get_clock_time(time_left)].")
 		if(5)
-			set_message("Action Period: [get_clock_time(time_left)].")
+			set_message("NanoTrasen: [score["NanoTrasen"]] | [get_clock_time(time_left)] | Syndicate: [score["Syndicate"]].")
 		if(6)
 			set_message("NanoTrasen wins!")
 		if(7)
@@ -277,7 +290,6 @@
 		round_start()
 	else
 		log_debug("State: [state], team length: [length(teams["Ready"])].")
-
 
 	if(time_left <= 0)
 		switch(state)
@@ -289,3 +301,26 @@
 				state = 5
 
 	. = ..()
+
+/virtual_reality/team/nuke_ops/proc/check_gamemode_win()
+
+	if(state >= 6)
+		return FALSE
+
+	if(length(teams["NanoTrasen"]) <= 0)
+		state = 7
+		score["Syndicate"] += 1
+		return TRUE
+	else if(length(teams["Syndicate"]) <= 0)
+		state = 6
+		score["NanoTrasen"] += 1
+		return TRUE
+
+
+
+
+
+
+/virtual_reality/team/nuke_ops/player_post_death(var/mob/living/advanced/player/virtual/P)
+	. = ..()
+	check_gamemode_win()

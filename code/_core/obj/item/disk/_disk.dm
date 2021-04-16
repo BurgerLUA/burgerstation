@@ -47,7 +47,7 @@
 	writing_color = "#004A7F"
 	metal_color = "#BBC5C7"
 
-/obj/item/disk/random/New()
+/obj/item/disk/random/Generate()
 	frame_color = random_color()
 	writing_color = random_color()
 	metal_color = random_color()
@@ -75,3 +75,13 @@
 		"cost" = 1000
 	)
 
+
+/obj/item/disk/nuke
+	name = "nuclear authentication disk"
+	desc = "GET THAT FUKKEN DISK."
+	desc_extended = "Stores the very advanced 4-bit encryption codes."
+	frame_color = "#007F0E"
+	writing_color = "#0094FF"
+	metal_color = "#FFE38F"
+	value_burgerbux = 1
+	value = 10000

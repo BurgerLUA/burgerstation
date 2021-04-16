@@ -54,3 +54,6 @@
 		L.iff_tag = desired_team
 
 	return TRUE
+
+/virtual_reality/proc/player_post_death(var/mob/living/advanced/player/virtual/P)
+	return TRUE

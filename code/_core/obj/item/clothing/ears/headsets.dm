@@ -45,3 +45,7 @@
 /obj/item/clothing/ears/headset/mercenary
 	name = "mercenary headset"
 	stored_radio = /obj/item/device/radio/mercenary
+
+/obj/item/clothing/ears/headset/virtual_reality
+	name = "auto headset"
+	stored_radio = /obj/item/device/radio/virtual_reality

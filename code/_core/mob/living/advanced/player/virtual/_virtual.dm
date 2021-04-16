@@ -20,3 +20,10 @@
 	var/mob/living/advanced/player/P = fallback_mob
 
 	skills = P.skills
+
+/mob/living/advanced/player/virtual/post_death()
+
+	. = ..()
+
+	if(SSvirtual_reality.current_virtual_reality)
+		SSvirtual_reality.current_virtual_reality.player_post_death(src)
