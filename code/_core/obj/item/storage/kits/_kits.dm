@@ -110,6 +110,53 @@
 	max_inventory_x = 5
 	dynamic_inventory_count = 10
 
+	var/open = FALSE
+
+	container_whitelist = list(
+		/obj/item/container/syringe/medipen,
+	)
+
+/obj/item/storage/kit/ai3/New(var/desired_loc)
+	. = ..()
+	icon_state = "ai3"
+
+/obj/item/storage/kit/ai3/click_self(var/mob/caller)
+
+	if(open && caller.attack_flags & CONTROL_MOD_ALT)
+		open = FALSE
+		update_sprite()
+		return TRUE
+
+	if(!open)
+		open = TRUE
+		update_sprite()
+
+	. = ..()
+
+/obj/item/storage/kit/ai3/update_icon()
+
+	. = ..()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	if(open)
+		icon_state = "[icon_state]_open"
+
+/obj/item/storage/kit/ai3/update_overlays()
+	. = ..()
+	if(open)
+		var/filled_slots = 0
+		for(var/k in src.inventories)
+			var/obj/hud/inventory/I = k
+			filled_slots += length(I.contents)
+		var/image/I = new/image(icon,"pen_[filled_slots]")
+		add_overlay(I)
+
+/obj/item/storage/kit/ai3/update_inventory()
+	. = ..()
+	update_sprite()
+
 /obj/item/storage/kit/ai3/filled/fill_inventory()
 	new /obj/item/container/syringe/medipen/bicaridine(src)
 	new /obj/item/container/syringe/medipen/bicaridine(src)

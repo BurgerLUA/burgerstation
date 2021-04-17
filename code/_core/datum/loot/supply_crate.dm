@@ -69,7 +69,7 @@
 		/loot/weapon/rifle/sniper_nt = 1,
 		/loot/weapon/rifle/standard = 1,
 		/loot/weapon/rifle/tungsten = 1,
-		/loot/weapon/shotgun/saiga_20 = 1,
+		/loot/weapon/shotgun/saiga_12 = 1,
 		/loot/weapon/shotgun/nt = 1,
 		/loot/weapon/shotgun/semi = 1,
 		/loot/weapon/smg/fbi = 1,

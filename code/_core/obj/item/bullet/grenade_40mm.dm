@@ -20,7 +20,7 @@
 
 
 	size = 0.1
-	value = 15
+	value = 120
 
 
 

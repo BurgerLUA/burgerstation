@@ -15,17 +15,17 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/shotgun/saiga_20
+/loot/weapon/shotgun/saiga_12
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
-		/obj/item/magazine/shotgun_auto/buckshot,
-		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_12,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_12,
+		/obj/item/magazine/saiga_auto/buckshot,
+		/obj/item/magazine/saiga_auto/buckshot,
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20 = 1,
-		/obj/item/magazine/shotgun_auto/buckshot = 4,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_12 = 1,
+		/obj/item/magazine/saiga_auto/buckshot = 4,
 	)
 	loot_count = 6
 	chance_none = 25

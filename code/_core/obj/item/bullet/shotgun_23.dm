@@ -71,3 +71,10 @@
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23/fire
+
+	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+	size = 0.04
+	value = 5.5
+
+	inaccuracy_modifer = 2.5
