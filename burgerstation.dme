@@ -1461,6 +1461,7 @@
 #include "code\_core\obj\item\storage\bags\goodie.dm"
 #include "code\_core\obj\item\storage\box\_box.dm"
 #include "code\_core\obj\item\storage\box\blood.dm"
+#include "code\_core\obj\item\storage\box\mre.dm"
 #include "code\_core\obj\item\storage\heavy\_heavy.dm"
 #include "code\_core\obj\item\storage\heavy\corpse.dm"
 #include "code\_core\obj\item\storage\heavy\trash_pile.dm"

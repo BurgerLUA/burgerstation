@@ -188,10 +188,11 @@
 /obj/item/container/syringe/medipen
 	name = "medipen"
 	desc = "For when you want to poke holes in people and overdose them even faster than with the syringe."
-	desc_extended = "Holds reagents. Can't draw and is used for quick injections. Type of contents could be seen by looking at the medipen's marker's color and guessing what does it mean."
+	desc_extended = "Holds reagents. Can't draw and is used for quick injections. Type of contents could be seen by looking at the medipen's marker's color and guessing what does it mean. Remember to take the cap off before injecting."
 	crafting_id = "medipen"
 	icon = 'icons/obj/item/container/medipen.dmi'
-	icon_state = "medipen"
+	icon_state = "medipen_closed"
+	var/sealed = TRUE
 
 	reagents = /reagent_container/syringe/medipen
 
@@ -204,6 +205,54 @@
 	injecting = TRUE
 
 	value = 30
+
+/obj/item/container/syringe/medipen/update_icon()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	var/seal_state = "closed"
+	var/num_state = CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
+
+	var/icon/I = icon(icon,"[icon_state]_[seal_state]_[num_state]")
+	var/icon/I2 = icon(icon,"liquid")
+
+	if(reagents && reagents.volume_current)
+		I2.Blend(reagents.color,ICON_MULTIPLY)
+		I.Blend(I2,ICON_UNDERLAY)
+
+	if(src.loc && is_inventory(src.loc))
+		var/icon/I3 = icon(icon,"action_[injecting]")
+		I.Blend(I3,ICON_OVERLAY)
+
+	icon = I
+
+	return ..()
+
+/obj/item/container/syringe/medipen/click_self(var/mob/caller as mob,var/atom/object,location,control,params)
+	INTERACT_CHECK
+	INTERACT_DELAY(0)
+	injecting = injecting
+	if (sealed == TRUE)
+		sealed = FALSE
+		caller.to_chat(span("notice","You uncap the injector."))
+		icon = icon(icon,"medipen_open")
+	injecting = injecting //lmao
+	return
+
+/obj/item/container/syringe/medipen/can_inject(var/mob/caller,var/atom/target)
+	if (sealed == TRUE)
+		caller.to_chat(span("warning","Take the cap off before injecting!"))
+		return
+	else
+		.=..()
+
+/obj/item/container/syringe/medipen/inject(var/mob/caller,var/atom/object,var/amount=5)
+	if (sealed == TRUE)
+		caller.to_chat(span("warning","Take the cap off before injecting!"))
+		return
+	else
+		.=..()
 
 /obj/item/container/syringe/medipen/adminomnizine
 	name = "god's medipen"
