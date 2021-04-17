@@ -74,7 +74,7 @@
 
 	if(. && is_player(caller))
 		var/mob/living/advanced/player/P = caller
-		P.logout()
+		P.try_logout()
 
 
 /obj/hud/button/widget/change_theme

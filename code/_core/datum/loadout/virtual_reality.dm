@@ -15,8 +15,7 @@
 		/obj/item/clothing/ears/headset/virtual_reality,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/back/storage/satchel/poly/syndicate,
-		/obj/item/clothing/neck/cloak/red,
-		/obj/item/disk/nuke
+		/obj/item/clothing/neck/cloak/red
 
 	)
 

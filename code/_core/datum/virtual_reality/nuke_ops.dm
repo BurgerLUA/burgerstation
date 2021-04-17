@@ -37,14 +37,10 @@
 	var/list/score = list(
 		"NanoTrasen" = 0,
 		"Syndicate" = 0
-
-
 	)
 
 	//1 = waiting for players
-
 	//2 = starting game
-
 	//3 = starting round
 	//4 = buy period
 	//5 = action peroid
@@ -52,6 +48,10 @@
 	//7 = round nding, Syndicate victory
 
 	var/time_left = -1
+
+	var/list/obj/item/disk/nuke/tracked_nuke_disks = list()
+
+	var/obj/structure/interactive/vr_nuke/tracked_nuke
 
 
 /virtual_reality/team/nuke_ops/proc/can_round_start()
@@ -78,6 +78,7 @@
 
 /virtual_reality/team/nuke_ops/proc/on_player_ready(var/mob/living/L)
 
+	/*
 	if(state >= 2) //Late joiner!
 		var/syndicate_length = length(teams["Syndicate"])
 		var/nanotrasen_length = length(teams["NanoTrasen"])
@@ -90,18 +91,19 @@
 				move_to_team(L,"NanoTrasen")
 			else
 				move_to_team(L,"Syndicate")
+	*/
 
 	return TRUE
 
 /virtual_reality/team/nuke_ops/proc/cleanup_map()
-	/* This is BAD for performance.
-	for(var/mob/living/L in all_mobs_with_clients)
-		if(L.z != 1)
-			continue
-	var/mission_map = rustg_file_read(SSdmm_suite.map_path)
-	dmm_suite.read_map(mission_map,1,1,1,overwrite=DMM_OVERWRITE_OBJS)
-	log_subsystem(name,"Cleaned up mission map.")
-	*/
+
+	QDEL_NULL(tracked_nuke)
+
+	for(var/k in tracked_nuke_disks)
+		tracked_nuke_disks -= k
+		var/obj/item/I = k
+		qdel(I)
+
 
 /virtual_reality/team/nuke_ops/proc/place_mobs_at_spawn()
 
@@ -148,6 +150,11 @@
 			A.strip_and_delete_items()
 			give_loadout(A)
 		needs_loadout -= L
+		if(is_advanced(L))
+			var/obj/item/disk/nuke/N = CREATE(/obj/item/disk/nuke,T)
+			N.quick_equip(L,silent=TRUE)
+			tracked_nuke_disks += N
+
 
 /virtual_reality/team/nuke_ops/move_to_team(var/mob/living/L,var/desired_team)
 
@@ -165,7 +172,7 @@
 	var/turf/syndicate_marker_2 = get_step(syndicate_marker,EAST)
 	CREATE(/obj/structure/interactive/vending/virtual_reality/weapons,syndicate_marker_2)
 	var/turf/syndicate_marker_3 = get_step(syndicate_marker,WEST)
-	CREATE(/obj/structure/interactive/vr_nuke,syndicate_marker_3)
+	tracked_nuke = CREATE(/obj/structure/interactive/vr_nuke,syndicate_marker_3)
 
 	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,nanotrasen_marker)
 	var/turf/nanotrasen_marker_2 = get_step(nanotrasen_marker,EAST)
@@ -268,6 +275,15 @@
 	if(time_left > 0)
 		time_left--
 
+	if(state != 1 && length(active_players) <= 0)
+		score = list(
+				"NanoTrasen" = 0,
+				"Syndicate" = 0
+		)
+		round = 0
+		state = 1
+		return ..()
+
 	switch(state)
 		if(0)
 			set_message("Setting up game...")
@@ -299,6 +315,8 @@
 			if(4)
 				time_left = 600
 				state = 5
+			if(6 to 7)
+				round_start()
 
 	. = ..()
 
@@ -307,12 +325,26 @@
 	if(state >= 6)
 		return FALSE
 
+	if(tracked_nuke.state >= 2)
+		if(tracked_nuke.state == 4)
+			state = 7
+			time_left = 10
+			score["Syndicate"] += 1
+			return TRUE
+		else if(tracked_nuke.state == 3)
+			state = 6
+			time_left = 10
+			score["NanoTrasen"] += 1
+			return TRUE
+		return FALSE
 	if(length(teams["NanoTrasen"]) <= 0)
 		state = 7
+		time_left = 10
 		score["Syndicate"] += 1
 		return TRUE
 	else if(length(teams["Syndicate"]) <= 0)
 		state = 6
+		time_left = 10
 		score["NanoTrasen"] += 1
 		return TRUE
 
