@@ -22,6 +22,8 @@
 
 	var/next_explode = -1
 
+	var/area/nuke_area
+
 /obj/structure/interactive/vr_nuke/think()
 
 	if(next_explode <= -1)
@@ -53,6 +55,14 @@
 
 	return TRUE
 
+/obj/structure/interactive/vr_nuke/get_examine_list(var/mob/examiner)
+	. = ..()
+
+	if(is_living(examiner))
+		var/mob/living/L = examiner
+		if(L.loyalty_tag == "Syndicate")
+			. += div("notice","\The [src.name] indicates it can only be anchored in <b>\the [nuke_area.name].</b>")
+
 /obj/structure/interactive/vr_nuke/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/disk/nuke))
@@ -63,7 +73,8 @@
 		if(L.loyalty_tag != "Syndicate")
 			L.to_chat(span("notice","You don't know how to use this!"))
 		else if(state == 0)
-			unlock(L)
+			if(can_unlock(L))
+				unlock(L)
 		else
 			caller.to_chat(span("warning","\The [src.name] is already unlocked!"))
 
@@ -85,6 +96,18 @@
 
 
 		return TRUE
+
+/obj/structure/interactive/vr_nuke/proc/can_unlock(var/mob/living/caller)
+
+	INTERACT_CHECK_NO_DELAY(src)
+
+	if(!istype(SSvirtual_reality.current_virtual_reality,/virtual_reality/team/nuke_ops/))
+		return FALSE
+
+	if(nuke_area != get_area(src))
+		return FALSE
+
+	return TRUE
 
 /obj/structure/interactive/vr_nuke/proc/can_disarm(var/mob/living/caller)
 

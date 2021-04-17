@@ -15,7 +15,8 @@
 		/obj/item/clothing/ears/headset/virtual_reality,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/back/storage/satchel/poly/syndicate,
-		/obj/item/clothing/neck/cloak/red
+		/obj/item/clothing/neck/cloak/red,
+		/obj/item/pinpointer/landmark/
 
 	)
 
@@ -35,5 +36,6 @@
 		/obj/item/clothing/ears/headset/virtual_reality,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/back/storage/satchel/poly/security,
-		/obj/item/clothing/neck/cloak/nanotrasen
+		/obj/item/clothing/neck/cloak/nanotrasen,
+		/obj/item/pinpointer/landmark/
 	)

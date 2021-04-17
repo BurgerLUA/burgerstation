@@ -53,7 +53,6 @@
 
 	var/obj/structure/interactive/vr_nuke/tracked_nuke
 
-
 /virtual_reality/team/nuke_ops/proc/can_round_start()
 
 	/*
@@ -78,6 +77,7 @@
 
 /virtual_reality/team/nuke_ops/proc/on_player_ready(var/mob/living/L)
 
+	//Removing the below code because late joining seems bad.
 	/*
 	if(state >= 2) //Late joiner!
 		var/syndicate_length = length(teams["Syndicate"])
@@ -177,6 +177,8 @@
 	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,nanotrasen_marker)
 	var/turf/nanotrasen_marker_2 = get_step(nanotrasen_marker,EAST)
 	CREATE(/obj/structure/interactive/vending/virtual_reality/weapons,nanotrasen_marker_2)
+
+	tracked_nuke.nuke_area = pick(vr_possible_nuke_areas)
 
 	valid_syndicate_turfs = list()
 	for(var/turf/simulated/floor/F in view(VIEW_RANGE*0.5,syndicate_marker))
