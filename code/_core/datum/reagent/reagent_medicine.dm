@@ -81,6 +81,9 @@
 	desc = "When you stab yourself with the loaded injector, you cease to feel pain."
 	desc_extended = ""
 	color = "#FFFFFF"
+	metabolism_stomach = 8
+	metabolism_blood = 0.5
+	metabolism_skin = 4
 	alpha = 150
 	flavor = "even more powergaming"
 	strength = 150

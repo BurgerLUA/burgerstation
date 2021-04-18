@@ -95,6 +95,9 @@
 	name = "energy stimulator"
 	desc = "GOTTA GET A GRIP"
 	color = "#F2C12E"
+	metabolism_stomach = 8
+	metabolism_blood = 0.5
+	metabolism_skin = 4
 
 	flavor = "powergaming"
 
