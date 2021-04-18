@@ -214,6 +214,20 @@
 	owner.remove_status_effect(STAMCRIT)
 	owner.stamina_regen_delay = 0
 
+/status_effect/stimmed
+	name = "Combat Stimulated"
+	desc = "You're full of combat stims!"
+	id = COMBAT_STIM
+	minimum = 200 // 20 seconds
+	maximum = 3 * 60 * 10 //5 minutes.
+
+/status_effect/stimmed/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(owner.health) owner.health.update_health(check_death=FALSE)
+	owner.remove_status_effect(STAMCRIT)
+	owner.remove_status_effect(CRIT)
+	owner.stamina_regen_delay = 0
+
 /status_effect/resting
 	name = "Resting"
 	desc = "You're resting!"

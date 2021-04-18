@@ -76,6 +76,39 @@
 		else
 			L.visible_message(span("warning","\The [L.name] twitches for a moment, but falls back limp..."))
 
+/reagent/medicine/adrenaline/combat_stim
+	name = "combat stimulants"
+	desc = "When you stab yourself with the loaded injector, you cease to feel pain."
+	desc_extended = ""
+	color = "#FFFFFF"
+	alpha = 150
+	flavor = "even more powergaming"
+	strength = 150
+
+	value = 5
+
+	particle_size = 0.25
+
+/reagent/medicine/adrenaline/combat_stim/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(L.get_status_effect_magnitude(PAINKILLER) <= strength)
+		L.add_status_effect(PAINKILLER,strength,-1)
+	L.revive()
+
+/reagent/medicine/adrenaline/combat_stim/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. =..()
+	if(owner && owner.health)
+		owner.health.adjust_stamina(.*2.5)
+
+/reagent/medicine/adrenaline/combat_stim/on_remove_living(var/mob/living/L,var/reagent_container/container)
+
+	. = ..()
+
+	if(L.get_status_effect_magnitude(PAINKILLER) <= strength)
+		L.remove_status_effect(PAINKILLER)
+
 /reagent/medicine/health_potion
 	name = "Healing Juice"
 	desc = "Heals brute and burn damage. Metabolizes fast."

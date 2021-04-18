@@ -79,3 +79,6 @@
 #define PARRIED "parried"
 
 #define STRESSED "stressed"
+
+#define COMBAT_STIM "combatstim"
+//Getting high as kite&ignoring boolet

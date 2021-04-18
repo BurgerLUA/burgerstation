@@ -58,6 +58,7 @@
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
+		/obj/item/container/syringe/medipen/combat_stim,
 
 	)
 	markup = 0.75
@@ -77,6 +78,7 @@
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
+		/obj/item/container/syringe/medipen/combat_stim,
 
 	)
 	accepts_item = /obj/item/currency/rubles

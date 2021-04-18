@@ -231,13 +231,12 @@
 
 /obj/item/container/syringe/medipen/click_self(var/mob/caller as mob,var/atom/object,location,control,params)
 	INTERACT_CHECK
-	INTERACT_DELAY(0)
+	INTERACT_DELAY(1)
 	injecting = injecting
 	if (sealed == TRUE)
 		sealed = FALSE
 		caller.to_chat(span("notice","You uncap the injector."))
 		icon = icon(icon,"medipen_open")
-	injecting = injecting //lmao
 	return
 
 /obj/item/container/syringe/medipen/can_inject(var/mob/caller,var/atom/target)
@@ -302,5 +301,16 @@
 
 /obj/item/container/syringe/medipen/iron/Generate()
 	reagents.add_reagent(/reagent/iron,reagents.volume_max)
+	return ..()
+
+/obj/item/container/syringe/medipen/combat_stim
+	name = "combat stimulants medipen"
+	desc = "Budget godmode."
+	desc_extended = "For those rare occassions when hangover is a preferable alternative to death."
+	value = 500
+
+/obj/item/container/syringe/medipen/combat_stim/Generate()
+	reagents.add_reagent(/reagent/medicine/adrenaline/combat_stim,reagents.volume_max*0.75)
+	reagents.add_reagent(/reagent/nutrition/energy/energy_stim,reagents.volume_max*0.25)
 	return ..()
 

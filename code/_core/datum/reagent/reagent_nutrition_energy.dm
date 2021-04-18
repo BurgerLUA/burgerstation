@@ -90,3 +90,19 @@
 	stamina_strength = 10
 
 	flavor_strength = 5
+
+/reagent/nutrition/energy/energy_stim
+	name = "energy stimulator"
+	desc = "GOTTA GET A GRIP"
+	color = "#F2C12E"
+
+	flavor = "powergaming"
+
+	nutrition_amount = -5
+	hydration_amount = -5
+	nutrition_quality_amount = 0
+
+	adrenaline_strength = 800
+	stamina_strength = 40
+
+	particle_size = 0.25
