@@ -228,15 +228,19 @@
 	icon = I
 
 	return ..()
-
+//le shitcode below, read at your own risk
 /obj/item/container/syringe/medipen/click_self(var/mob/caller as mob,var/atom/object,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
-	injecting = injecting
+	injecting = TRUE
 	if (sealed == TRUE)
 		sealed = FALSE
 		caller.to_chat(span("notice","You uncap the injector."))
 		icon = icon(icon,"medipen_open")
+	else
+		sealed = TRUE
+		caller.to_chat(span("notice","You put the cap back on."))
+		icon = icon(icon,"medipen_closed")
 	return
 
 /obj/item/container/syringe/medipen/can_inject(var/mob/caller,var/atom/target)

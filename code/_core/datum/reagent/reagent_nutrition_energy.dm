@@ -92,7 +92,7 @@
 	flavor_strength = 5
 
 /reagent/nutrition/energy/energy_stim
-	name = "energy stimulator"
+	name = "energy stimulant"
 	desc = "GOTTA GET A GRIP"
 	color = "#F2C12E"
 	metabolism_stomach = 8
