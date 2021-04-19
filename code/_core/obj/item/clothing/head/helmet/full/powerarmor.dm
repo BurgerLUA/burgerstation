@@ -6,9 +6,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
 		LASER = 20,
 		ARCANE = -AP_GREATSWORD,
 		BOMB = 40
@@ -25,12 +25,12 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
 		PIERCE = AP_GREATSWORD,
 		LASER = 40,
 		ARCANE = -AP_GREATAXE,
-		BOMB = AP_CLUB
+		BOMB = 60
 	)
 
 	size = SIZE_3
@@ -45,10 +45,10 @@
 
 	defense_rating = list(
 		BLADE = 40,
-		BLUNT = AP_CLUB,
+		BLUNT = 60,
 		PIERCE = AP_GREATSWORD,
 		LASER = AP_GREATSWORD,
-		HEAT = AP_CLUB,
+		HEAT = 60,
 		ARCANE = -AP_GREATAXE,
 		BOMB = 40
 	)
@@ -63,9 +63,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
 		LASER = 20,
 		ARCANE = -AP_GREATSWORD,
 		BOMB = 40

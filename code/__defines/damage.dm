@@ -38,10 +38,6 @@
 
 //Melee Balance
 
-#define DAMAGE_CLUB 60
-#define SPEED_CLUB 14
-#define AP_CLUB 60
-
 #define DAMAGE_GREATSWORD 75
 #define SPEED_GREATSWORD 16
 #define AP_GREATSWORD 80

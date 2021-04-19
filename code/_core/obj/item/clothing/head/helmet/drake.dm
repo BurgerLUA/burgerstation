@@ -17,7 +17,7 @@
 		COLD = -20,
 		HOLY = -40,
 		DARK = 40,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_3

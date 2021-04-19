@@ -6,7 +6,7 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 20,

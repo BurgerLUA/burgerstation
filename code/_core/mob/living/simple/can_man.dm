@@ -26,10 +26,10 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 20,
 		PIERCE = 20,
-		LASER = AP_CLUB,
+		LASER = 60,
 		ARCANE = -20,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,

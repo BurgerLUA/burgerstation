@@ -26,5 +26,5 @@
 	value = 200
 
 	defense_rating = list(
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 	)

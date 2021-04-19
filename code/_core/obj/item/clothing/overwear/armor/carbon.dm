@@ -9,16 +9,16 @@
 
 	defense_rating = list(
 		BLADE = 40,
-		BLUNT = AP_CLUB,
+		BLUNT = 60,
 		PIERCE = 40,
 		LASER = 40,
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 		HEAT = 40,
 		COLD = 40,
-		BOMB = AP_CLUB,
+		BOMB = 60,
 		BIO = 40,
 		RAD = 40,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_6

@@ -16,8 +16,8 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	armor_base = list(
 		BLADE = 10,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLUNT = 60,
+		PIERCE = 60,
 		HEAT = 10,
 		COLD = AP_GREATSWORD,
 		BIO = INFINITY,

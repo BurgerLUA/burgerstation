@@ -17,7 +17,7 @@
 		HEAT = 20,
 		COLD = 20,
 		BOMB = 20,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_2

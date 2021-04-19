@@ -14,7 +14,7 @@
 	defense_rating = list(
 		ARCANE = 20,
 		HEAT = -20,
-		COLD = AP_CLUB
+		COLD = 60
 	)
 
 	hidden_organs = list(

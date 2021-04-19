@@ -15,12 +15,12 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_CLUB,
+		BLUNT = 60,
 		PIERCE = 40,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		FATIGUE = AP_CLUB,
+		ARCANE = -60,
+		HEAT = 60,
+		COLD = 60,
+		FATIGUE = 60,
 		PAIN = AP_GREATCLUB
 	)
 

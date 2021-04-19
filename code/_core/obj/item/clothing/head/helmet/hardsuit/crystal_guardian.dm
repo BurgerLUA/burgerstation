@@ -7,13 +7,13 @@
 	value_burgerbux = 1 //to keep it from spawning without the hardsuit
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
 		PIERCE = 20,
-		LASER = -AP_CLUB,
+		LASER = -60,
 		ARCANE = AP_GREATCLUB,
-		HEAT = -AP_CLUB,
-		COLD = AP_CLUB,
+		HEAT = -60,
+		COLD = 60,
 		BOMB = 40,
 		BIO = 20,
 		RAD = 20

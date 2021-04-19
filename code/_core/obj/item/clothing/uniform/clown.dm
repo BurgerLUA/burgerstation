@@ -11,8 +11,8 @@
 		PIERCE = 20,
 		ARCANE = 40,
 		COLD = 10,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = 10,
 		PAIN = 10
 	)

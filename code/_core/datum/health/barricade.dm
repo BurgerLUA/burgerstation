@@ -2,7 +2,7 @@
 
 	armor_base = list(  //Base armor for the mob.
 		BLADE = DAMAGE_GREATAXE,
-		BLUNT = DAMAGE_CLUB,
+		BLUNT = 60,
 		PIERCE = 45,
 		LASER = 45,
 		ARCANE = DAMAGE_GREATCLUB,

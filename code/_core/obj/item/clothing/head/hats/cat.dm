@@ -8,9 +8,9 @@
 	defense_rating = list(
 		HOLY = -AP_GREATSWORD,
 		DARK = AP_GREATSWORD,
-		BLADE = -AP_CLUB,
-		BLUNT = -AP_CLUB,
-		PIERCE = -AP_CLUB
+		BLADE = -60,
+		BLUNT = -60,
+		PIERCE = -60
 	)
 
 	protected_limbs = TARGETABLE_LIMBS
@@ -42,9 +42,9 @@
 		HOLY = -AP_GREATSWORD,
 		DARK = 40,
 		ARCANE = 40,
-		BLADE = -AP_CLUB,
-		BLUNT = -AP_CLUB,
-		PIERCE = -AP_CLUB
+		BLADE = -60,
+		BLUNT = -60,
+		PIERCE = -60
 	)
 
 	protected_limbs = TARGETABLE_LIMBS

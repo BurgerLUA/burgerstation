@@ -23,10 +23,10 @@
 	stun_angle = 180
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = -AP_CLUB,
-		COLD = -AP_CLUB,
+		BLADE = 60,
+		PIERCE = 60,
+		HEAT = -60,
+		COLD = -60,
 		ION = INFINITY
 	)
 
@@ -93,8 +93,8 @@
 		BLUNT = 40,
 		PIERCE = AP_GREATSWORD,
 		ARCANE = -20,
-		HEAT = -AP_CLUB,
-		COLD = -AP_CLUB,
+		HEAT = -60,
+		COLD = -60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

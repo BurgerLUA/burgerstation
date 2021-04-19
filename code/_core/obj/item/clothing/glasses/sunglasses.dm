@@ -9,8 +9,8 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		LASER = AP_CLUB,
-		ARCANE = -AP_CLUB,
+		LASER = 60,
+		ARCANE = -60,
 		HEAT = 20
 	)
 
@@ -49,7 +49,7 @@
 		BLUNT = 20,
 		PIERCE = 20,
 		LASER = AP_GREATSWORD,
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 		HEAT = AP_GREATSWORD
 	)
 	damage_type = /damagetype/melee/sword/grazer
@@ -60,11 +60,11 @@
 	name = "gigagar shades"
 	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
 		LASER = AP_GREATCLUB,
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 		HEAT = AP_GREATCLUB
 	)
 	damage_type = /damagetype/melee/sword/grazer
@@ -81,8 +81,8 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 20,
-		LASER = AP_CLUB,
-		ARCANE = -AP_CLUB,
+		LASER = 60,
+		ARCANE = -60,
 		HEAT = 20,
 		BOMB = -AP_GREATCLUB
 	)

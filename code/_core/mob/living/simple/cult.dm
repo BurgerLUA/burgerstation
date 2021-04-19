@@ -35,8 +35,8 @@
 		LASER = -20,
 		ARCANE = 20,
 		COLD = 20,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = 20,
 		ION = INFINITY,
 		PAIN = 20
@@ -78,13 +78,13 @@
 	movement_delay = DECISECONDS_TO_TICKS(7)
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
 		PIERCE = 20,
 		LASER = -20,
 		ARCANE = -10,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
+		HEAT = 60,
+		COLD = 60,
 		HOLY = -AP_GREATSWORD,
 		DARK = AP_GREATSWORD,
 		FATIGUE = INFINITY,
@@ -110,13 +110,13 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
 		PIERCE = 20,
 		LASER = -20,
 		ARCANE = -10,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
+		HEAT = 60,
+		COLD = 60,
 		HOLY = -AP_GREATSWORD,
 		DARK = AP_GREATSWORD,
 		FATIGUE = INFINITY,

@@ -11,10 +11,10 @@
 		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -20,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		BOMB = AP_CLUB,
-		BIO = AP_CLUB
+		HEAT = 60,
+		COLD = 60,
+		BOMB = 60,
+		BIO = 60
 	)
 
 	size = SIZE_3
@@ -25,12 +25,12 @@
 
 	defense_rating = list(
 		BLADE = 40,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLUNT = 60,
+		PIERCE = 60,
 		LASER = 20,
 		ARCANE = -20,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		BOMB = AP_CLUB,
-		BIO = AP_CLUB
+		HEAT = 60,
+		COLD = 60,
+		BOMB = 60,
+		BIO = 60
 	)

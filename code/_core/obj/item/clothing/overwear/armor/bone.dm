@@ -13,10 +13,10 @@
 		BLUNT = 40,
 		PIERCE = 40,
 		ARCANE = 20,
-		HEAT = AP_CLUB,
-		DARK = AP_CLUB,
-		HOLY = -AP_CLUB,
-		PAIN = AP_CLUB
+		HEAT = 60,
+		DARK = 60,
+		HOLY = -60,
+		PAIN = 60
 	)
 
 	size = SIZE_6

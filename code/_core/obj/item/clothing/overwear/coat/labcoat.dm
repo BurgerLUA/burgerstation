@@ -9,7 +9,7 @@
 	defense_rating = list(
 		LASER = 40,
 		ARCANE = 40,
-		BIO = AP_CLUB
+		BIO = 60
 	)
 
 	size = SIZE_3

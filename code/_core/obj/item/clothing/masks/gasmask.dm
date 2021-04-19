@@ -49,7 +49,7 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 20,
 		PIERCE = 20,
 		BIO = AP_GREATAXE,

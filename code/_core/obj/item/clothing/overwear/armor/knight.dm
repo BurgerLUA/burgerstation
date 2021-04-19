@@ -9,13 +9,13 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
 		HEAT = -40,
-		ARCANE = -AP_CLUB,
-		PAIN = AP_CLUB
+		ARCANE = -60,
+		PAIN = 60
 	)
 
 	size = SIZE_6
@@ -52,7 +52,7 @@
 		LASER = 40,
 		HEAT = -40,
 		ARCANE = -AP_GREATSWORD,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_7
@@ -67,14 +67,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
 		HEAT = -40,
-		ARCANE = -AP_CLUB,
-		HOLY = AP_CLUB,
-		PAIN = AP_CLUB
+		ARCANE = -60,
+		HOLY = 60,
+		PAIN = 60
 	)
 
 	size = SIZE_5
@@ -90,13 +90,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
 		LASER = 20,
 		HEAT = -20,
-		ARCANE = AP_CLUB,
-		PAIN = AP_CLUB
+		ARCANE = 60,
+		PAIN = 60
 	)
 
 	size = SIZE_6
@@ -114,7 +114,7 @@
 	defense_rating = list(
 		BLADE = AP_GREATSWORD,
 		BLUNT = 40,
-		PIERCE = AP_CLUB,
+		PIERCE = 60,
 		LASER = -40,
 		ARCANE = -AP_GREATSWORD,
 		HEAT = -40,
@@ -136,8 +136,8 @@
 		BLADE = 40,
 		BLUNT = 40,
 		PIERCE = 40,
-		LASER = -AP_CLUB,
-		ARCANE = AP_CLUB,
+		LASER = -60,
+		ARCANE = 60,
 		HEAT = -40
 	)
 
@@ -155,7 +155,7 @@
 		BLUNT = 20,
 		PIERCE = 20,
 		LASER = -20,
-		ARCANE = AP_CLUB,
+		ARCANE = 60,
 		HOLY = -20,
 		DARK = 20
 	)
@@ -185,7 +185,7 @@
 		LASER = 40,
 		HEAT = -40,
 		ARCANE = -AP_GREATSWORD,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)

@@ -11,13 +11,13 @@
 
 	rarity = RARITY_UNCOMMON
 	defense_rating = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
 		HEAT = -40,
-		ARCANE = -AP_CLUB,
-		PAIN = AP_CLUB
+		ARCANE = -60,
+		PAIN = 60
 	)
 
 	size = SIZE_3
@@ -53,14 +53,14 @@
 	icon = 'icons/obj/item/clothing/hats/knight_templar.dmi'
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
+		BLADE = 60,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
 		HEAT = -40,
-		ARCANE = -AP_CLUB,
-		HOLY = AP_CLUB,
-		PAIN = AP_CLUB
+		ARCANE = -60,
+		HOLY = 60,
+		PAIN = 60
 	)
 
 	value = 110
@@ -71,13 +71,13 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
 		LASER = 20,
 		HEAT = -20,
-		ARCANE = AP_CLUB,
-		PAIN = AP_CLUB
+		ARCANE = 60,
+		PAIN = 60
 	)
 
 	size = SIZE_4
@@ -94,8 +94,8 @@
 		BLADE = 40,
 		BLUNT = 40,
 		PIERCE = 40,
-		LASER = -AP_CLUB,
-		ARCANE = AP_CLUB,
+		LASER = -60,
+		ARCANE = 60,
 		HEAT = -40
 	)
 

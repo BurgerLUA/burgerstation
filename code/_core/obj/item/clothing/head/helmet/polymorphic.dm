@@ -11,7 +11,7 @@
 		LASER = 40,
 		ARCANE = -40,
 		BOMB = 40,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_3
@@ -62,11 +62,11 @@
 	defense_rating = list(
 		BLADE = 40,
 		BLUNT = 40,
-		PIERCE = AP_CLUB,
+		PIERCE = 60,
 		LASER = 40,
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 		BOMB = 40,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/reinforced/ntops

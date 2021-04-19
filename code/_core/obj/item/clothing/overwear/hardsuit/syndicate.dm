@@ -16,7 +16,7 @@
 		BOMB = 40,
 		BIO = 20,
 		RAD = 20,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_7
@@ -37,16 +37,16 @@
 
 	defense_rating = list(
 		BLADE = 40,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = AP_CLUB,
-		ARCANE = -AP_CLUB,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = 60,
+		ARCANE = -60,
 		HEAT = 40,
 		COLD = 40,
 		BOMB = 40,
 		BIO = 20,
 		RAD = 20,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_6
@@ -67,14 +67,14 @@
 		BLADE = 40,
 		BLUNT = 40,
 		PIERCE = 40,
-		LASER = AP_CLUB,
-		ARCANE = -AP_CLUB,
+		LASER = 60,
+		ARCANE = -60,
 		HEAT = 40,
 		COLD = 40,
 		BOMB = 40,
 		BIO = 20,
 		RAD = 20,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)

@@ -13,7 +13,7 @@
 		LASER = -20,
 		ARCANE = -20,
 		HEAT = -20,
-		COLD = AP_CLUB
+		COLD = 60
 	)
 
 	protection_cold = list(

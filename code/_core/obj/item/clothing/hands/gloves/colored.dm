@@ -88,7 +88,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 		HEAT = 40,
 		COLD = 40,
 		BIO = 10,
@@ -134,9 +134,9 @@
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = -40,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
+		ARCANE = -60,
+		HEAT = 60,
+		COLD = 60,
 		BIO = 10
 	)
 

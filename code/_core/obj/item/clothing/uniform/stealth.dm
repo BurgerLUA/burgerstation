@@ -36,10 +36,10 @@
 
 	defense_rating = list(
 		BLADE = 40,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = -AP_CLUB,
-		ARCANE = -AP_CLUB,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = -60,
+		ARCANE = -60,
 		HEAT = 40,
 		COLD = 40,
 		BOMB = 40 //Laugh, and grow fat.

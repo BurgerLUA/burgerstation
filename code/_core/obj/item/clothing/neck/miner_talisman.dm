@@ -13,7 +13,7 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		ARCANE = AP_CLUB,
+		ARCANE = 60,
 		DARK = 20,
 		HOLY = -20
 	)

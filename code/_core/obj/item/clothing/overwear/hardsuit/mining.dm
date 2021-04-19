@@ -11,8 +11,8 @@
 		PIERCE = 40,
 		LASER = 40,
 		ARCANE = -AP_GREATSWORD,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
+		HEAT = 60,
+		COLD = 60,
 		BOMB = 40,
 		BIO = 20,
 		RAD = 20

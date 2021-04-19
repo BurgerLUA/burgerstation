@@ -15,7 +15,7 @@
 		COLD = 40,
 		BOMB = 20,
 		BIO = AP_GREATCLUB,
-		RAD = AP_CLUB
+		RAD = 60
 	)
 
 	size = SIZE_7

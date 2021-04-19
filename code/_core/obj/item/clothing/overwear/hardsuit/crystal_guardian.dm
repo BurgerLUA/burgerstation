@@ -7,12 +7,12 @@
 
 	defense_rating = list(
 		BLADE = AP_GREATSWORD,
-		BLUNT = AP_CLUB,
+		BLUNT = 60,
 		PIERCE = 40,
-		LASER = -AP_CLUB,
+		LASER = -60,
 		ARCANE = AP_GREATCLUB,
-		HEAT = -AP_CLUB,
-		COLD = AP_CLUB,
+		HEAT = -60,
+		COLD = 60,
 		BOMB = 40,
 		BIO = 20,
 		RAD = 20

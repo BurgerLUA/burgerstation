@@ -36,8 +36,8 @@
 		HEAT = 20,
 		COLD = 10,
 		HOLY = -20,
-		DARK = AP_CLUB,
-		FATIGUE = AP_CLUB,
+		DARK = 60,
+		FATIGUE = 60,
 		ION = INFINITY,
 		PAIN = INFINITY
 	)

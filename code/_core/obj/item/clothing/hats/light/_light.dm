@@ -50,10 +50,10 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_CLUB,
+		BLUNT = 60,
 		PIERCE = 20,
 		BOMB = 20,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_2

@@ -9,13 +9,13 @@
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
-		ARCANE = -AP_CLUB,
+		ARCANE = -60,
 		HEAT = 40,
 		COLD = 40,
 		BOMB = 40,
 		BIO = 40,
 		RAD = 40,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	size = SIZE_3

@@ -7,8 +7,8 @@
 
 	defense_rating = list(
 		ARCANE = 40,
-		DARK = -AP_CLUB,
-		HOLY = AP_CLUB
+		DARK = -60,
+		HOLY = 60
 	)
 
 	size = SIZE_3

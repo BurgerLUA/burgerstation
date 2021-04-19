@@ -3,7 +3,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_CLUB*0.4,
+		BLADE = 60*0.4,
 		BLUNT = 30*0.1
 	)
 

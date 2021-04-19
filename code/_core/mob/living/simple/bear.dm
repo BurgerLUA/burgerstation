@@ -18,7 +18,7 @@
 		BLUNT = 20,
 		LASER = -20,
 		HEAT = -10,
-		COLD = AP_CLUB,
+		COLD = 60,
 		FATIGUE = 20,
 		ION = INFINITY,
 		PAIN = 20

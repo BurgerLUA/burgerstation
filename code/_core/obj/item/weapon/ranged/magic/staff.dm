@@ -66,7 +66,7 @@
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
-	shoot_delay = SPEED_CLUB*0.25
+	shoot_delay = 14*0.25
 
 	value = 1200
 

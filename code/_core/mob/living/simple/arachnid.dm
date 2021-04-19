@@ -31,10 +31,10 @@
 		LASER = -20,
 		HEAT = 40,
 		COLD = -40,
-		BIO = AP_CLUB,
+		BIO = 60,
 		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	iff_tag = "Jungle"

@@ -13,8 +13,8 @@
 	defense_rating = list(
 		ARCANE = 20,
 		COLD = 20,
-		DARK = AP_CLUB,
-		HOLY = -AP_CLUB
+		DARK = 60,
+		HOLY = -60
 	)
 
 	value = 200
