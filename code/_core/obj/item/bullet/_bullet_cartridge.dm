@@ -41,6 +41,7 @@
 
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
+
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
 	return ..()
@@ -49,10 +50,20 @@
 	return size*0.25
 
 /obj/item/bullet_cartridge/get_base_value()
-	. = ..()
+
+	if(!damage_type_bullet)
+		return ..()
+
+	var/damagetype/D = all_damage_types[damage_type_bullet]
+	if(!D)
+		return ..()
+
+	. = D.calculate_value(src)*0.015
+
 	if(is_spent)
 		. *= 0.05
-	. = max(.,1)
+
+	. = max(0.01,.)
 
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
 	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'

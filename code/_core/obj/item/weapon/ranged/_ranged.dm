@@ -58,6 +58,25 @@
 
 	var/list/attachment_stats = list()
 
+
+/obj/item/weapon/ranged/get_base_value()
+
+	if(!ranged_damage_type)
+		return ..()
+
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+
+	if(!D)
+		return ..()
+
+	return D.calculate_value(src) * (10/max(1,shoot_delay))
+
+
+
+
+
+
+
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("firing_pin")

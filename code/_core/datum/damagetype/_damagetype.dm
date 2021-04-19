@@ -145,6 +145,19 @@
 
 	return round(combat_rating*0.25,1)
 
+/damagetype/proc/calculate_value(var/obj/item/I)
+
+	. = 0
+
+	for(var/k in attack_damage_base)
+		. += attack_damage_base[k]
+		. += attack_damage_penetration[k]*0.25
+		. += attribute_stats[k]*0.75
+		. += skill_stats[k]*0.75
+
+	if(attack_delay)
+		. *= 0.5 + 0.5*(10 / max(1,attack_delay))
+
 /damagetype/proc/get_miss_chance()
 	return 0
 

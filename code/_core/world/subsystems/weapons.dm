@@ -29,6 +29,7 @@ SUBSYSTEM_DEF(weapons)
 			if(C.bullet_diameter > B.bullet_diameter_max)
 				continue
 			weapon_to_bullet[B.type] = C.type
+			break
 		qdel(B)
 
 	for(var/k in created_bullets)
@@ -36,16 +37,5 @@ SUBSYSTEM_DEF(weapons)
 		qdel(I)
 
 	created_bullets.Cut()
-
-	/*
-	for(var/k in subtypesof(/obj/item/magazine/))
-		//We have to create it here because initial(list()) doesn't work
-		var/obj/item/magazine/M = new k(locate(1,1,1))
-		for(var/supported_weapon in M.weapon_whitelist)
-			if(!weapon_to_magazine[supported_weapon])
-				weapon_to_magazine[supported_weapon] = list()
-			weapon_to_magazine[supported_weapon] += M.type
-		qdel(M)
-	*/
 
 	return ..()

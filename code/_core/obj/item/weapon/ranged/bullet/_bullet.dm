@@ -31,6 +31,24 @@
 	var/standard_bullet_type //The standard bullet type this weapon normally uses.
 
 
+/obj/item/weapon/ranged/bullet/get_base_value()
+
+	var/obj/item/bullet_cartridge/B = SSweapons.weapon_to_bullet[src.type]
+	if(!B)
+		return ..()
+
+	var/damagetype/D = initial(B.damage_type_bullet)
+	if(!D)
+		return ..()
+
+	D = all_damage_types[D]
+
+	if(!D)
+		return ..()
+
+	return D.calculate_value(src) * 4
+
+
 /obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 

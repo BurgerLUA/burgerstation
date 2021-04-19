@@ -23,6 +23,19 @@
 	can_wear = TRUE
 	item_slot = -1
 
+/obj/item/weapon/get_base_value()
+
+	if(!damage_type)
+		return ..()
+
+	var/damagetype/D = all_damage_types[damage_type]
+
+	if(!D)
+		return ..()
+
+	return D.calculate_value(src)
+
+
 /obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
 	return FALSE
 

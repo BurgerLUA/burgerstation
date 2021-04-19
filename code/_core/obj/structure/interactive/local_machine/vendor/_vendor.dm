@@ -93,6 +93,21 @@ var/global/list/equipped_antags = list()
 
 	return ..()
 
+/obj/structure/interactive/vending/proc/get_bullshit_price(var/desired_price)
+
+	if(accepts_item)
+		return desired_price
+
+	//Basically makes prices how they'd appear in stores.
+
+	switch(desired_price)
+		if(0 to 1)
+			return CEILING(desired_price,0.01)
+		if(1 to 100)
+			return CEILING(desired_price,1) - 0.01
+
+	return CEILING(desired_price,50) - 1
+
 /obj/structure/interactive/vending/Finalize()
 
 	. = ..()
@@ -117,7 +132,7 @@ var/global/list/equipped_antags = list()
 	for(var/obj/item/I in stored_objects)
 		if(stored_cost[I.type])
 			continue
-		stored_cost[I.type] = CEILING(I.get_value()*markup,1)
+		stored_cost[I.type] = get_bullshit_price(I.get_value()*markup)
 		if(price_max)
 			stored_cost[I.type] = min(price_max,stored_cost[I.type])
 		if(stored_cost[I.type] <= 0)
