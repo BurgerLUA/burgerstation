@@ -12,7 +12,7 @@
 		LASER = -40,
 		ARCANE = 40,
 		HEAT = -40,
-		COLD = AP_GREATSWORD
+		COLD = 80
 	)
 
 	protection_cold = list(

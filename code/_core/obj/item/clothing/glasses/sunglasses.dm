@@ -48,9 +48,9 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 20,
-		LASER = AP_GREATSWORD,
+		LASER = 80,
 		ARCANE = -60,
-		HEAT = AP_GREATSWORD
+		HEAT = 80
 	)
 	damage_type = /damagetype/melee/sword/grazer
 
@@ -63,9 +63,9 @@
 		BLADE = 60,
 		BLUNT = 60,
 		PIERCE = 60,
-		LASER = AP_GREATCLUB,
+		LASER = 120,
 		ARCANE = -60,
-		HEAT = AP_GREATCLUB
+		HEAT = 120
 	)
 	damage_type = /damagetype/melee/sword/grazer
 
@@ -84,7 +84,7 @@
 		LASER = 60,
 		ARCANE = -60,
 		HEAT = 20,
-		BOMB = -AP_GREATCLUB
+		BOMB = -120
 	)
 
 	sight_mod = SEE_MOBS

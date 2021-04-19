@@ -15,8 +15,8 @@
 		ARCANE = 20,
 		HEAT = 20,
 		COLD = 20,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		HOLY = -80,
+		DARK = 80,
 		PAIN = 40
 	)
 
@@ -45,8 +45,8 @@
 		ARCANE = 20,
 		HEAT = 20,
 		COLD = 20,
-		HOLY = -AP_GREATCLUB,
-		DARK = AP_GREATCLUB
+		HOLY = -120,
+		DARK = 120
 	)
 
 	size = SIZE_3

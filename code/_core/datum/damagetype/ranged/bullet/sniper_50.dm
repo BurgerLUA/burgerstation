@@ -3,13 +3,13 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATCLUB*0.75,
-		BLUNT = DAMAGE_GREATCLUB*0.25
+		PIERCE = 105*0.75,
+		BLUNT = 105*0.25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATCLUB,
+		PIERCE = 120,
 		BLUNT = 0
 	)
 
@@ -24,16 +24,16 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATCLUB*0.25,
-		BLUNT = DAMAGE_GREATCLUB*0.25,
-		BOMB = DAMAGE_GREATCLUB*0.5
+		PIERCE = 105*0.25,
+		BLUNT = 105*0.25,
+		BOMB = 105*0.5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATCLUB*0.1,
-		BLUNT = AP_GREATCLUB*0.1,
-		BOMB = AP_GREATCLUB*0.8
+		PIERCE = 120*0.1,
+		BLUNT = 120*0.1,
+		BOMB = 120*0.8
 	)
 
 /damagetype/ranged/bullet/sniper_50/ion
@@ -41,14 +41,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_GREATCLUB*0.25,
-		ION = DAMAGE_GREATCLUB*0.75
+		BLUNT = 105*0.25,
+		ION = 105*0.75
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_GREATCLUB*0.25,
-		ION = AP_GREATCLUB*0.75
+		BLUNT = 120*0.25,
+		ION = 120*0.75
 	)
 
 
@@ -57,12 +57,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATCLUB*0.75
+		PIERCE = 105*0.75
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATCLUB*3
+		PIERCE = 120*3
 	)
 
 
@@ -71,14 +71,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BOMB = DAMAGE_GREATCLUB*0.25,
-		BLUNT = DAMAGE_GREATCLUB*0.25
+		BOMB = 105*0.25,
+		BLUNT = 105*0.25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BOMB = AP_GREATCLUB*0.25,
-		BLUNT = AP_GREATCLUB*0.25
+		BOMB = 120*0.25,
+		BLUNT = 120*0.25
 	)
 
 /damagetype/ranged/bullet/sniper_50/incendiary/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

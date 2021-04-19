@@ -102,5 +102,5 @@
 	)
 
 	//BALANCE EXCEPTION: SPEED PENALTY
-	attack_delay = SPEED_GREATSWORD*0.5
-	attack_delay_max = SPEED_GREATSWORD
+	attack_delay = 16*0.5
+	attack_delay_max = 16

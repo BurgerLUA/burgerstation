@@ -22,7 +22,7 @@
 		ARCANE = 40,
 		HEAT = -60,
 		COLD = -20,
-		BIO = -AP_GREATSWORD,
+		BIO = -80,
 		RAD = 60,
 		FATIGUE = 60,
 		ION = INFINITY,

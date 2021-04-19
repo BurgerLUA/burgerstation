@@ -25,17 +25,17 @@
 
 	armor_base = list(
 		PIERCE = 20,
-		LASER = AP_GREATSWORD,
-		ARCANE = AP_GREATSWORD,
-		HEAT = AP_GREATSWORD,
+		LASER = 80,
+		ARCANE = 80,
+		HEAT = 80,
 		COLD = 20,
 		BIO = 20,
 		RAD = 20,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
-		FATIGUE = AP_GREATSWORD,
+		HOLY = -80,
+		DARK = 80,
+		FATIGUE = 80,
 		ION = INFINITY,
-		PAIN = AP_GREATSWORD
+		PAIN = 80
 	)
 
 	status_immune = list(

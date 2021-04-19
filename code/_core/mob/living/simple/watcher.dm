@@ -18,12 +18,12 @@
 	armor_base = list(
 		BLADE = -20,
 		PIERCE = -20,
-		ARCANE = AP_GREATSWORD,
+		ARCANE = 80,
 		HEAT = 60,
-		COLD = AP_GREATSWORD,
+		COLD = 80,
 		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_GREATAXE
+		PAIN = 100
 	)
 
 	status_immune = list(
@@ -78,9 +78,9 @@
 	armor_base = list(
 		BLADE = 20,
 		PIERCE = 20,
-		ARCANE = AP_GREATSWORD,
+		ARCANE = 80,
 		HEAT = -20,
-		COLD = AP_GREATSWORD,
+		COLD = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY
@@ -120,9 +120,9 @@
 	armor_base = list(
 		BLADE = 20,
 		PIERCE = 20,
-		ARCANE = AP_GREATSWORD,
+		ARCANE = 80,
 		HEAT = -20,
-		COLD = AP_GREATSWORD,
+		COLD = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY

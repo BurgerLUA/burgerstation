@@ -10,7 +10,7 @@
 		BLUNT = 60,
 		PIERCE = 60,
 		LASER = 20,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		BOMB = 40
 	)
 
@@ -28,9 +28,9 @@
 	defense_rating = list(
 		BLADE = 60,
 		BLUNT = 60,
-		PIERCE = AP_GREATSWORD,
+		PIERCE = 80,
 		LASER = 40,
-		ARCANE = -AP_GREATAXE,
+		ARCANE = -100,
 		BOMB = 60
 	)
 
@@ -46,10 +46,10 @@
 	defense_rating = list(
 		BLADE = 40,
 		BLUNT = 60,
-		PIERCE = AP_GREATSWORD,
-		LASER = AP_GREATSWORD,
+		PIERCE = 80,
+		LASER = 80,
 		HEAT = 60,
-		ARCANE = -AP_GREATAXE,
+		ARCANE = -100,
 		BOMB = 40
 	)
 
@@ -68,7 +68,7 @@
 		BLUNT = 60,
 		PIERCE = 60,
 		LASER = 20,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		BOMB = 40
 	)
 

@@ -11,7 +11,7 @@
 		BLUNT = 60,
 		PIERCE = 20,
 		LASER = -60,
-		ARCANE = AP_GREATCLUB,
+		ARCANE = 120,
 		HEAT = -60,
 		COLD = 60,
 		BOMB = 40,

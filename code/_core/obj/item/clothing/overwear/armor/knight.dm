@@ -46,12 +46,12 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_GREATSWORD,
+		BLADE = 80,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
 		HEAT = -40,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		PAIN = 60
 	)
 
@@ -112,11 +112,11 @@
 	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
-		BLADE = AP_GREATSWORD,
+		BLADE = 80,
 		BLUNT = 40,
 		PIERCE = 60,
 		LASER = -40,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		HEAT = -40,
 		BOMB = 40
 	)
@@ -179,12 +179,12 @@
 	icon = 'icons/obj/item/clothing/suit/goblin.dmi'
 
 	defense_rating = list(
-		BLADE = AP_GREATSWORD,
+		BLADE = 80,
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
 		HEAT = -40,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		PAIN = 60
 	)
 

@@ -34,7 +34,7 @@
 
 	armor_base = list(
 		BLADE = -20,
-		BLUNT = AP_GREATSWORD,
+		BLUNT = 80,
 		LASER = -20,
 		HEAT = 60,
 		COLD = -60,

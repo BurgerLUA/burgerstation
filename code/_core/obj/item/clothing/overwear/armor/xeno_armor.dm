@@ -13,7 +13,7 @@
 		BLUNT = 60,
 		PIERCE = 60,
 		HEAT = 10,
-		COLD = AP_GREATSWORD
+		COLD = 80
 	)
 
 	size = SIZE_3

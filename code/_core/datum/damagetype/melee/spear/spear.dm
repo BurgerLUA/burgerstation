@@ -37,8 +37,8 @@
 	name = "thrown spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATSWORD*0.35,
-		BLADE = DAMAGE_GREATSWORD*0.05
+		PIERCE = 75*0.35,
+		BLADE = 75*0.05
 	)
 
 	attack_damage_penetration = list(
@@ -47,8 +47,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_GREATSWORD*0.4,
-		ATTRIBUTE_DEXTERITY = DAMAGE_GREATSWORD*0.1
+		ATTRIBUTE_STRENGTH = 75*0.4,
+		ATTRIBUTE_DEXTERITY = 75*0.1
 	)
 
 	attribute_damage = list(
@@ -57,7 +57,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_GREATSWORD*0.1
+		SKILL_MELEE = 75*0.1
 	)
 
 	skill_damage = list(
@@ -65,5 +65,5 @@
 		SKILL_RANGED = PIERCE
 	)
 
-	attack_delay = SPEED_GREATSWORD*0.5
-	attack_delay_max = SPEED_GREATSWORD
+	attack_delay = 16*0.5
+	attack_delay_max = 16

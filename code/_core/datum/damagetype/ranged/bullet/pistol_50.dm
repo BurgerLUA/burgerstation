@@ -34,9 +34,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_GREATSWORD*0.2,
-		BLADE = DAMAGE_GREATSWORD*0.5,
-		PIERCE = DAMAGE_GREATSWORD*0.15,
+		BLUNT = 75*0.2,
+		BLADE = 75*0.5,
+		PIERCE = 75*0.15,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

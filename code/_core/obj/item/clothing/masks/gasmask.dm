@@ -10,7 +10,7 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 20,
-		BIO = AP_GREATSWORD,
+		BIO = 80,
 		RAD = 10
 	)
 
@@ -29,10 +29,10 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 20,
-		BIO = AP_GREATSWORD,
+		BIO = 80,
 		RAD = 10,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD
+		HOLY = -80,
+		DARK = 80
 	)
 
 	size = SIZE_2
@@ -52,7 +52,7 @@
 		BLADE = 60,
 		BLUNT = 20,
 		PIERCE = 20,
-		BIO = AP_GREATAXE,
+		BIO = 100,
 		RAD = 10
 	)
 

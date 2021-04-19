@@ -27,9 +27,9 @@
 
 	armor_base = list(
 		BLADE = 40,
-		HEAT = AP_GREATAXE,
-		COLD = AP_GREATAXE,
-		BIO = AP_GREATAXE,
+		HEAT = 100,
+		COLD = 100,
+		BIO = 100,
 		RAD = INFINITY,
 		FATIGUE = 20,
 		ION = INFINITY,

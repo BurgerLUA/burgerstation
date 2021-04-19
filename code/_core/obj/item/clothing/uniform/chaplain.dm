@@ -15,8 +15,8 @@
 		PIERCE = 10,
 		ARCANE = -10,
 		COLD = 10,
-		HOLY = AP_GREATSWORD,
-		DARK = -AP_GREATSWORD
+		HOLY = 80,
+		DARK = -80
 	)
 
 	value = 120

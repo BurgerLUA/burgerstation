@@ -21,7 +21,7 @@
 		HEAT = 60,
 		COLD = 60,
 		FATIGUE = 60,
-		PAIN = AP_GREATCLUB
+		PAIN = 120
 	)
 
 	size = SIZE_2

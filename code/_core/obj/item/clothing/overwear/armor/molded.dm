@@ -15,7 +15,7 @@
 	color = COLOR_BLACK
 
 	defense_rating = list(
-		BLUNT = AP_GREATSWORD,
+		BLUNT = 80,
 		PIERCE = 20,
 		ARCANE = -40
 	)

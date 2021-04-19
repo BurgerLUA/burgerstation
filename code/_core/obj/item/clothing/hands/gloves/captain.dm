@@ -14,14 +14,14 @@
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 20,
-		ARCANE = -AP_GREATCLUB,
+		ARCANE = -120,
 		HEAT = 40,
 		COLD = 40,
 		BOMB = 40,
 		BIO = 40,
 		RAD = 40,
-		FATIGUE = AP_GREATCLUB,
-		PAIN = AP_GREATCLUB
+		FATIGUE = 120,
+		PAIN = 120
 	)
 
 	protection_cold = list(

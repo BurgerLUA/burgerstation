@@ -89,9 +89,9 @@
 	damage_type = /damagetype/npc/crab
 
 	armor_base = list(
-		BLADE = AP_GREATSWORD,
+		BLADE = 80,
 		BLUNT = 40,
-		PIERCE = AP_GREATSWORD,
+		PIERCE = 80,
 		ARCANE = -20,
 		HEAT = -60,
 		COLD = -60,

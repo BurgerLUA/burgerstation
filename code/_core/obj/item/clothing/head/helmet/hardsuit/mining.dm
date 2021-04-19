@@ -10,7 +10,7 @@
 		BLUNT = 40,
 		PIERCE = 40,
 		LASER = 40,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		HEAT = 60,
 		COLD = 60,
 		BOMB = 40,

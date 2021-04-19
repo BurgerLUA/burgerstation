@@ -6,8 +6,8 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		HOLY = -80,
+		DARK = 80,
 		BLADE = -60,
 		BLUNT = -60,
 		PIERCE = -60
@@ -39,7 +39,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		HOLY = -AP_GREATSWORD,
+		HOLY = -80,
 		DARK = 40,
 		ARCANE = 40,
 		BLADE = -60,

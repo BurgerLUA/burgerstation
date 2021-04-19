@@ -68,7 +68,7 @@
 		BLUNT = 60,
 		PIERCE = 60,
 		LASER = 40,
-		ARCANE = -AP_GREATSWORD,
+		ARCANE = -80,
 		BOMB = 40
 	)
 

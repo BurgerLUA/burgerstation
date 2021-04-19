@@ -26,7 +26,7 @@
 	armor_base = list(
 		HEAT = -20,
 		COLD = 20,
-		BIO = AP_GREATSWORD,
+		BIO = 80,
 		RAD = 40,
 		FATIGUE = 20,
 		ION = INFINITY,

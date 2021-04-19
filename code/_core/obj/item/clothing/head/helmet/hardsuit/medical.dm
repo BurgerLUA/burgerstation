@@ -14,7 +14,7 @@
 		HEAT = 40,
 		COLD = 40,
 		BOMB = 20,
-		BIO = AP_GREATCLUB,
+		BIO = 120,
 		RAD = 60
 	)
 

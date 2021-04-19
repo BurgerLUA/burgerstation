@@ -19,7 +19,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 		BLUNT = 60,
 		PIERCE = 60,
 		HEAT = 10,
-		COLD = AP_GREATSWORD,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,

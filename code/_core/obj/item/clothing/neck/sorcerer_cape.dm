@@ -10,7 +10,7 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		ARCANE = AP_GREATSWORD,
+		ARCANE = 80,
 		COLD = 20,
 		HOLY = -40,
 		DARK = 40

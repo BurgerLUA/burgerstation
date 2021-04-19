@@ -119,9 +119,9 @@
 	armor_base = list(
 		BLADE = 20,
 		PIERCE = 20,
-		ARCANE = AP_GREATSWORD,
+		ARCANE = 80,
 		HEAT = -20,
-		COLD = AP_GREATSWORD,
+		COLD = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY
