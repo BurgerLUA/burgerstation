@@ -7,9 +7,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_DAGGER,
+		BLADE = 10,
+		PIERCE = 10,
+		LASER = -10,
 		ARCANE = AP_AXE,
 		HOLY = -AP_AXE,
 		DARK = AP_AXE

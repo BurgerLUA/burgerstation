@@ -97,7 +97,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_DAGGER*0.5
+		FATIGUE = 15*0.5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -106,8 +106,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.1
+		ATTRIBUTE_STRENGTH = 15*0.1,
+		ATTRIBUTE_DEXTERITY = 15*0.1
 	)
 
 	attribute_damage = list(
@@ -116,7 +116,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_DAGGER*0.2
+		SKILL_UNARMED = 15*0.2
 	)
 
 	skill_damage = list(
@@ -133,7 +133,7 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 
-		var/luck_value = (total_damage_dealt/DAMAGE_DAGGER)*100
+		var/luck_value = (total_damage_dealt/15)*100
 
 		if(is_living(attacker))
 			if(luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
@@ -166,8 +166,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.25,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.25
+		ATTRIBUTE_STRENGTH = 15*0.25,
+		ATTRIBUTE_DEXTERITY = 15*0.25
 	)
 
 	attribute_damage = list(
@@ -176,7 +176,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_DAGGER*0.25
+		SKILL_UNARMED = 15*0.25
 	)
 
 	skill_damage = list(

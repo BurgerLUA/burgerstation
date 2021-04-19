@@ -11,10 +11,10 @@
 	movement_delay = 2
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
+		BLADE = 10,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
+		HEAT = 10,
 		COLD = AP_GREATSWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
@@ -39,10 +39,10 @@
 	movement_delay = 3
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
+		BLADE = 10,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
+		HEAT = 10,
 		COLD = AP_GREATSWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
@@ -67,10 +67,10 @@
 	movement_delay = 1
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
+		BLADE = 10,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
+		HEAT = 10,
 		COLD = AP_GREATSWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,
@@ -102,10 +102,10 @@
 	movement_delay = 4
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
+		BLADE = 10,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
+		HEAT = 10,
 		COLD = AP_GREATSWORD,
 		BIO = INFINITY,
 		RAD = INFINITY,

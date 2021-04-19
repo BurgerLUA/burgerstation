@@ -2,11 +2,11 @@
 	name = "lighter"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_DAGGER*0.75
+		BLUNT = 15*0.75
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = AP_DAGGER
+		BLUNT = 10
 	)
 
 	attribute_stats = list()
@@ -19,16 +19,16 @@
 
 	bonus_experience_skill = list()
 
-	attack_delay = SPEED_DAGGER
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8
+	attack_delay_max = 8
 
 /damagetype/melee/club/lighter/on
 	name = "lighter"
 
 	attack_damage_base = list(
-		FIRE = DAMAGE_DAGGER
+		FIRE = 15
 	)
 
 	attack_damage_penetration = list(
-		FIRE = AP_DAGGER
+		FIRE = 10
 	)

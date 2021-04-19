@@ -27,7 +27,7 @@
 	armor_base = list(
 		BLADE = AP_SWORD,
 		BLUNT = AP_SWORD,
-		PIERCE = AP_DAGGER,
+		PIERCE = 10,
 		LASER = -AP_SWORD,
 		HEAT = AP_AXE,
 		COLD = -AP_AXE,

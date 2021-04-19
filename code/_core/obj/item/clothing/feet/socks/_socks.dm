@@ -20,8 +20,8 @@
 
 	defense_rating = list(
 		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER,
-		HEAT = -AP_DAGGER
+		COLD = 10,
+		HEAT = -10
 	)
 
 	size = SIZE_0

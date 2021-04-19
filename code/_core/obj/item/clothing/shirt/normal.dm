@@ -7,11 +7,11 @@
 	item_slot = SLOT_TORSO
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER
+		COLD = 10
 	)
 
 	dyeable = TRUE
@@ -170,10 +170,10 @@
 
 	defense_rating = list(
 		BLADE = AP_SWORD,
-		BLUNT = AP_DAGGER,
+		BLUNT = 10,
 		PIERCE = AP_SWORD,
-		ARCANE = -AP_DAGGER,
-		COLD = AP_DAGGER,
+		ARCANE = -10,
+		COLD = 10,
 	)
 
 /obj/item/clothing/shirt/normal/reinforced/ntops

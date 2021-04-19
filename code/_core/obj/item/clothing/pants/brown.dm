@@ -9,10 +9,10 @@
 
 	defense_rating = list(
 		BLADE = AP_SWORD,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER
+		COLD = 10
 	)
 
 	size = SIZE_2
@@ -28,12 +28,12 @@
 	desc_extended = "A very tough and fashionable kilt. Needs to be held up by a kilt belt."
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = AP_SWORD,
-		HEAT = AP_DAGGER,
-		COLD = AP_DAGGER
+		HEAT = 10,
+		COLD = 10
 	)
 
 	size = SIZE_2

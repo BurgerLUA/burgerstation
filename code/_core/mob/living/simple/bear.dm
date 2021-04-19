@@ -14,10 +14,10 @@
 	stun_angle = 90
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
+		BLADE = 10,
 		BLUNT = AP_SWORD,
 		LASER = -AP_SWORD,
-		HEAT = -AP_DAGGER,
+		HEAT = -10,
 		COLD = AP_CLUB,
 		FATIGUE = AP_SWORD,
 		ION = INFINITY,

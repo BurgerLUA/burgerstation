@@ -14,8 +14,8 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		COLD = AP_DAGGER,
+		ARCANE = 10,
+		COLD = 10,
 	)
 
 	dyeable = TRUE
@@ -61,7 +61,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
+		ARCANE = 10,
 		HEAT = -AP_SWORD,
 		COLD = AP_SWORD,
 	)
@@ -79,8 +79,8 @@
 	desc_extended = "A pair of slim underwear."
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		COLD = AP_DAGGER,
+		ARCANE = 10,
+		COLD = 10,
 	)
 
 	dyeable = TRUE

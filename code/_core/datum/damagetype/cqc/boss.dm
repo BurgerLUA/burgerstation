@@ -19,8 +19,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.25,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.25
+		ATTRIBUTE_STRENGTH = 15*0.25,
+		ATTRIBUTE_DEXTERITY = 15*0.25
 	)
 
 	attribute_damage = list(
@@ -29,15 +29,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_DAGGER*0.25
+		SKILL_UNARMED = 15*0.25
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER*0.5
+	attack_delay = 8*0.5
+	attack_delay_max = 8*0.5
 
 /damagetype/cqc/boss/fast_grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -79,8 +79,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.25,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.25
+		ATTRIBUTE_STRENGTH = 15*0.25,
+		ATTRIBUTE_DEXTERITY = 15*0.25
 	)
 
 	attribute_damage = list(
@@ -89,7 +89,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_DAGGER*0.25
+		SKILL_UNARMED = 15*0.25
 	)
 
 	skill_damage = list(
@@ -159,8 +159,8 @@
 	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8*0.5
+	attack_delay_max = 8
 
 /damagetype/cqc/boss/staggering_punch/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -216,8 +216,8 @@
 	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8*0.5
+	attack_delay_max = 8
 
 /damagetype/cqc/boss/stunning_punch/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -272,8 +272,8 @@
 	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = SPEED_DAGGER
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8
+	attack_delay_max = 8
 
 /damagetype/cqc/boss/disarm_theft/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -338,8 +338,8 @@
 	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = SPEED_DAGGER
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8
+	attack_delay_max = 8
 
 /damagetype/cqc/boss/tactical_hug/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 

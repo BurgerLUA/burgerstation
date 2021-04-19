@@ -6,9 +6,9 @@
 	icon = 'icons/obj/item/clothing/glasses/sunglasses.dmi'
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		LASER = AP_CLUB,
 		ARCANE = -AP_CLUB,
 		HEAT = AP_SWORD
@@ -115,10 +115,10 @@
 	value = 1000
 
 	defense_rating = list(
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		BLADE = AP_DAGGER,
-		ARCANE = -AP_DAGGER
+		BLUNT = 10,
+		PIERCE = 10,
+		BLADE = 10,
+		ARCANE = -10
 	)
 
 	sight_mod = SEE_MOBS

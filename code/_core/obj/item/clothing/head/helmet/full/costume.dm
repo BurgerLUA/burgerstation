@@ -8,8 +8,8 @@
 	size = SIZE_3
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
 		LASER = -AP_SWORD,
 		ARCANE = AP_SWORD,
 		HEAT = -AP_SWORD,
@@ -29,8 +29,8 @@
 	size = SIZE_3
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
 		LASER = -AP_SWORD,
 		ARCANE = AP_SWORD,
 		HEAT = -AP_SWORD,
@@ -65,8 +65,8 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
 		LASER = -AP_SWORD,
 		ARCANE = AP_SWORD,
 		HEAT = -AP_SWORD,

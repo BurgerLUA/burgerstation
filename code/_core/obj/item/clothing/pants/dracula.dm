@@ -5,10 +5,10 @@
 	icon = 'icons/obj/item/clothing/pants/dracula.dmi'
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -10,
 		ARCANE = AP_AXE,
 		HEAT = -AP_AXE,
 		COLD = AP_AXE,

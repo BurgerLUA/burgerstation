@@ -8,11 +8,11 @@
 	color = "#FFFFFF"
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER,
+		COLD = 10,
 		BIO = AP_SWORD
 	)
 
@@ -45,12 +45,12 @@
 		BLADE = AP_SWORD,
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
-		LASER = -AP_DAGGER,
+		LASER = -10,
 		ARCANE = -AP_SWORD,
 		HEAT = AP_SWORD,
 		COLD = AP_SWORD,
 		BOMB = AP_SWORD,
-		BIO = AP_DAGGER
+		BIO = 10
 	)
 
 	protection_cold = list(
@@ -85,13 +85,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = -AP_CLUB,
 		HEAT = AP_AXE,
 		COLD = AP_AXE,
-		BIO = AP_DAGGER,
+		BIO = 10,
 		FATIGUE = INFINITY,
 		PAIN = AP_SWORD
 	)
@@ -137,7 +137,7 @@
 		ARCANE = -AP_CLUB,
 		HEAT = AP_CLUB,
 		COLD = AP_CLUB,
-		BIO = AP_DAGGER
+		BIO = 10
 	)
 
 	protection_cold = list(

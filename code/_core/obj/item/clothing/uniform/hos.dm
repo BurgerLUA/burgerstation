@@ -14,7 +14,7 @@
 		PIERCE = AP_SWORD,
 		LASER = AP_SWORD,
 		ARCANE = -AP_AXE,
-		COLD = AP_DAGGER,
+		COLD = 10,
 		BOMB = AP_SWORD
 	)
 

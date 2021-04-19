@@ -5,11 +5,11 @@
 	desc_extended = "A fashionable beret."
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER
+		COLD = 10
 	)
 
 	size = SIZE_2

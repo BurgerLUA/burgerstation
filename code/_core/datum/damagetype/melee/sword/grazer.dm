@@ -2,17 +2,17 @@
 	name = "inactive grazer"
 
 	attack_damage_base = list(
-		BLADE = DAMAGE_DAGGER*0.5,
+		BLADE = 15*0.5,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_DAGGER
+		BLADE = 10
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.2,
+		ATTRIBUTE_STRENGTH = 15*0.1,
+		ATTRIBUTE_DEXTERITY = 15*0.2,
 	)
 
 	attribute_damage = list(
@@ -21,15 +21,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_DAGGER*0.2
+		SKILL_MELEE = 15*0.2
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE
 	)
 
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8*0.5
+	attack_delay_max = 8
 
 /damagetype/melee/sword/grazer/on
 	name = "active grazer"

@@ -13,9 +13,9 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		ARCANE = AP_SWORD,
 		DARK = AP_AXE,
 		HOLY = -AP_AXE

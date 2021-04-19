@@ -11,7 +11,7 @@
 		PIERCE = AP_AXE,
 		LASER = -AP_AXE,
 		ARCANE = AP_AXE,
-		HEAT = AP_DAGGER,
+		HEAT = 10,
 		COLD = -AP_SWORD
 	)
 

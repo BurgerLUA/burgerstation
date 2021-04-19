@@ -12,13 +12,13 @@
 	worn_layer = LAYER_MOB_CLOTHING_HEADWRAP
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		LASER = -AP_SWORD,
 		ARCANE = AP_SWORD,
-		HEAT = AP_DAGGER,
-		COLD = AP_DAGGER
+		HEAT = 10,
+		COLD = 10
 	)
 
 	size = SIZE_2

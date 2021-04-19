@@ -9,7 +9,7 @@
 		BLUNT = AP_AXE,
 		PIERCE = AP_SWORD,
 		COLD = AP_AXE,
-		HEAT = AP_DAGGER
+		HEAT = 10
 	)
 
 	value = 120

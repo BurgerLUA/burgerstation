@@ -2,18 +2,18 @@
 	name = "null dagger"
 
 	attack_damage_base = list(
-		BLADE = DAMAGE_DAGGER*0.1,
-		PIERCE = DAMAGE_DAGGER*0.1,
+		BLADE = 15*0.1,
+		PIERCE = 15*0.1,
 		HOLY = 0
 	)
 
 	attack_damage_penetration = list(
-		BLADE = AP_DAGGER*0.5,
-		HOLY = AP_DAGGER*0.5
+		BLADE = 10*0.5,
+		HOLY = 10*0.5
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.2
+		ATTRIBUTE_DEXTERITY = 15*0.2
 	)
 
 	attribute_damage = list(
@@ -21,8 +21,8 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_DAGGER*0.1,
-		SKILL_PRAYER = DAMAGE_DAGGER*0.5
+		SKILL_MELEE = 15*0.1,
+		SKILL_PRAYER = 15*0.5
 	)
 
 	skill_damage = list(
@@ -35,5 +35,5 @@
 		SKILL_PRAYER = 25
 	)
 
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8*0.5
+	attack_delay_max = 8

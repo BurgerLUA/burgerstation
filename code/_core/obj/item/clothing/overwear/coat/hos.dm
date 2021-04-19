@@ -9,10 +9,10 @@
 		BLADE = AP_AXE,
 		BLUNT = AP_AXE,
 		PIERCE = AP_AXE,
-		LASER = AP_DAGGER,
+		LASER = 10,
 		ARCANE = -AP_AXE,
-		HEAT = AP_DAGGER,
-		COLD = AP_DAGGER
+		HEAT = 10,
+		COLD = 10
 	)
 
 	size = SIZE_4

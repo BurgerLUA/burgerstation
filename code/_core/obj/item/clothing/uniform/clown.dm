@@ -6,15 +6,15 @@
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
+		BLADE = 10,
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
 		ARCANE = AP_AXE,
-		COLD = AP_DAGGER,
+		COLD = 10,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
-		FATIGUE = AP_DAGGER,
-		PAIN = AP_DAGGER
+		FATIGUE = 10,
+		PAIN = 10
 	)
 
 	value = 200

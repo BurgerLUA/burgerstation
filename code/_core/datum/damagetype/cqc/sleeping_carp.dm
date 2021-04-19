@@ -153,5 +153,5 @@
 	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8*0.5
+	attack_delay_max = 8

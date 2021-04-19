@@ -14,7 +14,7 @@
 		BLUNT = AP_SWORD,
 		PIERCE = AP_SWORD,
 		ARCANE = -AP_SWORD,
-		HEAT = AP_DAGGER
+		HEAT = 10
 	)
 
 	value = 40
