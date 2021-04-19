@@ -389,11 +389,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
 
-		world.log << "projectile_speed_to_use: [projectile_speed_to_use]."
-
+		/* The problem with this is that it adds more sounds to be played by guns, which is already insane :(
 		if(spent_bullet && projectile_speed_to_use >= TILE_SIZE*0.75)
 			var/bullet_size = max(342,spent_bullet.bullet_length * spent_bullet.bullet_diameter)/342
-			play_sound('sound/effects/bullet_crack.ogg', get_turf(src), pitch=RAND_PRECISE(0.95,1.05)-min(0.5,bullet_size*0.25),volume= 50 + bullet_size*25 + (projectile_speed_to_use/TILE_SIZE)*0.25)
+			play_sound('sound/effects/bullet_crack.ogg', get_turf(src), pitch=RAND_PRECISE(0.95,1.05)-min(0.5,bullet_size*0.25),volume= 30 + bullet_size*25 + (projectile_speed_to_use/TILE_SIZE)*0.10)
+		*/
 
 		var/accuracy_loss = clamp(static_spread + heat_spread + skill_spread + movement_spread,0,0.5)
 		if(prone) accuracy_loss *= prone_mod
