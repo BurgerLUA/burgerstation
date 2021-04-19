@@ -10,16 +10,16 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
 		ARCANE = 20,
 		HEAT = 20,
 		COLD = 20,
-		BIO = AP_AXE,
-		HOLY = AP_AXE,
-		DARK = AP_AXE,
-		PAIN = AP_AXE
+		BIO = 40,
+		HOLY = 40,
+		DARK = 40,
+		PAIN = 40
 	)
 	additional_clothing = list(
 		/obj/item/clothing/head/helmet/full/explorer

@@ -10,9 +10,9 @@
 		BLADE = 10,
 		PIERCE = 10,
 		LASER = -10,
-		ARCANE = AP_AXE,
-		HOLY = -AP_AXE,
-		DARK = AP_AXE
+		ARCANE = 40,
+		HOLY = -40,
+		DARK = 40
 	)
 
 	value = 20

@@ -32,11 +32,11 @@
 	armor_base = list(
 		BLADE = 20,
 		BLUNT = 20,
-		PIERCE = AP_AXE,
+		PIERCE = 40,
 		LASER = AP_GREATSWORD,
 		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
-		COLD = -AP_AXE,
+		COLD = -40,
 		BIO = AP_GREATCLUB,
 		RAD = AP_GREATCLUB,
 		HOLY = -20,

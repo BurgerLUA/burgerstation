@@ -11,8 +11,8 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -20,
 		HEAT = AP_CLUB,
@@ -33,7 +33,7 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva/mono)
 
 	defense_rating = list(
-		BLADE = AP_AXE,
+		BLADE = 40,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
 		LASER = 20,

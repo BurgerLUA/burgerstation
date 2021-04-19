@@ -7,8 +7,8 @@
 
 	defense_rating = list(
 		ARCANE = AP_GREATSWORD,
-		DARK = -AP_AXE,
-		HOLY = -AP_AXE
+		DARK = -40,
+		HOLY = -40
 	)
 
 	size = SIZE_3
@@ -30,10 +30,10 @@
 	desc_extended = "A real, totally authentic wizard robes with all the protection a wizard needs."
 	color = COLOR_PURPLE
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
 		ARCANE = AP_GREATSWORD,
-		DARK = -AP_AXE,
-		HOLY = -AP_AXE
+		DARK = -40,
+		HOLY = -40
 	)

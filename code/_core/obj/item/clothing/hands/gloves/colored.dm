@@ -89,8 +89,8 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		ARCANE = -AP_CLUB,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
+		HEAT = 40,
+		COLD = 40,
 		BIO = 10,
 		FATIGUE = INFINITY,
 		PAIN = 20
@@ -130,10 +130,10 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = -AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = -40,
 		ARCANE = -AP_CLUB,
 		HEAT = AP_CLUB,
 		COLD = AP_CLUB,

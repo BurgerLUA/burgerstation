@@ -10,14 +10,14 @@
 	icon = 'icons/obj/item/clothing/shoes/boots_poly.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = -AP_AXE,
-		ARCANE = -AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
-		PAIN = AP_AXE
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = -40,
+		ARCANE = -40,
+		COLD = 40,
+		BOMB = 40,
+		PAIN = 40
 	)
 
 	size = SIZE_2

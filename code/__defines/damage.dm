@@ -38,10 +38,6 @@
 
 //Melee Balance
 
-#define DAMAGE_AXE 45
-#define SPEED_AXE 12
-#define AP_AXE 40
-
 #define DAMAGE_CLUB 60
 #define SPEED_CLUB 14
 #define AP_CLUB 60

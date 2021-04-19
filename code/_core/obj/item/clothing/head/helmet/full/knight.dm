@@ -12,10 +12,10 @@
 	rarity = RARITY_UNCOMMON
 	defense_rating = list(
 		BLADE = AP_CLUB,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		HEAT = -AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		HEAT = -40,
 		ARCANE = -AP_CLUB,
 		PAIN = AP_CLUB
 	)
@@ -54,10 +54,10 @@
 
 	defense_rating = list(
 		BLADE = AP_CLUB,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		HEAT = -AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		HEAT = -40,
 		ARCANE = -AP_CLUB,
 		HOLY = AP_CLUB,
 		PAIN = AP_CLUB
@@ -91,12 +91,12 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = -AP_CLUB,
 		ARCANE = AP_CLUB,
-		HEAT = -AP_AXE
+		HEAT = -40
 	)
 
 	value = 500

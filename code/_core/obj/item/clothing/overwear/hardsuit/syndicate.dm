@@ -7,13 +7,13 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		ARCANE = -AP_AXE,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		ARCANE = -40,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40,
 		BIO = 20,
 		RAD = 20,
 		PAIN = AP_CLUB
@@ -36,14 +36,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_AXE,
+		BLADE = 40,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
 		LASER = AP_CLUB,
 		ARCANE = -AP_CLUB,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40,
 		BIO = 20,
 		RAD = 20,
 		PAIN = AP_CLUB
@@ -64,14 +64,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = AP_CLUB,
 		ARCANE = -AP_CLUB,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40,
 		BIO = 20,
 		RAD = 20,
 		PAIN = AP_CLUB

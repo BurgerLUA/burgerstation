@@ -40,8 +40,8 @@
 
 	defense_rating = list(
 		HOLY = -AP_GREATSWORD,
-		DARK = AP_AXE,
-		ARCANE = AP_AXE,
+		DARK = 40,
+		ARCANE = 40,
 		BLADE = -AP_CLUB,
 		BLUNT = -AP_CLUB,
 		PIERCE = -AP_CLUB

@@ -19,7 +19,7 @@
 		BLADE = -20,
 		PIERCE = 20,
 		LASER = -20,
-		ARCANE = AP_AXE,
+		ARCANE = 40,
 		HEAT = -AP_CLUB,
 		COLD = -20,
 		BIO = -AP_GREATSWORD,

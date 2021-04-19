@@ -66,14 +66,14 @@
 	)
 
 	attack_delay = 10*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay_max = 12
 
 /damagetype/melee/sword/crystal/longsword
 	name = "crystal longsword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.2,
+		PIERCE = 45*0.2,
 		ARCANE = DAMAGE_CLUB*0.3
 	)
 
@@ -94,7 +94,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_AXE*0.2,
+		SKILL_MELEE = 45*0.2,
 		SKILL_MAGIC = DAMAGE_CLUB*0.2
 	)
 

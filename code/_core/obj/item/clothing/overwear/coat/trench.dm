@@ -10,10 +10,10 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = AP_AXE,
+		BLADE = 40,
 		BLUNT = 20,
-		PIERCE = AP_AXE,
-		LASER = -AP_AXE,
+		PIERCE = 40,
+		LASER = -40,
 		ARCANE = 20,
 		HEAT = -20,
 		COLD = 20

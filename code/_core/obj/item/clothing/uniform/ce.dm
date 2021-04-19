@@ -16,7 +16,7 @@
 		LASER = 10,
 		ARCANE = 20,
 		COLD = 10,
-		RAD = AP_AXE
+		RAD = 40
 	)
 
 	value = 300

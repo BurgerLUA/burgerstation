@@ -7,8 +7,8 @@
 
 	defense_rating = list(
 		BLADE = AP_CLUB,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -AP_GREATSWORD,
 		HEAT = AP_GREATSWORD,

@@ -17,11 +17,11 @@
 
 	armor_base = list(
 		BLUNT = 20,
-		PIERCE = AP_AXE,
+		PIERCE = 40,
 		LASER = -20,
 		ARCANE = 20,
-		HOLY = AP_AXE,
-		DARK = AP_AXE,
+		HOLY = 40,
+		DARK = 40,
 		ION = INFINITY
 	)
 

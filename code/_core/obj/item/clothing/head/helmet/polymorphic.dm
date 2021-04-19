@@ -6,11 +6,11 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		ARCANE = -AP_AXE,
-		BOMB = AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		ARCANE = -40,
+		BOMB = 40,
 		PAIN = AP_CLUB
 	)
 
@@ -60,12 +60,12 @@
 /obj/item/clothing/head/helmet/polymorphic/reinforced
 	name = "reinforced protective helmet"
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
 		PIERCE = AP_CLUB,
-		LASER = AP_AXE,
+		LASER = 40,
 		ARCANE = -AP_CLUB,
-		BOMB = AP_AXE,
+		BOMB = 40,
 		PAIN = AP_CLUB
 	)
 

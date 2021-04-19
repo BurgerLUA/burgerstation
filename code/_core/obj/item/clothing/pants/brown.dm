@@ -55,7 +55,7 @@
 	desc_extended = "A basic piece of cloth worn around the torso."
 
 	defense_rating = list(
-		ARCANE = AP_AXE
+		ARCANE = 40
 	)
 
 	size = SIZE_2

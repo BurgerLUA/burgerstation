@@ -9,7 +9,7 @@
 		BLADE = 10,
 		BLUNT = 20,
 		PIERCE = 20,
-		ARCANE = AP_AXE,
+		ARCANE = 40,
 		COLD = 10,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,

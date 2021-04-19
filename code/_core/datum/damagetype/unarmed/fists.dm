@@ -7,7 +7,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.2
+		BLUNT = 45*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -16,8 +16,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.3,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.1
+		ATTRIBUTE_STRENGTH = 45*0.3,
+		ATTRIBUTE_DEXTERITY = 45*0.1
 	)
 
 	attribute_damage = list(
@@ -26,7 +26,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_AXE*0.4
+		SKILL_UNARMED = 45*0.4
 	)
 
 	skill_damage = list(
@@ -37,8 +37,8 @@
 
 	cqc_tag = "4"
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 12*0.5
+	attack_delay_max = 12
 
 /damagetype/unarmed/fists/help
 	name = "help fists"

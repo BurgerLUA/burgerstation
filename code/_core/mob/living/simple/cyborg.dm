@@ -42,11 +42,11 @@
 	armor_base = list(
 		BLADE = 20,
 		BLUNT = 20,
-		PIERCE = AP_AXE,
+		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -AP_GREATSWORD,
-		HEAT = -AP_AXE,
-		COLD = AP_AXE,
+		HEAT = -40,
+		COLD = 40,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
@@ -94,10 +94,10 @@
 
 	armor_base = list(
 		BLADE = 20,
-		BLUNT = AP_AXE,
+		BLUNT = 40,
 		PIERCE = 20,
 		LASER = -20,
-		ARCANE = -AP_AXE,
+		ARCANE = -40,
 		COLD = 20,
 		BIO = INFINITY,
 		RAD = INFINITY,

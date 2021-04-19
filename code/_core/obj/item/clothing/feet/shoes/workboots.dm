@@ -9,10 +9,10 @@
 	icon = 'icons/obj/item/clothing/shoes/workboots.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		ARCANE = -AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		ARCANE = -40,
 		COLD = 20,
 		PAIN = INFINITY
 	)

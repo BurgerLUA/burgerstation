@@ -65,7 +65,7 @@
 	)
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.2
+		BLUNT = 45*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -74,8 +74,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.2,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.2
+		ATTRIBUTE_STRENGTH = 45*0.2,
+		ATTRIBUTE_DEXTERITY = 45*0.2
 	)
 
 	attribute_damage = list(
@@ -84,15 +84,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_AXE*0.4
+		SKILL_UNARMED = 45*0.4
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT
 	)
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 12*0.5
+	attack_delay_max = 12
 
 
 /damagetype/cqc/sleeping_carp/keelhaul/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

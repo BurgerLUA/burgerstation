@@ -9,7 +9,7 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		ARCANE = AP_AXE,
+		ARCANE = 40,
 		COLD = 20
 	)
 

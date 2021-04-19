@@ -10,16 +10,16 @@
 	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -AP_GREATCLUB,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
-		BIO = AP_AXE,
-		RAD = AP_AXE,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40,
+		BIO = 40,
+		RAD = 40,
 		FATIGUE = AP_GREATCLUB,
 		PAIN = AP_GREATCLUB
 	)

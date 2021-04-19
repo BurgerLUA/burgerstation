@@ -13,7 +13,7 @@
 		BLUNT = 20,
 		PIERCE = 20,
 		LASER = 20,
-		ARCANE = -AP_AXE,
+		ARCANE = -40,
 		COLD = 10,
 		BOMB = 20
 	)

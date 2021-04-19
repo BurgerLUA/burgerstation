@@ -9,11 +9,11 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = -10,
-		ARCANE = AP_AXE,
-		HEAT = -AP_AXE,
-		COLD = AP_AXE,
-		HOLY = -AP_AXE,
-		DARK = AP_AXE
+		ARCANE = 40,
+		HEAT = -40,
+		COLD = 40,
+		HOLY = -40,
+		DARK = 40
 	)
 
 	value = 100

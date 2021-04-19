@@ -17,7 +17,7 @@
 		COLD = 20,
 		HOLY = -AP_GREATSWORD,
 		DARK = AP_GREATSWORD,
-		PAIN = AP_AXE
+		PAIN = 40
 	)
 
 	size = SIZE_4
@@ -66,13 +66,13 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = -AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = -40,
 		ARCANE = 20,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
+		HEAT = 40,
+		COLD = 40,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB
 	)

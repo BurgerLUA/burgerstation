@@ -7,8 +7,8 @@
 
 	defense_rating = list(
 		BLADE = 20,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -20,
 		HEAT = AP_CLUB,
@@ -24,7 +24,7 @@
 	icon = 'icons/obj/item/clothing/hats/sevamono_suit.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
+		BLADE = 40,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
 		LASER = 20,

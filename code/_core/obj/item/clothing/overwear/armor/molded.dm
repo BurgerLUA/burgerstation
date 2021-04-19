@@ -17,7 +17,7 @@
 	defense_rating = list(
 		BLUNT = AP_GREATSWORD,
 		PIERCE = 20,
-		ARCANE = -AP_AXE
+		ARCANE = -40
 	)
 
 	size = SIZE_3

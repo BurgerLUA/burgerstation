@@ -14,7 +14,7 @@
 		ARCANE = AP_GREATCLUB,
 		HEAT = -AP_CLUB,
 		COLD = AP_CLUB,
-		BOMB = AP_AXE,
+		BOMB = 40,
 		BIO = 20,
 		RAD = 20
 	)

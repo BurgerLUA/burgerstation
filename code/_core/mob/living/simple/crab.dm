@@ -90,7 +90,7 @@
 
 	armor_base = list(
 		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
+		BLUNT = 40,
 		PIERCE = AP_GREATSWORD,
 		ARCANE = -20,
 		HEAT = -AP_CLUB,

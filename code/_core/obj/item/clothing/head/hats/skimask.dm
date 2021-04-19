@@ -18,7 +18,7 @@
 
 	defense_rating = list(
 		ARCANE = 20,
-		COLD = AP_AXE,
+		COLD = 40,
 		BIO = 20
 	)
 

@@ -17,8 +17,8 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		ARCANE = 20,
-		DARK = AP_AXE,
-		HOLY = -AP_AXE
+		DARK = 40,
+		HOLY = -40
 	)
 
 	size = SIZE_1

@@ -2,18 +2,18 @@
 	name = "spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.3,
-		BLADE = DAMAGE_AXE*0.1
+		PIERCE = 45*0.3,
+		BLADE = 45*0.1
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*0.75,
-		BLADE = AP_AXE*0.25
+		PIERCE = 40*0.75,
+		BLADE = 40*0.25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.2,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.1
+		ATTRIBUTE_STRENGTH = 45*0.2,
+		ATTRIBUTE_DEXTERITY = 45*0.1
 	)
 
 	attribute_damage = list(
@@ -22,15 +22,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_AXE*0.3
+		SKILL_MELEE = 45*0.3
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = PIERCE
 	)
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 12*0.5
+	attack_delay_max = 12
 
 /damagetype/melee/spear/basic/thrown
 
@@ -42,7 +42,7 @@
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE,
+		PIERCE = 40,
 		BLADE = 0
 	)
 

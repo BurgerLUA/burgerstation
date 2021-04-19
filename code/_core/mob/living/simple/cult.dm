@@ -174,7 +174,7 @@
 	armor_base = list(
 		BLADE = 20,
 		PIERCE = 20,
-		LASER = -AP_AXE,
+		LASER = -40,
 		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,

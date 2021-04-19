@@ -10,7 +10,7 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 20,
-		COLD = AP_AXE,
+		COLD = 40,
 		HEAT = -20
 	)
 

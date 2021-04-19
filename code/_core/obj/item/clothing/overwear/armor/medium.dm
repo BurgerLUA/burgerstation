@@ -18,9 +18,9 @@
 
 	defense_rating = list(
 		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		ARCANE = -AP_AXE
+		BLUNT = 40,
+		PIERCE = 40,
+		ARCANE = -40
 	)
 
 	size = SIZE_4

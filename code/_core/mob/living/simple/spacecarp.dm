@@ -27,7 +27,7 @@
 	iff_tag = "Carp"
 
 	armor_base = list(
-		BLADE = AP_AXE,
+		BLADE = 40,
 		HEAT = AP_GREATAXE,
 		COLD = AP_GREATAXE,
 		BIO = AP_GREATAXE,

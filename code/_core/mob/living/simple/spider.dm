@@ -27,7 +27,7 @@
 		HEAT = -20,
 		COLD = 20,
 		BIO = AP_GREATSWORD,
-		RAD = AP_AXE,
+		RAD = 40,
 		FATIGUE = 20,
 		ION = INFINITY,
 		PAIN = 20

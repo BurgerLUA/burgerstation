@@ -35,14 +35,14 @@
 	icon = 'icons/obj/item/clothing/uniforms/virtual_suit.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
+		BLADE = 40,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
 		LASER = -AP_CLUB,
 		ARCANE = -AP_CLUB,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE //Laugh, and grow fat.
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40 //Laugh, and grow fat.
 	)
 
 	speed_bonus = 0.25

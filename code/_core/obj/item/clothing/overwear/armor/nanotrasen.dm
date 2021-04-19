@@ -26,9 +26,9 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 20,
-		LASER = AP_AXE,
-		ARCANE = -AP_AXE,
-		BOMB = AP_AXE
+		LASER = 40,
+		ARCANE = -40,
+		BOMB = 40
 	)
 
 	value = 300
@@ -50,12 +50,12 @@
 	)
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
 		ARCANE = -AP_CLUB,
-		BOMB = AP_AXE
+		BOMB = 40
 	)
 
 	value = 600
@@ -79,9 +79,9 @@
 		BLADE = AP_CLUB,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		LASER = AP_AXE,
+		LASER = 40,
 		ARCANE = -AP_GREATSWORD,
-		BOMB = AP_AXE
+		BOMB = 40
 	)
 
 	value = 1200
