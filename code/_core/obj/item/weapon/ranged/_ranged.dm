@@ -3,6 +3,8 @@
 	var/list/shoot_sounds = list()
 	var/shoot_alert = ALERT_LEVEL_CAUTION
 
+	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a higher barrel length. Also affects projectile speed.
+
 	var/automatic = FALSE
 	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
 	var/current_bursts = 0 //Read only.
@@ -14,7 +16,8 @@
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
-	damage_type = /damagetype/melee/club/gun_butt
+	var/view_punch = 0 //Fallback value.
+	var/view_punch_mul = 1 //Inherit recoil absorbtion from the gun. Lesser values mean more recoil.
 
 	var/list/empty_sounds = list()
 
@@ -23,11 +26,12 @@
 	var/heat_current = 0
 	var/heat_max = 0.2
 
+	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
+
 	var/movement_spread_base = 0.05 //half this at walking speed, this at running speed, this times two at sprinting speed
 
 	var/bullet_color = "#FFFFFF"
-
-	var/view_punch = 0
 
 	var/requires_bullets = FALSE
 
@@ -35,11 +39,9 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
-	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
-	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
-
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 
+	var/list/attachment_stats = list()
 	var/list/attachment_whitelist = list()
 	var/obj/item/attachment/attachment_barrel
 	var/attachment_barrel_offset_x = 0
@@ -54,9 +56,9 @@
 	var/attachment_stock_offset_x = 0
 	var/attachment_stock_offset_y = 0
 
-	drop_sound = 'sound/items/drop/gun.ogg'
+	damage_type = /damagetype/melee/club/gun_butt //Melee.
 
-	var/list/attachment_stats = list()
+	drop_sound = 'sound/items/drop/gun.ogg'
 
 
 /obj/item/weapon/ranged/get_base_value()
@@ -69,12 +71,14 @@
 	if(!D)
 		return ..()
 
-	return D.calculate_value(src) * (10/max(1,shoot_delay))
+	. = D.calculate_value(src)
 
+	if(automatic)
+		. *= (10/max(1,shoot_delay)) * 1.25
+	else
+		. *= (10/max(2,shoot_delay))
 
-
-
-
+	. *= 0.5 + max(1/view_punch_mul,3)*0.5
 
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
@@ -306,19 +310,18 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread_to_use = 0
-	var/projectile_speed_to_use = projectile_speed*quality_penalty
+	var/projectile_speed_to_use = projectile_speed*quality_penalty*damage_mod
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
 	var/view_punch_to_use = view_punch
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
 	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
-	var/damage_multiplier_to_use = damage_multiplier
+	var/damage_multiplier_to_use = damage_multiplier * damage_mod
 
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
-
 	if(spent_bullet)
 		SET(projectile_to_use,spent_bullet.projectile)
 		SET(shoot_sounds_to_use,spent_bullet.shoot_sounds)
@@ -385,6 +388,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			MUL(prone_mod,attachment_stats["prone_mod"])
 
 		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
+
+		world.log << "projectile_speed_to_use: [projectile_speed_to_use]."
+
+		if(spent_bullet && projectile_speed_to_use >= TILE_SIZE*0.75)
+			var/bullet_size = max(342,spent_bullet.bullet_length * spent_bullet.bullet_diameter)/342
+			play_sound('sound/effects/bullet_crack.ogg', get_turf(src), pitch=RAND_PRECISE(0.95,1.05)-min(0.5,bullet_size*0.25),volume= 50 + bullet_size*25 + (projectile_speed_to_use/TILE_SIZE)*0.25)
 
 		var/accuracy_loss = clamp(static_spread + heat_spread + skill_spread + movement_spread,0,0.5)
 		if(prone) accuracy_loss *= prone_mod
