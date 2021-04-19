@@ -117,10 +117,10 @@
 	butcher_contents = list()
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		PIERCE = 20,
 		ARCANE = AP_GREATSWORD,
-		HEAT = -AP_SWORD,
+		HEAT = -20,
 		COLD = AP_GREATSWORD,
 		FATIGUE = INFINITY,
 		ION = 0,

@@ -13,10 +13,10 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = 10,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		COLD = 10,
 		BOMB = 10,
-		BIO = AP_SWORD
+		BIO = 20
 	)
 
 	value = 20

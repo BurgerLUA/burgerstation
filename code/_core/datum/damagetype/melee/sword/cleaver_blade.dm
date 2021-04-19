@@ -12,8 +12,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.2,
-		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2
+		ATTRIBUTE_STRENGTH = 30*0.2,
+		ATTRIBUTE_DEXTERITY = 30*0.2
 	)
 
 	attribute_damage = list(
@@ -22,7 +22,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_SWORD*0.1
+		SKILL_MELEE = 30*0.1
 	)
 
 	skill_damage = list(
@@ -30,4 +30,4 @@
 	)
 
 	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay_max = 10

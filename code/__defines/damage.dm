@@ -37,13 +37,6 @@
 
 
 //Melee Balance
-#define 15 15
-#define 8 8
-#define 10 10
-
-#define DAMAGE_SWORD 30
-#define SPEED_SWORD 10
-#define AP_SWORD 20
 
 #define DAMAGE_AXE 45
 #define SPEED_AXE 12

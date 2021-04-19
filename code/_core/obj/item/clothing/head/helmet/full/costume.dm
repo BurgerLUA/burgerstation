@@ -10,11 +10,11 @@
 	defense_rating = list(
 		BLADE = 10,
 		BLUNT = 10,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		HEAT = -AP_SWORD,
-		BOMB = -AP_SWORD,
-		FATIGUE = AP_SWORD
+		LASER = -20,
+		ARCANE = 20,
+		HEAT = -20,
+		BOMB = -20,
+		FATIGUE = 20
 	)
 
 	value = 200
@@ -31,11 +31,11 @@
 	defense_rating = list(
 		BLADE = 10,
 		BLUNT = 10,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		HEAT = -AP_SWORD,
-		BOMB = -AP_SWORD,
-		FATIGUE = AP_SWORD
+		LASER = -20,
+		ARCANE = 20,
+		HEAT = -20,
+		BOMB = -20,
+		FATIGUE = 20
 	)
 
 	value = 200
@@ -50,9 +50,9 @@
 	size = SIZE_2
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = AP_SWORD,
-		DARK = AP_SWORD
+		ARCANE = 20,
+		COLD = 20,
+		DARK = 20
 	)
 
 	value = 10
@@ -67,11 +67,11 @@
 	defense_rating = list(
 		BLADE = 10,
 		BLUNT = 10,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		HEAT = -AP_SWORD,
-		BOMB = -AP_SWORD,
-		FATIGUE = AP_SWORD
+		LASER = -20,
+		ARCANE = 20,
+		HEAT = -20,
+		BOMB = -20,
+		FATIGUE = 20
 	)
 
 	size = SIZE_4

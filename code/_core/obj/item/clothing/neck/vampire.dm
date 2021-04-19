@@ -11,8 +11,8 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = AP_SWORD,
+		ARCANE = 20,
+		COLD = 20,
 		DARK = AP_CLUB,
 		HOLY = -AP_CLUB
 	)

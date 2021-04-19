@@ -10,14 +10,14 @@
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
 		LASER = AP_CLUB,
 		ARCANE = -AP_GREATSWORD,
-		HEAT = AP_SWORD,
+		HEAT = 20,
 		COLD = AP_CLUB,
-		BOMB = AP_SWORD
+		BOMB = 20
 	)
 
 	size = SIZE_7

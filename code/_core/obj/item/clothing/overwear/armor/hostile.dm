@@ -15,8 +15,8 @@
 		HEAT = AP_CLUB,
 		COLD = AP_AXE,
 		BOMB = AP_AXE,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD
+		BIO = 20,
+		RAD = 20
 	)
 
 	size = SIZE_7

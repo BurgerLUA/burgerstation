@@ -29,27 +29,27 @@
 		SKILL_MELEE = BLADE
 	)
 
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = 10*0.5
+	attack_delay_max = 10
 
 /damagetype/melee/sword/crystal/rapier
 	name = "crystal rapier"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD*0.2,
-		ARCANE = DAMAGE_SWORD*0.3
+		PIERCE = 30*0.2,
+		ARCANE = 30*0.3
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_SWORD*0.6,
-		ARCANE = AP_SWORD*0.4
+		PIERCE = 20*0.6,
+		ARCANE = 20*0.4
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2,
-		ATTRIBUTE_INTELLIGENCE = DAMAGE_SWORD*0.2
+		ATTRIBUTE_DEXTERITY = 30*0.2,
+		ATTRIBUTE_INTELLIGENCE = 30*0.2
 	)
 
 	attribute_damage = list(
@@ -58,14 +58,14 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = DAMAGE_SWORD*0.2
+		SKILL_MAGIC = 30*0.2
 	)
 
 	skill_damage = list(
 		SKILL_MAGIC = ARCANE
 	)
 
-	attack_delay = SPEED_SWORD*0.5
+	attack_delay = 10*0.5
 	attack_delay_max = SPEED_AXE
 
 /damagetype/melee/sword/crystal/longsword
@@ -79,12 +79,12 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_SWORD*0.4,
-		ARCANE = AP_SWORD*0.6
+		PIERCE = 20*0.4,
+		ARCANE = 20*0.6
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.2,
+		ATTRIBUTE_STRENGTH = 30*0.2,
 		ATTRIBUTE_INTELLIGENCE = DAMAGE_CLUB*0.2
 	)
 
@@ -102,5 +102,5 @@
 		SKILL_MAGIC = ARCANE
 	)
 
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = 10*0.5
+	attack_delay_max = 10

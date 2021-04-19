@@ -15,13 +15,13 @@
 
 	armor_base = list(
 		BLADE = 10,
-		BLUNT = AP_SWORD,
-		LASER = -AP_SWORD,
+		BLUNT = 20,
+		LASER = -20,
 		HEAT = -10,
 		COLD = AP_CLUB,
-		FATIGUE = AP_SWORD,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	health_base = 200

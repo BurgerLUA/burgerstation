@@ -93,8 +93,8 @@
 		BLADE = AP_CLUB,
 		BLUNT = AP_CLUB,
 		PIERCE = AP_CLUB,
-		LASER = AP_SWORD,
-		HEAT = -AP_SWORD,
+		LASER = 20,
+		HEAT = -20,
 		ARCANE = AP_CLUB,
 		PAIN = AP_CLUB
 	)
@@ -151,13 +151,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = -20,
 		ARCANE = AP_CLUB,
-		HOLY = -AP_SWORD,
-		DARK = AP_SWORD
+		HOLY = -20,
+		DARK = 20
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)

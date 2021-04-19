@@ -2,17 +2,17 @@
 	name = "null rod"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_SWORD*0.2,
+		BLUNT = 30*0.2,
 		HOLY = 0
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = AP_SWORD*0.25,
-		HOLY = AP_SWORD*0.75
+		BLUNT = 20*0.25,
+		HOLY = 20*0.75
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.2
+		ATTRIBUTE_STRENGTH = 30*0.2
 	)
 
 	attribute_damage = list(
@@ -20,8 +20,8 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_SWORD*0.1,
-		SKILL_PRAYER = DAMAGE_SWORD*0.5
+		SKILL_MELEE = 30*0.1,
+		SKILL_PRAYER = 30*0.5
 	)
 
 	skill_damage = list(
@@ -34,5 +34,5 @@
 		SKILL_PRAYER = 25
 	)
 
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = 10*0.5
+	attack_delay_max = 10

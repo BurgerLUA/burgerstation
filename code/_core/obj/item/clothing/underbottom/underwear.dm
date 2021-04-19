@@ -62,8 +62,8 @@
 
 	defense_rating = list(
 		ARCANE = 10,
-		HEAT = -AP_SWORD,
-		COLD = AP_SWORD,
+		HEAT = -20,
+		COLD = 20,
 	)
 
 	dyeable = TRUE
@@ -108,8 +108,8 @@
 	icon = 'icons/obj/item/clothing/underwear/thong.dmi'
 	color = COLOR_WHITE
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = -AP_SWORD,
+		ARCANE = 20,
+		COLD = -20,
 	)
 
 	dyeable = TRUE
@@ -125,7 +125,7 @@
 	icon = 'icons/obj/item/clothing/underwear/loincloth.dmi'
 
 	defense_rating = list(
-		ARCANE = AP_SWORD
+		ARCANE = 20
 	)
 
 	value = 5

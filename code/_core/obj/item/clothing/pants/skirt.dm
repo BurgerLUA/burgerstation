@@ -9,7 +9,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		COLD = 10
 	)
 

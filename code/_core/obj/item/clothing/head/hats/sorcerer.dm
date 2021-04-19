@@ -10,7 +10,7 @@
 
 	defense_rating = list(
 		ARCANE = AP_GREATSWORD,
-		COLD = AP_SWORD,
+		COLD = 20,
 		HOLY = -AP_AXE,
 		DARK = AP_AXE
 	)

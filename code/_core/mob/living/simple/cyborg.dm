@@ -40,10 +40,10 @@
 	walk_delay_mul = 3
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
 		PIERCE = AP_AXE,
-		LASER = AP_SWORD,
+		LASER = 20,
 		ARCANE = -AP_GREATSWORD,
 		HEAT = -AP_AXE,
 		COLD = AP_AXE,
@@ -93,12 +93,12 @@
 	mana_base = 100
 
 	armor_base = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = AP_AXE,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
+		PIERCE = 20,
+		LASER = -20,
 		ARCANE = -AP_AXE,
-		COLD = AP_SWORD,
+		COLD = 20,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,

@@ -25,14 +25,14 @@
 	pixel_x = -16
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
 		PIERCE = 10,
-		LASER = -AP_SWORD,
+		LASER = -20,
 		HEAT = AP_AXE,
 		COLD = -AP_AXE,
 		BIO = AP_CLUB,
-		FATIGUE = AP_SWORD,
+		FATIGUE = 20,
 		ION = INFINITY,
 		PAIN = AP_CLUB
 	)

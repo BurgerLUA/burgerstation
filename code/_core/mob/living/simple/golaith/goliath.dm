@@ -22,18 +22,18 @@
 	stun_angle = 0
 
 	armor_base = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = AP_AXE,
 		LASER = AP_CLUB,
 		HEAT = AP_GREATSWORD,
-		COLD = -AP_SWORD,
+		COLD = -20,
 		BOMB = AP_GREATSWORD,
-		BIO = AP_SWORD,
-		HOLY = -AP_SWORD,
+		BIO = 20,
+		HOLY = -20,
 		DARK = AP_GREATAXE,
-		FATIGUE = AP_SWORD,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	status_immune = list(

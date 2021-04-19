@@ -13,7 +13,7 @@
 		BLUNT = AP_AXE,
 		PIERCE = AP_AXE,
 		ARCANE = -AP_AXE,
-		COLD = AP_SWORD,
+		COLD = 20,
 		PAIN = INFINITY
 	)
 

@@ -17,9 +17,9 @@
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		COLD = AP_AXE,
-		BIO = AP_SWORD
+		BIO = 20
 	)
 
 	hidden_organs = list(

@@ -18,7 +18,7 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		ARCANE = AP_AXE,
-		COLD = AP_SWORD,
+		COLD = 20,
 		PAIN = 10
 	)
 

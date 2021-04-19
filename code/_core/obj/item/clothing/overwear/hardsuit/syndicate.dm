@@ -6,7 +6,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = AP_AXE,
 		PIERCE = AP_AXE,
 		LASER = AP_AXE,
@@ -14,8 +14,8 @@
 		HEAT = AP_AXE,
 		COLD = AP_AXE,
 		BOMB = AP_AXE,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD,
+		BIO = 20,
+		RAD = 20,
 		PAIN = AP_CLUB
 	)
 
@@ -44,8 +44,8 @@
 		HEAT = AP_AXE,
 		COLD = AP_AXE,
 		BOMB = AP_AXE,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD,
+		BIO = 20,
+		RAD = 20,
 		PAIN = AP_CLUB
 	)
 
@@ -72,8 +72,8 @@
 		HEAT = AP_AXE,
 		COLD = AP_AXE,
 		BOMB = AP_AXE,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD,
+		BIO = 20,
+		RAD = 20,
 		PAIN = AP_CLUB
 	)
 

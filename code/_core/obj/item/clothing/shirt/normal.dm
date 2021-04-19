@@ -10,7 +10,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		COLD = 10
 	)
 
@@ -169,9 +169,9 @@
 	icon = 'icons/obj/item/clothing/shirts/reinforced.dmi'
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = 10,
-		PIERCE = AP_SWORD,
+		PIERCE = 20,
 		ARCANE = -10,
 		COLD = 10,
 	)

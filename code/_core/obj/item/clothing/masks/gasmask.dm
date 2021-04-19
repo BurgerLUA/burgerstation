@@ -7,9 +7,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
 		BIO = AP_GREATSWORD,
 		RAD = 10
 	)
@@ -26,9 +26,9 @@
 	desc_extended = "A flawless clown mask and wig."
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
 		BIO = AP_GREATSWORD,
 		RAD = 10,
 		HOLY = -AP_GREATSWORD,
@@ -50,8 +50,8 @@
 
 	defense_rating = list(
 		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLUNT = 20,
+		PIERCE = 20,
 		BIO = AP_GREATAXE,
 		RAD = 10
 	)

@@ -10,7 +10,7 @@
 	value = 120
 
 	defense_rating = list(
-		ARCANE = -AP_SWORD,
+		ARCANE = -20,
 	)
 
 	item_slot_layer = 2

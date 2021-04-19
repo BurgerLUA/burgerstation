@@ -8,9 +8,9 @@
 		BLUNT = AP_AXE,
 		PIERCE = AP_AXE,
 		LASER = -AP_AXE,
-		ARCANE = AP_SWORD,
-		HOLY = AP_SWORD,
-		DARK = AP_SWORD
+		ARCANE = 20,
+		HOLY = 20,
+		DARK = 20
 	)
 
 	size = SIZE_4

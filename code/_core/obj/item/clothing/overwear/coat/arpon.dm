@@ -7,8 +7,8 @@
 	protected_limbs = list(BODY_TORSO, BODY_GROIN)
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		HEAT = AP_SWORD
+		ARCANE = 20,
+		HEAT = 20
 	)
 
 	size = SIZE_2
@@ -56,10 +56,10 @@
 
 	defense_rating = list(
 		BLADE = AP_AXE,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
 		HEAT = AP_AXE
 	)
 

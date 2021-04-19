@@ -30,20 +30,20 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
 		PIERCE = AP_AXE,
 		LASER = AP_GREATSWORD,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
 		COLD = -AP_AXE,
 		BIO = AP_GREATCLUB,
 		RAD = AP_GREATCLUB,
-		HOLY = -AP_SWORD,
+		HOLY = -20,
 		DARK = AP_GREATCLUB,
 		FATIGUE = AP_GREATCLUB,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	fatigue_from_block_mul = 0

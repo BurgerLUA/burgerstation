@@ -15,8 +15,8 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
+		LASER = -20,
+		ARCANE = 20,
 		HEAT = 10,
 		COLD = 10
 	)

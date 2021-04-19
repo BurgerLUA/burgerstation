@@ -29,17 +29,17 @@
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		COLD = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
+		COLD = 20,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
-		FATIGUE = AP_SWORD,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	level_multiplier = 1
@@ -80,8 +80,8 @@
 	armor_base = list(
 		BLADE = AP_CLUB,
 		BLUNT = AP_CLUB,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
+		PIERCE = 20,
+		LASER = -20,
 		ARCANE = -10,
 		HEAT = AP_CLUB,
 		COLD = AP_CLUB,
@@ -112,8 +112,8 @@
 	armor_base = list(
 		BLADE = AP_CLUB,
 		BLUNT = AP_CLUB,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
+		PIERCE = 20,
+		LASER = -20,
 		ARCANE = -10,
 		HEAT = AP_CLUB,
 		COLD = AP_CLUB,
@@ -141,10 +141,10 @@
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
 		HOLY = -AP_GREATSWORD,
@@ -172,10 +172,10 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		PIERCE = 20,
 		LASER = -AP_AXE,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
 		HOLY = -AP_GREATSWORD,
@@ -202,10 +202,10 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		PIERCE = 10,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
+		LASER = -20,
+		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
 		HOLY = -AP_GREATSWORD,
@@ -233,10 +233,10 @@
 	movement_delay = 1
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
 		HEAT = AP_GREATSWORD,
 		COLD = AP_GREATSWORD,
 		HOLY = -AP_GREATSWORD,

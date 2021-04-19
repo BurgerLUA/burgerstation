@@ -11,7 +11,7 @@
 		PIERCE = 10,
 		LASER = AP_CLUB,
 		ARCANE = -AP_CLUB,
-		HEAT = AP_SWORD
+		HEAT = 20
 	)
 
 	value = 30
@@ -45,9 +45,9 @@
 	name = "gar shades"
 	icon = 'icons/obj/item/clothing/glasses/gar.dmi'
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
 		LASER = AP_GREATSWORD,
 		ARCANE = -AP_CLUB,
 		HEAT = AP_GREATSWORD
@@ -78,12 +78,12 @@
 	icon = 'icons/obj/item/clothing/glasses/abomb_shades.dmi'
 	rarity = RARITY_MYTHICAL
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
 		LASER = AP_CLUB,
 		ARCANE = -AP_CLUB,
-		HEAT = AP_SWORD,
+		HEAT = 20,
 		BOMB = -AP_GREATCLUB
 	)
 
@@ -105,7 +105,7 @@
 	value = 160
 
 	defense_rating = list(
-		ARCANE = -AP_SWORD,
+		ARCANE = -20,
 	)
 
 /obj/item/clothing/glasses/sun/security/red

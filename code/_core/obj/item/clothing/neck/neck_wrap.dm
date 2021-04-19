@@ -16,7 +16,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		DARK = AP_AXE,
 		HOLY = -AP_AXE
 	)

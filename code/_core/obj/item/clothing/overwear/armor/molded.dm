@@ -16,7 +16,7 @@
 
 	defense_rating = list(
 		BLUNT = AP_GREATSWORD,
-		PIERCE = AP_SWORD,
+		PIERCE = 20,
 		ARCANE = -AP_AXE
 	)
 

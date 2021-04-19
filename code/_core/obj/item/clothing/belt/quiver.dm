@@ -8,7 +8,7 @@
 	defense_rating = list(
 		BLADE = AP_AXE,
 		BLUNT = AP_AXE,
-		PIERCE = AP_SWORD
+		PIERCE = 20
 	)
 
 	rarity = RARITY_UNCOMMON

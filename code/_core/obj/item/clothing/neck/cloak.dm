@@ -12,7 +12,7 @@
 
 	defense_rating = list(
 		ARCANE = AP_AXE,
-		COLD = AP_SWORD,
+		COLD = 20,
 	)
 
 	value = 20

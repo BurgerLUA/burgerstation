@@ -12,11 +12,11 @@
 		BLUNT = AP_AXE,
 		PIERCE = AP_AXE,
 		LASER = AP_AXE,
-		ARCANE = AP_SWORD,
-		HEAT = AP_SWORD,
-		COLD = AP_SWORD,
-		HOLY = -AP_SWORD,
-		DARK = AP_SWORD
+		ARCANE = 20,
+		HEAT = 20,
+		COLD = 20,
+		HOLY = -20,
+		DARK = 20
 	)
 
 	size = SIZE_3

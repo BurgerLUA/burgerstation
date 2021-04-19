@@ -49,10 +49,10 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = AP_CLUB,
-		PIERCE = AP_SWORD,
-		BOMB = AP_SWORD,
+		PIERCE = 20,
+		BOMB = 20,
 		PAIN = AP_CLUB
 	)
 

@@ -41,9 +41,9 @@
 	ai = /ai/clown/hulk
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,
@@ -80,7 +80,7 @@
 	ai = /ai/clown/tree
 
 	armor_base = list(
-		BLADE = -AP_SWORD,
+		BLADE = -20,
 		HOLY = -AP_CLUB,
 		DARK = AP_CLUB,
 		FATIGUE = INFINITY,

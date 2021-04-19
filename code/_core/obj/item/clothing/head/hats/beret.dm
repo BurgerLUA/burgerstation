@@ -8,7 +8,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		COLD = 10
 	)
 
@@ -26,10 +26,10 @@
 	name = "armored beret"
 	desc_extended = "A fashionable beret with extra padding and protection built into it."
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		COLD = AP_SWORD
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		COLD = 20
 	)
 	rarity = RARITY_RARE
 	value = 200

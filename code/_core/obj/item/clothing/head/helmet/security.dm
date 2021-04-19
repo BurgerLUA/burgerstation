@@ -5,10 +5,10 @@
 	desc_extended = "A relatively sturdy riot helmet. It is quite outdated."
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = -AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		ARCANE = -20,
 		PAIN = AP_CLUB
 	)
 
@@ -25,7 +25,7 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
+		BLADE = 20,
 		BLUNT = AP_AXE,
 		PIERCE = AP_AXE,
 		LASER = AP_AXE,

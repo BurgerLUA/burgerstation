@@ -11,9 +11,9 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = AP_SWORD,
+		ARCANE = 20,
 		COLD = 10,
-		BIO = AP_SWORD
+		BIO = 20
 	)
 
 	size = SIZE_1
@@ -42,14 +42,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
 		LASER = -10,
-		ARCANE = -AP_SWORD,
-		HEAT = AP_SWORD,
-		COLD = AP_SWORD,
-		BOMB = AP_SWORD,
+		ARCANE = -20,
+		HEAT = 20,
+		COLD = 20,
+		BOMB = 20,
 		BIO = 10
 	)
 
@@ -93,7 +93,7 @@
 		COLD = AP_AXE,
 		BIO = 10,
 		FATIGUE = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	protection_cold = list(
