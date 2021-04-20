@@ -19,7 +19,6 @@
 	size = SIZE_4
 	weight = 12
 
-	heat_per_shot = 0.04
 	heat_max = 0.3
 
 	bullet_length_min = 40

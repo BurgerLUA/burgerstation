@@ -14,15 +14,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 8
-
-
-
 	size = SIZE_4
 	weight = 18
 
-
-	heat_per_shot = 0.03
 	heat_max = 0.15
 
 	bullet_length_min = 46
@@ -87,7 +81,6 @@
 	name = "\improper .308 Marksman Rifle MOD"
 	icon = 'icons/obj/item/weapons/ranged/rifle/308_mod.dmi'
 
-	heat_per_shot = 0.06
 	heat_max = 0.2
 
 	size = SIZE_3

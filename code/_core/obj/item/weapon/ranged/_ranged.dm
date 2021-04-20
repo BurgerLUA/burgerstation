@@ -16,14 +16,15 @@
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
-	var/view_punch = 0 //Fallback value.
-	var/view_punch_mul = 1 //Inherit recoil absorbtion from the gun. Lesser values mean more recoil.
+	var/view_punch_to_add = 0 //Fallback value.
+	var/view_punch_mod = 1 //Inherit recoil absorbtion from the gun. Lesser values means less recoil.
+	var/heat_per_shot_to_add = 0 //Fallback value.
+	var/heat_per_shot_mod = 1 //Inherit heat kickback. Lesser values means less spread per bullet shot.
 
 	var/list/empty_sounds = list()
 
 	//Dynamic accuracy.
-	var/heat_per_shot = 0.05
-	var/heat_current = 0
+	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
@@ -61,24 +62,40 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 
 
-/obj/item/weapon/ranged/get_base_value()
+/obj/item/weapon/ranged/proc/get_damage_price()
 
 	if(!ranged_damage_type)
-		return ..()
+		return 0
 
 	var/damagetype/D = all_damage_types[ranged_damage_type]
 
 	if(!D)
-		return ..()
+		return 0
 
-	. = D.calculate_value(src)
+	. = D.calculate_value(src) * bullet_count * (0.5 + (projectile_speed/TILE_SIZE)*0.5)
+
+
+/obj/item/weapon/ranged/get_base_value()
+
+	.  = get_damage_price() * damage_mod
 
 	if(automatic)
 		. *= (10/max(1,shoot_delay)) * 1.25
 	else
-		. *= (10/max(2,shoot_delay))
+		. *= (10/max(2,shoot_delay)) * 0.75
 
-	. *= 0.5 + max(1/view_punch_mul,3)*0.5
+	. *= 0.5 + max(1/view_punch_mod,3)*0.5
+
+	. *= 0.25 + (0.2/heat_max)*0.75
+
+	. *= 0.75 + (0.5/inaccuracy_modifier)*0.25
+
+	. *= max(0.25,1 - movement_inaccuracy_modifier)
+
+	. *= max(0.25,1 - movement_spread_base)
+
+	. *= 0.5
+
 
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
@@ -313,11 +330,14 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/projectile_speed_to_use = projectile_speed*quality_penalty*damage_mod
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
-	var/view_punch_to_use = view_punch
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
 	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
+
+	var/power_to_use = 0
+	var/heat_per_shot_to_use = 0 //Based on power
+	var/view_punch_to_use = 0 //Based on power
 
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
@@ -331,11 +351,14 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
+		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
-
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
+
+	heat_per_shot_to_use = heat_per_shot_mod*power_to_use*0.025*bullet_count_to_use
+	view_punch_to_use = view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
 
 	if(projectile_to_use)
 
@@ -403,7 +426,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch_to_use,view_punch_time,damage_multiplier_to_use, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
 	next_shoot_time = world.time + shoot_delay_to_use
-	heat_current = min(heat_max, heat_current + heat_per_shot)
+	heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
 	start_thinking(src)
 
 	if(!use_loyalty_tag && firing_pin)

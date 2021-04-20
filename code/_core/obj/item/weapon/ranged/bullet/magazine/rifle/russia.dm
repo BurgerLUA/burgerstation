@@ -14,12 +14,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 12
-
 	size = SIZE_4
 	weight = 12
 
-	heat_per_shot = 0.02
 	heat_max = 0.3
 
 	bullet_length_min = 38
@@ -89,7 +86,6 @@
 
 	shoot_delay = 2
 	max_bursts = 2
-	view_punch = 5
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg') //I'm lazy
 
@@ -100,7 +96,6 @@
 	size = SIZE_4
 	weight = 12
 
-	heat_per_shot = 0.01
 	heat_max = 0.2
 
 	bullet_length_min = 38
@@ -160,7 +155,6 @@
 	value = 450
 
 	shoot_delay = 2
-	view_punch = 5
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -171,8 +165,6 @@
 	size = SIZE_4
 	weight = 12
 
-
-	heat_per_shot = 0.01
 	heat_max = 0.45
 
 	bullet_length_min = 38
@@ -234,7 +226,6 @@
 	value = 650
 
 	shoot_delay = 2
-	view_punch = 9
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -245,8 +236,6 @@
 	size = SIZE_5
 	weight = 18
 
-
-	heat_per_shot = 0.02
 	heat_max = 1
 
 	bullet_length_min = 38
@@ -389,13 +378,9 @@
 
 	can_wield = FALSE
 
-	view_punch = 4
-
 	size = SIZE_4
 	weight = 7
 
-
-	heat_per_shot = 0.02
 	heat_max = 0.3
 
 	bullet_length_min = 38
@@ -459,13 +444,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 2.5
-
 	size = SIZE_4
 	weight = 12
 
-
-	heat_per_shot = 0.02
 	heat_max = 0.3
 
 	bullet_length_min = 38
@@ -530,14 +511,10 @@
 	can_wield = TRUE
 	wield_only = FALSE
 
-	view_punch = 3.5
-
 
 	size = SIZE_4
 	weight = 14
 
-
-	heat_per_shot = 0.07
 	heat_max = 0.3
 
 	bullet_length_min = 38

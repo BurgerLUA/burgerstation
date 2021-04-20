@@ -41,6 +41,8 @@
 
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
+	var/power = 0 //Set is SSweapons
+
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
@@ -48,6 +50,22 @@
 
 /obj/item/bullet_cartridge/proc/calculate_weight()
 	return size*0.25
+
+/obj/item/bullet_cartridge/proc/get_power()
+
+	. = 0
+
+	if(!damage_type_bullet)
+		return .
+
+	var/damagetype/D = all_damage_types[damage_type_bullet]
+	if(!D)
+		return .
+
+	for(var/k in D.attack_damage_base)
+		. += D.attack_damage_base[k]
+		. += D.attack_damage_penetration[k]
+
 
 /obj/item/bullet_cartridge/get_base_value()
 
@@ -58,7 +76,17 @@
 	if(!D)
 		return ..()
 
-	. = D.calculate_value(src)*0.015
+	. = D.calculate_value(src)*0.015*projectile_count
+
+	. *= 0.5 + (projectile_speed/TILE_SIZE)*0.5
+
+	. *= max(0.5,1 - base_spread)
+
+	. *= 0.5 + max(0,1-inaccuracy_modifer)*0.5
+
+	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
+
+	. += (bullet_length*bullet_diameter)/(9*19)
 
 	if(is_spent)
 		. *= 0.05

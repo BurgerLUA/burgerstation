@@ -18,11 +18,6 @@
 
 	override_icon_state_held = TRUE
 
-	view_punch = 8
-
-
-
-	heat_per_shot = 0.03
 	heat_max = 0.15
 
 	bullet_length_min = 40

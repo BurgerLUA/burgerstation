@@ -14,13 +14,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 12
-
 	size = SIZE_4
 	weight = 10
 
-
-	heat_per_shot = 0.06
 	heat_max = 0.20
 
 	bullet_length_min = 40
