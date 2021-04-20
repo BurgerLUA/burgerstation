@@ -3,9 +3,8 @@
 SUBSYSTEM_DEF(weapons)
 	name = "Weapons Subsystem"
 	desc = "A subsystem dedicated to hosting helper variables related to weapons."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_REPORT
 
-	//var/list/weapon_to_magazine = list()
 	var/list/weapon_to_bullet = list()
 
 /subsystem/weapons/Initialize()
@@ -15,6 +14,8 @@ SUBSYSTEM_DEF(weapons)
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = new k(locate(1,1,1))
 		created_bullets += B
+
+	var/balance_table = list()
 
 	for(var/k in subtypesof(/obj/item/weapon/ranged/bullet))
 		var/obj/item/weapon/ranged/bullet/B = new k(locate(1,1,1))
@@ -30,7 +31,17 @@ SUBSYSTEM_DEF(weapons)
 				continue
 			weapon_to_bullet[B.type] = C.type
 			break
+
+		balance_table[B.type] = B.get_base_value()
 		qdel(B)
+
+	sortTim(balance_table, /proc/cmp_numeric_asc, associative=TRUE)
+
+	var/text_to_write = ""
+	for(var/k in balance_table)
+		text_to_write += "[k]: [balance_table[k]]\n"
+
+	rustg_file_write(text_to_write,"data/server/weapon_balance.txt")
 
 	for(var/k in created_bullets)
 		var/obj/item/I = k

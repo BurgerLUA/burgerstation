@@ -17,7 +17,7 @@
 	size = SIZE_4
 	weight = 10
 
-	heat_max = 0.08
+	heat_max = 0.06
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -65,7 +65,7 @@
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
-	movement_spread_base = 0.03
+	movement_spread_base = 0.02
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_static_spread()

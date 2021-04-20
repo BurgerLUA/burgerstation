@@ -23,6 +23,7 @@
 	can_wear = TRUE
 	item_slot = -1
 
+/* Price calculation is hard.
 /obj/item/weapon/get_base_value()
 
 	if(!damage_type)
@@ -34,7 +35,7 @@
 		return ..()
 
 	return D.calculate_value(src)
-
+*/
 
 /obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
 	return FALSE

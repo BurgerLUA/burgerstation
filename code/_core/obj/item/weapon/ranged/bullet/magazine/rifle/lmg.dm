@@ -10,6 +10,8 @@
 
 	automatic = TRUE
 
+	damage_mod = 1.1
+
 	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
 
 	can_wield = TRUE

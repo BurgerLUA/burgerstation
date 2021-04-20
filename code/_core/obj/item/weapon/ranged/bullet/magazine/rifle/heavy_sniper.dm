@@ -5,9 +5,10 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
 
-
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 30
+
+	damage_mod = 1
 
 	automatic = FALSE
 

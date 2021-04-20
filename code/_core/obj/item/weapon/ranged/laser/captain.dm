@@ -19,9 +19,6 @@
 
 	override_icon_state = TRUE
 
-
-
-
 	heat_max = 0.05
 
 	size = SIZE_3

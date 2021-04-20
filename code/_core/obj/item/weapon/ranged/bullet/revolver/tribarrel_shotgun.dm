@@ -7,6 +7,8 @@
 
 	shoot_delay = 2
 
+	damage_mod = 1.3
+
 	automatic = TRUE
 
 	bullet_count_max = 3

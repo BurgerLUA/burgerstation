@@ -5,9 +5,11 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_6.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2
+	shoot_delay = 1.75
 
 	automatic = TRUE
+
+	damage_mod = 1.1
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
@@ -15,9 +17,9 @@
 	wield_only = TRUE
 
 	size = SIZE_4
-	weight = 15
+	weight = 14
 
-	heat_max = 0.08
+	heat_max = 0.06
 
 	bullet_length_min = 40
 	bullet_length_best = 45

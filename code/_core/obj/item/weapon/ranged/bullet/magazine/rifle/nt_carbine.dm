@@ -10,6 +10,8 @@
 
 	automatic = TRUE
 
+	damage_mod = 1.1
+
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
 	can_wield = TRUE
@@ -17,7 +19,7 @@
 	size = SIZE_3
 	weight = 9
 
-	heat_max = 0.08
+	heat_max = 0.1
 
 	bullet_length_min = 40
 	bullet_length_best = 45

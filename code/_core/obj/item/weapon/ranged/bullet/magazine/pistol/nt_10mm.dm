@@ -10,21 +10,18 @@
 
 	automatic = FALSE
 
-	movement_spread_base = 0.01
+	movement_spread_base = 0.003
 	inaccuracy_modifier = 0.5
-	movement_inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 0.0125
 
 	shoot_sounds = list('sound/weapons/10/shoot.ogg')
 
 	can_wield = FALSE
 
-
-
 	size = SIZE_2
-	weight = 4
+	weight = 5
 
-
-	heat_max = 0.12
+	heat_max = 0.09
 
 	bullet_length_min = 25
 	bullet_length_best = 32
@@ -67,7 +64,7 @@
 	attachment_undermount_offset_y = 17 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_static_spread()
-	return 0.001
+	return 0.0009
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_skill_spread(var/mob/living/L)
 	return max(0,0.015 - (0.03 * L.get_skill_power(SKILL_RANGED)))

@@ -8,6 +8,8 @@
 
 	shoot_delay = 20
 
+	damage_mod = 1.3
+
 	automatic = FALSE
 
 	shoot_sounds = list('sound/weapons/russia/gauss.ogg')

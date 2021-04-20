@@ -143,13 +143,11 @@
 	. = 0
 
 	for(var/k in attack_damage_base)
-		. += attack_damage_base[k]
-		. += attack_damage_penetration[k]*0.25
-		. += attribute_stats[k]*0.75
-		. += skill_stats[k]*0.75
+		.var/total_damage = attack_damage_base[k] + attribute_stats[k] + skill_stats[k]
+		. += calculate_damage_with_armor(total_damage,max(0,75 - attack_damage_penetration[k]))
 
 	if(attack_delay)
-		. *= 0.5 + 0.5*(10 / max(1,attack_delay))
+		. *= 0.75 + 0.25*(10 / max(1,attack_delay))
 
 /damagetype/proc/get_miss_chance()
 	return 0

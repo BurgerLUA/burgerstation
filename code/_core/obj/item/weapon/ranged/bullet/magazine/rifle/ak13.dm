@@ -1,42 +1,33 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt
-	name = "\improper 7.62mm H-LMG"
-	desc = "What's betweeen you and 100 Syndicate? This LMG."
-	desc_extended = "An extremely pricy 7.62mm Light Machine Gun that was originally inteded for use in mounted placements is now available for use in combat situations."
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_lmg_2.dmi'
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13
+	name = "\improper 7.62x39mm AK-13"
+	desc = "Ancient, but still powerful. Maybe."
+	desc_extended = "The 7.62x39 is THE rifle for shady Eastern European uprisings. Reliable, inaccurate, and comes only in automatic to train those recruits to at least hit the target."
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia.dmi'
 	icon_state = "inventory"
+	value = 100
 
-	shoot_delay = 2.5
+	shoot_delay = 2
 
 	automatic = TRUE
 
-	damage_mod = 1.1
-
-	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/308/shoot_short.ogg')
 
 	can_wield = TRUE
-	wield_only = TRUE
 
+	size = SIZE_4
+	weight = 12
 
-	size = SIZE_5
+	heat_max = 0.3
 
-	heat_max = 0.06
-
-	bullet_length_min = 46
-	bullet_length_best = 51
-	bullet_length_max = 52
+	bullet_length_min = 38
+	bullet_length_best = 39
+	bullet_length_max = 40
 
 	bullet_diameter_min = 7.6
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
-	size = SIZE_4
-
-	value = 1100
-	weight = 25
-
-	ai_heat_sensitivity = 0.1
-
-	dan_mode = TRUE
+	ai_heat_sensitivity = 1.5
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -64,19 +55,23 @@
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 18 - 16
+	attachment_sight_offset_x = 13 - 16
 	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 25 - 16
-	attachment_undermount_offset_y = 15 - 16
+	attachment_undermount_offset_x = 21 - 16
+	attachment_undermount_offset_y = 17 - 16
 
-	inaccuracy_modifier = 1
+	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
+	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
-	movement_spread_base = 0.2
+	movement_spread_base = 0.02
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_static_spread()
-	return 0.015
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread()
+	if(!wielded)
+		return 0.15
+	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
-	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))

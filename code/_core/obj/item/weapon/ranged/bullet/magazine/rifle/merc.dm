@@ -14,8 +14,6 @@
 
 	can_wield = TRUE
 
-
-
 	size = SIZE_4
 	weight = 12
 

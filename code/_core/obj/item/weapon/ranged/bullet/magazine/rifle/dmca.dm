@@ -10,6 +10,8 @@
 	burst_delay = 6
 	max_bursts = 3
 
+	damage_mod = 1.3
+
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/46/shoot.ogg')

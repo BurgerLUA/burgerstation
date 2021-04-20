@@ -13,10 +13,6 @@
 
 	can_wield = FALSE
 
-
-
-
-
 	size = SIZE_3
 	weight = 8
 

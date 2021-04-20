@@ -6,25 +6,22 @@
 	icon_state = "inventory"
 	value = 350
 
-	shoot_delay = 4
+	shoot_delay = 3
 
 	automatic = FALSE
 
-	movement_spread_base = 0.01
+	movement_spread_base = 0.006
 	inaccuracy_modifier = 0.5
-	movement_inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.025
 
 	shoot_sounds = list('sound/weapons/12/shoot.ogg')
 
 	can_wield = FALSE
 
-
-
 	size = SIZE_2
-	weight = 6
+	weight = 7
 
-
-	heat_max = 0.15
+	heat_max = 0.1
 
 	bullet_length_min = 27
 	bullet_length_best = 33
@@ -80,7 +77,7 @@
 	icon_state = "inventory"
 	value = 1400
 
-	shoot_delay = 3
+	shoot_delay = 2
 
 
 	heat_max = 0.06

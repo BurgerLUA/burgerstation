@@ -9,6 +9,8 @@
 
 	automatic = FALSE
 
+	damage_mod = 1.3
+
 	shoot_sounds = list('sound/weapons/russia/svd.ogg')
 
 	can_wield = TRUE

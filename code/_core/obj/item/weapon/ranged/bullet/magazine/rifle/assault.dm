@@ -8,6 +8,8 @@
 
 	shoot_delay = 2
 
+	damage_mod = 1.3
+
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/308/shoot.ogg')

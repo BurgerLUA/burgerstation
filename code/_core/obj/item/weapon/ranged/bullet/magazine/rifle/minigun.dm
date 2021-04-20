@@ -8,6 +8,8 @@
 
 	shoot_delay = 1.25 //Oh god oh fuck
 
+	damage_mod = 1.1
+
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg') //Need a fire sound that only lasts 0.5 seconds.

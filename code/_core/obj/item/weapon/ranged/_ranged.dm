@@ -64,6 +64,7 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 
 
+/* Price calculation is hard.
 /obj/item/weapon/ranged/proc/get_damage_price()
 
 	if(!ranged_damage_type)
@@ -74,34 +75,35 @@
 	if(!D)
 		return 0
 
-	. = D.calculate_value(src) * bullet_count * (0.5 + (projectile_speed/TILE_SIZE)*0.5)
-
+	. = D.calculate_value(src) * bullet_count * damage_mod
 
 /obj/item/weapon/ranged/get_base_value()
 
-	.  = get_damage_price() * damage_mod
+	.  = get_damage_price()
 
 	if(automatic)
-		. *= (10/max(1,shoot_delay)) * 1.25
+		. *= 0.75 + 0.25*(10 / max(1,shoot_delay))
 	else
-		. *= (10/max(2,shoot_delay)) * 0.75
-
-	. *= 0.5 + max(1/view_punch_mod,3)*0.5
+		. *= 0.75 + 0.25*(10 / max(2,shoot_delay))
 
 	if(!heat_max)
 		log_error("Warning: [src.type] didn't have a heat_max.")
 	else
-		. *= 0.25 + (0.2/heat_max)*0.75
+		. *= 0.5 + (0.2/heat_max)*0.5
 
-	. *= 0.75 + (0.5/inaccuracy_modifier)*0.25
+	if(!inaccuracy_modifier)
+		log_error("Warning: [src.type] didn't have an inaccuracy_modifier.")
+	else
+		. *= 0.5 + (0.5/inaccuracy_modifier)*0.5
 
-	. *= max(0.25,1 - movement_inaccuracy_modifier)
+	. *= 0.75 + max(0.25,1 - movement_inaccuracy_modifier)*0.25
 
-	. *= max(0.25,1 - movement_spread_base)
+	. *= 0.75 + max(0.25,1 - movement_spread_base)*0.25
 
-	. *= 0.5
+	. *= 0.2
 
-
+	. = CEILING(.,1)
+*/
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()

@@ -74,17 +74,17 @@
 	if(!D)
 		return ..()
 
-	. = D.calculate_value(src)*0.015*projectile_count
+	. = D.calculate_value(src)*projectile_count
 
-	. *= 0.5 + (projectile_speed/TILE_SIZE)*0.5
+	. *= 0.75 + (projectile_speed/TILE_SIZE)*0.25
 
-	. *= max(0.5,1 - base_spread)
+	. *= 0.75 + max(0.5,1 - base_spread)*0.25
 
 	. *= 0.5 + max(0,1-inaccuracy_modifer)*0.5
 
 	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
 
-	. += (bullet_length*bullet_diameter)/(9*19)
+	. += min(10,(bullet_length*bullet_diameter)/(9*19))
 
 	if(is_spent)
 		. *= 0.05

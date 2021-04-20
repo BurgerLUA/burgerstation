@@ -65,6 +65,11 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.5
 
+/obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_base_value()
+	. = ..()
+	. *= 1.1 //Compensates for the auto-pump code.
+	. += 300 //Compensates for the auto-pump code.
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_static_spread()

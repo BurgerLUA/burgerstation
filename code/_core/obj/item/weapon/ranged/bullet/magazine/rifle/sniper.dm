@@ -9,6 +9,8 @@
 
 	automatic = FALSE
 
+	damage_mod = 1.4
+
 	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
 
 	can_wield = TRUE
