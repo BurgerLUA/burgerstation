@@ -28,8 +28,6 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-	var/standard_bullet_type //The standard bullet type this weapon normally uses.
-
 /* Price calculation is hard.
 /obj/item/weapon/ranged/bullet/get_damage_price()
 
