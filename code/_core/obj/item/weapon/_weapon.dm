@@ -23,6 +23,7 @@
 	can_wear = TRUE
 	item_slot = -1
 
+
 /* Price calculation is hard.
 /obj/item/weapon/get_base_value()
 
