@@ -219,19 +219,6 @@
 
 	value = 0.5
 
-/obj/item/bullet_cartridge/pistol_4mm/subsonic
-	name = "\improper subsonic 4.6x30mm smg cartridge"
-	icon = 'icons/obj/item/bullet/46mm.dmi'
-
-	projectile = /obj/projectile/bullet/firearm/pistol/stealth
-
-	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/subsonic
-
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
-
-	caseless = TRUE
-	value = 0.5
-
 /obj/item/bullet_cartridge/pistol_4mm/surplus
 	name = "\improper surplus 4.6x30mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/surplus

@@ -48,8 +48,3 @@
 	name = "\improper 4.6x30mm WT-550 magazine - armor piercing"
 	icon_state = "AP"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ap
-
-/obj/item/magazine/smg_46/subsonic
-	name = "\improper 4.6x30mm WT-550 magazine - subsonic"
-	icon_state = "SUB"
-	ammo = /obj/item/bullet_cartridge/pistol_4mm/subsonic

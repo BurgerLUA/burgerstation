@@ -19,13 +19,6 @@
 
 	var/impact_sounds_flesh = list() //Leave empty to just use impact sounds, no matter what.
 
-	/*
-	var/allow_parry = TRUE
-	var/allow_miss = TRUE
-	var/allow_block = TRUE
-	var/allow_dodge = TRUE
-	*/
-
 	var/stealthy = FALSE //Set to true to not display any damage dealt as well as not to alert any NPCs when hit.
 
 	var/attack_delay_mod = 1

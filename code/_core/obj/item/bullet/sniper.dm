@@ -31,6 +31,7 @@
 	name = "\improper .50 explosive sniper round"
 	icon = 'icons/obj/item/bullet/50_explosive.dmi'
 	rarity = RARITY_MYTHICAL
+	projectile = /obj/projectile/bullet/firearm/sniper/explosive/
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/explosive
 	value = 20
 

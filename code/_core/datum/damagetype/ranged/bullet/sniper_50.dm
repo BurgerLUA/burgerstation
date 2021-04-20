@@ -3,14 +3,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 105*0.75,
-		BLUNT = 105*0.25
+		PIERCE = 90,
+		BLUNT = 90
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = 120,
-		BLUNT = 0
+		PIERCE = 90,
+		BLUNT = 90
 	)
 
 	falloff = VIEW_RANGE*3
@@ -24,16 +24,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 105*0.25,
-		BLUNT = 105*0.25,
-		BOMB = 105*0.5
+		PIERCE = 45,
+		BLUNT = 45
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = 120*0.1,
-		BLUNT = 120*0.1,
-		BOMB = 120*0.8
+		PIERCE = 20,
+		BLUNT = 20
 	)
 
 /damagetype/ranged/bullet/sniper_50/ion
@@ -41,14 +39,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 105*0.25,
-		ION = 105*0.75
+		BLUNT = 40,
+		ION = 100
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 120*0.25,
-		ION = 120*0.75
+		BLUNT = 0,
+		ION = 200
 	)
 
 
@@ -57,12 +55,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 105*0.75
+		PIERCE = 160
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = 120*3
+		PIERCE = 300
 	)
 
 
@@ -71,14 +69,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BOMB = 105*0.25,
-		BLUNT = 105*0.25
+		PIERCE = 40,
+		BLUNT = 80
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BOMB = 120*0.25,
-		BLUNT = 120*0.25
+		PIERCE = 50,
+		BLUNT = 50
 	)
 
 /damagetype/ranged/bullet/sniper_50/incendiary/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
