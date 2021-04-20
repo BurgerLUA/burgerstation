@@ -18,12 +18,12 @@
 
 	can_wield = FALSE
 
-	view_punch = 10
+
 
 	size = SIZE_2
 	weight = 4
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.12
 
 	bullet_length_min = 25
@@ -87,11 +87,11 @@
 
 	automatic = TRUE
 
-	view_punch = 10
+
 
 	weight = 6
 
-	heat_per_shot = 0.015
+
 	heat_max = 0.09
 
 	attachment_barrel_offset_x = 27 - 16

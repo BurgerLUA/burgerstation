@@ -5,10 +5,10 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/tungsten.dmi'
 	icon_state = "inventory"
 	shoot_delay = 2
-	view_punch = 4
+
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.03
 
 	bullet_length_min = 15

@@ -13,7 +13,7 @@
 
 	shoot_sounds = list('sound/weapons/revolver_heavy/shoot.ogg')
 
-	view_punch = 10
+
 
 	size = SIZE_2
 	weight = 9
@@ -31,7 +31,7 @@
 
 	value = 170
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.1
 
 	attachment_whitelist = list(

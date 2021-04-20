@@ -13,7 +13,7 @@
 
 	shoot_sounds = list('sound/weapons/308/big_game.ogg')
 
-	view_punch = 24
+
 
 	size = SIZE_3
 	weight = 10
@@ -28,7 +28,7 @@
 
 	value = 450
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.1
 
 	attachment_whitelist = list(

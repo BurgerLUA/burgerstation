@@ -16,7 +16,7 @@
 
 	shoot_sounds = list('sound/weapons/deckhard/shot.ogg')
 
-	view_punch = 8
+
 
 
 
@@ -32,7 +32,7 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.1
 
 	value = 60

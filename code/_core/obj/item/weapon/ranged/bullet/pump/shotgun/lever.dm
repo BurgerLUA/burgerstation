@@ -13,7 +13,7 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	view_punch = 18
+
 
 
 
@@ -24,7 +24,7 @@
 
 	action_name = "work"
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.12
 
 	attachment_whitelist = list(

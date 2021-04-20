@@ -13,8 +13,6 @@
 
 	insert_limit = 1
 
-	view_punch = TILE_SIZE - 1
-
 	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
 
 	size = SIZE_4
@@ -28,7 +26,7 @@
 	bullet_diameter_best = 40
 	bullet_diameter_max = 41
 
-	heat_per_shot = 0.09
+
 	heat_max = 0.18
 
 	value = 600

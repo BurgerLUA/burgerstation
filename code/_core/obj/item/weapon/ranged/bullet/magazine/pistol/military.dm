@@ -7,7 +7,7 @@
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
-	view_punch = 7
+
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.5
@@ -18,7 +18,7 @@
 	size = SIZE_2
 	weight = 3
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.12
 
 	bullet_length_min = 16
@@ -78,14 +78,14 @@
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1.5
 
-	view_punch = 5
+
 
 	automatic = FALSE
 
 	size = SIZE_2
 
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.10
 
 	bullet_length_min = 21
@@ -116,14 +116,14 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
-	view_punch = 6
+
 
 	automatic = FALSE
 
 	size = SIZE_2
 
 
-	heat_per_shot = 0.025
+
 	heat_max = 0.1
 
 	bullet_length_min = 16

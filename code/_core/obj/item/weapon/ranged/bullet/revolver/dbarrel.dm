@@ -13,7 +13,7 @@
 
 	insert_limit = 2
 
-	view_punch = 12
+
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -31,7 +31,7 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
-	heat_per_shot = 0.05
+
 	heat_max = 0.1
 
 	value = 60

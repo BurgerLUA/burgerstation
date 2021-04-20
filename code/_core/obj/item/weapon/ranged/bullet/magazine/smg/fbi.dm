@@ -14,12 +14,12 @@
 
 	can_wield = FALSE
 
-	view_punch = 6
+
 
 	size = SIZE_3
 	weight = 8
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.09
 
 	bullet_length_min = 25
@@ -81,8 +81,8 @@
 	name = "10mm NT-FBI MK2"
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_2.dmi'
 	desc_extended = "The heavy kick of this SMG is only somewhat offset by its advanced recoil compensation mechanism. Perfect for when you need the power of a Magnum revolver in full-auto. This variant has a heavier design which helps with cooling."
-	heat_per_shot = 0.02
+
 	heat_max = 0.08
-	view_punch = 4
+
 	value = 650
 	weight = 10

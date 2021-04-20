@@ -15,7 +15,7 @@
 
 	shoot_sounds = list('sound/weapons/traitor/fire.ogg')
 
-	view_punch = 12
+
 
 	size = SIZE_2
 	weight = 7
@@ -33,7 +33,7 @@
 
 	value = 80
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.1
 
 	attachment_whitelist = list(

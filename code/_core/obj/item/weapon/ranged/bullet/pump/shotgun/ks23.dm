@@ -26,7 +26,7 @@
 	bullet_diameter_best = 23
 	bullet_diameter_max = 25
 
-	view_punch = 16
+
 
 
 
@@ -36,7 +36,7 @@
 
 	value = 80
 
-	heat_per_shot = 0.09
+
 	heat_max = 0.18
 
 	attachment_whitelist = list(

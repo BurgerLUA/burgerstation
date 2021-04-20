@@ -16,14 +16,14 @@
 
 	can_wield = TRUE
 
-	view_punch = 12
+
 
 	size = SIZE_4
 	weight = 12
 
 	value = 130
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.08
 
 	attachment_whitelist = list(
@@ -90,7 +90,7 @@
 
 	can_wield = TRUE
 
-	view_punch = 16
+
 
 
 

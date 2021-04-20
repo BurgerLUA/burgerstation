@@ -64,8 +64,6 @@
 
 	for(var/k in D.attack_damage_base)
 		. += D.attack_damage_base[k]
-		. += D.attack_damage_penetration[k]
-
 
 /obj/item/bullet_cartridge/get_base_value()
 

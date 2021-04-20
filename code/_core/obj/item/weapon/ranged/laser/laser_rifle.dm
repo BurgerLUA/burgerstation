@@ -19,11 +19,11 @@
 
 	charge_cost = CELL_SIZE_BASIC / 60
 
-	view_punch = 16
+
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
-	heat_per_shot = 0.005
+
 	heat_max = 0.1
 
 	polymorphs = list(
@@ -108,7 +108,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
-	view_punch = 20
+
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,
@@ -127,7 +127,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
-	view_punch = 24
+
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,
@@ -143,7 +143,7 @@
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 4
 
-	view_punch = 30
+
 
 	polymorphs = list(
 		"base" = "#EEEEEE",

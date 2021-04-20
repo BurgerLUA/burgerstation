@@ -16,13 +16,13 @@
 
 	override_icon_state = TRUE
 
-	view_punch = 6
+
 
 	size = SIZE_3
 	weight = 10
 
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.09
 
 	bullet_length_min = 20

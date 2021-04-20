@@ -7,7 +7,7 @@
 	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
 
-	view_punch = 1
+
 
 	movement_spread_base = 0.001
 	inaccuracy_modifier = 1
@@ -18,7 +18,7 @@
 	size = SIZE_2
 	weight = 1
 
-	heat_per_shot = 0.001
+
 	heat_max = 0.005
 
 	bullet_length_min = 17

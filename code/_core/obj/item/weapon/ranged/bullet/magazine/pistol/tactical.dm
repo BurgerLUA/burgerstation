@@ -8,7 +8,7 @@
 	shoot_delay = 4
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
-	view_punch = 6
+
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
@@ -20,7 +20,7 @@
 	weight = 5
 
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.12
 
 	bullet_length_min = 20
@@ -84,12 +84,12 @@
 	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
 
-	view_punch = 3
+
 
 	size = SIZE_2
 
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.12
 
 	attachment_whitelist = list(

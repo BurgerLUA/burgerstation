@@ -16,8 +16,10 @@
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
+
 	var/view_punch_to_add = 0 //Fallback value.
 	var/view_punch_mod = 1 //Inherit recoil absorbtion from the gun. Lesser values means less recoil.
+
 	var/heat_per_shot_to_add = 0 //Fallback value.
 	var/heat_per_shot_mod = 1 //Inherit heat kickback. Lesser values means less spread per bullet shot.
 
@@ -86,7 +88,10 @@
 
 	. *= 0.5 + max(1/view_punch_mod,3)*0.5
 
-	. *= 0.25 + (0.2/heat_max)*0.75
+	if(!heat_max)
+		log_error("Warning: [src.type] didn't have a heat_max.")
+	else
+		. *= 0.25 + (0.2/heat_max)*0.75
 
 	. *= 0.75 + (0.5/inaccuracy_modifier)*0.25
 
@@ -237,7 +242,7 @@
 /obj/item/weapon/ranged/think()
 
 	if(next_shoot_time + min(10,shoot_delay*1.25) < world.time)
-		heat_current = max(heat_current-0.1,0)
+		heat_current = max(heat_current-(SIZE_3/size),0) //Smaller guns easier to handle.
 
 	. = ..()
 
@@ -334,12 +339,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
+	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/power_to_use = 0
-	var/heat_per_shot_to_use = 0 //Based on power
-	var/view_punch_to_use = 0 //Based on power
-
-	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 	if(spent_bullet)
@@ -357,8 +359,17 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		handle_empty(caller)
 		return FALSE
 
-	heat_per_shot_to_use = heat_per_shot_mod*power_to_use*0.025*bullet_count_to_use
-	view_punch_to_use = view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
+	caller << "power_to_use: [power_to_use]."
+
+	var/arm_strength = 0.5
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
+	if(wielded)
+		arm_strength *= 2
+
+	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.025*bullet_count_to_use
+	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
 
 	if(projectile_to_use)
 
@@ -428,6 +439,28 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	next_shoot_time = world.time + shoot_delay_to_use
 	heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
 	start_thinking(src)
+
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		if(is_inventory(src.loc))
+			var/obj/hud/inventory/I = src.loc
+			var/arm_damage = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
+			if(arm_damage >= 1)
+				A << "arm_damage: [arm_damage]."
+				var/obj/item/organ/O
+				if(I.click_flags & RIGHT_HAND)
+					if(wielded)
+						O = A.labeled_organs[BODY_ARM_RIGHT]
+					else
+						O = A.labeled_organs[BODY_HAND_RIGHT]
+				else
+					if(wielded)
+						O = A.labeled_organs[BODY_ARM_LEFT]
+					else
+						O = A.labeled_organs[BODY_HAND_LEFT]
+				if(O)
+					O.health.adjust_loss_smart(PAIN=arm_damage)
+
 
 	if(!use_loyalty_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)

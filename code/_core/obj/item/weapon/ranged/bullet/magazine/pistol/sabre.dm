@@ -18,13 +18,13 @@
 
 	can_wield = FALSE
 
-	view_punch = 6
+
 
 	size = SIZE_2
 	weight = 5
 
 
-	heat_per_shot = 0.05
+
 	heat_max = 0.10
 
 	bullet_length_min = 27
@@ -82,9 +82,9 @@
 	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through other means."
 
 	shoot_delay = 2
-	view_punch = 4
 
-	heat_per_shot = 0.04
+
+
 	heat_max = 0.12
 
 	value = 500

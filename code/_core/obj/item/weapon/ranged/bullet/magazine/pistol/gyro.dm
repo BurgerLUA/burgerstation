@@ -16,13 +16,13 @@
 
 	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
 
-	view_punch = 2
+
 
 	size = SIZE_3
 	weight = 10
 
 
-	heat_per_shot = 0
+
 	heat_max = 0
 
 	bullet_length_min = 48

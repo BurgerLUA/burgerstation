@@ -13,8 +13,6 @@
 
 	insert_limit = 3
 
-	view_punch = TILE_SIZE - 1
-
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	size = SIZE_3
@@ -28,7 +26,7 @@
 	bullet_diameter_best = 23
 	bullet_diameter_max = 25
 
-	heat_per_shot = 0.09
+
 	heat_max = 0.18
 
 	value = 600

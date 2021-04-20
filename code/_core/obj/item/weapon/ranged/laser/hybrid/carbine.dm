@@ -26,9 +26,9 @@
 
 	charge_cost = CELL_SIZE_BASIC / 120
 
-	view_punch = 6
 
-	heat_per_shot = 0.01
+
+
 	heat_max = 0.03
 
 	size = SIZE_3

@@ -18,12 +18,12 @@
 
 	can_wield = FALSE
 
-	view_punch = 20
+
 
 	size = SIZE_2
 	weight = 6
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.15
 
 	bullet_length_min = 27
@@ -82,7 +82,7 @@
 
 	shoot_delay = 3
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.06
 
 	attachment_whitelist = list(

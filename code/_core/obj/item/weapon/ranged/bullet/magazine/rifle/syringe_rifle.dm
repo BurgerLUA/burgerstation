@@ -13,7 +13,7 @@
 
 	can_wield = FALSE
 
-	view_punch = 1
+
 
 
 
@@ -23,7 +23,7 @@
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.03
 
 	bullet_length_min = 18.5

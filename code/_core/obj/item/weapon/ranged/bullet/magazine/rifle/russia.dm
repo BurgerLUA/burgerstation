@@ -297,7 +297,7 @@
 	value = 300
 
 	shoot_delay = 1.5
-	view_punch = 4
+
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -309,7 +309,7 @@
 	weight = 9
 
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.64
 
 	bullet_length_min = 16

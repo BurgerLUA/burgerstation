@@ -7,7 +7,7 @@
 	value = 150
 
 	shoot_delay = 1.75
-	view_punch = 4
+
 	max_bursts = 2
 
 	movement_spread_base = 0.01
@@ -24,7 +24,7 @@
 	weight = 3
 
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.18
 
 	bullet_length_min = 16

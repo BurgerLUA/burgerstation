@@ -13,7 +13,7 @@
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
-	view_punch = 4
+
 
 
 
@@ -29,7 +29,7 @@
 	bullet_diameter_best = 11.43
 	bullet_diameter_max = 12
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.1
 
 	value = 400

@@ -14,7 +14,7 @@
 
 	can_wield = FALSE
 
-	view_punch = 4
+
 
 
 
@@ -22,7 +22,7 @@
 	weight = 8
 
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.09
 
 	bullet_length_min = 40
@@ -100,7 +100,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = "\improper .223 SYN-Carbine MOD"
 	icon = 'icons/obj/item/weapons/ranged/rifle/223_mod.dmi'
-	heat_per_shot = 0.03
+
 	heat_max = 0.12
 
 	size = SIZE_2

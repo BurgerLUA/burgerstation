@@ -16,7 +16,7 @@
 
 	can_wield = TRUE
 
-	view_punch = 10
+
 
 	size = SIZE_4
 	weight = 12
@@ -65,7 +65,7 @@
 
 	dan_mode = TRUE
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.09
 
 	inaccuracy_modifier = 0.25
@@ -85,7 +85,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3_new.dmi'
 	desc_extended = "A very early prototype of NanoTrasen's L-HON; the L-HON-0 is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
 
-	view_punch = 12
+
 
 	weight = 14
 
@@ -95,7 +95,7 @@
 
 	value = 1400
 
-	heat_per_shot = 0.025
+
 	heat_max = 0.045
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary

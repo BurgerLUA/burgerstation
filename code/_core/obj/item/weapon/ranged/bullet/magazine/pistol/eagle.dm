@@ -11,13 +11,13 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5
 
-	view_punch = 20
+
 
 	size = SIZE_2
 	weight = 6
 
 
-	heat_per_shot = 0.06
+
 	heat_max = 0.3
 
 	bullet_length_min = 30
@@ -85,11 +85,11 @@
 
 	shoot_delay = 4
 
-	view_punch = 18
+
 
 	weight = 8
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.2
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary

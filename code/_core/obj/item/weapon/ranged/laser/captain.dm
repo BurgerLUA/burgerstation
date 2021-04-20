@@ -19,9 +19,9 @@
 
 	override_icon_state = TRUE
 
-	view_punch = 4
 
-	heat_per_shot = 0.01
+
+
 	heat_max = 0.05
 
 	size = SIZE_3

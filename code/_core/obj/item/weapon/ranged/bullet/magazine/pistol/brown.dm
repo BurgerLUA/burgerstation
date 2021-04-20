@@ -6,7 +6,7 @@
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1.25
 
-	view_punch = 8
+
 
 	movement_spread_base = 0.0075
 	inaccuracy_modifier = 0.5
@@ -16,7 +16,7 @@
 
 	size = SIZE_2
 
-	heat_per_shot = 0.025
+
 	heat_max = 0.10
 
 	bullet_length_min = 21

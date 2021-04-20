@@ -17,13 +17,13 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-	view_punch = 15
+
 
 	shoot_sounds = list('sound/weapons/ion/shoot.ogg')
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.015
+
 	heat_max = 0.03
 
 	size = SIZE_4

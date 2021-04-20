@@ -17,13 +17,13 @@
 	charge_cost = CELL_SIZE_BASIC / 30
 
 
-	view_punch = 8
+
 
 	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.015
+
 	heat_max = 0.04
 
 	size = SIZE_4
