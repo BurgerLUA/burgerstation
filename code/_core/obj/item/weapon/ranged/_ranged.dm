@@ -361,8 +361,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		handle_empty(caller)
 		return FALSE
 
-	caller << "power_to_use: [power_to_use]."
-
 	var/arm_strength = 0.5
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
@@ -448,7 +446,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/obj/hud/inventory/I = src.loc
 			var/arm_damage = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
 			if(arm_damage >= 1)
-				A << "arm_damage: [arm_damage]."
 				var/obj/item/organ/O
 				if(I.click_flags & RIGHT_HAND)
 					if(wielded)
