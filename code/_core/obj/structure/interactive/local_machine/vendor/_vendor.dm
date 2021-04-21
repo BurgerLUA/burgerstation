@@ -29,7 +29,7 @@ var/global/list/equipped_antags = list()
 
 	density = TRUE
 
-	var/markup = 1.25 //Cost multiplier from buying out of this vendor.
+	var/markup = 1.1 //Cost multiplier from buying out of this vendor.
 
 	desired_light_power = 0.25
 	desired_light_range = 2
