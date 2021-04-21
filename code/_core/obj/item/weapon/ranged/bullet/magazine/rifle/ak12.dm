@@ -4,7 +4,7 @@
 	desc_extended = "AK-12 is a 5.45x39mm fully automatic rifle renowned for its precision and the ability to shoot at faster rates than the more widespread AK-13. Smaller caliber allows it to have less recoil, yet it doesn't make it any weaker - rifle is fine, as always. Currently in use by the Space Russia's special forces (they don't really like to change equipment if it works finely) and elite revolutionaries, seemingly receiving batches of this weapon by black markets and deals with the government. Cheap as hell, effective and easy to maintain - a dream weapon for anyone, but rare to come by."
 	icon = 'icons/obj/item/weapons/ranged/rifle/auto_545.dmi'
 	icon_state = "inventory"
-	value = 450
+	value = 2000
 
 	shoot_delay = 2
 
@@ -30,7 +30,8 @@
 	ai_heat_sensitivity = 1.5
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
@@ -60,11 +61,7 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_static_spread()
-	if(!wielded)
-		return 0.12
-	return 0.006
+	return 0.004
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_skill_spread(var/mob/living/L)
-	if(!heat_current)
-		return 0
-	return max(0,0.04 - (0.07 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))

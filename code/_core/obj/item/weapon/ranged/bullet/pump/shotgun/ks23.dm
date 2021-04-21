@@ -4,19 +4,19 @@
 	desc_extended = "A russian shotgun with a rifled barrel and a 23mm bore."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/ks23.dmi'
 	icon_state = "inventory"
+	value = 1800
 
 	can_wield = TRUE
 
 	dan_mode = TRUE
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = FALSE
 
 	bullet_count_max = 3
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
-
 
 	bullet_length_min = 73
 	bullet_length_best = 75
@@ -26,16 +26,8 @@
 	bullet_diameter_best = 23
 	bullet_diameter_max = 25
 
-
-
-
-
 	size = SIZE_4
 	weight = 16
-
-
-	value = 80
-
 
 	heat_max = 0.18
 

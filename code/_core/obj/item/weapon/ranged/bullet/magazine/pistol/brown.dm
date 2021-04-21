@@ -2,11 +2,9 @@
 	name = ".40 Brown"
 	icon = 'icons/obj/item/weapons/ranged/pistol/40.dmi'
 	desc_extended = "A decently powerful and accurate .40 semi-automatic pistol meant for self defense. Commonly used by mercenaries."
-	value = 110
+	value = 600
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1.25
-
-
 
 	movement_spread_base = 0.0075
 	inaccuracy_modifier = 0.5
@@ -15,7 +13,7 @@
 	automatic = FALSE
 
 	size = SIZE_2
-
+	weight = 4
 
 	heat_max = 0.10
 
@@ -63,7 +61,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_static_spread()
-	return 0
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

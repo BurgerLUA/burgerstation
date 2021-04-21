@@ -4,6 +4,7 @@
 	desc = "Long distance Poisoning"
 	desc_extended = "In the older days, poisoners had to rely on clever tricks, distraction and sleight-of-hand in order to poison their enemies. Luckily, we live in gentler times, so now you can just shoot em with poison syringes."
 	icon_state = "inventory"
+	value = 1200
 
 	shoot_delay = 8
 
@@ -16,9 +17,7 @@
 	size = SIZE_3
 	weight = 8
 
-
 	override_icon_state = TRUE
-
 
 	heat_max = 0.03
 
@@ -29,11 +28,6 @@
 	bullet_diameter_min = 18.5
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 18.5
-
-	size = SIZE_3
-
-
-	value = 150
 
 	ai_heat_sensitivity = 2
 
@@ -94,5 +88,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

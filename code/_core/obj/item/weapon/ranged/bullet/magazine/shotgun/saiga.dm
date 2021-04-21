@@ -4,7 +4,7 @@
 	desc_extended = "The 20g Saiga is an insanely powerful semiautomatic AK-based shotgun, nicknamed \"Saiga\" because it's Saiga. <br> The description designer wasn't very original, it seems."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/saiga.dmi'
 	icon_state = "inventory"
-	value = 550
+	value = 2700
 
 	shoot_delay = 3
 
@@ -14,13 +14,10 @@
 
 	can_wield = TRUE
 
-
-
 	size = SIZE_4
 	weight = 12
 
-
-	heat_max = 0.4
+	heat_max = 0.2
 
 	bullet_length_min = 17
 	bullet_length_best = 17.5
@@ -29,8 +26,6 @@
 	bullet_diameter_min = 17
 	bullet_diameter_best = 17.5
 	bullet_diameter_max = 18
-
-	value = 300
 
 	ai_heat_sensitivity = 0.75
 
@@ -80,5 +75,4 @@
 	return 0.007
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.08 - (0.15 * L.get_skill_power(SKILL_RANGED)))

@@ -4,9 +4,9 @@
 	desc_extended = "A modified version of the silent Vintorez sniper rifle, the assault rifle was designed as a special forces weapon."
 	icon = 'icons/obj/item/weapons/ranged/rifle/939_val.dmi'
 	icon_state = "inventory"
-	value = 500
+	value = 2000
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
@@ -19,7 +19,7 @@
 	size = SIZE_4
 	weight = 12
 
-	heat_max = 0.3
+	heat_max = 0.1
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -59,10 +59,7 @@
 	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread()
-	if(!wielded) return 0.04
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_skill_spread(var/mob/living/L)
-	if(!heat_current)
-		return 0
 	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))

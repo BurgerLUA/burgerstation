@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/semi.dmi'
 	icon_state = "inventory"
 
+	value = 3000
+
 	shoot_delay = 3
 
 	automatic = FALSE
@@ -15,13 +17,8 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-
-
 	size = SIZE_3
-	weight = 10
-
-	value = 800
-
+	weight = 12
 
 	heat_max = 0.16
 
@@ -65,28 +62,18 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.5
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_base_value()
-	. = ..()
-	. *= 1.1 //Compensates for the auto-pump code.
-	. += 300 //Compensates for the auto-pump code.
-
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_static_spread()
-	if(!wielded)
-		return 0.2
 	return 0.007
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_base_spread()
 	return 0.07
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/handle_ammo(var/mob/caller)
-
 	. = ..()
-
 	pump(silent = TRUE)
 

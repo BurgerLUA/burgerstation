@@ -4,11 +4,11 @@
 	desc_extended = "The 4.6x30mm DMCA is an extremely robust automatic weapon capable of sending a volley of penetrating small arms."
 	icon = 'icons/obj/item/weapons/ranged/rifle/dmca.dmi'
 	icon_state = "inventory"
-	value = 400
+	value = 2000
 
 	shoot_delay = 1
-	burst_delay = 6
-	max_bursts = 3
+	burst_delay = 8
+	max_bursts = 5
 
 	damage_mod = 1.3
 
@@ -21,7 +21,7 @@
 	size = SIZE_4
 	weight = 25
 
-	heat_max = 0.06
+	heat_max = 0.03
 
 	bullet_length_min = 25
 	bullet_length_best = 30
@@ -75,9 +75,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()
-	if(!wielded) return 0.2
-	return 0
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

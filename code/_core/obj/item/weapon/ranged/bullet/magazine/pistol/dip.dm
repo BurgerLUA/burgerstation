@@ -7,8 +7,6 @@
 	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
 
-
-
 	movement_spread_base = 0.001
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0
@@ -16,8 +14,7 @@
 	automatic = TRUE
 
 	size = SIZE_2
-	weight = 1
-
+	weight = 2
 
 	heat_max = 0.005
 

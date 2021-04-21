@@ -4,10 +4,11 @@
 	desc_extended = "An absolutely ridiculous 3 barreled shotgun that holds giant 23x75mmR rounds."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/power.dmi'
 	icon_state = "inventory"
+	value = 1800
 
 	shoot_delay = 2
 
-	damage_mod = 1.3
+	damage_mod = 1.2
 
 	automatic = TRUE
 
@@ -28,10 +29,7 @@
 	bullet_diameter_best = 23
 	bullet_diameter_max = 25
 
-
 	heat_max = 0.18
-
-	value = 600
 
 	open = TRUE
 

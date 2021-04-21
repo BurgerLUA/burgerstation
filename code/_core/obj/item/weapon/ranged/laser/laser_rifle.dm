@@ -3,6 +3,7 @@
 	desc = "Pew pew pew!"
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
 	icon = 'icons/obj/item/weapons/ranged/laser/modular.dmi'
+	value = 2000
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/rifle
@@ -19,10 +20,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 60
 
-
-
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
-
 
 	heat_max = 0.1
 
@@ -33,8 +31,6 @@
 
 	size = SIZE_4
 	weight = 14
-
-	value = 900
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
@@ -73,7 +69,6 @@
 	movement_spread_base = 0.04
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
-	if(wielded) return 0
 	return 0.0005
 
 /obj/item/weapon/ranged/energy/rifle/get_skill_spread(var/mob/living/L)
@@ -115,7 +110,7 @@
 		"barrel" = "#FFFF00"
 	)
 
-	value = 1100
+	value = 2200
 
 /obj/item/weapon/ranged/energy/rifle/xray
 	name = "AER13c X-Ray Rifle"
@@ -134,7 +129,7 @@
 		"barrel" = "#00FF00"
 	)
 
-	value = 1500
+	value = 2800
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad
 	name = "AER13c-D X-Ray Rifle"
@@ -152,7 +147,7 @@
 
 	battery = /obj/item/powercell/recharging
 
-	value = 2000
+	value = 3500
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad/Generate()
 

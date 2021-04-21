@@ -4,9 +4,9 @@
 	desc_extended = "This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specifically developed for rapid response units. The main differences are its 9x39 caliber ammunition, bullpup layout and extensive configuration options."
 	icon = 'icons/obj/item/weapons/ranged/rifle/939_groza.dmi'
 	icon_state = "inventory"
-	value = 175
+	value = 1700
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	damage_mod = 1.1
 
@@ -16,10 +16,10 @@
 
 	can_wield = FALSE
 
-	size = SIZE_4
-	weight = 7
+	size = SIZE_3
+	weight = 8
 
-	heat_max = 0.3
+	heat_max = 0.15
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -58,10 +58,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_static_spread()
-	if(!wielded)
-		return 0.06
-	return 0.03
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.008 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))

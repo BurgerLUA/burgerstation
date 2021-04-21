@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton
 	name = "9mm Laton Pistol"
 	desc = "9mm is all you need."
-	desc_extended = "NT's standard pistol, chambered in the superior 9mm cartridge."
-	value = 90
+	desc_extended = "NT's standard pistol, chambered in the superior 9mm cartridge. It's very easy to use and recommended for beginners."
+	value = 300
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt_2.dmi'
-	shoot_delay = 3
+	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
 	movement_spread_base = 0.002
@@ -59,7 +59,7 @@
 	attachment_undermount_offset_y = 16 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_static_spread()
-	return 0.001
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)) )
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)) )

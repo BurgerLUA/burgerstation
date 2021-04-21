@@ -5,7 +5,9 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1.5
+	value = 800
+
+	shoot_delay = 1.4
 
 	automatic = TRUE
 
@@ -13,16 +15,10 @@
 
 	can_wield = FALSE
 
-
-
-
-
 	size = SIZE_2
-	weight = 7
+	weight = 8
 
-
-
-	heat_max = 0.09
+	heat_max = 0.1
 
 	bullet_length_min = 16
 	bullet_length_best = 19
@@ -31,8 +27,6 @@
 	bullet_diameter_min = 8.5
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
-
-	value = 120
 
 	ai_heat_sensitivity = 0.5
 
@@ -77,5 +71,4 @@
 	return 0.015
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

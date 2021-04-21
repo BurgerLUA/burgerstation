@@ -1,11 +1,11 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
 	name = ".45 1911 Pistol"
 	desc = "No rubber rounds here; it's all lethal."
-	desc_extended = "A common pistol used by modern police forces as well as some private military corporations."
-	value = 30
+	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Americans."
+	value = 700
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 4
+	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 
@@ -19,9 +19,7 @@
 	size = SIZE_2
 	weight = 5
 
-
-
-	heat_max = 0.12
+	heat_max = 0.07
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -67,10 +65,10 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread()
-	return 0.005
+	return 0.003
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
 	name = ".45 1911 Pistol MOD"
@@ -79,18 +77,14 @@
 	The sight system is original, too. The thumb safety is extended to make it easier on the finger. A long-type trigger with non-slip grooves. A ring hammer... \
 	The base of the trigger guard's been filed down for a higher grip. And not only that, nearly every part of this gun has been expertly crafted and customized. \
 	Where'd you get something like this?"
-	value = 50
+	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
 	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
 
-
-
 	size = SIZE_2
 
-
-
-	heat_max = 0.12
+	heat_max = 0.04
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE,
@@ -114,4 +108,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.03 * L.get_skill_power(SKILL_RANGED)))

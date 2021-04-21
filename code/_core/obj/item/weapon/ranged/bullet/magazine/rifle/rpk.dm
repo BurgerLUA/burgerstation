@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk
 	name = "\improper 5.45x39mm RPK-16"
 	desc = "Killa's weapon of choice."
-	desc_extended = "RPK-16 is a 5.45x39mm LMG. <br> Get me a better description writer pls or else I'll die of imagination't."
+	desc_extended = "RPK-16 is a 5.45x39mm LMG."
 	icon = 'icons/obj/item/weapons/ranged/rifle/PKM.dmi' //it's rpk but icon is pkm but you don't worry I just fucked up.
 	icon_state = "inventory"
-	value = 650
+	value = 4000
 
-	shoot_delay = 2
+	shoot_delay = 1.75
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -15,9 +15,9 @@
 	automatic = TRUE
 
 	size = SIZE_5
-	weight = 18
+	weight = 20
 
-	heat_max = 1
+	heat_max = 0.5
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -60,11 +60,7 @@
 	movement_spread_base = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
-	if(!wielded)
-		return 0.16
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_skill_spread(var/mob/living/L)
-	if(!heat_current)
-		return 0
 	return max(0,0.1 - (0.11 * L.get_skill_power(SKILL_RANGED)))

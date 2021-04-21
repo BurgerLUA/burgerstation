@@ -4,7 +4,8 @@
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
 	icon_state = "inventory"
-	value = 70
+
+	value = 1200
 
 	shoot_delay = 4
 
@@ -16,13 +17,8 @@
 
 	can_wield = TRUE
 
-
-
 	size = SIZE_4
 	weight = 12
-
-	value = 130
-
 
 	heat_max = 0.08
 
@@ -67,7 +63,6 @@
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_base_spread()
@@ -78,6 +73,7 @@
 	desc = "A very robust combat shotgun. This one has been modified to be have a pistol grip and be shorter."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat_mod.dmi'
 	icon_state = "inventory"
+	value = 800
 
 	shoot_delay = 2
 
@@ -85,25 +81,16 @@
 
 	bullet_count_max = 6
 
-
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 
-
-
-
-
 	size = SIZE_3
-
-
-	value = 150
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread()
 	return 0.004
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_base_spread()

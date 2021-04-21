@@ -4,9 +4,9 @@
 	desc_extended = "The 7.62x39 is THE rifle for shady Eastern European uprisings. Reliable, inaccurate, and comes only in automatic to train those recruits to at least hit the target."
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia.dmi'
 	icon_state = "inventory"
-	value = 100
+	value = 500
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -17,7 +17,7 @@
 	size = SIZE_4
 	weight = 12
 
-	heat_max = 0.3
+	heat_max = 0.2
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -68,10 +68,8 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread()
-	if(!wielded)
-		return 0.15
-	return 0.005
+	return 0.008
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.05 * L.get_skill_power(SKILL_RANGED)))

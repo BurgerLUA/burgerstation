@@ -4,6 +4,7 @@
 	desc_extended = "A replica of a past relic, this double action revolver fires .45 pistol rounds. Not very practical, but at least you'll look cool using it."
 	icon = 'icons/obj/item/weapons/ranged/revolver/45.dmi'
 	icon_state = "inventory"
+	value = 400
 
 	shoot_delay = 1
 
@@ -13,13 +14,8 @@
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
-
-
-
-
 	size = SIZE_1
 	weight = 5
-
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -29,10 +25,7 @@
 	bullet_diameter_best = 11.43
 	bullet_diameter_max = 12
 
-
-	heat_max = 0.1
-
-	value = 400
+	heat_max = 0.05
 
 	open = TRUE //Starts open.
 

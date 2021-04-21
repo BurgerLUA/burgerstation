@@ -4,6 +4,7 @@
 	desc_extended = "Originally developed in 1958 and still used as the primary Designated Marskman weapon pretty much everywhere, proving the superiority of Soviet Engineering."
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_snipe.dmi'
 	icon_state = "inventory"
+	value = 1800
 
 	shoot_delay = 6
 
@@ -16,14 +17,8 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-
-
-
-
 	size = SIZE_5
 	weight = 15
-
-
 
 	heat_max = 0.07
 
@@ -36,9 +31,6 @@
 	bullet_diameter_max = 7.7
 
 	size = SIZE_4
-
-
-	value = 400
 
 	ai_heat_sensitivity = 2
 
@@ -79,5 +71,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/svd/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.002 - (0.003 * L.get_skill_power(SKILL_RANGED)))

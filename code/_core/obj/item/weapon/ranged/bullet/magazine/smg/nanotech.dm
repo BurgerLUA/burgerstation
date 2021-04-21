@@ -4,6 +4,9 @@
 	desc_extended = "Nanotrasen's answer to the fearsome C-20r, this one has a higher firerate at the cost of a smaller round."
 	icon = 'icons/obj/item/weapons/ranged/smg/9mm_2.dmi'
 	icon_state = "inventory"
+	value = 2200
+
+	damage_mod = 1.2
 
 	shoot_delay = 1.5
 
@@ -15,15 +18,10 @@
 
 	override_icon_state = TRUE
 
-
-
-
-
 	size = SIZE_3
-	weight = 7
+	weight = 9
 
-
-	heat_max = 0.05
+	heat_max = 0.04
 
 	bullet_length_min = 16
 	bullet_length_best = 19
@@ -32,8 +30,6 @@
 	bullet_diameter_min = 8.5
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
-
-	value = 200
 
 	ai_heat_sensitivity = 0.5
 
@@ -81,5 +77,4 @@
 	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return 0.02 - (0.04 * L.get_skill_power(SKILL_RANGED))

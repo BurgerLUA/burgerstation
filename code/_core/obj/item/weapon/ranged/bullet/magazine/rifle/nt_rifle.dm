@@ -4,7 +4,7 @@
 	desc_extended = "A cheap yet still reliable assault rifle primarily used and mass produced by NanoTrasen PMCs."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_1.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 1100
 
 	shoot_delay = 2.5
 
@@ -17,7 +17,7 @@
 	size = SIZE_4
 	weight = 10
 
-	heat_max = 0.06
+	heat_max = 0.05
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -69,9 +69,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_static_spread()
-	if(!wielded) return 0.15
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

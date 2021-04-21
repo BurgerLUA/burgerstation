@@ -4,16 +4,15 @@
 	desc_extended = "Private Detectives still carry snub-nose revolvers due to them packing a bigger punch in a much smaller guns. Can be useful in a pinch."
 	icon = 'icons/obj/item/weapons/ranged/revolver/38.dmi'
 	icon_state = "inventory"
+	value = 300
 
-	shoot_delay = 1.5
+	shoot_delay = 1.25
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
-
-
 
 	size = SIZE_1
 	weight = 5
@@ -26,10 +25,7 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-
-	heat_max = 0.1
-
-	value = 75
+	heat_max = 0.05
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -71,4 +67,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))

@@ -5,7 +5,9 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_lmg_2.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2.5
+	value = 4000
+
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -15,9 +17,6 @@
 
 	can_wield = TRUE
 	wield_only = TRUE
-
-
-	size = SIZE_5
 
 	heat_max = 0.06
 
@@ -30,8 +29,6 @@
 	bullet_diameter_max = 7.7
 
 	size = SIZE_4
-
-	value = 1100
 	weight = 25
 
 	ai_heat_sensitivity = 0.1
@@ -78,5 +75,4 @@
 	return 0.015
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))

@@ -4,6 +4,7 @@
 	desc_extended = "A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical."
 	icon = 'icons/obj/item/weapons/ranged/rifle/939_vintar.dmi'
 	icon_state = "inventory"
+	value = 1200
 
 	shoot_delay = 3
 
@@ -16,11 +17,10 @@
 	can_wield = TRUE
 	wield_only = FALSE
 
-
 	size = SIZE_4
 	weight = 14
 
-	heat_max = 0.3
+	heat_max = 0.1
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -31,9 +31,6 @@
 	bullet_diameter_max = 10
 
 	size = SIZE_4
-
-
-	value = 450
 
 	ai_heat_sensitivity = 2
 
@@ -64,9 +61,7 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread()
-	if(!wielded) return 0.005
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))

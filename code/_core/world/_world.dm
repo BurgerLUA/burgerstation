@@ -29,7 +29,7 @@ var/global/world_state = STATE_STARTING
 
 /world/New()
 	__detect_rust_g()
-	..()
+	. = ..()
 	life()
 
 /world/proc/update_server_status()

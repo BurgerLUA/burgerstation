@@ -4,7 +4,7 @@
 	desc_extended = "The SVT-40 is a Russian Rifle most well known for killing Nazis. Now you too can carry that legacy in your hands!"
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_svt.dmi'
 	icon_state = "inventory"
-	value = 300
+	value = 800
 
 	shoot_delay = 6
 
@@ -14,14 +14,8 @@
 
 	can_wield = TRUE
 
-
-
-
-
 	size = SIZE_4
 	weight = 14
-
-
 
 	heat_max = 0.08
 
@@ -74,9 +68,7 @@
 	movement_spread_base = 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_static_spread()
-	if(!wielded) return 0.2
-	return 0
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.008 - (0.016 * L.get_skill_power(SKILL_RANGED)))

@@ -4,7 +4,7 @@
 	desc_extended = "Leftover surplus guns left by the good ol days of syndicate raiding parties. While old and outdated, it still sees some uses by old and new syndicate forces."
 	icon = 'icons/obj/item/weapons/ranged/rifle/223.dmi'
 	icon_state = "inventory"
-	value = 100
+	value = 900
 
 	shoot_delay = 2
 
@@ -14,16 +14,10 @@
 
 	can_wield = FALSE
 
-
-
-
-
 	size = SIZE_3
 	weight = 8
 
-
-
-	heat_max = 0.09
+	heat_max = 0.1
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -88,11 +82,10 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_static_spread()
-	return 0.005
+	return 0.007
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.02 - (0.05 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")
 	return 'sound/weapons/gun/smg/smg_rack.ogg'
@@ -104,12 +97,12 @@
 	heat_max = 0.12
 
 	size = SIZE_2
+	weight = 4
 
-
-	value = 120
+	value = 800
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread()
-	return 0.05
+	return 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(var/mob/living/L)
-	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))

@@ -4,6 +4,7 @@
 	desc_extended = "A powerful energy weapon that shoots strong ionized bursts of electricity. Excellent for destroying mechs."
 	icon = 'icons/obj/item/weapons/ranged/laser/ion.dmi'
 	rarity = RARITY_RARE
+	value = 3000
 
 	projectile = /obj/projectile/bullet/laser/ion
 	ranged_damage_type = /damagetype/ranged/laser/ion
@@ -17,19 +18,14 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-
-
 	shoot_sounds = list('sound/weapons/ion/shoot.ogg')
 
 	override_icon_state = TRUE
-
 
 	heat_max = 0.03
 
 	size = SIZE_4
 	weight = 18
-
-	value = 2000
 
 	dan_mode = TRUE
 

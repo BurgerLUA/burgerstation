@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine
 	name = "\improper 5.56mm BP-SOL"
 	desc = "A taste of SOL weaponry."
-	desc_extended = "An older version of a carbine. Despite its age, many PMCs consider this carbine superior as it doesn't have any firerate limiters, allowing it to fire 600 rounds per second."
+	desc_extended = "An older version of a carbine. Despite its age, many PMCs consider this carbine superior as it doesn't have any firerate limiters, allowing it to fire 600 rounds per second. Kicks like a mule, though."
 	icon = 'icons/obj/item/weapons/ranged/rifle/556_carbine.dmi'
 	icon_state = "inventory"
-	value = 150
+	value = 2900
 
-	shoot_delay = 2
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -15,9 +15,9 @@
 	can_wield = FALSE
 
 	size = SIZE_3
-	weight = 10
+	weight = 12
 
-	heat_max = 0.08
+	heat_max = 0.12
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -67,11 +67,8 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.005
 
-
-
 /obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_static_spread()
-	return 0.0075
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))

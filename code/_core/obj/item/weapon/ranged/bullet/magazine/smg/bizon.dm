@@ -4,10 +4,9 @@
 	desc_extended = "PP-19, also known as 'Bizon', is a 9x19 chambered submachine gun with an incredibly high ammo capacity."
 	icon = 'icons/obj/item/weapons/ranged/smg/bison.dmi'
 	icon_state = "inventory"
-	value = 300
+	value = 2000
 
-	shoot_delay = 1.5
-
+	shoot_delay = 1.25
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -18,9 +17,7 @@
 	size = SIZE_3
 	weight = 9
 
-
-
-	heat_max = 0.64
+	heat_max = 0.2
 
 	bullet_length_min = 16
 	bullet_length_best = 19
@@ -63,11 +60,7 @@
 	movement_spread_base = 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bizon/get_static_spread()
-	if(!wielded)
-		return 0.16
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bizon/get_skill_spread(var/mob/living/L)
-	if(!heat_current)
-		return 0
-	return max(0,0.1 - (0.11 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.1 - (0.2 * L.get_skill_power(SKILL_RANGED)))

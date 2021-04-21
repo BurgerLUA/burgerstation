@@ -3,22 +3,18 @@
 	desc = "Shiny!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'
-	value = 400
-	shoot_delay = 6
+	value = 800
+	shoot_delay = 5
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5
 
-
-
 	size = SIZE_2
-	weight = 6
+	weight = 8
 
-
-
-	heat_max = 0.3
+	heat_max = 0.2
 
 	bullet_length_min = 30
 	bullet_length_best = 33
@@ -63,7 +59,7 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread()
-	return 0.005
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)) )
@@ -73,24 +69,21 @@
 	desc = "Now in gold!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
-	value = 800
+	value = 3000
+	weight = 15
+	value_burgerbux = 1
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night
-	name = ".50 Night Eagle+"
+	name = ".50 Night Eagle"
 	desc = "Badass!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is painted black and upgraded with high quality parts."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_black.dmi'
-	value = 1200
+	value = 1400
 
 	shoot_delay = 4
 
-
-
-	weight = 8
-
-
-	heat_max = 0.2
+	heat_max = 0.15
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
 

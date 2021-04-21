@@ -1,7 +1,8 @@
 SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
 	name = "Balance Subsystem"
 	desc = "Makes a report of weapons."
-	priority = SS_ORDER_REPORT
+
+	priority = SS_ORDER_POSTLOAD
 
 	var/list/stored_dps = list()
 	var/list/weapon_to_bullet = list()
@@ -35,7 +36,16 @@ SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
 
 		var/found_dps = W.get_dps()
 		if(found_dps)
-			stored_dps[W.type] = found_dps
+			stored_dps[W.type] = CEILING(found_dps,1)
+			/*
+			var/recommended_value = CEILING(100 + (found_dps*0.16)**2,100)
+			var/current_value = W.get_base_value()
+			if(current_value > 0)
+				if(current_value > recommended_value*1.25)
+					log_debug("[W.type] seems to be more expensive ([current_value]) than the recommended value ([recommended_value]). Consider decreasing the weapon cost or buffing the weapon.")
+				else if(current_value < recommended_value*0.75)
+					log_debug("[W.type] seems to be cheaper ([current_value]) than the recommended value ([recommended_value]). Consider increasing the weapon cost or nerfing the weapon.")
+			*/
 
 		qdel(W)
 

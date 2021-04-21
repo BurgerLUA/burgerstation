@@ -4,8 +4,9 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_6.dmi'
 	icon_state = "inventory"
+	value = 3500
 
-	shoot_delay = 1.75
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -67,15 +68,11 @@
 
 	dan_mode = TRUE
 
-	value = 1000
-
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light/get_static_spread()
-	if(!wielded)
-		return 0.1
 	return 0.0075
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light/get_skill_spread(var/mob/living/L)

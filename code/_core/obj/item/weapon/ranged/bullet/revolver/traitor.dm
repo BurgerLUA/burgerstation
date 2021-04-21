@@ -4,24 +4,18 @@
 	desc_extended = "An Italian made 357 revolver, the Traditore is so cheap it's basically ubiquitous, often ending up among the hands of those of less than savory repute."
 	icon = 'icons/obj/item/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
+	value = 300
 
-	shoot_delay = 5
+	shoot_delay = 3
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
-
-
 	shoot_sounds = list('sound/weapons/traitor/fire.ogg')
-
-
 
 	size = SIZE_2
 	weight = 7
-
-
-
 
 	bullet_length_min = 20
 	bullet_length_best = 33
@@ -31,10 +25,7 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	value = 80
-
-
-	heat_max = 0.1
+	heat_max = 0.05
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -76,7 +67,7 @@
 
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread()
-	return 0
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))

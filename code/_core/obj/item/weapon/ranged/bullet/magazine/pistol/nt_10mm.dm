@@ -4,7 +4,7 @@
 	desc_extended = "The 10mm NanoTrasen Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_nt.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 500
 
 	shoot_delay = 3
 
@@ -19,7 +19,7 @@
 	can_wield = FALSE
 
 	size = SIZE_2
-	weight = 5
+	weight = 6
 
 	heat_max = 0.09
 
@@ -84,12 +84,9 @@
 
 	automatic = TRUE
 
+	weight = 7
 
-
-	weight = 6
-
-
-	heat_max = 0.09
+	heat_max = 0.11
 
 	attachment_barrel_offset_x = 27 - 16
 	attachment_barrel_offset_y = 21 - 16

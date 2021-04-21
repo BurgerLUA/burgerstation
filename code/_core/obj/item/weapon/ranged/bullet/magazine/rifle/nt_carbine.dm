@@ -4,7 +4,7 @@
 	desc_extended = "A small carbine rifle that was intended to phase out the much older AR-SS13. Turns out, people still like the AR-SS13 for what it does, so it exists alongside it."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_2.dmi'
 	icon_state = "inventory"
-	value = 150
+	value = 1000
 
 	shoot_delay = 2
 
@@ -17,9 +17,9 @@
 	can_wield = TRUE
 
 	size = SIZE_3
-	weight = 9
+	weight = 10
 
-	heat_max = 0.1
+	heat_max = 0.05
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -71,9 +71,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread()
-	if(wielded) return 0.005
 	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_skill_spread(var/mob/living/L)
-	if(!heat_current)return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))

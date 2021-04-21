@@ -4,8 +4,9 @@
 	desc_extended = "The Dragon Sniper Rifle is a versatile option as both a Squad Support weapon and an assassination weapon, but suffers against more heavily armored targets."
 	icon = 'icons/obj/item/weapons/ranged/rifle/762.dmi'
 	icon_state = "inventory"
+	value = 3200
 
-	shoot_delay = 8
+	shoot_delay = 4
 
 	automatic = FALSE
 
@@ -16,16 +17,10 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-
-
-
-
 	size = SIZE_5
 	weight = 20
 
-
-
-	heat_max = 0.07
+	heat_max = 0.04
 
 	bullet_length_min = 46
 	bullet_length_best = 51
@@ -37,12 +32,9 @@
 
 	size = SIZE_4
 
-
-	value = 400
-
 	ai_heat_sensitivity = 2
 
-	zoom_mul = 2
+	zoom_mul = 3
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
@@ -54,5 +46,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.004 - (0.004 * L.get_skill_power(SKILL_RANGED)))

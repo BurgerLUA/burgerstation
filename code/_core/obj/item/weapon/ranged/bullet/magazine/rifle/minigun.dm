@@ -4,7 +4,7 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/rifle/minigun.dmi'
 	icon_state = "inventory"
-	value = 3000
+	value = 10000
 
 	shoot_delay = 1.25 //Oh god oh fuck
 
@@ -12,12 +12,12 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg') //Need a fire sound that only lasts 0.5 seconds.
+	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
 
-	heat_max = 0.15
+	heat_max = 0.2
 
 	bullet_length_min = 25
 	bullet_length_best = 30
@@ -28,7 +28,7 @@
 	bullet_diameter_max = 5
 
 	size = SIZE_5
-	weight = 60
+	weight = 40
 
 	ai_heat_sensitivity = 0
 
@@ -52,14 +52,11 @@
 	movement_spread_base = 0.3
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
-	if(!wielded)
-		return 0.5
 	return 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.075 - (0.1 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 	. = ..()
-	. += (heat_max - heat_current)*10
+	. += (heat_max - heat_current)*5
