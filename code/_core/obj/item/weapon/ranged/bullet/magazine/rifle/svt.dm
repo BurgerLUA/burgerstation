@@ -10,6 +10,8 @@
 
 	automatic = FALSE
 
+	damage_mod = 1.3
+
 	shoot_sounds = list('sound/weapons/308/shoot.ogg')
 
 	can_wield = TRUE

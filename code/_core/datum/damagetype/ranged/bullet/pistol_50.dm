@@ -13,8 +13,7 @@
 		PIERCE = 50
 	)
 
-	falloff = VIEW_RANGE
-
+	falloff = VIEW_RANGE*0.75
 
 /damagetype/ranged/bullet/pistol_50/ap
 	name = "ap pistol bullet"

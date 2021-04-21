@@ -94,4 +94,4 @@
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_base_spread()
-	return 0.15
+	return 0.2

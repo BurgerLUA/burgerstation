@@ -71,7 +71,7 @@
 	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_base_spread()
-	return 0.07
+	return 0.2
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/handle_ammo(var/mob/caller)
 	. = ..()

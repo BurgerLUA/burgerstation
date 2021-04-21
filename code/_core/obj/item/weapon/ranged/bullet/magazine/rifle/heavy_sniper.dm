@@ -9,7 +9,7 @@
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 20
 
-	damage_mod = 1.5
+	damage_mod = 2
 
 	automatic = FALSE
 

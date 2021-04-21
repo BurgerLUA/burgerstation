@@ -65,7 +65,7 @@
 	movement_spread_base = 0.06
 
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_base_spread()
-	return 0.1
+	return 0.2
 
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_static_spread()
 	return 0.01

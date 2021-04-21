@@ -13,7 +13,7 @@
 		PIERCE = 25
 	)
 
-	falloff = VIEW_RANGE
+	falloff = VIEW_RANGE*0.75
 
 
 /damagetype/ranged/bullet/pistol_12mm/ap

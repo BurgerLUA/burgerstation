@@ -12,7 +12,7 @@
 
 	automatic = FALSE
 
-	damage_mod = 1.4
+	damage_mod = 1.5
 
 	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
 

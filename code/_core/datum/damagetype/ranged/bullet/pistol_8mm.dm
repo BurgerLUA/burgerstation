@@ -13,7 +13,7 @@
 		PIERCE = 10*0.5
 	)
 
-	falloff = VIEW_RANGE
+	falloff = VIEW_RANGE*0.75
 
 /damagetype/ranged/bullet/pistol_8mm/surplus
 	damage_mod = SURPLUS_MUL

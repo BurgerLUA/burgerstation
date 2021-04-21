@@ -13,7 +13,7 @@
 		PIERCE = 90
 	)
 
-	falloff = VIEW_RANGE
+	falloff = VIEW_RANGE + ZOOM_RANGE*2
 
 /damagetype/ranged/bullet/revolver_300/surplus
 	damage_mod = SURPLUS_MUL

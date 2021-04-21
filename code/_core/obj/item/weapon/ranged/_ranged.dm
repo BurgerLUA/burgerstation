@@ -421,6 +421,17 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
 			MUL(prone_mod,attachment_stats["prone_mod"])
 
+		if(can_wield && !wielded)
+			movement_spread *= 2
+			movement_spread += 0.01
+			static_spread *= 2
+			static_spread += 0.02
+			view_punch_to_use *= 1.25
+			view_punch_to_use += TILE_SIZE*0.1
+			inaccuracy_modifer_to_use *= 3
+			inaccuracy_modifer_to_use += TILE_SIZE*0.2
+
+
 		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
 
 		/* The problem with this is that it adds more sounds to be played by guns, which is already insane :(

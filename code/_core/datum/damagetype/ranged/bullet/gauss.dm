@@ -13,7 +13,7 @@
 		PIERCE = 80
 	)
 
-	falloff = VIEW_RANGE*3
+	falloff = VIEW_RANGE + ZOOM_RANGE*3
 
 /damagetype/ranged/bullet/gauss_gun/surplus
 	damage_mod = SURPLUS_MUL

@@ -18,7 +18,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 25,
+		BLADE = 0,
 		BLUNT = 0,
 		PIERCE = 0
 	)
@@ -61,8 +61,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 5,
-		PIERCE = 60,
+		BLADE = 25,
+		PIERCE = 75,
 	)
 
 	falloff = 3

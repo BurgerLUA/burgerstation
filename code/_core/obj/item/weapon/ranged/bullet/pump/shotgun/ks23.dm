@@ -69,7 +69,7 @@
 	movement_inaccuracy_modifier = 0.25
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
-	return 0.03
+	return 0.1
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_static_spread()
 	return 0.003
