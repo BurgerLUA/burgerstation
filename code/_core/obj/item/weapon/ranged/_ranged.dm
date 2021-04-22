@@ -397,6 +397,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(is_living(caller))
 			var/mob/living/L = caller
 			skill_spread = get_skill_spread(L)
+			if(L.ai)
+				skill_spread += RAND_PRECISE(0.05,0.1)
 			movement_spread = get_movement_spread(L)
 			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED,0,0.5,1))
 			if(L.horizontal) prone = TRUE
