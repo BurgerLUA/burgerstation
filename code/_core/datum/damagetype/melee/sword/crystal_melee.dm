@@ -9,8 +9,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 0
-		ARCANE = 25,
+		BLUNT = 0,
+		ARCANE = 25
 	)
 
 	attribute_stats = list(
@@ -47,8 +47,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = 75
-		ARCANE = 75,
+		PIERCE = 75,
+		ARCANE = 75
 	)
 
 	attribute_stats = list(

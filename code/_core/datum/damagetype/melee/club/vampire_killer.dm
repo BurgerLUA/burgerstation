@@ -3,7 +3,7 @@
 
 	attack_damage_base = list(
 		BLUNT = 10,
-		BLADE = 10
+		BLADE = 10,
 		HOLY = 0
 	)
 
