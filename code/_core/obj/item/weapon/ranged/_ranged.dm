@@ -430,8 +430,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			static_spread += 0.02
 			view_punch_to_use *= 1.25
 			view_punch_to_use += TILE_SIZE*0.1
-			inaccuracy_modifer_to_use *= 3
-			inaccuracy_modifer_to_use += TILE_SIZE*0.2
 
 
 		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
