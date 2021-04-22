@@ -7,7 +7,7 @@
 	damage_type = /damagetype/melee/sword/grazer
 	damage_type_on = /damagetype/melee/sword/grazer/on
 
-	value = 80
+	value = 120
 
 	dan_mode = TRUE
 

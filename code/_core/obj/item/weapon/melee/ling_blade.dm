@@ -7,6 +7,7 @@
 	damage_type = /damagetype/melee/sword/armblade
 
 	value = -1
+	value_burgerbux = 1
 
 	drop_sound = 'sound/items/drop/axe.ogg'
 

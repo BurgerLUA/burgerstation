@@ -2,11 +2,11 @@
 	name = "lighter"
 
 	attack_damage_base = list(
-		BLUNT = 15*0.75
+		BLUNT = 10
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = 10
+		BLUNT = 0
 	)
 
 	attribute_stats = list()
