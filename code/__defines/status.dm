@@ -80,5 +80,5 @@
 
 #define STRESSED "stressed"
 
-#define COMBAT_STIM "combatstim"
+#define STIM "stimulated"
 //Getting high as kite&ignoring boolet
