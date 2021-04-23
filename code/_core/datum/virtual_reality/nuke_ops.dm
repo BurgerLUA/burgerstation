@@ -168,17 +168,13 @@
 
 /virtual_reality/team/nuke_ops/proc/generate_spawnpoints()
 
-	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,syndicate_marker)
-	var/turf/syndicate_marker_2 = get_step(syndicate_marker,EAST)
-	CREATE(/obj/structure/interactive/vending/virtual_reality/weapons,syndicate_marker_2)
-	var/turf/syndicate_marker_3 = get_step(syndicate_marker,WEST)
-	tracked_nuke = CREATE(/obj/structure/interactive/vr_nuke,syndicate_marker_3)
+	CREATE(/obj/structure/interactive/vr_shop,syndicate_marker)
+	var/turf/nuke_loc = get_step(syndicate_marker,WEST)
+	tracked_nuke = CREATE(/obj/structure/interactive/vr_nuke,nuke_loc)
 
-	CREATE(/obj/structure/interactive/vending/virtual_reality/ammo,nanotrasen_marker)
-	var/turf/nanotrasen_marker_2 = get_step(nanotrasen_marker,EAST)
-	CREATE(/obj/structure/interactive/vending/virtual_reality/weapons,nanotrasen_marker_2)
+	CREATE(/obj/structure/interactive/vr_shop,nanotrasen_marker)
 
-	tracked_nuke.nuke_area = pick(vr_possible_nuke_areas)
+	tracked_nuke.nuke_area = get_area(objective_marker)
 
 	valid_syndicate_turfs = list()
 	for(var/turf/simulated/floor/F in view(VIEW_RANGE*0.5,syndicate_marker))
