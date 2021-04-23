@@ -26,11 +26,19 @@
 	icon_state = "arrow"
 	screen_loc = "CENTER,CENTER"
 
-/obj/hud/button/vendor_close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vendor_close/proc/close()
 
-	for(var/obj/hud/button/vendor_defer/VD in caller.buttons)
+	HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
+
+	for(var/obj/hud/button/vendor_defer/VD in owner.buttons)
 		VD.update_owner(null)
 
 	src.update_owner(null)
+
+
+
+/obj/hud/button/vendor_close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	close()
 
 	. = ..()

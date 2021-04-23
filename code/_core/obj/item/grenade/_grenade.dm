@@ -26,11 +26,11 @@
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("open")
-	
+
 /obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("open")
-	
+
 /obj/item/grenade/Destroy()
 
 	QDEL_NULL(stored_trigger)
@@ -54,7 +54,7 @@
 			var/obj/item/container/beaker/B = k
 			.["stored_containers"] += list(B.save_item_data(save_inventory))
 
-	
+
 /obj/item/grenade/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
@@ -65,7 +65,7 @@
 		for(var/k in object_data["stored_containers"])
 			stored_containers += load_and_create(P,k,src)
 
-	
+
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
 	if(alpha == 0)
@@ -82,11 +82,11 @@
 	else
 		trigger(owner,source,-1,-1)
 
-	
+
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-	
+
 /obj/item/grenade/Generate()
 
 	. = ..()
@@ -104,7 +104,7 @@
 
 	update_sprite()
 
-	
+
 /obj/item/grenade/update_icon()
 
 	if(length(stored_containers) && stored_trigger)
@@ -254,4 +254,14 @@
 /obj/item/grenade/timed/explosive/large/Generate()
 	stored_containers += new /obj/item/container/beaker/large/water(src)
 	stored_containers += new /obj/item/container/beaker/large/potassium(src)
+	return ..()
+
+/obj/item/grenade/timed/smoke/
+	name = "timed smoke grenade"
+	desc = "Kaboomish!"
+	desc_extended = "A prebuilt timed smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
+
+/obj/item/grenade/timed/smoke/Generate()
+	stored_containers += new /obj/item/container/beaker/smoke_01(src)
+	stored_containers += new /obj/item/container/beaker/smoke_02(src)
 	return ..()

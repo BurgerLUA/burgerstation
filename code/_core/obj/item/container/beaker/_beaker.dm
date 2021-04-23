@@ -88,3 +88,13 @@
 /obj/item/container/beaker/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
+
+/obj/item/container/beaker/smoke_01/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/potassium,40)
+	return ..()
+
+/obj/item/container/beaker/smoke_02/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/phosphorous,40)
+	return ..()

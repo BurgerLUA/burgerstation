@@ -9,7 +9,8 @@
 		/obj/structure/interactive/vending/virtual_reality/weapons/smgs,
 		/obj/structure/interactive/vending/virtual_reality/weapons/shotguns,
 		/obj/structure/interactive/vending/virtual_reality/weapons/rifles,
-		/obj/structure/interactive/vending/virtual_reality/weapons/special
+		/obj/structure/interactive/vending/virtual_reality/weapons/special,
+		/obj/structure/interactive/vending/virtual_reality/weapons/gear
 	)
 
 	var/list/stored_vendors = list()
@@ -27,7 +28,7 @@
 		return ..()
 
 	for(var/obj/hud/button/vendor_close/VC in caller.buttons)
-		VC.clicked_on_by_object(caller,object,location,control,params)
+		VC.close()
 		return ..()
 
 	var/spacing = 3
@@ -48,6 +49,7 @@
 	var/obj/hud/button/vendor_close/V = new
 	V.update_owner(caller)
 	V.screen_loc = "CENTER+[spacing+1],CENTER"
+	HOOK_ADD("post_move","\ref[V]_post_move",caller,V,/obj/hud/button/vendor_close/proc/close)
 
 	return TRUE
 
@@ -175,4 +177,13 @@
 		/obj/item/magazine/sniper_127,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,
 		/obj/item/magazine/sniper_50
+	)
+
+/obj/structure/interactive/vending/virtual_reality/weapons/gear
+	icon = 'icons/obj/item/clothing/suit/bulletproof_vest.dmi'
+	stored_types = list(
+		/obj/item/clothing/overwear/armor/bulletproof/vr,
+		/obj/item/clothing/head/helmet/polymorphic/vr,
+		/obj/item/weapon/melee/torch/flashlight/maglight,
+		/obj/item/grenade/timed/explosive
 	)

@@ -21,3 +21,13 @@
 
 
 	value = 200
+
+
+/obj/item/clothing/overwear/armor/bulletproof/vr
+	name = "body armor"
+	defense_rating = list(
+		BLADE = 75,
+		BLUNT = 75,
+		PIERCE = 75
+	)
+	value_burgerbux = 1
