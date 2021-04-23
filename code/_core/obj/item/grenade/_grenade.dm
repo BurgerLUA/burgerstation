@@ -246,12 +246,12 @@
 	stored_containers += new /obj/item/container/beaker/potassium(src)
 	return ..()
 
-/obj/item/grenade/timed/explosive/large
+/obj/item/grenade/timed/explosive_large
 	name = "timed large explosive grenade"
 	desc = "Kaboom!"
 	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds. This one has a larger payload."
 
-/obj/item/grenade/timed/explosive/large/Generate()
+/obj/item/grenade/timed/explosive_large/Generate()
 	stored_containers += new /obj/item/container/beaker/large/water(src)
 	stored_containers += new /obj/item/container/beaker/large/potassium(src)
 	return ..()
@@ -264,4 +264,14 @@
 /obj/item/grenade/timed/smoke/Generate()
 	stored_containers += new /obj/item/container/beaker/smoke_01(src)
 	stored_containers += new /obj/item/container/beaker/smoke_02(src)
+	return ..()
+
+/obj/item/grenade/timed/lube_smoke
+	name = "timed lube smoke grenade"
+	desc = "Kaboomish!"
+	desc_extended = "A prebuilt timed lube smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
+
+/obj/item/grenade/timed/lube_smoke/Generate()
+	stored_containers += new /obj/item/container/beaker/large/lube_smoke_01(src)
+	stored_containers += new /obj/item/container/beaker/large/lube_smoke_02(src)
 	return ..()

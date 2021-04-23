@@ -1,9 +1,15 @@
-/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100)
+/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner)
 	if(!desired_turf)
 		return FALSE
-	var/obj/effect/temp/smoke/S = new(desired_turf,desired_duration,list())
-	S.smoke_volume = desired_power
-	return TRUE
+	var/reagent_container/temp/T
+	if(container)
+		T = new(src,1000)
+		T.owner = owner
+		container.transfer_reagents_to(T,container.volume_current,caller=owner)
+		queue_delete(T,desired_duration)
+
+	var/obj/effect/temp/smoke/S = new(desired_turf,desired_duration,list(),T,owner,desired_power)
+	return S
 
 /obj/effect/temp/smoke
 	name = "smoke"
@@ -20,19 +26,38 @@
 
 	var/list/blacklist_turfs
 
+	var/reagent_container/container
+
+	var/mob/owner
+
+	density = TRUE
+
 /obj/effect/temp/smoke/Destroy()
 	. = ..()
 	blacklist_turfs.Cut()
 
-/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs)
+/obj/effect/temp/smoke/proc/try_splash(var/atom/A)
+	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))
+		container.splash(owner,A,1,FALSE,5) //I mean it's pulling shit out of nothing but whatever.
+
+/obj/effect/temp/smoke/Crossed(var/atom/movable/O)
+	. = ..()
+	try_splash(O)
+
+/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20)
 	. = ..()
 	CALLBACK("fade_out_\ref[src]",duration-fade_time,src,.proc/fade_out)
+	container = desired_container
+	if(isnum(desired_volume))
+		smoke_volume = desired_volume
 	update_sprite()
 	start_thinking(src)
 	if(!desired_blacklist_turfs)
 		blacklist_turfs = list()
 	else
 		blacklist_turfs = desired_blacklist_turfs
+	if(desired_location)
+		try_splash(desired_location)
 
 /obj/effect/temp/smoke/proc/fade_out()
 	animate(src,alpha=0,time=fade_time)
@@ -46,7 +71,7 @@
 	if(!blacklist_turfs)
 		return FALSE
 
-	next_think = world.time + 4
+	next_think = world.time + 10
 
 	var/list/initial_possible_directions = list(NORTH,EAST,SOUTH,WEST)
 	var/list/possible_turfs = list()
@@ -55,8 +80,15 @@
 		var/turf/T = get_step(src,k)
 		if(blacklist_turfs[T] || !T.Enter(src,src.loc))
 			blacklist_turfs[T] = TRUE
-		else
-			possible_turfs += T
+			continue
+		var/should_fail = FALSE
+		for(var/j in T.contents)
+			if(!T.Crossed(src))
+				should_fail = TRUE
+				break
+		if(should_fail)
+			continue
+		possible_turfs += T
 
 	var/max_i = min(smoke_volume,rand(3,4),length(possible_turfs))
 
@@ -66,13 +98,15 @@
 	for(var/i=1,i<=max_i,i++)
 		var/turf/T = pick(possible_turfs)
 		possible_turfs -= T
-		var/obj/effect/temp/smoke/S = new(T,duration,blacklist_turfs)
+		new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1))
 		blacklist_turfs[T] = TRUE
-		S.smoke_volume = FLOOR(smoke_volume/2,1)
 		smoke_volume--
 
 	if(smoke_volume <= 0)
 		return FALSE
+
+	var/turf/T = get_turf(src)
+	try_splash(T)
 
 /obj/effect/temp/smoke/update_sprite()
 	. = ..()
@@ -93,6 +127,10 @@
 		var/time_to_take = min(duration_left,rand(10,20))
 		animate(pixel_x=rand(-16,16),pixel_y=rand(-16,16),time=time_to_take)
 		duration_left -= time_to_take
+
+	if(container)
+		color = container.color
+		alpha = container.alpha
 
 
 /obj/effect/temp/smoke/update_overlays()

@@ -414,7 +414,7 @@
 
 	return TRUE
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
 
 	if(!target_container)
 		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
@@ -512,7 +512,7 @@
 /reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE,var/strength_mod=1)
 
 	if(!splash_amount || !volume_current)
-		caller?.to_chat(span("warning","There is nothing to splash!"))
+		if(!silent) caller?.to_chat(span("warning","There is nothing to splash!"))
 		return FALSE
 
 	if(!target)
@@ -521,7 +521,7 @@
 
 	target = target.change_victim(caller,owner)
 
-	target.on_splash(caller,src,splash_amount,silent,strength_mod)
+	if(target) target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
 	return TRUE
 

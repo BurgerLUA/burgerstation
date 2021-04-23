@@ -98,3 +98,15 @@
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/phosphorous,40)
 	return ..()
+
+/obj/item/container/beaker/large/lube_smoke_01/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/potassium,40)
+	reagents.add_reagent(/reagent/lube,60)
+	return ..()
+
+/obj/item/container/beaker/large/lube_smoke_02/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/phosphorous,40)
+	reagents.add_reagent(/reagent/lube,60)
+	return ..()
