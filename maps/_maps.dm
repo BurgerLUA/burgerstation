@@ -1,16 +1,16 @@
 var/global/list/horde_maps = list(
-	//"Hellscape" = 'maps/horde/hellscape.dmm',
-	//"Island" = 'maps/horde/island.dmm',
-	//"LZ-420" = 'maps/horde/lz_420.dmm',
+	"Hellscape" = 'maps/horde/hellscape.dmm',
+	"Island" = 'maps/horde/island.dmm',
+	"LZ-420" = 'maps/horde/lz_420.dmm',
 	//"Crystal Canyon" = 'maps/horde/crystalcanyon.dmm',
 	//"Jungle B-0X (WIP)" = 'maps/horde/box.dmm',
-	//"Lavaland" = 'maps/horde/lavaland.dmm',
+	"Lavaland" = 'maps/horde/lavaland.dmm',
 	//"Supermatter Defense" = 'maps/horde/supermatter.dmm',
-	"City" = 'maps/virtual_reality/city.dmm'
+	"City (Virtual Reality)" = 'maps/virtual_reality/city.dmm'
 )
 
 var/global/list/vr_maps = list(
-	"City" = list(
+	"City (Virtual Reality)" = list(
 		/virtual_reality/team/nuke_ops/
 	)
 )

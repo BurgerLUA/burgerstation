@@ -214,14 +214,17 @@
 	generate_spawnpoints()
 	if(round == 0)
 		set_teams()
-	else if(!(round % 5))
-		swap_teams()
+	else
+		if(!(round % 5))
+			swap_teams()
+		if(!(round % 10))
+			SSvote.create_vote(/vote/continue_round)
 
 	insert_latejoiners()
 
 	place_mobs_at_spawn()
 
-	round = 1
+	round++
 	state = 3
 	log_debug("Setting VR state to 3 due to round_start()")
 	time_left = 5 //Seconds
@@ -276,6 +279,13 @@
 
 
 /virtual_reality/team/nuke_ops/proc/swap_teams()
+
+	last_winner = null
+
+	score = list(
+		"NanoTrasen" = 0,
+		"Syndicate" = 0
+	)
 
 	var/list/syndicate_members = teams["Syndicate"].Copy()
 	var/list/nanotrasen_members = teams["NanoTrasen"].Copy()
