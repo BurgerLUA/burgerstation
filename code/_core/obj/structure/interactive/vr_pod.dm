@@ -5,7 +5,7 @@
 	desc = "Learn something new without the risk of death in here!"
 	desc_extended = "A NanoTrasen brand virtual realtiy pod that allows the user to magically hook their conciousness to a virtual world. It feels like real life!"
 	icon = 'icons/obj/structure/vr_pod.dmi'
-	icon_state = "idle"
+	icon_state = "open"
 
 	var/mob/living/advanced/player/user
 
@@ -63,10 +63,18 @@
 
 	return TRUE
 
+/obj/structure/interactive/vr_pod/update_icon()
+	. = ..()
+	if(user)
+		icon_state = "idle"
+	else
+		icon_state = "open"
+
 /obj/structure/interactive/vr_pod/Entered(var/atom/movable/enterer,var/atom/oldloc)
 	if(is_player(enterer))
 		user = enterer
 		add_buttons()
+		update_sprite()
 	. = ..()
 
 /obj/structure/interactive/vr_pod/Exited(var/atom/movable/exiter,var/atom/newloc)
@@ -74,6 +82,7 @@
 		remove_buttons()
 		exit_virtual_reality()
 		user = null
+		update_sprite()
 	. = ..()
 
 /obj/structure/interactive/vr_pod/proc/force_eject_user()

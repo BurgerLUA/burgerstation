@@ -2,7 +2,7 @@
 	name = ".40 Brown"
 	icon = 'icons/obj/item/weapons/ranged/pistol/40.dmi'
 	desc_extended = "A decently powerful and accurate .40 semi-automatic pistol meant for self defense. Commonly used by mercenaries."
-	value = 600
+	value = 650
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1.25
 

@@ -4,7 +4,7 @@
 	desc_extended = "The 7.62x54mmR AK-14 is the AK to go for when you seriously want to fuck shit up."
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia_3.dmi'
 	icon_state = "inventory"
-	value = 1200
+	value = 2200
 
 	shoot_delay = 2
 
@@ -14,12 +14,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 20
-
 	size = SIZE_4
 	weight = 18
 
-	heat_per_shot = 0.03
 	heat_max = 0.2
 
 	bullet_length_min = 46

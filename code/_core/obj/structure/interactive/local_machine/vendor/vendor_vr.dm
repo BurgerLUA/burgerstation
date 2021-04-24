@@ -22,6 +22,7 @@
 	desired_light_color = "#FFFFFF"
 
 
+
 /obj/structure/interactive/vr_shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
@@ -86,7 +87,10 @@
 
 /obj/structure/interactive/vending/virtual_reality/
 	name = "VR Vendor"
-	markup = 1
+	markup = 0.75
+
+/obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
+	return CEILING(desired_price,50)
 
 /obj/structure/interactive/vending/virtual_reality/modify_item(var/obj/item/I)
 
@@ -185,5 +189,8 @@
 		/obj/item/clothing/overwear/armor/bulletproof/vr,
 		/obj/item/clothing/head/helmet/polymorphic/vr,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
-		/obj/item/grenade/timed/explosive
+		/obj/item/grenade/timed/explosive,
+		/obj/item/grenade/timed/smoke,
+		/obj/item/container/medicine/gauze
 	)
+	markup = 1

@@ -109,4 +109,4 @@
 
 /obj/plane_master/hud/New(var/desired_loc)
 	. = ..()
-	filters += filter(type="bloom",threshold="#888888",size=TILE_SIZE*0.5,offset=2,alpha=200)
+	//filters += filter(type="bloom",threshold="#888888",size=TILE_SIZE*0.5,offset=2,alpha=200)
