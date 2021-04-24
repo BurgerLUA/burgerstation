@@ -116,7 +116,7 @@
 
 	if(do_teleport)
 		var/obj/marker/dev/D = locate() in world
-		if(ENABLE_INSTALOAD && D)
+		if(D && ENABLE_INSTALOAD)
 			force_move(get_turf(D))
 		else if(length(cryo_spawnpoints))
 			var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)

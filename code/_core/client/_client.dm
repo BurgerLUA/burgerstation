@@ -11,7 +11,7 @@ var/global/list/all_clients = list() //Assoc list
 	fps = FPS_CLIENT
 	preload_rsc = 1
 	view = VIEW_RANGE
-	perspective = MOB_PERSPECTIVE
+	perspective = EYE_PERSPECTIVE
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons

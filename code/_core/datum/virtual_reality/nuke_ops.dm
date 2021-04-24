@@ -155,6 +155,12 @@
 		give_loadout(A)
 	needs_loadout -= L
 	L.add_status_effect(PARALYZE,SECONDS_TO_DECISECONDS(15),SECONDS_TO_DECISECONDS(15),stealthy=TRUE,bypass_limits=TRUE)
+	if(L.loyalty_tag == "Syndicate" && is_advanced(L))
+		var/obj/item/disk/nuke/ND = CREATE(/obj/item/disk/nuke,get_turf(L))
+		ND.quick_equip(L)
+		tracked_nuke_disks += ND
+
+
 	return TRUE
 
 /virtual_reality/team/nuke_ops/proc/place_mobs_at_spawn()
@@ -165,7 +171,6 @@
 		if(length(valid_nanotrasen_turfs) > 4)
 			valid_nanotrasen_turfs -= T
 		setup_player(L,T)
-
 
 	for(var/k in teams["Syndicate"])
 		var/mob/living/L = k
@@ -207,6 +212,15 @@
 			continue
 		valid_nanotrasen_turfs += F
 
+/virtual_reality/team/nuke_ops/proc/insert_latejoiners()
+
+	for(var/k in teams["Ready"])
+		var/join_NT = length(teams["NanoTrasen"]) < length(teams["Syndicate"])
+		if(join_NT)
+			move_to_team(k,"NanoTrasen")
+		else
+			move_to_team(k,"Syndicate")
+
 /virtual_reality/team/nuke_ops/proc/round_start()
 	state = 2
 	log_debug("Setting VR state to 2 due to round_start()")
@@ -214,13 +228,11 @@
 	set_markers()
 	generate_spawnpoints()
 	if(round == 0)
-		var/mob/living/simple/bullshark/BS1 = CREATE(/mob/living/simple/bullshark/,locate(1,1,1))
-		move_to_team(BS1,"NanoTrasen")
-		var/mob/living/simple/bullshark/BS2 = CREATE(/mob/living/simple/bullshark/,locate(1,1,1))
-		move_to_team(BS2,"Syndicate")
 		set_teams()
 	else if(!(round % 5))
 		swap_teams()
+
+	insert_latejoiners()
 
 	place_mobs_at_spawn()
 

@@ -1,6 +1,7 @@
 /obj/structure/interactive/virtual_reality
 	icon = 'icons/obj/structure/vr_pad.dmi'
 	icon_state = "pad"
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/structure/interactive/virtual_reality/Finalize()
 	. = ..()
