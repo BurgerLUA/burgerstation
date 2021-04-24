@@ -22,6 +22,6 @@
 
 	if(winner)
 		SSvirtual_reality.set_virtual_reality(vr_name_to_type[winner])
-		SSgamemode.set_active_gamemode(/gamemode/endless)
+		SSgamemode.set_active_gamemode(/gamemode/endless/virtual_reality,"voting on_result")
 
 	return TRUE
