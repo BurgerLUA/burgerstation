@@ -61,6 +61,7 @@
 	var/obj/plane_master/lighting/plane_master_lighting
 	var/obj/plane_master/floor/plane_master_floor
 	var/obj/plane_master/openspace/plane_master_openspace
+	var/obj/plane_master/hud/plane_master_hud
 
 	var/list/parallax
 
@@ -190,6 +191,10 @@
 	if(!plane_master_openspace)
 		plane_master_openspace = new(src)
 	C.screen += plane_master_openspace
+
+	if(!plane_master_hud)
+		plane_master_hud = new(src)
+	C.screen += plane_master_hud
 
 	if(!examine_overlay)
 		examine_overlay = new(src)

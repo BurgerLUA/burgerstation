@@ -1,6 +1,6 @@
 /obj/effect/chat_text
 	name = "chat text effect"
-	plane = PLANE_HUD_CHAT
+	plane = PLANE_CHAT
 
 	icon = null
 

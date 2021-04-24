@@ -380,19 +380,19 @@
 	if(enable_medical_hud)
 		medical_hud_image = new/image('icons/hud/medihud.dmi',"0")
 		medical_hud_image.loc = src
-		medical_hud_image.layer = PLANE_HUD_VISION
+		medical_hud_image.layer = PLANE_AUGMENTED
 		medical_hud_image.pixel_y = 4
 		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
 		medical_hud_image_advanced.loc = src
-		medical_hud_image_advanced.layer = PLANE_HUD_VISION
+		medical_hud_image_advanced.layer = PLANE_AUGMENTED
 		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 	if(enable_security_hud)
 		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 		security_hud_image.loc = src
-		security_hud_image.layer = PLANE_HUD_VISION
+		security_hud_image.layer = PLANE_AUGMENTED
 		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 	. = ..()

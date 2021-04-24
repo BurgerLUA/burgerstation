@@ -144,12 +144,16 @@
 	caller.visible_message(span("danger","\The [caller.name] arms \the [src.name]!"),span("warning","You arm \the [src.name]."))
 	state = 2
 	next_explode = world.time + 600 //Decieconds
+	if(SSvirtual_reality.current_virtual_reality)
+		play_sound_global('sound/vr/bomb_planted_alt.ogg',SSvirtual_reality.current_virtual_reality.active_players)
 	start_thinking(src)
 	return TRUE
 
 /obj/structure/interactive/vr_nuke/proc/disarm(var/mob/caller)
 	caller.visible_message(span("danger","\The [caller.name] disarms \the [src.name]!"),span("warning","You disarm \the [src.name]."))
 	state = 3
+	if(SSvirtual_reality.current_virtual_reality)
+		play_sound_global('sound/vr/bomb_disarmed.ogg',SSvirtual_reality.current_virtual_reality.active_players)
 	if(istype(SSvirtual_reality.current_virtual_reality,/virtual_reality/team/nuke_ops/))
 		var/virtual_reality/team/nuke_ops/NO = SSvirtual_reality.current_virtual_reality
 		NO.check_gamemode_win()

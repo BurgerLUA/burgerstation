@@ -14,7 +14,7 @@
 	icon_state = "square"
 
 	plane = PLANE_HUD
-	layer = -1 //Needs to be low.
+	layer = 0
 
 	value = 0
 
@@ -149,7 +149,6 @@
 
 	if(parent_inventory)
 		color = "#ff0000"
-		add_overlay(parent_inventory.overlays)
 	else if(grabbed_object)
 		color = "#ffff00"
 		var/image/I = new/image(initial(icon),"grab")

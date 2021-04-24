@@ -12,6 +12,24 @@
 
 	return TRUE
 
+/client/proc/spectate(var/atom/A)
+
+	if(A == mob)
+		A = null
+
+	if(A != null && A == src.eye)
+		return FALSE
+
+	if(A == null && src.eye == mob)
+		return FALSE
+
+	src.eye = A ? A : mob
+
+	if(src.eye == mob)
+		mob.plane_master_hud?.alpha = 255
+	else
+		mob.plane_master_hud?.alpha = 0
+
 /client/proc/update_view_range()
 
 	if(settings && settings.loaded_data["view_range"])

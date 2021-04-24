@@ -30,6 +30,8 @@
 	var/turf/nanotrasen_marker
 	var/turf/objective_marker
 
+	var/last_winner
+
 	var/round = 0 //Every 5 rounds is a team swap..
 
 	var/state = 1
@@ -46,6 +48,7 @@
 	//5 = action peroid
 	//6 = round ending, NanoTrasen victory
 	//7 = round nding, Syndicate victory
+	//8 = overtime
 
 	var/time_left = -1
 
@@ -53,18 +56,35 @@
 
 	var/obj/structure/interactive/vr_nuke/tracked_nuke
 
+	var/list/obj/effect/fog_of_war/tracked_fogs = list()
+
+/virtual_reality/team/nuke_ops/proc/on_kill_player(var/mob/living/advanced/player/owner,args)
+	owner.adjust_currency(1000)
+	return TRUE
+
+/virtual_reality/team/nuke_ops/on_player_join(var/mob/living/L) //What happens when a player joins virtual reality.
+	. = ..()
+	if(is_player(L))
+		HOOK_ADD("on_kill_player","\ref[L]_on_kill_player",L,src,.proc/on_kill_player)
+
+/virtual_reality/team/nuke_ops/on_player_leave(var/mob/living/L) //What happens when a player leaves virtual reality.
+	. = ..()
+	if(is_player(L))
+		HOOK_REMOVE("on_kill_player","\ref[L]_on_kill_player",L)
+
 /virtual_reality/team/nuke_ops/proc/can_round_start()
 
 	/*
 	if(length(teams["Ready"]) <= 2)
 		return "Waiting for More Players..."
-	*/
+
 
 	if(length(teams["Syndicate"]) <= 0)
 		return "Waiting for Syndicate..."
 
 	if(length(teams["NanoTrasen"]) <= 0)
 		return "Waiting for NanoTrasen..."
+	*/
 
 
 	. = ..()
@@ -104,6 +124,38 @@
 		var/obj/item/I = k
 		qdel(I)
 
+/virtual_reality/team/nuke_ops/proc/setup_player(var/mob/living/L,var/turf/T)
+	L.force_move(T)
+	L.rejuvenate()
+	if(L.client)
+		L.client.spectate(null)
+	if(is_player(L))
+		var/mob/living/advanced/player/P = L
+		if(needs_loadout[L])
+			P.adjust_currency(500-P.currency)
+		else
+			var/currency_to_give = 0
+			if(last_winner == P.loyalty_tag)
+				currency_to_give += 2000
+			if(P.dead)
+				currency_to_give += 1000
+			else
+				currency_to_give += 1500
+			if(currency_to_give)
+				P.adjust_currency(currency_to_give)
+	if(L.dead)
+		L.revive()
+		if(is_advanced(L))
+			var/mob/living/advanced/A = L
+			A.strip_and_delete_items()
+			give_loadout(A)
+	else if(needs_loadout[L] && is_advanced(L))
+		var/mob/living/advanced/A = L
+		A.strip_and_delete_items()
+		give_loadout(A)
+	needs_loadout -= L
+	L.add_status_effect(PARALYZE,SECONDS_TO_DECISECONDS(15),SECONDS_TO_DECISECONDS(15),stealthy=TRUE,bypass_limits=TRUE)
+	return TRUE
 
 /virtual_reality/team/nuke_ops/proc/place_mobs_at_spawn()
 
@@ -112,48 +164,15 @@
 		var/turf/T = pick(valid_nanotrasen_turfs)
 		if(length(valid_nanotrasen_turfs) > 4)
 			valid_nanotrasen_turfs -= T
-		L.force_move(T)
-		L.rejuvenate()
-		if(needs_loadout[L] && is_player(L))
-			var/mob/living/advanced/player/P = L
-			P.adjust_currency(500-P.currency)
-		if(L.dead)
-			L.revive()
-			if(is_advanced(L))
-				var/mob/living/advanced/A = L
-				A.strip_and_delete_items()
-				give_loadout(A)
-		else if(needs_loadout[L] && is_advanced(L))
-			var/mob/living/advanced/A = L
-			A.strip_and_delete_items()
-			give_loadout(A)
-		needs_loadout -= L
+		setup_player(L,T)
+
 
 	for(var/k in teams["Syndicate"])
 		var/mob/living/L = k
 		var/turf/T = pick(valid_syndicate_turfs)
 		if(length(valid_syndicate_turfs) > 4)
 			valid_syndicate_turfs -= T
-		L.force_move(T)
-		L.rejuvenate()
-		if(needs_loadout[L] && is_player(L))
-			var/mob/living/advanced/player/P = L
-			P.adjust_currency(500-P.currency)
-		if(L.dead)
-			L.revive()
-			if(is_advanced(L))
-				var/mob/living/advanced/A = L
-				A.strip_and_delete_items()
-				give_loadout(A)
-		else if(needs_loadout[L] && is_advanced(L))
-			var/mob/living/advanced/A = L
-			A.strip_and_delete_items()
-			give_loadout(A)
-		needs_loadout -= L
-		if(is_advanced(L))
-			var/obj/item/disk/nuke/N = CREATE(/obj/item/disk/nuke,T)
-			N.quick_equip(L,silent=TRUE)
-			tracked_nuke_disks += N
+		setup_player(L,T)
 
 
 /virtual_reality/team/nuke_ops/move_to_team(var/mob/living/L,var/desired_team)
@@ -195,6 +214,10 @@
 	set_markers()
 	generate_spawnpoints()
 	if(round == 0)
+		var/mob/living/simple/bullshark/BS1 = CREATE(/mob/living/simple/bullshark/,locate(1,1,1))
+		move_to_team(BS1,"NanoTrasen")
+		var/mob/living/simple/bullshark/BS2 = CREATE(/mob/living/simple/bullshark/,locate(1,1,1))
+		move_to_team(BS2,"Syndicate")
 		set_teams()
 	else if(!(round % 5))
 		swap_teams()
@@ -204,7 +227,7 @@
 	round = 1
 	state = 3
 	log_debug("Setting VR state to 3 due to round_start()")
-	time_left = 11 //Seconds
+	time_left = 5 //Seconds
 
 /virtual_reality/team/nuke_ops/proc/set_markers()
 
@@ -266,6 +289,8 @@
 	for(var/k in nanotrasen_members)
 		move_to_team(k,"Syndicate")
 
+	play_sound_global('sound/vr/team_switch.ogg',active_players)
+
 	return TRUE
 
 /virtual_reality/team/nuke_ops/on_life()
@@ -280,13 +305,17 @@
 		)
 		round = 0
 		state = 1
+		time_left = -1
 		return ..()
 
 	switch(state)
 		if(0)
 			set_message("Setting up game...")
 		if(1)
-			set_message("Waiting for players ([length(teams["Ready"])]/1 ready)...")
+			if(time_left >= 0)
+				set_message("Game starts in [get_clock_time(time_left)] ([length(teams["Ready"])] players ready).")
+			else
+				set_message("Waiting for players ([length(teams["Ready"])]/1 ready)...")
 		if(2)
 			set_message("Starting game...")
 		if(3)
@@ -299,24 +328,63 @@
 			set_message("NanoTrasen wins!")
 		if(7)
 			set_message("Syndicate wins!")
+		if(8)
+			set_message("OVERTIME")
 
-	if(state == 1 && length(teams["Ready"]) >= 1)
-		round_start()
-	else
-		log_debug("State: [state], team length: [length(teams["Ready"])].")
+
+	if(state == 1)
+		if(length(teams["Ready"]) >= 1)
+			if(time_left == -1) time_left = 60
+		else
+			if(time_left != -1) time_left = -1
+		if(time_left == 0)
+			round_start()
+			return ..()
 
 	if(time_left <= 0)
 		switch(state)
 			if(3)
-				time_left = 30
+				time_left = 10
 				state = 4
+				play_sound_global('sound/vr/round_start.ogg',active_players)
 			if(4)
 				time_left = 600
 				state = 5
+				//play_sound_global('sound/vr/syndicate_objectives.ogg',teams["Syndicate"])
+				//play_sound_global('sound/vr/nanotrasen_objectives.ogg',teams["NanoTrasen"])
+			if(5)
+				if(tracked_nuke && tracked_nuke.state == 2)
+					state = 8 //Overtime.
+					time_left = 0
+					play_sound_global('sound/vr/overtime.ogg',active_players)
+				else
+					set_winner("NanoTrasen")
 			if(6 to 7)
 				round_start()
 
 	. = ..()
+
+/virtual_reality/team/nuke_ops/proc/set_winner(var/desired_team)
+
+	if(state == 6 || state == 7)
+		return FALSE
+
+	if(desired_team == "NanoTrasen")
+		state = 6
+		time_left = 10
+		score["NanoTrasen"] += 1
+		play_sound_global('sound/vr/nanotrasen_win.ogg',active_players)
+		return TRUE
+	if(desired_team == "Syndicate")
+		state = 7
+		time_left = 10
+		score["Syndicate"] += 1
+		play_sound_global('sound/vr/syndicate_win.ogg',active_players)
+		return TRUE
+
+	last_winner = desired_team
+
+	return FALSE
 
 /virtual_reality/team/nuke_ops/proc/check_gamemode_win()
 
@@ -325,31 +393,18 @@
 
 	if(tracked_nuke.state >= 2)
 		if(tracked_nuke.state == 4)
-			state = 7
-			time_left = 10
-			score["Syndicate"] += 1
+			set_winner("Syndicate")
 			return TRUE
 		else if(tracked_nuke.state == 3)
-			state = 6
-			time_left = 10
-			score["NanoTrasen"] += 1
+			set_winner("NanoTrasen")
 			return TRUE
 		return FALSE
 	if(length(teams["NanoTrasen"]) <= 0)
-		state = 7
-		time_left = 10
-		score["Syndicate"] += 1
+		set_winner("Syndicate")
 		return TRUE
 	else if(length(teams["Syndicate"]) <= 0)
-		state = 6
-		time_left = 10
-		score["NanoTrasen"] += 1
+		set_winner("NanoTrasen")
 		return TRUE
-
-
-
-
-
 
 /virtual_reality/team/nuke_ops/player_post_death(var/mob/living/advanced/player/virtual/P)
 	. = ..()

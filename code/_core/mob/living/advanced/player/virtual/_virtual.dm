@@ -2,7 +2,6 @@
 	name = "virtual avatar"
 	allow_save = FALSE
 
-
 /mob/living/advanced/player/virtual/initialize_attributes()
 
 	if(!is_player(fallback_mob))

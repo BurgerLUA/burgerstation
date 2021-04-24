@@ -59,4 +59,5 @@
 	death_ckey = null
 
 /mob/living/advanced/player/proc/on_kill_player(var/mob/living/advanced/player/P)
+	HOOK_CALL("on_kill_player")
 	return TRUE
