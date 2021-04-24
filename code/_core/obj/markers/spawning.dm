@@ -77,12 +77,14 @@
 
 /obj/marker/spawning/random
 	var/list/possible_objects = list()
+	var/chance_none = 0
 
 
 /obj/marker/spawning/random/do_spawn(var/turf/T)
-	var/atom/movable/M = pickweight(possible_objects)
-	M = new M(T)
-	LATE_INIT(M)
+	if(!prob(chance_none))
+		var/atom/movable/M = pickweight(possible_objects)
+		M = new M(T)
+		LATE_INIT(M)
 
 /obj/marker/spawning/random/object_of_interest
 	possible_objects = list(
@@ -103,3 +105,4 @@
 		/obj/item/supply_crate/medicine = 4,
 		/obj/item/supply_crate/bos = 1
 	)
+	chance_none = 25

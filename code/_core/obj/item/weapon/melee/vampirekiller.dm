@@ -7,7 +7,7 @@
 
 	damage_type = /damagetype/melee/club/vampire_killer
 
-	value = 500
+	value = 700
 
 	attack_range = 2
 

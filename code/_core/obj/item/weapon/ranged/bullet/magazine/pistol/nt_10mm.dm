@@ -4,27 +4,24 @@
 	desc_extended = "The 10mm NanoTrasen Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_nt.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 500
 
 	shoot_delay = 3
 
 	automatic = FALSE
 
-	movement_spread_base = 0.01
+	movement_spread_base = 0.003
 	inaccuracy_modifier = 0.5
-	movement_inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 0.0125
 
 	shoot_sounds = list('sound/weapons/10/shoot.ogg')
 
 	can_wield = FALSE
 
-	view_punch = 10
-
 	size = SIZE_2
-	weight = 4
+	weight = 6
 
-	heat_per_shot = 0.02
-	heat_max = 0.12
+	heat_max = 0.09
 
 	bullet_length_min = 25
 	bullet_length_best = 32
@@ -67,7 +64,7 @@
 	attachment_undermount_offset_y = 17 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_static_spread()
-	return 0.001
+	return 0.0009
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_skill_spread(var/mob/living/L)
 	return max(0,0.015 - (0.03 * L.get_skill_power(SKILL_RANGED)))
@@ -87,12 +84,9 @@
 
 	automatic = TRUE
 
-	view_punch = 10
+	weight = 7
 
-	weight = 6
-
-	heat_per_shot = 0.015
-	heat_max = 0.09
+	heat_max = 0.11
 
 	attachment_barrel_offset_x = 27 - 16
 	attachment_barrel_offset_y = 21 - 16

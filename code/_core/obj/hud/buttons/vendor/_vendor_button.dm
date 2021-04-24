@@ -60,10 +60,15 @@
 		for(var/i=1,i<=the_length,i++)
 			var/letter = copytext(num_to_text,i,i+1)
 			var/icon/I4 = new/icon('icons/hud/numbers.dmi',letter)
+			if(letter == ".")
+				x_pos_mod -= 1
 			I4.Shift(EAST,x_pos_mod)
 			I4.Shift(SOUTH,2)
 			I2.Blend(I4,ICON_OVERLAY)
-			x_pos_mod += 5
+			if(letter == ".")
+				x_pos_mod += 3
+			else
+				x_pos_mod += 4
 
 	var/image/I4 = new/image(I2)
 	I4.pixel_y = -4

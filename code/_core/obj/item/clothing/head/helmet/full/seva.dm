@@ -6,15 +6,15 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_SWORD,
-		ARCANE = -AP_SWORD,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		BOMB = AP_CLUB,
-		BIO = AP_CLUB
+		BLADE = 20,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 20,
+		ARCANE = -20,
+		HEAT = 60,
+		COLD = 60,
+		BOMB = 60,
+		BIO = 60
 	)
 
 	size = SIZE_3
@@ -24,13 +24,13 @@
 	icon = 'icons/obj/item/clothing/hats/sevamono_suit.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = AP_SWORD,
-		ARCANE = -AP_SWORD,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		BOMB = AP_CLUB,
-		BIO = AP_CLUB
+		BLADE = 40,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = 20,
+		ARCANE = -20,
+		HEAT = 60,
+		COLD = 60,
+		BOMB = 60,
+		BIO = 60
 	)

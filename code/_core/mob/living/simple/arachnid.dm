@@ -25,16 +25,16 @@
 	pixel_x = -16
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_SWORD,
-		HEAT = AP_AXE,
-		COLD = -AP_AXE,
-		BIO = AP_CLUB,
-		FATIGUE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 10,
+		LASER = -20,
+		HEAT = 40,
+		COLD = -40,
+		BIO = 60,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	iff_tag = "Jungle"

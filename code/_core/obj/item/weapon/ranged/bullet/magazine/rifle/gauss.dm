@@ -4,9 +4,11 @@
 	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the russian facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
 	icon = 'icons/obj/item/weapons/ranged/rifle/gauss_gun.dmi'
 	icon_state = "inventory"
-	value = 1200
+	value = 5000
 
 	shoot_delay = 20
+
+	damage_mod = 1.3
 
 	automatic = FALSE
 
@@ -15,16 +17,10 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = 64
-
-
-
-	size = SIZE_4
+	size = SIZE_5
 	weight = 30
 
-
-	heat_per_shot = 0.06
-	heat_max = 0.06
+	heat_max = 0.04
 
 	bullet_length_min = 11
 	bullet_length_best = 12
@@ -36,7 +32,7 @@
 
 	ai_heat_sensitivity = 2
 
-	zoom_mul = 2
+	zoom_mul = 3
 
 	attachment_whitelist = list()
 
@@ -55,10 +51,8 @@
 	movement_inaccuracy_modifier = 2
 	movement_spread_base = 0.15
 
-
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread()
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))

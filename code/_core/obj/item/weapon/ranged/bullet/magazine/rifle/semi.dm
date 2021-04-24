@@ -4,24 +4,22 @@
 	desc_extended = "A semi-automatic assault rifle designed for shooters who want to be precise with their shots, but don't want to shell out the extra credits for a high caliber rifle."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_4.dmi'
 	icon_state = "inventory"
-	value = 150
+	value = 1200
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = FALSE
+
+	damage_mod = 1.25
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 12
-
 	size = SIZE_4
 	weight = 10
 
-
-	heat_per_shot = 0.06
-	heat_max = 0.20
+	heat_max = 0.09
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -73,9 +71,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread()
-	if(!wielded) return 0.2
-	return 0
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

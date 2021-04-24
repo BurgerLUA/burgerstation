@@ -21,7 +21,7 @@
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.03
 
 	inaccuracy_modifier = 0.1

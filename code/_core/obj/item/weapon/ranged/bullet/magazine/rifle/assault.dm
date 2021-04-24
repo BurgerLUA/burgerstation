@@ -4,9 +4,11 @@
 	desc_extended = "A .308 chambered mother-of-all-battle-rifles (MOABR) developed by the NanoTrasen research team to rival the syndicate .308 marksman rifle, but without the slow shooting speed. Nicknamed the \"Arn't\" for what the enemy will be when an entire magazine is fired into them, and also because it's not an AR."
 	icon = 'icons/obj/item/weapons/ranged/rifle/308_adv.dmi'
 	icon_state = "inventory"
-	value = 500
+	value = 6000
 
-	shoot_delay = 2
+	shoot_delay = 2.5
+
+	damage_mod = 1.3
 
 	automatic = TRUE
 
@@ -14,13 +16,10 @@
 
 	can_wield = TRUE
 
-	view_punch = 10
-
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.04
-	heat_max = 0.08
+	heat_max = 0.1
 
 	bullet_length_min = 46
 	bullet_length_best = 51
@@ -71,12 +70,10 @@
 	movement_spread_base = 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_static_spread()
-	if(!wielded) return 0.2
-	return 0.001
+	return 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/equipped/Generate()
 

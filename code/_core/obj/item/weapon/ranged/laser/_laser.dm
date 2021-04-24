@@ -10,6 +10,9 @@
 	inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
+	heat_per_shot_mod = 0.75
+	view_punch_mod = 0.25
+
 /obj/item/weapon/ranged/energy/get_value()
 	. = ..()
 	if(battery) . += battery.get_value()

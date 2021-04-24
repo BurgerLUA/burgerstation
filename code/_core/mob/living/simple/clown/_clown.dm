@@ -14,8 +14,8 @@
 	damage_type = /damagetype/npc/clown
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -41,11 +41,11 @@
 	ai = /ai/clown/hulk
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -60,12 +60,12 @@
 	icon_state = "destroyer"
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		ARCANE = -AP_DAGGER,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
+		ARCANE = -10,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -80,9 +80,9 @@
 	ai = /ai/clown/tree
 
 	armor_base = list(
-		BLADE = -AP_SWORD,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		BLADE = -20,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -103,8 +103,8 @@
 	ai = /ai/clown/long
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -120,8 +120,8 @@
 	ai = /ai/clown/pie
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -138,9 +138,9 @@
 	ai = /ai/clown/lube
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
-		BIO = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
+		BIO = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -351,9 +351,9 @@
 	ai = /ai/clown/mutant
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		ARCANE = 60,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY,
@@ -373,9 +373,9 @@
 	ai = /ai/clown/blob
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		ARCANE = 60,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

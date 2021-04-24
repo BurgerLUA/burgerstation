@@ -5,8 +5,8 @@
 	desc_extended = "A large brimmed straw hat designed to keep yourself in the shade."
 
 	defense_rating = list(
-		ARCANE = AP_AXE,
-		HEAT = AP_AXE
+		ARCANE = 40,
+		HEAT = 40
 	)
 
 	size = SIZE_2

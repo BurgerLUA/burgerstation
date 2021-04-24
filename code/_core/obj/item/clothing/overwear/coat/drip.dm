@@ -14,11 +14,11 @@
 	size = SIZE_3
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		ARCANE = AP_SWORD,
-		HEAT = -AP_SWORD,
-		COLD = AP_SWORD
+		BLADE = 10,
+		PIERCE = 10,
+		ARCANE = 20,
+		HEAT = -20,
+		COLD = 20
 	)
 
 /obj/item/clothing/overwear/coat/drip/get_base_value()

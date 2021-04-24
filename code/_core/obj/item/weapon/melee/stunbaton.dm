@@ -6,7 +6,7 @@
 	damage_type = /damagetype/melee/club/stunbaton
 	damage_type_on = /damagetype/melee/club/stunbaton/on
 
-	value = 20
+	value = 50
 
 	size = SIZE_2
 

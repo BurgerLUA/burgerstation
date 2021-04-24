@@ -4,6 +4,7 @@
 	desc_extended = "While Semiautos have become standard issue for Space Police, diehard Seargeants still tout the higher reliability of a revolver as a reason to carry these."
 	icon = 'icons/obj/item/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
+	value = 800
 
 	projectile_speed = 31
 	shoot_delay = 4
@@ -12,17 +13,10 @@
 
 	bullet_count_max = 6
 
-
-
 	shoot_sounds = list('sound/weapons/deckhard/shot.ogg')
-
-	view_punch = 8
-
-
 
 	size = SIZE_2
 	weight = 6
-
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -32,10 +26,7 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
-	heat_per_shot = 0.04
-	heat_max = 0.1
-
-	value = 60
+	heat_max = 0.05
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,

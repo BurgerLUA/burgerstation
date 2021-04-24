@@ -19,13 +19,6 @@
 
 	var/impact_sounds_flesh = list() //Leave empty to just use impact sounds, no matter what.
 
-	/*
-	var/allow_parry = TRUE
-	var/allow_miss = TRUE
-	var/allow_block = TRUE
-	var/allow_dodge = TRUE
-	*/
-
 	var/stealthy = FALSE //Set to true to not display any damage dealt as well as not to alert any NPCs when hit.
 
 	var/attack_delay_mod = 1
@@ -144,6 +137,17 @@
 		combat_rating += damage
 
 	return round(combat_rating*0.25,1)
+
+/damagetype/proc/calculate_value(var/obj/item/I)
+
+	. = 0
+
+	for(var/k in attack_damage_base)
+		.var/total_damage = attack_damage_base[k] + attribute_stats[k] + skill_stats[k]
+		. += calculate_damage_with_armor(total_damage,max(0,75 - attack_damage_penetration[k]))
+
+	if(attack_delay)
+		. *= 0.75 + 0.25*(10 / max(1,attack_delay))
 
 /damagetype/proc/get_miss_chance()
 	return 0

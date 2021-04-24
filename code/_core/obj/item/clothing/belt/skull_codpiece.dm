@@ -8,13 +8,13 @@
 
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		ARCANE = AP_AXE,
-		HOLY = -AP_AXE,
-		DARK = AP_AXE,
-		PAIN = AP_AXE
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		ARCANE = 40,
+		HOLY = -40,
+		DARK = 40,
+		PAIN = 40
 	)
 
 	rarity = RARITY_UNCOMMON

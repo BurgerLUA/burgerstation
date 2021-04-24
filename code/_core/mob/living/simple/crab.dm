@@ -23,10 +23,10 @@
 	stun_angle = 180
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = -AP_CLUB,
-		COLD = -AP_CLUB,
+		BLADE = 60,
+		PIERCE = 60,
+		HEAT = -60,
+		COLD = -60,
 		ION = INFINITY
 	)
 
@@ -89,12 +89,12 @@
 	damage_type = /damagetype/npc/crab
 
 	armor_base = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_GREATSWORD,
-		ARCANE = -AP_SWORD,
-		HEAT = -AP_CLUB,
-		COLD = -AP_CLUB,
+		BLADE = 80,
+		BLUNT = 40,
+		PIERCE = 80,
+		ARCANE = -20,
+		HEAT = -60,
+		COLD = -60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

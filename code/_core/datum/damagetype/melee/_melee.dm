@@ -2,8 +2,8 @@
 	draw_blood = TRUE
 	draw_weapon = TRUE
 
-	damage_mod = 1.25
-	penetration_mod = 2
+	damage_mod = 1
+	penetration_mod = 1
 
 	experience_mod = 2
 

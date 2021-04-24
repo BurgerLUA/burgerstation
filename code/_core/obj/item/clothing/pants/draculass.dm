@@ -5,15 +5,15 @@
 	icon = 'icons/obj/item/clothing/pants/draculass.dmi'
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_DAGGER,
-		ARCANE = AP_AXE,
-		HEAT = -AP_AXE,
-		COLD = AP_AXE,
-		HOLY = -AP_AXE,
-		DARK = AP_AXE
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -10,
+		ARCANE = 40,
+		HEAT = -40,
+		COLD = 40,
+		HOLY = -40,
+		DARK = 40
 	)
 
 	value = 100

@@ -10,7 +10,7 @@
 	attachment_stats = list(
 		movement_spread = 0.8,
 		skill_spread = 1.2,
-		view_punch = 0.8,
+
 		heat_spread = 0.8,
 		prone_mul = 1.5
 	)
@@ -27,7 +27,7 @@
 		movement_spread = 1.25,
 		skill_spread = 0.9,
 		heat_spread = 0.8,
-		view_punch = 1.25
+
 	)
 
 	value = 150

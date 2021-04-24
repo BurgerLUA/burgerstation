@@ -15,11 +15,11 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	value = 2000
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD,
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,

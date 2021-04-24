@@ -2,18 +2,18 @@
 	name = "spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.3,
-		BLADE = DAMAGE_AXE*0.1
+		PIERCE = 15,
+		BLADE = 5
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*0.75,
-		BLADE = AP_AXE*0.25
+		PIERCE = 50,
+		BLADE = 50
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.2,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.1
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -22,33 +22,33 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_AXE*0.3
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = PIERCE
 	)
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 8
+	attack_delay_max = 12
 
 /damagetype/melee/spear/basic/thrown
 
 	name = "thrown spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATSWORD*0.35,
-		BLADE = DAMAGE_GREATSWORD*0.05
+		PIERCE = 40,
+		BLADE = 10
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE,
+		PIERCE = 100,
 		BLADE = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_GREATSWORD*0.4,
-		ATTRIBUTE_DEXTERITY = DAMAGE_GREATSWORD*0.1
+		ATTRIBUTE_STRENGTH = 50,
+		ATTRIBUTE_DEXTERITY = 30
 	)
 
 	attribute_damage = list(
@@ -57,7 +57,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_GREATSWORD*0.1
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(
@@ -65,5 +65,5 @@
 		SKILL_RANGED = PIERCE
 	)
 
-	attack_delay = SPEED_GREATSWORD*0.5
-	attack_delay_max = SPEED_GREATSWORD
+	attack_delay = 20
+	attack_delay_max = 20

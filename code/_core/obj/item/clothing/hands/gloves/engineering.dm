@@ -10,18 +10,18 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		ARCANE = -AP_GREATCLUB,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		BOMB = AP_AXE,
-		BIO = AP_SWORD,
-		RAD = AP_GREATSWORD,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		ARCANE = -120,
+		HEAT = 80,
+		COLD = 80,
+		BOMB = 40,
+		BIO = 20,
+		RAD = 80,
 		FATIGUE = INFINITY,
-		PAIN = AP_GREATSWORD
+		PAIN = 80
 	)
 
 	protection_cold = list(

@@ -10,10 +10,10 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		HEAT = -AP_SWORD,
-		COLD = AP_SWORD
+		BLADE = 20,
+		PIERCE = 20,
+		HEAT = -20,
+		COLD = 20
 	)
 
 	size = SIZE_3

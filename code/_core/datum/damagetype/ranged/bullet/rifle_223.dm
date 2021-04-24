@@ -3,14 +3,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.5,
-		PIERCE = DAMAGE_AXE*0.5
+		BLUNT = 30,
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_AXE*0.5,
-		PIERCE = AP_AXE*0.5
+		BLUNT = 25,
+		PIERCE = 50
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
@@ -24,12 +24,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.75
+		PIERCE = 45
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*3
+		PIERCE = 100
 	)
 
 /damagetype/ranged/bullet/rifle_556mm
@@ -37,14 +37,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.25,
-		PIERCE = DAMAGE_AXE*0.75
+		BLUNT = 30,
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_AXE*0.25,
-		PIERCE = AP_AXE*0.75
+		BLUNT = 25,
+		PIERCE = 50
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
@@ -58,12 +58,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.75
+		PIERCE = 45
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*3
+		PIERCE = 100
 	)
 
 /damagetype/ranged/bullet/rifle_545mm // pls no touchy ruski
@@ -71,12 +71,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE
+		PIERCE = 40
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE
+		PIERCE = 40
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
@@ -90,12 +90,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.75
+		PIERCE = 35
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*3
+		PIERCE = 100
 	)
 
 	falloff = VIEW_RANGE + ZOOM_RANGE
@@ -107,22 +107,15 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.75,
-		PIERCE = DAMAGE_AXE*0.25
+		BLUNT = 25,
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = DAMAGE_AXE*0.5,
-		PIERCE = DAMAGE_AXE*0.5
+		BLUNT = 25,
+		PIERCE = 25
 	)
-
-//Changes below are completely experimental to see if that'd make 9x39 perform nicely.
-	crit_multiplier = 4 //Damage multiplier.
-	crit_chance = 10 //Base crit chance.
-	crit_chance_max = 15 //Maximium crit chance at 100 luck.
-
-	falloff = VIEW_RANGE
 
 /damagetype/ranged/bullet/rifle_939mm/surplus
 	damage_mod = SURPLUS_MUL

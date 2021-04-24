@@ -4,23 +4,23 @@
 	desc_extended = "An absolute unit of a sniper rifle. The bullet is so large, it absolutely needs to be bolt action."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/127_1.dmi'
 	icon_state = "inventory"
+	value = 5000
 
 	shoot_delay = 10
 
 	automatic = FALSE
+
+	damage_mod = 2
 
 	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = 32
-
 	size = SIZE_5
 	weight = 25
 
-	heat_per_shot = 0.07
-	heat_max = 0.07
+	heat_max = 0.08
 
 	bullet_length_min = 80
 	bullet_length_best = 90
@@ -29,8 +29,6 @@
 	bullet_diameter_min = 12
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
-
-	value = 1200
 
 	ai_heat_sensitivity = 2
 	dan_mode = TRUE
@@ -81,7 +79,6 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped/Generate()

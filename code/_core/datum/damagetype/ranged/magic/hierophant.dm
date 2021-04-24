@@ -3,11 +3,11 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		ARCANE = DAMAGE_CLUB*0.5
+		ARCANE = 60*0.5
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = DAMAGE_CLUB*0.25
+		ATTRIBUTE_INTELLIGENCE = 60*0.25
 	)
 
 	attribute_damage = list(
@@ -15,7 +15,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY =  DAMAGE_CLUB*0.25
+		SKILL_SORCERY =  60*0.25
 	)
 
 	skill_damage = list(

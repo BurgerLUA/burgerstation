@@ -3,6 +3,8 @@
 	var/list/shoot_sounds = list()
 	var/shoot_alert = ALERT_LEVEL_CAUTION
 
+	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a higher barrel length. Also affects projectile speed.
+
 	var/automatic = FALSE
 	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
 	var/current_bursts = 0 //Read only.
@@ -14,20 +16,25 @@
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
-	damage_type = /damagetype/melee/club/gun_butt
+
+	var/view_punch_to_add = 0 //Fallback value.
+	var/view_punch_mod = 1 //Inherit recoil absorbtion from the gun. Lesser values means less recoil.
+
+	var/heat_per_shot_to_add = 0 //Fallback value.
+	var/heat_per_shot_mod = 1 //Inherit heat kickback. Lesser values means less spread per bullet shot.
 
 	var/list/empty_sounds = list()
 
 	//Dynamic accuracy.
-	var/heat_per_shot = 0.05
-	var/heat_current = 0
+	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
+
+	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
 
 	var/movement_spread_base = 0.05 //half this at walking speed, this at running speed, this times two at sprinting speed
 
 	var/bullet_color = "#FFFFFF"
-
-	var/view_punch = 0
 
 	var/requires_bullets = FALSE
 
@@ -35,11 +42,9 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
-	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
-	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
-
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 
+	var/list/attachment_stats = list()
 	var/list/attachment_whitelist = list()
 	var/obj/item/attachment/attachment_barrel
 	var/attachment_barrel_offset_x = 0
@@ -54,9 +59,51 @@
 	var/attachment_stock_offset_x = 0
 	var/attachment_stock_offset_y = 0
 
+	damage_type = /damagetype/melee/club/gun_butt //Melee.
+
 	drop_sound = 'sound/items/drop/gun.ogg'
 
-	var/list/attachment_stats = list()
+
+/* Price calculation is hard.
+/obj/item/weapon/ranged/proc/get_damage_price()
+
+	if(!ranged_damage_type)
+		return 0
+
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+
+	if(!D)
+		return 0
+
+	. = D.calculate_value(src) * bullet_count * damage_mod
+
+/obj/item/weapon/ranged/get_base_value()
+
+	.  = get_damage_price()
+
+	if(automatic)
+		. *= 0.75 + 0.25*(10 / max(1,shoot_delay))
+	else
+		. *= 0.75 + 0.25*(10 / max(2,shoot_delay))
+
+	if(!heat_max)
+		log_error("Warning: [src.type] didn't have a heat_max.")
+	else
+		. *= 0.5 + (0.2/heat_max)*0.5
+
+	if(!inaccuracy_modifier)
+		log_error("Warning: [src.type] didn't have an inaccuracy_modifier.")
+	else
+		. *= 0.5 + (0.5/inaccuracy_modifier)*0.5
+
+	. *= 0.75 + max(0.25,1 - movement_inaccuracy_modifier)*0.25
+
+	. *= 0.75 + max(0.25,1 - movement_spread_base)*0.25
+
+	. *= 0.2
+
+	. = CEILING(.,1)
+*/
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -197,7 +244,7 @@
 /obj/item/weapon/ranged/think()
 
 	if(next_shoot_time + min(10,shoot_delay*1.25) < world.time)
-		heat_current = max(heat_current-0.1,0)
+		heat_current = max(heat_current-(SIZE_3/size),0) //Smaller guns easier to handle.
 
 	. = ..()
 
@@ -287,19 +334,18 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread_to_use = 0
-	var/projectile_speed_to_use = projectile_speed*quality_penalty
+	var/projectile_speed_to_use = projectile_speed*quality_penalty*damage_mod
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
-	var/view_punch_to_use = view_punch
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
 	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
-	var/damage_multiplier_to_use = damage_multiplier
-
+	var/damage_multiplier_to_use = damage_multiplier * damage_mod
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
-	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
+	var/power_to_use = 0
 
+	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 	if(spent_bullet)
 		SET(projectile_to_use,spent_bullet.projectile)
 		SET(shoot_sounds_to_use,spent_bullet.shoot_sounds)
@@ -309,11 +355,21 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
+		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
-
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
+
+	var/arm_strength = 0.5
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
+	if(wielded)
+		arm_strength *= 2
+
+	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.025*bullet_count_to_use
+	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
 
 	if(projectile_to_use)
 
@@ -341,6 +397,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(is_living(caller))
 			var/mob/living/L = caller
 			skill_spread = get_skill_spread(L)
+			if(L.ai)
+				skill_spread += RAND_PRECISE(0.05,0.1)
 			movement_spread = get_movement_spread(L)
 			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED,0,0.5,1))
 			if(L.horizontal) prone = TRUE
@@ -365,7 +423,22 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
 			MUL(prone_mod,attachment_stats["prone_mod"])
 
+		if(can_wield && !wielded)
+			movement_spread *= 2
+			movement_spread += 0.01
+			static_spread *= 2
+			static_spread += 0.02
+			view_punch_to_use *= 1.25
+			view_punch_to_use += TILE_SIZE*0.1
+
+
 		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
+
+		/* The problem with this is that it adds more sounds to be played by guns, which is already insane :(
+		if(spent_bullet && projectile_speed_to_use >= TILE_SIZE*0.75)
+			var/bullet_size = max(342,spent_bullet.bullet_length * spent_bullet.bullet_diameter)/342
+			play_sound('sound/effects/bullet_crack.ogg', get_turf(src), pitch=RAND_PRECISE(0.95,1.05)-min(0.5,bullet_size*0.25),volume= 30 + bullet_size*25 + (projectile_speed_to_use/TILE_SIZE)*0.10)
+		*/
 
 		var/accuracy_loss = clamp(static_spread + heat_spread + skill_spread + movement_spread,0,0.5)
 		if(prone) accuracy_loss *= prone_mod
@@ -375,8 +448,29 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch_to_use,view_punch_time,damage_multiplier_to_use, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
 	next_shoot_time = world.time + shoot_delay_to_use
-	heat_current = min(heat_max, heat_current + heat_per_shot)
+	heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
 	start_thinking(src)
+
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		if(is_inventory(src.loc))
+			var/obj/hud/inventory/I = src.loc
+			var/arm_damage = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
+			if(arm_damage >= 1)
+				var/obj/item/organ/O
+				if(I.click_flags & RIGHT_HAND)
+					if(wielded)
+						O = A.labeled_organs[BODY_ARM_RIGHT]
+					else
+						O = A.labeled_organs[BODY_HAND_RIGHT]
+				else
+					if(wielded)
+						O = A.labeled_organs[BODY_ARM_LEFT]
+					else
+						O = A.labeled_organs[BODY_HAND_LEFT]
+				if(O)
+					O.health.adjust_loss_smart(PAIN=arm_damage)
+
 
 	if(!use_loyalty_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)

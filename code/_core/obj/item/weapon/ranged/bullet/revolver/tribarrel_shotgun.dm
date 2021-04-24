@@ -4,16 +4,17 @@
 	desc_extended = "An absolutely ridiculous 3 barreled shotgun that holds giant 23x75mmR rounds."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/power.dmi'
 	icon_state = "inventory"
+	value = 1800
 
 	shoot_delay = 2
+
+	damage_mod = 1.2
 
 	automatic = TRUE
 
 	bullet_count_max = 3
 
 	insert_limit = 3
-
-	view_punch = TILE_SIZE - 1
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -28,10 +29,7 @@
 	bullet_diameter_best = 23
 	bullet_diameter_max = 25
 
-	heat_per_shot = 0.09
 	heat_max = 0.18
-
-	value = 600
 
 	open = TRUE
 
@@ -67,7 +65,7 @@
 	movement_spread_base = 0.06
 
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_base_spread()
-	return 0.1
+	return 0.2
 
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_static_spread()
 	return 0.01

@@ -14,10 +14,10 @@
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = AP_SWORD,
-		HEAT = AP_SWORD,
-		BIO = AP_SWORD
+		ARCANE = 20,
+		COLD = 20,
+		HEAT = 20,
+		BIO = 20
 	)
 
 	value = 40
@@ -34,6 +34,6 @@
 		hidden_organs = list(BODY_HAIR_HEAD = TRUE, BODY_HAIR_FACE = TRUE)
 		worn_layer = LAYER_MOB_CLOTHING_MASK
 
-	
+
 /obj/item/clothing/head/hat/bandana/red
 	color = "#880000"

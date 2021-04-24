@@ -9,10 +9,10 @@
 	)
 
 	defense_rating = list(
-		LASER = -AP_AXE,
-		ARCANE = AP_AXE,
-		HEAT = -AP_AXE,
-		COLD = AP_GREATSWORD
+		LASER = -40,
+		ARCANE = 40,
+		HEAT = -40,
+		COLD = 80
 	)
 
 	protection_cold = list(

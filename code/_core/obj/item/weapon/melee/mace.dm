@@ -9,7 +9,7 @@
 
 	damage_type = /damagetype/melee/club/mace/
 
-	value = 80
+	value = 90
 
 	size = SIZE_3
 	weight = 10

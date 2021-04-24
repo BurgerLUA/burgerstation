@@ -1,4 +1,4 @@
-#define BASE_PAY 300
+#define BASE_PAY 500
 
 SUBSYSTEM_DEF(payday)
 	name = "Payday Subsystem"
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(payday)
 				P.to_chat(span("notice","You were taxed your insurance premium of <b>[charged_amount] credits</b>. Your insurance pool is now <b>[P.insurance] credits</b>."))
 				P.update_premiums()
 
-	stored_payday *= 0.5 //Prevents gaming the system.
+	stored_payday *= 0.25 //Prevents gaming the system.
 
 	for(var/k in valid_players)
 		var/mob/living/advanced/player/P = k

@@ -11,7 +11,6 @@
 
 	item_count_max = 4
 	item_count_max_icon = 4
-	bullet_color = COLOR_BULLET
 
 	projectile = /obj/projectile/bullet/firearm/pistol/stealth
 	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun

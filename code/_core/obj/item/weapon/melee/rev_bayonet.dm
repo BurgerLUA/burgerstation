@@ -8,4 +8,4 @@
 
 	damage_type = /damagetype/melee/sword/rev_bayonet
 
-	value = 200
+	value = 150
