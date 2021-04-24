@@ -123,6 +123,7 @@
 		/obj/item/weapon/ranged/bullet/revolver/commander,
 		/obj/item/magazine/clip/revolver/bullet_44
 	)
+	markup = 0.5
 
 /obj/structure/interactive/vending/virtual_reality/weapons/smgs
 	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
@@ -193,4 +194,4 @@
 		/obj/item/grenade/timed/smoke,
 		/obj/item/container/medicine/gauze
 	)
-	markup = 1
+	markup = 0.5

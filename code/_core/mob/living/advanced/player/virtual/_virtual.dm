@@ -1,6 +1,7 @@
 /mob/living/advanced/player/virtual
 	name = "virtual avatar"
 	allow_save = FALSE
+	damage_received_multiplier = 0.25
 
 /mob/living/advanced/player/virtual/initialize_attributes()
 

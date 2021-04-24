@@ -72,23 +72,6 @@
 	if(is_player(L))
 		HOOK_REMOVE("on_kill_player","\ref[L]_on_kill_player",L)
 
-/virtual_reality/team/nuke_ops/proc/can_round_start()
-
-	/*
-	if(length(teams["Ready"]) <= 2)
-		return "Waiting for More Players..."
-
-
-	if(length(teams["Syndicate"]) <= 0)
-		return "Waiting for Syndicate..."
-
-	if(length(teams["NanoTrasen"]) <= 0)
-		return "Waiting for NanoTrasen..."
-	*/
-
-
-	. = ..()
-
 /virtual_reality/team/nuke_ops/proc/give_loadout(var/mob/living/advanced/A)
 
 	if(length(team_loadouts[A.loyalty_tag]))
@@ -411,12 +394,32 @@
 			set_winner("NanoTrasen")
 			return TRUE
 		return FALSE
+
 	if(length(teams["NanoTrasen"]) <= 0)
 		set_winner("Syndicate")
 		return TRUE
 	else if(length(teams["Syndicate"]) <= 0)
 		set_winner("NanoTrasen")
 		return TRUE
+
+	var/nt_count = 0
+	for(var/k in teams["NanoTrasen"])
+		var/mob/living/L = k
+		if(!L.dead)
+			nt_count++
+	if(nt_count <= 0)
+		set_winner("Syndicate")
+		return TRUE
+
+	var/syn_count = 0
+	for(var/k in teams["Syndicate"])
+		var/mob/living/L = k
+		if(!L.dead)
+			syn_count++
+	if(syn_count <= 0)
+		set_winner("NanoTrasen")
+		return TRUE
+
 
 /virtual_reality/team/nuke_ops/player_post_death(var/mob/living/advanced/player/virtual/P)
 	. = ..()
