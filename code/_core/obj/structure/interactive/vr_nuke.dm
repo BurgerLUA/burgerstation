@@ -44,7 +44,7 @@
 		if(300 to 600)
 			should_play = !(time_left % 25)
 
-	maptext = "<center>[time_left/10]</center>"
+	maptext = "<center>[CEILING(time_left/10,1)]</center>"
 
 	if(should_play)
 		play_sound('sound/effects/double_beep.ogg',get_turf(src))
@@ -82,7 +82,7 @@
 
 	if(istype(object,/obj/hud/inventory))
 		INTERACT_CHECK
-		INTERACT_DELAY(20)
+		INTERACT_DELAY(10)
 		if(state == 1) //Arm it!
 			if(can_arm(caller))
 				caller.visible_message(span("danger","\The [caller.name] starts arming \the [src.name]!"),span("warning","You begin to arm \the [src.name]!"))
@@ -143,9 +143,13 @@
 /obj/structure/interactive/vr_nuke/proc/arm(var/mob/living/caller)
 	caller.visible_message(span("danger","\The [caller.name] arms \the [src.name]!"),span("warning","You arm \the [src.name]."))
 	state = 2
-	next_explode = world.time + 600 //Decieconds
+	next_explode = world.time + 1200 //Decieconds
 	if(SSvirtual_reality.current_virtual_reality)
 		play_sound_global('sound/vr/bomb_planted_alt.ogg',SSvirtual_reality.current_virtual_reality.active_players)
+		var/area/A = get_area(src)
+		for(var/k in SSvirtual_reality.current_virtual_reality.active_players)
+			var/mob/living/L = k
+			L.to_chat(span("danger","\The [src.name] was planted in \the [A.name]!"))
 	start_thinking(src)
 	return TRUE
 

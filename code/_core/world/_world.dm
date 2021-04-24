@@ -118,11 +118,16 @@ var/global/world_state = STATE_STARTING
 	save_banks()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
+		if(!P.allow_save)
+			continue
 		if(!istype(P))
 			log_error("Could not save a player as it was the wrong type or null ([P]).")
 			continue
 		if(P.dead)
 			P.to_chat(span("danger","Could not save your character because you were dead."))
+			continue
+		if(!P.ckey_last)
+			log_error(span("danger","ERROR: Tried saving [P.get_debug_name()], but they had no ckey_last!"))
 			continue
 		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 		if(!istype(mobdata))

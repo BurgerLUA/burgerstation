@@ -28,6 +28,9 @@
 
 /obj/hud/button/vendor_close/proc/close()
 
+	if(!owner)
+		return FALSE
+
 	HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
 
 	for(var/obj/hud/button/vendor_defer/VD in owner.buttons)

@@ -175,7 +175,7 @@
 		/obj/item/magazine/lmg_545,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
-		/obj/item/magazine/rifle_762_long,
+		/obj/item/magazine/rifle_939,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
 		/obj/item/magazine/sniper_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
@@ -192,6 +192,7 @@
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/grenade/timed/explosive,
 		/obj/item/grenade/timed/smoke,
-		/obj/item/container/medicine/gauze
+		/obj/item/container/medicine/gauze,
+		/obj/item/deployable/barricade
 	)
 	markup = 0.5

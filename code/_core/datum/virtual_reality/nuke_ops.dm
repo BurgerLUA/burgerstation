@@ -120,6 +120,8 @@
 			var/currency_to_give = 0
 			if(last_winner == P.loyalty_tag)
 				currency_to_give += 2000
+			else
+				currency_to_give += 4000
 			if(P.dead)
 				currency_to_give += 1000
 			else
