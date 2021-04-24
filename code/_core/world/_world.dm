@@ -10,6 +10,7 @@ var/global/world_state = STATE_STARTING
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
+
 	sleep_offline = TRUE
 
 	name = "Burgerstation 13"
@@ -28,6 +29,7 @@ var/global/world_state = STATE_STARTING
 	loop_checks = 1
 
 /world/New()
+	//sleep_offline = TRUE
 	__detect_rust_g()
 	. = ..()
 	life()
