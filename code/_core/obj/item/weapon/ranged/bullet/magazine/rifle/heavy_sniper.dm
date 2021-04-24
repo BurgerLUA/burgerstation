@@ -4,10 +4,12 @@
 	desc_extended = "The 50 BFR is technically an Anti-Materiel Rifle, but somehow it works against Personnel just as well."
 	icon = 'icons/obj/item/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
-
+	value = 5000
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 30
+	shoot_delay = 20
+
+	damage_mod = 2
 
 	automatic = FALSE
 
@@ -16,10 +18,7 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = TILE_SIZE - 1
-
-	heat_per_shot = 0.1
-	heat_max = 0.1
+	heat_max = 0.05
 
 	bullet_length_min = 90
 	bullet_length_best = 99
@@ -29,11 +28,8 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
-	size = SIZE_4
+	size = SIZE_5
 	weight = 30
-
-
-	value = 500
 
 	ai_heat_sensitivity = 2
 
@@ -51,5 +47,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))

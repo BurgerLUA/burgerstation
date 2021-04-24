@@ -13,8 +13,8 @@
 	stamina_base = 100
 
 	armor_base = list(
-		HOLY = -DAMAGE_CLUB,
-		DARK = DAMAGE_CLUB
+		HOLY = -60,
+		DARK = 60
 	)
 
 	level_multiplier = 2

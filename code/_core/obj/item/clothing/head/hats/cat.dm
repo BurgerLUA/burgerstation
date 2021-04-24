@@ -6,11 +6,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
-		BLADE = -AP_CLUB,
-		BLUNT = -AP_CLUB,
-		PIERCE = -AP_CLUB
+		HOLY = -80,
+		DARK = 80,
+		BLADE = -60,
+		BLUNT = -60,
+		PIERCE = -60
 	)
 
 	protected_limbs = TARGETABLE_LIMBS
@@ -39,12 +39,12 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_AXE,
-		ARCANE = AP_AXE,
-		BLADE = -AP_CLUB,
-		BLUNT = -AP_CLUB,
-		PIERCE = -AP_CLUB
+		HOLY = -80,
+		DARK = 40,
+		ARCANE = 40,
+		BLADE = -60,
+		BLUNT = -60,
+		PIERCE = -60
 	)
 
 	protected_limbs = TARGETABLE_LIMBS

@@ -15,6 +15,8 @@
 	weight = 6
 	size = SIZE_4
 
+	value = 100
+
 var/global/list/shield_price_mul = list(
 	ATTACK_TYPE_UNARMED = 0.75,
 	ATTACK_TYPE_MELEE = 0.5,
@@ -53,6 +55,8 @@ var/global/list/shield_price_mul = list(
 	weight = 25
 	size = SIZE_7
 
+	value = 500
+
 /obj/item/weapon/melee/shield/glass
 	name = "magic glass shield"
 	icon = 'icons/obj/item/shields/glass.dmi'
@@ -63,6 +67,8 @@ var/global/list/shield_price_mul = list(
 		ATTACK_TYPE_RANGED = 0,
 		ATTACK_TYPE_MAGIC = 0.9
 	)
+
+	value = 800
 
 /obj/item/weapon/melee/shield/buckler
 	name = "hardened steel buckler"
@@ -79,6 +85,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	value = 200
+
 /obj/item/weapon/melee/shield/great
 	name = "iron great shield"
 	icon = 'icons/obj/item/shields/great.dmi'
@@ -94,6 +102,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(4,0,-4,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	value = 900
+
 /obj/item/weapon/melee/shield/heartstone
 	name = "heartstone shield"
 	icon = 'icons/obj/item/shields/heartstone.dmi'
@@ -108,6 +118,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(5,0,-5,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
+
+	value = 600
 
 
 /obj/item/weapon/melee/shield/holy_forest
@@ -127,6 +139,8 @@ var/global/list/shield_price_mul = list(
 
 	dan_mode = TRUE
 
+	value = 600
+
 /obj/item/weapon/melee/shield/leather
 	name = "leather-steel shield"
 	icon = 'icons/obj/item/shields/leather.dmi'
@@ -141,6 +155,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(5,0,-5,0)
 	dan_offset_pixel_y = list(-1,-1,-1,-1)
+
+	value = 200
 
 /obj/item/weapon/melee/shield/mirror
 	name = "great mirror shield"
@@ -157,6 +173,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	value = 1200
+
 /obj/item/weapon/melee/shield/redstar
 	name = "russian redstar shield"
 	icon = 'icons/obj/item/shields/redstar.dmi'
@@ -171,6 +189,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(5,0,-5,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
+
+	value = 300
 
 /obj/item/weapon/melee/shield/spider
 	name = "red spider shield"
@@ -187,6 +207,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	value = 300
+
 /obj/item/weapon/melee/shield/sun
 	name = "sun shield"
 	icon = 'icons/obj/item/shields/sun.dmi'
@@ -201,6 +223,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-1,-1,-1,-1)
+
+	value = 400
 
 /obj/item/weapon/melee/shield/target
 	name = "iron target shield"
@@ -217,6 +241,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	value = 300
+
 /obj/item/weapon/melee/shield/whitewood
 	name = "whitewood magic shield"
 	icon = 'icons/obj/item/shields/whitewood.dmi'
@@ -231,3 +257,5 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
+
+	value = 400

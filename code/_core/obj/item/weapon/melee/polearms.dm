@@ -9,7 +9,7 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	value = 80
+	value = 300
 
 	attack_range = 2
 

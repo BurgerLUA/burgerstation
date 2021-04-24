@@ -5,17 +5,17 @@
 	desc_extended = "A helmet made from hardened carbon fibres."
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
-		BIO = AP_AXE,
-		RAD = AP_AXE,
-		PAIN = AP_CLUB
+		BLADE = 20,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		ARCANE = -60,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40,
+		BIO = 40,
+		RAD = 40,
+		PAIN = 60
 	)
 
 	size = SIZE_3

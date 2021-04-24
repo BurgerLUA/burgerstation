@@ -3,6 +3,7 @@
 	desc = "Freeze, Criminal Scum!"
 	desc_extended = "A hybrid laser carbine with two firemodes, low intensity (stun) and high intensity (kill). Commonly used by shitsecurity."
 	icon = 'icons/obj/item/weapons/ranged/laser/carbine.dmi'
+	value = 1900
 
 	projectile_kill = /obj/projectile/bullet/laser/weak
 	projectile_stun = /obj/projectile/bullet/laser/weak
@@ -26,15 +27,10 @@
 
 	charge_cost = CELL_SIZE_BASIC / 120
 
-	view_punch = 6
-
-	heat_per_shot = 0.01
 	heat_max = 0.03
 
 	size = SIZE_3
 	weight = 14
-
-	value = 600
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0

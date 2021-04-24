@@ -12,8 +12,8 @@
 	icon = 'icons/obj/item/clothing/underwear/bra.dmi'
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		COLD = AP_DAGGER
+		ARCANE = 10,
+		COLD = 10
 	)
 
 	dyeable = TRUE
@@ -60,8 +60,8 @@
 	icon = 'icons/obj/item/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		COLD = AP_DAGGER
+		ARCANE = 10,
+		COLD = 10
 	)
 
 	dyeable = TRUE

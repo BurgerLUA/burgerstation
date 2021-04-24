@@ -14,12 +14,12 @@
 	no_initial_blend = TRUE
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		ARCANE = AP_AXE,
-		COLD = AP_SWORD,
-		PAIN = AP_DAGGER
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		ARCANE = 40,
+		COLD = 20,
+		PAIN = 10
 	)
 
 	size = SIZE_1

@@ -13,9 +13,9 @@
 	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
-		ARCANE = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD
+		ARCANE = 80,
+		HOLY = -80,
+		DARK = 80
 	)
 
 	size = SIZE_1

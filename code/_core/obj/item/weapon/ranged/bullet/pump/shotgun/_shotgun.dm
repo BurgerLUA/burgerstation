@@ -9,3 +9,5 @@
 	bullet_diameter_max = 19
 
 	inaccuracy_modifier = 1.25
+
+	damage_mod = 1.3

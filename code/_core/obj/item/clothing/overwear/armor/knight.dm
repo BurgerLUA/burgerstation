@@ -9,13 +9,13 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		HEAT = -AP_AXE,
-		ARCANE = -AP_CLUB,
-		PAIN = AP_CLUB
+		BLADE = 60,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		HEAT = -40,
+		ARCANE = -60,
+		PAIN = 60
 	)
 
 	size = SIZE_6
@@ -46,13 +46,13 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		HEAT = -AP_AXE,
-		ARCANE = -AP_GREATSWORD,
-		PAIN = AP_CLUB
+		BLADE = 80,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		HEAT = -40,
+		ARCANE = -80,
+		PAIN = 60
 	)
 
 	size = SIZE_7
@@ -67,14 +67,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		HEAT = -AP_AXE,
-		ARCANE = -AP_CLUB,
-		HOLY = AP_CLUB,
-		PAIN = AP_CLUB
+		BLADE = 60,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		HEAT = -40,
+		ARCANE = -60,
+		HOLY = 60,
+		PAIN = 60
 	)
 
 	size = SIZE_5
@@ -90,13 +90,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = AP_SWORD,
-		HEAT = -AP_SWORD,
-		ARCANE = AP_CLUB,
-		PAIN = AP_CLUB
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = 20,
+		HEAT = -20,
+		ARCANE = 60,
+		PAIN = 60
 	)
 
 	size = SIZE_6
@@ -112,13 +112,13 @@
 	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_CLUB,
-		LASER = -AP_AXE,
-		ARCANE = -AP_GREATSWORD,
-		HEAT = -AP_AXE,
-		BOMB = AP_AXE
+		BLADE = 80,
+		BLUNT = 40,
+		PIERCE = 60,
+		LASER = -40,
+		ARCANE = -80,
+		HEAT = -40,
+		BOMB = 40
 	)
 
 	size = SIZE_7
@@ -133,12 +133,12 @@
 	icon = 'icons/obj/item/clothing/suit/clockwork.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = -AP_CLUB,
-		ARCANE = AP_CLUB,
-		HEAT = -AP_AXE
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = -60,
+		ARCANE = 60,
+		HEAT = -40
 	)
 
 	size = SIZE_6
@@ -151,13 +151,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_CLUB,
-		HOLY = -AP_SWORD,
-		DARK = AP_SWORD
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 60,
+		HOLY = -20,
+		DARK = 20
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
@@ -179,13 +179,13 @@
 	icon = 'icons/obj/item/clothing/suit/goblin.dmi'
 
 	defense_rating = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		HEAT = -AP_AXE,
-		ARCANE = -AP_GREATSWORD,
-		PAIN = AP_CLUB
+		BLADE = 80,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		HEAT = -40,
+		ARCANE = -80,
+		PAIN = 60
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)

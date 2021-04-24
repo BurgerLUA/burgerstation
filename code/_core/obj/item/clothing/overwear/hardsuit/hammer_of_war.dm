@@ -6,16 +6,16 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_SWORD,
-		ARCANE = -AP_GREATSWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		BOMB = AP_SWORD,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD
+		BLADE = 60,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 20,
+		ARCANE = -80,
+		HEAT = 80,
+		COLD = 80,
+		BOMB = 20,
+		BIO = 20,
+		RAD = 20
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/hammer_of_war)

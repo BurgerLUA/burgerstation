@@ -77,8 +77,8 @@
 		known_languages |= loaded_data["known_languages"]
 
 	if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
-		to_chat(span("notice","<h2>You are rewarded 1000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
-		adjust_currency(1000)
+		to_chat(span("notice","<h2>You are rewarded 2000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
+		adjust_currency(2000)
 
 	/*
 	for(var/id in loaded_data["organs"])

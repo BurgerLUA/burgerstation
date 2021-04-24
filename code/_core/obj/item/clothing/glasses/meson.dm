@@ -6,7 +6,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1
@@ -27,7 +27,7 @@
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1

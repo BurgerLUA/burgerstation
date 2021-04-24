@@ -4,18 +4,17 @@
 	desc_extended = "A NanoTrasen made and used personal defense weapon designed for security forces on stations. The unique 4.6x30mm ammo type offers a robust array of special rounds for all combat situations."
 	icon = 'icons/obj/item/weapons/ranged/smg/4mm.dmi'
 	icon_state = "inventory"
+	value = 1100
 
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1.3
-	view_punch = 4
+	shoot_delay = 1
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.02
 	heat_max = 0.09
 
 	bullet_length_min = 25
@@ -28,8 +27,6 @@
 
 	size = SIZE_3
 	weight = 6
-
-	value = 110
 
 	ai_heat_sensitivity = 0.5
 
@@ -72,7 +69,6 @@
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/update_icon()

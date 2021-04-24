@@ -40,6 +40,12 @@
 		ATTRIBUTE_DEXTERITY = 10 //10%
 	)
 
+	attack_delay = 0
+
+/damagetype/ranged/calculate_value(var/obj/item/I)
+	. = ..()
+	. *= 2
+
 /damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0.5
 

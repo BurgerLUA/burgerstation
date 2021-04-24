@@ -3,18 +3,18 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.1,
-		FATIGUE = DAMAGE_AXE*0.5
+		BLUNT = 10,
+		FATIGUE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_AXE*0.25,
-		FATIGUE = AP_AXE*0.75
+		BLUNT = 0,
+		FATIGUE = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.3
+		ATTRIBUTE_STRENGTH = 20
 	)
 
 	attribute_damage = list(
@@ -22,35 +22,36 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_AXE*0.1,
+		SKILL_MELEE = 10,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
 	)
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 10
+	attack_delay_max = 10
 
 /damagetype/melee/sword/energy_katana/on
-	name = "energy katana"
+	name = "energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_CLUB*0.2,
-		LASER = DAMAGE_CLUB*0.2,
-		HEAT = DAMAGE_CLUB*0.1
+		BLADE = 30,
+		LASER = 10,
+		HEAT = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_CLUB*0.5,
-		LASER = AP_CLUB*0.5
+		BLADE = 100,
+		LASER = 100,
+		HEAT = 100
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_CLUB*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_CLUB*0.2
+		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_DEXTERITY = 50
 	)
 
 	attribute_damage = list(
@@ -59,12 +60,12 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_CLUB*0.2,
+		SKILL_MELEE = 50
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLADE
+		SKILL_MELEE = list(BLADE,LASER)
 	)
 
-	attack_delay = SPEED_CLUB*0.5
-	attack_delay_max = SPEED_CLUB
+	attack_delay = 7
+	attack_delay_max = 20

@@ -9,7 +9,7 @@
 	icon = 'icons/obj/item/clothing/shoes/sandal.dmi'
 
 	defense_rating = list(
-		ARCANE = AP_GREATSWORD
+		ARCANE = 80
 	)
 
 	size = SIZE_1

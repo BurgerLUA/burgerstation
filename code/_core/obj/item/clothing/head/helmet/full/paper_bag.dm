@@ -14,8 +14,8 @@
 	value = 10
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		HEAT = -AP_SWORD
+		ARCANE = 20,
+		HEAT = -20
 	)
 
 	polymorphs = list(

@@ -71,3 +71,5 @@
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23/fire
+
+

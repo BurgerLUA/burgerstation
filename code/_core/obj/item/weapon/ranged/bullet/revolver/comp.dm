@@ -4,6 +4,7 @@
 	desc_extended = "An 8 round short barrel revolver designed for competitive shooting. Shoots really fast and has very low recoil and spread after the first shot."
 	icon = 'icons/obj/item/weapons/ranged/revolver/38_2.dmi'
 	icon_state = "inventory"
+	value = 800
 
 	shoot_delay = 1
 
@@ -13,13 +14,8 @@
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
-	view_punch = 3
-
-
-
 	size = SIZE_2
 	weight = 6
-
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -29,10 +25,7 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	heat_per_shot = 0.003
 	heat_max = 0.01
-
-	value = 150
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -76,4 +69,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/revolver/comp/get_skill_spread(var/mob/living/L)
-	return max(0,0.0075 - (0.0075 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))

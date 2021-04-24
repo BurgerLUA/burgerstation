@@ -97,7 +97,6 @@
 	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/22.dmi'
 
-
 	bullet_diameter = 5.6
 	bullet_length = 17.7
 	bullet_color = COLOR_BULLET

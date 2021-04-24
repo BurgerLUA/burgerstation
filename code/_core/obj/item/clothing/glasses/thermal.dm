@@ -6,7 +6,7 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1

@@ -2,15 +2,15 @@
 	name = "bow"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATCLUB*0.75,
+		PIERCE = 105*0.75,
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATCLUB*2,
+		PIERCE = 120*2,
 	)
 
 	skill_stats = list(
-		SKILL_RANGED = DAMAGE_GREATAXE*0.25
+		SKILL_RANGED = 90*0.25
 	)
 
 	skill_damage = list(

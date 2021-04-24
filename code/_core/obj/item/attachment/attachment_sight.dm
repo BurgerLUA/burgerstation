@@ -11,7 +11,7 @@
 		skill_spread = 0.75,
 		movement_spread = 1.25,
 		inaccuracy_modifer = 0.75,
-		view_punch = 1.1
+
 	)
 
 	value = 200
@@ -41,7 +41,7 @@
 	attachment_stats = list(
 		inaccuracy_modifer = 1.25,
 		heat_spread = 1.25,
-		view_punch = 1.25,
+
 		shoot_delay = 0.75
 	)
 

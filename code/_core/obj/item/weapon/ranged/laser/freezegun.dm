@@ -3,6 +3,7 @@
 	desc = "Get iced, dummy."
 	desc_extended = "A gun that shoots beams that freeze the opponent."
 	icon = 'icons/obj/item/weapons/ranged/laser/freezegun.dmi'
+	value = 4000
 
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/freezegun
@@ -16,21 +17,14 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-
-	view_punch = 8
-
 	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.015
 	heat_max = 0.04
 
 	size = SIZE_4
 	weight = 15
-
-	value = 1500
-
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,

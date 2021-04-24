@@ -24,13 +24,13 @@
 	)
 
 	armor_base = list(
-		HEAT = -AP_SWORD,
-		COLD = AP_SWORD,
-		BIO = AP_GREATSWORD,
-		RAD = AP_AXE,
-		FATIGUE = AP_SWORD,
+		HEAT = -20,
+		COLD = 20,
+		BIO = 80,
+		RAD = 40,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	size = SIZE_LARGE

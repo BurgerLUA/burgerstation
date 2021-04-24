@@ -11,7 +11,7 @@
 		movement_spread = 1.25,
 		heat_spread = 0.75,
 		inaccuracy_modifer = 0.75,
-		view_punch = 0.75
+
 	)
 
 /obj/item/attachment/stock/sniper_127 //Actually not a stock but whatever. Players won't know this.

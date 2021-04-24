@@ -6,9 +6,9 @@
 	icon = 'icons/obj/item/clothing/belts/belt_quiver.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_SWORD
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 20
 	)
 
 	rarity = RARITY_UNCOMMON

@@ -4,9 +4,9 @@
 	desc_extended = "A very tactical semi automatic assault rifle used primarily by serious mercenaries that rivals NanoTrasen's SA-AR."
 	icon = 'icons/obj/item/weapons/ranged/rifle/merc.dmi'
 	icon_state = "inventory"
-	value = 1200
+	value = 3500
 
-	shoot_delay = 1.5
+	shoot_delay = 1
 
 	automatic = FALSE
 
@@ -14,13 +14,10 @@
 
 	can_wield = TRUE
 
-	view_punch = 8
-
 	size = SIZE_4
 	weight = 12
 
-	heat_per_shot = 0.04
-	heat_max = 0.3
+	heat_max = 0.1
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -74,11 +71,9 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/merc/get_static_spread()
-	if(!wielded) return 0.25
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/merc/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped/Generate()

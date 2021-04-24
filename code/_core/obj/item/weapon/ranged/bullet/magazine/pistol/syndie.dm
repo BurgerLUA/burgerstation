@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie
 	name = "10mm Stechkin"
 	desc = "The traitor's second best friend."
-	desc_extended = "The standard Syndicate pistol. The compactness of the gun makes it useful in assassinations as well as a holdout weapon."
+	desc_extended = "The standard Syndicate pistol. Cheap. Reliable. The compactness of the gun makes it useful in assassinations as well as a holdout weapon."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm.dmi'
 	icon_state = "inventory"
-	value = 40
+	value = 250
 
 	shoot_delay = 2
 
@@ -18,13 +18,9 @@
 
 	can_wield = FALSE
 
-	view_punch = 8
-
 	size = SIZE_1
 	weight = 3
 
-
-	heat_per_shot = 0.02
 	heat_max = 0.12
 
 	bullet_length_min = 25
@@ -70,10 +66,10 @@
 	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_static_spread()
-	return 0.0025
+	return 0.004
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
 	name = "10mm Stechkin MOD"

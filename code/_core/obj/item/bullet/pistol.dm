@@ -8,7 +8,6 @@
 	item_count_max = 6
 	item_count_max_icon = 6
 
-
 	bullet_diameter = 10.17
 	bullet_length = 32
 	bullet_color = COLOR_BULLET
@@ -47,7 +46,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -98,7 +96,6 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-
 	bullet_diameter = 12.7
 	bullet_length = 33
 	bullet_color = COLOR_BULLET
@@ -142,7 +139,6 @@
 	bullet_length = 19
 	bullet_color = COLOR_BULLET
 
-
 	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm
 
@@ -181,7 +177,6 @@
 	bullet_diameter = 4.6
 	bullet_length = 30
 	bullet_color = COLOR_BULLET
-
 
 	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
@@ -224,19 +219,6 @@
 
 	value = 0.5
 
-/obj/item/bullet_cartridge/pistol_4mm/subsonic
-	name = "\improper subsonic 4.6x30mm smg cartridge"
-	icon = 'icons/obj/item/bullet/46mm.dmi'
-
-	projectile = /obj/projectile/bullet/firearm/pistol/stealth
-
-	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/subsonic
-
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
-
-	caseless = TRUE
-	value = 0.5
-
 /obj/item/bullet_cartridge/pistol_4mm/surplus
 	name = "\improper surplus 4.6x30mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/surplus
@@ -263,7 +245,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 10
 	bullet_length = 22
@@ -324,7 +305,6 @@
 	item_count_max = 6
 	item_count_max_icon = 6
 
-
 	bullet_diameter = 11.43
 	bullet_length = 23
 	bullet_color = COLOR_BULLET
@@ -367,7 +347,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 8
 	bullet_length = 12

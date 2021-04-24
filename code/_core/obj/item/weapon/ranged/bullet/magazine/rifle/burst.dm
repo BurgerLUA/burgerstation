@@ -4,19 +4,19 @@
 	desc_extended = "A 3-round burst assault rifle designed to quickly put down targets at medium to long ranges."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3.dmi'
 	icon_state = "inventory"
-	value = 400
+	value = 1800
 
 	shoot_delay = 1.25
-	burst_delay = 5
+	burst_delay = 6
 	max_bursts = 3
+
+	damage_mod = 1.3
 
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	can_wield = TRUE
-
-	view_punch = 10
 
 	size = SIZE_4
 	weight = 12
@@ -65,7 +65,6 @@
 
 	dan_mode = TRUE
 
-	heat_per_shot = 0.03
 	heat_max = 0.09
 
 	inaccuracy_modifier = 0.25
@@ -73,11 +72,9 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread()
-	if(!wielded) return 0.15
-	return 0
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype
@@ -85,18 +82,15 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3_new.dmi'
 	desc_extended = "A very early prototype of NanoTrasen's L-HON; the L-HON-0 is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
 
-	view_punch = 12
-
 	weight = 14
 
 	shoot_delay = 1
 	burst_delay = 4
 	max_bursts = 3
 
-	value = 1400
+	value = 3000
 
-	heat_per_shot = 0.025
-	heat_max = 0.045
+	heat_max = 0.02
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
 
@@ -108,3 +102,9 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 17 - 16
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype/get_static_spread()
+	return 0.001
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype/get_skill_spread(var/mob/living/L)
+	return max(0,0.04 - (0.06 * L.get_skill_power(SKILL_RANGED)))

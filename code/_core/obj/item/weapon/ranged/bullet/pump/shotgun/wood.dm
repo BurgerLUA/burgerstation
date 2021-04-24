@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/regular.dmi'
 	icon_state = "inventory"
 
+	value = 800
+
 	shoot_delay = 3
 
 	automatic = FALSE
@@ -13,16 +15,9 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	view_punch = 12
-
-
-
 	size = SIZE_4
 	weight = 9
 
-	value = 80
-
-	heat_per_shot = 0.03
 	heat_max = 0.12
 
 	attachment_whitelist = list(
@@ -59,8 +54,6 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-	inaccuracy_modifier = 1.25
-
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
@@ -68,8 +61,7 @@
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.02 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
-	return 0.06
+	return 0.1
