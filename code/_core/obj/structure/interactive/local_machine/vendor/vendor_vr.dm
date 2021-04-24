@@ -90,7 +90,7 @@
 	markup = 0.75
 
 /obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
-	return CEILING(desired_price,50)
+	return CEILING(desired_price,10)
 
 /obj/structure/interactive/vending/virtual_reality/modify_item(var/obj/item/I)
 
