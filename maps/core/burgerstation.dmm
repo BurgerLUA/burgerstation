@@ -243,13 +243,13 @@
 "eI" = (/obj/structure/interactive/ore_storage,/turf/simulated/floor/tile/shuttle,/area/transit/dropship/charlie/station)
 "eJ" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/ranged/magic/tome/summon/crab,/obj/item/weapon/ranged/magic/tome/summon/bull,/obj/item/weapon/ranged/magic/tome/summon/goliath,/obj/item/weapon/ranged/magic/tome/summon/skeleton,/obj/item/weapon/ranged/magic/tome/summon/space_bear,/obj/item/weapon/ranged/magic/tome/summon/twilight,/obj/item/weapon/ranged/magic/tome/summon/watcher,/turf/simulated/floor/wood/rich,/area/burgerstation/library)
 "eK" = (/obj/structure/interactive/conveyor{dir = 8; icon_state = "conveyor"},/turf/simulated/floor/tile/dark,/area/burgerstation/cargo)
-"eL" = (/turf/simulated/wall/metal,/area/burgerstation/cafe/botany)
+"eL" = (/turf/simulated/wall/metal,/area/burgerstation/vr)
 "eM" = (/obj/structure/interactive/disposals/pipe/junction/sorting{dir = 4; icon_state = "pipe-j1s"; sorting_tag = "kitchen"},/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/west)
 "eN" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/pinpointer/landmark,/turf/simulated/floor/tile/morphing/security,/area/burgerstation/armory)
 "eO" = (/obj/decal/hazard{dir = 8},/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/dark,/area/burgerstation/armory)
 "eP" = (/obj/structure/interactive/vending/security/gundrobe,/turf/simulated/floor/tile/morphing/security,/area/burgerstation/armory)
 "eQ" = (/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/tile/dark,/area/burgerstation/cafe/bar)
-"eR" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/tile/dark,/area/burgerstation/cafe/kitchen)
+"eR" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/burgerstation/vr)
 "eS" = (/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/tile,/area/burgerstation/cafe/kitchen)
 "eT" = (/obj/structure/smooth/table/reinforced,/obj/item/container/beaker/glass,/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/tile,/area/burgerstation/cafe/kitchen)
 "eU" = (/obj/structure/interactive/ore_storage,/turf/simulated/floor/tile/shuttle/purple,/area/transit/dropship/charlie/station)
@@ -266,7 +266,7 @@
 "ff" = (/obj/structure/interactive/intercom,/turf/simulated/wall/metal,/area/burgerstation/cafe/bar)
 "fg" = (/obj/structure/interactive/atmospherics/scrubber,/obj/structure/interactive/disposals/pipe{dir = 8},/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/turf/simulated/floor/tile,/area/burgerstation/cafe/kitchen)
 "fh" = (/obj/structure/interactive/door/airlock/station/glass,/turf/simulated/floor/tile/dark,/area/burgerstation/armory/shooting_range)
-"fi" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/burgerstation/cafe/botany)
+"fi" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/burgerstation/vr)
 "fj" = (/obj/structure/interactive/disposals/pipe/junction{dir = 8},/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/central)
 "fk" = (/turf/simulated/floor/tile/dark,/area/burgerstation/engineering)
 "fl" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/grey,/area/burgerstation/engineering)
@@ -375,7 +375,7 @@
 "hk" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 8},/obj/structure/interactive/disposals/pipe{dir = 9},/turf/simulated/floor/tile/dark,/area/burgerstation/engineering)
 "hl" = (/obj/structure/interactive/disposals/pipe/junction,/turf/simulated/floor/tile/tint,/area/burgerstation/armory)
 "hm" = (/obj/marker/lobby,/obj/structure/interactive/crate/engineering,/turf/simulated/floor/tile/morphing/janitor,/area/burgerstation/engineering)
-"hn" = (/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
+"hn" = (/obj/structure/interactive/fire_closet{dir = 1},/turf/simulated/wall/metal,/area/burgerstation/vr)
 "ho" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/turf/simulated/floor/tile/shuttle/engineering,/area/transit/dropship/bravo/station)
 "hp" = (/obj/structure/interactive/light_switch{dir = 8; icon_state = "setup"},/turf/simulated/wall/metal/reinforced,/area/burgerstation/cafe/kitchen)
 "hq" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/nanotrasen,/area/burgerstation/arrivals)
@@ -404,7 +404,7 @@
 "hN" = (/obj/structure/interactive/chair{dir = 4},/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/turf/simulated/floor/tile/shuttle,/area/transit/dropship/charlie/station)
 "hO" = (/obj/decal/hazard{dir = 1},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "hP" = (/turf/simulated/floor/tile/morphing/engineering,/area/burgerstation/hall/north)
-"hQ" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/burgerstation/cafe/kitchen)
+"hQ" = (/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
 "hR" = (/obj/structure/interactive/light_switch{dir = 4; icon_state = "setup"},/turf/simulated/wall/metal/reinforced,/area/burgerstation/medical/chemistry)
 "hS" = (/mob/living/advanced/npc/dummy/armor_heavy,/turf/simulated/floor/plating,/area/burgerstation/armory/shooting_range)
 "hT" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/morphing/nanotrasen,/area/burgerstation/arrivals)
@@ -451,7 +451,7 @@
 "iI" = (/obj/structure/smooth/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/transit/dropship/charlie/station)
 "iJ" = (/obj/structure/smooth/window/shuttle/end_02{dir = 4},/turf/simulated/floor/plating/shuttle,/area/transit/dropship/charlie/station)
 "iK" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/central)
-"iL" = (/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
+"iL" = (/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
 "iM" = (/turf/simulated/floor/tile/morphing/security,/area/burgerstation/hall/north)
 "iN" = (/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/door/airlock/station/glass,/turf/simulated/floor/tile/morphing/security,/area/burgerstation/armory/shooting_range)
 "iO" = (/obj/structure/interactive/status_display/global_display/round,/turf/simulated/wall/metal,/area/burgerstation/library)
@@ -460,7 +460,7 @@
 "iR" = (/obj/structure/interactive/disposals/machine/outlet{dir = 4},/obj/structure/interactive/disposals/pipe/ending{dir = 4},/turf/simulated/floor/tile/coldroom,/area/burgerstation/cafe/kitchen)
 "iS" = (/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/chapel,/area/burgerstation/chapel)
 "iT" = (/turf/simulated/wall/metal,/area/burgerstation/medical)
-"iU" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
+"iU" = (/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
 "iV" = (/obj/structure/interactive/light_switch{dir = 1; icon_state = "setup"},/turf/simulated/wall/metal/reinforced,/area/burgerstation/cargo)
 "iW" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal,/area/burgerstation/bathrooms)
 "iX" = (/turf/simulated/floor/tile/red,/area/burgerstation/hanger)
@@ -479,7 +479,7 @@
 "jk" = (/obj/structure/interactive/reagent_tank/cheese_powder,/turf/simulated/floor/tile/dark,/area/burgerstation/dressing)
 "jl" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/obj/structure/interactive/shop,/turf/simulated/floor/tile/morphing/science,/area/burgerstation/science)
 "jm" = (/obj/structure/interactive/chair{dir = 8},/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/obj/marker/hostage_rest,/turf/simulated/floor/tile/morphing/engineering,/area/burgerstation/engineering)
-"jn" = (/turf/simulated/floor/tile/grey,/area/burgerstation/cafe/botany)
+"jn" = (/turf/simulated/floor/plating,/area/burgerstation/vr)
 "jo" = (/obj/structure/smooth/table/glass,/obj/structure/interactive/lighting/fixture/tube/station,/obj/item/container/beaker/alcohol/coffee_liqueur,/obj/item/container/beaker/alcohol/fernet,/obj/item/container/beaker/alcohol/hearty_punch,/obj/item/container/beaker/alcohol/nothing,/obj/item/container/beaker/alcohol/schnapps/gold,/obj/item/container/beaker/alcohol/tequila,/turf/simulated/floor/tile/dark,/area/burgerstation/cafe/bar)
 "jp" = (/obj/structure/smooth/table/glass,/obj/item/container/beaker/alcohol/ale,/obj/item/container/beaker/alcohol/beer,/obj/item/container/beaker/alcohol/cider,/obj/item/container/beaker/alcohol/whiskey,/obj/item/container/beaker/alcohol/wine,/obj/item/container/beaker/alcohol/wine/vermouth,/turf/simulated/floor/tile/dark,/area/burgerstation/cafe/bar)
 "jq" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending,/turf/simulated/floor/tile/dark,/area/burgerstation/cafe/bar)
@@ -494,7 +494,7 @@
 "jz" = (/obj/decal/hazard,/obj/structure/interactive/disposals/pipe/ending,/obj/structure/interactive/disposals/machine/chute,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "jA" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/north)
 "jB" = (/obj/structure/interactive/crate/engineering,/turf/simulated/floor/tile/morphing/janitor,/area/burgerstation/engineering)
-"jC" = (/obj/structure/interactive/reagent_tank/water,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
+"jC" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/burgerstation/vr)
 "jD" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/north)
 "jE" = (/obj/structure/interactive/door/airlock/shuttle,/obj/structure/interactive/conveyor,/turf/simulated/floor/tile/shuttle/purple,/area/transit/dropship/charlie/station)
 "jF" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/coldroom,/area/burgerstation/cafe/kitchen)
@@ -517,7 +517,7 @@
 "jW" = (/obj/structure/interactive/door/airlock/station/general,/turf/simulated/floor/tile/grey,/area/burgerstation/dressing)
 "jX" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/grey,/area/burgerstation/arrivals)
 "jY" = (/obj/structure/smooth/table,/turf/simulated/floor/tile/grey,/area/burgerstation/arrivals)
-"jZ" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/burgerstation/cafe/kitchen)
+"jZ" = (/turf/simulated/floor/tile/overlapping/dark,/area/burgerstation/vr)
 "ka" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/crafting/filter,/turf/simulated/floor/tile/morphing/chemistry,/area/burgerstation/medical/chemistry)
 "kb" = (/obj/structure/interactive/crate,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/meat/raw,/turf/simulated/floor/tile/coldroom,/area/burgerstation/cafe/kitchen)
 "kc" = (/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/door/airlock/station/medical/glass,/turf/simulated/floor/tile/morphing/medical,/area/burgerstation/medical)
@@ -627,7 +627,7 @@
 "mc" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/grey/single,/area/burgerstation/goblin_shop)
 "md" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/mob/living/advanced/npc/cyborg_assistant/help_desk,/turf/simulated/floor/tile/morphing/nanotrasen,/area/burgerstation/help_desk)
 "me" = (/turf/simulated/floor/tile/grey,/area/burgerstation/hall/west)
-"mf" = (/obj/structure/interactive/disposals/pipe{dir = 5},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
+"mf" = (/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 8},/turf/simulated/floor/tile/overlapping/dark,/area/burgerstation/vr)
 "mg" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/north)
 "mh" = (/turf/simulated/floor/tile/morphing/nanotrasen,/area/burgerstation/hall/east)
 "mi" = (/obj/structure/interactive/lighting/fixture/tube/station,/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/nanotrasen,/area/burgerstation/hall/east)
@@ -639,7 +639,7 @@
 "mo" = (/turf/simulated/wall/metal,/area/burgerstation/science)
 "mp" = (/turf/simulated/floor/tile/grey,/area/burgerstation/goblin_shop)
 "mq" = (/obj/structure/interactive/atmospherics/air_alarm,/turf/simulated/wall/metal,/area/burgerstation/maint/east)
-"mr" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/plating,/area/burgerstation/cafe/botany)
+"mr" = (/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 4},/turf/simulated/floor/tile/overlapping/dark,/area/burgerstation/vr)
 "ms" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/burgerstation/medical/chemistry)
 "mt" = (/obj/structure/interactive/intercom,/turf/simulated/wall/metal,/area/burgerstation/medical)
 "mu" = (/obj/structure/interactive/vending/clothes/hat,/turf/simulated/floor/tile/morphing/cryo,/area/burgerstation/cryo)
@@ -779,7 +779,7 @@
 "oY" = (/obj/structure/smooth/window/shuttle/middle{dir = 4; icon_state = "single"},/turf/simulated/floor/plating/shuttle,/area/transit/dropship/bravo/station)
 "oZ" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/obj/marker/backup_spawn,/turf/simulated/floor/tile,/area/burgerstation/bathrooms)
 "pa" = (/obj/structure/interactive/disposals/pipe{dir = 9},/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/medical,/area/burgerstation/medical)
-"pb" = (/turf/simulated/floor/colored/dirt/soil,/area/burgerstation/cafe/botany)
+"pb" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/burgerstation/vr)
 "pc" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/medical,/area/burgerstation/hall/south)
 "pd" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/morphing/science,/area/burgerstation/hall/south)
 "pe" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/burgerstation/library)
@@ -842,22 +842,22 @@
 "qj" = (/obj/structure/interactive/shield{dir = 4; icon_state = "shieldwall"},/turf/simulated/floor/plating,/area/transit/syndicate_raid/ship)
 "qk" = (/obj/marker/failsafe,/turf/simulated/floor/tile{icon_state = "white_single"},/area/burgerstation/hall/east)
 "ql" = (/turf/simulated/floor/tile{icon_state = "white_single"},/area/burgerstation/arrivals)
-"qm" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/burgerstation/cafe/botany)
-"qn" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qo" = (/obj/structure/interactive/vending/hydroponics/nutri,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qp" = (/obj/structure/interactive/vending/hydroponics/seeds,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
+"qm" = (/obj/structure/interactive/fire_closet{dir = 8},/turf/simulated/wall/metal,/area/burgerstation/vr)
+"qn" = (/obj/structure/interactive/disposals/pipe{dir = 5},/turf/simulated/floor/plating,/area/burgerstation/vr)
+"qo" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/tile/dark,/area/burgerstation/vr)
+"qp" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
 "qq" = (/obj/marker/backup_spawn,/turf/simulated/floor/tile,/area/burgerstation/bathrooms)
 "qr" = (/turf/simulated/floor/tile{icon_state = "white_single"},/area/burgerstation/medical)
 "qs" = (/obj/structure/interactive/computer/console/medical{dir = 4; icon_state = "computer"},/turf/simulated/floor/tile{icon_state = "white_single"},/area/burgerstation/medical)
-"qt" = (/obj/structure/interactive/light_switch{dir = 4; icon_state = "setup"},/turf/simulated/wall/metal,/area/burgerstation/cafe/kitchen)
-"qu" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 8},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qv" = (/obj/structure/interactive/light_switch{dir = 8; icon_state = "setup"},/turf/simulated/wall/metal,/area/burgerstation/cafe/kitchen)
-"qw" = (/obj/structure/interactive/door/airlock/station/glass,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/kitchen)
-"qx" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/melee/energy/chainsaw,/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qy" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qz" = (/obj/structure/interactive/disposals/pipe{dir = 6},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qA" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending{dir = 8},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/cafe/botany)
-"qB" = (/obj/structure/interactive/door/airlock/station/glass,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/burgerstation/cafe/botany)
+"qt" = (/obj/marker/lobby,/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 4},/turf/simulated/floor/tile/overlapping/dark,/area/burgerstation/vr)
+"qu" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal,/area/burgerstation/vr)
+"qv" = (/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
+"qw" = (/obj/structure/interactive/light_switch{dir = 4; icon_state = "setup"},/turf/simulated/wall/metal,/area/burgerstation/vr)
+"qx" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 8},/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
+"qy" = (/obj/structure/interactive/light_switch{dir = 8; icon_state = "setup"},/turf/simulated/wall/metal,/area/burgerstation/vr)
+"qz" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
+"qA" = (/obj/structure/interactive/disposals/pipe{dir = 6},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
+"qB" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending{dir = 8},/turf/simulated/floor/tile/morphing/green,/area/burgerstation/vr)
 "qC" = (/obj/structure/interactive/drop_pod,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "qD" = (/obj/decal/hazard{dir = 4},/obj/decal/hazard{dir = 8},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "qE" = (/obj/structure/interactive/status_display/global_display/drop_pod,/turf/simulated/wall/metal/reinforced,/area/burgerstation/hanger)
@@ -908,7 +908,7 @@
 "rx" = (/obj/structure/interactive/disposals/pipe{dir = 8},/turf/simulated/floor/tile/morphing/chapel,/area/burgerstation/hall/south)
 "ry" = (/obj/structure/interactive/disposals/pipe/junction{dir = 1},/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/burgerstation/hall/south)
 "rz" = (/obj/structure/interactive/disposals/pipe/junction/flipped{dir = 1},/turf/simulated/floor/tile/grey,/area/burgerstation/hall/south)
-"rA" = (/obj/structure/interactive/disposals/pipe{dir = 5},/turf/simulated/floor/plating,/area/burgerstation/cafe/kitchen)
+"rA" = (/obj/structure/interactive/door/airlock/station/glass,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/burgerstation/vr)
 "rB" = (/obj/structure/interactive/status_display/global_display/round,/turf/simulated/wall/metal,/area/burgerstation/hanger)
 "rC" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/dark,/area/burgerstation/hall/west)
 "rD" = (/obj/structure/interactive/door/airlock/station/command/glass,/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
@@ -1001,7 +1001,6 @@
 "tm" = (/turf/simulated/floor/tile/chapel/decor{dir = 1; icon_state = "floor"},/area/burgerstation/chapel)
 "tn" = (/obj/decal/hazard,/turf/simulated/floor/plating,/area/space)
 "to" = (/obj/marker/lobby,/turf/simulated/floor/tile/overlapping/dark,/area/burgerstation/science)
-"tp" = (/obj/marker/lobby,/turf/simulated/floor/tile/grey,/area/burgerstation/cafe/botany)
 "tq" = (/obj/marker/lobby,/turf/simulated/floor/tile,/area/burgerstation/cafe/kitchen)
 "tr" = (/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/turf/simulated/floor/tile/morphing/engineering,/area/burgerstation/engineering)
 "ts" = (/obj/structure/interactive/lighting/fixture/tube/station,/obj/structure/interactive/crate/engineering,/turf/simulated/floor/tile/morphing/janitor,/area/burgerstation/engineering)
@@ -1186,7 +1185,6 @@
 "wP" = (/obj/structure/interactive/vending/junk/full,/turf/simulated/floor/tile/tint,/area/burgerstation/armory)
 "wQ" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal,/area/burgerstation/medical)
 "wR" = (/obj/structure/interactive/fire_closet{dir = 8},/turf/simulated/wall/metal,/area/burgerstation/cafe)
-"wS" = (/obj/structure/interactive/fire_closet{dir = 8},/turf/simulated/wall/metal,/area/burgerstation/cafe/botany)
 "wT" = (/turf/simulated/floor/plating,/area/burgerstation/maint/disposals)
 "wU" = (/obj/structure/interactive/disposals/machine/outlet{dir = 8},/obj/structure/interactive/disposals/pipe/ending{dir = 4},/turf/simulated/floor/plating,/area/burgerstation/maint/disposals)
 "wV" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal,/area/burgerstation/cafe)
@@ -1201,7 +1199,6 @@
 "xe" = (/obj/structure/interactive/fire_closet{dir = 1},/turf/simulated/wall/metal/reinforced,/area/burgerstation/science)
 "xf" = (/obj/structure/interactive/fire_closet{dir = 1},/turf/simulated/wall/metal,/area/burgerstation/hanger)
 "xg" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal/reinforced,/area/burgerstation/cargo)
-"xh" = (/obj/structure/interactive/fire_closet{dir = 1},/turf/simulated/wall/metal,/area/burgerstation/cafe/kitchen)
 "xi" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal/reinforced,/area/burgerstation/engineering)
 "xj" = (/obj/structure/interactive/disposals/pipe/junction/flipped{dir = 4},/turf/simulated/floor/tile/grey,/area/burgerstation/arrivals)
 "xk" = (/obj/structure/interactive/fire_closet{dir = 1},/turf/simulated/wall/metal,/area/burgerstation/dressing)
@@ -1281,7 +1278,6 @@
 "yG" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/chapel/decor{dir = 4; icon_state = "floor"},/area/burgerstation/chapel)
 "yH" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 1},/turf/simulated/floor/tile/dark,/area/burgerstation/cargo)
 "yI" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/chapel/decor,/area/burgerstation/chapel)
-"yJ" = (/obj/structure/interactive/disposals/pipe/junction/flipped{dir = 1},/turf/simulated/floor/plating,/area/burgerstation/cafe/kitchen)
 "yK" = (/obj/decal/hazard{dir = 1},/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/dark,/area/burgerstation/cargo)
 "yL" = (/obj/structure/interactive/vending/soda/full,/turf/simulated/floor/tile/dark,/area/burgerstation/hall/west)
 "yM" = (/obj/structure/interactive/disposals/pipe{dir = 8},/obj/structure/interactive/vending/cigarette,/turf/simulated/floor/tile/dark,/area/burgerstation/hall/west)
@@ -1408,9 +1404,7 @@
 "Bd" = (/obj/decal/soccer/corner{icon_state = "corner_line"; dir = 10},/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/colored/grass,/area/burgerstation/soccer)
 "Be" = (/obj/decal/soccer/corner{icon_state = "corner_line"; dir = 6},/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/colored/grass,/area/burgerstation/soccer)
 "Bf" = (/obj/decal/soccer/corner{icon_state = "corner_line"; dir = 4},/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/colored/grass,/area/burgerstation/soccer)
-"Bg" = (/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 8},/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
 "Bh" = (/obj/marker/dev,/turf/simulated/floor/tile,/area/burgerstation/cryo)
-"Bi" = (/obj/structure/interactive/vr_pod{icon_state = "open"; dir = 4},/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
 "OQ" = (/obj/structure/interactive/atmospherics/air_alarm{dir = 4},/turf/simulated/wall/metal/reinforced,/area/burgerstation/science)
 "Pi" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/analyzer/gps/advanced,/turf/simulated/floor/tile/morphing/science,/area/burgerstation/science)
 
@@ -1489,19 +1483,19 @@ kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
 kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpqCqDqCbpqCqDqCbpbKdSewgBbmbobUblbmgGewehbKbKdSoSbqaSbraSbqaSbrxEipaSipoSehhLbwbxcWyhykyhyhyhyhyhyhyhyhmemeifhPxLhXxShYhZxoifjAifhPhPhPhPhPifififimifififififififjAififjDiMuDmFmFmFmFmFmFmFmFmFfNhJmwhJndndhJhUsIfOfNfNfNfNfOfNsJsKsKsJfNfOfNfOmFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
 kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbpqDbpbpbpqDbpbpbKdSewblbmbmbmbmbmboewehbKbKdSbibqhoipaSiphobrbiiphoipbiehhLbwbxmedfcScScScScScScScScScSeMhZhZhZhZhZhZhZktdilghZhZhZlshZhZhZhZhZhZdihZhZlshZhZhZlgdilTifjKhrlVlVlVlVlVlVlVlVlVhrmJmwhJndndhJhUsMfNmFmFmFmFmFmFfOsNsNfOmFmFmFdHmFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
 kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpqCqDqCbpqCqDqCbpbKdSewewewiubbiuewewewehbKbKdSbibibibFepbFbibibibFbibibiehhLbzbxmestrXydydydydydydydydmestififififlWifififififififlWjAififififififmaififjAififimififmbhZoPdmdndPdPdPdPdPdPdPdndRsLilhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFmFmFmFmFbpbpotbpbpbpotbpbpbKdSiwiwiwbUaPbUiwiwiwehbKbKdSiyiyiyipdBipiyiyiyipiyiyiyehhLbwbxmestydeLfififieLfififieLhQxhdcdcdcbagauBuCifuAuBuCdjdkdwdwdjdwdwffdjaycnhtxkmgifififjAifmjihmdwEwDwEwDwEwDwEpMwFkLhUhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbpbpbpbpqCqDqCbpqCqDqCbpbKeihOhOiiiXiXxpiYbfhOiZbKbKeihOhOiijbjbxqjcerhOhOhOhOhOiZhLbwbxmestydfijChnhniLhnhniUeLjZbaiRjetWjguDuDuDuDuDuDuDxmjizAgejojpjjjqdjaFjkjtayayayididiKsywGwHvVvVvVvVvVvVvVvVvVvNhJhUhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpbpqDbpbpbpqDbpqEbKbKbKbKdSjdjdjdehbKbKbKbKbKbKbKbKdSjdjdjdehbKbKbKbKkwkwlrkwllbxmestydfihnjnjnjnjnjnmfmryJbakbjFjLjgmFmFmFmFmFmFmFhfjijOjPjPjPjRjijSjujujvjGzUjHidlHiKkqlowOmhmhmhmhmhmhmhmhmhmihJhUhJhJhJhJhUsIfOmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqCqDqCbpqCqDqCbpjrbKbKbKdSjdjdjdehbKbKhBhBhBhBbKbKdSjdjdjdehbKbKbKjxkwldswyLmOyMmVoXmnfihnpbpbpbpbpbhneLjZbakbjFjfhpmFmFmFmFmFmFmFjhkdeQeQeQeQeQkhxljujUjvjVvmayiPidiQkqmhjyjyjyjyjyjyjyjyjyjyjyhUhUhUhUhUhUhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqEppbpbpbpppqEbpjzcgcgcgjMjdjdjdjNcgcgcgcgcgcgcgcgjMjdjdjdjNcgcgcgcgrBrCmesomememestmnfihnjnjnjnjnjnhnqmjZbakikjbajgklklklklkmkmkmjhknkokpzzkozzkndjjWayvlzSzTayididiKsykPjycRcRsBcRsBsBsBcRsBsBsOhUhJhJhJhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpjdjdjdqOjdjdjdqPjdjdjdrDkfBgBiBgBijdjdjdBgBiBgBiBgBiBgBiBgBijdjdjdjdjdjdjdjdsCrCmememememestmnfihnpbpbpbpbpbhnwSrAeReSkHkKkKaxjakOeTkSyzkUkVkUkZlakZlakZkUkVkUlbvgvgvgwVididiKpOjyjysBcRsBcRcRsBsBcRsBsBsOhUhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpjdwzjdqOjdjdjdjdjdjdjdrDkreWeWeWeWeWeWfaeWeWeWeWeWeWeWeWeWeWeWeWfaeWeWeWfbfaursrcScScScScSrJyeeLqnjnjntpjnjnhneLeLvkoekNkNkNkNkNlhAbljkUkTkUkTkUkTkUkTkUkTkUkTvgkAkDpfvgidlHiKpOjyjysBsBsBqksBtCsBcRsBsBsOhUhJndndhJhUsMfNmFkFkFkFkFkFkFkFkFkFkFkFkFrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpjdjdjdqOjdjdjdqQjdjdjdrDjdBgBiBgBijdjdjdBgBiBgBiBgBiBgBiBgBijdjdjdjdjdjdjdjdsCmnmememememestmnfihnpbpbpbpbpbhnqoqpqtkNlmlulvkNlwlhAblxkTkUlzAslFkUttkUlzAsuHkUkTkUkTkUveididiKpOjyjysBsBsBcRsBsBcRcRsBcRsOhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqEqRbpbpbpqRqEbpzEhOhOhOkIjdjdjdkJhOhOhOhOhOhOhOhOkIjdjdjdkJhOhOhOhOrBmnmemememesqstmnfihnjnjnjnjnjnjnjnquqvkNkNuKuLtquMlhAbljkUkTlzAsuHkTkUkTlzAsuHkTkUkTkUkTuOididiKsykPjysBsBsBcRsBsBsBcRsBcRqlhUhJhJhJhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqCqDqCbpqCqDqCbpjrbKbKbKdSjdjdjdehbKbKbKbKbKbKbKbKdSjdjdjdehbKbKbKjxkwlimnmkmnmnmnrCmnfihnpbpbpbpbpbpbpbhnvckNkNuPuQkNuMlhAblxkTuRkTkUkTkUonkUkTkUkTkUkTkUkTkUuOidlHrEkqmhjyjyjyjyjyjyjyjyjyjyjyhUhUhUhUhUhUhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpbpqDbpbpbpqDbpqEbKbKbKbKdSjdjdjdehbKbKbKbKbKbKbKbKdSjdjdjdehbKbKbKbKkwkwxfkwbxbxmestydfihnjnjnjnjnjnjnjnhnqwkNkNkNkOeSfgkHAbljkUkTuTuUuVkTkUkTuWuUuXkTkUkTkUkTveididiKkqlomhmhyNsFsFsFyNmhmhmhsGhJhUhJhJhJhJhUsIfOmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbpbpbpbpqCqDqCbpqCqDqCbpbKbKbLkwkMkWkWxskXcgchbKbLcgcgcglelplqlqxtkXcgcgcgcgchbKbKhLmFbxmestydfiqxjCqyhnhnhnhnqzqAvcuYwbuZvavbbavcvdvevfvgvevevhkUkTkUwRvevevivgvgkTkUveididsDjwlElElElIlJlJlJlKlElElEjwhJhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
-kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFmFmFmFmFbpbpotbpbpbpotbpbpbKbKdSauaBaOeoaOauaBehbKdSaQaRaRaQbgaRixaRaQbgaRaRbgehbKbKhLmFbxmestydeLfifieLfifieLfiqBfibavcvcvcvjvcvksEsHuEidsEsHuEvguOuOuOvguFuGuGuFvgxrveveididiKlElMlNlOlQnFnFnFmlmumvmDlEkLhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFmFmFmFmFbpbpotbpbpbpotbpbpbKdSiwiwiwbUaPbUiwiwiwehbKbKdSiyiyiyipdBipiyiyiyipiyiyiyehhLbwbxmestydeLeReReReLeReReReLfihndcdcdcbagauBuCifuAuBuCdjdkdwdwdjdwdwffdjaycnhtxkmgifififjAifmjihmdwEwDwEwDwEwDwEpMwFkLhUhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbpbpbpbpqCqDqCbpqCqDqCbpbKeihOhOiiiXiXxpiYbfhOiZbKbKeihOhOiijbjbxqjcerhOhOhOhOhOiZhLbwbxmestydeRhQiLiLiUiLiLpbjnjCeLiRjetWjguDuDuDuDuDuDuDxmjizAgejojpjjjqdjaFjkjtayayayididiKsywGwHvVvVvVvVvVvVvVvVvVvNhJhUhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpbpqDbpbpbpqDbpqEbKbKbKbKdSjdjdjdehbKbKbKbKbKbKbKbKdSjdjdjdehbKbKbKbKkwkwlrkwllbxmestydeRhQjZmfmrjZmfeLjnjCeLkbjFjLjgmFmFmFmFmFmFmFhfjijOjPjPjPjRjijSjujujvjGzUjHidlHiKkqlowOmhmhmhmhmhmhmhmhmhmihJhUhJhJhJhJhUsIfOmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqCqDqCbpqCqDqCbpjrbKbKbKdSjdjdjdehbKbKhBhBhBhBbKbKdSjdjdjdehbKbKbKjxkwldswyLmOyMmVoXmneRhQjZmfmrjZmfeLjnjCeLkbjFjfhpmFmFmFmFmFmFmFjhkdeQeQeQeQeQkhxljujUjvjVvmayiPidiQkqmhjyjyjyjyjyjyjyjyjyjyjyhUhUhUhUhUhUhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqEppbpbpbpppqEbpjzcgcgcgjMjdjdjdjNcgcgcgcgcgcgcgcgjMjdjdjdjNcgcgcgcgrBrCmesomememestmneRhQjZmfmrjZmfeLjnjCeLkikjbajgklklklklkmkmkmjhknkokpzzkozzkndjjWayvlzSzTayididiKsykPjycRcRsBcRsBsBsBcRsBsBsOhUhJhJhJhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpjdjdjdqOjdjdjdqPjdjdjdrDkfjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdsCrCmememememestmneRhQjZmfmrjZmfqmjnqnqoeSkHkKkKaxjakOeTkSyzkUkVkUkZlakZlakZkUkVkUlbvgvgvgwVididiKpOjyjysBcRsBcRcRsBsBcRsBsBsOhUhJndndhJhUsMfNmFkFakakakakakakakakakakakrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpjdwzjdqOjdjdjdjdjdjdjdrDkreWeWeWeWeWeWfaeWeWeWeWeWeWeWeWeWeWeWeWfaeWeWeWfbfaursrcScScScScSrJyeeLqpjZmfqtjZmfeLeLeLquoekNkNkNkNkNlhAbljkUkTkUkTkUkTkUkTkUkTkUkTvgkAkDpfvgidlHiKpOjyjysBsBsBqksBtCsBcRsBsBsOhUhJndndhJhUsMfNmFkFkFkFkFkFkFkFkFkFkFkFkFrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpjdjdjdqOjdjdjdqQjdjdjdrDjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdsCmnmememememestmneRhQjZmfmrjZmfhQiLqvqwkNlmlulvkNlwlhAblxkTkUlzAslFkUttkUlzAsuHkUkTkUkTkUveididiKpOjyjysBsBsBcRsBsBcRcRsBcRsOhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqEqRbpbpbpqRqEbpzEhOhOhOkIjdjdjdkJhOhOhOhOhOhOhOhOkIjdjdjdkJhOhOhOhOrBmnmemememesqstmneRhQjZmfmrjZmfmrjZqxqykNkNuKuLtquMlhAbljkUkTlzAsuHkTkUkTlzAsuHkTkUkTkUkTuOididiKsykPjysBsBsBcRsBsBsBcRsBcRqlhUhJhJhJhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpqCqDqCbpqCqDqCbpjrbKbKbKdSjdjdjdehbKbKbKbKbKbKbKbKdSjdjdjdehbKbKbKjxkwlimnmkmnmnmnrCmneRhQjZmfmrjZmfmrjZqveLkNkNuPuQkNuMlhAblxkTuRkTkUkTkUonkUkTkUkTkUkTkUkTkUuOidlHrEkqmhjyjyjyjyjyjyjyjyjyjyjyhUhUhUhUhUhUhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbKbKbKbpbpqDbpbpbpqDbpqEbKbKbKbKdSjdjdjdehbKbKbKbKbKbKbKbKdSjdjdjdehbKbKbKbKkwkwxfkwbxbxmestydeRhQjZmfmrjZmfmrjZqveLkNkNkNkOeSfgkHAbljkUkTuTuUuVkTkUkTuWuUuXkTkUkTkUkTveididiKkqlomhmhyNsFsFsFyNmhmhmhsGhJhUhJhJhJhJhUsIfOmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbpbpbpbpqCqDqCbpqCqDqCbpbKbKbLkwkMkWkWxskXcgchbKbLcgcgcglelplqlqxtkXcgcgcgcgchbKbKhLmFbxmestydeRhQiLqziLiLiLiLqAqBeLuYwbuZvavbbavcvdvevfvgvevevhkUkTkUwRvevevivgvgkTkUveididsDjwlElElElIlJlJlJlKlElElEjwhJhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
+kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFmFmFmFmFbpbpotbpbpbpotbpbpbKbKdSauaBaOeoaOauaBehbKdSaQaRaRaQbgaRixaRaQbgaRaRbgehbKbKhLmFbxmestydeLeReReLeReReLeRrAeReLvcvcvcvjvcvksEsHuEidsEsHuEvguOuOuOvguFuGuGuFvgxrveveididiKlElMlNlOlQnFnFnFmlmumvmDlEkLhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
 kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpqCqDqCbpqCqDqCbpbKbKdSicicequgeqicicehbKdSivexexivivextdexxMivjEjEivehbKbKhLmFbxmestygyiyiyiyiyiyiyiyiyqyiyiidididiKidididididididididrHidididrIididididididididididiKlEnFwIwIwIwIwIwIwIwIwInFlEhJhUhJndndhJhUsMfNmFkFgdgdgdgdgdgdgdgdgdgdgdrTkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
 kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpbpqDbpbpbpqDbpbpbKbKdSicezeAeAeAeVicehbKdSiveBeCeDeEfmfSfmeHeDeIeUivehbKbKhLmFbxmetMcSfMfMzbfMfMfMzbfMfjfMfMfMfMfMfjfMfMfMzbfPfMfMfMfTfVgcghgigjgkfMfMfMrUrVfMfMzbzxrWlEecwIwIwIwIwIwIwIwIwInmlEhJhUhJndndhJhUsMfNmFmFmFmFmFmFfOsNsNfOmFmFmFdHmFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
 kQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQmFbpqCqDqCbpqCqDqCbpbKbKdSicjJeXeAeXjTicehbKdSiveYeZtdizfSfSfSirtdmXoWivehbKbKhLmFbxtNsttPididiKidididiKididrZsasasasasasasbsavtsasasasaidididiKidididscsdscsesescsciKseidjwnnwIwIwIwIwIwIwIwIwInJjwmJhUhJndndhJhUsIfOfNfNfNfNfOfNsQsRsRsQfNfOfNfOmFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkFkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQkQ
