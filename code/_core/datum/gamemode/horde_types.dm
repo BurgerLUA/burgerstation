@@ -113,7 +113,7 @@
 		/mob/living/simple/cult/construct/proteon = 10
 	)
 	hidden = FALSE
-
+/*
 /gamemode/horde/space_goblins
 	name = "Horde Mode (Space Goblins)"
 	desc = "Fight off an endless wave of Space Goblins while attempting to complete objectives."
@@ -126,7 +126,7 @@
 
 	enemies_to_spawn_base = 10
 	enemies_to_spawn_per_player = 1.5
-
+*/
 /gamemode/horde/boss_rush
 	name = "Horde Mode (Boss Rush)"
 	desc = "Oh god oh fuck."
