@@ -6,9 +6,8 @@
 	icon_state = "mech_ballistic"
 
 	var/obj/structure/interactive/mountable/browning/linked_gun
-	linked_gun = /obj/structure/interactive/mountable/browning
 
-	shoot_delay = 3
+	shoot_delay = 2.5
 
 	automatic = TRUE
 
@@ -37,11 +36,15 @@
 
 	attachment_whitelist = list()
 
-	firing_pin = /obj/item/firing_pin/electronic
+	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 	value_burgerbux = 1
 
 	anchored = TRUE
+
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/Destroy()
+	QDEL_NULL(linked_gun)
+	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_empty(var/obj/caller)
 	next_shoot_time = world.time + 20
@@ -55,9 +58,9 @@
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/get_magazine()
 
 	if(istype(loc,/obj/structure/interactive/mountable/browning))
-		var/obj/structure/interactive/mountable/browning/D = loc
-		if(D.stored_magazine)
-			return D.stored_magazine
+		var/obj/structure/interactive/mountable/browning/B = loc
+		if(B.stored_magazine)
+			return B.stored_magazine
 
 	return null
 
@@ -71,7 +74,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
-	if(angle2dir_cardinal(get_angle(caller,object)+90)==linked_gun.direction)
+	if(angle2dir_cardinal(get_angle(caller,object)+90)==linked_gun.dir)
 		return TRUE
 	else
 		caller.to_chat(span("warning","Your finger slips!"))

@@ -78,17 +78,12 @@
 	icon = 'icons/obj/item/deployable/browning.dmi'
 	dan_mode = TRUE
 	dan_icon_state_back = "back"
-	value = 6900
+	value = 9600
 	weight = 58
 
 	item_count_max = 1
 
 	size = SIZE_9
-
-	var/obj/item/magazine/stored_magazine
-
-/obj/item/deployable/mountable/browning/Destroy()
-	QDEL_NULL(stored_magazine)
 
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
@@ -175,24 +170,4 @@
 /obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_battery")
-	LOADATOM("stored_magazine")
-
-//saves deployment item's mag
-/obj/item/deployable/mountable/browning/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/interactive/mountable/browning/B)
-
-	. = ..()
-
-	if(stored_magazine)
-		B.stored_magazine = stored_magazine
-		stored_magazine.force_move(B)
-		B.mag_check()
-
-	return TRUE
-
-/obj/item/deployable/mountable/browning/save_item_data(var/save_inventory = TRUE)
-	. = ..()
-	SAVEATOM("stored_magazine")
-
-/obj/item/deployable/mountable/browning/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
 	LOADATOM("stored_magazine")
