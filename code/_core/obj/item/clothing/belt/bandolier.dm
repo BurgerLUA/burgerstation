@@ -37,15 +37,9 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/clothing/belt/bandolier/proc/get_shell_count()
-	. = 0
-	for(var/k in stored_shells)
-		var/v = stored_shells[k]
-		. += v
-
 /obj/item/clothing/belt/bandolier/update_icon()
 
-	var/shell_count = get_shell_count()
+	var/shell_count = length(stored_shells)
 
 	icon_state_worn = initial(icon_state_worn)
 
@@ -58,7 +52,7 @@
 
 	. = ..()
 
-	var/shell_count = get_shell_count()
+	var/shell_count = length(stored_shells)
 	var/step = max_shells/5
 
 	if(shell_count)
@@ -88,7 +82,7 @@
 					stored_shells -= S.type
 				update_sprite()
 		else
-			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - get_shell_count())))
+			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - length(stored_shells))))
 			if(amount_added)
 				if(!stored_shells[S.type])
 					stored_shells[S.type] = amount_added
@@ -162,7 +156,7 @@
 					stored_shells -= S.type
 				update_sprite()
 		else
-			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - get_shell_count())))
+			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - length(stored_shells))))
 			if(amount_added)
 				if(!stored_shells[S.type])
 					stored_shells[S.type] = amount_added
@@ -236,7 +230,7 @@
 					stored_shells -= S.type
 				update_sprite()
 		else
-			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - get_shell_count())))
+			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - length(stored_shells))))
 			if(amount_added)
 				if(!stored_shells[S.type])
 					stored_shells[S.type] = amount_added
