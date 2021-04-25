@@ -8,11 +8,8 @@
 	item_count_max = 10
 	item_count_max_icon = 3
 
-/obj/item/deployable/proc/get_deploy_time(var/mob/caller, var/obj/item/deployable/D)
-	if(istype(D, /obj/item/deployable/mountable))
-		return SECONDS_TO_DECISECONDS(10)
-	else
-		return SECONDS_TO_DECISECONDS(3)
+/obj/item/deployable/proc/get_deploy_time(var/mob/caller)
+	return SECONDS_TO_DECISECONDS(3)
 
 /obj/item/deployable/proc/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
 	S.dir = caller.dir
@@ -50,7 +47,7 @@
 		if(caller.loc != object)
 			caller.face_atom(object) //Only face the atom if we're not on the tile.
 		caller.visible_message(span("warning","\The [caller.name] starts to deploy \the [src.name]..."),span("notice","You start to deploy \the [src.name]..."))
-		PROGRESS_BAR(caller,src,get_deploy_time(caller,src),.proc/deploy,caller,object)
+		PROGRESS_BAR(caller,src,get_deploy_time(caller),.proc/deploy,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_deploy_to,caller,object)
 		return TRUE
 
@@ -84,6 +81,9 @@
 	item_count_max = 1
 
 	size = SIZE_9
+
+/obj/item/deployable/mountable/browning/get_deploy_time(var/mob/caller)
+	return SECONDS_TO_DECISECONDS(10)
 
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
