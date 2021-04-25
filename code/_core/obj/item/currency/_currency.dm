@@ -103,3 +103,60 @@
 
 /obj/item/currency/magic_token/max/Generate()
 	item_count_current = item_count_max
+
+
+/obj/item/currency/gold
+	name = "gold coin"
+	icon = 'icons/obj/item/currency/gold.dmi'
+	icon_state = "1"
+	value = 10
+
+	item_count_max = 200
+
+	size = SIZE_4/200
+	weight = 0.1
+
+	currency_class = "gold"
+
+/obj/item/currency/gold/fly/Generate()
+	. = ..()
+	item_count_current = rand(1,5)
+
+/obj/item/currency/gold/update_icon()
+	switch(item_count_current)
+		if(1 to 40)
+			icon_state = "[item_count_current]"
+		if(40 to 100)
+			icon_state = "[FLOOR(item_count_current,10)]"
+		if(100 to 200)
+			icon_state = "[FLOOR(item_count_current,20)]"
+	. = ..()
+
+/obj/item/currency/gold/post_move(var/atom/old_loc)
+	. = ..()
+
+	if(!isturf(old_loc) && isturf(loc))
+		fly()
+
+/obj/item/currency/gold/proc/fly()
+
+	icon_state = "[clamp(item_count_current,1,5)]_anim"
+	pixel_x = 0
+	pixel_y = 0
+	pixel_z = 0
+
+	var/desired_x = pick(-10,-4,4,10)
+	var/desired_z = rand(16,32)
+
+	var/desired_time = max(desired_x,desired_z)*0.5
+
+	animate(src,pixel_x=desired_x,pixel_z=desired_z,time=desired_time*0.5,easing=QUAD_EASING|EASE_OUT)
+	animate(pixel_x=desired_x*2,pixel_z=0,time=desired_time*0.5,easing=QUAD_EASING|EASE_IN)
+
+	CALLBACK("\ref[src]_update_sprite",desired_time,src,.proc/finish_fly)
+
+	return TRUE
+
+/obj/item/currency/gold/proc/finish_fly()
+	icon_state = "[clamp(item_count_current,1,5)]_fall"
+	return TRUE
