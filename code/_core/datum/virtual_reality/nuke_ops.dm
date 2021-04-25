@@ -78,23 +78,14 @@
 		var/loadout/L = pick(team_loadouts[A.loyalty_tag])
 		A.equip_loadout(L)
 
-/virtual_reality/team/nuke_ops/proc/on_player_ready(var/mob/living/L)
 
-	//Removing the below code because late joining seems bad.
-	/*
-	if(state >= 2) //Late joiner!
-		var/syndicate_length = length(teams["Syndicate"])
-		var/nanotrasen_length = length(teams["NanoTrasen"])
-		if(syndicate_length > nanotrasen_length)
-			move_to_team(L,"NanoTrasen")
-		else if(nanotrasen_length > syndicate_length)
-			move_to_team(L,"Syndicate")
-		else
-			if(prob(50))
-				move_to_team(L,"NanoTrasen")
-			else
-				move_to_team(L,"Syndicate")
-	*/
+/virtual_reality/team/nuke_ops/proc/can_play_round()
+
+	if(length(teams["Syndicate"]) <= 0)
+		return FALSE
+
+	if(length(teams["NanoTrasen"]) <= 0)
+		return FALSE
 
 	return TRUE
 
@@ -171,9 +162,6 @@
 
 	if(. && is_advanced(L) && team_loadouts[desired_team])
 		needs_loadout[L] = TRUE
-
-	if(desired_team == "Ready")
-		on_player_ready(L)
 
 /virtual_reality/team/nuke_ops/proc/generate_spawnpoints()
 
@@ -368,6 +356,19 @@
 					set_winner("NanoTrasen")
 			if(6 to 7)
 				round_start()
+
+	if(state == 5 && !can_play_round())
+		for(var/k in active_players)
+			var/mob/M = k
+			M.to_chat(span("danger","Not enough players on one team, returning to lobby."))
+			on_player_join(M)
+		score = list(
+				"NanoTrasen" = 0,
+				"Syndicate" = 0
+		)
+		round = 0
+		state = 1
+		time_left = -1
 
 	. = ..()
 

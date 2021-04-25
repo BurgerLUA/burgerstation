@@ -18,6 +18,9 @@
 	name = "sandstone wall"
 	color = "#FFC68C"
 
+/turf/simulated/wall/brick/sand/ish
+	color = "#9E866E"
+
 /turf/simulated/wall/brick/marble
 	name = "marble wall"
 	color = "#E1DFD2"

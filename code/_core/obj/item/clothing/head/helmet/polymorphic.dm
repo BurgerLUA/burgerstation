@@ -90,9 +90,9 @@
 		"stripe" = COLOR_BLACK
 	)
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50
 	)
 	value_burgerbux = 1
 	value = 400
