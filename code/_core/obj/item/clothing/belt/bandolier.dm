@@ -19,7 +19,74 @@
 	var/shell_count = 0
 
 	var/max_shells = 0
+/obj/item/clothing/belt/bandolier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(istype(object,shell_type))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(2)
+		var/obj/item/bullet_cartridge/S = object
+		if(caller.attack_flags & CONTROL_MOD_ALT)
+			if(!stored_shells[S.type])
+				caller.to_chat(span("warning","There are no shells of that type left in \the [src.name]!"))
+				return TRUE
+			var/amount_added = S.add_item_count(1)
+			if(amount_added)
+				stored_shells[S.type] -= amount_added
+				if(stored_shells[S.type] <= 0)
+					stored_shells -= S.type
+				update_sprite()
+		else
+			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - length(stored_shells))))
+			if(amount_added)
+				if(!stored_shells[S.type])
+					stored_shells[S.type] = amount_added
+				else
+					stored_shells[S.type] += amount_added
+				update_sprite()
+		return TRUE
+
+	if(istype(object,/obj/hud/inventory))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(2)
+		var/obj/hud/inventory/I = object
+
+		if(!length(stored_shells))
+			caller.to_chat(span("warning","There are no shells left!"))
+			return TRUE
+
+		var/obj/item/bullet_cartridge/S = pickweight(stored_shells)
+		if(caller.attack_flags & CONTROL_MOD_ALT)
+			S = new S(get_turf(src))
+			var/amount = 0
+			if(stored_shells[S.type] < 5)
+				amount = stored_shells[S.type]
+			else
+				amount = 5
+			S.item_count_current = amount
+			stored_shells[S.type] -= amount
+			caller.to_chat(span("notice","You take [amount] shell\s from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
+			if(stored_shells[S.type] <= 0)
+				stored_shells -= S.type
+			INITIALIZE(S)
+			FINALIZE(S)
+			I.add_object(S)
+			update_sprite()
+			return TRUE
+		S = new S(get_turf(src))
+		S.item_count_current = 1
+		stored_shells[S.type] -= 1
+		caller.to_chat(span("notice","You take a shell from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
+		if(stored_shells[S.type] <= 0)
+			stored_shells -= S.type
+		INITIALIZE(S)
+		FINALIZE(S)
+		I.add_object(S)
+		update_sprite()
+		return TRUE
+
+	. = ..()
 /obj/item/clothing/belt/bandolier/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["stored_shells"] = list()
