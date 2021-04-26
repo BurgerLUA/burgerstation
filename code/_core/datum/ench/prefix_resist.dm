@@ -1,6 +1,8 @@
 /ench/prefix/resist/
 	var/damage_id = BLADE
 	desc = "Reduces incoming #DT damage by #M%."
+	magnitude_min = 1
+	magnitude_max = 5
 
 /ench/prefix/resist/on_equipped(var/mob/living/L,var/obj/item/clothing/C)
 	. = ..()

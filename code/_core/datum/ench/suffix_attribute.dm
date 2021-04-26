@@ -1,6 +1,8 @@
 /ench/suffix/attribute/
 	var/attribute_id = ATTRIBUTE_STRENGTH
-	desc = "Increases your %ATT by #M."
+	desc = "Increases your #ATT by #M."
+	magnitude_min = 1
+	magnitude_max = 10
 
 /ench/suffix/attribute/on_equipped(var/mob/living/L,var/obj/item/clothing/C)
 	. = ..()
