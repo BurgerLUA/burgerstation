@@ -121,7 +121,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	add_species_languages()
 
-	set_mob_data(mobdata["loaded_data"],teleport,update_blends)
+	set_mob_data(mobdata["loaded_data"],teleport && allow_save,update_blends,!allow_save)
 
 	return TRUE
 

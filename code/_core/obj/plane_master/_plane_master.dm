@@ -102,3 +102,11 @@
 	filters += filter(type="outline",size=TILE_SIZE*0.5,color="#000000",flags=OUTLINE_SQUARE)
 	filters += filter(type="blur", size=1)
 	filters += filter(type="drop_shadow", x=0, y=0, size=-4, offset=0, color=rgb(0,0,0))
+
+/obj/plane_master/hud
+	plane = PLANE_HUD
+	appearance_flags = PLANE_MASTER
+
+/obj/plane_master/hud/New(var/desired_loc)
+	. = ..()
+	//filters += filter(type="bloom",threshold="#888888",size=TILE_SIZE*0.5,offset=2,alpha=200)

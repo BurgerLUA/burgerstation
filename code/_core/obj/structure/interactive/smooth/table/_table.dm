@@ -31,14 +31,16 @@
 		valid_items += I
 
 	var/items_length = length(valid_items)
-	var/i=1
-
+	var/i=0
+	var/maximum_x = min(items_length,4)
+	var/maximum_y = CEILING(items_length/4,1)
 	for(var/k in valid_items)
 		var/obj/item/I = k
-		I.pixel_x = -16 + (32*(i/items_length))
-		I.pixel_y = i % 2 ? 10 : 6
+		var/x = (i % maximum_x) - (maximum_x-1)*0.5
+		var/y = FLOOR(i/maximum_x,1) - (maximum_y-1)*0.5
+		I.pixel_x = x*TILE_SIZE*0.5*0.5
+		I.pixel_y = y*TILE_SIZE*0.5*0.5 + 4
 		i++
-
 
 	return ..()
 

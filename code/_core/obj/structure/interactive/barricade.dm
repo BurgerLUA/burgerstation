@@ -77,7 +77,7 @@
 
 	return ..()
 
-obj/structure/interactive/barricade/PostInitialize()
+obj/structure/interactive/barricade/Finalize()
 	. = ..()
 	update_sprite()
 

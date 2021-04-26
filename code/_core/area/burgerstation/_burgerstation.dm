@@ -106,6 +106,12 @@
 
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
+/area/burgerstation/vr
+	name = "\improper VR Rooms"
+	icon_state = "dorm"
+
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+
 /area/burgerstation/help_desk
 	name = "\improper Help Desk"
 	icon_state = "help"

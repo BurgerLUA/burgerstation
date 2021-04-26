@@ -84,6 +84,12 @@
 		update_sprite()
 	return TRUE
 
+/obj/item/slime_core/custom/turf/Generate()
+	. = ..()
+	var/turf/T = get_turf(src)
+	if(T) color = T.color
+
+
 /obj/item/slime_core/red
 	color = "#FF0000"
 	alpha = 128

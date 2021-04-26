@@ -18,6 +18,17 @@
 		mob.on_life_client()
 		handle_camera()
 
+	if(!eye)
+		spectate(null)
+	else if(is_datum(eye))
+		var/datum/D = eye
+		if(D.qdeleting)
+			spectate(null)
+		else if(is_atom(D))
+			var/atom/A = D
+			if(A.loc == null)
+				spectate(null)
+
 	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
 		del(src)
 

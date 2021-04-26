@@ -57,3 +57,11 @@ obj/structure/scenery/jungle_trees/New()
 	..()
 	icon_state = "tree[rand(1,6)]"
 */
+
+obj/structure/scenery/merchant_roof
+	name = "merchant roof"
+	icon = 'icons/obj/structure/merchant.dmi'
+	icon_state = "merchant"
+	layer = 100
+	layer = LAYER_LARGE_OBJ
+	pixel_z = 6

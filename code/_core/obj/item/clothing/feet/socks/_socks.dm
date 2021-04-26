@@ -87,14 +87,14 @@
 	name = "programmer sock"
 
 	polymorphs = list(
-		"sock" = "#FFFFFF",
-		"stripes" = "#FFFFFF"
+		"sock" = COLOR_WHITE,
+		"stripes" = "#FFBFEC"
 	)
 
 /obj/item/clothing/feet/socks/thigh/striped/bee
 	name = "bee stockings"
 
 	polymorphs = list(
-		"sock" = "#FFFFFF",
-		"stripes" = "#FFFFFF"
+		"sock" = COLOR_BLACK,
+		"stripes" = "#F7DD5D"
 	)

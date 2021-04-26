@@ -40,5 +40,22 @@
 	var/shrapnel_amount = min(12,CEILING(shrapnel_volume/4,1))
 	container.owner.shoot_projectile(caller,explosion_location,null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.5,shrapnel_amount,"#FFFFFF",0,0,1,null,tag_to_use,2,2)
 	explode(explosion_location,explosion_power*10,caller,container.owner,tag_to_use)
+	smoke(explosion_location,magnitude*0.05,40,container,caller)
 
+	return TRUE
+
+/reagent_recipe/explosion/smoke
+	name = "Smoke"
+	category = "Explosions"
+	required_reagents = list(
+		/reagent/nutrition/sugar = 1,
+		/reagent/phosphorous = 1,
+		/reagent/potassium = 1
+	)
+
+	results = list()
+
+/reagent_recipe/explosion/smoke/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+	var/turf/smoke_location = get_turf(container.owner)
+	smoke(smoke_location,magnitude*1.2,max(40,magnitude*7.5),container,caller)
 	return TRUE

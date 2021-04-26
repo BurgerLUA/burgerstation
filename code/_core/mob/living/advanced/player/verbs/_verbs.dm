@@ -1,11 +1,4 @@
-/mob/living/advanced/player/add_inherent_verbs()
-	verbs += /mob/living/advanced/player/verb/logout
-	return ..()
-
-/mob/living/advanced/player/verb/logout()
-	set name = "Save and Quit"
-	set desc = "Saves and quits your character, returning you to the main menu."
-	set category = "Menu"
+/mob/living/advanced/player/proc/try_logout()
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 

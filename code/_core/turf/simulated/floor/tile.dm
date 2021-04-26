@@ -73,6 +73,9 @@
 /turf/simulated/floor/tile/purple
 	color = COLOR_PURPLE
 
+/turf/simulated/floor/tile/purple/dark
+	color = "#463A5B"
+
 /turf/simulated/floor/tile/orange
 	color = "#FF9944"
 
@@ -81,6 +84,9 @@
 
 /turf/simulated/floor/tile/tan
 	color = "#D3CBA5"
+
+/turf/simulated/floor/tile/tan/ish
+	color = "#C6C2AF"
 
 
 /turf/simulated/floor/tile/yellow

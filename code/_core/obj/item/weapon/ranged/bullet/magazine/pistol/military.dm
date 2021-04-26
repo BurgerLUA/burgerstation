@@ -13,7 +13,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
 
-	automatic = TRUE
+	automatic = FALSE
 
 	size = SIZE_2
 	weight = 2

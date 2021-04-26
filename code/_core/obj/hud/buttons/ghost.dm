@@ -130,16 +130,48 @@
 
 	flags = FLAGS_HUD_DEAD
 
+	plane = PLANE_HUD_OBJ
+
 	has_quick_function = FALSE
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
+	appearance_flags = RESET_ALPHA | KEEP_APART
 
 /obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && caller.client)
-		caller.client.ghost()
+	if(!. || !caller.client)
+		return .
+
+
+	if(istype(caller,/mob/living/advanced/player/virtual))
+		if(!SSvirtual_reality || !SSvirtual_reality.current_virtual_reality)
+			return .
+
+		var/mob/living/L = caller
+
+		var/virtual_reality/VR = SSvirtual_reality.current_virtual_reality
+
+		var/list/team_list = VR.teams[L.loyalty_tag]
+		if(!length(team_list))
+			return FALSE
+		team_list = team_list.Copy()
+		team_list += "Cancel"
+
+		var/mob/living/desired_spectate = input("Who do you wish to spectate?","Spectate","Cancel") as null|anything in team_list
+		if(!desired_spectate || desired_spectate == "Cancel")
+			return .
+
+		if(!L.dead || desired_spectate.qdeleting)
+			caller.to_chat(span("warning","Failed to spectate."))
+			return .
+
+		L.client.spectate(desired_spectate)
+		return .
+
+	caller.client.ghost()
 
 
 /obj/hud/button/dead_ghost/update_overlays()

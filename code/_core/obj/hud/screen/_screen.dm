@@ -5,8 +5,8 @@
 	icon = 'icons/hud/discovery.dmi'
 	icon_state = "blank"
 
-	layer = LAYER_AREA
-	plane = PLANE_HUD_TEXT
+	layer = 0
+	plane = PLANE_HUD
 
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
