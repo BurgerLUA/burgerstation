@@ -13,6 +13,8 @@
 
 	value_burgerbux = 1 //Prevents being sold in vendors.
 
+	glide_size = 2
+
 /obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
 
 	if(I != src && istype(I,/obj/item/currency/))
@@ -118,9 +120,20 @@
 
 	currency_class = "gold"
 
+	drop_sound = null
+
+	plane = PLANE_CURRENCY
+
+/obj/item/currency/gold/Finalize()
+	. = ..()
+	if(generated)
+		fly()
+
 /obj/item/currency/gold/fly/Generate()
 	. = ..()
 	item_count_current = rand(1,5)
+	pixel_x = rand(-4,4)
+	pixel_y = rand(-4,4)
 
 /obj/item/currency/gold/update_icon()
 	switch(item_count_current)
@@ -135,23 +148,22 @@
 /obj/item/currency/gold/post_move(var/atom/old_loc)
 	. = ..()
 
-	if(!isturf(old_loc) && isturf(loc))
+	if(!isturf(old_loc) && isturf(loc) && (!is_inventory(old_loc) || get_turf(old_loc) == loc))
 		fly()
 
 /obj/item/currency/gold/proc/fly()
 
-	icon_state = "[clamp(item_count_current,1,5)]_anim"
-	pixel_x = 0
-	pixel_y = 0
-	pixel_z = 0
+	if(item_count_current > 5)
+		return FALSE
 
-	var/desired_x = pick(-10,-4,4,10)
+	icon_state = "[clamp(item_count_current,1,5)]_anim"
+
 	var/desired_z = rand(16,32)
 
-	var/desired_time = max(desired_x,desired_z)*0.5
+	var/desired_time = rand(6,8)
 
-	animate(src,pixel_x=desired_x,pixel_z=desired_z,time=desired_time*0.5,easing=QUAD_EASING|EASE_OUT)
-	animate(pixel_x=desired_x*2,pixel_z=0,time=desired_time*0.5,easing=QUAD_EASING|EASE_IN)
+	animate(src,pixel_z=desired_z,time=desired_time*0.5,easing=QUAD_EASING|EASE_OUT)
+	animate(pixel_z=0,time=desired_time*0.5,easing=QUAD_EASING|EASE_IN)
 
 	CALLBACK("\ref[src]_update_sprite",desired_time,src,.proc/finish_fly)
 
@@ -159,4 +171,5 @@
 
 /obj/item/currency/gold/proc/finish_fly()
 	icon_state = "[clamp(item_count_current,1,5)]_fall"
+	play_sound(pick('sound/effects/coin_01.ogg','sound/effects/coin_02.ogg','sound/effects/coin_03.ogg'),get_turf(src))
 	return TRUE

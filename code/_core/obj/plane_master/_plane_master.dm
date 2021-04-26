@@ -92,6 +92,7 @@
 	mouse_opacity = 0
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 
+//Openspace
 /obj/plane_master/openspace
 	plane = PLANE_FLOOR_BELOW
 	appearance_flags = PLANE_MASTER
@@ -102,3 +103,18 @@
 	filters += filter(type="outline",size=TILE_SIZE*0.5,color="#000000",flags=OUTLINE_SQUARE)
 	filters += filter(type="blur", size=1)
 	filters += filter(type="drop_shadow", x=0, y=0, size=-4, offset=0, color=rgb(0,0,0))
+
+
+
+//currency
+/obj/plane_master/currency
+	plane = PLANE_CURRENCY
+
+/obj/plane_master/currency/New(var/desired_loc)
+	. = ..()
+	//filters += filter(type="bloom",threshold="#FFFFFF",size=8,offset=2,alpha=255)
+
+	filters += filter(type="bloom",threshold="#888888",size=2,offset=0,alpha=255)
+
+	animate(filters[length(filters)],alpha=150,loop=-1,time=8)
+	animate(alpha=255,time=8)

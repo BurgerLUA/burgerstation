@@ -119,8 +119,7 @@
 					continue
 				M.Crossed(src)
 
-	if(old_loc != loc)
-		post_move(old_loc)
+	post_move(old_loc)
 
 	return TRUE
 

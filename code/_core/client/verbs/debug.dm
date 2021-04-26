@@ -20,7 +20,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_save_deathbox,
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
-	/client/verb/view_dps
+	/client/verb/view_dps,
+	/client/verb/make_it_rain
 )
 
 /client/verb/view_dps()

@@ -118,5 +118,19 @@
 	return TRUE
 
 
+/client/verb/make_it_rain()
+	set name = "Make it Rain"
+	set category = "Debug"
+	set waitfor = 0
 
+	var/turf/T = get_turf(mob)
 
+	for(var/i=1,i<=rand(10,20),i++)
+		var/obj/item/currency/gold/fly/G = new(T)
+		INITIALIZE(G)
+		GENERATE(G)
+		FINALIZE(G)
+		if(prob(80))
+			var/turf/T2 = get_step(T,pick(DIRECTIONS_ALL))
+			G.Move(T2)
+		sleep(3)
