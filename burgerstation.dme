@@ -1082,6 +1082,7 @@
 #include "code\_core\obj\item\clothing\back\wings\_wings.dm"
 #include "code\_core\obj\item\clothing\back\wings\angel.dm"
 #include "code\_core\obj\item\clothing\belt\_belts.dm"
+#include "code\_core\obj\item\clothing\belt\bandolier.dm"
 #include "code\_core\obj\item\clothing\belt\kilt.dm"
 #include "code\_core\obj\item\clothing\belt\quiver.dm"
 #include "code\_core\obj\item\clothing\belt\skull_codpiece.dm"
