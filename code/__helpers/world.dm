@@ -45,11 +45,17 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 		D.finalized = TRUE;																							\
 	}
 
-#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D);FINALIZE(D)
+/proc/CREATE(I,desired_loc)
+	var/datum/D = new I(desired_loc)
+	INITIALIZE(D)
+	GENERATE(D)
+	FINALIZE(D)
+	return D
 
-#define CREATE_SAFE(I,desired_loc) \
-	var/mob/living/advanced/player/L1234 = locate() in viewers(VIEW_RANGE,desired_loc);\
-	if(!L1234) {CREATE(I,desired_loc)};
+/proc/CREATE_SAFE(I,desired_loc)
+	var/mob/living/advanced/player/P = locate() in viewers(VIEW_RANGE,desired_loc)
+	if(!P)
+		CREATE(I,desired_loc)
 
 proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 	for(var/k in objects_to_spawn)

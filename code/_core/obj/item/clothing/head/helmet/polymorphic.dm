@@ -82,3 +82,17 @@
 		"base" = COLOR_SILVER,
 		"ears" = COLOR_SILVER
 	)
+
+/obj/item/clothing/head/helmet/polymorphic/vr
+	polymorphs = list(
+		"base" = COLOR_GREY_DARK,
+		"ears" = COLOR_BLACK,
+		"stripe" = COLOR_BLACK
+	)
+	defense_rating = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50
+	)
+	value_burgerbux = 1
+	value = 400

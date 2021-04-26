@@ -22,16 +22,11 @@
 		icon_state = "floor2"
 	else
 		icon_state = "floor4"
-/turf/simulated/floor/clockwork/special/PostInitialize()
-	. = ..()
-	update_sprite()
 
 /turf/simulated/floor/clockwork/vent
 	name = "clockwork vent"
 	icon = 'icons/turf/floor/clockwork.dmi'
 	icon_state = "vent_on"
-
-
 
 /turf/simulated/floor/clockwork/reebe
 	name = "clockwork plating"

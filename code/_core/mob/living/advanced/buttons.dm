@@ -54,4 +54,3 @@
 /mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=1)
 	. = ..()
 	show_inventory(show,show_flags_whitelist,show_flags_blacklist,speed)
-	

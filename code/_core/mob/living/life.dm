@@ -143,6 +143,13 @@
 	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
+	nutrition = initial(nutrition)
+	nutrition_fast = initial(nutrition_fast)
+	hydration = initial(hydration)
+	nutrition_quality = initial(nutrition_quality)
+	intoxication = initial(intoxication)
+	on_fire = initial(on_fire)
+	fire_stacks = initial(fire_stacks)
 	return TRUE
 
 /mob/living/proc/resurrect()

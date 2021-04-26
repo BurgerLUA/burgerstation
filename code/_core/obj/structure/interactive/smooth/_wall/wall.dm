@@ -46,3 +46,10 @@
 	color = "#CC955F"
 	corner_category = "sand_wall"
 	material_id = /material/wood
+
+/obj/structure/smooth/wall/sand/should_smooth_with(var/turf/T)
+
+	if(istype(T,/turf/simulated/wall/brick/sand))
+		return TRUE
+
+	. = ..()

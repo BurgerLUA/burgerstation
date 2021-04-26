@@ -21,7 +21,6 @@
 	icon = 'icons/turf/space/space.dmi'
 	icon_state = "1"
 	opacity = 0
-	var/generate = TRUE
 	plane = PLANE_SPACE
 
 /turf/space/is_space()
@@ -50,4 +49,3 @@
 	icon = 'icons/turf/space/space.dmi'
 	icon_state = "space"
 	opacity = 1
-	generate = FALSE

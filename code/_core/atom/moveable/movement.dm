@@ -198,7 +198,7 @@
 	if(src.density) NewLoc.Entered(src,OldLoc)
 
 	//Do: Exit the turf.
-	if(src.density) NewLoc.Exited(src,NewLoc)
+	if(src.density) OldLoc.Exited(src,NewLoc)
 
 	//Do: Crossed the contents
 	if(src.density)

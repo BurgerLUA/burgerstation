@@ -6,7 +6,7 @@
 	plane = PLANE_MOB
 
 	var/ckey_last //The person controlling this. Can be null if control is given up.
-	var/ckey_owner //The one who spawned it in.
+	var/ckey_owner //The one who spawned it in. Only null if deleting.
 
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0
@@ -62,6 +62,7 @@
 	var/obj/plane_master/floor/plane_master_floor
 	var/obj/plane_master/openspace/plane_master_openspace
 	var/obj/plane_master/currency/plane_master_currency
+	var/obj/plane_master/hud/plane_master_hud
 
 	var/list/parallax
 
@@ -99,6 +100,9 @@
 	var/list/observers = list() //A list of observers/ghosts observing this mob
 	var/mob/observing //Who is this mob observing.
 
+	var/mob/fallback_mob //The mob that this mob is slaved to. Basically if this mob tries to turn into a ghost, it will instead control this mob.
+	var/list/mob/linked_mobs = list() //Basically a reverse of the above. If this mob dies, then the rest die.
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)
@@ -110,6 +114,7 @@
 	if(client)
 		client.clear_mob(src,TRUE)
 
+	ckey_owner = null
 	key = null // required to GC
 	buttons.Cut()
 	health_elements.Cut()
@@ -191,6 +196,10 @@
 	if(!plane_master_currency)
 		plane_master_currency = new(src)
 	C.screen += plane_master_currency
+
+	if(!plane_master_hud)
+		plane_master_hud = new(src)
+	C.screen += plane_master_hud
 
 	if(!examine_overlay)
 		examine_overlay = new(src)

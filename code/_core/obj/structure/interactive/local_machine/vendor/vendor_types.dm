@@ -505,7 +505,9 @@
 		/obj/item/storage/egg_carton,
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/beaker/bottle/large/water,
-		/obj/item/container/beaker/large/ice
+		/obj/item/container/beaker/large/ice,
+		/obj/item/container/food/plant/tomato,
+		/obj/item/container/food/plant/lettuce
 	)
 
 

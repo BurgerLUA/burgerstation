@@ -72,3 +72,13 @@
 	. = list()
 	if(left_hand) . += left_hand.drop_objects(T)
 	if(right_hand) . += right_hand.drop_objects(T)
+
+/mob/living/advanced/proc/strip_and_delete_items()
+
+	for(var/k in worn_objects)
+		var/obj/item/I = k
+		qdel(I)
+
+	for(var/k in held_objects)
+		var/obj/item/I = k
+		qdel(I)

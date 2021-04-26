@@ -487,3 +487,10 @@
 			new /turf/simulated/hazard/water(src)
 
 	return ..()
+
+
+/turf/unsimulated/virtual_reality
+	name = "virtual reality"
+
+	icon = 'icons/turf/floor/circuit.dmi'
+	icon_state = "gcircuit"

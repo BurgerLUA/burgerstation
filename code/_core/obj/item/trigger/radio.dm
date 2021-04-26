@@ -176,3 +176,21 @@ list(
 	broadcasting_range = 1
 
 	value = 300
+
+
+/obj/item/device/radio/virtual_reality
+	name = "\improper Virtual Reality Radio"
+
+	frequency_min = RADIO_FREQ_SYNDICATE
+	frequency_max = RADIO_FREQ_COMMON
+
+	frequency = RADIO_FREQ_COMMON
+
+	listening_frequencies = list(
+		RADIO_FREQ_COMMON,
+		RADIO_FREQ_SYNDICATE
+	)
+
+	broadcasting_range = 1
+
+	value = 300

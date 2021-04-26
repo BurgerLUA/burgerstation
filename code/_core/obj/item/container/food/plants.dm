@@ -98,7 +98,7 @@
 
 	SAVEVAR("delete_after_harvest")
 
-	
+
 /obj/item/container/food/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 
@@ -119,7 +119,7 @@
 
 	LOADVAR("delete_after_harvest")
 
-	
+
 /obj/item/container/food/plant/nitrogen_flower
 	name = "nitrogen flower"
 	icon_state = "nitrogen_flower"
@@ -151,4 +151,22 @@
 
 /obj/item/container/food/plant/sugarcane/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar/cane,10)
+	return ..()
+
+/obj/item/container/food/plant/tomato
+	name = "tomato"
+	icon_state = "tomato"
+	plant_type = /plant_type/tomato
+
+/obj/item/container/food/plant/tomato/Generate()
+	reagents.add_reagent(/reagent/nutrition/tomato,10)
+	return ..()
+
+/obj/item/container/food/plant/lettuce
+	name = "lettuce"
+	icon_state = "lettuce"
+	plant_type = /plant_type/lettuce
+
+/obj/item/container/food/plant/lettuce/Generate()
+	reagents.add_reagent(/reagent/nutrition/lettuce,10)
 	return ..()

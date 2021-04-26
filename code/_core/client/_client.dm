@@ -11,7 +11,7 @@ var/global/list/all_clients = list() //Assoc list
 	fps = FPS_CLIENT
 	preload_rsc = 1
 	view = VIEW_RANGE
-	perspective = MOB_PERSPECTIVE
+	perspective = EYE_PERSPECTIVE
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
@@ -134,22 +134,6 @@ var/global/list/all_clients = list() //Assoc list
 		src.mob.to_chat(v)
 
 	return TRUE
-
-/client/proc/find_controlling_mob()
-
-	if(mob)
-		return mob
-
-	. = null
-
-	for(var/k in all_mobs)
-		var/mob/M = k
-		if(M.ckey_last == ckey)
-			. = M
-			return .
-		if(M.ckey_owner == ckey && !M.ckey_last)
-			. = M
-			//No break here as ckey_last needs a priority.
 
 /client/New()
 

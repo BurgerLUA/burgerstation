@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(payday)
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
-		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
+		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead || !P.allow_save)
 			continue
 		valid_players += P
 		if(P.insurance_premiums)
