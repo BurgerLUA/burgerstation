@@ -25,13 +25,6 @@
 		/obj/item/soulgem,
 		/obj/item/soulgem/common,
 		/obj/item/soulgem/uncommon,
-		/obj/item/enchanting_chalk,
-		/obj/item/paper/book/enchanting_guide,
-		/obj/item/paper/book/enchanting/disarm,
-		/obj/item/paper/book/enchanting/fire,
-		/obj/item/paper/book/enchanting/soul_trap,
-		/obj/item/paper/book/enchanting/stagger,
-		/obj/item/paper/book/enchanting/stun,
 		/obj/item/container/beaker/bottle/health_potion,
 		/obj/item/container/beaker/bottle/stamina_potion,
 		/obj/item/container/beaker/bottle/mana_potion

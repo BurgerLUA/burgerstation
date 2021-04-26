@@ -1,3 +1,5 @@
+//New system is called mob_values.
+
 /mob/living/proc/dvar_base(var/id,var/value)
 	dynamic_variable_base[id] = value
 	return value

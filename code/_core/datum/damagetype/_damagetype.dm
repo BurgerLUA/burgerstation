@@ -506,8 +506,6 @@
 
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon
-		if(W.enchantment)
-			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 		if(W.reagents && victim.reagents)
 			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
 			W.reagents.remove_all_reagents()

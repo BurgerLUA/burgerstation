@@ -13,6 +13,8 @@
 
 	value_burgerbux = 1 //Prevents being sold in vendors.
 
+	glide_size = 2
+
 /obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
 
 	if(I != src && istype(I,/obj/item/currency/))
@@ -103,3 +105,111 @@
 
 /obj/item/currency/magic_token/max/Generate()
 	item_count_current = item_count_max
+
+
+/obj/item/currency/gold
+	name = "gold coin"
+	icon = 'icons/obj/item/currency/gold.dmi'
+	icon_state = "1"
+	value = 10
+
+	item_count_max = 200
+
+	size = SIZE_4/200
+	weight = 0.1
+
+	currency_class = "gold"
+
+	drop_sound = null
+
+	plane = PLANE_CURRENCY
+
+	var/scattered = FALSE
+
+/obj/item/currency/gold/Finalize()
+	. = ..()
+	if(generated)
+		fly()
+
+/obj/item/currency/gold/update_icon()
+
+	if(scattered)
+		icon_state = "[clamp(item_count_current,1,5)]_fall"
+	else
+		switch(item_count_current)
+			if(1 to 40)
+				icon_state = "[item_count_current]"
+			if(40 to 100)
+				icon_state = "[FLOOR(item_count_current,10)]"
+			if(100 to 200)
+				icon_state = "[FLOOR(item_count_current,20)]"
+		. = ..()
+
+/obj/item/currency/gold/update_overlays()
+
+	. = ..()
+
+	if(has_suffix(icon_state,"_anim"))
+		return .
+
+	var/desired_overlay
+
+	if(scattered)
+		desired_overlay = "sparkle_fall_[clamp(item_count_current,1,5)]"
+	else if(item_count_current < 10)
+		desired_overlay = "sparkle_1"
+	else
+		desired_overlay = "sparkle_[min(50,FLOOR(item_count_current,10))]"
+
+	if(desired_overlay)
+		var/image/I = new/image(icon,desired_overlay)
+		add_overlay(I)
+
+
+/obj/item/currency/gold/post_move(var/atom/old_loc)
+
+	if(scattered && !isturf(loc))
+		scattered = FALSE
+		update_sprite()
+
+	. = ..()
+
+	if(!isturf(old_loc) && isturf(loc) && (!is_inventory(old_loc) || get_turf(old_loc) == loc))
+		fly()
+
+/proc/create_gold_drop(var/turf/T,var/amount=5)
+
+	spawn while(amount>0)
+		var/obj/item/currency/gold/G = new(T)
+		G.pixel_x = rand(-4,4)
+		G.pixel_y = rand(-4,4)
+		G.item_count_current = min(amount,rand(min(5,CEILING(amount/10,1)),5))
+		amount -= G.item_count_current
+		G.fly()
+		INITIALIZE(G)
+		FINALIZE(G)
+		G.Move(get_step(T,pick(DIRECTIONS_ALL)))
+
+/obj/item/currency/gold/proc/fly()
+
+	if(item_count_current > 5)
+		return FALSE
+
+	icon_state = "[clamp(item_count_current,1,5)]_anim"
+
+	var/desired_z = rand(16,32)
+
+	var/desired_time = rand(6,8)
+
+	animate(src,pixel_z=desired_z,time=desired_time*0.5,easing=QUAD_EASING|EASE_OUT)
+	animate(pixel_z=0,time=desired_time*0.5,easing=QUAD_EASING|EASE_IN)
+
+	CALLBACK("\ref[src]_update_sprite",desired_time,src,.proc/finish_fly)
+
+	return TRUE
+
+/obj/item/currency/gold/proc/finish_fly()
+	scattered = TRUE
+	play_sound(pick('sound/effects/coin_01.ogg','sound/effects/coin_02.ogg','sound/effects/coin_03.ogg'),get_turf(src))
+	update_sprite()
+	return TRUE

@@ -1,15 +1,3 @@
-/loot/magic/book
-	loot_table = list(
-		/obj/item/paper/book/enchanting/fire = 5,
-		/obj/item/paper/book/enchanting/stagger = 4,
-		/obj/item/paper/book/enchanting/stun = 2,
-		/obj/item/paper/book/enchanting/disarm = 3,
-		/obj/item/paper/book/enchanting/blood_leech = 1,
-		/obj/item/paper/book/enchanting/soul_trap = 5
-	)
-	loot_count = 1
-
-
 /loot/magic/soulgem
 	loot_table = list(
 		/obj/item/soulgem = 27,
