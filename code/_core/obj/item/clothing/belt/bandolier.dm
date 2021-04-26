@@ -19,6 +19,8 @@
 	var/shell_count = 0
 
 	var/max_shells = 0
+	
+	var/shell_type = /obj/item/bullet_cartridge
 /obj/item/clothing/belt/bandolier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,shell_type))
