@@ -8,15 +8,17 @@
 		if(examiner == src)
 			noun = "You look"
 		else
+			noun = "They look"
 			switch(gender)
 				if(MALE)
 					noun = "He looks"
 				if(FEMALE)
 					noun = "She looks"
-				else
-					noun = "They look"
 
-		switch(health.damage[TOX])
+
+		var/wound_stealth = get_mob_value("wound_stealth")
+
+		switch(health.damage[TOX] - wound_stealth*health.damage[TOX])
 			if(5 to 15)
 				. += div("warning","<i>[noun] off color.</i>")
 			if(15 to 25)
@@ -26,7 +28,7 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] diseased.</u></b>")
 
-		switch(health.damage[PAIN])
+		switch(health.damage[PAIN] - wound_stealth*health.damage[PAIN])
 			if(15 to 25)
 				. += div("warning","[noun] sore.")
 			if(25 to 50)

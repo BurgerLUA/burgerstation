@@ -119,7 +119,6 @@
 
 /loot/supply_crate/magic
 	loot_table = list(
-		/loot/magic/book = 1,
 		/loot/magic/soulgem = 9,
 		/loot/magic/potion = 6,
 		/loot/magic/tome = 3,

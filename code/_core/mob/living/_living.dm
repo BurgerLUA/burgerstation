@@ -126,6 +126,8 @@
 		SANITY = 0
 	)
 
+	var/list/mob_value
+
 	var/list/status_immune = list() //What status effects area they immune to?
 	//STATUS = TRUE //Means it's immune.
 	//STATUS = OTHERSTATUS //Means it will do OTHERSTATUS instead for half the duration.
@@ -349,12 +351,6 @@
 		client.make_ghost(FALLBACK_TURF)
 
 	return ..()
-
-/mob/living/proc/get_brute_color()
-	return "#FF0000"
-
-/mob/living/proc/get_burn_color()
-	return "#444444"
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
