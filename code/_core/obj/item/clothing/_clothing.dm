@@ -65,6 +65,8 @@
 
 	var/loyalty_tag //Set to a loyalty tag here to restrict this to those who have this tag.
 
+	var/list/ench/clothing_enchantments = list()
+
 /obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 
 	if(loyalty_tag && owner.loyalty_tag != loyalty_tag)
@@ -80,9 +82,21 @@
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 
+	if(length(clothing_enchantments))
+		.["clothing_enchantments"] = list()
+		for(var/k in clothing_enchantments)
+			var/ench/E = k
+			.["clothing_enchantments"][E.type] = E.magnitude
+
+
 /obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	if(object_data["clothing_enchantments"])
+		for(var/k in object_data["clothing_enchantments"])
+			var/ench/E = new k
+			E.magnitude = object_data["clothing_enchantments"][k]
+			clothing_enchantments += E
 
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
