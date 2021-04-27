@@ -108,6 +108,9 @@ obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/
 		if(door_state != DOOR_STATE_CLOSED)
 			return FALSE
 
+		if(!SSgenerator_power.station_power && (z == 3 || z == 2)) //zlevel 3 is station, 2 is basement of station
+			return FALSE
+
 	if(door_state == DOOR_STATE_OPENED)
 		if(!locked && lock)
 			lock(caller)
@@ -317,6 +320,18 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		if(!L.dead)
 			open(L)
 
+obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(1)
+
+	if(is_item(object))
+		var/obj/item/objI = object
+		if(objI.flags_tool & FLAG_TOOL_CROWBAR && door_state == DOOR_STATE_CLOSED)
+			open(caller, FALSE, TRUE)
+
+	return TRUE
 
 /obj/structure/interactive/door/airlock/glass
 	filler = "glass"

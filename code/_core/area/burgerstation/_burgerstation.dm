@@ -161,6 +161,12 @@
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
+/area/burgerstation/engineering/engine
+	name = "\improper Fusion Engine"
+	icon_state = "eng"
+
+	sound_environment = ENVIRONMENT_STONEROOM
+
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
 	icon_state = "cmd"

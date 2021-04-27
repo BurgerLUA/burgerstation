@@ -37,10 +37,14 @@
 	else
 		create_destruction(T,list(/obj/item/material/sheet = 1),/material/steel)
 		. = ..()
+		if(src in SSgenerator_power.stationside_lights)
+			SSgenerator_power.stationside_lights -= src
 		qdel(src)
 
 
 /obj/structure/interactive/lighting/fixture/Finalize()
+	if(z == 3 || z == 2) //zlevel 3 is station, 2 is basement of station
+		SSgenerator_power.stationside_lights += src
 	update_sprite()
 	update_atom_light()
 	return ..()
@@ -79,5 +83,3 @@
 		IS.color = desired_light_color
 		IS.alpha = 255*(light_power/1)
 		add_overlay(IS)
-
-	

@@ -368,8 +368,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/science)
 "bv" = (
-/turf/simulated/wall/shuttle,
-/area/transit/cargo_inbound/ship)
+/turf/simulated/floor/plating,
+/area/space)
 "bw" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/smooth/lattice,
@@ -471,9 +471,8 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "bQ" = (
-/obj/structure/interactive/vending/engineering/wardrobe,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/burgerstation/engineering)
+/turf/simulated/wall/shuttle,
+/area/transit/cargo_inbound/ship)
 "bR" = (
 /obj/structure/interactive/conveyor{
 	dir = 4;
@@ -490,9 +489,11 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
 "bT" = (
-/obj/structure/interactive/vending/engineering/equipment,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/burgerstation/engineering)
+/obj/structure/interactive/door/airlock/shuttle,
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle,
+/area/transit/cargo_inbound/ship)
 "bU" = (
 /turf/simulated/floor/tile/shuttle/red,
 /area/transit/dropship/alpha/station)
@@ -503,9 +504,11 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/transit/dropship/alpha/station)
 "bW" = (
-/obj/decal/poster/nanotrasen,
-/turf/simulated/wall/metal/reinforced,
-/area/burgerstation/engineering)
+/obj/structure/shuttle_engine/propulsion/right{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/transit/cargo_inbound/ship)
 "bX" = (
 /obj/structure/interactive/atmospherics/air_alarm,
 /turf/simulated/wall/metal/reinforced,
@@ -515,9 +518,9 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering)
 "bZ" = (
-/obj/structure/interactive/vending/security/gundrobe,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/burgerstation/engineering)
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle,
+/area/transit/cargo_inbound/ship)
 "ca" = (
 /obj/structure/interactive/vending/security/ammo,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -527,7 +530,7 @@
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
 "cc" = (
-/obj/structure/interactive/vending/security/attachment,
+/obj/structure/interactive/vending/security/gundrobe,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "cd" = (
@@ -715,11 +718,9 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "cM" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/obj/structure/interactive/scanner/living,
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/obj/structure/interactive/vending/engineering/equipment,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/burgerstation/engineering)
 "cN" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
@@ -877,10 +878,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
-"dr" = (
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
 "ds" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 5
@@ -901,12 +898,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "dv" = (
-/obj/structure/interactive/conveyor{
-	dir = 8;
-	icon_state = "conveyor"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/space/light)
 "dw" = (
 /obj/decal/poster/nanotrasen,
 /turf/simulated/wall/metal,
@@ -1200,13 +1194,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "ev" = (
-/obj/structure/interactive/door/airlock/shuttle{
-	debug = 1
-	},
-/obj/structure/interactive/scanner/living,
 /obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/turf/simulated/floor/plating,
+/area/space)
 "ew" = (
 /turf/simulated/wall/shuttle,
 /area/transit/dropship/alpha/station)
@@ -2188,8 +2178,8 @@
 /area/burgerstation/hall/north)
 "hQ" = (
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 4
+	dir = 4;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/vr)
@@ -3339,8 +3329,8 @@
 /area/burgerstation/hall/west)
 "mf" = (
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 8
+	dir = 8;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/vr)
@@ -3392,8 +3382,8 @@
 /area/burgerstation/maint/east)
 "mr" = (
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 4
+	dir = 4;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/vr)
@@ -4458,8 +4448,8 @@
 	dir = 4
 	},
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 4
+	dir = 4;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/vr)
@@ -4484,8 +4474,8 @@
 "qt" = (
 /obj/marker/lobby,
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 4
+	dir = 4;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/vr)
@@ -4497,8 +4487,8 @@
 /area/burgerstation/vr)
 "qv" = (
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 8
+	dir = 8;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/vr)
@@ -4514,8 +4504,8 @@
 	dir = 8
 	},
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 8
+	dir = 8;
+	icon_state = "open"
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/vr)
@@ -5540,10 +5530,11 @@
 /turf/simulated/floor/tile/shuttle/purple,
 /area/transit/dropship/charlie/station)
 "uq" = (
-/obj/structure/shuttle_engine/propulsion/right{
-	dir = 4
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
 	},
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/floor/tile/shuttle,
 /area/transit/cargo_inbound/ship)
 "ur" = (
 /obj/structure/interactive/door/airlock/station/command/glass,
@@ -5843,12 +5834,12 @@
 /area/burgerstation/science)
 "vw" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_line"
 	},
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -5869,30 +5860,30 @@
 /area/burgerstation/soccer)
 "vA" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 9
+	dir = 9;
+	icon_state = "corner_line"
 	},
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "vB" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "vC" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_line"
 	},
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 4
+	dir = 4;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -6189,8 +6180,8 @@
 /area/burgerstation/armory)
 "wL" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 9
+	dir = 9;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -6662,10 +6653,12 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/arrivals)
 "yu" = (
-/obj/structure/shuttle_engine/propulsion/left{
-	dir = 4
+/obj/structure/shuttle_engine,
+/obj/shuttle_controller/cargo_inbound{
+	dir = 8;
+	icon_state = "shuttle"
 	},
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo_inbound/ship)
 "yv" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -6709,12 +6702,12 @@
 /area/burgerstation/chapel)
 "yC" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_line"
 	},
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -7039,12 +7032,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "zF" = (
-/obj/structure/shuttle_engine,
-/obj/shuttle_controller/cargo_inbound{
-	dir = 8;
-	icon_state = "shuttle"
+/obj/structure/interactive/door/airlock/shuttle{
+	debug = 1
 	},
-/turf/simulated/floor/tile/shuttle/black,
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle,
 /area/transit/cargo_inbound/ship)
 "zG" = (
 /obj/decal/poster/nanotrasen,
@@ -7324,19 +7317,19 @@
 /area/burgerstation/armory)
 "AH" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_line"
 	},
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AI" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -7348,15 +7341,15 @@
 /area/burgerstation/soccer)
 "AK" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AL" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -7366,22 +7359,22 @@
 /area/burgerstation/soccer)
 "AN" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 6
+	dir = 6;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AO" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AP" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 10
+	dir = 10;
+	icon_state = "circle"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -7391,137 +7384,137 @@
 /area/burgerstation/soccer)
 "AR" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 6
+	dir = 6;
+	icon_state = "circle"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AS" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 9
+	dir = 9;
+	icon_state = "circle"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AT" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 1
+	dir = 1;
+	icon_state = "circle"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AU" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 5
+	dir = 5;
+	icon_state = "circle"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AV" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_line"
 	},
 /obj/decal/soccer{
-	icon_state = "center_line";
-	dir = 4
+	dir = 4;
+	icon_state = "center_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AW" = (
 /obj/decal/soccer{
-	icon_state = "center_line";
-	dir = 4
+	dir = 4;
+	icon_state = "center_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AX" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 8
+	dir = 8;
+	icon_state = "circle"
 	},
 /obj/decal/soccer{
-	icon_state = "center_line";
-	dir = 4
+	dir = 4;
+	icon_state = "center_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AY" = (
 /obj/decal/soccer{
-	icon_state = "center_line";
-	dir = 4
+	dir = 4;
+	icon_state = "center_line"
 	},
 /obj/item/ball/soccer,
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "AZ" = (
 /obj/decal/soccer/circle{
-	icon_state = "circle";
-	dir = 4
+	dir = 4;
+	icon_state = "circle"
 	},
 /obj/decal/soccer{
-	icon_state = "center_line";
-	dir = 4
+	dir = 4;
+	icon_state = "center_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "Ba" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_line"
 	},
 /obj/decal/soccer{
-	icon_state = "center_line";
-	dir = 4
+	dir = 4;
+	icon_state = "center_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "Bb" = (
 /obj/decal/soccer/corner,
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "Bc" = (
 /obj/decal/soccer/corner,
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_line"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "Bd" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_line"
 	},
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "Be" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 6
+	dir = 6;
+	icon_state = "corner_line"
 	},
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 4
+	dir = 4;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
 "Bf" = (
 /obj/decal/soccer/corner{
-	icon_state = "corner_line";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_line"
 	},
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 4
+	dir = 4;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/soccer)
@@ -7529,6 +7522,16 @@
 /obj/marker/dev,
 /turf/simulated/floor/tile,
 /area/burgerstation/cryo)
+"CQ" = (
+/obj/structure/shuttle_engine/propulsion/left{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/transit/cargo_inbound/ship)
+"OH" = (
+/obj/structure/interactive/fusion_generator,
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/engineering)
 "OQ" = (
 /obj/structure/interactive/atmospherics/air_alarm{
 	dir = 4
@@ -7541,6 +7544,14 @@
 /obj/item/analyzer/gps/advanced,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"PO" = (
+/obj/structure/interactive/vending/engineering/wardrobe,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/burgerstation/engineering)
+"TK" = (
+/obj/structure/interactive/vending/security/attachment,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/burgerstation/engineering)
 
 (1,1,1) = {"
 kQ
@@ -39712,12 +39723,12 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
+dH
+dH
+dH
+dH
+dH
+dH
 dH
 tw
 rY
@@ -39969,12 +39980,6 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 pV
 rR
@@ -39982,6 +39987,12 @@ rR
 rR
 rR
 rR
+bv
+bv
+bv
+bv
+bv
+bv
 cd
 yE
 gJ
@@ -40226,14 +40237,14 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
+bQ
+bQ
+bQ
+bQ
+bQ
+bv
 bv
 bv
 bv
@@ -40483,18 +40494,18 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-bv
-dr
-dr
-dr
+bQ
+bZ
+bZ
+bZ
+zF
+ev
+ev
+ev
+ev
+ev
 ev
 dW
 fx
@@ -40740,19 +40751,19 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-bv
+bQ
+uq
+uq
+uq
+bQ
+aK
+aK
 dv
-dv
-dv
-bv
+bY
+bY
+aK
 an
 an
 cd
@@ -40997,20 +41008,20 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-bv
-dv
-dv
-dv
-bv
-bW
+bQ
+uq
+uq
+uq
+bQ
+aK
+cL
+cL
+cL
+cL
+cL
+bX
 bN
 ck
 ck
@@ -41254,21 +41265,21 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-bv
-dv
-dv
-dv
-bv
-bX
 bQ
+uq
+uq
+uq
+bQ
+aK
+PO
+cO
+cO
+cO
+cL
+bY
+cL
 cO
 cO
 cO
@@ -41511,21 +41522,21 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-cM
-dv
-dv
-dv
-bv
-bY
 bT
+uq
+uq
+uq
+bQ
+aK
+cM
+cO
+OH
+cO
+cL
+pn
+cL
 cO
 cO
 cO
@@ -41768,21 +41779,21 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-bv
-bv
-bv
-bv
-bv
+bQ
+bQ
+bQ
+bQ
+bQ
+aK
+TK
+cO
+cO
+cO
+cL
 bY
-bZ
+cL
 cO
 cO
 cO
@@ -42025,20 +42036,20 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-bv
+bQ
 xn
-zF
+yu
 xn
-bv
-bY
+bQ
+aK
+cL
+cL
+de
+cL
+cL
+aK
 ca
 cO
 dd
@@ -42282,20 +42293,20 @@ kF
 kF
 kF
 kF
-kF
-rT
-kF
-rT
-kF
-kF
 dH
 tn
-uq
+bW
 xY
 xY
 xY
-yu
-bY
+CQ
+aK
+aK
+aK
+aK
+aK
+aK
+aK
 cc
 cL
 cL
@@ -42539,12 +42550,6 @@ kF
 kF
 kF
 kF
-mF
-dH
-mF
-dH
-mF
-mF
 dH
 tw
 rY
@@ -42552,6 +42557,12 @@ rY
 rY
 rY
 rY
+bv
+bv
+bv
+bv
+bv
+bv
 lk
 nM
 lL
@@ -53911,9 +53922,9 @@ nt
 nt
 qW
 qX
-qZ
-nt
-qZ
+qX
+qX
+qX
 qX
 aj
 mF
