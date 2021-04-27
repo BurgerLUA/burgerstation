@@ -89,12 +89,12 @@
 
 /obj/effect/cleanable/blood/splatter/
 	name = "blood splatter"
-	icon_state = "1"
+	icon_state = "splatter_1"
 	animate_position = TRUE
 	blood_level = 10
 
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
-	icon_state = "[rand(1,12)]"
+	icon_state = "splatter_[rand(1,12)]"
 	return ..()
 
 /obj/effect/cleanable/blood/splatter_small/
@@ -104,5 +104,12 @@
 	blood_level = 0 //Trivial to clean.
 
 
+/obj/effect/cleanable/blood/gib/
+	name = "giblet splatter"
+	icon_state = "gib_1"
+	animate_position = TRUE
+	blood_level = 20
 
-
+/obj/effect/cleanable/blood/gib/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
+	icon_state = "gib_[rand(1,10)]"
+	return ..()

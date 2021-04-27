@@ -44,6 +44,10 @@
 
 	update_all_blends()
 
+/mob/living/advanced/npc/ashwalker/Generate()
+	drops_gold = rand(5,20) * level_multiplier
+	. = ..()
+
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"
 	level_multiplier = 1.25

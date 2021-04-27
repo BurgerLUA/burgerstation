@@ -254,6 +254,8 @@
 
 	var/one_time_life = FALSE
 
+	var/drops_gold = 0 //Set to a value to make this mob drop this amount of gold when it dies.
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))

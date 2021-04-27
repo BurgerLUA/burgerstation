@@ -116,7 +116,7 @@
 	item_count_max = 200
 
 	size = SIZE_4/200
-	weight = 0.1
+	weight = 50/200
 
 	currency_class = "gold"
 
@@ -126,13 +126,24 @@
 
 	var/scattered = FALSE
 
+/obj/item/currency/gold/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+
+	if(isturf(old_location))
+		var/turf/T = old_location
+		for(var/obj/item/currency/gold/G in T.contents)
+			if(G == src || G.qdeleting)
+				continue
+			G.transfer_item_count_to(src)
+
+	. = ..()
+
 /obj/item/currency/gold/Finalize()
 	. = ..()
 	if(generated)
 		fly()
 
 /obj/item/currency/gold/update_icon()
-
+	. = ..()
 	if(scattered)
 		icon_state = "[clamp(item_count_current,1,5)]_fall"
 	else
@@ -143,7 +154,6 @@
 				icon_state = "[FLOOR(item_count_current,10)]"
 			if(100 to 200)
 				icon_state = "[FLOOR(item_count_current,20)]"
-		. = ..()
 
 /obj/item/currency/gold/update_overlays()
 
@@ -174,22 +184,6 @@
 
 	. = ..()
 
-	if(!isturf(old_loc) && isturf(loc) && (!is_inventory(old_loc) || get_turf(old_loc) == loc))
-		fly()
-
-/proc/create_gold_drop(var/turf/T,var/amount=5)
-
-	spawn while(amount>0)
-		var/obj/item/currency/gold/G = new(T)
-		G.pixel_x = rand(-4,4)
-		G.pixel_y = rand(-4,4)
-		G.item_count_current = min(amount,rand(min(5,CEILING(amount/10,1)),5))
-		amount -= G.item_count_current
-		G.fly()
-		INITIALIZE(G)
-		FINALIZE(G)
-		G.Move(get_step(T,pick(DIRECTIONS_ALL)))
-
 /obj/item/currency/gold/proc/fly()
 
 	if(item_count_current > 5)
@@ -213,3 +207,18 @@
 	play_sound(pick('sound/effects/coin_01.ogg','sound/effects/coin_02.ogg','sound/effects/coin_03.ogg'),get_turf(src))
 	update_sprite()
 	return TRUE
+
+
+
+/proc/create_gold_drop(var/turf/T,var/amount=5)
+
+	spawn while(amount>0)
+		var/obj/item/currency/gold/G = new(T)
+		G.pixel_x = rand(-4,4)
+		G.pixel_y = rand(-4,4)
+		G.item_count_current = min(amount,rand(min(5,CEILING(amount/10,1)),5))
+		amount -= G.item_count_current
+		G.fly()
+		INITIALIZE(G)
+		FINALIZE(G)
+		G.Move(get_step(T,pick(DIRECTIONS_ALL)))
