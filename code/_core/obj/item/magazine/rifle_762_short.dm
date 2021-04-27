@@ -7,7 +7,7 @@
 	bullet_count_max = 30
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13 = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47 = TRUE,
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/short

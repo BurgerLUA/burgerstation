@@ -2,7 +2,7 @@
 	name = "\improper 7.62mm SOL-14 Service Rifle"
 	desc = "HOORAH!."
 	desc_extended = "The SOL-14 is the battle rifle currently in service in the SolGov Army. It's occasionally seen in the hands of PMCs."
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_service.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_2.dmi'
 	icon_state = "inventory"
 	value = 2200
 
@@ -61,7 +61,7 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 19 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1
@@ -72,10 +72,3 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/service/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
-
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt
-	dan_mode = TRUE
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_service_nt.dmi'
-
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen

@@ -1,8 +1,8 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/rpk
-	name = "\improper 5.45x39mm RPK-16"
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm
+	name = "\improper 7.62x54mmR PKM"
 	desc = "Killa's weapon of choice."
-	desc_extended = "RPK-16 is a 5.45x39mm LMG."
-	icon = 'icons/obj/item/weapons/ranged/rifle/PKM.dmi' //it's rpk but icon is pkm but you don't worry I just fucked up.
+	desc_extended = ""
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_lmg.dmi'
 	icon_state = "inventory"
 	value = 4000
 
@@ -19,13 +19,13 @@
 
 	heat_max = 0.5
 
-	bullet_length_min = 38
-	bullet_length_best = 39
-	bullet_length_max = 40
+	bullet_length_min = 53
+	bullet_length_best = 54
+	bullet_length_max = 55
 
-	bullet_diameter_min = 5.4
-	bullet_diameter_best = 5.45
-	bullet_diameter_max = 5.46  //Just so people wouldn't load this gun with 5.56, would be really-really weird to do so - Stalkeros
+	bullet_diameter_min = 7.6
+	bullet_diameter_best = 7.62
+	bullet_diameter_max = 7.62
 
 	ai_heat_sensitivity = 1.5
 
@@ -59,8 +59,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/rpk/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/get_skill_spread(var/mob/living/L)
 	return max(0,0.1 - (0.11 * L.get_skill_power(SKILL_RANGED)))

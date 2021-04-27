@@ -152,14 +152,14 @@
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/rifles
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia_3.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/magazine/carbine_223,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype,
 		/obj/item/magazine/rifle_556,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak14,
-		/obj/item/magazine/rifle_762_long_ak,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
+		/obj/item/magazine/rifle_762_short,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/merc,
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
@@ -167,17 +167,15 @@
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/special
-	icon = 'icons/obj/item/weapons/ranged/rifle/PKM.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_lmg.dmi'
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
 		/obj/item/magazine/lmg_223,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
-		/obj/item/magazine/lmg_545,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
+		/obj/item/magazine/lmg_762_r,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
 		/obj/item/magazine/rifle_939,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
-		/obj/item/magazine/sniper_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 		/obj/item/magazine/sniper_127,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,

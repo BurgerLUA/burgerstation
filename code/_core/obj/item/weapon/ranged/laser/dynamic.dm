@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic
+/obj/item/weapon/ranged/energy/dynamic
 	name = "\improper .50 Dynamic revolving pistol"
 	desc = "Technically a revolver!."
 	desc_extended = "A strangly designed .50 pistol with a revolving magazine. For a gunslinger who wants a little more punch."
@@ -22,14 +22,6 @@
 	weight = 8
 
 	heat_max = 0.09
-
-	bullet_length_min = 30
-	bullet_length_best = 33
-	bullet_length_max = 36
-
-	bullet_diameter_min = 12
-	bullet_diameter_best = 12.7
-	bullet_diameter_max = 13
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE,
@@ -66,8 +58,8 @@
 
 	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic/get_static_spread()
+/obj/item/weapon/ranged/energy/dynamic/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/dynamic/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/dynamic/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))

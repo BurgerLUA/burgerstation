@@ -2,7 +2,7 @@
 	name = "\improper 7.62x54mmR SVT-40"
 	desc = "URAAAAAAAAAAA!"
 	desc_extended = "The SVT-40 is a Russian Rifle most well known for killing Nazis. Now you too can carry that legacy in your hands!"
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_svt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_old.dmi'
 	icon_state = "inventory"
 	value = 800
 

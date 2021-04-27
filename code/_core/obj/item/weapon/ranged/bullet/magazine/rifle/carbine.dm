@@ -2,7 +2,7 @@
 	name = "\improper .223 Raider Carbine"
 	desc = "A favorite by pirates."
 	desc_extended = "Leftover surplus guns left by the good ol days of syndicate raiding parties. While old and outdated, it still sees some uses by old and new syndicate forces."
-	icon = 'icons/obj/item/weapons/ranged/rifle/223.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223.dmi'
 	icon_state = "inventory"
 	value = 900
 
@@ -92,7 +92,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = "\improper .223 SYN-Carbine MOD"
-	icon = 'icons/obj/item/weapons/ranged/rifle/223_mod.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_mod.dmi'
 
 	heat_max = 0.12
 

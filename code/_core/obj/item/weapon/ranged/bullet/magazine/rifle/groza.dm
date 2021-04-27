@@ -2,7 +2,7 @@
 	name = "\improper 9x39mm OTs-14 Groza"
 	desc = "No need to pull the pin now."
 	desc_extended = "This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specifically developed for rapid response units. The main differences are its 9x39 caliber ammunition, bullpup layout and extensive configuration options."
-	icon = 'icons/obj/item/weapons/ranged/rifle/939_groza.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_smg.dmi'
 	icon_state = "inventory"
 	value = 1700
 

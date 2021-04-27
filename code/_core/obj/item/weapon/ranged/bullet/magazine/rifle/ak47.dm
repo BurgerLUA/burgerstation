@@ -1,8 +1,8 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak14
-	name = "\improper 7.62x54mmR AK-14 Long"
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak47
+	name = "\improper 7.62x39mmR AK-47"
 	desc = "Ancient, with an upgrade."
 	desc_extended = "The 7.62x54mmR AK-14 is the AK to go for when you seriously want to fuck shit up."
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia_3.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
 	value = 2200
 
@@ -70,11 +70,26 @@
 
 	dan_mode = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak14/get_static_spread()
-	if(!wielded)
-		return 0.15
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak14/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/get_skill_spread(var/mob/living/L)
 	return max(0,0.025 - (0.05 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/short
+	name = "\improper 7.62x39mmR AK-47-SU"
+	desc = "Tiny tiny gun."
+	desc_extended = "The 7.62x54mmR AK-47-SU is the AK to go for when you seriously want to fuck shit upm, but with compactness."
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_carbine.dmi'
+	icon_state = "inventory"
+	value = 1800
+
+	shoot_delay = 1.5
+
+	size = SIZE_3
+	weight = 10
+
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1.25
+	movement_spread_base = 0.01

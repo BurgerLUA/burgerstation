@@ -2,7 +2,7 @@
 	name = "\improper 9x39mm AS Val"
 	desc = "The last thing you'll never hear."
 	desc_extended = "A modified version of the silent Vintorez sniper rifle, the assault rifle was designed as a special forces weapon."
-	icon = 'icons/obj/item/weapons/ranged/rifle/939_val.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_rifle.dmi'
 	icon_state = "inventory"
 	value = 2000
 

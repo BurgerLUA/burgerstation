@@ -2,7 +2,7 @@
 	name = "\improper 5.56mm MGS-5 Assault Rifle"
 	desc = "It can't be."
 	desc_extended = "A very tactical semi automatic assault rifle used primarily by serious mercenaries that rivals NanoTrasen's SA-AR."
-	icon = 'icons/obj/item/weapons/ranged/rifle/merc.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/merc.dmi'
 	icon_state = "inventory"
 	value = 3500
 

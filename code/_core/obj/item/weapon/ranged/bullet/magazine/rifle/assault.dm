@@ -1,8 +1,8 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault
-	name = "\improper .308 BR-NT"
+	name = "\improper .308 BR-SOL"
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
-	desc_extended = "A .308 chambered mother-of-all-battle-rifles (MOABR) developed by the NanoTrasen research team to rival the syndicate .308 marksman rifle, but without the slow shooting speed. Nicknamed the \"Arn't\" for what the enemy will be when an entire magazine is fired into them, and also because it's not an AR."
-	icon = 'icons/obj/item/weapons/ranged/rifle/308_adv.dmi'
+	desc_extended = "A .308 chambered mother-of-all-battle-rifles (MOABR) developed by the Solarian research team for space battles."
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308_advanced.dmi'
 	icon_state = "inventory"
 	value = 6000
 

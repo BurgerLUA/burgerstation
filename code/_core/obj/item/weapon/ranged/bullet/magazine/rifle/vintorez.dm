@@ -2,7 +2,7 @@
 	name = "\improper 9x39mm VSS Vintorez"
 	desc = "The last thing you never see."
 	desc_extended = "A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical."
-	icon = 'icons/obj/item/weapons/ranged/rifle/939_vintar.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_sniper.dmi'
 	icon_state = "inventory"
 	value = 1200
 

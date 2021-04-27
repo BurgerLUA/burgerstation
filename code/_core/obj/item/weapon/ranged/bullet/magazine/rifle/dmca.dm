@@ -2,7 +2,7 @@
 	name = "\improper 4.6x30mm DMCA"
 	desc = "Takedown your foes with this DMCA!"
 	desc_extended = "The 4.6x30mm DMCA is an extremely robust automatic weapon capable of sending a volley of penetrating small arms."
-	icon = 'icons/obj/item/weapons/ranged/rifle/dmca.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/dmca.dmi'
 	icon_state = "inventory"
 	value = 2000
 

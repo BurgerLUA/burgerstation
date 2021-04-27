@@ -1,13 +1,13 @@
 /loot/weapon/rifle/abakan
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545,
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan = 1,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94 = 1,
 		/obj/item/magazine/rifle_545 = 4,
 	)
 	loot_count = 6
@@ -43,16 +43,16 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/rifle/ak13
+/loot/weapon/rifle/ak47
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
 		/obj/item/magazine/rifle_762_short,
 		/obj/item/magazine/rifle_762_short,
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13 = 1,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47 = 1,
 		/obj/item/magazine/rifle_762_short = 4,
 	)
 	loot_count = 6
@@ -276,11 +276,11 @@
 
 /loot/weapon/rifle/rpk
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 	)
 
 	loot_table = list(
-		/obj/item/magazine/lmg_545 = 1
+		/obj/item/magazine/lmg_762_r = 1
 	)
 	loot_count = 6
 	chance_none = 50
@@ -302,29 +302,14 @@
 
 /loot/weapon/rifle/service
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
 		/obj/item/magazine/sniper_762,
 		/obj/item/magazine/sniper_762,
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt = 1,
-		/obj/item/magazine/sniper_762 = 4,
-	)
-	loot_count = 6
-	chance_none = 25
-
-/loot/weapon/rifle/sniper
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
-		/obj/item/magazine/sniper_762,
-		/obj/item/magazine/sniper_762,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = 1,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service = 1,
 		/obj/item/magazine/sniper_762 = 4,
 	)
 	loot_count = 6
@@ -341,21 +326,6 @@
 	loot_count = 6
 	chance_none = 50
 
-/loot/weapon/rifle/sniper_nt
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
-		/obj/item/magazine/sniper_762,
-		/obj/item/magazine/sniper_762,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt = 1,
-		/obj/item/magazine/sniper_762 = 4,
-	)
-	loot_count = 6
-	chance_none = 25
-
 /loot/weapon/rifle/standard
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
@@ -371,21 +341,6 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/rifle/svd
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
-		/obj/item/magazine/rifle_762_long,
-		/obj/item/magazine/rifle_762_long,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd = 1,
-		/obj/item/magazine/rifle_762_long = 4,
-	)
-	loot_count = 6
-	chance_none = 25
-
 /loot/weapon/rifle/svt
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
@@ -395,7 +350,7 @@
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd = 1,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/svt = 1,
 		/obj/item/magazine/rifle_762_long = 4,
 	)
 	loot_count = 6

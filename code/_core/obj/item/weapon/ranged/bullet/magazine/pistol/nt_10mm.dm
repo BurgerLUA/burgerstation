@@ -70,7 +70,7 @@
 	return max(0,0.015 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/old
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod
 	name = "10mm Umbra Pistol"
 	desc = "The ultimate pistol."
 	desc_extended = "An extremely powerful prototype of the 10mm NT Penumbra Pistol, before everything was simplified for factory production. Fires 3 round bursts at an absurd firerate. They don't make them like they used to."

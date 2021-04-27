@@ -81,3 +81,17 @@
 	)
 	loot_count = 4
 	chance_none = 25
+
+/loot/weapon/energy/dynamic
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/energy/dynamic,
+		/obj/item/weapon/ranged/energy/dynamic,
+		/obj/item/cell_charger,
+		/obj/item/powercell/advanced
+	)
+
+	loot_table = list(
+		/obj/item/powercell/advanced = 1
+	)
+	loot_count = 4
+	chance_none = 25

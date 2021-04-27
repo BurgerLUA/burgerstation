@@ -2,7 +2,7 @@
 	name = "\improper 4.6mm Gatling Gun"
 	desc = "It costs 10,000 credits to fire this weapon for 12 seconds."
 	desc_extended = ""
-	icon = 'icons/obj/item/weapons/ranged/rifle/minigun.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/minigun.dmi'
 	icon_state = "inventory"
 	value = 10000
 

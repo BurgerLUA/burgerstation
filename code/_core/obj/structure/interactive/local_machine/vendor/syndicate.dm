@@ -167,20 +167,20 @@
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
 
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
+		/obj/item/magazine/rifle_762_short,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/short,
 		/obj/item/magazine/rifle_762_short,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/magazine/gauss_gun,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
-		/obj/item/magazine/rifle_762_long,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
@@ -205,7 +205,6 @@
 		/obj/item/weapon/ranged/bullet/revolver/gm94,
 		/obj/item/storage/ammo/grenade_40mm,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
-		/obj/item/magazine/lmg_545,
-		/obj/item/magazine/lmg_545/ap
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
+		/obj/item/magazine/lmg_762_r
 	)

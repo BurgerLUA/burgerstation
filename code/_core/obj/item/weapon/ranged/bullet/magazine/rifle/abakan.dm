@@ -1,8 +1,8 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/abakan
+/obj/item/weapon/ranged/bullet/magazine/rifle/an94
 	name = "\improper 5.45x39mm AN-94"
 	desc = "A nuu cheeki breeki i v damkee!"
 	desc_extended = "Weapon of the elite troops of the Russian army. It was developed as a replacement for the outdated AK-74. In the 'Abakan' not only the internal mechanisms are mobile, but the entire receiver along with the barrel, which allows you to reduce the recoil, therefore significantly increasing the accuracy."
-	icon = 'icons/obj/item/weapons/ranged/rifle/rifle_545.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle.dmi'
 	icon_state = "inventory"
 	value = 1750
 
@@ -59,8 +59,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.03
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/rifle/an94/get_static_spread()
 	return 0.003
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/an94/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

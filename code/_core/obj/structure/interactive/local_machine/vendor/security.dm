@@ -74,7 +74,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
