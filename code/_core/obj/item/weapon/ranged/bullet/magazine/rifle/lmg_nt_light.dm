@@ -64,7 +64,7 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+
 
 	dan_mode = TRUE
 

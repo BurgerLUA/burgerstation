@@ -53,7 +53,7 @@
 	attachment_undermount_offset_x = 22 - 15
 	attachment_undermount_offset_y = 18 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1

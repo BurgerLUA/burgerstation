@@ -40,7 +40,7 @@
 
 	attachment_whitelist = list()
 
-	firing_pin = /obj/item/firing_pin/electronic
+
 
 	value = -1
 

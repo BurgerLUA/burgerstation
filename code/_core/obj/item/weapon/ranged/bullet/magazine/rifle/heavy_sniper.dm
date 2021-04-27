@@ -37,7 +37,7 @@
 
 	attachment_whitelist = list()
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 2

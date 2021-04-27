@@ -61,7 +61,7 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/syn_smg/update_icon()
 	if(stored_magazine)

@@ -64,7 +64,7 @@
 
 	dan_mode = TRUE
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5

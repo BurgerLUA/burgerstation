@@ -61,7 +61,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	dan_mode = TRUE
 
@@ -116,5 +116,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3_nt.dmi'
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+
 

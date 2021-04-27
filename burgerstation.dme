@@ -1361,6 +1361,7 @@
 #include "code\_core\obj\item\experience_scroll\_experience_scroll.dm"
 #include "code\_core\obj\item\experience_scroll\experience_scroll_attribute.dm"
 #include "code\_core\obj\item\experience_scroll\experience_scroll_skill.dm"
+#include "code\_core\obj\item\firing_pin\_firing_pin.dm"
 #include "code\_core\obj\item\fishing\_fishing.dm"
 #include "code\_core\obj\item\fishing\bait.dm"
 #include "code\_core\obj\item\fishing\line.dm"

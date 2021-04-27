@@ -45,7 +45,7 @@
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper{firing_pin = /obj/item/firing_pin/electronic/iff/mercenary},
+		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod,
 

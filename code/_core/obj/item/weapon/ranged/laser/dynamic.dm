@@ -56,7 +56,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
+
 
 /obj/item/weapon/ranged/energy/dynamic/get_static_spread()
 	return 0

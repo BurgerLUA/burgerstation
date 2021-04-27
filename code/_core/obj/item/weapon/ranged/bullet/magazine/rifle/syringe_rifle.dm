@@ -65,7 +65,7 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75

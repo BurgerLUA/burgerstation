@@ -40,7 +40,7 @@
 
 	var/ai_heat_sensitivity = 1 //How much heat matters when trying to make a shot. Should be less for weapons that you're supposed to spray and pray with, basically.
 
-	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
+	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin
 
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 

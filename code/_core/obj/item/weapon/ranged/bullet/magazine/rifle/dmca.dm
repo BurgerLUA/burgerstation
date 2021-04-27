@@ -65,7 +65,7 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
+
 
 	dan_mode = TRUE
 

@@ -66,7 +66,7 @@
 
 	override_icon_state = TRUE
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1

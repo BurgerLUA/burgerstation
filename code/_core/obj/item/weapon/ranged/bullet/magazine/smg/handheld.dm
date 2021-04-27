@@ -65,7 +65,7 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread()
 	return 0.015
