@@ -94,6 +94,7 @@
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
+		/obj/item/clothing/belt/bandolier/shotgun_20,
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
@@ -125,6 +126,7 @@
 /obj/structure/interactive/vending/syndicate/prize/rev
 	stored_types = list(
 		/obj/item/clothing/back/storage/backpack/explorer,
+		/obj/item/clothing/belt/bandolier/shotgun_23,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
