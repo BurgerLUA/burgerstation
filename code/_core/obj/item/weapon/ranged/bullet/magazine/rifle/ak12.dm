@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 2000
 
-	shoot_delay = 2
+	shoot_delay = 1.75
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -15,9 +15,9 @@
 	automatic = TRUE
 
 	size = SIZE_4
-	weight = 12
+	weight = 15
 
-	heat_max = 0.45
+	heat_max = 0.1
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -64,4 +64,4 @@
 	return 0.004
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))

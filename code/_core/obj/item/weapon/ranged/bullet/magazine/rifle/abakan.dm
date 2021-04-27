@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 1750
 
-	shoot_delay = 0.5
+	shoot_delay = 0.75
 	burst_delay = 5
 	max_bursts = 2
 
@@ -19,7 +19,7 @@
 	size = SIZE_4
 	weight = 12
 
-	heat_max = 0.1
+	heat_max = 0.05
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -53,14 +53,12 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94/get_static_spread()
-	return 0.003
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
