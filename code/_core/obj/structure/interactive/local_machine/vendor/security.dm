@@ -103,7 +103,8 @@
 		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/weapon/ranged/energy/freezegun,
 
-		/obj/item/deployable/mob/sentry
+		/obj/item/deployable/mob/sentry,
+		/obj/item/deployable/mountable/browning
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/dip
@@ -150,6 +151,7 @@
 		/obj/item/magazine/lmg_762,
 		/obj/item/magazine/sniper_127,
 		/obj/item/magazine/minigun_46,
+		/obj/item/magazine/browning_127,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
