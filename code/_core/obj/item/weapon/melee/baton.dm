@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/baton.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 
-	value = 10
+	value = 30
 
 	size = SIZE_2
 	weight = 5

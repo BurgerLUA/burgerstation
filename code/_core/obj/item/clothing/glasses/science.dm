@@ -6,11 +6,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1
 
 	value = 100
 
-	item_slot_layer = 3
+	item_slot_layer = 2

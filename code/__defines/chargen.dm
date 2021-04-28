@@ -6,5 +6,7 @@
 #define CHARGEN_HAIR 0x10
 #define CHARGEN_BEARD 0x20
 #define CHARGEN_SEX 0x40
+#define CHARGEN_MARKINGS 0x80
+#define CHARGEN_WINGS 0x100
 
 

@@ -10,7 +10,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PAIN = DAMAGE_CLUB*0.2,
+		PAIN = 60*0.2,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -19,7 +19,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_CLUB*0.4
+		ATTRIBUTE_STRENGTH = 60*0.4
 	)
 
 	attribute_damage = list(
@@ -27,7 +27,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_CLUB*0.2
+		SKILL_UNARMED = 60*0.2
 	)
 
 	skill_damage = list(
@@ -36,8 +36,8 @@
 
 	allow_friendly_fire = FALSE
 
-	attack_delay = SPEED_CLUB*0.5
-	attack_delay_max = SPEED_CLUB
+	attack_delay = 14*0.5
+	attack_delay_max = 14
 
 /damagetype/npc/dick_kickem/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 

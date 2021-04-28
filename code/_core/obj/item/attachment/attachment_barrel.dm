@@ -12,7 +12,7 @@
 		projectile_speed = 1.25,
 		bullet_spread = 1.25,
 		heat_spread = 1.25,
-		view_punch = 2,
+
 		shoot_delay = 1.5,
 		bullet_color = COLOR_ORANGE
 	)
@@ -31,7 +31,7 @@
 		projectile_speed = 1.5,
 		bullet_spread = 1.25,
 		heat_spread = 1.25,
-		view_punch = 3,
+
 		shoot_delay = 1.5,
 		bullet_color = COLOR_CYAN
 	)
@@ -48,7 +48,7 @@
 		damage_multiplier = 1.25,
 		projectile_speed = 1.25,
 		heat_spread = 1.25,
-		view_punch = 2,
+
 		shoot_delay = 1.5,
 	)
 
@@ -63,7 +63,7 @@
 	attachment_stats = list(
 		damage_multiplier = 0.75,
 		projectile_speed = 0.75,
-		view_punch = 0.75,
+
 		shoot_alert = ALERT_LEVEL_NONE,
 		shoot_sounds = list('sound/weapons/10/shoot_mod.ogg')
 	)
@@ -81,7 +81,7 @@
 
 	attachment_stats = list(
 		projectile_speed = 1.1,
-		view_punch = 1.5,
+
 		bullet_spread = 0.75,
 		movement_spread = 1.5,
 		inaccuracy_modifer = 0.5,
@@ -103,7 +103,7 @@
 		skill_spread = 0.9,
 		heat_spread = 0.9,
 		movement_spread = 1.25,
-		view_punch = 0.5
+
 	)
 
 	value = 300
@@ -119,7 +119,7 @@
 		movement_spread = 0.25,
 		static_spread = 0.9,
 		heat_spread = 1.25,
-		view_punch = 0.5
+
 	)
 
 	value = 300
@@ -134,7 +134,7 @@
 		damage_multiplier = 1.5,
 		projectile_speed = 1.5,
 		heat_spread = 1.25,
-		view_punch = 3,
+
 		shoot_delay = 1.5,
 	)
 

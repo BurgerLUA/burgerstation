@@ -4,12 +4,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_GREATCLUB
+		BLUNT = 105
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = AP_GREATCLUB
+		BLUNT = 120
 	)
 
-	attack_delay = SPEED_GREATCLUB*0.5
-	attack_delay_max = SPEED_GREATCLUB
+	attack_delay = 20*0.5
+	attack_delay_max = 20

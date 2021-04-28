@@ -1,17 +1,3 @@
-/mob/living/advanced/player/Topic(href,href_list[],hsrc)
-
-	if(length(href_list))
-		if(href_list["take"])
-			var/obj/item/I = locate(href_list["take"])
-			if(istype(I))
-				I.try_strip(src)
-		if(href_list["uncuff"])
-			var/mob/living/advanced/A = locate(href_list["uncuff"])
-			if(istype(A))
-				A.try_uncuff(src)
-
-	return ..()
-
 /mob/living/advanced/proc/try_uncuff(var/mob/caller)
 	if(!can_uncuff(caller))
 		return FALSE

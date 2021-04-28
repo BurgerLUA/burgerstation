@@ -2,17 +2,17 @@
 	name = "bow"
 
 	attack_damage_base = list(
-		LASER = DAMAGE_GREATCLUB*0.50,
-		HEAT = DAMAGE_GREATCLUB*0.25
+		LASER = 105*0.50,
+		HEAT = 105*0.25
 	)
 
 	attack_damage_penetration = list(
-		LASER = AP_GREATCLUB*0.5,
-		HEAT = AP_GREATCLUB*0.5
+		LASER = 120*0.5,
+		HEAT = 120*0.5
 	)
 
 	skill_stats = list(
-		SKILL_RANGED = DAMAGE_GREATCLUB*0.25
+		SKILL_RANGED = 105*0.25
 	)
 
 	skill_damage = list(

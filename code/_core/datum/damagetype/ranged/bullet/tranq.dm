@@ -5,12 +5,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_GREATAXE
+		FATIGUE = 90
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		FATIGUE = AP_GREATAXE
+		FATIGUE = 100
 	)
 
 	falloff = VIEW_RANGE
@@ -27,7 +27,7 @@
 
 	if(victim.health && is_living(victim))
 		var/mob/living/L = victim
-		if(L.health.stamina_current <= 0)
+		if(L.has_status_effect(STAMCRIT))
 			if(L.ckey_last)
 				L.add_status_effect(SLEEP,100,100) //10 seconds of sleep
 			else

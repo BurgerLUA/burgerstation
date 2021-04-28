@@ -16,18 +16,26 @@ var/global/time_dialation = 0
 
 	log_subsystem("Subsystem Controller","Created [length(active_subsystems)] subsystems.")
 
-	sortTim(active_subsystems, /proc/cmp_subsystem_priority)
+	sortMerge(active_subsystems, /proc/cmp_subsystem_priority)
 
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems sorted.")
 
 	var/benchmark = world.timeofday
 
+	var/current_priority = 0
+	var/last_subsystem = ""
+
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k
 		var/local_benchmark = world.timeofday
+		if(SS.priority < current_priority)
+			log_error("Wait, what the fuck? [last_subsystem] wasn't sorted properly!")
+		current_priority = SS.priority
+		last_subsystem = SS.name
 		log_subsystem(SS.name,"Initializing...")
 		INITIALIZE(SS)
 		log_subsystem(SS.name,"Initialization took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds.")
+		sleep(-1)
 
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
 	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds.")

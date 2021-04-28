@@ -18,4 +18,4 @@
 	value = 800
 
 /obj/item/weapon/ranged/magic/tome/cult/get_base_spread()
-	return 0.03
+	return 0.07

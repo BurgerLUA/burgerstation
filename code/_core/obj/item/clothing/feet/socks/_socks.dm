@@ -7,6 +7,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	worn_layer = LAYER_MOB_CLOTHING_SOCKS
 	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_RIGHT | SLOT_MOD_LEFT
 
 
 	ignore_other_slots = TRUE
@@ -18,9 +19,9 @@
 	dyeable = TRUE
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER,
-		HEAT = -AP_DAGGER
+		ARCANE = 20,
+		COLD = 10,
+		HEAT = -10
 	)
 
 	size = SIZE_0

@@ -6,7 +6,7 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1
@@ -15,7 +15,7 @@
 
 	value = 400
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 
 /obj/item/clothing/glasses/thermal/thermoncle

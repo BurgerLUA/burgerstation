@@ -1,20 +1,23 @@
 /obj/item/proc/try_strip(var/mob/caller)
 	if(!can_strip(caller))
 		return FALSE
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/strip,caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/strip,caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_strip,caller)
 	return TRUE
 
 /obj/item/proc/strip(var/mob/caller)
 
-	drop_item(get_turf(src))
+	var/atom/old_loc = src.loc
 
 	if(caller && src.loc && is_advanced(src.loc.loc))
 		caller.visible_message(span("notice","\The [caller.name] strips \the [src.name] off of [src.loc.loc]."),span("notice","You strip \the [src.name]."))
 
+	drop_item(get_turf(src))
+
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.put_in_hands(src)
+		A.on_strip(src,old_loc)
 
 	return TRUE
 

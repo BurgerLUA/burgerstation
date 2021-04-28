@@ -6,6 +6,23 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	safe_fall = TRUE
+
+/turf/simulated/floor/stair/ztravel/Exit(atom/movable/O, atom/newloc)
+
+	. = ..()
+
+	if(is_observer(O))
+		return .
+
+	if(. && get_step(src,dir) == newloc) //Going uuuuuuuup.
+		var/turf/T = locate(x,y,z+1)
+		if(T && !T.density_down)
+			var/turf/T2 = get_step(T,dir)
+			if(T2)
+				O.Move(T2)
+			return FALSE //Don't do regular movement.
+
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
 	footstep = /footstep/wood

@@ -27,15 +27,15 @@
 	blood_type = null
 
 	armor_base = list(
-		LASER = AP_GREATSWORD,
-		ARCANE = AP_GREATSWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		BOMB = -AP_AXE,
+		LASER = 80,
+		ARCANE = 80,
+		HEAT = 80,
+		COLD = 80,
+		BOMB = -40,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = -AP_AXE,
-		DARK = AP_AXE,
+		HOLY = -40,
+		DARK = 40,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

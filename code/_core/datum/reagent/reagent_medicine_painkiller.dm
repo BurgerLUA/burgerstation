@@ -46,6 +46,8 @@
 
 	addiction = /addiction/opium
 
+	particle_size = 0.3
+
 
 /reagent/medicine/painkiller/opium/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

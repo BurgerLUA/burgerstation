@@ -12,7 +12,7 @@
 
 	weight = 8
 
-	value = 4000
+	value = 5000
 
 	held_pixel_x = -16
 	held_pixel_y = -16

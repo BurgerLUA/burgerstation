@@ -44,6 +44,7 @@
 
 	to_chat("<b>[length(active_staff)] Online Staff</b><br>[english_list(active_staff)]")
 
+
 /*
 /client/verb/redeem_reward()
 	set name = "Redeem Reward"

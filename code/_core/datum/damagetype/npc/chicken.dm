@@ -7,18 +7,18 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_DAGGER*0.1,
-		PIERCE = DAMAGE_DAGGER*0.1
+		BLADE = 15*0.1,
+		PIERCE = 15*0.1
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = AP_DAGGER*0.25,
-		PIERCE = AP_DAGGER*0.75,
+		BLUNT = 10*0.25,
+		PIERCE = 10*0.75,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.6,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.2
+		ATTRIBUTE_STRENGTH = 15*0.6,
+		ATTRIBUTE_DEXTERITY = 15*0.2
 	)
 
 	attribute_damage = list(
@@ -26,5 +26,5 @@
 		ATTRIBUTE_DEXTERITY = list(PIERCE,BLADE)
 	)
 
-	attack_delay = SPEED_DAGGER*0.5
-	attack_delay_max = SPEED_DAGGER
+	attack_delay = 8*0.5
+	attack_delay_max = 8

@@ -21,7 +21,8 @@ SUBSYSTEM_DEF(dmm_suite)
 		"32x32" = list(
 			"maps/prefabs/32x32/rng_shrine.dmm",
 			"maps/prefabs/32x32/hierophant.dmm",
-			"maps/prefabs/32x32/goblin_king.dmm"
+			"maps/prefabs/32x32/goblin_king.dmm",
+			"maps/prefabs/32x32/frog.dmm"
 		),
 		"16x16" = list(
 			//"maps/prefabs/16x16/abnormality.dmm"
@@ -38,17 +39,23 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	dmm_suite = new()
 
-	//Load the station.
-	var/station_map = rustg_file_read("maps/core/burgerstation.dmm")
-	dmm_suite.read_map(station_map,1,1,1)
-	log_subsystem(name,"Loaded station map.")
-	z_level_to_file["1"] = "burgerstation.dmm"
-
 	//Load bluespace.
 	var/bluespace_map = rustg_file_read("maps/core/bluespace.dmm")
-	dmm_suite.read_map(bluespace_map,1,1,2)
+	dmm_suite.read_map(bluespace_map,1,1,4)
 	log_subsystem(name,"Loaded bluespace map.")
-	z_level_to_file["2"] = "bluespace.dmm"
+	z_level_to_file["3"] = "bluespace.dmm"
+
+	//Load the station.
+	var/station_map = rustg_file_read("maps/core/burgerstation.dmm")
+	dmm_suite.read_map(station_map,1,1,3)
+	log_subsystem(name,"Loaded station map.")
+	z_level_to_file["3"] = "burgerstation.dmm"
+
+	//Load the basement
+	var/basement_map = rustg_file_read("maps/core/burgerstation_basement.dmm")
+	dmm_suite.read_map(basement_map,1,1,2)
+	log_subsystem(name,"Loaded basement map.")
+	z_level_to_file["2"] = "burgerstation_basement.dmm"
 
 	//Load the map
 	var/voted_map = "Island"
@@ -61,7 +68,7 @@ SUBSYSTEM_DEF(dmm_suite)
 			log_debug("Invalid map: [found_map]! Defaulting to [voted_map]...")
 	log_debug("Found file: [horde_maps[voted_map]]...")
 	var/ground_map = file2text(horde_maps[voted_map])
-	dmm_suite.read_map(ground_map,1,1,3)
+	dmm_suite.read_map(ground_map,1,1,1)
 	log_subsystem(name,"Loaded ground map.")
 	map_name = voted_map
 	map_path = "[horde_maps[voted_map]]"

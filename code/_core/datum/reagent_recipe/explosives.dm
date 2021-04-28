@@ -1,5 +1,5 @@
 /reagent_recipe/explosion/
-	category = "Explosions"
+	category = "Chemistry"
 
 /reagent_recipe/explosion/water_potassium
 	name = "Water-Potassium Explosion"

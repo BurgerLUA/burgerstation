@@ -14,8 +14,8 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		COLD = AP_DAGGER,
+		ARCANE = 10,
+		COLD = 10,
 	)
 
 	dyeable = TRUE
@@ -61,9 +61,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		HEAT = -AP_SWORD,
-		COLD = AP_SWORD,
+		ARCANE = 10,
+		HEAT = -20,
+		COLD = 20,
 	)
 
 	dyeable = TRUE
@@ -79,8 +79,8 @@
 	desc_extended = "A pair of slim underwear."
 
 	defense_rating = list(
-		ARCANE = AP_DAGGER,
-		COLD = AP_DAGGER,
+		ARCANE = 10,
+		COLD = 10,
 	)
 
 	dyeable = TRUE
@@ -108,8 +108,8 @@
 	icon = 'icons/obj/item/clothing/underwear/thong.dmi'
 	color = COLOR_WHITE
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = -AP_SWORD,
+		ARCANE = 20,
+		COLD = -20,
 	)
 
 	dyeable = TRUE
@@ -125,7 +125,7 @@
 	icon = 'icons/obj/item/clothing/underwear/loincloth.dmi'
 
 	defense_rating = list(
-		ARCANE = AP_SWORD
+		ARCANE = 20
 	)
 
 	value = 5

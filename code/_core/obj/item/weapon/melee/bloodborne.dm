@@ -10,7 +10,7 @@
 	size = SIZE_4
 	weight = 8
 
-	value = 150
+	value = 700
 
 /obj/item/weapon/melee/sword/cblade
 	name = "\improper cleaver blade"
@@ -24,7 +24,7 @@
 	size = SIZE_3
 	weight = 6
 
-	value = 150
+	value = 400
 
 /obj/item/weapon/melee/sword/uncoiled
 	name = "\improper uncoiled sword"
@@ -38,4 +38,4 @@
 	size = SIZE_3
 	weight = 5
 
-	value = 1000
+	value = 900

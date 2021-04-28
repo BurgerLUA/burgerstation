@@ -65,8 +65,3 @@
 	"L" = "looc",\
 	"V" = "zoom",\
 )
-
-
-#define Z_LEVEL_STATION 1
-#define Z_LEVEL_BLUESPACE 2
-#define Z_LEVEL_MISSION 3

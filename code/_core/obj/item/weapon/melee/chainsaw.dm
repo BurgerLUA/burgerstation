@@ -14,7 +14,7 @@
 
 	var/last_bump_hit = 0
 
-	value = 500
+	value = 300
 
 /obj/item/weapon/melee/energy/chainsaw/think()
 

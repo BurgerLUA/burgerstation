@@ -8,6 +8,8 @@
 
 	inaccuracy_modifier = 0.5
 
+	damage_mod = 1.2
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)

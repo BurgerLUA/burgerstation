@@ -21,6 +21,7 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
 		/obj/item/clothing/overwear/armor/medium_armor/security,
@@ -47,6 +48,7 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/head/hat/beret/armored,
 		/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops,
@@ -105,6 +107,29 @@
 
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/mountable/browning
+	)
+
+/obj/structure/interactive/vending/security/gundrobe/dip
+	name = "drip gun vendor"
+	icon_state = "dipdrobe"
+
+	stored_types = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
+		/obj/item/magazine/dip_22,
+		/obj/item/magazine/dip_22,
+		/obj/item/magazine/dip_22,
+		/obj/item/magazine/dip_22,
+		/obj/item/storage/ammo/bullet_22
 	)
 
 

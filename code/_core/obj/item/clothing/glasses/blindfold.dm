@@ -6,7 +6,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(,
-		ARCANE = AP_GREATSWORD
+		ARCANE = 80
 	)
 
 	size = SIZE_1
@@ -16,7 +16,6 @@
 	value = 100
 
 	item_slot_layer = 2
-
 
 /obj/item/clothing/glasses/blindfold/white
 	name = "white blindfold"

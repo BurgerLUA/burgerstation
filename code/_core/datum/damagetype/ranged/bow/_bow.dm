@@ -5,13 +5,13 @@
 	penetration_mod = 1
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_GREATCLUB*0.50,
-		BLADE = DAMAGE_GREATCLUB*0.25
+		PIERCE = 105*0.50,
+		BLADE = 105*0.25
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_GREATCLUB*0.75,
-		BLADE = AP_GREATCLUB*0.25
+		PIERCE = 120*0.75,
+		BLADE = 120*0.25
 	)
 
 	attribute_stats = list(
@@ -23,7 +23,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_RANGED = DAMAGE_GREATCLUB*0.25
+		SKILL_RANGED = 105*0.25
 	)
 
 	skill_damage = list(

@@ -1,6 +1,7 @@
 #define FLAG_ORGAN_NONE 0x0
 #define FLAG_ORGAN_BEAST_FEET 0x1
 #define FLAG_ORGAN_BEAST_HEAD 0x2
+#define FLAG_ORGAN_BEAST_WINGS 0x4
 
 #define BODY_HEAD "head"
 #define BODY_FACE "face"
@@ -44,6 +45,10 @@
 #define BODY_EAR_RIGHT "ear_r"
 
 #define BODY_TAIL "tail"
+
+#define BODY_WINGS "wings"
+
+#define BODY_ANTENNAE "antennae"
 
 #define BODY_HAIR_HEAD "hair_head"
 #define BODY_HAIR_FACE "hair_face"

@@ -96,3 +96,22 @@
 	name = "left goblin eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
+
+//Moth
+/obj/item/organ/eye/moth
+	name = "right moth eye"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+
+/obj/item/organ/eye/moth/left
+	name = "left moth eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT
+
+/obj/item/organ/eye/diona
+	name = "right diona eye"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+
+/obj/item/organ/eye/diona/left
+	name = "left diona eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT

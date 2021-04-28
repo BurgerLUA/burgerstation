@@ -72,16 +72,15 @@
 	if(is_sneaking)
 		on_sneak()
 
+	if(old_turf && length(old_turf.old_living))
+		old_turf.old_living -= src
+
 	if(isturf(old_loc))
 		var/turf/T = old_loc
-		if(T.old_living)
-			T.old_living -= src
-
-	if(isturf(loc))
-		var/turf/T = loc
 		if(!T.old_living)
 			T.old_living = list()
 		T.old_living |= src
+		src.old_turf = T
 
 	handle_tabled()
 
@@ -197,7 +196,7 @@
 			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE
 
-	return ..()
+	. = ..()
 
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.

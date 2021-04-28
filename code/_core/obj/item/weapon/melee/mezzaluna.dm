@@ -9,7 +9,7 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	value = 80
+	value = 150
 
 	drop_sound = 'sound/items/drop/axe.ogg'
 

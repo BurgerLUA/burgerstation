@@ -67,8 +67,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/squad/current_squad
 
-	var/geared_up
-
 	var/obj/hud/click_and_drag/click_and_drag_icon
 
 	value = 0
@@ -93,13 +91,13 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/ai_steps = 0 //Determining when the AI activates.
 
-	var/tutorial = FALSE
-
 	damage_received_multiplier = 0.75
 
 	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
 
 	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.
+
+	var/tutorial = FALSE //Are you in the tutorial level?
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)

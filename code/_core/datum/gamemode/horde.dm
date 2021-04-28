@@ -55,7 +55,9 @@
 			create_horde_mob(T)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
-		if(O.z != Z_LEVEL_MISSION)
+		var/turf/T = get_turf(O)
+		var/area/A = T.loc
+		if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
 			continue
 		horde_targets += O
 
@@ -341,14 +343,15 @@
 		picks_remaining--
 		CHECK_TICK(50,FPS_SERVER*10)
 		var/turf/chosen_target
-
 		if(length(priority_targets))
 			chosen_target = get_turf(pick(priority_targets))
-			if(chosen_target.z != Z_LEVEL_MISSION)
+			var/area/A = chosen_target.loc
+			if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
 				continue
 		else if(length(horde_targets))
 			chosen_target = get_turf(pick(horde_targets))
-			if(chosen_target.z != Z_LEVEL_MISSION)
+			var/area/A = chosen_target.loc
+			if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
 				continue
 		else
 			return null

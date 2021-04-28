@@ -24,12 +24,12 @@
 	damage_type = /damagetype/npc/bull
 
 	armor_base = list(
-		BLUNT = AP_SWORD,
-		PIERCE = AP_AXE,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		HOLY = AP_AXE,
-		DARK = AP_AXE,
+		BLUNT = 20,
+		PIERCE = 40,
+		LASER = -20,
+		ARCANE = 20,
+		HOLY = 40,
+		DARK = 40,
 		ION = INFINITY
 	)
 

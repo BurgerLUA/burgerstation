@@ -6,7 +6,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1
@@ -15,7 +15,7 @@
 
 	value = 100
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 /obj/item/clothing/glasses/meson/night_vision
 	name = "night vision meson goggles"
@@ -27,7 +27,7 @@
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	defense_rating = list(,
-		ARCANE = -AP_SWORD
+		ARCANE = -20
 	)
 
 	size = SIZE_1

@@ -38,6 +38,8 @@
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)
 	handle_eyecolor_chargen(S.default_color_eye,FALSE)
+	handle_detail_chargen(S.default_color_detail,FALSE)
+	handle_glow_chargen(S.default_color_glow,FALSE)
 	update_all_blends()
 	return TRUE
 

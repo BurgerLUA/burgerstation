@@ -24,6 +24,8 @@
 	nutrition_amount = power_mod*10
 	hydration_amount = max(0,(1-power_mod)*5)
 	nutrition_quality_amount = -nutrition_amount*0.5
+	particle_size = 0.1 + min(power_mod,1)*0.2
+	liquid = 1 - min(power_mod,1)*0.5
 	return ..()
 
 

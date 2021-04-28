@@ -11,7 +11,7 @@
 
 /loot/fishing/sea
 	loot_table = list(
-		null = 500,
+		null = 200,
 		/obj/item/clothing/feet/shoes/sandal = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/sandal/left = CHANCE_JUNK,
 		/obj/item/clothing/head/hat/sombrero = CHANCE_JUNK,
@@ -40,7 +40,7 @@
 
 /loot/fishing/river
 	loot_table = list(
-		null = 500,
+		null = 200,
 		/obj/item/clothing/feet/shoes/workboot = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/workboot/left = CHANCE_JUNK,
 		/obj/item/clothing/head/hat/beaver = CHANCE_JUNK,
@@ -56,7 +56,7 @@
 		/obj/item/supply_crate/magic = CHANCE_CRATE,
 		/obj/item/supply_crate/nanotrasen = CHANCE_CRATE,
 		/obj/item/supply_crate/russian = CHANCE_CRATE,
-		/obj/item/supply_crate/syndicate = CHANCE_CRATE	,	,
+		/obj/item/supply_crate/syndicate = CHANCE_CRATE	,
 		/obj/item/tempering/luck = CHANCE_GOD,
 		/obj/item/tempering/quality/melee = CHANCE_GOD,
 		/obj/item/fishing/line/t3 = CHANCE_GOOD,
@@ -71,7 +71,7 @@
 
 /loot/fishing/lava
 	loot_table = list(
-		null = 500,
+		null = 300,
 		/obj/item/clothing/feet/shoes/miner = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/miner/left = CHANCE_JUNK,
 		/obj/item/clothing/head/helmet/full/miner = CHANCE_JUNK,
@@ -88,7 +88,6 @@
 		/obj/item/dice/d20/cursed = CHANCE_GOD,
 		/obj/item/tempering/quality/magic = CHANCE_GOD,
 		/obj/item/tempering/quality/ranged = CHANCE_GOD,
-		/obj/item/storage/ammo/fire = CHANCE_GOD,
 		/obj/item/powercell/bluespace = CHANCE_GOD
 
 	)

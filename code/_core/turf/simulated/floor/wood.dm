@@ -4,6 +4,9 @@
 	icon_state = "wood"
 	layer = LAYER_FLOOR_TILE
 
+	corner_icons = TRUE
+	corner_category = "wood"
+
 	footstep = /footstep/wood
 
 	destruction_turf = /turf/simulated/floor/plating

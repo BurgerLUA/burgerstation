@@ -43,6 +43,7 @@
 				var/image/OI = new/image(IB.icon,IB.icon_state)
 				OI.color = IB.color
 				OI.layer = IB.layer
+				OI.appearance_flags = RESET_COLOR
 				add_overlay(OI)
 			if(IB.special_type & ICON_BLEND_COLOR)
 				color = IB.color

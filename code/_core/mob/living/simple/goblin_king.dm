@@ -25,14 +25,14 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_GREATSWORD,
-		LASER = AP_GREATSWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
-		FATIGUE = AP_GREATSWORD,
+		BLADE = 80,
+		BLUNT = 80,
+		LASER = 80,
+		HEAT = 80,
+		COLD = 80,
+		HOLY = -80,
+		DARK = 80,
+		FATIGUE = 80,
 		ION = INFINITY,
 		PAIN = INFINITY
 	)
@@ -84,7 +84,11 @@
 	for(var/i=1,i<=spawn_amount,i++)
 		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
-		CREATE(choose_goblin, turf_to_spawn)
+		var/mob/living/spawnGoblin = new choose_goblin(turf_to_spawn)
+		spawnGoblin.one_time_life = TRUE
+		INITIALIZE(spawnGoblin)
+		GENERATE(spawnGoblin)
+		FINALIZE(spawnGoblin)
 
 /mob/living/simple/goblin_king/proc/summon_totems(var/angered = FALSE)
 	var/spawn_amount = angered ? 3 : 1

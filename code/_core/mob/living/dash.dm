@@ -13,7 +13,7 @@
 		return FALSE
 
 	if(health)
-		if(health.stamina_current < 25)
+		if(has_status_effect(STAMCRIT) || health.stamina_current < 25)
 			to_chat(span("warning","You can't dash, you're exhausted!"))
 			return FALSE
 		health.adjust_stamina(-25)
@@ -46,6 +46,9 @@
 	else
 		if(move_mod >= 3)
 			return FALSE
+
+	if(has_status_effects(STAMCRIT,PARALYZE,SLEEP,PARRIED,FATIGUE,STUN))
+		return FALSE
 
 	return TRUE
 

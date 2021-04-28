@@ -4016,7 +4016,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/lava_lake)
 "qJ" = (
-/obj/marker/wizard_rift_location,
+/mob/living/simple/devil,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
 "qK" = (
@@ -4417,6 +4417,18 @@
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/hellchamber)
+"st" = (
+/mob/living/simple/devil,
+/turf/simulated/floor/colored/ash/dark,
+/area/hellscape/exterior/death_plains)
+"su" = (
+/mob/living/simple/gorilla,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/south)
+"sv" = (
+/mob/living/simple/gorilla,
+/turf/simulated/floor/grass/jungle,
+/area/hellscape/exterior/jungle/north)
 "vu" = (
 /obj/structure/interactive/lighting/fixture/floor/strong,
 /turf/simulated/floor/plating,
@@ -23390,7 +23402,7 @@ bv
 bv
 bv
 bv
-lY
+bv
 bv
 bv
 bv
@@ -23896,7 +23908,7 @@ bv
 bv
 bv
 bv
-bv
+st
 bv
 bv
 bv
@@ -24154,7 +24166,7 @@ bv
 bv
 bv
 bv
-lY
+bv
 bv
 gZ
 bv
@@ -25945,7 +25957,7 @@ bv
 gZ
 bv
 bv
-lY
+bv
 bv
 bv
 bv
@@ -39016,7 +39028,7 @@ ba
 cr
 ba
 ba
-ba
+sv
 ba
 ba
 ba
@@ -39530,7 +39542,7 @@ ba
 ba
 ba
 br
-ba
+sv
 ba
 ba
 ba
@@ -39789,7 +39801,7 @@ br
 ba
 ba
 ba
-ba
+sv
 ba
 ba
 ba
@@ -44811,9 +44823,9 @@ iC
 iC
 iC
 iC
+su
 iC
-iC
-iC
+su
 iC
 iC
 jm
@@ -45583,7 +45595,7 @@ iC
 iC
 iC
 iC
-iC
+su
 iC
 iC
 ie
@@ -56663,7 +56675,7 @@ ch
 ch
 ch
 bb
-bb
+qJ
 bb
 bb
 bb
@@ -57023,9 +57035,9 @@ cq
 ba
 ba
 ba
+sv
 ba
-ba
-ba
+sv
 ba
 ba
 ba
@@ -58051,7 +58063,7 @@ ba
 br
 ba
 ba
-ba
+sv
 ba
 ba
 ba
@@ -58979,7 +58991,7 @@ bb
 bb
 bb
 bb
-qJ
+bb
 bb
 bb
 bb
@@ -59181,7 +59193,7 @@ iC
 iI
 iC
 iC
-iC
+su
 iC
 iD
 iC
@@ -59956,7 +59968,7 @@ jI
 iC
 iD
 iC
-iC
+su
 iC
 iC
 iD
@@ -60723,7 +60735,7 @@ iC
 iC
 iC
 iC
-iC
+su
 iC
 iC
 iC

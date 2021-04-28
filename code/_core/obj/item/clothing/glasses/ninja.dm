@@ -6,14 +6,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10
 	)
 
 	size = SIZE_1
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 

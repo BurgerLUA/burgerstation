@@ -23,11 +23,7 @@
 	stamina_base = 50
 	mana_base = 25
 
-/mob/living/simple/passive/lizard/Crossed(atom/movable/O)
-	return TRUE
-
 /mob/living/simple/passive/lizard/post_death()
 	. = ..()
 	icon_state = "dead"
 	update_sprite()
-	

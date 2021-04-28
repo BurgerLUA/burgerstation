@@ -12,7 +12,7 @@
 
 	weight = 15
 
-	value = 1200
+	value = 1700
 
 	var/next_heal= 0
 

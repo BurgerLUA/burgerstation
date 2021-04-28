@@ -8,14 +8,14 @@
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	defense_rating = list(
-		LASER = -AP_CLUB,
-		ARCANE = -AP_CLUB,
-		HOLY = -AP_CLUB
+		LASER = -60,
+		ARCANE = -60,
+		HOLY = -60
 	)
 
 	value = 100
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 
 /obj/item/clothing/glasses/nightvision/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)

@@ -13,7 +13,7 @@
 
 	var/loot/loot = /loot/supply_crate/all
 
-	var/chance_none = 75
+	var/chance_none = 90
 
 /obj/structure/interactive/supplies/Generate()
 	. = ..()

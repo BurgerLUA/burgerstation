@@ -50,7 +50,7 @@
 			B.stored_crafting_table = null
 
 	var/opening = FALSE
-	for(var/obj/hud/inventory/crafting/I in A.inventory)
+	for(var/obj/hud/inventory/crafting/I in A.inventory) //Hide other inventory buttons
 		CHECK_TICK(100,FPS_SERVER*0.5)
 		I.alpha = 0
 		I.mouse_opacity = 0
@@ -88,13 +88,17 @@
 
 	var/obj/hud/inventory/crafting/result/product_slot
 
-	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
+	for(var/obj/hud/inventory/crafting/result/R in inventories)
 		if(R.get_top_object())
 			caller.to_chat(span("warning","Remove the already completed item in the product slot before doing this!"))
 			return FALSE
 		else
 			product_slot = R
 			break
+
+	if(!product_slot)
+		caller.to_chat(span("warning","No product slot detected. Report this bug to burger on Discord."))
+		return FALSE
 
 	var/list/item_table = generate_crafting_table(caller,src)
 

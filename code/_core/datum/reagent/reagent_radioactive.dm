@@ -8,6 +8,8 @@
 
 	lethal = TRUE
 
+	particle_size = 0.7
+
 /reagent/radioactive/radium
 	name = "radium"
 	desc = "Radioactive rare radium."
@@ -16,3 +18,5 @@
 	flavor = "the inside of a reactor"
 
 	liquid = -0.25
+
+	particle_size = 0.7

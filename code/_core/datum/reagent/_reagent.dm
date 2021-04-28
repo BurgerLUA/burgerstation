@@ -32,6 +32,8 @@
 
 	var/processed_reagent
 
+	var/particle_size = 0.5 //0 to 1
+
 	var/heated_reagent //What this heats into.
 	var/heated_reagent_temp //Temperature required to heat
 	var/heated_reagent_amount //Amount (units) to add per reagent tick.

@@ -3,18 +3,18 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_SWORD*0.1,
-		FATIGUE = DAMAGE_SWORD*0.5
+		BLUNT = 10,
+		FATIGUE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = AP_SWORD*0.25,
-		FATIGUE = AP_SWORD*0.75
+		BLUNT = 0,
+		FATIGUE = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.3
+		ATTRIBUTE_STRENGTH = 20
 	)
 
 	attribute_damage = list(
@@ -22,15 +22,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_SWORD*0.1,
+		SKILL_MELEE = 10,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
 	)
 
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = 10
+	attack_delay_max = 10
 
 
 /damagetype/melee/sword/energy/on
@@ -38,21 +38,21 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_AXE*0.1,
-		LASER = DAMAGE_AXE*0.4,
-		HEAT = DAMAGE_AXE*0.1
+		BLADE = 10,
+		LASER = 40,
+		HEAT = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_AXE*0.1,
-		LASER = AP_AXE*0.8,
-		HEAT = AP_AXE*0.1
+		BLADE = 100,
+		LASER = 100,
+		HEAT = 100
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.2
+		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_DEXTERITY = 30
 	)
 
 	attribute_damage = list(
@@ -61,12 +61,12 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_AXE*0.1,
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = LASER
+		SKILL_MELEE = list(BLADE,LASER)
 	)
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 8
+	attack_delay_max = 15

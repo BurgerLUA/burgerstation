@@ -19,13 +19,6 @@
 
 	var/impact_sounds_flesh = list() //Leave empty to just use impact sounds, no matter what.
 
-	/*
-	var/allow_parry = TRUE
-	var/allow_miss = TRUE
-	var/allow_block = TRUE
-	var/allow_dodge = TRUE
-	*/
-
 	var/stealthy = FALSE //Set to true to not display any damage dealt as well as not to alert any NPCs when hit.
 
 	var/attack_delay_mod = 1
@@ -144,6 +137,17 @@
 		combat_rating += damage
 
 	return round(combat_rating*0.25,1)
+
+/damagetype/proc/calculate_value(var/obj/item/I)
+
+	. = 0
+
+	for(var/k in attack_damage_base)
+		.var/total_damage = attack_damage_base[k] + attribute_stats[k] + skill_stats[k]
+		. += calculate_damage_with_armor(total_damage,max(0,75 - attack_damage_penetration[k]))
+
+	if(attack_delay)
+		. *= 0.75 + 0.25*(10 / max(1,attack_delay))
 
 /damagetype/proc/get_miss_chance()
 	return 0
@@ -303,8 +307,12 @@
 		log_debug("**************************************")
 		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
 
+	var/block_multiplier = 0 //Different from damage_multiplier.
 	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
+		if(L.attack_flags & CONTROL_MOD_BLOCK)
+			var/block_angle = abs(get_angle(victim,attacker))
+			if(block_angle <= 90) block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
 		if(is_advanced(victim) && can_be_parried)
 			var/mob/living/advanced/A = victim
 			if(A.parry(attacker,weapon,hit_object,src))
@@ -341,13 +349,17 @@
 			var/mob/living/advanced/A = attacker
 			object_to_check = A.labeled_organs[O.id]
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check,TRUE) : list()
-
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
 		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
+		if(damage_type != FATIGUE && block_multiplier > 0)
+			if(debug) log_debug("Calculating [damage_type] with shield...")
+			var/blocked_damage = block_multiplier * old_damage_amount
+			old_damage_amount -= blocked_damage
+			fatigue_damage += blocked_damage*0.5
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
@@ -487,7 +499,6 @@
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained += "[xp_to_give] [attribute] xp"
 
-
 			if(length(experience_gained))
 				A.to_chat(span("notice","You gained [english_list(experience_gained)]."),CHAT_TYPE_COMBAT)
 
@@ -497,6 +508,9 @@
 		var/obj/item/weapon/W = weapon
 		if(W.enchantment)
 			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+		if(W.reagents && victim.reagents)
+			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
+			W.reagents.remove_all_reagents()
 
 	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)

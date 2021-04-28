@@ -8,8 +8,8 @@
 
 
 	defense_rating = list(,
-		ARCANE = AP_SWORD,
-		PAIN = AP_SWORD
+		ARCANE = 20,
+		PAIN = 20
 	)
 
 	size = SIZE_1

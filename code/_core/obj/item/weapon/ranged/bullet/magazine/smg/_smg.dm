@@ -2,3 +2,5 @@
 	movement_spread_base = 0.01
 
 	inaccuracy_modifier = 1
+
+	damage_mod = 1.1

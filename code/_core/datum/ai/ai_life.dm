@@ -28,13 +28,14 @@
 /ai/proc/on_life(var/tick_rate)
 
 	objective_ticks += tick_rate
-	if(objective_ticks >= get_objective_delay())
+	var/objective_delay = get_objective_delay()
+	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
-		handle_objectives(tick_rate)
+		handle_objectives(objective_delay)
 		if(length(current_path) || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
 			idle_time = 0
 		else
-			idle_time += tick_rate
+			idle_time += objective_delay
 			if(idle_time >= 600) //Idle for more than a minute means you're just wasting space.
 				set_active(FALSE)
 				return FALSE
@@ -59,13 +60,11 @@
 
 	. = objective_delay
 
-	/*
 	if(objective_attack)
-		. *= 4
-	*/
+		. = max(.,SECONDS_TO_DECISECONDS(4))
 
 /ai/proc/on_death()
 	set_objective(null)
-	set_active(FALSE)
 	set_path(null)
+	set_active(FALSE)
 	return TRUE

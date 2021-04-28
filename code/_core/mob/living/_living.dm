@@ -4,6 +4,8 @@
 	stamina_base = 50
 	mana_base = 50
 
+	vis_flags = VIS_INHERIT_ID
+
 	var/rarity = RARITY_COMMON
 
 	var/list/experience/attribute/attributes
@@ -29,10 +31,6 @@
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
-
-	var/charge_block = 500
-	var/charge_parry = 500
-	var/charge_dodge = 500
 
 	var/nutrition = 1000
 	var/nutrition_fast = 0
@@ -237,7 +235,7 @@
 	var/tabled = FALSE
 	var/currently_tabled = FALSE
 
-	density = 1
+	density = TRUE
 
 	var/list/defense_bonuses = list() //From perks, powers, and whatever.
 
@@ -252,6 +250,8 @@
 
 	can_be_bumped = FALSE
 
+	var/one_time_life = FALSE
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
@@ -262,6 +262,11 @@
 			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
 	death(TRUE)
 	if(!qdeleting) qdel(src)
+
+/mob/living/on_fall(var/turf/old_loc)
+	. = ..()
+	health?.adjust_loss_smart(brute=100)
+	add_status_effect(STUN,40,40)
 
 /mob/living/get_base_value()
 	. = ..()

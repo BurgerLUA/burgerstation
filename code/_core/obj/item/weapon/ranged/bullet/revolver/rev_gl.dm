@@ -4,6 +4,7 @@
 	desc_extended = "An old semi-automatic grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/misc/gm94.dmi'
 	icon_state = "inventory"
+	value = 300
 
 	shoot_delay = 20
 
@@ -11,9 +12,7 @@
 
 	bullet_count_max = 4
 
-	insert_limit = 4
-
-	view_punch = TILE_SIZE - 1
+	insert_limit = 1
 
 	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
 
@@ -31,10 +30,7 @@
 	bullet_diameter_best = 40
 	bullet_diameter_max = 41
 
-	heat_per_shot = 0.09
 	heat_max = 0.18
-
-	value = 1000
 
 	open = TRUE
 

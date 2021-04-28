@@ -6,11 +6,11 @@
 	desc_extended = "The peak of fashion."
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		ARCANE = 20,
+		COLD = 10
 	)
 
 	dyeable = TRUE
@@ -165,11 +165,11 @@
 	icon = 'icons/obj/item/clothing/pants/reinforced.dmi'
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_SWORD,
-		ARCANE = -AP_DAGGER,
-		COLD = AP_DAGGER,
+		BLADE = 20,
+		BLUNT = 10,
+		PIERCE = 20,
+		ARCANE = -10,
+		COLD = 10,
 	)
 
 /obj/item/clothing/pants/normal/reinforced/ntops

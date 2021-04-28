@@ -7,7 +7,8 @@
 	flavor = "water"
 	flavor_strength = 0.1
 
-	liquid = 0.5
+	particle_size = 0
+	liquid = 1
 
 	hydration_amount = 25
 	nutrition_quality_amount = 3
@@ -54,6 +55,7 @@
 	heated_reagent = /reagent/nutrition/water
 
 	temperature_mod = 50
+	particle_size = 0.9
 
 /reagent/nutrition/soda
 	name = "carbonated water"
@@ -70,6 +72,7 @@
 	heal_factor = 0
 
 	liquid = 0.7
+	particle_size = 0.2
 
 /reagent/nutrition/soda/cola
 	name = "\improper Space Cola"

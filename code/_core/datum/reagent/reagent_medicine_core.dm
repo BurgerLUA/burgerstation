@@ -14,6 +14,8 @@
 
 	liquid = 0.6
 
+	particle_size = 0.3
+
 /reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 5*.
@@ -33,6 +35,8 @@
 
 	value = 3
 
+	particle_size = 0.4
+
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 10*.
@@ -40,6 +44,89 @@
 /reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 8*.
+
+/reagent/medicine/caridone
+	name = "Caridone"
+	desc = "Red for brute."
+	color = "#FFEB87"
+	alpha = 200
+
+	flavor = "bandaids"
+
+	metabolism_blood = 0.2
+	metabolism_stomach = 0.2
+	experience_per_unit = 2
+
+	value = 1.5
+
+	liquid = 0.75
+
+	particle_size = 0.3
+
+/reagent/medicine/caridone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.brute_regen_buffer += rand(1,10)*.
+
+/reagent/medicine/caridone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.brute_regen_buffer += rand(1,10)*.
+
+/reagent/medicine/percardone
+	name = "Percardone"
+	desc = "Red for brute."
+	color = "#B200FF"
+	alpha = 150
+
+	flavor = "bandaids"
+
+	metabolism_blood = 0.4
+	metabolism_stomach = 0.4
+	experience_per_unit = 4
+
+	value = 3
+
+	liquid = 0.5
+
+	particle_size = 0.2
+
+/reagent/medicine/percardone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.health)
+		owner.brute_regen_buffer += CEILING(1 + owner.health.damage[BRUTE]*0.01,1)*.
+
+/reagent/medicine/percardone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.health)
+		owner.brute_regen_buffer += CEILING(1 + owner.health.damage[BRUTE]*0.01,1)*.
+
+/reagent/medicine/dicarditane
+	name = "Dicarditane"
+	desc = "Red for brute."
+	color = "#E4FF00"
+	alpha = 200
+
+	flavor = "bandaids"
+
+	metabolism_blood = 0.4
+	metabolism_stomach = 0.4
+	experience_per_unit = 4
+
+	value = 3
+
+	liquid = 0.5
+
+	particle_size = 0.2
+
+/reagent/medicine/dicarditane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.brute_regen_buffer += 4*.
+	owner.burn_regen_buffer += 2*.
+
+/reagent/medicine/dicarditane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.brute_regen_buffer += 8*.*(owner.nutrition/1000)
+	owner.burn_regen_buffer += 4*.*(owner.nutrition/1000)
+
 
 /reagent/medicine/kelotane
 	name = "Kelotane"
@@ -55,6 +142,8 @@
 
 	value = 1
 
+	particle_size = 0.4
+
 /reagent/medicine/kelotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.burn_regen_buffer += 5*.
@@ -62,6 +151,118 @@
 /reagent/medicine/kelotane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.burn_regen_buffer += 4*.
+
+/reagent/medicine/arentane
+	name = "Arentane"
+	desc = "Red for brute."
+	color = "#0080C9"
+	alpha = 150
+
+	flavor = "bandaids"
+
+	metabolism_blood = 0.2
+	metabolism_stomach = 0.2
+	experience_per_unit = 2
+
+	value = 1.5
+
+	liquid = 0.75
+
+	particle_size = 0.3
+
+/reagent/medicine/arentane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.burn_regen_buffer += rand(1,10)*.
+
+/reagent/medicine/arentane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.burn_regen_buffer += rand(1,10)*.
+
+/reagent/medicine/kenotone
+	name = "Kenotone"
+	desc = "Red for brute."
+	color = "#0080C9"
+	alpha = 225
+
+	flavor = "bandaids"
+
+	metabolism_blood = 0.2
+	metabolism_stomach = 0.2
+	experience_per_unit = 2
+
+	value = 1.5
+
+	liquid = 0.75
+
+	particle_size = 0.3
+
+/reagent/medicine/kenotone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.burn_regen_buffer += rand(2,20)*.
+	owner.tox_regen_buffer -= rand(1,10)*.
+	owner.stamina_regen_buffer -= rand(1,10)*.
+
+/reagent/medicine/kenotone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.burn_regen_buffer += rand(2,20)*.
+	owner.tox_regen_buffer -= rand(1,10)*.
+	owner.stamina_regen_buffer -= rand(1,10)*.
+
+/reagent/medicine/extinatane
+	name = "Extinatane"
+	desc = "Red for brute."
+	color = "#FFF0BF"
+	alpha = 150
+
+	flavor = "bandaids"
+
+	metabolism_blood = 1
+	metabolism_stomach = 1
+	metabolism_skin = 10
+	experience_per_unit = 2
+
+	value = 1.5
+
+	liquid = 0.75
+
+	particle_size = 0.1
+
+/reagent/medicine/extinatane/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(container.owner.health && container.owner.health.organic)
+		container.owner.health.adjust_loss_smart(burn=.*-2,robotic=FALSE)
+		owner.burn_regen_buffer += 2*.
+		owner.adjust_fire_stacks(-5*.)
+
+/reagent/medicine/carotane
+	name = "Carotane"
+	desc = "Red for brute."
+	color = "#808080"
+	alpha = 225
+
+	flavor = "bandaids"
+
+	metabolism_blood = 0.1
+	metabolism_stomach = 0.1
+	experience_per_unit = 2
+
+	value = 1.5
+
+	liquid = 0.25
+
+	particle_size = 0.5
+
+/reagent/medicine/carotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	var/mul = (container.stored_reagents[type]/starting_volume)
+	owner.brute_regen_buffer += 5*.*mul
+	owner.burn_regen_buffer += 5*.*mul
+
+/reagent/medicine/carotane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	var/mul = (container.stored_reagents[type]/starting_volume)
+	owner.brute_regen_buffer += 5*.*mul
+	owner.burn_regen_buffer += 5*.*mul
 
 /reagent/medicine/dylovene
 	name = "Dylovene"
@@ -76,6 +277,8 @@
 	experience_per_unit = 2.5
 
 	value = 1.25
+
+	particle_size = 0.2
 
 /reagent/medicine/dylovene/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -98,6 +301,8 @@
 
 	value = 1.5
 
+	particle_size = 0.2
+
 /reagent/medicine/dexalin/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 	. = ..()
 	L.blood_oxygen += 0.2
@@ -119,6 +324,8 @@
 	experience_per_unit = 4
 
 	value = 1.5
+
+	particle_size = 0.5
 
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -147,6 +354,8 @@
 
 	value = 2
 
+	particle_size = 0.75
+
 /reagent/medicine/omnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 3*.
@@ -173,6 +382,8 @@
 	experience_per_unit = 10
 
 	value = 500
+
+	particle_size = 0
 
 /reagent/medicine/adminomnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -204,6 +415,8 @@
 	liquid = -0.5
 
 	experience_per_unit = 5
+
+	particle_size = 0.5
 
 /reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
@@ -242,6 +455,8 @@
 
 	experience_per_unit = 5
 
+	particle_size = 0.5
+
 /reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
 	if(. && is_living(target))
@@ -273,6 +488,8 @@
 	alpha = 255
 
 	experience_per_unit = 5
+
+	particle_size = 0.75
 
 
 /reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)

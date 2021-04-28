@@ -63,7 +63,8 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-
+/mob/living/simple/ghost/on_crush()
+	return FALSE
 
 /mob/living/simple/ghost/handle_alpha()
 	if(dead) return 0

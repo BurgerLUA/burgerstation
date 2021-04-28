@@ -7,11 +7,11 @@
 	item_slot = SLOT_TORSO
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		ARCANE = 20,
+		COLD = 10
 	)
 
 	dyeable = TRUE
@@ -84,6 +84,26 @@
 		"shoulders" = COLOR_CHEMISTRY
 	)
 
+/obj/item/clothing/shirt/normal/uniform/red_soccer
+	name = "red soccer shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_RED,
+		"shoulders" = COLOR_WHITE
+	)
+
+/obj/item/clothing/shirt/normal/uniform/blue_soccer
+	name = "blue soccer shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_BLUE,
+		"shoulders" = COLOR_BLACK
+	)
+
+/obj/item/clothing/shirt/normal/uniform/ref_soccer
+	name = "soccer ref shirt"
+	polymorphs = list(
+		"shirt_tee" = COLOR_YELLOW,
+	)
+
 
 /obj/item/clothing/shirt/normal/security
 	name = "security shirt"
@@ -149,11 +169,11 @@
 	icon = 'icons/obj/item/clothing/shirts/reinforced.dmi'
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_SWORD,
-		ARCANE = -AP_DAGGER,
-		COLD = AP_DAGGER,
+		BLADE = 20,
+		BLUNT = 10,
+		PIERCE = 20,
+		ARCANE = -10,
+		COLD = 10,
 	)
 
 /obj/item/clothing/shirt/normal/reinforced/ntops

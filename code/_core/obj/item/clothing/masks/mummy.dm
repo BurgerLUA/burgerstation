@@ -7,12 +7,12 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_DAGGER,
-		ARCANE = AP_AXE,
-		HOLY = -AP_AXE,
-		DARK = AP_AXE
+		BLADE = 10,
+		PIERCE = 10,
+		LASER = -10,
+		ARCANE = 40,
+		HOLY = -40,
+		DARK = 40
 	)
 
 	value = 20

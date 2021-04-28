@@ -6,14 +6,14 @@
 	icon = 'icons/obj/item/clothing/glasses/prescription.dmi'
 
 	defense_rating = list(
-		BLUNT = -AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD
+		BLUNT = -20,
+		LASER = -20,
+		ARCANE = 20
 	)
 
 	value = 40
 
-	item_slot_layer = 3
+	item_slot_layer = 2
 
 /obj/item/clothing/glasses/prescription/blue
 	name = "blue prescription glasses"

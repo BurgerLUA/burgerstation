@@ -6,7 +6,7 @@
 
 	damage_type = /damagetype/melee/club/null_rod
 
-	value = 30
+	value = 40
 
 	weight = 4
 	size = SIZE_2
@@ -22,6 +22,8 @@
 
 	attack_range = 2
 
+	value = 90
+
 	weight = 8
 	size = SIZE_4
 
@@ -32,6 +34,8 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/nullathame.dmi'
 
 	damage_type = /damagetype/melee/sword/null_dagger
+
+	value = 50
 
 	weight = 3
 	size = SIZE_2

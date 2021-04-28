@@ -1,7 +1,6 @@
 /turf/simulated/floor/
 	name = "FLOOR"
 	desc = "A floor."
-	density_down = TRUE
 
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -9,6 +8,8 @@
 	health_base = 100
 
 	plane = PLANE_FLOOR
+
+	density_down = TRUE
 
 	density = FALSE
 

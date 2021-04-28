@@ -10,12 +10,12 @@
 	icon = 'icons/obj/item/clothing/shoes/carbon.dmi'
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = -AP_CLUB,
-		ARCANE = -AP_CLUB,
-		PAIN = AP_CLUB
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = -60,
+		ARCANE = -60,
+		PAIN = 60
 	)
 
 	size = SIZE_2

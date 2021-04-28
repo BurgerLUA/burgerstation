@@ -43,6 +43,8 @@ var/global/list/blood_turfs = list()
 
 	var/slip_factor = 1
 
+	var/organic = FALSE
+
 /turf/simulated/is_safe_teleport(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)
@@ -135,6 +137,8 @@ var/global/list/blood_turfs = list()
 
 /turf/simulated/PostInitialize()
 	. = ..()
+	if(istype(health))
+		health.organic = organic
 	update_sprite()
 
 /turf/simulated/proc/get_smooth_code()

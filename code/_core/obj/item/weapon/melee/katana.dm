@@ -8,4 +8,4 @@
 
 	damage_type = /damagetype/melee/sword/katana
 
-	value = 200
+	value = 300

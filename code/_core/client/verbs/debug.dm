@@ -19,8 +19,22 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_pathfinding,
 	/client/verb/force_save_deathbox,
 	/client/verb/force_load_deathbox,
-	/client/verb/force_save_banks
+	/client/verb/force_save_banks,
+	/client/verb/view_dps
 )
+
+/client/verb/view_dps()
+	set name = "View DPS of Weapons"
+	set category = "Debug"
+
+	var/text_to_send = ""
+
+	for(var/k in SSbalance.stored_dps)
+		var/v = SSbalance.stored_dps[k]
+		text_to_send += "[k]: [v] DPS<br>"
+
+	src << browse("<body>[text_to_send]</body>","window=help")
+
 
 /client/verb/show_debug_verbs()
 	set name = "Show Debug Verbs"

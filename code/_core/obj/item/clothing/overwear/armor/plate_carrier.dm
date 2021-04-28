@@ -1,7 +1,7 @@
 /obj/item/clothing/overwear/armor/plate_carrier
 	name = "plate carrier"
 	desc = "Standard armor for the soldiering kind."
-	desc_extended = "A plate carrier system. Requires an armor plate to useable."
+	desc_extended = "A plate carrier system. Requires an armor plate to useable. Alt-click to remove plates."
 	icon = 'icons/obj/item/clothing/suit/plate_carrier.dmi'
 
 	protected_limbs = list(BODY_TORSO)
@@ -9,9 +9,9 @@
 	dyeable = TRUE
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10
 	)
 
 	value = 50
@@ -63,7 +63,7 @@
 
 /obj/item/clothing/overwear/armor/plate_carrier/click_self(var/mob/caller)
 
-	if(is_advanced(caller) && length(installed_plate_carriers))
+	if(is_advanced(caller) && length(installed_plate_carriers) && caller.attack_flags & CONTROL_MOD_ALT)
 		INTERACT_CHECK
 		INTERACT_DELAY(1)
 		var/mob/living/advanced/A = caller
@@ -84,7 +84,7 @@
 /obj/item/clothing/overwear/armor/plate_carrier/pocket
 	name = "tactical plate carrier"
 	desc = "Can carry forks, spoons, and knives too."
-	desc_extended = "A plate carrier system. Requires an armor plate to useable."
+	desc_extended = "A plate carrier system. Requires an armor plate to useable. Can carry multiple items. Alt-click to remove plates."
 	icon = 'icons/obj/item/clothing/suit/plate_carrier_pouched.dmi'
 
 	dyeable = TRUE

@@ -7,15 +7,15 @@
 	value = 5000
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = -AP_CLUB,
-		ARCANE = -AP_CLUB,
-		HEAT = -AP_CLUB,
-		COLD = AP_CLUB,
-		BIO = AP_CLUB,
-		RAD = AP_CLUB
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = -60,
+		ARCANE = -60,
+		HEAT = -60,
+		COLD = 60,
+		BIO = 60,
+		RAD = 60
 	)
 
 	size = SIZE_7

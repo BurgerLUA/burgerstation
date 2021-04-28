@@ -3,33 +3,33 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_SWORD*0.2,
-		PIERCE = DAMAGE_SWORD*0.1,
+		BLADE = 20,
+		PIERCE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_SWORD*0.75,
-		PIERCE = AP_SWORD*0.25
+		BLADE = 25,
+		PIERCE = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.2,
-		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = BLADE
+		ATTRIBUTE_STRENGTH = list(BLADE,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLADE,PIERCE)
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_SWORD*0.3
+		SKILL_MELEE = 40,
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLADE
+		SKILL_MELEE = list(BLADE,PIERCE)
 	)
 
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = 8
+	attack_delay_max = 10

@@ -54,6 +54,8 @@
 	adrenaline_strength = 200
 	stamina_strength = 10
 
+	particle_size = 0.25
+
 /reagent/nutrition/energy/coffee
 	name = "coffee"
 	desc = "Basic black coffee."
@@ -69,6 +71,8 @@
 	stamina_strength = 5
 
 	flavor_strength = 2.5
+
+	particle_size = 0.3
 
 
 /reagent/nutrition/energy/coffee/expresso

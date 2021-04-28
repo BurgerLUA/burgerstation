@@ -29,17 +29,17 @@
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		COLD = AP_SWORD,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
-		FATIGUE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
+		COLD = 20,
+		HOLY = -60,
+		DARK = 60,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	level_multiplier = 1
@@ -78,15 +78,15 @@
 	movement_delay = DECISECONDS_TO_TICKS(7)
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = -AP_DAGGER,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = -10,
+		HEAT = 60,
+		COLD = 60,
+		HOLY = -80,
+		DARK = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY
@@ -110,15 +110,15 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = -AP_DAGGER,
-		HEAT = AP_CLUB,
-		COLD = AP_CLUB,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = -10,
+		HEAT = 60,
+		COLD = 60,
+		HOLY = -80,
+		DARK = 80,
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)
@@ -141,14 +141,14 @@
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
+		HEAT = 80,
+		COLD = 80,
+		HOLY = -80,
+		DARK = 80,
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)
@@ -172,14 +172,14 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = -AP_AXE,
-		ARCANE = AP_SWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		LASER = -40,
+		ARCANE = 20,
+		HEAT = 80,
+		COLD = 80,
+		HOLY = -80,
+		DARK = 80,
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)
@@ -202,16 +202,47 @@
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_SWORD,
-		ARCANE = AP_SWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
+		BLADE = 20,
+		PIERCE = 10,
+		LASER = -20,
+		ARCANE = 20,
+		HEAT = 80,
+		COLD = 80,
+		HOLY = -80,
+		DARK = 80,
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)
 
 	level_multiplier = 3
+
+
+/mob/living/simple/cult/construct/proteon
+	name = "blood cult proteon"
+	icon = 'icons/mob/living/simple/cult.dmi'
+	icon_state = "proteon"
+
+	damage_type = /damagetype/unarmed/claw/
+
+	ai = /ai
+
+	health_base = 25
+	stamina_base = 100
+	mana_base = 50
+
+	movement_delay = 1
+
+	armor_base = list(
+		BLADE = 20,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = 20,
+		HEAT = 80,
+		COLD = 80,
+		HOLY = -80,
+		DARK = 80,
+		FATIGUE = INFINITY,
+		PAIN = INFINITY
+	)
+
+	level_multiplier = 1

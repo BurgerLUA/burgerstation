@@ -83,3 +83,13 @@
 	name = "left goblin earhole"
 	id = BODY_EAR_LEFT
 	icon_state = BODY_EAR_LEFT
+
+//Moth
+/obj/item/organ/ear/moth
+	name = "right moth antenna"
+	icon = 'icons/mob/living/advanced/species/moth.dmi'
+
+/obj/item/organ/ear/moth/left
+	name = "left moth antenna"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT

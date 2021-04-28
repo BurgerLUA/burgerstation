@@ -6,8 +6,8 @@ obj/item/clothing/back/wings/angel
 	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
-		HOLY = AP_GREATAXE,
-		DARK = -AP_GREATAXE
+		HOLY = 100,
+		DARK = -100
 	)
 
 	value = 3000

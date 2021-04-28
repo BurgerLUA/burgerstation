@@ -4,7 +4,7 @@
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/nt.dmi'
 	icon_state = "inventory"
-	value = 120
+	value = 1700
 
 	shoot_delay = 4
 
@@ -16,16 +16,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 12
-
-
-
 	size = SIZE_4
 	weight = 11
 
-	value = 130
-
-	heat_per_shot = 0.02
 	heat_max = 0.08
 
 	dan_mode = TRUE
@@ -65,13 +58,10 @@
 	movement_inaccuracy_modifier = 0.25
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
-	if(!wielded)
-		return 0.1
 	return 0.004
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_base_spread()
-	return 0.06
+	return 0.1

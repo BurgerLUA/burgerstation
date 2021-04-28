@@ -11,6 +11,8 @@
 
 	value = 2
 
+	particle_size = 0.1
+
 
 /reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
@@ -71,6 +73,16 @@
 	alpha = 255
 
 	flavor = "steel"
+
+	liquid = -0.25
+
+/reagent/copper
+	name = "Copper"
+	desc = "What most lifeforms build low-level currency out of."
+	color = "#DD842F"
+	alpha = 255
+
+	flavor = "copper"
 
 	liquid = -0.25
 
@@ -334,4 +346,10 @@
 		/reagent/toxin/spider_toxin = 1,
 		/reagent/toxin/xeno_acid = 1
 	)
+
+/reagent/hydrogen_peroxide
+	name = "hydrogen peroxide"
+	color = "#FFFFFF"
+
+	alpha = 100
 

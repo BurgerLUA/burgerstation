@@ -16,6 +16,8 @@
 
 	liquid = 0.4
 
+	particle_size = 0.25
+
 	var/list/compatible_blood = list(/reagent/blood) //If a mob has this blood type, what can it receive without poison?
 
 	value = 2
@@ -295,6 +297,11 @@
 	compatible_blood = list(
 		/reagent/blood/plant = TRUE
 	)
+
+	heated_reagent = /reagent/medicine/mitogen
+	heated_reagent_temp = 300
+	heated_reagent_amount = 0
+	heated_reagent_mul = 0.01
 
 	color = "#A5FF7F"
 

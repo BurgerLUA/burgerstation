@@ -2,7 +2,7 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
-	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_LAYER
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE
 
 	var/value_burgerbux
 
@@ -115,8 +115,6 @@
 
 	var/wielded = FALSE
 	var/can_wield = FALSE
-
-	ignore_incoming_collisons = TRUE
 
 	anchored = FALSE
 
@@ -390,7 +388,7 @@
 	else if(luck > 50)
 		. += div("rarity good","<b>Luck</b>: +[luck-50]")
 
-	. += div("rarity","Value: [CEILING(value,1)]cr.")
+	. += div("rarity","Value: [value]cr.")
 	. += div("weightsize","Size: [size], Weight: [weight]")
 
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
@@ -583,7 +581,6 @@
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
 		return TRUE
 
-
 	if(object.reagents)
 		//Find out the behavior.
 		//TODO: Add liquid transfer sounds.
@@ -630,7 +627,6 @@
 		if(reagents.contains_lethal && L != C && L.loyalty_tag == C.loyalty_tag)
 			caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
 			return FALSE
-
 
 	if(L.dead)
 		caller.to_chat(span("warning","\The [L.name] is dead!"))
