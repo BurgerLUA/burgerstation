@@ -4,8 +4,8 @@
 	layer = LAYER_FLOOR_GRASS
 	corner_category = "grass"
 
-	fade = TRUE
-
+	real_icon = 'icons/turf/floor/grass_new.dmi'
+	real_icon_state = "grass"
 	footstep = /footstep/grass
 
 	destruction_turf = /turf/simulated/floor/colored/dirt

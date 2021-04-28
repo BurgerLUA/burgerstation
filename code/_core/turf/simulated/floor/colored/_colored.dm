@@ -7,7 +7,7 @@
 	desc_extended = "Is this a colored floor, or are all the other floors uncoloured."
 
 	real_icon = 'icons/turf/floor/ground.dmi'
-	real_icon_state = "grass"
+	real_icon_state = "floor"
 	corner_icons = TRUE
 
 	organic = TRUE
