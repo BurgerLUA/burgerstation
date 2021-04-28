@@ -70,7 +70,7 @@
 
 	var/can_gib = TRUE
 
-	//mouse_opacity = 0
+	mouse_opacity = 0 //For now
 
 /obj/item/organ/update_sprite()
 	. = ..()
@@ -191,7 +191,6 @@
 		for(var/k in inventories)
 			var/obj/hud/inventory/I = k
 			var/list/dropped_objects = I.drop_objects(T)
-			world.log << "Checking: [I]... [length(dropped_objects)] objects dropped."
 
 	if(attached_organ)
 		attached_organ.attached_organs -= src
@@ -232,18 +231,15 @@
 		if(!A.dead)
 			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
 		if(A.blood_type)
-			world.log << "Valid blood type."
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) + (target_bounds_y_max - target_bounds_y_min))/(TILE_SIZE*0.25)
 			var/reagent/R = REAGENT(A.blood_type)
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
-				world.log << "Creating gib!"
 				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
 			if(gib_icon_state)
-				world.log << "Creating body gib!"
 				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
 				if(BG)
 					BG.icon_state = gib_icon_state
-					BG.flesh_color = "#00FF00"
+					BG.flesh_color = color
 					BG.update_sprite()
 
 	unattach_from_parent(T,TRUE)
