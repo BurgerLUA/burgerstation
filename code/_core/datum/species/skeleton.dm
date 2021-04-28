@@ -14,8 +14,6 @@
 	default_color_detail = "#FFFFFF"
 	default_color_glow = "#FFFFFF"
 
-	flags_species_traits = TRAIT_NO_PAIN | TRAIT_NO_BLOOD
-
 	genderless = TRUE
 
 	spawning_organs_male = list(

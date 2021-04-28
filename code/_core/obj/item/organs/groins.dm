@@ -32,6 +32,8 @@
 
 	damage_coefficient = 0.9
 
+	gib_icon_state = "gibtorso"
+
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
 	icon_state = BODY_GROIN_FEMALE

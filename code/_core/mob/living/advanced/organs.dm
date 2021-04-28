@@ -16,6 +16,7 @@
 		remove_overlay("tail_front")
 	else
 		remove_overlay("\ref[O]")
+
 	organs -= O
 	labeled_organs -= O.id
 

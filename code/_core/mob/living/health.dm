@@ -65,9 +65,6 @@
 
 	return FALSE
 
-/mob/living/proc/should_bleed()
-	return TRUE
-
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
@@ -77,38 +74,42 @@
 	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
 	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
-	if(blood_type && total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
+	var/savage_hit = health ? damage_amount >= health.health_max*0.25 : FALSE
 
-		if(blood_volume > 0)
-			var/offset_x = (src.x - attacker.x)
-			var/offset_y = (src.y - attacker.y)
+	if(savage_hit)
+		total_bleed_damage *= 3
+		src.on_savage_hit(atom_damaged,attacker,weapon,damage_table,damage_amount,critical_hit_multiplier,stealthy)
+		if(!src.dead)
+			src.visible_message(span("warning","\The [src.name] takes a savage hit!"),span("danger","You take a savage hit!"))
 
-			if(!offset_x && !offset_y)
-				offset_x = pick(-1,1)
-				offset_y = pick(-1,1)
+	if(blood_type)
+		var/turf/T = get_turf(src)
+		var/reagent/R = REAGENT(blood_type)
+		new /obj/effect/temp/impact/blood(T,3,R.color)
+		if(total_bleed_damage)
+			if(blood_volume > 0)
+				var/offset_x = (src.x - attacker.x)
+				var/offset_y = (src.y - attacker.y)
 
-			var/norm_offset = max(abs(offset_x),abs(offset_y),1)
-			offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
-			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
+				if(!offset_x && !offset_y)
+					offset_x = pick(-1,1)
+					offset_y = pick(-1,1)
 
-			var/reagent/R = REAGENT(blood_type)
+				var/norm_offset = max(abs(offset_x),abs(offset_y),1)
+				offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
+				offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
-				if(!create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,offset_x,offset_y))
-					break
+				for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
+					if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
+						break
 
-			for(var/i=1,i<=total_bleed_damage/10,i++)
-				if(!create_blood(/obj/effect/cleanable/blood/splatter_small,get_turf(src),R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
-					break
+				for(var/i=1,i<=total_bleed_damage/10,i++)
+					if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
+						break
 
-			if(health && total_bleed_damage)
-				blood_volume -= FLOOR(total_bleed_damage*0.03,1)
-				queue_health_update = TRUE
-
-		if(is_organ(atom_damaged))
-			var/obj/item/organ/O = atom_damaged
-			var/bleed_to_add = total_bleed_damage/25
-			O.bleeding += bleed_to_add
+				if(health && total_bleed_damage)
+					blood_volume -= FLOOR(total_bleed_damage*0.02,1)
+					queue_health_update = TRUE
 
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
@@ -170,4 +171,86 @@
 	return damage_received_multiplier
 
 /mob/living/proc/create_override_contents(var/mob/living/caller)
+	return TRUE
+
+
+/mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+
+	var/best_attribute = null
+	var/best_damage = 0
+
+
+	for(var/k in damage_table)
+		var/v = damage_table[k]
+		if(v > best_damage)
+			best_attribute = k
+			best_damage = v
+
+	if(!best_attribute)
+		return FALSE
+
+	var/turf/T = get_turf(src)
+
+	switch(best_attribute)
+		if(BLADE)
+			add_status_effect(STAGGER,5,5)
+			play_sound('sound/effects/impacts/savage_blade.ogg',T,volume=80)
+			if(blood_type)
+				var/reagent/R = REAGENT(blood_type)
+				for(var/i=1,i<=rand(3,5),i++)
+					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3))
+		if(BLUNT)
+			add_status_effect(STUN,20,20)
+			play_sound('sound/effects/impacts/savage_blunt.ogg',T,volume=80)
+			if(blood_type)
+				var/reagent/R = REAGENT(blood_type)
+				for(var/i=1,i<=3,i++)
+					var/obj/effect/temp/mist/M = new(T,40)
+					M.color = R.color
+					M.alpha = 200
+					animate(M,pixel_x=rand(-16,16),pixel_y=rand(-16,16),alpha=0,time=40,easing=QUAD_EASING|EASE_OUT)
+		if(PIERCE)
+			add_status_effect(STAGGER,10,10)
+			play_sound('sound/effects/impacts/savage_pierce.ogg',T,volume=80)
+			if(blood_type)
+				var/reagent/R = REAGENT(blood_type)
+				var/desired_direction = get_dir(weapon,src)
+				for(var/i=1,i<=4,i++)
+					T = get_step(T,desired_direction)
+					if(!T.is_safe_teleport())
+						break
+					var/obj/effect/cleanable/blood/line/L = create_blood(/obj/effect/cleanable/blood/line,T,R.color,0,0)
+					if(L) L.dir = desired_direction
+		/*
+		if(LASER)
+
+		if(ARCANE)
+
+		if(HEAT)
+
+		if(COLD)
+
+		if(SHOCK)
+
+		if(BOMB)
+
+		if(BIO)
+
+		if(RAD)
+
+		if(HOLY)
+
+		if(DARK)
+
+		if(FATIGUE)
+
+		if(PAIN)
+
+		if(ION)
+
+		if(SANITY)
+		*/
+
+
+
 	return TRUE

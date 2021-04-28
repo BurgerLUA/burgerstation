@@ -72,7 +72,6 @@
 		if(A.left_item == I)
 			A.left_item = null
 
-
 /obj/hud/inventory/organs/right_hand_held
 	name = "right hand slot"
 	id = BODY_HAND_RIGHT_HELD
@@ -107,5 +106,3 @@
 		var/mob/living/advanced/A = owner
 		if(A.right_item == I)
 			A.right_item = null
-
-	return

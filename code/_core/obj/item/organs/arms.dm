@@ -27,6 +27,8 @@
 
 	has_pain = TRUE
 
+	gib_icon_state = "gibarm"
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT

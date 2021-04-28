@@ -29,6 +29,8 @@
 
 	damage_coefficient = 1
 
+	gib_icon_state = "gibtorso"
+
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	. = ..()
 	if(is_advanced(src.loc))

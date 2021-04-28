@@ -934,6 +934,7 @@
 #include "code\_core\obj\effect\temp\healing.dm"
 #include "code\_core\obj\effect\temp\item_pickup.dm"
 #include "code\_core\obj\effect\temp\landing.dm"
+#include "code\_core\obj\effect\temp\mist.dm"
 #include "code\_core\obj\effect\temp\muzzleflash.dm"
 #include "code\_core\obj\effect\temp\phasing.dm"
 #include "code\_core\obj\effect\temp\smoke.dm"
