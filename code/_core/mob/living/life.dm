@@ -7,6 +7,8 @@
 	if(dead)
 		return FALSE
 
+	is_moving = FALSE
+
 	if(boss)
 		SSbosses.living_bosses -= src
 

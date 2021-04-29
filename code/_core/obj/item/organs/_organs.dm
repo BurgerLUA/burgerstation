@@ -130,7 +130,7 @@
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
-		if(!A.ckey_owner && !A.boss && health && health.health_max <= damage_amount)
+		if(!A.immortal && !A.ckey_owner && !A.boss && health && health.health_max <= damage_amount)
 			gib()
 			A.death()
 

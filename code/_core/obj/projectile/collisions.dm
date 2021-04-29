@@ -93,12 +93,11 @@
 		var/atom/movable/A = k
 		if(!A.density)
 			continue
-		if(A.projectile_should_collide(P,new_turf,old_turf))
+		if(A.projectile_should_collide(P,new_turf,old_turf) && P.on_projectile_hit(A))
 			. |= A
 			P.penetrations_left--
 			if(P.penetrations_left <= 0)
 				return .
-
 
 	for(var/k in src.old_living)
 		var/mob/living/L = k

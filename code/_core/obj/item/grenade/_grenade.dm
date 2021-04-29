@@ -216,8 +216,8 @@
 	if(istype(loc,/obj/projectile/))
 		var/obj/projectile/P = loc
 		var/turf/T = get_turf(src)
-		P.damage_atom(T)
-		P.on_hit(T,TRUE)
+		P.on_projectile_hit(T)
+		qdel(P)
 
 	for(var/k in stored_containers)
 		var/obj/item/container/beaker/B = k

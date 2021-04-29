@@ -17,6 +17,7 @@
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
 
 	if(anchored)
+		is_moving = FALSE
 		return FALSE
 
 	var/final_move_dir = move_dir

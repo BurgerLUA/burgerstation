@@ -17,7 +17,7 @@
 /obj/projectile/magic/fireball/explosive
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/explosive/post_on_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/explosive/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 
@@ -29,16 +29,17 @@
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/lava/post_on_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 
-	var/turf/T = get_turf(hit_atom)
-	if(T)
-		var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
-		INITIALIZE(L)
-		GENERATE(L)
-		FINALIZE(L)
+	if(.)
+		var/turf/T = get_turf(hit_atom)
+		if(T)
+			var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
+			INITIALIZE(L)
+			GENERATE(L)
+			FINALIZE(L)
 
 /obj/projectile/magic/chaos
 	name = "chaos ball"
@@ -66,7 +67,7 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 /obj/projectile/magic/rift
@@ -79,7 +80,7 @@
 	name = "revival rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/revive/post_on_hit(var/atom/hit_atom)
+/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 
@@ -107,7 +108,7 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 
@@ -125,7 +126,7 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 
@@ -144,7 +145,7 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 
@@ -163,7 +164,7 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 
@@ -184,7 +185,7 @@
 		alpha = clamp(FLOOR(alpha*0.9,1),0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 

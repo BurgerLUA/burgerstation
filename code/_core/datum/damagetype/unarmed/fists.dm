@@ -145,10 +145,10 @@
 				L.add_status_effect(DISARM,5,5, source = attacker)
 				return ..()
 			else
-				luck_value *= 2
+				luck_value *= 4
 
 		if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
-			L.add_status_effect(STAGGER,attack_delay*0.5,attack_delay*0.5, source = attacker)
+			L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
 
 	return ..()
 
