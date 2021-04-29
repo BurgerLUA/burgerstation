@@ -155,6 +155,10 @@ var/global/list/obj/structure/interactive/computer/console/remote_flight/all_rem
 		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] isn't ready to launch yet!"))
 		return FALSE
 
+	if((z == 2 || z == 3) && !SSgenerator_power.station_power)
+		caller.to_chat(span("warning","\The [desired_shuttle_controller.name] does not have a source of power!"))
+		return FALSE
+
 	var/selection = input("Are you sure you wish to launch \the [desired_shuttle_controller.name]?","Shuttle Control","Cancel") as null|anything in list("Yes","No","Cancel")
 
 	INTERACT_CHECK

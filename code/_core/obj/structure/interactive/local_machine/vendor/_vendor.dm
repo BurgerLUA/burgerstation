@@ -198,6 +198,8 @@ var/global/list/equipped_antags = list()
 		V.update_owner(null)
 
 /obj/structure/interactive/vending/on_active(var/mob/living/advanced/player/P)
+	if((z == 2 || z == 3) && !SSgenerator_power.station_power)
+		return ..()
 	show_buttons_to(P)
 	return ..()
 
