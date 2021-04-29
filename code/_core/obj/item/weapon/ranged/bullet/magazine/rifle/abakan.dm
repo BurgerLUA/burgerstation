@@ -6,9 +6,11 @@
 	icon_state = "inventory"
 	value = 1750
 
-	shoot_delay = 0.75
+	shoot_delay = 1
 	burst_delay = 5
 	max_bursts = 2
+
+	firemodes = list("semi-automatic","automatic","burst")
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 

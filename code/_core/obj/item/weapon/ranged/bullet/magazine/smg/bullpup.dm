@@ -12,6 +12,8 @@
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	can_wield = FALSE
 
 	override_icon_state = TRUE

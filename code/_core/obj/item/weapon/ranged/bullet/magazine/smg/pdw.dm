@@ -11,6 +11,8 @@
 
 	shoot_delay = 1
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
 
 	override_icon_state = TRUE

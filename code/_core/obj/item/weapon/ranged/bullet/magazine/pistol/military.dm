@@ -7,7 +7,7 @@
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
-
+	firemodes = list("semi-automatic","automatic","burst")
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.5

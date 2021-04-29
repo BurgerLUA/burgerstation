@@ -8,6 +8,8 @@
 
 	value = 1800
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	heat_max = 0.02

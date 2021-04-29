@@ -6,9 +6,11 @@
 	icon_state = "inventory"
 	value = 2900
 
-	shoot_delay = 1
+	shoot_delay = 1.25
 
 	automatic = TRUE
+
+	firemodes = list("semi-automatic","automatic","burst")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 

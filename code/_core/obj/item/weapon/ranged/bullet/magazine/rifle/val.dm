@@ -8,6 +8,8 @@
 
 	shoot_delay = 1.5
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	automatic = TRUE
 
 	damage_mod = 1

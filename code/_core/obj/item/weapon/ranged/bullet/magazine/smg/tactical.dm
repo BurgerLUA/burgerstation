@@ -10,6 +10,8 @@
 
 	automatic = TRUE
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	can_wield = TRUE

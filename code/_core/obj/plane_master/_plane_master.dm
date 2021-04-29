@@ -112,15 +112,16 @@
 	. = ..()
 	//filters += filter(type="bloom",threshold="#FFFFFF",size=8,offset=2,alpha=255)
 
+	#if DM_VERSION >= 514
 	filters += filter(type="bloom",threshold="#888888",size=2,offset=0,alpha=255)
-
 	animate(filters[length(filters)],alpha=150,loop=-1,time=8)
 	animate(alpha=255,time=8)
+	#endif
 
 //HUD
 /obj/plane_master/hud
 	plane = PLANE_HUD
-	appearance_flags = PLANE_MASTER
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
 
 /obj/plane_master/hud/New(var/desired_loc)
 	. = ..()

@@ -12,6 +12,8 @@
 
 	automatic = TRUE
 
+	firemodes = list("semi-automatic","automatic")
+
 	shoot_sounds = list('sound/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
 
 	can_wield = FALSE

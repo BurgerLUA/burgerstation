@@ -9,7 +9,7 @@
 	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
 	var/current_bursts = 0 //Read only.
 	var/shoot_delay = 4 //In deciseconds
-	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts
+	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
 	var/next_shoot_time = 0
 
 	var/ranged_damage_type
@@ -62,6 +62,37 @@
 	damage_type = /damagetype/melee/club/gun_butt //Melee.
 
 	drop_sound = 'sound/items/drop/gun.ogg'
+
+	var/current_firemode = 1
+	var/list/firemodes = list(
+	)
+
+
+/obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
+	if(!length(firemodes))
+		return FALSE
+	current_firemode++
+	if(current_firemode > length(firemodes))
+		current_firemode = 1
+	on_firemode_changed(caller)
+	return TRUE
+
+/obj/item/weapon/ranged/proc/on_firemode_changed(var/mob/caller)
+	var/selected_firemode = firemodes[current_firemode]
+	switch(selected_firemode)
+		if("automatic")
+			automatic = TRUE
+			max_bursts = 0
+		if("semi-automatic")
+			automatic = FALSE
+		if("burst")
+			automatic = TRUE
+			max_bursts = initial(max_bursts)
+	caller?.to_chat(span("notice","You switch to [selected_firemode] mode."))
+	return TRUE
+
+
+
 
 
 /* Price calculation is hard.
@@ -130,6 +161,9 @@
 
 	update_attachment_stats()
 
+	if(length(firemodes))
+		on_firemode_changed()
+
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
@@ -176,7 +210,7 @@
 					caller.visible_message(span("notice","\The [caller.name] installs a firing pin into \the [src.name]."),span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
 				return TRUE
 
-	return ..()
+	. = ..()
 
 /obj/item/weapon/ranged/Generate()
 	if(!use_loyalty_tag && ispath(firing_pin))
@@ -251,6 +285,10 @@
 	return . && heat_current > 0
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(caller.attack_flags & CONTROL_MOD_ALT)
+		change_firemode(caller)
+		return TRUE
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -498,7 +536,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				else
 					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")
 			else if(max_bursts_to_use > 0)
-				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
+				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 				current_bursts = 0
 
 	update_sprite()

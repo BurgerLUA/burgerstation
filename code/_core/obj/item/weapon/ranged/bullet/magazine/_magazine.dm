@@ -95,7 +95,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(stored_magazine && !wielded && is_inventory(object) && src && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
+	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !caller.attack_flags)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
