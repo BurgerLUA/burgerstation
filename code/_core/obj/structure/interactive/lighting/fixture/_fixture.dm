@@ -37,8 +37,7 @@
 	else
 		create_destruction(T,list(/obj/item/material/sheet = 1),/material/steel)
 		. = ..()
-		if(src in SSgenerator_power.stationside_lights)
-			SSgenerator_power.stationside_lights -= src
+		SSgenerator_power.stationside_lights -= src
 		qdel(src)
 
 

@@ -320,16 +320,21 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		if(!L.dead)
 			open(L)
 
-obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/door/airlock/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
-	if(is_item(object))
-		var/obj/item/objI = object
-		if(objI.flags_tool & FLAG_TOOL_CROWBAR && door_state == DOOR_STATE_CLOSED)
-			open(caller, FALSE, TRUE)
+	if(door_state == DOOR_STATE_OPENED && allow_manual_close)
+		close(caller)
+	else if(door_state == DOOR_STATE_CLOSED && allow_manual_open)
+		if(is_item(object))
+			var/obj/item/objI = object
+			if(objI.flags_tool & FLAG_TOOL_CROWBAR)
+				open(caller, FALSE, TRUE)
+				return TRUE
+		open(caller)
 
 	return TRUE
 

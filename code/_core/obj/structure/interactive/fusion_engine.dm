@@ -15,31 +15,27 @@ No power? no doors, vendors, lights, etc.
 
 	var/stage = 4 //4 to 0, 4 is max power, 0 is no power
 	var/cooldown_time = 0 //the timer basically
-	var/add_cooldown = 300 //how many seconds are checked (5 minutes) 300
+	var/add_cooldown = 10 //how many seconds are checked (5 minutes) 300
 
-/obj/structure/interactive/fusion_generator/Finalize()
+/obj/structure/interactive/fusion_generator/Initialize()
 	. = ..()
-	start_thinking(src)
+	SSgenerator_power.linked_gen = src
 
-/obj/structure/interactive/fusion_generator/Destroy()
-	stop_thinking(src)
-	. = ..()
-
-/obj/structure/interactive/fusion_generator/think()
+/obj/structure/interactive/fusion_generator/proc/power_think()
 	if(stage <= 0)
-		return TRUE
+		return
 	if(world.time < cooldown_time)
-		return TRUE
+		return
 	cooldown_time = world.time + SECONDS_TO_DECISECONDS(add_cooldown)
 	if(prob(50)) //50 percent chance to not degrade!
-		return TRUE
+		return
 	stage--
 	icon_state = "gen_small_[stage]"
 	update_icon()
 	if(stage <= 0) //if stage is 0
 		SSgenerator_power.station_power = FALSE
 		SSgenerator_power.turn_off_lights()
-	return TRUE
+	return
 
 /obj/structure/interactive/fusion_generator/clicked_on_by_object(mob/caller, atom/object, location, control, params)
 
