@@ -101,8 +101,6 @@
 	if(desired_damage_type) damage_type = desired_damage_type
 	if(desired_penetrations_left) penetrations_left = desired_penetrations_left
 
-	world.log << "Desired pen: [desired_penetrations_left]."
-
 	damage_multiplier = desired_damage_multiplier
 
 	//This is for the target doll.
@@ -199,7 +197,6 @@
 	if(collide_length)
 		for(var/k in collide_with)
 			damage_atom(k)
-			world.log << "Hitting: [k]."
 
 		if(penetrations_left <= 0)
 			on_hit(collide_with[collide_length])

@@ -27,7 +27,7 @@
 		var/obj/hud/inventory/I = loc
 		if(is_advanced(I.owner))
 			var/mob/living/advanced/A = I.owner
-			A.update_slowdown()
+			A.update_speed()
 
 	return TRUE
 
