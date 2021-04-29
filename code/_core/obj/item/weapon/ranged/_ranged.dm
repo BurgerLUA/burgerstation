@@ -379,6 +379,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
+	var/penetrations_left = 0
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/power_to_use = 0
@@ -393,6 +394,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
+		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
 	else if(requires_bullets)
@@ -483,7 +485,28 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE - 1)
 
 		var/view_punch_time = shoot_delay
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch_to_use,view_punch_time,damage_multiplier_to_use, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
+		shoot_projectile(
+			caller,
+			object,
+			location,
+			params,
+			projectile_to_use,
+			damage_type_to_use,
+			icon_pos_x,
+			icon_pos_y,
+			accuracy_loss,
+			projectile_speed_to_use,
+			bullet_count_to_use,
+			bullet_color_to_use,
+			view_punch_to_use,
+			view_punch_time,
+			damage_multiplier_to_use,
+			istype(firing_pin) ? firing_pin.iff_tag : null,
+			loyalty_tag ? loyalty_tag : null,
+			inaccuracy_modifer_to_use,
+			get_base_spread(),
+			penetrations_left
+		)
 
 	next_shoot_time = world.time + shoot_delay_to_use
 	heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
@@ -543,7 +566,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
 	if(!target)
 		CRASH_SAFE("There is no target defined!")
@@ -612,7 +635,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
+			world.log << "Pen: [penetrations_left]."
+
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer,penetrations_left)
 			INITIALIZE(P)
 			FINALIZE(P)
 			. += P

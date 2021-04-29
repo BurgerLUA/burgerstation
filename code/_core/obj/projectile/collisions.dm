@@ -66,25 +66,27 @@
 	if(.)
 		if(P.vel_y > 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_north)
-				return old_turf
+				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_south)
-				return new_turf
+				return list(new_turf)
 		else if(P.vel_y < 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_south)
-				return old_turf
+				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_north)
-				return new_turf
+				return list(new_turf)
 		if(P.vel_x > 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_east)
-				return old_turf
+				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_west)
-				return new_turf
+				return list(new_turf)
 		else if(P.vel_x < 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_west)
-				return old_turf
+				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_east)
-				return new_turf
-		return . //Something went wrong.
+				return list(new_turf)
+		return list(src) //Weird.
+	else
+		. = list()
 
 	//Take priority of existing targets on a turf before ones that existed before.
 	for(var/k in src.contents)
@@ -92,7 +94,11 @@
 		if(!A.density)
 			continue
 		if(A.projectile_should_collide(P,new_turf,old_turf))
-			return A
+			. |= A
+			P.penetrations_left--
+			if(P.penetrations_left <= 0)
+				return .
+
 
 	for(var/k in src.old_living)
 		var/mob/living/L = k
@@ -101,9 +107,11 @@
 		if(L.mouse_opacity <= 0 || L.dead || L.move_delay <= 0 || get_dist(L,src) > 1)
 			continue
 		if(L.projectile_should_collide(P,new_turf,old_turf))
-			return L
+			. |= L
+			if(P.penetrations_left <= 0)
+				return .
 
-	return null
+	return .
 
 /obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return null

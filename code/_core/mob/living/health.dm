@@ -74,7 +74,7 @@
 	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
 	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
-	var/savage_hit = health ? damage_amount >= health.health_max*0.25 : FALSE
+	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*0.30 : FALSE
 
 	if(savage_hit)
 		total_bleed_damage *= 3
@@ -193,14 +193,14 @@
 
 	switch(best_attribute)
 		if(BLADE)
-			add_status_effect(STAGGER,5,5)
+			add_status_effect(STAGGER,10,10)
 			play_sound('sound/effects/impacts/savage_blade.ogg',T,volume=80)
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)
 				for(var/i=1,i<=rand(3,5),i++)
 					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3))
 		if(BLUNT)
-			add_status_effect(STUN,20,20)
+			add_status_effect(STAGGER,20,20)
 			play_sound('sound/effects/impacts/savage_blunt.ogg',T,volume=80)
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)
@@ -210,7 +210,7 @@
 					M.alpha = 200
 					animate(M,pixel_x=rand(-16,16),pixel_y=rand(-16,16),alpha=0,time=40,easing=QUAD_EASING|EASE_OUT)
 		if(PIERCE)
-			add_status_effect(STAGGER,10,10)
+			add_status_effect(STAGGER,5,5)
 			play_sound('sound/effects/impacts/savage_pierce.ogg',T,volume=80)
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)

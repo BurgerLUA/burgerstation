@@ -185,7 +185,7 @@
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
 
-	unattach_children(T)
+	unattach_children(T,do_delete)
 
 	if(T)
 		for(var/k in inventories)
@@ -234,7 +234,7 @@
 		if(!A.dead)
 			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
 		if(A.blood_type)
-			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) + (target_bounds_y_max - target_bounds_y_min))/(TILE_SIZE*0.25)
+			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
 				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)

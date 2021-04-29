@@ -21,6 +21,8 @@
 	size = 0.09
 	value = 10
 
+	penetrations = 2
+
 /obj/item/bullet_cartridge/sniper_127/surplus
 	name = "\improper surplus 12.7x90mm sniper round"
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_127/surplus

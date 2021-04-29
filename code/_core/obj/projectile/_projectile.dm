@@ -66,6 +66,9 @@
 
 	anchored = TRUE
 
+	var/penetrations_left = 0 //Uwu
+	var/list/projectile_blacklist = list()
+
 /obj/projectile/Destroy()
 	owner = null
 	weapon = null
@@ -75,10 +78,11 @@
 	start_turf = null
 	previous_loc = null
 	current_loc = null
+	projectile_blacklist.Cut()
 	SSprojectiles.all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
 
 	if(!desired_owner)
 		log_error("WARNING: PROJECTILE [src.get_debug_name()] DID NOT HAVE AN OWNER!")
@@ -95,6 +99,9 @@
 	if(desired_iff) iff_tag = desired_iff
 	if(desired_loyalty) loyalty_tag = desired_loyalty
 	if(desired_damage_type) damage_type = desired_damage_type
+	if(desired_penetrations_left) penetrations_left = desired_penetrations_left
+
+	world.log << "Desired pen: [desired_penetrations_left]."
 
 	damage_multiplier = desired_damage_multiplier
 
@@ -187,10 +194,16 @@
 		on_hit(new_loc,TRUE)
 		return TRUE //Always destroy.
 
-	var/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
-	if(collide_with)
-		return damage_atom(collide_with) && on_hit(collide_with)
-		//TODO: Convert on_hit return to a list to allow for penetration framework.
+	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
+	var/collide_length = length(collide_with)
+	if(collide_length)
+		for(var/k in collide_with)
+			damage_atom(k)
+			world.log << "Hitting: [k]."
+
+		if(penetrations_left <= 0)
+			on_hit(collide_with[collide_length])
+			return TRUE
 
 	return FALSE //Do not destroy.
 
@@ -229,7 +242,12 @@
 
 	return TRUE
 
-/obj/projectile/proc/damage_atom(var/atom/hit_atom) //Return true to delete the projectile
+/obj/projectile/proc/damage_atom(var/atom/hit_atom)
+
+	if(projectile_blacklist[hit_atom])
+		return FALSE
+
+	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
 
 	if(damage_type && all_damage_types[damage_type])
 
