@@ -33,7 +33,7 @@
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
 	if(!accurate && is_living(attacker) && attacker != src)
-		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier) + (evasion_rating*TILE_SIZE*0.5)
+		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier) + (evasion_rating*0.01*TILE_SIZE*0.5)
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 

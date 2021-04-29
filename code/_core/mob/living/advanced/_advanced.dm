@@ -252,7 +252,7 @@
 
 	move_delay_multiplier = .
 
-	evasion_rating = max(75,max(0,. - 0.5)*50*2)
+	evasion_rating = min(75,max(0,. - 0.5)*50*2)
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 

@@ -82,34 +82,32 @@
 		if(!src.dead)
 			src.visible_message(span("warning","\The [src.name] takes a savage hit!"),span("danger","You take a savage hit!"))
 
-	if(blood_type)
+	if(blood_type && total_bleed_damage > 0 && blood_volume > 0)
 		var/turf/T = get_turf(src)
 		var/reagent/R = REAGENT(blood_type)
 		new /obj/effect/temp/impact/blood(T,3,R.color)
-		if(total_bleed_damage)
-			if(blood_volume > 0)
-				var/offset_x = (src.x - attacker.x)
-				var/offset_y = (src.y - attacker.y)
+		var/offset_x = (src.x - attacker.x)
+		var/offset_y = (src.y - attacker.y)
 
-				if(!offset_x && !offset_y)
-					offset_x = pick(-1,1)
-					offset_y = pick(-1,1)
+		if(!offset_x && !offset_y)
+			offset_x = pick(-1,1)
+			offset_y = pick(-1,1)
 
-				var/norm_offset = max(abs(offset_x),abs(offset_y),1)
-				offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
-				offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
+		var/norm_offset = max(abs(offset_x),abs(offset_y),1)
+		offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
+		offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-				for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
-					if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
-						break
+		for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
+			if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
+				break
 
-				for(var/i=1,i<=total_bleed_damage/10,i++)
-					if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
-						break
+		for(var/i=1,i<=total_bleed_damage/10,i++)
+			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
+				break
 
-				if(health && total_bleed_damage)
-					blood_volume -= FLOOR(total_bleed_damage*0.02,1)
-					queue_health_update = TRUE
+		if(health && total_bleed_damage)
+			blood_volume -= FLOOR(total_bleed_damage*0.02,1)
+			queue_health_update = TRUE
 
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)

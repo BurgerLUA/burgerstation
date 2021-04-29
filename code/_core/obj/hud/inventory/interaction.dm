@@ -15,14 +15,9 @@
 			if(!I.is_container)
 				toggle_wield(caller,object)
 				return TRUE
-		if(isturf(object.loc) && get_dist(caller,object) <= 1)
-			if(is_living(object))
-				var/mob/living/L = object
-				if(!L.add_status_effect(GRAB, source = caller))
-					caller.to_chat(span("warning","\The [object.name] is too strong to be grabbed!"))
-					return TRUE
-			SPAM_CHECK(5)
-			grab_object(caller,object,location,control,params)
+		if(is_organ(src.loc) && isturf(object.loc) && get_dist(caller,object) <= 1)
+			var/obj/item/organ/O = src.loc
+			O.attack(caller,object,params,damage_type_override=/damagetype/unarmed/fists/grab)
 			return TRUE
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_ALT && ismovable(object)) //Alt clicking wtih an empty hand.

@@ -9,10 +9,16 @@
 
 /mob/living/advanced/npc/proc/can_talk_to(var/mob/caller)
 
-	if(!is_living(caller))
+	if(!dialogue_id)
+		return FALSE
+
+	if(!is_player(caller))
 		return FALSE
 
 	var/mob/living/L = caller
+
+	if(L.intent != INTENT_HELP)
+		return FALSE
 
 	if(L.loyalty_tag != src.loyalty_tag)
 		return FALSE
@@ -28,7 +34,7 @@
 
 /mob/living/advanced/npc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(dialogue_id && is_player(caller) && can_talk_to(caller))
+	if(can_talk_to(caller))
 		///Interact check isn't here because INTERACT_CHECK covers most of it and can_talk_to handles distance checks.
 		var/mob/living/advanced/player/P = caller
 		P.dialogue_target = src
