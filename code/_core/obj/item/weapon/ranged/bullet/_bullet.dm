@@ -31,7 +31,7 @@
 /* Price calculation is hard.
 /obj/item/weapon/ranged/bullet/get_damage_price()
 
-	var/obj/item/bullet_cartridge/B = SSweapons.weapon_to_bullet[src.type]
+	var/obj/item/bullet_cartridge/B = SSbalance.weapon_to_bullet[src.type]
 	if(!B)
 		return 0
 

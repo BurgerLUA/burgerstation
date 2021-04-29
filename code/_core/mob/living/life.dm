@@ -7,6 +7,8 @@
 	if(dead)
 		return FALSE
 
+	is_moving = FALSE
+
 	if(boss)
 		SSbosses.living_bosses -= src
 
@@ -85,6 +87,10 @@
 
 	if(one_time_life)
 		dust()
+
+	if(drops_gold > 0)
+		create_gold_drop(T,CEILING(drops_gold,1))
+		drops_gold = 0
 
 	return TRUE
 

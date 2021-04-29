@@ -14,6 +14,8 @@
 
 	automatic = TRUE
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	can_wield = TRUE
@@ -92,7 +94,7 @@
 
 	heat_max = 0.02
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
+
 
 	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 19 - 16

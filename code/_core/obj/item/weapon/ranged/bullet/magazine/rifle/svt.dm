@@ -2,7 +2,7 @@
 	name = "\improper 7.62x54mmR SVT-40"
 	desc = "URAAAAAAAAAAA!"
 	desc_extended = "The SVT-40 is a Russian Rifle most well known for killing Nazis. Now you too can carry that legacy in your hands!"
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_svt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_old.dmi'
 	icon_state = "inventory"
 	value = 800
 
@@ -63,7 +63,7 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1

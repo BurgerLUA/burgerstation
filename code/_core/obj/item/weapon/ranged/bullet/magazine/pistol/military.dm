@@ -7,7 +7,7 @@
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
-
+	firemodes = list("semi-automatic","automatic","burst")
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.5
@@ -60,7 +60,7 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread()
@@ -97,7 +97,7 @@
 
 	attachment_whitelist = list()
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread()
 	return 0
@@ -113,4 +113,3 @@
 	desc_extended = "A security grade pistol chambered in 9mm. This one has been modifed with a new lighrweight frame and paintjob."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen

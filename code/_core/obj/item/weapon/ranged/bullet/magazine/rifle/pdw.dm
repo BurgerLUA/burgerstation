@@ -12,6 +12,8 @@
 
 	damage_mod = 1
 
+	firemodes = list("semi-automatic","automatic")
+
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
 	can_wield = TRUE

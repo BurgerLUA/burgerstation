@@ -43,7 +43,7 @@
 
 	has_footprints = TRUE
 
-	var/slowdown_mul = 1
+	var/move_delay_multiplier = 1
 
 	var/has_hard_crit = FALSE
 
@@ -109,6 +109,8 @@
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 	var/list/inventory_defers = list() //inventory ref to button
+
+	var/evasion_rating = 0
 
 /mob/living/advanced/Destroy()
 
@@ -217,7 +219,7 @@
 		if(holster && holster_item && holster_item.dan_mode)
 			holster.update_held_icon(holster_item)
 
-/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
+/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_speed=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
 	if(qdeleting) //Bandaid fix.
 		return FALSE
@@ -225,8 +227,8 @@
 	if(!force && !finalized)
 		return FALSE //Don't want to call this too much during initializations.
 
-	if(should_update_slowdown)
-		update_slowdown()
+	if(should_update_speed) //Weight too.
+		update_speed()
 	if(should_update_eyes)
 		update_eyes()
 	if(should_update_protection)
@@ -236,16 +238,21 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/update_slowdown()
+/mob/living/advanced/proc/update_speed()
 
-	. = 1
+	var/max_weight = 50 + get_attribute_power(ATTRIBUTE_ENDURANCE)*450
+
+	. = 1 //The lower the value, the faster you are.
 
 	for(var/obj/item/clothing/C in worn_objects)
 		. -= C.speed_bonus
+		. += C.weight * (1/max_weight)
 
-	. = FLOOR(.,0.01)
+	. = FLOOR(max(0.25,.),0.01)
 
-	slowdown_mul = .
+	move_delay_multiplier = .
+
+	evasion_rating = min(75,max(0,. - 0.5)*50*2)
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 

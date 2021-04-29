@@ -16,8 +16,6 @@
 
 	genderless = TRUE
 
-	flags_species_traits = TRAIT_NO_PAIN
-
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/diona,
 		BODY_HEAD = /obj/item/organ/head/diona,

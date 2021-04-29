@@ -20,7 +20,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_save_deathbox,
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
-	/client/verb/view_dps
+	/client/verb/view_dps,
+	/client/verb/test_ranged_weapons
 )
 
 /client/verb/view_dps()
@@ -442,3 +443,19 @@ client/verb/air_test(var/pressure as num)
 	set name = "Force Save Banks"
 	set category = "Debug"
 	save_banks()
+
+
+/client/verb/test_ranged_weapons()
+	set name = "Test Ranged Weapons"
+	set category = "Debug"
+
+	var/turf/T = get_turf(mob)
+
+	for(var/k in subtypesof(/obj/item/weapon/ranged))
+		var/obj/item/weapon/ranged/R = k
+		if(initial(R.value) <= 0)
+			continue
+		R = new R(T)
+		INITIALIZE(R)
+		GENERATE(R)
+		FINALIZE(R)

@@ -27,6 +27,8 @@
 
 	damage_coefficient = 0.75
 
+	gib_icon_state = "gibleg"
+
 	has_pain = TRUE
 
 /obj/item/organ/leg/left

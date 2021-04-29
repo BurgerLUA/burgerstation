@@ -2,13 +2,15 @@
 	name = "\improper 5.56mm BP-SOL"
 	desc = "A taste of SOL weaponry."
 	desc_extended = "An older version of a carbine. Despite its age, many PMCs consider this carbine superior as it doesn't have any firerate limiters, allowing it to fire 600 rounds per second. Kicks like a mule, though."
-	icon = 'icons/obj/item/weapons/ranged/rifle/556_carbine.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/556.dmi'
 	icon_state = "inventory"
 	value = 2900
 
-	shoot_delay = 1
+	shoot_delay = 1.25
 
 	automatic = TRUE
+
+	firemodes = list("semi-automatic","automatic","burst")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
@@ -61,7 +63,7 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25

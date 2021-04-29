@@ -61,7 +61,7 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 12 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread()
 	return 0.005

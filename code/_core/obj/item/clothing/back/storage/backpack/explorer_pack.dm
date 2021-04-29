@@ -56,7 +56,7 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/implanter/od_purge(src)
 
 	//1 Weapon
-	new /obj/item/weapon/ranged/bullet/magazine/rifle/abakan(src)
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/an94(src)
 
 	//7 mags
 	new /obj/item/magazine/rifle_545(src)
@@ -66,39 +66,6 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/magazine/rifle_545(src)
 	new /obj/item/magazine/rifle_545(src)
 	new /obj/item/magazine/rifle_545(src)
-
-	//1 Vodka
-	new /obj/item/container/beaker/alcohol/vodka(src)
-
-	return ..()
-
-
-/obj/item/clothing/back/storage/backpack/explorer/sniper
-	name = "sniper explorer's pack"
-	icon = 'icons/obj/item/clothing/back/backpack/explorer_pack_sniper.dmi'
-
-
-/obj/item/clothing/back/storage/backpack/explorer/sniper/fill_inventory()
-	//7 Combat shit
-	new /obj/item/grenade/landmine/proximity/explosive(src)
-	new /obj/item/grenade/landmine/proximity/explosive(src)
-	new /obj/item/grenade/landmine/proximity/explosive(src)
-	new /obj/item/grenade/landmine/proximity/explosive(src)
-	new /obj/item/deployable/barricade/filled(src)
-	new /obj/item/storage/kit/filled(src)
-	new /obj/item/supply_crate/russian(src)
-
-	//1 Weapon
-	new /obj/item/weapon/ranged/bullet/magazine/rifle/svd(src)
-
-	//7 mags
-	new /obj/item/magazine/rifle_762_long(src)
-	new /obj/item/magazine/rifle_762_long(src)
-	new /obj/item/magazine/rifle_762_long(src)
-	new /obj/item/magazine/rifle_762_long(src)
-	new /obj/item/magazine/rifle_762_long(src)
-	new /obj/item/magazine/rifle_762_long(src)
-	new /obj/item/magazine/rifle_762_long(src)
 
 	//1 Vodka
 	new /obj/item/container/beaker/alcohol/vodka(src)

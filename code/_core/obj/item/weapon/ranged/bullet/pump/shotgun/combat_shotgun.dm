@@ -54,7 +54,7 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25

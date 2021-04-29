@@ -56,7 +56,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread()
 	return 0.001
@@ -64,7 +64,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)) )
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
+/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold
 	name = ".50 Gold Eagle"
 	desc = "Now in gold!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
@@ -74,8 +74,8 @@
 	value_burgerbux = 1
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night
-	name = ".50 Night Eagle"
+/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
+	name = ".50 Eagle MOD"
 	desc = "Badass!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is painted black and upgraded with high quality parts."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_black.dmi'
@@ -83,11 +83,11 @@
 
 	shoot_delay = 4
 
-	heat_max = 0.15
+	heat_max = 0.1
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night/equipped/Generate()
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod/equipped/Generate()
 
 	. = ..()
 

@@ -2,7 +2,7 @@
 	name = "\improper 2x12mm Experimental Gauss Gun"
 	desc = "We thank you, oh Monolith, for revealing the cunning plans of your enemies to us. May your light shine down on the souls of the brave soldiers who gave their lives in service to your will."
 	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the russian facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
-	icon = 'icons/obj/item/weapons/ranged/rifle/gauss_gun.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss.dmi'
 	icon_state = "inventory"
 	value = 5000
 
@@ -45,7 +45,7 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 2

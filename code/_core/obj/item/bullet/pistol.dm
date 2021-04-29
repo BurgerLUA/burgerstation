@@ -37,6 +37,8 @@
 	size = 0.02
 	value = 2
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_50
 	name = "\improper .50 pistol cartridge"
 	desc = "The cool kids use this."
@@ -75,6 +77,8 @@
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_50/ap
 
 	value = 2.6
+
+	penetrations = 1
 
 /obj/item/bullet_cartridge/pistol_50/heartbreaker
 	name = "\improper heartbreaker .50 pistol cartridge"
@@ -124,6 +128,8 @@
 
 	value = 2.4
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
 	desc = "The average bullet for the average shooter."
@@ -162,6 +168,8 @@
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm/ap
 
 	value = 1.8
+
+	penetrations = 1
 
 /obj/item/bullet_cartridge/pistol_4mm/
 	name = "\improper 4.6x30mm smg cartridge"
@@ -210,6 +218,8 @@
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ap
 
 	value = 0.5
+
+	penetrations = 1
 
 /obj/item/bullet_cartridge/pistol_4mm/incendiary
 	name = "\improper incendiary 4.6x30mm smg cartridge"
@@ -276,6 +286,8 @@
 
 	value = 2
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_40/tranq
 	name = "\improper tranq .40 pistol cartridge"
 	desc = "Different than 9mm!"
@@ -337,6 +349,8 @@
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_45/ap
 
 	value = 1.5
+
+	penetrations = 1
 
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
 	name = "\improper 8mm pistol bullet"

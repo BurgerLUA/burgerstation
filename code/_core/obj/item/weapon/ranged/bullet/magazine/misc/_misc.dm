@@ -8,7 +8,7 @@
 	name = "\improper Sentry Gun"
 	desc = ""
 	desc_extended = ""
-	icon = 'icons/obj/item/weapons/ranged/rifle/minigun.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/minigun.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 3
@@ -40,7 +40,7 @@
 
 	attachment_whitelist = list()
 
-	firing_pin = /obj/item/firing_pin/electronic
+
 
 	value = -1
 

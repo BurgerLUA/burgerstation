@@ -15,10 +15,10 @@
 		if(reagents.volume_current <= 0)
 			qdel(src)
 
-/obj/projectile/spray/post_on_hit(var/atom/hit_atom)
-	if(reagents.volume_current)
-		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
+/obj/projectile/spray/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
+	if(. && reagents.volume_current)
+		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
 
 /obj/projectile/spray/update_projectile(var/tick_rate=1)
 	. = ..()
@@ -28,7 +28,7 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE
 
 
@@ -50,10 +50,11 @@
 		if(reagents.volume_current <= 0)
 			qdel(src)
 
-/obj/projectile/extinguisher_spray/post_on_hit(var/atom/hit_atom)
-	if(reagents.volume_current)
-		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
+/obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
+	if(. && reagents.volume_current)
+		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
+
 
 /obj/projectile/extinguisher_spray/update_projectile(var/tick_rate=1)
 	. = ..()
@@ -63,5 +64,5 @@
 		alpha = clamp(reagents.volume_current*20,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
 			return FALSE

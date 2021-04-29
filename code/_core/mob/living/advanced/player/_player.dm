@@ -91,8 +91,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/ai_steps = 0 //Determining when the AI activates.
 
-	damage_received_multiplier = 0.75
-
 	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
 
 	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.

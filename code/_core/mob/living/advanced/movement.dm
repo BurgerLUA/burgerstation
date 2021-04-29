@@ -41,7 +41,7 @@ mob/living/advanced/get_movement_delay()
 		stamina_mul = clamp(0.75 + ((health.stamina_current + pain_bonus)/health.stamina_max),0.75,1)
 		pain_mul = clamp(0.1 + (1 - ((health.get_loss(PAIN) - pain_bonus)/health.health_max))*0.9,0.1,1)
 
-	. *= slowdown_mul * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
+	. *= move_delay_multiplier * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
 
 /mob/living/advanced/toggle_sneak(var/on = TRUE)
 

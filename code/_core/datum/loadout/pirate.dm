@@ -1,12 +1,4 @@
-/loadout/pirate/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		if(R.firing_pin)
-			R.firing_pin = /obj/item/firing_pin/electronic/iff/bone
-
-	return ..()
-
+/loadout/pirate/
 
 /loadout/pirate/captain
 	spawning_items = list(

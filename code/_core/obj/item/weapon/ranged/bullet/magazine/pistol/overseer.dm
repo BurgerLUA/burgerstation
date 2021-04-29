@@ -69,8 +69,8 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype
-	name = "\improper 12.7mm Prototype High-Power Auto"
+/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod
+	name = "\improper 12.7mm High-Power Auto MOD"
 	desc = "The \"Auto\" is for semiauto."
 	desc_extended = "A prototype of the High-Power Auto commonly seen in the hands of NanoTrasen commanders. This variant is made with higher quality parts and is commonly used by mercenaries."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt_proto.dmi'
@@ -114,9 +114,9 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype/equipped/Generate()
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod/silenced/Generate()
 
 	. = ..()
 

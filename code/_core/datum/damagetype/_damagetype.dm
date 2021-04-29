@@ -524,14 +524,6 @@
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
 
-	if(draw_blood && is_living(victim))
-		var/mob/living/L = victim
-		if(L.blood_type)
-			var/reagent/R = REAGENT(L.blood_type)
-			new /obj/effect/temp/impact/blood(get_turf(victim),3,R.color)
-
-	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
-
 	if(victim.health && victim.health.health_max && ismovable(victim))
 		var/atom/movable/A = victim
 		if(A.anchored)

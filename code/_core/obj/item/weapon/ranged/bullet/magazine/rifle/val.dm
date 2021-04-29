@@ -2,11 +2,13 @@
 	name = "\improper 9x39mm AS Val"
 	desc = "The last thing you'll never hear."
 	desc_extended = "A modified version of the silent Vintorez sniper rifle, the assault rifle was designed as a special forces weapon."
-	icon = 'icons/obj/item/weapons/ranged/rifle/939_val.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_rifle.dmi'
 	icon_state = "inventory"
 	value = 2000
 
 	shoot_delay = 1.5
+
+	firemodes = list("semi-automatic","automatic","burst")
 
 	automatic = TRUE
 
@@ -52,7 +54,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75

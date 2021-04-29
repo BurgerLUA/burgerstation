@@ -42,6 +42,8 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
+	gib_icon_state = "gibarm"
+
 /obj/item/organ/hand/on_pain()
 
 	. = ..()

@@ -94,6 +94,7 @@
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
+		/obj/item/clothing/belt/bandolier/shotgun_20,
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
@@ -125,6 +126,7 @@
 /obj/structure/interactive/vending/syndicate/prize/rev
 	stored_types = list(
 		/obj/item/clothing/back/storage/backpack/explorer,
+		/obj/item/clothing/belt/bandolier/shotgun_23,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
@@ -167,20 +169,20 @@
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
 
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
+		/obj/item/magazine/rifle_762_short,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/short,
 		/obj/item/magazine/rifle_762_short,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/magazine/gauss_gun,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
-		/obj/item/magazine/rifle_762_long,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
@@ -205,7 +207,6 @@
 		/obj/item/weapon/ranged/bullet/revolver/gm94,
 		/obj/item/storage/ammo/grenade_40mm,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
-		/obj/item/magazine/lmg_545,
-		/obj/item/magazine/lmg_545/ap
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
+		/obj/item/magazine/lmg_762_r
 	)

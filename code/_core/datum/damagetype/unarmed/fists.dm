@@ -78,7 +78,7 @@
 
 	cqc_tag = "1"
 
-	allow_friendly_fire = FALSE
+	allow_friendly_fire = TRUE
 
 	attack_delay = 10*0.5
 	attack_delay_max = 10
@@ -123,10 +123,14 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = 10
-	attack_delay_max = 10
+	allow_friendly_fire = TRUE
+
+	attack_delay = 12
+	attack_delay_max = 15
 
 	cqc_tag = "2"
+
+	draw_blood = FALSE
 
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -136,12 +140,15 @@
 		var/luck_value = (total_damage_dealt/15)*100
 
 		if(is_living(attacker))
-			if(luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
+			var/mob/living/A = attacker
+			if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
 				L.add_status_effect(DISARM,5,5, source = attacker)
 				return ..()
+			else
+				luck_value *= 4
 
 		if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
-			L.add_status_effect(STAGGER,1,1, source = attacker)
+			L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
 
 	return ..()
 
@@ -183,10 +190,14 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
+	allow_friendly_fire = TRUE
+
 	cqc_tag = "3"
 
 	attack_delay = 10
 	attack_delay_max = 10
+
+	draw_blood = FALSE
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 

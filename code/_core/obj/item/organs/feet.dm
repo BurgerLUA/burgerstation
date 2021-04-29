@@ -31,6 +31,8 @@
 
 	has_pain = TRUE
 
+	gib_icon_state = "gibleg"
+
 /obj/item/organ/foot/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
 

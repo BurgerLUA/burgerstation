@@ -2,13 +2,15 @@
 	name = "\improper 5.56mm MGS-5 Assault Rifle"
 	desc = "It can't be."
 	desc_extended = "A very tactical semi automatic assault rifle used primarily by serious mercenaries that rivals NanoTrasen's SA-AR."
-	icon = 'icons/obj/item/weapons/ranged/rifle/merc.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/merc.dmi'
 	icon_state = "inventory"
 	value = 3500
 
 	shoot_delay = 1
 
 	automatic = FALSE
+
+	firemodes = list("semi-automatic","automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
@@ -64,7 +66,7 @@
 
 	dan_mode = TRUE
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5

@@ -25,7 +25,3 @@
 #define SPECIES_ZOMBIE 0x200
 #define SPECIES_GOBLIN 0x400
 #define SPECIES_MOTH 0x800
-
-#define TRAIT_NONE 0x0
-#define TRAIT_NO_PAIN 0x1
-#define TRAIT_NO_BLOOD 0x2

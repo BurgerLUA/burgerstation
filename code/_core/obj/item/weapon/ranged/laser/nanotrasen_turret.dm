@@ -25,7 +25,7 @@
 
 	battery = /obj/item/powercell/recharging
 
-	firing_pin = /obj/item/firing_pin/electronic
+
 
 	bullet_color = "#FF0000"
 

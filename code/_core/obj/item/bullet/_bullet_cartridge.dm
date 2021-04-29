@@ -26,6 +26,7 @@
 	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 	var/bullet_color //The bullet color of the projectile.
 	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/penetrations = 0 //How many additional penetrations this bullet is allowed.
 
 	var/caseless = FALSE
 

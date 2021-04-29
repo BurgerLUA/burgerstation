@@ -403,24 +403,27 @@
 	return TRUE
 
 
-/obj/hud/inventory/proc/drop_objects(var/turf/T,var/exclude_soulbound=FALSE)
-	var/list/dropped_objects = list()
+/obj/hud/inventory/proc/drop_objects(var/turf/T)
+
+	. = list()
+
 	for(var/k in contents)
 		var/obj/item/I = k
-		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
-			continue
 		if(remove_object(I,T))
-			dropped_objects += I
-
-	return dropped_objects
+			. += I
 
 /obj/hud/inventory/proc/delete_objects()
+	var/turf/T = get_turf(src)
 	for(var/k in contents)
 		var/obj/item/I = k
 		I.delete_on_drop = TRUE
-		remove_object(I,owner.loc)
+		remove_object(I,T)
 
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
+
+	if(!I)
+		log_error("Error: Tried to remove null object from an inventory!")
+		return null
 
 	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
 	I.pixel_x = pixel_x_offset
@@ -428,24 +431,24 @@
 
 	update_stats()
 
-	if(owner && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(worn && is_wings(I))
-			A.remove_overlay("wings_behind")
-			A.remove_overlay("wings_front")
-			A.remove_overlay("wings_side")
-		else
-			A.remove_overlay("\ref[I]")
-
-	if(owner && !owner.qdeleting)
-		I.set_dir(owner.dir)
+	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(worn)
-				A.worn_objects -= I
+			if(worn && is_wings(I))
+				A.remove_overlay("wings_behind")
+				A.remove_overlay("wings_front")
+				A.remove_overlay("wings_side")
 			else
-				A.held_objects -= I
-			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+				A.remove_overlay("\ref[I]")
+
+			if(!A.qdeleting)
+				if(worn)
+					A.worn_objects -= I
+				else
+					A.held_objects -= I
+				A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+
+		I.set_dir(owner.dir)
 
 	vis_contents -= I
 

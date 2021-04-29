@@ -66,6 +66,9 @@
 
 	anchored = TRUE
 
+	var/penetrations_left = 0 //Uwu
+	var/list/projectile_blacklist = list()
+
 /obj/projectile/Destroy()
 	owner = null
 	weapon = null
@@ -75,10 +78,11 @@
 	start_turf = null
 	previous_loc = null
 	current_loc = null
+	projectile_blacklist.Cut()
 	SSprojectiles.all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
 
 	if(!desired_owner)
 		log_error("WARNING: PROJECTILE [src.get_debug_name()] DID NOT HAVE AN OWNER!")
@@ -95,6 +99,7 @@
 	if(desired_iff) iff_tag = desired_iff
 	if(desired_loyalty) loyalty_tag = desired_loyalty
 	if(desired_damage_type) damage_type = desired_damage_type
+	if(desired_penetrations_left) penetrations_left = desired_penetrations_left
 
 	damage_multiplier = desired_damage_multiplier
 
@@ -160,44 +165,39 @@
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
 	if(!new_loc)
-		damage_atom(src.loc)
-		on_hit(src.loc,TRUE)
+		on_projectile_hit(src.loc)
 		log_error("Warning: Projectile didn't have a new loc.")
 		return TRUE //Always destroy.
 
 	if(!old_loc)
-		damage_atom(src.loc)
-		on_hit(src.loc,TRUE)
+		on_projectile_hit(src.loc)
 		log_error("Warning: Projectile didn't have an old loc.")
 		return TRUE //Always destroy.
 
 	if(!isturf(old_loc))
-		damage_atom(old_loc)
-		on_hit(old_loc,TRUE)
+		on_projectile_hit(old_loc)
 		log_error("Warning: Projectile didn't have a valid old loc.")
 		return TRUE //Always destroy.
 
 	if(hit_target_turf && new_loc == target_turf)
-		damage_atom(new_loc)
-		on_hit(new_loc)
+		on_projectile_hit(new_loc)
 		return TRUE //Always destroy.
 
 	if(steps_allowed && steps_allowed <= steps_current)
-		damage_atom(new_loc)
-		on_hit(new_loc,TRUE)
+		on_projectile_hit(new_loc)
 		return TRUE //Always destroy.
 
-	var/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
-	if(collide_with)
-		return damage_atom(collide_with) && on_hit(collide_with)
-		//TODO: Convert on_hit return to a list to allow for penetration framework.
+	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
+	if(length(collide_with) && penetrations_left <= 0)
+		qdel(src)
+		return TRUE
 
 	return FALSE //Do not destroy.
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
 	if(!isturf(src.loc) || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
-		on_hit(current_loc ? current_loc : src.loc,TRUE)
+		on_projectile_hit(current_loc ? current_loc : src.loc)
 		return FALSE
 
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
@@ -220,16 +220,18 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-	//pixel_x = pixel_x_float
-	//pixel_y = pixel_y_float
-
 	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
 	return TRUE
 
-/obj/projectile/proc/damage_atom(var/atom/hit_atom) //Return true to delete the projectile
+/obj/projectile/on_projectile_hit(var/atom/hit_atom)
+
+	if(projectile_blacklist[hit_atom])
+		return FALSE
+
+	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
 
 	if(damage_type && all_damage_types[damage_type])
 
@@ -264,15 +266,6 @@
 			DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
-
-	return TRUE
-
-/obj/projectile/proc/on_hit(var/atom/hit_atom)
-	post_on_hit(hit_atom)
-	qdel(src)
-	return TRUE
-
-/obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 
 	if(impact_effect_turf && isturf(hit_atom))
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)

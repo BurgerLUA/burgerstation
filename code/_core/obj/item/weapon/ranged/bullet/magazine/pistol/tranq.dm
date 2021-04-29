@@ -33,7 +33,7 @@
 
 	shoot_alert = ALERT_LEVEL_NONE
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tranq/get_static_spread()
 	return 0

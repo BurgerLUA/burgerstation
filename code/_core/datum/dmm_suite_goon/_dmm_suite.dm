@@ -16,8 +16,6 @@ Both:
 	had a reason to go with map comments, right?
 */
 
-//#define DIAG(X) world << {"<span style="color:red">[__FILE__]:[__LINE__]:: [X]</span>"};
-
 //client/Center() world.Reboot()
 
 //-- Preprocessor --------------------------------------------------------------

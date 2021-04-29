@@ -12,6 +12,8 @@
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	can_wield = FALSE
 
 	override_icon_state = TRUE
@@ -61,7 +63,7 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0

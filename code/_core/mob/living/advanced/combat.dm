@@ -1,16 +1,3 @@
-
-
-
-/mob/living/advanced/send_pain(var/pain_strength=50)
-
-	var/species/S = SPECIES(species)
-
-	if(S.flags_species_traits & TRAIT_NO_PAIN)
-		return FALSE
-
-	return ..()
-
-
 /mob/living/advanced/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(driving)
@@ -47,6 +34,9 @@
 
 	if(!accurate && is_living(attacker) && attacker != src)
 		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
+		if(src.is_moving)
+			inaccuracy += (evasion_rating*0.01*TILE_SIZE*0.5)
+
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
