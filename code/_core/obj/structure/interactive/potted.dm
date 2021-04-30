@@ -8,8 +8,6 @@ obj/structure/interactive/potted_plant
 
 	pixel_y = 8
 
-	plane = PLANE_SCENERY
-
 obj/structure/interactive/potted_plant/nanotrasen
 	icon_state = "nt_1"
 

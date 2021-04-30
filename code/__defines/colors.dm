@@ -100,4 +100,5 @@
 
 
 
-#define COLOR_LIGHT "#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT "#E8E8CE" //"#DBD4D4" //"#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT_BULB "#F8F4C6"

@@ -5,6 +5,8 @@
 
 	icon = 'icons/obj/structure/light_tube.dmi'
 
+	color = COLOR_LIGHT
+
 	desired_light_power = 0.5
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
@@ -52,9 +54,9 @@
 	desired_light_range = VIEW_RANGE*0.6
 
 /obj/structure/interactive/lighting/fixture/tube/station/strong
-	desired_light_power = 0.80
-	desired_light_range = VIEW_RANGE*0.7
+	desired_light_power = 0.75
+	desired_light_range = VIEW_RANGE*0.8
 
 /obj/structure/interactive/lighting/fixture/tube/station/stronger
-	desired_light_power = 0.85
-	desired_light_range = VIEW_RANGE*0.8
+	desired_light_power = 0.75
+	desired_light_range = VIEW_RANGE*9

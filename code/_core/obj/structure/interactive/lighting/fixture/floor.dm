@@ -5,6 +5,8 @@
 
 	icon = 'icons/obj/structure/light_floor.dmi'
 
+	color = COLOR_LIGHT_BULB
+
 	desired_light_power = 0.25
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon

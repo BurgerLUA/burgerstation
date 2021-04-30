@@ -167,25 +167,30 @@
 	if(!new_loc)
 		on_projectile_hit(src.loc)
 		log_error("Warning: Projectile didn't have a new loc.")
-		return TRUE //Always destroy.
+		qdel(src)
+		return TRUE
 
 	if(!old_loc)
 		on_projectile_hit(src.loc)
 		log_error("Warning: Projectile didn't have an old loc.")
-		return TRUE //Always destroy.
+		qdel(src)
+		return TRUE
 
 	if(!isturf(old_loc))
 		on_projectile_hit(old_loc)
 		log_error("Warning: Projectile didn't have a valid old loc.")
-		return TRUE //Always destroy.
+		qdel(src)
+		return TRUE
 
 	if(hit_target_turf && new_loc == target_turf)
 		on_projectile_hit(new_loc)
-		return TRUE //Always destroy.
+		qdel(src)
+		return TRUE
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc)
-		return TRUE //Always destroy.
+		qdel(src)
+		return TRUE
 
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	if(length(collide_with) && penetrations_left <= 0)
