@@ -17,7 +17,7 @@
 
 	pixel_offset_x = 8
 	layer = LAYER_MOB_ABOVE
-	plane = PLANE_MOB
+	plane = PLANE_EFFECT
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

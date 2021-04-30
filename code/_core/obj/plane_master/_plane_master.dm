@@ -35,7 +35,7 @@
 
 /obj/plane_master/walls/New(var/desired_loc)
 	. = ..()
-	filters += filter(type="drop_shadow", x=0, y=-4, size=2, offset=0, color=rgb(0,0,0))
+	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0,200))
 
 //MOBS
 /obj/plane_master/mobs
@@ -44,18 +44,17 @@
 /obj/plane_master/mobs/New(var/desired_loc)
 	. = ..()
 	filters += filter(type="drop_shadow", x=0, y=2, size=1, offset=0, color=rgb(200,200,200,120))
-	filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,225))
+	filters += filter(type="drop_shadow", x=0, y=-1, size=4, offset=0, color=rgb(0,0,0,200))
 
 
 //DARKNESS
 /obj/plane_master/darkness
-	plane = PLANE_DARKNESS
-	mouse_opacity = 0
-	blend_mode = BLEND_MULTIPLY
+	plane = 0
 
 /obj/plane_master/darkness/New(var/desired_loc)
 	. = ..()
-	//filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=rgb(0,0,0))
+	//filters += filter(type="drop_shadow", x=0, y=0, size=8, offset=1, color=rgb(0,0,0,255))
+
 
 //Objects
 /obj/plane_master/objs
@@ -64,7 +63,7 @@
 
 /obj/plane_master/objs/New(var/desired_loc)
 	. = ..()
-	filters += filter(type="drop_shadow", x=0, y=-1, size=1, offset=0, color=rgb(0,0,0))
+	filters += filter(type="drop_shadow", x=0, y=-2, size=2, offset=0, color=rgb(0,0,0))
 
 //SHUTTLE
 /obj/plane_master/shuttle

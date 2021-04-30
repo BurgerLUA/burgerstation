@@ -41,8 +41,8 @@
 
 
 /obj/structure/interactive/lighting/fixture/Finalize()
-	update_sprite()
 	update_atom_light()
+	update_sprite()
 	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_atom_light()
@@ -68,16 +68,13 @@
 	add_underlay(IS)
 
 /obj/structure/interactive/lighting/fixture/update_overlays()
-
 	. = ..()
-
 	if(on && light_color && light_range > 0 && light_power > 0)
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
-		IS.plane = PLANE_LIGHTING
+		IS.plane = PLANE_EFFECT_LIGHTING
 		IS.layer = 99
 		IS.color = desired_light_color
 		IS.alpha = 255*(light_power/1)
 		add_overlay(IS)
 
-	
