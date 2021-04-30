@@ -13,9 +13,11 @@ No power? no doors, vendors, lights, etc.
 	density = TRUE
 	anchored = TRUE
 
+	collision_flags = FLAG_COLLISION_WALL
+
 	var/stage = 4 //4 to 0, 4 is max power, 0 is no power
 	var/cooldown_time = 0 //the timer basically
-	var/add_cooldown = 10 //how many seconds are checked (5 minutes) 300
+	var/add_cooldown = 300 //how many seconds are checked (5 minutes) 300
 
 /obj/structure/interactive/fusion_generator/Initialize()
 	. = ..()

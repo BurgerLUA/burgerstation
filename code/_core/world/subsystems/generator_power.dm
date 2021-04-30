@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(generator_power)
     var/station_power = TRUE
     var/obj/structure/interactive/fusion_generator/linked_gen
 
-    tick_rate = SECONDS_TO_TICKS(10) //we check every minute, but the gens are 5 minutes
+    tick_rate = SECONDS_TO_TICKS(60) //we check every minute, but the gens are 5 minutes
 
 /subsystem/generator_power/on_life()
     linked_gen.power_think()
