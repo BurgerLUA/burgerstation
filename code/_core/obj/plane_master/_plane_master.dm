@@ -53,7 +53,12 @@
 
 /obj/plane_master/darkness/New(var/desired_loc)
 	. = ..()
-	//filters += filter(type="drop_shadow", x=0, y=0, size=8, offset=1, color=rgb(0,0,0,255))
+	var/darkness_size = 2
+	filters += filter(type="radial_blur", size=0.05)
+	filters += filter(type="drop_shadow", x=darkness_size, y=0, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
+	filters += filter(type="drop_shadow", x=0, y=darkness_size, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
+	filters += filter(type="drop_shadow", x=-darkness_size, y=0, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
+	filters += filter(type="drop_shadow", x=0, y=-darkness_size, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
 
 
 //Objects
