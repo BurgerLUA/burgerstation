@@ -26,6 +26,8 @@
 
 	density = TRUE
 
+	var/no_queue = FALSE
+
 /obj/structure/smooth/window/update_overlays()
 	. = ..()
 	if(health)
@@ -37,10 +39,18 @@
 /obj/structure/smooth/window/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 	. = ..()
+	if(damage)
+		no_queue = TRUE
+		for(var/k in list(NORTH,EAST,SOUTH,WEST))
+			var/turf/T = get_step(src,k)
+			for(var/obj/structure/smooth/window/W in T.contents)
+				on_destruction(caller,TRUE)
+
 	qdel(src)
 
 /obj/structure/smooth/window/Destroy()
-	queue_update_smooth_edges(src,include_self = FALSE)
+	if(!no_queue)
+		queue_update_smooth_edges(src,include_self = FALSE)
 	return ..()
 
 /obj/structure/smooth/window/reinforced
