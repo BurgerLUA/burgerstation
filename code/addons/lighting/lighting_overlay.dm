@@ -12,10 +12,6 @@
 
 	var/needs_update = FALSE
 
-	#if TILE_SIZE != 32
-	transform = matrix(TILE_SIZE / 32, 0, (TILE_SIZE - 32) / 2, 0, TILE_SIZE / 32, (TILE_SIZE - 32) / 2)
-	#endif
-
 	allow_shuttle_move = FALSE
 
 /atom/movable/lighting_overlay/New()

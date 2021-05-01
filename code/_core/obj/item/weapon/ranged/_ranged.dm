@@ -67,7 +67,6 @@
 	var/list/firemodes = list(
 	)
 
-
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
 	if(!length(firemodes))
 		return FALSE
@@ -380,6 +379,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
 	var/penetrations_left = 0
+	var/condition_to_use = 1
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/power_to_use = 0
@@ -397,9 +397,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
+		condition_to_use = max(0,10 - (quality_bonus)*9)
+		condition_to_use += FLOOR(heat_current*25,1)
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
+
 
 	var/arm_strength = 0.5
 	if(is_advanced(caller))
@@ -563,6 +566,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				current_bursts = 0
 
 	update_sprite()
+
+	use_condition(condition_to_use)
 
 	return TRUE
 

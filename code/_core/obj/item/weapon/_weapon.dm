@@ -25,6 +25,8 @@
 
 	//var/weapon_tier = 0
 
+	uses_until_condition_fall = 100
+
 
 /* Price calculation is hard.
 /obj/item/weapon/get_base_value()

@@ -157,6 +157,23 @@
 
 	var/can_save = TRUE
 
+	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
+
+/obj/item/proc/use_condition(var/amount_to_use=1)
+
+	if(!uses_until_condition_fall)
+		return FALSE
+
+	uses_until_condition_fall -= amount_to_use
+
+	if(uses_until_condition_fall <= 0)
+		var/highest = initial(uses_until_condition_fall)
+		var/quality_to_remove = 1 + FLOOR(-uses_until_condition_fall/highest,1)
+		adjust_quality(-quality_to_remove)
+		uses_until_condition_fall += highest*quality_to_remove
+
+	return TRUE
+
 /obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
 	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
 
