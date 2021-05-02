@@ -82,6 +82,8 @@ obj/structure/scenery/snow_bush/New()
 	icon = 'icons/obj/structure/flora/evergreen.dmi'
 	icon_state = "evergreen_2"
 	pixel_x = -16
+	color = "#ffffaa"
+
 
 /obj/structure/interactive/tree/evergreen/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -100,6 +102,7 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "tree"
 	pixel_x = -32
 	pixel_y = 0
+	color = "#78996b"
 
 /obj/structure/interactive/tree/jungle_small/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -118,6 +121,7 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "tree"
 	pixel_x = -48
 	pixel_y = -16
+	color = "#78996b"
 
 /obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()

@@ -1,6 +1,6 @@
 /turf/simulated/floor/colored/grass
 	name = "grass"
-	color = "#44683B"
+	color = "#969696"
 	layer = LAYER_FLOOR_GRASS
 	corner_category = "grass"
 
@@ -21,7 +21,7 @@
 
 /turf/simulated/floor/colored/grass/jungle
 	name = "jungle grass"
-	color = "#42512B"
+	color = "#44683B"
 	corner_category = "jungle_grass"
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/jungle
