@@ -4,7 +4,7 @@
 	desc_extended = "A mostly passive lavaland critter that feeds on the blood and corpses of local wildlife."
 
 	icon = 'icons/mob/living/simple/gutlunch.dmi'
-	icon_state = "living"
+	icon_state = "1"
 
 	damage_type = /damagetype/npc/cow
 	class = /class/cow

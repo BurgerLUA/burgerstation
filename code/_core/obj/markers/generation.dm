@@ -93,6 +93,27 @@
 
 	color = COLOR_ORANGE
 
+/obj/marker/generation/ash_floor
+	object_to_place = /turf/simulated/floor/colored/ash/dark
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 25
+	skip_chance = 10
+	hole_chance = 0
+
+	color = COLOR_GREY
+
+/obj/marker/generation/ash_wall
+	object_to_place = /turf/simulated/wall/ash/dark
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 25
+	skip_chance = 10
+	hole_chance = 0
+
+	color = COLOR_GREY
+
+
 /obj/marker/generation/ice
 	object_to_place = /turf/simulated/floor/ice
 	grow_amount_min = 15
@@ -220,7 +241,7 @@
 	color = COLOR_GREY
 
 /obj/marker/generation/snow_grass
-	object_to_place = /obj/structure/scenery/snow_grass
+	object_to_place = /obj/structure/scenery/grass/snow
 	grow_amount_min = 5
 	grow_amount_max = 8
 	objects_max = 25
@@ -316,7 +337,7 @@
 
 
 /obj/marker/generation/jungle_high_grass
-	object_to_place = /obj/structure/scenery/jungle_grass
+	object_to_place = /obj/structure/scenery/grass/jungle
 	grow_amount_min = 5
 	grow_amount_max = 8
 	objects_max = 10
@@ -329,7 +350,7 @@
 
 
 /obj/marker/generation/jungle_rock_grass
-	object_to_place = /obj/structure/scenery/jungle_rock
+	object_to_place = /obj/structure/scenery/grass/jungle_rock
 	grow_amount_min = 5
 	grow_amount_max = 8
 	objects_max = 10

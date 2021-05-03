@@ -21,25 +21,25 @@ obj/structure/scenery/pinetrees/New()
 	icon_state = "pine_[rand(1,3)]"
 */
 
-obj/structure/scenery/snow_grass
+obj/structure/scenery/grass/snow
 	name = "grass"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
 	icon_state = "snowgrass1"
 
 
-obj/structure/scenery/snow_grass/New()
+obj/structure/scenery/grass/snow/New()
 	..()
 	icon_state = "snowgrass[rand(1,3)]"
 
 
-obj/structure/scenery/snow_bush
+obj/structure/scenery/bush/snow
 	name = "berry bush"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
 	icon_state = "snowbush1"
 	layer = LAYER_LARGE_OBJ
 
 
-obj/structure/scenery/snow_bush/New()
+obj/structure/scenery/bush/snow/New()
 	..()
 	icon_state = "snowbush[rand(1,3)]"
 

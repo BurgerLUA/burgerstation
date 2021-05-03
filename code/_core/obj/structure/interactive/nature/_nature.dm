@@ -1,12 +1,12 @@
 /obj/structure/scenery
 	mouse_opacity = 0
 
-obj/structure/scenery/grass_bush
+obj/structure/scenery/bush/grass
 	name = "grassy bush"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "grassybush_1"
 
-obj/structure/scenery/grass_bush/New()
+obj/structure/scenery/bush/grass/New()
 	..()
 	icon_state = "grassybush_[rand(1,4)]"
 
@@ -39,6 +39,19 @@ obj/structure/scenery/grass/New()
 			icon_state = "sparsegrass_[rand(1,3)]"
 		if(2)
 			icon_state = "fullgrass_[rand(1,3)]"
+
+
+
+obj/structure/scenery/grass/lavender
+	name = "lavender grass"
+	icon = 'icons/obj/structure/flora/ausflora.dmi'
+	icon_state = "lavendergrass_1"
+	layer = LAYER_FLOOR_SCENERY
+
+obj/structure/scenery/grass/lavender/New()
+	..()
+	icon_state = "lavendergrass_[rand(1,4)]"
+
 
 obj/structure/scenery/rocks
 	name = "rocks"
