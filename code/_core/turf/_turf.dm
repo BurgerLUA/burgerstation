@@ -37,6 +37,8 @@
 
 	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_LAYER | VIS_INHERIT_ID
 
+	var/disallow_generation = FALSE
+
 /turf/proc/on_step()
 	return TRUE
 

@@ -31,9 +31,6 @@
 	icon_state = "red"
 	flags_area = 0x0
 
-	sunlight_freq = 6
-	sunlight_color ="#7F3B11"
-
 	random_sounds = list(
 		'sound/ambient/lavacaves_1.ogg',
 		'sound/ambient/lavacaves_2.ogg',

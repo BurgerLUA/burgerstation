@@ -23,6 +23,8 @@
 
 #define COLOR_RED_DARK "#490000"
 
+#define COLOR_PINK "#FF74FF"
+
 #define COLOR_ORANGE "#D38F28"
 
 #define COLOR_BROWN "#644D37"

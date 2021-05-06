@@ -35,3 +35,11 @@
 	area_identifier = "Pathing Debug"
 
 	sound_environment = ENVIRONMENT_STONEROOM
+
+
+/area/surface
+	name = "Surface"
+	icon_state = "cmd"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_TUTORIAL | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_SAVEZONE
+	sunlight_freq = 4
+	sunlight_color = "#2C4D59"

@@ -52,10 +52,10 @@ SUBSYSTEM_DEF(dmm_suite)
 	z_level_to_file["3"] = "burgerstation.dmm"
 
 	//Load the basement
-	var/basement_map = rustg_file_read("maps/core/burgerstation_basement.dmm")
+	var/basement_map = rustg_file_read("maps/core/z_01.dmm")
 	dmm_suite.read_map(basement_map,1,1,2)
 	log_subsystem(name,"Loaded basement map.")
-	z_level_to_file["2"] = "burgerstation_basement.dmm"
+	z_level_to_file["2"] = "z_01.dmm"
 
 	//Load the map
 	var/voted_map = "Island"

@@ -55,11 +55,19 @@ SUBSYSTEM_DEF(turfs)
 
 	log_subsystem(name,"Randomly Generated [turf_generation_count] turfs.")
 
-	for(var/obj/marker/generation/G in world)
-		G.generate()
-		object_generation_count++
+	var/list/generations = list()
 
-	log_subsystem(name,"Randomly Generated [object_generation_count] random islands.")
+	for(var/obj/marker/generation/G in world)
+		generations += G
+
+	sortMerge(generations, /proc/cmp_generation_priority)
+
+	for(var/k in generations)
+		var/obj/marker/generation/G = k
+		G.generate_marker()
+		object_generation_count += 1
+
+	log_subsystem(name,"Randomly Generated [object_generation_count] random turf islands.")
 
 	var/turf_count = 0
 

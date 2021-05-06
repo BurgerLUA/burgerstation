@@ -42,3 +42,7 @@
 /turf/simulated/wall/brick/grey
 	color = COLOR_GREY
 
+/turf/simulated/wall/brick/grey/dark
+	color = COLOR_GREY_DARK
+
+

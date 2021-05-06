@@ -21,6 +21,8 @@
 
 	var/ignore_existing = FALSE
 
+	var/bypass_disallow_generation = FALSE
+
 	pixel_x = -32
 	pixel_y = -32
 
@@ -44,6 +46,8 @@
 			var/turf/T2 = get_step(T,v)
 			if(!T2)
 				continue
+			if(T2.disallow_generation && !bypass_disallow_generation)
+				continue
 			if(prob(skip_chance))
 				continue
 			if(length(forbidden_turfs) && forbidden_turfs[T2])
@@ -60,7 +64,7 @@
 
 	return TRUE
 
-/obj/marker/generation/proc/generate()
+/obj/marker/generation/proc/generate_marker()
 
 	var/desired_grow = rand(grow_amount_min,grow_amount_max)
 
@@ -133,6 +137,10 @@
 	hole_chance = 5
 
 	color = COLOR_CYAN
+
+/obj/marker/generation/water/jungle
+	objects_max = 15
+	object_to_place = /turf/simulated/hazard/water/jungle
 
 /obj/marker/generation/snow
 	object_to_place = /turf/simulated/floor/colored/snow
@@ -252,6 +260,8 @@
 
 	turf_whitelist = /turf/simulated/floor/colored/snow
 
+	bypass_disallow_generation = TRUE
+
 
 /obj/marker/generation/snow_tree
 	object_to_place = /obj/structure/interactive/tree/pine
@@ -279,6 +289,68 @@
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
+/obj/marker/generation/jungle_light_flower
+	object_to_place = /obj/structure/interactive/lighting/jungle/flower
+	grow_amount_min = 10
+	grow_amount_max = 30
+	objects_max = 2
+	skip_chance = 50
+	hole_chance = 90
+
+	color = COLOR_PINK
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+	bypass_disallow_generation = TRUE
+
+
+/obj/marker/generation/jungle_light_stick
+	object_to_place = /obj/structure/interactive/lighting/jungle/stick
+	grow_amount_min = 10
+	grow_amount_max = 30
+	objects_max = 4
+	skip_chance = 10
+	hole_chance = 20
+
+	color = COLOR_PINK
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+	bypass_disallow_generation = TRUE
+
+
+/obj/marker/generation/jungle_light_lamp
+	object_to_place = /obj/structure/interactive/lighting/jungle/lamp
+	grow_amount_min = 10
+	grow_amount_max = 30
+	objects_max = 3
+	skip_chance = 50
+	hole_chance = 90
+
+	color = COLOR_PINK
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+	bypass_disallow_generation = TRUE
+
+
+/obj/marker/generation/jungle_light_mine
+	object_to_place = /obj/structure/interactive/lighting/jungle/mine
+	grow_amount_min = 10
+	grow_amount_max = 30
+	objects_max = 2
+	skip_chance = 50
+	hole_chance = 90
+
+	color = COLOR_PINK
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+	bypass_disallow_generation = TRUE
+
+
+
+
 
 /obj/marker/generation/forest_tree
 	object_to_place = /obj/structure/interactive/tree/evergreen
@@ -305,6 +377,8 @@
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
 
+	bypass_disallow_generation = TRUE
+
 
 /obj/marker/generation/forest_grass
 	object_to_place = /obj/structure/scenery/grass
@@ -317,6 +391,8 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
+
+	bypass_disallow_generation = TRUE
 
 
 
@@ -348,6 +424,8 @@
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
+	bypass_disallow_generation = TRUE
+
 
 /obj/marker/generation/jungle_rock_grass
 	object_to_place = /obj/structure/scenery/grass/jungle_rock
@@ -360,6 +438,8 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
+
+	bypass_disallow_generation = TRUE
 
 
 

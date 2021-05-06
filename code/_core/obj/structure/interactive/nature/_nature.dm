@@ -1,5 +1,6 @@
 /obj/structure/scenery
 	mouse_opacity = 0
+	plane = PLANE_JUNK
 
 obj/structure/scenery/bush/grass
 	name = "grassy bush"
