@@ -34,7 +34,6 @@ SUBSYSTEM_DEF(turfs)
 		seeds += rand(1,99999)
 
 	var/found_turfs = 0
-	var/turf_generation_count = 0
 	var/object_generation_count = 0
 
 	for(var/turf/simulated/T in world)
@@ -44,30 +43,54 @@ SUBSYSTEM_DEF(turfs)
 
 	log_subsystem(name,"Found [found_turfs] simulated turfs.")
 
+	var/pre_generated = 0
 	for(var/turf/unsimulated/generation/G in world)
 		sleep(-1)
 		G.pre_generate()
+		pre_generated++
+		if(!(pre_generated % 10000))
+			log_subsystem(name,"Pregenerated [pre_generated] unsimulated turfs...")
 
+	log_subsystem(name,"Finished pregenerating [pre_generated] unsimulated turfs.")
+
+	var/full_generated = 0
 	for(var/turf/unsimulated/generation/G in world)
 		sleep(-1)
 		G.generate()
-		turf_generation_count++
+		full_generated++
+		if(!(full_generated % 10000))
+			log_subsystem(name,"Generated [full_generated] unsimulated turfs...")
 
-	log_subsystem(name,"Randomly Generated [turf_generation_count] turfs.")
+	log_subsystem(name,"Finished generating [full_generated] unsimulated turfs.")
 
 	var/list/generations = list()
-
+	var/total_markers = 0
 	for(var/obj/marker/generation/G in world)
+		sleep(-1)
 		generations += G
+		total_markers++
+		if(!(total_markers % 10000))
+			log_subsystem(name,"Gathered [total_markers] generation markers...")
+
+	log_subsystem(name,"Finished gathering [total_markers] generation markers.")
+
+	sleep(-1)
 
 	sortMerge(generations, /proc/cmp_generation_priority)
 
+	sleep(-1)
+
+	log_subsystem(name,"Sorted [total_markers] generation markers.")
+
 	for(var/k in generations)
+		sleep(-1)
 		var/obj/marker/generation/G = k
 		G.generate_marker()
 		object_generation_count += 1
+		if(!(object_generation_count % 10000))
+			log_subsystem(name,"Generating [object_generation_count] generation markers...")
 
-	log_subsystem(name,"Randomly Generated [object_generation_count] random turf islands.")
+	log_subsystem(name,"Finished generating [object_generation_count] generation markers.")
 
 	var/turf_count = 0
 

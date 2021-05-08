@@ -202,54 +202,6 @@
 
 	return ..()
 
-/turf/unsimulated/generation/cave
-	name = "lava generation"
-	icon_state = "caves"
-
-/turf/unsimulated/generation/cave/generate(var/size = WORLD_SIZE)
-
-	if(no_wall)
-		new /turf/simulated/floor/colored/dirt/cave(src)
-		return ..()
-
-	var/noise = 0
-
-	var/instances = 2
-
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
-
-		var/seed_resolution = WORLD_SIZE * 0.25
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[1] + i*10]","[x_seed]","[y_seed]"))
-		if(found >= 0.25 && found <= 0.75) noise += found
-
-	switch(noise)
-		if(-INFINITY to 0.5)
-			new /turf/simulated/floor/colored/dirt/cave(src)
-			if(prob(1))
-				new /obj/marker/generation/rock_wall/small(src)
-			else if(prob(3))
-				new /mob/living/simple/spider(src)
-			else if(prob(1))
-				new /obj/marker/generation/plant/glowshroom(src)
-		if(0.5 to 1)
-			new /turf/simulated/floor/cave_dirt(src)
-			if(prob(0.5))
-				new /obj/marker/generation/mob/black_bear(src)
-		if(1 to INFINITY)
-			new /turf/simulated/wall/rock(src)
-
-	return ..()
-
-
 /turf/unsimulated/generation/snow_cave //ICEBOX ONLY
 	name = "snow cave generation"
 	icon_state = "caves"

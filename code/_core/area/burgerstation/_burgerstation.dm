@@ -26,22 +26,6 @@
 
 	area_identifier = "Mission"
 
-/area/burgerstation/exterior
-	name = "\improper Exterior"
-	icon_state = "red"
-	flags_area = 0x0
-
-	random_sounds = list(
-		'sound/ambient/lavacaves_1.ogg',
-		'sound/ambient/lavacaves_2.ogg',
-	)
-
-	tracks = TRACKS_LAVA
-
-	cheese_type = /reagent/nutrition/cheese/guava
-
-	sound_environment = ENVIRONMENT_QUARRY
-
 /area/burgerstation/hall
 	name = "\improper Hallway"
 	icon_state = "hall"

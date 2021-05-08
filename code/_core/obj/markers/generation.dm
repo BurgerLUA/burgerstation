@@ -416,7 +416,7 @@
 	object_to_place = /obj/structure/scenery/grass/jungle
 	grow_amount_min = 5
 	grow_amount_max = 8
-	objects_max = 10
+	objects_max = 30
 	skip_chance = 25
 	hole_chance = 0
 
@@ -425,6 +425,11 @@
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 	bypass_disallow_generation = TRUE
+
+/obj/marker/generation/jungle_high_grass/small
+	objects_max = 15
+	skip_chance = 50
+	hole_chance = 5
 
 
 /obj/marker/generation/jungle_rock_grass
