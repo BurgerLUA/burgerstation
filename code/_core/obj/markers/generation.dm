@@ -182,6 +182,16 @@
 
 	color = COLOR_BROWN
 
+/obj/marker/generation/cave_dirt_colored
+	object_to_place = /turf/simulated/floor/colored/dirt/cave
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_BROWN
+
 /obj/marker/generation/snow_dirt
 	object_to_place = /turf/simulated/floor/colored/dirt/snow
 	grow_amount_min = 5

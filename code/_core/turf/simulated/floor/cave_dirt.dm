@@ -1,6 +1,6 @@
 /turf/simulated/floor/cave_dirt
 
-	name = "bedrock"
+	name = "cave dirt"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "dirt"
@@ -22,10 +22,10 @@
 
 	organic = TRUE
 
-/*
-/turf/simulated/floor/cave_dirt
 
-	name = "cave dirt"
+/turf/simulated/floor/bedrock
+
+	name = "bedrock"
 
 	icon = 'icons/turf/floor/cave_dirt_new.dmi'
 	icon_state = "0,0"
@@ -41,9 +41,8 @@
 
 	organic = TRUE
 
-/turf/simulated/floor/cave_dirt/New(var/desired_loc)
+/turf/simulated/floor/bedrock/New(var/desired_loc)
 	var/desired_x = x % 10
 	var/desired_y = y % 10
 	icon_state = "[desired_x],[desired_y]"
 	. = ..()
-*/
