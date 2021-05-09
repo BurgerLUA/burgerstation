@@ -37,6 +37,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/disable_controls = FALSE
 
+	var/zoom_held = FALSE
 	var/is_zoomed = 0x0 //Takes a dir as a value.
 
 	var/next_allowed_topic = -1

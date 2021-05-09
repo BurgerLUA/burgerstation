@@ -47,7 +47,7 @@
 	if(object && examine_mode)
 		mob.examine_overlay.maptext = "[object]"
 
-	if(is_zoomed && mob && isturf(location))
+	if(zoom_held && mob && isturf(location))
 		var/zoom_mul = 1
 		var/real_angle = get_angle(mob,location) + 90
 		var/real_dir = angle2dir(real_angle)
