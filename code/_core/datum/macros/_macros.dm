@@ -109,6 +109,7 @@
 			if((owner.mob.attack_flags & CONTROL_MOD_BLOCK) || owner.is_zoomed)
 				owner.is_zoomed = 0x0
 			else
+				owner.zoom_held = TRUE
 				owner.is_zoomed = owner.mob.dir
 
 	return TRUE
@@ -163,7 +164,7 @@
 		if("kick")
 			owner.mob.attack_flags &= ~CONTROL_MOD_KICK
 		if("zoom")
-			//Do nothing
+			owner.zoom_held = FALSE
 		if("say")
 			owner.mob.say()
 		else
