@@ -84,6 +84,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/restricted //Set to a string to prevent this person from making a character or joining as one.
 
+	var/list/icon_request_details
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 
