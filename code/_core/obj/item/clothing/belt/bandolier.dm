@@ -31,7 +31,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
 		var/obj/item/bullet_cartridge/S = object
-		if(caller.attack_flags & CONTROL_MOD_ALT)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			if(!stored_shells[S.type])
 				caller.to_chat(span("warning","There are no shells of that type left in \the [src.name]!"))
 				return TRUE
@@ -62,7 +62,7 @@
 			return TRUE
 
 		var/obj/item/bullet_cartridge/S = pickweight(stored_shells)
-		if(caller.attack_flags & CONTROL_MOD_ALT)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			S = new S(get_turf(src))
 			var/amount = 0
 			if(stored_shells[S.type] < 5)
@@ -154,7 +154,7 @@
 
 		var/obj/item/bullet_cartridge/S = object
 
-		if(caller.attack_flags & CONTROL_MOD_ALT)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			if(!stored_shells[S.type])
 				caller.to_chat(span("warning","There are no shells of that type left in \the [src.name]!"))
 				return TRUE
@@ -188,7 +188,7 @@
 
 		var/obj/item/bullet_cartridge/S = pickweight(stored_shells)
 
-		if(caller.attack_flags & CONTROL_MOD_ALT)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			S = new S(get_turf(src))
 			var/amount = 0
 			if(stored_shells[S.type] < handful)

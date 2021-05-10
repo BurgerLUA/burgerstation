@@ -63,7 +63,7 @@
 
 	close_turf_contents()
 
-	if(!(attack_flags & CONTROL_MOD_ALT))
+	if(!(attack_flags & CONTROL_MOD_DISARM))
 		return FALSE
 
 	if(get_dist(T,src) > 1 )

@@ -38,23 +38,15 @@
 /macros/proc/on_pressed(button)
 	var/command = macros[button]
 
-	/*
-	if(isnum(command))
-		owner.mob.move_dir |= command
-		if(owner.mob)
-			owner.mob.move_delay = max(owner.mob.move_delay,2)
-
-	else if(copytext(command,1,5) == "bind")
+	if(has_prefix(command,"bind"))
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
-			for(var/k in A.buttons)
-				var/obj/hud/button/slot/B = k
+			for(var/obj/hud/button/slot/B in A.buttons)
 				if(B.id == text_num)
 					B.activate_button(owner.mob)
+		return TRUE
 
-	else
-	*/
 	switch(command)
 		if("move_up")
 			owner.mob.move_dir |= NORTH
@@ -75,7 +67,10 @@
 		if("sprint")
 			owner.mob.movement_flags |= MOVEMENT_RUNNING
 		if("walk")
-			owner.mob.attack_flags |= CONTROL_MOD_ALT
+			owner.mob.attack_flags |= CONTROL_MOD_DISARM
+			if(is_living(owner.mob))
+				var/mob/living/L = owner.mob
+				L.update_intent()
 		if("examine_mode")
 			owner.examine_mode = TRUE
 			owner.mob.examine_overlay.alpha = 255
@@ -99,6 +94,9 @@
 				owner.mob.last_hold = world.time
 		if("grab")
 			owner.mob.attack_flags |= CONTROL_MOD_GRAB
+			if(is_living(owner.mob))
+				var/mob/living/L = owner.mob
+				L.update_intent()
 		if("quick_self")
 			owner.mob.attack_flags |= CONTROL_MOD_SELF
 		if("quick_holder")
@@ -111,19 +109,17 @@
 			else
 				owner.zoom_held = TRUE
 				owner.is_zoomed = owner.mob.dir
+		else
+			winset(owner, null, "command='[command]'")
 
 	return TRUE
 
 /macros/proc/on_released(button)
 	var/command = macros[button]
 
-	/*
-	if(isnum(command))
-		owner.mob.move_dir &= ~command
-	else if(copytext(command,1,5) == "bind")
+	if(has_prefix(command,"bind"))
 		return TRUE
-	else
-	*/
+
 	switch(command)
 		if("move_up")
 			owner.mob.move_dir &= ~NORTH
@@ -140,7 +136,10 @@
 		if("sprint")
 			owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 		if("walk")
-			owner.mob.attack_flags &= ~CONTROL_MOD_ALT
+			owner.mob.attack_flags &= ~CONTROL_MOD_DISARM
+			if(is_living(owner.mob))
+				var/mob/living/L = owner.mob
+				L.update_intent()
 		if("examine_mode")
 			owner.examine_mode = FALSE
 			owner.mob.examine_overlay.alpha = 0
@@ -157,6 +156,9 @@
 				L.handle_blocking()
 		if("grab")
 			owner.mob.attack_flags &= ~CONTROL_MOD_GRAB
+			if(is_living(owner.mob))
+				var/mob/living/L = owner.mob
+				L.update_intent()
 		if("quick_self")
 			owner.mob.attack_flags &= ~CONTROL_MOD_SELF
 		if("quick_holder")
@@ -167,7 +169,5 @@
 			owner.zoom_held = FALSE
 		if("say")
 			owner.mob.say()
-		else
-			winset(owner, null, "command='[command]'")
 
 	return TRUE

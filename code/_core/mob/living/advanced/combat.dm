@@ -185,7 +185,7 @@
 		return "block"
 	else if(movement_flags & MOVEMENT_RUNNING)
 		return "dodge"
-	else if(attack_flags & CONTROL_MOD_ALT)
+	else if(attack_flags & CONTROL_MOD_DISARM)
 		return "parry"
 	return "none"
 

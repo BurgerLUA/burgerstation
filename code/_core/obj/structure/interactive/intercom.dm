@@ -46,7 +46,7 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		stored_radio.receiving = !stored_radio.receiving
 		caller.to_chat(span("notice","You toggle the intercomm receiver [stored_radio.receiving ? "on" : "off"]."))
 	else

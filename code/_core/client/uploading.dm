@@ -16,7 +16,6 @@
 		return FALSE
 
 	if(!desired_file)
-		to_chat(span("warning","Failed to upload file. Note that the file limit is []."))
 		icon_request_details.Cut()
 		icon_request_details = null
 		return FALSE

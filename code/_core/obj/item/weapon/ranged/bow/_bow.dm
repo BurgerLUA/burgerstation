@@ -90,7 +90,7 @@
 
 /obj/item/weapon/ranged/bow/think()
 
-	var/held_down = current_shooter && !current_shooter.qdeleting && ((current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_ALT)
+	var/held_down = current_shooter && !current_shooter.qdeleting && ((current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_DISARM)
 
 	if(held_down)
 		stage_current = min(stage_max,stage_current + stage_per_decisecond)

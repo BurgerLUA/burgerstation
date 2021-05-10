@@ -68,6 +68,7 @@
 	var/is_sneaking = FALSE
 	var/stealth_mod = 0
 
+	var/selected_intent = INTENT_HELP
 	var/intent = INTENT_HELP
 
 	var/level = 0
@@ -417,7 +418,7 @@
 	initialize_attributes()
 	initialize_skills()
 	update_level(TRUE)
-	set_intent(intent,TRUE)
+	update_intent(TRUE)
 
 	. = ..()
 

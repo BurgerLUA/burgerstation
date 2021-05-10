@@ -56,7 +56,7 @@
 	if(is_item(object))
 		var/mob/E = caller
 		var/obj/item/O = object
-		if(E.attack_flags & CONTROL_MOD_ALT && O.dyeable)
+		if(E.attack_flags & CONTROL_MOD_DISARM && O.dyeable)
 			var/choice
 			if(length(O.polymorphs)>1)
 				choice = input("What do you want to copy?","Dye Selection") as null|anything in O.polymorphs

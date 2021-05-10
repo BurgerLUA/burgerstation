@@ -63,7 +63,7 @@
 
 /obj/item/clothing/overwear/armor/plate_carrier/click_self(var/mob/caller)
 
-	if(is_advanced(caller) && length(installed_plate_carriers) && caller.attack_flags & CONTROL_MOD_ALT)
+	if(is_advanced(caller) && length(installed_plate_carriers) && caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
 		INTERACT_DELAY(1)
 		var/mob/living/advanced/A = caller

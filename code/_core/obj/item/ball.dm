@@ -105,7 +105,7 @@
 		var/mob/living/L = O
 		if(L.horizontal)
 			return .
-		if(L.attack_flags & CONTROL_MOD_ALT)
+		if(L.attack_flags & CONTROL_MOD_DISARM)
 			return .
 
 		var/bump_dir = get_dir(src,O)

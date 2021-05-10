@@ -25,7 +25,7 @@
 
 /obj/item/storage/cigarettes/click_self(var/mob/caller)
 
-	if(open && caller.attack_flags & CONTROL_MOD_ALT)
+	if(open && caller.attack_flags & CONTROL_MOD_DISARM)
 		open = FALSE
 		update_sprite()
 		return TRUE

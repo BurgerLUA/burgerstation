@@ -42,7 +42,7 @@
 		INTERACT_DELAY(10)
 		if(is_living(caller))
 			var/mob/living/L = caller
-			if(L.attack_flags & CONTROL_MOD_ALT)
+			if(L.attack_flags & CONTROL_MOD_DISARM)
 				stored_cap.drop_item(src)
 				stored_cap = object
 				caller.to_chat(span("notice","You put \the [object.name] back on \the [src.name]."))

@@ -589,7 +589,7 @@
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
-		if(L.attack_flags & CONTROL_MOD_ALT) //SPLASH
+		if(L.attack_flags & CONTROL_MOD_DISARM) //SPLASH
 			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
@@ -639,7 +639,7 @@
 
 	if(is_living(caller))
 		var/mob/living/C = caller
-		if(C.attack_flags & CONTROL_MOD_ALT) //Splash
+		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
 			return FALSE
 		if(reagents.contains_lethal && L != C && L.loyalty_tag == C.loyalty_tag)
 			caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))

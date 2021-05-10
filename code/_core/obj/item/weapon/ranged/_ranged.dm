@@ -168,7 +168,7 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(is_inventory(object) && (caller.attack_flags & CONTROL_MOD_ALT))
+	if(is_inventory(object) && (caller.attack_flags & CONTROL_MOD_DISARM))
 		var/obj/hud/inventory/INV = object
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -285,7 +285,7 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		change_firemode(caller)
 		return TRUE
 

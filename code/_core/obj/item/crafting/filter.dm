@@ -25,7 +25,7 @@
 
 /obj/item/crafting/filter/click_self(var/mob/caller)
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		var/current_setting
 		var/possible_inputs = list()
 		for(var/i=0,i<=1,i=FLOOR(i+precision,0.1))

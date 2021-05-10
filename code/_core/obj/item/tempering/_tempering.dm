@@ -18,7 +18,7 @@
 	if(is_item(object) && can_temper(caller,object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		if(caller.attack_flags & CONTROL_MOD_ALT)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			on_temper(caller,object)
 			return TRUE
 		else

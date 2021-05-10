@@ -28,27 +28,6 @@
 	stored_atom = null
 	return ..()
 
-/obj/hud/button/slot/update_sprite()
-
-	. = ..()
-
-	if(active)
-		color = "#00FF00"
-	else
-		color = "#FFFFFF"
-
-
-/obj/hud/button/slot/update_overlays()
-
-	. = ..()
-
-	if(stored_atom)
-		var/image/I = new/image(stored_atom.icon,stored_atom.icon_state)
-		I.appearance = stored_atom.appearance
-		I.plane = PLANE_HUD_OBJ
-		add_overlay(I)
-
-
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
 	if(stored_atom && stored_atom.qdeleting)
@@ -60,30 +39,30 @@
 	if(istype(I) && I.quick_function_type == FLAG_QUICK_INSTANT)
 		stored_atom.quick(caller)
 		caller.quick_mode = 0
-		spawn()
-			color = "#00FF00"
-			sleep(5)
-			color = "#FFFFFF"
+		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
+		animate(color="#FFFFFF",time=5)
 	else
 		active = !active
 		caller.quick_mode = active ? id : null
-		update_sprite()
+		if(active)
+			animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
+		else
+			animate(src,color="#FFFFFF",time=1,flags=ANIMATION_PARALLEL)
 
 	if(active)
 		for(var/obj/hud/button/slot/S in owner.buttons)
 			if(S == src)
 				continue
 			S.active = FALSE
-			S.update_sprite()
+			animate(S,color="#FFFFFF",time=1,flags=ANIMATION_PARALLEL)
 
 	return TRUE
 
 /obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
 	if(stored_atom)
 		A.to_chat(span("notice","\The [stored_atom.name] was unbound from slot [icon_state]."))
+		vis_contents -= stored_atom
 		stored_atom = null
-		update_sprite()
-		//animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
 
 /obj/hud/button/slot/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -123,7 +102,7 @@
 	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
 	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	active = FALSE
-	update_sprite()
+	vis_contents += stored_atom
 
 	return TRUE
 

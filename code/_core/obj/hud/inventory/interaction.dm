@@ -20,7 +20,7 @@
 			O.attack(caller,object,params,damage_type_override=/damagetype/unarmed/fists/grab)
 			return TRUE
 
-	if(!top_object && caller.attack_flags & CONTROL_MOD_ALT && ismovable(object)) //Alt clicking wtih an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking wtih an empty hand.
 		var/atom/movable/M = object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
@@ -134,7 +134,7 @@
 				if(!top_object)
 					if(INV.worn)
 						var/content_length = length(INV.contents)
-						if(content_length > 1 && caller.attack_flags & CONTROL_MOD_ALT) //Force
+						if(content_length > 1 && caller.attack_flags & CONTROL_MOD_DISARM) //Force
 							content_length -= 1
 						for(var/i=content_length,i>0,i--)
 							var/obj/item/ITM = INV.contents[i]
@@ -144,7 +144,7 @@
 						I.click_self(caller)
 						return TRUE
 					if(!INV.click_flags && (!INV.drag_to_take || is_weapon(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
-						if(caller.attack_flags & CONTROL_MOD_ALT)
+						if(caller.attack_flags & CONTROL_MOD_DISARM)
 							I.click_self(caller)
 						else
 							src.add_object(object)

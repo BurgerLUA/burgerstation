@@ -102,7 +102,7 @@
 	if(L.is_busy())
 		return FALSE
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		if(attached_to)
 			detach(caller)
 		else

@@ -32,58 +32,56 @@
 /mob/living/verb/set_intent_harm()
 	set category = "Game"
 	set hidden = TRUE
-	set_intent(INTENT_HARM)
+	selected_intent = INTENT_HARM
+	update_intent()
 
 /mob/living/verb/set_intent_disarm()
 	set category = "Game"
 	set hidden = TRUE
-	set_intent(INTENT_DISARM)
+	selected_intent = INTENT_DISARM
+	update_intent()
 
 /mob/living/verb/set_intent_grab()
 	set category = "Game"
 	set hidden = TRUE
-	set_intent(INTENT_GRAB)
+	selected_intent = INTENT_GRAB
+	update_intent()
 
 /mob/living/verb/set_intent_help()
 	set category = "Game"
 	set hidden = TRUE
-	set_intent(INTENT_HELP)
+	selected_intent = INTENT_HELP
+	update_intent()
 
 /mob/living/verb/cycle_intent_clockwise()
 	set name = "Cycle Intent Clockwise"
 	set category = "Game"
 
-	switch(intent)
+	switch(selected_intent)
 		if(INTENT_HELP)
-			set_intent(INTENT_DISARM)
+			selected_intent = INTENT_DISARM
 		if(INTENT_DISARM)
-			set_intent(INTENT_GRAB)
+			selected_intent = INTENT_GRAB
 		if(INTENT_GRAB)
-			set_intent(INTENT_HARM)
+			selected_intent = INTENT_HARM
 		if(INTENT_HARM)
-			set_intent(INTENT_HELP)
+			selected_intent = INTENT_HELP
 
-	for(var/obj/hud/button/intent/B in buttons)
-		B.update_sprite()
-		B.active = (B.intent == intent)
-		B.update_overlays()
-
+	update_intent()
 
 /mob/living/verb/cycle_intent_counter_clockwise()
 	set name = "Cycle Intent Counter-Clockwise"
 	set category = "Game"
 
-	switch(intent)
+	switch(selected_intent)
 		if(INTENT_HELP)
-			set_intent(INTENT_HARM)
+			selected_intent = INTENT_HARM
 		if(INTENT_DISARM)
-			set_intent(INTENT_HELP)
+			selected_intent = INTENT_HELP
 		if(INTENT_GRAB)
-			set_intent(INTENT_DISARM)
+			selected_intent = INTENT_DISARM
 		if(INTENT_HARM)
-			set_intent(INTENT_GRAB)
+			selected_intent = INTENT_GRAB
 
-	for(var/obj/hud/button/intent/B in buttons)
-		B.update_sprite()
-		B.active = (B.intent == intent)
-		B.update_overlays()
+	update_intent()
+

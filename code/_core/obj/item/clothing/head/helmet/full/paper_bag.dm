@@ -43,7 +43,7 @@
 /obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller)
 
 	var/mob/C = caller
-	if(C.attack_flags & CONTROL_MOD_ALT && istype(src.loc,/obj/hud/inventory/organs/))
+	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))
 		INTERACT_CHECK
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo","Background")
 		if(choice == "Logo")

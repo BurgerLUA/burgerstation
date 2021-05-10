@@ -53,7 +53,7 @@
 
 /obj/item/storage/bags/botany/processor/click_self(var/mob/caller)
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		process_plants(caller)
