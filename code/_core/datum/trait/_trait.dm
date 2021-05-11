@@ -335,3 +335,27 @@
 	remove_message = "You can't break those cuffs."
 	handcuff_escape_multiplier = 2
 	trait_tag = TRAIT_POSITIVE
+
+
+/trait/vitality
+	category = /trait/vitality
+	var/health_add = 0
+	var/health_mul = 1
+
+/trait/vitality/strong
+	name = "Strong"
+	desc = "You have +20 to health, and a 5% health increase."
+	add_message = "You feel stronger."
+	remove_message = "You feel average."
+	health_add = 20
+	health_mul = 1.05
+	trait_tag = TRAIT_POSITIVE
+
+/trait/vitality/fragile
+	name = "Fragile"
+	desc = "You have a -20 penalty to health, and a 5% health decrease."
+	add_message = "You feel weaker."
+	remove_message = "You feel average."
+	health_add = 20
+	health_mul = 1.05
+	trait_tag = TRAIT_NEGATIVE

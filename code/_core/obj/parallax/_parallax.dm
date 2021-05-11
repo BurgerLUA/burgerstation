@@ -8,10 +8,30 @@
 	var/auto_resize = TRUE
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
+	var/turf/last_turf
+
 /obj/parallax/New(var/desired_loc)
 	if(auto_resize)
 		transform *= ((VIEW_RANGE*2 + 1)*TILE_SIZE)/(480)
 	return ..()
+
+/obj/parallax/MouseMove(location,control,params)
+
+	var/mob/M = usr
+	var/client/C = M.client
+
+	var/list/parsed_screen_loc = parse_screen_loc(params)
+
+	var/final_x = M.x + FLOOR((parsed_screen_loc[1] + C.pixel_x)/TILE_SIZE,1) - (C.view)
+	var/final_y = M.y + FLOOR((parsed_screen_loc[2] + C.pixel_y)/TILE_SIZE,1) - (C.view)
+
+	location = locate(final_x,final_y,M.z)
+
+	if(last_turf != location)
+		last_turf = location
+		return C.MouseEntered(location,location,control,params)
+
+	. = ..()
 
 /obj/parallax/Destroy()
 	owner = null
