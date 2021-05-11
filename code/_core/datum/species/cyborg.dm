@@ -43,5 +43,15 @@
 		/reagent/blood/robot
 	)
 
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/fast,
+		/trait/flamability/flammable,
+		/trait/bleed_multiplier/hard_skin,
+		/trait/blood_regen/none,
+		/trait/intoxication_regen/reverse
+
+	)
+
 /species/cyborg/generate_blood_type()
 	return /reagent/blood/robot

@@ -32,7 +32,7 @@
 	name = "back slot"
 	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
-	screen_loc = "CENTER-3,BOTTOM"
+	screen_loc = "CENTER-4,BOTTOM"
 	max_slots = 1
 	worn = TRUE
 
@@ -51,7 +51,7 @@
 	name = "holster"
 	icon_state = "slot_torso_ob"
 	id = BODY_TORSO_OB
-	screen_loc = "CENTER-4,BOTTOM"
+	screen_loc = "CENTER-5,BOTTOM"
 	max_slots = 1
 	worn = FALSE
 

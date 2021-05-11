@@ -75,3 +75,13 @@
 	emote_sounds_male = list()
 
 	emote_sounds_female = list()
+
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/fast,
+		/trait/flamability/flammable,
+		/trait/death_check/tenacious,
+		/trait/bleed_multiplier/paper_skin,
+		/trait/blood_regen/blood_regen,
+		/trait/general_regen/jock
+	)

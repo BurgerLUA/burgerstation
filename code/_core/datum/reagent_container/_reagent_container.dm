@@ -70,6 +70,9 @@
 	var/trait/metabolism/M = living_owner.get_trait_by_category(/trait/metabolism/)
 	if(M) multiplier *= M.metabolism_multiplier
 
+	if(multiplier <= 0)
+		return FALSE
+
 	for(var/r_id in stored_reagents)
 
 		var/volume = stored_reagents[r_id]

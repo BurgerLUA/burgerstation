@@ -58,6 +58,7 @@
 	category = /trait/metabolism/
 	var/metabolism_multiplier = 1
 	var/hunger_multiplier = 1
+	var/thirst_multiplier = 1
 
 /trait/metabolism/fast
 	name = "Fast Metabolism"
@@ -68,6 +69,18 @@
 
 	metabolism_multiplier = 2
 	hunger_multiplier = 1.5
+	trait_tag = TRAIT_NEUTRAL
+
+/trait/metabolism/none
+	name = "No Metabolism"
+	desc = "You have no metabolism; you don't get hungry and reagents don't process in your system."
+
+	add_message = "You somehow feel like you have no metabolism..."
+	remove_message = "You now have a metabolism."
+
+	metabolism_multiplier = 0
+	hunger_multiplier = 0
+	thirst_multiplier = 0
 	trait_tag = TRAIT_NEUTRAL
 
 /trait/metabolism/slow
@@ -174,6 +187,15 @@
 	category = /trait/blood_regen/
 	var/regen_multiplier = 1
 
+/trait/blood_regen/none
+	name = "Blood Degeneration"
+	desc = "Your body doesn't generate any blood at all."
+	add_message = "You feel anemic..."
+	remove_message = "You no longer feel anemic."
+	regen_multiplier = 0
+	trait_tag = TRAIT_NEGATIVE
+
+
 /trait/blood_regen/blood_degen
 	name = "Anemia"
 	desc = "You body regenerates blood much slower, consuming less nutrition over time while at low blood."
@@ -195,6 +217,18 @@
 	var/alcohol_threshold_multiplier = 1
 	var/intoxication_removal_multiplier = 1
 	var/should_apply_drunk_status_effects = TRUE
+	var/reverse_intoxication = FALSE
+
+/trait/intoxication_regen/reverse
+	name = "Reverse Intoxication"
+	desc = "You need alcohol to sustain yourself. A lack of alcohol makes you more intoxicated, somehow."
+	add_message = "You feel like you rely on alcohol."
+	remove_message = "You don't feel like you have a dependence on alcohol anymore."
+	alcohol_threshold_multiplier = 2
+	should_apply_drunk_status_effects = TRUE
+	reverse_intoxication = TRUE
+	trait_tag = TRAIT_NEGATIVE
+
 
 /trait/intoxication_regen/light_drinker
 	name = "Light Drinker"
@@ -232,7 +266,7 @@
 	trait_tag = TRAIT_NEUTRAL
 
 /trait/general_regen/jock
-	name = "Jock"
+	name = "Physically Focused"
 	desc = "You regenerate stamina twice as much, but regenerate mana half as much."
 	add_message = "Your stamina feels better, but your mind is... uh... what's that word... huh... hm..."
 	remove_message = "Your mind and body feel back in sync."
@@ -241,7 +275,7 @@
 	trait_tag = TRAIT_NEUTRAL
 
 /trait/general_regen/nerd
-	name = "Nerd"
+	name = "Mentally Focused"
 	desc = "You regenerate mana twice as much, but regenerate stamina half as much."
 	add_message = "Your brain feels focused, but your body... not so much."
 	remove_message = "Your mind and body feel back in sync."

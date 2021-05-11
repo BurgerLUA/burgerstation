@@ -67,3 +67,8 @@
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
+
+	inherent_traits = list(
+		/trait/death_check/quitter,
+		/trait/intoxication_regen/light_drinker
+	)

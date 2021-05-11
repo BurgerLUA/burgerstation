@@ -238,14 +238,17 @@
 /mob/living/proc/handle_hunger()
 
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
-	var/quality_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
+	var/hunger_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
 
 	var/trait/metabolism/M = get_trait_by_category(/trait/metabolism/)
-	if(M) quality_mod *= M.hunger_multiplier
+	if(M)
+		hunger_mod *= M.hunger_multiplier
+		thirst_mod *= M.thirst_multiplier
 
-	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*quality_mod)
-	add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*quality_mod)
-	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
+	if(hunger_mod > 0)
+		add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*hunger_mod)
+		add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*hunger_mod)
+		add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
 
 	if(client)
 		for(var/obj/hud/button/hunger/B in buttons)
@@ -303,14 +306,19 @@ mob/living/proc/on_life_slow()
 	var/threshold_multiplier = 1
 	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*(LIFE_TICK_SLOW/10)
 	var/should_apply_status_effects = TRUE
+	var/reverse_intoxication = FALSE
 
 	var/trait/intoxication_regen/IR = get_trait_by_category(/trait/intoxication_regen/)
 	if(IR)
 		intoxication_to_remove *= IR.intoxication_removal_multiplier
 		threshold_multiplier *= IR.alcohol_threshold_multiplier
 		should_apply_status_effects = IR.should_apply_drunk_status_effects
+		reverse_intoxication = IR.reverse_intoxication
 
-	intoxication = max(0,intoxication-intoxication_to_remove)
+	if(reverse_intoxication)
+		intoxication = min(1000,intoxication+(0.1*(LIFE_TICK_SLOW/10)))
+	else
+		intoxication = max(0,intoxication-intoxication_to_remove)
 
 	switch(intoxication/threshold_multiplier)
 		if(0 to 200)

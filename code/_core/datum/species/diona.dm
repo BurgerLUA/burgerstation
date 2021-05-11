@@ -39,3 +39,14 @@
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
+
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/slow,
+		/trait/flamability/flammable,
+		/trait/bleed_multiplier/paper_skin,
+		/trait/blood_regen/blood_regen,
+		/trait/intoxication_regen/light_drinker,
+		/trait/general_regen/nerd,
+		/trait/speed/slow
+	)

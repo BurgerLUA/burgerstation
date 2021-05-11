@@ -160,6 +160,21 @@
 		/reagent/blood/human/o_positive
 	)
 
+	var/list/inherent_traits = list( //Traits given by the species.
+
+
+
+
+	)
+
+/species/proc/generate_traits(var/mob/living/L)
+
+	for(var/k in inherent_traits)
+		L.add_trait(k,FALSE,FALSE)
+
+	return TRUE
+
+
 /species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
 
 	if(!accent || !length(accent))
