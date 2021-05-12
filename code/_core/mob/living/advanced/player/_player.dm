@@ -97,6 +97,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/tutorial = FALSE //Are you in the tutorial level?
 
+	var/list/linked_portals
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
@@ -157,11 +159,24 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	active_structure = null
 	active_paper = null
 
+	clear_portals()
+
 	QDEL_NULL(click_and_drag_icon)
 
 	return ..()
 
-mob/living/advanced/player/on_life_client()
+/mob/living/advanced/player/proc/clear_portals()
+
+	if(linked_portals)
+		for(var/k in linked_portals)
+			var/obj/effect/temp/portal/P = k
+			qdel(P)
+		linked_portals.Cut()
+		linked_portals = null
+
+	return TRUE
+
+/mob/living/advanced/player/on_life_client()
 	. = ..()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
 
