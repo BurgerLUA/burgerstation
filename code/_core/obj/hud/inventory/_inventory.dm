@@ -14,7 +14,7 @@
 	icon_state = "square"
 
 	plane = PLANE_HUD
-	layer = 0
+	layer = 1
 
 	value = 0
 
@@ -173,7 +173,7 @@
 	var/desired_pixel_x = item_to_update.held_pixel_x
 	var/desired_pixel_y = item_to_update.held_pixel_y
 	var/desired_layer = LAYER_MOB_HELD
-	var/matrix/desired_transform = matrix()
+	var/matrix/desired_transform = get_base_transform()
 
 	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT_HELD || id == BODY_HAND_RIGHT_HELD || id == BODY_TORSO_OB) )
 		if(id == BODY_TORSO_OB)

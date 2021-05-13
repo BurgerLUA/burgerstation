@@ -581,18 +581,10 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		var/matrix/attack_matrix = matrix()
-		if(L.horizontal)
-			attack_matrix = turn(attack_matrix,L.stun_angle)
-
+		var/matrix/attack_matrix = L.get_base_transform()
 		attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
-
 		animate(L, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
-
-		if(L.horizontal)
-			animate(transform = turn(matrix(), L.stun_angle), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset
-		else
-			animate(transform = matrix(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
+		animate(transform = L.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
 
 	. = CEILING(attack_delay,1)
 

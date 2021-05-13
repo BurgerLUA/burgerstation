@@ -21,21 +21,21 @@
 	if(scale_sprite) update_sprite()
 	return ..()
 
-/obj/item/container/food/update_icon()
-
+/obj/item/container/food/get_base_transform()
+	. = ..()
 	if(scale_sprite)
 		if(typical_volume <= 0)
 			color = "#FF0000"
 			log_error("Warning: [src.get_debug_name()] had a typical volume of [typical_volume]!")
 		else
-			var/matrix/M = matrix()
+			var/matrix/M = .
 			var/scale_math = min(0.5 + (reagents.volume_current/typical_volume)*0.5,2)
 			M.Scale(scale_math)
-			transform = M
-			desc = "Scale: [scale_math] ([reagents.volume_current]/[typical_volume])"
 
-	return ..()
 
+/obj/item/container/food/update_sprite()
+	. = ..()
+	transform = get_base_transform()
 
 /obj/item/container/food/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())

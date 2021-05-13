@@ -355,3 +355,26 @@
 	if(owner && owner.client)
 		owner.remove_color_mod("stressed")
 	return TRUE
+
+
+
+/status_effect/mana_void
+	name = "Mana Void"
+	desc = "You've been mana voided!"
+	id = MANAVOID
+	minimum = 10
+	maximum = 100
+
+
+/status_effect/mana_void/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.mana_regen_buffer = -1000
+
+/status_effect/stressed/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+	owner.mana_regen_buffer = max(0,owner.mana_regen_buffer)
+
+/status_effect/slow
+	name = "Slowed"
+	desc = "You've been slowed!"
+	id = SLOW
+	minimum = 10
+	maximum = 300

@@ -13,12 +13,12 @@
 	pixel_z = TILE_SIZE*VIEW_RANGE*2
 	pixel_w = TILE_SIZE*VIEW_RANGE
 
-	var/matrix/M = matrix()
+	var/matrix/M = get_base_transform()
 	M.Scale(2,2)
 	src.transform = M
 
 	animate(src, alpha=255, time=meteor_time*0.5)
-	animate(src, pixel_z=0, pixel_w=0, time=meteor_time, transform = matrix())
+	animate(src, pixel_z=0, pixel_w=0, time=meteor_time, transform = get_base_transform())
 
 	CALLBACK("meteor_telegraph_\ref[src]",meteor_time-20,src,.proc/create_telegraph)
 
@@ -47,12 +47,12 @@
 	alpha = 0
 	pixel_z = TILE_SIZE*VIEW_RANGE*2
 
-	var/matrix/M = matrix()
+	var/matrix/M = get_base_transform()
 	M.Scale(2,2)
 	src.transform = M
 
 	animate(src, alpha=255, time=meteor_time*0.5)
-	animate(src, pixel_z=0, pixel_w=0, time=meteor_time*0.95, transform = matrix())
+	animate(src, pixel_z=0, pixel_w=0, time=meteor_time*0.95, transform = get_base_transform())
 
 	CALLBACK("fireball_land_\ref[src]",meteor_time,src,.proc/land)
 

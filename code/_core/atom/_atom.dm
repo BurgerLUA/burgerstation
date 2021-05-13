@@ -120,6 +120,10 @@
 
 	return ..()
 
+
+/atom/proc/get_base_transform()
+	return matrix()
+
 /atom/Initialize()
 
 	if(reagents)

@@ -72,15 +72,16 @@
 
 	mouse_opacity = 0 //For now
 
-/obj/item/organ/update_sprite()
+/obj/item/organ/get_base_transform()
 	. = ..()
-
-	var/matrix/M = matrix()
-
+	var/matrix/M = .
 	if(!is_advanced(loc) && !is_inventory(loc))
 		M.Turn(pick(0,90,180,270))
 
-	transform = M
+/obj/item/organ/update_sprite()
+	. = ..()
+
+	transform = get_base_transform()
 
 	if(enable_skin && additional_blends["skin"])
 		var/icon_blend/IB = additional_blends["skin"]

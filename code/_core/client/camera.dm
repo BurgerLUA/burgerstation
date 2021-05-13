@@ -44,8 +44,11 @@
 	if(!mob)
 		return ..()
 
-	if(object && examine_mode)
-		mob.examine_overlay.maptext = "[object]"
+	if(object)
+		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
+	else
+		mob.examine_overlay.maptext = null
+
 
 	if(zoom_held && mob && isturf(location))
 		var/zoom_mul = 1

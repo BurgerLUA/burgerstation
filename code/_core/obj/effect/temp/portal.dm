@@ -34,10 +34,8 @@
 
 /obj/effect/temp/portal/New(var/desired_loc,var/desired_time)
 	. = ..()
-	var/matrix/M = matrix()
-	M.Scale(0.01,0.01)
-	transform = M
-	animate(src,transform=matrix(),time=5,easing=BOUNCE_EASING)
+	transform *= 0.01
+	animate(src,transform=get_base_transform(),time=5,easing=BOUNCE_EASING)
 
 	filters += filter(type="drop_shadow",size=1,offset=0,color="#0384E2")
 	animate(filters[length(filters)],size=6,color="#0384E2",easing=SINE_EASING,time=5,loop=-1,flags=ANIMATION_PARALLEL)

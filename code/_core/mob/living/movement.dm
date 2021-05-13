@@ -152,6 +152,9 @@
 	var/trait/speed/S = get_trait_by_category(/trait/speed/)
 	if(S) . *= S.move_delay_mul
 
+	if(has_status_effect(SLOW))
+		. *= 2
+
 	if(horizontal)
 		. = max(.,SECONDS_TO_TICKS(1))
 

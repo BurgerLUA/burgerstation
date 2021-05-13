@@ -39,7 +39,7 @@
 		log_error("WARNING: INVALID SPECIES: [species].")
 		return FALSE
 
-	var/obj/hud/screen/B
+	var/obj/hud/flash/B
 	var/initially_disabled = FALSE
 	if(client)
 		initially_disabled = client.disable_controls
@@ -48,7 +48,6 @@
 		B.icon = 'icons/hud/discovery.dmi' //320x320
 		B.icon_state = "black"
 		B.screen_loc = "CENTER-4.5,CENTER-4.5"
-		B.client = src.client
 		B.maptext = "<font size='4'>Loading...</font>"
 		B.maptext_width = 320
 		B.maptext_height = 300

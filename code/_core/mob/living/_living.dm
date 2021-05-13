@@ -257,6 +257,27 @@
 
 	var/drops_gold = 0 //Set to a value to make this mob drop this amount of gold when it dies.
 
+	var/obj/hud/flash/flash_overlay
+
+/mob/living/proc/flash(var/duration=100)
+
+	if(!client)
+		return FALSE
+
+	if(duration <= 0)
+		return FALSE
+
+	if(flash_overlay)
+		flash_overlay.duration = max(duration,flash_overlay.duration)
+		return TRUE
+
+	flash_overlay = new
+	flash_overlay.owner = src
+	flash_overlay.duration = duration
+	client.screen += flash_overlay
+
+	return TRUE
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))

@@ -117,15 +117,15 @@
 
 	return TRUE
 
-/obj/item/flare/update_sprite()
+/obj/item/flare/get_base_transform()
 	. = ..()
 	if(is_inventory(loc))
-		var/matrix/M = matrix()
+		var/matrix/M = .
 		M.Turn(90)
-		transform = M
-	else
-		transform = matrix()
 
+/obj/item/flare/update_sprite()
+	. = ..()
+	transform = get_base_transform()
 	update_held_icon()
 
 /obj/item/flare/update_icon()

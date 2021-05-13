@@ -74,7 +74,7 @@
 	else if(!is_player_controlled() && soul_size && has_status_effect(SOULTRAP))
 		var/obj/effect/temp/soul/S = new(get_turf(src),SECONDS_TO_DECISECONDS(20))
 		S.appearance = src.appearance
-		S.transform = matrix()
+		S.transform = get_base_transform()
 		S.color = "#000000"
 		S.soul_size = soul_size
 		S.plane = PLANE_EFFECT
@@ -203,19 +203,26 @@
 
 	return ..()
 
+/mob/living/get_base_transform()
+	. = ..()
+	if(horizontal)
+		var/matrix/M = .
+		M.Turn(stun_angle)
+
 /mob/living/proc/handle_horizontal()
 
 	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
 
 	if(desired_horizontal != horizontal)
-		if(desired_horizontal) //KNOCK DOWN
-			if(stun_angle != 0) animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
+		horizontal = desired_horizontal
+		if(horizontal)
+			animate(src,transform = get_base_transform(), pixel_z = 0, time = 1)
 			update_collisions(FLAG_COLLISION_CRAWLING)
 			play_sound(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25,range_max=VIEW_RANGE*0.5)
-		else //GET UP
-			if(stun_angle != 0) animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
+		else
+			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
-		horizontal = desired_horizontal
+
 
 	return desired_horizontal
 
@@ -232,6 +239,14 @@
 	if(health && queue_health_update)
 		health.update_health()
 		queue_health_update = FALSE
+
+	if(flash_overlay && flash_overlay.duration > 0)
+		flash_overlay.duration -= LIFE_TICK
+		if(flash_overlay.duration <= 0)
+			animate(flash_overlay,alpha=0,time=SECONDS_TO_DECISECONDS(5))
+			queue_delete(flash_overlay,SECONDS_TO_DECISECONDS(10))
+			flash_overlay = null
+
 
 	return TRUE
 

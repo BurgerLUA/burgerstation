@@ -177,7 +177,6 @@
 	var/best_attribute = null
 	var/best_damage = 0
 
-
 	for(var/k in damage_table)
 		var/v = damage_table[k]
 		if(v > best_damage)
@@ -219,19 +218,27 @@
 						break
 					var/obj/effect/cleanable/blood/line/L = create_blood(/obj/effect/cleanable/blood/line,T,R.color,0,0)
 					if(L) L.dir = desired_direction
-		/*
 		if(LASER)
 
 		if(ARCANE)
-
+			add_status_effect(MANAVOID,10,10)
+			play_sound('sound/effects/impacts/savage_arcane.ogg',T,volume=80)
 		if(HEAT)
-
+			ignite(30,source=weapon)
+			play_sound('sound/effects/impacts/savage_fire.ogg',T,volume=80)
 		if(COLD)
-
+			add_status_effect(STAGGER,5,5)
+			add_status_effect(SLOW,50,50)
+			play_sound('sound/effects/impacts/savage_cold.ogg',T,volume=80)
 		if(SHOCK)
-
+			add_status_effect(ADRENALINE,100,100)
+			add_status_effect(STUN,10,10)
+			play_sound('sound/effects/impacts/savage_shock.ogg',T,volume=80)
 		if(BOMB)
+			add_status_effect(STAGGER,5,5)
+			play_sound('sound/effects/impacts/savage_bomb.ogg',T,volume=80)
 
+		/*
 		if(BIO)
 
 		if(RAD)

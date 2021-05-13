@@ -217,7 +217,7 @@
 		last_loc_y = current_loc_y
 
 	if(!start_time)
-		var/matrix/M = matrix()
+		var/matrix/M = get_base_transform()
 		var/new_angle = -ATAN2(vel_x,vel_y) + 90
 		M.Turn(new_angle)
 		transform = M

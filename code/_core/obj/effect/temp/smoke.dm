@@ -108,6 +108,11 @@
 	var/turf/T = get_turf(src)
 	try_splash(T)
 
+/obj/effect/temp/smoke/get_base_transform()
+	. = ..()
+	var/matrix/M = .
+	M.Translate(-(160 - TILE_SIZE)*0.5,-(160 - TILE_SIZE)*0.5)
+
 /obj/effect/temp/smoke/update_sprite()
 	. = ..()
 
@@ -117,9 +122,7 @@
 
 	filters += filter(type="alpha",icon = I,x=80 - TILE_SIZE*0.5,y=80 - TILE_SIZE*0.5)
 
-	var/matrix/M = matrix()
-	M.Translate(-(160 - TILE_SIZE)*0.5,-(160 - TILE_SIZE)*0.5)
-	transform = M
+	transform = get_base_transform()
 
 	animate(src,pixel_x=rand(-16,16),pixel_y=rand(-16,16),loop=1,time=20)
 	var/duration_left=duration

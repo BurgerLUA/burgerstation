@@ -13,7 +13,7 @@
 	name = L.name
 	desc = "Here lies [L.name]. They never scored."
 
-	var/matrix/M = matrix()
+	var/matrix/M = get_base_transform()
 	M.Turn(90)
 	transform = M
 

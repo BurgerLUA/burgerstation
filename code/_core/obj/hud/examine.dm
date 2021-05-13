@@ -14,14 +14,14 @@
 
 	user_colors = FALSE
 
-	maptext = "Nothing"
+	maptext = "<center>Nothing</center>"
 	maptext_width = TILE_SIZE*5
 	maptext_height = TILE_SIZE*2
 
 /obj/hud/examine/New(var/desired_loc)
 
 	if(ismob(desired_loc))
-		screen_loc = "CENTER,TOP - 2"
+		screen_loc = "CENTER-2,TOP - 2"
 		loc = desired_loc
 		var/mob/ME = desired_loc
 		if(ME.client)

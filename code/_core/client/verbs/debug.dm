@@ -21,7 +21,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
 	/client/verb/view_dps,
-	/client/verb/test_ranged_weapons
+	/client/verb/test_ranged_weapons,
+	/client/verb/debug_flash
 )
 
 /client/verb/view_dps()
@@ -459,3 +460,13 @@ client/verb/air_test(var/pressure as num)
 		INITIALIZE(R)
 		GENERATE(R)
 		FINALIZE(R)
+
+/client/verb/debug_flash()
+	set name = "Flash Self"
+	set category = "Debug"
+
+	if(!is_living(mob))
+		return FALSE
+
+	var/mob/living/L = mob
+	L.flash(SECONDS_TO_DECISECONDS(10))

@@ -44,6 +44,12 @@
 
 	return TRUE
 
+/obj/effect/cleanable/blood/get_base_transform()
+	. = ..()
+	if(randomize_angle)
+		var/matrix/M = .
+		M.Turn(pick(0,90,180,270))
+
 /obj/effect/cleanable/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 
 	if(!desired_x)
@@ -57,9 +63,8 @@
 
 	if(desired_color) color = desired_color
 
-	if(randomize_angle)
-		var/matrix/T = matrix()
-		transform = turn(T,pick(0,90,180,270))
+	transform = get_base_transform()
+
 	if(animate_position)
 		desired_x = clamp(desired_x,-TILE_SIZE,TILE_SIZE)
 		desired_y = clamp(desired_y,-TILE_SIZE,TILE_SIZE)
