@@ -3,7 +3,6 @@ obj/structure/scenery/jungle_grass
 	icon = 'icons/obj/structure/flora/jungleflora.dmi'
 	icon_state = "grassa1"
 	layer = LAYER_FLOOR_SCENERY
-	color = "#78996b"
 
 obj/structure/scenery/jungle_grass/New()
 	..()
@@ -19,7 +18,7 @@ obj/structure/scenery/jungle_rock
 	icon_state = "rock1"
 	layer = LAYER_FLOOR_SCENERY
 	plane = PLANE_FLOOR
-	color = "#78996b"
+	color = "#81a162"
 
 obj/structure/scenery/jungle_rock/New()
 	..()

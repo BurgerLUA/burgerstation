@@ -1,6 +1,6 @@
 /turf/simulated/floor/colored/grass
 	name = "grass"
-	color = "#969696"
+	color = "#858585"
 	layer = LAYER_FLOOR_GRASS
 	corner_category = "grass"
 

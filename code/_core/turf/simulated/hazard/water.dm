@@ -15,6 +15,7 @@
 	density_west = TRUE
 
 	plane = PLANE_FLOOR
+	layer = 0
 
 	desired_light_frequency = 4
 	desired_light_power = 0.5

@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "dirt"
 	plane = PLANE_FLOOR
-	layer = 0
+	layer = 0.001
 
 	corner_icons = TRUE
 	corner_category = "dirt"

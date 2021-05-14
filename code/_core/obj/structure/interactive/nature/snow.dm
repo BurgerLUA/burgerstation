@@ -82,7 +82,7 @@ obj/structure/scenery/snow_bush/New()
 	icon = 'icons/obj/structure/flora/evergreen.dmi'
 	icon_state = "evergreen_2"
 	pixel_x = -16
-	color = "#ffffaa"
+	color = "#d4d2ab"
 
 
 /obj/structure/interactive/tree/evergreen/on_destruction(var/mob/caller,var/damage = FALSE)
@@ -94,6 +94,8 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/evergreen/New(var/desired_loc)
 	icon_state = "evergreen_[rand(1,3)]"
+	pixel_x = rand(-17,-15)
+	pixel_y = rand(0,2)
 	return ..()
 
 /obj/structure/interactive/tree/jungle_small
@@ -102,7 +104,7 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "tree"
 	pixel_x = -32
 	pixel_y = 0
-	color = "#78996b"
+	color = "#779659"
 
 /obj/structure/interactive/tree/jungle_small/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -113,6 +115,8 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
+	pixel_x = rand(-33,-30)
+	pixel_y = rand(0,2)
 	return ..()
 
 /obj/structure/interactive/tree/jungle_large
@@ -121,7 +125,7 @@ obj/structure/scenery/snow_bush/New()
 	icon_state = "tree"
 	pixel_x = -48
 	pixel_y = -16
-	color = "#78996b"
+	color = "#627a49"
 
 /obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -132,4 +136,6 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
+	pixel_x = rand(-49,-46)
+	pixel_y = rand(-16,-14)
 	return ..()
