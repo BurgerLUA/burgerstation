@@ -220,6 +220,7 @@
 #include "code\_core\client\verbs\settings.dm"
 #include "code\_core\client\verbs\view.dm"
 #include "code\_core\datum\_datum.dm"
+#include "code\_core\datum\collectable_poster.dm"
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\addiction\_addiction.dm"
 #include "code\_core\datum\addiction\addiction_nicotine.dm"
