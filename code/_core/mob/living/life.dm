@@ -247,6 +247,8 @@
 			queue_delete(flash_overlay,SECONDS_TO_DECISECONDS(10))
 			flash_overlay = null
 
+	if(deafened_duration && deafened_duration > 0)
+		deafened_duration -= LIFE_TICK
 
 	return TRUE
 

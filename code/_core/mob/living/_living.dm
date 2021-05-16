@@ -259,7 +259,34 @@
 
 	var/obj/hud/flash/flash_overlay
 
-/mob/living/proc/flash(var/duration=100)
+	var/deafened_duration = 0
+
+/mob/living/proc/bang(var/duration=100)
+
+	if(!client)
+		return FALSE
+
+	if(duration <= 0)
+		return FALSE
+
+	deafened_duration = max(deafened_duration,duration)
+
+/mob/living/get_sound_environment()
+
+	if(deafened_duration > 0)
+		return ENVIRONMENT_UNDERWATER
+
+	. = ..()
+
+/mob/living/get_sound_volume(var/volume=100,var/channel=1)
+
+	. = ..()
+
+	if(deafened_duration > 0 && channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_FLASHBANG)
+		. *= 0.01
+
+
+/mob/living/proc/flash(var/duration=100,var/desired_color="#FFFFFF")
 
 	if(!client)
 		return FALSE
@@ -269,11 +296,13 @@
 
 	if(flash_overlay)
 		flash_overlay.duration = max(duration,flash_overlay.duration)
+		flash_overlay.color = desired_color
 		return TRUE
 
 	flash_overlay = new
 	flash_overlay.owner = src
 	flash_overlay.duration = duration
+	flash_overlay.color = desired_color
 	client.screen += flash_overlay
 
 	return TRUE

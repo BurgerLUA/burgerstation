@@ -734,6 +734,7 @@
 #include "code\_core\mob\life.dm"
 #include "code\_core\mob\lighting.dm"
 #include "code\_core\mob\movement.dm"
+#include "code\_core\mob\sound.dm"
 #include "code\_core\mob\abstract\_abstract.dm"
 #include "code\_core\mob\abstract\observer\_observer.dm"
 #include "code\_core\mob\abstract\observer\ghost.dm"

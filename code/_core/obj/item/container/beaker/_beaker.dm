@@ -110,3 +110,13 @@
 	reagents.add_reagent(/reagent/phosphorous,40)
 	reagents.add_reagent(/reagent/lube,60)
 	return ..()
+
+/obj/item/container/beaker/flashbang_01/Generate()
+	reagents.add_reagent(/reagent/ammonia,20)
+	reagents.add_reagent(/reagent/nitrogen,40)
+	return ..()
+
+/obj/item/container/beaker/flashbang_02/Generate()
+	reagents.add_reagent(/reagent/ammonia,20)
+	reagents.add_reagent(/reagent/fuel/hydrogen,40)
+	return ..()

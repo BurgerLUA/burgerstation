@@ -272,7 +272,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	return C
 
-/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -375,22 +375,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
-		var/local_volume = volume
-		if(M.client.settings)
-			local_volume *= M.client.settings.loaded_data["volume_master"] / 100
-			switch(channel)
-				if(SOUND_CHANNEL_MUSIC)
-					local_volume *= M.client.settings.loaded_data["volume_music"] / 100
-				if(SOUND_CHANNEL_AMBIENT)
-					local_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
-				if(SOUND_CHANNEL_FOOTSTEPS)
-					local_volume *= M.client.settings.loaded_data["volume_footsteps"] / 100
-				if(SOUND_CHANNEL_UI)
-					local_volume *= M.client.settings.loaded_data["volume_ui"] / 100
-				if(SOUND_CHANNEL_FX)
-					local_volume *= M.client.settings.loaded_data["volume_fx"] / 100
-			if(local_volume <= 0)
-				continue
+		var/local_volume = M.get_sound_volume(volume,channel)
+		if(local_volume <= 0)
+			continue
 
 		var/turf/mob_turf = get_turf(M)
 		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
@@ -406,6 +393,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		created_sound.y = 0
 		created_sound.volume = local_volume
 		created_sound.environment = M.get_sound_environment()
+
 		M << created_sound
 
 	return created_sound

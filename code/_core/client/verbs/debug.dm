@@ -470,3 +470,4 @@ client/verb/air_test(var/pressure as num)
 
 	var/mob/living/L = mob
 	L.flash(SECONDS_TO_DECISECONDS(10))
+	L.bang(SECONDS_TO_DECISECONDS(10))

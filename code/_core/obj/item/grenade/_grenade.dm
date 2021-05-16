@@ -23,13 +23,17 @@
 
 	weight = 1
 
+	var/spent=FALSE
+
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("open")
+	SAVEVAR("spent")
 
 /obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("open")
+	LOADVAR("spent")
 
 /obj/item/grenade/Destroy()
 
@@ -82,7 +86,6 @@
 	else
 		trigger(owner,source,-1,-1)
 
-
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
 	update_sprite()
@@ -107,7 +110,9 @@
 
 /obj/item/grenade/update_icon()
 
-	if(length(stored_containers) && stored_trigger)
+	if(spent)
+		icon_state = "[initial(icon_state)]_spent"
+	else if(length(stored_containers) && stored_trigger)
 		if(stored_trigger.active)
 			icon_state = "[initial(icon_state)]_active"
 		else
@@ -121,6 +126,9 @@
 
 /obj/item/grenade/click_self(var/mob/caller)
 
+	if(spent)
+		return ..()
+
 	INTERACT_CHECK
 
 	if(stored_trigger)
@@ -133,6 +141,9 @@
 	return TRUE
 
 /obj/item/grenade/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(spent)
+		return ..()
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -224,10 +235,14 @@
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
 		B.reagents.update_container()
 
+	spent = TRUE
+
 	src.reagents.update_container()
 	src.reagents.process_recipes(caller)
 
-	return ..()
+	update_sprite()
+
+	. = ..()
 
 /obj/item/grenade/timed/Generate()
 	var/obj/item/device/timer/T = new(src)
@@ -274,4 +289,14 @@
 /obj/item/grenade/timed/lube_smoke/Generate()
 	stored_containers += new /obj/item/container/beaker/large/lube_smoke_01(src)
 	stored_containers += new /obj/item/container/beaker/large/lube_smoke_02(src)
+	return ..()
+
+/obj/item/grenade/timed/flashbang
+	name = "timed flashbang grenade"
+	desc = "Kab-"
+	desc_extended = "A prebuilt timed flashbang grenade. The labeling indicates that the fuse is set to 3 seconds."
+
+/obj/item/grenade/timed/flashbang/Generate()
+	stored_containers += new /obj/item/container/beaker/flashbang_01(src)
+	stored_containers += new /obj/item/container/beaker/flashbang_02(src)
 	return ..()
