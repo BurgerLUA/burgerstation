@@ -58,6 +58,11 @@ obj/structure/scenery/snow_bush/New()
 /obj/structure/interactive/tree/can_be_attacked()
 	return TRUE
 
+/obj/structure/interactive/tree/New()
+	. = ..()
+	pixel_x += rand(-3,3)
+	pixel_y += rand(-1,2)
+
 /obj/structure/interactive/tree/pine
 	name = "pine tree"
 	icon = 'icons/obj/structure/flora/pinetrees.dmi'
@@ -94,8 +99,6 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/evergreen/New(var/desired_loc)
 	icon_state = "evergreen_[rand(1,3)]"
-	pixel_x = rand(-17,-15)
-	pixel_y = rand(0,2)
 	return ..()
 
 /obj/structure/interactive/tree/jungle_small
@@ -115,8 +118,6 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
-	pixel_x = rand(-33,-30)
-	pixel_y = rand(0,2)
 	return ..()
 
 /obj/structure/interactive/tree/jungle_large
@@ -136,6 +137,4 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
-	pixel_x = rand(-49,-46)
-	pixel_y = rand(-16,-14)
 	return ..()
