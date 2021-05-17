@@ -64,11 +64,8 @@
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 	var/is_container = FALSE //Set to true if it uses the container inventory system.
 
-	var/x_offset_initial = 0
-	var/y_offset_initial = 0
-
-	var/x_offset_mul = 0
-	var/y_offset_mul = 0
+	var/x_offset = 0
+	var/y_offset = 0
 
 	var/draw_extra = FALSE
 
@@ -375,6 +372,9 @@
 			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
 
+	I.pixel_x = initial(I.pixel_x) + x_offset
+	I.pixel_y = initial(I.pixel_y) + y_offset
+
 	return TRUE
 
 /obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
@@ -426,8 +426,8 @@
 		return null
 
 	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
-	I.pixel_x = pixel_x_offset
-	I.pixel_y = pixel_y_offset
+	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
+	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
 	update_stats()
 

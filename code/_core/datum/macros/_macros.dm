@@ -82,7 +82,6 @@
 			owner.mob.attack_flags |= CONTROL_MOD_DROP
 		if("hold")
 			owner.mob.attack_flags |= CONTROL_MOD_BLOCK
-			owner.is_zoomed = 0x0
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
 				L.handle_blocking()
@@ -104,11 +103,14 @@
 		if("kick")
 			owner.mob.attack_flags |= CONTROL_MOD_KICK
 		if("zoom")
-			if((owner.mob.attack_flags & CONTROL_MOD_BLOCK) || owner.is_zoomed)
-				owner.is_zoomed = 0x0
-			else
-				owner.zoom_held = TRUE
+			owner.zoom_held = TRUE
+			if(!owner.is_zoomed)
 				owner.is_zoomed = owner.mob.dir
+				owner.zoom_time = world.time
+				var/real_angle = dir2angle(owner.mob.dir)
+				var/desired_x_offset = sin(real_angle)
+				var/desired_y_offset = cos(real_angle)
+				owner.update_camera_offset(desired_x_offset,desired_y_offset)
 		else
 			winset(owner, null, "command='[command]'")
 
@@ -167,6 +169,9 @@
 			owner.mob.attack_flags &= ~CONTROL_MOD_KICK
 		if("zoom")
 			owner.zoom_held = FALSE
+			if(owner.is_zoomed && (world.time - owner.zoom_time) > 4)
+				owner.zoom_time = world.time
+				owner.is_zoomed = 0x0
 		if("say")
 			owner.mob.say()
 

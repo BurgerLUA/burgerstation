@@ -39,6 +39,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/zoom_held = FALSE
 	var/is_zoomed = 0x0 //Takes a dir as a value.
+	var/zoom_time = 0 //Last time zoomed.
 
 	var/next_allowed_topic = -1
 

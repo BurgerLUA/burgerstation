@@ -59,15 +59,13 @@
 
 	priority = 2
 
+	x_offset = 16
+
 /obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
-	if(.)
-		if(is_advanced(owner))
-			var/mob/living/advanced/A = owner
-			A.left_item = I
-		I.pixel_x = 16
-
-
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.left_item = I
 
 /obj/hud/inventory/organs/left_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
 	. = ..()
@@ -99,13 +97,13 @@
 
 	priority = 3
 
+	x_offset = 16
+
 /obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
-	if(.)
-		if(is_advanced(owner))
-			var/mob/living/advanced/A = owner
-			A.right_item = I
-		I.pixel_x = 16
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.right_item = I
 
 /obj/hud/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
 	. = ..()

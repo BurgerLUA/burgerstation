@@ -81,7 +81,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped/Generate()
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/Generate()
 
 	attachment_stock = new /obj/item/attachment/stock/sniper_127(src)
 	INITIALIZE(attachment_stock)
@@ -93,4 +93,6 @@
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
 
-	return ..()
+	. = ..()
+
+	update_sprite()

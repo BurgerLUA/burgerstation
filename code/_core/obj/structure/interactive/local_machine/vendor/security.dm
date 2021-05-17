@@ -98,7 +98,7 @@
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,

@@ -50,32 +50,38 @@
 		mob.examine_overlay.maptext = null
 
 
-	if(zoom_held && mob && isturf(location))
-		var/zoom_mul = 1
+	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
 		var/real_angle = get_angle(mob,location) + 90
+		var/desired_x_offset = sin(real_angle)
+		var/desired_y_offset = cos(real_angle)
 		var/real_dir = angle2dir(real_angle)
 		is_zoomed = real_dir
 		mob.set_dir(real_dir)
-		if(is_advanced(mob))
-			var/mob/living/advanced/A = mob
-			if(A.right_item && A.right_item.wielded && (A.right_item.wielded || !A.right_item.can_wield))
-				zoom_mul = A.right_item.zoom_mul
-				if(istype(A.right_item,/obj/item/weapon/ranged/))
-					var/obj/item/weapon/ranged/R = A.right_item
-					if(R.attachment_stats["zoom_mul"])
-						zoom_mul *= R.attachment_stats["zoom_mul"]
-			else if(A.left_item && A.left_item.wielded && (A.left_item.wielded || !A.left_item.can_wield))
-				zoom_mul = A.left_item.zoom_mul
-				if(istype(A.left_item,/obj/item/weapon/ranged/))
-					var/obj/item/weapon/ranged/R = A.left_item
-					if(R.attachment_stats["zoom_mul"])
-						zoom_mul *= R.attachment_stats["zoom_mul"]
-		var/desired_x_offset = sin(real_angle)
-		var/desired_y_offset = cos(real_angle)
-		zoom_pixel_x = desired_x_offset*TILE_SIZE*ZOOM_RANGE*zoom_mul
-		zoom_pixel_y = desired_y_offset*TILE_SIZE*ZOOM_RANGE*zoom_mul
+		update_camera_offset(desired_x_offset,desired_y_offset)
+
 
 	. = ..()
+
+/client/proc/update_camera_offset(var/desired_x_offset=0,var/desired_y_offset=0)
+	var/zoom_mul = 1
+	if(is_advanced(mob))
+		var/mob/living/advanced/A = mob
+		if(A.right_item && A.right_item.wielded && (A.right_item.wielded || !A.right_item.can_wield))
+			zoom_mul = A.right_item.zoom_mul
+			if(istype(A.right_item,/obj/item/weapon/ranged/))
+				var/obj/item/weapon/ranged/R = A.right_item
+				if(R.attachment_stats["zoom_mul"])
+					zoom_mul *= R.attachment_stats["zoom_mul"]
+		else if(A.left_item && A.left_item.wielded && (A.left_item.wielded || !A.left_item.can_wield))
+			zoom_mul = A.left_item.zoom_mul
+			if(istype(A.left_item,/obj/item/weapon/ranged/))
+				var/obj/item/weapon/ranged/R = A.left_item
+				if(R.attachment_stats["zoom_mul"])
+					zoom_mul *= R.attachment_stats["zoom_mul"]
+	zoom_pixel_x = desired_x_offset*TILE_SIZE*ZOOM_RANGE*zoom_mul
+	zoom_pixel_y = desired_y_offset*TILE_SIZE*ZOOM_RANGE*zoom_mul
+
+
 
 /client/proc/handle_camera()
 
