@@ -378,3 +378,80 @@
 	id = SLOW
 	minimum = 10
 	maximum = 300
+
+/status_effect/consencrated
+	name = "Consencrated"
+	desc = "You've been consencrated!"
+	id = CONSECRATED
+	minimum = 50
+	maximum = 600
+
+
+/status_effect/consencrated/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	. = ..()
+
+	if(!.)
+		return FALSE
+
+	if(!victim || !victim.health)
+		return FALSE
+
+	var/list/defense = victim.health.get_defense(null,null,TRUE)
+
+	if(defense[HOLY] > defense[DARK])
+		return FALSE
+
+	return TRUE
+
+/status_effect/consencrated/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	. = ..()
+	owner.burn_regen_buffer -= 5 * LIFE_TICK
+
+/status_effect/cursed
+	name = "Cursed"
+	desc = "You've been cursed!"
+	id = CURSED
+	minimum = 50
+	maximum = 600
+
+/status_effect/cursed/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	. = ..()
+
+	if(!.)
+		return FALSE
+
+	if(!victim || !victim.health)
+		return FALSE
+
+	var/list/defense = victim.health.get_defense(null,null,TRUE)
+
+	if(defense[HOLY] < defense[DARK])
+		return FALSE
+
+	return TRUE
+
+/status_effect/cursed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	. = ..()
+	owner.brute_regen_buffer -= 5 * LIFE_TICK
+
+
+
+/status_effect/blighted
+	name = "Blighted"
+	desc = "You've been blighted!"
+	id = BLIGHTED
+	minimum = 50
+	maximum = 600
+
+/status_effect/blighted/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	. = ..()
+	owner.brute_regen_buffer = min(owner.brute_regen_buffer,0)
+	owner.burn_regen_buffer = min(owner.burn_regen_buffer,0)
+	owner.tox_regen_buffer = min(owner.tox_regen_buffer,0)
+	owner.pain_regen_buffer = min(owner.pain_regen_buffer,0)
+	owner.rad_regen_buffer = min(owner.rad_regen_buffer,0)
+	owner.sanity_regen_buffer = min(owner.sanity_regen_buffer,0)
+	owner.mana_regen_buffer = min(owner.mana_regen_buffer,0)
+	owner.stamina_regen_buffer = min(owner.stamina_regen_buffer,0)

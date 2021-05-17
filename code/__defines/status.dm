@@ -85,3 +85,9 @@
 #define SLOW "slow"
 
 #define MANAVOID "manavoid"
+
+#define CONSECRATED "consecrated"
+
+#define CURSED "cursed"
+
+#define BLIGHTED "blighted"
