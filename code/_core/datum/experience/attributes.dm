@@ -27,14 +27,26 @@
 	name = "Fortitude"
 	id = ATTRIBUTE_FORTITUDE
 	desc = "Cock and Ball Torture (also known as CBT) is a German goregrind band formed on 22 February 1997. The group is known for its groove-heavy riffing and pitchshifted vocals. The band is noted for its pornography-themed imagery and song titles and are one of the more noteworthy acts in the pornogrind subgenre."
-	desc_extended = "A measure of how resistant you are to the troubles of this world. Affects pain tolerance and physical damage resistance and health regeneration."
+	desc_extended = "A measure of how resilient you are to this world. Affects pain resistance and health regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.5
 	experience_multiplier = 21.5
 	combat_level_mul = 0.5
 
+/experience/attribute/constitution/ //0% complete
+	//Leveled up by taking damage.
+	//Each point leveled up = 1xp
+	name = "Constitution"
+	id = ATTRIBUTE_CONSTITUTION
+	desc = "Not the worst stat!"
+	desc_extended = "A measure of how resistant you are to this world. Affects resistances to all non-pain based damage types."
+	flags = ATTRIBUTE_STAT
+	experience_power = 1
+	experience_multiplier = 1.7
+	combat_level_mul = 0.75
+
 /experience/attribute/vitality/ //100% complete
-	//Leveled by increasing Strength and Fortitude.
+	//Leveled by increasing Strength, Fortitude, Constitution.
 	//Each point leveled = 1xp
 	name = "Vitality"
 	id = ATTRIBUTE_VITALITY
@@ -49,6 +61,12 @@
 	if(owner && owner.health)
 		owner.health.update_health_stats()
 	return ..()
+
+
+
+
+
+
 
 //Wizard
 /experience/attribute/intelligence/ //100% complete
@@ -70,6 +88,18 @@
 	id = ATTRIBUTE_WILLPOWER
 	desc = "Where there is a will, there is a way."
 	desc_extended = "A measure of how long your mind can last in this world. Affects magic resistance and and mana regeneration."
+	flags = ATTRIBUTE_RESISTANCE
+	experience_power = 1.64
+	experience_multiplier = 21.5
+	combat_level_mul = 0.5
+
+/experience/attribute/soul //100% complete
+	//Leveled up by regenerating mana.
+	//Each point of mana regened = 1xp
+	name = "Soul"
+	id = ATTRIBUTE_SOUL
+	desc = "Not how good you are at music."
+	desc_extended = "A measure of how strong your soul is. Affects special soul-based encounters."
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.64
 	experience_multiplier = 21.5
@@ -133,6 +163,18 @@
 	if(owner && owner.health)
 		owner.health.update_health_stats()
 	return ..()
+
+/experience/attribute/agility/ //0% complete
+	//Leveled up by moving.
+	//Each point leveled up = 1xp
+	name = "Agility"
+	id = ATTRIBUTE_AGILITY
+	desc = "Agile!"
+	desc_extended = "A measure of how fast you move. Affects your movement speed as well as the speed of which you perform movement based actions."
+	flags = ATTRIBUTE_STAT
+	experience_power = 1
+	experience_multiplier = 1.7
+	combat_level_mul = 0.75
 
 //None. Everyone starts with 50.
 /experience/attribute/luck/ //50% complete.

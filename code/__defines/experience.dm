@@ -12,14 +12,17 @@
 #define ATTRIBUTE_STRENGTH "strength"
 #define ATTRIBUTE_VITALITY "vitality"
 #define ATTRIBUTE_FORTITUDE "fortitude"
+#define ATTRIBUTE_CONSTITUTION "constitution"
 
 #define ATTRIBUTE_INTELLIGENCE "intelligence"
 #define ATTRIBUTE_WISDOM "wisdom"
 #define ATTRIBUTE_WILLPOWER "willpower"
+#define ATTRIBUTE_SOUL "soul"
 
 #define ATTRIBUTE_DEXTERITY "dexterity"
 #define ATTRIBUTE_RESILIENCE "resilience"
 #define ATTRIBUTE_ENDURANCE "endurance"
+#define ATTRIBUTE_AGILITY "agility"
 
 #define ATTRIBUTE_LUCK "luck"
 
