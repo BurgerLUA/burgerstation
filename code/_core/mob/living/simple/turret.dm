@@ -179,7 +179,7 @@
 		caller.to_chat(span("warning","The turret is destroyed!"))
 		return FALSE
 
-	if(get_dist(caller,src) > 1)
+	if(bounds_dist(caller,src) > 1)
 		caller.to_chat(span("warning","You're too far away to pack up \the [src.name]!"))
 		return FALSE
 

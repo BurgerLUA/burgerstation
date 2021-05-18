@@ -20,7 +20,7 @@
 
 	if(objective_attack && alert_level == ALERT_LEVEL_COMBAT)
 
-		var/target_distance = get_dist(owner,objective_attack)
+		var/target_distance = bounds_dist(owner,objective_attack)
 
 		if(target_distance <= attack_distance_max)
 			return ..()

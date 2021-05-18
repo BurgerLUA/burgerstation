@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(bosses)
 	for(var/v in L.players_fighting_boss)
 		var/mob/living/advanced/player/P = v
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-		if(get_dist(P,L) >= L.boss_range*2)
+		if(bounds_dist(P,L) >= L.boss_range*2)
 			L.remove_player_from_boss(P)
 
 	return TRUE

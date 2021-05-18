@@ -8,8 +8,6 @@
 
 	value = 6000
 
-	pixel_w = -16
-
 	ai = /ai/boss/ash_drake/
 
 	butcher_contents = list(
@@ -28,6 +26,9 @@
 	mana_base = 2000
 
 	boss_loot = /loot/lavaland/ash_drake
+
+	bound_height = TILE_SIZE
+	bound_width = TILE_SIZE*2
 
 	var/boss_state = 0
 	//0 = walking
@@ -134,7 +135,7 @@
 			if(L == src)
 				continue
 
-			var/is_center = get_dist(src,L) == 0
+			var/is_center = bounds_dist(src,L) == 0
 
 			step(L,get_dir(src,L))
 			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)

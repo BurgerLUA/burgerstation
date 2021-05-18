@@ -22,11 +22,10 @@
 
 	. = ..()
 
-	if(!owner_as_herald.dead && owner_as_herald.next_teleport <= world.time && get_dist(owner_as_herald,attacker) >= 4)
+	if(!owner_as_herald.dead && owner_as_herald.next_teleport <= world.time && bounds_dist(owner_as_herald,attacker) >= 4)
 		if(attacker)
 			owner_as_herald.teleport_target(attacker)
 			set_objective(attacker)
 		else
 			owner_as_herald.teleport_random()
 
-	

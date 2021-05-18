@@ -16,7 +16,7 @@
 	if(R.material_id != material_id)
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
 		return FALSE
-	if(get_dist(caller,src) > 1)
+	if(bounds_dist(caller,src) > 1)
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE

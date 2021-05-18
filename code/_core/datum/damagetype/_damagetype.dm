@@ -321,7 +321,7 @@
 				if(is_living(attacker))
 					var/mob/living/LA = attacker
 					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
-					if(get_dist(A,LA) <= 1)
+					if(bounds_dist(A,LA) <= 1)
 						LA.add_status_effect(PARRIED,30,30)
 				return FALSE
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)

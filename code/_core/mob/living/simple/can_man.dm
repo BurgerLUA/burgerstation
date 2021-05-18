@@ -8,9 +8,12 @@
 
 	value = 20000
 
-	pixel_w = -8
+	bound_height = TILE_SIZE
+	bound_width = TILE_SIZE*2
 
 	ai = /ai/boss/can_man
+
+	pixel_x = 8
 
 	boss_loot = /loot/lavaland/can_man
 

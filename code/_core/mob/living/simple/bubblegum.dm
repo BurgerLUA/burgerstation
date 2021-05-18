@@ -9,7 +9,8 @@
 
 	boss_loot = /loot/lavaland/bubblegum
 
-	pixel_x = -32
+	bound_height = TILE_SIZE
+	bound_width = TILE_SIZE*3
 
 	value = 4000
 

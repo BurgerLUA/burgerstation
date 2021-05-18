@@ -111,7 +111,7 @@
 			A = A.change_victim(attacker,src)
 			if(A == victim || A == attacker)
 				continue
-			if(get_dist(attacker,A) > object_to_damage_with.attack_range)
+			if(bounds_dist(attacker,A) > object_to_damage_with.attack_range)
 				continue
 			victims += A
 			cleave_number--

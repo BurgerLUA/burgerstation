@@ -112,7 +112,7 @@
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
 
-	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
+	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && bounds_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
 		if(blade_damage > 0 && src.can_be_butchered(L,weapon))
@@ -240,7 +240,7 @@
 			add_status_effect(BLIGHTED,100,100)
 			play_sound('sound/effects/impacts/savage_bio.ogg',T,volume=80)
 		if(RAD)
-			//TODO: Add radiation bubbles.
+			//TODO: Add radiation bubbles?.
 			play_sound('sound/effects/impacts/savage_rad.ogg',T,volume=80)
 		if(HOLY)
 			add_status_effect(CONSECRATED,300,300)

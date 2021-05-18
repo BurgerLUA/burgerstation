@@ -40,7 +40,7 @@
 		return FALSE
 	if(!L.ai && !L.client)
 		return FALSE
-	if((!L.client || !L.client.is_zoomed) && get_dist(A,L) > VIEW_RANGE)
+	if((!L.client || !L.client.is_zoomed) && bounds_dist(A,L) > VIEW_RANGE)
 		return FALSE
 	if(!L.is_facing(A))
 		return FALSE
@@ -63,7 +63,7 @@
 		tracked_targets |= L
 		if(is_seen_by(src,L))
 			current_viewers += L
-		else if(get_dist(L,src) <= VIEW_RANGE*0.5)
+		else if(bounds_dist(L,src) <= VIEW_RANGE*0.5)
 			current_targets += L
 
 	if(!length(current_viewers))
@@ -82,7 +82,7 @@
 				if(L.z != src.z)
 					tracked_targets -= k
 					continue
-				var/distance = get_dist(src,L)
+				var/distance = bounds_dist(src,L)
 				if(distance >= 75) //Too far.
 					tracked_targets -= L
 					continue

@@ -133,7 +133,7 @@
 	if(target.dead)
 		return FALSE
 
-	if(get_dist(src,target) > 1)
+	if(bounds_dist(src,target) > 1)
 		return FALSE
 
 	if(!get_inject_amount(target))

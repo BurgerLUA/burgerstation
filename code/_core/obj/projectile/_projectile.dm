@@ -265,7 +265,7 @@
 			return FALSE
 
 		if(DT.falloff > 0)
-			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
+			damage_multiplier *= clamp(1 - ((bounds_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
 		if(damage_multiplier > 0)
 			DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
@@ -289,8 +289,8 @@
 	if(is_living(source))
 		var/mob/living/L = source
 		if(L.ai)
-			. *= max(1,get_dist(start_turf,target)/VIEW_RANGE)
+			. *= max(1,bounds_dist(start_turf,target)/VIEW_RANGE)
 		if(target_atom)
-			. *= max(1,get_dist(target_atom,target)/(VIEW_RANGE*0.5))
+			. *= max(1,bounds_dist(target_atom,target)/(VIEW_RANGE*0.5))
 
 	. *= 10

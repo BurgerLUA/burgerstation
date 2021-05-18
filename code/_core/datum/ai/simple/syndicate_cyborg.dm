@@ -16,7 +16,7 @@
 
 	if(objective_attack)
 
-		if(next_shoot > world.time || get_dist(owner,objective_attack) <= attack_distance_max)
+		if(next_shoot > world.time || bounds_dist(owner,objective_attack) <= attack_distance_max)
 			return ..()
 
 		owner_as_borg.shoot_gun(objective_attack)

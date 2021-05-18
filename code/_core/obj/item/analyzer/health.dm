@@ -17,7 +17,7 @@
 
 /obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,target) > 1)
+	if(bounds_dist(caller,target) > 1)
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 

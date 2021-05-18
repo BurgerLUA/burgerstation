@@ -30,9 +30,9 @@
 /ai/carp/handle_movement()
 
 	if(!objective_attack && carp_leader)
-		if(get_dist(carp_leader,owner) < 2)
+		if(bounds_dist(carp_leader,owner) < 2)
 			owner.move_dir = get_dir(carp_leader,owner)
-		else if(get_dist(carp_leader,owner) > 2)
+		else if(bounds_dist(carp_leader,owner) > 2)
 			owner.move_dir = get_dir(owner,carp_leader)
 		else
 			owner.move_dir = 0

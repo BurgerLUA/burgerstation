@@ -8,7 +8,8 @@
 
 	value = 4000
 
-	pixel_x = -32
+	bound_height = TILE_SIZE
+	bound_width = TILE_SIZE*3
 
 	ai = /ai/boss/colossus/
 

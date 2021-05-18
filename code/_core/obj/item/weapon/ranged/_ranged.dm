@@ -324,7 +324,7 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(A.ai)
-			. *= max(1,(heat_current*ai_heat_sensitivity)*(get_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
+			. *= max(1,(heat_current*ai_heat_sensitivity)*(bounds_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
 
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)

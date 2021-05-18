@@ -80,7 +80,7 @@
 
 	var/list/hearers = list()
 	for(var/mob/living/L in view(flash_range,T))
-		var/sound_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
+		var/sound_mod = 0.25 + (1 - (bounds_dist(L,T)/VIEW_RANGE))*0.75
 		var/duration = SECONDS_TO_DECISECONDS(10)*sound_mod
 		L.flash(duration)
 		L.bang(duration*2)

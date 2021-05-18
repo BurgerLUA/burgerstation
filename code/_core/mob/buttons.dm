@@ -66,7 +66,7 @@
 	if(!(attack_flags & CONTROL_MOD_DISARM))
 		return FALSE
 
-	if(get_dist(T,src) > 1 )
+	if(bounds_dist(T,src) > 1 )
 		return FALSE
 
 	if(!T)

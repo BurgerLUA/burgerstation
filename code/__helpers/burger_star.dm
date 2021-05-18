@@ -14,7 +14,7 @@
 	if(destination == starting_turf)
 		return null
 
-	var/distance = get_dist(mover,destination)
+	var/distance = bounds_dist(mover,destination)
 	if(distance >= 64)
 		return null
 
@@ -196,7 +196,7 @@
 			if(!best_turf)
 				best_turf = T
 				continue
-			if(get_dist(best_turf,destination) > get_dist(T,destination))
+			if(bounds_dist(best_turf,destination) > bounds_dist(T,destination))
 				best_turf = T
 		current_turf = best_turf
 		junction_paths[junctions[length(junctions)]] += current_turf

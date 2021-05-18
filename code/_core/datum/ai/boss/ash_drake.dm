@@ -34,7 +34,7 @@
 		fly_time += 1
 		return TRUE
 
-	if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max))
+	if(!owner_as_ash_drake.health || (objective_attack && bounds_dist(owner,objective_attack) <= attack_distance_max))
 		return ..()
 
 	if(objective_attack && !owner_as_ash_drake.boss_state)

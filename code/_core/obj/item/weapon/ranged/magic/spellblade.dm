@@ -48,7 +48,7 @@
 
 /obj/item/weapon/ranged/magic/spellblade/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
-	if(get_dist(caller,object) <= 1)
+	if(bounds_dist(caller,object) <= 1)
 		return FALSE
 
 	if(!active)

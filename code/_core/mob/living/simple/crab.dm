@@ -58,8 +58,9 @@
 	boss_icon_state = "crab_king"
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
-	pixel_x = -32
-	pixel_y = -12
+
+	bound_height = TILE_SIZE*2
+	bound_width = TILE_SIZE*3
 
 	health_base = 2500
 	stamina_base = 1000

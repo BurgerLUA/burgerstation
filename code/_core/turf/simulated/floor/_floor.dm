@@ -59,7 +59,7 @@
 
 /turf/simulated/floor/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
 
-	if(get_dist(caller,src) > 1)
+	if(bounds_dist(caller,src) > 1)
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 

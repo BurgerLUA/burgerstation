@@ -67,7 +67,7 @@ var/global/list/ckey_to_death_box_data = list()
 		P?.to_chat(span("warning","You can't do this while dead!"))
 		return null
 
-	if(A && get_dist(A,P) > 3)
+	if(A && bounds_dist(A,P) > 3)
 		P.to_chat(span("warning","You're too far away!"))
 		return null
 
@@ -103,7 +103,7 @@ var/global/list/ckey_to_death_box_data = list()
 		P?.to_chat(span("warning","You can't do this while dead!"))
 		return null
 
-	if(A && get_dist(A,P) > 3)
+	if(A && bounds_dist(A,P) > 3)
 		P.to_chat(span("warning","You're too far away!"))
 		return null
 
@@ -116,7 +116,7 @@ var/global/list/ckey_to_death_box_data = list()
 		P?.to_chat(span("warning","You can't do this while dead!"))
 		return null
 
-	if(A && get_dist(A,P) > 3)
+	if(A && bounds_dist(A,P) > 3)
 		P.to_chat(span("warning","You're too far away!"))
 		return null
 

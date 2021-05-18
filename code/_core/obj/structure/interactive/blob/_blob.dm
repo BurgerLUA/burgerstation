@@ -60,7 +60,7 @@
 		if(!L.can_be_attacked(src,src,null,damage_type))
 			continue
 		src.attack(src,L,precise = TRUE)
-		if(L.loc != src.loc && src.loc.Enter(L,L.loc) && get_dist(linked_core,L) >= get_dist(linked_core,src))
+		if(L.loc != src.loc && src.loc.Enter(L,L.loc) && bounds_dist(linked_core,L) >= bounds_dist(linked_core,src))
 			L.force_move(src.loc)
 		. = TRUE
 
@@ -84,7 +84,7 @@
 	else
 		update_sprite()
 
-	if(damage_amount > 0 && get_dist(attacker,src) <= 1 && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
+	if(damage_amount > 0 && bounds_dist(attacker,src) <= 1 && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
 		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
 
 

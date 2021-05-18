@@ -83,14 +83,14 @@ mob/living/advanced/get_movement_delay()
 
 	for(var/k in using_inventories)
 		var/obj/item/I = k
-		if(get_dist(src,I) > 1)
+		if(bounds_dist(src,I) > 1)
 			I.close_inventory(src)
 
 	if(. && isturf(old_loc))
 		var/turf/T = old_loc
 		//Right hand
 		if(right_hand && right_hand.grabbed_object)
-			var/distance = get_dist(src,right_hand.grabbed_object)
+			var/distance = bounds_dist(src,right_hand.grabbed_object)
 			var/turf/grabbed_turf = get_turf(right_hand.grabbed_object)
 			var/bypass_safe = TRUE
 			if(src.loyalty_tag && is_living(right_hand.grabbed_object))
@@ -106,7 +106,7 @@ mob/living/advanced/get_movement_delay()
 
 		//Left hand
 		if(left_hand && left_hand.grabbed_object)
-			var/distance = get_dist(src,left_hand.grabbed_object)
+			var/distance = bounds_dist(src,left_hand.grabbed_object)
 			var/turf/grabbed_turf = get_turf(left_hand.grabbed_object)
 			var/bypass_safe = TRUE
 			if(src.loyalty_tag && is_living(left_hand.grabbed_object))

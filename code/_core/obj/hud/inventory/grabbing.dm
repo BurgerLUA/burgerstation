@@ -62,7 +62,7 @@
 	if(!object || !caller)
 		return FALSE
 
-	if(get_dist(caller,object) >= 2)
+	if(bounds_dist(caller,object) >= 2)
 		return FALSE
 
 	if(!isturf(caller.loc))

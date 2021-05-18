@@ -183,7 +183,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	. = list()
 	for(var/k in all_mobs_with_clients)
 		var/mob/M = k
-		if(get_dist(epicenter,M) > range)
+		if(bounds_dist(epicenter,M) > range)
 			continue
 		. += M
 
@@ -381,7 +381,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		var/turf/mob_turf = get_turf(M)
 		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
-			var/distance = max(0,get_dist(mob_turf,source_turf)-(VIEW_RANGE*0.5)) - range_min
+			var/distance = max(0,bounds_dist(mob_turf,source_turf)-(VIEW_RANGE*0.5)) - range_min
 			if(sound_setting == SOUND_SETTING_FOOTSTEPS && distance <= 0)
 				distance = 4
 			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max

@@ -32,7 +32,7 @@
 	return TRUE
 
 /ai/proc/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
+	if(objective_attack && bounds_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
 		var/is_left_click = prob(left_click_chance)
 		spawn do_attack(objective_attack,is_left_click)
 		return TRUE
@@ -41,7 +41,7 @@
 
 /ai/proc/get_attack_score(var/atom/A)
 
-	var/dist = get_dist(A.loc,owner.loc)
+	var/dist = bounds_dist(A.loc,owner.loc)
 
 	if(dist <= attack_distance_max)
 		if(attackers[A])
@@ -143,7 +143,7 @@
 		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
-			if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*2)))
+			if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (!objective_attack || (bounds_dist(owner,objective_attack) >= bounds_dist(owner,attacker)*2)))
 				if(reaction_time)
 					CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
 				else

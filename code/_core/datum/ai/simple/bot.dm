@@ -40,17 +40,17 @@
 
 /ai/bot/medical/handle_objectives(var/tick_rate)
 
-	if(!healing_target || !is_valid_healing_target(healing_target,get_dist(owner,healing_target),VIEW_RANGE))
+	if(!healing_target || !is_valid_healing_target(healing_target,bounds_dist(owner,healing_target),VIEW_RANGE))
 		find_healing_target()
 
-	if(healing_target && get_dist(healing_target,owner) <= 1 && !owner_as_bot.is_busy())
+	if(healing_target && bounds_dist(healing_target,owner) <= 1 && !owner_as_bot.is_busy())
 		owner_as_bot.try_treat(healing_target)
 
 	return ..()
 
 /ai/bot/medical/handle_movement()
 	if(healing_target)
-		if(get_dist(healing_target,owner) <= 1)
+		if(bounds_dist(healing_target,owner) <= 1)
 			owner.move_dir = 0x0
 		else
 			owner.move_dir = get_dir(owner,healing_target)
@@ -87,7 +87,7 @@
 	for(var/mob/living/L in view(VIEW_RANGE*0.5,owner))
 		if(!src.is_valid_healing_target(L))
 			continue
-		var/distance_check = get_dist(L,owner)
+		var/distance_check = bounds_dist(L,owner)
 		if(distance_check >= best_distance)
 			continue
 		best_target = L

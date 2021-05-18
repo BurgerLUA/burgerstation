@@ -40,7 +40,7 @@
 		frustration_move = 0
 
 	if(objective_attack)
-		if(get_dist(owner,objective_attack) > 1)
+		if(bounds_dist(owner,objective_attack) > 1)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
 			owner.move_dir = 0x0

@@ -41,7 +41,7 @@
 		return FALSE
 	if(teleport_cooldown > world.time)
 		return FALSE
-	if(get_dist(srcTURF, callerTURF) > 1)
+	if(bounds_dist(srcTURF, callerTURF) > 1)
 		return FALSE
 	var/item_counter = 0
 	var/second_cooldown = 0

@@ -100,7 +100,7 @@
 					frustration_attack = 0
 		else if(isturf(objective_attack) && objective_attack.Enter(owner))
 			set_objective(null)
-		else if(get_dist(owner,objective_attack) > attack_distance_max)
+		else if(bounds_dist(owner,objective_attack) > attack_distance_max)
 			frustration_attack += tick_rate
 		else
 			frustration_attack = 0
@@ -142,7 +142,7 @@
 				if(A.Cross(owner))
 					obstacles -= k
 					continue
-			var/distance_check = get_dist(owner,A)
+			var/distance_check = bounds_dist(owner,A)
 			if(distance_check <= view_range && (!closest_obstacle || distance_check < best_distance))
 				closest_obstacle = A
 		if(closest_obstacle)

@@ -15,7 +15,7 @@
 			if(!I.is_container)
 				toggle_wield(caller,object)
 				return TRUE
-		if(is_organ(src.loc) && isturf(object.loc) && get_dist(caller,object) <= 1)
+		if(is_organ(src.loc) && isturf(object.loc) && bounds_dist(caller,object) <= 1)
 			var/obj/item/organ/O = src.loc
 			O.attack(caller,object,params,damage_type_override=/damagetype/unarmed/fists/grab)
 			return TRUE
@@ -74,7 +74,7 @@
 			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
-		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
+		if(desired_turf && istype(object,/obj/structure/smooth/table) && bounds_dist(caller_turf,desired_turf) <= 1)
 			drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 		else
 			drop_item_from_inventory(get_turf(src))
@@ -85,7 +85,7 @@
 		return TRUE
 
 	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
-		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
+		if(isturf(object) && (bounds_dist(caller,object) <= 1 || bounds_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
 			var/turf/T = get_step(grabbed_object.loc,desired_move_dir)
 			if(is_living(grabbed_object) && is_living(caller))
@@ -115,7 +115,7 @@
 				A.left_hand.toggle_wield(caller,A.right_item)
 				return TRUE
 
-	if(get_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
+	if(bounds_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
 			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB)

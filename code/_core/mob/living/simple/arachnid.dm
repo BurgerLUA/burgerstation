@@ -22,7 +22,8 @@
 		/obj/item/container/food/dynamic/meat/raw_arachnid
 	)
 
-	pixel_x = -16
+	bound_height = TILE_SIZE
+	bound_width = TILE_SIZE*2
 
 	armor_base = list(
 		BLADE = 20,
