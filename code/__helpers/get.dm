@@ -3,5 +3,5 @@
 	var/turf/T = get_turf(A)
 	for(var/k in all_mobs)
 		var/mob/M = k
-		if(bounds_dist(T,M) <= range)
+		if(get_dist(T,M) <= range)
 			. += M

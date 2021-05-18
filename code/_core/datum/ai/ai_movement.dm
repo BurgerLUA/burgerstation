@@ -46,7 +46,7 @@
 /ai/proc/handle_movement_attack_objective()
 
 	if(objective_attack)
-		var/target_distance = bounds_dist(owner,objective_attack)
+		var/target_distance = get_dist(owner,objective_attack)
 		if(target_distance < attack_distance_min)
 			owner.move_dir = get_dir(objective_attack,owner)
 			owner.movement_flags = MOVEMENT_RUNNING
@@ -63,7 +63,7 @@
 
 /ai/proc/handle_movement_move_objective()
 	if(objective_move)
-		var/move_distance = bounds_dist(owner,objective_move)
+		var/move_distance = get_dist(owner,objective_move)
 		if(move_distance > 1)
 			if(should_follow_objective_move && move_distance >= 4)
 				owner.movement_flags = MOVEMENT_RUNNING
@@ -189,7 +189,7 @@
 
 /ai/proc/handle_movement_roaming()
 	if(roaming_distance)
-		if(bounds_dist(owner,start_turf) >= roaming_distance)
+		if(get_dist(owner,start_turf) >= roaming_distance)
 			owner.movement_flags = MOVEMENT_WALKING
 			owner.move_dir = get_dir(owner,start_turf)
 			return TRUE

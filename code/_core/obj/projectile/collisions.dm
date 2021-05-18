@@ -54,7 +54,7 @@
 	if(P && !P.ignore_loyalty && P.loyalty_tag && src.loyalty_tag == P.loyalty_tag)
 		return null
 
-	if(!P.hit_laying && dead && bounds_dist(src,P.target_atom) > 0)
+	if(!P.hit_laying && dead && get_dist(src,P.target_atom) > 0)
 		return null
 
 	return ..()
@@ -103,7 +103,7 @@
 		var/mob/living/L = k
 		if(!L.density)
 			continue
-		if(L.mouse_opacity <= 0 || L.dead || L.move_delay <= 0 || bounds_dist(L,src) > 1)
+		if(L.mouse_opacity <= 0 || L.dead || L.move_delay <= 0 || get_dist(L,src) > 1)
 			continue
 		if(L.projectile_should_collide(P,new_turf,old_turf))
 			. |= L
@@ -127,7 +127,7 @@
 	if(projectile_dir & src.collision_dir)
 		if(bullet_block_chance >= 100)
 			return src
-		else if(P.start_turf && bounds_dist(P.start_turf,src) <= 1 )
+		else if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
 			return null
 		else if(luck(P.owner,bullet_block_chance,FALSE))
 			return null

@@ -55,7 +55,7 @@
 	if(turf_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_TURF_CHECKING) && src.plane < PLANE_HUD && isturf(src.loc) && !isturf(caller.loc))
 		return FALSE
 
-	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && bounds_dist(src,caller) > interact_distance)
+	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(src,caller) > interact_distance)
 		return FALSE
 
 /atom/proc/click_self(var/mob/caller as mob,location,control,params)

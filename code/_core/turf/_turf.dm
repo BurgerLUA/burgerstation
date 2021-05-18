@@ -103,7 +103,7 @@
 			var/mob/living/L = k
 			if(attacker == L)
 				continue
-			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && bounds_dist(L,src) <= 1)
+			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && get_dist(L,src) <= 1)
 				return L
 
 	return src

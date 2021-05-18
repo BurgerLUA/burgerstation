@@ -24,7 +24,7 @@
 	var/turf/T = get_turf(src)
 	. *= max(1,2 - T.lightness)
 	if(ai && ai.objective_attack)
-		. *= max(1,1 + bounds_dist(src,ai.objective_attack)/VIEW_RANGE)
+		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
 
 /mob/living/advanced/npc/zombie/post_death()
 	CALLBACK("zombie_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/zombie_revive)

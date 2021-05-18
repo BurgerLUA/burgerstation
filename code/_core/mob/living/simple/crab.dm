@@ -59,9 +59,6 @@
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
 
-	bound_height = TILE_SIZE*2
-	bound_width = TILE_SIZE*3
-
 	health_base = 2500
 	stamina_base = 1000
 	mana_base = 100

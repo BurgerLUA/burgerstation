@@ -32,7 +32,7 @@
 	var/turf/W = get_step(owner,WEST)
 
 	//N
-	if(bounds_dist(N,start_turf) > roaming_distance)
+	if(get_dist(N,start_turf) > roaming_distance)
 		valid_directions -= NORTH
 	else
 		for(var/k in N.contents)
@@ -41,7 +41,7 @@
 				valid_directions -= NORTH
 				break
 
-	if(bounds_dist(E,start_turf) > roaming_distance)
+	if(get_dist(E,start_turf) > roaming_distance)
 		valid_directions -= EAST
 	else
 		for(var/k in E.contents)
@@ -50,7 +50,7 @@
 				valid_directions -= EAST
 				break
 
-	if(bounds_dist(S,start_turf) > roaming_distance)
+	if(get_dist(S,start_turf) > roaming_distance)
 		valid_directions -= SOUTH
 	else
 		for(var/k in S.contents)
@@ -59,7 +59,7 @@
 				valid_directions -= SOUTH
 				break
 
-	if(bounds_dist(W,start_turf) > roaming_distance)
+	if(get_dist(W,start_turf) > roaming_distance)
 		valid_directions -= WEST
 	else
 		for(var/k in W.contents)

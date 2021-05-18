@@ -42,7 +42,7 @@
 
 /obj/item/spraycan/proc/on_upload_spray(var/client/caller,var/icon/desired_icon)
 
-	if(!caller || !caller.mob || bounds_dist(caller.mob,src) > 1)
+	if(!caller || !caller.mob || get_dist(caller.mob,src) > 1)
 		return FALSE
 
 	if(desired_spray)

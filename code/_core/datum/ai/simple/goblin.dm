@@ -36,7 +36,7 @@
 	if(obsessed_item)
 		if(obsessed_item.qdeleting || !isturf(obsessed_item.loc))
 			obsessed_item = null
-		else if(bounds_dist(owner,obsessed_item) <= 1)
+		else if(get_dist(owner,obsessed_item) <= 1)
 			var/mob/living/simple/goblin/G = owner
 			G.add_to_bag(obsessed_item)
 			obsessed_item = null

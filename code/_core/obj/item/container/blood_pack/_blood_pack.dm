@@ -142,7 +142,7 @@
 
 	. = ..()
 
-	if(!attached_to || attached_to.qdeleting || bounds_dist(src,attached_to) > 1)
+	if(!attached_to || attached_to.qdeleting || get_dist(src,attached_to) > 1)
 		detach()
 		return FALSE
 

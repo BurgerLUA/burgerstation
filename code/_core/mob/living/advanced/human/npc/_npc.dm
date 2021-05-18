@@ -26,7 +26,7 @@
 	if(L.dead || src.dead)
 		return FALSE
 
-	if(bounds_dist(caller,src) >= 3)
+	if(get_dist(caller,src) >= 3)
 		return FALSE
 
 	return TRUE

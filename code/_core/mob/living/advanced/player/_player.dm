@@ -190,10 +190,10 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 			dialogue_target_id = null
 			close_menu(src,/menu/dialogue/)
 
-		if(active_structure && bounds_dist(src,active_structure) > 1)
+		if(active_structure && get_dist(src,active_structure) > 1)
 			set_structure_unactive()
 
-		if(active_device && bounds_dist(src,active_device) > 1)
+		if(active_device && get_dist(src,active_device) > 1)
 			set_device_unactive()
 
 		ai_steps++
@@ -208,7 +208,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
-				var/dist = bounds_dist(src,A.owner)
+				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
 				A.set_active(TRUE)
@@ -221,7 +221,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
-				var/dist = bounds_dist(src,A.owner)
+				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
 				A.set_active(TRUE)

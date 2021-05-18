@@ -49,7 +49,7 @@
 			continue
 		if(T1.z != T2.z)
 			continue
-		if(bounds_dist(T1,T2) > talk_range_override)
+		if(get_dist(T1,T2) > talk_range_override)
 			continue
 		A.on_listen(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 
@@ -151,7 +151,7 @@
 		if(!within_range(mob_turf,T,view_range))
 			continue
 
-		var/distance = bounds_dist(mob_turf,T)
+		var/distance = get_dist(mob_turf,T)
 
 		if(M.see_invisible < src.invisibility)
 			continue

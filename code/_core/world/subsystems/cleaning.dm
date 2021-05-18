@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(delete)
 		var/mob/M = k
 		if(is_observer(M))
 			continue
-		var/regisred_distance = bounds_dist(A,M)
+		var/regisred_distance = get_dist(A,M)
 		if(regisred_distance <= VIEW_RANGE + ZOOM_RANGE)
 			return FALSE
 

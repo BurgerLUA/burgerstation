@@ -59,7 +59,7 @@ var/global/mob/abstract/node_checker
 		if(invalid)
 			continue
 		var/direction = dir2text(get_dir(src,M))
-		if(src.adjacent_map_nodes[direction] && bounds_dist(src,M) > bounds_dist(src,src.adjacent_map_nodes[direction]))
+		if(src.adjacent_map_nodes[direction] && get_dist(src,M) > get_dist(src,src.adjacent_map_nodes[direction]))
 			continue
 		src.adjacent_map_nodes[direction] = M
 		found = TRUE

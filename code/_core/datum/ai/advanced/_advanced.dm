@@ -30,7 +30,7 @@
 	if(!objective_weapon)
 		return FALSE
 
-	if(bounds_dist(owner,objective_weapon) > 1)
+	if(get_dist(owner,objective_weapon) > 1)
 		owner.move_dir = get_dir(owner,objective_weapon)
 		return TRUE
 
@@ -55,7 +55,7 @@
 		equip_weapon(I)
 		return FALSE
 
-	if(!objective_weapon || !isturf(objective_weapon.loc) || bounds_dist(A,objective_weapon.loc) > 6) //Find a wepapon on the ground.
+	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6) //Find a wepapon on the ground.
 		var/list/possible_weapons = list()
 		for(var/obj/item/weapon/W in view(6,A))
 			if(istype(W,/obj/item/weapon/ranged/))
@@ -68,7 +68,7 @@
 					continue
 			if(!isturf(W.loc))
 				continue
-			possible_weapons[W] = max(1,(6 + 1) - bounds_dist(A,W.loc))
+			possible_weapons[W] = max(1,(6 + 1) - get_dist(A,W.loc))
 		if(!length(possible_weapons))
 			return FALSE
 		objective_weapon = pickweight(possible_weapons)
@@ -179,7 +179,7 @@
 	var/obj/item/weapon/best_weapon
 	var/best_weapon_value = 0
 
-	var/distance_check = possible_target ? bounds_dist(owner,possible_target) : VIEW_RANGE
+	var/distance_check = possible_target ? get_dist(owner,possible_target) : VIEW_RANGE
 
 	var/list/lists_to_check = A.worn_objects + A.held_objects
 
@@ -278,7 +278,7 @@
 			attack_distance_min = VIEW_RANGE * 0.5
 			attack_distance_max = VIEW_RANGE * 0.75
 
-	if(!checked_weapons && attack_distance_max == 1 && objective_attack && bounds_dist(owner,objective_attack) > 4)
+	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4)
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
 		if(W)
 			if(A.right_item == W)

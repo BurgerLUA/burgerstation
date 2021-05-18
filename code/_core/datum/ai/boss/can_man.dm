@@ -25,7 +25,7 @@
 		owner.move_dir = 0x0
 		return TRUE
 
-	if(bounds_dist(owner,start_turf) >= 10)
+	if(get_dist(owner,start_turf) >= 10)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,start_turf)
 		owner_as_can_man.charge_steps = 0

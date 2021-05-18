@@ -228,7 +228,7 @@
 	var/best_distance = 0
 	for(var/k in valid_spawnpoints)
 		var/turf/T = k
-		var/distance = bounds_dist(T,syndicate_marker)
+		var/distance = get_dist(T,syndicate_marker)
 		if(!nanotrasen_marker || best_distance < distance)
 			nanotrasen_marker = T
 			best_distance = distance
@@ -238,7 +238,7 @@
 	best_distance = INFINITY
 	for(var/k in valid_spawnpoints)
 		var/turf/T = k
-		var/distance_diff = abs(bounds_dist(T,syndicate_marker) - bounds_dist(T,nanotrasen_marker))
+		var/distance_diff = abs(get_dist(T,syndicate_marker) - get_dist(T,nanotrasen_marker))
 		if(!objective_marker || distance_diff < best_distance)
 			objective_marker = T
 			best_distance = distance_diff

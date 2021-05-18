@@ -6,10 +6,6 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "living"
 
-	bound_height = TILE_SIZE
-	bound_width = TILE_SIZE*2
-
-
 	health_base = 5000
 	stamina_base = 3000
 	mana_base = 500

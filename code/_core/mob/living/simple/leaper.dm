@@ -8,9 +8,6 @@
 
 	value = 6000
 
-	bound_height = TILE_SIZE*2
-	bound_width = TILE_SIZE*2
-
 	ai = /ai/boss/leaper
 
 	butcher_contents = list(
@@ -102,7 +99,7 @@
 		turf_limit--
 		if(turf_limit <= 0)
 			break
-		if(bounds_dist(T,src) <= 2)
+		if(get_dist(T,src) <= 2)
 			continue
 		if(!T.is_safe_teleport())
 			continue

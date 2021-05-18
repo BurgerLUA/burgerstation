@@ -112,7 +112,7 @@
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
 
-	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && bounds_dist(attacker,src) <= 1)
+	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
 		if(blade_damage > 0 && src.can_be_butchered(L,weapon))

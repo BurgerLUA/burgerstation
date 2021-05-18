@@ -26,7 +26,7 @@
 
 	if(success && (!linked_stand.ai || !linked_stand.ai.objective_attack))
 		linked_stand.glide_size = stand_user.glide_size
-		var/should_phase = linked_stand.alpha > 0 && bounds_dist(linked_stand.loc,new_loc) > 1
+		var/should_phase = linked_stand.alpha > 0 && get_dist(linked_stand.loc,new_loc) > 1
 		if(should_phase) new/obj/effect/temp/phase/out(linked_stand.loc)
 		linked_stand.force_move(new_loc)
 		if(should_phase) new/obj/effect/temp/phase(new_loc)

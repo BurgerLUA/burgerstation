@@ -9,9 +9,6 @@
 
 	boss_loot = /loot/lavaland/bubblegum
 
-	bound_height = TILE_SIZE
-	bound_width = TILE_SIZE*3
-
 	value = 4000
 
 	var/charge_steps = 0

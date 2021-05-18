@@ -40,7 +40,7 @@
 	if(world.time <= next_fire)
 		return TRUE
 	next_fire = world.time + cooldown_fire
-	if(bounds_dist(owner.loc, loc) > required_range && ranged_limited)
+	if(get_dist(owner.loc, loc) > required_range && ranged_limited)
 		return TRUE
 	totemic_effect()
 	return TRUE

@@ -6,7 +6,7 @@
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
 		return 0
 
-	var/true_distance = bounds_dist(owner,A)
+	var/true_distance = get_dist(owner,A)
 	if(true_distance <= 1)
 		return 100
 
@@ -15,7 +15,7 @@
 
 	var/vision_distance = true_distance
 	if(objective_attack)
-		vision_distance = bounds_dist(objective_attack,A) //Objective attack is the central focus point, if there is one.
+		vision_distance = get_dist(objective_attack,A) //Objective attack is the central focus point, if there is one.
 
 	if(true_distance >= min(VIEW_RANGE+ZOOM_RANGE,radius_find_enemy_combat))
 		return 0

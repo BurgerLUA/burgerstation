@@ -143,7 +143,7 @@
 	if(!caller || !target_turf || !I)
 		return FALSE
 
-	if(bounds_dist(caller,target_turf) > 1)
+	if(get_dist(caller,target_turf) > 1)
 		return FALSE
 
 	if(!is_inventory(I.loc))

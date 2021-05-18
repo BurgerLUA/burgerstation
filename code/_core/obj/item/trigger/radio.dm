@@ -123,7 +123,7 @@ list(
 /obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals.
 		return FALSE
-	if(listen_range > 0 && bounds_dist(source,src) > listen_range)
+	if(listen_range > 0 && get_dist(source,src) > listen_range)
 		return FALSE
 	if(!broadcasting && !(frequency > 0)) //Dumb logic here, but it catches null as well as null (greater,less,equal) 0 is always 0.
 		return FALSE

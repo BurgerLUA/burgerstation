@@ -98,7 +98,7 @@
 		qdel(src)
 		return FALSE
 
-	if(bounds_dist(caller,T) > 1)
+	if(get_dist(caller,T) > 1)
 		return FALSE
 
 	var/mob/living/L = locate() in T.contents

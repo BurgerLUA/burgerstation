@@ -11,7 +11,7 @@
 
 	var/turf/T = get_turf(object)
 
-	if(length(container_whitelist) && bounds_dist(src,T) <= 1)
+	if(length(container_whitelist) && get_dist(src,T) <= 1)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)

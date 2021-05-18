@@ -58,7 +58,7 @@
 			continue
 		if(T1.z != T2.z)
 			continue
-		var/distance = bounds_dist(T1,T2)
+		var/distance = get_dist(T1,T2)
 		if(distance > E.emf_range)
 			continue
 		emf_level = max(emf_level,min((1 - (distance/E.emf_range))*E.emf_level*2,E.emf_level))

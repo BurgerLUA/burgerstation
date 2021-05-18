@@ -8,9 +8,6 @@
 
 	value = 20000
 
-	bound_height = TILE_SIZE
-	bound_width = TILE_SIZE*2
-
 	ai = /ai/boss/can_man
 
 	pixel_x = 8

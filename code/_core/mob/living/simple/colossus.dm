@@ -8,9 +8,6 @@
 
 	value = 4000
 
-	bound_height = TILE_SIZE
-	bound_width = TILE_SIZE*3
-
 	ai = /ai/boss/colossus/
 
 	stun_angle = 0

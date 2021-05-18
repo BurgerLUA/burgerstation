@@ -261,7 +261,7 @@
 
 		return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM && is_inventory(object) && is_advanced(caller) && (bounds_dist(caller,src)<1))
+	if(caller.attack_flags & CONTROL_MOD_DISARM && is_inventory(object) && is_advanced(caller) && (get_dist(caller,src)<1))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)

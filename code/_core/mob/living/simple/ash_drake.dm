@@ -27,9 +27,6 @@
 
 	boss_loot = /loot/lavaland/ash_drake
 
-	bound_height = TILE_SIZE
-	bound_width = TILE_SIZE*2
-
 	var/boss_state = 0
 	//0 = walking
 	//1 = flying
@@ -135,7 +132,7 @@
 			if(L == src)
 				continue
 
-			var/is_center = bounds_dist(src,L) == 0
+			var/is_center = get_dist(src,L) == 0
 
 			step(L,get_dir(src,L))
 			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)
