@@ -10,6 +10,8 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	stamina_base = 3000
 	mana_base = 500
 
+	pixel_x = -32
+
 	value = 2000
 
 	armor_base = list(
@@ -77,6 +79,8 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	blood_volume = 4000
 
 	soul_size = SOUL_SIZE_RARE
+
+	object_size = 2
 
 /mob/living/simple/xeno/queen/PostInitialize()
 

@@ -23,8 +23,6 @@
 	//1 = flying
 	//2 = landing
 
-	attack_range = 1
-
 	force_spawn = TRUE
 	boss = TRUE
 
@@ -90,4 +88,3 @@
 			FINALIZE(B)
 			tracked_babies += B
 
-	

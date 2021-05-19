@@ -25,9 +25,7 @@
 
 	level_multiplier = 4
 
-	object_size = 1
-
-	attack_range = 1
+	object_size = 2
 
 	boss = TRUE
 	force_spawn = TRUE

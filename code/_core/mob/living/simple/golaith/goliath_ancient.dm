@@ -11,8 +11,6 @@
 
 	health_base = 400
 
-	attack_range = 1
-
 	armor_base = list(
 		BLADE = 75,
 		BLUNT = 90,

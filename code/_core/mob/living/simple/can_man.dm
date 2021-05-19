@@ -10,7 +10,7 @@
 
 	ai = /ai/boss/can_man
 
-	pixel_x = 8
+	pixel_x = -8
 
 	boss_loot = /loot/lavaland/can_man
 
@@ -19,8 +19,6 @@
 	health_base = 10000
 	stamina_base = 4000
 	mana_base = 100
-
-	attack_range = 2
 
 	force_spawn = TRUE
 	boss = TRUE
@@ -79,6 +77,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	soul_size = SOUL_SIZE_RARE
+
+	object_size = 2
 
 /mob/living/simple/can_man/post_death()
 	. = ..()

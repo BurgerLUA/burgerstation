@@ -18,8 +18,6 @@
 
 	stun_angle = 0
 
-	attack_range = 1
-
 	force_spawn = TRUE
 	boss = TRUE
 

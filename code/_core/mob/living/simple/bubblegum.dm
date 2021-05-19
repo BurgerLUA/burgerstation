@@ -7,6 +7,8 @@
 	class = /class/bubblegum/
 	ai = /ai/boss/bubblegum/
 
+	pixel_x = -32
+
 	boss_loot = /loot/lavaland/bubblegum
 
 	value = 4000
@@ -21,8 +23,6 @@
 	move_delay = BOSS_TICK*3
 
 	stun_angle = 0
-
-	attack_range = 2
 
 	force_spawn = TRUE
 	boss = TRUE
@@ -86,6 +86,8 @@
 	var/next_blood_attack = 0
 
 	soul_size = SOUL_SIZE_RARE
+
+	object_size = 2
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()

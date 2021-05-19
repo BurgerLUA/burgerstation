@@ -63,6 +63,9 @@
 	stamina_base = 1000
 	mana_base = 100
 
+	pixel_y = -8
+	pixel_x = -32
+
 	ai = /ai/
 
 	class = /class/crab/king
@@ -78,7 +81,7 @@
 	)
 
 
-	object_size = 1
+	object_size = 2
 
 	boss = TRUE
 	force_spawn = TRUE

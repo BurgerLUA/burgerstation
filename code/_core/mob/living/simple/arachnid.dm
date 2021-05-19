@@ -7,6 +7,8 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/arachnid
 
+	pixel_x = -16
+
 	value = 1000
 
 	ai = /ai/
@@ -53,6 +55,8 @@
 	blood_volume = 2000
 
 	soul_size = SOUL_SIZE_UNCOMMON
+
+	object_size = 2
 
 /mob/living/simple/arachnid/post_death()
 	. = ..()

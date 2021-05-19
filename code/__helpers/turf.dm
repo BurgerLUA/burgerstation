@@ -23,7 +23,7 @@
 			if(calc >= 0 && calc < best_distance)
 				best_distance = calc
 
-	best_distance -= ( (A1.object_size-1) + (A2.object_size-1) )
+	best_distance -= (A1.object_size-1) + (A2.object_size-1)
 
 	return best_distance
 

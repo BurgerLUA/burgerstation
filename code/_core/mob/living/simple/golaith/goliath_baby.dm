@@ -12,8 +12,6 @@
 
 	health_base = 50
 
-	attack_range = 1
-
 	size = SIZE_CRITTER
 
 /mob/living/simple/goliath/baby/post_death()
