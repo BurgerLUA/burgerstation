@@ -5,7 +5,7 @@
 	icon_state = "living"
 	boss = TRUE
 	damage_type = /damagetype/melee/club/mace
-	class = /class/ash_drake
+
 
 	ai = /ai/boss/hierophant/
 

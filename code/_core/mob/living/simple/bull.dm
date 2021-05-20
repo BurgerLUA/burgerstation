@@ -20,7 +20,7 @@
 
 
 	ai = /ai/
-	class = /class/bull
+
 	damage_type = /damagetype/npc/bull
 
 	armor_base = list(

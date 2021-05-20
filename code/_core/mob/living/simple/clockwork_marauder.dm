@@ -11,7 +11,7 @@
 
 	ai = /ai/simple/
 	damage_type = /damagetype/melee/spear/ratvar/
-	class = /class/clockwork_marauder
+
 
 	stun_angle = 0
 
@@ -28,4 +28,3 @@
 /mob/living/simple/clockwork_marauder/post_death()
 	. = ..()
 	icon_state = "dead"
-	

@@ -7,7 +7,7 @@
 	icon_state = "1"
 
 	damage_type = /damagetype/npc/cow
-	class = /class/cow
+
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/food/dynamic/meat/raw,

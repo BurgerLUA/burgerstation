@@ -12,7 +12,7 @@
 	mana_base = 10
 
 	damage_type = /damagetype/npc/hivelord
-	class = /class/carp
+
 
 	stun_angle = 0
 

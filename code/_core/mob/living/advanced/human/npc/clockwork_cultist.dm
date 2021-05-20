@@ -4,7 +4,7 @@
 	desc_extended = "A cultist of Ratvar."
 	enable_AI = TRUE
 	ai = /ai/advanced/clockwork_cult
-	class = /class/clockwork_cult
+
 
 	var/loadout/loadout_to_use = /loadout/clockwork_cult
 
@@ -17,7 +17,7 @@
 		DARK = -60
 	)
 
-	level_multiplier = 2
+
 
 /mob/living/advanced/npc/clockwork_cultist/Initialize()
 

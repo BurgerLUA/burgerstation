@@ -11,7 +11,7 @@
 
 	ai = /ai/simple/
 	damage_type = /damagetype/unarmed/fists
-	class = /class/clockwork_fragment
+
 
 	stun_angle = 0
 
@@ -28,4 +28,3 @@
 /mob/living/simple/clockwork_fragment/post_death()
 	. = ..()
 	icon_state = "dead"
-	

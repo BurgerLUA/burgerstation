@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/spooky.dmi'
 	icon_state = "red"
 	damage_type = /damagetype/melee/sword/claymore/cult
-	class = /class/crab
+
 
 	health_base = 50
 	stamina_base = 100

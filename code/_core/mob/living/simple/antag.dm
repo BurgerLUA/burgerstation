@@ -23,7 +23,7 @@ var/global/list/valid_antag_colors = list(
 	health_base = 1
 
 	ai = /ai/traitor
-	class = /class/player
+
 	damage_type = /damagetype/npc/antag
 
 	iff_tag = "NanoTrasen"

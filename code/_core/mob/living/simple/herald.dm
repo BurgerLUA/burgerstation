@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/lavaland/herald.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/cqc/sleeping_carp/gnashing_teeth
-	class = /class/herald/
+
 	ai = /ai/boss/herald/
 	value = 3000
 

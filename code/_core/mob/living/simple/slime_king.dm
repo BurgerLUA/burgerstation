@@ -23,7 +23,7 @@
 
 	value = 500
 
-	level_multiplier = 4
+
 
 	object_size = 2
 

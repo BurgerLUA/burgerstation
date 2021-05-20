@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/mouse.dmi'
 	icon_state = "mouse_brown"
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/passive
+
 
 	health_base = 25
 	stamina_base = 50

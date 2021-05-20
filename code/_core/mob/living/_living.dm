@@ -15,7 +15,8 @@
 
 	icon_state = "directional"
 
-	var/class = /class/default
+	var/class = /class/npc
+	var/level = 1
 
 	var/enable_AI = FALSE
 	var/ai/ai
@@ -71,11 +72,7 @@
 	var/selected_intent = INTENT_HELP
 	var/intent = INTENT_HELP
 
-	var/level = 0
-
 	var/turf/old_turf //Last turf someone has been in.
-
-	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 
 	var/stun_angle = 90
 
@@ -418,7 +415,7 @@
 	blood_volume_max = blood_volume
 
 	if(desired_level_multiplier)
-		level_multiplier *= desired_level_multiplier
+		level *= desired_level_multiplier
 
 	attributes = list()
 	skills = list()
@@ -467,7 +464,7 @@
 
 	initialize_attributes()
 	initialize_skills()
-	update_level(TRUE)
+
 	update_intent(TRUE)
 
 	. = ..()
@@ -509,7 +506,9 @@
 	setup_name()
 
 /mob/living/Finalize()
+
 	. = ..()
+
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
@@ -518,6 +517,8 @@
 	if(dead)
 		dead = FALSE //I know this feels like shitcode but *dab
 		death()
+
+	update_level(TRUE)
 
 /mob/living/proc/setup_name()
 	if(boss)

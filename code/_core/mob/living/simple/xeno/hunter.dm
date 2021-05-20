@@ -6,7 +6,7 @@
 	stamina_base = 200
 	mana_base = 50
 
-	level_multiplier = 2
+
 
 	movement_delay = 2
 
@@ -60,7 +60,7 @@
 	name = "xeno sentinel"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
-	level_multiplier = 4
+
 
 	health_base = 150
 
@@ -96,8 +96,6 @@
 	health_base = 400
 	stamina_base = 200
 	mana_base = 50
-
-	level_multiplier = 4
 
 	movement_delay = 4
 

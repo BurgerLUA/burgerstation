@@ -2,7 +2,7 @@
 	name = "deathsquad commando"
 	desc = "An elite member of the Deathsquad. They are tasked to leave no witnesses."
 	ai = /ai/advanced/syndicate
-	class = /class/syndicate_soldier
+
 	dialogue_id = /dialogue/npc/soldier
 
 	var/desired_loadout = /loadout/deathsquad
@@ -32,12 +32,11 @@
 
 /mob/living/advanced/npc/deathsquad/light
 	desired_loadout = /loadout/deathsquad/light
-	level_multiplier = 1
+
 
 /mob/living/advanced/npc/deathsquad/medium
 	desired_loadout = /loadout/deathsquad/medium
-	level_multiplier = 2
+
 
 /mob/living/advanced/npc/deathsquad/heavy
 	desired_loadout = /loadout/deathsquad/heavy
-	level_multiplier = 4

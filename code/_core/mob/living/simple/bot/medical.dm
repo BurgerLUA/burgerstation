@@ -26,7 +26,7 @@
 
 	damage_type = /damagetype/npc/medibot
 
-	class = /class/medibot
+
 
 	stun_angle = 180
 
@@ -166,7 +166,7 @@
 
 	health_base = 100
 
-	level_multiplier = 3
+
 
 /mob/living/simple/bot/medibot/rogue
 	name = "rogue medical bot"
@@ -178,7 +178,7 @@
 
 	health_base = 200
 
-	level_multiplier = 3
+
 
 /mob/living/simple/bot/medibot/rogue/Generate()
 	var/desired_pack = pick("firstaid","brute","burn","toxin","rad","purple","oxy","tactical")

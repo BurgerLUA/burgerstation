@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/jungle/arachnid.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/arachnid
+
 
 	pixel_x = -16
 

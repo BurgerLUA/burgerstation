@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath_broodmother.dmi'
 	icon_state = "broodmother"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/goliath/broodmother
+
 
 	ai = /ai/goliath/broodmother
 

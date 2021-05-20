@@ -10,7 +10,7 @@
 	mana_base = 50
 
 	ai = /ai/dick_kickem/
-	class = /class/npc/robust
+
 	damage_type = /damagetype/npc/dick_kickem
 
 	iff_tag = "Meme"

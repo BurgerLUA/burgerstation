@@ -17,15 +17,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = 60*0.5,
+		SKILL_MAGIC_OFFENSIVE = 60*0.5,
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = list(HEAT,DARK)
+		SKILL_MAGIC_OFFENSIVE = list(HEAT,DARK)
 	)
 
 	bonus_experience_skill = list(
-		SKILL_SORCERY = 75 //75%
+		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)
 
 /damagetype/ranged/magic/blackflame/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

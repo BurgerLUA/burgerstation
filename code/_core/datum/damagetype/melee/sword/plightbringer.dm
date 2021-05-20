@@ -57,17 +57,17 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 25,
-		SKILL_SORCERY = 50
+		SKILL_MAGIC_OFFENSIVE = 50
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_SORCERY = HEAT
+		SKILL_MAGIC_OFFENSIVE = HEAT
 	)
 
 	bonus_experience_skill = list(
 		SKILL_MELEE = 25, //25%
-		SKILL_SORCERY = 25
+		SKILL_MAGIC_OFFENSIVE = 25
 	)
 
 	attack_delay = 20

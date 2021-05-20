@@ -5,7 +5,7 @@
 	icon_state = "living"
 
 	damage_type = /damagetype/npc/gorilla
-	class = /class/gorilla
+
 	ai = /ai/
 
 	health_base = 1000

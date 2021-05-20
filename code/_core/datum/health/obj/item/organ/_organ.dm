@@ -20,7 +20,7 @@
 
 	. = ..()
 
-	if(. && owner.initialized)
+	if(. && owner.finalized)
 
 		if(!health_max)	return
 

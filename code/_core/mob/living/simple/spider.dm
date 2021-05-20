@@ -7,7 +7,7 @@
 
 	ai = /ai/
 
-	class = /class/spider
+
 
 	stun_angle = 0
 
@@ -53,8 +53,6 @@
 	name = "glowspider"
 	icon_state = "nurse"
 
-	level_multiplier = 1.25
-
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 25,
@@ -80,8 +78,6 @@
 /mob/living/simple/spider/twilight
 	name = "twilight spider"
 	icon_state = "hunter"
-
-	level_multiplier = 1.5
 
 	armor_base = list(
 		BLADE = 25,

@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'
 	icon_state = "goliath"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/goliath
+
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/raw_goliath,

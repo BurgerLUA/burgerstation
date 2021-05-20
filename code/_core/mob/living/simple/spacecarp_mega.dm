@@ -4,7 +4,7 @@
 	icon_state = "living"
 
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/carp/
+
 	ai = /ai/
 
 	health_base = 300
@@ -44,7 +44,7 @@
 
 	pixel_x = -16
 
-	level_multiplier = 3
+
 
 	loyalty_tag = "Shark"
 	iff_tag = "Shark"

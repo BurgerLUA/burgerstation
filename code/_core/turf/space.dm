@@ -30,7 +30,7 @@
 
 	if(ismob(Obj) && !istype(Obj,/mob/abstract/))
 		var/mob/M = Obj
-		if(M.initialized)
+		if(M.finalized)
 			var/obj/marker/failsafe/FS = locate() in world
 			if(FS)
 				M.force_move(FS.loc)

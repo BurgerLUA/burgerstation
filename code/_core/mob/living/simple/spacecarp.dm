@@ -6,7 +6,7 @@
 
 	ai = /ai/carp
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/carp/
+
 
 	health_base = 150
 	stamina_base = 100
@@ -56,6 +56,4 @@
 
 /mob/living/simple/spacecarp/leader
 	name = "alpha space carp"
-	class = /class/carp
-	level_multiplier = 1.25
 

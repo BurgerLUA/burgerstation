@@ -10,7 +10,7 @@
 	mana_base = 200
 
 	ai = /ai/clown
-	class = /class/clown //Just like highschool
+
 	damage_type = /damagetype/npc/clown
 
 	armor_base = list(
@@ -166,7 +166,7 @@
 	health_base = 500
 
 	ai = /ai/clown/creep
-	class = /class/clown/creep
+
 	damage_type = /damagetype/npc/clown/creep
 
 	armor_base = list(
@@ -196,7 +196,7 @@
 	health_base = 150
 
 	ai = /ai/clown/giggles
-	class = /class/clown/giggles
+
 	damage_type = /damagetype/npc/clown/giggles
 
 	armor_base = list(
@@ -227,7 +227,7 @@
 	health_base = 500
 
 	ai = /ai/clown/chad
-	class = /class/clown/chad
+
 	damage_type = /damagetype/npc/clown/chad
 
 	armor_base = list(
@@ -259,7 +259,7 @@
 	health_base = 150
 
 	ai = /ai/clown/scary
-	class = /class/clown/scary
+
 	damage_type = /damagetype/npc/clown/scary
 
 	armor_base = list(
@@ -289,7 +289,7 @@
 	health_base = 250
 
 	ai = /ai/clown/flesh
-	class = /class/clown/flesh
+
 	damage_type = /damagetype/npc/clown/flesh
 
 	armor_base = list(
@@ -319,7 +319,7 @@
 	health_base = 200
 
 	ai = /ai/clown/plural
-	class = /class/clown/plural
+
 	damage_type = /damagetype/npc/clown/plural
 
 	armor_base = list(
@@ -391,7 +391,7 @@
 	health_base = 50
 
 	ai = /ai/clown/honkling
-	class = /class/clown/honkling
+
 	damage_type = /damagetype/npc/clown/honkling
 
 	armor_base = list(

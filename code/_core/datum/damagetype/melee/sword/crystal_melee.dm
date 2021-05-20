@@ -25,12 +25,12 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 10,
-		SKILL_MAGIC = 50
+		SKILL_MAGIC_DEFENSIVE = 50
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_MAGIC = ARCANE
+		SKILL_MAGIC_DEFENSIVE = ARCANE
 	)
 
 	attack_delay = 10
@@ -63,12 +63,12 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 30,
-		SKILL_MAGIC = 30
+		SKILL_MAGIC_DEFENSIVE = 30
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = PIERCE,
-		SKILL_MAGIC = ARCANE
+		SKILL_MAGIC_DEFENSIVE = ARCANE
 	)
 
 	attack_delay = 5
@@ -101,12 +101,12 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 10,
-		SKILL_MAGIC = 30
+		SKILL_MAGIC_DEFENSIVE = 30
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_MAGIC = ARCANE
+		SKILL_MAGIC_DEFENSIVE = ARCANE
 	)
 
 	attack_delay = 15

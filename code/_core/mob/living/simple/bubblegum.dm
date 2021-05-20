@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/lavaland/bubblegum.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/bubblegum/
+
 	ai = /ai/boss/bubblegum/
 
 	pixel_x = -32

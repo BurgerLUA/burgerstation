@@ -19,14 +19,6 @@ var/global/list/vr_lobby_spawnpoints = list()
 	observer_spawnpoints += get_turf(src)
 	. = ..()
 
-/obj/marker/spawnpoint/new_character
-	name = "new player spawnpoint"
-	desc = "This is where new players spawn."
-
-/obj/marker/spawnpoint/new_character/New(var/desired_loc)
-	spawnpoints_new_character += get_turf(src)
-	. = ..()
-
 /obj/marker/spawnpoint/chargen
 	name = "chargen spawnpoint"
 	desc = "This is where new chargen players spawn."

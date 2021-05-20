@@ -38,7 +38,8 @@
 
 /mob/living/get_examine_list(var/mob/examiner)
 
-	. = ..()
+	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
+	. = list(div("examine_title","[object_icon][src.name]"),div("center bold","Level [level] [initial(src.name)]"),div("examine_description_long",src.desc_extended))
 
 	var/activity_text = get_activity_text()
 	if(activity_text)

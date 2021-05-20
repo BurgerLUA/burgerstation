@@ -12,7 +12,7 @@
 	value = 100
 
 	ai = /ai/
-	class = /class/bull
+
 	damage_type = /damagetype/npc/bio_monster
 
 	armor_base = list(

@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/jungle/venus_human_trap.dmi'
 	icon_state = "venus_human_trap"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/venus_human_trap
+
 
 	health_base = 75
 	stamina_base = 25

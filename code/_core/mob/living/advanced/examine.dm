@@ -39,7 +39,15 @@
 
 /mob/living/advanced/get_examine_list(var/mob/examiner)
 
-	. = ..()
+	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
+	var/species/S = SPECIES(species)
+	. = list(div("examine_title","[object_icon][src.name]"),div("bold","Level [level] [S.name]"),div("examine_description_long",src.desc_extended))
+
+	var/activity_text = get_activity_text()
+	if(activity_text)
+		. += activity_text
+
+	. += get_damage_description(examiner,FALSE)
 
 	. += div("notice bold","<a href='?src=\ref[examiner];view_inventory=\ref[src]'>(View inventory...)</a>")
 

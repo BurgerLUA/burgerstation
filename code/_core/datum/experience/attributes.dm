@@ -4,7 +4,6 @@
 /experience/attribute/
 	experience_power = 1
 	experience_multiplier = 1
-	default_level = 15
 	chargen_min_level = 5
 	chargen_max_level = 20
 
@@ -19,7 +18,6 @@
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.5
 	experience_multiplier = 21.5
-	combat_level_mul = 1
 
 /experience/attribute/fortitude/ //100% complete
 	//Leveled up by regenerating health.
@@ -31,7 +29,6 @@
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.5
 	experience_multiplier = 21.5
-	combat_level_mul = 0.5
 
 /experience/attribute/constitution/ //0% complete
 	//Leveled up by taking damage.
@@ -43,7 +40,6 @@
 	flags = ATTRIBUTE_STAT
 	experience_power = 1
 	experience_multiplier = 1.7
-	combat_level_mul = 0.75
 
 /experience/attribute/vitality/ //100% complete
 	//Leveled by increasing Strength, Fortitude, Constitution.
@@ -55,7 +51,6 @@
 	flags = ATTRIBUTE_STAT
 	experience_power = 1
 	experience_multiplier = 1.7
-	combat_level_mul = 0.75
 
 /experience/attribute/vitality/on_level_up(var/old_level,var/new_level)
 	if(owner && owner.health)
@@ -79,7 +74,6 @@
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.5
 	experience_multiplier = 21.5
-	combat_level_mul = 1
 
 /experience/attribute/willpower/ //100% complete
 	//Leveled up by regenerating mana.
@@ -91,7 +85,6 @@
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.64
 	experience_multiplier = 21.5
-	combat_level_mul = 0.5
 
 /experience/attribute/soul //100% complete
 	//Leveled up by regenerating mana.
@@ -103,7 +96,6 @@
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.64
 	experience_multiplier = 21.5
-	combat_level_mul = 0.5
 
 /experience/attribute/wisdom/ //100% complete
 	//Leveled up by increasing willpower and intelligence.
@@ -115,7 +107,6 @@
 	flags = ATTRIBUTE_STAT
 	experience_power = 1
 	experience_multiplier = 1.7
-	combat_level_mul = 0.75
 
 /experience/attribute/wisdom/on_level_up(var/old_level,var/new_level)
 	if(owner && owner.health)
@@ -133,7 +124,6 @@
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.5
 	experience_multiplier = 21.5
-	combat_level_mul = 1
 
 /experience/attribute/resilience/ //100% complete
 	//Leveled up by regenerating stamina.
@@ -145,7 +135,6 @@
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.64
 	experience_multiplier = 29.7
-	combat_level_mul = 0.5
 
 /experience/attribute/endurance/ //100% complete
 	//Leveled up by increasing resilience and dexterity
@@ -157,7 +146,6 @@
 	flags = ATTRIBUTE_STAT
 	experience_power = 1
 	experience_multiplier = 1.7
-	combat_level_mul = 0.75
 
 /experience/attribute/endurance/on_level_up(var/old_level,var/new_level)
 	if(owner && owner.health)
@@ -174,13 +162,11 @@
 	flags = ATTRIBUTE_STAT
 	experience_power = 1
 	experience_multiplier = 1.7
-	combat_level_mul = 0.75
 
 //None. Everyone starts with 50.
 /experience/attribute/luck/ //50% complete.
 	name = "Luck"
 	id = ATTRIBUTE_LUCK
-	combat_level_mul = 1
 	desc = "This attribute is the reason why casinos don't exist."
 	desc_extended = "A measure of how gosh darn lucky you are to be alive. Luck affects everything you do in small or, sometimes big, ways."
 	flags = ATTRIBUTE_STAT

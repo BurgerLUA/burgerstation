@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/lavaland/colossus.dmi'
 	icon_state = "colossus"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/colossus
+
 
 	value = 4000
 

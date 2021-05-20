@@ -27,7 +27,7 @@
 	icon_state = "squats"
 
 	health = /health/mob/living/simple/squats/
-	class = /class/squats
+
 
 	movement_delay = 2
 
@@ -84,7 +84,7 @@
 	icon_state = "syndicate"
 
 	ai = /ai/syndicate_cyborg
-	class = /class/squats
+
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 

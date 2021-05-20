@@ -3,7 +3,7 @@
 	desc = "OOK."
 
 	ai = /ai/advanced/monkey
-	class = /class/monkey
+
 
 	species = "monkey"
 

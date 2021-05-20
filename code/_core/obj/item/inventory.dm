@@ -39,7 +39,7 @@
 
 	if(length(inventories))
 		for(var/obj/item/I in contents)
-			if(I.initialized)
+			if(I.finalized)
 				continue
 			pre_fill_inventory(I)
 			INITIALIZE(I)

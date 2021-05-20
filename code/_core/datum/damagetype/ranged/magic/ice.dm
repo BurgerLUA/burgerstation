@@ -16,13 +16,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = 60*0.25
+		SKILL_MAGIC_OFFENSIVE = 60*0.25
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = COLD
+		SKILL_MAGIC_OFFENSIVE = COLD
 	)
 
 	bonus_experience_skill = list(
-		SKILL_SORCERY = 75 //75%
+		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)

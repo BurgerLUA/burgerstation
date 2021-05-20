@@ -13,7 +13,7 @@
 	value = 50
 
 	ai = /ai/
-	class = /class/bull
+
 	damage_type = /damagetype/npc/blobbernaut
 
 	armor_base = list(

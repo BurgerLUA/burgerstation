@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/crab.dmi'
 	icon_state = "crab"
 	damage_type = /damagetype/npc/crab
-	class = /class/crab
+
 
 	health_base = 50
 	stamina_base = 25
@@ -68,7 +68,7 @@
 
 	ai = /ai/
 
-	class = /class/crab/king
+
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/fish/raw_crab/,

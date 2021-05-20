@@ -1,5 +1,5 @@
 /mob/living/simple/cult/
-	class = /class/cult
+
 
 	iff_tag = "Cult"
 	loyalty_tag = "Cult"
@@ -42,7 +42,7 @@
 		PAIN = 20
 	)
 
-	level_multiplier = 1
+
 
 /mob/living/simple/cult/cultist/post_death()
 	. = ..()
@@ -92,7 +92,7 @@
 		PAIN = INFINITY
 	)
 
-	level_multiplier = 5
+
 
 /mob/living/simple/cult/construct/artificer
 	name = "blood cult artificer"
@@ -123,7 +123,7 @@
 		PAIN = INFINITY
 	)
 
-	level_multiplier = 2
+
 
 /mob/living/simple/cult/construct/harvester
 	name = "blood cult harvester"
@@ -153,7 +153,7 @@
 		PAIN = INFINITY
 	)
 
-	level_multiplier = 1
+
 
 /mob/living/simple/cult/construct/chosen
 	name = "blood cult chosen"
@@ -184,7 +184,7 @@
 		PAIN = INFINITY
 	)
 
-	level_multiplier = 10
+
 
 /mob/living/simple/cult/construct/floating
 	name = "blood cult construct"
@@ -214,7 +214,7 @@
 		PAIN = INFINITY
 	)
 
-	level_multiplier = 3
+
 
 
 /mob/living/simple/cult/construct/proteon
@@ -245,4 +245,3 @@
 		PAIN = INFINITY
 	)
 
-	level_multiplier = 1

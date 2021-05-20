@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/ash_drake
+
 
 	value = 20000
 

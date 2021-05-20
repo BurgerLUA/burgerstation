@@ -10,7 +10,7 @@
 	mana_base = 10
 
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/crab
+
 
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 
@@ -29,4 +29,3 @@
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"
-	

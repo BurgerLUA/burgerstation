@@ -6,7 +6,7 @@
 	icon_state = "fly"
 
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/bear
+
 
 	health_base = 25
 	stamina_base = 50
@@ -99,7 +99,7 @@
 	icon = 'icons/mob/living/simple/clockwork_hawk.dmi'
 
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/bear
+
 
 	health_base = 100
 	stamina_base = 100

@@ -12,7 +12,7 @@
 	value = 200
 
 	ai = /ai/
-	class = /class/beefman
+
 	damage_type = /damagetype/unarmed/claw/
 
 	armor_base = list(

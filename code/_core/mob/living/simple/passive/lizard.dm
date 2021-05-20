@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/lizard.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/crab
+
 
 	health_base = 20
 

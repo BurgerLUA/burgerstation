@@ -6,7 +6,7 @@
 
 
 	damage_type = /damagetype/unarmed/fists
-	class = /class/legion
+
 	ai = /ai/legion
 
 	health_base = 200

@@ -1,11 +1,9 @@
-// Overall level formula: https://www.desmos.com/calculator/cka4qx8qr0
-
-/class/
+/class/npc
 
 	//By default, all weights are 0.
 
 	//12 + 1 attributes
-	var/list/weights_attribute = list(
+	weights_attribute = list(
 		ATTRIBUTE_STRENGTH = 1,
 		ATTRIBUTE_FORTITUDE = 1,
 		ATTRIBUTE_CONSTITUTION = 1,
@@ -25,7 +23,7 @@
 	)
 
 	//15 skills
-	var/list/weights_skill = list(
+	weights_skill = list(
 		SKILL_MELEE = 1,
 		SKILL_UNARMED = 1,
 		SKILL_PRAYER = 1,
@@ -43,19 +41,4 @@
 		SKILL_MAGIC_SUMMONING = 1,
 		SKILL_MAGIC_ENCHANTING = 1,
 		SKILL_MEDICINE = 1,
-
 	)
-
-	var/total_weight = 0
-
-/class/New(var/desired_loc)
-	. = ..()
-	total_weight = 0
-
-	for(var/k in weights_attribute)
-		var/v = weights_attribute[k]
-		total_weight += v
-
-	for(var/k in weights_skill)
-		var/v = weights_skill[k]
-		total_weight += v

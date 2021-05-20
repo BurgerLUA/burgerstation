@@ -26,8 +26,9 @@
 
 	var/turf/W = new N(src)
 	W.initialized = FALSE
-	INITIALIZE(W)
 	W.finalized = FALSE
+	W.generated = FALSE
+	INITIALIZE(W)
 	FINALIZE(W)
 	. = W
 	W.disallow_generation = old_disallow_generation

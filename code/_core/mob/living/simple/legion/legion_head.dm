@@ -4,7 +4,7 @@
 
 	ai = /ai/legion_head
 	damage_type = /damagetype/npc/legion_assault
-	class = /class/passive
+
 
 	icon = 'icons/mob/living/simple/lavaland/legioner.dmi'
 	icon_state = "legion_head"

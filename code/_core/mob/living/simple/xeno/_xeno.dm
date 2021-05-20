@@ -7,7 +7,7 @@
 
 	ai = /ai/xeno
 	damage_type = /damagetype/npc/xeno
-	class = /class/xeno
+
 
 	pixel_x = -16
 

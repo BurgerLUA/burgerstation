@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/bears.dmi'
 	icon_state = "brown"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/bear
+
 
 	value = 100
 
@@ -65,7 +65,7 @@
 
 /mob/living/simple/bear/armored
 	name = "armored bear"
-	level_multiplier = 2
+
 
 	armor_base = list(
 		BLADE = 75,
@@ -99,8 +99,6 @@
 	name = "snow bear"
 	icon_state = "white"
 
-	level_multiplier = 1.25
-
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 25,
@@ -123,7 +121,7 @@
 	name = "black bear"
 	icon_state = "black"
 
-	level_multiplier = 2
+
 
 	armor_base = list(
 		BLADE = 25,
@@ -147,7 +145,7 @@
 	name = "space bear"
 	icon_state = "space"
 
-	level_multiplier = 3
+
 
 	armor_base = list(
 		BLADE = 25,

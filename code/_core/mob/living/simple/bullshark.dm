@@ -8,7 +8,7 @@
 	mana_base = 50
 
 	ai = /ai/bullshark
-	class = /class/bull
+
 	damage_type = /damagetype/unarmed/bite/
 
 	iff_tag = "Meme"

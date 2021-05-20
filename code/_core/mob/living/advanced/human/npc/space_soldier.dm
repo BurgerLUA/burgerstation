@@ -3,10 +3,10 @@
 	desc = "Punishing warcrimes since 2068."
 
 	ai = /ai/advanced/space_cop
-	class = /class/syndicate_soldier
+
 	dialogue_id = /dialogue/npc/soldier/
 
-	level_multiplier = 10000 //Yep
+	 //Yep
 
 	damage_received_multiplier = 0.5
 
@@ -31,4 +31,3 @@
 
 	equip_loadout(/loadout/space_soldier)
 
-	

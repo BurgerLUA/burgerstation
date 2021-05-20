@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/jungle/leaper.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/leaper
+
 
 	pixel_x = -16
 

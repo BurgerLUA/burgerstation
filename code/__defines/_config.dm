@@ -11,6 +11,7 @@
 
 #define MAX_MESSAGE_LEN 512
 #define MAX_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
+#define CHARGEN_DEFAULT_LEVEL 1 //Every skill, except luck, starts at this level.
 
 #define MAX_INVENTORY_X 8
 
@@ -40,3 +41,4 @@
 
 //Enables/disables wikibot helper functions
 #define ENABLE_WIKIBOT TRUE
+

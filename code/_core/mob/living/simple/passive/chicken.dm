@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/chicken.dmi'
 	icon_state = "chicken_white"
 	damage_type = /damagetype/npc/chicken
-	class = /class/chicken
+
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/chicken/raw/,
 		/obj/item/container/food/dynamic/chicken/raw/,

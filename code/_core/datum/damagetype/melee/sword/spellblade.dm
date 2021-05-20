@@ -25,15 +25,15 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 25,
-		SKILL_SORCERY = 75
+		SKILL_MAGIC_OFFENSIVE = 75
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = list(BLADE,PIERCE),
-		SKILL_SORCERY = ARCANE
+		SKILL_MAGIC_OFFENSIVE = ARCANE
 	)
 
 	bonus_experience_skill = list(
 		SKILL_MELEE = 25, //25%
-		SKILL_SORCERY = 25
+		SKILL_MAGIC_OFFENSIVE = 25
 	)

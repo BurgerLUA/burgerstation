@@ -27,28 +27,25 @@
 #define ATTRIBUTE_LUCK "luck"
 
 
-#define SKILL_DEFAULT 5
+#define SKILL_DEFAULT 1
 
 //STRENGTH
 #define SKILL_UNARMED "unarmed" //Completed
 #define SKILL_MELEE "melee" //Completed
 #define SKILL_PRAYER "prayer" //Completed
-//#define SKILL_BLOCK "block" //Completed
+#define SKILL_BLOCK "block" //Completed
+#define SKILL_ARMOR "armor"
 
 //DEXTERITY
 #define SKILL_RANGED "ranged" //Completed
 #define SKILL_PRECISION "precision"
 #define SKILL_SURVIVAL "survival" //Completed
-//#define SKILL_DODGE "dodge" //Completed
+#define SKILL_DODGE "dodge" //Completed
+#define SKILL_PARRY "parry" //Completed
 
 //INTELLIGENCE
-#define SKILL_MAGIC "magic" //Completed
-#define SKILL_SORCERY "sorcery" //Completed
+#define SKILL_MAGIC_DEFENSIVE "defensive" //Completed
+#define SKILL_MAGIC_OFFENSIVE "offensive" //Completed
+#define SKILL_MAGIC_SUMMONING "summoning" //Completed
+#define SKILL_MAGIC_ENCHANTING "enchanting"
 #define SKILL_MEDICINE "medicine"
-//#define SKILL_PARRY "parry" //Completed
-
-//CRAFTING
-#define SKILL_CRAFTING "crafting"
-#define SKILL_ALCHEMY "alchemy"
-#define SKILL_COOKING "cooking"
-#define SKILL_ENCHANTING "enchanting"

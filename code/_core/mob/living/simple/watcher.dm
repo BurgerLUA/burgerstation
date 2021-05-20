@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/lavaland/watcher.dmi'
 	icon_state = "watcher"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/watcher
+
 
 	value = 100
 
@@ -61,7 +61,7 @@
 	iff_tag = "Clockwork"
 	loyalty_tag = "Clockwork"
 
-	class = /class/clockwork_watcher
+
 
 	ai = /ai/watcher/clockwork
 
@@ -103,7 +103,7 @@
 
 	movement_delay = 1 // Fast
 
-	class = /class/clockwork_watcher
+
 
 	ai = /ai/watcher/clockwork
 
