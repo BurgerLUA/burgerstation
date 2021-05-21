@@ -104,6 +104,8 @@
 
 /mob/living/on_sprint()
 	add_hydration(-0.4)
+	if(client)
+		add_attribute_xp(ATTRIBUTE_AGILITY,1)
 	return ..()
 
 /mob/living/on_jog()

@@ -21,11 +21,12 @@
 	var/mob/living/L = owner
 
 	var/armor_bonus = FLOOR(L.intoxication*0.025 + max(0,L.nutrition - 1000)*0.05,5)
+	var/physical_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5)
 
 	var/list/bonus_armor = list(
-		BLADE = armor_bonus,
-		BLUNT = armor_bonus,
-		PIERCE = armor_bonus,
+		BLADE = armor_bonus + physical_bonus,
+		BLUNT = armor_bonus + physical_bonus,
+		PIERCE = armor_bonus + physical_bonus,
 		ARCANE = -armor_bonus,
 		COLD = armor_bonus*2,
 		PAIN = armor_bonus*2,

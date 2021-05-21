@@ -310,9 +310,9 @@
 	var/block_multiplier = 0 //Different from damage_multiplier.
 	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
-		if(L.attack_flags & CONTROL_MOD_BLOCK)
-			var/block_angle = abs(get_angle(victim,attacker))
-			if(block_angle <= 90) block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
+		//Getting the damage
+		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
+		//Parrying
 		if(is_advanced(victim) && can_be_parried)
 			var/mob/living/advanced/A = victim
 			if(A.parry(attacker,weapon,hit_object,src))
@@ -323,8 +323,15 @@
 					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
 					if(get_dist(A,LA) <= 1)
 						LA.add_status_effect(PARRIED,30,30)
+				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
-		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
+		//Blocking
+		if(L.attack_flags & CONTROL_MOD_BLOCK && abs(get_angle(victim,attacker)) <= 90)
+			block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
+			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier,block_multiplier)
+		else
+			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier)
+
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 	var/list/damage_to_deal_main = list(
@@ -432,6 +439,10 @@
 			return TRUE
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)

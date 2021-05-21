@@ -25,7 +25,7 @@
 	name = "Fortitude"
 	id = ATTRIBUTE_FORTITUDE
 	desc = "Cock and Ball Torture (also known as CBT) is a German goregrind band formed on 22 February 1997. The group is known for its groove-heavy riffing and pitchshifted vocals. The band is noted for its pornography-themed imagery and song titles and are one of the more noteworthy acts in the pornogrind subgenre."
-	desc_extended = "A measure of how resilient you are to this world. Affects pain resistance and health regeneration."
+	desc_extended = "A measure of how resilient you are to this world. Affects health regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.5
 	experience_multiplier = 21.5
@@ -36,7 +36,7 @@
 	name = "Constitution"
 	id = ATTRIBUTE_CONSTITUTION
 	desc = "Not the worst stat!"
-	desc_extended = "A measure of how resistant you are to this world. Affects resistances to all non-pain based damage types."
+	desc_extended = "A measure of how resistant you are to this world. Affects resistances to all physical (blade, blunt, pierce) damage types."
 	flags = ATTRIBUTE_STAT
 	experience_power = 1
 	experience_multiplier = 1.7
@@ -152,16 +152,16 @@
 		owner.health.update_health_stats()
 	return ..()
 
-/experience/attribute/agility/ //0% complete
+/experience/attribute/agility //0% complete
 	//Leveled up by moving.
-	//Each point leveled up = 1xp
+	//Each tile sprinted = 1xp.
 	name = "Agility"
 	id = ATTRIBUTE_AGILITY
 	desc = "Agile!"
 	desc_extended = "A measure of how fast you move. Affects your movement speed as well as the speed of which you perform movement based actions."
 	flags = ATTRIBUTE_STAT
-	experience_power = 1
-	experience_multiplier = 1.7
+	experience_power = 1.2
+	experience_multiplier = 85
 
 //None. Everyone starts with 50.
 /experience/attribute/luck/ //50% complete.
