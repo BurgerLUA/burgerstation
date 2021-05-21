@@ -484,34 +484,40 @@
 					var/xp_to_give = CEILING((experience_damage*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
-						experience_gained += "[xp_to_give] [SKILL_PRECISION] xp"
+						experience_gained[SKILL_PRECISION] += xp_to_give
 
 				for(var/skill in skill_stats)
 					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * experience_damage * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
-						experience_gained += "[xp_to_give] [skill] xp"
+						experience_gained[skill] += xp_to_give
 
 				for(var/attribute in attribute_stats)
 					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * experience_damage * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
-						experience_gained += "[xp_to_give] [attribute] xp"
+						experience_gained[attribute] += xp_to_give
 
 				for(var/skill in bonus_experience_skill)
 					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * experience_damage * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
-						experience_gained += "[xp_to_give] [skill] xp"
+						experience_gained[skill] += xp_to_give
 
 				for(var/attribute in bonus_experience_attribute)
 					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * experience_damage * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
-						experience_gained += "[xp_to_give] [attribute] xp"
+						experience_gained[attribute] += xp_to_give
 
 			if(length(experience_gained))
-				A.to_chat(span("notice","You gained [english_list(experience_gained)]."),CHAT_TYPE_COMBAT)
+				var/list/final_experience = list()
+				for(var/k in experience_gained)
+					var/v = experience_gained[k]
+					final_experience += "[v] [k] xp"
+
+
+				A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
