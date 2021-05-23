@@ -50,7 +50,7 @@ obj/structure/scenery/rocks/New()
 	..()
 	icon_state = "rock_[rand(1,10)]"
 
-obj/structure/scenery/rock_tiles/small/New()
+obj/structure/scenery/rock_tiles/small
 	name = "rock tiles"
 	icon = 'icons/obj/structure/flora/rock_tiles.dmi'
 	icon_state = "small_1"
@@ -61,7 +61,7 @@ obj/structure/scenery/rock_tiles/small/New()
 	..()
 	icon_state = "small_[rand(1,3)]"
 
-obj/structure/scenery/rock_tiles/big/New()
+obj/structure/scenery/rock_tiles/big
 	name = "rock tiles"
 	icon = 'icons/obj/structure/flora/rock_tiles.dmi'
 	icon_state = "big_1"
