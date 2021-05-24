@@ -2,10 +2,11 @@
 	name = "tome of flames"
 	desc = "Sprays an enemy with flames."
 	desc_extended = "Costs mana to use."
-	cost_mana = 2
-	shoot_delay = 4
+	cost_mana = 5
 
-	automatic = TRUE
+	bullet_count = 5
+
+	shoot_delay = 4
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/flame.dmi'
 

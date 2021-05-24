@@ -3,7 +3,10 @@
 	desc = "Sprays an enemy with frost."
 	desc_extended = "Costs mana to use."
 	cost_mana = 2
-	shoot_delay = 4
+
+	shoot_delay = 15
+	burst_delay = 3
+	max_bursts = 4
 
 	automatic = TRUE
 

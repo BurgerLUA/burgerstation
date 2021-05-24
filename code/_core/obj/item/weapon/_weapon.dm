@@ -16,8 +16,6 @@
 
 	var/prefix_id //The weapon's prefix, if any.
 
-	quick_function_type = FLAG_QUICK_TOGGLE
-
 	var/enchantment/enchantment
 
 	can_wear = TRUE

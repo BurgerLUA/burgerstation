@@ -16,6 +16,7 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.05
 
+
 /obj/item/weapon/ranged/magic/get_examine_list(var/mob/examiner)
 
 	. = ..()
@@ -73,3 +74,6 @@
 
 /obj/item/weapon/ranged/magic/get_skill_spread(var/mob/living/L)
 	return 0.05 - (0.1 * L.get_skill_power(SKILL_MAGIC_DEFENSIVE))
+
+/obj/item/weapon/ranged/magic/get_base_spread()
+	return 0.02

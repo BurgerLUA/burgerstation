@@ -42,9 +42,8 @@
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
-			for(var/obj/hud/button/slot/B in A.buttons)
-				if(B.id == text_num)
-					B.activate_button(owner.mob)
+			var/obj/hud/button/slot/B = A.slot_buttons[text_num]
+			if(B) B.activate_button(owner.mob)
 		return TRUE
 
 	switch(command)

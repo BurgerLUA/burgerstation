@@ -7,10 +7,6 @@
 	"D" = "move_right", \
 	"S" = "move_down", \
 	"A" = "move_left",\
-	"1" = "set-intent-help",\
-	"2" = "set-intent-disarm", \
-	"3" = "set-intent-grab", \
-	"4" = "set-intent-harm", \
 	"North" = "move_up", \
 	"East" = "move_right", \
 	"South" = "move_down", \
@@ -31,7 +27,16 @@
 	"T" = "say", \
 	"O" = "ooc", \
 	"L" = "looc", \
-	"V" = "zoom"\
+	"V" = "zoom",\
+	"1" = "bind_1",\
+	"2" = "bind_2",\
+	"3" = "bind_3",\
+	"4" = "bind_4",\
+	"5" = "bind_5",\
+	"6" = "bind_6",\
+	"7" = "bind_7",\
+	"8" = "bind_8",\
+	"9" = "bind_9"\
 )
 
 #define AZERTY_MACROS list( \
@@ -39,10 +44,6 @@
 	"D" = "move_right",\
 	"S" = "move_down",\
 	"Q" = "move_left",\
-	"1" = "set-intent-help",\
-	"2" = "set-intent-disarm",\
-	"3" = "set-intent-grab",\
-	"4" = "set-intent-harm",\
 	"North" = "move_up",\
 	"East" = "move_right",\
 	"South" = "move_down",\
@@ -64,4 +65,13 @@
 	"O" = "ooc",\
 	"L" = "looc",\
 	"V" = "zoom",\
+	"1" = "bind_1",\
+	"2" = "bind_2",\
+	"3" = "bind_3",\
+	"4" = "bind_4",\
+	"5" = "bind_5",\
+	"6" = "bind_6",\
+	"7" = "bind_7",\
+	"8" = "bind_8",\
+	"9" = "bind_9"\
 )

@@ -39,29 +39,6 @@
 
 	return TRUE
 
-/client/MouseEntered(object,location,control,params)
-
-	if(!mob)
-		return ..()
-
-	if(object)
-		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
-	else
-		mob.examine_overlay.maptext = null
-
-
-	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
-		var/real_angle = get_angle(mob,location) + 90
-		var/desired_x_offset = sin(real_angle)
-		var/desired_y_offset = cos(real_angle)
-		var/real_dir = angle2dir(real_angle)
-		is_zoomed = real_dir
-		mob.set_dir(real_dir)
-		update_camera_offset(desired_x_offset,desired_y_offset)
-
-
-	. = ..()
-
 /client/proc/update_camera_offset(var/desired_x_offset=0,var/desired_y_offset=0)
 	var/zoom_mul = 1
 	if(is_advanced(mob))

@@ -255,9 +255,6 @@
 
 	return ..()
 
-/atom/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
-	return FALSE
-
 /obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 

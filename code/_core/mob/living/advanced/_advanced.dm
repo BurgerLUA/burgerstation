@@ -27,6 +27,8 @@
 	var/obj/item/right_item
 	var/obj/item/holster_item
 
+	var/list/obj/hud/button/slot/slot_buttons = list()
+
 	health_base = 100
 	stamina_base = 100
 	mana_base = 100
@@ -36,8 +38,6 @@
 	var/obj/hud/inventory/active_inventory
 
 	var/mob/living/vehicle/driving
-
-	var/quick_mode = null
 
 	random_spawn_dir = FALSE
 

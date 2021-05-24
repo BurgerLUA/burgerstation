@@ -184,7 +184,30 @@
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
 		return ..()
 
-	store_new_params(over_object,over_location,new_params)
+	. = ..()
+
+/client/MouseEntered(object,location,control,params)
+
+	var/list/new_params = params2list(params)
+
+	store_new_params(object,location,new_params)
+
+	if(!mob)
+		return ..()
+
+	if(object)
+		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
+	else
+		mob.examine_overlay.maptext = null
+
+	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
+		var/real_angle = get_angle(mob,location) + 90
+		var/desired_x_offset = sin(real_angle)
+		var/desired_y_offset = cos(real_angle)
+		var/real_dir = angle2dir(real_angle)
+		is_zoomed = real_dir
+		mob.set_dir(real_dir)
+		update_camera_offset(desired_x_offset,desired_y_offset)
 
 	. = ..()
 

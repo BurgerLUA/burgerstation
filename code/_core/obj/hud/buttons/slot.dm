@@ -9,11 +9,10 @@
 
 	flags = FLAGS_HUD_MOB
 
-	var/atom/stored_atom
-
-	var/active = FALSE
+	var/obj/stored_object
 
 	plane = PLANE_HUD
+	layer = 1
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
@@ -25,84 +24,86 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/slot/Destroy()
-	stored_atom = null
+	stored_object = null
 	return ..()
+
+/obj/hud/button/slot/update_owner(var/mob/desired_owner)
+
+	var/mob/old_owner = owner
+
+	. = ..()
+
+	if(.) //Owner was changed
+		if(is_advanced(old_owner))
+			var/mob/living/advanced/A = old_owner
+			A.slot_buttons -= id
+		if(is_advanced(owner))
+			var/mob/living/advanced/A = owner
+			A.slot_buttons[id] = src
 
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
-	if(stored_atom && stored_atom.qdeleting)
+	if(!stored_object)
+		return FALSE
+
+	if(!caller.client)
+		return FALSE
+
+	if(stored_object.qdeleting)
 		clear_object(caller)
 		return FALSE
 
-	var/obj/item/I = stored_atom
 
-	if(istype(I) && I.quick_function_type == FLAG_QUICK_INSTANT)
-		stored_atom.quick(caller)
-		caller.quick_mode = 0
+	if(stored_object.quick(caller,caller.client.last_object,caller.client.last_location,null,caller.client.last_params))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
-		animate(color="#FFFFFF",time=5)
 	else
-		active = !active
-		caller.quick_mode = active ? id : null
-		if(active)
-			animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
-		else
-			animate(src,color="#FFFFFF",time=1,flags=ANIMATION_PARALLEL)
+		animate(src,color="#FF0000",time=1,flags=ANIMATION_PARALLEL)
 
-	if(active)
-		for(var/obj/hud/button/slot/S in owner.buttons)
-			if(S == src)
-				continue
-			S.active = FALSE
-			animate(S,color="#FFFFFF",time=1,flags=ANIMATION_PARALLEL)
+	animate(color="#FFFFFF",time=5)
 
 	return TRUE
 
 /obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
-	if(stored_atom)
-		A.to_chat(span("notice","\The [stored_atom.name] was unbound from slot [icon_state]."))
-		vis_contents -= stored_atom
-		stored_atom = null
+	if(stored_object)
+		A.to_chat(span("notice","\The [stored_object.name] was unbound from slot [icon_state]."))
+		vis_contents -= stored_object
+		stored_object = null
 	return TRUE
 
 /obj/hud/button/slot/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(stored_atom)
-		stored_atom.dropped_on_by_object(caller,object,location,control,params)
-		return TRUE
+	if(stored_object)
+		clear_object(caller)
 
-	return clicked_on_by_object(caller,object)
+	store_object(caller,object,location,control,params)
+
+	return TRUE
+
 
 /obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()
-
 	if(.)
 		clear_object(caller)
 
 
-/obj/hud/button/slot/proc/store_atom(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/slot/proc/store_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_advanced(caller))
-		return FALSE
-
-	if(!is_item(object))
+	if(!is_advanced(caller) || !object)
 		return FALSE
 
 	var/mob/living/advanced/A = caller
 
-	var/obj/item/I = object
+	var/obj/O = object
 
-	if(!istype(I) || !I.has_quick_function)
-		A.to_chat(span("warning","\The [I.name] doesn't have a quick bind function."))
+	if(!istype(O) || !O.has_quick_function)
+		A.to_chat(span("warning","\The [O.name] doesn't have a quick bind function."))
 		return TRUE
 
 	clear_object(A)
 
-	stored_atom = object
-	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
-	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
-	active = FALSE
-	vis_contents += stored_atom
+	stored_object = O
+	A.to_chat(span("notice","\The [object.name] was bound to slot [id]."))
+	vis_contents += stored_object
 
 	return TRUE
 

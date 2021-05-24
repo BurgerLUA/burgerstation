@@ -24,8 +24,7 @@
 	return 0
 
 /obj/item/weapon/ranged/magic/tome/quick(var/mob/caller as mob,var/atom/object,location,params)
-	shoot(caller,object,location,params)
-	return TRUE
+	return shoot(caller,object,location,params)
 
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(var/mob/living/caster)
 	return cost_mana

@@ -3,9 +3,11 @@
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
 	cost_mana = 4
-	shoot_delay = 4
+	shoot_delay = 7
+	burst_delay = 2
+	max_bursts = 3
 
-	automatic = TRUE
+	automatic = FALSE
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/crystal.dmi'
 
@@ -24,13 +26,11 @@
 	name = "true tome of the plasma crystal"
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
-	cost_mana = 8
+	cost_mana = 5
 
-	shoot_delay = 1.25
-	burst_delay = 5
-	max_bursts = 3
-
-	automatic = TRUE
+	shoot_delay = 6
+	burst_delay = 1
+	max_bursts = 5
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/crystal.dmi'
 
