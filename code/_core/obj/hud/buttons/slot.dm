@@ -4,7 +4,7 @@
 	desc = "Slot button for quick actions."
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
 	icon_state = "square_trim"
-	screen_loc = "LEFT,TOP"
+	screen_loc = "LEFT+0.25,TOP-0.25"
 	alpha = 0
 
 	flags = FLAGS_HUD_MOB
@@ -99,49 +99,49 @@
 /obj/hud/button/slot/A
 	id = "1"
 	maptext = "1"
-	screen_loc = "LEFT,TOP"
+	screen_loc = "LEFT+0.25,TOP-0.25"
 
 /obj/hud/button/slot/B
 	id = "2"
 	maptext = "2"
-	screen_loc = "LEFT+1,TOP"
+	screen_loc = "LEFT+1+0.25,TOP-0.25"
 
 /obj/hud/button/slot/C
 	id = "3"
 	maptext = "3"
-	screen_loc = "LEFT+2,TOP"
+	screen_loc = "LEFT+2+0.25,TOP-0.25"
 
 /obj/hud/button/slot/D
 	id = "4"
 	maptext = "4"
-	screen_loc = "LEFT+3,TOP"
+	screen_loc = "LEFT+3+0.25,TOP-0.25"
 
 /obj/hud/button/slot/E
 	id = "5"
 	maptext = "5"
-	screen_loc = "LEFT+4,TOP"
+	screen_loc = "LEFT+4+0.25,TOP-0.25"
 
 /obj/hud/button/slot/F
 	id = "6"
 	maptext = "6"
-	screen_loc = "LEFT+5,TOP"
+	screen_loc = "LEFT+5+0.25,TOP-0.25"
 
 /obj/hud/button/slot/G
 	id = "7"
 	maptext = "7"
-	screen_loc = "LEFT+6,TOP"
+	screen_loc = "LEFT+6+0.25,TOP-0.25"
 
 /obj/hud/button/slot/H
 	id = "8"
 	maptext = "8"
-	screen_loc = "LEFT+7,TOP"
+	screen_loc = "LEFT+7+0.25,TOP-0.25"
 
 /obj/hud/button/slot/I
 	id = "96"
 	maptext = "9"
-	screen_loc = "LEFT+8,TOP"
+	screen_loc = "LEFT+8+0.25,TOP-0.25"
 
 /obj/hud/button/slot/J
 	id = "0"
 	maptext = "0"
-	screen_loc = "LEFT+9,TOP"
+	screen_loc = "LEFT+9+0.25,TOP-0.25"
