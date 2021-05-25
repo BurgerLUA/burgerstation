@@ -239,3 +239,9 @@
 		if(O.can_block(attacker,weapon,src,DT))
 			. = max(.,O.block_defense[attack_type])
 
+/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
+
+	if(last_hold && (world.time - last_hold <= 10*get_skill_power(SKILL_PARRY,0,1,2)))
+		return TRUE
+
+	return FALSE

@@ -40,12 +40,12 @@
 #define SKILL_RANGED "ranged" //Completed
 #define SKILL_PRECISION "precision"
 #define SKILL_SURVIVAL "survival" //Completed
-#define SKILL_DODGE "dodge" //Completed
+#define SKILL_EVASION "evasion" //Completed
 #define SKILL_PARRY "parry" //Completed
 
 //INTELLIGENCE
 #define SKILL_MAGIC_DEFENSIVE "defensive" //Completed
 #define SKILL_MAGIC_OFFENSIVE "offensive" //Completed
 #define SKILL_MAGIC_SUMMONING "summoning" //Completed
-#define SKILL_MAGIC_ENCHANTING "enchanting"
-#define SKILL_MEDICINE "medicine"
+#define SKILL_MAGIC_ENCHANTING "enchanting" //Completed.
+#define SKILL_MEDICINE "medicine" //Completed

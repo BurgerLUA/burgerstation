@@ -111,7 +111,7 @@
 	name = "gold coin"
 	icon = 'icons/obj/item/currency/gold.dmi'
 	icon_state = "1"
-	value = 10
+	value = 0 //Value is based on current economy.
 
 	item_count_max = 200
 

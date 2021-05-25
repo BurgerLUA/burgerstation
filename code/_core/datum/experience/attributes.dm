@@ -178,11 +178,8 @@
 	default_level = 50
 	counts_towards_level = FALSE
 
-
 /experience/attribute/luck/set_level(var/level)
-
 	. = ..()
-
 	if(.)
 		owner.luck = clamp(level,1,src.get_max_level())
 
