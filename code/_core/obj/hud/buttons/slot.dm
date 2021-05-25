@@ -55,8 +55,6 @@
 
 	var/client/C = caller.client
 
-	log_debug("The params are: [C.last_params ? C.last_params : "NULL"].")
-
 	if(stored_object.quick(caller,C.last_object,C.last_location,C.last_params))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
 	else

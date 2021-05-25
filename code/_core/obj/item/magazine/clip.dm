@@ -10,6 +10,9 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
+		if(!G.open)
+			caller.to_chat(span("warning","You need to open \the [G.name] before inserting \the [src.name] into it!"))
+			return FALSE
 		var/insert_count = 0
 		for(var/k in stored_bullets)
 			if(!k) continue

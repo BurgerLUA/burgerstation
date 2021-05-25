@@ -319,6 +319,9 @@ mob/living/advanced/Login()
 
 	. = ..()
 
+	if(client)
+		add_species_buttons()
+
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
 	var/species/S = SPECIES(species)
@@ -331,7 +334,6 @@ mob/living/advanced/Login()
 
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE)
-		add_species_buttons()
 		add_species_health_elements()
 
 /mob/living/advanced/Finalize()

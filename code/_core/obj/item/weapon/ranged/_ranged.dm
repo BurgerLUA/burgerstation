@@ -553,7 +553,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				var/turf/T = locate(desired_x,desired_y,caller.z)
 				if(T)
 					next_shoot_time = 0 //This is needed.
-					log_debug("The params are: [P.client.last_params ? P.client.last_params : "NULL"].")
 					if((max_bursts_to_use <= 0 || current_bursts < (max_bursts_to_use-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
 						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
 							current_bursts += 1
