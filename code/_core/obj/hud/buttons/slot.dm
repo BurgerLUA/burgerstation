@@ -5,7 +5,7 @@
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
 	icon_state = "square_trim"
 	screen_loc = "LEFT,TOP"
-	alpha = 200
+	alpha = 0
 
 	flags = FLAGS_HUD_MOB
 
@@ -50,9 +50,8 @@
 		return FALSE
 
 	if(stored_object.qdeleting)
-		clear_object(caller)
+		clear_object()
 		return FALSE
-
 
 	if(stored_object.quick(caller,caller.client.last_object,caller.client.last_location,null,caller.client.last_params))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
@@ -63,47 +62,37 @@
 
 	return TRUE
 
-/obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
+/obj/hud/button/slot/proc/clear_object()
 	if(stored_object)
-		A.to_chat(span("notice","\The [stored_object.name] was unbound from slot [icon_state]."))
 		vis_contents -= stored_object
 		stored_object = null
+	alpha = 0
+	invisibility = 101
 	return TRUE
-
-/obj/hud/button/slot/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(stored_object)
-		clear_object(caller)
-
-	store_object(caller,object,location,control,params)
-
-	return TRUE
-
 
 /obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()
 	if(.)
-		clear_object(caller)
+		clear_object()
 
 
-/obj/hud/button/slot/proc/store_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/slot/proc/store_object(var/atom/object,location,control,params)
 
-	if(!is_advanced(caller) || !object)
+	if(!object)
 		return FALSE
-
-	var/mob/living/advanced/A = caller
 
 	var/obj/O = object
 
 	if(!istype(O) || !O.has_quick_function)
-		A.to_chat(span("warning","\The [O.name] doesn't have a quick bind function."))
 		return TRUE
 
-	clear_object(A)
+	clear_object()
 
 	stored_object = O
-	A.to_chat(span("notice","\The [object.name] was bound to slot [id]."))
 	vis_contents += stored_object
+
+	alpha = 200
+	invisibility = 0
 
 	return TRUE
 

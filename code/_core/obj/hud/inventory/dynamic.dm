@@ -60,3 +60,21 @@
 		return TRUE
 
 	return ..()
+
+
+/obj/hud/inventory/dynamic/belt
+	var/obj/hud/button/slot/assoc_slot
+
+
+/obj/hud/inventory/dynamic/belt/Destroy()
+	assoc_slot = null
+	. = ..()
+
+/obj/hud/inventory/dynamic/belt/update_stats() //Something was removed/added.
+	. = ..()
+	if(assoc_slot)
+		var/obj/item/I = get_top_object()
+		if(I)
+			assoc_slot.store_object(I) //Also calls clear_object()
+		else
+			assoc_slot.clear_object()
