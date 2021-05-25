@@ -58,6 +58,11 @@ obj/structure/scenery/bush/snow/New()
 /obj/structure/interactive/tree/can_be_attacked()
 	return TRUE
 
+/obj/structure/interactive/tree/New()
+	. = ..()
+	pixel_x += rand(-3,3)
+	pixel_y += rand(-1,2)
+
 /obj/structure/interactive/tree/pine
 	name = "pine tree"
 	icon = 'icons/obj/structure/flora/pinetrees.dmi'
@@ -82,6 +87,8 @@ obj/structure/scenery/bush/snow/New()
 	icon = 'icons/obj/structure/flora/evergreen.dmi'
 	icon_state = "evergreen_2"
 	pixel_x = -16
+	color = "#d4d2ab"
+
 
 /obj/structure/interactive/tree/evergreen/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -100,6 +107,7 @@ obj/structure/scenery/bush/snow/New()
 	icon_state = "tree"
 	pixel_x = -32
 	pixel_y = 0
+	color = "#779659"
 
 /obj/structure/interactive/tree/jungle_small/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -118,6 +126,7 @@ obj/structure/scenery/bush/snow/New()
 	icon_state = "tree"
 	pixel_x = -48
 	pixel_y = -16
+	color = "#627a49"
 
 /obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()

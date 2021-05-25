@@ -29,7 +29,7 @@ obj/structure/scenery/flowers/New()
 
 obj/structure/scenery/grass
 	name = "uncut grass"
-	icon = 'icons/obj/structure/flora/ausflora.dmi'
+	icon = 'icons/obj/structure/flora/ausgrass.dmi'
 	icon_state = "sparsegrass_1"
 	layer = LAYER_FLOOR_SCENERY
 
@@ -63,6 +63,28 @@ obj/structure/scenery/rocks
 obj/structure/scenery/rocks/New()
 	..()
 	icon_state = "rock_[rand(1,10)]"
+
+obj/structure/scenery/rock_tiles/small
+	name = "rock tiles"
+	icon = 'icons/obj/structure/flora/rock_tiles.dmi'
+	icon_state = "small_1"
+	layer = LAYER_FLOOR_SCENERY
+	color = "#AE8A67"
+
+obj/structure/scenery/rock_tiles/small/New()
+	..()
+	icon_state = "small_[rand(1,3)]"
+
+obj/structure/scenery/rock_tiles/big
+	name = "rock tiles"
+	icon = 'icons/obj/structure/flora/rock_tiles.dmi'
+	icon_state = "big_1"
+	layer = LAYER_FLOOR_SCENERY
+	color = "#AE8A67"
+
+obj/structure/scenery/rock_tiles/big/New()
+	..()
+	icon_state = "big_[rand(1,3)]"
 
 /*
 obj/structure/scenery/evergreen
