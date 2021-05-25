@@ -25,6 +25,34 @@
 
 	var/spent=FALSE
 
+	has_quick_function = TRUE
+
+/obj/item/grenade/quick(var/mob/caller,var/atom/object,location,params)
+
+	if(!is_living(caller) || !object)
+		return FALSE
+
+	var/mob/living/L = caller
+	var/vel_x = object.x - L.x
+	var/vel_y = object.y - L.y
+	var/highest = max(abs(vel_x),abs(vel_y))
+
+	if(!highest)
+		src.drop_item(get_turf(L)) //Drop if we can't throw.
+		return TRUE
+
+	vel_x *= 1/highest
+	vel_y *= 1/highest
+
+	vel_x *= BULLET_SPEED_LARGE_PROJECTILE
+	vel_y *= BULLET_SPEED_LARGE_PROJECTILE
+
+	src.click_self(caller)
+	src.drop_item(get_turf(L),silent=TRUE)
+	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+
+	return TRUE
+
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("open")

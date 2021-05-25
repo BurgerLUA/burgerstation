@@ -2,6 +2,12 @@
 	name = "tool"
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
+	has_quick_function = TRUE
+
+/obj/item/weapon/melee/tool/quick(var/mob/caller,var/atom/object,location,params)
+	if(object) object.clicked_on_by_object(caller,src,location,null,params) //It's important it's called this way as not to call attack() if it fails.
+	return TRUE
+
 /obj/item/weapon/melee/tool/wirecutters
 	name = "wirecutters"
 	desc = "I said cut the INDIGO wire!"

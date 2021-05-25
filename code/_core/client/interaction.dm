@@ -211,8 +211,8 @@
 
 	. = ..()
 
-/client/proc/store_new_params(over_object,over_location,params)
+/client/proc/store_new_params(object,location,params)
 	last_params = params
-	last_object = over_object
-	last_location = over_location
+	last_object = object
+	last_location = location
 	return TRUE

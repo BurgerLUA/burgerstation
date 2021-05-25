@@ -53,7 +53,11 @@
 		clear_object()
 		return FALSE
 
-	if(stored_object.quick(caller,caller.client.last_object,caller.client.last_location,null,caller.client.last_params))
+	var/client/C = caller.client
+
+	log_debug("The params are: [C.last_params ? C.last_params : "NULL"].")
+
+	if(stored_object.quick(caller,C.last_object,C.last_location,C.last_params))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
 	else
 		animate(src,color="#FF0000",time=1,flags=ANIMATION_PARALLEL)
@@ -71,10 +75,7 @@
 	return TRUE
 
 /obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	. = ..()
-	if(.)
-		clear_object()
-
+	return TRUE
 
 /obj/hud/button/slot/proc/store_object(var/atom/object,location,control,params)
 
