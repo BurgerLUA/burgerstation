@@ -8,7 +8,10 @@
 		"view_range" = VIEW_RANGE,
 		"fps_client" = FPS_CLIENT,
 		"hud_colors" = DEFAULT_COLORS,
-		"enable_zoom_view_lock" = 0
+		"enable_zoom_view_lock" = 0,
+		"enable_depth" = 1,
+		"enable_smooth_shadows" = 1,
+		"enable_currency_bloom" = 1
 	)
 
 /savedata/client/settings/get_file(var/file_id)
@@ -55,5 +58,5 @@
 /savedata/client/settings/proc/save()
 	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"
-	owner.mob.to_chat(span("notice","Your settings have been saved."))
 	rustg_file_write(json_encode(loaded_data),full_path)
+	owner.mob.to_chat(span("notice","Your settings have been saved."))

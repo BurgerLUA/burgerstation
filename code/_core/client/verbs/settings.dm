@@ -109,3 +109,22 @@
 /client/verb/toggle_zoom_view_lock()
 	set hidden = TRUE
 	settings.change_setting("enable_zoom_view_lock",!settings.loaded_data["enable_zoom_view_lock"])
+
+/client/verb/toggle_smooth_shadows()
+	set hidden = TRUE
+	settings.change_setting("enable_smooth_shadows",!settings.loaded_data["enable_smooth_shadows"])
+	mob?.plane_master_darkness?.refresh_post_processing()
+
+/client/verb/toggle_depth()
+	set hidden = TRUE
+	settings.change_setting("enable_depth",!settings.loaded_data["enable_depth"])
+	mob?.plane_master_wall?.refresh_post_processing()
+	mob?.plane_master_mob?.refresh_post_processing()
+	mob?.plane_master_obj?.refresh_post_processing()
+	mob?.plane_master_shuttle?.refresh_post_processing()
+	mob?.plane_master_openspace?.refresh_post_processing()
+
+/client/verb/toggle_currency_bloom()
+	set hidden = TRUE
+	settings.change_setting("enable_currency_bloom",!settings.loaded_data["enable_currency_bloom"])
+	mob?.plane_master_currency?.refresh_post_processing()
