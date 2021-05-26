@@ -308,7 +308,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 
 
-/obj/structure/interactive/door/airlock/Cross(atom/movable/O)
+/obj/structure/interactive/door/airlock/Cross(atom/movable/O,atom/oldloc)
 
 	. = ..()
 

@@ -23,12 +23,12 @@
 
 	repair_flag = FLAG_TOOL_WELDER
 
-/obj/structure/interactive/barricade/Cross(atom/movable/O)
+/obj/structure/interactive/barricade/Cross(atom/movable/O,atom/oldloc)
 	if(climbers[O])
 		return TRUE
 	return ..()
 
-/obj/structure/interactive/barricade/Uncross(atom/movable/O)
+/obj/structure/interactive/barricade/Uncross(atom/movable/O,atom/newloc)
 	if(climbers[O])
 		return TRUE
 	return ..()

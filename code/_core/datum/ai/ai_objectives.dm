@@ -135,11 +135,11 @@
 				obstacles -= k
 				continue
 			if(isturf(A))
-				if(A.Enter(owner,get_turf(owner)))
+				if(A.Enter(owner,owner.loc))
 					obstacles -= k
 					continue
 			if(ismovable(A))
-				if(A.Cross(owner))
+				if(A.Cross(owner,owner.loc))
 					obstacles -= k
 					continue
 			var/distance_check = get_dist(owner,A)

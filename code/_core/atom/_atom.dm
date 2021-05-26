@@ -229,16 +229,18 @@
 /atom/proc/is_busy()
 	return SSprogressbars.all_progress_bars[src] ? TRUE : FALSE
 
-
 /atom/Enter(atom/movable/O,atom/oldloc) //Override default
 	return TRUE
 
 /atom/Exit(atom/movable/O,atom/oldloc) //Override default
 	return TRUE
 
-/atom/Cross(atom/movable/O) //Override default.
+/atom/Cross(atom/movable/O,atom/oldloc) //Override default.
 	if(O.collision_flags & src.collision_flags)
 		return FALSE
+	return TRUE
+
+/atom/Uncross(atom/movable/O,atom/newloc)
 	return TRUE
 
 /atom/Crossed(atom/movable/O) //Override default

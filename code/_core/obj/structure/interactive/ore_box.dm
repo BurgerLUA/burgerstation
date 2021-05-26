@@ -25,7 +25,7 @@
 
 	return ..()
 
-/obj/structure/interactive/ore_box/Cross(atom/movable/O)
+/obj/structure/interactive/ore_box/Cross(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/obj/item/material/ore/))
 		var/obj/item/material/ore/I = O
@@ -41,4 +41,3 @@
 
 	. += div("notice","The counter shows [length(contents)] objects inside.")
 
-	

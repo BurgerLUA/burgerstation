@@ -20,7 +20,7 @@
 
 
 
-/obj/effect/cleanable/blood/Cross(atom/movable/O)
+/obj/effect/cleanable/blood/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
 /obj/effect/cleanable/blood/Destroy()

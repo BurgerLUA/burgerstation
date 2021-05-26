@@ -88,7 +88,7 @@
 		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
 
 
-/obj/structure/interactive/blob/Cross(atom/movable/O)
+/obj/structure/interactive/blob/Cross(atom/movable/O,atom/oldloc)
 	if(istype(O,/mob/living/simple/blobbernaught))
 		return TRUE
 	return ..()

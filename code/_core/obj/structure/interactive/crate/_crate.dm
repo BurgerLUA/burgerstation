@@ -63,7 +63,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/Cross(var/atom/movable/O)
+/obj/structure/interactive/crate/Cross(var/atom/movable/O,atom/oldloc)
 
 	if(istype(O,/obj/structure/interactive/crate))
 		return FALSE
@@ -76,7 +76,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/Uncross(var/atom/movable/O)
+/obj/structure/interactive/crate/Uncross(var/atom/movable/O,atom/newloc)
 
 	if(open)
 		return TRUE

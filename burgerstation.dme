@@ -187,7 +187,6 @@
 #include "code\_core\atom\interaction.dm"
 #include "code\_core\atom\listening.dm"
 #include "code\_core\atom\moveable\_movable.dm"
-#include "code\_core\atom\moveable\burger_star.dm"
 #include "code\_core\atom\moveable\direction.dm"
 #include "code\_core\atom\moveable\gibbing.dm"
 #include "code\_core\atom\moveable\movement.dm"

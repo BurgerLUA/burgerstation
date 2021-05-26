@@ -37,14 +37,14 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 
 
 
-/obj/structure/interactive/drop_pod/Cross(atom/movable/O)
+/obj/structure/interactive/drop_pod/Cross(atom/movable/O,atom/oldloc)
 
 	if(state == POD_IDLE)
 		return TRUE
 
 	return ..()
 
-/obj/structure/interactive/drop_pod/Uncross(atom/movable/O)
+/obj/structure/interactive/drop_pod/Uncross(atom/movable/O,atom/newloc)
 
 	if(state == POD_IDLE)
 		return TRUE

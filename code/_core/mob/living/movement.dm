@@ -187,7 +187,7 @@
 
 	return FALSE
 
-/mob/living/Cross(atom/movable/O)
+/mob/living/Cross(atom/movable/O,atom/oldloc)
 
 	if(O.density && is_living(O))
 		var/mob/living/L = O

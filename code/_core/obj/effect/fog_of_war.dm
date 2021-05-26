@@ -17,7 +17,7 @@ var/global/list/all_fog = list()
 
 	mouse_opacity = 2
 
-/obj/effect/fog_of_war/Cross(var/atom/movable/O)
+/obj/effect/fog_of_war/Cross(atom/movable/O,atom/oldloc)
 	if(is_living(O))
 		return FALSE
 	return TRUE

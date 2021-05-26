@@ -20,6 +20,15 @@
 
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
+	has_quick_function = TRUE
+
+/obj/item/container/beaker/quick(var/mob/caller,var/atom/object,location,params)
+
+	if(!is_living(caller))
+		return FALSE
+
+	return feed(caller,caller)
+
 /obj/item/container/beaker/get_consume_verb()
 	return "drink"
 

@@ -118,7 +118,7 @@ var/global/list/stored_paths = list()
 			. |= T
 		for(var/k in T.contents)
 			var/atom/movable/M = k
-			if(!M.allow_path && M.density && M.anchored && !M.Cross(NC))
+			if(!M.allow_path && M.density && M.anchored && !M.Cross(NC,NC.loc))
 				. |= M
 		NC.loc = T
 

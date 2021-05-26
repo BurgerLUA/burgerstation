@@ -89,7 +89,7 @@
 	. = ..()
 	. += span("notice","Hold ALT to move over the ball without kicking it.<br>Hold SPACE to triple your kicking power.<br>Hold SHIFT while running into the ball to double your kicking power.")
 
-/obj/item/ball/soccer/Cross(atom/movable/O)
+/obj/item/ball/soccer/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
 /obj/item/ball/soccer/Crossed(atom/movable/O)

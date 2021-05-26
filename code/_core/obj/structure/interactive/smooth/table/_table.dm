@@ -65,7 +65,7 @@
 
 
 
-/obj/structure/smooth/table/Cross(atom/movable/O)
+/obj/structure/smooth/table/Cross(atom/movable/O,atom/oldloc)
 
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O

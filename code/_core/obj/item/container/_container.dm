@@ -6,16 +6,3 @@
 	can_rename = TRUE
 
 	weight = 0.25
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,14 +1,14 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 
-/atom/movable/proc/can_enter(var/turf/T)
+/atom/movable/proc/can_enter(var/turf/T,var/loc_overide = src.loc)
 
-	if(!T.Enter(src,src.loc))
+	if(!T.Enter(src,loc_overide))
 		return FALSE
 
 	for(var/k in T.contents)
 		var/atom/movable/M = k
-		if(M.density && !M.Cross(src))
+		if(M.density && !M.Cross(src,loc_overide))
 			return FALSE
 
 	return TRUE
@@ -182,7 +182,7 @@
 			var/atom/movable/M = k
 			if(M == src)
 				continue
-			if(M.density && !M.Cross(src) && !src.Bump(M))
+			if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
 				return FALSE
 
 	//Try: Uncross the Contents
@@ -192,7 +192,7 @@
 			var/atom/movable/M = k
 			if(M == src)
 				continue
-			if(M.density && !M.Uncross(src))
+			if(M.density && !M.Uncross(src,NewLoc))
 				return FALSE
 
 	//Do: Enter the turf.
