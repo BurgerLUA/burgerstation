@@ -11,8 +11,8 @@
 
 /obj/plane_master/New(var/desired_loc)
 	. = ..()
-	apply_post_processing()
 	owner = desired_loc
+	apply_post_processing()
 
 /obj/plane_master/Destroy()
 	owner = null

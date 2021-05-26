@@ -11,7 +11,7 @@ mob/living/advanced/proc/handle_detail_chargen(var/desired_color,var/update_blen
 
 /obj/hud/button/chargen/detail
 	name = "detail color"
-	icon_state = "change_glowcolor"
+	icon_state = "change_detailcolor"
 
 	screen_loc = "CENTER-3.5,CENTER-2"
 

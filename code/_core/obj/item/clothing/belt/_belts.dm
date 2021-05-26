@@ -17,8 +17,6 @@
 	var/old_check = istype(old_location,/obj/hud/inventory/organs/groin_o)
 	var/new_check = istype(new_location,/obj/hud/inventory/organs/groin_o)
 
-	world.log << "Prepickup of [src.get_debug_name()]: [old_location], [new_location]."
-
 	if(old_check || new_check)
 		for(var/obj/hud/inventory/dynamic/belt/I in inventories)
 			if(old_check && I.assoc_slot) //We're being removed
@@ -26,7 +24,7 @@
 				I.assoc_slot = null
 			if(new_check)
 				var/mob/living/advanced/owner = new_location.owner
-				if(owner)
+				if(owner && owner.client)
 					var/suffix = copytext(I.id,-1)
 					var/obj/hud/button/slot/S = owner.slot_buttons[suffix]
 					if(S)
@@ -36,8 +34,6 @@
 							I.assoc_slot.store_object(O)
 					else
 						log_error("Warning: [owner.get_debug_name()] didn't have a slot button [suffix] initialized.")
-				else
-					log_error("Warning: Tried to put [src.get_debug_name()] an an inventory without an owner!")
 
 
 

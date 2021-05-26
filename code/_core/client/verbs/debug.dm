@@ -157,8 +157,8 @@ client/verb/air_test(var/pressure as num)
 
 			sleep(-1)
 
-	src << "Found [found_tiles] tiles, with [error_tiles] errored tiles."
-	src << "Icon: [new/image(I)]."
+	to_chat("Found [found_tiles] tiles, with [error_tiles] errored tiles.")
+	to_chat("Icon: [new/image(I)].")
 	src << ftp(I,"map_[src.mob.z].png")
 
 

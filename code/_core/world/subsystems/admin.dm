@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(admin)
 	var/list/stored_ranks = list()
 	var/list/stored_user_ranks = list()
 
-/subsystem/admin/proc/update_permissions_from_file()
+/subsystem/admin/proc/load_permissions_from_file()
 
 	var/file_text = rustg_file_read(RANK_DIR)
 	var/list/split_file = splittext(file_text,"\n")
@@ -43,15 +43,15 @@ SUBSYSTEM_DEF(admin)
 	log_subsystem(src.name,"Loaded [length(stored_ranks)] different ranks.")
 
 	if(!fexists(RANK_DIR))
-		log_subsystem(name,"Could not find an admin file ([RANK_DIR]).")
-		return ..()
+		log_subsystem(name,"Could not find an admin file ([RANK_DIR]). No permissions were loaded.")
+	else
+		load_permissions_from_file()
 
-	update_permissions_from_file()
-	update_permissions()
+	sync_permissions()
 
-	return ..()
+	. = ..()
 
-/subsystem/admin/proc/update_permissions()
+/subsystem/admin/proc/sync_permissions()
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C.sync_permissions()
