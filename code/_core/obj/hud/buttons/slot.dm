@@ -136,7 +136,7 @@
 	screen_loc = "LEFT+7+0.25,TOP-0.25"
 
 /obj/hud/button/slot/I
-	id = "96"
+	id = "9"
 	maptext = "9"
 	screen_loc = "LEFT+8+0.25,TOP-0.25"
 

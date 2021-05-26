@@ -28,6 +28,11 @@
 		BODY_ARM_LEFT = /obj/item/organ/arm/cyborg/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand/cyborg,
 		BODY_HAND_LEFT = /obj/item/organ/hand/cyborg/left,
+		BODY_EYE_RIGHT = /obj/item/organ/eye/cyborg,
+		BODY_EYE_LEFT = /obj/item/organ/eye/cyborg/left,
+		BODY_EAR_RIGHT = /obj/item/organ/ear/cyborg,
+		BODY_EAR_LEFT = /obj/item/organ/ear/cyborg/left,
+
 
 		BODY_BRAIN = /obj/item/organ/internal/brain/robotic,
 		BODY_LUNGS = /obj/item/organ/internal/lungs/robotic,
