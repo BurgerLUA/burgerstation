@@ -63,16 +63,39 @@
 		tracked_targets |= L
 		if(is_seen_by(src,L))
 			current_viewers += L
-		else if(get_dist(L,src) <= VIEW_RANGE*0.5)
+		else if(get_dist(L,src) <= 1)
 			current_targets += L
 
 	if(!length(current_viewers))
 		//No one is watching...
 		if(debug) log_subsystem("Peanut","No one is watching us. Time to be alive.")
-		if(!length(current_targets))
+		if(length(current_targets)) //Murder time!
+			if(debug) log_subsystem("Peanut","We have targets in view. Going to try and murder.")
+			for(var/k in current_targets)
+				CHECK_TICK(75,FPS_SERVER)
+				var/mob/living/L = k
+				if(get_dist(src,L) > 1) //Failsafe
+					continue
+				var/turf/T = get_turf(L)
+				var/someone_is_watching_L = FALSE
+				for(var/mob/living/L2 in viewers(T,VIEW_RANGE + ZOOM_RANGE))
+					CHECK_TICK(75,FPS_SERVER)
+					if(is_seen_by(L,L2))
+						someone_is_watching_L = TRUE
+						break
+				if(someone_is_watching_L)
+					continue
+				src.set_dir(get_dir(src,L))
+				L.death()
+				L.health?.update_health()
+				play_sound('sound/effects/neck_snap.ogg',T)
+				if(debug) log_subsystem("Peanut","Found a target. We've killed them.")
+				break
+		else
 			//No one is near. Chase someone.
 			if(debug) log_subsystem("Peanut","No one is near us either. Lets go find someone to kill that we know exist.")
-			var/list/living_distance = list()
+			var/list/best_path
+			var/best_path_was_interupted = FALSE
 			for(var/k in tracked_targets)
 				CHECK_TICK(75,FPS_SERVER)
 				var/mob/living/L = k
@@ -83,77 +106,57 @@
 					tracked_targets -= k
 					continue
 				var/distance = get_dist(src,L)
-				if(distance >= 75) //Too far.
+				if(distance >= 128) //Too far.
 					tracked_targets -= L
 					continue
-				living_distance[L] = distance
-
-			sortTim(living_distance,/proc/cmp_numeric_asc,associative=TRUE)
-
-			for(var/k in living_distance)
-				CHECK_TICK(75,FPS_SERVER)
-				var/mob/living/L = k
 				var/turf/T = get_turf(L)
 				//Travel to them.
-				var/list/path = burger_star(get_turf(src),T)
+				var/turf/start_turf = get_turf(src)
+				var/list/path = AStar_Circle(start_turf,T,src)
+				if(path) path -= start_turf
+				if(debug) log_subsystem("Peanut","Trying to go kill [L]... initial path length returned [length(path)].")
 				var/path_length = length(path)
-				var/did_move = FALSE
-				if(path_length)
-					while(path_length)
-						CHECK_TICK(75,FPS_SERVER)
-						var/turf/last_path = get_turf(path[path_length])
-						var/is_path_being_watched = FALSE
-						for(var/mob/living/L2 in viewers(VIEW_RANGE*ZOOM_RANGE,last_path))
-							CHECK_TICK(75,FPS_SERVER)
-							if(is_seen_by(last_path,L2))
-								is_path_being_watched = TRUE
-								break
-						if(is_path_being_watched)
-							continue
-						var/obj/structure/interactive/door/D = locate() in last_path.contents
-						if(D && D.door_state != DOOR_STATE_OPENED)
-							if(D.door_state == DOOR_STATE_BROKEN)
-								D.on_destruction(src,TRUE)
-							else if(D.door_state == DOOR_STATE_CLOSED)
-								D.open()
-							path_length -= 1
-							if(path_length > 0)
-								last_path = get_turf(path[path_length])
-								src.force_move(last_path)
-								did_move = TRUE
-							break
-						if(is_path_being_watched)
-							path_length -= 1
-							continue
-						src.force_move(last_path)
-						did_move = TRUE
-						break
-				else
-					tracked_targets -= k //Eh whatever.
-				if(did_move)
-					if(debug) log_subsystem("Peanut","We've move to a safe path location.")
-					break
-		else
-			//Murder time!
-			if(debug) log_subsystem("Peanut","We have targets in view. Going to try and murder.")
-			for(var/k in current_targets)
-				CHECK_TICK(75,FPS_SERVER)
-				var/mob/living/L = k
-				var/turf/T = get_turf(L)
-				var/someone_is_watching_L = FALSE
-				for(var/mob/living/L2 in viewers(T,VIEW_RANGE + ZOOM_RANGE))
-					CHECK_TICK(75,FPS_SERVER)
-					if(is_seen_by(L,L2))
-						someone_is_watching_L = TRUE
-						break
-				if(someone_is_watching_L)
+				var/was_interupted = FALSE
+				if(!path_length)
 					continue
-				src.force_move(T)
-				src.set_dir(L.dir)
-				L.death()
-				L.health?.update_health()
-				play_sound('sound/effects/neck_snap.ogg',T)
-				if(debug) log_subsystem("Peanut","Found a target. We've killed them.")
+				if(path_length > 10) //Limit to 10 tiles per think.
+					path.Cut(11,0)
+					was_interupted = TRUE
+					path_length = 10
+				for(var/i=1,i<=path_length,i++)
+					CHECK_TICK(75,FPS_SERVER)
+					var/turf/PT = path[i]
+					var/is_turf_being_watched = FALSE
+					for(var/mob/living/L2 in viewers(VIEW_RANGE*ZOOM_RANGE,PT))
+						CHECK_TICK(75,FPS_SERVER)
+						if(is_seen_by(PT,L2))
+							is_turf_being_watched = TRUE
+							break
+					if(is_turf_being_watched)
+						path.Cut(i,0)
+						was_interupted = TRUE
+						break
+					var/obj/structure/interactive/door/D = locate() in PT.contents
+					if(D && D.door_state != DOOR_STATE_OPENED)
+						path.Cut(i,0)
+						was_interupted = TRUE
+						break
+				if(!length(path))
+					continue
+				if(!best_path || (length(best_path) > length(path) && (best_path_was_interupted || !was_interupted)))
+					best_path = path
+					best_path_was_interupted = was_interupted
+			if(best_path)
+				if(debug) log_subsystem("Found a path to move to. Moving...")
+				var/turf/path_ending = best_path[length(best_path)]
+				src.force_move(path_ending)
+				for(var/obj/structure/interactive/door/D in range(src,1))
+					if(D.door_state == DOOR_STATE_BROKEN)
+						D.on_destruction(src,TRUE)
+					else if(D.door_state != DOOR_STATE_OPENED)
+						D.open()
+			else
+				if(debug) log_subsystem("Peanut","Could not find a valid path to a tracked target.")
 
 		if(debug) log_subsystem("Peanut","Took [world.time-start_time] deciseconds to think.")
 

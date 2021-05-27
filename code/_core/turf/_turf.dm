@@ -46,50 +46,66 @@
 	if(cardinal)
 		for(var/d in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(src,d)
-			if(crosser)
-				if(!crosser.can_enter(T,src))
+			if(!T.Enter(null,src))
+				continue
+			var/can_cross = TRUE
+			for(var/k in T.contents)
+				var/atom/movable/M = k
+				if(!M.density)
 					continue
-			else
-				if(!T.Enter(null,src))
+				if(M.allow_path)
 					continue
-				for(var/k in T.contents)
-					var/atom/movable/M = k
-					if(!M.density)
-						continue
-					if(!M.Cross(null,src))
-						continue
+				if(!M.Cross(crosser,src))
+					continue
+				can_cross = FALSE
+				break
+			if(!can_cross)
+				continue
 			. += T
 
 	if(intercardinal)
 		for(var/d in DIRECTIONS_INTERCARDINAL)
 			var/first_dir = get_true_4dir(d)
 			var/second_dir = d & ~first_dir
+
 			var/turf/T1 = get_step(src,first_dir)
-			if(!T1)
-				continue
+			if(!T1) continue
+
 			var/turf/T2 = get_step(T1,second_dir)
-			if(crosser)
-				if(!crosser.can_enter(T1,src))
+
+			if(!T1.Enter(null,src))
+				continue
+
+			if(!T2.Enter(null,T1))
+				continue
+
+			var/can_cross = TRUE
+			for(var/k in T1.contents)
+				var/atom/movable/M = k
+				if(!M.density)
 					continue
-				if(!crosser.can_enter(T2,T1))
+				if(M.allow_path)
 					continue
-			else
-				if(!T1.Enter(null,src))
+				if(!M.Cross(crosser,src))
 					continue
-				if(!T2.Enter(null,T1))
+				can_cross = FALSE
+				break
+			if(!can_cross)
+				continue
+
+			for(var/k in T2.contents)
+				var/atom/movable/M = k
+				if(!M.density)
 					continue
-				for(var/k in T1.contents)
-					var/atom/movable/M = k
-					if(!M.density)
-						continue
-					if(!M.Cross(null,src))
-						continue
-				for(var/k in T2.contents)
-					var/atom/movable/M = k
-					if(!M.density)
-						continue
-					if(!M.Cross(null,T1))
-						continue
+				if(M.allow_path)
+					continue
+				if(!M.Cross(crosser,T1))
+					continue
+				can_cross = FALSE
+				break
+			if(!can_cross)
+				continue
+
 			. += T2
 
 

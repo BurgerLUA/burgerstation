@@ -189,7 +189,7 @@
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(O.density && is_living(O))
+	if(is_living(O) && O.density)
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
 			//If the crosser is horizontal, or the src is horizontal, who cares.

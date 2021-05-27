@@ -14,8 +14,8 @@ Credit:
 Some code modified to work with Burgerstation.
 */
 
-/proc/AStar(start, end, atom/walker, maxtraverse = 30)
-	if(isnull(end) || isnull(start))
+/proc/AStar(turf/start, turf/end, atom/movable/walker, maxtraverse = 30)
+	if(!isturf(start) || !isturf(end))
 		return
 	var/list/turf/open = list(start)
 	var/list/turf/nodeParent = list()
@@ -27,7 +27,7 @@ Some code modified to work with Burgerstation.
 		var/tentativeGScore = nodeGcost[current]
 		if (current == end)
 			var/list/reconstructed_path = list()
-			while (current)
+			while(current)
 				reconstructed_path.Insert(1, current)
 				current = nodeParent[current]
 			return reconstructed_path
@@ -50,7 +50,7 @@ Some code modified to work with Burgerstation.
 			return null // if we reach this part, there's no more nodes left to explore
 
 
-/proc/AStar_Circle(turf/start, atom/goal, atom/walker, min_dist=0, maxtraverse=30)
+/proc/AStar_Circle(turf/start, turf/goal, atom/movable/walker, min_dist=0, maxtraverse=30)
 
 	var/list/turf/closedSet = list()
 	var/list/turf/openSet = list(start)
