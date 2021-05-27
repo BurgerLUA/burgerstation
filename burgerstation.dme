@@ -100,6 +100,7 @@
 #include "code\__globals\_globals.dm"
 #include "code\__helpers\alert.dm"
 #include "code\__helpers\armor.dm"
+#include "code\__helpers\astar.dm"
 #include "code\__helpers\atmos.dm"
 #include "code\__helpers\blood.dm"
 #include "code\__helpers\burger_star.dm"

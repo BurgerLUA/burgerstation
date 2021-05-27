@@ -26,16 +26,16 @@
 
 	return TRUE
 
-/ai/proc/set_burger_star_path(var/turf/destination) //Very expensive.
+/ai/proc/set_path_astar(var/turf/destination)
 
-	if(current_burger_star_path)
-		current_burger_star_path.Cut()
-		current_burger_star_path = null
+	if(current_path_astar)
+		current_path_astar.Cut()
+		current_path_astar = null
 
 	if(destination)
-		var/list/returning_path = burger_star(owner,destination,TRUE)
+		var/list/returning_path = AStar_Circle(owner,destination,owner)
 		if(returning_path)
-			current_burger_star_path = returning_path
+			current_path_astar = returning_path
 			set_active(TRUE)
 			return TRUE
 

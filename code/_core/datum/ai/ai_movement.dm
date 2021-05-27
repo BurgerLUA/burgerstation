@@ -101,29 +101,27 @@
 
 	return TRUE
 
-/*
-/ai/proc/handle_movement_burger_star()
 
-	if(current_burger_star_path && length(current_burger_star_path))
+/ai/proc/handle_movement_astar()
+
+	if(current_path_astar && length(current_path_astar))
 		owner.movement_flags = MOVEMENT_NORMAL
 		var/turf/T = get_turf(owner)
-		var/turf/desired_turf = current_burger_star_path[1]
+		var/turf/desired_turf = current_path_astar[1]
 		if(T == desired_turf)
-			current_burger_star_path -= desired_turf
-			if(length(current_burger_star_path))
-				desired_turf = current_burger_star_path[1]
+			current_path_astar -= desired_turf
+			if(length(current_path_astar))
+				desired_turf = current_path_astar[1]
 			else
 				desired_turf = null
 		if(desired_turf)
 			owner.move_dir = get_dir(owner,desired_turf)
 		else
 			owner.move_dir = 0x0
-			set_burger_star_path(null)
+			set_path_astar(null)
 		return TRUE
 
 	return FALSE
-*/
-
 
 /ai/proc/handle_movement_path()
 	if(current_path && length(current_path))
@@ -180,7 +178,7 @@
 				SSai.path_stuck_ai |= src
 			return FALSE
 
-		//set_burger_star_path(get_turf(N_start))
+		set_path_astar(get_turf(N_start))
 		set_path(found_path)
 
 		return TRUE
@@ -248,10 +246,8 @@
 
 /ai/proc/handle_movement()
 
-	/*
-	if(handle_movement_burger_star())
+	if(handle_movement_astar())
 		return TRUE
-	*/
 
 	if(handle_movement_sidestep())
 		return TRUE

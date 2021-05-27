@@ -81,7 +81,7 @@
 
 /obj/structure/Cross(atom/movable/O,atom/oldloc)
 
-	if(O.collision_flags & src.collision_flags)
+	if(!O || O.collision_flags & src.collision_flags)
 		var/direction = get_dir(oldloc,src)
 		if(turn(direction,180) & collision_dir)
 			return FALSE

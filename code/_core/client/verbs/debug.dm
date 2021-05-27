@@ -16,13 +16,14 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_mob_to_null,
 	/client/verb/should_delete_atom,
 	/client/verb/add_loadout_to_mob,
-	/client/verb/test_pathfinding,
+	//client/verb/test_pathfinding,
 	/client/verb/force_save_deathbox,
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
 	/client/verb/view_dps,
 	/client/verb/test_ranged_weapons,
-	/client/verb/debug_flash
+	/client/verb/debug_flash,
+	/client/verb/test_astar
 )
 
 /client/verb/view_dps()
@@ -471,3 +472,37 @@ client/verb/air_test(var/pressure as num)
 	var/mob/living/L = mob
 	L.flash(SECONDS_TO_DECISECONDS(10))
 	L.bang(SECONDS_TO_DECISECONDS(10))
+
+
+/client/verb/test_astar()
+	set name = "Test AStar"
+	set category = "Debug"
+
+	var/turf/start = get_turf(mob)
+
+	if(!start)
+		return FALSE
+
+	var/list/possible_living = list()
+	for(var/mob/living/L in range(mob,VIEW_RANGE))
+		if(L == mob)
+			continue
+		possible_living += L
+
+	if(!length(possible_living))
+		return FALSE
+
+	var/turf/end = get_turf(pick(possible_living))
+
+	var/list/found_path = AStar_Circle(start,end,mob)
+
+	if(!length(found_path))
+		to_chat(span("notice","Can not find a path to [end.get_debug_name()]."))
+	else
+		to_chat(span("notice","Found [length(found_path)] tiles in path."))
+
+	for(var/k in found_path)
+		var/turf/T = k
+		T.color = "#FF0000"
+
+	return TRUE

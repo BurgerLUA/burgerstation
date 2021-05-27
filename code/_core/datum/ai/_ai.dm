@@ -61,7 +61,7 @@
 	var/path_steps = 1
 	var/list/Vector3D/current_path = list()
 
-	var/list/current_burger_star_path = list()
+	var/list/current_path_astar = list()
 
 	var/list/obstacles = list()
 

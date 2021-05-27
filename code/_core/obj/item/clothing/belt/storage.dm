@@ -1,7 +1,7 @@
 /obj/item/clothing/belt/storage
-	name = "utility belt"
+	name = "leather belt"
 	icon = 'icons/obj/item/clothing/belts/tool.dmi'
-	desc = "Don't make me get the belt."
+	desc = "4 strength,4 stam leather belt. Level 18."
 	desc_extended = "Stores a robust amount of items that can easily and quickly be accessed."
 
 	is_container = TRUE

@@ -14,8 +14,7 @@ Credit:
 Some code modified to work with Burgerstation.
 */
 
-
-/proc/AStar(start, end, adjacent, heuristic, maxtraverse = 30, adjacent_param = null, exclude = null)
+/proc/AStar(start, end, atom/walker, maxtraverse = 30)
 	if(isnull(end) || isnull(start))
 		return
 	var/list/turf/open = list(start)
@@ -33,17 +32,16 @@ Some code modified to work with Burgerstation.
 				current = nodeParent[current]
 			return reconstructed_path
 
-		var/list/neighbors = call(current, adjacent)(adjacent_param)
+		var/list/neighbors = current.get_crossable_neighbors(walker,TRUE,TRUE)
 		for (var/neighbor in neighbors)
-			if ((neighbor in open) || neighbor == exclude)
+			if (neighbor in open)
 				continue
 			var/gScore = tentativeGScore + neighbors[neighbor]
-			var/fScore = gScore + call(neighbor, heuristic)(end)
 
 			for (var/i = traverseNum; i <= length(open);)
-				if (i++ == length(open) || open[open[i]] >= fScore)
+				if (i++ == length(open) || open[open[i]] >= gScore)
 					open.Insert(i, neighbor)
-					open[neighbor] = fScore
+					open[neighbor] = gScore
 					break
 			nodeGcost[neighbor] = gScore
 			nodeParent[neighbor] = current
@@ -52,12 +50,7 @@ Some code modified to work with Burgerstation.
 			return null // if we reach this part, there's no more nodes left to explore
 
 
-//#define DEBUG_ASTAR
-
-/proc/AStar_Circle(turf/start, atom/goal, min_dist=0, maxtraverse=30, heuristic=null, heuristic_args=null)
-	#ifdef DEBUG_ASTAR
-	clearAstarViz()
-	#endif
+/proc/AStar_Circle(turf/start, atom/goal, atom/walker, min_dist=0, maxtraverse=30)
 
 	var/list/turf/closedSet = list()
 	var/list/turf/openSet = list(start)
@@ -66,17 +59,17 @@ Some code modified to work with Burgerstation.
 	var/list/gScore = list()
 	var/list/fScore = list()
 	gScore[start] = 0
-	fScore[start] = GET_MANHATTAN_DIST(start, goal)
+	fScore[start] = get_dist(start, goal)
 	var/traverse = 0
 
 	while(length(openSet))
-		var/turf/current = pickLowest(openSet, fScore)
+		var/turf/current = pick_lowest(openSet, fScore)
 		if(get_dist(current, goal) <= min_dist)
-			return reconstructPath(cameFrom, current)
+			return reconstruct_path(cameFrom, current)
 
 		openSet -= current
 		closedSet += current
-		var/list/turf/neighbors = getNeighbors(current, alldirs, heuristic, heuristic_args)
+		var/list/turf/neighbors = current.get_crossable_neighbors(walker,TRUE,TRUE)
 		for(var/turf/neighbor as anything in neighbors)
 			if(neighbor in closedSet)
 				continue // already checked this one
@@ -116,7 +109,4 @@ Some code modified to work with Burgerstation.
 	. = list()
 	for(var/i = length(totalPath) to 1 step -1)
 		. += totalPath[i]
-	#ifdef DEBUG_ASTAR
-	addAstarViz(.)
-	#endif
 	return .

@@ -95,7 +95,7 @@
 				var/mob/living/L = k
 				var/turf/T = get_turf(L)
 				//Travel to them.
-				var/list/path = burger_star(src,T,ignore_destructables=TRUE,stop_at_obstacles=list(/obj/structure/interactive/door))
+				var/list/path = burger_star(get_turf(src),T)
 				var/path_length = length(path)
 				var/did_move = FALSE
 				if(path_length)
@@ -109,12 +109,23 @@
 								is_path_being_watched = TRUE
 								break
 						if(is_path_being_watched)
+							continue
+						var/obj/structure/interactive/door/D = locate() in last_path.contents
+						if(D && D.door_state != DOOR_STATE_OPENED)
+							if(D.door_state == DOOR_STATE_BROKEN)
+								D.on_destruction(src,TRUE)
+							else if(D.door_state == DOOR_STATE_CLOSED)
+								D.open()
+							path_length -= 1
+							if(path_length > 0)
+								last_path = get_turf(path[path_length])
+								src.force_move(last_path)
+								did_move = TRUE
+							break
+						if(is_path_being_watched)
 							path_length -= 1
 							continue
 						src.force_move(last_path)
-						for(var/obj/structure/interactive/door/D in range(1,src))
-							if(D.door_state == DOOR_STATE_CLOSED)
-								D.open()
 						did_move = TRUE
 						break
 				else
