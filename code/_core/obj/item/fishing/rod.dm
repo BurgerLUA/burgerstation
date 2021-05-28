@@ -67,7 +67,7 @@
 
 
 	if(is_inventory(object))
-		var/obj/hud/inventory/I = object
+		var/mob/living/advanced/C = caller
 		var/obj/item/object_removed
 		if(bait)
 			object_removed = bait
@@ -84,7 +84,7 @@
 			return TRUE
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
-		I.add_object(object_removed)
+		C.put_in_hands(object_removed)
 		return TRUE
 
 	if(is_item(object))
