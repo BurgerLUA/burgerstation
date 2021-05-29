@@ -45,3 +45,29 @@
 	new /obj/item/container/spray/silver_sulfadiazine(src)
 	new /obj/item/container/spray/styptic_powder(src)
 	return ..()
+
+
+/obj/item/clothing/belt/suspenders
+	name = "red suspenders"
+	icon = 'icons/obj/item/clothing/suit/suspenders.dmi'
+	desc = "They suspend the illusion of mimery."
+	desc_extended = "Fancy red suspenders that store a small number of objects. Has better protection of the torso and groin, however."
+
+	is_container = TRUE
+
+	dynamic_inventory_count = 6
+
+	size = MAX_INVENTORY_X*SIZE_1
+
+	container_max_size = SIZE_2
+
+	defense_rating = list(
+		BLADE = 30,
+		PIERCE = 30
+	)
+
+	rarity = RARITY_UNCOMMON
+
+	protected_limbs = list(BODY_GROIN,BODY_TORSO)
+
+	value = 40

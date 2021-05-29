@@ -200,7 +200,7 @@
 	)
 
 	possible_extra_clothing = list(
-		/obj/item/clothing/mask/gas/clown = 1
+		/obj/item/clothing/mask/clown = 1
 	)
 
 	possible_extra_weapon = list(

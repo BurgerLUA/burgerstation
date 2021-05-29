@@ -7,7 +7,7 @@
 		/obj/item/clothing/head/hat/cat,
 		/obj/item/clothing/mask/emoji,
 
-		/obj/item/clothing/mask/gas/clown,
+		/obj/item/clothing/mask/clown,
 		/obj/item/clothing/uniform/clown,
 		/obj/item/storage/shoebox/clown,
 
