@@ -65,3 +65,30 @@
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
 	return 0.1
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom
+	name = "That Shotgun"
+	rarity = RARITY_RARE
+	desc = "Packs a punch (not a kick, that's another series)."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/doom.dmi'
+	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
+	value = 2000
+	shoot_delay = 2.5
+	heat_max = 0
+	bullet_count_max = 6
+	weight = 12
+
+	dan_mode = TRUE
+
+	can_wield = TRUE
+
+	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_static_spread()
+	return 0.005
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_skill_spread(var/mob/living/L)
+	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_base_spread()
+	return 0.1

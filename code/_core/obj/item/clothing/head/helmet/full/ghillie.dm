@@ -6,8 +6,6 @@
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE,
 		BODY_HAIR_FACE = TRUE,
-		BODY_HEAD = FALSE,
-		BODY_EYES = FALSE
 	)
 
 /obj/item/clothing/head/helmet/full/ghillie/forest
