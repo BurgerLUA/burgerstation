@@ -328,3 +328,123 @@
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/antihol(src)
 	return ..()
+
+/obj/item/storage/bagofhoarding
+	name = "bag of hoarding"
+	desc = "we just warframe now"
+	desc_extended = "A peculiar bag that can hold unlimited amounts of specific rare currencies. Can be dyed."
+	icon = 'icons/obj/item/storage/boxes.dmi'
+	icon_state = "moneybag"
+	value = 10000
+	var/hoard = 0				// how many inside
+	var/fuck					// this one is used for the base currency roots, look further down for comments
+	var/obj/item/goods			// targeted goods
+	container_whitelist = list(
+		/obj/item/currency/telecrystals,
+		/obj/item/currency/magic_token,
+		/obj/item/currency/gold,
+		/obj/item/currency/prize_ticket,
+		/obj/item/coin/antag_token
+	)
+	dynamic_inventory_count = 0
+	is_container = FALSE
+	dyeable = TRUE
+	color = "#D8C1B0"
+
+
+/obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("hoard")
+	SAVEVAR("fuck")
+	SAVEATOM("goods")
+
+/obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("hoard")
+	LOADVAR("fuck")
+	LOADATOM("goods")
+
+/obj/item/storage/bagofhoarding/get_examine_details_list(var/mob/examiner)
+	. = ..()
+	if(hoard) . += span("notice","It currently holds [hoard] [goods.name]\s.")
+	else . += span("notice","It does not currently hold anything.")
+
+/obj/item/storage/bagofhoarding/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(hoard)
+		if(istype(object,/obj/hud/inventory))
+			var/mob/living/advanced/C = caller
+			var/maxstack = goods.item_count_max
+			if(hoard <= maxstack)
+				maxstack = hoard
+			if((goods.item_count_max == 1) || (hoard == 1))
+				var/obj/item/M = new goods.type
+				M.drop_item(get_turf(caller))
+				C.put_in_hands(M)
+				C.to_chat(span("notice","You take out a single [M.name]."))
+				hoard--
+				INTERACT_DELAY(1)
+				if (!hoard)
+					caller.to_chat(span("notice","The [src.name] is now empty."))
+					goods = null
+					return TRUE
+				return TRUE
+			var/choice = input("How many do you want to take out?","Total: [hoard] Max: [maxstack]") as null|num
+			INTERACT_CHECK
+			if(!choice) return TRUE
+			if(choice >= maxstack)
+				var/obj/item/M = new goods.type
+				M.item_count_current = maxstack
+				M.update_sprite()
+				hoard -= maxstack
+				M.drop_item(get_turf(caller))
+				C.put_in_hands(M)
+			else if(choice < maxstack)
+				var/obj/item/M = new goods.type
+				M.item_count_current = choice
+				M.update_sprite()
+				hoard -= choice
+				M.drop_item(get_turf(caller))
+				C.put_in_hands(M)
+			if (!hoard)
+				caller.to_chat(span("notice","\The [src.name] is now empty."))
+				goods = null
+				return TRUE
+		var/obj/item/I = object
+		if(ispath(I.type,fuck))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			hoard += I.item_count_current
+			play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
+			qdel(I)
+			return TRUE
+
+	if(!hoard)
+		var/obj/item/I = object
+		var/obj/O
+		for(var/allofem in container_whitelist)
+			O = allofem
+			if(ispath(I.type,O))
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				var/choice = input("Would you like to deposit [I.name] in \the [src.name]?","Hoarding Time") as null|anything in list("Yes","No")
+				if(choice == "Yes")
+					INTERACT_CHECK
+					INTERACT_CHECK_OBJECT
+					if(ispath(I.type,/obj/item/currency/telecrystals))	//i dont know how else to do this because like "goods" doesnt work here
+						fuck = /obj/item/currency/telecrystals			//otherwise things like obj/.../telecrystals/goblins and /treasure break
+					if(ispath(I.type,/obj/item/currency/magic_token))	//cuz it needs to be shortened back to telecrystals/ but the fuck var
+						fuck = /obj/item/currency/magic_token			//keeping the fuck var is also important for the value calculation
+					if(ispath(I.type,/obj/item/currency/gold))			//works around it so eh good enough absolute shitcode but smiling imp emoji
+						fuck = /obj/item/currency/gold
+					if(ispath(I.type,/obj/item/currency/prize_ticket))
+						fuck = /obj/item/currency/prize_ticket
+					if(ispath(I.type,/obj/item/coin/antag_token))
+						fuck = /obj/item/coin/antag_token
+					goods = I
+					hoard = I.item_count_current
+					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
+					caller.to_chat(span("notice","The [src.name] now accepts [I.name]\s."))
+					qdel(I)
+					return TRUE
+	return ..()
