@@ -5,7 +5,7 @@
 	layer = LAYER_FLOOR + 0.132
 	corner_category = "dirt_soft"
 
-	real_icon = 'icons/turf/floor/dirt_new.dmi'
+	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 
 	footstep = /footstep/asteroid

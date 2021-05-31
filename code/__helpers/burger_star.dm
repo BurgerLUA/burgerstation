@@ -1,3 +1,7 @@
+//Dogshit pathfinding here.
+//I don't like deleting code that took a while to make
+//It's bad though. Really bad. ~BurgerBB
+
 /proc/burger_star(var/atom/movable/mover,var/turf/destination,var/ignore_destructables=FALSE,var/list/stop_at_obstacles,var/debug=FALSE)
 
 	set background = 1

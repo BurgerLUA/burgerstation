@@ -1,7 +1,12 @@
 /turf/simulated/wall/brick
 	name = "wall"
-	icon = 'icons/turf/wall/brick.dmi'
-	icon_state = "wall"
+
+	icon = 'icons/turf/wall/rock_preview.dmi'
+	icon_state = "brick"
+
+	real_icon = 'icons/turf/wall/brick.dmi'
+	real_icon_state = "wall"
+
 	corner_icons = TRUE
 	corner_category = "brick"
 

@@ -28,19 +28,23 @@ obj/structure/scenery/flowers/New()
 			icon_state = "brflowers_[rand(1,3)]"
 
 obj/structure/scenery/grass
+	name = "grass type"
+
+
+
+/obj/structure/scenery/grass/normal/
 	name = "uncut grass"
-	icon = 'icons/obj/structure/flora/ausgrass.dmi'
+	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "sparsegrass_1"
 	layer = LAYER_FLOOR_SCENERY
 
-obj/structure/scenery/grass/New()
+obj/structure/scenery/grass/normal/New()
 	..()
 	switch(rand(1,2))
 		if(1)
 			icon_state = "sparsegrass_[rand(1,3)]"
 		if(2)
 			icon_state = "fullgrass_[rand(1,3)]"
-
 
 
 obj/structure/scenery/grass/lavender
@@ -63,51 +67,6 @@ obj/structure/scenery/rocks
 obj/structure/scenery/rocks/New()
 	..()
 	icon_state = "rock_[rand(1,10)]"
-
-obj/structure/scenery/rock_tiles/small
-	name = "rock tiles"
-	icon = 'icons/obj/structure/flora/rock_tiles.dmi'
-	icon_state = "small_1"
-	layer = LAYER_FLOOR_SCENERY
-	color = "#AE8A67"
-
-obj/structure/scenery/rock_tiles/small/New()
-	..()
-	icon_state = "small_[rand(1,3)]"
-
-obj/structure/scenery/rock_tiles/big
-	name = "rock tiles"
-	icon = 'icons/obj/structure/flora/rock_tiles.dmi'
-	icon_state = "big_1"
-	layer = LAYER_FLOOR_SCENERY
-	color = "#AE8A67"
-
-obj/structure/scenery/rock_tiles/big/New()
-	..()
-	icon_state = "big_[rand(1,3)]"
-
-/*
-obj/structure/scenery/evergreen
-	name = "evergreen tree"
-	icon = 'icons/obj/structure/flora/evergreen.dmi'
-	icon_state = "evergreen_1"
-
-	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	pixel_x = -16
-	pixel_y = 0
-	layer = LAYER_LARGE_OBJ
-
-	mouse_opacity = 0
-
-	plane = PLANE_SCENERY
-
-obj/structure/scenery/evergreen/New()
-	..()
-	icon_state = "evergreen_[rand(1,3)]"
-*/
-
 
 
 obj/structure/scenery/lolipop_tree

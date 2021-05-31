@@ -16,7 +16,6 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_mob_to_null,
 	/client/verb/should_delete_atom,
 	/client/verb/add_loadout_to_mob,
-	//client/verb/test_pathfinding,
 	/client/verb/force_save_deathbox,
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
@@ -409,22 +408,6 @@ client/verb/air_test(var/pressure as num)
 	desired_mob.equip_loadout(desired_loadout)
 
 	log_admin("[src.get_debug_name()] gave a loadout ([desired_loadout]) to [desired_mob.get_debug_name()].")
-
-/client/verb/test_pathfinding()
-	set name = "Test Pathfinding"
-	set category = "Debug"
-
-	var/obj/burger_star_test_start/B = locate() in world
-	if(!B)
-		return FALSE
-
-	if(mob)
-		mob.force_move(get_turf(B))
-
-	B.activate()
-
-	return TRUE
-
 
 /client/verb/force_save_deathbox()
 	set name = "Force Save Deathboxes"

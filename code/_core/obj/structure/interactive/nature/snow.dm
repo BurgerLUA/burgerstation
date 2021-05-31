@@ -1,26 +1,3 @@
-/*
-obj/structure/scenery/pinetrees
-	name = "pinetree"
-	icon = 'icons/obj/structure/flora/pinetrees.dmi'
-	icon_state = "pine_1"
-
-	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	pixel_x = -16
-	pixel_y = 0
-	layer = LAYER_LARGE_OBJ
-
-	plane = PLANE_SCENERY
-
-	mouse_opacity = 1
-
-
-obj/structure/scenery/pinetrees/New()
-	..()
-	icon_state = "pine_[rand(1,3)]"
-*/
-
 obj/structure/scenery/grass/snow
 	name = "grass"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
@@ -107,7 +84,6 @@ obj/structure/scenery/bush/snow/New()
 	icon_state = "tree"
 	pixel_x = -32
 	pixel_y = 0
-	color = "#779659"
 
 /obj/structure/interactive/tree/jungle_small/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -117,7 +93,7 @@ obj/structure/scenery/bush/snow/New()
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 
 /obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
-	icon_state = "tree[rand(1,6)]"
+	icon_state = "tree[rand(1,6)][prob(90)?"_old":""]"
 	return ..()
 
 /obj/structure/interactive/tree/jungle_large
@@ -126,7 +102,6 @@ obj/structure/scenery/bush/snow/New()
 	icon_state = "tree"
 	pixel_x = -48
 	pixel_y = -16
-	color = "#627a49"
 
 /obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -136,5 +111,5 @@ obj/structure/scenery/bush/snow/New()
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
-	icon_state = "tree[rand(1,6)]"
+	icon_state = "tree[rand(1,6)][prob(90)?"_old":""]"
 	return ..()

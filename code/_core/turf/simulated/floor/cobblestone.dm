@@ -39,7 +39,7 @@
 	color = COLOR_GREY_DARK
 
 /turf/simulated/floor/brick/grey/dark/ish
-	color = "#686868"
+	color = "#444444"
 
 /turf/simulated/floor/brick/sand
 	color = "#AE8A67"

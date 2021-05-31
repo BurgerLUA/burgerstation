@@ -23,7 +23,7 @@
 
 /turf/simulated/floor/grass/jungle
 	name = "dense jungle grass"
-	color = "#4d5e32"
+	color = "#969696"
 	destruction_turf = /turf/simulated/floor/colored/grass/jungle
 	desc = "Some junglely grass"
 	desc_extended = "unlike what some people believe, jungle grass isn't just grass that likes to listen to jungle music"
