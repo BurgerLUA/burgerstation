@@ -34,7 +34,6 @@ SUBSYSTEM_DEF(turfs)
 		seeds += rand(1,99999)
 
 	var/found_turfs = 0
-	var/object_generation_count = 0
 
 	for(var/turf/simulated/T in world)
 		sleep(-1)
@@ -63,34 +62,36 @@ SUBSYSTEM_DEF(turfs)
 
 	log_subsystem(name,"Finished generating [full_generated] unsimulated turfs.")
 
-	var/list/generations = list()
-	var/total_markers = 0
-	for(var/obj/marker/generation/G in world)
+	if(ENABLE_GENERATION)
+		var/object_generation_count = 0
+		var/list/generations = list()
+		var/total_markers = 0
+		for(var/obj/marker/generation/G in world)
+			sleep(-1)
+			generations += G
+			total_markers++
+			if(!(total_markers % 10000))
+				log_subsystem(name,"Gathered [total_markers] generation markers...")
+
+		log_subsystem(name,"Finished gathering [total_markers] generation markers.")
+
 		sleep(-1)
-		generations += G
-		total_markers++
-		if(!(total_markers % 10000))
-			log_subsystem(name,"Gathered [total_markers] generation markers...")
 
-	log_subsystem(name,"Finished gathering [total_markers] generation markers.")
+		sortMerge(generations, /proc/cmp_generation_priority)
 
-	sleep(-1)
-
-	sortMerge(generations, /proc/cmp_generation_priority)
-
-	sleep(-1)
-
-	log_subsystem(name,"Sorted [total_markers] generation markers.")
-
-	for(var/k in generations)
 		sleep(-1)
-		var/obj/marker/generation/G = k
-		G.generate_marker()
-		object_generation_count += 1
-		if(!(object_generation_count % 10000))
-			log_subsystem(name,"Generating [object_generation_count] generation markers...")
 
-	log_subsystem(name,"Finished generating [object_generation_count] generation markers.")
+		log_subsystem(name,"Sorted [total_markers] generation markers.")
+
+		for(var/k in generations)
+			sleep(-1)
+			var/obj/marker/generation/G = k
+			G.generate_marker()
+			object_generation_count += 1
+			if(!(object_generation_count % 10000))
+				log_subsystem(name,"Generating [object_generation_count] generation markers...")
+
+		log_subsystem(name,"Finished generating [object_generation_count] generation markers.")
 
 	var/turf_count = 0
 

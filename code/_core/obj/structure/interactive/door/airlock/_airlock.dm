@@ -4,6 +4,8 @@
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
 
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
+
 	plane = PLANE_OBJ
 	layer = LAYER_OBJ_AIRLOCK
 

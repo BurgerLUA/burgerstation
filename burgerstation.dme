@@ -913,6 +913,7 @@
 #include "code\_core\obj\hud\buttons\inventory.dm"
 #include "code\_core\obj\hud\buttons\inventory_defer.dm"
 #include "code\_core\obj\hud\buttons\keypad.dm"
+#include "code\_core\obj\hud\buttons\lockpicking.dm"
 #include "code\_core\obj\hud\buttons\movement.dm"
 #include "code\_core\obj\hud\buttons\new_targeting.dm"
 #include "code\_core\obj\hud\buttons\objectives.dm"

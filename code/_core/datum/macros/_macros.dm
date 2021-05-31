@@ -171,7 +171,5 @@
 			if(owner.is_zoomed && (world.time - owner.zoom_time) > 4)
 				owner.zoom_time = world.time
 				owner.is_zoomed = 0x0
-		if("say")
-			owner.mob.say()
 
 	return TRUE
