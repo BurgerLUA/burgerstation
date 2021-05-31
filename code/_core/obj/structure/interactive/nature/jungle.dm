@@ -21,7 +21,7 @@ obj/structure/scenery/grass/jungle_rock
 
 obj/structure/scenery/grass/jungle_rock/New()
 	..()
-	icon_state = "rock[rand(1,5)][prob(90)?"_old":""]"
+	icon_state = "rock[rand(1,5)]"
 
 obj/structure/scenery/merchant_roof
 	name = "merchant roof"

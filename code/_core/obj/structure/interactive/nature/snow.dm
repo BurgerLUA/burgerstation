@@ -93,13 +93,13 @@ obj/structure/scenery/bush/snow/New()
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 
 /obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
-	icon_state = "tree[rand(1,6)][prob(90)?"_old":""]"
+	icon_state = "tree[rand(1,6)]"
 	return ..()
 
 /obj/structure/interactive/tree/jungle_large
 	name = "large jungle tree"
 	icon = 'icons/obj/structure/flora/jungletrees.dmi'
-	icon_state = "tree"
+	icon_state = "tree1"
 	pixel_x = -48
 	pixel_y = -16
 
@@ -111,5 +111,5 @@ obj/structure/scenery/bush/snow/New()
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
-	icon_state = "tree[rand(1,6)][prob(90)?"_old":""]"
+	icon_state = "tree[rand(1,6)]"
 	return ..()

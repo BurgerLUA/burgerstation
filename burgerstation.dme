@@ -1828,6 +1828,7 @@
 #include "code\_core\turf\simulated\floor\cult.dm"
 #include "code\_core\turf\simulated\floor\diona.dm"
 #include "code\_core\turf\simulated\floor\fake_space.dm"
+#include "code\_core\turf\simulated\floor\grass.dm"
 #include "code\_core\turf\simulated\floor\hierophant.dm"
 #include "code\_core\turf\simulated\floor\openspace.dm"
 #include "code\_core\turf\simulated\floor\plating.dm"
