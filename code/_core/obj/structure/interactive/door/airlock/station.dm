@@ -56,6 +56,18 @@
 	color = COLOR_METAL_DARK
 	fill_color = "#B69F3C"
 
+
+/obj/structure/interactive/door/airlock/station/science
+	name = "science airlock"
+	color = COLOR_SCIENCE
+	fill_color = COLOR_STEEL
+
+/obj/structure/interactive/door/airlock/station/science/glass
+	fill_color = "#FFFFFF"
+	filler = "glass"
+
+
+
 /obj/structure/interactive/door/airlock/station/maintenance/chapel
 	name = "maintenance airlock"
 	color = COLOR_METAL_DARK
