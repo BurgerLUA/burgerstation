@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/core/z_02.dmm",
 		"maps/core/z_01.dmm",
 		*/
-		"maps/core/burgerstation.dmm",
+		"maps/core/z_00.dmm",
 		"maps/core/bluespace.dmm"
 	)
 

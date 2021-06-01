@@ -20,6 +20,9 @@
 	plane = PLANE_HUD - 1
 	layer = 0
 
+	var/frozen = FALSE
+
+
 
 /obj/hud/button/lockpicking/update_owner(var/mob/desired_owner)
 
@@ -68,7 +71,7 @@
 
 	. = ..()
 
-	if(linked_pick)
+	if(!frozen && linked_pick)
 		var/list/new_params = params2list(params)
 
 		var/icon_x = text2num(new_params["icon-x"]) - 80
@@ -127,9 +130,8 @@
 		return FALSE
 
 	if(complete_multiplier >= 1)
-		lock_angle = 0
 		if(associated_chest)
-			associated_chest.picked(owner)
+			CALLBACK("picked_delay_\ref[src]",associated_chest,/obj/structure/interactive/crate/chest/proc/picked,owner)
 		return FALSE
 
 	return TRUE
