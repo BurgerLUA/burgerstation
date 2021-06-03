@@ -222,6 +222,15 @@
 
 	return luck(list(attacker,weapon),crit_chance)
 
+/damagetype/proc/perform_clash(var/atom/attacker,var/atom/victim,var/atom/weapon_attacker,var/atom/weapon_victim)
+	. = max(1,do_attack_animation(attacker,victim,weapon_attacker))
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_clash_sound",.*0.125,src,.proc/do_clash_effect,attacker,victim,weapon_attacker)
+	return .
+
+/damagetype/proc/do_clash_effect(var/atom/attacker,var/atom/victim,var/atom/weapon)
+	play_sound('sound/effects/deflect.ogg',get_turf(attacker),range_max=VIEW_RANGE*0.75)
+	return FALSE
+
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
 	if(!length(victims))
@@ -233,18 +242,37 @@
 
 	. = 0
 
+	var/list/final_victims = list()
+
+	var/did_animation = FALSE
+
 	for(var/i=1,i<=length(victims),i++)
+
 		var/atom/victim = victims[i]
 		var/atom/hit_object = hit_objects[i]
 
-		if(istype(victim,/mob/living/advanced/stand/))
-			var/mob/living/advanced/stand/S = victim
-			victim = S.owner
-			if(is_organ(hit_object) && is_advanced(victim))
-				var/mob/living/advanced/A = victim
-				var/obj/item/organ/O = hit_object
-				if(A.labeled_organs[O.id])
-					hit_object = A.labeled_organs[O.id]
+		if(i == 1 && CALLBACK_EXISTS("hit_\ref[victim]"))
+			CALLBACK_REMOVE("hit_\ref[victim]")
+			perform_clash(attacker,victim,weapon,victim)
+			return TRUE
+		if(is_advanced(victim))
+			var/mob/living/advanced/A = victim
+			if(i==1)
+				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
+					CALLBACK_REMOVE("hit_\ref[A.left_item]")
+					perform_clash(attacker,victim,weapon,A.left_item)
+					return TRUE
+				else if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
+					CALLBACK_REMOVE("hit_\ref[A.right_item]")
+					perform_clash(attacker,victim,weapon,A.right_item)
+					return TRUE
+			if(istype(victim,/mob/living/advanced/stand/))
+				var/mob/living/advanced/stand/S = victim
+				victim = S.owner
+				if(is_organ(hit_object))
+					var/obj/item/organ/O = hit_object
+					if(A.labeled_organs[O.id])
+						hit_object = A.labeled_organs[O.id]
 
 		if(!is_valid(attacker))
 			CRASH_SAFE("Could not swing as there was no attacker!")
@@ -270,12 +298,28 @@
 			CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
 			return FALSE
 
-		if(i==1)
+		if(!did_animation)
 			. = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
+			did_animation = TRUE
 
-		CALLBACK("\ref[weapon]_\ref[hit_object]",CEILING(.*0.125,1),src,.proc/process_damage,attacker,victim,weapon,hit_object,blamed,damage_multiplier)
+		final_victims[victim] = hit_object
+
+	if(!length(final_victims))
+		return perform_miss(attacker,get_step(attacker,attacker.dir),weapon)
+
+	CALLBACK("hit_\ref[weapon]",CEILING(.*0.125,1),src,.proc/process_damage_group,attacker,final_victims,weapon,blamed,damage_multiplier)
 
 	return .
+
+/damagetype/proc/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
+
+	for(var/k in victims)
+		var/atom/victim = k
+		var/atom/hit_object = victims[k]
+		process_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier)
+
+	return TRUE
+
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 

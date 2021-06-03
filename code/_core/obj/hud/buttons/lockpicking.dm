@@ -64,7 +64,8 @@
 	return TRUE
 
 /obj/hud/button/lockpicking/MouseDown(location,control,params)
-	start_thinking(src)
+	if(!frozen)
+		start_thinking(src)
 	return TRUE
 
 /obj/hud/button/lockpicking/MouseMove(location,control,params)
@@ -130,8 +131,9 @@
 		return FALSE
 
 	if(complete_multiplier >= 1)
+		frozen = TRUE
 		if(associated_chest)
-			CALLBACK("picked_delay_\ref[src]",associated_chest,/obj/structure/interactive/crate/chest/proc/picked,owner)
+			CALLBACK("picked_delay_\ref[src]",SECONDS_TO_DECISECONDS(2),associated_chest,/obj/structure/interactive/crate/chest/proc/picked,owner)
 		return FALSE
 
 	return TRUE

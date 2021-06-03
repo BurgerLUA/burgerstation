@@ -1,3 +1,4 @@
+/*
 var/global/list/horde_maps = list(
 	"Hellscape" = 'maps/horde/hellscape.dmm',
 	"Island" = 'maps/horde/island.dmm',
@@ -9,6 +10,7 @@ var/global/list/horde_maps = list(
 	//"City (Virtual Reality)" = 'maps/virtual_reality/city.dmm',
 	"Dusted (Virtual Reality)" = 'maps/virtual_reality/dusted.dmm'
 )
+*/
 
 var/global/list/vr_maps = list(
 	"City (Virtual Reality)" = list(

@@ -72,6 +72,17 @@
 	corner_icons = TRUE
 	corner_category = "rock_desert"
 
+/turf/simulated/wall/rock/ice
+	real_icon = 'icons/turf/wall/rock_ice.dmi'
+	real_icon_state = "ice"
+
+	icon_state = "ice"
+
+	corner_icons = TRUE
+	corner_category = "rock_ice"
+
+	destruction_turf = /turf/simulated/floor/ice
+
 /turf/simulated/wall/rock/indestructable
 	name = "bedrock wall"
 

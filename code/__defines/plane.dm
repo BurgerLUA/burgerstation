@@ -6,31 +6,33 @@
 
 #define PLANE_FLOOR_BELOW -50 //For openspace.
 
-#define PLANE_FLOOR -14
+#define PLANE_FLOOR -15
 
-#define PLANE_SHUTTLE -13
+#define PLANE_SHUTTLE -14
 
-#define PLANE_WALL -12
+#define PLANE_WALL -13
 
-#define PLANE_DECAL -11
+#define PLANE_DECAL -12
 
-#define PLANE_BLOOD -10
+#define PLANE_BLOOD -11
 
-#define PLANE_JUNK -9 //Plane used for junk objects that shouldn't have outlines.
+#define PLANE_JUNK -10 //Plane used for junk objects that shouldn't have outlines.
 
-#define PLANE_OBJ -8
+#define PLANE_OBJ -9
 
-#define PLANE_CURRENCY -7
+#define PLANE_CURRENCY -8
 
-#define PLANE_MOB -6
+#define PLANE_MOB -7
 
-#define PLANE_SCENERY -5
+#define PLANE_SCENERY -6
 
-#define PLANE_EFFECT -4
+#define PLANE_EFFECT -5
 
-#define PLANE_AREA -3
+#define PLANE_AREA -4
 
-#define PLANE_LIGHTING -2
+#define PLANE_LIGHTING -3
+
+#define PLANE_PARALLAX_LIGHTING -2
 
 #define PLANE_EFFECT_LIGHTING -1
 

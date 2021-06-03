@@ -1,5 +1,5 @@
 /turf/unsimulated/generation/cave
-	name = "lava generation"
+	name = "cave generation"
 	icon_state = "caves"
 	var/path_only = FALSE
 

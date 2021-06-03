@@ -10,7 +10,7 @@
 /turf/simulated/floor/tile/shuttle,
 /area/transit/cargo/ship)
 "ab" = (
-/turf/unsimulated/generation/jungle,
+/turf/unsimulated/generation/snow,
 /area/dungeon/z_00)
 "ac" = (
 /turf/simulated/wall/metal/reinforced,
@@ -107,7 +107,7 @@
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory/shooting_range)
 "aw" = (
-/turf/unsimulated/generation/jungle/path,
+/turf/unsimulated/generation/snow/path,
 /area/dungeon/z_00)
 "ax" = (
 /obj/structure/interactive/vending/chef/wardrobe,
