@@ -17,7 +17,10 @@
 				return TRUE
 		if(is_organ(src.loc) && isturf(object.loc) && get_dist(caller,object) <= 1)
 			var/obj/item/organ/O = src.loc
-			O.attack(caller,object,params,damage_type_override=/damagetype/unarmed/fists/grab)
+			if(ismob(object))
+				O.attack(caller,object,params,damage_type_override=/damagetype/unarmed/fists/grab)
+			else
+				src.grab_object(caller,object,location,control,params)
 			return TRUE
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking wtih an empty hand.

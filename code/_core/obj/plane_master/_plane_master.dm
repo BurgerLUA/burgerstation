@@ -52,8 +52,8 @@
 	. = ..()
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
-		filters += filter(type="drop_shadow", x=0, y=2, size=1, offset=0, color=rgb(200,200,200,120))
-		filters += filter(type="drop_shadow", x=0, y=-1, size=4, offset=0, color=rgb(0,0,0,200))
+		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
+		filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,200))
 
 
 //DARKNESS
