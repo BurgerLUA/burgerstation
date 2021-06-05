@@ -656,6 +656,7 @@
 #include "code\_core\datum\squad\_squad.dm"
 #include "code\_core\datum\stand\_stand.dm"
 #include "code\_core\datum\status_effect\_status_effect.dm"
+#include "code\_core\datum\ticket\_ticket.dm"
 #include "code\_core\datum\track\_track.dm"
 #include "code\_core\datum\trait\_trait.dm"
 #include "code\_core\datum\virtual_reality\_virtual_reality.dm"
