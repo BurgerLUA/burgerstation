@@ -8,7 +8,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/fireball.dmi'
 
 	projectile = /obj/projectile/magic/fireball
-
 	ranged_damage_type = /damagetype/ranged/magic/fireball
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')

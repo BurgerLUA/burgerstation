@@ -92,8 +92,8 @@ SUBSYSTEM_DEF(logging)
 
 	if(log_from_list("subsystem",buffered_log_subsystem) == null)
 		buffered_log_subsystem.Cut()
-		buffered_log_subsystem += "Warning! buffered_log_debug could not be processed. Some data is missing."
-		log_debug("Warning! buffered_log_debug could not be processed. Some data is missing.")
+		buffered_log_subsystem += "Warning! buffered_log_subsystem could not be processed. Some data is missing."
+		log_debug("Warning! buffered_log_subsystem could not be processed. Some data is missing.")
 
 
 	return TRUE

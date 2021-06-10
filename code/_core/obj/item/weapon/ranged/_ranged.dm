@@ -276,7 +276,7 @@
 
 /obj/item/weapon/ranged/think()
 
-	if(next_shoot_time + min(10,shoot_delay*1.25) < world.time)
+	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
 		heat_current = max(heat_current-(SIZE_3/size),0) //Smaller guns easier to handle.
 
 	. = ..()
@@ -512,8 +512,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		)
 
 	next_shoot_time = world.time + shoot_delay_to_use
-	heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
-	start_thinking(src)
+	if(heat_max)
+		heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
+		start_thinking(src)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

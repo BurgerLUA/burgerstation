@@ -1283,17 +1283,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "eJ" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/summon/crab,
-/obj/item/weapon/ranged/magic/tome/summon/bull,
-/obj/item/weapon/ranged/magic/tome/summon/goliath,
-/obj/item/weapon/ranged/magic/tome/summon/skeleton,
-/obj/item/weapon/ranged/magic/tome/summon/space_bear,
-/obj/item/weapon/ranged/magic/tome/summon/twilight,
-/obj/item/weapon/ranged/magic/tome/summon/watcher,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
+/obj/item/weapon/ranged/spellgem/chaos,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "eK" = (
 /obj/structure/interactive/conveyor{
 	dir = 8;
@@ -2376,6 +2368,30 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"iA" = (
+/obj/item/weapon/ranged/spellgem/crystal,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iB" = (
+/obj/item/weapon/ranged/spellgem/cult,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iC" = (
+/obj/item/weapon/ranged/spellgem/fireball,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iD" = (
+/obj/item/weapon/ranged/spellgem/flame,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iE" = (
+/obj/item/weapon/ranged/spellgem/frost,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iF" = (
+/obj/item/weapon/ranged/spellgem/ice_spear,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "iG" = (
 /obj/structure/interactive/light_switch{
 	dir = 8;
@@ -2383,6 +2399,18 @@
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/science)
+"iH" = (
+/obj/item/weapon/ranged/spellgem/lightning,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iI" = (
+/obj/item/weapon/ranged/spellgem/magic_missile,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"iJ" = (
+/obj/item/weapon/ranged/spellgem/shock,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "iK" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
@@ -2444,6 +2472,10 @@
 /obj/structure/interactive/light_switch,
 /turf/simulated/wall/metal,
 /area/burgerstation/bathrooms)
+"iX" = (
+/obj/item/weapon/ranged/wand/branch,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "ja" = (
 /obj/structure/interactive/vending/chef/dinnerwear,
 /turf/simulated/floor/tile,
@@ -3840,7 +3872,6 @@
 	dir = 1
 	},
 /obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/flame,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pr" = (
@@ -3964,16 +3995,9 @@
 	},
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/hall/south)
-"pS" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/frost,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 "pT" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
-/obj/item/weapon/ranged/magic/tome/shock,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "pW" = (
@@ -45576,7 +45600,7 @@ ys
 ys
 ys
 ys
-eJ
+pT
 gL
 pK
 rf
@@ -46090,7 +46114,7 @@ ys
 ys
 ys
 ys
-pS
+pT
 gL
 pK
 rg
@@ -49146,8 +49170,8 @@ jy
 yN
 lI
 lQ
-xV
-xV
+eJ
+iE
 xV
 xV
 xV
@@ -49403,8 +49427,8 @@ jy
 sF
 lJ
 nF
-xV
-xV
+iA
+iF
 xV
 xV
 xV
@@ -49660,9 +49684,9 @@ jy
 sF
 lJ
 nF
-xV
-xV
-xV
+iB
+iH
+iX
 Bh
 tI
 xV
@@ -49917,8 +49941,8 @@ jy
 sF
 lJ
 nF
-xV
-xV
+iC
+iI
 xV
 xV
 xV
@@ -50174,8 +50198,8 @@ jy
 yN
 lK
 ml
-xV
-xV
+iD
+iJ
 xV
 wg
 xV

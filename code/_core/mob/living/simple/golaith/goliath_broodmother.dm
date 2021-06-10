@@ -43,8 +43,7 @@
 
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/bone,
-		/obj/item/soapstone/orange,
-		/obj/item/weapon/ranged/magic/tome/summon/goliath
+		/obj/item/soapstone/orange
 	)
 
 	fatigue_from_block_mul = 0

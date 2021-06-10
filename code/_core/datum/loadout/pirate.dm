@@ -85,7 +85,5 @@
 		/obj/item/clothing/hands/gloves/colored/padded/brown/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/weapon/melee/null_rod,
-		/obj/item/weapon/ranged/magic/staff/fire,
-		/obj/item/weapon/ranged/magic/tome/crystal,
+		/obj/item/weapon/melee/null_rod
 	)

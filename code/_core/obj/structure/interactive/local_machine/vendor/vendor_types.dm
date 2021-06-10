@@ -292,10 +292,6 @@
 		/obj/item/bullet_cartridge/arrow,
 		/obj/item/clothing/belt/belt_quiver,
 
-		/obj/item/weapon/ranged/magic/tome/lightning,
-
-		/obj/item/weapon/ranged/magic/tome/summon/totem/sacred_flame
-
 	)
 
 /obj/structure/interactive/vending/chemistry/wardrobe

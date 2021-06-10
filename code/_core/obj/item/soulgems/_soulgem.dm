@@ -77,6 +77,7 @@
 
 		return TRUE
 
+	/*
 	if(is_staff(object))
 
 		INTERACT_CHECK
@@ -96,6 +97,7 @@
 		update_sprite()
 
 		return TRUE
+	*/
 
 	return ..()
 

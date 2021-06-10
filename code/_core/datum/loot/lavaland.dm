@@ -55,8 +55,6 @@
 /loot/lavaland/hierophant
 	loot_table = list(
 		/obj/item/weapon/melee/hierophant_staff = 1,
-		/obj/item/weapon/ranged/magic/tome/crystal/true = 1,
-		/obj/item/weapon/ranged/magic/tome/summon/crystal_guardian = 1,
 		/obj/item/weapon/melee/crystal = 1
 	)
 
@@ -64,14 +62,11 @@
 	loot_table = list(
 		/obj/item/clothing/head/hat/goblin_crown = 1,
 		/obj/item/clothing/neck/goblin_necklace = 1,
-		/obj/item/clothing/pants/goblin_loin = 1,
-		/obj/item/weapon/ranged/magic/tome/summon/goblin_warrior = 1,
-		/obj/item/weapon/ranged/magic/tome/summon/goblin_mage = 1
+		/obj/item/clothing/pants/goblin_loin = 1
 	)
 
 /loot/lavaland/leaper
 	loot_table = list(
-		/obj/item/weapon/ranged/magic/tome/summon/exploding_frog,
 		/obj/item/weapon/melee/sword/cblade,
 		/obj/item/weapon/melee/sword/csaw,
 		/obj/item/storage/blood_box

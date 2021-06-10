@@ -23,6 +23,8 @@
 		var/client/C2 = CLIENT(k)
 		C2?.to_chat(span("ahelp","Ticket (#[ticket_number]) has been opened."))
 
+	log_admin("A new <a href='?ticket=\ref[src];password=[password]'>ticket (#[ticket_number])</a> has been opened.")
+
 /ticket/proc/close()
 	for(var/k in involved_ckeys)
 		var/client/C = CLIENT(k)
@@ -40,7 +42,11 @@
 		var/client/C = CLIENT(k)
 		C?.to_chat(span("ahelp","<a href='?ticket=\ref[src];password=[password]'>Ticket: #[ticket_number],  [C]</a>: [message]"))
 
-	message_log += "[sender]: [message]"
+	var/client/C = CLIENT(sender)
+
+	log_admin("[C]: [message]")
+
+	message_log += "[C]: [message]"
 
 /ticket/proc/join(var/client/C)
 
