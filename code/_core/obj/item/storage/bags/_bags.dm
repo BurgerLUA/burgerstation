@@ -337,7 +337,7 @@
 	icon_state = "moneybag"
 	value = 10000
 	var/hoard = 0				// how many inside
-	var/fuck					// this one is used for the base currency roots, look further down for comments
+	var/targetitem				// this one is used for the base item roots, look further down for comments
 	var/obj/item/goods			// targeted goods
 	container_whitelist = list(
 		/obj/item/currency/telecrystals,
@@ -355,13 +355,13 @@
 /obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("hoard")
-	SAVEVAR("fuck")
+	SAVEPATH("targetitem")
 	SAVEATOM("goods")
 
 /obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("hoard")
-	LOADVAR("fuck")
+	LOADPATH("targetitem")
 	LOADATOM("goods")
 
 /obj/item/storage/bagofhoarding/get_examine_details_list(var/mob/examiner)
@@ -409,9 +409,9 @@
 			if (!hoard)
 				caller.to_chat(span("notice","\The [src.name] is now empty."))
 				goods = null
-				return TRUE
+			return TRUE
 		var/obj/item/I = object
-		if(ispath(I.type,fuck))
+		if(ispath(I.type,targetitem))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			hoard += I.item_count_current
@@ -432,15 +432,15 @@
 					INTERACT_CHECK
 					INTERACT_CHECK_OBJECT
 					if(ispath(I.type,/obj/item/currency/telecrystals))	//i dont know how else to do this because like "goods" doesnt work here
-						fuck = /obj/item/currency/telecrystals			//otherwise things like obj/.../telecrystals/goblins and /treasure break
-					if(ispath(I.type,/obj/item/currency/magic_token))	//cuz it needs to be shortened back to telecrystals/ but the fuck var
-						fuck = /obj/item/currency/magic_token			//keeping the fuck var is also important for the value calculation
+						targetitem = /obj/item/currency/telecrystals	//otherwise things like obj/.../telecrystals/goblins and /treasure break
+					if(ispath(I.type,/obj/item/currency/magic_token))	//cuz it needs to be shortened back to telecrystals/
+						targetitem = /obj/item/currency/magic_token		//keeping the targetitem var is also important for some shit like the desc
 					if(ispath(I.type,/obj/item/currency/gold))			//works around it so eh good enough absolute shitcode but smiling imp emoji
-						fuck = /obj/item/currency/gold
+						targetitem = /obj/item/currency/gold
 					if(ispath(I.type,/obj/item/currency/prize_ticket))
-						fuck = /obj/item/currency/prize_ticket
+						targetitem = /obj/item/currency/prize_ticket
 					if(ispath(I.type,/obj/item/coin/antag_token))
-						fuck = /obj/item/coin/antag_token
+						targetitem = /obj/item/coin/antag_token
 					goods = I
 					hoard = I.item_count_current
 					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
