@@ -10,6 +10,8 @@
 
 	var/cost_mana = 0
 
+	var/spread_per_shot = 1 //Angle to add per shot.
+
 	automatic = TRUE
 
 /obj/item/weapon/ranged/spellgem/Finalize()
@@ -53,6 +55,6 @@
 
 	var/angle = ATAN2(initial_offset_x,initial_offset_y)
 
-	angle += ((bullet_num-1) - (bullet_num_max-1)*0.5)
+	angle += ((bullet_num-1) - (bullet_num_max-1)*0.5)*spread_per_shot
 
 	return list(cos(angle),sin(angle))

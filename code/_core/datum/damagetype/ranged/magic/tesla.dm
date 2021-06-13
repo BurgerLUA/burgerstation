@@ -1,56 +1,53 @@
-/damagetype/ranged/magic/ice
-	name = "ice shard"
+/damagetype/ranged/magic/tesla
+	name = "tesla ball"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 60*0.2,
-		COLD = 60*0.3
+		SHOCK = 60*0.25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 60*0.25
+		ATTRIBUTE_INTELLIGENCE = 60*0.2
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = COLD
+		ATTRIBUTE_INTELLIGENCE = list(SHOCK)
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 60*0.25
+		SKILL_MAGIC_OFFENSIVE = 60*0.55,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = COLD
+		SKILL_MAGIC_OFFENSIVE = SHOCK
 	)
 
 	bonus_experience_skill = list(
 		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)
 
-
-/damagetype/ranged/magic/fire
-	name = "fire shard"
+/damagetype/ranged/magic/tesla_shock
+	name = "tesla shock"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 60*0.2,
-		FIRE = 60*0.3
+		SHOCK = 20*0.25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 60*0.25
+		ATTRIBUTE_INTELLIGENCE = 20*0.2
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = FIRE
+		ATTRIBUTE_INTELLIGENCE = list(SHOCK)
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 60*0.25
+		SKILL_MAGIC_OFFENSIVE = 20*0.55,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = FIRE
+		SKILL_MAGIC_OFFENSIVE = SHOCK
 	)
 
 	bonus_experience_skill = list(

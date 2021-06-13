@@ -4,9 +4,9 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots plasma crystals at a rapid rate."
 	icon_state = "damage"
 
-	cost_mana = 4
-	shoot_delay = 7
-	burst_delay = 2
+	cost_mana = 10
+	shoot_delay = 1
+	burst_delay = 7
 	max_bursts = 3
 
 	bullet_count = 1

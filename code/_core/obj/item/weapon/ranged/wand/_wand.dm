@@ -10,6 +10,12 @@
 
 	automatic = TRUE
 
+	var/wand_damage_multiplier = 1
+
+/obj/item/weapon/ranged/wand/get_base_value()
+	. = ..()
+	. *= wand_damage_multiplier**2
+
 /obj/item/weapon/ranged/wand/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("socketed_spellgem")
@@ -26,7 +32,7 @@
 	. = ..()
 
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
-	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*2)
+	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -56,4 +62,47 @@
 	name = "branch wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/branch.dmi'
 
-	value = 800
+	wand_damage_multiplier = 1.1
+
+	value = 100
+
+/obj/item/weapon/ranged/wand/crafted
+	name = "crafted wand"
+	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
+
+	wand_damage_multiplier = 1.2
+
+	value = 100
+
+/obj/item/weapon/ranged/wand/quartz
+	name = "crafted wand"
+	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
+
+	wand_damage_multiplier = 1.3
+
+	value = 100
+
+/obj/item/weapon/ranged/wand/twisted
+	name = "twisted wand"
+	icon = 'icons/obj/item/weapons/ranged/magic/wand/twisted.dmi'
+
+	wand_damage_multiplier = 1.4
+
+	value = 100
+
+/obj/item/weapon/ranged/wand/profane
+	name = "profane wand"
+	icon = 'icons/obj/item/weapons/ranged/magic/wand/profane.dmi'
+
+	wand_damage_multiplier = 1.5
+
+	value = 100
+
+/obj/item/weapon/ranged/wand/sage
+	name = "sage wand"
+	icon = 'icons/obj/item/weapons/ranged/magic/wand/sage.dmi'
+
+	wand_damage_multiplier = 1.6
+
+	value = 100
+

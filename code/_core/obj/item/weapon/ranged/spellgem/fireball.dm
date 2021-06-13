@@ -5,12 +5,12 @@
 	icon_state = "damage"
 
 	cost_mana = 50
-	shoot_delay = 20
+	shoot_delay = 30
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE*0.75 - 1
 
-	projectile = /obj/projectile/magic/fireball
+	projectile = /obj/projectile/magic/fireball/explosive
 	ranged_damage_type = /damagetype/ranged/magic/fireball
 
 	shoot_sounds = list('sound/weapons/magic/fireball.ogg')

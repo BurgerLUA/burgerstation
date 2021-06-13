@@ -5,9 +5,9 @@
 	icon_state = "damage"
 
 	cost_mana = 10
-	shoot_delay = 15
+	shoot_delay = 2
 
-	burst_delay = 3
+	burst_delay = 15
 	max_bursts = 4
 
 	bullet_count = 4

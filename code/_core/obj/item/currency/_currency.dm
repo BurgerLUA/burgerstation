@@ -124,8 +124,6 @@
 
 	plane = PLANE_CURRENCY
 
-	var/scattered = FALSE
-
 /obj/item/currency/gold/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
 	if(isturf(old_location))
@@ -137,23 +135,15 @@
 
 	. = ..()
 
-/obj/item/currency/gold/Finalize()
-	. = ..()
-	if(generated)
-		fly()
-
 /obj/item/currency/gold/update_icon()
 	. = ..()
-	if(scattered)
-		icon_state = "[clamp(item_count_current,1,5)]_fall"
-	else
-		switch(item_count_current)
-			if(1 to 40)
-				icon_state = "[item_count_current]"
-			if(40 to 100)
-				icon_state = "[FLOOR(item_count_current,10)]"
-			if(100 to 200)
-				icon_state = "[FLOOR(item_count_current,20)]"
+	switch(item_count_current)
+		if(1 to 40)
+			icon_state = "[item_count_current]"
+		if(40 to 100)
+			icon_state = "[FLOOR(item_count_current,10)]"
+		if(100 to 200)
+			icon_state = "[FLOOR(item_count_current,20)]"
 
 /obj/item/currency/gold/update_overlays()
 
@@ -163,10 +153,7 @@
 		return .
 
 	var/desired_overlay
-
-	if(scattered)
-		desired_overlay = "sparkle_fall_[clamp(item_count_current,1,5)]"
-	else if(item_count_current < 10)
+	if(item_count_current < 10)
 		desired_overlay = "sparkle_1"
 	else
 		desired_overlay = "sparkle_[min(50,FLOOR(item_count_current,10))]"
@@ -174,57 +161,3 @@
 	if(desired_overlay)
 		var/image/I = new/image(icon,desired_overlay)
 		add_overlay(I)
-
-
-/obj/item/currency/gold/post_move(var/atom/old_loc)
-
-	if(scattered && !isturf(loc))
-		scattered = FALSE
-		update_sprite()
-
-	. = ..()
-
-/obj/item/currency/gold/proc/fly(var/turf/from_turf)
-
-	if(item_count_current > 5)
-		return FALSE
-
-	icon_state = "[clamp(item_count_current,1,5)]_anim"
-
-	var/desired_z = rand(16,32)
-
-	var/desired_time = rand(6,8)
-
-	var/list/offsets = direction_to_pixel_offset(get_dir(src,from_turf))
-	pixel_x = offsets[1]*TILE_SIZE
-	pixel_y = offsets[2]*TILE_SIZE
-
-	var/desired_pixel_x = rand(-6,6)
-	var/desired_pixel_y = rand(-6,6)
-
-	animate(src,pixel_z=desired_z,time=desired_time*0.5,easing=QUAD_EASING|EASE_OUT,flags=ANIMATION_PARALLEL)
-	animate(pixel_z=0,time=desired_time*0.5,easing=QUAD_EASING|EASE_IN)
-
-	animate(src,pixel_x = desired_pixel_x, pixel_y = desired_pixel_y,time=desired_time,flags=ANIMATION_PARALLEL)
-
-	CALLBACK("\ref[src]_update_sprite",desired_time,src,.proc/finish_fly)
-
-	return TRUE
-
-/obj/item/currency/gold/proc/finish_fly()
-	scattered = TRUE
-	play_sound(pick('sound/effects/coin_01.ogg','sound/effects/coin_02.ogg','sound/effects/coin_03.ogg'),get_turf(src))
-	update_sprite()
-	return TRUE
-
-/proc/create_gold_drop(var/turf/T,var/amount=5)
-
-	spawn while(amount>0)
-		var/obj/item/currency/gold/G = new(get_step(T,pick(DIRECTIONS_ALL)))
-		G.pixel_x = rand(-4,4)
-		G.pixel_y = rand(-4,4)
-		G.item_count_current = min(amount,rand(min(5,CEILING(amount/10,1)),5))
-		amount -= G.item_count_current
-		G.fly(T)
-		INITIALIZE(G)
-		FINALIZE(G)

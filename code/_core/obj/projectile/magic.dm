@@ -89,6 +89,10 @@
 		if(L.dead && L.loyalty_tag == src.loyalty_tag)
 			L.resurrect()
 
+/obj/projectile/magic/tesla
+	name = "tesla ball"
+	icon_state = "tesla"
+
 
 /obj/projectile/magic/lightning
 	name = "lightning"
@@ -238,3 +242,36 @@
 	if(!found_curse)
 		new /obj/effect/temp/hazard/curse(new_loc,SECONDS_TO_DECISECONDS(10),owner)
 
+
+
+/obj/projectile/magic/arcblade
+	name = "arcblade"
+	icon_state = "cool"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+	penetrations_left = 3
+
+/obj/projectile/magic/fractal
+	name = "fractal"
+	icon_state = "fractal"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/holy_cross
+	name = "holy cross"
+	icon_state = "cross"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/unholy_skull
+	name = "unholy skull"
+	icon_state = "evil"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/inferno
+	name = "inferno"
+	icon_state = "inferno"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID

@@ -8,7 +8,8 @@
 	shoot_delay = 14
 
 	bullet_count = 7
-	projectile_speed = TILE_SIZE*0.25 - 1
+	projectile_speed = TILE_SIZE*0.2 - 1
+	spread_per_shot = 20
 
 	projectile = /obj/projectile/magic/chaos
 	ranged_damage_type = /damagetype/ranged/magic/chaos

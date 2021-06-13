@@ -7,8 +7,6 @@
 
 	cost_mana = 15
 	shoot_delay = 10
-	burst_delay = 2
-	max_bursts = 3
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE*0.5 - 1
