@@ -8,7 +8,7 @@
 	shoot_delay = 2
 
 	bullet_count = 1
-	projectile_speed = TILE_SIZE*0.1 - 1
+	projectile_speed = TILE_SIZE*0.3 - 1
 
 	projectile = /obj/projectile/magic/lesser_fire
 	ranged_damage_type = /damagetype/ranged/magic/flame

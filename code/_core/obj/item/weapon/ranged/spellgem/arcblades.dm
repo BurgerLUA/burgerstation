@@ -20,3 +20,5 @@
 	color_3 = "#008CFF"
 
 	value = 800
+
+	spread_per_shot = 35

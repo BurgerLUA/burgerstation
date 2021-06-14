@@ -8,8 +8,6 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 /obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -36,8 +34,6 @@
 	flags = FLAGS_HUD_MOB
 
 	has_quick_function = FALSE
-
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -68,8 +64,6 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 /obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -88,8 +82,6 @@
 	flags = FLAGS_HUD_MOB
 
 	has_quick_function = FALSE
-
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/teleport_to_player/update_overlays()
 	. = ..()
@@ -133,8 +125,6 @@
 	plane = PLANE_HUD_OBJ
 
 	has_quick_function = FALSE
-
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 	appearance_flags = RESET_ALPHA | KEEP_APART
 

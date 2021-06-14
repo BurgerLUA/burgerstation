@@ -16,8 +16,6 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 /obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -27,7 +25,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 		A.remove_color_scheme_buttons()
 		A.client.settings.save()
 
-	
+
 /obj/hud/button/default_color_scheme
 	name = "close color scheme"
 	icon_state = "default"
@@ -57,7 +55,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 		A.client.update_window()
 
-	
+
 /obj/hud/button/color_scheme
 	name = "color scheme button changer"
 	desc = "Press this."
@@ -97,7 +95,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 			A.client.update_window()
 
-	
+
 /obj/hud/button/color_scheme/update_icon()
 
 	if(!owner || !is_advanced(owner))

@@ -144,8 +144,8 @@
 	. = ..()
 
 	if(.)
-		vel_x *= 0.9
-		vel_y *= 0.9
+		vel_x *= 0.95
+		vel_y *= 0.95
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)

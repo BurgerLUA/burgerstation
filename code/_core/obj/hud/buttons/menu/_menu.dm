@@ -5,8 +5,6 @@
 
 	flags = FLAGS_HUD_MOB
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 /obj/hud/button/menu/title
 	name = "Burgerstation 13"
 	icon_state = "title"
@@ -22,7 +20,7 @@
 	if(. && caller.client && command_to_run)
 		winset(caller.client,null,"command=[command_to_run]")
 
-	
+
 /obj/hud/button/menu/selection/New(var/desired_loc)
 	color = null
 	return ..()

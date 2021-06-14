@@ -8,9 +8,9 @@
 	shoot_delay = 2
 
 	burst_delay = 15
-	max_bursts = 4
+	max_bursts = 2
 
-	bullet_count = 4
+	bullet_count = 1
 	projectile_speed = TILE_SIZE*0.25 - 1
 
 	projectile = /obj/projectile/magic/frost

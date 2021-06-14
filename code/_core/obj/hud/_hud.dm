@@ -5,6 +5,8 @@
 
 	var/mob/owner
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
 /obj/hud/update_icon()
 
 	if(user_colors)

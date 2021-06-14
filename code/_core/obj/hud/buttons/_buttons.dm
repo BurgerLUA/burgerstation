@@ -20,8 +20,6 @@
 
 	has_quick_function = TRUE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 	var/delete_on_no_owner = TRUE
 
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)

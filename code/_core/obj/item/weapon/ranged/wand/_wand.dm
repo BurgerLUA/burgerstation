@@ -12,6 +12,8 @@
 
 	var/wand_damage_multiplier = 1
 
+	dan_mode = TRUE
+
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = ..()
 	. *= wand_damage_multiplier**2

@@ -36,7 +36,7 @@
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 
-	if(!object || object.plane < PLANE_HUD || object.qdeleting)
+	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
@@ -74,7 +74,7 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags |= CONTROL_MOD_RIGHT
 
-	if(!object || object.plane >= PLANE_HUD || object.qdeleting)
+	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
@@ -91,7 +91,7 @@
 		mob.on_right_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
-		if(mob && mob.movement_flags & MOVEMENT_RUNNING && object.plane < PLANE_HUD)
+		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (isturf(object) || isturf(object.loc)))
 			if(spam_protection_interact <= 10)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
 				A.pixel_x = text2num(new_params[PARAM_ICON_X]) - 16
@@ -127,7 +127,7 @@
 			click_and_drag_icon.stored_inventory = null
 			click_and_drag_icon.alpha = 0
 
-	if(!object || object.plane >= PLANE_HUD || object.qdeleting)
+	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)

@@ -73,7 +73,7 @@
 
 	var/allow_quick_equip = TRUE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_NO_DISTANCE
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_CLICK
 
 	var/inventory_category = "none"
 
