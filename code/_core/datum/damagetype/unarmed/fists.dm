@@ -37,8 +37,8 @@
 
 	cqc_tag = "4"
 
-	attack_delay = 12*0.5
-	attack_delay_max = 12
+	attack_delay = 10*0.5
+	attack_delay_max = 10
 
 /damagetype/unarmed/fists/help
 	name = "help fists"
@@ -80,8 +80,8 @@
 
 	allow_friendly_fire = TRUE
 
-	attack_delay = 10*0.5
-	attack_delay_max = 10
+	attack_delay = 8*0.5
+	attack_delay_max = 8
 
 	draw_blood = FALSE
 
@@ -216,3 +216,86 @@
 				A.left_hand.grab_object(attacker,victim)
 
 	return ..()
+
+
+/damagetype/unarmed/powerfist/
+	name = "powerfist"
+	attack_verbs = list("pummel","pound")
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 90*0.5
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0
+	)
+
+	attribute_stats = list(
+
+	)
+
+	attribute_damage = list(
+
+	)
+
+
+	skill_stats = list(
+		SKILL_UNARMED = 50*0.5
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT)
+	)
+
+	allow_friendly_fire = FALSE
+
+	cqc_tag = "p"
+
+	attack_delay = 10
+	attack_delay_max = 10
+
+
+/damagetype/unarmed/brass/
+	name = "brass knuckle"
+	attack_verbs = list("punch","hit","strike","pummel","pound")
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 55*0.4
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 55*0.2,
+		ATTRIBUTE_DEXTERITY = 55*0.1
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BLUNT),
+		ATTRIBUTE_DEXTERITY = list(BLUNT)
+	)
+
+	skill_stats = list(
+		SKILL_UNARMED = 55*0.3
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT)
+	)
+
+	allow_friendly_fire = FALSE
+
+	cqc_tag = "p"
+
+	attack_delay = 12*0.5
+	attack_delay_max = 12
