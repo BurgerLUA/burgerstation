@@ -1,1 +1,1 @@
-/obj/marker/explosion_point
+/obj/marker/explosion_point //For syndicate raids.

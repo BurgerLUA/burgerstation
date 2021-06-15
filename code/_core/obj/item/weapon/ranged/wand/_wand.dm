@@ -26,14 +26,11 @@
 	. = ..()
 	LOADATOM("socketed_spellgem")
 
-/obj/item/weapon/ranged/wand/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!socketed_spellgem)
 		return FALSE
 
-	. = ..()
-
-/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

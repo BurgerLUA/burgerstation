@@ -69,6 +69,8 @@
 	var/penetrations_left = 0 //Uwu
 	var/list/projectile_blacklist = list()
 
+	throwable = FALSE
+
 /obj/projectile/Destroy()
 	owner = null
 	weapon = null

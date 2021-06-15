@@ -13,7 +13,7 @@
 
 	collision_flags = FLAG_COLLISION_FLYING
 
-	//var/list/turf/blacklist = list()
+	var/list/turf/blacklist = list()
 
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
@@ -42,6 +42,7 @@
 		CHECK_TICK(50,FPS_SERVER)
 		var/turf/T = get_step(src,d)
 		if(!T) continue
+		if(blacklist[T]) continue
 		if(!T.Enter(src,src.loc))
 			SSexplosion.add_data(T,owner,source,epicenter,(power*0.9 + original_power*0.1)*multiplier,loyalty_tag)
 			continue
@@ -71,6 +72,7 @@
 
 		valid_turfs[T] = direction_mod
 		total_direction_mod += direction_mod
+		blacklist[T] = TRUE
 
 	var/has_existing = length(valid_existing)
 
@@ -86,6 +88,7 @@
 			if(EP.power <= power_to_give)
 				EP.power += power_to_give
 				EP.original_power = max(EP.original_power,original_power)
+				EP.blacklist += blacklist
 				power -= power_to_give
 		else
 			EP = new(T)
@@ -98,6 +101,7 @@
 			EP.epicenter = epicenter
 			EP.loyalty_tag = loyalty_tag
 			EP.multiplier = multiplier
+			EP.blacklist = blacklist
 			INITIALIZE(EP)
 			GENERATE(EP)
 			FINALIZE(EP)
