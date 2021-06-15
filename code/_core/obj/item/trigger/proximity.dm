@@ -69,7 +69,7 @@
 
 /obj/item/device/proximity/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 
-	var/fixed_delta = delta_y ? 1 : -1
+	var/fixed_delta = delta_y > 0 ? 1 : -1
 
 	if(time_set >= 15)
 		fixed_delta = round(fixed_delta*5,5)
