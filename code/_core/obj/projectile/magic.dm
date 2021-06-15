@@ -68,6 +68,7 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 /obj/projectile/magic/rift
@@ -113,6 +114,7 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -131,6 +133,7 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -150,6 +153,7 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -169,6 +173,7 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -190,6 +195,7 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 

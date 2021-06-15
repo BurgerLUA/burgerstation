@@ -47,7 +47,10 @@
 	. = ..()
 	var/contract/C = CONTRACT(contract_datum)
 	name = "[initial(src.name)]: [C.name]"
-	value = CEILING(reward_amount * 0.25,1)
+	update_value()
+
+/obj/item/contract/get_base_value()
+	return CEILING(reward_amount * 0.25,1)
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
 	. = ..()

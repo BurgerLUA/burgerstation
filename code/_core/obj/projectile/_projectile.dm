@@ -72,6 +72,7 @@
 	throwable = FALSE
 
 /obj/projectile/Destroy()
+	color = "#000000"
 	owner = null
 	weapon = null
 	blamed = null
@@ -82,7 +83,7 @@
 	current_loc = null
 	projectile_blacklist.Cut()
 	SSprojectiles.all_projectiles -= src
-	return ..()
+	. = ..()
 
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
 
@@ -167,20 +168,20 @@
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
 	if(!new_loc)
-		on_projectile_hit(src.loc)
 		log_error("Warning: Projectile didn't have a new loc.")
+		on_projectile_hit(src.loc)
 		qdel(src)
 		return TRUE
 
 	if(!old_loc)
-		on_projectile_hit(src.loc)
 		log_error("Warning: Projectile didn't have an old loc.")
+		on_projectile_hit(src.loc)
 		qdel(src)
 		return TRUE
 
 	if(!isturf(old_loc))
-		on_projectile_hit(old_loc)
 		log_error("Warning: Projectile didn't have a valid old loc.")
+		on_projectile_hit(old_loc)
 		qdel(src)
 		return TRUE
 
@@ -195,7 +196,11 @@
 		return TRUE
 
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
-	if(length(collide_with) && penetrations_left <= 0)
+	for(var/k in collide_with)
+		if(!on_projectile_hit(k))
+			continue
+	//the removal of penetrations is handled in projectile_should_collide
+	if(penetrations_left < 0)
 		qdel(src)
 		return TRUE
 
@@ -205,6 +210,7 @@
 
 	if(!isturf(src.loc) || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
 		on_projectile_hit(current_loc ? current_loc : src.loc)
+		qdel(src)
 		return FALSE
 
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.

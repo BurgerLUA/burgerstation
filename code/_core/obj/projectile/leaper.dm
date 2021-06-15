@@ -16,7 +16,8 @@
 
 	if(!target_to_track || target_to_track.z != src.z || target_to_track.qdeleting)
 		on_projectile_hit(current_loc ? current_loc : src.loc)
-		return .
+		qdel(src)
+		return FALSE
 
 	var/desired_angle = get_angle(current_loc,target_to_track) + 90
 
