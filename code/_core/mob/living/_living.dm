@@ -258,6 +258,8 @@
 
 	var/deafened_duration = 0
 
+	var/list/hit_logs = list()
+
 /mob/living/proc/bang(var/duration=100)
 
 	if(!client)
@@ -379,8 +381,9 @@
 		for(var/k in screen_blood)
 			var/obj/hud/screen_blood/S = k
 			qdel(S)
-
 		screen_blood.Cut()
+
+	hit_logs.Cut()
 
 	all_living -= src
 

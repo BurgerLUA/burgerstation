@@ -29,8 +29,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	has_hard_crit = TRUE
 
-	var/list/attack_logs = list()
-
 	var/currency = 3000
 	var/revenue = 0
 	var/expenses = 0
@@ -153,7 +151,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		current_squad = null
 
 	all_players -= src
-	attack_logs.Cut()
 
 	active_device = null
 	active_structure = null

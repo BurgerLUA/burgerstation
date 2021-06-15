@@ -1,5 +1,5 @@
 /obj/item/contract
-	name = "contract"
+	name = "blood contract"
 	icon = 'icons/obj/item/contract.dmi'
 	icon_state = "unfilled"
 
@@ -26,16 +26,27 @@
 
 /obj/item/contract/Generate()
 	. = ..()
-	contract_datum = pick(SScontract.all_contracts)
+	if(!ispath(contract_datum))
+		contract_datum = pick(SScontract.all_contracts)
 	var/contract/C = CONTRACT(contract_datum)
 	reward_amount = C.get_random_reward()
 	amount_current = 0
 	amount_max = C.get_random_amount()
 
+/obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
+
+	var/mob/living/victim = data[1]
+	var/contract/C = CONTRACT(contract_datum)
+	if(istype(victim,C.type_to_check))
+		amount_current++
+		update_sprite()
+
+	return TRUE
+
 /obj/item/contract/Finalize()
 	. = ..()
 	var/contract/C = CONTRACT(contract_datum)
-	name = "contract: [C.name]"
+	name = "[initial(src.name)]: [C.name]"
 	value = CEILING(reward_amount * 0.25,1)
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
@@ -58,16 +69,21 @@
 	LOADVAR("amount_current")
 	LOADVAR("amount_max")
 
-/obj/item/contract/proc/on_scan(var/atom/A)
-	var/contract/C = CONTRACT(contract_datum)
-	return C.on_scan(A,src)
+/obj/item/contract/post_move(var/atom/old_loc)
 
-/obj/item/contract/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	if(on_scan(object))
-		return TRUE
 	. = ..()
 
-/obj/item/contract/click_on_object(var/mob/caller,var/atom/object,location,control,params)
-	if(on_scan(object))
-		return TRUE
-	. = ..()
+	if(!.)
+		return .
+
+	if(istype(loc,/obj/hud/inventory/organs/groin/pocket/contract))
+		var/obj/hud/inventory/organs/groin/pocket/contract/I = loc
+		if(is_advanced(I.owner))
+			HOOK_ADD("on_kill","on_kill_\ref[src]",I.owner,src,.proc/on_kill)
+
+	if(istype(old_loc,/obj/hud/inventory/organs/groin/pocket/contract))
+		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_loc
+		if(is_advanced(I.owner))
+			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
+
+

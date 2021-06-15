@@ -34,3 +34,13 @@
 	screen_loc = "CENTER+4,BOTTOM"
 
 	priority = 10
+
+/obj/hud/inventory/organs/groin/pocket/contract
+	name = "contract slot"
+	icon_state = "slot_contract"
+	id = "contract"
+	screen_loc = "RIGHT,CENTER+4"
+
+	priority = 1000
+
+	item_whitelist = list(/obj/item/contract)

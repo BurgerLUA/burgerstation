@@ -503,26 +503,23 @@
 		display_glance_message(attacker,victim,weapon,hit_object)
 	else
 		display_hit_message(attacker,victim,weapon,hit_object)
-		if(is_player(blamed) && is_player(victim))
-			var/mob/living/advanced/player/PA = blamed
-			var/mob/living/advanced/player/PV = victim
-			if(!PV.dead)
-				var/victim_health_final = PV.health.get_overall_health()
-				var/list/attack_log_format = list()
-				attack_log_format["attacker"] = PA
-				attack_log_format["attacker_ckey"] = PA.ckey
-				attack_log_format["time"] = world.time
-				attack_log_format["damage"] = total_damage_dealt
-				attack_log_format["critical"] = victim_health_final - total_damage_dealt < 0
-				attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
-				PV.attack_logs += list(attack_log_format)
-
-		if(is_living(victim) && is_living(attacker) && attacker != victim && total_damage_dealt)
-			var/mob/living/A = attacker
+		if(is_living(blamed) && is_living(victim))
+			var/mob/living/A = blamed
 			var/mob/living/V = victim
-			var/list/experience_gained = list()
-			var/experience_damage = SAFENUM(damage_to_deal_main[BRUTE]) + SAFENUM(damage_to_deal_main[BURN]) + SAFENUM(damage_to_deal_main[TOX]) + SAFENUM(damage_to_deal_main[RAD])
-			if(!V.dead && A.is_player_controlled())
+			if(!V.dead)
+				var/victim_health_final = V.health.get_overall_health()
+				var/list/hit_log_format = list()
+				hit_log_format["attacker"] = A
+				hit_log_format["attacker_ckey"] = A.ckey
+				hit_log_format["time"] = world.time
+				hit_log_format["damage"] = total_damage_dealt
+				hit_log_format["critical"] = victim_health_final - total_damage_dealt < 0
+				hit_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
+				V.hit_logs += list(hit_log_format)
+
+			if(attacker != victim && total_damage_dealt && !V.dead && A.is_player_controlled())
+				var/list/experience_gained = list()
+				var/experience_damage = SAFENUM(damage_to_deal_main[BRUTE]) + SAFENUM(damage_to_deal_main[BURN]) + SAFENUM(damage_to_deal_main[TOX]) + SAFENUM(damage_to_deal_main[RAD])
 				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
 					var/xp_to_give = CEILING((experience_damage*experience_multiplier)/critical_hit_multiplier,1)
@@ -554,14 +551,12 @@
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give
 
-			if(length(experience_gained))
-				var/list/final_experience = list()
-				for(var/k in experience_gained)
-					var/v = experience_gained[k]
-					final_experience += "[v] [k] xp"
-
-
-				A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
+				if(length(experience_gained))
+					var/list/final_experience = list()
+					for(var/k in experience_gained)
+						var/v = experience_gained[k]
+						final_experience += "[v] [k] xp"
+					A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 

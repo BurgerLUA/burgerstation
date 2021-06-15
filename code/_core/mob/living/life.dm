@@ -119,6 +119,7 @@
 */
 
 /mob/living/proc/revive()
+	hit_logs = list() //Clear logs.
 	movement_flags = 0x0
 	attack_flags = 0x0
 	dead = FALSE
@@ -170,24 +171,50 @@
 
 /mob/living/proc/post_death()
 
-	if(boss)
-		var/turf/T = get_turf(src)
-		if(T)
-			var/list/loot_spawned = CREATE_LOOT(/loot/boss,T)
-			for(var/k in loot_spawned)
-				var/obj/item/I = k
-				var/item_move_dir = pick(DIRECTIONS_ALL)
-				var/turf/turf_to_move_to = get_step(T,item_move_dir)
-				if(!turf_to_move_to)
-					turf_to_move_to = T
-				I.force_move(turf_to_move_to)
-				var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
-				I.pixel_x = -pixel_offsets[1]*TILE_SIZE
-				I.pixel_y = -pixel_offsets[2]*TILE_SIZE
-				animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+	var/turf/T = get_turf(src)
+
+	if(boss && T)
+		var/list/loot_spawned = CREATE_LOOT(/loot/boss,T)
+		for(var/k in loot_spawned)
+			var/obj/item/I = k
+			var/item_move_dir = pick(DIRECTIONS_ALL)
+			var/turf/turf_to_move_to = get_step(T,item_move_dir)
+			if(!turf_to_move_to)
+				turf_to_move_to = T
+			I.force_move(turf_to_move_to)
+			var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
+			I.pixel_x = -pixel_offsets[1]*TILE_SIZE
+			I.pixel_y = -pixel_offsets[2]*TILE_SIZE
+			animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
+	//Was it a kill?
+	if(!suicide)
+		var/list/people_who_contributed = list()
+		var/list/people_who_killed = list()
+		for(var/k in hit_logs)
+			var/list/attack_log = k
+			if(attack_log["lethal"])
+				people_who_killed |= attack_log["attacker"]
+			else if(attack_log["critical"])
+				people_who_contributed |= attack_log["attacker"]
+		if(!length(people_who_killed))
+			people_who_killed = people_who_contributed
+		if(length(people_who_killed))
+			on_killed(people_who_killed)
 
 	HOOK_CALL("post_death")
 
+	return TRUE
+
+/mob/living/proc/on_kill(var/mob/living/victim)
+	HOOK_CALL("on_kill")
+	return TRUE
+
+/mob/living/proc/on_killed(var/list/attackers)
+	for(var/k in attackers)
+		var/mob/living/L = k
+		L.on_kill(src)
+	HOOK_CALL("on_killed")
 	return TRUE
 
 /mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)

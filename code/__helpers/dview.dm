@@ -1,4 +1,4 @@
-/var/mob/abstract/dview/dview = new
+var/mob/abstract/dview/dview = new
 
 
 // Version of view() that ignores luminosity and allows you to set
