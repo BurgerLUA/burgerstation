@@ -75,7 +75,7 @@
 	icon = 'icons/obj/item/deployable/browning.dmi'
 	dan_mode = TRUE
 	dan_icon_state_back = "back"
-	value = 9600
+	value = 8918
 	weight = 58
 
 	item_count_max = 1

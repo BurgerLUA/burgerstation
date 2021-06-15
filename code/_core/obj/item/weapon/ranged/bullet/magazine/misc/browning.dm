@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/bullet/magazine/misc/browning //more or less copied from _misc/sentry
+/obj/item/weapon/ranged/bullet/magazine/misc/browning
 	name = "\improper Browning Gun"
 	desc = ""
 	desc_extended = ""
@@ -16,20 +16,20 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	heat_max = 0.10
+	heat_max = 0.08
 
-	bullet_length_min = 80
-	bullet_length_best = 90
-	bullet_length_max = 95
+	bullet_length_min = 90
+	bullet_length_best = 99
+	bullet_length_max = 100
 
 	bullet_diameter_min = 12
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
-	size = 0
-	weight = 0
+	size = SIZE_4
+	weight = 30
 
-	ai_heat_sensitivity = 0
+	ai_heat_sensitivity = 0.5
 
 	attachment_whitelist = list()
 
