@@ -253,19 +253,16 @@
 
 		if(i == 1 && CALLBACK_EXISTS("hit_\ref[victim]"))
 			CALLBACK_REMOVE("hit_\ref[victim]")
-			perform_clash(attacker,victim,weapon,victim)
-			return TRUE
+			return perform_clash(attacker,victim,weapon,victim)
 		if(is_advanced(victim))
 			var/mob/living/advanced/A = victim
 			if(i==1)
 				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
 					CALLBACK_REMOVE("hit_\ref[A.left_item]")
-					perform_clash(attacker,victim,weapon,A.left_item)
-					return TRUE
+					return perform_clash(attacker,victim,weapon,A.left_item)
 				else if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
 					CALLBACK_REMOVE("hit_\ref[A.right_item]")
-					perform_clash(attacker,victim,weapon,A.right_item)
-					return TRUE
+					return perform_clash(attacker,victim,weapon,A.right_item)
 			if(istype(victim,/mob/living/advanced/stand/))
 				var/mob/living/advanced/stand/S = victim
 				victim = S.owner

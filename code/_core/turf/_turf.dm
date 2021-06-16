@@ -39,6 +39,8 @@
 
 	var/disallow_generation = FALSE
 
+	var/friction = TRUE //True or false. Can't really do decimals 0 to 1, yet.
+
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
 

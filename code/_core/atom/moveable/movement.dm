@@ -16,7 +16,7 @@
 
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
 
-	if(anchored)
+	if(anchored || CALLBACK_EXISTS("momentum_\ref[src]"))
 		is_moving = FALSE
 		return FALSE
 
@@ -228,11 +228,63 @@
 
 	post_move(OldLoc)
 
+	if((collision_flags & FLAG_COLLISION_WALKING) && isturf(loc))
+		var/turf/T = loc
+		if(T.friction < 1)
+			var/calculated_speed = SECONDS_TO_DECISECONDS(glide_size/TILE_SIZE)
+			var/calculated_direction = get_dir(OldLoc,loc)
+			start_momentum(calculated_speed,calculated_direction)
+
 	return TRUE
 
 /atom/movable/proc/on_fall(var/turf/old_turf)
 	return TRUE
 
+/atom/movable/proc/start_momentum(var/desired_momentum_speed=0,var/desired_momentum_dir=0x0)
 
+	if(!desired_momentum_speed || !desired_momentum_dir)
+		return FALSE
 
+	if(momentum_dir && momentum_dir != desired_momentum_dir)
+		var/total_speed = desired_momentum_speed + momentum_speed
+		var/altered_momentum_dir = dir2angle(momentum_dir) * (momentum_speed/total_speed)
+		var/altered_desired_momentum_dir = dir2angle(desired_momentum_dir) * (desired_momentum_speed/total_speed)
+		momentum_dir = angle2dir(altered_momentum_dir + altered_desired_momentum_dir)
+	else
+		momentum_dir = desired_momentum_dir
 
+	momentum_speed = max(momentum_speed,desired_momentum_speed)
+
+	if(!CALLBACK_EXISTS("momentum_\ref[src]"))
+		process_momentum(TRUE)
+
+	return TRUE
+
+/atom/movable/proc/process_momentum(var/no_move=FALSE)
+
+	if(momentum_speed <= 0 || !momentum_dir)
+		return FALSE
+
+	if(!isturf(loc))
+		momentum_speed = 0
+		momentum_dir = 0x0
+		return FALSE
+
+	var/turf/T = get_turf(src)
+	momentum_speed -= CEILING(T.friction*momentum_speed,0.1)
+	if(move_dir)
+		start_momentum(momentum_speed*T.friction,move_dir)
+
+	if(momentum_speed <= 0 || !momentum_dir)
+		momentum_dir = 0x0
+		return FALSE
+
+	var/desired_delay = CEILING(10/momentum_speed,1)
+	move_delay = max(move_delay,DECISECONDS_TO_TICKS(desired_delay))
+	glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
+	var/turf/desired_turf = get_step(src,momentum_dir)
+	CALLBACK("momentum_\ref[src]",desired_delay,src,.proc/process_momentum)
+	if(!no_move && desired_turf)
+		Move(desired_turf)
+
+	return TRUE

@@ -190,6 +190,8 @@
 		qdel(src)
 		return TRUE
 
+	steps_current += 1
+
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc)
 		qdel(src)
@@ -217,7 +219,6 @@
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
-		steps_current += 1
 		if(!current_loc || on_enter_tile(previous_loc,current_loc) || !current_loc)
 			return FALSE
 		previous_loc = current_loc

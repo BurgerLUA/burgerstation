@@ -220,7 +220,7 @@
 	name = "summon"
 	icon = 'icons/obj/projectiles/magic.dmi'
 	icon_state = "summon_dark"
-	steps_allowed = 6
+	steps_allowed = 4
 	hit_target_turf = TRUE
 	lifetime = SECONDS_TO_DECISECONDS(2)
 	impact_effect_turf = null

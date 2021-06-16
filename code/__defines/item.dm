@@ -38,27 +38,20 @@
 #define RARITY_LEGENDARY "legendary"
 
 #define SLOT_NONE         (1<<0)
-
 #define SLOT_TORSO        (1<<1)
 #define SLOT_TORSO_ARMOR  (1<<3)
 #define SLOT_TORSO_BACK   (1<<4)
-
 #define SLOT_GROIN        (1<<5)
 #define SLOT_GROIN_BELT   (1<<6)
-
 #define SLOT_HEAD         (1<<7)
 #define SLOT_FACE         (1<<8)
 #define SLOT_EAR          (1<<9)
 #define SLOT_NECK         (1<<11)
-
 #define SLOT_FOOT         (1<<12)
-
 #define SLOT_HAND         (1<<13)
-
 #define SLOT_SPECIAL      (1<<14)
 
 #define SLOT_MOD_NONE     (1<<0)
-
 #define SLOT_MOD_CENTER   (1<<1)
 #define SLOT_MOD_LEFT     (1<<2)
 #define SLOT_MOD_RIGHT    (1<<3)
