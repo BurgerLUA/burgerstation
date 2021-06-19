@@ -113,11 +113,16 @@ var/global/world_state = STATE_STARTING
 			continue
 		G.save()
 
+/proc/save_economy()
+	var/subsystem/economy/E = locate() in active_subsystems
+	E.save(TRUE)
+
 /world/proc/save()
 	save_all_globals()
 	//save_all_mechs()
 	save_deathboxes()
 	save_banks()
+	save_economy()
 	for(var/ckey in ckey_to_mobdata)
 		var/savedata/client/mob/M = ckey_to_mobdata[ckey]
 		if(!M.attached_mob)

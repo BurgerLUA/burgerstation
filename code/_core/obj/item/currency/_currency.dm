@@ -1,3 +1,5 @@
+
+
 /obj/item/currency/
 	name = "currency"
 	desc = "DOSH"

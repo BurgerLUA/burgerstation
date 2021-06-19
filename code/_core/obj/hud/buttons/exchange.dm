@@ -38,10 +38,12 @@
 				var/obj/item/currency/gold/G = new(T)
 				INITIALIZE(G)
 				G.item_count_current = B.stored_value
+				SSeconomy.gold_in_circulation += B.stored_value
 				FINALIZE(G)
 				B.set_stored_object(null)
 				qdel(B)
 				A.put_in_hands(G)
+
 			else
 				B.set_stored_object(null)
 
@@ -113,7 +115,7 @@
 
 /obj/hud/button/exchange/base/proc/calculate_value()
 	if(stored_object)
-		stored_value = FLOOR(stored_object.get_value(),1)
+		stored_value = FLOOR(stored_object.get_value()/SSeconomy.credits_per_gold,1)
 	else
 		stored_value = 0
 

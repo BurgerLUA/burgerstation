@@ -89,6 +89,8 @@
 	name = "VR Vendor"
 	markup = 0.75
 
+	ignore_economy = TRUE
+
 /obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
 	return CEILING(desired_price,10)
 

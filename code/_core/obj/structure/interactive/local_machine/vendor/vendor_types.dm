@@ -573,6 +573,8 @@
 		/obj/item/dice/d20
 	)
 
+	ignore_economy = TRUE
+
 
 /obj/structure/interactive/vending/halloween
 	name = "chocolate bar vendor"

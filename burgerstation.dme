@@ -1929,6 +1929,7 @@
 #include "code\_core\world\subsystems\dialogue.dm"
 #include "code\_core\world\subsystems\discord.dm"
 #include "code\_core\world\subsystems\dmm_suite.dm"
+#include "code\_core\world\subsystems\economy.dm"
 #include "code\_core\world\subsystems\emote.dm"
 #include "code\_core\world\subsystems\enchanting.dm"
 #include "code\_core\world\subsystems\events.dm"

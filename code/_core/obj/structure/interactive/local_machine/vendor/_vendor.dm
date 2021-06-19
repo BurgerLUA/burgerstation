@@ -37,6 +37,8 @@ var/global/list/equipped_antags = list()
 
 	var/price_max = 0
 
+	var/ignore_economy = FALSE
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
@@ -80,6 +82,9 @@ var/global/list/equipped_antags = list()
 	P.to_chat(span("notice","You vend \the [new_item.name]."))
 
 	P.put_in_hands(new_item)
+
+	if(!ignore_economy)
+		SSeconomy.purchases_this_round["[associated_item.type]"] += 1
 
 	return new_item
 
@@ -131,11 +136,13 @@ var/global/list/equipped_antags = list()
 		markup *= 1/accepts_item.value
 		price_max = accepts_item.item_count_max
 
-
 	for(var/obj/item/I in stored_objects)
 		if(stored_cost[I.type])
 			continue
-		stored_cost[I.type] = get_bullshit_price(I.get_value()*markup)
+		var/local_markup = markup
+		if(!ignore_economy)
+			local_markup = max(markup * (SSeconomy.price_multipliers["[I.type]"] ? SSeconomy.price_multipliers["[I.type]"] : 1),1)
+		stored_cost[I.type] = get_bullshit_price(I.get_value()*local_markup)
 		if(price_max)
 			stored_cost[I.type] = min(price_max,stored_cost[I.type])
 		if(stored_cost[I.type] <= 0)
@@ -143,6 +150,8 @@ var/global/list/equipped_antags = list()
 			stored_cost -= I.type
 			stored_objects -= I
 			qdel(I)
+		else if(!ignore_economy && !isnum(SSeconomy.purchases_this_round["[I.type]"]))
+			SSeconomy.purchases_this_round["[I.type]"] = 0
 
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
