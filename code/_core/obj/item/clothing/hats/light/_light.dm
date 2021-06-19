@@ -34,9 +34,9 @@
 
 /obj/item/clothing/head/light/update_atom_light()
 	if(enabled)
-		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
+		set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	else
-		set_light(FALSE)
+		set_light_sprite(FALSE)
 	return TRUE
 
 

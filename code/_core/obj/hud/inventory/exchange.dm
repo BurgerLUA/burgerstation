@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 /obj/hud/inventory/exchange
 	name = "item exchange"
 
@@ -9,6 +16,8 @@
 	mouse_opacity = 0 //Off until enabled.
 	should_draw = FALSE
 	drag_to_take = FALSE
+
+	screen_loc = "CENTER,CENTER"
 
 /obj/hud/inventory/exchange/proc/on_exchange(var/obj/item/inserted_item)
 	return FALSE

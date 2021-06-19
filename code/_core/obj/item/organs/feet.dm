@@ -328,3 +328,30 @@
 
 	target_bounds_y_min = 1
 	target_bounds_y_max = 3
+
+
+
+//Monkey
+/obj/item/organ/foot/golem
+	name = "right golem foot"
+
+	icon = 'icons/mob/living/advanced/species/golem.dmi'
+
+	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+/obj/item/organ/foot/golem/left
+	name = "left golem foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3

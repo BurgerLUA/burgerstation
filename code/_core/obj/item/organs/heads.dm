@@ -141,3 +141,8 @@
 
 /obj/item/organ/head/moth/female
 	icon_state = BODY_HEAD_FEMALE
+
+/obj/item/organ/head/golem
+	name = "golem head"
+	icon = 'icons/mob/living/advanced/species/golem.dmi'
+	desc = "An organ."

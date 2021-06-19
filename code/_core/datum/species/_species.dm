@@ -138,7 +138,13 @@
 
 		/obj/hud/button/hunger,
 
-		/obj/hud/button/objectives
+		/obj/hud/button/objectives,
+
+		/*
+		/obj/hud/button/exchange/close,
+		/obj/hud/button/exchange/sell,
+		/obj/hud/button/exchange/base
+		*/
 
 	)
 

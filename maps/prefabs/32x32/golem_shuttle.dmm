@@ -1,0 +1,59 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/shuttle,/area/dmm_suite/clear_area)
+"c" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/shuttle_engine/large{dir = 4},/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
+"f" = (/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"g" = (/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/interactive/reagent_tank/water,/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
+"i" = (/obj/marker/spawning/window/extra,/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
+"j" = (/obj/structure/interactive/reagent_tank/ethanol,/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
+"k" = (/obj/structure/interactive/crate,/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
+"l" = (/obj/structure/interactive/vending/mining,/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/interactive/statue/director,/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"n" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"o" = (/obj/structure/interactive/computer/arcade/bubbletwist,/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"p" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"q" = (/obj/structure/interactive/lighting/fixture/tube/station/strong,/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"r" = (/obj/structure/interactive/lighting/fixture/tube/station/strong{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"s" = (/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"t" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"u" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
+"v" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"w" = (/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"x" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaabbcbbbbbbbbbbcbbbbbaaa
+aaaaaaaaaabhdkkkkkkkkkkddjbddaaa
+aaaaaaaaaabhdddddddddddddjbedaaa
+aaaaaaaaaabbbbbcbbbccbbbbbbddaaa
+aaaaaaaaaaboffffffbgggsgglbedaaa
+aaaaaaaaaacfffxfffcgffffflbddaaa
+aaabbbbbbbbbbbbbbbbgfffffgbedaaa
+aaabqggggsggggsbggsgfffvbbbbbaaa
+aaabiifffffffffcffffffffcfwfcaaa
+aaabmipffffffffcffffffffcfffcaaa
+aaabiifffffffffcffffffffcfxfcaaa
+aaabrggggtggggtbggtgfffvbbbbbaaa
+aaabbbbbbbbbbbbbbbbgfffffnbddaaa
+aaaaaaaaaacfffwfffcgfffffnbedaaa
+aaaaaaaaaabfffffffbggnunnnbddaaa
+aaaaaaaaaabbbbbcbbbccbbbbbbedaaa
+aaaaaaaaaabhdddddddddddddjbddaaa
+aaaaaaaaaabhdddddddddddddjbedaaa
+aaaaaaaaaabbcbbbbbbbbbbcbbbbbaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

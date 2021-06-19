@@ -93,3 +93,15 @@
 	name = "left moth antenna"
 	id = BODY_EAR_LEFT
 	icon_state = BODY_EAR_LEFT
+
+
+
+//Golem
+/obj/item/organ/ear/golem
+	name = "right golem ear"
+	icon = 'icons/mob/living/advanced/species/golem.dmi'
+
+/obj/item/organ/ear/golem/left
+	name = "left golem ear"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT

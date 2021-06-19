@@ -125,3 +125,9 @@
 
 /obj/item/organ/groin/moth/female
 	icon_state = BODY_GROIN_FEMALE
+
+
+//Golem
+/obj/item/organ/groin/golem
+	name = "golem groin"
+	icon = 'icons/mob/living/advanced/species/golem.dmi'

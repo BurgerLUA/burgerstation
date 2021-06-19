@@ -1,0 +1,26 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/cult,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"d" = (/obj/structure/interactive/fountain,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/smooth/table/cult,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/interactive/lighting/cult_pylon,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"g" = (/mob/living/advanced/npc/cultist/old,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aabbbbbbbbbbbaaa
+aabeeeeeeeeebaaa
+aabdcfcccfcdbaaa
+aabccgcccgccbaaa
+aabdcccccccdbaaa
+aabcccccccccbaaa
+aabdcgcccgcdbaaa
+aabcccccccccbaaa
+aabdcccccccdbaaa
+aabcccccccccbaaa
+aabdcccccccdbaaa
+aabcccccccccbaaa
+aabdcccccccdbaaa
+aabccfcccfccbaaa
+aabdcccccccdbaaa
+aabbbbcccbbbbaaa
+"}

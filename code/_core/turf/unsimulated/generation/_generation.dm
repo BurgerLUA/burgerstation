@@ -16,11 +16,11 @@
 /turf/unsimulated/generation/proc/generate(var/size = WORLD_SIZE)
 	return TRUE
 
-/turf/unsimulated/generation/lava
-	name = "lava generation"
+/turf/unsimulated/generation/lava_deep
+	name = "deep lava generation"
 	icon_state = "lava"
 
-/turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/lava_deep/generate(var/size = WORLD_SIZE)
 
 	if(no_wall)
 		new /turf/simulated/floor/basalt(src)
@@ -71,7 +71,11 @@
 
 	return ..()
 
-/turf/unsimulated/generation/lava/starter/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/lava
+	name = "lava generation"
+	icon_state = "lava"
+
+/turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
 	if(no_wall)
 		new /turf/simulated/floor/basalt(src)
