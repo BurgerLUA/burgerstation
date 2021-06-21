@@ -5,11 +5,11 @@
 	desc_extended = "A flawless clown mask and wig."
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		HOLY = -80,
-		DARK = 80
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		HOLY = -50,
+		DARK = 50
 	)
 
 	size = SIZE_2

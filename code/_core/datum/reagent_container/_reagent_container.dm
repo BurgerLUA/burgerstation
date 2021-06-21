@@ -85,10 +85,11 @@
 		if(!(flags_metabolism & R.flags_metabolism))
 			continue
 
-		var/metabolize_amount = R.metabolize(living_owner,src,volume,multiplier)
-
+		var/metabolize_amount = R.metabolize(living_owner,src,volume,multiplier*living_owner.chem_strength)
 		if(metabolize_amount)
 			remove_reagent(r_id,metabolize_amount,FALSE)
+			if(R.blood_toxicity_multiplier)
+				L.blood_toxicity += metabolize_amount*R.blood_toxicity_multiplier
 
 	update_container()
 

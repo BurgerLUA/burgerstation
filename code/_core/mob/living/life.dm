@@ -317,6 +317,12 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
+	blood_toxicity = max(blood_toxicity - LIFE_TICK_SLOW,0)
+	if(blood_toxicity > 20)
+		chem_power = max(0,1 - (blood_toxicity-20)*0.01)
+	else
+		chem_power = 0
+
 	if(blood_volume < blood_volume_max)
 		var/consume_multiplier = 1
 		var/trait/blood_regen/BR = get_trait_by_category(/trait/blood_regen/)
@@ -325,9 +331,9 @@ mob/living/proc/on_life_slow()
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)
-		blood_volume--
+		blood_volume -= LIFE_TICK_SLOW*0.25
 		if(health && blood_volume >= blood_volume_max*1.05)
-			health.adjust_loss_smart(tox=0.5,robotic=FALSE)
+			health.adjust_loss_smart(tox=LIFE_TICK_SLOW*0.25,robotic=FALSE)
 
 	handle_regen()
 

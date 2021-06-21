@@ -1176,6 +1176,7 @@
 #include "code\_core\obj\item\clothing\masks\emoji.dm"
 #include "code\_core\obj\item\clothing\masks\gasmask.dm"
 #include "code\_core\obj\item\clothing\masks\god.dm"
+#include "code\_core\obj\item\clothing\masks\heretic.dm"
 #include "code\_core\obj\item\clothing\masks\mime.dm"
 #include "code\_core\obj\item\clothing\masks\mummy.dm"
 #include "code\_core\obj\item\clothing\masks\sterile.dm"

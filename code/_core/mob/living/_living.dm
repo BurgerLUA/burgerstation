@@ -43,6 +43,8 @@
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_VOLUME_DEFAULT
 	var/blood_volume_max = 0 //Set to blood_volume on new.
+	var/blood_toxicity = 0 //Value of how toxic your blood is. Increased by consuming chems.
+	var/chem_power = 1 //Multiplier of chemical power. Changed via blood toxicity.
 
 	var/blood_oxygen = 0 //Additional blood oxygen.
 
