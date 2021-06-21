@@ -16,7 +16,7 @@
 	var/list/new_params = params2list(params)
 
 	if((mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
-		var/change_in_screen = delta_y > 1 ? 1 : -1
+		var/change_in_screen = clamp(delta_y,-1,1)
 		if(precise_zoom)
 			change_in_screen *= 0.1
 		update_zoom(zoom_level + change_in_screen)
@@ -42,7 +42,7 @@
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	if(examine_mode)
-		if(mob) mob.display_turf_contents(get_turf(object))
+		mob.display_turf_contents(get_turf(object))
 		examine(object)
 		return TRUE
 

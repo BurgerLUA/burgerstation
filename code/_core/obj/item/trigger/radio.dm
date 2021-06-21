@@ -61,7 +61,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	INTERACT_CHECK
 
-	var/fixed_delta = delta_y > 0 ? 2 : -2
+	var/fixed_delta = clamp(delta_y,-1,1)*2
 
 	var/old_frequency = frequency
 

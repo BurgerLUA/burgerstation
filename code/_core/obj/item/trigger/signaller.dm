@@ -72,7 +72,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 
-	var/fixed_delta = delta_y ? 1 : -1
+	var/fixed_delta = clamp(delta_y,-1,1)
 
 	if(mode)
 		var/old_frequency = frequency_current
