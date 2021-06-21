@@ -114,6 +114,8 @@
 		if(0.85 to 0.9)
 			if(path_only)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
+				if(prob(5))
+					new /obj/marker/generation/bushes/fern(src)
 			else
 				new /turf/simulated/hazard/water(src)
 				if(prob(1))

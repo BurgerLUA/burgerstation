@@ -1899,6 +1899,7 @@
 #include "code\_core\turf\unsimulated\_unsimulated.dm"
 #include "code\_core\turf\unsimulated\generation\_generation.dm"
 #include "code\_core\turf\unsimulated\generation\cave.dm"
+#include "code\_core\turf\unsimulated\generation\forest.dm"
 #include "code\_core\turf\unsimulated\generation\jungle.dm"
 #include "code\_core\turf\unsimulated\generation\jungle_deep.dm"
 #include "code\_core\turf\unsimulated\generation\snow.dm"

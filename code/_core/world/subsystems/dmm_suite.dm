@@ -34,10 +34,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	)
 
 	var/list/maps_to_load = list(
-		/* Disabled so burgerstation can load fast.
-		"maps/core/z_02.dmm",
-		"maps/core/z_01.dmm",
-		*/
+		"maps/jungle/z_02.dmm",
+		"maps/jungle/z_01.dmm",
 		"maps/jungle/z_00.dmm",
 		"maps/core/bluespace.dmm"
 	)

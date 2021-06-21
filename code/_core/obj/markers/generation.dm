@@ -172,6 +172,26 @@
 
 	color = COLOR_BROWN
 
+/obj/marker/generation/forest_dirt
+	object_to_place = /turf/simulated/floor/colored/dirt
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 10
+	skip_chance = 10
+	hole_chance = 0
+
+	color = COLOR_BROWN
+
+/obj/marker/generation/forest_soil
+	object_to_place = /turf/simulated/floor/colored/dirt/soil
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 10
+	skip_chance = 10
+	hole_chance = 0
+
+	color = COLOR_BROWN
+
 /obj/marker/generation/cave_dirt
 	object_to_place = /turf/simulated/floor/cave_dirt
 	grow_amount_min = 5
@@ -391,7 +411,7 @@
 
 
 /obj/marker/generation/forest_grass
-	object_to_place = /obj/structure/scenery/grass
+	object_to_place = /obj/structure/scenery/grass/normal
 	grow_amount_min = 5
 	grow_amount_max = 8
 	objects_max = 25
@@ -405,7 +425,61 @@
 	bypass_disallow_generation = TRUE
 
 
+/obj/marker/generation/lavender
+	object_to_place = /obj/structure/scenery/grass/lavender
+	grow_amount_min = 4
+	grow_amount_max = 6
+	objects_max = 20
+	skip_chance = 25
+	hole_chance = 5
 
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/grass
+
+
+
+/obj/marker/generation/bushes
+	object_to_place = /obj/structure/scenery/bush/grass
+	grow_amount_min = 10
+	grow_amount_max = 30
+	objects_max = 3
+	skip_chance = 5
+	hole_chance = 90
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/grass
+
+/obj/marker/generation/bushes/fern
+	object_to_place = /obj/structure/scenery/bush/fern
+
+/obj/marker/generation/bushes/generic
+	object_to_place = /obj/structure/scenery/bush/generic
+
+/obj/marker/generation/bushes/grass
+	object_to_place = /obj/structure/scenery/bush/grass
+
+/obj/marker/generation/bushes/leafy
+	object_to_place = /obj/structure/scenery/bush/leafy
+
+/obj/marker/generation/bushes/pale
+	object_to_place = /obj/structure/scenery/bush/pale
+
+/obj/marker/generation/bushes/pointy
+	object_to_place = /obj/structure/scenery/bush/pointy
+
+/obj/marker/generation/bushes/snow
+	object_to_place = /obj/structure/scenery/bush/snow
+
+/obj/marker/generation/bushes/stalk
+	object_to_place = /obj/structure/scenery/bush/stalk
+
+/obj/marker/generation/bushes/stick
+	object_to_place = /obj/structure/scenery/bush/stick
+
+/obj/marker/generation/bushes/sun
+	object_to_place = /obj/structure/scenery/bush/sun
 
 
 /obj/marker/generation/jungle_tree_small

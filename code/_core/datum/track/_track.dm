@@ -215,3 +215,13 @@
 	name = "Carrib"
 	path = 'sound/music/Carrib.ogg'
 	length = 2*60 + 0
+
+/track/movie //Menu music
+	name = "Movie"
+	path = 'sound/music/Movie.ogg'
+	length = 2*60 + 40
+
+/track/footsteps //Menu music
+	name = "Footsteps"
+	path = 'sound/music/Footsteps.ogg'
+	length = 2*60 + 30
