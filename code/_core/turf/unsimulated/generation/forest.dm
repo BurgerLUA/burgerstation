@@ -30,19 +30,16 @@
 
 	noise = clamp(noise/instances,0,1)
 
-
-	new /turf/simulated/floor/colored/grass(src)
-	color = blend_colors("#336D31","#426D31",noise)
 	var/place_grass = TRUE
 	var/place_ground = TRUE
 	if(noise <= 40)
-		if(!path_only && prob(10))
+		if(!path_only && prob(20))
 			new /obj/marker/generation/forest_tree(src)
 			place_grass = FALSE
-			if(prob(5))
+			if(prob(40))
 				new /obj/marker/generation/forest_dirt(src)
 				place_ground = FALSE
-		else if(!path_only && prob(5))
+		else if(!path_only && prob(2))
 			var/list/valid_bushes = list(
 				/obj/marker/generation/bushes/leafy,
 				/obj/marker/generation/bushes/stalk
@@ -60,10 +57,10 @@
 				new /obj/marker/generation/plant/chanterelle(src)
 				place_grass = FALSE
 	else
-		if(!path_only && prob(3))
+		if(!path_only && prob(2))
 			new /obj/marker/generation/forest_tree(src)
 			place_grass = FALSE
-			if(prob(5))
+			if(prob(1))
 				new /obj/marker/generation/forest_dirt(src)
 				place_ground = FALSE
 		else if(!path_only && prob(5))
@@ -81,16 +78,15 @@
 
 	if(place_grass)
 		if(prob(2))
-			new /obj/structure/scenery/flowers(src)
 			new /obj/marker/generation/flowers(src)
 		if(prob(2))
-			new /obj/structure/scenery/grass/lavender(src)
 			new /obj/marker/generation/lavender(src)
 		else if(prob(10))
-			new /obj/structure/scenery/grass/normal(src)
 			new /obj/marker/generation/forest_grass(src)
-	else if(place_ground)
-		if(prob(5))
+	if(place_ground)
+		new /turf/simulated/floor/colored/grass(src)
+		color = blend_colors("#336D31","#426D31",noise)
+		if(prob(1))
 			new /obj/marker/generation/forest_soil(src)
 
 	return ..()

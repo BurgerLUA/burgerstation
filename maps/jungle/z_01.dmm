@@ -3437,6 +3437,10 @@
 /obj/item/slime_core/custom,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
+"mE" = (
+/mob/living/simple/passive/mouse,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/east)
 "mG" = (
 /obj/decal/hazard/black,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -44546,9 +44550,9 @@ lZ
 hd
 fk
 An
-ah
-ah
-ah
+au
+au
+au
 uD
 if
 hZ
@@ -44803,9 +44807,9 @@ gK
 hk
 fk
 aK
-ah
-ah
-ah
+au
+au
+au
 uD
 if
 hZ
@@ -51770,7 +51774,7 @@ jX
 hJ
 aX
 dX
-dX
+mE
 dX
 iT
 iT

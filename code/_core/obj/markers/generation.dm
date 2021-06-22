@@ -386,13 +386,13 @@
 	object_to_place = /obj/structure/interactive/tree/evergreen
 	grow_amount_min = 10
 	grow_amount_max = 20
-	objects_max = 5
+	objects_max = 10
 	skip_chance = 50
 	hole_chance = 50
 
 	color = COLOR_GREEN
 
-	turf_whitelist = /turf/simulated/floor/colored/grass
+	turf_whitelist = /turf/simulated/floor/colored
 
 
 /obj/marker/generation/flowers
