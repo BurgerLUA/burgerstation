@@ -66,6 +66,8 @@
 		else if(!path_only && prob(5))
 			place_grass = FALSE
 			new /obj/marker/generation/plant/wheat(src)
+			if(prob(2))
+				new /obj/marker/generation/mob/chicken(src)
 		else if(!path_only && prob(3))
 			var/list/valid_bushes = list(
 				/obj/marker/generation/bushes/generic,
@@ -83,6 +85,11 @@
 			new /obj/marker/generation/lavender(src)
 		else if(prob(10))
 			new /obj/marker/generation/forest_grass(src)
+			if(prob(1))
+				if(prob(10))
+					new /mob/living/simple/bull(src)
+				else
+					new /obj/marker/generation/mob/cow(src)
 	if(place_ground)
 		new /turf/simulated/floor/colored/grass(src)
 		color = blend_colors("#336D31","#426D31",noise)

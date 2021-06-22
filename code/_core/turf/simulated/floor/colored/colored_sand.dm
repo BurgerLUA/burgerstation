@@ -22,7 +22,7 @@
 
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"
-	color = "#FFE36B"
+	color = "#DED1BD"
 	layer = LAYER_FLOOR + 0.141
 
 /turf/simulated/floor/colored/sand/underwater

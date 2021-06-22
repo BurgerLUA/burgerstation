@@ -13,6 +13,14 @@
 		new /turf/simulated/floor/colored/dirt/cave(src)
 		return ..()
 
+	if(is_different && !path_only)
+		new /turf/simulated/wall/rock(src)
+		if(prob(5))
+			new /obj/marker/generation/rock_wall/small(src)
+		else if(prob(1))
+			new /obj/marker/generation/rock_wall(src)
+		return ..()
+
 	var/seed_resolution = WORLD_SIZE
 	var/x_seed = x / seed_resolution
 	var/y_seed = y / seed_resolution
@@ -22,6 +30,8 @@
 	for(var/i=1,i<=max_instances,i++)
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
+
+	var/needs_bear = path_only
 
 	switch(noise)
 		if(-INFINITY to 0.2)
@@ -89,5 +99,11 @@
 					new /turf/simulated/wall/rock(src)
 					if(prob(1))
 						new /obj/marker/generation/rock_wall(src)
+	if(prob(1))
+		new /mob/living/simple/bat(src)
+	else if(prob(1) && is_floor(src))
+		new /obj/marker/generation/mob/cave_spider(src)
+	else if(needs_bear && prob(3))
+		new /obj/marker/generation/mob/black_bear(src)
 
 	return ..()

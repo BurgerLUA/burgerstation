@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/unsimulated/generation/cave,
+/turf/unsimulated/generation/lava,
 /area)
 "b" = (
 /turf/simulated/wall/rock/indestructable,
@@ -22,18 +22,6 @@
 	icon_state = "stair_middle";
 	dir = 8
 	},
-/area)
-"g" = (
-/obj/marker/prefab/large,
-/turf/unsimulated/generation/cave,
-/area)
-"h" = (
-/obj/marker/prefab/medium,
-/turf/unsimulated/generation/cave,
-/area)
-"i" = (
-/obj/marker/prefab/small,
-/turf/unsimulated/generation/cave,
 /area)
 
 (1,1,1) = {"
@@ -4552,7 +4540,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a
@@ -5615,7 +5603,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a
@@ -8377,7 +8365,7 @@ a
 a
 a
 a
-h
+a
 a
 a
 a
@@ -9102,7 +9090,7 @@ a
 a
 a
 a
-g
+a
 a
 a
 a
@@ -15141,7 +15129,7 @@ a
 a
 a
 a
-g
+a
 a
 a
 a
@@ -20186,7 +20174,6 @@ a
 a
 a
 a
-i
 a
 a
 a
@@ -20300,7 +20287,8 @@ a
 a
 a
 a
-i
+a
+a
 a
 a
 a
@@ -27512,7 +27500,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a
@@ -28863,7 +28851,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a
@@ -30732,7 +30720,7 @@ a
 a
 a
 a
-h
+a
 a
 a
 a
@@ -33076,7 +33064,6 @@ a
 a
 a
 a
-i
 a
 a
 a
@@ -33128,7 +33115,8 @@ a
 a
 a
 a
-i
+a
+a
 a
 a
 a
@@ -38654,7 +38642,7 @@ a
 a
 a
 a
-g
+a
 a
 a
 a
@@ -39589,7 +39577,7 @@ a
 a
 a
 a
-g
+a
 a
 a
 a
@@ -42028,7 +42016,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a
@@ -42334,7 +42322,7 @@ a
 a
 a
 a
-h
+a
 a
 a
 a
@@ -51796,7 +51784,7 @@ a
 a
 a
 a
-h
+a
 a
 a
 a
@@ -54663,7 +54651,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a
@@ -57846,7 +57834,7 @@ a
 a
 a
 a
-i
+a
 a
 a
 a

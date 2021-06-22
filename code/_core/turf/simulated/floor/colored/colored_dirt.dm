@@ -27,7 +27,7 @@
 
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
-	color = "#C6B4A9"
+	color = "#D3C6BE" //"#C6B4A9"
 
 /turf/simulated/floor/colored/dirt/jungle
 	name = "jungle dirt"

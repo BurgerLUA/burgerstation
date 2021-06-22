@@ -584,6 +584,12 @@
 	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
 
+
+/obj/marker/generation/mob/crab
+	object_to_place = /mob/living/simple/crab
+	objects_max = 3
+
+
 /obj/marker/generation/mob/cave_spider
 	object_to_place = /mob/living/simple/spider
 	objects_max = 3
