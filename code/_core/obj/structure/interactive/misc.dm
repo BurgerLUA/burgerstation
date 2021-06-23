@@ -98,7 +98,7 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 	icon_state = "mirror_broke"
 
 /obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(atom/movable/O)
-	if(istype(O,/mob/living/advanced/player/antagonist/) && SSgamemode.active_gamemode.state < GAMEMODE_BOARDING)
+	if(istype(O,/mob/living/advanced/player/antagonist/))
 		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()
 		P.handle_hairstyle_chargen(-1,update_blends=FALSE)

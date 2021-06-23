@@ -23,6 +23,22 @@
 	dir = 8
 	},
 /area)
+"g" = (
+/obj/marker/prefab/boss,
+/turf/unsimulated/generation/lava,
+/area)
+"h" = (
+/obj/marker/prefab/large,
+/turf/unsimulated/generation/lava,
+/area)
+"i" = (
+/obj/marker/prefab/medium,
+/turf/unsimulated/generation/lava,
+/area)
+"j" = (
+/obj/marker/prefab/small,
+/turf/unsimulated/generation/lava,
+/area)
 
 (1,1,1) = {"
 b
@@ -572,6 +588,7 @@ a
 a
 a
 a
+g
 a
 a
 a
@@ -790,8 +807,7 @@ a
 a
 a
 a
-a
-a
+g
 a
 b
 "}
@@ -7091,7 +7107,7 @@ a
 a
 a
 a
-a
+i
 a
 a
 a
@@ -11258,7 +11274,7 @@ a
 a
 a
 a
-a
+j
 a
 a
 a
@@ -14740,7 +14756,7 @@ a
 a
 a
 a
-a
+j
 a
 a
 a
@@ -23138,7 +23154,7 @@ a
 a
 a
 a
-a
+i
 a
 a
 a
@@ -26896,7 +26912,7 @@ a
 a
 a
 a
-a
+h
 a
 a
 a
@@ -28854,7 +28870,7 @@ a
 a
 a
 a
-a
+i
 a
 a
 a
@@ -41604,7 +41620,7 @@ a
 a
 a
 a
-a
+j
 a
 a
 a
@@ -50482,7 +50498,7 @@ a
 a
 a
 a
-a
+j
 a
 a
 a
@@ -53133,7 +53149,7 @@ a
 a
 a
 a
-a
+i
 a
 a
 a
@@ -57074,7 +57090,7 @@ a
 a
 a
 a
-a
+g
 a
 b
 "}

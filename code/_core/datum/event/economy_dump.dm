@@ -3,7 +3,7 @@ var/global/price_multiplier = 1
 /event/economy_dump
 	name = "Economy Dump"
 
-	probability = 3 //relative
+	probability = 1 //relative
 
 	occurances_max = 1
 
@@ -14,7 +14,7 @@ var/global/price_multiplier = 1
 
 	log_debug("Starting Economy Dump Event")
 
-	price_increase = rand(10,50)
+	price_increase = rand(5,25) //Percent.
 
 	announce(
 		"Central Command Economy Division",

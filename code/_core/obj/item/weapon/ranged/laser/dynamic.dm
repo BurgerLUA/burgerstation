@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/energy/dynamic
-	name = "\improper .50 Dynamic revolving pistol"
+	name = "\improper .50 Dynamic energy psitol"
 	desc = "Technically a revolver!."
 	desc_extended = "A strangly designed .50 pistol with a revolving magazine. For a gunslinger who wants a little more punch."
 	icon = 'icons/obj/item/weapons/ranged/pistol/dynamic_revolver.dmi'
@@ -14,7 +14,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/12/shoot.ogg')
+	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
 
 	can_wield = FALSE
 
@@ -56,6 +56,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 15 - 16
 
+	charge_cost = CELL_SIZE_BASIC / 80
 
 
 /obj/item/weapon/ranged/energy/dynamic/get_static_spread()

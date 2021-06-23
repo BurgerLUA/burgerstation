@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		log_subsystem(name,"Found [length(prefab_markers[dimensions])] valid maps for dimension set [dimensions].")
 		for(var/k in prefab_markers[dimensions])
 			if(!length(valid_prefabs[dimensions]))
-				log_error("Warning: Not enough prefabs to satisfy all prefab markers.")
+				log_error("Warning: Not enough prefabs of type [dimensions] to satisfy all prefab markers.")
 				break
 			var/obj/marker/prefab/M = k
 			var/list/local_prefabs = length(M.prefabs) ? valid_prefabs[dimensions] & M.prefabs : valid_prefabs[dimensions]

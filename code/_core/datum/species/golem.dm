@@ -36,6 +36,14 @@
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
 
-	inherent_traits = list( //TODO
-
+	inherent_traits = list(
+		/trait/metabolism/none,
+		/trait/pain_tolerant,
+		/trait/flamability/fire_retardant,
+		/trait/death_check/tenacious,
+		/trait/intoxication_regen/seasoned_drinker,
+		/trait/bleed_multiplier/hard_skin,
+		/trait/general_regen/jock,
+		/trait/speed/slow,
+		/trait/vitality/strong
 	)

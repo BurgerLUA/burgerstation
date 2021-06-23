@@ -34,3 +34,8 @@
 
 /obj/projectile/bullet/laser/emitter
 	name = "emitter laser"
+
+
+/obj/projectile/bullet/laser/kinetic
+	name = "kinetic blast"
+	icon_state = "kinetic"

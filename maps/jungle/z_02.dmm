@@ -111,6 +111,14 @@
 	dir = 1
 	},
 /area/dungeon/z_02)
+"z" = (
+/obj/marker/prefab/boss,
+/turf/unsimulated/generation/jungle_deep,
+/area/dungeon/z_02)
+"A" = (
+/obj/marker/prefab/antag,
+/turf/unsimulated/generation/jungle_deep,
+/area/dungeon/z_02)
 
 (1,1,1) = {"
 a
@@ -2315,7 +2323,7 @@ b
 b
 b
 b
-r
+A
 b
 b
 b
@@ -27666,7 +27674,7 @@ b
 b
 b
 b
-b
+A
 b
 b
 b
@@ -31780,7 +31788,7 @@ b
 b
 b
 b
-n
+b
 b
 b
 b
@@ -48737,7 +48745,7 @@ b
 b
 b
 b
-b
+z
 b
 b
 b
@@ -54752,7 +54760,7 @@ b
 b
 b
 b
-b
+A
 b
 b
 b
@@ -55778,7 +55786,7 @@ b
 b
 b
 b
-r
+b
 b
 b
 b

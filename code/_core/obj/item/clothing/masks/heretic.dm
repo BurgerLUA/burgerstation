@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/heretic
 	name = "heretic mask"
-	icon = 'icons/obj/item/clothing/masks/clown.dmi'
+	icon = 'icons/obj/item/clothing/masks/cursed.dmi'
 	desc = "You feel like it's staring into your soul..."
 	desc_extended = "An absolutely cursed mask belonging to a heretic."
 

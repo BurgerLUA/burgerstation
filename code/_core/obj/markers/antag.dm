@@ -31,3 +31,7 @@ var/global/list/all_antag_markers = list()
 /obj/marker/antag/merc
 	name = "Mercenary"
 	spawn_type = /mob/living/advanced/player/antagonist/merc
+
+/obj/marker/antag/golem
+	name = "Free Golem"
+	spawn_type = /mob/living/advanced/player/antagonist/golem

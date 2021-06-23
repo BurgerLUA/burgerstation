@@ -49,7 +49,7 @@
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
 
-/mob/living/simple/spider/desert
+/mob/living/simple/spider/glow
 	name = "glowspider"
 	icon_state = "nurse"
 

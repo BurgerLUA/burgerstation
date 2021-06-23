@@ -132,3 +132,20 @@
 
 /obj/item/powercell/get_examine_list(var/mob/caller)
 	return ..() + div("notice","It has [charge_current] out of [charge_max] charge remaining.")
+
+
+
+/obj/item/powercell/dummy
+	name = "dummy power cell"
+	desc = "For dummies."
+	desc_extended = "You shouldn't see this."
+	icon = 'icons/obj/item/cells.dmi'
+	icon_state = "cell_recharging"
+
+	charge_max = 100
+
+	size = SIZE_1
+
+	value = -1
+
+	weight = 0

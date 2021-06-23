@@ -33,7 +33,7 @@
 	. = ..()
 
 /turf/simulated/floor/brick/grey
-	color = COLOR_GREY
+	color = "#728072"
 
 /turf/simulated/floor/brick/grey/dark
 	color = COLOR_GREY_DARK
