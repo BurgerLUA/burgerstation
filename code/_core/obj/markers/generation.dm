@@ -584,6 +584,11 @@
 	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
 
+/obj/marker/generation/mob/goblin
+	object_to_place = /mob/living/advanced/npc/goblin
+	objects_max = 3
+
+
 
 /obj/marker/generation/mob/crab
 	object_to_place = /mob/living/simple/crab

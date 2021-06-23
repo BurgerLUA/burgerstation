@@ -199,10 +199,7 @@
 
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	for(var/k in collide_with)
-		if(!on_projectile_hit(k))
-			continue
-	//the removal of penetrations is handled in projectile_should_collide
-	if(penetrations_left < 0)
+		on_projectile_hit(k)
 		qdel(src)
 		return TRUE
 
