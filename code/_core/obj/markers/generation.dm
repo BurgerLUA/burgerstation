@@ -38,7 +38,7 @@
 		if(objects_placed > objects_max)
 			return FALSE
 
-		if(!prob(hole_chance) && !ispath(object_to_place,T) && !T.world_spawn && !(turf_whitelist && !istype(T,turf_whitelist)))
+		if(!prob(hole_chance) && !ispath(object_to_place,T) && !T.world_spawn && (!turf_whitelist || istype(T,turf_whitelist)))
 			new object_to_place(T)
 			objects_placed++
 

@@ -158,7 +158,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/magazine/carbine_223,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod,
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
 		/obj/item/magazine/rifle_762_short,

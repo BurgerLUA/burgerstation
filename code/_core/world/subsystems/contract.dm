@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(contract)
 
 	for(var/k in subtypesof(/contract/))
 		var/contract/C = k
-		if(initial(C.amount_min) <= 0 && initial(C.amount_max) <= 0)
+		if(initial(C.amount) <= 0)
 			continue
 		C = new k
 		all_contracts[C.type] = C

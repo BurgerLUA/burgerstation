@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/portal_scroll.dmi'
 	icon_state = "inventory"
 
-	value = 200
+	value = 500
 
 
 /obj/item/portal_scroll/click_self(var/mob/caller)
@@ -15,6 +15,10 @@
 		return TRUE
 
 	var/mob/living/advanced/player/P = caller
+
+	if(P.loyalty_tag != "NanoTrasen")
+		caller.to_chat(span("warning","You don't know how to use this..."))
+		return TRUE
 
 	if(!length(portal_markers))
 		caller.to_chat(span("warning","Failed to create a portal... there are too many portals that exist already!"))

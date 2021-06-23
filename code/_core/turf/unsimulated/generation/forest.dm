@@ -33,7 +33,7 @@
 	var/place_grass = TRUE
 	var/place_ground = TRUE
 	if(noise <= 40)
-		if(!path_only && prob(20))
+		if(!path_only && prob(10))
 			new /obj/marker/generation/forest_tree(src)
 			place_grass = FALSE
 			if(prob(40))
@@ -57,7 +57,7 @@
 				new /obj/marker/generation/plant/chanterelle(src)
 				place_grass = FALSE
 	else
-		if(!path_only && prob(2))
+		if(!path_only && prob(1))
 			new /obj/marker/generation/forest_tree(src)
 			place_grass = FALSE
 			if(prob(1))

@@ -178,7 +178,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
 		/obj/item/magazine/rifle_762_short,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/short,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
 		/obj/item/magazine/rifle_762_short,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,

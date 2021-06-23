@@ -41,11 +41,11 @@
 /turf/dmm_suite/no_wall,
 /area)
 "k" = (
-/obj/structure/interactive/crate/chest/gold,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/carpet,
 /area)
 "l" = (
-/obj/structure/interactive/crate/chest/gold,
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/brick/grey,
 /area)
 "m" = (

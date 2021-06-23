@@ -31,6 +31,8 @@
 	caller.client.images -= cached_image
 	object.click_on_object(caller,G,location,control,params)
 	SSeconomy.gold_in_circulation += item_count_current
+	if(length(valid_players) <= 0)
+		qdel(src)
 	return TRUE
 
 

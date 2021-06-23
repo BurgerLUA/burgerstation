@@ -33,6 +33,9 @@
 	species = loaded_data["species"]
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 
+	if(!loaded_data["known_topics"])
+		loaded_data["known_topics"] = list()
+
 	if(!appearance_only)
 		save_id = loaded_data["id"]
 		currency = loaded_data["currency"]

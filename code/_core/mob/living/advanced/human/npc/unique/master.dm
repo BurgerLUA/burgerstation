@@ -4,15 +4,10 @@
 
 	ai = /ai/advanced
 
-
-
-
 	sex = MALE
 	gender = MALE
 
 	species = "stand"
-
-	pixel_z = -2
 
 	blood_type = /reagent/blood/human/ab_negative
 

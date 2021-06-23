@@ -26,6 +26,11 @@
 		return ..()
 	return associated_item.get_examine_list(caller)
 
+/obj/hud/button/vendor/get_examine_details_list(var/mob/caller)
+	if(!associated_item)
+		return ..()
+	return associated_item.get_examine_details_list(caller)
+
 /obj/hud/button/vendor/Destroy()
 	associated_item = null
 	return ..()

@@ -70,7 +70,7 @@
 	. = ..()
 
 /obj/structure/interactive/crate/chest/filled
-	loot = /loot/player_currency
+	loot = /loot/treasure
 	var/chance_none = 0
 
 /obj/structure/interactive/crate/chest/filled/Generate()
@@ -79,10 +79,4 @@
 		qdel(src)
 	else
 		difficulty = rand(1,10)
-		gold_count = rand(25,50)
-
-
-/obj/structure/interactive/crate/chest/gold/Generate()
-	. = ..()
-	difficulty = rand(1,10)
-	gold_count = (11 - difficulty)*5 + rand(5,10)
+		gold_count = (11 - difficulty)*5 + rand(5,10)

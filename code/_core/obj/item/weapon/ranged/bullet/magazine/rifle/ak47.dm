@@ -79,7 +79,7 @@
 	return max(0,0.025 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/short
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod
 	name = "\improper 7.62x39mmR AK-47-SU"
 	desc = "Tiny tiny gun."
 	desc_extended = "The 7.62x54mmR AK-47-SU is the AK to go for when you seriously want to fuck shit upm, but with compactness."

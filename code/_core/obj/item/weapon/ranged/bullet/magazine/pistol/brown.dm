@@ -66,6 +66,17 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod
+	name = ".40 Brown MOD"
+	icon = 'icons/obj/item/weapons/ranged/pistol/40_2.dmi'
+
+	shoot_delay = 1.15
+
+	size = SIZE_2
+	weight = 3
+
+	heat_max = 0.07
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod/silenced/Generate()
 
 	. = ..()
@@ -77,13 +88,3 @@
 	update_sprite()
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod
-	name = ".40 Brown MOD"
-	icon = 'icons/obj/item/weapons/ranged/pistol/40_2.dmi'
-
-	shoot_delay = 1.15
-
-	size = SIZE_2
-	weight = 3
-
-	heat_max = 0.07

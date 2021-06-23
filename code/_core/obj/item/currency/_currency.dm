@@ -6,7 +6,7 @@
 	desc_extended = "Grab it while it's hot!"
 
 	item_count_current = 1
-	item_count_max = 5000
+	item_count_max = 10000
 
 	size = 0.002
 	weight = 0.002
@@ -113,7 +113,7 @@
 	name = "gold coin"
 	icon = 'icons/obj/item/currency/gold.dmi'
 	icon_state = "1"
-	value = 0 //Value is based on current economy.
+	value = -1 //Value is based on current economy, see get_base_value()
 
 	item_count_max = 200
 
@@ -126,6 +126,9 @@
 
 	plane = PLANE_CURRENCY
 
+/obj/item/currency/gold/get_base_value()
+	return FLOOR(SSeconomy.credits_per_gold,1) * item_count_current
+
 /obj/item/currency/gold/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
 	if(isturf(old_location))
@@ -136,6 +139,10 @@
 			G.transfer_item_count_to(src)
 
 	. = ..()
+
+/obj/item/currency/gold/Finalize()
+	. = ..()
+	update_value()
 
 /obj/item/currency/gold/update_icon()
 	. = ..()

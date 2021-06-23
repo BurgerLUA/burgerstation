@@ -39,14 +39,13 @@ SUBSYSTEM_DEF(dmm_suite)
 	//Load prefabs
 	for(var/category in flist(PREFABS_DIR))
 		category = copytext(category,1,-1)
-		valid_prefabs[category] = list()
 		for(var/file in flist("[PREFABS_DIR][category]/"))
-			if(!has_prefix(file,".dmm"))
+			if(!has_suffix(file,".dmm"))
 				continue
+			if(!valid_prefabs[category])
+				valid_prefabs[category] = list()
 			log_subsystem(src.name,"Adding prefab [PREFABS_DIR][category]/[file] to [category].")
 			valid_prefabs[category] += "[PREFABS_DIR][category]/[file]"
-
-	return ..()
 
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")
 	var/loaded_prefabs = 0
@@ -57,7 +56,7 @@ SUBSYSTEM_DEF(dmm_suite)
 				log_error("Warning: Not enough prefabs of type [dimensions] to satisfy all prefab markers.")
 				break
 			var/obj/marker/prefab/M = k
-			var/list/local_prefabs = length(M.prefabs) ? valid_prefabs[dimensions] & M.prefabs : valid_prefabs[dimensions]
+			var/list/local_prefabs = M.prefabs ? (valid_prefabs[dimensions] & M.prefabs) : valid_prefabs[dimensions]
 			if(length(local_prefabs[dimensions]))
 				var/chosen_file = pick(local_prefabs[dimensions])
 				valid_prefabs[dimensions] -= chosen_file

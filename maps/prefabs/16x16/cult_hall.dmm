@@ -24,6 +24,16 @@
 /mob/living/advanced/npc/cultist/old,
 /turf/simulated/floor/cult,
 /area/dmm_suite/clear_area)
+"h" = (
+/obj/marker/map_node,
+/turf/simulated/floor/cult,
+/area/dmm_suite/clear_area)
+"i" = (
+/obj/structure/interactive/crate/chest/filled,
+/obj/item/weapon/ranged/spellgem/cult,
+/obj/item/weapon/ranged/wand/profane,
+/turf/simulated/floor/cult,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -153,21 +163,21 @@ c
 "}
 (8,1,1) = {"
 b
-e
+i
+c
+h
 c
 c
 c
 c
 c
 c
+h
 c
 c
 c
 c
-c
-c
-c
-c
+h
 "}
 (9,1,1) = {"
 b

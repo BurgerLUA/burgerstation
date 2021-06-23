@@ -1,3 +1,9 @@
+/loot/scroll
+	loot_table = list(
+		/loot/skill_scroll,
+		/loot/attribute_scroll
+	)
+
 /loot/skill_scroll
 	loot_table = list(
 		/obj/item/experience_scroll/skill/magic,

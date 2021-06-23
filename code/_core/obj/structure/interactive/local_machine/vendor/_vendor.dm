@@ -92,8 +92,8 @@ var/global/list/equipped_antags = list()
 
 	var/turf/T = get_turf(src)
 
-	for(var/S in stored_types)
-		var/obj/item/I = new S(T)
+	for(var/k in stored_types)
+		var/obj/item/I = new k(T)
 		INITIALIZE(I)
 		GENERATE(I)
 		FINALIZE(I)

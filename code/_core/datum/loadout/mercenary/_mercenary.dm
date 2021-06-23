@@ -136,7 +136,7 @@
 
 		/obj/item/clothing/back/storage/satchel/poly/merc,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod,
 
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,

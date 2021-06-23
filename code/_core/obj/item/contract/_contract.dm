@@ -1,19 +1,24 @@
 /obj/item/contract
-	name = "blood contract"
+	name = "contract: error"
 	icon = 'icons/obj/item/contract.dmi'
 	icon_state = "unfilled"
 
 	desc = "They said not to deal with the devil. Now look what you've done."
 	desc_extended = "A spooky contract listing one or more conditions the contract holder should complete. Despite being made out of papyrus, it appears to be very strong."
 
-	var/contract/contract_datum
-	var/reward_amount = 0
+	var/atom/type_to_check
 	var/amount_current = 0
 	var/amount_max = 0
+	var/obj/item/reward
+	var/objective_text = "objectives completed"
 
 	drop_sound = 'sound/items/drop/paper.ogg'
 
-	value = 1
+	value = 0
+
+/obj/item/contract/Destroy()
+	QDEL_NULL(reward)
+	. = ..()
 
 /obj/item/contract/update_sprite()
 	. = ..()
@@ -26,18 +31,16 @@
 
 /obj/item/contract/Generate()
 	. = ..()
-	if(!ispath(contract_datum))
-		contract_datum = pick(SScontract.all_contracts)
-	var/contract/C = CONTRACT(contract_datum)
-	reward_amount = C.get_random_reward()
+	reward = new reward
+	INITIALIZE(reward)
+	GENERATE(reward)
+	FINALIZE(reward)
 	amount_current = 0
-	amount_max = C.get_random_amount()
 
 /obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
 
 	var/mob/living/victim = data[1]
-	var/contract/C = CONTRACT(contract_datum)
-	if(istype(victim,C.type_to_check))
+	if(istype(victim,type_to_check))
 		amount_current++
 		update_sprite()
 
@@ -45,32 +48,26 @@
 
 /obj/item/contract/Finalize()
 	. = ..()
-	var/contract/C = CONTRACT(contract_datum)
-	name = "[initial(src.name)]: [C.name]"
 	update_value()
 
-/obj/item/contract/get_base_value()
-	return CEILING(reward_amount * 0.25,1)
+/obj/item/contract/get_value()
+	return CEILING(reward.get_value()*0.25,1)
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
 	. = ..()
-	var/contract/C = CONTRACT(contract_datum)
-	. += div("notice","Reward on completion: [reward_amount].")
-	. += div("notice","[amount_current] out of [amount_max] [C.reward_text].")
+	. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]).")
+	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
+	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
 /obj/item/contract/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	SAVEPATH("contract_datum")
-	SAVEVAR("reward_amount")
+	SAVEATOM("reward")
 	SAVEVAR("amount_current")
-	SAVEVAR("amount_max")
 
 /obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	LOADPATH("contract_datum")
-	LOADVAR("reward_amount")
+	LOADATOM("reward")
 	LOADVAR("amount_current")
-	LOADVAR("amount_max")
 
 /obj/item/contract/post_move(var/atom/old_loc)
 
@@ -88,5 +85,19 @@
 		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_loc
 		if(is_advanced(I.owner))
 			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
+
+
+/obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
+	P.to_chat(span("notice","You are awared \the [reward.name] for completing the contract."))
+	drop_item(get_turf(P))
+	P.put_in_hands(reward)
+	reward = null //Just in case.
+	amount_current = 0 //Just in case.
+	qdel(src)
+	return TRUE
+
+
+
+
 
 

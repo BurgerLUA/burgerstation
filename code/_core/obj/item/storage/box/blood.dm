@@ -11,8 +11,14 @@
 
 	value = 20
 
-/obj/item/storage/blood_box/fill_inventory()
+/obj/item/storage/blood_box/blood/fill_inventory()
 	new /obj/item/clothing/head/hat/tricorn(src)
 	new /obj/item/clothing/neck/neck_wrap(src)
 	new /obj/item/clothing/overwear/coat/trench(src)
+	. = ..()
+
+/obj/item/storage/blood_box/duum/fill_inventory()
+	new /obj/item/clothing/overwear/hardsuit/doom(src)
+	new /obj/item/clothing/head/helmet/full/doom(src)
+	new /obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom(src)
 	. = ..()
