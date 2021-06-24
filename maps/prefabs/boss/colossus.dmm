@@ -29,6 +29,10 @@
 /mob/living/simple/ash_drake,
 /turf/simulated/floor/ice,
 /area)
+"j" = (
+/obj/marker/lobby,
+/turf/simulated/floor/ice,
+/area)
 
 (1,1,1) = {"
 b
@@ -554,7 +558,7 @@ a
 e
 e
 i
-e
+j
 e
 e
 a

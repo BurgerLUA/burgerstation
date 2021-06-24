@@ -91,6 +91,10 @@
 	},
 /turf/simulated/floor/brick/grey,
 /area)
+"t" = (
+/obj/marker/lobby,
+/turf/simulated/floor/brick/grey,
+/area)
 
 (1,1,1) = {"
 a
@@ -584,7 +588,7 @@ c
 c
 b
 c
-c
+t
 c
 e
 b

@@ -27,7 +27,7 @@
 		if(deceleration)
 			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
 		else
-			acceleration_value = 0
+			acceleration_value = 0 //Instantly stopped
 		if(use_momentum && move_dir_last && acceleration_value)
 			final_move_dir = move_dir_last
 	else
@@ -43,13 +43,14 @@
 			final_movement_delay *= HYPOTENUSE(1,1)
 
 		if(acceleration_mod > 0)
-			final_movement_delay *= 1 / (acceleration_mod + ((acceleration_value/100)*(1-acceleration_mod)))
+			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
+			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
 		if(isturf(loc) && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc
 			final_movement_delay *= T.move_delay_modifier
 
-		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
+		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), CEILING(adjust_delay,1)) //Round to the nearest tick. Counting decimal ticks is dumb.
 
 		glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
 		glide_size = max(glide_size,2)
@@ -81,8 +82,9 @@
 		if(acceleration_mod)
 			if(similiar_move_dir)
 				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
+				acceleration_value = min(acceleration_value,99)
 			else
-				acceleration_value *= 0.5
+				acceleration_value *= 0.25
 
 	if(move_delay <= 0)
 		is_moving = FALSE

@@ -102,6 +102,10 @@
 	},
 /turf/simulated/floor/carpet,
 /area/dmm_suite/clear_area)
+"v" = (
+/obj/marker/lobby,
+/turf/simulated/floor/brick/grey,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -567,7 +571,7 @@ j
 j
 c
 c
-c
+v
 c
 c
 c

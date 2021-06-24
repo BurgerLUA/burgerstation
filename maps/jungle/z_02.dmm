@@ -119,6 +119,75 @@
 /obj/marker/prefab/antag,
 /turf/unsimulated/generation/jungle_deep,
 /area/dungeon/z_02)
+"B" = (
+/mob/living/advanced/npc/ashwalker/warrior{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"C" = (
+/mob/living/advanced/npc/ashwalker/warrior,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"D" = (
+/obj/effect/crack,
+/mob/living/advanced/npc/ashwalker/warrior{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"E" = (
+/mob/living/advanced/npc/ashwalker/hunter,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"F" = (
+/mob/living/advanced/npc/ashwalker/warrior{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"G" = (
+/obj/effect/crack,
+/mob/living/advanced/npc/ashwalker/warrior,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"H" = (
+/obj/effect/crack,
+/mob/living/advanced/npc/ashwalker/hunter{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"I" = (
+/mob/living/advanced/npc/ashwalker/warrior{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"J" = (
+/obj/effect/crack,
+/mob/living/advanced/npc/ashwalker/warrior{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"K" = (
+/mob/living/advanced/npc/ashwalker/hunter{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
+"L" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
 
 (1,1,1) = {"
 a
@@ -862,7 +931,7 @@ t
 f
 f
 d
-t
+L
 f
 t
 d
@@ -875,7 +944,7 @@ t
 f
 f
 d
-t
+L
 t
 t
 t
@@ -1111,7 +1180,7 @@ t
 f
 t
 d
-t
+L
 t
 t
 t
@@ -1140,7 +1209,7 @@ t
 t
 d
 t
-t
+G
 f
 f
 f
@@ -1373,15 +1442,15 @@ t
 f
 f
 f
-f
-f
-i
-f
-f
+C
 f
 i
 f
 f
+f
+i
+f
+F
 f
 t
 e
@@ -2157,7 +2226,7 @@ j
 d
 d
 t
-t
+G
 f
 d
 f
@@ -2167,7 +2236,7 @@ t
 t
 t
 f
-f
+E
 f
 f
 f
@@ -2663,7 +2732,7 @@ t
 d
 t
 f
-f
+E
 f
 f
 f
@@ -3698,7 +3767,7 @@ f
 f
 t
 d
-t
+G
 f
 f
 d
@@ -3709,7 +3778,7 @@ t
 f
 f
 f
-f
+E
 f
 f
 f
@@ -3939,7 +4008,7 @@ s
 s
 d
 t
-f
+B
 f
 f
 d
@@ -3951,7 +4020,7 @@ f
 s
 d
 t
-t
+G
 f
 t
 d
@@ -4452,7 +4521,7 @@ u
 f
 s
 d
-t
+L
 f
 f
 f
@@ -4740,7 +4809,7 @@ d
 t
 f
 f
-f
+K
 t
 t
 d
@@ -4971,7 +5040,7 @@ f
 f
 f
 d
-t
+D
 u
 d
 t
@@ -4980,14 +5049,14 @@ f
 d
 f
 f
-t
+H
 t
 d
 t
 f
 f
 d
-t
+L
 f
 f
 f
@@ -5508,7 +5577,7 @@ t
 t
 t
 d
-t
+L
 f
 f
 f
@@ -6017,7 +6086,7 @@ f
 d
 f
 f
-t
+J
 t
 t
 t
@@ -6282,7 +6351,7 @@ d
 t
 f
 f
-f
+B
 f
 t
 d
@@ -6522,11 +6591,11 @@ t
 d
 f
 f
-t
+H
 t
 d
 t
-f
+B
 f
 d
 f
@@ -7548,7 +7617,7 @@ f
 f
 t
 d
-t
+L
 f
 f
 s
@@ -7557,7 +7626,7 @@ u
 t
 t
 d
-t
+L
 t
 t
 t
@@ -7793,7 +7862,7 @@ t
 f
 f
 d
-t
+L
 t
 t
 t
@@ -8064,7 +8133,7 @@ t
 h
 u
 f
-f
+I
 f
 f
 f
@@ -8072,7 +8141,7 @@ f
 u
 d
 f
-f
+I
 f
 f
 f
@@ -8336,7 +8405,7 @@ f
 u
 d
 t
-f
+I
 f
 f
 f
@@ -8568,7 +8637,7 @@ t
 f
 f
 f
-f
+C
 f
 f
 f
@@ -8588,7 +8657,7 @@ d
 t
 f
 f
-f
+I
 f
 t
 d
@@ -8852,7 +8921,7 @@ d
 u
 f
 f
-f
+I
 f
 u
 d

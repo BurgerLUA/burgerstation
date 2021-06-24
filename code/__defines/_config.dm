@@ -43,5 +43,5 @@
 #define ENABLE_HIT_MESSAGES FALSE
 
 //Enables/disables wikibot helper functions
-#define ENABLE_WIKIBOT TRUE
+#define ENABLE_WIKIBOT FALSE
 

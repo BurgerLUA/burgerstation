@@ -1370,6 +1370,13 @@
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
+"eW" = (
+/mob/living/advanced/npc/goblin/mage{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
 "eX" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
@@ -2358,6 +2365,44 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"iA" = (
+/obj/effect/moss,
+/mob/living/advanced/npc/goblin/warrior{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iB" = (
+/obj/effect/moss,
+/obj/effect/crack,
+/mob/living/advanced/npc/goblin/warrior,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iC" = (
+/obj/effect/crack,
+/mob/living/advanced/npc/goblin/warrior,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iD" = (
+/mob/living/advanced/npc/goblin/warrior,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iE" = (
+/mob/living/advanced/npc/goblin/warrior{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iF" = (
+/obj/effect/moss,
+/mob/living/advanced/npc/goblin/warrior{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
 "iG" = (
 /obj/structure/interactive/light_switch{
 	dir = 8;
@@ -2365,6 +2410,28 @@
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/science)
+"iH" = (
+/obj/effect/moss,
+/obj/effect/crack,
+/mob/living/advanced/npc/goblin/mage{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iI" = (
+/obj/effect/crack,
+/mob/living/advanced/npc/goblin/warrior{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
+"iJ" = (
+/obj/effect/moss,
+/mob/living/advanced/npc/goblin/warrior,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_01)
 "iK" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
@@ -2427,6 +2494,14 @@
 /obj/structure/interactive/light_switch,
 /turf/simulated/wall/metal,
 /area/burgerstation/bathrooms)
+"iX" = (
+/obj/structure/interactive/vending/coffee,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/cargo)
+"iY" = (
+/obj/structure/interactive/vending/cigarette,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/cargo)
 "ja" = (
 /obj/structure/interactive/vending/chef/wardrobe,
 /turf/simulated/floor/tile{
@@ -7134,7 +7209,7 @@ hN
 hN
 hN
 hN
-hN
+iH
 hN
 ho
 ho
@@ -7635,7 +7710,7 @@ au
 au
 hj
 hj
-hL
+iJ
 hI
 hI
 hj
@@ -7902,7 +7977,7 @@ ho
 hj
 hL
 hL
-hL
+iF
 hI
 hI
 hI
@@ -8166,7 +8241,7 @@ ic
 hj
 hj
 hI
-hI
+iE
 hI
 hL
 hj
@@ -8410,7 +8485,7 @@ hN
 hI
 hI
 hj
-hN
+iB
 hI
 hI
 ho
@@ -9693,7 +9768,7 @@ ho
 ho
 hI
 hI
-hL
+iA
 hj
 hN
 hI
@@ -10727,7 +10802,7 @@ ho
 hI
 hL
 hY
-hI
+iD
 ho
 ho
 ho
@@ -11244,13 +11319,13 @@ hY
 hI
 ho
 ho
+eW
 hI
 hI
 hI
 hI
 hI
-hI
-hI
+eW
 hI
 hI
 hj
@@ -11494,7 +11569,7 @@ hN
 hI
 ho
 hj
-ho
+iC
 hI
 hL
 hj
@@ -13290,20 +13365,20 @@ au
 hj
 hj
 hL
+eW
 hI
 hI
 hI
 hI
 hI
 hI
-hI
-hI
+iE
 hI
 hI
 hI
 ho
 ho
-ho
+iI
 ho
 ho
 ho
@@ -36519,7 +36594,7 @@ bk
 bk
 aP
 an
-gQ
+iX
 me
 me
 cS
@@ -36776,7 +36851,7 @@ an
 an
 aS
 an
-gQ
+iY
 me
 me
 cS

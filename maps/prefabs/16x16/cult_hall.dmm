@@ -34,6 +34,10 @@
 /obj/item/weapon/ranged/wand/profane,
 /turf/simulated/floor/cult,
 /area/dmm_suite/clear_area)
+"j" = (
+/obj/marker/lobby,
+/turf/simulated/floor/cult,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -170,7 +174,7 @@ c
 c
 c
 c
-c
+j
 c
 h
 c
