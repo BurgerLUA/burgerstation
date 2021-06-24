@@ -14,6 +14,10 @@
 
 	size = 1 //Transform multiplier
 
+/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE)
+	dir = desired_dir
+	return dir
+
 /obj/light_sprite/force_move(var/atom/new_loc)
 	if(top_atom) glide_size = top_atom.glide_size
 	return ..()

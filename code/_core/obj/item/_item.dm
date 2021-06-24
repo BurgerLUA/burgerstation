@@ -159,6 +159,31 @@
 
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
 
+/obj/item/Destroy()
+
+	additional_clothing_parent = null
+
+	if(inventory_user)
+		close_inventory(inventory_user)
+
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
+		qdel(I)
+	inventories.Cut()
+
+	last_interacted = null
+	inventory_user = null
+
+	if(loc)
+		drop_item(silent=TRUE)
+
+	can_save = FALSE
+	can_hold = FALSE
+	can_wear = FALSE
+	unremovable = TRUE
+
+	. = ..()
+
 /obj/item/proc/use_condition(var/amount_to_use=1)
 
 	if(!uses_until_condition_fall)
@@ -236,24 +261,6 @@
 		update_value()
 
 	return amount_to_add
-
-
-/obj/item/Destroy()
-
-	additional_clothing_parent = null
-
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		qdel(I)
-
-	inventories.Cut()
-
-	last_interacted = null
-
-	if(loc)
-		drop_item(silent=TRUE)
-
-	return ..()
 
 /obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE

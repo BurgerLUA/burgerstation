@@ -43,9 +43,10 @@
 				B.set_stored_object(null)
 				qdel(B)
 				A.put_in_hands(G)
-
 			else
 				B.set_stored_object(null)
+		else
+			caller.to_chat(span("danger","Selling Interface Error: Report this bug to Burger with error code 1."))
 
 /obj/hud/button/exchange/close
 	name = "close"
@@ -80,8 +81,8 @@
 	screen_loc = "CENTER,CENTER"
 
 /obj/hud/button/exchange/base/update_owner(var/mob/desired_owner)
-	. = ..()
 	set_stored_object(null)
+	. = ..()
 
 /obj/hud/button/exchange/base/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
