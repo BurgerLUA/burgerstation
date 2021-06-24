@@ -2,7 +2,7 @@
 	name = "belt slot"
 	icon_state = "slot_groin_o"
 	id = BODY_GROIN_O
-	screen_loc = "CENTER-2,BOTTOM"
+	screen_loc = "CENTER-3,BOTTOM"
 
 	max_slots = 1
 	worn = TRUE

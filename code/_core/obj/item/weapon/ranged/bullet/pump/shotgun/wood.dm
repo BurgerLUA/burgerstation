@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/regular.dmi'
 	icon_state = "inventory"
 
+	value = 800
+
 	shoot_delay = 3
 
 	automatic = FALSE
@@ -13,16 +15,9 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	view_punch = 12
-
-
-
 	size = SIZE_4
 	weight = 9
 
-	value = 80
-
-	heat_per_shot = 0.03
 	heat_max = 0.12
 
 	attachment_whitelist = list(
@@ -57,9 +52,7 @@
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
-	inaccuracy_modifier = 1.25
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
@@ -68,8 +61,36 @@
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.02 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
-	return 0.06
+	return 0.1
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom
+	name = "That Shotgun"
+	rarity = RARITY_MYTHICAL
+	desc = "Packs a punch (not a kick, that's another series)."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/doom.dmi'
+	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
+	value = 4000
+	shoot_delay = 2.5
+	heat_max = 0
+	bullet_count_max = 6
+	weight = 12
+
+	dan_mode = TRUE
+
+	can_wield = TRUE
+
+	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
+
+	damage_mod = 2
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_static_spread()
+	return 0.005
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_skill_spread(var/mob/living/L)
+	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_base_spread()
+	return 0.1

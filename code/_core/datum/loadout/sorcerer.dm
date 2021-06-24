@@ -8,15 +8,7 @@
 	)
 
 	var/list/random_tome = list(
-		/obj/item/weapon/ranged/magic/tome/chaos,
-		/obj/item/weapon/ranged/magic/tome/crystal,
-		/obj/item/weapon/ranged/magic/tome/fireball,
-		/obj/item/weapon/ranged/magic/tome/ice,
-		/obj/item/weapon/ranged/magic/tome/lightning,
-		/obj/item/weapon/ranged/magic/tome/missile,
-		/obj/item/weapon/ranged/magic/staff/basic,
-		/obj/item/weapon/ranged/magic/staff/chaos,
-		/obj/item/weapon/ranged/magic/staff/fire
+
 	)
 
 	var/list/random_weapon = list(

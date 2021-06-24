@@ -1,0 +1,4 @@
+#define ENCH_NONE 0x0
+#define ENCH_PREFIX 0x1
+#define ENCH_SUFFIX 0x2
+#define ENCH_ANY 0xFFFFFF

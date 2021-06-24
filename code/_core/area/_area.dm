@@ -24,7 +24,7 @@
 	var/list/random_sounds = list()
 	var/list/tracks = list()
 
-	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners. This actually just multiplies their experience from the template.
+	var/ //Adjust the level multiplier for mobs that spawn here using spawners. This actually just multiplies their experience from the template.
 
 	var/hazard //The id of the hazard
 

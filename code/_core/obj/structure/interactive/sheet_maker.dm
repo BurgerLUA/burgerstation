@@ -22,7 +22,7 @@ obj/structure/interactive/sheet_maker/update_icon()
 	. = ..()
 	icon_state = "sheet_maker"
 
-obj/structure/interactive/sheet_maker/Cross(atom/movable/O)
+obj/structure/interactive/sheet_maker/Cross(atom/movable/O,atom/oldloc)
 	if(make_sheet(O))
 		return FALSE
 	return ..()

@@ -35,11 +35,18 @@
 /obj/projectile/bullet/laser/emitter
 	name = "emitter laser"
 
-/obj/projectile/bullet/laser/emitter/damage_atom(var/atom/hit_atom)
 
-	if(istype(hit_atom,/obj/structure/interactive/supermatter))
-		var/obj/structure/interactive/supermatter/S = hit_atom
-		S.add_charge(SECONDS_TO_DECISECONDS(6)/3)
-		return TRUE
+/obj/projectile/bullet/laser/kinetic
+	icon_state = "kinetic"
 
-	return ..()
+/obj/projectile/bullet/laser/kinetic/update_projectile(var/tick_rate=1)
+	. = ..()
+	if(.)
+		vel_x *= 0.95
+		vel_y *= 0.95
+		alpha = clamp(alpha-5,0,255)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_projectile_hit(current_loc)
+			qdel(src)
+			return FALSE

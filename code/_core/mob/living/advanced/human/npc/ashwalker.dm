@@ -5,7 +5,7 @@
 
 
 	ai = /ai/advanced/ashwalker
-	class = /class/ashwalker
+
 
 	species = "reptile"
 
@@ -21,8 +21,6 @@
 	sex = gender //oh god oh fuck what have i done
 
 	. = ..()
-
-	level_multiplier *= rand(90,150)/100 //Randomness.
 
 /mob/living/advanced/npc/ashwalker/Initialize()
 
@@ -44,20 +42,23 @@
 
 	update_all_blends()
 
+/mob/living/advanced/npc/ashwalker/Generate()
+	drops_gold = RAND_PRECISE(0.5,1.25) * level
+	. = ..()
+
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"
-	level_multiplier = 1.25
 	loadout_to_use = /loadout/ashwalker/hunter
 	loadout_to_use_female = /loadout/ashwalker/hunter/female
 
 /mob/living/advanced/npc/ashwalker/assassin
 	name = "ashwalker assassin"
-	level_multiplier = 2
+
 	loadout_to_use = /loadout/ashwalker/assassin
 	loadout_to_use_female = /loadout/ashwalker/assassin/female
 
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
-	level_multiplier = 3
+
 	loadout_to_use = /loadout/ashwalker/warrior
 	loadout_to_use_female = /loadout/ashwalker/warrior/female

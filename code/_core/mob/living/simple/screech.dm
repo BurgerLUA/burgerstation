@@ -13,7 +13,7 @@
 	value = 1000
 
 	ai =  /ai/
-	class = /class/passive/
+
 	damage_type = /damagetype/unarmed/bite/
 
 	enable_security_hud = TRUE

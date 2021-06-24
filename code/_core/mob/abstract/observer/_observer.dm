@@ -27,11 +27,16 @@
 	return ..()
 
 /mob/abstract/observer/on_right_click(var/atom/object,location,control,params)
-	if(src.click_on_object(src,object,location,control,params))
-		return TRUE
-	if(object.clicked_on_by_object(src,src,location,control,params))
-		return TRUE
-	return ..()
+	return on_left_click(object,location,control,params)
+
+/mob/abstract/observer/on_right_down(var/atom/object,location,control,params)
+	return on_left_click(object,location,control,params)
+
+/mob/abstract/observer/on_left_down(var/atom/object,location,control,params)
+	return on_left_click(object,location,control,params)
+
+
+
 
 /mob/abstract/observer/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE

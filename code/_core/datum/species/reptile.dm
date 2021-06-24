@@ -90,5 +90,12 @@
 		/reagent/blood/reptile
 	)
 
+	inherent_traits = list(
+		/trait/metabolism/slow,
+		/trait/blood_regen/blood_regen,
+		/trait/intoxication_regen/light_drinker,
+		/trait/general_regen/jock
+	)
+
 /species/reptile/generate_blood_type()
 	return /reagent/blood/reptile

@@ -3,12 +3,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		SHOCK = DAMAGE_AXE*0.4,
-		ARCANE = DAMAGE_AXE*0.1
+		SHOCK = 45*0.4,
+		ARCANE = 45*0.1
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = DAMAGE_AXE*0.2
+		ATTRIBUTE_INTELLIGENCE = 45*0.2
 	)
 
 	attribute_damage = list(
@@ -16,13 +16,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = DAMAGE_AXE*0.3,
+		SKILL_MAGIC_OFFENSIVE = 45*0.3,
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = ARCANE
+		SKILL_MAGIC_OFFENSIVE = ARCANE
 	)
 
 	bonus_experience_skill = list(
-		SKILL_SORCERY = 75 //75%
+		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)

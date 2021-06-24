@@ -172,7 +172,7 @@
 
 	return ..()
 
-/obj/item/defib_paddle/post_move()
+/obj/item/defib_paddle/post_move(var/atom/old_loc)
 
 	. = ..()
 

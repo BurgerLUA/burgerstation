@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse
-	name = "\improper pulse rifle"
+	name = "\improper MK1 Pulse Rifle"
 	desc = "The primary weapon of the space military."
 	desc_extended = "A pricy and powerful magazine-fed pulse rifle that fires massive amounts of matter-destroying energy. Not for the lighthearted."
 	icon = 'icons/obj/item/weapons/ranged/laser/pulse.dmi'
 	icon_state = "inventory"
-	value = 1500
+	value = 4000
 
-	shoot_delay = 4
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -14,12 +14,9 @@
 
 	can_wield = TRUE
 
-	view_punch = 31
-
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.03
 	heat_max = 0.1
 
 	bullet_length_min = 52
@@ -69,15 +66,17 @@
 
 	override_icon_state = TRUE
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/get_static_spread()
-	if(wielded) return 0
-	return 0.15
+	return 0.002
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/pulse/get_skill_spread(var/mob/living/L)
+	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/update_icon()
 

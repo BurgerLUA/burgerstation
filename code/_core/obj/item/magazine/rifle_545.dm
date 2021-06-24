@@ -7,7 +7,7 @@
 	bullet_count_max = 30
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94 = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12 = TRUE,
 	)
 
@@ -37,7 +37,7 @@
 	bullet_count_max = 30
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94 = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12 = TRUE,
 	)
 

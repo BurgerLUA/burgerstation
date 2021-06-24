@@ -19,18 +19,22 @@
 
 	return TRUE
 
-/mob/living/proc/add_trait(var/trait_to_add,var/messages=TRUE)
+/mob/living/proc/add_trait(var/trait/trait_to_add,var/remove_existing_category=FALSE,var/messages=TRUE)
 
 	var/trait/T = TRAIT(trait_to_add)
 	if(!T)
 		log_error("tried adding a trait [trait_to_add], but it didn't exist.")
 		return FALSE
 
-	for(var/k in traits)
-		var/trait/T2 = TRAIT(k)
-		if(T2.category == T.category) //Cannot have trait that have the same category.
-			traits -= T2.type
-			T2.on_remove(src,messages)
+	if(!can_add_trait(T,remove_existing_category))
+		return FALSE
+
+	if(remove_existing_category)
+		for(var/k in traits)
+			var/trait/T2 = TRAIT(k)
+			if(T2.category == T.category)
+				traits -= T2.type
+				T2.on_remove(src,messages)
 
 	traits[trait_to_add] = TRUE
 	traits_by_category[T.category] = trait_to_add
@@ -73,7 +77,10 @@
 
 	return 0
 
-/mob/living/proc/can_add_trait()
+/mob/living/proc/can_add_trait(var/trait/trait_to_add,var/remove_existing_category=FALSE) //Set to true if you want it to remove existing traits before adding the new one. False means it will fail to add if it finds a similar trait.
+
+	if(!trait_to_add)
+		return FALSE
 
 	var/positive_traits = 0
 	var/trait_limit = get_trait_limit(rarity) //Positive and Neutral traits
@@ -84,6 +91,8 @@
 
 	for(var/k in traits)
 		var/trait/T = TRAIT(k)
+		if(!remove_existing_category && T.category == trait_to_add.category)
+			return FALSE
 		if(T.trait_tag == TRAIT_POSITIVE || T.trait_tag == TRAIT_NEUTRAL)
 			positive_traits++
 			if(positive_traits >= trait_limit)

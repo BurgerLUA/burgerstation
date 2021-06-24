@@ -7,6 +7,8 @@
 	if(dead)
 		return FALSE
 
+	is_moving = FALSE
+
 	if(boss)
 		SSbosses.living_bosses -= src
 
@@ -72,7 +74,7 @@
 	else if(!is_player_controlled() && soul_size && has_status_effect(SOULTRAP))
 		var/obj/effect/temp/soul/S = new(get_turf(src),SECONDS_TO_DECISECONDS(20))
 		S.appearance = src.appearance
-		S.transform = matrix()
+		S.transform = get_base_transform()
 		S.color = "#000000"
 		S.soul_size = soul_size
 		S.plane = PLANE_EFFECT
@@ -85,6 +87,10 @@
 
 	if(one_time_life)
 		dust()
+
+	if(drops_gold > 0)
+		create_gold_drop(T,CEILING(drops_gold,1))
+		drops_gold = 0
 
 	return TRUE
 
@@ -113,6 +119,7 @@
 */
 
 /mob/living/proc/revive()
+	hit_logs = list() //Clear logs.
 	movement_flags = 0x0
 	attack_flags = 0x0
 	dead = FALSE
@@ -143,6 +150,13 @@
 	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
+	nutrition = initial(nutrition)
+	nutrition_fast = initial(nutrition_fast)
+	hydration = initial(hydration)
+	nutrition_quality = initial(nutrition_quality)
+	intoxication = initial(intoxication)
+	on_fire = initial(on_fire)
+	fire_stacks = initial(fire_stacks)
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -157,24 +171,50 @@
 
 /mob/living/proc/post_death()
 
-	if(boss)
-		var/turf/T = get_turf(src)
-		if(T)
-			var/list/loot_spawned = CREATE_LOOT(/loot/boss,T)
-			for(var/k in loot_spawned)
-				var/obj/item/I = k
-				var/item_move_dir = pick(DIRECTIONS_ALL)
-				var/turf/turf_to_move_to = get_step(T,item_move_dir)
-				if(!turf_to_move_to)
-					turf_to_move_to = T
-				I.force_move(turf_to_move_to)
-				var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
-				I.pixel_x = -pixel_offsets[1]*TILE_SIZE
-				I.pixel_y = -pixel_offsets[2]*TILE_SIZE
-				animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+	var/turf/T = get_turf(src)
+
+	if(boss && T)
+		var/list/loot_spawned = CREATE_LOOT(/loot/boss,T)
+		for(var/k in loot_spawned)
+			var/obj/item/I = k
+			var/item_move_dir = pick(DIRECTIONS_ALL)
+			var/turf/turf_to_move_to = get_step(T,item_move_dir)
+			if(!turf_to_move_to)
+				turf_to_move_to = T
+			I.force_move(turf_to_move_to)
+			var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
+			I.pixel_x = -pixel_offsets[1]*TILE_SIZE
+			I.pixel_y = -pixel_offsets[2]*TILE_SIZE
+			animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
+	//Was it a kill?
+	if(!suicide)
+		var/list/people_who_contributed = list()
+		var/list/people_who_killed = list()
+		for(var/k in hit_logs)
+			var/list/attack_log = k
+			if(attack_log["lethal"])
+				people_who_killed |= attack_log["attacker"]
+			else if(attack_log["critical"])
+				people_who_contributed |= attack_log["attacker"]
+		if(!length(people_who_killed))
+			people_who_killed = people_who_contributed
+		if(length(people_who_killed))
+			on_killed(people_who_killed)
 
 	HOOK_CALL("post_death")
 
+	return TRUE
+
+/mob/living/proc/on_kill(var/mob/living/victim)
+	HOOK_CALL("on_kill")
+	return TRUE
+
+/mob/living/proc/on_killed(var/list/attackers)
+	for(var/k in attackers)
+		var/mob/living/L = k
+		L.on_kill(src)
+	HOOK_CALL("on_killed")
 	return TRUE
 
 /mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
@@ -190,19 +230,26 @@
 
 	return ..()
 
+/mob/living/get_base_transform()
+	. = ..()
+	if(horizontal)
+		var/matrix/M = .
+		M.Turn(stun_angle)
+
 /mob/living/proc/handle_horizontal()
 
 	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
 
 	if(desired_horizontal != horizontal)
-		if(desired_horizontal) //KNOCK DOWN
-			if(stun_angle != 0) animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
+		horizontal = desired_horizontal
+		if(horizontal)
+			animate(src,transform = get_base_transform(), pixel_z = 0, time = 1)
 			update_collisions(FLAG_COLLISION_CRAWLING)
 			play_sound(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25,range_max=VIEW_RANGE*0.5)
-		else //GET UP
-			if(stun_angle != 0) animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
+		else
+			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
-		horizontal = desired_horizontal
+
 
 	return desired_horizontal
 
@@ -220,19 +267,32 @@
 		health.update_health()
 		queue_health_update = FALSE
 
+	if(flash_overlay && flash_overlay.duration > 0)
+		flash_overlay.duration -= LIFE_TICK
+		if(flash_overlay.duration <= 0)
+			animate(flash_overlay,alpha=0,time=SECONDS_TO_DECISECONDS(5))
+			queue_delete(flash_overlay,SECONDS_TO_DECISECONDS(10))
+			flash_overlay = null
+
+	if(deafened_duration && deafened_duration > 0)
+		deafened_duration -= LIFE_TICK
+
 	return TRUE
 
 /mob/living/proc/handle_hunger()
 
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
-	var/quality_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
+	var/hunger_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
 
 	var/trait/metabolism/M = get_trait_by_category(/trait/metabolism/)
-	if(M) quality_mod *= M.hunger_multiplier
+	if(M)
+		hunger_mod *= M.hunger_multiplier
+		thirst_mod *= M.thirst_multiplier
 
-	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*quality_mod)
-	add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*quality_mod)
-	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
+	if(hunger_mod > 0)
+		add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*hunger_mod)
+		add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*hunger_mod)
+		add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
 
 	if(client)
 		for(var/obj/hud/button/hunger/B in buttons)
@@ -257,6 +317,12 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
+	blood_toxicity = max(blood_toxicity - LIFE_TICK_SLOW,0)
+	if(blood_toxicity > 20)
+		chem_power = max(0,1 - (blood_toxicity-20)*0.01)
+	else
+		chem_power = 0
+
 	if(blood_volume < blood_volume_max)
 		var/consume_multiplier = 1
 		var/trait/blood_regen/BR = get_trait_by_category(/trait/blood_regen/)
@@ -265,9 +331,9 @@ mob/living/proc/on_life_slow()
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)
-		blood_volume--
+		blood_volume -= LIFE_TICK_SLOW*0.25
 		if(health && blood_volume >= blood_volume_max*1.05)
-			health.adjust_loss_smart(tox=0.5,robotic=FALSE)
+			health.adjust_loss_smart(tox=LIFE_TICK_SLOW*0.25,robotic=FALSE)
 
 	handle_regen()
 
@@ -290,14 +356,19 @@ mob/living/proc/on_life_slow()
 	var/threshold_multiplier = 1
 	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*(LIFE_TICK_SLOW/10)
 	var/should_apply_status_effects = TRUE
+	var/reverse_intoxication = FALSE
 
 	var/trait/intoxication_regen/IR = get_trait_by_category(/trait/intoxication_regen/)
 	if(IR)
 		intoxication_to_remove *= IR.intoxication_removal_multiplier
 		threshold_multiplier *= IR.alcohol_threshold_multiplier
 		should_apply_status_effects = IR.should_apply_drunk_status_effects
+		reverse_intoxication = IR.reverse_intoxication
 
-	intoxication = max(0,intoxication-intoxication_to_remove)
+	if(reverse_intoxication)
+		intoxication = min(1000,intoxication+(0.1*(LIFE_TICK_SLOW/10)))
+	else
+		intoxication = max(0,intoxication-intoxication_to_remove)
 
 	switch(intoxication/threshold_multiplier)
 		if(0 to 200)

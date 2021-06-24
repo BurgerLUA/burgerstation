@@ -15,8 +15,7 @@
 	bullet_diameter_max = 13
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127 = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127 = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/sniper_127

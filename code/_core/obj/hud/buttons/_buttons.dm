@@ -19,13 +19,10 @@
 	mouse_opacity = 1
 
 	has_quick_function = TRUE
-	quick_function_type =  FLAG_QUICK_INSTANT
-
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 	var/delete_on_no_owner = TRUE
 
-/obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
+/obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
 
 	if(alpha == 0)
 		return FALSE
@@ -33,9 +30,7 @@
 	if(mouse_opacity == 0)
 		return FALSE
 
-	src.clicked_on_by_object(caller,null,location,control,params)
-
-	return TRUE
+	return src.clicked_on_by_object(caller,null,location,null,params)
 
 /obj/hud/button/Destroy()
 	owner = null

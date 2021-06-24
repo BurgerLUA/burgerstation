@@ -16,9 +16,9 @@
 	size = SIZE_3
 	weight = 6
 
-	value = 40
-
 	can_wear = TRUE
+
+	value = 140
 
 
 /obj/item/weapon/melee/sword/claymore
@@ -33,7 +33,7 @@
 	size = SIZE_3
 	weight = 6
 
-	value = 30
+	value = 120
 
 	can_wear = TRUE
 
@@ -48,10 +48,10 @@
 	size = SIZE_3
 	weight = 6
 
-	value = 50
+	value = 200
 
 /obj/item/weapon/melee/spear
-	name = "steel spear"
+	name = "steel shortspear"
 	desc = "Unga bunga."
 	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/item/weapons/melee/swords/spear.dmi'
@@ -60,9 +60,9 @@
 
 	size = SIZE_4
 
-	value = 10
+	value = 40
 
-	attack_range = 2
+	attack_range = 1
 
 	weight = 5
 
@@ -75,7 +75,7 @@
 
 	size = SIZE_4
 
-	value = 250
+	value = 400
 
 	attack_range = 2
 
@@ -91,7 +91,7 @@
 
 	size = SIZE_5
 
-	value = 120
+	value = 900
 
 	attack_range = 2
 
@@ -116,7 +116,7 @@
 	size = SIZE_3
 	weight = 5
 
-	value = 900
+	value = 500
 
 /obj/item/weapon/melee/sword/skana
 	name = "skana"
@@ -132,7 +132,7 @@
 	size = SIZE_3
 	weight = 4
 
-	value = 200
+	value = 180
 
 /obj/item/weapon/melee/sword/gladius
 	name = "gladius"
@@ -164,4 +164,4 @@
 	size = SIZE_2
 	weight = 5
 
-	value = 200
+	value = 150

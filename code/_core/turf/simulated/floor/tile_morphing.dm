@@ -142,6 +142,9 @@
 /turf/simulated/floor/tile/morphing/red
 	color = COLOR_RED
 
+/turf/simulated/floor/tile/morphing/pink
+	color = "#FFBFEC"
+
 /turf/simulated/floor/tile/morphing/red/dark
 	color = COLOR_RED_DARK
 

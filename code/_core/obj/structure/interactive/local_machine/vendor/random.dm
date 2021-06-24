@@ -6,6 +6,8 @@
 
 	stored_types = list()
 
+	ignore_economy = TRUE
+
 /obj/structure/interactive/vending/random/Finalize()
 
 	markup = rand(4,8)

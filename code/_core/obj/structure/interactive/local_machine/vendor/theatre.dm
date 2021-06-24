@@ -7,7 +7,7 @@
 		/obj/item/clothing/head/hat/cat,
 		/obj/item/clothing/mask/emoji,
 
-		/obj/item/clothing/mask/gas/clown,
+		/obj/item/clothing/mask/clown,
 		/obj/item/clothing/uniform/clown,
 		/obj/item/storage/shoebox/clown,
 
@@ -32,7 +32,9 @@
 		/obj/item/clothing/mask/mummy,
 
 		/obj/item/clothing/head/helmet/full/miner,
-		/obj/item/clothing/overwear/coat/miner
+		/obj/item/clothing/overwear/coat/miner,
+
+		/obj/item/storage/bagofhoarding
 
 
 	)

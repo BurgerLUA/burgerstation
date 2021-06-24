@@ -10,7 +10,6 @@
 	var/flags_flavor_hate = 0x0
 
 	var/flags_species = SPECIES_NONE //The identifier of the species.
-	var/flags_species_traits = TRAIT_NONE
 	var/flags_chargen = CHARGEN_NONE
 
 	var/default_color_eye = "#FF0000"
@@ -94,18 +93,16 @@
 		/obj/hud/button/sneak,
 		/obj/hud/button/resist,
 
-		#ifdef ENABLE_SLOTS
-			/obj/hud/button/slot/A,
-			/obj/hud/button/slot/B,
-			/obj/hud/button/slot/C,
-			/obj/hud/button/slot/D,
-			/obj/hud/button/slot/E,
-			/obj/hud/button/slot/F,
-			/obj/hud/button/slot/G,
-			/obj/hud/button/slot/H,
-			/obj/hud/button/slot/I,
-			/obj/hud/button/slot/J,
-		#endif
+		/obj/hud/button/slot/A,
+		/obj/hud/button/slot/B,
+		/obj/hud/button/slot/C,
+		/obj/hud/button/slot/D,
+		/obj/hud/button/slot/E,
+		/obj/hud/button/slot/F,
+		/obj/hud/button/slot/G,
+		/obj/hud/button/slot/H,
+		/obj/hud/button/slot/I,
+		/obj/hud/button/slot/J,
 
 		/obj/hud/button/toggle_cash_money,
 		/obj/hud/button/cash_money,
@@ -129,7 +126,7 @@
 
 		//obj/hud/button/ping,
 
-		//obj/hud/button/message,
+		/obj/hud/button/message,
 
 		/obj/hud/button/rest,
 
@@ -141,7 +138,13 @@
 
 		/obj/hud/button/hunger,
 
-		/obj/hud/button/objectives
+		/obj/hud/button/objectives,
+
+		/*
+		/obj/hud/button/exchange/close,
+		/obj/hud/button/exchange/sell,
+		/obj/hud/button/exchange/base
+		*/
 
 	)
 
@@ -162,6 +165,21 @@
 		/reagent/blood/human/a_positive,
 		/reagent/blood/human/o_positive
 	)
+
+	var/list/inherent_traits = list( //Traits given by the species.
+
+
+
+
+	)
+
+/species/proc/generate_traits(var/mob/living/L)
+
+	for(var/k in inherent_traits)
+		L.add_trait(k,FALSE,FALSE)
+
+	return TRUE
+
 
 /species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
 

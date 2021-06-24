@@ -61,7 +61,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	INTERACT_CHECK
 
-	var/fixed_delta = delta_y > 0 ? 2 : -2
+	var/fixed_delta = clamp(delta_y,-1,1)*2
 
 	var/old_frequency = frequency
 
@@ -167,6 +167,24 @@ list(
 	frequency_max = RADIO_FREQ_COMMON
 
 	frequency = RADIO_FREQ_SYNDICATE
+
+	listening_frequencies = list(
+		RADIO_FREQ_COMMON,
+		RADIO_FREQ_SYNDICATE
+	)
+
+	broadcasting_range = 1
+
+	value = 300
+
+
+/obj/item/device/radio/virtual_reality
+	name = "\improper Virtual Reality Radio"
+
+	frequency_min = RADIO_FREQ_SYNDICATE
+	frequency_max = RADIO_FREQ_COMMON
+
+	frequency = RADIO_FREQ_COMMON
 
 	listening_frequencies = list(
 		RADIO_FREQ_COMMON,

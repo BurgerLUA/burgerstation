@@ -178,43 +178,42 @@
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
-	if(!is_advanced(owner))
-		return ..()
-
-	var/mob/living/advanced/A = owner
-
 	. = ..()
 
-	if(is_organ(hit_object))
-		var/obj/item/organ/O = hit_object
-		var/list/O_defense_rating = O.get_defense_rating()
-		for(var/damage_type in O_defense_rating)
+	if(!is_advanced(owner) || !is_organ(hit_object))
+		return .
+
+	var/mob/living/advanced/A = owner
+	var/obj/item/organ/O = hit_object
+	var/list/O_defense_rating = O.get_defense_rating()
+
+	for(var/damage_type in O_defense_rating)
+		if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
+			continue
+		if(IS_INFINITY(O_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+			.[damage_type] = O_defense_rating[damage_type]
+			continue
+		.[damage_type] += O_defense_rating[damage_type]
+
+	for(var/obj/item/clothing/C in A.worn_objects)
+		if(!(O.id in C.protected_limbs))
+			continue
+		var/list/C_defense_rating = C.get_defense_rating()
+		for(var/damage_type in C_defense_rating)
 			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
 				continue
-			if(IS_INFINITY(O_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
-				.[damage_type] = O_defense_rating[damage_type]
+			if(IS_INFINITY(C_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+				.[damage_type] = C_defense_rating[damage_type]
 				continue
-			.[damage_type] += O_defense_rating[damage_type]
-
-		for(var/obj/item/clothing/C in A.worn_objects)
-			if(!(O.id in C.protected_limbs))
-				continue
-			var/list/C_defense_rating = C.get_defense_rating()
-			for(var/damage_type in C_defense_rating)
-				if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
-					continue
-				if(IS_INFINITY(C_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
-					.[damage_type] = C_defense_rating[damage_type]
-					continue
-				var/clothing_defense = C_defense_rating[damage_type]
-				if(clothing_defense > 0)
-					clothing_defense *= C.quality/100
-				else if(clothing_defense < 0)
-					clothing_defense *= max(0,2 - (C.quality/100))
-				if(!ignore_luck)
-					if(C.luck > 50 && prob(C.luck-50))
-						clothing_defense *= 2
-					else if(C.luck < 50 && prob(50-C.luck))
-						clothing_defense *= 0.5
-				.[damage_type] += FLOOR(clothing_defense,1)
+			var/clothing_defense = C_defense_rating[damage_type]
+			if(clothing_defense > 0)
+				clothing_defense *= C.quality/100
+			else if(clothing_defense < 0)
+				clothing_defense *= max(0,2 - (C.quality/100))
+			if(!ignore_luck)
+				if(C.luck > 50 && prob(C.luck-50))
+					clothing_defense *= 2
+				else if(C.luck < 50 && prob(50-C.luck))
+					clothing_defense *= 0.5
+			.[damage_type] += FLOOR(clothing_defense,1)
 

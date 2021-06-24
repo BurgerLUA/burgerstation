@@ -9,14 +9,14 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		LASER = AP_DAGGER,
-		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER,
-		BOMB = AP_DAGGER,
-		BIO = AP_SWORD
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 10,
+		ARCANE = 20,
+		COLD = 10,
+		BOMB = 10,
+		BIO = 20
 	)
 
 	value = 20

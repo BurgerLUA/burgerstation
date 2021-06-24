@@ -4,8 +4,9 @@
 	desc_extended = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower. The weapon of choice for Space Farmers."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
+	value = 800
 
-	shoot_delay = 7
+	shoot_delay = 5
 
 	automatic = FALSE
 
@@ -13,19 +14,12 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	view_punch = 18
-
-
-
 	size = SIZE_4
 	weight = 10
 
-	value = 120
-
 	action_name = "work"
 
-	heat_per_shot = 0.03
-	heat_max = 0.12
+	heat_max = 0.08
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -59,7 +53,7 @@
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75

@@ -26,6 +26,11 @@
 		return ..()
 	return associated_item.get_examine_list(caller)
 
+/obj/hud/button/vendor/get_examine_details_list(var/mob/caller)
+	if(!associated_item)
+		return ..()
+	return associated_item.get_examine_details_list(caller)
+
 /obj/hud/button/vendor/Destroy()
 	associated_item = null
 	return ..()
@@ -60,10 +65,15 @@
 		for(var/i=1,i<=the_length,i++)
 			var/letter = copytext(num_to_text,i,i+1)
 			var/icon/I4 = new/icon('icons/hud/numbers.dmi',letter)
+			if(letter == ".")
+				x_pos_mod -= 1
 			I4.Shift(EAST,x_pos_mod)
 			I4.Shift(SOUTH,2)
 			I2.Blend(I4,ICON_OVERLAY)
-			x_pos_mod += 5
+			if(letter == ".")
+				x_pos_mod += 3
+			else
+				x_pos_mod += 4
 
 	var/image/I4 = new/image(I2)
 	I4.pixel_y = -4
@@ -114,8 +124,6 @@
 	flags = FLAGS_HUD_SPECIAL
 
 	has_quick_function = FALSE
-
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

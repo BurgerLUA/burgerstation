@@ -21,7 +21,7 @@
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.03
 
 	inaccuracy_modifier = 0.1
@@ -90,7 +90,7 @@
 
 /obj/item/weapon/ranged/bow/think()
 
-	var/held_down = current_shooter && !current_shooter.qdeleting && ((current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_ALT)
+	var/held_down = current_shooter && !current_shooter.qdeleting && ((current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_DISARM)
 
 	if(held_down)
 		stage_current = min(stage_max,stage_current + stage_per_decisecond)

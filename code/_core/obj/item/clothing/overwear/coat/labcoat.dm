@@ -7,9 +7,9 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
 
 	defense_rating = list(
-		LASER = AP_AXE,
-		ARCANE = AP_AXE,
-		BIO = AP_CLUB
+		LASER = 40,
+		ARCANE = 40,
+		BIO = 60
 	)
 
 	size = SIZE_3

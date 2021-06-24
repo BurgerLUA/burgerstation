@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/zombie
 	name = "zombie"
 	ai = /ai/advanced/zombie
-	class = /class/zombie/
+
 
 	species = "zombie"
 
@@ -136,7 +136,7 @@
 
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
-/mob/living/advanced/npc/zombie/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
+/mob/living/advanced/npc/zombie/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 
 	. = ..()
 
@@ -177,15 +177,14 @@
 
 /mob/living/advanced/npc/zombie/winter
 	loadout_to_use = /loadout/zombie/winter
-	level_multiplier = 1.5
 
 /mob/living/advanced/npc/zombie/desert
 	loadout_to_use = /loadout/zombie/desert
-	level_multiplier = 2
+
 
 /mob/living/advanced/npc/zombie/greytide
 	loadout_to_use = /loadout/zombie/greytide
-	level_multiplier = 1
+
 
 /mob/living/advanced/npc/zombie/greytide/setup_sex()
 	sex = MALE
@@ -200,47 +199,47 @@
 
 /mob/living/advanced/npc/zombie/captain
 	loadout_to_use = /loadout/zombie/captain
-	level_multiplier = 10
+
 
 /mob/living/advanced/npc/zombie/botanist
 	loadout_to_use = /loadout/zombie/botanist
-	level_multiplier = 3
+
 
 /mob/living/advanced/npc/zombie/chaplain
 	loadout_to_use = /loadout/zombie/chaplain
-	level_multiplier = 4
+
 
 /mob/living/advanced/npc/zombie/security
 	loadout_to_use = /loadout/zombie/security
-	level_multiplier = 4
+
 
 /mob/living/advanced/npc/zombie/librarian
 	loadout_to_use = /loadout/zombie/librarian
-	level_multiplier = 2
+
 
 /mob/living/advanced/npc/zombie/clown
 	loadout_to_use = /loadout/zombie/clown
-	level_multiplier = 8
+
 
 /mob/living/advanced/npc/zombie/medical
 	loadout_to_use = /loadout/zombie/medical
-	level_multiplier = 4
+
 
 /mob/living/advanced/npc/zombie/chemist
 	loadout_to_use = /loadout/zombie/chemist
-	level_multiplier = 4
+
 
 /mob/living/advanced/npc/zombie/bartender
 	loadout_to_use = /loadout/zombie/bartender
-	level_multiplier = 3
+
 
 /mob/living/advanced/npc/zombie/chef
 	loadout_to_use = /loadout/zombie/chef
-	level_multiplier = 3
+
 
 /mob/living/advanced/npc/zombie/scientist
 	loadout_to_use = /loadout/zombie/scientist
-	level_multiplier = 1
+
 	var/dropped_vial = FALSE
 
 /mob/living/advanced/npc/zombie/scientist/post_death()

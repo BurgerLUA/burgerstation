@@ -4,7 +4,6 @@
 	layer = LAYER_FLOOR_GRASS
 	corner_category = "grass"
 
-	fade = TRUE
 
 	footstep = /footstep/grass
 

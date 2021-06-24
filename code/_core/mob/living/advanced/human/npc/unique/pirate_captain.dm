@@ -10,8 +10,8 @@
 	boss = TRUE
 	ai = /ai/advanced/skeleton
 
-	class = /class/pirate
-	level_multiplier = 4
+
+
 
 	health_base = 6000
 
@@ -71,8 +71,8 @@
 	sex = MALE
 	gender = MALE
 
-	class = /class/pirate
-	level_multiplier = 2
+
+
 
 	health_base = 1000
 
@@ -92,7 +92,7 @@
 	sex = MALE
 	gender = MALE
 	var/desired_loadout = /loadout/pirate/crew
-	class = /class/pirate
+
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"

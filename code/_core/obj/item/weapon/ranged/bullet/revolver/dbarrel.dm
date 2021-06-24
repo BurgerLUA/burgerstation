@@ -4,8 +4,9 @@
 	desc_extended = "Double barreled shotguns are often sawed off in order to be used as a sidearm, at the cost of the user's wrist bones."
 	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
+	value = 400
 
-	shoot_delay = 2
+	shoot_delay = 1
 
 	automatic = FALSE
 
@@ -13,15 +14,10 @@
 
 	insert_limit = 2
 
-	view_punch = 12
-
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
-
-
 
 	size = SIZE_2
 	weight = 8
-
 
 	bullet_length_min = 18
 	bullet_length_best = 18.5
@@ -31,19 +27,16 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
-	heat_per_shot = 0.05
 	heat_max = 0.1
 
-	value = 60
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
 
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()
-	return 0.12
+	return 0.3
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread()
 	return 0.01

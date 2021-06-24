@@ -8,7 +8,7 @@
 	immortal = TRUE //How can you kill a god?
 
 	ai = /ai/doorman
-	class = /class/beepsky
+
 	damage_type = /damagetype/npc/captain_beepsky
 
 	iff_tag = "NanoTrasen"

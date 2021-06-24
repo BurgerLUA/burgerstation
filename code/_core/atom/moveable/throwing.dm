@@ -4,7 +4,7 @@
 		CRASH_SAFE("No thrower exists!")
 		return FALSE
 
-	if(!throwable)
+	if(!throwable || anchored)
 		if(ismob(thrower))
 			var/mob/M = thrower
 			M.to_chat(span("warning","You cannot throw \the [src.name]!"))

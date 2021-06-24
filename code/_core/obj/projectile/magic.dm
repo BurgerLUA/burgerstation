@@ -17,7 +17,7 @@
 /obj/projectile/magic/fireball/explosive
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/explosive/post_on_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/explosive/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 
@@ -29,16 +29,17 @@
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/lava/post_on_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 
-	var/turf/T = get_turf(hit_atom)
-	if(T)
-		var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
-		INITIALIZE(L)
-		GENERATE(L)
-		FINALIZE(L)
+	if(.)
+		var/turf/T = get_turf(hit_atom)
+		if(T)
+			var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
+			INITIALIZE(L)
+			GENERATE(L)
+			FINALIZE(L)
 
 /obj/projectile/magic/chaos
 	name = "chaos ball"
@@ -66,7 +67,8 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 /obj/projectile/magic/rift
@@ -79,7 +81,7 @@
 	name = "revival rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/revive/post_on_hit(var/atom/hit_atom)
+/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 
@@ -87,6 +89,10 @@
 		var/mob/living/L = hit_atom
 		if(L.dead && L.loyalty_tag == src.loyalty_tag)
 			L.resurrect()
+
+/obj/projectile/magic/tesla
+	name = "tesla ball"
+	icon_state = "tesla"
 
 
 /obj/projectile/magic/lightning
@@ -107,7 +113,8 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -125,7 +132,8 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -139,12 +147,13 @@
 	. = ..()
 
 	if(.)
-		vel_x *= 0.9
-		vel_y *= 0.9
+		vel_x *= 0.95
+		vel_y *= 0.95
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -163,7 +172,8 @@
 		alpha = clamp(alpha-5,0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -184,7 +194,8 @@
 		alpha = clamp(FLOOR(alpha*0.9,1),0,255)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -209,7 +220,7 @@
 	name = "summon"
 	icon = 'icons/obj/projectiles/magic.dmi'
 	icon_state = "summon_dark"
-	steps_allowed = 6
+	steps_allowed = 4
 	hit_target_turf = TRUE
 	lifetime = SECONDS_TO_DECISECONDS(2)
 	impact_effect_turf = null
@@ -237,3 +248,36 @@
 	if(!found_curse)
 		new /obj/effect/temp/hazard/curse(new_loc,SECONDS_TO_DECISECONDS(10),owner)
 
+
+
+/obj/projectile/magic/arcblade
+	name = "arcblade"
+	icon_state = "cool"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+	penetrations_left = 3
+
+/obj/projectile/magic/fractal
+	name = "fractal"
+	icon_state = "fractal"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/holy_cross
+	name = "holy cross"
+	icon_state = "cross"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/unholy_skull
+	name = "unholy skull"
+	icon_state = "evil"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/inferno
+	name = "inferno"
+	icon_state = "inferno"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID

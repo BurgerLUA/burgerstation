@@ -15,8 +15,6 @@
 	default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	default_icon_state_hair = "hair_c"
 
-	flags_species_traits = TRAIT_NO_PAIN
-
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,
 		BODY_HEAD = /obj/item/organ/head,
@@ -77,3 +75,13 @@
 	emote_sounds_male = list()
 
 	emote_sounds_female = list()
+
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/fast,
+		/trait/flamability/flammable,
+		/trait/death_check/tenacious,
+		/trait/bleed_multiplier/paper_skin,
+		/trait/blood_regen/blood_regen,
+		/trait/general_regen/jock
+	)

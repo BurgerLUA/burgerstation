@@ -31,3 +31,7 @@
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
 		BODY_EYE_LEFT = /obj/item/organ/eye/left
 	)
+
+	inherent_traits = list(
+		/trait/death_check/quitter
+	)

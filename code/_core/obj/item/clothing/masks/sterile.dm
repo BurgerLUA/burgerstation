@@ -7,7 +7,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BIO = AP_GREATSWORD,
+		BIO = 80,
 	)
 
 	size = SIZE_2

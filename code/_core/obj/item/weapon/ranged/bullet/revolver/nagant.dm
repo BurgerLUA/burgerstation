@@ -4,24 +4,20 @@
 	desc_extended = "The Nagant is difficult to use, but it pays off in durability and reliability."
 	icon = 'icons/obj/item/weapons/ranged/revolver/762.dmi'
 	icon_state = "inventory"
+	value = 800
 
-	shoot_delay = 1.5
+	shoot_delay = 1.75
 
 	automatic = FALSE
 
 	bullet_count_max = 7
 
-	insert_limit = 7
-
-	view_punch = 3
+	insert_limit = 1
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
-
-
 	size = SIZE_3
 	weight = 8
-
 
 	bullet_length_min = 36
 	bullet_length_best = 39
@@ -31,11 +27,7 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
-
-	heat_per_shot = 0.03
-	heat_max = 0.1
-
-	value = 120
+	heat_max = 0.05
 
 	open = TRUE //Starts open.
 
@@ -73,7 +65,7 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 19 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1

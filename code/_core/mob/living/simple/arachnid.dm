@@ -5,7 +5,9 @@
 	icon = 'icons/mob/living/simple/jungle/arachnid.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/arachnid
+
+
+	pixel_x = -16
 
 	value = 1000
 
@@ -22,19 +24,17 @@
 		/obj/item/container/food/dynamic/meat/raw_arachnid
 	)
 
-	pixel_x = -16
-
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_DAGGER,
-		LASER = -AP_SWORD,
-		HEAT = AP_AXE,
-		COLD = -AP_AXE,
-		BIO = AP_CLUB,
-		FATIGUE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 10,
+		LASER = -20,
+		HEAT = 40,
+		COLD = -40,
+		BIO = 60,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_CLUB
+		PAIN = 60
 	)
 
 	iff_tag = "Jungle"
@@ -55,6 +55,8 @@
 	blood_volume = 2000
 
 	soul_size = SOUL_SIZE_UNCOMMON
+
+	object_size = 2
 
 /mob/living/simple/arachnid/post_death()
 	. = ..()

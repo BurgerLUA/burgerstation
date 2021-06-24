@@ -7,7 +7,7 @@
 		qdel(src)
 		return FALSE
 
-	if(!owner.initialized)
+	if(!owner.finalized)
 		return FALSE
 
 	if(owner.dead)

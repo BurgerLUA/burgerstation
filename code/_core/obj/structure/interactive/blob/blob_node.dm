@@ -12,7 +12,7 @@
 
 /obj/structure/interactive/blob/node/proc/check_jugs()
 
-	if(!initialized || qdeleting)
+	if(!finalized || qdeleting)
 		return FALSE
 
 	if(!linked_blobbernaught)
@@ -40,4 +40,3 @@
 	var/image/I = new/image(icon,"node_overlay")
 	I.appearance_flags = KEEP_TOGETHER | RESET_COLOR
 	add_overlay(I)
-	

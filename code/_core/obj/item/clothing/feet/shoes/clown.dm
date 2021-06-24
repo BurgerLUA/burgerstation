@@ -9,10 +9,10 @@
 	icon = 'icons/obj/item/clothing/shoes/clown.dmi'
 
 	defense_rating = list(
-		BLUNT = AP_SWORD,
-		ARCANE = AP_SWORD,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB
+		BLUNT = 20,
+		ARCANE = 20,
+		HOLY = -60,
+		DARK = 60
 	)
 
 	size = SIZE_2

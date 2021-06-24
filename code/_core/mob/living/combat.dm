@@ -26,3 +26,16 @@
 
 /mob/living/proc/get_block_multiplier(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return 0
+
+
+/mob/living/proc/on_blocked_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1,var/block_multiplier=0)
+	if(client) src.add_skill_xp(SKILL_BLOCK,1)
+	return TRUE
+
+/mob/living/proc/on_unblocked_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
+	if(client) src.add_attribute_xp(ATTRIBUTE_CONSTITUTION,1)
+	return TRUE
+
+/mob/living/advanced/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
+	if(client) src.add_skill_xp(SKILL_PARRY,1)
+	return TRUE

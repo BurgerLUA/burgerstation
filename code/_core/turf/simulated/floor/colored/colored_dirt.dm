@@ -1,7 +1,8 @@
 /turf/simulated/floor/colored/dirt
 	name = "dirt"
 	color = "#5B4128"
-	layer = LAYER_FLOOR_DIRT
+//	layer = LAYER_FLOOR_DIRT //can't +n LAYER_FLOOR_[whatever] for some reason
+	layer = LAYER_FLOOR + 0.132
 	corner_category = "dirt_soft"
 
 	real_icon = 'icons/turf/floor/ash.dmi'
@@ -18,6 +19,7 @@
 /turf/simulated/floor/colored/dirt/cave
 	name = "dirt"
 	color = "#493C2F"
+	layer = LAYER_FLOOR + 0.13
 	corner_category = "dirt_cave"
 
 
@@ -25,7 +27,7 @@
 
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
-	color = "#C6B4A9"
+	color = "#D3C6BE" //"#C6B4A9"
 
 /turf/simulated/floor/colored/dirt/jungle
 	name = "jungle dirt"
@@ -35,6 +37,7 @@
 	name = "soil"
 	color = "#3D2414"
 	desired_light_color = "#3D2414"
+	layer = LAYER_FLOOR + 0.131
 	corner_category = "soil"
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/cave

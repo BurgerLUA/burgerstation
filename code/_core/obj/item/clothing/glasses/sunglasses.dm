@@ -6,12 +6,12 @@
 	icon = 'icons/obj/item/clothing/glasses/sunglasses.dmi'
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		LASER = AP_CLUB,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_SWORD
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 60,
+		ARCANE = -60,
+		HEAT = 20
 	)
 
 	value = 30
@@ -45,12 +45,12 @@
 	name = "gar shades"
 	icon = 'icons/obj/item/clothing/glasses/gar.dmi'
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = AP_GREATSWORD,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_GREATSWORD
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = 80,
+		ARCANE = -60,
+		HEAT = 80
 	)
 	damage_type = /damagetype/melee/sword/grazer
 
@@ -60,12 +60,12 @@
 	name = "gigagar shades"
 	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = AP_GREATCLUB,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_GREATCLUB
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = 120,
+		ARCANE = -60,
+		HEAT = 120
 	)
 	damage_type = /damagetype/melee/sword/grazer
 
@@ -78,13 +78,13 @@
 	icon = 'icons/obj/item/clothing/glasses/abomb_shades.dmi'
 	rarity = RARITY_MYTHICAL
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = AP_CLUB,
-		ARCANE = -AP_CLUB,
-		HEAT = AP_SWORD,
-		BOMB = -AP_GREATCLUB
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = 60,
+		ARCANE = -60,
+		HEAT = 20,
+		BOMB = -120
 	)
 
 	sight_mod = SEE_MOBS
@@ -105,7 +105,7 @@
 	value = 160
 
 	defense_rating = list(
-		ARCANE = -AP_SWORD,
+		ARCANE = -20,
 	)
 
 /obj/item/clothing/glasses/sun/security/red
@@ -115,10 +115,10 @@
 	value = 1000
 
 	defense_rating = list(
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER,
-		BLADE = AP_DAGGER,
-		ARCANE = -AP_DAGGER
+		BLUNT = 10,
+		PIERCE = 10,
+		BLADE = 10,
+		ARCANE = -10
 	)
 
 	sight_mod = SEE_MOBS

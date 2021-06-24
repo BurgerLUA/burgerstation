@@ -109,6 +109,8 @@
 
 	inaccuracy_modifer = 1.1
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/shotgun_12/flechette/surplus
 	name = "\improper surplus 12 gauge flechette"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/flechette/surplus

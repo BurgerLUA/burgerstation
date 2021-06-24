@@ -3,16 +3,11 @@
 	desc = "The master of everything."
 
 	ai = /ai/advanced
-	class = /class/npc/robust
-
-	level_multiplier = 1
 
 	sex = MALE
 	gender = MALE
 
 	species = "stand"
-
-	pixel_z = -2
 
 	blood_type = /reagent/blood/human/ab_negative
 

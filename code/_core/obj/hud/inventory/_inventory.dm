@@ -14,7 +14,7 @@
 	icon_state = "square"
 
 	plane = PLANE_HUD
-	layer = -1 //Needs to be low.
+	layer = 1
 
 	value = 0
 
@@ -64,11 +64,8 @@
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 	var/is_container = FALSE //Set to true if it uses the container inventory system.
 
-	var/x_offset_initial = 0
-	var/y_offset_initial = 0
-
-	var/x_offset_mul = 0
-	var/y_offset_mul = 0
+	var/x_offset = 0
+	var/y_offset = 0
 
 	var/draw_extra = FALSE
 
@@ -76,7 +73,7 @@
 
 	var/allow_quick_equip = TRUE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_NO_DISTANCE
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_CLICK
 
 	var/inventory_category = "none"
 
@@ -149,7 +146,6 @@
 
 	if(parent_inventory)
 		color = "#ff0000"
-		add_overlay(parent_inventory.overlays)
 	else if(grabbed_object)
 		color = "#ffff00"
 		var/image/I = new/image(initial(icon),"grab")
@@ -174,7 +170,7 @@
 	var/desired_pixel_x = item_to_update.held_pixel_x
 	var/desired_pixel_y = item_to_update.held_pixel_y
 	var/desired_layer = LAYER_MOB_HELD
-	var/matrix/desired_transform = matrix()
+	var/matrix/desired_transform = get_base_transform()
 
 	if(item_to_update.dan_mode && (id == BODY_HAND_LEFT_HELD || id == BODY_HAND_RIGHT_HELD || id == BODY_TORSO_OB) )
 		if(id == BODY_TORSO_OB)
@@ -376,6 +372,9 @@
 			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
 
+	I.pixel_x = initial(I.pixel_x) + x_offset
+	I.pixel_y = initial(I.pixel_y) + y_offset
+
 	return TRUE
 
 /obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
@@ -404,49 +403,52 @@
 	return TRUE
 
 
-/obj/hud/inventory/proc/drop_objects(var/turf/T,var/exclude_soulbound=FALSE)
-	var/list/dropped_objects = list()
+/obj/hud/inventory/proc/drop_objects(var/turf/T)
+
+	. = list()
+
 	for(var/k in contents)
 		var/obj/item/I = k
-		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
-			continue
 		if(remove_object(I,T))
-			dropped_objects += I
-
-	return dropped_objects
+			. += I
 
 /obj/hud/inventory/proc/delete_objects()
+	var/turf/T = get_turf(src)
 	for(var/k in contents)
 		var/obj/item/I = k
 		I.delete_on_drop = TRUE
-		remove_object(I,owner.loc)
+		remove_object(I,T)
 
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
+	if(!I)
+		log_error("Error: Tried to remove null object from an inventory!")
+		return null
+
 	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
-	I.pixel_x = pixel_x_offset
-	I.pixel_y = pixel_y_offset
+	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
+	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
 	update_stats()
 
-	if(owner && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(worn && is_wings(I))
-			A.remove_overlay("wings_behind")
-			A.remove_overlay("wings_front")
-			A.remove_overlay("wings_side")
-		else
-			A.remove_overlay("\ref[I]")
-
-	if(owner && !owner.qdeleting)
-		I.set_dir(owner.dir)
+	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(worn)
-				A.worn_objects -= I
+			if(worn && is_wings(I))
+				A.remove_overlay("wings_behind")
+				A.remove_overlay("wings_front")
+				A.remove_overlay("wings_side")
 			else
-				A.held_objects -= I
-			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+				A.remove_overlay("\ref[I]")
+
+			if(!A.qdeleting)
+				if(worn)
+					A.worn_objects -= I
+				else
+					A.held_objects -= I
+				A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+
+		I.set_dir(owner.dir)
 
 	vis_contents -= I
 

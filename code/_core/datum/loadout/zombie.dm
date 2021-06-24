@@ -119,8 +119,7 @@
 	possible_extra_weapon = list(
 		/obj/item/weapon/melee/null_rod = 1,
 		/obj/item/weapon/melee/null_rod/dagger = 1,
-		/obj/item/weapon/melee/null_rod/staff = 1,
-		/obj/item/weapon/ranged/magic/tome/lightning = 1
+		/obj/item/weapon/melee/null_rod/staff = 1
 	)
 
 	extra_weapon_chance = 50
@@ -158,9 +157,7 @@
 	)
 
 	possible_extra_weapon = list(
-		/obj/item/weapon/ranged/magic/tome/missile = 1,
-		/obj/item/weapon/ranged/magic/tome/chaos = 1,
-		/obj/item/weapon/ranged/magic/tome/ice = 1
+
 	)
 
 	extra_weapon_chance = 90
@@ -200,7 +197,7 @@
 	)
 
 	possible_extra_clothing = list(
-		/obj/item/clothing/mask/gas/clown = 1
+		/obj/item/clothing/mask/clown = 1
 	)
 
 	possible_extra_weapon = list(

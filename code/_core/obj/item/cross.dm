@@ -20,11 +20,11 @@
 /obj/item/cross/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("broken")
-	
+
 /obj/item/cross/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("broken")
-	
+
 /obj/item/cross/Finalize()
 	update_sprite()
 	return ..()
@@ -40,13 +40,13 @@
 
 	. = ..()
 
-	
+
 /obj/item/cross/update_icon()
 	icon_state = initial(icon_state)
 	if(broken) icon_state = "[icon_state]_broken"
 	return ..()
 
-/obj/item/cross/Cross(var/atom/movable/O)
+/obj/item/cross/Cross(atom/movable/O,atom/oldloc)
 
 	if(O.health && icon_state == initial(icon_state))
 		var/list/defense = O.health.get_defense(ignore_luck=TRUE)

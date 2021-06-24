@@ -2,27 +2,23 @@
 	name = "\improper 7.62x54mmR SVT-40"
 	desc = "URAAAAAAAAAAA!"
 	desc_extended = "The SVT-40 is a Russian Rifle most well known for killing Nazis. Now you too can carry that legacy in your hands!"
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_svt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_old.dmi'
 	icon_state = "inventory"
-	value = 300
+	value = 800
 
 	shoot_delay = 6
 
 	automatic = FALSE
 
+	damage_mod = 1.3
+
 	shoot_sounds = list('sound/weapons/308/shoot.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 8
-
-
-
 	size = SIZE_4
 	weight = 14
 
-
-	heat_per_shot = 0.01
 	heat_max = 0.08
 
 	bullet_length_min = 46
@@ -67,16 +63,14 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
+
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_static_spread()
-	if(!wielded) return 0.2
-	return 0
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/svt/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.008 - (0.016 * L.get_skill_power(SKILL_RANGED)))

@@ -331,3 +331,12 @@
 	)
 
 	color = "#AE3700"
+
+/reagent/blood/gutlunch
+	name = "Gutlunch Blood"
+
+	compatible_blood = list(
+		/reagent/blood/gutlunch = TRUE
+	)
+
+	color = "#52001C"

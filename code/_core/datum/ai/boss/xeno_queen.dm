@@ -35,4 +35,3 @@
 		owner_as_queen.next_screech = world.time + SECONDS_TO_DECISECONDS(60)
 		owner_as_queen.inhale()
 
-	

@@ -4,8 +4,7 @@
 /dialogue/
 
 /dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
-	var/list/dialogue_options = list()
-	return dialogue_options
+	return list()
 
 /dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
 
@@ -53,8 +52,8 @@
 
 		var/first_letter = copytext(chosen_dialogue[i],1,2)
 
-		if(!(chosen_dialogue[i] in mobdata.loaded_data["known_topics"]) && first_letter != "*")
-			mobdata.loaded_data["known_topics"] += chosen_dialogue[i]
+		if(first_letter != "*")
+			mobdata.loaded_data["known_topics"] |= chosen_dialogue[i]
 
 	return final_topic
 

@@ -37,7 +37,7 @@
 			icon_num = 1
 		icon_state = "[initial(icon_state)]_[icon_num]"
 	else
-		icon_state = initial(icon_states)
+		icon_state = initial(icon_state)
 
 	return ..()
 
@@ -173,8 +173,6 @@
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-
-
 	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -193,3 +191,54 @@
 		return TRUE
 
 	return ..()
+
+/obj/item/magazine/gold
+	name = "dev magazine"
+	icon = 'icons/obj/item/magazine/golden.dmi'
+	icon_state = "inventory"
+
+	value = -1
+	value_burgerbux = 1
+
+	bullet_count_max = 30
+
+	icon_states = 0
+
+/obj/item/magazine/gold/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+	return TRUE
+
+/obj/item/magazine/gold/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
+		var/obj/item/weapon/ranged/bullet/magazine/G = object
+		if(G.stored_magazine)
+			G.eject_magazine(caller)
+		src.drop_item(G)
+		G.stored_magazine = src
+		G.open = FALSE
+
+		for(var/k in stored_bullets)
+			var/obj/item/bullet_cartridge/B = k
+			qdel(B)
+
+		stored_bullets.Cut()
+
+		if(!SSbalance.weapon_to_bullet[G.type])
+			caller.to_chat(span("warning","Could not find any valid bullets..."))
+		else
+			for(var/i=1,i<=bullet_count_max,i++)
+				var/obj/item/bullet_cartridge/B = SSbalance.weapon_to_bullet[G.type]
+				B = new B(src)
+				INITIALIZE(B)
+				FINALIZE(B)
+				stored_bullets += B
+
+		play_sound(get_magazine_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)
+		G.update_sprite()
+
+		return TRUE
+
+	return TRUE

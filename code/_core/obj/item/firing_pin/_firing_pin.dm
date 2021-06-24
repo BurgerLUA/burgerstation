@@ -6,7 +6,7 @@
 	icon = 'icons/obj/item/firing_pins.dmi'
 	icon_state = "normal"
 
-	value = 100
+	value = 50
 
 	weight = 0.25
 

@@ -24,7 +24,7 @@
 
 	trackable = TRUE
 
-	area_identifier = "Burgerstation"
+	area_identifier = "Mission"
 
 /area/burgerstation/hall
 	name = "\improper Hallway"
@@ -102,6 +102,12 @@
 
 /area/burgerstation/soccer
 	name = "\improper Soccer Field"
+	icon_state = "dorm"
+
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+
+/area/burgerstation/vr
+	name = "\improper VR Rooms"
 	icon_state = "dorm"
 
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
@@ -249,13 +255,6 @@
 /area/burgerstation/maint/disposals
 	name = "\improper Disposals Maintenance"
 	icon_state = "disposals"
-
-/area/burgerstation/maint/garden
-	name = "\improper Hidden Maintenance Garden"
-	icon_state = "blue"
-	flags_area = FLAGS_AREA_NO_EVENTS
-
-	sound_environment = ENVIRONMENT_ROOM
 
 /area/burgerstation/pvp
 	name = "ERROR"

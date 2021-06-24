@@ -5,21 +5,21 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	boss_icon_state = "xeno_queen"
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "living"
-	pixel_x = -16
-
 
 	health_base = 5000
 	stamina_base = 3000
 	mana_base = 500
 
+	pixel_x = -32
+
 	value = 2000
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD,
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,
@@ -43,14 +43,12 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	ai = /ai/boss/xeno_queen
 	damage_type = /damagetype/npc/xeno/queen
-	class = /class/xeno/queen
+
 
 	boss = TRUE
 	force_spawn = TRUE
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
-
-	level_multiplier = 1
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange,
@@ -79,6 +77,8 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	blood_volume = 4000
 
 	soul_size = SOUL_SIZE_RARE
+
+	object_size = 2
 
 /mob/living/simple/xeno/queen/PostInitialize()
 

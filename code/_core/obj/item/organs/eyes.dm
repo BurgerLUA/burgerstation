@@ -115,3 +115,14 @@
 	name = "left diona eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
+
+
+//golem
+/obj/item/organ/eye/golem
+	name = "right golem eye"
+	icon = 'icons/mob/living/advanced/species/golem.dmi'
+
+/obj/item/organ/eye/golem/left
+	name = "left golem eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT

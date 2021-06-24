@@ -5,11 +5,11 @@
 	desc_extended = "A relatively sturdy riot helmet. It is quite outdated."
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = -AP_SWORD,
-		PAIN = AP_CLUB
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		ARCANE = -20,
+		PAIN = 60
 	)
 
 	size = SIZE_3
@@ -25,12 +25,12 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		ARCANE = -AP_AXE,
-		PAIN = AP_CLUB
+		BLADE = 20,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		ARCANE = -40,
+		PAIN = 60
 	)
 
 	size = SIZE_3
@@ -44,13 +44,13 @@
 	desc_extended = "A sturdy tactical helmet, usually worn by syndicate soliders. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_CLUB,
-		LASER = AP_AXE,
-		ARCANE = -AP_AXE,
-		BOMB = AP_AXE,
-		PAIN = AP_CLUB
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 60,
+		LASER = 40,
+		ARCANE = -40,
+		BOMB = 40,
+		PAIN = 60
 	)
 
 	size = SIZE_3

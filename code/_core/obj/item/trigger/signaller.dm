@@ -42,7 +42,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 	all_signalers -= src
 	return ..()
 
-/obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
+/obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 	trigger(attacker,src,-1,-1)
 	return TRUE
 
@@ -72,7 +72,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
 
-	var/fixed_delta = delta_y ? 1 : -1
+	var/fixed_delta = clamp(delta_y,-1,1)
 
 	if(mode)
 		var/old_frequency = frequency_current

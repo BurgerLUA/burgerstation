@@ -15,9 +15,9 @@
 	color = COLOR_BLACK
 
 	defense_rating = list(
-		BLUNT = AP_GREATSWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = -AP_AXE
+		BLUNT = 80,
+		PIERCE = 20,
+		ARCANE = -40
 	)
 
 	size = SIZE_3

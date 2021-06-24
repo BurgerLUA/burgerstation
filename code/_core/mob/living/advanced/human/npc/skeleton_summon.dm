@@ -5,7 +5,7 @@
 	sex = MALE
 	gender = MALE
 	var/desired_loadout = /loadout/skeleton_summon/summoned
-	class = /class/summoned_skeleton
+
 	ai = /ai/advanced
 
 

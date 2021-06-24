@@ -10,8 +10,6 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 	var/inventory_category = "none"
 
 /obj/hud/button/close_inventory/proc/close(var/mob/caller)
@@ -113,8 +111,6 @@
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL
 
 	has_quick_function = FALSE
-
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/close_inventory_defers/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

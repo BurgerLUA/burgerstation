@@ -6,7 +6,7 @@
 
 	ai = /ai/carp
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/carp/
+
 
 	health_base = 150
 	stamina_base = 100
@@ -27,14 +27,14 @@
 	iff_tag = "Carp"
 
 	armor_base = list(
-		BLADE = AP_AXE,
-		HEAT = AP_GREATAXE,
-		COLD = AP_GREATAXE,
-		BIO = AP_GREATAXE,
+		BLADE = 40,
+		HEAT = 100,
+		COLD = 100,
+		BIO = 100,
 		RAD = INFINITY,
-		FATIGUE = AP_SWORD,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	size = SIZE_LARGE
@@ -56,6 +56,4 @@
 
 /mob/living/simple/spacecarp/leader
 	name = "alpha space carp"
-	class = /class/carp
-	level_multiplier = 1.25
 

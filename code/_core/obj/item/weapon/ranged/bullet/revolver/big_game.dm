@@ -4,6 +4,7 @@
 	desc_extended = "A BFR (Big Frame Revolver) that has to be reloaded manually, but packs a big punch. Commonly used by Megafauna hunters."
 	icon = 'icons/obj/item/weapons/ranged/revolver/300.dmi'
 	icon_state = "inventory"
+	value = 1200
 
 	shoot_delay = 6
 
@@ -13,10 +14,8 @@
 
 	shoot_sounds = list('sound/weapons/308/big_game.ogg')
 
-	view_punch = 24
-
 	size = SIZE_3
-	weight = 10
+	weight = 12
 
 	bullet_length_min = 40
 	bullet_length_best = 46
@@ -26,9 +25,6 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
-	value = 450
-
-	heat_per_shot = 0.04
 	heat_max = 0.1
 
 	attachment_whitelist = list(
@@ -63,7 +59,7 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1

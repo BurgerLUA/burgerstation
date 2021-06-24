@@ -73,57 +73,62 @@
 
 	var/class/C = all_classes[class]
 
-	for(var/k in SSexperience.all_attributes)
+	if(!C) C = all_classes[/class/]
+
+	for(var/k in SSexperience.all_attributes) //k is the id
 		var/v = SSexperience.all_attributes[k]
-		var/experience/attribute/A = new v(src)
-		var/desired_level = C.attributes[A.id]
-		if(k == ATTRIBUTE_LUCK)
-			A.update_experience(A.level_to_xp(desired_level))
+		var/experience/attribute/E = new v(src)
+		if(C.weights_attribute[E.id])
+			var/weight_mod = level*(C.weights_attribute[E.id]/C.total_weight)
+			E.update_experience(E.level_to_xp(CEILING(weight_mod,1)))
 		else
-			A.update_experience(A.level_to_xp(desired_level*level_multiplier))
-		attributes[A.id] = A
+			E.update_experience(E.level_to_xp(E.default_level))
+		attributes[E.id] = E
 
 /mob/living/proc/initialize_skills()
 
 	var/class/C = all_classes[class]
 
-	for(var/k in SSexperience.all_skills)
+	if(!C) C = all_classes[/class/]
+
+	for(var/k in SSexperience.all_skills) //k is the id
 		var/v = SSexperience.all_skills[k]
-		var/experience/skill/S = new v(src)
-		var/desired_level = C.skills[S.id]
-		S.update_experience(S.level_to_xp(desired_level*level_multiplier))
-		skills[S.id] = S
+		var/experience/skill/E = new v(src)
+		if(C.weights_skill[E.id])
+			var/weight_mod = level*(C.weights_attribute[E.id]/C.total_weight)
+			E.update_experience(E.level_to_xp(CEILING(weight_mod,1)))
+		else
+			E.update_experience(E.level_to_xp(E.default_level))
+		skills[E.id] = E
 
 /mob/living/proc/update_level(var/first=FALSE)
 
-	var/total_attribute_mod = 0
-	var/total_skill_mod = 0
+	var/old_level = level
 
-	var/total_attributes = 0
-	var/total_skills = 0
+	var/total_score = 0
+	var/max_score = 0
 
 	for(var/k in attributes)
 		var/experience/attribute/A = attributes[k]
-		if(A.counts_towards_level)
-			total_attribute_mod += ((A.get_current_level() - A.default_level)/src.max_level)*A.combat_level_mul
-			total_attributes += 1
+		if(!A.counts_towards_level)
+			continue
+		total_score += A.get_current_level()
+		max_score += 100
 
 	for(var/k in skills)
 		var/experience/skill/S = skills[k]
-		if(S.counts_towards_level)
-			total_skill_mod += ((S.get_current_level() - S.default_level)/src.max_level)*S.combat_level_mul
-			total_skills += 1
+		if(!S.counts_towards_level)
+			continue
+		total_score += S.get_current_level()
+		max_score += 100
 
-	if(!total_skills || !total_attributes)
-		log_error("ERROR: FOUND [total_skills] SKILLS AND [total_attributes] ATTRIBUTES.")
+	if(!total_score)
+		log_error("ERROR: FOUND [total_score] VALID ATTRIBUTES/SKILLS.")
 		return FALSE
 
-	total_attribute_mod = total_attribute_mod/total_attributes
-	total_skill_mod = total_skill_mod/total_skills
+	// https://www.desmos.com/calculator/cka4qx8qr0
 
-	var/old_level = level
-
-	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
+	level = max(1,CEILING( (total_score/max_score)*(100+CHARGEN_DEFAULT_LEVEL),1) - CHARGEN_DEFAULT_LEVEL)
 
 	if(!first && old_level != level)
 		var/decrease = old_level > level
@@ -149,11 +154,11 @@
 
 	if(new_level > old_level) //Only care if it's an increase.
 		switch(E.id)
-			if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE)
+			if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE,ATTRIBUTE_CONSTITUTION)
 				add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)
-			if(ATTRIBUTE_DEXTERITY,ATTRIBUTE_RESILIENCE)
+			if(ATTRIBUTE_DEXTERITY,ATTRIBUTE_RESILIENCE,ATTRIBUTE_AGILITY)
 				add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
-			if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER)
+			if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER,ATTRIBUTE_SOUL)
 				add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
 
 	update_level()

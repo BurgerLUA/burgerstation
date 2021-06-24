@@ -4,25 +4,23 @@
 	desc_extended = "Commonly used by Syndicate Operatives for its reliability and light weight, the 45 C-20r was the primary firearm of the Syndicate Nuclear Operatives, before NT figured out having self destruct nukes on their station wasn't a great idea."
 	icon = 'icons/obj/item/weapons/ranged/smg/45_2.dmi'
 	icon_state = "inventory"
+	value = 1200
 
-	projectile_speed = 20
 	shoot_delay = 1.5
 
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
+	firemodes = list("semi-automatic","automatic","burst")
+
 	can_wield = FALSE
 
 	override_icon_state = TRUE
 
-	view_punch = 6
-
 	size = SIZE_3
 	weight = 10
 
-
-	heat_per_shot = 0.03
 	heat_max = 0.09
 
 	bullet_length_min = 20
@@ -32,8 +30,6 @@
 	bullet_diameter_min = 11
 	bullet_diameter_best = 11.43
 	bullet_diameter_max = 12
-
-	value = 150
 
 	ai_heat_sensitivity = 0.75
 
@@ -67,7 +63,7 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0

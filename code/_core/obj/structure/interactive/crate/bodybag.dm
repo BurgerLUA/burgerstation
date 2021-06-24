@@ -20,7 +20,7 @@
 /obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		if(can_pack_up(caller))
 			caller.visible_message(span("warning","\The [caller.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/pack_up,caller)

@@ -10,6 +10,7 @@ var/global/world_state = STATE_STARTING
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
+
 	sleep_offline = TRUE
 
 	name = "Burgerstation 13"
@@ -28,8 +29,9 @@ var/global/world_state = STATE_STARTING
 	loop_checks = 1
 
 /world/New()
+	//sleep_offline = TRUE
 	__detect_rust_g()
-	..()
+	. = ..()
 	life()
 
 /world/proc/update_server_status()
@@ -41,7 +43,7 @@ var/global/world_state = STATE_STARTING
 	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
 	var/duration = get_clock_time(FLOOR(world.time/10,1),FORMAT_HOUR | FORMAT_MINUTE)
-	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "Loading..."]</b><br>Duration: <b>[duration]</b>"
+	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "MultiZ (255x255x3)"]</b><br>Duration: <b>[duration]</b>"
 
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
@@ -111,24 +113,24 @@ var/global/world_state = STATE_STARTING
 			continue
 		G.save()
 
+/proc/save_economy()
+	var/subsystem/economy/E = locate() in active_subsystems
+	E.save(TRUE)
+
 /world/proc/save()
 	save_all_globals()
 	//save_all_mechs()
 	save_deathboxes()
 	save_banks()
+	save_economy()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
-		if(!istype(P))
-			log_error("Could not save a player as it was the wrong type or null ([P]).")
-			continue
+		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)
-			P.to_chat(span("danger","Could not save your character because you were dead."))
 			continue
-		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
-		if(!istype(mobdata))
-			log_error(span("danger","FATAL ERROR: Tried saving [P.get_debug_name()], but they had no mob data!"))
+		if(!P.allow_save)
 			continue
-		mobdata.save_character(P,force = TRUE)
+		M.save_character(P,force = TRUE)
 		P.to_chat(span("notice","Your character was automatically saved."))
 		sleep(-1)
 	return TRUE
@@ -157,7 +159,7 @@ var/global/world_state = STATE_STARTING
 
 	play_sound_global('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
-	SSvote.create_vote(/vote/map)
+	//SSvote.create_vote(/vote/map)
 
 	if(shutdown)
 		broadcast_to_clients(span("notice","Shutting down world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server shuts down."))

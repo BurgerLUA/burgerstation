@@ -11,7 +11,7 @@
 		skill_spread = 0.75,
 		movement_spread = 1.25,
 		inaccuracy_modifer = 0.75,
-		view_punch = 1.1
+
 	)
 
 	value = 200
@@ -41,7 +41,7 @@
 	attachment_stats = list(
 		inaccuracy_modifer = 1.25,
 		heat_spread = 1.25,
-		view_punch = 1.25,
+
 		shoot_delay = 0.75
 	)
 
@@ -74,6 +74,21 @@
 	)
 
 	value = 800
+
+/obj/item/attachment/sight/scope/massive
+	name = "sniper scope (x8)"
+	desc = "What's wrong with ironsights?"
+	desc_extended = "An absolutely bulky sniper scope that increases the zoom range of the weapon, making the weapon more precise. Significantly increases movement spread and heat spread as a penalty."
+	icon_state = "x8_scope"
+
+	attachment_stats  = list(
+		zoom_mul = 8,
+		movement_spread = 3,
+		heat_spread = 1.25,
+		inaccuracy_modifer = 0.25,
+	)
+
+	value = 1600
 
 
 /obj/item/attachment/sight/targeting_computer

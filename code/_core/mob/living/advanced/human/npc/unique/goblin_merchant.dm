@@ -3,9 +3,9 @@
 	desc = "Profitting from raiding settlements since 4506 BC."
 
 	ai = /ai/advanced
-	class = /class/goblin_warrior
 
-	level_multiplier = 1
+
+
 
 	species = "goblin"
 

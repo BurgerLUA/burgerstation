@@ -157,6 +157,48 @@
 
 	var/can_save = TRUE
 
+	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
+
+/obj/item/Destroy()
+
+	additional_clothing_parent = null
+
+	if(inventory_user)
+		close_inventory(inventory_user)
+
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
+		qdel(I)
+	inventories.Cut()
+
+	last_interacted = null
+	inventory_user = null
+
+	if(loc)
+		drop_item(silent=TRUE)
+
+	can_save = FALSE
+	can_hold = FALSE
+	can_wear = FALSE
+	unremovable = TRUE
+
+	. = ..()
+
+/obj/item/proc/use_condition(var/amount_to_use=1)
+
+	if(!uses_until_condition_fall)
+		return FALSE
+
+	uses_until_condition_fall -= amount_to_use
+
+	if(uses_until_condition_fall <= 0)
+		var/highest = initial(uses_until_condition_fall)
+		var/quality_to_remove = 1 + FLOOR(-uses_until_condition_fall/highest,1)
+		adjust_quality(-quality_to_remove)
+		uses_until_condition_fall += highest*quality_to_remove
+
+	return TRUE
+
 /obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
 	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
 
@@ -172,7 +214,7 @@
 /obj/item/Crossed(atom/movable/O)
 	return TRUE
 
-/obj/item/Cross(atom/movable/O)
+/obj/item/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
 /obj/item/Finalize()
@@ -219,27 +261,6 @@
 		update_value()
 
 	return amount_to_add
-
-
-/obj/item/Destroy()
-
-	additional_clothing_parent = null
-
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		qdel(I)
-
-	inventories.Cut()
-
-	last_interacted = null
-
-	if(loc)
-		drop_item(silent=TRUE)
-
-	return ..()
-
-/atom/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
-	return FALSE
 
 /obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
@@ -388,7 +409,7 @@
 	else if(luck > 50)
 		. += div("rarity good","<b>Luck</b>: +[luck-50]")
 
-	. += div("rarity","Value: [CEILING(value,1)]cr.")
+	. += div("rarity","Value: [value]cr.")
 	. += div("weightsize","Size: [size], Weight: [weight]")
 
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
@@ -572,7 +593,7 @@
 
 	if(is_living(caller) && allow_reagent_transfer_from)
 		var/mob/living/L = caller
-		if(L.attack_flags & CONTROL_MOD_ALT) //SPLASH
+		if(L.attack_flags & CONTROL_MOD_DISARM) //SPLASH
 			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
@@ -622,7 +643,7 @@
 
 	if(is_living(caller))
 		var/mob/living/C = caller
-		if(C.attack_flags & CONTROL_MOD_ALT) //Splash
+		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
 			return FALSE
 		if(reagents.contains_lethal && L != C && L.loyalty_tag == C.loyalty_tag)
 			caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
@@ -675,6 +696,6 @@
 		return FALSE
 	return ..()
 
-/obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1) //The src attacks the victim, with the blamed taking responsibility
+/obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 	damage_multiplier *= FLOOR(quality/100,0.01)
 	return ..()

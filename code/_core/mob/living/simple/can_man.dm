@@ -4,13 +4,13 @@
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/ash_drake
+
 
 	value = 20000
 
-	pixel_w = -8
-
 	ai = /ai/boss/can_man
+
+	pixel_x = -8
 
 	boss_loot = /loot/lavaland/can_man
 
@@ -20,19 +20,17 @@
 	stamina_base = 4000
 	mana_base = 100
 
-	attack_range = 2
-
 	force_spawn = TRUE
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		LASER = AP_CLUB,
-		ARCANE = -AP_SWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
+		BLADE = 60,
+		BLUNT = 20,
+		PIERCE = 20,
+		LASER = 60,
+		ARCANE = -20,
+		HEAT = 80,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
@@ -79,6 +77,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	soul_size = SOUL_SIZE_RARE
+
+	object_size = 2
 
 /mob/living/simple/can_man/post_death()
 	. = ..()

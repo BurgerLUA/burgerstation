@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'
 	icon_state = "goliath"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/goliath
+
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/raw_goliath,
@@ -22,18 +22,18 @@
 	stun_angle = 0
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		LASER = AP_CLUB,
-		HEAT = AP_GREATSWORD,
-		COLD = -AP_SWORD,
-		BOMB = AP_GREATSWORD,
-		BIO = AP_SWORD,
-		HOLY = -AP_SWORD,
-		DARK = AP_GREATAXE,
-		FATIGUE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 40,
+		LASER = 60,
+		HEAT = 80,
+		COLD = -20,
+		BOMB = 80,
+		BIO = 20,
+		HOLY = -20,
+		DARK = 100,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	status_immune = list(

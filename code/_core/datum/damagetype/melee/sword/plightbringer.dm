@@ -3,16 +3,16 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_GREATSWORD*0.2
+		BLADE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_GREATSWORD
+		BLADE = 75
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_GREATSWORD*0.5
+		ATTRIBUTE_STRENGTH = 50
 	)
 
 	attribute_damage = list(
@@ -20,59 +20,58 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_GREATSWORD*0.3,
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE
 	)
 
-	attack_delay = SPEED_GREATSWORD*0.5
-	attack_delay_max = SPEED_GREATSWORD
+	attack_delay = 10
+	attack_delay_max = 20
 
 /damagetype/melee/sword/plightbringer/on
 	name = "blazing plightbringer"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_GREATAXE*0.1,
-		LASER = DAMAGE_GREATAXE*0.1,
-		HEAT = DAMAGE_GREATAXE*0.1
+		BLADE = 10,
+		LASER = 10,
+		HEAT = 50
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = AP_GREATAXE*0.3,
-		LASER = AP_GREATAXE*0.4,
-		HEAT = AP_GREATAXE*0.3
+		BLADE = 50,
+		LASER = 100,
+		HEAT = 50
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_GREATAXE*0.3
+		ATTRIBUTE_STRENGTH = 40
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = BLADE
+		ATTRIBUTE_STRENGTH = BLADE
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_GREATAXE*0.2,
-		SKILL_SORCERY = DAMAGE_GREATAXE*0.2
+		SKILL_MELEE = 25,
+		SKILL_MAGIC_OFFENSIVE = 50
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_SORCERY = HEAT
+		SKILL_MAGIC_OFFENSIVE = HEAT
 	)
 
 	bonus_experience_skill = list(
 		SKILL_MELEE = 25, //25%
-		SKILL_SORCERY = 25
+		SKILL_MAGIC_OFFENSIVE = 25
 	)
 
-	attack_delay = SPEED_GREATAXE*0.5
-	attack_delay_max = SPEED_GREATAXE
+	attack_delay = 20
+	attack_delay_max = 20
 
 /damagetype/melee/sword/plightbringer/on/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -80,4 +79,4 @@
 
 	if(total_damage_dealt && is_living(victim))
 		var/mob/living/L = victim
-		L.ignite(SPEED_GREATAXE*2,attacker)
+		L.ignite(18*2,attacker)

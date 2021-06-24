@@ -1,22 +1,21 @@
 /turf/simulated/floor/grass/
-	name = " dense grass"
+	name = "dense grass"
 	desc = "Some grass on the ground"
 	desc_extended = "Damn daniel back at it agian with the green grass"
+	layer = LAYER_FLOOR_GRASS_DENSE
+
+	corner_icons = TRUE
+	corner_category = "dense_grass"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "grass_new"
 
 	real_icon = 'icons/turf/floor/grass_new.dmi'
-	real_icon_state = "floor"
-	corner_icons = TRUE
+	real_icon_state = "grass"
 
 	footstep = /footstep/grass
 
 	destruction_turf = /turf/simulated/floor/colored/grass
-
-	layer = LAYER_FLOOR_GRASS
-
-	corner_category = "dense_grass"
 
 	material_id = /material/grass/
 

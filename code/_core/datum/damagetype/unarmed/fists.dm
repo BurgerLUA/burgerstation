@@ -7,7 +7,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_AXE*0.2
+		BLUNT = 45*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -16,8 +16,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.3,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.1
+		ATTRIBUTE_STRENGTH = 45*0.3,
+		ATTRIBUTE_DEXTERITY = 45*0.1
 	)
 
 	attribute_damage = list(
@@ -26,7 +26,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_AXE*0.4
+		SKILL_UNARMED = 45*0.4
 	)
 
 	skill_damage = list(
@@ -37,8 +37,8 @@
 
 	cqc_tag = "4"
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 10*0.5
+	attack_delay_max = 10
 
 /damagetype/unarmed/fists/help
 	name = "help fists"
@@ -50,7 +50,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_SWORD*0.2
+		FATIGUE = 30*0.2
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -59,8 +59,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_SWORD*0.3,
-		ATTRIBUTE_DEXTERITY = DAMAGE_SWORD*0.2
+		ATTRIBUTE_STRENGTH = 30*0.3,
+		ATTRIBUTE_DEXTERITY = 30*0.2
 	)
 
 	attribute_damage = list(
@@ -69,7 +69,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_SWORD*0.3
+		SKILL_UNARMED = 30*0.3
 	)
 
 	skill_damage = list(
@@ -78,10 +78,10 @@
 
 	cqc_tag = "1"
 
-	allow_friendly_fire = FALSE
+	allow_friendly_fire = TRUE
 
-	attack_delay = SPEED_SWORD*0.5
-	attack_delay_max = SPEED_SWORD
+	attack_delay = 8*0.5
+	attack_delay_max = 8
 
 	draw_blood = FALSE
 
@@ -97,7 +97,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_DAGGER*0.5
+		FATIGUE = 15*0.5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -106,8 +106,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.1
+		ATTRIBUTE_STRENGTH = 15*0.1,
+		ATTRIBUTE_DEXTERITY = 15*0.1
 	)
 
 	attribute_damage = list(
@@ -116,32 +116,39 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_DAGGER*0.2
+		SKILL_UNARMED = 15*0.2
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = 10
-	attack_delay_max = 10
+	allow_friendly_fire = TRUE
+
+	attack_delay = 12
+	attack_delay_max = 15
 
 	cqc_tag = "2"
+
+	draw_blood = FALSE
 
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
 
-		var/luck_value = (total_damage_dealt/DAMAGE_DAGGER)*100
+		var/luck_value = (total_damage_dealt/15)*100
 
 		if(is_living(attacker))
-			if(luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
+			var/mob/living/A = attacker
+			if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
 				L.add_status_effect(DISARM,5,5, source = attacker)
 				return ..()
+			else
+				luck_value *= 4
 
 		if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
-			L.add_status_effect(STAGGER,1,1, source = attacker)
+			L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
 
 	return ..()
 
@@ -166,8 +173,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_DAGGER*0.25,
-		ATTRIBUTE_DEXTERITY = DAMAGE_DAGGER*0.25
+		ATTRIBUTE_STRENGTH = 15*0.25,
+		ATTRIBUTE_DEXTERITY = 15*0.25
 	)
 
 	attribute_damage = list(
@@ -176,17 +183,21 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = DAMAGE_DAGGER*0.25
+		SKILL_UNARMED = 15*0.25
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
 
+	allow_friendly_fire = TRUE
+
 	cqc_tag = "3"
 
 	attack_delay = 10
 	attack_delay_max = 10
+
+	draw_blood = FALSE
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -205,3 +216,86 @@
 				A.left_hand.grab_object(attacker,victim)
 
 	return ..()
+
+
+/damagetype/unarmed/powerfist/
+	name = "powerfist"
+	attack_verbs = list("pummel","pound")
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 90*0.5
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0
+	)
+
+	attribute_stats = list(
+
+	)
+
+	attribute_damage = list(
+
+	)
+
+
+	skill_stats = list(
+		SKILL_UNARMED = 50*0.5
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT)
+	)
+
+	allow_friendly_fire = FALSE
+
+	cqc_tag = "p"
+
+	attack_delay = 10
+	attack_delay_max = 10
+
+
+/damagetype/unarmed/brass/
+	name = "brass knuckle"
+	attack_verbs = list("punch","hit","strike","pummel","pound")
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 55*0.4
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 55*0.2,
+		ATTRIBUTE_DEXTERITY = 55*0.1
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BLUNT),
+		ATTRIBUTE_DEXTERITY = list(BLUNT)
+	)
+
+	skill_stats = list(
+		SKILL_UNARMED = 55*0.3
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT)
+	)
+
+	allow_friendly_fire = FALSE
+
+	cqc_tag = "p"
+
+	attack_delay = 12*0.5
+	attack_delay_max = 12

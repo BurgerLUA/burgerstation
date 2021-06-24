@@ -39,6 +39,7 @@
 /obj/hud/inventory/organs/left_hand_held
 	name = "left hand slot"
 	id = BODY_HAND_LEFT_HELD
+	icon = 'icons/hud/hud_wide.dmi'
 	icon_state = "left_hand"
 	screen_loc = "CENTER+0.5,BOTTOM"
 	click_flags = LEFT_HAND
@@ -58,12 +59,13 @@
 
 	priority = 2
 
+	x_offset = 16
+
 /obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.left_item = I
-
 
 /obj/hud/inventory/organs/left_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
 	. = ..()
@@ -72,12 +74,12 @@
 		if(A.left_item == I)
 			A.left_item = null
 
-
 /obj/hud/inventory/organs/right_hand_held
 	name = "right hand slot"
 	id = BODY_HAND_RIGHT_HELD
+	icon = 'icons/hud/hud_wide.dmi'
 	icon_state = "right_hand"
-	screen_loc = "CENTER-0.5,BOTTOM"
+	screen_loc = "CENTER-1.5,BOTTOM"
 	click_flags = RIGHT_HAND
 
 	item_slot = SLOT_NONE
@@ -95,6 +97,8 @@
 
 	priority = 3
 
+	x_offset = 16
+
 /obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
@@ -107,5 +111,3 @@
 		var/mob/living/advanced/A = owner
 		if(A.right_item == I)
 			A.right_item = null
-
-	return

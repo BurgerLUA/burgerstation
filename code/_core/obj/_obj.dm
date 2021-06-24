@@ -13,9 +13,9 @@
 	var/under_tile = FALSE
 
 	var/has_quick_function = FALSE
-	var/quick_function_type =  FLAG_QUICK_INSTANT
-	//FLAG_QUICK_INSTANT
-	//FLAG_QUICK_TOGGLE
+
+/obj/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
+	return FALSE
 
 /obj/Destroy()
 

@@ -2,7 +2,7 @@
 	name = "syndicate operative"
 	desc = "A member of the Syndicate crime organization."
 	ai = /ai/advanced/syndicate
-	class = /class/syndicate_soldier
+
 	dialogue_id = /dialogue/npc/soldier
 
 	var/list/possible_outfits = list(
@@ -24,7 +24,7 @@
 /mob/living/advanced/npc/syndicate/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)
-	level_multiplier *= loadout_to_level[loadout_to_use]
+	level *= loadout_to_level[loadout_to_use]
 
 	. = ..()
 
@@ -53,13 +53,13 @@
 	return
 
 /mob/living/advanced/npc/syndicate/double
-	level_multiplier = 2
+
 
 /mob/living/advanced/npc/syndicate/triple
-	level_multiplier = 3
+
 
 /mob/living/advanced/npc/syndicate/quadruple
-	level_multiplier = 4
+
 
 
 /mob/living/advanced/npc/syndicate/stress_test

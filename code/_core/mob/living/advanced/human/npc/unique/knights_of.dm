@@ -4,8 +4,8 @@
 	sex = MALE
 	gender = MALE
 
-	class = /class/pirate
-	level_multiplier = 3
+
+
 
 	health_base = 500
 

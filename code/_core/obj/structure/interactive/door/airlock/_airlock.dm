@@ -4,6 +4,8 @@
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
 
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
+
 	plane = PLANE_OBJ
 	layer = LAYER_OBJ_AIRLOCK
 
@@ -233,7 +235,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			light_state = "closing_02_light"
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_WINDOW,a_dir = 0x0)
 					set_opacity(0)
 				else
 					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
@@ -308,7 +310,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 
 
-/obj/structure/interactive/door/airlock/Cross(atom/movable/O)
+/obj/structure/interactive/door/airlock/Cross(atom/movable/O,atom/oldloc)
 
 	. = ..()
 

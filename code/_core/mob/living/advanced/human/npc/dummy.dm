@@ -3,7 +3,7 @@
 	desc = "It's a dummy, dummy."
 	desc_extended = "A standard NanoTrasen practice dummy used to train new recruits how to shoot, and more importantly, how to aim."
 	ai = null
-	class = /class/dummy
+
 	species = "dummy"
 
 	immortal = TRUE

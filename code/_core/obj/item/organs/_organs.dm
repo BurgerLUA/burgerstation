@@ -7,6 +7,7 @@
 	icon_state = null
 	var/has_dropped_icon = FALSE
 	var/has_dropped_icon_underlay = FALSE
+	var/gib_icon_state = null
 
 	var/damage_icon = 'icons/mob/living/advanced/overlays/damage/organic.dmi'
 
@@ -67,6 +68,42 @@
 
 	var/robotic = FALSE //Set to true if the limb is robotic.
 
+	var/can_gib = TRUE
+
+	mouse_opacity = 0 //For now
+
+/obj/item/organ/get_base_transform()
+	. = ..()
+	var/matrix/M = .
+	if(!is_advanced(loc) && !is_inventory(loc))
+		M.Turn(pick(0,90,180,270))
+
+/obj/item/organ/update_sprite()
+	. = ..()
+
+	transform = get_base_transform()
+
+	if(enable_skin && additional_blends["skin"])
+		var/icon_blend/IB = additional_blends["skin"]
+		color = IB.color
+
+/obj/item/organ/update_icon()
+
+	. = ..()
+
+	icon_state = initial(icon_state)
+
+	if(has_dropped_icon && !is_advanced(loc))
+		icon_state = "[icon_state]_inventory"
+
+/obj/item/organ/update_underlays()
+
+	. = ..()
+
+	if(has_dropped_icon_underlay && !is_advanced(loc))
+		var/image/I = new/image(initial(icon),"[icon_state]_underlay")
+		add_underlay(I)
+
 /obj/item/organ/proc/get_defense_rating()
 	return defense_rating
 
@@ -80,12 +117,28 @@
 		O.on_pain()
 	return TRUE
 
+/obj/item/organ/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(is_inventory(old_loc) || is_inventory(loc) || is_advanced(old_loc) || is_advanced(loc))
+		update_sprite()
+
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	if(is_advanced(loc) && has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
+	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		if(!A.dead)
-			send_pain(damage_amount)
+		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
+			if(!A.dead)
+				send_pain(damage_amount)
+		if(!A.immortal && !A.ckey && !A.boss && health && health.health_max <= damage_amount)
+			gib()
+			A.death()
+
+	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+	if(total_bleed_damage>0)
+		var/bleed_to_add = total_bleed_damage/50
+		src.bleeding += bleed_to_add
 
 	return ..()
 
@@ -119,7 +172,7 @@
 
 	return ..()
 
-/obj/item/organ/New()
+/obj/item/organ/New(var/desired_loc)
 	. = ..()
 	attached_organs = list()
 
@@ -127,68 +180,75 @@
 	. = ..()
 	initialize_blends()
 
-/obj/item/organ/proc/unattach_from_parent(var/turf/T)
+/obj/item/organ/Finalize()
+	. = ..()
+	update_sprite()
 
-	if(inventories)
-		for(var/v in inventories)
-			var/obj/hud/inventory/I = v
-			I.drop_objects(T)
+/obj/item/organ/proc/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
+
+	unattach_children(T,do_delete)
+
+	if(T)
+		for(var/k in inventories)
+			var/obj/hud/inventory/I = k
+			var/list/dropped_objects = I.drop_objects(T)
+			for(var/j in dropped_objects)
+				var/obj/item/O = j
+				animate(O,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
 
 	if(attached_organ)
 		attached_organ.attached_organs -= src
 		attached_organ = null
 
-	for(var/k in attached_organs)
-		var/obj/item/organ/O = k
-		O.unattach_from_parent(T)
-
 	if(T)
 		if(is_advanced(src.loc))
 			var/mob/living/advanced/A = src.loc
 			A.remove_organ(src,FALSE)
-		src.drop_item(T)
+		if(do_delete)
+			qdel(src)
+			return TRUE
+		else
+			src.drop_item(T)
+	else if(do_delete)
+		qdel(src)
+		return TRUE
 
 	update_sprite()
 
-/obj/item/organ/proc/unattach_children(var/turf/T)
+	return TRUE
+
+/obj/item/organ/proc/unattach_children(var/turf/T,var/do_delete=FALSE)
 	for(var/k in attached_organs)
 		var/obj/item/organ/O = k
-		O.unattach_from_parent(T)
+		O.unattach_from_parent(T,do_delete)
+	return TRUE
 
 /obj/item/organ/proc/gib()
-	var/turf/T = get_turf(src.loc)
-	var/mob/living/advanced/A
+
+	if(!can_gib)
+		return TRUE
+
+	var/turf/T = get_turf(src)
 
 	if(is_advanced(src.loc))
-		A = src.loc
-		A.remove_organ(src,FALSE)
+		var/mob/living/advanced/A = src.loc
+		if(!A.dead)
+			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
+		if(A.blood_type)
+			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
+			var/reagent/R = REAGENT(A.blood_type)
+			for(var/i=1,i<=clamp(organ_size,1,4),i++)
+				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
+			if(gib_icon_state)
+				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
+				if(BG)
+					BG.icon_state = gib_icon_state
+					BG.flesh_color = color
+					BG.update_sprite()
 
-	unattach_from_parent(T)
-	unattach_children(T)
+	unattach_from_parent(T,TRUE)
 
-	if(A) //A might've gotten removed here
-		A.update_sprite()
-
-	//new /obj/effect/gibs/random/(T,"#FF0000","secondary") TODO COLOR
-	qdel(src)
-
-/obj/item/organ/update_icon()
-
-	/*
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	var/is_attached_to = is_advanced(src.loc)
-	if(!is_attached_to && has_dropped_icon)
-		icon_state = "[icon_state]_inventory"
-		if(has_dropped_icon_underlay)
-			var/icon/I = new /icon(icon,icon_state)
-			var/icon/U = new /icon(icon,"[icon_state]_underlay")
-			I.Blend(U,ICON_UNDERLAY)
-			icon = I
-	*/
-
-	return ..()
+	return TRUE
 
 /obj/item/organ/proc/on_life()
 
@@ -197,12 +257,12 @@
 
 	if(bleeding >= 0.25 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
-		if(A.blood_type && A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
+		if(A.blood_type && A.health && A.blood_volume && prob(80)) //Blood optimizations!
 			var/bleed_amount = bleeding*DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
 			var/reagent/R = REAGENT(A.blood_type)
-			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),R.color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
+			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),R.color,A.pixel_x + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1),A.pixel_y + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1))
 			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
-			bleeding = CEILING(max(0,bleeding - (0.01 + bleed_amount*0.05)),0.01)
+			bleeding = CEILING(max(0,bleeding - (0.02 + bleed_amount*0.075)),0.01)
 			A.queue_health_update = TRUE
 
 	return TRUE

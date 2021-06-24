@@ -5,7 +5,7 @@
 	enable_AI = TRUE
 	ai = /ai/advanced/beef
 	species = "beefman"
-	class = /class/beefman
+
 	iff_tag = "beefman"
 	loyalty_tag = "beefman"
 

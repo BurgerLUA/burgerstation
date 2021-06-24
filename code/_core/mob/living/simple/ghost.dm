@@ -6,8 +6,8 @@
 
 	ai = /ai/ghost/
 	damage_type = /damagetype/npc/ghost
-	class = /class/default
-	level_multiplier = 1
+
+
 
 	var/desired_alpha = 200 //Controlled in AI.
 

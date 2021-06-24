@@ -43,6 +43,8 @@
 	size = 0.04
 	value = 2.4
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/rifle_308/Generate()
 	item_count_current = 5
 	return ..()
@@ -145,6 +147,8 @@
 
 	size = 0.03
 	value = 2.2
+
+	penetrations = 1
 
 
 
@@ -259,6 +263,8 @@
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
 	value = 2.2
+
+	penetrations = 1
 
 /obj/item/bullet_cartridge/rifle_939mm
 	name = "\improper 9x39mm subsonic rifle bullet"

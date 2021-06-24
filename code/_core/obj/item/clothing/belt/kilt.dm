@@ -13,11 +13,11 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_SWORD,
-		ARCANE = AP_SWORD,
-		PAIN = AP_SWORD
+		BLADE = 20,
+		BLUNT = 10,
+		PIERCE = 20,
+		ARCANE = 20,
+		PAIN = 20
 	)
 
 	rarity = RARITY_UNCOMMON

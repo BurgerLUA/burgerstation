@@ -28,9 +28,9 @@
 	move_mod = initial(move_mod)
 
 	if(movement_flags & MOVEMENT_RUNNING && can_sprint())
-		move_mod += 10
+		move_mod += 10 //Arbitrary. Clamped later.
 	else if(movement_flags & MOVEMENT_WALKING && can_walk())
-		move_mod -= 1
+		move_mod -= 10 //Arbitrary. Clamped later.
 
 	move_mod += move_mod_button
 

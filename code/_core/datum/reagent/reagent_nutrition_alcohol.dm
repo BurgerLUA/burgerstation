@@ -34,26 +34,24 @@
 	. = ..()
 
 	if(owner.health)
-		if(owner.health.organic)
-			owner.intoxication += power*.
-		else
+		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
+		if(IR && IR.reverse_intoxication)
 			owner.intoxication -= power*.
-		if(is_living(owner))
-			var/mob/living/L = owner
-			L.sanity_regen_buffer += power*.
+		else
+			owner.intoxication += power*.
+		owner.sanity_regen_buffer += power*.
 
 /reagent/nutrition/ethanol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	if(owner.health)
-		if(owner.health.organic)
-			owner.intoxication += power*.*0.5
-		else
+		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
+		if(IR && IR.reverse_intoxication)
 			owner.intoxication -= power*.
-		if(is_living(owner))
-			var/mob/living/L = owner
-			L.sanity_regen_buffer += power*.
+		else
+			owner.intoxication += power*.*0.5
+		owner.sanity_regen_buffer += power*.
 
 /reagent/nutrition/ethanol/fernet
 	name = "fernet"

@@ -1,3 +1,21 @@
+/client/proc/find_controlling_mob()
+
+	if(mob)
+		return mob
+
+	. = null
+
+	for(var/k in all_mobs)
+		var/mob/M = k
+		if(M.qdeleting)
+			continue
+		if(M.ckey_last == ckey)
+			. = M
+			return .
+		if(M.ckey_owner == ckey && !M.ckey_last)
+			. = M
+			//No break here as ckey_last needs a priority.
+
 /client/proc/make_ghost(var/turf/desired_loc)
 
 	if(!desired_loc)
@@ -5,6 +23,9 @@
 
 	if(mob)
 		mob.ckey_last = null
+		if(mob.fallback_mob)
+			control_mob(mob.fallback_mob)
+			return TRUE
 
 	var/mob/abstract/observer/ghost/O = new(desired_loc,src)
 	INITIALIZE(O)

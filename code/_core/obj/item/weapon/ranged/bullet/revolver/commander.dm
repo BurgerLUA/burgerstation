@@ -4,6 +4,7 @@
 	desc_extended = "A revolver that uses a blowback recoil system to recock the hammer. Was initially made in small numbers for gun collectors and shooting enthusiasts, but has since become commonplace everywhere."
 	icon = 'icons/obj/item/weapons/ranged/revolver/44.dmi'
 	icon_state = "inventory"
+	value = 700
 
 	shoot_delay = 1.25
 
@@ -13,13 +14,8 @@
 
 	shoot_sounds = list('sound/weapons/revolver_heavy/shoot.ogg')
 
-	view_punch = 10
-
 	size = SIZE_2
 	weight = 9
-
-
-
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -29,10 +25,7 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
-	value = 170
-
-	heat_per_shot = 0.03
-	heat_max = 0.1
+	heat_max = 0.06
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -66,7 +59,7 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.5

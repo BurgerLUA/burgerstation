@@ -14,9 +14,9 @@
 
 	charge_cost = 1
 
-	view_punch = 0
 
-	heat_per_shot = 0
+
+
 	heat_max = 0
 
 	size = SIZE_3
@@ -25,7 +25,7 @@
 
 	battery = /obj/item/powercell/recharging
 
-	firing_pin = /obj/item/firing_pin/electronic
+
 
 	bullet_color = COLOR_PURPLE
 

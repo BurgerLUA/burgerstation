@@ -44,29 +44,20 @@
 	icon = initial(icon)
 	icon_state = "conveyor"
 
+	var/turf/start_turf = get_step(src,turn(dir,180))
+	var/obj/structure/interactive/conveyor/start_c = locate() in start_turf.contents
+
+	if(!start_c || start_c.dir != dir)
+		icon_state = "conveyor_start"
+
 	if(active) icon_state = "[icon_state]_on"
 
 	return ..()
 
 /obj/structure/interactive/conveyor/update_overlays()
 
-	//var/reverse_dir = turn(dir,180)
-
-	//var/turf/start_turf = get_step(src,reverse_dir)
 	var/turf/end_turf = get_step(src,dir)
-
-	//var/obj/structure/interactive/conveyor_new/start_c = locate() in start_turf.contents
 	var/obj/structure/interactive/conveyor/end_c = locate() in end_turf.contents
-
-	/*
-	if(!start_c || start_c.dir != dir)
-		var/image/I = new/image(initial(icon),"conveyor_start")
-		if(active) I.icon_state = "[I.icon_state]_on"
-		var/list/pixel_offsets = direction_to_pixel_offset(reverse_dir)
-		I.pixel_x = pixel_offsets[1]*TILE_SIZE
-		I.pixel_y = pixel_offsets[2]*TILE_SIZE
-		add_overlay(I)
-	*/
 
 	if(!end_c || end_c.dir != dir)
 		var/image/I = new/image(initial(icon),"conveyor_end")

@@ -39,6 +39,7 @@
 #define SOUND_CHANNEL_UI 4
 #define SOUND_CHANNEL_FOOTSTEPS 5
 #define SOUND_CHANNEL_FX 6
+#define SOUND_CHANNEL_FLASHBANG 7
 
 #define SOUND_SETTING_AMBIENT "ambient" //Birds chirping and ambient sounds.
 #define SOUND_SETTING_MUSIC "music" //Music that plays in your head

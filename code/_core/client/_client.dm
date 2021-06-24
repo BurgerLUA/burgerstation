@@ -11,7 +11,7 @@ var/global/list/all_clients = list() //Assoc list
 	fps = FPS_CLIENT
 	preload_rsc = 1
 	view = VIEW_RANGE
-	perspective = MOB_PERSPECTIVE
+	perspective = EYE_PERSPECTIVE
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
@@ -37,7 +37,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/disable_controls = FALSE
 
+	var/zoom_held = FALSE
 	var/is_zoomed = 0x0 //Takes a dir as a value.
+	var/zoom_time = 0 //Last time zoomed.
 
 	var/next_allowed_topic = -1
 
@@ -84,12 +86,10 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/restricted //Set to a string to prevent this person from making a character or joining as one.
 
+	var/list/icon_request_details
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
-
-/client/proc/set_permissions(var/desired_permissions = FLAG_PERMISSION_NONE)
-	permissions = desired_permissions
-	update_verbs()
 
 /client/proc/get_debug_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[mob.x];y=[mob.y];z=[mob.z]'>([mob.x],[mob.y],[mob.z])</a>" : "NONE"])"
@@ -134,22 +134,6 @@ var/global/list/all_clients = list() //Assoc list
 		src.mob.to_chat(v)
 
 	return TRUE
-
-/client/proc/find_controlling_mob()
-
-	if(mob)
-		return mob
-
-	. = null
-
-	for(var/k in all_mobs)
-		var/mob/M = k
-		if(M.ckey_last == ckey)
-			. = M
-			return .
-		if(M.ckey_owner == ckey && !M.ckey_last)
-			. = M
-			//No break here as ckey_last needs a priority.
 
 /client/New()
 
@@ -238,7 +222,8 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/proc/get_ranks()
 
-	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
+	var/list/ranks = list(SSadmin.stored_ranks["user"])
+
 	if(world.port == 0)
 		log_debug("Giving [src] the HOST rank as the world port is 0.")
 		ranks |= SSadmin.stored_ranks["host"]
@@ -256,12 +241,15 @@ var/global/list/all_clients = list() //Assoc list
 
 	for(var/k in ranks)
 		var/rank/R = k
-		to_chat(span("debug","Adding [R.name] permissions..."))
+		to_chat(span("notice","Adding [R.name] permissions..."))
 		permissions |= R.permissions
+
+	update_verbs()
 
 	return TRUE
 
 /client/proc/welcome()
+	to_chat("Successfully joined [world.address]:[world.port].")
 	to_chat("<title>Welcome to Burgerstation 13</title><p>This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed. If you wish to join the discord, please do so here: https://discord.gg/yEaV92a</p>")
 	to_chat(span("notice","<h1>Please be sure to read the rules <a href='https://docs.google.com/document/d/1dbUCqnu7k5gRsSTCZECbst0XuV8grelQB9Z95PpyvLc/edit?usp=sharing'>here</a> before playing!</h1>"))
 	return TRUE

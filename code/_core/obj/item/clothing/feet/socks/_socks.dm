@@ -19,9 +19,9 @@
 	dyeable = TRUE
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = AP_DAGGER,
-		HEAT = -AP_DAGGER
+		ARCANE = 20,
+		COLD = 10,
+		HEAT = -10
 	)
 
 	size = SIZE_0
@@ -87,14 +87,14 @@
 	name = "programmer sock"
 
 	polymorphs = list(
-		"sock" = "#FFFFFF",
-		"stripes" = "#FFFFFF"
+		"sock" = COLOR_WHITE,
+		"stripes" = "#FFBFEC"
 	)
 
 /obj/item/clothing/feet/socks/thigh/striped/bee
 	name = "bee stockings"
 
 	polymorphs = list(
-		"sock" = "#FFFFFF",
-		"stripes" = "#FFFFFF"
+		"sock" = COLOR_BLACK,
+		"stripes" = "#F7DD5D"
 	)

@@ -22,6 +22,8 @@
 		list(16,16)
 	)
 
+	mouse_opacity = 1
+
 
 /obj/hud/button/targeting_new/update_owner(var/mob/desired_owner)
 

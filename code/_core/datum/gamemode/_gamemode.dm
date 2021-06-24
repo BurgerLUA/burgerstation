@@ -63,7 +63,6 @@
 
 	if(desired_alert_level > alert_level)
 		alert_level = desired_alert_level
-		set_message("Code [alert_level]",TRUE)
 		switch(alert_level)
 			if(CODE_BLUE)
 				CALLBACK_GLOBAL(\

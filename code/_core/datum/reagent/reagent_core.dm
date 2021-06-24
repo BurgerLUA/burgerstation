@@ -306,6 +306,16 @@
 
 	liquid = -0.5
 
+/reagent/phosphorous
+	name = "phosphorous"
+	desc = ""
+	color = "#FFFFFF"
+	alpha = 250
+
+	flavor = "bitterness"
+	flavor_strength = 5
+
+	liquid = -0.5
 
 /reagent/tobacco
 	name = "Tobacco"

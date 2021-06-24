@@ -11,7 +11,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/plastic_flaps/Cross(atom/movable/O)
+/obj/structure/interactive/plastic_flaps/Cross(atom/movable/O,atom/oldloc)
 
 	if(is_living(O))
 		var/mob/living/L = O

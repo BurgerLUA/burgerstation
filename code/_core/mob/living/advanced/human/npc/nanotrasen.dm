@@ -4,7 +4,7 @@
 	desc_extended = "A low-ranking NanoTrasen soldier tasked with defending the station and assisting with higher ranking NanoTrasen personnel with missions."
 	enable_AI = TRUE
 	ai = /ai/advanced/nanotrasen
-	class = /class/syndicate_soldier
+
 	dialogue_id = /dialogue/npc/soldier/
 	var/loadout_to_use = /loadout/nanotrasen/soldier
 

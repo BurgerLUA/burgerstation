@@ -5,8 +5,8 @@
 	desc_extended = "It's a hat made out of an innocent beaver. It was a vain sacrifice on it's part, since it's ugly as shit."
 
 	defense_rating = list(
-		ARCANE = AP_SWORD,
-		COLD = AP_SWORD
+		ARCANE = 20,
+		COLD = 20
 	)
 
 	size = SIZE_2

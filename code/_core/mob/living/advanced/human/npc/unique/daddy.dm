@@ -2,7 +2,7 @@
 	name = "\improper the legend"
 	enable_AI = TRUE
 	ai = /ai/advanced/daddy
-	class = /class/daddy/
+
 
 	health_base = 2000
 
@@ -16,4 +16,3 @@
 
 	equip_loadout(/loadout/daddy)
 
-	

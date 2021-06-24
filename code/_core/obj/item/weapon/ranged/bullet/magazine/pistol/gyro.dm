@@ -4,7 +4,7 @@
 	desc_extended = "A prototype syndicate pistol that uses minature rockets as projectiles. As a result, it suffers no inaccuracy due to firing."
 	icon = 'icons/obj/item/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
-	value = 140
+	value = 800
 
 	shoot_delay = 8
 
@@ -12,17 +12,13 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0.75
 
-	automatic = TRUE
+	automatic = FALSE
 
 	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
 
-	view_punch = 2
-
 	size = SIZE_3
-	weight = 10
+	weight = 12
 
-
-	heat_per_shot = 0
 	heat_max = 0
 
 	bullet_length_min = 48
@@ -65,7 +61,7 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 12 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread()
 	return 0.005

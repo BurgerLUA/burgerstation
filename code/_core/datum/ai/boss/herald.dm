@@ -29,4 +29,3 @@
 		else
 			owner_as_herald.teleport_random()
 
-	

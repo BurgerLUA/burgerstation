@@ -5,9 +5,9 @@
 	icon = 'icons/obj/item/clothing/pants/goblin_loin.dmi'
 
 	defense_rating = list(
-		ARCANE = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD
+		ARCANE = 80,
+		HOLY = -80,
+		DARK = 80
 	)
 
 	rarity = RARITY_LEGENDARY

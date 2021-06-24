@@ -1,6 +1,6 @@
 /mob/living/advanced/player/antagonist/
 	var/loadout/loadout_to_use
-	class = /class/antagonist
+
 	allow_save = FALSE
 
 	damage_received_multiplier = 0.5

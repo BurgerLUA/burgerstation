@@ -1,45 +1,22 @@
-/*
-obj/structure/scenery/pinetrees
-	name = "pinetree"
-	icon = 'icons/obj/structure/flora/pinetrees.dmi'
-	icon_state = "pine_1"
-
-	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	pixel_x = -16
-	pixel_y = 0
-	layer = LAYER_LARGE_OBJ
-
-	plane = PLANE_SCENERY
-
-	mouse_opacity = 1
-
-
-obj/structure/scenery/pinetrees/New()
-	..()
-	icon_state = "pine_[rand(1,3)]"
-*/
-
-obj/structure/scenery/snow_grass
+obj/structure/scenery/grass/snow
 	name = "grass"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
 	icon_state = "snowgrass1"
 
 
-obj/structure/scenery/snow_grass/New()
+obj/structure/scenery/grass/snow/New()
 	..()
 	icon_state = "snowgrass[rand(1,3)]"
 
 
-obj/structure/scenery/snow_bush
+obj/structure/scenery/bush/snow
 	name = "berry bush"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
 	icon_state = "snowbush1"
 	layer = LAYER_LARGE_OBJ
 
 
-obj/structure/scenery/snow_bush/New()
+obj/structure/scenery/bush/snow/New()
 	..()
 	icon_state = "snowbush[rand(1,3)]"
 
@@ -57,6 +34,11 @@ obj/structure/scenery/snow_bush/New()
 
 /obj/structure/interactive/tree/can_be_attacked()
 	return TRUE
+
+/obj/structure/interactive/tree/New()
+	. = ..()
+	pixel_x += rand(-3,3)
+	pixel_y += rand(-1,2)
 
 /obj/structure/interactive/tree/pine
 	name = "pine tree"
@@ -82,6 +64,8 @@ obj/structure/scenery/snow_bush/New()
 	icon = 'icons/obj/structure/flora/evergreen.dmi'
 	icon_state = "evergreen_2"
 	pixel_x = -16
+	color = "#d4d2ab"
+
 
 /obj/structure/interactive/tree/evergreen/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -115,7 +99,7 @@ obj/structure/scenery/snow_bush/New()
 /obj/structure/interactive/tree/jungle_large
 	name = "large jungle tree"
 	icon = 'icons/obj/structure/flora/jungletrees.dmi'
-	icon_state = "tree"
+	icon_state = "tree1"
 	pixel_x = -48
 	pixel_y = -16
 

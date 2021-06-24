@@ -1,12 +1,13 @@
 /obj/effect/cleanable/blood/
 	name = "blood"
-	icon = 'icons/obj/effects/blood_impact.dmi'
+	icon = 'icons/obj/effects/blood.dmi'
 	color = "#990000"
 	layer = LAYER_FLOOR_SCENERY
 	plane = PLANE_BLOOD
 	alpha = 200
 
 	var/animate_position = FALSE
+	var/randomize_angle = TRUE
 
 	anchored = TRUE
 
@@ -17,7 +18,9 @@
 
 	density = FALSE
 
-/obj/effect/cleanable/blood/Cross(atom/movable/O)
+
+
+/obj/effect/cleanable/blood/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
 /obj/effect/cleanable/blood/Destroy()
@@ -41,6 +44,12 @@
 
 	return TRUE
 
+/obj/effect/cleanable/blood/get_base_transform()
+	. = ..()
+	if(randomize_angle)
+		var/matrix/M = .
+		M.Turn(pick(0,90,180,270))
+
 /obj/effect/cleanable/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 
 	if(!desired_x)
@@ -54,8 +63,8 @@
 
 	if(desired_color) color = desired_color
 
-	var/matrix/T = matrix()
-	transform = turn(T,pick(0,90,180,270))
+	transform = get_base_transform()
+
 	if(animate_position)
 		desired_x = clamp(desired_x,-TILE_SIZE,TILE_SIZE)
 		desired_y = clamp(desired_y,-TILE_SIZE,TILE_SIZE)
@@ -89,12 +98,12 @@
 
 /obj/effect/cleanable/blood/splatter/
 	name = "blood splatter"
-	icon_state = "1"
+	icon_state = "splatter_1"
 	animate_position = TRUE
 	blood_level = 10
 
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
-	icon_state = "[rand(1,12)]"
+	icon_state = "splatter_[rand(1,12)]"
 	return ..()
 
 /obj/effect/cleanable/blood/splatter_small/
@@ -104,5 +113,42 @@
 	blood_level = 0 //Trivial to clean.
 
 
+/obj/effect/cleanable/blood/gib/
+	name = "giblet splatter"
+	icon_state = "gib_1"
+	animate_position = TRUE
+	blood_level = 20
+
+/obj/effect/cleanable/blood/gib/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
+	icon_state = "gib_[rand(1,10)]"
+	return ..()
+
+/obj/effect/cleanable/blood/line/
+	name = "blood line"
+	icon_state = "trail_1"
+	animate_position = TRUE
+	blood_level = 5
+
+	animate_position = FALSE
+
+	randomize_angle = FALSE
+
+/obj/effect/cleanable/blood/line/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
+	icon_state = "trail_[rand(1,4)]"
+	return ..()
 
 
+/obj/effect/cleanable/blood/body_gib
+	name = "body part gib"
+	blood_level = 30
+
+	color = "#FFFFFF"
+
+	var/flesh_color = "#FFFFFF"
+
+/obj/effect/cleanable/blood/body_gib/update_overlays()
+
+	var/image/I = new/image(icon,"[icon_state]_flesh")
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
+	I.color = flesh_color
+	add_overlay(I)

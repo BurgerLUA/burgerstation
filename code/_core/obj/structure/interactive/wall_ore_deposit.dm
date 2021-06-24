@@ -7,6 +7,7 @@
 	plane = PLANE_WALL
 	layer = 99
 	initialize_type = INITIALIZE_LATE
+	mouse_opacity = 0
 
 /obj/structure/interactive/wall_ore_deposit/Initialize(var/desired_loc)
 

@@ -70,6 +70,9 @@
 	var/trait/metabolism/M = living_owner.get_trait_by_category(/trait/metabolism/)
 	if(M) multiplier *= M.metabolism_multiplier
 
+	if(multiplier <= 0)
+		return FALSE
+
 	for(var/r_id in stored_reagents)
 
 		var/volume = stored_reagents[r_id]
@@ -82,10 +85,11 @@
 		if(!(flags_metabolism & R.flags_metabolism))
 			continue
 
-		var/metabolize_amount = R.metabolize(living_owner,src,volume,multiplier)
-
+		var/metabolize_amount = R.metabolize(living_owner,src,volume,multiplier*living_owner.chem_power)
 		if(metabolize_amount)
 			remove_reagent(r_id,metabolize_amount,FALSE)
+			if(R.blood_toxicity_multiplier)
+				living_owner.blood_toxicity += metabolize_amount*R.blood_toxicity_multiplier
 
 	update_container()
 
@@ -414,7 +418,7 @@
 
 	return TRUE
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
 
 	if(!target_container)
 		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
@@ -512,7 +516,7 @@
 /reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE,var/strength_mod=1)
 
 	if(!splash_amount || !volume_current)
-		caller?.to_chat(span("warning","There is nothing to splash!"))
+		if(!silent) caller?.to_chat(span("warning","There is nothing to splash!"))
 		return FALSE
 
 	if(!target)
@@ -521,7 +525,7 @@
 
 	target = target.change_victim(caller,owner)
 
-	target.on_splash(caller,src,splash_amount,silent,strength_mod)
+	if(target) target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
 	return TRUE
 

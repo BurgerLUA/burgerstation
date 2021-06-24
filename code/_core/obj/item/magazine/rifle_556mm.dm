@@ -15,7 +15,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/merc = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE
 
 	)
 

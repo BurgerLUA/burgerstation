@@ -7,14 +7,6 @@
 		B = new B
 		B.update_owner(src)
 
-/mob/living/advanced/should_bleed()
-
-	var/species/S = SPECIES(species)
-	if(S.flags_species_traits & TRAIT_NO_BLOOD)
-		return FALSE
-
-	return ..()
-
 
 /mob/living/advanced/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
@@ -35,4 +27,3 @@
 
 	HOOK_CALL("on_damage_received") //For hulking and whatnot.
 
-	

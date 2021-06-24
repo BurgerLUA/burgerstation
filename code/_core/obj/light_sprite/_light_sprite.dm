@@ -14,6 +14,10 @@
 
 	size = 1 //Transform multiplier
 
+/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE)
+	dir = desired_dir
+	return dir
+
 /obj/light_sprite/force_move(var/atom/new_loc)
 	if(top_atom) glide_size = top_atom.glide_size
 	return ..()
@@ -41,10 +45,13 @@
 	owner = null
 	return ..()
 
-
-/obj/light_sprite/update_sprite()
-	var/matrix/M = matrix()
+/obj/light_sprite/get_base_transform()
+	. = ..()
+	var/matrix/M = .
 	M.Scale(size)
 	M.Translate(TILE_SIZE*0.5 - (160*0.5))
-	transform = M
-	return ..()
+
+/obj/light_sprite/update_sprite()
+	. = ..()
+	transform = get_base_transform()
+

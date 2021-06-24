@@ -3,10 +3,10 @@
 	desc = "Investigating warcrimes since 2068."
 
 	ai = /ai/advanced/space_cop
-	class = /class/syndicate_soldier
+
 	dialogue_id = /dialogue/npc/soldier/
 
-	level_multiplier = 10
+
 
 /mob/living/advanced/npc/space_cop/Initialize()
 
@@ -29,4 +29,3 @@
 
 	equip_loadout(/loadout/space_cop)
 
-	

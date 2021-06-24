@@ -12,7 +12,16 @@
 /gamemode/lobby/on_life()
 
 	if(state == GAMEMODE_WAITING && round_time_next > 0 && round_time >= round_time_next)
-		SSvote.create_vote(/vote/gamemode)
+		SSgamemode.set_active_gamemode(/gamemode/endless,"Gamemode on_life")
+
+	/*
+	if(state == GAMEMODE_WAITING && round_time_next > 0 && round_time >= round_time_next)
+		//world.sleep_offline = FALSE
+		if(vr_maps[SSdmm_suite.map_name])
+			SSvote.create_vote(/vote/virtual_reality)
+		else
+			SSvote.create_vote(/vote/gamemode)
 		round_time_next = -1
+	*/
 
 	return ..()

@@ -121,9 +121,6 @@
 	FINALIZE(linked_stand)
 	linked_stand.equip_loadout(pick(subtypesof(/loadout/stand/)))
 
-	if(stand_user.ai)
-		stand_user.set_intent(INTENT_HARM)
-
 /stand/proc/display_stand(var/mob/caller)
 	caller.to_chat("Stand Name: <b>[name]</b>")
 	caller.to_chat("Stand User: [stand_user.name]")

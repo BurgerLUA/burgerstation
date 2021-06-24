@@ -1,6 +1,6 @@
 /mob/living/advanced/player/antagonist/wizard
 	loadout_to_use = /loadout/wizard_federation
-	class = /class/antagonist_wizard
+
 
 /mob/living/advanced/player/antagonist/wizard/default_appearance()
 	. = ..()

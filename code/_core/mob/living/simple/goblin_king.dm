@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/goblin_king.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/goblin_king/
+
 	ai = /ai/boss/goblin_king/
 
 	boss_loot = /loot/lavaland/goblin_king
@@ -19,20 +19,18 @@
 
 	stun_angle = 0
 
-	attack_range = 2
-
 	force_spawn = TRUE
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_GREATSWORD,
-		LASER = AP_GREATSWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = AP_GREATSWORD,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD,
-		FATIGUE = AP_GREATSWORD,
+		BLADE = 80,
+		BLUNT = 80,
+		LASER = 80,
+		HEAT = 80,
+		COLD = 80,
+		HOLY = -80,
+		DARK = 80,
+		FATIGUE = 80,
 		ION = INFINITY,
 		PAIN = INFINITY
 	)

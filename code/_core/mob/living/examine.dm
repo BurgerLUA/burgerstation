@@ -8,15 +8,17 @@
 		if(examiner == src)
 			noun = "You look"
 		else
+			noun = "They look"
 			switch(gender)
 				if(MALE)
 					noun = "He looks"
 				if(FEMALE)
 					noun = "She looks"
-				else
-					noun = "They look"
 
-		switch(health.damage[TOX])
+
+		var/wound_stealth = get_mob_value("wound_stealth")
+
+		switch(health.damage[TOX] - wound_stealth*health.damage[TOX])
 			if(5 to 15)
 				. += div("warning","<i>[noun] off color.</i>")
 			if(15 to 25)
@@ -26,7 +28,7 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] diseased.</u></b>")
 
-		switch(health.damage[PAIN])
+		switch(health.damage[PAIN] - wound_stealth*health.damage[PAIN])
 			if(15 to 25)
 				. += div("warning","[noun] sore.")
 			if(25 to 50)
@@ -36,7 +38,8 @@
 
 /mob/living/get_examine_list(var/mob/examiner)
 
-	. = ..()
+	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
+	. = list(div("examine_title","[object_icon][src.name]"),div("center bold","Level [level] [initial(src.name)]"),div("examine_description_long",src.desc_extended))
 
 	var/activity_text = get_activity_text()
 	if(activity_text)

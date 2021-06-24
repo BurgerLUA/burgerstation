@@ -2,27 +2,28 @@
 	name = "\improper 4.6x30mm DMCA"
 	desc = "Takedown your foes with this DMCA!"
 	desc_extended = "The 4.6x30mm DMCA is an extremely robust automatic weapon capable of sending a volley of penetrating small arms."
-	icon = 'icons/obj/item/weapons/ranged/rifle/dmca.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/dmca.dmi'
 	icon_state = "inventory"
-	value = 400
+	value = 2000
 
 	shoot_delay = 1
-	burst_delay = 6
-	max_bursts = 3
+	burst_delay = 8
+	max_bursts = 5
+
+	damage_mod = 1.3
 
 	automatic = TRUE
+
+	firemodes = list("semi-automatic","automatic","burst")
 
 	shoot_sounds = list('sound/weapons/46/shoot.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 4
-
 	size = SIZE_4
 	weight = 25
 
-	heat_per_shot = 0.01
-	heat_max = 0.06
+	heat_max = 0.03
 
 	bullet_length_min = 25
 	bullet_length_best = 30
@@ -66,7 +67,7 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/space_cop
+
 
 	dan_mode = TRUE
 
@@ -76,9 +77,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()
-	if(!wielded) return 0.2
-	return 0
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

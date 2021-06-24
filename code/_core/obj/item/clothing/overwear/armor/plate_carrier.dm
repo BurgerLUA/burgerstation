@@ -9,9 +9,9 @@
 	dyeable = TRUE
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_DAGGER,
-		PIERCE = AP_DAGGER
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10
 	)
 
 	value = 50
@@ -63,7 +63,7 @@
 
 /obj/item/clothing/overwear/armor/plate_carrier/click_self(var/mob/caller)
 
-	if(is_advanced(caller) && length(installed_plate_carriers) && caller.attack_flags & CONTROL_MOD_ALT)
+	if(is_advanced(caller) && length(installed_plate_carriers) && caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
 		INTERACT_DELAY(1)
 		var/mob/living/advanced/A = caller
@@ -72,8 +72,8 @@
 			A.visible_message(span("notice","\The [caller.name] removes \the [P.name] from \the [src.name]."),span("notice","You remove \the [P.name] from \the [src.name]."))
 			P.drop_item(get_turf(src))
 			installed_plate_carriers -= P
-			A.put_in_hands(P) //This calls update_slowdown_mul
-			//A.update_slowdown_mul()
+			A.put_in_hands(P) //This calls update_move_delay_multiplier
+			//A.update_move_delay_multiplier()
 		return TRUE
 
 	return ..()

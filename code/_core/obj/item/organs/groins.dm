@@ -10,7 +10,8 @@
 		/obj/hud/inventory/organs/groin,
 		/obj/hud/inventory/organs/groin_o,
 		/obj/hud/inventory/organs/groin/pocket/right,
-		/obj/hud/inventory/organs/groin/pocket/left
+		/obj/hud/inventory/organs/groin/pocket/left,
+		/obj/hud/inventory/organs/groin/pocket/contract
 
 	)
 
@@ -31,6 +32,8 @@
 	health_base = 50
 
 	damage_coefficient = 0.9
+
+	gib_icon_state = "gibtorso"
 
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
@@ -122,3 +125,9 @@
 
 /obj/item/organ/groin/moth/female
 	icon_state = BODY_GROIN_FEMALE
+
+
+//Golem
+/obj/item/organ/groin/golem
+	name = "golem groin"
+	icon = 'icons/mob/living/advanced/species/golem.dmi'

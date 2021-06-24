@@ -6,7 +6,7 @@
 	ai = null
 	move_mod = 1
 	species = "cyborg"
-	class = /class/cyborg/
+
 	dialogue_id = /dialogue/tutorial/front_desk
 	anchored = TRUE
 

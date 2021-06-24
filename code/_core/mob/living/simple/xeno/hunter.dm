@@ -6,16 +6,16 @@
 	stamina_base = 200
 	mana_base = 50
 
-	level_multiplier = 2
+
 
 	movement_delay = 2
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD,
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,
@@ -39,11 +39,11 @@
 	movement_delay = 3
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD,
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,
@@ -60,18 +60,18 @@
 	name = "xeno sentinel"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
-	level_multiplier = 4
+
 
 	health_base = 150
 
 	movement_delay = 1
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD,
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,
@@ -97,16 +97,14 @@
 	stamina_base = 200
 	mana_base = 50
 
-	level_multiplier = 4
-
 	movement_delay = 4
 
 	armor_base = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD,
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,

@@ -67,6 +67,24 @@
 
 	size = SIZE_3
 
+/obj/item/deployable/mountable/browning
+	name = "field browning kit"
+	desc = "WW2 warfare."
+	desc_extended = "An old-fashioned field kit that lets you set up your very own Browning heavy machinegun, for all the suppressive fire you will ever need. It seems the mount can only turn so far..."
+	structure_to_deploy = /obj/structure/interactive/mountable/browning/
+	icon = 'icons/obj/item/deployable/browning.dmi'
+	dan_mode = TRUE
+	dan_icon_state_back = "back"
+	value = 8918
+	weight = 58
+
+	item_count_max = 1
+
+	size = SIZE_9
+
+/obj/item/deployable/mountable/browning/get_deploy_time(var/mob/caller)
+	return SECONDS_TO_DECISECONDS(10)
+
 /obj/item/deployable/barricade/filled/Generate()
 	item_count_current = item_count_max
 	return ..()

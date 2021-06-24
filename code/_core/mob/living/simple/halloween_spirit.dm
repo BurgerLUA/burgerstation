@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/spooky.dmi'
 	icon_state = "red"
 	damage_type = /damagetype/melee/sword/claymore/cult
-	class = /class/crab
+
 
 	health_base = 50
 	stamina_base = 100
@@ -18,14 +18,14 @@
 	stun_angle = 0
 
 	armor_base = list(
-		LASER = AP_AXE,
-		ARCANE = AP_AXE,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
+		LASER = 40,
+		ARCANE = 40,
+		HEAT = 40,
+		COLD = 40,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = -AP_GREATCLUB,
-		DARK = AP_GREATCLUB,
+		HOLY = -120,
+		DARK = 120,
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)

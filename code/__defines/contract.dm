@@ -1,0 +1,1 @@
+#define CONTRACT(x) SScontract.all_contracts[x]

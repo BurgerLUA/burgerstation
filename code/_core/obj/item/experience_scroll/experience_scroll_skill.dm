@@ -7,7 +7,7 @@
 /obj/item/experience_scroll/skill/get_examine_list()
 	. = ..()
 	. += div("notice","Reading \the [src.name] will grant [experience_amount]xp into [skill].")
-	
+
 /obj/item/experience_scroll/skill/gain_knowledge(var/mob/living/advanced/A)
 	if(!skill || !experience_amount)
 		return FALSE
@@ -66,7 +66,7 @@
 
 /obj/item/experience_scroll/skill/magic
 	name = "scroll of magic"
-	skill = SKILL_MAGIC
+	skill = SKILL_MAGIC_DEFENSIVE
 	experience_amount = 5000
 	value = 2000
 
@@ -74,7 +74,7 @@
 
 /obj/item/experience_scroll/skill/sorcery
 	name = "scroll of sorcery"
-	skill = SKILL_SORCERY
+	skill = SKILL_MAGIC_OFFENSIVE
 	experience_amount = 5000
 	value = 2000
 

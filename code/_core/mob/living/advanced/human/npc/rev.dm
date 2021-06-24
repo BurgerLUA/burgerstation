@@ -4,7 +4,7 @@
 	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Suprisingly, they're not syndicate backed."
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate/russian
-	class = /class/syndicate_soldier
+
 
 	var/list/possible_outfits = list(
 		/loadout/rev/basic = 50,
@@ -29,7 +29,7 @@
 /mob/living/advanced/npc/rev/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)
-	level_multiplier *= loadout_to_level[loadout_to_use]
+	level *= loadout_to_level[loadout_to_use]
 
 	. = ..()
 
@@ -52,8 +52,3 @@
 
 	equip_loadout(loadout_to_use)
 
-//This is very retarded, but I'm fucking tired of reverse-engineering goblin code for the whole night long. Idc.
-/mob/living/advanced/npc/rev/post_death()
-	var/turf/T = get_turf(src)
-	CREATE_LOOT(/loot/rev,T)
-	return

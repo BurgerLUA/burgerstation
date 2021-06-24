@@ -4,6 +4,8 @@
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.75
 
+	damage_mod = 1
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)

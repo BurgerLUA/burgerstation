@@ -27,7 +27,7 @@
 	icon_state = "squats"
 
 	health = /health/mob/living/simple/squats/
-	class = /class/squats
+
 
 	movement_delay = 2
 
@@ -40,19 +40,19 @@
 	walk_delay_mul = 3
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_AXE,
-		LASER = AP_SWORD,
-		ARCANE = -AP_GREATSWORD,
-		HEAT = -AP_AXE,
-		COLD = AP_AXE,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 40,
+		LASER = 20,
+		ARCANE = -80,
+		HEAT = -40,
+		COLD = 40,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -AP_GREATSWORD,
+		ION = -80,
 		PAIN = INFINITY
 	)
 
@@ -84,7 +84,7 @@
 	icon_state = "syndicate"
 
 	ai = /ai/syndicate_cyborg
-	class = /class/squats
+
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
@@ -93,12 +93,12 @@
 	mana_base = 100
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_SWORD,
-		LASER = -AP_SWORD,
-		ARCANE = -AP_AXE,
-		COLD = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 40,
+		PIERCE = 20,
+		LASER = -20,
+		ARCANE = -40,
+		COLD = 20,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,

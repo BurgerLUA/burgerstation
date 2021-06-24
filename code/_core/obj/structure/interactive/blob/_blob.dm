@@ -24,6 +24,12 @@
 
 	var/health_states = 0
 
+	var/turn_angle = 0
+
+/obj/structure/interactive/blob/New(var/desired_loc)
+	. = ..()
+	turn_angle = pick(0,90,180,270)
+
 /obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
 	qdel(src)
@@ -82,7 +88,7 @@
 		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
 
 
-/obj/structure/interactive/blob/Cross(atom/movable/O)
+/obj/structure/interactive/blob/Cross(atom/movable/O,atom/oldloc)
 	if(istype(O,/mob/living/simple/blobbernaught))
 		return TRUE
 	return ..()
@@ -104,19 +110,17 @@
 		linked_core = desired_owner
 		linked_core.linked_walls += src
 
-
-/obj/structure/interactive/blob/PostInitialize()
+/obj/structure/interactive/blob/get_base_transform()
 	. = ..()
-	var/matrix/M = matrix()
-	M.Turn(pick(0,90,180,270))
-	transform = M
-	transform *= 0.1
-	animate(src,transform = M,time = 10)
+	var/matrix/M = .
+	M.Turn(turn_angle)
 
+/obj/structure/interactive/blob/Finalize()
+	. = ..()
 	update_sprite()
-
+	transform *= 0.1
+	animate(src,transform=get_base_transform())
 	CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
-
 
 /obj/structure/interactive/blob/update_icon()
 

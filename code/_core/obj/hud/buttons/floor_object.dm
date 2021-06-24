@@ -22,7 +22,7 @@
 		return TRUE
 	return TRUE
 
-/obj/hud/button/floor_object/update_owner()
+/obj/hud/button/floor_object/update_owner(var/mob/desired_owner)
 
 	var/mob/previous_owner = owner
 
@@ -38,7 +38,7 @@
 			return FALSE
 		HOOK_ADD("post_move","floor_object_post_move_\ref[src]",associated_object,src,.proc/assoc_object_post_move)
 
-	
+
 /obj/hud/button/floor_object/update_sprite()
 
 	vis_contents.Cut()
@@ -54,7 +54,7 @@
 
 	vis_contents |= associated_object
 
-	
+
 /obj/hud/button/floor_object/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	if(associated_object)
 		return object.click_on_object(caller,associated_object,location,control,params)

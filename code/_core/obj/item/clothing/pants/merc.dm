@@ -5,11 +5,11 @@
 	icon = 'icons/obj/item/clothing/pants/merc.dmi'
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_SWORD,
-		COLD = AP_AXE,
-		HEAT = AP_DAGGER
+		BLADE = 20,
+		BLUNT = 40,
+		PIERCE = 20,
+		COLD = 40,
+		HEAT = 10
 	)
 
 	value = 120

@@ -6,14 +6,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = AP_CLUB,
-		ARCANE = -AP_GREATSWORD,
-		HEAT = AP_SWORD,
-		COLD = AP_CLUB,
-		BOMB = AP_SWORD
+		BLADE = 20,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = 60,
+		ARCANE = -80,
+		HEAT = 20,
+		COLD = 60,
+		BOMB = 20
 	)
 
 	size = SIZE_4
@@ -29,37 +29,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_AXE*1.25,
-		BLUNT = AP_CLUB*1.25,
-		PIERCE = AP_CLUB*1.25,
-		LASER = AP_AXE,
-		ARCANE = -AP_GREATAXE*0.8,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE
-	)
-
-	size = SIZE_4
-
-
-	value = 550
-
-/obj/item/clothing/head/helmet/hardsuit/skat/nt
-	name = "NT SKAT-10 full-head mask/helmet assembly"
-	icon = 'icons/obj/item/clothing/hats/helmet_skat_nt.dmi'
-	desc = "Milstalkers are just military but hetero."
-	desc_extended = "Modified version of revolutionaries' SKAT-9 combat suit, featuring scarce NT paintjob and, obviously, changed IFFs."
-	rarity = RARITY_RARE
-
-	defense_rating = list(
-		BLADE = AP_AXE*1.25,
-		BLUNT = AP_CLUB*1.25,
-		PIERCE = AP_CLUB*1.25,
-		LASER = AP_AXE,
-		ARCANE = -AP_GREATAXE*0.8,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE
+		BLADE = 40,
+		BLUNT = 60,
+		PIERCE = 60,
+		LASER = 40,
+		ARCANE = -100,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40
 	)
 
 	size = SIZE_4

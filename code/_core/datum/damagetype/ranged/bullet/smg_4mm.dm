@@ -3,12 +3,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD
+		PIERCE = 25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_SWORD
+		PIERCE = 50
 	)
 
 	falloff = VIEW_RANGE
@@ -22,12 +22,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD*0.75
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = AP_SWORD*3
+		PIERCE = 100
 	)
 
 /damagetype/ranged/bullet/smg_4mm/toxin
@@ -35,14 +35,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BIO = DAMAGE_SWORD*0.75,
-		PIERCE = DAMAGE_SWORD*0.25
+		BIO = 20,
+		PIERCE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BIO= AP_SWORD*0.75,
-		PIERCE = AP_SWORD*0.25
+		BIO = 0,
+		PIERCE = 0
 
 	)
 
@@ -51,33 +51,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		ION = DAMAGE_SWORD*0.75,
-		PIERCE = DAMAGE_SWORD*0.25
+		ION = 30,
+		PIERCE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		ION = AP_SWORD*0.75,
-		PIERCE = AP_SWORD*0.25
-
-	)
-
-/damagetype/ranged/bullet/smg_4mm/subsonic
-	name = "smg bullet"
-
-	//Hoping that putting Stalkeros' crit stuff here works, otherwise its just a stealthy, slower bullet.
-	crit_multiplier = 4 //Damage multiplier.
-	crit_chance = 10 //Base crit chance.
-	crit_chance_max = 15 //Maximium crit chance at 100 luck.
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	attack_damage_base = list(
-		PIERCE = DAMAGE_SWORD
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		PIERCE = AP_SWORD
+		ION = 0,
+		PIERCE = 25
 
 	)
 
@@ -86,20 +67,20 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = DAMAGE_SWORD*0.75,
-		PIERCE = DAMAGE_SWORD*0.25
+		HEAT = 30,
+		PIERCE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HEAT = AP_SWORD*0.75,
-		PIERCE = AP_SWORD*0.25
+		HEAT = 0,
+		PIERCE = 10
 
 	)
 
-	//Fire strength probably needs tweaking, I didn't test it too much
+//Fire strength probably needs tweaking, I didn't test it too much
 /damagetype/ranged/bullet/smg_4mm/incendiary/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.add_status_effect(FIRE,25,25,stealthy=L.on_fire)
+		L.add_status_effect(FIRE,10,10,stealthy=L.on_fire)
 	return ..()

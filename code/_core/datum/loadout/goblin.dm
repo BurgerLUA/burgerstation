@@ -23,10 +23,7 @@
 	)
 
 	possible_weapon = list(
-		/obj/item/weapon/ranged/magic/tome/chaos = 1,
-		/obj/item/weapon/ranged/magic/tome/crystal = 10,
-		/obj/item/weapon/ranged/magic/tome/fireball = 5,
-		/obj/item/weapon/ranged/magic/staff/basic = 5
+
 	)
 
 /loadout/goblin/warrior

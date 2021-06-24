@@ -6,7 +6,7 @@
 	icon_state = "fly"
 
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/bear
+
 
 	health_base = 25
 	stamina_base = 50
@@ -99,7 +99,7 @@
 	icon = 'icons/mob/living/simple/clockwork_hawk.dmi'
 
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/bear
+
 
 	health_base = 100
 	stamina_base = 100
@@ -117,11 +117,11 @@
 	butcher_contents = list()
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = AP_GREATSWORD,
-		HEAT = -AP_SWORD,
-		COLD = AP_GREATSWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		ARCANE = 80,
+		HEAT = -20,
+		COLD = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY

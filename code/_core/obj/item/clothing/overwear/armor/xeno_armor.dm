@@ -9,11 +9,11 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = AP_DAGGER,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = AP_DAGGER,
-		COLD = AP_GREATSWORD
+		BLADE = 10,
+		BLUNT = 60,
+		PIERCE = 60,
+		HEAT = 10,
+		COLD = 80
 	)
 
 	size = SIZE_3

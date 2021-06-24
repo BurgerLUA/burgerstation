@@ -27,7 +27,7 @@
 		var/obj/hud/inventory/I = loc
 		if(is_advanced(I.owner))
 			var/mob/living/advanced/A = I.owner
-			A.update_slowdown()
+			A.update_speed()
 
 	return TRUE
 
@@ -39,7 +39,7 @@
 
 	if(length(inventories))
 		for(var/obj/item/I in contents)
-			if(I.initialized)
+			if(I.finalized)
 				continue
 			pre_fill_inventory(I)
 			INITIALIZE(I)

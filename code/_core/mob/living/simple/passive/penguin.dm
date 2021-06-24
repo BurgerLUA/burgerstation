@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/passive.dmi'
 	icon_state = "penguin"
 	damage_type = /damagetype/unarmed/bite/
-	class = /class/crab
+
 
 	value = 50
 

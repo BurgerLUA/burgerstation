@@ -26,7 +26,7 @@
 	. = ..()
 	icon_state = "ore_storage"
 
-/obj/structure/interactive/ore_storage/Cross(atom/movable/O)
+/obj/structure/interactive/ore_storage/Cross(atom/movable/O,atom/oldloc)
 
 	if(store_ore(O))
 		return FALSE

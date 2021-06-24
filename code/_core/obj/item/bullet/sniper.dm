@@ -21,6 +21,8 @@
 	size = 0.1
 	value = 12
 
+	penetrations = 2
+
 /obj/item/bullet_cartridge/sniper_50/surplus
 	name = "\improper surplus .50 sniper round"
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/surplus
@@ -31,8 +33,10 @@
 	name = "\improper .50 explosive sniper round"
 	icon = 'icons/obj/item/bullet/50_explosive.dmi'
 	rarity = RARITY_MYTHICAL
+	projectile = /obj/projectile/bullet/firearm/sniper/explosive/
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/explosive
 	value = 20
+	penetrations = 0
 
 /obj/item/bullet_cartridge/sniper_50/ion
 	name = "\improper .50 ion sniper round"
@@ -40,6 +44,7 @@
 	rarity = RARITY_MYTHICAL
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/ion
 	value = 80
+	penetrations = 0
 
 /obj/item/bullet_cartridge/sniper_50/incendiary
 	name = "\improper .50 incendiary sniper round"
@@ -47,6 +52,7 @@
 	rarity = RARITY_MYTHICAL
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/incendiary
 	value = 60
+	penetrations = 0
 
 /obj/item/bullet_cartridge/sniper_50/ap
 	name = "\improper .50 AP sniper round"
@@ -54,4 +60,5 @@
 	rarity = RARITY_MYTHICAL
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/ap
 	value = 28
+	penetrations = 3
 

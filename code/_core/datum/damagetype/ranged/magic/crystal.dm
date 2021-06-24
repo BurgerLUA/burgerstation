@@ -3,12 +3,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		ARCANE = DAMAGE_AXE*0.1,
-		DARK = DAMAGE_AXE*0.2
+		ARCANE = 45*0.1,
+		DARK = 45*0.2
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = DAMAGE_AXE*0.3
+		ATTRIBUTE_INTELLIGENCE = 45*0.3
 	)
 
 	attribute_damage = list(
@@ -16,15 +16,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = DAMAGE_AXE*0.4
+		SKILL_MAGIC_OFFENSIVE = 45*0.4
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = list(ARCANE,DARK)
+		SKILL_MAGIC_OFFENSIVE = list(ARCANE,DARK)
 	)
 
 	bonus_experience_skill = list(
-		SKILL_SORCERY = 75 //75%
+		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)
 
 
@@ -33,12 +33,12 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		ARCANE = DAMAGE_CLUB*0.1,
-		DARK = DAMAGE_CLUB*0.2
+		ARCANE = 60*0.1,
+		DARK = 60*0.2
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = DAMAGE_CLUB*0.3
+		ATTRIBUTE_INTELLIGENCE = 60*0.3
 	)
 
 	attribute_damage = list(
@@ -46,13 +46,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = DAMAGE_CLUB*0.4
+		SKILL_MAGIC_OFFENSIVE = 60*0.4
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = list(ARCANE,DARK)
+		SKILL_MAGIC_OFFENSIVE = list(ARCANE,DARK)
 	)
 
 	bonus_experience_skill = list(
-		SKILL_SORCERY = 75 //75%
+		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)

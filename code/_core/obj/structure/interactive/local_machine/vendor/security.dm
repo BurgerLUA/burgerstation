@@ -21,6 +21,7 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
 		/obj/item/clothing/overwear/armor/medium_armor/security,
@@ -47,6 +48,7 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/head/hat/beret/armored,
 		/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops,
@@ -74,7 +76,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
@@ -96,14 +98,15 @@
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/weapon/ranged/energy/freezegun,
 
-		/obj/item/deployable/mob/sentry
+		/obj/item/deployable/mob/sentry,
+		/obj/item/deployable/mountable/browning
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/dip
@@ -150,6 +153,7 @@
 		/obj/item/magazine/lmg_762,
 		/obj/item/magazine/sniper_127,
 		/obj/item/magazine/minigun_46,
+		/obj/item/magazine/browning_127,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,

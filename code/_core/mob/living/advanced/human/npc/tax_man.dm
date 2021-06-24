@@ -5,7 +5,7 @@
 	enable_AI = TRUE
 	ai = null
 	move_mod = 1
-	class = /class/cyborg/
+
 	dialogue_id = /dialogue/npc/taxman/
 	anchored = TRUE
 

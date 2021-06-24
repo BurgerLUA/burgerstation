@@ -8,7 +8,8 @@
 	)
 
 	var/list/random_tome = list(
-		/obj/item/weapon/ranged/magic/tome/cult
+		/obj/item/weapon/ranged/spellgem/chaos,
+		/obj/item/weapon/ranged/spellgem/cult
 	)
 
 	var/list/random_weapon = list(

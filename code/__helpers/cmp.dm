@@ -53,6 +53,16 @@
 /proc/cmp_subsystem_priority(subsystem/a, subsystem/b)
 	return cmp_numeric_asc(a.priority,b.priority)
 
+/proc/cmp_generation_priority(var/obj/marker/generation/a,var/obj/marker/generation/b)
+
+	var/atom/A = a.object_to_place
+	var/atom/B = b.object_to_place
+
+	var/A_num = initial(A.plane)*10000 + initial(A.layer)
+	var/B_num = initial(B.plane)*10000 + initial(B.layer)
+
+	return cmp_numeric_asc(A_num,B_num)
+
 /proc/cmp_cqc_priority(cqc/a, cqc/b)
 	return cmp_numeric_asc(a.priority,b.priority)
 

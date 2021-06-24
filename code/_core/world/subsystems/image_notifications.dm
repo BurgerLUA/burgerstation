@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(image_notifications)
 /proc/add_notification_easy(var/client/C,var/icon,var/icon_state,var/duration,var/fade_in=TRUE,var/fade_out=TRUE,var/desired_text)
 	var/obj/hud/screen/S = add_notification(C,duration,fade_in,fade_out)
 	S.layer = LAYER_AREA
-	S.plane = PLANE_HUD_TEXT
+	S.plane = PLANE_HUD
 	S.icon = icon
 	S.icon_state = icon_state
 	S.screen_loc = "CENTER-4.5,CENTER-4.5"

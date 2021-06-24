@@ -16,7 +16,7 @@
 	var/list/new_params = params2list(params)
 
 	if((mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
-		var/change_in_screen = delta_y > 1 ? 1 : -1
+		var/change_in_screen = clamp(delta_y,-1,1)
 		if(precise_zoom)
 			change_in_screen *= 0.1
 		update_zoom(zoom_level + change_in_screen)
@@ -36,13 +36,13 @@
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 
-	if(!object || object.plane < PLANE_HUD)
+	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	if(examine_mode)
-		if(mob) mob.display_turf_contents(get_turf(object))
+		mob.display_turf_contents(get_turf(object))
 		examine(object)
 		return TRUE
 
@@ -74,7 +74,7 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags |= CONTROL_MOD_RIGHT
 
-	if(!object || object.plane >= PLANE_HUD)
+	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
@@ -91,7 +91,7 @@
 		mob.on_right_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
-		if(mob && mob.movement_flags & MOVEMENT_RUNNING && object.plane < PLANE_HUD)
+		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (isturf(object) || isturf(object.loc)))
 			if(spam_protection_interact <= 10)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
 				A.pixel_x = text2num(new_params[PARAM_ICON_X]) - 16
@@ -127,7 +127,7 @@
 			click_and_drag_icon.stored_inventory = null
 			click_and_drag_icon.alpha = 0
 
-	if(!object || object.plane >= PLANE_HUD)
+	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
@@ -144,7 +144,7 @@
 
 	var/list/new_params = params2list(params)
 
-	if(!src_object || !over_object)
+	if(!src_object || !over_object || src_object.qdeleting || over_object.qdeleting)
 		return FALSE
 
 	src_object = src_object.defer_click_on_object(mob,src_location,src_control,new_params)
@@ -171,7 +171,10 @@
 	return ..()
 
 
-/client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
+/client/MouseDrag(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
+
+	if(!src_object || !over_object || src_object.qdeleting || over_object.qdeleting)
+		return FALSE
 
 	MouseEntered(over_object,over_location,over_control,params) //God I hate this.
 
@@ -181,12 +184,35 @@
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
 		return ..()
 
-	store_new_params(over_object,over_location,new_params)
+	. = ..()
+
+/client/MouseEntered(object,location,control,params)
+
+	var/list/new_params = params2list(params)
+
+	store_new_params(object,location,new_params)
+
+	if(!mob)
+		return ..()
+
+	if(object)
+		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
+	else
+		mob.examine_overlay.maptext = null
+
+	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
+		var/real_angle = get_angle(mob,location) + 90
+		var/desired_x_offset = sin(real_angle)
+		var/desired_y_offset = cos(real_angle)
+		var/real_dir = angle2dir(real_angle)
+		is_zoomed = real_dir
+		mob.set_dir(real_dir)
+		update_camera_offset(desired_x_offset,desired_y_offset)
 
 	. = ..()
 
-/client/proc/store_new_params(over_object,over_location,params)
+/client/proc/store_new_params(object,location,params)
 	last_params = params
-	last_object = over_object
-	last_location = over_location
+	last_object = object
+	last_location = location
 	return TRUE

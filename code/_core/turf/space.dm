@@ -21,7 +21,6 @@
 	icon = 'icons/turf/space/space.dmi'
 	icon_state = "1"
 	opacity = 0
-	var/generate = TRUE
 	plane = PLANE_SPACE
 
 /turf/space/is_space()
@@ -31,7 +30,7 @@
 
 	if(ismob(Obj) && !istype(Obj,/mob/abstract/))
 		var/mob/M = Obj
-		if(M.initialized)
+		if(M.finalized)
 			var/obj/marker/failsafe/FS = locate() in world
 			if(FS)
 				M.force_move(FS.loc)
@@ -50,4 +49,3 @@
 	icon = 'icons/turf/space/space.dmi'
 	icon_state = "space"
 	opacity = 1
-	generate = FALSE

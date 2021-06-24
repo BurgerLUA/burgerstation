@@ -4,24 +4,23 @@
 	desc_extended = "A small, lightweight personal defense weapon chambered in 5.56. Shoots fast, but isn't that accurate."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_5.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 1800
 
-	shoot_delay = 2
+	shoot_delay = 1.75
 
 	automatic = TRUE
+
+	damage_mod = 1
+
+	firemodes = list("semi-automatic","automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 6
-
-
-
 	size = SIZE_3
 	weight = 8
 
-	heat_per_shot = 0.06
 	heat_max = 0.12
 
 	bullet_length_min = 40
@@ -74,9 +73,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pdw/get_static_spread()
-	if(wielded) return 0.005
 	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pdw/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))

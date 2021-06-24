@@ -1,12 +1,4 @@
-/loadout/pirate/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		if(R.firing_pin)
-			R.firing_pin = /obj/item/firing_pin/electronic/iff/bone
-
-	return ..()
-
+/loadout/pirate/
 
 /loadout/pirate/captain
 	spawning_items = list(
@@ -93,7 +85,5 @@
 		/obj/item/clothing/hands/gloves/colored/padded/brown/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/weapon/melee/null_rod,
-		/obj/item/weapon/ranged/magic/staff/fire,
-		/obj/item/weapon/ranged/magic/tome/crystal,
+		/obj/item/weapon/melee/null_rod
 	)

@@ -10,7 +10,7 @@
 	mana_base = 200
 
 	ai = /ai/goblin
-	class = /class/goblin
+
 	damage_type = /damagetype/unarmed/claw
 
 	armor_base = list(

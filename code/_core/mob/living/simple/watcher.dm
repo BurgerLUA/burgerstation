@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/lavaland/watcher.dmi'
 	icon_state = "watcher"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/watcher
+
 
 	value = 100
 
@@ -16,14 +16,14 @@
 	stun_angle = 0
 
 	armor_base = list(
-		BLADE = -AP_SWORD,
-		PIERCE = -AP_SWORD,
-		ARCANE = AP_GREATSWORD,
-		HEAT = AP_CLUB,
-		COLD = AP_GREATSWORD,
-		FATIGUE = AP_SWORD,
+		BLADE = -20,
+		PIERCE = -20,
+		ARCANE = 80,
+		HEAT = 60,
+		COLD = 80,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_GREATAXE
+		PAIN = 100
 	)
 
 	status_immune = list(
@@ -61,7 +61,7 @@
 	iff_tag = "Clockwork"
 	loyalty_tag = "Clockwork"
 
-	class = /class/clockwork_watcher
+
 
 	ai = /ai/watcher/clockwork
 
@@ -76,11 +76,11 @@
 	status_immune = list()
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = AP_GREATSWORD,
-		HEAT = -AP_SWORD,
-		COLD = AP_GREATSWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		ARCANE = 80,
+		HEAT = -20,
+		COLD = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY
@@ -103,7 +103,7 @@
 
 	movement_delay = 1 // Fast
 
-	class = /class/clockwork_watcher
+
 
 	ai = /ai/watcher/clockwork
 
@@ -118,11 +118,11 @@
 	status_immune = list()
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		PIERCE = AP_SWORD,
-		ARCANE = AP_GREATSWORD,
-		HEAT = -AP_SWORD,
-		COLD = AP_GREATSWORD,
+		BLADE = 20,
+		PIERCE = 20,
+		ARCANE = 80,
+		HEAT = -20,
+		COLD = 80,
 		FATIGUE = INFINITY,
 		ION = 0,
 		PAIN = INFINITY

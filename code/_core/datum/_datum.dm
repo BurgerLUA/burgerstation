@@ -24,9 +24,15 @@
 	return TRUE
 
 /datum/proc/Generate() //Generate the atom, giving it stuff if needed.
+	if(generated)
+		CRASH_SAFE("WARNING: [src.get_debug_name()] was generated twice!")
+		return TRUE
 	return TRUE
 
 /datum/proc/Finalize() //We're good to go.
+	if(finalized)
+		CRASH_SAFE("WARNING: [src.get_debug_name()] was finalized twice!")
+		return TRUE
 	return TRUE
 
 /datum/proc/is_safe_to_delete(var/check_loc = FALSE)

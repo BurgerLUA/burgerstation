@@ -23,6 +23,11 @@
 				O.Move(T2)
 			return FALSE //Don't do regular movement.
 
+
+/turf/simulated/floor/stair/ztravel/wood
+	color = "#724C34"
+	footstep = /footstep/wood
+
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
 	footstep = /footstep/wood
@@ -38,3 +43,19 @@
 	footstep = /footstep/wood
 
 	destruction_turf = /turf/simulated/floor/basalt
+
+/*
+/turf/simulated/floor/stair/force_below
+	color = "#555555"
+
+/turf/simulated/floor/stair/force_below/New(var/desired_loc)
+
+	var/turf/TB = locate(x,y,z-1)
+
+	TB.change_turf(/turf/simulated/floor/stair)
+	TB.dir = dir
+	TB.icon_state = icon_state
+
+	src.change_turf(/turf/simulated/openspace)
+*/
+

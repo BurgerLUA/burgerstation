@@ -53,50 +53,56 @@ menu "menu"
 		category = "File"
 		saved-params = "is-checked"
 	elem 
-		name = ""
-		command = ""
+		name = "Edit &Macros..."
+		command = "edit-macros"
 		category = "File"
 		saved-params = "is-checked"
 	elem 
-		name = "Settings"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "Edit &Macros..."
-		command = "edit-macros"
-		category = "Settings"
-		saved-params = "is-checked"
-	elem "view"
-		name = "View"
+		name = "Graphics Settings"
 		command = ""
 		saved-params = "is-checked"
 	elem "fullscreen"
 		name = "&Fullscreen\tF11"
 		command = "toggle-fullscreen"
-		category = "View"
+		category = "Graphics Settings"
 		can-check = true
 		saved-params = "is-checked"
 	elem 
 		name = "&Client FPS"
 		command = "set-fps"
-		category = "View"
+		category = "Graphics Settings"
 		saved-params = "is-checked"
 	elem 
 		name = "&View Range"
 		command = "set-view-range"
-		category = "View"
+		category = "Graphics Settings"
 		saved-params = "is-checked"
 	elem 
-		name = "Toggle &Precise Zoom"
-		command = "precise-zoom"
-		category = "View"
+		name = "Toggle Zoom View &Lock"
+		command = "toggle-zoom-view-lock"
+		category = "Graphics Settings"
+		saved-params = "is-checked"
+	elem 
+		name = "Toggle Smooth &Shadows"
+		command = "toggle-smooth-shadows"
+		category = "Graphics Settings"
+		saved-params = "is-checked"
+	elem 
+		name = "Toggle &Depth"
+		command = "toggle-depth"
+		category = "Graphics Settings"
+		saved-params = "is-checked"
+	elem 
+		name = "Toggle Currency &Bloom"
+		command = "toggle-currency-bloom"
+		category = "Graphics Settings"
 		saved-params = "is-checked"
 	elem 
 		name = "Volume"
 		command = ""
 		saved-params = "is-checked"
 	elem 
-		name = "Volume - &Master"
+		name = "&Volume - Master"
 		command = "set-volume-master"
 		category = "Volume"
 		saved-params = "is-checked"
@@ -298,7 +304,6 @@ window "control"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -306,8 +311,6 @@ window "control"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 814x814
-		inner-size = 800x800
 	elem "input"
 		type = INPUT
 		pos = 0,780
@@ -336,7 +339,6 @@ window "control"
 		size = 200x20
 		anchor1 = 50,0
 		anchor2 = 75,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Github"
 		command = "open-github"
@@ -346,7 +348,6 @@ window "control"
 		size = 200x20
 		anchor1 = 25,0
 		anchor2 = 50,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Discord"
 		command = "open-discord"
@@ -356,7 +357,6 @@ window "control"
 		size = 200x20
 		anchor1 = 0,0
 		anchor2 = 25,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = ""
@@ -366,7 +366,6 @@ window "control"
 		size = 800x760
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
@@ -381,20 +380,16 @@ window "edit"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		border = sunken
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Edit"
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "exit"
 		type = BUTTON
 		pos = 540,460
 		size = 100x20
 		anchor1 = 100,100
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "is-checked"
 		text = "Save and Exit"
 		command = ""
@@ -474,7 +469,6 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -482,8 +476,6 @@ window "map"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 814x814
-		inner-size = 800x800
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -513,7 +505,6 @@ window "map"
 		size = 680x320
 		anchor1 = 0,100
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 

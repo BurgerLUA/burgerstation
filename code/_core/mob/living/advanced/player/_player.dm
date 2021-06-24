@@ -29,8 +29,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	has_hard_crit = TRUE
 
-	var/list/attack_logs = list()
-
 	var/currency = 3000
 	var/revenue = 0
 	var/expenses = 0
@@ -91,13 +89,13 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/ai_steps = 0 //Determining when the AI activates.
 
-	damage_received_multiplier = 0.75
-
 	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
 
 	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.
 
 	var/tutorial = FALSE //Are you in the tutorial level?
+
+	var/list/linked_portals
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
@@ -121,7 +119,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	add_species_languages()
 
-	set_mob_data(mobdata["loaded_data"],teleport,update_blends)
+	set_mob_data(mobdata["loaded_data"],teleport && allow_save,update_blends,!allow_save)
 
 	return TRUE
 
@@ -153,17 +151,29 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		current_squad = null
 
 	all_players -= src
-	attack_logs.Cut()
 
 	active_device = null
 	active_structure = null
 	active_paper = null
 
+	clear_portals()
+
 	QDEL_NULL(click_and_drag_icon)
 
 	return ..()
 
-mob/living/advanced/player/on_life_client()
+/mob/living/advanced/player/proc/clear_portals()
+
+	if(linked_portals)
+		for(var/k in linked_portals)
+			var/obj/effect/temp/portal/P = k
+			qdel(P)
+		linked_portals.Cut()
+		linked_portals = null
+
+	return TRUE
+
+/mob/living/advanced/player/on_life_client()
 	. = ..()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
 

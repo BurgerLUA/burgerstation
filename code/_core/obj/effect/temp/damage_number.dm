@@ -4,7 +4,7 @@
 
 	icon = null
 	mouse_opacity = 0
-	plane = PLANE_HUD_CHAT
+	plane = PLANE_DAMAGE_NUMBERS
 
 	pixel_x =  -TILE_SIZE
 	pixel_y = -TILE_SIZE
@@ -61,7 +61,7 @@
 
 	icon = null
 	mouse_opacity = 0
-	plane = PLANE_HUD_CHAT
+	plane = PLANE_DAMAGE_NUMBERS
 
 	pixel_x =  -TILE_SIZE
 	pixel_y = -TILE_SIZE

@@ -6,9 +6,9 @@
 	icon = 'icons/obj/item/clothing/belts/belt_quiver.dmi'
 
 	defense_rating = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_SWORD
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 20
 	)
 
 	rarity = RARITY_UNCOMMON
@@ -71,7 +71,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
 		var/obj/item/bullet_cartridge/arrow/A = object
-		if(caller.attack_flags & CONTROL_MOD_ALT)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			if(!stored_arrows[A.type])
 				caller.to_chat(span("warning","There are no arrows of that type left in \the [src.name]!"))
 				return TRUE

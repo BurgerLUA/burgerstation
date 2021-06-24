@@ -7,38 +7,17 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		BIO = AP_GREATSWORD,
-		RAD = AP_DAGGER
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		BIO = 80,
+		RAD = 10
 	)
 
 	size = SIZE_2
 
 
 	value = 40
-
-/obj/item/clothing/mask/gas/clown
-	name = "clown mask"
-	icon = 'icons/obj/item/clothing/masks/clown.dmi'
-	desc = "Where the clown gets their power."
-	desc_extended = "A flawless clown mask and wig."
-
-	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		BIO = AP_GREATSWORD,
-		RAD = AP_DAGGER,
-		HOLY = -AP_GREATSWORD,
-		DARK = AP_GREATSWORD
-	)
-
-	size = SIZE_2
-
-
-	value = 120
 
 /obj/item/clothing/mask/gas/mining
 	name = "advanced gas mask"
@@ -49,11 +28,11 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		BIO = AP_GREATAXE,
-		RAD = AP_DAGGER
+		BLADE = 60,
+		BLUNT = 20,
+		PIERCE = 20,
+		BIO = 100,
+		RAD = 10
 	)
 
 	size = SIZE_2

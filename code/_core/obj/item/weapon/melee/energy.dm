@@ -100,7 +100,7 @@
 	desc_extended = "A lightweight energy blade that has become the standard issue melee pretty much everywhere. It's main issue is that it's not usable as a bayonet due to it's lack of weight and it's complex mechanisms."
 	icon = 'icons/obj/item/weapons/melee/laser/sword.dmi'
 
-	value = 80
+	value = 400
 
 	damage_type = /damagetype/melee/sword/energy
 	damage_type_on = /damagetype/melee/sword/energy/on
@@ -162,7 +162,7 @@
 	damage_type = /damagetype/melee/club/shield/energy
 	damage_type_on = /damagetype/melee/club/shield/energy/on
 
-	value = 400
+	value = 500
 
 	dan_mode = TRUE
 
@@ -239,7 +239,7 @@
 	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
 	icon = 'icons/obj/item/weapons/melee/swords/plightbringer.dmi'
 
-	value = 1000
+	value = 2500
 	rarity = RARITY_RARE
 
 	damage_type = /damagetype/melee/sword/plightbringer

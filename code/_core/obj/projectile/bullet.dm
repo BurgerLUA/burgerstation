@@ -45,9 +45,9 @@
 	var/reagent_to_add = /reagent/medicine/omnizine
 	var/volume_to_add = 15
 
-/obj/projectile/bullet/syringe/damage_atom(var/atom/hit_atom)
+/obj/projectile/bullet/syringe/on_projectile_hit(var/atom/hit_atom)
 
-	if(is_living(hit_atom))
+	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(L.iff_tag == iff_tag)
 			if(L.reagents)
@@ -61,9 +61,8 @@
 	icon = 'icons/obj/projectiles/explosive.dmi'
 	icon_state = "HE"
 
-/obj/projectile/bullet/HE_40M/post_on_hit(var/atom/hit_atom)
+/obj/projectile/bullet/HE_40M/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
-
 	if(.)
 		explode(get_turf(hit_atom),20,owner,weapon,iff_tag)
 
@@ -73,9 +72,11 @@
 	icon = 'icons/obj/projectiles/rocket.dmi'
 	icon_state = "gyrojet"
 
-/obj/projectile/bullet/gyrojet/post_on_hit(var/atom/hit_atom)
-	explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
+/obj/projectile/bullet/gyrojet/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
+
 
 /obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
 
@@ -93,7 +94,8 @@
 			vel_y += clamp(vel_x_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
-			on_hit(current_loc,TRUE)
+			on_projectile_hit(current_loc)
+			qdel(src)
 			return FALSE
 
 
@@ -103,7 +105,8 @@
 	icon = 'icons/obj/projectiles/rocket.dmi'
 	icon_state = "rocket"
 
-/obj/projectile/bullet/rocket/post_on_hit(var/atom/hit_atom)
+/obj/projectile/bullet/rocket/on_projectile_hit(var/atom/hit_atom)
+
 	. = ..()
 
 	if(.)

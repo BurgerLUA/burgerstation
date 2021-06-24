@@ -12,8 +12,6 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 /obj/hud/button/widget/experience
 	name = "Check Experience"
 	icon_state = "xp_new"
@@ -74,7 +72,7 @@
 
 	if(. && is_player(caller))
 		var/mob/living/advanced/player/P = caller
-		P.logout()
+		P.try_logout()
 
 
 /obj/hud/button/widget/change_theme

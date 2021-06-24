@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/crab.dmi'
 	icon_state = "crab"
 	damage_type = /damagetype/npc/crab
-	class = /class/crab
+
 
 	health_base = 50
 	stamina_base = 25
@@ -23,10 +23,10 @@
 	stun_angle = 180
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		PIERCE = AP_CLUB,
-		HEAT = -AP_CLUB,
-		COLD = -AP_CLUB,
+		BLADE = 60,
+		PIERCE = 60,
+		HEAT = -60,
+		COLD = -60,
 		ION = INFINITY
 	)
 
@@ -58,16 +58,17 @@
 	boss_icon_state = "crab_king"
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
-	pixel_x = -32
-	pixel_y = -12
 
 	health_base = 2500
 	stamina_base = 1000
 	mana_base = 100
 
+	pixel_y = -8
+	pixel_x = -32
+
 	ai = /ai/
 
-	class = /class/crab/king
+
 
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/fish/raw_crab/,
@@ -80,7 +81,7 @@
 	)
 
 
-	object_size = 1
+	object_size = 2
 
 	boss = TRUE
 	force_spawn = TRUE
@@ -89,12 +90,12 @@
 	damage_type = /damagetype/npc/crab
 
 	armor_base = list(
-		BLADE = AP_GREATSWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_GREATSWORD,
-		ARCANE = -AP_SWORD,
-		HEAT = -AP_CLUB,
-		COLD = -AP_CLUB,
+		BLADE = 80,
+		BLUNT = 40,
+		PIERCE = 80,
+		ARCANE = -20,
+		HEAT = -60,
+		COLD = -60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY

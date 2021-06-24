@@ -80,5 +80,14 @@
 
 #define STRESSED "stressed"
 
-#define STIM "stimulated"
-//Getting high as kite&ignoring boolet
+#define SHOVED "shoved"
+
+#define SLOW "slow"
+
+#define MANAVOID "manavoid"
+
+#define CONSECRATED "consecrated"
+
+#define CURSED "cursed"
+
+#define BLIGHTED "blighted"

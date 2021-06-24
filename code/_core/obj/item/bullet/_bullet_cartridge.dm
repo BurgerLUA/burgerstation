@@ -26,6 +26,7 @@
 	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 	var/bullet_color //The bullet color of the projectile.
 	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/penetrations = 0 //How many additional penetrations this bullet is allowed.
 
 	var/caseless = FALSE
 
@@ -41,6 +42,9 @@
 
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
+	var/power = 0 //Set is SSweapons
+
+
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
 	return ..()
@@ -48,11 +52,45 @@
 /obj/item/bullet_cartridge/proc/calculate_weight()
 	return size*0.25
 
+/obj/item/bullet_cartridge/proc/get_power()
+
+	. = 0
+
+	if(!damage_type_bullet)
+		return .
+
+	var/damagetype/D = all_damage_types[damage_type_bullet]
+	if(!D)
+		return .
+
+	for(var/k in D.attack_damage_base)
+		. += D.attack_damage_base[k]
+
 /obj/item/bullet_cartridge/get_base_value()
-	. = ..()
+
+	if(!damage_type_bullet)
+		return ..()
+
+	var/damagetype/D = all_damage_types[damage_type_bullet]
+	if(!D)
+		return ..()
+
+	. = D.calculate_value(src)*projectile_count
+
+	. *= 0.75 + (projectile_speed/TILE_SIZE)*0.25
+
+	. *= 0.75 + max(0.5,1 - base_spread)*0.25
+
+	. *= 0.5 + max(0,1-inaccuracy_modifer)*0.5
+
+	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
+
+	. += min(10,(bullet_length*bullet_diameter)/(9*19))
+
 	if(is_spent)
 		. *= 0.05
-	. = max(.,1)
+
+	. = max(0.01,.)
 
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
 	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'

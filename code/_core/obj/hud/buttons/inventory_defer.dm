@@ -4,6 +4,7 @@
 	name = "inventory"
 	var/obj/hud/inventory/referencing
 	var/obj/hud/button/close_inventory_defers/assoc_button
+	layer = 0
 
 /obj/hud/button/inventory_defer/Destroy()
 	referencing = null

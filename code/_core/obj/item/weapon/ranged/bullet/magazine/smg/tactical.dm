@@ -4,21 +4,21 @@
 	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range."
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3.dmi'
 	icon_state = "inventory"
+	value = 1400
 
-	shoot_delay = 1.75
+	shoot_delay = 2
 
 	automatic = TRUE
+
+	firemodes = list("semi-automatic","automatic","burst")
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 3
-
 	size = SIZE_2
-	weight = 5
+	weight = 10
 
-	heat_per_shot = 0.01
 	heat_max = 0.03
 
 	bullet_length_min = 25
@@ -28,8 +28,6 @@
 	bullet_diameter_min = 10
 	bullet_diameter_best = 10.17
 	bullet_diameter_max = 11
-
-	value = 700
 
 	ai_heat_sensitivity = 0.5
 
@@ -65,7 +63,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 	dan_mode = TRUE
 
@@ -79,7 +77,6 @@
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 
@@ -121,5 +118,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3_nt.dmi'
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+
 

@@ -1,10 +1,12 @@
+
+
 /obj/item/currency/
 	name = "currency"
 	desc = "DOSH"
 	desc_extended = "Grab it while it's hot!"
 
 	item_count_current = 1
-	item_count_max = 5000
+	item_count_max = 10000
 
 	size = 0.002
 	weight = 0.002
@@ -12,6 +14,8 @@
 	var/currency_class = "none"
 
 	value_burgerbux = 1 //Prevents being sold in vendors.
+
+	glide_size = 1
 
 /obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
 
@@ -104,32 +108,65 @@
 /obj/item/currency/magic_token/max/Generate()
 	item_count_current = item_count_max
 
-/obj/item/currency/rubles
-	name = "Neo-Russian rubles"
-	desc = "Works as a good toilet paper substitute."
-	desc_extended = "Currency primarily used by russian-funded guerilla. Features experimental in-built convertational technology that changes its appearance based on the amount of money in close proximity. In layman's terms, it 'merges' itself."
-	icon = 'icons/obj/item/currency/rubles.dmi'
+
+/obj/item/currency/gold
+	name = "gold coin"
+	icon = 'icons/obj/item/currency/gold.dmi'
 	icon_state = "1"
-	value = 10
+	value = -1 //Value is based on current economy, see get_base_value()
 
-	currency_class = "Rubles"
+	item_count_max = 200
 
-/obj/item/currency/rubles/loot/Generate()
-	item_count_current = pick(20,20,20,20,20,20,40,40,60,60,80,100)
-	return ..()
+	size = SIZE_4/200
+	weight = 50/200
 
-/obj/item/currency/rubles/player_antagonist_spawn/Generate()
-	item_count_current = 1000
-	return ..()
+	currency_class = "gold"
 
-/obj/item/currency/rubles/update_icon()
+	drop_sound = null
+
+	plane = PLANE_CURRENCY
+
+/obj/item/currency/gold/get_base_value()
+	return FLOOR(SSeconomy.credits_per_gold,1) * item_count_current
+
+/obj/item/currency/gold/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+
+	if(isturf(old_location))
+		var/turf/T = old_location
+		for(var/obj/item/currency/gold/G in T.contents)
+			if(G == src || G.qdeleting)
+				continue
+			G.transfer_item_count_to(src)
+
+	. = ..()
+
+/obj/item/currency/gold/Finalize()
+	. = ..()
+	update_value()
+
+/obj/item/currency/gold/update_icon()
+	. = ..()
 	switch(item_count_current)
-		if(1 to 10)
+		if(1 to 40)
 			icon_state = "[item_count_current]"
-		if(11 to 100)
-			icon_state = "[FLOOR(item_count_current/10, 1)*10]"
-		if(101 to 1000)
-			icon_state = "[FLOOR(item_count_current/100, 1)*100]"
-		if(1001 to 5000)
-			icon_state = "[FLOOR(value/1000, 1)*1000]"
-	return ..()
+		if(40 to 100)
+			icon_state = "[FLOOR(item_count_current,10)]"
+		if(100 to 200)
+			icon_state = "[FLOOR(item_count_current,20)]"
+
+/obj/item/currency/gold/update_overlays()
+
+	. = ..()
+
+	if(has_suffix(icon_state,"_anim"))
+		return .
+
+	var/desired_overlay
+	if(item_count_current < 10)
+		desired_overlay = "sparkle_1"
+	else
+		desired_overlay = "sparkle_[min(50,FLOOR(item_count_current,10))]"
+
+	if(desired_overlay)
+		var/image/I = new/image(icon,desired_overlay)
+		add_overlay(I)

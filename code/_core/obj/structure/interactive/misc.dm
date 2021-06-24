@@ -74,11 +74,12 @@ obj/structure/interactive/misc/mirror
 obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O)
 	if(is_player(O))
 		var/mob/living/advanced/player/P = O
-		P.add_chargen_buttons()
-		P.handle_hairstyle_chargen(-1,update_blends=FALSE)
-		P.handle_beardstyle_chargen(-1,update_blends=FALSE)
-		P.update_all_blends()
-		P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+		if(P.tutorial)
+			P.add_chargen_buttons()
+			P.handle_hairstyle_chargen(-1,update_blends=FALSE)
+			P.handle_beardstyle_chargen(-1,update_blends=FALSE)
+			P.update_all_blends()
+			P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
 
 	return ..()
 
@@ -97,7 +98,7 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 	icon_state = "mirror_broke"
 
 /obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(atom/movable/O)
-	if(istype(O,/mob/living/advanced/player/antagonist/) && SSgamemode.active_gamemode.state < GAMEMODE_BOARDING)
+	if(istype(O,/mob/living/advanced/player/antagonist/))
 		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()
 		P.handle_hairstyle_chargen(-1,update_blends=FALSE)

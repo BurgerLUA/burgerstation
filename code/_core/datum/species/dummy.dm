@@ -11,8 +11,6 @@
 	default_color_skin = "#FFE121"
 	default_color_hair = "#000000"
 
-	flags_species_traits = TRAIT_NO_PAIN | TRAIT_NO_BLOOD
-
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,
 		BODY_HEAD = /obj/item/organ/head,
@@ -39,6 +37,13 @@
 		BODY_ARM_LEFT = /obj/item/organ/arm/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand,
 		BODY_HAND_LEFT = /obj/item/organ/hand/left
+	)
+
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/none,
+		/trait/flamability/fire_retardant,
+		/trait/blood_regen/none
 	)
 
 /species/dummy/generate_blood_type()

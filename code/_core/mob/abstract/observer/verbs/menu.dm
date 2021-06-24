@@ -81,7 +81,7 @@ var/global/antag_count = 0
 				P.force_move(get_turf(D))
 				P.start_chargen()
 				P.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
-				P.adjust_currency(8000)
+				P.adjust_currency(10000)
 			else
 				P.force_move(T)
 				P.start_chargen()
@@ -122,18 +122,10 @@ var/global/antag_count = 0
 		return FALSE
 
 	if(!SSgamemode || !SSgamemode.active_gamemode)
-		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an antagonist!"))
+		src.to_chat(span("warning","The game has not started yet!"))
 		return FALSE
 
 	var/gamemode_state = SSgamemode.active_gamemode.state
-
-	if(gamemode_state <= GAMEMODE_WAITING)
-		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an antagonist!"))
-		return FALSE
-
-	if(gamemode_state >= GAMEMODE_FIGHTING)
-		src.to_chat(span("warning","The game has already started! It's too late to become an antagonist!"))
-		return FALSE
 
 	if(gamemode_state >= GAMEMODE_BREAK)
 		src.to_chat(span("warning","The round is currently ending!"))

@@ -10,12 +10,12 @@
 	mana_base = 200
 
 	ai = /ai/clown
-	class = /class/clown //Just like highschool
+
 	damage_type = /damagetype/npc/clown
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -41,11 +41,11 @@
 	ai = /ai/clown/hulk
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -60,12 +60,12 @@
 	icon_state = "destroyer"
 
 	armor_base = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		ARCANE = -AP_DAGGER,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		BLADE = 60,
+		BLUNT = 60,
+		PIERCE = 60,
+		ARCANE = -10,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -80,9 +80,9 @@
 	ai = /ai/clown/tree
 
 	armor_base = list(
-		BLADE = -AP_SWORD,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		BLADE = -20,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -103,8 +103,8 @@
 	ai = /ai/clown/long
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -120,8 +120,8 @@
 	ai = /ai/clown/pie
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -138,9 +138,9 @@
 	ai = /ai/clown/lube
 
 	armor_base = list(
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
-		BIO = AP_CLUB,
+		HOLY = -60,
+		DARK = 60,
+		BIO = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -166,7 +166,7 @@
 	health_base = 500
 
 	ai = /ai/clown/creep
-	class = /class/clown/creep
+
 	damage_type = /damagetype/npc/clown/creep
 
 	armor_base = list(
@@ -196,7 +196,7 @@
 	health_base = 150
 
 	ai = /ai/clown/giggles
-	class = /class/clown/giggles
+
 	damage_type = /damagetype/npc/clown/giggles
 
 	armor_base = list(
@@ -227,7 +227,7 @@
 	health_base = 500
 
 	ai = /ai/clown/chad
-	class = /class/clown/chad
+
 	damage_type = /damagetype/npc/clown/chad
 
 	armor_base = list(
@@ -259,7 +259,7 @@
 	health_base = 150
 
 	ai = /ai/clown/scary
-	class = /class/clown/scary
+
 	damage_type = /damagetype/npc/clown/scary
 
 	armor_base = list(
@@ -289,7 +289,7 @@
 	health_base = 250
 
 	ai = /ai/clown/flesh
-	class = /class/clown/flesh
+
 	damage_type = /damagetype/npc/clown/flesh
 
 	armor_base = list(
@@ -319,7 +319,7 @@
 	health_base = 200
 
 	ai = /ai/clown/plural
-	class = /class/clown/plural
+
 	damage_type = /damagetype/npc/clown/plural
 
 	armor_base = list(
@@ -351,9 +351,9 @@
 	ai = /ai/clown/mutant
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		ARCANE = 60,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY,
@@ -373,9 +373,9 @@
 	ai = /ai/clown/blob
 
 	armor_base = list(
-		ARCANE = AP_CLUB,
-		HOLY = -AP_CLUB,
-		DARK = AP_CLUB,
+		ARCANE = 60,
+		HOLY = -60,
+		DARK = 60,
 		FATIGUE = INFINITY,
 		ION = INFINITY,
 		PAIN = INFINITY
@@ -391,7 +391,7 @@
 	health_base = 50
 
 	ai = /ai/clown/honkling
-	class = /class/clown/honkling
+
 	damage_type = /damagetype/npc/clown/honkling
 
 	armor_base = list(

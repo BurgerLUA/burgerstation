@@ -9,10 +9,8 @@
 
 	var/chargen_min_level = 1
 	var/chargen_max_level = 100
-	var/default_level = 5
+	var/default_level = CHARGEN_DEFAULT_LEVEL
 	var/counts_towards_level = TRUE
-
-	var/combat_level_mul = 0 //How much this skill counts towards your combat level.
 
 	var/last_level = 0
 

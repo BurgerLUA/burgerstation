@@ -5,11 +5,12 @@
 	. = list()
 
 	.["hello"] = list(
-		"Welcome to Bawse loot. We don't actually sell boss loot, but we do sell #1! We also provide #2, where you can #3, for a small price. We also provide banking services where you can #4.",
+		"Welcome to Bawse loot. We don't actually sell boss loot, but we do sell #1! We also provide #2, where you can #3, for a small price. We also provide banking services where you can #4 or #5 for gold.",
 		"*supply crates",
 		"*deathbox services",
 		"*reclaim deathbox",
-		"*access bank"
+		"*access your bank",
+		"*sell items"
 	)
 
 	.["*supply crates"] = list(
@@ -25,19 +26,26 @@
 
 	.["*reclaim deathbox"] = list("...")
 
-	.["*access bank"] = list("...")
+	.["*sell items"] = list("...")
+
+	.["*access your bank"] = list("...")
 
 
 /dialogue/npc/goblin_merchant/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()
 
-	if(topic == "*reclaim deathbox")
-		load_deathbox(P,P.dialogue_target)
-		P.dialogue_target_id = null
-		close_menu(P,/menu/dialogue/)
+	switch(topic)
+		if("*reclaim deathbox")
+			load_deathbox(P,P.dialogue_target)
+			P.dialogue_target_id = null
+			close_menu(P,/menu/dialogue/)
+		if("*access your bank")
+			P.access_bank()
+			P.dialogue_target_id = null
+			close_menu(P,/menu/dialogue/)
+		if("*sell items")
+			P.add_sell_buttons()
+			P.dialogue_target_id = null
+			close_menu(P,/menu/dialogue/)
 
-	if(topic == "*access bank")
-		P.access_bank()
-		P.dialogue_target_id = null
-		close_menu(P,/menu/dialogue/)

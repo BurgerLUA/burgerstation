@@ -11,7 +11,7 @@
 	update_sprite()
 	. = ..()
 	update_stats()
-	
+
 /obj/hud/button/health/bar/update_stats(var/mob/living/M)
 	var/math = FLOOR((current/max) * 28, 1)
 	icon_state = "bar_[clamp(math,0,28)]"
@@ -42,7 +42,7 @@
 
 /obj/hud/button/health/bar/hp/update_stats(var/mob/living/M)
 
-	if(!M || !M.health)
+	if(!M || !istype(M.health))
 		return ..()
 
 	min = 0
@@ -68,7 +68,7 @@
 
 /obj/hud/button/health/bar/sp/update_stats(var/mob/living/M)
 
-	if(!M || !M.health)
+	if(!M || !istype(M.health))
 		return ..()
 
 	min = 0
@@ -94,7 +94,7 @@
 
 /obj/hud/button/health/bar/mp/update_stats(var/mob/living/M)
 
-	if(!M || !M.health)
+	if(!M || !istype(M.health))
 		return ..()
 
 	min = 0

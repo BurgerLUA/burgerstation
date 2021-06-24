@@ -6,16 +6,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_SWORD,
-		ARCANE = -AP_AXE,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_SWORD,
-		BIO = AP_GREATCLUB,
-		RAD = AP_CLUB
+		BLADE = 20,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 20,
+		ARCANE = -40,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 20,
+		BIO = 120,
+		RAD = 60
 	)
 
 	size = SIZE_3

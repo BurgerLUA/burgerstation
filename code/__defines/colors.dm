@@ -23,14 +23,20 @@
 
 #define COLOR_RED_DARK "#490000"
 
+#define COLOR_PINK "#FF74FF"
+
 #define COLOR_ORANGE "#D38F28"
 
 #define COLOR_BROWN "#644D37"
 #define COLOR_BROWN_LIGHT "#896A4C"
 
+#define COLOR_BRONZE "#C6792B"
+
 #define COLOR_WOOD "#6F4533"
 
 #define COLOR_ADAMANITUM_CARBON "#00FF00"
+
+#define COLOR_PLATINUM "#B2C4C4"
 
 
 //Special colors
@@ -100,4 +106,5 @@
 
 
 
-#define COLOR_LIGHT "#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT "#E8E8CE" //"#DBD4D4" //"#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT_BULB "#F8F4C6"

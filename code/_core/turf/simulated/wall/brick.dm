@@ -1,7 +1,12 @@
 /turf/simulated/wall/brick
 	name = "wall"
-	icon = 'icons/turf/wall/brick.dmi'
-	icon_state = "wall"
+
+	icon = 'icons/turf/wall/rock_preview.dmi'
+	icon_state = "brick"
+
+	real_icon = 'icons/turf/wall/brick.dmi'
+	real_icon_state = "wall"
+
 	corner_icons = TRUE
 	corner_category = "brick"
 
@@ -17,6 +22,9 @@
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"
 	color = "#FFC68C"
+
+/turf/simulated/wall/brick/sand/ish
+	color = "#9E866E"
 
 /turf/simulated/wall/brick/marble
 	name = "marble wall"
@@ -34,5 +42,12 @@
 	name = "uranium brick wall"
 	color = COLOR_URANIUM
 	//material = /material/uranium
+
+
+/turf/simulated/wall/brick/grey
+	color = "#647064"
+
+/turf/simulated/wall/brick/grey/dark
+	color = COLOR_GREY_DARK
 
 

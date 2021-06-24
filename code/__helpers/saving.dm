@@ -10,3 +10,6 @@
 
 #define SAVEPATH(varname) if(!isnull(vars[varname])) .[varname] = vars[varname]
 #define LOADPATH(varname) if(!isnull(object_data)) vars[varname] = text2path(object_data[varname])
+
+#define SAVELIST(varname) SAVEVAR(varname)
+#define LOADLIST(varname) LOADVAR(varname)

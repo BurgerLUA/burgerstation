@@ -8,6 +8,7 @@
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
+	var/old_disallow_generation = disallow_generation
 
 	for(var/obj/effect/footprint/F in src.contents)
 		qdel(F)
@@ -25,8 +26,12 @@
 
 	var/turf/W = new N(src)
 	W.initialized = FALSE
+	W.finalized = FALSE
+	W.generated = FALSE
 	INITIALIZE(W)
+	FINALIZE(W)
 	. = W
+	W.disallow_generation = old_disallow_generation
 
 	W.recalc_atom_opacity()
 	if(SSlighting && SSlighting.initialized)

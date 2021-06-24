@@ -14,8 +14,6 @@
 	default_color_detail = "#FFFFFF"
 	default_color_glow = "#FFFFFF"
 
-	flags_species_traits = TRAIT_NO_PAIN | TRAIT_NO_BLOOD
-
 	genderless = TRUE
 
 	spawning_organs_male = list(
@@ -32,4 +30,13 @@
 		BODY_HAND_LEFT = /obj/item/organ/hand/skeleton/left,
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
 		BODY_EYE_LEFT = /obj/item/organ/eye/left
+	)
+
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/slow,
+		/trait/flamability/fire_retardant,
+		/trait/death_check/tenacious,
+		/trait/bleed_multiplier/hard_skin,
+		/trait/blood_regen/none
 	)

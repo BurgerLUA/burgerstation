@@ -32,20 +32,23 @@
 			owner.add_player_to_boss(A)
 		if(objective_move == objective_attack)
 			objective_move = null
-		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
+		owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
+		owner.update_intent()
 		return TRUE
 	else if(istype(A))
 		frustration_attack = 0
 		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
 		objective_attack = A
-		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
+		owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
+		owner.update_intent()
 		return TRUE
 
 	frustration_attack = 0
 
 	objective_attack = null
-	owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
+	owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
+	owner.update_intent()
 
 	if(!owner.dead && old_attack && !old_attack.qdeleting)
 		if(is_living(old_attack))
@@ -132,11 +135,11 @@
 				obstacles -= k
 				continue
 			if(isturf(A))
-				if(A.Enter(owner,get_turf(owner)))
+				if(A.Enter(owner,owner.loc))
 					obstacles -= k
 					continue
 			if(ismovable(A))
-				if(A.Cross(owner))
+				if(A.Cross(owner,owner.loc))
 					obstacles -= k
 					continue
 			var/distance_check = get_dist(owner,A)

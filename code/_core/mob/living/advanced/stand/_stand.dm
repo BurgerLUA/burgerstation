@@ -19,7 +19,7 @@
 
 	ai = /ai/advanced/stand
 
-	class = /class/stand
+
 
 	var/display_menacing = FALSE
 
@@ -154,4 +154,3 @@
 		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
 	update_all_blends()
 
-	

@@ -1,13 +1,13 @@
 /health/construction/barricade
 
 	armor_base = list(  //Base armor for the mob.
-		BLADE = DAMAGE_GREATAXE,
-		BLUNT = DAMAGE_CLUB,
-		PIERCE = DAMAGE_AXE,
-		LASER = DAMAGE_AXE,
-		ARCANE = DAMAGE_GREATCLUB,
-		HEAT = DAMAGE_SWORD,
-		COLD = DAMAGE_GREATSWORD,
+		BLADE = 90,
+		BLUNT = 60,
+		PIERCE = 45,
+		LASER = 45,
+		ARCANE = 105,
+		HEAT = 30,
+		COLD = 75,
 		BOMB = 0,
 		BIO = INFINITY,
 		RAD = INFINITY,

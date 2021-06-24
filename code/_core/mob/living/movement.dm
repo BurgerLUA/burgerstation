@@ -104,6 +104,8 @@
 
 /mob/living/on_sprint()
 	add_hydration(-0.4)
+	if(client)
+		add_attribute_xp(ATTRIBUTE_AGILITY,1)
 	return ..()
 
 /mob/living/on_jog()
@@ -124,22 +126,19 @@
 
 	. = ..()
 
-
-
 /mob/living/get_stance_movement_mul()
 
 	if(horizontal)
-		move_mod = 1
-		return 6
+		return walk_delay_mul*2
 
-	return ..()
+	. = ..()
 
 /mob/living/get_movement_delay()
 
 	. = ..()
 
 	if(is_sneaking)
-		. *= (2 - stealth_mod*0.5)
+		. *= max(2 - stealth_mod*0.5,1)
 
 	. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
@@ -152,8 +151,11 @@
 	var/trait/speed/S = get_trait_by_category(/trait/speed/)
 	if(S) . *= S.move_delay_mul
 
-	if(horizontal)
-		. = max(.,SECONDS_TO_TICKS(1))
+	if(has_status_effect(SLOW))
+		. *= 2
+
+	if(!horizontal)
+		. *= max(1 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.5)
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
@@ -182,16 +184,16 @@
 
 	return FALSE
 
-/mob/living/Cross(atom/movable/O)
+/mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(O.density && is_living(O))
+	if(is_living(O) && O.density)
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
-			//If the crosser is horizontal, or the src is horizontal, who cares.
+			//If the crosser is horizontal, or the src is horizontal, run normal checks.
 			return ..()
-		if(L.loyalty_tag == src.loyalty_tag && !L.ai)
-			//If the crosser is not an AI, who cares.
-			return ..()
+		if(L.loyalty_tag == src.loyalty_tag && (!L.ai || !src.ai))
+			//If the crosser is not an AI and we're on the same team, allow it.
+			return TRUE
 		if(L.size >= SIZE_ANIMAL)
 			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE

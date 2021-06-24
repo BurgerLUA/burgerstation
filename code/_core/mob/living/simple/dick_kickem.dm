@@ -10,7 +10,7 @@
 	mana_base = 50
 
 	ai = /ai/dick_kickem/
-	class = /class/npc/robust
+
 	damage_type = /damagetype/npc/dick_kickem
 
 	iff_tag = "Meme"
@@ -19,19 +19,19 @@
 	size = SIZE_BOSS
 
 	armor_base = list(
-		BLADE = AP_AXE,
-		BLUNT = AP_AXE,
-		PIERCE = AP_AXE,
-		LASER = AP_AXE,
-		ARCANE = AP_AXE,
-		HEAT = AP_AXE,
-		COLD = AP_AXE,
-		BOMB = AP_AXE,
-		BIO = AP_AXE,
-		RAD = AP_AXE,
-		HOLY = AP_AXE,
-		DARK = AP_AXE,
-		FATIGUE = AP_AXE,
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 40,
+		ARCANE = 40,
+		HEAT = 40,
+		COLD = 40,
+		BOMB = 40,
+		BIO = 40,
+		RAD = 40,
+		HOLY = 40,
+		DARK = 40,
+		FATIGUE = 40,
 		ION = INFINITY,
 		PAIN = INFINITY
 	)

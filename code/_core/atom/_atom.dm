@@ -3,7 +3,7 @@
 	desc = "What the fuck is this?"
 	var/label
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
@@ -120,6 +120,10 @@
 
 	return ..()
 
+
+/atom/proc/get_base_transform()
+	return matrix()
+
 /atom/Initialize()
 
 	if(reagents)
@@ -153,7 +157,7 @@
 
 /atom/proc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(!src.initialized)
+	if(!src.finalized)
 		return FALSE
 
 	if(!src.health)
@@ -225,16 +229,18 @@
 /atom/proc/is_busy()
 	return SSprogressbars.all_progress_bars[src] ? TRUE : FALSE
 
-
 /atom/Enter(atom/movable/O,atom/oldloc) //Override default
 	return TRUE
 
 /atom/Exit(atom/movable/O,atom/oldloc) //Override default
 	return TRUE
 
-/atom/Cross(atom/movable/O) //Override default.
+/atom/Cross(atom/movable/O,atom/oldloc) //Override default.
 	if(O.collision_flags & src.collision_flags)
 		return FALSE
+	return TRUE
+
+/atom/Uncross(atom/movable/O,atom/newloc)
 	return TRUE
 
 /atom/Crossed(atom/movable/O) //Override default

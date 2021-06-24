@@ -10,6 +10,12 @@
 	name = "sniper bullet"
 	icon_state = "bullet_massive"
 
+/obj/projectile/bullet/firearm/sniper/explosive/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),5,owner,weapon,iff_tag)
+
+
 /obj/projectile/bullet/revolver_large
 	name = "revolver bullet"
 	icon_state = "bullet_large"

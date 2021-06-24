@@ -4,8 +4,9 @@
 	desc_extended = "An early prototype of the 9x22mm NanoTech SMG. This one uses .40 ammo."
 	icon = 'icons/obj/item/weapons/ranged/smg/40.dmi'
 	icon_state = "inventory"
+	value = 1500
 
-	shoot_delay = 1.5
+	shoot_delay = 1.75
 
 	automatic = TRUE
 
@@ -15,14 +16,9 @@
 
 	override_icon_state = TRUE
 
-	view_punch = 6
-
-
-
 	size = SIZE_3
-	weight = 8
+	weight = 12
 
-	heat_per_shot = 0.03
 	heat_max = 0.05
 
 	bullet_length_min = 21
@@ -32,8 +28,6 @@
 	bullet_diameter_min = 9.8
 	bullet_diameter_best = 10
 	bullet_diameter_max = 11.2
-
-	value = 300
 
 	ai_heat_sensitivity = 0.5
 
@@ -67,7 +61,7 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/deathsquad
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/p69/update_icon()
 	if(stored_magazine)
@@ -83,5 +77,4 @@
 	return 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/smg/p69/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return 0.02 - (0.04 * L.get_skill_power(SKILL_RANGED))

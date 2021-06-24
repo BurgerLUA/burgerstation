@@ -7,7 +7,7 @@
 	sex = MALE
 	gender = MALE
 	var/desired_loadout = /loadout/skeleton_miner/skeleton
-	class = /class/pirate
+
 
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"

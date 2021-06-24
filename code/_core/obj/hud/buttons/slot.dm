@@ -4,16 +4,15 @@
 	desc = "Slot button for quick actions."
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
 	icon_state = "square_trim"
-	screen_loc = "LEFT,TOP"
-	alpha = 200
+	screen_loc = "LEFT+0.25,TOP-0.25"
+	alpha = 0
 
 	flags = FLAGS_HUD_MOB
 
-	var/atom/stored_atom
-
-	var/active = FALSE
+	var/obj/stored_object
 
 	plane = PLANE_HUD
+	layer = 1
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
@@ -25,154 +24,123 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/slot/Destroy()
-	stored_atom = null
+	stored_object = null
 	return ..()
 
-/obj/hud/button/slot/update_sprite()
+/obj/hud/button/slot/update_owner(var/mob/desired_owner)
+
+	var/mob/old_owner = owner
 
 	. = ..()
 
-	if(active)
-		color = "#00FF00"
-	else
-		color = "#FFFFFF"
-
-
-/obj/hud/button/slot/update_overlays()
-
-	. = ..()
-
-	if(stored_atom)
-		var/image/I = new/image(stored_atom.icon,stored_atom.icon_state)
-		I.appearance = stored_atom.appearance
-		I.plane = PLANE_HUD_OBJ
-		add_overlay(I)
-
+	if(.) //Owner was changed
+		if(is_advanced(old_owner))
+			var/mob/living/advanced/A = old_owner
+			A.slot_buttons -= id
+		if(is_advanced(owner))
+			var/mob/living/advanced/A = owner
+			A.slot_buttons[id] = src
 
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
-	if(stored_atom && stored_atom.qdeleting)
-		clear_object(caller)
+	if(!stored_object)
 		return FALSE
 
-	var/obj/item/I = stored_atom
+	if(!caller.client)
+		return FALSE
 
-	if(istype(I) && I.quick_function_type == FLAG_QUICK_INSTANT)
-		stored_atom.quick(caller)
-		caller.quick_mode = 0
-		spawn()
-			color = "#00FF00"
-			sleep(5)
-			color = "#FFFFFF"
+	if(stored_object.qdeleting)
+		clear_object()
+		return FALSE
+
+	var/client/C = caller.client
+
+	if(stored_object.quick(caller,C.last_object,C.last_location,C.last_params))
+		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
 	else
-		active = !active
-		caller.quick_mode = active ? id : null
-		update_sprite()
+		animate(src,color="#FF0000",time=1,flags=ANIMATION_PARALLEL)
 
-	if(active)
-		for(var/obj/hud/button/slot/S in owner.buttons)
-			if(S == src)
-				continue
-			S.active = FALSE
-			S.update_sprite()
+	animate(color="#FFFFFF",time=5)
 
 	return TRUE
 
-/obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
-	if(stored_atom)
-		A.to_chat(span("notice","\The [stored_atom.name] was unbound from slot [icon_state]."))
-		stored_atom = null
-		update_sprite()
-		//animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
+/obj/hud/button/slot/proc/clear_object()
+	if(stored_object)
+		vis_contents -= stored_object
+		stored_object = null
+	alpha = 0
+	invisibility = 101
 	return TRUE
-
-/obj/hud/button/slot/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(stored_atom)
-		stored_atom.dropped_on_by_object(caller,object,location,control,params)
-		return TRUE
-
-	return clicked_on_by_object(caller,object)
 
 /obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	. = ..()
+	return TRUE
 
-	if(.)
-		clear_object(caller)
+/obj/hud/button/slot/proc/store_object(var/atom/object,location,control,params)
 
-
-/obj/hud/button/slot/proc/store_atom(var/mob/caller,var/atom/object,location,control,params)
-
-	if(!is_advanced(caller))
+	if(!object)
 		return FALSE
 
-	if(!is_item(object))
-		return FALSE
+	var/obj/O = object
 
-	var/mob/living/advanced/A = caller
-
-	var/obj/item/I = object
-
-	if(!istype(I) || !I.has_quick_function)
-		A.to_chat(span("warning","\The [I.name] doesn't have a quick bind function."))
+	if(!istype(O) || !O.has_quick_function)
 		return TRUE
 
-	clear_object(A)
+	clear_object()
 
-	stored_atom = object
-	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
-	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
-	active = FALSE
-	update_sprite()
+	stored_object = O
+	vis_contents += stored_object
+
+	alpha = 200
+	invisibility = 0
 
 	return TRUE
 
 /obj/hud/button/slot/A
 	id = "1"
 	maptext = "1"
-	screen_loc = "LEFT,TOP"
+	screen_loc = "LEFT+0.25,TOP-0.25"
 
 /obj/hud/button/slot/B
 	id = "2"
 	maptext = "2"
-	screen_loc = "LEFT+1,TOP"
+	screen_loc = "LEFT+1+0.25,TOP-0.25"
 
 /obj/hud/button/slot/C
 	id = "3"
 	maptext = "3"
-	screen_loc = "LEFT+2,TOP"
+	screen_loc = "LEFT+2+0.25,TOP-0.25"
 
 /obj/hud/button/slot/D
 	id = "4"
 	maptext = "4"
-	screen_loc = "LEFT+3,TOP"
+	screen_loc = "LEFT+3+0.25,TOP-0.25"
 
 /obj/hud/button/slot/E
 	id = "5"
 	maptext = "5"
-	screen_loc = "LEFT+4,TOP"
+	screen_loc = "LEFT+4+0.25,TOP-0.25"
 
 /obj/hud/button/slot/F
 	id = "6"
 	maptext = "6"
-	screen_loc = "LEFT+5,TOP"
+	screen_loc = "LEFT+5+0.25,TOP-0.25"
 
 /obj/hud/button/slot/G
 	id = "7"
 	maptext = "7"
-	screen_loc = "LEFT+6,TOP"
+	screen_loc = "LEFT+6+0.25,TOP-0.25"
 
 /obj/hud/button/slot/H
 	id = "8"
 	maptext = "8"
-	screen_loc = "LEFT+7,TOP"
+	screen_loc = "LEFT+7+0.25,TOP-0.25"
 
 /obj/hud/button/slot/I
-	id = "96"
+	id = "9"
 	maptext = "9"
-	screen_loc = "LEFT+8,TOP"
+	screen_loc = "LEFT+8+0.25,TOP-0.25"
 
 /obj/hud/button/slot/J
 	id = "0"
 	maptext = "0"
-	screen_loc = "LEFT+9,TOP"
+	screen_loc = "LEFT+9+0.25,TOP-0.25"

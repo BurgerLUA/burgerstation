@@ -19,6 +19,7 @@
 	size = 0.5
 	value = 10
 
+
 /obj/item/bullet_cartridge/bolt/Generate()
 	item_count_current = 3
 	return ..()

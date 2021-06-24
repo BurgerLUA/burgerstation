@@ -4,11 +4,11 @@
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/ash_drake
+
+
+	pixel_x = -16
 
 	value = 6000
-
-	pixel_w = -16
 
 	ai = /ai/boss/ash_drake/
 
@@ -34,26 +34,24 @@
 	//1 = flying
 	//2 = landing
 
-	attack_range = 2
-
 	force_spawn = TRUE
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_AXE,
-		LASER = AP_GREATSWORD,
-		ARCANE = AP_SWORD,
-		HEAT = AP_GREATSWORD,
-		COLD = -AP_AXE,
-		BIO = AP_SWORD,
-		RAD = AP_GREATSWORD,
-		HOLY = -AP_SWORD,
-		DARK = AP_GREATSWORD,
-		FATIGUE = AP_SWORD,
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 40,
+		LASER = 80,
+		ARCANE = 20,
+		HEAT = 80,
+		COLD = -40,
+		BIO = 20,
+		RAD = 80,
+		HOLY = -20,
+		DARK = 80,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	fatigue_from_block_mul = 0
@@ -85,6 +83,8 @@
 	blood_volume = 3000
 
 	soul_size = SOUL_SIZE_RARE
+
+	object_size = 2
 
 
 /*

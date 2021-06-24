@@ -28,8 +28,31 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-	var/standard_bullet_type //The standard bullet type this weapon normally uses.
+	uses_until_condition_fall = 50 // ~5000 rounds.
 
+/* Price calculation is hard.
+/obj/item/weapon/ranged/bullet/get_damage_price()
+
+	var/obj/item/bullet_cartridge/B = SSbalance.weapon_to_bullet[src.type]
+	if(!B)
+		return 0
+
+	var/damagetype/D = initial(B.damage_type_bullet)
+	if(!D)
+		return 0
+
+	D = all_damage_types[D]
+
+	if(!D)
+		return 0
+
+	. = D.calculate_value(src) * damage_mod
+
+
+/obj/item/weapon/ranged/bullet/get_base_value()
+	. = ..()
+	. += (bullet_length_max * bullet_diameter_max)/(9*19)*100
+*/
 
 /obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
 	. = ..()

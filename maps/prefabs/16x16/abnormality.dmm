@@ -6,7 +6,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/dmm_suite/clear_area)
 "c" = (
-/obj/marker/abnormality_spawn,
+/obj/structure/interactive/the_curse,
+/obj/marker/map_node,
 /turf/simulated/floor/plating/shuttle,
 /area/dmm_suite/clear_area)
 "d" = (
@@ -14,10 +15,19 @@
 /area/dmm_suite/clear_area)
 "e" = (
 /obj/structure/interactive/door/airlock/external,
+/obj/marker/map_node,
 /turf/simulated/floor/plating/shuttle,
 /area/dmm_suite/clear_area)
 "f" = (
 /turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"g" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"h" = (
+/obj/marker/lobby,
+/turf/simulated/floor/plating/shuttle,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -144,7 +154,7 @@ d
 b
 f
 f
-a
+f
 "}
 (8,1,1) = {"
 a
@@ -154,7 +164,7 @@ b
 d
 d
 c
-d
+h
 d
 e
 d
@@ -162,7 +172,7 @@ d
 e
 f
 f
-a
+g
 "}
 (9,1,1) = {"
 a
@@ -180,7 +190,7 @@ d
 b
 f
 f
-a
+f
 "}
 (10,1,1) = {"
 a

@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath_broodmother.dmi'
 	icon_state = "broodmother"
 	damage_type = /damagetype/unarmed/claw/
-	class = /class/goliath/broodmother
+
 
 	ai = /ai/goliath/broodmother
 
@@ -22,8 +22,6 @@
 	//0 = walking
 	//1 = flying
 	//2 = landing
-
-	attack_range = 1
 
 	force_spawn = TRUE
 	boss = TRUE
@@ -45,8 +43,7 @@
 
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/bone,
-		/obj/item/soapstone/orange,
-		/obj/item/weapon/ranged/magic/tome/summon/goliath
+		/obj/item/soapstone/orange
 	)
 
 	fatigue_from_block_mul = 0
@@ -90,4 +87,3 @@
 			FINALIZE(B)
 			tracked_babies += B
 
-	

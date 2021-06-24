@@ -54,6 +54,15 @@
 
 	affects_dead = FALSE
 
+
+/status_effect/stun/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	owner.remove_status_effect(STAGGER)
+	owner.remove_status_effect(PARRIED)
+	owner.remove_status_effect(SHOVED)
+
+
+
 /status_effect/sleeping
 	name = "Sleeping"
 	desc = "You're sleeping!"
@@ -115,6 +124,36 @@
 				owner.add_status_effect(STUN,stun_time,stun_time)
 				animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
+
+/status_effect/shoved
+	name = "Shoved"
+	desc = "You're shoved!"
+	id = SHOVED
+	minimum = 1
+	maximum = 10
+
+	affects_dead = FALSE
+
+/status_effect/shoved/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+
+	. = ..()
+
+	if(source && !owner.horizontal)
+		var/desired_move_dir = get_dir(source,owner)
+		var/old_dir = owner.dir
+		var/result = owner.Move(get_step(owner,desired_move_dir))
+		owner.dir = old_dir
+		owner.move_delay = max(owner.move_delay,duration)
+		var/list/movement = direction_to_pixel_offset(desired_move_dir)
+		if(!result) //We can move.
+			animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
+			spawn(1)
+				var/stun_time = max(duration,10)
+				owner.add_status_effect(STUN,stun_time,stun_time)
+				animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
+
+
+
 /status_effect/staggered
 	name = "Staggered"
 	desc = "You're staggered!"
@@ -132,11 +171,8 @@
 	return ..()
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-
 	. = ..()
-
-	if(source)
-		owner.move_delay = max(owner.move_delay,duration)
+	owner.move_delay = max(owner.move_delay,duration)
 
 /status_effect/slip
 	name = "Slipped"
@@ -333,3 +369,103 @@
 	if(owner && owner.client)
 		owner.remove_color_mod("stressed")
 	return TRUE
+
+
+
+/status_effect/mana_void
+	name = "Mana Void"
+	desc = "You've been mana voided!"
+	id = MANAVOID
+	minimum = 10
+	maximum = 100
+
+
+/status_effect/mana_void/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.mana_regen_buffer = -1000
+
+/status_effect/stressed/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+	owner.mana_regen_buffer = max(0,owner.mana_regen_buffer)
+
+/status_effect/slow
+	name = "Slowed"
+	desc = "You've been slowed!"
+	id = SLOW
+	minimum = 10
+	maximum = 300
+
+/status_effect/consencrated
+	name = "Consencrated"
+	desc = "You've been consencrated!"
+	id = CONSECRATED
+	minimum = 50
+	maximum = 600
+
+
+/status_effect/consencrated/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	. = ..()
+
+	if(!.)
+		return FALSE
+
+	if(!victim || !victim.health)
+		return FALSE
+
+	var/list/defense = victim.health.get_defense(null,null,TRUE)
+
+	if(defense[HOLY] > defense[DARK])
+		return FALSE
+
+	return TRUE
+
+/status_effect/consencrated/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	. = ..()
+	owner.burn_regen_buffer -= 5 * LIFE_TICK
+
+/status_effect/cursed
+	name = "Cursed"
+	desc = "You've been cursed!"
+	id = CURSED
+	minimum = 50
+	maximum = 600
+
+/status_effect/cursed/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	. = ..()
+
+	if(!.)
+		return FALSE
+
+	if(!victim || !victim.health)
+		return FALSE
+
+	var/list/defense = victim.health.get_defense(null,null,TRUE)
+
+	if(defense[HOLY] < defense[DARK])
+		return FALSE
+
+	return TRUE
+
+/status_effect/cursed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	. = ..()
+	owner.brute_regen_buffer -= 5 * LIFE_TICK
+
+
+
+/status_effect/blighted
+	name = "Blighted"
+	desc = "You've been blighted!"
+	id = BLIGHTED
+	minimum = 50
+	maximum = 600
+
+/status_effect/blighted/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	. = ..()
+	owner.brute_regen_buffer = min(owner.brute_regen_buffer,0)
+	owner.burn_regen_buffer = min(owner.burn_regen_buffer,0)
+	owner.tox_regen_buffer = min(owner.tox_regen_buffer,0)
+	owner.pain_regen_buffer = min(owner.pain_regen_buffer,0)
+	owner.rad_regen_buffer = min(owner.rad_regen_buffer,0)
+	owner.sanity_regen_buffer = min(owner.sanity_regen_buffer,0)
+	owner.mana_regen_buffer = min(owner.mana_regen_buffer,0)
+	owner.stamina_regen_buffer = min(owner.stamina_regen_buffer,0)

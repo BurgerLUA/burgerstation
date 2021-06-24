@@ -166,5 +166,16 @@
 	reagents.add_reagent(/reagent/medicine/synthflesh,60)
 	return ..()
 
+/obj/item/container/medicine/gauze
+	name = "gauze"
+	desc = "Stop the bleeding. And that's it."
+	desc_extended = "Folks here believe that any affliction can be smothered in bandages, and any decently soft cloth can serve as one. Makes one wonder how people with such advanced medical knowledge even get sick at all."
+	icon_state = "gauze"
+	treatment_time_mul = 1
+	heal_brute = 0
+	heal_brute_percent = 0
+	heal_bleeding = TRUE
+	item_count_current = 5
+	item_count_max = 10
 
-
+	value = 10

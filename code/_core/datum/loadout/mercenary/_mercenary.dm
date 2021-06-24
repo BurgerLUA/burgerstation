@@ -45,11 +45,11 @@
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper{firing_pin = /obj/item/firing_pin/electronic/iff/mercenary},
+		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,
 
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/night,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod,
 
-		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod/silenced,
 
 		MERC_ESSENTIALS
 
@@ -94,7 +94,7 @@
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
 
-		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod/silenced,
 
 		MERC_ESSENTIALS
 
@@ -136,12 +136,12 @@
 
 		/obj/item/clothing/back/storage/satchel/poly/merc,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/prototype,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod,
 
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
 
-		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod/silenced,
 
 		MERC_ESSENTIALS
 

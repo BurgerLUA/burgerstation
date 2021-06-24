@@ -1,16 +1,3 @@
-
-
-
-/mob/living/advanced/send_pain(var/pain_strength=50)
-
-	var/species/S = SPECIES(species)
-
-	if(S.flags_species_traits & TRAIT_NO_PAIN)
-		return FALSE
-
-	return ..()
-
-
 /mob/living/advanced/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(driving)
@@ -47,6 +34,9 @@
 
 	if(!accurate && is_living(attacker) && attacker != src)
 		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
+		if(src.is_moving)
+			inaccuracy += (evasion_rating*0.01*TILE_SIZE*0.5)
+
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
@@ -195,7 +185,7 @@
 		return "block"
 	else if(movement_flags & MOVEMENT_RUNNING)
 		return "dodge"
-	else if(attack_flags & CONTROL_MOD_ALT)
+	else if(attack_flags & CONTROL_MOD_DISARM)
 		return "parry"
 	return "none"
 
@@ -249,3 +239,9 @@
 		if(O.can_block(attacker,weapon,src,DT))
 			. = max(.,O.block_defense[attack_type])
 
+/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
+
+	if(last_hold && (world.time - last_hold <= 10*get_skill_power(SKILL_PARRY,0,1,2)))
+		return TRUE
+
+	return FALSE

@@ -2,13 +2,15 @@
 	name = "\improper .223 Defender LMG"
 	desc = "Atatatatatatata."
 	desc_extended = "The .223 Defender Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time. Was designed by syndicate weapon scientists to take 5.56mm rounds that are commonly dropped by the enemy."
-	icon = 'icons/obj/item/weapons/ranged/rifle/lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_lmg.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 4500
 
-	shoot_delay = 2.5
+	shoot_delay = 2
 
 	automatic = TRUE
+
+	damage_mod = 1.2
 
 	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
 
@@ -18,12 +20,7 @@
 
 	override_icon_state_held = TRUE
 
-	view_punch = 8
-
-
-
-	heat_per_shot = 0.03
-	heat_max = 0.15
+	heat_max = 0.2
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -35,8 +32,6 @@
 
 	size = SIZE_4
 	weight = 30
-
-	value = 400
 
 	ai_heat_sensitivity = 0.25
 
@@ -72,7 +67,7 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 13 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
 
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
@@ -98,10 +93,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_static_spread()
-	if(!wielded)
-		return 0.2
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.075 - (0.1 * L.get_skill_power(SKILL_RANGED)))

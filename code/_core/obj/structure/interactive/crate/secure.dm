@@ -38,7 +38,7 @@
 
 /obj/structure/interactive/crate/secure/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_ALT)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)

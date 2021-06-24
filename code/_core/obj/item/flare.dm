@@ -42,7 +42,7 @@
 		INTERACT_DELAY(10)
 		if(is_living(caller))
 			var/mob/living/L = caller
-			if(L.attack_flags & CONTROL_MOD_ALT)
+			if(L.attack_flags & CONTROL_MOD_DISARM)
 				stored_cap.drop_item(src)
 				stored_cap = object
 				caller.to_chat(span("notice","You put \the [object.name] back on \the [src.name]."))
@@ -117,15 +117,15 @@
 
 	return TRUE
 
-/obj/item/flare/update_sprite()
+/obj/item/flare/get_base_transform()
 	. = ..()
 	if(is_inventory(loc))
-		var/matrix/M = matrix()
+		var/matrix/M = .
 		M.Turn(90)
-		transform = M
-	else
-		transform = matrix()
 
+/obj/item/flare/update_sprite()
+	. = ..()
+	transform = get_base_transform()
 	update_held_icon()
 
 /obj/item/flare/update_icon()

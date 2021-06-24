@@ -7,7 +7,7 @@
 
 	ai = /ai/
 
-	class = /class/spider
+
 
 	stun_angle = 0
 
@@ -24,13 +24,13 @@
 	)
 
 	armor_base = list(
-		HEAT = -AP_SWORD,
-		COLD = AP_SWORD,
-		BIO = AP_GREATSWORD,
-		RAD = AP_AXE,
-		FATIGUE = AP_SWORD,
+		HEAT = -20,
+		COLD = 20,
+		BIO = 80,
+		RAD = 40,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	size = SIZE_LARGE
@@ -49,11 +49,9 @@
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
 
-/mob/living/simple/spider/desert
+/mob/living/simple/spider/glow
 	name = "glowspider"
 	icon_state = "nurse"
-
-	level_multiplier = 1.25
 
 	armor_base = list(
 		BLADE = 25,
@@ -80,8 +78,6 @@
 /mob/living/simple/spider/twilight
 	name = "twilight spider"
 	icon_state = "hunter"
-
-	level_multiplier = 1.5
 
 	armor_base = list(
 		BLADE = 25,

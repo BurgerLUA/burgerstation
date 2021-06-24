@@ -293,10 +293,6 @@
 		/obj/item/bullet_cartridge/arrow,
 		/obj/item/clothing/belt/belt_quiver,
 
-		/obj/item/weapon/ranged/magic/tome/lightning,
-
-		/obj/item/weapon/ranged/magic/tome/summon/totem/sacred_flame
-
 	)
 
 /obj/structure/interactive/vending/chemistry/wardrobe
@@ -506,7 +502,9 @@
 		/obj/item/storage/egg_carton,
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/beaker/bottle/large/water,
-		/obj/item/container/beaker/large/ice
+		/obj/item/container/beaker/large/ice,
+		/obj/item/container/food/plant/tomato,
+		/obj/item/container/food/plant/lettuce
 	)
 
 
@@ -575,6 +573,8 @@
 		/obj/item/dice/d6,
 		/obj/item/dice/d20
 	)
+
+	ignore_economy = TRUE
 
 
 /obj/structure/interactive/vending/halloween

@@ -13,15 +13,15 @@
 	value = 50
 
 	ai = /ai/
-	class = /class/bull
+
 	damage_type = /damagetype/npc/blobbernaut
 
 	armor_base = list(
-		BLUNT = AP_AXE,
-		LASER = -AP_AXE,
-		HEAT = -AP_AXE,
-		COLD = AP_AXE,
-		BOMB = -AP_AXE,
+		BLUNT = 40,
+		LASER = -40,
+		HEAT = -40,
+		COLD = 40,
+		BOMB = -40,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		FATIGUE = INFINITY,

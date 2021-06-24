@@ -14,9 +14,9 @@
 /obj/structure/interactive/scanner/abnormality
 	name = "abnormality scanner"
 
-/obj/structure/interactive/scanner/abnormality/Cross(var/atom/movable/M)
+/obj/structure/interactive/scanner/abnormality/Cross(atom/movable/O,atom/oldloc)
 
-	if(!istype(M,/obj/structure/interactive/the_curse))
+	if(!istype(O,/obj/structure/interactive/the_curse))
 		return FALSE
 
 	return ..()
@@ -26,18 +26,18 @@
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
 	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to prevent those without IFF implants from accessing the area."
 
-/obj/structure/interactive/scanner/iff/Cross(var/atom/movable/M)
+/obj/structure/interactive/scanner/iff/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(M))
-		var/mob/living/L = M
+	if(is_living(O))
+		var/mob/living/L = O
 		if(!L.iff_tag)
 			L.to_chat(span("warning","The barrier prevents you from moving!"))
 			src.do_say("IFF implant not detected.")
 			return FALSE
 
-	if(istype(M,/obj/structure/interactive/crate))
-		for(var/mob/living/L in M.contents)
-			if(!src.Cross(L))
+	if(istype(O,/obj/structure/interactive/crate))
+		for(var/mob/living/L in O.contents)
+			if(!src.Cross(L,src.loc))
 				return FALSE
 
 	return ..()
@@ -47,18 +47,18 @@
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
 	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to prevent those without NanoTrasen IFF implants from accessing the area."
 
-/obj/structure/interactive/scanner/iff_nanotrasen/Cross(var/atom/movable/M)
+/obj/structure/interactive/scanner/iff_nanotrasen/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(M))
-		var/mob/living/L = M
+	if(is_living(O))
+		var/mob/living/L = O
 		if(!L.iff_tag || L.iff_tag != "NanoTrasen")
 			L.to_chat(span("warning","The barrier prevents you from moving!"))
 			src.do_say("IFF implant not detected.")
 			return FALSE
 
-	if(istype(M,/obj/structure/interactive/crate))
-		for(var/mob/living/L in M.contents)
-			if(!src.Cross(L))
+	if(istype(O,/obj/structure/interactive/crate))
+		for(var/mob/living/L in O.contents)
+			if(!src.Cross(L,src.loc))
 				return FALSE
 
 	return ..()

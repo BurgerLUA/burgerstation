@@ -13,9 +13,9 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		ARCANE = AP_CLUB,
-		DARK = AP_SWORD,
-		HOLY = -AP_SWORD
+		ARCANE = 60,
+		DARK = 20,
+		HOLY = -20
 	)
 
 	size = SIZE_1

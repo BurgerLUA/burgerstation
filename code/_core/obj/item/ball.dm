@@ -89,7 +89,7 @@
 	. = ..()
 	. += span("notice","Hold ALT to move over the ball without kicking it.<br>Hold SPACE to triple your kicking power.<br>Hold SHIFT while running into the ball to double your kicking power.")
 
-/obj/item/ball/soccer/Cross(atom/movable/O)
+/obj/item/ball/soccer/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
 /obj/item/ball/soccer/Crossed(atom/movable/O)
@@ -105,7 +105,7 @@
 		var/mob/living/L = O
 		if(L.horizontal)
 			return .
-		if(L.attack_flags & CONTROL_MOD_ALT)
+		if(L.attack_flags & CONTROL_MOD_DISARM)
 			return .
 
 		var/bump_dir = get_dir(src,O)

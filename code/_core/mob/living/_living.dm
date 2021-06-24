@@ -15,7 +15,8 @@
 
 	icon_state = "directional"
 
-	var/class = /class/default
+	var/class = /class/npc
+	var/level = 1
 
 	var/enable_AI = FALSE
 	var/ai/ai
@@ -42,6 +43,8 @@
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_VOLUME_DEFAULT
 	var/blood_volume_max = 0 //Set to blood_volume on new.
+	var/blood_toxicity = 0 //Value of how toxic your blood is. Increased by consuming chems.
+	var/chem_power = 1 //Multiplier of chemical power. Changed via blood toxicity.
 
 	var/blood_oxygen = 0 //Additional blood oxygen.
 
@@ -68,13 +71,10 @@
 	var/is_sneaking = FALSE
 	var/stealth_mod = 0
 
+	var/selected_intent = INTENT_HELP
 	var/intent = INTENT_HELP
 
-	var/level = 0
-
 	var/turf/old_turf //Last turf someone has been in.
-
-	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 
 	var/stun_angle = 90
 
@@ -125,6 +125,8 @@
 		PAIN = 0,
 		SANITY = 0
 	)
+
+	var/list/mob_value
 
 	var/list/status_immune = list() //What status effects area they immune to?
 	//STATUS = TRUE //Means it's immune.
@@ -252,6 +254,60 @@
 
 	var/one_time_life = FALSE
 
+	var/drops_gold = 0 //Set to a value to make this mob drop this amount of gold when it dies.
+
+	var/obj/hud/flash/flash_overlay
+
+	var/deafened_duration = 0
+
+	var/list/hit_logs = list()
+
+/mob/living/proc/bang(var/duration=100)
+
+	if(!client)
+		return FALSE
+
+	if(duration <= 0)
+		return FALSE
+
+	deafened_duration = max(deafened_duration,duration)
+
+/mob/living/get_sound_environment()
+
+	if(deafened_duration > 0)
+		return ENVIRONMENT_UNDERWATER
+
+	. = ..()
+
+/mob/living/get_sound_volume(var/volume=100,var/channel=1)
+
+	. = ..()
+
+	if(deafened_duration > 0 && channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_FLASHBANG)
+		. *= 0.01
+
+
+/mob/living/proc/flash(var/duration=100,var/desired_color="#FFFFFF")
+
+	if(!client)
+		return FALSE
+
+	if(duration <= 0)
+		return FALSE
+
+	if(flash_overlay)
+		flash_overlay.duration = max(duration,flash_overlay.duration)
+		flash_overlay.color = desired_color
+		return TRUE
+
+	flash_overlay = new
+	flash_overlay.owner = src
+	flash_overlay.duration = duration
+	flash_overlay.color = desired_color
+	client.screen += flash_overlay
+
+	return TRUE
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
@@ -301,17 +357,25 @@
 		following.followers -= src
 		following = null
 
-	for(var/k in attributes)
-		var/experience/E = attributes[k]
-		qdel(E)
+	if(linked_mobs)
+		for(var/k in linked_mobs)
+			var/mob/M = k
+			qdel(M)
+		linked_mobs.Cut()
 
-	attributes.Cut()
-
-	for(var/k in skills)
-		var/experience/E = skills[k]
-		qdel(E)
-
-	skills.Cut()
+	if(fallback_mob)
+		fallback_mob.linked_mobs -= src
+		attributes = null
+		skills = null
+	else
+		for(var/k in attributes)
+			var/experience/E = attributes[k]
+			qdel(E)
+		attributes.Cut()
+		for(var/k in skills)
+			var/experience/E = skills[k]
+			qdel(E)
+		skills.Cut()
 
 	QDEL_NULL(ai)
 
@@ -319,8 +383,9 @@
 		for(var/k in screen_blood)
 			var/obj/hud/screen_blood/S = k
 			qdel(S)
-
 		screen_blood.Cut()
+
+	hit_logs.Cut()
 
 	all_living -= src
 
@@ -350,18 +415,12 @@
 
 	return ..()
 
-/mob/living/proc/get_brute_color()
-	return "#FF0000"
-
-/mob/living/proc/get_burn_color()
-	return "#444444"
-
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
 	blood_volume_max = blood_volume
 
 	if(desired_level_multiplier)
-		level_multiplier *= desired_level_multiplier
+		level *= desired_level_multiplier
 
 	attributes = list()
 	skills = list()
@@ -372,19 +431,19 @@
 	if(enable_medical_hud)
 		medical_hud_image = new/image('icons/hud/medihud.dmi',"0")
 		medical_hud_image.loc = src
-		medical_hud_image.layer = PLANE_HUD_VISION
+		medical_hud_image.layer = PLANE_AUGMENTED
 		medical_hud_image.pixel_y = 4
 		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
 		medical_hud_image_advanced.loc = src
-		medical_hud_image_advanced.layer = PLANE_HUD_VISION
+		medical_hud_image_advanced.layer = PLANE_AUGMENTED
 		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 	if(enable_security_hud)
 		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 		security_hud_image.loc = src
-		security_hud_image.layer = PLANE_HUD_VISION
+		security_hud_image.layer = PLANE_AUGMENTED
 		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 	. = ..()
@@ -410,8 +469,8 @@
 
 	initialize_attributes()
 	initialize_skills()
-	update_level(TRUE)
-	set_intent(intent,TRUE)
+
+	update_intent(TRUE)
 
 	. = ..()
 
@@ -452,7 +511,9 @@
 	setup_name()
 
 /mob/living/Finalize()
+
 	. = ..()
+
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
@@ -461,6 +522,8 @@
 	if(dead)
 		dead = FALSE //I know this feels like shitcode but *dab
 		death()
+
+	update_level(TRUE)
 
 /mob/living/proc/setup_name()
 	if(boss)

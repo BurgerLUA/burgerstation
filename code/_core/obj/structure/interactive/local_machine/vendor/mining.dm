@@ -25,5 +25,6 @@
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/wrench,
 		/obj/item/supply_remote/drill,
-		/obj/item/flare
+		/obj/item/flare,
+		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator
 	)

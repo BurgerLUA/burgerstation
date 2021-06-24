@@ -4,26 +4,25 @@
 	desc_extended = "Placeholder"
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_sniper_2.dmi'
 	icon_state = "inventory"
+	value = 3000
 
-	shoot_delay = 6
+	requires_cock_each_shot = TRUE
+
+	shoot_delay = 3
 
 	automatic = FALSE
+
+	damage_mod = 1.5
 
 	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = 32
-
-
-
 	size = SIZE_5
 	weight = 20
 
-
-	heat_per_shot = 0.07
-	heat_max = 0.07
+	heat_max = 0.05
 
 	bullet_length_min = 46
 	bullet_length_best = 51
@@ -35,12 +34,9 @@
 
 	size = SIZE_4
 
-
-	value = 400
-
 	ai_heat_sensitivity = 2
 
-	zoom_mul = 2
+	zoom_mul = 3
 
 	dan_mode = TRUE
 
@@ -71,5 +67,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))

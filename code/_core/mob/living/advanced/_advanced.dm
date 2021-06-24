@@ -27,6 +27,8 @@
 	var/obj/item/right_item
 	var/obj/item/holster_item
 
+	var/list/obj/hud/button/slot/slot_buttons = list()
+
 	health_base = 100
 	stamina_base = 100
 	mana_base = 100
@@ -37,13 +39,11 @@
 
 	var/mob/living/vehicle/driving
 
-	var/quick_mode = null
-
 	random_spawn_dir = FALSE
 
 	has_footprints = TRUE
 
-	var/slowdown_mul = 1
+	var/move_delay_multiplier = 1
 
 	var/has_hard_crit = FALSE
 
@@ -109,6 +109,8 @@
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 	var/list/inventory_defers = list() //inventory ref to button
+
+	var/evasion_rating = 0
 
 /mob/living/advanced/Destroy()
 
@@ -217,7 +219,7 @@
 		if(holster && holster_item && holster_item.dan_mode)
 			holster.update_held_icon(holster_item)
 
-/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_slowdown=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
+/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_speed=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
 	if(qdeleting) //Bandaid fix.
 		return FALSE
@@ -225,8 +227,8 @@
 	if(!force && !finalized)
 		return FALSE //Don't want to call this too much during initializations.
 
-	if(should_update_slowdown)
-		update_slowdown()
+	if(should_update_speed) //Weight too.
+		update_speed()
 	if(should_update_eyes)
 		update_eyes()
 	if(should_update_protection)
@@ -236,16 +238,29 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/update_slowdown()
+/mob/living/advanced/proc/update_speed()
 
-	. = 1
+	var/total_weight = 0
+	var/max_weight = 50 + get_attribute_power(ATTRIBUTE_ENDURANCE)*450
+
+	. = 1 //The lower the value, the faster you are.
 
 	for(var/obj/item/clothing/C in worn_objects)
 		. -= C.speed_bonus
+		total_weight += C.weight
 
-	. = FLOOR(.,0.01)
+	. *= 1 + (total_weight/max_weight)
 
-	slowdown_mul = .
+	. = FLOOR(max(0.25,.),0.01)
+
+	move_delay_multiplier = .
+
+	//Evasion stuff
+	evasion_rating = max(0,1 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
+	if(ckey_last) //Player controlled
+		evasion_rating = clamp(evasion_rating,0,75)
+	else
+		evasion_rating = clamp(evasion_rating*0.25,0,25)
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
@@ -312,6 +327,9 @@ mob/living/advanced/Login()
 
 	. = ..()
 
+	if(client)
+		add_species_buttons()
+
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
 	var/species/S = SPECIES(species)
@@ -324,7 +342,6 @@ mob/living/advanced/Login()
 
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE)
-		add_species_buttons()
 		add_species_health_elements()
 
 /mob/living/advanced/Finalize()
@@ -486,14 +503,6 @@ mob/living/advanced/Login()
 	if(right_hand)
 		return right_hand.get_top_object()
 	return null
-
-
-/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
-
-	if(last_hold && (world.time - last_hold <= 5))
-		return TRUE
-
-	return FALSE
 
 /mob/living/advanced/mod_speech(var/text)
 	var/species/S = SPECIES(species)

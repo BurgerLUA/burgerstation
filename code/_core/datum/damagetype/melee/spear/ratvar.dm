@@ -2,19 +2,20 @@
 	name = "spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_AXE*0.2,
-		BLADE = DAMAGE_AXE*0.2,
-		HOLY = DAMAGE_AXE*0.1
+		PIERCE = 20,
+		BLADE = 10,
+		HOLY = 0
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = AP_AXE*0.9,
-		BLADE = AP_AXE*0.1
+		PIERCE = 75,
+		BLADE = 75,
+		HOLY = 75
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = DAMAGE_AXE*0.1,
-		ATTRIBUTE_DEXTERITY = DAMAGE_AXE*0.1
+		ATTRIBUTE_STRENGTH = 15,
+		ATTRIBUTE_DEXTERITY = 15
 	)
 
 	attribute_damage = list(
@@ -23,8 +24,8 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = DAMAGE_AXE*0.2,
-		SKILL_PRAYER = DAMAGE_AXE*0.1
+		SKILL_MELEE = 40,
+		SKILL_PRAYER = 50
 	)
 
 	skill_damage = list(
@@ -32,5 +33,5 @@
 		SKILL_PRAYER = HOLY
 	)
 
-	attack_delay = SPEED_AXE*0.5
-	attack_delay_max = SPEED_AXE
+	attack_delay = 10
+	attack_delay_max = 20

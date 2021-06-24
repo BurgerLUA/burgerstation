@@ -16,8 +16,6 @@ Both:
 	had a reason to go with map comments, right?
 */
 
-//#define DIAG(X) world << {"<span style="color:red">[__FILE__]:[__LINE__]:: [X]</span>"};
-
 //client/Center() world.Reboot()
 
 //-- Preprocessor --------------------------------------------------------------
@@ -32,6 +30,7 @@ Both:
 #define DMM_IGNORE_SPACE 0x20
 #define DMM_OVERWRITE_MOBS 0x40
 #define DMM_OVERWRITE_OBJS 0x80
+#define DMM_OVERWRITE_MARKERS 0x100
 
 #define DMM_IGNORE_MOBS DMM_IGNORE_NPCS | DMM_IGNORE_PLAYERS
 

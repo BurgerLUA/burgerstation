@@ -8,7 +8,7 @@
 	mana_base = 50
 
 	ai = /ai/bullshark
-	class = /class/bull
+
 	damage_type = /damagetype/unarmed/bite/
 
 	iff_tag = "Meme"
@@ -30,14 +30,14 @@
 	)
 
 	armor_base = list(
-		BLADE = AP_AXE,
-		HEAT = AP_GREATAXE,
-		COLD = AP_GREATAXE,
-		BIO = AP_GREATAXE,
+		BLADE = 40,
+		HEAT = 100,
+		COLD = 100,
+		BIO = 100,
 		RAD = INFINITY,
-		FATIGUE = AP_SWORD,
+		FATIGUE = 20,
 		ION = INFINITY,
-		PAIN = AP_SWORD
+		PAIN = 20
 	)
 
 	stun_angle = 180

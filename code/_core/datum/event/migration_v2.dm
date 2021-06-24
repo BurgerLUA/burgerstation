@@ -11,14 +11,14 @@
 	var/list/possible_enemy_types = list(
 		/mob/living/simple/arachnid,
 		/mob/living/simple/bear/space,
-		/mob/living/simple/bull,
 		/mob/living/simple/goliath,
+		/mob/living/simple/gorilla,
+		/mob/living/simple/hivelord,
 		/mob/living/simple/spacecarp,
-		/mob/living/simple/spider,
+		/mob/living/simple/spider/twilight,
 		/mob/living/simple/venus_human_trap,
 		/mob/living/simple/watcher,
-		/mob/living/simple/xeno/hunter,
-		/mob/living/simple/gorilla
+		/mob/living/simple/xeno/hunter
 	)
 
 	var/mob/living/enemy_type_to_spawn

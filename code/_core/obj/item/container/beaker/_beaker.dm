@@ -20,6 +20,15 @@
 
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
+	has_quick_function = TRUE
+
+/obj/item/container/beaker/quick(var/mob/caller,var/atom/object,location,params)
+
+	if(!is_living(caller))
+		return FALSE
+
+	return feed(caller,caller)
+
 /obj/item/container/beaker/get_consume_verb()
 	return "drink"
 
@@ -87,4 +96,36 @@
 
 /obj/item/container/beaker/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/smoke_01/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/potassium,40)
+	return ..()
+
+/obj/item/container/beaker/smoke_02/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/phosphorous,40)
+	return ..()
+
+/obj/item/container/beaker/large/lube_smoke_01/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/potassium,40)
+	reagents.add_reagent(/reagent/lube,60)
+	return ..()
+
+/obj/item/container/beaker/large/lube_smoke_02/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/phosphorous,40)
+	reagents.add_reagent(/reagent/lube,60)
+	return ..()
+
+/obj/item/container/beaker/flashbang_01/Generate()
+	reagents.add_reagent(/reagent/ammonia,20)
+	reagents.add_reagent(/reagent/nitrogen,40)
+	return ..()
+
+/obj/item/container/beaker/flashbang_02/Generate()
+	reagents.add_reagent(/reagent/ammonia,20)
+	reagents.add_reagent(/reagent/fuel/hydrogen,40)
 	return ..()

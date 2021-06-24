@@ -2,7 +2,7 @@
 	name = "syndicate sorcerer"
 	desc = "A sorcerer borrowed from the syndicate-allied wizard federation."
 	ai = /ai/advanced
-	class = /class/syndicate_soldier
+
 
 	var/list/possible_outfits = list(
 		/loadout/sorcerer = 1
@@ -15,7 +15,7 @@
 /mob/living/advanced/npc/sorcerer/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)
-	level_multiplier *= loadout_to_level[loadout_to_use]
+	level *= loadout_to_level[loadout_to_use]
 
 	. = ..()
 
@@ -38,7 +38,5 @@
 
 	equip_loadout(loadout_to_use)
 
-/mob/living/advanced/npc/sorcerer/post_death()
-	var/turf/T = get_turf(src)
-	CREATE_LOOT(/loot/syndicate,T)
-	return
+
+

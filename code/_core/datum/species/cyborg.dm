@@ -16,8 +16,6 @@
 
 	genderless = TRUE
 
-	flags_species_traits = TRAIT_NO_PAIN
-
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/cyborg,
 		BODY_HEAD = /obj/item/organ/head/cyborg,
@@ -30,6 +28,11 @@
 		BODY_ARM_LEFT = /obj/item/organ/arm/cyborg/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand/cyborg,
 		BODY_HAND_LEFT = /obj/item/organ/hand/cyborg/left,
+		BODY_EYE_RIGHT = /obj/item/organ/eye/cyborg,
+		BODY_EYE_LEFT = /obj/item/organ/eye/cyborg/left,
+		BODY_EAR_RIGHT = /obj/item/organ/ear/cyborg,
+		BODY_EAR_LEFT = /obj/item/organ/ear/cyborg/left,
+
 
 		BODY_BRAIN = /obj/item/organ/internal/brain/robotic,
 		BODY_LUNGS = /obj/item/organ/internal/lungs/robotic,
@@ -43,6 +46,16 @@
 
 	valid_blood_types = list(
 		/reagent/blood/robot
+	)
+
+	inherent_traits = list(
+		/trait/pain_tolerant,
+		/trait/metabolism/fast,
+		/trait/flamability/flammable,
+		/trait/bleed_multiplier/hard_skin,
+		/trait/blood_regen/none,
+		/trait/intoxication_regen/reverse
+
 	)
 
 /species/cyborg/generate_blood_type()

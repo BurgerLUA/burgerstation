@@ -39,6 +39,10 @@
 "k" = (
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"l" = (
+/obj/marker/lobby,
+/turf/simulated/floor/xeno,
+/area/prefab/xeno_hive)
 
 (1,1,1) = {"
 a
@@ -2578,7 +2582,7 @@ b
 b
 b
 b
-b
+l
 b
 b
 e

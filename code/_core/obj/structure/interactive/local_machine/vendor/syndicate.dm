@@ -58,32 +58,9 @@
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
-		/obj/item/container/syringe/medipen/combat_stim,
 
 	)
 	markup = 0.75
-
-/obj/structure/interactive/vending/rev/medicine
-	name = "russian medicine vendor"
-	icon_state = "boozeomat"
-
-	stored_types = list(
-		/obj/item/storage/kit/filled,
-		/obj/item/storage/kit/brute/filled,
-		/obj/item/storage/kit/burn/filled,
-		/obj/item/storage/kit/toxin/filled,
-		/obj/item/storage/kit/ai3/filled,
-		/obj/item/storage/kit/syndicate/filled,
-		/obj/item/container/blood_pack/full/synthblood,
-		/obj/item/container/beaker/vial/zombie_antidote,
-		/obj/item/container/medicine/nanopaste,
-		/obj/item/container/blood_pack/full/rad_be_gone,
-		/obj/item/container/syringe/medipen/combat_stim,
-
-	)
-	accepts_item = /obj/item/currency/rubles
-	markup = 0.75
-
 
 /obj/structure/interactive/vending/syndicate/attachment
 	name = "syndicate attachment vendor"
@@ -108,30 +85,6 @@
 	)
 	markup = 0.5
 
-/obj/structure/interactive/vending/rev/attachment
-	name = "russian attachment vendor"
-	icon_state = "attachment"
-	stored_types = list(
-		/obj/item/attachment/barrel/charger,
-		/obj/item/attachment/barrel/compensator,
-		/obj/item/attachment/barrel/extended,
-		/obj/item/attachment/barrel/gyro,
-		/obj/item/attachment/barrel/laser_charger,
-		/obj/item/attachment/barrel/suppressor,
-		/obj/item/attachment/sight/laser_sight,
-		/obj/item/attachment/sight/quickfire_adapter,
-		/obj/item/attachment/sight/red_dot,
-		/obj/item/attachment/sight/scope,
-		/obj/item/attachment/sight/scope/large,
-		/obj/item/attachment/sight/targeting_computer,
-		/obj/item/attachment/undermount/angled_grip,
-		/obj/item/attachment/undermount/bipod,
-		/obj/item/attachment/undermount/burst_adapter,
-		/obj/item/attachment/undermount/vertical_grip
-	)
-	accepts_item = /obj/item/currency/rubles
-	markup = 0.5
-
 /obj/structure/interactive/vending/syndicate/prize
 	name = "hacked prize vendor"
 	icon_state = "prize_hacked"
@@ -141,6 +94,7 @@
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
+		/obj/item/clothing/belt/bandolier/shotgun_20,
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
@@ -172,6 +126,7 @@
 /obj/structure/interactive/vending/syndicate/prize/rev
 	stored_types = list(
 		/obj/item/clothing/back/storage/backpack/explorer,
+		/obj/item/clothing/belt/bandolier/shotgun_23,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
@@ -205,8 +160,7 @@
 		/obj/item/storage/cigarettes/russian,
 		/obj/item/lighter
 	)
-	accepts_item = /obj/item/currency/rubles
-	markup = 0.75
+
 
 /obj/structure/interactive/vending/syndicate/guns/rev
 	name = "revolutionary armaments vendor"
@@ -215,20 +169,20 @@
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/abakan,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
 
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak13,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
+		/obj/item/magazine/rifle_762_short,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
 		/obj/item/magazine/rifle_762_short,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/magazine/gauss_gun,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svd,
-		/obj/item/magazine/rifle_762_long,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
@@ -240,11 +194,9 @@
 		/obj/item/storage/ammo/slug_23,
 		/obj/item/storage/ammo/fire_23,
 
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_12,
-		/obj/item/magazine/saiga_auto/buckshot,
-		/obj/item/magazine/saiga_auto/slug,
-		/obj/item/magazine/saiga_auto/flechette,
-		/obj/item/magazine/saiga_auto/fire,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
+		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto/slug,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
 		/obj/item/magazine/pistol_9mm,
@@ -255,8 +207,6 @@
 		/obj/item/weapon/ranged/bullet/revolver/gm94,
 		/obj/item/storage/ammo/grenade_40mm,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/rpk,
-		/obj/item/magazine/lmg_545,
-		/obj/item/magazine/lmg_545/ap
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
+		/obj/item/magazine/lmg_762_r
 	)
-	accepts_item = /obj/item/currency/rubles

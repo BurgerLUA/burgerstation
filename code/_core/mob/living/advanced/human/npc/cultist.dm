@@ -4,7 +4,7 @@
 	desc_extended = "A cultist of Nar'sie."
 	enable_AI = TRUE
 	ai = /ai/advanced/cult
-	class = /class/cult
+
 
 	var/loadout/loadout_to_use = /loadout/cultist
 
@@ -13,11 +13,11 @@
 	stamina_base = 100
 
 	armor_base = list(
-		HOLY = -DAMAGE_CLUB,
-		DARK = DAMAGE_CLUB
+		HOLY = -60,
+		DARK = 60
 	)
 
-	level_multiplier = 2
+
 
 /mob/living/advanced/npc/cultist/Initialize()
 
@@ -45,9 +45,8 @@
 /mob/living/advanced/npc/cultist/old
 	name = "ancient cultist"
 	loadout_to_use = /loadout/cultist/old
-	level_multiplier = 4
+
 
 /mob/living/advanced/npc/cultist/hard
 	name = "master cultist"
 	loadout_to_use = /loadout/cultist/hard
-	level_multiplier = 8

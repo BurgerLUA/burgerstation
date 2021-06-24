@@ -4,27 +4,24 @@
 	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders. The bulkiness of the pistol rivals submachine guns."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
-	value = 350
+	value = 700
 
 	shoot_delay = 4
 
 	automatic = FALSE
 
-	movement_spread_base = 0.01
+	movement_spread_base = 0.006
 	inaccuracy_modifier = 0.5
-	movement_inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.025
 
 	shoot_sounds = list('sound/weapons/12/shoot.ogg')
 
 	can_wield = FALSE
 
-	view_punch = 20
-
 	size = SIZE_2
-	weight = 6
+	weight = 7
 
-	heat_per_shot = 0.04
-	heat_max = 0.15
+	heat_max = 0.08
 
 	bullet_length_min = 27
 	bullet_length_best = 33
@@ -67,23 +64,22 @@
 	attachment_undermount_offset_y = 12 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_static_spread()
-	return 0.001
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype
-	name = "\improper 12.7mm Prototype High-Power Auto"
+/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod
+	name = "\improper 12.7mm High-Power Auto MOD"
 	desc = "The \"Auto\" is for semiauto."
 	desc_extended = "A prototype of the High-Power Auto commonly seen in the hands of NanoTrasen commanders. This variant is made with higher quality parts and is commonly used by mercenaries."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt_proto.dmi'
 	icon_state = "inventory"
-	value = 1400
+	value = 2000
 
-	shoot_delay = 3
+	shoot_delay = 2
 
-	heat_per_shot = 0.02
-	heat_max = 0.06
+	heat_max = 0.05
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE,
@@ -118,9 +114,9 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/mercenary
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/prototype/equipped/Generate()
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod/silenced/Generate()
 
 	. = ..()
 

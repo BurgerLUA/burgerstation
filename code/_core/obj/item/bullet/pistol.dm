@@ -8,7 +8,6 @@
 	item_count_max = 6
 	item_count_max_icon = 6
 
-
 	bullet_diameter = 10.17
 	bullet_length = 32
 	bullet_color = COLOR_BULLET
@@ -38,6 +37,8 @@
 	size = 0.02
 	value = 2
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_50
 	name = "\improper .50 pistol cartridge"
 	desc = "The cool kids use this."
@@ -47,7 +48,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -78,6 +78,8 @@
 
 	value = 2.6
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_50/heartbreaker
 	name = "\improper heartbreaker .50 pistol cartridge"
 	desc_extended = "For pistols that require .50. This one has an armor piercing tip with an exploding shrapnel bullet."
@@ -97,7 +99,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -127,6 +128,8 @@
 
 	value = 2.4
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
 	desc = "The average bullet for the average shooter."
@@ -141,7 +144,6 @@
 	bullet_diameter = 9
 	bullet_length = 19
 	bullet_color = COLOR_BULLET
-
 
 	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm
@@ -167,6 +169,8 @@
 
 	value = 1.8
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_4mm/
 	name = "\improper 4.6x30mm smg cartridge"
 	desc = "Pierces armor like butter."
@@ -181,7 +185,6 @@
 	bullet_diameter = 4.6
 	bullet_length = 30
 	bullet_color = COLOR_BULLET
-
 
 	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
@@ -216,25 +219,14 @@
 
 	value = 0.5
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_4mm/incendiary
 	name = "\improper incendiary 4.6x30mm smg cartridge"
 	caseless = TRUE
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/incendiary
 
-	value = 0.5
-
-/obj/item/bullet_cartridge/pistol_4mm/subsonic
-	name = "\improper subsonic 4.6x30mm smg cartridge"
-	icon = 'icons/obj/item/bullet/46mm.dmi'
-
-	projectile = /obj/projectile/bullet/firearm/pistol/stealth
-
-	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/subsonic
-
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
-
-	caseless = TRUE
 	value = 0.5
 
 /obj/item/bullet_cartridge/pistol_4mm/surplus
@@ -263,7 +255,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 10
 	bullet_length = 22
@@ -295,6 +286,8 @@
 
 	value = 2
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_40/tranq
 	name = "\improper tranq .40 pistol cartridge"
 	desc = "Different than 9mm!"
@@ -323,7 +316,6 @@
 
 	item_count_max = 6
 	item_count_max_icon = 6
-
 
 	bullet_diameter = 11.43
 	bullet_length = 23
@@ -358,6 +350,8 @@
 
 	value = 1.5
 
+	penetrations = 1
+
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
 	name = "\improper 8mm pistol bullet"
 	desc = "It's like a baby bullet. Adorable."
@@ -367,7 +361,6 @@
 
 	item_count_max = 5
 	item_count_max_icon = 5
-
 
 	bullet_diameter = 8
 	bullet_length = 12

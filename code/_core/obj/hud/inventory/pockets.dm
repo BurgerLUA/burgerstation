@@ -24,13 +24,23 @@
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"
-	screen_loc = "CENTER+2,BOTTOM"
+	screen_loc = "CENTER+3,BOTTOM"
 
 	priority = 11
 
 /obj/hud/inventory/organs/groin/pocket/left
 	name = "right lower pocket"
 	id = "pocket02"
-	screen_loc = "CENTER+3,BOTTOM"
+	screen_loc = "CENTER+4,BOTTOM"
 
 	priority = 10
+
+/obj/hud/inventory/organs/groin/pocket/contract
+	name = "contract slot"
+	icon_state = "slot_contract"
+	id = "contract"
+	screen_loc = "RIGHT,CENTER+4"
+
+	priority = 1000
+
+	item_whitelist = list(/obj/item/contract)

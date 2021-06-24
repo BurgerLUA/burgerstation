@@ -11,17 +11,31 @@
 		movement_spread = 1.25,
 		heat_spread = 0.75,
 		inaccuracy_modifer = 0.75,
-		view_punch = 0.75
+
 	)
 
 /obj/item/attachment/stock/sniper_127 //Actually not a stock but whatever. Players won't know this.
 	name = "12.7mm barrel"
 	desc = "Extendong."
-	desc_extended = "A silly barrel attachment that increases the barrel length of a 12.7mm gun. Increases projectile speed, bullet accuracy, precision, and weapon accuracy at the cost of higher recoil, movement spread, recoil spread, and spread from inexperience."
+	desc_extended = ""
 	icon_state = "barrel_sniper"
 
 	attachment_stats = list()
 
-	value = 100
+	value = 0
+
+	removable = FALSE
+
+
+
+/obj/item/attachment/stock/sniper_50 //Actually not a stock but whatever. Players won't know this.
+	name = "50cal barrel"
+	desc = "Extendong."
+	desc_extended = ""
+	icon_state = "barrel_sniper_50"
+
+	attachment_stats = list()
+
+	value = 0
 
 	removable = FALSE

@@ -29,6 +29,9 @@
 
 	pixel_y = 8
 
+	var/open_sound = 'sound/effects/click.ogg'
+	var/close_sound = 'sound/effects/click.ogg'
+
 /obj/structure/interactive/crate/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -63,7 +66,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/Cross(var/atom/movable/O)
+/obj/structure/interactive/crate/Cross(var/atom/movable/O,atom/oldloc)
 
 	if(istype(O,/obj/structure/interactive/crate))
 		return FALSE
@@ -76,7 +79,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/Uncross(var/atom/movable/O)
+/obj/structure/interactive/crate/Uncross(var/atom/movable/O,atom/newloc)
 
 	if(open)
 		return TRUE
@@ -175,7 +178,7 @@
 
 	open = FALSE
 
-	play_sound('sound/effects/click.ogg',get_turf(src),range_max=VIEW_RANGE)
+	play_sound(close_sound,get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
 
@@ -200,7 +203,7 @@
 
 	open = TRUE
 
-	play_sound('sound/effects/click.ogg',get_turf(src),range_max=VIEW_RANGE)
+	play_sound(open_sound,get_turf(src),range_max=VIEW_RANGE)
 
 	update_sprite()
 
