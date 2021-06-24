@@ -240,19 +240,23 @@
 
 /mob/living/advanced/proc/update_speed()
 
+	var/total_weight = 0
 	var/max_weight = 50 + get_attribute_power(ATTRIBUTE_ENDURANCE)*450
 
 	. = 1 //The lower the value, the faster you are.
 
 	for(var/obj/item/clothing/C in worn_objects)
 		. -= C.speed_bonus
-		. += C.weight * (1/max_weight)
+		total_weight += C.weight
+
+	. *= 1 + (total_weight/max_weight)
 
 	. = FLOOR(max(0.25,.),0.01)
 
 	move_delay_multiplier = .
 
-	evasion_rating = max(0,. - 0.5)*100*get_skill_power(SKILL_EVASION,0,1,2)
+	//Evasion stuff
+	evasion_rating = max(0,1 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
 	if(ckey_last) //Player controlled
 		evasion_rating = clamp(evasion_rating,0,75)
 	else

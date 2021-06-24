@@ -123,11 +123,9 @@ var/global/world_state = STATE_STARTING
 	save_deathboxes()
 	save_banks()
 	save_economy()
-	for(var/ckey in ckey_to_mobdata)
-		var/savedata/client/mob/M = ckey_to_mobdata[ckey]
-		if(!M.attached_mob)
-			continue
-		var/mob/living/advanced/player/P = M.attached_mob
+	for(var/k in all_players)
+		var/mob/living/advanced/player/P = k
+		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)
 			continue
 		if(!P.allow_save)

@@ -1,7 +1,6 @@
 var/global/list/ckey_to_mobdata = list()
 
 /savedata/client/mob
-	var/mob/living/advanced/player/attached_mob
 
 /savedata/client/mob/Destroy()
 	CRASH_SAFE("FATAL WARNING: SAVEDATA ATTEMPTED TO BE DESTROYED! SAVEDATA SHOULD NEVER BE DESTROYED!")
