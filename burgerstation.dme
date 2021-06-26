@@ -1845,6 +1845,7 @@
 #include "code\_core\obj\vehicle\_vehicle.dm"
 #include "code\_core\obj\vehicle\car.dm"
 #include "code\_core\turf\_turf.dm"
+#include "code\_core\turf\changeturf.dm"
 #include "code\_core\turf\space.dm"
 #include "code\_core\turf\simulated\_simulated.dm"
 #include "code\_core\turf\simulated\floor\_floor.dm"
