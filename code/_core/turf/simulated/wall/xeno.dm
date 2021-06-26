@@ -1,5 +1,7 @@
 /turf/simulated/wall/xeno
 	name = "resin wall"
+	desc = "Ewww, sticky"
+	desc_extended = "A wall made of a strange resin, doesn't seem natural."
 	icon = 'icons/turf/wall/xeno.dmi'
 	icon_state = "wall"
 	corner_icons = TRUE

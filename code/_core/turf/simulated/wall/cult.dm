@@ -1,5 +1,7 @@
 /turf/simulated/wall/cult
 	name = "cult wall"
+	desc = "Spooky"
+	desc_extended = "A wall made of a stange runic metal, simply looking at it makes you nervous."
 	icon = 'icons/turf/wall/cult.dmi'
 	icon_state = "wall"
 	corner_category = "cult_wall"

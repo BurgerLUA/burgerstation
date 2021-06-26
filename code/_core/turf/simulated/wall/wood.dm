@@ -1,5 +1,7 @@
 /turf/simulated/wall/wood
 	name = "wall"
+	desc = "A wall made of wood"
+	desc_extended = "It's a wall, made of wood, something made it."
 	icon = 'icons/turf/wall/wood.dmi'
 	icon_state = "wall"
 	corner_icons = TRUE
@@ -27,12 +29,20 @@
 
 /turf/simulated/wall/wood/brown
 	color = "#6F4533"
+	desc = "A wall made of wood"
+	desc_extended = "It's a wall, made of wood, something made it."
 
 /turf/simulated/wall/wood/rich
 	color = "#53331E"
+	desc = "A wall made of wood"
+	desc_extended = "It's a wall, made of wood, something made it. This one seems to be of a higher quality than most."
 
 /turf/simulated/wall/wood/boat
 	color = "#423022"
+	desc = "A wall made of wood"
+	desc_extended = "It's a wall, made of wood, something made it. This one is part of a boat."
 
 /turf/simulated/wall/wood/boat/starting
 	color = "#724C34"
+	desc = "A wall made of wood"
+	desc_extended = "It's a wall, made of wood, something made it. This one is part of a boat."
