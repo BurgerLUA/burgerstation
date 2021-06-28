@@ -21,7 +21,7 @@
 			continue
 		if(A.interior)
 			continue
-		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
+		if(A.flags_area & (FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_DAMAGE))
 			continue
 		valid_areas += A
 

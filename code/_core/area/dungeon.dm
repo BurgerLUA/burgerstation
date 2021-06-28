@@ -1,12 +1,13 @@
+/area/dungeon/
+	area_identifier = "Mission"
+
 /area/dungeon/z_00
 	name = "\improper Level 0 - Surface Above"
 	icon_state = "red"
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
-
-	area_identifier = "Mission"
-
 	interior = TRUE //Well not really but still.
+
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/dungeon/z_01
 	name = "\improper Level 1 - Surface Forrest"

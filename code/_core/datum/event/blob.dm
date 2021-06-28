@@ -18,7 +18,7 @@
 	for(var/area/A in world)
 		if(A.area_identifier != "Mission")
 			continue
-		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
+		if(A.flags_area & (FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_DAMAGE))
 			continue
 		valid_areas += A
 
