@@ -403,7 +403,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		handle_empty(caller)
 		return FALSE
 
-
 	var/arm_strength = 0.5
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

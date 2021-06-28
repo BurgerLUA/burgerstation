@@ -234,6 +234,7 @@
 				B = new B(src)
 				INITIALIZE(B)
 				FINALIZE(B)
+				GENERATE(B)
 				stored_bullets += B
 
 		play_sound(get_magazine_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)

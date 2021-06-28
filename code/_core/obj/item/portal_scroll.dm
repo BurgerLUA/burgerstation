@@ -50,8 +50,8 @@
 	var/area/A1 = T.loc
 	var/area/A2 = PMT.loc
 
-	start_portal.name = "[P.name]'s portal - [A2.name]"
-	end_portal.name = "[P.name]'s portal - [A1.name]"
+	start_portal.name = "[P.name]'s portal to [A2.name]"
+	end_portal.name = "[P.name]'s portal to [A1.name]"
 
 	qdel(src)
 

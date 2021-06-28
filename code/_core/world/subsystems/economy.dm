@@ -64,8 +64,10 @@ SUBSYSTEM_DEF(economy)
 	if(length(price_multipliers))
 		var/encoded_purchase_data = json_encode(price_multipliers)
 		if(encoded_purchase_data)
+			fdel(PRICE_MULTIPLIER_DIR)
 			text2file(encoded_purchase_data,PRICE_MULTIPLIER_DIR)
 
+	fdel(GOLD_CIRCULATION_DIR)
 	text2file("[gold_in_circulation]",GOLD_CIRCULATION_DIR)
 
 	return TRUE

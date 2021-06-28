@@ -200,6 +200,8 @@
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	for(var/k in collide_with)
 		on_projectile_hit(k)
+
+	if(penetrations_left < 0)
 		qdel(src)
 		return TRUE
 

@@ -49,10 +49,6 @@
 					A.put_in_hands(G)
 			else
 				B.set_stored_object(null)
-				caller.to_chat(span("danger","Selling Error: Report this bug to Burger with error code 4[I][!I.qdeleting][get_dist(I,A) <= 1]."))
-
-		else
-			caller.to_chat(span("danger","Selling Interface Error: Report this bug to Burger with error code 2."))
 
 /obj/hud/button/exchange/close
 	name = "close"
