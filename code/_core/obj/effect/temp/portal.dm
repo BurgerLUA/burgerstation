@@ -49,6 +49,8 @@
 
 	update_atom_light()
 
+	queue_delete(src,SECONDS_TO_DECISECONDS(300))
+
 /obj/effect/temp/portal/Destroy()
 	if(linked_portal)
 		if(linked_portal.linked_portal == src)

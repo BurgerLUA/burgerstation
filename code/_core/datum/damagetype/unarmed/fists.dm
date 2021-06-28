@@ -141,14 +141,13 @@
 
 		if(is_living(attacker))
 			var/mob/living/A = attacker
-			if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
-				L.add_status_effect(DISARM,5,5, source = attacker)
-				return ..()
-			else
-				luck_value *= 4
-
-		if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
-			L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
+			if(L.loyalty_tag != A.loyalty_tag)
+				if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
+					L.add_status_effect(DISARM,5,5, source = attacker)
+				else
+					luck_value *= 4
+					if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
+						L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
 
 	return ..()
 
