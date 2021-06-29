@@ -80,6 +80,8 @@
 
 	object_size = 2
 
+	respawn_time = SECONDS_TO_DECISECONDS(300)
+
 /mob/living/simple/can_man/post_death()
 	. = ..()
 	charge_steps = 0

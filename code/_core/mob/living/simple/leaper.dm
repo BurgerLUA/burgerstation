@@ -77,6 +77,8 @@
 
 	object_size = 2
 
+	respawn_time = SECONDS_TO_DECISECONDS(300)
+
 /mob/living/simple/leaper/handle_alpha()
 	if(immortal)
 		return 0

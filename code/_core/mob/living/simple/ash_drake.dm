@@ -86,6 +86,8 @@
 
 	object_size = 2
 
+	respawn_time = SECONDS_TO_DECISECONDS(300)
+
 
 /*
 /mob/living/simple/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

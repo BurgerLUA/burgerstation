@@ -45,7 +45,6 @@
 			continue
 		var/turf/T2 = get_turf(A)
 		if(!T2)
-			log_error("Warning: Tried to send a message to a listener [A.get_debug_name()], but it didn't have a valid turf.")
 			continue
 		if(T1.z != T2.z)
 			continue
@@ -144,6 +143,9 @@
 			continue
 
 		var/turf/mob_turf = get_turf(M)
+
+		if(!mob_turf)
+			continue
 
 		if(mob_turf.z != T.z)
 			continue
