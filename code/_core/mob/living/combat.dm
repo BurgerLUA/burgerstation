@@ -37,5 +37,6 @@
 	return TRUE
 
 /mob/living/advanced/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
-	if(client) src.add_skill_xp(SKILL_PARRY,1)
+	if(client)
+		src.add_skill_xp(SKILL_PARRY,1)
 	return TRUE
