@@ -14,6 +14,14 @@
 
 	automatic = TRUE
 
+/obj/item/weapon/ranged/spellgem/get_owner()
+
+	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
+		var/obj/item/weapon/ranged/wand/W = src.loc
+		return W.get_owner()
+
+	. = ..()
+
 /obj/item/weapon/ranged/spellgem/Finalize()
 	. = ..()
 	update_sprite()
