@@ -450,7 +450,8 @@
 		/reagent/acid/sulphuric,
 		/reagent/fuel/acetone,
 		/reagent/toxin/mercury,
-		/reagent/drug/lithium
+		/reagent/drug/lithium,
+		/reagent/nutrition/sugar/glucose
 	)
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
