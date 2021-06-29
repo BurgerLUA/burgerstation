@@ -141,7 +141,7 @@ var/global/list/equipped_antags = list()
 			continue
 		var/local_markup = markup
 		if(!ignore_economy)
-			local_markup = max(markup * (SSeconomy.price_multipliers["[I.type]"] ? SSeconomy.price_multipliers["[I.type]"] : 1),1)
+			local_markup = max(markup * (SSeconomy.price_multipliers["[I.type]"] ? SSeconomy.price_multipliers["[I.type]"] : 1),markup)
 		stored_cost[I.type] = get_bullshit_price(I.get_value()*local_markup)
 		if(price_max)
 			stored_cost[I.type] = min(price_max,stored_cost[I.type])
