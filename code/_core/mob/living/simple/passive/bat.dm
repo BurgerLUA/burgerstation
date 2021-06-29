@@ -11,9 +11,6 @@
 
 	damage_type = /damagetype/unarmed/bite/
 
-
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
-
 	stun_angle = 0
 
 	iff_tag = "Bat"
