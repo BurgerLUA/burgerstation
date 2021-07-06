@@ -5,7 +5,6 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "How can you kill a god?"
 	desc_extended = "Wearing this mask will make them hard to kill... if you only target their head."
-	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
 		BLADE = 100,
