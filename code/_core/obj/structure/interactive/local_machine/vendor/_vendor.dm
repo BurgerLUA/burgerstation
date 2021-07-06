@@ -104,7 +104,7 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/get_bullshit_price(var/desired_price)
 
 	if(accepts_item)
-		return desired_price
+		return CEILING(desired_price,1)
 
 	//Basically makes prices how they'd appear in stores.
 
