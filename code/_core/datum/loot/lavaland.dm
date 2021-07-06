@@ -68,7 +68,5 @@
 
 /loot/lavaland/leaper
 	loot_table = list(
-		/obj/item/weapon/melee/sword/cblade,
-		/obj/item/weapon/melee/sword/csaw,
-		/obj/item/storage/blood_box/blood
+		/obj/item/storage/blood_box/blood = 1
 	)

@@ -21,6 +21,6 @@
 
 	var/desired_angle = get_angle(current_loc,target_to_track) + 90
 
-	vel_x = (vel_x + sin(desired_angle)*4)*0.5
-	vel_y = (vel_y + cos(desired_angle)*4)*0.5
+	vel_x = (vel_x + sin(desired_angle)*2)*0.5
+	vel_y = (vel_y + cos(desired_angle)*2)*0.5
 

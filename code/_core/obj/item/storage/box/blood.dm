@@ -15,6 +15,9 @@
 	new /obj/item/clothing/head/hat/tricorn(src)
 	new /obj/item/clothing/neck/neck_wrap(src)
 	new /obj/item/clothing/overwear/coat/trench(src)
+	new /obj/item/weapon/melee/sword/uncoiled(src)
+	new /obj/item/weapon/melee/sword/csaw(src)
+	new /obj/item/weapon/melee/sword/cblade(src)
 	. = ..()
 
 /obj/item/storage/blood_box/duum/fill_inventory()
