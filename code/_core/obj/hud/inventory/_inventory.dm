@@ -494,7 +494,7 @@
 	return TRUE
 	*/
 
-/obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
 	if(loc && loc == I)
 		return FALSE
@@ -510,12 +510,15 @@
 		*/
 		return FALSE
 
-	if(!I.can_be_held(owner,src,messages) || (worn && !I.can_be_worn(owner,src,messages)))
-		return FALSE
-
 	if(is_occupied(TRUE,TRUE))
 		if(messages && src.loc)
 			owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
+		return FALSE
+
+	if(bypass)
+		return TRUE
+
+	if(!I.can_be_held(owner,src,messages) || (worn && !I.can_be_worn(owner,src,messages)))
 		return FALSE
 
 	if(is_inventory(I.loc))

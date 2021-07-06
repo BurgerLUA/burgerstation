@@ -14,9 +14,9 @@
 	priority = -101
 
 
-/obj/hud/inventory/dynamic/bank/can_slot_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/dynamic/bank/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
-	if(length(I.inventories) && I.size > 3)
+	if(!bypass && length(I.inventories) && I.size > 3)
 		if(messages) owner.to_chat(span("warning","The bank does not allow the storage of large containers."))
 		return FALSE
 

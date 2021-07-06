@@ -304,9 +304,7 @@
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(bypass && length(I.contents) >= I.max_slots)
-			continue
-		if(I.can_slot_object(object,enable_messages))
+		if(I.can_slot_object(object,enable_messages,bypass))
 			return I
 
 	return null
