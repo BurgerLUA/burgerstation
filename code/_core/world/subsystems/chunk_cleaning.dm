@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(chunkclean)
 					var/atom/movable/M = j
 					if(istype(M,/mob/living/))
 						var/mob/living/L = M
-						if(L.dead)
+						if(L.dead && !L.ckey_last)
 							qdel(L)
 							. += 1
 					else if(istype(M,/obj/item/))
