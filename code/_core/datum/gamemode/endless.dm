@@ -24,7 +24,7 @@
 
 	var/time_left = vote_delay - (world.time - last_vote)
 
-	set_status_display("mission",get_nice_time(FLOOR(DECISECONDS_TO_SECONDS(time_left),1)))
+	set_status_display("mission",get_clock_time(FLOOR(DECISECONDS_TO_SECONDS(time_left),1)))
 
 /gamemode/endless/virtual_reality
 	name = "VR"
