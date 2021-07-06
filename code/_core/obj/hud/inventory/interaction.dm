@@ -23,7 +23,7 @@
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
 
-	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking wtih an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
 		var/atom/movable/M = object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
@@ -121,7 +121,7 @@
 	if(get_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
-			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB)
+			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.
 				var/obj/item/found_item
 				for(var/k in I.inventories)
 					var/obj/hud/inventory/INV = k
@@ -134,8 +134,8 @@
 				return TRUE
 			if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
 				var/obj/hud/inventory/INV = I.loc
-				if(!top_object)
-					if(INV.worn)
+				if(!top_object) //We're clicking on an object with an empty hand.
+					if(INV.worn) //We're clicking on a worn object.
 						var/content_length = length(INV.contents)
 						if(content_length > 1 && caller.attack_flags & CONTROL_MOD_DISARM) //Force
 							content_length -= 1
@@ -152,13 +152,6 @@
 						else
 							src.add_object(object)
 						return TRUE
-				/*
-				else if(INV.worn && I.is_container && is_item(top_object)) //The item we're clicking on is an inventory and a worn container, and we're clicking on it with a clorthing.
-					var/obj/item/ITO = top_object
-					if(ITO.item_slot & INV.item_slot)
-						INV.add_object(ITO)
-						return TRUE
-				*/
 				else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
 					return TRUE
 			else if(!top_object) //If we don't have a top object, pick it up.
@@ -277,7 +270,7 @@
 		src.add_object(object_as_item)
 		return TRUE
 
-	return ..()
+	. = ..()
 
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc

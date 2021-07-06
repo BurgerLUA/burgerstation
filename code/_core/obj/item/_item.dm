@@ -219,8 +219,30 @@
 
 /obj/item/Finalize()
 	. = ..()
-	if(length(polymorphs))
+	if(length(polymorphs) || color != initial(color))
 		update_sprite()
+
+/obj/item/initialize_blends(var/desired_icon_state)
+
+	if(!desired_icon_state)
+		desired_icon_state = icon_state_worn
+
+	if(length(polymorphs))
+		var/icon/initial_icon = initial(icon)
+		for(var/polymorph_name in polymorphs)
+			var/polymorph_color = polymorphs[polymorph_name]
+			add_blend(
+				"polymorph_[polymorph_name]",
+				desired_icon = initial_icon,
+				desired_icon_state = "[desired_icon_state]_[polymorph_name]",
+				desired_color = polymorph_color,
+				desired_blend = ICON_OVERLAY,
+				desired_type = ICON_BLEND_OVERLAY,
+				desired_should_save = TRUE,
+				desired_layer = worn_layer
+			)
+
+	. = ..()
 
 /obj/item/get_base_value()
 	return initial(value) * item_count_current * price_multiplier
@@ -365,7 +387,7 @@
 			D.assoc_button.inventory_category = inventory_category
 		inventories += D
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)
@@ -550,7 +572,7 @@
 			I.Blend(I2,ICON_OVERLAY)
 		icon = I
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/update_held_icon()
 
@@ -562,7 +584,7 @@
 
 /obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	last_interacted = caller
-	return ..()
+	. = ..()
 
 /obj/item/proc/get_reagents_to_consume(var/mob/living/consumer)
 	var/reagent_container/temp/T = new(src,1000)
