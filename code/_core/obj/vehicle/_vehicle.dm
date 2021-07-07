@@ -227,6 +227,9 @@
 	if(.)
 		for(var/k in passengers)
 			var/mob/living/L = k
+			if(L==src)
+				log_error("WARNING: A vehicle was in its own passengers list!")
+				continue
 			L.set_dir(.)
 
 
