@@ -327,10 +327,10 @@ mob/living/advanced/Login()
 
 	. = ..()
 
+	apply_mob_parts(TRUE,TRUE,TRUE)
+
 	if(client)
 		add_species_buttons()
-
-	apply_mob_parts(TRUE,TRUE,TRUE)
 
 	var/species/S = SPECIES(species)
 	if(S && S.health)
