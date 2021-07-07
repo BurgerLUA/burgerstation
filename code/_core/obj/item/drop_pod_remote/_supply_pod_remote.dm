@@ -37,14 +37,14 @@
 		caller.to_chat(span("warning","There are no charges left in \the [src.name]!"))
 		return TRUE
 
-	charges--
-
 	var/turf/T = get_turf(object)
 	var/area/A = T.loc
 
 	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
 		caller.to_chat(span("warning","Invalid landing zone!"))
 		return TRUE
+
+	charges--
 
 	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)
 	for(var/k in stored_object_types)
