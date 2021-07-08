@@ -151,6 +151,10 @@
 /mob/living/simple/watcher/clockwork_mobile,
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
+"I" = (
+/obj/marker/lobby,
+/turf/simulated/floor/clockwork/alt3,
+/area/prefab/clockwork_cult)
 
 (1,1,1) = {"
 a
@@ -2154,7 +2158,7 @@ h
 k
 n
 p
-q
+I
 h
 r
 d

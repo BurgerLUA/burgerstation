@@ -141,14 +141,13 @@
 
 		if(is_living(attacker))
 			var/mob/living/A = attacker
-			if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
-				L.add_status_effect(DISARM,5,5, source = attacker)
-				return ..()
-			else
-				luck_value *= 4
-
-		if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
-			L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
+			if(L.loyalty_tag != A.loyalty_tag)
+				if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
+					L.add_status_effect(DISARM,5,5, source = attacker)
+				else
+					luck_value *= 4
+					if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
+						L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
 
 	return ..()
 
@@ -299,3 +298,31 @@
 
 	attack_delay = 12*0.5
 	attack_delay_max = 12
+
+
+/damagetype/unarmed/brass/spiked
+	name = "spiked brass knuckle"
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 55*0.4,
+		PIERCE = 55*0.1
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0,
+		PIERCE = 50
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BLUNT,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLUNT,PIERCE)
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT,PIERCE)
+	)
+
+	attack_delay = 11*0.5
+	attack_delay_max = 11

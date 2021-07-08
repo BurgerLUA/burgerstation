@@ -37,5 +37,16 @@
 
 
 /obj/projectile/bullet/laser/kinetic
-	name = "kinetic blast"
 	icon_state = "kinetic"
+
+/obj/projectile/bullet/laser/kinetic/update_projectile(var/tick_rate=1)
+	. = ..()
+	if(.)
+		vel_x *= 0.95
+		vel_y *= 0.95
+		alpha = clamp(alpha-5,0,255)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_projectile_hit(current_loc)
+			qdel(src)
+			return FALSE

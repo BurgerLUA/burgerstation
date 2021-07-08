@@ -3,7 +3,7 @@
 	var/dimensions = null
 	icon_state = null
 	var/chance_none = 50
-	var/list/prefabs = list()
+	var/list/prefabs = null
 
 /obj/marker/prefab/New(var/desired_loc)
 	if(dimensions && !prob(chance_none))

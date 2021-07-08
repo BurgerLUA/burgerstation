@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/jungle/z_02.dmm",
 		"maps/jungle/z_01.dmm",
 		"maps/jungle/z_00.dmm",
-		"maps/core/bluespace.dmm"
+		"maps/_core/bluespace.dmm"
 	)
 
 /subsystem/dmm_suite/Initialize()
@@ -49,17 +49,19 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")
 	var/loaded_prefabs = 0
-	for(var/dimensions in prefab_markers)
-		log_subsystem(name,"Found [length(prefab_markers[dimensions])] valid maps for dimension set [dimensions].")
-		for(var/k in prefab_markers[dimensions])
-			if(!length(valid_prefabs[dimensions]))
-				log_error("Warning: Not enough prefabs of type [dimensions] to satisfy all prefab markers.")
-				break
+	for(var/category in prefab_markers)
+		log_subsystem(name,"Found [length(prefab_markers[category])] valid maps for dimension set [category].")
+		for(var/k in prefab_markers[category]) //For each maker...
 			var/obj/marker/prefab/M = k
-			var/list/local_prefabs = M.prefabs ? (valid_prefabs[dimensions] & M.prefabs) : valid_prefabs[dimensions]
-			if(length(local_prefabs[dimensions]))
-				var/chosen_file = pick(local_prefabs[dimensions])
-				valid_prefabs[dimensions] -= chosen_file
+			if(!length(valid_prefabs[category]))
+				log_error("Warning: Not enough prefabs of type [category] to satisfy all prefab markers.")
+				break
+			var/list/local_prefabs = valid_prefabs[category]
+			if(length(M.prefabs))
+				local_prefabs = local_prefabs & M.prefabs
+			if(length(local_prefabs))
+				var/chosen_file = pick(local_prefabs)
+				valid_prefabs[category] -= chosen_file
 				var/map_contents = file2text(chosen_file)
 				log_subsystem("Loading [chosen_file]...")
 				dmm_suite.read_map(map_contents,M.x,M.y,M.z)

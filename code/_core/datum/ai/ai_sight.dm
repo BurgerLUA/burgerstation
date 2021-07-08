@@ -23,9 +23,6 @@
 	if(vision_distance > radius_find_enemy_combat) //We're too focused on another enemy.
 		return 0
 
-	if(view_check && !(A in view(true_distance,owner))) //I hate how expensive this is.
-		return 0
-
 	. = 100
 
 	var/turf/T = get_turf(A)
@@ -52,3 +49,8 @@
 	else
 		. *= clamp(atom_alpha/255,0,1) * max(final_night_vision,lightness) * 3
 
+	if(. <= 0)
+		return 0
+
+	if(view_check && !(A in view(true_distance,owner))) //I hate how expensive this is.
+		return 0

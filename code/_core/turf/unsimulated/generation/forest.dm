@@ -63,6 +63,7 @@
 			if(prob(1))
 				new /obj/marker/generation/forest_dirt(src)
 				place_ground = FALSE
+				new /turf/simulated/floor/colored/dirt(src)
 		else if(!path_only && prob(5))
 			place_grass = FALSE
 			new /obj/marker/generation/plant/wheat(src)
@@ -90,6 +91,7 @@
 					new /mob/living/simple/bull(src)
 				else
 					new /obj/marker/generation/mob/cow(src)
+
 	if(place_ground)
 		new /turf/simulated/floor/colored/grass(src)
 		color = blend_colors("#336D31","#426D31",noise)

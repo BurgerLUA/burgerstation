@@ -21,6 +21,10 @@
 "g" = (
 /turf/simulated/hazard/lava,
 /area/dmm_suite/clear_area)
+"h" = (
+/obj/marker/lobby,
+/turf/simulated/floor/colored/ash/rocky,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -448,7 +452,7 @@ b
 b
 b
 b
-b
+h
 b
 b
 f

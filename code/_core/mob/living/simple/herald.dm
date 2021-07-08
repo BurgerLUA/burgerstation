@@ -79,6 +79,8 @@
 
 	soul_size = SOUL_SIZE_RARE
 
+	respawn_time = SECONDS_TO_DECISECONDS(300)
+
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 

@@ -199,9 +199,8 @@
 
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	for(var/k in collide_with)
-		if(!on_projectile_hit(k))
-			continue
-	//the removal of penetrations is handled in projectile_should_collide
+		on_projectile_hit(k)
+
 	if(penetrations_left < 0)
 		qdel(src)
 		return TRUE
@@ -234,7 +233,16 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-	animate(src,pixel_x = pixel_x_float,pixel_y = pixel_y_float,time=tick_rate)
+
+	var/rounded_x = CEILING(pixel_x_float,1)
+	var/rounded_y = CEILING(pixel_y_float,1)
+
+	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough to animate.
+		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < 20)
+			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
+		else
+			pixel_x = rounded_x
+			pixel_y = rounded_y
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 

@@ -27,23 +27,26 @@
 /obj/hud/button/exchange/sell/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(is_player(caller))
+		var/mob/living/advanced/player/A = caller
 		var/obj/hud/button/exchange/base/B = locate() in A.buttons
 		if(B)
 			var/obj/item/I = B.stored_object
 			if(I && !I.qdeleting && get_dist(I,A) <= 1)
 				B.calculate_value()
-				var/turf/T = get_turf(A)
-				var/obj/item/currency/gold/G = new(T)
-				INITIALIZE(G)
-				G.item_count_current = B.stored_value
-				SSeconomy.gold_in_circulation += B.stored_value
-				FINALIZE(G)
-				B.set_stored_object(null)
-				qdel(B)
-				A.put_in_hands(G)
-
+				if(istype(B.stored_object,/obj/item/currency/gold))
+					A.adjust_currency(B.stored_value)
+					qdel(I)
+				else
+					var/turf/T = get_turf(A)
+					var/obj/item/currency/gold/G = new(T)
+					INITIALIZE(G)
+					G.item_count_current = B.stored_value
+					SSeconomy.gold_in_circulation += B.stored_value
+					FINALIZE(G)
+					qdel(I)
+					B.set_stored_object(null)
+					A.put_in_hands(G)
 			else
 				B.set_stored_object(null)
 
@@ -80,8 +83,8 @@
 	screen_loc = "CENTER,CENTER"
 
 /obj/hud/button/exchange/base/update_owner(var/mob/desired_owner)
-	. = ..()
 	set_stored_object(null)
+	. = ..()
 
 /obj/hud/button/exchange/base/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -115,7 +118,10 @@
 
 /obj/hud/button/exchange/base/proc/calculate_value()
 	if(stored_object)
-		stored_value = FLOOR(stored_object.get_value()/SSeconomy.credits_per_gold,1)
+		if(istype(stored_object,/obj/item/currency/gold))
+			stored_value = stored_object.item_count_current*SSeconomy.credits_per_gold
+		else
+			stored_value = FLOOR(stored_object.get_value()/SSeconomy.credits_per_gold,1)
 	else
 		stored_value = 0
 
@@ -136,8 +142,10 @@
 		name = stored_object.name
 		desc = stored_object.desc
 		desc_extended = stored_object.desc_extended
-		maptext = "[nice_number(stored_value)] cr"
-
+		if(istype(stored_object,/obj/item/currency/gold))
+			maptext = "[nice_number(stored_value)] cr"
+		else
+			maptext = "[nice_number(stored_value)] g"
 	else
 		name = initial(name)
 		desc = initial(desc)

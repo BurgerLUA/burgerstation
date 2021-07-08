@@ -66,24 +66,33 @@
 	if(.)
 		if(P.vel_y > 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_north)
+				P.penetrations_left = -1
 				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_south)
+				P.penetrations_left = -1
 				return list(new_turf)
 		else if(P.vel_y < 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_south)
+				P.penetrations_left = -1
 				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_north)
+				P.penetrations_left = -1
 				return list(new_turf)
 		if(P.vel_x > 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_east)
+				P.penetrations_left = -1
 				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_west)
+				P.penetrations_left = -1
 				return list(new_turf)
 		else if(P.vel_x < 0)
 			if(!old_turf.allow_bullet_pass && old_turf.density_west)
+				P.penetrations_left = -1
 				return list(old_turf)
 			if(!new_turf.allow_bullet_pass && new_turf.density_east)
+				P.penetrations_left = -1
 				return list(new_turf)
+		P.penetrations_left = -1
 		return list(src) //Weird.
 	else
 		. = list()
@@ -96,7 +105,7 @@
 		if(A.projectile_should_collide(P,new_turf,old_turf) && P.on_projectile_hit(A))
 			. |= A
 			P.penetrations_left--
-			if(P.penetrations_left <= 0)
+			if(P.penetrations_left < 0)
 				return .
 
 	for(var/k in src.old_living)
@@ -107,7 +116,8 @@
 			continue
 		if(L.projectile_should_collide(P,new_turf,old_turf))
 			. |= L
-			if(P.penetrations_left <= 0)
+			P.penetrations_left--
+			if(P.penetrations_left < 0)
 				return .
 
 	return .

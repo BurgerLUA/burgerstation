@@ -26,6 +26,13 @@
 	pixel_x = -32
 	pixel_y = -32
 
+	var/priority = 0
+
+/obj/marker/generation/New(var/desired_loc)
+	. = ..()
+	if(object_to_place)
+		priority = initial(object_to_place.plane)*10000 + initial(object_to_place.layer)
+
 /obj/marker/generation/proc/grow(var/desired_grow)
 
 	for(var/k in valid_turfs)
@@ -550,6 +557,11 @@
 	object_to_place = /mob/living/simple/arachnid
 	objects_max = 1
 
+/obj/marker/generation/mob/bat
+	object_to_place = /mob/living/simple/bat
+	objects_max = 3
+
+
 /obj/marker/generation/mob/venus_human_trap
 	object_to_place = /mob/living/simple/venus_human_trap
 	objects_max = 1
@@ -583,6 +595,11 @@
 /obj/marker/generation/mob/cow
 	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
+
+/obj/marker/generation/mob/goblin
+	object_to_place = /mob/living/advanced/npc/goblin
+	objects_max = 3
+
 
 
 /obj/marker/generation/mob/crab

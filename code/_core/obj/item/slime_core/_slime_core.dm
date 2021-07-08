@@ -16,8 +16,6 @@
 
 /obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-
-
 	if(is_item(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -26,7 +24,7 @@
 		I.dye_self(caller,src,src.color,alpha/255)
 		return TRUE
 
-	return ..()
+	. = ..()
 
 
 /obj/item/slime_core/get_base_value()

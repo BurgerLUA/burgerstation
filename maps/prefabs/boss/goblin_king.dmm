@@ -9,6 +9,10 @@
 /mob/living/simple/goblin_king,
 /turf/simulated/floor/grass/jungle,
 /area/prefab/goblin_king)
+"d" = (
+/obj/marker/lobby,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/goblin_king)
 
 (1,1,1) = {"
 a
@@ -537,7 +541,7 @@ b
 b
 b
 c
-b
+d
 b
 b
 b

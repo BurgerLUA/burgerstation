@@ -13,7 +13,7 @@
 
 	blood_type = /reagent/blood/goblin
 
-	dir = EAST
+	dir = SOUTH
 
 	dialogue_id = /dialogue/npc/goblin_merchant/
 

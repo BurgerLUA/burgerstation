@@ -14,6 +14,8 @@
 	immortal = TRUE
 
 	anchored = TRUE
+	density = TRUE
+	size = SIZE_10
 
 	var/obj/structure/interactive/vending/stored_vendor = /obj/structure/interactive/vending/contract
 

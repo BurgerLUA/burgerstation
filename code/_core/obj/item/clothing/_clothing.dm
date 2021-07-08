@@ -100,15 +100,17 @@
 
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
-	weight = calculate_weight()
 	. = ..()
-	initialize_blends()
 
 /obj/item/clothing/Destroy()
 	additional_clothing_stored.Cut()
 	return ..()
 
 /obj/item/clothing/Initialize()
+
+	weight = calculate_weight()
+
+	initialize_blends()
 
 	for(var/k in additional_clothing)
 		var/obj/item/C = new k(src)
@@ -119,25 +121,18 @@
 
 	sync_additional_clothing()
 
-	return ..()
+	. = ..()
 
 
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
-	if(length(polymorphs))
-		if(!desired_icon_state)
-			desired_icon_state = icon_state_worn
-		var/icon/initial_icon = initial(icon)
-		for(var/polymorph_name in polymorphs)
-			var/polymorph_color = polymorphs[polymorph_name]
-			add_blend("polymorph_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-		update_sprite()
+	. = ..()
 
 	for(var/k in additional_clothing_stored)
 		var/obj/item/C = k
 		C.initialize_blends()
 
-	..()
+
 
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()

@@ -94,6 +94,13 @@
 
 	sound_environment = ENVIRONMENT_ROOM
 
+/area/burgerstation/contractor
+	name = "Mr. Scratch's Office"
+	icon_state = "dorm"
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE
+
+	sound_environment = ENVIRONMENT_ROOM
+
 /area/burgerstation/prestige
 	name = "\improper Prestige Center"
 	icon_state = "dorm"

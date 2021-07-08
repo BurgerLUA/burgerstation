@@ -49,7 +49,7 @@
 	var/deceleration = 10
 
 	//How much acceleration actually affects movement.
-	//1 means that you'll be double your normal movespeed when you first move. 0.5 means one plus half. 2 means one plus double. 0 means disabled.
+	//1 means that you'll be double your normal move delay when you first move. 0.5 means one plus half. 2 means one plus double. 0 means disabled.
 	var/acceleration_mod = 0
 	var/use_momentum = FALSE //Acceleration uses momentum.
 
@@ -90,6 +90,8 @@
 	if(isturf(src.loc))
 		for(var/k in light_sprite_sources)
 			var/obj/light_sprite/LS = k
+			if(LS == src)
+				continue
 			LS.set_dir(desired_dir,force)
 
 /atom/movable/New(var/desired_loc)

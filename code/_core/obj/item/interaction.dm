@@ -7,12 +7,13 @@
 		return FALSE
 
 	if(can_interact_with_inventory(caller))
-		if(inventory_user)
+		if(caller == inventory_user)
 			close_inventory(inventory_user)
 		else
 			open_inventory(caller)
+		return TRUE
 
-	return TRUE
+	return FALSE
 
 
 /obj/item/proc/can_interact_with_inventory(var/mob/living/advanced/caller)
@@ -45,7 +46,7 @@
 /obj/item/proc/open_inventory(var/mob/living/advanced/A)
 
 	if(inventory_user)
-		src.close_inventory(inventory_user)
+		close_inventory(inventory_user)
 
 	for(var/k in A.using_inventories)
 		var/obj/item/I = k
@@ -102,11 +103,7 @@
 		src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
 		return TRUE
 
-	return 	..()
-
-
-/obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	return clicked_on_by_object(caller,object,location,control,params)
+	. = ..()
 
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
@@ -130,7 +127,7 @@
 	if(caller == object)
 		return click_self(caller)
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/can_be_dragged(var/mob/caller)
 	if(additional_clothing_parent)

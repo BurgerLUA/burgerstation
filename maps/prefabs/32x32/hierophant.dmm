@@ -9,6 +9,10 @@
 /mob/living/simple/hierophant,
 /turf/simulated/floor/hierophant,
 /area/prefab/hierophant)
+"d" = (
+/obj/marker/lobby,
+/turf/simulated/floor/hierophant,
+/area/prefab/hierophant)
 
 (1,1,1) = {"
 a
@@ -538,7 +542,7 @@ b
 b
 b
 c
-b
+d
 b
 b
 b

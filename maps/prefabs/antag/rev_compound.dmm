@@ -388,6 +388,10 @@
 /mob/living/advanced/npc/rev,
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
+"bw" = (
+/obj/marker/lobby,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
 
 (1,1,1) = {"
 ab
@@ -910,7 +914,7 @@ ac
 ac
 ac
 ac
-ac
+bw
 aE
 ac
 ac

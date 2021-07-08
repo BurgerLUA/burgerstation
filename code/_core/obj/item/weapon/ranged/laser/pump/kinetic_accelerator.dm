@@ -15,7 +15,7 @@
 	pump_delay = 5
 	shoot_delay = 8
 
-	projectile_speed = TILE_SIZE-1
+	projectile_speed = TILE_SIZE*0.75
 
 	bullet_color = "#FFFFFF"
 

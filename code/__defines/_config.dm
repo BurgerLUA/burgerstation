@@ -28,10 +28,10 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING FALSE
+#define ENABLE_LIGHTING TRUE
 
 //Enables/disables turf generation
-#define ENABLE_GENERATION FALSE
+#define ENABLE_GENERATION TRUE
 
 //Enables/disables atmos.
 #define ENABLE_ATMOS FALSE
@@ -43,5 +43,5 @@
 #define ENABLE_HIT_MESSAGES FALSE
 
 //Enables/disables wikibot helper functions
-#define ENABLE_WIKIBOT TRUE
+#define ENABLE_WIKIBOT FALSE
 

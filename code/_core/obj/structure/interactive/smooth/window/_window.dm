@@ -86,6 +86,8 @@
 	icon = 'icons/obj/structure/clockwork/window.dmi'
 	icon_state = "window"
 
+	health = null
+
 
 /obj/structure/smooth/window/cult
 	name = "cult window"

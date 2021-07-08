@@ -8,8 +8,8 @@ SUBSYSTEM_DEF(explosion)
 
 	var/list/atom/damage_to_process = list()
 
-	tick_usage_max = 50
-	cpu_usage_max = 50
+	tick_usage_max = 90
+	cpu_usage_max = 90
 
 	var/explosion_ticks = 0
 

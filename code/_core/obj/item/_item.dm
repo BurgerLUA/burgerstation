@@ -159,6 +159,31 @@
 
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
 
+/obj/item/Destroy()
+
+	additional_clothing_parent = null
+
+	if(inventory_user)
+		close_inventory(inventory_user)
+
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
+		qdel(I)
+	inventories.Cut()
+
+	last_interacted = null
+	inventory_user = null
+
+	if(loc)
+		drop_item(silent=TRUE)
+
+	can_save = FALSE
+	can_hold = FALSE
+	can_wear = FALSE
+	unremovable = TRUE
+
+	. = ..()
+
 /obj/item/proc/use_condition(var/amount_to_use=1)
 
 	if(!uses_until_condition_fall)
@@ -194,8 +219,30 @@
 
 /obj/item/Finalize()
 	. = ..()
-	if(length(polymorphs))
+	if(length(polymorphs) || color != initial(color))
 		update_sprite()
+
+/obj/item/initialize_blends(var/desired_icon_state)
+
+	if(!desired_icon_state)
+		desired_icon_state = icon_state_worn
+
+	if(length(polymorphs))
+		var/icon/initial_icon = initial(icon)
+		for(var/polymorph_name in polymorphs)
+			var/polymorph_color = polymorphs[polymorph_name]
+			add_blend(
+				"polymorph_[polymorph_name]",
+				desired_icon = initial_icon,
+				desired_icon_state = "[desired_icon_state]_[polymorph_name]",
+				desired_color = polymorph_color,
+				desired_blend = ICON_OVERLAY,
+				desired_type = ICON_BLEND_OVERLAY,
+				desired_should_save = TRUE,
+				desired_layer = worn_layer
+			)
+
+	. = ..()
 
 /obj/item/get_base_value()
 	return initial(value) * item_count_current * price_multiplier
@@ -237,24 +284,6 @@
 
 	return amount_to_add
 
-
-/obj/item/Destroy()
-
-	additional_clothing_parent = null
-
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		qdel(I)
-
-	inventories.Cut()
-
-	last_interacted = null
-
-	if(loc)
-		drop_item(silent=TRUE)
-
-	return ..()
-
 /obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
@@ -275,9 +304,7 @@
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		if(bypass && length(I.contents) >= I.max_slots)
-			continue
-		if(I.can_slot_object(object,enable_messages))
+		if(I.can_slot_object(object,enable_messages,bypass))
 			return I
 
 	return null
@@ -358,7 +385,7 @@
 			D.assoc_button.inventory_category = inventory_category
 		inventories += D
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)
@@ -543,7 +570,7 @@
 			I.Blend(I2,ICON_OVERLAY)
 		icon = I
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/update_held_icon()
 
@@ -555,7 +582,7 @@
 
 /obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	last_interacted = caller
-	return ..()
+	. = ..()
 
 /obj/item/proc/get_reagents_to_consume(var/mob/living/consumer)
 	var/reagent_container/temp/T = new(src,1000)

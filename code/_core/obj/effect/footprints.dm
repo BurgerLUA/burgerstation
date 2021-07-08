@@ -8,7 +8,7 @@
 
 /obj/effect/footprint/New(var/newloc,var/desired_dir = 0)
 	set_dir(desired_dir)
-	..()
+	. = ..()
 
 /obj/effect/footprint/emboss
 	icon_state = "human_emboss_enter"

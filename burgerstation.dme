@@ -1928,6 +1928,7 @@
 #include "code\_core\world\subsystems\botany.dm"
 #include "code\_core\world\subsystems\callback.dm"
 #include "code\_core\world\subsystems\cargo.dm"
+#include "code\_core\world\subsystems\chunk_cleaning.dm"
 #include "code\_core\world\subsystems\classes.dm"
 #include "code\_core\world\subsystems\cleaning.dm"
 #include "code\_core\world\subsystems\client.dm"

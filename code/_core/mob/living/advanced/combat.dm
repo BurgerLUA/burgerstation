@@ -241,7 +241,7 @@
 
 /mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
 
-	if(last_hold && (world.time - last_hold <= 10*get_skill_power(SKILL_PARRY,0,1,2)))
+	if(last_hold && (world.time - last_hold <= 5 + 5*get_skill_power(SKILL_PARRY,0,1,2)))
 		return TRUE
 
 	return FALSE
