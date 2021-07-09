@@ -432,26 +432,26 @@
 	stored_types = list()
 
 	var/list/chemicals_to_make = list(
-		/reagent/carbon,
-		/reagent/iron,
-		/reagent/copper,
-		/reagent/silver,
-		/reagent/aluminium,
-		/reagent/oxygen,
-		/reagent/nitrogen,
-		/reagent/silicon,
-		/reagent/potassium,
-		/reagent/salt/sodium_chloride,
-		/reagent/ammonia,
-		/reagent/sulfur,
-		/reagent/chlorine,
-		/reagent/phenol,
-		/reagent/sodium,
-		/reagent/acid/sulphuric,
 		/reagent/fuel/acetone,
-		/reagent/toxin/mercury,
+		/reagent/aluminium,
+		/reagent/ammonia,
+		/reagent/carbon,
+		/reagent/chlorine,
+		/reagent/copper,
+		/reagent/nutrition/sugar/glucose,
+		/reagent/iron,
 		/reagent/drug/lithium,
-		/reagent/nutrition/sugar/glucose
+		/reagent/toxin/mercury,
+		/reagent/nitrogen,
+		/reagent/oxygen,
+		/reagent/phenol,
+		/reagent/potassium,
+		/reagent/silicon,
+		/reagent/silver,
+		/reagent/sodium,
+		/reagent/salt/sodium_chloride,
+		/reagent/sulfur,
+		/reagent/acid/sulphuric
 	)
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
