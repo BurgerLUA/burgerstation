@@ -22,7 +22,7 @@
 
 	var/list/parsed_screen_loc = parse_screen_loc(params)
 
-	if(!length(parsed_screen_loc) >= 2)
+	if(length(parsed_screen_loc) < 2)
 		return FALSE
 
 	var/final_x = M.x + FLOOR((parsed_screen_loc[1] + C.pixel_x)/TILE_SIZE,1) - (C.view)

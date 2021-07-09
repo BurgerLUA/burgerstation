@@ -26,7 +26,7 @@
 
 	damage_type = /damagetype/npc/medibot
 
-
+	health = /health/mob/living/inorganic
 
 	stun_angle = 180
 
@@ -128,6 +128,9 @@
 		return FALSE
 
 	if(!target.health)
+		return FALSE
+
+	if(!target.health.organic)
 		return FALSE
 
 	if(target.dead)

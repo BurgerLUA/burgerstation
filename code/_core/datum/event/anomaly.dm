@@ -17,9 +17,7 @@
 
 /event/anomaly/New()
 
-	for(var/area/A in world)
-		if(A.area_identifier != "Burgerstation")
-			continue
+	for(var/area/burgerstation/A in world)
 		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 			continue
 		valid_areas += A

@@ -175,3 +175,6 @@
 		returning_value += damage[damage_type]
 
 	return returning_value //min(returning_value,clamp(L.blood_volume/L.blood_volume_max,0,1)*health_max)
+
+/health/mob/living/inorganic
+	organic = FALSE

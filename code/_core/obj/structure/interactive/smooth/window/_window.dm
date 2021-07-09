@@ -37,13 +37,15 @@
 			add_overlay(I)
 
 /obj/structure/smooth/window/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 	. = ..()
 	if(damage)
+		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 		no_queue = TRUE
 		for(var/k in list(NORTH,EAST,SOUTH,WEST))
 			var/turf/T = get_step(src,k)
 			for(var/obj/structure/smooth/window/W in T.contents)
+				if(W.no_queue)
+					continue
 				on_destruction(caller,TRUE)
 
 	qdel(src)
