@@ -16,7 +16,9 @@
 
 	if(isturf(hit_object))
 		damage_multiplier *= 2 //More damage against walls.
-	else if(hit_object && hit_object.size < SIZE_GIANT && hit_object.health && hit_object.health.organic)
-		damage_multiplier *= 0.5 //Less damage against organic targets that aren't walls and that aren't giants.
+	else if(is_living(hit_object))
+		var/mob/living/L = hit_object
+		if(L.size < SIZE_GIANT)
+			damage_multiplier *= 0.5
 
 	. = ..()
