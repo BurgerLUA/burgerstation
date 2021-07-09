@@ -17,6 +17,14 @@
 		if(B.type in color_scheme_buttons)
 			B.update_owner(null)
 
+/mob/living/advanced/proc/add_slot_buttons()
+
+	var/species/S = SPECIES(species)
+
+	for(var/v in S.spawning_slots)
+		var/obj/hud/button/B = new v
+		B.update_owner(src)
+
 /mob/living/advanced/proc/add_chargen_buttons(var/list/blacklist=list())
 
 	var/species/S = SPECIES(species)

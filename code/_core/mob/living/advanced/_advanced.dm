@@ -327,6 +327,9 @@ mob/living/advanced/Login()
 
 	. = ..()
 
+	if(client)
+		add_slot_buttons()
+
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
 	if(client)
