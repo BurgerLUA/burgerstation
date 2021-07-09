@@ -10,28 +10,25 @@
 
 /obj/trigger/leave_chargen/Cross(var/atom/movable/triggerer)
 
-	if(!is_advanced(triggerer))
-		return ..()
+	if(is_player(triggerer))
+		var/mob/living/advanced/player/A = triggerer
+		var/turf/T = get_turf(A) //This is the old turf
+		if(A.tutorial)
+			spawn
+				if(get_dir(T,src) & dir)
+					var/response = input(A,"A strange feeling overwhelms you... \
+						Is it insecurity? Is it self-loathing? \
+						Perhaps you should consider if what you saw in the mirror is what you want to look like. \
+						You seem to have a feeling you won't be able to change it for a very long time.",
+						"Is this what you want to look like?"
+					) as null|anything in list("Fuck, go back!","I'm perfect.","Cancel")
 
-	var/mob/living/advanced/A = triggerer
-
-	var/turf/T = get_turf(A) //This is the old turf.
-
-	if(!(get_dir(T,src) & dir))
-		return ..()
-
-	var/response = input(A,"A strange feeling overwhelms you... \
-		Is it insecurity? Is it self-loathing? \
-		Perhaps you should consider if what you saw in the mirror is what you want to look like. \
-		You seem to have a feeling you won't be able to change it for a very long time.",
-		"Is this what you want to look like?"
-	) as null|anything in list("Fuck, go back!","I'm perfect.","Cancel")
-
-	if(response != "I'm perfect.")
-		A.to_chat(span("thought","Maybe I should go back and change a few things..."))
-		return FALSE
-
-	A.to_chat(span("thought","Today I am beautiful and nothing will change that."))
+					if(response != "I'm perfect.")
+						A.to_chat(span("thought","Maybe I should go back and change a few things..."))
+					else
+						A.to_chat(span("thought","Today I am beautiful and nothing will change that."))
+						A.tutorial = FALSE
+			return FALSE
 
 	. = ..()
 
