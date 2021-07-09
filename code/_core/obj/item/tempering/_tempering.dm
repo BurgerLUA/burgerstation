@@ -13,6 +13,8 @@
 
 	value_burgerbux = 1 //Prevents being sold in vendors.
 
+	var/unlimited = FALSE
+
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object) && can_temper(caller,object))
@@ -48,5 +50,6 @@
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
 		C.sync_additional_clothing()
-	qdel(src)
+	if(!unlimited)
+		qdel(src)
 	return TRUE

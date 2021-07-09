@@ -70,12 +70,20 @@ obj/structure/interactive/misc/mirror
 
 	density = TRUE
 
+obj/structure/interactive/misc/mirror/chargen
+	var/limited = FALSE
+
+obj/structure/interactive/misc/mirror/chargen/limited
+	limited = TRUE
 
 obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O)
 	if(is_player(O))
 		var/mob/living/advanced/player/P = O
 		if(P.tutorial)
-			P.add_chargen_buttons()
+			if(limited)
+				P.add_chargen_buttons(list(/obj/hud/button/chargen/sex/,/obj/hud/button/chargen/species))
+			else
+				P.add_chargen_buttons()
 			P.handle_hairstyle_chargen(-1,update_blends=FALSE)
 			P.handle_beardstyle_chargen(-1,update_blends=FALSE)
 			P.update_all_blends()

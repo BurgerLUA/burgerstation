@@ -397,7 +397,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
-		condition_to_use = max(0,10 - (quality_bonus)*9)
+		condition_to_use = max(0,10 - max(0,quality_bonus*9))
 		condition_to_use += FLOOR(heat_current*25,1)
 	else if(requires_bullets)
 		handle_empty(caller)

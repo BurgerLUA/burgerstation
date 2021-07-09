@@ -41,6 +41,7 @@
 		/obj/item/magazine/sniper_50/ion,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
+		/obj/item/tempering/quality/ranged/lesser
 	)
 
 /obj/structure/interactive/vending/syndicate/medicine
@@ -208,5 +209,7 @@
 		/obj/item/storage/ammo/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
-		/obj/item/magazine/lmg_762_r
+		/obj/item/magazine/lmg_762_r,
+
+		/obj/item/tempering/quality/ranged/lesser
 	)

@@ -88,6 +88,8 @@
 /turf/simulated/floor/tile/tan/ish
 	color = "#C6C2AF"
 
+/turf/simulated/floor/tile/tan/bright
+	color = "#AC7656"
 
 /turf/simulated/floor/tile/yellow
 	color = "#FFFF44"

@@ -24,7 +24,13 @@
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
+/area/centcomm/chargen
+	name = "Chargen Area"
+	area_identifier = "Character Generation"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_TUTORIAL | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_SAVEZONE | FLAGS_AREA_SINGLEPLAYER
 
+	sunlight_freq = 2
+	sunlight_color = "#576168"
 
 
 /area/debug
