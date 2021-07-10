@@ -532,7 +532,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						O = A.labeled_organs[BODY_ARM_LEFT]
 					else
 						O = A.labeled_organs[BODY_HAND_LEFT]
-				if(O)
+				if(O && O.health && O.health.organic)
 					O.health.adjust_loss_smart(PAIN=arm_damage)
 
 

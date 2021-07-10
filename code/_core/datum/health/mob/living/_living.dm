@@ -118,7 +118,7 @@
 
 /health/mob/living/adjust_stamina(var/adjust_value)
 	. = ..()
-	if(. && stamina_current >= stamina_max)
+	if(. && stamina_current >= stamina_max*0.25)
 		var/mob/living/L = owner
 		if(L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
 
