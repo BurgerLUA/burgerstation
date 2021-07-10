@@ -79,7 +79,9 @@
 /obj/hud/button/boss_health/update_icon()
 
 	icon = initial(icon)
-	icon_state = current_boss.boss_icon_state
+
+	if(current_boss && current_boss.boss_icon_state)
+		icon_state = current_boss.boss_icon_state
 
 	/*
 	if(max == 0)
