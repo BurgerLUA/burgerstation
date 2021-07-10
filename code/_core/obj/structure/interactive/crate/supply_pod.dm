@@ -55,10 +55,6 @@
 	if(. && auto_open)
 		play_sound('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE)
 
-	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
-
-
-
 /obj/structure/interactive/crate/closet/supply_pod/update_icon()
 	. = ..()
 	icon_state = initial(icon_state)

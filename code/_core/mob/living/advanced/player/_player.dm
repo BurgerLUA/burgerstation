@@ -71,8 +71,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	damage_received_multiplier = 0.5
 
-	queue_delete_on_death = FALSE
-
 	known_cqc = list(
 		/cqc/sleeping_carp/crashing_wave_kick,
 		/cqc/sleeping_carp/keelhaul,

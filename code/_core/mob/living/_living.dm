@@ -164,8 +164,6 @@
 	var/next_resist = 0
 	var/resist_counter = 0
 
-	var/queue_delete_on_death = TRUE
-
 	size = SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See size.dm for values
 
 	var/max_level = 500 //Max level for attributes of the mob.

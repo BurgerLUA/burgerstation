@@ -2,7 +2,6 @@
 	ai = /ai/advanced/hostage
 	health_base = 200 //Extra health so the escort mission isn't fucking hell.
 	var/hostage = TRUE
-	queue_delete_on_death = FALSE
 
 /mob/living/advanced/npc/unique/hostage/Initialize()
 	. = ..()
@@ -41,4 +40,3 @@
 	. = ..()
 	update_all_blends()
 	equip_loadout(/loadout/scientist)
-	

@@ -467,8 +467,6 @@
 		if(delete_on_drop)
 			qdel(src)
 			return TRUE
-		else
-			queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 	else
 		undelete(src)
 
