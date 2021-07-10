@@ -64,3 +64,19 @@
 	owner.brute_regen_buffer += .*1.5
 	owner.burn_regen_buffer += .*1
 	owner.pain_regen_buffer += .*2.5
+
+
+
+/reagent/medicine/painkiller/assprin
+	name = "Assprin"
+	desc = "A generic painkiller."
+	color = "#D1DBDB"
+	alpha = 255
+	flavor = "ass"
+	metabolism_stomach = 5/60 // Lasts a minute per 5u
+	metabolism_blood = 10/60 // Lasts a minute per 10u
+	strength = 25
+
+	experience_per_unit = 0.25
+
+	value = 1

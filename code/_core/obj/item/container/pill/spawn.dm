@@ -71,3 +71,10 @@
 /obj/item/container/pill/antihol/Generate()
 	reagents.add_reagent(/reagent/medicine/antihol,20)
 	return ..()
+
+/obj/item/container/pill/assprin
+	name = "assprin pill (10u)"
+
+/obj/item/container/pill/assprin/Generate()
+	reagents.add_reagent(/reagent/medicine/painkiller/assprin,10)
+	return ..()

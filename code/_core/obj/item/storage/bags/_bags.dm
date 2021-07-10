@@ -299,7 +299,6 @@
 		new /obj/item/container/pill/iron(src)
 	return ..()
 
-
 /obj/item/storage/pillbottle/omnizine
 	name = "omnizine pill bottle"
 	desc = "Contains 20 20u omnizine pills."
@@ -318,8 +317,6 @@
 		new /obj/item/container/pill/charcoal(src)
 	return ..()
 
-
-
 /obj/item/storage/pillbottle/antihol_small
 	name = "antihol bottle"
 	desc = "Contains 10 20u antihol pills."
@@ -328,6 +325,17 @@
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/antihol(src)
 	return ..()
+
+/obj/item/storage/pillbottle/assprin
+	name = "assprin pill bottle"
+	desc = "Contains 20 10u assprin painkiller pills. To remove that pain in your ass!"
+
+/obj/item/storage/pillbottle/assprin/fill_inventory()
+	for(var/i=1,i<=20,i++)
+		new /obj/item/container/pill/assprin(src)
+	return ..()
+
+
 
 /obj/item/storage/bagofhoarding
 	name = "bag of hoarding"

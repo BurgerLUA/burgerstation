@@ -147,10 +147,11 @@
 		/obj/item/storage/pillbottle/dylovene_small,
 		/obj/item/storage/pillbottle/iron_small,
 		/obj/item/storage/pillbottle/antihol_small,
+		/obj/item/storage/pillbottle/assprin,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/reptile,
 		/obj/item/container/medicine/nanopaste,
-		/obj/item/container/blood_pack/full/rad_be_gone
+		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
