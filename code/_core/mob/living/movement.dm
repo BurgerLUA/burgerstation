@@ -227,3 +227,10 @@
 			move_delay = max(5,move_delay)
 
 	return TRUE
+
+/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
+
+	if(buckled_object)
+		return null
+
+	. = ..()
