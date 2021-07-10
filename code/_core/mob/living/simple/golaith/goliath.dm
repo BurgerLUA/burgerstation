@@ -60,7 +60,7 @@
 	if(dead)
 		return FALSE
 
-	if(get_dist(src,desired_target) > VIEW_RANGE)
+	if(get_dist(src,desired_target) > VIEW_RANGE || src.z != desired_target.z)
 		return FALSE
 
 	add_status_effect(PARALYZE,20,20,stealthy = TRUE)
@@ -76,7 +76,7 @@
 	if(dead)
 		return FALSE
 
-	if(get_dist(src,desired_target) <= VIEW_RANGE)
+	if(get_dist(src,desired_target) <= VIEW_RANGE && src.z == desired_target.z)
 		var/list/valid_turfs = list()
 		valid_turfs += get_step(desired_target,NORTH)
 		valid_turfs += get_step(desired_target,EAST)
