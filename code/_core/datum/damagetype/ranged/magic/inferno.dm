@@ -25,3 +25,9 @@
 	bonus_experience_skill = list(
 		SKILL_MAGIC_OFFENSIVE = 75 //75%
 	)
+
+/damagetype/ranged/magic/inferno/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_status_effect(FIRE,100,100,stealthy=L.on_fire)
+	return ..()

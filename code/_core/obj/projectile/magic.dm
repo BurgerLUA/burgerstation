@@ -279,12 +279,3 @@
 	icon_state = "inferno"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
-
-
-/obj/projectile/magic/inferno/on_projectile_hit(var/atom/hit_atom)
-
-	. = ..()
-
-	if(. && is_living(hit_atom))
-		var/mob/living/L = hit_atom
-		L.ignite(SECONDS_TO_DECISECONDS(30))
