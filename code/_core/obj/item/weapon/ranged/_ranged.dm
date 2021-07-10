@@ -277,7 +277,7 @@
 /obj/item/weapon/ranged/think()
 
 	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
-		heat_current = max(heat_current-(SIZE_3/size),0) //Smaller guns easier to handle.
+		heat_current = max(heat_current-(SIZE_3/max(1,size)),0) //Smaller guns easier to handle.
 
 	. = ..()
 
