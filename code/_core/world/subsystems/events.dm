@@ -51,6 +51,7 @@ SUBSYSTEM_DEF(events)
 			log_error("Warning! Event of type [E.type] did not process correctly, thus it was deleted.")
 
 	if(world.time >= next_event_time)
+		next_event_time = world.time + SECONDS_TO_DECISECONDS(600) //Safety
 		trigger_random_event()
 
 	return TRUE
@@ -67,7 +68,6 @@ SUBSYSTEM_DEF(events)
 	log_debug("Triggering [E.get_debug_name()] in 5 seconds...")
 
 	CALLBACK("trigger_event",50,src,.proc/trigger_event,E)
-	next_event_time = world.time + 200 //In case it doesn't trigger.
 
 	return TRUE
 
