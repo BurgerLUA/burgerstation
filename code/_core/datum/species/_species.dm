@@ -98,7 +98,7 @@
 		/obj/hud/button/microstransactions,
 		/obj/hud/button/toggle_microtransactions,
 
-		/obj/hud/button/boss_health,
+		//obj/hud/button/boss_health,
 
 		/obj/hud/button/crafting/craft,
 		/obj/hud/button/crafting/close,
