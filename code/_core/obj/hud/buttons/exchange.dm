@@ -119,9 +119,9 @@
 /obj/hud/button/exchange/base/proc/calculate_value()
 	if(stored_object)
 		if(istype(stored_object,/obj/item/currency/gold))
-			stored_value = stored_object.item_count_current*SSeconomy.credits_per_gold
+			stored_value = CEILING(stored_object.item_count_current*SSeconomy.credits_per_gold,1)
 		else
-			stored_value = FLOOR(stored_object.get_value()/SSeconomy.credits_per_gold,1)
+			stored_value = CEILING(stored_object.get_value()/SSeconomy.credits_per_gold,1)
 	else
 		stored_value = 0
 
