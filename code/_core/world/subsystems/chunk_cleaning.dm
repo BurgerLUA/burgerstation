@@ -73,10 +73,14 @@ SUBSYSTEM_DEF(chunkclean)
 		var/y = CEILING(T.x/CHUNK_SIZE,1)
 		.["[x],[y],[T.z]"] = TRUE
 		if(adjacent)
+			.["[x],[y-1],[T.z]"] = TRUE
+			.["[x],[y+1],[T.z]"] = TRUE
 			.["[x-1],[y-1],[T.z]"] = TRUE
 			.["[x-1],[y+1],[T.z]"] = TRUE
+			.["[x-1],[y],[T.z]"] = TRUE
 			.["[x+1],[y-1],[T.z]"] = TRUE
 			.["[x+1],[y+1],[T.z]"] = TRUE
+			.["[x+1],[y],[T.z]"] = TRUE
 
 /proc/get_chunk(var/chunk_x,var/chunk_y,var/chunk_z)
 

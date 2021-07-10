@@ -56,6 +56,7 @@
 	name = "gun cleaning kit"
 	desc = "Help my gun needs cleaning."
 	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 100%. Has unlimited uses."
+	icon_state = "gun_cleaning"
 
 	temper_whitelist = /obj/item/weapon/ranged
 
