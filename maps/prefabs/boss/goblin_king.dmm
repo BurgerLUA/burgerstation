@@ -13,6 +13,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/grass/jungle,
 /area/prefab/goblin_king)
+"M" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/goblin_king)
 
 (1,1,1) = {"
 a
@@ -190,7 +194,7 @@ b
 b
 a
 a
-b
+M
 b
 b
 b
@@ -211,7 +215,7 @@ b
 b
 b
 b
-b
+M
 a
 a
 b
@@ -904,7 +908,7 @@ b
 b
 a
 a
-b
+M
 b
 b
 b
@@ -925,7 +929,7 @@ b
 b
 b
 b
-b
+M
 a
 a
 b
