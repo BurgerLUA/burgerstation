@@ -117,7 +117,6 @@
 		C.should_save = FALSE
 		C.size = 0
 		INITIALIZE(C)
-		GENERATE(C)
 		FINALIZE(C)
 		C.additional_clothing_parent = src
 		additional_clothing_stored += C
