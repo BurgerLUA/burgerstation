@@ -1,6 +1,7 @@
 /obj/structure/interactive/plant
 	name = "plant"
 	desc = "A plant grows here."
+	desc_extended =  "A growing plant."
 	//Icon stand and icon is generated.
 	icon = 'icons/obj/markers/plant.dmi'
 	icon_state = null
@@ -96,6 +97,12 @@
 		if(move_direction & WEST)
 			animation_offset_x += 32
 
+		//Harvester's botany skill increases the harvested results based on their skill power.
+		//Each point in skill power add .2 potency and .1 yield.
+		var/skillPower = caller.get_skill_power(SKILL_BOTANY)
+		potency = potency + (potency * skillPower * 2)
+		yield += yield * skillPower
+
 		for(var/i=1,i<=yield,i++)
 			var/obj/item/container/food/plant/P = new(caller_turf)
 			P.pixel_x = animation_offset_x
@@ -119,6 +126,7 @@
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 
 		caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
+		caller.add_skill_xp(SKILL_BOTANY, potency)
 
 	growth = growth_min
 

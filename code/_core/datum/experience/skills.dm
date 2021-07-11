@@ -141,3 +141,12 @@
 	desc_extended = "Your skill in enchanting objects. Affects the speed, sucess rate, and quality of enchanted items."
 	experience_power = 1.8
 	experience_multiplier = 4.1
+
+/experience/skill/botany/ //Int
+	name = "Botany"
+	id = SKILL_BOTANY
+	desc = "Farming. "
+	desc_extended = "Your skill in growing and harvesting plants. Affects harvested plant yield and potency."
+	experience_power = 1.8
+	experience_multiplier = 4.1
+	counts_towards_level = FALSE

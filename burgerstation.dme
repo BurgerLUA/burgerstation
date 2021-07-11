@@ -1289,6 +1289,7 @@
 #include "code\_core\obj\item\clothing\uniform\stealth.dm"
 #include "code\_core\obj\item\clothing\uniform\suit.dm"
 #include "code\_core\obj\item\coin\_coin.dm"
+#include "code\_core\obj\item\consumable\fertilizer.dm"
 #include "code\_core\obj\item\container\_container.dm"
 #include "code\_core\obj\item\container\cheese_mold.dm"
 #include "code\_core\obj\item\container\beaker\_beaker.dm"
