@@ -128,6 +128,8 @@
 	if(chargen)
 		add_chargen_buttons()
 
+	add_slot_buttons()
+
 	apply_mob_parts(FALSE,FALSE,FALSE)
 	default_appearance()
 	add_species_buttons()
@@ -137,7 +139,6 @@
 		equip_objects_in_list(kept_items)
 	else
 		equip_loadout(/loadout/new_player,TRUE)
-
 
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
 		B.update_sprite()

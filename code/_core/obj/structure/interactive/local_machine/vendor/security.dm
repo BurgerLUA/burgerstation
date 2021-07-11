@@ -80,7 +80,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
-		/obj/item/weapon/ranged/energy/hybrid/carbine
+		/obj/item/weapon/ranged/energy/hybrid/carbine,
+
+		/obj/item/tempering/quality/ranged/lesser
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/ops

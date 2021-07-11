@@ -99,10 +99,12 @@
 					new /turf/simulated/wall/rock(src)
 					if(prob(1))
 						new /obj/marker/generation/rock_wall(src)
-	if(prob(1))
-		new /mob/living/simple/bat(src)
-	else if(prob(1) && is_floor(src))
-		new /obj/marker/generation/mob/cave_spider(src)
+
+	if(prob(1) && is_floor(src))
+		if(prob(25))
+			new /obj/marker/generation/mob/bat(src)
+		else
+			new /obj/marker/generation/mob/cave_spider(src)
 	else if(needs_bear && prob(3))
 		new /obj/marker/generation/mob/black_bear(src)
 

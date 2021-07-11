@@ -8,7 +8,7 @@
 
 	pixel_x = -16
 
-	value = 6000
+	value = 5000
 
 	ai = /ai/boss/leaper
 
@@ -18,8 +18,8 @@
 
 	stun_angle = 0
 
-	health_base = 40000
-	stamina_base = 500
+	health_base = 20000
+	stamina_base = 1000
 	mana_base = 2000
 
 	boss_loot = /loot/lavaland/leaper
@@ -76,6 +76,8 @@
 	anchored = TRUE
 
 	object_size = 2
+
+	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 /mob/living/simple/leaper/handle_alpha()
 	if(immortal)

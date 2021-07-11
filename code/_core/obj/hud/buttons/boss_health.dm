@@ -78,6 +78,12 @@
 
 /obj/hud/button/boss_health/update_icon()
 
+	icon = initial(icon)
+
+	if(current_boss && current_boss.boss_icon_state)
+		icon_state = current_boss.boss_icon_state
+
+	/*
 	if(max == 0)
 		return
 
@@ -101,6 +107,7 @@
 	base.Blend(bar,ICON_OVERLAY)
 
 	icon = base
+	*/
 
 	..()
 

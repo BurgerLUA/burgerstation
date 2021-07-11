@@ -256,8 +256,6 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-	penetrations_left = 3
-
 /obj/projectile/magic/fractal
 	name = "fractal"
 	icon_state = "fractal"

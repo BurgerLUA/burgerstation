@@ -49,9 +49,9 @@ SUBSYSTEM_DEF(economy)
 
 	var/client_length = length(all_clients)
 
-	gold_in_circulation -= CEILING(world.time/100,1)*client_length
+	gold_in_circulation -= CEILING(world.time/100,1)*client_length*0.5
 
-	var/expected_purchases = (4*client_length)*(world.time/SECONDS_TO_DECISECONDS(30*60)) //Base 4 per player every 30 minutes
+	var/expected_purchases = (1*client_length)*(world.time/SECONDS_TO_DECISECONDS(30*60)) //Base 1 per player every 30 minutes
 	for(var/item_type in purchases_this_round)
 		var/old_multiplier = (price_multipliers[item_type] ? price_multipliers[item_type] : 1)
 		var/local_expected_purchases = expected_purchases * old_multiplier
@@ -64,8 +64,10 @@ SUBSYSTEM_DEF(economy)
 	if(length(price_multipliers))
 		var/encoded_purchase_data = json_encode(price_multipliers)
 		if(encoded_purchase_data)
+			fdel(PRICE_MULTIPLIER_DIR)
 			text2file(encoded_purchase_data,PRICE_MULTIPLIER_DIR)
 
+	fdel(GOLD_CIRCULATION_DIR)
 	text2file("[gold_in_circulation]",GOLD_CIRCULATION_DIR)
 
 	return TRUE

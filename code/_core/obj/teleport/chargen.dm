@@ -1,84 +1,70 @@
+
 /obj/trigger/leave_chargen
 	name = "leave chargen"
 	invisibility = 101
 
-/obj/trigger/leave_chargen/on_trigger(var/atom/triggerer)
+	icon = 'icons/debug/mobs.dmi'
+	icon_state = "directional"
 
-	if(!is_advanced(triggerer))
-		return FALSE
+	density = TRUE
 
-	var/mob/living/advanced/player/P = triggerer
+/obj/trigger/leave_chargen/Cross(var/atom/movable/triggerer)
 
-	if(!P.client)
-		return FALSE
+	if(is_player(triggerer))
+		var/mob/living/advanced/player/A = triggerer
+		var/turf/T = get_turf(A) //This is the old turf
+		if(A.tutorial)
+			spawn
+				if(get_dir(T,src) & dir)
+					var/response = input(A,"A strange feeling overwhelms you... \
+						Is it insecurity? Is it self-loathing? \
+						Perhaps you should consider if what you saw in the mirror is what you want to look like. \
+						You seem to have a feeling you won't be able to change it for a very long time.",
+						"Is this what you want to look like?"
+					) as null|anything in list("Fuck, go back!","I'm perfect.","Cancel")
 
-	if(!(P.mobdata && P.mobdata.loaded_data && P.mobdata.loaded_data["tutorial"] == 2))
-		P.to_chat(span("thought","I should really fix my hair in the mirror before heading out."))
-		return TRUE
+					if(response != "I'm perfect.")
+						A.to_chat(span("thought","Maybe I should go back and change a few things..."))
+					else
+						A.to_chat(span("thought","Today I am beautiful and nothing will change that."))
+						A.tutorial = FALSE
+			return FALSE
 
-	if(!length(P.worn_objects))
-		P.to_chat(span("thought","I'm not going out naked like this!"))
-		return TRUE
+	. = ..()
 
-	if(!("Burgerstation" in P.mobdata.loaded_data["known_topics"]))
-		P.to_chat(span("thought","I should probably check my emails before I leave."))
-		return TRUE
 
-	/*
-	A.movement_flags = 0x0
-	var/choice = start_choice(A,/choice/skip_tutorial/)
+/obj/trigger/teleport_to_shuttle
+	name = "teleport to shuttle"
+	invisibility = 101
 
-	if(choice == "cancel")
-		return TRUE
-	else if(choice == "yes")
-		play_the_fucking_game(A)
-	else
-		play_the_fucking_tutorial(A)
+	var/list/obj/marker/shuttle_markers = list()
 
-	A.movement_flags = 0x0
-	*/
+	density = TRUE
 
-	play_the_fucking_game(P)
+/obj/trigger/teleport_to_shuttle/Crossed(var/atom/movable/triggerer)
 
-	return TRUE
+	. = ..()
+
+	if(!is_living(triggerer))
+		return .
+
+	var/mob/living/L = triggerer
+
+	if(!length(shuttle_markers))
+		for(var/obj/marker/shuttle_marker/SM in world)
+			shuttle_markers += SM
+	var/obj/marker/shuttle_marker/SM = pick(shuttle_markers)
+	L.force_move(get_turf(SM))
+
+
+
+
+/obj/marker/shuttle_marker/
+	name = "shuttle marker"
+
 
 
 /*
-/obj/trigger/leave_bathroom
-	name = "leave bathroom"
-	invisibility = 101
-
-/obj/trigger/leave_bathroom/Cross(var/atom/movable/triggerer)
-
-	if(!is_advanced(triggerer))
-		return ..()
-
-	var/mob/living/advanced/A = triggerer
-
-	if(!A.appearance_changed && A.used_mirror)
-
-		var/turf/T = get_turf(A) //This is the old turf.
-
-		if(!istype(T,/turf/simulated/floor/tile/)) //Fucking weird check, but it werks.
-			return ..()
-
-		var/response = input(A,"A strange feeling overwhelms you... \
-			Is it insecurity? Is it self-loathing? \
-			Perhaps you should consider if what you saw in the mirror is what you want to look like. \
-			You seem to have a feeling you won't be able to change it for a very long time.",
-			"Is this what you want to look like?"
-		) in list("Fuck, go back!","I'm perfect.")
-
-		if(response == "Fuck, go back!")
-			A.to_chat(span("thought","Maybe I should go back and change a few things..."))
-			return FALSE
-
-		A.to_chat(span("thought","Today I am beautiful and nothing will change that."))
-		A.appearance_changed = TRUE
-
-	return ..()
-*/
-
 
 /proc/play_the_fucking_tutorial(var/mob/living/advanced/A)
 	spawn(0)
@@ -159,3 +145,5 @@
 		A.stun_time = 1
 		A.paralyze_time = 1
 		A.movement_flags = 0x0
+
+*/

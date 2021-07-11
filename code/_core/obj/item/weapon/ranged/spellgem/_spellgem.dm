@@ -14,9 +14,57 @@
 
 	automatic = TRUE
 
+/obj/item/weapon/ranged/spellgem/get_owner()
+
+	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
+		var/obj/item/weapon/ranged/wand/W = src.loc
+		return W.get_owner()
+
+	. = ..()
+
 /obj/item/weapon/ranged/spellgem/Finalize()
 	. = ..()
 	update_sprite()
+
+/obj/item/weapon/ranged/spellgem/can_gun_shoot(var/mob/caller)
+
+	if(get_ammo_count() < 1)
+		return FALSE
+
+	return ..()
+
+/obj/item/weapon/ranged/spellgem/get_ammo_count()
+
+	var/mob/living/owner = get_owner()
+
+	if(!owner)
+		return 0
+
+	if(!owner.health)
+		return 1
+
+	if(!cost_mana)
+		return 1
+
+	return owner && cost_mana ? FLOOR(owner.health.mana_current / cost_mana, 1) : 0
+
+/obj/item/weapon/ranged/spellgem/handle_ammo(var/mob/caller,var/bullet_position=1)
+
+	if(!is_advanced(caller))
+		return ..()
+
+	var/mob/living/advanced/A = caller
+	if(!A.health)
+		return ..()
+
+	A.health.adjust_mana(-cost_mana)
+
+	A.update_health_element_icons(mana=TRUE)
+
+	A.mana_regen_delay = max(A.mana_regen_delay,30)
+
+	return null
+
 
 /obj/item/weapon/ranged/spellgem/get_heat_spread()
 	return 0

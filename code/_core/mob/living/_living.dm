@@ -86,7 +86,7 @@
 	//var/list/mob/living/advanced/player/linked_players
 
 	var/respawn = TRUE
-	var/respawn_time = 300 //In deciseconds
+	var/respawn_time = SECONDS_TO_DECISECONDS(180) //In deciseconds
 	var/random_spawn_dir = TRUE
 
 	var/has_footprints = FALSE
@@ -163,8 +163,6 @@
 
 	var/next_resist = 0
 	var/resist_counter = 0
-
-	var/queue_delete_on_death = TRUE
 
 	size = SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See size.dm for values
 

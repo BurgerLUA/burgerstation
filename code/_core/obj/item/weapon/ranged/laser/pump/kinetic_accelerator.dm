@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/energy/pump/kinetic_accelerator
 	name = "kinetic accelerator"
 	desc = "Pump action!"
-	desc_extended = "An advanced mining tool that uses magnetic kinetic force to pulverize rocks and other foes. Not very effective against organic matter."
+	desc_extended = "An advanced mining tool that uses magnetic kinetic force to pulverize rocks and other foes. Not very effective against smaller objects."
 	icon = 'icons/obj/item/weapons/ranged/laser/kinetic_accelerator.dmi'
 	rarity = RARITY_UNCOMMON
 	value = 800

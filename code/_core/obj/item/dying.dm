@@ -15,8 +15,12 @@
 		return FALSE
 
 	var/choice
-	if(length(polymorphs)>1)
-		choice = input("What do you want to dye?","Dye Selection") as null|anything in polymorphs
+	if(length(polymorphs))
+		if(length(polymorphs)>1)
+			choice = input("What do you want to dye?","Dye Selection") as null|anything in polymorphs
+		else
+			choice = input("Are you sure you want to dye \the [src.name]?","Dye Selection") as null|anything in list("Yes","No","Cancel")
+			if(choice) choice = polymorphs[1]
 		if(choice)
 			INTERACT_CHECK_NO_DELAY(src)
 			INTERACT_CHECK_NO_DELAY(D)
@@ -32,17 +36,17 @@
 
 	if(choice)
 		caller.to_chat(span("notice","You dye \the [src.name]."))
+		initialize_blends()
 		update_sprite()
 		if(is_clothing(src))
 			var/obj/item/clothing/C = src
 			C.sync_additional_clothing()
-		if(is_inventory(loc)) //Snowflake code, do not remove.
+		if(is_inventory(loc))
 			var/obj/hud/inventory/I = loc
 			if(I.worn && is_advanced(I.owner))
 				var/mob/living/advanced/A = I.owner
 				A.remove_overlay("\ref[src]")
-				if(src in I.contents)
-					I.update_worn_icon(src)
+				I.update_worn_icon(src)
 
 		return TRUE
 	else

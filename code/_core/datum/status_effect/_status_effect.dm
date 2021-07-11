@@ -106,23 +106,31 @@
 
 	affects_dead = FALSE
 
+
+/status_effect/parried/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	if(!attacker || victim.horizontal || victim.anchored)
+		return FALSE
+
+	. = ..()
+
 /status_effect/parried/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	. = ..()
 
-	if(source && !owner.horizontal)
-		var/desired_move_dir = get_dir(source,owner)
-		var/old_dir = owner.dir
-		var/result = owner.Move(get_step(owner,desired_move_dir))
-		owner.dir = old_dir
-		owner.move_delay = max(owner.move_delay,duration)
-		var/list/movement = direction_to_pixel_offset(desired_move_dir)
-		if(!result) //We can move.
-			animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
-			spawn(1)
-				var/stun_time = max(duration,10)
-				owner.add_status_effect(STUN,stun_time,stun_time)
-				animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
+
+	var/desired_move_dir = get_dir(source,owner)
+	var/old_dir = owner.dir
+	var/result = owner.Move(get_step(owner,desired_move_dir))
+	owner.dir = old_dir
+	owner.move_delay = max(owner.move_delay,duration)
+	var/list/movement = direction_to_pixel_offset(desired_move_dir)
+	if(!result) //We can move.
+		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
+		spawn(1)
+			var/stun_time = max(duration,10)
+			owner.add_status_effect(STUN,stun_time,stun_time)
+			animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
 
 /status_effect/shoved
@@ -134,23 +142,29 @@
 
 	affects_dead = FALSE
 
+/status_effect/shoved/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	if(!attacker || victim.horizontal || victim.anchored)
+		return FALSE
+
+	. = ..()
+
 /status_effect/shoved/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	. = ..()
 
-	if(source && !owner.horizontal)
-		var/desired_move_dir = get_dir(source,owner)
-		var/old_dir = owner.dir
-		var/result = owner.Move(get_step(owner,desired_move_dir))
-		owner.dir = old_dir
-		owner.move_delay = max(owner.move_delay,duration)
-		var/list/movement = direction_to_pixel_offset(desired_move_dir)
-		if(!result) //We can move.
-			animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
-			spawn(1)
-				var/stun_time = max(duration,10)
-				owner.add_status_effect(STUN,stun_time,stun_time)
-				animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
+	var/desired_move_dir = get_dir(source,owner)
+	var/old_dir = owner.dir
+	var/result = owner.Move(get_step(owner,desired_move_dir))
+	owner.dir = old_dir
+	owner.move_delay = max(owner.move_delay,duration)
+	var/list/movement = direction_to_pixel_offset(desired_move_dir)
+	if(!result) //We can move.
+		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
+		spawn(1)
+			var/stun_time = max(duration,10)
+			owner.add_status_effect(STUN,stun_time,stun_time)
+			animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
 
 

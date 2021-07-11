@@ -41,6 +41,7 @@
 		/obj/item/magazine/sniper_50/ion,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
+		/obj/item/tempering/quality/ranged/lesser
 	)
 
 /obj/structure/interactive/vending/syndicate/medicine
@@ -58,6 +59,7 @@
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
+		/obj/item/storage/pillbottle/assprin
 
 	)
 	markup = 0.75
@@ -208,5 +210,7 @@
 		/obj/item/storage/ammo/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
-		/obj/item/magazine/lmg_762_r
+		/obj/item/magazine/lmg_762_r,
+
+		/obj/item/tempering/quality/ranged/lesser
 	)

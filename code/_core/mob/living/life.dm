@@ -60,9 +60,6 @@
 
 	post_death()
 
-	if(queue_delete_on_death)
-		queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
-
 	var/obj/hud/button/dead_ghost/DG = new
 	DG.update_owner(src)
 

@@ -15,13 +15,17 @@
 
 	var/list/name_blacklist = list()
 
-	for(var/i=1,i<=8*2,i++)
+	while(length(stored_types) < 16)
 		if(!length(possible_contracts))
 			break
 		var/obj/item/contract/C = pick(possible_contracts)
-		var/initial_name = initial(C.name)
 		possible_contracts -= C
+		var/initial_name = initial(C.name)
 		if(name_blacklist[initial_name])
+			continue
+		var/atom/bounty_type = initial(C.type_to_check)
+		var/atom/found_type = locate(bounty_type) in world
+		if(!found_type)
 			continue
 		name_blacklist[initial_name] = TRUE
 		stored_types += C

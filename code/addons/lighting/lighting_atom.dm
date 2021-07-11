@@ -110,7 +110,7 @@
 
 	var/light_source/L
 	var/thing
-	for (thing in light_sources)
+	for(thing in light_sources)
 		L = thing
 		L.source_atom.update_light()
 

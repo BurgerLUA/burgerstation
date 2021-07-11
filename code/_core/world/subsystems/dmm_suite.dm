@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/jungle/z_02.dmm",
 		"maps/jungle/z_01.dmm",
 		"maps/jungle/z_00.dmm",
-		"maps/core/bluespace.dmm"
+		"maps/_core/bluespace.dmm"
 	)
 
 /subsystem/dmm_suite/Initialize()

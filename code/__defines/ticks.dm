@@ -5,7 +5,7 @@
 
 #define CLIENT_TICK 2 //FRAMES per life tick interval
 #define CLIENT_TICK_SLOW FPS_SERVER //FRAMES per slow life tick internval
-#define PROJECTILE_TICK 1 //FRAMES per Sprojectile tick interval
+#define PROJECTILE_TICK 0.5 //FRAMES per Sprojectile tick interval
 
 #define CLIENT_TICKS_PER_SLOW_CLIENT_TICKS (CLIENT_TICK_SLOW / CLIENT_TICK)
 #define LIFE_TICKS_PER_SLOW_LIFE_TICKS (LIFE_TICK_SLOW / LIFE_TICK)

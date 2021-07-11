@@ -81,8 +81,7 @@
 
 		if(acceleration_mod)
 			if(similiar_move_dir)
-				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
-				acceleration_value = min(acceleration_value,99)
+				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay*max(0.25,1 - acceleration_value/100),100),0.01)
 			else
 				acceleration_value *= 0.25
 

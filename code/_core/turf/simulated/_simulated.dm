@@ -218,8 +218,6 @@ var/global/list/blood_turfs = list()
 
 	var/full_icon_string = "[type]_[icon_state]_[ne][nw][se][sw]"
 
-	desc = full_icon_string
-
 	var/icon/I
 
 	if(turf_icon_cache[full_icon_string])

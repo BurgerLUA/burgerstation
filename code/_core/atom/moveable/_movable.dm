@@ -90,6 +90,8 @@
 	if(isturf(src.loc))
 		for(var/k in light_sprite_sources)
 			var/obj/light_sprite/LS = k
+			if(LS == src)
+				continue
 			LS.set_dir(desired_dir,force)
 
 /atom/movable/New(var/desired_loc)

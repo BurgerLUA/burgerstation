@@ -1,5 +1,7 @@
 /turf/simulated/floor/river
 	name = "river"
+	desc = "It moves!"
+	desc_extended = "It's a river, where does it come from and where it goes is something only cotton eyed Joe knows.
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater"
 	opacity = 0

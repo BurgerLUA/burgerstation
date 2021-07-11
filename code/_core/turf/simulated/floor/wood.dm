@@ -30,3 +30,7 @@
 
 /turf/simulated/floor/wood/magic
 	color = "#458CBA"
+
+
+/turf/simulated/floor/wood/oak
+	color = "#DBAF7A"

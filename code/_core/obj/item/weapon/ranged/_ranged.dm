@@ -277,7 +277,7 @@
 /obj/item/weapon/ranged/think()
 
 	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
-		heat_current = max(heat_current-(SIZE_3/size),0) //Smaller guns easier to handle.
+		heat_current = max(heat_current-(SIZE_3/max(1,size)),0) //Smaller guns easier to handle.
 
 	. = ..()
 
@@ -397,12 +397,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
-		condition_to_use = max(0,10 - (quality_bonus)*9)
+		condition_to_use = max(0,10 - max(0,quality_bonus*9))
 		condition_to_use += FLOOR(heat_current*25,1)
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
-
 
 	var/arm_strength = 0.5
 	if(is_advanced(caller))
@@ -533,7 +532,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						O = A.labeled_organs[BODY_ARM_LEFT]
 					else
 						O = A.labeled_organs[BODY_HAND_LEFT]
-				if(O)
+				if(O && O.health && O.health.organic)
 					O.health.adjust_loss_smart(PAIN=arm_damage)
 
 

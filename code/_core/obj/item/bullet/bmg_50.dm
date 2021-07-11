@@ -21,6 +21,8 @@
 	size = 0.1
 	value = 8
 
+	penetrations = 2
+
 /obj/item/bullet_cartridge/bmg_50/surplus
 	name = "\improper surplus .50 BMG round"
 	damage_type_bullet = /damagetype/ranged/bullet/bmg_50/surplus

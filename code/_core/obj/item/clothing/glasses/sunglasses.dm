@@ -67,7 +67,7 @@
 		ARCANE = -60,
 		HEAT = 120
 	)
-	damage_type = /damagetype/melee/sword/grazer
+	damage_type = /damagetype/melee/sword/katana
 
 	value = 2500
 

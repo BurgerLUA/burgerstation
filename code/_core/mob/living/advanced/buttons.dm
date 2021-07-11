@@ -17,11 +17,21 @@
 		if(B.type in color_scheme_buttons)
 			B.update_owner(null)
 
-/mob/living/advanced/proc/add_chargen_buttons()
+/mob/living/advanced/proc/add_slot_buttons()
 
 	var/species/S = SPECIES(species)
 
-	for(var/v in chargen_buttons)
+	for(var/v in S.spawning_slots)
+		var/obj/hud/button/B = new v
+		B.update_owner(src)
+
+/mob/living/advanced/proc/add_chargen_buttons(var/list/blacklist=list())
+
+	var/species/S = SPECIES(species)
+
+	var/list/local_list = chargen_buttons - blacklist
+
+	for(var/v in local_list)
 		var/obj/hud/button/chargen/B = v
 		var/chargen_flags = initial(B.chargen_flags)
 		if(!chargen_flags || (chargen_flags & S.flags_chargen))

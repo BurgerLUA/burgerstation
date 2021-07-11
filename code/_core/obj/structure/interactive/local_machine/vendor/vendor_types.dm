@@ -147,10 +147,11 @@
 		/obj/item/storage/pillbottle/dylovene_small,
 		/obj/item/storage/pillbottle/iron_small,
 		/obj/item/storage/pillbottle/antihol_small,
+		/obj/item/storage/pillbottle/assprin,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/reptile,
 		/obj/item/container/medicine/nanopaste,
-		/obj/item/container/blood_pack/full/rad_be_gone
+		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
@@ -432,25 +433,26 @@
 	stored_types = list()
 
 	var/list/chemicals_to_make = list(
-		/reagent/carbon,
-		/reagent/iron,
-		/reagent/copper,
-		/reagent/silver,
-		/reagent/aluminium,
-		/reagent/oxygen,
-		/reagent/nitrogen,
-		/reagent/silicon,
-		/reagent/potassium,
-		/reagent/salt/sodium_chloride,
-		/reagent/ammonia,
-		/reagent/sulfur,
-		/reagent/chlorine,
-		/reagent/phenol,
-		/reagent/sodium,
-		/reagent/acid/sulphuric,
 		/reagent/fuel/acetone,
+		/reagent/aluminium,
+		/reagent/ammonia,
+		/reagent/carbon,
+		/reagent/chlorine,
+		/reagent/copper,
+		/reagent/nutrition/sugar/glucose,
+		/reagent/iron,
+		/reagent/drug/lithium,
 		/reagent/toxin/mercury,
-		/reagent/drug/lithium
+		/reagent/nitrogen,
+		/reagent/oxygen,
+		/reagent/phenol,
+		/reagent/potassium,
+		/reagent/silicon,
+		/reagent/silver,
+		/reagent/sodium,
+		/reagent/salt/sodium_chloride,
+		/reagent/sulfur,
+		/reagent/acid/sulphuric
 	)
 
 /obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()

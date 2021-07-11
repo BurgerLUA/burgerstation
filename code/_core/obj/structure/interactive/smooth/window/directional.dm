@@ -52,4 +52,3 @@
 
 	update_collisions(c_dir = dir, a_dir = dir)
 
-	

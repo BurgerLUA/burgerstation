@@ -79,6 +79,8 @@
 
 	soul_size = SOUL_SIZE_RARE
 
+	respawn_time = SECONDS_TO_DECISECONDS(300)
+
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 
@@ -107,6 +109,10 @@
 		return FALSE
 
 	var/turf/T = pick(valid_turfs)
+	if(!istype(T))
+		return FALSE
+
+
 	new /obj/effect/temp/sparkles(src.loc)
 	force_move(T)
 	new /obj/effect/temp/sparkles(src.loc)
@@ -122,7 +128,7 @@
 
 	var/turf/T = get_step(target,turn(target.dir,180))
 
-	if(!T)
+	if(!istype(T))
 		return FALSE
 
 	new /obj/effect/temp/sparkles(src.loc)
