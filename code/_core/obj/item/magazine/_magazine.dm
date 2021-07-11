@@ -21,8 +21,30 @@
 	var/bullet_diameter_max = -1
 
 	var/icon_states = 1
+	var/bluespaced = FALSE
+	var/regenerate = FALSE
+	var/regen_counter = 0
 
 	weight = 0.25
+
+
+/obj/item/magazine/PostInitialize()
+	start_thinking(src)
+	return ..()
+
+/obj/item/magazine/think()
+	if (regenerate)
+		regen_counter += 1
+		if (regen_counter > 30)
+			regen_counter = 0
+			if (length(stored_bullets) < bullet_count_max)
+				var/obj/item/bullet_cartridge/B = new ammo(src)
+				INITIALIZE(B)
+				FINALIZE(B)
+				stored_bullets += B
+				update_sprite()
+
+	return ..()
 
 
 /obj/item/magazine/update_icon()
@@ -50,6 +72,8 @@
 		for(var/i=1,i<=length(stored_bullets),i++)
 			var/obj/item/bullet_cartridge/B = stored_bullets[i]
 			if(B) .["stored_bullets"][B.type] += 1
+	.["bluespaced"] = bluespaced
+	.["regenerate"] = regenerate
 
 
 /obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
@@ -64,6 +88,13 @@
 				INITIALIZE(B)
 				FINALIZE(B)
 				stored_bullets += B
+
+	if (object_data["bluespaced"])
+		bullet_count_max *= 10
+		bluespaced = TRUE
+
+	if (object_data["regenerate"])
+		regenerate = TRUE
 
 
 /obj/item/magazine/Generate()
@@ -95,7 +126,12 @@
 	update_sprite()
 
 /obj/item/magazine/get_examine_list(var/mob/examiner)
-	return ..() + div("notice","It contains [length(stored_bullets)] bullets.")
+	var results = div("notice","It contains [length(stored_bullets)] bullets.")
+	if (bluespaced)
+		results += div("notice", "It has been connected to a bluespace pocket to drastically increase its capacity")
+	if (regenerate)
+		results += div("notice", "It magically creates its own bullets every 3 seconds.")
+	return ..()  + results
 
 /obj/item/magazine/New()
 	stored_bullets = list()

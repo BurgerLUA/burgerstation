@@ -1462,6 +1462,7 @@
 #include "code\_core\obj\item\storage\kits\_kits.dm"
 #include "code\_core\obj\item\tempering\_tempering.dm"
 #include "code\_core\obj\item\tempering\tempering_luck.dm"
+#include "code\_core\obj\item\tempering\tempering_magazine.dm"
 #include "code\_core\obj\item\tempering\tempering_quality.dm"
 #include "code\_core\obj\item\trigger\_device.dm"
 #include "code\_core\obj\item\trigger\keypad.dm"
