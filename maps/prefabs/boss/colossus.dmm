@@ -26,7 +26,7 @@
 /turf/simulated/floor/colored/dirt/snow,
 /area)
 "i" = (
-/mob/living/simple/ash_drake,
+/mob/living/simple/colossus,
 /turf/simulated/floor/ice,
 /area)
 "j" = (
