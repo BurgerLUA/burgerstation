@@ -13,7 +13,7 @@
 /obj/projectile/bullet/firearm/sniper/explosive/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),5,owner,weapon,iff_tag)
+		explode(get_turf(hit_atom),5,owner,weapon,loyalty_tag)
 
 
 /obj/projectile/bullet/revolver_large
