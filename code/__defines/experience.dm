@@ -50,4 +50,5 @@
 #define SKILL_MAGIC_ENCHANTING "enchanting" //Completed.
 #define SKILL_MEDICINE "medicine" //Completed
 
-#define SKILL_BOTANY "botany"
+//No stat attached
+#define SKILL_BOTANY "botany" //Completed

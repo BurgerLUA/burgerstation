@@ -142,7 +142,8 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 
-/experience/skill/botany/ //Int
+//Non-class skills
+/experience/skill/botany/ //No stat attached
 	name = "Botany"
 	id = SKILL_BOTANY
 	desc = "Farming. "

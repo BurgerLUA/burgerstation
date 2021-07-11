@@ -22,7 +22,7 @@
 		ATTRIBUTE_LUCK = 1
 	)
 
-	//15 skills
+	//15 + 1 skills
 	weights_skill = list(
 		SKILL_MELEE = 1,
 		SKILL_UNARMED = 1,
