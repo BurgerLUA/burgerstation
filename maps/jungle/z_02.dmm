@@ -20,15 +20,15 @@
 /area/dungeon/z_02)
 "g" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 8
+	dir = 8;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey/dark,
 /area/dungeon/z_02)
 "h" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 1
+	dir = 1;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey/dark,
 /area/dungeon/z_02)
@@ -38,8 +38,8 @@
 /area/dungeon/z_02)
 "j" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 4
+	dir = 4;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey/dark,
 /area/dungeon/z_02)
@@ -48,14 +48,14 @@
 /area/dungeon/z_02)
 "l" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_middle";
-	dir = 4
+	dir = 4;
+	icon_state = "stair_middle"
 	},
 /area/dungeon/z_02)
 "m" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_middle";
-	dir = 8
+	dir = 8;
+	icon_state = "stair_middle"
 	},
 /area/dungeon/z_02)
 "n" = (
@@ -95,20 +95,20 @@
 /area/dungeon/z_02)
 "w" = (
 /turf/simulated/floor/stair/ztravel/wood{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area/dungeon/z_02)
 "x" = (
 /turf/simulated/floor/stair/ztravel/wood{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area/dungeon/z_02)
 "y" = (
 /turf/simulated/floor/stair/ztravel/wood{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area/dungeon/z_02)
 "z" = (
@@ -121,8 +121,8 @@
 /area/dungeon/z_02)
 "B" = (
 /mob/living/advanced/npc/ashwalker/warrior{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
@@ -133,8 +133,8 @@
 "D" = (
 /obj/effect/crack,
 /mob/living/advanced/npc/ashwalker/warrior{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
@@ -144,8 +144,8 @@
 /area/dungeon/z_02)
 "F" = (
 /mob/living/advanced/npc/ashwalker/warrior{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
@@ -157,30 +157,30 @@
 "H" = (
 /obj/effect/crack,
 /mob/living/advanced/npc/ashwalker/hunter{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
 "I" = (
 /mob/living/advanced/npc/ashwalker/warrior{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
 "J" = (
 /obj/effect/crack,
 /mob/living/advanced/npc/ashwalker/warrior{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
 "K" = (
 /mob/living/advanced/npc/ashwalker/hunter{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
