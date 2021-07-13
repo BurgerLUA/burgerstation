@@ -40,6 +40,10 @@ obj/structure/scenery/bush/snow/New()
 	pixel_x += rand(-3,3)
 	pixel_y += rand(-1,2)
 
+/obj/structure/interactive/tree/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(src,list(/obj/item/material/wood/normal = 12))
+	return
+
 /obj/structure/interactive/tree/pine
 	name = "pine tree"
 	icon = 'icons/obj/structure/flora/pinetrees.dmi'
