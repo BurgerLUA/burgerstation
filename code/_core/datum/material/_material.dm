@@ -220,9 +220,9 @@
 	value_per_unit = 5
 
 	armor = list(
-		BLADE = 50,  //it's
-		BLUNT = 50,  //very
-		PIERCE = 50, //durable
+		BLADE = 30,  //it's
+		BLUNT = 30,  //very
+		PIERCE = 30, //soft
 		LASER = 75, //also melts
 		ARCANE = 0,
 		HEAT = 75, // badly
