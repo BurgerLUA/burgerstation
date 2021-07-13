@@ -67,3 +67,7 @@
 /obj/item/material/ingot/electrum
 	material_id = /material/electrum
 	crafting_id = "ingot_electrum"
+
+/obj/item/material/ingot/plasteel
+	material_id = /material/plasteel
+	crafting_id = "ingot_plasteel"

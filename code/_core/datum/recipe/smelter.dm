@@ -73,3 +73,9 @@
 	desc = "Compress phoron into phoron crystals."
 	required_items = list("ore_phoron")
 	product = /obj/item/material/ingot/phoron
+
+/recipe/smelter/plasteel
+	name = "alloy plasteel"
+	desc = "alloy steel and phoron into plasteel sheets."
+	required_items = list("ingot_steel","ingot_phoron")
+	product = /obj/item/material/ingot/plasteel

@@ -224,7 +224,7 @@
 		BLUNT = 50,  //very
 		PIERCE = 50, //durable
 		LASER = 75, //also melts
-		ARCANE = -50,           //uuuuh fuck you *arcanes your magnesium*
+		ARCANE = 0,
 		HEAT = 75, // badly
 		COLD = 75,
 		BOMB = 50,
