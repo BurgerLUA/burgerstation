@@ -1411,6 +1411,7 @@
 #include "code\_core\obj\item\material\sheet.dm"
 #include "code\_core\obj\item\material\trash_cube.dm"
 #include "code\_core\obj\item\material\wood.dm"
+#include "code\_core\obj\item\ore\_ore.dm"
 #include "code\_core\obj\item\organs\_organs.dm"
 #include "code\_core\obj\item\organs\antennae.dm"
 #include "code\_core\obj\item\organs\arms.dm"

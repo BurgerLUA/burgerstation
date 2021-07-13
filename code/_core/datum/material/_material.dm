@@ -190,6 +190,54 @@
 		SANITY = INFINITY
 	)
 
+/material/zinc
+	name = "zinc"
+	color = COLOR_ZINC
+	value_per_unit = 5
+
+	armor = list(
+		BLADE = 0,  //it's
+		BLUNT = 0,  //very
+		PIERCE = 0, //fragile
+		LASER = 25, //also melts
+		ARCANE = 25,
+		HEAT = 25, // easily
+		COLD = 75,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+/material/magnesium
+	name = "magnesium"
+	color = COLOR_MAGNESIUM
+	value_per_unit = 5
+
+	armor = list(
+		BLADE = 50,  //it's
+		BLUNT = 50,  //very
+		PIERCE = 50, //durable
+		LASER = 75, //also melts
+		ARCANE = -50,           //uuuuh fuck you *arcanes your magnesium*
+		HEAT = 75, // badly
+		COLD = 75,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
 /material/iron
 	name = "iron"
 	color = COLOR_IRON
@@ -470,6 +518,30 @@
 		HEAT = INFINITY,
 		COLD = INFINITY,
 		BOMB = INFINITY,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+/material/electrum
+	name = "electrum"
+	color = COLOR_ELECTRUM
+	value_per_unit = 70
+
+	armor = list(
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 75,
+		ARCANE = 75,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 25,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
