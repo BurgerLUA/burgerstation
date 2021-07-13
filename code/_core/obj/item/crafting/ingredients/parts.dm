@@ -1,0 +1,32 @@
+//Miscellaneous parts that can't be listed anywhere.
+
+//Scrap for really-really cheap crafting recipes, or for refining into steel/iron.
+/obj/item/crafting/ingredient/part/scrap
+	name = "scrap metal"
+	desc = "Stout Shako for two refined!"
+	desc_extended = "Large heap of unsorted scrap metal: rods, nuts, bolts, tubes, etc. Might be useful for crafting."
+	value = 150
+
+//Electronic components for crafts of various electronic things.
+/obj/item/crafting/ingredient/part/electronics
+	name = "electronic components"
+	desc = "Electronically warfared."
+	desc_extended = "Mixed assortment of various electornic parts of all kinds and purposes: empty circuits, capacitors, diodes, small wires, such stuff. Possibly useful for making something electornic."
+	icon_state = "electronics"
+	value = 500
+
+//Duct tape for more DIY recipes, as well as Gauss mag crafts.
+/obj/item/crafting/ingredient/part/tape
+	name = "duct tape"
+	desc = "Fixes (almost) anything!"
+	desc_extended = "Cheap grey duct tape of unknown origin. Smells faintly of motor oil."
+	icon_state = "tape"
+	value = 100
+
+//Air regulation system for all/most hardsuits',NBCs'/SEVAs' and other air-circulated suits' crafting recipes.
+/obj/item/crafting/ingredient/part/air_regulator
+	name = "air regulation system"
+	desc = "Keeps CO2 inside and O2 outside. Or was it the other way around?.."
+	desc_extended = "Rather complex, space-grade air circulator and filter combo commonly seen inside NBC suits, hardsuits and mechas (although at a bigger scale). Used in the making of aforementioned equipment."
+	icon_state = "air_regulator"
+	value = 750
