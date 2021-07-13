@@ -58,3 +58,7 @@
 /obj/item/material/ingot/plasteel
 	material_id = /material/plasteel
 	crafting_id = "ingot_plasteel"
+
+/obj/item/material/ingot/aluminium
+	material_id = /material/aluminium
+	crafting_id = "ingot_aluminium"

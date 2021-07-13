@@ -166,9 +166,9 @@
 		SANITY = INFINITY
 	)
 
-/material/aluminum
-	name = "aluminum"
-	color = COLOR_ALUMINUM
+/material/aluminium
+	name = "aluminium"
+	color = COLOR_ALUMINIUM
 	value_per_unit = 5
 
 	armor = list(

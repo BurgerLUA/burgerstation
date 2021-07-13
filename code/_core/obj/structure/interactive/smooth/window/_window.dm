@@ -56,13 +56,13 @@
 	return ..()
 
 /obj/structure/smooth/window/reinforced
-	name = "aluminum reinforced glass window"
+	name = "aluminium reinforced glass window"
 	color = "#FFFFFF"
 	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'
 	icon_state = "window"
 
-	reinforced_material_id = /material/aluminum
-	reinforced_color = COLOR_ALUMINUM
+	reinforced_material_id = /material/aluminium
+	reinforced_color = COLOR_ALUMINIUM
 
 	health_base = 300
 

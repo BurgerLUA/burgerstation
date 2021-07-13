@@ -38,8 +38,8 @@ obj/item/ore/copper
 	ore_color = "#E28446"
 	crafting_id = "ore_copper"
 
-obj/item/ore/aluminum
-	name = "aluminum ore"
+obj/item/ore/aluminium
+	name = "aluminium ore"
 	desc = "Commonly found in caves."
 	ore_color = "#C4C4C4"
 	crafting_id = "aluminum"
