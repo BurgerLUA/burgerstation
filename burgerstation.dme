@@ -636,6 +636,7 @@
 #include "code\_core\datum\recipe\filter.dm"
 #include "code\_core\datum\recipe\smelter.dm"
 #include "code\_core\datum\recipe\workbench.dm"
+#include "code\_core\datum\recipe\workbench\armor_overwear.dm"
 #include "code\_core\datum\recipe\workbench\barricade.dm"
 #include "code\_core\datum\reward\_reward.dm"
 #include "code\_core\datum\savedata\_savedata.dm"

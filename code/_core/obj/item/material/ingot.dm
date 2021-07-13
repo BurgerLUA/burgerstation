@@ -13,9 +13,12 @@
 
 /obj/item/material/ingot/iron
 	material_id = /material/iron
+	crafting_id = "ingot_iron"
 
 /obj/item/material/ingot/gold
 	material_id = /material/gold
+	crafting_id = "ingot_gold"
 
 /obj/item/material/ingot/steel
 	material_id = /material/steel
+	crafting_id = "ingot_steel"

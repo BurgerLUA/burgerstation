@@ -1,3 +1,24 @@
+/*
+Future reference for everyone who'd be willing to do crafting recipes -
+Grid goes like this:
+a1,a2,a3
+b1,b2,b3
+c1,c2,c3
+i.e. minecraft-like stick recipe would be like this:
+a1,a2,a3
+b1,plank,b3
+c1,plank,c3
+And the code would look like this:
+"a1" = null,
+"a2" = null,
+"a3" = null,
+"b1" = null,
+"b2" = plank,
+"b3" = null,
+"c1" = null,
+"c2" = plank,
+"c3" = null
+*/
 /recipe/
 	var/name = "recipe"
 	var/recipe_type = ""
