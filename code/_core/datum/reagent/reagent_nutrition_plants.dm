@@ -193,3 +193,61 @@
 
 	particle_size = 0.1
 
+/reagent/nutrition/potato
+	name = "potato"
+	desc = "Nutrition and flavor from potatoes."
+	color = "#FFFFEA"
+
+	nutrition_amount = 6
+	nutrition_quality_amount = 3
+
+	flavor = "ground apples"
+
+	liquid = 0
+
+	particle_size = 0.8
+
+
+/reagent/nutrition/cactus
+	name = "cactus"
+	desc = "Nutrition and flavor from cacti."
+	color = "#5AFF36"
+
+	nutrition_amount = 2
+	nutrition_quality_amount = 5
+	hydration_amount = 10
+
+	flavor = "crunchy water"
+
+	liquid = 0
+
+	particle_size = 0.1
+
+
+/reagent/nutrition/capsaicin
+	name = "capsaicin"
+	desc = "The pain juice."
+	color = "#EF3232"
+
+	nutrition_amount = 1
+	nutrition_quality_amount = 1
+	hydration_amount = -4
+
+	flavor = "hurting"
+
+	liquid = 0
+
+	particle_size = 0.2
+
+/reagent/nutrition/capsaicin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+	owner.pain_regen_buffer += -starting_volume
+	owner.send_pain(starting_volume)
+
+
+/reagent/nutrition/capsaicin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+	owner.pain_regen_buffer += -starting_volume * 0.5
+	owner.send_pain(starting_volume * 0.5)

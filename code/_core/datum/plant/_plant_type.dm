@@ -247,3 +247,71 @@
 		/reagent/toxin/angel_toxin = 0.5,
 		/reagent/drug/space = 0.25
 	)
+
+/plant_type/corn
+	name = "corn"
+	desc = "Corn is the smartest plant alive. It evolved Space Americans to grow it."
+	plant_icon_state = "corn"
+	harvest_icon_state = "corn"
+	seed_icon_state = "corn"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/corn_flour = 1,
+	)
+
+	typical_volume = 8
+
+/plant_type/potato
+	name = "potato"
+	desc = "A staple food from many countries. Edible, fermentable, collectable?"
+	plant_icon_state = "potato"
+	harvest_icon_state = "potato"
+	seed_icon_state = "potato"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/potato = 0.7,
+		/reagent/iron = 0.3
+	)
+
+	typical_volume = 10
+
+/plant_type/cactus
+	name = "cactus"
+	desc = "A succulent from dry, desert biomes."
+	plant_icon_state = "cactus"
+	harvest_icon = 'icons/obj/structure/botany.dmi'
+	harvest_icon_state = "cactus-harvest"
+	seed_icon_state = "cactus"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/cactus = 1
+	)
+
+	typical_volume = 6
+
+/plant_type/chili
+	name = "chili pepper"
+	desc = "Why do you eat plants that make your face hurt?"
+	plant_icon_state = "chili"
+	harvest_icon_state = "chilipepper"
+	seed_icon_state = "chili"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/capsaicin = 1
+	)
+
+	typical_volume = 2
+
+/plant_type/chili/ghost
+	name = "ghost pepper"
+	desc = "Why do you eat plants that make your soul hurt?"
+	plant_icon_state = "chili"
+	harvest_icon_state = "icepepper"
+	seed_icon_state = "chili_ghost"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nutrition/capsaicin = 0.9,
+		/reagent/medicine/adrenaline = 0.1
+	)
+
+	typical_volume = 12
