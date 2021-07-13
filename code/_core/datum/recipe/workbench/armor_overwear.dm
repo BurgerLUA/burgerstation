@@ -16,6 +16,8 @@
 		"c3" = null
 	)
 //2 synthcloth (400) + 2 steel sheets (worthlesss) + 1 armor steel (500) = ~900 credit vest
-	product = /obj/item/deployable/barricade
+//vest's value 200
+//-700 net gain
+	product = /obj/item/clothing/overwear/armor/bulletproof
 
 	do_debug = TRUE
