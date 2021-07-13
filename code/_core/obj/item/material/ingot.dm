@@ -1,16 +1,3 @@
-/*
-/material/iron = 100,
-/material/phoron = 10,
-/material/carbon = 50,
-/material/gold = 20,
-/material/silver = 30,
-/material/diamond = 5,
-/material/uranium = 30,
-/material/titanium = 20,
-/material/zinc = 25,
-/material/magnesium = 25
-*/
-
 /obj/item/material/ingot
 	name = "ingot"
 	desc = "I am error."

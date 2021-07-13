@@ -7,14 +7,14 @@
 	name = "\improper Synthcloth"
 	desc = "Space-grade materials for space-grade socks."
 	desc_extended = "Incredibly cheap and surprisingly durable for its cost roll of synthesized cloth, used in pretty much anything: from your shirt and underwear to armor vest's padding."
-	value = 200
+	value = 100
 	crafting_id = "synthcloth"
 
 /obj/item/crafting/ingredient/thread/synthcloth/rubber
 	name = "rubberised Synthcloth"
 	desc = "Space-grade materials for IKEA-grade radsuits."
 	desc_extended = "Incredibly cheap and surprisingly durable for its cost roll of synthesized cloth, used in pretty much anything: from your shirt and underwear to armor vest's padding. This roll has been rubberised and laced with lead for additional environmental protection."
-	value = 300
+	value = 150
 	icon_state = "synthcloth_rubber"
 	crafting_id = "synthcloth_rubber"
 
@@ -22,7 +22,7 @@
 	name = "armor-woven Synthcloth"
 	desc = "Space-grade materials for airsoft-grade vests."
 	desc_extended = "Incredibly cheap and surprisingly durable for its cost roll of synthesized cloth, used in pretty much anything: from your shirt and underwear to armor vest's padding. This roll has nano-kevlar woven into it for additional ballistic protection."
-	value = 300
+	value = 150
 	icon_state = "synthcloth_armor"
 	crafting_id = "synthcloth_armor"
 
@@ -30,7 +30,7 @@
 	name = "space-proof Synthcloth"
 	desc = "Space-grade materials for civillian-grade hardsuits."
 	desc_extended = "Incredibly cheap and surprisingly durable for its cost roll of synthesized cloth, used in pretty much anything: from your shirt and underwear to armor vest's padding. This roll has been space- and UV-proofed for use in EVA gear."
-	value = 300
+	value = 150
 	icon_state = "synthcloth_space"
 	crafting_id = "synthcloth_space"
 
@@ -40,7 +40,7 @@
 	name = "\improper Devilstrand"
 	desc = "Ate without table."
 	desc_extended = "Hellish cloth-like material made from what seems to be weird spores growing all around the Lavaland. Well-known for its use in equipment that needs some more durability than synthcloth can offer. Doesn't burn."
-	value = 500
+	value = 250
 	icon_state = "devilstrand"
 	crafting_id = "devilstrand"
 
@@ -48,7 +48,7 @@
 	name = "rubberised Devilstrand"
 	desc = "Went without NBC."
 	desc_extended = "Hellish cloth-like material made from what seems to be weird spores growing all around the Lavaland. Well-known for its use in equipment that needs some more durability than synthcloth can offer. Doesn't burn. This roll has been rubberised and laced with lead for additional environmental protection."
-	value = 800
+	value = 400
 	icon_state = "devilstrand_rubber"
 	crafting_id = "devilstrand_rubber"
 
@@ -56,7 +56,7 @@
 	name = "armor-woven Devilstrand"
 	desc = "My vest is damaged."
 	desc_extended = "Hellish cloth-like material made from what seems to be weird spores growing all around the Lavaland. Well-known for its use in equipment that needs some more durability than synthcloth can offer. Doesn't burn. This roll has nano-kevlar woven into it for additional ballistic protection."
-	value = 800
+	value = 400
 	icon_state = "devilstrand_armor"
 	crafting_id = "devilstrand_armor"
 
@@ -64,7 +64,7 @@
 	name = "space-proof Devilstrand"
 	desc = "SPACE!!!"
 	desc_extended = "Hellish cloth-like material made from what seems to be weird spores growing all around the Lavaland. Well-known for its use in equipment that needs some more durability than synthcloth can offer. Doesn't burn. This roll has been space- and UV-proofed for use in EVA gear."
-	value = 800
+	value = 400
 	icon_state = "devilstrand_space"
 	crafting_id = "devilstrand_space"
 
@@ -74,7 +74,7 @@
 	name = "\improper Durathread"
 	desc = "Literally mutated cotton."
 	desc_extended = "Specially designed mutation of cotton plant, meant to be the direct successor to Synthcloth fabrics. Due to the insane cost of production and maintenance of cloth, it never became as widespread as -cloth, yet it got its' niche as a great protective material."
-	value = 1000
+	value = 500
 	icon_state = "durathread"
 	crafting_id = "durathread"
 
@@ -82,7 +82,7 @@
 	name = "rubberised Durathread"
 	desc = "Chernobylite-proof or your rads back."
 	desc_extended = "Specially designed mutation of cotton plant, meant to be the direct successor to Synthcloth fabrics. Due to the insane cost of production and maintenance of cloth, it never became as widespread as -cloth, yet it got its' niche as a great protective material. This roll has been rubberised and laced with lead for additional environmental protection."
-	value = 1500
+	value = 750
 	icon_state = "durathread_rubber"
 	crafting_id = "durathread_rubber"
 
@@ -90,7 +90,7 @@
 	name = "armor-woven Durathread"
 	desc = "A fabric to surpass Metal Gear."
 	desc_extended = "Specially designed mutation of cotton plant, meant to be the direct successor to Synthcloth fabrics. Due to the insane cost of production and maintenance of cloth, it never became as widespread as -cloth, yet it got its' niche as a great protective material. This roll has nano-kevlar woven into it for additional ballistic protection."
-	value = 1500
+	value = 750
 	icon_state = "durathread_armor"
 	crafting_id = "durathread_armor"
 
@@ -98,6 +98,6 @@
 	name = "space-proof Durathread"
 	desc = "Highly-renown for its use in Death Squads' pillows."
 	desc_extended = "Specially designed mutation of cotton plant, meant to be the direct successor to Synthcloth fabrics. Due to the insane cost of production and maintenance of cloth, it never became as widespread as -cloth, yet it got its' niche as a great protective material. This roll has been space- and UV-proofed for use in EVA gear."
-	value = 1500
+	value = 750
 	icon_state = "durathread_space"
 	crafting_id = "durathread_space"
