@@ -42,7 +42,7 @@ obj/item/ore/aluminium
 	name = "aluminium ore"
 	desc = "Commonly found in caves."
 	ore_color = "#C4C4C4"
-	crafting_id = "aluminum"
+	crafting_id = "aluminium"
 
 obj/item/ore/nickel
 	name = "nickel ore"
