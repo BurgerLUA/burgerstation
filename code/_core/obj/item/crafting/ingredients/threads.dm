@@ -13,21 +13,21 @@
 /obj/item/crafting/ingredient/thread/synthcloth/rubber
 	name = "rubberised Synthcloth"
 	desc = "Space-grade materials for IKEA-grade radsuits."
-	desc_extended += " This roll has been rubberised and laced with lead for additional environmental protection."
+	desc_extended = " This roll has been rubberised and laced with lead for additional environmental protection."
 	value = 300
 	icon_state = "synthcloth_rubber"
 
 /obj/item/crafting/ingredient/thread/synthcloth/armor
 	name = "armor-woven Synthcloth"
 	desc = "Space-grade materials for airsoft-grade vests."
-	desc_extended += " This roll has nano-kevlar woven into it for additional ballistic protection."
+	desc_extended = " This roll has nano-kevlar woven into it for additional ballistic protection."
 	value = 300
 	icon_state = "synthcloth_armor"
 
 /obj/item/crafting/ingredient/thread/synthcloth/space
 	name = "space-proof Synthcloth"
 	desc = "Space-grade materials for civillian-grade hardsuits."
-	desc_extended += " This roll has been space- and UV-proofed for use in EVA gear."
+	desc_extended = " This roll has been space- and UV-proofed for use in EVA gear."
 	value = 300
 	icon_state = "synthcloth_space"
 
@@ -43,21 +43,21 @@
 /obj/item/crafting/ingredient/thread/devilstrand/rubber
 	name = "rubberised Devilstrand"
 	desc = "Went without NBC."
-	desc_extended += " This roll has been rubberised and laced with lead for additional environmental protection."
+	desc_extended = " This roll has been rubberised and laced with lead for additional environmental protection."
 	value = 800
 	icon_state = "devilstrand_rubber"
 
 /obj/item/crafting/ingredient/thread/devilstrand/armor
 	name = "armor-woven Devilstrand"
 	desc = "My vest is damaged."
-	desc_extended += " This roll has nano-kevlar woven into it for additional ballistic protection."
+	desc_extended = " This roll has nano-kevlar woven into it for additional ballistic protection."
 	value = 800
 	icon_state = "devilstrand_armor"
 
 /obj/item/crafting/ingredient/thread/devilstrand/space
 	name = "space-proof Devilstrand"
 	desc = "SPACE!!!"
-	desc_extended += " This roll has been space- and UV-proofed for use in EVA gear."
+	desc_extended = " This roll has been space- and UV-proofed for use in EVA gear."
 	value = 800
 	icon_state = "devilstrand_space"
 
@@ -73,20 +73,20 @@
 /obj/item/crafting/ingredient/thread/durathread/rubber
 	name = "rubberised Durathread"
 	desc = "Chernobylite-proof or your rads back."
-	desc_extended += " This roll has been rubberised and laced with lead for additional environmental protection."
+	desc_extended = " This roll has been rubberised and laced with lead for additional environmental protection."
 	value = 1500
 	icon_state = "durathread_rubber"
 
 /obj/item/crafting/ingredient/thread/durathread/armor
 	name = "armor-woven Durathread"
 	desc = "A fabric to surpass Metal Gear."
-	desc_extended += " This roll has nano-kevlar woven into it for additional ballistic protection."
+	desc_extended = " This roll has nano-kevlar woven into it for additional ballistic protection."
 	value = 1500
 	icon_state = "durathread_armor"
 
 /obj/item/crafting/ingredient/thread/durathread/space
 	name = "space-proof Durathread"
 	desc = "Highly-renown for its use in Death Squads' pillows."
-	desc_extended += " This roll has been space- and UV-proofed for use in EVA gear."
+	desc_extended = " This roll has been space- and UV-proofed for use in EVA gear."
 	value = 1500
 	icon_state = "durathread_space"
