@@ -1,3 +1,4 @@
+/*
 /recipe/workbench/armor/bulletproof
 
 	name = "bulletproof vest"
@@ -21,3 +22,4 @@
 	product = /obj/item/clothing/overwear/armor/bulletproof
 
 	do_debug = TRUE
+*/

@@ -1,3 +1,4 @@
+/*
 /recipe/workbench/alloy/gun_aluminium
 
 	name = "Aluminium-2045"
@@ -21,3 +22,4 @@
 	product = /obj/item/clothing/overwear/armor/bulletproof
 
 	do_debug = TRUE
+*/

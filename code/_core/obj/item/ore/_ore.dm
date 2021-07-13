@@ -42,7 +42,7 @@ obj/item/ore/aluminium
 	name = "aluminium ore"
 	desc = "Commonly found in caves."
 	ore_color = "#C4C4C4"
-	crafting_id = "aluminium"
+	crafting_id = "ore_aluminium"
 
 obj/item/ore/nickel
 	name = "nickel ore"
@@ -113,3 +113,4 @@ obj/item/ore/plasma
 	desc = "Commonly found in areas of great power."
 	ore_color = "#B200B6"
 	icon_state = "ore_phoron"
+	crafting_id = "ore_phoron"
