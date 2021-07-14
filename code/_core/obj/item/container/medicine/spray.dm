@@ -92,3 +92,6 @@
 
 
 	return ..()
+
+/obj/item/container/spray/get_examine_list(var/mob/examiner)
+	return ..() + div("notice",reagents.get_contents_english())

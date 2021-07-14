@@ -162,6 +162,8 @@
 		/obj/item/storage/bags/chemistry,
 		/obj/item/storage/pillbottle,
 		/obj/item/container/syringe,
+		/obj/item/container/spray,
+		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle,
 		/obj/item/container/beaker/vial,
 		/obj/item/container/beaker/bottle/large,
 		/obj/item/container/beaker/bottle,
