@@ -133,8 +133,8 @@
 	if(delete_after_harvest)
 		qdel(src)
 	else
-		potency = potency > initial(potency) ? (initial(potency) + potency)/2 : potency
-		yield = yield > initial(yield) ? (initial(yield) + yield)/2 : yield
+		potency = potency > initial(potency) ? initial(potency) : potency
+		yield = yield > initial(yield) ? initial(yield)  : yield
 		growth = growth_max
 		update_sprite()
 

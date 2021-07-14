@@ -6,9 +6,11 @@
 	icon_state = "inventory"
 	value = 50
 
-/obj/item/consumable/fertilizer/click_on_object(var/mob/caller as mob,var/obj/structure/interactive/plant/O,location,control,params)
-	if (!istype(O,/obj/structure/interactive/plant))
+/obj/item/consumable/fertilizer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+	if (!istype(object,/obj/structure/interactive/plant))
 		return
+
+	var/obj/structure/interactive/plant/O = object
 
 	O.potency += 1
 	caller.visible_message(span("notice","\The [caller.name] fertilizes the [O.name]."),span("notice","You fertilize the [O.name]."))
