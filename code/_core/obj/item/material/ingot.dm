@@ -5,7 +5,7 @@
 	icon_state = "ingot"
 
 	item_count_current = 1
-	item_count_max = 6
+	item_count_max = 50
 	item_count_max_icon = 6
 
 	crafting_id = "ingot"
