@@ -105,7 +105,7 @@
 		/material/titanium = 25,
 		/material/zinc = 25,
 		/material/magnesium = 25,
-		/material/aluminum = 25
+		/material/aluminium = 25
 	)
 
 	var/material_to_choose = pickweight(possible_materials)
