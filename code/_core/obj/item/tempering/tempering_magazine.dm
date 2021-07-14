@@ -14,10 +14,10 @@
 	value = 50000
 
 /obj/item/tempering/magazine/bluespace/can_temper(var/mob/caller,var/obj/item/magazine/I)
-	if (is_magazine(I) == FALSE)
+	if (!is_magazine(I))
 		return FALSE
 
-	if(I.bluespaced == TRUE)
+	if(I.bluespaced)
 		caller.to_chat(span("warning","\The [I.name] is already bluespaced!"))
 		return FALSE
 
@@ -39,10 +39,10 @@
 	value = 50000
 
 /obj/item/tempering/magazine/refiller/can_temper(var/mob/caller,var/obj/item/magazine/I)
-	if (is_magazine(I) == FALSE)
+	if (!is_magazine(I))
 		return FALSE
 
-	if(I.regenerate == TRUE)
+	if(I.regenerate)
 		caller.to_chat(span("warning","\The [I.name] already has the regenerate enchantment applied!"))
 		return FALSE
 
@@ -50,4 +50,6 @@
 
 /obj/item/tempering/magazine/refiller/on_temper(var/mob/caller,var/obj/item/magazine/I)
 	I.regenerate = TRUE
+	I.regen()
 	return ..()
+

@@ -23,29 +23,22 @@
 	var/icon_states = 1
 	var/bluespaced = FALSE
 	var/regenerate = FALSE
-	var/regen_counter = 0
+	var/regen_speed = 30 //magazines can be allowed to regen faster or slower on an individual basis this way.
 
 	weight = 0.25
 
+//This callback activates when a refiller item is used on a magazine
+/obj/item/magazine/proc/regen()
+	if (length(stored_bullets) < bullet_count_max)
+		var/obj/item/bullet_cartridge/B = new ammo(src)
+		INITIALIZE(B)
+		GENERATE(B)
+		FINALIZE(B)
+		stored_bullets += B
+		update_sprite()
 
-/obj/item/magazine/PostInitialize()
-	start_thinking(src)
+	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
 	return ..()
-
-/obj/item/magazine/think()
-	if (regenerate)
-		regen_counter += 1
-		if (regen_counter > 30)
-			regen_counter = 0
-			if (length(stored_bullets) < bullet_count_max)
-				var/obj/item/bullet_cartridge/B = new ammo(src)
-				INITIALIZE(B)
-				FINALIZE(B)
-				stored_bullets += B
-				update_sprite()
-
-	return ..()
-
 
 /obj/item/magazine/update_icon()
 
@@ -86,6 +79,7 @@
 			for(var/i=1,i<=v,i++)
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
+				GENERATE(B)
 				FINALIZE(B)
 				stored_bullets += B
 
@@ -95,7 +89,7 @@
 
 	if (object_data["regenerate"])
 		regenerate = TRUE
-
+		regen()
 
 /obj/item/magazine/Generate()
 
@@ -103,6 +97,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
+			GENERATE(B)
 			FINALIZE(B)
 			stored_bullets += B
 
@@ -128,9 +123,9 @@
 /obj/item/magazine/get_examine_list(var/mob/examiner)
 	var results = div("notice","It contains [length(stored_bullets)] bullets.")
 	if (bluespaced)
-		results += div("notice", "It has been connected to a bluespace pocket to drastically increase its capacity")
+		results += div("notice", "It has been connected to a bluespace pocket to drastically increase its capacity. ")
 	if (regenerate)
-		results += div("notice", "It magically creates its own bullets every 3 seconds.")
+		results += div("notice", "It magically creates its own bullets every [src.regen_speed / 10] seconds. ")
 	return ..()  + results
 
 /obj/item/magazine/New()
