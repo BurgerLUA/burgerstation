@@ -50,3 +50,27 @@
 			on_projectile_hit(current_loc)
 			qdel(src)
 			return FALSE
+
+/obj/projectile/bullet/laser/plasma_cutter
+	icon_state = "cutter"
+	penetrations_left = 4 //OwO
+
+//So it basically accelerates and then self-obliterates to act as some funny alternative to KA.
+/obj/projectile/bullet/laser/plasma_cutter/update_projectile(var/tick_rate=1)
+	. = ..()
+
+	if(.)
+
+		var/vel_x_change = vel_x * 1.25
+		var/vel_y_change = vel_y * 1.25
+
+		if(prob(50))
+			vel_x += clamp(vel_y_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
+
+		if(prob(50))
+			vel_y += clamp(vel_x_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
+
+		if(abs(vel_x) >= 8	&& abs(vel_y) >= 8)
+			on_projectile_hit(current_loc)
+			qdel(src)
+			return FALSE
