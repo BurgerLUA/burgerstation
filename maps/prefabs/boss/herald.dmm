@@ -13,6 +13,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/colored/ash/rocky,
 /area/dmm_suite/clear_area)
+"y" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/ash/rocky,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -227,6 +231,7 @@ b
 a
 a
 a
+y
 b
 b
 b
@@ -241,8 +246,7 @@ b
 b
 b
 b
-b
-b
+y
 a
 a
 a
@@ -873,6 +877,7 @@ b
 a
 a
 a
+y
 b
 b
 b
@@ -887,8 +892,7 @@ b
 b
 b
 b
-b
-b
+y
 a
 a
 a

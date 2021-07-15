@@ -17,18 +17,16 @@
 	objective_text = "Ashwalkers killed"
 
 /contract/ashwalkers/low
-	amount = 1
-	reward = /obj/item/currency/gold
+	amount = 10
+	reward = /obj/item/currency/gold{amount=10*5}
 
 /contract/ashwalkers/mid
-	amount = 2
-	reward = /obj/item/currency/gold
+	amount = 20
+	reward = /obj/item/currency/gold{amount=10*5*1.5}
 
 /contract/ashwalkers/high
-	amount = 3
-	reward = /obj/item/currency/gold
-
-
+	amount = 30
+	reward = /obj/item/currency/gold{amount=10*5*3}
 
 //Arachnids
 /contract/arachnids
@@ -43,12 +41,11 @@
 
 /contract/arachnids/mid
 	amount = 10
-	reward = /obj/item/currency/gold{amount=10*5*1.5}
+	reward = /obj/item/coin/antag_token{amount=1}
 
 /contract/arachnids/high
 	amount = 25
 	reward = /obj/item/currency/gold{amount=25*5*2}
-
 
 //Bosses
 /contract/ash_drake
@@ -57,7 +54,7 @@
 	type_to_check = /mob/living/simple/ash_drake
 	objective_text = "Ash Drakes killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=2}
 
 /contract/bubblegum
 	name = "Kill Bubblegum"
@@ -65,7 +62,7 @@
 	type_to_check = /mob/living/simple/bubblegum
 	objective_text = "Bubblegums killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=2}
 
 /contract/can_man
 	name = "Kill Can Man"
@@ -73,7 +70,7 @@
 	type_to_check = /mob/living/simple/can_man
 	objective_text = "Can Men killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=2}
 
 /contract/colossus
 	name = "Kill Colossus"
@@ -81,7 +78,7 @@
 	type_to_check = /mob/living/simple/colossus
 	objective_text = "Colossus killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=1}
 
 /contract/goblin_king
 	name = "Kill the Goblin King"
@@ -89,7 +86,7 @@
 	type_to_check = /mob/living/simple/goblin_king
 	objective_text = "Goblin Kings killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=1}
 
 /contract/herald
 	name = "Kill the Herald"
@@ -97,7 +94,7 @@
 	type_to_check = /mob/living/simple/herald
 	objective_text = "Heralds killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=1}
 
 /contract/hierophant
 	name = "Kill the Hierophant"
@@ -105,7 +102,7 @@
 	type_to_check = /mob/living/simple/hierophant
 	objective_text = "Hierophants killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=1}
 
 /contract/leaper
 	name = "Kill the Leaper"
@@ -113,7 +110,7 @@
 	type_to_check = /mob/living/simple/leaper
 	objective_text = "Leapers killed"
 	amount = 1
-	reward = /obj/item/currency/gold{amount=100}
+	reward = /obj/item/coin/antag_token{amount=1}
 
 /contract/queen
 	name = "Kill the Xeno Queen"

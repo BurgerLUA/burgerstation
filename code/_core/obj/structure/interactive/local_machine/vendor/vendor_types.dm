@@ -162,6 +162,8 @@
 		/obj/item/storage/bags/chemistry,
 		/obj/item/storage/pillbottle,
 		/obj/item/container/syringe,
+		/obj/item/container/spray,
+		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle,
 		/obj/item/container/beaker/vial,
 		/obj/item/container/beaker/bottle/large,
 		/obj/item/container/beaker/bottle,
@@ -334,7 +336,8 @@
 	icon_state = "nutri"
 	stored_types = list(
 		/obj/item/container/beaker/bucket/water,
-		/obj/item/storage/bags/botany/processor
+		/obj/item/storage/bags/botany/processor,
+		/obj/item/consumable/fertilizer
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds

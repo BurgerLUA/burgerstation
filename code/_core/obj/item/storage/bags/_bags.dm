@@ -163,6 +163,8 @@
 	var/color_label = "#FFFFFF"
 	var/color_canister = "#D35400"
 
+	appearance_flags = RESET_COLOR
+
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 
 	value = 20

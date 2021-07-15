@@ -42,8 +42,8 @@
 /area/prefab/clockwork_cult)
 "m" = (
 /mob/living/simple/watcher/clockwork{
-	icon_state = "warden";
-	dir = 4
+	dir = 4;
+	icon_state = "warden"
 	},
 /turf/simulated/floor/clockwork/alt2,
 /area/prefab/clockwork_cult)
@@ -53,8 +53,8 @@
 /area/prefab/clockwork_cult)
 "o" = (
 /mob/living/simple/watcher/clockwork{
-	icon_state = "warden";
-	dir = 8
+	dir = 8;
+	icon_state = "warden"
 	},
 /turf/simulated/floor/clockwork/alt2,
 /area/prefab/clockwork_cult)
@@ -74,8 +74,8 @@
 /area/prefab/clockwork_cult)
 "t" = (
 /mob/living/advanced/npc/clockwork_cultist{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
@@ -85,43 +85,43 @@
 /area/prefab/clockwork_cult)
 "v" = (
 /mob/living/simple/clockwork_marauder{
-	icon_state = "living";
-	dir = 4
+	dir = 4;
+	icon_state = "living"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
 "w" = (
 /mob/living/simple/clockwork_marauder{
-	icon_state = "living";
-	dir = 8
+	dir = 8;
+	icon_state = "living"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
 "x" = (
 /mob/living/simple/watcher/clockwork{
-	icon_state = "warden";
-	dir = 4
+	dir = 4;
+	icon_state = "warden"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
 "y" = (
 /mob/living/simple/watcher/clockwork{
-	icon_state = "warden";
-	dir = 8
+	dir = 8;
+	icon_state = "warden"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
 "z" = (
 /mob/living/advanced/npc/clockwork_cultist{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
 "A" = (
 /mob/living/advanced/npc/clockwork_cultist{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/clockwork/reebe,
 /area/prefab/clockwork_cult)
@@ -153,6 +153,14 @@
 /area/prefab/clockwork_cult)
 "I" = (
 /obj/marker/lobby,
+/turf/simulated/floor/clockwork/alt3,
+/area/prefab/clockwork_cult)
+"Q" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/clockwork/reebe,
+/area/prefab/clockwork_cult)
+"S" = (
+/obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/clockwork/alt3,
 /area/prefab/clockwork_cult)
 
@@ -1129,7 +1137,7 @@ e
 e
 e
 i
-q
+S
 h
 h
 h
@@ -1971,7 +1979,7 @@ h
 s
 h
 d
-h
+Q
 x
 z
 x
@@ -2151,7 +2159,7 @@ a
 a
 b
 d
-h
+Q
 f
 j
 h
@@ -2175,7 +2183,7 @@ h
 h
 h
 h
-q
+S
 i
 e
 e
@@ -2190,7 +2198,7 @@ h
 E
 h
 d
-q
+S
 h
 h
 h
@@ -2433,7 +2441,7 @@ h
 s
 h
 d
-h
+Q
 y
 A
 y
@@ -3241,7 +3249,7 @@ e
 e
 e
 i
-q
+S
 h
 h
 h

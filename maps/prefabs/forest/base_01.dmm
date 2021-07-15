@@ -29,8 +29,8 @@
 /area/dmm_suite/clear_area)
 "i" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 4
+	dir = 4;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey,
 /area/dmm_suite/clear_area)
@@ -39,8 +39,8 @@
 /area/dmm_suite/clear_area)
 "k" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 8
+	dir = 8;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey,
 /area/dmm_suite/clear_area)
@@ -54,22 +54,22 @@
 /area/dmm_suite/clear_area)
 "n" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 1
+	dir = 1;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey,
 /area/dmm_suite/clear_area)
 "o" = (
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/carpet,
 /area/dmm_suite/clear_area)
 "p" = (
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey,
 /area/dmm_suite/clear_area)
@@ -79,15 +79,15 @@
 /area/dmm_suite/clear_area)
 "r" = (
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey,
 /area/dmm_suite/clear_area)
 "s" = (
 /mob/living/advanced/npc/goblin/mage{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/carpet,
 /area/dmm_suite/clear_area)
@@ -97,8 +97,8 @@
 /area/dmm_suite/clear_area)
 "u" = (
 /mob/living/advanced/npc/goblin/mage{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/carpet,
 /area/dmm_suite/clear_area)
