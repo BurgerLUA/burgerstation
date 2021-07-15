@@ -21,9 +21,24 @@
 	var/bullet_diameter_max = -1
 
 	var/icon_states = 1
+	var/bluespaced = FALSE
+	var/regenerate = FALSE
+	var/regen_speed = 30 //magazines can be allowed to regen faster or slower on an individual basis this way.
 
 	weight = 0.25
 
+//This callback activates when a refiller item is used on a magazine
+/obj/item/magazine/proc/regen()
+	if (length(stored_bullets) < bullet_count_max)
+		var/obj/item/bullet_cartridge/B = new ammo(src)
+		INITIALIZE(B)
+		GENERATE(B)
+		FINALIZE(B)
+		stored_bullets += B
+		update_sprite()
+
+	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
+	return ..()
 
 /obj/item/magazine/update_icon()
 
@@ -50,6 +65,8 @@
 		for(var/i=1,i<=length(stored_bullets),i++)
 			var/obj/item/bullet_cartridge/B = stored_bullets[i]
 			if(B) .["stored_bullets"][B.type] += 1
+	.["bluespaced"] = bluespaced
+	.["regenerate"] = regenerate
 
 
 /obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
@@ -62,9 +79,17 @@
 			for(var/i=1,i<=v,i++)
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
+				GENERATE(B)
 				FINALIZE(B)
 				stored_bullets += B
 
+	if (object_data["bluespaced"])
+		bullet_count_max *= 10
+		bluespaced = TRUE
+
+	if (object_data["regenerate"])
+		regenerate = TRUE
+		regen()
 
 /obj/item/magazine/Generate()
 
@@ -72,6 +97,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
+			GENERATE(B)
 			FINALIZE(B)
 			stored_bullets += B
 
@@ -95,7 +121,12 @@
 	update_sprite()
 
 /obj/item/magazine/get_examine_list(var/mob/examiner)
-	return ..() + div("notice","It contains [length(stored_bullets)] bullets.")
+	var results = div("notice","It contains [length(stored_bullets)] bullets.")
+	if (bluespaced)
+		results += div("notice", "It has been connected to a bluespace pocket to drastically increase its capacity. ")
+	if (regenerate)
+		results += div("notice", "It magically creates its own bullets every [src.regen_speed / 10] seconds. ")
+	return ..()  + results
 
 /obj/item/magazine/New()
 	stored_bullets = list()

@@ -87,3 +87,11 @@
 	value = 2000
 
 	overlay_color = COLOR_BLUE
+
+/obj/item/experience_scroll/skill/botany
+	name = "scroll of botany"
+	skill = SKILL_BOTANY
+	experience_amount = 5000
+	value = 2000
+
+	overlay_color = COLOR_BLUE

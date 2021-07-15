@@ -68,3 +68,22 @@
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot/surplus
 	jam_chance = 1
 	value = 0
+
+/obj/item/bullet_cartridge/shotgun_20/cursed
+	name = "\improper 20 gauge curse shell"
+	desc = "Shoots a lot of small magic circles at once."
+	desc_extended = "This shell is covered in mysterious runes, and smells like the ocean???"
+	icon_state = "buckshot"
+
+	projectile_count = 7
+	base_spread = 0.03
+
+	projectile = /obj/projectile/magic/chaos
+	damage_type_bullet = /damagetype/ranged/magic/chaos
+
+	projectile_speed = TILE_SIZE*0.2 - 1
+
+	size = 0.04
+	value = 1.6
+
+	inaccuracy_modifer = 1.25

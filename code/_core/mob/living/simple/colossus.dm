@@ -8,7 +8,7 @@
 
 	value = 4000
 
-	pixel_x = -16
+	pixel_x = -32
 
 	ai = /ai/boss/colossus/
 

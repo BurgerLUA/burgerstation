@@ -162,6 +162,8 @@
 		/obj/item/storage/bags/chemistry,
 		/obj/item/storage/pillbottle,
 		/obj/item/container/syringe,
+		/obj/item/container/spray,
+		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle,
 		/obj/item/container/beaker/vial,
 		/obj/item/container/beaker/bottle/large,
 		/obj/item/container/beaker/bottle,
@@ -334,7 +336,8 @@
 	icon_state = "nutri"
 	stored_types = list(
 		/obj/item/container/beaker/bucket/water,
-		/obj/item/storage/bags/botany/processor
+		/obj/item/storage/bags/botany/processor,
+		/obj/item/consumable/fertilizer
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds
@@ -351,7 +354,13 @@
 		/obj/item/seed/poppy,
 		/obj/item/seed/cannabis,
 		/obj/item/seed/cannabis/life,
-		/obj/item/seed/cannabis/death
+		/obj/item/seed/cannabis/death,
+		/obj/item/seed/corn,
+		/obj/item/seed/sugarcane,
+		/obj/item/seed/potato,
+		/obj/item/seed/cactus,
+		/obj/item/seed/chili,
+		/obj/item/seed/chili/ghost
 	)
 
 /obj/structure/interactive/vending/soda

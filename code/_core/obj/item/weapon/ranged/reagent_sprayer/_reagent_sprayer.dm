@@ -39,6 +39,8 @@
 		var/obj/projectile/P = k
 		reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller)
 
+/obj/item/weapon/ranged/reagent_sprayer/get_examine_list(var/mob/examiner)
+	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle
 	name = "spray bottle"

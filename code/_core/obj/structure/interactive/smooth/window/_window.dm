@@ -44,10 +44,9 @@
 		for(var/k in list(NORTH,EAST,SOUTH,WEST))
 			var/turf/T = get_step(src,k)
 			for(var/obj/structure/smooth/window/W in T.contents)
-				if(W.no_queue)
+				if(W.qdeleting || W.no_queue)
 					continue
 				on_destruction(caller,TRUE)
-
 	qdel(src)
 
 /obj/structure/smooth/window/Destroy()
