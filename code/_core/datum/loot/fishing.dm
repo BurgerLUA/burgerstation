@@ -6,7 +6,7 @@
 #define CHANCE_GOOD 15
 #define CHANCE_CRATE 7.5
 #define CHANCE_MEME 5
-#define CHANCE_GOD 0
+#define CHANCE_GOD 0.5
 
 
 /loot/fishing/sea
