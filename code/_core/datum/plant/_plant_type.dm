@@ -256,7 +256,7 @@
 	seed_icon_state = "corn"
 	plant_icon_count = 1
 	reagents = list(
-		/reagent/nutrition/corn_flour = 1,
+		/reagent/nutrition/corn = 1,
 	)
 
 	typical_volume = 8
