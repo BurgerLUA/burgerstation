@@ -31,6 +31,8 @@
 
 	size = SIZE_1
 
+/obj/item/container/cigarette/get_examine_list(var/mob/examiner)
+	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/container/cigarette/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	if(!lit)

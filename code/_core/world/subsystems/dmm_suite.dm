@@ -13,7 +13,6 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	var/list/prefab_markers = list()
 
-
 	var/list/valid_prefabs = list()
 
 	var/list/maps_to_load = list(

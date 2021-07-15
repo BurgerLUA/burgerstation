@@ -64,7 +64,7 @@
 /obj/projectile/bullet/HE_40M/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),20,owner,weapon,iff_tag)
+		explode(get_turf(hit_atom),20,owner,weapon,loyalty_tag)
 
 
 /obj/projectile/bullet/gyrojet
@@ -75,7 +75,7 @@
 /obj/projectile/bullet/gyrojet/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
+		explode(get_turf(hit_atom),10,owner,weapon,loyalty_tag)
 
 
 /obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
@@ -110,5 +110,5 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),20,owner,src,iff_tag)
+		explode(get_turf(hit_atom),20,owner,src,loyalty_tag)
 

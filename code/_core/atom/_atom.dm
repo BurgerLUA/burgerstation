@@ -132,7 +132,7 @@
 	if(listener)
 		all_listeners |= src
 
-	return ..()
+	. = ..()
 
 /atom/Finalize()
 	. = ..()

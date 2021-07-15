@@ -43,6 +43,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/xeno,
 /area/prefab/xeno_hive)
+"J" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/xeno,
+/area/prefab/xeno_hive)
 
 (1,1,1) = {"
 a
@@ -530,7 +534,7 @@ k
 a
 a
 c
-b
+J
 b
 b
 b
@@ -1327,7 +1331,7 @@ b
 b
 b
 c
-b
+J
 b
 b
 b
@@ -1444,7 +1448,7 @@ a
 a
 a
 c
-b
+J
 b
 b
 b
@@ -2139,7 +2143,7 @@ b
 b
 b
 c
-b
+J
 b
 b
 b
@@ -2231,7 +2235,7 @@ b
 b
 b
 c
-b
+J
 b
 b
 b
@@ -2326,7 +2330,7 @@ b
 b
 b
 c
-b
+J
 b
 d
 b
@@ -2343,7 +2347,7 @@ b
 b
 b
 c
-b
+J
 b
 d
 b
@@ -2380,7 +2384,7 @@ b
 e
 b
 c
-b
+J
 b
 b
 b
@@ -2864,7 +2868,7 @@ b
 b
 b
 c
-b
+J
 b
 b
 b
@@ -3235,7 +3239,7 @@ b
 b
 k
 c
-b
+J
 b
 b
 b

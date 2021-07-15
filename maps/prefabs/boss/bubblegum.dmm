@@ -25,6 +25,14 @@
 /obj/marker/lobby,
 /turf/simulated/floor/colored/ash/rocky,
 /area/dmm_suite/clear_area)
+"C" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/ash/rocky,
+/area/dmm_suite/clear_area)
+"O" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/basalt,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -169,7 +177,7 @@ e
 b
 b
 a
-f
+O
 f
 g
 a
@@ -593,7 +601,7 @@ b
 g
 g
 a
-f
+O
 b
 b
 a
@@ -823,7 +831,7 @@ e
 b
 b
 a
-b
+C
 b
 b
 b
@@ -917,7 +925,7 @@ e
 e
 b
 a
-f
+O
 f
 b
 a
