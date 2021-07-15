@@ -14,7 +14,8 @@
 		/obj/item/experience_scroll/skill/ranged,
 		/obj/item/experience_scroll/skill/sorcery,
 		/obj/item/experience_scroll/skill/survival,
-		/obj/item/experience_scroll/skill/unarmed
+		/obj/item/experience_scroll/skill/unarmed,
+		/obj/item/experience_scroll/skill/botany
 	)
 	loot_count = 1
 

@@ -49,3 +49,6 @@
 #define SKILL_MAGIC_SUMMONING "summoning" //Completed
 #define SKILL_MAGIC_ENCHANTING "enchanting" //Completed.
 #define SKILL_MEDICINE "medicine" //Completed
+
+//No stat attached
+#define SKILL_BOTANY "botany" //Completed

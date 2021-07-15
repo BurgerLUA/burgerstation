@@ -20,7 +20,7 @@
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
 "ag" = (
-/obj/structure/scenery/grass,
+/obj/structure/scenery/bush/grass,
 /turf/simulated/floor/colored/grass/jungle,
 /area/prefab/rev_base)
 "ah" = (
@@ -81,15 +81,15 @@
 /area/prefab/rev_base)
 "av" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aw" = (
 /obj/structure/interactive/misc/toilet{
-	icon_state = "toilet";
-	dir = 8
+	dir = 8;
+	icon_state = "toilet"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
@@ -103,15 +103,15 @@
 /area/prefab/rev_base)
 "az" = (
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 8
+	dir = 8;
+	icon_state = "sink"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aA" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
@@ -121,15 +121,15 @@
 /area/prefab/rev_base)
 "aC" = (
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aD" = (
 /obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
+	dir = 8;
+	icon_state = "setup"
 	},
 /turf/simulated/wall/brick/red/dark,
 /area/prefab/rev_base)
@@ -143,19 +143,19 @@
 /area/prefab/rev_base)
 "aG" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aH" = (
 /obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 1
+	dir = 1;
+	icon_state = "setup"
 	},
 /turf/simulated/wall/brick/red/dark,
 /area/prefab/rev_base)
@@ -164,44 +164,44 @@
 	pixel_x = 32
 	},
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 4
+	dir = 4;
+	icon_state = "sink"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aJ" = (
 /obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
+	dir = 4;
+	icon_state = "chair"
 	},
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aK" = (
 /obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 8
+	dir = 8;
+	icon_state = "chair"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aL" = (
 /obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
+	dir = 4;
+	icon_state = "chair"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aM" = (
 /obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 8
+	dir = 8;
+	icon_state = "chair"
 	},
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
@@ -236,15 +236,15 @@
 /area/prefab/rev_base)
 "aU" = (
 /obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
+	dir = 4;
+	icon_state = "setup"
 	},
 /turf/simulated/wall/brick/red/dark,
 /area/prefab/rev_base)
 "aV" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
@@ -257,8 +257,8 @@
 /area/prefab/rev_base)
 "aY" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
@@ -311,33 +311,33 @@
 /area/prefab/rev_base)
 "bj" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
+	dir = 4;
+	icon_state = "wooden_chair"
 	},
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 "bk" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
+	dir = 8;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 "bl" = (
 /obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
+	dir = 8;
+	icon_state = "setup"
 	},
 /turf/simulated/wall/wood,
 /area/prefab/rev_base)
 "bm" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
+	dir = 4;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
@@ -351,8 +351,8 @@
 /area/prefab/rev_base)
 "bp" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
@@ -368,8 +368,8 @@
 /area/prefab/rev_base)
 "bs" = (
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
@@ -378,8 +378,8 @@
 /area/dmm_suite/clear_area)
 "bu" = (
 /mob/living/advanced/npc/rev{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/colored/grass/jungle,
 /area/prefab/rev_base)
@@ -391,6 +391,23 @@
 "bw" = (
 /obj/marker/lobby,
 /turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"lq" = (
+/obj/structure/scenery/grass/lavender,
+/turf/simulated/floor/colored/grass/jungle,
+/area/prefab/rev_base)
+"Fy" = (
+/obj/structure/scenery/grass/normal,
+/turf/simulated/floor/colored/grass/jungle,
+/area/prefab/rev_base)
+"Ul" = (
+/obj/structure/scenery/rocks,
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"Zo" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 
 (1,1,1) = {"
@@ -543,7 +560,7 @@ an
 ad
 ad
 aN
-aP
+Zo
 aV
 aW
 aW
@@ -620,7 +637,7 @@ bb
 bb
 bp
 aN
-ad
+Fy
 bu
 ac
 ab
@@ -707,7 +724,7 @@ ad
 ad
 ad
 ad
-ad
+Fy
 ad
 ad
 ad
@@ -813,7 +830,7 @@ ac
 ac
 ac
 ac
-ad
+Fy
 aN
 aN
 aN
@@ -825,7 +842,7 @@ bn
 aN
 aN
 ad
-ad
+ag
 ac
 ab
 bt
@@ -989,7 +1006,7 @@ ac
 ac
 ad
 ad
-ad
+lq
 ad
 ad
 ac
@@ -1095,7 +1112,7 @@ bh
 bh
 bh
 bg
-ad
+Fy
 ad
 ac
 ac
@@ -1261,7 +1278,7 @@ ak
 ak
 be
 ai
-ad
+Fy
 ad
 bg
 bg
@@ -1296,7 +1313,7 @@ ak
 ao
 ai
 ad
-ad
+lq
 ad
 ad
 ad
@@ -1330,7 +1347,7 @@ ak
 ao
 ai
 bc
-ad
+Fy
 ad
 ad
 ac
@@ -1415,7 +1432,7 @@ aa
 "}
 (31,1,1) = {"
 ab
-ae
+Ul
 ae
 ae
 ae

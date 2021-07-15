@@ -67,6 +67,7 @@
 		/obj/item/clothing/neck/goblin_necklace = 1,
 		/obj/item/clothing/pants/goblin_loin = 1,
 		/obj/item/storage/bagofhoarding = 1,
+		/obj/item/clothing/overwear/coat/drip = 0.01,
 	)
 
 /loot/lavaland/leaper

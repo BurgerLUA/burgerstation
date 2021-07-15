@@ -65,7 +65,9 @@
 	stored_object_types = list(
 		/obj/structure/interactive/mining_drill,
 		/obj/structure/interactive/mining_brace,
-		/obj/structure/interactive/mining_brace
+		/obj/structure/interactive/mining_brace,
+		/obj/structure/interactive/ore_box,
+		/obj/item/storage/bags/mining
 	)
 	value = 1000
 

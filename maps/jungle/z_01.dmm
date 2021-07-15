@@ -104,8 +104,8 @@
 /area/burgerstation/armory/shooting_range)
 "aw" = (
 /mob/living/simple/turret/nanotrasen/immortal{
-	icon_state = "active";
-	dir = 1
+	dir = 1;
+	icon_state = "active"
 	},
 /turf/simulated/floor/plating,
 /area/dungeon/z_01)
@@ -219,8 +219,8 @@
 /area/dungeon/z_01)
 "aR" = (
 /mob/living/simple/turret/nanotrasen/immortal{
-	icon_state = "active";
-	dir = 4
+	dir = 4;
+	icon_state = "active"
 	},
 /turf/simulated/floor/plating,
 /area/dungeon/z_01)
@@ -362,8 +362,8 @@
 /area/burgerstation/hanger)
 "br" = (
 /obj/structure/scenery/fake_door/nocolide/blast_door{
-	icon_state = "blast_opened";
-	dir = 4
+	dir = 4;
+	icon_state = "blast_opened"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
@@ -432,8 +432,8 @@
 	icon_state = "pad"
 	},
 /mob/living/simple/turret/nanotrasen/immortal{
-	icon_state = "active";
-	dir = 8
+	dir = 8;
+	icon_state = "active"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
@@ -784,8 +784,8 @@
 /area/dungeon/z_01)
 "cW" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
@@ -1235,8 +1235,8 @@
 /area/burgerstation/science)
 "ey" = (
 /obj/structure/scenery/fake_door/nocolide/blast_door{
-	icon_state = "blast_opened";
-	dir = 4
+	dir = 4;
+	icon_state = "blast_opened"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/science)
@@ -1249,8 +1249,8 @@
 /area/burgerstation/science)
 "eA" = (
 /mob/living/simple/turret/nanotrasen/immortal{
-	icon_state = "active";
-	dir = 8
+	dir = 8;
+	icon_state = "active"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/science)
@@ -1270,6 +1270,10 @@
 "eD" = (
 /obj/decal/hazard{
 	dir = 1
+	},
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	dir = 4;
+	icon_state = "pad"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/science)
@@ -1367,8 +1371,8 @@
 /area/burgerstation/contractor)
 "eW" = (
 /mob/living/advanced/npc/goblin/mage{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_01)
@@ -1677,8 +1681,8 @@
 /area/burgerstation/hall/central)
 "gd" = (
 /obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
@@ -1880,6 +1884,10 @@
 /area/burgerstation/engineering)
 "gO" = (
 /obj/decal/hazard,
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	dir = 4;
+	icon_state = "pad"
+	},
 /turf/simulated/floor/plating,
 /area/burgerstation/science)
 "gP" = (
@@ -2207,8 +2215,8 @@
 /area/dungeon/z_01)
 "hY" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 1
+	dir = 1;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey/dark,
 /area/dungeon/z_01)
@@ -2231,8 +2239,8 @@
 /area/transit/cargo/ship)
 "ic" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 4
+	dir = 4;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey/dark,
 /area/dungeon/z_01)
@@ -2258,8 +2266,8 @@
 /area/burgerstation/help_desk)
 "ii" = (
 /obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 8
+	dir = 8;
+	icon_state = "torch"
 	},
 /turf/simulated/wall/brick/grey/dark,
 /area/dungeon/z_01)
@@ -2360,8 +2368,8 @@
 "iA" = (
 /obj/effect/moss,
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_01)
@@ -2382,16 +2390,16 @@
 /area/dungeon/z_01)
 "iE" = (
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_01)
 "iF" = (
 /obj/effect/moss,
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_01)
@@ -2406,16 +2414,16 @@
 /obj/effect/moss,
 /obj/effect/crack,
 /mob/living/advanced/npc/goblin/mage{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_01)
 "iI" = (
 /obj/effect/crack,
 /mob/living/advanced/npc/goblin/warrior{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_01)
@@ -2780,8 +2788,8 @@
 /area/burgerstation/armory)
 "kf" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair";
-	dir = 1
+	dir = 1;
+	icon_state = "stair"
 	},
 /area/dungeon/z_01)
 "kg" = (
@@ -2862,8 +2870,8 @@
 /area/burgerstation/mining)
 "kw" = (
 /turf/simulated/floor/stair/ztravel{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area/burgerstation/cafe)
 "kx" = (
@@ -2888,14 +2896,14 @@
 /area/burgerstation/medical)
 "kA" = (
 /turf/simulated/floor/stair/ztravel{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area/burgerstation/cafe)
 "kB" = (
 /turf/simulated/floor/stair/ztravel{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area/burgerstation/cafe)
 "kC" = (
@@ -2904,8 +2912,8 @@
 /area/burgerstation/hall/south)
 "kD" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area/burgerstation/cafe)
 "kE" = (
@@ -2914,8 +2922,8 @@
 /area/burgerstation/cargo)
 "kF" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area/burgerstation/cafe)
 "kG" = (
@@ -2936,8 +2944,8 @@
 /area/burgerstation/cafe/kitchen)
 "kI" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area/burgerstation/cafe)
 "kJ" = (
@@ -4051,8 +4059,8 @@
 /area/burgerstation/library)
 "oU" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/hanger)
@@ -4418,8 +4426,8 @@
 /area/burgerstation/contractor)
 "qm" = (
 /obj/decal/poster/painting{
-	icon_state = "";
-	dir = 8
+	dir = 8;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/contractor)
@@ -4474,8 +4482,8 @@
 /area/burgerstation/contractor)
 "qx" = (
 /mob/living/advanced/npc/unique/contractor{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/carpet,
 /area/burgerstation/contractor)
@@ -4503,15 +4511,15 @@
 /area/burgerstation/goblin_shop)
 "qB" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/burgerstation/goblin_shop)
 "qC" = (
 /obj/decal/poster/painting{
-	icon_state = "";
-	dir = 4
+	dir = 4;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/contractor)
@@ -4648,8 +4656,8 @@
 /area/burgerstation/contractor)
 "qY" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /obj/structure/interactive/chair/wood{
 	dir = 8
@@ -4666,8 +4674,8 @@
 /area/transit/arrivals_shuttle_01/station)
 "rb" = (
 /obj/structure/shuttle_engine/burst/right{
-	icon_state = "burst_r";
-	dir = 4
+	dir = 4;
+	icon_state = "burst_r"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/arrivals_shuttle_01/station)
@@ -4795,8 +4803,8 @@
 /area/burgerstation/hall/south)
 "rA" = (
 /obj/structure/shuttle_engine/heater{
-	icon_state = "heater";
-	dir = 4
+	dir = 4;
+	icon_state = "heater"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/arrivals_shuttle_01/station)
@@ -4881,8 +4889,8 @@
 /area/burgerstation/library)
 "rP" = (
 /obj/structure/shuttle_engine/burst/left{
-	icon_state = "burst_l";
-	dir = 4
+	dir = 4;
+	icon_state = "burst_l"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/arrivals_shuttle_01/station)
@@ -5327,6 +5335,13 @@
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
+"up" = (
+/obj/structure/interactive/scanner/iff_nanotrasen{
+	dir = 4;
+	icon_state = "pad"
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/science)
 "uq" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 4
@@ -37084,8 +37099,8 @@ fF
 bu
 eA
 eD
-gf
-gf
+up
+up
 gO
 eA
 bu

@@ -54,9 +54,30 @@
 
 	particle_size = 0.3
 
+/reagent/nutrition/corn
+	name = "corn"
+	desc = "De-cobbed corn. Process this to get corn flour."
+	color = "#FCFC00"
+	alpha = 255
+
+	nutrition_amount = 4
+
+	flavor = "tough maize"
+
+	processed_reagent = /reagent/nutrition/corn_flour
+
+	liquid = -0.75
+
+	flavor_strength = 4
+
+	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_GRAIN
+
+	particle_size = 0.9
+
+
 /reagent/nutrition/corn_flour
 	name = "corn flour"
-	desc = "Also called corn starch. One of the biproducts of processing corn."
+	desc = "Also called corn starch. One of the by-products of processing corn."
 	color = "#E0AC33"
 
 	nutrition_amount = 5
