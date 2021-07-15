@@ -109,3 +109,81 @@
 
 /obj/item/seed/cannabis/death
 	plant_type = /plant_type/cannabis/death
+
+/obj/item/seed/corn
+	plant_type = /plant_type/corn
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 8
+	yield = 15
+	growth_speed = 5
+
+	delete_after_harvest = FALSE
+
+/obj/item/seed/sugarcane
+	plant_type = /plant_type/sugarcane
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 5
+	yield = 4
+	growth_speed = 4.5
+
+	delete_after_harvest = TRUE
+
+/obj/item/seed/potato
+	plant_type = /plant_type/potato
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 9
+	yield = 6
+	growth_speed = 5
+
+	delete_after_harvest = TRUE
+
+/obj/item/seed/cactus
+	plant_type = /plant_type/cactus
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 10
+	yield = 3
+	growth_speed = 3
+
+	delete_after_harvest = TRUE
+
+/obj/item/seed/chili
+	plant_type = /plant_type/chili
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 3
+	yield = 4
+	growth_speed = 4
+
+	delete_after_harvest = FALSE
+
+/obj/item/seed/chili/ghost
+	plant_type = /plant_type/chili/ghost
+
+	growth_min = 0
+	growth_max = 100
+	growth_produce_max = 200
+
+	potency = 10
+	yield = 2
+	growth_speed = 2
+
+	delete_after_harvest = TRUE

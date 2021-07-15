@@ -352,7 +352,13 @@
 		/obj/item/seed/poppy,
 		/obj/item/seed/cannabis,
 		/obj/item/seed/cannabis/life,
-		/obj/item/seed/cannabis/death
+		/obj/item/seed/cannabis/death,
+		/obj/item/seed/corn,
+		/obj/item/seed/sugarcane,
+		/obj/item/seed/potato,
+		/obj/item/seed/cactus,
+		/obj/item/seed/chili,
+		/obj/item/seed/chili/ghost
 	)
 
 /obj/structure/interactive/vending/soda
