@@ -33,6 +33,14 @@
 /obj/marker/lobby,
 /turf/simulated/floor/ice,
 /area)
+"P" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/plating,
+/area)
+"Y" = (
+/obj/structure/interactive/vending/random,
+/turf/simulated/floor/plating,
+/area)
 
 (1,1,1) = {"
 b
@@ -80,7 +88,7 @@ c
 c
 c
 b
-d
+P
 d
 d
 d
@@ -216,6 +224,7 @@ g
 g
 a
 b
+Y
 d
 d
 d
@@ -224,8 +233,7 @@ d
 d
 d
 d
-d
-d
+P
 b
 a
 a
@@ -444,7 +452,7 @@ b
 "}
 (13,1,1) = {"
 b
-d
+P
 d
 d
 d
@@ -571,7 +579,7 @@ a
 a
 a
 b
-d
+P
 d
 d
 d
@@ -993,7 +1001,7 @@ a
 a
 a
 b
-d
+P
 d
 d
 d
@@ -1061,7 +1069,7 @@ c
 c
 c
 b
-d
+Y
 d
 d
 d
