@@ -6,7 +6,7 @@
 	rarity = RARITY_RARE
 	value = 1400 //One hell of a mining tool go cry in the corner.
 
-	shoot_sounds = list('sound/weapons/kinetic/fire.ogg')
+	shoot_sounds = list('sound/weapons/cutter/fire.ogg')
 
 	projectile = /obj/projectile/bullet/laser/plasma_cutter
 	ranged_damage_type = /damagetype/ranged/laser/plasma_cutter
@@ -28,3 +28,5 @@
 
 	if(get_ammo_count() < 1)
 		icon_state = "[icon_state]_empty"
+	else
+		icon_state = "[icon_state]"
