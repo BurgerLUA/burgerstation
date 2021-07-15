@@ -1,10 +1,10 @@
 //These are special loot tables that don't actually call internal loot functions
 //Instead, the loot_table value is copied to a new instance and new values are calculated based on how fast you caught a fish.after it snags as well as the snag time.
 
-#define CHANCE_JUNK 10
-#define CHANCE_FAIR 40
-#define CHANCE_GOOD 30
-#define CHANCE_CRATE 20
+#define CHANCE_JUNK 30
+#define CHANCE_FAIR 20
+#define CHANCE_GOOD 15
+#define CHANCE_CRATE 7.5
 #define CHANCE_MEME 5
 #define CHANCE_GOD 0
 
