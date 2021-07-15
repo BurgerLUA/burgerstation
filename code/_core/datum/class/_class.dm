@@ -24,7 +24,7 @@
 		ATTRIBUTE_LUCK = 1
 	)
 
-	//15 skills
+	//15 combat skills, 1 crafting skill.
 	var/list/weights_skill = list(
 		SKILL_MELEE = 1,
 		SKILL_UNARMED = 1,
@@ -43,6 +43,8 @@
 		SKILL_MAGIC_SUMMONING = 1,
 		SKILL_MAGIC_ENCHANTING = 1,
 		SKILL_MEDICINE = 1,
+
+		SKILL_BOTANY = 1
 
 	)
 
