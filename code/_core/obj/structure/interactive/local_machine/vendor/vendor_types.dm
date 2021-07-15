@@ -334,7 +334,8 @@
 	icon_state = "nutri"
 	stored_types = list(
 		/obj/item/container/beaker/bucket/water,
-		/obj/item/storage/bags/botany/processor
+		/obj/item/storage/bags/botany/processor,
+		/obj/item/consumable/fertilizer
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds

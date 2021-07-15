@@ -1,6 +1,6 @@
 /reagent_container/food
 
-	volume_max = 30
+	volume_max = 90 //allow botany to boost up crop values
 
 	should_update_owner = TRUE
 
