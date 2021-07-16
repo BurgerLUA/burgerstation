@@ -7,7 +7,7 @@
 	name = "Magazine bluespacer"
 	desc = "Have you tried just putting more bullets in it?"
 	desc_extended = "A tightly controlled bluespace pocket condenser. Fits to expand inside a magazine, and increases capacity 10x for that magazine"
-	icon_state = "quality_melee"
+	icon_state = "bluespacer"
 
 	temper_whitelist = /obj/item/magazine
 
@@ -32,7 +32,7 @@
 	name = "Enchantment of Endless Bullets"
 	desc = "Not the fastest enhcantment ever, but it works"
 	desc_extended = "Eldritch forces will ensure your magazine refills over time, in exchange for... a fat stack of credits?"
-	icon_state = "quality_melee"
+	icon_state = "mag_enchant"
 
 	temper_whitelist = /obj/item/magazine
 
