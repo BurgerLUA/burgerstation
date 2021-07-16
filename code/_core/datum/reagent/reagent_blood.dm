@@ -20,7 +20,7 @@
 
 	var/list/compatible_blood = list(/reagent/blood) //If a mob has this blood type, what can it receive without poison?
 
-	value = 2
+	value = 0.5
 
 /reagent/blood/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -48,7 +48,8 @@
 		/reagent/blood/human/o_negative = TRUE,
 		/reagent/blood/human/b_negative = TRUE,
 		/reagent/blood/human/a_negative = TRUE,
-		/reagent/blood/human/ab_negative = TRUE
+		/reagent/blood/human/ab_negative = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/b_negative
@@ -56,7 +57,8 @@
 
 	compatible_blood = list(
 		/reagent/blood/human/b_negative = TRUE,
-		/reagent/blood/human/o_negative = TRUE
+		/reagent/blood/human/o_negative = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/ab_positive
@@ -70,7 +72,8 @@
 		/reagent/blood/human/o_negative = TRUE,
 		/reagent/blood/human/b_positive = TRUE,
 		/reagent/blood/human/a_positive = TRUE,
-		/reagent/blood/human/o_positive = TRUE
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/a_negative
@@ -79,13 +82,15 @@
 	compatible_blood = list(
 		/reagent/blood/human/a_negative = TRUE,
 		/reagent/blood/human/o_negative = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/o_negative
 	name = "O Negative Human Blood"
 
 	compatible_blood = list(
-		/reagent/blood/human/o_negative = TRUE
+		/reagent/blood/human/o_negative = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/b_positive
@@ -95,7 +100,8 @@
 		/reagent/blood/human/b_positive = TRUE,
 		/reagent/blood/human/b_negative = TRUE,
 		/reagent/blood/human/o_negative = TRUE,
-		/reagent/blood/human/o_positive = TRUE
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/a_positive
@@ -105,7 +111,8 @@
 		/reagent/blood/human/a_negative = TRUE,
 		/reagent/blood/human/a_positive = TRUE,
 		/reagent/blood/human/o_negative = TRUE,
-		/reagent/blood/human/o_positive = TRUE
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/human/o_positive
@@ -113,14 +120,16 @@
 
 	compatible_blood = list(
 		/reagent/blood/human/o_negative = TRUE,
-		/reagent/blood/human/o_positive = TRUE
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 /reagent/blood/robot
 	name = "Robot Oil"
 
 	compatible_blood = list(
-		/reagent/blood/robot = TRUE
+		/reagent/blood/robot = TRUE,
+		/reagent/blood/ancient = TRUE
 	)
 
 	color = COLOR_BLACK
@@ -162,6 +171,22 @@
 	)
 
 	color = "#AE0000"
+
+/reagent/blood/ancient/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	.=..()
+	owner.add_status_effect(DRUGGY)
+	owner.add_status_effect(CONFUSED)
+	owner.brute_regen_buffer += .*3
+	owner.burn_regen_buffer += .*2
+	owner.pain_regen_buffer += .*5
+	owner.add_hydration(.*-5)
+	if(owner.health)
+		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
+		if(IR && IR.reverse_intoxication)
+			owner.intoxication -= 12
+		else
+			owner.intoxication += 12
+		owner.sanity_regen_buffer -= 12
 
 /reagent/blood/alien/red
 	name = "Red Alien Blood"
