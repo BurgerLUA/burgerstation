@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47
 	name = "\improper 7.62x39mmR AK-47"
 	desc = "Ancient, with an upgrade."
-	desc_extended = "The 7.62x54mmR AK-14 is the AK to go for when you seriously want to fuck shit up."
+	desc_extended = "The 7.62x39mmR AK-47 is the AK to go for when you seriously want to fuck shit up."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
 	value = 2200
@@ -21,9 +21,9 @@
 
 	heat_max = 0.2
 
-	bullet_length_min = 46
-	bullet_length_best = 54
-	bullet_length_max = 58
+	bullet_length_min = 38
+	bullet_length_best = 39
+	bullet_length_max = 40
 
 	bullet_diameter_min = 7.6
 	bullet_diameter_best = 7.62

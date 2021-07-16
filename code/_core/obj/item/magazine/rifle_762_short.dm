@@ -8,10 +8,11 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47 = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/rifle_308/long
-	ammo_surplus = /obj/item/bullet_cartridge/rifle_308/long/surplus
+	ammo = /obj/item/bullet_cartridge/rifle_308/short
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_308/short
 
 	bullet_length_min = 38
 	bullet_length_best = 39
