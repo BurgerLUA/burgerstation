@@ -251,3 +251,9 @@
 	. = ..()
 	owner.pain_regen_buffer += -starting_volume * 0.5
 	owner.send_pain(starting_volume * 0.5)
+
+/reagent/nutrition/capsaicin/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+	owner.pain_regen_buffer += -starting_volume
+	owner.send_pain(starting_volume)
