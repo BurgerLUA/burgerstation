@@ -16,7 +16,7 @@
 
 	var/has_gibs = TRUE
 
-	value = 500
+	value = 1500
 
 	weight = 10
 

@@ -148,9 +148,10 @@
 	name = "biobag"
 	desc_extended = "A giant green'ish bag that is designed to hold all your biological stuff. And food. Actually just food. Holds up to 50 objects."
 	icon_state = "biology"
+	dynamic_inventory_type = /obj/hud/inventory/dynamic/bio
 
 	dynamic_inventory_count = 5
-	container_max_size = SIZE_4
+	container_max_size = SIZE_1
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/container/food

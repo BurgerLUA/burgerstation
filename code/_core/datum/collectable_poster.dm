@@ -37,6 +37,18 @@
 	icon_state = "Stalkeros#1016_1"
 	desc_extended = "A poster featuring an enlarged old photo depicting a Syndicate Operative and a Russian Operative side by side against the forces of Capitalism."
 
+/collectable_poster/ghillied_up
+	name = "Ghillied Up - Stalkeros#1016"
+	desc = "Check your corners!"
+	icon_state = "Stalkeros#1016_2"
+	desc_extended = "A poster featuring a badly-made photo featuring Space Russian infiltrator wearing SKAT-9M patterned ghillie suit and peering through binoculars in the viewer's direction. The word 'CKAT9' is written below. A bunch of informational bubbles stick out of certain areas of the suit, giving you detailed information regarding its composition."
+
+/collectable_poster/electromagnetic_powers
+	name = "Electromagnetic Powers - Stalkeros#1016"
+	desc = "Quarter the size for double the power."
+	icon_state = "Stalkeros#1016_3"
+	desc_extended = "A poster featuring techical information regarding Gauss weaponry, more specifically Gauss sniper rifle. Too bad that it's all in russian. A 'Space Russian Research Institute; Electomagnetism, Nuclear Physics, Gravikinetics Division' logo can be seen stamped on the back of it."
+
 /collectable_poster/see_new
 	name = "See New Worlds - Ghost"
 	desc = "Explore the stars!"

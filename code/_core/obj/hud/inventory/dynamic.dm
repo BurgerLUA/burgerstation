@@ -78,3 +78,36 @@
 			assoc_slot.store_object(I) //Also calls clear_object()
 		else
 			assoc_slot.clear_object()
+
+/obj/hud/inventory/dynamic/bio //Special logic for bio bag
+
+/obj/hud/inventory/dynamic/bio/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
+
+	if(src.loc && istype(src.loc.loc,/obj/hud/inventory/dynamic/sandwich/)) //Our sandwich is in the biobag. Do not accept items.
+		//No message needed.
+		return FALSE
+
+	if(istype(I,/obj/item/container/food/sandwich/))
+		var/obj/item/container/food/sandwich/S = I
+		for(var/obj/hud/inventory/I2 in S.inventories)
+			if(length(I2.contents))
+				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside the bag! That's complete minmaxing!"))
+				return FALSE
+		if(loc && loc == I)
+			return FALSE
+
+		if(max_slots <= 0)
+			return FALSE
+
+		if(is_occupied(TRUE,TRUE))
+			if(messages && src.loc)
+				owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
+			return FALSE
+
+		if(length(contents) >= max_slots)
+			if(messages) owner.to_chat(span("warning","You don't see how you can fit any more objects inside \the [src.loc.name]!"))
+			return FALSE
+
+		return TRUE
+
+	. = ..()
