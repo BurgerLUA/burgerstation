@@ -62,3 +62,7 @@
 /obj/item/material/ingot/aluminium
 	material_id = /material/aluminium
 	crafting_id = "ingot_aluminium"
+
+/obj/item/material/ingot/nickel
+	material_id = /material/nickel
+	crafting_id = "ingot_nickel"
