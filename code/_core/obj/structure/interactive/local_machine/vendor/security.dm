@@ -108,7 +108,10 @@
 		/obj/item/weapon/ranged/energy/freezegun,
 
 		/obj/item/deployable/mob/sentry,
-		/obj/item/deployable/mountable/browning
+		/obj/item/deployable/mountable/browning,
+
+		/obj/item/tempering/magazine/bluespace,
+		/obj/item/tempering/magazine/refiller
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/dip
