@@ -1,0 +1,119 @@
+"a" = (/turf/simulated/wall/dark,/area/dmm_suite/clear_area)
+"b" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"e" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/interactive/door/airlock/syndicate,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"g" = (/obj/structure/smooth/table/reinforced/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"h" = (/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"i" = (/obj/structure/interactive/door/airlock/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"j" = (/obj/structure/smooth/table/reinforced/dark,/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"k" = (/turf/simulated/floor/tile/dark/er,/area/dmm_suite/clear_area)
+"l" = (/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"n" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"o" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"p" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"q" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"r" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"s" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"t" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"u" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/misc/computer1,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"v" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/misc/computer4,/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"w" = (/mob/living/advanced/npc/syndicate/double{icon_state = "directional"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"x" = (/obj/structure/interactive/chair,/mob/living/advanced/npc/syndicate/triple,/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"y" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/mob/living/advanced/npc/syndicate/quadruple{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"z" = (/mob/living/advanced/npc/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"A" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"B" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"C" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 1},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"D" = (/mob/living/advanced/npc/syndicate/scientist,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"E" = (/mob/living/advanced/npc/syndicate/scientist{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"F" = (/mob/living/advanced/npc/syndicate/scientist{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"G" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/mob/living/advanced/npc/syndicate/scientist{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"H" = (/mob/living/advanced/npc/syndicate/scientist,/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"I" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/mob/living/advanced/npc/syndicate/scientist{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"J" = (/mob/living/advanced/npc/syndicate/scientist{icon_state = "directional"; dir = 1},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"K" = (/mob/living/advanced/npc/syndicate/scientist{icon_state = "directional"; dir = 1},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"L" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/mob/living/advanced/npc/syndicate/double{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/dark,/area/dmm_suite/clear_area)
+"M" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"N" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"O" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"P" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"Q" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"R" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"S" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"T" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"U" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"V" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"W" = (/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"X" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"Y" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+"Z" = (/obj/structure/interactive/potted_plant/office,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbb
+bbbbbbbbbbbbbbbbbbbadddddddddddddddddddddddddddddddddddddabbbbbb
+bbbbbbbbbbbbbbbbbbbadddddddddddddddddaafaaaaaafaaaaaaaaadabbbbbb
+bbbbbbbbbbbbbbbbbbbadddddddddddddddddaghhoggaphZagVghhpadabbbbbb
+bbbbbbbbbbbbbbbbbbbaddddddddddaaaaaadagFccchazchegGccchfdabbbbbb
+bbbbbbbbbbbbbbbbbbbadaaaaaaafaagqDhadaOncccRahchegccccRadabbbbbb
+bbbbbbbbbbbbbbbbbbbadagggVgzhpaOcchfdagcccchihchegcccchadabbbbbb
+bbbbbbbbbbbbbbbbbbbadaprccccchagcchadagAhhhpahchegcccchadabbbbbb
+bbbbbbbbbbbbbbbbbbbadaNccccccRagcchadaaaaaaaaNchegcccchadabbbbbb
+bbbbbbbbbbbbbbbbbbbadahcjjjcchagcchadagggVggahchegFccchadabbbbbb
+bbbbbbbbbbbbbbbbbbbadahcjcjcchaOccRadfhcHcchehchegccccEadabbbbbb
+bbbbbbbbbbbbbbbbbbbadahcjcjncEaghhpadahcccchehchegccccgadabbbbbb
+bbbbbbbbbbbbbbbbbbbadahcjcjGchaaaaaafaNcccchehchegccccgadabbbbbb
+bbbbbbbbbbbbbbbbbbbadahcjjjcchaggggzhahccccTaNchaNccccUadabbbbbb
+bbbbbbbbbbbbbbbbbbbadapcccccchaOrcccRagcscchihchihcccsgadaabbbbb
+bbbbbbbbbbbbbbbbbbbadaOccccccRagcccchaggggggahchaphhgggaddabbbbb
+bbbbbbbbbbMMMMMMMbbadagsccccchagcccchaaaaaaaahchaaaaaaaaadabbbbb
+bbbbbbbbMMMMaaaaaabadaggggghhpagFccchaphhhDhahchagggggggadabbbbb
+bbbbbbMMMMMMaphhpabafaaeeeeaiaagcccchaAcccchihchegcccrchfdabbbbb
+bbbbMMMMMMMMaNxchabahhhDhhhWhtaOccccRaPcccchahchehccccchadabbbbb
+MMMMMMMMddSaagjjgaaaNccccccccQagghhhpaggggYgahchehcccccBadabbbbb
+MMMMMMMMddwaphcchWpapckkkkkkcyaeeeaiaaaaaaaaahcRaNcccccRadabbbbb
+MMMMMMMMdddihccccchihckllllkchhhhhhhWhhhhhhhhhchihcsccchadabbbbb
+MMMMMMMMdddihccccchihcklkkkkcccccccccccccccccccBagggghhpadabbbbb
+MMMMMMMMddSaNcccccRahckllllkchhXhhhhhhhhhhhXhhhhaaaaaaiaadabbbbb
+MMMMMMMMdddihccccchihckkkklkchaaeeeeeeeeeeeaiaafagggDhhtadabbbbb
+MMMMMMMMdddihccccchihckllllkcEagAhhhhhhhhhhhhhadaOnccccRadabbbbb
+MMMMMMMMddwaphcchhpapckkkkkkchaOcccccccccccccRadagcccccEadabbbbb
+MMMMMMMMddSaauvjgaaaPccccccccRagcmjjjGccmjjjnhadagccccchadabbbbb
+bbMMMMMMMMMMaNcLhabaohhhhhhhhpagcIjjjnccmjjjnhadagccccchadabbbbb
+bbbbMMMMMMMMaphhpabaaaeeeeeaiaaOcccccccccccccRadaOccccchfdabbbbb
+bbbbbMMMMMMMaaaaaabbaggggggDhhagphXhhhhhhXhChpadagggJhXpadabbbbb
+bbbbbbMMMMMMMMMMMbbbahcnccccchaaaaaaaaaaaaaafaadaaaaaaaaadabbbbb
+bbbbbbbbMMMMMMMMbbbbaNccccccchfdddddddddddddddddddddddddddabbbbb
+bbbbbbbbbbMMMMMbbbbbaEcccccccRaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb
+bbbbbbbbbbbbMMbbbbbbahcccccKctabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbagggggggggabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+"}
