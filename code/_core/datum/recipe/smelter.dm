@@ -79,3 +79,9 @@
 	desc = "alloy steel and phoron into plasteel sheets."
 	required_items = list("ingot_steel","ingot_phoron")
 	product = /obj/item/material/ingot/plasteel
+
+/recipe/smelter/aluminium
+	name = "smelt aluminium"
+	desc = "smelt aluminium into aluminium ingots."
+	required_items = list("ore_aluminium")
+	product = /obj/item/material/ingot/aluminium
