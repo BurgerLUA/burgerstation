@@ -49,14 +49,16 @@
 
 /mob/living/advanced/npc/syndicate/double
 
-
 /mob/living/advanced/npc/syndicate/triple
 
-
 /mob/living/advanced/npc/syndicate/quadruple
-
-
 
 /mob/living/advanced/npc/syndicate/stress_test
 	name = "stress test"
 	ai = /ai/advanced/syndicate/stress_test
+
+/mob/living/advanced/npc/syndicate/scientist
+	name = "syndicate scientist"
+
+	possible_outfits = list(/loadout/syndicate/scientist)
+	loadout_to_level = list(/loadout/syndicate/scientist=1)
