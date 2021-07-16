@@ -284,22 +284,21 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "bd" = (
-/turf/simulated/floor/plating,
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "be" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bf" = (
 /obj/decal/hazard/corner,
 /turf/simulated/floor/plating,
 /area/dungeon/z_01)
 "bg" = (
-/obj/structure/interactive/disposals/pipe/labeler{
-	sorting_tab_label = "cargo"
-	},
-/turf/simulated/floor/plating,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bh" = (
 /turf/simulated/wall/metal/reinforced,
@@ -309,7 +308,7 @@
 	dir = 4;
 	icon_state = "conveyor"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bj" = (
 /obj/structure/interactive/limiter{
@@ -334,7 +333,7 @@
 	dir = 4;
 	icon_state = "conveyor"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bn" = (
 /obj/structure/interactive/stacker,
@@ -342,16 +341,14 @@
 	dir = 4;
 	icon_state = "conveyor"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bo" = (
-/obj/structure/interactive/disposals/pipe/ending{
+/obj/decal/hazard,
+/obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
-/obj/structure/interactive/disposals/machine/inlet{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bp" = (
 /turf/simulated/wall/metal/reinforced,
@@ -388,16 +385,17 @@
 /turf/simulated/wall/shuttle,
 /area/transit/cargo_inbound/ship)
 "bw" = (
-/obj/structure/interactive/disposals/pipe/junction/flipped{
-	dir = 1
+/obj/structure/interactive/disposals/pipe/labeler{
+	sorting_tab_label = "cargo"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "bx" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 9
+/obj/structure/interactive/disposals/pipe/ending{
+	dir = 1
 	},
-/turf/simulated/floor/plating,
+/obj/structure/interactive/disposals/machine/chute,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "by" = (
 /obj/structure/interactive/door/airlock/station/engineering/glass,
@@ -701,7 +699,7 @@
 /area/burgerstation/armory)
 "cE" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/mining)
 "cF" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
@@ -2282,6 +2280,9 @@
 /obj/decal/hazard{
 	dir = 1
 	},
+/obj/structure/smooth/table,
+/obj/item/storage/bags,
+/obj/structure/interactive/shop,
 /turf/simulated/floor/tile/morphing/brown,
 /area/burgerstation/mining)
 "il" = (
@@ -4242,6 +4243,9 @@
 	dir = 4;
 	icon_state = "pad"
 	},
+/obj/structure/interactive/ore_storage{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/burgerstation/mining)
 "pC" = (
@@ -5913,6 +5917,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"xv" = (
+/obj/decal/hazard,
+/turf/simulated/floor/tile/overlapping/dark,
+/area/burgerstation/mining)
 "xw" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
@@ -6708,6 +6716,10 @@
 /obj/structure/interactive/atmospherics/scrubber,
 /turf/simulated/floor/carpet,
 /area/burgerstation/maint/north)
+"Er" = (
+/obj/structure/interactive/ore_box,
+/turf/simulated/floor/tile/morphing/brown,
+/area/burgerstation/mining)
 "ES" = (
 /obj/structure/interactive/fire_alarm{
 	dir = 1
@@ -36273,14 +36285,14 @@ eU
 eU
 eU
 bI
-bd
+uw
 bi
 bi
-bd
-bd
-bd
-bd
-bd
+uw
+uw
+bo
+Er
+Er
 fF
 au
 au
@@ -36533,11 +36545,11 @@ qy
 bd
 bm
 bm
-bd
-bd
-bd
-bd
-bd
+uw
+uw
+xv
+Er
+Er
 fF
 ex
 gf
@@ -36787,7 +36799,7 @@ qu
 qu
 eU
 bI
-bd
+uw
 bi
 bi
 fF
@@ -37044,7 +37056,7 @@ qY
 qt
 eU
 qy
-bd
+uw
 bn
 bn
 fF
@@ -37301,7 +37313,7 @@ qX
 bI
 qm
 bI
-bd
+uw
 bi
 bi
 fF
@@ -37559,8 +37571,8 @@ me
 tN
 fF
 bd
-bo
-bo
+uw
+uw
 fF
 ha
 uw
