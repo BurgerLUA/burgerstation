@@ -121,7 +121,10 @@
 		/material/silver = 30,
 		/material/diamond = 5,
 		/material/uranium = 30,
-		/material/titanium = 20
+		/material/titanium = 20,
+		/material/zinc = 25,
+		/material/magnesium = 25,
+		/material/aluminium = 25
 	)
 
 	var/material_to_choose = pickweight(possible_materials)

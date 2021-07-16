@@ -15,4 +15,4 @@
 	material_multiplier = 1
 
 /obj/item/material/wood/normal
-	material = /material/wood
+	material_id = /material/wood
