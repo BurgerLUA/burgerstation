@@ -10,7 +10,8 @@
 		/obj/item/container/beaker/large,
 		/obj/item/clothing/head/helmet/full/paperbag,
 		/obj/item/supply_remote/barbecue,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
+		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water,
+		/obj/item/storage/bags/bio
 	)
 
 /obj/structure/interactive/vending/chef/wardrobe
