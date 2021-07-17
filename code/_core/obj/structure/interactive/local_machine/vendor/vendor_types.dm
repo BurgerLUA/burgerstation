@@ -582,7 +582,6 @@
 		/obj/item/ball/soccer,
 		/obj/item/dice/d6,
 		/obj/item/dice/d20,
-		/obj/item/coin/antag_token,
 		/obj/item/clothing/mask/gas/mime,
 		/obj/item/clothing/uniform/clown,
 		/obj/item/clothing/uniform/clown/blue,
