@@ -41,12 +41,6 @@
 	if(damage)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 		no_queue = TRUE
-		for(var/k in list(NORTH,EAST,SOUTH,WEST))
-			var/turf/T = get_step(src,k)
-			for(var/obj/structure/smooth/window/W in T.contents)
-				if(W.qdeleting || W.no_queue)
-					continue
-				on_destruction(caller,TRUE)
 	qdel(src)
 
 /obj/structure/smooth/window/Destroy()
