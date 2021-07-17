@@ -89,7 +89,7 @@
 /obj/item/disk/rcd/orestorage
 	name = "rcd data disk (ore storage)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
-	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Air Diverter."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for an ore silo."
 	data = list(
 		"name" = "ore_storage.obj",
 		"effect" = /obj/effect/temp/sparkles,
@@ -100,7 +100,7 @@
 /obj/item/disk/rcd/oresmelter
 	name = "rcd data disk (smelter)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
-	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Air Diverter."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a smelter."
 	data = list(
 		"name" = "smelter.obj",
 		"effect" = /obj/effect/temp/sparkles,
@@ -111,7 +111,7 @@
 /obj/item/disk/rcd/stacker
 	name = "rcd data disk (stacker)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
-	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Air Diverter."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a stacker."
 	data = list(
 		"name" = "stacker.obj",
 		"effect" = /obj/effect/temp/sparkles,
