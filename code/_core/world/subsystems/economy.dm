@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(economy)
 	else
 		log_error("ERROR: No file found in [GOLD_CIRCULATION_DIR]!")
 
-	credits_per_gold = CEILING(gold_in_circulation/100000,1)
+	credits_per_gold = CEILING(1000000/gold_in_circulation,1)
 
 	. = ..()
 
