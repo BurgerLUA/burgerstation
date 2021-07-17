@@ -14,7 +14,7 @@
 
 	var/potency = 20
 	var/yield = 1
-	var/growth_speed = 5
+	var/growth_speed = 0.5
 
 	var/delete_after_harvest = TRUE
 
@@ -46,7 +46,7 @@
 	. += growth_min
 	. += max(0,100-growth_max)*0.25
 	. += max(0,200-growth_produce_max)*0.25
-	
+
 /obj/item/seed/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 
@@ -64,7 +64,7 @@
 
 	SAVEVAR("delete_after_harvest")
 
-	
+
 /obj/item/seed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 
@@ -82,7 +82,7 @@
 
 	LOADVAR("delete_after_harvest")
 
-	
+
 /obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(isturf(object))
