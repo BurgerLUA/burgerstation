@@ -31,11 +31,15 @@
 
 /obj/item/contract/Generate()
 	. = ..()
-	reward = new reward
-	INITIALIZE(reward)
-	GENERATE(reward)
-	FINALIZE(reward)
-	amount_current = 0
+	if(!reward)
+		CRASH_SAFE("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
+		qdel(src)
+	else
+		reward = new reward
+		INITIALIZE(reward)
+		GENERATE(reward)
+		FINALIZE(reward)
+		amount_current = 0
 
 /obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
 

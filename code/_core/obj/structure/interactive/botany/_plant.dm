@@ -38,7 +38,6 @@
 /obj/structure/interactive/plant/proc/on_life()
 
 	var/real_growth_speed = growth_speed*TICKS_TO_SECONDS(SSbotany.tick_rate)
-
 	growth += FLOOR(real_growth_speed * (rand(75,125)/100), 1)
 	update_sprite()
 	return TRUE

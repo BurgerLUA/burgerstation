@@ -149,5 +149,5 @@
 	desc = "Farming. "
 	desc_extended = "Your skill in growing and harvesting plants. Affects harvested plant yield and potency."
 	experience_power = 1.8
-	experience_multiplier = 4.1
+	experience_multiplier = 8.2
 	counts_towards_level = FALSE

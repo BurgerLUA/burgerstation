@@ -30,6 +30,8 @@
 
 	uses_until_condition_fall = 50 // ~5000 rounds.
 
+	use_iff_tag = TRUE
+
 /* Price calculation is hard.
 /obj/item/weapon/ranged/bullet/get_damage_price()
 

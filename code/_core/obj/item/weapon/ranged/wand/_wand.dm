@@ -14,6 +14,8 @@
 
 	dan_mode = TRUE
 
+	use_loyalty_tag = TRUE
+
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = ..()
 	. *= wand_damage_multiplier**2

@@ -14,6 +14,8 @@
 
 	automatic = TRUE
 
+	use_loyalty_tag = TRUE
+
 /obj/item/weapon/ranged/spellgem/get_owner()
 
 	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
