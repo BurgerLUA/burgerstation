@@ -13,6 +13,8 @@
 
 	value = 50000
 
+	value_burgerbux = 1
+
 /obj/item/tempering/magazine/bluespace/can_temper(var/mob/caller,var/obj/item/magazine/I)
 	if (!is_magazine(I))
 		return FALSE
@@ -25,7 +27,7 @@
 
 /obj/item/tempering/magazine/bluespace/on_temper(var/mob/caller,var/obj/item/magazine/I)
 	I.bluespaced = TRUE
-	I.bullet_count_max *= 10
+	I.bullet_count_max *= 4
 	return ..()
 
 /obj/item/tempering/magazine/refiller
@@ -37,6 +39,8 @@
 	temper_whitelist = /obj/item/magazine
 
 	value = 50000
+
+	value_burgerbux = 1
 
 /obj/item/tempering/magazine/refiller/can_temper(var/mob/caller,var/obj/item/magazine/I)
 	if (!is_magazine(I))

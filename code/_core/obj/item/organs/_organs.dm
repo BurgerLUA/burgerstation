@@ -307,8 +307,10 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 			damage_desc += "sore"
 		if(25 to 50)
 			damage_desc += "<b>stinging</b>"
-		if(50 to INFINITY)
+		if(50 to 99)
 			damage_desc += "<u><b>hurting</b></u>"
+		if(100 to INFINITY)
+			damage_desc += "<u><b>numb from the pain</b></u>"
 
 	switch(health.damage[RAD])
 		if(15 to 25)

@@ -613,7 +613,7 @@
 
 /obj/marker/generation/mob/legion
 	object_to_place = /mob/living/simple/legionare
-	objects_max = 2
+	objects_max = 1
 
 /obj/marker/generation/mob/ash_walker
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter

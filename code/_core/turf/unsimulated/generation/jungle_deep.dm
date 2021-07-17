@@ -57,7 +57,7 @@
 				new /obj/marker/generation/jungle_high_grass/small(src)
 			if(prob(1))
 				new /obj/marker/generation/jungle_light_stick(src)
-			else if(prob(1))
+			else if(prob(0.25))
 				new /obj/marker/generation/mob/arachnid(src)
 			else if(prob(1))
 				new /obj/marker/generation/jungle_high_grass/small(src)
