@@ -581,7 +581,15 @@
 		/obj/item/bikehorn,
 		/obj/item/ball/soccer,
 		/obj/item/dice/d6,
-		/obj/item/dice/d20
+		/obj/item/dice/d20,
+		/obj/item/coin/antag_token,
+		/obj/item/clothing/mask/gas/mime,
+		/obj/item/clothing/uniform/clown,
+		/obj/item/clothing/uniform/clown/blue,
+		/obj/item/clothing/uniform/clown/green,
+		/obj/item/clothing/uniform/clown/yellow,
+		/obj/item/broom/magic,
+		/obj/item/grenade/timed/lube_smoke
 	)
 
 	ignore_economy = TRUE
