@@ -13,6 +13,8 @@
 	heat_per_shot_mod = 0.75
 	view_punch_mod = 0.25
 
+	use_iff_tag = TRUE
+
 /obj/item/weapon/ranged/energy/get_value()
 	. = ..()
 	if(battery) . += battery.get_value()

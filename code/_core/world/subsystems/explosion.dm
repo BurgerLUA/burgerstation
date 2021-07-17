@@ -13,18 +13,19 @@ SUBSYSTEM_DEF(explosion)
 
 	var/explosion_ticks = 0
 
-/subsystem/explosion/proc/add_data(target,owner,source,epicenter,magnitude,loyalty_tag)
-	if(!damage_to_process[target])
-		damage_to_process[target] = list()
+/subsystem/explosion/proc/add_data(location,owner,source,epicenter,magnitude,loyalty_tag)
 
-	if(damage_to_process[target][owner])
-		damage_to_process[target][owner]["magnitude"] += magnitude
+	if(!damage_to_process[location])
+		damage_to_process[location] = list()
+
+	if(damage_to_process[location][owner])
+		damage_to_process[location][owner]["magnitude"] += magnitude
 	else
-		damage_to_process[target][owner] = list()
-		damage_to_process[target][owner]["source"] = source
-		damage_to_process[target][owner]["epicenter"] = epicenter
-		damage_to_process[target][owner]["magnitude"] = magnitude
-		damage_to_process[target][owner]["loyalty_tag"] = loyalty_tag
+		damage_to_process[location][owner] = list()
+		damage_to_process[location][owner]["source"] = source
+		damage_to_process[location][owner]["epicenter"] = epicenter
+		damage_to_process[location][owner]["magnitude"] = magnitude
+		damage_to_process[location][owner]["loyalty_tag"] = loyalty_tag
 
 /subsystem/explosion/on_life()
 

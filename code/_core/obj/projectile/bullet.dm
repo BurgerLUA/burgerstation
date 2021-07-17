@@ -47,7 +47,7 @@
 
 /obj/projectile/bullet/syringe/on_projectile_hit(var/atom/hit_atom)
 
-	if(. && is_living(hit_atom))
+	if(is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(L.iff_tag == iff_tag)
 			if(L.reagents)
@@ -64,7 +64,7 @@
 /obj/projectile/bullet/HE_40M/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),20,owner,weapon,loyalty_tag)
+		explode(get_turf(hit_atom),20,owner,weapon,iff_tag)
 
 
 /obj/projectile/bullet/gyrojet
@@ -75,7 +75,8 @@
 /obj/projectile/bullet/gyrojet/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),10,owner,weapon,loyalty_tag)
+		world.log << "on_projectile_hit: [iff_tag]"
+		explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
 
 
 /obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
@@ -110,5 +111,5 @@
 	. = ..()
 
 	if(.)
-		explode(get_turf(hit_atom),20,owner,src,loyalty_tag)
+		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
