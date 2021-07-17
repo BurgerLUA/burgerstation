@@ -133,7 +133,7 @@
 	value -= min(0,damage[loss_type] + value)
 	damage[loss_type] += value
 	if(max_damage[loss_type])
-		damage[loss_type] = max(damage[loss_type],max_damage[loss_type])
+		damage[loss_type] = min(damage[loss_type],max_damage[loss_type])
 	return value
 
 /health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
