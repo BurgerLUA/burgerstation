@@ -2280,9 +2280,6 @@
 /obj/decal/hazard{
 	dir = 1
 	},
-/obj/structure/smooth/table,
-/obj/item/storage/bags,
-/obj/structure/interactive/shop,
 /turf/simulated/floor/tile/morphing/brown,
 /area/burgerstation/mining)
 "il" = (
