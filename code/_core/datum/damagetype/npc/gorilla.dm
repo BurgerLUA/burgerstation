@@ -34,8 +34,6 @@
 		SKILL_UNARMED = BLUNT
 	)
 
-	allow_friendly_fire = FALSE
-
 	attack_delay = 14*0.5
 	attack_delay_max = 14
 
