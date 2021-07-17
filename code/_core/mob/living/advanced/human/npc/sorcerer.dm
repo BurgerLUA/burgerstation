@@ -12,6 +12,8 @@
 		/loadout/sorcerer = 1
 	)
 
+	level = 20
+
 /mob/living/advanced/npc/sorcerer/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)

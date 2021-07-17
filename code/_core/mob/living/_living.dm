@@ -417,7 +417,7 @@
 
 	blood_volume_max = blood_volume
 
-	if(desired_level_multiplier)
+	if(desired_level_multiplier > 0)
 		level *= desired_level_multiplier
 
 	attributes = list()

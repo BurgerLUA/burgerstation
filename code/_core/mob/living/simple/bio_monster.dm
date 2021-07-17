@@ -45,6 +45,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 7
+
 /mob/living/simple/bio_monster/post_death()
 	. = ..()
 	icon_state = "dead"

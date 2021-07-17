@@ -71,6 +71,8 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
+	level = 20
+
 /mob/living/simple/goblin_king/post_death()
 	. = ..()
 	icon_state = "dead"

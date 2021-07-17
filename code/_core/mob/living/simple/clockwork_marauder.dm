@@ -25,6 +25,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 12
+
 /mob/living/simple/clockwork_marauder/post_death()
 	. = ..()
 	icon_state = "dead"

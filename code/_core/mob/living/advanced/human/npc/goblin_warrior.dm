@@ -18,6 +18,8 @@
 
 	blood_type = /reagent/blood/goblin
 
+	level = 1
+
 /mob/living/advanced/npc/goblin/Initialize()
 
 	. = ..()
@@ -38,9 +40,13 @@
 	stamina_base = 200
 	mana_base = 100
 
+	level = 4
+
 /mob/living/advanced/npc/goblin/mage
 	name = "goblin mage"
 	loadout_to_use = /loadout/goblin/mage
 	health_base = 200
 	stamina_base = 100
 	mana_base = 300
+
+	level = 6

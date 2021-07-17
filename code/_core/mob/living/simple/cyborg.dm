@@ -65,6 +65,8 @@
 		FIRE = TRUE
 	)
 
+	level = 18
+
 /mob/living/simple/silicon/squats/post_death()
 	. = ..()
 	icon_state = "squats-dead"
@@ -111,6 +113,8 @@
 	loyalty_tag = "Syndicate"
 
 	damage_type = /damagetype/squats/
+
+	level = 12
 
 /mob/living/simple/silicon/syndieborg/proc/shoot_gun(var/atom/desired_target)
 	shoot_projectile(

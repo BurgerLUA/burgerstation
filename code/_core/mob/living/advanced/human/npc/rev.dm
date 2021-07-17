@@ -26,6 +26,8 @@
 
 	var/map_spawn = FALSE
 
+	level = 16
+
 /mob/living/advanced/npc/rev/Initialize()
 
 	var/loadout_to_use = pickweight(possible_outfits)

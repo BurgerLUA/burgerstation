@@ -169,6 +169,8 @@
 
 	health_base = 100
 
+	level = 5
+
 
 
 /mob/living/simple/bot/medibot/rogue

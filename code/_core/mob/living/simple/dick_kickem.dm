@@ -53,3 +53,5 @@
 	blood_type = /reagent/blood/human/a_positive
 
 	soul_size = SOUL_SIZE_UNCOMMON
+
+	level = 40

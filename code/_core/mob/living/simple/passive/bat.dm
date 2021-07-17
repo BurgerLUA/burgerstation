@@ -23,6 +23,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 2
+
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"

@@ -49,6 +49,8 @@
 
 	soul_size = SOUL_SIZE_RARE
 
+	level = 18
+
 
 /mob/living/simple/hierophant/proc/chain_blast_random()
 

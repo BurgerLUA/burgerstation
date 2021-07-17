@@ -44,6 +44,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/watcher/post_death()
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -85,6 +87,8 @@
 		ION = 0,
 		PAIN = INFINITY
 	)
+
+	level = 8
 
 /mob/living/simple/watcher/clockwork/post_death()
 	. = ..()

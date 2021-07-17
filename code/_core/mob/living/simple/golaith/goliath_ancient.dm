@@ -40,3 +40,5 @@
 	)
 
 	soul_size = SOUL_SIZE_UNCOMMON
+
+	level = 20
