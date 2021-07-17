@@ -96,12 +96,6 @@
 		if(move_direction & WEST)
 			animation_offset_x += 32
 
-		//Harvester's botany skill increases the harvested results based on their skill power.
-		//Each point in skill power add .2 potency and .1 yield.
-		var/skillPower = caller.get_skill_power(SKILL_BOTANY)
-		potency = potency + (potency * skillPower * 2)
-		yield += yield * skillPower
-
 		for(var/i=1,i<=yield,i++)
 			var/obj/item/container/food/plant/P = new(caller_turf)
 			P.pixel_x = animation_offset_x
@@ -132,8 +126,6 @@
 	if(delete_after_harvest)
 		qdel(src)
 	else
-		potency = potency > initial(potency) ? initial(potency) : potency
-		yield = yield > initial(yield) ? initial(yield)  : yield
 		growth = growth_max
 		update_sprite()
 
