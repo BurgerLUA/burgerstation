@@ -7,6 +7,10 @@
 
 	var/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/stored_extinguisher
 
+/obj/structure/interactive/fire_closet/Destroy()
+	QDEL_NULL(stored_extinguisher)
+	. = ..()
+
 /obj/structure/interactive/fire_closet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	//Putting the object back in is handled in the weapon itself.

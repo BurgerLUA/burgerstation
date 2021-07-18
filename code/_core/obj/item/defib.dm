@@ -18,6 +18,11 @@
 
 	weight = 8
 
+/obj/item/defib/Destroy()
+	QDEL_NULL(paddle_left)
+	QDEL_NULL(paddle_right)
+	. = ..()
+
 /obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
@@ -135,6 +140,10 @@
 	weight = 2
 
 	should_save = FALSE
+
+/obj/item/defib_paddle/Destroy()
+	linked_defib = null
+	. = ..()
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

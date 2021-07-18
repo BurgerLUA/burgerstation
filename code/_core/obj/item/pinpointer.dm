@@ -14,6 +14,10 @@
 
 	weight = 2
 
+/obj/item/pinpointer/Destroy()
+	tracked_atom = null
+	. = ..()
+
 /obj/item/pinpointer/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -60,10 +64,6 @@
 	if(!length(underlays))
 		var/image/I = new/image(initial(icon),initial(icon_state))
 		underlays += I
-
-/obj/item/pinpointer/Destroy()
-	tracked_atom = null
-	return ..()
 
 /obj/item/pinpointer/update_icon()
 

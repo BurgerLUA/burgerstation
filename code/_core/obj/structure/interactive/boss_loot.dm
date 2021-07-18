@@ -27,6 +27,9 @@ var/global/list/wishgranter_speak_lines = list(
 	var/die_time = 0
 	var/next_speak = 0
 
+/obj/structure/interactive/boss_loot/Destroy()
+	allowed_users.Cut()
+	return ..()
 
 /obj/structure/interactive/boss_loot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -58,10 +61,6 @@ var/global/list/wishgranter_speak_lines = list(
 		allowed_users -= caller
 		return TRUE
 
-	return ..()
-
-/obj/structure/interactive/boss_loot/Destroy()
-	allowed_users.Cut()
 	return ..()
 
 /obj/structure/interactive/boss_loot/proc/clear_self()

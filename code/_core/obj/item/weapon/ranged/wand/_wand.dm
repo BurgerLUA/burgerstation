@@ -16,6 +16,10 @@
 
 	use_loyalty_tag = TRUE
 
+/obj/item/weapon/ranged/wand/Destroy()
+	QDEL_NULL(socketed_spellgem)
+	. = ..()
+
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = ..()
 	. *= wand_damage_multiplier**2

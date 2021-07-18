@@ -68,6 +68,14 @@
 	var/list/firemodes = list(
 	)
 
+/obj/item/weapon/ranged/Destroy()
+	QDEL_NULL(attachment_stock)
+	QDEL_NULL(attachment_undermount)
+	QDEL_NULL(attachment_sight)
+	QDEL_NULL(attachment_barrel)
+	QDEL_NULL(firing_pin)
+	. = ..()
+
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
 	if(!length(firemodes))
 		return FALSE

@@ -16,6 +16,11 @@
 
 	weight = 6
 
+/obj/item/cell_charger/Destroy()
+	QDEL_NULL(battery)
+	charging_device = null
+	. = ..()
+
 /obj/item/cell_charger/get_battery()
 	return battery
 
