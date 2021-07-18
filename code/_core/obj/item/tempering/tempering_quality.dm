@@ -73,10 +73,10 @@
 /obj/item/tempering/quality/magic
 	name = "magician's gem"
 	desc = "Stay on top of things."
-	desc_extended = "A fragile, yet magical gem that improves the quality of magicical tomes or staves by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
+	desc_extended = "A fragile, yet magical gem that improves the quality of spellgems by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
 	icon_state = "quality_magic"
 
-	temper_whitelist = /obj/item/weapon/ranged/magic
+	temper_whitelist = /obj/item/weapon/ranged/spellgem
 
 	value = 500
 
