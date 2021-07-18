@@ -26,6 +26,12 @@
 	if(cqc_length < combo_length)
 		return FALSE
 
+	if(!DT.allow_friendly_fire && is_living(victim))
+		var/mob/living/L = victim
+		if(L.loyalty_tag == attacker.loyalty_tag)
+			return FALSE
+
+
 	if(cqc_length == combo_length)
 		return combo == cqc_string
 

@@ -126,6 +126,8 @@
 
 	draw_blood = FALSE
 
+	allow_friendly_fire = TRUE
+
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(victim))
@@ -189,6 +191,8 @@
 	attack_delay_max = 10
 
 	draw_blood = FALSE
+
+	allow_friendly_fire = TRUE
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
