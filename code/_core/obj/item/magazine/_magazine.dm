@@ -97,7 +97,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
-			GENERATE(B)
+			//DO NOT PUT GENERATE HERE.
 			FINALIZE(B)
 			stored_bullets += B
 
