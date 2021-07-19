@@ -2,7 +2,7 @@
 	name = "slaughter claws"
 	rarity = RARITY_LEGENDARY //TO DO: ponder rarity
 	desc = "HELL IS EMPTY, BLOOD IS FUEL!"
-	desc_extended = "These fists are big! You've got to have big guts to wield these! Use Harm intent to rip your enemies a new one! Click on a turf on grab intent to bloodcrawl! Replenish your blood by Helping a corpse!"
+	desc_extended = "Use Harm intent to rip your enemies a new one! Click on a turf on grab intent to bloodcrawl! Replenish your blood by Helping a corpse!"
 
 	icon = 'icons/obj/item/weapons/unarmed/powerfist.dmi' //TO DO: beg for a sprite
 
