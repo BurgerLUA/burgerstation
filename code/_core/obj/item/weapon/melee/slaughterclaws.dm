@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/slaughterclaws
 	name = "slaughter claws"
-	rarity = RARITY_LEGENDARY
+	rarity = RARITY_LEGENDARY //TO DO: ponder rarity
 	desc = "HELL IS EMPTY, BLOOD IS FUEL!"
 	desc_extended = "These fists are big! You've got to have big guts to wield these! Use Harm intent to rip your enemies a new one! Click on a turf on grab intent to bloodcrawl! Replenish your blood by Helping a corpse!"
 
@@ -13,7 +13,7 @@
 	value = 5000
 	value_burgerbux = 1
 	var/next_teleport_command = 0
-	var/next_ranged_punch = 0
+	//var/next_ranged_punch = 0
 
 /obj/item/weapon/melee/slaughterclaws/click_on_object(var/mob/caller,var/atom/object,location,control,params) //pain
 	var/mob/living/self = caller //thank you based AdrienTheMan
