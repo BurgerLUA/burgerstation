@@ -36,30 +36,27 @@
 		next_teleport_command = world.time + SECONDS_TO_DECISECONDS(2)
 		return TRUE
 	if(self.intent == INTENT_DISARM)
-		blood_attack
+		if(next_blood_attack > world.time)
+			return FALSE
+
+			. = FALSE
+
+			for(var/mob/living/A in view(VIEW_RANGE,src))
+				if(A == src)
+					continue
+				if(A.dead)
+					continue
+				var/turf/simulated/T = get_turf(A)
+				if(!istype(T))
+					continue
+				if(T.blood_level == 0)
+					continue
+				new/obj/effect/temp/hazard/bubblefist(T,null,src)
+				. = TRUE
+
+			next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
+
+
+			return ..()
+
 	return TRUE
-
-/obj/item/weapon/melee/slaughterclaws/proc/blood_attack()
-
-	if(next_blood_attack > world.time)
-		return FALSE
-
-	. = FALSE
-
-	for(var/mob/living/A in view(VIEW_RANGE,src))
-		if(A == src)
-			continue
-		if(A.dead)
-			continue
-		var/turf/simulated/T = get_turf(A)
-		if(!istype(T))
-			continue
-		if(T.blood_level == 0)
-			continue
-		new/obj/effect/temp/hazard/bubblefist(T,null,src)
-		. = TRUE
-
-	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
-
-
-	return ..()
