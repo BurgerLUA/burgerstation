@@ -108,6 +108,8 @@
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots. Holds up to 60 ores and ingots."
 	icon_state = "mining"
 
+	value = 400
+
 	dynamic_inventory_count = 6
 	container_max_size = SIZE_3
 	container_max_slots = 10
@@ -125,7 +127,7 @@
 	container_max_size = SIZE_4
 	container_max_slots = 30
 
-	value = 100
+	value = 6000
 
 
 /obj/item/storage/bags/chemistry

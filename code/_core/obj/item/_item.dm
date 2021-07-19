@@ -165,6 +165,7 @@
 
 	if(inventory_user)
 		close_inventory(inventory_user)
+		inventory_user = null //Just in case
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k

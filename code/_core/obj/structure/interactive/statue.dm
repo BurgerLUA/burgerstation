@@ -18,6 +18,10 @@
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
+/obj/structure/interactive/statue/Destroy()
+	QDEL_NULL(stored_object)
+	. = ..()
+
 /obj/structure/interactive/statue/Finalize()
 	. = ..()
 	color = "#FFFFFF"

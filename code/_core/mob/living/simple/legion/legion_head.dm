@@ -11,7 +11,7 @@
 
 	var/mob/living/simple/legionare/parent_legion
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	health_base = 10
 	stamina_base = 50
@@ -42,6 +42,8 @@
 	)
 
 	soul_size = null
+
+	level = 2
 
 /mob/living/simple/legionare_head/death_message()
 	return FALSE

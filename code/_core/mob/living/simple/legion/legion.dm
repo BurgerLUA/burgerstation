@@ -15,7 +15,7 @@
 
 	value = 500
 
-	movement_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(10)
 
 	var/mob/living/advanced/stored_corpse = /mob/living/advanced/npc/nanotrasen/shaft_miner
 
@@ -51,6 +51,8 @@
 	)
 
 	soul_size = null
+
+	level = 4
 
 /mob/living/simple/legionare/Destroy()
 

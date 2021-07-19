@@ -33,18 +33,32 @@
 
 	value = 200
 
+/obj/item/fishing/rod/Destroy()
+	. = ..()
+	QDEL_NULL(lure)
+	QDEL_NULL(line)
+	QDEL_NULL(bait)
+
+	QDEL_NULL(fishing_bob)
+	QDEL_NULL(fishing_alert)
+
+	fishing_turf = null
+	last_caller = null
+
+
+
 /obj/item/fishing/rod/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("lure")
 	SAVEATOM("line")
 	SAVEATOM("bait")
-	
+
 /obj/item/fishing/rod/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("lure")
 	LOADATOM("line")
 	LOADATOM("bait")
-	
+
 /obj/item/fishing/rod/get_value()
 	. = ..()
 	if(line) . += line.get_value()
@@ -58,7 +72,7 @@
 		var/image/I = new/image('icons/obj/item/fishing/rod.dmi',"string")
 		I.color = L.color
 		add_overlay(I)
-	
+
 /obj/item/fishing/rod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(fishing_turf) //Don't do anything while fishing.
@@ -272,7 +286,7 @@
 	else . += span("notice","It has no lure.")
 	if(bait) . += span("notice","It has \the [bait.name] equipped.")
 	else . += span("notice","It has no bait.")
-	
+
 /obj/item/fishing/rod/telescopic
 	name = "telescopic fishing rod"
 	desc = "Bass pro certified!"
@@ -295,11 +309,11 @@
 /obj/item/fishing/rod/telescopic/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("compact")
-	
+
 /obj/item/fishing/rod/telescopic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("compact")
-	
+
 /obj/item/fishing/rod/telescopic/update_icon()
 
 	if(!compact)

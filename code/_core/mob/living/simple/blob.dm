@@ -48,6 +48,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 10
+
 /mob/living/simple/blobbernaught/New(loc,desired_client,desired_level_multiplier,var/obj/structure/interactive/blob/node/desired_node)
 
 	if(desired_node)

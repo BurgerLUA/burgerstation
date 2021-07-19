@@ -14,6 +14,8 @@
 
 	size = SIZE_CRITTER
 
+	level = 2
+
 /mob/living/simple/goliath/baby/post_death()
 	. = ..()
 	explode(get_turf(src),30,src,src,loyalty_tag)

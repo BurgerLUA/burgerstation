@@ -22,6 +22,10 @@
 	desired_light_color = "#FFFFFF"
 
 
+/obj/structure/interactive/vr_shop/Destroy()
+	QDEL_CUT(stored_vendors)
+	. = ..()
+
 
 /obj/structure/interactive/vr_shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

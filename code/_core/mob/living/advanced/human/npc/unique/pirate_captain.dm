@@ -98,6 +98,8 @@
 	iff_tag = "Skeleton"
 	ai = /ai/advanced/skeleton
 
+	level = 10
+
 
 /mob/living/advanced/npc/pirate_crew/Initialize()
 	. = ..()

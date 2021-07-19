@@ -29,16 +29,15 @@
 
 //This callback activates when a refiller item is used on a magazine
 /obj/item/magazine/proc/regen()
-	if (length(stored_bullets) < bullet_count_max)
+	if(length(stored_bullets) < bullet_count_max)
 		var/obj/item/bullet_cartridge/B = new ammo(src)
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
 		stored_bullets += B
 		update_sprite()
-
-	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
-	return ..()
+		CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
+	. = ..()
 
 /obj/item/magazine/update_icon()
 
@@ -89,6 +88,10 @@
 
 	if (object_data["regenerate"])
 		regenerate = TRUE
+
+/obj/item/magazine/Finalize()
+	. = ..()
+	if(regenerate)
 		regen()
 
 /obj/item/magazine/Generate()
@@ -97,7 +100,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
-			GENERATE(B)
+			//DO NOT PUT GENERATE HERE.
 			FINALIZE(B)
 			stored_bullets += B
 
@@ -107,14 +110,14 @@
 
 /obj/item/magazine/Destroy()
 
-	for(var/k in stored_bullets)
-		if(!k) continue
-		var/obj/item/bullet_cartridge/B = k
-		qdel(B)
+	if(stored_bullets)
+		for(var/k in stored_bullets)
+			if(!k) continue
+			var/obj/item/bullet_cartridge/B = k
+			qdel(B)
+		stored_bullets.Cut()
 
-	stored_bullets.Cut()
-
-	return ..()
+	. = ..()
 
 /obj/item/magazine/PostInitialize()
 	. = ..()
@@ -183,7 +186,7 @@
 
 /obj/item/magazine/click_self(var/mob/caller)
 
-	if(length(stored_bullets))
+	if(length(stored_bullets) && !is_weapon(loc))
 		INTERACT_CHECK
 		INTERACT_DELAY(1.5)
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]

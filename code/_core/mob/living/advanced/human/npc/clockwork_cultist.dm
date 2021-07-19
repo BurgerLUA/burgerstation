@@ -17,6 +17,8 @@
 		DARK = -60
 	)
 
+	level = 20
+
 
 
 /mob/living/advanced/npc/clockwork_cultist/Initialize()

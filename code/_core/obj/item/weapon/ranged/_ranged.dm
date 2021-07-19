@@ -42,7 +42,8 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin
 
-	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
+	var/use_iff_tag = FALSE
+	var/use_loyalty_tag = FALSE
 
 	var/list/attachment_stats = list()
 	var/list/attachment_whitelist = list()
@@ -66,6 +67,14 @@
 	var/current_firemode = 1
 	var/list/firemodes = list(
 	)
+
+/obj/item/weapon/ranged/Destroy()
+	QDEL_NULL(attachment_stock)
+	QDEL_NULL(attachment_undermount)
+	QDEL_NULL(attachment_sight)
+	QDEL_NULL(attachment_barrel)
+	QDEL_NULL(firing_pin)
+	. = ..()
 
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
 	if(!length(firemodes))
@@ -432,6 +441,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/heat_spread = get_heat_spread() * quality_penalty
 		var/skill_spread = 0
 		var/movement_spread = 0
+		var/iff_tag = null
 		var/loyalty_tag = null
 
 		var/prone_mod = 0.75
@@ -444,7 +454,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			movement_spread = get_movement_spread(L)
 			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED,0,0.5,1))
 			if(L.horizontal) prone = TRUE
+			if(use_iff_tag) iff_tag = L.iff_tag
 			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
+
 
 		if(length(attachment_stats))
 			SET(shoot_sounds_to_use,attachment_stats["shoot_sounds"])
@@ -503,7 +515,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			view_punch_to_use,
 			view_punch_time,
 			damage_multiplier_to_use,
-			istype(firing_pin) ? firing_pin.iff_tag : null,
+			iff_tag ? iff_tag : null,
 			loyalty_tag ? loyalty_tag : null,
 			inaccuracy_modifer_to_use,
 			get_base_spread(),

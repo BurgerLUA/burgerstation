@@ -7,6 +7,10 @@ obj/structure/interactive/blocker //TODO: What the fuck uses this?
 
 	density = TRUE
 
+obj/structure/interactive/blocker/Destroy()
+	. = ..()
+	owned_object = null
+
 obj/structure/interactive/blocker/New(var/desired_loc,var/obj/structure/desired_owned_object)
 
 	owned_object = desired_owned_object

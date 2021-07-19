@@ -17,6 +17,8 @@
 		DARK = 60
 	)
 
+	level = 10
+
 
 
 /mob/living/advanced/npc/cultist/Initialize()
@@ -46,7 +48,11 @@
 	name = "ancient cultist"
 	loadout_to_use = /loadout/cultist/old
 
+	level = 40
+
 
 /mob/living/advanced/npc/cultist/hard
 	name = "master cultist"
 	loadout_to_use = /loadout/cultist/hard
+
+	level = 80

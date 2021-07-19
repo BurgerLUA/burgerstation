@@ -15,3 +15,5 @@
 		/obj/item/container/food/dynamic/meat/raw_monkey,
 		/obj/item/container/food/dynamic/meat/raw_monkey
 	)
+
+	level = 2

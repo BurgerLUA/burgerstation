@@ -14,12 +14,14 @@
 	)
 
 	var/loadout_to_level = list(
-		/loadout/syndicate/soldier = 2,
-		/loadout/syndicate/shotgunnner = 2,
-		/loadout/syndicate/basic = 4,
-		/loadout/syndicate/advanced = 8,
-		/loadout/syndicate/elite = 16
+		/loadout/syndicate/soldier = 1,
+		/loadout/syndicate/shotgunnner = 1.5,
+		/loadout/syndicate/basic = 2,
+		/loadout/syndicate/advanced = 3,
+		/loadout/syndicate/elite = 4
 	)
+
+	level = 10
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
@@ -48,15 +50,20 @@
 	equip_loadout(loadout_to_use)
 
 /mob/living/advanced/npc/syndicate/double
-
+	level = 20
 
 /mob/living/advanced/npc/syndicate/triple
-
+	level = 30
 
 /mob/living/advanced/npc/syndicate/quadruple
-
-
+	level = 40
 
 /mob/living/advanced/npc/syndicate/stress_test
 	name = "stress test"
 	ai = /ai/advanced/syndicate/stress_test
+
+/mob/living/advanced/npc/syndicate/scientist
+	name = "syndicate scientist"
+
+	possible_outfits = list(/loadout/syndicate/scientist)
+	loadout_to_level = list(/loadout/syndicate/scientist=1)

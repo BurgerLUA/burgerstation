@@ -64,6 +64,15 @@
 
 	var/can_be_bumped = TRUE
 
+/atom/movable/Destroy()
+	QDEL_NULL(light_sprite)
+	light_sprite_sources.Cut()
+
+	area = null
+	grabbing_hand = null
+	force_move(null)
+	return ..()
+
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 
 	if(l_range)
@@ -167,14 +176,6 @@
 /atom/movable/proc/update_value()
 	value = get_base_value()
 	return TRUE
-
-/atom/movable/Destroy()
-	QDEL_NULL(light_sprite)
-
-	area = null
-	grabbing_hand = null
-	force_move(null)
-	return ..()
 
 /proc/is_valid_dir(var/direction)
 

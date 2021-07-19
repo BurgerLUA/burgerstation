@@ -27,6 +27,18 @@
 
 	has_quick_function = TRUE
 
+/obj/item/grenade/Destroy()
+
+	QDEL_NULL(stored_trigger)
+
+	for(var/k in stored_containers)
+		var/obj/item/I = k
+		qdel(I)
+	stored_containers.Cut()
+
+	. = ..()
+
+
 /obj/item/grenade/quick(var/mob/caller,var/atom/object,location,params)
 
 	if(!is_living(caller) || !object)
@@ -62,17 +74,6 @@
 	. = ..()
 	LOADVAR("open")
 	LOADVAR("spent")
-
-/obj/item/grenade/Destroy()
-
-	QDEL_NULL(stored_trigger)
-
-	for(var/k in stored_containers)
-		var/obj/item/I = k
-		qdel(I)
-	stored_containers.Cut()
-
-	return ..()
 
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 

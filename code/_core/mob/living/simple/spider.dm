@@ -44,6 +44,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/spider/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -71,6 +73,8 @@
 		PAIN = 25
 	)
 
+	level = 12
+
 /mob/living/simple/spider/desert/Initialize()
 	. = ..()
 	set_light(4,0.25,"#00FF00")
@@ -96,4 +100,6 @@
 		ION = INFINITY,
 		PAIN = 25
 	)
+
+	level = 8
 

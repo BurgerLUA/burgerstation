@@ -82,6 +82,8 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
+	level = 50
+
 /mob/living/simple/can_man/post_death()
 	. = ..()
 	charge_steps = 0

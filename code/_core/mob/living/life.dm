@@ -502,7 +502,7 @@ mob/living/proc/on_life_slow()
 		if(GR) health_mod *= GR.health_regen_mul
 		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod)
 		var/burn_to_adjust = min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod*2)
 		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust

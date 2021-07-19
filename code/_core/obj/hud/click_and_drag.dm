@@ -21,7 +21,8 @@
 
 /obj/hud/click_and_drag/Destroy()
 	stored_object = null
-	return ..()
+	stored_inventory = null
+	. = ..()
 
 /obj/hud/click_and_drag/New(var/desired_loc)
 

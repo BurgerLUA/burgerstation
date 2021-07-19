@@ -7,11 +7,13 @@
 	name = "Magazine bluespacer"
 	desc = "Have you tried just putting more bullets in it?"
 	desc_extended = "A tightly controlled bluespace pocket condenser. Fits to expand inside a magazine, and increases capacity 10x for that magazine"
-	icon_state = "quality_melee"
+	icon_state = "bluespacer"
 
 	temper_whitelist = /obj/item/magazine
 
 	value = 50000
+
+	value_burgerbux = 1
 
 /obj/item/tempering/magazine/bluespace/can_temper(var/mob/caller,var/obj/item/magazine/I)
 	if (!is_magazine(I))
@@ -25,18 +27,20 @@
 
 /obj/item/tempering/magazine/bluespace/on_temper(var/mob/caller,var/obj/item/magazine/I)
 	I.bluespaced = TRUE
-	I.bullet_count_max *= 10
+	I.bullet_count_max *= 4
 	return ..()
 
 /obj/item/tempering/magazine/refiller
 	name = "Enchantment of Endless Bullets"
 	desc = "Not the fastest enhcantment ever, but it works"
 	desc_extended = "Eldritch forces will ensure your magazine refills over time, in exchange for... a fat stack of credits?"
-	icon_state = "quality_melee"
+	icon_state = "mag_enchant"
 
 	temper_whitelist = /obj/item/magazine
 
 	value = 50000
+
+	value_burgerbux = 1
 
 /obj/item/tempering/magazine/refiller/can_temper(var/mob/caller,var/obj/item/magazine/I)
 	if (!is_magazine(I))

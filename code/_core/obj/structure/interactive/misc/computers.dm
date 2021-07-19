@@ -13,6 +13,8 @@ obj/structure/interactive/misc/computer1
 
 	density = TRUE
 
+	pixel_y = 12
+
 obj/structure/interactive/misc/computer2
 	name = "Computer"
 	desc = "Just a old PC."
@@ -25,6 +27,8 @@ obj/structure/interactive/misc/computer2
 	bullet_block_chance = 30
 
 	density = TRUE
+
+	pixel_y = 12
 
 obj/structure/interactive/misc/computer3
 	name = "Computer"
@@ -39,6 +43,8 @@ obj/structure/interactive/misc/computer3
 
 	density = TRUE
 
+	pixel_y = 12
+
 obj/structure/interactive/misc/computer4
 	name = "Computer"
 	desc = "Just a old PC."
@@ -51,3 +57,5 @@ obj/structure/interactive/misc/computer4
 	bullet_block_chance = 30
 
 	density = TRUE
+
+	pixel_y = 12

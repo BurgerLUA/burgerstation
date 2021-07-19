@@ -1,9 +1,11 @@
 /mob/living/advanced/player/antagonist/
 	var/loadout/loadout_to_use
-
+	class = /class/player/antagonist
 	allow_save = FALSE
 
 	damage_received_multiplier = 0.5
+
+	level = 20
 
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)

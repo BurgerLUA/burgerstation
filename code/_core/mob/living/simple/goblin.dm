@@ -35,6 +35,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/goblin/Generate()
 
 	if(intial_loot)

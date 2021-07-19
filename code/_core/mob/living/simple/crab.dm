@@ -42,6 +42,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/crab/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -124,6 +126,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	soul_size = SOUL_SIZE_RARE
+
+	level = 12
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

@@ -10,7 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe = TRUE,
 	)
 
-	ammo = /obj/item/bullet_cartridge/syringe_gun/
+	ammo = /obj/item/bullet_cartridge/syringe_gun
 
 	bullet_length_min = 18.5
 	bullet_length_best = 18.5
