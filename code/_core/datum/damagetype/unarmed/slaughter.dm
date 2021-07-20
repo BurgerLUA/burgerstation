@@ -50,10 +50,12 @@
 		var/mob/living/V = victim
 		var/mob/living/A = attacker
 		if(!A.dead && V.dead)
-			var/blood_to_steal = min(A.blood_volume_max - A.blood_volume) //it took blood, sweat and tears, but...
+			var/blood_to_steal = min(V.blood_volume,(A.blood_volume_max - A.blood_volume)) //it took blood, sweat and tears, but...
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.blood_volume = clamp(A.blood_volume+blood_to_steal,0,A.blood_volume_max) //I successfully stole bloodsteal code.
+			else if (V.blood_volume <= 0)
+				A.to_chat(span("danger","That enemy has no blood!"))
 
 		return ..()
 
