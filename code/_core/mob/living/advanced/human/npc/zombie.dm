@@ -17,6 +17,8 @@
 	loyalty_tag = "Zombie"
 	iff_tag = "Zombie"
 
+	level = 8
+
 /mob/living/advanced/npc/zombie/get_movement_delay()
 
 	. = ..()

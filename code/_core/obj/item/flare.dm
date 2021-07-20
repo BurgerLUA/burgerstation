@@ -18,6 +18,10 @@
 
 	value = 20
 
+/obj/item/flare/Destroy()
+	QDEL_NULL(stored_cap)
+	. = ..()
+
 /obj/item/flare/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_cap")

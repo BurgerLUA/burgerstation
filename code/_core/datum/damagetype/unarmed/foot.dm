@@ -33,8 +33,6 @@
 		SKILL_UNARMED = list(BLUNT)
 	)
 
-	allow_friendly_fire = FALSE
-
 	cqc_tag = "5"
 
 	attack_delay = 14*0.5

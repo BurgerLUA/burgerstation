@@ -11,6 +11,12 @@
 
 	var/mob/living/advanced/player/virtual_avatar = /mob/living/advanced/player/virtual
 
+/obj/structure/interactive/vr_pod/Destroy()
+	force_eject_user()
+	user = null
+	QDEL_NULL(virtual_avatar)
+	. = ..()
+
 /obj/structure/interactive/vr_pod/proc/print_information()
 	return TRUE
 

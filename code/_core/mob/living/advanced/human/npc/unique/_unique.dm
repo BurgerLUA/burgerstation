@@ -2,6 +2,7 @@
 	ai = null
 	move_mod = 1
 
+	level = 40
 
 /mob/living/advanced/npc/unique/setup_name()
 

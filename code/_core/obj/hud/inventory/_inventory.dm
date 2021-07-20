@@ -79,6 +79,27 @@
 
 	var/obj/hud/button/close_inventory/assoc_button //The associated close button for this inventory object.
 
+/obj/hud/inventory/Destroy()
+
+	if(grabbed_object)
+		release_object()
+		grabbed_object = null //Just in case.
+
+	show(FALSE,0)
+
+	remove_from_owner()
+
+	owner = null
+
+	parent_inventory = null
+	child_inventory = null
+	grabbed_object = null
+
+	QDEL_NULL(assoc_button)
+
+	return ..()
+
+
 /obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
 
 	if(!ignore_contents && length(contents))
@@ -99,25 +120,6 @@
 			return TRUE
 
 	return FALSE
-
-/obj/hud/inventory/Destroy()
-
-	if(grabbed_object)
-		release_object()
-
-	show(FALSE,0)
-
-	remove_from_owner()
-
-	owner = null
-
-	parent_inventory = null
-	child_inventory = null
-	grabbed_object = null
-
-	QDEL_NULL(assoc_button)
-
-	return ..()
 
 /obj/hud/inventory/proc/show(var/should_show,var/speed)
 	if(should_show)

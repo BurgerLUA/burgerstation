@@ -97,7 +97,7 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/get_log_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
 
-/client/Del() //Called when the client disconnects.
+/client/Del() //Called when the client disconnects. Basically Destroy()
 
 	all_clients -= src.ckey
 
@@ -110,8 +110,13 @@ var/global/list/all_clients = list() //Assoc list
 	if(known_health_elements)
 		known_health_elements.Cut()
 
+	if(stored_hud_images)
+		stored_hud_images.Cut()
+
 	last_location = null
 	last_object = null
+
+	QDEL_NULL(button_tracker)
 
 	QDEL_NULL(macros)
 
@@ -241,6 +246,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	for(var/k in ranks)
 		var/rank/R = k
+		if(!R)
+			CRASH_SAFE("Invalid rank for [src]: [k]")
+			continue
 		to_chat(span("notice","Adding [R.name] permissions..."))
 		permissions |= R.permissions
 

@@ -9,6 +9,10 @@
 
 	var/empty_warning_percent = 0.2 //0-1, as a percentage
 
+/obj/item/weapon/ranged/bullet/magazine/Destroy()
+	QDEL_NULL(stored_magazine)
+	. = ..()
+
 /obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
@@ -85,6 +89,8 @@
 		stored_magazine.drop_item(T)
 		play_sound(stored_magazine.get_magazine_eject_sound(),T,range_max=VIEW_RANGE*0.5)
 		if(stored_magazine)
+			if(stored_magazine.regenerate)
+				CALLBACK("regen_\ref[stored_magazine]", stored_magazine.regen_speed, stored_magazine, /obj/item/magazine/proc/regen)
 			stored_magazine.update_sprite()
 			stored_magazine = null
 

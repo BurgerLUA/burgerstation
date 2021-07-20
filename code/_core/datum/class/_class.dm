@@ -35,7 +35,7 @@
 		SKILL_RANGED = 1,
 		SKILL_PRECISION = 1,
 		SKILL_SURVIVAL = 1,
-		SKILL_DODGE = 1,
+		SKILL_EVASION = 1,
 		SKILL_PARRY = 1,
 
 		SKILL_MAGIC_OFFENSIVE = 1,
@@ -48,16 +48,18 @@
 
 	)
 
-	var/total_weight = 0
+	var/total_skill_weight = 0
+	var/total_attribute_weight = 0
 
 /class/New(var/desired_loc)
 	. = ..()
-	total_weight = 0
+	total_skill_weight = 0
+	total_attribute_weight = 0
 
 	for(var/k in weights_attribute)
 		var/v = weights_attribute[k]
-		total_weight += v
+		total_attribute_weight += v
 
 	for(var/k in weights_skill)
 		var/v = weights_skill[k]
-		total_weight += v
+		total_skill_weight += v

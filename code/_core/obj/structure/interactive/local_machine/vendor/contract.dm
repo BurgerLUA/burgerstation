@@ -30,6 +30,8 @@
 		name_blacklist[initial_name] = TRUE
 		stored_types += C
 
+	stored_types += /obj/item/coin/antag_token
+
 	. = ..()
 
 

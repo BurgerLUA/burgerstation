@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(dmm_suite)
 				var/chosen_file = pick(local_prefabs)
 				valid_prefabs[category] -= chosen_file
 				var/map_contents = file2text(chosen_file)
-				log_subsystem("Loading [chosen_file]...")
+				log_subsystem(name,"Loading [chosen_file]...")
 				dmm_suite.read_map(map_contents,M.x,M.y,M.z)
 				loaded_prefabs++
 			qdel(M)

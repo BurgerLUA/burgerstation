@@ -18,7 +18,7 @@
 
 	stun_angle = 0
 
-	health_base = 20000
+	health_base = 15000
 	stamina_base = 1000
 	mana_base = 2000
 
@@ -79,6 +79,8 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
+	level = 18
+
 /mob/living/simple/leaper/handle_alpha()
 	if(immortal)
 		return 0
@@ -137,8 +139,8 @@
 	if(CALLBACK_EXISTS("\ref[src]_shoot_bubble5"))
 		return FALSE
 
-	for(var/i=1,i<=5,i++)
-		CALLBACK("\ref[src]_shoot_bubble[i]",5+i*3,src,.proc/shoot_bubble,ai.objective_attack)
+	for(var/i=1,i<=3,i++)
+		CALLBACK("\ref[src]_shoot_bubble[i]",5+i*6,src,.proc/shoot_bubble,ai.objective_attack)
 
 	return TRUE
 
@@ -175,7 +177,7 @@
 		16,
 		16,
 		0,
-		4,
+		TILE_SIZE*0.5,
 		1,
 		"#FFFFFF",
 		0,

@@ -28,6 +28,8 @@
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
 
+	level = 14
+
 /mob/living/simple/xeno/drone
 	name = "xeno drone"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
@@ -55,6 +57,8 @@
 
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
+
+	level = 12
 
 /mob/living/simple/xeno/sentinel
 	name = "xeno sentinel"
@@ -86,6 +90,7 @@
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
 
+	level = 18
 
 
 
@@ -117,3 +122,5 @@
 
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
+
+	level = 24

@@ -14,6 +14,22 @@
 
 	density = TRUE
 
+/obj/structure/interactive/conveyor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(5)
+
+	caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+	set_dir(turn(dir,90))
+	disable()
+	update_conveyor()
+	enable()
+
+	update_sprite()
+
+	return TRUE
+
 /obj/structure/interactive/conveyor/Crossed(atom/movable/O)
 	start_thinking(src)
 	return ..()

@@ -47,6 +47,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/bear/update_overlays()
 	. = ..()
 

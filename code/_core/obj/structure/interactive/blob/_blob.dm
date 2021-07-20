@@ -26,6 +26,13 @@
 
 	var/turn_angle = 0
 
+/obj/structure/interactive/blob/Destroy()
+	if(linked_core)
+		linked_core.linked_walls -= src
+		linked_core.linked_nodes -= src
+		linked_core = null
+	return ..()
+
 /obj/structure/interactive/blob/New(var/desired_loc)
 	. = ..()
 	turn_angle = pick(0,90,180,270)
@@ -95,13 +102,6 @@
 
 /obj/structure/interactive/blob/can_be_attacked()
 	return TRUE
-
-/obj/structure/interactive/blob/Destroy()
-	if(linked_core)
-		linked_core.linked_walls -= src
-		linked_core.linked_nodes -= src
-		linked_core = null
-	return ..()
 
 /obj/structure/interactive/blob/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
 	. = ..()

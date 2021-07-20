@@ -53,3 +53,5 @@
 	blood_volume = 750
 
 	soul_size = SOUL_SIZE_COMMON
+
+	level = 18

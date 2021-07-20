@@ -68,6 +68,14 @@
 	var/list/firemodes = list(
 	)
 
+/obj/item/weapon/ranged/Destroy()
+	QDEL_NULL(attachment_stock)
+	QDEL_NULL(attachment_undermount)
+	QDEL_NULL(attachment_sight)
+	QDEL_NULL(attachment_barrel)
+	QDEL_NULL(firing_pin)
+	. = ..()
+
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
 	if(!length(firemodes))
 		return FALSE
@@ -91,8 +99,11 @@
 	caller?.to_chat(span("notice","You switch to [selected_firemode] mode."))
 	return TRUE
 
+/obj/item/weapon/ranged/get_examine_list(var/mob/examiner)
+	. = ..()
 
-
+	if(length(firemodes))
+		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
 /* Price calculation is hard.

@@ -162,6 +162,8 @@
 
 	particle_size = 0.4
 
+	lethal = TRUE
+
 
 /reagent/nutrition/poppy_seed/raw/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -238,6 +240,8 @@
 	liquid = 0
 
 	particle_size = 0.2
+
+	lethal = TRUE
 
 /reagent/nutrition/capsaicin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

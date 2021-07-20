@@ -8,6 +8,8 @@
 	dialogue_id = /dialogue/npc/soldier/
 	var/loadout_to_use = /loadout/nanotrasen/soldier
 
+	level = 8
+
 /mob/living/advanced/npc/nanotrasen/Initialize()
 
 	. = ..()

@@ -49,6 +49,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 8
+
 /mob/living/simple/spacecarp/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -56,4 +58,6 @@
 
 /mob/living/simple/spacecarp/leader
 	name = "alpha space carp"
+
+	level = 14
 

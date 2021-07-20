@@ -19,6 +19,8 @@
 
 	value = 1
 
+	lethal = TRUE
+
 /reagent/nutrition/ethanol/New(var/desired_loc)
 	var/power_mod = power/100
 	nutrition_amount = power_mod*10

@@ -28,14 +28,16 @@
 	if(next_spam <= world.time)
 		owner_as_leaper.spam_bubbles()
 		next_spam = world.time + 1 + CEILING(SECONDS_TO_DECISECONDS(10)*health_mod,1)
+		next_teleport = max(next_teleport,world.time + 10)
 		return .
 
 	if(next_volley <= world.time && prob(25))
 		owner_as_leaper.volley_bubbles()
 		next_volley = world.time + SECONDS_TO_DECISECONDS(5)*health_mod
+		next_teleport = max(next_teleport,world.time + 5 + 3*6)
 		return .
 
-	if(next_teleport <= world.time && prob(10))
+	if(next_teleport <= world.time && prob(5))
 		owner_as_leaper.try_teleport()
 		next_teleport = world.time + SECONDS_TO_DECISECONDS(5)*health_mod
 		next_volley = max(next_volley,next_volley + SECONDS_TO_DECISECONDS(2))

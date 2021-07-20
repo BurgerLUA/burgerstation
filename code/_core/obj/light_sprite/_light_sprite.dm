@@ -14,6 +14,11 @@
 
 	size = 1 //Transform multiplier
 
+/obj/light_sprite/Destroy()
+	update(null) //kills top_atom
+	owner = null
+	return ..()
+
 /obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE)
 	dir = desired_dir
 	return dir
@@ -27,6 +32,7 @@
 	if(!new_source)
 		if(top_atom)
 			top_atom.light_sprite_sources -= src
+			top_atom = null
 		return TRUE
 
 	if(top_atom != new_source)
@@ -39,11 +45,6 @@
 		return TRUE
 
 	return FALSE
-
-/obj/light_sprite/Destroy()
-	update(null)
-	owner = null
-	return ..()
 
 /obj/light_sprite/get_base_transform()
 	. = ..()

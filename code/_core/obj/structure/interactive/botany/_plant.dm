@@ -6,7 +6,6 @@
 	icon = 'icons/obj/markers/plant.dmi'
 	icon_state = null
 
-
 	var/plant_type/plant_type
 
 	var/growth = 0 //Increases by growth_speed every second.
@@ -14,14 +13,34 @@
 	var/growth_max = 100 //The growth value when this plant is considered grown, but has no produce grown on it.
 	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
 
+	reagents = /reagent_container/plant
+
 	//Stats
 	var/potency = 20 //How much chemicals?
 	var/yield = 1
 	var/growth_speed = 5 //How much to add to growth every second
 
+	var/hydration = 100 //Out of 100
+	var/nutrition = 100 //Out of 100
+	var/age = 0 //In seconds. Once it gets old (5 minutes) it starts to take damage.
+
 	var/delete_after_harvest = TRUE
 
+	health = /health/plant
+
 	mouse_opacity = 2
+
+	var/dead = FALSE
+
+/obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
+	if(damage && !dead)
+		dead = TRUE
+		health.restore()
+		update_sprite()
+	. = ..()
+	if(dead || !damage)
+		qdel(src)
+
 
 /obj/structure/interactive/plant/New(var/desired_loc)
 	SSbotany.all_plants += src
@@ -36,9 +55,12 @@
 	return ..()
 
 /obj/structure/interactive/plant/proc/on_life()
-
-	var/real_growth_speed = growth_speed*TICKS_TO_SECONDS(SSbotany.tick_rate)
+	var/rate = TICKS_TO_SECONDS(SSbotany.tick_rate)
+	var/real_growth_speed = growth_speed*rate
 	growth += FLOOR(real_growth_speed * (rand(75,125)/100), 1)
+	age += rate
+	if(age >= SECONDS_TO_DECISECONDS(300) && !prob(80))
+		src.health.adjust_loss_smart(brute=1)
 	update_sprite()
 	return TRUE
 
@@ -50,7 +72,10 @@
 
 	icon = associated_plant.plant_icon
 
-	if(growth >= growth_produce_max)
+	if(dead)
+		icon_state = "[associated_plant.plant_icon_state]-dead"
+
+	else if(growth >= growth_produce_max)
 		if(associated_plant.plant_icon_state_override)
 			icon_state ="[associated_plant.plant_icon_state_override]-harvest"
 		else

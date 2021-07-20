@@ -1,5 +1,5 @@
 /obj/item/light
-	var/obj/structure/interactive/lighting/light_type
+	var/obj/structure/interactive/lighting/light_type //Stored as a path
 	color = COLOR_LIGHT
 
 	size = SIZE_1

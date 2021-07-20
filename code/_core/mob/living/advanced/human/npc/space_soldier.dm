@@ -6,9 +6,7 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 
-	 //Yep
-
-	damage_received_multiplier = 0.5
+	level = 60
 
 /mob/living/advanced/npc/space_soldier/Initialize()
 

@@ -33,8 +33,6 @@
 		SKILL_UNARMED = list(BLUNT)
 	)
 
-	allow_friendly_fire = FALSE
-
 	cqc_tag = "4"
 
 	attack_delay = 10*0.5
@@ -77,8 +75,6 @@
 	)
 
 	cqc_tag = "1"
-
-	allow_friendly_fire = TRUE
 
 	attack_delay = 8*0.5
 	attack_delay_max = 8
@@ -123,14 +119,14 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	allow_friendly_fire = TRUE
-
 	attack_delay = 12
 	attack_delay_max = 15
 
 	cqc_tag = "2"
 
 	draw_blood = FALSE
+
+	allow_friendly_fire = TRUE
 
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -189,14 +185,14 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	allow_friendly_fire = TRUE
-
 	cqc_tag = "3"
 
 	attack_delay = 10
 	attack_delay_max = 10
 
 	draw_blood = FALSE
+
+	allow_friendly_fire = TRUE
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -250,8 +246,6 @@
 		SKILL_UNARMED = list(BLUNT)
 	)
 
-	allow_friendly_fire = FALSE
-
 	cqc_tag = "p"
 
 	attack_delay = 10
@@ -291,8 +285,6 @@
 	skill_damage = list(
 		SKILL_UNARMED = list(BLUNT)
 	)
-
-	allow_friendly_fire = FALSE
 
 	cqc_tag = "p"
 

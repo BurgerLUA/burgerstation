@@ -13,6 +13,9 @@
 
 	weight = 3
 
+/obj/item/implanter/Destroy()
+	QDEL_NULL(stored_implant)
+	. = ..()
 
 /obj/item/implanter/update_icon()
 

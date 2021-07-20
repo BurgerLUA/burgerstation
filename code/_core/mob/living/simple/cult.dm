@@ -11,6 +11,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 10
+
 /mob/living/simple/cult/cultist
 	name = "blood cult peon"
 	icon = 'icons/mob/living/simple/cult.dmi'
@@ -92,6 +94,8 @@
 		PAIN = INFINITY
 	)
 
+	level = 18
+
 
 
 /mob/living/simple/cult/construct/artificer
@@ -123,6 +127,8 @@
 		PAIN = INFINITY
 	)
 
+	level = 8
+
 
 
 /mob/living/simple/cult/construct/harvester
@@ -152,6 +158,8 @@
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)
+
+	level = 12
 
 
 
@@ -184,6 +192,8 @@
 		PAIN = INFINITY
 	)
 
+	level = 14
+
 
 
 /mob/living/simple/cult/construct/floating
@@ -214,6 +224,7 @@
 		PAIN = INFINITY
 	)
 
+	level = 12
 
 
 
@@ -244,4 +255,6 @@
 		FATIGUE = INFINITY,
 		PAIN = INFINITY
 	)
+
+	level = 8
 

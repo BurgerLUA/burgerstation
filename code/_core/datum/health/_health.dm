@@ -33,8 +33,6 @@
 	)
 	*/
 
-
-
 	/* TEMPLATE
 	var/list/armor_base = list(
 		BLADE = 0,
@@ -59,6 +57,10 @@
 
 	var/organic = FALSE
 
+/health/Destroy()
+	owner = null
+	return ..()
+
 /health/proc/get_damage_multiplier()
 	return 1
 
@@ -75,20 +77,6 @@
 	mana_current = mana_max
 
 	update_health(update_hud = FALSE)
-
-	return ..()
-
-/health/Destroy()
-
-	/*
-	for(var/k in wounds)
-		var/wound/W = k
-		qdel(W)
-
-	wounds.Cut()
-	*/
-
-	owner = null
 
 	return ..()
 

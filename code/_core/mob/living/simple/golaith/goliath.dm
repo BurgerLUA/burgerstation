@@ -50,6 +50,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 14
+
 /mob/living/simple/goliath/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

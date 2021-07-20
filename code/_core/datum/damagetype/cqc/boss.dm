@@ -156,8 +156,6 @@
 		SKILL_UNARMED = list(FATIGUE)
 	)
 
-	allow_friendly_fire = FALSE
-
 	//BALANCE CHANGE. FASTER SPEED.
 	attack_delay = 8*0.5
 	attack_delay_max = 8
@@ -213,8 +211,6 @@
 		SKILL_UNARMED = list(FATIGUE)
 	)
 
-	allow_friendly_fire = FALSE
-
 	//BALANCE CHANGE. FASTER SPEED.
 	attack_delay = 8*0.5
 	attack_delay_max = 8
@@ -268,8 +264,6 @@
 	skill_damage = list(
 		SKILL_UNARMED = list(FATIGUE)
 	)
-
-	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
 	attack_delay = 8
@@ -334,8 +328,6 @@
 	skill_damage = list(
 		SKILL_UNARMED = list(FATIGUE)
 	)
-
-	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
 	attack_delay = 8
