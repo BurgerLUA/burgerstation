@@ -26,6 +26,21 @@
 	var/regen_speed = 30 //magazines can be allowed to regen faster or slower on an individual basis this way.
 
 	weight = 0.25
+	has_quick_function = TRUE //Allows mags to show up in the belt slots.
+
+/obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
+	if(!is_advanced(caller) || !is_inventory(src.loc))
+		return FALSE
+
+	var/mob/living/advanced/A = caller
+	var/obj/hud/inventory/I = src.loc
+	var/obj/item/belt_storage = I.loc
+	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
+
+	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
+
+	return A.put_in_hands(src,left = put_in_left)
+
 
 //This callback activates when a refiller item is used on a magazine
 /obj/item/magazine/proc/regen()
@@ -167,8 +182,6 @@
 	return TRUE
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-
 
 	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		INTERACT_CHECK
