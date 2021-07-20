@@ -49,3 +49,21 @@
 /obj/item/clothing/ears/headset/virtual_reality
 	name = "auto headset"
 	stored_radio = /obj/item/device/radio/virtual_reality
+
+/obj/item/clothing/ears/headset/cat
+	name = "\improper cat ear headset"
+	icon = 'icons/obj/item/clothing/hats/cat.dmi'
+	desc = "; HELPIES!"
+	desc_extended = "This may have been a mistake. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
+	stored_radio = /obj/item/device/radio/nanotrasen
+	
+	no_initial_blend = TRUE
+
+	dyeable = TRUE
+
+	polymorphs = list(
+		"outer" = "#FFFFFF",
+		"inner" = "#FF8888"
+	)
+
+	worn_layer = LAYER_MOB_CLOTHING_HELMET + 0.01

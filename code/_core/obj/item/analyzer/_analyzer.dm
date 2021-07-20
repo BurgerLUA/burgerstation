@@ -2,6 +2,15 @@
 	name = "analyzer"
 	var/next_scan = 0
 	weight = 3
+	has_quick_function = TRUE //use analyzers from the belt slots
+
+/obj/item/analyzer/quick(var/mob/caller,var/atom/object,location,params)
+
+	if(!is_living(caller))
+		return FALSE
+
+	return click_on_object(caller, object, location, null, params)
+
 
 /obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target,location,control,params)
 	return TRUE

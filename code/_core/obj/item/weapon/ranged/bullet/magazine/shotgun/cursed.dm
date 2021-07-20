@@ -4,7 +4,7 @@
     desc_extended = "Some ammo-obsessed eldritch forces have possessed the lower receiver of this shotgun, and replace normal shells with magical projectiles in their place when fired. Trying to make sense of what gods beyond the edges of reality want with 20g buckshot is how you go crazy."
     icon = 'icons/obj/item/weapons/ranged/shotgun/cursed.dmi'
     icon_state = "inventory"
-    value = 50000
+    value = 2700
     projectile = /obj/projectile/magic/chaos
     ranged_damage_type = /damagetype/ranged/magic/chaos
 
