@@ -4,11 +4,13 @@
 	desc_extended = "The .308 Mauler Marksman Rifle is THE dmr for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/308.dmi'
 	icon_state = "inventory"
-	value = 2500
+	value = 3750
 
-	shoot_delay = 2
+	firemodes = list("semi-automatic","automatic")
 
-	automatic = FALSE
+	shoot_delay = 2.75
+
+	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/308/shoot.ogg')
 
@@ -63,8 +65,8 @@
 
 
 
-	inaccuracy_modifier = 0.1
-	movement_inaccuracy_modifier = 1.25
+	inaccuracy_modifier = 0.35
+	movement_inaccuracy_modifier = 1.1
 	movement_spread_base = 0.025
 
 
@@ -84,7 +86,7 @@
 	size = SIZE_3
 	weight = 8
 
-	value = 2000
+	value = 4000
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod/get_static_spread()
 	return 0.05
