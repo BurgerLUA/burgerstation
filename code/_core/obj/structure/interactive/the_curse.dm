@@ -28,6 +28,10 @@
 
 	size = SIZE_BOSS
 
+/obj/structure/interactive/the_curse/Destroy()
+	tracked_targets.Cut()
+	. = ..()
+
 /obj/structure/interactive/the_curse/debug
 	debug = TRUE
 

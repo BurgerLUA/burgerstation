@@ -39,3 +39,9 @@
 		"base" = COLOR_WHITE,
 		"shoulder" = COLOR_SCIENCE
 	)
+
+/obj/item/clothing/overwear/coat/labcoat/syndicate
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"shoulder" = COLOR_BLACK
+	)

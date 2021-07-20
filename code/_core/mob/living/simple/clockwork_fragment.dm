@@ -25,6 +25,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/clockwork_fragment/post_death()
 	. = ..()
 	icon_state = "dead"

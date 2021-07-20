@@ -16,6 +16,8 @@
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 
+	var/list/max_damage = list(PAIN=100) //Maximum damage this health object can take.
+
 	var/list/resistance = list() //How much to multiply damage
 
 	/* TEMPLATE
@@ -30,8 +32,6 @@
 		SANITY=1
 	)
 	*/
-
-
 
 	/* TEMPLATE
 	var/list/armor_base = list(
@@ -57,6 +57,10 @@
 
 	var/organic = FALSE
 
+/health/Destroy()
+	owner = null
+	return ..()
+
 /health/proc/get_damage_multiplier()
 	return 1
 
@@ -73,20 +77,6 @@
 	mana_current = mana_max
 
 	update_health(update_hud = FALSE)
-
-	return ..()
-
-/health/Destroy()
-
-	/*
-	for(var/k in wounds)
-		var/wound/W = k
-		qdel(W)
-
-	wounds.Cut()
-	*/
-
-	owner = null
 
 	return ..()
 
@@ -130,6 +120,8 @@
 	if(resistance[loss_type] && value > 0) value *= resistance[loss_type]
 	value -= min(0,damage[loss_type] + value)
 	damage[loss_type] += value
+	if(max_damage[loss_type])
+		damage[loss_type] = min(damage[loss_type],max_damage[loss_type])
 	return value
 
 /health/proc/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)

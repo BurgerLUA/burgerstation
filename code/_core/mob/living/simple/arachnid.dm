@@ -58,6 +58,8 @@
 
 	object_size = 2
 
+	level = 12
+
 /mob/living/simple/arachnid/post_death()
 	. = ..()
 	icon_state = "dead"

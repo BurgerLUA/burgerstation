@@ -169,7 +169,7 @@
 /material/aluminium
 	name = "aluminium"
 	color = COLOR_ALUMINIUM
-	value_per_unit = 5
+	value_per_unit = 15
 
 	armor = list(
 		BLADE = 25,
@@ -193,7 +193,7 @@
 /material/zinc
 	name = "zinc"
 	color = COLOR_ZINC
-	value_per_unit = 5
+	value_per_unit = 15
 
 	armor = list(
 		BLADE = 0,  //it's
@@ -217,7 +217,7 @@
 /material/magnesium
 	name = "magnesium"
 	color = COLOR_MAGNESIUM
-	value_per_unit = 5
+	value_per_unit = 15
 
 	armor = list(
 		BLADE = 30,  //it's
@@ -226,6 +226,30 @@
 		LASER = 75, //also melts
 		ARCANE = 0,
 		HEAT = 75, // badly
+		COLD = 75,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+/material/nickel
+	name = "nickel"
+	color = COLOR_NICKEL
+	value_per_unit = 15
+
+	armor = list(
+		BLADE = 25,  //it's
+		BLUNT = 25,  //for
+		PIERCE = 25, //alloying
+		LASER = 50, //also melts
+		ARCANE = 0,
+		HEAT = 25, // easily
 		COLD = 75,
 		BOMB = 50,
 		BIO = INFINITY,

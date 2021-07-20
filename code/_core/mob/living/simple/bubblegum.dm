@@ -91,6 +91,8 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
+	level = 30
+
 /mob/living/simple/bubblegum/post_death()
 	. = ..()
 	charge_steps = 0

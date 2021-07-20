@@ -67,12 +67,34 @@
 
 /obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
 
+	if(!caller || !target)
+		return FALSE
+
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!target.reagents)
 		caller.to_chat(span("warning","You can't target \the [target.name]!"))
 		return FALSE
+
+	if(is_living(caller))
+		var/mob/living/attacker = caller
+
+		var/mob/living/victim
+		if(is_living(target))
+			victim = target
+		else if(is_living(target.loc))
+			victim = target.loc
+
+		if(victim != attacker && victim.loyalty_tag == attacker.loyalty_tag) //Same team!
+			if(injecting)
+				if(reagents.contains_lethal)
+					caller.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
+					return FALSE
+			else
+				if(victim.blood_volume/victim.blood_volume_max < 0.9)
+					caller.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
+					return FALSE
 
 	return TRUE
 

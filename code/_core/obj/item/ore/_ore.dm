@@ -6,10 +6,9 @@ obj/item/ore/
 	icon_state = "rock_small"
 	var/ore_color = "#FFFFFF"
 
-obj/item/ore/New(var/desired_loc)
+/obj/item/ore/Finalize()
 	. = ..()
 	update_icon()
-	return .
 
 obj/item/ore/update_icon()
 

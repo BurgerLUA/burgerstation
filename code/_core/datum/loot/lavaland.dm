@@ -16,7 +16,8 @@
 		/obj/item/clothing/overwear/hardsuit/hammer_of_war = 1,
 		/obj/item/clothing/overwear/hardsuit/ling = 1,
 		/obj/item/storage/blood_box/duum = 1,
-		/obj/item/container/food/meme_pizza = 1
+		/obj/item/container/food/meme_pizza = 1,
+		/obj/item/weapon/melee/slaughterclaws = 1
 
 
 	)

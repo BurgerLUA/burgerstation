@@ -34,8 +34,6 @@
 		SKILL_UNARMED = BLUNT
 	)
 
-	allow_friendly_fire = FALSE
-
 	attack_delay = 14*0.5
 	attack_delay_max = 14
 
@@ -149,8 +147,6 @@
 	skill_damage = list(
 		SKILL_UNARMED = list(BLUNT,FATIGUE)
 	)
-
-	allow_friendly_fire = FALSE
 
 	//BALANCE CHANGE. FASTER SPEED.
 	attack_delay = 8*0.5

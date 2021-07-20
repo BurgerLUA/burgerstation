@@ -15,6 +15,13 @@
 	value = 10000
 	value_burgerbux = 50
 
+/obj/item/spraycan/Destroy()
+	. = ..()
+	if(desired_spray)
+		QDEL_NULL(desired_spray)
+	if(existing_spray)
+		QDEL_NULL(existing_spray)
+
 /obj/item/spraycan/Finalize()
 	. = ..()
 	update_sprite()

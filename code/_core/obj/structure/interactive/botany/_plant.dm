@@ -6,7 +6,6 @@
 	icon = 'icons/obj/markers/plant.dmi'
 	icon_state = null
 
-
 	var/plant_type/plant_type
 
 	var/growth = 0 //Increases by growth_speed every second.
@@ -14,14 +13,34 @@
 	var/growth_max = 100 //The growth value when this plant is considered grown, but has no produce grown on it.
 	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
 
+	reagents = /reagent_container/plant
+
 	//Stats
 	var/potency = 20 //How much chemicals?
 	var/yield = 1
 	var/growth_speed = 5 //How much to add to growth every second
 
+	var/hydration = 100 //Out of 100
+	var/nutrition = 100 //Out of 100
+	var/age = 0 //In seconds. Once it gets old (5 minutes) it starts to take damage.
+
 	var/delete_after_harvest = TRUE
 
+	health = /health/plant
+
 	mouse_opacity = 2
+
+	var/dead = FALSE
+
+/obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
+	if(damage && !dead)
+		dead = TRUE
+		health.restore()
+		update_sprite()
+	. = ..()
+	if(dead || !damage)
+		qdel(src)
+
 
 /obj/structure/interactive/plant/New(var/desired_loc)
 	SSbotany.all_plants += src
@@ -36,10 +55,12 @@
 	return ..()
 
 /obj/structure/interactive/plant/proc/on_life()
-
-	var/real_growth_speed = growth_speed*TICKS_TO_SECONDS(SSbotany.tick_rate)
-
+	var/rate = TICKS_TO_SECONDS(SSbotany.tick_rate)
+	var/real_growth_speed = growth_speed*rate
 	growth += FLOOR(real_growth_speed * (rand(75,125)/100), 1)
+	age += rate
+	if(age >= SECONDS_TO_DECISECONDS(300) && !prob(80))
+		src.health.adjust_loss_smart(brute=1)
 	update_sprite()
 	return TRUE
 
@@ -51,7 +72,10 @@
 
 	icon = associated_plant.plant_icon
 
-	if(growth >= growth_produce_max)
+	if(dead)
+		icon_state = "[associated_plant.plant_icon_state]-dead"
+
+	else if(growth >= growth_produce_max)
 		if(associated_plant.plant_icon_state_override)
 			icon_state ="[associated_plant.plant_icon_state_override]-harvest"
 		else
@@ -97,13 +121,15 @@
 		if(move_direction & WEST)
 			animation_offset_x += 32
 
-		//Harvester's botany skill increases the harvested results based on their skill power.
-		//Each point in skill power add .2 potency and .1 yield.
-		var/skillPower = caller.get_skill_power(SKILL_BOTANY)
-		potency = potency + (potency * skillPower * 2)
-		yield += yield * skillPower
+		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
 
-		for(var/i=1,i<=yield,i++)
+		var/local_potency = min(potency*skill_power,100*min(skill_power,1))
+		var/local_yield = min(yield*skill_power,10*min(skill_power,1))
+
+		local_potency = CEILING(local_potency,1)
+		local_yield = CEILING(local_yield,1)
+
+		for(var/i=1,i<=local_yield,i++)
 			var/obj/item/container/food/plant/P = new(caller_turf)
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
@@ -111,9 +137,9 @@
 			P.desc = associated_plant.desc
 			P.icon = associated_plant.harvest_icon
 			P.icon_state = associated_plant.harvest_icon_state
-			P.potency = potency
-			P.yield = yield
-			P.growth_speed = growth_speed
+			P.potency = CEILING(local_potency * 0.75,1)
+			P.yield = CEILING(local_yield * 0.75,1)
+			P.growth_speed = growth_speed*0.75
 			P.plant_type = plant_type
 			P.can_slice = associated_plant.can_slice
 			INITIALIZE(P)
@@ -126,15 +152,16 @@
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 
 		caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
-		caller.add_skill_xp(SKILL_BOTANY, potency)
+		caller.add_skill_xp(SKILL_BOTANY, CEILING(yield*potency*0.01,1))
+
+		potency *= 0.5 + min(skill_power,0.5)
+		yield *= 0.5 + min(skill_power,0.5)
 
 	growth = growth_min
 
 	if(delete_after_harvest)
 		qdel(src)
 	else
-		potency = potency > initial(potency) ? initial(potency) : potency
-		yield = yield > initial(yield) ? initial(yield)  : yield
 		growth = growth_max
 		update_sprite()
 

@@ -88,3 +88,13 @@
 	sound_environment = ENVIRONMENT_AUDITORIUM
 
 	interior = TRUE
+
+
+/area/prefab/syndicate_base
+	name = "Secret Syndicate Base"
+	icon_state = "red"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_CAVE
+
+	interior = TRUE

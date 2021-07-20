@@ -19,3 +19,15 @@ var/global/mob/abstract/melee_checker
 /mob/abstract/melee_checker/New(var/desired_loc)
 	melee_checker = src
 	return ..()
+
+
+/mob/abstract/dview
+	// Can't make it invisible enough.
+	invisibility = 101
+	alpha        = 0
+	opacity      = 0
+
+	see_in_dark  = 1e6 // Literally arbitrary.
+
+	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

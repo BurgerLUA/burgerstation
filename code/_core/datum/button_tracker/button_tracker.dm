@@ -4,9 +4,8 @@
 	var/client/owner
 
 /button_tracker/Destroy()
-	pressed_list.Cut()
 	owner = null
-	return ..()
+	. = ..()
 
 /button_tracker/New(var/client/spawning_client)
 	owner = spawning_client

@@ -14,6 +14,8 @@
 
 	pixel_y = 16
 
+	mouse_opacity = 1
+
 /obj/structure/interactive/fulton/Destroy()
 
 	if(stored_movable)
@@ -56,6 +58,7 @@
 	. = 0
 
 	if(!stored_movable)
+		qdel(src)
 		return
 
 	if(is_living(stored_movable))

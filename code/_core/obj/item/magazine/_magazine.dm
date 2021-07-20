@@ -26,19 +26,33 @@
 	var/regen_speed = 30 //magazines can be allowed to regen faster or slower on an individual basis this way.
 
 	weight = 0.25
+	has_quick_function = TRUE //Allows mags to show up in the belt slots.
+
+/obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
+	if(!is_advanced(caller) || !is_inventory(src.loc))
+		return FALSE
+
+	var/mob/living/advanced/A = caller
+	var/obj/hud/inventory/I = src.loc
+	var/obj/item/belt_storage = I.loc
+	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
+
+	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
+
+	return A.put_in_hands(src,left = put_in_left)
+
 
 //This callback activates when a refiller item is used on a magazine
 /obj/item/magazine/proc/regen()
-	if (length(stored_bullets) < bullet_count_max)
+	if(length(stored_bullets) < bullet_count_max)
 		var/obj/item/bullet_cartridge/B = new ammo(src)
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
 		stored_bullets += B
 		update_sprite()
-
-	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
-	return ..()
+		CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
+	. = ..()
 
 /obj/item/magazine/update_icon()
 
@@ -89,6 +103,10 @@
 
 	if (object_data["regenerate"])
 		regenerate = TRUE
+
+/obj/item/magazine/Finalize()
+	. = ..()
+	if(regenerate)
 		regen()
 
 /obj/item/magazine/Generate()
@@ -97,7 +115,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
-			GENERATE(B)
+			//DO NOT PUT GENERATE HERE.
 			FINALIZE(B)
 			stored_bullets += B
 
@@ -107,14 +125,14 @@
 
 /obj/item/magazine/Destroy()
 
-	for(var/k in stored_bullets)
-		if(!k) continue
-		var/obj/item/bullet_cartridge/B = k
-		qdel(B)
+	if(stored_bullets)
+		for(var/k in stored_bullets)
+			if(!k) continue
+			var/obj/item/bullet_cartridge/B = k
+			qdel(B)
+		stored_bullets.Cut()
 
-	stored_bullets.Cut()
-
-	return ..()
+	. = ..()
 
 /obj/item/magazine/PostInitialize()
 	. = ..()
@@ -165,8 +183,6 @@
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-
-
 	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -183,7 +199,7 @@
 
 /obj/item/magazine/click_self(var/mob/caller)
 
-	if(length(stored_bullets))
+	if(length(stored_bullets) && !is_weapon(loc))
 		INTERACT_CHECK
 		INTERACT_DELAY(1.5)
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]

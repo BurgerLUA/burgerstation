@@ -115,9 +115,21 @@
 		client.clear_mob(src,TRUE)
 
 	ckey_owner = null
+	ckey_last = null
 	key = null // required to GC
-	buttons.Cut()
-	health_elements.Cut()
+
+	if(buttons)
+		for(var/k in buttons)
+			var/atom/movable/M = k
+			qdel(M)
+		buttons.Cut()
+
+	if(health_elements)
+		for(var/k in health_elements)
+			var/atom/movable/M = health_elements[k]
+			qdel(M)
+		health_elements.Cut()
+
 	if(stored_chat_text)
 		stored_chat_text.Cut()
 
@@ -145,7 +157,23 @@
 
 	QDEL_NULL(examine_overlay)
 
-	return ..()
+	if(parallax)
+		for(var/k in parallax)
+			var/atom/movable/M = parallax[k]
+			qdel(M)
+		parallax.Cut()
+
+	if(color_mods)
+		color_mods.Cut()
+
+	if(lighting_mods)
+		lighting_mods.Cut()
+
+	. = ..()
+
+	fallback_mob = null
+	if(linked_mobs)
+		linked_mobs.Cut()
 
 /mob/Login()
 
