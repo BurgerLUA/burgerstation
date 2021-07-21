@@ -32,6 +32,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308/ap,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/honey,
+		/obj/item/magazine/honey,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
