@@ -15,7 +15,7 @@
 	shoot_sounds = list('sound/weapons/russia/gauss.ogg')
 
 	size = SIZE_1
-	weight = 8
+	weight = 2
 
 	bullet_length_min = 11
 	bullet_length_best = 12
@@ -34,7 +34,7 @@
 	movement_spread_base = 0.3
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread()
-	return 0
+	return 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L)
-	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))
+	return max(0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
