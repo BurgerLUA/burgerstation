@@ -32,8 +32,6 @@
 		SKILL_UNARMED = list(SHOCK)
 	)
 
-	allow_friendly_fire = FALSE
-
 	cqc_tag = "4"
 
 	attack_delay = 12*0.5

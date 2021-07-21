@@ -11,6 +11,11 @@
 
 	value = 5000
 
+/obj/item/herald_mirror/Destroy()
+	linked_destination = null
+	linked_returning = null
+	. = ..()
+
 /obj/item/herald_mirror/Finalize()
 	linked_destination = locate() in world
 	return ..()

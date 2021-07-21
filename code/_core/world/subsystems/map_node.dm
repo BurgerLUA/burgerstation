@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(map_node)
 
 /subsystem/map_node/Initialize()
 
-	log_subsystem("Node graph out of date. Rebuilding...")
+	log_subsystem(name,"Node graph out of date. Rebuilding...")
 
 	node_checker = new /mob/abstract/node_checker(locate(1,1,1))
 

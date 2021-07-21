@@ -13,8 +13,6 @@
 
 /obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-
-
 	if(istype(object,/obj/item/material/ore))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

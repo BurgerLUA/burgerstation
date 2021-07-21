@@ -53,8 +53,6 @@
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
-	var/list/known_wishgranters = list() //ID based.
-
 	health = /health/mob/living/advanced
 
 	var/list/tracked_hidden_organs
@@ -117,7 +115,6 @@
 	remove_all_organs()
 	remove_all_buttons()
 
-	inventory.Cut()
 	overlays_assoc.Cut()
 	tracked_hidden_organs.Cut()
 

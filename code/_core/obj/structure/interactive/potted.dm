@@ -4,7 +4,7 @@ obj/structure/interactive/potted_plant
 	desc_extended = "A randomized potted plant as decor to liven up the area."
 	icon = 'icons/obj/structure/flora/potted.dmi'
 
-	bullet_block_chance = 25
+	bullet_block_chance = 10
 
 	pixel_y = 8
 

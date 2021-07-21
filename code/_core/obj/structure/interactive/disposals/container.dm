@@ -23,8 +23,9 @@
 		var/list/offset = direction_to_pixel_offset(pick(DIRECTIONS_ALL))
 		M.throw_self(M,null,null,null,offset[1]*10,offset[2]*10)
 
-	return ..()
+	last_pipe = null
 
+	. = ..()
 
 /obj/disposals_container/proc/move_to_pipe(var/obj/structure/interactive/disposals/D)
 	last_pipe = loc

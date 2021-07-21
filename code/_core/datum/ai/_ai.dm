@@ -81,8 +81,6 @@
 
 	var/ignore_immortal = FALSE
 
-	var/list/enemy_tags = list()
-
 	var/reaction_time = 4 //In Deciseconds.
 
 	var/stored_sneak_power = 0
@@ -99,6 +97,8 @@
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them.
 	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner.
+
+	var/list/enemy_tags = list()
 
 	//Roaming Stuff. Mostly read only.
 	var/roam = FALSE
@@ -149,7 +149,14 @@
 		current_path.Cut()
 		current_path = null
 
+	if(current_path_astar)
+		current_path_astar.Cut()
+		current_path_astar = null
+
 	SSai.path_stuck_ai -= src
+
+	active_ai_list = null
+	inactive_ai_list = null
 
 	return ..()
 

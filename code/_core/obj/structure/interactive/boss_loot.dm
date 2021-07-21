@@ -27,6 +27,9 @@ var/global/list/wishgranter_speak_lines = list(
 	var/die_time = 0
 	var/next_speak = 0
 
+/obj/structure/interactive/boss_loot/Destroy()
+	allowed_users.Cut()
+	return ..()
 
 /obj/structure/interactive/boss_loot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -52,16 +55,13 @@ var/global/list/wishgranter_speak_lines = list(
 			if(prob(10)) I.quality = 100 + min(round(5 + ((rand(1,1000)*0.0025)**4),5),40)
 
 		caller.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
+		play_sound('sound/effects/wishgranter.ogg', T, range_max = VIEW_RANGE)
 		var/obj/hud/inventory/I = object
 		if(is_item(created_loot[1]))
 			I.add_object(created_loot[1])
 		allowed_users -= caller
 		return TRUE
 
-	return ..()
-
-/obj/structure/interactive/boss_loot/Destroy()
-	allowed_users.Cut()
 	return ..()
 
 /obj/structure/interactive/boss_loot/proc/clear_self()

@@ -9,6 +9,10 @@
 
 	density = TRUE
 
+/obj/structure/interactive/wizard_hole/Destroy()
+	. = ..()
+	linked_wormhole = null
+
 /obj/structure/interactive/wizard_hole/Finalize()
 
 	if(!linked_wormhole)

@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(economy)
 	var/gold_in_circulation = 1000000
 	var/list/price_multipliers = list() //Format: type (as text) : value
 	var/list/purchases_this_round = list() //This is created by vendors. Not saved.
+	var/gold_base_value = 5000000 //How much credits are invested into gold.
 
 /subsystem/economy/Initialize()
 
@@ -41,7 +42,7 @@ SUBSYSTEM_DEF(economy)
 	else
 		log_error("ERROR: No file found in [GOLD_CIRCULATION_DIR]!")
 
-	credits_per_gold = CEILING(1000000/gold_in_circulation,1)
+	credits_per_gold = CEILING(gold_base_value/gold_in_circulation,1)
 
 	. = ..()
 

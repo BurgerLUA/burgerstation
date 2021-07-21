@@ -136,6 +136,14 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 /mob/living/advanced/player/Destroy()
 
+	if(followers)
+		for(var/k in followers)
+			var/mob/living/L = k
+			L.ai.set_move_objective(null)
+			L.following = null
+			followers -= L
+		followers.Cut()
+
 	if(client)
 		client.make_ghost(src.loc ? src.loc : FALLBACK_TURF)
 

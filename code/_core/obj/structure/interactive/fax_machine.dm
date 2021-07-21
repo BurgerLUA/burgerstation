@@ -12,6 +12,10 @@
 
 	pixel_y = 4
 
+/obj/structure/interactive/fax_machine/Destroy()
+	QDEL_NULL(stored_paper)
+	. = ..()
+
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 

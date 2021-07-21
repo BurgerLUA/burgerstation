@@ -32,6 +32,11 @@
 
 	use_iff_tag = TRUE
 
+/obj/item/weapon/ranged/bullet/Destroy()
+	QDEL_NULL(chambered_bullet)
+	QDEL_CUT(stored_bullets)
+	return ..()
+
 /* Price calculation is hard.
 /obj/item/weapon/ranged/bullet/get_damage_price()
 
@@ -95,12 +100,6 @@
 
 	if(chambered_bullet)
 		. += div("notice","There is a bullet loaded in the chamber.")
-
-
-/obj/item/weapon/ranged/bullet/Destroy()
-	QDEL_NULL(chambered_bullet)
-	QDEL_CUT(stored_bullets)
-	return ..()
 
 /obj/item/weapon/ranged/bullet/get_ranged_damage_type()
 	return chambered_bullet ? chambered_bullet.damage_type : damage_type

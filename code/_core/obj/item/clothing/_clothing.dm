@@ -67,6 +67,14 @@
 
 	var/list/ench/clothing_enchantments = list()
 
+/obj/item/clothing/Destroy()
+	if(additional_clothing_stored)
+		for(var/k in additional_clothing_stored)
+			var/atom/movable/M = k
+			qdel(M)
+		additional_clothing_stored.Cut()
+	. = ..()
+
 /obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 
 	if(loyalty_tag && owner.loyalty_tag != loyalty_tag)
@@ -101,10 +109,6 @@
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	. = ..()
-
-/obj/item/clothing/Destroy()
-	additional_clothing_stored.Cut()
-	return ..()
 
 /obj/item/clothing/Initialize()
 

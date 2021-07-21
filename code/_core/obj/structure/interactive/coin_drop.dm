@@ -16,6 +16,16 @@
 
 	var/falling = FALSE
 
+/obj/structure/interactive/coin_drop/Destroy()
+	if(cached_image)
+		for(var/k in valid_players)
+			var/mob/M = k
+			if(M.client)
+				M.client -= cached_image
+		cached_image = null
+	valid_players.Cut()
+	. = ..()
+
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	if(!caller || !caller.client)
 		return TRUE
@@ -34,18 +44,6 @@
 	if(length(valid_players) <= 0)
 		qdel(src)
 	return TRUE
-
-
-/obj/structure/interactive/coin_drop/Destroy()
-	. = ..()
-	if(cached_image)
-		for(var/k in valid_players)
-			var/mob/M = k
-			if(M.client)
-				M.client -= cached_image
-		cached_image = null
-	valid_players.Cut()
-	valid_players = null
 
 /obj/structure/interactive/coin_drop/update_sprite()
 	. = ..()

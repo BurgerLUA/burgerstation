@@ -51,7 +51,7 @@
 		hooks.Cut()
 		hooks = null
 
-	return ..()
+	. = ..()
 
 
 /datum/proc/get_debug_name()

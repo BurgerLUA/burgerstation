@@ -12,6 +12,20 @@
 	var/resources_to_spend = 36 //Early growth.
 	var/blob_limit = 640
 
+/obj/structure/interactive/blob/core/Destroy()
+
+	for(var/k in linked_walls)
+		var/obj/structure/interactive/blob/B = k
+		B.health.adjust_loss_smart(brute=max(0,B.health.health_current - 1))
+		B.health.update_health()
+		B.color = null
+
+	linked_walls.Cut()
+	linked_nodes.Cut()
+	damaged_walls.Cut()
+
+	return ..()
+
 /obj/structure/interactive/blob/core/proc/get_nodes_to_create()
 	return FLOOR(length(linked_walls)*(1/18),1) - length(linked_nodes)
 
@@ -29,18 +43,6 @@
 /obj/structure/interactive/blob/core/PostInitialize()
 	. = ..()
 	start_thinking(src)
-
-/obj/structure/interactive/blob/core/Destroy()
-
-	for(var/k in linked_walls)
-		var/obj/structure/interactive/blob/B = k
-		B.health.adjust_loss_smart(brute=max(0,B.health.health_current - 1))
-		B.health.update_health()
-		B.color = null
-
-	linked_walls.Cut()
-	linked_nodes.Cut()
-	return ..()
 
 /obj/structure/interactive/blob/core/proc/get_valid_turfs() //Should only be used by nodes and cores.
 
@@ -109,4 +111,3 @@
 	var/image/I = new/image(icon,"core_overlay")
 	I.appearance_flags = KEEP_TOGETHER | RESET_COLOR
 	add_overlay(I)
-	
