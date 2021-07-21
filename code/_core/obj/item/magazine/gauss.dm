@@ -8,7 +8,6 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/gauss
