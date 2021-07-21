@@ -3,7 +3,7 @@
 	desc = "Aleph-2 shots, enough to kill anything."
 	desc_extended = "A fancy pair of holsters that holds as many revolvers as you can think of."
 	rarity = RARITY_RARE
-	icon = 'icons/obj/item/clothing/belts/medical.dmi'
+	icon = 'icons/obj/item/clothing/belts/white.dmi'
 	worn_layer = LAYER_MOB_CLOTHING_COAT
 	dyeable = TRUE
 
