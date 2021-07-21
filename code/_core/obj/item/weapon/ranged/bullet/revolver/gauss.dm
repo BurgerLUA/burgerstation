@@ -14,8 +14,8 @@
 
 	shoot_sounds = list('sound/weapons/russia/gauss.ogg')
 
-	size = SIZE_1
-	weight = 2
+	size = SIZE_2
+	weight = 4
 
 	bullet_length_min = 11
 	bullet_length_best = 12
