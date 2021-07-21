@@ -12,7 +12,7 @@
 /image/overlay/Destroy()
 	attached_object = null
 	for(var/k in additional_blends)
-		qdel(k)
+		//qdel(k)
 	return ..()
 
 /image/overlay/proc/add_overlay(var/datum/overlay_to_add)
