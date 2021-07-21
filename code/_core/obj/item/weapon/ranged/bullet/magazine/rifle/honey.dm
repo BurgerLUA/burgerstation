@@ -4,7 +4,7 @@
 	desc_extended = "An integrally supressed PDW, firing .300 CCA subsonic ammo. Designed for covert operations."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/honey.dmi'
 	icon_state = "inventory"
-	value = 2000
+	value = 2300
 
 	shoot_delay = 1.9
 

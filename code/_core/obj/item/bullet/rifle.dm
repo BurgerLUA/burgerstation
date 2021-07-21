@@ -309,8 +309,8 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/223.dmi'
 
-	bullet_diameter = 9
-	bullet_length = 39
+	bullet_diameter = 7.62
+	bullet_length = 35
 	bullet_color = COLOR_BULLET
 
 	item_count_max = 5
