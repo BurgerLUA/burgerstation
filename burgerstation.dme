@@ -1566,6 +1566,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\smg\syn.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\smg\tactical.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\pump\_pump.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\pump\rev_gl.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\pump\shotgun\_shotgun.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\pump\shotgun\combat_shotgun.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\pump\shotgun\ks23.dm"
