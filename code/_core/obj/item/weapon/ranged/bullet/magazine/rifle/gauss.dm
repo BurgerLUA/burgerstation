@@ -1,4 +1,4 @@
-//obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun
 	name = "\improper 2x12mm Experimental Gauss Gun"
 	desc = "We thank you, oh Monolith, for revealing the cunning plans of your enemies to us. May your light shine down on the souls of the brave soldiers who gave their lives in service to your will."
 	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the russian facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
