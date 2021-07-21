@@ -7,7 +7,7 @@
 	bullet_count_max = 8
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/gauss
