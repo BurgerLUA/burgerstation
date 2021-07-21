@@ -40,6 +40,7 @@
 		/obj/item/armor_plate/ultra = 1,
 		/loot/weapon/rifle/minigun = 1,
 		/obj/item/weapon/ranged/bow/hardlight = 1,
+		/loot/weapon/rifle/gauss_carbine = 1
 	)
 
 /loot/lavaland/broodmother
