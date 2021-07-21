@@ -23,13 +23,13 @@
 
 	heat_max = 0.1
 
-	bullet_length_min = 38
-	bullet_length_best = 39
-	bullet_length_max = 40
+	bullet_length_min = 34
+	bullet_length_best = 35
+	bullet_length_max = 36
 
-	bullet_diameter_min = 8
-	bullet_diameter_best = 9
-	bullet_diameter_max = 10
+	bullet_diameter_min = 7.61
+	bullet_diameter_best = 7.62
+	bullet_diameter_max = 7.63
 
 	ai_heat_sensitivity = 1.5
 
