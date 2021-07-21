@@ -17,6 +17,7 @@
 		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357,
 		/obj/item/magazine/clip/revolver/bullet_357,
+		/obj/item/storage/ammo/bullet_357/,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
@@ -174,6 +175,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762,
+		/obj/item/storage/ammo/bullet_762/,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
