@@ -27,16 +27,16 @@
 
 	weight = 0.25
 
-//This callback activates when a refiller item is used on a magazine
+//This function activates when a refiller item is used on a magazine
 /obj/item/magazine/proc/regen()
 	if(length(stored_bullets) < bullet_count_max)
 		var/obj/item/bullet_cartridge/B = new ammo(src)
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
-		stored_bullets += B
+		stored_bullets.Insert(1, B); //guns load from highest index, so insert new bullets at the lowest.
 		update_sprite()
-		CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
+	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
 	. = ..()
 
 /obj/item/magazine/update_icon()
@@ -58,7 +58,6 @@
 /obj/item/magazine/save_item_data(var/save_inventory = TRUE)
 
 	. = ..()
-
 	if(length(stored_bullets))
 		.["stored_bullets"] = list()
 		for(var/i=1,i<=length(stored_bullets),i++)
@@ -71,7 +70,6 @@
 /obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
-
 	if(object_data["stored_bullets"])
 		for(var/k in object_data["stored_bullets"])
 			var/v = object_data["stored_bullets"][k]
