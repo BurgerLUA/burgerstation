@@ -212,7 +212,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/magazine/bizon_9mm,
 
-		/obj/item/weapon/ranged/bullet/revolver/gm94,
+		/obj/item/weapon/ranged/bullet/pump/gm94,
 		/obj/item/storage/ammo/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,

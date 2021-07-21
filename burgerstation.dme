@@ -1604,7 +1604,6 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\grenade_launcher.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\horse.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\nagant.dm"
-#include "code\_core\obj\item\weapon\ranged\bullet\revolver\rev_gl.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\traitor.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\tribarrel_shotgun.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\_laser.dm"
