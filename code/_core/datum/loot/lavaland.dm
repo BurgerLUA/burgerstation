@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bow/ashen = 1,
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
-		obj/item/clothing/back/wings/angel/demon = 1
+		/obj/item/clothing/back/wings/angel/demon = 1
 	)
 
 /loot/lavaland/bubblegum
