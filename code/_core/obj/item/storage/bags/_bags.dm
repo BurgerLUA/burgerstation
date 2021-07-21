@@ -118,6 +118,8 @@
 		/obj/item/material/ingot
 	)
 
+	value = 100
+
 /obj/item/storage/bags/mining/bluespace
 	name = "bluespace mining bag"
 	icon_state = "mining_bluespace"

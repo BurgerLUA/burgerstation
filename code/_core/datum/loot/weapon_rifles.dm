@@ -144,6 +144,17 @@
 	loot_count = 6
 	chance_none = 50
 
+/loot/weapon/rifle/gauss_carbine
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto
+	)
+
+	loot_table = list(
+		/obj/item/magazine/gauss_gun/auto = 4
+	)
+	loot_count = 6
+	chance_none = 25
+
 /loot/weapon/rifle/groza
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
