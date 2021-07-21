@@ -21,6 +21,7 @@
 	weight = 30
 
 	heat_max = 0.04
+	view_punch_mod = 0
 
 	bullet_length_min = 11
 	bullet_length_best = 12
@@ -55,4 +56,62 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L)
+	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))
+	
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto
+	name = "\improper 2x12mm Gauss Carbine"
+	desc = "STOP POSTING ABOUT MONOLITH! I'M TIRED OF SEEING IT!"
+	desc_extended = "The finalized design of the Gauss Gun. Further research and improvements in materials have given it the durability and power efficiency it needs to fire automatically. However, creating even one of this is such an expense that only the Space Russian Military are seen using these. You have to be seriously lucky to get your hands on this." //mucho texto
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
+	icon_state = "inventory"
+	rarity = RARITY_MYTHICAL
+	value = 5000
+
+	shoot_delay = 2
+
+	damage_mod = 1.1
+
+	automatic = TRUE
+
+	can_wield = TRUE
+	wield_only = TRUE
+
+	size = SIZE_5
+	weight = 30
+
+	heat_max = 0.04
+
+	bullet_length_min = 11
+	bullet_length_best = 12
+	bullet_length_max = 13
+
+	bullet_diameter_min = 1.75
+	bullet_diameter_best = 2
+	bullet_diameter_max = 2.25
+
+	ai_heat_sensitivity = 2
+
+	zoom_mul = 1
+
+	attachment_whitelist = list()
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 14 - 16
+	attachment_sight_offset_y = 25 - 16
+
+	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_y = 15 - 16
+
+
+
+	inaccuracy_modifier = 0.1
+	movement_inaccuracy_modifier = 1
+	movement_spread_base = 0.05
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto/get_static_spread()
+	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto/get_skill_spread(var/mob/living/L)
 	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))
