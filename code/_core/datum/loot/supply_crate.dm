@@ -39,7 +39,7 @@
 		/loot/weapon/rifle/val = 1,
 		/loot/weapon/rifle/vintorez = 1,
 		/loot/weapon/shotgun/ks23 = 1,
-		/loot/weapon/smg/bizon = 1,
+		/loot/weapon/smg/bizon = 1
 	)
 
 /loot/supply_crate/nanotrasen
