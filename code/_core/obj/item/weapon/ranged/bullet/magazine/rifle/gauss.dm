@@ -65,7 +65,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
 	rarity = RARITY_MYTHICAL
-	value = 5000
+	value = 15000
 
 	shoot_delay = 2
 

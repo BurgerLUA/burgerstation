@@ -28,6 +28,7 @@
 	loot_table = list(
 		/loot/weapon/pistol/yarygin = 1,
 		/loot/weapon/pistol/nagant = 1,
+		/loot/weapon/pistol/gauss_pistol = 1,
 		/loot/weapon/rifle/abakan = 1,
 		/loot/weapon/rifle/ak12 = 1,
 		/loot/weapon/rifle/ak47 = 1,

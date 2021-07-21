@@ -1600,6 +1600,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\dbarrel.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\deckhard.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\detective.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\revolver\gauss.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\grenade_launcher.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\horse.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\nagant.dm"
