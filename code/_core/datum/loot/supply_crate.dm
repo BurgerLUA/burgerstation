@@ -28,6 +28,7 @@
 	loot_table = list(
 		/loot/weapon/pistol/yarygin = 1,
 		/loot/weapon/pistol/nagant = 1,
+		/loot/weapon/pistol/gauss_pistol = 1,
 		/loot/weapon/rifle/abakan = 1,
 		/loot/weapon/rifle/ak12 = 1,
 		/loot/weapon/rifle/ak47 = 1,
@@ -38,7 +39,7 @@
 		/loot/weapon/rifle/val = 1,
 		/loot/weapon/rifle/vintorez = 1,
 		/loot/weapon/shotgun/ks23 = 1,
-		/loot/weapon/smg/bizon = 1
+		/loot/weapon/smg/bizon = 1,
 	)
 
 /loot/supply_crate/nanotrasen
