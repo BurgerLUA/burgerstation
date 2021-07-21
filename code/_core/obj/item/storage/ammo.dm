@@ -141,3 +141,78 @@
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/grenade_40mm/(src)
 	return ..()
+
+/obj/item/storage/ammo/bullet_762/
+	name = "box of 7.62x38mmR bullets"
+	desc_extended = "An ammo box that can hold 36 7.62x38mmR bullets."
+	icon_state = "762"
+	size = SIZE_3
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 6
+
+/obj/item/storage/ammo/bullet_762/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/revolver_762(src)
+	return ..()
+
+/obj/item/storage/ammo/bullet_38/
+	name = "box of .38 bullets"
+	desc_extended = "An ammo box that can hold 36 .38 bullets."
+	icon_state = "38"
+	size = SIZE_3
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 6
+
+/obj/item/storage/ammo/bullet_38/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/revolver_38(src)
+	return ..()
+
+/obj/item/storage/ammo/bullet_357/
+	name = "box of .357 bullets"
+	desc_extended = "An ammo box that can hold 36 .357 bullets."
+	icon_state = "357"
+	size = SIZE_3
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 32//for some reason 357 and 44 keep spawning in single bullets, this is a botched fix
+
+/obj/item/storage/ammo/bullet_357/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/revolver_357(src)
+	return ..()
+
+/obj/item/storage/ammo/bullet_44/
+	name = "box of .44 bullets"
+	desc_extended = "An ammo box that can hold 36 .44 bullets."
+	icon_state = "44"
+	size = SIZE_3
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 32
+
+/obj/item/storage/ammo/bullet_44/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/revolver_44(src)
+	return ..()
+
+/obj/item/storage/ammo/bullet_300/
+	name = "box of .300 bullets"
+	desc_extended = "An ammo box that can hold 36 .300 bullets."
+	icon_state = "300"
+	size = SIZE_3
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 5
+
+/obj/item/storage/ammo/bullet_300/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/revolver_300(src)
+	return ..()
