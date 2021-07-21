@@ -10,8 +10,6 @@ obj/item/clothing/back/wings/angel
 		DARK = -100
 	)
 
-
-
 	value = 3000
 
 	speed_bonus = 0.25 //25% faster.
