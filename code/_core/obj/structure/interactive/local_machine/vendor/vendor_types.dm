@@ -337,7 +337,7 @@
 	stored_types = list(
 		/obj/item/container/beaker/bucket/water,
 		/obj/item/storage/bags/botany/processor,
-		/obj/item/consumable/fertilizer
+		/obj/item/fertilizer
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds

@@ -51,6 +51,17 @@
 		if(nutrition_quality_amount)
 			L.add_nutrition_quality(nutrition_quality_amount*.)
 
+
+/reagent/nutrition/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(nutrition_amount)
+		plant.add_nutrition(nutrition_amount*0.125)
+
+	if(hydration_amount)
+		plant.add_hydration(hydration_amount)
+
 /reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
