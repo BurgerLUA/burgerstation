@@ -1,7 +1,10 @@
 /obj/item/weapon/ranged/energy/temporary //please, forgive me...
 	charge_cost = 100
 	battery = /obj/item/powercell/dummy
-	size = SIZE_8
+	size = 777 //good luck putting this anywhere
+	value = -1 //NO MATTER WHAT I DO, THE VALUE KEEPS BEING HIGH IN GOLD. HOW? WHY? IF YOU SELL A CHILD OF THIS FOR A LOT OF MONEY, TELL A CODER
+	
+	throwable = FALSE //lazy solution. Throwing still deletes guns, but this prevents errors.
 
 /obj/item/weapon/ranged/energy/temporary/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -33,6 +36,3 @@
 
 /obj/item/weapon/ranged/energy/temporary/handle_empty()
 	Destroy()
-
-/obj/item/weapon/ranged/energy/temporary/get_examine_list(var/mob/caller)
-	return ..() + div("notice","[get_ammo_count()] shot\s remaining.")
