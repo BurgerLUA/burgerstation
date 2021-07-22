@@ -11,6 +11,7 @@
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
 		/obj/item/tempering/magazine/spellswap/fireball = 1,
 		/obj/item/tempering/magazine/spellswap/flame = 1
+		/obj/item/clothing/back/wings/angel/demon = 1
 	)
 
 /loot/lavaland/bubblegum

@@ -57,7 +57,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L)
 	return max(0.001 - (0.002 * L.get_skill_power(SKILL_RANGED)))
-	
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto
 	name = "\improper 2x12mm Gauss Carbine"
 	desc = "STOP POSTING ABOUT MONOLITH! I'M TIRED OF SEEING IT!"
@@ -65,7 +65,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
 	rarity = RARITY_MYTHICAL
-	value = 5000
+	value = 15000
 
 	shoot_delay = 2
 

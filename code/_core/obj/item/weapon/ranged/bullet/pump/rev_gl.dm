@@ -1,10 +1,10 @@
-/obj/item/weapon/ranged/bullet/revolver/gm94
+/obj/item/weapon/ranged/bullet/pump/gm94
 	name = "\improper GM-94"
 	desc = "VOT POSHLA GRANATA"
 	desc_extended = "An old semi-automatic grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/misc/gm94.dmi'
 	icon_state = "inventory"
-	value = 300
+	value = 4300
 
 	shoot_delay = 20
 
@@ -65,11 +65,11 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
 
-/obj/item/weapon/ranged/bullet/revolver/gm94/get_base_spread()
+/obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1
 
-/obj/item/weapon/ranged/bullet/revolver/gm94/get_static_spread()
+/obj/item/weapon/ranged/bullet/pump/gm94/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/revolver/gm94/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/gm94/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))
