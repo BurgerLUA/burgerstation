@@ -99,7 +99,7 @@
 /obj/item/tempering/magazine/spellswap/magic_missile
 	name = "SpellSwapper - Magic Missile"
 	desc_extended = "Use this on a full magazine to trade the bullets for Magic Missiles. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "magic_missile"
 
 	new_projectile = /obj/projectile/magic/magic_missile
 	new_damage_type = /damagetype/ranged/magic/magic_missile
@@ -108,7 +108,7 @@
 /obj/item/tempering/magazine/spellswap/chaos
 	name = "SpellSwapper - Chaos Orb"
 	desc_extended = "Use this on a full magazine to trade the bullets for Chaos Orbs. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "chaos"
 
 	new_projectile = /obj/projectile/magic/chaos
 	new_damage_type = /damagetype/ranged/magic/chaos
@@ -117,7 +117,7 @@
 /obj/item/tempering/magazine/spellswap/fireball
 	name = "SpellSwapper - Fireball"
 	desc_extended = "Use this on a full magazine to trade the bullets for Fireball. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "fireball"
 
 	new_projectile = /obj/projectile/magic/fireball
 	new_damage_type = /damagetype/ranged/magic/fireball
@@ -126,7 +126,7 @@
 /obj/item/tempering/magazine/spellswap/flame
 	name = "SpellSwapper - Flame"
 	desc_extended = "Use this on a full magazine to trade the bullets for Flame Bolts. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "flame"
 
 	new_projectile = /obj/projectile/magic/lesser_fire
 	new_damage_type = /damagetype/ranged/magic/flame
@@ -135,7 +135,7 @@
 /obj/item/tempering/magazine/spellswap/frost
 	name = "SpellSwapper - Frost"
 	desc_extended = "Use this on a full magazine to trade the bullets for Frost Bolts. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "frost"
 
 	new_projectile = /obj/projectile/magic/frost
 	new_damage_type = /damagetype/ranged/magic/frost
@@ -144,7 +144,7 @@
 /obj/item/tempering/magazine/spellswap/arcblade
 	name = "SpellSwapper - ArcBlade"
 	desc_extended = "Use this on a full magazine to trade the bullets for ArcBlades. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "arcblade"
 
 	new_projectile = /obj/projectile/magic/arcblade
 	new_damage_type = /damagetype/ranged/magic/arcblade
@@ -153,7 +153,7 @@
 /obj/item/tempering/magazine/spellswap/tesla
 	name = "SpellSwapper - Tesla"
 	desc_extended = "Use this on a full magazine to trade the bullets for Tesla Balls. Brought to you by The Demon Prince of Hot Lead."
-	icon_state = "mag_enchant"
+	icon_state = "tesla"
 
 	new_projectile = /obj/projectile/magic/tesla
 	new_damage_type = /damagetype/ranged/magic/tesla
