@@ -2,7 +2,7 @@
 	charge_cost = 100
 	battery = /obj/item/powercell/dummy
 	size = 777 //good luck putting this anywhere
-	value = -1 //NO MATTER WHAT I DO, THE VALUE KEEPS BEING HIGH IN GOLD. HOW? WHY? IF YOU SELL A CHILD OF THIS FOR A LOT OF MONEY, TELL A CODER
+	value = -9999 //An inelegant solution, but if you somehow manage to sell this, you shouldn't profit. But if you end up losing money anyway, let a coder know.
 	
 	throwable = FALSE //lazy solution. Throwing still deletes guns, but this prevents errors.
 
