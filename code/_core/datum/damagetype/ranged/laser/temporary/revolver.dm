@@ -1,11 +1,10 @@
 /obj/item/weapon/ranged/energy/temporary/revolver
-	name = "Ocelot Revolver"
+	name = "Imaginary Revolver"
 	desc = "Six shots."
 	desc_extended = "Reloading like this is a revolution!"
 	icon = 'icons/obj/item/weapons/ranged/revolver/45.dmi'
 	icon_state = "inventory"
 	rarity = RARITY_COMMON
-	value = -1 //IT DOESN'T MATTER WHAT I DO, IT DOESN'T MATTER WHAT I TRY, I CAN'T MAKE IT SELL FOR NOTHING
 
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
