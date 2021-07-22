@@ -22,8 +22,8 @@
 			caller.to_chat(span("danger","Your mind's too burnt out to think of a revolver!"))
 			return FALSE
 		var/obj/hud/inventory/I = object
-		var/obj/item/weapon/ranged/energy/temporary/revolver/G = pickweight(created_gun)
-		G = new/obj/item/weapon/ranged/energy/temporary/revolver(get_turf(src))
+		var/obj/item/weapon/ranged/temporary/revolver/G = pickweight(created_gun)
+		G = new/obj/item/weapon/ranged/temporary/revolver(get_turf(src))
 		INITIALIZE(G)
 		GENERATE(G)
 		FINALIZE(G)
