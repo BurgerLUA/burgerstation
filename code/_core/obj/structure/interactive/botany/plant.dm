@@ -3,7 +3,7 @@
 	icon_state = "nitrogen_flower"
 
 	potency = 20
-	yield = 1
+	yield_max = 1
 	growth_speed = 0.5
 	growth_min = 0
 
@@ -12,7 +12,7 @@
 	icon_state = "oxygen_fruit"
 
 	potency = 20
-	yield = 1
+	yield_max = 1
 	growth_speed = 0.5
 
 
@@ -21,7 +21,7 @@
 	icon_state = "wheat"
 
 	potency = 10
-	yield = 4
+	yield_max = 4
 	growth_speed = 0.6
 	growth_min = 0
 
@@ -31,7 +31,7 @@
 	icon_state = "sugarcane"
 
 	potency = 5
-	yield = 3
+	yield_max = 3
 	growth_speed = 0.5
 	growth_min = 0
 
@@ -41,7 +41,7 @@
 	icon_state = "liberty_cap"
 
 	potency = 20
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.2
 	growth_min = 0
 
@@ -50,7 +50,7 @@
 	icon_state = "chanterelle"
 
 	potency = 20
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.4
 	growth_min = 0
 
@@ -60,7 +60,7 @@
 	icon_state = "destroying_angel"
 
 	potency = 20
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.1
 	growth_min = 0
 
@@ -69,7 +69,7 @@
 	icon_state = "fly_amanita"
 
 	potency = 20
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.4
 	growth_min = 0
 
@@ -78,7 +78,7 @@
 	icon_state = "glowshroom"
 
 	potency = 20
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.2
 	growth_min = 0
 
@@ -92,7 +92,7 @@
 	icon_state = "tomato"
 
 	potency = 20
-	yield = 7
+	yield_max = 7
 	growth_speed = 0.4
 	growth_min = 75
 
@@ -103,7 +103,7 @@
 	icon_state = "cabbage"
 
 	potency = 10
-	yield = 1
+	yield_max = 1
 	growth_speed = 0.5
 	growth_min = 0
 
@@ -112,7 +112,7 @@
 	icon_state = "cannabis"
 
 	potency = 20
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.4
 	growth_min = 0
 
