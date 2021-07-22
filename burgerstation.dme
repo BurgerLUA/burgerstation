@@ -374,11 +374,8 @@
 #include "code\_core\datum\damagetype\ranged\bullet\bolt.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\gauss.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\gyrojet.dm"
-<<<<<<< Updated upstream
-=======
 #include "code\_core\datum\damagetype\ranged\bullet\holybullet.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\honey.dm"
->>>>>>> Stashed changes
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_10mm.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_12mm.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_40.dm"
@@ -1381,11 +1378,8 @@
 #include "code\_core\obj\item\magazine\dip.dm"
 #include "code\_core\obj\item\magazine\gauss.dm"
 #include "code\_core\obj\item\magazine\gyrojet.dm"
-<<<<<<< Updated upstream
-=======
 #include "code\_core\obj\item\magazine\holy45.dm"
 #include "code\_core\obj\item\magazine\honey.dm"
->>>>>>> Stashed changes
 #include "code\_core\obj\item\magazine\lmg_223.dm"
 #include "code\_core\obj\item\magazine\lmg_556.dm"
 #include "code\_core\obj\item\magazine\lmg_762.dm"
@@ -1560,6 +1554,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\gauss.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\groza.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\heavy_sniper.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\honey.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg_nt.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg_nt_light.dm"
