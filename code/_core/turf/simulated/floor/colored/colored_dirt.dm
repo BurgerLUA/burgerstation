@@ -34,13 +34,23 @@
 	color = "#4C403A"
 
 /turf/simulated/floor/colored/dirt/soil
-	name = "soil"
-	color = "#3D2414"
-	desired_light_color = "#3D2414"
+	name = "topsoil"
+	color = "#54311B"
 	layer = LAYER_FLOOR + 0.131
 	corner_category = "soil"
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/cave
+
+
+/turf/simulated/floor/colored/dirt/soil/rich
+	name = "fertilized soil"
+	color = "#3D2414"
+	layer = LAYER_FLOOR + 0.132
+	corner_category = "soil_rich"
+
+	destruction_turf = /turf/simulated/floor/colored/dirt/cave
+
+
 
 /turf/simulated/floor/colored/dirt/cake
 	name = "cake"

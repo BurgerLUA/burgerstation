@@ -8,7 +8,8 @@
 		/obj/item/weapon/melee/sacred_flame = 1,
 		/obj/item/weapon/ranged/bow/ashen = 1,
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
-		/obj/item/weapon/ranged/magic/staff/lavaland = 1
+		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
+		/obj/item/clothing/back/wings/angel/demon = 1
 	)
 
 /loot/lavaland/bubblegum
@@ -40,6 +41,7 @@
 		/obj/item/armor_plate/ultra = 1,
 		/loot/weapon/rifle/minigun = 1,
 		/obj/item/weapon/ranged/bow/hardlight = 1,
+		/loot/weapon/rifle/gauss_carbine = 1
 	)
 
 /loot/lavaland/broodmother

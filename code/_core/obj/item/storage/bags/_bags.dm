@@ -89,7 +89,7 @@
 			S.growth_produce_max = P.growth_produce_max
 
 			S.potency = P.potency
-			S.yield = P.yield
+			S.yield_max = P.yield_max
 			S.growth_speed = S.growth_speed
 
 			FINALIZE(S)

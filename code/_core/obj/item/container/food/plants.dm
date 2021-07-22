@@ -15,7 +15,8 @@
 	var/growth_produce_max = 200
 
 	var/potency = 20
-	var/yield = 1
+	var/yield_max = 1
+	var/yield_percent = 100
 	var/growth_speed = 5
 
 	var/delete_after_harvest = TRUE
@@ -63,7 +64,7 @@
 			S.growth_max = growth_max
 			S.growth_produce_max = growth_produce_max
 			S.potency = FLOOR(potency/5,1)
-			S.yield = FLOOR(yield/5,1)
+			S.yield_max = FLOOR(yield_max/5,1)
 			S.growth_speed = growth_speed
 			S.delete_after_harvest = delete_after_harvest
 			S.sliced = TRUE
