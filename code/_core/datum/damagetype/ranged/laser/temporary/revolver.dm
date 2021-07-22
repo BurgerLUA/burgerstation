@@ -2,12 +2,12 @@
 	name = "Ocelot Revolver"
 	desc = "Six shots."
 	desc_extended = "Reloading like this is a revolution!"
-	icon = 'icons/obj/item/weapons/ranged/revolver/38_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/revolver/45.dmi'
 	icon_state = "inventory"
 	rarity = RARITY_COMMON
-	value = 0
+	value = -1 //IT DOESN'T MATTER WHAT I DO, IT DOESN'T MATTER WHAT I TRY, I CAN'T MAKE IT SELL FOR NOTHING
 
-	shoot_sounds = list('sound/weapons/308/big_game.ogg')
+	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	ranged_damage_type = /damagetype/ranged/bullet/revolver_38
