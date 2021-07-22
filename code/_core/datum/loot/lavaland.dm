@@ -10,7 +10,7 @@
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
 		/obj/item/tempering/magazine/spellswap/fireball = 1,
-		/obj/item/tempering/magazine/spellswap/flame = 1
+		/obj/item/tempering/magazine/spellswap/flame = 1,
 		/obj/item/clothing/back/wings/angel/demon = 1
 	)
 
