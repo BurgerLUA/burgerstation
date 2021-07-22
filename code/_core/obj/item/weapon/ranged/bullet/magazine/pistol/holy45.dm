@@ -43,7 +43,7 @@
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
-		/obj/item/attachment/sight/targeting_computer = TRUE,
+		/obj/item/attachment/sight/targeting_computer = FALSE,
 
 		/obj/item/attachment/stock/c20r = FALSE,
 
@@ -54,10 +54,10 @@
 	)
 
 	attachment_barrel_offset_x = 29 - 16
-	attachment_barrel_offset_y = 21 - 16
+	attachment_barrel_offset_y = 19 - 14
 
 	attachment_sight_offset_x = 12 - 16
-	attachment_sight_offset_y = 20 - 16
+	attachment_sight_offset_y = 21 - 17
 
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16

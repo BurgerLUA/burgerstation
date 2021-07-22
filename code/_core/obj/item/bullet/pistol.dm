@@ -390,7 +390,7 @@
 	bullet_color = COLOR_BULLET
 
 	projectile = /obj/projectile/bullet/firearm/smg
-	damage_type_bullet = /damagetype/ranged/magic/holybullet
+	damage_type_bullet = /damagetype/ranged/bullet/holybullet
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
@@ -399,7 +399,7 @@
 
 /obj/item/bullet_cartridge/pistol_45holy/surplus
 	name = "\improper surplus Holy .45 pistol cartridge"
-	damage_type_bullet = /damagetype/ranged/magic/holybullet/surplus
+	damage_type_bullet = /damagetype/ranged/bullet/holybullet/surplus
 	jam_chance = 1
 	value = 0
 

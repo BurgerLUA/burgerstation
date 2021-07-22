@@ -5,7 +5,7 @@
 	attack_damage_base = list(
 		BLUNT = 20,
 		PIERCE = 20,
-		HOLY = 30
+		HOLY = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -15,14 +15,20 @@
 		HOLY = 30
 	)
 
+	skill_stats = list(
+		SKILL_PRAYER = 300,
+	)
+
+
 	skill_damage = list(
-		SKILL_PRAYER = PIERCE
+		SKILL_PRAYER = list(PIERCE, HOLY, BLUNT)
 	)
 
 	bonus_experience_skill = list(
-		SKILL_PRAYER = 50 //75%
+		SKILL_PRAYER = 10, //75%
+		SKILL_RANGED = 40
 	)
 
-/damagetype/ranged/magic/holybullet/surplus
+/damagetype/ranged/bullet/holybullet/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
