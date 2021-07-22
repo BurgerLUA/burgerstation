@@ -8,6 +8,8 @@
 	var/uses_left = 1
 	var/turf/simulated/turf_type = /turf/simulated/floor/colored/dirt/soil/rich
 
+	value = 200
+
 /obj/item/fertilizer/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("uses_left")
@@ -35,6 +37,10 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
+	if(uses_left <= 0)
+		caller.to_chat(span("warning","There is no more fertilizer left!"))
+		return TRUE
+
 	if(ispath(object.type,turf_type))
 		caller.to_chat(span("notice","This turf already has soil!"))
 		return TRUE
@@ -46,6 +52,10 @@
 
 	T.change_turf(turf_type)
 	T.destruction_turf = old_type
+
+	uses_left--
+
+	update_sprite()
 
 	return TRUE
 

@@ -23,7 +23,7 @@
 
 	var/hydration = 100 //Out of 100
 	var/nutrition = 100 //Out of 100
-	var/age = 0 //In seconds. Once it gets old (5 minutes) it starts to take damage.
+	var/age = 0 //In seconds. Once it gets old (10 minutes) it starts to take damage.
 
 	var/delete_after_harvest = TRUE
 
@@ -32,6 +32,58 @@
 	mouse_opacity = 2
 
 	var/dead = FALSE
+
+	health_base = 100
+
+/obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
+	. = ..()
+
+	switch(age)
+		if(0 to 200)
+			. += span("notice","It looks fresh.")
+		if(200 to 400)
+			. += span("notice","It looks fine.")
+		if(400 to 600)
+			. += span("warning","It looks a little old.")
+		if(600 to 800)
+			. += span("warning","It looks old.")
+		if(800 to INFINITY)
+			. += span("warning","It looks very old.")
+
+	switch(hydration)
+		if(0 to 10)
+			. += span("danger","It looks severely underwatered!")
+		if(10 to 30)
+			. += span("warning","It looks underwatered.")
+		if(30 to 50)
+			. += span("notice","It looks like it could use some water.")
+		if(50 to 75)
+			. += span("notice","It looks watered.")
+		if(75 to 90)
+			. += span("notice","It looks well watered.")
+		if(90 to 125)
+			. += span("warning","It looks overwatered.")
+		if(125 to 200)
+			. += span("warning","It looks severely overwatered!")
+
+	switch(nutrition)
+		if(0 to 10)
+			. += span("danger","It looks severely underfertilized!")
+		if(10 to 30)
+			. += span("warning","It looks underfertilized.")
+		if(30 to 50)
+			. += span("notice","It looks like it could use some fertilizer.")
+		if(50 to 75)
+			. += span("notice","It looks fertilized.")
+		if(75 to 90)
+			. += span("notice","It looks well fertilized.")
+		if(90 to 125)
+			. += span("warning","It looks overfertilized.")
+		if(125 to 200)
+			. += span("warning","It looks severely overfertilized!")
+
+
+
 
 /obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
 	if(damage && !dead)
@@ -45,12 +97,12 @@
 
 /obj/structure/interactive/plant/proc/add_nutrition(var/nutrition_amount)
 	nutrition += nutrition_amount
-	nutrition = clamp(nutrition,0,100)
+	nutrition = clamp(nutrition,0,200)
 	return TRUE
 
 /obj/structure/interactive/plant/proc/add_hydration(var/hydration_amount)
 	hydration += hydration_amount
-	hydration = clamp(hydration,0,100)
+	hydration = clamp(hydration,0,200)
 	return TRUE
 
 /obj/structure/interactive/plant/New(var/desired_loc)
@@ -73,20 +125,29 @@
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	var/rate = TICKS_TO_SECONDS(SSbotany.tick_rate)
 	var/real_growth_speed = growth_speed*rate*(P.allowed_turfs[src.type] ? P.allowed_turfs[src.type] : 0.1)
-	add_nutrition(real_growth_speed*0.25)
-	add_hydration(real_growth_speed)
-	growth += FLOOR(real_growth_speed * (rand(75,125)/100), 1)
+
+	if(nutrition >= 10 && hydration >= 10)
+		growth += CEILING(real_growth_speed * (rand(75,125)/100),0.1)
+
+	add_nutrition(-real_growth_speed*0.25)
+	add_hydration(-real_growth_speed)
+
 	age += rate
 
 	var/brute_to_add = 0
-	if(age >= SECONDS_TO_DECISECONDS(300) && !prob(80))
+	var/tox_to_add = 0
+	if(age >= 600 && !prob(80)) //Old.
 		brute_to_add += 1
-	if(nutrition <= 25)
+	if(nutrition <= 25) //Underfertilized.
 		brute_to_add += 3*(1 - nutrition/25)
-	if(hydration <= 25)
+	else if(nutrition > 105) //Overfertilized.
+		tox_to_add += 1
+	if(hydration <= 25) //Underwatered
 		brute_to_add += 5*(1 - hydration/25)
-	if(brute_to_add)
-		src.health.adjust_loss_smart(brute=brute_to_add)
+	else if(hydration > 105) //Overwaterd
+		tox_to_add += 1
+	if(brute_to_add || tox_to_add)
+		src.health.adjust_loss_smart(brute=brute_to_add,tox=tox_to_add)
 
 	if(reagents)
 		//Fake metabolism.

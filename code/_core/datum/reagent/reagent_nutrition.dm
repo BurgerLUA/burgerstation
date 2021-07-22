@@ -8,7 +8,7 @@
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
-	var/nutrition_quality_amount = 0 //Per unit
+	var/nutrition_quality_amount = 0 //How good of a quality is the nutrition?
 	var/heal_factor = 2 //Per unit.
 
 	value = 1
@@ -57,10 +57,10 @@
 	. = ..()
 
 	if(nutrition_amount)
-		plant.add_nutrition(nutrition_amount*0.125)
+		plant.add_nutrition(.*nutrition_amount*0.125)
 
 	if(hydration_amount)
-		plant.add_hydration(hydration_amount)
+		plant.add_hydration(.*hydration_amount)
 
 /reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
