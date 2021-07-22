@@ -3,6 +3,7 @@
 	battery = /obj/item/powercell/dummy
 	size = 777 //good luck putting this anywhere
 	value = -9999 //An inelegant solution, but if you somehow manage to sell this, you shouldn't profit. But if you end up losing money anyway, let a coder know.
+	value_burgerbux = 1 //as funny as it would be to find this in the trash, if this somehow ends up in a vendor there would be Consequences.
 	
 	throwable = FALSE //lazy solution. Throwing still deletes guns, but this prevents errors.
 
