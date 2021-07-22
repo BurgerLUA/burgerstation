@@ -2,13 +2,13 @@
 	name = "endless revolver holster"
 	desc = "Aleph-2 shots, enough to kill anything."
 	desc_extended = "A fancy pair of holsters that holds as many revolvers as you can think of."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/clothing/belts/white.dmi'
 	worn_layer = LAYER_MOB_CLOTHING_COAT
+
 	dyeable = TRUE
 
-	rarity = RARITY_UNCOMMON
-	value = 200
+	rarity = RARITY_RARE
+	value = 1000
 	size = SIZE_3
 	var/list/created_gun = list() //it's not elegant, but...
 
@@ -18,7 +18,7 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
-		if (self.health.mana_current < 25)
+		if (self.health.mana_current < 10)
 			caller.to_chat(span("danger","Your mind's too burnt out to think of a revolver!"))
 			return FALSE
 		var/obj/hud/inventory/I = object
@@ -29,7 +29,7 @@
 		FINALIZE(G)
 		I.add_object(G)
 
-		self.health.adjust_mana(-25)
+		self.health.adjust_mana(-10)
 
 		self.update_health_element_icons(mana=TRUE)
 
