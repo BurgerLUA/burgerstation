@@ -1,8 +1,9 @@
 /obj/item/weapon/ranged/temporary
 	var/cost_charge = 1
 	var/total_charge = 1
-	size = 777 //if you somehow store this...
+	size = 777 //TOO BIG TO PUT ANYWHERE, THIS WILL HOLD THEM ALRIGHT
 	value = -100 //If this price ever rises above the negative, PLEASE, tell someone!
+	item_slot = SLOT_NONE // Just TRY AND STORE IT
 	value_burgerbux = 1 //just in case
 	
 	throwable = FALSE //lazy solution. Throwing still deletes guns, but this prevents errors.
