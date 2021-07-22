@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/revolver/45.dmi'
 	icon_state = "inventory"
 	rarity = RARITY_COMMON
-
+	value_burgerbux = 1 //just in case
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
