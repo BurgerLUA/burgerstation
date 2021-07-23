@@ -18,7 +18,8 @@
 	var/list/reagents = list()
 
 	var/list/allowed_turfs = list(
-		/turf/simulated/floor/colored/dirt/soil
+		/turf/simulated/floor/colored/dirt/soil = 0.25,
+		/turf/simulated/floor/colored/dirt/soil/rich = 1
 	)
 
 	var/value = 100
