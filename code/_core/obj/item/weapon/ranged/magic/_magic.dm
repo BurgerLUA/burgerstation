@@ -16,10 +16,6 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.05
 
-/obj/item/weapon/ranged/magic/Destroy()
-	QDEL_NULL(stored_powergem)
-	. = ..()
-
 
 /obj/item/weapon/ranged/magic/get_examine_list(var/mob/examiner)
 
@@ -63,6 +59,45 @@
 			return TRUE
 
 	return ..()
+
+/obj/item/weapon/ranged/magic/can_gun_shoot(var/mob/caller)
+
+	if(get_ammo_count() < 1)
+		return FALSE
+
+	return ..()
+
+/obj/item/weapon/ranged/magic/get_ammo_count()
+
+	var/mob/living/owner = get_owner()
+
+	if(!owner)
+		return 0
+
+	if(!owner.health)
+		return 1
+
+	if(!cost_mana)
+		return 1
+
+	return owner && cost_mana ? FLOOR(owner.health.mana_current / cost_mana, 1) : 0
+
+/obj/item/weapon/ranged/magic/handle_ammo(var/mob/caller,var/bullet_position=1)
+
+	if(!is_advanced(caller))
+		return ..()
+
+	var/mob/living/advanced/A = caller
+	if(!A.health)
+		return ..()
+
+	A.health.adjust_mana(-cost_mana)
+
+	A.update_health_element_icons(mana=TRUE)
+
+	A.mana_regen_delay = max(A.mana_regen_delay,30)
+
+	return null
 
 
 /obj/item/weapon/ranged/magic/save_item_data(var/save_inventory = TRUE)
