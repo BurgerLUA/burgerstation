@@ -21,6 +21,8 @@
 	size = SIZE_2
 	weight = 10
 
+	color = COLOR_BLOOD
+
 	value = 5000
 
 /obj/item/weapon/ranged/magic/deathgrips/proc/intent_check(var/mob/caller)
