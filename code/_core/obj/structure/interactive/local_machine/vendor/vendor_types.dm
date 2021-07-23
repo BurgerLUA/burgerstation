@@ -295,6 +295,9 @@
 		/obj/item/bullet_cartridge/arrow,
 		/obj/item/clothing/belt/belt_quiver,
 
+		/obj/item/weapon/ranged/bullet/magazine/pistol/holy45,
+		/obj/item/magazine/holy45
+
 	)
 
 /obj/structure/interactive/vending/chemistry/wardrobe
