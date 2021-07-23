@@ -16,6 +16,9 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.05
 
+/obj/item/weapon/ranged/magic/Destroy()
+	QDEL_NULL(stored_powergem)
+	. = ..()
 
 /obj/item/weapon/ranged/magic/get_examine_list(var/mob/examiner)
 
