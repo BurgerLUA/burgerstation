@@ -20,4 +20,4 @@
 	color_2 = "#CCB0B0"
 	color_3 = "#000000"
 
-	value = 50000
+	value = 2700

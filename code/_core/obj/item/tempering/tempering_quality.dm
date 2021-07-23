@@ -2,6 +2,21 @@
 	name = "quality improvement"
 	desc = "You shouldn't be seeing this..."
 	desc_extended = "Report this to burger."
+	has_quick_function = TRUE
+
+/obj/item/tempering/quality/quick(var/mob/caller,var/atom/object,location,params)
+
+	if(!is_advanced(caller) || !is_inventory(src.loc))
+		return FALSE
+
+	var/mob/living/advanced/A = caller
+	var/obj/hud/inventory/I = src.loc
+	var/obj/item/belt_storage = I.loc
+	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
+
+	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
+
+	return A.put_in_hands(src,left = put_in_left)
 
 /obj/item/tempering/quality/can_temper(var/mob/caller,var/obj/item/I)
 
@@ -73,10 +88,10 @@
 /obj/item/tempering/quality/magic
 	name = "magician's gem"
 	desc = "Stay on top of things."
-	desc_extended = "A fragile, yet magical gem that improves the quality of magicical tomes or staves by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
+	desc_extended = "A fragile, yet magical gem that improves the quality of spellgems by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
 	icon_state = "quality_magic"
 
-	temper_whitelist = /obj/item/weapon/ranged/magic
+	temper_whitelist = /obj/item/weapon/ranged/spellgem
 
 	value = 500
 

@@ -99,8 +99,11 @@
 	caller?.to_chat(span("notice","You switch to [selected_firemode] mode."))
 	return TRUE
 
+/obj/item/weapon/ranged/get_examine_list(var/mob/examiner)
+	. = ..()
 
-
+	if(length(firemodes))
+		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
 /* Price calculation is hard.

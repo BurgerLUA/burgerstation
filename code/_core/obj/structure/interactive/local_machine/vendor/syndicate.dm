@@ -17,11 +17,14 @@
 		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357,
 		/obj/item/magazine/clip/revolver/bullet_357,
+		/obj/item/storage/ammo/bullet_357/,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
 		/obj/item/magazine/smp_9mm,
+		/obj/item/weapon/ranged/bullet/magazine/smg/thompson,
+		/obj/item/magazine/thompson,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/carbine_223/ap,
@@ -30,6 +33,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308/ap,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/honey,
+		/obj/item/magazine/honey,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
@@ -170,6 +175,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762,
+		/obj/item/storage/ammo/bullet_762/,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
@@ -206,7 +212,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/magazine/bizon_9mm,
 
-		/obj/item/weapon/ranged/bullet/revolver/gm94,
+		/obj/item/weapon/ranged/bullet/pump/gm94,
 		/obj/item/storage/ammo/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,

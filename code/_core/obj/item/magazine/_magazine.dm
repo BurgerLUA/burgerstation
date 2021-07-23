@@ -26,17 +26,32 @@
 	var/regen_speed = 30 //magazines can be allowed to regen faster or slower on an individual basis this way.
 
 	weight = 0.25
+	has_quick_function = TRUE //Allows mags to show up in the belt slots.
 
-//This callback activates when a refiller item is used on a magazine
+/obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
+	if(!is_advanced(caller) || !is_inventory(src.loc))
+		return FALSE
+
+	var/mob/living/advanced/A = caller
+	var/obj/hud/inventory/I = src.loc
+	var/obj/item/belt_storage = I.loc
+	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
+
+	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
+
+	return A.put_in_hands(src,left = put_in_left)
+
+
+//This function activates when a refiller item is used on a magazine
 /obj/item/magazine/proc/regen()
 	if(length(stored_bullets) < bullet_count_max)
 		var/obj/item/bullet_cartridge/B = new ammo(src)
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
-		stored_bullets += B
+		stored_bullets.Insert(1, B); //guns load from highest index, so insert new bullets at the lowest.
 		update_sprite()
-		CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
+	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
 	. = ..()
 
 /obj/item/magazine/update_icon()
@@ -58,7 +73,6 @@
 /obj/item/magazine/save_item_data(var/save_inventory = TRUE)
 
 	. = ..()
-
 	if(length(stored_bullets))
 		.["stored_bullets"] = list()
 		for(var/i=1,i<=length(stored_bullets),i++)
@@ -71,7 +85,6 @@
 /obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
-
 	if(object_data["stored_bullets"])
 		for(var/k in object_data["stored_bullets"])
 			var/v = object_data["stored_bullets"][k]
@@ -167,8 +180,6 @@
 	return TRUE
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-
 
 	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		INTERACT_CHECK

@@ -13,6 +13,10 @@
 	value = 10
 
 	weight = 2
+	has_quick_function = TRUE
+	
+/obj/item/pinpointer/quick(var/mob/caller,var/atom/object,location,params)
+	return click_self(caller)
 
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
