@@ -239,3 +239,24 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,14)
 
+/obj/effect/temp/hazard/fire/
+	name = "fire"
+	icon = 'icons/obj/effects/lava.dmi' //thank you in advance for the sprites
+	icon_state = "lavastaff_warn"
+	duration = SECONDS_TO_DECISECONDS(30)
+	hazard_range = 1
+	damage_type = /damagetype/ranged/laser/flamethrower
+	cross_hazard = TRUE
+	plane = PLANE_BLOOD
+	layer = 0
+
+/obj/effect/temp/hazard/lava/get_params(var/atom/victim)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			return ..()
+
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0.14)
