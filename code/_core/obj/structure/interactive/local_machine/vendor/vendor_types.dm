@@ -589,7 +589,8 @@
 		/obj/item/clothing/uniform/clown/green,
 		/obj/item/clothing/uniform/clown/yellow,
 		/obj/item/broom/magic,
-		/obj/item/grenade/timed/lube_smoke
+		/obj/item/grenade/timed/lube_smoke,
+		/obj/item/weapon/ranged/spellgem/metronome
 	)
 
 	ignore_economy = TRUE

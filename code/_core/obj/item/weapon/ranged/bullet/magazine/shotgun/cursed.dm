@@ -6,7 +6,7 @@
     icon_state = "inventory"
     value = 2700
     projectile = /obj/projectile/magic/chaos
-    ranged_damage_type = /damagetype/ranged/magic/chaos
+    ranged_damage_type = /damagetype/ranged/magic/chaos/canine
 
     bullet_count = 7
     projectile_speed = TILE_SIZE*0.2 - 1
