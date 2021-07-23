@@ -45,11 +45,11 @@
 
 /obj/item/weapon/ranged/magic/deathgrips/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 	var/mob/living/self = caller
-	intent_check(self)
 
 	. = ..()
 
 	if(.)
+		intent_check(self)
 		src.attack_next = shoot_delay
 
 /obj/item/weapon/ranged/magic/deathgrips/can_gun_shoot(var/mob/caller)
