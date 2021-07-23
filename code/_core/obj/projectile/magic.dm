@@ -279,3 +279,17 @@
 	icon_state = "inferno"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/deathpunch
+	name = "dark punch"
+	icon_state = "cultist"
+	steps_allowed = 1.5 //it's meant to be melee range, after all
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+	
+/obj/projectile/magic/deathgrip
+	name = "dark grab"
+	icon_state = "cultist"
+	steps_allowed = 4.2 // meant to nab enemies
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
