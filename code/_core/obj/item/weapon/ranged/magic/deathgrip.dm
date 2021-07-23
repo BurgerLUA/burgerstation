@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/magic/deathgrips/
 	name = "death grippers"
 	rarity = RARITY_MYTHICAL
-	desc = "You're fit to learn the proper meaing of a beatdown."
+	desc = "You're fit to learn the proper meaning of a beatdown."
 	desc_extended = "Grab intent drags victims to you! Attack while in Harm intent to perform a punch rush!"
 	icon = 'icons/obj/item/weapons/unarmed/powerfist.dmi'
 	cost_mana = 4
