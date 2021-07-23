@@ -2,19 +2,17 @@
 	name = "Holy .45 M1911 Pistol"
 	desc = "We can't expect God to do all the work."
 	desc_extended = "The tool to carry out God's will."
-	value = 1000
+	value = 2000
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'
 	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
-
-
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
 
-	automatic = FALSE
+	automatic = TRUE // perversion in burgerstation form
 
 	size = SIZE_2
 	weight = 5
@@ -30,8 +28,8 @@
 	bullet_diameter_max = 12
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE,
-		/obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = FALSE,
+		/obj/item/attachment/barrel/charger/advanced = FALSE, // Fuck you, grind prayer. No shortcuts.
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -53,7 +51,7 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_x = 29 - 16 // Note to myself,y offset is basically value a - value b = distance from bottom pixel. cursed system
 	attachment_barrel_offset_y = 18 - 14
 
 	attachment_sight_offset_x = 12 - 16
