@@ -57,6 +57,33 @@
 	steps_allowed = 8 // uwu
 	collision_bullet_flags = FLAG_COLLISION_WALL
 
+/obj/projectile/bullet/flamer
+	name = "flames"
+	icon = 'icons/obj/projectiles/spray.dmi'
+	icon_state = "flamer"
+	plane = PLANE_EFFECT_LIGHTING
+	
+/obj/projectile/bullet/flamer/update_projectile(var/tick_rate=1)
+	. = ..()
+	if(.)
+		vel_x *= 0.95
+		vel_y *= 0.95
+		alpha = clamp(alpha-5,0,255)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_projectile_hit(current_loc)
+			qdel(src)
+			return FALSE
+			
+/obj/projectile/bullet/flamer/on_enter_tile(var/turf/old_loc,var/turf/new_loc) //stolen from cult.
+
+	. = ..()
+
+	var/obj/effect/temp/hazard/lava/found_fire = locate() in new_loc
+
+	if(!found_fire)
+		new /obj/effect/temp/hazard/lava(new_loc,SECONDS_TO_DECISECONDS(10),owner) //time and hazard type not final
+
 /* It also doesn't work that way so yeh
 //So it basically accelerates and then self-obliterates to act as some funny alternative to KA.
 /obj/projectile/bullet/laser/plasma_cutter/update_projectile(var/tick_rate=1)
