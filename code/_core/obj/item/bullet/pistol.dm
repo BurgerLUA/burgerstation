@@ -387,7 +387,7 @@
 
 	bullet_diameter = 11.43
 	bullet_length = 23
-	bullet_color = COLOR_BULLET
+	bullet_color = COLOR_SILVER
 
 	projectile = /obj/projectile/bullet/firearm/smg
 	damage_type_bullet = /damagetype/ranged/bullet/holybullet
