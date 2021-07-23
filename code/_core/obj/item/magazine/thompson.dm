@@ -4,7 +4,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/thompson.dmi'
 	icon_state = "thompson"
-	bullet_count_max = 100
+	bullet_count_max = 100 // smg perversion
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/thompson = TRUE
