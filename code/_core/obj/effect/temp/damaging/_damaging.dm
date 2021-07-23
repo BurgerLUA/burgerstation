@@ -241,8 +241,8 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 
 /obj/effect/temp/hazard/fire/
 	name = "fire"
-	icon = 'icons/obj/effects/lava.dmi' //thank you in advance for the sprites
-	icon_state = "lavastaff_warn"
+	icon = 'icons/obj/effects/flamer_fire_effect.dmi' //FIRE
+	icon_state = "fire_1"
 	duration = SECONDS_TO_DECISECONDS(30)
 	hazard_range = 1
 	damage_type = /damagetype/ranged/laser/flamethrower
