@@ -79,10 +79,10 @@
 
 	. = ..()
 
-	var/obj/effect/temp/hazard/fire/found_fire = locate() in new_loc
+	var/obj/effect/temp/hazard/flamethrowerfire = locate() in new_loc
 
 	if(!found_fire)
-		new /obj/effect/temp/hazard/fire(new_loc,SECONDS_TO_DECISECONDS(10),owner) //time and hazard type not final
+		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,SECONDS_TO_DECISECONDS(10),owner) //time and hazard type not final
 
 /* It also doesn't work that way so yeh
 //So it basically accelerates and then self-obliterates to act as some funny alternative to KA.
