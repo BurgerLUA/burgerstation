@@ -6,7 +6,7 @@
 	var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks
 	icon = 'icons/obj/item/weapons/unarmed/powerfist.dmi' //TO DO: beg for a sprite
 	damage_type = /damagetype/unarmed/slaughter //TO DO: add heavy attack (curse you stalkeros)
-	var/damage_type_harm = /damagetype/unarmed/slaughter/heavy
+	var/damage_type_harm = /damagetype/unarmed/slaughter_heavy
 	size = SIZE_2
 	weight = 10
 
@@ -26,15 +26,15 @@
 	var/turf/T = object
 	var/area/A = T.loc
 	var/target_distance = get_dist(self,T)
-	
+
 	if(self.intent == INTENT_HARM)
 		user_intent = 4
 		update_sprite()
-		
+
 	else
 		user_intent = 1
 		update_sprite()
-		
+
 	if(self.intent == INTENT_GRAB && isturf(T) && next_teleport_command <= world.time)
 		if(A.flags_area & FLAGS_AREA_NO_TELEPORT) //thing you can do: trap yourself, it's funny...
 			caller.to_chat(span("danger","Can't bloodcrawl there!"))
@@ -47,7 +47,7 @@
 		play_sound(pick('sound/effects/demon_attack1.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)
 		next_teleport_command = world.time + SECONDS_TO_DECISECONDS(2)
 		return TRUE
-		
+
 	if(self.intent == INTENT_DISARM && isturf(T) && next_blood_attack <= world.time && target_distance <= 10) //hacky solution to the range problem
 		var/turf/simulated/B = get_turf(T)
 		new/obj/effect/temp/hazard/bubblefist(B,desired_owner = self)

@@ -373,3 +373,37 @@
 
 	size = 0.01
 	value = 1
+
+
+/obj/item/bullet_cartridge/pistol_45holy/
+	name = "\improper Holy .45 pistol cartridge"
+	desc = "Joshua Graham style."
+	desc_extended = "For pistols and smgs that require holy .45 ammo."
+	rarity = RARITY_UNCOMMON
+	icon = 'icons/obj/item/bullet/holy45.dmi'
+
+	item_count_max = 6
+	item_count_max_icon = 6
+
+	bullet_diameter = 11.43
+	bullet_length = 23
+	bullet_color = COLOR_SILVER
+
+	projectile = /obj/projectile/bullet/firearm/smg
+	damage_type_bullet = /damagetype/ranged/bullet/holybullet
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	size = 0.015
+	value = 1.5
+
+/obj/item/bullet_cartridge/pistol_45holy/surplus
+	name = "\improper surplus Holy .45 pistol cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/holybullet/surplus
+	jam_chance = 1
+	value = 0
+
+/obj/item/bullet_cartridge/pistol_45holy/Generate()
+	item_count_current = 6
+	update_sprite()
+	return ..()

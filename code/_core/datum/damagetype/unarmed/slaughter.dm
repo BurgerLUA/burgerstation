@@ -59,7 +59,7 @@
 
 		return ..()
 
-/damagetype/unarmed/slaughter/heavy
+/damagetype/unarmed/slaughter_heavy
 	name = "demon rip"
 	attack_verbs = list("rips and tears")
 
@@ -104,7 +104,7 @@
 	attack_delay = 10*0.5
 	attack_delay_max = 10
 
-/damagetype/unarmed/slaughter/heavy/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/unarmed/slaughter_heavy/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(attacker) && is_living(victim))
 		var/mob/living/V = victim
