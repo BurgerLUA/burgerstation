@@ -1,5 +1,5 @@
 /obj/item/magazine/gauss_gun
-	name = "\improper 2x12 ball Gauss Rifle magazine"
+	name = "\improper 2x12 ball Gauss Carbine magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/gauss_gun.dmi'
