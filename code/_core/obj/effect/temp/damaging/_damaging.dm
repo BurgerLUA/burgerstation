@@ -250,7 +250,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	plane = PLANE_BLOOD
 	layer = 0
 
-/obj/effect/temp/hazard/lava/get_params(var/atom/victim)
+/obj/effect/temp/hazard/flamethrowerfire/get_params(var/atom/victim)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
