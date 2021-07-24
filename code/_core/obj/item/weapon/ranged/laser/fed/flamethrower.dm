@@ -2,7 +2,7 @@
 	name = "flamethrower"
 	desc = "W + M1"
 	desc_extended = "Bioweapons are fun, but they leave one hell of a mess. Why not make the cleanup fun too?"
-	icon = 'icons/obj/item/weapons/melee/polearms/goedendag.dmi'
+	icon = 'icons/obj/item/weapons/ranged/flamethrower.dmi'
 	rarity = RARITY_UNCOMMON
 	value = 0 //This is, after all, part of the Flamethrower Pack
 	value_burgerbux = 1
