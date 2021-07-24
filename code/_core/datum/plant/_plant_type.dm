@@ -276,19 +276,20 @@
 
 	typical_volume = 10
 
-/plant_type/cactus
-	name = "cactus"
-	desc = "A succulent from dry, desert biomes."
+/plant_type/cactus_fruit
+	name = "cactus fruit"
+	desc = "A prickly plant native to Lavaland containing cactus juice."
 	plant_icon_state = "cactus"
-	harvest_icon = 'icons/obj/structure/botany.dmi'
-	harvest_icon_state = "cactus-harvest"
+	harvest_icon_state = "cactus"
 	seed_icon_state = "cactus"
-	plant_icon_count = 1
+	plant_icon_count = 2
 	reagents = list(
-		/reagent/nutrition/cactus = 1
+		/reagent/nutrition/water = 0.25,
+		/reagent/medicine/omnizine = 0.25,
+		/reagent/nutrition/cactus = 0.5
 	)
 
-	typical_volume = 6
+	typical_volume = 50
 
 /plant_type/chili
 	name = "chili pepper"
@@ -301,7 +302,7 @@
 		/reagent/nutrition/capsaicin = 1
 	)
 
-	typical_volume = 2
+	typical_volume = 10
 
 /plant_type/chili/ghost
 	name = "ghost pepper"
@@ -315,4 +316,64 @@
 		/reagent/medicine/adrenaline = 0.1
 	)
 
-	typical_volume = 12
+	typical_volume = 10
+
+/plant_type/polypore_mushroom
+	name = "polypore mushroom. Harvested for the exterior skin."
+	desc = "A strange grey mushroom."
+	plant_icon_state = "polypore"
+	harvest_icon_state = "polypore"
+	seed_icon_state = "polypore"
+	plant_icon_count = 4
+	reagents = list(
+		/reagent/nutrition/water = 0.25,
+		/reagent/medicine/omnizine = 0.25,
+		/reagent/nutrition/cactus = 0.5
+	)
+
+	typical_volume = 50
+
+
+/plant_type/porcini_mushroom
+	name = "porcini mushroom"
+	desc = "A strange leafy grey mushroom. Havested for the leaf-like part."
+	plant_icon_state = "porcini"
+	harvest_icon_state = "porcini"
+	seed_icon_state = "porcini"
+	plant_icon_count = 3
+	reagents = list(
+		/reagent/medicine/nicotine = 0.2,
+		/reagent/medicine/omnizine = 0.3,
+		/reagent/nutrition/porcini = 0.5
+	)
+
+	typical_volume = 20
+
+/plant_type/inocybe_mushroom
+	name = "inocybe mushroom"
+	desc = "A tall and skinny grey mushroom. Harvested for their caps."
+	plant_icon_state = "inocybe"
+	harvest_icon_state = "inocybe"
+	seed_icon_state = "inocybe"
+	plant_icon_count = 2
+	reagents = list(
+		/reagent/drug/space = 0.5,
+		/reagent/toxin/polypnium_toxin = 0.5
+	)
+
+	typical_volume = 20
+
+/plant_type/embershroom_mushrrom
+	name = "ember mushroom"
+	desc = "A dark and skinny mushroom. Harvested for their stalks."
+	plant_icon_state = "ember"
+	harvest_icon_state = "ember"
+	seed_icon_state = "ember"
+	plant_icon_count = 3
+	reagents = list(
+		/reagent/drug/space = 0.25,
+		/reagent/tinea_luxor = 0.50,
+		/reagent/medicine/vitamins = 0.25
+	)
+
+	typical_volume = 20

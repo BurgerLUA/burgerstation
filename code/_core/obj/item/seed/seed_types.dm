@@ -149,19 +149,6 @@
 
 	delete_after_harvest = TRUE
 
-/obj/item/seed/cactus
-	plant_type = /plant_type/cactus
-
-	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
-
-	potency = 10
-	yield_max = 3
-	growth_speed = 0.3
-
-	delete_after_harvest = TRUE
-
 /obj/item/seed/chili
 	plant_type = /plant_type/chili
 

@@ -10,7 +10,6 @@
 
 	crafting_id = "ingot"
 
-
 /obj/item/material/ingot/iron
 	material_id = /material/iron
 	crafting_id = "ingot_iron"
