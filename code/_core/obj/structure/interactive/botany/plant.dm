@@ -161,6 +161,3 @@
 	potency = 10
 	yield_max = 7
 	growth_speed = 0.9
-
-	growth_max = 100
-	delete_after_harvest = FALSE

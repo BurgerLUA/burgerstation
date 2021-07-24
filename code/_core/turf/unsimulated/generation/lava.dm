@@ -126,10 +126,10 @@
 				new /obj/marker/generation/basalt(src)
 				allow_mushroom_placement = FALSE
 
-	if(src.density_down && !src.density)
+	if(allow_mushroom_placement && src.density_down && !src.density)
 		if(prob(1))
 			place_mushroom()
-		else if(prob(x + y))
+		else if(prob( (x/255)*50 + (y/255)*50))
 			place_mob_type_B()
 		else
 			place_mob_type_A()

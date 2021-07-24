@@ -355,7 +355,7 @@
 	plant_icon_state = "inocybe"
 	harvest_icon_state = "inocybe"
 	seed_icon_state = "inocybe"
-	plant_icon_count = 3
+	plant_icon_count = 2
 	reagents = list(
 		/reagent/drug/space = 0.5,
 		/reagent/toxin/polypnium_toxin = 0.5
@@ -363,3 +363,17 @@
 
 	typical_volume = 20
 
+/plant_type/embershroom_mushrrom
+	name = "ember mushroom"
+	desc = "A dark and skinny mushroom. Harvested for their stalks."
+	plant_icon_state = "ember"
+	harvest_icon_state = "ember"
+	seed_icon_state = "ember"
+	plant_icon_count = 3
+	reagents = list(
+		/reagent/drug/space = 0.25,
+		/reagent/tinea_luxor = 0.50,
+		/reagent/medicine/vitamins = 0.25
+	)
+
+	typical_volume = 20
