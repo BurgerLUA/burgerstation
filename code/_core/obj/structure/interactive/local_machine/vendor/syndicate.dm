@@ -44,6 +44,8 @@
 		/obj/item/magazine/sniper_50/explosive,
 		/obj/item/magazine/sniper_50/incendiary,
 		/obj/item/magazine/sniper_50/ion,
+		/obj/item/clothing/back/flamethrower,
+		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
 		/obj/item/tempering/quality/ranged/lesser
@@ -105,6 +107,7 @@
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
+		/obj/item/clothing/overwear/armor/seva/syndie,
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
