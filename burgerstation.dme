@@ -220,6 +220,7 @@
 #include "code\_core\datum\collectable_poster.dm"
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\addiction\_addiction.dm"
+#include "code\_core\datum\addiction\addiction_health.dm"
 #include "code\_core\datum\addiction\addiction_nicotine.dm"
 #include "code\_core\datum\addiction\addiction_opium.dm"
 #include "code\_core\datum\ai\_ai.dm"

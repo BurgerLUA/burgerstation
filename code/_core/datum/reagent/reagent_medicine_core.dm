@@ -535,7 +535,7 @@
 	metabolism_stomach = 0.1
 	experience_per_unit = 0
 
-	value = 4
+	value = 5
 
 	liquid = 0.75
 
@@ -556,4 +556,4 @@
 	owner.burn_regen_buffer += 1*.
 	owner.tox_regen_buffer += 1*.
 	owner.add_nutrition_quality(30*.)
-	L.add_nutrition(4*.)
+	owner.add_nutrition(4*.)
