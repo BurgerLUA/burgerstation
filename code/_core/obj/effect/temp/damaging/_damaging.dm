@@ -115,7 +115,7 @@ obj/effect/temp/hazard/falling_fireball/New(var/desired_location,var/desired_tim
 
 
 
-obj/effect/temp/hazard/fire/
+obj/effect/temp/hazard/fire
 	name = "hellfire"
 	icon = 'icons/obj/effects/fire.dmi'
 	icon_state = "3"
@@ -239,3 +239,24 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,14)
 
+/obj/effect/temp/hazard/flamethrowerfire
+	name = "fire"
+	icon = 'icons/obj/effects/flamer_fire_effect.dmi' //FIRE
+	icon_state = "red_1" //brain out, soup in
+	duration = SECONDS_TO_DECISECONDS(30)
+	hazard_range = 1
+	damage_type = /damagetype/ranged/laser/flamethrower
+	cross_hazard = TRUE
+	plane = PLANE_BLOOD
+	layer = 0
+
+/obj/effect/temp/hazard/flamethrowerfire/get_params(var/atom/victim)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			return ..()
+
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0.14)

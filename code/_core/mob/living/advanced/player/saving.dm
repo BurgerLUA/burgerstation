@@ -61,7 +61,7 @@
 			nutrition = initial(nutrition)*0.25
 			nutrition_fast = nutrition
 			hydration = initial(hydration)*0.5
-			nutrition_quality = initial(nutrition_quality)
+			nutrition_quality = nutrition_quality_max*0.5
 			var/currency_to_give = 0
 			if(isnum(insurance))
 				var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)

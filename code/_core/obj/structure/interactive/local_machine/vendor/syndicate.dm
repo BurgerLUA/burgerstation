@@ -105,6 +105,7 @@
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
+		/obj/item/clothing/overwear/armor/seva/syndie,
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
