@@ -295,6 +295,9 @@
 		/obj/item/bullet_cartridge/arrow,
 		/obj/item/clothing/belt/belt_quiver,
 
+		/obj/item/weapon/ranged/bullet/magazine/pistol/holy45,
+		/obj/item/magazine/holy45
+
 	)
 
 /obj/structure/interactive/vending/chemistry/wardrobe
@@ -589,7 +592,8 @@
 		/obj/item/clothing/uniform/clown/green,
 		/obj/item/clothing/uniform/clown/yellow,
 		/obj/item/broom/magic,
-		/obj/item/grenade/timed/lube_smoke
+		/obj/item/grenade/timed/lube_smoke,
+		/obj/item/weapon/ranged/spellgem/metronome
 	)
 
 	ignore_economy = TRUE
