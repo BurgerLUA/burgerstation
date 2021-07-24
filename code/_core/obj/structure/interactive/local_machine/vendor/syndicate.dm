@@ -44,6 +44,8 @@
 		/obj/item/magazine/sniper_50/explosive,
 		/obj/item/magazine/sniper_50/incendiary,
 		/obj/item/magazine/sniper_50/ion,
+		/obj/item/clothing/back/flamethrower,
+		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
 		/obj/item/tempering/quality/ranged/lesser
