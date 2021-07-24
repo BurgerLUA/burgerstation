@@ -1067,6 +1067,7 @@
 #include "code\_core\obj\item\clothing\back\storage\backpack\explorer_pack.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\medical.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\poly.dm"
+#include "code\_core\obj\item\clothing\back\storage\backpack\rucksack.dm"
 #include "code\_core\obj\item\clothing\back\storage\bluespace\_bluespace.dm"
 #include "code\_core\obj\item\clothing\back\storage\duffle\_dufflebag.dm"
 #include "code\_core\obj\item\clothing\back\storage\duffle\grey.dm"
