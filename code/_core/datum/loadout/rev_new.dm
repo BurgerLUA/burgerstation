@@ -164,7 +164,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/belt/storage/colored/black,
-		obj/item/clothing/back/storage/backpack/rucksack,
+		/obj/item/clothing/back/storage/backpack/rucksack,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
