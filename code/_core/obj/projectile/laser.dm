@@ -74,6 +74,7 @@
 			vel_y += clamp(vel_x_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
 */
 
+//it's not laser but it burns
 /obj/projectile/bullet/flamer
 	name = "flames"
 	icon = 'icons/obj/projectiles/spray.dmi'
@@ -98,5 +99,5 @@
 
 	var/obj/effect/temp/hazard/flamethrowerfire = locate() in new_loc
 
-	if(!found_fire)
-		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,SECONDS_TO_DECISECONDS(10),owner) //time and hazard type not final
+	if(!flamethrowerfire)
+		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,SECONDS_TO_DECISECONDS(30),owner) //time and hazard type not final
