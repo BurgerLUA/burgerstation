@@ -49,6 +49,16 @@
 
 	particle_size = 0.5
 
+/reagent/toxin/polypnium_toxin
+	name = "polypnium toxin"
+	desc = "An very lethal toxin."
+
+	damage_per_unit = 10
+
+	flavor = "mushroom"
+
+	particle_size = 0.3
+
 /reagent/toxin/xeno_acid
 	name = "xeno acid"
 	desc = "Literal fucking acid."

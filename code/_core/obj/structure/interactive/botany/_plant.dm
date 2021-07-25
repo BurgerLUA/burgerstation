@@ -24,6 +24,7 @@
 	var/hydration = 100 //Out of 100
 	var/nutrition = 100 //Out of 100
 	var/age = 0 //In seconds. Once it gets old (10 minutes) it starts to take damage.
+	var/lifetime = 900 //The age in which this plant starts dying, in seconds.
 
 	var/delete_after_harvest = TRUE
 
@@ -38,16 +39,16 @@
 /obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
 	. = ..()
 
-	switch(age)
-		if(0 to 200)
+	switch(age/lifetime)
+		if(0 to 0.4)
 			. += span("notice","It looks fresh.")
-		if(200 to 400)
+		if(0.4 to 0.6)
 			. += span("notice","It looks fine.")
-		if(400 to 600)
+		if(0.6 to 0.7)
 			. += span("warning","It looks a little old.")
-		if(600 to 800)
+		if(0.8 to 0.1)
 			. += span("warning","It looks old.")
-		if(800 to INFINITY)
+		if(1 to INFINITY)
 			. += span("warning","It looks very old.")
 
 	switch(hydration)
@@ -111,7 +112,10 @@
 
 /obj/structure/interactive/plant/Generate()
 	. = ..()
-	growth = rand(growth_max,growth_produce_max)
+	growth = growth_produce_max
+	lifetime = 60*60*24*7*4*rand(1,5)
+	age = lifetime * RAND_PRECISE(0.25,0.75)
+	age = CEILING(age,1)
 
 /obj/structure/interactive/plant/Finalize()
 	. = ..()

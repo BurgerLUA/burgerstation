@@ -3,6 +3,9 @@
 	desc = "You shouldn't see this."
 	icon = 'icons/obj/item/crafting/parts.dmi'
 	icon_state = "scrap"
+	inventories = null
+	is_container = FALSE
+
 
 /obj/item/crafting/ingredient/part/
 	name = "part"
