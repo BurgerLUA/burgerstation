@@ -1,5 +1,6 @@
 #define PRICE_MULTIPLIER_DIR "data/server/price_multipliers.txt"
 #define GOLD_CIRCULATION_DIR "data/server/gold_circulation.txt"
+#define GOBLIN_CIRCULATION_DIR "data/server/gold_circulation_goblin.txt"
 
 
 SUBSYSTEM_DEF(economy)
@@ -12,6 +13,14 @@ SUBSYSTEM_DEF(economy)
 	var/list/price_multipliers = list() //Format: type (as text) : value
 	var/list/purchases_this_round = list() //This is created by vendors. Not saved.
 	var/gold_base_value = 5000000 //How much credits are invested into gold.
+
+	var/goblin_economy = 100000 //How much gold goblins have.
+	var/sell_multiplier = 1
+
+
+/subsystem/economy/proc/update_stats()
+	credits_per_gold = CEILING(gold_base_value/gold_in_circulation,1)
+	sell_multiplier = clamp(goblin_economy/100000,0.1,1)*0.5
 
 /subsystem/economy/Initialize()
 
@@ -42,7 +51,20 @@ SUBSYSTEM_DEF(economy)
 	else
 		log_error("ERROR: No file found in [GOLD_CIRCULATION_DIR]!")
 
-	credits_per_gold = CEILING(gold_base_value/gold_in_circulation,1)
+	if(fexists(GOBLIN_CIRCULATION_DIR))
+		var/loaded_data = file2text(GOBLIN_CIRCULATION_DIR)
+		if(loaded_data)
+			loaded_data = text2num(loaded_data)
+			if(loaded_data)
+				goblin_economy = loaded_data
+			else
+				log_error("ERROR: No number data found in [GOBLIN_CIRCULATION_DIR]!")
+		else
+			log_error("ERROR: No valid data found in [GOBLIN_CIRCULATION_DIR]!")
+	else
+		log_error("ERROR: No file found in [GOBLIN_CIRCULATION_DIR]!")
+
+	update_stats()
 
 	. = ..()
 
@@ -70,6 +92,9 @@ SUBSYSTEM_DEF(economy)
 
 	fdel(GOLD_CIRCULATION_DIR)
 	text2file("[gold_in_circulation]",GOLD_CIRCULATION_DIR)
+
+	fdel(GOBLIN_CIRCULATION_DIR)
+	text2file("[goblin_economy]",GOBLIN_CIRCULATION_DIR)
 
 	return TRUE
 

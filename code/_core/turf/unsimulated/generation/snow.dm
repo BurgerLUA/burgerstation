@@ -136,7 +136,7 @@
 
 
 
-/turf/unsimulated/generation/snow_cave //ICEBOX ONLY
+/turf/unsimulated/generation/snow_cave
 	name = "snow cave generation"
 	icon_state = "caves"
 
@@ -179,21 +179,32 @@
 				new /obj/marker/generation/snow_wall(src)
 			else
 				new /turf/simulated/wall/rock(src)
-				new /area/box/interior/caves(src)
 				if(prob(1)) new /obj/marker/generation/rock_wall(src)
 		if(0.5 to 0.8)
 			new /turf/simulated/floor/cave_dirt(src)
-			new /area/box/interior/caves(src)
 			if(prob(1)) new /obj/marker/generation/rock_wall(src)
 		if(0.8 to 0.9)
 			if(is_different)
 				new /obj/marker/generation/snow_wall(src)
 			else
 				new /turf/simulated/wall/rock(src)
-				new /area/box/interior/caves(src)
 				if(prob(1)) new /obj/marker/generation/rock_wall(src)
 		if(0.9 to INFINITY)
 			new /turf/simulated/wall/rock/snow(src)
 			if(prob(1)) new /obj/marker/generation/snow_wall(src)
 
 	return ..()
+
+
+/turf/unsimulated/generation/snow_cave/path
+	icon_state = "caves_path"
+
+/turf/unsimulated/generation/snow_cave/path/generate(var/size = WORLD_SIZE)
+
+	if(no_wall)
+		new /turf/simulated/floor/colored/dirt/cave(src)
+		return ..()
+
+	new /turf/simulated/floor/cave_dirt(src)
+	if(prob(0.25)) new /obj/marker/generation/rock_wall(src)
+	return TRUE

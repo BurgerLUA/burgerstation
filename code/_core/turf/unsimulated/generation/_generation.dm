@@ -21,3 +21,19 @@
 
 	icon = 'icons/turf/floor/circuit.dmi'
 	icon_state = "gcircuit"
+
+/turf/unsimulated/generation/surface/
+	icon = 'icons/turf/generation.dmi'
+
+/turf/unsimulated/generation/surface/surface_turf
+	icon_state = "surface_turf"
+
+/turf/unsimulated/generation/surface/cave_turf
+	icon_state = "cave_turf"
+
+/turf/unsimulated/generation/surface/surface_path_turf
+	icon_state = "surface_path_turf"
+
+/turf/unsimulated/generation/surface/cave_path_turf
+	icon_state = "cave_path_turf"
+
