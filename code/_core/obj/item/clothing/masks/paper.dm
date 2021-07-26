@@ -25,9 +25,9 @@
 	var/mob/C = caller
 	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))
 		INTERACT_CHECK
-		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo")
+		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo") //removing this would make this not work
 		if(choice == "Logo")
-			var/logomenu = list(
+			var/logomenu = list( //lazy names, but...
 				"" = 0,
 				"1" = 1,
 				"2" = 2,
@@ -49,12 +49,12 @@
 			if(choice)
 				INTERACT_CHECK
 				polymorphs = list(
-				"base" = COLOR_WHITE,
+				"base" = COLOR_WHITE, //removing the colors from this would be a Bad Idea, and there's no point of reference for the colors
 				"[choice]" = "#000000"
 
 				)
-				caller.to_chat(span("notice","You change \the [src.name]'s logo."))
-				update_icon()
+				caller.to_chat(span("notice","You change \the [src.name]'s design."))
+				update_icon() //what it doesn't do is remove the previous polymorphs until re-cryo. While the designs CAN look cool, this is unintended.
 		else
 			caller.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
 			return TRUE
