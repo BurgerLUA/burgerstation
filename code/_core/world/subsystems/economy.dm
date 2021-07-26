@@ -14,13 +14,13 @@ SUBSYSTEM_DEF(economy)
 	var/list/purchases_this_round = list() //This is created by vendors. Not saved.
 	var/gold_base_value = 5000000 //How much credits are invested into gold.
 
-	var/goblin_economy = 100000 //How much gold goblins have.
+	var/goblin_economy = 75000 //How much gold goblins have.
 	var/sell_multiplier = 1
 
 
 /subsystem/economy/proc/update_stats()
 	credits_per_gold = CEILING(gold_base_value/gold_in_circulation,1)
-	sell_multiplier = clamp(goblin_economy/100000,0.1,1)*0.5
+	sell_multiplier = clamp(goblin_economy/50000,0.1,1)*0.5
 
 /subsystem/economy/Initialize()
 
