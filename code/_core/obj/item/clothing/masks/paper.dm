@@ -4,14 +4,6 @@
 	desc = "For special people, like you!"
 	desc_extended = "Can change the design by clicking on it in your hand."
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		HOLY = -50,
-		DARK = 50
-	)
-
 	size = SIZE_2
 
 
