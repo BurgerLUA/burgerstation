@@ -85,16 +85,17 @@
 	throw_mul = 1
 
 /damagetype/ranged/ling_tentacle/warp/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-
+//Make sure to thank Burger.
 	if(is_living(victim))
 		var/mob/living/L = victim
 		var/mob/living/A = attacker
 		var/list/valid_turfs = list()
-		valid_turfs += get_step(L,NORTH)
-		valid_turfs += get_step(L,EAST)
-		valid_turfs += get_step(L,SOUTH)
-		valid_turfs += get_step(L,WEST)
-		A.force_move(pick(valid_turfs))
+		for(var/d in DIRECTIONS_ALL)
+			var/turf/T = get_step(L,d)
+			if(!T || !T.is_safe_teleport())
+				continue
+			valid_turfs += T
+			A.force_move(T)
 		L.add_status_effect(STAGGER,5,5, source = attacker)
 
 	return ..()
