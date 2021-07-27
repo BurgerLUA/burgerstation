@@ -1,0 +1,100 @@
+/damagetype/ranged/ling_tentacle/pull //I'm sorry.
+	name = "tentacle"
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 10,
+		BIO = 20,
+		FATIGUE = 10
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 50
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 30
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BIO,FATIGUE),
+		ATTRIBUTE_DEXTERITY = list(BIO,FATIGUE)
+	)
+
+	skill_stats = list(
+		SKILL_MELEE = 20,
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BIO,FATIGUE)
+	)
+
+	throw_mul = 1
+
+/damagetype/ranged/ling_tentacle/pull/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	if(is_living(victim))
+		var/list/offsets = direction_to_pixel_offset(get_dir(attacker,victim))
+		var/mob/living/L = victim
+		var/mob/living/A = attacker
+		var/distance = get_dist(A,L)
+		if(distance <= 0)
+			L.add_status_effect(STUN,20,20,source = attacker)
+		else
+			L.throw_self(attacker,null,16,16,offsets[1]*(-distance*3),offsets[2]*(-distance*3))
+
+/damagetype/ranged/ling_tentacle/warp
+	name = "tentacle"
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 10,
+		BIO = 20,
+		FATIGUE = 10
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 50
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 30
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BIO,FATIGUE),
+		ATTRIBUTE_DEXTERITY = list(BIO,FATIGUE)
+	)
+
+	skill_stats = list(
+		SKILL_MELEE = 20,
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BIO,FATIGUE)
+	)
+
+	throw_mul = 1
+
+/damagetype/ranged/ling_tentacle/warp/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		var/mob/living/A = attacker
+		var/list/valid_turfs = list()
+		valid_turfs += get_step(L,NORTH)
+		valid_turfs += get_step(L,EAST)
+		valid_turfs += get_step(L,SOUTH)
+		valid_turfs += get_step(L,WEST)
+		A.force_move(pick(valid_turfs))
+		L.add_status_effect(STAGGER,5,5, source = attacker)
+
+	return ..()
