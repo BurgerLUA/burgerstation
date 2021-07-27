@@ -10,7 +10,6 @@
 	shoot_delay = 15
 
 	projectile = /obj/projectile/bio/tentacle
-	damage_type = /damagetype/melee/tentacle
 	ranged_damage_type = /damagetype/ranged/ling_tentacle/warp
 	var/alt_ranged_damage_type = /damagetype/ranged/ling_tentacle/pull
 
