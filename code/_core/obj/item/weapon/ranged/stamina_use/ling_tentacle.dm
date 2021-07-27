@@ -10,6 +10,7 @@
 	shoot_delay = 15
 
 	projectile = /obj/projectile/bio/tentacle
+	damage_type = /damagetype/melee/tentacle
 	ranged_damage_type = /damagetype/ranged/ling_tentacle/warp
 	var/alt_ranged_damage_type = /damagetype/ranged/ling_tentacle/pull
 
@@ -37,4 +38,8 @@
 	INTERACT_DELAY(1)
 	toggle = !toggle
 	update_icon()
+	if(toggle)
+		caller.to_chat(span("notice","You will now drag your enemies."))
+	else
+		caller.to_chat(span("notice","You will now drag yourself to your enemies."))
 	return TRUE
