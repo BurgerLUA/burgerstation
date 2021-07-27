@@ -36,8 +36,9 @@
 	self.do_emote("scream")
 
 	for(var/mob/living/L in oview(T,4))
-		for(var/k in viewers(T,4))
- 		var/mob/living/L = k
+		for(var/k in viewers(T,4)) //IT'S CLEANER THAN THE LAST ONE, BUT IF I HAVE TO UNBUG THIS
+ 		var/mob/living/L = k //Either it stops working, or it harms allies. But the old code's hacky, so...
+			continue
 		L.health.adjust_loss_smart(sanity = 50) //because fuck you
 		L.add_status_effect(STUN,20,20)
 		L.add_status_effect(PARALYZE,20,20,stealthy=TRUE) //to lock down enemies that can't be stunned
