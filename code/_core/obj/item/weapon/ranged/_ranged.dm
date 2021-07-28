@@ -477,7 +477,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			MUL(movement_spread,attachment_stats["movement_spread"])
 			MUL(view_punch_to_use,attachment_stats["view_punch"])
 			MUL(shoot_delay_to_use,attachment_stats["shoot_delay"])
-			ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
+			if(max_bursts_to_use > 1)
+				ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
 			MUL(prone_mod,attachment_stats["prone_mod"])
 
 		if(can_wield && !wielded)
