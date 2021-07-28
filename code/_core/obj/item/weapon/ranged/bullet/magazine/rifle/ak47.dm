@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47
-	name = "\improper 7.62x39mmR AK-47"
+	name = "\improper 7.62x39mmR AKM"
 	desc = "Ancient, with an upgrade."
 	desc_extended = "The 7.62x39mmR AK-47 is the AK to go for when you seriously want to fuck shit up."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
@@ -80,7 +80,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod
-	name = "\improper 7.62x39mmR AK-47-SU"
+	name = "\improper 7.62x39mmR AKMSU"
 	desc = "Tiny tiny gun."
 	desc_extended = "The 7.62x54mmR AK-47-SU is the AK to go for when you seriously want to fuck shit upm, but with compactness."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_carbine.dmi'
