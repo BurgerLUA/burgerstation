@@ -265,8 +265,7 @@
 
 /mob/living/Destroy()
 
-	if(buckled_object)
-		qdel(buckled_object)
+	if(buckled_object) //The object this is buckled to.
 		buckled_object = null
 
 	if(minion)

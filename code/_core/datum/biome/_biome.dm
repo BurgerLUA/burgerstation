@@ -13,8 +13,8 @@
 	name = "Forest"
 	surface_turf = /turf/unsimulated/generation/forest
 	surface_path_turf = /turf/unsimulated/generation/forest/path
-	cave_turf = /turf/unsimulated/generation/cave
-	cave_path_turf = /turf/unsimulated/generation/cave/path
+	cave_turf = /turf/unsimulated/generation/forest_cave
+	cave_path_turf = /turf/unsimulated/generation/forest_cave/path
 
 /biome/snow
 	name = "Snow"

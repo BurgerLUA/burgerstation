@@ -363,7 +363,7 @@
 					var/mob/living/LA = attacker
 					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
 					if(get_dist(A,LA) <= 1)
-						LA.add_status_effect(PARRIED,30,30)
+						LA.add_status_effect(PARRIED,30,30, source = A)
 				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
 		//Blocking

@@ -5,6 +5,10 @@
 	icon_state = "lungs"
 	attach_flag = BODY_TORSO
 
+/obj/item/organ/internal/implant/on_organ_remove(var/mob/living/advanced/old_owner)
+	qdel(src)
+	return TRUE
+
 /obj/item/organ/internal/implant/head/
 	name = "head implant"
 	id = "implant_head"
