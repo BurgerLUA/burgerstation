@@ -118,28 +118,20 @@
 	ckey_last = null
 	key = null // required to GC
 
-	if(buttons)
-		for(var/k in buttons)
-			var/atom/movable/M = k
-			qdel(M)
-		buttons.Cut()
 
-	if(health_elements)
-		for(var/k in health_elements)
-			var/atom/movable/M = health_elements[k]
-			qdel(M)
-		health_elements.Cut()
+	QDEL_CUT(buttons)
+	QDEL_CUT_ASSOC(health_elements)
 
-	if(stored_chat_text)
-		stored_chat_text.Cut()
+	stored_chat_text?.Cut()
 
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
-	for(var/k in observers)
-		var/mob/M = k
-		M.observing = null
-	observers.Cut()
+	if(observers)
+		for(var/k in observers)
+			var/mob/M = k
+			M.observing = null
+		observers.Cut()
 
 	if(observing)
 		observing.observers -= src
@@ -157,23 +149,17 @@
 
 	QDEL_NULL(examine_overlay)
 
-	if(parallax)
-		for(var/k in parallax)
-			var/atom/movable/M = parallax[k]
-			qdel(M)
-		parallax.Cut()
+	QDEL_CUT_ASSOC(parallax)
 
-	if(color_mods)
-		color_mods.Cut()
+	color_mods?.Cut()
 
-	if(lighting_mods)
-		lighting_mods.Cut()
+	lighting_mods?.Cut()
 
 	. = ..()
 
 	fallback_mob = null
-	if(linked_mobs)
-		linked_mobs.Cut()
+
+	linked_mobs?.Cut()
 
 /mob/Login()
 

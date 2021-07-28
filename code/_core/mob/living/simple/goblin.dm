@@ -59,8 +59,7 @@
 	return ..()
 
 /mob/living/simple/goblin/Destroy()
-	bag_contents.Cut()
-	bag_contents = null
+	bag_contents?.Cut()
 	return ..()
 
 /mob/living/simple/goblin/proc/add_to_bag(var/atom/movable/I,var/silent=FALSE)

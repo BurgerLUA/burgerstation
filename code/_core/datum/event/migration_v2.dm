@@ -24,8 +24,8 @@
 	var/mob/living/enemy_type_to_spawn
 
 /event/migration/Destroy()
-	valid_turfs.Cut()
-	valid_areas.Cut()
+	valid_turfs?.Cut()
+	valid_areas?.Cut()
 	return ..()
 
 /event/migration/New()

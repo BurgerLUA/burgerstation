@@ -265,8 +265,7 @@
 
 /mob/living/Destroy()
 
-	if(buckled_object) //The object this is buckled to.
-		buckled_object = null
+	buckled_object = null
 
 	if(minion)
 		minion.master = null
@@ -276,56 +275,40 @@
 		master.minion = null
 		master = null
 
-	if(totem)
-		QDEL_NULL(totem)
-		totem = null
+	QDEL_NULL(totem)
 
 	if(following)
 		following.followers -= src
 		following = null
 
-	if(linked_mobs)
-		for(var/k in linked_mobs)
-			var/mob/M = k
-			qdel(M)
-		linked_mobs.Cut()
+	QDEL_CUT(linked_mobs)
 
 	if(fallback_mob)
 		fallback_mob.linked_mobs -= src
 		attributes = null
 		skills = null
 	else
-		for(var/k in attributes)
-			var/experience/E = attributes[k]
-			qdel(E)
-		attributes.Cut()
-		for(var/k in skills)
-			var/experience/E = skills[k]
-			qdel(E)
-		skills.Cut()
+		QDEL_CUT_ASSOC(attributes)
+		QDEL_CUT_ASSOC(skills)
 
 	QDEL_NULL(ai)
 
 	if(screen_blood)
-		for(var/k in screen_blood)
-			var/obj/hud/screen_blood/S = k
-			qdel(S)
-		screen_blood.Cut()
+		QDEL_CUT(screen_blood)
 
-	hit_logs.Cut()
+	hit_logs?.Cut()
 
 	all_living -= src
 
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
-
 	old_turf = null
 
 	if(boss)
 		SSbosses.tracked_bosses -= src
 		SSbosses.living_bosses -= src
 
-	players_fighting_boss.Cut()
+	players_fighting_boss?.Cut()
 
 	QDEL_NULL(alert_overlay)
 	QDEL_NULL(chat_overlay)
@@ -342,10 +325,10 @@
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		client.make_ghost(FALLBACK_TURF)
 
-	traits.Cut()
-	traits_by_category.Cut()
+	traits?.Cut()
+	traits_by_category?.Cut()
 
-	status_effects.Cut()
+	status_effects?.Cut()
 
 	QDEL_NULL(stand)
 

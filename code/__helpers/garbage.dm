@@ -2,8 +2,19 @@
 
 #define QDEL_CUT(x)				\
 	if(x) {						\
-		for(var/datum/D in x)	\
-			qdel(D);			\
+		for(var/kd in x) {		\
+			var/datum/DD = x;	\
+			qdel(DD);			\
+		}						\
 		x.Cut();				\
-	}							\
+	}
 
+
+#define QDEL_CUT_ASSOC(x)			\
+	if(x) {							\
+		for(var/kd in x) {			\
+			var/datum/DD = x[kd];	\
+			qdel(DD);				\
+		}							\
+		x.Cut();					\
+	}

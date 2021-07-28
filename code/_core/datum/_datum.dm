@@ -44,15 +44,9 @@
 
 
 /datum/Destroy()
-
 	HOOK_CALL("Destroy")
-
-	if(hooks)
-		hooks.Cut()
-		hooks = null
-
+	hooks?.Cut()
 	. = ..()
-
 
 /datum/proc/get_debug_name()
 	return "[src.type]"

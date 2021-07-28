@@ -115,8 +115,8 @@
 	remove_all_organs()
 	remove_all_buttons()
 
-	overlays_assoc.Cut()
-	tracked_hidden_organs.Cut()
+	overlays_assoc?.Cut()
+	tracked_hidden_organs?.Cut()
 
 	held_objects = null
 	worn_objects = null
@@ -129,13 +129,13 @@
 	active_inventory = null
 	driving = null
 
-	inventory_defers.Cut()
+	inventory_defers?.Cut()
 
 	for(var/k in using_inventories)
 		var/obj/item/I = k
 		I.close_inventory(src)
 
-	using_inventories.Cut()
+	using_inventories?.Cut()
 
 	QDEL_NULL(stored_handcuffs)
 

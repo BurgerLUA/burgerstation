@@ -11,9 +11,7 @@
 
 /image/overlay/Destroy()
 	attached_object = null
-	for(var/k in additional_blends)
-		var/datum/D = additional_blends[k]
-		qdel(D)
+	QDEL_CUT_ASSOC(additional_blends)
 	return ..()
 
 /image/overlay/proc/add_overlay(var/datum/overlay_to_add)

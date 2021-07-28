@@ -167,10 +167,7 @@
 		close_inventory(inventory_user)
 		inventory_user = null //Just in case
 
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		qdel(I)
-	inventories.Cut()
+	QDEL_CUT(inventories)
 
 	last_interacted = null
 	inventory_user = null
