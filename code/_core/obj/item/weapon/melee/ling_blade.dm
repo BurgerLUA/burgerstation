@@ -35,7 +35,8 @@
 
 	self.do_emote("scream")
 
-	for(var/mob/living/L in oview(T,4)) // about what xenoqueen code looks like. About.
+	for(var/k in viewers(T,4))
+		var/mob/living/L = k // about what xenoqueen code looks like. About.
 		if(L.loyalty_tag == self.loyalty_tag)
 			continue
 		L.add_status_effect(STUN,20,20)
