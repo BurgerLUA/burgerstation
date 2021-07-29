@@ -21,8 +21,8 @@
 	var/yield_percent = 100 //Harvest chance per yield.
 	var/growth_speed = 5 //How much to add to growth every second
 
-	var/hydration = 100 //Out of 100
-	var/nutrition = 100 //Out of 100
+	var/hydration = 15 //Out of 100
+	var/nutrition = 15 //Out of 100
 	var/age = 0 //In seconds. Once it gets old (10 minutes) it starts to take damage.
 	var/lifetime = 900 //The age in which this plant starts dying, in seconds.
 
@@ -40,10 +40,6 @@
 	. = ..()
 
 	switch(age/lifetime)
-		if(0 to 0.4)
-			. += span("notice","It looks fresh.")
-		if(0.4 to 0.6)
-			. += span("notice","It looks fine.")
 		if(0.6 to 0.7)
 			. += span("warning","It looks a little old.")
 		if(0.8 to 0.1)
@@ -58,10 +54,6 @@
 			. += span("warning","It looks underwatered.")
 		if(30 to 50)
 			. += span("notice","It looks like it could use some water.")
-		if(50 to 75)
-			. += span("notice","It looks watered.")
-		if(75 to 90)
-			. += span("notice","It looks well watered.")
 		if(90 to 125)
 			. += span("warning","It looks overwatered.")
 		if(125 to 200)
@@ -74,10 +66,6 @@
 			. += span("warning","It looks underfertilized.")
 		if(30 to 50)
 			. += span("notice","It looks like it could use some fertilizer.")
-		if(50 to 75)
-			. += span("notice","It looks fertilized.")
-		if(75 to 90)
-			. += span("notice","It looks well fertilized.")
 		if(90 to 125)
 			. += span("warning","It looks overfertilized.")
 		if(125 to 200)
@@ -114,6 +102,8 @@
 	. = ..()
 	growth = growth_produce_max
 	lifetime = 60*60*24*7*4*rand(1,5)
+	hydration = rand(50,75)
+	nutrition = rand(50,75)
 	age = lifetime * RAND_PRECISE(0.25,0.75)
 	age = CEILING(age,1)
 

@@ -1,0 +1,6 @@
+Need to know your defences? An armor analyzer can be purchased from Research that can calculate the defences of a certain bodypart on a living creature. Works on enemies, too!
+Weapon attachments can be found or purchased in the armoury to affect weapon damage and accuracy.
+Some bullets that do not match the gun's caliber can be inserted into it anyways if they're a close enough size.
+Some bullets have additional variants that do added effects when used against an enemy.
+Deployable barricades can be purchased from engineering. They are quite robust.
+Deployable sentries can be purchased from the advanced security vendor. They are fragile, hoever can help out a lot when properly defended.
