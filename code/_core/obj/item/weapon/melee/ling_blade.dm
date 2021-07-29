@@ -44,6 +44,6 @@
 
 	self.health.adjust_stamina(-20) //5 uses from a full meter
 	self.update_health_element_icons(stamina=TRUE)
-	next_scream = world.time + SECONDS_TO_DECISECONDS(5) //It's an on-demand stun. If it turns out to be overpowered, the cooldown can be upped.
+	next_scream = world.time + SECONDS_TO_DECISECONDS(6) //It's an on-demand stun. If it turns out to be overpowered, the cooldown can be upped.
 
 	return TRUE
