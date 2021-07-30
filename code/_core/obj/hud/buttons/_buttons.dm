@@ -33,8 +33,9 @@
 	return src.clicked_on_by_object(caller,null,location,null,params)
 
 /obj/hud/button/Destroy()
-	owner = null
-	return ..()
+	delete_on_no_owner = TRUE
+	update_owner(null)
+	. = ..()
 
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
 	if(should_show)

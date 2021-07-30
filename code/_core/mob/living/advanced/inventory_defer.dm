@@ -24,7 +24,6 @@
 		C.update_owner(src)
 		B.assoc_button = C
 
-
 	return B
 
 /mob/living/advanced/proc/examine_body_inventory(var/mob/living/advanced/caller) //caller wants to see inside src
