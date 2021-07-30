@@ -70,8 +70,9 @@
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
-		L.ai.set_path(T2)
 		L.ai.set_active(TRUE)
+		L.ai.set_path(T2)
+
 
 	notify_ghosts("A new [chosen_horde_type] patrol is being created!",T1)
 
