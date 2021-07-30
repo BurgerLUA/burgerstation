@@ -166,7 +166,7 @@
 	active_ai_list["[z]"] |= src
 
 /ai/proc/remove_from_active_list(var/z)
-	if(active_ai_list["[z]"])
+	if(active_ai_list.len && active_ai_list["[z]"])
 		active_ai_list["[z]"] -= src
 
 /ai/proc/add_to_inactive_list(var/z)
@@ -175,7 +175,7 @@
 	inactive_ai_list["[z]"] |= src
 
 /ai/proc/remove_from_inactive_list(var/z)
-	if(inactive_ai_list["[z]"])
+	if(inactive_ai_list.len && inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] -= src
 
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)

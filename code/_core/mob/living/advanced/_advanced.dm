@@ -117,6 +117,7 @@
 
 	overlays_assoc?.Cut()
 	tracked_hidden_organs?.Cut()
+	slot_buttons?.Cut()
 
 	held_objects = null
 	worn_objects = null

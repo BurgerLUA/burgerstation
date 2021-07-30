@@ -89,8 +89,8 @@
 
 	set_light(FALSE)
 
-	QDEL_CUT(underlays)
-	QDEL_CUT(overlays)
+	underlays.Cut()
+	overlays.Cut()
 
 	QDEL_NULL(reagents)
 	QDEL_NULL(health)

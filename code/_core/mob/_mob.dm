@@ -146,6 +146,8 @@
 	QDEL_NULL(plane_master_scenery)
 	QDEL_NULL(plane_master_lighting)
 	QDEL_NULL(plane_master_openspace)
+	QDEL_NULL(plane_master_currency)
+	QDEL_NULL(plane_master_hud)
 
 	QDEL_NULL(examine_overlay)
 

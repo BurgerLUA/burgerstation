@@ -110,6 +110,9 @@
 	if(!can_be_dragged(caller))
 		return TRUE
 
+	if(is_inventory(object.loc) && object.loc.dropped_on_by_object(caller,src,location,control,params))
+		return TRUE
+
 	if(isturf(object) || istype(object,/obj/structure/smooth/table))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

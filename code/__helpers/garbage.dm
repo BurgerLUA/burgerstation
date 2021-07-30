@@ -3,7 +3,7 @@
 #define QDEL_CUT(x)				\
 	if(x) {						\
 		for(var/kd in x) {		\
-			var/datum/DD = x;	\
+			var/datum/DD = kd;	\
 			qdel(DD);			\
 		}						\
 		x.Cut();				\

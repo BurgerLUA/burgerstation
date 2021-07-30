@@ -9,6 +9,24 @@
 	var/surface_area
 	var/cave_area
 
+	var/list/horde_weights = list(
+		"syndicate" = 100,
+		"revolutionaries" = 75
+	)
+
+	var/list/horde_types = list(
+		"syndicate" = list(
+			/mob/living/advanced/npc/syndicate = 10,
+			/mob/living/simple/silicon/syndieborg = 1
+		),
+		"revolutionaries" = list(
+			/mob/living/advanced/npc/rev = 10,
+			/mob/living/simple/bear/armored/revolutionary = 1
+		)
+
+
+	)
+
 /biome/forest
 	name = "Forest"
 	surface_turf = /turf/unsimulated/generation/forest
