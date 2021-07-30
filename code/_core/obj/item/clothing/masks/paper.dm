@@ -5,7 +5,7 @@
 	desc_extended = "Can change the design by clicking on it in your hand."
 
 	size = SIZE_2
-
+	weight = 0
 
 	value = 120
 
