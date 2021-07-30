@@ -21,8 +21,8 @@
 	var/yield_percent = 100 //Harvest chance per yield.
 	var/growth_speed = 5 //How much to add to growth every second
 
-	var/hydration = 15 //Out of 100
-	var/nutrition = 15 //Out of 100
+	var/hydration = 35 //Out of 100
+	var/nutrition = 35 //Out of 100
 	var/age = 0 //In seconds. Once it gets old (10 minutes) it starts to take damage.
 	var/lifetime = 900 //The age in which this plant starts dying, in seconds.
 
@@ -130,15 +130,15 @@
 
 	var/brute_to_add = 0
 	var/tox_to_add = 0
-	if(age >= 600 && !prob(80)) //Old.
+	if(age >= lifetime && !prob(80)) //Old.
 		brute_to_add += 1
-	if(nutrition <= 25) //Underfertilized.
+	if(nutrition <= 10) //Underfertilized.
 		brute_to_add += 3*(1 - nutrition/25)
-	else if(nutrition > 105) //Overfertilized.
+	else if(nutrition > 110) //Overfertilized.
 		tox_to_add += 1
-	if(hydration <= 25) //Underwatered
+	if(hydration <= 10) //Underwatered
 		brute_to_add += 5*(1 - hydration/25)
-	else if(hydration > 105) //Overwaterd
+	else if(hydration > 110) //Overwaterd
 		tox_to_add += 1
 	if(brute_to_add || tox_to_add)
 		src.health.adjust_loss_smart(brute=brute_to_add,tox=tox_to_add)
