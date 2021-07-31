@@ -126,7 +126,7 @@
 		remove_from_active_list(T.z)
 		remove_from_inactive_list(T.z)
 	else
-		log_error("Warning: [src.get_debug_name()] couldn't be cleared properly as it had a null turf.")
+		log_error("Warning: [src.get_debug_name()] couldn't be cleared properly as it the owner ([owner ? owner.get_debug_name() : "NULL"]) had a null turf.")
 
 	if(owner) owner.ai = null
 	owner = null
