@@ -14,6 +14,8 @@
 	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
 
 	reagents = /reagent_container/plant
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = FALSE
 
 	//Stats
 	var/yield_max = 1 //Maximium yield this plant can give.

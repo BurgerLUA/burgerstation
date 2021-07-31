@@ -64,6 +64,7 @@
 	for(var/k in tracked_heads)
 		var/mob/living/simple/legionare_head/L = k
 		L.death()
+	tracked_heads?.Cut()
 
 	return ..()
 
