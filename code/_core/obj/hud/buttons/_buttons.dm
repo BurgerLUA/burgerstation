@@ -35,6 +35,7 @@
 /obj/hud/button/Destroy()
 	delete_on_no_owner = TRUE
 	update_owner(null)
+	owner = null
 	. = ..()
 
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
@@ -56,6 +57,7 @@
 		owner.remove_button(src)
 
 	if(!desired_owner && delete_on_no_owner)
+		delete_on_no_owner = FALSE
 		qdel(src)
 		return FALSE
 
@@ -63,6 +65,7 @@
 	if(owner)
 		owner.add_button(src)
 		update_sprite()
+
 	return TRUE
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
