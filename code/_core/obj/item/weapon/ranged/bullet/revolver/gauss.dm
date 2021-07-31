@@ -29,7 +29,7 @@
 	heat_max = 0.2
 	view_punch_mod = 0
 
-	inaccuracy_modifier = 3
+	inaccuracy_modifier = 2  // this was previously set to 3 and you literally couldnt hit someone in the torso at melee range with it
 	movement_inaccuracy_modifier = 4
 	movement_spread_base = 0.3
 
