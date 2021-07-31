@@ -167,6 +167,12 @@
 
 	. = ..()
 
+	if(!use_loyalty_tag && ispath(firing_pin))
+		firing_pin = new firing_pin(src)
+		INITIALIZE(firing_pin)
+		GENERATE(firing_pin)
+		FINALIZE(firing_pin)
+
 	if(!istype(firing_pin))
 		firing_pin = null
 
@@ -222,14 +228,6 @@
 				return TRUE
 
 	. = ..()
-
-/obj/item/weapon/ranged/Generate()
-	if(!use_loyalty_tag && ispath(firing_pin))
-		firing_pin = new firing_pin(src)
-		INITIALIZE(firing_pin)
-		GENERATE(firing_pin)
-		FINALIZE(firing_pin)
-	return ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()
 	return heat_current

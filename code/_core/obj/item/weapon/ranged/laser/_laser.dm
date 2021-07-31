@@ -33,6 +33,14 @@
 
 /obj/item/weapon/ranged/energy/Finalize()
 	. = ..()
+
+	if(ispath(battery))
+		battery = new battery(src)
+		INITIALIZE(battery)
+		GENERATE(battery)
+		FINALIZE(battery)
+		update_sprite()
+
 	if(!istype(battery))
 		battery = null
 
@@ -83,17 +91,6 @@
 			update_sprite()
 
 			return TRUE
-
-	return ..()
-
-/obj/item/weapon/ranged/energy/Generate()
-
-	if(ispath(battery))
-		battery = new battery(src)
-		INITIALIZE(battery)
-		GENERATE(battery)
-		FINALIZE(battery)
-		update_sprite()
 
 	return ..()
 
