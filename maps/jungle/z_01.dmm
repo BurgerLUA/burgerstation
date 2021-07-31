@@ -770,13 +770,6 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
-"cX" = (
-/obj/structure/interactive/disposals/pipe/labeler{
-	dir = 4;
-	sorting_tab_label = "engineering"
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/disposals)
 "cY" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -2262,17 +2255,6 @@
 "in" = (
 /obj/structure/interactive/diverter/high_value{
 	dir = 8
-	},
-/obj/structure/interactive/conveyor{
-	dir = 1;
-	icon_state = "conveyor"
-	},
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/disposals)
-"io" = (
-/obj/structure/interactive/diverter/weapon{
-	dir = 8;
-	icon_state = "diverter"
 	},
 /obj/structure/interactive/conveyor{
 	dir = 1;
@@ -52375,8 +52357,8 @@ do
 do
 dU
 em
-em
 ds
+wT
 wT
 wT
 wW
@@ -52633,7 +52615,7 @@ ua
 dp
 en
 fv
-fv
+wT
 wT
 wT
 dp
@@ -52890,7 +52872,7 @@ AD
 bE
 et
 et
-et
+wT
 wT
 wT
 dp
@@ -53141,13 +53123,13 @@ aA
 aA
 aA
 bG
-cX
+dt
 dp
 bE
 dp
 gg
 gg
-gg
+wT
 wT
 wT
 wX
@@ -53404,7 +53386,7 @@ dV
 fY
 hA
 in
-io
+fY
 fY
 fY
 wX
@@ -54171,7 +54153,7 @@ aA
 bG
 wT
 dp
-dt
+fv
 dp
 bE
 dp
