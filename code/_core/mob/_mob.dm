@@ -55,7 +55,6 @@
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/objs/plane_master_obj
-	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
 	var/obj/plane_master/scenery/plane_master_scenery
 	var/obj/plane_master/lighting/plane_master_lighting
@@ -118,9 +117,13 @@
 	ckey_last = null
 	key = null // required to GC
 
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
+		B.update_owner(null)
 
-	QDEL_CUT(buttons)
-	QDEL_CUT_ASSOC(health_elements)
+	for(var/k in health_elements)
+		var/obj/hud/button/B = health_elements[k]
+		B.update_owner(null)
 
 	stored_chat_text?.Cut()
 
@@ -137,7 +140,6 @@
 		observing.observers -= src
 		observing = null
 
-	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_darkness)
@@ -145,6 +147,7 @@
 	QDEL_NULL(plane_master_shuttle)
 	QDEL_NULL(plane_master_scenery)
 	QDEL_NULL(plane_master_lighting)
+	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_openspace)
 	QDEL_NULL(plane_master_currency)
 	QDEL_NULL(plane_master_hud)
@@ -159,8 +162,13 @@
 
 	. = ..()
 
+	if(fallback_mob)
+		fallback_mob.linked_mobs -= src
 	fallback_mob = null
 
+	for(var/k in linked_mobs)
+		var/mob/M = k
+		M.fallback_mob = null
 	linked_mobs?.Cut()
 
 /mob/Login()

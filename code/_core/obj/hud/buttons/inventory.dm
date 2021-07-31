@@ -1,4 +1,5 @@
 /obj/hud/button/close_inventory
+	name = "close inventory"
 	icon_state = "close_inventory"
 	screen_loc = "CENTER,CENTER"
 	alpha = 0

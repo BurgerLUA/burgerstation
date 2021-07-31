@@ -32,6 +32,7 @@
 	FINALIZE(O)
 
 /client/proc/make_observer(var/turf/desired_loc)
+
 	if(!desired_loc)
 		desired_loc = FALLBACK_TURF
 
@@ -41,6 +42,9 @@
 	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
+	GENERATE(O)
+
+	return TRUE
 
 /client/proc/control_mob(var/mob/M,var/delete_last_mob = FALSE)
 
@@ -93,6 +97,9 @@
 		M.parallax.Cut()
 
 	all_mobs_with_clients -= M
+	if(all_mobs_with_clients_by_z["[M.last_z]"])
+		all_mobs_with_clients_by_z["[M.last_z]"] -= src
+
 	if(!M.listener)
 		all_listeners -= M
 	M.client = null

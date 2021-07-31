@@ -6,11 +6,12 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
-/obj/item/clothing/ears/headset/Generate()
-	stored_radio = new stored_radio(src)
-	INITIALIZE(stored_radio)
-	GENERATE(stored_radio)
-	FINALIZE(stored_radio)
+/obj/item/clothing/ears/headset/Finalize()
+	if(ispath(stored_radio))
+		stored_radio = new stored_radio(src)
+		INITIALIZE(stored_radio)
+		GENERATE(stored_radio)
+		FINALIZE(stored_radio)
 	return ..()
 
 /obj/item/clothing/ears/headset/Destroy()
@@ -28,7 +29,6 @@
 
 /obj/item/clothing/ears/headset/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
-
 
 /obj/item/clothing/ears/headset/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -56,7 +56,7 @@
 	desc = "; HELPIES!"
 	desc_extended = "This may have been a mistake. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
 	stored_radio = /obj/item/device/radio/nanotrasen
-	
+
 	no_initial_blend = TRUE
 
 	dyeable = TRUE
