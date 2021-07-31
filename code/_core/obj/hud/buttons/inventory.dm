@@ -31,40 +31,6 @@
 	if(.)
 		close(caller)
 
-
-/*
-/obj/hud/button/drop
-	name = "drop item"
-	desc = "Drop the item in this slot."
-	icon_state = "extension_left"
-	screen_loc = "CENTER-1.5,BOTTOM"
-	var/left = 0
-
-	flags = FLAGS_HUD_MOB
-
-/obj/hud/button/drop/left
-	icon_state = "extension_right"
-	screen_loc = "CENTER+1.5,BOTTOM"
-	left = 1
-
-/obj/hud/button/drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(!is_advanced(caller))
-		return TRUE
-
-	var/mob/living/advanced/A = caller
-
-	if(left)
-		if(A.left_hand)
-			A.left_hand.drop_objects(A.loc)
-
-	else
-		if(A.right_hand)
-			A.right_hand.drop_objects(A.loc)
-
-	return TRUE
-*/
-
 /obj/hud/button/hide_show_inventory
 	name = "toggle inventory"
 	desc = "Need more space? Click this button."

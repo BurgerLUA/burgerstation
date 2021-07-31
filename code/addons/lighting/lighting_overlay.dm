@@ -34,8 +34,8 @@
 
 	SSlighting.total_lighting_overlays -= 1
 
-	var/turf/T   = loc
-	if (istype(T))
+	var/turf/T = loc
+	if(istype(T))
 		T.lighting_overlay = null
 		T.luminosity = 1
 

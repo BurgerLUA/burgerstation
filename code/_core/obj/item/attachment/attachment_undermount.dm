@@ -33,10 +33,10 @@
 	value = 150
 
 /obj/item/attachment/undermount/burst_adapter
-	name = "burst fire adapter"
+	name = "burst fire improver"
 	icon_state = "burst_adapter"
 	desc = "PewPewPew"
-	desc_extended = "A complex underbarrel mechanism that turns any semi-automatic or automatic weapon to shoot in 3 round bursts. Also decreases accuracy loss due to recoil and makes the weapon easier to handle at the cost of higher movement spread."
+	desc_extended = "A complex underbarrel mechanism that increases the amount of bursts a burst fire weapon does. Also decreases accuracy loss due to recoil and makes the weapon easier to handle at the cost of higher movement spread."
 
 	attachment_stats = list(
 		bursts_to_use = 3,

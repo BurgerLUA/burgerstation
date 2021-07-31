@@ -52,8 +52,7 @@
 
 	if(parent_legion)
 		parent_legion.tracked_heads -= src
-
-	parent_legion = null
+		parent_legion = null
 
 	return ..()
 

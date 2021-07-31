@@ -89,9 +89,6 @@
 
 	set_light(FALSE)
 
-	QDEL_CUT(underlays)
-	QDEL_CUT(overlays)
-
 	QDEL_NULL(reagents)
 	QDEL_NULL(health)
 

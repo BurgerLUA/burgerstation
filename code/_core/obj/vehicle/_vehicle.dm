@@ -55,17 +55,15 @@
 
 /mob/living/vehicle/Destroy()
 
-	for(var/k in passengers)
-		var/mob/living/advanced/A = k
-		exit_vehicle(A,loc)
-	passengers.Cut()
+	if(passengers)
+		for(var/k in passengers)
+			var/mob/living/advanced/A = k
+			exit_vehicle(A,loc)
+		passengers.Cut()
 
-	for(var/k in equipment)
-		var/obj/item/I = k
-		qdel(I)
-	equipment.Cut()
+	QDEL_CUT(equipment)
 
-	return ..()
+	. = ..()
 
 /mob/living/vehicle/post_death()
 	for(var/k in passengers)

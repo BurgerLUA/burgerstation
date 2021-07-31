@@ -1,36 +1,26 @@
+var/global/list/possible_mushrooms = list(
+	/obj/structure/interactive/plant/cactus_fruit = 6,
+	/obj/structure/interactive/plant/polypore_mushroom = 1,
+	/obj/structure/interactive/plant/porcini_mushroom = 1,
+	/obj/structure/interactive/plant/inocybe_mushroom = 1,
+	/obj/structure/interactive/plant/embershroom_mushroom = 1
+)
+
+var/global/list/possible_lavaland_fauna = list(
+	/obj/marker/generation/mob/ash_walker = 5,
+	/obj/marker/generation/mob/goliath = 10,
+	/obj/marker/generation/mob/goliath_ancient = 1,
+	/obj/marker/generation/mob/watcher = 5,
+	/obj/marker/generation/mob/legion = 5
+)
+
+#define PLACE_MUSHROOM var/datum/D__LINE__ = pickweight(possible_mushrooms); new D__LINE__(src)
+#define PLACE_LAVALAND_FAUNA var/datum/D__LINE__ = pickweight(possible_lavaland_fauna); new D__LINE__(src)
+
+
 /turf/unsimulated/generation/lava
 	name = "lava generation"
 	icon_state = "lava"
-
-/turf/unsimulated/generation/lava/proc/place_mushroom()
-	if(prob(6))
-		return new /obj/structure/interactive/plant/cactus_fruit(src)
-	else if(prob(1))
-		return new /obj/structure/interactive/plant/polypore_mushroom(src)
-	else if(prob(1))
-		return new /obj/structure/interactive/plant/porcini_mushroom(src)
-	else if(prob(1))
-		return new /obj/structure/interactive/plant/inocybe_mushroom(src)
-	else if(prob(1))
-		return new /obj/structure/interactive/plant/embershroom_mushroom(src)
-	return null
-
-/turf/unsimulated/generation/lava/proc/place_mob_type_A()
-	if(prob(2))
-		return new /obj/marker/generation/mob/ash_walker(src)
-	else if(prob(1))
-		return new /obj/marker/generation/mob/goliath(src)
-	else if(prob(1))
-		return new /mob/living/simple/watcher(src)
-
-
-/turf/unsimulated/generation/lava/proc/place_mob_type_B()
-	if(prob(0.5))
-		return new /obj/marker/generation/mob/goliath_ancient(src)
-	else if(prob(1))
-		return new /obj/marker/generation/mob/legion(src)
-	else if(prob(1))
-		return new /mob/living/simple/watcher(src)
 
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
@@ -71,72 +61,77 @@
 
 	noise = (noise/instances) + rand(-100,100)/10000
 
-	var/allow_mushroom_placement = TRUE
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
 			new /turf/simulated/floor/basalt(src)
 			if(prob(5))
 				new /obj/marker/generation/lava(src)
 		if(0.1 to 0.4)
-			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
-				allow_mushroom_placement = FALSE
 			else if(prob(1))
 				new /obj/marker/generation/ash_floor(src)
-				allow_mushroom_placement = FALSE
+				if(prob(1))
+					new /obj/marker/generation/mob/ash_walker(src)
+			else if(prob(1))
+				PLACE_MUSHROOM
+			else if(prob(1))
+				PLACE_LAVALAND_FAUNA
+			new /turf/simulated/floor/basalt(src)
 
 		if(0.4 to 0.5)
-			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
-				allow_mushroom_placement = FALSE
 			else if(prob(1))
 				new /obj/marker/generation/ash_floor(src)
-				allow_mushroom_placement = FALSE
+				if(prob(1))
+					new /obj/marker/generation/mob/ash_walker(src)
+			else if(prob(1))
+				PLACE_MUSHROOM
+			else if(prob(1))
+				PLACE_LAVALAND_FAUNA
+			new /turf/simulated/floor/basalt(src)
 
 		if(0.5 to 0.7)
-			new /turf/simulated/floor/basalt(src)
-			if(prob(1))
+			if(prob(3))
+				PLACE_MUSHROOM
+			else if(prob(1))
+				PLACE_LAVALAND_FAUNA
+			else if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
-				allow_mushroom_placement = FALSE
 			else if(prob(1))
 				new /obj/marker/generation/ash_wall(src)
-				allow_mushroom_placement = FALSE
+			new /turf/simulated/floor/basalt(src)
 
 		if(0.7 to 0.8)
-			new /turf/simulated/floor/basalt(src)
-			if(prob(1))
+			if(prob(3))
+				PLACE_MUSHROOM
+			else if(prob(1))
+				PLACE_LAVALAND_FAUNA
+			else if(prob(1))
 				new /obj/marker/generation/lava(src)
-				allow_mushroom_placement = FALSE
 			else if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
-				allow_mushroom_placement = FALSE
 			else if(prob(1))
 				new /obj/marker/generation/ash_wall(src)
-				allow_mushroom_placement = FALSE
+			new /turf/simulated/floor/basalt(src)
 
 		if(0.8 to INFINITY)
-			new /turf/simulated/wall/rock/basalt(src)
-			allow_mushroom_placement = FALSE
 			if(prob(1))
+				new /obj/marker/generation/mob/goliath(src)
+			else if(prob(1))
+				PLACE_MUSHROOM
+			else if(prob(1))
 				new /obj/marker/generation/ash_wall(src)
-				allow_mushroom_placement = FALSE
 			else if(prob(0.1))
 				new /obj/marker/generation/basalt(src)
-				allow_mushroom_placement = FALSE
+			new /turf/simulated/wall/rock/basalt(src)
 
-	if(allow_mushroom_placement && src.density_down && !src.density)
-		if(prob(1))
-			place_mushroom()
-		else if(prob( (x/255)*50 + (y/255)*50))
-			place_mob_type_B()
-		else
-			place_mob_type_A()
+
 
 	return ..()
 
-
+/*
 /turf/unsimulated/generation/lava_deep
 	name = "deep lava generation"
 	icon_state = "lava"
@@ -191,3 +186,4 @@
 			new /turf/simulated/wall/rock/basalt(src)
 
 	return ..()
+*/

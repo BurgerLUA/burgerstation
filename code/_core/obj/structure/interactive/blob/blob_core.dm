@@ -20,9 +20,9 @@
 		B.health.update_health()
 		B.color = null
 
-	linked_walls.Cut()
-	linked_nodes.Cut()
-	damaged_walls.Cut()
+	linked_walls?.Cut()
+	linked_nodes?.Cut()
+	damaged_walls?.Cut()
 
 	return ..()
 

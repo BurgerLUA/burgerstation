@@ -14,6 +14,8 @@
 	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
 
 	reagents = /reagent_container/plant
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = FALSE
 
 	//Stats
 	var/yield_max = 1 //Maximium yield this plant can give.
@@ -21,8 +23,8 @@
 	var/yield_percent = 100 //Harvest chance per yield.
 	var/growth_speed = 5 //How much to add to growth every second
 
-	var/hydration = 100 //Out of 100
-	var/nutrition = 100 //Out of 100
+	var/hydration = 35 //Out of 100
+	var/nutrition = 35 //Out of 100
 	var/age = 0 //In seconds. Once it gets old (10 minutes) it starts to take damage.
 	var/lifetime = 900 //The age in which this plant starts dying, in seconds.
 
@@ -36,14 +38,12 @@
 
 	health_base = 100
 
+	var/natural = FALSE
+
 /obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
 	. = ..()
 
 	switch(age/lifetime)
-		if(0 to 0.4)
-			. += span("notice","It looks fresh.")
-		if(0.4 to 0.6)
-			. += span("notice","It looks fine.")
 		if(0.6 to 0.7)
 			. += span("warning","It looks a little old.")
 		if(0.8 to 0.1)
@@ -58,10 +58,6 @@
 			. += span("warning","It looks underwatered.")
 		if(30 to 50)
 			. += span("notice","It looks like it could use some water.")
-		if(50 to 75)
-			. += span("notice","It looks watered.")
-		if(75 to 90)
-			. += span("notice","It looks well watered.")
 		if(90 to 125)
 			. += span("warning","It looks overwatered.")
 		if(125 to 200)
@@ -74,10 +70,6 @@
 			. += span("warning","It looks underfertilized.")
 		if(30 to 50)
 			. += span("notice","It looks like it could use some fertilizer.")
-		if(50 to 75)
-			. += span("notice","It looks fertilized.")
-		if(75 to 90)
-			. += span("notice","It looks well fertilized.")
 		if(90 to 125)
 			. += span("warning","It looks overfertilized.")
 		if(125 to 200)
@@ -114,8 +106,11 @@
 	. = ..()
 	growth = growth_produce_max
 	lifetime = 60*60*24*7*4*rand(1,5)
+	hydration = rand(50,75)
+	nutrition = rand(50,75)
 	age = lifetime * RAND_PRECISE(0.25,0.75)
 	age = CEILING(age,1)
+	natural = TRUE
 
 /obj/structure/interactive/plant/Finalize()
 	. = ..()
@@ -133,22 +128,23 @@
 	if(nutrition >= 10 && hydration >= 10)
 		growth += CEILING(real_growth_speed * (rand(75,125)/100),0.1)
 
-	add_nutrition(-real_growth_speed*0.25)
-	add_hydration(-real_growth_speed)
+	if(!natural)
+		add_nutrition(-real_growth_speed*0.25)
+		add_hydration(-real_growth_speed)
 
 	age += rate
 
 	var/brute_to_add = 0
 	var/tox_to_add = 0
-	if(age >= 600 && !prob(80)) //Old.
+	if(age >= lifetime && !prob(80)) //Old.
 		brute_to_add += 1
-	if(nutrition <= 25) //Underfertilized.
+	if(nutrition <= 10) //Underfertilized.
 		brute_to_add += 3*(1 - nutrition/25)
-	else if(nutrition > 105) //Overfertilized.
+	else if(nutrition > 110) //Overfertilized.
 		tox_to_add += 1
-	if(hydration <= 25) //Underwatered
+	if(hydration <= 10) //Underwatered
 		brute_to_add += 5*(1 - hydration/25)
-	else if(hydration > 105) //Overwaterd
+	else if(hydration > 110) //Overwaterd
 		tox_to_add += 1
 	if(brute_to_add || tox_to_add)
 		src.health.adjust_loss_smart(brute=brute_to_add,tox=tox_to_add)

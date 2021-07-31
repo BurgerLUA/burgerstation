@@ -74,7 +74,7 @@
 
 				return FALSE
 
-	
+
 /obj/hud/button/research/board/proc/add_points(var/points_to_add)
 	level = 1 + FLOOR(points/5,1)
 	time_left += (points_to_add)*10 //In Deciseconds
@@ -102,8 +102,8 @@
 		for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)
 			var/obj/hud/button/research/piece/P = pieces[x_pos][y_pos]
 			QDEL_NULL(P)
-		pieces[x_pos].Cut()
-	pieces.Cut()
+		pieces[x_pos]?.Cut()
+	pieces?.Cut()
 
 	QDEL_NULL(linked_time)
 	QDEL_NULL(linked_score)
@@ -161,4 +161,3 @@
 	else
 		stop_thinking(src)
 
-	

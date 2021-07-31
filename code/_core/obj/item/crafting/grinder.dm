@@ -69,8 +69,8 @@
 		var/reagent/R = REAGENT(reagent_type)
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
-			C.reagents.remove_reagent(reagent_type,reagent_amount,FALSE)
-			C.reagents.add_reagent(R.processed_reagent,reagent_amount,temperature,FALSE,FALSE,caller = caller)
+			var/amount_removed = C.reagents.remove_reagent(reagent_type,reagent_amount,FALSE)
+			C.reagents.add_reagent(R.processed_reagent,amount_removed,temperature,FALSE,FALSE,caller = caller)
 
 	C.reagents.update_container()
 

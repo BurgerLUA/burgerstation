@@ -75,7 +75,6 @@
 	var/total_votes = 0
 	var/total_weight = 0
 
-
 	if(weighted_mode)
 		var/list/weighted_results_list = list()
 		var/highest = 0

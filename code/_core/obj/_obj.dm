@@ -18,12 +18,6 @@
 	return FALSE
 
 /obj/Destroy()
-
-	if(additional_blends)
-		for(var/blend_id in additional_blends)
-			var/icon_blend/IB = additional_blends[blend_id]
-			qdel(IB)
-		additional_blends.Cut()
-
+	QDEL_CUT_ASSOC(additional_blends)
 	loc = null
 	return ..()

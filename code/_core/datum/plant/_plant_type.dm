@@ -319,12 +319,12 @@
 	typical_volume = 10
 
 /plant_type/polypore_mushroom
-	name = "polypore mushroom. Harvested for the exterior skin."
-	desc = "A strange grey mushroom."
+	name = "polypore mushroom"
+	desc = "A strange grey mushroom. Harvested for the exterior skin."
 	plant_icon_state = "polypore"
 	harvest_icon_state = "polypore"
 	seed_icon_state = "polypore"
-	plant_icon_count = 4
+	plant_icon_count = 2
 	reagents = list(
 		/reagent/nutrition/water = 0.25,
 		/reagent/medicine/omnizine = 0.25,
@@ -340,7 +340,7 @@
 	plant_icon_state = "porcini"
 	harvest_icon_state = "porcini"
 	seed_icon_state = "porcini"
-	plant_icon_count = 3
+	plant_icon_count = 2
 	reagents = list(
 		/reagent/medicine/nicotine = 0.2,
 		/reagent/medicine/omnizine = 0.3,
@@ -369,7 +369,7 @@
 	plant_icon_state = "ember"
 	harvest_icon_state = "ember"
 	seed_icon_state = "ember"
-	plant_icon_count = 3
+	plant_icon_count = 2
 	reagents = list(
 		/reagent/drug/space = 0.25,
 		/reagent/tinea_luxor = 0.50,
