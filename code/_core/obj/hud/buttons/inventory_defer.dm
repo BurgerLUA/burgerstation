@@ -8,7 +8,9 @@
 
 /obj/hud/button/inventory_defer/Destroy()
 	referencing = null
-	QDEL_NULL(assoc_button)
+	if(assoc_button)
+		assoc_button.update_owner(null)
+		assoc_button = null
 	. = ..()
 
 /obj/hud/button/inventory_defer/proc/get_top_vis_object()

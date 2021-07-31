@@ -39,4 +39,3 @@
 /mob/abstract/observer/menu/PostInitialize()
 	. = ..()
 	start_thinking(src)
-	

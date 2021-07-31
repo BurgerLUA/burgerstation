@@ -4,7 +4,7 @@
 		for(var/k in O.inventories)
 			var/obj/hud/inventory/I = k
 			I.delete_objects()
-			I.remove_from_owner()
+			I.update_owner(null)
 	if(istype(O,/obj/item/organ/antennae))
 		remove_overlay("antennae_behind")
 		remove_overlay("antennae_front")

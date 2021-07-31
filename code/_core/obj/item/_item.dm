@@ -378,9 +378,6 @@
 			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
 			D.inventory_temperature_mod_mod = container_temperature_mod
-		if(i==1)
-			D.assoc_button = new /obj/hud/button/close_inventory
-			D.assoc_button.inventory_category = inventory_category
 		inventories += D
 
 	. = ..()

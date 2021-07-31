@@ -56,6 +56,8 @@
 
 	value = 1000
 
+	worn_layer = LAYER_MOB_HAIR_ABOVE
+
 /obj/item/clothing/glasses/sun/gar/giga
 	name = "gigagar shades"
 	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'

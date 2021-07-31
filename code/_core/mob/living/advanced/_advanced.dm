@@ -253,7 +253,7 @@
 	move_delay_multiplier = .
 
 	//Evasion stuff
-	evasion_rating = max(0,0.5 - total_weight/max_weight)*75*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
+	evasion_rating = max(0,0.5 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
 	if(ckey_last) //Player controlled
 		evasion_rating = clamp(evasion_rating,0,75)
 	else
