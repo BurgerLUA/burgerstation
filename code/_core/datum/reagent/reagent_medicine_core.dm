@@ -518,3 +518,42 @@
 	. = ..()
 	owner.brute_regen_buffer += .*2
 	owner.burn_regen_buffer += .*2
+
+
+
+/reagent/medicine/vitamins
+	name = "space vitamins"
+	desc = "All the essential vitamins as spaceman needs. Consume vitamins normalizes your nutrition to a healthy level. Note that taking too much is bad for you. Metabolizes slowly, and addictive."
+	color = "#DCFF9B"
+	alpha = 255
+
+	flavor = "gummy vitamins"
+
+	overdose_threshold = 20
+
+	metabolism_blood = 1
+	metabolism_stomach = 0.1
+	experience_per_unit = 0
+
+	value = 5
+
+	liquid = 0.75
+
+	particle_size = 0.2
+
+	addiction_strength = 0.25
+	addiction_threshold = 15
+	addiction = /addiction/health
+
+/reagent/medicine/vitamins/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	//Injecting these vitamins is pretty bad and does nothing for you.
+	owner.tox_regen_buffer -= .*2
+
+/reagent/medicine/vitamins/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.brute_regen_buffer += 1*.
+	owner.burn_regen_buffer += 1*.
+	owner.tox_regen_buffer += 1*.
+	owner.add_nutrition_quality(30*.)
+	owner.add_nutrition(4*.)

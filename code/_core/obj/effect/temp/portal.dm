@@ -28,6 +28,16 @@
 	desired_light_power = 0.25
 	desired_light_color = "#0384E2"
 
+/obj/effect/temp/portal/Destroy()
+	if(linked_portal)
+		if(linked_portal.linked_portal == src)
+			linked_portal.linked_portal = null
+		linked_portal = null
+	if(linked_marker)
+		portal_markers -= linked_marker
+		linked_marker = null
+	. = ..()
+
 /obj/effect/temp/portal/update_atom_light()
 	set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	return TRUE
@@ -51,15 +61,7 @@
 
 	queue_delete(src,SECONDS_TO_DECISECONDS(300))
 
-/obj/effect/temp/portal/Destroy()
-	if(linked_portal)
-		if(linked_portal.linked_portal == src)
-			linked_portal.linked_portal = null
-		linked_portal = null
-	if(linked_marker)
-		portal_markers |= linked_marker
-		linked_marker = null
-	. = ..()
+
 
 /obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

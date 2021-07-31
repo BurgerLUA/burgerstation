@@ -41,10 +41,8 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/Destroy()
 	QDEL_CUT(stored_objects)
-	stored_types.Cut()
-	stored_cost.Cut()
 	QDEL_NULL(accepts_item)
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
 

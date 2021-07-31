@@ -10,8 +10,8 @@
 	occurances_max = 5
 
 /event/meteors/Destroy()
-	valid_turfs.Cut()
-	valid_areas.Cut()
+	valid_turfs?.Cut()
+	valid_areas?.Cut()
 	return ..()
 
 /event/meteors/New()

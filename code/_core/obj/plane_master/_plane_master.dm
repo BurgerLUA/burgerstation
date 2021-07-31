@@ -62,7 +62,8 @@
 
 /obj/plane_master/darkness/apply_post_processing()
 	. = ..()
-	//Smooth Shadows.
+	//Smooth Shadows. Disabled for now.
+	/*
 	if(owner?.client?.settings?.loaded_data["enable_smooth_shadows"])
 		var/darkness_size = 2
 		filters += filter(type="radial_blur", size=0.05)
@@ -70,6 +71,7 @@
 		filters += filter(type="drop_shadow", x=0, y=darkness_size, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
 		filters += filter(type="drop_shadow", x=-darkness_size, y=0, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
 		filters += filter(type="drop_shadow", x=0, y=-darkness_size, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
+	*/
 
 
 //Objects

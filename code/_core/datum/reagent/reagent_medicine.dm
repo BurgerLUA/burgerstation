@@ -369,7 +369,7 @@
 
 	value = 1
 
-	addiction_strength = 0.5
+	addiction_strength = 0.1
 	addiction_threshold = 5
 	addiction = /addiction/nicotine
 

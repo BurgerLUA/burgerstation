@@ -685,3 +685,18 @@
 	object_to_place = /obj/structure/interactive/plant/wheat
 	turf_whitelist = /turf/simulated/floor/colored/grass
 	objects_max = 4
+
+/obj/marker/generation/plant/polypore_mushroom
+	object_to_place = /obj/structure/interactive/plant/polypore_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/porcini_mushroom
+	object_to_place = /obj/structure/interactive/plant/porcini_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/inocybe_mushroom
+	object_to_place = /obj/structure/interactive/plant/inocybe_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4

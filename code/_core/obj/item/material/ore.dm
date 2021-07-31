@@ -12,6 +12,7 @@
 
 	material_multiplier = 1
 
+	value = 0.5
 
 /obj/item/material/ore/Crossed(atom/movable/O)
 

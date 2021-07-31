@@ -5,7 +5,7 @@
 	update_health_elements()
 
 /mob/living/proc/remove_health_element(var/obj/hud/button/health/H)
-	health_elements -= H
+	health_elements -= H.id //H.id is important
 	if(client)
 		client.screen -= H
 	update_health_elements()

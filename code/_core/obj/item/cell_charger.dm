@@ -84,7 +84,7 @@
 
 /obj/item/cell_charger/proc/check_device_move()
 
-	if(charging_device.loc != src.loc)
+	if(charging_device && charging_device.loc != src.loc)
 		visible_message(span("warning","\The [src.name] beeps as \the [charging_device.name] is disconnected."))
 		charging_device.update_sprite()
 		HOOK_REMOVE("post_move","cell_charger_post_move_\ref[src]",charging_device)

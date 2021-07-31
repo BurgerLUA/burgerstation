@@ -19,12 +19,15 @@
 /gamemode/endless/on_life()
 
 	if(world.time - last_vote >= vote_delay)
-		SSvote.create_vote(/vote/continue_round)
+		if(world.time >= SECONDS_TO_DECISECONDS(60*60*2))
+			world.end(WORLD_END_NANOTRASEN_VICTORY)
+		else
+			SSvote.create_vote(/vote/continue_round)
 		last_vote = world.time
 
 	var/time_left = vote_delay - (world.time - last_vote)
-
-	set_status_display("mission",get_clock_time(FLOOR(DECISECONDS_TO_SECONDS(time_left),1)))
+	if(time_left >= 0)
+		set_status_display("mission",get_clock_time(FLOOR(DECISECONDS_TO_SECONDS(time_left),1)))
 
 /gamemode/endless/virtual_reality
 	name = "VR"

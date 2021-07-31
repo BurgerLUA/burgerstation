@@ -106,7 +106,12 @@
 
 /obj/item/defib/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && is_inventory(src.loc) && is_advanced(caller))
+	if(!is_advanced(caller))
+		return ..()
+
+	var/mob/living/advanced/A = caller
+
+	if((is_inventory(object) && is_inventory(src.loc)) || (isturf(src.loc) && A.attack_flags & CONTROL_MOD_DISARM))
 		var/obj/hud/inventory/I = src.loc
 		if(src in I.contents)
 			var/obj/hud/inventory/I2 = object
@@ -124,6 +129,13 @@
 				return TRUE
 
 	return ..()
+
+/obj/item/defib/post_move(var/atom/old_loc)
+	. = ..()
+	if(paddle_left && paddle_left.loc != src)
+		paddle_left.drop_item(src)
+	if(paddle_right && paddle_right.loc != src)
+		paddle_right.drop_item(src)
 
 /obj/item/defib_paddle
 	name = "defibrillator paddle"

@@ -23,7 +23,7 @@
 			if(M.client)
 				M.client -= cached_image
 		cached_image = null
-	valid_players.Cut()
+	valid_players?.Cut()
 	. = ..()
 
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

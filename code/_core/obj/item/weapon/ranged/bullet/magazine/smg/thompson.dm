@@ -6,11 +6,11 @@
 	icon_state = "inventory"
 	value = 4200
 
-	shoot_delay = 0.25
+	shoot_delay = 0.25 // funny rpm hee hoo
 
 	automatic = TRUE
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
@@ -42,7 +42,7 @@
 		/obj/item/attachment/barrel/suppressor = FALSE,
 
 		/obj/item/attachment/sight/laser_sight = TRUE,
-		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE, // more immoral than BDSM to put this on the thompson
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
@@ -65,7 +65,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	inaccuracy_modifier = 2
+	inaccuracy_modifier = 2 // i hope you like grinding ranged
 	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.01
 

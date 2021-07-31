@@ -24,7 +24,7 @@
 
 /obj/structure/interactive/shop/Destroy()
 	QDEL_NULL(stored_item)
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/shop/Initialize()
 

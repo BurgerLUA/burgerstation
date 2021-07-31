@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 

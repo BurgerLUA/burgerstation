@@ -27,7 +27,7 @@
 
 	owner = null
 
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/fulton/proc/do_invalid_fulton()
 

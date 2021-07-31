@@ -10,14 +10,14 @@
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 60,
-		ARCANE = -80,
+		BLADE = 40,
+		BLUNT = 75,
+		PIERCE = 50,
+		LASER = 40,
+		ARCANE = -90,
 		HEAT = 20,
 		COLD = 60,
-		BOMB = 20
+		BOMB = 75
 	)
 
 	size = SIZE_7
@@ -41,14 +41,14 @@
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 40,
+		BLADE = 50,
+		BLUNT = 40,
+		PIERCE = 75,
+		LASER = 60,
 		ARCANE = -100,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40
+		HEAT = 20,
+		COLD = 20,
+		BOMB = 50
 	)
 
 	size = SIZE_7

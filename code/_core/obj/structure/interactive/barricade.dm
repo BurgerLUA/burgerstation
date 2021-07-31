@@ -17,7 +17,7 @@
 
 	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
 
-	health_base = 600
+	health_base = 800
 
 	var/list/climbers = list()
 

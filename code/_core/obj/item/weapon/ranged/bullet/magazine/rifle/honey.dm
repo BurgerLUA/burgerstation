@@ -8,7 +8,7 @@
 
 	shoot_delay = 1.9
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	automatic = TRUE
 
@@ -48,8 +48,8 @@
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 20 - 16
 
-	attachment_sight_offset_x = 15 - 16
-	attachment_sight_offset_y = 20 - 16
+	attachment_sight_offset_x = 14 - 16
+	attachment_sight_offset_y = 19 - 16
 
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
