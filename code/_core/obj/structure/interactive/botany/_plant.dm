@@ -38,6 +38,8 @@
 
 	health_base = 100
 
+	var/natural = FALSE
+
 /obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
 	. = ..()
 
@@ -108,6 +110,7 @@
 	nutrition = rand(50,75)
 	age = lifetime * RAND_PRECISE(0.25,0.75)
 	age = CEILING(age,1)
+	natural = TRUE
 
 /obj/structure/interactive/plant/Finalize()
 	. = ..()
@@ -125,8 +128,9 @@
 	if(nutrition >= 10 && hydration >= 10)
 		growth += CEILING(real_growth_speed * (rand(75,125)/100),0.1)
 
-	add_nutrition(-real_growth_speed*0.25)
-	add_hydration(-real_growth_speed)
+	if(!natural)
+		add_nutrition(-real_growth_speed*0.25)
+		add_hydration(-real_growth_speed)
 
 	age += rate
 
