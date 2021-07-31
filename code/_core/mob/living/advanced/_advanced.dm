@@ -106,14 +106,15 @@
 
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
-	var/list/inventory_defers = list() //inventory ref to button
-
+	var/list/inventory_defers = list() //A list of inventory defer buttons.
 	var/evasion_rating = 0
 
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
 	remove_all_buttons()
+
+	inventory_defers?.Cut()
 
 	overlays_assoc?.Cut()
 	tracked_hidden_organs?.Cut()
@@ -129,8 +130,6 @@
 	holster_item = null
 	active_inventory = null
 	driving = null
-
-	inventory_defers?.Cut()
 
 	for(var/k in using_inventories)
 		var/obj/item/I = k

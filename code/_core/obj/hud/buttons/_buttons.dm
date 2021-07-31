@@ -22,6 +22,8 @@
 
 	var/delete_on_no_owner = TRUE
 
+	var/bad_delete = TRUE
+
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
 
 	if(alpha == 0)
@@ -33,9 +35,8 @@
 	return src.clicked_on_by_object(caller,null,location,null,params)
 
 /obj/hud/button/Destroy()
-	delete_on_no_owner = TRUE
-	update_owner(null)
-	owner = null
+	if(bad_delete)
+		CRASH_SAFE("Warning: [src.get_debug_name()] was deleted incorrectly.")
 	. = ..()
 
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
@@ -57,9 +58,9 @@
 		owner.remove_button(src)
 
 	if(!desired_owner && delete_on_no_owner)
-		delete_on_no_owner = FALSE
+		bad_delete = FALSE
 		qdel(src)
-		return FALSE
+		return TRUE
 
 	owner = desired_owner
 	if(owner)

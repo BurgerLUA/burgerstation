@@ -264,9 +264,9 @@
 	if(C)
 		C.control_mob(src,FALSE)
 
-	all_mobs += src
+	all_mobs |= src
 
-	return ..()
+	. = ..()
 
 /mob/is_player_controlled()
 	return ckey || ckey_last

@@ -67,6 +67,7 @@
 /atom/movable/Destroy()
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
+	vis_contents?.Cut()
 	area = null
 	grabbing_hand = null
 	force_move(null)
