@@ -159,7 +159,7 @@
 	. = max(1,do_attack_animation(attacker,victim,weapon))
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
-	if(is_living(victim))
+	if(is_living(victim) && attacker != victim)
 		var/mob/living/L = victim
 		if(L.client)
 			L.add_skill_xp(SKILL_EVASION,1)
