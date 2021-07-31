@@ -33,6 +33,13 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/cargo/ship)
+"ag" = (
+/obj/structure/interactive/intercom/active/poly{
+	icon_state = "intercom";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/maint/north)
 "ah" = (
 /turf/unsimulated/generation/surface/cave_turf,
 /area/city/interior/light)
@@ -373,12 +380,6 @@
 "bv" = (
 /turf/simulated/wall/shuttle,
 /area/transit/cargo_inbound/ship)
-"bw" = (
-/obj/structure/interactive/disposals/pipe/labeler{
-	sorting_tab_label = "cargo"
-	},
-/turf/simulated/floor/tile/overlapping/dark,
-/area/burgerstation/mining)
 "bx" = (
 /obj/structure/interactive/disposals/pipe/ending{
 	dir = 1
@@ -4450,10 +4451,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/burgerstation/contractor)
-"qx" = (
-/obj/structure/interactive/vending/random,
-/turf/simulated/floor/carpet,
-/area/burgerstation/maint/north)
 "qy" = (
 /obj/decal/poster/painting{
 	dir = 1;
@@ -6712,11 +6709,6 @@
 /obj/structure/interactive/computer/console/laptop,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/contractor)
-"Lt" = (
-/obj/structure/smooth/table,
-/obj/structure/interactive/dont_look,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/maint/north)
 "Lx" = (
 /obj/structure/interactive/vending/enchanting,
 /turf/simulated/floor/wood/rich,
@@ -6830,12 +6822,6 @@
 /obj/structure/interactive/fax_machine/cargo,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
-"YL" = (
-/obj/structure/interactive/atmospherics/air_alarm{
-	dir = 4
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/burgerstation/maint/north)
 
 (1,1,1) = {"
 ab
@@ -37769,7 +37755,7 @@ tM
 st
 be
 bg
-bw
+bg
 bx
 fF
 ik
@@ -43640,7 +43626,7 @@ Ay
 zJ
 zI
 eJ
-qx
+Ng
 Ng
 Mb
 Ng
@@ -44161,7 +44147,7 @@ Ng
 Ng
 bh
 Ic
-YL
+ag
 bh
 bh
 bh
@@ -44676,7 +44662,7 @@ Ng
 Ng
 BR
 BR
-Lt
+Ve
 My
 eJ
 lX
