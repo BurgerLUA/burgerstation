@@ -27,9 +27,9 @@
 	. = ..()
 
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	if(!caller || !caller.ckey)
+	if(!caller || !caller.client)
 		return TRUE
-	if(!(caller.ckey in valid_players))
+	if(!(caller in valid_players))
 		return TRUE
 	var/obj/item/currency/gold/G = new(get_turf(src))
 	G.item_count_current = item_count_current
@@ -37,7 +37,7 @@
 	FINALIZE(G)
 	G.pixel_x = pixel_x
 	G.pixel_y= pixel_y
-	valid_players -= caller.ckey
+	valid_players -= caller
 	caller.client.images -= cached_image
 	object.click_on_object(caller,G,location,control,params)
 	SSeconomy.gold_in_circulation += item_count_current
@@ -115,11 +115,9 @@
 	var/list/valid_players = list()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
-		if(!P.ckey)
-			continue
 		if(get_dist(P,T) > BOSS_RANGE)
 			continue
-		valid_players |= P.ckey
+		valid_players |= P
 
 	spawn while(amount>0)
 		var/obj/structure/interactive/coin_drop/G = new(get_step(T,pick(DIRECTIONS_ALL)))
