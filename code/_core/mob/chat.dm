@@ -70,10 +70,6 @@ var/regex/vowels = new("\[aeiou\]", "i")
 
 /mob/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
 
-	if(client && !check_spam(client,text_to_say))
-		to_chat(span("warning","You are out of breath!"))
-		return FALSE
-
 	if(!text_to_say)
 		return FALSE
 
