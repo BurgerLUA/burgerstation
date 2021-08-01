@@ -122,7 +122,7 @@
 
 /obj/structure/interactive/plant/proc/on_life()
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
-	var/rate = TICKS_TO_SECONDS(SSbotany.tick_rate)
+	var/rate = TICKS_TO_DECISECONDS(SSbotany.tick_rate)
 	var/real_growth_speed = growth_speed*rate*(P.allowed_turfs[src.type] ? P.allowed_turfs[src.type] : 0.1)
 
 	if(nutrition >= 10 && hydration >= 10)
