@@ -65,7 +65,9 @@
 
 	if(no_wall)
 		new /turf/simulated/floor/colored/dirt/cave(src)
+		disallow_generation = TRUE
 		return ..()
 
 	new /turf/simulated/floor/cave_dirt(src)
+	disallow_generation = TRUE
 	return TRUE

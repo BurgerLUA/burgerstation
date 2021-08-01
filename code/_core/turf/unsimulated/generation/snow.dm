@@ -83,6 +83,7 @@
 	if(no_wall)
 		new /turf/simulated/floor/colored/snow(src)
 		new /area/dungeon/z_01/snow(src)
+		disallow_generation = TRUE
 		return ..()
 
 	var/noise = 0
@@ -135,5 +136,6 @@
 			new /turf/simulated/floor/cave_dirt(src)
 
 	new /area/dungeon/z_01/snow(src)
+	disallow_generation = TRUE
 
 	return ..()
