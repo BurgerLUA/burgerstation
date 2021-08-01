@@ -12,7 +12,7 @@
 
 	damage_mod = 1
 
-	firemodes = list("semi-automatic","automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 

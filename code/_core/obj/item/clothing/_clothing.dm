@@ -68,11 +68,7 @@
 	var/list/ench/clothing_enchantments = list()
 
 /obj/item/clothing/Destroy()
-	if(additional_clothing_stored)
-		for(var/k in additional_clothing_stored)
-			var/atom/movable/M = k
-			qdel(M)
-		additional_clothing_stored.Cut()
+	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 
 /obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)

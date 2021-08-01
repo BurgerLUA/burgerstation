@@ -75,7 +75,7 @@
 	if(old_turf && length(old_turf.old_living))
 		old_turf.old_living -= src
 
-	if(isturf(old_loc))
+	if(isturf(old_loc) && !qdeleting)
 		var/turf/T = old_loc
 		if(!T.old_living)
 			T.old_living = list()

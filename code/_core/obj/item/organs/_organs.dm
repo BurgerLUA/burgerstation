@@ -147,7 +147,7 @@
 
 /obj/item/organ/Destroy()
 	attached_organ = null
-	attached_organs.Cut()
+	attached_organs?.Cut()
 	return ..()
 
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)

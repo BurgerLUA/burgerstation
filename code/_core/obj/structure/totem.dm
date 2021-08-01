@@ -27,7 +27,7 @@
 /obj/structure/totem/Destroy()
 	if(owner)
 		owner.totem = null
-	owner = null
+		owner = null
 	return ..()
 
 /obj/structure/totem/think()

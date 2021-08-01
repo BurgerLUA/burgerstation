@@ -17,8 +17,8 @@
 	)
 
 /event/supply/Destroy()
-	valid_turfs.Cut()
-	valid_areas.Cut()
+	valid_turfs?.Cut()
+	valid_areas?.Cut()
 	return ..()
 
 /event/supply/New()

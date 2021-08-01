@@ -66,7 +66,8 @@
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
-		/obj/item/storage/pillbottle/assprin
+		/obj/item/storage/pillbottle/assprin,
+		/obj/item/container/syringe/medipen/hypospray
 
 	)
 	markup = 0.75

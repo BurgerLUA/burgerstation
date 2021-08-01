@@ -9,8 +9,11 @@
 
 /turf/unsimulated/generation/jungle/generate(var/size = WORLD_SIZE)
 
+	var/shitfix = path_only
+
 	if(no_wall)
 		new /turf/simulated/floor/colored/dirt/jungle(src)
+		disallow_generation = TRUE
 		return ..()
 
 	var/seed_resolution = WORLD_SIZE
@@ -113,5 +116,8 @@
 				new /turf/simulated/hazard/water(src)
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
+
+	if(shitfix)
+		disallow_generation = TRUE
 
 	return ..()

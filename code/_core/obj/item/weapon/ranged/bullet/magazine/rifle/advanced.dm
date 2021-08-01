@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 3500
 
-	firemodes = list("semi-automatic","automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_delay = 3
 

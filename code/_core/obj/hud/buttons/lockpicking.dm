@@ -14,7 +14,6 @@
 	var/obj/linked_pick
 	var/obj/linked_wedge
 
-
 	var/obj/structure/interactive/crate/chest/associated_chest
 
 	plane = PLANE_HUD - 1
@@ -22,7 +21,12 @@
 
 	var/frozen = FALSE
 
-
+/obj/hud/button/lockpicking/Destroy()
+	. = ..()
+	associated_chest = null
+	QDEL_NULL(linked_lock)
+	QDEL_NULL(linked_pick)
+	QDEL_NULL(linked_wedge)
 
 /obj/hud/button/lockpicking/update_owner(var/mob/desired_owner)
 

@@ -19,6 +19,19 @@
 
 	weight = 0.1
 
+/obj/item/material/can_transfer_stacks_to(var/obj/item/I)
+	if(!istype(I,/obj/item/material/))
+		return FALSE
+
+	var/obj/item/material/M = I
+	if(M.material_id != src.material_id)
+		return FALSE
+
+	if(M.crafting_id != src.crafting_id)
+		return FALSE
+
+	. = ..()
+
 /obj/item/material/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEPATH("material_id")
@@ -46,20 +59,3 @@
 	. = ..()
 	var/material/M = SSmaterials.all_materials[material_id]
 	. *= M.value_per_unit * material_multiplier
-
-/*
-/obj/item/material/Crossed(atom/movable/O)
-
-	if(!istype(O,/obj/item/material))
-		return ..()
-
-	var/obj/item/material/M = O
-	if(M.crafting_id != src.crafting_id)
-		return ..()
-
-	if(M.item_count_max <= M.item_count_current)
-		return ..()
-
-	src.transfer_item_count_to(M)
-	return TRUE
-*/

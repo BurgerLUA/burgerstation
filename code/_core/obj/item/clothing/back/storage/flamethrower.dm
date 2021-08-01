@@ -8,7 +8,7 @@ obj/item/clothing/back/flamethrower
 
 	weight = 10
 
-	value = 3000
+	value = 8000
 
 	additional_clothing = list(
 		/obj/item/weapon/ranged/energy/fed/flamethrower

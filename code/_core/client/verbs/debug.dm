@@ -22,7 +22,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/view_dps,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
-	/client/verb/test_astar
+	/client/verb/test_astar,
+	/client/verb/print_garbage
 )
 
 /client/verb/view_dps()
@@ -205,26 +206,41 @@ client/verb/air_test(var/pressure as num)
 		FINALIZE(S_NPC)
 		S_NPC.ai.set_active(TRUE)
 
-/*
+
 /client/verb/print_garbage()
 
 	set category = "Debug"
-	set name = "Print Debug"
+	set name = "Print Garbage Collection"
 
-	if(!length(ref_id_to_warning))
-		usr.to_chat("Nothing has been found in the garbage warning system.")
+	if(!length(qdel_refs_to_type))
+		usr.to_chat("Nothing has been found in the garbage collection system.")
 		return TRUE
 
-	var/final_text = "<h1>Found [length(ref_id_to_warning)] objects that refuse to be deleted.</h1>"
+	var/final_text = ""
 
-	for(var/ref_id in ref_id_to_warning)
-		var/warning_count = ref_id_to_warning[ref_id]
+	var/datum/dummy_datum = new
+
+	var/newest_ref_number = text2num("\ref[dummy_datum]",16)
+
+	var/bad_qdels = 0
+	for(var/ref_id in qdel_refs_to_type)
 		var/o_type = qdel_refs_to_type[ref_id]
+		var/datum/D = locate(ref_id)
+		if(!D || D.type != o_type || !D.qdeleting)
+			qdel_refs_to_type -= ref_id
+			continue
+		var/current_ref_number = text2num("\ref[D]",16)
+		if(newest_ref_number < current_ref_number)
+			continue
 		var/var_edit_text = "<a href=?var_edit_ref=[ref_id]>[ref_id]</a>"
-		final_text += "<br>[var_edit_text]([o_type]) = ~[warning_count] seconds"
+		final_text += "<br>[var_edit_text]([o_type])"
+		bad_qdels++
+
+	final_text = "<h1>Found [bad_qdels] objects that refused to be deleted.</h1>[final_text]"
 
 	usr << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
-*/
+
+	qdel(dummy_datum)
 
 /client/verb/subsystem_report()
 	set name = "Subsystem Report"

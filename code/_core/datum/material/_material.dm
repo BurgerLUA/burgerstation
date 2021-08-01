@@ -39,7 +39,7 @@
 	name = "grass"
 	color = COLOR_GREEN
 
-	value_per_unit = 2
+	value_per_unit = 1
 
 	armor = list(
 		BLADE = -50,
@@ -64,7 +64,7 @@
 	name = "dirt"
 	color = COLOR_BROWN
 
-	value_per_unit = 1
+	value_per_unit = 0.5
 
 	armor = list(
 		BLADE = 50,
@@ -90,7 +90,7 @@
 	name = "rock"
 	color = COLOR_ROCK
 
-	value_per_unit = 2
+	value_per_unit = 1
 
 	armor = list(
 		BLADE = 25,
@@ -120,7 +120,7 @@
 
 	icon_state_ore = "ore_sand"
 
-	value_per_unit = 4
+	value_per_unit = 3
 
 	armor = list(
 		BLADE = 25,
@@ -145,7 +145,7 @@
 	name = "steel"
 	color = COLOR_STEEL
 
-	value_per_unit = 6
+	value_per_unit = 9
 
 	armor = list(
 		BLADE = 75,
@@ -169,7 +169,7 @@
 /material/aluminium
 	name = "aluminium"
 	color = COLOR_ALUMINIUM
-	value_per_unit = 15
+	value_per_unit = 12
 
 	armor = list(
 		BLADE = 25,
@@ -193,7 +193,7 @@
 /material/zinc
 	name = "zinc"
 	color = COLOR_ZINC
-	value_per_unit = 15
+	value_per_unit = 10
 
 	armor = list(
 		BLADE = 0,  //it's
@@ -217,7 +217,7 @@
 /material/magnesium
 	name = "magnesium"
 	color = COLOR_MAGNESIUM
-	value_per_unit = 15
+	value_per_unit = 14
 
 	armor = list(
 		BLADE = 30,  //it's
@@ -241,7 +241,7 @@
 /material/nickel
 	name = "nickel"
 	color = COLOR_NICKEL
-	value_per_unit = 15
+	value_per_unit = 13
 
 	armor = list(
 		BLADE = 25,  //it's
@@ -268,7 +268,7 @@
 	icon_state_ore = "ore_iron"
 	icon_state_ore_deposit = "deposit_iron"
 
-	value_per_unit = 4
+	value_per_unit = 7
 
 	armor = list(
 		BLADE = 25,

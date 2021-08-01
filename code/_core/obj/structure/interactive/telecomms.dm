@@ -68,7 +68,7 @@ var/global/list/all_telecomms = list()
 			continue
 		var/area/A = get_area(R)
 		if(!A)
-			log_error("Warning: Tried processing radio data for [R.get_debug_name()], but it didn't have a valid area!")
+			log_error("Warning: Tried processing radio data for [R.get_debug_name()], but it didn't have a valid area! (loc: [R.loc])")
 			continue
 		if(!A.area_identifier || !broadcasting_areas[A.area_identifier])
 			continue

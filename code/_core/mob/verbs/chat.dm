@@ -1,5 +1,19 @@
 /mob/verb/say(var/text_to_say as text)
-	set hidden = TRUE
+	set name = "Say"
+	set category = "Communication"
+
+	if(client && !check_spam(client))
+		return FALSE
+
+	if(!text_to_say)
+		text_to_say = input("What would you like to say?","Say") as text|null
+
+	if(!text_to_say)
+		return FALSE
+
+	if(client && !check_spam(client,text_to_say))
+		return FALSE
+
 	do_say(text_to_say)
 
 /mob/verb/emote(var/emote as text,var/mob/target in view(VIEW_RANGE,src))

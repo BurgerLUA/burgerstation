@@ -15,6 +15,7 @@
 	automatic = TRUE
 
 	use_loyalty_tag = TRUE
+	has_quick_function = TRUE
 
 /obj/item/weapon/ranged/spellgem/get_owner()
 
@@ -108,3 +109,6 @@
 	angle += ((bullet_num-1) - (bullet_num_max-1)*0.5)*spread_per_shot
 
 	return list(cos(angle),sin(angle))
+
+/obj/item/weapon/ranged/spellgem/quick(var/mob/caller,var/atom/object,location,params)
+	return shoot(caller,object,location,params)
