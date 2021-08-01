@@ -115,7 +115,7 @@
 	icon_state = "1"
 	value = -1 //Value is based on current economy, see get_base_value()
 
-	item_count_max = 200
+	item_count_max = 4000
 
 	size = SIZE_4/200
 	weight = 50/200
