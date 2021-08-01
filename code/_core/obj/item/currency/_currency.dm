@@ -147,8 +147,6 @@
 /obj/item/currency/gold/update_icon()
 	. = ..()
 	switch(item_count_current)
-		if(22)
-			icon_state = "23" //SHITFIX
 		if(1 to 40)
 			icon_state = "[item_count_current]"
 		if(40 to 100)

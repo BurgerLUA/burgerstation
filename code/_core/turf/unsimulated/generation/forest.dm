@@ -5,9 +5,12 @@
 
 /turf/unsimulated/generation/forest/generate(var/size = WORLD_SIZE)
 
+	var/shitfix = path_only
+
 	if(no_wall)
 		new /turf/simulated/floor/colored/grass(src)
 		new /area/dungeon/z_01/forest(src)
+		disallow_generation = TRUE
 		return ..()
 
 	var/noise = 0
@@ -101,6 +104,9 @@
 		color = blend_colors("#336D31","#426D31",noise)
 		if(prob(1))
 			new /obj/marker/generation/forest_soil(src)
+
+	if(shitfix)
+		disallow_generation = TRUE
 
 	return ..()
 

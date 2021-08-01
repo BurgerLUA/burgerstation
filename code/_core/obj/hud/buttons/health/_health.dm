@@ -37,3 +37,4 @@
 		var/mob/living/L = owner
 		L.add_health_element(src)
 		update_stats(L)
+		update_sprite()
