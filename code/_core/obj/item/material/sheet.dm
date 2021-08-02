@@ -37,7 +37,6 @@
 
 /obj/item/material/sheet/steel
 	material_id = /material/steel
-	crafting_id = "sheet_steel"
 
 /obj/item/material/sheet/steel/spawn_50/Generate()
 	item_count_current = 50
@@ -56,7 +55,6 @@
 
 /obj/item/material/sheet/glass
 	material_id = /material/glass
-	crafting_id = "sheet_glass"
 	drop_sound = 'sound/items/drop/glass.ogg'
 
 /obj/item/material/sheet/glass/spawn_50/Generate()

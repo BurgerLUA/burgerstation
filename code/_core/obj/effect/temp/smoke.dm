@@ -34,7 +34,7 @@
 
 /obj/effect/temp/smoke/Destroy()
 	. = ..()
-	blacklist_turfs.Cut()
+	blacklist_turfs?.Cut()
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
 	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))

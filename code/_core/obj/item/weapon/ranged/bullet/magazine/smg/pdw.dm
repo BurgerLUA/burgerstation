@@ -11,7 +11,7 @@
 
 	shoot_delay = 1
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
 

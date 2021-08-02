@@ -1,7 +1,5 @@
 /mob/living/advanced/proc/add_inventory(var/obj/hud/inventory/I)
 
-	I.update_sprite()
-
 	if(I.id == BODY_HAND_LEFT_HELD)
 		left_hand = I
 
@@ -19,6 +17,8 @@
 	if(client)
 		client.screen += I
 		client.known_inventory += I
+
+	I.update_sprite()
 
 	return TRUE
 

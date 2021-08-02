@@ -20,7 +20,7 @@
 	QDEL_NULL(stored_weapon)
 	QDEL_NULL(stored_magazine)
 	QDEL_NULL(stored_handle)
-	return ..()
+	. = ..()
 
 //prototyped from barricades, gun sprite shifted to position around player sprites
 /obj/structure/interactive/mountable/browning/PostInitialize()
@@ -86,7 +86,7 @@
 
 /obj/item/browning_handle/Destroy()
 	QDEL_NULL(linked_gun)
-	return ..()
+	. = ..()
 
 //prototyped from defib paddles
 /obj/item/browning_handle/click_on_object(var/mob/caller,var/atom/object,location,control,params)

@@ -219,6 +219,9 @@
 	if(owner && should_update_owner && update_owner)
 		owner.update_sprite()
 
+	if(volume_current > volume_max)
+		splash(null,get_turf(owner),volume_current - volume_max)
+
 	return TRUE
 
 

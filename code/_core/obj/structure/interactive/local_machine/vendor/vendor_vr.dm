@@ -58,13 +58,6 @@
 
 	return TRUE
 
-/obj/structure/interactive/vr_shop/Destroy()
-	for(var/k in stored_vendors)
-		var/obj/structure/interactive/vending/V = k
-		qdel(V)
-	stored_vendors.Cut()
-	. = ..()
-
 /obj/structure/interactive/vr_shop/Initialize()
 	. = ..()
 	for(var/k in vendor_types_to_spawn)

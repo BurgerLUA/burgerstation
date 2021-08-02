@@ -12,6 +12,20 @@
 
 	particle_size = 0.6
 
+/reagent/nutrition/porcini
+	name = "porcini"
+	desc = "Nutrition and flavor from a porcini mushroom."
+	color = "#444444"
+
+	nutrition_amount = 7
+	nutrition_quality_amount = 6
+
+	flavor = "roasted mushroom"
+
+	liquid = -0.4
+
+	particle_size = 0.4
+
 /reagent/nutrition/tomato
 	name = "tomato paste"
 	desc = "Nutrition and flavor from a tomato."

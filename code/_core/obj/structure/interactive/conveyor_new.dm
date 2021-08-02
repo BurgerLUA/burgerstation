@@ -18,15 +18,20 @@
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
-	INTERACT_DELAY(5)
+	INTERACT_DELAY(10)
 
 	caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 	set_dir(turn(dir,90))
-	disable()
-	update_conveyor()
-	enable()
 
+	update_conveyor()
 	update_sprite()
+
+	for(var/k in DIRECTIONS_CARDINAL)
+		var/turf/T = get_step(src,k)
+		var/obj/structure/interactive/conveyor/C = locate() in T.contents
+		if(C)
+			C.update_conveyor()
+			C.update_sprite()
 
 	return TRUE
 

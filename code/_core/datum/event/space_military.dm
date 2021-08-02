@@ -13,8 +13,8 @@
 	occurances_max = 1
 
 /event/space_military/Destroy()
-	valid_turfs.Cut()
-	valid_areas.Cut()
+	valid_turfs?.Cut()
+	valid_areas?.Cut()
 	return ..()
 
 /event/space_military/New()

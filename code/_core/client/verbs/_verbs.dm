@@ -26,7 +26,6 @@
 	verbs += /client/verb/set_fps
 	verbs += /client/verb/edit_macros
 	verbs += /client/verb/set_view_range
-	verbs += /client/verb/precise_zoom
 	verbs += /client/verb/toggle_smooth_shadows
 	verbs += /client/verb/toggle_depth
 	verbs += /client/verb/toggle_currency_bloom

@@ -8,7 +8,9 @@
 
 /obj/hud/button/inventory_defer/Destroy()
 	referencing = null
-	QDEL_NULL(assoc_button)
+	if(assoc_button)
+		assoc_button.update_owner(null)
+		assoc_button = null
 	. = ..()
 
 /obj/hud/button/inventory_defer/proc/get_top_vis_object()
@@ -75,19 +77,12 @@
 
 	update_vis_contents()
 
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		A.inventory_defers += src
-	else
-		log_error("Warning: owner ([owner ? owner.get_debug_name() : "NULL"]) of [src.get_debug_name()] was not advanced.")
-
 	return TRUE
 
 
 /obj/hud/button/inventory_defer/update_owner(var/mob/desired_owner)
 
-	if(assoc_button)
-		assoc_button.update_owner(desired_owner)
+	assoc_button?.update_owner(desired_owner)
 
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
@@ -97,4 +92,4 @@
 
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.inventory_defers += src
+		A.inventory_defers |= src

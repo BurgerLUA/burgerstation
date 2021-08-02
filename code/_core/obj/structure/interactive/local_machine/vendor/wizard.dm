@@ -8,12 +8,19 @@
 		/obj/item/clothing/overwear/armor/knight/battlemage,
 		/obj/item/clothing/head/helmet/knight/battlemage,
 		/obj/item/supply_crate/magic,
-		/obj/item/soulgem,
-		/obj/item/soulgem/common,
 		/obj/item/soulgem/uncommon,
 		/obj/item/container/beaker/bottle/health_potion,
 		/obj/item/container/beaker/bottle/stamina_potion,
-		/obj/item/container/beaker/bottle/mana_potion
+		/obj/item/container/beaker/bottle/mana_potion,
+		/obj/item/weapon/ranged/spellgem/chaos,
+		/obj/item/weapon/ranged/spellgem/crystal,
+		/obj/item/weapon/ranged/spellgem/f50cal,
+		/obj/item/weapon/ranged/spellgem/fireball,
+		/obj/item/weapon/ranged/spellgem/oozey,
+		/obj/item/weapon/ranged/wand/quartz,
+		/obj/item/weapon/melee/torch/lantern,
+		/obj/item/weapon/ranged/magic/spellblade/runesword,
+		/obj/item/weapon/melee/shield/heartstone
 	)
 
 	accepts_item = /obj/item/currency/magic_token

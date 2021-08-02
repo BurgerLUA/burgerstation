@@ -13,7 +13,7 @@
 	var/list/labeled_overlays = list()
 
 /obj/hud/button/health/body/Destroy()
-	labeled_overlays.Cut()
+	labeled_overlays?.Cut()
 	return ..()
 
 /obj/hud/button/health/body/update_owner(var/mob/desired_owner)

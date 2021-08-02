@@ -32,7 +32,7 @@
 			owner.add_player_to_boss(A)
 		if(objective_move == objective_attack)
 			objective_move = null
-		owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
+		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
 		return TRUE
 	else if(istype(A))
@@ -40,7 +40,7 @@
 		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
 		objective_attack = A
-		owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
+		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
 		return TRUE
 

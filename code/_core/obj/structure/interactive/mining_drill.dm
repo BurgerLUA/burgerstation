@@ -140,9 +140,8 @@
 
 /obj/structure/interactive/mining_brace/Destroy()
 	var/obj/structure/interactive/mining_drill/MD = locate() in get_step(src,dir)
-	if(MD)
-		MD.check_valid()
-	return ..()
+	MD?.check_valid()
+	. = ..()
 
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

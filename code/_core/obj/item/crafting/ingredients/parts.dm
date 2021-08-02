@@ -34,3 +34,12 @@
 	icon_state = "air_regulator"
 	value = 750
 	crafting_id = "air_regulator"
+
+//Phoron canister used for flammables and combustables. If it's space-age and volatile, this was used in its creation. (Also, muh flamethrower.)
+/obj/item/crafting/ingredient/part/p_tank
+	name = "phoron tank"
+	desc = "Keep it closed."
+	desc_extended = "An air tank made to keep air inside until it's ready to be released. This one is full of phoron."
+	icon_state = "p_tank"
+	value = 750
+	crafting_id = "p_tank"

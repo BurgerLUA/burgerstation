@@ -55,7 +55,6 @@
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/objs/plane_master_obj
-	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
 	var/obj/plane_master/scenery/plane_master_scenery
 	var/obj/plane_master/lighting/plane_master_lighting
@@ -118,34 +117,29 @@
 	ckey_last = null
 	key = null // required to GC
 
-	if(buttons)
-		for(var/k in buttons)
-			var/atom/movable/M = k
-			qdel(M)
-		buttons.Cut()
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
+		B.update_owner(null)
 
-	if(health_elements)
-		for(var/k in health_elements)
-			var/atom/movable/M = health_elements[k]
-			qdel(M)
-		health_elements.Cut()
+	for(var/k in health_elements)
+		var/obj/hud/button/B = health_elements[k]
+		B.update_owner(null)
 
-	if(stored_chat_text)
-		stored_chat_text.Cut()
+	stored_chat_text?.Cut()
 
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
-	for(var/k in observers)
-		var/mob/M = k
-		M.observing = null
-	observers.Cut()
+	if(observers)
+		for(var/k in observers)
+			var/mob/M = k
+			M.observing = null
+		observers.Cut()
 
 	if(observing)
 		observing.observers -= src
 		observing = null
 
-	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_darkness)
@@ -153,27 +147,29 @@
 	QDEL_NULL(plane_master_shuttle)
 	QDEL_NULL(plane_master_scenery)
 	QDEL_NULL(plane_master_lighting)
+	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_openspace)
+	QDEL_NULL(plane_master_currency)
+	QDEL_NULL(plane_master_hud)
 
 	QDEL_NULL(examine_overlay)
 
-	if(parallax)
-		for(var/k in parallax)
-			var/atom/movable/M = parallax[k]
-			qdel(M)
-		parallax.Cut()
+	QDEL_CUT_ASSOC(parallax)
 
-	if(color_mods)
-		color_mods.Cut()
+	color_mods?.Cut()
 
-	if(lighting_mods)
-		lighting_mods.Cut()
+	lighting_mods?.Cut()
 
 	. = ..()
 
+	if(fallback_mob)
+		fallback_mob.linked_mobs -= src
 	fallback_mob = null
-	if(linked_mobs)
-		linked_mobs.Cut()
+
+	for(var/k in linked_mobs)
+		var/mob/M = k
+		M.fallback_mob = null
+	linked_mobs?.Cut()
 
 /mob/Login()
 
@@ -276,9 +272,9 @@
 	if(C)
 		C.control_mob(src,FALSE)
 
-	all_mobs += src
+	all_mobs |= src
 
-	return ..()
+	. = ..()
 
 /mob/is_player_controlled()
 	return ckey || ckey_last

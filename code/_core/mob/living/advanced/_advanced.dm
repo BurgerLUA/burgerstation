@@ -106,8 +106,7 @@
 
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
-	var/list/inventory_defers = list() //inventory ref to button
-
+	var/list/inventory_defers = list() //A list of inventory defer buttons.
 	var/evasion_rating = 0
 
 /mob/living/advanced/Destroy()
@@ -115,8 +114,11 @@
 	remove_all_organs()
 	remove_all_buttons()
 
-	overlays_assoc.Cut()
-	tracked_hidden_organs.Cut()
+	inventory_defers?.Cut()
+
+	overlays_assoc?.Cut()
+	tracked_hidden_organs?.Cut()
+	slot_buttons?.Cut()
 
 	held_objects = null
 	worn_objects = null
@@ -129,13 +131,11 @@
 	active_inventory = null
 	driving = null
 
-	inventory_defers.Cut()
-
 	for(var/k in using_inventories)
 		var/obj/item/I = k
 		I.close_inventory(src)
 
-	using_inventories.Cut()
+	using_inventories?.Cut()
 
 	QDEL_NULL(stored_handcuffs)
 
@@ -253,7 +253,7 @@
 	move_delay_multiplier = .
 
 	//Evasion stuff
-	evasion_rating = max(0,1 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
+	evasion_rating = max(0,0.5 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
 	if(ckey_last) //Player controlled
 		evasion_rating = clamp(evasion_rating,0,75)
 	else

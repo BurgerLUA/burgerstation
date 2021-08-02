@@ -8,7 +8,7 @@
 
 	shoot_delay = 1.5
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	automatic = TRUE
 

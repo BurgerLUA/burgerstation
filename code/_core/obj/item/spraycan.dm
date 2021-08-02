@@ -17,10 +17,8 @@
 
 /obj/item/spraycan/Destroy()
 	. = ..()
-	if(desired_spray)
-		QDEL_NULL(desired_spray)
-	if(existing_spray)
-		QDEL_NULL(existing_spray)
+	QDEL_NULL(desired_spray)
+	QDEL_NULL(existing_spray)
 
 /obj/item/spraycan/Finalize()
 	. = ..()
