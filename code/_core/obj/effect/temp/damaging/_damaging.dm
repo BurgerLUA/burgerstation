@@ -241,11 +241,11 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 
 /obj/effect/temp/hazard/flamethrowerfire
 	name = "fire"
-	icon = 'icons/obj/effects/flamer_fire_effect.dmi' //FIRE
-	icon_state = "red_1" //brain out, soup in
+	icon = 'icons/obj/effects/flamer_fire_effect.dmi'
+	icon_state = "red_1"
 	duration = SECONDS_TO_DECISECONDS(30)
 	hazard_range = 1
-	damage_type = /damagetype/ranged/laser/flamethrower
+	damage_type = /damagetype/ranged/laser/flamethrower/hazard
 	cross_hazard = TRUE
 	plane = PLANE_BLOOD
 	layer = 0
