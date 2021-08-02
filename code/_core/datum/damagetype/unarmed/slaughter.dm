@@ -54,6 +54,8 @@
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.blood_volume = clamp(A.blood_volume+blood_to_steal,0,A.blood_volume_max) //I successfully stole bloodsteal code.
+				A.health.adjust_loss_smart(oxy = -blood_to_steal)
+				play_sound(pick('sound/effects/demon_consume.ogg'),get_turf(V),range_max=VIEW_RANGE*0.5)
 			else if (V.blood_volume <= 0)
 				A.to_chat(span("danger","That enemy has no blood!"))
 
@@ -111,5 +113,6 @@
 		var/mob/living/A = attacker
 		if(!A.dead && !V.dead) //basically, if the attack lands on a living person
 			A.blood_volume -= (25)
+			A.health.adjust_loss_smart(oxy = 25)
 
 	return ..()
