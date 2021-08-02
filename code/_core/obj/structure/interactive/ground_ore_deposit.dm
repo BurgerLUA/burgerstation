@@ -84,7 +84,7 @@
 
 
 /obj/structure/interactive/ground_ore_deposit/map
-	ore_score = 200
+	ore_score = 600
 
 /obj/structure/interactive/ground_ore_deposit/map/iron
 	material_id = /material/iron
