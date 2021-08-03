@@ -136,6 +136,8 @@
 
 /obj/structure/interactive/vending/syndicate/prize/rev
 	stored_types = list(
+		/obj/item/pinpointer/crew/revolutionary,
+		/obj/item/announcement/rev,
 		/obj/item/clothing/back/storage/backpack/explorer,
 		/obj/item/clothing/belt/bandolier/shotgun_23,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
