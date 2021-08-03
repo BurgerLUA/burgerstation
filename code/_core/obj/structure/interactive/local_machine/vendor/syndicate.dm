@@ -189,13 +189,10 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
-
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
-		/obj/item/magazine/rifle_762_short,
-
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
 		/obj/item/magazine/rifle_762_short,
 
