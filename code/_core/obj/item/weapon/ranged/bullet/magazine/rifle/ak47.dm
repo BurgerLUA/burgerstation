@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47
-	name = "\improper 7.62x39mmR AKM"
+	name = "\improper 7.62x39mm AKM"
 	desc = "Ancient, with an upgrade."
-	desc_extended = "The 7.62x39mmR AK-47 is the AK to go for when you seriously want to fuck shit up."
+	desc_extended = "The 7.62x39mm AKM is the AK to go for when you seriously want to fuck shit up."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
 	value = 2200
@@ -64,7 +64,7 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 19 - 16
 
-
+	dan_mode = TRUE
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1.75
@@ -95,3 +95,5 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1.25
 	movement_spread_base = 0.01
+
+	dan_mode = TRUE
