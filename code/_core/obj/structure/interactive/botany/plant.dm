@@ -86,6 +86,17 @@
 	growth_max = 100
 	delete_after_harvest = FALSE
 
+/obj/structure/interactive/plant/corn
+	plant_type = /plant_type/corn
+	icon_state = "corn"
+
+	potency = 8
+	yield_max = 7
+	growth_speed = 0.4
+
+	growth_max = 100
+	delete_after_harvest = FALSE
+
 /obj/structure/interactive/plant/cabbage
 	plant_type = /plant_type/cabbage
 	icon_state = "cabbage"

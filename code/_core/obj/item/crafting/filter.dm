@@ -2,6 +2,8 @@
 	name = "portable filtering device"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "filter"
+	desc= "Another thing that needs instructions."
+	desc_extended = "It filters chems out of some things into another! Alt-click to set the filter size!"
 
 	inventories = list(
 		/obj/hud/inventory/crafting/slotB1,

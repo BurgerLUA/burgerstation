@@ -10,9 +10,10 @@
 
 	var/growth = 0 //Increases by growth_speed every second.
 	var/growth_min = 0 //This is set AFTER harvesting.
-	var/growth_max = 100 //The growth value when this plant is considered grown, but has no produce grown on it.
-	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
+	var/growth_max = 50 //The growth value when this plant is considered grown, but has no produce grown on it. was 100
+	var/growth_produce_max = 100 //The growth value when this plant is considered grown, and has produce on it. was 200
 
+	//current numbers means lifeweed grows in ~6 seconds. So now I have a point to scale down from.
 	reagents = /reagent_container/plant
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = FALSE
@@ -21,12 +22,12 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Harvest chance per yield.
-	var/growth_speed = 5 //How much to add to growth every second
+	var/growth_speed = 200 //How much to add to growth every second //was 5. SHOULD add 1 growth every tick if perfect conditions are present
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
-	var/age = 0 //In seconds. Once it gets old (10 minutes) it starts to take damage.
-	var/lifetime = 900 //The age in which this plant starts dying, in seconds.
+	var/age = 0 //In seconds. Once it gets old (20 minutes) it starts to take damage.
+	var/lifetime = 1200 //The age in which this plant starts dying, in seconds. was 900.
 
 	var/delete_after_harvest = TRUE
 
@@ -58,6 +59,8 @@
 			. += span("warning","It looks underwatered.")
 		if(30 to 50)
 			. += span("notice","It looks like it could use some water.")
+		if(50 to 90)
+			. += span("notice","It looks properly watered.")
 		if(90 to 125)
 			. += span("warning","It looks overwatered.")
 		if(125 to 200)
@@ -70,11 +73,14 @@
 			. += span("warning","It looks underfertilized.")
 		if(30 to 50)
 			. += span("notice","It looks like it could use some fertilizer.")
+		if(50 to 90)
+			. += span("notice","It looks properly fertilized.")
 		if(90 to 125)
 			. += span("warning","It looks overfertilized.")
 		if(125 to 200)
 			. += span("warning","It looks severely overfertilized!")
 
+	. += span("notice","AGE: [age] GROWTH [growth] ")
 
 
 
@@ -121,18 +127,22 @@
 	. = ..()
 
 /obj/structure/interactive/plant/proc/on_life()
+	//log_admin("plant growing!")
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	var/rate = TICKS_TO_DECISECONDS(SSbotany.tick_rate)
-	var/real_growth_speed = growth_speed*rate*(P.allowed_turfs[src.type] ? P.allowed_turfs[src.type] : 0.1)
+	var/real_growth_speed = growth_speed*rate*10  //added 100 for test speed purpose. //removed for speed testing: //*(P.allowed_turfs[src.type] ? P.allowed_turfs[src.type] : 0.1)
 
 	if(nutrition >= 10 && hydration >= 10)
-		growth += CEILING(real_growth_speed * (rand(75,125)/100),0.1)
+		growth += real_growth_speed //FLOOR(real_growth_speed,0.1) //set CEILING to FLOOR, speed * (rand(75,125)/100) removed, unnecessary and averages out over a plants lifetime
 
 	if(!natural)
-		add_nutrition(-real_growth_speed*0.25)
-		add_hydration(-real_growth_speed)
+		//Plants will need 100 water and 25 nutrition to grow to full.
+		add_nutrition(-0.25) //-real_growth_speed*0.25)
+		add_hydration(-1) //-real_growth_speed) 
 
 	age += rate
+
+	//log_admin("rate [rate] : nutrition : [nutrition] : hydration [hydration]")
 
 	var/brute_to_add = 0
 	var/tox_to_add = 0
@@ -142,10 +152,14 @@
 		brute_to_add += 3*(1 - nutrition/25)
 	else if(nutrition > 110) //Overfertilized.
 		tox_to_add += 1
+	else if (nutrition >= 50 && nutrition <= 90) //healthy
+		brute_to_add -= 1
 	if(hydration <= 10) //Underwatered
 		brute_to_add += 5*(1 - hydration/25)
 	else if(hydration > 110) //Overwaterd
 		tox_to_add += 1
+	else if (hydration >= 50 && hydration <= 90) //healthy
+		tox_to_add -= 1
 	if(brute_to_add || tox_to_add)
 		src.health.adjust_loss_smart(brute=brute_to_add,tox=tox_to_add)
 
@@ -163,6 +177,13 @@
 			reagents.update_container()
 
 	update_sprite()
+
+	//dead plants auto-remove themselves
+	var/health_percent = health.health_current/health.health_max
+	if (health_percent <= 0.01)
+		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
+		qdel(src)
+		
 
 	return TRUE
 
@@ -231,8 +252,9 @@
 		var/local_potency = min(potency*skill_power,100*min(skill_power,1))
 		var/local_yield = clamp(yield_max*skill_power,1,10*min(skill_power,1))
 
-		local_potency = CEILING(local_potency,1)
-		local_yield = CEILING(local_yield,1)
+		//these are extremely unfun clamps
+		//local_potency = CEILING(local_potency,1)
+		//local_yield = CEILING(local_yield,1)
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
@@ -266,7 +288,7 @@
 			caller.visible_message(span("warning","\The [caller.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
 		else
 			caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
-			caller.add_skill_xp(SKILL_BOTANY, CEILING(total_harvests*potency*0.01,1))
+			caller.add_skill_xp(SKILL_BOTANY, FLOOR(total_harvests*potency,1)) //CEILING changed to FLOOR, 1% mod removed
 
 	if(delete_after_harvest)
 		growth = 0 //just in case
