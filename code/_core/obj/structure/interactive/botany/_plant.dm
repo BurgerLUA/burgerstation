@@ -11,12 +11,14 @@
 	//NOTES TO ANY FUTURE BOTANY CODERs:
 	//The numbers involved on making plants grow is a fairly complicated, interwoven feedback cycle.desc_extended =
 	//You cannot simply change 1 number and expect everything to work as you hoped it would.
-
+	//Its mostly the metabolism part that screws up what is otherwise a straightforward setup, but health changes and tick speed can also
+	//cause bigger swings in results than expected. With the current set of numbers, you should mostly be able to change any individual plant values
+	//in seed_types.dm to handle any individual plant that needs brought into line.
 
 	var/growth = 0 //Increases by growth_speed every second.
 	var/growth_min = 0 //This is set AFTER harvesting.
-	var/growth_max = 50 //The growth value when this plant is considered grown, but has no produce grown on it. was 100
-	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it. was 5
+	var/growth_max = 50 //The growth value when this plant is considered grown, but has no produce grown on it.
+	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
 
 	//current numbers means plants grow in about 45 seconds. WIth the rest of the new demands, this should require mass farming to be a multiple person effort.
 	reagents = /reagent_container/plant
@@ -27,12 +29,12 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Harvest chance per yield.
-	var/growth_speed = 100 //How much to add to growth every second //was 5, then was 200.
+	var/growth_speed = 100 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
-	var/age = 0 //In cycle-ticks. Once it gets old (20 minutes) it starts to take damage.
-	var/lifetime = 1200 //The age in which this plant starts dying, in cycle-ticks. was 900.
+	var/age = 0 //In seconds. Once it gets old (15 minutes) it starts to take damage.
+	var/lifetime = 900 //The age in which this plant starts dying. 15 minutes @ 900
 
 	var/delete_after_harvest = TRUE
 
@@ -146,7 +148,7 @@
 		add_nutrition(-0.125) //-real_growth_speed*0.25)
 		add_hydration(-0.5) //-real_growth_speed)
 
-	age += rate
+	age += rate / 10
 
 	var/brute_to_add = 0
 	var/tox_to_add = 0
@@ -293,7 +295,7 @@
 			caller.visible_message(span("warning","\The [caller.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
 		else
 			caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
-			caller.add_skill_xp(SKILL_BOTANY, FLOOR(total_harvests*potency,1)) //CEILING changed to FLOOR, 1% mod removed
+			caller.add_skill_xp(SKILL_BOTANY, FLOOR(total_harvests*potency,1))
 
 	if(delete_after_harvest)
 		growth = 0 //just in case

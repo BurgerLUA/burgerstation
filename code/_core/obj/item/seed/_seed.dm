@@ -98,7 +98,7 @@
 		var/obj/structure/interactive/plant/PL = new(T)
 		PL.plant_type = plant_type
 		PL.growth_min = growth_min
-		PL.growth_max =  growth_max
+		PL.growth_max = growth_max
 		PL.growth_produce_max = growth_produce_max
 		PL.potency = potency
 		PL.yield_max = yield_max
