@@ -110,6 +110,10 @@
 	icon = 'icons/obj/structure/smooth/table/normal.dmi'
 	icon_state = "table" //todo: implement updating
 
+/obj/structure/smooth/table/furniture/PostInitialize(var/mob/caller)
+	. = ..()
+	queue_update_smooth_edges(src)
+
 /obj/structure/smooth/table/furniture/proc/can_pack_up(var/mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
@@ -131,6 +135,7 @@
 	var/obj/item/deployable/furniture/table/C = new(get_turf(src))
 	INITIALIZE(C)
 	FINALIZE(C)
+	queue_update_smooth_edges(src)
 	qdel(src)
 
 	return TRUE
