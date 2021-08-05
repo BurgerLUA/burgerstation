@@ -1,5 +1,5 @@
 /obj/item/material/wood
-	name = "wood planks"
+	name = "plank"
 	desc = "I am error."
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "wood"
@@ -8,7 +8,7 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	crafting_id = "wood"
+	crafting_id = "plank"
 
 	drop_sound = 'sound/items/drop/wooden.ogg'
 

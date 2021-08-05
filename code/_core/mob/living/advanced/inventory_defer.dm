@@ -15,15 +15,14 @@
 	B.icon = initial(I.icon)
 	B.icon_state = initial(I.icon_state)
 	B.screen_loc = "CENTER+[x_pos],TOP+[y_pos]"
-	B.update_owner(src)
 	B.clone(I)
+	B.update_owner(src)
 
 	if(slot==0)
 		var/obj/hud/button/close_inventory_defers/C = new
 		C.screen_loc = "CENTER+[x_pos+6],TOP+[y_pos]"
 		C.update_owner(src)
 		B.assoc_button = C
-
 
 	return B
 
@@ -37,7 +36,7 @@
 	if(!(caller in viewers(VIEW_RANGE,src)))
 		return TRUE
 
-	clear_inventory_defers()
+	src.clear_inventory_defers() //Remove existing ones.
 
 	var/s=0
 

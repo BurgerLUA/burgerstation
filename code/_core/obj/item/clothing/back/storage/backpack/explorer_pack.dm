@@ -72,6 +72,6 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 
 	return ..()
 
-/obj/item/clothing/back/storage/backpack/explorer/black //I LOVE it - Stalk.
+/obj/item/clothing/back/storage/backpack/explorer/black
 	name = "black explorer's pack"
 	icon = 'icons/obj/item/clothing/back/backpack/explorer_pack_sniper.dmi'

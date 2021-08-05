@@ -57,7 +57,16 @@
 
 /obj/decal/poster/nanotrasen/Generate() //Random positive poster.
 	. = ..()
-	icon_state = "poster[rand(1,35)]_legit"
+	if(prob(0.5))
+		stored_poster = pick(SSposter.all_posters)
+		var/collectable_poster/P = SSposter.all_posters[stored_poster]
+		name = "Collectable Poster: [P.name]"
+		icon = P.icon
+		icon_state = P.icon_state
+		desc = P.desc
+		desc_extended = P.desc_extended
+	else
+		icon_state = "poster[rand(1,35)]_legit"
 
 /obj/decal/poster/syndicate/Generate() //Random negative poster.
 	. = ..()

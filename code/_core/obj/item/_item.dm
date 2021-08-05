@@ -167,10 +167,7 @@
 		close_inventory(inventory_user)
 		inventory_user = null //Just in case
 
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		qdel(I)
-	inventories.Cut()
+	QDEL_CUT(inventories)
 
 	last_interacted = null
 	inventory_user = null
@@ -381,9 +378,6 @@
 			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
 			D.inventory_temperature_mod_mod = container_temperature_mod
-		if(i==1)
-			D.assoc_button = new /obj/hud/button/close_inventory
-			D.assoc_button.inventory_category = inventory_category
 		inventories += D
 
 	. = ..()

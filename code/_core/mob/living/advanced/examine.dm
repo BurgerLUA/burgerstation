@@ -82,6 +82,8 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	for(var/k in inventory_defers)
 		var/obj/hud/button/inventory_defer/ID = k
+		if(I != ID.referencing)
+			continue
 		ID.update_vis_contents()
 
 	return TRUE

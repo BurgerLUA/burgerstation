@@ -75,7 +75,6 @@
 /obj/projectile/bullet/gyrojet/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		world.log << "on_projectile_hit: [iff_tag]"
 		explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
 
 

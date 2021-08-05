@@ -5,7 +5,7 @@
 	update_health_elements()
 
 /mob/living/proc/remove_health_element(var/obj/hud/button/health/H)
-	health_elements -= H
+	health_elements -= H.id //H.id is important
 	if(client)
 		client.screen -= H
 	update_health_elements()
@@ -32,14 +32,17 @@
 	if(health && health_elements["health"])
 		var/obj/hud/button/health/H = health_elements["health"]
 		H.update_stats(src)
+		H.update_sprite()
 
 	if(stamina && health_elements["stamina"])
 		var/obj/hud/button/health/S = health_elements["stamina"]
 		S.update_stats(src)
+		S.update_sprite()
 
 	if(mana && health_elements["mana"])
 		var/obj/hud/button/health/M = health_elements["mana"]
 		M.update_stats(src)
+		M.update_sprite()
 
 	if(length(screen_blood))
 		for(var/k in screen_blood)

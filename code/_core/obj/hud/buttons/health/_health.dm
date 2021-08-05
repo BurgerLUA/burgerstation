@@ -27,18 +27,14 @@
 
 /obj/hud/button/health/update_owner(var/mob/desired_owner)
 
-	if(owner == desired_owner)
-		return FALSE
-
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
 		L.remove_health_element(src)
 
-	owner = desired_owner
+	. = ..()
 
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
 		L.add_health_element(src)
 		update_stats(L)
-
-	return TRUE
+		update_sprite()

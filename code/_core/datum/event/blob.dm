@@ -9,8 +9,8 @@
 	occurances_max = 1
 
 /event/blob/Destroy()
-	valid_turfs.Cut()
-	valid_areas.Cut()
+	valid_turfs?.Cut()
+	valid_areas?.Cut()
 	return ..()
 
 /event/blob/New()

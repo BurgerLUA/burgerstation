@@ -10,7 +10,7 @@
 	burst_delay = 5
 	max_bursts = 2
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 

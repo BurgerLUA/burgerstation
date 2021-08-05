@@ -30,11 +30,7 @@
 /obj/item/grenade/Destroy()
 
 	QDEL_NULL(stored_trigger)
-
-	for(var/k in stored_containers)
-		var/obj/item/I = k
-		qdel(I)
-	stored_containers.Cut()
+	QDEL_CUT(stored_containers)
 
 	. = ..()
 

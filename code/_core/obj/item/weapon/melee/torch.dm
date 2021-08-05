@@ -118,3 +118,15 @@
 	value = 80
 
 	size = SIZE_2
+
+
+/obj/item/weapon/melee/torch/tinea_luxor
+	name = "tinea_luxor light"
+	desc = "You shouldn't be seeing this."
+	desired_light_range = VIEW_RANGE*0.5
+	desired_light_power = 0.5
+	desired_light_color = "#E3FF9E"
+	desired_light_angle = LIGHT_OMNI
+	value = -1
+
+	enabled = TRUE

@@ -81,7 +81,7 @@
 	start_turf = null
 	previous_loc = null
 	current_loc = null
-	projectile_blacklist.Cut()
+	projectile_blacklist?.Cut()
 	SSprojectiles.all_projectiles -= src
 	. = ..()
 
