@@ -57,10 +57,10 @@
 	. = ..()
 
 	if(nutrition_amount)
-		plant.add_nutrition(.*nutrition_amount*(1/14)*(1/60)*100)
+		plant.add_nutrition(.*nutrition_amount) //*(1/14)*(1/60)*100
 
 	if(hydration_amount)
-		plant.add_hydration(.*hydration_amount*(1/25)*(1/80)*100)
+		plant.add_hydration(.*hydration_amount) //*(1/25)*(1/80)*100
 
 /reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

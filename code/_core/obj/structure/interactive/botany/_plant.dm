@@ -251,10 +251,11 @@
 
 		var/local_potency = min(potency*skill_power,100*min(skill_power,1))
 		var/local_yield = clamp(yield_max*skill_power,1,10*min(skill_power,1))
+		log_admin("yield [local_yield] potency [local_potency]")
 
-		//these are extremely unfun clamps
-		//local_potency = CEILING(local_potency,1)
-		//local_yield = CEILING(local_yield,1)
+		//these are extremely unfun clamps when they're CEILING
+		local_potency = FLOOR(local_potency,1)
+		local_yield = FLOOR(local_yield,1)
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
@@ -267,9 +268,9 @@
 			P.desc = associated_plant.desc
 			P.icon = associated_plant.harvest_icon
 			P.icon_state = associated_plant.harvest_icon_state
-			P.potency = CEILING(local_potency * 0.75,1)
-			P.yield_max = CEILING(local_yield * 0.75,1)
-			P.yield_percent = CEILING(yield_percent * 0.75,1)
+			P.potency = CEILING(local_potency,1)
+			P.yield_max = CEILING(local_yield,1)
+			P.yield_percent = CEILING(yield_percent,1)
 			P.growth_speed = growth_speed*0.75
 			P.plant_type = plant_type
 			P.can_slice = associated_plant.can_slice
