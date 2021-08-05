@@ -192,7 +192,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	if(.)
 
-		if(ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
+		if(!dead && ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
 			var/area/A = get_area(src)
 			if(istype(A,/area/burgerstation))
 				var/area/A2 = get_area(old_loc)
