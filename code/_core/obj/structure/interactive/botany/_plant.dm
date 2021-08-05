@@ -8,12 +8,17 @@
 
 	var/plant_type/plant_type
 
+	//NOTES TO ANY FUTURE BOTANY CODERs:
+	//The numbers involved on making plants grow is a fairly complicated, interwoven feedback cycle.desc_extended =
+	//You cannot simply change 1 number and expect everything to work as you hoped it would.
+
+
 	var/growth = 0 //Increases by growth_speed every second.
 	var/growth_min = 0 //This is set AFTER harvesting.
 	var/growth_max = 50 //The growth value when this plant is considered grown, but has no produce grown on it. was 100
-	var/growth_produce_max = 100 //The growth value when this plant is considered grown, and has produce on it. was 200
+	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it. was 5
 
-	//current numbers means lifeweed grows in ~6 seconds. So now I have a point to scale down from.
+	//current numbers means plants grow in about 45 seconds. WIth the rest of the new demands, this should require mass farming to be a multiple person effort.
 	reagents = /reagent_container/plant
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = FALSE
@@ -22,12 +27,12 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Harvest chance per yield.
-	var/growth_speed = 200 //How much to add to growth every second //was 5. SHOULD add 1 growth every tick if perfect conditions are present
+	var/growth_speed = 100 //How much to add to growth every second //was 5, then was 200.
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
-	var/age = 0 //In seconds. Once it gets old (20 minutes) it starts to take damage.
-	var/lifetime = 1200 //The age in which this plant starts dying, in seconds. was 900.
+	var/age = 0 //In cycle-ticks. Once it gets old (20 minutes) it starts to take damage.
+	var/lifetime = 1200 //The age in which this plant starts dying, in cycle-ticks. was 900.
 
 	var/delete_after_harvest = TRUE
 
@@ -127,22 +132,21 @@
 	. = ..()
 
 /obj/structure/interactive/plant/proc/on_life()
-	//log_admin("plant growing!")
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	var/rate = TICKS_TO_DECISECONDS(SSbotany.tick_rate)
-	var/real_growth_speed = growth_speed*rate*10  //added 100 for test speed purpose. //removed for speed testing: //*(P.allowed_turfs[src.type] ? P.allowed_turfs[src.type] : 0.1)
+	var/real_growth_speed = growth_speed * rate * (P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
 
 	if(nutrition >= 10 && hydration >= 10)
-		growth += real_growth_speed //FLOOR(real_growth_speed,0.1) //set CEILING to FLOOR, speed * (rand(75,125)/100) removed, unnecessary and averages out over a plants lifetime
+		growth += real_growth_speed
 
 	if(!natural)
-		//Plants will need 100 water and 25 nutrition to grow to full.
-		add_nutrition(-0.25) //-real_growth_speed*0.25)
-		add_hydration(-1) //-real_growth_speed) 
+		//plants need 1 water for every 2 seconds they're alive, and 1 nutrition for every 8.
+		//Plants gain between 3-8 growth every second (varies by crop) and they need 100 to harvest.
+		//nutrition/hyrdation get added during metabolize_plant, but it's hard to tell how fast added water goes into the plant.
+		add_nutrition(-0.125) //-real_growth_speed*0.25)
+		add_hydration(-0.5) //-real_growth_speed)
 
 	age += rate
-
-	//log_admin("rate [rate] : nutrition : [nutrition] : hydration [hydration]")
 
 	var/brute_to_add = 0
 	var/tox_to_add = 0
@@ -183,7 +187,7 @@
 	if (health_percent <= 0.01)
 		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
 		qdel(src)
-		
+
 
 	return TRUE
 
@@ -247,20 +251,20 @@
 		if(move_direction & WEST)
 			animation_offset_x += 32
 
-		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)*(health.health_current/health.health_max)
+		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
+		var/health_mod  = health.health_current/health.health_max
 
-		var/local_potency = min(potency*skill_power,100*min(skill_power,1))
-		var/local_yield = clamp(yield_max*skill_power,1,10*min(skill_power,1))
-		log_admin("yield [local_yield] potency [local_potency]")
+		var/local_potency = (potency  + (skill_power * 10)) * health_mod //10 skill gives +1 potency, up to 10 extra at lv.100
+		var/local_yield = (yield_max  + (skill_power * 4)) * health_mod  //25 skill gives +1 yield, up to 4 extra at lv100
 
-		//these are extremely unfun clamps when they're CEILING
-		local_potency = FLOOR(local_potency,1)
-		local_yield = FLOOR(local_yield,1)
+		//Guarentee at least 1 for each.
+		local_potency = CEILING(local_potency,1)
+		local_yield = CEILING(local_yield,1)
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
-			if(!prob(yield_percent*max(1,0.5 + skill_power)))
-				continue
+			//if(!prob(yield_percent*max(1,0.5 + skill_power)))
+				//continue //Randomly losing crops is unfun, moreso when you're good at botany.
 			var/obj/item/container/food/plant/P = new(caller_turf)
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
@@ -277,7 +281,7 @@
 			INITIALIZE(P)
 			GENERATE(P)
 			for(var/r_id in associated_plant.reagents)
-				var/r_value = associated_plant.reagents[r_id] * potency
+				var/r_value = associated_plant.reagents[r_id] * potency * health_mod + (skill_power * 10) //10 skill adds 1 extra chemical, up to 10 extra at lv100
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
 			P.reagents.update_container(FALSE)
 			FINALIZE(P)

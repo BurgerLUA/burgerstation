@@ -83,7 +83,7 @@
 	yield_max = 7
 	growth_speed = 0.4
 
-	growth_max = 100
+	growth_max = 50
 	delete_after_harvest = FALSE
 
 /obj/structure/interactive/plant/corn
@@ -94,7 +94,7 @@
 	yield_max = 7
 	growth_speed = 0.4
 
-	growth_max = 100
+	growth_max = 50
 	delete_after_harvest = FALSE
 
 /obj/structure/interactive/plant/cabbage
@@ -139,7 +139,7 @@
 	yield_max = 5
 	growth_speed = 0.5
 
-	growth_max = 100
+	growth_max = 50
 	delete_after_harvest = FALSE
 
 /obj/structure/interactive/plant/porcini_mushroom
@@ -150,7 +150,7 @@
 	yield_max = 4
 	growth_speed = 0.9
 
-	growth_max = 100
+	growth_max = 50
 	delete_after_harvest = FALSE
 
 
@@ -162,7 +162,7 @@
 	yield_max = 5
 	growth_speed = 0.9
 
-	growth_max = 100
+	growth_max = 50
 	delete_after_harvest = FALSE
 
 /obj/structure/interactive/plant/embershroom_mushroom
