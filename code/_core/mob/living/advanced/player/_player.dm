@@ -95,10 +95,13 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/list/linked_portals
 
+	var/last_autosave = 0 //The last time this player saved.
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
 	FINALIZE(click_and_drag_icon)
+	last_autosave = world.time
 	return ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -188,6 +191,15 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	. = ..()
 
 	if(.)
+
+		if(ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
+			var/area/A = get_area(src)
+			if(istype(A,/area/burgerstation))
+				var/area/A2 = get_area(old_loc)
+				if(!istype(A2,/area/burgerstation))
+					last_autosave = world.time //Safety
+					var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+					mobdata?.save_character(src)
 
 		if(dialogue_target_id)
 			dialogue_target_id = null
