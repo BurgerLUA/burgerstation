@@ -62,6 +62,7 @@
 		var/chosen_reward = pick(possible_rewards)
 		possible_rewards -= chosen_reward
 		I.reward = chosen_reward
+		I.quality = 200
 	INITIALIZE(I)
 	GENERATE(I)
 	FINALIZE(I)
