@@ -9,10 +9,10 @@
 	desc = "You better buy shit, and fast!"
 	desc_extended = "A timed syndicate vendor that is set to destroy all their internal contents when NanoTrasen personel land on the ship. You better grab a loadout, and fast!"
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre,
 		/obj/item/magazine/pistol_12mm,
 		/obj/item/magazine/pistol_12mm/ap,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357,
@@ -188,9 +188,6 @@
 		/obj/item/magazine/rifle_545/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
-		/obj/item/magazine/rifle_762_short,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
 		/obj/item/magazine/rifle_762_short,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
