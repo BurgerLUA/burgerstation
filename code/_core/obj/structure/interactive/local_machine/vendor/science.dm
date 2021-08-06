@@ -7,6 +7,7 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/uniform/science,
 		/obj/item/clothing/pants/normal,
+		/obj/item/clothing/uniform/utility/science,
 		/obj/item/storage/shoebox/black,
 		/obj/item/storage/glovebox/white,
 		/obj/item/clothing/back/storage/satchel/poly/science,

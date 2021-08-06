@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/nagant
-	name = "\improper 7.62x39mmR Nagant Revolver"
+	name = "\improper 7.62x38mmR Nagant Revolver"
 	desc = "A dusty old revolver."
 	desc_extended = "The Nagant is difficult to use, but it pays off in durability and reliability."
 	icon = 'icons/obj/item/weapons/ranged/revolver/762.dmi'
@@ -19,19 +19,15 @@
 	size = SIZE_3
 	weight = 8
 
-	bullet_length_min = 36
-	bullet_length_best = 39
-	bullet_length_max = 40
+	bullet_length_min = 35
+	bullet_length_best = 38
+	bullet_length_max = 49
 
 	bullet_diameter_min = 7.6
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
 	heat_max = 0.05
-
-	open = TRUE //Starts open.
-
-	can_shoot_while_open = TRUE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -76,12 +72,3 @@
 
 /obj/item/weapon/ranged/bullet/revolver/nagant/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/revolver/nagant/click_self(var/mob/caller)
-
-	INTERACT_CHECK
-	INTERACT_DELAY(1)
-
-	rotate_cylinder(-1)
-	caller?.to_chat(span("notice","You rotate the cylinder backwards."))
-	return TRUE
