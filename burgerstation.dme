@@ -1699,6 +1699,7 @@
 #include "code\_core\obj\parallax\_parallax.dm"
 #include "code\_core\obj\plane_master\_plane_master.dm"
 #include "code\_core\obj\projectile\_projectile.dm"
+#include "code\_core\obj\projectile\bio.dm"
 #include "code\_core\obj\projectile\bullet.dm"
 #include "code\_core\obj\projectile\collisions.dm"
 #include "code\_core\obj\projectile\laser.dm"
