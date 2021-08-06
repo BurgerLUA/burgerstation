@@ -13,7 +13,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	icon_state = "directional"
 
@@ -158,9 +158,9 @@
 
 	var/list/status_effects = list()
 
-	acceleration_mod = 0.75
-	acceleration = 10
-	deceleration = 15
+	acceleration_mod = 0.5
+	acceleration = 5
+	deceleration = 10
 	use_momentum = TRUE
 
 	var/override_butcher = FALSE //Set to true for custom butcher contents.

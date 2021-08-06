@@ -5,6 +5,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
+	movement_delay = DECISECONDS_TO_TICKS(1)
+
 	health_base = 200
 	stamina_base = 100
 	mana_base = 100
@@ -82,8 +84,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	var/list/mob/living/followers = list()
 
 	var/save_id
-
-	//movement_delay = DECISECONDS_TO_TICKS(1.5)
 
 	var/ai_steps = 0 //Determining when the AI activates.
 
