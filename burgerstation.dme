@@ -1199,6 +1199,7 @@
 #include "code\_core\obj\item\clothing\masks\heretic.dm"
 #include "code\_core\obj\item\clothing\masks\mime.dm"
 #include "code\_core\obj\item\clothing\masks\mummy.dm"
+#include "code\_core\obj\item\clothing\masks\paper.dm"
 #include "code\_core\obj\item\clothing\masks\sterile.dm"
 #include "code\_core\obj\item\clothing\neck\_neck.dm"
 #include "code\_core\obj\item\clothing\neck\cape.dm"

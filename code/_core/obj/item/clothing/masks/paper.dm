@@ -14,7 +14,6 @@
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"1" = "#000000"
-
 	)
 
 /obj/item/clothing/mask/paper/Finalize()
