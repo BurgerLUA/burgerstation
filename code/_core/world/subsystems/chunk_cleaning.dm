@@ -56,8 +56,9 @@ SUBSYSTEM_DEF(chunkclean)
 
 	. = 0
 	for(var/x=1,x<=chunk_count_x,x++)
+		CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 		for(var/y=1,y<=chunk_count_y,y++)
-			sleep(-1)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 			if(chunk_data["[x],[y],[z]"])
 				continue
 			var/list/chunk_turfs = get_chunk(x,y,z)
@@ -66,7 +67,8 @@ SUBSYSTEM_DEF(chunkclean)
 				for(var/j in T.contents)
 					CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 					var/atom/movable/M = j
-					. += M.on_chunk_clean()
+					if(M.enable_chunk_clean)
+						. += M.on_chunk_clean()
 
 /proc/get_chunk_data(var/adjacent=FALSE)
 

@@ -2028,7 +2028,6 @@
 #include "code\_core\world\subsystems\tax.dm"
 #include "code\_core\world\subsystems\text.dm"
 #include "code\_core\world\subsystems\thinking.dm"
-#include "code\_core\world\subsystems\tips.dm"
 #include "code\_core\world\subsystems\tracks.dm"
 #include "code\_core\world\subsystems\traits.dm"
 #include "code\_core\world\subsystems\turfs.dm"

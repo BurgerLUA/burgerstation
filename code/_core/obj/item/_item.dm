@@ -159,6 +159,8 @@
 
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
 
+	enable_chunk_clean = TRUE
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null

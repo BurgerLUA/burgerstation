@@ -10,6 +10,8 @@
 
 	invisibility = 101
 
+	enable_chunk_clean = TRUE
+
 /obj/marker/mob_spawn/New(var/desired_location,var/desired_mob_type,var/desired_mob_stored,var/desired_time_to_respawn,var/desired_force_spawn)
 	. = ..()
 	mob_type = desired_mob_type

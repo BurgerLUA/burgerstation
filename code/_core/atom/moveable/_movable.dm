@@ -64,6 +64,8 @@
 
 	var/can_be_bumped = TRUE
 
+	var/enable_chunk_clean = FALSE
+
 /atom/movable/Destroy()
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()

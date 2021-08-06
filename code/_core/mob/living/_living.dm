@@ -4,6 +4,8 @@
 	stamina_base = 50
 	mana_base = 50
 
+	enable_chunk_clean = TRUE
+
 	vis_flags = VIS_INHERIT_ID
 
 	var/rarity = RARITY_COMMON
