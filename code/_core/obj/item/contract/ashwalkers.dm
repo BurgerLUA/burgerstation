@@ -41,7 +41,6 @@
 	reward = /obj/item/currency/gold{item_count_current=25*5*2}
 	burgerbux_reward = 10
 
-
 //Bosses
 /obj/item/contract/ash_drake
 	name = "Kill Ash Drake"

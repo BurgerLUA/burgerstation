@@ -37,6 +37,7 @@
 		qdel(src)
 	else
 		reward = new reward
+		reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)
@@ -60,7 +61,10 @@
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]).")
+	if(burgerbux_reward)
+		. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]) and Burgerbux(x[burgerbux_reward]).")
+	else
+		. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]).")
 	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
