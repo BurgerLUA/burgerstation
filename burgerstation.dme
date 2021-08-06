@@ -366,6 +366,7 @@
 #include "code\_core\datum\damagetype\npc\xeno.dm"
 #include "code\_core\datum\damagetype\ranged\_ranged.dm"
 #include "code\_core\datum\damagetype\ranged\leaper_bubble.dm"
+#include "code\_core\datum\damagetype\ranged\ling_tentacle.dm"
 #include "code\_core\datum\damagetype\ranged\shrapnel.dm"
 #include "code\_core\datum\damagetype\ranged\spit.dm"
 #include "code\_core\datum\damagetype\ranged\bow\_bow.dm"
