@@ -136,11 +136,16 @@
 
 /obj/structure/interactive/vending/syndicate/prize/rev
 	stored_types = list(
+		/obj/item/pinpointer/crew/revolutionary,
+		/obj/item/announcement/rev,
 		/obj/item/clothing/back/storage/backpack/explorer,
 		/obj/item/clothing/belt/bandolier/shotgun_23,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
+		/obj/item/clothing/uniform/antag/rev/officer,
+		/obj/item/clothing/overwear/coat/hos/revfficer,
+		/obj/item/clothing/head/hat/hos/revfficer,
 		/obj/item/clothing/overwear/armor/slavticool,
 		/obj/item/clothing/head/helmet/security/slavticool,
 		/obj/item/clothing/head/helmet/security/slavticool/thermal,
@@ -168,6 +173,7 @@
 		/obj/item/magazine/minigun_46,
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/weapon/melee/shield/redstar,
+		/obj/item/weapon/melee/shield/ballistic,
 		/obj/item/storage/cigarettes/russian,
 		/obj/item/lighter
 	)
@@ -183,7 +189,6 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
-
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 

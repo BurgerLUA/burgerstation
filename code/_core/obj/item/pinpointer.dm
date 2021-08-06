@@ -14,7 +14,7 @@
 
 	weight = 2
 	has_quick_function = TRUE
-	
+
 /obj/item/pinpointer/quick(var/mob/caller,var/atom/object,location,params)
 	return click_self(caller)
 
@@ -214,6 +214,14 @@
 	desc_extended = "Use this to track and locate objects. This one tracks positions of Syndicate Raiders."
 	icon_state = "syndicate"
 	desired_loyalty = "Syndicate"
+	value = 1000
+	encoded = TRUE
+
+/obj/item/pinpointer/crew/revolutionary
+	name = "revolutionary soldier pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of Revolutionary Soldiers."
+	icon_state = "rev"
+	desired_loyalty = "Revolutionary"
 	value = 1000
 	encoded = TRUE
 

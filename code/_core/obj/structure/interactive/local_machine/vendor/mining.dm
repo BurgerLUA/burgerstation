@@ -7,6 +7,7 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/uniform/miner,
+		/obj/item/clothing/uniform/utility/supply,
 		/obj/item/storage/shoebox/miner,
 		/obj/item/storage/glovebox/brown_padded,
 		/obj/item/clothing/belt/storage/colored/brown,
