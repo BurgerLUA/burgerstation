@@ -41,5 +41,7 @@
 			I.drop_item(previous_loc)
 		else
 			A.force_move(previous_loc)
+		if(current_loc)
+			A.Move(current_loc)
 
 	. = ..()

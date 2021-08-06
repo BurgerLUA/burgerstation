@@ -9,6 +9,8 @@
 			var/mob/M = thrower
 			M.to_chat(span("warning","You cannot throw \the [src.name]!"))
 		return FALSE
+	if(istype(src.loc,/obj/projectile/thrown/))
+		return FALSE
 	var/damage_type_to_use = damage_type_thrown ? damage_type_thrown : damage_type
 	var/obj/projectile/thrown/P = new(get_turf(src),thrower,src,vel_x,vel_y,target_x,target_y,get_turf(desired_target),damage_type_to_use,desired_target,"#FFFFFF",thrower,desired_iff = desired_iff)
 	P.appearance = src.appearance
