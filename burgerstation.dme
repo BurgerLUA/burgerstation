@@ -1666,6 +1666,8 @@
 #include "code\_core\obj\item\weapon\unarmed\_unarmed.dm"
 #include "code\_core\obj\item\weapon\unarmed\brass_knuckles.dm"
 #include "code\_core\obj\item\weapon\unarmed\powerfist.dm"
+#include "code\_core\obj\item\weapon\ranged\stamina_use\_stamina_use.dm"
+#include "code\_core\obj\item\weapon\ranged\stamina_use\ling_tentacle.dm"
 #include "code\_core\obj\light_sprite\_light_sprite.dm"
 #include "code\_core\obj\markers\_marker.dm"
 #include "code\_core\obj\markers\antag.dm"
