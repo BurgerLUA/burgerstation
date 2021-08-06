@@ -28,21 +28,21 @@
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo") //removing this would make this not work
 		if(choice == "Logo")
 			var/logomenu = list( //lazy names, but...
-				"" = 0,
-				"1" = 1,
-				"2" = 2,
-				"3" = 2,
-				"4" = 4,
-				"5" = 5,
-				"6" = 6,
-				"7" = 7,
-				"8" = 8,
-				"9" = 9,
-				"10" = 10,
-				"11" = 11,
-				"12" = 12,
-				"13" = 13,
-				"14" = 14
+				"blank" = 0,
+				"neutral" = 1,
+				"eyes" = 2,
+				"closed" = 2,
+				"heart" = 4,
+				"0" = 5,
+				"plus" = 6,
+				"square" = 7,
+				"target" = 8,
+				"vertical" = 9,
+				"horizontal" = 10,
+				"x" = 11,
+				"bug" = 12,
+				"twoline" = 13,
+				"mark" = 14
 			)
 			INTERACT_CHECK
 			choice = input("What do you want to change the design to?","Design Selection") as null|anything in logomenu
