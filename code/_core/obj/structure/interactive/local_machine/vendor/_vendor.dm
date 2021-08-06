@@ -88,18 +88,22 @@ var/global/list/equipped_antags = list()
 
 	return new_item
 
+/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn)
+	var/obj/item/I = new item_path(turf_spawn)
+	INITIALIZE(I)
+	GENERATE(I)
+	FINALIZE(I)
+	return I
+
+
 /obj/structure/interactive/vending/Initialize()
 
 	var/turf/T = get_turf(src)
-
 	for(var/k in stored_types)
-		var/obj/item/I = new k(T)
-		INITIALIZE(I)
-		GENERATE(I)
-		FINALIZE(I)
+		create_item(k,T)
 	stored_types.Cut()
 
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/vending/proc/get_bullshit_price(var/desired_price)
 

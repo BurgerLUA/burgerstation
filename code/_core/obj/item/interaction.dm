@@ -30,16 +30,20 @@
 /obj/item/proc/close_inventory(var/mob/living/advanced/A)
 
 	if(inventory_user)
+		for(var/obj/hud/button/close_inventory/B in inventory_user.buttons)
+			B.update_owner(null)
 		inventory_user.using_inventories -= src
 		inventory_user = null
+
 
 	for(var/i=1,i<=length(inventories),i++) //Close all the inventories.
 		var/obj/hud/inventory/I = inventories[i]
 		animate(I,alpha=0,time=4)
 		I.mouse_opacity = 0
 
-	for(var/obj/hud/button/close_inventory/B in A.buttons)
-		B.update_owner(null)
+	if(A)
+		for(var/obj/hud/button/close_inventory/B in A.buttons)
+			B.update_owner(null)
 
 	return TRUE
 

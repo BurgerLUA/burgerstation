@@ -201,3 +201,7 @@
 		force_move(loc)
 
 	return TRUE
+
+
+/atom/movable/proc/on_chunk_clean() //What happens if this object is chunk cleaned.
+	return FALSE

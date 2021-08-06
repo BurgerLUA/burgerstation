@@ -10,6 +10,7 @@
 	var/amount_current = 0
 	var/amount_max = 0
 	var/obj/item/reward
+	var/burgerbux_reward = 0
 	var/objective_text = "objectives completed"
 
 	drop_sound = 'sound/items/drop/paper.ogg'
@@ -67,11 +68,13 @@
 	. = ..()
 	SAVEATOM("reward")
 	SAVEVAR("amount_current")
+	SAVEVAR("burgerbux_reward")
 
 /obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("reward")
 	LOADVAR("amount_current")
+	LOADVAR("burgerbux_reward")
 
 /obj/item/contract/post_move(var/atom/old_loc)
 
@@ -92,7 +95,11 @@
 
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
-	P.to_chat(span("notice","You are awared \the [reward.name] for completing the contract."))
+	if(burgerbux_reward)
+		P.to_chat(span("notice","You are awared \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
+		P.adjust_burgerbux(burgerbux_reward)
+	else
+		P.to_chat(span("notice","You are awared \the [reward.name] for completing the contract."))
 	drop_item(get_turf(P))
 	P.put_in_hands(reward)
 	reward = null //Just in case.

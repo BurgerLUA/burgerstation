@@ -7,23 +7,18 @@
 	var/max = 100
 	var/current = 0
 
-/obj/hud/button/health/New(var/desired_loc)
-	update_sprite()
-	. = ..()
-	update_stats()
-
 /obj/hud/button/health/bar/update_stats(var/mob/living/M)
 	var/math = FLOOR((current/max) * 28, 1)
 	icon_state = "bar_[clamp(math,0,28)]"
 	return TRUE
 
 /obj/hud/button/health/bar/update_underlays()
+	. = ..()
 	var/icon/base = new/icon(initial(icon),"base")
 	swap_colors(base)
 	var/image/I = new/image(base)
 	I.appearance_flags = RESET_COLOR
 	add_underlay(I)
-	return ..()
 
 /obj/hud/button/health/bar/hp
 	name = "health"

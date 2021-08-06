@@ -9,9 +9,12 @@
 
 /turf/unsimulated/generation/forest_cave/generate(var/size = WORLD_SIZE)
 
+	var/shitfix = path_only
+
 	if(no_wall)
 		new /turf/simulated/floor/colored/dirt/cave(src)
 		new /area/dungeon/z_01/forest/interior(src)
+		disallow_generation = TRUE
 		return ..()
 
 	if(is_different && !path_only)
@@ -111,5 +114,8 @@
 		new /obj/marker/generation/mob/black_bear(src)
 
 	new /area/dungeon/z_01/forest/interior(src)
+
+	if(shitfix)
+		disallow_generation = TRUE
 
 	return ..()
