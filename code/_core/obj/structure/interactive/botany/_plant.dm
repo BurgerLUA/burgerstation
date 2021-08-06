@@ -204,7 +204,12 @@
 	if(!caller_turf)
 		return FALSE
 
-	if(potency <= 0 || yield_max <= 0)
+	if(!plant_type)
+		return FALSE
+
+	var/plant_type/PT = SSbotany.all_plant_types[plant_type]
+
+	if(!PT || potency <= 0 || yield_max <= 0)
 		caller.to_chat(span("warning","You fail to harvest anything from \the [src.name]!"))
 		return TRUE
 	else
@@ -239,18 +244,17 @@
 			if(!prob(yield_percent*max(1,0.5 + skill_power)))
 				continue
 			var/obj/item/container/food/plant/P = new(caller_turf)
+			P.plant_type = PT.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
-			P.name = associated_plant.name
-			P.desc = associated_plant.desc
-			P.icon = associated_plant.harvest_icon
-			P.icon_state = associated_plant.harvest_icon_state
+			P.name = PT.name
+			P.desc = PT.desc
+			P.icon = PT.harvest_icon
+			P.icon_state = PT.harvest_icon_state
 			P.potency = CEILING(local_potency * 0.75,1)
 			P.yield_max = CEILING(local_yield * 0.75,1)
 			P.yield_percent = CEILING(yield_percent * 0.75,1)
 			P.growth_speed = growth_speed*0.75
-			P.plant_type = plant_type
-			P.can_slice = associated_plant.can_slice
 			INITIALIZE(P)
 			GENERATE(P)
 			for(var/r_id in associated_plant.reagents)
