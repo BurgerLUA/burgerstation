@@ -64,6 +64,9 @@ SUBSYSTEM_DEF(chunkclean)
 			var/list/chunk_turfs = get_chunk(x,y,z)
 			for(var/k in chunk_turfs)
 				var/turf/T = k
+				var/area/A = T.loc
+				if(A.safe_storage)
+					continue
 				for(var/j in T.contents)
 					CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 					var/atom/movable/M = j

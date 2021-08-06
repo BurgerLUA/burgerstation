@@ -336,6 +336,40 @@
 
 	return ..()
 
+/mob/living/proc/try_rot()
+
+	if(!isturf(src.loc))
+		return FALSE
+
+	var/area/A = get_area(src)
+	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		return FALSE
+
+	var/turf/possible_turfs = list()
+	for(var/turf/simulated/T in view(VIEW_RANGE,src))
+		if(!T.organic)
+			continue
+		if(T.lightness <= 0)
+			continue
+		if(!T.is_safe_teleport())
+			continue
+		possible_turfs += T
+
+	if(!length(possible_turfs))
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		return FALSE
+
+	var/turf/chosen_turf = pick(possible_turfs)
+
+	var/mob/living/advanced/npc/beefman/B = new(chosen_turf)
+	INITIALIZE(B)
+	GENERATE(B)
+	FINALIZE(B)
+	B.ai.set_path_astar(src.loc)
+
+	return TRUE
+
 /mob/living/proc/bang(var/duration=100)
 
 	if(!client)
