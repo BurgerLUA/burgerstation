@@ -259,6 +259,9 @@
 		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
 		var/health_mod  = health.health_current/health.health_max
 
+		var/child_yield = yield_max
+		var/child_potency = potency
+
 		var/local_potency = (potency  + (skill_power * 10)) * health_mod //10 skill gives +1 potency, up to 10 extra at lv.100
 		var/local_yield = (yield_max  + (skill_power * 4)) * health_mod  //25 skill gives +1 yield, up to 4 extra at lv100
 
@@ -276,8 +279,8 @@
 			P.desc = associated_plant.desc
 			P.icon = associated_plant.harvest_icon
 			P.icon_state = associated_plant.harvest_icon_state
-			P.potency = CEILING(local_potency,1)
-			P.yield_max = CEILING(local_yield,1)
+			P.potency =  child_potency //associated_plant.potency //CEILING(local_potency,1)
+			P.yield_max = child_yield //CEILING(local_yield,1)
 			P.yield_percent = CEILING(yield_percent,1)
 			P.growth_speed = growth_speed
 			INITIALIZE(P)
