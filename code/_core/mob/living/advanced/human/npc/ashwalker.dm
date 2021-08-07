@@ -45,7 +45,7 @@
 	update_all_blends()
 
 /mob/living/advanced/npc/ashwalker/Generate()
-	drops_gold = RAND_PRECISE(0.5,1.25) * level
+	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold)
 	. = ..()
 
 /mob/living/advanced/npc/ashwalker/hunter

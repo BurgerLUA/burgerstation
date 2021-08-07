@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(delete)
 			continue
 
 		if(!should_delete(object_to_delete))
-			objects_to_delete_safe[k] = world.time + ITEM_DELETION_TIME_NEW
+			objects_to_delete_safe[k] = world.time + SECONDS_TO_DECISECONDS(60) //Check in another minute.
 			continue
 
 		objects_to_delete_safe -= k
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(delete)
 		if(is_atom(k))
 			var/atom/A = k
 			if(!A.is_safe_to_delete())
-				objects_to_delete[k] = world.time + ITEM_DELETION_TIME_NEW
+				objects_to_delete[k] = world.time + SECONDS_TO_DECISECONDS(60) //Check in another minute.
 				continue
 
 		objects_to_delete -= k
@@ -101,11 +101,6 @@ SUBSYSTEM_DEF(delete)
 		return FALSE
 
 	var/turf/atom_turf = A.loc
-
-	var/area/atom_area = atom_turf.loc
-	if(atom_area.safe_storage)
-		return FALSE
-
 	for(var/k in all_mobs_with_clients_by_z["[atom_turf.z]"])
 		var/mob/M = k
 		if(is_observer(M))

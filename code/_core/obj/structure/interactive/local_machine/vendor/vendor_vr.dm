@@ -91,7 +91,7 @@
 /obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
 	return CEILING(desired_price,10)
 
-/obj/structure/interactive/vending/virtual_reality/modify_item(var/obj/item/I)
+/obj/structure/interactive/vending/virtual_reality/modify_item(var/obj/item/I,var/obj/item/base_item)
 
 	. = ..()
 

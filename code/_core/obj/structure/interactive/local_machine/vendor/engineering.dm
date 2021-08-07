@@ -47,6 +47,7 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/engineering,
 		/obj/item/clothing/shirt/normal/engineering,
+		/obj/item/clothing/uniform/utility/engineering,
 		/obj/item/storage/shoebox/workboot/,
 		/obj/item/storage/glovebox/brown_padded/,
 		/obj/item/clothing/back/storage/satchel/poly/engineering,

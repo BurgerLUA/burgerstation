@@ -3,6 +3,24 @@
 	markup = 2
 	stored_types = list()
 
+	var/list/possible_rewards = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod,
+	)
+
 
 /obj/structure/interactive/vending/contract/New(var/desired_loc)
 
@@ -33,6 +51,31 @@
 	stored_types += /obj/item/coin/antag_token
 
 	. = ..()
+
+/obj/structure/interactive/vending/contract/create_item(var/obj/item/item_path,var/turf/turf_spawn)
+
+	if(!ispath(item_path,/obj/item/contract))
+		return ..()
+
+	var/obj/item/contract/I = new item_path(turf_spawn)
+	if(!I.reward)
+		var/chosen_reward = pick(possible_rewards)
+		possible_rewards -= chosen_reward
+		I.reward = chosen_reward
+	INITIALIZE(I)
+	GENERATE(I)
+	FINALIZE(I)
+	return I
+
+/obj/structure/interactive/vending/contract/modify_item(var/obj/item/I,var/obj/item/base_item)
+
+	if(istype(I,/obj/item/contract))
+		var/obj/item/contract/C = I
+		var/obj/item/contract/based = base_item
+		C.reward = based.reward.type
+
+	return TRUE
+
 
 
 /obj/structure/interactive/vending/contract/get_bullshit_price(var/desired_price)

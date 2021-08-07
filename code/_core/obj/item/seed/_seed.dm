@@ -101,6 +101,7 @@
 		PL.growth_max = growth_max
 		PL.growth_produce_max = growth_produce_max
 		PL.potency = potency
+		PL.yield_max = yield_max
 		PL.yield_percent = yield_percent
 		PL.growth_speed = growth_speed
 		PL.delete_after_harvest = delete_after_harvest

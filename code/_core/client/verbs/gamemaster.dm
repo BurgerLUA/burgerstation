@@ -519,3 +519,12 @@
 	log_admin("[src.get_debug_name()] created a [desired_strength] strength explosion at [T.get_debug_name()].")
 
 	explode(T,desired_strength,mob,mob,"Admin")
+
+/client/verb/rain_gold()
+	set name = "Rain Gold"
+	set category = "Fun"
+
+	var/turf/T = get_turf(mob)
+
+	if(T)
+		create_gold_drop(T,100)

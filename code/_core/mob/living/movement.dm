@@ -142,8 +142,8 @@
 
 	. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
-	if(has_status_effect(ADRENALINE))
-		. *= 0.9
+	if(!has_status_effect(ADRENALINE))
+		. *= 1.1
 
 	if(intoxication)
 		. += intoxication*0.003
@@ -155,7 +155,7 @@
 		. *= 2
 
 	if(!horizontal)
-		. *= max(1 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.5)
+		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.5)
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 

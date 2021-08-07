@@ -22,18 +22,9 @@
 
 	var/final_move_dir = move_dir
 
-	//Handle acceleration and deceleration
-	if(!final_move_dir)
-		if(deceleration)
-			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
-		else
-			acceleration_value = 0 //Instantly stopped
-		if(use_momentum && move_dir_last && acceleration_value)
-			final_move_dir = move_dir_last
-	else
-		final_move_dir = sanitize_direction(final_move_dir)
+	if(!move_dir && use_momentum && move_dir_last && acceleration_value > 0)
+		final_move_dir = move_dir_last
 
-	//Now we move.
 	if(final_move_dir && move_delay <= 0 && is_valid_dir(final_move_dir))
 
 		var/final_movement_delay = max(adjust_delay,get_movement_delay())
@@ -42,13 +33,14 @@
 		if(intercardinal)
 			final_movement_delay *= HYPOTENUSE(1,1)
 
-		if(acceleration_mod > 0)
-			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
-			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
-
 		if(isturf(loc) && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc
 			final_movement_delay *= T.move_delay_modifier
+
+		var/final_movement_delay_before_accel = final_movement_delay
+		if(acceleration_mod > 0)
+			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
+			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
 		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), CEILING(adjust_delay,1)) //Round to the nearest tick. Counting decimal ticks is dumb.
 
@@ -80,13 +72,33 @@
 			is_moving = FALSE
 
 		if(acceleration_mod)
-			if(similiar_move_dir)
-				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay*max(0.25,1 - acceleration_value/100),100),0.01)
+			var/first_max_value = get_max_acceleration_value()
+			if(similiar_move_dir && final_movement_delay_before_accel)
+				acceleration_value += 1 + acceleration*adjust_delay*(final_movement_delay_before_accel/final_movement_delay)
+				acceleration_value = min(first_max_value,acceleration_value)
 			else
-				acceleration_value *= 0.25
+				acceleration_value *= 0.5
+			if(acceleration_value > first_max_value)
+				if(deceleration)
+					acceleration_value -= deceleration
+				else
+					acceleration_value = first_max_value
+			acceleration_value = clamp(acceleration_value,0,100) //Hard cap of 100
 
 	if(move_delay <= 0)
 		is_moving = FALSE
+
+	//Handle acceleration and deceleration
+	if(!move_dir) //Not actually wanting to move.
+		if(deceleration) //Remove acceleration as we are not moving.
+			acceleration_value = max(acceleration_value - deceleration*adjust_delay,0)
+		else
+			acceleration_value = 0 //Instantly stopped
+	else
+		final_move_dir = sanitize_direction(final_move_dir)
+
+	if(acceleration_value)
+		acceleration_value = FLOOR(acceleration_value,0.01)
 
 	if(adjust_delay)
 		move_delay = move_delay - adjust_delay
@@ -124,6 +136,9 @@
 	post_move(old_loc)
 
 	return TRUE
+
+/atom/movable/proc/get_max_acceleration_value()
+	return 100
 
 /atom/movable/proc/post_move(var/atom/old_loc)
 

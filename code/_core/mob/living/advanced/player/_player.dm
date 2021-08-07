@@ -5,6 +5,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
+	movement_delay = DECISECONDS_TO_TICKS(1)
+
 	health_base = 200
 	stamina_base = 100
 	mana_base = 100
@@ -83,8 +85,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/save_id
 
-	//movement_delay = DECISECONDS_TO_TICKS(1.5)
-
 	var/ai_steps = 0 //Determining when the AI activates.
 
 	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
@@ -95,10 +95,15 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/list/linked_portals
 
+	var/last_autosave = 0 //The last time this player saved.
+
+	enable_chunk_clean = FALSE
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
 	FINALIZE(click_and_drag_icon)
+	last_autosave = world.time
 	return ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -188,6 +193,15 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	. = ..()
 
 	if(.)
+
+		if(!dead && ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
+			var/area/A = get_area(src)
+			if(istype(A,/area/burgerstation))
+				var/area/A2 = get_area(old_loc)
+				if(!istype(A2,/area/burgerstation))
+					last_autosave = world.time //Safety
+					var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+					mobdata?.save_character(src)
 
 		if(dialogue_target_id)
 			dialogue_target_id = null

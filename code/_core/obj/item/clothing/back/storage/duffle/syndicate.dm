@@ -112,7 +112,7 @@
 	new /obj/item/grenade/timed/explosive(src)
 	new /obj/item/grenade/timed/explosive(src)
 	//8 secondary weapon shit
-	new /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod(src)
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre(src)
 	new /obj/item/magazine/pistol_12mm(src)
 	new /obj/item/magazine/pistol_12mm(src)
 	new /obj/item/magazine/pistol_12mm(src)

@@ -13,6 +13,19 @@
 	open_sound = 'sound/effects/lockpicking/chest_open.ogg'
 	close_sound = 'sound/effects/lockpicking/chest_close.ogg'
 
+	enable_chunk_clean = TRUE
+
+/obj/structure/interactive/crate/chest/on_chunk_clean()
+	if(locked || current_user)
+		return FALSE
+	locked = TRUE
+	loot = initial(loot)
+	difficulty = rand(1,10)
+	gold_count = (11 - difficulty)*5 + rand(5,10)
+	open = FALSE
+	update_sprite()
+	return TRUE
+
 /obj/structure/interactive/crate/chest/proc/picked(var/mob/living/advanced/A)
 	boot_lockpicker()
 	locked = FALSE

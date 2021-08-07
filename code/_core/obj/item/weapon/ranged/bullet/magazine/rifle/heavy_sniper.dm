@@ -59,6 +59,7 @@
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
 		/obj/item/attachment/sight/scope/large = TRUE,
+		/obj/item/attachment/sight/scope/massive = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,

@@ -5,7 +5,7 @@ var/global/price_multiplier = 1
 
 	probability = 1 //relative
 
-	occurances_max = 1
+	occurances_max = 0 //Disabled.
 
 	var/price_increase = 100
 
