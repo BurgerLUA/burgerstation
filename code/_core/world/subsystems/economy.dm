@@ -17,8 +17,23 @@ SUBSYSTEM_DEF(economy)
 	var/goblin_economy = 75000 //How much gold goblins have.
 	var/sell_multiplier = 1
 
-
 /subsystem/economy/proc/update_stats()
+	if(gold_in_circulation < 0)
+		gold_in_circulation = FLOOR(initial(gold_base_value)*RAND_PRECISE(0.5,1),1)
+		announce(
+			"Central Command Economic Division",
+			"Gold Market Crash",
+			"Central Command Economic Division regrets to inform all employees that gold has suffered a mysterious economic crash. We apologize for the inconvience.",
+			sound_to_play = 'sound/round_end/dump_it.ogg'
+		)
+	if(goblin_economy < 0)
+		goblin_economy = initial(goblin_economy)
+		announce(
+			"Central Command Economic Division",
+			"Goblin Market Crash",
+			"Central Command Economic Division regrets to inform all employees that the Goblin Economy has suffered a mysterious economic crash. We apologize for the inconvience.",
+			sound_to_play = 'sound/round_end/dump_it.ogg'
+		)
 	credits_per_gold = 1 + max(0,CEILING(gold_base_value/gold_in_circulation,1))
 	sell_multiplier = clamp(goblin_economy/50000,0.1,1)*0.5
 

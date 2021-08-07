@@ -127,7 +127,7 @@
 	plane = PLANE_CURRENCY
 
 /obj/item/currency/gold/get_base_value()
-	return FLOOR(SSeconomy.credits_per_gold,1) * item_count_current
+	return CEILING(SSeconomy.credits_per_gold * item_count_current,1)
 
 /obj/item/currency/gold/Finalize()
 	. = ..()
