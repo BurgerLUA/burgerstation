@@ -127,18 +127,7 @@
 	plane = PLANE_CURRENCY
 
 /obj/item/currency/gold/get_base_value()
-	return FLOOR(SSeconomy.credits_per_gold,1) * item_count_current
-
-/obj/item/currency/gold/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
-
-	if(isturf(old_location))
-		var/turf/T = old_location
-		for(var/obj/item/currency/gold/G in T.contents)
-			if(G == src || G.qdeleting)
-				continue
-			G.transfer_item_count_to(src)
-
-	. = ..()
+	return CEILING(SSeconomy.credits_per_gold * item_count_current,1)
 
 /obj/item/currency/gold/Finalize()
 	. = ..()

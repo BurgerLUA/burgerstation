@@ -59,6 +59,7 @@
 
 	buckled = victim
 	buckled.buckled_object = src
+	buckled.anchored = TRUE
 
 	return TRUE
 
@@ -74,6 +75,7 @@
 			buckled.visible_message(span("notice","\The [buckled.name] is unbuckled from \the [src.name] by \the [caller.name]."),span("notice","You were unbuckled from \the [src.name] by \the [caller.name]."))
 
 	buckled.buckled_object = null
+	buckled.anchored = initial(buckled.anchored)
 	buckled = null
 
 	return TRUE

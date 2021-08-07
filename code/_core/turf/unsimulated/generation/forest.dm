@@ -13,6 +13,15 @@
 		disallow_generation = TRUE
 		return ..()
 
+	if(x >= 255-VIEW_RANGE*2)
+		if(prob(1))
+			new /obj/marker/generation/sand(src)
+		new /turf/simulated/hazard/water/sea(src)
+		new /area/dungeon/z_01/forest(src)
+		disallow_generation = TRUE
+		return ..()
+
+
 	var/noise = 0
 
 	var/instances = 3

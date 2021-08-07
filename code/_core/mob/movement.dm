@@ -74,6 +74,16 @@
 		if(loc != old_loc)
 			post_move(old_loc)
 
+
+/mob/get_max_acceleration_value()
+	if(move_mod >= 3)
+		return 100
+	if(move_mod >= 2)
+		return 75
+	if(move_mod >= 1)
+		return 50
+	return 25
+
 /mob/proc/update_rs_chat()
 	for(var/k in stored_chat_text)
 		var/obj/effect/chat_text/CT = k

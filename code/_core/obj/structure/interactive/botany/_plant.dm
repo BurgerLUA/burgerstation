@@ -224,14 +224,17 @@
 		caller.to_chat(span("warning","\The [src.name] is not ready to be harvested!"))
 		return TRUE
 
-	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
-
 	var/turf/caller_turf = get_turf(caller)
 
 	if(!caller_turf)
 		return FALSE
 
-	if(potency <= 0 || yield_max <= 0)
+	if(!plant_type)
+		return FALSE
+ 
+ 	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
+
+	if(!associated_plant || potency <= 0 || yield_max <= 0)
 		caller.to_chat(span("warning","You fail to harvest anything from \the [src.name]!"))
 		return TRUE
 	else
@@ -265,9 +268,8 @@
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
-			//if(!prob(yield_percent*max(1,0.5 + skill_power)))
-				//continue //Randomly losing crops is unfun, moreso when you're good at botany.
 			var/obj/item/container/food/plant/P = new(caller_turf)
+			P.plant_type = associated_plant.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
 			P.name = associated_plant.name
@@ -277,9 +279,7 @@
 			P.potency = CEILING(local_potency,1)
 			P.yield_max = CEILING(local_yield,1)
 			P.yield_percent = CEILING(yield_percent,1)
-			P.growth_speed = growth_speed*0.75
-			P.plant_type = plant_type
-			P.can_slice = associated_plant.can_slice
+			P.growth_speed = growth_speed
 			INITIALIZE(P)
 			GENERATE(P)
 			for(var/r_id in associated_plant.reagents)
