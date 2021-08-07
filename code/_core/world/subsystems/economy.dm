@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(economy)
 
 
 /subsystem/economy/proc/update_stats()
-	credits_per_gold = CEILING(gold_base_value/gold_in_circulation,1)
+	credits_per_gold = 1 + max(0,CEILING(gold_base_value/gold_in_circulation,1))
 	sell_multiplier = clamp(goblin_economy/50000,0.1,1)*0.5
 
 /subsystem/economy/Initialize()
