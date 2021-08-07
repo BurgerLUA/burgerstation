@@ -59,6 +59,7 @@
 	M.client = src
 	M.ckey = src.ckey
 	M.ckey_last = src.ckey
+	M.ckey_owner = src.ckey
 
 	mob = M
 	eye = M

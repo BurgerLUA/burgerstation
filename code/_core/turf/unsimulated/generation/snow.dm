@@ -4,6 +4,16 @@
 
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
+	if(x >= 255-VIEW_RANGE*2)
+		var/prob_mod = (x - (255-VIEW_RANGE*2))*6
+		if(prob(prob_mod))
+			new /turf/simulated/hazard/water/sea(src)
+		else
+			new /turf/simulated/floor/ice(src)
+		new /area/dungeon/z_01/snow(src)
+		disallow_generation = TRUE
+		return ..()
+
 	if(x <= 10 || y <= 10 || x >= 245 || y >= 245)
 		if(no_wall)
 			new /turf/simulated/floor/cave_dirt(src)

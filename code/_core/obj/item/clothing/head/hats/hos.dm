@@ -19,3 +19,25 @@
 
 
 	value = 360
+
+/obj/item/clothing/head/hat/hos/revfficer
+	name = "\improper Russian Commissar's hat"
+	desc = "Conscript spam baste."
+	desc_extended = "A hat usually worn by the leader of revolutionaries."
+	icon = 'icons/obj/item/clothing/hats/revfficer.dmi'
+	rarity = RARITY_RARE
+
+	defense_rating = list(
+		BLADE = 40,
+		BLUNT = 40,
+		PIERCE = 40,
+		LASER = 10,
+		ARCANE = -40,
+		HEAT = 10,
+		COLD = 10
+	)
+
+	size = SIZE_2
+
+
+	value = 360

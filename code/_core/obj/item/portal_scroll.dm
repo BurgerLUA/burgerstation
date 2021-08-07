@@ -4,9 +4,11 @@
 	desc_extended = "A scroll that when read, creates a portal to the nearest safe place. In this case, it's the station."
 	icon = 'icons/obj/item/portal_scroll.dmi'
 	icon_state = "inventory"
-
+	has_quick_function = TRUE //Allows scrolls to show up in the belt slots.
 	value = 500
 
+/obj/item/portal_scroll/quick(var/mob/caller,var/atom/object,location,params)
+	click_self(caller)
 
 /obj/item/portal_scroll/click_self(var/mob/caller)
 
