@@ -20,10 +20,11 @@
 		return FALSE
 	. = ..()
 
-	locked=TRUE
+	locked = TRUE
 	loot = initial(loot)
 	difficulty = rand(1,10)
 	gold_count = (11 - difficulty)*5 + rand(5,10)
+	open = FALSE
 	update_sprite()
 
 	return TRUE
