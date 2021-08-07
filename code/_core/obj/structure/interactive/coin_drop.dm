@@ -52,6 +52,10 @@
 		queue_delete(src,10)
 
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(3)
+
 	if(!caller || !caller.client)
 		return TRUE
 	if(!(caller.client.ckey in valid_ckeys))
