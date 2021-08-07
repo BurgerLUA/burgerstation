@@ -29,17 +29,15 @@
 
 /obj/hud/button/slot/update_owner(var/mob/desired_owner)
 
-	var/mob/old_owner = owner
+	if(owner && !desired_owner && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.slot_buttons -= id
 
 	. = ..()
 
-	if(.) //Owner was changed
-		if(is_advanced(old_owner))
-			var/mob/living/advanced/A = old_owner
-			A.slot_buttons -= id
-		if(is_advanced(owner))
-			var/mob/living/advanced/A = owner
-			A.slot_buttons[id] = src
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.slot_buttons[id] = src
 
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 

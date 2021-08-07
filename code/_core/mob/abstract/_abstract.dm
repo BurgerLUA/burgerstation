@@ -1,8 +1,9 @@
+var/global/mob/abstract/melee_checker
+
 /mob/abstract/
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
-
-var/global/mob/abstract/melee_checker
+	movement_delay = 1
 
 /mob/abstract/melee_checker
 	name = "melee checker"

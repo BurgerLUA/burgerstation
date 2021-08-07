@@ -36,6 +36,3 @@
 /mob/living/advanced/npc/dummy/armor_heavy/Initialize()
 	. = ..()
 	equip_loadout(/loadout/dummy/heavy)
-
-/mob/living/advanced/npc/dummy/dead
-	dead = TRUE

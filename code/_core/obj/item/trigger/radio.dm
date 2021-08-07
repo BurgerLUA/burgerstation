@@ -87,13 +87,13 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	return TRUE
 
-/obj/item/device/radio/New(var/desired_loc)
-	all_radios += src
-	return ..()
+/obj/item/device/radio/Finalize()
+	. = ..()
+	all_radios |= src
 
 /obj/item/device/radio/Destroy()
 	all_radios -= src
-	return ..()
+	. = ..()
 
 //Radio Data Format
 /*

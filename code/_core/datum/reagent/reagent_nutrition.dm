@@ -8,7 +8,7 @@
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
-	var/nutrition_quality_amount = 0 //Per unit
+	var/nutrition_quality_amount = 0 //How good of a quality is the nutrition?
 	var/heal_factor = 2 //Per unit.
 
 	value = 1
@@ -50,6 +50,17 @@
 			L.add_hydration(hydration_amount*.)
 		if(nutrition_quality_amount)
 			L.add_nutrition_quality(nutrition_quality_amount*.)
+
+
+/reagent/nutrition/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(nutrition_amount)
+		plant.add_nutrition(.*nutrition_amount/14) //plant food has 14 nutrition, so we want 1u plant food = 1 nutrition point.
+
+	if(hydration_amount)
+		plant.add_hydration(.*hydration_amount/25) //water has 25 hydration, and we want 1u water = 1 hydration point
 
 /reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

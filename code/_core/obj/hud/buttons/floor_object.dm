@@ -12,27 +12,25 @@
 	if(associated_object)
 		HOOK_REMOVE("post_move","floor_object_post_move_\ref[src]",associated_object)
 		associated_object = null
-	return ..()
+	associated_loc = null
+	. = ..()
 
 /obj/hud/button/floor_object/proc/assoc_object_post_move()
 	if(associated_object && associated_loc != associated_object.loc)
 		HOOK_REMOVE("post_move","floor_object_post_move_\ref[src]",associated_object)
 		associated_object = null
 		update_sprite()
-		return TRUE
 	return TRUE
 
 /obj/hud/button/floor_object/update_owner(var/mob/desired_owner)
 
-	var/mob/previous_owner = owner
+	if(owner)
+		owner.examine_butons -= src
 
 	. = ..()
 
-	if(previous_owner && previous_owner != owner)
-		previous_owner.examine_butons -= src
-
-	if(. && owner)
-		owner.examine_butons += src
+	if(owner)
+		owner.examine_butons |= src
 		if(!associated_object)
 			log_error("Warning: [get_debug_name()] didn't have an associated object on initialization!")
 			return FALSE

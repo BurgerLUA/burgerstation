@@ -42,12 +42,8 @@
 	return ..()
 
 /stand/Destroy()
-
 	QDEL_NULL(linked_stand)
-
-	if(stand_user)
-		stand_user = null
-
+	stand_user = null
 	return ..()
 
 /stand/proc/generate()

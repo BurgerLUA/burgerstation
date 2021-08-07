@@ -124,12 +124,12 @@
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
 	owner.move_delay = max(owner.move_delay,duration)
-	var/list/movement = direction_to_pixel_offset(desired_move_dir)
-	if(!result) //We can move.
+	if(!result) //We can't move.
+		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
+		var/stun_time = max(duration,10)
+		owner.add_status_effect(STUN,stun_time,stun_time)
 		spawn(1)
-			var/stun_time = max(duration,10)
-			owner.add_status_effect(STUN,stun_time,stun_time)
 			animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
 
@@ -158,8 +158,8 @@
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
 	owner.move_delay = max(owner.move_delay,duration)
-	var/list/movement = direction_to_pixel_offset(desired_move_dir)
-	if(!result) //We can move.
+	if(!result) //We can't move.
+		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
 		spawn(1)
 			var/stun_time = max(duration,10)

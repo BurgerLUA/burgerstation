@@ -9,14 +9,15 @@
 	desc = "You better buy shit, and fast!"
 	desc_extended = "A timed syndicate vendor that is set to destroy all their internal contents when NanoTrasen personel land on the ship. You better grab a loadout, and fast!"
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre,
 		/obj/item/magazine/pistol_12mm,
 		/obj/item/magazine/pistol_12mm/ap,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357,
 		/obj/item/magazine/clip/revolver/bullet_357,
+		/obj/item/storage/ammo/bullet_357/,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
@@ -32,6 +33,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308/ap,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/honey,
+		/obj/item/magazine/honey,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
@@ -41,6 +44,8 @@
 		/obj/item/magazine/sniper_50/explosive,
 		/obj/item/magazine/sniper_50/incendiary,
 		/obj/item/magazine/sniper_50/ion,
+		/obj/item/clothing/back/flamethrower,
+		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
 		/obj/item/tempering/quality/ranged/lesser
@@ -61,7 +66,8 @@
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
-		/obj/item/storage/pillbottle/assprin
+		/obj/item/storage/pillbottle/assprin,
+		/obj/item/container/syringe/medipen/hypospray
 
 	)
 	markup = 0.75
@@ -102,6 +108,7 @@
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
+		/obj/item/clothing/overwear/armor/seva/syndie,
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
@@ -129,11 +136,16 @@
 
 /obj/structure/interactive/vending/syndicate/prize/rev
 	stored_types = list(
+		/obj/item/pinpointer/crew/revolutionary,
+		/obj/item/announcement/rev,
 		/obj/item/clothing/back/storage/backpack/explorer,
 		/obj/item/clothing/belt/bandolier/shotgun_23,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
+		/obj/item/clothing/uniform/antag/rev/officer,
+		/obj/item/clothing/overwear/coat/hos/revfficer,
+		/obj/item/clothing/head/hat/hos/revfficer,
 		/obj/item/clothing/overwear/armor/slavticool,
 		/obj/item/clothing/head/helmet/security/slavticool,
 		/obj/item/clothing/head/helmet/security/slavticool/thermal,
@@ -161,6 +173,7 @@
 		/obj/item/magazine/minigun_46,
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/weapon/melee/shield/redstar,
+		/obj/item/weapon/melee/shield/ballistic,
 		/obj/item/storage/cigarettes/russian,
 		/obj/item/lighter
 	)
@@ -172,17 +185,14 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762,
+		/obj/item/storage/ammo/bullet_762/,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
-
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
-		/obj/item/magazine/rifle_762_short,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
 		/obj/item/magazine/rifle_762_short,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
@@ -208,7 +218,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/magazine/bizon_9mm,
 
-		/obj/item/weapon/ranged/bullet/revolver/gm94,
+		/obj/item/weapon/ranged/bullet/pump/gm94,
 		/obj/item/storage/ammo/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,

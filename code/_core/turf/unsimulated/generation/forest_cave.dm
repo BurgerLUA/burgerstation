@@ -1,16 +1,20 @@
-/turf/unsimulated/generation/cave
+/turf/unsimulated/generation/forest_cave
 	name = "cave generation"
 	icon_state = "caves"
 	var/path_only = FALSE
 
-/turf/unsimulated/generation/cave/path
+/turf/unsimulated/generation/forest_cave/path
 	icon_state = "caves_path"
 	path_only = TRUE
 
-/turf/unsimulated/generation/cave/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/forest_cave/generate(var/size = WORLD_SIZE)
+
+	var/shitfix = path_only
 
 	if(no_wall)
 		new /turf/simulated/floor/colored/dirt/cave(src)
+		new /area/dungeon/z_01/forest/interior(src)
+		disallow_generation = TRUE
 		return ..()
 
 	if(is_different && !path_only)
@@ -19,6 +23,7 @@
 			new /obj/marker/generation/rock_wall/small(src)
 		else if(prob(1))
 			new /obj/marker/generation/rock_wall(src)
+		new /area/dungeon/z_01/forest/interior(src)
 		return ..()
 
 	var/seed_resolution = WORLD_SIZE
@@ -105,7 +110,12 @@
 			new /obj/marker/generation/mob/bat(src)
 		else
 			new /obj/marker/generation/mob/cave_spider(src)
-	else if(needs_bear && prob(3))
+	else if(needs_bear && prob(1))
 		new /obj/marker/generation/mob/black_bear(src)
+
+	new /area/dungeon/z_01/forest/interior(src)
+
+	if(shitfix)
+		disallow_generation = TRUE
 
 	return ..()

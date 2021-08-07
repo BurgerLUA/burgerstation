@@ -6,19 +6,18 @@
 
 /obj/item/contract/ashwalker/low
 	amount_max = 10
+	burgerbux_reward = 1
 	reward = /obj/item/currency/gold{item_count_current=10*5}
 
 /obj/item/contract/ashwalker/mid
 	amount_max = 25
+	burgerbux_reward = 5
 	reward = /obj/item/currency/gold{item_count_current=25*5*1.5}
 
 /obj/item/contract/ashwalker/high
 	amount_max = 50
+	burgerbux_reward = 10
 	reward = /obj/item/currency/gold{item_count_current=50*5*2}
-
-
-
-
 
 //Arachnids
 /obj/item/contract/arachnids
@@ -30,15 +29,17 @@
 /obj/item/contract/arachnids/low
 	amount_max = 5
 	reward = /obj/item/currency/gold{item_count_current=5*5}
+	burgerbux_reward = 1
 
 /obj/item/contract/arachnids/mid
 	amount_max = 10
 	reward = /obj/item/currency/gold{item_count_current=10*5*1.5}
+	burgerbux_reward = 5
 
 /obj/item/contract/arachnids/high
 	amount_max = 25
 	reward = /obj/item/currency/gold{item_count_current=25*5*2}
-
+	burgerbux_reward = 10
 
 //Bosses
 /obj/item/contract/ash_drake
@@ -47,7 +48,7 @@
 	type_to_check = /mob/living/simple/ash_drake
 	objective_text = "Ash Drakes killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/bubblegum
 	name = "Kill Bubblegum"
@@ -55,7 +56,7 @@
 	type_to_check = /mob/living/simple/bubblegum
 	objective_text = "Bubblegums killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/can_man
 	name = "Kill Can Man"
@@ -63,7 +64,7 @@
 	type_to_check = /mob/living/simple/can_man
 	objective_text = "Can Men killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/colossus
 	name = "Kill Colossus"
@@ -71,7 +72,7 @@
 	type_to_check = /mob/living/simple/colossus
 	objective_text = "Colossus killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/goblin_king
 	name = "Kill the Goblin King"
@@ -79,7 +80,7 @@
 	type_to_check = /mob/living/simple/goblin_king
 	objective_text = "Goblin Kings killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/herald
 	name = "Kill the Herald"
@@ -87,7 +88,7 @@
 	type_to_check = /mob/living/simple/herald
 	objective_text = "Heralds killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/hierophant
 	name = "Kill the Hierophant"
@@ -95,7 +96,7 @@
 	type_to_check = /mob/living/simple/hierophant
 	objective_text = "Hierophants killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/leaper
 	name = "Kill the Leaper"
@@ -103,7 +104,7 @@
 	type_to_check = /mob/living/simple/leaper
 	objective_text = "Leapers killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5
 
 /obj/item/contract/queen
 	name = "Kill the Xeno Queen"
@@ -111,4 +112,4 @@
 	type_to_check = /mob/living/simple/xeno/queen
 	objective_text = "Xeno Queens killed"
 	amount_max = 1
-	reward = /obj/item/currency/gold{item_count_current=100}
+	burgerbux_reward = 5

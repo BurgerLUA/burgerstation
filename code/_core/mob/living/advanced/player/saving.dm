@@ -61,7 +61,7 @@
 			nutrition = initial(nutrition)*0.25
 			nutrition_fast = nutrition
 			hydration = initial(hydration)*0.5
-			nutrition_quality = initial(nutrition_quality)
+			nutrition_quality = nutrition_quality_max*0.5
 			var/currency_to_give = 0
 			if(isnum(insurance))
 				var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
@@ -141,6 +141,8 @@
 	else
 		update_all_blends() //butts
 
+	last_autosave = world.time
+
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
 	. = list()
@@ -197,3 +199,5 @@
 		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.chargen_max_level)
 		final_attribute_list[id] = desired_experience
 	.["attributes"] = final_attribute_list
+
+	last_autosave = world.time

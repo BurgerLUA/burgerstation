@@ -1,0 +1,13 @@
+You can access a safe storage space by talking to the Goblin. Every NanoTrasen employee has one, free of charge.
+Some clothing inventory spaces can fit more than one article of clothing. For example, you can wear a coat over a hardsuit.
+Dufflebags hold more than backpacks, and backpacks hold more than satchels. Generally the more spacious an inventory is, the more of a slowdown is applied when worn or held.
+Antag Tokens can be purchased in the Clown's office. They can be redeemed to your ckey to give you the ability to become an off-station antagonist.
+You can drink from beakers, however it is much more effective to drink from a drinking glass or a shot glass.
+Shot glasses consume the entirety of its contents in one sip.
+Contracts can be obtained from Mr. Scratch near the western part of the station. This is a good source of income.
+Mr. Scratch will never offer contracts to kill mobs that don't exist on the planet.
+Gold can be exchanged at the bank (Also known as the store "Bawse Loot") for credits.
+You can sell your unwanted items at the bank, also known as the store "Bawse Loot".
+Burgerstation's Economy is dynamic. The price of gold coins fluctuates based on how much of the currency is in circulation.
+
+

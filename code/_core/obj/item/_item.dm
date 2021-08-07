@@ -159,6 +159,8 @@
 
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
 
+	enable_chunk_clean = TRUE
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null
@@ -167,10 +169,7 @@
 		close_inventory(inventory_user)
 		inventory_user = null //Just in case
 
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		qdel(I)
-	inventories.Cut()
+	QDEL_CUT(inventories)
 
 	last_interacted = null
 	inventory_user = null
@@ -381,9 +380,6 @@
 			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
 			D.inventory_temperature_mod_mod = container_temperature_mod
-		if(i==1)
-			D.assoc_button = new /obj/hud/button/close_inventory
-			D.assoc_button.inventory_category = inventory_category
 		inventories += D
 
 	. = ..()
@@ -420,8 +416,10 @@
 		. += div("rarity bad","<b>Quality</b>: BROKEN")
 	else if(quality < 100)
 		. += div("rarity bad","<b>Quality</b>: -[100 - FLOOR(quality,1)]%")
-	else if(quality >= 140)
+	else if(quality == 140)
 		. += div("rarity good","<b>Quality</b>: +40% <b>(MAX)</b>")
+	else if(quality > 140)
+		. += div("rarity good","<b>Quality</b>: +[FLOOR(quality,1) - 100]% <b>(OVER MAX)</b>")
 	else if(quality > 100)
 		. += div("rarity good","<b>Quality</b>: +[FLOOR(quality,1) - 100]%")
 

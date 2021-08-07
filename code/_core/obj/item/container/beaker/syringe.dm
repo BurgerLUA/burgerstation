@@ -277,3 +277,37 @@
 	reagents.add_reagent(/reagent/iron,reagents.volume_max)
 	return ..()
 
+/obj/item/container/syringe/medipen/hypospray
+	name = "combat hypospray"
+	desc = ";CMO IS A CHANGELING!!"
+	desc_extended = "A sterile, air-needle autoinjector for rapid administration of drugs to patients."
+	rarity = RARITY_RARE
+	value = 1000
+	icon = 'icons/obj/item/container/hypospray.dmi'
+	icon_state = "combat_hypo"
+
+	inject_amount = 10
+	reagents = /reagent_container/syringe/medipen/hypospray // holds 60u
+
+/obj/item/container/syringe/medipen/hypospray/click_self(var/mob/caller,location,control,params)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
+		var/choice = input("How much do you want to inject at once?","Min: 5 Max: [reagents.volume_max]") as null|num
+		INTERACT_CHECK
+		if(choice)
+			transfer_amount = clamp(choice,5,reagents.volume_max)
+			caller.to_chat(span("notice","You will now inject [transfer_amount] units at a time with \the [src]."))
+			return TRUE
+		else return TRUE
+
+	var/initial_amount = initial(transfer_amount)
+
+	transfer_amount += initial_amount
+	if(transfer_amount > reagents.volume_max)
+		transfer_amount = initial_amount
+
+	caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
+
+	return TRUE
+

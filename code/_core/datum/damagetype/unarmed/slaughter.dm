@@ -54,12 +54,14 @@
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.blood_volume = clamp(A.blood_volume+blood_to_steal,0,A.blood_volume_max) //I successfully stole bloodsteal code.
+				A.health.adjust_loss_smart(oxy = -blood_to_steal)
+				play_sound(pick('sound/effects/demon_consume.ogg'),get_turf(V),range_max=VIEW_RANGE*0.5)
 			else if (V.blood_volume <= 0)
 				A.to_chat(span("danger","That enemy has no blood!"))
 
 		return ..()
 
-/damagetype/unarmed/slaughter/heavy
+/damagetype/unarmed/slaughter_heavy
 	name = "demon rip"
 	attack_verbs = list("rips and tears")
 
@@ -104,12 +106,13 @@
 	attack_delay = 10*0.5
 	attack_delay_max = 10
 
-/damagetype/unarmed/slaughter/heavy/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/unarmed/slaughter_heavy/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(attacker) && is_living(victim))
 		var/mob/living/V = victim
 		var/mob/living/A = attacker
 		if(!A.dead && !V.dead) //basically, if the attack lands on a living person
 			A.blood_volume -= (25)
+			A.health.adjust_loss_smart(oxy = 25)
 
 	return ..()

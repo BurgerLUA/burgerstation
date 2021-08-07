@@ -12,7 +12,7 @@
 
 	automatic = TRUE
 
-	firemodes = list("semi-automatic","automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
 
@@ -52,7 +52,7 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-
+	dan_mode = TRUE
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25

@@ -12,7 +12,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/plasma_cutter
 
 	charge_per_feed = 100
-	fed_item = list(/obj/item/material/ingot/phoron,/obj/item/ore/plasma)
+	fed_item = list(/obj/item/material/ingot,/obj/item/ore)
 	feed_delay = 5
 	shoot_delay = 12
 

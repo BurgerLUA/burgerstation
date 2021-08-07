@@ -82,6 +82,12 @@
 	reagents.add_reagent(/reagent/medicine/mana_potion,reagents.volume_max)
 	return ..()
 
+/obj/item/container/beaker/bottle/plant_food
+	name = "\improper EZ-Nutrient Bottle"
+
+/obj/item/container/beaker/bottle/plant_food/Generate()
+	reagents.add_reagent(/reagent/nutrition/plant_food,reagents.volume_max)
+	return ..()
 
 
 

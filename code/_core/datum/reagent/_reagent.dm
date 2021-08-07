@@ -48,7 +48,7 @@
 	var/flags_reagent
 
 	var/addiction/addiction
-	var/addiction_strength = 1 //Percent chance to become addicted per unit.
+	var/addiction_strength = 1 //Percent chance to become addicted per maximium amount taken.
 	var/addiction_threshold = 30 //The percent chance needs to be greater than this value to be considered addicted.
 
 	var/blood_toxicity_multiplier = 0 //How much blood toxicity to add per unit.
@@ -106,6 +106,9 @@
 
 /reagent/proc/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	return metabolism_stomach * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+
+/reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	return DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	return metabolism_blood * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)

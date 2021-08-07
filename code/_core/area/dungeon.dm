@@ -20,6 +20,45 @@
 
 	interior = FALSE
 
+/area/dungeon/z_01/snow
+	name = "\improper Level 1 - Surface Snowplains"
+	icon_state = "snow"
+	weather = WEATHER_SNOW
+	ambient_temperature = T0C - 20
+	hazard = "cold"
+	sunlight_freq = 8
+	sunlight_color = "#898989"
+
+	cheese_type = /reagent/nutrition/cheese/raclette
+
+	tracks = TRACKS_MOUNTAIN
+
+	sound_environment = ENVIRONMENT_PLAIN
+
+	interior = FALSE
+
+/area/dungeon/z_01/snow/interior
+	name = "\improper Level 1 - Surface Caves"
+	sunlight_freq = 0
+	interior = TRUE
+
+/area/dungeon/z_01/forest
+	name = "\improper Level 1 - Surface Forrest"
+	icon_state = "forrest"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+	sunlight_freq = 8
+	sunlight_color = "#CCB06A"
+
+	tracks = TRACKS_FOREST
+
+	interior = FALSE
+
+/area/dungeon/z_01/forest/interior
+	name = "\improper Level 1 - Surface Caves"
+	sunlight_freq = 0
+	interior = TRUE
+
+
 /area/dungeon/z_02
 	name = "\improper Level 2 - Deep Jungle"
 	icon_state = "jungle"

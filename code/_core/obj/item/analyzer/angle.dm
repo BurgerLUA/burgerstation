@@ -12,11 +12,13 @@ var/global/list/gps_list = list()
 	var/need_password = FALSE
 	var/advanced = FALSE
 	var/ownerCkey
+	var/loadedFromFile = FALSE
 
 /obj/item/analyzer/gps/Finalize()
 	. = ..()
-	assigned_number = "[rand(111111,999999)]"
-	name = CHECK_NAME("[initial(name)]")
+	if (!loadedFromFile)
+		assigned_number = "[rand(111111,999999)]"
+		name = CHECK_NAME("[initial(name)]")
 	gps_list += src
 
 /obj/item/analyzer/gps/get_examine_list(mob/examiner)
@@ -75,6 +77,19 @@ var/global/list/gps_list = list()
 			play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 			return
 	return ..()
+
+/obj/item/analyzer/gps/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	.["name"] = name
+	.["assigned_number"] = assigned_number
+	.["ownerCkey"] = ownerCkey
+
+/obj/item/analyzer/gps/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	name = object_data["name"]
+	assigned_number = object_data["assigned_number"]
+	ownerCkey = object_data["ownerCkey"]
+	loadedFromFile = TRUE
 
 /obj/item/analyzer/gps/advanced
 	name = "advanced gps"

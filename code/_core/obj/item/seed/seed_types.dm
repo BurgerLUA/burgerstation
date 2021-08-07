@@ -2,11 +2,11 @@
 	plant_type = null
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 20
-	yield = 1
+	yield_max = 1
 	growth_speed = 0.5
 
 	delete_after_harvest = TRUE
@@ -16,11 +16,11 @@
 	plant_type = /plant_type/cabbage
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 30
-	yield = 1
+	yield_max = 1
 	growth_speed = 0.5
 
 	delete_after_harvest = TRUE
@@ -29,11 +29,11 @@
 	plant_type = /plant_type/lettuce
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 30
-	yield = 1
+	yield_max = 1
 	growth_speed = 0.3
 
 	delete_after_harvest = TRUE
@@ -42,11 +42,11 @@
 	plant_type = /plant_type/tomato
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 15
-	yield = 3
+	yield_max = 3
 	growth_speed = 0.5
 
 	delete_after_harvest = FALSE
@@ -55,11 +55,11 @@
 	plant_type = /plant_type/chanterelle
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 15
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.4
 
 	delete_after_harvest = TRUE
@@ -68,11 +68,11 @@
 	plant_type = /plant_type/wheat
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 20
-	yield = 4
+	yield_max = 4
 	growth_speed = 0.4
 
 	delete_after_harvest = TRUE
@@ -82,11 +82,11 @@
 	plant_type = /plant_type/poppy
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 10
-	yield = 8
+	yield_max = 8
 	growth_speed = 0.2
 
 	delete_after_harvest = TRUE
@@ -95,11 +95,11 @@
 	plant_type = /plant_type/cannabis
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 10
-	yield = 3
+	yield_max = 3
 	growth_speed = 0.3
 
 	delete_after_harvest = TRUE
@@ -114,11 +114,11 @@
 	plant_type = /plant_type/corn
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 8
-	yield = 15
+	yield_max = 8
 	growth_speed = 0.5
 
 	delete_after_harvest = FALSE
@@ -127,11 +127,11 @@
 	plant_type = /plant_type/sugarcane
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 5
-	yield = 4
+	yield_max = 4
 	growth_speed = 0.45
 
 	delete_after_harvest = TRUE
@@ -140,25 +140,12 @@
 	plant_type = /plant_type/potato
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 9
-	yield = 6
+	yield_max = 6
 	growth_speed = 0.5
-
-	delete_after_harvest = TRUE
-
-/obj/item/seed/cactus
-	plant_type = /plant_type/cactus
-
-	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
-
-	potency = 10
-	yield = 3
-	growth_speed = 0.3
 
 	delete_after_harvest = TRUE
 
@@ -166,11 +153,11 @@
 	plant_type = /plant_type/chili
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 3
-	yield = 4
+	yield_max = 4
 	growth_speed = 0.4
 
 	delete_after_harvest = FALSE
@@ -179,11 +166,11 @@
 	plant_type = /plant_type/chili/ghost
 
 	growth_min = 0
-	growth_max = 100
-	growth_produce_max = 200
+	growth_max = 50
+	growth_produce_max = 100
 
 	potency = 10
-	yield = 2
+	yield_max = 2
 	growth_speed = 0.2
 
 	delete_after_harvest = TRUE

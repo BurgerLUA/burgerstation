@@ -153,8 +153,7 @@
 /loadout/rev/player_antagonist
 	spawning_items = list(
 		/obj/item/clothing/ears/headset,
-		/obj/item/clothing/pants/gorka,
-		/obj/item/clothing/shirt/gorka,
+		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
@@ -164,7 +163,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/back/storage/backpack/explorer/black,
+		/obj/item/clothing/back/storage/backpack/rucksack,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,

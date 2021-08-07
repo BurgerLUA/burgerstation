@@ -180,6 +180,7 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,
+		/obj/item/clothing/uniform/utility/medical,
 		/obj/item/clothing/overwear/coat/labcoat/medical,
 		/obj/item/storage/glovebox/white
 	)
@@ -295,6 +296,9 @@
 		/obj/item/bullet_cartridge/arrow,
 		/obj/item/clothing/belt/belt_quiver,
 
+		/obj/item/weapon/ranged/bullet/magazine/pistol/holy45,
+		/obj/item/magazine/holy45
+
 	)
 
 /obj/structure/interactive/vending/chemistry/wardrobe
@@ -336,8 +340,10 @@
 	icon_state = "nutri"
 	stored_types = list(
 		/obj/item/container/beaker/bucket/water,
+		/obj/item/container/beaker/bottle/plant_food,
 		/obj/item/storage/bags/botany/processor,
-		/obj/item/consumable/fertilizer
+		/obj/item/fertilizer,
+		/obj/item/analyzer/plant
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds
@@ -358,7 +364,6 @@
 		/obj/item/seed/corn,
 		/obj/item/seed/sugarcane,
 		/obj/item/seed/potato,
-		/obj/item/seed/cactus,
 		/obj/item/seed/chili,
 		/obj/item/seed/chili/ghost
 	)
@@ -588,7 +593,8 @@
 		/obj/item/clothing/uniform/clown/green,
 		/obj/item/clothing/uniform/clown/yellow,
 		/obj/item/broom/magic,
-		/obj/item/grenade/timed/lube_smoke
+		/obj/item/grenade/timed/lube_smoke,
+		/obj/item/weapon/ranged/spellgem/metronome
 	)
 
 	ignore_economy = TRUE

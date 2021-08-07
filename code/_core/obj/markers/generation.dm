@@ -149,6 +149,16 @@
 	objects_max = 15
 	object_to_place = /turf/simulated/hazard/water/jungle
 
+/obj/marker/generation/sand
+	object_to_place = /turf/simulated/floor/colored/sand/beach
+	grow_amount_min = 3
+	grow_amount_max = 8
+	objects_max = 20
+	skip_chance = 0
+	hole_chance = 0
+
+	color = COLOR_WHITE
+
 /obj/marker/generation/snow
 	object_to_place = /turf/simulated/floor/colored/snow
 	grow_amount_min = 5
@@ -684,4 +694,19 @@
 /obj/marker/generation/plant/wheat
 	object_to_place = /obj/structure/interactive/plant/wheat
 	turf_whitelist = /turf/simulated/floor/colored/grass
+	objects_max = 4
+
+/obj/marker/generation/plant/polypore_mushroom
+	object_to_place = /obj/structure/interactive/plant/polypore_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/porcini_mushroom
+	object_to_place = /obj/structure/interactive/plant/porcini_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/inocybe_mushroom
+	object_to_place = /obj/structure/interactive/plant/inocybe_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
 	objects_max = 4

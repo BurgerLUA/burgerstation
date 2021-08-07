@@ -129,7 +129,8 @@
 		if(path_steps <= length(current_path))
 			var/Vector3D/desired_node = current_path[path_steps]
 			var/turf/T = get_turf(owner)
-			if(desired_node.x == T.x && desired_node.y == T.y)
+			var/calc_distance = abs(desired_node.x - T.x) + abs(desired_node.y - T.y)
+			if(calc_distance <= 2)
 				path_steps++
 				owner.move_dir = 0
 				if(check_for_obstructions) check_obstructions()

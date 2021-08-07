@@ -16,6 +16,7 @@
 	var/list/new_params = params2list(params)
 
 	if((mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
+		var/precise_zoom = mob.attack_flags & CONTROL_MOD_DISARM
 		var/change_in_screen = clamp(delta_y,-1,1)
 		if(precise_zoom)
 			change_in_screen *= 0.1

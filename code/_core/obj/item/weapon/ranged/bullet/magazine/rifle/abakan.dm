@@ -10,18 +10,19 @@
 	burst_delay = 5
 	max_bursts = 2
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
 	can_wield = TRUE
+	wield_only = TRUE
 
 	automatic = TRUE
 
 	size = SIZE_4
 	weight = 12
 
-	heat_max = 0.05
+	heat_max = 0.04
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -55,12 +56,14 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-	inaccuracy_modifier = 0.25
-	movement_inaccuracy_modifier = 1
-	movement_spread_base = 0.03
+	dan_mode = TRUE
+
+	inaccuracy_modifier = 0.35
+	movement_inaccuracy_modifier = 1.5
+	movement_spread_base = 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94/get_static_spread()
-	return 0.001
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.07 * L.get_skill_power(SKILL_RANGED)))

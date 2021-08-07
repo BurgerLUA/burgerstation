@@ -2,10 +2,6 @@ var/global/list/ckey_to_mobdata = list()
 
 /savedata/client/mob
 
-/savedata/client/mob/Destroy()
-	CRASH_SAFE("FATAL WARNING: SAVEDATA ATTEMPTED TO BE DESTROYED! SAVEDATA SHOULD NEVER BE DESTROYED!")
-	return ..()
-
 /savedata/client/mob/get_folder(var/folder_id)
 	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
 	return

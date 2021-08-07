@@ -4,6 +4,8 @@
 	stamina_base = 50
 	mana_base = 50
 
+	enable_chunk_clean = TRUE
+
 	vis_flags = VIS_INHERIT_ID
 
 	var/rarity = RARITY_COMMON
@@ -11,7 +13,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	icon_state = "directional"
 
@@ -34,9 +36,12 @@
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
 	var/nutrition = 1000
+	var/nutrition_max = 1000
 	var/nutrition_fast = 0
 	var/hydration = 1000
+	var/hydration_max = 1000
 	var/nutrition_quality = 1000 //0 to 2000. 2000 means super health, 0 means absolutely fucking obese unfit and all that.
+	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
 
@@ -153,9 +158,9 @@
 
 	var/list/status_effects = list()
 
-	acceleration_mod = 0.75
-	acceleration = 10
-	deceleration = 15
+	acceleration_mod = 0.5
+	acceleration = 5
+	deceleration = 10
 	use_momentum = TRUE
 
 	var/override_butcher = FALSE //Set to true for custom butcher contents.
@@ -262,9 +267,7 @@
 
 /mob/living/Destroy()
 
-	if(buckled_object)
-		qdel(buckled_object)
-		buckled_object = null
+	buckled_object = null
 
 	if(minion)
 		minion.master = null
@@ -274,56 +277,40 @@
 		master.minion = null
 		master = null
 
-	if(totem)
-		QDEL_NULL(totem)
-		totem = null
+	QDEL_NULL(totem)
 
 	if(following)
 		following.followers -= src
 		following = null
 
-	if(linked_mobs)
-		for(var/k in linked_mobs)
-			var/mob/M = k
-			qdel(M)
-		linked_mobs.Cut()
+	QDEL_CUT(linked_mobs)
 
 	if(fallback_mob)
 		fallback_mob.linked_mobs -= src
 		attributes = null
 		skills = null
 	else
-		for(var/k in attributes)
-			var/experience/E = attributes[k]
-			qdel(E)
-		attributes.Cut()
-		for(var/k in skills)
-			var/experience/E = skills[k]
-			qdel(E)
-		skills.Cut()
+		QDEL_CUT_ASSOC(attributes)
+		QDEL_CUT_ASSOC(skills)
 
 	QDEL_NULL(ai)
 
 	if(screen_blood)
-		for(var/k in screen_blood)
-			var/obj/hud/screen_blood/S = k
-			qdel(S)
-		screen_blood.Cut()
+		QDEL_CUT(screen_blood)
 
-	hit_logs.Cut()
+	hit_logs?.Cut()
 
 	all_living -= src
 
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
-
 	old_turf = null
 
 	if(boss)
 		SSbosses.tracked_bosses -= src
 		SSbosses.living_bosses -= src
 
-	players_fighting_boss.Cut()
+	players_fighting_boss?.Cut()
 
 	QDEL_NULL(alert_overlay)
 	QDEL_NULL(chat_overlay)
@@ -340,14 +327,48 @@
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		client.make_ghost(FALLBACK_TURF)
 
-	traits.Cut()
-	traits_by_category.Cut()
+	traits?.Cut()
+	traits_by_category?.Cut()
 
-	status_effects.Cut()
+	status_effects?.Cut()
 
 	QDEL_NULL(stand)
 
 	return ..()
+
+/mob/living/proc/try_rot()
+
+	if(!isturf(src.loc))
+		return FALSE
+
+	var/area/A = get_area(src)
+	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		return FALSE
+
+	var/turf/possible_turfs = list()
+	for(var/turf/simulated/T in view(VIEW_RANGE,src))
+		if(!T.organic)
+			continue
+		if(T.lightness <= 0)
+			continue
+		if(!T.is_safe_teleport())
+			continue
+		possible_turfs += T
+
+	if(!length(possible_turfs))
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		return FALSE
+
+	var/turf/chosen_turf = pick(possible_turfs)
+
+	var/mob/living/advanced/npc/beefman/B = new(chosen_turf)
+	INITIALIZE(B)
+	GENERATE(B)
+	FINALIZE(B)
+	B.ai.set_path_astar(src.loc)
+
+	return TRUE
 
 /mob/living/proc/bang(var/duration=100)
 

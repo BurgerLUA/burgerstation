@@ -77,8 +77,6 @@
 
 	var/inventory_category = "none"
 
-	var/obj/hud/button/close_inventory/assoc_button //The associated close button for this inventory object.
-
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)
@@ -87,15 +85,11 @@
 
 	show(FALSE,0)
 
-	remove_from_owner()
-
-	owner = null
+	update_owner(null)
 
 	parent_inventory = null
 	child_inventory = null
 	grabbed_object = null
-
-	QDEL_NULL(assoc_button)
 
 	return ..()
 
@@ -299,33 +293,19 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/remove_from_owner()
-
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		A.remove_inventory(src)
-
-	return TRUE
-
-/obj/hud/inventory/proc/add_to_owner(var/mob/desired_owner)
-
-	if(desired_owner)
-		owner = desired_owner
-
-	if(owner && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		owner = A
-		A.add_inventory(src)
-
-	return TRUE
-
 /obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
 		return FALSE
 
-	remove_from_owner()
-	add_to_owner(desired_owner)
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.remove_inventory(src)
+
+	owner = desired_owner
+	if(is_advanced(desired_owner))
+		var/mob/living/advanced/A = owner
+		A.add_inventory(src)
 
 	return TRUE
 

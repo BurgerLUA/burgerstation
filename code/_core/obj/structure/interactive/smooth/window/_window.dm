@@ -46,7 +46,7 @@
 /obj/structure/smooth/window/Destroy()
 	if(!no_queue)
 		queue_update_smooth_edges(src,include_self = FALSE)
-	return ..()
+	. = ..()
 
 /obj/structure/smooth/window/reinforced
 	name = "aluminium reinforced glass window"

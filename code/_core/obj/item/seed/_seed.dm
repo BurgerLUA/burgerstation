@@ -13,7 +13,8 @@
 	var/growth_produce_max = 200
 
 	var/potency = 20
-	var/yield = 1
+	var/yield_max = 1
+	var/yield_percent = 100
 	var/growth_speed = 0.5
 
 	var/delete_after_harvest = TRUE
@@ -39,7 +40,7 @@
 /obj/item/seed/get_base_value()
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	. = P.value
-	. *= (0.1 + (potency/100)*0.4) + (0.1 + (yield/10)*0.4)
+	. *= (0.1 + (potency/100)*0.4) + (0.1 + ((yield_max/10)*(yield_percent/100))*0.4)
 	. *= (0.1 + growth_speed/10)
 	if(!delete_after_harvest)
 		. *= 3
@@ -91,24 +92,17 @@
 		INTERACT_DELAY(1)
 		var/turf/T = object
 		var/plant_type/P = SSbotany.all_plant_types[plant_type]
-		var/allowed=FALSE
-		for(var/k in P.allowed_turfs)
-			if(!istype(object,k))
-				continue
-			allowed = TRUE
-			break
-
-		if(!allowed)
+		if(!P.allowed_turfs[T.type])
 			caller.to_chat(span("warning","You can't plant \the [src.name] on \the [T.name]."))
 			return TRUE
-
 		var/obj/structure/interactive/plant/PL = new(T)
 		PL.plant_type = plant_type
 		PL.growth_min = growth_min
 		PL.growth_max = growth_max
 		PL.growth_produce_max = growth_produce_max
 		PL.potency = potency
-		PL.yield = yield
+		PL.yield_max = yield_max
+		PL.yield_percent = yield_percent
 		PL.growth_speed = growth_speed
 		PL.delete_after_harvest = delete_after_harvest
 		INITIALIZE(PL)

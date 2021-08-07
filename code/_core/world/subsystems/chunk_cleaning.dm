@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(chunkclean)
 	name = "Chunkclean Subsystem"
 	desc = "Handles chunk cleaning."
-	tick_rate = SECONDS_TO_TICKS(120)
+	tick_rate = SECONDS_TO_TICKS(300) //JUST LIKE MINECRAFT
 	priority = SS_ORDER_DELETE
 
 	cpu_usage_max = 25
@@ -12,10 +12,27 @@ SUBSYSTEM_DEF(chunkclean)
 	var/current_z = 0
 
 
+/subsystem/chunkclean/Initialize()
+	. = ..()
+
+	tick_rate = initial(tick_rate)
+	if(world.maxz>=1)
+		tick_rate = CEILING(tick_rate/world.maxz,1)
+
+	for(var/mob/living/L in world)
+		if(!L.respawn)
+			continue
+		var/turf/simulated/T = get_turf(L)
+		if(!istype(T))
+			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and has a mob spawnpoint on it.")
+			continue
+		var/obj/marker/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.force_spawn)
+		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
+
 /subsystem/chunkclean/on_life()
 
 	if(current_z == 0)
-		//First time initialize.
+		//First time initialize. Don't clean.
 		current_z++
 		return TRUE
 
@@ -39,25 +56,22 @@ SUBSYSTEM_DEF(chunkclean)
 
 	. = 0
 	for(var/x=1,x<=chunk_count_x,x++)
+		CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 		for(var/y=1,y<=chunk_count_y,y++)
-			sleep(-1)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 			if(chunk_data["[x],[y],[z]"])
 				continue
 			var/list/chunk_turfs = get_chunk(x,y,z)
 			for(var/k in chunk_turfs)
 				var/turf/T = k
+				var/area/A = T.loc
+				if(A.safe_storage)
+					continue
 				for(var/j in T.contents)
+					CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 					var/atom/movable/M = j
-					if(istype(M,/mob/living/))
-						var/mob/living/L = M
-						if(L.dead && !is_player(L))
-							qdel(L)
-							. += 1
-					else if(istype(M,/obj/item/))
-						var/obj/item/I = M
-						if(I.last_interacted && !istype(I.last_interacted,/mob/living/advanced/player/))
-							qdel(I)
-							. += 1
+					if(M.enable_chunk_clean)
+						. += M.on_chunk_clean()
 
 /proc/get_chunk_data(var/adjacent=FALSE)
 

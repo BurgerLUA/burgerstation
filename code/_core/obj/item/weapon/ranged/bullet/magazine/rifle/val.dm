@@ -8,7 +8,7 @@
 
 	shoot_delay = 1.5
 
-	firemodes = list("semi-automatic","automatic","burst")
+	firemodes = list("burst","automatic","semi-automatic")
 
 	automatic = TRUE
 
@@ -54,7 +54,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-
+	dan_mode = TRUE
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75

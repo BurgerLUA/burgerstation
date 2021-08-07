@@ -10,7 +10,7 @@
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
-	firemodes = list("semi-automatic","automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	can_wield = TRUE
 
@@ -56,7 +56,7 @@
 	attachment_undermount_offset_x = 22 - 15
 	attachment_undermount_offset_y = 18 - 16
 
-
+	dan_mode = TRUE
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
