@@ -97,6 +97,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/last_autosave = 0 //The last time this player saved.
 
+	enable_chunk_clean = FALSE
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)

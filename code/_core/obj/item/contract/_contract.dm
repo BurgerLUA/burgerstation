@@ -33,10 +33,10 @@
 /obj/item/contract/Generate()
 	. = ..()
 	if(!reward)
-		CRASH_SAFE("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
+		log_error("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
 		qdel(src)
 	else
-		reward = new reward
+		reward = new reward(src)
 		reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)

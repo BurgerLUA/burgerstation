@@ -67,6 +67,15 @@
 	FINALIZE(I)
 	return I
 
+/obj/structure/interactive/vending/contract/modify_item(var/obj/item/I,var/obj/item/base_item)
+
+	if(istype(I,/obj/item/contract))
+		var/obj/item/contract/C = I
+		var/obj/item/contract/based = base_item
+		C.reward = based.reward.type
+
+	return TRUE
+
 
 
 /obj/structure/interactive/vending/contract/get_bullshit_price(var/desired_price)
