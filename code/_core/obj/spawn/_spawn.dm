@@ -30,7 +30,6 @@
 	return TRUE
 
 /obj/marker/mob_spawn/on_chunk_clean()
-	. = ..()
 	if(!mob_type)
 		log_error("Warning: [src.get_debug_name()] has invalid spawning data.")
 		qdel(src)
@@ -46,3 +45,4 @@
 			time_of_death = null
 			do_spawn(loc)
 			return TRUE
+	return FALSE

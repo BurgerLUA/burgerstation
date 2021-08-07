@@ -1,5 +1,5 @@
 /mob/living/on_chunk_clean()
-	. = ..()
 	if(src.dead && !src.ckey_owner)
 		qdel(src)
-		. = TRUE
+		return TRUE
+	return FALSE
