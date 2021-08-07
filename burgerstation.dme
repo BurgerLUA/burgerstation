@@ -1159,6 +1159,7 @@
 #include "code\_core\obj\item\clothing\head\hats\warden.dm"
 #include "code\_core\obj\item\clothing\head\hats\winter.dm"
 #include "code\_core\obj\item\clothing\head\hats\witch.dm"
+#include "code\_core\obj\item\clothing\head\hats\witchunter.dm"
 #include "code\_core\obj\item\clothing\head\hats\wizard.dm"
 #include "code\_core\obj\item\clothing\head\helmet\_helmet.dm"
 #include "code\_core\obj\item\clothing\head\helmet\drake.dm"
