@@ -9,7 +9,7 @@
 /obj/item/tempering/magazine/bluespace
 	name = "Magazine bluespacer"
 	desc = "Have you tried just putting more bullets in it?"
-	desc_extended = "A tightly controlled bluespace pocket condenser. Fits to expand inside a magazine, and increases capacity 10x for that magazine"
+	desc_extended = "A tightly controlled bluespace pocket condenser. Fits to expand inside a magazine, and increases capacity 5x for that magazine"
 	icon_state = "bluespacer"
 
 	temper_whitelist = /obj/item/magazine
@@ -30,7 +30,7 @@
 
 /obj/item/tempering/magazine/bluespace/on_temper(var/mob/caller,var/obj/item/magazine/I)
 	I.bluespaced = TRUE
-	I.bullet_count_max *= 10 //Inconsistency leaves a sad taste in my mouth
+	I.bullet_count_max *= 5
 	return ..()
 
 /obj/item/tempering/magazine/refiller

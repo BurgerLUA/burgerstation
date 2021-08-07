@@ -231,8 +231,8 @@
 
 	if(!plant_type)
 		return FALSE
- 
- 	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
+
+	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
 
 	if(!associated_plant || potency <= 0 || yield_max <= 0)
 		caller.to_chat(span("warning","You fail to harvest anything from \the [src.name]!"))
