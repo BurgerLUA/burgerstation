@@ -84,7 +84,7 @@ SUBSYSTEM_DEF(chunkclean)
 		if(!T)
 			continue
 		var/x = CEILING(T.x/CHUNK_SIZE,1)
-		var/y = CEILING(T.x/CHUNK_SIZE,1)
+		var/y = CEILING(T.y/CHUNK_SIZE,1)
 		.["[x],[y],[T.z]"] = TRUE
 		if(adjacent)
 			.["[x],[y-1],[T.z]"] = TRUE
