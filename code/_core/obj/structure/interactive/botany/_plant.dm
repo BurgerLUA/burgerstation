@@ -29,7 +29,8 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Harvest chance per yield.
-	var/growth_speed = 100 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
+	var/growth_speed = 40 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
+// no, it was just high ^
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
@@ -260,7 +261,7 @@
 		var/health_mod  = health.health_current/health.health_max
 
 		var/local_potency = (potency  + (skill_power * 10)) * health_mod //10 skill gives +1 potency, up to 10 extra at lv.100
-		var/local_yield = (yield_max  + (skill_power * 4)) * health_mod  //25 skill gives +1 yield, up to 4 extra at lv100
+		var/local_yield = (yield_max  + (skill_power * 2)) * health_mod  //50 skill gives +1 yield, up to 2 extra at lv100
 
 		//Guarentee at least 1 for each.
 		local_potency = CEILING(local_potency,1)
