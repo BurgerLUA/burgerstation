@@ -30,7 +30,7 @@
 
 /obj/item/tempering/magazine/bluespace/on_temper(var/mob/caller,var/obj/item/magazine/I)
 	I.bluespaced = TRUE
-	I.bullet_count_max *= 4
+	I.bullet_count_max *= 10 //Inconsistency leaves a sad taste in my mouth
 	return ..()
 
 /obj/item/tempering/magazine/refiller

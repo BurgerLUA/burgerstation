@@ -342,7 +342,8 @@
 		/obj/item/container/beaker/bucket/water,
 		/obj/item/container/beaker/bottle/plant_food,
 		/obj/item/storage/bags/botany/processor,
-		/obj/item/fertilizer
+		/obj/item/fertilizer,
+		/obj/item/analyzer/plant
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds

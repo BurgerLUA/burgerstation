@@ -11,8 +11,8 @@
 	var/plant_type/plant_type
 
 	var/growth_min = 0
-	var/growth_max = 100
-	var/growth_produce_max = 200
+	var/growth_max = 50
+	var/growth_produce_max = 100
 
 	var/potency = 20
 	var/yield_max = 1
