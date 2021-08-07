@@ -6,17 +6,12 @@ var/global/list/possible_materials = list(
 )
 
 
-
 /mob/living/advanced/player/antagonist/golem
 	loadout_to_use = /loadout/golem
 
 /mob/living/advanced/player/antagonist/golem/default_appearance()
-	. = ..()
-	loyalty_tag = "Golem"
-	iff_tag = "Golem"
-
-
-/mob/living/advanced/player/antagonist/golem/default_appearance()
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/golem)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/golem)
 
 	var/chosen_material = possible_materials[1]
 	if(length(possible_materials) > 1)
@@ -47,3 +42,7 @@ var/global/list/possible_materials = list(
 	update_all_blends()
 
 	return TRUE
+
+/mob/living/advanced/player/antagonist/golem/add_species_languages()
+	. = ..()
+	known_languages[LANGUAGE_CANADIAN] = TRUE //lmao
