@@ -18,7 +18,7 @@
 // note, to skill_stats list then set a number for the max damage you want skillscaling to do at level 100 (or more, lol.) then, under that srt the types of damage you want it to do
 // this system is blasphemy, i say.
 	skill_stats = list(
-		SKILL_PRAYER = 120,
+		SKILL_PRAYER = 150,
 	)
 
 
