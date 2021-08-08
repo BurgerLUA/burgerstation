@@ -11,5 +11,5 @@ obj/item/clothing/back/flamethrower
 	value = 8000
 
 	additional_clothing = list(
-		/obj/item/weapon/ranged/energy/fed/flamethrower
+		/obj/item/weapon/ranged/energy/flamethrower
 	)
