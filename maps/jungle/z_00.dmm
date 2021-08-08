@@ -284,6 +284,7 @@
 /obj/structure/interactive/lighting/fixture/tube/station,
 /obj/decal/tile{
 	dir = 1
+
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/vr)
