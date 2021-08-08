@@ -12,7 +12,7 @@
 		/obj/item/clothing/feet/shoes/brown,
 		/obj/item/clothing/feet/shoes/brown/left,
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,

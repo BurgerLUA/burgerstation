@@ -24,7 +24,6 @@ obj/structure/interactive/bed
 		victim.pixel_x = pixel_offset_x
 		victim.pixel_y = pixel_offset_y
 
-
 /obj/structure/interactive/bed/unbuckle(var/mob/caller,var/silent=FALSE)
 
 	var/mob/living/L = buckled

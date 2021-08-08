@@ -82,7 +82,6 @@
 		/loot/weapon/pistol/deagle = 1,
 		/loot/weapon/energy/dynamic = 1,
 		/loot/weapon/pistol/military = 1,
-		/loot/weapon/pistol/military/mod = 1,
 		/loot/weapon/pistol/tactical = 1,
 		/loot/weapon/pistol/tranq = 1,
 		/loot/weapon/pistol/big_game = 1,
