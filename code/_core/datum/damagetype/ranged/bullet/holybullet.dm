@@ -18,7 +18,7 @@
 // note, to skill_stats list then set a number for the max damage you want skillscaling to do at level 100 (or more, lol.) then, under that srt the types of damage you want it to do
 // this system is blasphemy, i say.
 	skill_stats = list(
-		SKILL_PRAYER = 300,
+		SKILL_PRAYER = 120,
 	)
 
 
@@ -27,7 +27,7 @@
 	)
 
 	bonus_experience_skill = list(
-		SKILL_PRAYER = 1, //75%
+		SKILL_PRAYER = 0.3, //75%
 	)
 
 /damagetype/ranged/bullet/holybullet/surplus
