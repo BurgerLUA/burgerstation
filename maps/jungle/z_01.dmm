@@ -35,8 +35,8 @@
 /area/transit/cargo/ship)
 "ag" = (
 /obj/structure/interactive/intercom/active/poly{
-	icon_state = "intercom";
-	dir = 8
+	dir = 8;
+	icon_state = "intercom"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/north)
@@ -37233,12 +37233,12 @@ uw
 vJ
 fF
 bu
-gf
+up
 eD
 up
 up
 gO
-gf
+up
 bu
 aA
 aA
