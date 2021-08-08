@@ -28,15 +28,15 @@
 /area/burgerstation/vr)
 "i" = (
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 8
+	dir = 8;
+	icon_state = "open"
 	},
 /turf/unsimulated/virtual_reality,
 /area/burgerstation/vr)
 "j" = (
 /obj/structure/interactive/vr_pod{
-	icon_state = "open";
-	dir = 4
+	dir = 4;
+	icon_state = "open"
 	},
 /turf/unsimulated/virtual_reality,
 /area/burgerstation/vr)
@@ -57,20 +57,20 @@
 /area/burgerstation/vr)
 "n" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area/burgerstation/vr)
 "o" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area/burgerstation/vr)
 "p" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area/burgerstation/vr)
 "q" = (
