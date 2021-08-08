@@ -27,8 +27,7 @@
 	)
 
 	bonus_experience_skill = list(
-		SKILL_PRAYER = 10, //75%
-		SKILL_RANGED = 40
+		SKILL_PRAYER = 1, //75%
 	)
 
 /damagetype/ranged/bullet/holybullet/surplus
