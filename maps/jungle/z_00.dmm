@@ -15,7 +15,7 @@
 "bn" = (
 /mob/living/simple/cat,
 /turf/simulated/floor/tile/dark/ish,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "bS" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
@@ -39,14 +39,14 @@
 "fq" = (
 /mob/living/simple/cult/construct/behemoth,
 /turf/simulated/floor/cult/darker,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "gq" = (
 /mob/living/simple/bot/medibot,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "gD" = (
 /turf/simulated/floor/tile/shuttle/red,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "hE" = (
 /turf/simulated/floor/stair{
 	dir = 1;
@@ -68,20 +68,20 @@
 "mH" = (
 /obj/structure/scenery/grass/normal,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "mJ" = (
 /obj/decal/poster/syndicate{
 	icon_state = "poster24"
 	},
 /turf/simulated/wall/metal/reinforced,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "mT" = (
 /turf/simulated/floor/basalt,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "nq" = (
 /obj/structure/scenery/grass/jungle_rock,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "nJ" = (
 /turf/simulated/openspace,
 /area/dungeon/z_00)
@@ -94,11 +94,11 @@
 "py" = (
 /mob/living/advanced/npc/dummy/armor_heavy,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "pP" = (
 /mob/living/advanced/npc/syndicate,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "qM" = (
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/vr)
@@ -153,7 +153,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tile/dark/ish,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "xN" = (
 /turf/simulated/floor/stair{
 	dir = 1;
@@ -167,7 +167,7 @@
 /mob/living/simple/bear/space,
 /obj/structure/scenery/grass/jungle,
 /turf/simulated/floor/grass/jungle,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Ah" = (
 /obj/structure/interactive/vr_pod{
 	dir = 8;
@@ -179,11 +179,11 @@
 /obj/item/legion_core,
 /obj/structure/smooth/table/reinforced/dark/pvp,
 /turf/simulated/floor/basalt,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "AA" = (
 /obj/item/container/food/fishing/catfish,
 /turf/simulated/hazard/water,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Cm" = (
 /obj/structure/interactive/potted_plant/office,
 /obj/decal/tile/corner{
@@ -210,7 +210,7 @@
 "Fj" = (
 /mob/living/simple/xeno/drone,
 /turf/unsimulated/generation/surface/cave_path_turf,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Ft" = (
 /turf/simulated/wall/metal/reinforced,
 /area/dungeon/z_00)
@@ -238,7 +238,7 @@
 "IG" = (
 /obj/structure/smooth/table/wood,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Ja" = (
 /obj/decal/tile/corner{
 	dir = 1
@@ -248,15 +248,15 @@
 "JV" = (
 /obj/structure/smooth/table/reinforced,
 /turf/simulated/floor/tile/dark/ish,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "KM" = (
 /obj/structure/interactive/lighting/cult_pylon,
 /turf/simulated/floor/cult/darker,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "KO" = (
 /mob/living/advanced/npc/rev,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "KR" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /obj/decal/tile{
@@ -267,19 +267,19 @@
 "Lc" = (
 /mob/living/advanced/npc/cyborg_assistant/help_desk,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Lk" = (
 /mob/living/advanced/npc/dummy/armor,
 /turf/simulated/floor/tile/dark/ish,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Ng" = (
 /mob/living/simple/legionare,
 /turf/simulated/floor/basalt,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "NO" = (
 /obj/structure/interactive/plant/corn,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "NW" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /obj/decal/tile{
@@ -289,40 +289,45 @@
 /area/burgerstation/vr)
 "OC" = (
 /turf/simulated/floor/fake_space,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Pf" = (
 /mob/living/simple/spacecarp,
 /turf/simulated/floor/fake_space,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Qp" = (
 /obj/structure/interactive/tree/jungle_small,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "RI" = (
 /obj/structure/interactive/plant/corn,
 /obj/item/seed/corn,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "RR" = (
 /mob/living/advanced/npc/dummy,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Sb" = (
+/obj/item/clothing/overwear/coat/xeno,
+/obj/item/clothing/head/helmet/full/xeno,
 /turf/unsimulated/generation/surface/cave_path_turf,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "SL" = (
 /mob/living/advanced/npc/space_cop,
 /turf/simulated/floor/tile/dark/ish,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "ST" = (
 /obj/structure/interactive/potted_plant/office,
 /obj/decal/tile/corner,
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/vr)
+"TZ" = (
+/turf/simulated/floor/tile/dark,
+/area/dungeon/z_00)
 "UY" = (
 /mob/living/simple/clown/tree,
 /turf/simulated/floor/tile/dark,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "Vy" = (
 /obj/structure/interactive/vr_pod{
 	dir = 4;
@@ -333,7 +338,7 @@
 "Xy" = (
 /obj/item/container/beaker/alcohol/vodka/premium,
 /turf/simulated/floor/grass,
-/area/burgerstation/vr)
+/area/dungeon/z_00)
 "XY" = (
 /obj/decal/tile{
 	dir = 8
@@ -341,8 +346,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/vr)
 "YG" = (
-/turf/simulated/floor/plating,
-/area/burgerstation/vr)
+/turf/simulated/floor/tile/dark/ish,
+/area/dungeon/z_00)
 "Zu" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/tile/dark,
@@ -36153,25 +36158,25 @@ Ip
 Ip
 Ip
 Ip
-ex
-uo
-uo
-uo
-uo
-dn
-dn
-uo
-ex
-ex
-ex
-uo
-uo
-uo
-ex
-uo
-uo
-uo
-ex
+Ft
+ZV
+ZV
+ZV
+ZV
+nJ
+nJ
+ZV
+Ft
+Ft
+Ft
+ZV
+ZV
+ZV
+Ft
+ZV
+ZV
+ZV
+Ft
 Ip
 Ip
 Ip
@@ -36408,27 +36413,27 @@ Ip
 Ip
 Ip
 Ip
-YG
-YG
+Ip
+Ip
 mJ
 pP
 gD
-qM
-uo
-uo
-uo
-uo
-ex
-ex
-ex
+TZ
+ZV
+ZV
+ZV
+ZV
+Ft
+Ft
+Ft
 nq
 yj
 mH
-ex
+Ft
 JV
 Lc
-cE
-ex
+YG
+Ft
 Ip
 Ip
 Ip
@@ -36665,22 +36670,8 @@ Ip
 Ip
 Ip
 Ip
-ex
-ex
-ex
-Zu
-Fc
-Zu
-ex
-ex
-ex
-ex
-ex
-ex
-ex
-Zu
-Fc
-Zu
+Ft
+Ft
 ex
 Zu
 Fc
@@ -36688,6 +36679,20 @@ Zu
 ex
 ex
 ex
+ex
+ex
+ex
+ex
+Zu
+Fc
+Zu
+ex
+Zu
+Fc
+Zu
+ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -36922,8 +36927,8 @@ Ip
 Ip
 Ip
 Ip
-uo
-cE
+ZV
+YG
 uo
 ST
 XY
@@ -36943,8 +36948,8 @@ GR
 XY
 Cm
 uo
-cE
-uo
+YG
+ZV
 Ip
 Ip
 Ip
@@ -37179,7 +37184,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 gq
 uo
 vp
@@ -37201,7 +37206,7 @@ cE
 cr
 uo
 UY
-uo
+ZV
 Ip
 Ip
 Ip
@@ -37436,8 +37441,8 @@ Ip
 Ip
 Ip
 Ip
-ex
-ex
+Ft
+Ft
 ex
 KR
 qM
@@ -37457,8 +37462,8 @@ Ah
 qM
 ZD
 ex
-ex
-ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -37693,7 +37698,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 KO
 uo
 vp
@@ -37715,7 +37720,7 @@ cE
 cr
 uo
 Az
-uo
+ZV
 Ip
 Ip
 Ip
@@ -37950,7 +37955,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 Xy
 uo
 Cy
@@ -37972,7 +37977,7 @@ qM
 rG
 uo
 Ng
-uo
+ZV
 Ip
 Ip
 Ip
@@ -38207,8 +38212,8 @@ Ip
 ZV
 ZV
 ZV
-uo
-uo
+ZV
+ZV
 ex
 vp
 cE
@@ -38229,7 +38234,7 @@ cE
 cr
 uo
 mT
-uo
+ZV
 Ip
 Ip
 Ip
@@ -38464,8 +38469,8 @@ Ip
 ZV
 nJ
 nJ
-dn
-dn
+nJ
+nJ
 ex
 Cy
 qM
@@ -38485,8 +38490,8 @@ Ah
 qM
 rG
 ex
-ex
-ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -38721,8 +38726,8 @@ Ip
 ZV
 nJ
 nJ
-dn
-dn
+nJ
+nJ
 ex
 NW
 cE
@@ -38742,8 +38747,8 @@ Vy
 cE
 bS
 ex
-ex
-ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -38978,8 +38983,8 @@ Ip
 ZV
 ZV
 ZV
-uo
-uo
+ZV
+ZV
 ex
 Cy
 qM
@@ -38999,8 +39004,8 @@ cE
 qM
 rG
 ex
-ex
-ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -39235,7 +39240,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 Sb
 uo
 vp
@@ -39257,7 +39262,7 @@ cE
 cr
 uo
 KM
-uo
+ZV
 Ip
 Ip
 Ip
@@ -39492,7 +39497,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 Fj
 uo
 Cy
@@ -39514,7 +39519,7 @@ qM
 rG
 uo
 fq
-uo
+ZV
 Ip
 Ip
 Ip
@@ -39749,7 +39754,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 Qp
 uo
 vp
@@ -39771,7 +39776,7 @@ cE
 cr
 uo
 KM
-uo
+ZV
 Ip
 Ip
 Ip
@@ -40006,8 +40011,8 @@ Ip
 Ip
 Ip
 Ip
-ex
-ex
+Ft
+Ft
 ex
 KR
 qM
@@ -40027,8 +40032,8 @@ cE
 qM
 ZD
 ex
-ex
-ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -40263,7 +40268,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 NO
 uo
 vp
@@ -40284,8 +40289,8 @@ qM
 cE
 cr
 uo
-qM
-uo
+TZ
+ZV
 Ip
 Ip
 Ip
@@ -40520,7 +40525,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 RI
 uo
 Cy
@@ -40542,7 +40547,7 @@ qM
 rG
 uo
 xb
-uo
+ZV
 Ip
 Ip
 Ip
@@ -40777,7 +40782,7 @@ Ip
 Ip
 Ip
 Ip
-uo
+ZV
 NO
 uo
 aA
@@ -40799,7 +40804,7 @@ Dl
 wo
 uo
 IG
-uo
+ZV
 Ip
 Ip
 Ip
@@ -41034,21 +41039,11 @@ Ip
 Ip
 Ip
 Ip
-ex
-ex
-ex
-uo
-uo
-uo
+Ft
+Ft
 ex
 uo
 uo
-uo
-ex
-ex
-ex
-uo
-ex
 uo
 ex
 uo
@@ -41057,6 +41052,16 @@ uo
 ex
 ex
 ex
+uo
+ex
+uo
+ex
+uo
+uo
+uo
+ex
+Ft
+Ft
 Ip
 Ip
 Ip
@@ -41293,25 +41298,25 @@ Ip
 Ip
 Ip
 Ip
-ex
+Ft
 OC
 Pf
 OC
-ex
+Ft
 py
 Lk
 RR
-ex
-ex
-ex
+Ft
+Ft
+Ft
 AA
-ex
+Ft
 bn
-ex
-qM
+Ft
+TZ
 SL
-qM
-ex
+TZ
+Ft
 Ip
 Ip
 Ip
@@ -41550,25 +41555,25 @@ Ip
 Ip
 Ip
 Ip
-ex
-uo
-uo
-uo
-ex
-uo
-uo
-uo
-ex
-ex
-ex
-uo
-ex
-uo
-ex
-uo
-uo
-uo
-ex
+Ft
+ZV
+ZV
+ZV
+Ft
+ZV
+ZV
+ZV
+Ft
+Ft
+Ft
+ZV
+Ft
+ZV
+Ft
+ZV
+ZV
+ZV
+Ft
 Ip
 Ip
 Ip
