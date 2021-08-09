@@ -93,6 +93,14 @@ var/global/allow_loading = TRUE
 		CRASH_SAFE("FATAL ERROR: Tried to save a character without an actual character!")
 		return FALSE
 
+	if(A.qdeleting)
+		log_error("SAVE ERROR: Tried saving a character that was qdeleting!")
+		return FALSE
+
+	if(A.loc == null)
+		log_error("SAVE ERROR: Tried saving a character that had a null loc!")
+		return FALSE
+
 	if(!istype(A))
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 2000.</h2>"))
 		CRASH_SAFE("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
@@ -111,7 +119,6 @@ var/global/allow_loading = TRUE
 		return FALSE
 
 	var/list/loaded_data = A.get_mob_data(save_inventory,force,died)
-
 
 	if(!length(loaded_data))
 		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no data! Contact burger on how this happened with error code: 01."))
