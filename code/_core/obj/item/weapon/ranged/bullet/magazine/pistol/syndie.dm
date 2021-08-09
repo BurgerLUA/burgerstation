@@ -4,6 +4,7 @@
 	desc_extended = "The standard Syndicate pistol. Cheap. Reliable. The compactness of the gun makes it useful in assassinations as well as a holdout weapon."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm.dmi'
 	icon_state = "inventory"
+	crafting_id = "stechkin"
 	value = 250
 
 	shoot_delay = 2
@@ -76,7 +77,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
 	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is more compact."
-
+	crafting_id = "stechkin_mod"
 	size = SIZE_2
 
 	attachment_barrel_offset_x = 25 - 16

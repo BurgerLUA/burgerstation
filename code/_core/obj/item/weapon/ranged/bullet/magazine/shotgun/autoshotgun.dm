@@ -4,6 +4,7 @@
 	desc_extended = "The 20 Gauge Bulldog is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bulldog\" for its bullpup design as well as the fact that it kicks like one too."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
 	icon_state = "inventory"
+	crafting_id = "bulldog"
 	value = 2900
 
 	shoot_delay = 2

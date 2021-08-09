@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/revolver/gauss_blunder.dmi'
 	icon_state = "inventory"
 	value = 600
+	crafting_id = "blundergauss"
 
 	shoot_delay = 1
 

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
 	value = 800
+	crafting_id = "lever"
 
 	shoot_delay = 5
 

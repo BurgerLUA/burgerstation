@@ -2,6 +2,7 @@
 	name = ".45 1911 Pistol"
 	desc = "No rubber rounds here; it's all lethal."
 	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Americans."
+	crafting_id = "1911"
 	value = 700
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
@@ -79,6 +80,7 @@
 	Where'd you get something like this?"
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
+	crafting_id = "1911_mod"
 	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
 

@@ -4,6 +4,7 @@
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
 	icon_state = "inventory"
+	crafting_id = "combatshotgun"
 
 	value = 1200
 
@@ -73,6 +74,7 @@
 	desc = "A very robust combat shotgun. This one has been modified to be have a pistol grip and be shorter."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat_mod.dmi'
 	icon_state = "inventory"
+	crafting_id = "combatshotgun_mod"
 	value = 800
 
 	shoot_delay = 2

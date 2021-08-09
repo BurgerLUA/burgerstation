@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308_advanced.dmi'
 	icon_state = "inventory"
 	value = 6000
+	crafting_id = "brsol"
 
 	shoot_delay = 2.5
 

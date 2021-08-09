@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
 	value = 800
+	crafting_id = "spacedetective"
 
 	projectile_speed = 31
 	shoot_delay = 4

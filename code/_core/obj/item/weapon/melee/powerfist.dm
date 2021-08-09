@@ -5,6 +5,7 @@
 	desc_extended = "A bulky glove attached to a massive hydraulic press. What could possibly go wrong?"
 
 	icon = 'icons/obj/item/weapons/unarmed/powerfist.dmi'
+	crafting_id = "powerfist"
 
 	damage_type = /damagetype/unarmed/powerfist
 

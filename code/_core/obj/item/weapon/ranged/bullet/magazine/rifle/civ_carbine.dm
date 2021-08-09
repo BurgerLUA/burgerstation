@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/556.dmi'
 	icon_state = "inventory"
 	value = 2900
+	crafting_id = "bpsol"
 
 	shoot_delay = 1.25
 

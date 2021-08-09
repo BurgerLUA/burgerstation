@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/4mm.dmi'
 	icon_state = "inventory"
 	value = 1100
+	crafting_id = "wt550"
 
 	automatic = TRUE
 	can_wield = FALSE

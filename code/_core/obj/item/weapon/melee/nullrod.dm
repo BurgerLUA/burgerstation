@@ -3,6 +3,7 @@
 	desc = "Apply directly to head."
 	desc_extended = "A holy null rod meant to dispel evil. Works as a great club too. Has the ability to block magic."
 	icon = 'icons/obj/item/weapons/melee/clubs/nullrod.dmi'
+	crafting_id = "nullrod"
 
 	damage_type = /damagetype/melee/club/null_rod
 
@@ -17,6 +18,7 @@
 	desc = "Originally a sheperd's rod, but some asshole cut the crook off."
 	desc_extended = "A long, lightweight piece of blessed ceramic designed to show religious authority in the form of robust beatings. Has the ability to block magic exceptionally well."
 	icon = 'icons/obj/item/weapons/melee/clubs/nullstaff.dmi'
+	crafting_id = "nullstaff"
 
 	damage_type = /damagetype/melee/club/null_staff
 
@@ -32,6 +34,7 @@
 	desc = "I don't think that man has ever been to a seminarian."
 	desc_extended = "A short holy dagger that is somehow legal for a priest to carry around openly. Has the ability to block magic, and is also good for parrying attacks."
 	icon = 'icons/obj/item/weapons/melee/clubs/nullathame.dmi'
+	crafting_id = "nulldagger"
 
 	damage_type = /damagetype/melee/sword/null_dagger
 

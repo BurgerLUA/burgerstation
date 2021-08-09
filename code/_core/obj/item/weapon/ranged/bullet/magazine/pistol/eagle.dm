@@ -6,6 +6,7 @@
 	value = 800
 	shoot_delay = 5
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
+	crafting_id = "silvereagle"
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.25
@@ -69,6 +70,7 @@
 	desc = "Now in gold!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
+	crafting_id = "goldeagle"
 	value = 3000
 	weight = 15
 	value_burgerbux = 1
@@ -79,6 +81,7 @@
 	desc = "Badass!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is painted black and upgraded with high quality parts."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_black.dmi'
+	crafting_id = "eaglemod"
 	value = 1400
 
 	shoot_delay = 4

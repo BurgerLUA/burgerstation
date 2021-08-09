@@ -6,6 +6,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton.dmi'
 	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	crafting_id = "laton"
 
 	movement_spread_base = 0.002
 	inaccuracy_modifier = 0.5
@@ -67,6 +68,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mod.dmi'
+	crafting_id = "laton_mod"
 	shoot_delay = 1.25
 	weight = 4
 	heat_max = 0.06

@@ -3,7 +3,7 @@
 	desc = "The source of all... lead?"
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots buckshot. Is this just a shotgun? Wait hold on....."
 	icon_state = "damage"
-
+	crafting_id = "buckshot"
 	cost_mana = 9
 	shoot_delay = 12
 

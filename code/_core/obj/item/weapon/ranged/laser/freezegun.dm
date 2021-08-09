@@ -4,6 +4,7 @@
 	desc_extended = "A gun that shoots beams that freeze the opponent."
 	icon = 'icons/obj/item/weapons/ranged/laser/freezegun.dmi'
 	value = 4000
+	crafting_id = "freeze"
 
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/freezegun

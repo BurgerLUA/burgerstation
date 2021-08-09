@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/pulse.dmi'
 	icon_state = "inventory"
 	value = 4000
+	crafting_id = "pulse"
 
 	shoot_delay = 3
 

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/items/weapons/ranged/rifle/hunting.dmi'
 	icon_state = "inventory"
 	value = 40
+	crafting_id = "huntingrifle"
 
 	shoot_delay = 2
 

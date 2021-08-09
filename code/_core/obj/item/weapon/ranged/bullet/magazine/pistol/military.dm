@@ -6,6 +6,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	crafting_id = "auto18"
 
 	firemodes = list("burst","automatic","semi-automatic")
 
@@ -75,6 +76,7 @@
 	desc_extended = "A modified variant of the 9mm Auto Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 600
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
+	crafting_id = "auto18_mod"
 	shoot_delay = 1.25
 
 
@@ -112,4 +114,5 @@
 	desc = "An old relic from an oppressive police force."
 	desc_extended = "A security grade pistol chambered in 9mm. This one has been modifed with a new lighrweight frame and paintjob."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
+	crafting_id = "auto18_nt"
 

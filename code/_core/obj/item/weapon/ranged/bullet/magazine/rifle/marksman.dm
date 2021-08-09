@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/308.dmi'
 	icon_state = "inventory"
 	value = 3750
+	crafting_id = "arm"
 
 	firemodes = list("automatic","semi-automatic")
 
@@ -80,7 +81,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod
 	name = "\improper .308 Marksman Rifle MOD"
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/308_mod.dmi'
-
+	crafting_id = "arm_mod"
 	heat_max = 0.4
 
 	size = SIZE_3

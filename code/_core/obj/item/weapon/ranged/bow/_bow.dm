@@ -139,6 +139,7 @@
 	desc = "For ranged ungas."
 	desc_extended = "A classic wooden bow. Overall, it's reliable and has no gimmick."
 	icon = 'icons/obj/item/weapons/ranged/bow/wood.dmi'
+	crafting_id = "woodbow"
 
 	stage_per_decisecond = 10
 	stage_max = 100
@@ -153,6 +154,7 @@
 	desc = "For ranged ungas who like steel."
 	desc_extended = "An upgraded bow that is harder to pull back, but is more accurate and fires more of a punch."
 	icon = 'icons/obj/item/weapons/ranged/bow/steel.dmi'
+	crafting_id = "steelbow"
 
 	stage_per_decisecond = 8
 	stage_max = 150
@@ -164,6 +166,7 @@
 	desc = "How can light be hard? :flushed:"
 	desc_extended = "A space-age bow that somehow uses the power of light to conjure arrows if none are provided. Fires really fast, regardless."
 	icon = 'icons/obj/item/weapons/ranged/bow/hardlight.dmi'
+	crafting_id = "hardlightbow"
 
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
@@ -190,7 +193,7 @@
 	desc = "So sacred, not even ashwalkers use it."
 	desc_extended = "A special masterfully crafted ashen bow that somehow invokes the strength of ancient megafauna when drawing arrows."
 	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
-
+	crafting_id = "ashenbow"
 	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
 
 	value = 2000

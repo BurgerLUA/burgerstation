@@ -3,6 +3,7 @@
 	desc = "Lucky!"
 	desc_extended = "A very rare four leaf clover. Grants +1 luck to an item when used, up to 50 luck. If the improvement results in a luck value below 0, it will set the object's luck to 0."
 	icon_state = "luck"
+	crafting_id = "clover"
 
 	increase = 1
 	limit = 100
@@ -36,6 +37,7 @@
 	desc = "Even luckier!"
 	desc_extended = "An very rare conjoined four leaf clover. Grants +10 luck to an item when used, up to 50 luck. If the improvement results in a luck value below 0, it will set the object's luck to 0."
 	icon_state = "luck2"
+	crafting_id = "doubleclover"
 
 	increase = 10
 	limit = 100

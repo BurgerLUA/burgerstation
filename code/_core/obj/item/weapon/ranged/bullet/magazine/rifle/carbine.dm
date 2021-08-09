@@ -4,6 +4,7 @@
 	desc_extended = "Leftover surplus guns left by the good ol days of syndicate raiding parties. While old and outdated, it still sees some uses by old and new syndicate forces."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223.dmi'
 	icon_state = "inventory"
+	crafting_id = "raider"
 	value = 900
 
 	shoot_delay = 2
@@ -95,6 +96,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = "\improper .223 SYN-Carbine MOD"
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_mod.dmi'
+	crafting_id = "raider_mod"
 
 	heat_max = 0.12
 

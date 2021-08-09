@@ -2,6 +2,7 @@
 	name = "mace"
 	desc = "A light mace"
 	desc_extended = "A mace, light enough to swing quickly, but heavy enough to do enough damage to platemail."
+	crafting_id = "mace"
 
 	icon = 'icons/obj/item/weapons/melee/clubs/mace.dmi'
 

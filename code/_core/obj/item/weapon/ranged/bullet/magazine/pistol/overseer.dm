@@ -4,6 +4,7 @@
 	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders. The bulkiness of the pistol rivals submachine guns."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
+	crafting_id = "highpower"
 	value = 700
 
 	shoot_delay = 4
@@ -75,6 +76,7 @@
 	desc_extended = "A prototype of the High-Power Auto commonly seen in the hands of NanoTrasen commanders. This variant is made with higher quality parts and is commonly used by mercenaries."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt_proto.dmi'
 	icon_state = "inventory"
+	crafting_id = "highpower_mod"
 	value = 2000
 
 	shoot_delay = 2

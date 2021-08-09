@@ -4,6 +4,7 @@
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
 	icon = 'icons/obj/item/weapons/ranged/laser/modular.dmi'
 	value = 2000
+	crafting_id = "aer13"
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/rifle

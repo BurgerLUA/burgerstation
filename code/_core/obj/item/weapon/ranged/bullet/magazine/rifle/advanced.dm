@@ -4,6 +4,7 @@
 	desc_extended = "The SOL-15 is an upgraded version of the SOL-14 rifle. This one features automatic fire capabilities and better recoil dampening."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_3.dmi'
 	icon_state = "inventory"
+	crafting_id = "sol15"
 	value = 3500
 
 	firemodes = list("automatic","semi-automatic")

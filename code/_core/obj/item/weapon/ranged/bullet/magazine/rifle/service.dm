@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_2.dmi'
 	icon_state = "inventory"
 	value = 2200
+	crafting_id = "sol14"
 
 	shoot_delay = 4
 

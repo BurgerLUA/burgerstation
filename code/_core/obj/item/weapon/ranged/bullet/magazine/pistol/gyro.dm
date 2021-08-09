@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
 	value = 800
+	crafting_id = "gyro"
 
 	shoot_delay = 8
 

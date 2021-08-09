@@ -3,6 +3,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a fast moving ice crystal that pierces."
 	icon_state = "damage"
+	crafting_id = "icespear"
 
 	cost_mana = 15
 	shoot_delay = 8
@@ -26,6 +27,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a fast moving fire crystal that pierces."
 	icon_state = "damage"
+	crafting_id = "firespear"
 
 	cost_mana = 15
 	shoot_delay = 8

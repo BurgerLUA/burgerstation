@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_lmg.dmi'
 	icon_state = "inventory"
 	value = 4500
+	crafting_id = "defender"
 
 	shoot_delay = 2
 

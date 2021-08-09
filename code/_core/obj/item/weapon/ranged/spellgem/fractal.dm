@@ -3,7 +3,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a fractal firebrand that forks when it hits living creatures."
 	icon_state = "damage"
-
+	crafting_id = "fractal"
 	cost_mana = 20
 	shoot_delay = 2
 	burst_delay = 10

@@ -8,6 +8,7 @@
 	damage_type = /damagetype/unarmed/slaughter
 	var/damage_type_harm = /damagetype/unarmed/slaughter_heavy
 	size = SIZE_2
+	crafting_id = "slaughterclaws"
 	weight = 10
 
 	value = 5000

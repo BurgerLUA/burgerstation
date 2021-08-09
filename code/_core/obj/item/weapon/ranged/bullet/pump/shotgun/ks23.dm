@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/ks23.dmi'
 	icon_state = "inventory"
 	value = 1800
+	crafting_id = "ks23"
 
 	can_wield = TRUE
 

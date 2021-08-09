@@ -5,6 +5,7 @@
 	desc_extended = "In the older days, poisoners had to rely on clever tricks, distraction and sleight-of-hand in order to poison their enemies. Luckily, we live in gentler times, so now you can just shoot em with poison syringes."
 	icon_state = "inventory"
 	value = 1200
+	crafting_id = "syringerifle"
 
 	shoot_delay = 8
 

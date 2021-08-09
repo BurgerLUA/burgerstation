@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_sniper_2.dmi'
 	icon_state = "inventory"
 	value = 3000
+	crafting_id = "sniper_nt"
 
 	requires_cock_each_shot = TRUE
 

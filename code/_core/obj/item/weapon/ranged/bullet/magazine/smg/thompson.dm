@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/thompson.dmi'
 	icon_state = "inventory"
 	value = 4200
+	crafting_id = "thompson"
 
 	shoot_delay = 0.25 // funny rpm hee hoo
 

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/revolver/762.dmi'
 	icon_state = "inventory"
 	value = 800
+	crafting_id = "nagant"
 
 	shoot_delay = 1.75
 

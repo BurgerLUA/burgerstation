@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
 	value = 300
+	crafting_id = "traditore"
 
 	shoot_delay = 3
 

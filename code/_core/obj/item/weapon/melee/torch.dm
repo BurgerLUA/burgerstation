@@ -3,6 +3,7 @@
 	desc = "A staple of cavemen and revolutionaries."
 	desc_extended = "Emits light. Somehow it has unlimited fuel."
 	icon = 'icons/obj/item/weapons/melee/clubs/torch.dmi'
+	crafting_id = "torch"
 
 	var/enabled = FALSE
 
@@ -62,6 +63,7 @@
 	desc = "But what type of lantern? Eh, who cares."
 	desc_extended = "Emits a lot of light. Somehow it has unlimited fuel."
 	icon = 'icons/obj/item/weapons/melee/clubs/lantern.dmi'
+	crafting_id = "lantern"
 
 	damage_type = /damagetype/item/medium
 	damage_type_on = /damagetype/item/medium
@@ -83,6 +85,7 @@
 	desc = "Can't live without it!"
 	desc_extended = "Emits light in a certain radius and direction when activated."
 	icon = 'icons/obj/item/weapons/melee/clubs/flashlight.dmi'
+	crafting_id = "flashlight"
 
 	damage_type = /damagetype/item/light
 	damage_type_on = /damagetype/item/light
@@ -103,6 +106,7 @@
 	name = "maglight"
 	desc = "A robust flashlight."
 	icon = 'icons/obj/item/weapons/melee/clubs/maglight.dmi'
+	crafting_id = "maglight"
 
 	damage_type = /damagetype/item/medium
 	damage_type_on = /damagetype/item/medium
@@ -123,6 +127,7 @@
 /obj/item/weapon/melee/torch/tinea_luxor
 	name = "tinea_luxor light"
 	desc = "You shouldn't be seeing this."
+	crafting_id = "tinealuxor"
 	desired_light_range = VIEW_RANGE*0.5
 	desired_light_power = 0.5
 	desired_light_color = "#E3FF9E"

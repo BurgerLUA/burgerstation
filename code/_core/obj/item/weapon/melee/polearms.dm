@@ -5,6 +5,7 @@
 	desc_extended = "A heavy two handed greatmace with piercing spikes jutting from the sides, and a long spearpoint on the end."
 	icon = 'icons/obj/item/weapons/melee/polearms/goedendag.dmi'
 	damage_type = /damagetype/melee/club/goedendag
+	crafting_id = "goedendag"
 
 	can_wield = TRUE
 	wield_only = TRUE

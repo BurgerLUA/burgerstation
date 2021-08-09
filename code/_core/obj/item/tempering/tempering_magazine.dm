@@ -11,6 +11,7 @@
 	desc = "Have you tried just putting more bullets in it?"
 	desc_extended = "A tightly controlled bluespace pocket condenser. Fits to expand inside a magazine, and increases capacity 5x for that magazine"
 	icon_state = "bluespacer"
+	crafting_id = "bluespacer"
 
 	temper_whitelist = /obj/item/magazine
 
@@ -38,6 +39,7 @@
 	desc = "Not the fastest enhcantment ever, but it works"
 	desc_extended = "Eldritch forces will ensure your magazine refills over time, in exchange for... a fat stack of credits?"
 	icon_state = "mag_enchant"
+	crafting_id = "endlessbullet"
 
 	temper_whitelist = /obj/item/magazine
 
@@ -65,6 +67,7 @@
 	desc = "Get your gun to shoot spells! Terms and conditions apply. Spells revert to normal bullets upon sleeping."
 	desc_extended = "Use this on a full magazine to change out your bullets for magic projectiles."
 	icon_state = "mag_enchant"
+	crafting_id = "spellswappervanilla"
 
 	temper_whitelist = /obj/item/magazine
 
@@ -100,6 +103,7 @@
 	name = "SpellSwapper - Magic Missile"
 	desc_extended = "Use this on a full magazine to trade the bullets for Magic Missiles. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "magic_missile"
+	crafting_id = "spellswappermagicmissile"
 
 	new_projectile = /obj/projectile/magic/magic_missile
 	new_damage_type = /damagetype/ranged/magic/magic_missile
@@ -109,6 +113,7 @@
 	name = "SpellSwapper - Chaos Orb"
 	desc_extended = "Use this on a full magazine to trade the bullets for Chaos Orbs. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "chaos"
+	crafting_id = "spellswapperchaosorb"
 
 	new_projectile = /obj/projectile/magic/chaos
 	new_damage_type = /damagetype/ranged/magic/chaos
@@ -118,6 +123,7 @@
 	name = "SpellSwapper - Fireball"
 	desc_extended = "Use this on a full magazine to trade the bullets for Fireball. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "fireball"
+	crafting_id = "spellswapperfireball"
 
 	new_projectile = /obj/projectile/magic/fireball
 	new_damage_type = /damagetype/ranged/magic/fireball
@@ -127,6 +133,7 @@
 	name = "SpellSwapper - Flame"
 	desc_extended = "Use this on a full magazine to trade the bullets for Flame Bolts. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "flame"
+	crafting_id = "spellswapperflame"
 
 	new_projectile = /obj/projectile/magic/lesser_fire
 	new_damage_type = /damagetype/ranged/magic/flame
@@ -136,6 +143,7 @@
 	name = "SpellSwapper - Frost"
 	desc_extended = "Use this on a full magazine to trade the bullets for Frost Bolts. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "frost"
+	crafting_id = "spellswapperfrost"
 
 	new_projectile = /obj/projectile/magic/frost
 	new_damage_type = /damagetype/ranged/magic/frost
@@ -145,6 +153,7 @@
 	name = "SpellSwapper - ArcBlade"
 	desc_extended = "Use this on a full magazine to trade the bullets for ArcBlades. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "arcblade"
+	crafting_id = "spellswapperarcblade"
 
 	new_projectile = /obj/projectile/magic/arcblade
 	new_damage_type = /damagetype/ranged/magic/arcblade
@@ -154,6 +163,7 @@
 	name = "SpellSwapper - Tesla"
 	desc_extended = "Use this on a full magazine to trade the bullets for Tesla Balls. Brought to you by The Demon Prince of Hot Lead."
 	icon_state = "tesla"
+	crafting_id = "spellswappertesla"
 
 	new_projectile = /obj/projectile/magic/tesla
 	new_damage_type = /damagetype/ranged/magic/tesla

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_sniper.dmi'
 	icon_state = "inventory"
 	value = 1200
+	crafting_id = "vintorez"
 
 	shoot_delay = 3
 

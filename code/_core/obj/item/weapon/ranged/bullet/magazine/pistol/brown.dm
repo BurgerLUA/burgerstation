@@ -5,6 +5,7 @@
 	value = 650
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1.25
+	crafting_id = "brown"
 
 	movement_spread_base = 0.0075
 	inaccuracy_modifier = 0.5
@@ -69,6 +70,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod
 	name = ".40 Brown MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/40_2.dmi'
+	crafting_id = "brown_mod"
 
 	shoot_delay = 1.15
 

@@ -3,6 +3,7 @@
 	desc = "We can't expect God to do all the work."
 	desc_extended = "The tool to carry out God's will."
 	value = 2000
+	crafting_id = "holym1911"
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'
 	shoot_delay = 3

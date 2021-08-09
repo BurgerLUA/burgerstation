@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/melee/clubs/stunbaton.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 	damage_type_on = /damagetype/melee/club/stunbaton/on
+	crafting_id = "stunbaton"
 
 	value = 50
 

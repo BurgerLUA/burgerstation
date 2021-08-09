@@ -4,7 +4,7 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots unholy tendrils that spread cursed ground."
 	icon_state = "damage"
 	color = "#7F0000"
-
+	crafting_id = "cult"
 	cost_mana = 15
 	shoot_delay = 10
 

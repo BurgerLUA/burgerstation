@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/50.dmi'
 	icon_state = "inventory"
 	value = 5000
+	crafting_id = "bfr"
 
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 20

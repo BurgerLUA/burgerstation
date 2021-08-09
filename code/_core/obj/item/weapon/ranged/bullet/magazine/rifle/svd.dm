@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_snipe.dmi'
 	icon_state = "inventory"
 	value = 1800
+	crafting_id = "dragunov"
 
 	shoot_delay = 6
 

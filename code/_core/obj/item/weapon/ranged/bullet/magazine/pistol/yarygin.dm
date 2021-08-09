@@ -4,6 +4,7 @@
 	desc_extended = "Russian-produced semiautomatic 9x19 pistol, a service weapon of the Russian army, special forces and other defense and law enforcement agencies. Comes with internal modification which allows it to shoot quick bursts of two bullets, similarly to AN-94."
 	icon = 'icons/obj/item/weapons/ranged/pistol/yarygin.dmi'
 	icon_state = "inventory"
+	crafting_id = "mp443"
 	value = 200
 
 	shoot_delay = 1.5

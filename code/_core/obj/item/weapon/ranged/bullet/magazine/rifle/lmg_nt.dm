@@ -4,6 +4,7 @@
 	desc_extended = "An extremely pricy 7.62mm Light Machine Gun that was originally inteded for use in mounted placements is now available for use in combat situations."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_lmg.dmi'
 	icon_state = "inventory"
+	crafting_id = "hlmg_nt"
 
 	value = 4000
 

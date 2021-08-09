@@ -7,6 +7,7 @@
 	shoot_delay = 2
 	view_punch = 2
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
+	crafting_id = "wasp"
 
 	override_icon_state = TRUE
 	automatic = TRUE

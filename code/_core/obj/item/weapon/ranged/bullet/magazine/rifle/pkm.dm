@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_lmg.dmi'
 	icon_state = "inventory"
 	value = 4000
+	crafting_id = "pkm"
 
 	shoot_delay = 1.75
 

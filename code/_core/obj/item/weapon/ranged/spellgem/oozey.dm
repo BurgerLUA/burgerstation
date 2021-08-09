@@ -3,7 +3,7 @@
 	desc = "The source of all... lead?"
 	desc_extended = "Enunciation is very important. This spell is often learned by young mages accidentally, intending to creas"
 	icon_state = "damage"
-
+	crafting_id = "oozey"
 	cost_mana = 8
 	shoot_delay = 1.5
 

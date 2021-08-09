@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
 	icon_state = "inventory"
 	value = 1200
+	crafting_id = "thumper"
 
 	shoot_delay = 20
 

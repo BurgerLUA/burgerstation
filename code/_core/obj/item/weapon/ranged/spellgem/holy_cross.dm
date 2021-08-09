@@ -3,7 +3,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a holy cross that deals extra damage to unholy creatures and causes them to explode on death."
 	icon_state = "damage"
-
+	crafting_id = "holycross"
 	cost_mana = 30
 	shoot_delay = 20
 

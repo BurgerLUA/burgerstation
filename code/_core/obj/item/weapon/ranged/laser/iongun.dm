@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/ion.dmi'
 	rarity = RARITY_RARE
 	value = 3000
+	crafting_id = "ion"
 
 	projectile = /obj/projectile/bullet/laser/ion
 	ranged_damage_type = /damagetype/ranged/laser/ion

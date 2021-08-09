@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/bison.dmi'
 	icon_state = "inventory"
 	value = 2000
+	crafting_id = "bizon"
 
 	shoot_delay = 1.25
 

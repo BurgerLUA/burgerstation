@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/minigun.dmi'
 	icon_state = "inventory"
 	value = 10000
+	crafting_id = "gatgun"
 
 	shoot_delay = 1.25 //Oh god oh fuck
 

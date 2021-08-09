@@ -4,6 +4,7 @@
 	desc_extended = "A very tactical semi automatic assault rifle used primarily by serious mercenaries that rivals NanoTrasen's SA-AR."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/merc.dmi'
 	icon_state = "inventory"
+	crafting_id = "mgs5"
 	value = 3500
 
 	shoot_delay = 1

@@ -4,6 +4,7 @@
 	desc_extended = "A lightweight 12 gauge auto-cycling semi-automatic shotgun designed to clear rooms very fast without the effort of pumping; except when you load a new round in for the first time. Has an internal magazine size of 5."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/semi.dmi'
 	icon_state = "inventory"
+	crafting_id = "sem"
 
 	value = 3000
 

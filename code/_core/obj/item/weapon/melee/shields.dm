@@ -3,6 +3,7 @@
 	desc = "For the basic."
 	desc_extended = "Good for blocking melee attacks."
 	icon = 'icons/obj/item/shields/wooden.dmi'
+	crafting_id = "woodshield"
 	damage_type = /damagetype/melee/club/shield
 
 	block_defense = list(
@@ -45,6 +46,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/ballistic
 	name = "ballistic shield"
 	icon = 'icons/obj/item/shields/ballistic.dmi'
+	crafting_id = "ballisticshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.75,
@@ -60,6 +62,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/glass
 	name = "magic glass shield"
 	icon = 'icons/obj/item/shields/glass.dmi'
+	crafting_id = "magicshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.5,
@@ -73,6 +76,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/buckler
 	name = "hardened steel buckler"
 	icon = 'icons/obj/item/shields/buckler.dmi'
+	crafting_id = "buckler"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.9,
@@ -90,6 +94,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/great
 	name = "iron great shield"
 	icon = 'icons/obj/item/shields/great.dmi'
+	crafting_id = "greatshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 1,
@@ -107,6 +112,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/heartstone
 	name = "heartstone shield"
 	icon = 'icons/obj/item/shields/heartstone.dmi'
+	crafting_id = "heartstoneshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.5,
@@ -125,6 +131,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/holy_forest
 	name = "holy forest shield"
 	icon = 'icons/obj/item/shields/holy_forest.dmi'
+	crafting_id = "holyforestshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.5,
@@ -144,6 +151,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/leather
 	name = "leather-steel shield"
 	icon = 'icons/obj/item/shields/leather.dmi'
+	crafting_id = "leathersteelshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.5,
@@ -161,6 +169,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/mirror
 	name = "great mirror shield"
 	icon = 'icons/obj/item/shields/mirror.dmi'
+	crafting_id = "greatmirrorshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.5,
@@ -178,6 +187,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/redstar
 	name = "russian redstar shield"
 	icon = 'icons/obj/item/shields/redstar.dmi'
+	crafting_id = "redstarshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.85,
@@ -195,6 +205,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/spider
 	name = "red spider shield"
 	icon = 'icons/obj/item/shields/spider.dmi'
+	crafting_id = "redspidershield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.8,
@@ -212,6 +223,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/sun
 	name = "sun shield"
 	icon = 'icons/obj/item/shields/sun.dmi'
+	crafting_id = "sunshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.5,
@@ -229,6 +241,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/target
 	name = "iron target shield"
 	icon = 'icons/obj/item/shields/target.dmi'
+	crafting_id = "targetshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.9,
@@ -246,6 +259,7 @@ var/global/list/shield_price_mul = list(
 /obj/item/weapon/melee/shield/whitewood
 	name = "whitewood magic shield"
 	icon = 'icons/obj/item/shields/whitewood.dmi'
+	crafting_id = "whitewoodshield"
 
 	block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.75,

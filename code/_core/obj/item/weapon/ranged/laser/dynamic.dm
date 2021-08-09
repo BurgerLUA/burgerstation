@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/dynamic_revolver.dmi'
 	icon_state = "inventory"
 	value = 700
+	crafting_id = "dynamic"
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine

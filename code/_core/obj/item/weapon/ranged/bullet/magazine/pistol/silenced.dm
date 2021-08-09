@@ -4,6 +4,7 @@
 	desc = "Does not come with traq rounds."
 	desc_extended = "The ultimate Syndicate Assassin pistol. While chambered in 8mm, it can still pack a decent punch to unarmored targets."
 	icon = 'icons/obj/items/weapons/ranged/pistol/8mm.dmi'
+	crafting_id = "stealth"
 	value = 90
 	shoot_delay = 4
 

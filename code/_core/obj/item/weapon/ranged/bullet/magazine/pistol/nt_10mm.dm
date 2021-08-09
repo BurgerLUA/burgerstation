@@ -4,6 +4,7 @@
 	desc_extended = "The 10mm NanoTrasen Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_nt.dmi'
 	icon_state = "inventory"
+	crafting_id = "penumbra"
 	value = 500
 
 	shoot_delay = 3
@@ -75,6 +76,7 @@
 	desc = "The ultimate pistol."
 	desc_extended = "An extremely powerful prototype of the 10mm NT Penumbra Pistol, before everything was simplified for factory production. Fires 3 round bursts at an absurd firerate. They don't make them like they used to."
 	icon = 'icons/obj/item/weapons/ranged/pistol/robo.dmi'
+	crafting_id = "umbra"
 
 	value = 1200
 

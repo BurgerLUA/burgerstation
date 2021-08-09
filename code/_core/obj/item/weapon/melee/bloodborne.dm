@@ -2,6 +2,7 @@
 	name = "\improper cleaver saw"
 	desc = "A poorly made cleaving saw."
 	desc_extended = "A jagged saw that barely holds together. Certainly more dangerous to the user than their enemies."
+	crafting_id = "cleaversaw"
 
 	icon = 'icons/obj/item/weapons/melee/swords/cleaver_saw.dmi'
 
@@ -16,6 +17,7 @@
 	name = "\improper cleaver blade"
 	desc = "A crude blade. Nothing more."
 	desc_extended = "An old blade that struggles to remain attached to its wooden handle. Anyone with pride wouldn't be caught dead using this."
+	crafting_id = "cleaverblade"
 
 	icon = 'icons/obj/item/weapons/melee/swords/cleaver_blade.dmi'
 
@@ -30,6 +32,7 @@
 	name = "\improper uncoiled sword"
 	desc = "A bland, sturdy sword."
 	desc_extended = "An average appearance for an average blade."
+	crafting_id = "uncoiledsword"
 
 	icon = 'icons/obj/item/weapons/melee/swords/uncoiled.dmi'
 

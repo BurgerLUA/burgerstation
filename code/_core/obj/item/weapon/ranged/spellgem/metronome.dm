@@ -3,6 +3,7 @@
 	desc = "The source of all... everything, I guess"
 	desc_extended = "Soupy the Bozomancer spent a decade crafting the perfect spell, enabling all spells at any time from a single gem. Upon perfecting his masterpiece, he resigned his position as leader of the Syndicate to run Donk Co."
 	icon_state = "damage"
+	crafting_id = "allpurpose"
 
 	cost_mana = 7
 	shoot_delay = 1.5

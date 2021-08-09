@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/captain.dmi'
 	rarity = RARITY_MYTHICAL
 	value = 4000
+	crafting_id = "captainlas"
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine

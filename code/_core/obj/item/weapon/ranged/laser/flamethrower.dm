@@ -6,6 +6,7 @@
 	rarity = RARITY_UNCOMMON
 	value = 0 //This is, after all, part of the Flamethrower Pack
 	value_burgerbux = 1
+	crafting_id = "flamethrower"
 
 	shoot_sounds = list('sound/weapons/magic/fractal.ogg') //sounds more fire-y
 

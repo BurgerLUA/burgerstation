@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_old.dmi'
 	icon_state = "inventory"
 	value = 800
+	crafting_id = "svt40"
 
 	shoot_delay = 6
 

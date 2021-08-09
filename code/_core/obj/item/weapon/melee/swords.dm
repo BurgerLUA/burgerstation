@@ -8,6 +8,7 @@
 	desc_extended = "A cavalry sabre that was often used as a weapon by non-commissioned officers of the Sol Army before being replaced by energy swords, nowadays it's used as a dress decoration more than anything."
 
 	icon = 'icons/obj/item/weapons/melee/swords/sabre.dmi'
+	crafting_id = "sabre"
 
 	icon_state_worn = "worn"
 
@@ -27,6 +28,7 @@
 	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe. It is one of the most common weapons in The Realm, as it is a un-cursed version of the unholy cult blade."
 
 	icon = 'icons/obj/item/weapons/melee/swords/claymore.dmi'
+	crafting_id = "claymore"
 
 	damage_type = /damagetype/melee/sword/claymore
 
@@ -44,6 +46,7 @@
 	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe, now cursed with Nar'sie's magic."
 
 	damage_type = /damagetype/melee/sword/claymore/cult
+	crafting_id = "cult"
 
 	size = SIZE_3
 	weight = 6
@@ -57,6 +60,7 @@
 	icon = 'icons/obj/item/weapons/melee/swords/spear.dmi'
 	damage_type = /damagetype/melee/spear/basic/
 	damage_type_thrown = /damagetype/melee/spear/basic/thrown
+	crafting_id = "shortspear"
 
 	size = SIZE_4
 
@@ -72,6 +76,7 @@
 	desc_extended = "A very sharp brass alloy spear. Doesn't do that much damage when thrown."
 	icon = 'icons/obj/item/weapons/melee/swords/ratvar.dmi'
 	damage_type = /damagetype/melee/spear/ratvar/
+	crafting_id = "clockworkspear"
 
 	size = SIZE_4
 
@@ -88,6 +93,7 @@
 	desc_extended = "A steel sword that makes up for it's simplicity by being heavy and huge, the Zweihander is a fearsome sight only used by PMCs with no self-regard whatsoever."
 	icon = 'icons/obj/item/weapons/melee/swords/zweihander.dmi'
 	damage_type = /damagetype/melee/sword/zweihander
+	crafting_id = "zweihander"
 
 	size = SIZE_5
 
@@ -108,6 +114,7 @@
 	desc_extended = "A standard curved sword. Capable of fast swings, and when maintained it can be exceptionally sharp."
 
 	icon = 'icons/obj/item/weapons/melee/swords/curvedsword.dmi'
+	crafting_id = "curvedsword"
 
 	dan_mode = TRUE
 
@@ -124,6 +131,7 @@
 	desc_extended = "A straight katana-like sword, with a curved starting near the end. Incredibly sharp."
 
 	icon = 'icons/obj/item/weapons/melee/swords/skana.dmi'
+	crafting_id = "skana"
 
 	dan_mode = TRUE
 
@@ -140,6 +148,7 @@
 	desc_extended = "A light gladius with a bronze hilt and steel blade."
 
 	icon = 'icons/obj/item/weapons/melee/swords/gladius.dmi'
+	crafting_id = "gladius"
 
 	dan_mode = TRUE
 
@@ -154,6 +163,7 @@
 	name = "allium"
 	desc = "An allium made of copper."
 	desc_extended = "A light copper allium, better for thrusting than a gladius."
+	crafting_id = "allium"
 
 	icon = 'icons/obj/item/weapons/melee/swords/allium.dmi'
 

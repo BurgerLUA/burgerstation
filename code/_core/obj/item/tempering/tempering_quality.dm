@@ -42,7 +42,7 @@
 	desc = "Stay sharp!"
 	desc_extended = "A special whetstone that improves the quality of a melee weapon by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%.  Even works on non-sharp objects, somehow."
 	icon_state = "quality_melee"
-
+	crafting_id = "whetstone"
 	temper_whitelist = /obj/item/weapon/melee
 
 	value = 500
@@ -52,6 +52,7 @@
 	desc = "Stay classy!"
 	desc_extended = "A large patch of durathread that improves the quality of clothing by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
 	icon_state = "quality_clothing"
+	crafting_id = "durathread"
 
 	temper_whitelist = /obj/item/clothing
 
@@ -62,6 +63,7 @@
 	desc = "Stay on top of things."
 	desc_extended = "A special kit of special screws, platings, and mechanical parts that improves the quality of guns by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
 	icon_state = "quality_ranged"
+	crafting_id = "tinkerbox"
 
 	temper_whitelist = /obj/item/weapon/ranged/bullet
 
@@ -72,6 +74,7 @@
 	desc = "Help my gun needs cleaning."
 	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 100%. Has unlimited uses."
 	icon_state = "gun_cleaning"
+	crafting_id = "cleaningkit"
 
 	temper_whitelist = /obj/item/weapon/ranged
 
@@ -90,6 +93,7 @@
 	desc = "Stay on top of things."
 	desc_extended = "A fragile, yet magical gem that improves the quality of spellgems by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
 	icon_state = "quality_magic"
+	crafting_id = "magiciansgem"
 
 	temper_whitelist = /obj/item/weapon/ranged/spellgem
 
@@ -100,6 +104,7 @@
 	desc = "Stay on top of things."
 	desc_extended = "A rare focusing crystal that can improve the quality of energy weapons by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
 	icon_state = "quality_energy"
+	crafting_id = "focusingcrystal"
 
 	temper_whitelist = /obj/item/weapon/ranged/energy
 

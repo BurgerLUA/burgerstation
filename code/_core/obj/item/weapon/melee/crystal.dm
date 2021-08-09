@@ -4,6 +4,7 @@
 	icon_state = "inventory"
 	desc = "A cluster of crystals used in Crystal Guardian Conjuration."
 	desc_extended = "A glimmering crystal that has been used in conjuration by the Crystal Guardians since their origin."
+	crafting_id = "conjuringcrystal"
 	var/shape = 0
 	damage_type = /damagetype/melee/sword/crystal
 	drop_sound = 'sound/items/drop/knife.ogg'

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/9mm_2.dmi'
 	icon_state = "inventory"
 	value = 2200
+	crafting_id = "nanotech"
 
 	damage_mod = 1.2
 

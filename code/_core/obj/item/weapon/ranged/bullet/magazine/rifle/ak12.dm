@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle_2.dmi'
 	icon_state = "inventory"
 	value = 2000
+	crafting_id = "ak12"
 
 	shoot_delay = 1.75
 

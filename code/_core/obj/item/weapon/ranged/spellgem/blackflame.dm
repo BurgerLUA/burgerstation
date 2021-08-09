@@ -3,6 +3,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a single high-damage unholy fireball."
 	icon_state = "damage"
+	crafting_id = "blackflame"
 
 	cost_mana = 40
 	shoot_delay = 20

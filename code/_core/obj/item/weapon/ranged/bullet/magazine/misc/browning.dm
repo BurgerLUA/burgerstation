@@ -4,6 +4,7 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/mech.dmi'
 	icon_state = "mech_ballistic"
+	crafting_id = "browning"
 
 	var/obj/structure/interactive/mountable/browning/linked_gun
 

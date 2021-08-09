@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
 	value = 2200
+	crafting_id = "akm"
 
 	shoot_delay = 2
 
@@ -86,6 +87,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_carbine.dmi'
 	icon_state = "inventory"
 	value = 1800
+	crafting_id = "akmsu"
 
 	shoot_delay = 1.5
 

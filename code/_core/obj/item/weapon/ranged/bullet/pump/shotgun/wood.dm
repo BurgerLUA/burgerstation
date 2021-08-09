@@ -4,6 +4,7 @@
 	desc_extended = "A classic pump action shotgun with the stock and barrel shortened. Most commonly used by hunters, but has been seen on Security and PMCs on a budget as well."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/regular.dmi'
 	icon_state = "inventory"
+	crafting_id = "civillian"
 
 	value = 800
 
@@ -77,6 +78,7 @@
 	heat_max = 0
 	bullet_count_max = 6
 	weight = 12
+	crafting_id = "thatshotgun"
 
 	dan_mode = TRUE
 

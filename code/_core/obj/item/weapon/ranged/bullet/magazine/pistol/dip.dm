@@ -6,6 +6,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/dip_gun.dmi'
 	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
+	crafting_id = "dip"
 
 	movement_spread_base = 0.001
 	inaccuracy_modifier = 1

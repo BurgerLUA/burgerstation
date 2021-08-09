@@ -4,6 +4,7 @@
 	desc = "Die, Monster!"
 	desc_extended = "A holy whip, said to have been passed down generations."
 	icon = 'icons/obj/item/weapons/melee/clubs/whip.dmi'
+	crafting_id = "vampirekiller"
 
 	damage_type = /damagetype/melee/club/vampire_killer
 

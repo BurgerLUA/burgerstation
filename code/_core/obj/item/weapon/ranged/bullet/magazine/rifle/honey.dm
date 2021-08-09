@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/honey.dmi'
 	icon_state = "inventory"
 	value = 2300
+	crafting_id = "meadsquirrel"
 
 	shoot_delay = 1.9
 

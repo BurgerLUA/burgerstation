@@ -3,7 +3,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a target seeking magic missile ."
 	icon_state = "damage"
-
+	crafting_id = "magicmissile"
 	cost_mana = 18
 	shoot_delay = 10
 

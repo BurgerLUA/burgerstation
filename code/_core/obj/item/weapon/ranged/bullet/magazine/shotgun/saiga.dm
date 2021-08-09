@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/saiga.dmi'
 	icon_state = "inventory"
 	value = 2700
+	crafting_id = "saiga"
 
 	shoot_delay = 3
 

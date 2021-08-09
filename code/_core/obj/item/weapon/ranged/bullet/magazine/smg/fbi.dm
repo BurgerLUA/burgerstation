@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm.dmi'
 	icon_state = "inventory"
 	value = 1600
+	crafting_id = "fbi"
 
 	shoot_delay = 1.6
 
@@ -78,7 +79,7 @@
 	name = "10mm NT-FBI MK2"
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_2.dmi'
 	desc_extended = "The heavy kick of this SMG is only somewhat offset by its advanced recoil compensation mechanism. Perfect for when you need the power of a Magnum revolver in full-auto. This variant has a heavier design which helps with cooling."
-
+	crafting_id = "fbi_mk2"
 	heat_max = 0.06
 
 	value = 1900

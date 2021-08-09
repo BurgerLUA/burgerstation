@@ -4,6 +4,7 @@
 	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
+	crafting_id = "sabre"
 	value = 700
 
 	shoot_delay = 6
@@ -76,6 +77,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_mod.dmi'
 	desc_extended = "A modded variant very powerful semiautomatic pistol commonly used by the most elite high ranking Syndicate Operatives. \
 	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through other means."
+	crafting_id = "sabre_mod"
 
 	shoot_delay = 2
 

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia.dmi'
 	icon_state = "inventory"
 	value = 500
+	crafting_id = "ak13"
 
 	shoot_delay = 3
 

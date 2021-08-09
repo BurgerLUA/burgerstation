@@ -3,7 +3,7 @@
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a short stream of lightning."
 	icon_state = "damage"
-
+	crafting_id = "shock"
 	shoot_delay = 5
 
 	bullet_count = 1

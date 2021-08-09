@@ -5,6 +5,7 @@ obj/item/weapon/unarmed/brass_knuckles
 	desc_extended = "A large piece of brass molded to fit around your fist. Delivers an extra punch when attacking, but makes you less agile."
 
 	icon = 'icons/obj/item/weapons/unarmed/brass_knuckles.dmi'
+	crafting_id = "brassknuckles"
 
 	damage_type = /damagetype/unarmed/brass
 
@@ -32,6 +33,7 @@ obj/item/weapon/unarmed/brass_knuckles/mod
 	desc_extended = "A large piece of brass molded to fit around your fist. Delivers an extra punch when attacking, but makes you less agile. This one is spiked, and is especially deadly."
 
 	icon = 'icons/obj/item/weapons/unarmed/spiked_knuckles.dmi'
+	crafting_id = "spikedknuckles"
 
 	damage_type = /damagetype/unarmed/brass/spiked
 

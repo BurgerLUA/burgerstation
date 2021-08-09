@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/tungsten.dmi'
 	icon_state = "inventory"
 	shoot_delay = 1
+	crafting_id = "tungstencarbine"
 
 	value = 1800
 

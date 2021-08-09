@@ -3,6 +3,7 @@
 	desc = "Who needs medicine when you have PASSIVE ARCANE?"
 	desc_extended = "A glowing magical staff that passively radiates health to all nearby living beings, except the caster, when activated. Also makes for a good blunt force weapon."
 	rarity = RARITY_RARE
+	crafting_id = "staffofhealing"
 
 	icon = 'icons/obj/item/weapons/melee/clubs/staff_of_healing.dmi'
 

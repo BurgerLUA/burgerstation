@@ -5,6 +5,7 @@
 	icon_state = "damage"
 	cost_mana = 16
 	shoot_delay = 15
+	crafting_id = "lightningbolt"
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE - 1

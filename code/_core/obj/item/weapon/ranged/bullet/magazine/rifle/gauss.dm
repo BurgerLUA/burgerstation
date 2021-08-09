@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss.dmi'
 	icon_state = "inventory"
 	value = 5000
+	crafting_id = "gauss"
 
 	shoot_delay = 20
 
@@ -65,6 +66,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
 	rarity = RARITY_MYTHICAL
+	crafting_id = "gauss_carbine"
 	value = 15000
 
 	shoot_delay = 2

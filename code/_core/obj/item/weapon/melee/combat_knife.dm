@@ -3,6 +3,7 @@
 	desc = "For professionals."
 	desc_extended = "A high quality combat knife designed to seriously fuck the other person's day up."
 	icon = 'icons/obj/item/weapons/melee/swords/combat_knife.dmi'
+	crafting_id = "tacknife"
 
 	damage_type = /damagetype/melee/sword/combat_knife
 

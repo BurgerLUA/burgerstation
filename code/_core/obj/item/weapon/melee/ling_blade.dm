@@ -5,6 +5,7 @@
 	desc_extended = "A great weapon, but gross as hell."
 	icon = 'icons/obj/item/weapons/melee/swords/arm_blade.dmi'
 	damage_type = /damagetype/melee/sword/armblade
+	crafting_id = "fleshblade"
 
 	value = -1
 	value_burgerbux = 1

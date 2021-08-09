@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/45_2.dmi'
 	icon_state = "inventory"
 	value = 1200
+	crafting_id = "c20r"
 
 	shoot_delay = 1.5
 

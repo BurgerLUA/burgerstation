@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/power.dmi'
 	icon_state = "inventory"
 	value = 1800
+	crafting_id = "tribarrel"
 
 	shoot_delay = 2
 

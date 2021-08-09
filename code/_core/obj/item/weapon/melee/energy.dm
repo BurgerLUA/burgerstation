@@ -99,6 +99,7 @@
 	desc = "A blade made out of ENERGY. Please do not sue."
 	desc_extended = "A lightweight energy blade that has become the standard issue melee pretty much everywhere. It's main issue is that it's not usable as a bayonet due to it's lack of weight and it's complex mechanisms."
 	icon = 'icons/obj/item/weapons/melee/laser/sword.dmi'
+	crafting_id = "energysword"
 
 	value = 400
 
@@ -238,6 +239,7 @@
 	desc = "A large black steel straightsword with a decorated hilt."
 	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
 	icon = 'icons/obj/item/weapons/melee/swords/plightbringer.dmi'
+	crafting_id = "plightbringer"
 
 	value = 2500
 	rarity = RARITY_RARE

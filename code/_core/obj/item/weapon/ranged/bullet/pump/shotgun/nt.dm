@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/nt.dmi'
 	icon_state = "inventory"
 	value = 1700
+	crafting_id = "masterstroke"
 
 	shoot_delay = 4
 

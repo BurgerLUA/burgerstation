@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 	value = 400
+	crafting_id = "boomstick"
 
 	shoot_delay = 1
 

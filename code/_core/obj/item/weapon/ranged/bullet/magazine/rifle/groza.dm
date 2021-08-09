@@ -5,6 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_smg.dmi'
 	icon_state = "inventory"
 	value = 1700
+	crafting_id = "groza"
 
 	shoot_delay = 1.5
 
