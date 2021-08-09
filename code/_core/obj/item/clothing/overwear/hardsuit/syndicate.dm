@@ -80,6 +80,7 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)
 
 	size = SIZE_6
+	weight = 10 //Now the suit actually speeds you up.
 
 	value = 1200
 
