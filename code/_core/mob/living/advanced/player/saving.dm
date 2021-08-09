@@ -147,6 +147,10 @@
 					if(O.enable_skin && blend_data["skin_detail"])
 						O.add_blend("skin_detail", desired_color = blend_data["skin_detail"]["color"])
 				O.update_sprite()
+		if(!labeled_organs["implant_hand_left"])
+			add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
+		if(!labeled_organs["implant_head"])
+			add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
 	else
 		log_error("WARNING: INVALID SPECIES: [species]")

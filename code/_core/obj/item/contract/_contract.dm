@@ -37,7 +37,8 @@
 		qdel(src)
 	else
 		reward = new reward(src)
-		reward.quality = 200
+		if(!istype(reward,/obj/item/currency))
+			reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)
@@ -99,7 +100,7 @@
 
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
-	if(burgerbux_reward)
+	if(burgerbux_reward > 0)
 		P.to_chat(span("notice","You are awared \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
 		P.adjust_burgerbux(burgerbux_reward)
 	else
