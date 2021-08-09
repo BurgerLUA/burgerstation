@@ -99,11 +99,14 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	enable_chunk_clean = FALSE
 
+	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
 	FINALIZE(click_and_drag_icon)
 	last_autosave = world.time
+	all_players += src
 	return ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -126,10 +129,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	return TRUE
 
-/mob/living/advanced/player/Initialize()
-	. = ..()
-	all_players += src
-
 /mob/living/advanced/player/setup_name()
 
 	if(real_name == DEFAULT_NAME)
@@ -140,6 +139,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	return TRUE
 
 /mob/living/advanced/player/Destroy()
+
+	if(is_saving)
+		log_error("FATAL ERROR: Mob [src.get_debug_name()] was qdeleted while saving! Save errors expected!")
 
 	if(followers)
 		for(var/k in followers)

@@ -37,7 +37,8 @@
 		qdel(src)
 	else
 		reward = new reward(src)
-		reward.quality = 200
+		if(!istype(reward,/obj/item/currency))
+			reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)

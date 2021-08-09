@@ -146,6 +146,7 @@
 	return FALSE
 
 /obj/item/organ/Destroy()
+	color = "#000000"
 	attached_organ = null
 	attached_organs?.Cut()
 	return ..()
