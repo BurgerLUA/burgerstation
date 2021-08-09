@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/energy/fed/flamethrower //it's the only way to be sure
+/obj/item/weapon/ranged/energy/flamethrower //I sure hope this doesn't break anything. If it does, well... uhhhhhhhhh
 	name = "flamethrower"
 	desc = "W + M1"
 	desc_extended = "Bioweapons are fun, but they leave one hell of a mess. Why not make the cleanup fun too?"
@@ -7,17 +7,13 @@
 	value = 0 //This is, after all, part of the Flamethrower Pack
 	value_burgerbux = 1
 
-	shoot_sounds = list('sound/weapons/cutter/fire.ogg')
+	shoot_sounds = list('sound/weapons/magic/fractal.ogg') //sounds more fire-y
 
 	projectile = /obj/projectile/bullet/flamer
 	ranged_damage_type = /damagetype/ranged/laser/flamethrower
 
 	shoot_delay = 2
-	charge_cost = 1
-
-	charge_per_feed = 100
-	fed_item = /obj/item/crafting/ingredient/part/p_tank
-	feed_delay = 5
+	charge_cost = CELL_SIZE_BASIC / 400
 
 	projectile_speed = TILE_SIZE*0.3
 
@@ -28,4 +24,4 @@
 	can_wield = TRUE
 	wield_only = TRUE //sorting is hell
 
-	battery = /obj/item/powercell/dummy
+	battery = /obj/item/powercell/recharging //I'm sorry!

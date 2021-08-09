@@ -37,7 +37,8 @@
 		qdel(src)
 	else
 		reward = new reward(src)
-		reward.quality = 200
+		if(!istype(reward,/obj/item/currency))
+			reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)
@@ -100,10 +101,10 @@
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
 	if(burgerbux_reward)
-		P.to_chat(span("notice","You are awared \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
+		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
 		P.adjust_burgerbux(burgerbux_reward)
 	else
-		P.to_chat(span("notice","You are awared \the [reward.name] for completing the contract."))
+		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
 	drop_item(get_turf(P))
 	P.put_in_hands(reward)
 	reward = null //Just in case.
