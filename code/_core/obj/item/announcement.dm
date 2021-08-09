@@ -134,7 +134,7 @@ var/global/next_announcement = 0
 	title = "Declaration of Mutiny"
 	sender = "The Revolutionaries"
 	value = 500
-	sound_to_play = 'sound/alert/warning.ogg'
+	sound_to_play = 'sound/alert/rev_pda.ogg'
 
 /obj/item/announcement/rev/can_use(var/mob/caller)
 
