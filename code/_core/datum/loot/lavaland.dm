@@ -88,6 +88,7 @@
 /loot/lavaland/leaper
 	loot_table = list(
 		/obj/item/storage/blood_box/blood = 1,
+		/obj/item/storage/blood_box/witchunt = 1,
 		/obj/item/clothing/mask/heretic = 1,
 		/obj/item/weapon/ranged/spellgem/f50cal = 1,
 		/obj/item/tempering/magazine/spellswap/arcblade = 1,
