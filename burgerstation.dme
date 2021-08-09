@@ -1303,6 +1303,7 @@
 #include "code\_core\obj\item\clothing\uniform\clown.dm"
 #include "code\_core\obj\item\clothing\uniform\hop.dm"
 #include "code\_core\obj\item\clothing\uniform\hos.dm"
+#include "code\_core\obj\item\clothing\uniform\jumpsuits.dm"
 #include "code\_core\obj\item\clothing\uniform\miner.dm"
 #include "code\_core\obj\item\clothing\uniform\mummy.dm"
 #include "code\_core\obj\item\clothing\uniform\security.dm"
