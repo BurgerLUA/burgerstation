@@ -26,3 +26,6 @@
 	value = 1000
 
 	loyalty_tag = "NanoTrasen"
+
+/obj/item/clothing/overwear/hardsuit/mining/golem
+	loyalty_tag = "golem"
