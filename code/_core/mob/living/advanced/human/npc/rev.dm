@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/rev
 	name = "revolutionary soldier"
 	desc = "FOR THE REVOLUTION!"
-	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Suprisingly, they're not syndicate backed."
+	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Surprisingly, they're not syndicate backed."
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate/russian
 
