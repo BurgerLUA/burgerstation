@@ -106,7 +106,7 @@
 			continue
 		var/obj/item/organ/O = add_organ(o_type)
 		if(!O)
-			log_error("Invalid Organ: [o_type].")
+			log_error("WARNING: Invalid Organ: [o_type]!")
 			continue
 		if(loaded_data["organs"][id]["blend_data"])
 			O.set_blend_data(loaded_data["organs"][id]["blend_data"])
@@ -116,6 +116,44 @@
 					var/obj/hud/inventory/I = O.inventories[i]
 					I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
 		O.update_sprite()
+
+	//Organ checking
+	var/species/S = SPECIES(species)
+	if(S)
+		var/list/organ_list_to_use = list()
+		if(S.genderless || sex == MALE)
+			organ_list_to_use = S.spawning_organs_male
+		else
+			organ_list_to_use = S.spawning_organs_female
+		var/list/missing_organs = list()
+		for(var/organ_id in organ_list_to_use)
+			if(labeled_organs[organ_id])
+				continue
+			missing_organs += organ_list_to_use[organ_id]
+		if(length(missing_organs))
+			log_error("WARNING: [src.get_debug_name()] had [length(missing_organs)] missing organs when loading!")
+			to_chat(span("danger","WARNING: You had missing organs when loading, this is a result of save corruption. Please inform Burger on discord when you saved last and how you saved last with as much details as possible."))
+			var/list/blend_data = list()
+			if(labeled_organs[BODY_TORSO])
+				var/obj/item/organ/O = labeled_organs[BODY_TORSO]
+				blend_data = O.get_blend_data()
+			for(var/o_path in missing_organs)
+				var/obj/item/organ/O = add_organ(o_path)
+				if(length(blend_data))
+					if(O.enable_skin && blend_data["skin"])
+						O.add_blend("skin", desired_color = blend_data["skin"]["color"])
+					if(O.enable_skin && blend_data["skin_glow"])
+						O.add_blend("skin_glow", desired_color = blend_data["skin_glow"]["color"])
+					if(O.enable_skin && blend_data["skin_detail"])
+						O.add_blend("skin_detail", desired_color = blend_data["skin_detail"]["color"])
+				O.update_sprite()
+		if(!labeled_organs["implant_hand_left"])
+			add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
+		if(!labeled_organs["implant_head"])
+			add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+
+	else
+		log_error("WARNING: INVALID SPECIES: [species]")
 
 	if(do_teleport)
 		var/obj/marker/dev/D = locate() in world
@@ -140,6 +178,8 @@
 		update_all_blends()
 	else
 		update_all_blends() //butts
+
+	last_autosave = world.time
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
@@ -176,10 +216,10 @@
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[id]
-		try
-			final_organ_list[id] = O.save_item_data(save_inventory)
-		catch(var/exception/e)
-			log_error("get_mob_data:() [e] on [e.file]:[e.line]\n[e.desc]!")
+		if(!O)
+			log_error("WARNING: Organ [id] not found while saving! Save corruption possible!")
+			continue
+		final_organ_list[id] = O.save_item_data(save_inventory)
 	.["organs"] = final_organ_list
 
 	//Skills
@@ -197,3 +237,5 @@
 		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.chargen_max_level)
 		final_attribute_list[id] = desired_experience
 	.["attributes"] = final_attribute_list
+
+	last_autosave = world.time

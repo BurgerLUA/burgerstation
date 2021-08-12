@@ -40,8 +40,7 @@
 
 	defense_rating = list(
 		HOLY = -80,
-		DARK = 40,
-		ARCANE = 40,
+		ARCANE = 80,
 		BLADE = -60,
 		BLUNT = -60,
 		PIERCE = -60

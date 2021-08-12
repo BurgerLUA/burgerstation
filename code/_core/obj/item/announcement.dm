@@ -128,3 +128,23 @@ var/global/next_announcement = 0
 
 	return TRUE
 
+/obj/item/announcement/rev
+	desc_extended = "A one time use announcement system that sends a taunt to the crew. This one is for revolutionaries. Automatically signs your name in the message."
+	icon_state = "rev"
+	title = "Declaration of Mutiny"
+	sender = "The Revolutionaries"
+	value = 500
+	sound_to_play = 'sound/alert/rev_pda.ogg'
+
+/obj/item/announcement/rev/can_use(var/mob/caller)
+
+	if(!is_living(caller))
+		caller.to_chat(span("warning","You don't seem to know how to use this..."))
+		return FALSE
+
+	var/mob/living/L = caller
+	if(L.loyalty_tag != "Revolutionary")
+		L.to_chat(span("warning","You don't seem to know how to use this..."))
+		return FALSE
+
+	return TRUE

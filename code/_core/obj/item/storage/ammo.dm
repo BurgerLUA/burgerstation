@@ -1,6 +1,6 @@
 /obj/item/storage/ammo/
 	name = "ammo box"
-	desc = "Contains amoo"
+	desc = "Contains ammo."
 	icon = 'icons/obj/item/storage/ammo.dmi'
 	icon_state = "template"
 

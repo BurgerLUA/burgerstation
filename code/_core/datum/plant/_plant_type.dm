@@ -19,7 +19,7 @@
 
 	var/list/allowed_turfs = list(
 		/turf/simulated/floor/colored/dirt/soil = 0.25,
-		/turf/simulated/floor/colored/dirt/soil/rich = 1
+		/turf/simulated/floor/colored/dirt/soil/rich = 0.6
 	)
 
 	var/value = 100
@@ -251,7 +251,7 @@
 
 /plant_type/corn
 	name = "corn"
-	desc = "Corn is the smartest plant alive. It evolved Space Americans to grow it."
+	desc = "I know why you're growing this, you monster"
 	plant_icon_state = "corn"
 	harvest_icon_state = "corn"
 	seed_icon_state = "corn"
@@ -260,7 +260,7 @@
 		/reagent/nutrition/corn = 1,
 	)
 
-	typical_volume = 8
+	typical_volume = 10
 
 /plant_type/potato
 	name = "potato"

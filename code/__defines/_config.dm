@@ -15,8 +15,7 @@
 
 #define MAX_INVENTORY_X 8
 
-#define ITEM_DELETION_TIME_DROPPED 3000 //5 minutes
-#define ITEM_DELETION_TIME_NEW 600 //60 seconds.
+#define ROT_DELAY 3000 //300 seconds, 5 minutes
 
 //Enables/disables biome music.
 #define ENABLE_TRACKS FALSE

@@ -122,17 +122,20 @@ var/global/world_state = STATE_STARTING
 	save_deathboxes()
 	save_banks()
 	save_economy()
+	save_all_characters()
+	return TRUE
+
+/world/proc/save_all_characters()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)
 			continue
-		if(!P.allow_save)
-			continue
-		M.save_character(P,force = TRUE)
-		P.to_chat(span("notice","Your character was automatically saved."))
+		if(M.save_character(P,force = TRUE))
+			P.to_chat(span("notice","Your character was automatically saved."))
+		else
+			P.to_chat(span("danger","Save error! Your character could not be saved!"))
 		sleep(-1)
-	return TRUE
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
 

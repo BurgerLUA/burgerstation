@@ -4,6 +4,8 @@
 	stamina_base = 50
 	mana_base = 50
 
+	enable_chunk_clean = TRUE
+
 	vis_flags = VIS_INHERIT_ID
 
 	var/rarity = RARITY_COMMON
@@ -11,7 +13,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	icon_state = "directional"
 
@@ -156,9 +158,9 @@
 
 	var/list/status_effects = list()
 
-	acceleration_mod = 0.75
-	acceleration = 10
-	deceleration = 15
+	acceleration_mod = 0.5
+	acceleration = 5
+	deceleration = 10
 	use_momentum = TRUE
 
 	var/override_butcher = FALSE //Set to true for custom butcher contents.
@@ -333,6 +335,40 @@
 	QDEL_NULL(stand)
 
 	return ..()
+
+/mob/living/proc/try_rot()
+
+	if(!isturf(src.loc))
+		return FALSE
+
+	var/area/A = get_area(src)
+	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		return FALSE
+
+	var/turf/possible_turfs = list()
+	for(var/turf/simulated/T in view(VIEW_RANGE,src))
+		if(!T.organic)
+			continue
+		if(T.lightness <= 0)
+			continue
+		if(!T.is_safe_teleport())
+			continue
+		possible_turfs += T
+
+	if(!length(possible_turfs))
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		return FALSE
+
+	var/turf/chosen_turf = pick(possible_turfs)
+
+	var/mob/living/advanced/npc/beefman/B = new(chosen_turf)
+	INITIALIZE(B)
+	GENERATE(B)
+	FINALIZE(B)
+	B.ai.set_path_astar(src.loc)
+
+	return TRUE
 
 /mob/living/proc/bang(var/duration=100)
 

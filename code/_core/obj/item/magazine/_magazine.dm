@@ -96,7 +96,7 @@
 				stored_bullets += B
 
 	if (object_data["bluespaced"])
-		bullet_count_max *= 10
+		bullet_count_max *= 5
 		bluespaced = TRUE
 
 	if (object_data["regenerate"])
