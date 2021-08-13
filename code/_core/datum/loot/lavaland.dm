@@ -8,8 +8,11 @@
 		/obj/item/weapon/melee/sacred_flame = 1,
 		/obj/item/weapon/ranged/bow/ashen = 1,
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
+<<<<<<< Updated upstream
 		/obj/item/tempering/magazine/spellswap/fireball = 1,
 		/obj/item/tempering/magazine/spellswap/flame = 1,
+=======
+>>>>>>> Stashed changes
 		/obj/item/clothing/back/wings/angel/demon = 1
 	)
 
