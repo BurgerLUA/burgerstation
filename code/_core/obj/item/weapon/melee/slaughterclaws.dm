@@ -4,7 +4,7 @@
 	desc = "HELL IS EMPTY, BLOOD IS FUEL!"
 	desc_extended = "Use Harm intent to rip your enemies a new one! Use disarm intent to punch from afar! Click on a turf on grab intent to bloodcrawl! Then replenish your blood by Helping a corpse!"
 	var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks
-	icon = 'icons/obj/item/weapons/unarmed/powerfist.dmi' //TO DO: beg for a sprite
+	icon = 'icons/obj/item/weapons/unarmed/slaughterclaws.dmi' //thx Nzzy!
 	damage_type = /damagetype/unarmed/slaughter
 	var/damage_type_harm = /damagetype/unarmed/slaughter_heavy
 	size = SIZE_2

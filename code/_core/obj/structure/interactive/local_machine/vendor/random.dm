@@ -1,7 +1,7 @@
 /obj/structure/interactive/vending/random
 	name = "mystery vendor"
 	desc = "What a weird selection of things.."
-	desc_extended = "An old, suprisingly intact vendor that contains... what?"
+	desc_extended = "An old, surprisingly intact vendor that contains... what?"
 	icon_state = "sustenance"
 
 	stored_types = list()

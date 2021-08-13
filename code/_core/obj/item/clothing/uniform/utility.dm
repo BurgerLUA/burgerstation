@@ -4,7 +4,7 @@
 	desc_extended = "Black jumpsuit worn by low-ranking crewmembers. Looks cool."
 	icon = 'icons/obj/item/clothing/uniforms/util_gen.dmi'
 
-	item_slot = SLOT_TORSO | SLOT_GROIN
+	item_slot = SLOT_TORSO
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 

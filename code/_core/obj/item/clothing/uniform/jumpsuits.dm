@@ -7,7 +7,7 @@
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
-	item_slot = SLOT_TORSO | SLOT_GROIN
+	item_slot = SLOT_TORSO
 
 	polymorphic = TRUE
 

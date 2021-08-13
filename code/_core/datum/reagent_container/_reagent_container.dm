@@ -220,7 +220,9 @@
 		owner.update_sprite()
 
 	if(volume_current > volume_max)
-		splash(null,get_turf(owner),volume_current - volume_max)
+		var/difference = volume_current - volume_max
+		var/chosen_reagent = stored_reagents[length(stored_reagents)]
+		remove_reagent(chosen_reagent,CEILING(difference,1))
 
 	return TRUE
 

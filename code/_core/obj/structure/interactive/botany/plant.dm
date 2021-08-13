@@ -20,7 +20,7 @@
 
 	potency = 10
 	yield_max = 4
-	growth_speed = 0.6
+	growth_speed = 0.2
 
 /obj/structure/interactive/plant/sugarcane
 	plant_type = /plant_type/sugarcane
@@ -60,7 +60,7 @@
 
 	potency = 20
 	yield_max = 2
-	growth_speed = 0.4
+	growth_speed = 0.2
 
 /obj/structure/interactive/plant/glowshroom
 	plant_type = /plant_type/glowshroom
@@ -92,7 +92,7 @@
 
 	potency = 8
 	yield_max = 7
-	growth_speed = 0.4
+	growth_speed = 0.2
 
 	growth_max = 50
 	delete_after_harvest = FALSE
@@ -111,7 +111,7 @@
 
 	potency = 20
 	yield_max = 2
-	growth_speed = 0.4
+	growth_speed = 0.2
 
 /obj/structure/interactive/plant/cannabis/life
 	plant_type = /plant_type/cannabis/life
@@ -128,7 +128,7 @@
 
 	potency = 40
 	yield_max = 1
-	growth_speed = 0.5
+	growth_speed = 0.2
 
 
 /obj/structure/interactive/plant/polypore_mushroom
@@ -160,7 +160,7 @@
 
 	potency = 15
 	yield_max = 5
-	growth_speed = 0.9
+	growth_speed = 0.4
 
 	growth_max = 50
 	delete_after_harvest = FALSE
@@ -171,4 +171,4 @@
 
 	potency = 10
 	yield_max = 7
-	growth_speed = 0.9
+	growth_speed = 0.4
