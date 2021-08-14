@@ -5,20 +5,23 @@
 	. = list()
 
 	.["hello"] = list(
-		"Ah, greetings [P.real_name], I have heard quite about you. Perhaps you'd like to show me more of the type of person you are? I am offering #1... if you're up for it.",
-		"Blood Contracts"
+		"Ah, greetings [P.real_name], I have heard quite about you. Perhaps you'd like to show me more of the type of person you are? I am offering #1... if you're up for it. \
+		I also have several #2 if you're feeling particularly... Lucky.",
+		"Blood Contracts",
+		"Loot Boxes"
 	)
-
-	if("purchase a blood contract" in known_options)
-		.["hello"] |= "purchase a blood contract"
-		.["hello"] |= "turn in a blood contract"
-
 
 	.["Blood Contracts"] = list(
 		"It's simple: You #1 from me, and you go out there and complete it. You can then #2 to me and I will give you the reward inscribed in the blood contract. \
-		There is no risk of failing it... however if you lose the contract... well you lose your investment. Also, I do sell rare items that are no longer purchaseable by normal means, try your luck!",
+		There is no risk of failing it... however if you lose the contract... well you lose your investment.",
 		"purchase a blood contract",
 		"turn in a blood contract"
+	)
+
+	.["Loot Boxes"] = list(
+		"I can recognize a gambler from a miles away, heh. These loot boxes contain items that cannot be bought anywhere else in the world IF you're lucky, care to try?",
+		"purchase loot boxes"
+
 	)
 
 	.["purchase a blood contract"] = list(
@@ -26,6 +29,10 @@
 	)
 
 	.["turn in a blood contract"] = list(
+		"..."
+	)
+
+	.["purchase loot boxes"] = list(
 		"..."
 	)
 
@@ -40,7 +47,7 @@
 
 /dialogue/npc/contractor/set_topic(var/mob/living/advanced/player/P,var/topic)
 
-	if(topic == "purchase a blood contract")
+	if(topic == "purchase a blood contract" || "purchase loot boxes")
 		if(istype(P.dialogue_target,/mob/living/advanced/npc/unique/contractor))
 			var/mob/living/advanced/npc/unique/contractor/C = P.dialogue_target
 			if(C.stored_vendor)
