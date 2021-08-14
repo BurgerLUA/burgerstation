@@ -55,7 +55,7 @@
 	return ..()
 
 
-/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 
@@ -145,7 +145,7 @@
 			I.alpha = clamp((icing_amount/10)*225,100,255)
 			add_overlay(I)
 
-	
+
 /obj/item/container/food/dynamic/cake/update_icon()
 
 	if(last_cooked)

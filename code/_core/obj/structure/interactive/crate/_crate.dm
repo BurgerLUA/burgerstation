@@ -58,7 +58,7 @@
 		return TRUE
 
 
-/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(!open && damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		visible_message(span("warning","\The [src.name] shoots open!"))

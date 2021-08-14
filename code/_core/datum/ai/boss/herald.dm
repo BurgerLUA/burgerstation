@@ -18,8 +18,7 @@
 	if(owner_as_herald.health && owner_as_herald.health.health_current <= owner_as_herald.health.health_max*0.5)
 		owner_as_herald.movement_flags = MOVEMENT_RUNNING
 
-/ai/boss/herald/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
+/ai/boss/herald/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
 	if(!owner_as_herald.dead && owner_as_herald.next_teleport <= world.time && get_dist(owner_as_herald,attacker) >= 4)

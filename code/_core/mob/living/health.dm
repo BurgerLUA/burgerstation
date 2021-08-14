@@ -68,7 +68,7 @@
 
 	return FALSE
 
-/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
@@ -77,7 +77,7 @@
 	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
 	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
-	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*0.30 : FALSE
+	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
 
 	if(savage_hit)
 		total_bleed_damage *= 3
@@ -113,7 +113,7 @@
 			queue_health_update = TRUE
 
 	if(ai)
-		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
+		ai.on_damage_received(atom_damaged,attacker,weapon,DT,damage_table,damage_amount,stealthy)
 
 	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker

@@ -1,7 +1,7 @@
 /ai/advanced/clockwork_cult
 
 
-/ai/advanced/clockwork_cult/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/advanced/clockwork_cult/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
@@ -64,4 +64,3 @@
 		if(length(responses))
 			owner.do_say(pick(responses),,language_to_use = LANGUAGE_CLOCKWORK)
 
-	
