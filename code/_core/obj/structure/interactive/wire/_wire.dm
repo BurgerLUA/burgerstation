@@ -7,6 +7,8 @@
 	var/list/connections = list() //ASSOC LIST
 	var/obj/structure/interactive/powered/connected_machine
 
+	appearance_flags = LONG_GLIDE | TILE_BOUND | KEEP_APART
+
 /obj/structure/interactive/wire/Destroy()
 
 	for(var/k in connections)
@@ -50,21 +52,27 @@
 
 	var/initial_icon = initial(icon)
 
-	if(connection_dir in DIRECTIONS_INTERCARDINAL)
+	if(connection_dir in DIRECTIONS_CARDINAL)
 		icon = initial_icon
-		icon_state = "full"
-		dir = connection_dir
-	else if(connection_dir in DIRECTIONS_CARDINAL)
+		icon_state = "[connection_dir]"
+		desc = "Directional"
+	else if(connection_dir == 0x0)
 		icon = initial_icon
-		icon_state = "end"
-		dir = connection_dir
+		icon_state = "none"
+		desc = "None"
 	else
 		for(var/k in DIRECTIONS_CARDINAL)
 			if(!(connection_dir & k))
 				continue
-			var/image/I = new/image(initial_icon,"full")
-			I.dir = k
+			var/image/I = new/image(initial_icon,"[k]")
 			add_overlay(I)
+		desc = "T-Junction"
+
+	if(connected_machine)
+		var/image/I = new/image(initial_icon,"connection")
+		add_overlay(I)
+
+	name = "wire: [dir2text(connection_dir)]"
 
 /obj/structure/interactive/wire/proc/check_new_connections()
 
