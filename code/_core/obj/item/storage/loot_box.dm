@@ -34,5 +34,5 @@
 	if(filled_slots <= 0)
 		qdel(src)
 
-/obj/item/storage/heavy/loot_box/click_self(var/mob/caller)
+/obj/item/storage/loot_box/click_self(var/mob/caller)
 	. = ..()
