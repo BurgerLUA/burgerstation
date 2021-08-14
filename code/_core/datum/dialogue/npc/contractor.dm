@@ -16,7 +16,7 @@
 
 	.["Blood Contracts"] = list(
 		"It's simple: You #1 from me, and you go out there and complete it. You can then #2 to me and I will give you the reward inscribed in the blood contract. \
-		There is no risk of failing it... however if you lose the contract... well you lose your investment.",
+		There is no risk of failing it... however if you lose the contract... well you lose your investment. Also, I do sell rare items that are no longer purchaseable by normal means, try your luck!",
 		"purchase a blood contract",
 		"turn in a blood contract"
 	)
@@ -70,5 +70,3 @@
 		else
 			. = ..(P,"*failure")
 		return .
-
-	. = ..()
