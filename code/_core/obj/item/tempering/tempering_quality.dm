@@ -75,8 +75,8 @@
 
 	temper_whitelist = /obj/item/weapon/ranged
 
-	increase = 1
-	limit = 100
+	increase = 5
+	limit = 75
 	minimum = 0
 
 	unlimited = TRUE
