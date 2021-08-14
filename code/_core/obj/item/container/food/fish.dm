@@ -11,7 +11,7 @@
 /obj/item/container/food/fishing/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/food/fishing/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/food/fishing/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 		var/original_volume = reagents.volume_current

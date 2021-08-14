@@ -105,7 +105,7 @@
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
-/mob/living/simple/xeno/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/simple/xeno/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
 	if(!stealthy && !dead && damage_amount > 20 && prob(25))

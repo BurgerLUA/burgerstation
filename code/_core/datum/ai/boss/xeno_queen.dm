@@ -27,7 +27,7 @@
 			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 
-/ai/boss/xeno_queen/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/boss/xeno_queen/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
 	if(!owner_as_queen.dead && owner_as_queen.health && owner_as_queen.health.health_current <= owner_as_queen.health.health_max*0.5 && owner_as_queen.next_screech <= world.time)

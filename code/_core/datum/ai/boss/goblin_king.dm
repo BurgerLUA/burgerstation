@@ -12,7 +12,7 @@
 	owner_as_goblin_king = null
 	return ..()
 
-/ai/boss/goblin_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damage_type/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/boss/goblin_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 	if(owner && !owner.dead && objective_attack)
 		var/choose_attack = rand(1,3)
