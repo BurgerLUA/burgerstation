@@ -3,7 +3,7 @@
 	desc = "Gacha time"
 	desc_extended = "A box filled with discarded items, why did you buy a box filled with literal trash again?."
 	icon = 'icons/obj/item/storage/death_box.dmi'
-	icon_state = "unlocked"
+	icon_state = "loot"
 
 	value = 1500
 
