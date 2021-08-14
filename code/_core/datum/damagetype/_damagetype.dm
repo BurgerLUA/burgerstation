@@ -255,18 +255,19 @@
 		var/atom/victim = victims[i]
 		var/atom/hit_object = hit_objects[i]
 
-		if(i == 1 && CALLBACK_EXISTS("hit_\ref[victim]"))
-			CALLBACK_REMOVE("hit_\ref[victim]")
-			return perform_clash(attacker,victim,weapon,victim)
 		if(is_advanced(victim))
 			var/mob/living/advanced/A = victim
-			if(i==1)
-				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
-					CALLBACK_REMOVE("hit_\ref[A.left_item]")
-					return perform_clash(attacker,victim,weapon,A.left_item)
-				else if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
-					CALLBACK_REMOVE("hit_\ref[A.right_item]")
-					return perform_clash(attacker,victim,weapon,A.right_item)
+			if(i==1 && is_weapon(weapon))
+				if(is_weapon(A.left_item) && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
+					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.left_item]")
+					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
+						CALLBACK_REMOVE("hit_\ref[A.left_item]")
+						return perform_clash(attacker,victim,weapon,A.left_item)
+				if(is_weapon(A.right_item) && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
+					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.right_item]")
+					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
+						CALLBACK_REMOVE("hit_\ref[A.right_item]")
+						return perform_clash(attacker,victim,weapon,A.right_item)
 			if(istype(victim,/mob/living/advanced/stand/))
 				var/mob/living/advanced/stand/S = victim
 				victim = S.owner
