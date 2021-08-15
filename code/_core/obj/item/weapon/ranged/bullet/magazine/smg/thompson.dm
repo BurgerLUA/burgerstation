@@ -67,7 +67,7 @@
 
 	inaccuracy_modifier = 2 // i hope you like grinding ranged
 	movement_inaccuracy_modifier = 0
-	movement_spread_base = 0.01
+	movement_spread_base = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_static_spread()
 	return 0.01

@@ -10,7 +10,7 @@
 	burst_delay = 8
 	max_bursts = 5
 
-	damage_mod = 1.3
+	damage_mod = 0.9
 
 	automatic = TRUE
 
@@ -71,9 +71,9 @@
 
 	dan_mode = TRUE
 
-	inaccuracy_modifier = 0.5
+	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
-	movement_spread_base = 0.05
+	movement_spread_base = 0.5
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()

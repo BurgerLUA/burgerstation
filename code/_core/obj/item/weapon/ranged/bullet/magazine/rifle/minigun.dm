@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun
 	name = "\improper 4.6mm Gatling Gun"
 	desc = "It costs 10,000 credits to fire this weapon for 12 seconds."
-	desc_extended = ""
+	desc_extended = "A behemoth of a weapon, handle with care."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/minigun.dmi'
 	icon_state = "inventory"
 	value = 10000
 
-	shoot_delay = 1.25 //Oh god oh fuck
+	shoot_delay = 0.2 //Oh god oh fuck
 
 	damage_mod = 1.1
 
@@ -46,10 +46,9 @@
 
 
 	dan_mode = TRUE
-
-	inaccuracy_modifier = 1.25
+	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 0.75
-	movement_spread_base = 0.3
+	movement_spread_base = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
 	return 0.02
