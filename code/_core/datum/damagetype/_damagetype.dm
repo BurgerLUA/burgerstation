@@ -111,6 +111,8 @@
 
 	var/attack_animation_distance = 18
 
+	var/savage_hit_threshold = 0.3 //30%
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -255,18 +257,19 @@
 		var/atom/victim = victims[i]
 		var/atom/hit_object = hit_objects[i]
 
-		if(i == 1 && CALLBACK_EXISTS("hit_\ref[victim]"))
-			CALLBACK_REMOVE("hit_\ref[victim]")
-			return perform_clash(attacker,victim,weapon,victim)
 		if(is_advanced(victim))
 			var/mob/living/advanced/A = victim
-			if(i==1)
-				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
-					CALLBACK_REMOVE("hit_\ref[A.left_item]")
-					return perform_clash(attacker,victim,weapon,A.left_item)
-				else if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
-					CALLBACK_REMOVE("hit_\ref[A.right_item]")
-					return perform_clash(attacker,victim,weapon,A.right_item)
+			if(i==1 && is_weapon(weapon))
+				if(is_weapon(A.left_item) && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
+					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.left_item]")
+					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
+						CALLBACK_REMOVE("hit_\ref[A.left_item]")
+						return perform_clash(attacker,victim,weapon,A.left_item)
+				if(is_weapon(A.right_item) && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
+					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.right_item]")
+					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
+						CALLBACK_REMOVE("hit_\ref[A.right_item]")
+						return perform_clash(attacker,victim,weapon,A.right_item)
 			if(istype(victim,/mob/living/advanced/stand/))
 				var/mob/living/advanced/stand/S = victim
 				victim = S.owner
@@ -567,9 +570,9 @@
 			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
 			W.reagents.remove_all_reagents()
 
-	victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)
-		hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
 	return TRUE
 
