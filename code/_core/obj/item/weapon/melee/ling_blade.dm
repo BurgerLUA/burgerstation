@@ -6,7 +6,7 @@
 	icon = 'icons/obj/item/weapons/melee/swords/arm_blade.dmi'
 	damage_type = /damagetype/melee/sword/armblade
 
-	value = -1
+	value = 5000
 	value_burgerbux = 1
 
 	drop_sound = 'sound/items/drop/axe.ogg'
