@@ -21,11 +21,11 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	charge_cost = CELL_SIZE_BASIC / 6
+	charge_cost = CELL_SIZE_BASIC / 12
 
 	attachment_whitelist = list()
 
-	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/laser_sniper/shoot.ogg')
 
 	heat_max = 0.1
 
