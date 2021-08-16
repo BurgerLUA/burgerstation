@@ -33,13 +33,19 @@
 	weight = 40
 
 	inaccuracy_modifier = 2
-	movement_inaccuracy_modifier = 0.5
-	movement_spread_base = 0.5
+	movement_inaccuracy_modifier = 0.75
+	movement_spread_base = 0.3
 
 
 /obj/item/weapon/ranged/energy/gatling/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 	. = ..()
 	. += (heat_max - heat_current)
+
+/obj/item/weapon/ranged/energy/gatling/get_static_spread(var/mob/living/L)
+	return 0.05
+
+/obj/item/weapon/ranged/energy/gatling/get_skill_spread(var/mob/living/L)
+	return max(0,0.15 - (0.1 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/gatling/update_icon()
 

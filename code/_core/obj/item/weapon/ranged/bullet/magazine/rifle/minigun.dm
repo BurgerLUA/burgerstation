@@ -8,7 +8,7 @@
 
 	shoot_delay = 0.2 //Oh god oh fuck
 
-	damage_mod = 1.1
+	damage_mod = 1.2
 
 	automatic = TRUE
 
@@ -48,13 +48,13 @@
 	dan_mode = TRUE
 	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 0.75
-	movement_spread_base = 0.2
+	movement_spread_base = 0.3
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
-	return 0.02
+	return 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
-	return max(0,0.075 - (0.1 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 	. = ..()
