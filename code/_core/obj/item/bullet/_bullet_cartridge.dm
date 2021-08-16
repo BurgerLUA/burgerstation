@@ -30,6 +30,8 @@
 
 	var/caseless = FALSE
 
+	var/override_bullet_insert_sound = FALSE
+
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
 
@@ -93,7 +95,10 @@
 	. = max(0.01,.)
 
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
-	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
+	if(!override_bullet_insert_sound)
+		return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
+
+	return ..()
 
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return item_count_current
