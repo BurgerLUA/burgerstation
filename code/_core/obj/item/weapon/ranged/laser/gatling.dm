@@ -12,7 +12,7 @@
 	projectile = /obj/projectile/bullet/laser/weak
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/gatling/kill.ogg')
 
 	bullet_color = "#FF0000"
 
