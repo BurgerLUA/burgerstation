@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/armor/burger_coat
-	name = "bulletproof armor"
+	name = "burger coat"
 	icon = 'icons/obj/item/clothing/suit/burger_coat_armor.dmi'
 	desc = "Being the best isn't hard, it's letting go."
 	desc_extended = "Burgers never change."
