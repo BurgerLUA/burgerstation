@@ -20,7 +20,7 @@
 
 	.["*deathbox services"] = list(
 		"Our perfectly legal goblin scavengers sometimes aquire lost equipment belonging to certain questionably legal NanoTrasen operatives. We don't have much use for \
-		gross death-equipment, so we sell it back to NanoTrasen fror a nominal fee! Oh and by NanoTrasen, I mean you. Note that we don't have much storage in our er... \
+		gross death-equipment, so we sell it back to NanoTrasen for a nominal fee! Oh and by NanoTrasen, I mean you. Note that we don't have much storage in our er... \
 		headquarters, so we only store 5 per person."
 	)
 
