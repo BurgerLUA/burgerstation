@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/armor/imperial_suit
-	name = "bulletproof armor"
+	name = "imperial suit"
 	icon = 'icons/obj/item/clothing/suit/imperial_armor_suit.dmi'
 	desc = "For when you really want to feel useless.."
 	desc_extended = "Looks flimsy and mass produced."
