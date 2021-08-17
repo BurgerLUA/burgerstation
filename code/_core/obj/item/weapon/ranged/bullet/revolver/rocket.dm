@@ -12,6 +12,8 @@
 
 	shoot_sounds = list('sound/weapons/rocket/shoot.ogg')
 
+	can_wield = TRUE
+
 	size = SIZE_5
 	weight = 16
 
