@@ -22,7 +22,6 @@
 		/obj/item/weapon/melee/energy/sword/katana,
 		/obj/item/weapon/melee/energy/stunbaton,
 		/obj/item/weapon/melee/sword/zweihander,
-		/obj/item/weapon/melee/sword/armblade,
 		/obj/item/weapon/unarmed/brass_knuckles,
 		/obj/item/weapon/unarmed/powerfist
 	)

@@ -43,7 +43,8 @@
 	desc_extended = "A special whetstone that improves the quality of a melee weapon by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%.  Even works on non-sharp objects, somehow."
 	icon_state = "quality_melee"
 
-	temper_whitelist = /obj/item/weapon/melee || /obj/item/weapon/unarmed
+	temper_whitelist = /obj/item/weapon/melee
+	temper_whitelist = /obj/item/weapon/unarmed
 
 	value = 500
 
