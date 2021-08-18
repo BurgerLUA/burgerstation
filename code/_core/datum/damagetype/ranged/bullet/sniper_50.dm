@@ -13,7 +13,7 @@
 		BLUNT = 90
 	)
 
-	falloff = VIEW_RANGE + ZOOM_RANGE*2
+	falloff = VIEW_RANGE + ZOOM_RANGE*5
 
 /damagetype/ranged/bullet/sniper_50/surplus
 	damage_mod = SURPLUS_MUL

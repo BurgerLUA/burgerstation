@@ -63,10 +63,10 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread()
+/obj/item/weapon/ranged/energy/sniper/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/sniper/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/sniper/update_icon()
