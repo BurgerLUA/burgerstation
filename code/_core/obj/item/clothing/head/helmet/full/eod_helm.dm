@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/full/eod
+/obj/item/clothing/head/helmet/full/eod_helm
 	name = "bomb suit helmet"
 	desc = "Commonly used to assault bank heisters, as well as protect against explosives."
 	desc_extended = "A large, explosive resistant helmet."
