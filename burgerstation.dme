@@ -1633,6 +1633,7 @@
 #include "code\_core\obj\item\weapon\ranged\laser\dynamic.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\flamethrower.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\freezegun.dm"
+#include "code\_core\obj\item\weapon\ranged\laser\gatling.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\iongun.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\laser_rifle.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\laser_sniper.dm"
