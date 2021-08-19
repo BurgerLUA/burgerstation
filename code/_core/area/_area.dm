@@ -167,3 +167,22 @@
 		LS.toggle()
 		return TRUE
 	return FALSE
+
+/area/proc/sync_lights(var/desired_state = TRUE)
+
+	for(var/obj/structure/interactive/lighting/L in src.contents)
+		if(!L.lightswitch)
+			continue
+		if(L.on == desired_state)
+			continue
+		L.on = desired_state
+		L.update_atom_light()
+		L.update_sprite()
+
+	for(var/obj/structure/interactive/light_switch/LS in src.contents)
+		if(LS.on == desired_state)
+			continue
+		LS.on = desired_state
+		LS.update_sprite()
+
+	return TRUE

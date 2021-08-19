@@ -2,8 +2,8 @@
 	desc_extended = "It opens and closes."
 
 /obj/structure/interactive/door/airlock/lz_420/
-	color = "#D3CBA5"
-	fill_color = COLOR_GREY
+	color = COLOR_STEEL
+	fill_color = "#D3CBA5"
 
 /obj/structure/interactive/door/airlock/lz_420/glass
 	fill_color = "#FFFFFF"

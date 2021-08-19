@@ -12,6 +12,12 @@
 
 	var/obj/structure/interactive/gateway/linked_gateway
 
+	collision_flags = FLAG_COLLISION_WALL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	bullet_block_chance = 0
+
+	density = TRUE
+
 /obj/structure/interactive/gateway/Destroy()
 	set_active(FALSE)
 	if(linked_gateway)

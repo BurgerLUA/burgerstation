@@ -6464,84 +6464,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
-"xS" = (
-/obj/structure/shuttle_engine/burst/left{
-	dir = 1
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"xT" = (
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"xU" = (
-/obj/structure/shuttle_engine/burst/right{
-	dir = 1
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"xV" = (
-/obj/marker/landmark{
-	name = "Charlie Shuttle"
-	},
-/obj/shuttle_controller/charlie,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"xW" = (
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/charlie/station)
-"xX" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"xY" = (
-/obj/structure/interactive/status_display/global_display/charlie,
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/charlie/station)
-"xZ" = (
-/obj/structure/interactive/fire_closet,
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/charlie/station)
-"ya" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"yb" = (
-/obj/structure/interactive/mining_brace,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"yc" = (
-/obj/structure/interactive/mining_brace,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yd" = (
-/obj/structure/smooth/window/shuttle/middle,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"ye" = (
-/obj/structure/interactive/ore_box,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yf" = (
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yg" = (
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"yh" = (
-/obj/structure/interactive/chair{
-	dir = 8
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yi" = (
-/obj/structure/interactive/ore_storage,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yj" = (
-/obj/structure/interactive/ore_storage,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
 "yk" = (
 /obj/structure/interactive/disposals/pipe/junction{
 	dir = 1
@@ -6549,52 +6471,6 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
-"yl" = (
-/obj/structure/interactive/mining_drill,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"ym" = (
-/obj/structure/interactive/mining_drill,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yn" = (
-/obj/structure/interactive/ore_box,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yo" = (
-/obj/structure/interactive/chair{
-	dir = 8
-	},
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yp" = (
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yq" = (
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"yr" = (
-/obj/structure/interactive/mining_brace,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"ys" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/obj/structure/interactive/conveyor,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
 "yt" = (
 /obj/structure/interactive/reagent_tank/ethanol,
 /turf/simulated/floor/plating,
@@ -6607,16 +6483,6 @@
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
-"yw" = (
-/obj/marker/lobby,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yx" = (
-/obj/structure/interactive/fire_closet{
-	dir = 8
-	},
-/turf/simulated/wall/shuttle,
-/area/transit/dropship/charlie/station)
 "yy" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -6634,25 +6500,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
-"yC" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yD" = (
-/obj/structure/interactive/conveyor{
-	dir = 4;
-	icon_state = "conveyor"
-	},
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
-"yE" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/obj/structure/interactive/conveyor{
-	dir = 4;
-	icon_state = "conveyor"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
 "yF" = (
 /obj/decal/hazard{
 	dir = 8
@@ -6706,52 +6553,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
-"yL" = (
-/obj/structure/interactive/chair{
-	dir = 4
-	},
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
 "yM" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 9
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
-"yN" = (
-/obj/structure/interactive/chair{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yO" = (
-/turf/simulated/floor/plating,
-/area/transit/dropship/charlie/station)
-"yP" = (
-/obj/structure/interactive/chair,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yQ" = (
-/obj/structure/interactive/chair,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/transit/dropship/charlie/station)
 "yR" = (
 /obj/structure/interactive/reagent_tank/water,
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
-"yS" = (
-/obj/structure/interactive/lighting/fixture/bulb,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
-"yT" = (
-/obj/structure/interactive/computer/console/flight{
-	dir = 1
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/charlie/station)
 "yU" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /obj/structure/interactive/scanner/iff_nanotrasen{
@@ -6760,29 +6571,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/mining)
-"yV" = (
-/obj/structure/smooth/window/shuttle/middle{
-	dir = 4;
-	icon_state = "single"
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"yW" = (
-/obj/structure/smooth/window/shuttle/end_02{
-	dir = 8
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"yX" = (
-/obj/structure/smooth/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
-"yY" = (
-/obj/structure/smooth/window/shuttle/end_02{
-	dir = 4
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/charlie/station)
 
 (1,1,1) = {"
 aa
@@ -24387,9 +24175,9 @@ kC
 kC
 kC
 kC
-lI
-lI
-lI
+kC
+kC
+kC
 kC
 kC
 kC
@@ -26964,18 +26752,18 @@ nQ
 lb
 lb
 be
-xS
-xW
-xW
-xW
-xW
-xW
-xW
-xW
-xW
-yO
-yO
-yO
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -27221,18 +27009,18 @@ nQ
 lb
 lb
 be
-xT
-xX
-yb
-yl
-yr
-yb
-yl
-yb
-xW
-xW
-yC
-xW
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -27478,18 +27266,18 @@ nQ
 lb
 lb
 be
-xT
-xX
-yc
-ym
-yc
-yc
-ym
-yb
-xW
-yP
-yf
-yV
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -27735,18 +27523,18 @@ nQ
 lb
 lb
 xN
-xU
-xW
-yd
-xY
-yd
-xW
-yC
-xW
-xY
-xW
-yS
-xW
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -27992,18 +27780,18 @@ ur
 gZ
 gZ
 xO
-xS
-xW
-ye
-yn
-ye
-ye
-yf
-yL
-yN
-yN
-yf
-yW
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -28249,18 +28037,18 @@ lI
 lI
 lI
 ch
-xT
-xX
-yf
-yg
-yg
-yg
-yg
-yf
-yf
-yf
-yf
-yX
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -28506,18 +28294,18 @@ lI
 lI
 lI
 ch
-xV
-xY
-yg
-yg
-yf
-yw
-yg
-yg
-yg
-yQ
-yT
-yX
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -28763,18 +28551,18 @@ lI
 lI
 lI
 gD
-xT
-xX
-yf
-yg
-yg
-yg
-yg
-yf
-yf
-yf
-yf
-yX
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -29020,18 +28808,18 @@ us
 ic
 ic
 xR
-xU
-xZ
-yh
-yo
-yh
-yh
-yf
-yo
-yh
-yh
-yf
-yY
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -29277,18 +29065,18 @@ nQ
 lb
 lb
 be
-xS
-xW
-yd
-xY
-yd
-yx
-yC
-xW
-xY
-xW
-yS
-xW
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -29534,18 +29322,18 @@ nQ
 lb
 lb
 be
-xT
-ya
-yi
-yp
-yp
-yp
-yp
-yD
-xW
-yP
-yf
-yV
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -29791,18 +29579,18 @@ nQ
 lb
 lb
 be
-xT
-ya
-yj
-yq
-ys
-yq
-yD
-yD
-xW
-xW
-yC
-xW
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -30048,18 +29836,18 @@ nQ
 oX
 lb
 be
-xS
-xW
-xW
-xW
-xW
-xW
-yE
-yE
-xW
-yO
-yO
-yO
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
 nQ
 am
 ak
@@ -42083,7 +41871,7 @@ ab
 ak
 ak
 ah
-an
+al
 al
 al
 al
@@ -42340,7 +42128,7 @@ ab
 ak
 ah
 ah
-al
+an
 al
 al
 al
