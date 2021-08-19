@@ -154,6 +154,20 @@
 		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
 
+/obj/structure/interactive/vending/medical/basic
+	name = "emergency medicine vendor"
+	icon_state = "med"
+	stored_types = list(
+		/obj/item/analyzer/health,
+		/obj/item/container/medicine/bandage,
+		/obj/item/container/medicine/ointment,
+		/obj/item/container/medicine/trauma_kit,
+		/obj/item/container/medicine/burn_kit,
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone,
+	)
+
+
 /obj/structure/interactive/vending/medical/chemistry
 	name = "chemistry vendor"
 	icon_state = "chem"

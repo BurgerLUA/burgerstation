@@ -18,11 +18,11 @@
 
 	var/mob/living/advanced/player/P = caller
 
-	if(P.loyalty_tag != "NanoTrasen")
+	if(!P.loyalty_tag || !portal_markers[P.loyalty_tag])
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
-	if(!length(portal_markers))
+	if(!length(portal_markers[P.loyalty_tag]))
 		caller.to_chat(span("warning","Failed to create a portal... there are too many portals that exist already!"))
 		return TRUE
 

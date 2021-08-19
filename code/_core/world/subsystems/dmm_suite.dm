@@ -19,7 +19,8 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/jungle/z_03.dmm",
 		"maps/jungle/z_02.dmm",
 		"maps/jungle/z_01.dmm",
-		"maps/jungle/z_00.dmm",
+		"maps/_core/station.dmm",
+		"maps/_core/station_above.dmm",
 		"maps/_core/bluespace.dmm"
 	)
 

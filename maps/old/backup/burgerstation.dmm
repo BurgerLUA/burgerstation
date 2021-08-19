@@ -12,9 +12,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
 "ae" = (
-/obj/structure/smooth/table,
 /turf/simulated/floor/plating,
-/area/burgerstation/hanger)
+/area/burgerstation/armory/shooting_range)
 "af" = (
 /mob/living/advanced/npc/dummy,
 /turf/simulated/floor/plating,
@@ -84,6 +83,7 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/north)
 "aw" = (
+/mob/living/advanced/npc/dummy/dead,
 /turf/simulated/floor/plating,
 /area/burgerstation/armory/shooting_range)
 "ax" = (
@@ -744,9 +744,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "cW" = (
-/obj/item/storage/heavy/trash_pile,
+/obj/structure/interactive/shield{
+	dir = 4;
+	icon_state = "shieldwall"
+	},
 /turf/simulated/floor/plating,
-/area/burgerstation/hanger)
+/area/burgerstation/cargo)
 "cX" = (
 /obj/structure/interactive/limiter{
 	dir = 4
@@ -906,6 +909,10 @@
 "dA" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
+"dB" = (
+/obj/structure/smooth/table,
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
 "dC" = (
 /obj/structure/interactive/limiter{
 	dir = 1
@@ -1039,6 +1046,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
+"ed" = (
+/obj/item/storage/heavy/trash_pile,
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
 "ee" = (
 /obj/structure/interactive/limiter{
 	dir = 8
@@ -1174,6 +1185,10 @@
 /obj/structure/interactive/computer/console/flight,
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/bravo/station)
+"eH" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/plating,
+/area/burgerstation/cargo)
 "eI" = (
 /obj/structure/interactive/plastic_flaps,
 /obj/structure/interactive/conveyor{
@@ -6020,6 +6035,9 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile,
 /area/burgerstation/medical)
+"vV" = (
+/turf/simulated/floor/brick/grey/dark,
+/area/burgerstation/maint/east)
 "vW" = (
 /obj/effect/moss,
 /turf/simulated/floor/brick/grey/dark,
@@ -6096,6 +6114,7 @@
 /turf/simulated/floor/brick/grey/dark,
 /area/burgerstation/maint/east)
 "wk" = (
+/obj/structure/interactive/crate/chest/gold,
 /turf/simulated/floor/brick/grey/dark,
 /area/burgerstation/maint/east)
 "wl" = (
@@ -6465,17 +6484,37 @@
 /obj/structure/interactive/disposals/machine/chute,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
+"xN" = (
+/obj/structure/smooth/table/wood,
+/obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/tome/summon/crab,
+/obj/item/weapon/ranged/magic/tome/summon/bull,
+/obj/item/weapon/ranged/magic/tome/summon/goliath,
+/obj/item/weapon/ranged/magic/tome/summon/skeleton,
+/obj/item/weapon/ranged/magic/tome/summon/space_bear,
+/obj/item/weapon/ranged/magic/tome/summon/twilight,
+/obj/item/weapon/ranged/magic/tome/summon/watcher,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/library)
 "xO" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/tome/flame,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/library)
+"xP" = (
+/obj/structure/smooth/table/wood,
+/obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/tome/frost,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "xQ" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
+/obj/item/weapon/ranged/magic/tome/shock,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "xR" = (
@@ -30612,13 +30651,13 @@ ab
 ab
 ab
 ac
-cV
-dw
-dw
-dw
-dw
-dw
-dw
+cW
+dA
+dA
+dA
+dA
+dA
+dA
 cE
 gZ
 dA
@@ -30869,13 +30908,13 @@ ab
 ab
 ab
 ac
-cU
-ae
-cW
-ty
-dw
-dw
-dw
+cE
+dB
+ed
+eH
+dA
+dA
+dA
 gB
 gZ
 hs
@@ -39921,7 +39960,7 @@ xd
 xd
 xd
 xd
-xQ
+xN
 wF
 yb
 yi
@@ -40435,7 +40474,7 @@ xd
 xd
 xd
 xd
-xQ
+xP
 wF
 yb
 yj
@@ -40621,11 +40660,11 @@ ab
 ac
 ad
 ad
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
 aL
 aN
 ba
@@ -40877,13 +40916,13 @@ ab
 ac
 ac
 ad
-aw
-aw
-aw
+ae
+ae
+ae
 af
-aw
-aw
-aw
+ae
+ae
+ae
 aO
 bb
 bx
@@ -41130,17 +41169,17 @@ ab
 ab
 ab
 ab
-ac
+ab
 ac
 ad
 ad
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 aO
 bc
 bx
@@ -41387,17 +41426,17 @@ ab
 ab
 ab
 ab
+ab
 ac
 ad
-ad
-aw
-aw
+ae
+ae
 af
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
 aO
 bc
 bx
@@ -41645,16 +41684,16 @@ ab
 ab
 ab
 ac
+ac
 ad
+af
+ae
+ae
+ae
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
 aP
 bc
 bx
@@ -41903,15 +41942,15 @@ ab
 ab
 ac
 ad
-aw
-af
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ad
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 aO
 bc
 bx
@@ -42160,15 +42199,15 @@ ab
 ab
 ac
 ad
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
 af
-aw
-aw
-aw
+ae
+ae
+ae
 aO
 bd
 by
@@ -42417,14 +42456,14 @@ ab
 ab
 ac
 ad
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 aL
 aQ
 be
@@ -42674,15 +42713,15 @@ ab
 ab
 ac
 ad
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
 ax
-aw
-aw
-aw
+ae
+ae
+ae
 aO
 bc
 bx
@@ -42931,15 +42970,15 @@ ab
 ab
 ac
 ad
-aw
+ad
 ag
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 aO
 bc
 bx
@@ -43187,16 +43226,16 @@ ab
 ab
 ab
 ac
+ac
 ad
+ae
+ae
+ae
+ae
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
 aO
 bc
 bx
@@ -43443,17 +43482,17 @@ ab
 ab
 ab
 ab
+ab
 ac
 ad
-ad
-aw
-aw
+ae
+ae
 ag
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
 aO
 bc
 bx
@@ -43700,17 +43739,17 @@ ab
 ab
 ab
 ab
-ac
+ab
 ac
 ad
 ad
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 aP
 bc
 bx
@@ -43961,13 +44000,13 @@ ab
 ac
 ac
 ad
-aw
-aw
-aw
+ae
+ae
+ae
 ag
-aw
-aw
-aw
+ae
+ae
+ae
 aO
 bb
 bx
@@ -44219,11 +44258,11 @@ ab
 ac
 ad
 ad
-aw
-aw
-aw
-aw
-aw
+ae
+ae
+ae
+ae
+ae
 aL
 aN
 ba
@@ -47619,7 +47658,7 @@ vh
 sR
 vH
 vO
-wk
+vV
 wj
 wj
 wv
@@ -48134,7 +48173,7 @@ sR
 vH
 vO
 vW
-wk
+vV
 vW
 wA
 wA
