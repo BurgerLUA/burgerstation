@@ -66,14 +66,14 @@
 	attachment_undermount_offset_y = 17 - 16
 
 	inaccuracy_modifier = 2 // i hope you like grinding ranged
-	movement_inaccuracy_modifier = 0
-	movement_spread_base = 0.01
+	movement_inaccuracy_modifier = 0.5
+	movement_spread_base = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_static_spread()
-	return 0.01
+	return 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_skill_spread(var/mob/living/L)
-	return max(0,0.2 - (0.5 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.2 - (0.1 * L.get_skill_power(SKILL_RANGED)))
 
 
 
