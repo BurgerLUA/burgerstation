@@ -13,7 +13,7 @@
 		BLUNT = 50,
 		PIERCE = 75,
 		HEAT = -25,
-		ARCANE = -75
+		ARCANE = -75,
 		BOMB = 100
 	)
 
