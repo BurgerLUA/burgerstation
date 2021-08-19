@@ -101,6 +101,21 @@
 	color = random_color()
 	return ..()
 
+/obj/item/clothing/underbottom/underwear/panty/neko
+	name = "cursed cat panty"
+	desc = "who the fuck what the fuck"
+	desc_extended = "why"
+	icon = 'icons/obj/item/clothing/underwear/neko_panty.dmi'
+
+	rarity = RARITY_MYTHICAL
+
+	defense_rating = list(
+		DARK = 20,
+		HOLY = -20
+	)
+
+	value = 500
+
 /obj/item/clothing/underbottom/underwear/thong
 	name = "thong"
 	desc = "Underwear, but just barely."
@@ -136,4 +151,5 @@
 
 /obj/item/clothing/underbottom/underwear/loincloth/red
 	color = "#8E0000"
+
 

@@ -5,8 +5,10 @@
 	. = list()
 
 	.["hello"] = list(
-		"Ah, greetings [P.real_name], I have heard quite about you. Perhaps you'd like to show me more of the type of person you are? I am offering #1... if you're up for it.",
-		"Blood Contracts"
+		"Ah, greetings [P.real_name], I have heard quite about you. Perhaps you'd like to show me more of the type of person you are? I am offering #1... if you're up for it. \
+		I also have several #2 if you're feeling particularly... Lucky.",
+		"Blood Contracts",
+		"Loot Boxes"
 	)
 
 	if("purchase a blood contract" in known_options)
@@ -21,11 +23,25 @@
 		"turn in a blood contract"
 	)
 
+	if("purchase loot boxes" in known_options)
+		.["hello"] |= "purchase loot boxes"
+
+
+	.["Loot Boxes"] = list(
+		"I can recognize a gambler from a miles away, heh. These loot boxes contain items that \
+		 cannot be bought anywhere else in the world IF you're lucky, care to try?",
+		"purchase loot boxes"
+	)
+
 	.["purchase a blood contract"] = list(
 		"I hope you'll enjoy these..."
 	)
 
 	.["turn in a blood contract"] = list(
+		"..."
+	)
+
+	.["purchase loot boxes"] = list(
 		"..."
 	)
 
@@ -40,7 +56,23 @@
 
 /dialogue/npc/contractor/set_topic(var/mob/living/advanced/player/P,var/topic)
 
+	. = ..()
+
 	if(topic == "purchase a blood contract")
+		if(istype(P.dialogue_target,/mob/living/advanced/npc/unique/contractor))
+			var/mob/living/advanced/npc/unique/contractor/C = P.dialogue_target
+			if(C.stored_vendor)
+				var/obj/structure/interactive/vending/V = C.stored_vendor
+				if(P.active_structure == V)
+					P.set_structure_unactive()
+				else
+					P.set_structure_active(V)
+
+		P.dialogue_target_id = null
+		close_menu(P,/menu/dialogue/)
+		return TRUE
+
+	else if(topic == "purchase loot boxes")
 		if(istype(P.dialogue_target,/mob/living/advanced/npc/unique/contractor))
 			var/mob/living/advanced/npc/unique/contractor/C = P.dialogue_target
 			if(C.stored_vendor)
@@ -70,5 +102,3 @@
 		else
 			. = ..(P,"*failure")
 		return .
-
-	. = ..()
