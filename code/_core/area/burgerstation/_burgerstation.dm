@@ -24,7 +24,7 @@
 
 	trackable = TRUE
 
-	area_identifier = "Mission"
+	area_identifier = "Burgerstation"
 
 	safe_storage = TRUE
 

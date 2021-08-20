@@ -18,6 +18,15 @@
 
 	var/mob/living/advanced/player/P = caller
 
+	if(!isturf(P.loc))
+		caller.to_chat(span("warning","You can't use this here!"))
+		return TRUE
+
+	var/area/A = P.loc.loc
+	if(A.area_identifier != "Mission")
+		caller.to_chat(span("warning","You can't use this here!"))
+		return TRUE
+
 	if(!P.loyalty_tag || !portal_markers[P.loyalty_tag])
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
