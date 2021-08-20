@@ -42,8 +42,12 @@
 	if(T2.is_safe_teleport())
 		T = T2
 
-	var/obj/marker/portal/PM = pick(portal_markers)
+	var/obj/marker/portal/PM = pick(portal_markers[P.loyalty_tag])
 	var/turf/PMT = get_turf(PM)
+
+	if(!T || !PMT)
+		caller.to_chat(span("warning","Failed to create a portal. Something horribly went wrong."))
+		return TRUE
 
 	var/obj/effect/temp/portal/start_portal = new(T,SECONDS_TO_DECISECONDS(300))
 	var/obj/effect/temp/portal/end_portal = new(PMT,SECONDS_TO_DECISECONDS(300))
@@ -56,7 +60,6 @@
 
 	end_portal.linked_marker = PM
 	P.linked_portals = list(start_portal,end_portal)
-
 
 	var/area/A1 = T.loc
 	var/area/A2 = PMT.loc

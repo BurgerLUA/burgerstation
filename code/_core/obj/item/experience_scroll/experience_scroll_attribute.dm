@@ -12,7 +12,7 @@
 	if(!attribute)
 		return FALSE
 
-	var/experience/E = SSexperience.all_attributes[attribute]
+	var/experience/E = A.get_attribute(attribute)
 	var/experience_to_add = E.level_to_xp(10) - E.level_to_xp(9)
 	A.add_attribute_xp(attribute,experience_to_add)
 

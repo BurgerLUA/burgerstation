@@ -12,7 +12,7 @@
 	if(!skill)
 		return FALSE
 
-	var/experience/E = SSexperience.all_skills[skill]
+	var/experience/E = A.get_skill(skill)
 	var/experience_to_add = E.level_to_xp(10) - E.level_to_xp(9)
 	A.add_skill_xp(skill,experience_to_add)
 

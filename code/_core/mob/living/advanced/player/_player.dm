@@ -31,7 +31,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	has_hard_crit = TRUE
 
-	var/currency = 3000
+	var/currency = 8000
 	var/revenue = 0
 	var/expenses = 0
 	var/partial_tax = 0 //Taxes you couldn't pay.

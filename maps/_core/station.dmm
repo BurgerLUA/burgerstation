@@ -6578,15 +6578,8 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hall/south)
 "xN" = (
-/obj/structure/interactive/status_display/global_display/charlie,
-/turf/simulated/wall/metal,
-/area/burgerstation/hanger)
-"xO" = (
 /obj/decal/hazard{
 	dir = 9
-	},
-/obj/structure/interactive/computer/console/remote_flight/charlie{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
@@ -27706,7 +27699,7 @@ lI
 nQ
 lb
 lb
-xN
+be
 lb
 lb
 lb
@@ -27963,7 +27956,7 @@ lI
 ur
 gZ
 gZ
-xO
+xN
 lb
 lb
 lb
