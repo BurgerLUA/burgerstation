@@ -24,7 +24,7 @@
 	color = "#C66B59"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of red bricks."
-	health = 2500
+	health = 5000
 
 /turf/simulated/wall/brick/red/dark
 	color = "#824439"
@@ -35,7 +35,7 @@
 	color = "#824439"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
-	health = null
+	health = 6000
 
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"
