@@ -16,6 +16,8 @@
 	job_rank = 1
 	job_next_promotion = world.realtime + 604800 //1 week
 
+	src.to_chat(span("notice","You are now \a [J.name]."))
+
 	return TRUE
 
 /mob/living/advanced/player/proc/check_promotion()

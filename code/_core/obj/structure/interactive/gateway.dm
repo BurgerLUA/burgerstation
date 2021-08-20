@@ -12,7 +12,7 @@
 
 	var/obj/structure/interactive/gateway/linked_gateway
 
-	collision_flags = FLAG_COLLISION_WALL
+	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	bullet_block_chance = 0
 
