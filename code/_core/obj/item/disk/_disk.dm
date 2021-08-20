@@ -53,12 +53,23 @@
 	metal_color = random_color()
 	return ..()
 
+/obj/item/disk/rcd/metal_plating
+	name = "rcd data disk (metal plating)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for some floors."
+	data = list(
+		"name" = "steel_wall.turf",
+		"effect" = /obj/effect/temp/construction/wall,
+		"object" = /turf/simulated/floor/plating,
+		"cost" = 500
+	)
+
 /obj/item/disk/rcd/metal_wall
 	name = "rcd data disk (steel wall)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
 	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a steel wall."
 	data = list(
-		"name" = "steel_wall.turf",
+		"name" = "plating.turf",
 		"effect" = /obj/effect/temp/construction/wall,
 		"object" = /turf/simulated/wall/metal,
 		"cost" = 1000
