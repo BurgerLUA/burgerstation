@@ -47,7 +47,7 @@
 			var/information_link = "<a href='?examine=\ref[A]'>?</a>"
 			var/bonus = ""
 			if(J && J.bonus_attributes[k])
-				bonus = "<b>+([J.bonus_attributes[k]*job_rank])</b>"
+				bonus = "<b>(+[J.bonus_attributes[k]*job_rank])</b>"
 			if(next_xp - last_xp > 0)
 				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)][bonus] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
 			else
@@ -64,7 +64,7 @@
 			var/prestige_text = ""
 			var/bonus = ""
 			if(J && J.bonus_skills[k])
-				bonus = "<b>+([J.bonus_skills[k]*job_rank])</b>"
+				bonus = "<b>(+[J.bonus_skills[k]*job_rank])</b>"
 			if(is_player(L))
 				var/mob/living/advanced/player/P = L
 				if(P.prestige_count[k])

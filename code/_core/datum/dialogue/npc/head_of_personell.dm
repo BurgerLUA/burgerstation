@@ -24,7 +24,7 @@
 	)
 
 	.["assistant"] = list(
-		"I can give you the assistant #1, which provides bonuses to all skills, but has no #2. This will replace your old job. Do you accept?NEWLINE#1NEWLINE#2",
+		"I can give you the assistant #1, which provides bonuses to all skills, but has no #2. This will replace your old job. Do you accept?NEWLINE#3NEWLINE#4",
 		"job",
 		"promotion",
 		"*Yes, become an assistant.",

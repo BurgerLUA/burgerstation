@@ -12,7 +12,7 @@
 	if(!J)
 		return FALSE
 
-	desired_job = desired_job
+	job = desired_job
 	job_rank = 1
 	job_next_promotion = world.realtime + 604800 //1 week
 

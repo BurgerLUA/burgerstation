@@ -1662,7 +1662,6 @@
 /area/burgerstation/armory)
 "gd" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
-/mob/living/advanced/npc/unique/hos,
 /turf/simulated/floor/tile/tint,
 /area/burgerstation/armory)
 "ge" = (
@@ -5455,12 +5454,9 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "tL" = (
-/mob/living/advanced/npc/unique/cmo{
-	icon_state = "directional";
-	dir = 1
-	},
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/mob/living/advanced/npc/unique/hop,
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/burgerstation/help_desk)
 "tM" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -43920,7 +43916,7 @@ rB
 rB
 rB
 rB
-tL
+ri
 uY
 vc
 vc
@@ -44661,7 +44657,7 @@ tM
 tM
 iZ
 jn
-jP
+tL
 kz
 kZ
 lE
