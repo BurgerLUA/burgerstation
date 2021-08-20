@@ -16,8 +16,8 @@
 /area/fob/main)
 "ae" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 4
+	dir = 4;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/fob/main)
@@ -26,8 +26,8 @@
 /area/transit/dropship/bravo/landing)
 "ag" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/fob/main)
@@ -36,8 +36,8 @@
 /area)
 "ai" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 1
+	dir = 1;
+	icon_state = "line"
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
@@ -53,15 +53,15 @@
 /area/fob/main)
 "am" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
 "an" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 10
+	dir = 10;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/tan/ish,
 /area/fob/main)
@@ -93,8 +93,8 @@
 /area)
 "av" = (
 /obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 4
+	dir = 4;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal,
 /area/fob/main)
@@ -135,22 +135,22 @@
 "aF" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-t"
 	},
 /turf/simulated/floor/tile/tan/ish,
 /area/fob/main)
 "aG" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/tan/ish,
 /area/fob/main)
 "aH" = (
 /obj/structure/interactive/disposals/pipe/x{
-	icon_state = "pipe-4way";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-4way"
 	},
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
@@ -169,23 +169,23 @@
 /area)
 "aL" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
 "aM" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe-t"
 	},
 /turf/simulated/floor/tile/tan/ish,
 /area/fob/main)
 "aN" = (
 /obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 1
+	dir = 1;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal,
 /area/fob/main)
@@ -208,8 +208,8 @@
 /area/fob/main)
 "aS" = (
 /obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 8
+	dir = 8;
+	icon_state = ""
 	},
 /turf/simulated/wall/metal,
 /area/fob/main)
@@ -272,29 +272,29 @@
 /area/fob/main)
 "bi" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
+	dir = 4;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bj" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
+	dir = 8;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bk" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 6
+	dir = 6;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bl" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /obj/structure/interactive/door/airlock/lz_420,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -302,38 +302,38 @@
 "bm" = (
 /obj/marker/portal/nanotrasen,
 /obj/structure/interactive/disposals/pipe/x{
-	icon_state = "pipe-4way";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-4way"
 	},
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
 "bn" = (
 /obj/marker/portal/nanotrasen,
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
 "bo" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /obj/structure/interactive/door/airlock/lz_420,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "bp" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 10
+	dir = 10;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "bq" = (
 /mob/living/advanced/npc/unique/contractor{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/carpet,
 /area/fob/main)
@@ -344,15 +344,15 @@
 "bs" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-t"
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
 "bt" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
-	icon_state = "pipe-j2";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
@@ -373,34 +373,34 @@
 "bx" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-t"
 	},
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "by" = (
 /obj/structure/interactive/disposals/pipe/junction{
-	icon_state = "pipe-j1";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-j1"
 	},
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
 "bz" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 10
+	dir = 10;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
 "bA" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-t"
 	},
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-t"
 	},
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
@@ -419,8 +419,8 @@
 /area/fob/main)
 "bE" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 5
+	dir = 5;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
@@ -439,16 +439,16 @@
 /area/fob/main)
 "bI" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /obj/structure/interactive/door/airlock/lz_420,
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
 "bJ" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 9
+	dir = 9;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
@@ -458,40 +458,40 @@
 /area/fob/main)
 "bM" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/plating,
 /area)
 "bN" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 4
+	dir = 4;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/plating,
 /area/fob/main)
 "bO" = (
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-t"
 	},
 /obj/structure/interactive/disposals/machine/outlet/random{
-	icon_state = "outlet";
-	dir = 8
+	dir = 8;
+	icon_state = "outlet"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "bP" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "bQ" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 10
+	dir = 10;
+	icon_state = "pipe"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
@@ -501,8 +501,8 @@
 /area)
 "bS" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 5
+	dir = 5;
+	icon_state = "pipe"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
@@ -518,8 +518,8 @@
 /area/fob/main)
 "bX" = (
 /obj/structure/interactive/disposals/pipe/x{
-	icon_state = "pipe-4way";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-4way"
 	},
 /turf/simulated/floor/tile/tan/ish,
 /area/fob/main)
@@ -534,20 +534,20 @@
 /area/fob/power)
 "ce" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area/fob/power)
 "cf" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area/fob/power)
 "cg" = (
 /turf/simulated/floor/stair{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area/fob/power)
 "ch" = (
@@ -622,15 +622,15 @@
 /area/fob/main)
 "cx" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 9
+	dir = 9;
+	icon_state = "pipe"
 	},
 /turf/simulated/floor/plating,
 /area/fob/main)
 "cy" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /obj/structure/interactive/door/airlock/lz_420,
 /turf/simulated/floor/tile/tan,
@@ -640,8 +640,8 @@
 	pixel_x = -32
 	},
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 8
+	dir = 8;
+	icon_state = "sink"
 	},
 /turf/simulated/floor/tile,
 /area/fob/main)
@@ -665,16 +665,16 @@
 "cE" = (
 /obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
-	icon_state = "pipe-t";
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-t"
 	},
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey/ish,
 /area/fob/main)
 "cF" = (
 /obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
+	dir = 8;
+	icon_state = "pipe"
 	},
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
@@ -785,6 +785,10 @@
 "eW" = (
 /obj/marker/prefab/medium,
 /turf/unsimulated/generation/surface/surface_turf,
+/area)
+"ga" = (
+/obj/marker/rift_location,
+/turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "hj" = (
 /obj/marker/prefab/boss,
@@ -938,6 +942,23 @@
 /obj/marker/prefab/boss,
 /turf/unsimulated/generation/surface/cave_turf,
 /area)
+"ER" = (
+/obj/marker/rift_location,
+/turf/unsimulated/generation/surface/surface_turf,
+/area)
+"JJ" = (
+/obj/structure/smooth/table/wood,
+/obj/marker/rift_location,
+/turf/simulated/floor/carpet,
+/area/fob/main)
+"Na" = (
+/obj/decal/hazard/black{
+	dir = 1;
+	icon_state = "line"
+	},
+/obj/structure/interactive/computer/console/remote_flight/bravo,
+/turf/simulated/floor/tile/grey/ish,
+/area/fob/main)
 
 (1,1,1) = {"
 ab
@@ -1898,7 +1919,7 @@ ah
 ah
 au
 au
-au
+ga
 au
 aA
 au
@@ -20749,7 +20770,7 @@ ah
 ah
 au
 au
-au
+ga
 au
 au
 au
@@ -23196,7 +23217,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -29457,7 +29478,7 @@ au
 au
 au
 au
-au
+ga
 au
 au
 au
@@ -32611,7 +32632,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -39350,7 +39371,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -47860,7 +47881,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -48489,7 +48510,7 @@ ab
 ah
 ah
 ak
-au
+ga
 au
 au
 au
@@ -51598,7 +51619,7 @@ ah
 ah
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -60068,7 +60089,7 @@ af
 af
 af
 af
-ai
+Na
 al
 al
 al
@@ -62137,7 +62158,7 @@ at
 at
 ao
 aZ
-bf
+JJ
 be
 be
 aY

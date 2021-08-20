@@ -196,6 +196,14 @@
 /obj/item/weapon/melee/tool/pickaxe,
 /turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_02)
+"Q" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/wood/dock,
+/area/dungeon/z_02)
+"X" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/brick/grey/dark/ish,
+/area/dungeon/z_02)
 
 (1,1,1) = {"
 a
@@ -8407,7 +8415,7 @@ u
 d
 t
 f
-f
+X
 f
 f
 u
@@ -12617,7 +12625,7 @@ c
 p
 p
 p
-p
+Q
 p
 p
 p
@@ -32927,7 +32935,7 @@ p
 p
 p
 p
-p
+Q
 p
 p
 p
@@ -41587,7 +41595,7 @@ f
 f
 P
 P
-f
+X
 b
 b
 b
@@ -47838,7 +47846,7 @@ p
 p
 p
 p
-p
+Q
 p
 p
 p
@@ -60690,7 +60698,7 @@ p
 p
 p
 p
-p
+Q
 p
 p
 p
@@ -61122,7 +61130,7 @@ f
 f
 i
 f
-f
+X
 f
 d
 f
