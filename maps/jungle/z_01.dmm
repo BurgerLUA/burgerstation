@@ -951,6 +951,14 @@
 /obj/marker/rift_location,
 /turf/simulated/floor/carpet,
 /area/fob/main)
+"Na" = (
+/obj/decal/hazard/black{
+	dir = 1;
+	icon_state = "line"
+	},
+/obj/structure/interactive/computer/console/remote_flight/bravo,
+/turf/simulated/floor/tile/grey/ish,
+/area/fob/main)
 
 (1,1,1) = {"
 ab
@@ -60081,7 +60089,7 @@ af
 af
 af
 af
-ai
+Na
 al
 al
 al
