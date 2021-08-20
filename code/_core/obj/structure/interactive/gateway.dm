@@ -60,6 +60,6 @@
 	if(enabled && linked_gateway && is_player(O))
 		var/mob/living/advanced/player/P = O
 		if(P.loyalty_tag == "NanoTrasen")
-			O.force_move(get_turf(linked_gateway))
+			O.force_move(get_step(linked_gateway,SOUTH))
 
 
