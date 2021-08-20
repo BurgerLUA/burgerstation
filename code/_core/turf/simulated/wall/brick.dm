@@ -31,12 +31,11 @@
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
 
-/turf/simulated/wall/brick/red/dark/rev //for the rev compound, has more HP
+/turf/simulated/wall/brick/red/dark/rev //for the rev compound, has infinite HP
 	color = "#824439"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
 	health = null
-	health_base = null
 
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"
