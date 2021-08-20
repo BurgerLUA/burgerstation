@@ -68,6 +68,7 @@
 					ANNOUNCEMENT_STATION,
 					'sound/voice/announcement/landfall_crew_0_minutes.ogg'
 				)
+				last_vote = world.time
 
 	if(stage < 3)
 		var/time_left = round_time_next - round_time
