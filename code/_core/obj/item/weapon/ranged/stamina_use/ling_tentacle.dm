@@ -41,3 +41,4 @@
 		caller.to_chat(span("notice","You will now drag your enemies."))
 	else
 		caller.to_chat(span("notice","You will now drag yourself to your enemies."))
+	return TRUE
