@@ -196,7 +196,8 @@
 		/obj/item/clothing/pants/normal/medical,
 		/obj/item/clothing/uniform/utility/medical,
 		/obj/item/clothing/overwear/coat/labcoat/medical,
-		/obj/item/storage/glovebox/white
+		/obj/item/storage/glovebox/white,
+		/obj/item/defib/belt
 	)
 
 /obj/structure/interactive/vending/robotics
