@@ -13,14 +13,14 @@
 /area/dungeon/z_03)
 "e" = (
 /turf/simulated/floor/stair/ztravel/wood{
-	icon_state = "stair_middle";
-	dir = 4
+	dir = 4;
+	icon_state = "stair_middle"
 	},
 /area/dungeon/z_03)
 "f" = (
 /turf/simulated/floor/stair/ztravel/wood{
-	icon_state = "stair_middle";
-	dir = 8
+	dir = 8;
+	icon_state = "stair_middle"
 	},
 /area/dungeon/z_03)
 "g" = (
@@ -38,6 +38,10 @@
 "j" = (
 /obj/marker/prefab/large,
 /turf/unsimulated/generation/lava,
+/area/dungeon/z_03)
+"I" = (
+/obj/marker/rift_location,
+/turf/simulated/floor/brick/grey/dark/ish,
 /area/dungeon/z_03)
 
 (1,1,1) = {"
@@ -62250,7 +62254,7 @@ d
 d
 d
 d
-d
+I
 d
 d
 d

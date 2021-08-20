@@ -786,6 +786,10 @@
 /obj/marker/prefab/medium,
 /turf/unsimulated/generation/surface/surface_turf,
 /area)
+"ga" = (
+/obj/marker/rift_location,
+/turf/unsimulated/generation/surface/cave_path_turf,
+/area)
 "hj" = (
 /obj/marker/prefab/boss,
 /turf/unsimulated/generation/surface/surface_path_turf,
@@ -938,6 +942,15 @@
 /obj/marker/prefab/boss,
 /turf/unsimulated/generation/surface/cave_turf,
 /area)
+"ER" = (
+/obj/marker/rift_location,
+/turf/unsimulated/generation/surface/surface_turf,
+/area)
+"JJ" = (
+/obj/structure/smooth/table/wood,
+/obj/marker/rift_location,
+/turf/simulated/floor/carpet,
+/area/fob/main)
 "Na" = (
 /obj/decal/hazard/black{
 	dir = 1;
@@ -1906,7 +1919,7 @@ ah
 ah
 au
 au
-au
+ga
 au
 aA
 au
@@ -20757,7 +20770,7 @@ ah
 ah
 au
 au
-au
+ga
 au
 au
 au
@@ -23204,7 +23217,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -29465,7 +29478,7 @@ au
 au
 au
 au
-au
+ga
 au
 au
 au
@@ -32619,7 +32632,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -39358,7 +39371,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -47868,7 +47881,7 @@ aC
 aC
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -48497,7 +48510,7 @@ ab
 ah
 ah
 ak
-au
+ga
 au
 au
 au
@@ -51606,7 +51619,7 @@ ah
 ah
 aC
 aC
-aC
+ER
 aC
 aC
 aC
@@ -62145,7 +62158,7 @@ at
 at
 ao
 aZ
-bf
+JJ
 be
 be
 aY
