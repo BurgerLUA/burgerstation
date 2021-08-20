@@ -20,11 +20,23 @@
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of red bricks."
 
+/turf/simulated/wall/brick/red/rev //for the rev compound
+	color = "#C66B59"
+	desc = "Like a brick to the head"
+	desc_extended = "A wall made of bricks. This one is made of red bricks."
+	health = 2500
+
 /turf/simulated/wall/brick/red/dark
 	color = "#824439"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
 
+/turf/simulated/wall/brick/red/dark/rev //for the rev compound, has more HP
+	color = "#824439"
+	desc = "Like a brick to the head"
+	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
+	health = null
+	health_base = null
 
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"
