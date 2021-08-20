@@ -118,8 +118,8 @@
 /area/vr)
 "aC" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
+	dir = 8;
+	icon_state = "wooden_chair"
 	},
 /obj/marker/spawnpoint/vr/lobby,
 /turf/simulated/floor/carpet,
@@ -131,8 +131,8 @@
 "aE" = (
 /obj/marker/spawnpoint/vr/lobby,
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/vr)
@@ -142,8 +142,8 @@
 /area/vr)
 "aG" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/brick/grey/dark,
 /area/vr)
@@ -158,14 +158,14 @@
 /area/transit/cargo/centcomm)
 "aJ" = (
 /obj/effect/fake_lighting/gradient{
-	icon_state = "gradient";
-	dir = 8
+	dir = 8;
+	icon_state = "gradient"
 	},
 /obj/trigger/leave_chargen{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
-/turf/simulated/floor/darkness,
+/turf/simulated/floor/basalt,
 /area/centcomm/chargen)
 "aK" = (
 /turf/simulated/wall/rock/indestructable,
@@ -181,7 +181,7 @@
 /turf/simulated/floor/basalt,
 /area/centcomm/chargen)
 "aO" = (
-/turf/simulated/floor/darkness,
+/turf/simulated/hazard/lava,
 /area/centcomm/chargen)
 "aP" = (
 /obj/effect/fake_lighting/solid,
@@ -189,12 +189,17 @@
 /turf/simulated/floor/darkness,
 /area/centcomm/chargen)
 "aR" = (
-/obj/structure/interactive/misc/mirror/chargen,
-/turf/simulated/floor/darkness,
+/obj/structure/interactive/misc/mirror/chargen{
+	pixel_y = 19
+	},
+/obj/decal/tile{
+	dir = 1
+	},
+/turf/simulated/floor/basalt,
 /area/centcomm/chargen)
 "aS" = (
 /obj/marker/spawnpoint/chargen,
-/turf/simulated/floor/darkness,
+/turf/simulated/floor/basalt,
 /area/centcomm/chargen)
 "bX" = (
 /turf/space,
@@ -205,15 +210,15 @@
 	dir = 4
 	},
 /obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 4
+	dir = 4;
+	icon_state = "conveyor"
 	},
 /turf/simulated/floor/plating,
 /area/centcomm)
 "bZ" = (
 /obj/structure/interactive/conveyor{
-	icon_state = "conveyor";
-	dir = 4
+	dir = 4;
+	icon_state = "conveyor"
 	},
 /turf/simulated/floor/plating,
 /area/centcomm)
@@ -255,8 +260,8 @@
 /area/herald)
 "cm" = (
 /mob/living/simple/turret/syndicate{
-	icon_state = "active";
-	dir = 1
+	dir = 1;
+	icon_state = "active"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -269,22 +274,22 @@
 /area/transit/syndicate_raid/centcomm)
 "cp" = (
 /obj/structure/shuttle_engine/heater{
-	icon_state = "heater";
-	dir = 4
+	dir = 4;
+	icon_state = "heater"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cq" = (
 /obj/structure/shuttle_engine/large{
-	icon_state = "large_engine";
-	dir = 4
+	dir = 4;
+	icon_state = "large_engine"
 	},
 /turf/space,
 /area/transit/syndicate_raid/centcomm)
 "cr" = (
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -304,8 +309,8 @@
 	dir = 1
 	},
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -332,8 +337,8 @@
 /area/transit/syndicate_raid/centcomm)
 "cB" = (
 /obj/structure/interactive/computer/wall{
-	icon_state = "computer_wall";
-	dir = 1
+	dir = 1;
+	icon_state = "computer_wall"
 	},
 /turf/simulated/wall/dark/shuttle,
 /area/transit/syndicate_raid/centcomm)
@@ -347,8 +352,8 @@
 /area/transit/syndicate_raid/centcomm)
 "cE" = (
 /obj/structure/interactive/computer/console{
-	icon_state = "computer";
-	dir = 4
+	dir = 4;
+	icon_state = "computer"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -365,22 +370,22 @@
 /area/transit/syndicate_raid/centcomm)
 "cH" = (
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cI" = (
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cJ" = (
 /mob/living/simple/turret/syndicate{
-	icon_state = "active";
-	dir = 4
+	dir = 4;
+	icon_state = "active"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -392,8 +397,8 @@
 /area/transit/syndicate_raid/centcomm)
 "cL" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -402,19 +407,19 @@
 	dir = 4
 	},
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
 "cN" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/syndicate_raid/centcomm)
@@ -444,8 +449,8 @@
 /area/transit/syndicate_raid/bluespace)
 "cW" = (
 /obj/shuttle_controller/syndicate_raid{
-	icon_state = "shuttle";
-	dir = 8
+	dir = 8;
+	icon_state = "shuttle"
 	},
 /turf/simulated/wall/dark/shuttle,
 /area/transit/syndicate_raid/centcomm)
@@ -472,8 +477,8 @@
 /area/herald)
 "dd" = (
 /obj/structure/shuttle_engine/burst/left{
-	icon_state = "burst_l";
-	dir = 8
+	dir = 8;
+	icon_state = "burst_l"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
@@ -493,26 +498,26 @@
 /area/transit/space_cop/station)
 "dh" = (
 /obj/structure/smooth/window/shuttle/end_01{
-	icon_state = "end_01";
-	dir = 4
+	dir = 4;
+	icon_state = "end_01"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "di" = (
 /obj/structure/shuttle_engine/propulsion{
-	icon_state = "propulsion";
-	dir = 8
+	dir = 8;
+	icon_state = "propulsion"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "dj" = (
 /obj/structure/shuttle_engine/heater{
-	icon_state = "heater";
-	dir = 8
+	dir = 8;
+	icon_state = "heater"
 	},
 /obj/structure/smooth/window/directional/anchored{
-	icon_state = "single";
-	dir = 4
+	dir = 4;
+	icon_state = "single"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
@@ -521,8 +526,8 @@
 /area/transit/space_cop/station)
 "dl" = (
 /obj/structure/smooth/window/shuttle/end_02{
-	icon_state = "end_02";
-	dir = 1
+	dir = 1;
+	icon_state = "end_02"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
@@ -541,16 +546,16 @@
 /area/transit/space_cop/station)
 "dp" = (
 /obj/structure/shuttle_engine/heater{
-	icon_state = "heater";
-	dir = 8
+	dir = 8;
+	icon_state = "heater"
 	},
 /obj/structure/smooth/window/directional/anchored{
-	icon_state = "single";
-	dir = 4
+	dir = 4;
+	icon_state = "single"
 	},
 /obj/shuttle_controller/space_cop{
-	icon_state = "shuttle";
-	dir = 4
+	dir = 4;
+	icon_state = "shuttle"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
@@ -560,8 +565,8 @@
 /area/transit/space_cop/station)
 "dr" = (
 /obj/structure/shuttle_engine/burst/right{
-	icon_state = "burst_r";
-	dir = 8
+	dir = 8;
+	icon_state = "burst_r"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
@@ -661,29 +666,29 @@
 /area/wizard)
 "dN" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "dO" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "dP" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "dQ" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
+	dir = 8;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
@@ -694,8 +699,8 @@
 "dS" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
@@ -706,8 +711,8 @@
 "dU" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
@@ -735,8 +740,8 @@
 /area/wizard)
 "ea" = (
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 4
+	dir = 4;
+	icon_state = "sink"
 	},
 /obj/structure/interactive/misc/mirror/cracked/chargen{
 	pixel_x = 32
@@ -765,8 +770,8 @@
 /area/wizard)
 "ee" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
+	dir = 4;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
@@ -787,8 +792,8 @@
 /area/wizard)
 "ei" = (
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 4
+	dir = 4;
+	icon_state = "sink"
 	},
 /obj/structure/interactive/misc/mirror/cracked/chargen{
 	pixel_x = 32
@@ -812,6 +817,18 @@
 /obj/marker/antag/wizard,
 /turf/simulated/floor/wood/rich,
 /area/wizard)
+"AE" = (
+/obj/structure/interactive/plant/cactus_fruit,
+/turf/simulated/floor/basalt,
+/area/centcomm/chargen)
+"KL" = (
+/obj/structure/interactive/plant/embershroom_mushroom,
+/turf/simulated/floor/basalt,
+/area/centcomm/chargen)
+"YT" = (
+/obj/structure/interactive/adminbus/nocolide,
+/turf/simulated/floor/basalt,
+/area/centcomm/chargen)
 
 (1,1,1) = {"
 aa
@@ -58389,12 +58406,12 @@ ag
 ag
 aK
 aM
+aO
+aO
+aO
+aO
 aN
-aN
-aN
-aN
-aN
-aN
+aM
 aN
 aN
 aN
@@ -58646,16 +58663,16 @@ ag
 ag
 aK
 aM
+aO
+aO
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
+aN
+aN
+aN
+KL
+aN
+aN
+AE
 aN
 aM
 aK
@@ -58903,16 +58920,16 @@ ag
 ag
 aK
 aM
+aO
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aN
 aM
 aK
@@ -59161,16 +59178,16 @@ ag
 aK
 aM
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
 aN
+AE
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aM
 aM
 aK
 ag
@@ -59417,16 +59434,16 @@ ag
 ag
 aK
 aM
+aM
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aN
 aM
 aK
@@ -59674,17 +59691,17 @@ ag
 ag
 aK
 aM
+aM
 aN
-aO
-aO
-aO
-aO
+aN
+aN
+aM
 aR
-aO
-aS
-aO
-aO
 aN
+aS
+aN
+aN
+aO
 aM
 aK
 ag
@@ -59931,17 +59948,17 @@ ag
 ag
 aK
 aM
+aM
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aN
 aO
 aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aN
 aM
 aK
 ag
@@ -60189,15 +60206,15 @@ ag
 aK
 aM
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aN
 aM
 aK
@@ -60446,15 +60463,15 @@ ag
 aK
 aM
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
+aN
+aN
+aN
+KL
+aN
+aN
+aN
+aN
+aN
 aN
 aM
 aK
@@ -60702,16 +60719,16 @@ ag
 ag
 aK
 aM
+AE
 aN
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+AE
 aN
 aM
 aK
@@ -60959,13 +60976,13 @@ ag
 ag
 aK
 aM
+YT
 aN
 aN
 aN
 aN
-aO
-aO
-aO
+aN
+aN
 aN
 aN
 aN
