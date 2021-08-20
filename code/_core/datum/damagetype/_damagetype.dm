@@ -177,23 +177,23 @@
 		var/mob/living/L = attacker
 		for(var/attribute in attribute_stats)
 			if(!islist(attribute_damage[attribute]))
-				var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01
+				var/attack_damage = L.get_attribute_power(attribute,0,1,2) * attribute_stats[attribute]
 				new_attack_damage[attribute_damage[attribute]] += attack_damage
 				if(debug) log_debug("Getting [attack_damage] [attribute_damage[attribute]] damage from [attribute].")
 			else
 				for(var/damage_type in attribute_damage[attribute])
-					var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01 * (1/length(attribute_damage[attribute]))
+					var/attack_damage = L.get_attribute_power(attribute,0,1,2) * attribute_stats[attribute] * (1/length(attribute_damage[attribute]))
 					new_attack_damage[damage_type] += attack_damage
 					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [attribute].")
 
 		for(var/skill in skill_stats)
 			if(!islist(skill_damage[skill]))
-				var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01
+				var/attack_damage = L.get_skill_power(skill,0,1,2) * skill_stats[skill]
 				new_attack_damage[skill_damage[skill]] += attack_damage
 				if(debug) log_debug("Getting [attack_damage] [skill_damage[skill]] damage from [skill].")
 			else
 				for(var/damage_type in skill_damage[skill])
-					var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01 * (1/length(skill_damage[skill]))
+					var/attack_damage = L.get_skill_power(skill,0,1,2) * skill_stats[skill] * (1/length(skill_damage[skill]))
 					new_attack_damage[damage_type] += attack_damage
 					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 

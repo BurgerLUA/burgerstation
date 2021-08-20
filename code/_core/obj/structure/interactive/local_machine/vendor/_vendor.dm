@@ -46,6 +46,9 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
 
+	if(P.loyalty_tag == "NanoTrasen" && SStax.check_delinquent(P))
+		P.to_chat(span("warning","Error: Tax delinquency detected. Please pay your taxes at the nearest tax payment center."))
+		return FALSE
 
 	if(accepts_item)
 		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.item_count_current >= amount)

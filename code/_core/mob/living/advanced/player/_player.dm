@@ -101,6 +101,10 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
 
+	var/job/job
+	var/job_rank = 1
+	var/job_next_promotion
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
