@@ -20,7 +20,7 @@
 	value = 800
 
 /obj/item/clothing/overwear/coat/hos/revfficer
-	name = "\improper Russian Commissar's coat"
+	name = "revolutionary officer coat"
 	desc = "hey commie can i have your coat plz"
 	desc_extended = "Somehow better against bullets than actual kevlar vests."
 	icon = 'icons/obj/item/clothing/suit/revfficer.dmi'
