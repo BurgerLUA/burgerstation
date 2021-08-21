@@ -34,3 +34,5 @@
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	value = 1000
+
+	item_slot_layer = 4
