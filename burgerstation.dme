@@ -1683,6 +1683,7 @@
 #include "code\_core\obj\item\weapon\ranged\spellgem\magic_missile.dm"
 #include "code\_core\obj\item\weapon\ranged\spellgem\metronome.dm"
 #include "code\_core\obj\item\weapon\ranged\spellgem\oozey.dm"
+#include "code\_core\obj\item\weapon\ranged\spellgem\rift.dm"
 #include "code\_core\obj\item\weapon\ranged\spellgem\shock.dm"
 #include "code\_core\obj\item\weapon\ranged\spellgem\tesla.dm"
 #include "code\_core\obj\item\weapon\ranged\spellgem\unholy_skull.dm"
