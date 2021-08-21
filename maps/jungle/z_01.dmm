@@ -398,10 +398,6 @@
 	dir = 1;
 	icon_state = "pipe-t"
 	},
-/obj/structure/interactive/disposals/pipe/ending{
-	dir = 1;
-	icon_state = "pipe-t"
-	},
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "bB" = (
