@@ -468,7 +468,7 @@ mob/living/advanced/Login()
 
 	for(var/k in organs_to_check)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(O.health && O.health.health_current <= 0)
+		if(!O || !O.health || O.health.health_current <= 0)
 			return FALSE
 
 	return ..()
