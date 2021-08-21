@@ -24,7 +24,9 @@
 
 	trackable = TRUE
 
-	area_identifier = "Mission"
+	area_identifier = "Burgerstation"
+
+	safe_storage = TRUE
 
 /area/burgerstation/hall
 	name = "\improper Hallway"
@@ -67,7 +69,6 @@
 /area/burgerstation/cafe
 	name = "\improper Cafe"
 	icon_state = "cafe"
-	safe_storage = TRUE
 
 /area/burgerstation/cafe/kitchen
 	name = "\improper Kitchen"
@@ -229,7 +230,6 @@
 /area/burgerstation/cargo
 	name = "\improper Cargo"
 	icon_state = "cargo"
-	safe_storage = TRUE
 
 /area/burgerstation/maint
 	name = "\improper Maint"

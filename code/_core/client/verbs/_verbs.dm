@@ -50,7 +50,7 @@
 		verbs += /client/verb/apply_fuckup
 
 	//Moderator/Admin
-	if(permissions & FLAG_PERMISSION_MODERATOR || permissions & FLAG_PERMISSION_ADMIN)
+	if((permissions & FLAG_PERMISSION_MODERATOR) || (permissions & FLAG_PERMISSION_ADMIN))
 		verbs += /client/verb/ban
 		verbs += /client/verb/get_clients
 		verbs += /client/verb/jump_to_player
@@ -89,6 +89,7 @@
 		verbs += /client/verb/remove_language
 		verbs += /client/verb/remove_trait
 		verbs += /client/verb/add_trait
+		verbs += /client/verb/rain_gold
 
 
 	return TRUE

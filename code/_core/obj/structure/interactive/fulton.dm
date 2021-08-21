@@ -100,6 +100,7 @@
 
 	qdel(stored_movable)
 	stored_movable = null
+	qdel(src)
 
 /obj/structure/interactive/fulton/proc/can_be_extracted(var/mob/caller,var/atom/movable/M)
 	if(!M.is_player_controlled() && !M.is_safe_to_delete(check_loc = FALSE))

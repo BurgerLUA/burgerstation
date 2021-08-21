@@ -3,17 +3,36 @@
 	icon_state = "pipe-l"
 	layer = LAYER_FLOOR_PIPE
 
-/obj/structure/interactive/disposals/pipe/labeler/Entered(var/atom/A,var/oldloc)
+	var/sorting_tag_label = null //If this goes into the pipe, give it a label if any.
+	var/sorting_tag_label_partial = null //Partial labeler. If this tag
 
-	if(istype(A,/obj/disposals_container/))
-		var/obj/disposals_container/C = A
-		C.sorting_tag = sorting_tab_label
+/obj/structure/interactive/disposals/pipe/labeler/Finalize()
+	. = ..()
+	update_sprite()
 
-	return ..()
+/obj/structure/interactive/disposals/pipe/labeler/update_sprite()
 
+	if(sorting_tag_label)
+		name = "[initial(name)] ([sorting_tag_label])"
+	else
+		name = initial(name)
 
-/obj/structure/interactive/disposals/pipe/labeler/metal
-	sorting_tab_label = "metal"
+	. = ..()
 
-/obj/structure/interactive/disposals/pipe/labeler/trash
-	sorting_tab_label = "trash"
+/obj/structure/interactive/disposals/pipe/labeler/Entered(atom/movable/Obj,atom/OldLoc)
+
+	if(istype(Obj,/obj/disposals_container/))
+		var/obj/disposals_container/C = Obj
+		if(sorting_tag_label)
+			C.sorting_tag = sorting_tag_label
+		else if(sorting_tag_label_partial)
+			if(C.sorting_tag_partial == sorting_tag_label_partial)
+				C.sorting_tag = sorting_tag_label_partial
+				C.sorting_tag_partial = null
+			else
+				C.sorting_tag_partial = sorting_tag_label_partial
+
+	. = ..()
+
+/obj/structure/interactive/disposals/pipe/labeler/partial
+	name = "partial labeler pipe"

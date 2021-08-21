@@ -149,6 +149,16 @@
 	objects_max = 15
 	object_to_place = /turf/simulated/hazard/water/jungle
 
+/obj/marker/generation/sand
+	object_to_place = /turf/simulated/floor/colored/sand/beach
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 30
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_WHITE
+
 /obj/marker/generation/snow
 	object_to_place = /turf/simulated/floor/colored/snow
 	grow_amount_min = 5

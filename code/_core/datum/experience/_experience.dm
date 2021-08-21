@@ -90,10 +90,10 @@
 	return experience
 
 // https://www.desmos.com/calculator/bwdfwyg3ae
-/experience/proc/get_power(var/min_power = 0.25,var/max_power = 1,var/absolute_max_power)
+/experience/proc/get_power(var/min_power = 0.25,var/max_power = 1,var/absolute_max_power,var/bonus_level=0)
 	if(!absolute_max_power)
 		absolute_max_power = max_power
-	return min(absolute_max_power,(min_power + get_current_level()*max_power*0.01)*(1-(min_power/max_power)))
+	return min(absolute_max_power,(min_power + (bonus_level + get_current_level())*max_power*0.01)*(1-(min_power/max_power)))
 
 
 /experience/proc/on_level_up(var/old_level,var/new_level)

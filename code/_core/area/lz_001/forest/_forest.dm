@@ -12,7 +12,6 @@
 /area/lz_001/forest/village
 	name = "\improper First Light Village"
 	icon_state = "village"
-	defend = TRUE
 
 /area/lz_001/forest/village/interior
 	sunlight_freq = 0

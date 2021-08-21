@@ -20,6 +20,14 @@
 
 	density = TRUE
 
+/obj/structure/interactive/disposals/machine/outlet/Destroy()
+
+	var/turf/T = get_turf(src)
+	if(T)
+		play_sound('sound/effects/disposals/hiss.ogg',T)
+
+	. = ..()
+
 /obj/structure/interactive/disposals/machine/outlet/Entered(var/atom/A,var/oldloc)
 
 	if(istype(A,/obj/disposals_container/))
@@ -29,6 +37,11 @@
 		var/list/throw_offset = direction_to_pixel_offset(dir)
 
 		for(var/atom/movable/M in C.contents)
+
+			if(M.qdeleting)
+				log_error("Warning: [M.get_debug_name()] was qdeleting in disposals.")
+				M.force_move(null)
+				continue
 
 			if(M.anchored || M.grabbing_hand || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 				M.force_move(src.loc)
@@ -46,7 +59,7 @@
 				diff_x = throw_offset[1]
 				diff_y = throw_offset[2]
 			M.force_move(get_step(src,dir))
-			var/obj/projectile/bullet/thrown/P = M.throw_self(src,null,null,null,diff_x*throw_velocity,diff_y*throw_velocity)
+			var/obj/projectile/thrown/P = M.throw_self(src,null,null,null,diff_x*throw_velocity,diff_y*throw_velocity)
 			P.steps_allowed = rand(throw_range_min,throw_range_max)
 
 		qdel(C)

@@ -10,7 +10,7 @@
 	burst_delay = 8
 	max_bursts = 5
 
-	damage_mod = 1.3
+	damage_mod = 0.9
 
 	automatic = TRUE
 
@@ -71,13 +71,13 @@
 
 	dan_mode = TRUE
 
-	inaccuracy_modifier = 0.5
+	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 1
-	movement_spread_base = 0.05
+	movement_spread_base = 0.2
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()
-	return 0.005
+	return 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.1 - (0.05 * L.get_skill_power(SKILL_RANGED)))

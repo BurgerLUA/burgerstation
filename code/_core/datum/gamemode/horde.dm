@@ -141,7 +141,7 @@
 	announce(
 		"Central Command Update",
 		"Prepare for Landfall",
-		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 10 minutes.",
+		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 8 minutes.",
 		ANNOUNCEMENT_STATION,
 		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
 	)

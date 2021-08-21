@@ -154,6 +154,20 @@
 		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
 
+/obj/structure/interactive/vending/medical/basic
+	name = "emergency medicine vendor"
+	icon_state = "med"
+	stored_types = list(
+		/obj/item/analyzer/health,
+		/obj/item/container/medicine/bandage,
+		/obj/item/container/medicine/ointment,
+		/obj/item/container/medicine/trauma_kit,
+		/obj/item/container/medicine/burn_kit,
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone,
+	)
+
+
 /obj/structure/interactive/vending/medical/chemistry
 	name = "chemistry vendor"
 	icon_state = "chem"
@@ -180,8 +194,10 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,
+		/obj/item/clothing/uniform/utility/medical,
 		/obj/item/clothing/overwear/coat/labcoat/medical,
-		/obj/item/storage/glovebox/white
+		/obj/item/storage/glovebox/white,
+		/obj/item/defib/belt
 	)
 
 /obj/structure/interactive/vending/robotics
@@ -341,7 +357,8 @@
 		/obj/item/container/beaker/bucket/water,
 		/obj/item/container/beaker/bottle/plant_food,
 		/obj/item/storage/bags/botany/processor,
-		/obj/item/fertilizer
+		/obj/item/fertilizer,
+		/obj/item/analyzer/plant
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds

@@ -24,14 +24,10 @@
 	var/list/random_sounds = list()
 	var/list/tracks = list()
 
-	var/ //Adjust the level multiplier for mobs that spawn here using spawners. This actually just multiplies their experience from the template.
-
 	var/hazard //The id of the hazard
 
 	var/sunlight_freq = 0
 	var/sunlight_color = "#FFFFFF"
-
-	//var/assoc_wishgranter //The wishgranter ID this is area is associated with, if any.
 
 	var/weather = WEATHER_NONE //Optional weather
 
@@ -43,10 +39,7 @@
 
 	var/list/turf/sunlight_turfs = list()
 
-	var/defend = FALSE //Set to true if you're supposed to defend this area.
-
-	var/safe_storage = FALSE
-
+	var/safe_storage = FALSE //Set to true if items don't ever delete due to chunk cleaning. This means mobs don't get spawned as well.
 	var/interior = FALSE
 
 	var/average_x = 0
@@ -174,3 +167,22 @@
 		LS.toggle()
 		return TRUE
 	return FALSE
+
+/area/proc/sync_lights(var/desired_state = TRUE)
+
+	for(var/obj/structure/interactive/lighting/L in src.contents)
+		if(!L.lightswitch)
+			continue
+		if(L.on == desired_state)
+			continue
+		L.on = desired_state
+		L.update_atom_light()
+		L.update_sprite()
+
+	for(var/obj/structure/interactive/light_switch/LS in src.contents)
+		if(LS.on == desired_state)
+			continue
+		LS.on = desired_state
+		LS.update_sprite()
+
+	return TRUE

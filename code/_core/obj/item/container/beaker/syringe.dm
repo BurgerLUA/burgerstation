@@ -292,10 +292,22 @@
 /obj/item/container/syringe/medipen/hypospray/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
-	if(inject_amount == 10)
-		inject_amount = 20
-		caller.to_chat(span("notice","You will now inject [inject_amount] units at a time with \the [src]."))
-	else
-		inject_amount = 10
-		caller.to_chat(span("notice","You will now inject [inject_amount] units at a time with \the [src]."))
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
+		var/choice = input("How much do you want to inject at once?","Min: 5 Max: [reagents.volume_max]") as null|num
+		INTERACT_CHECK
+		if(choice)
+			transfer_amount = clamp(choice,5,reagents.volume_max)
+			caller.to_chat(span("notice","You will now inject [transfer_amount] units at a time with \the [src]."))
+			return TRUE
+		else return TRUE
+
+	var/initial_amount = initial(transfer_amount)
+
+	transfer_amount += initial_amount
+	if(transfer_amount > reagents.volume_max)
+		transfer_amount = initial_amount
+
+	caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
+
 	return TRUE
+

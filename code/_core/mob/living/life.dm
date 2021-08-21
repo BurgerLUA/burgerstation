@@ -260,6 +260,8 @@
 
 	update_alpha(handle_alpha())
 
+	update_plane()
+
 	if(health && queue_health_update)
 		health.update_health()
 		queue_health_update = FALSE
@@ -275,6 +277,13 @@
 		deafened_duration -= LIFE_TICK
 
 	return TRUE
+
+/mob/living/proc/update_plane()
+
+	if(alpha != 255)
+		plane = PLANE_MOB_STEALTH
+	else
+		plane = PLANE_MOB
 
 /mob/living/proc/handle_hunger()
 

@@ -123,7 +123,8 @@
 	if(buckled)
 		return TRUE
 
-	for(var/mob/living/L in loc.contents)
+	var/mob/living/L = locate() in loc.contents
+	if(L)
 		return TRUE
 
 	if(door_state == SLEEPER_OPENED && opened_time >= 100)

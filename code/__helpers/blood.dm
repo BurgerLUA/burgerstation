@@ -11,6 +11,4 @@
 	var/atom/movable/created_blood = new desired_effect(desired_loc,desired_color,desired_x,desired_y)
 	desired_loc.blood_level++
 
-	queue_delete(created_blood,ITEM_DELETION_TIME_DROPPED,TRUE)
-
 	return created_blood

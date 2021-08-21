@@ -88,21 +88,6 @@
 	loot_count = 4
 	chance_none = 25
 
-/loot/weapon/pistol/military/mod
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod,
-		/obj/item/magazine/pistol_40,
-		/obj/item/magazine/pistol_40,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod = 1,
-		/obj/item/magazine/pistol_40 = 4
-	)
-	loot_count = 4
-	chance_none = 25
-
 /loot/weapon/pistol/military/nanotrasen
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen,

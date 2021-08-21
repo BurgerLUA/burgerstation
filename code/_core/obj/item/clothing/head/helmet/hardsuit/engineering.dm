@@ -6,9 +6,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 20,
-		PIERCE = 20,
+		BLADE = 25,
+		BLUNT = 40,
+		PIERCE = 40,
 		LASER = 20,
 		ARCANE = -60,
 		HEAT = 60,

@@ -42,6 +42,8 @@
 
 	attack_delay = 0
 
+	var/allow_glancing_blows = FALSE
+
 /damagetype/ranged/calculate_value(var/obj/item/I)
 	. = ..()
 	. *= 2
@@ -54,6 +56,18 @@
 
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return FALSE
+
+
+/damagetype/ranged/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
+
+	if(allow_glancing_blows && is_living(attacker))
+		var/mob/living/L = attacker
+		var/glancing_blow_chance = 5 + (0.5 - L.get_skill_power(SKILL_RANGED))*95
+		if(glancing_blow_chance > 0 && prob(glancing_blow_chance))
+			damage_multiplier *= 0.5
+
+	. = ..()
+
 
 /*
 /damagetype/ranged/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)

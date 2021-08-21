@@ -7,10 +7,6 @@
 	var/fed_item = null
 	var/feed_delay = 1
 
-//	if(istype(battery))
-//		battery.charge_current = min(battery.charge_max,battery.charge_current+charge_per_pump)
-
-
 /obj/item/weapon/ranged/energy/fed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object))
@@ -23,6 +19,9 @@
 			caller.to_chat(span("notice","You've recharged \the [src.name]."))
 			qdel(object)
 			return
+		else
+			caller.to_chat(span("warning","You can't use this for refilling!"))
+			return FALSE
 
 	if(is_item(object))
 		var/obj/item/I = object

@@ -72,7 +72,7 @@
 
 	death_threshold = -50
 
-	movement_delay = DECISECONDS_TO_TICKS(1.75)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
@@ -468,7 +468,7 @@ mob/living/advanced/Login()
 
 	for(var/k in organs_to_check)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(O.health && O.health.health_current <= 0)
+		if(!O || !O.health || O.health.health_current <= 0)
 			return FALSE
 
 	return ..()

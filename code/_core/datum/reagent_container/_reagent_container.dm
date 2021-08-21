@@ -220,7 +220,9 @@
 		owner.update_sprite()
 
 	if(volume_current > volume_max)
-		splash(null,get_turf(owner),volume_current - volume_max)
+		var/difference = volume_current - volume_max
+		var/chosen_reagent = stored_reagents[length(stored_reagents)]
+		remove_reagent(chosen_reagent,CEILING(difference,1))
 
 	return TRUE
 
@@ -378,10 +380,11 @@
 	if(amount > 0)
 		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 		var/mob/living/L
-		if(is_living(src.owner))
-			L = src.owner
-		else if(is_living(src.owner.loc))
-			L = src.owner.loc
+		if(src.owner)
+			if(is_living(src.owner))
+				L = src.owner
+			else if(is_living(src.owner.loc))
+				L = src.owner.loc
 		if(L)
 			amount = R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 

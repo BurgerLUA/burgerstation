@@ -21,8 +21,8 @@
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	var/sprint_delay_mul = 1
-	var/jog_delay_mul = 1.5
-	var/walk_delay_mul = 2
+	var/jog_delay_mul = 1.25
+	var/walk_delay_mul = 1.5
 
 	var/attack_turn = 0
 	var/attack_turn_delay = 10

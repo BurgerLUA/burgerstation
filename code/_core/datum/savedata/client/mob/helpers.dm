@@ -93,6 +93,14 @@ var/global/allow_loading = TRUE
 		CRASH_SAFE("FATAL ERROR: Tried to save a character without an actual character!")
 		return FALSE
 
+	if(A.qdeleting)
+		log_error("SAVE ERROR: Tried saving a character that was qdeleting!")
+		return FALSE
+
+	if(A.loc == null)
+		log_error("SAVE ERROR: Tried saving a character that had a null loc!")
+		return FALSE
+
 	if(!istype(A))
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 2000.</h2>"))
 		CRASH_SAFE("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
@@ -110,20 +118,24 @@ var/global/allow_loading = TRUE
 		usr?.to_chat(span("warning","Your character was not saved as it is still initializing. This is to prevent save corruption. If you believe you received this message in error, contact Burger on discord."))
 		return FALSE
 
+	A.is_saving = TRUE
 	var/list/loaded_data = A.get_mob_data(save_inventory,force,died)
-
 
 	if(!length(loaded_data))
 		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no data! Contact burger on how this happened with error code: 01."))
+		A.is_saving = FALSE
 		return FALSE
 	else if(!length(loaded_data["organs"]))
 		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no organ data! Contact burger on how this happened with error code: 02."))
+		A.is_saving = FALSE
 		return FALSE
 	else if(!length(loaded_data["skills"]))
 		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no skill data! Contact burger on how this happened with error code: 03."))
+		A.is_saving = FALSE
 		return FALSE
 	else if(!length(loaded_data["attributes"]))
 		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no attribute data! Contact burger on how this happened with error code: 04."))
+		A.is_saving = FALSE
 		return FALSE
 	else if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		if(died)
@@ -132,5 +144,7 @@ var/global/allow_loading = TRUE
 			A.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
 		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
+
+	A.is_saving = FALSE
 
 	return TRUE

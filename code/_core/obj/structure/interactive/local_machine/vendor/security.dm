@@ -12,6 +12,7 @@
 		/obj/item/clothing/undertop/underwear/shirt/security,
 		/obj/item/clothing/pants/normal/security,
 		/obj/item/clothing/shirt/normal/security,
+		/obj/item/clothing/uniform/utility/security,
 		/obj/item/storage/shoebox/jackboot/,
 		/obj/item/storage/glovebox/padded/,
 		/obj/item/clothing/back/storage/satchel/poly/security,
@@ -39,6 +40,7 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/reinforced/ntops,
 		/obj/item/clothing/shirt/normal/reinforced/ntops,
+		/obj/item/clothing/uniform/utility/command,
 		/obj/item/storage/shoebox/jackboot,
 		/obj/item/storage/glovebox/padded,
 		/obj/item/clothing/back/storage/satchel/poly/ntops,
@@ -56,7 +58,9 @@
 		/obj/item/armor_plate/light,
 		/obj/item/armor_plate/medium,
 		/obj/item/armor_plate/heavy,
-		/obj/item/weapon/melee/energy/grazer
+		/obj/item/weapon/melee/energy/grazer,
+		/obj/item/clothing/head/helmet/full/eod_helm,
+		/obj/item/clothing/overwear/armor/eod
 	)
 
 /obj/structure/interactive/vending/security/gundrobe

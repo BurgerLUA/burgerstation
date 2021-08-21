@@ -46,6 +46,11 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
 
+	/*
+	if(P.loyalty_tag == "NanoTrasen" && SStax.check_delinquent(P))
+		P.to_chat(span("warning","Error: Tax delinquency detected. Please pay your taxes at the nearest tax payment center."))
+		return FALSE
+	*/
 
 	if(accepts_item)
 		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.item_count_current >= amount)
@@ -63,7 +68,7 @@ var/global/list/equipped_antags = list()
 
 	return TRUE
 
-/obj/structure/interactive/vending/proc/modify_item(var/obj/item/I)
+/obj/structure/interactive/vending/proc/modify_item(var/obj/item/I,var/obj/item/base_item)
 	return TRUE
 
 /obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0)
@@ -73,7 +78,7 @@ var/global/list/equipped_antags = list()
 
 	var/obj/item/new_item
 	new_item = new associated_item.type(get_turf(src))
-	modify_item(new_item)
+	modify_item(new_item,associated_item)
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	FINALIZE(new_item)
@@ -88,18 +93,22 @@ var/global/list/equipped_antags = list()
 
 	return new_item
 
+/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn)
+	var/obj/item/I = new item_path(turf_spawn)
+	INITIALIZE(I)
+	GENERATE(I)
+	FINALIZE(I)
+	return I
+
+
 /obj/structure/interactive/vending/Initialize()
 
 	var/turf/T = get_turf(src)
-
 	for(var/k in stored_types)
-		var/obj/item/I = new k(T)
-		INITIALIZE(I)
-		GENERATE(I)
-		FINALIZE(I)
+		create_item(k,T)
 	stored_types.Cut()
 
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/vending/proc/get_bullshit_price(var/desired_price)
 

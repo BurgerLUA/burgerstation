@@ -3,22 +3,22 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		HOLY = 20
+		BLUNT = 10,
+		PIERCE = 10,
+		HOLY = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		HOLY = 30
+		BLUNT = 10,
+		PIERCE = 10,
+		HOLY = 10
 	)
 
 // note, to skill_stats list then set a number for the max damage you want skillscaling to do at level 100 (or more, lol.) then, under that srt the types of damage you want it to do
 // this system is blasphemy, i say.
 	skill_stats = list(
-		SKILL_PRAYER = 300,
+		SKILL_PRAYER = 170,
 	)
 
 
@@ -27,8 +27,7 @@
 	)
 
 	bonus_experience_skill = list(
-		SKILL_PRAYER = 10, //75%
-		SKILL_RANGED = 40
+		SKILL_PRAYER = 0.3, //75%
 	)
 
 /damagetype/ranged/bullet/holybullet/surplus

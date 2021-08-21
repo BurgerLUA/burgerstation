@@ -35,10 +35,6 @@ SUBSYSTEM_DEF(living)
 	return ..()
 
 /subsystem/living/proc/process_living(var/mob/living/L,var/do_slow=FALSE)
-	if(!L.initialized || L.qdeleting)
-		return TRUE
-	if(L.ai && !L.ai.active)
-		return TRUE
 	L.on_life()
 	if(do_slow)
 		L.on_life_slow()
@@ -51,6 +47,10 @@ SUBSYSTEM_DEF(living)
 	for(var/k in all_living)
 		var/mob/living/L = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		if(!L.initialized || L.qdeleting)
+			continue
+		if(L.ai && !L.ai.active)
+			continue
 		if(process_living(L,do_slow) == null)
 			if(!L.ckey_last)
 				log_error("Warning! [L.get_debug_name()] is not running process_living() correctly! They will be deleted as a result.")

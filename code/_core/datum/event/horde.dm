@@ -1,7 +1,7 @@
 /event/horde
 	name = "Horde"
 
-	probability = 30 //relative
+	probability = 10 //relative
 
 	occurances_max = 10
 
@@ -54,7 +54,7 @@
 
 
 
-	var/spawn_amount = 4 + min(6,CEILING(length(all_players)*0.1,1))
+	var/spawn_amount = 6 + min(6,CEILING(length(all_players)*0.1,1))
 
 	var/turf/T1 = get_turf(starting_marker)
 	var/turf/T2 = get_turf(ending_marker)

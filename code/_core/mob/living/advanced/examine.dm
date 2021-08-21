@@ -7,7 +7,7 @@
 		survival_skill = 999
 	else if(is_advanced(examiner))
 		var/mob/living/advanced/A = examiner
-		survival_skill = A.get_skill_level(SKILL_SURVIVAL)
+		survival_skill = A.get_skill_power(SKILL_SURVIVAL,0,1,2)*100
 
 	for(var/k in src.organs)
 
@@ -60,7 +60,7 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 		survival_skill = 999
 	else if(is_advanced(examiner))
 		var/mob/living/advanced/A = examiner
-		survival_skill = A.get_skill_level(SKILL_SURVIVAL)
+		survival_skill = A.get_skill_power(SKILL_SURVIVAL,0,1,2)*100
 
 	. = list()
 

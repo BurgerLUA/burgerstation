@@ -1,4 +1,4 @@
-/obj/item/clothing/head/hat/bandana
+/obj/item/clothing/head/hat/bandana //s
 	name = "bandana"
 	desc = "Damn, it feels good to be a gangsta."
 	desc_extended = "Can be worn both as a mask to cover up your face, or as a hat."
@@ -6,12 +6,14 @@
 	icon_state = "inventory"
 	slot_icons = TRUE
 
+
 	item_slot = SLOT_HEAD | SLOT_FACE
 	ignore_other_slots = TRUE
 
 	dyeable = TRUE
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
+	item_slot_layer = 1
 
 	defense_rating = list(
 		ARCANE = 20,
@@ -31,7 +33,7 @@
 		worn_layer = LAYER_MOB_CLOTHING_HELMET
 
 	if(new_location.item_slot & SLOT_FACE)
-		hidden_organs = list(BODY_HAIR_HEAD = TRUE, BODY_HAIR_FACE = TRUE)
+		hidden_organs = list(BODY_HAIR_HEAD = FALSE, BODY_HAIR_FACE = TRUE)
 		worn_layer = LAYER_MOB_CLOTHING_MASK
 
 

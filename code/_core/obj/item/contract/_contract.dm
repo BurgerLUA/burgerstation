@@ -10,6 +10,7 @@
 	var/amount_current = 0
 	var/amount_max = 0
 	var/obj/item/reward
+	var/burgerbux_reward = 0
 	var/objective_text = "objectives completed"
 
 	drop_sound = 'sound/items/drop/paper.ogg'
@@ -32,10 +33,12 @@
 /obj/item/contract/Generate()
 	. = ..()
 	if(!reward)
-		CRASH_SAFE("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
+		log_error("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
 		qdel(src)
 	else
-		reward = new reward
+		reward = new reward(src)
+		if(!istype(reward,/obj/item/currency))
+			reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)
@@ -59,7 +62,10 @@
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]).")
+	if(burgerbux_reward)
+		. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]) and Burgerbux(x[burgerbux_reward]).")
+	else
+		. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]).")
 	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
@@ -67,11 +73,13 @@
 	. = ..()
 	SAVEATOM("reward")
 	SAVEVAR("amount_current")
+	SAVEVAR("burgerbux_reward")
 
 /obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("reward")
 	LOADVAR("amount_current")
+	LOADVAR("burgerbux_reward")
 
 /obj/item/contract/post_move(var/atom/old_loc)
 
@@ -92,7 +100,11 @@
 
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
-	P.to_chat(span("notice","You are awared \the [reward.name] for completing the contract."))
+	if(burgerbux_reward)
+		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
+		P.adjust_burgerbux(burgerbux_reward)
+	else
+		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
 	drop_item(get_turf(P))
 	P.put_in_hands(reward)
 	reward = null //Just in case.

@@ -26,6 +26,7 @@
 		/obj/item/deployable/barricade/filled,
 		/obj/item/rcd,
 		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
@@ -47,6 +48,7 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/engineering,
 		/obj/item/clothing/shirt/normal/engineering,
+		/obj/item/clothing/uniform/utility/engineering,
 		/obj/item/storage/shoebox/workboot/,
 		/obj/item/storage/glovebox/brown_padded/,
 		/obj/item/clothing/back/storage/satchel/poly/engineering,
@@ -61,5 +63,6 @@
 		/obj/item/clothing/head/light/hardhat,
 		/obj/item/clothing/overwear/coat/vest/colored/brown,
 		/obj/item/clothing/glasses/material,
-		/obj/item/clothing/glasses/meson
+		/obj/item/clothing/glasses/meson,
+		/obj/item/clothing/overwear/hardsuit/engineering
 	)

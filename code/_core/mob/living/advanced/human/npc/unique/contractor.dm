@@ -17,6 +17,8 @@
 	density = TRUE
 	size = SIZE_10
 
+	level = 400
+
 	var/obj/structure/interactive/vending/stored_vendor = /obj/structure/interactive/vending/contract
 
 /mob/living/advanced/npc/unique/contractor/Initialize()

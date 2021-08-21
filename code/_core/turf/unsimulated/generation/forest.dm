@@ -13,6 +13,19 @@
 		disallow_generation = TRUE
 		return ..()
 
+	if(x == 255-VIEW_RANGE*2 || (x > 255-VIEW_RANGE*2 && path_only))
+		if(prob(5))
+			new /obj/marker/generation/sand(src)
+		new /turf/simulated/floor/colored/sand/beach(src)
+		disallow_generation = TRUE
+		return ..()
+	else if(x > 255-VIEW_RANGE*2)
+		new /turf/simulated/hazard/water/sea(src)
+		new /area/dungeon/z_01/forest(src)
+		disallow_generation = TRUE
+		return ..()
+
+
 	var/noise = 0
 
 	var/instances = 3

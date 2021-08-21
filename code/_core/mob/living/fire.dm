@@ -43,7 +43,7 @@
 	play_sound('sound/weapons/magic/fireball.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	if(ai)
-		ai.on_damage_received(null,source,null,null,added_fire_stacks*5,null,FALSE)
+		ai.on_damage_received(null,source,null,null,null,added_fire_stacks*5,null,FALSE)
 
 	if(added_fire_stacks) adjust_fire_stacks(added_fire_stacks)
 

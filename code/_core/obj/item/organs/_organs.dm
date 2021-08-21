@@ -124,7 +124,7 @@
 	if(is_inventory(old_loc) || is_inventory(loc) || is_advanced(old_loc) || is_advanced(loc))
 		update_sprite()
 
-/obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
@@ -146,6 +146,7 @@
 	return FALSE
 
 /obj/item/organ/Destroy()
+	color = "#000000"
 	attached_organ = null
 	attached_organs?.Cut()
 	return ..()

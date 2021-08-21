@@ -1,7 +1,7 @@
 /obj/structure/interactive/vending/old_ammo
 	name = "ancient ammo vendor"
 	desc = "What a weird selection of ammo..."
-	desc_extended = "An old, suprisingly intact ammo vendor."
+	desc_extended = "An old, surprisingly intact ammo vendor."
 	icon_state = "liberationstation"
 
 	stored_types = list(

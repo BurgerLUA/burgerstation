@@ -174,7 +174,7 @@
 	return ..()
 
 /obj/item/bullet_cartridge/revolver_762/surplus
-	name = "\improper surplus .22 pistol cartridge"
+	name = "\improper surplus 7.62x38mmR revolver cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_762/surplus
 	jam_chance = 1
 	value = 0

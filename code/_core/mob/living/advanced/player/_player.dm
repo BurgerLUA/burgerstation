@@ -5,6 +5,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
+	movement_delay = DECISECONDS_TO_TICKS(1)
+
 	health_base = 200
 	stamina_base = 100
 	mana_base = 100
@@ -29,7 +31,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	has_hard_crit = TRUE
 
-	var/currency = 3000
+	var/currency = 8000
 	var/revenue = 0
 	var/expenses = 0
 	var/partial_tax = 0 //Taxes you couldn't pay.
@@ -83,8 +85,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/save_id
 
-	//movement_delay = DECISECONDS_TO_TICKS(1.5)
-
 	var/ai_steps = 0 //Determining when the AI activates.
 
 	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
@@ -95,10 +95,22 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/list/linked_portals
 
+	var/last_autosave = 0 //The last time this player saved.
+
+	enable_chunk_clean = FALSE
+
+	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
+
+	var/job/job
+	var/job_rank = 1
+	var/job_next_promotion
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
 	FINALIZE(click_and_drag_icon)
+	last_autosave = world.time
+	all_players += src
 	return ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -121,10 +133,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	return TRUE
 
-/mob/living/advanced/player/Initialize()
-	. = ..()
-	all_players += src
-
 /mob/living/advanced/player/setup_name()
 
 	if(real_name == DEFAULT_NAME)
@@ -135,6 +143,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	return TRUE
 
 /mob/living/advanced/player/Destroy()
+
+	if(is_saving)
+		log_error("FATAL ERROR: Mob [src.get_debug_name()] was qdeleted while saving! Save errors expected!")
 
 	if(followers)
 		for(var/k in followers)
@@ -188,6 +199,15 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	. = ..()
 
 	if(.)
+
+		if(!dead && ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
+			var/area/A = get_area(src)
+			if(istype(A,/area/burgerstation))
+				var/area/A2 = get_area(old_loc)
+				if(!istype(A2,/area/burgerstation))
+					last_autosave = world.time //Safety
+					var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+					mobdata?.save_character(src)
 
 		if(dialogue_target_id)
 			dialogue_target_id = null

@@ -10,54 +10,102 @@
 
 	var/item_count_current = 1
 
-	var/list/valid_players = list()
+	var/list/valid_ckeys = list()
 
-	var/image/cached_image
+	var/image/cached_coin
+	var/image/cached_sparkle
 
 	var/falling = FALSE
 
+/obj/structure/interactive/coin_drop/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
+
 /obj/structure/interactive/coin_drop/Destroy()
-	if(cached_image)
-		for(var/k in valid_players)
-			var/mob/M = k
-			if(M.client)
-				M.client -= cached_image
-		cached_image = null
-	valid_players?.Cut()
+	if(cached_coin || cached_sparkle)
+		for(var/k in valid_ckeys)
+			var/client/C = CLIENT(k)
+			if(cached_coin)
+				C -= cached_coin
+			if(cached_sparkle)
+				C -= cached_sparkle
+		cached_coin = null
+		cached_sparkle = null
+	valid_ckeys?.Cut()
 	. = ..()
 
+/obj/structure/interactive/coin_drop/proc/get_pickup_amount(var/mob/caller,var/loop_turf=TRUE)
+	. = item_count_current
+	if(loop_turf)
+		for(var/obj/structure/interactive/coin_drop/CD in loc.contents)
+			if(CD == src)
+				continue
+			if(!(caller.client.ckey in CD.valid_ckeys))
+				continue
+			. += CD.get_pickup_amount(caller,FALSE)
+			if(. >= 100) //100 at a time only.
+				break
+	valid_ckeys -= caller.client.ckey
+	caller.client.images -= cached_coin
+	caller.client.images -= cached_sparkle
+	if(length(valid_ckeys) <= 0)
+		queue_delete(src,10)
+
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(3)
+
 	if(!caller || !caller.client)
 		return TRUE
-	if(!(caller in valid_players))
+	if(!(caller.client.ckey in valid_ckeys))
+		return TRUE
+	if(!istype(object,/obj/item/currency/gold/) && !is_inventory(object))
+		return TRUE
+
+	var/pickup_amount =	get_pickup_amount(caller,TRUE)
+	pickup_amount = min(pickup_amount,100)
+	if(pickup_amount <=0)
 		return TRUE
 	var/obj/item/currency/gold/G = new(get_turf(src))
-	G.item_count_current = item_count_current
+	G.item_count_current = pickup_amount
+	SSeconomy.gold_in_circulation += pickup_amount
 	INITIALIZE(G)
 	FINALIZE(G)
 	G.pixel_x = pixel_x
-	G.pixel_y= pixel_y
-	valid_players -= caller
-	caller.client.images -= cached_image
+	G.pixel_y = pixel_y
 	object.click_on_object(caller,G,location,control,params)
-	SSeconomy.gold_in_circulation += item_count_current
-	if(length(valid_players) <= 0)
-		qdel(src)
 	return TRUE
 
 /obj/structure/interactive/coin_drop/update_sprite()
+
 	. = ..()
-	var/image/new_image = new/image(icon,icon_state)
-	new_image.appearance = appearance
-	new_image.loc = src
-	for(var/k in valid_players)
-		var/mob/M = k
-		if(!M.client)
+
+	var/image/new_coin = new/image(icon,icon_state)
+	new_coin.appearance = appearance
+	new_coin.loc = src
+
+	var/image/new_sparkle
+	if(!falling)
+		new_sparkle = new/image(icon,"sparkle_fall_[clamp(item_count_current,1,5)]")
+		new_sparkle.appearance = appearance
+		new_sparkle.loc = src
+		new_sparkle.layer = layer + 0.1
+
+	for(var/k in valid_ckeys)
+		var/client/C = CLIENT(k)
+		if(!C)
 			continue
-		if(cached_image)
-			M.client.images -= cached_image
-		M.client.images += new_image
-	cached_image = new_image
+		if(cached_coin)
+			C.images -= cached_coin
+		if(cached_sparkle)
+			C.images -= cached_sparkle
+		C.images += new_coin
+		if(new_sparkle)
+			C.images += new_sparkle
+
+	cached_sparkle = new_sparkle
+	cached_coin = new_coin
 	icon = null
 
 /obj/structure/interactive/coin_drop/update_icon()
@@ -67,12 +115,6 @@
 		icon_state = "[clamp(item_count_current,1,5)]_anim"
 	else
 		icon_state = "[clamp(item_count_current,1,5)]_fall"
-
-/obj/structure/interactive/coin_drop/update_overlays()
-	. = ..()
-	if(!falling)
-		var/image/I = new/image(icon,"sparkle_fall_[clamp(item_count_current,1,5)]")
-		add_overlay(I)
 
 /obj/structure/interactive/coin_drop/proc/fly(var/turf/from_turf)
 
@@ -112,12 +154,14 @@
 
 	amount = min(amount,100)
 
-	var/list/valid_players = list()
+	var/list/valid_ckeys = list()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
+		if(!P.client)
+			continue
 		if(get_dist(P,T) > BOSS_RANGE)
 			continue
-		valid_players |= P
+		valid_ckeys |= P.client.ckey
 
 	spawn while(amount>0)
 		var/obj/structure/interactive/coin_drop/G = new(get_step(T,pick(DIRECTIONS_ALL)))
@@ -125,7 +169,7 @@
 		G.pixel_y = rand(-4,4)
 		G.item_count_current = min(amount,rand(min(5,CEILING(amount/10,1)),5))
 		amount -= G.item_count_current
-		G.valid_players = valid_players.Copy()
+		G.valid_ckeys = valid_ckeys.Copy()
 		INITIALIZE(G)
 		FINALIZE(G)
 		G.fly(T)
