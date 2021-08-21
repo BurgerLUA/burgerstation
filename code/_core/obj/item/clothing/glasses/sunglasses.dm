@@ -113,7 +113,7 @@
 /obj/item/clothing/glasses/sun/security/red
 	name = "combat sensors suite sunglasses"
 	rarity = RARITY_MYTHICAL
-	desc_extended = "A syndicate heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking syndicate operatives. Comes with build-in thermals as well."
+	desc_extended = "A syndicate heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking syndicate operatives. Comes with built-in thermals as well."
 	value = 1000
 
 	defense_rating = list(
@@ -129,7 +129,7 @@
 /obj/item/clothing/glasses/sun/security/revolutionary
 	name = "ballistic goggles"
 	rarity = RARITY_MYTHICAL
-	desc_extended = "An old yet well-maintained pair of ballistic goggles with a built-in heads up display kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking revolutionary soldiers. Comes with build-in thermals as well."
+	desc_extended = "An old yet well-maintained pair of ballistic goggles with a built-in heads up display kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking revolutionary soldiers. Comes with built-in thermals as well."
 	icon = 'icons/obj/item/clothing/glasses/rev_goggles.dmi'
 	value = 1000
 
