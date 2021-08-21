@@ -155,6 +155,8 @@
 		/obj/item/clothing/ears/headset/revolutionary,
 		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/armor/seva/mono,
+		/obj/item/clothing/head/hat/skimask/black,
+		/obj/item/clothing/glasses/sun/security/revolutionary,
 		/obj/item/clothing/mask/gas/mercenary,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
