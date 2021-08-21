@@ -177,6 +177,22 @@ list(
 
 	value = 300
 
+/obj/item/device/radio/revolutionary
+	name = "\improper Revolutionary Radio"
+
+	frequency_min = RADIO_FREQ_REVOLUTIONARY
+	frequency_max = RADIO_FREQ_COMMON
+
+	frequency = RADIO_FREQ_REVOLUTIONARY
+
+	listening_frequencies = list(
+		RADIO_FREQ_COMMON,
+		RADIO_FREQ_REVOLUTIONARY
+	)
+
+	broadcasting_range = 1
+
+	value = 300
 
 /obj/item/device/radio/virtual_reality
 	name = "\improper Virtual Reality Radio"

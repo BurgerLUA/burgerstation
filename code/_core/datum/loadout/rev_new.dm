@@ -152,7 +152,7 @@
 
 /loadout/rev/player_antagonist
 	spawning_items = list(
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/revolutionary,
 		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/mask/gas/mercenary,
