@@ -55,15 +55,15 @@
 
 	var/image/I1 = new/image(icon,"scroll_1")
 	I1.appearance_flags = appearance_flags | RESET_COLOR
-	I1.alpha = 200
+	I1.alpha = 225
 	add_overlay(I1)
 
 	var/image/I2 = new/image(icon,"scroll_2")
 	I2.appearance_flags = appearance_flags | RESET_COLOR
-	I2.alpha = 200
+	I2.alpha = 225
 	add_overlay(I2)
 
 	var/image/I3 = new/image(icon,"scroll_3")
 	I3.appearance_flags = appearance_flags | RESET_COLOR
-	I3.alpha = 200
+	I3.alpha = 225
 	add_overlay(I3)

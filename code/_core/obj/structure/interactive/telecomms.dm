@@ -84,6 +84,7 @@ var/global/list/all_telecomms = list()
 	add_telecomm("Burgerstation")
 	add_telecomm("Mission")
 	add_telecomm("Central Command")
+	add_telecomm("Fallback")
 	. = ..()
 
 /obj/structure/interactive/telecomms/vr

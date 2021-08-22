@@ -1569,6 +1569,9 @@
 "gR" = (
 /turf/unsimulated/generation/surface/cave_turf,
 /area/lz_001/caves/crab)
+"gS" = (
+/turf/simulated/openspace,
+/area)
 "gT" = (
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/crab)
@@ -4574,8 +4577,8 @@ cp
 cp
 cp
 eA
-dg
-dg
+gS
+gS
 ch
 ah
 ah
@@ -4831,8 +4834,8 @@ cp
 cp
 cp
 eX
-dg
-dg
+gS
+gS
 ch
 ah
 ah
@@ -5088,8 +5091,8 @@ cp
 cp
 cp
 gb
-dg
-dg
+gS
+gS
 ch
 ah
 ah
