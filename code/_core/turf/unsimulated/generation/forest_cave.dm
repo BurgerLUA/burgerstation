@@ -13,7 +13,7 @@
 
 	if(no_wall)
 		new /turf/simulated/floor/colored/dirt/cave(src)
-		new /area/dungeon/z_01/forest/interior(src)
+		if(src.loc.type == /area/) new /area/dungeon/z_01/forest/interior(src)
 		disallow_generation = TRUE
 		return ..()
 
@@ -23,7 +23,7 @@
 			new /obj/marker/generation/rock_wall/small(src)
 		else if(prob(1))
 			new /obj/marker/generation/rock_wall(src)
-		new /area/dungeon/z_01/forest/interior(src)
+		if(src.loc.type == /area/) new /area/dungeon/z_01/forest/interior(src)
 		return ..()
 
 	var/seed_resolution = WORLD_SIZE
@@ -113,7 +113,7 @@
 	else if(needs_bear && prob(1))
 		new /obj/marker/generation/mob/black_bear(src)
 
-	new /area/dungeon/z_01/forest/interior(src)
+	if(src.loc.type == /area/) new /area/dungeon/z_01/forest/interior(src)
 
 	if(shitfix)
 		disallow_generation = TRUE

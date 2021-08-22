@@ -21,7 +21,7 @@
 	interior = FALSE
 
 /area/dungeon/z_01/snow
-	name = "\improper Level 1 - Surface Snowplains"
+	name = "unexplored surface forrest"
 	icon_state = "snow"
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20
@@ -38,12 +38,12 @@
 	interior = FALSE
 
 /area/dungeon/z_01/snow/interior
-	name = "\improper Level 1 - Surface Caves"
+	name = "unexplored surface caves"
 	sunlight_freq = 0
 	interior = TRUE
 
 /area/dungeon/z_01/forest
-	name = "\improper Level 1 - Surface Forrest"
+	name = "unexplored surface forrest"
 	icon_state = "forrest"
 	cheese_type = /reagent/nutrition/cheese/cheddar
 	sunlight_freq = 8
@@ -54,7 +54,7 @@
 	interior = FALSE
 
 /area/dungeon/z_01/forest/interior
-	name = "\improper Level 1 - Surface Caves"
+	name = "unexplored surface caves"
 	sunlight_freq = 0
 	interior = TRUE
 
