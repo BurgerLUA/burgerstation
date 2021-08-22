@@ -34,7 +34,7 @@
 		/obj/item/disk/rcd/oresmelter,
 		/obj/item/disk/rcd/orestorage,
 		/obj/item/disk/rcd/stacker,
-		/obj/item/disk/rcd/chair
+		/obj/item/disk/rcd/chair,
 		/obj/item/disk/rcd/table,
 		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,
