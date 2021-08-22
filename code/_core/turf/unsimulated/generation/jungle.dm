@@ -1,5 +1,5 @@
 /turf/unsimulated/generation/jungle
-	name = "deep jungle generation"
+	name = "jungle generation"
 	icon_state = "jungle"
 	var/path_only = FALSE
 
