@@ -131,7 +131,7 @@
 		/obj/item/disk/rcd/wall/bunker,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
-		/obj/item/disk/rcd/chair
+		/obj/item/disk/rcd/chair,
 		/obj/item/disk/rcd/table,
 		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,
@@ -180,7 +180,7 @@
 		/obj/item/disk/rcd/wall/bunker,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
-		/obj/item/disk/rcd/chair
+		/obj/item/disk/rcd/chair,
 		/obj/item/disk/rcd/table,
 		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,

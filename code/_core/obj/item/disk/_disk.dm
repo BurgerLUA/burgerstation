@@ -174,7 +174,7 @@
 		"cost" = 250
 	)
 
-/obj/item/disk/rcd/wall/bunker
+/obj/item/disk/rcd/metal_wall/bunker
 	name = "rcd data disk (bunker wall)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
 	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a reinforce bunker wall."
