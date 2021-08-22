@@ -141,6 +141,49 @@
 		"cost" = 1000
 	)
 
+/obj/item/disk/rcd/airlock
+	name = "rcd data disk (airlock)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for an airlock."
+	data = list(
+		"name" = "airlock.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/door/airlock,
+		"cost" = 1000
+	)
+
+/obj/item/disk/rcd/table
+	name = "rcd data disk (table)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for table."
+	data = list(
+		"name" = "table.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/smooth/table,
+		"cost" = 500
+	)
+
+/obj/item/disk/rcd/chair
+	name = "rcd data disk (chair)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a chair."
+	data = list(
+		"name" = "chair.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/chair,
+		"cost" = 250
+	)
+
+/obj/item/disk/rcd/wall/bunker
+	name = "rcd data disk (bunker wall)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a reinforce bunker wall."
+	data = list(
+		"name" = "bunker_wall.turf",
+		"effect" = /obj/effect/temp/construction/wall,
+		"object" = /turf/simulated/wall/bunker,
+		"cost" = 2500
+	)
 
 /obj/item/disk/nuke
 	name = "nuclear authentication disk"
