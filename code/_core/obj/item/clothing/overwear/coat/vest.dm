@@ -131,6 +131,8 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = SIZE_2
+	value = 1500
+	value_burgerbux = 1
 
 /obj/item/clothing/overwear/coat/vest/revolutionary
 	name = "revolutionary combat webbing"
@@ -142,3 +144,5 @@
 
 	dynamic_inventory_count = 6
 	container_max_size = SIZE_2
+	value = 1500
+	value_burgerbux = 1
