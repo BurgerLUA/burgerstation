@@ -17,7 +17,7 @@
 	INTERACT_DELAY(20)
 
 	if(icon_state == "inventory")
-		play_sound(song_to_play,get_turf(src),range_max=VIEW_RANGE,loop=1)
+		play_sound(song_to_play,get_turf(src),loop=TRUE)
 		icon_state = "playing"
 		caller.to_chat(span("notice","You turn on the player."))
 		return TRUE
