@@ -129,7 +129,7 @@
 			stored_value = max(stored_value,0)
 		else
 			stored_value = CEILING((SSeconomy.crash_sell_multiplier*SSeconomy.sell_multiplier*stored_object.get_value())/SSeconomy.credits_per_gold,1)
-			stored_value = clamp(stored_value,0,200)
+			stored_value = clamp(stored_value,0,1000)
 	else
 		stored_value = 0
 
