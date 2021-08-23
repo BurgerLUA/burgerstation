@@ -10,7 +10,7 @@
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/dungeon/z_01
-	name = "\improper Level 1 - Surface Forrest"
+	name = "\improper Level 1 - Surface Forest"
 	icon_state = "forrest"
 	cheese_type = /reagent/nutrition/cheese/cheddar
 	sunlight_freq = 8
@@ -21,7 +21,7 @@
 	interior = FALSE
 
 /area/dungeon/z_01/snow
-	name = "unexplored surface forrest"
+	name = "unexplored surface forest"
 	icon_state = "snow"
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20
@@ -43,7 +43,7 @@
 	interior = TRUE
 
 /area/dungeon/z_01/forest
-	name = "unexplored surface forrest"
+	name = "unexplored surface forest"
 	icon_state = "forrest"
 	cheese_type = /reagent/nutrition/cheese/cheddar
 	sunlight_freq = 8
