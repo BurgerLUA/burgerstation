@@ -51,7 +51,8 @@
 		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater
 	)
 
 /obj/structure/interactive/vending/syndicate/medicine
@@ -245,5 +246,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/magazine/lmg_762_r,
 
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater
 	)

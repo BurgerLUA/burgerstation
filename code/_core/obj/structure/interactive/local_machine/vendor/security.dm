@@ -87,7 +87,8 @@
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/weapon/ranged/energy/hybrid/carbine,
 
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/ops
