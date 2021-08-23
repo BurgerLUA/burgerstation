@@ -53,7 +53,7 @@
 
 /mob/living/proc/check_death()
 
-	if(!health)
+	if(!health || immortal)
 		return FALSE
 
 	var/health_added = 0
