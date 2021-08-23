@@ -214,6 +214,10 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/magazine/gauss_gun,
+		/obj/item/magazine/gauss_gun/explosive,
+		/obj/item/magazine/gauss_gun/ion,
+		/obj/item/magazine/gauss_gun/incendiary,
+		/obj/item/magazine/gauss_gun/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
