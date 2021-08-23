@@ -29,7 +29,7 @@
 		caller.to_chat(span("notice","You activate \the [src.name]'s passive igniting effect."))
 		if(is_living(caller))
 			var/mob/living/liveCaller = caller
-			leveled_effect = round((liveCaller.get_skill_level(SKILL_MAGIC_DEFENSIVE)/20) + (liveCaller.get_skill_level(SKILL_PRAYER)/20) + ((quality - 100)/5)) //15 is the "max" when 100 skill is your max
+			leveled_effect = round((liveCaller.get_skill_power(SKILL_MAGIC_DEFENSIVE,0,1,2)*5) + (liveCaller.get_skill_power(SKILL_PRAYER,0,1,2)*5) + ((quality - 100)/5)) //15 is the "max" when 100 skill is your max
 	else
 		caller.to_chat(span("notice","You deactivate \the [src.name]'s passive igniting effect."))
 		stop_thinking(src)

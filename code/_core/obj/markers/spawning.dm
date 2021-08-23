@@ -37,6 +37,15 @@
 
 	return D
 
+/obj/marker/spawning/window/tinted/do_spawn(var/turf/T)
+	var/obj/structure/interactive/construction/grille/G = new(T)
+	var/obj/structure/smooth/window/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(W)
+	W.color = "#353535"
+	W.opacity = 0
+	setup_airlock()
+
 /obj/marker/spawning/window/do_spawn(var/turf/T)
 	var/obj/structure/interactive/construction/grille/G = new(T)
 	var/obj/structure/smooth/window/W = new(T)

@@ -41,8 +41,12 @@
 	dimensions = "boss"
 	chance_none = 0
 
-
 /obj/marker/prefab/forrest
 	icon = 'icons/obj/markers/prefab_32x32.dmi'
 	dimensions = "forest"
 	chance_none = 25
+
+/obj/marker/prefab/base
+	icon = 'icons/obj/markers/prefab_64x64.dmi'
+	dimensions = "base"
+	chance_none = 0

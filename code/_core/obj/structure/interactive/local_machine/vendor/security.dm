@@ -58,7 +58,9 @@
 		/obj/item/armor_plate/light,
 		/obj/item/armor_plate/medium,
 		/obj/item/armor_plate/heavy,
-		/obj/item/weapon/melee/energy/grazer
+		/obj/item/weapon/melee/energy/grazer,
+		/obj/item/clothing/head/helmet/full/eod_helm,
+		/obj/item/clothing/overwear/armor/eod
 	)
 
 /obj/structure/interactive/vending/security/gundrobe

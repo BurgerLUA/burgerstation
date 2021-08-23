@@ -21,7 +21,9 @@
 
 	anchored = TRUE
 
+	size = SIZE_10
 
+	level = 20
 
 /mob/living/advanced/npc/unique/goblin_merchant/Initialize()
 

@@ -139,7 +139,7 @@
 	object_to_place = /turf/simulated/hazard/water
 	grow_amount_min = 15
 	grow_amount_max = 30
-	objects_max = 50
+	objects_max = 10
 	skip_chance = 25
 	hole_chance = 5
 
@@ -151,10 +151,10 @@
 
 /obj/marker/generation/sand
 	object_to_place = /turf/simulated/floor/colored/sand/beach
-	grow_amount_min = 3
-	grow_amount_max = 8
-	objects_max = 20
-	skip_chance = 0
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 30
+	skip_chance = 25
 	hole_chance = 0
 
 	color = COLOR_WHITE
@@ -581,6 +581,16 @@
 /obj/marker/generation/mob/watcher
 	object_to_place = /mob/living/simple/watcher
 	objects_max = 1
+
+/obj/marker/generation/mob/syndicate
+	object_to_place = /mob/living/advanced/npc/syndicate
+	objects_max = 1
+
+/obj/marker/generation/mob/rev
+	object_to_place = /mob/living/advanced/npc/rev
+	objects_max = 1
+
+
 
 /obj/marker/generation/mob/goliath
 	object_to_place = /mob/living/simple/goliath

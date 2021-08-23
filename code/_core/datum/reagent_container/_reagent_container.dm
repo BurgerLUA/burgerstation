@@ -380,10 +380,11 @@
 	if(amount > 0)
 		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 		var/mob/living/L
-		if(is_living(src.owner))
-			L = src.owner
-		else if(is_living(src.owner.loc))
-			L = src.owner.loc
+		if(src.owner)
+			if(is_living(src.owner))
+				L = src.owner
+			else if(is_living(src.owner.loc))
+				L = src.owner.loc
 		if(L)
 			amount = R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 

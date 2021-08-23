@@ -187,13 +187,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 			continue
 		. += M
 
-//Example Formats
-/*
-play('sound',mob) to play to that mob only
-play('sound, atom) to play to all turfs in range of that atom(add args range_min,range_max)
-play('sound',list_of_hearers, turf or vector) to play to that list of hearers at that location
-*/
-
 /proc/setup_sound(var/sound_path)
 
 	if(!SSsound || !SSsound.initialized)

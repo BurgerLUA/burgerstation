@@ -115,10 +115,10 @@
 	icon_state = "1"
 	value = -1 //Value is based on current economy, see get_base_value()
 
-	item_count_max = 200
+	item_count_max = 1000
 
-	size = SIZE_4/200
-	weight = 50/200
+	size = SIZE_4/1000
+	weight = 50/1000
 
 	currency_class = "gold"
 
@@ -136,12 +136,13 @@
 /obj/item/currency/gold/update_icon()
 	. = ..()
 	switch(item_count_current)
-		if(1 to 40)
-			icon_state = "[item_count_current]"
-		if(40 to 100)
-			icon_state = "[FLOOR(item_count_current,10)]"
-		if(100 to 200)
-			icon_state = "[FLOOR(item_count_current,20)]"
+		if(1 to 40) //1 to 40, 1
+			icon_state = "[FLOOR(item_count_current,1)]"
+		if(40 to 500) //40 to 100, 10
+			// 40 + (i*(60/100))/5
+			icon_state = "[40 + FLOOR((item_count_current*(60/100))/5,10)]"
+		if(500 to 1000) //100 to 200, 20
+			icon_state = "[FLOOR(item_count_current/5,20)]"
 
 /obj/item/currency/gold/update_overlays()
 

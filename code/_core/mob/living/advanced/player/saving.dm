@@ -49,6 +49,8 @@
 		hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : initial(hydration)*0.5
 		nutrition_fast = isnum(loaded_data["nutrition_fast"]) ? loaded_data["nutrition_fast"] : 0
 		nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
+		job = loaded_data["job"] ? text2path(loaded_data["job"]) : null
+		job_rank = loaded_data["job_rank"] ? loaded_data["job_rank"] : 1
 
 		if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
 			to_chat(span("notice","<h2>You are rewarded 1000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
@@ -173,13 +175,14 @@
 			var/obj/marker/failsafe/FS = locate() in world
 			force_move(get_turf(FS))
 
-
 	if(update_blends)
 		update_all_blends()
 	else
 		update_all_blends() //butts
 
 	last_autosave = world.time
+
+	check_promotion()
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
@@ -207,6 +210,8 @@
 	.["partial_tax"] = partial_tax
 	.["rarity"] = rarity
 	.["prestige_count"] = prestige_count
+	.["job"] = job
+	.["job_rank"] = job_rank
 
 	if(length(traits))
 		.["traits"] = list()

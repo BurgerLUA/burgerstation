@@ -2,61 +2,145 @@
 	var/name = "Job Name."
 	var/desc = "Job Description."
 
-	var/list/current_players = list()
-	var/maximimum_players = 0
-
 	var/passive_income = 0
+	var/passive_income_bonus = 0 //Per rank
 
-	var/station_only = FALSE
+	var/list/bonus_skills = list(
+		SKILL_UNARMED = 0,
+		SKILL_MELEE = 0,
+		SKILL_PRAYER = 0,
+		SKILL_BLOCK = 0,
+		SKILL_ARMOR = 0,
+		SKILL_RANGED = 0,
+		SKILL_PRECISION = 0,
+		SKILL_SURVIVAL = 0,
+		SKILL_EVASION = 0,
+		SKILL_PARRY = 0,
+		SKILL_MAGIC_DEFENSIVE = 0,
+		SKILL_MAGIC_OFFENSIVE = 0,
+		SKILL_MAGIC_SUMMONING = 0,
+		SKILL_MAGIC_ENCHANTING = 0,
+		SKILL_MEDICINE = 0,
+		SKILL_BOTANY = 0
+	)
+
+	var/list/bonus_attributes = list(
+		ATTRIBUTE_STRENGTH = 0,
+		ATTRIBUTE_VITALITY = 0,
+		ATTRIBUTE_FORTITUDE = 0,
+		ATTRIBUTE_CONSTITUTION = 0,
+		ATTRIBUTE_INTELLIGENCE = 0,
+		ATTRIBUTE_WISDOM = 0,
+		ATTRIBUTE_WILLPOWER = 0,
+		ATTRIBUTE_SOUL = 0,
+		ATTRIBUTE_DEXTERITY = 0,
+		ATTRIBUTE_RESILIENCE = 0,
+		ATTRIBUTE_ENDURANCE = 0,
+		ATTRIBUTE_AGILITY = 0,
+		ATTRIBUTE_LUCK = 0
+	)
+
+	var/list/ranks
+
+/job/proc/get_rank_title(var/rank_level=1)
+	var/rank_length = length(ranks)
+	if(!rank_length)
+		return name
+	return ranks[max(rank_level,rank_length)]
+
+/job/assistant
+	name = "Assistant"
+	desc = "An assistant is someone who assistants the other jobs. They have bonuses in all skill fields as well as increased luck."
+	passive_income = 200
+
+	bonus_skills = list(
+		SKILL_UNARMED = 10,
+		SKILL_MELEE = 10,
+		SKILL_PRAYER = 10,
+		SKILL_BLOCK = 10,
+		SKILL_ARMOR = 10,
+		SKILL_RANGED = 10,
+		SKILL_PRECISION = 10,
+		SKILL_SURVIVAL = 10,
+		SKILL_EVASION = 10,
+		SKILL_PARRY = 10,
+		SKILL_MAGIC_DEFENSIVE = 10,
+		SKILL_MAGIC_OFFENSIVE = 10,
+		SKILL_MAGIC_SUMMONING = 10,
+		SKILL_MAGIC_ENCHANTING = 10,
+		SKILL_MEDICINE = 10,
+		SKILL_BOTANY = 10
+	)
+
+	bonus_attributes = list(
+		ATTRIBUTE_LUCK = 10
+	)
+
+/job/assistant/security
+	name = "Security Enforcer"
+	desc = "A security enforcer is someone who protects NanoTrasen as well as its assets and its people. They have bonuses in offensive skills as well as bonuses in offenssive and defensive attributes."
+	passive_income = 400
+	passive_income_bonus = 100
+
+	bonus_skills = list(
+		SKILL_UNARMED = 5,
+		SKILL_MELEE = 5,
+		SKILL_BLOCK = 5,
+		SKILL_ARMOR = 5,
+		SKILL_RANGED = 5,
+		SKILL_PRECISION = 5,
+		SKILL_SURVIVAL = 5,
+		SKILL_EVASION = 5,
+		SKILL_PARRY = 5,
+	)
+
+	bonus_attributes = list(
+		ATTRIBUTE_STRENGTH = 5,
+		ATTRIBUTE_VITALITY = 5,
+		ATTRIBUTE_FORTITUDE = 5,
+		ATTRIBUTE_CONSTITUTION = 5,
+		ATTRIBUTE_DEXTERITY = 5,
+		ATTRIBUTE_RESILIENCE = 5,
+		ATTRIBUTE_ENDURANCE = 5,
+		ATTRIBUTE_AGILITY = 5
+	)
+
+	ranks = list(
+		"Recruit",
+		"Private",
+		"Corporal",
+		"Sergeant",
+		"Sergeant Major",
+		"2nd Lieutenant",
+		"1st Lieutenant"
+	)
+
+/job/assistant/medical
+	name = "Medical"
+	desc = "A doctor is someone who specializes in medicine and its various ways of treating people. They have bonuses in medical skills as well as attributes."
+
+	passive_income = 600
+	passive_income_bonus = 200
+
+	bonus_skills = list(
+		SKILL_PRECISION = 5,
+		SKILL_SURVIVAL = 5,
+		SKILL_MEDICINE = 10,
+		SKILL_BOTANY = 5
+	)
+
+	bonus_attributes = list(
+		ATTRIBUTE_INTELLIGENCE = 10,
+		ATTRIBUTE_WISDOM = 10,
+		ATTRIBUTE_WILLPOWER = 10,
+		ATTRIBUTE_DEXTERITY = 10,
+	)
 
 
-/job/mercenary
-	name = "Mercenary"
-	desc = "Mercenaries are tasked with exploring outside the station and eliminating any threats that are present. Mercenaries gain income by selling any items they find on their journey to station merchants."
-	station_only = FALSE
-
-/job/engineer
-	name = "Engineer"
-	desc = "Engineers are tasked with of keeping the station in order by maintaining the main source of station power as well as repairing any broken structures or objects on the station."
-	station_only = TRUE
-
-/job/janitor
-	name = "Janitor"
-	desc = "Janitors are tasked with keeping the station clean and orderly by mopping up any spills and disposing of any stray items."
-	station_only = TRUE
-
-/job/emt
-	name = "Emergency Medical Technician"
-	desc = "EMTs are tasked with keeping the station's crewmembers alive and well by treating any wounds and reviving any dead crewmembers."
-	station_only = FALSE
-
-/job/investor
-	name = "Investor"
-	desc = "Investors are tasked with investing their own funds into purchasing high value and rare items for Mercenaries."
-	station_only = TRUE
-
-/job/security_officer
-	name = "Security Officer"
-	desc = "Security Officers are tasked with protecting the station from any external threats as well as tracking down and retriving any crewmembers that are supposed to be on station."
-	station_only = FALSE
-
-/job/cook
-	name = "Cook"
-	desc = "Cooks are tasked with creating consumable nutrients and selling it to the crew."
-	station_only = TRUE
-
-
-/job/bartender
-	name = "Bartender"
-	desc = "Bartenders are tasked with creating consumable drinks and selling it to the crew."
-	station_only = TRUE
-
-/job/botanist
-	name = "Botanist"
-	desc = "Botanists are tasked with growing plants and selling it to the crew."
-	station_only = TRUE
-
-/job/chemist
-	name = "Chemist"
-	desc = "Chemists are tasked with mixing chemicals and selling it to the crew."
-	station_only = TRUE
+	ranks = list(
+		"Student",
+		"Intern",
+		"Resident",
+		"Doctor",
+		"Senior Doctor"
+	)

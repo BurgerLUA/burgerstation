@@ -45,7 +45,8 @@
 		/obj/item/weapon/ranged/bow/hardlight = 1,
 		/obj/item/tempering/magazine/spellswap/magic_missile = 1,
 		/obj/item/tempering/magazine/spellswap/tesla = 1,
-		/loot/weapon/rifle/gauss_carbine = 1
+		/loot/weapon/rifle/gauss_carbine = 1,
+		/obj/item/weapon/ranged/energy/gatling = 1
 	)
 
 /loot/lavaland/broodmother

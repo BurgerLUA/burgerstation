@@ -9,18 +9,9 @@
 
 	if(no_wall)
 		new /turf/simulated/floor/colored/grass(src)
-		new /area/dungeon/z_01/forest(src)
+		if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 		disallow_generation = TRUE
 		return ..()
-
-	if(x >= 255-VIEW_RANGE*2)
-		if(prob(1))
-			new /obj/marker/generation/sand(src)
-		new /turf/simulated/hazard/water/sea(src)
-		new /area/dungeon/z_01/forest(src)
-		disallow_generation = TRUE
-		return ..()
-
 
 	var/noise = 0
 
@@ -77,7 +68,7 @@
 				new /obj/marker/generation/forest_dirt(src)
 				place_ground = FALSE
 				new /turf/simulated/floor/colored/dirt(src)
-				new /area/dungeon/z_01/forest(src)
+				if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 
 		else if(!path_only && prob(5))
 			place_grass = FALSE
@@ -109,13 +100,16 @@
 
 	if(place_ground)
 		new /turf/simulated/floor/colored/grass(src)
-		new /area/dungeon/z_01/forest(src)
+		if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 		color = blend_colors("#336D31","#426D31",noise)
 		if(prob(1))
 			new /obj/marker/generation/forest_soil(src)
 
 	if(shitfix)
 		disallow_generation = TRUE
+
+	if(prob(0.5))
+		new /obj/marker/generation/mob/syndicate(src)
 
 	return ..()
 

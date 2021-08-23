@@ -18,6 +18,8 @@
 /event/anomaly/New()
 
 	for(var/area/burgerstation/A in world)
+		if(!A)
+			continue
 		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 			continue
 		valid_areas += A

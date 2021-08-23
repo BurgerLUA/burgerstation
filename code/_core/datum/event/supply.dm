@@ -24,6 +24,8 @@
 /event/supply/New()
 
 	for(var/area/A in world)
+		if(!A)
+			continue
 		if(A.area_identifier != "Mission")
 			continue
 		if(A.interior)
