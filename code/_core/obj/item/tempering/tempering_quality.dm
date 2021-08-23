@@ -117,6 +117,9 @@
 	limit = 100
 	minimum = 0
 
+	size = SIZE_7
+	weight = WEIGHT_5
+
 	value = 2000
 
 	value_burgerbux = 0
