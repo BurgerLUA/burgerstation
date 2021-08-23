@@ -108,7 +108,7 @@
 /obj/item/tempering/quality/greater
 	name = "repair kit"
 	desc = "Help my equipment needs repairs."
-	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of guns to 100%. Takes time to repair."
+	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of items to 100%. Takes time to repair."
 	icon_state = "repair_kit"
 
 	temper_whitelist = /obj/item/
