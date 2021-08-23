@@ -108,7 +108,7 @@
 /obj/item/tempering/quality/greater
 	name = "repair kit"
 	desc = "Help my equipment needs repairs."
-	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of items to 100%. Takes time to repair."
+	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of equipment to 100%. Takes time to repair."
 	icon_state = "repair_kit"
 
 	temper_whitelist = /obj/item/
@@ -120,3 +120,12 @@
 	value = 2000
 
 	value_burgerbux = 0
+
+/obj/item/tempering/quality/greater/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(is_item(object) && can_temper(caller,object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		on_temper(caller,object)
+		return TRUE
+	return ..()
