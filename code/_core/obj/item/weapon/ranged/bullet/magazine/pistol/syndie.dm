@@ -18,7 +18,7 @@
 
 	can_wield = FALSE
 
-	size = SIZE_1
+	size = SIZE_2
 	weight = 3
 
 	heat_max = 0.12
@@ -77,7 +77,7 @@
 	desc = "The traitor's second best friend."
 	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is more compact."
 
-	size = SIZE_2
+	size = SIZE_1
 
 	attachment_barrel_offset_x = 25 - 16
 	attachment_barrel_offset_y = 20 - 16
