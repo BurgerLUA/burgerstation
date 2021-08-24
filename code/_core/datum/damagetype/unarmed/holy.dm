@@ -44,3 +44,35 @@
 
 	attack_delay = 11*0.5
 	attack_delay_max = 11
+
+
+/damagetype/unarmed/holy/spiked
+	name = "cursed knuckle"
+	attack_verbs = list("curse","defile","desecrate","taint","blaspheme","pollute")
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 55*0.4,
+		PIERCE = 55*0.1,
+		DARK = 30*0.1
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0,
+		PIERCE = 50,
+		DARK = 0
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BLUNT,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLUNT,PIERCE)
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT,PIERCE),
+		SKILL_PRAYER = list(DARK)
+	)
+
+	attack_delay = 11*0.5
+	attack_delay_max = 11

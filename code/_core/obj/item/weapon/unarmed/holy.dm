@@ -22,3 +22,18 @@ obj/item/weapon/unarmed/holy/update_icon()
 			icon_state = "inventory_left"
 		else
 			icon_state = "inventory_right"
+
+
+obj/item/weapon/unarmed/holy/spiked
+	name = "cursed knuckles"
+	desc = "It is Nar'sie who guides my hand."
+	desc_extended = "A large piece of cursed steel molded to fit around your fist. Curses your foe when attacking, but makes you less agile. Cursed by Nar'sie himself!"
+
+	icon = 'icons/obj/item/weapons/unarmed/dark_knuckle.dmi'
+
+	damage_type = /damagetype/unarmed/holy/spiked
+
+	size = SIZE_1
+	weight = 5
+
+	value = 1000
