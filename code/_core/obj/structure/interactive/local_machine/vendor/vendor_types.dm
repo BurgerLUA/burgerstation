@@ -610,7 +610,13 @@
 		/obj/item/clothing/uniform/clown/yellow,
 		/obj/item/broom/magic,
 		/obj/item/grenade/timed/lube_smoke,
-		/obj/item/weapon/ranged/spellgem/metronome
+		/obj/item/weapon/ranged/spellgem/metronome,
+		/obj/item/clothing/overwear/armor/burger_coat,
+		/obj/item/clothing/overwear/armor/burger_coat/courier,
+		/obj/item/clothing/overwear/armor/burger_coat/courier/ncr,
+		/obj/item/clothing/overwear/armor/burger_coat/courier/legion,
+		/obj/item/clothing/overwear/armor/burger_coat/courier/ulysses,
+		/obj/item/weapon/melee/flagpole
 	)
 
 	ignore_economy = TRUE

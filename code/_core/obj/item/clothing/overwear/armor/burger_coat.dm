@@ -20,7 +20,7 @@
 
 	size = SIZE_4
 
-	value = 2000
+	value = 5000
 
 	speed_bonus = 0.1
 
