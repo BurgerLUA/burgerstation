@@ -44,7 +44,6 @@
 	icon_state = "quality_melee"
 
 	temper_whitelist = /obj/item/weapon/melee
-	temper_whitelist = /obj/item/weapon/unarmed
 
 	value = 500
 
