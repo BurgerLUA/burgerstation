@@ -17,8 +17,6 @@
 /obj/item/bullet_cartridge/rocket_70mm/get_bullet_insert_sound()
 	return 'sound/weapons/rocket/rocket_insert.ogg'
 
-	return ..()
-
 /obj/item/bullet_cartridge/rocket_70mm/he
 	name = "70mm High Explosive Warhead"
 	desc = "I'm a Rocket Man."

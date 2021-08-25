@@ -95,10 +95,7 @@
 	. = max(0.01,.)
 
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
-	if(!override_bullet_insert_sound)
-		return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
-
-	return ..()
+	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
 
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return item_count_current
