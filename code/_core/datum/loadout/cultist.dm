@@ -13,7 +13,8 @@
 	)
 
 	var/list/random_weapon = list(
-		/obj/item/weapon/melee/sword/claymore/cult
+		/obj/item/weapon/melee/sword/claymore/cult,
+		/obj/item/weapon/unarmed/holy/spiked
 
 	)
 
@@ -32,7 +33,8 @@
 	)
 
 	random_weapon = list(
-		/obj/item/weapon/melee/sword/claymore
+		/obj/item/weapon/melee/sword/claymore,
+		/obj/item/weapon/unarmed/holy/spiked
 	)
 
 /loadout/cultist/hard
