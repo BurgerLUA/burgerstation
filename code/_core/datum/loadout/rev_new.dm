@@ -190,5 +190,6 @@
 		/obj/item/container/food/package/junkfood/chips,
 		/obj/item/container/beaker/can/grey_bull,
 		/obj/item/container/beaker/alcohol/vodka,
-		/obj/item/weapon/melee/torch/flashlight/maglight
+		/obj/item/weapon/melee/torch/flashlight/maglight,
+		/obj/item/fulton_pack
 	)

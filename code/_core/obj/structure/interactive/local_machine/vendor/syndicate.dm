@@ -229,6 +229,7 @@
 		/obj/item/storage/ammo/buckshot_23,
 		/obj/item/storage/ammo/slug_23,
 		/obj/item/storage/ammo/fire_23,
+		/obj/item/storage/ammo/rubber_23,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/magazine/shotgun_auto/buckshot,

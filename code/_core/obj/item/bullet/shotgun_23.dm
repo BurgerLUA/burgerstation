@@ -72,4 +72,16 @@
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23/fire
 
+/obj/item/bullet_cartridge/shotgun_23/rubber
+	name = "\improper 23x75mmR rubber slug shell"
+	desc = "Welcome to the land called 'Police Brutality'"
+	desc_extended = "A rubber slug shell designed specifically for the KS23"
+	rarity = RARITY_RARE
+	icon_state = "23rubber"
+
+	projectile_count = 1
+	base_spread = 0.03
+
+	projectile = /obj/projectile/bullet/firearm/shotgun_slug
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23/rubber_slug
 
