@@ -30,6 +30,8 @@
 
 	var/caseless = FALSE
 
+	var/override_bullet_insert_sound = FALSE
+
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
 

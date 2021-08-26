@@ -111,6 +111,8 @@
 		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/weapon/ranged/energy/freezegun,
 
+		/obj/item/weapon/ranged/bullet/revolver/rocket,
+
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/mountable/browning,
 
@@ -166,6 +168,9 @@
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
+		/obj/item/bullet_cartridge/rocket_70mm/he,
+		/obj/item/bullet_cartridge/rocket_70mm/wp,
+		/obj/item/bullet_cartridge/rocket_70mm/ap,
 		/obj/item/powercell,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger
