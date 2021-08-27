@@ -6,7 +6,7 @@
 		/obj/item/clothing/feet/shoes/workboot/left,
 		/obj/item/clothing/overwear/armor/knight/clockwork,
 		/obj/item/clothing/head/helmet/knight/clockwork,
-		/obj/item/clothing/belt/storage/tool/filled,
+		/obj/item/clothing/belt/brass/filled,
 		/obj/item/clothing/hands/gloves/colored/insulated,
 		/obj/item/clothing/hands/gloves/colored/insulated/left,
 		/obj/item/weapon/melee/spear/clockwork
