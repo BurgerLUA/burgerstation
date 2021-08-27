@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/fiendish
 	name = "\improper Fiendish Resilience"
 	desc = "Into the eternal darkness, into fire and into ice."
-	desc_extended = "A gun made out of bone of a lesser demon. Covered in vile flesh. Eats .45 ammo. Spews .45 casings.
+	desc_extended = "A gun made out of bone of a lesser demon. Covered in vile flesh. Eats .45 ammo. Spews .45 casings."
 	icon = 'icons/obj/item/weapons/ranged/revolver/fiendish.dmi'
 	icon_state = "inventory"
 	value = 3000
