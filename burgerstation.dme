@@ -47,6 +47,7 @@
 #include "code\__defines\food.dm"
 #include "code\__defines\footstep.dm"
 #include "code\__defines\game.dm"
+#include "code\__defines\generation.dm"
 #include "code\__defines\health.dm"
 #include "code\__defines\horde.dm"
 #include "code\__defines\html.dm"

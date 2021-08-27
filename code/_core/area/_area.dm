@@ -47,6 +47,8 @@
 
 	var/allow_ghosts = TRUE //Set to false to prevent a ghost from teleporting to this location.
 
+	var/flags_generation = FLAG_GENERATION_NONE
+
 
 /area/proc/is_space()
 	return FALSE

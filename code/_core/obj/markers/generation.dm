@@ -28,6 +28,8 @@
 
 	var/priority = 0
 
+	var/flags_generation = FLAG_GENERATION_NONE
+
 /obj/marker/generation/New(var/desired_loc)
 	. = ..()
 	if(object_to_place)
@@ -55,9 +57,12 @@
 				continue
 			if(T2.disallow_generation && !bypass_disallow_generation)
 				continue
-			if(prob(skip_chance))
+			var/area/A = T2.loc
+			if(flags_generation && (A.flags_generation & flags_generation))
 				continue
 			if(length(forbidden_turfs) && forbidden_turfs[T2])
+				continue
+			if(prob(skip_chance))
 				continue
 			if(ispath(object_to_place,/turf/))
 				if(T.loc != T2.loc)
@@ -561,6 +566,8 @@
 	turf_whitelist = /turf/simulated/floor/
 
 	ignore_existing = TRUE
+
+	flags_generation = FLAG_GENERATION_NO_MOB
 
 
 /obj/marker/generation/mob/arachnid
