@@ -111,7 +111,7 @@
 		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/weapon/ranged/energy/freezegun,
 
-		/obj/item/weapon/ranged/bullet/revolver/rocket,
+		/obj/item/weapon/ranged/bullet/rocket,
 
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/mountable/browning,

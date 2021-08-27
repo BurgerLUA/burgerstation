@@ -40,14 +40,14 @@
 /damagetype/ranged/bullet/rocket_ap/
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BOMB = 500,
-		PIERCE = 250
+		BOMB = 400,
+		PIERCE = 100
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BOMB = 500,
-		PIERCE = 250
+		BOMB = 200,
+		PIERCE = 200
 	)
 
 	falloff = 0

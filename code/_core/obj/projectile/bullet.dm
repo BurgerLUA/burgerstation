@@ -153,7 +153,7 @@
 /obj/projectile/bullet/rocket_gyro
 	name = "rocket"
 	icon = 'icons/obj/projectiles/rocket.dmi'
-	icon_state = "rocket"
+	icon_state = "gyrojet"
 
 /obj/projectile/bullet/rocket_gyro/on_projectile_hit(var/atom/hit_atom)
 

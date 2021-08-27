@@ -5,9 +5,9 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/gatling.dmi'
 	value = 10000
 
-	shoot_delay = 0.1 //Oh god oh fuck
+	shoot_delay = 0.5
 
-	damage_mod = 1.1
+	damage_mod = 1
 
 	projectile = /obj/projectile/bullet/laser/weak
 	ranged_damage_type = /damagetype/ranged/laser/carbine

@@ -4,7 +4,7 @@
 	desc_extended = "A special NanoTrasen Research Team tungesten shooting carbine designed to rival the syndicate energy crossbow. This version shoots tungesten rods instead of energy bolts, is more cumbersome than the energy now, and honestly really doesn't have any resemblence the energy crossbow at all."
 	icon = 'icons/obj/item/weapons/ranged/smg/tungsten.dmi'
 	icon_state = "inventory"
-	shoot_delay = 1
+	shoot_delay = 1.25
 
 	value = 1800
 
@@ -12,7 +12,7 @@
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
-	heat_max = 0.02
+	heat_max = 0.03
 
 	bullet_length_min = 15
 	bullet_length_best = 20

@@ -1,10 +1,10 @@
-/obj/item/weapon/ranged/bullet/revolver/rocket
-	name = "70mm NT Personnel Anti Armor Weapon System" // this shouldve been unreloadable, couldnt find out how to
+/obj/item/weapon/ranged/bullet/rocket
+	name = "70mm NT Anti Armor Weapon System"
 	desc = "I'm a Rocket Man."
-	desc_extended = "NT's answer to the Syndicate Mechs and Borgs: NT PAWS. Single-shot portable anti-tank weapon, though you could use it on the freaks you see around the station."
+	desc_extended = "NT's answer to the Syndicate Mechs and Borgs: NT AAWS. Single-shot portable anti-tank weapon, though if you're brave enough you can try to use it more than once."
 	icon = 'icons/obj/item/weapons/ranged/misc/rocket.dmi'
 	icon_state = "inventory"
-	value = 10000
+	value = 6000
 
 	automatic = FALSE
 
@@ -31,11 +31,18 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 1
 
-/obj/item/weapon/ranged/bullet/revolver/rocket/get_base_spread()
+	uses_until_condition_fall = 0
+
+/obj/item/weapon/ranged/bullet/rocket/get_base_spread()
 	return 0.2
 
-/obj/item/weapon/ranged/bullet/revolver/rocket/get_static_spread()
+/obj/item/weapon/ranged/bullet/rocket/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/revolver/rocket/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/rocket/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/rocket/use_condition(var/amount_to_use=1)
+	adjust_quality(-100)
+	return TRUE

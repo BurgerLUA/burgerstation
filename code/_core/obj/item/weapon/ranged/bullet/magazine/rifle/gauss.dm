@@ -69,7 +69,7 @@
 
 	shoot_delay = 2
 
-	damage_mod = 1.1
+	damage_mod = 0.9
 
 	automatic = TRUE
 

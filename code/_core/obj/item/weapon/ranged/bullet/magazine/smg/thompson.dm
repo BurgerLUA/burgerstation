@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 4200
 
-	shoot_delay = 0.25 // funny rpm hee hoo
+	shoot_delay = 0.75
 
 	automatic = TRUE
 
