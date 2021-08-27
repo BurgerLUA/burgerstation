@@ -66,6 +66,15 @@
 	new /obj/item/clothing/feet/shoes/clown/left(src)
 	return ..()
 
+/obj/item/storage/shoebox/duck/
+	name = "duck shoebox"
+	desc = "Contains a pair of slippers which can quack."
+
+/obj/item/storage/shoebox/duck/fill_inventory()
+	new /obj/item/clothing/feet/shoes/duck(src)
+	new /obj/item/clothing/feet/shoes/duck/left(src)
+	return ..()
+
 /obj/item/storage/shoebox/miner/
 	name = "miner shoebox"
 	desc = "Contains a pair of miner boots"
