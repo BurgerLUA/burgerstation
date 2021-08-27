@@ -63,7 +63,7 @@
 			caller.to_chat(span("warning","\The [M.name] is already full!"))
 			return TRUE
 		if(M.next_regen > world.time)
-			caller.to_chat(span("warning","That magazine was just filled! Please wait [M.next_regen-world.time] seconds!"))
+			caller.to_chat(span("warning","That magazine was just filled! Please wait [CEILING(DECISECONDS_TO_SECONDS(M.next_regen-world.time),1)] seconds!"))
 			return TRUE
 		M.next_regen = world.time + SECONDS_TO_DECISECONDS(120)
 		var/obj/item/bullet_cartridge/B = new bullet_to_create(src.loc)
