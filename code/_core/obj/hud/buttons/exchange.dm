@@ -39,7 +39,7 @@
 				else
 					if(istype(B.stored_object,/obj/item/currency/gold))
 						SSeconomy.goblin_economy += B.stored_value
-						SSeconomy.gold_in_circulation -= A.adjust_currency(B.stored_value)
+						SSeconomy.gold_in_circulation -= B.stored_object.item_count_current
 						qdel(I)
 					else
 						var/turf/T = get_turf(A)
