@@ -46,6 +46,7 @@
 						var/obj/item/currency/gold/G = new(T)
 						INITIALIZE(G)
 						G.item_count_current = B.stored_value
+						A.adjust_currency(B.stored_value)
 						SSeconomy.goblin_economy -= B.stored_value
 						SSeconomy.gold_in_circulation += B.stored_value
 						FINALIZE(G)
