@@ -109,7 +109,7 @@
 
 	if(.) update_sprite()
 
-	
+
 /obj/item/container/food/package/junkfood/halloween/create_packaging()
 	var/obj/item/trash/T = ..()
 	T.icon = icon
@@ -149,7 +149,7 @@
 
 /obj/item/container/food/package/junkfood/halloween/candy_bar
 	name = "candy bar"
-	icon_state = "sniggers_bar"
+	icon_state = "candy_bar"
 
 /obj/item/container/food/package/junkfood/halloween/candy_bar/Generate()
 	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
