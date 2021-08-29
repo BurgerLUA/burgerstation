@@ -38,6 +38,7 @@
 					caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
 				else
 					if(istype(B.stored_object,/obj/item/currency/gold))
+						A.adjust_currency(B.stored_value)
 						SSeconomy.goblin_economy += B.stored_value
 						SSeconomy.gold_in_circulation -= B.stored_object.item_count_current
 						qdel(I)
@@ -46,10 +47,9 @@
 						var/obj/item/currency/gold/G = new(T)
 						INITIALIZE(G)
 						G.item_count_current = B.stored_value
-						A.adjust_currency(B.stored_value)
-						SSeconomy.goblin_economy -= B.stored_value
-						SSeconomy.gold_in_circulation += B.stored_value
 						FINALIZE(G)
+						SSeconomy.gold_in_circulation += G.item_count_current
+						SSeconomy.goblin_economy -= G.item_count_current
 						qdel(I)
 						B.set_stored_object(null)
 						A.put_in_hands(G)
