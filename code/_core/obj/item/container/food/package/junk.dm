@@ -148,7 +148,7 @@
 
 
 /obj/item/container/food/package/junkfood/halloween/sniggers_bar
-	name = "sniggers bar"
+	name = "candy bar"
 	icon_state = "sniggers_bar"
 
 /obj/item/container/food/package/junkfood/halloween/sniggers_bar/Generate()
