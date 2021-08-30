@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet
 	name = "\improper 20mm GyroPistol"
 	desc = "Overdesigned and a little overpowered."
-	desc_extended = "A prototype syndicate pistol that uses minature rockets as projectiles. As a result, it suffers no inaccuracy due to firing."
+	desc_extended = "A prototype syndicate pistol that uses miniature rockets as projectiles. As a result, it suffers no inaccuracy due to firing."
 	icon = 'icons/obj/item/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
 	value = 800

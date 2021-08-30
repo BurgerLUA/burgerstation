@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/energy/captain
 	name = "\improper Captain's laser pistol"
 	desc = "All craftsmanship is of the highest quality."
-	desc_extended = "A fancier version of the laser rifle that self-charges. It has become innacurate due to its age."
+	desc_extended = "A fancier version of the laser rifle that self-charges. It has become inaccurate due to its age."
 	icon = 'icons/obj/item/weapons/ranged/laser/captain.dmi'
 	rarity = RARITY_MYTHICAL
 	value = 4000

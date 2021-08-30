@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94
 	name = "\improper 5.45x39mm AN-94"
 	desc = "A nuu cheeki breeki i v damkee!"
-	desc_extended = "Weapon of the elite troops of the Russian army. It was developed as a replacement for the outdated AK-74. In the 'Abakan' not only the internal mechanisms are mobile, but the entire receiver along with the barrel, which allows you to reduce the recoil, therefore significantly increasing the accuracy."
+	desc_extended = "Weapon of the elite troops of the Russian army. It was developed as a replacement for the outdated AK-74. In the 'Abakan' not only are the internal mechanisms mobile, but the entire receiver along with the barrel, which allows you to reduce the recoil, therefore significantly increasing the accuracy."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle.dmi'
 	icon_state = "inventory"
 	value = 1750

@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
 	name = "\improper 12.7mm Sabre"
 	desc = "12.7mm Sabre Pistol"
-	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
+	desc_extended = "A very powerful semi-automatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
 	value = 700

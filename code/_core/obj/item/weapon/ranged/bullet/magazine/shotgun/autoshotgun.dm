@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog
 	name = "\improper 20g Bulldog"
 	desc = "For when you want to clear a room."
-	desc_extended = "The 20 Gauge Bulldog is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bulldog\" for its bullpup design as well as the fact that it kicks like one too."
+	desc_extended = "The 20 Gauge Bulldog is an insanely powerful semi-automatic bullpup shotgun, nicknamed \"Bulldog\" for its bullpup design as well as the fact that it kicks like one too."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
 	icon_state = "inventory"
 	value = 2900

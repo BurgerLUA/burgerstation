@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20
 	name = "\improper 20g Saiga"
 	desc = "For when you want to clear the house and erase the walls."
-	desc_extended = "The 20g Saiga is an insanely powerful semiautomatic AK-based shotgun, nicknamed \"Saiga\" because it's Saiga. <br> The description designer wasn't very original, it seems."
+	desc_extended = "The 20g Saiga is an insanely powerful semi-automatic AK-based shotgun, nicknamed \"Saiga\" because it's Saiga. <br> The description designer wasn't very original, it seems."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/saiga.dmi'
 	icon_state = "inventory"
 	value = 2700
