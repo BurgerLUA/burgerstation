@@ -2,17 +2,22 @@
 	name = "\improper 7.62x54mmR PKM"
 	desc = "Killa's weapon of choice."
 	desc_extended = ""
-	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/PKM_old.dmi'
 	icon_state = "inventory"
 	value = 4000
 
 	shoot_delay = 1.75
 
+	automatic = TRUE
+
+	damage_mod = 1
+
+	firemodes = list("automatic","semi-automatic")
+
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
 	can_wield = TRUE
 
-	automatic = TRUE
 
 	size = SIZE_5
 	weight = 20
