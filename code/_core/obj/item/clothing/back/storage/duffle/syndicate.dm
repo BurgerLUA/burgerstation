@@ -2,7 +2,7 @@
 	name = "syndicate dufflebag"
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate.dmi'
 	desc = "EVIL!"
-	desc_extended = "A sturdy, yet lightweight black duffle bag. Doesn't slow you down at all for some reason."
+	desc_extended = "A sturdy, yet lightweight black dufflebag. Doesn't slow you down at all for some reason."
 	rarity = RARITY_MYTHICAL
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
@@ -24,7 +24,7 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical/field_doctor
 	name = "field doctor's dufflebag"
 	desc = "Pain and gain."
-	desc_extended = "A sturdy, yet lightweight black duffle bag. This one has a medical logo on it."
+	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has a medical logo on it."
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical/field_doctor/fill_inventory()
 	//8 Medical shit
@@ -64,7 +64,7 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/fuck_you
 	name = "juggernaut's dufflebag"
 	desc = "Bitch."
-	desc_extended = "A sturdy, yet lightweight black duffle bag. This one has an ammo logo on it."
+	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has am ammo logo on it."
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/fuck_you/fill_inventory()
 	//8 Weapon shit.
@@ -99,7 +99,7 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate/normie
 	name = "operative's dufflebag"
 	desc = "VANILLA."
-	desc_extended = "A sturdy, yet lightweight black duffle bag. This one has no logo on it because you're basic like that. Contains everything you need to be an operative."
+	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has no logo on it because you're basic like that. Contains everything you need to be an operative."
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/normie/fill_inventory()
 	//8 normal shit
@@ -135,7 +135,7 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank
 	name = "anti-tank sniper dufflebag"
 	desc = "Fuck mechs."
-	desc_extended = "A sturdy, yet lightweight black duffle bag. This one has an ammo logo on it."
+	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has am ammo logo on it."
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_ammo.dmi'
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank/fill_inventory()

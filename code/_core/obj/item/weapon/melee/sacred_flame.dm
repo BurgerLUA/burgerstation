@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/sacred_flame
 	name = "book of the sacred flame"
 	desc = "Hot!"
-	desc_extended = "A very dangerous tome that periodically ignites all hostile living beings in view while active. Also makes for a good book for pummeling."
+	desc_extended = "A very dangerous tome that periodically ignites all hostile living beings in view while active. Also makes foor a good book for pummeling."
 	rarity = RARITY_MYTHICAL
 
 	icon = 'icons/obj/item/weapons/ranged/magic/tomes/inferno.dmi'
