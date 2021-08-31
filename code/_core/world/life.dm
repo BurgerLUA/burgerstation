@@ -64,10 +64,11 @@ var/global/time_dialation = 0
 				break
 			SS.last_run_duration = FLOOR(world.time - start_time,0.01)
 			SS.total_run_duration += SS.last_run_duration
-			if(SS.tick_rate > 0 && time_dialation && SS.use_time_dialation)
-				sleep(TICKS_TO_DECISECONDS(SS.tick_rate*time_dialation))
-			else
-				sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+			if(SS.tick_rate > 0)
+				if(time_dialation && SS.use_time_dialation)
+					sleep(TICKS_TO_DECISECONDS(SS.tick_rate*time_dialation))
+				else
+					sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
 
 	world_state = STATE_RUNNING
 

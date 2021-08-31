@@ -22,6 +22,16 @@
 
 mob/living/advanced/revive()
 
+	var/species/S = SPECIES(species)
+	if(!S)
+		return FALSE
+	if(sex == FEMALE)
+		if(length(S.spawning_organs_female) > length(labeled_organs))
+			return FALSE
+	else
+		if(length(S.spawning_organs_male) > length(labeled_organs))
+			return FALSE
+
 	. = ..()
 
 	for(var/k in overlays_assoc)

@@ -9,7 +9,7 @@
 	iff_tag = "beefman"
 	loyalty_tag = "beefman"
 
-	movement_delay = 1
+	movement_delay = 1 //Lowest possible.
 
 	health_base = 100
 

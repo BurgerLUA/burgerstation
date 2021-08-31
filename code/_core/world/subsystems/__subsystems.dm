@@ -29,7 +29,10 @@
 	return TRUE
 
 /subsystem/New(var/desired_loc)
-	tick_rate = FLOOR(tick_rate,1)
+	if(tick_rate > 0)
+		tick_rate = FLOOR(tick_rate,1)
+		if(!tick_rate)
+			tick_rate = 1
 	return ..()
 
 

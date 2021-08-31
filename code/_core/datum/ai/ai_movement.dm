@@ -227,7 +227,6 @@
 	if(sidestep_next)
 		if(!owner.move_dir)
 			owner.move_dir = pick(DIRECTIONS_INTERCARDINAL)
-
 		if(prob(50))
 			var/move_cone = pick(45,90)
 			owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))

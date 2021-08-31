@@ -126,19 +126,19 @@
 
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
+	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+	if(total_bleed_damage>0)
+		var/bleed_to_add = total_bleed_damage/50
+		src.bleeding += bleed_to_add
+
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
-		if(!A.immortal && !A.ckey_last && !A.boss && health && health.health_max <= damage_amount && A.health.health_current <= A.health.health_max*0.5)
+		if(!A.immortal && !A.ckey_last && !A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
 			gib()
 			A.death()
-
-	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
-	if(total_bleed_damage>0)
-		var/bleed_to_add = total_bleed_damage/50
-		src.bleeding += bleed_to_add
 
 	return ..()
 

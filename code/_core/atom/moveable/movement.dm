@@ -42,7 +42,7 @@
 			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
 			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
-		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), CEILING(adjust_delay,1)) //Round to the nearest tick. Counting decimal ticks is dumb.
+		move_delay = CEILING(final_movement_delay, CEILING(adjust_delay,1)) //Round to the nearest tick. Counting decimal ticks is dumb.
 
 		glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
 		glide_size = max(glide_size,2)
