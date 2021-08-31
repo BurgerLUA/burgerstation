@@ -25,14 +25,13 @@
 			frustration_move = 0
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
-	if(!new_turf || new_turf.z != last_z)
+	if(!new_turf || !old_turf || new_turf.z != old_turf.z)
 		if(active)
-			if(last_z) remove_from_active_list(last_z)
+			if(old_turf) remove_from_active_list(old_turf.z)
 			if(new_turf) add_to_active_list(new_turf.z)
 		else
-			if(last_z) remove_from_inactive_list(last_z)
-			if(new_turf) add_to_inactive_list(new_turf.z); set_active(TRUE) //Wake up the AI if we can.
-		if(new_turf) last_z = new_turf.z
+			if(old_turf) remove_from_inactive_list(old_turf.z)
+			if(new_turf) add_to_inactive_list(new_turf.z)
 
 	return TRUE
 

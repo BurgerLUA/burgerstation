@@ -169,7 +169,6 @@
 
 	if(retaliate && length(attackers))
 		for(var/k in attackers)
-			CHECK_TICK(75,FPS_SERVER*2)
 			var/atom/A = k
 			if(A.qdeleting)
 				attackers -= k
@@ -186,7 +185,6 @@
 		return .
 
 	for(var/mob/living/L in view(range_to_use,owner))
-		CHECK_TICK(75,FPS_SERVER*2)
 		var/sight_chance = get_sight_chance(L,range_to_use)
 		if(sight_chance < 100 && !prob(sight_chance))
 			continue

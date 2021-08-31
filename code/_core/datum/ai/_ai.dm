@@ -115,9 +115,6 @@
 	var/ignore_hazard_turfs = FALSE
 
 	var/boss = FALSE
-	var/list/active_ai_list
-	var/list/inactive_ai_list
-	var/last_z = null
 
 /ai/Destroy()
 
@@ -155,26 +152,27 @@
 
 	SSai.path_stuck_ai -= src
 
-	active_ai_list = null
-	inactive_ai_list = null
-
 	return ..()
 
 /ai/proc/add_to_active_list(var/z)
+	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(!active_ai_list["[z]"])
 		active_ai_list["[z]"] = list()
 	active_ai_list["[z]"] |= src
 
 /ai/proc/remove_from_active_list(var/z)
+	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(length(active_ai_list) && active_ai_list["[z]"])
 		active_ai_list["[z]"] -= src
 
 /ai/proc/add_to_inactive_list(var/z)
+	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(!inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] = list()
 	inactive_ai_list["[z]"] |= src
 
 /ai/proc/remove_from_inactive_list(var/z)
+	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(length(inactive_ai_list) && inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] -= src
 
@@ -213,13 +211,6 @@
 	objective_ticks = rand(0,objective_delay)
 
 	start_turf = get_turf(owner)
-
-	if(boss)
-		active_ai_list = SSbossai.active_ai_by_z
-		inactive_ai_list = SSbossai.inactive_ai_by_z
-	else
-		active_ai_list = SSai.active_ai_by_z
-		inactive_ai_list = SSai.inactive_ai_by_z
 
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
