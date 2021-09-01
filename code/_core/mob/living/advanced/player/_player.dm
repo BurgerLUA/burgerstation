@@ -231,6 +231,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
+				if(A.owner.dead || A.owner.qdeleting)
+					SSai.inactive_ai_by_z["[src.loc.z]"] -= k
+					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
@@ -243,6 +246,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 					if(SSbossai.inactive_ai_by_z["[src.loc.z]"])
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
+					continue
+				if(A.owner.dead || A.owner.qdeleting)
+					SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)

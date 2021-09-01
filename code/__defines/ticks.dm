@@ -1,6 +1,6 @@
-#define LIFE_TICK 5 //Deciseconds per life tick interval.
-#define LIFE_TICK_SLOW 10 //Deciseconds per slow life tick interval.
-#define AI_TICK 1.5 //Deciseconds per AI tick interval.
+#define LIFE_TICK 10 //Deciseconds per life tick interval.
+#define LIFE_TICK_SLOW 40 //Deciseconds per slow life tick interval.
+#define AI_TICK 3 //Deciseconds per AI tick interval.
 #define BOSS_TICK 1 //Deciseconds per boss tick interval. Also handles movement.
 
 #define CLIENT_TICK 2 //FRAMES per life tick interval

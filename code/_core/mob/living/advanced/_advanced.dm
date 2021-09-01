@@ -322,6 +322,10 @@ mob/living/advanced/Login()
 
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
+	var/species/S = SPECIES(species)
+	if(S && S.health)
+		health = S.health
+
 	. = ..()
 
 	if(client)
@@ -331,10 +335,6 @@ mob/living/advanced/Login()
 
 	if(client)
 		add_species_buttons()
-
-	var/species/S = SPECIES(species)
-	if(S && S.health)
-		health = S.health
 
 /mob/living/advanced/PostInitialize()
 

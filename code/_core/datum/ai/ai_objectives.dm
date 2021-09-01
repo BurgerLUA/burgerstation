@@ -214,7 +214,7 @@
 		return FALSE
 
 	if(!owner || owner.dead)
-		alert_level = ALERT_LEVEL_NONE
+		CRASH_SAFE("AI's alert level was set while it was dead!")
 		return FALSE
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))

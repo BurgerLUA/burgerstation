@@ -537,7 +537,6 @@
 		health.armor_base = armor_base
 	if(ai)
 		INITIALIZE(ai)
-		FINALIZE(ai)
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
@@ -545,6 +544,9 @@
 /mob/living/Finalize()
 
 	. = ..()
+
+	if(ai)
+		FINALIZE(ai)
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
