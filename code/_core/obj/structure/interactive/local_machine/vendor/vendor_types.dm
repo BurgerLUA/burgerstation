@@ -141,6 +141,7 @@
 		/obj/item/container/beaker/bottle/epinephrine,
 		/obj/item/container/beaker/bottle/calomel,
 		/obj/item/container/beaker/bottle/charcoal,
+		/obj/item/container/beaker/bottle/morphine,
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
