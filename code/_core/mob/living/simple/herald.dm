@@ -54,7 +54,7 @@
 	iff_tag = "Herald"
 	loyalty_tag = "Herald"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 

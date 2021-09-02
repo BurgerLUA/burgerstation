@@ -57,7 +57,7 @@
 		DRUGGY = TRUE
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange

@@ -59,7 +59,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 		/obj/item/container/food/dynamic/meat/raw_xeno/
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 

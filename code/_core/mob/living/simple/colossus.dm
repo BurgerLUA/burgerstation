@@ -55,7 +55,7 @@
 	iff_tag = "Colossus"
 	loyalty_tag = "Colossus"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 

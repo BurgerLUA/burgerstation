@@ -53,7 +53,7 @@
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 

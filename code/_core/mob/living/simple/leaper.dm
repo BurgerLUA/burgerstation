@@ -44,7 +44,7 @@
 		PAIN = 20
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,

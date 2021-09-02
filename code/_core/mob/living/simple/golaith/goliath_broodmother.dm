@@ -46,7 +46,7 @@
 		/obj/item/soapstone/orange
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 

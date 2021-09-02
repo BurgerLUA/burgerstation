@@ -186,7 +186,7 @@
 
 	//dead plants auto-remove themselves
 	var/health_percent = health.health_current/health.health_max
-	if health_percent <= 0.01)
+	if(health_percent <= 0.01)
 		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
 		qdel(src)
 	else

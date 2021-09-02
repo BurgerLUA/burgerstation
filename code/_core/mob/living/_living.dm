@@ -192,7 +192,8 @@
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
-	var/fatigue_from_block_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/fatigue_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/pain_mul = 1
 
 	value = 250
 
