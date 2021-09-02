@@ -69,7 +69,7 @@
 
 /reagent/medicine/painkiller/morphine
 	name = "Morphine"
-	desc = "A potent painkilling and addictive chemical extracted from opium in a pure form. More addictive than opium."
+	desc = "A potent painkilling and addictive chemical extracted from opium in a pure form. More stronger and addictive than opium."
 	color = "#C2D1C5"
 	alpha = 225
 
@@ -119,4 +119,10 @@
 
 	experience_per_unit = 0.25
 
+	overdose_threshold = 30
+
 	value = 1
+
+/reagent/medicine/painkiller/assprin/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
+	. = ..()
+	owner.pain_regen_buffer -= .*10
