@@ -636,7 +636,7 @@
 		/obj/item/container/food/package/junkfood/halloween/hurr_bar,
 		/obj/item/container/food/package/junkfood/halloween/kit_catgirl_metaclique_bar,
 		/obj/item/container/food/package/junkfood/halloween/malf_way,
-		/obj/item/container/food/package/junkfood/halloween/sniggers_bar,
+		/obj/item/container/food/package/junkfood/halloween/candy_bar,
 		/obj/item/container/food/package/junkfood/halloween/triggerfinger,
 		/obj/item/container/food/package/junkfood/halloween/twink_bar
 	)
