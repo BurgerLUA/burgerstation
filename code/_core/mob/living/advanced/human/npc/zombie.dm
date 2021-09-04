@@ -2,7 +2,6 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-
 	species = "zombie"
 
 	var/loadout_to_use = /loadout/zombie
@@ -17,7 +16,7 @@
 	loyalty_tag = "Zombie"
 	iff_tag = "Zombie"
 
-	level = 8
+	level = 24
 
 /mob/living/advanced/npc/zombie/get_movement_delay()
 

@@ -15,6 +15,8 @@
 
 	damage_received_multiplier = 0.25
 
+	level = 50
+
 /mob/living/advanced/npc/unique/rogue_crew/Finalize()
 	. = ..()
 	filters += filter("drop_shadow",x=0,y=0,size=-5,offset=0,color=COLOR_BLOOD)

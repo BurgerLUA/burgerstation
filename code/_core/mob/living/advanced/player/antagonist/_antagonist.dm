@@ -5,7 +5,7 @@
 
 	damage_received_multiplier = 0.5
 
-	level = 20
+	level = 30
 
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)

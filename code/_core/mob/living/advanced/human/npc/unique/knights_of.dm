@@ -4,9 +4,6 @@
 	sex = MALE
 	gender = MALE
 
-
-
-
 	health_base = 500
 
 	loyalty_tag = "Knight"
@@ -15,6 +12,8 @@
 	ai = /ai/advanced/skeleton
 
 	var/loadout
+
+	level = 20
 
 /mob/living/advanced/npc/unique/knight/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return FALSE //Immune

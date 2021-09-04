@@ -40,9 +40,6 @@
 
 /turf/simulated/hazard/water/sea
 	name = "saltwater"
-	icon = 'icons/turf/floor/ocean_new.dmi'
-	icon_state = "water"
-	color = "#243754"
 	fishing_rewards = /loot/fishing/sea
 
 /turf/simulated/hazard/water/sea/Finalize()

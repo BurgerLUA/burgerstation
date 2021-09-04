@@ -2,8 +2,11 @@
 	name = "vehicle attachment device"
 	desc = "What makes it stick."
 	desc_extended = "A special attachment brace that connects a compatible device or weapon to a mech. Just attach an object to it, then attach this device to the mech."
+
+	/*
 	icon = 'icons/obj/item/attachment.dmi'
 	icon_state = "inventory"
+	*/
 
 	var/obj/item/attached_item
 
@@ -43,7 +46,7 @@
 		I.appearance = attached_item.appearance
 		underlays += I
 
-	
+
 /obj/item/mech_attachment/update_sprite()
 
 	. = ..()
@@ -53,7 +56,7 @@
 	if(attached_item)
 		name = "[name] ([attached_item.name])"
 
-	
+
 /obj/item/mech_attachment/proc/attach(var/mob/caller,var/obj/item/I)
 	if(attached_item)
 		caller?.to_chat(span("warning","There is already a [attached_item.name] attached to \the [src.name]!"))

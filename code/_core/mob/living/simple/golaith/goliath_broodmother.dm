@@ -71,7 +71,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 30
+	level = 70
 
 /mob/living/simple/goliath/broodmother/on_life()
 	. = ..()

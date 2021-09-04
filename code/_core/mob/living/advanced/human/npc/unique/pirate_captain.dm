@@ -10,9 +10,6 @@
 	boss = TRUE
 	ai = /ai/advanced/skeleton
 
-
-
-
 	health_base = 6000
 
 	fatigue_mul = 0
@@ -36,6 +33,8 @@
 	)
 
 	var/next_revive = 0
+
+	level = 70
 
 /mob/living/advanced/npc/unique/pirate_captain/on_life_slow()
 
@@ -71,14 +70,13 @@
 	sex = MALE
 	gender = MALE
 
-
-
-
 	health_base = 1000
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
 	ai = /ai/advanced/skeleton
+
+	level = 60
 
 /mob/living/advanced/npc/unique/pirate_mate/Initialize()
 	. = ..()
@@ -98,7 +96,7 @@
 	iff_tag = "Skeleton"
 	ai = /ai/advanced/skeleton
 
-	level = 10
+	level = 18
 
 
 /mob/living/advanced/npc/pirate_crew/Initialize()
@@ -109,15 +107,23 @@
 	name = "skeleton crew marksman"
 	desired_loadout = /loadout/pirate/crew/ranged
 
+	level = 24
+
 /mob/living/advanced/npc/pirate_crew/magic
 	name = "skeleton crew mage"
 	desired_loadout = /loadout/pirate/crew/magic
+
+	level = 32
 
 /mob/living/advanced/npc/pirate_crew/melee
 	name = "skeleton crew brawler"
 	desired_loadout = /loadout/pirate/crew/melee
 
+	level = 24
+
 
 /mob/living/advanced/npc/pirate_crew/ninja
 	name = "skeleton crew ninja"
 	desired_loadout = /loadout/pirate/crew/ninja
+
+	level = 32

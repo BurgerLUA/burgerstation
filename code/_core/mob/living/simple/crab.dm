@@ -42,7 +42,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 12
 
 /mob/living/simple/crab/post_death()
 	..()
@@ -127,7 +127,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	level = 12
+	level = 50
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

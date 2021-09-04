@@ -2,7 +2,7 @@
 /obj/item/weapon/ranged/energy/mech/smg/
 	bullet_color = COLOR_BULLET
 
-	heat_per_shot = 0.01
+	heat_per_shot_to_add = 0.01
 	heat_max = 0.03
 
 /obj/item/weapon/ranged/energy/mech/smg/get_static_spread() //Base spread

@@ -79,7 +79,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 18
+	level = 40
 
 /mob/living/simple/leaper/handle_alpha()
 	if(immortal)

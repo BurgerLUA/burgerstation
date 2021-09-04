@@ -8,7 +8,7 @@
 	dialogue_id = /dialogue/npc/soldier/
 	var/loadout_to_use = /loadout/nanotrasen/soldier
 
-	level = 8
+	level = 10
 
 /mob/living/advanced/npc/nanotrasen/Initialize()
 
@@ -38,3 +38,5 @@
 	desc = "Someone didn't do their job."
 	dialogue_id = null
 	loadout_to_use = /loadout/shaft_miner
+
+	level = 6

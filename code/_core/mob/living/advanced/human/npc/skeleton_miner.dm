@@ -13,8 +13,7 @@
 	iff_tag = "Syndicate"
 	ai = /ai/advanced/skeleton
 
-	level = 8
-
+	level = 12
 
 /mob/living/advanced/npc/skeleton_miner/Initialize()
 	. = ..()

@@ -4,9 +4,6 @@
 
 	ai = /ai/advanced
 
-
-
-
 	species = "goblin"
 
 	pixel_z = -2
@@ -18,7 +15,7 @@
 
 	blood_type = /reagent/blood/goblin
 
-	level = 1
+	level = 5
 
 /mob/living/advanced/npc/goblin/Initialize()
 
@@ -40,7 +37,7 @@
 	stamina_base = 200
 	mana_base = 100
 
-	level = 4
+	level = 12
 
 /mob/living/advanced/npc/goblin/mage
 	name = "goblin mage"
@@ -49,4 +46,4 @@
 	stamina_base = 100
 	mana_base = 300
 
-	level = 6
+	level = 14

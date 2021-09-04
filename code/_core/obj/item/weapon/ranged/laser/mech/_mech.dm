@@ -12,7 +12,7 @@
 
 	charge_cost = 1000
 
-	view_punch = 0
+	view_punch_to_add = 0
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
@@ -60,7 +60,7 @@
 
 	bullet_color = COLOR_BULLET
 
-	heat_per_shot = 0.01
+	heat_per_shot_to_add = 0.01
 	heat_max = 0.03
 
 	value = 500
@@ -94,7 +94,7 @@
 
 	bullet_color = COLOR_BULLET
 
-	heat_per_shot = 0.005
+	heat_per_shot_to_add = 0.005
 	heat_max = 0.04
 
 /obj/item/weapon/ranged/energy/mech/lmg/get_static_spread()
@@ -128,7 +128,7 @@
 
 	bullet_color = "#FF0000"
 
-	heat_per_shot = 0.004
+	heat_per_shot_to_add = 0.004
 	heat_max = 0.03
 
 /obj/item/weapon/ranged/energy/mech/laser/get_static_spread()
@@ -164,7 +164,7 @@
 
 	bullet_color = COLOR_BLUE
 
-	heat_per_shot = 0.004
+	heat_per_shot_to_add = 0.004
 	heat_max = 0.03
 
 /obj/item/weapon/ranged/energy/mech/ion/get_static_spread()
@@ -181,7 +181,7 @@
 	desc_extended = "Shoulder-mounted mech HE rocket pod with a wide blast radius. Uses large amounts of power to restock its rockets. Fired by holding the ALT key. Mount one on each shoulder for double the fun!"
 	icon_state = "mech_missile_pod"
 
-	projectile = /obj/projectile/bullet/rocket
+	projectile = /obj/projectile/bullet/rocket_he
 	ranged_damage_type = /damagetype/ranged/bullet/gyrojet/
 
 	bullet_color = "#FFFFFF"
@@ -199,7 +199,7 @@
 
 	value = 1900
 
-	heat_per_shot = 0.004
+	heat_per_shot_to_add = 0.004
 	heat_max = 0.03
 
 /obj/item/weapon/ranged/energy/mech/missile_pod/get_static_spread()

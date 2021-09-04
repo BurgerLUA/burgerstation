@@ -8,6 +8,7 @@
 
 	ai = /ai/advanced
 
+	level = 1
 
 /mob/living/advanced/npc/skeleton_summon/Initialize()
 	. = ..()

@@ -6,6 +6,8 @@
 	icon_state = "drone"
 	damage_type = /damagetype/unarmed/claw
 
+	level = 2
+
 /mob/living/simple/bee/post_death()
 	qdel(src)
 	return ..()

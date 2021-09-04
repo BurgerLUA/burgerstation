@@ -82,7 +82,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 70
 
 /mob/living/simple/can_man/post_death()
 	. = ..()

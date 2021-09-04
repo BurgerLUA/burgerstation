@@ -6,7 +6,7 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 
-	level = 6
+	level = 16
 
 
 

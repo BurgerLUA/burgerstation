@@ -71,7 +71,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 50
 
 /mob/living/simple/goblin_king/post_death()
 	. = ..()
