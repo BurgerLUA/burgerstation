@@ -10,6 +10,7 @@
 		/obj/item/clothing/mask/clown,
 		/obj/item/clothing/uniform/clown,
 		/obj/item/storage/shoebox/clown,
+		/obj/item/storage/shoebox/duck,
 
 		/obj/item/clothing/overwear/coat/ghost_sheet,
 

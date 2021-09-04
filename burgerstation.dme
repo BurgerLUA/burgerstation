@@ -1130,6 +1130,7 @@
 #include "code\_core\obj\item\clothing\feet\shoes\carbon.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\clown.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\colored.dm"
+#include "code\_core\obj\item\clothing\feet\shoes\duck.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\engineering_rig_boots.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\magboots.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\sandal.dm"

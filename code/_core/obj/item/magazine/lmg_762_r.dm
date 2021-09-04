@@ -10,8 +10,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/rifle_308/short
-	ammo_surplus = /obj/item/bullet_cartridge/rifle_308/short/surplus
+	ammo = /obj/item/bullet_cartridge/rifle_308/long
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_308/long/surplus
 
 	bullet_length_min = 53
 	bullet_length_best = 54

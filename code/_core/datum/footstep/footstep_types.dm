@@ -31,6 +31,13 @@
 		'sound/effects/footsteps/clownstep2.ogg'
 	)
 
+/footstep/quack
+	footstep_sounds = list(
+		'sound/effects/footsteps/quack1.ogg',
+		'sound/effects/footsteps/quack2.ogg'
+	)
+
+
 /footstep/concrete
 	footstep_sounds = list(
 		'sound/effects/footsteps/concrete1.ogg',
