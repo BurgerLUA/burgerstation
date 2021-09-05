@@ -13,8 +13,6 @@
 
 	death_threshold = -100
 
-	damage_received_multiplier = 0.25
-
 	level = 50
 
 /mob/living/advanced/npc/unique/rogue_crew/Finalize()

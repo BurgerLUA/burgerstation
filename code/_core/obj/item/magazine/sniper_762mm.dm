@@ -4,11 +4,12 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/762_rifle.dmi'
 	icon_state = "762"
-	bullet_count_max = 15
+	bullet_count_max = 30
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/assault/mod = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato

@@ -20,4 +20,6 @@
 	. = 0
 
 	for(var/k in total_damages)
-		. += calculate_damage_with_armor(total_damages[k],50)
+		. += calculate_damage_with_armor(total_damages[k],max(0,100-attack_damage_penetration[k]))
+
+	. *= damage_mod

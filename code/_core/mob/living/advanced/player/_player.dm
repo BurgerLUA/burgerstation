@@ -71,8 +71,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	value = 0
 
-	damage_received_multiplier = 0.5
-
 	known_cqc = list(
 		/cqc/sleeping_carp/crashing_wave_kick,
 		/cqc/sleeping_carp/keelhaul,

@@ -8,7 +8,7 @@
 
 	shoot_delay = 0.2 //Oh god oh fuck
 
-	damage_mod = 1.2
+	damage_mod = 0.9
 
 	automatic = TRUE
 

@@ -7,7 +7,7 @@
 
 	var/obj/structure/interactive/mountable/browning/linked_gun
 
-	shoot_delay = 2.5
+	shoot_delay = 3
 
 	automatic = TRUE
 
