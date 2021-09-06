@@ -7,7 +7,7 @@
 
 	shoot_delay = 0.5
 
-	damage_mod = 1
+	damage_mod = 0.5
 
 	projectile = /obj/projectile/bullet/laser/weak
 	ranged_damage_type = /damagetype/ranged/laser/carbine
