@@ -59,16 +59,15 @@ var/global/time_dialation = 0
 				log_error("[SS.name] failed to run properly!")
 				sleep(10)
 				continue
-			else if(result == FALSE)
+			else if(result == FALSE || SS.tick_rate <= 0)
 				log_subsystem(SS.name,"Shutting down.")
 				break
 			SS.last_run_duration = FLOOR(world.time - start_time,0.01)
 			SS.total_run_duration += SS.last_run_duration
-			if(SS.tick_rate > 0)
-				if(time_dialation && SS.use_time_dialation)
-					sleep(TICKS_TO_DECISECONDS(SS.tick_rate*time_dialation))
-				else
-					sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+			if(time_dialation && SS.use_time_dialation)
+				sleep(TICKS_TO_DECISECONDS(SS.tick_rate*time_dialation))
+			else
+				sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
 
 	world_state = STATE_RUNNING
 

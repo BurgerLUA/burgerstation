@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/flame
-	name = "flame"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		FIRE = 45*0.4,
 		ARCANE = 45*0.1

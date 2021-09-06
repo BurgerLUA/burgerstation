@@ -1,5 +1,5 @@
 /damagetype/
-	var/name = "Damage type."
+	var/name //TODO:REMOVE
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
@@ -443,7 +443,7 @@
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense.")
 			continue
-		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
+		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists. Also makes it so that negative armor penetration penalties apply when there is armor.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.

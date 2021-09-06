@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/spellblade
-	name = "spellblade"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLADE = 75*0.25,
 		ARCANE = 75*0.15

@@ -31,7 +31,7 @@
 	base_spread = 0
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_slug
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_20/slug
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
@@ -40,7 +40,7 @@
 
 /obj/item/bullet_cartridge/shotgun_20/slug/surplus
 	name = "\improper surplus 20 gauge slug"
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug/surplus
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/slug/surplus
 	jam_chance = 1
 	value = 0
 
@@ -54,7 +54,7 @@
 	base_spread = 0.03
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_20/buckshot
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
@@ -65,7 +65,7 @@
 
 /obj/item/bullet_cartridge/shotgun_20/buckshot/surplus
 	name = "\improper surplus 20 gauge slug"
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot/surplus
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_20/buckshot/surplus
 	jam_chance = 1
 	value = 0
 

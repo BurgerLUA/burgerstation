@@ -341,7 +341,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	if(length(shoot_sounds_to_use))
 		var/turf/T = get_turf(src)
-		play_sound(pick(shoot_sounds_to_use),T,range_max=VIEW_RANGE + ZOOM_RANGE*3)
+		play_sound(pick(shoot_sounds_to_use),T,range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
 			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,caller,shoot_alert_to_use)
 		return TRUE

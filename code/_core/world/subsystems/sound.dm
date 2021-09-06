@@ -206,7 +206,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	return created_sound
 
 
-/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -265,7 +265,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return C
 
-/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -322,13 +322,14 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 		created_sound.volume = local_volume
 
+
 		C << created_sound
 
 	return created_sound
 
 
 
-/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -386,6 +387,13 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		created_sound.y = 0
 		created_sound.volume = local_volume
 		created_sound.environment = M.get_sound_environment()
+
+		if(tracked)
+			if(M.client.tracked_sounds[tracked])
+				var/sound/S = sound()
+				S.channel = M.client.tracked_sounds[tracked]
+				M << S
+			M.client.tracked_sounds[tracked] = created_sound.channel
 
 		M << created_sound
 

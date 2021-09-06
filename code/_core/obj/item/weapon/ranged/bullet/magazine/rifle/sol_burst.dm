@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst
-	name = "\improper 7.62mm SOL-18 Service Rifle"
+	name = "\improper 5.56mm SOL-18 Service Rifle"
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
 	desc_extended = "A .308 space-age service rifle developed by the Solarian research team for space battles."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/burst.dmi'
@@ -25,13 +25,13 @@
 
 	heat_max = 0.04
 
-	bullet_length_min = 46
-	bullet_length_best = 51
-	bullet_length_max = 52
+	bullet_length_min = 40
+	bullet_length_best = 45
+	bullet_length_max = 46
 
-	bullet_diameter_min = 7.6
-	bullet_diameter_best = 7.62
-	bullet_diameter_max = 7.7
+	bullet_diameter_min = 5.5
+	bullet_diameter_best = 5.56
+	bullet_diameter_max = 5.6
 
 	ai_heat_sensitivity = 0.75
 
@@ -48,6 +48,7 @@
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/sight/scope/medium = TRUE,
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
@@ -74,8 +75,16 @@
 
 	dan_mode = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst/Generate()
+	. = ..()
+	attachment_sight = new /obj/item/attachment/sight/scope/medium(src)
+	INITIALIZE(attachment_sight)
+	GENERATE(attachment_sight)
+	FINALIZE(attachment_sight)

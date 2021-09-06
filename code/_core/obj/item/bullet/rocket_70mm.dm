@@ -33,7 +33,7 @@
 	bullet_diameter = 70
 
 	projectile = /obj/projectile/bullet/rocket_he
-	damage_type_bullet = /damagetype/ranged/bullet/rocket_he/
+	damage_type_bullet = /damagetype/ranged/bullet/rocket/he
 
 	projectile_speed = TILE_SIZE * 0.9
 
@@ -55,7 +55,7 @@
 	bullet_diameter = 70
 
 	projectile = /obj/projectile/bullet/rocket_wp
-	damage_type_bullet = /damagetype/ranged/bullet/rocket_wp/
+	damage_type_bullet = /damagetype/ranged/bullet/rocket/wp
 
 	projectile_speed = TILE_SIZE * 0.9
 

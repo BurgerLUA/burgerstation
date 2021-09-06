@@ -9,8 +9,6 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato

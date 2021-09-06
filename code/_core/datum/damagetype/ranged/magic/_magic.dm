@@ -1,7 +1,6 @@
 /damagetype/ranged/magic/
 	bonus_experience_skill = list()
 	attack_damage_penetration = list()
-	damage_mod = 1
 
 	bonus_experience_attribute = list(
 		ATTRIBUTE_INTELLIGENCE = 25 //25%
@@ -20,4 +19,3 @@
 		if(M.stored_powergem)
 			.[M.stored_powergem.damage_type_to_add] += M.stored_powergem.damage_to_add
 
-	
