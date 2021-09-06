@@ -79,7 +79,6 @@
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
 				GENERATE(B)
-				FINALIZE(B)
 				stored_bullets += B
 
 	if (object_data["bluespaced"])
