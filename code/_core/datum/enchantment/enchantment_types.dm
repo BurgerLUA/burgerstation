@@ -2,6 +2,7 @@
 	name = "Blaze"
 	desc = "Sets targets on fire."
 	enchanting_phrase = "Woah Momma, That's a spicy meatball!"
+	cost = 75
 
 /enchantment/fire/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim))
@@ -14,6 +15,7 @@
 	name = "Stagger"
 	desc = "Has a chance to stagger opponents."
 	enchanting_phrase = "Oh fuck I slipped! Fucking nerf soap!"
+	cost = 100
 
 /enchantment/stagger/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim) && prob(strength*5*min(1,total_damage_dealt/100)))
@@ -26,6 +28,7 @@
 	name = "Stun"
 	desc = "Has a chance to stun opponents."
 	enchanting_phrase = "Fucking stunlockers are fucking noobs, I'm tired of this shit!"
+	cost = 200
 
 /enchantment/stun/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim) && prob(strength*2.5*(total_damage_dealt/100)))
@@ -38,6 +41,7 @@
 	name = "Disarm"
 	desc = "Has a chance to disarm opponents."
 	enchanting_phrase = "Why are my fucking hands made of butter?"
+	cost = 150
 
 /enchantment/disarm/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_advanced(victim) && prob(strength*5*(total_damage_dealt/50)))
@@ -49,6 +53,7 @@
 	name = "Blood Leech"
 	desc = "Restores blood relative to damage dealt. Only works on living targets."
 	enchanting_phrase = "Blood for the blood god!"
+	cost = 125
 
 /enchantment/blood_leech/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(attacker) && is_living(victim))
@@ -66,6 +71,7 @@
 	name = "Soul Trap"
 	desc = "Traps the soul of most living beings."
 	enchanting_phrase = "Gingers have souls!"
+	cost = 50
 
 /enchantment/soul_trap/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim))

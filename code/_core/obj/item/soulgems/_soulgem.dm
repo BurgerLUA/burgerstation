@@ -6,9 +6,9 @@
 	icon_state = "common"
 
 	var/total_charge = 0
-	//TODO: Make these enchant things.
+	var/total_capacity = 0
 
-	value = 60
+	value = 0
 
 	weight = 1
 
@@ -22,39 +22,53 @@
 
 /obj/item/soulgem/Finalize()
 	. = ..()
+
+	if(!total_capacity)
+		if(total_charge)
+			total_capacity = total_charge
+		else
+			total_capacity = SOUL_SIZE_COMMON
+
 	update_sprite()
 
 /obj/item/soulgem/get_base_value()
 	. = ..()
 	. += (total_charge/16)**1.5
+	. += (total_capacity/32)**1.5
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 
 /obj/item/soulgem/update_sprite()
 	name = initial(name)
-	if(!total_charge)
-		name = "empty [name]"
-		return ..()
+	icon = initial(icon)
 	switch(total_charge)
 		if(0 to SOUL_SIZE_COMMON)
 			name = "common [name]"
+			icon_state = "common"
 		if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
 			name = "uncommon [name]"
+			icon_state = "uncommon"
 		if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
 			name = "rare [name]"
+			icon_state = "rare"
 		if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
 			name = "mystic [name]"
+			icon_state = "mystic"
 		if(SOUL_SIZE_MYSTIC to INFINITY)
 			name = "godly [name]"
-	return ..()
+			icon_state = "godly"
 
-/obj/item/soulgem/update_icon()
 	if(total_charge)
 		icon_state = "[initial(icon_state)]_1"
 	else
 		icon_state = initial(icon_state)
+		name = "[name] (empty)"
+
+
 	return ..()
+
+
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -77,7 +91,6 @@
 
 		return TRUE
 
-	/*
 	if(is_staff(object))
 
 		INTERACT_CHECK
@@ -97,19 +110,42 @@
 		update_sprite()
 
 		return TRUE
-	*/
 
 	return ..()
 
 
 /obj/item/soulgem/common
-	total_charge = SOUL_SIZE_COMMON
+	total_capacity = SOUL_SIZE_COMMON
+
+/obj/item/soulgem/common/filled/Generate()
+	. = ..()
+	total_charge = total_capacity
 
 /obj/item/soulgem/uncommon
-	total_charge = SOUL_SIZE_UNCOMMON
+	total_capacity = SOUL_SIZE_UNCOMMON
+
+/obj/item/soulgem/uncommon/filled/Generate()
+	. = ..()
+	total_charge = total_capacity
 
 /obj/item/soulgem/rare
-	total_charge = SOUL_SIZE_RARE
+	total_capacity = SOUL_SIZE_RARE
+
+/obj/item/soulgem/rare/filled/Generate()
+	. = ..()
+	total_charge = total_capacity
 
 /obj/item/soulgem/mystic
-	total_charge = SOUL_SIZE_MYSTIC
+	total_capacity = SOUL_SIZE_MYSTIC
+
+/obj/item/soulgem/mystic/filled/Generate()
+	. = ..()
+	total_charge = total_capacity
+
+/obj/item/soulgem/godly
+	total_capacity = SOUL_SIZE_GODLY
+	value_burgerbux = 10000
+
+/obj/item/soulgem/godly/filled/Generate()
+	. = ..()
+	total_charge = total_capacity

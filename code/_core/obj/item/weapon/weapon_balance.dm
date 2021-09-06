@@ -23,7 +23,13 @@
 		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit() * (10/shoot_delay)
+	if(max_bursts)
+		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*current_bursts*1.25
+		. = max_bursts*D.get_damage_per_hit()*(10/local_burst_delay)
+
+	var/possible = D.get_damage_per_hit() * (10/shoot_delay)
+	if(possible > .)
+		. = possible
 
 
 /obj/item/weapon/ranged/bullet/get_dps()
@@ -45,4 +51,10 @@
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit() * (10/shoot_delay)
+	if(max_bursts)
+		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*current_bursts*1.25
+		. = max_bursts*D.get_damage_per_hit()*(10/local_burst_delay)
+
+	var/possible = D.get_damage_per_hit() * (10/shoot_delay)
+	if(possible > .)
+		. = possible
