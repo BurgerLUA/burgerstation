@@ -161,7 +161,7 @@
 	acceleration_mod = 0.5
 	acceleration = 5
 	deceleration = 10
-	use_momentum = TRUE
+	use_momentum = FALSE
 
 	var/override_butcher = FALSE //Set to true for custom butcher contents.
 	var/list/obj/butcher_contents = list()

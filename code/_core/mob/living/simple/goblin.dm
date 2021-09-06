@@ -25,7 +25,7 @@
 	blood_type = /reagent/blood/goblin
 	blood_volume = 300
 
-	move_delay = AI_TICK*2
+	move_delay = 10
 
 	stun_angle = 90
 

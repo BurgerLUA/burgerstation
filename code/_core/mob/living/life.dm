@@ -267,14 +267,14 @@
 		queue_health_update = FALSE
 
 	if(flash_overlay && flash_overlay.duration > 0)
-		flash_overlay.duration -= LIFE_TICK
+		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 		if(flash_overlay.duration <= 0)
 			animate(flash_overlay,alpha=0,time=SECONDS_TO_DECISECONDS(5))
 			queue_delete(flash_overlay,SECONDS_TO_DECISECONDS(10))
 			flash_overlay = null
 
 	if(deafened_duration && deafened_duration > 0)
-		deafened_duration -= LIFE_TICK
+		deafened_duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 
 	return TRUE
 
@@ -296,9 +296,9 @@
 		thirst_mod *= M.thirst_multiplier
 
 	if(hunger_mod > 0)
-		add_nutrition(-(LIFE_TICK_SLOW/10)*0.10*hunger_mod)
-		add_nutrition_fast(-(LIFE_TICK_SLOW/10)*0.20*hunger_mod)
-		add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
+		add_nutrition(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.10*hunger_mod)
+		add_nutrition_fast(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.20*hunger_mod)
+		add_hydration(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.05*thirst_mod)
 
 	if(client)
 		for(var/obj/hud/button/hunger/B in buttons)
@@ -314,7 +314,7 @@ mob/living/proc/on_life_slow()
 		return TRUE
 
 	if(talk_duration)
-		talk_duration = max(0,talk_duration-LIFE_TICK_SLOW)
+		talk_duration = max(0,talk_duration-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
 		if(talk_duration <= 0 && !is_typing)
 			animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
 
@@ -323,7 +323,7 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
-	blood_toxicity = max(blood_toxicity - LIFE_TICK_SLOW,0)
+	blood_toxicity = max(blood_toxicity - TICKS_TO_DECISECONDS(LIFE_TICK_SLOW),0)
 	if(blood_toxicity > 20)
 		chem_power = max(0,1 - (blood_toxicity-20)*0.01)
 	else
@@ -337,16 +337,14 @@ mob/living/proc/on_life_slow()
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)
-		blood_volume -= LIFE_TICK_SLOW*0.25
+		blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
 		if(health && blood_volume >= blood_volume_max*1.05)
-			health.adjust_loss_smart(tox=LIFE_TICK_SLOW*0.25,robotic=FALSE)
+			health.adjust_loss_smart(tox=TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25,robotic=FALSE)
 
 	handle_regen()
 
 	if(reagents)
 		reagents.metabolize(src)
-
-	//handle_charges(LIFE_TICK_SLOW)
 
 	handle_hunger()
 
@@ -360,7 +358,7 @@ mob/living/proc/on_life_slow()
 		return TRUE
 
 	var/threshold_multiplier = 1
-	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*(LIFE_TICK_SLOW/10)
+	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 	var/should_apply_status_effects = TRUE
 	var/reverse_intoxication = FALSE
 
@@ -372,7 +370,7 @@ mob/living/proc/on_life_slow()
 		reverse_intoxication = IR.reverse_intoxication
 
 	if(reverse_intoxication)
-		intoxication = min(1000,intoxication+(0.1*(LIFE_TICK_SLOW/10)))
+		intoxication = min(1000,intoxication+(0.1*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)))
 	else
 		intoxication = max(0,intoxication-intoxication_to_remove)
 
@@ -397,7 +395,7 @@ mob/living/proc/on_life_slow()
 			if(last_intoxication_message != 4)
 				to_chat(span("danger","You feel utterly and completely fucking shitfaced."))
 				last_intoxication_message = 4
-			health.adjust_loss_smart(tox=0.25*(LIFE_TICK_SLOW/10),robotic = FALSE)
+			health.adjust_loss_smart(tox=0.25*TICKS_TO_SECONDS(LIFE_TICK_SLOW),robotic = FALSE)
 			queue_health_update = TRUE
 
 	if(should_apply_status_effects && (intoxication/threshold_multiplier) >= 600 && prob((intoxication/threshold_multiplier)/100))
@@ -491,7 +489,7 @@ mob/living/proc/on_life_slow()
 	if(health.health_regeneration <= 0 && health.stamina_regeneration <= 0 && health.mana_regeneration <= 0)
 		return FALSE
 
-	var/delay_mod = LIFE_TICK_SLOW
+	var/delay_mod = TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 
 	var/health_adjust = 0
 	var/mana_adjust = 0

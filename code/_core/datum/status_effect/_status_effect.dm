@@ -420,7 +420,7 @@
 
 /status_effect/consencrated/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
-	owner.burn_regen_buffer -= 5 * LIFE_TICK
+	owner.burn_regen_buffer -= 5 * TICKS_TO_SECONDS(LIFE_TICK)
 
 /status_effect/cursed
 	name = "Cursed"
@@ -448,7 +448,7 @@
 
 /status_effect/cursed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
-	owner.brute_regen_buffer -= 5 * LIFE_TICK
+	owner.brute_regen_buffer -= 5 * TICKS_TO_SECONDS(LIFE_TICK)
 
 
 

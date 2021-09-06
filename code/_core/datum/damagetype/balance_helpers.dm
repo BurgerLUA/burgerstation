@@ -1,4 +1,4 @@
-/damagetype/proc/get_damage_per_hit()
+/damagetype/proc/get_damage_per_hit(var/armor_to_use=0)
 
 	var/list/total_damages = list()
 
@@ -20,6 +20,10 @@
 	. = 0
 
 	for(var/k in total_damages)
-		. += calculate_damage_with_armor(total_damages[k],max(0,100-attack_damage_penetration[k]))
+		var/armor_calc = attack_damage_penetration[k]*penetration_mod
+		if(armor_calc < 0 && armor_to_use <= 0)
+			armor_calc = 0
+		armor_calc = max(min(armor_to_use,0),armor_to_use-armor_calc)
+		. += calculate_damage_with_armor(total_damages[k],armor_calc)
 
 	. *= damage_mod

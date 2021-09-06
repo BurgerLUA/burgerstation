@@ -80,6 +80,11 @@
 	if(B.charge_current <= 0)
 		return FALSE
 
-	B.charge_current = max(B.charge_current - AI_TICK,0)
 
-	return ..()
+
+	. = ..()
+
+/ai/turret/deployable/on_life(var/tick_rate=1)
+	. = ..()
+	var/obj/item/powercell/B = owner_as_turret.get_battery()
+	B?.charge_current -= tick_rate

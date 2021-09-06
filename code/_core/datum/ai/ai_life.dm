@@ -25,14 +25,14 @@
 
 	return TRUE
 
-/ai/proc/on_life(var/tick_rate)
+/ai/proc/on_life(var/tick_rate=1)
 
 	objective_ticks += tick_rate
 	var/objective_delay = get_objective_delay()
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
 		handle_objectives(objective_delay)
-		if(length(current_path) || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
+		if(length(current_path) || objective_attack || objective_move || alert_level >= ALERT_LEVEL_NOISE)
 			idle_time = 0
 		else
 			if(idle_time && idle_time <= world.time)
