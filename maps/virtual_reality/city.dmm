@@ -793,7 +793,7 @@
 /turf/simulated/floor/tile/tint,
 /area/city/interior/discount)
 "dg" = (
-/obj/structure/smooth/table/grill/barbecue,
+/obj/structure/smooth/table/cooking/barbecue,
 /turf/simulated/floor/tile,
 /area/city/interior/discount)
 "dh" = (

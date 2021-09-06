@@ -21,8 +21,6 @@
 
 	var/debug = FALSE
 
-	var/special_temperature_mod = 0
-
 	var/contains_lethal = FALSE
 
 	var/allow_recipe_processing = TRUE
@@ -109,7 +107,7 @@
 	if(T && T.loc)
 		A = T.loc
 
-	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + special_temperature_mod + (T ? T.turf_temperature_mod : 0)
+	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
 	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
 
 	if(is_inventory(owner.loc))

@@ -52,7 +52,7 @@
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "aq" = (
-/obj/structure/interactive/lighting/bonfire/on/intense,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "ar" = (
@@ -184,10 +184,6 @@
 /obj/marker/map_node,
 /turf/unsimulated/generation/jungle/path,
 /area)
-"aZ" = (
-/obj/structure/interactive/lighting/bonfire/on,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area)
 "ba" = (
 /obj/marker/map_node,
 /mob/living/simple/xeno/queen,
@@ -217,7 +213,7 @@
 /turf/unsimulated/generation/surface/surface_path_turf,
 /area)
 "bh" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
 "bi" = (
@@ -701,7 +697,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/mining)
 "dr" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/diamond_cave)
 "ds" = (
@@ -838,7 +834,7 @@
 /turf/simulated/floor/cobblestone/corner,
 /area/lz_001/forest/village)
 "dY" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/surface_path_turf,
 /area/lz_001/forest/village)
 "dZ" = (
@@ -1125,7 +1121,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fg" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fh" = (
@@ -1947,7 +1943,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "iO" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "iP" = (
@@ -50718,7 +50714,7 @@ ah
 aw
 aw
 aw
-aZ
+aq
 ah
 dx
 dx

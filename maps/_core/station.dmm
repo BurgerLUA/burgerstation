@@ -3331,7 +3331,7 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mi" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/tile{
 	icon_state = "white_single"
 	},

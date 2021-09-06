@@ -472,7 +472,7 @@
 /turf/simulated/floor/basalt,
 /area/herald)
 "dc" = (
-/obj/structure/interactive/lighting/bonfire/on/intense,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/basalt,
 /area/herald)
 "dd" = (
