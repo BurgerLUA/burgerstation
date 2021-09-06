@@ -37,7 +37,7 @@ var/global/list/valid_antag_colors = list(
 
 	attack_range = 3
 
-	movement_delay = DECISECONDS_TO_TICKS(1.5)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	stun_angle = 0
 

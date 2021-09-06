@@ -27,7 +27,7 @@
 
 	if(final_move_dir && move_delay <= 0 && is_valid_dir(final_move_dir))
 
-		var/final_movement_delay = max(adjust_delay,get_movement_delay())
+		var/final_movement_delay = get_movement_delay()
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)
@@ -46,7 +46,7 @@
 		move_delay += CEILING(final_movement_delay, adjust_delay) //Round to the nearest tick.
 
 		glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
-		glide_size = max(glide_size,2)
+		glide_size = max(glide_size,FPS_CLIENT/FPS_SERVER)
 
 		//Handling intercardinal collisions.
 		if(intercardinal)
