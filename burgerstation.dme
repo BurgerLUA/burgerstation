@@ -1631,6 +1631,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\semi.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\service.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\sniper_127.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\sol_burst.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\svt.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\syringe_rifle.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\tungsten.dm"
