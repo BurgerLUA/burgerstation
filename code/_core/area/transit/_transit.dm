@@ -7,7 +7,7 @@ var/global/list/area/transit/transit_areas = list()
 	var/turf/transit_turf = /turf/simulated/floor/plating
 	safe_storage = TRUE
 	trackable = TRUE
-	allow_ghosts = FALSE
+	allow_ghost = FALSE
 
 /area/transit/New(var/desired_loc)
 	transit_areas[type] = src

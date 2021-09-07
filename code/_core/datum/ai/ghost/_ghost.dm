@@ -1,6 +1,4 @@
 /ai/ghost
-	var/anger = 0
-	var/hunt_duration = 0//Above 1 means hunt. Counts down by 1 every life tick.
 
 	use_alerts = FALSE
 	true_sight = TRUE
@@ -11,67 +9,120 @@
 
 	var/mob/living/simple/ghost/owner_as_ghost
 
-	var/ghost_type = "ghost"
+	var/ghost_type = "ghost" //This is the sprite and name. No effect on AI.
 	//shade
 	//revenant
 	//faithless
 	//forgotten
 
+	var/anger = 0
 
-	var/shy_level = 0
-	//1 = will become more visible the more people around it.
-	//2 = will become less visible the more people around it.
-	//3 = will only show itself if people aren't looking at it.
-	//On hunts, it's fully visible.
-
-	var/stealth_killer = 0
-	//1 = fully visible on hunt
-	//2 = invisbile on hunt
+	var/stat_player_limit = 1 //Amount of players it can tolerate. Numbers higher than this value can "calm" it.
+	var/stat_anger_per_player = 0 //The amount of anger to add per player nearby. Supports negative numbers.
+	var/stat_anger_per_player_viewing = 0 //The amount of anger to add per player lookinga t it. Supports negative numbers.
+	var/stat_hunt_targets = 4 //The amount of targets it will track persistently at a time.
+	var/stat_territorial = FALSE //Set to true if its anger is increased if a player is in their territory.
+	var/stat_afraid_of_light = FALSE //Set to true if this ghost is pacified in the light.
+	var/stat_vocal = FALSE //Set to true if this ghost talks a lot.
+	var/stat_hates_noise = FALSE //set to true if it hates alert-causing things.
 
 	roaming_distance = 128
 
 	var/origin_area_identifier
+	var/area/origin_area
 
-	var/talks = TRUE
 	var/next_voice = 0
 
 	var/was_being_watched = FALSE
 
 	var/last_teleport = 0
+	var/last_hunt = 0
+
+	active = TRUE
+
+	var/next_star = 0
+
+/ai/ghost/New(var/desired_loc,var/mob/living/desired_owner)
+
+	. = ..()
+
+	owner_as_ghost = desired_owner
+
+	var/turf/T = get_turf(owner_as_ghost)
+	var/area/A = T.loc
+	origin_area_identifier = A.area_identifier
+
+	stat_player_limit = prob(50) ? 1 : INFINITY
+	stat_anger_per_player = prob(75) ? rand(1,5) : rand(0,-3)
+	stat_anger_per_player_viewing = prob(75) ? rand(0,5) : rand(-1,5)
+	stat_hunt_targets = prob(25) ? 0 : 5
+	stat_territorial = prob(25)
+	stat_afraid_of_light = prob(25)
+	stat_vocal = prob(25)
+
+	setup_appearance()
+
+	var/turf/T2 = find_new_location()
+	if(T2)
+		owner.force_move(T2)
+		notify_ghosts("A new [owner.name] was created at [T2.loc.name].",T2)
+	else
+		log_error("Tried creating a ghost ([desired_owner.get_debug_name()]) in an invalid area!")
+		qdel(desired_owner)
+
+
+/ai/ghost/proc/handle_ghost_pathing()
+
+	if(objective_attack)
+		var/turf/T1 = get_turf(owner)
+		var/turf/T2 = get_turf(objective_attack)
+		if(T1.z != T2.z || get_dist(T1,T2) > 64) //Too far, can't path.
+			return FALSE
+		var/astar_length = length(current_path_astar)
+		if(astar_length)
+			var/turf/T4 = get_turf(current_path_astar[astar_length]) //Check the end of the path.
+			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
+				set_path_astar(T2)
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
+				return TRUE
+		else
+			var/turf/T3 = get_step(T1,get_dir(T1,T2))
+			if(!T3.is_safe_teleport(FALSE))
+				set_path_astar(T2)
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
+				return TRUE
+
+	return FALSE
+
+
+
+/ai/ghost/handle_movement()
+
+	if(handle_movement_astar())
+		return TRUE
+
+	if(handle_movement_attack_objective())
+		return TRUE
+
+	if(handle_movement_roaming())
+		return TRUE
+
+	handle_movement_reset()
+
+
 
 /ai/ghost/handle_movement_roaming()
 
-	if(was_being_watched)
+	if(was_being_watched && stat_anger_per_player_viewing < 0) //Likes attention. Don't roam around if players are watching.
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /ai/ghost/proc/setup_appearance()
 	ghost_type = pick("shade","revenant","faithless","forgotten")
 	owner_as_ghost.icon = 'icons/mob/living/simple/ghosts.dmi'
 	owner_as_ghost.icon_state = ghost_type
 	owner_as_ghost.name = ghost_type
-
-/ai/ghost/New(var/desired_loc,var/mob/living/desired_owner)
-
-	. = ..()
-
-	var/turf/T = get_turf(desired_owner)
-	var/area/A = T.loc
-	origin_area_identifier = A.area_identifier
-
-	owner_as_ghost = desired_owner
-	shy_level = rand(1,3)
-	//stealth_killer = rand(1,2)
-	stealth_killer = 1
-
-	setup_appearance()
-
-
-	var/turf/T2 = find_new_location()
-	if(T2)
-		owner.force_move(T2)
-		notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 
 /ai/ghost/proc/create_emf(var/turf/loc,var/desired_level=3,var/desired_range=VIEW_RANGE)
 
@@ -89,18 +140,26 @@
 
 /ai/ghost/proc/find_new_location()
 
-	var/list/possible_areas = SSarea.areas_by_identifier[origin_area_identifier]
+	var/list/possible_areas = SSarea.areas_by_identifier[origin_area_identifier].Copy()
 	if(!length(possible_areas))
 		return null
 
-	var/chances_left = 5
+	var/chances_left = min(20,length(possible_areas))
 	while(chances_left > 0)
 		chances_left--
 		var/area/A2 = pick(possible_areas)
-		if(A2.allow_ghosts)
+		if(A2.allow_ghost)
+			possible_areas -= A2
 			continue
-		var/turf/T = locate(A2.average_x,A2.average_y,A2.z)
-		return T
+		var/list/possible_turfs = list()
+		for(var/turf/simulated/T in A2)
+			if(!T.is_safe_teleport())
+				continue
+			possible_turfs += T
+		if(!length(possible_turfs))
+			possible_areas -= A2
+			continue
+		return pick(possible_turfs)
 
 	return null
 
@@ -114,9 +173,11 @@
 	if(A.area_identifier != origin_area_identifier)
 		var/turf/T2 = find_new_location()
 		owner.force_move(T2)
+		notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 		return TRUE
 
 	if(owner.move_delay <= 0)
+		handle_ghost_pathing()
 		handle_movement()
 
 	if(owner.attack_next <= world.time)
@@ -124,16 +185,15 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(objective_attack || (anger >= 100 && last_teleport + SECONDS_TO_DECISECONDS(10) <= world.time))
+	if(objective_attack || (anger >= 100 && last_teleport + SECONDS_TO_DECISECONDS(4) <= world.time))
 		var/no_objective = !objective_attack
 		objective_ticks += tick_rate
-		owner_as_ghost.desired_alpha = stealth_killer == 2 ? 0 : 255
+		owner_as_ghost.desired_alpha = 255
 		if(objective_ticks >= get_objective_delay())
 			objective_ticks = 0
 			handle_objectives(tick_rate)
 			if(objective_attack)
 				anger -= DECISECONDS_TO_SECONDS(1)
-				A.smash_all_lights() //This sleeps
 				if(qdeleting || !owner || owner.qdeleting)
 					return FALSE
 				if(no_objective) //First time attacking.
@@ -145,21 +205,23 @@
 							break
 					if(can_hunt)
 						anger = 200
-						notify_ghosts("\The [owner.name] is now hunting!",T)
+						notify_ghosts("\The [owner.name] is now hunting [objective_attack.name]!",T)
 						owner.icon_state = "[ghost_type]_angry"
 						play_sound('sound/ghost/ghost_ambience_2.ogg',T,volume=75)
 					else
+						notify_ghosts("\The [owner.name] stopped hunting.",T)
 						set_objective(null)
 						owner.icon_state = "[ghost_type]"
 						anger = 50
+				A.smash_all_lights() //This sleeps
 			else
 				owner.icon_state = "[ghost_type]"
 				anger = 50
 		return TRUE
 
-
 	//Who is looking at us?
 	var/list/found_viewers = list()
+	var/list/found_proximity = list()
 	var/mob/living/advanced/insane
 	var/sanity_rating = 75
 	if(T.lightness >= 0 && owner.invisibility < 101)
@@ -168,6 +230,7 @@
 				continue
 			if(!ADV.client)
 				continue
+			found_proximity += ADV
 			if(!(ADV.dir & get_dir(ADV,owner)))
 				continue
 			found_viewers += ADV
@@ -175,98 +238,111 @@
 			if(ADV.sanity < sanity_rating)
 				insane = ADV
 				sanity_rating = ADV.sanity
+
+	var/proximity_count = length(found_proximity)
 	var/viewer_count = length(found_viewers)
 
-	//What should our alpha be?
-	var/desired_alpha = 200
-	switch(shy_level)
-		if(2) //Shy
-			anger += viewer_count*0.05
-			desired_alpha -= viewer_count ? 50 : 0
-		if(3) //Super shy
-			if(!viewer_count)
-				anger -= 0.03
-			else
-				anger += viewer_count*0.15
-			desired_alpha -= viewer_count ? 150 : 50
+	anger += proximity_count*stat_anger_per_player
+	anger += viewer_count*stat_anger_per_player_viewing
 
-	if(T.lightness >= 0.5) //Light bad.
-		desired_alpha = 0
-	else if (T.lightness <= 0)
-		desired_alpha = 0
+	if(stat_player_limit > proximity_count)
+		anger -= 1
+	if(stat_player_limit > found_viewers)
+		anger -= 1
 
-	//How should we respond to darkness?
-	if(owner.alpha >= 0 && T.lightness >= 0.1 && prob(anger)) //Too bright
-		desired_alpha -= 50
-		if(anger >= 50)
-			A.smash_all_lights()
-			create_emf(T,4)
+	//How should we respond to light?
+	var/desired_alpha = 255
+	if(stat_afraid_of_light)
+		if(T.lightness >= 0.25) //Light bad.
+			desired_alpha = 100
 		else
-			if(!A.toggle_all_lights())
+			desired_alpha = 255
+	else
+		if(T.lightness >= 0.25)
+			desired_alpha = 200
+		else
+			desired_alpha = 100
+
+	//How should we respond to viewers?
+	if(proximity_count*stat_anger_per_player + viewer_count*stat_anger_per_player_viewing > 0)
+		desired_alpha *= 0.75
+	else
+		desired_alpha *= 1.25
+
+	//How should we respond to light? PT2
+	if(T.lightness >= 0.1) //Too bright. Even if we're fine with light, we're pissed.
+		desired_alpha -= 50
+		if(prob(anger))
+			if(anger >= 50)
 				A.smash_all_lights()
 				create_emf(T,4)
 			else
-				create_emf(T,3)
-		var/annoying_player = FALSE
-		var/tolerance = 0.75 - min(0.25,(anger/200))
-		for(var/light_source/LS in T.affecting_lights)
-			if(LS.light_power < tolerance)
-				continue
-			if(is_advanced(LS.top_atom))
-				var/mob/living/advanced/ADV = LS.top_atom
-				if(anger >= 50)
-					if(talks && !annoying_player)
-						play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T,range_max=VIEW_RANGE)
-						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-					anger += 25
-					ADV.sanity -= 50
+				if(!A.toggle_all_lights())
+					A.smash_all_lights()
+					create_emf(T,4)
 				else
-					anger += 10
-					ADV.sanity -= 10
-				annoying_player = TRUE
-			if(istype(LS.source_atom,/obj/item/weapon/melee/torch))
-				var/obj/item/weapon/melee/torch/L = LS.source_atom
-				if(L.enabled) L.click_self(owner)
-				create_emf(get_turf(L),3)
-		if(annoying_player && last_teleport + SECONDS_TO_DECISECONDS(20) <= world.time)
-			if(viewer_count >= 3)
-				var/turf/T2 = find_new_location()
-				if(T2)
-					create_emf(T,2)
-					owner.force_move(T2)
-					create_emf(T2,3,VIEW_RANGE*3)
-					notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
-					if(talks)
-						play_sound(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2,range_max=VIEW_RANGE)
-						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-					last_teleport = world.time
-			else if(viewer_count || insane)
-				var/mob/living/advanced/ADV = insane ? insane : pick(found_viewers)
-				var/turf/T2 = get_turf(ADV)
-				owner.force_move(T2)
-				last_teleport = world.time
-				if(talks)
-					if(anger <= 50)
-						play_sound(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2,range_max=VIEW_RANGE)
-						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-					else
-						play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2,range_max=VIEW_RANGE)
-						next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-				anger += 10
+					create_emf(T,3)
 
+		if(stat_afraid_of_light)
+			var/annoying_player = FALSE
+			var/tolerance = 0.75 - min(0.25,(anger/200))
+			for(var/light_source/LS in T.affecting_lights)
+				if(LS.light_power < tolerance)
+					continue
+				if(is_advanced(LS.top_atom))
+					var/mob/living/advanced/ADV = LS.top_atom
+					if(anger >= 50)
+						if(stat_vocal && !annoying_player)
+							play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T,range_max=VIEW_RANGE)
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+						anger += 25
+						ADV.sanity -= 50
+					else
+						anger += 10
+						ADV.sanity -= 10
+					annoying_player = TRUE
+				if(istype(LS.source_atom,/obj/item/weapon/melee/torch))
+					var/obj/item/weapon/melee/torch/L = LS.source_atom
+					if(L.enabled) L.click_self(owner)
+					create_emf(get_turf(L),3)
+			if(annoying_player && last_teleport + SECONDS_TO_DECISECONDS(20) <= world.time)
+				if(viewer_count >= 3)
+					var/turf/T2 = find_new_location()
+					if(T2)
+						create_emf(T,2)
+						owner.force_move(T2)
+						create_emf(T2,3,VIEW_RANGE*3)
+						notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
+						if(stat_vocal)
+							play_sound(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2,range_max=VIEW_RANGE)
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+						last_teleport = world.time
+				else if(viewer_count || insane)
+					var/mob/living/advanced/ADV = insane ? insane : pick(found_viewers)
+					var/turf/T2 = get_turf(ADV)
+					owner.force_move(T2)
+					last_teleport = world.time
+					if(stat_vocal)
+						if(anger <= 50)
+							play_sound(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2,range_max=VIEW_RANGE)
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+						else
+							play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2,range_max=VIEW_RANGE)
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
+					anger += 10
 
 	//Look at the man who will die.
 	if(insane)
 		owner.set_dir(get_dir(owner,insane))
-		if(talks && next_voice < world.time && prob(25))
+		if(stat_vocal && next_voice < world.time && prob(25))
 			play_sound_target(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
 			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
 
 	if(anger <= 10)
-		desired_alpha = 0
+		desired_alpha = 0 //No reason to show ourselves.
 	else if (anger >= 75)
-		desired_alpha = 200
+		desired_alpha = 255 //Ok you're pissing me off.
 
 
 	desired_alpha = clamp(desired_alpha,0,255)
@@ -276,16 +352,17 @@
 
 	return TRUE
 
-
 /ai/ghost/get_attack_score(var/mob/living/L)
 	if(!is_advanced(L))
-		return -1
+		return -100
 	var/mob/living/advanced/A = L
-	return 100 - A.sanity
-
+	return 75 - min(100,A.sanity)
 
 /ai/ghost/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
 	//Trying to alert it just pisses it off.
+
+	if(!stat_hates_noise)
+		return TRUE
 
 	var/mob/living/advanced/A
 
@@ -303,16 +380,15 @@
 			anger += 20
 			A?.sanity -= 20
 
-
 	return TRUE
 
 
-/ai/ghost/shitass
-	talks = FALSE
+/ai/ghost/shitass/New(var/desired_loc,var/mob/living/desired_owner)
+	. = ..()
+	stat_vocal = FALSE
 
 /ai/ghost/shitass/setup_appearance()
 	ghost_type = "living"
-
 	owner_as_ghost.icon = 'icons/mob/living/simple/shitass.dmi'
 	owner_as_ghost.icon_state = "living"
 	owner_as_ghost.name = "shitass"

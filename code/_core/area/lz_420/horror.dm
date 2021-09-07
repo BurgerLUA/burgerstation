@@ -7,11 +7,13 @@
 
 	sound_environment = ENVIRONMENT_ROOM
 
+	allow_ghost = TRUE
+
 
 /area/lz_420/interior/basement/lobby
 	name = "Basement Lobby"
 	icon_state = "lobby"
-	allow_ghosts = FALSE
+	allow_ghost = FALSE
 
 /area/lz_420/interior/basement/bathroom
 	name = "Basement Bathroom Lobby"
