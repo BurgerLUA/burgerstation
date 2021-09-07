@@ -4,6 +4,7 @@
 	desc_extended =  "It's a chainsaw. Turn it on and watch as everything you hit with it becomes chunky soup."
 	icon = 'icons/obj/item/weapons/melee/swords/chainsaw.dmi'
 	damage_type = /damagetype/melee/sword/chainsaw
+	damage_type_on = /damagetype/melee/sword/chainsaw/on
 
 	can_wield = TRUE
 
@@ -54,7 +55,7 @@
 /obj/item/weapon/melee/energy/chainsaw/proc/start(var/mob/caller)
 	enabled = TRUE
 	start_thinking(src)
-	damage_type = /damagetype/melee/sword/chainsaw/on
+	damage_type = damage_type_on
 	play_sound('sound/weapons/chainsaw/start.ogg',get_turf(src),range_max=VIEW_RANGE)
 	update_sprite()
 	return TRUE
@@ -62,7 +63,7 @@
 /obj/item/weapon/melee/energy/chainsaw/proc/stop(var/mob/caller)
 	enabled = FALSE
 	stop_thinking(src)
-	damage_type = /damagetype/melee/sword/chainsaw
+	damage_type = initial(damage_type)
 	play_sound('sound/weapons/chainsaw/stop.ogg',get_turf(src),range_max=VIEW_RANGE)
 	update_sprite()
 	return TRUE

@@ -11,6 +11,19 @@
 
 	return D.get_damage_per_hit(armor_to_use) * (10/D.attack_delay)
 
+/obj/item/weapon/melee/energy/get_dps(var/armor_to_use=0)
+
+	if(!damage_type_on)
+		log_error("Warning: [src.type] did not have a valid damage_type_on.")
+		return 0
+
+	var/damagetype/D = all_damage_types[damage_type_on]
+	if(!D)
+		log_error("Warning: [src.type] did not have a valid damage_type.")
+		return 0
+
+	return D.get_damage_per_hit(armor_to_use) * (10/D.attack_delay)
+
 
 /obj/item/weapon/ranged/get_dps(var/armor_to_use=0)
 
