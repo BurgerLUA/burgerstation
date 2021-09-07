@@ -65,7 +65,7 @@
 
 /obj/item/bullet_cartridge/shotgun_12/buckshot/surplus
 	name = "\improper surplus 12 gauge buckshot"
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/buckshot
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/surplus
 	jam_chance = 1
 	value = 0
 
