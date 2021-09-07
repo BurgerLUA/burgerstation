@@ -54,7 +54,7 @@
 	base_spread = 0.03
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/buckshot
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
@@ -65,7 +65,7 @@
 
 /obj/item/bullet_cartridge/shotgun_12/buckshot/surplus
 	name = "\improper surplus 12 gauge buckshot"
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/buckshot/surplus
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/buckshot
 	jam_chance = 1
 	value = 0
 

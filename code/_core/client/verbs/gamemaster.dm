@@ -91,23 +91,17 @@
 		src.to_chat(span("warning","\"[object]\" returned no valid types."))
 		return FALSE
 
-	if(valid_count == 1)
-		var/datum/A = valid_objects[1]
-		A = new A(usr.loc)
-		INITIALIZE(A)
-		GENERATE(A)
-		FINALIZE(A)
-		return TRUE
-
-	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
-
-	if(!selection)
-		return FALSE
+	var/selection
+	if(valid_count != 1)
+		selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
+		if(!selection)
+			return FALSE
+	else
+		selection = valid_objects[1]
 
 	var/turf/T
 	if(mob)
 		T = get_step(src.mob,src.mob.dir)
-
 	if(!T)
 		T = get_turf(src.mob)
 
@@ -119,8 +113,6 @@
 		O.set_dir(mob ? mob.dir : SOUTH)
 		GENERATE(O)
 	FINALIZE(A)
-
-
 
 	log_admin("[src.get_debug_name()] spawned [A.get_debug_name()].")
 

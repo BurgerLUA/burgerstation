@@ -1013,6 +1013,7 @@
 #include "code\_core\obj\item\ball.dm"
 #include "code\_core\obj\item\bank_storage.dm"
 #include "code\_core\obj\item\broom.dm"
+#include "code\_core\obj\item\bulletbox.dm"
 #include "code\_core\obj\item\cell_charger.dm"
 #include "code\_core\obj\item\clean.dm"
 #include "code\_core\obj\item\combat.dm"

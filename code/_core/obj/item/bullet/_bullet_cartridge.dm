@@ -46,6 +46,8 @@
 
 	var/power = 0 //Set is SSweapons
 
+	var/bulletbox_icon_state = "bullet"
+
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
@@ -293,7 +295,7 @@
 				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
 			return TRUE
 
-	return ..()
+	. = ..()
 
 
 /obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)

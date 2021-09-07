@@ -1,13 +1,4 @@
 /damagetype/ranged/bullet/shotgun_23/ //Russian
-	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
-		BLADE = 0.20,
-		BLUNT = 0.3,
-		PIERCE = 0.1,
-		BOMB = 1
-	)
-
-/damagetype/ranged/bullet/shotgun_23/buckshot
-	name = "group of buckshot pellets"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -23,9 +14,16 @@
 		PIERCE = 0
 	)
 
+	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLADE = 0.20,
+		BLUNT = 0.3,
+		PIERCE = 0.1,
+		BOMB = 1
+	)
+
 	falloff = 3
 
-/damagetype/ranged/bullet/shotgun_23/buckshot/surplus
+/damagetype/ranged/bullet/shotgun_23/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
 

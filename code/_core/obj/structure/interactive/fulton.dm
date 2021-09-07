@@ -87,10 +87,10 @@
 			return .
 		else
 			L.to_chat(span("danger","You were captured and sold to a prison! Better luck next time!"))
-		. = L.get_value()
+		. = CEILING(L.get_value(),1)
 		L.death(TRUE)
 	else
-		. = stored_movable.get_value()
+		. = CEILING(stored_movable.get_value(),1)
 
 	if(. && is_player(owner))
 		var/mob/living/advanced/player/P = owner

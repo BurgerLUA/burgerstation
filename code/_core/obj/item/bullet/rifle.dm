@@ -174,6 +174,12 @@
 	jam_chance = 1
 	value = 0
 
+
+/obj/item/bullet_cartridge/rifle_223/nato/premium
+	name = "\improper premium 5.56mm rifle bullet"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm/premium
+	value = 3
+
 /obj/item/bullet_cartridge/rifle_223/nato/caseless
 	name = "\improper 5.56mm caseless rifle bullet"
 	desc = "The poodle shooter's favorite. Now in caseless!"

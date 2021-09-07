@@ -38,8 +38,6 @@
 
 	value = 10
 
-
-
 /obj/item/magazine/rifle_556/ap
 	name = "\improper 5.56mm AP rifle magazine"
 	icon = 'icons/obj/item/magazine/556_rifle_ap.dmi'

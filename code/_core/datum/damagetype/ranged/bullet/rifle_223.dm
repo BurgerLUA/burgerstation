@@ -36,6 +36,10 @@
 	damage_mod = SURPLUS_MUL
 	penetration_mod = ARMOR_MUL
 
+/damagetype/ranged/bullet/rifle_556mm/premium
+	damage_mod = PREMIUM_MUL
+	penetration_mod = PREMIUM_MUL
+
 
 /damagetype/ranged/bullet/rifle_545mm // pls no touchy ruski
 	attack_damage_base = list(

@@ -1,4 +1,5 @@
 /damagetype/ranged/bullet/shotgun_20/
+
 	damage_type_to_fatigue = list(
 		BLADE = 0.20,
 		BLUNT = 0.3,
@@ -6,7 +7,6 @@
 		BOMB = 1
 	)
 
-/damagetype/ranged/bullet/shotgun_20/buckshot
 	attack_damage_base = list(
 		BLADE = 5,
 		BLUNT = 10,
@@ -19,7 +19,7 @@
 	)
 	falloff = 3
 
-/damagetype/ranged/bullet/shotgun_20/buckshot/surplus
+/damagetype/ranged/bullet/shotgun_20/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
 
