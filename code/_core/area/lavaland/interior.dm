@@ -1,12 +1,6 @@
 /area/lavaland/interior
 	interior = TRUE
 
-/area/lavaland/interior/syndicate
-	name = "Syndicate Ship"
-	icon_state = "syndicate"
-
-	sound_environment = ENVIRONMENT_STONEROOM
-
 /area/lavaland/interior/base
 	name = "\improper Lavaland Base"
 	icon_state = "ship"
@@ -31,8 +25,6 @@
 	)
 
 	trackable = TRUE
-
-	area_identifier = "Burgerstation"
 
 /area/lavaland/interior/base/hall
 	name = "\improper Hallway"

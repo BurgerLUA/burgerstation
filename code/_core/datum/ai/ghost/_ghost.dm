@@ -10,10 +10,6 @@
 	var/mob/living/simple/ghost/owner_as_ghost
 
 	var/ghost_type = "ghost" //This is the sprite and name. No effect on AI.
-	//shade
-	//revenant
-	//faithless
-	//forgotten
 
 	var/anger = 0
 
@@ -26,7 +22,9 @@
 	var/stat_vocal = FALSE //Set to true if this ghost talks a lot.
 	var/stat_hates_noise = FALSE //set to true if it hates alert-causing things.
 
-	roaming_distance = 128
+	var/list/directed_anger = list() //Ckey to number.
+
+	roaming_distance = VIEW_RANGE
 
 	var/origin_area_identifier
 	var/area/origin_area
@@ -62,13 +60,16 @@
 
 	setup_appearance()
 
+
+/ai/ghost/Finalize()
+	. = ..()
 	var/turf/T2 = find_new_location()
 	if(T2)
 		owner.force_move(T2)
 		notify_ghosts("A new [owner.name] was created at [T2.loc.name].",T2)
 	else
-		log_error("Tried creating a ghost ([desired_owner.get_debug_name()]) in an invalid area!")
-		qdel(desired_owner)
+		log_error("Tried creating a ghost ([owner.get_debug_name()]) in an invalid area!")
+		qdel(owner)
 
 
 /ai/ghost/proc/handle_ghost_pathing()
@@ -86,7 +87,28 @@
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
 		else
-			var/turf/T3 = get_step(T1,get_dir(T1,T2))
+			var/move_dir = get_dir(T1,T2)
+			var/turf/T3 = get_step(T1,move_dir)
+			if(!T3.is_safe_teleport(FALSE))
+				set_path_astar(T2)
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
+				return TRUE
+
+	else if(objective_move)
+		var/turf/T1 = get_turf(owner)
+		var/turf/T2 = get_turf(objective_move)
+		if(T1.z != T2.z || get_dist(T1,T2) > 64) //Too far, can't path.
+			return FALSE
+		var/astar_length = length(current_path_astar)
+		if(astar_length)
+			var/turf/T4 = get_turf(current_path_astar[astar_length]) //Check the end of the path.
+			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
+				set_path_astar(T2)
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
+				return TRUE
+		else
+			var/move_dir = get_dir(T1,T2)
+			var/turf/T3 = get_step(T1,move_dir)
 			if(!T3.is_safe_teleport(FALSE))
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
@@ -104,22 +126,28 @@
 	if(handle_movement_attack_objective())
 		return TRUE
 
+	if(handle_movement_move_objective())
+		return TRUE
+
 	if(handle_movement_roaming())
 		return TRUE
 
 	handle_movement_reset()
 
+	return FALSE
 
 
+/*
 /ai/ghost/handle_movement_roaming()
 
 	if(was_being_watched && stat_anger_per_player_viewing < 0) //Likes attention. Don't roam around if players are watching.
 		return FALSE
 
 	. = ..()
+*/
 
 /ai/ghost/proc/setup_appearance()
-	ghost_type = pick("shade","revenant","faithless","forgotten")
+	ghost_type = pick("shade","revenant","faithless","forgotten","clown","faceless")
 	owner_as_ghost.icon = 'icons/mob/living/simple/ghosts.dmi'
 	owner_as_ghost.icon_state = ghost_type
 	owner_as_ghost.name = ghost_type
@@ -148,7 +176,7 @@
 	while(chances_left > 0)
 		chances_left--
 		var/area/A2 = pick(possible_areas)
-		if(A2.allow_ghost)
+		if(!A2.allow_ghost)
 			possible_areas -= A2
 			continue
 		var/list/possible_turfs = list()
@@ -176,12 +204,12 @@
 		notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
 		return TRUE
 
+	if(owner.attack_next <= world.time)
+		handle_attacking()
+
 	if(owner.move_delay <= 0)
 		handle_ghost_pathing()
 		handle_movement()
-
-	if(owner.attack_next <= world.time)
-		handle_attacking()
 
 	owner.handle_movement(tick_rate)
 
@@ -193,7 +221,7 @@
 			objective_ticks = 0
 			handle_objectives(tick_rate)
 			if(objective_attack)
-				anger -= DECISECONDS_TO_SECONDS(1)
+				anger -= 10 //Hunts for 200/10 seconds.
 				if(qdeleting || !owner || owner.qdeleting)
 					return FALSE
 				if(no_objective) //First time attacking.
@@ -217,38 +245,43 @@
 			else
 				owner.icon_state = "[ghost_type]"
 				anger = 50
+		owner_as_ghost.desired_alpha = 255
 		return TRUE
 
 	//Who is looking at us?
 	var/list/found_viewers = list()
 	var/list/found_proximity = list()
 	var/mob/living/advanced/insane
-	var/sanity_rating = 75
-	if(T.lightness >= 0 && owner.invisibility < 101)
+	var/anger_rating = 25
+	if(T.lightness >= 0 && owner.invisibility < 101 && owner.alpha >= 100)
 		for(var/mob/living/advanced/ADV in viewers(VIEW_RANGE,owner))
 			if(ADV.dead)
 				continue
 			if(!ADV.client)
 				continue
 			found_proximity += ADV
+			add_anger(ADV.ckey,stat_anger_per_player)
 			if(!(ADV.dir & get_dir(ADV,owner)))
 				continue
 			found_viewers += ADV
-			ADV.sanity -= DECISECONDS_TO_SECONDS(2)
-			if(ADV.sanity < sanity_rating)
+			add_anger(ADV.ckey,stat_anger_per_player_viewing)
+			if(directed_anger[ADV.ckey] >= anger_rating)
 				insane = ADV
-				sanity_rating = ADV.sanity
+				anger_rating = directed_anger[ADV.ckey]
 
 	var/proximity_count = length(found_proximity)
 	var/viewer_count = length(found_viewers)
 
-	anger += proximity_count*stat_anger_per_player
-	anger += viewer_count*stat_anger_per_player_viewing
+	anger += min(1,proximity_count) + min(1,viewer_count)
 
-	if(stat_player_limit > proximity_count)
-		anger -= 1
-	if(stat_player_limit > found_viewers)
-		anger -= 1
+	if(stat_anger_per_player)
+		for(var/k in found_proximity)
+			var/mob/living/L = k
+			add_anger(L.ckey,-stat_anger_per_player)
+	if(stat_anger_per_player_viewing)
+		for(var/k in found_viewers)
+			var/mob/living/L = k
+			add_anger(L.ckey,-stat_anger_per_player_viewing)
 
 	//How should we respond to light?
 	var/desired_alpha = 255
@@ -282,7 +315,6 @@
 					create_emf(T,4)
 				else
 					create_emf(T,3)
-
 		if(stat_afraid_of_light)
 			var/annoying_player = FALSE
 			var/tolerance = 0.75 - min(0.25,(anger/200))
@@ -295,29 +327,16 @@
 						if(stat_vocal && !annoying_player)
 							play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T,range_max=VIEW_RANGE)
 							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-						anger += 25
-						ADV.sanity -= 50
+						add_anger(ADV.ckey,20)
 					else
-						anger += 10
-						ADV.sanity -= 10
+						add_anger(ADV.ckey,10)
 					annoying_player = TRUE
 				if(istype(LS.source_atom,/obj/item/weapon/melee/torch))
 					var/obj/item/weapon/melee/torch/L = LS.source_atom
 					if(L.enabled) L.click_self(owner)
 					create_emf(get_turf(L),3)
-			if(annoying_player && last_teleport + SECONDS_TO_DECISECONDS(20) <= world.time)
-				if(viewer_count >= 3)
-					var/turf/T2 = find_new_location()
-					if(T2)
-						create_emf(T,2)
-						owner.force_move(T2)
-						create_emf(T2,3,VIEW_RANGE*3)
-						notify_ghosts("\The [owner.name] moved to [T2.loc.name].",T2)
-						if(stat_vocal)
-							play_sound(pick('sound/ghost/over_here1.ogg','sound/ghost/over_here2.ogg'),T2,range_max=VIEW_RANGE)
-							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-						last_teleport = world.time
-				else if(viewer_count || insane)
+			if(annoying_player && last_teleport + SECONDS_TO_DECISECONDS(60) <= world.time)
+				if(viewer_count || insane)
 					var/mob/living/advanced/ADV = insane ? insane : pick(found_viewers)
 					var/turf/T2 = get_turf(ADV)
 					owner.force_move(T2)
@@ -329,7 +348,7 @@
 						else
 							play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2,range_max=VIEW_RANGE)
 							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
-					anger += 10
+					add_anger(ADV.ckey,10)
 
 	//Look at the man who will die.
 	if(insane)
@@ -338,25 +357,52 @@
 			play_sound_target(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
 			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
-
-	if(anger <= 10)
+	if(anger <= 50)
 		desired_alpha = 0 //No reason to show ourselves.
 	else if (anger >= 75)
 		desired_alpha = 255 //Ok you're pissing me off.
 
-
 	desired_alpha = clamp(desired_alpha,0,255)
 	owner_as_ghost.desired_alpha = desired_alpha
+	owner_as_ghost.mouse_opacity = desired_alpha <= 100 ? 0 : 1
 
 	was_being_watched = viewer_count > 0
+
+	if(!objective_move && prob(5))
+		var/list/possible_turfs = list()
+		if(origin_area && prob(10))
+			for(var/turf/simulated/floor/TF in origin_area)
+				if(!TF.is_safe_teleport(FALSE))
+					continue
+				possible_turfs += TF
+		else
+			for(var/turf/simulated/floor/TF in range(owner,VIEW_RANGE))
+				var/area/AF = TF.loc
+				if(AF.area_identifier != origin_area_identifier)
+					continue
+				if(!TF.is_safe_teleport(FALSE))
+					continue
+				possible_turfs += TF
+		if(length(possible_turfs))
+			set_move_objective(pick(possible_turfs))
 
 	return TRUE
 
 /ai/ghost/get_attack_score(var/mob/living/L)
 	if(!is_advanced(L))
 		return -100
-	var/mob/living/advanced/A = L
-	return 75 - min(100,A.sanity)
+	return L.ckey && directed_anger[L.ckey] ? directed_anger[L.ckey] : 1
+
+/ai/ghost/proc/add_anger(var/ckey,var/amount)
+	if(!amount)
+		return TRUE
+	if(ckey)
+		if(!directed_anger[ckey])
+			directed_anger[ckey] = amount
+		else
+			directed_anger[ckey] += amount
+	anger += amount
+	return TRUE
 
 /ai/ghost/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
 	//Trying to alert it just pisses it off.
@@ -364,21 +410,15 @@
 	if(!stat_hates_noise)
 		return TRUE
 
-	var/mob/living/advanced/A
-
 	if(is_advanced(alert_source))
-		A = alert_source
-
-	switch(desired_alert_level)
-		if(ALERT_LEVEL_NOISE)
-			anger += 3
-			A?.sanity -= 3
-		if(ALERT_LEVEL_CAUTION)
-			anger += 5
-			A?.sanity -= 5
-		if(ALERT_LEVEL_COMBAT)
-			anger += 20
-			A?.sanity -= 20
+		var/mob/living/advanced/A = alert_source
+		switch(desired_alert_level)
+			if(ALERT_LEVEL_NOISE)
+				add_anger(A.ckey,5)
+			if(ALERT_LEVEL_CAUTION)
+				add_anger(A.ckey,10)
+			if(ALERT_LEVEL_COMBAT)
+				add_anger(A.ckey,20)
 
 	return TRUE
 
@@ -392,3 +432,16 @@
 	owner_as_ghost.icon = 'icons/mob/living/simple/shitass.dmi'
 	owner_as_ghost.icon_state = "living"
 	owner_as_ghost.name = "shitass"
+
+
+/ai/ghost/post_move(var/mob/living/L,args)
+	. = ..()
+	if(. && prob(10))
+		var/list/valid_objects = list()
+		for(var/obj/O in view(2,owner))
+			valid_objects += O
+		while(length(valid_objects))
+			var/obj/O = pick(valid_objects)
+			if(!owner.click_on_object(owner,O,null,null,null))
+				valid_objects -= O
+				continue

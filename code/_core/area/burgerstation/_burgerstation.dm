@@ -28,6 +28,8 @@
 
 	safe_storage = TRUE
 
+	allow_ghost = TRUE
+
 /area/burgerstation/hall
 	name = "\improper Hallway"
 	icon_state = "hall"
