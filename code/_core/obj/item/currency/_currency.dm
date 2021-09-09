@@ -133,6 +133,13 @@
 	. = ..()
 	update_value()
 
+/obj/item/currency/gold/update_sprite()
+	. = ..()
+	if(item_count_current == 1)
+		name = "1 gold coin"
+	else
+		name = "[item_count_current] gold coins"
+
 /obj/item/currency/gold/update_icon()
 	. = ..()
 	switch(item_count_current)

@@ -1781,6 +1781,7 @@
 #include "code\_core\obj\structure\WIP.dm"
 #include "code\_core\obj\structure\interactive\_interactive.dm"
 #include "code\_core\obj\structure\interactive\adminbus.dm"
+#include "code\_core\obj\structure\interactive\atm.dm"
 #include "code\_core\obj\structure\interactive\barricade.dm"
 #include "code\_core\obj\structure\interactive\barsign.dm"
 #include "code\_core\obj\structure\interactive\bed.dm"

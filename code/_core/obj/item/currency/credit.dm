@@ -1,6 +1,6 @@
 var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 
-/obj/item/currency/credit
+/obj/item/currency/credits
 	name = "credits"
 	desc = "Looks familiar."
 	desc_extended = "A plastic microchip containing a super-unique 1024 Exabyte long hash representing ownership of local space on the bluespace net. Has real-world value, apparantly."
@@ -11,7 +11,7 @@ var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 
 	value = 1
 
-/obj/item/currency/credit/update_overlays()
+/obj/item/currency/credits/update_overlays()
 
 	. = ..()
 
@@ -37,6 +37,9 @@ var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 	pixel_w = -total_count*0.5
 	pixel_z = total_count*0.5
 
-/obj/item/currency/credit/debug/Generate()
+/obj/item/currency/credits/update_sprite()
 	. = ..()
-	item_count_current = rand(1,item_count_max)
+	if(item_count_current == 1)
+		name = "1 credit"
+	else
+		name = "[item_count_current] credits"
