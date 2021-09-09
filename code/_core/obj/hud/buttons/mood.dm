@@ -8,6 +8,7 @@
 	flags = FLAGS_HUD_MOB
 	layer = 100 //Makes it above the hunger meter.
 	screen_loc = "RIGHT,BOTTOM+4:-14"
+	var/last_mood = 0
 
 
 /obj/hud/button/mood/update_sprite()
@@ -15,10 +16,10 @@
 
 	if(!is_advanced(owner))
 		return .
-
 	var/mob/living/advanced/A = owner
+	last_mood = A.mood
 	switch(A.mood)
-		if(0 to 50)
+		if(-INFINITY to 50)
 			color = "#FF0000"
 			icon_state = "50"
 		if(50 to 75)
@@ -36,6 +37,14 @@
 		if(125 to 150)
 			color = "#2ED564"
 			icon_state = "150"
-		if(150 to 200)
+		if(150 to INFINITY)
 			color = "#4CFF00"
 			icon_state = "150"
+
+/obj/hud/button/mood/get_examine_list(var/mob/caller)
+	. = ..()
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		. += "Your mood is [CEILING(A.mood,1)]%."
+		var/mood_gain = A.last_mood_gain/TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+		. += "You are [mood_gain >= 0 ? "gaining" : "losing"] [abs(mood_gain)] mood per second."

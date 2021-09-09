@@ -107,7 +107,8 @@
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
 	var/evasion_rating = 0
 
-	var/mood = 100 // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
+	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
+	var/last_mood_gain = 0
 
 /mob/living/advanced/Destroy()
 
