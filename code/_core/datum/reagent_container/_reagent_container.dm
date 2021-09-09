@@ -597,6 +597,8 @@
 		else
 			final_flavor_text = null
 
+		A.mood += like_score*5
+
 		if(caller && caller != consumer)
 			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))
 		else

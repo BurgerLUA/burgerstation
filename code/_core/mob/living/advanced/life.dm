@@ -9,6 +9,11 @@
 
 	if(.)
 		handle_organs()
+		if(mood != 100)
+			mood += clamp(100-mood,-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.05,TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.05)
+			mood = clamp(mood,0,200)
+			for(var/obj/hud/button/mood/B in buttons)
+				B.update_sprite()
 
 /mob/living/advanced/pre_death()
 
