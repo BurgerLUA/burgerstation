@@ -39,4 +39,4 @@
 	return 0
 
 /damagetype/melee/sword/rev_bayonet/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	return attacker.dir == victim.dir
+	return get_true_4dir(attacker.dir) == get_true_4dir(victim.dir)
