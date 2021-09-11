@@ -219,7 +219,7 @@
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 "aS" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 "aT" = (

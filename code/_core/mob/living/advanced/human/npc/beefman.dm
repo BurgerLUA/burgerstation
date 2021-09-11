@@ -9,7 +9,7 @@
 	iff_tag = "beefman"
 	loyalty_tag = "beefman"
 
-	movement_delay = 1
+	movement_delay = 1 //Lowest possible.
 
 	health_base = 100
 
@@ -23,7 +23,7 @@
 
 	has_hard_crit = FALSE
 
-	level = 20
+	level = 35
 
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()

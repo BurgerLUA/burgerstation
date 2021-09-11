@@ -6,7 +6,7 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 
-	level = 60
+	level = 70
 
 /mob/living/advanced/npc/space_soldier/Initialize()
 

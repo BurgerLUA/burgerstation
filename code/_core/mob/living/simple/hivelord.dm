@@ -26,7 +26,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 12
 
 /mob/living/simple/hivelord/post_death()
 	. = ..()

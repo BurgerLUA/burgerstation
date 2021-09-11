@@ -157,7 +157,7 @@
 
 	var/can_save = TRUE
 
-	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%.
+	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable.
 
 	enable_chunk_clean = TRUE
 
@@ -428,7 +428,7 @@
 	else if(luck > 50)
 		. += div("rarity good","<b>Luck</b>: +[luck-50]")
 
-	. += div("rarity","Value: [value]cr.")
+	. += div("rarity","Base Value: [get_base_value()]cr.")
 	. += div("weightsize","Size: [size], Weight: [weight]")
 
 	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")

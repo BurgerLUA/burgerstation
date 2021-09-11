@@ -41,5 +41,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 18
+
 /mob/living/simple/halloween_spirit/blue
 	icon_state = "blue"

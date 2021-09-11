@@ -21,7 +21,7 @@
 		/loadout/syndicate/elite = 4
 	)
 
-	level = 10
+	level = 20
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
@@ -50,13 +50,13 @@
 	equip_loadout(loadout_to_use)
 
 /mob/living/advanced/npc/syndicate/double
-	level = 20
+	level = 40
 
 /mob/living/advanced/npc/syndicate/triple
-	level = 30
+	level = 60
 
 /mob/living/advanced/npc/syndicate/quadruple
-	level = 40
+	level = 80
 
 /mob/living/advanced/npc/syndicate/stress_test
 	name = "stress test"
@@ -67,3 +67,5 @@
 
 	possible_outfits = list(/loadout/syndicate/scientist)
 	loadout_to_level = list(/loadout/syndicate/scientist=1)
+
+	level = 16

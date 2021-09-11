@@ -30,6 +30,8 @@
 
 	var/caseless = FALSE
 
+	var/override_bullet_insert_sound = FALSE
+
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
 
@@ -43,6 +45,8 @@
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
 	var/power = 0 //Set is SSweapons
+
+	var/bulletbox_icon_state = "bullet"
 
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
@@ -291,7 +295,7 @@
 				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
 			return TRUE
 
-	return ..()
+	. = ..()
 
 
 /obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)

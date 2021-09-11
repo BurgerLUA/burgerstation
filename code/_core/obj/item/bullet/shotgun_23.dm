@@ -50,7 +50,7 @@
 	base_spread = 0.06
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
-	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23/buckshot
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_23
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 

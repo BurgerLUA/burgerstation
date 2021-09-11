@@ -46,7 +46,7 @@
 		/obj/item/soapstone/orange
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -71,7 +71,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 30
+	level = 70
 
 /mob/living/simple/goliath/broodmother/on_life()
 	. = ..()

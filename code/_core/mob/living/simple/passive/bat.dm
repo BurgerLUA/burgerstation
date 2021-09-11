@@ -23,7 +23,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 2
+	level = 4
 
 /mob/living/simple/bat/post_death()
 	. = ..()

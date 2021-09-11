@@ -523,7 +523,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/prefab/syndicate_base)
 "QN" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/prefab/syndicate_base)
 "Rj" = (

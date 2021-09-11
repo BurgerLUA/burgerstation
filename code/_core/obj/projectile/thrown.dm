@@ -23,7 +23,13 @@
 			CHECK_TICK(75,FPS_SERVER)
 			var/atom/movable/A = k
 			var/atom/hit_wall
-			if(current_loc && current_loc.density)
+			if(previous_loc)
+				if(is_item(A))
+					var/obj/item/I = A
+					I.drop_item(previous_loc)
+				else
+					A.force_move(previous_loc)
+			if(current_loc)
 				if(!A.Move(current_loc))
 					hit_wall = current_loc
 			A.on_thrown(owner,hit_atom,hit_wall)

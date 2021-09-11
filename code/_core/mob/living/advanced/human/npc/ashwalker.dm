@@ -15,7 +15,7 @@
 	loyalty_tag = "Ashwalker"
 	iff_tag = "Ashwalker"
 
-	level = 4
+	level = 8
 
 /mob/living/advanced/npc/ashwalker/New(loc,desired_client,desired_level_multiplier)
 
@@ -53,7 +53,7 @@
 	loadout_to_use = /loadout/ashwalker/hunter
 	loadout_to_use_female = /loadout/ashwalker/hunter/female
 
-	level = 10
+	level = 14
 
 /mob/living/advanced/npc/ashwalker/assassin
 	name = "ashwalker assassin"
@@ -61,7 +61,7 @@
 	loadout_to_use = /loadout/ashwalker/assassin
 	loadout_to_use_female = /loadout/ashwalker/assassin/female
 
-	level = 15
+	level = 22
 
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
@@ -69,4 +69,4 @@
 	loadout_to_use = /loadout/ashwalker/warrior
 	loadout_to_use_female = /loadout/ashwalker/warrior/female
 
-	level = 40
+	level = 50

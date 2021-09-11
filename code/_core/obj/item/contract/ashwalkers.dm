@@ -7,17 +7,17 @@
 /obj/item/contract/ashwalker/low
 	amount_max = 10
 	burgerbux_reward = 1
-	reward = /obj/item/currency/gold{item_count_current=10*5}
+	reward = /obj/item/currency/gold_coin{item_count_current=10*5}
 
 /obj/item/contract/ashwalker/mid
 	amount_max = 25
 	burgerbux_reward = 5
-	reward = /obj/item/currency/gold{item_count_current=25*5*1.5}
+	reward = /obj/item/currency/gold_coin{item_count_current=25*5*1.5}
 
 /obj/item/contract/ashwalker/high
 	amount_max = 50
 	burgerbux_reward = 10
-	reward = /obj/item/currency/gold{item_count_current=50*5*2}
+	reward = /obj/item/currency/gold_coin{item_count_current=50*5*2}
 
 //Arachnids
 /obj/item/contract/arachnids
@@ -28,17 +28,17 @@
 
 /obj/item/contract/arachnids/low
 	amount_max = 5
-	reward = /obj/item/currency/gold{item_count_current=5*5}
+	reward = /obj/item/currency/gold_coin{item_count_current=5*5}
 	burgerbux_reward = 1
 
 /obj/item/contract/arachnids/mid
 	amount_max = 10
-	reward = /obj/item/currency/gold{item_count_current=10*5*1.5}
+	reward = /obj/item/currency/gold_coin{item_count_current=10*5*1.5}
 	burgerbux_reward = 5
 
 /obj/item/contract/arachnids/high
 	amount_max = 25
-	reward = /obj/item/currency/gold{item_count_current=25*5*2}
+	reward = /obj/item/currency/gold_coin{item_count_current=25*5*2}
 	burgerbux_reward = 10
 
 //Bosses

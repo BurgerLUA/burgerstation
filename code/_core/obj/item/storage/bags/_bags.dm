@@ -356,7 +356,7 @@
 	container_whitelist = list(
 		/obj/item/currency/telecrystals,
 		/obj/item/currency/magic_token,
-		/obj/item/currency/gold,
+		/obj/item/currency/gold_coin,
 		/obj/item/currency/prize_ticket,
 		/obj/item/coin/antag_token
 	)
@@ -449,8 +449,8 @@
 						targetitem = /obj/item/currency/telecrystals	//otherwise things like obj/.../telecrystals/goblins and /treasure break
 					if(ispath(I.type,/obj/item/currency/magic_token))	//cuz it needs to be shortened back to telecrystals/
 						targetitem = /obj/item/currency/magic_token		//keeping the targetitem var is also important for some shit like the desc
-					if(ispath(I.type,/obj/item/currency/gold))			//works around it so eh good enough absolute shitcode but smiling imp emoji
-						targetitem = /obj/item/currency/gold
+					if(ispath(I.type,/obj/item/currency/gold_coin))			//works around it so eh good enough absolute shitcode but smiling imp emoji
+						targetitem = /obj/item/currency/gold_coin
 					if(ispath(I.type,/obj/item/currency/prize_ticket))
 						targetitem = /obj/item/currency/prize_ticket
 					if(ispath(I.type,/obj/item/coin/antag_token))

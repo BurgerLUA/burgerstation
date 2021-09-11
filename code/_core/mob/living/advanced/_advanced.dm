@@ -72,7 +72,7 @@
 
 	death_threshold = -50
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
@@ -99,8 +99,6 @@
 		SANITY = 0
 	)
 
-	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
-
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 
@@ -108,6 +106,9 @@
 
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
 	var/evasion_rating = 0
+
+	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
+	var/last_mood_gain = 0
 
 /mob/living/advanced/Destroy()
 
@@ -322,6 +323,10 @@ mob/living/advanced/Login()
 
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
+	var/species/S = SPECIES(species)
+	if(S && S.health)
+		health = S.health
+
 	. = ..()
 
 	if(client)
@@ -331,10 +336,6 @@ mob/living/advanced/Login()
 
 	if(client)
 		add_species_buttons()
-
-	var/species/S = SPECIES(species)
-	if(S && S.health)
-		health = S.health
 
 /mob/living/advanced/PostInitialize()
 
@@ -468,7 +469,7 @@ mob/living/advanced/Login()
 
 	for(var/k in organs_to_check)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(O.health && O.health.health_current <= 0)
+		if(!O || !O.health || O.health.health_current <= 0)
 			return FALSE
 
 	return ..()

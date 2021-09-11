@@ -25,6 +25,8 @@
 
 	var/exploded = FALSE
 
+	level = 1
+
 /mob/living/simple/exploding_frog/death()
 
 	if(!exploded)

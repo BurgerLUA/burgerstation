@@ -18,8 +18,8 @@
 		B.withdrawal -= src.type
 		return FALSE
 
-	B.addictions[src.type] -= CEILING(DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)*(1/60)*(1/60)*15,0.001) //Takes an hour to remove addiction from a 15u dose, naturally.
-	B.withdrawal[src.type] += CEILING(DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)*(1/60)*(1/30)*addiction_value,0.001) //Must take a max dose every 30 mins if addicted.
+	B.addictions[src.type] -= CEILING(TICKS_TO_SECONDS(LIFE_TICK_SLOW)*(1/60)*(1/60)*15,0.001) //Takes an hour to remove addiction from a 15u dose, naturally.
+	B.withdrawal[src.type] += CEILING(TICKS_TO_SECONDS(LIFE_TICK_SLOW)*(1/60)*(1/30)*addiction_value,0.001) //Must take a max dose every 30 mins if addicted.
 
 	return TRUE
 

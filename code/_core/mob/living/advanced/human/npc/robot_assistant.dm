@@ -10,6 +10,8 @@
 	dialogue_id = /dialogue/tutorial/front_desk
 	anchored = TRUE
 
+	level = 1
+
 /mob/living/advanced/npc/cyborg_assistant/Initialize()
 
 	. = ..()

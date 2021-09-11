@@ -30,7 +30,7 @@
 			continue
 		if(A.interior)
 			continue
-		if(A.flags_area & (FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_DAMAGE))
+		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 			continue
 		valid_areas += A
 

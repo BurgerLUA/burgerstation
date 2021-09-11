@@ -134,9 +134,10 @@
 	SSbotany.all_plants -= src
 	. = ..()
 
-/obj/structure/interactive/plant/proc/on_life()
+/obj/structure/interactive/plant/proc/on_life(var/tick_rate=1) //Measured in game ticks.
+
+	var/rate = TICKS_TO_DECISECONDS(tick_rate)
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
-	var/rate = TICKS_TO_DECISECONDS(SSbotany.tick_rate)
 	var/real_growth_speed = growth_speed * rate * (P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
 
 	if(nutrition >= 10 && hydration >= 10)
@@ -183,14 +184,13 @@
 		if(total_metabolized > 0)
 			reagents.update_container()
 
-	update_sprite()
-
 	//dead plants auto-remove themselves
 	var/health_percent = health.health_current/health.health_max
-	if (health_percent <= 0.01)
+	if(health_percent <= 0.01)
 		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
 		qdel(src)
-
+	else
+		update_sprite()
 
 	return TRUE
 

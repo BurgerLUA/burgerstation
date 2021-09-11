@@ -383,7 +383,7 @@
 	//Regenerate 5 sanity per second while nicotine is in your system, as long as the metabolism exceeds metabolism_blood
 	//You also get hungrier and thirstier.
 	if(. >= metabolism_blood)
-		var/true_multiplier = DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW) * (. / metabolism_blood) * multiplier
+		var/true_multiplier = TICKS_TO_SECONDS(LIFE_TICK_SLOW) * (. / metabolism_blood) * multiplier
 		owner.sanity_regen_buffer += 5*true_multiplier
 		owner.add_hydration(-0.05*true_multiplier)
 		owner.add_nutrition(-0.1*true_multiplier)

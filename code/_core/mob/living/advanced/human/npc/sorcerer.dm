@@ -12,7 +12,7 @@
 		/loadout/sorcerer = 1
 	)
 
-	level = 20
+	level = 24
 
 /mob/living/advanced/npc/sorcerer/Initialize()
 

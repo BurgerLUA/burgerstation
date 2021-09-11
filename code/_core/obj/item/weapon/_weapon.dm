@@ -87,17 +87,6 @@
 
 	return ..()
 
-/obj/item/weapon/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(wield_only && !wielded)
-		if(ismob(attacker))
-			var/mob/M = attacker
-			M.to_chat(span("warning","You can only attack with this when wielded! (CTRL+CLICK)"))
-		return FALSE
-
-	return ..()
-
-
 /obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	wielded = FALSE
 	if(old_inventory.child_inventory)
@@ -110,7 +99,18 @@
 /obj/item/weapon/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
+	if(enchantment)
+		.["enchantment"] = list()
+		.["enchantment"]["type"] = enchantment.type
+		.["enchantment"]["strength"] = enchantment.strength
+		.["enchantment"]["charge"] = enchantment.charge
+		.["enchantment"]["cost"] = enchantment.cost
 
 /obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	if(object_data["enchantment"] && object_data["enchantment"]["type"])
+		enchantment = new object_data["enchantment"]["type"]
+		enchantment.strength = object_data["enchantment"]["strength"]
+		enchantment.charge = object_data["enchantment"]["charge"]
+		enchantment.cost = object_data["enchantment"]["cost"]

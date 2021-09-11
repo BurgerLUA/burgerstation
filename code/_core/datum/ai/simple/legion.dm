@@ -27,4 +27,3 @@
 	if(.)
 		handle_heads()
 
-	

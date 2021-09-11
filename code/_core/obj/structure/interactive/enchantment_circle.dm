@@ -104,6 +104,8 @@
 
 	var/obj/item/soulgem/soulgem = locate() in stored_items
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
+	if(weapon_to_enchant && !istype(weapon_to_enchant,/obj/item/weapon/melee) && !istype(weapon_to_enchant,/obj/item/weapon/ranged/bow))
+		weapon_to_enchant = null
 
 	if(!soulgem || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
 		caller.visible_message(span("warning","\The [src.name] reacts to [caller.name]'s words... but slowly fizzles out."),span("warning","\The [src.name] reacts to your words... but slowly fizzles out."))
@@ -112,9 +114,9 @@
 	caller.visible_message(span("danger","\The [src.name] reacts to [caller.name]'s words!"),span("warning","\The [src.name] reacts to your words!"))
 
 	weapon_to_enchant.enchantment = new stored_book.stored_enchantment
-	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem) * 100
+	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem)
 	weapon_to_enchant.visible_message(span("notice","\The [weapon_to_enchant.name] shines brightly as it's new enchantment is applied."))
-	caller.add_skill_xp(SKILL_ENCHANTING,experience_to_give)
+	caller.add_skill_xp(SKILL_MAGIC_ENCHANTING,experience_to_give)
 
 	qdel(soulgem)
 	qdel(stored_book)

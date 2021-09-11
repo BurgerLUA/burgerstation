@@ -23,6 +23,9 @@ mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS
 //A down is just a press.
 mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
 
+	if(!can_use_controls(object,location,control,params))
+		return FALSE
+
 	if(driving)
 		if(driving.click_on_object(src,object,location,control,params))
 			return TRUE

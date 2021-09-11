@@ -28,6 +28,8 @@
 
 	var/priority = 0
 
+	var/flags_generation = FLAG_GENERATION_NONE
+
 /obj/marker/generation/New(var/desired_loc)
 	. = ..()
 	if(object_to_place)
@@ -55,9 +57,12 @@
 				continue
 			if(T2.disallow_generation && !bypass_disallow_generation)
 				continue
-			if(prob(skip_chance))
+			var/area/A = T2.loc
+			if(flags_generation && (A.flags_generation & flags_generation))
 				continue
 			if(length(forbidden_turfs) && forbidden_turfs[T2])
+				continue
+			if(prob(skip_chance))
 				continue
 			if(ispath(object_to_place,/turf/))
 				if(T.loc != T2.loc)
@@ -139,7 +144,7 @@
 	object_to_place = /turf/simulated/hazard/water
 	grow_amount_min = 15
 	grow_amount_max = 30
-	objects_max = 50
+	objects_max = 10
 	skip_chance = 25
 	hole_chance = 5
 
@@ -562,6 +567,8 @@
 
 	ignore_existing = TRUE
 
+	flags_generation = FLAG_GENERATION_NO_MOB
+
 
 /obj/marker/generation/mob/arachnid
 	object_to_place = /mob/living/simple/arachnid
@@ -581,6 +588,16 @@
 /obj/marker/generation/mob/watcher
 	object_to_place = /mob/living/simple/watcher
 	objects_max = 1
+
+/obj/marker/generation/mob/syndicate
+	object_to_place = /mob/living/advanced/npc/syndicate
+	objects_max = 1
+
+/obj/marker/generation/mob/rev
+	object_to_place = /mob/living/advanced/npc/rev
+	objects_max = 1
+
+
 
 /obj/marker/generation/mob/goliath
 	object_to_place = /mob/living/simple/goliath

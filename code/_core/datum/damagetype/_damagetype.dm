@@ -1,5 +1,5 @@
 /damagetype/
-	var/name = "Damage type."
+	var/name //TODO:REMOVE
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
@@ -59,6 +59,26 @@
 		BLUNT = 0.15,
 		PIERCE = 0.05,
 		BOMB = 0.5
+	)
+
+	var/list/damage_type_to_pain = list(
+		BLADE = 0.25,
+		BLUNT = 0.25,
+		PIERCE = 0.125,
+		LASER = 0.25,
+		ARCANE = 0.125,
+		HEAT = 0.125,
+		COLD = 0,
+		SHOCK = 0.25,
+		BOMB = 0.25,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0.25,
+		DARK = 0.5,
+		FATIGUE = 0,
+		PAIN = 0,
+		ION = 0,
+		SANITY = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -394,6 +414,7 @@
 	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
+	var/pain_damage = 0
 
 	var/damage_blocked = 0
 	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
@@ -422,7 +443,7 @@
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense.")
 			continue
-		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
+		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists. Also makes it so that negative armor penetration penalties apply when there is armor.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
@@ -437,17 +458,28 @@
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
 		damage_blocked += damage_to_block
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
-		if(damage_type != FATIGUE && damage_type_to_fatigue[damage_type])
-			var/fatigue_damage_to_convert = damage_blocked*damage_type_to_fatigue[damage_type]
+		if(damage_type_to_fatigue[damage_type])
+			var/fatigue_damage_to_convert = damage_to_block*damage_type_to_fatigue[damage_type]
 			if(is_living(victim))
 				var/mob/living/L = victim
-				fatigue_damage_to_convert *= L.fatigue_from_block_mul
+				fatigue_damage_to_convert *= L.fatigue_mul
 			if(debug) log_debug("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
 			fatigue_damage += fatigue_damage_to_convert
+		if(damage_type_to_pain[damage_type])
+			var/pain_damage_to_add = damage_to_deal[damage_type]*clamp(damage_type_to_pain[damage_type],0,1)
+			if(is_living(victim))
+				var/mob/living/L = victim
+				pain_damage_to_add *= L.pain_mul
+			if(debug) log_debug("Adding [damage_type] damage into [pain_damage_to_add] pain damage.")
+			pain_damage += pain_damage_to_add
 
 	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
 		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
 		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
+
+	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[PAIN]))
+		damage_to_deal[PAIN] += CEILING(pain_damage,1)
+		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
 
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]

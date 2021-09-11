@@ -33,7 +33,7 @@
 		current_path_astar = null
 
 	if(destination)
-		var/list/returning_path = AStar_Circle(owner,destination,owner)
+		var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner)
 		if(returning_path)
 			current_path_astar = returning_path
 			set_active(TRUE)

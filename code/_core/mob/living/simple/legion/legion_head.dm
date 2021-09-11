@@ -43,7 +43,7 @@
 
 	soul_size = null
 
-	level = 2
+	level = 4
 
 /mob/living/simple/legionare_head/death_message()
 	return FALSE

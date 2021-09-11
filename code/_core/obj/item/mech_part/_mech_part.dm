@@ -41,3 +41,7 @@
 
 /obj/item/mech_part/can_be_attacked()
 	return TRUE
+
+/obj/item/mech_part/Finalize()
+	. = ..()
+	update_sprite()

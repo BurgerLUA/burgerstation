@@ -54,7 +54,7 @@
 		PAIN = 20
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -88,7 +88,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 50
 
 
 /*

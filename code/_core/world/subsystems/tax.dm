@@ -25,12 +25,8 @@ SUBSYSTEM_DEF(tax)
 		52
 	)
 
-	var/tax_credit_this_round = 2000
-	var/processing_fee = 400
-
-/subsystem/tax/New(var/desired_loc)
-	tax_credit_this_round = rand(1000,6000)
-	return ..()
+	var/tax_credit_this_round = 0
+	var/processing_fee = 0
 
 /subsystem/tax/proc/can_pax_taxes(var/mob/living/advanced/player/P)
 	return world.realtime >= (P.last_tax_payment + 604800) //1 week

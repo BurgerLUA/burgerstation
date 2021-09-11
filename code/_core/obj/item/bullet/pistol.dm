@@ -352,29 +352,6 @@
 
 	penetrations = 1
 
-/obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
-	name = "\improper 8mm pistol bullet"
-	desc = "It's like a baby bullet. Adorable."
-	desc_extended = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
-	rarity = RARITY_UNCOMMON
-	icon = 'icons/obj/item/bullet/8mm.dmi'
-
-	item_count_max = 5
-	item_count_max_icon = 5
-
-	bullet_diameter = 8
-	bullet_length = 12
-	bullet_color = COLOR_BULLET
-
-	projectile = /obj/projectile/bullet/firearm/pistol
-	damage_type_bullet = /damagetype/ranged/bullet/pistol_8mm
-
-	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
-
-	size = 0.01
-	value = 1
-
-
 /obj/item/bullet_cartridge/pistol_45holy/
 	name = "\improper Holy .45 pistol cartridge"
 	desc = "Joshua Graham style."

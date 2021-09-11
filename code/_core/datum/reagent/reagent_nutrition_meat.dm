@@ -170,6 +170,10 @@
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 1
 
+	attribute_experience_per_nutrition = list(
+		ATTRIBUTE_STRENGTH = 0.5
+	)
+
 /reagent/nutrition/meat/New(var/desired_loc)
 	nutrition_quality_amount = nutrition_amount*0.1
 	return ..()

@@ -65,7 +65,7 @@
 		FIRE = TRUE
 	)
 
-	level = 18
+	level = 22
 
 /mob/living/simple/silicon/squats/post_death()
 	. = ..()

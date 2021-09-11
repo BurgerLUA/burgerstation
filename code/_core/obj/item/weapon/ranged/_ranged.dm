@@ -256,7 +256,7 @@
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
 
-	if(!caller.can_attack(caller,object,src,location,params))
+	if(!caller.can_attack(caller))
 		return FALSE
 
 	return TRUE
@@ -341,7 +341,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	if(length(shoot_sounds_to_use))
 		var/turf/T = get_turf(src)
-		play_sound(pick(shoot_sounds_to_use),T,range_max=VIEW_RANGE + ZOOM_RANGE*3)
+		play_sound(pick(shoot_sounds_to_use),T,range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
 			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,caller,shoot_alert_to_use)
 		return TRUE
@@ -358,7 +358,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!object_turf)
 		return FALSE
 
-	if(!object_turf.x && !object_turf.y && !object_turf.z)
+	if(object_turf.x == null || object_turf.y == null || object_turf.z == null)
 		return FALSE
 
 	caller.face_atom(object)
@@ -571,7 +571,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
 							current_bursts += 1
 					else if(max_bursts_to_use > 0)
-						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
+						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 						current_bursts = 0
 				else
 					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")

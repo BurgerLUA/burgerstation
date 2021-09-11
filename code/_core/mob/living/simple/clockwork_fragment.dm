@@ -12,7 +12,6 @@
 	ai = /ai/simple/
 	damage_type = /damagetype/unarmed/fists
 
-
 	stun_angle = 0
 
 	iff_tag = "Clockwork"
@@ -25,7 +24,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 20
 
 /mob/living/simple/clockwork_fragment/post_death()
 	. = ..()

@@ -57,6 +57,10 @@
 	name = "merc vest"
 	color = "#BCAC86"
 
+/obj/item/clothing/overwear/coat/vest/colored/black
+	name = "tactical vest"
+	color = "#212121"
+
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'

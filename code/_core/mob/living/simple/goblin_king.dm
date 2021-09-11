@@ -15,7 +15,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = BOSS_TICK*3
+	move_delay = AI_TICK_FAST*3
 
 	stun_angle = 0
 
@@ -53,7 +53,7 @@
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -71,7 +71,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 50
 
 /mob/living/simple/goblin_king/post_death()
 	. = ..()

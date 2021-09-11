@@ -40,6 +40,7 @@
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,
+		/obj/item/weapon/melee/energy/energy_wrench,
 		/obj/item/flare
 	)
 

@@ -5,6 +5,8 @@
 
 	flags_area = FLAGS_AREA_NO_EVENTS
 
+	flags_generation = FLAG_GENERATION_NO_MOB
+
 /area/fob/main
 	name = "\improper Main Forward Operating Base"
 	icon_state = "blue"

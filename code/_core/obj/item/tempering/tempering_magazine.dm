@@ -34,9 +34,9 @@
 	return ..()
 
 /obj/item/tempering/magazine/refiller
-	name = "Enchantment of Endless Bullets"
-	desc = "Not the fastest enhcantment ever, but it works"
-	desc_extended = "Eldritch forces will ensure your magazine refills over time, in exchange for... a fat stack of credits?"
+	name = "magazine refill upgrade system"
+	desc = "Subscribe to magazine+ to get the best of your bullets."
+	desc_extended = "A special digital rights management labeler that tells magazine restockers to fill the magazine with premium ammo. Single use."
 	icon_state = "mag_enchant"
 
 	temper_whitelist = /obj/item/magazine
@@ -50,14 +50,13 @@
 		return FALSE
 
 	if(I.regenerate)
-		caller.to_chat(span("warning","\The [I.name] already has the regenerate enchantment applied!"))
+		caller.to_chat(span("warning","\The [I.name] already has the label applied!"))
 		return FALSE
 
 	return ..()
 
 /obj/item/tempering/magazine/refiller/on_temper(var/mob/caller,var/obj/item/magazine/I)
 	I.regenerate = TRUE
-	I.regen()
 	return ..()
 
 /obj/item/tempering/magazine/spellswap
