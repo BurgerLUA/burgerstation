@@ -73,10 +73,20 @@
 		S.appearance = src.appearance
 		S.transform = get_base_transform()
 		S.color = "#000000"
-		S.soul_size = soul_size
 		S.plane = PLANE_EFFECT
 		S.layer = 1000
 		S.name = "soul of [initial(name)]:"
+		switch(level)
+			if(0 to 20)
+				S.soul_size = SOUL_SIZE_COMMON
+			if(20 to 60)
+				S.soul_size = SOUL_SIZE_UNCOMMON
+			if(60 to 99)
+				S.soul_size = SOUL_SIZE_RARE
+			if(99 to 199)
+				S.soul_size = SOUL_SIZE_MYSTIC
+			if(199 to INFINITY)
+				S.soul_size = SOUL_SIZE_GODLY
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)
@@ -84,6 +94,9 @@
 
 	if(one_time_life)
 		dust()
+
+	if(boss && !drops_gold)
+		drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
 
 	if(drops_gold > 0)
 		create_gold_drop(T,CEILING(drops_gold,1))
@@ -171,7 +184,7 @@
 	var/turf/T = get_turf(src)
 
 	if(boss && T)
-		var/list/loot_spawned = CREATE_LOOT(/loot/boss,T)
+		var/list/loot_spawned = CREATE_LOOT(/loot/treasure/boss,T)
 		for(var/k in loot_spawned)
 			var/obj/item/I = k
 			var/item_move_dir = pick(DIRECTIONS_ALL)

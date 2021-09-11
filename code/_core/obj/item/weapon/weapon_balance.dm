@@ -40,7 +40,7 @@
 		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*max_bursts*1.25
 		. = max_bursts*D.get_damage_per_hit()*(10/local_burst_delay)
 
-	var/possible = D.get_damage_per_hit(armor_to_use) * (10/shoot_delay) * bullet_count
+	var/possible = D.get_damage_per_hit(armor_to_use) * (10/shoot_delay) * bullet_count * damage_mod
 	if(possible > .)
 		. = possible
 

@@ -6,7 +6,8 @@
 
 	stored_types = list(
 		/obj/item/paper/book/enchanting_guide,
-		/obj/item/soulgem,
+		/obj/item/paper/book/enchanting/soul_trap,
+		/obj/item/enchanting_chalk,
 		/obj/item/soulgem/common
 	)
 
