@@ -7,7 +7,7 @@
 
 	interior = TRUE //Well not really but still.
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/dungeon/z_01
 	name = "\improper Level 1 - Surface Forest"

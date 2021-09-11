@@ -256,7 +256,7 @@
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
 
-	if(!caller.can_attack(caller,object,src,location,params))
+	if(!caller.can_attack(caller))
 		return FALSE
 
 	return TRUE
@@ -358,7 +358,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!object_turf)
 		return FALSE
 
-	if(!object_turf.x && !object_turf.y && !object_turf.z)
+	if(object_turf.x == null || object_turf.y == null || object_turf.z == null)
 		return FALSE
 
 	caller.face_atom(object)

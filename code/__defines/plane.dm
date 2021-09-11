@@ -46,6 +46,8 @@
 
 #define PLANE_CHAT 17
 
+#define PLANE_ABSTRACT 98
+
 #define PLANE_ALWAYS_VISIBLE 99
 
 #define PLANE_HUD 100
@@ -53,3 +55,5 @@
 #define PLANE_HUD_OBJ 101
 
 #define PLANE_HUD_MOUSE 102
+
+

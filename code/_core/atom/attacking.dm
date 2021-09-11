@@ -174,44 +174,19 @@
 	if(weapon && weapon.attack_next > world.time)
 		return FALSE
 
-	if(!isturf(loc))
-		return FALSE
+	if(victim)
+		if(!isturf(victim.loc))
+			return FALSE
 
-	var/area/A1 = get_area(victim)
-	var/area/A2 = get_area(src)
-
-	if(!(A1 && A2))
-		return FALSE
-
-	if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
-		return FALSE
+		var/area/A1 = get_area(victim)
+		var/area/A2 = get_area(src)
+		if(!(A1 && A2))
+			CRASH_SAFE("Warning: tried attacking without valid areas!")
+			return FALSE
+		if( (A1.flags_area & FLAGS_AREA_NO_DAMAGE) || (A2.flags_area & FLAGS_AREA_NO_DAMAGE) )
+			return FALSE
 
 	return TRUE
-
-/*
-/atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
-	return 0
-*/
-
-/*
-/atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
-
-/atom/proc/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
-
-/atom/proc/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
-
-/atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_item)
-	return FALSE
-
-/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/parrying_item)
-	return FALSE
-
-/atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	return FALSE
-*/
 
 /atom/proc/get_damage_type(var/atom/attacker,var/atom/victim)
 	return damage_type

@@ -73,8 +73,6 @@
 
 	if(battery) . += span("notice","It has \the [battery.name] inserted in the chassis. It has a charge rating of ([battery.charge_current]/[battery.charge_max]).")
 
-
-
 /mob/living/vehicle/mech/modular/attach_equipment(var/mob/caller,var/obj/item/I)
 	return FALSE
 
@@ -91,8 +89,6 @@
 
 
 /mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	INTERACT_CHECK
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -301,21 +297,19 @@
 /mob/living/vehicle/mech/modular/update_overlays()
 	. = ..()
 
+	//Parts
 	if(mech_legs) add_overlay(mech_legs)
 	if(mech_body) add_overlay(mech_body)
 	if(mech_arms) add_overlay(mech_arms)
 	if(mech_head) add_overlay(mech_head)
 
+	//Weapons
 	if(right_shoulder) add_overlay(right_shoulder)
 	if(left_shoulder) add_overlay(left_shoulder)
-
 	if(right_hand) add_overlay(right_hand)
 	if(left_hand) add_overlay(left_hand)
-
 	if(chest) add_overlay(chest)
-
 	if(back) add_overlay(back)
-
 	if(head) add_overlay(head)
 
 
@@ -372,3 +366,46 @@
 		return FALSE
 
 	return ..()
+
+
+/mob/living/vehicle/mech/modular/premade
+
+
+
+/mob/living/vehicle/mech/modular/premade/ripley/Generate()
+
+	. = ..()
+
+	mech_arms = new/obj/item/mech_part/arms/loader(src)
+	INITIALIZE(mech_arms)
+	GENERATE(mech_arms)
+	FINALIZE(mech_arms)
+
+	mech_body = new/obj/item/mech_part/body/loader(src)
+	INITIALIZE(mech_body)
+	GENERATE(mech_body)
+	FINALIZE(mech_body)
+
+	mech_legs = new/obj/item/mech_part/legs/loader(src)
+	INITIALIZE(mech_legs)
+	GENERATE(mech_legs)
+	FINALIZE(mech_legs)
+
+	left_hand = new/obj/item/mech_part/equipment/weapon/laser(src)
+	left_hand.current_slot = "left hand"
+	INITIALIZE(left_hand)
+	GENERATE(left_hand)
+	FINALIZE(left_hand)
+
+	right_hand = new/obj/item/mech_part/equipment/weapon/drill(src)
+	right_hand.current_slot = "right hand"
+	INITIALIZE(right_hand)
+	GENERATE(right_hand)
+	FINALIZE(right_hand)
+
+	battery = new/obj/item/powercell/vehicle(src)
+	INITIALIZE(battery)
+	GENERATE(battery)
+	FINALIZE(battery)
+
+	update_sprite()

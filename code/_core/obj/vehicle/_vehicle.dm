@@ -152,15 +152,6 @@
 					caller.to_chat(span("notice","You choose not to remove anything."))
 				return TRUE
 
-			/*
-			if(istype(I,/obj/item/weapon/ranged/energy/mech))
-				INTERACT_CHECK
-				INTERACT_CHECK_OBJECT
-				INTERACT_DELAY(5)
-				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
-				return TRUE
-			*/
-
 	if(is_inventory(object))
 		if(!can_enter_vehicle(caller))
 			return TRUE
@@ -169,14 +160,6 @@
 		return TRUE
 
 	return ..()
-
-/mob/living/vehicle/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(!(get_dir(src,victim) & dir))
-		return FALSE
-
-	return ..()
-
 
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

@@ -225,7 +225,7 @@
 	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /mob/living/get_base_transform()
 	. = ..()

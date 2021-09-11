@@ -2,7 +2,7 @@
 	area_identifier = "Ghost"
 	allow_ghost = TRUE
 	safe_storage = TRUE //People will die a lot.
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 	sound_environment = ENVIRONMENT_STONEROOM
 
 	ambient_sound = 'sound/ambient/vents_loop.ogg'

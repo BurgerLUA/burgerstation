@@ -21,9 +21,12 @@
 	size = SIZE_6
 	weight = 50
 
+	plane = PLANE_ABSTRACT
+	value_burgerbux = -1
+
 /obj/item/weapon/ranged/energy/mech/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
 
-	if(!istype(src.loc,/mob/living/vehicle/))
+	if(!istype(loc?.loc,/mob/living/vehicle/))
 		caller?.to_chat(span("warning","This weapon can only be fired in a vehicle!"))
 		return FALSE
 

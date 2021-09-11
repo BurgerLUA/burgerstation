@@ -343,7 +343,7 @@
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+	if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
 		return FALSE
 
@@ -351,7 +351,7 @@
 	for(var/turf/simulated/T in view(VIEW_RANGE,src))
 		if(!T.organic)
 			continue
-		if(T.lightness <= 0)
+		if(T.lightness > 0)
 			continue
 		if(!T.is_safe_teleport())
 			continue
