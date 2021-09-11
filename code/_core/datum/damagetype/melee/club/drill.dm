@@ -1,10 +1,8 @@
 /damagetype/melee/club/drill
-	name = "pickaxe"
+	name = "drill"
 
 	impact_sounds = list(
-		'sound/weapons/pickaxe/picaxe1.ogg',
-		'sound/weapons/pickaxe/picaxe2.ogg',
-		'sound/weapons/pickaxe/picaxe3.ogg'
+		'sound/items/drill.ogg',
 	)
 
 
@@ -36,8 +34,8 @@
 
 	)
 
-	attack_delay = 10
-	attack_delay_max = 15
+	attack_delay = 5
+	attack_delay_max = 5
 
 	target_floors = TRUE
 

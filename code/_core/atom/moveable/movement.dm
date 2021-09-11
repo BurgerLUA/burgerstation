@@ -104,7 +104,7 @@
 	if(adjust_delay)
 		move_delay = move_delay - adjust_delay
 
-	return FALSE
+	return is_moving
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 

@@ -56,6 +56,18 @@
 /mob/living/vehicle/mech/modular/proc/get_battery()
 	return battery
 
+/mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 1)
+
+	if(!battery || battery.charge_current <= 0)
+		return FALSE
+
+	. = ..()
+
+	if(.)
+		battery.charge_current -= 5
+	else
+		battery.charge_current -= 1
+
 /mob/living/vehicle/mech/modular/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -96,17 +108,17 @@
 	if(!mech_arms || (mech_arms && mech_arms.health.health_current <= 0))
 		return FALSE
 
-	if(params["right"])
+	if(!. && params["right"])
 		if(left_shoulder && caller.attack_flags & CONTROL_MOD_DISARM)
-			return left_shoulder.click_on_object(caller,object,location,control,params)
+			. = left_shoulder.click_on_object(caller,object,location,control,params)
 		else if(left_hand)
-			return left_hand.click_on_object(caller,object,location,control,params)
+			. = left_hand.click_on_object(caller,object,location,control,params)
 
-	if(params["left"])
+	if(!. && params["left"])
 		if(right_shoulder && caller.attack_flags & CONTROL_MOD_DISARM)
-			return right_shoulder.click_on_object(caller,object,location,control,params)
+			. = right_shoulder.click_on_object(caller,object,location,control,params)
 		else if(right_hand)
-			return right_hand.click_on_object(caller,object,location,control,params)
+			. = right_hand.click_on_object(caller,object,location,control,params)
 
 	return TRUE
 
@@ -366,11 +378,6 @@
 		return FALSE
 
 	return ..()
-
-
-/mob/living/vehicle/mech/modular/premade
-
-
 
 /mob/living/vehicle/mech/modular/premade/ripley/Generate()
 

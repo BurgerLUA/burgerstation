@@ -22,10 +22,6 @@
 
 	var/list/buttons_to_add = list(
 		/obj/hud/button/vehicle/eject,
-		/obj/hud/button/vehicle/weapon,
-		/obj/hud/button/vehicle/weapon/right,
-		/obj/hud/button/vehicle/ammo_display,
-		/obj/hud/button/vehicle/ammo_display/right
 	)
 
 	blood_type = null
@@ -39,8 +35,6 @@
 	for(var/k in equipment)
 		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
-
-
 
 /mob/living/vehicle/on_crush()
 
@@ -237,7 +231,6 @@
 	L.invisibility = 100
 	L.update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	add_buttons(L)
-	L.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET|FLAGS_HUD_SPECIAL,speed=0)
 	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=1)
 	update_sprite()
 
@@ -267,7 +260,6 @@
 	L.update_collisions(initial(L.collision_flags),initial(L.collision_bullet_flags))
 	remove_buttons(L)
 	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
-	L.show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=0)
 	update_sprite()
 
 	return ..()

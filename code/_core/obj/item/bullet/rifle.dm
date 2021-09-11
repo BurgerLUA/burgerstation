@@ -64,6 +64,11 @@
 	jam_chance = 1
 	value = 0
 
+/obj/item/bullet_cartridge/rifle_308/nato/premium
+	name = "\improper premium 7.62mm rifle bullet"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/premium
+	value = 5
+
 /obj/item/bullet_cartridge/rifle_308/nato/ap
 	name = "\improper AP 7.62mm rifle bullet"
 	desc_extended = "For rifles that require 7.62mm. This one has a steel tip."

@@ -80,28 +80,14 @@
 	value = 3000
 	value_burgerbux = 1
 
-/*
+
 /obj/item/supply_remote/mech/
 	value = 1000
 
 /obj/item/supply_remote/mech/ripley
-	name = "drop pod remote - Ripley Mining Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/ripley)
-	value = 1000
-
-/obj/item/supply_remote/mech/gygax
-	name = "drop pod remote - Gygax Combat Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/gygax)
-	value = 2500
-
-/obj/item/supply_remote/mech/durand
-	name = "drop pod remote - Durand Combat Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/durand)
+	name = "drop pod remote - Ripley Mining Mech with Drill + Laser Gun"
+	stored_object_types = list(/mob/living/vehicle/mech/modular/premade/ripley)
 	value = 5000
-*/
-
-/obj/item/supply_remote/crates/
-	value = 2000
 
 /obj/item/supply_remote/crates/nanotrasen
 	name = "drop pod remote - x4 NanoTrasen supply crates"

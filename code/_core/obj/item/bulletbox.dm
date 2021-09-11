@@ -188,3 +188,9 @@
 	. = ..()
 	set_stored_bullet(/obj/item/bullet_cartridge/rifle_223/nato/premium)
 	bullet_count = bullet_max
+
+
+/obj/item/bulletbox/rifle_762/Generate()
+	. = ..()
+	set_stored_bullet(/obj/item/bullet_cartridge/rifle_308/nato/premium)
+	bullet_count = bullet_max
