@@ -186,7 +186,7 @@
 	LOADVAR("color_label")
 	LOADVAR("color_canister")
 
-/obj/item/storage/pillbottle/PostInitialize()
+/obj/item/storage/pillbottle/Finalize()
 	. = ..()
 	update_sprite()
 
@@ -377,6 +377,11 @@
 	LOADVAR("hoard")
 	LOADPATH("targetitem")
 	LOADATOM("goods")
+	if(!goods  || !targetitem)
+		targetitem = null
+		goods = null
+		hoard = 0
+
 
 /obj/item/storage/bagofhoarding/get_examine_details_list(var/mob/examiner)
 	. = ..()
