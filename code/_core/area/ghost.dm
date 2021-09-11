@@ -13,90 +13,90 @@
 	)
 
 /area/ghost/hall
-	name = "\improper Hallway"
+	name = "\improper Classified Research Center - Hallway"
 	icon_state = "hall"
 	sound_environment = ENVIRONMENT_ALLEY
 
 /area/ghost/hall/north
-	name = "\improper North Hallway"
+	name = "\improper Classified Research Center - North Hallway"
 	icon_state = "hall_n"
 
 /area/ghost/hall/east
-	name = "\improper East Hallway"
+	name = "\improper Classified Research Center - East Hallway"
 	icon_state = "hall_e"
 
 /area/ghost/hall/south
-	name = "\improper South Hallway"
+	name = "\improper Classified Research Center - South Hallway"
 	icon_state = "hall_s"
 
 /area/ghost/hall/west
-	name = "\improper West Hallway"
+	name = "\improper Classified Research Center - West Hallway"
 	icon_state = "hall_w"
 
 /area/ghost/hall/entrance
-	name = "\improper Entrance Hallway"
+	name = "\improper Classified Research Center - Entrance Hallway"
 	icon_state = "hall_c"
 
 /area/ghost/maint
-	name = "\improper Maint"
+	name = "\improper Classified Research Center - Maint"
 	icon_state = "maint"
 	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/ghost/maint/north
-	name = "\improper North Maintenance"
+	name = "\improper Classified Research Center - North Maintenance"
 	icon_state = "maint_n"
 
 /area/ghost/maint/east
-	name = "\improper East Maintenance"
+	name = "\improper Classified Research Center - East Maintenance"
 	icon_state = "maint_e"
 
 /area/ghost/maint/south
-	name = "\improper South Maintenance"
+	name = "\improper Classified Research Center - South Maintenance"
 	icon_state = "maint_s"
 
 /area/ghost/maint/west
-	name = "\improper West Maintenance"
+	name = "\improper Classified Research Center - West Maintenance"
 	icon_state = "maint_w"
 
 /area/ghost/maint/central
-	name = "\improper Central Maintenance"
+	name = "\improper Classified Research Center - Central Maintenance"
 	icon_state = "disposals"
 
 /area/ghost/medical
-	name = "\improper Medical"
+	name = "\improper Classified Research Center - Medical"
 	icon_state = "med"
 
 
 /area/ghost/bathrooms
-	name = "\improper Bathrooms"
+	name = "\improper Classified Research Center - Bathrooms"
 	icon_state = "bath"
 
 	sound_environment = ENVIRONMENT_ROOM
 
 /area/ghost/bathrooms/male
-	name = "\improper Male Restroom"
+	name = "\improper Classified Research Center - Male Restroom"
 	color = "blue"
 
 /area/ghost/bathrooms/female
-	name = "\improper Female Restroom"
+	name = "\improper Classified Research Center - Female Restroom"
 	color = "red"
 
 /area/ghost/cafe
-	name = "\improper Cafe"
+	name = "\improper Classified Research Center - Cafe"
 	icon_state = "cafe"
 
 
 /area/ghost/science
-	name = "\improper Science"
+	name = "\improper Classified Research Center - Science"
 	icon_state = "science"
 
 /area/ghost/command
-	name = "\improper Command"
+	name = "\improper Classified Research Center - Command"
 	icon_state = "brief"
 
 
 /area/ghost/engineering
-	name = "\improper Engineering"
+	name = "\improper Classified Research Center - Engineering"
 	icon_state = "eng"
 
 	sound_environment = ENVIRONMENT_STONEROOM
