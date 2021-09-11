@@ -394,9 +394,9 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 				S.channel = M.client.tracked_sounds[tracked]
 				M << S
 			M.client.tracked_sounds[tracked] = created_sound.channel
-			var/track_length = length(tracked_sounds)
+			var/track_length = length(M.client.tracked_sounds)
 			if(track_length > 50)
-				tracked_sounds.Cut(1,track_length - 50)
+				M.client.tracked_sounds.Cut(1,track_length - 50)
 
 		M << created_sound
 
