@@ -18,8 +18,6 @@
 		/obj/item/weapon/ranged/spellgem/fireball,
 		/obj/item/weapon/ranged/spellgem/oozey,
 		/obj/item/weapon/ranged/spellgem/tesla,
-		/obj/item/weapon/ranged/spellgem/rift,
-		/obj/item/weapon/ranged/spellgem/rift/revive,
 		/obj/item/weapon/ranged/wand/quartz,
 		/obj/item/weapon/melee/torch/lantern,
 		/obj/item/weapon/ranged/magic/spellblade/runesword,
