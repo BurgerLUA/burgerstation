@@ -60,14 +60,14 @@
 		return TRUE
 	if(!(caller.client.ckey in valid_ckeys))
 		return TRUE
-	if(!istype(object,/obj/item/currency/gold/) && !is_inventory(object))
+	if(!istype(object,/obj/item/currency/gold_coin/) && !is_inventory(object))
 		return TRUE
 
 	var/pickup_amount =	get_pickup_amount(caller,TRUE)
 	pickup_amount = min(pickup_amount,100)
 	if(pickup_amount <=0)
 		return TRUE
-	var/obj/item/currency/gold/G = new(get_turf(src))
+	var/obj/item/currency/gold_coin/G = new(get_turf(src))
 	G.item_count_current = pickup_amount
 	SSeconomy.gold_in_circulation += pickup_amount
 	INITIALIZE(G)

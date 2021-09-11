@@ -9,7 +9,7 @@
 
 /fuckup/economy_broke/apply(var/list/file_contents)
 	. = ..()
-	.["currency"] = min(.["currency"],1000000)
+	.["currency"] = 80000
 	.["revenue"] = 0
 	.["expenses"] = 0
 	.["partial_tax"] = 0
