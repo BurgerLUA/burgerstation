@@ -42,7 +42,7 @@
 /obj/item/soulgem/update_sprite()
 	name = initial(name)
 	icon = initial(icon)
-	switch(total_charge)
+	switch(total_capacity)
 		if(0 to SOUL_SIZE_COMMON)
 			name = "common [name]"
 			icon_state = "common"
