@@ -47,8 +47,8 @@
 		return TRUE
 
 	if(!initial(enabled))
-		caller.visible_message(span("notice","\The [caller.name] turns [enabled ? "on" : "off"] \the [src.name]."),span("notice","You turn [enabled ? "on" : "off"] \the [src.name]."))
 		set_enabled(!enabled)
+		caller.visible_message(span("notice","\The [caller.name] turns [enabled ? "on" : "off"] \the [src.name]."),span("notice","You turn [enabled ? "on" : "off"] \the [src.name]."))
 		return TRUE
 
 	. = ..()
