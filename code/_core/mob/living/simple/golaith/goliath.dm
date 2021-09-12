@@ -62,13 +62,13 @@
 	if(dead)
 		return FALSE
 
-	if(get_dist(src,desired_target) > VIEW_RANGE || src.z != desired_target.z)
+	if(src.z != desired_target.z || get_dist(src,desired_target) > VIEW_RANGE)
 		return FALSE
 
-	add_status_effect(PARALYZE,20,20,stealthy = TRUE)
+	add_status_effect(PARALYZE,50,50,stealthy = TRUE)
 	icon_state = "[initial(icon_state)]_attack"
 
-	CALLBACK("\ref[src]_tentacle_attack",10,src,.proc/do_tentacle_attack,desired_target)
+	CALLBACK("\ref[src]_tentacle_attack",30,src,.proc/do_tentacle_attack,desired_target)
 
 	return TRUE
 
