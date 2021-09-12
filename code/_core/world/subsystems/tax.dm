@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(tax)
 /subsystem/tax/proc/check_delinquent(var/mob/living/advanced/player/P)
 
 	if(P.last_tax_payment <= 0)
-		return -1 //Never paid taxes.
+		return 0
 
 	var/yes = world.realtime - (P.last_tax_payment + 604800)
 
