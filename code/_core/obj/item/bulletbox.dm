@@ -45,7 +45,7 @@
 		var/obj/item/bullet_cartridge/BC = text2path(object_data["stored_bullet"])
 		if(BC) set_stored_bullet(BC)
 
-	LOADVAR(bullet_count)
+	LOADVAR("bullet_count")
 
 /obj/item/bulletbox/click_self(var/mob/caller)
 
