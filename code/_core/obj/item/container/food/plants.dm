@@ -27,7 +27,6 @@
 
 	scale_sprite = TRUE
 
-
 /obj/item/container/food/plant/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 
@@ -70,6 +69,7 @@
 		typical_volume = associated_plant.typical_volume
 	else
 		log_error("Warning: [src.get_debug_name()] didn't have a valid plant type.")
+	update_sprite()
 	return ..()
 
 /obj/item/container/food/plant/Initialize()

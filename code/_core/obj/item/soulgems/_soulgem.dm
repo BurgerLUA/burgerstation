@@ -60,7 +60,18 @@
 			icon_state = "godly"
 
 	if(total_charge)
-		icon_state = "[initial(icon_state)]_1"
+		icon_state = "[icon_state]_1"
+		switch(total_charge)
+			if(0 to SOUL_SIZE_COMMON)
+				name = "[name] (common)"
+			if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
+				name = "[name] (uncommon)"
+			if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
+				name = "[name] (rare)"
+			if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
+				name = "[name] (mystic)"
+			if(SOUL_SIZE_MYSTIC to INFINITY)
+				name = "[name] (godly)"
 	else
 		icon_state = initial(icon_state)
 		name = "[name] (empty)"

@@ -46,10 +46,10 @@
 
 /loot/soulgem/filled
 	loot_table = list(
-		/obj/item/soulgem/common = 4**4,
-		/obj/item/soulgem/uncommon = 4**3,
-		/obj/item/soulgem/rare = 4**2,
-		/obj/item/soulgem/mystic = 4**1
+		/obj/item/soulgem/common/filled = 4**4,
+		/obj/item/soulgem/uncommon/filled = 4**3,
+		/obj/item/soulgem/rare/filled = 4**2,
+		/obj/item/soulgem/mystic/filled = 4**1
 	)
 	loot_count = 1
 
