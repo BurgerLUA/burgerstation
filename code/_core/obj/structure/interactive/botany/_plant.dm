@@ -276,10 +276,6 @@
 			P.plant_type = associated_plant.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
-			P.name = associated_plant.name
-			P.desc = associated_plant.desc
-			P.icon = associated_plant.harvest_icon
-			P.icon_state = associated_plant.harvest_icon_state
 			P.potency =  child_potency //associated_plant.potency //CEILING(local_potency,1)
 			P.yield_max = child_yield //CEILING(local_yield,1)
 			P.yield_percent = CEILING(yield_percent,1)
