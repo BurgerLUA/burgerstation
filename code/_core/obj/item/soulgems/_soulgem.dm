@@ -40,6 +40,7 @@
 	return ..() + span("notice","It has [total_charge] total charge.")
 
 /obj/item/soulgem/update_sprite()
+	. = ..()
 	name = initial(name)
 	icon = initial(icon)
 	switch(total_capacity)
@@ -59,7 +60,7 @@
 			name = "godly [name]"
 			icon_state = "godly"
 
-	if(total_charge)
+	if(total_charge > 0)
 		icon_state = "[icon_state]_1"
 		switch(total_charge)
 			if(0 to SOUL_SIZE_COMMON)
@@ -73,11 +74,7 @@
 			if(SOUL_SIZE_MYSTIC to INFINITY)
 				name = "[name] (godly)"
 	else
-		icon_state = initial(icon_state)
 		name = "[name] (empty)"
-
-
-	return ..()
 
 
 
