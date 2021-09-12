@@ -175,12 +175,12 @@
 /obj/item/container/blood_pack/update_overlays()
 
 	var/image/I = new/image(icon,initial(icon_state))
-	I.appearance_flags = RESET_COLOR
+	I.appearance_flags = RESET_COLOR | KEEP_APART
 	add_overlay(I)
 
 	if(src.loc && is_inventory(src.loc))
 		var/image/I2 = image(icon,"action_[injecting]")
-		I2.appearance_flags = RESET_COLOR
+		I2.appearance_flags = RESET_COLOR | KEEP_APART
 		add_overlay(I2)
 
 	return ..()

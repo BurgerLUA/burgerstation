@@ -153,6 +153,8 @@
 		chosenObserver.glide_size = glide_size
 		chosenObserver.force_move(get_turf(loc))
 
+	close_turf_contents()
+
 /mob/set_dir(var/desired_dir,var/force=FALSE)
 
 	if(client && client.is_zoomed)

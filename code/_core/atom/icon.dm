@@ -1,8 +1,8 @@
 /atom/proc/update_sprite()
-	update_icon()
 	overlays.Cut()
-	update_overlays()
 	underlays.Cut()
+	update_icon()
+	update_overlays()
 	update_underlays()
 	return TRUE
 

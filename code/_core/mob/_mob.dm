@@ -102,6 +102,8 @@
 	var/mob/fallback_mob //The mob that this mob is slaved to. Basically if this mob tries to turn into a ghost, it will instead control this mob.
 	var/list/mob/linked_mobs = list() //Basically a reverse of the above. If this mob dies, then the rest die.
 
+	var/displaying_turf_contents = FALSE
+
 /mob/proc/update_eyes()
 	vision = initial(vision)
 	sight = initial(sight)

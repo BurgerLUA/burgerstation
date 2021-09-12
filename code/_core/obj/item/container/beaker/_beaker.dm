@@ -81,22 +81,13 @@
 
 	return TRUE
 
-/obj/item/container/beaker/update_icon()
-
+/obj/item/container/beaker/update_underlays()
+	. = ..()
 	if(!overide_icon)
-		icon = initial(icon)
-		icon_state = initial(icon_state)
-
-		var/icon/I = new/icon(icon,icon_state)
-		var/icon/I2 = new/icon(icon,"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
-
-		I2.Blend(reagents.color,ICON_MULTIPLY)
-		I.Blend(I2,ICON_UNDERLAY)
-
-		icon = I
-
-	return ..()
-
+		var/image/I = new/image(initial(icon),"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
+		I.appearance_flags = RESET_COLOR | KEEP_APART
+		I.color = reagents.color
+		add_underlay(I)
 
 /obj/item/container/beaker/water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
