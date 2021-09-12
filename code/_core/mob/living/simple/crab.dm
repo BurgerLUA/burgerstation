@@ -32,7 +32,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	loyalty_tag = "Crab"
 	iff_tag = "Crab"

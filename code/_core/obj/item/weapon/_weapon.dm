@@ -27,6 +27,12 @@
 
 	has_quick_function = TRUE
 
+/obj/item/weapon/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(enchantment)
+		. += div("notice","It is enchanted with <b>[enchantment.name]</b>")
+		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")
+
 /obj/item/weapon/quick(var/mob/caller,var/atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
@@ -109,8 +115,10 @@
 /obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
-	if(object_data["enchantment"] && object_data["enchantment"]["type"])
-		enchantment = new object_data["enchantment"]["enchantment_type"]
-		enchantment.strength = object_data["enchantment"]["strength"]
-		enchantment.charge = object_data["enchantment"]["charge"]
-		enchantment.cost = object_data["enchantment"]["cost"]
+	if(object_data["enchantment"] && object_data["enchantment"]["enchantment_type"])
+		var/possible_enchantment = text2path(object_data["enchantment"]["enchantment_type"])
+		if(possible_enchantment)
+			enchantment = new possible_enchantment
+			enchantment.strength = object_data["enchantment"]["strength"]
+			enchantment.charge = object_data["enchantment"]["charge"]
+			enchantment.cost = object_data["enchantment"]["cost"]

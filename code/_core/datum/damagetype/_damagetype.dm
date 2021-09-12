@@ -601,6 +601,13 @@
 		if(W.reagents && victim.reagents)
 			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
 			W.reagents.remove_all_reagents()
+		if(W.enchantment && W.enchantment.charge >= 0)
+			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+			W.enchantment.charge -= W.enchantment.cost
+			if(W.enchantment.charge <= 0)
+				qdel(W.enchantment)
+				W.enchantment = null
+
 
 	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)

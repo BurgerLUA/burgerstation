@@ -107,7 +107,7 @@
 	if(weapon_to_enchant && !istype(weapon_to_enchant,/obj/item/weapon/melee) && !istype(weapon_to_enchant,/obj/item/weapon/ranged/bow))
 		weapon_to_enchant = null
 
-	if(!soulgem || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
+	if(!soulgem || !soulgem.total_charge || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
 		caller.visible_message(span("warning","\The [src.name] reacts to [caller.name]'s words... but slowly fizzles out."),span("warning","\The [src.name] reacts to your words... but slowly fizzles out."))
 		return FALSE
 

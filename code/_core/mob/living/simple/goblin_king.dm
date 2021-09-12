@@ -73,6 +73,8 @@
 
 	level = 50
 
+	movement_delay = DECISECONDS_TO_TICKS(6)
+
 /mob/living/simple/goblin_king/post_death()
 	. = ..()
 	icon_state = "dead"

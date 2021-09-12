@@ -71,6 +71,8 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
+	movement_delay = DECISECONDS_TO_TICKS(4)
+
 	level = 70
 
 /mob/living/simple/goliath/broodmother/on_life()
