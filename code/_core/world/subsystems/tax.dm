@@ -29,20 +29,11 @@ SUBSYSTEM_DEF(tax)
 	var/processing_fee = 0
 
 /subsystem/tax/proc/can_pax_taxes(var/mob/living/advanced/player/P)
-	return world.realtime >= (P.last_tax_payment + 604800) //1 week
+	return world.realtime >= (P.last_tax_payment + 604800*10) //1 week
 
 /subsystem/tax/proc/check_delinquent(var/mob/living/advanced/player/P)
-
-	if(P.last_tax_payment <= 0)
-		return 0
-
-	var/yes = world.realtime - (P.last_tax_payment + 604800)
-
-	if(yes > 0)
-		return yes
-
-	return 0
-
+	. = world.realtime - (P.last_tax_payment + 604800*10) //1 week
+	. = max(0,.)
 
 /subsystem/tax/proc/pay_taxes(var/mob/living/advanced/player/P)
 
@@ -59,7 +50,7 @@ SUBSYSTEM_DEF(tax)
 	if(partial_tax)
 		P.to_chat(span("warning","You have partially paid [pay_amount] of your taxes..."))
 	else
-		P.to_chat(span("notice","You have successfully paid [pay_amount] of your taxes. Check back in 1 week ([time2text(world.realtime+6048000,"Month DD")]) to pay your taxes again!"))
+		P.to_chat(span("notice","You have successfully paid [pay_amount] of your taxes. Check back in 1 week ([time2text(world.realtime+(604800*10),"Month DD")]) to pay your taxes again!"))
 		P.last_tax_payment = world.realtime
 
 	P.revenue = 0
