@@ -192,3 +192,9 @@
 		"pants" = "#A39D86",
 		"kneepad" = COLOR_WHITE
 	)
+
+
+/obj/item/clothing/pants/normal/reinforced/space_soldier
+	polymorphs = list(
+		"pants" = COLOR_BLACK
+	)

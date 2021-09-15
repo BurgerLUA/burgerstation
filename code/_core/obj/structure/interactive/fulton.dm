@@ -68,8 +68,7 @@
 			if(is_player(L))
 				var/mob/living/advanced/player/P = L
 				var/delinq = SStax.check_delinquent(P)
-				delinq *= 1/(86400*10)
-				if(delinq >= 7)
+				if(delinq)
 					has_tax = TRUE
 			if(has_tax)
 				L.to_chat(span("danger","You were forced to pay your taxes and sold back to NanoTrasen!"))

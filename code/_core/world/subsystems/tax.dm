@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(tax)
 	return world.realtime >= (P.last_tax_payment + 604800*10) //1 week
 
 /subsystem/tax/proc/check_delinquent(var/mob/living/advanced/player/P)
-	. = world.realtime - (P.last_tax_payment + 604800*10) //1 week
+	. = world.realtime - (P.last_tax_payment + 604800*10*2) //2 weeks
 	. = max(0,.)
 
 /subsystem/tax/proc/pay_taxes(var/mob/living/advanced/player/P)

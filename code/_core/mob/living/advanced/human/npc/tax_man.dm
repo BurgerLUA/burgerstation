@@ -43,6 +43,8 @@
 	desc = "PAY YOUR TAXES."
 	desc_extended = "One of the most lethal accountants in the galaxy."
 
+	ai = /ai/advanced/taxman
+
 	level = 30
 
 /mob/living/advanced/npc/tax_collector/Initialize()

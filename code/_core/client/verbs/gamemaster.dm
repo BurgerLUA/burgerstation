@@ -11,20 +11,6 @@
 
 	log_admin("[src.get_debug_name()] sped up setup.")
 
-
-/client/verb/force_random_event()
-	set name = "Force Random Event"
-	set category = "Fun"
-
-	var/confirm = input("Are you sure you want to trigger a random event?","Random Event Trigger.") in list("Yes","No","Cancel")|null
-
-	if(confirm != "Yes")
-		return FALSE
-
-	SSevents.next_event_time = 0
-
-	log_admin("[src.get_debug_name()] forced a random event.")
-
 /client/verb/force_specific_event()
 	set name = "Force Specific Event"
 	set category = "Fun"
