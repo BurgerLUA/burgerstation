@@ -11,5 +11,3 @@
 			return TRUE
 
 	. = ..()
-
-	return FALSE
