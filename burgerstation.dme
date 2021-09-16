@@ -1051,6 +1051,7 @@
 #include "code\_core\obj\item\stacks.dm"
 #include "code\_core\obj\item\stripping.dm"
 #include "code\_core\obj\item\supply_crate.dm"
+#include "code\_core\obj\item\tape.dm"
 #include "code\_core\obj\item\trash.dm"
 #include "code\_core\obj\item\wet_floor_sign.dm"
 #include "code\_core\obj\item\analyzer\_analyzer.dm"

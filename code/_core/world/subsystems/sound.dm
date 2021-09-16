@@ -140,7 +140,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	stop_music_track(hearer)
 
-	var/track/T = all_tracks[music_track_id]
+	var/track/T = SStrack.all_tracks[music_track_id]
 	if(!T)
 		CRASH_SAFE("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 		return FALSE
