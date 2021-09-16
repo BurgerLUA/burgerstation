@@ -51,7 +51,8 @@
 		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater
 	)
 
 /obj/structure/interactive/vending/syndicate/medicine
@@ -130,7 +131,14 @@
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/rcd,
 		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
+		/obj/item/disk/rcd/metal_wall/bunker,
+		/obj/item/disk/rcd/conveyor,
+		/obj/item/disk/rcd/diverter,
+		/obj/item/disk/rcd/chair,
+		/obj/item/disk/rcd/table,
+		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,
@@ -172,7 +180,14 @@
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/rcd,
 		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
+		/obj/item/disk/rcd/metal_wall/bunker,
+		/obj/item/disk/rcd/conveyor,
+		/obj/item/disk/rcd/diverter,
+		/obj/item/disk/rcd/chair,
+		/obj/item/disk/rcd/table,
+		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,
@@ -204,6 +219,10 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/magazine/gauss_gun,
+		/obj/item/magazine/gauss_gun/explosive,
+		/obj/item/magazine/gauss_gun/ion,
+		/obj/item/magazine/gauss_gun/incendiary,
+		/obj/item/magazine/gauss_gun/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
@@ -214,6 +233,7 @@
 		/obj/item/storage/ammo/buckshot_23,
 		/obj/item/storage/ammo/slug_23,
 		/obj/item/storage/ammo/fire_23,
+		/obj/item/storage/ammo/rubber_23,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/magazine/shotgun_auto/buckshot,
@@ -231,5 +251,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/magazine/lmg_762_r,
 
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater
 	)

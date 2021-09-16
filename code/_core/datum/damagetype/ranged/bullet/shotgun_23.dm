@@ -55,6 +55,26 @@
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
 
+/damagetype/ranged/bullet/shotgun_23/rubber_slug
+	name = "rubber shotgun slug"
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 10,
+		PAIN = 50
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 0,
+		PAIN = 75
+	)
+
+	falloff = VIEW_RANGE
+
+/damagetype/ranged/bullet/shotgun_23/rubber_slug/surplus
+	damage_mod = SURPLUS_MUL
+	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/shotgun_23/fire
 	attack_damage_base = list(

@@ -21,9 +21,9 @@
 	value = 360
 
 /obj/item/clothing/head/hat/hos/revfficer
-	name = "\improper Russian Commissar's hat"
+	name = "revolutionary officer cap"
 	desc = "Conscript spam baste."
-	desc_extended = "A hat usually worn by the leader of revolutionaries."
+	desc_extended = "A cap usually worn by the leader of revolutionaries."
 	icon = 'icons/obj/item/clothing/hats/revfficer.dmi'
 	rarity = RARITY_RARE
 

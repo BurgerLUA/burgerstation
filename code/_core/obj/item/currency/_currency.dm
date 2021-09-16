@@ -47,7 +47,7 @@
 	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)*5
 
 /obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
-	item_count_current = 50
+	item_count_current = 75
 	return ..()
 
 /obj/item/currency/telecrystals/update_icon()

@@ -52,6 +52,7 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/clothing/head/hat/skimask/black,
+		/obj/item/clothing/mask/gas/tactical,
 		/obj/item/clothing/head/hat/beret/armored,
 		/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
@@ -86,7 +87,8 @@
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/weapon/ranged/energy/hybrid/carbine,
 
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/ops

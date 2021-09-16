@@ -15,6 +15,7 @@
 	dyeable = TRUE
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
+	item_slot_layer = 1
 
 	defense_rating = list(
 		ARCANE = 20,

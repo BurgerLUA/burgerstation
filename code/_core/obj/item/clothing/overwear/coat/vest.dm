@@ -124,3 +124,29 @@
 	polymorphs = list(
 		"pockets" = COLOR_BLACK
 	)
+
+/obj/item/clothing/overwear/coat/vest/syndicate
+	name = "syndicate combat webbing"
+	desc = "The pinnacle of torso storaging."
+	desc_extended = "Heavy-duty military webbing designed to hold lots of small (size two) items with ease. Issued to the Syndicate's high-ranking personnel."
+	icon = 'icons/obj/item/clothing/suit/webbing_syndie.dmi'
+
+	size = SIZE_2*5
+
+	dynamic_inventory_count = 6
+	container_max_size = SIZE_2
+	value = 1500
+	value_burgerbux = 1
+
+/obj/item/clothing/overwear/coat/vest/revolutionary
+	name = "revolutionary combat webbing"
+	desc = "The pinnacle of torso storaging."
+	desc_extended = "Ancient military webbing designed to hold lots of small (size two) items with ease. Issued to the revoluionaries' high-ranking personnel."
+	icon = 'icons/obj/item/clothing/suit/webbing_rev.dmi'
+
+	size = SIZE_2*5
+
+	dynamic_inventory_count = 6
+	container_max_size = SIZE_2
+	value = 1500
+	value_burgerbux = 1
