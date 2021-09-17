@@ -236,12 +236,12 @@
 	path = 'sound/music/Rise and Fall.ogg'
 	length = 2*60 + 10
 
-/track/clown_greeting
+/track/clown_greeting //Clown music
 	name = "Clown Greeting"
 	path = 'sound/music/Clown Greeting.ogg'
 	length = 10
 
-/track/entrance
+/track/entrance //Old intro music
 	name = "Entrance"
 	path = 'sound/music/Entrance.ogg'
 	length = 2*60 + 40

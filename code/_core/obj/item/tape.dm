@@ -14,7 +14,7 @@
 	var/obj/item/cassette_tape/stored_tape
 	var/playing = FALSE
 
-/obj/item/cassette_player/get_examine_details(var/mob/examiner)
+/obj/item/cassette_player/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(stored_tape)
 		. += div("notice","It currently holding [stored_tape.name] inside.")

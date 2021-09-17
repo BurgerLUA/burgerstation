@@ -125,6 +125,7 @@
 #include "code\__helpers\logging.dm"
 #include "code\__helpers\math.dm"
 #include "code\__helpers\name.dm"
+#include "code\__helpers\path.dm"
 #include "code\__helpers\pooling.dm"
 #include "code\__helpers\progress_bar.dm"
 #include "code\__helpers\random.dm"
