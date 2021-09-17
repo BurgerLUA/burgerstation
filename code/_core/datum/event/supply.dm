@@ -16,6 +16,8 @@
 		/mob/living/advanced/npc/beefman
 	)
 
+	minor_event = TRUE
+
 /event/supply/Destroy()
 	valid_turfs?.Cut()
 	valid_areas?.Cut()
@@ -61,14 +63,7 @@
 	if(!length(valid_turfs))
 		return FALSE
 
-	announce(
-		"Central Command Cargo Control",
-		"Stray Supply Pods",
-		"Several stray supply pods are predicted to land in the area of operations. Predicted landing areas: [english_list(announce_areas)].",
-		sound_to_play = 'sound/voice/announcement/supply.ogg'
-	)
-
-	for(var/i=1,i<=rand(4,8),i++)
+	for(var/i=1,i<=rand(1,3),i++)
 		if(!length(valid_turfs))
 			break
 		var/turf/T = pick(valid_turfs)

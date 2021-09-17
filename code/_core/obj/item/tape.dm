@@ -14,6 +14,12 @@
 	var/obj/item/cassette_tape/stored_tape
 	var/playing = FALSE
 
+/obj/item/cassette_player/get_examine_details(var/mob/examiner)
+	. = ..()
+	if(stored_tape)
+		. += div("notice","It currently holding [stored_tape.name] inside.")
+	. += div("notice","It is currently [playing ? "playing" : "not playing"].")
+
 /obj/item/cassette_player/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_tape")
@@ -38,7 +44,7 @@
 /obj/item/cassette_player/proc/disable()
 	if(current_hearer && current_hearer.client)
 		stop_music_track(current_hearer.client)
-		current_hearer.to_chat(span("notice","\The [src.name] turns off."))
+		if(playing) current_hearer.to_chat(span("notice","\The [src.name] turns off."))
 		HOOK_REMOVE("post_move","loc_check_\ref[src]",current_hearer)
 		CALLBACK_REMOVE("tape_stop_\ref[src]")
 	playing = FALSE
@@ -50,9 +56,9 @@
 		if(!T)
 			return
 		play_music_track(stored_tape.stored_track,current_hearer.client)
-		current_hearer.to_chat(span("notice","\The [src.name] turns on."))
+		if(!playing) current_hearer.to_chat(span("notice","\The [src.name] turns on."))
 		HOOK_ADD("post_move","loc_check_\ref[src]",current_hearer,src,.proc/check_valid)
-		CALLBACK("tape_stop_\ref[src]",T.length,src,.proc/disable)
+		CALLBACK("tape_stop_\ref[src]",SECONDS_TO_DECISECONDS(T.length),src,.proc/disable)
 	playing = TRUE
 	update_sprite()
 
@@ -63,6 +69,7 @@
 	INTERACT_DELAY(5)
 
 	if(istype(object,/obj/item/cassette_tape))
+		disable()
 		var/obj/item/old_tape
 		if(stored_tape)
 			old_tape = stored_tape
@@ -75,15 +82,14 @@
 		if(old_tape && is_advanced(caller))
 			var/mob/living/advanced/A = caller
 			A.put_in_hands(stored_tape,left = params["left"])
-		update_sprite()
 		return TRUE
 
 	if(is_inventory(object))
+		disable()
 		var/obj/hud/inventory/I = object
 		caller.to_chat(span("notice","You eject \the [stored_tape.name] from \the [src.name]."))
 		I.add_object(stored_tape)
 		stored_tape = null
-		update_sprite()
 		return TRUE
 
 	. = ..()

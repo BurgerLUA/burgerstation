@@ -82,6 +82,9 @@ SUBSYSTEM_DEF(events)
 
 	log_debug("Triggering [E.get_debug_name()] in 5 seconds...")
 
+	next_event_minor = max(next_event_minor,world.time + 100)
+	next_event_major = max(next_event_major,world.time + 100)
+
 	CALLBACK("trigger_event",50,src,.proc/trigger_event,E)
 
 	return TRUE
