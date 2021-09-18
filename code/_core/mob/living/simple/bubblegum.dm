@@ -20,7 +20,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = BOSS_TICK*3
+	move_delay = AI_TICK_FAST
 
 	stun_angle = 0
 
@@ -69,7 +69,7 @@
 	iff_tag = "Bubblegum"
 	loyalty_tag = "Bubblegum"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -91,7 +91,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 30
+	level = 80
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()
@@ -127,7 +127,7 @@
 	. = ..()
 
 	if(charge_steps)
-		. = BOSS_TICK*1
+		. = AI_TICK_FAST*1
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 

@@ -17,7 +17,7 @@
 		DARK = 60
 	)
 
-	level = 10
+	level = 12
 
 
 
@@ -48,11 +48,11 @@
 	name = "ancient cultist"
 	loadout_to_use = /loadout/cultist/old
 
-	level = 40
+	level = 60
 
 
 /mob/living/advanced/npc/cultist/hard
 	name = "master cultist"
 	loadout_to_use = /loadout/cultist/hard
 
-	level = 80
+	level = 90

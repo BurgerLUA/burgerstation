@@ -47,7 +47,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 12
 
 /mob/living/simple/bear/update_overlays()
 	. = ..()
@@ -89,6 +89,8 @@
 
 	armored = TRUE
 
+	level = 18
+
 /mob/living/simple/bear/armored/revolutionary
 	name = "armored russian bear"
 	loyalty_tag = "Revolutionary"
@@ -96,6 +98,8 @@
 
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
+
+	level = 24
 
 /mob/living/simple/bear/snow
 	name = "snow bear"
@@ -119,11 +123,11 @@
 		PAIN = 0
 	)
 
+	level = 14
+
 /mob/living/simple/bear/black
 	name = "black bear"
 	icon_state = "black"
-
-
 
 	armor_base = list(
 		BLADE = 25,
@@ -142,13 +146,13 @@
 		ION = INFINITY,
 		PAIN = 0
 	)
+
+	level = 16
 
 /mob/living/simple/bear/space
 	name = "space bear"
 	icon_state = "space"
 
-
-
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 25,
@@ -166,3 +170,5 @@
 		ION = INFINITY,
 		PAIN = 0
 	)
+
+	level = 18

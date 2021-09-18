@@ -27,6 +27,14 @@
 		F.remove()
 
 
+/gamemode/endless/proc/add_objectives()
+	add_objective(/objective/artifact)
+	add_objective(/objective/hostage)
+	add_objective(/objective/kill_boss)
+	add_objective(/objective/kill_boss)
+	add_objective(/objective/kill_ghost)
+	return TRUE
+
 /gamemode/endless/on_life()
 
 	. = ..()
@@ -46,6 +54,7 @@
 					ANNOUNCEMENT_STATION,
 					'sound/voice/announcement/landfall_crew_8_minutes.ogg'
 				)
+				add_objectives()
 			if(2)
 				status_display_text = "PREP"
 				allow_pods()

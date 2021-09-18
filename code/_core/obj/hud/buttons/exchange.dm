@@ -37,18 +37,19 @@
 				if(B.stored_value <= 0)
 					caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
 				else
-					if(istype(B.stored_object,/obj/item/currency/gold))
+					if(istype(B.stored_object,/obj/item/currency/gold_coin))
+						A.adjust_currency(B.stored_value)
 						SSeconomy.goblin_economy += B.stored_value
-						SSeconomy.gold_in_circulation -= A.adjust_currency(B.stored_value)
+						SSeconomy.gold_in_circulation -= B.stored_object.item_count_current
 						qdel(I)
 					else
 						var/turf/T = get_turf(A)
-						var/obj/item/currency/gold/G = new(T)
+						var/obj/item/currency/gold_coin/G = new(T)
 						INITIALIZE(G)
 						G.item_count_current = B.stored_value
-						SSeconomy.goblin_economy -= B.stored_value
-						SSeconomy.gold_in_circulation += B.stored_value
 						FINALIZE(G)
+						SSeconomy.gold_in_circulation += G.item_count_current
+						SSeconomy.goblin_economy -= G.item_count_current
 						qdel(I)
 						B.set_stored_object(null)
 						A.put_in_hands(G)
@@ -124,7 +125,7 @@
 
 /obj/hud/button/exchange/base/proc/calculate_value()
 	if(stored_object)
-		if(istype(stored_object,/obj/item/currency/gold))
+		if(istype(stored_object,/obj/item/currency/gold_coin))
 			stored_value = CEILING(stored_object.item_count_current*SSeconomy.credits_per_gold,1)
 			stored_value = max(stored_value,0)
 		else
@@ -150,7 +151,7 @@
 		name = stored_object.name
 		desc = stored_object.desc
 		desc_extended = stored_object.desc_extended
-		if(istype(stored_object,/obj/item/currency/gold))
+		if(istype(stored_object,/obj/item/currency/gold_coin))
 			maptext = "[nice_number(stored_value)] cr"
 		else
 			maptext = "[nice_number(stored_value)] g"

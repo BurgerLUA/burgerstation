@@ -13,7 +13,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DECISECONDS_TO_TICKS(0.5)
 
 	icon_state = "directional"
 
@@ -192,7 +192,8 @@
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
-	var/fatigue_from_block_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/fatigue_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/pain_mul = 1
 
 	value = 250
 
@@ -342,7 +343,7 @@
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+	if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
 		return FALSE
 
@@ -350,7 +351,7 @@
 	for(var/turf/simulated/T in view(VIEW_RANGE,src))
 		if(!T.organic)
 			continue
-		if(T.lightness <= 0)
+		if(T.lightness > 0)
 			continue
 		if(!T.is_safe_teleport())
 			continue
@@ -537,7 +538,6 @@
 		health.armor_base = armor_base
 	if(ai)
 		INITIALIZE(ai)
-		FINALIZE(ai)
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
@@ -545,6 +545,9 @@
 /mob/living/Finalize()
 
 	. = ..()
+
+	if(ai)
+		FINALIZE(ai)
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))

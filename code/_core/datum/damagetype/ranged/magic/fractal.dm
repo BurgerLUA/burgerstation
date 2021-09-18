@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/fractal
-	name = "fractal"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLADE = 30*0.4,
 		FIRE = 30*0.1

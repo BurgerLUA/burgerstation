@@ -70,6 +70,7 @@
 /obj/item/implanter/IFF
 	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
 	removes_existing = FALSE
+	value_burgerbux = 1000000
 
 /obj/item/implanter/od_purge
 	stored_implant = /obj/item/organ/internal/implant/torso/od_purge

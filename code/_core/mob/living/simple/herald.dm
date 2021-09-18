@@ -54,7 +54,7 @@
 	iff_tag = "Herald"
 	loyalty_tag = "Herald"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -81,7 +81,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 15
+	level = 50
 
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)

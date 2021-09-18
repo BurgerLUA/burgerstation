@@ -44,6 +44,7 @@
 		PAIN = 20
 	)
 
+	level = 18
 
 
 /mob/living/simple/cult/cultist/post_death()
@@ -94,7 +95,7 @@
 		PAIN = INFINITY
 	)
 
-	level = 18
+	level = 36
 
 
 
@@ -127,7 +128,7 @@
 		PAIN = INFINITY
 	)
 
-	level = 8
+	level = 16
 
 
 
@@ -159,7 +160,7 @@
 		PAIN = INFINITY
 	)
 
-	level = 12
+	level = 24
 
 
 
@@ -192,7 +193,7 @@
 		PAIN = INFINITY
 	)
 
-	level = 14
+	level = 28
 
 
 
@@ -224,7 +225,7 @@
 		PAIN = INFINITY
 	)
 
-	level = 12
+	level = 24
 
 
 
@@ -256,5 +257,5 @@
 		PAIN = INFINITY
 	)
 
-	level = 8
+	level = 16
 

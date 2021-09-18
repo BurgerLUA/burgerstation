@@ -32,6 +32,10 @@
 
 	use_iff_tag = TRUE
 
+/obj/item/weapon/ranged/bullet/Finalize()
+	. = ..()
+	uses_until_condition_fall = 50 * (1/shoot_delay)
+
 /obj/item/weapon/ranged/bullet/Destroy()
 	QDEL_NULL(chambered_bullet)
 	QDEL_CUT(stored_bullets)

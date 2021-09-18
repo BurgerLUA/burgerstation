@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/fireball
-	name = "fireball"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		HEAT = 60*0.3,
 		ARCANE = 60*0.2

@@ -21,8 +21,6 @@
 
 	var/debug = FALSE
 
-	var/special_temperature_mod = 0
-
 	var/contains_lethal = FALSE
 
 	var/allow_recipe_processing = TRUE
@@ -109,7 +107,7 @@
 	if(T && T.loc)
 		A = T.loc
 
-	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + special_temperature_mod + (T ? T.turf_temperature_mod : 0)
+	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
 	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
 
 	if(is_inventory(owner.loc))
@@ -598,6 +596,8 @@
 				final_flavor_text += " You hate this taste!"
 		else
 			final_flavor_text = null
+
+		A.mood += like_score*5
 
 		if(caller && caller != consumer)
 			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))

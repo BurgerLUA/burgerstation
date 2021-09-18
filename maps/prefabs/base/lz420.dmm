@@ -774,6 +774,13 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/tan,
 /area/fob/main)
+"cN" = (
+/obj/structure/interactive/atm{
+	icon_state = "atm_map";
+	dir = 8
+	},
+/turf/simulated/wall/metal,
+/area/fob/main)
 
 (1,1,1) = {"
 ab
@@ -2594,7 +2601,7 @@ aW
 bD
 bH
 bD
-aP
+cN
 aW
 aP
 aL
@@ -3117,7 +3124,7 @@ bb
 aF
 aL
 bm
-aP
+cN
 aP
 bB
 bK

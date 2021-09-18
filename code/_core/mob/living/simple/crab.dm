@@ -32,7 +32,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	loyalty_tag = "Crab"
 	iff_tag = "Crab"
@@ -42,7 +42,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 12
 
 /mob/living/simple/crab/post_death()
 	..()
@@ -103,7 +103,7 @@
 		PAIN = INFINITY
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -127,7 +127,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	level = 12
+	level = 50
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

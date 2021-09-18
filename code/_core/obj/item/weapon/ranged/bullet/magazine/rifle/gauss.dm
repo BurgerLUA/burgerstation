@@ -67,9 +67,9 @@
 	rarity = RARITY_MYTHICAL
 	value = 15000
 
-	shoot_delay = 2
+	shoot_delay = 8
 
-	damage_mod = 1.1
+	damage_mod = 0.5
 
 	automatic = TRUE
 

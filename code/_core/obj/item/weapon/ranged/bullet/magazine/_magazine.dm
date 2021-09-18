@@ -89,8 +89,6 @@
 		stored_magazine.drop_item(T)
 		play_sound(stored_magazine.get_magazine_eject_sound(),T,range_max=VIEW_RANGE*0.5)
 		if(stored_magazine)
-			if(stored_magazine.regenerate)
-				CALLBACK("regen_\ref[stored_magazine]", stored_magazine.regen_speed, stored_magazine, /obj/item/magazine/proc/regen)
 			stored_magazine.update_sprite()
 			stored_magazine = null
 

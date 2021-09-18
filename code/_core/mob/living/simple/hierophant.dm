@@ -19,7 +19,7 @@
 
 	boss_loot = /loot/lavaland/hierophant
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -49,7 +49,9 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	level = 18
+	movement_delay = DECISECONDS_TO_TICKS(6)
+
+	level = 50
 
 
 /mob/living/simple/hierophant/proc/chain_blast_random()

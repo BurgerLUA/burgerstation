@@ -37,8 +37,13 @@ SUBSYSTEM_DEF(economy)
 			sound_to_play = 'sound/round_end/dump_it.ogg'
 		)
 		crash_sell_multiplier = 0.1
-	credits_per_gold = 1 + max(0,CEILING(gold_base_value/gold_in_circulation,1))
+
+	credits_per_gold = min(1 + max(0,CEILING(gold_base_value/gold_in_circulation,1)),15)
 	sell_multiplier = clamp(goblin_economy/50000,0.1,1)*0.5
+
+	if(gold_in_circulation <= 20000) //About to crash.
+		credits_per_gold = FLOOR(credits_per_gold*RAND_PRECISE(0.5,2),1)
+		sell_multiplier *= 0.5
 
 /subsystem/economy/Initialize()
 

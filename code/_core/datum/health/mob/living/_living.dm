@@ -102,9 +102,9 @@
 
 	var/mob/living/L = owner
 
-	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10)*100
-	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*100
-	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*100
+	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10)*200
+	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*200
+	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*200
 
 	var/trait/vitality/V = L.get_trait_by_category(/trait/vitality)
 	if(V)

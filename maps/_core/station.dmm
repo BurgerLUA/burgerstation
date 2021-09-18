@@ -3331,7 +3331,7 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mi" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/tile{
 	icon_state = "white_single"
 	},
@@ -6583,6 +6583,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
+"xO" = (
+/obj/structure/interactive/atm,
+/turf/simulated/wall/metal,
+/area/burgerstation/cafe)
 "xP" = (
 /obj/marker/spawning/window/reinforced,
 /obj/structure/interactive/disposals/pipe,
@@ -6661,6 +6665,31 @@
 	sorting_tag_label = "fob"
 	},
 /turf/simulated/floor/plating,
+/area/burgerstation/maint/west)
+"yb" = (
+/obj/structure/interactive/atm{
+	icon_state = "atm_map";
+	dir = 4
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/maint/north)
+"yc" = (
+/obj/structure/interactive/atm{
+	icon_state = "atm_map";
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/maint/north)
+"yd" = (
+/obj/structure/interactive/atm,
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/hall/north)
+"ye" = (
+/obj/structure/interactive/atm{
+	icon_state = "atm_map";
+	dir = 4
+	},
+/turf/simulated/wall/metal,
 /area/burgerstation/maint/west)
 "yk" = (
 /obj/structure/interactive/disposals/pipe/junction{
@@ -32330,7 +32359,7 @@ jg
 pc
 iU
 pC
-yu
+ye
 yu
 yu
 yu
@@ -36165,7 +36194,7 @@ dw
 dw
 hg
 gp
-ai
+yd
 ik
 bq
 jh
@@ -39755,7 +39784,7 @@ jj
 aW
 aW
 aW
-aW
+yb
 fp
 fl
 fX
@@ -40802,7 +40831,7 @@ lz
 jH
 mt
 mu
-mu
+xO
 mp
 mM
 mp
@@ -42320,7 +42349,7 @@ bt
 bs
 cb
 aV
-aV
+yc
 aV
 dD
 dZ

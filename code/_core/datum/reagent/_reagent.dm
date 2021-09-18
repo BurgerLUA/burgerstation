@@ -105,19 +105,19 @@
 	return total_metabolized
 
 /reagent/proc/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_stomach * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+	return metabolism_stomach * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+	return TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_blood * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+	return metabolism_blood * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_skin * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+	return metabolism_skin * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
-	return metabolism_amount * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+	return metabolism_amount * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	return TRUE

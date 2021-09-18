@@ -137,6 +137,19 @@
 
 	weight = 6
 
+	value_burgerbux = 1 //Citizens aren't supposed to have recharging power cells.
+
+/obj/item/powercell/recharging/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+	. = ..()
+	if(new_location.click_flags && new_location.owner)
+		var/mob/living/advanced/A = new_location.owner
+		A.to_chat(span("danger","\The intense heat from \the [src.name] burns your hand and forces you to drop it!"))
+		A.add_status_effect(STUN,30,30)
+		if(is_organ(new_location.loc))
+			var/obj/item/organ/O = new_location.loc
+			O.health.adjust_loss_smart(burn=10)
+		src.drop_item(get_turf(A))
+
 /obj/item/powercell/recharging/PostInitialize()
 	start_thinking(src)
 	return ..()

@@ -42,7 +42,7 @@
 		revenue = loaded_data["revenue"] ? loaded_data["revenue"] : 0
 		expenses = loaded_data["expenses"] ? loaded_data["expenses"] : 0
 		partial_tax = loaded_data["partial_tax"] ? loaded_data["partial_tax"] : 0
-		last_tax_payment = loaded_data["last_tax_payment"] ? loaded_data["last_tax_payment"] : world.realtime
+		last_tax_payment = loaded_data["last_tax_payment"] > 0 ? loaded_data["last_tax_payment"] : world.realtime
 		insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 4
 		insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
 		nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5

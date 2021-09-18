@@ -17,6 +17,8 @@
 
 	anchored = TRUE
 
+	level = 100
+
 /mob/living/advanced/npc/unique/master/Initialize()
 
 	. = ..()

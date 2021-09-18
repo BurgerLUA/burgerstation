@@ -1,9 +1,9 @@
 /health/mob/living/vehicle/mech/modular/get_defense(var/atom/attacker,var/atom/hit_object)
 
-	if(!is_modular_mech(owner))
-		return ..()
-
 	. = ..()
+
+	if(!is_modular_mech(owner))
+		return .
 
 	if(is_mech_part(hit_object))
 		var/obj/item/mech_part/O = hit_object
@@ -16,4 +16,3 @@
 				continue
 			.[damage_type] += O_defense_rating[damage_type]
 
-	

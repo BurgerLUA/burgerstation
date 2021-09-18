@@ -60,12 +60,62 @@
 
 	icon = 'icons/obj/projectiles/explosive.dmi'
 	icon_state = "HE"
+	hit_target_turf = TRUE
 
 /obj/projectile/bullet/HE_40M/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
 		explode(get_turf(hit_atom),20,owner,weapon,iff_tag)
 
+/obj/projectile/bullet/rocket_he
+
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "rocket_he"
+	hit_target_turf = TRUE
+
+/obj/projectile/bullet/rocket_he/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),40,owner,weapon,iff_tag,multiplier = 5)
+
+/obj/projectile/bullet/rocket_ap
+
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "rocket_ap"
+
+/obj/projectile/bullet/rocket_ap/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),5,owner,weapon,iff_tag)
+
+/obj/projectile/bullet/rocket_wp
+
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "rocket_wp"
+
+/obj/projectile/bullet/rocket_wp/update_projectile(var/tick_rate=1)
+	. = ..()
+	if(.)
+		vel_x *= 0.99
+		vel_y *= 0.99
+		alpha = clamp(alpha-5,0,255)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_projectile_hit(current_loc)
+			qdel(src)
+			return FALSE
+
+/obj/projectile/bullet/rocket_wp/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),20,owner,weapon,iff_tag,multiplier = 2)
+
+/obj/projectile/bullet/rocket_wp/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+	. = ..()
+	var/obj/effect/temp/hazard/flamethrowerfire = locate() in new_loc
+
+	if(!flamethrowerfire)
+		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,SECONDS_TO_DECISECONDS(30),owner)
 
 /obj/projectile/bullet/gyrojet
 	name = "gyrojet"
@@ -100,12 +150,12 @@
 
 
 
-/obj/projectile/bullet/rocket
+/obj/projectile/bullet/rocket_gyro
 	name = "rocket"
 	icon = 'icons/obj/projectiles/rocket.dmi'
-	icon_state = "rocket"
+	icon_state = "gyrojet"
 
-/obj/projectile/bullet/rocket/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/bullet/rocket_gyro/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
 

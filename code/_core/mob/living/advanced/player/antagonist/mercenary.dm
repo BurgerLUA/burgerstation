@@ -57,6 +57,6 @@ var/global/list/possible_merc_loadouts = list(
 /mob/living/advanced/player/antagonist/merc/on_kill_player(var/mob/living/advanced/player/P)
 
 	if(P.loyalty_tag == "NanoTrasen")
-		damage_received_multiplier = 0.75 //Act like an antag, get treated like one :)
+		damage_received_multiplier = 1 //Act like an antag, get treated like one :)
 
 	. = ..()

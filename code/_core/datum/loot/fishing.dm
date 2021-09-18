@@ -88,6 +88,7 @@
 		/obj/item/supply_crate/syndicate = CHANCE_CRATE,
 		/obj/item/fishing/rod/telescopic = CHANCE_GOD,
 		/obj/item/dice/d20/cursed = CHANCE_GOD,
+		/obj/item/coin/cursed = CHANCE_GOD,
 		/obj/item/tempering/quality/magic = CHANCE_GOD,
 		/obj/item/tempering/quality/ranged = CHANCE_GOD,
 		/obj/item/powercell/bluespace = CHANCE_GOD

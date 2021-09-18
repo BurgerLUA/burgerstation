@@ -28,6 +28,26 @@
 
 	value = 20
 
+/obj/item/magazine/gauss_gun/explosive
+	name = "\improper 2x12 ball Gauss Rifle magazine - Gibtonite Slug"
+	icon_state = "fgausshe"
+	ammo = /obj/item/bullet_cartridge/gauss/explosive
+
+/obj/item/magazine/gauss_gun/ion
+	name = "\improper 2x12 ball Gauss Rifle magazine - Uranium-Iron Alloy"
+	icon_state = "fgaussion"
+	ammo = /obj/item/bullet_cartridge/gauss/ion
+
+/obj/item/magazine/gauss_gun/incendiary
+	name = "\improper 2x12 ball Gauss Rifle magazine - Compressed Napalm"
+	icon_state = "fgaussinc"
+	ammo = /obj/item/bullet_cartridge/gauss/incendiary
+
+/obj/item/magazine/gauss_gun/ap
+	name = "\improper 2x12 ball Gauss Rifle magazine - Depleted Uranium"
+	icon_state = "fgaussap"
+	ammo = /obj/item/bullet_cartridge/gauss/ap
+
 /obj/item/magazine/gauss_gun/auto
 	name = "\improper 2x12 ball Gauss Carbine magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."

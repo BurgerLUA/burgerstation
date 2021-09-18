@@ -1,11 +1,11 @@
 SUBSYSTEM_DEF(botany)
 	name = "Botany Subsystem"
 	desc = "Handle botany related matters."
-	tick_rate = SECONDS_TO_TICKS(1) //was 4. Changing this makes all sorts of variables in obj/structure/interactive/plant change how important they are.
+	tick_rate = SECONDS_TO_TICKS(10)
 	priority = SS_ORDER_PRELOAD
 
-	tick_usage_max = 75
-	cpu_usage_max = 75
+	tick_usage_max = 50
+	cpu_usage_max = 50
 
 	var/list/obj/structure/interactive/plant/all_plants = list()
 	var/list/plant_type/all_plant_types = list()
@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(botany)
 	for(var/k in all_plants)
 		var/obj/structure/interactive/plant/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-		if(P.on_life() == null)
+		if(P.on_life(tick_rate) == null)
 			log_error("Warning! Plant [P.get_debug_name()] did not complete on_life() properly and thus was deleted.")
 			qdel(P)
 

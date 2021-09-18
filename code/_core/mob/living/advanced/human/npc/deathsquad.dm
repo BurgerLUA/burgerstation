@@ -7,7 +7,7 @@
 
 	var/desired_loadout = /loadout/deathsquad
 
-	level = 60
+	level = 80
 
 /mob/living/advanced/npc/deathsquad/Initialize()
 

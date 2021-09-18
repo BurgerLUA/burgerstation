@@ -41,7 +41,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 2
+	level = 12
 
 /mob/living/simple/venus_human_trap/post_death()
 	. = ..()

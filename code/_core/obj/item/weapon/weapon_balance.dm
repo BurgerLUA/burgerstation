@@ -1,4 +1,4 @@
-/obj/item/weapon/proc/get_dps()
+/obj/item/weapon/proc/get_dps(var/armor_to_use=0)
 
 	if(!damage_type)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
@@ -9,10 +9,23 @@
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
 
-	return D.get_damage_per_hit() * (10/D.attack_delay)
+	return D.get_damage_per_hit(armor_to_use) * (10/D.attack_delay)
+
+/obj/item/weapon/melee/energy/get_dps(var/armor_to_use=0)
+
+	if(!damage_type_on)
+		log_error("Warning: [src.type] did not have a valid damage_type_on.")
+		return 0
+
+	var/damagetype/D = all_damage_types[damage_type_on]
+	if(!D)
+		log_error("Warning: [src.type] did not have a valid damage_type.")
+		return 0
+
+	return D.get_damage_per_hit(armor_to_use) * (10/D.attack_delay)
 
 
-/obj/item/weapon/ranged/get_dps()
+/obj/item/weapon/ranged/get_dps(var/armor_to_use=0)
 
 	if(!ranged_damage_type)
 		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
@@ -23,10 +36,16 @@
 		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit() * (10/shoot_delay)
+	if(max_bursts > 1)
+		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*max_bursts*1.25
+		. = max_bursts*D.get_damage_per_hit()*(10/local_burst_delay)
+
+	var/possible = D.get_damage_per_hit(armor_to_use) * (10/shoot_delay) * bullet_count * damage_mod
+	if(possible > .)
+		. = possible
 
 
-/obj/item/weapon/ranged/bullet/get_dps()
+/obj/item/weapon/ranged/bullet/get_dps(var/armor_to_use=0)
 
 	if(!SSbalance.weapon_to_bullet[src.type])
 		log_error("Warning: [src.type] did not have a valid weapon_to_bullet.")
@@ -45,4 +64,10 @@
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit() * (10/shoot_delay)
+	if(max_bursts > 1)
+		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*current_bursts*1.25
+		. = max_bursts*D.get_damage_per_hit()*(10/local_burst_delay)
+
+	var/possible = D.get_damage_per_hit(armor_to_use) * (10/shoot_delay) * initial(BC.projectile_count)
+	if(possible > .)
+		. = possible

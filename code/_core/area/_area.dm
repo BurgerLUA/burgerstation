@@ -45,7 +45,9 @@
 	var/average_x = 0
 	var/average_y = 0
 
-	var/allow_ghosts = TRUE //Set to false to prevent a ghost from teleporting to this location.
+	var/allow_ghost = FALSE //Allow ghosts to use this area if one spawns in it.
+
+	var/flags_generation = FLAG_GENERATION_NONE
 
 
 /area/proc/is_space()

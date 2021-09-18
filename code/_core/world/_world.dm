@@ -10,7 +10,7 @@ var/global/world_state = STATE_STARTING
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
 
-	sleep_offline = TRUE
+	sleep_offline = FALSE
 
 	name = "Burgerstation 13"
 	hub = "Exadv1.spacestation13"
@@ -170,6 +170,6 @@ var/global/world_state = STATE_STARTING
 		broadcast_to_clients(span("notice","Rebooting world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server reboots."))
 		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,.proc/reboot_server)
 
-	SSdiscord.send_message("Round ended due to [nice_reason].")
+	SSdiscord.send_message("Round ended with [length(all_clients)] players due to [nice_reason].")
 
 	return TRUE

@@ -2,14 +2,14 @@
 	name = "bayonet"
 
 	attack_damage_base = list(
-		BLADE = 15,
-		PIERCE = 15
+		BLADE = 10,
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 25,
-		PIERCE = 10
+		BLADE = 10,
+		PIERCE = 25
 	)
 
 	attribute_stats = list(
@@ -30,5 +30,13 @@
 		SKILL_MELEE = list(BLADE,PIERCE)
 	)
 
-	attack_delay = 8
-	attack_delay_max = 10
+	attack_delay = 6
+	attack_delay_max = 8
+
+	crit_multiplier = 4
+
+/damagetype/melee/sword/rev_bayonet/get_crit_chance(var/mob/living/L)
+	return 0
+
+/damagetype/melee/sword/rev_bayonet/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return get_true_4dir(attacker.dir) == get_true_4dir(victim.dir)

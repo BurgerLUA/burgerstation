@@ -55,7 +55,11 @@
 
 /obj/item/contract/Finalize()
 	. = ..()
-	update_value()
+	if(!reward)
+		log_error("Warnng: [src.get_debug_name()] had an invalid reward!")
+		qdel(src)
+	else
+		update_value()
 
 /obj/item/contract/get_value()
 	return CEILING(reward.get_value()*0.25,1)

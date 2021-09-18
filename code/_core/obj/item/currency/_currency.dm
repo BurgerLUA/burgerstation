@@ -47,7 +47,7 @@
 	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)*5
 
 /obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
-	item_count_current = 50
+	item_count_current = 75
 	return ..()
 
 /obj/item/currency/telecrystals/update_icon()
@@ -109,7 +109,7 @@
 	item_count_current = item_count_max
 
 
-/obj/item/currency/gold
+/obj/item/currency/gold_coin
 	name = "gold coin"
 	icon = 'icons/obj/item/currency/gold.dmi'
 	icon_state = "1"
@@ -126,14 +126,21 @@
 
 	plane = PLANE_CURRENCY
 
-/obj/item/currency/gold/get_base_value()
+/obj/item/currency/gold_coin/get_base_value()
 	return CEILING(SSeconomy.credits_per_gold * item_count_current,1)
 
-/obj/item/currency/gold/Finalize()
+/obj/item/currency/gold_coin/Finalize()
 	. = ..()
 	update_value()
 
-/obj/item/currency/gold/update_icon()
+/obj/item/currency/gold_coin/update_sprite()
+	. = ..()
+	if(item_count_current == 1)
+		name = "1 gold coin"
+	else
+		name = "[item_count_current] gold coins"
+
+/obj/item/currency/gold_coin/update_icon()
 	. = ..()
 	switch(item_count_current)
 		if(1 to 40) //1 to 40, 1
@@ -144,7 +151,7 @@
 		if(500 to 1000) //100 to 200, 20
 			icon_state = "[FLOOR(item_count_current/5,20)]"
 
-/obj/item/currency/gold/update_overlays()
+/obj/item/currency/gold_coin/update_overlays()
 
 	. = ..()
 

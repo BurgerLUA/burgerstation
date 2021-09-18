@@ -4,7 +4,7 @@
 	desc_extended = "The trick to not spending money is that there's food pretty much everywhere if you're not afraid of poisoning."
 
 	icon = 'icons/obj/item/consumable/food/plants.dmi'
-	icon_state = "burger"
+	icon_state = "slippery"
 
 	consume_verb = "eat"
 
@@ -26,7 +26,6 @@
 	drop_sound = 'sound/items/drop/herb.ogg'
 
 	scale_sprite = TRUE
-
 
 /obj/item/container/food/plant/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -68,8 +67,13 @@
 	if(plant_type && SSbotany.all_plant_types[plant_type])
 		var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
 		typical_volume = associated_plant.typical_volume
+		name = associated_plant.name
+		desc = associated_plant.desc
+		icon = associated_plant.harvest_icon
+		icon_state = associated_plant.harvest_icon_state
 	else
 		log_error("Warning: [src.get_debug_name()] didn't have a valid plant type.")
+	update_sprite()
 	return ..()
 
 /obj/item/container/food/plant/Initialize()

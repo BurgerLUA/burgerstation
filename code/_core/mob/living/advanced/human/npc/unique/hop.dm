@@ -9,6 +9,8 @@
 	anchored = TRUE
 	immortal = TRUE
 
+	level = 42
+
 /mob/living/advanced/npc/unique/hop/Initialize()
 	. = ..()
 	change_organ_visual("skin", desired_color = "#B48E7A")

@@ -87,3 +87,11 @@
 /obj/structure/sign/department/c/other
 	pixel_y = -SING_Y_OFFSET
 	icon_state = "direction_other"
+
+
+
+/obj/structure/sign/restroom/male
+	icon_state = "male"
+
+/obj/structure/sign/restroom/female
+	icon_state = "female"

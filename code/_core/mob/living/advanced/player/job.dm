@@ -14,7 +14,7 @@
 
 	job = desired_job
 	job_rank = 1
-	job_next_promotion = world.realtime + 604800 //1 week
+	job_next_promotion = world.realtime + 604800*10 //1 week
 
 	src.to_chat(span("notice","You are now \a [J.name]."))
 

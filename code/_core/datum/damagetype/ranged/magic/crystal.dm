@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/crystal
-	name = "magic crystal"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		ARCANE = 45*0.1,
 		DARK = 45*0.2
@@ -29,9 +26,6 @@
 
 
 /damagetype/ranged/magic/crystal/true
-	name = "magic crystal"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		ARCANE = 60*0.1,
 		DARK = 60*0.2

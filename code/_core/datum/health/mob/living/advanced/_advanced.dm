@@ -97,28 +97,6 @@
 	if(. && update)
 		A.queue_health_update = TRUE
 
-/*
-/health/mob/living/advanced/adjust_tox_loss(var/value)
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	return A.heal_all_organs(0,0,-value,0)
-*/
-
-/*
-/health/mob/living/advanced/adjust_oxy_loss(var/value)
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	return A.heal_all_organs(0,0,0,-value)
-*/
-
 /health/mob/living/advanced/update_health_stats()
 
 	if(!is_advanced(owner))

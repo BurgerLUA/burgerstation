@@ -55,7 +55,7 @@
 	iff_tag = "Colossus"
 	loyalty_tag = "Colossus"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -80,7 +80,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 40
 
 /mob/living/simple/colossus/pre_death()
 	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)

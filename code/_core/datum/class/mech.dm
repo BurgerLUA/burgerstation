@@ -1,0 +1,34 @@
+/class/mech
+
+	//By default, all weights are 0.
+
+	//12 + 1 attributes
+	weights_attribute = list(
+		ATTRIBUTE_STRENGTH = 1,
+		ATTRIBUTE_FORTITUDE = 1,
+		ATTRIBUTE_CONSTITUTION = 1,
+		ATTRIBUTE_VITALITY = 1,
+
+		ATTRIBUTE_INTELLIGENCE = 0,
+		ATTRIBUTE_WILLPOWER = 0,
+		ATTRIBUTE_SOUL = 0,
+		ATTRIBUTE_WISDOM = 0,
+
+		ATTRIBUTE_DEXTERITY = 0,
+		ATTRIBUTE_RESILIENCE = 1,
+		ATTRIBUTE_ENDURANCE = 1,
+		ATTRIBUTE_AGILITY = 0,
+
+		ATTRIBUTE_LUCK = 1
+	)
+
+	//15 + 1 skills
+	weights_skill = list(
+		SKILL_MELEE = 1,
+		SKILL_UNARMED = 1,
+		SKILL_BLOCK = 1,
+		SKILL_ARMOR = 1,
+
+		SKILL_RANGED = 1,
+		SKILL_PRECISION = 1
+	)

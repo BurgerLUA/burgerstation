@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 4200
 
-	shoot_delay = 0.25 // funny rpm hee hoo
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -21,7 +21,7 @@
 
 	dan_mode = TRUE
 
-	heat_max = 0.03
+	heat_max = 0.06
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -70,7 +70,7 @@
 	movement_spread_base = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_static_spread()
-	return 0.05
+	return 0.04
 
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_skill_spread(var/mob/living/L)
 	return max(0,0.2 - (0.1 * L.get_skill_power(SKILL_RANGED)))

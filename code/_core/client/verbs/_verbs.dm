@@ -65,7 +65,6 @@
 
 	if(permissions & FLAG_PERMISSION_ADMIN)
 		verbs += /client/verb/force_round_end
-		verbs += /client/verb/force_random_event
 		verbs += /client/verb/force_specific_event
 		verbs += /client/verb/force_vote
 		verbs += /client/verb/add_points

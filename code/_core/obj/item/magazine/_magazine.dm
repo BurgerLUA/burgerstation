@@ -23,7 +23,7 @@
 	var/icon_states = 1
 	var/bluespaced = FALSE
 	var/regenerate = FALSE
-	var/regen_speed = 30 //magazines can be allowed to regen faster or slower on an individual basis this way.
+	var/next_regen = 0 //When we can use this on a bullet restocker again.
 
 	weight = 0.25
 	has_quick_function = TRUE //Allows mags to show up in the belt slots.
@@ -40,19 +40,6 @@
 	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
 
 	return A.put_in_hands(src,left = put_in_left)
-
-
-//This function activates when a refiller item is used on a magazine
-/obj/item/magazine/proc/regen()
-	if(length(stored_bullets) < bullet_count_max)
-		var/obj/item/bullet_cartridge/B = new ammo(src)
-		INITIALIZE(B)
-		GENERATE(B)
-		FINALIZE(B)
-		stored_bullets.Insert(1, B); //guns load from highest index, so insert new bullets at the lowest.
-		update_sprite()
-	CALLBACK("regen_\ref[src]", regen_speed, src, /obj/item/magazine/proc/regen)
-	. = ..()
 
 /obj/item/magazine/update_icon()
 
@@ -92,7 +79,6 @@
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
 				GENERATE(B)
-				FINALIZE(B)
 				stored_bullets += B
 
 	if (object_data["bluespaced"])
@@ -101,11 +87,6 @@
 
 	if (object_data["regenerate"])
 		regenerate = TRUE
-
-/obj/item/magazine/Finalize()
-	. = ..()
-	if(regenerate)
-		regen()
 
 /obj/item/magazine/Generate()
 
@@ -141,7 +122,7 @@
 	if (bluespaced)
 		results += div("notice", "It has been connected to a bluespace pocket to drastically increase its capacity. ")
 	if (regenerate)
-		results += div("notice", "It magically creates its own bullets every [src.regen_speed / 10] seconds. ")
+		results += div("notice", "It has been upgraded to accept regular bullets at magazine restockers ")
 	return ..()  + results
 
 /obj/item/magazine/New()
@@ -279,7 +260,7 @@
 				B = new B(src)
 				INITIALIZE(B)
 				FINALIZE(B)
-				GENERATE(B)
+				//GENERATE(B) //No Generate.
 				stored_bullets += B
 
 		play_sound(get_magazine_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)

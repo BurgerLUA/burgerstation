@@ -6,9 +6,9 @@
 	icon_state = "inventory"
 	value = 10000
 
-	shoot_delay = 0.2 //Oh god oh fuck
+	shoot_delay = 0.3 //Oh god oh fuck
 
-	damage_mod = 1.2
+	damage_mod = 0.6
 
 	automatic = TRUE
 
