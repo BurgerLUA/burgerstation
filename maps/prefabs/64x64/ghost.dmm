@@ -921,6 +921,10 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/ghost/engineering)
+"dR" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/tile/morphing/science,
+/area/ghost/science)
 
 (1,1,1) = {"
 aa
@@ -4122,7 +4126,7 @@ ai
 bX
 bn
 aD
-aI
+dR
 aI
 aI
 aI

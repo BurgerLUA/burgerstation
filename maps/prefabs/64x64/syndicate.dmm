@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/interactive/atmospherics/vent,
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndicate_base)
+"ab" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/prefab/syndicate_base)
 "aj" = (
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
@@ -288,14 +300,6 @@
 /obj/item/storage/heavy/trash_pile,
 /obj/item/trash/syndicate,
 /turf/simulated/floor/plating,
-/area/prefab/syndicate_base)
-"Ba" = (
-/mob/living/advanced/npc/syndicate/scientist{
-	dir = 4;
-	icon_state = "directional"
-	},
-/obj/structure/interactive/atmospherics/vent,
-/turf/simulated/floor/tile/dark,
 /area/prefab/syndicate_base)
 "BQ" = (
 /obj/structure/smooth/table/reinforced/dark,
@@ -3205,7 +3209,7 @@ vR
 vR
 vR
 vR
-FT
+ab
 HG
 EM
 HG
@@ -3994,7 +3998,7 @@ HG
 FQ
 Pr
 vR
-Ba
+aa
 vR
 vR
 IF

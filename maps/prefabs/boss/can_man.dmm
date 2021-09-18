@@ -23,6 +23,10 @@
 /mob/living/simple/can_man,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"h" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/brick/grey,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -235,7 +239,7 @@ a
 a
 b
 c
-d
+h
 d
 d
 d

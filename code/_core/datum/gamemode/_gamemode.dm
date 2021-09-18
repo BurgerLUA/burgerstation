@@ -161,23 +161,31 @@
 
 	objective_text = ""
 
+	var/has_new = FALSE
+
 	for(var/k in crew_active_objectives)
 		var/objective/O = k
-		objective_text += "[O.desc] (ACTIVE)<br>"
+		objective_text += "[O.desc] (ACTIVE)[O.is_new ? div("good","NEW") : ""]<br>"
+		if(O.is_new) has_new = TRUE
+		O.is_new = FALSE
 
 	for(var/k in crew_completed_objectives)
 		var/objective/O = k
-		objective_text += "[O.desc] (COMPLETED)<br>"
+		objective_text += "[O.desc] (COMPLETED)[O.is_new ? div("good","NEW") : ""]<br>"
+		if(O.is_new) has_new = TRUE
+		O.is_new = FALSE
 
 	for(var/k in crew_failed_objectives)
 		var/objective/O = k
-		objective_text += "[O.desc] (FAILED)<br>"
+		objective_text += "[O.desc] (FAILED)[O.is_new ? div("good","NEW") : ""]<br>"
+		if(O.is_new) has_new = TRUE
+		O.is_new = FALSE
 
 	for(var/k in all_objective_buttons)
 		var/obj/hud/button/objectives/O = k
 		O.set_stored_text(objective_text)
 
-	announce("Central Command Mission Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
+	announce("Central Command Mission Update",has_new ? "New Objectives Added" : "Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
 
 	next_objective_update = -1
 

@@ -483,6 +483,7 @@
 #include "code\_core\datum\event\horde.dm"
 #include "code\_core\datum\event\meteors.dm"
 #include "code\_core\datum\event\migration_v2.dm"
+#include "code\_core\datum\event\objective.dm"
 #include "code\_core\datum\event\space_cop.dm"
 #include "code\_core\datum\event\space_military.dm"
 #include "code\_core\datum\event\supply.dm"

@@ -384,6 +384,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
+"bx" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
 "lq" = (
 /obj/structure/scenery/grass/lavender,
 /turf/simulated/floor/grass/jungle,
@@ -1211,7 +1215,7 @@ ao
 ak
 ak
 ak
-ak
+bx
 ai
 bi
 bh
