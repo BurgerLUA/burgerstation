@@ -165,19 +165,19 @@
 
 	for(var/k in crew_active_objectives)
 		var/objective/O = k
-		objective_text += "[O.desc] (ACTIVE)[O.is_new ? div("good","NEW") : ""]<br>"
+		objective_text += "[O.desc] (ACTIVE)[O.is_new ? div("good bold"," (NEW)") : ""]<br>"
 		if(O.is_new) has_new = TRUE
 		O.is_new = FALSE
 
 	for(var/k in crew_completed_objectives)
 		var/objective/O = k
-		objective_text += "[O.desc] (COMPLETED)[O.is_new ? div("good","NEW") : ""]<br>"
+		objective_text += "[O.desc] (COMPLETED)[O.is_new ? div("good bold"," (NEW)") : ""]<br>"
 		if(O.is_new) has_new = TRUE
 		O.is_new = FALSE
 
 	for(var/k in crew_failed_objectives)
 		var/objective/O = k
-		objective_text += "[O.desc] (FAILED)[O.is_new ? div("good","NEW") : ""]<br>"
+		objective_text += "[O.desc] (FAILED)[O.is_new ? div("good bold"," (NEW)") : ""]<br>"
 		if(O.is_new) has_new = TRUE
 		O.is_new = FALSE
 

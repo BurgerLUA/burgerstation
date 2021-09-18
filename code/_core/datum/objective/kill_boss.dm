@@ -30,7 +30,7 @@ var/list/tracked_bosses = list()
 	return pick(valid_targets)
 
 /objective/kill_boss/get_description()
-	return "Kill [english_list(tracked_atoms)]. Location: [english_list(get_locations())]."
+	return "Kill [english_list(tracked_atoms)]. Location: [english_list(get_locations(),"Unknown")]."
 
 /objective/kill_boss/start()
 	var/mob/living/L = get_random_target()
