@@ -36,7 +36,7 @@
 	. = ..()
 	for(var/k in object_data["stored_shells"])
 		var/v = object_data["stored_shells"][k]
-		stored_shells[text2path(k)] = v
+		stored_shells[text2path_safe(k)] = v
 
 /obj/item/clothing/belt/bandolier/Finalize()
 	. = ..()

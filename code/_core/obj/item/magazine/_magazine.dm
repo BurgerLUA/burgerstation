@@ -41,6 +41,11 @@
 
 	return A.put_in_hands(src,left = put_in_left)
 
+
+/obj/item/magazine/Finalize()
+	. = ..()
+	update_sprite()
+
 /obj/item/magazine/update_icon()
 
 	var/icon_num = 1

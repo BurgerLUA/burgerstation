@@ -214,7 +214,7 @@
 		color = "#FFFFFF"
 		average_temperature = T0C+20
 
-	if(owner && should_update_owner && update_owner)
+	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
 
 	if(volume_current > volume_max)
