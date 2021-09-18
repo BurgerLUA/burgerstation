@@ -29,7 +29,7 @@
 
 /gamemode/endless/proc/add_objectives()
 	add_objective(/objective/artifact)
-	add_objective(/objective/rescue_hostage)
+	add_objective(/objective/hostage)
 	add_objective(/objective/kill_boss)
 	add_objective(/objective/kill_boss)
 	add_objective(/objective/kill_ghost)
