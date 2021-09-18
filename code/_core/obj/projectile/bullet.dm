@@ -162,3 +162,8 @@
 	if(.)
 		explode(get_turf(hit_atom),20,owner,src,iff_tag)
 
+/obj/projectile/bullet/Fiendish
+	name = "bullet"
+	icon = 'icons/obj/projectiles/laser.dmi'
+	icon_state = "ion"
+

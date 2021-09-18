@@ -63,7 +63,8 @@
 		/obj/item/herald_mirror = 1,
 		/obj/item/weapon/unarmed/brass_knuckles/mod = 1,
 		/obj/item/tempering/magazine/spellswap/magic_missile = 1,
-		/obj/item/tempering/magazine/spellswap/arcblade = 1
+		/obj/item/tempering/magazine/spellswap/arcblade = 1,
+		/obj/item/weapon/ranged/bullet/revolver/fiendish = 0.2
 	)
 
 /loot/lavaland/hierophant
