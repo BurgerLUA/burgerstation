@@ -2,7 +2,7 @@
 	name = "\improper 7.62x54mmR PKM"
 	desc = "Killa's weapon of choice."
 	desc_extended = ""
-	icon = 'icons/obj/item/weapons/ranged/rifle/PKM_old.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_lmg.dmi'
 	icon_state = "inventory"
 	value = 4000
 
@@ -63,6 +63,20 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
+
+	override_icon_state = TRUE
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/update_icon()
+
+	icon_state = initial(icon_state)
+
+	if(stored_magazine)
+		var/obj/item/magazine/M = stored_magazine
+		icon_state = "[icon_state]_[min(6,length(M.stored_bullets))]"
+	else
+		icon_state = "[icon_state]_open"
+
+	..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pkm/get_static_spread()
 	return 0.005

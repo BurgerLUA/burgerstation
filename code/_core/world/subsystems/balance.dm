@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
 
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = new k(locate(1,1,1))
-		if(B.parent_type != /obj/item/bullet_cartridge/)
+		if(B.rarity != RARITY_COMMON || B.value <= 0)
 			qdel(B)
 			continue
 		INITIALIZE(B)
@@ -22,8 +22,11 @@ SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
 		created_bullets += B
 
 	for(var/k in subtypesof(/obj/item/weapon))
+		var/obj/item/weapon/W = k
+		if(initial(W.value) <= 0)
+			continue
 
-		var/obj/item/weapon/W = new k(locate(1,1,1))
+		W = new W(locate(1,1,1))
 
 		if(istype(W,/obj/item/weapon/ranged/bullet))
 			var/obj/item/weapon/ranged/bullet/B = W

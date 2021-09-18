@@ -68,7 +68,7 @@
 	)
 
 	results = list(
-		/reagent_recipe/medicine/percardone = 1
+		/reagent/medicine/percardone = 1
 	)
 
 /reagent_recipe/medicine/carotane
@@ -90,7 +90,7 @@
 	name = "Dicarditane"
 
 	required_reagents = list(
-		/reagent_recipe/medicine/carotane = 1,
+		/reagent/medicine/carotane = 1,
 		/reagent/fuel/diethylamine = 1
 	)
 
@@ -143,7 +143,7 @@
 	name = "Extinatane "
 
 	required_reagents = list(
-		/reagent_recipe/medicine/kelotane = 1,
+		/reagent/medicine/kelotane = 1,
 		/reagent/medicine/silver_sulfadiazine = 1,
 		/reagent/fuel/diethylamine = 1,
 		/reagent/nitrogen = 1

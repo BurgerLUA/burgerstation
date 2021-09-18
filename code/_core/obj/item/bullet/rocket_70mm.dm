@@ -1,27 +1,8 @@
 /obj/item/bullet_cartridge/rocket_70mm/
-	rarity = RARITY_UNCOMMON
-	icon = 'icons/obj/item/bullet/rocket.dmi'
-	item_count_max = 1
-	item_count_max_icon = 1
-	caseless = TRUE
-
-	override_bullet_insert_sound = TRUE
-
-	bullet_length = 800
-	bullet_diameter = 70
-
-	projectile_speed = TILE_SIZE * 0.9
-
-	size = 2
-
-/obj/item/bullet_cartridge/rocket_70mm/get_bullet_insert_sound()
-	return 'sound/weapons/rocket/rocket_insert.ogg'
-
-/obj/item/bullet_cartridge/rocket_70mm/he
 	name = "70mm High Explosive Warhead"
 	desc = "I'm a Rocket Man."
 	desc_extended = "For RPGs, High explosive, do NOT use for rocket jumping."
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/rocket.dmi'
 	icon_state = "HE"
 	value = 500
@@ -38,6 +19,9 @@
 	projectile_speed = TILE_SIZE * 0.9
 
 	size = 2
+
+/obj/item/bullet_cartridge/rocket_70mm/get_bullet_insert_sound()
+	return 'sound/weapons/rocket/rocket_insert.ogg'
 
 /obj/item/bullet_cartridge/rocket_70mm/wp
 	name = "70mm White Phosphorous Warhead"

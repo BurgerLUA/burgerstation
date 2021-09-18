@@ -2,7 +2,6 @@
 	name = "\improper 2x12mm steel ball gauss cartridge"
 	desc = "I've got balls of steel."
 	desc_extended = "A material ball attached to an overcharged tri-lithium battery. For use in gauss weapons."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/gauss.dmi'
 
 	bullet_diameter = 2
@@ -23,7 +22,7 @@
 /obj/item/bullet_cartridge/gauss/ap
 	name = "\improper 2x12mm depleted uranium ball gauss cartridge"
 	icon = 'icons/obj/item/bullet/gauss_ap.dmi'
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_UNCOMMON
 	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun/ap
 	value = 80
 	penetrations = 3
@@ -31,21 +30,21 @@
 /obj/item/bullet_cartridge/gauss/explosive
 	name = "\improper 2x12mm compressed gibtonite ball gauss cartridge"
 	icon = 'icons/obj/item/bullet/gauss_explosive.dmi'
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_UNCOMMON
 	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun/explosive
 	value = 80
 
 /obj/item/bullet_cartridge/gauss/ion
 	name = "\improper 2x12mm iron-uranium alloy ball gauss cartridge"
 	icon = 'icons/obj/item/bullet/gauss_ion.dmi'
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_UNCOMMON
 	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun/ion
 	value = 80
 
 /obj/item/bullet_cartridge/gauss/incendiary
 	name = "\improper 2x12mm compressed napalm ball gauss cartridge"
 	icon = 'icons/obj/item/bullet/gauss_incendiary.dmi'
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_UNCOMMON
 	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun/incendiary
 	value = 80
 

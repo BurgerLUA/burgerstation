@@ -36,7 +36,7 @@
 	icon_state = "botany"
 
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_3
+	container_max_size = SIZE_2
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/seed,
@@ -110,8 +110,8 @@
 
 	value = 400
 
+	container_max_size = SIZE_2
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_3
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/material/ore,
@@ -126,7 +126,6 @@
 	desc = "I got that bluespace fever and I can't sleep!"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores and ingots."
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_4
 	container_max_slots = 30
 
 	value = 6000

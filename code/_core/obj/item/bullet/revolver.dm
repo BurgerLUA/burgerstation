@@ -2,7 +2,6 @@
 	name = "\improper .38 revolver cartridge"
 	desc = "For when your gun needs something a little special."
 	desc_extended = "For revolvers that require .38 ammo."
-	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/38.dmi'
 
 
@@ -36,7 +35,6 @@
 	name = "\improper .357 revolver cartridge"
 	desc = "DRAW!"
 	desc_extended = "For revolvers that require .357 ammo."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/357.dmi'
 
 
@@ -65,7 +63,6 @@
 	name = "\improper .44 revolver cartridge"
 	desc = "I'm feeling lucky"
 	desc_extended = "For revolvers that require .44 revolver ammo."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/44.dmi'
 
 
@@ -94,7 +91,6 @@
 	name = "\improper .22 pistol cartridge"
 	desc = "For when you need to mildly bother someone."
 	desc_extended = "For pistols and revolvers that require .22 ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/22.dmi'
 
 	bullet_diameter = 5.6
@@ -122,7 +118,6 @@
 	name = "\improper .300 revolver cartridge"
 	desc = "For pocket sized bear deterrers, ask for no substitute."
 	desc_extended = "For revolvers that require .300 revolver ammo."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/300.dmi'
 
 	bullet_diameter = 7.62
@@ -150,7 +145,6 @@
 	name = "\improper 7.62x38mmR revolver cartridge"
 	desc = "Isn't this just a cut down rifle bullet?"
 	desc_extended = "For revolvers that require 7.62x38mmR revolver ammo."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/762_revolver.dmi'
 
 	bullet_diameter = 7.62

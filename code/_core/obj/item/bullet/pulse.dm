@@ -2,7 +2,6 @@
 	name = "pulse cartridge"
 	desc = "The power to supply a house for a week in a nice, compact battery."
 	desc_extended = "For pulse weapons that require pulse cartridges."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/pulse_cell.dmi'
 
 

@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(reagent)
 			var/amount = RR.results[r_id]
 			var/reagent/R = all_reagents[r_id]
 			if(!R)
-				log_error("Warning: [r_id] was not a valid reagent ID!")
+				log_error("Warning: [r_id] was not a valid reagent ID for recipe [RR.type]!")
 				continue
 			result_text += "- [amount]u [R.name]\n\n"
 

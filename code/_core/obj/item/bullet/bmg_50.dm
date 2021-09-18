@@ -2,7 +2,6 @@
 	name = "\improper .50 BMG round"
 	desc = "A cheap, mass-produced bullet imitating a .50 cal round."
 	desc_extended = "For machineguns that require .50 ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/50.dmi'
 
 

@@ -170,7 +170,7 @@
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
-		/obj/item/bullet_cartridge/rocket_70mm/he,
+		/obj/item/bullet_cartridge/rocket_70mm,
 		/obj/item/bullet_cartridge/rocket_70mm/wp,
 		/obj/item/bullet_cartridge/rocket_70mm/ap,
 		/obj/item/powercell,

@@ -32,6 +32,7 @@
 /obj/item/bullet_cartridge/arrow/ashen
 	name = "ashen arrow"
 	icon = 'icons/obj/item/bullet/arrow_ashen.dmi'
+	rarity = RARITY_UNCOMMON
 
 	projectile = /obj/projectile/bullet/arrow/ashen
 	damage_type_bullet = /damagetype/ranged/bow/ashen
@@ -46,6 +47,7 @@
 /obj/item/bullet_cartridge/arrow/hardlight
 	name = "hardlight arrow"
 	icon = 'icons/obj/item/bullet/arrow_hardlight.dmi'
+	rarity = RARITY_UNCOMMON
 
 	projectile = /obj/projectile/bullet/arrow/hardlight
 	damage_type_bullet = /damagetype/ranged/bow/hardlight
