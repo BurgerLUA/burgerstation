@@ -1,9 +1,9 @@
 /event/objective
 	name = "Bonus Objective"
 
-	probability = 25 //relative
+	probability = 10 //relative
 
-	occurances_max = 10
+	occurances_max = 2
 
 	var/list/possible_objectives = list(
 		/objective/artifact = 100,
