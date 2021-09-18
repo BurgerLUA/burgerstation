@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(economy)
 
 	. = ..()
 
-/subsystem/economy/proc/save(var/debug=FALSE)
+/subsystem/economy/proc/save()
 
 	var/client_length = length(all_clients)
 
@@ -104,8 +104,6 @@ SUBSYSTEM_DEF(economy)
 		var/actual_purchases = purchases_this_round[item_type]
 		var/new_multiplier = (actual_purchases/local_expected_purchases) * old_multiplier
 		price_multipliers[item_type] = clamp(new_multiplier,old_multiplier*0.9,old_multiplier*1.1) //Cannot change by 10% in a single round.
-		if(debug) log_debug("Expected [local_expected_purchases] purchases this round of [item_type], got [actual_purchases]. New multiplier: [price_multipliers[item_type]].")
-
 
 	if(length(price_multipliers))
 		var/encoded_purchase_data = json_encode(price_multipliers)

@@ -113,8 +113,7 @@ var/global/world_state = STATE_STARTING
 		G.save()
 
 /proc/save_economy()
-	var/subsystem/economy/E = locate() in active_subsystems
-	E.save(TRUE)
+	SSeconomy.save()
 
 /world/proc/save()
 	save_all_globals()
