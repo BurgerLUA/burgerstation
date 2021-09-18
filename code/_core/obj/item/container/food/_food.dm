@@ -15,8 +15,6 @@
 
 	drop_sound = 'sound/items/drop/food.ogg'
 
-	value = 0
-
 /obj/item/container/food/Finalize()
 	if(scale_sprite) update_sprite()
 	return ..()

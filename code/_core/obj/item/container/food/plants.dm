@@ -27,6 +27,8 @@
 
 	scale_sprite = TRUE
 
+	value = 0
+
 /obj/item/container/food/plant/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 

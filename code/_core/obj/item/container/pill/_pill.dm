@@ -9,7 +9,7 @@
 
 	size = SIZE_0
 
-	value = 0
+	value = 1
 
 	allow_reagent_transfer_from = FALSE
 

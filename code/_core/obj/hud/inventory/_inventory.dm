@@ -16,8 +16,6 @@
 	plane = PLANE_HUD
 	layer = 1
 
-	value = 0
-
 	var/atom/movable/grabbed_object
 
 	var/worn = FALSE //Set to TRUE if it's a worn object.

@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "egg"
 
+	value = 1
+
 /obj/item/container/food/egg/chicken
 	name = "chicken egg"
 
