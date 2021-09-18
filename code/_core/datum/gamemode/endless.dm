@@ -26,6 +26,10 @@
 		var/obj/effect/fog_of_war/F = k
 		F.remove()
 
+/gamemode/endless/on_continue()
+	. = ..()
+	add_objective(/objective/artifact)
+	add_objective(/objective/kill_boss)
 
 /gamemode/endless/proc/add_objectives()
 	add_objective(/objective/artifact)
