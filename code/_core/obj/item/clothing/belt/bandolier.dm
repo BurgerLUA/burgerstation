@@ -127,6 +127,8 @@
 
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/S = pickweight(stored_shells)
+		if(!S)
+			S = initial(shell_type)
 
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			S = new S(get_turf(src))

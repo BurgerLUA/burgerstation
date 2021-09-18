@@ -3,7 +3,7 @@
 	desc = "Cook things with this."
 	desc_extended = "You can cook or heat up items by dropping it on top of the bonfire."
 	icon = 'icons/obj/structure/bonfire.dmi'
-	icon_state = "bonfire"
+	icon_state = "bonfire_warm"
 
 	layer = LAYER_TABLE
 
@@ -19,5 +19,3 @@
 	desired_light_power = 0.5
 	desired_light_range = 4
 	desired_light_color = "#FF7F00"
-
-

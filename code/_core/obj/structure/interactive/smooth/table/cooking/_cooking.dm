@@ -16,7 +16,7 @@
 	var/previous_value = enabled
 	enabled = desired_enabled
 
-	if(is_simulated(loc) && previous_value != enabled)
+	if(is_simulated(loc) && (force || previous_value != enabled))
 		var/turf/simulated/T = loc
 		if(enabled)
 			T.turf_temperature_mod += temperature_mod
@@ -65,7 +65,8 @@
 		var/turf/simulated/T = loc
 		T.turf_temperature_mod += temperature_mod
 		if(old_loc && is_simulated(old_loc))
-			for(var/k in T.contents)
+			var/turf/T2 = old_loc
+			for(var/k in T2.contents)
 				var/atom/movable/M = k
 				if(M.anchored)
 					continue

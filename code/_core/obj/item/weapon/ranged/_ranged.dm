@@ -181,6 +181,8 @@
 	if(length(firemodes))
 		on_firemode_changed()
 
+	update_sprite()
+
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
