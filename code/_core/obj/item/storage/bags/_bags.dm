@@ -137,7 +137,7 @@
 	icon_state = "chemistry"
 
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_4
+	container_max_size = SIZE_2
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/container/beaker,

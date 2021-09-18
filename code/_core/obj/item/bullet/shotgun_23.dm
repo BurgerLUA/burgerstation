@@ -2,7 +2,6 @@
 	name = "\improper 23x75mmR buckshot shell"
 	desc = "Now with 50% more pellet per pellet"
 	desc_extended = "A buckshot shell designed specifically for the KS23"
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/shotgun_23.dmi'
 	icon_state = "23buck"
 
