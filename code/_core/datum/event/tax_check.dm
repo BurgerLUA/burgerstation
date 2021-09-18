@@ -49,7 +49,6 @@
 		check_limit -= 1
 
 		if(!length(valid_chunks))
-			world.log << "No valid chunks."
 			continue
 
 		var/chunk_to_choose = pick(valid_chunks)
@@ -65,7 +64,6 @@
 			valid_turfs += T2
 
 		if(!length(valid_turfs))
-			world.log << "No valid turfs for chunk ([x],[y],[z])."
 			continue
 
 		for(var/n=1,n<=4,n++)
