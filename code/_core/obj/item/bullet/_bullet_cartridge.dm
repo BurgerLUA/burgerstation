@@ -48,6 +48,9 @@
 
 	var/bulletbox_icon_state = "bullet"
 
+/obj/item/bullet_cartridge/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
