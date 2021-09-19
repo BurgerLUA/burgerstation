@@ -34,9 +34,6 @@
 
 	flavor = "opium"
 
-	addiction_strength = 2
-	addiction_threshold = 20
-
 	metabolism_blood = 1
 	metabolism_stomach = 0.5
 	experience_per_unit = 4.5
@@ -46,6 +43,9 @@
 	liquid = 0.5
 
 	strength = 200
+
+	addiction_strength = 4
+	addiction_threshold = 20
 
 	addiction = /addiction/opium
 
@@ -90,9 +90,9 @@
 	particle_size = 0.2
 
 	addiction_strength = 4
-	addiction_threshold = 15
+	addiction_threshold = 30
 
-	overdose_threshold = 20
+	overdose_threshold = 30
 
 
 /reagent/medicine/painkiller/morphine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)

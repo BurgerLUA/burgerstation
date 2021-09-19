@@ -63,8 +63,9 @@
 
 	if(addiction && is_advanced(L))
 		var/mob/living/advanced/A = L
-		var/addiction_value = (amount_added+current_volume)*addiction_strength
+		var/addiction_value = (amount_added+current_volume)
 		if(addiction_value >= addiction_threshold && A.labeled_organs[BODY_BRAIN])
+			addiction_value *= addiction_strength
 			var/obj/item/organ/internal/brain/B = A.labeled_organs[BODY_BRAIN]
 			var/addiction/D = SSliving.stored_addictions[addiction]
 			if(isnull(B.addictions[addiction]))
