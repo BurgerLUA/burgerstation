@@ -187,7 +187,7 @@
 		return FALSE
 
 	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count())
-	if(!bullets_to_add)
+	if(bullets_to_add <= 0)
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
@@ -201,9 +201,10 @@
 
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
-	//Shitcode ahoy.
 
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
+	if(bullets_to_add <= 0)
+		return FALSE
 
 	var/should_transfer_self = bullets_to_add == item_count_current
 
