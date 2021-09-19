@@ -66,6 +66,7 @@
 	LOADVAR("sliced")
 
 /obj/item/container/food/plant/Finalize()
+
 	if(plant_type && SSbotany.all_plant_types[plant_type])
 		var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
 		typical_volume = associated_plant.typical_volume
@@ -75,8 +76,16 @@
 		icon_state = associated_plant.harvest_icon_state
 	else
 		log_error("Warning: [src.get_debug_name()] didn't have a valid plant type.")
+
+	if(sliced)
+		scale_sprite = FALSE
+		pixel_height = 1
+		pixel_height_offset = -1
+
+	. = ..()
+
 	update_sprite()
-	return ..()
+
 
 /obj/item/container/food/plant/Initialize()
 
@@ -85,13 +94,14 @@
 		if(associated_plant.can_slice)
 			health = /health/obj/item/misc/
 
+	return ..()
+
+/obj/item/container/food/plant/update_icon()
+
+	. = ..()
+
 	if(sliced)
 		icon = 'icons/obj/item/consumable/food/sliced.dmi'
-		scale_sprite = FALSE
-		pixel_height = 1
-		pixel_height_offset = -1
-
-	return ..()
 
 /obj/item/container/food/plant/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return health && !sliced
