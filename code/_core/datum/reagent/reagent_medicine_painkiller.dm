@@ -34,9 +34,9 @@
 
 	flavor = "opium"
 
-	metabolism_blood = 1
-	metabolism_stomach = 0.5
-	experience_per_unit = 4.5
+	metabolism_blood = 2/60 // Lasts a minute per 2u
+	metabolism_stomach = 4/60 // Lasts a minute per 4u
+	experience_per_unit = 2
 
 	value = 4
 
@@ -56,15 +56,15 @@
 
 /reagent/medicine/painkiller/opium/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.pain_regen_buffer += .*5
+	owner.pain_regen_buffer += .*50
 
 /reagent/medicine/painkiller/opium/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.pain_regen_buffer += .*2.5
+	owner.pain_regen_buffer += .*25
 
 /reagent/medicine/painkiller/opium/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 	. = ..()
-	owner.pain_regen_buffer -= .*20
+	owner.pain_regen_buffer -= .*10
 
 
 /reagent/medicine/painkiller/morphine
@@ -75,8 +75,8 @@
 
 	flavor = "opium"
 
-	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_blood = 2/60 // Lasts a minute per 2u
+	metabolism_stomach = 4/60 // Lasts a minute per 4u
 	experience_per_unit = 4.5
 
 	value = 10
@@ -97,11 +97,11 @@
 
 /reagent/medicine/painkiller/morphine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.pain_regen_buffer += .*5
+	owner.pain_regen_buffer += .*100
 
 /reagent/medicine/painkiller/morphine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.pain_regen_buffer += .*2.5
+	owner.pain_regen_buffer += .*25
 
 /reagent/medicine/painkiller/morphine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 	. = ..()
@@ -122,6 +122,14 @@
 	overdose_threshold = 30
 
 	value = 1
+
+/reagent/medicine/painkiller/assprin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.pain_regen_buffer += .*25
+
+/reagent/medicine/painkiller/assprin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	owner.pain_regen_buffer += .*10
 
 /reagent/medicine/painkiller/assprin/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 	. = ..()

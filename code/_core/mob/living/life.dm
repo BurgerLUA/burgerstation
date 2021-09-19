@@ -457,7 +457,7 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX*4)
+		var/pain_to_regen = clamp(pain_regen_buffer,HEALTH_REGEN_BUFFER_MIN*4,HEALTH_REGEN_BUFFER_MAX*4)
 		var/rad_to_regen = clamp(rad_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		var/sanity_to_regen = clamp(sanity_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		update_health = health.adjust_loss_smart(
@@ -517,15 +517,12 @@ mob/living/proc/on_life_slow()
 
 	var/trait/general_regen/GR = get_trait_by_category(/trait/general_regen/)
 
-
-	if(health.health_regeneration > 0)
+	if(health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = DECISECONDS_TO_SECONDS(health.health_regeneration * delay_mod * nutrition_hydration_mod)
 		if(GR) health_mod *= GR.health_regen_mul
-
-		var/brute_to_adjust = health_regen_delay <= 0 ? min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod) : 0
-		var/burn_to_adjust = health_regen_delay <= 0 ? min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod) : 0
-		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod*4)
-
+		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod)
 		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
 		if(health_adjust)
 			brute_regen_buffer += brute_to_adjust

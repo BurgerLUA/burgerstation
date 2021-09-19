@@ -172,9 +172,12 @@
 			continue
 		if((damage_type == TOX || damage_type == OXY) && L.has_status_effect(ADRENALINE))
 			continue
-		returning_value += damage[damage_type]
+		if(damage_type == PAIN)
+			returning_value += max(0,damage[damage_type] - L.get_status_effect_magnitude(PAINKILLER)) //Does this even work?
+		else
+			returning_value += damage[damage_type]
 
-	return returning_value //min(returning_value,clamp(L.blood_volume/L.blood_volume_max,0,1)*health_max)
+	return returning_value
 
 /health/mob/living/inorganic
 	organic = FALSE

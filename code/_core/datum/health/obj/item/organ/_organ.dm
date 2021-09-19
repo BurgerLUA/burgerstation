@@ -57,7 +57,7 @@
 
 	if(pain && pain > 0 && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
-		A.mood -= pain*0.5
+		A.mood -= pain*0.25
 
 	if(tox || oxy || fatigue || sanity || mental) //These types should be dealt to the owner.
 		if(is_advanced(owner.loc))
