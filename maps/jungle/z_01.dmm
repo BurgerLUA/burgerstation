@@ -102,6 +102,10 @@
 /obj/marker/map_node,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
+"aD" = (
+/obj/marker/prefab/antag,
+/turf/unsimulated/generation/surface/cave_turf,
+/area)
 "aE" = (
 /obj/marker/map_node,
 /mob/living/simple/xeno/sentinel,
@@ -189,10 +193,6 @@
 /mob/living/simple/xeno/queen,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
-"bb" = (
-/obj/marker/prefab/medium,
-/turf/unsimulated/generation/surface/cave_turf,
-/area)
 "bc" = (
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/hive)
@@ -27083,7 +27083,7 @@ ah
 ah
 ah
 ah
-bb
+aD
 ah
 ah
 aw
