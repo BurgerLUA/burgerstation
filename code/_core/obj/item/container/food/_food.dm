@@ -15,6 +15,11 @@
 
 	drop_sound = 'sound/items/drop/food.ogg'
 
+	has_quick_function = TRUE
+
+/obj/item/container/food/quick(var/mob/caller,var/atom/object,location,params)
+	return try_transfer_reagents(caller,caller,location,null,params)
+
 /obj/item/container/food/Finalize()
 	if(scale_sprite) update_sprite()
 	return ..()

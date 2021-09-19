@@ -27,7 +27,7 @@
 	update_sprite()
 
 /obj/item/container/beaker/quick(var/mob/caller,var/atom/object,location,params)
-	return try_transfer_reagents(caller,object,location,null,params)
+	return try_transfer_reagents(caller,caller,location,null,params)
 
 /obj/item/container/beaker/get_consume_verb()
 	return "drink"
