@@ -364,6 +364,10 @@
 	dyeable = TRUE
 	color = "#D8C1B0"
 
+/obj/item/storage/bagofhoarding/get_value()
+	. = ..()
+	if(goods && hoard > 0)
+		. += goods.get_value()*hoard
 
 /obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -384,8 +388,10 @@
 
 /obj/item/storage/bagofhoarding/get_examine_details_list(var/mob/examiner)
 	. = ..()
-	if(hoard) . += span("notice","It currently holds [hoard] [goods.name]\s.")
-	else . += span("notice","It does not currently hold anything.")
+	if(goods && hoard > 0)
+		. += span("notice","It currently holds [hoard] [initial(goods.name)]\s.")
+	else
+		. += span("notice","It does not currently hold anything.")
 
 /obj/item/storage/bagofhoarding/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -461,6 +467,7 @@
 						targetitem = /obj/item/coin/antag_token
 					goods = I
 					hoard = I.item_count_current
+					I.item_count_current = 1
 					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 					caller.to_chat(span("notice","The [src.name] now accepts [I.name]\s."))
 					qdel(I)
