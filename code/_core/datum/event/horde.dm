@@ -3,7 +3,7 @@
 
 	probability = 10 //relative
 
-	occurances_max = 20
+	occurances_max = 10
 
 	var/chosen_horde_type //String
 	var/mob/living/enemy_types_to_spawn
@@ -54,7 +54,7 @@
 	if(!length(enemy_types_to_spawn))
 		return FALSE
 
-	var/spawn_amount = 6 + min(6,CEILING(length(all_players)*0.1,1))
+	var/spawn_amount = 2 + min(6,CEILING(length(all_players)*0.1,1))
 
 	var/turf/T1 = get_turf(starting_marker)
 	var/turf/T2 = get_turf(ending_marker)
