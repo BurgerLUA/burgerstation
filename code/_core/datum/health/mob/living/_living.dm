@@ -102,8 +102,6 @@
 
 	var/mob/living/L = owner
 
-	owner << "Power: [L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,2)]"
-
 	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10)*min(500,L.health_base)
 	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*min(500,L.stamina_base)
 	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*min(500,L.mana_base)
