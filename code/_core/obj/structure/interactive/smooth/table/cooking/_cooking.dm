@@ -6,7 +6,9 @@
 
 /obj/structure/smooth/table/cooking/Finalize()
 	. = ..()
-	set_enabled(enabled,TRUE)
+	var/old_enabled = enabled //Hacky wooo
+	enabled = FALSE
+	set_enabled(old_enabled,TRUE)
 
 /obj/structure/smooth/table/cooking/proc/set_enabled(var/desired_enabled=TRUE,var/force=FALSE)
 
@@ -16,7 +18,7 @@
 	var/previous_value = enabled
 	enabled = desired_enabled
 
-	if(is_simulated(loc) && (force || previous_value != enabled))
+	if(is_simulated(loc) && (previous_value != enabled))
 		var/turf/simulated/T = loc
 		if(enabled)
 			T.turf_temperature_mod += temperature_mod

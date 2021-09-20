@@ -102,9 +102,11 @@
 
 	var/mob/living/L = owner
 
-	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10)*200
-	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*200
-	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*200
+	owner << "Power: [L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,2)]"
+
+	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10)*min(500,L.health_base)
+	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*min(500,L.stamina_base)
+	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*min(500,L.mana_base)
 
 	var/trait/vitality/V = L.get_trait_by_category(/trait/vitality)
 	if(V)
@@ -112,9 +114,6 @@
 		health_max *= V.health_mul
 
 	L.queue_health_update = TRUE
-
-	return TRUE
-
 
 /health/mob/living/adjust_stamina(var/adjust_value)
 	. = ..()

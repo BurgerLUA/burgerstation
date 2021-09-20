@@ -19,9 +19,10 @@
 	size = 0.04
 	value = 3.5
 
-	item_count_max = 4
-
 	inaccuracy_modifer = 1.5
+
+	item_count_max = 4
+	item_count_max_icon = 4
 
 /obj/item/bullet_cartridge/shotgun_23/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE

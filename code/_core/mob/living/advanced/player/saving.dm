@@ -175,10 +175,10 @@
 			var/obj/marker/failsafe/FS = locate() in world
 			force_move(get_turf(FS))
 
-	if(update_blends)
-		update_all_blends()
-	else
-		update_all_blends() //butts
+
+	update_all_blends()
+
+	health?.update_health_stats()
 
 	last_autosave = world.time
 

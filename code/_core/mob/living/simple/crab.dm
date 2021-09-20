@@ -127,7 +127,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	level = 50
+	level = 20
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

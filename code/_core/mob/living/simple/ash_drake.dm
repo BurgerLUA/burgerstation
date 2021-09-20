@@ -88,7 +88,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 25
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
 

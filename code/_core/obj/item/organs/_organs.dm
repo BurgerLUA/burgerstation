@@ -13,7 +13,6 @@
 
 	var/flags_organ = FLAG_ORGAN_NONE
 
-	//health_max = 10
 	var/break_threshold = 0 //0 Means it doesn't break. Other values means it breaks.
 
 	var/attach_flag //The organ type that it wishes to attach to. Use FLAG_ORGAN_ flags.

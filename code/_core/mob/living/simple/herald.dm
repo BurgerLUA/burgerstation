@@ -81,7 +81,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 30
 
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)

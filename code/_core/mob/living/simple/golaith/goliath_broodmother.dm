@@ -73,7 +73,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
-	level = 70
+	level = 30
 
 /mob/living/simple/goliath/broodmother/on_life()
 	. = ..()
