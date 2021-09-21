@@ -1,4 +1,4 @@
-/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner)
+/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255)
 	if(!desired_turf)
 		return FALSE
 	var/reagent_container/temp/T
@@ -9,6 +9,7 @@
 		queue_delete(T,desired_duration)
 
 	var/obj/effect/temp/smoke/S = new(desired_turf,desired_duration,list(),T,owner,desired_power)
+	S.alpha = alpha
 	return S
 
 /obj/effect/temp/smoke
@@ -58,6 +59,8 @@
 		blacklist_turfs = desired_blacklist_turfs
 	if(desired_location)
 		try_splash(desired_location)
+	if(alpha >= 255)
+		opacity = TRUE
 
 /obj/effect/temp/smoke/proc/fade_out()
 	animate(src,alpha=0,time=fade_time)

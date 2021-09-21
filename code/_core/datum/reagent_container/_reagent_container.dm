@@ -54,6 +54,13 @@
 	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
 		SSreagent.all_temperature_reagent_containers += src
 
+/reagent_container/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
+	. = FALSE
+	for(var/r_id in stored_reagents)
+		var/reagent/R = REAGENT(r_id)
+		if(R.act_explode(src,owner,source,epicenter,magnitude,desired_loyalty))
+			. = TRUE
+
 /reagent_container/proc/metabolize(var/mob/living/living_owner,var/multiplier=1)
 
 	if(!volume_current)

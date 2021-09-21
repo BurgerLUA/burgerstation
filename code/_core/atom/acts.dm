@@ -2,7 +2,7 @@
 
 	if(health)
 		var/area/A = get_area(src)
-		if(!(A.flags_area & FLAGS_AREA_NO_DAMAGE))
+		if(!(A.flags_area & (FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION)))
 			var/list/params = list()
 			params[PARAM_ICON_X] = rand(0,32)
 			params[PARAM_ICON_Y] = rand(0,32)

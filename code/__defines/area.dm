@@ -2,8 +2,8 @@
 
 #define FLAGS_AREA_SAVEZONE 0x1
 
-#define FLAGS_AREA_NO_CONSTRUCTION 0x2 //Objects cannot be constructed or deconstructed, either by tools or damage.
-#define FLAGS_AREA_NO_DAMAGE 0x4 //Objects can't be damaged.
+#define FLAGS_AREA_NO_CONSTRUCTION 0x2 //Objects cannot be constructed or deconstructed, either by tools or damage. This usually only applies to structures and not people.
+#define FLAGS_AREA_NO_DAMAGE 0x4 //All objects can't be damaged. This includes people.
 
 #define FLAGS_AREA_SINGLEPLAYER 0x8
 

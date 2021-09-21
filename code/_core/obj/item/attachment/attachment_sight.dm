@@ -105,6 +105,9 @@
 
 	value = 3200
 
+/obj/item/attachment/sight/scope/massive/sniper_20
+	icon_state = "scope_sniper_20"
+
 
 /obj/item/attachment/sight/targeting_computer
 	name = "targeting computer"

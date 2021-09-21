@@ -94,5 +94,3 @@
 	FINALIZE(attachment_sight)
 
 	. = ..()
-
-	update_sprite()

@@ -97,6 +97,15 @@
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
 
+/obj/item/container/beaker/tnt/Generate()
+	reagents.add_reagent(/reagent/fuel/tnt,reagents.volume_max)
+	return ..()
+
+/obj/item/container/beaker/tnt_fragments/Generate()
+	reagents.add_reagent(/reagent/fuel/tnt,20)
+	reagents.add_reagent(/reagent/iron,40)
+	return ..()
+
 /obj/item/container/beaker/smoke_01/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/potassium,40)
