@@ -36,7 +36,7 @@
 /obj/item/tempering/magazine/refiller
 	name = "magazine refill upgrade system"
 	desc = "Subscribe to magazine+ to get the best of your bullets."
-	desc_extended = "A special digital rights management labeler that tells magazine restockers to fill the magazine with premium ammo. Single use."
+	desc_extended = "A special digital rights management labeler that tells magazine restockers to fill the magazine with standard quality ammo. Single use."
 	icon_state = "mag_enchant"
 
 	temper_whitelist = /obj/item/magazine
