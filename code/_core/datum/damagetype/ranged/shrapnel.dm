@@ -1,6 +1,6 @@
 /damagetype/ranged/shrapnel
 	attack_damage_base = list(
-		BLADE = 20
+		BLADE = 20,
 		BLUNT = 10,
 		PIERCE = 20
 	)

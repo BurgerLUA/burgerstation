@@ -18,7 +18,7 @@
 
 /obj/item/weapon/melee/energy/click_self(var/mob/caller)
 	INTERACT_CHECK
-	INTERACT_DELAY(1)
+	INTERACT_DELAY(3)
 	enabled = !enabled
 	update_sprite()
 	return TRUE
