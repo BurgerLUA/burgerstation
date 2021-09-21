@@ -55,12 +55,12 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-
-
 	dan_mode = TRUE
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.5
+
+	pump_delay = 1
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 

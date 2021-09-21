@@ -1,7 +1,7 @@
 /damagetype/ranged/bullet/rifle_308
 	attack_damage_base = list(
 		BLUNT = 30,
-		PIERCE = 10
+		PIERCE = 30
 	)
 
 	attack_damage_penetration = list(
@@ -19,12 +19,11 @@
 	penetration_mod = ARMOR_MUL
 
 /damagetype/ranged/bullet/rifle_762mm
-	name = "7.62mm rifle bullet"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLUNT = 10,
-		PIERCE = 30
+		PIERCE = 50
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -49,10 +48,12 @@
 
 /damagetype/ranged/bullet/rifle_762mm/short
 	attack_damage_base = list(
-		BLUNT = 30,
+		BLUNT = 40,
+		PIERCE = 10
 	)
 	attack_damage_penetration = list(
-		BLUNT = 25
+		BLUNT = 25,
+		PIERCE = 25
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE
 
@@ -62,8 +63,8 @@
 
 /damagetype/ranged/bullet/rifle_762mm/long
 	attack_damage_base = list(
-		BLUNT = 30,
-		PIERCE = 20
+		BLUNT = 35,
+		PIERCE = 25
 	)
 	attack_damage_penetration = list(
 		BLUNT = 25,
@@ -77,14 +78,14 @@
 
 /damagetype/ranged/bullet/revolver_762
 	attack_damage_base = list(
-		BLUNT = 50,
-		PIERCE = 10
+		BLUNT = 40,
+		PIERCE = 5
 	)
 	attack_damage_penetration = list(
-		BLUNT = 40,
-		PIERCE = 40
+		BLUNT = 25,
+		PIERCE = 25
 	)
-	falloff = VIEW_RANGE*2
+	falloff = VIEW_RANGE + ZOOM_RANGE
 
 /damagetype/ranged/bullet/revolver_762/surplus
 	damage_mod = SURPLUS_MUL

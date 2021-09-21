@@ -27,6 +27,9 @@ SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
 			continue
 
 		W = new W(locate(1,1,1))
+		INITIALIZE(W)
+		GENERATE(W)
+		FINALIZE(W)
 
 		if(istype(W,/obj/item/weapon/ranged/bullet))
 			var/obj/item/weapon/ranged/bullet/B = W

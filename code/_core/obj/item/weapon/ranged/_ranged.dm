@@ -65,8 +65,7 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 
 	var/current_firemode = 1
-	var/list/firemodes = list(
-	)
+	var/list/firemodes = list()
 
 /obj/item/weapon/ranged/Destroy()
 	QDEL_NULL(attachment_stock)
@@ -75,6 +74,8 @@
 	QDEL_NULL(attachment_barrel)
 	QDEL_NULL(firing_pin)
 	. = ..()
+
+
 
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
 	if(!length(firemodes))
@@ -178,8 +179,15 @@
 
 	update_attachment_stats()
 
-	if(length(firemodes))
-		on_firemode_changed()
+	if(!length(firemodes))
+		if(max_bursts > 1)
+			firemodes = list("burst")
+		else if(automatic)
+			firemodes = list("automatic")
+		else
+			firemodes = list("semi-automatic")
+
+	on_firemode_changed()
 
 	update_sprite()
 

@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 1200
 
-	shoot_delay = 6
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -58,7 +58,6 @@
 
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
-
 
 
 	inaccuracy_modifier = 0.25

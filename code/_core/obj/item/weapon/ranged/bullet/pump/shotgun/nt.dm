@@ -57,6 +57,8 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
+	pump_delay = 2
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
 	return 0.004
 
