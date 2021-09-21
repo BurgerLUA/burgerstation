@@ -1,9 +1,4 @@
 /damagetype/ranged/bow/
-	name = "bow"
-
-	damage_mod = 1
-	penetration_mod = 1
-
 	attack_damage_base = list(
 		PIERCE = 105*0.50,
 		BLADE = 105*0.25

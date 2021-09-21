@@ -29,6 +29,9 @@
 /turf/simulated/floor/tile/grey
 	color = COLOR_GREY
 
+/turf/simulated/floor/tile/grey/ish
+	color = "#8A8888"
+
 /turf/simulated/floor/tile/blue_baby
 	color = "#729AB1"
 
@@ -86,7 +89,7 @@
 	color = "#D3CBA5"
 
 /turf/simulated/floor/tile/tan/ish
-	color = "#C6C2AF"
+	color = "#7E7B6B"
 
 /turf/simulated/floor/tile/tan/bright
 	color = "#AC7656"

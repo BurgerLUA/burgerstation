@@ -16,7 +16,7 @@ var/global/list/possible_hostage_types = list(
 	points_reward = 15
 
 /objective/hostage/get_description()
-	return "Rescue [english_list(tracked_atoms)] and bring them shipside. Location: [english_list(get_locations())]."
+	return "Rescue [english_list(tracked_atoms)] and bring them shipside. Location: [english_list(get_locations(),"Unknown")]."
 
 /objective/hostage/setup()
 	if(!length(possible_hostage_spawns))

@@ -62,6 +62,10 @@
 /mob/living/advanced/npc/goblin/warrior,
 /turf/simulated/floor/carpet,
 /area/dmm_suite/clear_area)
+"o" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/brick/grey,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -588,7 +592,7 @@ i
 e
 e
 c
-e
+o
 e
 e
 e

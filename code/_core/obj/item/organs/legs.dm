@@ -5,7 +5,6 @@
 	icon_state = BODY_LEG_RIGHT
 	worn_layer = LAYER_MOB_LEGS
 	break_threshold = 25
-	//health_max = 50
 
 	attach_flag = BODY_GROIN
 

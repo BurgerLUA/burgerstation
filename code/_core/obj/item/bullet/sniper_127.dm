@@ -2,7 +2,6 @@
 	name = "\improper 12.7x90mm sniper round"
 	desc = "For when you want to shoot something so hard their family will feel it too."
 	desc_extended = "For sniper rifles that require 12.7x90mm ammo."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/127_mm.dmi'
 
 

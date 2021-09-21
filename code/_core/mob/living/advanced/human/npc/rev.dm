@@ -26,7 +26,7 @@
 
 	var/map_spawn = FALSE
 
-	level = 16
+	level = 22
 
 /mob/living/advanced/npc/rev/Initialize()
 

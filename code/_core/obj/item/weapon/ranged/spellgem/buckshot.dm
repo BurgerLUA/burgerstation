@@ -12,7 +12,7 @@
 	spread_per_shot = 8
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
-	ranged_damage_type = /damagetype/ranged/bullet/shotgun/buckshot
+	ranged_damage_type = /damagetype/ranged/bullet/shotgun_12
 
 	shoot_sounds = list('sound/weapons/magic/chaos.ogg')
 

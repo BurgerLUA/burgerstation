@@ -68,8 +68,7 @@
 			if(is_player(L))
 				var/mob/living/advanced/player/P = L
 				var/delinq = SStax.check_delinquent(P)
-				delinq *= 1/(86400*10)
-				if(delinq >= 7)
+				if(delinq)
 					has_tax = TRUE
 			if(has_tax)
 				L.to_chat(span("danger","You were forced to pay your taxes and sold back to NanoTrasen!"))
@@ -87,10 +86,10 @@
 			return .
 		else
 			L.to_chat(span("danger","You were captured and sold to a prison! Better luck next time!"))
-		. = L.get_value()
+		. = CEILING(L.get_value(),1)
 		L.death(TRUE)
 	else
-		. = stored_movable.get_value()
+		. = CEILING(stored_movable.get_value(),1)
 
 	if(. && is_player(owner))
 		var/mob/living/advanced/player/P = owner

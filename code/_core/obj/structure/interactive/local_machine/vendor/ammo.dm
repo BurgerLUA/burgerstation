@@ -14,7 +14,7 @@
 		/obj/item/magazine/sniper_50,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_308,
-		/obj/item/bullet_cartridge/shotgun_12/buckshot,
+		/obj/item/bullet_cartridge/shotgun_12,
 		/obj/item/bullet_cartridge/shotgun_12/slug
 	)
 

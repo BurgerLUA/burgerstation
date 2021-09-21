@@ -16,8 +16,6 @@
 	plane = PLANE_HUD
 	layer = 1
 
-	value = 0
-
 	var/atom/movable/grabbed_object
 
 	var/worn = FALSE //Set to TRUE if it's a worn object.
@@ -344,7 +342,6 @@
 
 
 	update_stats()
-	I.on_pickup(old_location,src)
 	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
@@ -353,6 +350,9 @@
 		else
 			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
+		return TRUE
+
+	I.on_pickup(old_location,src)
 
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset

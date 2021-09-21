@@ -11,20 +11,6 @@
 
 	log_admin("[src.get_debug_name()] sped up setup.")
 
-
-/client/verb/force_random_event()
-	set name = "Force Random Event"
-	set category = "Fun"
-
-	var/confirm = input("Are you sure you want to trigger a random event?","Random Event Trigger.") in list("Yes","No","Cancel")|null
-
-	if(confirm != "Yes")
-		return FALSE
-
-	SSevents.next_event_time = 0
-
-	log_admin("[src.get_debug_name()] forced a random event.")
-
 /client/verb/force_specific_event()
 	set name = "Force Specific Event"
 	set category = "Fun"
@@ -91,23 +77,17 @@
 		src.to_chat(span("warning","\"[object]\" returned no valid types."))
 		return FALSE
 
-	if(valid_count == 1)
-		var/datum/A = valid_objects[1]
-		A = new A(usr.loc)
-		INITIALIZE(A)
-		GENERATE(A)
-		FINALIZE(A)
-		return TRUE
-
-	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
-
-	if(!selection)
-		return FALSE
+	var/selection
+	if(valid_count != 1)
+		selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
+		if(!selection)
+			return FALSE
+	else
+		selection = valid_objects[1]
 
 	var/turf/T
 	if(mob)
 		T = get_step(src.mob,src.mob.dir)
-
 	if(!T)
 		T = get_turf(src.mob)
 
@@ -119,8 +99,6 @@
 		O.set_dir(mob ? mob.dir : SOUTH)
 		GENERATE(O)
 	FINALIZE(A)
-
-
 
 	log_admin("[src.get_debug_name()] spawned [A.get_debug_name()].")
 

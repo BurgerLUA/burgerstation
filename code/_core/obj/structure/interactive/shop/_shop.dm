@@ -15,8 +15,6 @@
 
 	initialize_type = INITIALIZE_LATE
 
-	value = 0
-
 	var/markup = 1.25
 
 /obj/structure/interactive/shop/high_markup

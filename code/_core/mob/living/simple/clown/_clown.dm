@@ -31,6 +31,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 28
+
 
 /mob/living/simple/clown/hulk
 	name = "clown hunk"

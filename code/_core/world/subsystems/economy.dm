@@ -37,8 +37,13 @@ SUBSYSTEM_DEF(economy)
 			sound_to_play = 'sound/round_end/dump_it.ogg'
 		)
 		crash_sell_multiplier = 0.1
-	credits_per_gold = 1 + max(0,CEILING(gold_base_value/gold_in_circulation,1))
+
+	credits_per_gold = min(1 + max(0,CEILING(gold_base_value/gold_in_circulation,1)),15)
 	sell_multiplier = clamp(goblin_economy/50000,0.1,1)*0.5
+
+	if(gold_in_circulation <= 20000) //About to crash.
+		credits_per_gold = FLOOR(credits_per_gold*RAND_PRECISE(0.5,2),1)
+		sell_multiplier *= 0.5
 
 /subsystem/economy/Initialize()
 
@@ -86,21 +91,19 @@ SUBSYSTEM_DEF(economy)
 
 	. = ..()
 
-/subsystem/economy/proc/save(var/debug=FALSE)
+/subsystem/economy/proc/save()
 
 	var/client_length = length(all_clients)
 
 	gold_in_circulation -= CEILING(world.time/100,1)*client_length*0.5
 
-	var/expected_purchases = (1*client_length)*(world.time/SECONDS_TO_DECISECONDS(30*60)) //Base 1 per player every 30 minutes
+	var/expected_purchases = (1*client_length)*(world.time/SECONDS_TO_DECISECONDS(90*60)) //Base 1 per player every 90 minutes
 	for(var/item_type in purchases_this_round)
 		var/old_multiplier = (price_multipliers[item_type] ? price_multipliers[item_type] : 1)
 		var/local_expected_purchases = expected_purchases * old_multiplier
 		var/actual_purchases = purchases_this_round[item_type]
 		var/new_multiplier = (actual_purchases/local_expected_purchases) * old_multiplier
 		price_multipliers[item_type] = clamp(new_multiplier,old_multiplier*0.9,old_multiplier*1.1) //Cannot change by 10% in a single round.
-		if(debug) log_debug("Expected [local_expected_purchases] purchases this round of [item_type], got [actual_purchases]. New multiplier: [price_multipliers[item_type]].")
-
 
 	if(length(price_multipliers))
 		var/encoded_purchase_data = json_encode(price_multipliers)

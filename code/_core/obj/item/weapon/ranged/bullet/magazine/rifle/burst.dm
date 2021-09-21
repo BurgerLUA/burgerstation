@@ -14,7 +14,7 @@
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
@@ -90,11 +90,9 @@
 	burst_delay = 4
 	max_bursts = 3
 
-	value = 3000
+	value = 4000
 
-	heat_max = 0.02
-
-
+	heat_max = 0.03
 
 	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 19 - 16

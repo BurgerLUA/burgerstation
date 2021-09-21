@@ -4,9 +4,6 @@
 
 	ai = /ai/advanced
 
-
-
-
 	species = "goblin"
 
 	pixel_z = -2
@@ -21,7 +18,9 @@
 
 	anchored = TRUE
 
+	size = SIZE_10
 
+	level = 28
 
 /mob/living/advanced/npc/unique/goblin_merchant/Initialize()
 

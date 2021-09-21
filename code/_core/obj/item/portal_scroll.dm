@@ -18,11 +18,20 @@
 
 	var/mob/living/advanced/player/P = caller
 
-	if(P.loyalty_tag != "NanoTrasen")
+	if(!isturf(P.loc))
+		caller.to_chat(span("warning","You can't use this here!"))
+		return TRUE
+
+	var/area/A = P.loc.loc
+	if(A.area_identifier != "Mission")
+		caller.to_chat(span("warning","You can't use this here!"))
+		return TRUE
+
+	if(!P.loyalty_tag || !portal_markers[P.loyalty_tag])
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
-	if(!length(portal_markers))
+	if(!length(portal_markers[P.loyalty_tag]))
 		caller.to_chat(span("warning","Failed to create a portal... there are too many portals that exist already!"))
 		return TRUE
 
@@ -33,8 +42,12 @@
 	if(T2.is_safe_teleport())
 		T = T2
 
-	var/obj/marker/portal/PM = pick(portal_markers)
+	var/obj/marker/portal/PM = pick(portal_markers[P.loyalty_tag])
 	var/turf/PMT = get_turf(PM)
+
+	if(!T || !PMT)
+		caller.to_chat(span("warning","Failed to create a portal. Something horribly went wrong."))
+		return TRUE
 
 	var/obj/effect/temp/portal/start_portal = new(T,SECONDS_TO_DECISECONDS(300))
 	var/obj/effect/temp/portal/end_portal = new(PMT,SECONDS_TO_DECISECONDS(300))
@@ -47,7 +60,6 @@
 
 	end_portal.linked_marker = PM
 	P.linked_portals = list(start_portal,end_portal)
-
 
 	var/area/A1 = T.loc
 	var/area/A2 = PMT.loc

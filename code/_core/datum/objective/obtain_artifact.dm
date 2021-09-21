@@ -25,7 +25,7 @@
 	return pick(valid_targets)
 
 /objective/artifact/get_description()
-	return "Obtain [english_list(tracked_atoms)] and bring it shipside. Location: [english_list(get_locations())]."
+	return "Obtain [english_list(tracked_atoms)] and bring it shipside. Location: [english_list(get_locations(),"Unknown")]."
 
 /objective/artifact/setup()
 	if(!length(possible_objective_spawns))

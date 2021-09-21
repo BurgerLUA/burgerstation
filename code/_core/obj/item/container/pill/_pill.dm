@@ -9,13 +9,18 @@
 
 	size = SIZE_0
 
-	value = 0
+	value = 1
 
 	allow_reagent_transfer_from = FALSE
 
 	weight = 0.01
 
 	reagents = /reagent_container/pill
+
+	has_quick_function = TRUE
+
+/obj/item/container/pill/quick(var/mob/caller,var/atom/object,location,params)
+	return try_transfer_reagents(caller,caller,location,null,params)
 
 /obj/item/container/pill/get_consume_verb()
 	return "swallow"

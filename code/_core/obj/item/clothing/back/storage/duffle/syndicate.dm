@@ -105,8 +105,8 @@
 	//8 normal shit
 	new /obj/item/clothing/overwear/hardsuit/syndie/elite(src)
 	new /obj/item/clothing/overwear/hardsuit/syndie/elite(src)
-	new /obj/item/pinpointer/artifact(src)
-	new /obj/item/pinpointer/artifact(src)
+	new /obj/item/pinpointer/objective(src)
+	new /obj/item/pinpointer/objective(src)
 	new /obj/item/weapon/melee/energy/sword/katana/black(src)
 	new /obj/item/weapon/melee/energy/sword/katana/black(src)
 	new /obj/item/grenade/timed/explosive(src)

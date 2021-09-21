@@ -32,6 +32,8 @@
 	var/open_sound = 'sound/effects/click.ogg'
 	var/close_sound = 'sound/effects/click.ogg'
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_TURF_CHECKING
+
 /obj/structure/interactive/crate/post_move(var/atom/old_loc)
 
 	. = ..()

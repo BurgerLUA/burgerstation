@@ -33,7 +33,9 @@
 	QDEL_CUT(stored_containers)
 
 	. = ..()
-
+/obj/item/grenade/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/grenade/quick(var/mob/caller,var/atom/object,location,params)
 

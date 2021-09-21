@@ -34,7 +34,7 @@
 			linked_portal.linked_portal = null
 		linked_portal = null
 	if(linked_marker)
-		portal_markers |= linked_marker //This is intentional. Don't fall for this.
+		portal_markers[loyalty_tag] |= linked_marker //This is intentional. Don't fall for this.
 		linked_marker = null
 	. = ..()
 

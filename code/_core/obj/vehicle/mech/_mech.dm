@@ -16,8 +16,6 @@
 	blood_type = /reagent/blood/robot
 	blood_volume = 1000
 
-	mob_size = MOB_SIZE_LARGE
-
 /mob/living/vehicle/mech/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps + /footstep/mech_step
 
@@ -27,7 +25,7 @@
 
 	if(.)
 		var/turf/T = get_turf(src)
-		play('sound/effects/footsteps/mechmove.ogg',)
+		play_sound('sound/effects/footsteps/mechmove.ogg',T)
 		if(length(passengers) && passengers[1])
 			create_alert(VIEW_RANGE,T,passengers[1],ALERT_LEVEL_NOISE)
 
@@ -56,130 +54,3 @@
 		icon_state = "[icon_state]_open"
 
 	..()
-
-/mob/living/vehicle/mech/ripley
-	name = "\improper APLU Ripley Combat Mech"
-	desc = "Ripley"
-
-	icon_state = "ripley"
-
-	movement_delay = DECISECONDS_TO_TICKS(4)
-
-	health_base = 1000
-
-	armor_base = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
-		ARCANE = -100,
-		HEAT = 100,
-		COLD = 100,
-		BOMB = 50,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -50,
-		PAIN = INFINITY
-	)
-
-
-/mob/living/vehicle/mech/gygax
-	name = "\improper Gygax Combat Mech"
-	desc = "An upgraded version of the Gygax we all know and love."
-	icon = 'icons/obj/vehicles/gygax.dmi'
-	icon_state = "gygax"
-
-	pixel_x = -1
-
-	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 75,
-		ARCANE = -100,
-		HEAT = 100,
-		COLD = 100,
-		BOMB = 50,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -50,
-		PAIN = INFINITY
-	)
-
-	class = /class/gygax/
-
-	health_base = 1500
-
-	movement_delay = DECISECONDS_TO_TICKS(3)
-
-/mob/living/vehicle/mech/gygax/dark
-	name = "\improper DARK Gygax Combat Mech"
-	desc = "A syndicate owned Dark Gygax. These are usually controlled by AI."
-	icon = 'icons/obj/vehicles/gygax_dark.dmi'
-	icon_state = "dark_gygax"
-
-	pixel_x = 0
-	pixel_y = 0
-
-	health_base = 2000
-
-	ai = /ai/mech
-
-	iff_tag = "Syndicate"
-	loyalty_tag = "Syndicate"
-
-/mob/living/vehicle/mech/gygax/dark/Generate()
-	. = ..()
-
-	var/obj/item/weapon/ranged/energy/mech/smg/M1 = new(src.loc)
-	M1.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-	INITIALIZE(M1)
-	GENERATE(M1)
-	FINALIZE(M1)
-	src.attach_equipment(null,M1)
-
-	var/obj/item/weapon/ranged/energy/mech/smg/M2 = new(src.loc)
-	M2.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-	INITIALIZE(M2)
-	GENERATE(M2)
-	FINALIZE(M2)
-	src.attach_equipment(null,M2)
-
-
-
-/mob/living/vehicle/mech/durand
-	name = "\improper MK2 Durand"
-	desc = "An upgraded version of the Durand we all know and love."
-	icon = 'icons/obj/vehicles/durand.dmi'
-	icon_state = "durand"
-
-	pixel_x = -4
-
-	armor_base = list(
-		BLADE = 100,
-		BLUNT = 100,
-		PIERCE = 100,
-		LASER = 25,
-		ARCANE = -100,
-		HEAT = 100,
-		COLD = 100,
-		BOMB = 50,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -50,
-		PAIN = INFINITY
-	)
-
-	class = /class/durand
-	health_base = 3000
-
-	movement_delay = DECISECONDS_TO_TICKS(6)

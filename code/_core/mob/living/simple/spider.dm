@@ -44,7 +44,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 10
 
 /mob/living/simple/spider/post_death()
 	..()
@@ -73,7 +73,7 @@
 		PAIN = 25
 	)
 
-	level = 12
+	level = 18
 
 /mob/living/simple/spider/desert/Initialize()
 	. = ..()
@@ -101,5 +101,5 @@
 		PAIN = 25
 	)
 
-	level = 8
+	level = 20
 

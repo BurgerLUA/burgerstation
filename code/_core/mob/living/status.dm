@@ -77,9 +77,9 @@
 			remove_status_effect(status)
 			continue
 		if(status_effects[status]["duration"] < -1)
-			status_effects[status]["duration"] = min(-1,status_effects[status]["duration"] + LIFE_TICK)
+			status_effects[status]["duration"] = min(-1,status_effects[status]["duration"] + TICKS_TO_DECISECONDS(LIFE_TICK))
 			continue
-		status_effects[status]["duration"] = max(0,status_effects[status]["duration"] - LIFE_TICK)
+		status_effects[status]["duration"] = max(0,status_effects[status]["duration"] - TICKS_TO_DECISECONDS(LIFE_TICK))
 
 	return TRUE
 

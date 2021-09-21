@@ -271,7 +271,7 @@
 
 	return null
 
-/turf/proc/can_construct_on(var/mob/caller)
+/turf/proc/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 

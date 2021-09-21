@@ -22,6 +22,9 @@
 
 	particle_size = 0.5
 
+	var/list/attribute_experience_per_nutrition
+	var/list/skill_experience_per_nutrition
+
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
 	value *= 0.1 + max(0.1,(nutrition_amount-nutrition_quality_amount)*0.035) + max(0,hydration_amount*0.015) + max(0,heal_factor) + max(0,0.05*flavor_strength)
@@ -66,34 +69,46 @@
 
 	. = ..()
 
-	if(nutrition_amount)
-		owner.add_nutrition(nutrition_amount*.)
-		if(nutrition_quality_amount < 0)
-			owner.add_nutrition_fast(-nutrition_quality_amount*.)
-		if(owner.blood_volume < owner.blood_volume_max)
-			owner.blood_volume = clamp(owner.blood_volume + nutrition_amount*.*0.3,0,owner.blood_volume_max)
-			owner.queue_health_update = TRUE
-	if(hydration_amount)
-		owner.add_hydration(hydration_amount*.)
+	if(.)
+		if(nutrition_amount)
+			owner.add_nutrition(nutrition_amount*.)
+			if(nutrition_quality_amount < 0)
+				owner.add_nutrition_fast(-nutrition_quality_amount*.)
+			if(owner.blood_volume < owner.blood_volume_max)
+				owner.blood_volume = clamp(owner.blood_volume + nutrition_amount*.*0.3,0,owner.blood_volume_max)
+				owner.queue_health_update = TRUE
+			if(owner.client)
+				if(length(attribute_experience_per_nutrition))
+					for(var/k in attribute_experience_per_nutrition)
+						owner.add_attribute_xp(k,attribute_experience_per_nutrition[k]*nutrition_amount*.)
+				if(length(skill_experience_per_nutrition))
+					for(var/k in skill_experience_per_nutrition)
+						owner.add_skill_xp(k,skill_experience_per_nutrition[k]*nutrition_amount*.)
 
-	if(heal_factor && owner && owner.health)
-		var/amount_to_heal = heal_factor*.
-		if(amount_to_heal < 0 && is_advanced(owner)) //Amount to heal is negative.
-			var/mob/living/advanced/A = owner
-			var/species/S = SPECIES(A.species)
-			if(S.flags_flavor_love & FLAG_FLAVOR_RAW)
-				amount_to_heal = -amount_to_heal*0.5 //Make amount to heal positive.
-		if(amount_to_heal > 0)
-			owner.brute_regen_buffer += amount_to_heal
-			owner.burn_regen_buffer += amount_to_heal
-		else if(amount_to_heal < 0)
-			owner.tox_regen_buffer += amount_to_heal
+		if(hydration_amount)
+			owner.add_hydration(hydration_amount*.)
+
+		if(heal_factor && owner && owner.health)
+			var/amount_to_heal = heal_factor*.
+			if(amount_to_heal < 0 && is_advanced(owner)) //Amount to heal is negative.
+				var/mob/living/advanced/A = owner
+				var/species/S = SPECIES(A.species)
+				if(S.flags_flavor_love & FLAG_FLAVOR_RAW)
+					amount_to_heal = -amount_to_heal*0.5 //Make amount to heal positive.
+			if(amount_to_heal > 0)
+				owner.brute_regen_buffer += amount_to_heal
+				owner.burn_regen_buffer += amount_to_heal
+			else if(amount_to_heal < 0)
+				owner.tox_regen_buffer += amount_to_heal
+
+		if(owner.health && nutrition_amount + hydration_amount != 0)
+			owner.health.adjust_stamina( (nutrition_amount + hydration_amount) * .)
 
 /reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer -= . * (0.5 + nutrition_amount*0.1)
+	owner.tox_regen_buffer -= . * (0.5 + abs(nutrition_amount)*0.1)
 	on_metabolize_stomach(owner,container,starting_volume,multiplier*0.5)
 
 	return

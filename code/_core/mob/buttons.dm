@@ -54,9 +54,12 @@
 
 
 /mob/proc/close_turf_contents()
+	if(!displaying_turf_contents)
+		return FALSE
 	for(var/k in examine_butons) //Clear existing.
 		var/obj/hud/button/B = k
 		B.update_owner(null)
+	displaying_turf_contents = FALSE
 	return TRUE
 
 /mob/proc/display_turf_contents(var/turf/T)
@@ -81,10 +84,9 @@
 			continue
 		valid_contents += k
 
-	var/i=0
-	var/content_length = length(valid_contents)
-	for(var/k in valid_contents)
-		var/atom/movable/M = k
+	var/content_length = min(10,length(valid_contents))
+	for(var/i=1,i<=content_length,i++)
+		var/atom/movable/M = valid_contents[i]
 		var/obj/hud/button/floor_object/B = new(src)
 		var/x_pos = sin( (i/content_length)*360 ) * content_length*0.3
 		var/y_pos = cos( (i/content_length)*360 ) * content_length*0.3
@@ -92,8 +94,7 @@
 		B.associated_object = M
 		B.associated_loc = T
 		B.update_owner(src)
-		i++
-		if(i >= 10)
-			break
+
+	displaying_turf_contents = TRUE
 
 	return TRUE

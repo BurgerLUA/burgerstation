@@ -47,6 +47,13 @@
 	reagents.add_reagent(/reagent/medicine/purge,reagents.volume_max)
 	return ..()
 
+/obj/item/container/beaker/bottle/morphine
+	name = "bottle of morphine"
+
+/obj/item/container/beaker/bottle/morphine/Generate()
+	reagents.add_reagent(/reagent/medicine/painkiller/morphine,reagents.volume_max)
+	return ..()
+
 /obj/item/container/beaker/bottle/antihol
 	name = "bottle of antihol"
 

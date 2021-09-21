@@ -1,5 +1,3 @@
-#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.
-
 SUBSYSTEM_DEF(chunkclean)
 	name = "Chunkclean Subsystem"
 	desc = "Handles chunk cleaning."

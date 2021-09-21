@@ -6,7 +6,12 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 
-	level = 60
+	level = 70
+
+	var/list/possible_loadouts = list(
+		/loadout/space_soldier/assault_rifle = 4,
+		/loadout/space_soldier/battle_rifle = 1
+	)
 
 /mob/living/advanced/npc/space_soldier/Initialize()
 
@@ -27,5 +32,5 @@
 
 	update_all_blends()
 
-	equip_loadout(/loadout/space_soldier)
+	equip_loadout(pickweight(possible_loadouts))
 

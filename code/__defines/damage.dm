@@ -38,4 +38,6 @@
 
 //Melee Balance
 
+#define ARMOR_MUL 2
 #define SURPLUS_MUL 0.75
+#define PREMIUM_MUL 1.25

@@ -29,9 +29,7 @@
 /turf/simulated/floor/cult,
 /area/dmm_suite/clear_area)
 "i" = (
-/obj/structure/interactive/crate/chest/filled,
-/obj/item/weapon/ranged/spellgem/cult,
-/obj/item/weapon/ranged/wand/profane,
+/obj/marker/objective_spawn,
 /turf/simulated/floor/cult,
 /area/dmm_suite/clear_area)
 "j" = (

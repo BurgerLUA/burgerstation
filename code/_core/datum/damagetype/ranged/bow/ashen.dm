@@ -1,6 +1,4 @@
 /damagetype/ranged/bow/ashen
-	name = "bow"
-
 	attack_damage_base = list(
 		PIERCE = 105*0.75,
 	)

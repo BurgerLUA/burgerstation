@@ -18,8 +18,8 @@
 
 /obj/hud/inventory/crafting/obj/hud/inventory/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
-	if(I.is_container)
-		owner.to_chat(span("notice","\The [I.name] cannot be fit inside \the [src.name]!"))
+	if(!bypass && length(I.inventories))
+		owner?.to_chat(span("notice","\The [I.name] cannot be fit inside \the [src.name]!"))
 		return FALSE
 
 	return ..()

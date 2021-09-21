@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault
-	name = "\improper .308 BR-SOL"
+	name = "\improper .308 Prototype MOAR"
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
 	desc_extended = "A .308 chambered mother-of-all-battle-rifles (MOABR) developed by the Solarian research team for space battles."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308_advanced.dmi'
@@ -8,7 +8,7 @@
 
 	shoot_delay = 2.5
 
-	damage_mod = 1.3
+	damage_mod = 1.2
 
 	automatic = TRUE
 
@@ -65,14 +65,12 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-
-
 	inaccuracy_modifier = 0.35
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_static_spread()
-	return 0.02
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
@@ -110,4 +108,3 @@
 
 	update_attachment_stats()
 	update_sprite()
-

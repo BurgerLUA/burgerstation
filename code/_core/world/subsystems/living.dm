@@ -3,7 +3,7 @@ var/global/list/all_living = list()
 SUBSYSTEM_DEF(living)
 	name = "Living Subsystem"
 	desc = "Controls the life of mobs."
-	tick_rate = DECISECONDS_TO_TICKS(LIFE_TICK)
+	tick_rate = LIFE_TICK
 	priority = SS_ORDER_LIFE
 
 	var/advanced_ticks = 0

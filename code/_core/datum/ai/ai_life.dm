@@ -25,20 +25,21 @@
 
 	return TRUE
 
-/ai/proc/on_life(var/tick_rate)
+/ai/proc/on_life(var/tick_rate=1)
 
 	objective_ticks += tick_rate
 	var/objective_delay = get_objective_delay()
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
 		handle_objectives(objective_delay)
-		if(length(current_path) || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
+		if(length(current_path) || objective_attack || objective_move || alert_level >= ALERT_LEVEL_NOISE)
 			idle_time = 0
 		else
-			idle_time += objective_delay
-			if(idle_time >= 600) //Idle for more than a minute means you're just wasting space.
+			if(idle_time && idle_time <= world.time)
 				set_active(FALSE)
-				return FALSE
+				return TRUE
+			else if(idle_time == 0)
+				idle_time = world.time + SECONDS_TO_DECISECONDS(120) //Idle for more than 2 minutes means you're just wasting space.
 
 	if(owner.attack_next <= world.time)
 		handle_attacking()
@@ -49,7 +50,7 @@
 			alert_time = initial(alert_time)
 			set_alert_level(max(0,alert_level-1),TRUE)
 
-	if(owner.move_delay <= 0)
+	if(!owner.anchored && owner.move_delay <= 0)
 		handle_movement()
 
 	owner.handle_movement(tick_rate)

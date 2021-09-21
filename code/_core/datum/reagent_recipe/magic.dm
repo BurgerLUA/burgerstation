@@ -40,7 +40,7 @@
 		/reagent/blood/goliath = 1,
 		/reagent/blood/goblin = 1,
 		/reagent/medicine/dexalin = 1,
-		/reagent_recipe/drugs/space_drugs = 1
+		/reagent/drug/space = 1
 	)
 
 	results = list(

@@ -57,7 +57,7 @@
 		DRUGGY = TRUE
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange
@@ -80,6 +80,8 @@
 	soul_size = SOUL_SIZE_RARE
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
+
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	level = 20
 

@@ -9,7 +9,7 @@
 #define LOADLISTATOM(varname) if(length(object_data[varname])) {for(var/k in object_data[varname]) vars[varname] += load_and_create(P,k,src)}
 
 #define SAVEPATH(varname) if(!isnull(vars[varname])) .[varname] = vars[varname]
-#define LOADPATH(varname) if(!isnull(object_data)) vars[varname] = text2path(object_data[varname])
+#define LOADPATH(varname) if(!isnull(object_data)) vars[varname] = text2path_safe(object_data[varname])
 
 #define SAVELIST(varname) SAVEVAR(varname)
 #define LOADLIST(varname) LOADVAR(varname)

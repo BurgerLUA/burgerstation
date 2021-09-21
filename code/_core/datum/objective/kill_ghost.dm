@@ -35,7 +35,7 @@
 	return pick(valid_targets)
 
 /objective/kill_ghost/get_description()
-	return "Stop the haunting of [english_list(get_locations())] . Location: [english_list(get_locations())]."
+	return "Stop the haunting of [english_list(get_locations())] . Location: [english_list(get_locations(),"Unknown")]."
 
 /objective/kill_ghost/start()
 	var/mob/living/L = get_random_target()

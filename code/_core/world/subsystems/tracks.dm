@@ -1,11 +1,11 @@
-var/global/list/all_tracks = list()
-
-SUBSYSTEM_DEF(tracks)
+SUBSYSTEM_DEF(track)
 	name = "Track Subsystem"
 	desc = "Stores all the known musical tracks in a list."
 	priority = SS_ORDER_FIRST
 
-/subsystem/tracks/Initialize()
+	var/list/all_tracks = list()
+
+/subsystem/track/Initialize()
 	for(var/k in subtypesof(/track/))
 		var/track/T = new k
 		all_tracks[T.type] = T

@@ -1,7 +1,7 @@
 /event/horde
 	name = "Horde"
 
-	probability = 30 //relative
+	probability = 10 //relative
 
 	occurances_max = 10
 
@@ -10,6 +10,8 @@
 
 	var/obj/marker/spawnpoint/starting_marker
 	var/obj/marker/spawnpoint/ending_marker
+
+	minor_event = TRUE
 
 /event/horde/Destroy()
 	starting_marker = null
@@ -52,9 +54,7 @@
 	if(!length(enemy_types_to_spawn))
 		return FALSE
 
-
-
-	var/spawn_amount = 4 + min(6,CEILING(length(all_players)*0.1,1))
+	var/spawn_amount = 2 + min(6,CEILING(length(all_players)*0.1,1))
 
 	var/turf/T1 = get_turf(starting_marker)
 	var/turf/T2 = get_turf(ending_marker)
@@ -66,13 +66,6 @@
 	if(!found_path)
 		log_error("ERROR: Could not find proper path from [T1.get_debug_name()] to [T2.get_debug_name()].")
 		return FALSE
-
-	announce(
-		"Central Command Enemy Report Division",
-		"[capitalize(chosen_horde_type)] Patrol",
-		"An enemy [capitalize(chosen_horde_type)] patrol has been detected near the area of operations on the surface level.",
-		sound_to_play = 'sound/voice/announcement/horde.ogg'
-	)
 
 	var/list/possible_turfs = list()
 	for(var/turf/simulated/floor/T in view(VIEW_RANGE,T1))

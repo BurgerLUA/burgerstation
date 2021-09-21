@@ -44,7 +44,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 16
 
 /mob/living/simple/watcher/post_death()
 	. = ..()

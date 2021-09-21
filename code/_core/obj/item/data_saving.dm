@@ -59,7 +59,7 @@
 		log_error("ERROR: Tried to load a null item inside [loc.get_debug_name()]!")
 		return FALSE
 
-	var/obj/item/I = text2path(o_type)
+	var/obj/item/I = text2path_safe(o_type,.proc/ec_valid_item)
 
 	if(!I)
 		log_error("ERROR: Tried to load an item that did not exist in code ([o_type]) inside the [loc.get_debug_name()]!")
@@ -71,7 +71,6 @@
 	I.load_item_data_post(P,object_data)
 	FINALIZE(I)
 	I.drop_item(loc,silent=TRUE)
-	I.update_sprite()
 
 	return I
 

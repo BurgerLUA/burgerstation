@@ -3,13 +3,14 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "ab" = (
-/turf/simulated/wall/brick/red,
+/turf/simulated/wall/brick/red/rev,
 /area/prefab/rev_base)
 "ac" = (
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
 "ad" = (
-/turf/simulated/floor/colored/grass/jungle,
+/obj/structure/scenery/flowers,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "ae" = (
 /obj/structure/scenery/rocks,
@@ -21,14 +22,14 @@
 /area/prefab/rev_base)
 "ag" = (
 /obj/structure/scenery/bush/grass,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "ah" = (
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
 "ai" = (
-/turf/simulated/wall/brick/red/dark,
+/turf/simulated/wall/brick/red/dark/rev,
 /area/prefab/rev_base)
 "aj" = (
 /obj/structure/interactive/misc/shower,
@@ -47,23 +48,22 @@
 /area/prefab/rev_base)
 "an" = (
 /obj/structure/interactive/tree/evergreen,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "ao" = (
 /obj/structure/smooth/table/dark,
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "ap" = (
-/obj/structure/smooth/table/dark,
-/obj/structure/interactive/lighting/fixture/bulb,
-/turf/simulated/floor/brick/grey/dark,
-/area/prefab/rev_base)
-"aq" = (
 /obj/structure/interactive/vending/syndicate/medicine,
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
-"ar" = (
+"aq" = (
 /obj/structure/interactive/vending/syndicate/attachment,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"ar" = (
+/obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "as" = (
@@ -117,7 +117,7 @@
 /area/prefab/rev_base)
 "aB" = (
 /obj/structure/interactive/lighting/streetlamp,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "aC" = (
 /mob/living/advanced/npc/rev{
@@ -131,7 +131,7 @@
 	dir = 8;
 	icon_state = "setup"
 	},
-/turf/simulated/wall/brick/red/dark,
+/turf/simulated/wall/brick/red/dark/rev,
 /area/prefab/rev_base)
 "aE" = (
 /mob/living/advanced/npc/rev,
@@ -157,7 +157,7 @@
 	dir = 1;
 	icon_state = "setup"
 	},
-/turf/simulated/wall/brick/red/dark,
+/turf/simulated/wall/brick/red/dark/rev,
 /area/prefab/rev_base)
 "aI" = (
 /obj/structure/interactive/misc/mirror/cracked/chargen{
@@ -181,11 +181,7 @@
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aK" = (
-/obj/structure/interactive/chair{
-	dir = 8;
-	icon_state = "chair"
-	},
-/turf/simulated/floor/brick/grey/dark,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "aL" = (
 /obj/structure/interactive/chair{
@@ -199,18 +195,14 @@
 	dir = 8;
 	icon_state = "chair"
 	},
-/mob/living/advanced/npc/rev{
-	dir = 8;
-	icon_state = "directional"
-	},
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "aN" = (
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/rev,
 /area/prefab/rev_base)
 "aO" = (
 /obj/item/storage/heavy/trash_pile,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "aP" = (
 /obj/structure/interactive/crate/closet,
@@ -227,7 +219,7 @@
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 "aS" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/wood/brown,
 /area/prefab/rev_base)
 "aT" = (
@@ -239,7 +231,7 @@
 	dir = 4;
 	icon_state = "setup"
 	},
-/turf/simulated/wall/brick/red/dark,
+/turf/simulated/wall/brick/red/dark/rev,
 /area/prefab/rev_base)
 "aV" = (
 /obj/structure/interactive/lighting/fixture/bulb{
@@ -279,7 +271,7 @@
 /area/prefab/rev_base)
 "bc" = (
 /obj/structure/interactive/crate/chest/filled,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "bd" = (
 /obj/structure/interactive/lighting/fixture/bulb{
@@ -300,7 +292,7 @@
 /area/prefab/rev_base)
 "bg" = (
 /obj/structure/smooth/wall/wood,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "bh" = (
 /obj/structure/interactive/plant/wheat,
@@ -332,7 +324,7 @@
 	dir = 8;
 	icon_state = "setup"
 	},
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/rev,
 /area/prefab/rev_base)
 "bm" = (
 /obj/structure/interactive/chair/wood{
@@ -381,7 +373,7 @@
 	dir = 4;
 	icon_state = "directional"
 	},
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "bv" = (
 /obj/structure/interactive/barricade,
@@ -392,13 +384,28 @@
 /obj/marker/lobby,
 /turf/simulated/floor/colored/dirt,
 /area/prefab/rev_base)
+"bx" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
 "lq" = (
 /obj/structure/scenery/grass/lavender,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"nl" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/rev{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "Fy" = (
 /obj/structure/scenery/grass/normal,
-/turf/simulated/floor/colored/grass/jungle,
+/turf/simulated/floor/grass/jungle,
 /area/prefab/rev_base)
 "Ul" = (
 /obj/structure/scenery/rocks,
@@ -463,10 +470,10 @@ ac
 ac
 ac
 ac
-ad
-ad
-ad
-ad
+aK
+aK
+aK
+aK
 ac
 ac
 ac
@@ -486,22 +493,22 @@ ac
 ac
 ac
 ac
-ad
-ad
-ad
+aK
+aK
+an
 ac
-ad
-ad
-ad
-ad
-ad
+aK
+aK
+aK
+aK
+aK
 aO
 aO
 aO
 aO
-ad
-ad
-ad
+aK
+aK
+aK
 ac
 ac
 ab
@@ -523,8 +530,8 @@ ai
 ai
 ai
 aB
-ad
-ad
+aK
+lq
 aN
 aN
 aN
@@ -536,7 +543,7 @@ aN
 aN
 aN
 an
-ad
+aK
 ac
 ab
 aa
@@ -557,8 +564,8 @@ az
 ak
 ai
 an
-ad
-ad
+aK
+aK
 aN
 Zo
 aV
@@ -569,8 +576,8 @@ aW
 aV
 bo
 aN
-ad
-ad
+aK
+aK
 ac
 ab
 aa
@@ -583,16 +590,16 @@ aa
 (6,1,1) = {"
 ab
 ac
-ad
+aK
 ai
 ak
 ak
 ak
 ak
 aH
-ad
-ad
-ad
+aK
+aK
+aK
 aN
 aP
 aW
@@ -603,8 +610,8 @@ bj
 bm
 aW
 aN
-ad
-ad
+aK
+aK
 ac
 ab
 aa
@@ -617,15 +624,15 @@ aa
 (7,1,1) = {"
 ab
 ac
-ad
+aK
 ai
 al
 ak
 ak
 ak
 ay
-ad
-ad
+aK
+aK
 an
 aN
 aP
@@ -651,16 +658,16 @@ aa
 (8,1,1) = {"
 ab
 ac
-ad
+aK
 ai
 am
 aw
 aA
 ak
 ai
-ad
-ad
-ad
+aK
+Fy
+aK
 aN
 aQ
 aW
@@ -672,7 +679,7 @@ bb
 bp
 aN
 aB
-ad
+aK
 ac
 ab
 aa
@@ -693,7 +700,7 @@ ai
 ai
 ai
 aB
-ad
+aK
 ad
 aN
 aR
@@ -705,8 +712,8 @@ bb
 bb
 bp
 aN
-ad
-ad
+aK
+aK
 ac
 ab
 aa
@@ -720,15 +727,15 @@ aa
 ab
 ac
 ac
-ad
-ad
-ad
-ad
+aK
+an
+aK
+aK
 Fy
-ad
-ad
-ad
-ad
+aK
+aK
+aK
+aK
 aN
 aS
 aW
@@ -739,8 +746,8 @@ bk
 bk
 aW
 aN
-ad
-ad
+aK
+aK
 ac
 ab
 bt
@@ -753,16 +760,16 @@ aa
 (11,1,1) = {"
 ab
 ac
-ad
+aK
 ag
 ag
-ad
-ad
-ad
+aK
+lq
+aK
 ac
 an
-ad
-ad
+aK
+aK
 aN
 aT
 aX
@@ -773,8 +780,8 @@ aW
 aW
 bq
 aN
-ad
-ad
+aK
+aK
 ac
 ab
 bt
@@ -790,13 +797,13 @@ ac
 ag
 ag
 ag
-ad
+aK
 aB
 ac
 ac
 ac
 ac
-ad
+aK
 aN
 aT
 aY
@@ -807,8 +814,8 @@ aW
 aW
 br
 aN
-ad
-ad
+aK
+aK
 ac
 ab
 bt
@@ -824,7 +831,7 @@ ac
 ag
 ag
 ag
-ad
+aK
 ac
 ac
 ac
@@ -841,7 +848,7 @@ bl
 bn
 aN
 aN
-ad
+aK
 ag
 ac
 ab
@@ -857,25 +864,25 @@ ab
 ad
 ag
 ag
-ad
-ad
+aK
+aK
 ac
 ac
 ac
 ac
 ac
-ad
+aK
 aB
-ad
+aK
 ac
 ac
-ad
-ad
-ad
-ad
-ad
+aK
+aK
+an
+aK
+aK
 aB
-ad
+aK
 ac
 bv
 ac
@@ -888,9 +895,9 @@ aa
 "}
 (15,1,1) = {"
 ab
-ad
-ad
-ad
+aK
+aK
+aK
 an
 ac
 ac
@@ -922,8 +929,8 @@ aa
 "}
 (16,1,1) = {"
 ab
-ad
-ad
+aK
+aK
 ac
 ac
 ac
@@ -956,8 +963,8 @@ aa
 "}
 (17,1,1) = {"
 ab
-ad
-ad
+an
+aK
 ac
 ac
 ac
@@ -990,7 +997,7 @@ aa
 "}
 (18,1,1) = {"
 ab
-ad
+aK
 ac
 ah
 ah
@@ -1004,11 +1011,11 @@ ac
 aF
 ac
 ac
-ad
-ad
+aK
+aK
 lq
-ad
-ad
+aK
+aK
 ac
 ac
 ac
@@ -1078,8 +1085,8 @@ bh
 bi
 bh
 bg
-ad
-ad
+aK
+aK
 ac
 ac
 ab
@@ -1113,7 +1120,7 @@ bh
 bh
 bg
 Fy
-ad
+aK
 ac
 ac
 ab
@@ -1130,7 +1137,7 @@ ac
 ac
 ai
 ap
-ak
+ax
 ak
 ak
 ak
@@ -1146,7 +1153,7 @@ bh
 bh
 bi
 bg
-ad
+aK
 an
 ac
 ac
@@ -1166,7 +1173,7 @@ ai
 aq
 ax
 ak
-ak
+ai
 ak
 aJ
 aL
@@ -1180,8 +1187,8 @@ bh
 bh
 bi
 bg
-ad
-ad
+aK
+ag
 ac
 ac
 ab
@@ -1198,9 +1205,9 @@ ac
 ah
 ai
 ar
-ax
 ak
 ak
+ai
 ak
 ao
 ao
@@ -1208,14 +1215,14 @@ ao
 ak
 ak
 ak
-ak
+bx
 ai
 bi
 bh
 bh
 bg
-ad
-ad
+aK
+aK
 ac
 ac
 ab
@@ -1234,11 +1241,11 @@ ai
 as
 ax
 ak
+ai
 ak
-ak
-ao
-ao
-ao
+aM
+aM
+nl
 ak
 ak
 ak
@@ -1248,8 +1255,8 @@ bi
 bi
 bi
 bg
-ad
-ad
+aK
+aK
 ac
 ac
 ab
@@ -1270,20 +1277,20 @@ ax
 ak
 ak
 ak
-aK
-aK
-aM
+ak
+ak
+ak
 ak
 ak
 ak
 be
 ai
 Fy
-ad
+aK
 bg
 bg
-ad
-ad
+an
+aK
 ac
 ac
 ab
@@ -1312,11 +1319,11 @@ ak
 ak
 ao
 ai
-ad
+aK
 lq
-ad
-ad
-ad
+aK
+aK
+aK
 ac
 ac
 ac
@@ -1348,8 +1355,8 @@ ao
 ai
 bc
 Fy
-ad
-ad
+aK
+aK
 ac
 ac
 ac
@@ -1380,9 +1387,9 @@ ai
 ai
 ai
 ai
-ad
+aK
 an
-ad
+aK
 ac
 ac
 ac
@@ -1412,10 +1419,10 @@ ah
 aO
 aO
 aO
-ad
-ad
-ad
-ad
+aK
+aK
+aK
+aK
 ac
 ac
 ac
@@ -1444,11 +1451,11 @@ ac
 ac
 ac
 ac
+aK
+ag
+aK
 ad
-ad
-ad
-ad
-ad
+aK
 ac
 ac
 ac

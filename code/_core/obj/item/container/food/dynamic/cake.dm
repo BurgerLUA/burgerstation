@@ -140,7 +140,7 @@
 				icing_amount += amount
 		if(icing)
 			var/image/I = new/image(initial(icon),"[cooked_icon_state]_icing")
-			I.appearance_flags = RESET_COLOR
+			I.appearance_flags = RESET_COLOR | KEEP_APART
 			I.color = icing_color
 			I.alpha = clamp((icing_amount/10)*225,100,255)
 			add_overlay(I)

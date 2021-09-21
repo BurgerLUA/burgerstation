@@ -32,6 +32,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
 	return ..()
@@ -126,3 +128,5 @@
 		ION = 0,
 		PAIN = INFINITY
 	)
+
+	level = 12

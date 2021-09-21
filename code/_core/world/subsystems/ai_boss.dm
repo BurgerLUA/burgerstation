@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(bossai)
 	name = "Boss AI Subsystem"
 	desc = "Controls the AI of bosses."
-	tick_rate = DECISECONDS_TO_TICKS(BOSS_TICK)
+	tick_rate = AI_TICK_FAST
 	priority = SS_ORDER_IMPORTANT
 	cpu_usage_max = 100
 	tick_usage_max = 100

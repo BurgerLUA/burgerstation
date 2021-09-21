@@ -7,16 +7,14 @@
 	ai = /ai/ghost/
 	damage_type = /damagetype/npc/ghost
 
-
-
 	var/desired_alpha = 200 //Controlled in AI.
 
-	has_footsteps = FALSE
+	has_footsteps = TRUE
 
-	collision_flags = FLAG_COLLISION_UNSIMULATED
+	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	health_base = 500
 	stamina_base = 500
@@ -62,6 +60,11 @@
 	size = SIZE_LARGE
 
 	soul_size = SOUL_SIZE_RARE
+
+	enable_chunk_clean = FALSE
+
+	density = TRUE
+	anchored = FALSE
 
 /mob/living/simple/ghost/on_crush()
 	return FALSE

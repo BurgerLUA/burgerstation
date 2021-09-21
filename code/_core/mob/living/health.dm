@@ -53,7 +53,7 @@
 
 /mob/living/proc/check_death()
 
-	if(!health)
+	if(!health || immortal)
 		return FALSE
 
 	var/health_added = 0
@@ -81,7 +81,7 @@
 
 	if(savage_hit)
 		total_bleed_damage *= 3
-		src.on_savage_hit(atom_damaged,attacker,weapon,damage_table,damage_amount,critical_hit_multiplier,stealthy)
+		src.on_savage_hit(atom_damaged,attacker,weapon,DT,damage_table,damage_amount,critical_hit_multiplier,stealthy)
 		if(!src.dead)
 			src.visible_message(span("warning","\The [src.name] takes a savage hit!"),span("danger","You take a savage hit!"))
 
@@ -175,7 +175,7 @@
 	return TRUE
 
 
-/mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/best_attribute = null
 	var/best_damage = 0

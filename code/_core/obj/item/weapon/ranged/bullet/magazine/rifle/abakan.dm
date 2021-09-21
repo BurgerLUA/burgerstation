@@ -7,10 +7,10 @@
 	value = 1750
 
 	shoot_delay = 1
-	burst_delay = 5
+	burst_delay = 4
 	max_bursts = 2
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("burst")
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
@@ -22,7 +22,7 @@
 	size = SIZE_4
 	weight = 12
 
-	heat_max = 0.04
+	heat_max = 0.05
 
 	bullet_length_min = 38
 	bullet_length_best = 39

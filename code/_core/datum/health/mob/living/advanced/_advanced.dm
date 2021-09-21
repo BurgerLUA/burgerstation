@@ -97,28 +97,6 @@
 	if(. && update)
 		A.queue_health_update = TRUE
 
-/*
-/health/mob/living/advanced/adjust_tox_loss(var/value)
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	return A.heal_all_organs(0,0,-value,0)
-*/
-
-/*
-/health/mob/living/advanced/adjust_oxy_loss(var/value)
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	return A.heal_all_organs(0,0,0,-value)
-*/
-
 /health/mob/living/advanced/update_health_stats()
 
 	if(!is_advanced(owner))
@@ -170,10 +148,10 @@
 		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
 			A.remove_status_effect(CRIT)
 
-		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
+		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && A.status_effects[PAINKILLER] <= 0 && !A.status_effects[PAINCRIT])
 			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
 
-		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
+		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER] > 0) && A.status_effects[PAINCRIT])
 			A.remove_status_effect(PAINCRIT)
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)

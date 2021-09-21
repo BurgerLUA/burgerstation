@@ -25,7 +25,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 12
+	level = 34
 
 /mob/living/simple/clockwork_marauder/post_death()
 	. = ..()

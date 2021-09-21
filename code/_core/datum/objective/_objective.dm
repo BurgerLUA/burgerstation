@@ -13,6 +13,8 @@
 
 	var/track_cargo = FALSE
 
+	var/is_new = TRUE
+
 /objective/proc/on_object_sold(var/atom/movable/object)
 	return TRUE
 

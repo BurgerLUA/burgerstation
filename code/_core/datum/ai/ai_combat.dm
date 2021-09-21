@@ -89,13 +89,11 @@
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
-	/*
 	if(istype(A,/mob/living/vehicle/))
 		var/mob/living/vehicle/V = A
 		if(!length(V.passengers))
 			return FALSE
 		A = V.passengers[1]
-	*/
 
 	if(A == owner)
 		return FALSE

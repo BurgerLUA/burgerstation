@@ -14,7 +14,7 @@
 
 	drop_item(get_turf(src))
 
-	if(is_advanced(caller))
+	if(!src.qdeleting && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.put_in_hands(src)
 		A.on_strip(src,old_loc)

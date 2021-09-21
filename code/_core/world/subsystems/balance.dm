@@ -13,23 +13,28 @@ SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
 
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = new k(locate(1,1,1))
+		if(B.rarity != RARITY_COMMON || B.value <= 0)
+			qdel(B)
+			continue
+		INITIALIZE(B)
+		GENERATE(B)
+		FINALIZE(B)
 		created_bullets += B
 
 	for(var/k in subtypesof(/obj/item/weapon))
+		var/obj/item/weapon/W = k
+		if(initial(W.value) <= 0)
+			continue
 
-		var/obj/item/weapon/W = new k(locate(1,1,1))
+		W = new W(locate(1,1,1))
 
 		if(istype(W,/obj/item/weapon/ranged/bullet))
 			var/obj/item/weapon/ranged/bullet/B = W
 			for(var/v in created_bullets)
 				var/obj/item/bullet_cartridge/C = v
-				if(C.bullet_length < B.bullet_length_min)
+				if(C.bullet_length != B.bullet_length_best)
 					continue
-				if(C.bullet_length > B.bullet_length_max)
-					continue
-				if(C.bullet_diameter < B.bullet_diameter_min)
-					continue
-				if(C.bullet_diameter > B.bullet_diameter_max)
+				if(C.bullet_diameter < B.bullet_diameter_best)
 					continue
 				weapon_to_bullet[B.type] = C.type
 				break

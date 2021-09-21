@@ -25,6 +25,9 @@ SUBSYSTEM_DEF(discord)
 	if(world.port == 0) //Don't send to local servers.
 		return FALSE
 
+	if(!world.visibility)
+		return FALSE
+
 	var/list/webhook_forum_params = list(
 		"content" = message_to_send
 	)

@@ -14,7 +14,8 @@
 
 	. = ..()
 
-	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY,0,1,10))
+	health_max = O.health_base * max(1,A.health.health_max/100)
+	health_max = CEILING(health_max,5)
 
 /health/obj/item/organ/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
@@ -54,8 +55,12 @@
 	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
 		return 0
 
+	if(pain && pain > 0 && is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		A.mood -= pain*0.25
+
 	if(tox || oxy || fatigue || sanity || mental) //These types should be dealt to the owner.
-		if(owner.loc && is_advanced(owner.loc))
+		if(is_advanced(owner.loc))
 			var/mob/living/advanced/A = owner.loc
 			if(A.health)
 				. += A.health.adjust_loss_smart(

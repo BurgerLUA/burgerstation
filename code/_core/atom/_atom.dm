@@ -104,19 +104,7 @@
 
 	all_listeners -= src
 
-	return ..()
-
-/atom/PostInitialize()
-
-	if(health)
-		health = new health(src)
-		INITIALIZE(health)
-		FINALIZE(health)
-
-	update_atom_light()
-
-	return ..()
-
+	. = ..()
 
 /atom/proc/get_base_transform()
 	return matrix()
@@ -129,11 +117,17 @@
 	if(listener)
 		all_listeners |= src
 
+	if(health)
+		health = new health(src)
+		INITIALIZE(health)
+		FINALIZE(health)
+
 	. = ..()
 
 /atom/Finalize()
 	. = ..()
 	update_name(name) //Setup labels
+	update_atom_light()
 
 /atom/New()
 

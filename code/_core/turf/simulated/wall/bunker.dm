@@ -10,4 +10,4 @@
 	destruction_turf = /turf/simulated/floor/plating
 
 	material_id = /material/steel
-	health_base = 1000
+	health_base = 4000
