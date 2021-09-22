@@ -91,7 +91,6 @@
 				found_grenade = null
 				checked_grenades = FALSE
 			return TRUE
-
 	if(istype(A.left_item,/obj/item/weapon/ranged/))
 		if(!handle_gun(A.left_item))
 			return FALSE
@@ -180,16 +179,12 @@
 
 	return TRUE
 
-
-
-
 /ai/advanced/handle_movement()
 
 	if(handle_movement_weapon())
 		return TRUE
 
-	return ..()
-
+	. = ..()
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 

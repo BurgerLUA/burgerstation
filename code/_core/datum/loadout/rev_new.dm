@@ -1,32 +1,5 @@
 /loadout/rev
 
-
-
-
-/loadout/rev/basic
-	spawning_items = list(
-		/obj/item/clothing/pants/normal/grey,
-		/obj/item/clothing/overwear/armor/bulletproof,
-		/obj/item/clothing/overwear/coat/brown,
-		/obj/item/clothing/mask/gas/glass,
-		/obj/item/clothing/head/hat/ushanka,
-		/obj/item/clothing/hands/gloves/colored/insulated,
-		/obj/item/clothing/hands/gloves/colored/insulated/left,
-		/obj/item/clothing/feet/shoes/winter,
-		/obj/item/clothing/feet/shoes/winter/left,
-		/obj/item/clothing/belt/storage/tool,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
-		/obj/item/weapon/melee/sword/rev_bayonet,
-		/obj/item/magazine/rifle_762_long,
-		/obj/item/magazine/rifle_762_long,
-		/obj/item/magazine/rifle_762_long,
-		/obj/item/magazine/rifle_762_long,
-		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
-	)
-
 /loadout/rev/solider
 	spawning_items = list(
 		/obj/item/clothing/pants/gorka,
@@ -49,7 +22,7 @@
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/grenade/fuse/he
 	)
 
 /loadout/rev/solider/alt
@@ -74,7 +47,7 @@
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/grenade/fuse/he
 	)
 
 
@@ -99,7 +72,7 @@
 		/obj/item/magazine/bizon_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/grenade/fuse/he
 	)
 
 /loadout/rev/exo
@@ -122,7 +95,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/grenade/fuse/he
 	)
 
 
@@ -146,7 +119,7 @@
 		/obj/item/magazine/gauss_gun,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/grenade/fuse/he
 	)
 
 

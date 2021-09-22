@@ -7,7 +7,6 @@
 
 
 	var/list/possible_outfits = list(
-		/loadout/rev/basic = 50,
 		/loadout/rev/solider = 10,
 		/loadout/rev/solider/alt = 10,
 		/loadout/rev/skat = 10,
@@ -16,8 +15,7 @@
 	)
 
 	var/loadout_to_level = list(
-		/loadout/rev/basic = 1,
-		/loadout/rev/solider = 2,
+		/loadout/rev/solider = 1,
 		/loadout/rev/solider/alt = 2,
 		/loadout/rev/skat = 4,
 		/loadout/rev/exo = 8,
