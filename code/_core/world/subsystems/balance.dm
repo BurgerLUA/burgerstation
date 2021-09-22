@@ -1,4 +1,4 @@
-SUBSYSTEM_DEF(balance) //Finally. A subsystem dedicated to BALLS.
+SUBSYSTEM_DEF(balance)
 	name = "Balance Subsystem"
 	desc = "Makes a report of weapons."
 

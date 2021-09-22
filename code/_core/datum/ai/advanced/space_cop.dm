@@ -37,8 +37,6 @@ var/global/list/space_cop_tag_shitlist = list()
 			located_chair_turf = null
 			return TRUE
 		if(owner.loc != located_chair_turf)
-			if(handle_movement_sidestep())
-				return TRUE
 			owner.move_dir = get_dir(owner,located_chair_turf)
 		else
 			owner.move_dir = 0x0

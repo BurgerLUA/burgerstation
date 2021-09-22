@@ -18,7 +18,7 @@
 			if(length(current_path))
 				frustration_path++
 			if(frustration_move >= frustration_move_threshold)
-				sidestep_next = TRUE
+				sidestep_next = 3
 				frustration_move = 0
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
@@ -54,8 +54,21 @@
 			owner.movement_flags = MOVEMENT_RUNNING
 		else
 			owner.movement_flags = MOVEMENT_NORMAL
+			var/owner_to_objective_dir = get_dir(owner,objective_attack)
+			var/turf/T1 = get_step(owner,owner_to_objective_dir)
+			if(!T1.is_safe_teleport(FALSE))
+				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90))
+				frustration_move++
+				return TRUE
+			var/objective_to_owner_dir = get_dir(objective_attack,owner)
+			var/turf/T2 = get_step(objective_attack,objective_to_owner_dir)
+			if(!T2.is_safe_teleport(FALSE))
+				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90))
+				frustration_move++
+				return TRUE
 			if(prob(target_distance <= 1 ? 25 : 5))
-				owner.move_dir = pick(turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90))
+				owner.move_dir = turn(get_dir(owner,objective_attack),pick(-90,90))
+
 		return TRUE
 
 	return FALSE
@@ -222,22 +235,6 @@
 
 	return FALSE
 
-/ai/proc/handle_movement_sidestep()
-
-	if(sidestep_next)
-		if(!owner.move_dir)
-			owner.move_dir = pick(DIRECTIONS_INTERCARDINAL)
-		if(prob(50))
-			var/move_cone = pick(45,90)
-			owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))
-		else
-			owner.move_dir = turn(owner.dir,180)
-		sidestep_next = FALSE
-		frustration_move = 0
-		return TRUE
-
-	return FALSE
-
 /ai/proc/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_NORMAL
 	owner.move_dir = 0x0
@@ -246,9 +243,6 @@
 /ai/proc/handle_movement()
 
 	if(handle_movement_astar())
-		return TRUE
-
-	if(handle_movement_sidestep())
 		return TRUE
 
 	if(handle_movement_path_frustration())

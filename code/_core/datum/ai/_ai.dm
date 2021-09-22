@@ -63,6 +63,8 @@
 
 	var/list/current_path_astar = list()
 
+	var/turf/last_combat_location //last location where there was an objective_attack
+
 	var/list/obstacles = list()
 
 	var/distance_target_min = 1

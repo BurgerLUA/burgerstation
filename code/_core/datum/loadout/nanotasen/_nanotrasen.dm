@@ -24,7 +24,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm,
-		/obj/item/weapon/melee/energy/stunbaton
+		/obj/item/weapon/melee/energy/stunbaton,
+		/obj/item/grenade/timed/explosive,
+		/obj/item/grenade/timed/explosive
 	)

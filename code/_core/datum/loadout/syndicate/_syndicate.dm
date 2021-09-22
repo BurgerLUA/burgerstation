@@ -41,7 +41,7 @@
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/shotgunnner
@@ -66,10 +66,10 @@
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/buckshot,
-		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/basic
@@ -92,7 +92,7 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/advanced
@@ -111,11 +111,11 @@
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/pistol_12mm,
 		/obj/item/magazine/pistol_12mm,
-		/obj/item/magazine/pistol_12mm,
-		/obj/item/magazine/pistol_12mm
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/elite
@@ -198,6 +198,6 @@
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,
-		/obj/item/magazine/syringe_gun
+		/obj/item/grenade/timed/lube_smoke
 
 	)

@@ -8,8 +8,7 @@
 		container.transfer_reagents_to(T,container.volume_current,caller=owner)
 		queue_delete(T,desired_duration)
 
-	var/obj/effect/temp/smoke/S = new(desired_turf,desired_duration,list(),T,owner,desired_power)
-	S.alpha = alpha
+	var/obj/effect/temp/smoke/S = new(desired_turf,desired_duration,list(),T,owner,desired_power,alpha)
 	return S
 
 /obj/effect/temp/smoke
@@ -45,7 +44,7 @@
 	. = ..()
 	try_splash(O)
 
-/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20)
+/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255)
 	. = ..()
 	CALLBACK("fade_out_\ref[src]",duration-fade_time,src,.proc/fade_out)
 	container = desired_container
@@ -59,6 +58,7 @@
 		blacklist_turfs = desired_blacklist_turfs
 	if(desired_location)
 		try_splash(desired_location)
+	alpha = desired_alpha
 	if(alpha >= 255)
 		opacity = TRUE
 

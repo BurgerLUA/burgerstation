@@ -52,6 +52,9 @@
 
 	if(!owner.anchored && owner.move_delay <= 0)
 		handle_movement()
+		if(sidestep_next > 0)
+			owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
+			sidestep_next--
 
 	owner.handle_movement(tick_rate)
 

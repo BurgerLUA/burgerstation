@@ -132,9 +132,6 @@
 
 	return FALSE
 
-/ai/proc/is_friend(var/mob/living/L)
-	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
-
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(is_living(attacker) && !stealthy && attacker != objective_attack)

@@ -45,7 +45,6 @@
 		return TRUE
 
 	frustration_attack = 0
-
 	objective_attack = null
 	owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
 	owner.update_intent()
@@ -96,8 +95,10 @@
 					frustration_attack = 0
 				else if(sight_chance <= 50)
 					frustration_attack += tick_rate
+					last_combat_location = get_turf(objective_attack)
 				else
 					frustration_attack = 0
+					last_combat_location = get_turf(objective_attack)
 		else if(isturf(objective_attack) && objective_attack.Enter(owner))
 			set_objective(null)
 		else if(get_dist(owner,objective_attack) > attack_distance_max)
@@ -118,11 +119,10 @@
 				best_target = A
 				best_score = local_score
 		if(best_target && best_target != objective_attack)
-			if(reaction_time)
-				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
-			else
-				set_objective(best_target)
-
+			set_objective(best_target)
+		else
+			if(last_combat_location && !length(current_path_astar))
+				set_path_astar(last_combat_location)
 		frustration_attack = 0
 
 	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))

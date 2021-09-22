@@ -10,7 +10,7 @@
 	if(true_distance <= 1)
 		return 100
 
-	if(attackers[A])
+	if(attackers[A] && A != objective_attack)
 		return 100
 
 	var/vision_distance = true_distance
