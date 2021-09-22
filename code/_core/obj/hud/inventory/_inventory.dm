@@ -476,6 +476,14 @@
 	return TRUE
 	*/
 
+/obj/hud/inventory/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+
+	. = ..()
+
+	for(var/k in contents)
+		var/atom/movable/M = k
+		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
 	if(loc && loc == I)
@@ -578,8 +586,6 @@
 			return FALSE
 
 	return TRUE
-
-
 
 /atom/proc/get_top_object()
 

@@ -511,3 +511,21 @@ mob/living/advanced/Login()
 		return text
 	text = S.mod_speech(src,text)
 	return ..()
+
+/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	for(var/i=1,i<=5,i++)
+		var/list/params = list()
+		params[PARAM_ICON_X] = rand(0,32)
+		params[PARAM_ICON_Y] = rand(0,32)
+		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
+		var/damagetype/D = all_damage_types[/damagetype/explosion/]
+		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
+	return TRUE
+
+/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+
+	. = ..()
+
+	for(var/k in organs)
+		var/obj/item/organ/O = k
+		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty)

@@ -330,3 +330,10 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 			damage_desc += "<u><b>gushing blood</b></u>"
 
 	return damage_desc
+
+
+/obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	. = ..()
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
+		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty)

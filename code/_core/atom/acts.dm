@@ -11,3 +11,8 @@
 			D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 
 	return TRUE
+
+
+/atom/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	if(health) health.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+	return TRUE

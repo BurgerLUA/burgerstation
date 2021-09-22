@@ -92,3 +92,7 @@
 /health/obj/item/organ/synthetic
 	resistance = list(PAIN=0,TOX=0)
 	organic = FALSE
+
+/health/obj/item/organ/synthetic/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	adjust_loss_smart(burn=magnitude)
+	return TRUE

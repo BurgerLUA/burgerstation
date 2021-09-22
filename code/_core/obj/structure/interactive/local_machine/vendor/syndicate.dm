@@ -52,7 +52,8 @@
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
 		/obj/item/tempering/quality/ranged/lesser,
-		/obj/item/tempering/quality/greater
+		/obj/item/tempering/quality/greater,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /obj/structure/interactive/vending/syndicate/medicine
@@ -252,5 +253,7 @@
 		/obj/item/magazine/lmg_762_r,
 
 		/obj/item/tempering/quality/ranged/lesser,
-		/obj/item/tempering/quality/greater
+		/obj/item/tempering/quality/greater,
+
+		/obj/item/grenade/fuse/he
 	)
