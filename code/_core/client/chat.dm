@@ -3,7 +3,9 @@
 	if(!text || !chat_type)
 		return FALSE
 
-	if(!isnum(chat_type)) CRASH("chat_type ([chat_type]) was not a number!")
+	if(!isnum(chat_type))
+		CRASH("chat_type ([chat_type]) was not a number!")
+		return FALSE
 
 	if(!queued_chat_messages)
 		log_error("Error: [src.get_debug_name()] didn't have a queued_chat_messages variable!")

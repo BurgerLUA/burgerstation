@@ -14,7 +14,7 @@ dmm_suite
 	write_map(turf/turf1, turf/turf2, flags as num)
 		//Check for valid turfs.
 		if(!isturf(turf1) || !isturf(turf2))
-			CRASH("Invalid arguments supplied to proc write_map; the arguments were not turfs!")
+			CRASH("Invalid arguments supplied to proc write_map, arguments were not turfs.")
 		var /turf/lowCorner  = locate(min(turf1.x,turf2.x), min(turf1.y,turf2.y), min(turf1.z,turf2.z))
 		var /turf/highCorner = locate(max(turf1.x,turf2.x), max(turf1.y,turf2.y), max(turf1.z,turf2.z))
 		var startZ = lowCorner.z
@@ -64,7 +64,7 @@ dmm_suite
 			startX > world.maxx             || \
 			startY > world.maxy             || \
 			startZ > world.maxz                \
-		) CRASH("write_cube dimensions outside valid range!")
+		) CRASH("Dimensions outside valid range")
 		// Create dmm_suite comments to store in map file
 		var/obj/dmm_suite/comment/mapComment = new(locate(startX, startY, startZ))
 		mapComment.coordinates = "[startX],[startY],[startZ]"

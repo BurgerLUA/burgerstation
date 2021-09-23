@@ -55,6 +55,7 @@
 	if(!client)
 		qdel(src)
 		CRASH("Tired to initialize an observer without a client!")
+		return FALSE
 
 	name = "ghost of [ckey]"
 

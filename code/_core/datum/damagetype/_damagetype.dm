@@ -259,7 +259,9 @@
 
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
-	if(!length(victims)) CRASH("Swing had no victims!")
+	if(!length(victims))
+		CRASH("Swing had no victims!")
+		return FALSE
 
 	if(!length(hit_objects))
 		return perform_miss(attacker,victims[1],weapon)
@@ -298,21 +300,27 @@
 
 		if(!is_valid(attacker))
 			CRASH("Could not swing as there was no attacker!")
+			return FALSE
 
 		if(!is_valid(weapon))
 			CRASH("Could not swing as there was no weapon!")
+			return FALSE
 
 		if(!is_valid(victim))
 			CRASH("Could not swing as there was no victim!")
+			return FALSE
 
 		if(!is_valid(victim.health))
 			CRASH("Could not swing as there was no victim health! (Victim: [victim])")
+			return FALSE
 
 		if(!is_valid(hit_object))
 			CRASH("Could not swing as there was no hit_object!")
+			return FALSE
 
 		if(!is_valid(hit_object.health))
 			CRASH("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
+			return FALSE
 
 		if(!did_animation)
 			. = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
@@ -341,21 +349,27 @@
 
 	if(!is_valid(attacker))
 		CRASH("Could not process damage ([get_debug_name()]) as there was no attacker!")
+		return FALSE
 
 	if(!is_valid(victim))
 		CRASH("Could not process damage ([get_debug_name()]) as there was no victim!")
+		return FALSE
 
 	if(!is_valid(weapon))
 		CRASH("Could not process damage ([get_debug_name()]) as there was no weapon!")
+		return FALSE
 
 	if(!is_valid(hit_object))
 		CRASH("Could not process damage ([get_debug_name()]) as there was no hit_object!")
+		return FALSE
 
 	if(!is_valid(hit_object.health))
 		CRASH("Could not process damage ([get_debug_name()]) as there was no hit_object health! (Hitobject: [hit_object])")
+		return FALSE
 
 	if(!is_valid(victim.health))
 		CRASH("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
+		return FALSE
 
 	if(debug)
 		log_debug("**************************************")
@@ -487,20 +501,22 @@
 		for(var/damage_type in damage_to_deal_main)
 			total_damage_dealt += damage_to_deal_main[damage_type]
 	else
-		if(!hit_object.health) CRASH("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
-		total_damage_dealt += hit_object.health.adjust_loss_smart(
-			brute = damage_to_deal_main[BRUTE],
-			burn = damage_to_deal_main[BURN],
-			tox = damage_to_deal_main[TOX],
-			oxy = damage_to_deal_main[OXY],
-			fatigue = damage_to_deal_main[FATIGUE],
-			pain = damage_to_deal_main[PAIN],
-			rad = damage_to_deal_main[RAD],
-			sanity = damage_to_deal_main[SANITY],
-			mental = damage_to_deal_main[MENTAL],
-			update = FALSE
-		)
-
+		if(hit_object.health)
+			total_damage_dealt += hit_object.health.adjust_loss_smart(
+				brute = damage_to_deal_main[BRUTE],
+				burn = damage_to_deal_main[BURN],
+				tox = damage_to_deal_main[TOX],
+				oxy = damage_to_deal_main[OXY],
+				fatigue = damage_to_deal_main[FATIGUE],
+				pain = damage_to_deal_main[PAIN],
+				rad = damage_to_deal_main[RAD],
+				sanity = damage_to_deal_main[SANITY],
+				mental = damage_to_deal_main[MENTAL],
+				update = FALSE
+			)
+		else
+			CRASH("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
+			return TRUE
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 

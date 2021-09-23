@@ -6,8 +6,7 @@
 	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a higher barrel length. Also affects projectile speed.
 
 	var/automatic = FALSE
-	var/max_bursts = 0 //Inherint maximum amount of bursts.
-	var/current_maxmium_bursts = 0 //Read only. Controlled by firemode changing.
+	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
 	var/current_bursts = 0 //Read only.
 	var/shoot_delay = 4 //In deciseconds
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
@@ -92,12 +91,12 @@
 	switch(selected_firemode)
 		if("automatic")
 			automatic = TRUE
-			current_maxmium_bursts = 0
+			max_bursts = 0
 		if("semi-automatic")
 			automatic = FALSE
 		if("burst")
 			automatic = TRUE
-			current_maxmium_bursts = max_bursts
+			max_bursts = initial(max_bursts)
 	caller?.to_chat(span("notice","You switch to [selected_firemode] mode."))
 	return TRUE
 
@@ -187,10 +186,6 @@
 			firemodes = list("automatic")
 		else
 			firemodes = list("semi-automatic")
-
-	if(max_bursts < 1 && ("burst" in firemodes))
-		log_error("Warning: [src.get_debug_name()] had a burst setting, but no set max_bursts!")
-		max_bursts = 3
 
 	on_firemode_changed()
 
@@ -400,7 +395,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
-	var/max_bursts_to_use = current_maxmium_bursts
+	var/max_bursts_to_use = max_bursts
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
 	var/penetrations_left = 0
@@ -602,7 +597,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
-	if(!target) CRASH("There is no valid target defined!")
+	if(!target)
+		CRASH("There is no target defined!")
+		return FALSE
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 

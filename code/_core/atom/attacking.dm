@@ -31,11 +31,17 @@
 	if(!params)
 		params = list()
 
-	if(!victim) CRASH("[src.get_debug_name()] tried attacking without a victim!")
+	if(!victim)
+		CRASH("[src.get_debug_name()] tried attacking without a victim!")
+		return FALSE
 
-	if(qdeleting) CRASH("[src.get_debug_name()] tried attacking, but it was deleting!")
+	if(qdeleting)
+		CRASH("[src.get_debug_name()] tried attacking, but it was deleting!")
+		return FALSE
 
-	if(attacker.qdeleting) CRASH("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
+	if(attacker.qdeleting)
+		CRASH("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
+		return FALSE
 
 	var/atom/changed_target = victim.change_victim(attacker,src)
 	if(changed_target)
@@ -174,7 +180,9 @@
 
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)
-		if(!(A1 && A2)) CRASH("Warning: tried attacking without valid areas!")
+		if(!(A1 && A2))
+			CRASH("Warning: tried attacking without valid areas!")
+			return FALSE
 		if( (A1.flags_area & FLAGS_AREA_NO_DAMAGE) || (A2.flags_area & FLAGS_AREA_NO_DAMAGE) )
 			return FALSE
 

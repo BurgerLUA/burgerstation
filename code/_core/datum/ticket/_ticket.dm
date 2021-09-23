@@ -12,8 +12,8 @@
 /ticket/proc/open(var/desired_creator)
 
 	if(!desired_creator)
+		CRASH("Tried to create a ticket without a creator!")
 		qdel(src)
-		CRASH("Tried to open a ticket without a creator!")
 		return FALSE
 
 	var/client/C = CLIENT(desired_creator)

@@ -77,5 +77,3 @@
 )
 
 #define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.
-
-#define CRASH_SAFE(x) log_error("[x] in [__FILE__]:[__LINE__]")

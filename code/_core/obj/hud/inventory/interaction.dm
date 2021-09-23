@@ -212,13 +212,14 @@
 
 /obj/hud/inventory/proc/unwield(var/mob/caller,var/obj/item/item_to_wield)
 
+	caller.to_chat(span("notice","You unbrace \the [item_to_wield] with your [src.loc.name]."))
+
 	var/obj/hud/inventory/holding = item_to_wield.loc
+
 	if(holding && is_inventory(holding))
 		holding.child_inventory = null
 	else
-		CRASH("ERROR: unwield() variable holding wasn't valid ([holding])!")
-
-	caller.to_chat(span("notice","You unbrace \the [item_to_wield] with your [src.loc.name]."))
+		CRASH("ERRROR: unwield() variable holding wasn't valid ([holding])!")
 
 	src.parent_inventory = null
 	item_to_wield.wielded = null

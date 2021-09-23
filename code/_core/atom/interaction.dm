@@ -31,8 +31,9 @@
 	if(delay_checks && caller.client && caller.client.interact_next > world.time)
 		return FALSE
 
-	if(!ismob(caller)) CRASH("Tried passing a non-mob ([caller.get_debug_name()]) as a caller when interacting with [src.get_debug_name()]!")
-
+	if(!ismob(caller))
+		CRASH("Tried passing a non-mob ([caller.get_debug_name()]) as a caller when interacting with [src.get_debug_name()]!")
+		return FALSE
 
 	. = FALSE
 

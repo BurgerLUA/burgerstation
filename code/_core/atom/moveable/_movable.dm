@@ -157,17 +157,17 @@
 
 /atom/movable/Initialize()
 
-	if(!loc)
-		log_error("ERROR: [get_debug_name()] didn't have a loc to initialize in!")
-	else
+	if(loc)
 		area = get_area(loc)
-		if(!area) log_error("ERROR: [get_debug_name()] didn't have an area to initialize in! (Loc: [loc.get_debug_name()].)")
-
-	area.Entered(src,null)
-
-	if(blocks_air && is_simulated(loc))
-		var/turf/simulated/T = loc
-		T.blocks_air |= blocks_air
+		if(area)
+			area.Entered(src,null)
+		else
+			CRASH("ERROR: [get_debug_name()] didn't have an area to initialize in! (Loc: [loc.get_debug_name()].)")
+		if(blocks_air && is_simulated(loc))
+			var/turf/simulated/T = loc
+			T.blocks_air |= blocks_air
+	else
+		CRASH("ERROR: [get_debug_name()] didn't have a loc to initialize in!")
 
 	return ..()
 
