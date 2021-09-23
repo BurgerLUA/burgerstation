@@ -282,7 +282,7 @@
 
 /turf/proc/is_clear_path_to(var/turf/target_turf)
 
-	if(!isturf(target_turf) || target_turf.has_opaque_atom)
+	if(!isturf(target_turf) || target_turf.has_opaque_atom || src.z != target_turf.z)
 		return FALSE
 
 	if(src == target_turf)
