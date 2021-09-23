@@ -36,7 +36,7 @@
 
 /obj/hud/button/Destroy()
 	if(bad_delete)
-		CRASH_SAFE("Warning: [src.get_debug_name()] was deleted incorrectly.")
+		CRASH("Warning: [src.get_debug_name()] was deleted incorrectly.")
 	. = ..()
 
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)

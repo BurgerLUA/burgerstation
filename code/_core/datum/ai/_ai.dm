@@ -184,13 +184,13 @@
 
 	if(desired_active)
 		if(!owner)
-			CRASH_SAFE("AI was set to active without an owner!")
+			CRASH("AI was set to active without an owner!")
 			return FALSE
 		if(owner.qdeleting)
-			CRASH_SAFE("AI was set to active while the owner was qdeleting!")
+			CRASH("AI was set to active while the owner was qdeleting!")
 			return FALSE
 		if(owner.dead)
-			CRASH_SAFE("AI was set to active while the owner was dead!")
+			CRASH("AI was set to active while the owner was dead!")
 			return FALSE
 
 	if(!force && active == desired_active)
@@ -208,7 +208,7 @@
 	else
 		add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
-		set_alert_level(ALERT_LEVEL_NONE,TRUE)
+		set_alert_level(ALERT_LEVEL_NONE,can_lower=TRUE)
 		set_objective(null)
 		set_move_objective(null)
 		CALLBACK_REMOVE("set_new_objective_\ref[src]")

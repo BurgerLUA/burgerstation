@@ -17,11 +17,11 @@
 /proc/create_alert(var/range = VIEW_RANGE,var/turf/epicenter,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
 
 	if(!epicenter)
-		CRASH_SAFE("create_alert() had no epicenter!")
+		CRASH("create_alert() had no epicenter!")
 		return FALSE
 
 	if(epicenter.z == 0)
-		CRASH_SAFE("create_alert() had a non-turf as an epicenter!")
+		CRASH("create_alert() had a non-turf as an epicenter!")
 		return FALSE
 
 	var/z = "[epicenter.z]"

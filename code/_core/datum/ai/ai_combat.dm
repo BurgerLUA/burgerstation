@@ -144,7 +144,7 @@
 				else
 					set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
-			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
+			set_alert_level(ALERT_LEVEL_CAUTION,attacker,attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
 	return TRUE

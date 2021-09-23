@@ -9,7 +9,7 @@
 		return FALSE
 
 	if(!src.client)
-		CRASH_SAFE("Dash called on non-player!")
+		CRASH("Dash called on non-player!")
 		return FALSE
 
 	if(health)

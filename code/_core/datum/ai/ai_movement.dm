@@ -280,7 +280,7 @@
 	if(obstacle && is_living(obstacle))
 		var/mob/living/L = obstacle
 		if(is_enemy(L))
-			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+			set_alert_level(ALERT_LEVEL_CAUTION,L,L)
 			if(attack_on_block)
 				spawn do_attack(obstacle,prob(left_click_chance))
 

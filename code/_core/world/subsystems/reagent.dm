@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(reagent)
 		for(var/r_id in RR.required_reagents)
 			var/reagent/R = all_reagents[r_id]
 			if(!R)
-				CRASH_SAFE("Warning: Reagent [r_id] for recipe [RR.type] is an invalid reagent!")
+				CRASH("Warning: Reagent [r_id] for recipe [RR.type] is an invalid reagent!")
 				continue
 			var/amount = RR.required_reagents[r_id]
 			var/temperature_min = length(RR.required_temperature_min) ? RR.required_temperature_min[r_id] : null

@@ -28,7 +28,7 @@
 		extinguish()
 	else if(on_fire)
 		if(!fire_overlay)
-			CRASH_SAFE("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
+			CRASH("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
 		else
 			fire_overlay.icon_state = "[clamp(FLOOR(1 + (fire_stacks/MAX_FIRE_STACKS)*3,1),1,3)]"
 	return TRUE
@@ -58,7 +58,7 @@
 		return FALSE
 
 	if(!fire_overlay)
-		CRASH_SAFE("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
+		CRASH("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
 	else
 		fire_overlay.icon_state = "0"
 

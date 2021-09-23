@@ -3,15 +3,15 @@
 /proc/recursive_find_item(var/obj/item/I,var/desired_obj,var/desired_proc)
 
 	if(!I)
-		CRASH_SAFE("recursive_find_mob not supplied with an item!")
+		CRASH("recursive_find_mob not supplied with an item!")
 		return FALSE
 
 	if(!desired_proc)
-		CRASH_SAFE("recursive_find_mob not supplied with a proc!")
+		CRASH("recursive_find_mob not supplied with a proc!")
 		return FALSE
 
 	if(!desired_obj)
-		CRASH_SAFE("recursive_find_mob not supplied with a obj!")
+		CRASH("recursive_find_mob not supplied with a obj!")
 		return FALSE
 
 	var/call_result = call(desired_obj,desired_proc)(I)
@@ -32,15 +32,15 @@
 /proc/recursive_find_mob(var/mob/living/advanced/A,var/desired_obj,var/desired_proc)
 
 	if(!A)
-		CRASH_SAFE("recursive_find_mob not supplied with an advanced mob!")
+		CRASH("recursive_find_mob not supplied with an advanced mob!")
 		return FALSE
 
 	if(!desired_proc)
-		CRASH_SAFE("recursive_find_mob not supplied with a proc!")
+		CRASH("recursive_find_mob not supplied with a proc!")
 		return FALSE
 
 	if(!desired_obj)
-		CRASH_SAFE("recursive_find_mob not supplied with a obj!")
+		CRASH("recursive_find_mob not supplied with a obj!")
 		return FALSE
 
 	for(var/k in A.worn_objects)

@@ -1,1 +1,0 @@
-#define CRASH_SAFE(x) EXCEPTION(x)

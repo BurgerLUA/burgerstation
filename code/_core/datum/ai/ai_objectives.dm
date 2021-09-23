@@ -53,13 +53,13 @@
 		if(is_living(old_attack))
 			var/mob/living/L2 = old_attack
 			if(L2.dead)
-				set_alert_level(ALERT_LEVEL_NOISE,TRUE)
+				set_alert_level(ALERT_LEVEL_NOISE,can_lower=TRUE)
 				return TRUE
-		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
+		set_alert_level(ALERT_LEVEL_CAUTION,can_lower=TRUE)
 		set_move_objective(old_attack)
 		return TRUE
 
-	set_alert_level(ALERT_LEVEL_NONE,TRUE)
+	set_alert_level(ALERT_LEVEL_NONE,can_lower=TRUE)
 
 	return TRUE
 
@@ -92,7 +92,6 @@
 				var/sight_chance = get_sight_chance(objective_attack,view_check=TRUE)
 				if(sight_chance <= 0)
 					set_objective(null)
-					frustration_attack = 0
 				else if(sight_chance <= 50)
 					frustration_attack += tick_rate
 					last_combat_location = get_turf(objective_attack)
@@ -208,13 +207,13 @@
 
 	return TRUE
 
-/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
+/ai/proc/set_alert_level(var/desired_alert_level,var/atom/alert_epicenter = null,var/atom/alert_source = null,var/can_lower=FALSE)
 
 	if(!use_alerts)
 		return FALSE
 
 	if(!owner || owner.dead)
-		CRASH_SAFE("AI's alert level was set while it was dead!")
+		CRASH("AI's alert level was set while it was dead!")
 		return FALSE
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))
