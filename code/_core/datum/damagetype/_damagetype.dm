@@ -260,7 +260,7 @@
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
 	if(!length(victims))
-		CRASH("Swing had no victims!")
+		CRASH_SAFE("Swing had no victims!")
 		return FALSE
 
 	if(!length(hit_objects))
@@ -299,27 +299,27 @@
 						hit_object = A.labeled_organs[O.id]
 
 		if(!is_valid(attacker))
-			CRASH("Could not swing as there was no attacker!")
+			CRASH_SAFE("Could not swing as there was no attacker!")
 			return FALSE
 
 		if(!is_valid(weapon))
-			CRASH("Could not swing as there was no weapon!")
+			CRASH_SAFE("Could not swing as there was no weapon!")
 			return FALSE
 
 		if(!is_valid(victim))
-			CRASH("Could not swing as there was no victim!")
+			CRASH_SAFE("Could not swing as there was no victim!")
 			return FALSE
 
 		if(!is_valid(victim.health))
-			CRASH("Could not swing as there was no victim health! (Victim: [victim])")
+			CRASH_SAFE("Could not swing as there was no victim health! (Victim: [victim])")
 			return FALSE
 
 		if(!is_valid(hit_object))
-			CRASH("Could not swing as there was no hit_object!")
+			CRASH_SAFE("Could not swing as there was no hit_object!")
 			return FALSE
 
 		if(!is_valid(hit_object.health))
-			CRASH("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
+			CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
 			return FALSE
 
 		if(!did_animation)
@@ -348,27 +348,27 @@
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	if(!is_valid(attacker))
-		CRASH("Could not process damage ([get_debug_name()]) as there was no attacker!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no attacker!")
 		return FALSE
 
 	if(!is_valid(victim))
-		CRASH("Could not process damage ([get_debug_name()]) as there was no victim!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim!")
 		return FALSE
 
 	if(!is_valid(weapon))
-		CRASH("Could not process damage ([get_debug_name()]) as there was no weapon!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no weapon!")
 		return FALSE
 
 	if(!is_valid(hit_object))
-		CRASH("Could not process damage ([get_debug_name()]) as there was no hit_object!")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no hit_object!")
 		return FALSE
 
 	if(!is_valid(hit_object.health))
-		CRASH("Could not process damage ([get_debug_name()]) as there was no hit_object health! (Hitobject: [hit_object])")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no hit_object health! (Hitobject: [hit_object])")
 		return FALSE
 
 	if(!is_valid(victim.health))
-		CRASH("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
+		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
 		return FALSE
 
 	if(debug)
@@ -515,7 +515,7 @@
 				update = FALSE
 			)
 		else
-			CRASH("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
+			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
 			return TRUE
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")

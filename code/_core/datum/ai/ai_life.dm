@@ -48,7 +48,7 @@
 		alert_time -= tick_rate
 		if(alert_time <= 0)
 			alert_time = initial(alert_time)
-			set_alert_level(max(0,alert_level-1),can_lower=TRUE)
+			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(!owner.anchored && owner.move_delay <= 0)
 		handle_movement()

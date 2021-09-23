@@ -142,7 +142,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	var/track/T = SStrack.all_tracks[music_track_id]
 	if(!T)
-		CRASH("WARNING: INVALID MUSIC TRACK: [music_track_id].")
+		CRASH_SAFE("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 		return FALSE
 
 	var/volume_mod = 50
@@ -199,7 +199,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	else
 		created_sound = sound(sound_path)
 		if(!created_sound)
-			CRASH("Error: Invalid sound! [sound_path].")
+			CRASH_SAFE("Error: Invalid sound! [sound_path].")
 			return null
 		SSsound.sound_cache[sound_path] = created_sound
 
@@ -336,7 +336,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		log_error("Warning: Invalid sound: [sound_path]!")
 		return FALSE
 	if(!source_turf)
-		CRASH("Warning: play_sound passed source_turf as null!")
+		CRASH_SAFE("Warning: play_sound passed source_turf as null!")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -412,11 +412,11 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		return FALSE
 
 	if(!sound_path)
-		CRASH("Tried playing a sound without a sound path!")
+		CRASH_SAFE("Tried playing a sound without a sound path!")
 		return FALSE
 
 	if(!location_or_list)
-		CRASH("Tried playing a sound \"[sound_path]\" without a target!")
+		CRASH_SAFE("Tried playing a sound \"[sound_path]\" without a target!")
 		return FALSE
 
 	var/list/hearers = list()
@@ -434,7 +434,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		if(!sound_source)
 			sound_source = AT
 	else
-		CRASH("Tried playing a sound without a valid ([location_or_list]) target!")
+		CRASH_SAFE("Tried playing a sound without a valid ([location_or_list]) target!")
 		return FALSE
 
 	if(islist(sound_source))
@@ -449,18 +449,18 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 			var/turf/T = sound_source
 			pos = vector(T.x,T.y,T.z)
 		else
-			CRASH("sound_source ([sound_source]) is not a turf or a list so it cannot play.")
+			CRASH_SAFE("sound_source ([sound_source]) is not a turf or a list so it cannot play.")
 			return FALSE
 	else if(is_atom(location_or_list))
 		var/turf/T = get_turf(location_or_list)
 		if(!T)
-			CRASH("Could not find a turf to play sound ([sound_path])!")
+			CRASH_SAFE("Could not find a turf to play sound ([sound_path])!")
 			return FALSE
 		pos = vector(T.x,T.y,T.z)
 
 	var/sound/created_sound = sound(sound_path)
 	if(!created_sound)
-		CRASH("Invalid sound: [sound_path].")
+		CRASH_SAFE("Invalid sound: [sound_path].")
 		return FALSE
 
 	created_sound.frequency = pitch

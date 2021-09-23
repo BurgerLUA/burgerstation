@@ -219,7 +219,7 @@
 	if(holding && is_inventory(holding))
 		holding.child_inventory = null
 	else
-		CRASH("ERRROR: unwield() variable holding wasn't valid ([holding])!")
+		CRASH_SAFE("ERRROR: unwield() variable holding wasn't valid ([holding])!")
 
 	src.parent_inventory = null
 	item_to_wield.wielded = null

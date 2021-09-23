@@ -37,6 +37,7 @@
 #include "code\__defines\colors.dm"
 #include "code\__defines\config.dm"
 #include "code\__defines\controls.dm"
+#include "code\__defines\crash.dm"
 #include "code\__defines\damage.dm"
 #include "code\__defines\delay.dm"
 #include "code\__defines\directions.dm"

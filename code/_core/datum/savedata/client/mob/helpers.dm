@@ -90,7 +90,7 @@ var/global/allow_loading = TRUE
 
 	if(!A)
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save NULL. Please contact the server owner with error code: 1000.</h2>"))
-		CRASH("FATAL ERROR: Tried to save a character without an actual character!")
+		CRASH_SAFE("FATAL ERROR: Tried to save a character without an actual character!")
 		return FALSE
 
 	if(A.qdeleting)
@@ -105,7 +105,7 @@ var/global/allow_loading = TRUE
 
 	if(!istype(A))
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1003.</h2>"))
-		CRASH("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
+		CRASH_SAFE("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
 		return FALSE
 
 	if(!force && world_state != STATE_RUNNING)

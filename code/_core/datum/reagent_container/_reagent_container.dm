@@ -354,11 +354,11 @@
 	var/reagent/R = REAGENT(reagent_type)
 
 	if(!R)
-		CRASH("Reagent Error: Tried to add/remove an invalid reagent ([reagent_type]) to [owner.get_debug_name()]!")
+		CRASH_SAFE("Reagent Error: Tried to add/remove an invalid reagent ([reagent_type]) to [owner.get_debug_name()]!")
 		return 0
 
 	if(amount == 0)
-		//CRASH("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
+		//CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
 		return 0
 
 	if(temperature == TNULL)
@@ -432,7 +432,7 @@
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
 
 	if(!target_container)
-		CRASH("Tried to transfer reagents from [owner], but there was no target_container!")
+		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
 		return 0
 
 	if(amount == 0)
@@ -531,7 +531,7 @@
 		return FALSE
 
 	if(!target)
-		CRASH("Tried to splash with no target!")
+		CRASH_SAFE("Tried to splash with no target!")
 		return FALSE
 
 	target = target.change_victim(caller,owner)
@@ -557,7 +557,7 @@
 /reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
 
 	if(!owner)
-		CRASH("[src.get_debug_name()] had no owner!")
+		CRASH_SAFE("[src.get_debug_name()] had no owner!")
 		return FALSE
 
 	var/consume_verb = owner.get_consume_verb()

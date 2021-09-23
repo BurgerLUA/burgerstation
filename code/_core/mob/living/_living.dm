@@ -325,7 +325,7 @@
 	QDEL_NULL(flash_overlay)
 
 	if(client)
-		CRASH("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
+		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		client.make_ghost(FALLBACK_TURF)
 
 	traits?.Cut()

@@ -12,7 +12,7 @@
 /ticket/proc/open(var/desired_creator)
 
 	if(!desired_creator)
-		CRASH("Tried to create a ticket without a creator!")
+		CRASH_SAFE("Tried to create a ticket without a creator!")
 		qdel(src)
 		return FALSE
 
