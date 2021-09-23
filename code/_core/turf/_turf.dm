@@ -279,3 +279,43 @@
 /turf/Finalize()
 	. = ..()
 	update_sprite()
+
+/turf/proc/is_clear_path_to(var/turf/target_turf)
+
+	if(!isturf(target_turf) || target_turf.has_opaque_atom)
+		return FALSE
+
+	if(src == target_turf)
+		return target_turf.has_opaque_atom
+
+
+	var/limit = get_dist(src,target_turf)
+	if(limit >= 127) //No.
+		return FALSE
+	limit *= 2 //Compensates for corners.
+
+	var/list/diag = list(
+		"[NORTHEAST]" = TRUE,
+		"[SOUTHEAST]" = TRUE,
+		"[NORTHWEST]" = TRUE,
+		"[SOUTHWEST]" = TRUE
+	)
+
+	var/turf/T = src
+	while(limit>0)
+		limit--
+		var/next_direction = get_dir(T,target_turf)
+		if(diag["[next_direction]"])
+			var/dir1 = get_true_4dir(next_direction)
+			var/turf/T1 = get_step(T,dir1)
+			if(T1.has_opaque_atom)
+				var/dir2 = next_direction - dir1
+				var/turf/T2 = get_step(T,dir2)
+				if(T2.has_opaque_atom)
+					return FALSE
+
+		T = get_step(T,next_direction)
+		if(T.has_opaque_atom)
+			return FALSE
+		if(T == target_turf)
+			return TRUE

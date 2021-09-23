@@ -51,5 +51,5 @@
 		if(. <= 0)
 			return 0
 
-	if(view_check && !(A in view(true_distance,owner))) //I hate how expensive this is.
+	if(view_check && !T.is_clear_path_to(get_turf(owner),T))
 		return 0

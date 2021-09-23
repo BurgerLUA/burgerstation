@@ -4,8 +4,8 @@ SUBSYSTEM_DEF(chunkclean)
 	tick_rate = SECONDS_TO_TICKS(300) //JUST LIKE MINECRAFT
 	priority = SS_ORDER_DELETE
 
-	cpu_usage_max = 90
-	tick_usage_max = 90
+	cpu_usage_max = 50
+	tick_usage_max = 50
 
 	var/current_z = 0
 
