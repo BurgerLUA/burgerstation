@@ -72,7 +72,7 @@
 		return 0
 
 	if("burst" in firemodes)
-		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*current_bursts*1.25
+		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*max_bursts*1.25
 		. = max_bursts*(10/local_burst_delay)
 
 	if("automatic" in firemodes)
@@ -109,7 +109,7 @@
 		return 0
 
 	if("burst" in firemodes)
-		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*current_bursts*1.25
+		var/local_burst_delay = burst_delay ? burst_delay : shoot_delay*max_bursts*1.25
 		. = max_bursts*(10/local_burst_delay)
 
 	if("automatic" in firemodes)
@@ -144,7 +144,7 @@
 		return 0
 
 	if("burst" in firemodes)
-		var/local_burst_delay = burst_delay ? burst_delay : ((pump_delay*2)+shoot_delay)*current_bursts*1.25
+		var/local_burst_delay = burst_delay ? burst_delay : ((pump_delay*2)+shoot_delay)*max_bursts*1.25
 		. = max_bursts*(10/local_burst_delay)
 
 	if("automatic" in firemodes)

@@ -45,6 +45,8 @@
 
 	level = 4
 
+	one_time_life = TRUE
+
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 
@@ -54,10 +56,6 @@
 		parent_legion.tracked_heads -= src
 		parent_legion = null
 
-	return ..()
-
-/mob/living/simple/legionare_head/post_death()
-	qdel(src)
 	return ..()
 
 /mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
@@ -75,6 +73,6 @@
 	GENERATE(L)
 	FINALIZE(L)
 
-	qdel(src)
+	death(TRUE)
 
 	return TRUE

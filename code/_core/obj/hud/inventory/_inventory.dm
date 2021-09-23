@@ -89,7 +89,7 @@
 	child_inventory = null
 	grabbed_object = null
 
-	return ..()
+	. = ..()
 
 
 /obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
@@ -121,7 +121,7 @@
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
 		src.mouse_opacity = 0
 
-/obj/hud/inventory/New(var/desired_loc)
+/obj/hud/inventory/Finalize()
 	. = ..()
 	update_sprite()
 
@@ -146,7 +146,6 @@
 		add_overlay(I)
 	else
 		color = initial(color)
-
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 

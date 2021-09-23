@@ -227,15 +227,15 @@
 
 	start_turf = get_turf(owner)
 
-	if(!stored_sneak_power && is_living(owner))
-		var/mob/living/L = owner
-		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
-
-	return ..()
+	. = ..()
 
 /ai/Finalize()
 	. = ..()
+	if(!stored_sneak_power && is_living(owner))
+		var/mob/living/L = owner
+		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	set_active(active,TRUE)
+
 
 /ai/proc/post_death(var/mob/living/L,args)
 	set_active(FALSE)

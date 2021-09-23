@@ -4,7 +4,7 @@
 	if(x) {						\
 		for(var/kd in x) {		\
 			var/datum/DD = kd;	\
-			qdel(DD);			\
+			if(DD) {qdel(DD)};			\
 		}						\
 		x.Cut();				\
 	}
@@ -14,7 +14,7 @@
 	if(x) {							\
 		for(var/kd in x) {			\
 			var/datum/DD = x[kd];	\
-			qdel(DD);				\
+			if(DD) {qdel(DD)};				\
 		}							\
 		x.Cut();					\
 	}

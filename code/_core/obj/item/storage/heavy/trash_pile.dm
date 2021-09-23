@@ -14,8 +14,8 @@
 	return ..()
 
 /obj/item/storage/heavy/trash_pile/Finalize()
+	. = ..()
 	prune_inventory()
-	return ..()
 
 /obj/item/storage/heavy/trash_pile/New(var/desired_loc)
 
@@ -32,7 +32,7 @@
 		else if(prob(20))
 			new /mob/living/simple/passive/mouse/grey(src.loc)
 
-	
+
 /obj/item/storage/heavy/trash_pile/Generate()
 	if(desired_loot)
 		var/loot/L = SSloot.all_loot[desired_loot]
@@ -47,7 +47,7 @@
 		filled_slots += length(I.contents)
 	if(filled_slots <= 0)
 		qdel(src)
-	
+
 /obj/item/storage/heavy/trash_pile/click_self(var/mob/caller)
 
 	. = ..()
@@ -59,4 +59,3 @@
 		stored_beefman.ai.set_objective(caller)
 		stored_beefman = null
 
-	

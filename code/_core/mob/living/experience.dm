@@ -1,7 +1,7 @@
 //Skills
 /mob/living/proc/get_skill(var/id,var/error_on_null = TRUE)
 	if(!skills[id])
-		if(error_on_null) CRASH_SAFE("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
+		if(error_on_null) CRASH("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
 		return null
 	return skills[id]
 

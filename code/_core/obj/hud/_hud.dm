@@ -7,6 +7,8 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
+	initialize_type = 0x0 //This type does not get initialized.
+
 /obj/hud/Destroy()
 	owner = null
 	. = ..()
@@ -39,3 +41,16 @@
 	I.SwapColor(rgb(255,255,0),color_scheme[4])
 	I.SwapColor(rgb(255,0,255),color_scheme[5])
 	I.SwapColor(rgb(0,255,255),color_scheme[6])
+
+
+/obj/hud/Initialize()
+	CRASH("HUD objects should never be Initialized!")
+
+/obj/hud/PostInitialize()
+	CRASH("HUD objects should never be PostInitialized!")
+
+/obj/hud/Finalize()
+	CRASH("HUD objects should never be Finalized!")
+
+/obj/hud/Generate()
+	CRASH("HUD objects should never be Generated!")

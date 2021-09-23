@@ -21,7 +21,6 @@ SUBSYSTEM_DEF(obj)
 			initialize_normal += O
 		else
 			initialize_none += O
-			log_error("ERROR: [O.get_debug_name()] did not have a valid initialize_type ([O.initialize_type]) set!")
 
 	for(var/k in initialize_early)
 		var/obj/O = k
