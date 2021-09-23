@@ -2,6 +2,7 @@
 	enemy_tags = list("NanoTrasen")
 	should_find_weapon = TRUE
 	aggression = 1
+	cowardice = 0.1
 	retaliate = TRUE
 
 	var/language_to_use = LANGUAGE_BASIC

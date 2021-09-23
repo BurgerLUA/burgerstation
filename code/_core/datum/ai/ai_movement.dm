@@ -45,6 +45,14 @@
 /ai/proc/handle_movement_attack_objective()
 
 	if(objective_attack)
+
+		if(cowardice >= 0)
+			var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
+			if(health_percent <= cowardice)
+				owner.move_dir = get_dir(objective_attack,owner)
+				owner.movement_flags = MOVEMENT_RUNNING
+				return TRUE
+
 		var/target_distance = get_dist(owner,objective_attack)
 		if(target_distance < attack_distance_min)
 			owner.move_dir = get_dir(objective_attack,owner)
