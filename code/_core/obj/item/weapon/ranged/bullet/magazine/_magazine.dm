@@ -77,9 +77,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob)
 
-	if(!stored_magazine)
-		CRASH("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
-		return FALSE
+	if(!stored_magazine) CRASH("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
 
 	var/turf/T = get_turf(caller)
 

@@ -15,24 +15,18 @@
 	return list()
 
 /datum/proc/Initialize()
-	if(initialized)
-		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
-		return TRUE
+	if(initialized) CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
 	return TRUE
 
 /datum/proc/PostInitialize()
 	return TRUE
 
 /datum/proc/Generate() //Generate the atom, giving it stuff if needed.
-	if(generated)
-		CRASH("WARNING: [src.get_debug_name()] was generated twice!")
-		return TRUE
+	if(generated) CRASH("WARNING: [src.get_debug_name()] was generated twice!")
 	return TRUE
 
 /datum/proc/Finalize() //We're good to go.
-	if(finalized)
-		CRASH("WARNING: [src.get_debug_name()] was finalized twice!")
-		return TRUE
+	if(finalized) CRASH("WARNING: [src.get_debug_name()] was finalized twice!")
 	return TRUE
 
 /datum/proc/is_safe_to_delete(var/check_loc = FALSE)

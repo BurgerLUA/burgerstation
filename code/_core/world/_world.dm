@@ -143,7 +143,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/end(var/reason,var/shutdown=FALSE)
 
 	if(world_state != STATE_RUNNING)
-		CRASH("Can't restart now!")
+		log_error("Error: Can't restart now!")
 		return FALSE
 
 	var/nice_reason = "Unknown reason."

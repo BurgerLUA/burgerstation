@@ -29,8 +29,7 @@
 	else if(on_fire)
 		if(!fire_overlay)
 			CRASH("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
-		else
-			fire_overlay.icon_state = "[clamp(FLOOR(1 + (fire_stacks/MAX_FIRE_STACKS)*3,1),1,3)]"
+		fire_overlay.icon_state = "[clamp(FLOOR(1 + (fire_stacks/MAX_FIRE_STACKS)*3,1),1,3)]"
 	return TRUE
 
 /mob/living/proc/ignite(var/added_fire_stacks = 0,var/atom/source)
@@ -57,11 +56,10 @@
 	if(!on_fire)
 		return FALSE
 
-	if(!fire_overlay)
-		CRASH("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
-	else
-		fire_overlay.icon_state = "0"
-
 	on_fire = FALSE
+
+	if(!fire_overlay) CRASH("Warning: [src.get_debug_name()] did not have an initialized fire overlay!")
+
+	fire_overlay.icon_state = "0"
 
 	return TRUE

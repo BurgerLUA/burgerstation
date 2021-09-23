@@ -183,15 +183,9 @@
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
 
 	if(desired_active)
-		if(!owner)
-			CRASH("AI was set to active without an owner!")
-			return FALSE
-		if(owner.qdeleting)
-			CRASH("AI was set to active while the owner was qdeleting!")
-			return FALSE
-		if(owner.dead)
-			CRASH("AI was set to active while the owner was dead!")
-			return FALSE
+		if(!owner) CRASH("AI was set to active without an owner!")
+		if(owner.qdeleting) CRASH("AI was set to active while the owner was qdeleting!")
+		if(owner.dead) CRASH("AI was set to active while the owner was dead!")
 
 	if(!force && active == desired_active)
 		return FALSE

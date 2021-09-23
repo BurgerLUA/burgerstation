@@ -103,9 +103,7 @@ var/global/list/blood_turfs = list()
 
 /turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
 
-	if(!destruction_turf)
-		CRASH("[get_debug_name()] called on_destruction without having a destruction turf!")
-		return FALSE
+	if(!destruction_turf) CRASH("[get_debug_name()] called on_destruction without having a destruction turf!")
 
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0

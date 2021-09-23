@@ -41,8 +41,7 @@
 /obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!referencing)
-		CRASH("Warning: Referenced item not detected!")
-		return TRUE
+		CRASH("Warning: Invalid referencing item!")
 
 	update_vis_contents()
 

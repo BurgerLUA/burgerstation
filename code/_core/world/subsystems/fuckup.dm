@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(fuckup)
 
 /subsystem/fuckup/Initialize()
 
+	. = ..()
+
 	for(var/k in subtypesof(/fuckup/))
 		var/fuckup/FU = k
 		FU = new k

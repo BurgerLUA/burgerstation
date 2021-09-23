@@ -141,9 +141,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	stop_music_track(hearer)
 
 	var/track/T = SStrack.all_tracks[music_track_id]
-	if(!T)
-		CRASH("WARNING: INVALID MUSIC TRACK: [music_track_id].")
-		return FALSE
+	if(!T) CRASH("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 
 	var/volume_mod = 50
 
@@ -198,9 +196,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		created_sound = SSsound.sound_cache[sound_path]
 	else
 		created_sound = sound(sound_path)
-		if(!created_sound)
-			CRASH("Error: Invalid sound! [sound_path].")
-			return null
+		if(!created_sound) CRASH("Error: Invalid sound! [sound_path].")
 		SSsound.sound_cache[sound_path] = created_sound
 
 	return created_sound
@@ -332,12 +328,8 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 /proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
-	if(!created_sound || volume <= 0)
-		log_error("Warning: Invalid sound: [sound_path]!")
-		return FALSE
-	if(!source_turf)
-		CRASH("Warning: play_sound passed source_turf as null!")
-		return FALSE
+	if(!created_sound || volume <= 0) CRASH("Warning: Invalid sound with volume [volume]: [sound_path]!")
+	if(!source_turf) CRASH("Warning: play_sound passed source_turf as null!")
 
 	created_sound.frequency = pitch
 	created_sound.repeat = loop

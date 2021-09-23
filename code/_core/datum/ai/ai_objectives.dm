@@ -214,7 +214,6 @@
 
 	if(!owner || owner.dead)
 		CRASH("AI's alert level was set while it was dead!")
-		return FALSE
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))
 		var/mob/living/L = alert_source

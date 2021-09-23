@@ -91,22 +91,18 @@ var/global/allow_loading = TRUE
 	if(!A)
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save NULL. Please contact the server owner with error code: 1000.</h2>"))
 		CRASH("FATAL ERROR: Tried to save a character without an actual character!")
-		return FALSE
 
 	if(A.qdeleting)
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1001.</h2>"))
-		log_error("SAVE ERROR: Tried saving a character that was qdeleting!")
-		return FALSE
+		CRASH("SAVE ERROR: Tried saving a character that was qdeleting!")
 
 	if(A.loc == null)
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1002.</h2>"))
-		log_error("SAVE ERROR: Tried saving a character that had a null loc!")
-		return FALSE
+		CRASH("SAVE ERROR: Tried saving a character that had a null loc!")
 
 	if(!istype(A))
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1003.</h2>"))
 		CRASH("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
-		return FALSE
 
 	if(!force && world_state != STATE_RUNNING)
 		usr?.to_chat(span("danger","Your character was not saved as the round just ended!"))

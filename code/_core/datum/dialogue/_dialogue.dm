@@ -29,9 +29,7 @@
 
 /dialogue/proc/get_topic_string(var/mob/living/advanced/player/P,var/topic,var/list/dialogue_options)
 
-	if(!length(dialogue_options))
-		CRASH("No dialogue options for [topic] for dialogue [type]!")
-		return null
+	if(!length(dialogue_options)) CRASH("No dialogue options for [topic] for dialogue [type]!")
 
 	var/list/chosen_dialogue = dialogue_options[topic]
 

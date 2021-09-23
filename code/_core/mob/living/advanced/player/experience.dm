@@ -1,7 +1,7 @@
 /mob/living/advanced/player/get_skill_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
-		CRASH("Warning! Tried getting skill power of [id], but it didn't exist for [src.get_debug_name()]!")
+		log_error("Warning! Tried getting skill power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
 
 	var/bonus = 0
@@ -15,7 +15,7 @@
 /mob/living/advanced/player/get_attribute_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
-		CRASH("Warning! Tried getting attribute power of [id], but it didn't exist for [src.get_debug_name()]!")
+		log_error("Warning! Tried getting attribute power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
 
 	var/bonus = 0

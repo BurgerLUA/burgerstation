@@ -35,9 +35,8 @@
 	return src.clicked_on_by_object(caller,null,location,null,params)
 
 /obj/hud/button/Destroy()
-	if(bad_delete)
-		CRASH("Warning: [src.get_debug_name()] was deleted incorrectly.")
 	. = ..()
+	if(bad_delete) CRASH("Warning: [src.get_debug_name()] was deleted incorrectly!")
 
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
 	if(should_show)

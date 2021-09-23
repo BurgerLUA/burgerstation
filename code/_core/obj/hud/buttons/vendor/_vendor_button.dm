@@ -106,9 +106,8 @@
 	. = ..()
 
 	if(!associated_item)
-		CRASH("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
 		update_owner(null)
-		return
+		CRASH("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
 
 	if(.)
 		associated_vendor.purchase_item(caller,associated_item,associated_cost)
