@@ -89,7 +89,7 @@
 		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
 		var/mob/living/spawnGoblin = new choose_goblin(turf_to_spawn)
-		spawnGoblin.one_time_life = TRUE
+		spawnGoblin.delete_on_death = TRUE
 		INITIALIZE(spawnGoblin)
 		GENERATE(spawnGoblin)
 		FINALIZE(spawnGoblin)

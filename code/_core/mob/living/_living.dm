@@ -256,7 +256,7 @@
 
 	can_be_bumped = FALSE
 
-	var/one_time_life = FALSE
+	var/delete_on_death = FALSE
 
 	var/drops_gold = 0 //Set to a value to make this mob drop this amount of gold when it dies.
 

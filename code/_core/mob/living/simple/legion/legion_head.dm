@@ -45,7 +45,7 @@
 
 	level = 4
 
-	one_time_life = TRUE
+	delete_on_death = TRUE
 
 /mob/living/simple/legionare_head/death_message()
 	return FALSE

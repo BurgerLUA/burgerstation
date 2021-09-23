@@ -92,7 +92,7 @@
 		FINALIZE(S)
 		remove_status_effect(SOULTRAP)
 
-	if(one_time_life)
+	if(delete_on_death)
 		dust()
 
 	if(boss && !drops_gold)
