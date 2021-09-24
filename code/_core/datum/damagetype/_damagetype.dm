@@ -178,6 +178,8 @@
 	return ATTACK_TYPE_MELEE
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
+	if(!victim)
+		victim = get_step(attacker,attacker.dir)
 	. = max(1,do_attack_animation(attacker,victim,weapon))
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
@@ -260,8 +262,7 @@
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
 	if(!length(victims))
-		CRASH_SAFE("Swing had no victims!")
-		return FALSE
+		return perform_miss(attacker,null,weapon)
 
 	if(!length(hit_objects))
 		return perform_miss(attacker,victims[1],weapon)

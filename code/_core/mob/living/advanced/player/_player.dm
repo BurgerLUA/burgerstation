@@ -107,8 +107,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
-	INITIALIZE(click_and_drag_icon)
-	FINALIZE(click_and_drag_icon)
 	last_autosave = world.time
 	all_players += src
 	return ..()

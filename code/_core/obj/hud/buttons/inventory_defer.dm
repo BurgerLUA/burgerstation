@@ -65,6 +65,9 @@
 
 	return TRUE
 
+/obj/hud/button/inventory_defer/proc/update()
+	if(referencing) clone(referencing)
+	return TRUE
 
 
 /obj/hud/button/inventory_defer/proc/clone(var/obj/hud/inventory/I)
@@ -76,6 +79,8 @@
 	desc_extended = referencing.desc_extended
 
 	update_vis_contents()
+
+	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,.proc/update)
 
 	return TRUE
 

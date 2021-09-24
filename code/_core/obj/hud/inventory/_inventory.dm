@@ -452,6 +452,8 @@
 		var/obj/item/I2 = src.loc
 		I2.update_inventory()
 
+	HOOK_CALL("update_stats")
+
 /obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
 	return TRUE
 
