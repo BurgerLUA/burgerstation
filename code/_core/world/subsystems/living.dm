@@ -47,7 +47,8 @@ SUBSYSTEM_DEF(living)
 	for(var/k in all_living)
 		var/mob/living/L = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
-		if(!L.initialized || L.qdeleting)
+		if(!L.finalized || L.qdeleting)
+			log_error("Tried processing invalid living [L.get_debug_name()].")
 			continue
 		if(L.ai && !L.ai.active)
 			continue

@@ -184,14 +184,11 @@
 
 	if(desired_active)
 		if(!owner)
-			CRASH_SAFE("AI was set to active without an owner!")
-			return FALSE
+			CRASH("AI was set to active without an owner!")
 		if(owner.qdeleting)
-			CRASH_SAFE("AI was set to active while the owner was qdeleting!")
-			return FALSE
+			CRASH("AI was set to active while the owner was qdeleting!")
 		if(owner.dead)
-			CRASH_SAFE("AI was set to active while the owner was dead!")
-			return FALSE
+			CRASH("AI was set to active while the owner was dead!")
 
 	if(!force && active == desired_active)
 		return FALSE

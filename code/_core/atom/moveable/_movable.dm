@@ -7,8 +7,6 @@
 
 	animate_movement = SLIDE_STEPS
 
-	var/area/area //The object's area.
-
 	var/tmp/move_dir = 0x0
 	var/tmp/move_dir_last = 0x0 //Used for momentum and speed.
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
@@ -70,7 +68,6 @@
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
-	area = null
 	grabbing_hand = null
 	force_move(null)
 	return ..()
@@ -155,21 +152,15 @@
 
 	return TRUE
 
-/atom/movable/Initialize()
+/atom/movable/Finalize()
+	. = ..()
+	if(blocks_air && is_simulated(loc))
+		var/turf/simulated/T = loc
+		T.blocks_air |= blocks_air
 
-	if(loc)
-		area = get_area(loc)
-		if(area)
-			area.Entered(src,null)
-		else
-			CRASH_SAFE("ERROR: [get_debug_name()] didn't have an area to initialize in! (Loc: [loc.get_debug_name()].)")
-		if(blocks_air && is_simulated(loc))
-			var/turf/simulated/T = loc
-			T.blocks_air |= blocks_air
-	else
-		CRASH_SAFE("ERROR: [get_debug_name()] didn't have a loc to initialize in!")
 
-	return ..()
+
+
 
 /atom/movable/Finalize()
 	update_value()

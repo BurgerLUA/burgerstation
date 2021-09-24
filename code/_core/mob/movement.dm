@@ -155,6 +155,17 @@
 
 	close_turf_contents()
 
+	if(client && invisibility <= INVISIBILITY_MOBS)
+		var/area/new_area = loc ? get_area(loc) : null
+		if(new_area)
+			var/area/old_area = old_loc ? get_area(old_loc) : null
+			if(!new_area.ambient_sound)
+				stop_ambient_sounds(src)
+			else if(!old_area || old_area.ambient_sound != old_area.ambient_sound)
+				play_ambient_sound(new_area.ambient_sound,list(src),environment = new_area.sound_environment,loop = TRUE)
+			if(ENABLE_TRACKS && length(new_area.tracks) && (!client.next_music_track || client.next_music_track <= world.time))
+				play_music_track(pick(new_area.tracks),client)
+
 /mob/set_dir(var/desired_dir,var/force=FALSE)
 
 	if(client && client.is_zoomed)

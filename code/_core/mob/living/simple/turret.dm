@@ -30,7 +30,7 @@
 	return set_dir(get_dir(src,A))
 
 /mob/living/simple/turret/Finalize()
-
+	. = ..()
 	if(stored_weapon)
 		stored_weapon = new stored_weapon(src)
 		INITIALIZE(stored_weapon)

@@ -479,6 +479,30 @@
 		security_hud_image.layer = PLANE_AUGMENTED
 		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
+	chat_overlay = new(src.loc)
+	chat_overlay.layer = LAYER_EFFECT
+	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
+	chat_overlay.alpha = 0
+	//This is initialized somewhere else.
+
+	alert_overlay = new(src.loc)
+	alert_overlay.layer = LAYER_EFFECT
+	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
+	alert_overlay.pixel_z = 20
+	//This is initialized somewhere else.
+
+	fire_overlay = new(src.loc)
+	fire_overlay.layer = LAYER_MOB_FIRE
+	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
+	fire_overlay.icon_state = "0"
+	//This is initialized somewhere else.
+
+	shield_overlay = new(src.loc)
+	shield_overlay.layer = LAYER_EFFECT
+	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
+	shield_overlay.icon_state = "block"
+	shield_overlay.alpha = 0
+
 	. = ..()
 
 	if(desired_client)
@@ -506,31 +530,6 @@
 	update_intent(TRUE)
 
 	. = ..()
-
-	chat_overlay = new(src.loc)
-	chat_overlay.layer = LAYER_EFFECT
-	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
-	chat_overlay.alpha = 0
-	//This is initialized somewhere else.
-
-	alert_overlay = new(src.loc)
-	alert_overlay.layer = LAYER_EFFECT
-	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
-	alert_overlay.pixel_z = 20
-	//This is initialized somewhere else.
-
-	fire_overlay = new(src.loc)
-	fire_overlay.layer = LAYER_MOB_FIRE
-	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
-	fire_overlay.icon_state = "0"
-	//This is initialized somewhere else.
-
-	shield_overlay = new(src.loc)
-	shield_overlay.layer = LAYER_EFFECT
-	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
-	shield_overlay.icon_state = "block"
-	shield_overlay.alpha = 0
-
 
 /mob/living/PostInitialize()
 	. = ..()

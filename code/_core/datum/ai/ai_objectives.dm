@@ -9,6 +9,9 @@
 	if(A && A.qdeleting)
 		return FALSE
 
+	if(owner.dead && A != null)
+		return FALSE
+
 	var/atom/old_attack = objective_attack
 
 	if(old_attack == A)
@@ -213,11 +216,13 @@
 	if(!use_alerts)
 		return FALSE
 
-	if(!owner || owner.dead)
-		CRASH_SAFE("AI's alert level was set while it was dead!")
+	if(!owner)
 		return FALSE
 
-	if(alert_level <= alert_level && alert_source && is_living(alert_source))
+	if(owner.dead && desired_alert_level != ALERT_LEVEL_NONE)
+		return FALSE
+
+	if(alert_level <= alert_level && is_living(alert_source))
 		var/mob/living/L = alert_source
 		if(alert_level == ALERT_LEVEL_CAUTION)
 			if(L == owner)
@@ -233,12 +238,13 @@
 	else
 		alert_level = max(desired_alert_level,alert_level)
 
-	owner.move_dir = 0
+	if(old_alert_level <= alert_level && alert_level != ALERT_LEVEL_NONE)
+		set_active(TRUE)
+
+	if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION) && !CALLBACK_EXISTS("investigate_\ref[src]") && (old_alert_level >= alert_level ? TRUE : prob(50)) )
+		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
 
 	if(old_alert_level != alert_level)
-		set_active(TRUE)
-		if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 
