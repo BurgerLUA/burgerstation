@@ -26,4 +26,4 @@
 
 	value = 2000
 
-//This item without a doubt is incredibly broken, and probably a meme. Don't make this incredibly rare.
+//This item without a doubt is incredibly broken, and probably a meme. Don't use it, edit it or make it incredibly rare.
