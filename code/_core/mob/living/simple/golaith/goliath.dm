@@ -52,6 +52,8 @@
 
 	level = 24
 
+	movement_delay = DECISECONDS_TO_TICKS(2)
+
 /mob/living/simple/goliath/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
