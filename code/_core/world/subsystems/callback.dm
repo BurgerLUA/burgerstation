@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(callback)
 	for(var/callback_id in src.all_callbacks)
 		var/callback_value = src.all_callbacks[callback_id]
 		if(!length(callback_value))
-			CRASH_SAFE("[callback_id] had an improper callback!")
+			//log_error("[callback_id] had improper callback data!")
 			remove_callback(callback_id)
 			continue
 		if(callback_value["time"] > world.time)
@@ -36,13 +36,12 @@ SUBSYSTEM_DEF(callback)
 		var/stored_proc = callback_value["proc"]
 		var/stored_args = callback_value["args"]
 		var/datum/stored_object = callback_value["object"]
-		src.all_callbacks -= callback_id
 		if(try_call(stored_object,stored_proc,stored_args) == null)
 			if(stored_object)
 				log_error("Warning! Callback of id [callback_id] belonging to [stored_object] did not complete try_call() correctly, thus it was removed.")
 			else
 				log_error("Warning! Callback of id [callback_id] belonging to world did not complete try_call() correctly, thus it was removed.")
-			all_callbacks -= callback_id
+		remove_callback(callback_id)
 
 	return TRUE
 
@@ -57,6 +56,6 @@ SUBSYSTEM_DEF(callback)
 
 /subsystem/callback/proc/remove_callback(var/desired_id)
 	if(src.all_callbacks[desired_id])
-		all_callbacks -= desired_id
+		src.all_callbacks -= desired_id
 		return TRUE
 	return FALSE

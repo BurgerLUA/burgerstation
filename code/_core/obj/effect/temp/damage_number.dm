@@ -24,7 +24,7 @@
 
 /obj/effect/damage_number/proc/fade()
 	animate(src,alpha=0,time = 10)
-	CALLBACK("\ref[src]_remove",10,src,.proc/remove)
+	CALLBACK("\ref[src]_remove_damage_number",10,src,.proc/remove)
 
 /obj/effect/damage_number/proc/remove()
 	qdel(src)
@@ -36,8 +36,8 @@
 	if(current_value)
 		current_value += desired_value
 		animate(src,alpha=255,flags=ANIMATION_END_NOW)
-		CALLBACK_REMOVE("\ref[src]_remove")
-		CALLBACK_REMOVE("\ref[src]_fade")
+		CALLBACK_REMOVE("\ref[src]_remove_damage_number")
+		CALLBACK_REMOVE("\ref[src]_fade_damage_number")
 	else
 		current_value = desired_value
 		alpha = 255
@@ -50,7 +50,7 @@
 	if(current_value == 69 || current_value == 420)
 		desired_text = "[current_value] (nice)"
 	maptext = "<center><font size='[desired_size]' color='[desired_color]'>[desired_text]</text></center>"
-	CALLBACK("\ref[src]_fade",35,src,.proc/fade)
+	CALLBACK("\ref[src]_fade_damage_number",35,src,.proc/fade)
 	return TRUE
 
 

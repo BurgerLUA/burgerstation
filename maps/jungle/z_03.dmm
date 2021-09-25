@@ -103,10 +103,6 @@
 "aH" = (
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base/cargo)
-"aI" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
 "aJ" = (
 /obj/structure/interactive/chair{
 	dir = 8
@@ -166,13 +162,6 @@
 	},
 /turf/simulated/floor/tile/morphing/red,
 /area/lavaland/interior/base/cargo)
-"aX" = (
-/obj/structure/interactive/chair{
-	dir = 8
-	},
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cargo)
 "aY" = (
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/grey,
@@ -187,10 +176,6 @@
 /area/lavaland/interior/base/cargo)
 "bb" = (
 /obj/structure/interactive/door/airlock/external/glass,
-/turf/simulated/floor/tile/dark,
-/area/lavaland/interior/base/cargo)
-"bc" = (
-/obj/marker/spawnpoint/horde,
 /turf/simulated/floor/tile/dark,
 /area/lavaland/interior/base/cargo)
 "bd" = (
@@ -395,10 +380,6 @@
 "bU" = (
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base)
-"bV" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base)
 "bX" = (
 /obj/structure/interactive/crate/trash,
 /turf/simulated/floor/tile/morphing/red,
@@ -546,10 +527,6 @@
 /obj/structure/interactive/intercom,
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base)
-"cI" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/arrivals)
 "cJ" = (
 /obj/marker/rift_location,
 /turf/simulated/floor/tile/grey,
@@ -773,10 +750,6 @@
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/dark,
 /area/lavaland/interior/base/armory)
-"dF" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/dark,
-/area/lavaland/interior/base/armory)
 "dG" = (
 /turf/simulated/floor/tile/dark,
 /area/lavaland/interior/base/armory)
@@ -803,10 +776,6 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/engineering)
-"dM" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/engineering)
 "dN" = (
 /obj/marker/rift_location,
 /turf/simulated/floor/tile/grey,
@@ -826,13 +795,6 @@
 	},
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/engineering)
-"dR" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/lavaland/interior/base)
 "dS" = (
 /obj/structure/interactive/crate/trash,
 /turf/simulated/floor/tile/grey,
@@ -934,10 +896,6 @@
 /obj/structure/interactive/supplies,
 /turf/simulated/floor/basalt,
 /area/lavaland/exterior)
-"er" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/hall/west)
 "es" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/grey,
@@ -955,10 +913,6 @@
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/hall/central)
 "ew" = (
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/hall/central)
-"ex" = (
-/obj/marker/spawnpoint/horde,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/hall/central)
 "ey" = (
@@ -1262,10 +1216,6 @@
 /obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/dressing)
-"fJ" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/dressing)
 "fK" = (
 /obj/structure/interactive/chair/stool,
 /turf/simulated/floor/tile/grey,
@@ -1309,12 +1259,6 @@
 /obj/structure/interactive/chair{
 	dir = 8
 	},
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cafe/kitchen)
-"fR" = (
-/obj/decal/tile/cross/red,
-/obj/decal/tile/cross/red,
-/obj/marker/spawnpoint/horde,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cafe/kitchen)
 "fS" = (
@@ -1446,11 +1390,6 @@
 /obj/structure/smooth/table,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cafe/kitchen)
-"gn" = (
-/obj/decal/tile/cross/red,
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/grey,
-/area/lavaland/interior/base/cafe/kitchen)
 "go" = (
 /obj/decal/tile/cross/red,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -1462,13 +1401,6 @@
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
 /area/lavaland/interior/base/dressing)
-"gq" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 1
-	},
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/carpet,
-/area/lavaland/interior/base/dorm)
 "gr" = (
 /obj/decal/tile/cross/red,
 /obj/structure/interactive/crate/trash,
@@ -1537,10 +1469,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tile,
-/area/lavaland/interior/base/bathrooms)
-"gE" = (
-/obj/marker/spawnpoint/horde,
-/turf/simulated/floor/tile/tint,
 /area/lavaland/interior/base/bathrooms)
 "gF" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -46811,7 +46739,7 @@ ar
 ar
 aw
 aR
-aX
+aJ
 aR
 av
 aU
@@ -47325,7 +47253,7 @@ av
 av
 aK
 aR
-aI
+az
 aR
 bm
 aR
@@ -47851,7 +47779,7 @@ aR
 cc
 cq
 cp
-cI
+cp
 cp
 cp
 cp
@@ -48359,7 +48287,7 @@ az
 az
 az
 az
-aI
+az
 bS
 aR
 ce
@@ -48863,7 +48791,7 @@ as
 ar
 av
 aA
-aI
+az
 az
 aO
 aR
@@ -49145,7 +49073,7 @@ dl
 dC
 dl
 dl
-er
+dl
 eA
 dl
 eM
@@ -49408,7 +49336,7 @@ dl
 eM
 eZ
 fv
-fJ
+fe
 fe
 fe
 fe
@@ -49895,7 +49823,7 @@ ar
 ar
 av
 aU
-bc
+bd
 bi
 av
 ar
@@ -49908,7 +49836,7 @@ cb
 cs
 cp
 cp
-cI
+cp
 cp
 co
 cc
@@ -50427,7 +50355,7 @@ as
 as
 db
 do
-dF
+dG
 dG
 ec
 dl
@@ -50696,7 +50624,7 @@ fe
 fe
 fe
 fe
-fJ
+fe
 fe
 gp
 ar
@@ -51983,7 +51911,7 @@ fi
 fA
 eQ
 fi
-gq
+fA
 gs
 gw
 gs
@@ -52758,7 +52686,7 @@ dl
 gt
 gv
 gA
-gE
+gv
 gF
 gs
 as
@@ -53768,7 +53696,7 @@ as
 cX
 df
 dz
-dM
+dz
 dz
 ei
 dl
@@ -54809,7 +54737,7 @@ fD
 fD
 gc
 fp
-gn
+fp
 fp
 gu
 as
@@ -55053,7 +54981,7 @@ as
 cX
 df
 dz
-dM
+dz
 dz
 dx
 es
@@ -55062,7 +54990,7 @@ dl
 eS
 fq
 fp
-fR
+fD
 fD
 fD
 fp
@@ -58140,7 +58068,7 @@ as
 as
 ar
 eo
-ex
+ew
 ew
 ew
 eo
@@ -60455,7 +60383,7 @@ as
 eo
 ew
 ew
-ex
+ew
 eo
 as
 as
@@ -63022,7 +62950,7 @@ bE
 cw
 bU
 bO
-bV
+bE
 bE
 bE
 bE
@@ -63270,7 +63198,7 @@ bT
 bE
 bE
 bE
-bV
+bE
 bE
 bE
 cT
@@ -64053,7 +63981,7 @@ bQ
 bN
 bE
 bE
-bV
+bE
 bN
 bu
 ca
@@ -65065,7 +64993,7 @@ bv
 bA
 bE
 bE
-bV
+bE
 bE
 bE
 bN
@@ -65076,7 +65004,7 @@ bE
 cZ
 bE
 bE
-dR
+cw
 bU
 bO
 bE

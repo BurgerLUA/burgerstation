@@ -56,6 +56,8 @@
 				new /obj/marker/generation/mob/black_bear(src)
 			if(!path_only && prob(0.2))
 				new /obj/marker/generation/plant/tomato(src)
+				if(prob(1))
+					new /obj/marker/generation/mob/goat(src)
 				place_grass = FALSE
 			else if(!path_only && prob(1))
 				new /obj/marker/generation/plant/chanterelle(src)
@@ -76,6 +78,8 @@
 			if(prob(2))
 				new /obj/marker/generation/mob/chicken(src)
 		else if(!path_only && prob(3))
+			if(prob(1))
+				new /obj/marker/generation/mob/mouse/brown(src)
 			var/list/valid_bushes = list(
 				/obj/marker/generation/bushes/generic,
 				/obj/marker/generation/bushes/grass,
@@ -88,6 +92,8 @@
 	if(place_grass)
 		if(prob(2))
 			new /obj/marker/generation/flowers(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/bee(src)
 		if(prob(2))
 			new /obj/marker/generation/lavender(src)
 		else if(prob(10))
@@ -97,6 +103,7 @@
 					new /mob/living/simple/bull(src)
 				else
 					new /obj/marker/generation/mob/cow(src)
+
 
 	if(place_ground)
 		new /turf/simulated/floor/colored/grass(src)

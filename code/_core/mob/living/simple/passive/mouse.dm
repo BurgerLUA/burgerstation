@@ -25,12 +25,15 @@
 	return TRUE
 
 /mob/living/simple/passive/mouse/brown
+	name = "field mouse"
 	icon_state = "mouse_brown"
 
 /mob/living/simple/passive/mouse/white
+	name = "snow mouse"
 	icon_state = "mouse_white"
 
 /mob/living/simple/passive/mouse/grey
+	name = "maintenance mouse"
 	icon_state = "mouse_gray"
 
 /mob/living/simple/passive/mouse/post_death()

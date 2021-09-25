@@ -333,10 +333,10 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
-		log_error("Warning: Invalid sound: [sound_path]!")
+		//log_error("Warning: Invalid sound: [sound_path]!")
 		return FALSE
 	if(!source_turf)
-		CRASH_SAFE("Warning: play_sound passed source_turf as null!")
+		log_error("Warning: play_sound passed source_turf as null for sound [sound_path]!")
 		return FALSE
 
 	created_sound.frequency = pitch

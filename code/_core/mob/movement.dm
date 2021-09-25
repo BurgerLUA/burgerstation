@@ -58,8 +58,6 @@
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	var/atom/old_loc = loc
-
 	. = ..()
 
 	if(.)

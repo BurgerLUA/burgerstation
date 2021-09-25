@@ -555,10 +555,10 @@
 
 
 /obj/marker/generation/mob
-	grow_amount_min = 20
-	grow_amount_max = 30
+	grow_amount_min = 50
+	grow_amount_max = 10
 	objects_max = 3
-	skip_chance = 90
+	skip_chance = 50
 	hole_chance = 0
 
 	color = COLOR_RED
@@ -577,6 +577,27 @@
 /obj/marker/generation/mob/bat
 	object_to_place = /mob/living/simple/bat
 	objects_max = 3
+
+/obj/marker/generation/mob/bee
+	object_to_place = /mob/living/simple/bee
+	objects_max = 2
+
+/obj/marker/generation/mob/goat
+	object_to_place = /mob/living/simple/passive/goat
+	objects_max = 1
+
+/obj/marker/generation/mob/mouse
+	objects_max = 2
+
+/obj/marker/generation/mob/mouse/brown
+	object_to_place = /mob/living/simple/passive/mouse/brown
+
+/obj/marker/generation/mob/mouse/white
+	object_to_place = /mob/living/simple/passive/mouse/white
+
+/obj/marker/generation/mob/mouse/grey
+	object_to_place = /mob/living/simple/passive/mouse/grey
+
 
 
 /obj/marker/generation/mob/venus_human_trap

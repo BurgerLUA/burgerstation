@@ -51,12 +51,11 @@
 	return FALSE
 
 /mob/living/simple/legionare_head/Destroy()
-
+	. = ..()
 	if(parent_legion)
 		parent_legion.tracked_heads -= src
 		parent_legion = null
 
-	return ..()
 
 /mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
 
