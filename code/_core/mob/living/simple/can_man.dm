@@ -103,7 +103,7 @@
 	if(charge_steps)
 		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 
-	return ..()
+	. = ..()
 
 
 /mob/living/simple/can_man/Bump(atom/Obstacle)

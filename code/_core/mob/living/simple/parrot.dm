@@ -55,7 +55,7 @@
 	if(old_sitting != sitting)
 		update_sprite()
 
-	return ..()
+	. = ..()
 
 /mob/living/simple/parrot/post_death()
 	update_sprite()

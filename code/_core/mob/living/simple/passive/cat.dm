@@ -42,7 +42,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	if(sitting != old_sitting)
 		update_sprite()
 
-	return ..()
+	. = ..()
 
 /mob/living/simple/cat/update_icon()
 
