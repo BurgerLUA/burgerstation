@@ -89,6 +89,7 @@
 		if(objective_attack.qdeleting || !objective_attack.health)
 			set_objective(null)
 		else if(is_living(objective_attack))
+			var/mob/living/L = objective_attack
 			if(!should_attack_mob(objective_attack,FALSE))
 				set_objective(null)
 			else
@@ -98,10 +99,12 @@
 					frustration_attack = 0
 				else if(sight_chance <= 50)
 					frustration_attack += tick_rate
-					last_combat_location = get_turf(objective_attack)
+					if(L.client)
+						last_combat_location = get_turf(objective_attack)
 				else
 					frustration_attack = 0
-					last_combat_location = get_turf(objective_attack)
+					if(L.client)
+						last_combat_location = get_turf(objective_attack)
 		else if(isturf(objective_attack) && objective_attack.Enter(owner))
 			set_objective(null)
 		else if(get_dist(owner,objective_attack) > attack_distance_max)
