@@ -64,3 +64,5 @@ SUBSYSTEM_DEF(balance)
 		qdel(I)
 
 	created_bullets.Cut()
+
+	. = ..()

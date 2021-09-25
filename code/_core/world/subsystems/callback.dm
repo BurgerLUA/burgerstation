@@ -5,8 +5,8 @@ SUBSYSTEM_DEF(callback)
 	priority = SS_ORDER_IMPORTANT
 	var/list/all_callbacks = list()
 
-	cpu_usage_max = 0
-	tick_usage_max = 0
+	cpu_usage_max = 100
+	tick_usage_max = 100
 
 
 /subsystem/callback/unclog(var/mob/caller)
@@ -25,10 +25,10 @@ SUBSYSTEM_DEF(callback)
 
 /subsystem/callback/on_life()
 
-	for(var/callback_id in src.all_callbacks)
-		var/callback_value = src.all_callbacks[callback_id]
+	for(var/callback_id in all_callbacks)
+		var/callback_value = all_callbacks[callback_id]
 		if(!length(callback_value))
-			//log_error("[callback_id] had improper callback data!")
+			//No callback data, need to remove.
 			remove_callback(callback_id)
 			continue
 		if(callback_value["time"] > world.time)
@@ -36,12 +36,13 @@ SUBSYSTEM_DEF(callback)
 		var/stored_proc = callback_value["proc"]
 		var/stored_args = callback_value["args"]
 		var/datum/stored_object = callback_value["object"]
+		remove_callback(callback_id)
 		if(try_call(stored_object,stored_proc,stored_args) == null)
 			if(stored_object)
 				log_error("Warning! Callback of id [callback_id] belonging to [stored_object] did not complete try_call() correctly, thus it was removed.")
 			else
 				log_error("Warning! Callback of id [callback_id] belonging to world did not complete try_call() correctly, thus it was removed.")
-		remove_callback(callback_id)
+
 
 	return TRUE
 
@@ -55,7 +56,7 @@ SUBSYSTEM_DEF(callback)
 	return TRUE
 
 /subsystem/callback/proc/remove_callback(var/desired_id)
-	if(src.all_callbacks[desired_id])
-		src.all_callbacks -= desired_id
+	if(all_callbacks[desired_id])
+		all_callbacks -= desired_id
 		return TRUE
 	return FALSE
