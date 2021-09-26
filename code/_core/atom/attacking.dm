@@ -43,6 +43,9 @@
 		CRASH_SAFE("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
 		return FALSE
 
+	if(world.time < attacker.attack_next)
+		return FALSE
+
 	var/atom/changed_target = victim.change_victim(attacker,src)
 	if(changed_target)
 		victim = changed_target
@@ -65,6 +68,9 @@
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 
 	if(!object_to_damage_with) //You don't even exist.
+		return FALSE
+
+	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
 		return FALSE
 
 	var/attack_distance = get_dist_advanced(attacker,victim)
@@ -102,6 +108,11 @@
 	if(!desired_damage_type)
 		return FALSE
 
+	var/damagetype/DT = all_damage_types[desired_damage_type]
+	if(!DT)
+		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
+		return FALSE
+
 	var/cleave_number = should_cleave(attacker,victim,params)
 	var/list/victims = list(victim)
 	if(cleave_number)
@@ -115,17 +126,6 @@
 				continue
 			victims += A
 			cleave_number--
-
-	var/damagetype/DT = all_damage_types[desired_damage_type]
-	if(!DT)
-		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
-		return FALSE
-
-	if(world.time < attacker.attack_next)
-		return FALSE
-
-	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
-		return FALSE
 
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
@@ -178,9 +178,8 @@
 		return FALSE
 
 	if(victim)
-		if(!isturf(victim.loc))
+		if(!isturf(victim) && !isturf(victim.loc))
 			return FALSE
-
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)
 		if(!(A1 && A2))

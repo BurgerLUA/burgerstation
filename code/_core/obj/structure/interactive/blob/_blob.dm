@@ -99,7 +99,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/interactive/blob/can_be_attacked()
+/obj/structure/interactive/blob/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
 /obj/structure/interactive/blob/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)

@@ -118,7 +118,7 @@
 				A.left_hand.toggle_wield(caller,A.right_item)
 				return TRUE
 
-	if(get_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
+	if(get_dist(src,object) <= 1 && (is_inventory(object) || is_inventory(object.loc) || isturf(object) || isturf(object.loc)) && !(isturf(object.loc) && !isturf(caller.loc)) )
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
 			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.

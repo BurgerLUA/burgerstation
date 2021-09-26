@@ -8,6 +8,13 @@
 
 	pixel_y = 2
 
+/obj/structure/interactive/crate/closet/can_prevent_close(var/atom/movable/M)
+	if(is_living(M))
+		var/mob/living/L = M
+		if(L.size > size)
+			return TRUE
+	return FALSE
+
 /obj/structure/interactive/crate/closet/anchored
 	anchored = TRUE
 

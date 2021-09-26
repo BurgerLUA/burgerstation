@@ -1509,7 +1509,7 @@
 "fB" = (
 /obj/structure/smooth/table,
 /obj/structure/interactive/shop,
-/obj/item/pinpointer/artifact,
+/obj/item/pinpointer/objective,
 /turf/simulated/floor/tile/morphing/security,
 /area/burgerstation/armory)
 "fC" = (
@@ -23864,14 +23864,14 @@ ab
 ab
 ak
 kC
-iE
+id
 id
 mO
 lI
 lI
 lI
 ra
-id
+iE
 id
 kC
 ak

@@ -157,7 +157,7 @@
 		var/atom/movable/M = k
 		if(can_prevent_close(M))
 			blocking = M
-		break
+			break
 
 	if(blocking)
 		caller.to_chat(span("warning","\The [blocking.name] is preventing \the [src.name] from being closed!"))

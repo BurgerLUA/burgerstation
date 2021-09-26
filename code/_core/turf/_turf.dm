@@ -158,25 +158,29 @@
 
 /turf/change_victim(var/atom/attacker,var/atom/object)
 
+	if(density) //Not actually a floor but something more.
+		return src
+
 	for(var/k in contents)
 		var/atom/movable/v = k
 		if(attacker == v)
+			continue
+		if(!v.health)
 			continue
 		if(ismob(v))
 			var/mob/M = v
 			if(M.mouse_opacity == 0)
 				continue
-			return v
-		if(v.health && v.can_be_attacked(attacker))
-			return v
+		if(!v.can_be_attacked(attacker))
+			continue
+		return v
 
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(attacker == L)
+			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay < 0 || get_dist(L,src) > 1)
 				continue
-			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && get_dist(L,src) <= 1)
-				return L
+			return L
 
 	return src
 
