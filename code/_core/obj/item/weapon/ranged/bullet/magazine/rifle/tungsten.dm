@@ -8,11 +8,11 @@
 
 	value = 1800
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
-	heat_max = 0.03
+	heat_max = 0.1
 
 	bullet_length_min = 15
 	bullet_length_best = 20
@@ -27,7 +27,7 @@
 	override_icon_state = TRUE
 
 	size = SIZE_3
-	weight = 8
+	weight = 12
 
 	ai_heat_sensitivity = 1.5
 
@@ -79,7 +79,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_static_spread()
-	return 0.01
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
