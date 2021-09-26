@@ -60,6 +60,7 @@
 		qdel(src)
 	else
 		update_value()
+	update_sprite()
 
 /obj/item/contract/get_value()
 	return CEILING(reward.get_value()*0.25,1)

@@ -907,7 +907,6 @@
 #include "code\_core\obj\effect\chat.dm"
 #include "code\_core\obj\effect\crack.dm"
 #include "code\_core\obj\effect\cult_decor.dm"
-#include "code\_core\obj\effect\fake_corpse.dm"
 #include "code\_core\obj\effect\fake_lighting.dm"
 #include "code\_core\obj\effect\fishing_bob.dm"
 #include "code\_core\obj\effect\fog_of_war.dm"

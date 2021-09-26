@@ -126,8 +126,6 @@
 
 	has_quick_function = FALSE
 
-	appearance_flags = RESET_ALPHA | KEEP_APART
-
 /obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -167,4 +165,5 @@
 /obj/hud/button/dead_ghost/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"ghost_overlay")
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	add_overlay(I)

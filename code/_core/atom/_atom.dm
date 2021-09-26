@@ -3,7 +3,7 @@
 	desc = "What the fuck is this?"
 	var/label
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND //NEVER EVER USE KEEP_TOGETHER.
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 

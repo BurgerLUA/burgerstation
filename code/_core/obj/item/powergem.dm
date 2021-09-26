@@ -20,14 +20,14 @@
 	SAVEVAR("icon_state")
 	SAVEVAR("damage_type_to_add")
 	SAVEVAR("damage_to_add")
-	
+
 /obj/item/powergem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("rarity")
 	LOADVAR("icon_state")
 	LOADVAR("damage_type_to_add")
 	LOADVAR("damage_to_add")
-	
+
 /obj/item/powergem/Generate()
 
 	icon_state = "gem[rand(1,5)]"
@@ -65,7 +65,7 @@
 
 	. += span("notice","Adds [damage_to_add] [damage_type_to_add] damage to attacks.")
 
-	
+
 /obj/item/powergem/Finalize()
 
 	name = "[rarity] power gem of [damage_type_to_add]"
@@ -113,8 +113,7 @@
 /obj/item/powergem/update_overlays()
 	. = ..()
 	var/image/I = new(icon,icon_state)
-	I.appearance_flags = LONG_GLIDE | KEEP_APART
+	I.appearance_flags = src.appearance_flags
 	I.blend_mode = BLEND_ADD
 	I.plane = PLANE_LIGHTING
 	add_overlay(I)
-	

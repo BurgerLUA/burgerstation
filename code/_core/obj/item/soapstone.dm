@@ -37,10 +37,10 @@
 /obj/item/soapstone/update_overlays()
 	. = ..()
 	var/image/I2 = new/image(icon,"rope")
-	I2.appearance_flags = RESET_COLOR | KEEP_APART
+	I2.appearance_flags = src.appearance_flags
 	add_overlay(I2)
 	var/image/I3 = new/image(icon,"fade")
-	I3.appearance_flags = RESET_COLOR | KEEP_APART
+	I3.appearance_flags = src.appearance_flags
 	add_overlay(I3)
 
 /obj/item/soapstone/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

@@ -1,5 +1,5 @@
 /obj/hud/
-	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE
+	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE | LONG_GLIDE | TILE_BOUND
 
 	var/user_colors = TRUE
 

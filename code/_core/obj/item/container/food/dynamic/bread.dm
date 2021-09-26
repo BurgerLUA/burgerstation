@@ -225,11 +225,11 @@
 		else
 			name = "[wetness_prefix] mystery dough"
 
-	if(reagents.volume_current <= 20 && cooked_icon_state == "bread_whole")
+	if(reagents.volume_current < 20 && cooked_icon_state == "bread_whole")
 		cooked_icon_state = "bun_whole"
 		raw_icon_state = "dough_ball_small"
 
-	else if(reagents.volume_current > 20 && cooked_icon_state == "bun_whole")
+	else if(reagents.volume_current >= 20 && cooked_icon_state == "bun_whole")
 		cooked_icon_state = "bread_whole"
 		raw_icon_state = "dough_ball"
 

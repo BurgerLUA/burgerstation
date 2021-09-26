@@ -168,7 +168,7 @@ obj/effect/temp/hazard/bubblefist/
 obj/effect/temp/hazard/bubblefist/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,overlay_state)
-	I.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	I.appearance_flags = src.appearance_flags
 	I.plane = PLANE_EFFECT
 	add_overlay(I)
 

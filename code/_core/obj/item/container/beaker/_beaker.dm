@@ -85,7 +85,7 @@
 	. = ..()
 	if(!overide_icon)
 		var/image/I = new/image(initial(icon),"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
-		I.appearance_flags = RESET_COLOR | KEEP_APART
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.color = reagents.color
 		add_underlay(I)
 

@@ -17,7 +17,7 @@
 	var/icon/base = new/icon(initial(icon),"base")
 	swap_colors(base)
 	var/image/I = new/image(base)
-	I.appearance_flags = RESET_COLOR
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	add_underlay(I)
 
 /obj/hud/button/health/bar/hp

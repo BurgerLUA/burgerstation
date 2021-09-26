@@ -7,8 +7,6 @@
 	var/list/connections = list() //ASSOC LIST
 	var/obj/structure/interactive/powered/connected_machine
 
-	appearance_flags = LONG_GLIDE | TILE_BOUND | KEEP_APART
-
 /obj/structure/interactive/wire/Destroy()
 
 	for(var/k in connections)
