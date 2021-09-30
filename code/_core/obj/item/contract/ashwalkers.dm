@@ -52,17 +52,17 @@
 
 /obj/item/contract/arachnids/low
 	amount_max = 5
-	reward = /obj/item/currency/gold_coin{item_count_current=5*200}
+	reward = /obj/item/currency/credits{item_count_current=5*200}
 	burgerbux_reward = 1
 
 /obj/item/contract/arachnids/mid
 	amount_max = 10
-	reward = /obj/item/currency/gold_coin{item_count_current=10*200*1.5}
+	reward = /obj/item/currency/credits{item_count_current=10*200*1.5}
 	burgerbux_reward = 5
 
 /obj/item/contract/arachnids/high
 	amount_max = 25
-	reward = /obj/item/currency/gold_coin{item_count_current=25*200*2}
+	reward = /obj/item/currency/credits{item_count_current=25*200*2}
 	burgerbux_reward = 10
 
 //Bosses
