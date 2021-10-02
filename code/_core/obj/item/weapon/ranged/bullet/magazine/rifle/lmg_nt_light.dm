@@ -6,11 +6,13 @@
 	icon_state = "inventory"
 	value = 3500
 
-	shoot_delay = 2
+	tier = 2
+
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
-	damage_mod = 1.1
+	damage_mod = 1.2
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 

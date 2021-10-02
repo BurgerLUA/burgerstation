@@ -6,6 +6,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	tier = 1
 
 	firemodes = list("burst","automatic","semi-automatic")
 
@@ -76,6 +77,7 @@
 	value = 600
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1.25
+	tier = 2
 
 
 

@@ -6,6 +6,9 @@
 	icon_state = "inventory"
 	value = 6000
 
+	tier = 3
+	bypass_balance_check = TRUE
+
 	automatic = FALSE
 
 	bullet_count_max = 1
@@ -44,5 +47,5 @@
 
 
 /obj/item/weapon/ranged/bullet/rocket/use_condition(var/amount_to_use=1)
-	adjust_quality(-100)
+	adjust_quality(-25)
 	return TRUE

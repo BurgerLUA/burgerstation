@@ -150,7 +150,7 @@
 	)
 
 	loot_table = list(
-		/obj/item/magazine/gauss_gun/auto = 4
+		/obj/item/magazine/gauss_gun = 1
 	)
 	loot_count = 6
 	chance_none = 25

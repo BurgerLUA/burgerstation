@@ -6,8 +6,10 @@
 	icon_state = "inventory"
 	value = 5000
 
+	tier = 3
+
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 20
+	shoot_delay = 4
 
 	damage_mod = 2
 

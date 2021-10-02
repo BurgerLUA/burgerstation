@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 700
 
+	tier = 2
+
 	shoot_delay = 4
 
 	automatic = FALSE
@@ -77,6 +79,7 @@
 	icon_state = "inventory"
 	value = 2000
 
+	tier = 3
 	shoot_delay = 2
 
 	heat_max = 0.05

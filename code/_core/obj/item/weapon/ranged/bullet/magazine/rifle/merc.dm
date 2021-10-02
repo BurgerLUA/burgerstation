@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 3500
 
+	tier = 2
+
 	shoot_delay = 1.25
 	damage_mod = 1
 

@@ -7,6 +7,8 @@
 
 	value = 800
 
+	tier = 1
+
 	shoot_delay = 3
 
 	automatic = FALSE
@@ -85,6 +87,8 @@
 	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
 
 	damage_mod = 2
+
+	tier = 3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_static_spread()
 	return 0.005

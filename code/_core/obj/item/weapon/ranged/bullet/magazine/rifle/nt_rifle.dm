@@ -6,7 +6,9 @@
 	icon_state = "inventory"
 	value = 1100
 
-	shoot_delay = 2.5
+	tier = 1
+
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -17,7 +19,7 @@
 	can_wield = TRUE
 
 	size = SIZE_4
-	weight = 10
+	weight = 13
 
 	heat_max = 0.05
 
@@ -71,7 +73,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_static_spread()
-	return 0
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_skill_spread(var/mob/living/L)
-	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

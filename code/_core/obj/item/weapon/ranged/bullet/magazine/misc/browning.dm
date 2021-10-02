@@ -39,6 +39,8 @@
 
 	anchored = TRUE
 
+	tier = 3
+
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/Destroy()
 	QDEL_NULL(linked_gun)
 	return ..()

@@ -4,8 +4,10 @@
 	desc_extended = "The tool to carry out God's will."
 	value = 2000
 
+	tier = 2
+
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'
-	shoot_delay = 3
+	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	movement_spread_base = 0.008
@@ -15,9 +17,9 @@
 	automatic = TRUE // perversion in burgerstation form
 
 	size = SIZE_2
-	weight = 5
+	weight = 8
 
-	heat_max = 0.07
+	heat_max = 0.1
 
 	bullet_length_min = 20
 	bullet_length_best = 23

@@ -6,6 +6,8 @@
 
 	damage_mod = 1
 
+	tier_type = "pistol"
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)

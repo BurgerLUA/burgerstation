@@ -145,6 +145,8 @@
 
 	value = 200
 
+	tier = 1
+
 /obj/item/weapon/ranged/bow/wood/get_static_spread()
 	return 0.005
 
@@ -158,6 +160,8 @@
 	stage_max = 150
 
 	value = 300
+
+	tier = 2
 
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
@@ -173,6 +177,8 @@
 
 	stage_per_decisecond = 10
 	stage_max = 50
+
+	tier = 3
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -198,3 +204,4 @@
 	stage_per_decisecond = 15
 	stage_max = 125
 
+	tier = 4

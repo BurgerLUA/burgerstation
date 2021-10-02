@@ -4,3 +4,5 @@
 	inaccuracy_modifier = 1
 
 	damage_mod = 1.1
+
+	tier_type = "smg"

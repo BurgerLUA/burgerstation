@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 10000
 
+	tier = 4
+
 	shoot_delay = 0.3 //Oh god oh fuck
 
 	damage_mod = 0.6

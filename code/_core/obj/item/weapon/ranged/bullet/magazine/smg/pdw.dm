@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1100
 
+	tier = 1
+
 	automatic = TRUE
 	can_wield = FALSE
 

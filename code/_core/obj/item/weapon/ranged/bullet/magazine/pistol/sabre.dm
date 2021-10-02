@@ -4,9 +4,10 @@
 	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
-	value = 700
+	value = 1100
 
-	shoot_delay = 6
+	tier = 2
+	shoot_delay = 2.5
 
 	automatic = FALSE
 
@@ -64,7 +65,6 @@
 	attachment_undermount_offset_y = 17 - 16
 
 
-
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread()
 	return 0.0025
 
@@ -81,6 +81,8 @@
 
 	heat_max = 0.12
 
-	value = 2000
+	value = 2400
 
 	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
+
+	tier = 3

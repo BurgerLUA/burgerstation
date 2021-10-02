@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 2200
 
+	tier = 2
+
 	shoot_delay = 2
 
 	automatic = TRUE
@@ -19,7 +21,7 @@
 	size = SIZE_4
 	weight = 18
 
-	heat_max = 0.2
+	heat_max = 0.1
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -85,14 +87,18 @@
 	desc_extended = "The 7.62x54mmR AK-47-SU is the AK to go for when you seriously want to fuck shit upm, but with compactness."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_carbine.dmi'
 	icon_state = "inventory"
-	value = 1800
+	value = 2900
+
+	tier = 3
 
 	shoot_delay = 1.5
 
 	size = SIZE_3
 	weight = 10
 
-	inaccuracy_modifier = 0.25
+	heat_max = 0.2
+
+	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 1.25
 	movement_spread_base = 0.01
 

@@ -7,6 +7,8 @@
 
 	value = 3000
 
+	tier = 2
+
 	shoot_delay = 3
 
 	automatic = FALSE

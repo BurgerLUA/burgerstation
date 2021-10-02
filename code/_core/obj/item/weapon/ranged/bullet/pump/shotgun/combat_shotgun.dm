@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
 	icon_state = "inventory"
 
+	tier = 2
+
 	value = 1200
 
 	shoot_delay = 4

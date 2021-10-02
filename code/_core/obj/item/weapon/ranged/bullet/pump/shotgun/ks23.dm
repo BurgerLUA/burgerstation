@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1800
 
+	tier = 3
+
 	can_wield = TRUE
 
 	dan_mode = TRUE

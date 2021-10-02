@@ -4,13 +4,15 @@
 	desc_extended = "The 4.6x30mm DMCA is an extremely robust automatic weapon capable of sending a volley of penetrating small arms."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/dmca.dmi'
 	icon_state = "inventory"
-	value = 2000
+	value = 3000
 
-	shoot_delay = 1
-	burst_delay = 8
+	tier = 2
+
+	shoot_delay = 1.1
+	burst_delay = 7
 	max_bursts = 5
 
-	damage_mod = 0.9
+	damage_mod = 1
 
 	automatic = TRUE
 

@@ -4,7 +4,10 @@
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'
 	value = 800
-	shoot_delay = 5
+	tier = 2
+
+	damage_mod = 1.1
+	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	movement_spread_base = 0.01
@@ -56,8 +59,6 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-
-
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread()
 	return 0.001
 
@@ -69,7 +70,12 @@
 	desc = "Now in gold!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
-	value = 3000
+	value = 5000
+	tier = 3
+
+	damage_mod = 1.3
+	shoot_delay = 2
+
 	weight = 15
 	value_burgerbux = 1
 
@@ -77,13 +83,17 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
 	name = ".50 Eagle MOD"
 	desc = "Badass!"
-	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is painted black and upgraded with high quality parts."
+	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is painted black and upgraded with higher quality parts."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_black.dmi'
-	value = 1400
+	value = 2000
+	tier = 3
 
-	shoot_delay = 4
+	damage_mod = 1.3
+	shoot_delay = 3
 
 	heat_max = 0.1
+
+	weight = 10
 
 
 

@@ -27,8 +27,18 @@
 
 	has_quick_function = TRUE
 
+	var/bypass_balance_check = FALSE //Set to true to ignore warnings about mismatched tiers in terms of balance.
+	var/tier = -1 //-1 means not set.
+	var/tier_type = "weapon"
+
+/obj/item/weapon/Finalize()
+	. = ..()
+	if(tier == -1 && SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
+		tier = SSbalance.stored_tier[type]
+
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()
+	. += div("rarity center","Tier [tier] [tier_type].")
 	if(enchantment)
 		. += div("notice","It is enchanted with <b>[enchantment.name]</b>")
 		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")

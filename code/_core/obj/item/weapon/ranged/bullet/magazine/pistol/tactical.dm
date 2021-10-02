@@ -4,11 +4,11 @@
 	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Americans."
 	value = 700
 
+	tier = 2
+
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 3
+	shoot_delay = 2
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
-
-
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5

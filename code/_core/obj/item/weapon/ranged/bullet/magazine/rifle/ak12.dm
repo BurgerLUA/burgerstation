@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 2000
 
+	tier = 2
+
 	shoot_delay = 1.75
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')

@@ -58,6 +58,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
 
+	tier = 2
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_static_spread()

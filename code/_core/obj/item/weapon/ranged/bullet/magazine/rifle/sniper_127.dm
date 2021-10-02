@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 5000
 
+	tier = 2
+
 	shoot_delay = 10
 
 	automatic = FALSE

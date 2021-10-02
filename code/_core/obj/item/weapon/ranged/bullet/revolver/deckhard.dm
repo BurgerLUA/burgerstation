@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 800
 
+	tier = 2
+
 	projectile_speed = 31
 	shoot_delay = 4
 

@@ -10,6 +10,8 @@
 
 	damage_mod = 1.2
 
+	tier_type = "revolver"
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)

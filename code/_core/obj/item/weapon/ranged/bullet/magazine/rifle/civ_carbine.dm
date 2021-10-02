@@ -6,8 +6,10 @@
 	icon_state = "inventory"
 	value = 3100
 
-	damage_mod = 0.9
-	shoot_delay = 1.3
+	tier = 2
+
+	damage_mod = 0.8
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -20,7 +22,7 @@
 	size = SIZE_3
 	weight = 12
 
-	heat_max = 0.15
+	heat_max = 0.2
 
 	bullet_length_min = 40
 	bullet_length_best = 45
