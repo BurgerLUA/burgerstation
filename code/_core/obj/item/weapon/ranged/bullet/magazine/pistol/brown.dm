@@ -81,10 +81,7 @@
 
 	. = ..()
 
-	attachment_barrel = /obj/item/attachment/barrel/suppressor
-	attachment_barrel = new attachment_barrel(src)
-
-	update_attachment_stats()
-	update_sprite()
-
-
+	attachment_barrel = new/obj/item/attachment/barrel/suppressor(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)

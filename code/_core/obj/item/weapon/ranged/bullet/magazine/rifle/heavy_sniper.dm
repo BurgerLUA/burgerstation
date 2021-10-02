@@ -101,7 +101,3 @@
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
-
-	. = ..()
-
-	update_sprite()

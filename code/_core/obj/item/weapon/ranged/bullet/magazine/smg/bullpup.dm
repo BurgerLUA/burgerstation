@@ -81,9 +81,6 @@
 	var/obj/item/attachment/barrel/suppressor/SS = new(src)
 	attachment_barrel = SS
 
-	update_attachment_stats()
-	update_sprite()
-
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 

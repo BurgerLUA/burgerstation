@@ -38,8 +38,28 @@
 
 /obj/marker/prefab/boss
 	icon = 'icons/obj/markers/prefab_boss.dmi'
-	dimensions = "boss"
 	chance_none = 0
+
+/obj/marker/prefab/boss/easy
+	prefabs = list(
+		"maps/prefabs/boss/broodmother.dmi",
+		"maps/prefabs/boss/colossus.dmi",
+		"maps/prefabs/boss/frog.dmi",
+		"maps/prefabs/boss/goblin_king.dmi",
+	)
+
+/obj/marker/prefab/boss/medium
+	prefabs = list(
+		"maps/prefabs/boss/ash_drake.dmi",
+		"maps/prefabs/boss/hierophant.dmi",
+		"maps/prefabs/boss/herald.dmi",
+	)
+
+/obj/marker/prefab/boss/hard
+	prefabs = list(
+		"maps/prefabs/boss/bubblegum.dmi",
+		"maps/prefabs/boss/can_man.dmi",
+	)
 
 /obj/marker/prefab/forrest
 	icon = 'icons/obj/markers/prefab_32x32.dmi'

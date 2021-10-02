@@ -91,8 +91,7 @@
 
 	. = ..()
 
-	attachment_sight = /obj/item/attachment/sight/scope
-	attachment_sight = new attachment_sight(src)
-
-	update_attachment_stats()
-	update_sprite()
+	attachment_sight = new/obj/item/attachment/sight/scope(src)
+	INITIALIZE(attachment_sight)
+	GENERATE(attachment_sight)
+	FINALIZE(attachment_sight)

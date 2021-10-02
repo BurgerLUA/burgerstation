@@ -158,11 +158,7 @@
 	GENERATE(attachment_undermount)
 	FINALIZE(attachment_undermount)
 
-	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
+	attachment_barrel = new/obj/item/attachment/barrel/laser_charger(src)
 	INITIALIZE(attachment_barrel)
 	GENERATE(attachment_barrel)
 	FINALIZE(attachment_barrel)
-
-	update_attachment_stats()
-	update_sprite()
-
