@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(balance)
 		FINALIZE(B)
 		created_bullets += B
 
+	var/imbalanced_weapons = 0
+
 	for(var/k in subtypesof(/obj/item/weapon))
 		var/obj/item/weapon/W = k
 		if(initial(W.value) <= 0)
@@ -57,6 +59,7 @@ SUBSYSTEM_DEF(balance)
 			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
 			if(W.tier >= 0 && recommended_tier != W.tier)
 				log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>![istype(W,/obj/item/weapon/ranged/bullet) ? "(Bullet used: [weapon_to_bullet[W.type]])" : ""]")
+				imbalanced_weapons++
 			stored_tier[W.type] = recommended_tier
 
 
@@ -69,5 +72,7 @@ SUBSYSTEM_DEF(balance)
 		var/obj/item/I = k
 		qdel(I)
 	created_bullets.Cut()
+
+	log_subsystem(src.name,"Found [imbalanced_weapons] imbalanced weapons.")
 
 	. = ..()

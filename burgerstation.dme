@@ -1632,6 +1632,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg_nt.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\lmg_nt_light.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\m4.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\marksman.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\merc.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\minigun.dm"

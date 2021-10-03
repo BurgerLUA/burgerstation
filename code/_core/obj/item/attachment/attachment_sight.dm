@@ -120,3 +120,6 @@
 	attachment_stats = list(
 		skill_spread = 0
 	)
+
+/obj/item/attachment/sight/m4
+	icon_state = "m4sight"

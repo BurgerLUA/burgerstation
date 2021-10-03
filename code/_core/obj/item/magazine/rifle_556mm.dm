@@ -17,7 +17,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/moar = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/moar = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/m4 = TRUE
 
 	)
 
