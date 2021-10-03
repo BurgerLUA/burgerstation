@@ -10,7 +10,7 @@
 
 	shoot_delay = 25
 
-	damage_mod = 1.5
+	damage_mod = 2
 
 	automatic = FALSE
 
@@ -73,7 +73,7 @@
 
 	shoot_delay = 6
 
-	damage_mod = 0.75
+	damage_mod = 1
 
 	automatic = TRUE
 
@@ -84,14 +84,6 @@
 	weight = 13.37
 
 	heat_max = 0.1
-
-	bullet_length_min = 11
-	bullet_length_best = 12
-	bullet_length_max = 13
-
-	bullet_diameter_min = 1.75
-	bullet_diameter_best = 2
-	bullet_diameter_max = 2.25
 
 	ai_heat_sensitivity = 2
 

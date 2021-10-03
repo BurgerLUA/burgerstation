@@ -6,12 +6,14 @@
 	icon_state = "inventory"
 	value = 1100
 
+	damage_mod = 1
+
 	tier = 1
 
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1
+	shoot_delay = 1.1
 
 	firemodes = list("burst","automatic","semi-automatic")
 
@@ -30,7 +32,7 @@
 	bullet_diameter_max = 5
 
 	size = SIZE_3
-	weight = 6
+	weight = 5
 
 	ai_heat_sensitivity = 0.5
 

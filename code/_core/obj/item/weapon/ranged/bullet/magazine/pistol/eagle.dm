@@ -3,7 +3,7 @@
 	desc = "Shiny!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'
-	value = 800
+	value = 1000
 	tier = 2
 
 	damage_mod = 1.1
@@ -89,7 +89,7 @@
 	tier = 3
 
 	damage_mod = 1.3
-	shoot_delay = 3
+	shoot_delay = 2
 
 	heat_max = 0.1
 

@@ -8,7 +8,7 @@
 
 	tier = 2
 
-	shoot_delay = 1.25
+	shoot_delay = 1.1
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 

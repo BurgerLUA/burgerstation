@@ -121,7 +121,7 @@
 	icon = 'icons/obj/item/bullet/300.dmi'
 
 	bullet_diameter = 7.62
-	bullet_length = 46
+	bullet_length = 67
 	bullet_color = COLOR_BULLET
 
 	item_count_max = 5
@@ -137,8 +137,7 @@
 
 /obj/item/bullet_cartridge/revolver_300/Generate()
 	item_count_current = 5
-	update_sprite()
-	return ..()
+	. = ..()
 
 
 /obj/item/bullet_cartridge/revolver_762

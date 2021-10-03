@@ -79,8 +79,10 @@
 	Where'd you get something like this?"
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
-	shoot_delay = 3
+	shoot_delay = 1
 	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
+
+	tier = 3
 
 	size = SIZE_2
 

@@ -9,14 +9,14 @@
 	tier = 2
 
 	shoot_delay = 1.1
-	burst_delay = 7
+	burst_delay = 6.5
 	max_bursts = 5
 
-	damage_mod = 1
+	damage_mod = 1.25
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/46/shoot.ogg')
 

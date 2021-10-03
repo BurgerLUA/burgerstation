@@ -12,7 +12,7 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0
 
-	shoot_delay = 4
+	shoot_delay = 3
 
 	automatic = FALSE
 

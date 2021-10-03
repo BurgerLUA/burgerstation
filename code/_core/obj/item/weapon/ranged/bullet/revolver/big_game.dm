@@ -8,7 +8,7 @@
 
 	tier = 3
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -19,9 +19,9 @@
 	size = SIZE_3
 	weight = 12
 
-	bullet_length_min = 40
-	bullet_length_best = 46
-	bullet_length_max = 52
+	bullet_length_min = 66
+	bullet_length_best = 67
+	bullet_length_max = 67
 
 	bullet_diameter_min = 7.6
 	bullet_diameter_best = 7.62
@@ -60,7 +60,6 @@
 
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
-
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1

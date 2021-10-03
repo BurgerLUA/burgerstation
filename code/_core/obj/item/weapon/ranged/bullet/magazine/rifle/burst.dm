@@ -8,7 +8,7 @@
 
 	tier = 1
 
-	shoot_delay = 1.25
+	shoot_delay = 1.5
 	burst_delay = 6
 	max_bursts = 3
 

@@ -63,10 +63,12 @@
 
 /obj/item/bullet_cartridge/shotgun_20/cursed
 	name = "\improper 20 gauge curse shell"
-	rarity = RARITY_UNCOMMON
 	desc = "Shoots a lot of small magic circles at once."
 	desc_extended = "This shell is covered in mysterious runes, and smells like the ocean???"
 	icon_state = "buckshot"
+
+	bullet_diameter = 17.5
+	bullet_length = 16.66
 
 	projectile_count = 7
 	base_spread = 0.03

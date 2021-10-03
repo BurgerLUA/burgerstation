@@ -9,7 +9,7 @@
 	tier = 3
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 4
+	shoot_delay = 10
 
 	damage_mod = 2
 
@@ -93,6 +93,8 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/Generate()
+
+	. = ..()
 
 	attachment_stock = new /obj/item/attachment/stock/sniper_50(src)
 	INITIALIZE(attachment_stock)

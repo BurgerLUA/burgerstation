@@ -8,7 +8,7 @@
 
 	tier = 0
 
-	shoot_delay = 2
+	shoot_delay = 2.5
 
 	damage_mod = 1
 

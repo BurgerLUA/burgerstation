@@ -12,7 +12,7 @@
 
 	automatic = TRUE
 
-	damage_mod = 1.3
+	damage_mod = 1.75
 
 	shoot_sounds = list('sound/weapons/russia/vintorez.ogg')
 

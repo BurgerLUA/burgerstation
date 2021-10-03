@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(balance)
 				var/obj/item/bullet_cartridge/C = v
 				if(C.bullet_length != B.bullet_length_best)
 					continue
-				if(C.bullet_diameter < B.bullet_diameter_best)
+				if(C.bullet_diameter != B.bullet_diameter_best)
 					continue
 				weapon_to_bullet[B.type] = C.type
 				break
@@ -54,9 +54,9 @@ SUBSYSTEM_DEF(balance)
 			stored_dph[W.type] = CEILING(found_dph,1)
 
 		if(!W.bypass_balance_check)
-			var/recommended_tier = FLOOR(max(found_dph,found_dps)/100,1)
+			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
 			if(W.tier >= 0 && recommended_tier != W.tier)
-				log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>! Set byass_balance_check to TRUE to bypass this warning.")
+				log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>![istype(W,/obj/item/weapon/ranged/bullet) ? "(Bullet used: [weapon_to_bullet[W.type]])" : ""]")
 			stored_tier[W.type] = recommended_tier
 
 
