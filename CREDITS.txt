@@ -35,3 +35,8 @@ ADDITIONAL CREDITS
 	
 	Swing sound by Mark Diangelo.
 	http://soundbible.com/tags-mark-diangelo.html
+	
+	america_invade.ogg sound credits:
+		Copyright: Copyright 2005 nicStage Copyright 2017 Jean-Manuel Clémençon (samuncle) License: CC-BY 3.0 Comment: From http://freesound.org/people/nicStage/sounds/1906/ (modified by samuncle)
+		
+		Joshua Parker's segment from #INTRODUCTIONS (2015) by LaBeouf, Rönkkö & Turner http://labeoufronkkoturner.com 

@@ -62,6 +62,7 @@
 
 /obj/hud/inventory/dynamic/belt
 	var/obj/hud/button/slot/assoc_slot
+	priority = -99 //Belt goes before anything else.
 
 
 /obj/hud/inventory/dynamic/belt/Destroy()
