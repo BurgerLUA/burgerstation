@@ -10,7 +10,7 @@
 
 	shoot_delay = 25
 
-	damage_mod = 2
+	damage_mod = 3
 
 	automatic = FALSE
 
@@ -48,8 +48,6 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-
-
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 2
 	movement_spread_base = 0.15
@@ -73,7 +71,7 @@
 
 	shoot_delay = 6
 
-	damage_mod = 1
+	damage_mod = 1.25
 
 	automatic = TRUE
 

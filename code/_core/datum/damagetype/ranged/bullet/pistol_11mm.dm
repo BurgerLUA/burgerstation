@@ -40,7 +40,7 @@
 		HOLY = 10
 	)
 	skill_stats = list(
-		SKILL_PRAYER = 100,
+		SKILL_PRAYER = 50,
 	)
 	skill_damage = list(
 		SKILL_PRAYER = list(HOLY)

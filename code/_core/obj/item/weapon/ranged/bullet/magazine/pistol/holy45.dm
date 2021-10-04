@@ -4,10 +4,10 @@
 	desc_extended = "The tool to carry out God's will."
 	value = 2000
 
-	tier = 2
+	tier = 4
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'
-	shoot_delay = 1.5
+	shoot_delay = 1.75
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	movement_spread_base = 0.008

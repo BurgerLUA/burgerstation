@@ -56,4 +56,4 @@
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit(armor_to_use) * initial(BC.projectile_count)
+	return D.get_damage_per_hit(armor_to_use) * initial(BC.projectile_count) * damage_mod

@@ -8,11 +8,11 @@
 
 	tier = 2
 
-	shoot_delay = 3
+	shoot_delay = 2
 
 	automatic = TRUE
 
-	damage_mod = 1.75
+	damage_mod = 2
 
 	shoot_sounds = list('sound/weapons/russia/vintorez.ogg')
 

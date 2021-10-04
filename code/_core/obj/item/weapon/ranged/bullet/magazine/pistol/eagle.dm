@@ -71,10 +71,10 @@
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
 	value = 5000
-	tier = 3
+	tier = 4
 
 	damage_mod = 1.3
-	shoot_delay = 2
+	shoot_delay = 3
 
 	weight = 15
 	value_burgerbux = 1
@@ -88,10 +88,9 @@
 	value = 2000
 	tier = 3
 
-	damage_mod = 1.3
 	shoot_delay = 2
 
-	heat_max = 0.1
+	heat_max = 0.075
 
 	weight = 10
 

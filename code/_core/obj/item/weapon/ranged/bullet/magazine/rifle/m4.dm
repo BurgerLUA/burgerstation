@@ -4,12 +4,12 @@
 	desc_extended = "A typical run of the mill assault rifle designed to quickly put down targets at medium to long ranges."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/standard.dmi'
 	icon_state = "inventory"
-	value = 900
+	value = 1800
 
 	tier = 2
 
 	damage_mod = 1.15
-	shoot_delay = 1
+	shoot_delay = 1.15
 
 	automatic = TRUE
 

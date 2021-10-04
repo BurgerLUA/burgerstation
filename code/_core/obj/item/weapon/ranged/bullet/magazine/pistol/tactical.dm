@@ -7,7 +7,7 @@
 	tier = 2
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 2
+	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	movement_spread_base = 0.008
@@ -79,9 +79,10 @@
 	Where'd you get something like this?"
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
-	shoot_delay = 1
+	shoot_delay = 1.25
 	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
 
+	damage_mod = 1.25
 	tier = 3
 
 	size = SIZE_2

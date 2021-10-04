@@ -8,8 +8,8 @@
 
 	tier = 2
 
-	shoot_delay = 1
-	burst_delay = 4
+	shoot_delay = 0.5
+	burst_delay = 2
 	max_bursts = 2
 
 	firemodes = list("burst")

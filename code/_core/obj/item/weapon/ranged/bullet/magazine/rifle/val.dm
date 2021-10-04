@@ -8,9 +8,9 @@
 
 	tier = 2
 
-	shoot_delay = 1.5
+	shoot_delay = 1.1
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	automatic = TRUE
 
