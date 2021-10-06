@@ -11,3 +11,5 @@
 
 	material_id = /material/steel
 	health_base = 4000
+
+	map_color = COLOR_GREY_DARK

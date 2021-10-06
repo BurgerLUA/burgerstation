@@ -9,6 +9,7 @@
 
 	//No destruction turf, immortal
 
+	map_color = COLOR_GREY_DARK
 
 /turf/simulated/wall/dark/shuttle
 	name = "syndicate shuttle wall"

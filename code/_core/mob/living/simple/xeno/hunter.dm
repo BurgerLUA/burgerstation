@@ -8,7 +8,7 @@
 
 
 
-	movement_delay = 2
+	movement_delay = 1
 
 	armor_base = list(
 		BLADE = 10,
@@ -64,11 +64,9 @@
 	name = "xeno sentinel"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
-
-
 	health_base = 150
 
-	movement_delay = 1
+	movement_delay = 2
 
 	armor_base = list(
 		BLADE = 10,

@@ -14,6 +14,10 @@
 
 	color = COLOR_WOOD
 
+/turf/simulated/wall/wood/New(var/desired_loc)
+	. = ..()
+	map_color = color
+
 /turf/simulated/wall/wood/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)

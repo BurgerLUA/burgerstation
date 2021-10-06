@@ -21,6 +21,8 @@
 
 	organic = TRUE
 
+	map_color = "#267F00"
+
 /turf/simulated/floor/grass/jungle
 	name = "dense jungle grass"
 	color = "#969696"

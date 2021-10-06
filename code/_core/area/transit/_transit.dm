@@ -8,6 +8,7 @@ var/global/list/area/transit/transit_areas = list()
 	safe_storage = TRUE
 	trackable = TRUE
 	allow_ghost = FALSE
+	map_color = COLOR_PINK
 
 /area/transit/New(var/desired_loc)
 	transit_areas[type] = src

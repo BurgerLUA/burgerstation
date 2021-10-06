@@ -15,6 +15,10 @@
 	desc = "The plating underneath the floor"
 	desc_extended = "A floor found underneath an actual floor."
 
+/turf/simulated/floor/plating/New(var/desired_loc)
+	. = ..()
+	map_color = color
+
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"
 	icon = 'icons/turf/floor/plating.dmi'

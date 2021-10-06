@@ -1,5 +1,5 @@
 /area/
-	name = "AREA ERROR"
+	name = "Unknown Area"
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
@@ -15,10 +15,7 @@
 	var/area_identifier = "Fallback" //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.
 	var/trackable = FALSE //Trackable area by the game.
 
-	var/map_color_r = rgb(255,0,0,255)
-	var/map_color_g = rgb(0,255,0,255)
-	var/map_color_b = rgb(0,0,255,255)
-	var/map_color_a = rgb(0,0,0,255)
+	var/map_color //The area's map color. Leave blank to refer to the turf instead.
 
 	var/ambient_sound
 	var/list/random_sounds = list()

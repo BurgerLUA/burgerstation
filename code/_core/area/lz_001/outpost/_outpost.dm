@@ -3,3 +3,5 @@
 	interior = TRUE
 
 	sound_environment = ENVIRONMENT_HANGAR
+
+	map_color = COLOR_RED

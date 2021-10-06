@@ -9,6 +9,8 @@
 
 	destruction_turf = /turf/simulated/floor/basalt
 
+	map_color = "#600000"
+
 /turf/simulated/wall/cult/New()
 	..()
 	if(prob(5))

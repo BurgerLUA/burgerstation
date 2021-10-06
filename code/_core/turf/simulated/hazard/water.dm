@@ -25,6 +25,8 @@
 	water_reagent = /reagent/nutrition/water
 	reagents = /reagent_container/turf/
 
+	map_color = COLOR_BLUE
+
 /turf/simulated/hazard/water/jungle/Finalize()
 	. = ..()
 	if(prob(90))

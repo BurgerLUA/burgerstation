@@ -5,6 +5,8 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
 
+	map_color = COLOR_GREEN
+
 /turf/simulated/floor/diona/New()
 	icon_state = "[rand(1,4)]"
 	..()

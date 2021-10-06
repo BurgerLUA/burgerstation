@@ -90,10 +90,6 @@
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
-"aA" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area)
 "aB" = (
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/surface_path_turf,
@@ -208,10 +204,6 @@
 /mob/living/simple/gorilla,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
-"bg" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/surface_path_turf,
-/area)
 "bh" = (
 /obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/jungle/path,
@@ -613,10 +605,6 @@
 /obj/structure/interactive/supplies,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
-"cU" = (
-/obj/marker/syndicate,
-/turf/simulated/floor/plating,
-/area/lz_001/outpost/syndicate/jungle)
 "cV" = (
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/cave_path_turf,
@@ -919,10 +907,6 @@
 /mob/living/simple/spacecarp,
 /turf/simulated/hazard/water/sea,
 /area)
-"er" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area/lz_001/caves/knight)
 "es" = (
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/surface_path_turf,
@@ -1866,10 +1850,6 @@
 /obj/structure/interactive/lighting/fixture/floor/syndicate,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/desert)
-"ip" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area/lz_001/caves/desert_cave)
 "iq" = (
 /obj/marker/map_node,
 /turf/simulated/floor/colored/sand,
@@ -5711,7 +5691,7 @@ aw
 aw
 aw
 aw
-aA
+aw
 aw
 ah
 cx
@@ -12433,7 +12413,7 @@ df
 df
 dv
 dv
-er
+em
 en
 en
 en
@@ -24995,7 +24975,7 @@ bx
 bx
 bM
 cS
-cU
+cS
 cV
 an
 an
@@ -33605,7 +33585,7 @@ ah
 ah
 aw
 aw
-aA
+aw
 aw
 dg
 dg
@@ -36061,7 +36041,7 @@ aw
 aw
 aw
 aw
-aA
+aw
 aw
 aw
 ah
@@ -42107,7 +42087,7 @@ ah
 ah
 ah
 aw
-aA
+aw
 aw
 ah
 ah
@@ -45331,7 +45311,7 @@ aB
 aw
 aw
 aw
-aA
+aw
 eG
 aB
 ax
@@ -45521,7 +45501,7 @@ ah
 al
 ax
 ax
-bg
+ax
 ax
 al
 al
@@ -55561,7 +55541,7 @@ ax
 ax
 ax
 ax
-bg
+ax
 ax
 ax
 ax
@@ -56985,7 +56965,7 @@ hg
 hn
 ht
 in
-ip
+in
 ir
 iw
 iB
@@ -58917,7 +58897,7 @@ ax
 ax
 ax
 ax
-bg
+ax
 ax
 ax
 ax

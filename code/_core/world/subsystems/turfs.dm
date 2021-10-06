@@ -1,5 +1,3 @@
-
-
 SUBSYSTEM_DEF(turfs)
 	name = "Turfs Subsystem"
 	desc = "Initialize Turfs after they are made."

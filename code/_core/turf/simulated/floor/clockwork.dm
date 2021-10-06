@@ -7,6 +7,8 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	map_color = COLOR_BRONZE
+
 /turf/simulated/floor/clockwork/alt1/
 	icon_state = "floor2"
 

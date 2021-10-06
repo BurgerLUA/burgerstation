@@ -14,6 +14,7 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	map_color = "#FFFFFF"
 
 /turf/simulated/floor/tile/chapel/
 	color = COLOR_GREY_DARK

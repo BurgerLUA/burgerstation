@@ -5,6 +5,8 @@
 
 	footstep = /footstep/concrete
 
+	map_color = COLOR_GREY_DARK
+
 /turf/simulated/floor/road/New(var/desired_loc)
 	icon_state = "[rand(1,6)]"
 	. = ..()
@@ -15,6 +17,8 @@
 	icon_state = "1"
 
 	footstep = /footstep/concrete
+
+	map_color = COLOR_GREY
 
 /turf/simulated/floor/sidewalk/New(var/desired_loc)
 	icon_state = "[rand(1,6)]"

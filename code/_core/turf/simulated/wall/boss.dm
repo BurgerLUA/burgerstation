@@ -6,3 +6,5 @@
 	icon_state = "wall"
 	corner_category = "boss"
 	corner_icons = TRUE
+
+	map_color = "#381600"
