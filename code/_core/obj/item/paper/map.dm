@@ -4,7 +4,7 @@
 	desc_extended = "A special electronic device that digitally shows a map of the current user's location."
 	icon = 'icons/obj/item/map.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 100
 
 /obj/item/map/click_self(var/mob/caller)
 

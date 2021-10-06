@@ -6691,6 +6691,10 @@
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/maint/west)
+"yf" = (
+/obj/structure/interactive/vending/nanotrasen/loadout,
+/turf/simulated/floor/tile/tint,
+/area/burgerstation/armory)
 "yk" = (
 /obj/structure/interactive/disposals/pipe/junction{
 	dir = 1
@@ -42614,7 +42618,7 @@ eA
 eO
 fv
 fM
-gc
+yf
 gc
 gL
 dV

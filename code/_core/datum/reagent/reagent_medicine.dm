@@ -36,7 +36,7 @@
 
 	experience_per_unit = 1
 
-	value = 2
+	value = 1
 
 	particle_size = 0.5
 
@@ -63,7 +63,7 @@
 	flavor = "bandaids"
 	strength = 50
 
-	value = 1.5
+	value = 0.75
 
 	particle_size = 0.25
 
@@ -90,9 +90,9 @@
 	metabolism_blood = METABOLISM_BLOOD * 10
 	metabolism_stomach = METABOLISM_BLOOD * 10
 
-	experience_per_unit = 5
+	experience_per_unit = 3
 
-	value = 3
+	value = 1.25
 
 	particle_size = 0.4
 
@@ -120,9 +120,9 @@
 	metabolism_blood = METABOLISM_BLOOD * 10
 	metabolism_stomach = METABOLISM_BLOOD * 10
 
-	experience_per_unit = 5
+	experience_per_unit = 2
 
-	value = 3
+	value = 1
 
 	particle_size = 0.5
 
@@ -150,9 +150,9 @@
 	metabolism_blood = METABOLISM_BLOOD * 10
 	metabolism_stomach = METABOLISM_BLOOD * 10
 
-	experience_per_unit = 5
+	experience_per_unit = 2
 
-	value = 3
+	value = 1
 
 	particle_size = 0.3
 
@@ -183,7 +183,7 @@
 
 	experience_per_unit = 2
 
-	value = 3
+	value = 1.25
 
 	particle_size = 0.6
 
@@ -224,7 +224,7 @@
 	alpha = 225
 	flavor = "old shoes"
 
-	value = 12
+	value = 2
 
 	experience_per_unit = 2
 
@@ -267,7 +267,7 @@
 
 	experience_per_unit = 2
 
-	value = 8
+	value = 1.5
 
 	particle_size = 1
 
@@ -303,7 +303,7 @@
 	color = "#9FFF2A"
 	alpha = 225
 	flavor = "not brains"
-	value = 15
+	value = 10
 
 	experience_per_unit = 3
 
@@ -331,7 +331,7 @@
 	metabolism_stomach = 0.5
 	experience_per_unit = 4.5
 
-	value = 1.75
+	value = 0.75
 
 	liquid = 0.5
 
@@ -394,7 +394,7 @@
 	color = "#D50052"
 	alpha = 225
 	flavor = "melted wax putty"
-	value = 5
+	value = 2
 
 	experience_per_unit = 2
 
@@ -413,7 +413,7 @@
 	color = "#BA7C00"
 	alpha = 225
 	flavor = "gunk"
-	value = 3
+	value = 1.5
 
 	experience_per_unit = 2
 

@@ -154,7 +154,7 @@
 
 	liquid = -0.25
 
-	value = 4
+	value = 2
 
 /reagent/salt
 	name = "ionized table salt"

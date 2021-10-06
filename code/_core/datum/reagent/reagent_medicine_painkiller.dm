@@ -10,7 +10,7 @@
 
 	experience_per_unit = 1
 
-	value = 2
+	value = 0.5
 
 /reagent/medicine/painkiller/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -38,7 +38,7 @@
 	metabolism_stomach = 4/60 // Lasts a minute per 4u
 	experience_per_unit = 2
 
-	value = 4
+	value = 2
 
 	liquid = 0.5
 
@@ -79,7 +79,7 @@
 	metabolism_stomach = 4/60 // Lasts a minute per 4u
 	experience_per_unit = 4.5
 
-	value = 10
+	value = 5
 
 	liquid = 0.75
 
@@ -121,7 +121,7 @@
 
 	overdose_threshold = 30
 
-	value = 1
+	value = 0.5
 
 /reagent/medicine/painkiller/assprin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()

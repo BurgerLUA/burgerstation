@@ -11,7 +11,7 @@
 	var/nutrition_quality_amount = 0 //How good of a quality is the nutrition?
 	var/heal_factor = 2 //Per unit.
 
-	value = 1
+	value = 1 //Acts as a multiplier.
 
 	liquid = -0.25
 

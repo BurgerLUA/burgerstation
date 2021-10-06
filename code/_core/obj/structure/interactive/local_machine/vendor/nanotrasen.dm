@@ -207,3 +207,14 @@
 		/obj/item/attachment/undermount/burst_adapter,
 		/obj/item/attachment/undermount/vertical_grip
 	)
+
+
+/obj/structure/interactive/vending/nanotrasen/loadout
+	name = "loadout vendor"
+	icon_state = "gear"
+
+	stored_types = list(
+		/obj/item/clothing/back/storage/dufflebag/poly/recruit
+	)
+
+	markup = 1

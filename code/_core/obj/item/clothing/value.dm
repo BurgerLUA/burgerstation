@@ -19,17 +19,17 @@ var/global/list/defense_rating_to_value = list(
 )
 
 var/global/list/limbs_to_value = list(
-	BODY_HEAD = 1.3,
-	BODY_TORSO = 1.3,
-	BODY_GROIN = 1.2,
-	BODY_ARM_LEFT = 1.15,
-	BODY_ARM_RIGHT = 1.15,
-	BODY_HAND_LEFT = 1.1,
-	BODY_HAND_RIGHT = 10.1,
-	BODY_LEG_LEFT = 1.15,
-	BODY_LEG_RIGHT = 1.15,
-	BODY_FOOT_LEFT = 1.1,
-	BODY_FOOT_RIGHT = 1.1
+	BODY_HEAD = 1,
+	BODY_TORSO = 1,
+	BODY_GROIN = 0.75,
+	BODY_ARM_LEFT = 0.5,
+	BODY_ARM_RIGHT = 0.5,
+	BODY_HAND_LEFT = 0.25,
+	BODY_HAND_RIGHT = 0.25,
+	BODY_LEG_LEFT = 0.5,
+	BODY_LEG_RIGHT = 0.5,
+	BODY_FOOT_LEFT = 0.25,
+	BODY_FOOT_RIGHT = 0.25
 )
 
 /obj/item/clothing/get_base_value()
@@ -39,12 +39,15 @@ var/global/list/limbs_to_value = list(
 	for(var/defense_type in defense_rating)
 		if(defense_rating[defense_type] <= 0 || defense_rating_to_value[defense_type] <= 0)
 			continue
-		. += (min(400,defense_rating[defense_type])**2)/defense_rating_to_value[defense_type]
+		. += ((min(400,defense_rating[defense_type])**1.75)/defense_rating_to_value[defense_type])*0.5
 
+	var/total_value_mul = 0
 	for(var/limb_zone in protected_limbs)
 		if(limbs_to_value[limb_zone] <= 0)
 			continue
-		. *= limbs_to_value[limb_zone]
+		total_value_mul += limbs_to_value[limb_zone]
+	if(total_value_mul > 0)
+		. *= total_value_mul
 
 	// https://www.desmos.com/calculator/mzuyizloap
 	if(is_container && dynamic_inventory_count > 0)

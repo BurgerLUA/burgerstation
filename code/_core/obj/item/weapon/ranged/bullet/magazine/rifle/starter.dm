@@ -4,7 +4,7 @@
 	desc_extended = "An extremely lightweight, cheap and near recoiless combat rifle designed for new trainees to get some hands-on experience with firearms."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/starter.dmi'
 	icon_state = "inventory"
-	value = 500
+	value = 400
 
 	tier = 0
 

@@ -4,7 +4,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/4mm_rifle.dmi'
 	icon_state = "4"
-	bullet_count_max = 60
+	bullet_count_max = 40
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/starter = TRUE,

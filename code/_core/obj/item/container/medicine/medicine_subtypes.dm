@@ -10,7 +10,7 @@
 	item_count_current = 5
 	item_count_max = 10
 
-	value = 10
+	value = 5
 
 /obj/item/container/medicine/bandage/prank
 	name = "badages"
@@ -36,7 +36,7 @@
 	treatment_time_mul = 1
 	heal_burn = 30
 	heal_burn_percent = 0
-	value = 10
+	value = 5
 
 /obj/item/container/medicine/ointment/advanced
 	name = "infused ointment (silver sulfadiazine)"

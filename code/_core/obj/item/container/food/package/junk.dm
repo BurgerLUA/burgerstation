@@ -1,6 +1,7 @@
 /obj/item/container/food/package/junkfood
 	name = "junk food"
 	icon = 'icons/obj/item/consumable/food/processed.dmi'
+	value = 10
 
 /obj/item/container/food/package/junkfood/chips
 	name = "chippy crisps"
