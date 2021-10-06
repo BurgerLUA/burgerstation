@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 2200
 
-	tier = 2
+	tier = 3
 
 	shoot_delay = 2
 
@@ -89,9 +89,11 @@
 	icon_state = "inventory"
 	value = 2900
 
+	damage_mod = 1
+
 	tier = 3
 
-	shoot_delay = 1.5
+	shoot_delay = 1
 
 	size = SIZE_3
 	weight = 10

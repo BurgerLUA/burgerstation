@@ -39,7 +39,7 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	//1 Vodka
 	new /obj/item/container/beaker/alcohol/vodka(src)
 
-	return ..()
+	. = ..()
 
 /obj/item/clothing/back/storage/backpack/explorer/medical
 	name = "medical explorer's pack"
@@ -70,7 +70,7 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	//1 Vodka
 	new /obj/item/container/beaker/alcohol/vodka(src)
 
-	return ..()
+	. = ..()
 
 /obj/item/clothing/back/storage/backpack/explorer/black
 	name = "black explorer's pack"

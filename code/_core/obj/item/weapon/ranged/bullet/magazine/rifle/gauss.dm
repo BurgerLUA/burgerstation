@@ -4,13 +4,13 @@
 	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the russian facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss.dmi'
 	icon_state = "inventory"
-	value = 8000
+	value = 12000
 
 	tier = 3
 
 	shoot_delay = 25
 
-	damage_mod = 3
+	damage_mod = 2
 
 	automatic = FALSE
 
@@ -67,11 +67,11 @@
 	rarity = RARITY_MYTHICAL
 	value = 15000
 
-	tier = 4
+	tier = 3
 
 	shoot_delay = 6
 
-	damage_mod = 1.25
+	damage_mod = 1.2
 
 	automatic = TRUE
 

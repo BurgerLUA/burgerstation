@@ -31,4 +31,4 @@
 	new /obj/item/weapon/melee/tool/brass/screwdriver(src)
 	new /obj/item/weapon/melee/tool/brass/wirecutters(src)
 	new /obj/item/weapon/melee/tool/brass/wrench(src)
-	return ..()
+	. = ..()

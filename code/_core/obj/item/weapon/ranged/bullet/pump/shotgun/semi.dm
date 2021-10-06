@@ -7,15 +7,16 @@
 
 	value = 3000
 
-	tier = 2
+	tier = 3
 
-	shoot_delay = 3
+	damage_mod = 1.1
+	shoot_delay = 4
 
 	automatic = FALSE
 
 	can_wield = TRUE
 
-	bullet_count_max = 5
+	bullet_count_max = 6
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 

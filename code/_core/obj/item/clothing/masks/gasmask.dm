@@ -89,10 +89,10 @@
 		"filter" = COLOR_METAL
 	)
 
-/obj/item/clothing/mask/gas/poly/security
+/obj/item/clothing/mask/gas/poly/nanotrasen
 	polymorphs = list(
 		"base" = COLOR_BLACK,
-		"eyes" = COLOR_SECURITY,
+		"eyes" = COLOR_NANOTRASEN,
 		"filter" = COLOR_PLASTEEL
 	)
 

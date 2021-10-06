@@ -55,7 +55,7 @@
 	new /obj/item/magazine/shotgun_auto/empty(src)
 	//1 weapon
 	new /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog(src)
-	return ..()
+	. = ..()
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_ammo.dmi'
@@ -65,6 +65,7 @@
 	name = "juggernaut's dufflebag"
 	desc = "Bitch."
 	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has am ammo logo on it."
+	value_burgerbux = 1
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/fuck_you/fill_inventory()
 	//8 Weapon shit.
@@ -94,12 +95,13 @@
 	new /obj/item/deployable/barricade(src)
 	new /obj/item/deployable/barricade(src)
 	new /obj/item/deployable/barricade(src)
-	return ..()
+	. = ..()
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/normie
 	name = "operative's dufflebag"
 	desc = "VANILLA."
 	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has no logo on it because you're basic like that. Contains everything you need to be an operative."
+	value_burgerbux = 1
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/normie/fill_inventory()
 	//8 normal shit
@@ -129,7 +131,7 @@
 	new /obj/item/magazine/rifle_308(src)
 	new /obj/item/magazine/rifle_308(src)
 	new /obj/item/magazine/rifle_308(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank
@@ -137,6 +139,7 @@
 	desc = "Fuck mechs."
 	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has am ammo logo on it."
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_ammo.dmi'
+	value_burgerbux = 1
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank/fill_inventory()
 	//8 normal shit
@@ -166,4 +169,4 @@
 	new /obj/item/weapon/ranged/energy/iongun(src)
 	new /obj/item/powercell/industrial(src)
 	new /obj/item/powercell/industrial(src)
-	return ..()
+	. = ..()

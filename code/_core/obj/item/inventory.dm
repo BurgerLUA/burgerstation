@@ -33,12 +33,8 @@
 
 /obj/item/Generate()
 	fill_inventory()
-	return ..()
-
-/obj/item/proc/fill_inventory()
-
 	if(length(inventories))
-		for(var/obj/item/I in contents)
+		for(var/obj/item/I in src.contents)
 			if(I.finalized)
 				continue
 			pre_fill_inventory(I)
@@ -47,10 +43,11 @@
 			FINALIZE(I)
 			post_fill_inventory(I)
 			add_to_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
+	. = ..()
 
-		return TRUE
+/obj/item/proc/fill_inventory()
+	return TRUE
 
-	return FALSE
 
 /obj/item/proc/pre_fill_inventory(var/obj/item/item_added)
 	return TRUE

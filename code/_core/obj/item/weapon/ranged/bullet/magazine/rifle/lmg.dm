@@ -12,7 +12,7 @@
 
 	automatic = TRUE
 
-	damage_mod = 1.2
+	damage_mod = 1.3
 
 	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
 

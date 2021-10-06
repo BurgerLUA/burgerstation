@@ -13,7 +13,7 @@
 
 	automatic = FALSE
 
-	bullet_count_max = 4
+	bullet_count_max = 6
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -75,7 +75,7 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/doom.dmi'
 	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
 	value = 4000
-	shoot_delay = 2.5
+	shoot_delay = 1
 	heat_max = 0
 	bullet_count_max = 6
 	weight = 12
@@ -85,10 +85,13 @@
 	can_wield = TRUE
 
 	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
+	pump_sound = 'sound/weapons/shotgun_pump_old.ogg'
 
 	damage_mod = 2
 
-	tier = 3
+	tier = 4
+
+	pump_delay = 8
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_static_spread()
 	return 0.005

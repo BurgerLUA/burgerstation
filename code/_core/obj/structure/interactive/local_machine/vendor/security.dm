@@ -1,37 +1,36 @@
-/obj/structure/interactive/vending/security
+/obj/structure/interactive/vending/nanotrasen
 	name = "security vendor"
 	icon_state = "sec"
 
-/obj/structure/interactive/vending/security/wardrobe
+/obj/structure/interactive/vending/nanotrasen/wardrobe
 	name = "security wardrobe vendor"
 	icon_state = "secdrobe_new"
 
 	stored_types = list(
 		/obj/item/clothing/feet/socks/knee/white,
-		/obj/item/clothing/underbottom/underwear/boxers/security,
-		/obj/item/clothing/undertop/underwear/shirt/security,
-		/obj/item/clothing/pants/normal/security,
-		/obj/item/clothing/shirt/normal/security,
-		/obj/item/clothing/uniform/utility/security,
+		/obj/item/clothing/underbottom/underwear/boxers/nanotrasen,
+		/obj/item/clothing/undertop/underwear/shirt/black,
+		/obj/item/clothing/pants/normal/striped/nanotrasen,
+		/obj/item/clothing/shirt/normal/uniform/nanotrasen,
 		/obj/item/storage/shoebox/jackboot/,
 		/obj/item/storage/glovebox/padded/,
-		/obj/item/clothing/back/storage/satchel/poly/security,
-		/obj/item/clothing/back/storage/dufflebag/poly/security,
-		/obj/item/clothing/back/storage/backpack/poly/security,
+		/obj/item/clothing/back/storage/satchel/poly/nanotrasen,
+		/obj/item/clothing/back/storage/dufflebag/poly/nanotrasen,
+		/obj/item/clothing/back/storage/backpack/poly/nanotrasen,
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/belt/bandolier/shotgun_12,
-		/obj/item/clothing/mask/gas/poly/security,
-		/obj/item/clothing/head/helmet/polymorphic/security,
-		/obj/item/clothing/overwear/armor/medium_armor/security,
-		/obj/item/clothing/overwear/armor/molded_armor/security,
+		/obj/item/clothing/mask/gas/poly/nanotrasen,
+		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
+		/obj/item/clothing/overwear/armor/medium_armor/black,
+		/obj/item/clothing/overwear/armor/molded_armor/black,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/flare
 	)
 
-/obj/structure/interactive/vending/security/wardrobe/ops
+/obj/structure/interactive/vending/nanotrasen/wardrobe/ops
 	name = "nt ops wardrobe vendor"
 	icon_state = "secdrobe_ops"
 	stored_types = list(
@@ -64,7 +63,7 @@
 		/obj/item/clothing/overwear/armor/eod
 	)
 
-/obj/structure/interactive/vending/security/gundrobe
+/obj/structure/interactive/vending/nanotrasen/gundrobe
 	name = "gun vendor"
 	icon_state = "gundrobe"
 
@@ -91,7 +90,7 @@
 		/obj/item/tempering/quality/greater
 	)
 
-/obj/structure/interactive/vending/security/gundrobe/ops
+/obj/structure/interactive/vending/nanotrasen/gundrobe/ops
 	name = "NT ops gun vendor"
 	icon_state = "gundrobe_ops"
 
@@ -122,7 +121,7 @@
 		/obj/item/tempering/magazine/refiller
 	)
 
-/obj/structure/interactive/vending/security/gundrobe/dip
+/obj/structure/interactive/vending/nanotrasen/gundrobe/dip
 	name = "drip gun vendor"
 	icon_state = "dipdrobe"
 
@@ -146,7 +145,7 @@
 	)
 
 
-/obj/structure/interactive/vending/security/ammo
+/obj/structure/interactive/vending/nanotrasen/ammo
 	name = "ammo vendor"
 	icon_state = "ammodrobe"
 
@@ -178,15 +177,15 @@
 		/obj/item/cell_charger
 	)
 
-/obj/structure/interactive/vending/security/ammo/ops
+/obj/structure/interactive/vending/nanotrasen/ammo/ops
 	icon_state = "ammodrobe_ops"
 
 
-/obj/structure/interactive/vending/security/gundrobe/engineering
+/obj/structure/interactive/vending/nanotrasen/gundrobe/engineering
 	icon_state = "gundrobe_engineering"
 
 
-/obj/structure/interactive/vending/security/attachment
+/obj/structure/interactive/vending/nanotrasen/attachment
 	name = "attachment vendor"
 	icon_state = "attachment"
 

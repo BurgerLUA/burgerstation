@@ -133,8 +133,7 @@ var/global/list/ckey_to_death_box_data = list()
 	for(var/i=1,i<length(valid_choices[selection]["inventory"]),i++)
 		var/list/k = valid_choices[selection]["inventory"][i]
 		var/obj/item/I = load_and_create(P,k,T)
-		if(I)
-			created_box.add_to_inventory(null,I,FALSE,TRUE,silent=TRUE)
+		if(I) created_box.add_to_inventory(null,I,FALSE,TRUE,silent=TRUE)
 	FINALIZE(created_box)
 
 	P.put_in_hands(created_box)

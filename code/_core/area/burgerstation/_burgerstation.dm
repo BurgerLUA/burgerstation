@@ -273,7 +273,7 @@
 	name = "\improper Armory"
 	icon_state = "armory"
 
-	map_color = COLOR_SECURITY
+	map_color = COLOR_NANOTRASEN
 
 /area/burgerstation/armory/special
 	name = "\improper Armory - Special Operations"

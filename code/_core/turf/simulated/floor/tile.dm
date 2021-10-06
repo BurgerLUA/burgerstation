@@ -60,11 +60,6 @@
 /turf/simulated/floor/tile/red
 	color = COLOR_RED
 
-/turf/simulated/floor/tile/security
-	color = COLOR_SECURITY
-	desc = "A secure floor"
-	desc_extended = "Janitors love cleaning this type of tile floor, especially when security slips on it."
-
 /turf/simulated/floor/tile/blue
 	color = COLOR_BLUE
 

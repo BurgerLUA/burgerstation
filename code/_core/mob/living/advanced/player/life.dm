@@ -15,6 +15,8 @@
 	var/turf/T = get_turf(src)
 	notify_ghosts("[src.name] was killed by [english_list(attackers)]!",T)
 
+/mob/living/advanced/player/post_death()
+	. = ..()
 	if(ckey_last)
 		dead_player_mobs |= src
 		death_ckey = ckey_last

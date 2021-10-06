@@ -91,9 +91,4 @@
 	GENERATE(attachment_barrel)
 	FINALIZE(attachment_barrel)
 
-	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
-	INITIALIZE(attachment_sight)
-	GENERATE(attachment_sight)
-	FINALIZE(attachment_sight)
-
 	. = ..()

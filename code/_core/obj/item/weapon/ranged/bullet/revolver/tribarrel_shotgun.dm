@@ -8,9 +8,13 @@
 
 	tier = 3
 
-	shoot_delay = 2
+	shoot_delay = 3
+	burst_delay = 10
+	max_bursts = 3
 
-	damage_mod = 1.2
+	firemodes = list("semi-automatic","burst")
+
+	damage_mod = 1
 
 	automatic = TRUE
 

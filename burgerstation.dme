@@ -1534,6 +1534,7 @@
 #include "code\_core\obj\item\storage\loot_box.dm"
 #include "code\_core\obj\item\storage\pouch.dm"
 #include "code\_core\obj\item\storage\shoes.dm"
+#include "code\_core\obj\item\storage\underwear.dm"
 #include "code\_core\obj\item\storage\bags\_bags.dm"
 #include "code\_core\obj\item\storage\bags\goodie.dm"
 #include "code\_core\obj\item\storage\box\_box.dm"

@@ -8,11 +8,11 @@
 
 	tier = 1
 
-	shoot_delay = 4
+	shoot_delay = 5
 
 	automatic = FALSE
 
-	bullet_count_max = 6
+	bullet_count_max = 8
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -59,7 +59,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
-	pump_delay = 2
+	pump_delay = 3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
 	return 0.004

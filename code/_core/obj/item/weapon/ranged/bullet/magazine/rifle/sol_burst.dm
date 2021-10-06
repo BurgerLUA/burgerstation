@@ -6,10 +6,10 @@
 	icon_state = "inventory"
 	value = 8000
 
-	tier = 3
+	tier = 2
 
 	shoot_delay = 1
-	burst_delay = 5
+	burst_delay = 4
 	max_bursts = 3
 
 	damage_mod = 1.3

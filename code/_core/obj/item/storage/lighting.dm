@@ -17,7 +17,7 @@
 /obj/item/storage/lighting/tube/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)
 		new/obj/item/light/tube(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/lighting/bulb
 	name = "lighting bulb box"
@@ -25,4 +25,4 @@
 /obj/item/storage/lighting/bulb/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)
 		new/obj/item/light/bulb(src)
-	return ..()
+	. = ..()

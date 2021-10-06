@@ -9,4 +9,4 @@
 	new /obj/item/container/medicine/ointment(src)
 	new /obj/item/container/pill/dylovene(src)
 	new /obj/item/container/syringe/epinephrine(src)
-	return ..()
+	. = ..()

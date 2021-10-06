@@ -238,7 +238,7 @@
 /obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/bicaridine(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/bicaridine_small
 	name = "bicaridine pill bottle"
@@ -247,7 +247,7 @@
 /obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/bicaridine(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/kelotane
 	name = "kelotane pill bottle"
@@ -256,7 +256,7 @@
 /obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/kelotane(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/kelotane_small
 	name = "kelotane pill bottle"
@@ -265,7 +265,7 @@
 /obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/kelotane(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/dylovene
 	name = "dylovene pill bottle"
@@ -274,7 +274,7 @@
 /obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/dylovene(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/dylovene_small
 	name = "dylovene pill bottle"
@@ -283,7 +283,7 @@
 /obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/dylovene(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/pillbottle/iron
@@ -293,7 +293,7 @@
 /obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/iron(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/iron_small
 	name = "iron pill bottle"
@@ -302,7 +302,7 @@
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/iron(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/omnizine
 	name = "omnizine pill bottle"
@@ -311,7 +311,7 @@
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/omnizine(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/charcoal
 	name = "charcoal pill bottle"
@@ -320,7 +320,7 @@
 /obj/item/storage/pillbottle/charcoal/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/charcoal(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/antihol_small
 	name = "antihol bottle"
@@ -329,7 +329,7 @@
 /obj/item/storage/pillbottle/antihol_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/antihol(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/pillbottle/assprin
 	name = "assprin pill bottle"
@@ -338,7 +338,7 @@
 /obj/item/storage/pillbottle/assprin/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/assprin(src)
-	return ..()
+	. = ..()
 
 
 

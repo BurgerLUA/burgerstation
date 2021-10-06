@@ -8,8 +8,9 @@
 
 	tier = 1
 
-	shoot_delay = 1.5
-	burst_delay = 6
+	damage_mod = 1.1
+	shoot_delay = 1
+	burst_delay = 7
 	max_bursts = 3
 
 	automatic = TRUE
@@ -84,7 +85,7 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3_new.dmi'
 	desc_extended = "A very early prototype of NanoTrasen's L-HON; the L-HON-0 is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
 
-	tier = 2
+	tier = 3
 
 	weight = 14
 

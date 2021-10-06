@@ -26,23 +26,13 @@
 	color = random_color()
 	return ..()
 
-/obj/item/clothing/underbottom/underwear/boxers/security
-	name = "security boxers"
-	desc = "Useful to conceal your stunbaton/flash."
-	desc_extended = "A pair of boxers proudly sporting Security's colours."
-	color = COLOR_SECURITY
-
+/obj/item/clothing/underbottom/underwear/boxers/nanotrasen
+	color = COLOR_NANOTRASEN
 
 /obj/item/clothing/underbottom/underwear/boxers/engineering
-	name = "engineering boxers"
-	desc = "The SM's not only hot place on the station."
-	desc_extended = "A pair of boxers proudly sporting Engineering's colours."
 	color = COLOR_ENGINEERING
 
 /obj/item/clothing/underbottom/underwear/boxers/medical
-	name = "medical boxers"
-	desc = "Teaching tool to catch up on your Anatomy Lessons."
-	desc_extended = "A sterile pair of boxers, proudly sporting Medical's colours."
 	color = COLOR_MEDICAL
 
 /obj/item/clothing/underbottom/underwear/boxers/heart

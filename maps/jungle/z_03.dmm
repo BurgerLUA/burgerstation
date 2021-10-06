@@ -843,7 +843,7 @@
 /turf/simulated/wall/metal,
 /area/lavaland/interior/base/armory)
 "ed" = (
-/obj/structure/interactive/door/airlock/station/security,
+/obj/structure/interactive/door/airlock/station/nanotrasen,
 /turf/simulated/floor/tile/dark,
 /area/lavaland/interior/base/armory)
 "ee" = (

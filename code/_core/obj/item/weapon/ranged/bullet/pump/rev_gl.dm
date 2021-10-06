@@ -63,7 +63,7 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
 
-	pump_delay = 3
+	pump_delay = 5
 
 /obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1

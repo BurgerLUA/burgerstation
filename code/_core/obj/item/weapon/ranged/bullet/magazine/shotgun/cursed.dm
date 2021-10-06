@@ -14,7 +14,7 @@
 
 	tier = 4
 
-	bullet_count = 7
+	bullet_count = 4
 	projectile_speed = TILE_SIZE*0.2 - 1
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/cursed/get_ranged_damage_type()

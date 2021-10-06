@@ -23,7 +23,7 @@
 /obj/item/storage/ammo/bullet_22/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/pistol_22(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/ammo/slug
@@ -38,7 +38,7 @@
 /obj/item/storage/ammo/slug/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/slug(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/buckshot
 	name = "box of shotgun buckshot"
@@ -52,7 +52,7 @@
 /obj/item/storage/ammo/buckshot/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/ammo/flechette
@@ -67,7 +67,7 @@
 /obj/item/storage/ammo/flechette/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/flechette(src)
-	return ..()
+	. = ..()
 
 
 
@@ -83,7 +83,7 @@
 /obj/item/storage/ammo/fire/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_12/fire(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/ammo/buckshot_23
@@ -98,7 +98,7 @@
 /obj/item/storage/ammo/buckshot_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_23(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/slug_23
 	name = "box of russian shotgun slugs"
@@ -112,7 +112,7 @@
 /obj/item/storage/ammo/slug_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_23/slug(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/fire_23
 	name = "box of russian shotgun incendiary slugs"
@@ -126,7 +126,7 @@
 /obj/item/storage/ammo/fire_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_23/fire(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/rubber_23
 	name = "box of russian shotgun rubber slugs"
@@ -140,7 +140,7 @@
 /obj/item/storage/ammo/rubber_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/shotgun_23/rubber(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/grenade_40mm
 	name = "box of 40mm grenades"
@@ -154,7 +154,7 @@
 /obj/item/storage/ammo/grenade_40mm/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/grenade_40mm/(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/bullet_762/
 	name = "box of 7.62x38mmR bullets"
@@ -169,7 +169,7 @@
 /obj/item/storage/ammo/bullet_762/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/revolver_762(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/bullet_38/
 	name = "box of .38 bullets"
@@ -184,7 +184,7 @@
 /obj/item/storage/ammo/bullet_38/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/revolver_38(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/bullet_357/
 	name = "box of .357 bullets"
@@ -199,7 +199,7 @@
 /obj/item/storage/ammo/bullet_357/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/revolver_357(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/bullet_44/
 	name = "box of .44 bullets"
@@ -214,7 +214,7 @@
 /obj/item/storage/ammo/bullet_44/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/revolver_44(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/ammo/bullet_300/
 	name = "box of .300 bullets"
@@ -229,4 +229,4 @@
 /obj/item/storage/ammo/bullet_300/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
 		new /obj/item/bullet_cartridge/revolver_300(src)
-	return ..()
+	. = ..()

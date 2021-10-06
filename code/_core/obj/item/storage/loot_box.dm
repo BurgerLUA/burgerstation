@@ -22,9 +22,8 @@
 
 /obj/item/storage/loot_box/update_inventory()
 	. = ..()
-	var/filled_slots = 0
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I = k
-		filled_slots += length(I.contents)
-	if(filled_slots <= 0)
-		qdel(src)
+		if(length(I.contents))
+			return .
+	qdel(src)

@@ -163,7 +163,7 @@
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
 	if(object_data["quality"])
-		quality = min(object_data["quality"],140)
+		quality = clamp(object_data["quality"],0,200)
 	if(object_data["luck"])
 		luck = object_data["luck"]
 
@@ -174,7 +174,11 @@
 	if(object_data["reagents"] && length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
-			reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
+			var/reagent/R = text2path(r_id)
+			if(!R)
+				log_error("Load item error: Tried loading an invalid reagent [r_id]!")
+				continue
+			reagents.add_reagent(R,volume,TNULL,FALSE)
 		reagents.update_container()
 	return TRUE
 
