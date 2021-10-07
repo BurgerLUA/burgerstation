@@ -2,7 +2,7 @@
 	if(!currency_to_add)
 		return FALSE
 	var/old_currency = currency
-	currency = clamp(currency + currency_to_add,0,INFINITY)
+	currency = clamp(currency + currency_to_add,0,999999999)
 	var/difference = currency - old_currency
 	for(var/obj/hud/button/cash_money/B in src.buttons)
 		B.update_stats(currency)
