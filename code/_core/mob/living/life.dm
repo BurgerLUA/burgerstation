@@ -92,15 +92,15 @@
 		FINALIZE(S)
 		remove_status_effect(SOULTRAP)
 
-	if(delete_on_death)
-		dust()
-
 	if(boss && !drops_gold)
 		drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
 
 	if(drops_gold > 0)
 		create_gold_drop(T,CEILING(drops_gold,1))
 		drops_gold = 0
+
+	if(delete_on_death)
+		dust()
 
 	return TRUE
 
