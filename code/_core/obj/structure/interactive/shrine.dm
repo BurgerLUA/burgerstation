@@ -1,11 +1,16 @@
 var/global/list/possible_ritual_spawns = list(
-	/mob/living/advanced/npc/beefman = 20
+	/mob/living/advanced/npc/beefman = 20,
+	/mob/living/simple/devil = 15,
+	/mob/living/simple/bear/space = 20,
+	/mob/living/simple/clockwork_marauder = 20,
+	/mob/living/simple/halloween_spirit = 40,
+	/mob/living/simple/spider/twilight = 15
 )
 
 /obj/structure/interactive/ritual
 	name = "ritual shrine"
 	desc = "Pray at the shrine, if you dare."
-	desc_extended = "An occult ritual shrine constructed to honor the gods of battle. Are you brave enough to pray at it?"
+	desc_extended = "An occult ritual shrine constructed to honor the gods of battle. Activating it will trap the user in an arena and force them and anyone around them to fight for their life."
 	icon = 'icons/obj/structure/shrine.dmi'
 	icon_state = "icon"
 
@@ -63,24 +68,31 @@ var/global/list/possible_ritual_spawns = list(
 
 /obj/structure/interactive/ritual/think()
 
-	if(next_enemy_spawn > 0 && next_enemy_spawn <= world.time && spawns_left > 0 && length(tracked_enemies) < CEILING(possible_ritual_spawns[enemy_type_to_spawn]*0.2,1))
+	if(complete)
+		return FALSE //Something went wrong.
+
+	if(next_enemy_spawn > 0 && next_enemy_spawn <= world.time && spawns_left > 0 && (next_enemy_spawn + SECONDS_TO_DECISECONDS(20) <= world.time || length(tracked_enemies) < CEILING(possible_ritual_spawns[enemy_type_to_spawn]*0.2,1)))
 		spawns_left--
+		next_enemy_spawn = world.time + SECONDS_TO_DECISECONDS(2)
 		var/turf/simulated/T = pick(valid_turfs)
 		var/mob/living/L = new enemy_type_to_spawn(T)
 		L.delete_on_death = TRUE
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
-		L.ai?.set_active(TRUE)
 		tracked_enemies += L
 		HOOK_ADD("post_death","\ref[src]_post_death",L,src,.proc/remove_mob)
 		HOOK_ADD("Destroy","\ref[src]_destroy",L,src,.proc/remove_mob)
 		HOOK_ADD("post_move","\ref[src]_post_move",L,src,.proc/check_valid_mob_position)
-		next_enemy_spawn = world.time + SECONDS_TO_DECISECONDS(2)
+		if(L.ai && length(tracked_players))
+			var/mob/living/advanced/player/P = pick(tracked_players)
+			L.ai.set_objective(P)
+		play_sound('sound/effects/manifest.ogg',T)
 
 	return TRUE
 
-/obj/structure/interactive/ritual/proc/start_ritual()
+/obj/structure/interactive/ritual/proc/start_ritual(var/mob/caller)
+
 	for(var/mob/living/advanced/player/P in range(src,ritual_size))
 		if(P.dead || P.qdeleting)
 			continue
@@ -101,6 +113,9 @@ var/global/list/possible_ritual_spawns = list(
 			log_error("Could not start [src.get_debug_name()], no valid turfs!")
 			return FALSE
 
+	caller?.visible_message(span("danger","\The [caller.name] activates \the [src.name]!"),span("danger","You activate \the [src.name]!"))
+	play_sound('sound/effects/ritual_start.ogg',get_turf(src))
+
 	enemy_type_to_spawn = pickweight(possible_ritual_spawns)
 	spawns_left = possible_ritual_spawns[enemy_type_to_spawn]
 	create_smoke()
@@ -109,6 +124,8 @@ var/global/list/possible_ritual_spawns = list(
 	return TRUE
 
 /obj/structure/interactive/ritual/proc/end_ritual(var/success = FALSE)
+
+	stop_thinking(src)
 
 	for(var/k in tracked_players)
 		var/mob/living/advanced/player/P = k

@@ -1763,6 +1763,26 @@
 /obj/item/soulgem/rare,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
+"hg" = (
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/exterior/jungle/south)
+"hh" = (
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/broodmother)
+"hi" = (
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/basalt,
+/area/hellscape/interior/caves/lava_lake)
+"hj" = (
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/colored/ash/dark,
+/area/hellscape/exterior/death_plains)
+"hk" = (
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/cave_dirt,
+/area/hellscape/interior/caves/watersource)
 "hp" = (
 /obj/structure/scenery/rocks,
 /turf/simulated/floor/colored/dirt,
@@ -2124,10 +2144,6 @@
 "kS" = (
 /turf/simulated/hazard/water,
 /area/hellscape/exterior/jungle/south)
-"kY" = (
-/obj/structure/interactive/fountain,
-/turf/simulated/floor/basalt,
-/area/hellscape/interior/caves/lava_lake)
 "kZ" = (
 /obj/item/weapon/melee/energy/chainsaw,
 /turf/simulated/floor/basalt,
@@ -12341,7 +12357,7 @@ lp
 kR
 kR
 kR
-kR
+hk
 kR
 kR
 kR
@@ -21809,7 +21825,7 @@ ec
 ec
 ec
 ec
-ec
+hj
 ec
 ec
 ec
@@ -47091,7 +47107,7 @@ lM
 lM
 lM
 lM
-lM
+hg
 lM
 lM
 lM
@@ -59255,7 +59271,7 @@ cQ
 eN
 gc
 eN
-eN
+hh
 eN
 eN
 eN
@@ -65005,7 +65021,7 @@ eb
 dE
 eb
 eb
-kY
+hi
 eb
 eb
 eb

@@ -90,6 +90,10 @@
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
+"aA" = (
+/obj/structure/interactive/ritual,
+/turf/unsimulated/generation/surface/cave_path_turf,
+/area)
 "aB" = (
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/surface_path_turf,
@@ -184,6 +188,10 @@
 /obj/marker/map_node,
 /turf/unsimulated/generation/jungle/path,
 /area)
+"aZ" = (
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/colored/sand/desert,
+/area/lz_001/desert)
 "ba" = (
 /obj/marker/map_node,
 /mob/living/simple/xeno/queen,
@@ -26323,7 +26331,7 @@ aw
 aw
 aw
 aw
-aw
+aA
 aw
 aw
 aw
@@ -57467,7 +57475,7 @@ hg
 hg
 hg
 hg
-hg
+aZ
 hg
 hg
 hg
