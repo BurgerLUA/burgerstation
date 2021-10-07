@@ -36,6 +36,8 @@ var/global/list/possible_ritual_spawns = list(
 
 /obj/structure/interactive/ritual/on_chunk_clean()
 	if(complete)
+		var/turf/T = get_turf(src)
+		if(T) CREATE(/obj/structure/interactive/ritual,T) //Yeah I could just make the current one fresh but uh you know. Shitcode.
 		qdel(src)
 		return TRUE
 	return FALSE

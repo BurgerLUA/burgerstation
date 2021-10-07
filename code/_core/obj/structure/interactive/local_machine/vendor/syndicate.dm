@@ -146,7 +146,8 @@
 		/obj/item/deployable/mob/sentry,
 		/obj/item/magazine/minigun_46,
 		/obj/item/storage/cigarettes/syndicate,
-		/obj/item/lighter
+		/obj/item/lighter,
+		/obj/item/map
 	)
 	markup = 0.75
 
@@ -198,7 +199,8 @@
 		/obj/item/weapon/melee/shield/redstar,
 		/obj/item/weapon/melee/shield/ballistic,
 		/obj/item/storage/cigarettes/russian,
-		/obj/item/lighter
+		/obj/item/lighter,
+		/obj/item/map
 	)
 
 

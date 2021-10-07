@@ -27,7 +27,8 @@
 		/obj/item/clothing/overwear/armor/medium_armor/black,
 		/obj/item/clothing/overwear/armor/molded_armor/black,
 		/obj/item/weapon/melee/energy/grazer,
-		/obj/item/flare
+		/obj/item/flare,
+		/obj/item/map
 	)
 
 /obj/structure/interactive/vending/nanotrasen/wardrobe/ops
@@ -60,7 +61,8 @@
 		/obj/item/armor_plate/heavy,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/clothing/head/helmet/full/eod_helm,
-		/obj/item/clothing/overwear/armor/eod
+		/obj/item/clothing/overwear/armor/eod,
+		/obj/item/map
 	)
 
 /obj/structure/interactive/vending/nanotrasen/gundrobe
@@ -165,6 +167,7 @@
 		/obj/item/magazine/lmg_762,
 		/obj/item/magazine/sniper_127,
 		/obj/item/magazine/minigun_46,
+		/obj/item/magazine/rifle_46,
 		/obj/item/magazine/browning_127,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
