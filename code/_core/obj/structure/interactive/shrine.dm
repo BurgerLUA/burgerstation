@@ -32,6 +32,14 @@ var/global/list/possible_ritual_spawns = list(
 
 	var/complete = FALSE //Set to true if the ritual is complete.
 
+	enable_chunk_clean = TRUE
+
+/obj/structure/interactive/ritual/on_chunk_clean()
+	if(complete)
+		qdel(src)
+		return TRUE
+	return FALSE
+
 /obj/structure/interactive/ritual/Destroy()
 	end_ritual()
 	valid_turfs.Cut()
@@ -141,6 +149,7 @@ var/global/list/possible_ritual_spawns = list(
 		connected_smoke -= M
 
 	complete = TRUE
+	animate(src,color="#444444",time=10)
 
 	if(success)
 		create_gold_drop(get_turf(src),500)
