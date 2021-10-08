@@ -155,7 +155,7 @@
 		. *= 2
 
 	if(!horizontal)
-		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.5)
+		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
