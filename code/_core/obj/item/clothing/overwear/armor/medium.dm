@@ -22,6 +22,7 @@
 /obj/item/clothing/overwear/armor/medium_armor/black
 	color = COLOR_BLACK
 
-
+/obj/item/clothing/overwear/armor/medium_armor/merc
+	color = "#BCAC86"
 
 

@@ -25,7 +25,6 @@
 		/obj/item/clothing/mask/gas/poly/nanotrasen,
 		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
 		/obj/item/clothing/overwear/armor/medium_armor/black,
-		/obj/item/clothing/overwear/armor/molded_armor/black,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/flare,
 		/obj/item/map
