@@ -3,12 +3,13 @@
 	desc = "Hey, as long as it works."
 	desc_extended = "A reinforced kevlar vest designed to stop small bullets."
 
+	icon = 'icons/obj/item/clothing/suit/mod_chest_armor.dmi'
 
 	size = SIZE_3
 
 	defense_rating = list(
-		BLUNT = 80,
-		PIERCE = 20,
+		BLUNT = 20,
+		PIERCE = 80,
 		ARCANE = -40
 	)
 
