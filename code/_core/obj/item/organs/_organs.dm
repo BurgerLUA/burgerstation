@@ -71,6 +71,16 @@
 
 	mouse_opacity = 0 //For now
 
+/obj/item/organ/New(var/desired_loc)
+	. = ..()
+	attached_organs = list()
+
+/obj/item/organ/Destroy()
+	color = "#000000"
+	attached_organ = null
+	attached_organs?.Cut()
+	return ..()
+
 /obj/item/organ/get_base_transform()
 	. = ..()
 	var/matrix/M = .
@@ -144,12 +154,6 @@
 /obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
 	return FALSE
 
-/obj/item/organ/Destroy()
-	color = "#000000"
-	attached_organ = null
-	attached_organs?.Cut()
-	return ..()
-
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)
 	attached_organ = O
 	O.attached_organs += src
@@ -170,11 +174,7 @@
 		for(var/damagetype in visual_wounds)
 			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_icon_state = "none", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
 
-	return ..()
-
-/obj/item/organ/New(var/desired_loc)
 	. = ..()
-	attached_organs = list()
 
 /obj/item/organ/PostInitialize()
 	. = ..()

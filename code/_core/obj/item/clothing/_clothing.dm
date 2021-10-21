@@ -110,8 +110,6 @@
 
 	weight = calculate_weight()
 
-	initialize_blends()
-
 	for(var/k in additional_clothing)
 		var/obj/item/C = new k(src)
 		C.should_save = FALSE
@@ -125,7 +123,6 @@
 
 	. = ..()
 
-
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
 	. = ..()
@@ -133,8 +130,6 @@
 	for(var/k in additional_clothing_stored)
 		var/obj/item/C = k
 		C.initialize_blends()
-
-
 
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()

@@ -115,7 +115,7 @@
 		var/turf/simulated/T = get_turf(A)
 		if(!istype(T))
 			continue
-		if(T.blood_level == 0)
+		if(T.blood_level_hard == 0)
 			continue
 		new/obj/effect/temp/hazard/bubblefist(T,null,src)
 		. = TRUE

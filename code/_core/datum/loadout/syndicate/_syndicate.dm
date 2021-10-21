@@ -30,7 +30,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/head/helmet/security/tactical/advanced,
 		/obj/item/clothing/head/hat/skimask/black,
-		/obj/item/clothing/overwear/armor/molded_armor,
+		/obj/item/clothing/overwear/armor/molded_armor/black,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/weapon/melee/energy/sword/green,

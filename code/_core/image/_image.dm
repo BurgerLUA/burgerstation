@@ -9,6 +9,8 @@
 	var/no_update = FALSE
 	var/list/additional_blends = list()
 
+	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE
+
 /image/overlay/Destroy()
 	attached_object = null
 	QDEL_CUT_ASSOC(additional_blends)
@@ -40,7 +42,14 @@
 
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
-			if(IB.special_type & ICON_BLEND_OVERLAY)
+			if(IB.special_type & ICON_BLEND_MASK)
+				var/image/OI = new/image(IB.icon,IB.icon_state)
+				OI.color = IB.color
+				OI.layer = IB.layer
+				OI.blend_mode = BLEND_INSET_OVERLAY
+				OI.appearance_flags = RESET_COLOR
+				add_overlay(OI)
+			else if(IB.special_type & ICON_BLEND_OVERLAY)
 				var/image/OI = new/image(IB.icon,IB.icon_state)
 				OI.color = IB.color
 				OI.layer = IB.layer

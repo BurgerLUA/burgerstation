@@ -321,7 +321,6 @@
 		I.drop_item(null)
 		return FALSE
 
-
 	var/atom/old_location = I.loc
 
 	I.drop_item(src,silent=silent)
@@ -341,13 +340,12 @@
 
 
 	update_stats()
-	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
 		if(!owner)
 			usr.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		else
-			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
+			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02"))
 		I.drop_item(get_turf(src))
 		return TRUE
 
@@ -355,6 +353,8 @@
 
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
+
+	vis_contents |= I
 
 	return TRUE
 

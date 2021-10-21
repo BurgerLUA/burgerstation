@@ -2,7 +2,7 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
-	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_DIR
 
 	var/value_burgerbux
 
@@ -160,6 +160,10 @@
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable.
 
 	enable_chunk_clean = TRUE
+
+	var/enable_blood_stains = TRUE //Set to false to disable. Good for laser weapons.
+	var/blood_stain_intensity = 0 //Scale, from 0 to 5.
+	var/blood_stain_color //Bloodstain color, if any.
 
 /obj/item/Destroy()
 
@@ -714,3 +718,52 @@
 /obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 	damage_multiplier *= FLOOR(quality/100,0.01)
 	return ..()
+
+/obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+
+	if(!enable_blood_stains || desired_level <= 0 || !desired_color)
+		remove_blend("bloodstain")
+		return TRUE
+
+	desired_level = clamp(CEILING(desired_level,1),0,5)
+
+	if(!force && desired_level == blood_stain_intensity && desired_color == blood_stain_color)
+		return FALSE
+
+	blood_stain_intensity = desired_level
+	blood_stain_color = desired_color
+
+	add_blend(
+		"bloodstain",
+		desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
+		desired_icon_state = "[blood_stain_intensity]",
+		desired_color = blood_stain_color,
+		desired_blend = ICON_ADD,
+		desired_type = ICON_BLEND_OVERLAY | ICON_BLEND_MASK,
+		desired_should_save = FALSE,
+		desired_layer = worn_layer+0.01
+	)
+
+	update_sprite()
+
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		var/mob/living/advanced/A = I.owner
+		if(A) A.update_overlay_tracked("\ref[src]")
+
+	return TRUE
+
+/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+	. = ..()
+	if(. && is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		A.update_overlay_tracked("\ref[src]")
+
+/obj/item/update_overlays()
+	. = ..()
+	if(enable_blood_stains && blood_stain_intensity > 0 && blood_stain_color)
+		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[blood_stain_intensity]")
+		I.appearance_flags = RESET_COLOR
+		I.blend_mode = BLEND_INSET_OVERLAY
+		I.color = blood_stain_color
+		add_overlay(I)

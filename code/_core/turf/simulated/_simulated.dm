@@ -35,7 +35,9 @@ var/global/list/blood_turfs = list()
 	var/image/overlay/stored_water_overlay
 	var/water_reagent
 
-	var/blood_level = 0
+	var/blood_level = 0 //How bloody the turf is. Used for footprints.
+	var/blood_level_hard = 0 //How many blood objects. Used for checking if there is blood.
+	var/blood_color //The color of blood.
 	var/wet_level = 0
 
 	var/drying_add = 0.1
@@ -73,12 +75,69 @@ var/global/list/blood_turfs = list()
 		update_overlays()
 	return TRUE
 
+
+/turf/simulated/proc/add_blood_level(var/amount_to_add,var/minimus=0,var/desired_color)
+	if(desired_color && desired_color != blood_color)
+		if(!blood_level || !blood_color)
+			blood_color = desired_color
+		else
+			blood_color = blend_colors(blood_color,desired_color,amount_to_add/(amount_to_add+blood_level))
+	blood_level = max(0,minimus,blood_level+amount_to_add)
+	return TRUE
+
+/turf/simulated/proc/add_blood_level_hard(var/amount_to_add,var/minimus=0)
+	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
+	if(blood_level_hard > 0)
+		blood_turfs |= src
+	else
+		blood_turfs -= src
+	return TRUE
+
 /turf/simulated/Entered(var/atom/movable/O,var/atom/new_loc)
 
 	. = ..()
 
-	if(is_living(O))
+	if(is_living(O)) //THIS SHOULD PROBABLY GO IN LIVING CODE.
 		var/mob/living/L = O
+		if(is_advanced(L))
+			var/mob/living/advanced/A = L
+			if(blood_level_hard > 0 && blood_level > 0)
+				add_blood_level(-1)
+				//Step 1: Get the bodypart defines that are supposed to get messy.
+				var/list/blood_items = list()
+				if(L.horizontal) //Crawling.
+					blood_items = list(
+						BODY_TORSO = FALSE,
+						BODY_GROIN = FALSE,
+						BODY_ARM_LEFT = FALSE,
+						BODY_ARM_RIGHT = FALSE,
+						BODY_LEG_LEFT = FALSE,
+						BODY_LEG_RIGHT = FALSE
+					)
+				else
+					blood_items = list(
+						BODY_FOOT_LEFT = FALSE,
+						BODY_FOOT_RIGHT = FALSE
+					)
+				//Step 2: Get the clothing to mess up.
+				for(var/obj/item/clothing/C in A.worn_objects)
+					for(var/p in C.protected_limbs)
+						if(blood_items[p])
+							var/obj/item/clothing/C2 = blood_items[p]
+							if(C.worn_layer >= C2.worn_layer)
+								blood_items[p] = C
+						else if(blood_items[p] == FALSE)
+							blood_items[p] = C
+				//Step 3: Go through all the clothing to mess up. If there is none, mess up the organ instead.
+				for(var/k in blood_items)
+					var/obj/item/clothing/C = blood_items[k]
+					if(!C) //Give the organ a bloodstain instead.
+						var/obj/item/organ/ORG = A.labeled_organs[k]
+						if(ORG.blood_stain_intensity < blood_level)
+							ORG.set_bloodstain(blood_level,blood_color)
+					else //Give the clothing a bloodstain.
+						if(C.blood_stain_intensity < blood_level)
+							C.set_bloodstain(blood_level,blood_color)
 		if(!L.horizontal && L.move_mod > 1)
 			var/slip_strength = get_slip_strength(L)
 			if(slip_strength >= 4 - L.move_mod)
