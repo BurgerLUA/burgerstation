@@ -119,6 +119,45 @@ mob/living/advanced/get_movement_delay()
 					left_hand.grabbed_object.Move(T)
 				else
 					left_hand.release_object()
+		if(is_simulated(T))
+			var/turf/simulated/S = T
+			if(S.blood_level_hard > 0 && S.blood_level > 0)
+				S.add_blood_level(-1)
+				//Step 1: Get the bodypart defines that are supposed to get messy.
+				var/list/blood_items = list()
+				if(horizontal) //Crawling.
+					blood_items = list(
+						BODY_TORSO = FALSE,
+						BODY_GROIN = FALSE,
+						BODY_ARM_LEFT = FALSE,
+						BODY_ARM_RIGHT = FALSE,
+						BODY_LEG_LEFT = FALSE,
+						BODY_LEG_RIGHT = FALSE
+					)
+				else
+					blood_items = list(
+						BODY_FOOT_LEFT = FALSE,
+						BODY_FOOT_RIGHT = FALSE
+					)
+				//Step 2: Get the clothing to mess up.
+				for(var/obj/item/clothing/C in worn_objects)
+					for(var/p in C.protected_limbs)
+						if(blood_items[p])
+							var/obj/item/clothing/C2 = blood_items[p]
+							if(C.worn_layer >= C2.worn_layer)
+								blood_items[p] = C
+						else if(blood_items[p] == FALSE)
+							blood_items[p] = C
+				//Step 3: Go through all the clothing to mess up. If there is none, mess up the organ instead.
+				for(var/k in blood_items)
+					var/obj/item/clothing/C = blood_items[k]
+					if(!C) //Give the organ a bloodstain instead.
+						var/obj/item/organ/ORG = src.labeled_organs[k]
+						if(ORG.blood_stain_intensity < S.blood_level)
+							ORG.set_bloodstain(S.blood_level,S.blood_color)
+					else //Give the clothing a bloodstain.
+						if(C.blood_stain_intensity < S.blood_level)
+							C.set_bloodstain(S.blood_level,S.blood_color)
 
 /mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 

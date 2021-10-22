@@ -9,7 +9,7 @@
 	var/no_update = FALSE
 	var/list/additional_blends = list()
 
-	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | KEEP_TOGETHER
 
 /image/overlay/Destroy()
 	attached_object = null

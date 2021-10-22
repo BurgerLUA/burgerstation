@@ -246,6 +246,17 @@
 				desired_layer = worn_layer
 			)
 
+	add_blend(
+		"bloodstain",
+		desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
+		desired_icon_state = "[blood_stain_intensity]",
+		desired_color = blood_stain_color,
+		desired_blend = ICON_ADD,
+		desired_type = ICON_BLEND_OVERLAY | ICON_BLEND_MASK,
+		desired_should_save = FALSE,
+		desired_layer = worn_layer+0.01
+	)
+
 	. = ..()
 
 /obj/item/get_base_value()
@@ -557,20 +568,6 @@
 		return FALSE
 	return TRUE
 
-/obj/item/update_icon()
-
-	if(length(polymorphs))
-		icon = initial(icon)
-		var/icon/I = ICON_INVISIBLE
-		for(var/polymorph_name in polymorphs)
-			var/polymorph_color = polymorphs[polymorph_name]
-			var/icon/I2 = new /icon(icon,"[icon_state]_[polymorph_name]")
-			I2.Blend(polymorph_color,ICON_MULTIPLY)
-			I.Blend(I2,ICON_OVERLAY)
-		icon = I
-
-	. = ..()
-
 /obj/item/proc/update_held_icon()
 
 	if(is_inventory(src.loc))
@@ -733,25 +730,18 @@
 	blood_stain_intensity = desired_level
 	blood_stain_color = desired_color
 
-	add_blend(
-		"bloodstain",
-		desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
-		desired_icon_state = "[blood_stain_intensity]",
-		desired_color = blood_stain_color,
-		desired_blend = ICON_ADD,
-		desired_type = ICON_BLEND_OVERLAY | ICON_BLEND_MASK,
-		desired_should_save = FALSE,
-		desired_layer = worn_layer+0.01
-	)
-
+	add_blend("bloodstain", desired_icon_state = "[blood_stain_intensity]", desired_color = blood_stain_color)
 	update_sprite()
 
-	if(is_inventory(src.loc))
-		var/obj/hud/inventory/I = src.loc
-		var/mob/living/advanced/A = I.owner
-		if(A) A.update_overlay_tracked("\ref[src]")
+	if(is_inventory(loc))
+		var/obj/hud/inventory/I = loc
+		if(I.worn && is_advanced(I.owner))
+			var/mob/living/advanced/A = I.owner
+			A.remove_overlay("\ref[src]")
+			I.update_worn_icon(src)
 
 	return TRUE
+
 
 /obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
 	. = ..()
@@ -759,8 +749,21 @@
 		var/mob/living/advanced/A = loc
 		A.update_overlay_tracked("\ref[src]")
 
-/obj/item/update_overlays()
+/obj/item/update_icon()
 	. = ..()
+	if(length(polymorphs))
+		icon = null
+
+/obj/item/update_overlays()
+
+	. = ..()
+
+	for(var/polymorph_name in polymorphs)
+		var/polymorph_color = polymorphs[polymorph_name]
+		var/image/I = new/image(icon,"[icon_state]_[polymorph_name]")
+		I.color = polymorph_color
+		add_overlay(I)
+
 	if(enable_blood_stains && blood_stain_intensity > 0 && blood_stain_color)
 		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[blood_stain_intensity]")
 		I.appearance_flags = RESET_COLOR

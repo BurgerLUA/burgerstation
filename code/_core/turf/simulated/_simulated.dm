@@ -93,59 +93,6 @@ var/global/list/blood_turfs = list()
 		blood_turfs -= src
 	return TRUE
 
-/turf/simulated/Entered(var/atom/movable/O,var/atom/new_loc)
-
-	. = ..()
-
-	if(is_living(O)) //THIS SHOULD PROBABLY GO IN LIVING CODE.
-		var/mob/living/L = O
-		if(is_advanced(L))
-			var/mob/living/advanced/A = L
-			if(blood_level_hard > 0 && blood_level > 0)
-				add_blood_level(-1)
-				//Step 1: Get the bodypart defines that are supposed to get messy.
-				var/list/blood_items = list()
-				if(L.horizontal) //Crawling.
-					blood_items = list(
-						BODY_TORSO = FALSE,
-						BODY_GROIN = FALSE,
-						BODY_ARM_LEFT = FALSE,
-						BODY_ARM_RIGHT = FALSE,
-						BODY_LEG_LEFT = FALSE,
-						BODY_LEG_RIGHT = FALSE
-					)
-				else
-					blood_items = list(
-						BODY_FOOT_LEFT = FALSE,
-						BODY_FOOT_RIGHT = FALSE
-					)
-				//Step 2: Get the clothing to mess up.
-				for(var/obj/item/clothing/C in A.worn_objects)
-					for(var/p in C.protected_limbs)
-						if(blood_items[p])
-							var/obj/item/clothing/C2 = blood_items[p]
-							if(C.worn_layer >= C2.worn_layer)
-								blood_items[p] = C
-						else if(blood_items[p] == FALSE)
-							blood_items[p] = C
-				//Step 3: Go through all the clothing to mess up. If there is none, mess up the organ instead.
-				for(var/k in blood_items)
-					var/obj/item/clothing/C = blood_items[k]
-					if(!C) //Give the organ a bloodstain instead.
-						var/obj/item/organ/ORG = A.labeled_organs[k]
-						if(ORG.blood_stain_intensity < blood_level)
-							ORG.set_bloodstain(blood_level,blood_color)
-					else //Give the clothing a bloodstain.
-						if(C.blood_stain_intensity < blood_level)
-							C.set_bloodstain(blood_level,blood_color)
-		if(!L.horizontal && L.move_mod > 1)
-			var/slip_strength = get_slip_strength(L)
-			if(slip_strength >= 4 - L.move_mod)
-				var/obj/item/wet_floor_sign/WFS = locate() in range(1,src)
-				if(!WFS || L.move_mod > 2)
-					L.add_status_effect(SLIP,slip_strength*10,slip_strength*10)
-
-
 /turf/simulated/get_examine_list(var/mob/caller)
 	. = ..()
 	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
