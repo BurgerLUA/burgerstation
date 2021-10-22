@@ -760,7 +760,7 @@
 
 	for(var/polymorph_name in polymorphs)
 		var/polymorph_color = polymorphs[polymorph_name]
-		var/image/I = new/image(icon,"[icon_state]_[polymorph_name]")
+		var/image/I = new/image(initial(icon),"[icon_state]_[polymorph_name]")
 		I.color = polymorph_color
 		add_overlay(I)
 
