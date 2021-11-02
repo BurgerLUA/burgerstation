@@ -67,6 +67,12 @@
 /atom/proc/get_consume_sound()
 	return 'sound/items/consumables/eatfood.ogg'
 
+/atom/verb/examine()
+	set name = "Examine"
+	set hidden = TRUE
+	if(usr && usr.client)
+		usr.client.examine(src)
+
 /atom/proc/update_atom_light()
 	if(desired_light_range > 0 && desired_light_power > 0)
 		if(src.x % desired_light_frequency || src.y % desired_light_frequency)

@@ -61,6 +61,12 @@
 
 	x_offset = 16
 
+/obj/hud/inventory/organs/left_hand_held/update_overlays()
+	. = ..()
+	if(owner?.client?.selected_hand == click_flags)
+		var/image/I = new/image(initial(icon),"[icon_state]_selected")
+		add_overlay(I)
+
 /obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
 	if(. && is_advanced(owner))
@@ -98,6 +104,12 @@
 	priority = 3
 
 	x_offset = 16
+
+/obj/hud/inventory/organs/right_hand_held/update_overlays()
+	. = ..()
+	if(owner?.client?.selected_hand == click_flags)
+		var/image/I = new/image(initial(icon),"[icon_state]_selected")
+		add_overlay(I)
 
 /obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()

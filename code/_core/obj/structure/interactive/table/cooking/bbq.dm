@@ -1,4 +1,4 @@
-/obj/structure/smooth/table/cooking/barbecue
+/obj/structure/table/cooking/barbecue
 	name = "electric portable barbecue"
 	desc = "I just wanna grill for god's sake."
 	desc_extended = "You can cook or heat up items by placing it on the barbecue. Click on it with an empty hand to toggle the barbecue."
@@ -16,14 +16,14 @@
 
 	bullet_block_chance = 50
 
-/obj/structure/smooth/table/cooking/barbecue/update_atom_light()
+/obj/structure/table/cooking/barbecue/update_atom_light()
 	if(enabled)
 		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	else
 		set_light(FALSE)
 	return TRUE
 
-/obj/structure/smooth/table/cooking/barbecue/update_icon()
+/obj/structure/table/cooking/barbecue/update_icon()
 	. = ..()
 
 	icon = initial(icon)

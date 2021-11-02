@@ -95,7 +95,7 @@
 
 /obj/structure/interactive/shop/update_sprite()
 
-	if(locate(/obj/structure/smooth/table/) in src.loc.contents)
+	if(locate(/obj/structure/table/) in src.loc.contents)
 		pixel_y = 4
 	else
 		pixel_y = 0

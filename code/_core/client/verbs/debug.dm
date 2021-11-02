@@ -24,7 +24,9 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
 	/client/verb/test_astar,
-	/client/verb/print_garbage
+	/client/verb/print_garbage,
+	/client/verb/set_skill,
+	/client/verb/set_attribute
 )
 
 /client/verb/view_dps()
@@ -518,3 +520,69 @@ client/verb/air_test(var/pressure as num)
 		T.color = "#FF0000"
 
 	return TRUE
+
+
+/client/verb/set_attribute(var/mob/mob as mob)
+
+	set name = "Set Attribute Level"
+	set category = "Debug"
+
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
+	var/list/valid_choices = list()
+
+	for(var/k in L.attributes)
+		valid_choices += k
+
+	var/chosen_attribute = input("Which attribute do you wish to modify?","Modify Attribute") as null|anything in valid_choices
+
+	if(!chosen_attribute)
+		return
+
+	var/chosen_value = input("Which value do you wish to set [chosen_attribute] to?","Modify Attribute") as num|null
+
+	if(!chosen_value)
+		return
+
+	var/old_level = L.get_attribute_level(chosen_attribute)
+
+	L.set_attribute_level(chosen_attribute,chosen_value)
+
+	to_chat(span("notice","Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."))
+
+	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_attribute] from [old_level] to [chosen_value].")
+
+
+/client/verb/set_skill(var/mob/mob as mob)
+
+	set name = "Set Skill Level"
+	set category = "Debug"
+
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
+	var/list/valid_choices = list()
+
+	for(var/k in L.skills)
+		valid_choices += k
+
+	var/chosen_skill = input("Which skill do you wish to modify?","Modify Skill") as null|anything in valid_choices
+
+	if(!chosen_skill)
+		return
+
+	var/chosen_value = input("Which value do you wish to set [chosen_skill] to?","Modify Skill") as num|null
+
+	if(!chosen_value)
+		return
+
+	var/old_level = L.get_skill_level(chosen_skill)
+
+	L.set_skill_level(chosen_skill,chosen_value)
+
+	to_chat(span("notice","Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."))
+
+	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_skill] from [old_level] to [chosen_value].")

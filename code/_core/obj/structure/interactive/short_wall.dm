@@ -1,8 +1,8 @@
-/obj/structure/smooth/wall
+/obj/structure/short_wall
 	name = "short wall"
 	desc = "A torso high wall. Low enough to see over."
 	desc = "Can be used as basic cover."
-	icon = 'icons/obj/structure/smooth/wall.dmi'
+	icon = 'icons/obj/structure/wall.dmi'
 	icon_state = "wall"
 
 	corner_category = "small_wall"
@@ -21,35 +21,28 @@
 
 	health_base = 400
 
-/obj/structure/smooth/wall/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/short_wall/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	. = ..()
 	qdel(src)
 
-/obj/structure/smooth/wall/wood
+/obj/structure/short_wall/wood
 	name = "short wood wall"
 	color = "#4C3323"
 	corner_category = "wood_wall"
 	material_id = /material/wood
 
-/obj/structure/smooth/wall/wood/starting
+/obj/structure/short_wall/wood/starting
 	color = "#60402C"
 
-/obj/structure/smooth/wall/brick
+/obj/structure/short_wall/brick
 	name = "short stone wall"
-	icon = 'icons/obj/structure/smooth/stone.dmi'
+	icon = 'icons/obj/structure/stone.dmi'
 	corner_category = "stone_wall"
 	material_id = /material/steel
 
-/obj/structure/smooth/wall/sand
+/obj/structure/short_wall/sand
 	name = "short sand wall"
 	color = "#CC955F"
 	corner_category = "sand_wall"
 	material_id = /material/wood
-
-/obj/structure/smooth/wall/sand/should_smooth_with(var/turf/T)
-
-	if(istype(T,/turf/simulated/wall/brick/sand))
-		return TRUE
-
-	. = ..()

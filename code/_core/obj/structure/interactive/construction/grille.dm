@@ -3,9 +3,15 @@
 	desc = "A metal grille."
 	icon_state = "grille"
 
+	icon = 'icons/obj/structure/grille.dmi'
+	icon_state = "grille"
+
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	density = TRUE
+
+	corner_category = "grille"
+	corner_icons = TRUE
 
 	health_base = 75
 
@@ -20,7 +26,7 @@
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
 
-	if(istype(src.loc,/obj/structure/smooth/window/))
+	if(istype(src.loc,/obj/structure/window/))
 		caller.to_chat(span("warning","There is already a window here!"))
 		return FALSE
 	if(S.item_count_current < 4)
@@ -29,7 +35,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/grille/proc/construct_window(var/mob/caller,var/obj/item/material/sheet/S)
-	var/obj/structure/smooth/window/W = new(src.loc)
+	var/obj/structure/window/W = new(src.loc)
 	W.material_id = S.material_id
 	W.color = S.color
 	INITIALIZE(W)
@@ -57,7 +63,7 @@
 	return ..()
 
 /obj/structure/interactive/construction/grille/Cross(atom/movable/O,atom/oldloc)
-	if(istype(O,/obj/structure/smooth/window/)) //Allow windows to easily fit on grilles.
+	if(istype(O,/obj/structure/window/)) //Allow windows to easily fit on grilles.
 		return TRUE
 	return ..()
 

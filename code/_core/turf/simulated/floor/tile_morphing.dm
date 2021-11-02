@@ -1,6 +1,6 @@
 /turf/simulated/floor/tile/morphing/
-	icon = 'icons/turf/floor/tile_morphing.dmi'
-	icon_state = "floor"
+	icon = 'icons/turf/floor/tile_quad.dmi'
+	icon_state = "multi"
 	var/original_color
 	corner_icons = TRUE
 
@@ -73,7 +73,7 @@
 		I = turf_icon_cache[full_icon_string]
 		saved_icons++
 	else
-		I = new /icon(icon,"floor")
+		I = new/icon(icon,icon_state)
 		I.Blend(original_color,ICON_MULTIPLY)
 
 		if(ne)

@@ -159,7 +159,7 @@
 	data = list(
 		"name" = "table.obj",
 		"effect" = /obj/effect/temp/sparkles,
-		"object" = /obj/structure/smooth/table,
+		"object" = /obj/structure/table,
 		"cost" = 500
 	)
 

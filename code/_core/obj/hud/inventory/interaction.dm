@@ -77,7 +77,7 @@
 			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
-		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
+		if(desired_turf && istype(object,/obj/structure/table) && get_dist(caller_turf,desired_turf) <= 1)
 			drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 		else
 			drop_item_from_inventory(get_turf(src))

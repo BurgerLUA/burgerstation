@@ -215,19 +215,19 @@
 /area/hellscape/interior/caves/ancient)
 "ba" = (
 /obj/structure/interactive/vending/syndicate/guns/rev,
-/turf/simulated/floor/tile/dark,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/hellscape/interior/rev)
 "bb" = (
 /obj/structure/interactive/vending/syndicate/attachment,
-/turf/simulated/floor/tile/dark,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/hellscape/interior/rev)
 "bc" = (
 /obj/structure/interactive/vending/syndicate/medicine,
-/turf/simulated/floor/tile/dark,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/hellscape/interior/rev)
 "bd" = (
 /obj/structure/interactive/vending/syndicate/prize/rev,
-/turf/simulated/floor/tile/dark,
+/turf/simulated/floor/tile/overlapping/dark,
 /area/hellscape/interior/rev)
 "be" = (
 /obj/structure/smooth/table/reinforced/dark,
@@ -807,7 +807,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "ds" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/jungle_deep,
 /area/hellscape/exterior/jungle/south)
 "dt" = (
@@ -1236,7 +1236,7 @@
 /turf/simulated/floor/colored/sand/underwater,
 /area/hellscape/interior/caves/crab)
 "fe" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ancient)
 "ff" = (
@@ -1960,7 +1960,7 @@
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "iN" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/basalt,
 /area/hellscape/interior/caves/ashwalker_village)
 "iQ" = (
@@ -2806,7 +2806,7 @@
 /turf/simulated/wall/rock/indestructable,
 /area/hellscape/interior/pirate_landing)
 "qm" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/cave_dirt,
 /area/hellscape/interior/caves/watersource)
 "qw" = (
@@ -2874,7 +2874,7 @@
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/watersource)
 "rt" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/colored/dirt/cave,
 /area/hellscape/interior/caves/watersource)
 "ru" = (

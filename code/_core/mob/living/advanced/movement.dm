@@ -144,6 +144,10 @@ mob/living/advanced/get_movement_delay()
 					for(var/p in C.protected_limbs)
 						if(blood_items[p])
 							var/obj/item/clothing/C2 = blood_items[p]
+							var/obj/hud/inventory/I = C.loc
+							var/obj/item/organ/O = I.loc
+							if(O.id != p)
+								continue
 							if(C.worn_layer >= C2.worn_layer)
 								blood_items[p] = C
 						else if(blood_items[p] == FALSE)

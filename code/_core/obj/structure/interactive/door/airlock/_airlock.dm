@@ -51,8 +51,6 @@
 		. = ..()
 		qdel(src)
 
-
-
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(door_state == DOOR_STATE_BROKEN)

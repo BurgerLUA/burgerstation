@@ -20,12 +20,30 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
 
+	var/material_id = /material/steel
+	var/reinforced_material_id = null
+	var/reinforced_color = "#FFFFFF"
+
+/obj/structure/update_overlays()
+
+	. = ..()
+
+	if(reinforced_material_id)
+		var/image/I = new/image(initial(icon),"ref")
+		I.appearance_flags = RESET_COLOR
+		I.color = reinforced_color
+		I.alpha = 100
+		add_overlay(I)
+
 /obj/structure/on_crush()
 	. = ..()
 	loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
 	qdel(src)
 
 /obj/structure/should_smooth_with(var/turf/T)
+
+	if(T.plane == plane && T.corner_category == corner_category)
+		return TRUE
 
 	for(var/obj/structure/O in T.contents)
 		if(O.corner_category != corner_category)
@@ -42,6 +60,10 @@
 
 	if(desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color)
+
+/obj/structure/Finalize()
+	if(corner_icons) SSsmoothing.queued_smoothing += src
+	. = ..()
 
 
 /obj/structure/proc/on_active(var/mob/living/advanced/player/P)
@@ -112,3 +134,79 @@
 	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
 		return FALSE
 	return ..()
+
+
+
+/obj/structure/update_icon()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	if(!corner_icons || !anchored)
+		return ..()
+
+	var/list/calc_list = list()
+
+	for(var/d in DIRECTIONS_ALL)
+		var/dir_to_text = "[d]"
+		calc_list[dir_to_text] = FALSE
+		var/turf/T = get_step(src,d)
+		if(!T)
+			continue
+		if(should_smooth_with(T))
+			calc_list[dir_to_text] = TRUE
+			continue
+
+	var/ne = ""
+	var/nw = ""
+	var/sw = ""
+	var/se = ""
+
+	if(calc_list["[NORTH]"])
+		ne += "n"
+		nw += "n"
+	if(calc_list["[SOUTH]"])
+		se += "s"
+		sw += "s"
+
+	if(calc_list["[EAST]"])
+		ne += "e"
+		se += "e"
+	if(calc_list["[WEST]"])
+		nw += "w"
+		sw += "w"
+
+	if(nw == "nw" && calc_list["[NORTHWEST]"])
+		nw = "f"
+
+	if(ne == "ne" && calc_list["[NORTHEAST]"])
+		ne = "f"
+
+	if(sw == "sw" && calc_list["[SOUTHWEST]"])
+		sw = "f"
+
+	if(se == "se" && calc_list["[SOUTHEAST]"])
+		se = "f"
+
+	if(!ne) ne = "i"
+	if(!nw) nw = "i"
+	if(!se) se = "i"
+	if(!sw) sw = "i"
+
+	var/icon/I = ICON_INVISIBLE
+
+	var/icon/NW = new /icon(icon,"1-[nw]")
+	I.Blend(NW,ICON_OVERLAY)
+
+	var/icon/NE = new /icon(icon,"2-[ne]")
+	I.Blend(NE,ICON_OVERLAY)
+
+	var/icon/SW = new /icon(icon,"3-[sw]")
+	I.Blend(SW,ICON_OVERLAY)
+
+	var/icon/SE = new /icon(icon,"4-[se]")
+	I.Blend(SE,ICON_OVERLAY)
+
+	icon = I
+	pixel_x = (32 - I.Width())/2
+	pixel_y = (32 - I.Height())/2

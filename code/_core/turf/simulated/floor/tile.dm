@@ -2,7 +2,7 @@
 	name = "tile floor"
 
 	icon = 'icons/turf/floor/tile.dmi'
-	icon_state = "white_multi"
+	icon_state = "multi"
 
 	footstep = /footstep/tile
 
@@ -37,13 +37,7 @@
 	color = "#729AB1"
 
 /turf/simulated/floor/tile/grey/single
-	icon_state = "white_single"
-
-/turf/simulated/floor/tile/grey/horizontal
-	icon_state = "white_half_horz"
-
-/turf/simulated/floor/tile/grey/vertical
-	icon_state = "white_half_vert"
+	icon_state = "single"
 
 /turf/simulated/floor/tile/dark
 	color = COLOR_STEEL
@@ -52,7 +46,7 @@
 	color = "#242424"
 
 /turf/simulated/floor/tile/dark/single
-	icon_state = "white_single"
+	icon_state = "single"
 
 /turf/simulated/floor/tile/dark/ish
 	color = "#616060"
@@ -121,55 +115,4 @@
 /turf/simulated/floor/tile/command
 	color = COLOR_COMMAND
 	desc = "A commanding floor"
-	desc_extended = "A floor that makes you want to point and tell your crewmates to make it so"
-
-/turf/simulated/floor/tile/overlapping
-	real_icon = 'icons/turf/floor/tile_smooth_overlap.dmi'
-	real_icon_state = "floor"
-
-	corner_icons = TRUE
-	corner_category = "tile_over"
-
-	layer = LAYER_FLOOR + 0.01
-
-/turf/simulated/floor/tile/overlapping/should_smooth_with(var/turf/T)
-
-	if(!istype(T,/turf/simulated/floor/tile/))
-		return TRUE //This means it won't overlay with reinforced plates and whatnot, only tiles.
-
-	if(T.color == color)
-		return TRUE
-
-	return ..()
-
-/turf/simulated/floor/tile/overlapping/engineering
-	color = COLOR_ENGINEERING
-	layer = LAYER_FLOOR + 0.02
-
-/turf/simulated/floor/tile/overlapping/grey
-	color = "#999999"
-	layer = LAYER_FLOOR + 0.03
-
-/turf/simulated/floor/tile/overlapping/dark
-	color = "#444444"
-	layer = LAYER_FLOOR + 0.04
-
-
-
-
-
-/*
-/turf/simulated/floor/tile/smooth
-	real_icon = 'icons/turf/floor/tile_smooth.dmi'
-	real_icon_state = "floor"
-
-	corner_icons = TRUE
-	corner_category = "tile"
-
-
-/turf/simulated/floor/tile/smooth/grey
-	color = "#999999"
-
-/turf/simulated/floor/tile/smooth/cargo
-	color = COLOR_CARGO
-*/
+	desc_extended = "A floor that makes you want to point and tell your crewmates to make it so."

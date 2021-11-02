@@ -2,9 +2,8 @@ SUBSYSTEM_DEF(turfs)
 	name = "Turfs Subsystem"
 	desc = "Initialize Turfs after they are made."
 	priority = SS_ORDER_TURFS
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = SECONDS_TO_TICKS(1)
 
-	var/list/queued_edges = list()
 	var/list/wet_turfs = list()
 
 	cpu_usage_max = 50
@@ -16,9 +15,6 @@ SUBSYSTEM_DEF(turfs)
 
 	for(var/k in wet_turfs)
 		wet_turfs -= k
-
-	for(var/k in queued_edges)
-		queued_edges -= k
 
 	broadcast_to_clients(span("danger","Removed all wet turfs and queued edges."))
 
@@ -112,12 +108,6 @@ SUBSYSTEM_DEF(turfs)
 
 	return ..()
 
-/subsystem/turfs/proc/process_queued_edge(var/turf/T)
-	CHECK_TICK(75,FPS_SERVER*3)
-	T.update_sprite()
-	queued_edges -= T
-	return TRUE
-
 /subsystem/turfs/proc/process_wet_turf(var/turf/simulated/T)
 	CHECK_TICK(75,FPS_SERVER*3)
 	T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
@@ -126,13 +116,6 @@ SUBSYSTEM_DEF(turfs)
 		T.overlays.Cut()
 		T.update_overlays()
 	return TRUE
-
-/subsystem/turfs/proc/process_edges()
-
-	for(var/k in queued_edges)
-		var/turf/T = k
-		if(process_queued_edge(T) == null)
-			queued_edges -= k
 
 /subsystem/turfs/proc/process_wet_turfs()
 
@@ -143,19 +126,5 @@ SUBSYSTEM_DEF(turfs)
 
 
 /subsystem/turfs/on_life()
-
-	process_edges()
 	process_wet_turfs()
-
-
-	return TRUE
-
-/proc/queue_update_turf_edges(var/turf/T)
-
-	SSturfs.queued_edges |= T
-
-	for(var/direction in DIRECTIONS_ALL)
-		var/turf/T2 = get_step(T,direction)
-		SSturfs.queued_edges |= T2
-
 	return TRUE

@@ -2,7 +2,7 @@
 	name = "steel wall"
 	desc = "Try getting through that"
 	desc_extended = "It's a wall made of solid steel, pretty tough."
-	icon = 'icons/turf/wall/metal_new.dmi'
+	icon = 'icons/turf/wall/metal_new_new.dmi'
 	icon_state = "wall"
 	corner_icons = TRUE
 	corner_category = "metal"
@@ -16,6 +16,13 @@
 /turf/simulated/wall/metal/New(var/desired_loc)
 	. = ..()
 	map_color = color
+
+/turf/simulated/wall/metal/should_smooth_with(var/turf/T)
+
+	var/obj/structure/window/W = locate() in T.contents
+	if(W) return TRUE
+
+	. = ..()
 
 /turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
 

@@ -1,16 +1,16 @@
-/obj/structure/smooth/table/cooking
+/obj/structure/table/cooking
 	name = "cooking platform"
 	var/enabled = FALSE
 	var/temperature_mod = 590 //How hot to make it. This adds to the turf's temperature.
 	density = TRUE
 
-/obj/structure/smooth/table/cooking/Finalize()
+/obj/structure/table/cooking/Finalize()
 	. = ..()
 	var/old_enabled = enabled //Hacky wooo
 	enabled = FALSE
 	set_enabled(old_enabled,TRUE)
 
-/obj/structure/smooth/table/cooking/proc/set_enabled(var/desired_enabled=TRUE,var/force=FALSE)
+/obj/structure/table/cooking/proc/set_enabled(var/desired_enabled=TRUE,var/force=FALSE)
 
 	if(enabled == desired_enabled && !force)
 		return FALSE
@@ -30,11 +30,11 @@
 
 	return TRUE
 
-/obj/structure/smooth/table/cooking/get_examine_details_list(var/mob/examiner)
+/obj/structure/table/cooking/get_examine_details_list(var/mob/examiner)
 	. = ..()
 	. += span("notice","It is currently [enabled ? "on" : "off"].")
 
-/obj/structure/smooth/table/cooking/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/table/cooking/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
@@ -55,7 +55,7 @@
 
 	. = ..()
 
-/obj/structure/smooth/table/cooking/post_move(var/atom/old_loc)
+/obj/structure/table/cooking/post_move(var/atom/old_loc)
 
 	. = ..()
 

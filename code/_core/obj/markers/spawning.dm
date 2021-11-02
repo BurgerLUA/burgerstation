@@ -42,15 +42,15 @@
 	return D
 
 /obj/marker/spawning/window/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
 
 /obj/marker/spawning/window/tinted/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	W.color = "#353535"
@@ -59,7 +59,7 @@
 
 /obj/marker/spawning/window/rcd/do_spawn(var/turf/T)
 	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/W = new(T)
+	var/obj/structure/window/W = new(T)
 	INITIALIZE(G)
 	INITIALIZE(W)
 	GENERATE(G)
@@ -72,8 +72,8 @@
 	icon_state = "window_grille_reinforced"
 
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/reinforced/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/reinforced/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
@@ -82,8 +82,8 @@
 	icon_state = "window_grille_extra"
 
 /obj/marker/spawning/window/extra/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/plasteel/G = new(T)
-	var/obj/structure/smooth/window/reinforced/plasma/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/reinforced/plasma/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()

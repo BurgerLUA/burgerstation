@@ -150,6 +150,11 @@
 
 	return ..()
 
+
+/turf/Finalize()
+	if(corner_icons) SSsmoothing.queued_smoothing += src
+	. = ..()
+
 /*
 /turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	caller.face_atom(src)
@@ -278,11 +283,6 @@
 /turf/proc/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
-
-
-/turf/Finalize()
-	. = ..()
-	update_sprite()
 
 /turf/proc/is_clear_path_to(var/turf/target_turf)
 

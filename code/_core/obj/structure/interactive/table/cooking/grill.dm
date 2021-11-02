@@ -1,8 +1,8 @@
-/obj/structure/smooth/table/cooking/grill
+/obj/structure/table/cooking/grill
 	name = "electric grill"
 	desc = "Cook things with this."
 	desc_extended = "You can cook or heat up items by dropping it on top of the grill. Click on it with an empty hand to toggle the grill."
-	icon = 'icons/obj/structure/smooth/table/grill.dmi'
+	icon = 'icons/obj/structure/table/grill.dmi'
 	icon_state = "grill"
 
 	layer = LAYER_TABLE
@@ -15,7 +15,7 @@
 
 	anchored = TRUE
 
-/obj/structure/smooth/table/cooking/grill/update_icon()
+/obj/structure/table/cooking/grill/update_icon()
 	. = ..()
 
 	icon = initial(icon)

@@ -1,6 +1,6 @@
-obj/structure/smooth/lattice
+obj/structure/lattice
 	name = "support strut"
-	icon = 'icons/obj/structure/smooth/lattice.dmi'
+	icon = 'icons/obj/structure/lattice.dmi'
 	icon_state = "lattice"
 
 	corner_category = "lattice"
@@ -11,7 +11,7 @@ obj/structure/smooth/lattice
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-obj/structure/smooth/lattice/should_smooth_with(var/turf/T)
+obj/structure/lattice/should_smooth_with(var/turf/T)
 
 	. = ..()
 

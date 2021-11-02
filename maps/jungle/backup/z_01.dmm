@@ -52,7 +52,7 @@
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "aq" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "ar" = (
@@ -213,7 +213,7 @@
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
 "bh" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
 "bi" = (
@@ -677,7 +677,7 @@
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "dn" = (
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
+/obj/structure/smooth/wall/wood,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/forest/village)
 "do" = (
@@ -693,7 +693,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/mining)
 "dr" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/diamond_cave)
 "ds" = (
@@ -716,7 +716,7 @@
 /turf/unsimulated/generation/surface/surface_turf,
 /area/lz_001/forest/village)
 "dy" = (
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
+/obj/structure/smooth/wall/wood,
 /turf/unsimulated/generation/surface/surface_path_turf,
 /area/lz_001/forest/village)
 "dz" = (
@@ -830,7 +830,7 @@
 /turf/simulated/floor/cobblestone/corner,
 /area/lz_001/forest/village)
 "dY" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/surface_path_turf,
 /area/lz_001/forest/village)
 "dZ" = (
@@ -1113,7 +1113,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fg" = (
-/obj/structure/table/cooking/grill,
+/obj/structure/smooth/table/cooking/grill,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fh" = (
@@ -1681,11 +1681,11 @@
 /turf/simulated/hazard/water/sea,
 /area/lz_001/desert)
 "hC" = (
-/turf/simulated/wall/brick/sand,
+/obj/structure/smooth/wall/sand,
 /turf/simulated/floor/colored/sand/desert,
 /area/lz_001/desert)
 "hD" = (
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
+/obj/structure/smooth/wall/wood,
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
 "hE" = (
@@ -1695,7 +1695,7 @@
 /turf/simulated/wall/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "hG" = (
-/obj/structure/short_wall/wood/starting,
+/obj/structure/smooth/wall/wood/starting,
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "hH" = (
@@ -1816,7 +1816,7 @@
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "id" = (
-/obj/structure/short_wall/wood/starting,
+/obj/structure/smooth/wall/wood/starting,
 /turf/simulated/hazard/water/sea,
 /area/lz_001/caves/lagoon)
 "ie" = (
@@ -1931,7 +1931,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "iO" = (
-/obj/structure/table/cooking/bonfire,
+/obj/structure/smooth/table/cooking/bonfire,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "iP" = (

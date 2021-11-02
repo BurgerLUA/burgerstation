@@ -1,4 +1,4 @@
-/obj/structure/smooth/table/cooking/bonfire
+/obj/structure/table/cooking/bonfire
 	name = "bonfire"
 	desc = "Cook things with this."
 	desc_extended = "You can cook or heat up items by dropping it on top of the bonfire."

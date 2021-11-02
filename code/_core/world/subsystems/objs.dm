@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(obj)
 /subsystem/obj/on_life()
 
 	for(var/k in queued_smooth)
-		var/obj/structure/smooth/S = k
+		var/obj/structure/S = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		queued_smooth -= S
 		S.update_sprite()
@@ -66,14 +66,14 @@ SUBSYSTEM_DEF(obj)
 
 	return TRUE
 
-/proc/queue_update_smooth_edges(var/obj/structure/smooth/S,var/include_self=TRUE)
+/proc/queue_update_smooth_edges(var/obj/structure/S,var/include_self=TRUE)
 
 	if(include_self)
 		SSobj.queued_smooth |= S
 
 	for(var/direction in DIRECTIONS_ALL)
 		var/turf/T = get_step(S,direction)
-		for(var/obj/structure/smooth/S2 in T.contents)
+		for(var/obj/structure/S2 in T.contents)
 			SSobj.queued_smooth |= S2
 
 	return TRUE

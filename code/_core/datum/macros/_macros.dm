@@ -98,7 +98,21 @@
 		if("quick_self")
 			owner.mob.attack_flags |= CONTROL_MOD_SELF
 		if("quick_holder")
-			owner.mob.attack_flags |= CONTROL_MOD_OWNER
+			if(owner.selected_hand)
+				if(owner.selected_hand == LEFT_HAND)
+					owner.selected_hand = RIGHT_HAND
+				else
+					owner.selected_hand = LEFT_HAND
+				if(is_advanced(owner.mob))
+					var/mob/living/advanced/A = owner.mob
+					A.left_hand.overlays.Cut()
+					A.left_hand.update_overlays()
+					A.right_hand.overlays.Cut()
+					A.right_hand.update_overlays()
+				owner.show_popup_menus = TRUE
+			else
+				owner.mob.attack_flags |= CONTROL_MOD_OWNER
+				owner.show_popup_menus = FALSE
 		if("kick")
 			owner.mob.attack_flags |= CONTROL_MOD_KICK
 		if("zoom")

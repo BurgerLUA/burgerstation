@@ -1,8 +1,8 @@
-/obj/structure/smooth/table
+/obj/structure/table
 	name = "table"
 	desc = "A table for placing objects down or taking them."
 	desc_extended = "To place items on a table, press Q + Left/Right click depending on if the item is in your left or right hand. Climbing over tables is automatic; Walk into a table for long enough to climb over it."
-	icon = 'icons/obj/structure/smooth/table/normal.dmi'
+	icon = 'icons/obj/structure/table/normal.dmi'
 	icon_state = "table"
 
 	corner_category = "table"
@@ -21,7 +21,7 @@
 
 	density = TRUE
 
-/obj/structure/smooth/table/PostInitialize()
+/obj/structure/table/PostInitialize()
 
 	var/turf/T = get_turf(src)
 
@@ -45,7 +45,7 @@
 	return ..()
 
 
-/obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/table/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object) || is_structure(object))
 		INTERACT_CHECK
@@ -65,11 +65,11 @@
 
 
 
-/obj/structure/smooth/table/Cross(atom/movable/O,atom/oldloc)
+/obj/structure/table/Cross(atom/movable/O,atom/oldloc)
 
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
-		var/obj/structure/smooth/table/T = locate() in O.loc.contents
+		var/obj/structure/table/T = locate() in O.loc.contents
 		if(T)
 			return TRUE
 
@@ -83,7 +83,7 @@
 
 	return ..()
 
-/obj/structure/smooth/table/Crossed(atom/movable/O)
+/obj/structure/table/Crossed(atom/movable/O)
 
 	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
@@ -91,7 +91,7 @@
 
 	return ..()
 
-/obj/structure/smooth/table/Uncrossed(atom/movable/O)
+/obj/structure/table/Uncrossed(atom/movable/O)
 
 	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
@@ -99,7 +99,7 @@
 
 	return ..()
 
-obj/structure/smooth/table/rack
+obj/structure/table/rack
 	name = "table"
 	desc = "A rack. Not the middle ages kind."
 	desc_extended = "To place items on a rack, press Q + Left/Right click depending on if the item is in your left or right hand."
@@ -112,64 +112,64 @@ obj/structure/smooth/table/rack
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-obj/structure/smooth/table/rack/grey
+obj/structure/table/rack/grey
 	color = COLOR_GREY
 
-obj/structure/smooth/table/rack/steel
+obj/structure/table/rack/steel
 	color = COLOR_STEEL
 
-obj/structure/smooth/table/fancy
+obj/structure/table/fancy
 	name = "fancy table"
-	icon = 'icons/obj/structure/smooth/table/fancy.dmi'
+	icon = 'icons/obj/structure/table/fancy.dmi'
 	pixel_y = -1
 
 	corner_category = "table_fancy"
 
-obj/structure/smooth/table/glass
+obj/structure/table/glass
 	name = "glass table"
-	icon = 'icons/obj/structure/smooth/table/glass.dmi'
+	icon = 'icons/obj/structure/table/glass.dmi'
 
 	corner_category = "table_glass"
 
-obj/structure/smooth/table/dark
+obj/structure/table/dark
 	color = "#999999"
 
-obj/structure/smooth/table/wood
+obj/structure/table/wood
 	name = "wood table"
 	color = "#A05120"
 
 	corner_category = "table_wood"
 
-obj/structure/smooth/table/wood/poor
+obj/structure/table/wood/poor
 	name = "wood table"
 	color = "#6B4E3A"
 
-obj/structure/smooth/table/wood/magic
+obj/structure/table/wood/magic
 	color = "#B5004E"
 
-obj/structure/smooth/table/reinforced
+obj/structure/table/reinforced
 	name = "reinforced table"
 	desc = "Extra sturdy."
-	icon = 'icons/obj/structure/smooth/table/reinforced.dmi'
+	icon = 'icons/obj/structure/table/reinforced.dmi'
 	icon_state = "table"
 
 	corner_category = "table_reinforced"
 
 
-obj/structure/smooth/table/reinforced/dark
+obj/structure/table/reinforced/dark
 	color = "#999999"
 
-obj/structure/smooth/table/reinforced/dark/pvp
+obj/structure/table/reinforced/dark/pvp
 	name = "table of doom"
 	desc = "<font color='red'><b>WARNING: OTHERS PAST THIS TABLE WILL BE ALLOWED TO KILL YOU AND YOU WILL BE ALLOWED TO KILL THEM.</b></font>"
 	desc_extended = "An absolutely cursed table that disrupts loyalty implant signals, but not IFF, when the user is standing on it. A favorite among those looking for something to prove."
 
-obj/structure/smooth/table/reinforced/yellow
+obj/structure/table/reinforced/yellow
 	color = "#FFFF00"
 
 
 
-obj/structure/smooth/table/brass
+obj/structure/table/brass
 	name = "clockwork table"
 	desc = "Extra sturdy."
 	icon = 'icons/obj/structure/clockwork/table.dmi'
@@ -177,7 +177,7 @@ obj/structure/smooth/table/brass
 
 	corner_category = "table_clockwork"
 
-obj/structure/smooth/table/cult
+obj/structure/table/cult
 
 	name = "cult table"
 	color = "#261E1C"
