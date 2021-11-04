@@ -70,6 +70,9 @@
 	store_new_params(object,location,new_params)
 
 	var/click_flags = get_click_flags(new_params,TRUE)
+	if(examine_mode && (click_flags & CLICK_RIGHT) && (permissions & FLAG_PERMISSION_MODERATOR))
+		debug_variables(object)
+		return TRUE
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= CONTROL_MOD_LEFT
 	if(click_flags & CLICK_RIGHT)

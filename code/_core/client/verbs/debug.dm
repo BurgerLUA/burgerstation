@@ -23,6 +23,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/view_dph,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
+	/client/proc/debug_variables,
+	/client/proc/spawn_atom,
 	/client/verb/test_astar,
 	/client/verb/print_garbage
 )
