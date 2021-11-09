@@ -161,9 +161,12 @@
 
 	enable_chunk_clean = TRUE
 
-	var/enable_blood_stains = TRUE //Set to false to disable. Good for laser weapons.
+	var/enable_blood_stains = FALSE //Set to false to disable. Good for laser weapons.
 	var/blood_stain_intensity = 0 //Scale, from 0 to 5.
 	var/blood_stain_color //Bloodstain color, if any.
+
+	var/enable_damage_overlay = FALSE
+	var/enable_torn_overlay = FALSE
 
 /obj/item/Destroy()
 
@@ -203,18 +206,6 @@
 
 	return TRUE
 
-/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
-	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
-
-/obj/item/proc/adjust_quality(var/quality_to_add=0)
-
-	quality = FLOOR(quality + quality_to_add,0.01)
-
-	if(quality <= 0)
-		visible_message(span("danger","\The [src.name] breaks!"))
-
-	return TRUE
-
 /obj/item/Crossed(atom/movable/O)
 	return TRUE
 
@@ -225,6 +216,9 @@
 	. = ..()
 	if(length(polymorphs) || color != initial(color))
 		update_sprite()
+
+/obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
+	return CEILING(clamp( (100 - quality) / (100/5),0,5 ),1)
 
 /obj/item/initialize_blends(var/desired_icon_state)
 
@@ -246,16 +240,41 @@
 				desired_layer = worn_layer
 			)
 
-	add_blend(
-		"bloodstain",
-		desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
-		desired_icon_state = "[blood_stain_intensity]",
-		desired_color = blood_stain_color,
-		desired_blend = ICON_ADD,
-		desired_type = ICON_BLEND_OVERLAY | ICON_BLEND_MASK,
-		desired_should_save = FALSE,
-		desired_layer = worn_layer+0.01
-	)
+	if(enable_blood_stains)
+		add_blend(
+			"bloodstain",
+			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
+			desired_icon_state = "[blood_stain_intensity]",
+			desired_color = blood_stain_color,
+			desired_blend = ICON_ADD,
+			desired_type = ICON_BLEND_MASK,
+			desired_should_save = FALSE,
+			desired_layer = worn_layer+0.01
+		)
+
+	if(enable_damage_overlay)
+		var/desired_damage_num = get_damage_icon_number()
+		add_blend(
+			"damage_overlay_noise",
+			desired_icon = 'icons/mob/living/advanced/overlays/damage_clothing.dmi',
+			desired_icon_state = "[desired_damage_num]",
+			desired_blend = ICON_MULTIPLY,
+			desired_type = ICON_BLEND_MASK,
+			desired_should_save = FALSE,
+			desired_layer = worn_layer+0.02
+		)
+
+	if(enable_torn_overlay)
+		var/desired_damage_num = get_damage_icon_number()
+		add_blend(
+			"damage_overlay",
+			desired_icon = 'icons/mob/living/advanced/overlays/damage_overlay.dmi',
+			desired_icon_state = "[desired_damage_num]",
+			desired_blend = ICON_OVERLAY,
+			desired_type = ICON_BLEND_CUT,
+			desired_should_save = FALSE,
+			desired_layer = worn_layer+0.03
+		)
 
 	. = ..()
 
@@ -770,3 +789,32 @@
 		I.blend_mode = BLEND_INSET_OVERLAY
 		I.color = blood_stain_color
 		add_overlay(I)
+
+
+/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
+	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
+
+/obj/item/proc/adjust_quality(var/quality_to_add=0)
+
+	var/original_quality = quality
+	var/original_damage_num = get_damage_icon_number()
+
+	quality = FLOOR(quality + quality_to_add,0.01)
+
+	if(original_quality > 0 && quality <= 0)
+		visible_message(span("danger","\The [src.name] breaks!"))
+
+	if(enable_torn_overlay || enable_damage_overlay)
+		var/desired_damage_num = get_damage_icon_number()
+		if(original_damage_num != desired_damage_num)
+			add_blend("damage_overlay_noise", desired_icon_state = "[desired_damage_num]")
+			add_blend("damage_overlay", desired_icon_state = "[desired_damage_num]")
+			update_sprite()
+			if(is_inventory(loc))
+				var/obj/hud/inventory/I = loc
+				if(I.worn && is_advanced(I.owner))
+					var/mob/living/advanced/A = I.owner
+					A.remove_overlay("\ref[src]")
+					I.update_worn_icon(src)
+
+	return TRUE

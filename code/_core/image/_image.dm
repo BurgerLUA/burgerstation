@@ -42,7 +42,10 @@
 
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
-			if(IB.special_type & ICON_BLEND_MASK)
+			if(IB.special_type & ICON_BLEND_CUT)
+				var/icon/OI = new/icon(IB.icon,IB.icon_state)
+				filters += filter(type="alpha", icon=OI)
+			else if(IB.special_type & ICON_BLEND_MASK)
 				var/image/OI = new/image(IB.icon,IB.icon_state)
 				OI.color = IB.color
 				OI.layer = IB.layer

@@ -147,7 +147,8 @@
 	if(is_sneaking)
 		. *= max(2 - stealth_mod*0.5,1)
 
-	. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
+	if(ckey_last)
+		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
 	if(!has_status_effect(ADRENALINE))
 		. *= 1.1

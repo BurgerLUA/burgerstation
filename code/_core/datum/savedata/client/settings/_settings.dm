@@ -11,7 +11,8 @@
 		"enable_zoom_view_lock" = 0,
 		"enable_depth" = 1,
 		"enable_smooth_shadows" = 1,
-		"enable_currency_bloom" = 1
+		"enable_currency_bloom" = 1,
+		"enable_old_right_click" = 1
 	)
 
 /savedata/client/settings/get_file(var/file_id)

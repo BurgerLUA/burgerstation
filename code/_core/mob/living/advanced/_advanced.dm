@@ -43,7 +43,7 @@
 
 	has_footprints = TRUE
 
-	var/move_delay_multiplier = 1
+	var/move_delay_multiplier = 1 //Read only.
 
 	var/has_hard_crit = FALSE
 

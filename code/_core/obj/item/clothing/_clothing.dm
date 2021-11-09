@@ -67,6 +67,9 @@
 
 	var/list/ench/clothing_enchantments = list()
 
+	enable_blood_stains = TRUE
+	enable_damage_overlay = TRUE
+
 /obj/item/clothing/Destroy()
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()

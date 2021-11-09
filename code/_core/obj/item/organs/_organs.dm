@@ -71,6 +71,8 @@
 
 	mouse_opacity = 0 //For now
 
+	enable_blood_stains = TRUE
+
 /obj/item/organ/New(var/desired_loc)
 	. = ..()
 	attached_organs = list()

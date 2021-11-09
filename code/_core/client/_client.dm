@@ -13,7 +13,7 @@ var/global/list/all_clients = list() //Assoc list
 	view = VIEW_RANGE
 	perspective = EYE_PERSPECTIVE
 
-	var/selected_hand = LEFT_HAND //Set to a value of LEFT_HAND or RIGHT_HAND to enable.
+	var/selected_hand = RIGHT_HAND //Set to a value of LEFT_HAND or RIGHT_HAND to enable.
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
@@ -228,6 +228,9 @@ var/global/list/all_clients = list() //Assoc list
 				V.show(src)
 		if(SSmenu && SSmenu.initialized)
 			SSmenu.preload_assets(src)
+
+	if(settings && settings.loaded_data["enable_old_right_click"])
+		selected_hand = null
 
 	if(selected_hand)
 		show_popup_menus = TRUE
