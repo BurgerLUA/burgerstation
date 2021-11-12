@@ -260,7 +260,18 @@
 	return FALSE
 
 /turf/should_smooth_with(var/turf/T)
-	return (T.corner_category == corner_category) && (T.plane == plane)
+
+	if(T.plane == plane && T.corner_category == corner_category)
+		return T
+
+	for(var/obj/structure/O in T.contents)
+		if(O.corner_category != corner_category)
+			continue
+		if(O.plane != plane)
+			continue
+		return O
+
+	return null
 
 /turf/proc/is_occupied(var/plane_min=-INFINITY,var/plane_max=INFINITY,var/check_under_tile=FALSE)
 

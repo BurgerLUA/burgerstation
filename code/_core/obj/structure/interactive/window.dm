@@ -39,16 +39,19 @@
 	if(anchored)
 		for(var/d in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(loc,d)
-			var/found = istype(T,/turf/simulated/wall/metal)
-			if(!found)
-				var/obj/structure/interactive/door/airlock/A = locate() in T.contents
-				if(A) found = TRUE
-			if(found)
+			if(!T)
+				continue
+			var/atom/A = should_smooth_with(T)
+			if(A && !istype(A,/obj/structure/window/) && !istype(A,/obj/structure/table))
 				var/image/I = new/image(initial(icon),"wall_blend_[d]")
-				I.color = T.color
+				if(T == A)
+					I.color = T.color
+				else
+					I.color = COLOR_STEEL
 				I.dir = d
 				I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_overlay(I)
+				src.name = A.name
 
 
 /obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)

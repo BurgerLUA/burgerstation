@@ -18,11 +18,11 @@ obj/structure/lattice/should_smooth_with(var/turf/T)
 	if(.)
 		return
 
-	if(istype(T,/turf/simulated/wall/))
-		return TRUE
+	if(istype(T,/turf/simulated/wall))
+		return T
 
 	var/turf/current_turf = get_turf(src)
 	if(current_turf.is_space() && !T.is_space())
-		return TRUE
+		return T
 
-	return FALSE
+	return null

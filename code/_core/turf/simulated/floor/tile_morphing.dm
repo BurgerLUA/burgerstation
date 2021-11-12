@@ -5,7 +5,11 @@
 	corner_icons = TRUE
 
 /turf/simulated/floor/tile/morphing/should_smooth_with(var/turf/T)
-	return istype(T,/turf/simulated/floor/tile/) && !istype(T,/turf/simulated/floor/tile/morphing)
+
+	if(istype(T,/turf/simulated/floor/tile/) && !istype(T,/turf/simulated/floor/tile/morphing))
+		return T
+
+	return null
 
 /turf/simulated/floor/tile/morphing/Initialize()
 	original_color = color ? color : "#FFFFFF"
@@ -28,8 +32,9 @@
 			calc_list[dir_to_text] = FALSE
 			continue
 
-		if(should_smooth_with(T))
-			calc_list[dir_to_text] = T.color ? T.color : "#FFFFFF"
+		var/atom/A = should_smooth_with(T)
+		if(A)
+			calc_list[dir_to_text] = A.color ? A.color : "#FFFFFF"
 			continue
 
 	var/ne = 0

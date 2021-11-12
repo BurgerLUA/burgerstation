@@ -17,13 +17,6 @@
 	. = ..()
 	map_color = color
 
-/turf/simulated/wall/metal/should_smooth_with(var/turf/T)
-
-	var/obj/structure/window/W = locate() in T.contents
-	if(W) return TRUE
-
-	. = ..()
-
 /turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)
