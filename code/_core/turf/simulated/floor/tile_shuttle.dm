@@ -1,7 +1,8 @@
 /turf/simulated/floor/tile/shuttle
 	name = "shuttle floor"
-	icon = 'icons/turf/floor/shuttle.dmi'
-	icon_state = "white"
+	icon = 'icons/turf/floor/spaceship.dmi'
+	icon_state = "tile"
+	color = COLOR_WHITE
 	plane = PLANE_SHUTTLE
 
 /turf/simulated/floor/tile/shuttle/red
@@ -19,7 +20,6 @@
 
 /turf/simulated/floor/tile/shuttle/black
 	color = COLOR_IRON
-
 
 /turf/simulated/floor/tile/shuttle/cyan
 	color = COLOR_CYAN

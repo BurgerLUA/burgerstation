@@ -41,12 +41,18 @@
 
 	return D
 
+/obj/marker/spawning/window/
+	color = "#6E9CAD"
+
 /obj/marker/spawning/window/do_spawn(var/turf/T)
 	var/obj/structure/table/window/G = new(T)
 	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
+
+/obj/marker/spawning/window/tinted
+	color = "#353535"
 
 /obj/marker/spawning/window/tinted/do_spawn(var/turf/T)
 	var/obj/structure/table/window/G = new(T)
@@ -70,6 +76,7 @@
 
 /obj/marker/spawning/window/reinforced/
 	icon_state = "window_grille_reinforced"
+	color = "#345A68"
 
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
 	var/obj/structure/table/window/G = new(T)
@@ -80,6 +87,7 @@
 
 /obj/marker/spawning/window/extra/
 	icon_state = "window_grille_extra"
+	color = "#E423C9"
 
 /obj/marker/spawning/window/extra/do_spawn(var/turf/T)
 	var/obj/structure/table/window/G = new(T)

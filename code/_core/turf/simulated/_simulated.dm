@@ -10,8 +10,6 @@ var/global/list/blood_turfs = list()
 
 	dynamic_lighting = TRUE
 
-	var/fade = FALSE
-
 	var/tile = FALSE //Set to true if this is a tile.
 
 	var/turf/destruction_turf
@@ -20,6 +18,8 @@ var/global/list/blood_turfs = list()
 
 	var/reinforced_material_id
 	var/reinforced_color
+	var/reinforced_alpha = 255
+	var/reinforced_blend = BLEND_DEFAULT
 
 	var/exposed = TRUE //Are pipes and other hidden objects visible?
 
@@ -243,10 +243,6 @@ var/global/list/blood_turfs = list()
 		var/icon/SE = new /icon(icon,"4-[se]")
 		I.Blend(SE,ICON_OVERLAY)
 
-		if(fade)
-			var/icon/A = new /icon(icon,"fade")
-			I.Blend(A,ICON_MULTIPLY)
-
 		turf_icon_cache[full_icon_string] = I
 
 	icon = I
@@ -270,6 +266,10 @@ var/global/list/blood_turfs = list()
 
 	if(reinforced_material_id)
 		var/image/I = new/image(initial(icon),"ref")
+		I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+		I.color = reinforced_color
+		I.alpha = reinforced_alpha
+		I.blend_mode = reinforced_blend
 		add_overlay(I)
 
 	if(wet_level)

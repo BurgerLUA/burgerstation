@@ -10,7 +10,7 @@
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_WINDOW
 
-	corner_category = "metal"
+	corner_category = "wall"
 	corner_icons = TRUE
 
 	layer = LAYER_OBJ_WINDOW
@@ -34,25 +34,20 @@
 		var/damage_number = 3 - min(3,FLOOR((health.health_current/health.health_max)*3, 1))
 		if(damage_number > 0)
 			var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
+			I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
 			add_overlay(I)
 
 	if(anchored)
 		for(var/d in DIRECTIONS_CARDINAL)
-			var/turf/T = get_step(loc,d)
-			if(!T)
+			var/turf/simulated/wall/T = get_step(loc,d)
+			if(!istype(T) || !T.window_blend)
 				continue
-			var/atom/A = should_smooth_with(T)
-			if(A && !istype(A,/obj/structure/window/) && !istype(A,/obj/structure/table))
-				var/image/I = new/image(initial(icon),"wall_blend_[d]")
-				if(T == A)
-					I.color = T.color
-				else
-					I.color = COLOR_STEEL
-				I.dir = d
-				I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
-				add_overlay(I)
-				src.name = A.name
-
+			var/initial_icon = initial(T.icon)
+			var/image/I = new/image(initial_icon,"window_blend_[d]")
+			I.color = T.color
+			I.dir = d
+			I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
+			add_overlay(I)
 
 /obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()

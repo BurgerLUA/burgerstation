@@ -6,7 +6,7 @@
 	layer = LAYER_WALL
 	plane = PLANE_WALL
 
-	corner_category = "metal"
+	corner_category = "wall"
 
 	bullet_block_chance = 25
 

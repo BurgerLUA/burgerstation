@@ -39,8 +39,6 @@
 
 	health_base = 500
 
-	corner_category = "metal"
-
 /obj/structure/interactive/door/airlock/locked
 	locked = TRUE
 

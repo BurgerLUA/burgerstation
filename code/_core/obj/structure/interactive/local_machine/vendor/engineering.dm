@@ -28,7 +28,6 @@
 		/obj/item/disk/rcd/glass_window,
 		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
-		/obj/item/disk/rcd/metal_wall/bunker,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
 		/obj/item/disk/rcd/oresmelter,
