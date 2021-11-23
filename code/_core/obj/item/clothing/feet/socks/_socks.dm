@@ -9,7 +9,6 @@
 	item_slot = SLOT_FOOT
 	item_slot_mod = SLOT_MOD_RIGHT | SLOT_MOD_LEFT
 
-
 	ignore_other_slots = TRUE
 
 	slot_icons = TRUE

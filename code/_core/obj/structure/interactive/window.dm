@@ -100,27 +100,6 @@
 	name = "cult window"
 	color = "#7F0000"
 
-/obj/structure/window/shuttle
-	name = "shuttle window"
-	icon = 'icons/obj/structure/window/shuttle.dmi'
-	icon_state = "window"
-	corner_category = "shuttle"
-	color = "#FFFFFF"
-	plane = PLANE_SHUTTLE
-	alpha = 255
-
-/obj/structure/window/shuttle/middle
-	icon_state = "single"
-	corner_icons = FALSE
-
-/obj/structure/window/shuttle/end_01
-	icon_state = "end_01"
-	corner_icons = FALSE
-
-/obj/structure/window/shuttle/end_02
-	icon_state = "end_02"
-	corner_icons = FALSE
-
 /obj/structure/window/directional
 	name = "window"
 	icon = 'icons/obj/structure/window/single_new.dmi'

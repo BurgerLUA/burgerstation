@@ -12,17 +12,15 @@
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(L.loc)
 
+	//Frustration
 	if(old_turf && new_turf)
 		if(old_turf == new_turf)
 			frustration_move++
 			if(length(current_path))
 				frustration_path++
-			if(frustration_move >= frustration_move_threshold)
-				sidestep_next = 3
-				frustration_move = 0
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
-			frustration_move = 0
+			frustration_move = max(0,frustration_move-1)
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
 	if(!new_turf || !old_turf || new_turf.z != old_turf.z)

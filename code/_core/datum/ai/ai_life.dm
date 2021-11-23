@@ -19,13 +19,13 @@
 	if(owner.has_status_effects(STUN,SLEEP,PARALYZE))
 		return FALSE
 
-	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && is_enemy(owner.grabbing_hand.owner,FALSE))
-		owner.resist()
-		return FALSE
-
 	return TRUE
 
 /ai/proc/on_life(var/tick_rate=1)
+
+	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && is_enemy(owner.grabbing_hand.owner,FALSE))
+		owner.resist()
+		return TRUE
 
 	objective_ticks += tick_rate
 	var/objective_delay = get_objective_delay()
@@ -51,10 +51,18 @@
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(!owner.anchored && owner.move_delay <= 0)
-		handle_movement()
-		if(sidestep_next > 0)
-			owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
-			sidestep_next--
+		if(frustration_move >= frustration_move_threshold*2 && !length(current_path_astar))
+			var/path_num = length(current_path)
+			if(path_num)
+				set_path_astar(current_path[path_num])
+			else if(objective_attack)
+				set_path_astar(objective_attack)
+			else if(objective_move)
+				set_path_astar(objective_move)
+		else
+			var/result = handle_movement()
+			if(result && frustration_move >= frustration_move_threshold)
+				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
 
 	owner.handle_movement(tick_rate)
 

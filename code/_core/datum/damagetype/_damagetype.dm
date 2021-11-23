@@ -603,7 +603,6 @@
 				qdel(W.enchantment)
 				W.enchantment = null
 
-
 	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)
 		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
@@ -673,12 +672,10 @@
 
 	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
 
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		var/matrix/attack_matrix = L.get_base_transform()
-		attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
-		animate(L, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
-		animate(transform = L.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
+	var/matrix/attack_matrix = attacker.get_base_transform()
+	attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
+	animate(attacker, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
+	animate(transform = attacker.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
 
 	. = CEILING(attack_delay,1)
 

@@ -187,3 +187,7 @@ var/global/regex/illegal_name_characters = regex("\[^(A-Z,a-z,\\s,&,',0-9,\\-)\]
 
 	if(has_forbidden)
 		caller?.to_chat(span("warning","Your name contained forbidden characters, and thus was removed of them."))
+
+
+/proc/ref2num(var/ref)
+	return text2num(copytext(ref,2,-1),16)

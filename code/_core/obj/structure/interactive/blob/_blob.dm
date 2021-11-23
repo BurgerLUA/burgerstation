@@ -4,7 +4,11 @@
 	name = "blob piece"
 	icon = 'icons/obj/structure/blob.dmi'
 	var/has_damaged_state = FALSE
+
+	var/obj/structure/interactive/blob/source_blob //The blob that created this. Core or a node.
 	var/obj/structure/interactive/blob/core/linked_core
+	var/list/obj/structure/interactive/blob/adjacent_blobs
+
 	color = "#80CC2A"
 
 	plane = PLANE_OBJ
@@ -27,19 +31,108 @@
 	var/turn_angle = 0
 
 /obj/structure/interactive/blob/Destroy()
+
+	source_blob = null
+
 	if(linked_core)
 		linked_core.linked_walls -= src
 		linked_core.linked_nodes -= src
 		linked_core = null
-	return ..()
 
-/obj/structure/interactive/blob/New(var/desired_loc)
+	for(var/k in adjacent_blobs)
+		var/obj/structure/interactive/blob/B = k
+		B.adjacent_blobs -= src
+		adjacent_blobs -= B
+
+	. = ..()
+
+/obj/structure/interactive/blob/proc/grow_charge(var/obj/structure/interactive/blob/original_blob,var/obj/effect/grow_effect,var/node)
+
+	if(src.qdeleting || !original_blob || !grow_effect || original_blob.qdeleting || grow_effect.qdeleting)
+		if(grow_effect && !grow_effect.qdeleting)
+			qdel(grow_effect)
+		return FALSE
+
+	var/forbidden_dir = get_dir(src,original_blob)
+
+	health.adjust_loss_smart(brute = -20) //Heal by 10.
+	update_sprite()
+	grow_effect.force_move(src.loc)
+
+	var/list/possible_options = list()
+	for(var/k in adjacent_blobs)
+		var/obj/structure/interactive/blob/B = k
+		if(get_dir(src,B) & forbidden_dir) //This makes the blob end up being an x-pattern. It's a little annoying but there isn't anything I can do about it.
+			continue
+		if(B.color != color)
+			continue
+		possible_options |= B
+
+	var/options = length(possible_options)
+
+	if(options >= 2)
+		var/obj/structure/interactive/blob/chosen_blob = pick(possible_options)
+		CALLBACK("blob_grow_\ref[grow_effect]",1,chosen_blob,.proc/grow_charge,original_blob,grow_effect)
+	else
+		animate(grow_effect,alpha=0,time=10)
+		queue_delete(grow_effect,20)
+		for(var/d in DIRECTIONS_CARDINAL)
+			var/turf/T = get_step(src,d)
+			var/atom/victim = T.change_victim(src,src)
+			if(!victim) //Something went wrong.
+				continue
+			if(istype(victim,/obj/structure/interactive/blob/) && victim.color == src.color)
+				continue
+			if(victim != T)
+				spawn src.attack(src,victim,precise=TRUE)
+			else if(T.density_north || T.density_south || T.density_east || T.density_west)
+				spawn src.attack(src,T,precise=TRUE)
+			else
+				var/obj/structure/interactive/blob/node/found_node = locate() in range(5,T)
+
+				var/obj/structure/interactive/blob/B
+				if(found_node)
+					B = new/obj/structure/interactive/blob/wall(T,linked_core)
+				else
+					B = new/obj/structure/interactive/blob/node(T,linked_core)
+				B.color = color
+				INITIALIZE(B)
+				FINALIZE(B)
+
+				var/list/direction_offsets = direction_to_pixel_offset(get_dir(T,src))
+				var/matrix/M = B.get_base_transform()
+				M.Scale(0.1)
+				M.Translate(direction_offsets[1]*TILE_SIZE,direction_offsets[2]*TILE_SIZE)
+				B.transform = M
+				animate(B,transform=B.get_base_transform(),pixel_x=0,pixel_y=0,time=10)
+
+	return TRUE
+
+/obj/structure/interactive/blob/New(var/desired_loc,var/desired_owner)
+	adjacent_blobs = list()
 	. = ..()
 	turn_angle = pick(0,90,180,270)
+	if(desired_owner)
+		linked_core = desired_owner
+		linked_core.linked_walls += src
 
-/obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/blob/Finalize()
 	. = ..()
-	qdel(src)
+
+	for(var/d in DIRECTIONS_CARDINAL)
+		var/turf/T = get_step(src,d)
+		if(!T)
+			continue
+		var/obj/structure/interactive/blob/B = locate() in T.contents
+		if(B)
+			adjacent_blobs |= B
+			B.adjacent_blobs |= src
+
+	health.adjust_loss_smart(brute = health.health_current - 10)
+	update_sprite()
+
+/obj/structure/interactive/blob/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+	return TRUE
 
 /obj/structure/interactive/blob/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
@@ -47,8 +140,6 @@
 		return FALSE
 
 	if(is_living(victim))
-		if(istype(victim,/mob/living/simple/blobbernaught))
-			return FALSE
 		var/mob/living/L = victim
 		if(L.dead)
 			return FALSE
@@ -57,69 +148,31 @@
 
 	return ..()
 
-/obj/structure/interactive/blob/proc/check_mobs()
-
-	. = FALSE
-
-	for(var/mob/living/L in range(1,src))
-		if(!src.can_attack(src,L,src,null,damage_type))
-			continue
-		if(!L.can_be_attacked(src,src,null,damage_type))
-			continue
-		src.attack(src,L,precise = TRUE)
-		if(L.loc != src.loc && src.loc.Enter(L,L.loc) && get_dist(linked_core,L) >= get_dist(linked_core,src))
-			L.force_move(src.loc)
-		. = TRUE
-
-	if(. && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
-		CALLBACK("check_mobs_\ref[src]",30,src,.proc/check_mobs)
-
-/obj/structure/interactive/blob/Crossed(atom/movable/O)
-	if(is_living(O))
-		check_mobs()
-	return ..()
-
 /obj/structure/interactive/blob/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-	. = ..()
 
-	if(. && linked_core && damage_amount > 0)
-		linked_core.damaged_walls += src
+	. = ..()
 
 	if(health && health.health_current <= 0)
 		qdel(src)
 	else
 		update_sprite()
 
-	if(damage_amount > 0 && get_dist(attacker,src) <= 1 && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
-		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
+/obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	qdel(src)
 
 
 /obj/structure/interactive/blob/Cross(atom/movable/O,atom/oldloc)
-	if(istype(O,/mob/living/simple/blobbernaught))
-		return TRUE
+	if(is_living(O))
+		var/mob/living/L = O
+		if(L.loyalty_tag == "Blob")
+			return TRUE
 	return ..()
-
-/obj/structure/interactive/blob/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-	return TRUE
-
-/obj/structure/interactive/blob/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
-	. = ..()
-
-	if(desired_owner)
-		linked_core = desired_owner
-		linked_core.linked_walls += src
 
 /obj/structure/interactive/blob/get_base_transform()
 	. = ..()
 	var/matrix/M = .
 	M.Turn(turn_angle)
-
-/obj/structure/interactive/blob/Finalize()
-	. = ..()
-	update_sprite()
-	transform *= 0.1
-	animate(src,transform=get_base_transform())
-	CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
 
 /obj/structure/interactive/blob/update_icon()
 
@@ -139,7 +192,7 @@
 /obj/structure/interactive/blob/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,"[icon_state]")
-	I.appearance_flags = KEEP_TOGETHER | RESET_COLOR
+	I.appearance_flags = RESET_COLOR
 	I.plane = PLANE_LIGHTING
 	I.blend_mode = BLEND_MULTIPLY
 	add_overlay(I)

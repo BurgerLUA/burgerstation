@@ -163,7 +163,7 @@
 
 /turf/change_victim(var/atom/attacker,var/atom/object)
 
-	if(density) //Not actually a floor but something more.
+	if(density_north || density_south || density_east || density_west)
 		return src
 
 	for(var/k in contents)

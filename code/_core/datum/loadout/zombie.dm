@@ -313,3 +313,80 @@
 
 	extra_weapon_chance = 80
 	extra_clothing_chance = 75
+
+var/global/zombie_seed = 0
+
+/loadout/zombie/civilian
+	var/list/possible_shirt = list()
+	var/list/possible_pants = list()
+	var/list/possible_socks = list()
+	var/seed = 0
+
+/loadout/zombie/civilian/male
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left
+	)
+	possible_shirt = list(
+		/obj/item/clothing/shirt/normal = 8,
+		/obj/item/clothing/undertop/underwear/shirt = 2
+	)
+	possible_pants = list(
+		/obj/item/clothing/pants/normal = 1
+	)
+	possible_socks = list(
+		/obj/item/clothing/feet/socks/ankle = 7,
+		/obj/item/clothing/feet/socks/knee = 2
+	)
+
+/loadout/zombie/civilian/female
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/panty,
+		/obj/item/clothing/undertop/underwear/bra,
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left
+	)
+	possible_shirt = list(
+		/obj/item/clothing/shirt/normal = 8,
+		/obj/item/clothing/shirt/blouse = 2
+	)
+	possible_pants = list(
+		/obj/item/clothing/pants/normal = 8,
+		/obj/item/clothing/pants/skirt = 2
+	)
+	possible_socks = list(
+		/obj/item/clothing/feet/socks/ankle = 7,
+		/obj/item/clothing/feet/socks/knee = 2,
+		/obj/item/clothing/feet/socks/thigh = 1
+	)
+
+
+/loadout/zombie/civilian/get_spawning_items()
+
+	. = ..()
+
+	if(length(possible_shirt))
+		. += pickweight(possible_shirt)
+
+	if(length(possible_pants))
+		. += pickweight(possible_pants)
+
+	if(length(possible_socks))
+		var/chosen_sock = pickweight(possible_socks)
+		. += chosen_sock
+		. += chosen_sock
+
+/loadout/zombie/civilian/post_add(var/mob/living/advanced/A,var/list/added_items = list())
+	. = ..()
+	zombie_seed = null
+
+/loadout/zombie/civilian/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+	if(!zombie_seed)
+		zombie_seed = rand(1,100000)
+	. = ..()
+	var/p_length = length(I.polymorphs)
+	if(p_length && I.item_slot_layer > 1)
+		rand_seed(zombie_seed + length(I.desc))
+		for(var/k in I.polymorphs)
+			I.polymorphs[k] = random_color()

@@ -21,13 +21,13 @@
 	on = FALSE
 
 /obj/structure/interactive/light_switch/Initialize()
+	. = ..()
 	setup_dir_offsets()
 	dir = SOUTH
-	return ..()
 
 /obj/structure/interactive/light_switch/Finalize()
+	. = ..()
 	update_sprite()
-	return ..()
 
 /obj/structure/interactive/light_switch/update_atom_light()
 
@@ -40,6 +40,8 @@
 
 /obj/structure/interactive/light_switch/update_icon()
 
+	. = ..()
+
 	if(on)
 		flick("anim_on",src)
 		icon_state = "on"
@@ -47,7 +49,7 @@
 		flick("anim_off",src)
 		icon_state = "off"
 
-	return ..()
+
 
 /obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
 	var/area/A = get_area(src)

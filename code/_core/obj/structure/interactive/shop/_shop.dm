@@ -64,7 +64,9 @@
 				log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
 			name = "[stored_item.name] - [stored_item_cost] credits"
 
-
+/obj/structure/interactive/shop/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/structure/interactive/shop/update_overlays()
 
@@ -90,17 +92,18 @@
 	add_overlay(O)
 
 /obj/structure/interactive/shop/update_icon()
+	. = ..()
 	icon = ICON_INVISIBLE
-	return ..()
 
 /obj/structure/interactive/shop/update_sprite()
+
+	. = ..()
 
 	if(locate(/obj/structure/table/) in src.loc.contents)
 		pixel_y = 4
 	else
 		pixel_y = 0
 
-	return ..()
 
 /obj/structure/interactive/shop/get_examine_list(var/mob/examiner)
 

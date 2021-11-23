@@ -174,3 +174,8 @@
 	polymorphs = list(
 		"shirt_tee" = "#626C65"
 	)
+
+/obj/item/clothing/shirt/normal/random/Generate()
+	. = ..()
+	for(var/k in polymorphs)
+		polymorphs[k] = random_color()

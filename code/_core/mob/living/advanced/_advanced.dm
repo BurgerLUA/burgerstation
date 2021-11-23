@@ -53,7 +53,7 @@
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
-	health = /health/mob/living/advanced
+	health = null
 
 	var/list/tracked_hidden_organs
 	var/tracked_hidden_clothing = 0x0
@@ -321,9 +321,12 @@ mob/living/advanced/Login()
 
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
-	var/species/S = SPECIES(species)
-	if(S && S.health)
-		health = S.health
+	if(!health)
+		var/species/S = SPECIES(species)
+		if(S && S.health)
+			health = S.health
+		else
+			health = /health/mob/living/advanced
 
 	. = ..()
 

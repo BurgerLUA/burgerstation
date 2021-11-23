@@ -2,7 +2,7 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-	species = "zombie"
+	species = "human"
 
 	var/loadout_to_use = /loadout/zombie
 	health = /health/mob/living/advanced/zombie/
@@ -24,20 +24,43 @@
 
 	movement_delay = 1
 
+	sex = NEUTER
+	gender = NEUTER
+
 /mob/living/advanced/npc/zombie/Initialize()
+
 	. = ..()
 
+	setup_appearance()
+	update_all_blends()
+	equip_loadout(loadout_to_use)
+
+	var/health/mob/living/advanced/zombie/ZH = health
+	if(!istype(ZH))
+		return .
+
 	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
+	var/grand_total_loss = 0
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
+		if(O.id == BODY_TORSO)
+			O.damage_coefficient *= 0.5
+		else if(O.id == BODY_HEAD)
+			O.damage_coefficient *= 2
+		else
+			O.damage_coefficient *= 0.1
 		var/total_loss = RAND_PRECISE(0.25,0.5) * min(total_loss_limit,O.health.health_max) * (1/max(1,O.damage_coefficient))
 		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
 		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
 		var/tox_loss = total_loss - (burn_loss + brute_loss)
-		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
+		grand_total_loss += O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
+
+	ZH.extra_max_health += grand_total_loss
+	ZH.update_health_stats()
+	ZH.update_health()
 
 /mob/living/advanced/npc/zombie/Finalize()
 	. = ..()
@@ -79,7 +102,6 @@
 	src.add_status_effect(ADRENALINE,100,100,stealthy=TRUE)
 	ZH.update_health()
 
-
 	if(!check_death())
 		revive()
 
@@ -99,29 +121,20 @@
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 	setup_sex()
-	return ..()
+	. = ..()
 
 /mob/living/advanced/npc/zombie/proc/setup_sex()
-	gender = pick(MALE,FEMALE)
-	sex = gender //oh god oh fuck what have i done
+	if(gender == NEUTER)
+		gender = pick(MALE,FEMALE)
+	if(sex == NEUTER)
+		sex = gender //oh god oh fuck what have i done
 	return TRUE
 
 /mob/living/advanced/npc/zombie/proc/setup_appearance()
-	var/list/valid_male_hair = list("none","hair_a","hair_c","hair_d","hair_e","hair_f")
-	var/list/valid_female_hair = list("hair_b","hair_ponytail2","hair_ponytail5")
 	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	change_organ_visual("hair_head", desired_icon_state = sex == MALE ? pick(valid_male_hair) : pick(valid_female_hair), desired_color = pick("#111111","#404040","#54341F","#D8BB6A"))
+	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#000000")
 	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
 	return TRUE
-
-
-/mob/living/advanced/npc/zombie/Initialize()
-
-	. = ..()
-
-	setup_appearance()
-	update_all_blends()
-	equip_loadout(loadout_to_use)
 
 /mob/living/advanced/npc/zombie/get_emote_sound(var/emote_id)
 
@@ -279,3 +292,14 @@
 		dropped_vial = TRUE
 
 	return ..()
+
+
+/mob/living/advanced/npc/zombie/civilian
+	loadout_to_use = /loadout/zombie/civilian
+
+/mob/living/advanced/npc/zombie/civilian/setup_sex()
+	. = ..()
+	if(gender == MALE)
+		loadout_to_use = /loadout/zombie/civilian/male
+	else if(gender == FEMALE)
+		loadout_to_use = /loadout/zombie/civilian/female

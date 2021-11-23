@@ -120,6 +120,7 @@
 
 	var/boss = FALSE
 
+
 /ai/Destroy()
 
 	var/turf/T = get_turf(owner)
@@ -217,13 +218,9 @@
 	return TRUE
 
 /ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
-
 	owner = desired_owner
-
-	objective_ticks = rand(0,objective_delay)
-
-	start_turf = get_turf(owner)
-
+	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
+	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
 	. = ..()
 
 /ai/Finalize()
@@ -233,8 +230,7 @@
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	set_active(active,TRUE)
 
-
 /ai/proc/post_death(var/mob/living/L,args)
-	set_active(FALSE)
+	set_active(FALSE,TRUE)
 	return TRUE
 

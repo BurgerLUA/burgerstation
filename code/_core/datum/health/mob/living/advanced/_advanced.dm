@@ -134,10 +134,12 @@
 		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
-		damage[BRUTE] += O.health.damage[BRUTE]
-		damage[BURN] += O.health.damage[BURN]
-		damage[RAD] += O.health.damage[RAD]
-		damage[PAIN] += O.health.damage[PAIN]
+		if(O.damage_coefficient <= 0)
+			continue
+		damage[BRUTE] += O.health.damage[BRUTE] * O.damage_coefficient
+		damage[BURN] += O.health.damage[BURN] * O.damage_coefficient
+		damage[RAD] += O.health.damage[RAD] * O.damage_coefficient
+		damage[PAIN] += O.health.damage[PAIN] * O.damage_coefficient
 
 	. = ..()
 
