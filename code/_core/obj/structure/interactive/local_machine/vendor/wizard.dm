@@ -6,7 +6,7 @@
 
 	stored_types = list(
 		/obj/item/clothing/overwear/armor/knight/battlemage,
-		/obj/item/clothing/head/helmet/knight/battlemage,
+		/obj/item/clothing/head/helmet/full/knight/battlemage,
 		/obj/item/supply_crate/magic,
 		/obj/item/soulgem/uncommon,
 		/obj/item/container/beaker/bottle/health_potion,

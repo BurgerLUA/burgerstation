@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/hardsuit/exosuit
+/obj/item/clothing/head/helmet/full/hardsuit/exosuit
 	name = "russian exosuit helmet"
 	icon = 'icons/obj/item/clothing/hats/exosuit_helmet.dmi'
 	desc = "Duty more like dooty."
@@ -21,7 +21,7 @@
 
 	value = 400
 
-/obj/item/clothing/head/helmet/hardsuit/skat
+/obj/item/clothing/head/helmet/full/hardsuit/skat
 	name = "SKAT-9 full-head mask/helmet assembly"
 	icon = 'icons/obj/item/clothing/hats/helmet_skat.dmi'
 	desc = "Milstalkers are just military but hetero."
@@ -44,7 +44,7 @@
 
 	value = 550
 
-/obj/item/clothing/head/helmet/hardsuit/skat/antag
+/obj/item/clothing/head/helmet/full/hardsuit/skat/antag
 	name = "SKAT-10 helmet"
 	icon = 'icons/obj/item/clothing/hats/helmet_skat_antag.dmi'
 	desc = "I am out of S.T.A.L.K.E.R. references, really."

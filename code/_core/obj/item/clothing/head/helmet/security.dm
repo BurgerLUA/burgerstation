@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/security/old
+/obj/item/clothing/head/helmet/old
 	name = "old riot helmet"
 	icon = 'icons/obj/item/clothing/hats/security.dmi'
 	desc = "Protects against cream pies."
@@ -18,7 +18,7 @@
 	value = 20
 
 
-/obj/item/clothing/head/helmet/security/tactical
+/obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
 	icon = 'icons/obj/item/clothing/hats/tacticool.dmi'
 	desc = "RUSH B"
@@ -37,7 +37,7 @@
 
 	value = 60
 
-/obj/item/clothing/head/helmet/security/tactical/advanced
+/obj/item/clothing/head/helmet/tactical/advanced
 	name = "advanced tactical helmet"
 	icon = 'icons/obj/item/clothing/hats/tacticool2.dmi'
 	desc = "RUSH B"

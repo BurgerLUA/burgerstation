@@ -22,7 +22,7 @@
 	size = SIZE_7
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie)
 
 	value = 400
 
@@ -52,7 +52,7 @@
 	size = SIZE_6
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie/advanced)
 
 	value = 600
 
@@ -77,7 +77,7 @@
 		PAIN = 60
 	)
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie/elite)
 
 	size = SIZE_6
 	weight = 10 //Now the suit actually speeds you up.

@@ -16,8 +16,6 @@
 
 	size = SIZE_7
 
-
-
 /obj/item/clothing/overwear/hardsuit/t51b
 	name = "T-51b Power Armor"
 	desc = "Broderhood a steal"

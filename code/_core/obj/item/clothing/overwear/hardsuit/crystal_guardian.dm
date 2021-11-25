@@ -21,7 +21,7 @@
 	size = SIZE_7
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/crystal_guardian)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/crystal_guardian)
 
 	value = 2000
 

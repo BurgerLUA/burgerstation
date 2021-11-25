@@ -23,7 +23,7 @@
 	size = SIZE_7
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/exosuit)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/exosuit)
 
 	value = 750 //Extraordinary cost. :P
 
@@ -54,7 +54,7 @@
 	size = SIZE_7
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/skat)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/skat)
 
 	value = 1050
 
@@ -88,7 +88,7 @@
 	size = SIZE_7
 
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/skat/antag)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/skat/antag)
 
 	value = 2050
 

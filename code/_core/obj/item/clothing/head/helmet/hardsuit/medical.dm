@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/hardsuit/medical
+/obj/item/clothing/head/helmet/full/hardsuit/medical
 	name = "medical voidsuit"
 	desc = "Out the fucking way!"
 	desc_extended = "A hardsuit worn by medics while retrieving corpses to avoid becoming a corpse themselves."

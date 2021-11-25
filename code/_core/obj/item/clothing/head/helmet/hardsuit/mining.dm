@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/hardsuit/mining
+/obj/item/clothing/head/helmet/full/hardsuit/mining
 	name = "mining hardsuit helmet"
 	desc = "MIIIIINIIIIING DIAAAAMOOOOOONDS!"
 	desc_extended = "A hardsuit worn by miners to protect against a variety of hazards, such as rock falls, black lungs, and cave monsters."

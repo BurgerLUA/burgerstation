@@ -18,7 +18,7 @@
 		RAD = 20
 	)
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/hammer_of_war)
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/hammer_of_war)
 
 	size = SIZE_8
 

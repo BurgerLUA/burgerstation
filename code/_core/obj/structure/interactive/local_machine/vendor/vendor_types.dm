@@ -250,10 +250,10 @@
 
 	stored_types = list(
 
-		/obj/item/clothing/head/helmet/knight/templar,
+		/obj/item/clothing/head/helmet/full/knight/templar,
 		/obj/item/clothing/overwear/armor/knight/templar,
 
-		/obj/item/clothing/head/helmet/knight/yellow,
+		/obj/item/clothing/head/helmet/full/knight/yellow,
 		/obj/item/clothing/overwear/armor/knight/yellow,
 
 		/obj/item/clothing/mask/daddy,

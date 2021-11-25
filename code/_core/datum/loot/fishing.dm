@@ -45,7 +45,7 @@
 		/obj/item/clothing/feet/shoes/workboot = CHANCE_JUNK,
 		/obj/item/clothing/feet/shoes/workboot/left = CHANCE_JUNK,
 		/obj/item/clothing/head/hat/beaver = CHANCE_JUNK,
-		/obj/item/clothing/head/helmet/security/old = CHANCE_JUNK,
+		/obj/item/clothing/head/helmet/old = CHANCE_JUNK,
 		/obj/item/clothing/head/light/hardhat = CHANCE_JUNK,
 		/obj/item/container/food/fishing/catfish = CHANCE_FAIR,
 		/obj/item/container/food/fishing/generic = CHANCE_GOOD,

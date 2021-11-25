@@ -53,7 +53,7 @@
 				current_node = 1
 			var/obj/structure/interactive/blob/node/N = linked_nodes[current_node]
 			var/obj/effect/blob_grow/grow_effect = new(N.loc)
-			grow_charge(N,grow_effect)
+			N.grow_charge(src,grow_effect)
 			current_node++
 		next_grow = world.time + CEILING(SECONDS_TO_DECISECONDS(10)/max(1,node_count),1)
 

@@ -24,7 +24,7 @@
 	size = SIZE_7
 
 	additional_clothing = list(
-		/obj/item/clothing/head/helmet/hardsuit/engineering,
+		/obj/item/clothing/head/helmet/full/hardsuit/engineering,
 		/obj/item/clothing/hands/gloves/engineering,
 		/obj/item/clothing/hands/gloves/engineering/left,
 		/obj/item/clothing/feet/shoes/engineering,

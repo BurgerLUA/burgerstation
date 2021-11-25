@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/hardsuit/hammer_of_war
+/obj/item/clothing/head/helmet/full/hardsuit/hammer_of_war
 	name = "\improper Champion's Hardsuit Helmet"
 	desc = "Book says no."
 	desc_extended = ""

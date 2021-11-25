@@ -9,3 +9,7 @@
 	size = SIZE_3
 
 	item_slot_layer = 2
+
+	hidden_organs = list(
+		BODY_GROIN = TRUE
+	)

@@ -56,7 +56,6 @@
 	health = null
 
 	var/list/tracked_hidden_organs
-	var/tracked_hidden_clothing = 0x0
 
 	value = 500
 
@@ -160,24 +159,25 @@
 
 	tracked_hidden_organs = list()
 
+	var/list/blocking_clothing = list()
+
 	for(var/obj/item/clothing/C in worn_objects)
-		if(C.hidden_clothing)
-			tracked_hidden_clothing |= C.hidden_clothing
 		if(C.hidden_organs)
 			tracked_hidden_organs |= C.hidden_organs
-
-	var/do_organs = length(tracked_hidden_organs)
-	var/do_clothing = tracked_hidden_clothing != 0x0
+			blocking_clothing[C] = TRUE
 
 	for(var/k in overlays_assoc)
 		var/image/overlay/O = overlays_assoc[k]
 		var/obj/item/I = O.attached_object
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
-			show_overlay(k, (do_organs && tracked_hidden_organs[OR.id]) ? FALSE : TRUE)
+			show_overlay(k, !tracked_hidden_organs[OR.id] ? TRUE : FALSE)
 		else if(is_clothing(I))
 			var/obj/item/clothing/C = I
-			show_overlay(k, (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
+			if(!C.loc || !is_organ(C.loc.loc))
+				continue
+			var/obj/item/organ/OR = I.loc.loc
+			show_overlay(k, (blocking_clothing[C] || !tracked_hidden_organs[OR.id]) ? TRUE : FALSE)
 
 	return TRUE
 

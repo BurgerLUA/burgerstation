@@ -52,8 +52,7 @@
 	var/list/obj/item/additional_clothing = list()
 	var/list/obj/item/additional_clothing_stored
 
-	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
-	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
+	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped. Includes clothing attached to this.
 
 	drop_sound = 'sound/items/drop/clothing.ogg'
 

@@ -83,7 +83,7 @@
 	)
 
 	possible_extra_clothing = list(
-		/obj/item/clothing/head/helmet/security/old = 10,
+		/obj/item/clothing/head/helmet/old = 10,
 		/obj/item/clothing/head/hat/beret/armored/syndicate = 5,
 		/obj/item/clothing/glasses/sun/security/red = 2
 	)

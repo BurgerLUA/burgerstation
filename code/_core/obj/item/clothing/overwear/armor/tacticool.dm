@@ -23,7 +23,7 @@
 
 	value = 300
 
-/obj/item/clothing/head/helmet/security/slavticool
+/obj/item/clothing/head/helmet/slavticool
 	name = "\improper 'Slav-safe' LLC combat helmet"
 	icon = 'icons/obj/item/clothing/hats/squad_helmet.dmi'
 	desc = "Protecting against the capitalism since 2238."
@@ -44,7 +44,7 @@
 
 	value = 150
 
-/obj/item/clothing/head/helmet/security/slavticool/thermal
+/obj/item/clothing/head/helmet/slavticool/thermal
 	name = "\improper 'Slav-safe' LLC thermal combat helmet"
 
 

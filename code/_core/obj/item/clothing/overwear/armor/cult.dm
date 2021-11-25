@@ -83,5 +83,5 @@
 	value = 500
 
 	additional_clothing = list(
-		/obj/item/clothing/head/helmet/hardsuit/cult
+		/obj/item/clothing/head/helmet/full/hardsuit/cult
 	)
