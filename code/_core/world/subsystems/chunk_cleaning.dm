@@ -78,6 +78,8 @@ SUBSYSTEM_DEF(chunkclean)
 	for(var/k in all_players)
 		sleep(-1)
 		var/mob/living/advanced/player/P = k
+		if(!P.ckey_last)
+			continue
 		var/turf/T = get_turf(P)
 		if(!T)
 			continue

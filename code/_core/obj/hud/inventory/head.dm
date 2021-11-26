@@ -7,7 +7,7 @@
 	item_slot = SLOT_HEAD
 
 
-	max_slots = 1
+	max_slots = 2 //Extra slot for blob head.
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB

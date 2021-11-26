@@ -128,7 +128,10 @@ var/global/world_state = STATE_STARTING
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		if(P.qdeleting)
-			log_error("Warning: Tried saving a qdeleting character!")
+			log_error("Warning: Tried saving [P.get_debug_name()], which was qdeleting!")
+			continue
+		if(!P.ckey_last)
+			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey!")
 			continue
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)

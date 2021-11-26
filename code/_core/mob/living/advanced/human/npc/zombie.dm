@@ -64,8 +64,7 @@
 
 /mob/living/advanced/npc/zombie/Finalize()
 	. = ..()
-	add_status_effect(PAINKILLER,100,-1)
-	add_status_effect(ADRENALINE,100,-1)
+	add_status_effect(ZOMBIE,100,-1)
 
 /mob/living/advanced/npc/zombie/get_movement_delay()
 
@@ -75,49 +74,6 @@
 	. *= max(1,2 - T.lightness)
 	if(ai && ai.objective_attack)
 		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
-
-/mob/living/advanced/npc/zombie/post_death()
-	CALLBACK("zombie_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/zombie_revive)
-	return ..()
-
-/mob/living/advanced/npc/zombie/proc/zombie_revive() //Stolen from meatmen, partially.
-
-	if(!health)
-		return FALSE
-
-	var/obj/item/organ/head/H = labeled_organs[BODY_HEAD]
-	if(!H || !H.health)
-		return FALSE
-
-	if(H.health.health_current <= 0)
-		return FALSE
-
-	if(!istype(health,/health/mob/living/advanced/zombie/))
-		return FALSE
-
-	var/health/mob/living/advanced/zombie/ZH = health
-	var/extra_health = -health.health_current*1.25
-	ZH.extra_max_health += extra_health
-	ZH.update_health_stats()
-	src.add_status_effect(ADRENALINE,100,100,stealthy=TRUE)
-	ZH.update_health()
-
-	if(!check_death())
-		revive()
-
-	return TRUE
-
-/mob/living/advanced/npc/zombie/revive()
-
-	. = ..()
-
-	if(.)
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/revive_01.ogg',
-			'sound/voice/zombie/revive_02.ogg',
-			'sound/voice/zombie/revive_03.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 	setup_sex()
@@ -143,77 +99,6 @@
 			return null
 
 	return null
-
-
-/mob/living/advanced/npc/zombie/on_life_slow()
-
-	. = ..()
-
-	if(. && ai && ai.active && next_talk <= world.time && prob(25))
-
-		var/sound_to_play
-
-		if(ai.alert_level == ALERT_LEVEL_NONE)
-			var/list/valid_sounds = list(
-				'sound/voice/zombie/generic_01.ogg',
-				'sound/voice/zombie/generic_02.ogg',
-				'sound/voice/zombie/generic_03.ogg',
-				'sound/voice/zombie/generic_04.ogg'
-			)
-			sound_to_play = pick(valid_sounds)
-		else
-			var/list/valid_sounds = list(
-				'sound/voice/zombie/alert_01.ogg',
-				'sound/voice/zombie/alert_02.ogg',
-				'sound/voice/zombie/alert_03.ogg',
-				'sound/voice/zombie/alert_04.ogg',
-				'sound/voice/zombie/alert_05.ogg'
-			)
-			sound_to_play = pick(valid_sounds)
-
-		if(sound_to_play)
-			play_sound(sound_to_play,get_turf(src),range_max=VIEW_RANGE)
-
-		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
-
-/mob/living/advanced/npc/zombie/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
-
-	. = ..()
-
-	if(. && next_talk <= world.time && prob(50))
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/attack_01.ogg',
-			'sound/voice/zombie/attack_02.ogg',
-			'sound/voice/zombie/attack_03.ogg',
-			'sound/voice/zombie/attack_04.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
-
-/mob/living/advanced/npc/zombie/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
-	. = ..()
-
-	if(!stealthy && !dead && damage_amount > 20 && prob(50))
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/pain_01.ogg',
-			'sound/voice/zombie/pain_02.ogg',
-			'sound/voice/zombie/pain_03.ogg',
-			'sound/voice/zombie/pain_04.ogg',
-			'sound/voice/zombie/pain_05.ogg',
-			'sound/voice/zombie/pain_06.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-
-/mob/living/advanced/npc/zombie/post_death()
-
-	. = ..()
-
-	if(prob(50))
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/death_01.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
 /mob/living/advanced/npc/zombie/winter
 	loadout_to_use = /loadout/zombie/winter

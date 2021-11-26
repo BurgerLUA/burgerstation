@@ -5,3 +5,8 @@
 
 	target_distribution_x = list(12,12,16,20,20)
 	target_distribution_y = list(8,8,8,8,16,16,16,20)
+
+
+/ai/blob_spore
+	target_distribution_x = list(16)
+	target_distribution_y = list(25)

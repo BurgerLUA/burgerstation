@@ -154,7 +154,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		followers.Cut()
 
 	if(client)
-		client.make_ghost(src.loc ? src.loc : FALLBACK_TURF)
+		var/turf/T = get_turf(src)
+		client.make_ghost(T ? T : FALLBACK_TURF)
 
 	dialogue_target = null
 

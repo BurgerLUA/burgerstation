@@ -46,7 +46,7 @@
 	blood_volume = 750
 	blood_type = /reagent/blood/blob
 
-	soul_size = SOUL_SIZE_COMMON
+	soul_size = SOUL_SIZE_UNCOMMON
 
 	level = 22
 

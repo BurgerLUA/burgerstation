@@ -39,7 +39,7 @@
 	if(credit_reward)
 		for(var/k in all_players)
 			var/mob/living/advanced/player/P = k
-			if(P.loyalty_tag != "NanoTrasen")
+			if(!P.client || P.loyalty_tag != "NanoTrasen")
 				continue
 			var/increased_currency = P.adjust_currency(credit_reward)
 			P.to_chat(span("notice","You've been given [increased_currency] credits for completing [name]."))
@@ -49,7 +49,7 @@
 	if(burgerbux_reward)
 		for(var/k in all_players)
 			var/mob/living/advanced/player/P = k
-			if(P.loyalty_tag != "NanoTrasen")
+			if(!P.client || P.loyalty_tag != "NanoTrasen")
 				continue
 			var/increased_currency = P.adjust_burgerbux(burgerbux_reward)
 			P.to_chat(span("notice","You've been given [increased_currency] burgerbux for completing [name]."))

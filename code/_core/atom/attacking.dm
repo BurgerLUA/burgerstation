@@ -12,6 +12,8 @@
 	if(health)
 		health.update_health(attacker,damage_amount)
 
+	HOOK_CALL("on_damage_received")
+
 	return TRUE
 
 /atom/proc/change_victim(var/atom/attacker,var/atom/object)
@@ -157,6 +159,8 @@
 		attacker.attack_next = world.time + swing_result*0.5
 	else
 		attacker.attack_next = world.time + 1
+
+	HOOK_CALL("attack")
 
 	return TRUE
 

@@ -33,6 +33,8 @@
 		var/player_close = FALSE
 		for(var/p in all_players)
 			var/mob/living/advanced/player/P = p
+			if(!P.ckey_last)
+				continue
 			if(get_dist(P,T) <= VIEW_RANGE + ZOOM_RANGE)
 				player_close = TRUE
 				break
