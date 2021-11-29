@@ -6,7 +6,7 @@
 	icon = 'icons/mob/living/simple/blob.dmi'
 	icon_state = "blobpod"
 
-	health_base = 50
+	health_base = 1
 	stamina_base = 50
 	mana_base = 50
 
@@ -51,8 +51,4 @@
 
 /mob/living/simple/blob_spore/post_death()
 	. = ..()
-	var/turf/T = exploded ? get_turf(src) : null
-	qdel(src)
-	if(T)
-		explode(get_turf(src),30,master ? master : src,src,loyalty_tag)
-		exploded = TRUE
+	on_crush()

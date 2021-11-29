@@ -244,7 +244,7 @@
 		add_blend(
 			"bloodstain",
 			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
-			desired_icon_state = "[blood_stain_intensity]",
+			desired_icon_state = blood_stain_intensity ? "[blood_stain_intensity]" : null,
 			desired_color = blood_stain_color,
 			desired_blend = ICON_ADD,
 			desired_type = ICON_BLEND_MASK,
@@ -257,7 +257,7 @@
 		add_blend(
 			"damage_overlay_noise",
 			desired_icon = 'icons/mob/living/advanced/overlays/damage_clothing.dmi',
-			desired_icon_state = "[desired_damage_num]",
+			desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null,
 			desired_blend = ICON_MULTIPLY,
 			desired_type = ICON_BLEND_MASK,
 			desired_should_save = FALSE,
@@ -269,7 +269,7 @@
 		add_blend(
 			"damage_overlay",
 			desired_icon = 'icons/mob/living/advanced/overlays/damage_overlay.dmi',
-			desired_icon_state = "[desired_damage_num]",
+			desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null,
 			desired_blend = ICON_OVERLAY,
 			desired_type = ICON_BLEND_CUT,
 			desired_should_save = FALSE,
@@ -749,7 +749,7 @@
 	blood_stain_intensity = desired_level
 	blood_stain_color = desired_color
 
-	add_blend("bloodstain", desired_icon_state = "[blood_stain_intensity ? blood_stain_intensity : null]", desired_color = blood_stain_color)
+	add_blend("bloodstain", desired_icon_state = blood_stain_intensity ? "[blood_stain_intensity]" : null, desired_color = blood_stain_color)
 	update_sprite()
 
 	if(is_inventory(loc))
@@ -807,8 +807,8 @@
 	if(enable_torn_overlay || enable_damage_overlay)
 		var/desired_damage_num = get_damage_icon_number()
 		if(original_damage_num != desired_damage_num)
-			add_blend("damage_overlay_noise", desired_icon_state = "[desired_damage_num ? desired_damage_num : null]")
-			add_blend("damage_overlay", desired_icon_state = "[desired_damage_num ? desired_damage_num : null]")
+			add_blend("damage_overlay_noise", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
+			add_blend("damage_overlay", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
 			update_sprite()
 			if(is_inventory(loc))
 				var/obj/hud/inventory/I = loc

@@ -149,7 +149,7 @@
 
 	update_items(force=TRUE)
 
-/mob/living/advanced/on_crush()
+/mob/living/advanced/on_crush(var/message=TRUE)
 	if(driving)
 		return FALSE
 	drop_all_items(get_turf(src))

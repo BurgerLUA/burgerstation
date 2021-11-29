@@ -169,7 +169,7 @@
 
 	var/mob/living/advanced/player/P = M
 
-	if(P.currency < 20000)
+	if(!P.client || P.currency < 20000)
 		P.to_chat(span("warning","You are too poor to cross the rich person scanner..."))
 		return FALSE
 

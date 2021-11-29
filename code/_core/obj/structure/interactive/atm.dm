@@ -18,7 +18,7 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 
-	if(is_player(caller))
+	if(caller.client && is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		if(is_inventory(object))
 			if(P.loyalty_tag == "NanoTrasen" && SStax.check_delinquent(P))

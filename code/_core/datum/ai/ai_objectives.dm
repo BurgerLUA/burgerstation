@@ -70,7 +70,8 @@
 
 	var/turf/T = get_turf(owner)
 
-	for(var/light_source/LS in T.affecting_lights)
+	for(var/k in T.affecting_lights)
+		var/light_source/LS = k
 		if(!is_player(LS.top_atom))
 			continue
 		var/mob/living/L = LS.top_atom

@@ -91,7 +91,7 @@
 	else
 		. = CEILING(stored_movable.get_value(),1)
 
-	if(. && is_player(owner))
+	if(. && is_player(owner) && owner.client)
 		var/mob/living/advanced/player/P = owner
 		. = FLOOR(.*0.25,1)
 		var/added_funds = P.adjust_currency(.)

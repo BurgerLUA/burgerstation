@@ -43,11 +43,11 @@
 		M.post_move(old_loc)
 
 
-/obj/structure/interactive/crate/on_crush()
+/obj/structure/interactive/crate/on_crush(var/message=TRUE)
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		M.on_crush()
+		M.on_crush(message)
 
 	return ..()
 

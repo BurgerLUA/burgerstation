@@ -417,10 +417,10 @@
 
 	return TRUE
 
-/mob/living/on_crush() //What happens when this object is crushed by a larger object.
+/mob/living/on_crush(var/message=TRUE) //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
-	visible_message(span("danger","\The [src.name] is violently crushed!"))
+	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
 	if(blood_type)
 		var/reagent/R = REAGENT(blood_type)
 		for(var/i=1,i<=9,i++)

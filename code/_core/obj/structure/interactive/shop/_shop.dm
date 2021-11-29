@@ -125,8 +125,6 @@
 	if(!is_player(caller) || !caller.client)
 		return ..()
 
-
-
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)

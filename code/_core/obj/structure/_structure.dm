@@ -35,9 +35,9 @@
 		I.alpha = 100
 		add_overlay(I)
 
-/obj/structure/on_crush()
+/obj/structure/on_crush(var/message=TRUE)
 	. = ..()
-	loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
+	if(message) loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
 	qdel(src)
 
 /obj/structure/should_smooth_with(var/turf/T)

@@ -50,7 +50,7 @@
 		play_sound('sound/effects/double_beep.ogg',get_turf(src))
 
 	if(next_explode <= world.time)
-		explode()
+		nuke_explode()
 		return FALSE
 
 	return TRUE
@@ -163,7 +163,7 @@
 		NO.check_gamemode_win()
 	return TRUE
 
-/obj/structure/interactive/vr_nuke/proc/explode()
+/obj/structure/interactive/vr_nuke/proc/nuke_explode()
 	visible_message(span("danger","\The [src.name] explodes!"))
 	state = 4
 	if(istype(SSvirtual_reality.current_virtual_reality,/virtual_reality/team/nuke_ops/))

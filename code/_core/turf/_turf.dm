@@ -183,7 +183,7 @@
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay < 0 || get_dist(L,src) > 1)
+			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay <= 0 || get_dist(L,src) > 1)
 				continue
 			return L
 

@@ -69,7 +69,7 @@ obj/structure/interactive/computer/console/old/chargen
 
 obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return ..()
 
 	INTERACT_CHECK
@@ -186,7 +186,7 @@ obj/structure/interactive/computer/console/old/station_job
 
 obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return ..()
 
 	INTERACT_CHECK

@@ -21,6 +21,9 @@
 	if(prob(extra_clothing_chance))
 		. += pickweight(possible_extra_clothing)
 
+
+	. += /obj/item/clothing/head/helmet/full/blob_spore
+
 /loadout/zombie/winter
 	spawning_items = list(
 		/obj/item/clothing/pants/brown,

@@ -85,9 +85,9 @@
 			var/mob/living/L = A.loc
 			A.health.update_health()
 			L.queue_health_update = TRUE
-			if(is_player(caller))
+			if(is_player(caller) && caller.client)
 				var/mob/living/advanced/player/P = caller
-				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit.
+				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
 					var/experience_gain = -.*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 		else

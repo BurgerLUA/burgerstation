@@ -36,10 +36,21 @@
 			idle_time = 0
 		else
 			if(idle_time && idle_time <= world.time)
-				set_active(FALSE)
+				var/found_player = FALSE
+				for(var/k in all_players)
+					var/mob/living/advanced/player/P = k
+					if(P.z != owner.z)
+						continue
+					if(get_dist(P,owner) <= VIEW_RANGE)
+						found_player = TRUE
+						break
+				if(found_player)
+					idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Try again later.
+				else
+					set_active(FALSE)
 				return TRUE
 			else if(idle_time == 0)
-				idle_time = world.time + SECONDS_TO_DECISECONDS(120) //Idle for more than 2 minutes means you're just wasting space.
+				idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Idle for more than 3 minutes means you're just wasting space.
 
 	if(owner.attack_next <= world.time)
 		handle_attacking()

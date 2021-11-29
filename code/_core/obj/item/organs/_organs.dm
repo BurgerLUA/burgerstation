@@ -174,7 +174,7 @@
 
 	if(enable_wounds)
 		for(var/damagetype in visual_wounds)
-			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_icon_state = "none", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
+			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
 
 	. = ..()
 

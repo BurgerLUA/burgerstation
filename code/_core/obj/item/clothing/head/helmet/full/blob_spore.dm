@@ -4,7 +4,7 @@
 	desc = "Oh no."
 	desc_extended = "A very dangerous blob spore that appears attached to a head. Should probably remove this before things get worse."
 
-	worn_layer = LAYER_MOB_HAIR_ABOVE
+	worn_layer = LAYER_MOB_BLOB
 
 	defense_rating = list()
 
@@ -14,6 +14,12 @@
 
 	item_slot_layer = 3
 
+	var/next_feed = 0
+
+	var/damage_ramp = 0
+
+	can_save = FALSE
+
 /obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(var/mob/caller)
 	return FALSE
 
@@ -21,15 +27,15 @@
 	INTERACT_CHECK_NO_DELAY(src)
 	return TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(var/mob/caller)
-	caller.visible_message(span("notice","\The [caller.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
+/obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(var/mob/caller,var/messsage=TRUE)
+	if(messsage) caller.visible_message(span("notice","\The [caller.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
 	var/turf/T = get_turf(caller)
 	if(T)
 		var/mob/living/simple/blob_spore/BS = new(T)
 		INITIALIZE(BS)
 		GENERATE(BS)
 		FINALIZE(BS)
-		BS.ai.set_active(TRUE)
+		BS.ai.set_objective_attack(caller)
 	qdel(src)
 	return TRUE
 
@@ -54,20 +60,38 @@
 	if(A.has_status_effect(ZOMBIE))
 		return FALSE
 
-	if(prob(10))
-		O.health.adjust_loss_smart(tox=5,brute=5)
+	if(next_feed <= world.time)
+		var/turf/T = get_turf(src)
+		damage_ramp += 2
+		O.health.adjust_loss_smart(brute=damage_ramp)
+		play_sound('sound/effects/blob_infection.ogg',T)
+		if(A.blood_type)
+			var/reagent/R = REAGENT(A.blood_type)
+			for(var/i=1,i<=2,i++)
+				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+		next_feed = world.time + SECONDS_TO_DECISECONDS(1)
+
+	if(A.ai && !A.is_busy() && prob(25))
+		click_self(A)
+		return TRUE
 
 	. = ..()
 
 	if(A.dead)
-		A.add_status_effect(ZOMBIE,100,-1)
+		if(O.id == BODY_HEAD)
+			A.add_status_effect(ZOMBIE,100,-1)
+		else
+			remove_blob(A,FALSE)
 		return FALSE
 
 /obj/item/clothing/head/helmet/full/blob_spore/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 
+	damage_ramp = 0
+
 	if(new_location && is_advanced(new_location.owner))
+		new_location.owner.visible_message(span("warning","\The [src.name] consumes \the [new_location.owner.name]'s [new_location.loc.name]!"),span("danger","\The [src.name] tries to consume your [new_location.loc.name]! GET IT OFF!"))
 		start_thinking(src)
 	else
 		stop_thinking(src)

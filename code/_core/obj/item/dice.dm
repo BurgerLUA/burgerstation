@@ -105,7 +105,7 @@
 
 /obj/item/dice/d20/cursed/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
 
-	if(!caller || silent || !is_living(caller))
+	if(!caller || silent || !is_living(caller) || !caller.client)
 		return ..()
 
 	var/mob/living/L = caller

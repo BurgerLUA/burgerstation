@@ -15,17 +15,19 @@
 	. = ..()
 	var/mob/living/advanced/A = owner
 	A.change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	A.add_status_effect(PAINKILLER,100,-1,stealthy=stealthy)
-	A.add_status_effect(ADRENALINE,100,-1,stealthy=stealthy)
+	A.add_status_effect(PAINKILLER,100,-1,stealthy=TRUE)
+	A.add_status_effect(ADRENALINE,100,-1,stealthy=TRUE)
 	HOOK_ADD("post_death","\ref[owner]_zombie_post_death",owner,src,.proc/post_death)
 	HOOK_ADD("attack","\ref[owner]_zombie_attack",owner,src,.proc/attack)
 	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,.proc/on_damage_received)
 
 	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in A.organs
-	if(L) L.update_implant(desired_id="Blob")
+	if(L) L.loyalty_tag = "Blob"
+	owner.set_loyalty_tag("Blob")
 
 	var/obj/item/organ/internal/implant/hand/left/iff/I = locate() in A.organs
-	if(I) I.update_implant(desired_id="Blob")
+	if(I) I.iff_tag = "Blob"
+	owner.set_iff_tag("Blob")
 
 	if(A.ai) qdel(A.ai)
 	A.ai = new /ai/advanced/zombie(null,A)
@@ -121,7 +123,7 @@
 
 /status_effect/zombie/proc/on_damage_received(var/mob/living/advanced/L,var/args)
 
-	if(!args["stealthy"] && !L.dead && args["damage_amount"] > 20 && prob(50))
+	if(length(args) && !args[8] && !L.dead && args[6] > 20 && prob(50))
 		var/list/valid_sounds = list(
 			'sound/voice/zombie/pain_01.ogg',
 			'sound/voice/zombie/pain_02.ogg',

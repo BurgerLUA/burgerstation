@@ -10,10 +10,10 @@
 
 	. = ..()
 
-	play_sound_target(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src,channel=SOUND_CHANNEL_MUSIC)
-
-	var/turf/T = get_turf(src)
-	notify_ghosts("[src.name] was killed by [english_list(attackers)]!",T)
+	if(ckey_last)
+		play_sound_target(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src,channel=SOUND_CHANNEL_MUSIC)
+		var/turf/T = get_turf(src)
+		notify_ghosts("[src.name] was killed by [english_list(attackers)]!",T)
 
 /mob/living/advanced/player/post_death()
 	. = ..()

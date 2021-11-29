@@ -163,7 +163,7 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller) && !is_inventory(object))
+	if(!is_player(caller) && !is_inventory(object) || !caller.client)
 		return ..()
 
 	INTERACT_CHECK

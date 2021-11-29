@@ -357,7 +357,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 		var/turf/T = get_turf(src)
 		play_sound(pick(shoot_sounds_to_use),T,range_min = VIEW_RANGE*0.5, range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
-			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,caller,shoot_alert_to_use)
+			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,null,shoot_alert_to_use)
 		return TRUE
 
 	return FALSE
@@ -567,7 +567,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!use_loyalty_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	if(automatic && is_player(caller))
+	if(automatic && is_player(caller) && caller.client)
 		spawn(next_shoot_time - world.time)
 			var/mob/living/advanced/player/P = caller
 			if(P && P.client && !P.qdeleting && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
