@@ -8,8 +8,8 @@
 		container.transfer_reagents_to(T,container.volume_current,caller=owner)
 		queue_delete(T,desired_duration)
 
-	var/obj/effect/temp/smoke/S = new(desired_turf,desired_duration,list(),T,owner,desired_power,alpha)
-	return S
+	var/list/blacklist_turfs = list(T=TRUE)
+	. = new/obj/effect/temp/smoke(desired_turf,desired_duration,blacklist_turfs,T,owner,desired_power,alpha)
 
 /obj/effect/temp/smoke
 	name = "smoke"
@@ -38,7 +38,7 @@
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
 	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))
-		container.splash(owner,A,1,FALSE,5) //I mean it's pulling shit out of nothing but whatever.
+		container.splash(owner,A,1,FALSE,5)
 
 /obj/effect/temp/smoke/Crossed(var/atom/movable/O)
 	. = ..()
@@ -50,20 +50,18 @@
 	container = desired_container
 	if(isnum(desired_volume))
 		smoke_volume = desired_volume
-	update_sprite()
-	start_thinking(src)
-	if(!desired_blacklist_turfs)
-		blacklist_turfs = list()
-	else
-		blacklist_turfs = desired_blacklist_turfs
+	blacklist_turfs = desired_blacklist_turfs
 	if(desired_location)
 		try_splash(desired_location)
 	alpha = desired_alpha
 	if(alpha >= 255)
 		opacity = TRUE
+	update_sprite()
+	start_thinking(src)
 
 /obj/effect/temp/smoke/proc/fade_out()
-	animate(src,alpha=0,time=fade_time)
+	var/matrix/M = get_base_transform()
+	animate(src,transform=M,alpha=0,time=min(fade_time,duration*0.5))
 	return TRUE
 
 /obj/effect/temp/smoke/think()
@@ -71,17 +69,16 @@
 	if(next_think > world.time)
 		return TRUE
 
-	if(!blacklist_turfs)
-		return FALSE
-
 	next_think = world.time + 10
 
-	var/list/initial_possible_directions = list(NORTH,EAST,SOUTH,WEST)
+	var/list/initial_possible_directions = DIRECTIONS_CARDINAL
 	var/list/possible_turfs = list()
 
 	for(var/k in initial_possible_directions)
 		var/turf/T = get_step(src,k)
-		if(blacklist_turfs[T] || !T.Enter(src,src.loc))
+		if(blacklist_turfs[T])
+			continue
+		if(!T.Enter(src,src.loc))
 			blacklist_turfs[T] = TRUE
 			continue
 		var/should_fail = FALSE
@@ -101,7 +98,7 @@
 	for(var/i=1,i<=max_i,i++)
 		var/turf/T = pick(possible_turfs)
 		possible_turfs -= T
-		new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1))
+		new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1),alpha)
 		blacklist_turfs[T] = TRUE
 		smoke_volume--
 
@@ -137,6 +134,8 @@
 	if(container)
 		color = container.color
 		alpha = container.alpha
+		if(alpha >= 255)
+			opacity = TRUE
 
 
 /obj/effect/temp/smoke/update_overlays()

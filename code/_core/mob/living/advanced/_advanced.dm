@@ -15,13 +15,12 @@
 
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
+	var/list/obj/hud/inventory/inventories_by_id //List of inventory items, by id. (Assoc list).
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
 	var/list/obj/item/held_objects //List of held items. For use in an easy read-only list.
 
-	var/obj/hud/inventory/left_hand
-	var/obj/hud/inventory/right_hand
-	var/obj/hud/inventory/holster
-	var/obj/hud/inventory/face
+
+
 
 	var/obj/item/left_item
 	var/obj/item/right_item
@@ -387,24 +386,6 @@ mob/living/advanced/Login()
 
 	return TRUE
 
-/* UNUSED
-/mob/living/advanced/proc/add_worn_item(var/obj/item/C,var/slient=FALSE)
-	for(var/k in inventory)
-		var/obj/hud/inventory/I = k
-		if(I.add_object(C,FALSE,silent=FALSE))
-			return TRUE
-
-	return FALSE
-
-/mob/living/advanced/proc/remove_worn_item(var/obj/item/C)
-	for(var/k in inventory)
-		var/obj/hud/inventory/I = k
-		if(I.remove_object(C))
-			return TRUE
-
-	return FALSE
-*/
-
 /mob/living/advanced/proc/add_species_languages()
 
 	known_languages.Cut()
@@ -477,22 +458,22 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE,var/silent=FALSE)
 
-	if(left_hand && right_hand)
-		if(left)
-			if(left_hand.can_slot_object(I,FALSE))
-				return left_hand.add_object(I,silent=silent)
-			else if(right_hand.can_slot_object(I,FALSE))
-				return right_hand.add_object(I,silent=silent)
+	if(inventories_by_id[BODY_HAND_LEFT_HELD] && inventories_by_id[BODY_HAND_RIGHT_HELD])
+		if(inventories_by_id[BODY_HAND_LEFT_HELD])
+			if(inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+			else if(inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
 		else
-			if(right_hand.can_slot_object(I,FALSE))
-				return right_hand.add_object(I,silent=silent)
-			else if(left_hand.can_slot_object(I,FALSE))
-				return left_hand.add_object(I,silent=silent)
+			if(inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+			else if(inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
 	else
-		if(left_hand)
-			return left_hand.add_object(I,silent=silent)
-		else if(right_hand)
-			return right_hand.add_object(I,silent=silent)
+		if(inventories_by_id[BODY_HAND_LEFT_HELD])
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+		else if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
 
 	return FALSE
 

@@ -357,7 +357,11 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 		var/turf/T = get_turf(src)
 		play_sound(pick(shoot_sounds_to_use),T,range_min = VIEW_RANGE*0.5, range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
-			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,null,shoot_alert_to_use)
+			var/use_caller = FALSE
+			if(is_living(caller))
+				var/mob/living/L = caller
+				if(L.ai) use_caller = TRUE
+			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,use_caller ? caller : null,shoot_alert_to_use)
 		return TRUE
 
 	return FALSE

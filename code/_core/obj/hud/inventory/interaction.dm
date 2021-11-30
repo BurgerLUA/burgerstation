@@ -41,7 +41,7 @@
 		var/atom/movable/object_to_throw = top_object
 		if(istype(object_to_throw))
 			var/obj/item/I = object_to_throw
-			if(I.additional_clothing_parent)
+			if(I.additional_clothing_parent || I.no_drop)
 				caller.to_chat(span("warning","You can't throw this!"))
 				return TRUE
 			var/vel_x = object.x - caller.x
@@ -69,6 +69,9 @@
 		if(parent_inventory)
 			var/obj/item/I = parent_inventory.get_top_object()
 			unwield(caller,I)
+			return TRUE
+		if(object.no_drop)
+			caller.to_chat(span("warning","You can't drop this!"))
 			return TRUE
 		if(grabbed_object)
 			release_object(caller)

@@ -27,7 +27,9 @@
 	if(driving)
 		driving.exit_vehicle(src,get_turf(driving))
 
-	return ..()
+	drop_hands(get_turf(src))
+
+	. = ..()
 
 mob/living/advanced/revive()
 

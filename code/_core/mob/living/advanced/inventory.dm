@@ -1,18 +1,7 @@
 /mob/living/advanced/proc/add_inventory(var/obj/hud/inventory/I)
 
-	if(I.id == BODY_HAND_LEFT_HELD)
-		left_hand = I
-
-	if(I.id == BODY_HAND_RIGHT_HELD)
-		right_hand = I
-
-	if(I.id == BODY_TORSO_OB)
-		holster = I
-
-	if(I.id == BODY_FACE)
-		face = I
-
 	inventory += I
+	if(I.id) inventories_by_id[I.id] = I
 
 	if(client)
 		client.screen += I
@@ -24,19 +13,8 @@
 
 /mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
 
-	if(I.id == BODY_HAND_LEFT_HELD)
-		left_hand = null
-
-	if(I.id == BODY_HAND_RIGHT_HELD)
-		right_hand = null
-
-	if(I.id == BODY_TORSO_OB)
-		holster = null
-
-	if(I.id == BODY_FACE)
-		face = null
-
 	inventory -= I
+	if(I.id) inventories_by_id -= I.id
 
 	if(client)
 		client.screen -= I

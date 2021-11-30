@@ -49,6 +49,15 @@
 
 	var/exploded = FALSE
 
+	reagents = /reagent_container/blob
+
 /mob/living/simple/blob_spore/post_death()
+
+	var/turf/T = get_turf(src)
+	if(T)
+		reagents.add_reagent(/reagent/toxin/blob_spore,50)
+		smoke(T,10,SECONDS_TO_DECISECONDS(3),reagents,src,255)
+
 	. = ..()
+
 	on_crush()

@@ -9,3 +9,8 @@
 	volume_max = 100
 
 	should_update_owner = TRUE
+
+
+/reagent_container/blob
+	volume_max = 100
+	should_update_owner = FALSE

@@ -123,3 +123,14 @@
 	flavor = "venus"
 
 	particle_size = 1
+
+
+/reagent/toxin/blob_spore
+	name = "blob mini-spores"
+	desc = "Don't breathe this in."
+
+	damage_per_unit = 1
+
+	particle_size = 0.8
+
+	color = "#A06300"

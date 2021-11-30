@@ -536,14 +536,17 @@
 
 	target = target.change_victim(caller,owner)
 
-	if(target) target.on_splash(caller,src,splash_amount,silent,strength_mod)
+	if(!target)
+		CRASH_SAFE("Tried to splash with invalid target!")
+		return FALSE
 
-	return TRUE
-
+	return target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
 /atom/proc/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE,var/strength_mod=1)
 
-	if(source.stored_reagents)
+	splash_amount = min(splash_amount,source.volume_current)
+
+	if(splash_amount && source.stored_reagents)
 		for(var/r_id in source.stored_reagents)
 			var/reagent/R = REAGENT(r_id)
 			var/volume_to_splash = source.remove_reagent(R.type,source.stored_reagents[r_id] * (splash_amount/source.volume_current),FALSE,FALSE)

@@ -20,6 +20,10 @@
 
 	can_save = FALSE
 
+	var/inert = FALSE
+
+	no_drop = TRUE
+
 /obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(var/mob/caller)
 	return FALSE
 
@@ -35,7 +39,7 @@
 		INITIALIZE(BS)
 		GENERATE(BS)
 		FINALIZE(BS)
-		BS.ai.set_objective_attack(caller)
+		BS.ai.set_objective(caller)
 	qdel(src)
 	return TRUE
 
@@ -45,6 +49,9 @@
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/think()
+
+	if(inert)
+		return FALSE
 
 	if(!is_inventory(src.loc))
 		return FALSE
@@ -80,6 +87,7 @@
 	if(A.dead)
 		if(O.id == BODY_HEAD)
 			A.add_status_effect(ZOMBIE,100,-1)
+			inert = TRUE
 		else
 			remove_blob(A,FALSE)
 		return FALSE
@@ -87,6 +95,10 @@
 /obj/item/clothing/head/helmet/full/blob_spore/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
+
+	if(inert)
+		qdel(src)
+		return .
 
 	damage_ramp = 0
 

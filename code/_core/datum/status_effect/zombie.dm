@@ -89,6 +89,8 @@
 	if(!H || !H.health)
 		return FALSE
 
+	var/obj/hud/inventory/I = H.
+
 	var/extra_health = max(0,-L.health.health_current*1.25)
 	if(extra_health)
 		L.health_base += extra_health

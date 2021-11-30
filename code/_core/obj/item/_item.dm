@@ -168,6 +168,8 @@
 	var/enable_damage_overlay = FALSE
 	var/enable_torn_overlay = FALSE
 
+	var/no_drop = FALSE //Set to true if you're unable to drop this item via normal means.
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null
