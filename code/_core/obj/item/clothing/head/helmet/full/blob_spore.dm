@@ -40,6 +40,7 @@
 		GENERATE(BS)
 		FINALIZE(BS)
 		BS.ai.set_objective(caller)
+		BS.add_status_effect(STUN,30,30) //So it doesn't latch immediately after being removed.
 	qdel(src)
 	return TRUE
 

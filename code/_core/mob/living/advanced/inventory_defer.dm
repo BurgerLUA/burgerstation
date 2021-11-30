@@ -40,8 +40,8 @@
 
 	var/s=0
 
-	for(var/k in src.inventory)
-		var/obj/hud/inventory/I = k
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/I = inventories_by_id[k]
 		if(!(I.flags & (FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB)))
 			continue
 		if(I.flags & FLAGS_HUD_CONTAINER) //Organs only.

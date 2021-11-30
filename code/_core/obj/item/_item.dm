@@ -401,7 +401,7 @@
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new dynamic_inventory_type(src)
 		//Doesn't need to be initialized as it's done later.
-		D.id = "dynamic_[i]"
+		D.id = "\ref[src]_dynamic_[i]"
 		D.slot_num = i
 		D.inventory_category = inventory_category
 		if(container_max_slots)

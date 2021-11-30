@@ -91,7 +91,7 @@
 		is_container = FALSE
 		if(inventory_user)
 			var/mob/living/advanced/A = inventory_user
-			for(var/obj/hud/inventory/dynamic/B in A.inventory)
+			for(var/obj/hud/inventory/dynamic/B in A.inventories_by_id)
 				B.alpha = 0
 				B.mouse_opacity = 0
 			for(var/obj/hud/button/close_inventory/B in A.buttons)

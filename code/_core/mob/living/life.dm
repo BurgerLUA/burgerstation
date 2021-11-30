@@ -99,9 +99,6 @@
 		create_gold_drop(T,CEILING(drops_gold,1))
 		drops_gold = 0
 
-	if(delete_on_death)
-		dust()
-
 	return TRUE
 
 
@@ -212,6 +209,9 @@
 			on_killed(people_who_killed)
 
 	HOOK_CALL("post_death")
+
+	if(delete_on_death)
+		dust()
 
 	return TRUE
 

@@ -290,7 +290,7 @@
 	open = FALSE
 	return ..()
 
-/obj/item/grenade/timed/explosive/
+/obj/item/grenade/timed/explosive
 	name = "timed explosive grenade"
 	desc = "Kaboom!"
 	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."

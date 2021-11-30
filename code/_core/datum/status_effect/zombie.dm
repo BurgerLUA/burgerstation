@@ -8,7 +8,27 @@
 /status_effect/zombie/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
 	if(!is_advanced(victim))
 		return FALSE
+	var/mob/living/advanced/A = victim
+	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
+	if(!H || !H.health)
+		return FALSE
 	. = ..()
+
+/status_effect/zombie/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+
+	. = ..()
+
+	if(!is_advanced(owner))
+		return .
+
+	var/mob/living/advanced/A = owner
+
+	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
+	if(H) HOOK_REMOVE("on_damage_received","\ref[H]_zombie_on_damage_received",H)
+	HOOK_REMOVE("post_death","\ref[owner]_zombie_post_death",owner)
+	HOOK_REMOVE("attack","\ref[owner]_zombie_attack",owner)
+	HOOK_REMOVE("on_damage_received","\ref[owner]_zombie_on_damage_received",owner)
+
 
 /status_effect/zombie/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	stealthy = TRUE
@@ -17,6 +37,9 @@
 	A.change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
 	A.add_status_effect(PAINKILLER,100,-1,stealthy=TRUE)
 	A.add_status_effect(ADRENALINE,100,-1,stealthy=TRUE)
+
+	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
+	HOOK_ADD("on_damage_received","\ref[H]_zombie_on_damage_received",H,src,.proc/on_headshot)
 	HOOK_ADD("post_death","\ref[owner]_zombie_post_death",owner,src,.proc/post_death)
 	HOOK_ADD("attack","\ref[owner]_zombie_attack",owner,src,.proc/attack)
 	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,.proc/on_damage_received)
@@ -139,5 +162,38 @@
 			'sound/voice/zombie/pain_06.ogg'
 		)
 		play_sound(pick(valid_sounds),get_turf(L),range_max=VIEW_RANGE)
+
+	return TRUE
+
+/status_effect/zombie/proc/on_headshot(var/obj/item/organ/O,var/args) //When the zombie gets shot in the head.
+
+	var/mob/living/advanced/A = O.loc
+
+	if(!is_advanced(A))
+		return FALSE
+
+
+	if(!A.dead)
+		if(A.health.health_current <= 0)
+			A.death()
+		else
+			return FALSE
+
+	var/obj/hud/inventory/I = A.inventories_by_id[BODY_HEAD]
+	if(!I)
+		return FALSE
+
+	var/obj/item/I2 = I.get_top_object()
+	if(!istype(I2,/obj/item/clothing/head/helmet/full/blob_spore))
+		return FALSE
+	var/turf/T = get_turf(A)
+	if(T)
+		A.reagents.add_reagent(/reagent/toxin/blob_spore,50)
+		smoke(T,10,SECONDS_TO_DECISECONDS(3),A.reagents,A,255)
+		var/reagent/R = REAGENT(/reagent/blood/blob)
+		for(var/i=1,i<=9,i++)
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+
+	qdel(I2)
 
 	return TRUE

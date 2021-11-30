@@ -1,7 +1,10 @@
 /mob/living/advanced/proc/add_inventory(var/obj/hud/inventory/I)
 
-	inventory += I
-	if(I.id) inventories_by_id[I.id] = I
+	if(!I.id)
+		CRASH_SAFE("[I.get_debug_name()] didn't have an ID!")
+		return FALSE
+
+	inventories_by_id[I.id] = I
 
 	if(client)
 		client.screen += I
@@ -13,17 +16,22 @@
 
 /mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
 
-	inventory -= I
-	if(I.id) inventories_by_id -= I.id
+	if(!I.id)
+		CRASH_SAFE("[I.get_debug_name()] didn't have an ID!")
+		return FALSE
+
+	inventories_by_id -= I.id
 
 	if(client)
 		client.screen -= I
 		client.known_inventory -= I
 
+	return TRUE
+
 /mob/living/advanced/proc/remove_all_inventory()
 
-	for(var/k in inventory)
-		var/obj/hud/inventory/I = k
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/I = inventories_by_id[k]
 		remove_inventory(I)
 
 	return TRUE
@@ -34,8 +42,8 @@
 	if(!client)
 		return FALSE
 
-	for(var/k in inventory)
-		var/obj/hud/inventory/I = k
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/I = inventories_by_id[k]
 		client.screen += I
 
 	return TRUE

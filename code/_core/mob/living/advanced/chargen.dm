@@ -102,8 +102,8 @@
 	if(keep_items)
 		kept_items = drop_all_items(get_turf(src))
 	else
-		for(var/k in inventory)
-			var/obj/hud/inventory/I = k
+		for(var/k in inventories_by_id)
+			var/obj/hud/inventory/I = inventories_by_id[k]
 			I.delete_objects()
 
 	remove_all_organs()

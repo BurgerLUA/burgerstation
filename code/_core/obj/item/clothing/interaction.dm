@@ -25,8 +25,8 @@
 	var/obj/hud/inventory/best_inventory_wear
 	var/obj/hud/inventory/best_inventory_equip
 
-	for(var/k in caller.inventory)
-		var/obj/hud/inventory/I = k
+	for(var/k in caller.inventories_by_id)
+		var/obj/hud/inventory/I = caller.inventories_by_id[k]
 		if(I.click_flags && ignore_hands)
 			continue
 		if(!I.allow_quick_equip)

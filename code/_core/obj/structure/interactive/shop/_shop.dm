@@ -66,7 +66,10 @@
 
 /obj/structure/interactive/shop/Finalize()
 	. = ..()
-	update_sprite()
+	if(!stored_item)
+		qdel(src)
+	else
+		update_sprite()
 
 /obj/structure/interactive/shop/update_overlays()
 

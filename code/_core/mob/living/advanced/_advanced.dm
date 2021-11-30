@@ -14,13 +14,9 @@
 	gender = MALE
 
 	var/draw_inventory = TRUE
-	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/hud/inventory/inventories_by_id //List of inventory items, by id. (Assoc list).
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
 	var/list/obj/item/held_objects //List of held items. For use in an easy read-only list.
-
-
-
 
 	var/obj/item/left_item
 	var/obj/item/right_item
@@ -260,7 +256,6 @@
 	icon_state = "0"
 
 	organs = list()
-	inventory = list()
 	inventories_by_id = list()
 	held_objects = list()
 	worn_objects = list()
@@ -274,7 +269,8 @@
 
 	. = list()
 
-	for(var/obj/hud/inventory/organs/O in inventory)
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/O = inventories_by_id[k]
 		if(exclude_containers && is_item(O.loc))
 			var/obj/item/I = O.loc
 			if(I.is_container)
@@ -284,9 +280,9 @@
 	return .
 
 /mob/living/advanced/proc/delete_all_items()
-	for(var/v in inventory)
-		var/obj/hud/inventory/O = v
-		O.delete_objects()
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/I = inventories_by_id[k]
+		I.delete_objects()
 
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/k in clothing_list)

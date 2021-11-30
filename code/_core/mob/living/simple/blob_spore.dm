@@ -6,7 +6,7 @@
 	icon = 'icons/mob/living/simple/blob.dmi'
 	icon_state = "blobpod"
 
-	health_base = 1
+	health_base = 50
 	stamina_base = 50
 	mana_base = 50
 
@@ -57,7 +57,11 @@
 	if(T)
 		reagents.add_reagent(/reagent/toxin/blob_spore,50)
 		smoke(T,10,SECONDS_TO_DECISECONDS(3),reagents,src,255)
+		var/reagent/R = REAGENT(blood_type)
+		for(var/i=1,i<=9,i++)
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
 
 	. = ..()
 
-	on_crush()
+	qdel(src)
+

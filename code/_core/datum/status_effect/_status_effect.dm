@@ -283,7 +283,8 @@
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.drop_hands(A.loc)
-		for(var/obj/hud/inventory/I in A.inventory)
+		for(var/k in A.inventories_by_id)
+			var/obj/hud/inventory/I = A.inventories_by_id[k]
 			if(I.grabbed_object)
 				I.release_object()
 	else
