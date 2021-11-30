@@ -112,6 +112,7 @@
 	remove_all_buttons()
 
 	inventory_defers?.Cut()
+	inventories_by_id?.Cut()
 
 	overlays_assoc?.Cut()
 	tracked_hidden_organs?.Cut()
@@ -119,12 +120,6 @@
 
 	held_objects = null
 	worn_objects = null
-	left_hand = null
-	right_hand = null
-	holster = null
-	left_item = null
-	right_item = null
-	holster_item = null
 	active_inventory = null
 	driving = null
 
@@ -207,12 +202,12 @@
 	. = ..()
 
 	if(. || force) //Dan updating.
-		if(left_hand && left_item && left_item.dan_mode)
-			left_hand.update_held_icon(left_item)
-		if(right_hand && right_item && right_item.dan_mode)
-			right_hand.update_held_icon(right_item)
-		if(holster && holster_item && holster_item.dan_mode)
-			holster.update_held_icon(holster_item)
+		if(inventories_by_id[BODY_HAND_LEFT_HELD] && left_item && left_item.dan_mode)
+			inventories_by_id[BODY_HAND_LEFT_HELD].update_held_icon(left_item)
+		if(inventories_by_id[BODY_HAND_RIGHT_HELD] && right_item && right_item.dan_mode)
+			inventories_by_id[BODY_HAND_RIGHT_HELD].update_held_icon(right_item)
+		if(inventories_by_id[BODY_TORSO_OB] && holster_item && holster_item.dan_mode)
+			inventories_by_id[BODY_TORSO_OB].update_held_icon(holster_item)
 
 /mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_speed=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
@@ -266,6 +261,7 @@
 
 	organs = list()
 	inventory = list()
+	inventories_by_id = list()
 	held_objects = list()
 	worn_objects = list()
 	labeled_organs = list()
@@ -478,14 +474,10 @@ mob/living/advanced/Login()
 	return FALSE
 
 /mob/living/advanced/proc/get_held_left()
-	if(left_hand)
-		return left_hand.get_top_object()
-	return null
+	return inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
 /mob/living/advanced/proc/get_held_right()
-	if(right_hand)
-		return right_hand.get_top_object()
-	return null
+	return inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
 
 /mob/living/advanced/mod_speech(var/text)
 	var/species/S = SPECIES(species)

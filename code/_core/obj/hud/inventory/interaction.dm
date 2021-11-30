@@ -70,9 +70,11 @@
 			var/obj/item/I = parent_inventory.get_top_object()
 			unwield(caller,I)
 			return TRUE
-		if(object.no_drop)
-			caller.to_chat(span("warning","You can't drop this!"))
-			return TRUE
+		if(is_item(object))
+			var/obj/item/I = object
+			if(I.no_drop)
+				caller.to_chat(span("warning","You can't drop this!"))
+				return TRUE
 		if(grabbed_object)
 			release_object(caller)
 			return TRUE
@@ -114,11 +116,11 @@
 	else if(caller.attack_flags & CONTROL_MOD_SELF)
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
-			if(src == A.right_hand && A.left_item)
-				A.right_hand.toggle_wield(caller,A.left_item)
+			if(src == A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item)
+				A.inventories_by_id[BODY_HAND_RIGHT_HELD].toggle_wield(caller,A.left_item)
 				return TRUE
-			if(src == A.left_hand && A.right_item)
-				A.left_hand.toggle_wield(caller,A.right_item)
+			if(src == A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].toggle_wield(caller,A.right_item)
 				return TRUE
 
 	if(get_dist(src,object) <= 1 && (is_inventory(object) || is_inventory(object.loc) || isturf(object) || isturf(object.loc)) && !(isturf(object.loc) && !isturf(caller.loc)) )

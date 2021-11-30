@@ -105,10 +105,10 @@
 					owner.selected_hand = LEFT_HAND
 				if(is_advanced(owner.mob))
 					var/mob/living/advanced/A = owner.mob
-					A.left_hand.overlays.Cut()
-					A.left_hand.update_overlays()
-					A.right_hand.overlays.Cut()
-					A.right_hand.update_overlays()
+					A.inventories_by_id[BODY_HAND_LEFT_HELD].overlays.Cut()
+					A.inventories_by_id[BODY_HAND_LEFT_HELD].update_overlays()
+					A.inventories_by_id[BODY_HAND_RIGHT_HELD].overlays.Cut()
+					A.inventories_by_id[BODY_HAND_RIGHT_HELD].update_overlays()
 				owner.show_popup_menus = TRUE
 			else
 				owner.mob.attack_flags |= CONTROL_MOD_OWNER

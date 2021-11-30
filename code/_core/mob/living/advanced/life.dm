@@ -27,7 +27,8 @@
 	if(driving)
 		driving.exit_vehicle(src,get_turf(driving))
 
-	drop_hands(get_turf(src))
+	if(!master && !delete_on_death)
+		drop_hands(get_turf(src))
 
 	. = ..()
 
@@ -51,11 +52,6 @@ mob/living/advanced/revive()
 /mob/living/advanced/post_death()
 
 	. = ..()
-
-	if(!master)
-		drop_hands(src.loc)
-		right_hand?.release_object()
-		left_hand?.release_object()
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)

@@ -112,11 +112,11 @@
 		possible_blocks += IR
 
 	if(!length(possible_blocks))
-		if(left_hand && left_hand.loc && left_hand.loc.can_block(attacker,weapon,target,DT))
-			possible_blocks += left_hand.loc
+		if(left_hand && inventories_by_id[BODY_HAND_LEFT_HELD].loc && inventories_by_id[BODY_HAND_LEFT_HELD].loc.can_block(attacker,weapon,target,DT))
+			possible_blocks += inventories_by_id[BODY_HAND_LEFT_HELD].loc
 
-		if(right_hand && right_hand.loc && right_hand.loc.can_block(attacker,weapon,target,DT))
-			possible_blocks += right_hand.loc
+		if(right_hand && inventories_by_id[BODY_HAND_RIGHT_HELD].loc && inventories_by_id[BODY_HAND_RIGHT_HELD].loc.can_block(attacker,weapon,target,DT))
+			possible_blocks += inventories_by_id[BODY_HAND_RIGHT_HELD].loc
 
 	if(length(possible_blocks))
 		return pick(possible_blocks)
@@ -141,10 +141,10 @@
 	if(length(possible_parry))
 		return pick(possible_parry)
 
-	if(left_hand && left_hand.can_parry(attacker,weapon,target,DT))
+	if(left_hand && inventories_by_id[BODY_HAND_LEFT_HELD].can_parry(attacker,weapon,target,DT))
 		possible_parry += left_hand
 
-	if(right_hand && right_hand.can_parry(attacker,weapon,target,DT))
+	if(right_hand && inventories_by_id[BODY_HAND_RIGHT_HELD].can_parry(attacker,weapon,target,DT))
 		possible_parry += right_hand
 
 	if(length(possible_parry))

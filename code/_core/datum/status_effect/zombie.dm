@@ -89,7 +89,11 @@
 	if(!H || !H.health)
 		return FALSE
 
-	var/obj/hud/inventory/I = H.
+	var/obj/hud/inventory/I = L.inventories_by_id[BODY_HEAD]
+	if(I)
+		var/obj/item/I2 = I.get_top_object()
+		if(!istype(I2,/obj/item/clothing/head/helmet/full/blob_spore))
+			return FALSE
 
 	var/extra_health = max(0,-L.health.health_current*1.25)
 	if(extra_health)

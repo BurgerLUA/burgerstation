@@ -48,8 +48,10 @@
 
 /mob/living/advanced/proc/drop_hands(var/turf/T)
 	. = list()
-	if(left_hand) . += left_hand.drop_objects(T)
-	if(right_hand) . += right_hand.drop_objects(T)
+	if(inventories_by_id[BODY_HAND_LEFT_HELD])
+		. += inventories_by_id[BODY_HAND_LEFT_HELD].drop_objects(T)
+	if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+		. += inventories_by_id[BODY_HAND_RIGHT_HELD].drop_objects(T)
 
 /mob/living/advanced/proc/strip_and_delete_items()
 

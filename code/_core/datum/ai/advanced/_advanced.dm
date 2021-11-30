@@ -147,7 +147,7 @@
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
 			if(G.wielded) //We should unwield
-				A.left_hand.unwield(A,G)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
 			next_complex = world.time + 15
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
@@ -160,8 +160,8 @@
 			if(!G.stored_magazine)
 				G.drop_item(get_turf(owner)) //IT'S NO USE.
 				return FALSE
-			if(G.can_wield && !G.wielded && A.left_hand && !A.left_item)
-				A.left_hand.wield(A,G)
+			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			return FALSE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
@@ -213,10 +213,10 @@
 		"alt" = 0
 	)
 
-	if(left_click && A.right_hand)
-		A.right_hand.click_on_object(A,target,null,null,params)
-	else if(A.left_hand)
-		A.left_hand.click_on_object(A,target,null,null,params)
+	if(left_click)
+		A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.click_on_object(A,target,null,null,params)
+	else
+		A.inventories_by_id[BODY_HAND_LEFT_HELD]?.click_on_object(A,target,null,null,params)
 
 	return TRUE
 
@@ -268,14 +268,14 @@
 
 	. = FALSE
 
-	if(A.right_hand && !A.right_item)
-		A.right_hand.add_object(W,FALSE)
+	if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && !A.right_item)
+		A.inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(W,FALSE)
 		. = TRUE
-		if(W.can_wield && !W.wielded && A.left_hand && !A.left_item)
-			A.left_hand.wield(A,W)
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && W.can_wield && !W.wielded && !A.left_item)
+			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,W)
 
-	else if(A.left_hand && !A.left_hand.parent_inventory && !A.left_item)
-		A.left_hand.add_object(W,FALSE)
+	else if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && !A.inventories_by_id[BODY_HAND_LEFT_HELD].parent_inventory && !A.left_item)
+		A.inventories_by_id[BODY_HAND_LEFT_HELD].add_object(W,FALSE)
 		. = TRUE
 
 	if(. && istype(W,/obj/item/weapon/melee/energy))
