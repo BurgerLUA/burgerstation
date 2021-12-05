@@ -20,5 +20,5 @@
 		PAIN = 20
 	)
 
-	rarity = RARITY_UNCOMMON
+
 	value = 30

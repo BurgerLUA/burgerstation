@@ -5,6 +5,7 @@
 	if(!is_modular_mech(owner))
 		return .
 
+	.["items"] = list()
 	if(is_mech_part(hit_object))
 		var/obj/item/mech_part/O = hit_object
 		var/list/O_defense_rating = O.armor_base.Copy()
@@ -15,4 +16,5 @@
 				.[damage_type] = O_defense_rating[damage_type]
 				continue
 			.[damage_type] += O_defense_rating[damage_type]
+			.["items"] += O
 

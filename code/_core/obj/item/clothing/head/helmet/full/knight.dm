@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/full/knight/
-	rarity = RARITY_UNCOMMON
+
 	defense_rating = list(
 		BLADE = 60,
 		BLUNT = 40,
@@ -58,7 +58,7 @@
 /obj/item/clothing/head/helmet/full/knight/battlemage
 	name = "battlemage helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_battlemage.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 60,
@@ -78,7 +78,7 @@
 /obj/item/clothing/head/helmet/full/knight/clockwork
 	name = "clockwork helmet"
 	icon = 'icons/obj/item/clothing/hats/clockwork.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 40,

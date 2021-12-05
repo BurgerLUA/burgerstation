@@ -2,7 +2,7 @@
 	name = "blue blazer"
 	icon = 'icons/obj/item/clothing/suit/blazer_blue.dmi'
 
-	rarity = RARITY_UNCOMMON
+
 
 	desc = "I NEED just one pocket actually."
 	desc_extended = "A snazzy blue blazer with a pocket inside. Of course, it won't do much against the horrors of the void."

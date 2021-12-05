@@ -2,7 +2,7 @@
 	name = "power gem"
 	desc = "A gem filled with power."
 	desc_extended = "A special gem used for augmenting magic weapons with damage bonuses. Click on the magic weapon to apply it. Can be removed with a crowbar."
-	rarity = RARITY_COMMON
+
 
 	icon = 'icons/obj/item/powergem.dmi'
 	icon_state = "gem1"

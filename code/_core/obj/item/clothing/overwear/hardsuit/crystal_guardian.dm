@@ -3,7 +3,7 @@
 	desc = "A hardsuit forged with crystals and enchanted alloy that's used by the mystical Crystal Guardians."
 	desc_extended = "Little is known about the origin of Crystal Guardians, their attunement towards crystal based magic is unparalelled and in turn is utilized in all of their equipment."
 	icon = 'icons/obj/item/clothing/suit/crystal_guardian.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 80,

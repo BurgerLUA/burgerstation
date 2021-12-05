@@ -7,7 +7,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -29,7 +29,7 @@
 	desc = "Protecting against the capitalism since 2238."
 	desc_extended = "Durable combat helmet made out of complex plastic-based bullet-resistant materials and ceramics. Should save you from a bullet or five."
 
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -50,7 +50,7 @@
 
 	desc_extended = "Durable combat helmet made out of complex plastic-based bullet-resistant materials and ceramics. Should save you from a bullet or five. This model has been outfitted with an advanced thermal monocle."
 
-	rarity = RARITY_RARE
+
 
 	additional_clothing = list(/obj/item/clothing/glasses/thermal/thermal_rev)
 

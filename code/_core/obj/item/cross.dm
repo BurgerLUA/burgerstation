@@ -50,7 +50,7 @@
 
 	if(O.health && icon_state == initial(icon_state))
 		var/list/defense = O.health.get_defense(ignore_luck=TRUE)
-		if(defense[HOLY] - defense[DARK] < 0)
+		if(defense[HOLY] < defense[DARK])
 			return FALSE
 
-	return ..()
+	. = ..()

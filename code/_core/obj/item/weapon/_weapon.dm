@@ -28,8 +28,8 @@
 	has_quick_function = TRUE
 
 	var/bypass_balance_check = FALSE //Set to true to ignore warnings about mismatched tiers in terms of balance.
-	var/tier = -1 //-1 means not set.
-	var/tier_type = "weapon"
+
+	tier = -1 //Automatic generation.
 
 /obj/item/weapon/Finalize()
 	. = ..()

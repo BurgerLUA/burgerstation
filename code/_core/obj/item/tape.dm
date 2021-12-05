@@ -6,7 +6,7 @@
 	icon_state = "taperecorder_empty"
 	value = 1000
 	value_burgerbux = 1
-	rarity = RARITY_RARE
+
 	weight = 1
 	size = SIZE_1
 

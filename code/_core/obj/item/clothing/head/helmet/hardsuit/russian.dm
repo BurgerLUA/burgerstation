@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/hats/exosuit_helmet.dmi'
 	desc = "Duty more like dooty."
 	desc_extended = "So, it's an exosuit's helmet. It protects. It is cool, because gas masks are cool."
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 20,
@@ -26,7 +26,7 @@
 	icon = 'icons/obj/item/clothing/hats/helmet_skat.dmi'
 	desc = "Milstalkers are just military but hetero."
 	desc_extended = "So, it's a SKAT's helmet. It protects. It is cool, because milstalkers are cool."
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -49,7 +49,7 @@
 	icon = 'icons/obj/item/clothing/hats/helmet_skat_antag.dmi'
 	desc = "I am out of S.T.A.L.K.E.R. references, really."
 	desc_extended = "Completely redesigned version of SKAT-9 combined suit, made from ground up in joint forces by the Syndicate's and Space Russia's scientists under an unnamed unofficial peace treaty agreement, yet never went into mass production due to immense cost. Comprises a PSZ-15b ultra-heavy military armored suit, built-in semi-solid frag suit, and an enhanced anomalous protection bodysuit. The armor provides one of the best protections against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Has a built-in wound tending system that passively treats its user's wounds."
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 60,

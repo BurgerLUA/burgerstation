@@ -2,7 +2,7 @@
 	name = "staff of the heirophant"
 	desc = "No longer living, I think."
 	desc_extended = "A magical staff belonging to the late heirophant. Allows for teleportation."
-	rarity = RARITY_MYTHICAL
+
 
 	icon = 'icons/obj/item/heirophant_staff.dmi'
 

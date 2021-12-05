@@ -76,7 +76,7 @@
 	icon_state = "inventory"
 
 	value = 1500
-	rarity = RARITY_RARE
+
 
 	projectile_speed = TILE_SIZE*0.25 - 1
 

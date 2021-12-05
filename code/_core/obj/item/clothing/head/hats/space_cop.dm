@@ -3,7 +3,7 @@
 	desc = "Conform to hair standards."
 	desc_extended = "A hood commonly used by the Space Cops."
 	icon = 'icons/obj/item/clothing/hats/space_cop.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

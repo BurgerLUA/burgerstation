@@ -8,7 +8,7 @@
 	desc_extended = "An absolutely legendary pizza that heals you to full health when consumed. Does not work on the dead."
 
 	value = 1000
-	rarity = RARITY_LEGENDARY
+
 
 	scale_sprite = FALSE
 
@@ -33,11 +33,11 @@
 /obj/item/container/food/meme_pizza/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("servings_left")
-	
+
 /obj/item/container/food/meme_pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("servings_left")
-	
+
 /obj/item/container/food/meme_pizza/Finalize()
 	value = servings_left*0.5*initial(value)
 	update_sprite()
@@ -54,4 +54,3 @@
 		if(!target.dead) target.rejuvenate()
 		update_sprite()
 
-	

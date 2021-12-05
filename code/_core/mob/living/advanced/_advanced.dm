@@ -152,6 +152,8 @@
 	var/list/blocking_clothing = list()
 
 	for(var/obj/item/clothing/C in worn_objects)
+		if(C.enable_torn_overlay && C.get_damage_icon_number() > 0)
+			continue
 		if(C.hidden_organs)
 			tracked_hidden_organs |= C.hidden_organs
 			blocking_clothing[C] = TRUE

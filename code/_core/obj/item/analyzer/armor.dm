@@ -2,7 +2,7 @@
 	name = "armor analyzer"
 	desc = "Minmaxxing setups since 2520."
 	desc_extended = "An incredible complex sensor that sends (mostly) harmless radiation waves to calculate the physical protection of an object."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/analyzers/armor.dmi'
 	icon_state = "inventory"
 	value = 250
@@ -31,6 +31,8 @@
 	var/list/armor_list = target.health.get_defense(caller,object_to_analyze,TRUE)
 
 	for(var/k in armor_list)
+		if(k == "items")
+			continue
 		caller.to_chat(span("debug","[uppertext(k)]: [armor_list[k]]."))
 	caller.to_chat(span("notice bold","End of message."))
 

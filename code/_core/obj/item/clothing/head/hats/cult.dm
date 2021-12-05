@@ -3,7 +3,7 @@
 	desc = "MARANAX INFIRMAX"
 	desc_extended = "A sinister hood."
 	icon = 'icons/obj/item/clothing/hats/cult.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE
@@ -27,7 +27,7 @@
 
 	name = "ancient cult hood"
 	icon = 'icons/obj/item/clothing/hats/cult_old.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 20,

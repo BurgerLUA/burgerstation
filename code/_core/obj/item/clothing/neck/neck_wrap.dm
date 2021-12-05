@@ -10,7 +10,7 @@
 
 	protected_limbs = list(BODY_TORSO, BODY_HEAD)
 
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 10,

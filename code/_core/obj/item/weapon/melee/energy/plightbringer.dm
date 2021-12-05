@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/melee/swords/plightbringer.dmi'
 
 	value = 2500
-	rarity = RARITY_RARE
+
 
 	damage_type = /damagetype/melee/sword/plightbringer
 	damage_type_on = /damagetype/melee/sword/plightbringer/on

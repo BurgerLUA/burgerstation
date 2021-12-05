@@ -17,7 +17,7 @@
 		PIERCE = 20
 	)
 
-	rarity = RARITY_UNCOMMON
+
 
 	value = 40
 
@@ -69,7 +69,7 @@
 		PIERCE = 30
 	)
 
-	rarity = RARITY_UNCOMMON
+
 
 	protected_limbs = list(BODY_GROIN,BODY_TORSO)
 

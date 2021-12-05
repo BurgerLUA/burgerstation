@@ -70,7 +70,7 @@
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom
 	name = "That Shotgun"
-	rarity = RARITY_MYTHICAL
+
 	desc = "Packs a punch (not a kick, that's another series)."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/doom.dmi'
 	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."

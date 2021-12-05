@@ -133,7 +133,7 @@
 
 	if(container)
 		color = container.color
-		alpha = container.alpha
+		alpha = container.alpha - 1
 		if(alpha >= 255)
 			opacity = TRUE
 

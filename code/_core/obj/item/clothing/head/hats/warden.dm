@@ -6,7 +6,7 @@
 
 	size = SIZE_2
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 40,

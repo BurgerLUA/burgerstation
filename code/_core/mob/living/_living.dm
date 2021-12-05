@@ -8,8 +8,6 @@
 
 	vis_flags = VIS_INHERIT_ID
 
-	var/rarity = RARITY_COMMON
-
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 

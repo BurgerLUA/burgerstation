@@ -64,7 +64,7 @@
 	desc_extended = "The finalized design of the Gauss Gun. Further research and improvements in materials have given it the durability and power efficiency it needs to fire automatically. However, creating even one of this is such an expense that only the Space Russian Military are seen using these. You have to be seriously lucky to get your hands on this." //mucho texto
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
-	rarity = RARITY_MYTHICAL
+
 	value = 15000
 
 	tier = 3

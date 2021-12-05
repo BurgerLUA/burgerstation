@@ -10,7 +10,7 @@
 		DARK = 80
 	)
 
-	rarity = RARITY_LEGENDARY
+
 
 	size = SIZE_2
 

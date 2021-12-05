@@ -13,7 +13,7 @@
 		COLD = 20
 	)
 
-	rarity = RARITY_UNCOMMON
+
 
 	size = SIZE_2
 
@@ -60,7 +60,7 @@
 		COLD = 25
 	)
 
-	rarity = RARITY_UNCOMMON
+
 
 	value = 30
 

@@ -175,6 +175,7 @@
 			continue
 		.[damage_type] += O_defense_rating[damage_type]
 
+	.["items"] = list()
 	for(var/obj/item/clothing/C in A.worn_objects)
 		if(!(O.id in C.protected_limbs))
 			continue
@@ -196,4 +197,5 @@
 				else if(C.luck < 50 && prob(50-C.luck))
 					clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
+			.["items"] += C
 

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate.dmi'
 	desc = "EVIL!"
 	desc_extended = "A sturdy, yet lightweight black dufflebag. Doesn't slow you down at all for some reason."
-	rarity = RARITY_MYTHICAL
+
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
 

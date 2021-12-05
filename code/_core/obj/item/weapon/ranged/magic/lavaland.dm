@@ -20,5 +20,5 @@
 
 	value = 2000
 
-	rarity = RARITY_RARE
+
 

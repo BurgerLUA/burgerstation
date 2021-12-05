@@ -7,7 +7,7 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	rarity = RARITY_LEGENDARY
+
 
 	defense_rating = list(
 		BLADE = 40,

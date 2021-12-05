@@ -2,7 +2,7 @@
 	name = "right clown shoe"
 	desc = "A part of the prankster's attire. Damn, they're huge!"
 	desc_extended = "Squeaky footsteps included for all your clowning needs. Honk!"
-	rarity = RARITY_MYTHICAL
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 

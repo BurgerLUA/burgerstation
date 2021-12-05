@@ -2,12 +2,12 @@
 	name = "bandolier"
 	desc = "For the aspiring sweeper."
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of shotgun shells. ALT+Click to grab additional shells while already holding a shell."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
 	worn_layer = LAYER_MOB_CLOTHING_COAT
 	dyeable = TRUE
 
-	rarity = RARITY_UNCOMMON
+
 	value = 200
 	size = SIZE_3
 

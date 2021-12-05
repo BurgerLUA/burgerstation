@@ -39,7 +39,7 @@
 	desc = "Shoot guns with theese."
 	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
 	color = "#404040"
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 20,
@@ -82,7 +82,7 @@
 	desc = "Hack airlocks with these."
 	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 10,
@@ -127,7 +127,7 @@
 	desc = "Be tactical with theese."
 	desc_extended = "A padded glove. Equipped with a fancier icon for extra tactical-ness."
 	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 40,

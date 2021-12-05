@@ -27,7 +27,7 @@
 			continue
 		. += armor_base[k] * armor_slowdown_values[k]
 
-	
+
 /obj/item/armor_plate/get_examine_list(var/mob/examiner)
 	. = ..()
 	var/list/armor_list = list()
@@ -41,7 +41,7 @@
 /obj/item/armor_plate/light
 	name = "light armor plate"
 	icon_state = "light"
-	rarity = RARITY_COMMON
+
 	armor_base = list(
 		BLADE = 15,
 		BLUNT = 15,
@@ -57,7 +57,7 @@
 /obj/item/armor_plate/medium
 	name = "medium armor plate"
 	icon_state = "medium"
-	rarity = RARITY_COMMON
+
 	armor_base = list(
 		BLADE = 15,
 		BLUNT = 30,
@@ -75,7 +75,7 @@
 /obj/item/armor_plate/heavy
 	name = "heavy armor plate"
 	icon_state = "heavy"
-	rarity = RARITY_UNCOMMON
+
 	armor_base = list(
 		BLADE = 15,
 		BLUNT = 45,
@@ -93,7 +93,7 @@
 /obj/item/armor_plate/super
 	name = "super armor plate"
 	icon_state = "super"
-	rarity = RARITY_RARE
+
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 65,
@@ -109,7 +109,7 @@
 /obj/item/armor_plate/ultra
 	name = "ultra armor plate"
 	icon_state = "super"
-	rarity = RARITY_MYTHICAL
+
 	armor_base = list(
 		BLADE = 50,
 		BLUNT = 75,

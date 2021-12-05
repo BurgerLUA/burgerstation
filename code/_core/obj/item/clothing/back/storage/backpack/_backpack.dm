@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/back/backpack/grey.dmi'
 	desc = "Vamanos!"
 	desc_extended = "A plain backpack intended for use in storing items in one convienent location. Contains plenty of pockets for easy storage. Do note that carrying backpacks slows you down somewhat."
-	rarity = RARITY_COMMON
+
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
 

@@ -2,7 +2,7 @@
 	name = "belt quiver"
 	desc = "For the aspiring archer."
 	desc_extended = "A not-so-fancy belt quiver meant to hold a number of arrows. ALT+Click to grab additional arrows while already holding an arrow."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/clothing/belts/belt_quiver.dmi'
 
 	defense_rating = list(
@@ -11,7 +11,7 @@
 		PIERCE = 20
 	)
 
-	rarity = RARITY_UNCOMMON
+
 	value = 200
 
 	var/list/stored_arrows = list()

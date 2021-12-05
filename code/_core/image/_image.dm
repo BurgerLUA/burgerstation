@@ -9,8 +9,6 @@
 	var/no_update = FALSE
 	var/list/additional_blends = list()
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
-
 /image/overlay/Destroy()
 	attached_object = null
 	QDEL_CUT_ASSOC(additional_blends)
@@ -64,5 +62,7 @@
 	else
 		icon = initial_icon
 		icon_state = initial_icon_state
+
+	if(attached_object)	appearance_flags = attached_object.appearance_flags
 
 	return TRUE

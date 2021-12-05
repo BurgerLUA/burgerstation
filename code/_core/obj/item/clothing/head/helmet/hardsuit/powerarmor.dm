@@ -3,7 +3,7 @@
 	desc = "Ad Victoriam"
 	desc_extended = "Wow! It's the helmet to the T-45d power armor suit!"
 	icon = 'icons/obj/item/clothing/hats/t45.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 60,
@@ -22,7 +22,7 @@
 	desc = "Broderhood a steal"
 	desc_extended = "Wow! It's the helmet to the T-51b power armor suit!"
 	icon = 'icons/obj/item/clothing/hats/t51.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 60,
@@ -41,7 +41,7 @@
 	desc = "For the Enclave!"
 	desc_extended = "Wow! It's the helmet to the Advanced Power Armor Mk II suit!"
 	icon = 'icons/obj/item/clothing/hats/apa.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -60,7 +60,7 @@
 	desc = "The Bear"
 	desc_extended = "Wow! It's the helmet to the Scorched Sierra Power Armor suit!"
 	icon = 'icons/obj/item/clothing/hats/ncrpa.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 60,

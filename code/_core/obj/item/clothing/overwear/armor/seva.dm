@@ -3,7 +3,7 @@
 	desc = "Idi ko mne"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike!"
 	icon = 'icons/obj/item/clothing/suit/seva_suit.dmi'
-	rarity = RARITY_UNCOMMON
+
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 

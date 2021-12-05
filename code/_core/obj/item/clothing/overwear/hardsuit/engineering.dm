@@ -3,7 +3,7 @@
 	desc = "The SM is at 9% health? Eh, it's probably gonna be fine"
 	desc_extended = "A hardsuit worn by engineers. Able to withstand incredible heat in order to work with engines."
 	icon = 'icons/obj/item/clothing/suit/engineering_rig.dmi'
-	rarity = RARITY_UNCOMMON
+
 	value = 1500
 
 	defense_rating = list(

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/hats/wizard.dmi'
 	desc = "Roll for style."
 	desc_extended = "A typical hat worn often by manchildren and those in the wizard federation."
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		ARCANE = 80,
@@ -29,7 +29,7 @@
 /obj/item/clothing/head/hat/wizard/purple
 	name = "authentic wizard hat"
 	desc = "The real deal."
-	rarity = RARITY_MYTHICAL
+
 	desc_extended = "A real, totally authentic wizard hat with all the protection a wizard needs."
 	color = COLOR_PURPLE
 	defense_rating = list(

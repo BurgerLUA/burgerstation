@@ -4,7 +4,7 @@
 	desc_extended = "Armor made from hardened carbon fibres."
 	icon = 'icons/obj/item/clothing/suit/space_military_new.dmi'
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 20,

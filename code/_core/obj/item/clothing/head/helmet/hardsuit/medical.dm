@@ -3,7 +3,7 @@
 	desc = "Out the fucking way!"
 	desc_extended = "A hardsuit worn by medics while retrieving corpses to avoid becoming a corpse themselves."
 	icon = 'icons/obj/item/clothing/hats/hardsuit_medical.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 20,

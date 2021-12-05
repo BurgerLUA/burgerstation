@@ -2,7 +2,7 @@
 	name = "drip"
 	icon = 'icons/obj/item/clothing/suit/drip.dmi'
 
-	rarity = RARITY_LEGENDARY
+
 
 	desc = "By any means necessary."
 	desc_extended = "Probably the most expensive clothing you can find. Does it do anything? Probably not."

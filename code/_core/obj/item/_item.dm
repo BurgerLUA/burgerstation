@@ -14,11 +14,12 @@
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
 
-	var/rarity = RARITY_COMMON
-
 	size = SIZE_0
 	var/weight = 0 //DEPRICATED
 	var/quality = 100
+	var/rarity = RARITY_COMMON //Arbitrary Value
+	var/tier = -1 //-1 means not set.
+	var/tier_type = "item"
 
 	var/list/material = list() //Stored materials
 
@@ -149,7 +150,7 @@
 	var/can_hold = TRUE
 	var/can_wear = FALSE
 
-	density = 1
+	density = TRUE
 
 	value = -1
 
@@ -192,6 +193,25 @@
 	unremovable = TRUE
 
 	. = ..()
+
+var/global/list/rarity_to_prob = list(
+	RARITY_COMMON = 80,
+	RARITY_UNCOMMON = 20,
+	RARITY_RARE = 4,
+	RARITY_MYTHICAL = 1
+)
+
+var/global/list/rarity_to_mul = list(
+	RARITY_COMMON = 1,
+	RARITY_UNCOMMON = 2,
+	RARITY_RARE = 3,
+	RARITY_MYTHICAL = 4
+)
+
+/obj/item/proc/generate_rarity() //Only called when loot is spawned. Not in shops or other means.
+	if(rarity == RARITY_COMMON) rarity = pickweight(rarity_to_prob)
+	if(uses_until_condition_fall > 0) quality += (rarity_to_mul[rarity]-1)*10
+	return TRUE
 
 /obj/item/proc/use_condition(var/amount_to_use=1)
 

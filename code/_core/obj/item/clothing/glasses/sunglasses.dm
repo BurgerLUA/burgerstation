@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/sun
 	name = "sunglasses"
-	rarity = RARITY_UNCOMMON
+
 	desc = "Deal with it."
 	desc_extended = "A simple pair of sleek sunglasses designed to reflect sunlight, and lasers. The inverse of prescription glasses."
 	icon = 'icons/obj/item/clothing/glasses/sunglasses.dmi'
@@ -78,7 +78,7 @@
 	desc = "Your vision is augmented."
 	desc_extended = "Powerful augmented shades meant for security personel. These come with a built in security HUD as well as thermal imaging. For the badass."
 	icon = 'icons/obj/item/clothing/glasses/abomb_shades.dmi'
-	rarity = RARITY_MYTHICAL
+
 	defense_rating = list(
 		BLADE = 20,
 		BLUNT = 20,
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/glasses/sun/security
 	name = "security sunglasses"
-	rarity = RARITY_UNCOMMON
+
 	desc = "This is just like a videogame!"
 	desc_extended = "A security heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen."
 	icon = 'icons/obj/item/clothing/glasses/security_hud.dmi'
@@ -112,7 +112,7 @@
 
 /obj/item/clothing/glasses/sun/security/red
 	name = "combat sensors suite sunglasses"
-	rarity = RARITY_MYTHICAL
+
 	desc_extended = "A syndicate heads up display sunglass kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking syndicate operatives. Comes with built-in thermals as well."
 	value = 1000
 
@@ -128,7 +128,7 @@
 
 /obj/item/clothing/glasses/sun/security/revolutionary
 	name = "ballistic goggles"
-	rarity = RARITY_MYTHICAL
+
 	desc_extended = "An old yet well-maintained pair of ballistic goggles with a built-in heads up display kit that analyzes the IFF implant of nearby living beings and displays them on the screen. This model is more advanced, and is usually found on high ranking revolutionary soldiers. Comes with built-in thermals as well."
 	icon = 'icons/obj/item/clothing/glasses/rev_goggles.dmi'
 	value = 1000

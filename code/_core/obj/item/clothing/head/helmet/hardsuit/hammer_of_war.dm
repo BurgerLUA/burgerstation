@@ -3,7 +3,7 @@
 	desc = "Book says no."
 	desc_extended = ""
 	icon = 'icons/obj/item/clothing/hats/hammer_of_war.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 60,

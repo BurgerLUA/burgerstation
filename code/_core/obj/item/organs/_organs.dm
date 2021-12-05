@@ -65,13 +65,13 @@
 
 	var/list/defense_rating = HUMAN_ARMOR
 
-	var/robotic = FALSE //Set to true if the limb is robotic.
-
 	var/can_gib = TRUE
 
 	mouse_opacity = 0 //For now
 
 	enable_blood_stains = TRUE
+
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
 
 /obj/item/organ/New(var/desired_loc)
 	. = ..()
@@ -142,16 +142,27 @@
 		var/bleed_to_add = total_bleed_damage/50
 		src.bleeding += bleed_to_add
 
+	. = ..()
+
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
-		if(!A.immortal && !A.ckey_last && !A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
-			gib()
-			A.death()
-
-	return ..()
+		if(!A.immortal && !A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
+			if(is_player(A))
+				var/mob/living/advanced/player/P = A
+				if(P.dead && is_player(attacker)) //Only gib if the player is dead and the person gibbing is a player.
+					var/mob/living/advanced/A2 = attacker
+					if(A2.client)
+						P.make_unrevivable()
+						gib()
+			else
+				if(A.client)
+					var/turf/T = get_turf(A)
+					A.client.make_ghost(T ? T : locate(128,128,1))
+				gib()
+				A.death()
 
 /obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
 	return FALSE

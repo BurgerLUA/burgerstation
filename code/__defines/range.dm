@@ -1,4 +1,4 @@
-#define VIEW_RANGE 11
+#define VIEW_RANGE 10
 #define ZOOM_RANGE 5
 
 #define WHISPER_RANGE 2

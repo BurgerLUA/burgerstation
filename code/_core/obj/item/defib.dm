@@ -32,7 +32,7 @@
 	item_slot = SLOT_GROIN_BELT
 	container_max_size = SIZE_2
 
-	rarity = RARITY_UNCOMMON
+
 
 	value = 1600
 

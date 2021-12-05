@@ -3,7 +3,7 @@
 	desc = "hey hos can i have your coat plz"
 	desc_extended = "Somehow better against bullets than actual kevlar vests."
 	icon = 'icons/obj/item/clothing/suit/hos.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -24,7 +24,7 @@
 	desc = "hey commie can i have your coat plz"
 	desc_extended = "Somehow better against bullets than actual kevlar vests."
 	icon = 'icons/obj/item/clothing/suit/revfficer.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 40,

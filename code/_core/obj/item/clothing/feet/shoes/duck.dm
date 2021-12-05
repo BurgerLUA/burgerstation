@@ -2,7 +2,7 @@
 	name = "right duck"
 	desc = "Ducks were harmed in the making of these slippers."
 	desc_extended = "Squeaky footsteps included for all your ducking needs. Quack!"
-	rarity = RARITY_MYTHICAL
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 

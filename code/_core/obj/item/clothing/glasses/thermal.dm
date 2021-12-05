@@ -3,7 +3,7 @@
 	desc = "Wallhacks that fit on your face!"
 	desc_extended = "Some magical goggles that allow you to see mobs through walls."
 	icon = 'icons/obj/item/clothing/glasses/thermal.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(,
 		ARCANE = -20

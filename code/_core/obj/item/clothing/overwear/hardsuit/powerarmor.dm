@@ -3,7 +3,7 @@
 	desc = "Ad Victoriam"
 	desc_extended = "A less advanced suit of power armor commonly worn by tech worshipping nerds."
 	icon = 'icons/obj/item/clothing/suit/t45armor.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 60,
@@ -21,7 +21,7 @@
 	desc = "Broderhood a steal"
 	desc_extended = "A classic example of power armor. More advacned than the earlier T-45 armors."
 	icon = 'icons/obj/item/clothing/suit/t51armor.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 60,
@@ -39,7 +39,7 @@
 	desc = "For the Enclave!"
 	desc_extended = "The most advanced suit of power armor ever made..."
 	icon = 'icons/obj/item/clothing/suit/enclave_apa.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -59,7 +59,7 @@
 	desc = "The Bear"
 	desc_extended = "A heavily modified suit of T-45d power armor. It looks sweet."
 	icon = 'icons/obj/item/clothing/suit/ncrpowerarmor.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 60,

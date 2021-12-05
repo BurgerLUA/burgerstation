@@ -4,7 +4,7 @@
 	desc_extended = "An extremely heavy duty armor set only meant for the badest of badasses."
 	icon = 'icons/obj/item/clothing/suit/hostile.dmi'
 
-	rarity = RARITY_LEGENDARY
+
 
 	defense_rating = list(
 		BLADE = 80,

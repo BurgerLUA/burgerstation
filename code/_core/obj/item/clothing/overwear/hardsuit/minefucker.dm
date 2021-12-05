@@ -6,7 +6,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 
-	rarity = RARITY_RARE
+
 	value = 500
 
 	defense_rating = list(

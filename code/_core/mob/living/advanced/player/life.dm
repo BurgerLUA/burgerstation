@@ -4,7 +4,7 @@
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 	if(mobdata)
-		mobdata.save_character(src,save_inventory = FALSE,died = TRUE,force = TRUE)
+		mobdata.save_character(src,save_inventory = FALSE,died = TRUE)
 
 /mob/living/advanced/player/on_killed(var/list/attackers)
 
@@ -26,6 +26,9 @@
 	dead_player_mobs -= src
 	death_ckey = null
 
+
 /mob/living/advanced/player/proc/on_kill_player(var/mob/living/advanced/player/P)
 	HOOK_CALL("on_kill_player")
 	return TRUE
+
+

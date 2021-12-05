@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/hats/cat.dmi'
 	desc = "Pwease gimme huggie wuggies! uwu!"
 	desc_extended = "Dude what the fuck are you doing? Why did you buy this, why the fuck would you wanna even wear this? What the fuck, dude?"
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		HOLY = -80,
@@ -36,7 +36,7 @@
 	icon = 'icons/obj/item/clothing/hats/bunny.dmi'
 	desc = "Pwease gimme huggie wuggies! uwu!"
 	desc_extended = "Dude what the fuck are you doing? Why did you buy this, why the fuck would you wanna even wear this? What the fuck, dude?"
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		HOLY = -80,
