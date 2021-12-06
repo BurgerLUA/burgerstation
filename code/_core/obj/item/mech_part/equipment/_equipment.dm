@@ -27,7 +27,7 @@
 		return stored_weapon.get_battery()
 	return ..()
 
-/obj/item/mech_part/equipment/weapon/save_item_data(var/save_inventory = TRUE)
+/obj/item/mech_part/equipment/weapon/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_weapon")
 

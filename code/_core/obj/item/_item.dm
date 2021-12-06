@@ -158,7 +158,7 @@
 
 	var/can_save = TRUE
 
-	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable.
+	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable. For clothing it's "How much damage equals -1% quality."
 
 	enable_chunk_clean = TRUE
 
@@ -301,7 +301,7 @@ var/global/list/rarity_to_mul = list(
 	. = ..()
 
 /obj/item/get_base_value()
-	return initial(value) * item_count_current * price_multiplier
+	return initial(value) * item_count_current * price_multiplier * (0.5 + 0.5*clamp(quality/100,0.25,1.5))
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
 	if(!amount_to_transfer) return 0

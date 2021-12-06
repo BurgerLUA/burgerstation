@@ -34,8 +34,6 @@
 
 mob/living/advanced/revive()
 
-	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
-
 	var/species/S = SPECIES(species)
 	if(!S)
 		return FALSE
@@ -58,8 +56,6 @@ mob/living/advanced/revive()
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)
 
-	CALLBACK("\ref[src]_make_unrevivable",SECONDS_TO_DECISECONDS(60),src,.proc/make_unrevivable)
-
 /mob/living/advanced/proc/handle_organs()
 
 	if(!health)
@@ -69,19 +65,5 @@ mob/living/advanced/revive()
 		var/obj/item/organ/O = labeled_organs[k]
 		CHECK_TICK(75,FPS_SERVER*2)
 		if(O.has_life) O.on_life()
-
-	return TRUE
-
-/mob/living/advanced/proc/make_unrevivable() //only applies to players.
-
-	if(client)
-		var/client/C = client
-		var/turf/T = get_turf(src)
-		C.make_ghost(T ? T : locate(128,128,1))
-		to_chat(span("danger","You can no longer be revived..."))
-	else
-		ckey_last = null
-
-	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 
 	return TRUE

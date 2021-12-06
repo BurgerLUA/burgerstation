@@ -12,7 +12,7 @@
 
 	weight = 1
 
-/obj/item/soulgem/save_item_data(var/save_inventory = TRUE)
+/obj/item/soulgem/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("total_charge")
 

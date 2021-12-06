@@ -11,14 +11,14 @@
 	container_max_size = SIZE_2
 	container_max_slots = 1
 
-/obj/item/storage/bags/goodie/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/bags/goodie/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("loot_generated")
-	
+
 /obj/item/storage/bags/goodie/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("loot_generated")
-	
+
 /obj/item/storage/bags/goodie/click_self(var/mob/caller)
 
 	if(!loot_generated)

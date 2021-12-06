@@ -25,7 +25,7 @@
 		var/v = stored_shells[k]
 		shell_count += v
 
-/obj/item/clothing/belt/bandolier/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/belt/bandolier/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["stored_shells"] = list()
 	for(var/k in stored_shells)

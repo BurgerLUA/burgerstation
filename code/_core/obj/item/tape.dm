@@ -20,7 +20,7 @@
 		. += div("notice","It currently holding [stored_tape.name] inside.")
 	. += div("notice","It is currently [playing ? "playing" : "not playing"].")
 
-/obj/item/cassette_player/save_item_data(var/save_inventory = TRUE)
+/obj/item/cassette_player/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_tape")
 
@@ -81,7 +81,7 @@
 		caller.to_chat(span("notice","You insert \the [stored_tape.name] into \the [src.name]."))
 		if(old_tape && is_advanced(caller))
 			var/mob/living/advanced/A = caller
-			A.put_in_hands(stored_tape,left = params["left"])
+			A.put_in_hands(stored_tape,params)
 		return TRUE
 
 	if(is_inventory(object))
@@ -148,7 +148,7 @@
 		stored_track = pick(SStrack.all_tracks)
 		icon_state = "tape_blue"
 
-/obj/item/cassette_tape/save_item_data(var/save_inventory = TRUE)
+/obj/item/cassette_tape/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("stored_track")
 

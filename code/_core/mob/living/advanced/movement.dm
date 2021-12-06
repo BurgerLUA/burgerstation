@@ -33,10 +33,10 @@ mob/living/advanced/get_movement_delay()
 	var/health_mul = 1
 	var/stamina_mul = 1
 	var/pain_mul = 1
-	var/adrenaline_bonus = 1 + ((get_status_effect_magnitude(ADRENALINE)/100)*(get_status_effect_duration(ADRENALINE)/100))
+	var/adrenaline_bonus = 1 + ((get_status_effect_magnitude(ADRENALINE)/100)*(0.5 + (get_status_effect_duration(ADRENALINE)/100))*0.5)
 
 	if(health)
-		var/pain_bonus = min(1,get_status_effect_magnitude(PAINKILLER)/100) * min(1,get_status_effect_duration(PAINKILLER)/100) * health.health_max
+		var/pain_bonus = min(1,get_status_effect_magnitude(PAINKILLER)/100) * min(1,0.5 + (get_status_effect_duration(PAINKILLER)/100)*0.5) * health.health_max
 		health_mul = clamp(0.5 + ((health.health_current + pain_bonus)/health.health_max),0.5,1)
 		stamina_mul = clamp(0.75 + ((health.stamina_current + pain_bonus)/health.stamina_max),0.75,1)
 		pain_mul = clamp(0.1 + (1 - ((health.get_loss(PAIN) - pain_bonus)/health.health_max))*0.9,0.1,1)

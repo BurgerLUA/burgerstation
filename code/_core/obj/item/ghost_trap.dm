@@ -13,7 +13,7 @@
 
 	density = TRUE
 
-/obj/item/ghost_box/save_item_data(var/save_inventory = TRUE)
+/obj/item/ghost_box/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("stored_ghost")
 

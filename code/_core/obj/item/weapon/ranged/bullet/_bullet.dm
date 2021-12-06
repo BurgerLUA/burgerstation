@@ -65,7 +65,7 @@
 	. += (bullet_length_max * bullet_diameter_max)/(9*19)*100
 */
 
-/obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 
 	if(src.chambered_bullet) .["chambered_bullet"] = src.chambered_bullet.type

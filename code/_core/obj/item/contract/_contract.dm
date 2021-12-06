@@ -74,7 +74,7 @@
 	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
-/obj/item/contract/save_item_data(var/save_inventory = TRUE)
+/obj/item/contract/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("reward")
 	SAVEVAR("amount_current")
@@ -104,7 +104,7 @@
 			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
 
 
-/obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
+/obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P,var/params)
 	var/turf/T = get_turf(P)
 	if(burgerbux_reward)
 		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
@@ -113,7 +113,7 @@
 		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
 	src.drop_item(T)
 	reward.drop_item(T)
-	P.put_in_hands(reward)
+	P.put_in_hands(reward,params)
 	reward = null //Just in case.
 	amount_current = 0 //Just in case.
 	qdel(src)

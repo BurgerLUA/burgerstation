@@ -30,7 +30,7 @@
 
 	if(reinforced_material_id)
 		var/image/I = new/image(initial(icon),"ref")
-		I.appearance_flags = RESET_COLOR
+		I.appearance_flags = RESET_COLOR | RESET_ALPHA
 		I.color = reinforced_color
 		I.alpha = 100
 		add_overlay(I)

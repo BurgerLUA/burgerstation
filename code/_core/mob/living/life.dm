@@ -126,6 +126,7 @@
 */
 
 /mob/living/proc/revive()
+	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 	hit_logs = list() //Clear logs.
 	movement_flags = 0x0
 	attack_flags = 0x0
@@ -209,6 +210,11 @@
 			on_killed(people_who_killed)
 
 	HOOK_CALL("post_death")
+
+	if(expiration_time == -1)
+		make_unrevivable()
+	else if(expiration_time > 0)
+		CALLBACK("\ref[src]_make_unrevivable",expiration_time,src,.proc/make_unrevivable)
 
 	if(delete_on_death)
 		dust()
@@ -556,3 +562,18 @@ mob/living/proc/on_life_slow()
 	new/obj/effect/temp/fist(T,4,"#FFFFFF")
 	play_sound('sound/effects/anima_fragment_attack.ogg',T,range_max=VIEW_RANGE)
 	on_crush()
+
+
+/mob/living/proc/make_unrevivable() //only applies to players.
+
+	if(client)
+		var/client/C = client
+		var/turf/T = get_turf(src)
+		C.make_ghost(T ? T : locate(128,128,1))
+		to_chat(span("danger","You can no longer be revived..."))
+	else
+		ckey_last = null
+
+	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
+
+	return TRUE

@@ -69,7 +69,7 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/modify_item(var/obj/item/I,var/obj/item/base_item)
 	return TRUE
 
-/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0)
+/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0)
 
 	if(!spend_currency(P,item_value))
 		return null

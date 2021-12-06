@@ -9,6 +9,8 @@
 
 	dynamic_inventory_type = /obj/hud/inventory/dynamic/belt
 
+	uses_until_condition_fall = 450
+
 
 /obj/item/clothing/belt/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 

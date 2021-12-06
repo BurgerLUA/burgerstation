@@ -35,17 +35,13 @@
 		reagents.volume_max = item_count_current*10
 
 /obj/item/container/medicine/quick(var/mob/caller,var/atom/object,location,params)
+
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
 
 	var/mob/living/advanced/A = caller
-	var/obj/hud/inventory/I = src.loc
-	var/obj/item/belt_storage = I.loc
-	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
 
-	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
-
-	return A.put_in_hands(src,left = put_in_left)
+	return A.put_in_hands(src,params)
 
 
 /obj/item/container/medicine/update_icon()

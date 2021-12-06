@@ -5,3 +5,5 @@
 		BODY_HEAD = TRUE,
 		BODY_EYES = TRUE
 	)
+
+	uses_until_condition_fall = 600

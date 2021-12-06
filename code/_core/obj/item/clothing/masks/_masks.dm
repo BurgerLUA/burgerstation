@@ -6,3 +6,5 @@
 	protected_limbs = list(BODY_HEAD)
 
 	item_slot_layer = 3
+
+	uses_until_condition_fall = 300

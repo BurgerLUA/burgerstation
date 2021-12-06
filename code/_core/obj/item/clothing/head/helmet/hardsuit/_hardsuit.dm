@@ -6,3 +6,5 @@
 		BODY_EYES = TRUE
 	)
 	value = -1
+
+	uses_until_condition_fall = 750

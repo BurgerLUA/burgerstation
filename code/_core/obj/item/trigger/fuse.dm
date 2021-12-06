@@ -18,7 +18,7 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/fuse/save_item_data(var/save_inventory = TRUE)
+/obj/item/device/fuse/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("time_set")
 

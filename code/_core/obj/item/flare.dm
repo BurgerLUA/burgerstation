@@ -22,7 +22,7 @@
 	QDEL_NULL(stored_cap)
 	. = ..()
 
-/obj/item/flare/save_item_data(var/save_inventory = TRUE)
+/obj/item/flare/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_cap")
 	SAVEVAR("ignited")
@@ -59,7 +59,7 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		var/mob/living/advanced/A = caller
-		A.put_in_hands(stored_cap)
+		A.put_in_hands(stored_cap,params)
 		caller.to_chat(span("notice","You remove \the [stored_cap.name] from \the [src.name]."))
 		play_sound('sound/items/flare_cap.ogg',get_turf(src))
 		stored_cap = null

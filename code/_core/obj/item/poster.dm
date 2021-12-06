@@ -5,7 +5,7 @@
 	value_burgerbux = 1
 	value = 4000
 
-/obj/item/poster/save_item_data(var/save_inventory = TRUE)
+/obj/item/poster/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("stored_poster")
 

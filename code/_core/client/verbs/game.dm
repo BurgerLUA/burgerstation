@@ -33,8 +33,8 @@
 	if(choice != "Yes")
 		return FALSE
 
-	make_ghost(mob.loc)
-	to_chat(span("danger","You abandon your body..."))
+	L.make_unrevivable()
+
 	return TRUE
 
 

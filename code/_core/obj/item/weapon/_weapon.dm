@@ -49,13 +49,8 @@
 		return FALSE
 
 	var/mob/living/advanced/A = caller
-	var/obj/hud/inventory/I = src.loc
-	var/obj/item/belt_storage = I.loc
-	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
 
-	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
-
-	return A.put_in_hands(src,left = put_in_left)
+	return A.put_in_hands(src,params)
 
 /* Price calculation is hard.
 /obj/item/weapon/get_base_value()
@@ -112,7 +107,7 @@
 	update_sprite()
 	return ..()
 
-/obj/item/weapon/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 	if(enchantment)

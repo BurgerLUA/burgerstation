@@ -264,6 +264,8 @@
 
 	var/list/hit_logs = list()
 
+	var/expiration_time = -1 //Time at which the mob "expires" after death and cannot be revived. Set to 0 to disable. Set to -1 to make it instant upon death.
+
 /mob/living/Destroy()
 
 	buckled_object = null

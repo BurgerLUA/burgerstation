@@ -52,7 +52,7 @@
 						SSeconomy.goblin_economy -= G.item_count_current
 						qdel(I)
 						B.set_stored_object(null)
-						A.put_in_hands(G)
+						A.put_in_hands(G,params)
 					SSeconomy.update_stats()
 			else
 				B.set_stored_object(null)

@@ -20,7 +20,7 @@
 
 	size = SIZE_3
 
-/obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVELISTATOM("installed_plate_carriers")
 

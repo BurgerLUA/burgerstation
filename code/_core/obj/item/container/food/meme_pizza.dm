@@ -30,7 +30,7 @@
 
 	return ..()
 
-/obj/item/container/food/meme_pizza/save_item_data(var/save_inventory = TRUE)
+/obj/item/container/food/meme_pizza/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("servings_left")
 

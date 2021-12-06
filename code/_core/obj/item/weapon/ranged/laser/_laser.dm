@@ -23,7 +23,7 @@
 	. = ..()
 	if(battery) . += battery.get_value()
 
-/obj/item/weapon/ranged/energy/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/energy/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("battery")
 

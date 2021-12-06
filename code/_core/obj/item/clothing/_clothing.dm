@@ -85,7 +85,7 @@
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()
 
-/obj/item/clothing/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 

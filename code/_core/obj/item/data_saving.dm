@@ -74,7 +74,7 @@
 
 	return I
 
-/obj/item/proc/save_item_data(var/save_inventory = TRUE)
+/obj/item/proc/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
 
@@ -99,6 +99,8 @@
 		.["inventories"] = new/list(length(inventories))
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/hud/inventory/IN = inventories[i]
+			if(died && !IN.worn)
+				continue
 			var/list/inventory_data = list()
 			try
 				inventory_data = IN.get_inventory_data(save_inventory)
@@ -115,14 +117,20 @@
 	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
-	if(quality && quality != initial(quality))
-		.["quality"] = min(quality,140)
+	if(quality && uses_until_condition_fall)
+		var/desired_quality = quality
+		if(died)
+			quality *= 0.25
+			quality -= 25
+			quality = FLOOR(quality,1)
+		if(desired_quality != initial(quality))
+			.["quality"] = clamp(quality,0,140)
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck
 
 
-/obj/item/organ/save_item_data(var/save_inventory = TRUE)
+/obj/item/organ/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 
 	. = ..()
 

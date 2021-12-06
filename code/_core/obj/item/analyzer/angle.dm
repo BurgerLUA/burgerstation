@@ -78,7 +78,7 @@ var/global/list/gps_list = list()
 			return
 	return ..()
 
-/obj/item/analyzer/gps/save_item_data(var/save_inventory = TRUE)
+/obj/item/analyzer/gps/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["name"] = name
 	.["assigned_number"] = assigned_number

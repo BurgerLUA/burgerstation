@@ -173,7 +173,7 @@
 	value = 20
 
 
-/obj/item/storage/pillbottle/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/pillbottle/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
@@ -369,7 +369,7 @@
 	if(goods && hoard > 0)
 		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")
@@ -404,7 +404,7 @@
 			if((goods.item_count_max == 1) || (hoard == 1))
 				var/obj/item/M = new goods.type
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 				C.to_chat(span("notice","You take out a single [M.name]."))
 				hoard--
 				INTERACT_DELAY(1)
@@ -422,14 +422,14 @@
 				M.update_sprite()
 				hoard -= maxstack
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 			else if(choice < maxstack)
 				var/obj/item/M = new goods.type
 				M.item_count_current = choice
 				M.update_sprite()
 				hoard -= choice
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 			if (!hoard)
 				caller.to_chat(span("notice","\The [src.name] is now empty."))
 				goods = null

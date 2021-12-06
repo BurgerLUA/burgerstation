@@ -23,7 +23,7 @@
 		if(!stored_extinguisher)
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
-		A.put_in_hands(stored_extinguisher)
+		A.put_in_hands(stored_extinguisher,params)
 		stored_extinguisher = null
 		update_sprite()
 		return TRUE

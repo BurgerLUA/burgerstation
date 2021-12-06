@@ -342,7 +342,6 @@
 		owner.remove_color_mod("druggy")
 	return TRUE
 
-
 /status_effect/stressed
 	name = "Stressed"
 	desc = "You're stressed!"
@@ -370,7 +369,14 @@
 		owner.remove_color_mod("stressed")
 	return TRUE
 
+/status_effect/painkiller
+	name = "Painkiller"
+	desc = "You're under the influence of painkillers!"
+	id = PAINKILLER
+	minimum = 10
+	maximum = 600
 
+	affects_dead = TRUE
 
 /status_effect/mana_void
 	name = "Mana Void"
@@ -378,7 +384,6 @@
 	id = MANAVOID
 	minimum = 10
 	maximum = 100
-
 
 /status_effect/mana_void/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	owner.mana_regen_buffer = -1000

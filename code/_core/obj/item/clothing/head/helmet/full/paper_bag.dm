@@ -30,7 +30,7 @@
 	. = ..()
 	update_inventory()
 
-/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("logo")
 	SAVEVAR("logobg")

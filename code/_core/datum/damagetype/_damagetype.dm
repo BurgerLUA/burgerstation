@@ -534,11 +534,12 @@
 		display_glance_message(attacker,victim,weapon,hit_object)
 	else
 		if(defense_rating_victim && defense_rating_victim["items"])
+			var/condition_damage = total_damage_dealt
 			for(var/k in defense_rating_victim["items"])
 				var/obj/item/I = k
-				var/condition_damage = FLOOR(0.1 * total_damage_dealt * max(0,I.quality-100),1)
-				if(condition_damage > 0)
-					I.use_condition(condition_damage)
+				if(I.uses_until_condition_fall <= 0)
+					continue
+				I.use_condition(condition_damage)
 
 		display_hit_message(attacker,victim,weapon,hit_object)
 		if(is_living(blamed) && is_living(victim))

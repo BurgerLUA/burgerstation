@@ -13,7 +13,7 @@
 
 	weight = 4
 
-/obj/item/supply_remote/save_item_data(var/save_inventory = TRUE)
+/obj/item/supply_remote/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charges")
 

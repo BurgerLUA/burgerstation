@@ -184,7 +184,7 @@
 
 	check_promotion()
 
-/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
+/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
 
@@ -224,7 +224,7 @@
 		if(!O)
 			log_error("WARNING: Organ [id] not found while saving! Save corruption possible!")
 			continue
-		final_organ_list[id] = O.save_item_data(save_inventory)
+		final_organ_list[id] = O.save_item_data(save_inventory,died)
 	.["organs"] = final_organ_list
 
 	//Skills

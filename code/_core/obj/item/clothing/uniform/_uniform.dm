@@ -16,3 +16,5 @@
 		BODY_LEG_LEFT = TRUE,
 		BODY_LEG_RIGHT = TRUE
 	)
+
+	uses_until_condition_fall = 300

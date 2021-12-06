@@ -75,7 +75,7 @@
 
 	return TRUE
 
-/obj/item/grenade/save_item_data(var/save_inventory = TRUE)
+/obj/item/grenade/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("open")
 	SAVEVAR("spent")
@@ -85,7 +85,7 @@
 	LOADVAR("open")
 	LOADVAR("spent")
 
-/obj/item/grenade/save_item_data(var/save_inventory = TRUE)
+/obj/item/grenade/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 
 	. = ..()
 

@@ -26,7 +26,7 @@
 	. = ..()
 	. *= wand_damage_multiplier**2
 
-/obj/item/weapon/ranged/wand/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/wand/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("socketed_spellgem")
 

@@ -22,3 +22,5 @@
 		BODY_FOOT_RIGHT = TRUE,
 		BODY_FOOT_LEFT = TRUE
 	)
+
+	uses_until_condition_fall = 1000

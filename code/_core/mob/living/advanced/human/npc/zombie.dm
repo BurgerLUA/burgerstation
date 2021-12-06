@@ -22,10 +22,10 @@
 
 	death_threshold = -100
 
-	movement_delay = 1
-
 	sex = NEUTER
 	gender = NEUTER
+
+	damage_received_multiplier = 0.75
 
 /mob/living/advanced/npc/zombie/Initialize()
 

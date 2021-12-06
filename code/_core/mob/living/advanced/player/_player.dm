@@ -105,6 +105,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	damage_received_multiplier = 0.75
 
+	expiration_time = SECONDS_TO_DECISECONDS(60)
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	last_autosave = world.time

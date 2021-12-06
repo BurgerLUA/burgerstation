@@ -14,6 +14,7 @@
 	health_base = 1000
 
 	window_blend = TRUE
+	reinforced_blend = BLEND_MULTIPLY
 
 /turf/simulated/wall/metal/New(var/desired_loc)
 	. = ..()
@@ -48,7 +49,7 @@
 	desc_extended = "It's a wall made of steel reinforced with plasteel, really tough."
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
-	reinforced_color = "#FFFFFF"
+	reinforced_color = COLOR_PLASTEEL
 	health_base = 3000
 
 /turf/simulated/wall/metal/reinforced/hull
