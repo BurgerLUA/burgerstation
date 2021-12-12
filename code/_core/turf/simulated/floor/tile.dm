@@ -33,7 +33,7 @@
 /turf/simulated/floor/tile/grey/ish
 	color = "#8A8888"
 
-/turf/simulated/floor/tile/blue_baby
+/turf/simulated/floor/tile/blue/light
 	color = "#729AB1"
 
 /turf/simulated/floor/tile/grey/single

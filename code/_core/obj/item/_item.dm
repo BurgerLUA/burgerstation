@@ -240,7 +240,7 @@ var/global/list/rarity_to_mul = list(
 		update_sprite()
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
-	return CEILING(clamp( (100 - quality) / (100/5),0,5 ),1)
+	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
 /obj/item/initialize_blends(var/desired_icon_state)
 
@@ -287,7 +287,7 @@ var/global/list/rarity_to_mul = list(
 		)
 
 	if(enable_torn_overlay)
-		var/desired_damage_num = get_damage_icon_number()
+		var/desired_damage_num = max(0,get_damage_icon_number() - 1)
 		add_blend(
 			"damage_overlay",
 			desired_icon = 'icons/mob/living/advanced/overlays/damage_overlay.dmi',

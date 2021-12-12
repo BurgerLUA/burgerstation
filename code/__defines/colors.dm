@@ -58,7 +58,7 @@
 #define COLOR_OLIVE_DRAB "#797659"
 
 //Department Colors
-#define COLOR_CARGO "#BB9042"
+#define COLOR_CARGO "#B57329"
 
 #define COLOR_COMMAND "#2C566E"
 

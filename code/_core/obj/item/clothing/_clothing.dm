@@ -4,6 +4,8 @@
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
+	appearance_flags = PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
+
 	weight = 0
 
 	can_rename = TRUE

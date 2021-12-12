@@ -117,14 +117,14 @@
 	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
-	if(quality && uses_until_condition_fall)
+	if(uses_until_condition_fall)
 		var/desired_quality = quality
 		if(died)
-			quality *= 0.25
-			quality -= 25
-			quality = FLOOR(quality,1)
+			desired_quality *= 0.25
+			desired_quality -= 25
+			desired_quality = FLOOR(desired_quality,1)
 		if(desired_quality != initial(quality))
-			.["quality"] = clamp(quality,0,140)
+			.["quality"] = clamp(desired_quality,0,140)
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck

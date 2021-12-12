@@ -291,7 +291,7 @@
 
 	sound_environment = ENVIRONMENT_CONCERT_HALL
 
-	color = COLOR_GREY_DARK
+	map_color = COLOR_GREY_DARK
 
 /area/burgerstation/cargo
 	name = "\improper Cargo"
