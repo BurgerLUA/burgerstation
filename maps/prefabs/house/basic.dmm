@@ -1,0 +1,24 @@
+"a" = (/turf/simulated/wall/wood/brown,/area)
+"b" = (/turf/simulated/floor/wood/brown,/area)
+"c" = (/obj/item/storage/heavy/fridge,/turf/simulated/floor/wood/brown,/area)
+"d" = (/obj/structure/table/wood,/turf/simulated/floor/wood/brown,/area)
+"e" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/wood/brown,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+abbddecddbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+aaaaaaaaaaaaaaaa
+"}

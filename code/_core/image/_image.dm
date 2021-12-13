@@ -9,6 +9,8 @@
 	var/no_update = FALSE
 	var/list/additional_blends = list()
 
+	plane = FLOAT_PLANE
+
 /image/overlay/Destroy()
 	attached_object = null
 	QDEL_CUT_ASSOC(additional_blends)

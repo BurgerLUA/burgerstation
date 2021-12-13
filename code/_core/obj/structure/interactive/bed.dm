@@ -8,7 +8,8 @@ obj/structure/interactive/bed
 	var/pixel_offset_x = 0
 	var/pixel_offset_y = 0
 
-	layer = LAYER_MOB_BELOW
+	plane = PLANE_MOB_STEALTH
+	layer = 0
 	var/opened_time = 0
 
 	bullet_block_chance = 50
@@ -58,35 +59,13 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/objec
 
 	return FALSE
 
-obj/structure/interactive/bed/PostInitialize()
+obj/structure/interactive/bed/Finalize()
 	. = ..()
 	update_sprite()
 
-obj/structure/interactive/bed/padded
-	name = "padded bed"
-
-
-obj/structure/interactive/bed/padded/update_overlays()
-
+obj/structure/interactive/bed/sheet/Generate()
 	. = ..()
-
-	var/image/sheets = new(icon,"bed_padding")
-	sheets.color = secondary_color
-	add_overlay(sheets)
-
-
-/*
-
-obj/structure/interactive/bed/padded/update_icon()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	var/icon/I = new(icon,icon_state)
-	var/icon/I2 = new(icon,"bed_padding")
-
-	I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-*/
-
+	var/obj/item/bedsheet/S = new(src.loc)
+	INITIALIZE(S)
+	GENERATE(S)
+	FINALIZE(S)

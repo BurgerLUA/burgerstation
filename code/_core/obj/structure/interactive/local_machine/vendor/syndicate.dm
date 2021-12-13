@@ -84,6 +84,10 @@
 /obj/structure/interactive/vending/syndicate/attachment
 	name = "syndicate attachment vendor"
 	icon_state = "attachment"
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 	stored_types = list(
 		/obj/item/attachment/barrel/charger,
 		/obj/item/attachment/barrel/compensator,
@@ -107,6 +111,10 @@
 /obj/structure/interactive/vending/syndicate/prize
 	name = "hacked prize vendor"
 	icon_state = "prize_hacked"
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 	stored_types = list(
 		/obj/item/announcement/syndicate,

@@ -297,7 +297,6 @@
 	return TRUE
 
 /mob/living/proc/update_plane()
-
 	if(alpha != 255 || horizontal)
 		plane = PLANE_MOB_STEALTH
 	else

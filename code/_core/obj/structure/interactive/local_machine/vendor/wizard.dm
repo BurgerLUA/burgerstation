@@ -1,7 +1,7 @@
 /obj/structure/interactive/vending/wizard
 	name = "wizard vendor"
 	desc = "Authentic!"
-	icon_state = "magivend"
+	icon_state = "MagiVend"
 	desc_extended = "An authentic Wizard vendor used by the Wizard Federation to equip their Wizards with Wizard federation Wizard stuff. Uses magic shard tokens as currency."
 
 	stored_types = list(

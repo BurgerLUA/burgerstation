@@ -15,7 +15,7 @@
 
 /obj/structure/interactive/vending/chef/wardrobe
 	name = "chef wardrobe vendor"
-	icon_state = "chefdrobe_new"
+	icon_state = "chefdrobe"
 
 	stored_types = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
