@@ -11,3 +11,5 @@
 	bullet_block_chance = 25
 
 	color = COLOR_STEEL
+
+	pixel_y = 0

@@ -208,5 +208,5 @@
 	I.Blend(SE,ICON_OVERLAY)
 
 	icon = I
-	pixel_x = (32 - I.Width())/2
-	pixel_y = (32 - I.Height())/2
+	pixel_x = (32 - I.Width())/2 + initial(pixel_x)
+	pixel_y = (32 - I.Height())/2 + initial(pixel_y)

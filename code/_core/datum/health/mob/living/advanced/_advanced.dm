@@ -150,10 +150,10 @@
 		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
 			A.remove_status_effect(CRIT)
 
-		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && A.status_effects[PAINKILLER] <= 0 && !A.status_effects[PAINCRIT])
+		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
 			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
 
-		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER] > 0) && A.status_effects[PAINCRIT])
+		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
 			A.remove_status_effect(PAINCRIT)
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)

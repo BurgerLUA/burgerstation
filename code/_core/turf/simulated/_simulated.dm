@@ -267,13 +267,9 @@ var/global/list/blood_turfs = list()
 	if(reinforced_material_id)
 		var/image/I = new/image(initial(icon),"ref")
 		I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
-		I.color = reinforced_color
+		I.color = "#FFFFFF"
 		I.alpha = reinforced_alpha
 		I.blend_mode = reinforced_blend
-		add_overlay(I)
-
-	if(wet_level)
-		var/image/I = new/image('icons/obj/effects/water.dmi',"wet_floor")
 		add_overlay(I)
 
 

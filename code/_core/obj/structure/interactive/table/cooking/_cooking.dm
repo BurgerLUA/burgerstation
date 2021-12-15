@@ -3,6 +3,7 @@
 	var/enabled = FALSE
 	var/temperature_mod = 590 //How hot to make it. This adds to the turf's temperature.
 	density = TRUE
+	pixel_y = 0
 
 /obj/structure/table/cooking/Finalize()
 	. = ..()

@@ -2,7 +2,7 @@
 	name = "table"
 	desc = "A table for placing objects down or taking them."
 	desc_extended = "To place items on a table, press Q + Left/Right click depending on if the item is in your left or right hand. Climbing over tables is automatic; Walk into a table for long enough to climb over it."
-	icon = 'icons/obj/structure/table/normal.dmi'
+	icon = 'icons/obj/structure/table/normal_new.dmi'
 	icon_state = "table"
 
 	corner_category = "table"
@@ -21,6 +21,8 @@
 
 	density = TRUE
 
+	pixel_y = 3
+
 /obj/structure/table/PostInitialize()
 
 	var/turf/T = get_turf(src)
@@ -38,8 +40,8 @@
 		var/obj/item/I = k
 		var/x = (i % maximum_x) - (maximum_x-1)*0.5
 		var/y = FLOOR(i/maximum_x,1) - (maximum_y-1)*0.5
-		I.pixel_x = x*TILE_SIZE*0.5*0.5
-		I.pixel_y = y*TILE_SIZE*0.5*0.5 + 4
+		I.pixel_x = x*TILE_SIZE*0.5*0.5 + initial(pixel_x)
+		I.pixel_y = y*TILE_SIZE*0.5*0.5 + 4 + initial(pixel_y)
 		i++
 
 	return ..()
@@ -154,7 +156,6 @@ obj/structure/table/reinforced
 	icon_state = "table"
 
 	corner_category = "table_reinforced"
-
 
 obj/structure/table/reinforced/dark
 	color = "#999999"

@@ -2,13 +2,14 @@
 "b" = (/turf/simulated/floor/wood/brown,/area)
 "c" = (/obj/item/storage/heavy/fridge,/turf/simulated/floor/wood/brown,/area)
 "d" = (/obj/structure/table/wood,/turf/simulated/floor/wood/brown,/area)
-"e" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/wood/brown,/area)
+"e" = (/obj/structure/table/cooking/grill,/obj/item/storage/heavy/cupboard,/turf/simulated/floor/wood/brown,/area)
+"f" = (/obj/structure/table/wood,/obj/item/storage/heavy/cupboard,/turf/simulated/floor/wood/brown,/area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
-abbddecddbbbbbba
+abbbfecfbbbbbbba
 abbbbbbbbbbbbbba
-abbbbbbbbbbbbbba
+abbbddddbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
