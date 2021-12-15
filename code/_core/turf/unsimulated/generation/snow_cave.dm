@@ -23,7 +23,7 @@
 		var/y_seed = used_y / seed_resolution
 		if(y_seed > 1)
 			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[2] + i]","[x_seed]","[y_seed]"))
+		var/found = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[2] + i]","[x_seed]","[y_seed]"))
 		noise += found
 
 	noise = (noise/instances)

@@ -23,7 +23,7 @@
 	var/max_instances = 1
 	var/noise = 0
 	for(var/i=1,i<=max_instances,i++)
-		noise += text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[z+i]]","[x_seed]","[y_seed]"))
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	if(prob(5))
 		noise += RAND_PRECISE(-0.01,0.01)

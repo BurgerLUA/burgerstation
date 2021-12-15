@@ -56,7 +56,7 @@ var/global/list/possible_lavaland_fauna = list(
 		var/y_seed = used_y / seed_resolution
 		if(y_seed > 1)
 			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[1] + i]","[x_seed]","[y_seed]"))
+		var/found = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[1] + i]","[x_seed]","[y_seed]"))
 		noise += found
 
 	noise = (noise/instances) + rand(-100,100)/10000

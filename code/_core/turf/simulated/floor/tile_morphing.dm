@@ -15,7 +15,7 @@
 	original_color = color ? color : "#FFFFFF"
 	return ..()
 
-/turf/simulated/floor/tile/morphing/smooth_turfs()
+/turf/simulated/floor/tile/morphing/smooth_turf()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
@@ -74,9 +74,9 @@
 
 	var/icon/I
 
-	if(turf_icon_cache[full_icon_string])
-		I = turf_icon_cache[full_icon_string]
-		saved_icons++
+	if(SSturf.icon_cache[full_icon_string])
+		I = SSturf.icon_cache[full_icon_string]
+		SSturf.saved_icons++
 	else
 		I = new/icon(icon,icon_state)
 		I.Blend(original_color,ICON_MULTIPLY)
@@ -101,7 +101,7 @@
 			SW.Blend(sw,ICON_MULTIPLY)
 			I.Blend(SW,ICON_OVERLAY)
 
-		turf_icon_cache[full_icon_string] = I
+		SSturf.icon_cache[full_icon_string] = I
 
 	icon = I
 

@@ -19,8 +19,8 @@
 	for(var/obj/structure/scenery/S in src.contents)
 		qdel(S)
 
-	if(src in SSturfs.wet_turfs)
-		SSturfs.wet_turfs -= src
+	if(src in SSturf.wet_turfs)
+		SSturf.wet_turfs -= src
 
 	var/old_turf_type = src.type
 

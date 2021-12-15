@@ -10,6 +10,9 @@ SUBSYSTEM_DEF(obj)
 	var/list/initialize_late = list()
 	var/list/initialize_none = list()
 
+	var/list/icon_cache = list()
+	var/saved_icons = 0
+
 /subsystem/obj/Initialize()
 
 	for(var/obj/O in world)

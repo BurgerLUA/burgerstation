@@ -136,14 +136,7 @@
 	return ..()
 
 
-
-/obj/structure/update_icon()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	if(!corner_icons || !anchored)
-		return ..()
+/obj/structure/proc/get_smooth_code()
 
 	var/list/calc_list = list()
 
@@ -193,20 +186,49 @@
 	if(!se) se = "i"
 	if(!sw) sw = "i"
 
-	var/icon/I = ICON_INVISIBLE
+	return list(ne,nw,sw,se)
 
-	var/icon/NW = new /icon(icon,"1-[nw]")
-	I.Blend(NW,ICON_OVERLAY)
+/obj/structure/proc/smooth_structure()
 
-	var/icon/NE = new /icon(icon,"2-[ne]")
-	I.Blend(NE,ICON_OVERLAY)
+	var/list/code = get_smooth_code()
 
-	var/icon/SW = new /icon(icon,"3-[sw]")
-	I.Blend(SW,ICON_OVERLAY)
+	var/ne = code[1]
+	var/nw = code[2]
+	var/sw = code[3]
+	var/se = code[4]
 
-	var/icon/SE = new /icon(icon,"4-[se]")
-	I.Blend(SE,ICON_OVERLAY)
+	var/full_icon_string = "[type]_[icon_state]_[ne][nw][se][sw]"
+
+	var/icon/I
+	if(SSobj.icon_cache[full_icon_string])
+		I = SSobj.icon_cache[full_icon_string]
+		SSobj.saved_icons++
+	else
+		I = new/icon(icon,"1-[nw]")
+
+		var/icon/NE = new /icon(icon,"2-[ne]")
+		I.Blend(NE,ICON_OVERLAY)
+
+		var/icon/SW = new /icon(icon,"3-[sw]")
+		I.Blend(SW,ICON_OVERLAY)
+
+		var/icon/SE = new /icon(icon,"4-[se]")
+		I.Blend(SE,ICON_OVERLAY)
+
+		SSobj.icon_cache[full_icon_string] = I
 
 	icon = I
 	pixel_x = (32 - I.Width())/2 + initial(pixel_x)
 	pixel_y = (32 - I.Height())/2 + initial(pixel_y)
+
+	return TRUE
+
+
+/obj/structure/update_icon()
+
+	if(!corner_icons || !anchored)
+		return ..()
+
+	smooth_structure()
+
+	return TRUE

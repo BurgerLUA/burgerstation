@@ -30,7 +30,7 @@
 	if(light_turf) src.set_light(4,0.5,"#FF8300")
 	return TRUE
 
-/turf/simulated/floor/basalt/smooth_turfs()
+/turf/simulated/floor/basalt/smooth_turf()
 
 	var/code = get_smooth_code()
 	if(code == "ffff")

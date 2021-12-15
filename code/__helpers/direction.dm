@@ -78,3 +78,6 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 	if(west && !east)
 		. |= WEST
+
+/proc/num2dir(var/x)
+	return "[x & 1 ? "n" : ""][x & 2 ? "s" : ""][x & 4 ? "e" : ""][x & 8 ? "w" : ""]"

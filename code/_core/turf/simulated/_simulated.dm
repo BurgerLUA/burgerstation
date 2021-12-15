@@ -1,8 +1,3 @@
-var/global/list/turf_icon_cache = list()
-var/global/saved_icons = 0
-
-var/global/list/blood_turfs = list()
-
 /turf/simulated/
 
 	var/real_icon
@@ -69,7 +64,7 @@ var/global/list/blood_turfs = list()
 /turf/simulated/proc/add_wet(var/wet_to_add)
 	var/old_wet = wet_level
 	wet_level += wet_to_add
-	SSturfs.wet_turfs |= src
+	SSturf.wet_turfs |= src
 	if(old_wet <= 0)
 		overlays.Cut()
 		update_overlays()
@@ -88,9 +83,9 @@ var/global/list/blood_turfs = list()
 /turf/simulated/proc/add_blood_level_hard(var/amount_to_add,var/minimus=0)
 	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
 	if(blood_level_hard > 0)
-		blood_turfs |= src
+		SSturf.blood_turfs |= src
 	else
-		blood_turfs -= src
+		SSturf.blood_turfs -= src
 	return TRUE
 
 /turf/simulated/get_examine_list(var/mob/caller)
@@ -213,9 +208,9 @@ var/global/list/blood_turfs = list()
 	if(real_icon_state)
 		icon_state = real_icon_state
 
-	return ..()
+	. = ..()
 
-/turf/simulated/proc/smooth_turfs()
+/turf/simulated/proc/smooth_turf()
 
 	var/list/smooth_code = get_smooth_code()
 
@@ -228,9 +223,9 @@ var/global/list/blood_turfs = list()
 
 	var/icon/I
 
-	if(turf_icon_cache[full_icon_string])
-		I = turf_icon_cache[full_icon_string]
-		saved_icons++
+	if(SSturf.icon_cache[full_icon_string])
+		I = SSturf.icon_cache[full_icon_string]
+		SSturf.saved_icons++
 	else
 		I = new /icon(icon,"1-[nw]")
 
@@ -243,7 +238,7 @@ var/global/list/blood_turfs = list()
 		var/icon/SE = new /icon(icon,"4-[se]")
 		I.Blend(SE,ICON_OVERLAY)
 
-		turf_icon_cache[full_icon_string] = I
+		SSturf.icon_cache[full_icon_string] = I
 
 	icon = I
 	pixel_x = (TILE_SIZE - I.Width())/2
@@ -256,7 +251,7 @@ var/global/list/blood_turfs = list()
 	if(!corner_icons)
 		return ..()
 
-	smooth_turfs()
+	smooth_turf()
 
 	return TRUE
 

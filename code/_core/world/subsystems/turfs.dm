@@ -1,4 +1,4 @@
-SUBSYSTEM_DEF(turfs)
+SUBSYSTEM_DEF(turf)
 	name = "Turfs Subsystem"
 	desc = "Initialize Turfs after they are made."
 	priority = SS_ORDER_TURFS
@@ -11,7 +11,12 @@ SUBSYSTEM_DEF(turfs)
 
 	var/list/seeds = list() //id = value
 
-/subsystem/turfs/unclog(var/mob/caller)
+	var/list/icon_cache = list()
+	var/saved_icons = 0
+
+	var/list/blood_turfs = list()
+
+/subsystem/turf/unclog(var/mob/caller)
 
 	for(var/k in wet_turfs)
 		wet_turfs -= k
@@ -20,7 +25,7 @@ SUBSYSTEM_DEF(turfs)
 
 	return ..()
 
-/subsystem/turfs/Initialize()
+/subsystem/turf/Initialize()
 
 	set background = 1 //Needed because it thinks it's doing an infinite loop.
 
@@ -104,11 +109,11 @@ SUBSYSTEM_DEF(turfs)
 
 	log_subsystem(name,"Finalized [turf_count] turfs.")
 
-	log_subsystem(name,"Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
+	log_subsystem(name,"Stored [length(icon_cache)] icons and saved [saved_icons] redundent icons.")
 
 	return ..()
 
-/subsystem/turfs/proc/process_wet_turf(var/turf/simulated/T)
+/subsystem/turf/proc/process_wet_turf(var/turf/simulated/T)
 	CHECK_TICK(75,FPS_SERVER*3)
 	T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
 	if(T.wet_level <= 0)
@@ -117,7 +122,7 @@ SUBSYSTEM_DEF(turfs)
 		T.update_overlays()
 	return TRUE
 
-/subsystem/turfs/proc/process_wet_turfs()
+/subsystem/turf/proc/process_wet_turfs()
 
 	for(var/k in wet_turfs)
 		var/turf/simulated/T = k
@@ -125,6 +130,6 @@ SUBSYSTEM_DEF(turfs)
 			wet_turfs -= k
 
 
-/subsystem/turfs/on_life()
+/subsystem/turf/on_life()
 	process_wet_turfs()
 	return TRUE
