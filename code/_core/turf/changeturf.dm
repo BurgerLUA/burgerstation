@@ -50,7 +50,7 @@
 	if(force_edges_update)
 		update_edges()
 	else
-		queue_update_turf_edges(W)
+		queue_update_edges(W)
 
 	var/area/A = W.loc
 	if(A && A.sunlight_freq > 0 && A.sunlight_color)

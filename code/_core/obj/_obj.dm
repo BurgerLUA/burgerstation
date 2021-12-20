@@ -19,5 +19,4 @@
 
 /obj/Destroy()
 	QDEL_CUT_ASSOC(additional_blends)
-	loc = null
-	return ..()
+	. = ..()

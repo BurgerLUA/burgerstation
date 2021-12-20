@@ -56,11 +56,6 @@
 		no_queue = TRUE
 	qdel(src)
 
-/obj/structure/window/Destroy()
-	if(!no_queue)
-		queue_update_smooth_edges(src,include_self = FALSE)
-	. = ..()
-
 /obj/structure/window/reinforced
 	name = "aluminium reinforced glass window"
 	icon = 'icons/obj/structure/window/improved_reinforced.dmi'

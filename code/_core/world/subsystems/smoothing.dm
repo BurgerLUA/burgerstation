@@ -35,9 +35,13 @@ SUBSYSTEM_DEF(smoothing)
 		var/atom/A = k
 		A.update_sprite()
 
-/proc/queue_update_turf_edges(var/turf/T)
+/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
 
-	for(var/direction in DIRECTIONS_ALL + 0x0)
+	var/list/valid_directions = DIRECTIONS_ALL
+	if(include_self)
+		valid_directions |= 0x0
+
+	for(var/direction in valid_directions)
 		var/turf/T2 = direction == 0x0 ? T : get_step(T,direction)
 		if(T2.corner_icons)
 			SSsmoothing.queued_smoothing |= T2

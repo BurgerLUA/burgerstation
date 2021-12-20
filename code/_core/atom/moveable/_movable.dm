@@ -65,12 +65,15 @@
 	var/enable_chunk_clean = FALSE
 
 /atom/movable/Destroy()
+	if(corner_category)
+		queue_update_edges(get_turf(src))
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
 	grabbing_hand = null
 	force_move(null)
-	return ..()
+	loc = null
+	. = ..()
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 

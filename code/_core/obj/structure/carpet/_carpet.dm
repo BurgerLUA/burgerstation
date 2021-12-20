@@ -8,6 +8,8 @@
 	var/pattern_icon_state
 	var/pattern_color = "#FFFFFF"
 
+	var/override_overlays = FALSE
+
 /obj/structure/carpet/Finalize()
 	. = ..()
 	update_sprite()
@@ -15,22 +17,21 @@
 /obj/structure/carpet/update_overlays()
 	. = ..()
 
-	if(pattern_icon_state && pattern_color)
-		var/image/I = new/image(icon,pattern_icon_state)
-		I.color = pattern_color
-		I.appearance_flags = appearance_flags | RESET_COLOR
-		add_overlay(I)
-
-	if(trim_icon_state && trim_color)
-		for(var/d in DIRECTIONS_CARDINAL)
-			var/obj/structure/carpet/C = locate() in get_step(src,d)
-			if(C && C.type == src.type) continue
-			var/image/I = new/image(icon,"[trim_icon_state]_[d]")
-			I.color = trim_color
+	if(!override_overlays)
+		if(pattern_icon_state && pattern_color)
+			var/image/I = new/image(icon,pattern_icon_state)
+			I.color = pattern_color
 			I.appearance_flags = appearance_flags | RESET_COLOR
 			add_overlay(I)
 
-
+		if(trim_icon_state && trim_color)
+			for(var/d in DIRECTIONS_CARDINAL)
+				var/obj/structure/carpet/C = locate() in get_step(src,d)
+				if(C && C.type == src.type) continue
+				var/image/I = new/image(icon,"[trim_icon_state]_[d]")
+				I.color = trim_color
+				I.appearance_flags = appearance_flags | RESET_COLOR
+				add_overlay(I)
 
 /obj/structure/carpet/red
 	name = "red carpet"

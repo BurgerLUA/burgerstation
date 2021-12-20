@@ -145,6 +145,9 @@
 
 /turf/Destroy()
 
+	if(corner_category)
+		queue_update_edges(src)
+
 	if(old_living)
 		old_living.Cut()
 
