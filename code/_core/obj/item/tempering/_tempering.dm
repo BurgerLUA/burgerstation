@@ -47,7 +47,7 @@
 
 /obj/item/tempering/proc/on_temper(var/mob/caller,var/obj/item/I)
 	visible_message("\The [caller.name] improves \the [I.name] with \the [src.name].")
-	if(is_clothing(I))
+	if(istype(I,/obj/item/clothing))
 		var/obj/item/clothing/C = I
 		C.sync_additional_clothing()
 	if(!unlimited)

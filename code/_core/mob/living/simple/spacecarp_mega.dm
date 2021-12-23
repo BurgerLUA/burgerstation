@@ -14,12 +14,12 @@
 	value = 400
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/
 	)
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING

@@ -159,10 +159,10 @@
 		/obj/item/currency/telecrystals/player_antagonist_spawn,
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/chips,
-		/obj/item/container/beaker/can/grey_bull,
-		/obj/item/container/beaker/alcohol/vodka,
+		/obj/item/container/edible/package/junkfood/jerky,
+		/obj/item/container/edible/package/junkfood/chips,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/vodka,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
 	)
@@ -204,10 +204,10 @@
 		/obj/item/currency/telecrystals/player_antagonist_spawn,
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/chips,
-		/obj/item/container/beaker/can/grey_bull,
-		/obj/item/container/beaker/alcohol/vodka,
+		/obj/item/container/edible/package/junkfood/jerky,
+		/obj/item/container/edible/package/junkfood/chips,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/vodka,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
 	)

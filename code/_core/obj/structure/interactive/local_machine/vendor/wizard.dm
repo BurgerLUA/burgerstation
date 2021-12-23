@@ -9,9 +9,9 @@
 		/obj/item/clothing/head/helmet/full/knight/battlemage,
 		/obj/item/supply_crate/magic,
 		/obj/item/soulgem/uncommon,
-		/obj/item/container/beaker/bottle/health_potion,
-		/obj/item/container/beaker/bottle/stamina_potion,
-		/obj/item/container/beaker/bottle/mana_potion,
+		/obj/item/container/simple/beaker/bottle/health_potion,
+		/obj/item/container/simple/beaker/bottle/stamina_potion,
+		/obj/item/container/simple/beaker/bottle/mana_potion,
 		/obj/item/weapon/ranged/spellgem/chaos,
 		/obj/item/weapon/ranged/spellgem/crystal,
 		/obj/item/weapon/ranged/spellgem/f50cal,
@@ -33,9 +33,9 @@
 /obj/structure/interactive/vending/wizard/nanotrasen
 
 	stored_types = list(
-		/obj/item/container/beaker/bottle/health_potion,
-		/obj/item/container/beaker/bottle/stamina_potion,
-		/obj/item/container/beaker/bottle/mana_potion
+		/obj/item/container/simple/beaker/bottle/health_potion,
+		/obj/item/container/simple/beaker/bottle/stamina_potion,
+		/obj/item/container/simple/beaker/bottle/mana_potion
 	)
 
 
@@ -47,9 +47,9 @@
 	icon_state = "games"
 
 	stored_types = list(
-		/obj/item/container/beaker/can/dr_gibb/explosive,
+		/obj/item/container/simple/can/dr_gibb/explosive,
 		/obj/item/clothing/back/storage/satchel/bluespace/prank,
-		/obj/item/container/medicine/bandage/prank,
+		/obj/item/container/healing/bandage/prank,
 		/obj/item/container/spray/ketchup,
 		/obj/item/container/spray/mustard,
 		/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen,

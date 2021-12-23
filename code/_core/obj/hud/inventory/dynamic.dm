@@ -34,8 +34,8 @@
 		//No message needed.
 		return FALSE
 
-	if(istype(I,/obj/item/container/food/sandwich/))
-		var/obj/item/container/food/sandwich/S = I
+	if(istype(I,/obj/item/container/edible/sandwich/))
+		var/obj/item/container/edible/sandwich/S = I
 		for(var/obj/hud/inventory/I2 in S.inventories)
 			if(length(I2.contents))
 				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of sandwich!"))

@@ -170,7 +170,7 @@
 /mob/living/advanced/npc/zombie/scientist/post_death()
 
 	if(!dropped_vial)
-		var/obj/item/container/beaker/vial/zombie_antidote/ZA = new(get_turf(src))
+		var/obj/item/container/simple/beaker/vial/zombie_antidote/ZA = new(get_turf(src))
 		INITIALIZE(ZA)
 		GENERATE(ZA)
 		FINALIZE(ZA)

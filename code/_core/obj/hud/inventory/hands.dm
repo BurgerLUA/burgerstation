@@ -13,8 +13,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	priority = 74
 
 /obj/hud/inventory/organs/right_hand_worn
@@ -30,8 +28,6 @@
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	priority = 75
 
@@ -52,8 +48,6 @@
 	essential = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	allow_quick_equip = FALSE
 
@@ -96,8 +90,6 @@
 	essential = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	allow_quick_equip = FALSE
 

@@ -56,14 +56,14 @@
 	)
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum
 	)
 
 	iff_tag = "Bubblegum"

@@ -189,7 +189,7 @@
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/grenade/timed/explosive,
 		/obj/item/grenade/timed/smoke,
-		/obj/item/container/medicine/gauze,
+		/obj/item/container/healing/gauze,
 		/obj/item/deployable/barricade
 	)
 	markup = 0.5

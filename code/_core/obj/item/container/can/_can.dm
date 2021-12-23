@@ -1,4 +1,12 @@
-/obj/item/container/beaker/can
+/obj/item/container/simple/
+	var/initial_reagent = /reagent/nutrition/ethanol
+
+/obj/item/container/simple/can/Generate()
+	. = ..()
+	if(initial_reagent)
+		reagents.add_reagent(initial_reagent,reagents.volume_max)
+
+/obj/item/container/simple/can
 	name = "generic soda can"
 	desc = "ERROR."
 	desc_extended = "Holds reagents."
@@ -14,13 +22,11 @@
 
 	var/open = TRUE
 
-	overide_icon = TRUE
-
 	value = 1
 
 	drop_sound = 'sound/items/drop/soda.ogg'
 
-/obj/item/container/beaker/can/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/can/click_self(var/mob/caller,location,control,params)
 
 	if(open) return ..()
 
@@ -35,76 +41,76 @@
 
 	return TRUE
 
-/obj/item/container/beaker/can/cola/
+/obj/item/container/simple/can/cola/
 	name = "\improper Space Cola"
 	icon_state = "cola"
 
-/obj/item/container/beaker/can/cola/Generate()
+/obj/item/container/simple/can/cola/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/cola,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/grape_soda/
+/obj/item/container/simple/can/grape_soda/
 	name = "\improper Starkist Grape Soda"
 	icon_state = "grape_soda"
 
-/obj/item/container/beaker/can/grape_soda/Generate()
+/obj/item/container/simple/can/grape_soda/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/grape,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/orange_soda/
+/obj/item/container/simple/can/orange_soda/
 	name = "\improper Starkist Orange Soda"
 	icon_state = "orange_soda"
 
-/obj/item/container/beaker/can/orange_soda/Generate()
+/obj/item/container/simple/can/orange_soda/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/orange,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/iced_tea/
+/obj/item/container/simple/can/iced_tea/
 	name = "\improper Disk! Iced Tea"
 	icon_state = "iced_tea"
 
-/obj/item/container/beaker/can/iced_tea/Generate()
+/obj/item/container/simple/can/iced_tea/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/iced_tea,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/grey_bull/
+/obj/item/container/simple/can/grey_bull/
 	name = "\improper Grey Bull"
 	icon_state = "grey_bull"
 	reagents = /reagent_container/beaker/
 
-/obj/item/container/beaker/can/grey_bull/Generate()
+/obj/item/container/simple/can/grey_bull/Generate()
 	reagents.add_reagent(/reagent/nutrition/energy/grey_bull,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/mountain_wind/
+/obj/item/container/simple/can/mountain_wind/
 	name = "\improper Space Mountain Wind"
 	icon_state = "mountain_wind"
 
-/obj/item/container/beaker/can/mountain_wind/Generate()
+/obj/item/container/simple/can/mountain_wind/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/mountain_wind,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/dr_gibb
+/obj/item/container/simple/can/dr_gibb
 	name = "\improper Dr. Gibb"
 	icon_state = "dr_gibb"
 
-/obj/item/container/beaker/can/dr_gibb/Generate()
+/obj/item/container/simple/can/dr_gibb/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/dr_gibb,reagents.volume_max)
 	open = FALSE
 	return ..()
 
-/obj/item/container/beaker/can/dr_gibb/explosive
+/obj/item/container/simple/can/dr_gibb/explosive
 	name = "Dr. Gibbs"
 	var/explosive = TRUE
 	value = 300
 
-/obj/item/container/beaker/can/dr_gibb/explosive/get_examine_list(var/mob/examiner)
+/obj/item/container/simple/can/dr_gibb/explosive/get_examine_list(var/mob/examiner)
 
 	. = ..()
 
@@ -112,7 +118,7 @@
 		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
 
 
-/obj/item/container/beaker/can/dr_gibb/explosive/click_self(var/mob/caller)
+/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller)
 
 	. = ..()
 
@@ -125,19 +131,19 @@
 			explosive = FALSE
 
 
-/obj/item/container/beaker/can/dr_gibb/explosive/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("explosive")
 
-/obj/item/container/beaker/can/dr_gibb/explosive/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/container/simple/can/dr_gibb/explosive/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("explosive")
 
-/obj/item/container/beaker/can/space_up/
+/obj/item/container/simple/can/space_up/
 	name = "\improper Space Up!"
 	icon_state = "space_up"
 
-/obj/item/container/beaker/can/space_up/Generate()
+/obj/item/container/simple/can/space_up/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/space_up,reagents.volume_max)
 	open = FALSE
 	return ..()

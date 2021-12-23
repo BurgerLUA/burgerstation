@@ -1,4 +1,4 @@
-/obj/item/container/beaker
+/obj/item/container/simple/beaker
 	name = "glass beaker"
 	desc = "For the mad scientist in all of us."
 	desc_extended = "Holds reagents."
@@ -22,23 +22,23 @@
 
 	has_quick_function = TRUE
 
-/obj/item/container/beaker/Finalize()
+/obj/item/container/simple/beaker/Finalize()
 	. = ..()
 	update_sprite()
 
-/obj/item/container/beaker/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/simple/beaker/quick(var/mob/caller,var/atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 
-/obj/item/container/beaker/get_consume_verb()
+/obj/item/container/simple/beaker/get_consume_verb()
 	return "drink"
 
-/obj/item/container/beaker/get_consume_sound()
+/obj/item/container/simple/beaker/get_consume_sound()
 	return 'sound/items/consumables/drink.ogg'
 
-/obj/item/container/beaker/get_examine_list(var/mob/examiner)
+/obj/item/container/simple/beaker/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/beaker/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/simple/beaker/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/melee))
 		var/obj/item/weapon/melee/M = object
@@ -58,7 +58,7 @@
 
 	. = ..()
 
-/obj/item/container/beaker/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/beaker/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -81,7 +81,7 @@
 
 	return TRUE
 
-/obj/item/container/beaker/update_underlays()
+/obj/item/container/simple/beaker/update_underlays()
 	. = ..()
 	if(!overide_icon)
 		var/image/I = new/image(initial(icon),"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
@@ -89,39 +89,39 @@
 		I.color = reagents.color
 		add_underlay(I)
 
-/obj/item/container/beaker/water/Generate()
+/obj/item/container/simple/beaker/water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/potassium/Generate()
+/obj/item/container/simple/beaker/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/tnt/Generate()
+/obj/item/container/simple/beaker/tnt/Generate()
 	reagents.add_reagent(/reagent/fuel/tnt,reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/tnt_fragments/Generate()
+/obj/item/container/simple/beaker/tnt_fragments/Generate()
 	reagents.add_reagent(/reagent/fuel/tnt,20)
 	reagents.add_reagent(/reagent/iron,40)
 	return ..()
 
-/obj/item/container/beaker/smoke_01/Generate()
+/obj/item/container/simple/beaker/smoke_01/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/potassium,40)
 	return ..()
 
-/obj/item/container/beaker/smoke_02/Generate()
+/obj/item/container/simple/beaker/smoke_02/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/phosphorous,40)
 	return ..()
 
-/obj/item/container/beaker/flashbang_01/Generate()
+/obj/item/container/simple/beaker/flashbang_01/Generate()
 	reagents.add_reagent(/reagent/ammonia,20)
 	reagents.add_reagent(/reagent/nitrogen,40)
 	return ..()
 
-/obj/item/container/beaker/flashbang_02/Generate()
+/obj/item/container/simple/beaker/flashbang_02/Generate()
 	reagents.add_reagent(/reagent/ammonia,20)
 	reagents.add_reagent(/reagent/fuel/hydrogen,40)
 	return ..()

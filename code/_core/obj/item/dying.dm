@@ -38,7 +38,7 @@
 		caller.to_chat(span("notice","You dye \the [src.name]."))
 		initialize_blends()
 		update_sprite()
-		if(is_clothing(src))
+		if(istype(src,/obj/item/clothing/))
 			var/obj/item/clothing/C = src
 			C.sync_additional_clothing()
 		if(is_inventory(loc))

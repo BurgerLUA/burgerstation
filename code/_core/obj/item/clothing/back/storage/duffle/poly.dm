@@ -94,7 +94,7 @@
 
 	new /obj/item/storage/kit/filled(src)
 
-	new /obj/item/container/food/package/junkfood/jerky(src)
-	new /obj/item/container/beaker/alcohol/beer(src)
+	new /obj/item/container/edible/package/junkfood/jerky(src)
+	new /obj/item/container/simple/beer(src)
 
 	. = ..()

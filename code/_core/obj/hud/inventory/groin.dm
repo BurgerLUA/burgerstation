@@ -14,8 +14,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	priority = 25
 
 /obj/hud/inventory/organs/groin //Underwear + Pants

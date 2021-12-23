@@ -163,23 +163,23 @@
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
+	if(is_inventory(object) && length(stored_bullets))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
-		if(I.add_object(B))
+		if(I.drag_to_take && I.add_object(B))
 			B.update_sprite()
 			stored_bullets -= B
 			update_sprite()
 		return TRUE
 
-	return ..()
+	. = ..()
 
 /obj/item/magazine/click_self(var/mob/caller)
 
-	if(length(stored_bullets) && !is_weapon(loc))
+	if(length(stored_bullets) && !is_item(loc))
 		INTERACT_CHECK
 		INTERACT_DELAY(1.5)
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
@@ -200,7 +200,7 @@
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
+	if(istype(object,/obj/item/weapon/ranged/bullet/) && !istype(src,/obj/item/magazine/clip))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
@@ -236,7 +236,7 @@
 
 /obj/item/magazine/gold/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
+	if(istype(object,/obj/item/weapon/ranged/bullet/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)

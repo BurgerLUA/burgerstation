@@ -24,8 +24,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	priority = 90
 
 /obj/hud/inventory/organs/torso_b
@@ -42,8 +40,6 @@
 	essential = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	priority = 10
 

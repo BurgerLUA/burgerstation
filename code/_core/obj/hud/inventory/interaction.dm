@@ -149,7 +149,7 @@
 						if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
 							I.click_self(caller)
 							return TRUE
-						if(!INV.click_flags && (!INV.drag_to_take || is_weapon(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
+						if(!INV.click_flags && (!INV.drag_to_take || !istype(object,/obj/item/clothing))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
 							if(caller.attack_flags & CONTROL_MOD_DISARM)
 								I.click_self(caller)
 							else

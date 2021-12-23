@@ -14,7 +14,7 @@
 		/reagent/nutrition/dough = 5
 	)
 
-	result = /obj/item/container/food/dynamic/bread
+	result = /obj/item/container/edible/dynamic/bread
 
 /reagent_recipe/food/dough/flour
 
@@ -29,7 +29,7 @@
 		/reagent/nutrition/dough/flour = 5
 	)
 
-	result = /obj/item/container/food/dynamic/bread
+	result = /obj/item/container/edible/dynamic/bread
 
 /reagent_recipe/food/dough/flour/processed
 
@@ -44,7 +44,7 @@
 		/reagent/nutrition/dough/flour/processed = 5
 	)
 
-	result = /obj/item/container/food/dynamic/bread
+	result = /obj/item/container/edible/dynamic/bread
 
 
 /reagent_recipe/food/bread/
@@ -110,7 +110,7 @@
 		/reagent/nutrition/cake_batter = 30
 	)
 
-	result = /obj/item/container/food/dynamic/cake
+	result = /obj/item/container/edible/dynamic/cake
 
 /reagent_recipe/food/icing_sugar
 	name = "icing sugar"

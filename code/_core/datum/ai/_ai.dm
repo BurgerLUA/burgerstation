@@ -16,6 +16,12 @@
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
+	var/distance_target_min = 1 //The minimum distance in which the mob can start "clicking" to attack.
+	var/distance_target_max = 1 //The maximum distance in which the mob can start "clicking" to attack.
+
+	var/attack_distance_min = 0 //The minimum distance in which the mob should move to the target to attack.
+	var/attack_distance_max = 1 //The maximum distance in which the mob should move to the target to attack.
+
 	//Measured in ticks.
 	var/objective_ticks = 0
 
@@ -31,8 +37,7 @@
 
 	var/shoot_obstacles = TRUE
 
-	var/attack_distance_min = 0
-	var/attack_distance_max = 1
+
 
 	var/left_click_chance = 90
 
@@ -66,9 +71,6 @@
 	var/turf/last_combat_location //last location where there was an objective_attack
 
 	var/list/obstacles = list()
-
-	var/distance_target_min = 1
-	var/distance_target_max = 1
 
 	var/use_alerts = TRUE
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.

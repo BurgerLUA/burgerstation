@@ -143,7 +143,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/I)
 
-	if(is_magazine(I))
+	if(istype(I,/obj/item/magazine))
 		var/obj/item/magazine/M = I
 		if(M.weapon_whitelist[src.type])
 			return TRUE

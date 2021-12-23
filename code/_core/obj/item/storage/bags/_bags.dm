@@ -40,7 +40,7 @@
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/seed,
-		/obj/item/container/food/plant
+		/obj/item/container/edible/plant
 	)
 
 	value = 30
@@ -70,7 +70,7 @@
 	for(var/k in inventories)
 		CHECK_TICK(50,FPS_SERVER*4)
 		var/obj/hud/inventory/I = k
-		for(var/obj/item/container/food/plant/P in I.contents)
+		for(var/obj/item/container/edible/plant/P in I.contents)
 			CHECK_TICK(50,FPS_SERVER*2)
 			if(!P.plant_type)
 				continue
@@ -140,8 +140,8 @@
 	container_max_size = SIZE_2
 	container_max_slots = 10
 	container_whitelist = list(
-		/obj/item/container/beaker,
-		/obj/item/container/pill,
+		/obj/item/container/simple/beaker,
+		/obj/item/container/edible/pill,
 		/obj/item/container/syringe
 	)
 
@@ -159,7 +159,7 @@
 	container_max_size = SIZE_0
 	container_max_slots = 30
 	container_whitelist = list(
-		/obj/item/container/pill,
+		/obj/item/container/edible/pill,
 	)
 
 	var/color_lid = "#FFFFFF"
@@ -237,7 +237,7 @@
 
 /obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/bicaridine(src)
+		new /obj/item/container/edible/pill/bicaridine(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/bicaridine_small
@@ -246,7 +246,7 @@
 
 /obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/bicaridine(src)
+		new /obj/item/container/edible/pill/bicaridine(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/kelotane
@@ -255,7 +255,7 @@
 
 /obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/kelotane(src)
+		new /obj/item/container/edible/pill/kelotane(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/kelotane_small
@@ -264,7 +264,7 @@
 
 /obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/kelotane(src)
+		new /obj/item/container/edible/pill/kelotane(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/dylovene
@@ -273,7 +273,7 @@
 
 /obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/dylovene(src)
+		new /obj/item/container/edible/pill/dylovene(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/dylovene_small
@@ -282,7 +282,7 @@
 
 /obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/dylovene(src)
+		new /obj/item/container/edible/pill/dylovene(src)
 	. = ..()
 
 
@@ -292,7 +292,7 @@
 
 /obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/iron(src)
+		new /obj/item/container/edible/pill/iron(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/iron_small
@@ -301,7 +301,7 @@
 
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/iron(src)
+		new /obj/item/container/edible/pill/iron(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/omnizine
@@ -310,7 +310,7 @@
 
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/omnizine(src)
+		new /obj/item/container/edible/pill/omnizine(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/charcoal
@@ -319,7 +319,7 @@
 
 /obj/item/storage/pillbottle/charcoal/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/charcoal(src)
+		new /obj/item/container/edible/pill/charcoal(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/antihol_small
@@ -328,7 +328,7 @@
 
 /obj/item/storage/pillbottle/antihol_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/antihol(src)
+		new /obj/item/container/edible/pill/antihol(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/assprin
@@ -337,7 +337,7 @@
 
 /obj/item/storage/pillbottle/assprin/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/assprin(src)
+		new /obj/item/container/edible/pill/assprin(src)
 	. = ..()
 
 

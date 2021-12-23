@@ -23,10 +23,10 @@
 	blood_volume = 750
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_carp,
-		/obj/item/container/food/dynamic/fish/raw_carp,
-		/obj/item/container/food/dynamic/fish/raw_carp,
-		/obj/item/container/food/dynamic/fish/raw_carp
+		/obj/item/container/edible/dynamic/fish/raw_carp,
+		/obj/item/container/edible/dynamic/fish/raw_carp,
+		/obj/item/container/edible/dynamic/fish/raw_carp,
+		/obj/item/container/edible/dynamic/fish/raw_carp
 	)
 
 	armor_base = list(

@@ -171,6 +171,8 @@
 
 	var/no_drop = FALSE //Set to true if you're unable to drop this item via normal means.
 
+	var/combat_range = 1 //Maximum ideal combat range for the weapon.
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null

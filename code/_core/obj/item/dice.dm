@@ -186,7 +186,7 @@
 			L.add_attribute_xp(ATTRIBUTE_LUCK,50 - L.get_attribute_level(ATTRIBUTE_LUCK))
 		if(11)
 			L.to_chat(span("notice","Egg."))
-			CREATE(/obj/item/container/food/egg/chicken,get_turf(src))
+			CREATE(/obj/item/container/edible/egg/chicken,get_turf(src))
 		if(12)
 			L.to_chat(span("notice","Hey, magic!"))
 			CREATE(/obj/item/supply_crate/magic,get_turf(src))

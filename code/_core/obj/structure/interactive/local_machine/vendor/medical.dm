@@ -8,18 +8,18 @@
 	icon_state = "med"
 	stored_types = list(
 		/obj/item/analyzer/health,
-		/obj/item/container/medicine/bandage,
-		/obj/item/container/medicine/ointment,
-		/obj/item/container/medicine/trauma_kit,
-		/obj/item/container/medicine/burn_kit,
+		/obj/item/container/healing/bandage,
+		/obj/item/container/healing/ointment,
+		/obj/item/container/healing/trauma_kit,
+		/obj/item/container/healing/burn_kit,
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/syringe,
-		/obj/item/container/beaker/bottle/epinephrine,
-		/obj/item/container/beaker/bottle/calomel,
-		/obj/item/container/beaker/bottle/charcoal,
-		/obj/item/container/beaker/bottle/morphine,
-		/obj/item/container/beaker/vial/zombie_antidote,
+		/obj/item/container/simple/beaker/bottle/epinephrine,
+		/obj/item/container/simple/beaker/bottle/calomel,
+		/obj/item/container/simple/beaker/bottle/charcoal,
+		/obj/item/container/simple/beaker/bottle/morphine,
+		/obj/item/container/simple/beaker/vial/zombie_antidote,
 		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,
@@ -28,7 +28,7 @@
 		/obj/item/storage/pillbottle/assprin,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/reptile,
-		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
 
@@ -37,11 +37,11 @@
 	icon_state = "med"
 	stored_types = list(
 		/obj/item/analyzer/health,
-		/obj/item/container/medicine/bandage,
-		/obj/item/container/medicine/ointment,
-		/obj/item/container/medicine/trauma_kit,
-		/obj/item/container/medicine/burn_kit,
-		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/healing/bandage,
+		/obj/item/container/healing/ointment,
+		/obj/item/container/healing/trauma_kit,
+		/obj/item/container/healing/burn_kit,
+		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
 
@@ -56,11 +56,11 @@
 		/obj/item/container/syringe,
 		/obj/item/container/spray,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle,
-		/obj/item/container/beaker/vial,
-		/obj/item/container/beaker/bottle/large,
-		/obj/item/container/beaker/bottle,
-		/obj/item/container/beaker,
-		/obj/item/container/beaker/large,
+		/obj/item/container/simple/beaker/vial,
+		/obj/item/container/simple/beaker/bottle/large,
+		/obj/item/container/simple/beaker/bottle,
+		/obj/item/container/simple/beaker,
+		/obj/item/container/simple/beaker/large,
 		/obj/item/container/blood_pack/
 	)
 

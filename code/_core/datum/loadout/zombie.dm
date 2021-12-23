@@ -209,8 +209,8 @@
 
 	possible_extra_weapon = list(
 		/obj/item/bikehorn = 3,
-		/obj/item/container/pill/space_drugs = 1,
-		/obj/item/container/pill/space_dust = 1
+		/obj/item/container/edible/pill/space_drugs = 1,
+		/obj/item/container/edible/pill/space_dust = 1
 
 	)
 
@@ -264,7 +264,7 @@
 
 	possible_extra_weapon = list(
 				/obj/item/container/syringe = 1,
-				/obj/item/container/beaker = 1,
+				/obj/item/container/simple/beaker = 1,
 				/obj/item/storage/pillbottle/iron_small = 2,
 				/obj/item/storage/pillbottle/antihol_small = 1,
 	)
@@ -286,10 +286,10 @@
 	)
 
 	possible_extra_weapon = list(
-		/obj/item/container/beaker/alcohol/whiskey = 3,
-		/obj/item/container/beaker/alcohol/beer = 4,
-		/obj/item/container/beaker/glass = 1,
-		/obj/item/container/beaker/shot = 1
+		/obj/item/container/simple/whiskey = 3,
+		/obj/item/container/simple/beer = 4,
+		/obj/item/container/simple/beaker/glass = 1,
+		/obj/item/container/simple/beaker/shot = 1
 	)
 
 	extra_weapon_chance = 50
@@ -310,8 +310,8 @@
 
 	possible_extra_weapon = list(
 		/obj/item/weapon/melee/sword/sabre = 5,
-		/obj/item/container/beaker/food/sugar = 1,
-		/obj/item/container/beaker/bottle/large/water = 1
+		/obj/item/container/edible/pourable/sugar = 1,
+		/obj/item/container/simple/beaker/bottle/large/water = 1
 	)
 
 	extra_weapon_chance = 80

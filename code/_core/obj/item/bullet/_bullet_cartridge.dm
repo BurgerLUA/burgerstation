@@ -170,7 +170,7 @@
 
 /obj/item/bullet_cartridge/Crossed(atom/movable/O)
 
-	if(is_bullet(O))
+	if(istype(O,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = O
 		if(!B.qdeleting && B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
 			B.transfer_item_count_to(src)
@@ -269,7 +269,7 @@
 
 /obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_bullet(object))
+	if(istype(object,/obj/item/bullet_cartridge/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
@@ -277,7 +277,7 @@
 		B.transfer_src_to_bullet(caller,src,location,control,params)
 		return TRUE
 
-	if(is_magazine(object))
+	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
@@ -286,7 +286,7 @@
 			play_sound(get_bullet_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)
 		return TRUE
 
-	if(is_bullet_gun(object))
+	if(istype(object,/obj/item/weapon/ranged/bullet/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)

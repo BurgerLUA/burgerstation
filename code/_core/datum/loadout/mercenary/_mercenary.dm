@@ -1,12 +1,12 @@
 #define MERC_ESSENTIALS \
 /obj/item/analyzer/health, \
 /obj/item/attachment/barrel/suppressor, \
-/obj/item/container/beaker/can/grey_bull, \
-/obj/item/container/beaker/vial/zombie_antidote, \
+/obj/item/container/simple/can/grey_bull, \
+/obj/item/container/simple/beaker/vial/zombie_antidote, \
 /obj/item/container/blood_pack/full/o_negative, \
 /obj/item/container/blood_pack/full/o_negative, \
-/obj/item/container/food/package/junkfood/jerky, \
-/obj/item/container/food/package/junkfood/jerky, \
+/obj/item/container/edible/package/junkfood/jerky, \
+/obj/item/container/edible/package/junkfood/jerky, \
 /obj/item/deployable/barricade/filled, \
 /obj/item/firing_pin/electronic/iff/mercenary, \
 /obj/item/fulton_pack, \

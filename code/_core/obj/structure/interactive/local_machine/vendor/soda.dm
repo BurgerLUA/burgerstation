@@ -8,12 +8,12 @@
 
 /obj/structure/interactive/vending/soda/full
 	stored_types = list(
-		/obj/item/container/beaker/can/cola,
-		/obj/item/container/beaker/can/dr_gibb,
-		/obj/item/container/beaker/can/grape_soda,
-		/obj/item/container/beaker/can/grey_bull,
-		/obj/item/container/beaker/can/iced_tea,
-		/obj/item/container/beaker/can/mountain_wind,
-		/obj/item/container/beaker/can/orange_soda,
-		/obj/item/container/beaker/can/space_up
+		/obj/item/container/simple/can/cola,
+		/obj/item/container/simple/can/dr_gibb,
+		/obj/item/container/simple/can/grape_soda,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/can/iced_tea,
+		/obj/item/container/simple/can/mountain_wind,
+		/obj/item/container/simple/can/orange_soda,
+		/obj/item/container/simple/can/space_up
 	)

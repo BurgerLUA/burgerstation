@@ -32,8 +32,8 @@
 	new /obj/item/storage/kit/syndicate/filled(src)
 	new /obj/item/storage/kit/syndicate/filled(src)
 	new /obj/item/storage/kit/syndicate/filled(src)
-	new /obj/item/container/beaker/bottle/large/health_potion(src)
-	new /obj/item/container/beaker/bottle/large/health_potion(src)
+	new /obj/item/container/simple/beaker/bottle/large/health_potion(src)
+	new /obj/item/container/simple/beaker/bottle/large/health_potion(src)
 	new /obj/item/clothing/glasses/medical_hud/advanced(src)
 	new /obj/item/defib(src)
 	//5 Weapon shit

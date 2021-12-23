@@ -2,8 +2,8 @@
 	name = "nutriment vendor"
 	icon_state = "nutri"
 	stored_types = list(
-		/obj/item/container/beaker/bucket/water,
-		/obj/item/container/beaker/bottle/plant_food,
+		/obj/item/container/simple/beaker/bucket/water,
+		/obj/item/container/simple/beaker/bottle/plant_food,
 		/obj/item/storage/bags/botany/processor,
 		/obj/item/fertilizer,
 		/obj/item/analyzer/plant

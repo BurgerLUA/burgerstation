@@ -52,10 +52,10 @@
 				return TRUE
 
 		var/target_distance = get_dist(owner,objective_attack)
-		if(target_distance < attack_distance_min)
+		if(target_distance < attack_distance_min) //Get farther to attack.
 			owner.move_dir = get_dir(objective_attack,owner)
-			owner.movement_flags = MOVEMENT_RUNNING
-		if(target_distance > attack_distance_max)
+			owner.movement_flags = MOVEMENT_NORMAL
+		if(target_distance > attack_distance_max) //Get closer to attack.
 			owner.move_dir = get_dir(owner,objective_attack)
 			owner.movement_flags = MOVEMENT_RUNNING
 		else
@@ -72,7 +72,7 @@
 				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90))
 				frustration_move++
 				return TRUE
-			if(prob(target_distance <= 1 ? 25 : 5))
+			if(prob(target_distance <= 1 ? 25 : 5)) //Strafe when close.
 				owner.move_dir = turn(get_dir(owner,objective_attack),pick(-90,90))
 
 		return TRUE

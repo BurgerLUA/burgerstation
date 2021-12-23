@@ -68,6 +68,8 @@
 	var/current_firemode = 1
 	var/list/firemodes = list()
 
+	combat_range = VIEW_RANGE
+
 /obj/item/weapon/ranged/Destroy()
 	QDEL_NULL(attachment_stock)
 	QDEL_NULL(attachment_undermount)

@@ -12,9 +12,9 @@
 	pixel_x = -16
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_xeno/,
-		/obj/item/container/food/dynamic/meat/raw_xeno/,
-		/obj/item/container/food/dynamic/meat/raw_xeno/
+		/obj/item/container/edible/dynamic/meat/raw_xeno/,
+		/obj/item/container/edible/dynamic/meat/raw_xeno/,
+		/obj/item/container/edible/dynamic/meat/raw_xeno/
 	)
 
 	loyalty_tag = "Alien"

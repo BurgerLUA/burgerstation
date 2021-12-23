@@ -99,7 +99,7 @@
 
 		return TRUE
 
-	if(is_staff(object))
+	if(istype(object,/obj/item/weapon/ranged/magic/staff/))
 
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

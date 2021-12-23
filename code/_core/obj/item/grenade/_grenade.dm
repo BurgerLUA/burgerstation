@@ -8,7 +8,7 @@
 	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "chem"
 
-	var/list/obj/item/container/beaker/stored_containers = list()
+	var/list/obj/item/container/simple/beaker/stored_containers = list()
 	var/obj/item/device/stored_trigger
 
 	reagents = /reagent_container/grenade
@@ -94,7 +94,7 @@
 	if(length(stored_containers))
 		.["stored_containers"] = list()
 		for(var/k in stored_containers)
-			var/obj/item/container/beaker/B = k
+			var/obj/item/container/simple/beaker/B = k
 			.["stored_containers"] += list(B.save_item_data(save_inventory))
 
 
@@ -193,7 +193,7 @@
 			open = !open
 			caller.to_chat(span("notice","You [open ? "unscrew" : "screw"] the screws on \the [src.name], [open ? "unsecuring" : "securing"] it."))
 			return TRUE
-		else if(is_beaker(object))
+		else if(I.reagents && I.allow_reagent_transfer_from)
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
@@ -203,13 +203,13 @@
 			if(length(stored_containers) >= max_containers)
 				caller.to_chat(span("warning","You can't fit any more contains in \the [src.name]!"))
 				return TRUE
-			var/obj/item/container/beaker/B = object
+			var/obj/item/container/simple/B = object
 			B.drop_item(src)
 			stored_containers += B
 			caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
 			update_sprite()
 			return TRUE
-		else if(is_trigger(object))
+		else if(istype(object,/obj/item/device/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
@@ -234,7 +234,7 @@
 			return TRUE
 		var/obj/hud/inventory/I = object
 		if(length(stored_containers))
-			var/obj/item/container/beaker/selected_beaker = stored_containers[length(stored_containers)]
+			var/obj/item/container/simple/beaker/selected_beaker = stored_containers[length(stored_containers)]
 			if(I.add_object(selected_beaker))
 				caller.visible_message(span("notice","\The [caller.name] removes \the [selected_beaker.name] from \the [src.name]."),span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
 				stored_containers -= selected_beaker
@@ -270,7 +270,7 @@
 		qdel(P)
 
 	for(var/k in stored_containers)
-		var/obj/item/container/beaker/B = k
+		var/obj/item/container/simple/beaker/B = k
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
 		B.reagents.update_container()
 
@@ -296,8 +296,8 @@
 	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 /obj/item/grenade/timed/explosive/Generate()
-	stored_containers += new /obj/item/container/beaker/water(src)
-	stored_containers += new /obj/item/container/beaker/potassium(src)
+	stored_containers += new /obj/item/container/simple/beaker/water(src)
+	stored_containers += new /obj/item/container/simple/beaker/potassium(src)
 	return ..()
 
 /obj/item/grenade/timed/explosive_large
@@ -306,8 +306,8 @@
 	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds. This one has a larger payload."
 
 /obj/item/grenade/timed/explosive_large/Generate()
-	stored_containers += new /obj/item/container/beaker/large/water(src)
-	stored_containers += new /obj/item/container/beaker/large/potassium(src)
+	stored_containers += new /obj/item/container/simple/beaker/large/water(src)
+	stored_containers += new /obj/item/container/simple/beaker/large/potassium(src)
 	return ..()
 
 /obj/item/grenade/timed/smoke/
@@ -316,8 +316,8 @@
 	desc_extended = "A prebuilt timed smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 /obj/item/grenade/timed/smoke/Generate()
-	stored_containers += new /obj/item/container/beaker/smoke_01(src)
-	stored_containers += new /obj/item/container/beaker/smoke_02(src)
+	stored_containers += new /obj/item/container/simple/beaker/smoke_01(src)
+	stored_containers += new /obj/item/container/simple/beaker/smoke_02(src)
 	return ..()
 
 /obj/item/grenade/timed/lube_smoke
@@ -326,8 +326,8 @@
 	desc_extended = "A prebuilt timed lube smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 /obj/item/grenade/timed/lube_smoke/Generate()
-	stored_containers += new /obj/item/container/beaker/large/lube_smoke_01(src)
-	stored_containers += new /obj/item/container/beaker/large/lube_smoke_02(src)
+	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_01(src)
+	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_02(src)
 	return ..()
 
 /obj/item/grenade/timed/flashbang
@@ -336,6 +336,6 @@
 	desc_extended = "A prebuilt timed flashbang grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 /obj/item/grenade/timed/flashbang/Generate()
-	stored_containers += new /obj/item/container/beaker/flashbang_01(src)
-	stored_containers += new /obj/item/container/beaker/flashbang_02(src)
+	stored_containers += new /obj/item/container/simple/beaker/flashbang_01(src)
+	stored_containers += new /obj/item/container/simple/beaker/flashbang_02(src)
 	return ..()

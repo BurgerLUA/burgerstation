@@ -67,8 +67,6 @@
 
 	var/draw_extra = FALSE
 
-	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
-
 	var/allow_quick_equip = TRUE
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_CLICK
@@ -371,7 +369,7 @@
 
 	item_to_update.initialize_blends(desired_icon_state)
 
-	if(is_wings(item_to_update))
+	if(istype(item_to_update,/obj/item/clothing/back/wings))
 		A.add_overlay_tracked("wings_behind",item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
 		A.add_overlay_tracked("wings_front",item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
 		A.add_overlay_tracked("wings_side",item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
@@ -412,7 +410,7 @@
 	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(worn && is_wings(I))
+			if(worn && istype(I,/obj/item/clothing/back/wings))
 				A.remove_overlay("wings_behind")
 				A.remove_overlay("wings_front")
 				A.remove_overlay("wings_side")
@@ -544,7 +542,7 @@
 					if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 					return FALSE
 
-		if(is_clothing(I))
+		if(istype(I,/obj/item/clothing))
 			var/obj/item/clothing/C = I
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner

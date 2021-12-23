@@ -62,7 +62,7 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 
-	if(is_bullet(object))
+	if(istype(object,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = object
 		if(!stored_bullet)
 			var/bullets_to_add = min(B.item_count_current,bullet_max)
@@ -108,7 +108,7 @@
 		update_sprite()
 		return TRUE
 
-	if(is_magazine(object))
+	if(istype(object,/obj/item/magazine/))
 		var/obj/item/magazine/M = object
 		if(!M.can_load_magazine(caller,stored_bullet))
 			return TRUE

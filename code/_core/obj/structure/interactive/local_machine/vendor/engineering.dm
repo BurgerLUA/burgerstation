@@ -17,7 +17,7 @@
 		/obj/item/weapon/melee/tool/wrench,
 		/obj/item/weapon/melee/tool/welder,
 		/obj/item/light_sensor,
-		/obj/item/container/medicine/cable,
+		/obj/item/container/healing/cable,
 		/obj/item/pinpointer/landmark,
 		/obj/item/weapon/melee/torch/flashlight,
 		/obj/item/material/sheet/steel/spawn_50,

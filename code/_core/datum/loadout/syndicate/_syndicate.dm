@@ -170,8 +170,8 @@
 		/obj/item/clothing/back/storage/dufflebag/syndicate,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/pinpointer/crew/syndicate,
-		/obj/item/container/food/package/junkfood/syndicate,
-		/obj/item/container/beaker/can/dr_gibb,
+		/obj/item/container/edible/package/junkfood/syndicate,
+		/obj/item/container/simple/can/dr_gibb,
 		/obj/item/currency/telecrystals/player_antagonist_spawn,
 		/obj/item/fulton_pack
 	)

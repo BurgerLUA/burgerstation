@@ -164,12 +164,12 @@
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
 			show_overlay(k, !tracked_hidden_organs[OR.id] ? TRUE : FALSE)
-		else if(is_clothing(I))
-			var/obj/item/clothing/C = I
-			if(!C.loc || !is_organ(C.loc.loc))
+		else
+			var/atom/movable/M = I
+			if(!M.loc || !M.loc || !is_organ(M.loc.loc))
 				continue
-			var/obj/item/organ/OR = I.loc.loc
-			show_overlay(k, (blocking_clothing[C] || !tracked_hidden_organs[OR.id]) ? TRUE : FALSE)
+			var/obj/item/organ/OR = M.loc.loc
+			show_overlay(k, (blocking_clothing[M] || !tracked_hidden_organs[OR.id]) ? TRUE : FALSE)
 
 	return TRUE
 

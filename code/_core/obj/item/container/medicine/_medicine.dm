@@ -1,6 +1,6 @@
 //Medicine like band-aids and the such.
 
-/obj/item/container/medicine
+/obj/item/container/healing
 	name = "medicine"
 	desc = "For when you have a boo-boo."
 	desc_extended = "Apply to your wounds or damaged limbs to treat."
@@ -27,14 +27,14 @@
 
 	var/robotic = FALSE //Set to true if heals robotic limbs and not organic limbs.
 
-/obj/item/container/medicine/Initialize(var/desired_loc)
+/obj/item/container/healing/Initialize(var/desired_loc)
 
 	. = ..()
 
 	if(reagents)
 		reagents.volume_max = item_count_current*10
 
-/obj/item/container/medicine/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
@@ -44,7 +44,7 @@
 	return A.put_in_hands(src,params)
 
 
-/obj/item/container/medicine/update_icon()
+/obj/item/container/healing/update_icon()
 
 	if(!override_icon_state)
 		icon = initial(icon)
@@ -52,7 +52,7 @@
 
 	return ..()
 
-/obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
+/obj/item/container/healing/proc/treat(var/mob/caller,var/atom/A)
 
 	if(!reagents)
 		CRASH_SAFE("[src.get_debug_name()] had no reagents!")
@@ -102,7 +102,7 @@
 
 	return TRUE
 
-/obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
+/obj/item/container/healing/proc/can_be_treated(var/mob/caller,var/atom/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
@@ -145,7 +145,7 @@
 
 
 
-/obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/healing/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()

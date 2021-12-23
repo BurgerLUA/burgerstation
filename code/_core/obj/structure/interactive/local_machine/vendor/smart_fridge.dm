@@ -40,7 +40,7 @@
 	for(var/k in chemicals_to_make)
 		var/reagent/R = REAGENT(k)
 		if(!R) continue
-		var/obj/item/container/beaker/B = new(T)
+		var/obj/item/container/simple/beaker/B = new(T)
 		INITIALIZE(B)
 		GENERATE(B)
 		B.reagents.add_reagent(R.type,B.reagents.volume_max - B.reagents.volume_current)
@@ -68,18 +68,18 @@
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"
 	stored_types = list(
-		/obj/item/container/beaker/vial/enzymes,
-		/obj/item/container/beaker/food/flour,
-		/obj/item/container/beaker/food/sugar,
-		/obj/item/container/beaker/food/milk,
-		/obj/item/container/beaker/food/cream,
-		/obj/item/container/beaker/food/corn_flour,
+		/obj/item/container/simple/beaker/vial/enzymes,
+		/obj/item/container/edible/pourable/flour,
+		/obj/item/container/edible/pourable/sugar,
+		/obj/item/container/edible/pourable/milk,
+		/obj/item/container/edible/pourable/cream,
+		/obj/item/container/edible/pourable/corn_flour,
 		/obj/item/storage/egg_carton,
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/beaker/bottle/large/water,
-		/obj/item/container/beaker/large/ice,
-		/obj/item/container/food/plant/tomato,
-		/obj/item/container/food/plant/lettuce
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/simple/beaker/bottle/large/water,
+		/obj/item/container/simple/beaker/large/ice,
+		/obj/item/container/edible/plant/tomato,
+		/obj/item/container/edible/plant/lettuce
 	)
 
 
@@ -87,32 +87,32 @@
 	name = "bar smart fridge"
 	icon_state = "boozeomat"
 	stored_types = list(
-		/obj/item/container/beaker/glass,
-		/obj/item/container/beaker/shot,
-		/obj/item/container/beaker/alcohol/absinthe,
-		/obj/item/container/beaker/alcohol/ale,
-		/obj/item/container/beaker/alcohol/beer,
-		/obj/item/container/beaker/alcohol/brandy,
-		/obj/item/container/beaker/alcohol/cider,
-		/obj/item/container/beaker/alcohol/coffee_liqueur,
-		/obj/item/container/beaker/alcohol/fernet,
-		/obj/item/container/beaker/alcohol/gin,
-		/obj/item/container/beaker/alcohol/grappa,
-		/obj/item/container/beaker/alcohol/hearty_punch,
-		/obj/item/container/beaker/alcohol/nothing,
-		/obj/item/container/beaker/alcohol/rum,
-		/obj/item/container/beaker/alcohol/tequila,
-		/obj/item/container/beaker/alcohol/vodka,
-		/obj/item/container/beaker/alcohol/whiskey,
-		/obj/item/container/beaker/alcohol/wine,
-		/obj/item/container/beaker/alcohol/wine/vermouth,
-		/obj/item/container/beaker/can/cola,
-		/obj/item/container/beaker/can/dr_gibb,
-		/obj/item/container/beaker/can/grape_soda,
-		/obj/item/container/beaker/can/grey_bull,
-		/obj/item/container/beaker/can/iced_tea,
-		/obj/item/container/beaker/can/mountain_wind,
-		/obj/item/container/beaker/can/orange_soda,
-		/obj/item/container/beaker/can/space_up,
-		/obj/item/container/beaker/large/ice
+		/obj/item/container/simple/beaker/glass,
+		/obj/item/container/simple/beaker/shot,
+		/obj/item/container/simple/absinthe,
+		/obj/item/container/simple/ale,
+		/obj/item/container/simple/beer,
+		/obj/item/container/simple/brandy,
+		/obj/item/container/simple/cider,
+		/obj/item/container/simple/coffee_liqueur,
+		/obj/item/container/simple/fernet,
+		/obj/item/container/simple/gin,
+		/obj/item/container/simple/grappa,
+		/obj/item/container/simple/hearty_punch,
+		/obj/item/container/simple/nothing,
+		/obj/item/container/simple/rum,
+		/obj/item/container/simple/tequila,
+		/obj/item/container/simple/vodka,
+		/obj/item/container/simple/whiskey,
+		/obj/item/container/simple/wine,
+		/obj/item/container/simple/wine/vermouth,
+		/obj/item/container/simple/can/cola,
+		/obj/item/container/simple/can/dr_gibb,
+		/obj/item/container/simple/can/grape_soda,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/can/iced_tea,
+		/obj/item/container/simple/can/mountain_wind,
+		/obj/item/container/simple/can/orange_soda,
+		/obj/item/container/simple/can/space_up,
+		/obj/item/container/simple/beaker/large/ice
 	)

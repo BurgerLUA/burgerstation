@@ -280,13 +280,13 @@
 
 		if(is_advanced(victim))
 			var/mob/living/advanced/A = victim
-			if(i==1 && is_weapon(weapon))
-				if(is_weapon(A.left_item) && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
+			if(i==1 && !ismob(weapon))
+				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
 					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.left_item]")
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.left_item]")
 						return perform_clash(attacker,victim,weapon,A.left_item)
-				if(is_weapon(A.right_item) && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
+				if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
 					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.right_item]")
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.right_item]")
