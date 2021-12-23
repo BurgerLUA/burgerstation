@@ -15,7 +15,7 @@
 	var/color = "#FFFFFF" //Reagent's color.
 	var/alpha = 255 //Reagent's alpha
 
-	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive.
+	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive. Set to higher values if you want it to cool down and heat up slower.
 
 	var/metabolism_stomach = METABOLISM_STOMACH //How many units of the reagent to metabolize per second.
 	var/metabolism_blood = METABOLISM_BLOOD //How many units of the reagent to metabolize per second.
@@ -38,7 +38,7 @@
 	var/heated_reagent_temp //Temperature required to heat
 	var/heated_reagent_amount //Amount (units) to add per reagent tick.
 	var/heated_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
-	var/cooled_reagent //What this cools inot.
+	var/cooled_reagent //What this cools into.
 	var/cooled_reagent_temp //Temperature required to cool.
 	var/cooled_reagent_amount //Amount (units) to add per reagent tick.
 	var/cooled_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.

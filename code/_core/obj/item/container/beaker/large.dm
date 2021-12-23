@@ -7,11 +7,23 @@
 	name = "large beaker"
 	icon = 'icons/obj/item/container/cup/beaker_large.dmi'
 	icon_state = "beaker"
-	icon_count = 9
+	icon_count = 12
 
 	reagents = /reagent_container/beaker/large
 
 	value = 10
+
+/obj/item/container/beaker/large/lube_smoke_01/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/potassium,40)
+	reagents.add_reagent(/reagent/lube,60)
+	return ..()
+
+/obj/item/container/beaker/large/lube_smoke_02/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/phosphorous,40)
+	reagents.add_reagent(/reagent/lube,60)
+	return ..()
 
 /obj/item/container/beaker/large/bicaridine/Generate()
 	reagents.add_reagent(/reagent/medicine/bicaridine,reagents.volume_max)

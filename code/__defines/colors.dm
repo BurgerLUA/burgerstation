@@ -108,8 +108,8 @@
 #define COLOR_OIL "#3D3D3D"
 
 //Rarity
-#define COLOR_BROKEN "#FFFFFF"
-#define COLOR_COMMON "#404040"
+#define COLOR_BROKEN "#404040"
+#define COLOR_COMMON "#B2B2B2"
 #define COLOR_UNCOMMON "#8888FF"
 #define COLOR_RARE "#FFFF88"
 #define COLOR_MYTHICAL "#FF88FF"
@@ -118,5 +118,5 @@
 
 
 
-#define COLOR_LIGHT "#E8E8CE" //"#DBD4D4" //"#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT "#DEDEE2" //"#E8E8CE" //"#DBD4D4" //"#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
 #define COLOR_LIGHT_BULB "#F8F4C6"

@@ -134,13 +134,13 @@
 
 	var/temperature_diff = desired_temperature - average_temperature
 
-	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
+	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-0.01,0.01) //The clamp at the end ensures that the temperature will always increase/decrease.
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
 		. = FALSE
 	else //If we're colder than we need to be.
-		temperature_change *= 0.5 //This means it's slow to heat up, but fast to cool down.
+		temperature_change *= 0.5 //This means it's slower to heat up.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
 	 . = FALSE
 
@@ -500,7 +500,7 @@
 		var/reagent/R = REAGENT(r_id)
 		var/flavor_strength = R.flavor_strength*(stored_reagents[r_id]/volume_current)
 		flavor_profile[R.flavor] += flavor_strength
-		flavor_flags["[R.flags_flavor]"] = flavor_strength
+		flavor_flags["[R.flags_flavor]"] += flavor_strength
 		total_flavor_strength += flavor_strength
 
 	sortTim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)

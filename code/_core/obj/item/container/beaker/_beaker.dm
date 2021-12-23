@@ -9,7 +9,7 @@
 
 	reagents = /reagent_container/beaker/
 
-	var/icon_count = 7
+	var/icon_count = 8
 
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE
@@ -114,18 +114,6 @@
 /obj/item/container/beaker/smoke_02/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/phosphorous,40)
-	return ..()
-
-/obj/item/container/beaker/large/lube_smoke_01/Generate()
-	reagents.add_reagent(/reagent/nutrition/sugar,20)
-	reagents.add_reagent(/reagent/potassium,40)
-	reagents.add_reagent(/reagent/lube,60)
-	return ..()
-
-/obj/item/container/beaker/large/lube_smoke_02/Generate()
-	reagents.add_reagent(/reagent/nutrition/sugar,20)
-	reagents.add_reagent(/reagent/phosphorous,40)
-	reagents.add_reagent(/reagent/lube,60)
 	return ..()
 
 /obj/item/container/beaker/flashbang_01/Generate()
