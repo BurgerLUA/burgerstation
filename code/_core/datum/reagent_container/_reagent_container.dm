@@ -51,8 +51,8 @@
 
 	. = ..()
 
-	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
-		SSreagent.all_temperature_reagent_containers += src
+	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT) && volume_current)
+		SSreagent.all_temperature_reagent_containers |= src
 
 /reagent_container/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
 	. = FALSE
@@ -229,6 +229,11 @@
 		var/chosen_reagent = stored_reagents[length(stored_reagents)]
 		remove_reagent(chosen_reagent,CEILING(difference,1))
 
+	if(volume_current)
+		SSreagent.all_temperature_reagent_containers |= src
+	else
+		SSreagent.all_temperature_reagent_containers -= src
+
 	return TRUE
 
 
@@ -349,7 +354,7 @@
 
 /reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
-	amount = round(amount,REAGENT_ROUNDING)
+	amount = round(amount,REAGENT_ROUNDING) //TODO: Check if floor or ceiling is better.
 
 	var/reagent/R = REAGENT(reagent_type)
 
@@ -371,8 +376,8 @@
 		else
 			temperature = T0C + 20
 
-	var/previous_amount = SAFENUM(stored_reagents[reagent_type])
-	var/previous_temp = SAFENUM(stored_reagents_temperature[reagent_type])
+	var/previous_amount = stored_reagents[reagent_type]
+	var/previous_temp = stored_reagents_temperature[reagent_type]
 
 	if(volume_current + amount > volume_max)
 		amount = volume_max - volume_current
@@ -396,8 +401,10 @@
 	if(amount)
 		stored_reagents[reagent_type] += amount
 
-	if(amount > 0)
-		if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
+	if(amount > 0) //Temperature stuff.
+		if(!previous_amount || !previous_temp || previous_temp == TNULL) //Fallback nonsense.
+			stored_reagents_temperature[reagent_type] = temperature
+		else if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
 			stored_reagents_temperature[reagent_type] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_type])
 		else
 			stored_reagents_temperature[reagent_type] = temperature
@@ -422,11 +429,9 @@
 	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes,caller)
 
 /reagent_container/proc/remove_all_reagents()
-
 	stored_reagents.Cut()
 	stored_reagents_temperature.Cut()
 	update_container()
-
 	return TRUE
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
@@ -489,12 +494,14 @@
 
 	var/list/flavor_profile = list()
 	var/list/flavor_flags = list()
+	var/total_flavor_strength = 0
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
 		var/flavor_strength = R.flavor_strength*(stored_reagents[r_id]/volume_current)
 		flavor_profile[R.flavor] += flavor_strength
 		flavor_flags["[R.flags_flavor]"] = flavor_strength
+		total_flavor_strength += flavor_strength
 
 	sortTim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
 
@@ -504,7 +511,7 @@
 
 	for(var/i=1,i<=flavor_count,i++)
 		var/k = flavor_profile[i] //This gets the key (flavor name)
-		var/v = flavor_profile[k] //This gets the value (flavor strength)
+		var/v = flavor_profile[k] * min(1,0.5 + (flavor_profile[k]/total_flavor_strength))///This gets the value (flavor strength)
 		var/flavor_text
 		switch(v)
 			if(0.05 to 0.1)

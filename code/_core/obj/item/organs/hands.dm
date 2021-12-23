@@ -10,7 +10,7 @@
 	)
 	break_threshold = 15
 
-	damage_type = /damagetype/unarmed/fists/
+	damage_type = null
 
 	attach_flag = BODY_ARM_RIGHT
 
@@ -63,6 +63,9 @@
 
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim)
 
+	if(damage_type) //Override
+		return damage_type
+
 	if(is_living(attacker))
 		var/mob/living/L = attacker
 		if(L.attack_flags & CONTROL_MOD_KICK)
@@ -79,7 +82,7 @@
 			if(INTENT_GRAB)
 				return /damagetype/unarmed/fists/grab
 
-	return ..()
+	. = ..()
 
 /obj/item/organ/hand/left
 	name = "left hand"

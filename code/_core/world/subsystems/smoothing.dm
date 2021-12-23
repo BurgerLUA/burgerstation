@@ -43,6 +43,8 @@ SUBSYSTEM_DEF(smoothing)
 
 	for(var/direction in valid_directions)
 		var/turf/T2 = direction == 0x0 ? T : get_step(T,direction)
+		if(!T2)
+			continue
 		if(T2.corner_icons)
 			SSsmoothing.queued_smoothing |= T2
 		for(var/obj/O in T2.contents)

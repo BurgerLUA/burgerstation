@@ -34,6 +34,15 @@
 	stealthy = TRUE
 	. = ..()
 	var/mob/living/advanced/A = owner
+
+	var/obj/item/organ/hand/HR = A.labeled_organs[BODY_HAND_RIGHT]
+	if(HR) A.remove_organ(HR,TRUE)
+	var/obj/item/organ/hand/HL = A.labeled_organs[BODY_HAND_LEFT]
+	if(HL) A.remove_organ(HL,TRUE)
+
+	A.add_organ(/obj/item/organ/hand/zombie) //Right hand.
+	A.add_organ(/obj/item/organ/hand/zombie/left) //Left hand.
+
 	A.change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
 	A.add_status_effect(PAINKILLER,100,-1,stealthy=TRUE)
 	A.add_status_effect(ADRENALINE,100,-1,stealthy=TRUE)
