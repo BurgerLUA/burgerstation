@@ -57,6 +57,8 @@
 
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
+	var/obj/plane_master/mobs_small/plane_master_mob_small
+	var/obj/plane_master/mobs_small/plane_master_mob_large
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/objs/plane_master_obj
 	var/obj/plane_master/shuttle/plane_master_shuttle
@@ -148,6 +150,8 @@
 
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
+	QDEL_NULL(plane_master_mob_small)
+	QDEL_NULL(plane_master_mob_large)
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
@@ -198,6 +202,14 @@
 	if(!plane_master_mob)
 		plane_master_mob = new(src)
 	C.screen += plane_master_mob
+
+	if(!plane_master_mob_small)
+		plane_master_mob_small = new(src)
+	C.screen += plane_master_mob_small
+
+	if(!plane_master_mob_large)
+		plane_master_mob_large = new(src)
+	C.screen += plane_master_mob_large
 
 	if(!plane_master_darkness)
 		plane_master_darkness = new(src)

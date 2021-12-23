@@ -28,9 +28,6 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING
 
-	plane = PLANE_MOB
-	layer = 1000
-
 	density = TRUE
 
 /obj/structure/interactive/bed/sleeper/Initialize()

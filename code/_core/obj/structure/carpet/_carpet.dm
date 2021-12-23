@@ -10,6 +10,9 @@
 
 	var/override_overlays = FALSE
 
+	plane = PLANE_JUNK
+	layer = -1000
+
 /obj/structure/carpet/Finalize()
 	. = ..()
 	update_sprite()
