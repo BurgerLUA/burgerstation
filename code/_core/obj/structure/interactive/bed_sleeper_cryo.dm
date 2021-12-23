@@ -18,7 +18,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 	if(!is_player(A))
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/bed/sleeper/cryo/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
@@ -30,25 +30,19 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 
 /obj/structure/interactive/bed/sleeper/cryo/think()
 	. = ..()
-	if(is_player(buckled) && !buckled.client)
+	if(is_player(buckled) && !buckled.client && !buckled.dead)
 		var/mob/living/advanced/player/P = buckled
 		var/area/A = get_area(P)
 		if(P.can_save(A))
 			P.try_logout()
-		return TRUE //Always return true if there is buckled.
+	if(buckled)
+		return TRUE
 
 /obj/structure/interactive/bed/sleeper/cryo/on_close(var/mob/caller)
 
 	. = ..()
 
 	if(.)
-
-		if(is_player(buckled) && !buckled.dead && buckled.ckey_last && !buckled.ckey)
-			var/mob/living/advanced/player/P = buckled
-			var/area/A = get_area(P)
-			if(P.can_save(A))
-				P.try_logout()
-
 		if(!buckled)
 			cryo_spawnpoints |= src //Unoccupied!
 

@@ -25,28 +25,24 @@ obj/structure/interactive/computer/console
 
 	density = TRUE
 
-obj/structure/interactive/computer/console/PostInitialize()
+obj/structure/interactive/computer/console/Finalize()
 	. = ..()
 	update_sprite()
 
 obj/structure/interactive/computer/console/update_icon()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	var/icon/I = new/icon(icon,icon_state)
+	. = ..()
 
 	if(computer_type && on)
-		var/icon/I2 = new/icon(icon,computer_type)
-		I.Blend(I2,ICON_OVERLAY)
+		var/image/I2 = new/image(initial(icon),computer_type)
+		I2.plane = PLANE_LIGHTING
+		add_overlay(I2)
+
 
 	if(keyboard_type)
-		var/icon/I3 = new/icon(icon,keyboard_type)
-		I.Blend(I3,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
+		var/image/I3 = new/image(initial(icon),keyboard_type)
+		I3.plane = PLANE_LIGHTING
+		add_overlay(I3)
 
 obj/structure/interactive/computer/console/laptop
 	name = "personal laptop"

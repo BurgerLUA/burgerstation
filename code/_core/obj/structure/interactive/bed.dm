@@ -16,6 +16,8 @@ obj/structure/interactive/bed
 
 	interaction_flags = FLAG_INTERACTION_LIVING
 
+	pixel_y = 4
+
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
 	. = ..()

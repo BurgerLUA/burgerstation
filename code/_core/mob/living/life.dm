@@ -264,6 +264,7 @@
 		else
 			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
+		update_plane()
 
 
 	return desired_horizontal

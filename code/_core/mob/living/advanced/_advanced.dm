@@ -161,12 +161,14 @@
 	for(var/k in overlays_assoc)
 		var/image/overlay/O = overlays_assoc[k]
 		var/obj/item/I = O.attached_object
+		if(!I)
+			continue
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
 			show_overlay(k, !tracked_hidden_organs[OR.id] ? TRUE : FALSE)
 		else
 			var/atom/movable/M = I
-			if(!M.loc || !M.loc || !is_organ(M.loc.loc))
+			if(!M.loc || !is_organ(M.loc.loc))
 				continue
 			var/obj/item/organ/OR = M.loc.loc
 			show_overlay(k, (blocking_clothing[M] || !tracked_hidden_organs[OR.id]) ? TRUE : FALSE)

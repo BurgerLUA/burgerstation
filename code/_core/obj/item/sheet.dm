@@ -20,6 +20,8 @@ var/global/list/valid_bedsheets = list(
 	plane = PLANE_MOB_STEALTH
 	layer = 1000
 
+	pixel_y = 4
+
 /obj/item/bedsheet/Finalize()
 	. = ..()
 	update_sprite()

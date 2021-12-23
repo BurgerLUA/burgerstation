@@ -53,7 +53,30 @@
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
+		filters += filter(type="drop_shadow", x=0, y=-2, size=3, offset=0, color=rgb(0,0,0,200))
+
+
+/obj/plane_master/mobs_small
+	plane = PLANE_MOB_SMALL
+
+/obj/plane_master/mobs_small/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,200))
+
+/obj/plane_master/mobs_large
+	plane = PLANE_MOB_LARGE
+
+/obj/plane_master/mobs_small/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
+		filters += filter(type="drop_shadow", x=0, y=-3, size=4, offset=0, color=rgb(0,0,0,200))
+
+
 
 
 //DARKNESS

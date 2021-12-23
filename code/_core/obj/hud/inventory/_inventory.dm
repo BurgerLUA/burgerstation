@@ -7,9 +7,6 @@
 
 	alpha = 225
 
-	//icon = 'icons/invisible.dmi'
-	//icon_state = "0"
-
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
