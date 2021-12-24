@@ -67,3 +67,47 @@ mob/living/advanced/revive()
 		if(O.has_life) O.on_life()
 
 	return TRUE
+
+var/global/list/spread_icons = list(
+	'icons/pointers/accuracy/0.dmi',
+	'icons/pointers/accuracy/1.dmi',
+	'icons/pointers/accuracy/2.dmi',
+	'icons/pointers/accuracy/3.dmi',
+	'icons/pointers/accuracy/4.dmi',
+	'icons/pointers/accuracy/5.dmi',
+	'icons/pointers/accuracy/6.dmi',
+	'icons/pointers/accuracy/7.dmi',
+	'icons/pointers/accuracy/8.dmi',
+	'icons/pointers/accuracy/9.dmi',
+	'icons/pointers/accuracy/10.dmi'
+)
+
+/mob/living/advanced/handle_mouse_pointer()
+
+	. = ..()
+
+	if(!.)
+		return .
+
+	var/desired_spread = -1
+
+	var/obj/item/weapon/ranged/R = right_item
+	var/obj/item/weapon/ranged/L = left_item
+
+	if(istype(R))
+		desired_spread = max(desired_spread,R.heat_current)
+
+	if(istype(L))
+		desired_spread = max(desired_spread,L.heat_current)
+
+	if(desired_spread > 0)
+		desired_spread *= 100
+		desired_spread = clamp(FLOOR(desired_spread,1)+1,0,length(spread_icons))
+		if(client.mouse_pointer_icon != spread_icons[desired_spread])
+			set_mouse_pointer(spread_icons[desired_spread])
+	else if(client.mouse_pointer_icon != spread_icons[1])
+		set_mouse_pointer(spread_icons[1])
+
+
+
+

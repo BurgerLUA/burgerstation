@@ -13,7 +13,7 @@ var/global/list/all_clients = list() //Assoc list
 	view = VIEW_RANGE
 	perspective = EYE_PERSPECTIVE
 
-	var/selected_hand = RIGHT_HAND //Set to a value of LEFT_HAND or RIGHT_HAND to enable.
+	var/selected_hand //Set to a value of LEFT_HAND or RIGHT_HAND to enable. Null to disable.
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons

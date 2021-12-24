@@ -29,6 +29,12 @@
 	//Dynamic accuracy.
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
+	var/heat_to_remove = 0.01 //Heat to remove per decisecond.
+	var/heat_power = 1 //Heat converted into accuracy. See: https://www.desmos.com/calculator/r7tq4ovdcz
+	//Note for heat power:
+	//Higher values start low and then ramp up at the end. Lower values ramp up quickly but stay consistant.
+	//Precise weapons should have a lower value while inprecise weapons should have a higher value.
+
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
@@ -303,7 +309,7 @@
 /obj/item/weapon/ranged/think()
 
 	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
-		heat_current = max(heat_current-(SIZE_3/max(1,size)),0) //Smaller guns easier to handle.
+		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
 
