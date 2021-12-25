@@ -472,14 +472,14 @@ var/global/list/rarity_to_mul = list(
 
 	if(quality <= 0)
 		. += div("rarity bad","<b>Quality</b>: BROKEN")
-	else if(quality < 100)
-		. += div("rarity bad","<b>Quality</b>: -[100 - FLOOR(quality,1)]%")
-	else if(quality == 140)
-		. += div("rarity good","<b>Quality</b>: +40% <b>(MAX)</b>")
-	else if(quality > 140)
-		. += div("rarity good","<b>Quality</b>: +[FLOOR(quality,1) - 100]% <b>(OVER MAX)</b>")
+	else if(quality >= 200)
+		. += div("rarity legendary","<b>Quality</b>: [FLOOR(quality,1)]%")
 	else if(quality > 100)
-		. += div("rarity good","<b>Quality</b>: +[FLOOR(quality,1) - 100]%")
+		. += div("rarity good","<b>Quality</b>: [FLOOR(quality,1)]%")
+	else if(quality <= 60)
+		. += div("rarity bad","<b>Quality</b>: [FLOOR(quality,1)]%")
+	else
+		. += div("rarity common","<b>Quality</b>: [FLOOR(quality,1)]%")
 
 	if(luck < 50)
 		. += div("rarity bad","<b>Luck</b>: -[50 - luck]")
