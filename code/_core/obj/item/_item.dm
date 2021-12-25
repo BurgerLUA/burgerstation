@@ -756,8 +756,8 @@ var/global/list/rarity_to_mul = list(
 	return ..()
 
 /obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
-	damage_multiplier *= FLOOR(quality/100,0.01)
-	return ..()
+	damage_multiplier *= get_quality_bonus(0.25,2)
+	. = ..()
 
 /obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
 
@@ -815,8 +815,14 @@ var/global/list/rarity_to_mul = list(
 		add_overlay(I)
 
 
-/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2)
-	return min(minimum + FLOOR(quality/100,0.01)*(1-minimum),maximum)
+/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2,var/threshold=60)
+	var/quality_mod_to_use
+	if(quality < 100)
+		quality_mod_to_use = min(1,quality/threshold) //Start failing only below the threshold.
+	else
+		quality_mod_to_use = quality/100
+	quality_mod_to_use = FLOOR(quality_mod_to_use,0.01)
+	return min(minimum + quality_mod_to_use*(1-minimum),maximum)
 
 /obj/item/proc/adjust_quality(var/quality_to_add=0)
 

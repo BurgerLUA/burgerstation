@@ -86,6 +86,8 @@
 
 #define SCALE(value, min, max) ((value - min) / (max - min))
 
+#define SCALEBELOW(value,threshold,maximum) min(maximum,(value/threshold))*maximum)
+
 // Performs a linear interpolation between a and b.
 // Note that amount=0 returns a, amount=1 returns b, and
 // amount=0.5 returns the mean of a and b.

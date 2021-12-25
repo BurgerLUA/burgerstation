@@ -187,10 +187,6 @@
 				.[damage_type] = C_defense_rating[damage_type]
 				continue
 			var/clothing_defense = C_defense_rating[damage_type]
-			if(clothing_defense > 0)
-				clothing_defense *= C.quality/100
-			else if(clothing_defense < 0)
-				clothing_defense *= max(0,2 - (C.quality/100))
 			if(!ignore_luck)
 				if(C.luck > 50 && prob(C.luck-50))
 					clothing_defense *= 2

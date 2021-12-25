@@ -286,6 +286,7 @@
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
 
 	if(quality <= 0)
+		caller.to_chat(span("warning","\The [src.name] is completely broken!"))
 		return FALSE
 
 	if(!use_loyalty_tag)
@@ -400,7 +401,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		return FALSE
 
 	var/quality_bonus = get_quality_bonus(0.5,2)
-	var/quality_penalty = 1/get_quality_bonus(0.25,2)
+	var/quality_penalty = max(1,1/get_quality_bonus(0.25,2))
 
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds

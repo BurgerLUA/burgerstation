@@ -62,9 +62,9 @@
 
 // This color of overlay is very common - most of the station is this color when lit fully.
 // Tube lights are a bluish-white, so we can't just assume 1-1-1 is full-illumination.
-#define LIGHTING_DEFAULT_TUBE_R 0.96
-#define LIGHTING_DEFAULT_TUBE_G 1
-#define LIGHTING_DEFAULT_TUBE_B 1
+//#define LIGHTING_DEFAULT_TUBE_R 0.96
+//#define LIGHTING_DEFAULT_TUBE_G 1
+//#define LIGHTING_DEFAULT_TUBE_B 1
 
 //Some defines to generalise colours used in lighting.
 //Important note on colors. Colors can end up significantly different from the basic html picture, especially when saturated

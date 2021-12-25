@@ -8,6 +8,7 @@
 
 	var/base_color = "#FFFFFF"
 	secondary_color = "#FFFFFF"
+	var/tertiary_color = "#FFFFFF"
 
 	var/open_sound
 	var/close_sound
@@ -52,6 +53,12 @@
 	I.color = base_color
 	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_underlay(I)
+	var/image/I2 = new/image(initial(icon),"padding")
+	I2.plane = PLANE_OBJ
+	I2.layer = -999
+	I2.color = tertiary_color
+	I2.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+	add_underlay(I2)
 
 /obj/structure/interactive/bed/sleeper/update_overlays()
 	. = ..()

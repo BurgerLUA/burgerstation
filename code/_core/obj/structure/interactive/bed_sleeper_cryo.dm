@@ -7,6 +7,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 	desc = "Ah shit, i gotta cryo."
 	desc_extended = "Move inside here in order to save your character and log out."
 	secondary_color = "#00FF00"
+	tertiary_color = "#008800"
 	var/spawnpoint = TRUE
 
 /obj/structure/interactive/bed/sleeper/cryo/New(var/desired_loc)
