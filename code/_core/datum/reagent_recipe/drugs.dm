@@ -1,5 +1,6 @@
 /reagent_recipe/drugs/
 	category = "Chemistry"
+	results = list()
 
 /reagent_recipe/drugs/space_drugs
 
