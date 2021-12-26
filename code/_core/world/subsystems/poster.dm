@@ -12,3 +12,4 @@ SUBSYSTEM_DEF(poster)
 		all_posters[P.type] = P
 	
 	return ..()
+	
