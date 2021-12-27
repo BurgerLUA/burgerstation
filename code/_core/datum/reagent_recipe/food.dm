@@ -1,5 +1,6 @@
 /reagent_recipe/food/
 	category = "Food"
+	results = list()
 
 /reagent_recipe/food/dough/
 
