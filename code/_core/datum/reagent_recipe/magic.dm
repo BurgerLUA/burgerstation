@@ -1,5 +1,6 @@
 /reagent_recipe/magic/
 	category = "Chemistry"
+	results = list()
 
 /reagent_recipe/magic/health_potion
 

@@ -1,5 +1,6 @@
 /reagent_recipe/medicine/
 	category = "Chemistry"
+	results = list()
 
 /reagent_recipe/medicine/dexalin
 

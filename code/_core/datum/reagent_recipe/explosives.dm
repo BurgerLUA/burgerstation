@@ -1,5 +1,6 @@
 /reagent_recipe/explosion/
 	category = "Chemistry"
+	results = list()
 
 /reagent_recipe/explosion/water_potassium
 	name = "Water-Potassium Explosion"
