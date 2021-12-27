@@ -10,3 +10,6 @@ SUBSYSTEM_DEF(poster)
 	for(var/k in subtypesof(/collectable_poster/))
 		var/collectable_poster/P = new k
 		all_posters[P.type] = P
+	
+	return ..()
+	
