@@ -35,13 +35,13 @@
 	var/desired_size = 0.5
 	if(current_value)
 		current_value += desired_value
-		animate(src,alpha=255,flags=ANIMATION_END_NOW)
+		animate(src,alpha=255,flags=ANIMATION_RELATIVE)
 		CALLBACK_REMOVE("\ref[src]_remove_damage_number")
 		CALLBACK_REMOVE("\ref[src]_fade_damage_number")
 	else
 		current_value = desired_value
 		alpha = 255
-		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=30,easing = CIRCULAR_EASING | EASE_OUT)
+		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=30,easing = CIRCULAR_EASING | EASE_OUT,flags=ANIMATION_RELATIVE)
 	current_value = clamp(current_value,1,9999999)
 	var/damage_color_math = clamp(255 - (current_value/200)*255,0,255)
 	desired_size = clamp(current_value*0.01,0.25,4)
