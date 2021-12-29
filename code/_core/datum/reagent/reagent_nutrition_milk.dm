@@ -17,6 +17,24 @@
 
 	particle_size = 0.2
 
+/reagent/nutrition/milk/moth
+	name = "moth's milk"
+	desc = "Nutrition and flavor from moth's milk."
+	color = "#FFFFFF"
+	alpha = 255
+
+	nutrition_amount = 6
+	hydration_amount = 2
+	nutrition_quality_amount = 4
+
+	flavor = "silky milk"
+
+	liquid = 0.5
+
+	flags_flavor = FLAG_FLAVOR_DAIRY | FLAG_FLAVOR_LOVE
+
+	particle_size = 0.2
+
 /reagent/nutrition/cream
 	name = "milk cream"
 	desc = "Nutrition and flavor from milk cream."
@@ -118,8 +136,8 @@
 
 
 /reagent/nutrition/cheese/gruyere
-	name = "Gruyère cave cheese"
-	desc = "Nutrition and flavor from Gruyère cave cheese."
+	name = "GruyÃ¨re cave cheese"
+	desc = "Nutrition and flavor from GruyÃ¨re cave cheese."
 	color = "#E4A300"
 
 	nutrition_amount = 25
