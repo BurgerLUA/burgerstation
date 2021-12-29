@@ -47,13 +47,13 @@ SUBSYSTEM_DEF(balance)
 				weapon_to_bullet[B.type] = C.type
 				break
 
-		var/found_dps = W.get_dps()
-		if(found_dps)
-			stored_dps[W.type] = CEILING(found_dps,1)
-
 		var/found_dph = W.get_damage_per_hit()
 		if(found_dph)
 			stored_dph[W.type] = CEILING(found_dph,1)
+
+		var/found_dps = W.get_dps(0, found_dph)
+		if(found_dps)
+			stored_dps[W.type] = CEILING(found_dps,1)
 
 		if(!W.bypass_balance_check)
 			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)

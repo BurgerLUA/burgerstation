@@ -23,6 +23,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/view_dph,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
+	/client/proc/debug_variables,
+	/client/proc/spawn_atom,
 	/client/verb/test_astar,
 	/client/verb/print_garbage,
 	/client/verb/set_skill,
@@ -520,7 +522,6 @@ client/verb/air_test(var/pressure as num)
 		T.color = "#FF0000"
 
 	return TRUE
-
 
 /client/verb/set_attribute(var/mob/mob as mob)
 

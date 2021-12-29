@@ -60,7 +60,8 @@
 	SAVEVAR("growth_produce_max")
 
 	SAVEVAR("potency")
-	SAVEVAR("yield")
+	SAVEVAR("yield_max")
+	SAVEVAR("yield_percent")
 	SAVEVAR("growth_speed")
 
 	SAVEVAR("delete_after_harvest")
@@ -78,7 +79,8 @@
 	LOADVAR("growth_produce_max")
 
 	LOADVAR("potency")
-	LOADVAR("yield")
+	LOADVAR("yield_max")
+	LOADVAR("yield_percent")
 	LOADVAR("growth_speed")
 
 	LOADVAR("delete_after_harvest")

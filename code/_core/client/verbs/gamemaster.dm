@@ -107,22 +107,27 @@
 
 
 
-/client/verb/smite_living()
+/client/verb/smite_living(var/mob/living/target)
 
 	set name = "Smite Living"
 	set category = "Fun"
 
-	var/list/valid_targets = list()
+	var/mob/living/L
 
-	for(var/k in all_players)
-		valid_targets += k
+	if(!target)
+		var/list/valid_targets = list()
 
-	for(var/mob/living/L in view(VIEW_RANGE,src.mob))
-		valid_targets |= L
+		for(var/k in all_players)
+			valid_targets += k
 
-	var/mob/living/L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
+		for(L in view(src.mob,VIEW_RANGE))
+			valid_targets |= L
 
-	if(!L) return FALSE
+		L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
+
+		if(!L) return FALSE
+
+	else L = target
 
 	var/confirm = input("Are you sure you want to crush [L.name]? This will kill them instantly...","Cursh Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
 
