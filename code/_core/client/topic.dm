@@ -95,6 +95,7 @@
 				edit_macros()
 
 		if(permissions & FLAG_PERMISSION_ADMIN)
+			if("vars")	view_var_Topic(href,href_list,hsrc)
 			if(href_list["var_edit_ref"])
 				var/datum/actual_reference = locate(href_list["var_edit_ref"])
 				if(actual_reference)

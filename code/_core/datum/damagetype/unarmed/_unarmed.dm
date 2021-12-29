@@ -31,6 +31,8 @@
 		ATTRIBUTE_STRENGTH = 25, //25%
 	)
 
+	savage_hit_threshold = 0.2
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 

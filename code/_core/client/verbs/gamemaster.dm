@@ -11,20 +11,6 @@
 
 	log_admin("[src.get_debug_name()] sped up setup.")
 
-
-/client/verb/force_random_event()
-	set name = "Force Random Event"
-	set category = "Fun"
-
-	var/confirm = input("Are you sure you want to trigger a random event?","Random Event Trigger.") in list("Yes","No","Cancel")|null
-
-	if(confirm != "Yes")
-		return FALSE
-
-	SSevents.next_event_time = 0
-
-	log_admin("[src.get_debug_name()] forced a random event.")
-
 /client/verb/force_specific_event()
 	set name = "Force Specific Event"
 	set category = "Fun"
@@ -91,23 +77,17 @@
 		src.to_chat(span("warning","\"[object]\" returned no valid types."))
 		return FALSE
 
-	if(valid_count == 1)
-		var/datum/A = valid_objects[1]
-		A = new A(usr.loc)
-		INITIALIZE(A)
-		GENERATE(A)
-		FINALIZE(A)
-		return TRUE
-
-	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
-
-	if(!selection)
-		return FALSE
+	var/selection
+	if(valid_count != 1)
+		selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
+		if(!selection)
+			return FALSE
+	else
+		selection = valid_objects[1]
 
 	var/turf/T
 	if(mob)
 		T = get_step(src.mob,src.mob.dir)
-
 	if(!T)
 		T = get_turf(src.mob)
 
@@ -120,8 +100,6 @@
 		GENERATE(O)
 	FINALIZE(A)
 
-
-
 	log_admin("[src.get_debug_name()] spawned [A.get_debug_name()].")
 
 	return TRUE
@@ -129,22 +107,27 @@
 
 
 
-/client/verb/smite_living()
+/client/verb/smite_living(var/mob/living/target)
 
 	set name = "Smite Living"
 	set category = "Fun"
 
-	var/list/valid_targets = list()
+	var/mob/living/L
 
-	for(var/k in all_players)
-		valid_targets += k
+	if(!target)
+		var/list/valid_targets = list()
 
-	for(var/mob/living/L in view(VIEW_RANGE,src.mob))
-		valid_targets |= L
+		for(var/k in all_players)
+			valid_targets += k
 
-	var/mob/living/L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
+		for(L in view(src.mob,VIEW_RANGE))
+			valid_targets |= L
 
-	if(!L) return FALSE
+		L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
+
+		if(!L) return FALSE
+
+	else L = target
 
 	var/confirm = input("Are you sure you want to crush [L.name]? This will kill them instantly...","Cursh Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
 

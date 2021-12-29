@@ -123,3 +123,16 @@
 
 /obj/structure/interactive/diverter/weapon/should_push(var/atom/movable/M)
 	return is_weapon(M)
+
+/obj/structure/interactive/diverter/butcherable
+	name = "airjet diverter (butcherable)"
+	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object can be butchered for food."
+
+/obj/structure/interactive/diverter/butcherable/should_push(var/atom/movable/M)
+
+	if(is_living(M))
+		var/mob/living/L = M
+		if(L.override_butcher || length(L.butcher_contents))
+			return TRUE
+
+	return FALSE

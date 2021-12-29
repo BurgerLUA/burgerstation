@@ -6,7 +6,8 @@
 	icon_state = "inventory"
 	value = 500
 
-	shoot_delay = 3
+	tier = 1
+	shoot_delay = 2.5
 
 	automatic = FALSE
 
@@ -76,11 +77,11 @@
 	desc_extended = "An extremely powerful prototype of the 10mm NT Penumbra Pistol, before everything was simplified for factory production. Fires 3 round bursts at an absurd firerate. They don't make them like they used to."
 	icon = 'icons/obj/item/weapons/ranged/pistol/robo.dmi'
 
+	tier = 2
+
 	value = 1200
 
-	shoot_delay = 1.5
-	burst_delay = 4
-	max_bursts = 3
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -96,3 +97,4 @@
 
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
+

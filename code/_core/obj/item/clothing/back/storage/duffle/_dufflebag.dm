@@ -15,19 +15,6 @@
 
 	value = 100
 
-
-
-
-/obj/item/clothing/back/storage/dufflebag/loadout/pmc
-	color = COLOR_WHITE
-	vendor_name = "\improper New Recruit's Kit"
-
-/obj/item/clothing/back/storage/dufflebag/grey
-	color = COLOR_GREY
-
-/obj/item/clothing/back/storage/dufflebag/black
-	color = COLOR_BLACK
-
 /obj/item/clothing/back/storage/dufflebag/engineering
 	name = "engineering dufflebag"
 	desc_extended = "A robust duffelbag for lugging around materials. Slows you down, however."

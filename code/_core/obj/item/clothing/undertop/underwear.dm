@@ -54,9 +54,24 @@
 	color = random_color()
 	return ..()
 
+/obj/item/clothing/undertop/underwear/bra/neko
+	name = "cursed cat brassiere"
+	desc = "who the fuck what the fuck"
+	desc_extended = "why"
+	icon = 'icons/obj/item/clothing/underwear/neko_bra.dmi'
+
+	rarity = RARITY_MYTHICAL
+
+	defense_rating = list(
+		DARK = 20,
+		HOLY = -20
+	)
+
+	value = 500
+
 /obj/item/clothing/undertop/underwear/shirt
-	desc = "Shirt that goes under your shirt."
-	desc_extended = "Slightly more acceptable to wear alone in public than the Undertop.."
+	desc = "undershirt"
+	desc_extended = "Slightly more acceptable to wear alone in public than the bra."
 	icon = 'icons/obj/item/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
@@ -68,10 +83,7 @@
 
 	value = 20
 
-/obj/item/clothing/undertop/underwear/shirt/security
-	desc = "Shirt that goes under your shirt."
-	desc_extended = "Slightly more acceptable to wear alone in public than the Undertop. Black Version for Security to show off how manly and not insecure you are."
-	name = "security undershirt"
+/obj/item/clothing/undertop/underwear/shirt/black
 	color = COLOR_BLACK
 
 /obj/item/clothing/undertop/underwear/shirt/random/Generate()

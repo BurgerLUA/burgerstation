@@ -89,13 +89,11 @@
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
-	/*
 	if(istype(A,/mob/living/vehicle/))
 		var/mob/living/vehicle/V = A
 		if(!length(V.passengers))
 			return FALSE
 		A = V.passengers[1]
-	*/
 
 	if(A == owner)
 		return FALSE
@@ -134,10 +132,7 @@
 
 	return FALSE
 
-/ai/proc/is_friend(var/mob/living/L)
-	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
-
-/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(is_living(attacker) && !stealthy && attacker != objective_attack)
 		if(should_attack_mob(attacker,FALSE))

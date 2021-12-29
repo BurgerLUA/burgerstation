@@ -13,6 +13,10 @@
 	material_id = /material/steel
 	health_base = 1000
 
+/turf/simulated/wall/metal/New(var/desired_loc)
+	. = ..()
+	map_color = color
+
 /turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)

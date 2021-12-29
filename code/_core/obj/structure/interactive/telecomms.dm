@@ -84,10 +84,22 @@ var/global/list/all_telecomms = list()
 	add_telecomm("Burgerstation")
 	add_telecomm("Mission")
 	add_telecomm("Central Command")
+	add_telecomm("Fallback")
 	. = ..()
+
+/obj/structure/interactive/telecomms/process_data(var/list/data_to_process = list()) //Meme shitcode.
+
+	. = ..()
+
+	if(. && SStelecomm_trigger.stored_trigger && data_to_process["text_to_say"] && SStelecomm_trigger.stored_trigger.check_trigger(data_to_process["text_to_say"]))
+		SStelecomm_trigger.stored_trigger.trigger()
+		qdel(SStelecomm_trigger.stored_trigger)
+		SStelecomm_trigger.stored_trigger = null
+
 
 /obj/structure/interactive/telecomms/vr
 
 /obj/structure/interactive/telecomms/vr/Initialize()
 	add_telecomm("Virtual Reality")
 	. = ..()
+

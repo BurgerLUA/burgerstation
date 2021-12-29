@@ -13,7 +13,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	icon_state = "directional"
 
@@ -192,7 +192,8 @@
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
-	var/fatigue_from_block_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/fatigue_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/pain_mul = 1
 
 	value = 250
 
@@ -255,7 +256,7 @@
 
 	can_be_bumped = FALSE
 
-	var/one_time_life = FALSE
+	var/delete_on_death = FALSE
 
 	var/drops_gold = 0 //Set to a value to make this mob drop this amount of gold when it dies.
 
@@ -342,7 +343,7 @@
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+	if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
 		return FALSE
 
@@ -350,7 +351,7 @@
 	for(var/turf/simulated/T in view(VIEW_RANGE,src))
 		if(!T.organic)
 			continue
-		if(T.lightness <= 0)
+		if(T.lightness > 0)
 			continue
 		if(!T.is_safe_teleport())
 			continue
@@ -478,6 +479,30 @@
 		security_hud_image.layer = PLANE_AUGMENTED
 		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
+	chat_overlay = new(src.loc)
+	chat_overlay.layer = LAYER_EFFECT
+	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
+	chat_overlay.alpha = 0
+	//This is initialized somewhere else.
+
+	alert_overlay = new(src.loc)
+	alert_overlay.layer = LAYER_EFFECT
+	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
+	alert_overlay.pixel_z = 20
+	//This is initialized somewhere else.
+
+	fire_overlay = new(src.loc)
+	fire_overlay.layer = LAYER_MOB_FIRE
+	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
+	fire_overlay.icon_state = "0"
+	//This is initialized somewhere else.
+
+	shield_overlay = new(src.loc)
+	shield_overlay.layer = LAYER_EFFECT
+	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
+	shield_overlay.icon_state = "block"
+	shield_overlay.alpha = 0
+
 	. = ..()
 
 	if(desired_client)
@@ -506,38 +531,12 @@
 
 	. = ..()
 
-	chat_overlay = new(src.loc)
-	chat_overlay.layer = LAYER_EFFECT
-	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
-	chat_overlay.alpha = 0
-	//This is initialized somewhere else.
-
-	alert_overlay = new(src.loc)
-	alert_overlay.layer = LAYER_EFFECT
-	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
-	alert_overlay.pixel_z = 20
-	//This is initialized somewhere else.
-
-	fire_overlay = new(src.loc)
-	fire_overlay.layer = LAYER_MOB_FIRE
-	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
-	fire_overlay.icon_state = "0"
-	//This is initialized somewhere else.
-
-	shield_overlay = new(src.loc)
-	shield_overlay.layer = LAYER_EFFECT
-	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
-	shield_overlay.icon_state = "block"
-	shield_overlay.alpha = 0
-
-
 /mob/living/PostInitialize()
 	. = ..()
 	if(health)
 		health.armor_base = armor_base
 	if(ai)
 		INITIALIZE(ai)
-		FINALIZE(ai)
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
@@ -545,6 +544,9 @@
 /mob/living/Finalize()
 
 	. = ..()
+
+	if(ai)
+		FINALIZE(ai)
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
@@ -628,16 +630,6 @@
 	var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 	var/damagetype/D = all_damage_types[/damagetype/explosion/]
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
-	return TRUE
-
-/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
-	for(var/i=1,i<=5,i++)
-		var/list/params = list()
-		params[PARAM_ICON_X] = rand(0,32)
-		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
-		var/damagetype/D = all_damage_types[/damagetype/explosion/]
-		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
 
 /mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)

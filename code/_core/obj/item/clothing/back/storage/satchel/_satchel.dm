@@ -27,4 +27,4 @@
 	new /obj/item/magazine/clip/revolver/bullet_38(src)
 	new /obj/item/bullet_cartridge/revolver_38(src)
 	new /obj/item/paper/book/controls(src)
-	return ..()
+	. = ..()

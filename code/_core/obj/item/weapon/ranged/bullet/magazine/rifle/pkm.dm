@@ -6,13 +6,20 @@
 	icon_state = "inventory"
 	value = 4000
 
+	tier = 3
+
 	shoot_delay = 1.75
+
+	automatic = TRUE
+
+	damage_mod = 1
+
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
 
 	can_wield = TRUE
 
-	automatic = TRUE
 
 	size = SIZE_5
 	weight = 20
@@ -58,6 +65,20 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
+
+	override_icon_state = TRUE
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/update_icon()
+
+	icon_state = initial(icon_state)
+
+	if(stored_magazine)
+		var/obj/item/magazine/M = stored_magazine
+		icon_state = "[icon_state]_[min(6,length(M.stored_bullets))]"
+	else
+		icon_state = "[icon_state]_open"
+
+	..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pkm/get_static_spread()
 	return 0.005

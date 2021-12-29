@@ -13,7 +13,7 @@
 	desc = "Be the ninja weeb space samurai you always wanted to be."
 	desc_extended = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
 	experience_power = 1.6
-	experience_multiplier = 87
+	experience_multiplier = 43
 
 /experience/skill/unarmed/ //FORTITUDE
 	//Each point of damage dealt = 1xp
@@ -23,7 +23,7 @@
 	desc = "Kapooooooooooooooooooooooooooooooooooooooooooooooow."
 	desc_extended = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
 	experience_power = 1.6
-	experience_multiplier = 56
+	experience_multiplier = 28
 
 /experience/skill/prayer/ //VITALITY
 	//Each point of damage dealt or healed = 1xp
@@ -32,7 +32,7 @@
 	desc = "Have a little faith in space jesus."
 	desc_extended = "Your skill in praying to the gods. Affects the strength, speed, and success rate of casting prayer-based spells and abilities."
 	experience_power = 1.6
-	experience_multiplier = 87
+	experience_multiplier = 43
 
 /experience/skill/block/ //FORTITUDE
 	//Each time you block = 1xp
@@ -41,7 +41,7 @@
 	id = SKILL_BLOCK
 	desc = "Your skill in blocking attacks with a weapon or a shield. Affects the chance of a successful block of swords, bucklers, or even your fists."
 	experience_power = 1.6
-	experience_multiplier = 2.6
+	experience_multiplier = 1.3
 
 /experience/skill/armor/ //???
 	//Each point of damage blocked by armor = 1xp
@@ -50,7 +50,7 @@
 	id = SKILL_ARMOR
 	desc = "Your skill in blocking attacks with armor. Affects which armor you can wear."
 	experience_power = 1.6
-	experience_multiplier = 56
+	experience_multiplier = 28
 
 //Rogue 6
 /experience/skill/ranged/ //DEXTERITY
@@ -61,7 +61,7 @@
 	desc = "Space Texas Sharpshooter."
 	desc_extended = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
 	experience_power = 1.6
-	experience_multiplier = 87
+	experience_multiplier = 43
 
 /experience/skill/precision/ //AGILITY
 	//Each point of extra damage in a critical hit = 1xp
@@ -71,7 +71,7 @@
 	desc = "There is actually a difference between precision and accurancy."
 	desc_extended = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
 	experience_power = 1.6
-	experience_multiplier = 56
+	experience_multiplier = 28
 
 /experience/skill/evasion/ //AGILITY
 	//Each time you dodge = 1 xp
@@ -80,7 +80,7 @@
 	id = SKILL_EVASION
 	desc = "Your skill in dodging incoming attacks. Affects the chance of a successful dodge from melee weapons, ranged weapons, and magic."
 	experience_power = 1.6
-	experience_multiplier = 2.6
+	experience_multiplier = 1.3
 
 /experience/skill/survival //ENDURANCE
 	//Each time you avoid a trap = 1xp
@@ -94,7 +94,6 @@
 
 /experience/skill/parry/ //WISDOM
 	//Each time you parry = 1xp
-	//Must parry 7600 times.
 	name = "Parrying"
 	id = SKILL_PARRY
 	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
@@ -108,7 +107,7 @@
 	desc = "Not to be confused with sorcery."
 	desc_extended = "Your skill in casting support and defensive spells like summoning magic."
 	experience_power = 1.6
-	experience_multiplier = 87
+	experience_multiplier = 43
 
 /experience/skill/sorcery/ //WISDOM
 	name = "Sorcery"
@@ -116,7 +115,7 @@
 	desc = "Not to be confused with magic."
 	desc_extended = "Your skill in casting damage-dealing magic such as fireball."
 	experience_power = 1.6
-	experience_multiplier = 87
+	experience_multiplier = 43
 
 /experience/skill/summoning //WISDOM
 	name = "Summoning"
@@ -124,7 +123,7 @@
 	desc = "Not to be confused with prayer."
 	desc_extended = "Your skill in casting summoning related magic such as summon skeleton."
 	experience_power = 1.6
-	experience_multiplier = 87
+	experience_multiplier = 43
 
 /experience/skill/medicine/ //WILLPOWER
 	name = "Medicine"
@@ -132,7 +131,7 @@
 	desc = "Surgery isn't in, yet!"
 	desc_extended = "Your skill in treating yourself and others with actual medicine. Affects the treatment times and strength of bandages."
 	experience_power = 1.6
-	experience_multiplier = 56
+	experience_multiplier = 28
 
 /experience/skill/enchanting/ //INTELLIGENCE
 	name = "Enchanting"

@@ -38,6 +38,17 @@ obj/structure/interactive/chair/proc/sit_your_ass_down(var/mob/living/L)
 
 	return TRUE
 
+/obj/structure/interactive/chair/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+	INTERACT_CHECK_OBJECT
+	INTERACT_DELAY(10)
+
+	caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+	set_dir(turn(dir,90))
+
+	update_sprite()
+
 obj/structure/interactive/chair/stool
 	name = "stool"
 	desc = "Apply butt."

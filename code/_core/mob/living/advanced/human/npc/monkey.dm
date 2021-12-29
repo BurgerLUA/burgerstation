@@ -16,4 +16,4 @@
 		/obj/item/container/food/dynamic/meat/raw_monkey
 	)
 
-	level = 2
+	level = 4

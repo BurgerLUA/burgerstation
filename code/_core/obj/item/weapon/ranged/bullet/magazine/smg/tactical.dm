@@ -6,7 +6,9 @@
 	icon_state = "inventory"
 	value = 1400
 
-	shoot_delay = 2
+	tier = 2
+
+	shoot_delay = 1.3
 
 	automatic = TRUE
 
@@ -109,9 +111,6 @@
 	if(attachment_barrel) attachment_barrel = new attachment_barrel(src)
 	if(attachment_sight) attachment_sight = new attachment_sight(src)
 	if(attachment_undermount) attachment_undermount = new attachment_undermount(src)
-
-	update_attachment_stats()
-	update_sprite()
 
 
 

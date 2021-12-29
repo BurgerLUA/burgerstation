@@ -1,5 +1,5 @@
 /area/
-	name = "AREA ERROR"
+	name = "Unknown Area"
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
@@ -12,13 +12,10 @@
 
 	var/sound_environment = ENVIRONMENT_NONE
 
-	var/area_identifier //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.
+	var/area_identifier = "Fallback" //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.
 	var/trackable = FALSE //Trackable area by the game.
 
-	var/map_color_r = rgb(255,0,0,255)
-	var/map_color_g = rgb(0,255,0,255)
-	var/map_color_b = rgb(0,0,255,255)
-	var/map_color_a = rgb(0,0,0,255)
+	var/map_color //The area's map color. Leave blank to refer to the turf instead.
 
 	var/ambient_sound
 	var/list/random_sounds = list()
@@ -45,7 +42,9 @@
 	var/average_x = 0
 	var/average_y = 0
 
-	var/allow_ghosts = TRUE //Set to false to prevent a ghost from teleporting to this location.
+	var/allow_ghost = FALSE //Allow ghosts to use this area if one spawns in it.
+
+	var/flags_generation = FLAG_GENERATION_NONE
 
 
 /area/proc/is_space()
@@ -116,42 +115,10 @@
 	return TRUE
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
-
-	if(is_player(enterer))
-
-		var/mob/living/advanced/player/P = enterer
-		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
-			P.see_invisible = INVISIBILITY_NO_PLAYERS
-
-	if(ENABLE_TRACKS && ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
-		var/mob/M = enterer
-		if(M.client && length(tracks) && (!M.client.next_music_track || M.client.next_music_track <= world.time))
-			play_music_track(pick(tracks),M.client)
-
-	if(enterer.area != src)
-		if(ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
-			var/mob/M = enterer
-			if(M.client)
-				if(!ambient_sound)
-					stop_ambient_sounds(M)
-				else if(!enterer.area || enterer.area.ambient_sound != ambient_sound)
-					play_ambient_sound(ambient_sound,list(M),environment = sound_environment,loop = TRUE)
-
-		enterer.area = src
-
-		return TRUE
-
 	return FALSE
 
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
-
-	if(is_player(exiter))
-		var/mob/living/advanced/player/P = exiter
-		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
-			P.see_invisible = initial(P.see_invisible)
-
 	return TRUE
-
 
 /area/proc/smash_all_lights()
 	for(var/obj/structure/interactive/lighting/T in src.contents)
@@ -167,3 +134,22 @@
 		LS.toggle()
 		return TRUE
 	return FALSE
+
+/area/proc/sync_lights(var/desired_state = TRUE)
+
+	for(var/obj/structure/interactive/lighting/L in src.contents)
+		if(!L.lightswitch)
+			continue
+		if(L.on == desired_state)
+			continue
+		L.on = desired_state
+		L.update_atom_light()
+		L.update_sprite()
+
+	for(var/obj/structure/interactive/light_switch/LS in src.contents)
+		if(LS.on == desired_state)
+			continue
+		LS.on = desired_state
+		LS.update_sprite()
+
+	return TRUE

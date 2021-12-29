@@ -1,5 +1,6 @@
 /reagent_recipe/chemistry/
 	category = "Chemistry"
+	results = list()
 
 /reagent_recipe/chemistry/sodium_chloride
 	name = "Sodium Chloride"

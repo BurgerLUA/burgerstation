@@ -49,7 +49,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 8
+	level = 16
 
 /mob/living/simple/spacecarp/post_death()
 	..()
@@ -59,5 +59,5 @@
 /mob/living/simple/spacecarp/leader
 	name = "alpha space carp"
 
-	level = 14
+	level = 30
 

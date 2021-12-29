@@ -69,10 +69,10 @@
 	movement_spread_base = 0.04
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
-	return 0.0005
+	return 0.005
 
 /obj/item/weapon/ranged/energy/rifle/get_skill_spread(var/mob/living/L)
-	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.05 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
@@ -158,11 +158,7 @@
 	GENERATE(attachment_undermount)
 	FINALIZE(attachment_undermount)
 
-	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
+	attachment_barrel = new/obj/item/attachment/barrel/laser_charger(src)
 	INITIALIZE(attachment_barrel)
 	GENERATE(attachment_barrel)
 	FINALIZE(attachment_barrel)
-
-	update_attachment_stats()
-	update_sprite()
-

@@ -50,31 +50,10 @@
 	return ..()
 
 /obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
-	on = !on
-	sync_lights()
-	update_sprite()
-	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)
-	return TRUE
-
-/obj/structure/interactive/light_switch/proc/sync_lights()
-
 	var/area/A = get_area(src)
-
-	for(var/obj/structure/interactive/lighting/L in A.contents)
-		if(!L.lightswitch)
-			continue
-		if(L.on == on)
-			continue
-		L.on = on
-		L.update_atom_light()
-		L.update_sprite()
-
-	for(var/obj/structure/interactive/light_switch/LS in A.contents)
-		if(LS.on == on)
-			continue
-		LS.on = on
-		LS.update_sprite()
-
+	if(!A) return FALSE
+	A.sync_lights(!on)
+	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)
 	return TRUE
 
 /obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

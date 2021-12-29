@@ -1,5 +1,10 @@
+var/global/list/possible_rev_loadouts = list(
+	/loadout/rev/player_antagonist/researcher,
+	/loadout/rev/player_antagonist/contractor
+)
+
 /mob/living/advanced/player/antagonist/revolutionary
-	loadout_to_use = /loadout/rev/player_antagonist
+	loadout_to_use = null // chosen based on the above stuff
 
 /mob/living/advanced/player/antagonist/revolutionary/default_appearance()
 	. = ..()
@@ -9,6 +14,7 @@
 	return.
 
 /mob/living/advanced/player/antagonist/revolutionary/prepare()
+	loadout_to_use = pick(possible_rev_loadouts)
 	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	setup_name()

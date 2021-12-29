@@ -25,3 +25,8 @@
 	new /obj/item/clothing/head/helmet/full/doom(src)
 	new /obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom(src)
 	. = ..()
+
+/obj/item/storage/blood_box/witchunt/fill_inventory()
+	new /obj/item/clothing/head/hat/witchunter(src)
+	new /obj/item/clothing/overwear/coat/chaplain/witchunter(src)
+	. = ..()

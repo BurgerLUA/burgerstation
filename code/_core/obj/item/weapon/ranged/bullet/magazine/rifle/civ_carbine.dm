@@ -4,13 +4,16 @@
 	desc_extended = "An older version of a carbine. Despite its age, many PMCs consider this carbine superior as it doesn't have any firerate limiters, allowing it to fire 600 rounds per second. Kicks like a mule, though."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/556.dmi'
 	icon_state = "inventory"
-	value = 2900
+	value = 3100
 
-	shoot_delay = 1.25
+	tier = 2
+
+	damage_mod = 0.8
+	shoot_delay = 1
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
@@ -19,7 +22,7 @@
 	size = SIZE_3
 	weight = 12
 
-	heat_max = 0.12
+	heat_max = 0.2
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -65,7 +68,7 @@
 
 
 
-	inaccuracy_modifier = 0.75
+	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.005
 

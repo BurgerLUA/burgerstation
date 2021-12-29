@@ -30,6 +30,8 @@
 
 	var/caseless = FALSE
 
+	var/override_bullet_insert_sound = FALSE
+
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
 
@@ -44,6 +46,11 @@
 
 	var/power = 0 //Set is SSweapons
 
+	var/bulletbox_icon_state = "bullet"
+
+/obj/item/bullet_cartridge/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	calculate_weight()
@@ -180,7 +187,7 @@
 		return FALSE
 
 	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count())
-	if(!bullets_to_add)
+	if(bullets_to_add <= 0)
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
@@ -194,9 +201,10 @@
 
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
-	//Shitcode ahoy.
 
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
+	if(bullets_to_add <= 0)
+		return FALSE
 
 	var/should_transfer_self = bullets_to_add == item_count_current
 
@@ -291,7 +299,7 @@
 				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
 			return TRUE
 
-	return ..()
+	. = ..()
 
 
 /obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)

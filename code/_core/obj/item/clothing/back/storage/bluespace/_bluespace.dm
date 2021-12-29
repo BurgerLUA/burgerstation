@@ -45,6 +45,6 @@
 	desc_extended = "A prank version of the satchel of holding. It has been cursed to only hold one object."
 
 	dynamic_inventory_count = 1
-	container_max_size = SIZE_10
+	container_max_size = SIZE_9
 
 	size = SIZE_10

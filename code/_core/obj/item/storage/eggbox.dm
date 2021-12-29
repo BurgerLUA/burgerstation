@@ -30,7 +30,7 @@
 /obj/item/storage/egg_carton/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)
 		new/obj/item/container/food/egg/chicken(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/egg_carton/update_inventory()
 	. = ..()

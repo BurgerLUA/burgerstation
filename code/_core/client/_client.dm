@@ -88,6 +88,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/list/icon_request_details
 
+	var/list/tracked_sounds = list()
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 

@@ -13,6 +13,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/grass/jungle,
 /area/prefab/goblin_king)
+"e" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/goblin_king)
 "M" = (
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/grass/jungle,
@@ -574,7 +578,7 @@ b
 b
 a
 a
-b
+e
 b
 b
 b

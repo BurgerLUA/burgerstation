@@ -3,10 +3,11 @@
 	var/list/shoot_sounds = list()
 	var/shoot_alert = ALERT_LEVEL_CAUTION
 
-	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a higher barrel length. Also affects projectile speed.
+	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a longer barrel length. Also affects projectile speed.
 
 	var/automatic = FALSE
-	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
+	var/max_bursts = 0 //Inherint maximum amount of bursts.
+	var/current_maxmium_bursts = 0 //Read only. Controlled by firemode changing.
 	var/current_bursts = 0 //Read only.
 	var/shoot_delay = 4 //In deciseconds
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
@@ -65,8 +66,7 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 
 	var/current_firemode = 1
-	var/list/firemodes = list(
-	)
+	var/list/firemodes = list()
 
 /obj/item/weapon/ranged/Destroy()
 	QDEL_NULL(attachment_stock)
@@ -75,6 +75,8 @@
 	QDEL_NULL(attachment_barrel)
 	QDEL_NULL(firing_pin)
 	. = ..()
+
+
 
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
 	if(!length(firemodes))
@@ -90,12 +92,12 @@
 	switch(selected_firemode)
 		if("automatic")
 			automatic = TRUE
-			max_bursts = 0
+			current_maxmium_bursts = 0
 		if("semi-automatic")
 			automatic = FALSE
 		if("burst")
 			automatic = TRUE
-			max_bursts = initial(max_bursts)
+			current_maxmium_bursts = max_bursts
 	caller?.to_chat(span("notice","You switch to [selected_firemode] mode."))
 	return TRUE
 
@@ -178,8 +180,20 @@
 
 	update_attachment_stats()
 
-	if(length(firemodes))
-		on_firemode_changed()
+	if(!length(firemodes))
+		if(max_bursts > 1)
+			firemodes = list("burst")
+		else if(automatic)
+			firemodes = list("automatic")
+		else
+			firemodes = list("semi-automatic")
+
+	if(max_bursts < 1 && ("burst" in firemodes))
+		max_bursts = 3
+
+	on_firemode_changed()
+
+	update_sprite()
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
@@ -256,7 +270,7 @@
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
 
-	if(!caller.can_attack(caller,object,src,location,params))
+	if(!caller.can_attack(caller))
 		return FALSE
 
 	return TRUE
@@ -341,7 +355,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	if(length(shoot_sounds_to_use))
 		var/turf/T = get_turf(src)
-		play_sound(pick(shoot_sounds_to_use),T,range_max=VIEW_RANGE + ZOOM_RANGE*3)
+		play_sound(pick(shoot_sounds_to_use),T,range_min = VIEW_RANGE*0.5, range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
 			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,caller,shoot_alert_to_use)
 		return TRUE
@@ -358,7 +372,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!object_turf)
 		return FALSE
 
-	if(!object_turf.x && !object_turf.y && !object_turf.z)
+	if(object_turf.x == null || object_turf.y == null || object_turf.z == null)
 		return FALSE
 
 	caller.face_atom(object)
@@ -385,7 +399,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
-	var/max_bursts_to_use = max_bursts
+	var/max_bursts_to_use = current_maxmium_bursts
 	var/shoot_alert_to_use = shoot_alert
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
 	var/penetrations_left = 0
@@ -407,8 +421,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
-		condition_to_use = max(0,10 - max(0,quality_bonus*9))
-		condition_to_use += FLOOR(heat_current*25,1)
+		condition_to_use = max(0,5 - max(0,quality_bonus*4))
+		condition_to_use += FLOOR(heat_current*5,1)
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
@@ -571,7 +585,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
 							current_bursts += 1
 					else if(max_bursts_to_use > 0)
-						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts)
+						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 						current_bursts = 0
 				else
 					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")
@@ -587,9 +601,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
-	if(!target)
-		CRASH_SAFE("There is no target defined!")
-		return FALSE
+	if(!target) CRASH("There is no valid target defined!")
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 

@@ -7,7 +7,7 @@
 
 	var/obj/structure/interactive/mountable/browning/linked_gun
 
-	shoot_delay = 2.5
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -38,6 +38,8 @@
 	value_burgerbux = 1
 
 	anchored = TRUE
+
+	tier = 3
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/Destroy()
 	QDEL_NULL(linked_gun)

@@ -45,7 +45,8 @@
 		/obj/item/weapon/ranged/bow/hardlight = 1,
 		/obj/item/tempering/magazine/spellswap/magic_missile = 1,
 		/obj/item/tempering/magazine/spellswap/tesla = 1,
-		/loot/weapon/rifle/gauss_carbine = 1
+		/loot/weapon/rifle/gauss_carbine = 1,
+		/obj/item/weapon/ranged/energy/gatling = 1
 	)
 
 /loot/lavaland/broodmother
@@ -62,7 +63,8 @@
 		/obj/item/herald_mirror = 1,
 		/obj/item/weapon/unarmed/brass_knuckles/mod = 1,
 		/obj/item/tempering/magazine/spellswap/magic_missile = 1,
-		/obj/item/tempering/magazine/spellswap/arcblade = 1
+		/obj/item/tempering/magazine/spellswap/arcblade = 1,
+		/obj/item/weapon/ranged/bullet/revolver/fiendish = 0.2
 	)
 
 /loot/lavaland/hierophant
@@ -88,6 +90,7 @@
 /loot/lavaland/leaper
 	loot_table = list(
 		/obj/item/storage/blood_box/blood = 1,
+		/obj/item/storage/blood_box/witchunt = 1,
 		/obj/item/clothing/mask/heretic = 1,
 		/obj/item/weapon/ranged/spellgem/f50cal = 1,
 		/obj/item/tempering/magazine/spellswap/arcblade = 1,

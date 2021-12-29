@@ -9,6 +9,7 @@
 
 	safe_fall = TRUE
 
+	map_color = "#FFFFFF"
 
 /turf/simulated/floor/stair/ztravel/Exit(atom/movable/O, atom/newloc)
 

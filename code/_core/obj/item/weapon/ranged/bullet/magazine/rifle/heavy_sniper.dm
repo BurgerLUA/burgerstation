@@ -6,8 +6,10 @@
 	icon_state = "inventory"
 	value = 5000
 
+	tier = 3
+
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 20
+	shoot_delay = 15
 
 	damage_mod = 2
 
@@ -92,6 +94,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/Generate()
 
+	. = ..()
+
 	attachment_stock = new /obj/item/attachment/stock/sniper_50(src)
 	INITIALIZE(attachment_stock)
 	GENERATE(attachment_stock)
@@ -101,7 +105,3 @@
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
-
-	. = ..()
-
-	update_sprite()

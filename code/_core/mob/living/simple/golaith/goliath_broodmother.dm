@@ -46,7 +46,7 @@
 		/obj/item/soapstone/orange
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -70,6 +70,8 @@
 	soul_size = SOUL_SIZE_RARE
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
+
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	level = 30
 

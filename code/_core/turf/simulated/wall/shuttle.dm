@@ -7,3 +7,5 @@
 	corner_category = "shuttle"
 	corner_icons = TRUE
 	plane = PLANE_SHUTTLE
+
+	map_color = COLOR_GREY

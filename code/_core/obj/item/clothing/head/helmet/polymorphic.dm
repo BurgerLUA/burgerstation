@@ -29,11 +29,18 @@
 
 	no_initial_blend = TRUE
 
-/obj/item/clothing/head/helmet/polymorphic/security
+/obj/item/clothing/head/helmet/polymorphic/nanotrasen
 	polymorphs = list(
 		"base" = COLOR_BLACK,
-		"ears" = COLOR_SECURITY,
-		"stripe" = COLOR_SECURITY
+		"ears" = COLOR_NANOTRASEN,
+		"stripe" = COLOR_NANOTRASEN
+	)
+
+/obj/item/clothing/head/helmet/polymorphic/recruit
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"ears" = COLOR_RECRUIT,
+		"stripe" = COLOR_RECRUIT
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/engineering

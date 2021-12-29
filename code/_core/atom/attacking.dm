@@ -1,4 +1,4 @@
-/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(health)
 		health.update_health(attacker,damage_amount)
@@ -43,6 +43,9 @@
 		CRASH_SAFE("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
 		return FALSE
 
+	if(world.time < attacker.attack_next)
+		return FALSE
+
 	var/atom/changed_target = victim.change_victim(attacker,src)
 	if(changed_target)
 		victim = changed_target
@@ -65,6 +68,9 @@
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 
 	if(!object_to_damage_with) //You don't even exist.
+		return FALSE
+
+	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
 		return FALSE
 
 	var/attack_distance = get_dist_advanced(attacker,victim)
@@ -102,6 +108,11 @@
 	if(!desired_damage_type)
 		return FALSE
 
+	var/damagetype/DT = all_damage_types[desired_damage_type]
+	if(!DT)
+		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
+		return FALSE
+
 	var/cleave_number = should_cleave(attacker,victim,params)
 	var/list/victims = list(victim)
 	if(cleave_number)
@@ -116,25 +127,16 @@
 			victims += A
 			cleave_number--
 
-	var/damagetype/DT = all_damage_types[desired_damage_type]
-	if(!DT)
-		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
-		return FALSE
-
-	if(world.time < attacker.attack_next)
-		return FALSE
-
-	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
-		return FALSE
-
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
 		var/can_attack = attacker.can_attack(attacker,v,object_to_damage_with,params,DT)
 		var/can_be_attacked = v.can_be_attacked(attacker,object_to_damage_with,params,DT)
+		if(victim == v && !(can_attack && can_be_attacked))
+			return FALSE
 		if(can_attack && can_be_attacked)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
+			hit_objects += hit_object //Could be null, but that's fine.
 			if(hit_object)
-				hit_objects += hit_object //HOPEFULLY this lines up. Victims aren't removed after this.
 				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
 					var/mob/living/advanced/A = attacker
 					A.add_cqc(DT.cqc_tag)
@@ -142,6 +144,7 @@
 					if(DT2) DT = DT2
 				continue
 			//No hit object means we missed.
+
 		if(victim == v) //First victim. You must be able to attack the first victim if you want to attack the rest.
 			hit_objects = null
 			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
@@ -174,44 +177,18 @@
 	if(weapon && weapon.attack_next > world.time)
 		return FALSE
 
-	if(!isturf(loc))
-		return FALSE
-
-	var/area/A1 = get_area(victim)
-	var/area/A2 = get_area(src)
-
-	if(!(A1 && A2))
-		return FALSE
-
-	if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
-		return FALSE
+	if(victim)
+		if(!isturf(victim) && !isturf(victim.loc))
+			return FALSE
+		var/area/A1 = get_area(victim)
+		var/area/A2 = get_area(src)
+		if(!(A1 && A2))
+			CRASH_SAFE("Warning: tried attacking without valid areas!")
+			return FALSE
+		if( (A1.flags_area & FLAGS_AREA_NO_DAMAGE) || (A2.flags_area & FLAGS_AREA_NO_DAMAGE) )
+			return FALSE
 
 	return TRUE
-
-/*
-/atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
-	return 0
-*/
-
-/*
-/atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
-
-/atom/proc/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
-
-/atom/proc/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
-
-/atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_item)
-	return FALSE
-
-/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/parrying_item)
-	return FALSE
-
-/atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	return FALSE
-*/
 
 /atom/proc/get_damage_type(var/atom/attacker,var/atom/victim)
 	return damage_type

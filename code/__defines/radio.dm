@@ -19,6 +19,8 @@
 
 #define RADIO_FREQ_MERCENARY 1107
 
+#define RADIO_FREQ_REVOLUTIONARY 1154
+
 #define RADIO_FREQ_SYNDICATE 1213
 
 #define RADIO_FREQ_ALPHA    1451
@@ -53,4 +55,6 @@
 			return "Syndicate"
 		if(RADIO_FREQ_MERCENARY)
 			return "Mercenary"
+		if(RADIO_FREQ_REVOLUTIONARY)
+			return "Revolutionary"
 	return "Unknown"

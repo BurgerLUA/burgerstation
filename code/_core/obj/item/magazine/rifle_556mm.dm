@@ -4,7 +4,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/556_rifle.dmi'
 	icon_state = "556"
-	bullet_count_max = 30
+	bullet_count_max = 40
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine = TRUE,
@@ -15,7 +15,10 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/merc = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/moar = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/m4 = TRUE
 
 	)
 
@@ -35,8 +38,6 @@
 	icon_states = 1
 
 	value = 10
-
-
 
 /obj/item/magazine/rifle_556/ap
 	name = "\improper 5.56mm AP rifle magazine"

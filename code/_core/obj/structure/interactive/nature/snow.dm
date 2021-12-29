@@ -32,7 +32,7 @@ obj/structure/scenery/bush/snow/New()
 	mouse_opacity = 1
 	density = TRUE
 
-/obj/structure/interactive/tree/can_be_attacked()
+/obj/structure/interactive/tree/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
 /obj/structure/interactive/tree/New()

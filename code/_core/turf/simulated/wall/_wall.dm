@@ -17,5 +17,7 @@
 
 	density = TRUE
 
+	map_color = "#000000"
+
 /turf/simulated/wall/is_occupied()
 	return src

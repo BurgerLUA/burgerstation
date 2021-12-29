@@ -16,8 +16,6 @@
 	plane = PLANE_HUD
 	layer = 1
 
-	value = 0
-
 	var/atom/movable/grabbed_object
 
 	var/worn = FALSE //Set to TRUE if it's a worn object.
@@ -91,7 +89,7 @@
 	child_inventory = null
 	grabbed_object = null
 
-	return ..()
+	. = ..()
 
 
 /obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
@@ -123,7 +121,7 @@
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
 		src.mouse_opacity = 0
 
-/obj/hud/inventory/New(var/desired_loc)
+/obj/hud/inventory/Finalize()
 	. = ..()
 	update_sprite()
 
@@ -148,7 +146,6 @@
 		add_overlay(I)
 	else
 		color = initial(color)
-
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
@@ -344,7 +341,6 @@
 
 
 	update_stats()
-	I.on_pickup(old_location,src)
 	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
@@ -353,6 +349,9 @@
 		else
 			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		I.drop_item(get_turf(src))
+		return TRUE
+
+	I.on_pickup(old_location,src)
 
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
@@ -453,6 +452,8 @@
 		var/obj/item/I2 = src.loc
 		I2.update_inventory()
 
+	HOOK_CALL("update_stats")
+
 /obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
 	return TRUE
 
@@ -475,6 +476,14 @@
 
 	return TRUE
 	*/
+
+/obj/hud/inventory/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+
+	. = ..()
+
+	for(var/k in contents)
+		var/atom/movable/M = k
+		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
@@ -578,8 +587,6 @@
 			return FALSE
 
 	return TRUE
-
-
 
 /atom/proc/get_top_object()
 

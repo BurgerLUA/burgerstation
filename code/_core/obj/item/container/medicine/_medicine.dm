@@ -26,7 +26,6 @@
 	var/override_icon_state = FALSE
 
 	var/robotic = FALSE //Set to true if heals robotic limbs and not organic limbs.
-	has_quick_function = TRUE
 
 /obj/item/container/medicine/Initialize(var/desired_loc)
 

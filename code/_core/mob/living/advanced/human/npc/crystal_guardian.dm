@@ -4,7 +4,7 @@
 	species = "human"
 	ai = /ai/advanced/
 
-	level = 20
+	level = 25
 
 
 /mob/living/advanced/npc/crystal_guardian/Initialize()

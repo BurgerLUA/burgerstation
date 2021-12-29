@@ -16,17 +16,27 @@
 	var/owning_mob_name
 	var/owning_mob_ckey
 
+	is_container = TRUE
+
 	container_max_slots = 1
-	container_max_size = 999
+	container_max_size = 0
 
 	max_inventory_x = MAX_INVENTORY_X
 	dynamic_inventory_count = MAX_INVENTORY_X*6
 
-	can_save = FALSE
+	value_burgerbux = 1
+
+/obj/item/storage/death_box/update_inventory()
+	. = ..()
+	for(var/k in src.inventories)
+		var/obj/hud/inventory/I = k
+		if(length(I.contents))
+			return .
+	qdel(src)
 
 /obj/item/storage/death_box/click_self(var/mob/caller)
 
-	if(!owning_mob_ckey || owning_mob_ckey != caller.ckey)
+	if(owning_mob_ckey && owning_mob_ckey != caller.ckey)
 		caller.to_chat(span("warning","You don't have the right authorization to open this!"))
 		return FALSE
 
@@ -59,12 +69,3 @@
 		icon_state = "unlocked"
 	else
 		icon_state = "locked"
-
-/obj/item/storage/death_box/can_add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE)
-
-	if(!bypass)
-		if(caller && enable_messages) caller.to_chat(span("warning","You can only remove items from \the [src.name]!"))
-		return FALSE
-
-	. = ..()
-

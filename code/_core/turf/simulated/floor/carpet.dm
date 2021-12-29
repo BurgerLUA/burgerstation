@@ -14,6 +14,8 @@
 
 	exposed = FALSE
 
+	map_color = COLOR_RED
+
 /turf/simulated/floor/carpet/office
 	name = "office carpet"
 	icon = 'icons/turf/floor/carpet_office.dmi'

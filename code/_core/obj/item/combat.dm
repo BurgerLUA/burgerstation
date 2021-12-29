@@ -19,19 +19,19 @@
 		total_damage += base_damage
 
 	for(var/attribute in DT.attribute_damage)
-		var/attribute_level = L.get_attribute_level(attribute)
+		var/attribute_power = L.get_attribute_power(attribute,0,1,2)
 		var/attribute_damage_type = DT.attribute_damage[attribute]
 		var/attribute_modifier = DT.attribute_stats[attribute]
-		var/attribute_damage = attribute_level * attribute_modifier
+		var/attribute_damage = attribute_power * attribute_modifier * 100
 		damage_type_list[attribute_damage_type] += attribute_damage
 		affected_list[attribute] += attribute_modifier
 		total_damage += attribute_damage
 
 	for(var/skill in DT.skill_damage)
-		var/skill_level = L.get_skill_level(skill)
+		var/skill_power = L.get_skill_power(skill,0,1,2)
 		var/skill_damage_type = DT.skill_damage[skill]
 		var/skill_modifier = DT.skill_stats[skill]
-		var/skill_damage = skill_level * skill_modifier
+		var/skill_damage = skill_power * skill_modifier * 100
 		damage_type_list[skill_damage_type] += skill_damage
 		affected_list[skill] += skill_modifier
 		total_damage += skill_damage

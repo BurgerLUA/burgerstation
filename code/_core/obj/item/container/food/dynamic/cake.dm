@@ -55,7 +55,7 @@
 	return ..()
 
 
-/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 
@@ -140,12 +140,12 @@
 				icing_amount += amount
 		if(icing)
 			var/image/I = new/image(initial(icon),"[cooked_icon_state]_icing")
-			I.appearance_flags = RESET_COLOR
+			I.appearance_flags = appearance_flags | RESET_COLOR
 			I.color = icing_color
 			I.alpha = clamp((icing_amount/10)*225,100,255)
 			add_overlay(I)
 
-	
+
 /obj/item/container/food/dynamic/cake/update_icon()
 
 	if(last_cooked)

@@ -21,12 +21,10 @@
 	priority = -100 //Very low priority
 
 /obj/hud/inventory/dynamic/New(var/desired_loc)
-
-	if(desired_loc && is_atom(desired_loc))
+	. = ..()
+	if(is_atom(desired_loc))
 		var/atom/A = desired_loc
 		name = "inventory space of [A.name]"
-
-	return ..()
 
 /obj/hud/inventory/dynamic/sandwich //Special logic for buns
 
@@ -64,6 +62,7 @@
 
 /obj/hud/inventory/dynamic/belt
 	var/obj/hud/button/slot/assoc_slot
+	priority = -99 //Belt goes before anything else.
 
 
 /obj/hud/inventory/dynamic/belt/Destroy()

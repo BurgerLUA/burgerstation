@@ -6,6 +6,9 @@
 	icon_state = "inventory"
 	value = 1200
 
+	tier = 1
+	bypass_balance_check = TRUE
+
 	shoot_delay = 20
 
 	automatic = TRUE

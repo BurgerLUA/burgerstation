@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1800
 
+	tier = 3
+
 	can_wield = TRUE
 
 	dan_mode = TRUE
@@ -63,10 +65,10 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-
-
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
+
+	pump_delay = 3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
 	return 0.1

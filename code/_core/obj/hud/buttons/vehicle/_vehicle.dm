@@ -32,7 +32,7 @@
 		if(A.driving && length(A.driving.equipment) >= weapon_slot && A.driving.equipment[weapon_slot])
 			set_map_text(A.driving.equipment[weapon_slot].name)
 
-	
+
 /obj/hud/button/vehicle/weapon/right
 	name = "right weapon"
 	icon_state = "left"
@@ -50,7 +50,7 @@
 /obj/hud/button/vehicle/eject
 	name = "eject"
 	icon_state = "eject"
-	screen_loc = "RIGHT,BOTTOM"
+	screen_loc = "RIGHT,BOTTOM+2"
 
 /obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -61,7 +61,7 @@
 		if(A.driving)
 			A.driving.exit_vehicle(A,get_turf(A.driving))
 
-	
+/*
 /obj/hud/button/vehicle/ammo_display
 	name = "ammo display"
 	icon_state = "none"
@@ -71,20 +71,6 @@
 /obj/hud/button/vehicle/ammo_display/proc/set_map_text(var/desired_text)
 	maptext = desired_text
 	return TRUE
-
-/obj/hud/button/vehicle/ammo_display/update_owner(var/mob/desired_owner)
-
-	. = ..()
-
-	if(owner)
-		start_thinking(src)
-	else
-		stop_thinking(src)
-
-	
-/obj/hud/button/vehicle/ammo_display/think()
-	update_ammo() //I really hate having to do this but whatever.
-	return ..()
 
 /obj/hud/button/vehicle/ammo_display/proc/update_ammo()
 	if(is_advanced(owner))
@@ -102,3 +88,4 @@
 /obj/hud/button/vehicle/ammo_display/right/set_map_text(var/desired_text)
 	maptext = "<div style='text-align:right'>[desired_text]</div>"
 	return TRUE
+*/

@@ -59,7 +59,7 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/food/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 
@@ -225,11 +225,11 @@
 		else
 			name = "[wetness_prefix] mystery dough"
 
-	if(reagents.volume_current <= 20 && cooked_icon_state == "bread_whole")
+	if(reagents.volume_current < 20 && cooked_icon_state == "bread_whole")
 		cooked_icon_state = "bun_whole"
 		raw_icon_state = "dough_ball_small"
 
-	else if(reagents.volume_current > 20 && cooked_icon_state == "bun_whole")
+	else if(reagents.volume_current >= 20 && cooked_icon_state == "bun_whole")
 		cooked_icon_state = "bread_whole"
 		raw_icon_state = "dough_ball"
 

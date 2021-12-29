@@ -32,6 +32,8 @@
 	var/open_sound = 'sound/effects/click.ogg'
 	var/close_sound = 'sound/effects/click.ogg'
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_TURF_CHECKING
+
 /obj/structure/interactive/crate/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -58,7 +60,7 @@
 		return TRUE
 
 
-/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(!open && damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		visible_message(span("warning","\The [src.name] shoots open!"))
@@ -155,7 +157,7 @@
 		var/atom/movable/M = k
 		if(can_prevent_close(M))
 			blocking = M
-		break
+			break
 
 	if(blocking)
 		caller.to_chat(span("warning","\The [blocking.name] is preventing \the [src.name] from being closed!"))

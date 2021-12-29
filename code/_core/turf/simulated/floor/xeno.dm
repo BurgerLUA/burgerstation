@@ -20,6 +20,8 @@
 
 	destruction_turf = /turf/simulated/floor/cave_dirt/
 
+	map_color = "#937EB5"
+
 /turf/simulated/floor/xeno/Initialize()
 	if(prob(5))
 		real_icon = 'icons/turf/floor/resin_4.dmi'

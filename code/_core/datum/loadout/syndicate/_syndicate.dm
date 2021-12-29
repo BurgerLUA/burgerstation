@@ -30,7 +30,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/head/helmet/security/tactical/advanced,
 		/obj/item/clothing/head/hat/skimask/black,
-		/obj/item/clothing/overwear/armor/molded_armor/security,
+		/obj/item/clothing/overwear/armor/molded_armor,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/weapon/melee/energy/sword/green,
@@ -41,7 +41,7 @@
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/shotgunnner
@@ -66,10 +66,10 @@
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/buckshot,
-		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/basic
@@ -92,7 +92,7 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/advanced
@@ -111,11 +111,11 @@
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/pistol_12mm,
 		/obj/item/magazine/pistol_12mm,
-		/obj/item/magazine/pistol_12mm,
-		/obj/item/magazine/pistol_12mm
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /loadout/syndicate/elite
@@ -147,6 +147,7 @@
 		/obj/item/clothing/head/hat/beret/armored/syndicate,
 		/obj/item/clothing/mask/gas/syndicate,
 		/obj/item/clothing/overwear/armor/bulletproof,
+		/obj/item/clothing/overwear/coat/vest/syndicate,
 		/obj/item/clothing/neck/cloak/red,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
@@ -171,7 +172,8 @@
 		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/container/food/package/junkfood/syndicate,
 		/obj/item/container/beaker/can/dr_gibb,
-		/obj/item/currency/telecrystals/player_antagonist_spawn
+		/obj/item/currency/telecrystals/player_antagonist_spawn,
+		/obj/item/fulton_pack
 	)
 
 
@@ -187,7 +189,6 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/mask/gas/poly/syndicate,
 		/obj/item/clothing/neck/tie/black,
-
 		/obj/item/container/syringe/medipen/hypospray,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,
 		/obj/item/magazine/syringe_gun,
@@ -197,6 +198,6 @@
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,
-		/obj/item/magazine/syringe_gun
+		/obj/item/grenade/timed/lube_smoke
 
 	)

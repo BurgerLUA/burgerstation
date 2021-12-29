@@ -5,7 +5,6 @@
 	icon_state = BODY_HEAD_MALE
 	worn_layer = LAYER_MOB_HEAD
 	break_threshold = 25
-	//health_max = 50
 	inventories = list(
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,

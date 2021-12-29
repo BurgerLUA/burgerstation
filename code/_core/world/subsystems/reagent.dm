@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/all_reagents = list()
 
-	cpu_usage_max = 70
-	tick_usage_max = 70
+	cpu_usage_max = 50
+	tick_usage_max = 50
 
 	var/list/all_reagent_recipes = list()
 	var/list/reagent_container/all_temperature_reagent_containers = list()
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(reagent)
 			var/amount = RR.results[r_id]
 			var/reagent/R = all_reagents[r_id]
 			if(!R)
-				log_error("Warning: [r_id] was not a valid reagent ID!")
+				log_error("Warning: [r_id] was not a valid reagent ID for recipe [RR.type]!")
 				continue
 			result_text += "- [amount]u [R.name]\n\n"
 

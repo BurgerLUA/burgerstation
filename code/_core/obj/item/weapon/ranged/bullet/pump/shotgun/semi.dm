@@ -7,13 +7,16 @@
 
 	value = 3000
 
-	shoot_delay = 3
+	tier = 3
+
+	damage_mod = 1.1
+	shoot_delay = 4
 
 	automatic = FALSE
 
 	can_wield = TRUE
 
-	bullet_count_max = 5
+	bullet_count_max = 6
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -55,12 +58,12 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-
-
 	dan_mode = TRUE
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.5
+
+	pump_delay = 1
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 

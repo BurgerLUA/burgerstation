@@ -90,3 +90,19 @@
 
 /obj/item/storage/pouch/triple/brown
 	color = COLOR_BROWN
+
+/obj/item/storage/pouch/triple/recruit
+	color = COLOR_RECRUIT_DARK
+	value_burgerbux = 1
+
+/obj/item/storage/pouch/triple/recruit/gun/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/laton(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	. = ..()
+
+/obj/item/storage/pouch/triple/recruit/ammo/fill_inventory()
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	. = ..()

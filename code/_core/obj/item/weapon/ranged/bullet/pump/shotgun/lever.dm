@@ -6,11 +6,13 @@
 	icon_state = "inventory"
 	value = 800
 
-	shoot_delay = 5
+	tier = 2
+
+	shoot_delay = 4
 
 	automatic = FALSE
 
-	bullet_count_max = 4
+	bullet_count_max = 6
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -53,10 +55,10 @@
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
+
+	pump_delay = 2
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread()
 	return 0.001

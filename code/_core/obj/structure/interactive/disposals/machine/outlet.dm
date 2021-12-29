@@ -20,6 +20,14 @@
 
 	density = TRUE
 
+/obj/structure/interactive/disposals/machine/outlet/Destroy()
+
+	var/turf/T = get_turf(src)
+	if(T)
+		play_sound('sound/effects/disposals/hiss.ogg',T)
+
+	. = ..()
+
 /obj/structure/interactive/disposals/machine/outlet/Entered(var/atom/A,var/oldloc)
 
 	if(istype(A,/obj/disposals_container/))

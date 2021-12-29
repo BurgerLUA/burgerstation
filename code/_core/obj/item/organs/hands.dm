@@ -9,7 +9,6 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 	break_threshold = 15
-	//health_max = 25
 
 	damage_type = /damagetype/unarmed/fists/
 

@@ -31,7 +31,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	has_hard_crit = TRUE
 
-	var/currency = 3000
+	var/currency = 8000
 	var/revenue = 0
 	var/expenses = 0
 	var/partial_tax = 0 //Taxes you couldn't pay.
@@ -71,8 +71,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	value = 0
 
-	damage_received_multiplier = 0.5
-
 	known_cqc = list(
 		/cqc/sleeping_carp/crashing_wave_kick,
 		/cqc/sleeping_carp/keelhaul,
@@ -99,11 +97,18 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	enable_chunk_clean = FALSE
 
+	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
+
+	var/job/job
+	var/job_rank = 1
+	var/job_next_promotion
+
+	damage_received_multiplier = 0.75
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
-	INITIALIZE(click_and_drag_icon)
-	FINALIZE(click_and_drag_icon)
 	last_autosave = world.time
+	all_players += src
 	return ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -126,10 +131,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	return TRUE
 
-/mob/living/advanced/player/Initialize()
-	. = ..()
-	all_players += src
-
 /mob/living/advanced/player/setup_name()
 
 	if(real_name == DEFAULT_NAME)
@@ -140,6 +141,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	return TRUE
 
 /mob/living/advanced/player/Destroy()
+
+	if(is_saving)
+		log_error("FATAL ERROR: Mob [src.get_debug_name()] was qdeleted while saving! Save errors expected!")
 
 	if(followers)
 		for(var/k in followers)
@@ -225,6 +229,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
+				if(A.owner.dead || A.owner.qdeleting)
+					SSai.inactive_ai_by_z["[src.loc.z]"] -= k
+					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
@@ -237,6 +244,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 					if(SSbossai.inactive_ai_by_z["[src.loc.z]"])
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
+					continue
+				if(A.owner.dead || A.owner.qdeleting)
+					SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)

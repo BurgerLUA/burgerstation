@@ -2,7 +2,6 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-
 	species = "zombie"
 
 	var/loadout_to_use = /loadout/zombie
@@ -17,7 +16,7 @@
 	loyalty_tag = "Zombie"
 	iff_tag = "Zombie"
 
-	level = 8
+	level = 24
 
 /mob/living/advanced/npc/zombie/get_movement_delay()
 
@@ -152,7 +151,7 @@
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
-/mob/living/advanced/npc/zombie/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/advanced/npc/zombie/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 

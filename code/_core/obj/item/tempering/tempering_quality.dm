@@ -70,13 +70,13 @@
 /obj/item/tempering/quality/ranged/lesser
 	name = "gun cleaning kit"
 	desc = "Help my gun needs cleaning."
-	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 100%. Has unlimited uses."
+	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 75%. Has unlimited uses."
 	icon_state = "gun_cleaning"
 
 	temper_whitelist = /obj/item/weapon/ranged
 
-	increase = 1
-	limit = 100
+	increase = 5
+	limit = 75
 	minimum = 0
 
 	unlimited = TRUE
@@ -104,3 +104,31 @@
 	temper_whitelist = /obj/item/weapon/ranged/energy
 
 	value = 500
+
+/obj/item/tempering/quality/greater
+	name = "repair kit"
+	desc = "Help my equipment needs repairs."
+	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of equipment to 100%."
+	icon_state = "repair_kit"
+
+	temper_whitelist = /obj/item/
+
+	increase = 100
+	limit = 100
+	minimum = 0
+
+	size = SIZE_7
+	weight = WEIGHT_5
+
+	value = 2000
+
+	value_burgerbux = 0
+
+/obj/item/tempering/quality/greater/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(is_item(object) && can_temper(caller,object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		on_temper(caller,object)
+		return TRUE
+	return ..()

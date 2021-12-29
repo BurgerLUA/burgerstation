@@ -25,6 +25,8 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 
 	var/state = POD_IDLE
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_TURF_CHECKING
+
 	density = TRUE
 
 /obj/structure/interactive/drop_pod/post_move(var/atom/old_loc)
@@ -58,7 +60,6 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 /obj/structure/interactive/drop_pod/Finalize()
 	all_drop_pods += src
 	return ..()
-
 
 /obj/structure/interactive/drop_pod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

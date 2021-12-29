@@ -126,6 +126,7 @@
 		*/
 
 		/obj/hud/button/hunger,
+		/obj/hud/button/mood,
 
 		/obj/hud/button/objectives,
 

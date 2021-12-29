@@ -1,0 +1,1 @@
+/dialogue/npc/hos/

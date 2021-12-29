@@ -38,7 +38,7 @@
 
 	soul_size = SOUL_SIZE_UNCOMMON
 
-	level = 16
+	level = 22
 
 /mob/living/simple/devil/get_damage_type(var/atom/attacker,var/atom/victim)
 	if(prob(25))

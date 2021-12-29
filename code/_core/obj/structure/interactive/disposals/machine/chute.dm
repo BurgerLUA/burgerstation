@@ -9,7 +9,7 @@
 
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
-	var/disposals_countdown = SECONDS_TO_DECISECONDS(10)
+	var/disposals_countdown = SECONDS_TO_DECISECONDS(5)
 
 	bullet_block_chance = 50
 
@@ -19,7 +19,6 @@
 
 	if(disposals_countdown <= 0)
 		var/obj/disposals_container/disposals_container = new(src)
-		disposals_container.sorting_tag = "disposals"
 		INITIALIZE(disposals_container)
 		GENERATE(disposals_container)
 		FINALIZE(disposals_container)
@@ -28,6 +27,7 @@
 		stop_thinking(src)
 		disposals_countdown = initial(disposals_countdown)
 		flick("disposal-flush",src)
+		play_sound('sound/effects/disposals/flush.ogg',get_turf(src))
 		stop_thinking(src)
 
 	disposals_countdown--

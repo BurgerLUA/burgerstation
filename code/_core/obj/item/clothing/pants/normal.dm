@@ -34,6 +34,17 @@
 		"stripes" = COLOR_WHITE
 	)
 
+/obj/item/clothing/pants/normal/striped/nanotrasen
+	polymorphs = list(
+		"pants" = COLOR_GREY_DARK,
+		"stripes" = COLOR_NANOTRASEN
+	)
+
+/obj/item/clothing/pants/normal/recruit
+	polymorphs = list(
+		"pants" = COLOR_RECRUIT_DARK
+	)
+
 /obj/item/clothing/pants/normal/chaps
 	name = "chapped pants"
 	desc = "Damn you're double cheeked up on a wednesday afternoon?"
@@ -51,14 +62,6 @@
 		"chaps" = COLOR_WHITE
 	)
 
-/obj/item/clothing/pants/normal/security
-	name = "security pants"
-	desc = "Tacticool!"
-	desc_extended = "Standard issue Security pants. The black colouring doesn't actually provide any tactical advantage whatsoever."
-	polymorphs = list(
-		"pants" = COLOR_SECURITY_DARK
-	)
-
 /obj/item/clothing/pants/normal/wizard
 	name = "wizard pants"
 	desc = "Wizarding!"
@@ -67,7 +70,7 @@
 		"pants" = COLOR_PURPLE
 	)
 
-/obj/item/clothing/pants/normal/security/ancient
+/obj/item/clothing/pants/normal/ancient_security
 	name = "ancient security pants"
 	desc = "From a forgotten age."
 	desc_extended = "An ancient pair of security pants. Rumor is that it's red to hide greytide blood."
@@ -191,4 +194,10 @@
 	polymorphs = list(
 		"pants" = "#A39D86",
 		"kneepad" = COLOR_WHITE
+	)
+
+
+/obj/item/clothing/pants/normal/reinforced/space_soldier
+	polymorphs = list(
+		"pants" = COLOR_BLACK
 	)

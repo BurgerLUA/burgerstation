@@ -18,6 +18,26 @@
 
 	weight = 8
 
+/obj/item/defib/belt
+	name = "compact defibrillator"
+	icon = 'icons/obj/item/clothing/belts/compact_defib.dmi'
+	desc = "Contains a lot of atoms!"
+	desc_extended = "Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
+
+	//is_container = TRUE
+
+	//dynamic_inventory_count = 4
+
+	size = MAX_INVENTORY_X*SIZE_1
+	item_slot = SLOT_GROIN_BELT
+	container_max_size = SIZE_2
+
+	rarity = RARITY_UNCOMMON
+
+	value = 1600
+
+	weight = 4
+
 /obj/item/defib/Destroy()
 	QDEL_NULL(paddle_left)
 	QDEL_NULL(paddle_right)

@@ -147,7 +147,7 @@
 		/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
-		/obj/item/bullet_cartridge/shotgun_12/buckshot
+		/obj/item/bullet_cartridge/shotgun_12
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/rifles

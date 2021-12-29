@@ -1,13 +1,11 @@
-#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.
-
 SUBSYSTEM_DEF(chunkclean)
 	name = "Chunkclean Subsystem"
 	desc = "Handles chunk cleaning."
 	tick_rate = SECONDS_TO_TICKS(300) //JUST LIKE MINECRAFT
 	priority = SS_ORDER_DELETE
 
-	cpu_usage_max = 90
-	tick_usage_max = 90
+	cpu_usage_max = 25
+	tick_usage_max = 25
 
 	var/current_z = 0
 
@@ -84,7 +82,7 @@ SUBSYSTEM_DEF(chunkclean)
 		if(!T)
 			continue
 		var/x = CEILING(T.x/CHUNK_SIZE,1)
-		var/y = CEILING(T.x/CHUNK_SIZE,1)
+		var/y = CEILING(T.y/CHUNK_SIZE,1)
 		.["[x],[y],[T.z]"] = TRUE
 		if(adjacent)
 			.["[x],[y-1],[T.z]"] = TRUE

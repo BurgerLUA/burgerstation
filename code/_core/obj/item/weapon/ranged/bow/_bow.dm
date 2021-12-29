@@ -21,6 +21,7 @@
 
 	override_icon_state = TRUE
 
+	ranged_damage_type = /damagetype/ranged/bow/
 
 	heat_max = 0.03
 
@@ -145,6 +146,8 @@
 
 	value = 200
 
+	tier = 1
+
 /obj/item/weapon/ranged/bow/wood/get_static_spread()
 	return 0.005
 
@@ -159,6 +162,8 @@
 
 	value = 300
 
+	tier = 2
+
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
 	desc = "How can light be hard? :flushed:"
@@ -171,8 +176,12 @@
 
 	value = 3000
 
+	ranged_damage_type = /damagetype/ranged/bow/hardlight
+
 	stage_per_decisecond = 10
 	stage_max = 50
+
+	tier = 3
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -198,3 +207,20 @@
 	stage_per_decisecond = 15
 	stage_max = 125
 
+	tier = 4
+
+/obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+	var/DPH = D.get_damage_per_hit(armor_to_use) * max(1, src.item_count_max / 2) * ((stage_max / 100) + 0.25) / 2 //average shoot stack and average damage modifier used in calculations
+	log_debug("[src.name] have [DPH] damage per hit.")
+	return DPH 
+
+/obj/item/weapon/ranged/bow/get_hits_per_second() 
+	var/HPS = (stage_max / stage_per_decisecond / 10) //maximum stage time in seconds
+	HPS += 0.5 //minimum stage time 
+	HPS = HPS / 2 //average stage time for shoot
+	HPS += 1 //player lag for recharging to next shoot (empirical 1 second for fast clickers)
+	HPS = 1 / HPS //real hits per second
+	log_debug("[src.name] have [HPS] hits per second.")
+	return HPS //as idea give player delay ()
+	

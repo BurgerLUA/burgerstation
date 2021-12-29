@@ -16,13 +16,16 @@ var/global/list/stored_bookcase_phrases = list(
 	icon = 'icons/obj/structure/bookcase.dmi'
 	icon_state = "book"
 
-	var/chance_of_scroll = 0
+	var/chance_of_scroll = TRUE
 
 	density = TRUE
 
+/obj/structure/interactive/bookcase/no_scrolls
+	chance_of_scroll = FALSE
+
 /obj/structure/interactive/bookcase/Generate()
 
-	if(prob(25))
+	if(chance_of_scroll && prob(25))
 		chance_of_scroll = rand(1,5)
 		icon_state = "[initial(icon_state)]_[chance_of_scroll]"
 

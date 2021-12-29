@@ -18,6 +18,10 @@
 
 /obj/marker/spawning/window/proc/setup_airlock()
 
+	var/turf/simulated/T = src.loc
+	if(istype(T))
+		T.map_color = "#222222"
+
 	var/touching_space = src.get_best_touching_space()
 	if(!touching_space)
 		return FALSE
@@ -42,6 +46,15 @@
 	var/obj/structure/smooth/window/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
+	setup_airlock()
+
+/obj/marker/spawning/window/tinted/do_spawn(var/turf/T)
+	var/obj/structure/interactive/construction/grille/G = new(T)
+	var/obj/structure/smooth/window/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(W)
+	W.color = "#353535"
+	W.opacity = 0
 	setup_airlock()
 
 /obj/marker/spawning/window/rcd/do_spawn(var/turf/T)
@@ -97,12 +110,11 @@
 	name = "random supply crate"
 	icon_state = "supply"
 	possible_objects = list(
-		/obj/item/supply_crate/american = 3,
+		/obj/item/supply_crate/american = 1,
 		/obj/item/supply_crate/magic = 2,
-		/obj/item/supply_crate/nanotrasen = 4,
+		/obj/item/supply_crate/nanotrasen = 3,
 		/obj/item/supply_crate/russian = 2,
 		/obj/item/supply_crate/syndicate = 2,
-		/obj/item/supply_crate/medicine = 4,
-		/obj/item/supply_crate/bos = 1
+		/obj/item/supply_crate/medicine = 20
 	)
-	chance_none = 25
+	chance_none = 75

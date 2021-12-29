@@ -28,12 +28,15 @@
 	new /obj/item/weapon/melee/tool/screwdriver(src)
 	new /obj/item/weapon/melee/tool/wirecutters(src)
 	new /obj/item/weapon/melee/tool/wrench(src)
-	return ..()
+	. = ..()
 
 /obj/item/clothing/belt/storage/medical
 	name = "medical belt"
 	icon = 'icons/obj/item/clothing/belts/medical.dmi'
 	desc_extended = "Stores a robust amount of items that can easily and quickly be accessed. This one is medical themed."
+
+/obj/item/clothing/belt/storage/medical/filled
+	value_burgerbux = 1
 
 /obj/item/clothing/belt/storage/medical/filled/fill_inventory()
 	new /obj/item/container/beaker/bottle/bicaridine(src)
@@ -44,7 +47,7 @@
 	new /obj/item/container/medicine/burn_kit(src)
 	new /obj/item/container/spray/silver_sulfadiazine(src)
 	new /obj/item/container/spray/styptic_powder(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/clothing/belt/suspenders

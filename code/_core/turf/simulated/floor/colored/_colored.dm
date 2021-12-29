@@ -11,3 +11,7 @@
 	corner_icons = TRUE
 
 	organic = TRUE
+
+/turf/simulated/floor/colored/New(var/desired_loc)
+	. = ..()
+	map_color = color

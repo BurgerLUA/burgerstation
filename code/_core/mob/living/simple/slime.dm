@@ -53,6 +53,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 8
+
 
 /mob/living/simple/slime/create_override_contents(var/mob/living/caller)
 	var/obj/item/slime_core/SC = new(src.loc)

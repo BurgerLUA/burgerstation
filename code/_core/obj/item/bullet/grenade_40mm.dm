@@ -2,7 +2,6 @@
 	name = "40mm High explosive grenade"
 	desc = "What makes ME a good demoman?"
 	desc_extended = "For Grenade launchers, High explosive."
-	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/40mm_HE.dmi'
 
 	item_count_max = 1

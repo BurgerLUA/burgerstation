@@ -140,7 +140,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	stop_music_track(hearer)
 
-	var/track/T = all_tracks[music_track_id]
+	var/track/T = SStrack.all_tracks[music_track_id]
 	if(!T)
 		CRASH_SAFE("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 		return FALSE
@@ -187,13 +187,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 			continue
 		. += M
 
-//Example Formats
-/*
-play('sound',mob) to play to that mob only
-play('sound, atom) to play to all turfs in range of that atom(add args range_min,range_max)
-play('sound',list_of_hearers, turf or vector) to play to that list of hearers at that location
-*/
-
 /proc/setup_sound(var/sound_path)
 
 	if(!SSsound || !SSsound.initialized)
@@ -213,7 +206,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	return created_sound
 
 
-/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -272,7 +265,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	return C
 
-/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -329,20 +322,21 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		created_sound.volume = local_volume
 
+
 		C << created_sound
 
 	return created_sound
 
 
 
-/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
-		log_error("Warning: Invalid sound: [sound_path]!")
+		//log_error("Warning: Invalid sound: [sound_path]!")
 		return FALSE
 	if(!source_turf)
-		CRASH_SAFE("Warning: play_sound passed source_turf as null!")
+		log_error("Warning: play_sound passed source_turf as null for sound [sound_path]!")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -393,6 +387,16 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		created_sound.y = 0
 		created_sound.volume = local_volume
 		created_sound.environment = M.get_sound_environment()
+
+		if(tracked)
+			if(M.client.tracked_sounds[tracked])
+				var/sound/S = sound()
+				S.channel = M.client.tracked_sounds[tracked]
+				M << S
+			M.client.tracked_sounds[tracked] = created_sound.channel
+			var/track_length = length(M.client.tracked_sounds)
+			if(track_length > 50)
+				M.client.tracked_sounds.Cut(1,track_length - 50)
 
 		M << created_sound
 

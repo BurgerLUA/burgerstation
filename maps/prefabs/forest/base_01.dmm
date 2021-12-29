@@ -106,6 +106,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/brick/grey,
 /area/dmm_suite/clear_area)
+"w" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/brick/grey,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -841,7 +845,7 @@ b
 e
 e
 e
-c
+w
 c
 c
 c

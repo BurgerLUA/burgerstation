@@ -36,7 +36,7 @@
 					footstep_sound = pick(F.footstep_sounds)
 
 			if(footstep_sound)
-				play_sound(footstep_sound, get_turf(src), volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch),range_max=VIEW_RANGE)
+				play_sound(footstep_sound, T, volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch),range_max=VIEW_RANGE)
 
 	return TRUE
 
@@ -155,7 +155,7 @@
 		. *= 2
 
 	if(!horizontal)
-		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.5)
+		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 

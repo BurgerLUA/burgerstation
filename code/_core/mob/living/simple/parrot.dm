@@ -32,6 +32,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 4
+
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
 	return ..()
@@ -53,7 +55,7 @@
 	if(old_sitting != sitting)
 		update_sprite()
 
-	return ..()
+	. = ..()
 
 /mob/living/simple/parrot/post_death()
 	update_sprite()
@@ -126,3 +128,5 @@
 		ION = 0,
 		PAIN = INFINITY
 	)
+
+	level = 12

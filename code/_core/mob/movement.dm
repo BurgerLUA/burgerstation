@@ -58,8 +58,6 @@
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	var/atom/old_loc = loc
-
 	. = ..()
 
 	if(.)
@@ -70,9 +68,6 @@
 				on_jog()
 			if(3)
 				on_sprint()
-
-		if(loc != old_loc)
-			post_move(old_loc)
 
 
 /mob/get_max_acceleration_value()
@@ -152,6 +147,20 @@
 			continue
 		chosenObserver.glide_size = glide_size
 		chosenObserver.force_move(get_turf(loc))
+
+	close_turf_contents()
+
+	if(client && invisibility < INVISIBLITY_GHOST)
+		var/area/new_area = loc ? get_area(loc) : null
+		var/area/old_area = old_loc ? get_area(old_loc) : null
+		if(!new_area || !new_area.ambient_sound)
+			stop_ambient_sounds(src)
+
+		if(new_area)
+			if(new_area.ambient_sound && (!old_area || old_area.ambient_sound != new_area.ambient_sound))
+				play_ambient_sound(new_area.ambient_sound,list(src),environment = new_area.sound_environment,loop = TRUE)
+			if(ENABLE_TRACKS && length(new_area.tracks) && (!client.next_music_track || client.next_music_track <= world.time))
+				play_music_track(pick(new_area.tracks),client)
 
 /mob/set_dir(var/desired_dir,var/force=FALSE)
 

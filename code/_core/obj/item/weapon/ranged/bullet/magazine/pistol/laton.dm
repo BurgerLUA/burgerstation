@@ -2,9 +2,10 @@
 	name = "9mm Laton"
 	desc = "9mm is all you need."
 	desc_extended = "NT's standard pistol, chambered in the superior 9mm cartridge. It's very easy to use and recommended for beginners."
-	value = 300
+	value = 200
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton.dmi'
 	shoot_delay = 2
+	tier = 1
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
 	movement_spread_base = 0.002
@@ -62,7 +63,7 @@
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)) )
+	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"

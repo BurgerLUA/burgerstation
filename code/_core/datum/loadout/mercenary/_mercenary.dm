@@ -30,7 +30,7 @@
 
 		/obj/item/clothing/shirt/normal/reinforced/merc_alt,
 		/obj/item/clothing/pants/normal/reinforced/merc_alt,
-		/obj/item/clothing/overwear/armor/molded_armor/merc,
+		/obj/item/clothing/overwear/armor/medium_armor/merc,
 		/obj/item/clothing/overwear/coat/vest/colored/merc,
 
 		/obj/item/clothing/feet/shoes/workboot,

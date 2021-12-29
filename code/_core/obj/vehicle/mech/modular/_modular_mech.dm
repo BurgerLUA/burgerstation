@@ -1,31 +1,3 @@
-var/global/list/stored_mechs_by_ckey = list()
-
-/proc/save_all_mechs() //Should only be done at the end of the round.
-
-	for(var/ckey in stored_mechs_by_ckey)
-		log_debug("Checking stored mechs for [ckey]...")
-		var/savedata/client/mob/M = MOBDATA(ckey)
-		if(!M)
-			log_error("ERROR: Mech Saving: Could not find mobdata for ckey [ckey]!")
-			continue
-		if(!M.loaded_data["stored_mechs"])
-			M.loaded_data["stored_mechs"] = list()
-
-		for(var/mob/living/vehicle/mech/modular/V in stored_mechs_by_ckey[ckey])
-			save_mech(M,V)
-
-	return TRUE
-
-/proc/save_mech(var/savedata/client/mob/M,var/mob/living/vehicle/mech/modular/V)
-	log_debug("Mech Saving: Found mech [V.get_debug_name()].")
-	if(V.qdeleting)
-		M.loaded_data["stored_mechs"] -= V.mech_id //Gone forever.
-	else
-		M.loaded_data["stored_mechs"][V.mech_id] = V.save_mech_data()
-		log_debug("Storing mech. Data length: [length(M.loaded_data["stored_mechs"][V.mech_id])]")
-	return TRUE
-
-
 /mob/living/vehicle/mech/modular
 	name = "modular mech"
 	icon = 'icons/mob/living/advanced/mecha/parts.dmi'
@@ -50,10 +22,6 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	var/obj/item/powercell/battery
 
-
-	var/owner_ckey //The owner of this mech.
-	var/mech_id //The unique ID of the mech.
-
 	pixel_x = -8
 
 	value = 500
@@ -76,7 +44,7 @@ var/global/list/stored_mechs_by_ckey = list()
 		PAIN = INFINITY
 	)
 
-	class = /class/gygax/
+	class = /class/mech
 
 	health = /health/mob/living/vehicle/mech/modular
 
@@ -88,16 +56,17 @@ var/global/list/stored_mechs_by_ckey = list()
 /mob/living/vehicle/mech/modular/proc/get_battery()
 	return battery
 
-/mob/living/vehicle/mech/modular/enter_vehicle(atom/movable/Obj,atom/OldLoc)
+/mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 1)
 
-	if(is_living(Obj))
-		var/mob/living/L = Obj
-		if(L.ckey != owner_ckey)
-			L.to_chat(span("warning","The DNA lock is preventing you from entering this vehicle!"))
-			return FALSE
+	if(!battery || battery.charge_current <= 0)
+		return FALSE
 
-	return ..()
+	. = ..()
 
+	if(.)
+		battery.charge_current -= 5
+	else
+		battery.charge_current -= 1
 
 /mob/living/vehicle/mech/modular/get_examine_list(var/mob/caller)
 
@@ -116,130 +85,13 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	if(battery) . += span("notice","It has \the [battery.name] inserted in the chassis. It has a charge rating of ([battery.charge_current]/[battery.charge_max]).")
 
-
-
 /mob/living/vehicle/mech/modular/attach_equipment(var/mob/caller,var/obj/item/I)
 	return FALSE
 
 /mob/living/vehicle/mech/modular/unattach_equipment(var/mob/caller,var/obj/item/I)
 	return FALSE
 
-/mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/weapon/W)
-	return FALSE
-
-/mob/living/vehicle/mech/modular/PostInitialize()
-
-	. = ..()
-
-	if(owner_ckey)
-		if(!stored_mechs_by_ckey[owner_ckey])
-			stored_mechs_by_ckey[owner_ckey] = list()
-		stored_mechs_by_ckey[owner_ckey] += src
-
-
-/mob/living/vehicle/mech/modular/proc/generate_name()
-	name = "Mech Unit [uppertext(copytext(owner_ckey,1,4))]-[uppertext(copytext(mech_id,1,4))]"
-
-/mob/living/vehicle/mech/modular/proc/generate_id()
-	mech_id = rustg_hash_string(RUSTG_HASH_MD5,"[get_date()][get_time()]")
-	return TRUE
-
-/mob/living/vehicle/mech/modular/proc/set_owner(var/desired_ckey)
-
-	if(owner_ckey && stored_mechs_by_ckey[owner_ckey])
-		stored_mechs_by_ckey[owner_ckey] -= src
-
-	if(!stored_mechs_by_ckey[desired_ckey])
-		stored_mechs_by_ckey[desired_ckey] = list()
-
-	owner_ckey = desired_ckey
-	stored_mechs_by_ckey[desired_ckey] |= src
-
-	return TRUE
-
-/mob/living/vehicle/mech/modular/proc/save_mech_data(var/save_inventory = TRUE)
-
-	. = list()
-
-	SAVEVAR("name")
-	SAVEVAR("mech_id")
-
-	SAVEATOM("mech_arms")
-	SAVEATOM("mech_legs")
-	SAVEATOM("mech_body")
-	SAVEATOM("mech_head")
-
-	SAVEATOM("right_hand")
-	SAVEATOM("left_hand")
-
-	SAVEATOM("right_shoulder")
-	SAVEATOM("left_shoulder")
-
-	SAVEATOM("back")
-	SAVEATOM("head")
-	SAVEATOM("chest")
-
-	SAVEATOM("battery")
-
-
-
-/mob/living/vehicle/mech/modular/proc/load_mech_data(var/mob/living/advanced/player/P,var/list/object_data)
-
-	. = list()
-
-	LOADVAR("name")
-	LOADVAR("mech_id")
-
-	LOADATOM("mech_arms")
-	LOADATOM("mech_legs")
-	LOADATOM("mech_body")
-	LOADATOM("mech_head")
-
-	LOADATOM("right_hand")
-	if(right_hand)
-		right_hand.current_slot = "right hand"
-		right_hand.update_sprite()
-
-	LOADATOM("left_hand")
-	if(left_hand)
-		left_hand.current_slot = "left hand"
-		left_hand.update_sprite()
-
-	LOADATOM("right_shoulder")
-	if(right_shoulder)
-		right_shoulder.current_slot = "right shoulder"
-		right_shoulder.update_sprite()
-
-	LOADATOM("left_shoulder")
-	if(left_shoulder)
-		left_shoulder.current_slot = "left shoulder"
-		left_shoulder.update_sprite()
-
-	LOADATOM("back")
-	if(back)
-		back.current_slot = "back"
-		back.update_sprite()
-
-	LOADATOM("head")
-	if(head)
-		head.current_slot = "head"
-		head.update_sprite()
-
-	LOADATOM("chest")
-	if(chest)
-		chest.current_slot = "chest"
-		chest.update_sprite()
-
-	LOADATOM("battery")
-
-	update_sprite()
-
-
 /mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/I)
-
-	if(caller && caller.ckey != owner_ckey)
-		caller.to_chat(span("warning","The DNA lock is preventing you from modifying \the [src.name]!"))
-		return FALSE
 
 	if(!mech_arms)
 		caller?.to_chat(span("notice","You must add a set of arms to this assembly before attaching weapons!"))
@@ -250,32 +102,27 @@ var/global/list/stored_mechs_by_ckey = list()
 
 /mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	if(!mech_arms || (mech_arms && mech_arms.health.health_current <= 0))
 		return FALSE
 
-	if(params["right"])
-		if(left_shoulder && caller.attack_flags & CONTROL_MOD_ALT)
-			return left_shoulder.click_on_object(caller,object,location,control,params)
+	if(!. && params["right"])
+		if(left_shoulder && caller.attack_flags & CONTROL_MOD_DISARM)
+			. = left_shoulder.click_on_object(caller,object,location,control,params)
 		else if(left_hand)
-			return left_hand.click_on_object(caller,object,location,control,params)
+			. = left_hand.click_on_object(caller,object,location,control,params)
 
-	if(params["left"])
-		if(right_shoulder && caller.attack_flags & CONTROL_MOD_ALT)
-			return right_shoulder.click_on_object(caller,object,location,control,params)
+	if(!. && params["left"])
+		if(right_shoulder && caller.attack_flags & CONTROL_MOD_DISARM)
+			. = right_shoulder.click_on_object(caller,object,location,control,params)
 		else if(right_hand)
-			return right_hand.click_on_object(caller,object,location,control,params)
+			. = right_hand.click_on_object(caller,object,location,control,params)
 
 	return TRUE
 
 /mob/living/vehicle/mech/modular/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(caller && caller.ckey != owner_ckey)
-		return ..()
 
 	DEFER_OBJECT
 
@@ -462,21 +309,19 @@ var/global/list/stored_mechs_by_ckey = list()
 /mob/living/vehicle/mech/modular/update_overlays()
 	. = ..()
 
+	//Parts
 	if(mech_legs) add_overlay(mech_legs)
 	if(mech_body) add_overlay(mech_body)
 	if(mech_arms) add_overlay(mech_arms)
 	if(mech_head) add_overlay(mech_head)
 
+	//Weapons
 	if(right_shoulder) add_overlay(right_shoulder)
 	if(left_shoulder) add_overlay(left_shoulder)
-
 	if(right_hand) add_overlay(right_hand)
 	if(left_hand) add_overlay(left_hand)
-
 	if(chest) add_overlay(chest)
-
 	if(back) add_overlay(back)
-
 	if(head) add_overlay(head)
 
 
@@ -533,3 +378,41 @@ var/global/list/stored_mechs_by_ckey = list()
 		return FALSE
 
 	return ..()
+
+/mob/living/vehicle/mech/modular/premade/ripley/Generate()
+
+	. = ..()
+
+	mech_arms = new/obj/item/mech_part/arms/loader(src)
+	INITIALIZE(mech_arms)
+	GENERATE(mech_arms)
+	FINALIZE(mech_arms)
+
+	mech_body = new/obj/item/mech_part/body/loader(src)
+	INITIALIZE(mech_body)
+	GENERATE(mech_body)
+	FINALIZE(mech_body)
+
+	mech_legs = new/obj/item/mech_part/legs/loader(src)
+	INITIALIZE(mech_legs)
+	GENERATE(mech_legs)
+	FINALIZE(mech_legs)
+
+	left_hand = new/obj/item/mech_part/equipment/weapon/laser(src)
+	left_hand.current_slot = "left hand"
+	INITIALIZE(left_hand)
+	GENERATE(left_hand)
+	FINALIZE(left_hand)
+
+	right_hand = new/obj/item/mech_part/equipment/weapon/drill(src)
+	right_hand.current_slot = "right hand"
+	INITIALIZE(right_hand)
+	GENERATE(right_hand)
+	FINALIZE(right_hand)
+
+	battery = new/obj/item/powercell/vehicle(src)
+	INITIALIZE(battery)
+	GENERATE(battery)
+	FINALIZE(battery)
+
+	update_sprite()

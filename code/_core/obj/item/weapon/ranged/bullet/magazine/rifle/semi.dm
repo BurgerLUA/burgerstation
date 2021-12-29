@@ -6,11 +6,11 @@
 	icon_state = "inventory"
 	value = 1200
 
-	shoot_delay = 3
+	tier = 1
+
+	shoot_delay = 1.75
 
 	automatic = FALSE
-
-	damage_mod = 1.25
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
@@ -71,7 +71,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread()
-	return 0.002
+	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

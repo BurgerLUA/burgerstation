@@ -1,5 +1,7 @@
 obj/structure/interactive/artifact
 	name = "valuable artifact"
+	desc = "May or may not be safe to transport."
+	desc_extended = "A valuable artifact native to the current planet. NanoTrasen might want this."
 	icon = 'icons/obj/structure/objectives.dmi'
 	icon_state = "1"
 
@@ -15,7 +17,7 @@ obj/structure/interactive/artifact
 	desired_light_range = 2
 	desired_light_color = "#FFFFFF"
 
-obj/structure/interactive/artifact/Initialize()
+obj/structure/interactive/artifact/Finalize()
 	name = "[pick(SStext.adjectives)] artifact of [pick(SStext.verbs)]"
 	return ..()
 
@@ -26,5 +28,5 @@ obj/structure/interactive/artifact/on_crush()
 	return FALSE
 
 obj/structure/interactive/artifact/New(var/desired_loc)
+	. = ..()
 	icon_state = "[rand(1,9)]"
-	return ..()

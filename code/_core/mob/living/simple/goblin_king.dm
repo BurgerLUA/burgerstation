@@ -15,7 +15,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = BOSS_TICK*3
+	move_delay = AI_TICK_FAST*3
 
 	stun_angle = 0
 
@@ -53,7 +53,7 @@
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -71,7 +71,9 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 30
+
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 /mob/living/simple/goblin_king/post_death()
 	. = ..()
@@ -87,7 +89,7 @@
 		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
 		var/mob/living/spawnGoblin = new choose_goblin(turf_to_spawn)
-		spawnGoblin.one_time_life = TRUE
+		spawnGoblin.delete_on_death = TRUE
 		INITIALIZE(spawnGoblin)
 		GENERATE(spawnGoblin)
 		FINALIZE(spawnGoblin)

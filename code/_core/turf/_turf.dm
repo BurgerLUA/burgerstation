@@ -158,25 +158,29 @@
 
 /turf/change_victim(var/atom/attacker,var/atom/object)
 
+	if(density) //Not actually a floor but something more.
+		return src
+
 	for(var/k in contents)
 		var/atom/movable/v = k
 		if(attacker == v)
+			continue
+		if(!v.health)
 			continue
 		if(ismob(v))
 			var/mob/M = v
 			if(M.mouse_opacity == 0)
 				continue
-			return v
-		if(v.health && v.can_be_attacked(attacker))
-			return v
+		if(!v.can_be_attacked(attacker))
+			continue
+		return v
 
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(attacker == L)
+			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay < 0 || get_dist(L,src) > 1)
 				continue
-			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && get_dist(L,src) <= 1)
-				return L
+			return L
 
 	return src
 
@@ -271,7 +275,7 @@
 
 	return null
 
-/turf/proc/can_construct_on(var/mob/caller)
+/turf/proc/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 
@@ -279,3 +283,43 @@
 /turf/Finalize()
 	. = ..()
 	update_sprite()
+
+/turf/proc/is_clear_path_to(var/turf/target_turf)
+
+	if(!isturf(target_turf) || target_turf.has_opaque_atom || src.z != target_turf.z)
+		return FALSE
+
+	if(src == target_turf)
+		return target_turf.has_opaque_atom
+
+
+	var/limit = get_dist(src,target_turf)
+	if(limit >= 127) //No.
+		return FALSE
+	limit *= 2 //Compensates for corners.
+
+	var/list/diag = list(
+		"[NORTHEAST]" = TRUE,
+		"[SOUTHEAST]" = TRUE,
+		"[NORTHWEST]" = TRUE,
+		"[SOUTHWEST]" = TRUE
+	)
+
+	var/turf/T = src
+	while(limit>0)
+		limit--
+		var/next_direction = get_dir(T,target_turf)
+		if(diag["[next_direction]"])
+			var/dir1 = get_true_4dir(next_direction)
+			var/turf/T1 = get_step(T,dir1)
+			if(T1.has_opaque_atom)
+				var/dir2 = next_direction - dir1
+				var/turf/T2 = get_step(T,dir2)
+				if(T2.has_opaque_atom)
+					return FALSE
+
+		T = get_step(T,next_direction)
+		if(T.has_opaque_atom)
+			return FALSE
+		if(T == target_turf)
+			return TRUE

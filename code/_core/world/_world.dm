@@ -10,7 +10,7 @@ var/global/world_state = STATE_STARTING
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
 
-	sleep_offline = TRUE
+	sleep_offline = FALSE
 
 	name = "Burgerstation 13"
 	hub = "Exadv1.spacestation13"
@@ -113,8 +113,7 @@ var/global/world_state = STATE_STARTING
 		G.save()
 
 /proc/save_economy()
-	var/subsystem/economy/E = locate() in active_subsystems
-	E.save(TRUE)
+	SSeconomy.save()
 
 /world/proc/save()
 	save_all_globals()
@@ -122,17 +121,24 @@ var/global/world_state = STATE_STARTING
 	save_deathboxes()
 	save_banks()
 	save_economy()
+	save_all_characters()
+	return TRUE
+
+/world/proc/save_all_characters()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
+		if(P.qdeleting)
+			log_error("Warning: Tried saving a qdeleting character!")
+			continue
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)
 			continue
-		if(!P.allow_save)
-			continue
-		M.save_character(P,force = TRUE)
-		P.to_chat(span("notice","Your character was automatically saved."))
+		if(M.save_character(P,force = TRUE))
+			P.to_chat(span("notice","Your character was automatically saved."))
+		else
+			P.to_chat(span("danger","Save error! Your character could not be saved!"))
+		sleep(1)
 		sleep(-1)
-	return TRUE
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
 
@@ -167,6 +173,6 @@ var/global/world_state = STATE_STARTING
 		broadcast_to_clients(span("notice","Rebooting world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server reboots."))
 		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,.proc/reboot_server)
 
-	SSdiscord.send_message("Round ended due to [nice_reason].")
+	SSdiscord.send_message("Round ended with [length(all_clients)] players due to [nice_reason].")
 
 	return TRUE

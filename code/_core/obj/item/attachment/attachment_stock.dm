@@ -39,3 +39,27 @@
 	value = 0
 
 	removable = FALSE
+
+/obj/item/attachment/stock/sniper_20
+	name = "20mm stock"
+	desc = "Extendong."
+	desc_extended = ""
+	icon_state = "stock_sniper_20"
+
+	attachment_stats = list()
+
+	value = 0
+
+	removable = FALSE
+
+/obj/item/attachment/barrel/sniper_20
+	name = "20mm barrel"
+	desc = "Extendong."
+	desc_extended = ""
+	icon_state = "barrel_sniper_20"
+
+	attachment_stats = list()
+
+	value = 0
+
+	removable = FALSE

@@ -40,11 +40,18 @@
 
 /obj/item/clothing/ears/headset/syndicate
 	name = "syndicate headset"
+	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/syndicate
 
 /obj/item/clothing/ears/headset/mercenary
 	name = "mercenary headset"
+	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/mercenary
+
+/obj/item/clothing/ears/headset/revolutionary
+	name = "revolutionary headset"
+	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
+	stored_radio = /obj/item/device/radio/revolutionary
 
 /obj/item/clothing/ears/headset/virtual_reality
 	name = "auto headset"

@@ -45,12 +45,23 @@
 	desc_extended = "An old syndicate gas mask previously used by syndicate operatives."
 	icon = 'icons/obj/item/clothing/masks/gasmask_syndicate.dmi'
 
-/obj/item/clothing/mask/gas/syndicate
-	name = "cyborg skull gas mask"
-	desc = "Fearsome."
-	desc_extended = "An old syndicate gas mask previously used by syndicate operatives."
-	icon = 'icons/obj/item/clothing/masks/gasmask_syndicate.dmi'
+/obj/item/clothing/mask/gas/mercenary
+	name = "mercenary gas mask"
+	desc = "Profitable."
+	desc_extended = "An old mercenary gas mask previously used by exclusion zone bounty hunters."
+	icon = 'icons/obj/item/clothing/masks/gasmask_merc.dmi'
 
+/obj/item/clothing/mask/gas/glass
+	name = "open gas mask"
+	desc = "Viewable."
+	desc_extended = "An old glass gas mask previously used by irradiated subway scavengers."
+	icon = 'icons/obj/item/clothing/masks/gasmask_glass.dmi'
+
+/obj/item/clothing/mask/gas/tactical
+	name = "tactical gas mask"
+	desc = "Tactical."
+	desc_extended = "An old tactical gas mask previously used by special ops."
+	icon = 'icons/obj/item/clothing/masks/gasmask_tactical.dmi'
 
 /obj/item/clothing/mask/gas/space_cop
 	name = "space cop's mask"
@@ -78,10 +89,10 @@
 		"filter" = COLOR_METAL
 	)
 
-/obj/item/clothing/mask/gas/poly/security
+/obj/item/clothing/mask/gas/poly/nanotrasen
 	polymorphs = list(
 		"base" = COLOR_BLACK,
-		"eyes" = COLOR_SECURITY,
+		"eyes" = COLOR_NANOTRASEN,
 		"filter" = COLOR_PLASTEEL
 	)
 

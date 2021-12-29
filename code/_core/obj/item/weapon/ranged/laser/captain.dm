@@ -34,7 +34,7 @@
 /obj/item/weapon/ranged/energy/captain/update_overlays()
 	. = ..()
 	var/obj/item/powercell/PC = get_battery()
-	if(!PC)
+	if(!istype(PC))
 		var/image/I = new/icon(initial(icon),"charge0")
 		add_overlay(I)
 	else

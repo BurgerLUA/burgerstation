@@ -16,6 +16,8 @@
 	dialogue_id = /dialogue/tutorial/front_desk
 	dir = SOUTH
 
+	level = 1
+
 /mob/living/advanced/npc/unique/crew/front_desk/Initialize()
 	sex = pick(MALE,FEMALE)
 	gender = sex

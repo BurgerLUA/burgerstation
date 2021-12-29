@@ -4,9 +4,11 @@
 	desc_extended = "A revolver that uses a blowback recoil system to recock the hammer. Was initially made in small numbers for gun collectors and shooting enthusiasts, but has since become commonplace everywhere."
 	icon = 'icons/obj/item/weapons/ranged/revolver/44.dmi'
 	icon_state = "inventory"
-	value = 700
+	value = 1200
 
-	shoot_delay = 1.25
+	tier = 3
+
+	shoot_delay = 2
 
 	automatic = FALSE
 

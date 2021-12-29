@@ -16,6 +16,8 @@
 
 	turf_temperature_mod = 800
 
+	map_color = COLOR_ORANGE
+
 /turf/simulated/hazard/lava/Enter(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/mob/abstract/node_checker))

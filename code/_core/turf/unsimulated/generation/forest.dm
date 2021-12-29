@@ -9,18 +9,9 @@
 
 	if(no_wall)
 		new /turf/simulated/floor/colored/grass(src)
-		new /area/dungeon/z_01/forest(src)
+		if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 		disallow_generation = TRUE
 		return ..()
-
-	if(x >= 255-VIEW_RANGE*2)
-		if(prob(1))
-			new /obj/marker/generation/sand(src)
-		new /turf/simulated/hazard/water/sea(src)
-		new /area/dungeon/z_01/forest(src)
-		disallow_generation = TRUE
-		return ..()
-
 
 	var/noise = 0
 
@@ -65,6 +56,8 @@
 				new /obj/marker/generation/mob/black_bear(src)
 			if(!path_only && prob(0.2))
 				new /obj/marker/generation/plant/tomato(src)
+				if(prob(1))
+					new /obj/marker/generation/mob/goat(src)
 				place_grass = FALSE
 			else if(!path_only && prob(1))
 				new /obj/marker/generation/plant/chanterelle(src)
@@ -77,7 +70,7 @@
 				new /obj/marker/generation/forest_dirt(src)
 				place_ground = FALSE
 				new /turf/simulated/floor/colored/dirt(src)
-				new /area/dungeon/z_01/forest(src)
+				if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 
 		else if(!path_only && prob(5))
 			place_grass = FALSE
@@ -85,6 +78,8 @@
 			if(prob(2))
 				new /obj/marker/generation/mob/chicken(src)
 		else if(!path_only && prob(3))
+			if(prob(1))
+				new /obj/marker/generation/mob/mouse/brown(src)
 			var/list/valid_bushes = list(
 				/obj/marker/generation/bushes/generic,
 				/obj/marker/generation/bushes/grass,
@@ -97,6 +92,8 @@
 	if(place_grass)
 		if(prob(2))
 			new /obj/marker/generation/flowers(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/bee(src)
 		if(prob(2))
 			new /obj/marker/generation/lavender(src)
 		else if(prob(10))
@@ -107,15 +104,19 @@
 				else
 					new /obj/marker/generation/mob/cow(src)
 
+
 	if(place_ground)
 		new /turf/simulated/floor/colored/grass(src)
-		new /area/dungeon/z_01/forest(src)
+		if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 		color = blend_colors("#336D31","#426D31",noise)
 		if(prob(1))
 			new /obj/marker/generation/forest_soil(src)
 
 	if(shitfix)
 		disallow_generation = TRUE
+
+	if(prob(0.5))
+		new /obj/marker/generation/mob/syndicate(src)
 
 	return ..()
 

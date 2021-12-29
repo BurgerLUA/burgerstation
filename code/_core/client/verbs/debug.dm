@@ -20,8 +20,11 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
 	/client/verb/view_dps,
+	/client/verb/view_dph,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
+	/client/proc/debug_variables,
+	/client/proc/spawn_atom,
 	/client/verb/test_astar,
 	/client/verb/print_garbage
 )
@@ -35,6 +38,18 @@ var/global/list/debug_verbs = list(
 	for(var/k in SSbalance.stored_dps)
 		var/v = SSbalance.stored_dps[k]
 		text_to_send += "[k]: [v] DPS<br>"
+
+	src << browse("<body>[text_to_send]</body>","window=help")
+
+/client/verb/view_dph()
+	set name = "View DPH of Weapons"
+	set category = "Debug"
+
+	var/text_to_send = ""
+
+	for(var/k in SSbalance.stored_dph)
+		var/v = SSbalance.stored_dph[k]
+		text_to_send += "[k]: [v] DPH<br>"
 
 	src << browse("<body>[text_to_send]</body>","window=help")
 

@@ -16,9 +16,11 @@
 /event/blob/New()
 
 	for(var/area/A in world)
+		if(!A)
+			continue
 		if(A.area_identifier != "Mission")
 			continue
-		if(A.flags_area & (FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_DAMAGE))
+		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
 			continue
 		valid_areas += A
 

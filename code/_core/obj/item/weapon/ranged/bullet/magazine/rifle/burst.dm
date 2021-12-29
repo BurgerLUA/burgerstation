@@ -6,15 +6,16 @@
 	icon_state = "inventory"
 	value = 1800
 
-	shoot_delay = 1.25
-	burst_delay = 6
-	max_bursts = 3
+	tier = 1
 
-	damage_mod = 1.3
+	damage_mod = 1.1
+	shoot_delay = 1
+	burst_delay = 7
+	max_bursts = 3
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
@@ -84,17 +85,19 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3_new.dmi'
 	desc_extended = "A very early prototype of NanoTrasen's L-HON; the L-HON-0 is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
 
+	tier = 3
+
 	weight = 14
 
 	shoot_delay = 1
 	burst_delay = 4
 	max_bursts = 3
 
-	value = 3000
+	firemodes = list("automatic","burst","semi-automatic")
 
-	heat_max = 0.02
+	value = 4000
 
-
+	heat_max = 0.05
 
 	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 19 - 16
@@ -104,6 +107,7 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 17 - 16
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_static_spread()
 	return 0.001

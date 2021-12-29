@@ -11,13 +11,13 @@
 			A.to_chat(span("danger","You crave health and diet products..."))
 		switch(rand(1,3))
 			if(1)
-				A.brute_regen_buffer -= LIFE_TICK_SLOW
+				A.brute_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 				A.to_chat(span("warning","Your body itches..."))
 			if(2)
 				A.to_chat(span("warning","You feel moody..."))
-				A.health?.adjust_loss_smart(sanity=-LIFE_TICK_SLOW)
+				A.health?.adjust_loss_smart(sanity=-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
 			if(2)
 				A.to_chat(span("warning","You can't seem to think..."))
-				A.health?.adjust_loss_smart(mental=-LIFE_TICK_SLOW)
+				A.health?.adjust_loss_smart(mental=-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
 
 	return ..()

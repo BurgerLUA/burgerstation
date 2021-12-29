@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(gamemode)
 	log_debug("Setting gamemode to: [active_gamemode.name]... Source: [source].")
 
 	if(source == "voting on_result")
-		SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]) on [SSdmm_suite.map_name] with gamemode [active_gamemode.name]. ([length(all_clients)] players). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
+		SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]) on [SSdmm_suite.map_name] with gamemode [active_gamemode.name]. Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
 
 	return TRUE
 

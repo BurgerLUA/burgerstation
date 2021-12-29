@@ -21,8 +21,6 @@
 
 	var/debug = FALSE
 
-	var/special_temperature_mod = 0
-
 	var/contains_lethal = FALSE
 
 	var/allow_recipe_processing = TRUE
@@ -55,6 +53,13 @@
 
 	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
 		SSreagent.all_temperature_reagent_containers += src
+
+/reagent_container/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
+	. = FALSE
+	for(var/r_id in stored_reagents)
+		var/reagent/R = REAGENT(r_id)
+		if(R.act_explode(src,owner,source,epicenter,magnitude,desired_loyalty))
+			. = TRUE
 
 /reagent_container/proc/metabolize(var/mob/living/living_owner,var/multiplier=1)
 
@@ -109,7 +114,7 @@
 	if(T && T.loc)
 		A = T.loc
 
-	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + special_temperature_mod + (T ? T.turf_temperature_mod : 0)
+	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
 	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
 
 	if(is_inventory(owner.loc))
@@ -216,11 +221,13 @@
 		color = "#FFFFFF"
 		average_temperature = T0C+20
 
-	if(owner && should_update_owner && update_owner)
+	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
 
 	if(volume_current > volume_max)
-		splash(null,get_turf(owner),volume_current - volume_max)
+		var/difference = volume_current - volume_max
+		var/chosen_reagent = stored_reagents[length(stored_reagents)]
+		remove_reagent(chosen_reagent,CEILING(difference,1))
 
 	return TRUE
 
@@ -378,10 +385,11 @@
 	if(amount > 0)
 		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 		var/mob/living/L
-		if(is_living(src.owner))
-			L = src.owner
-		else if(is_living(src.owner.loc))
-			L = src.owner.loc
+		if(src.owner)
+			if(is_living(src.owner))
+				L = src.owner
+			else if(is_living(src.owner.loc))
+				L = src.owner.loc
 		if(L)
 			amount = R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 
@@ -595,6 +603,8 @@
 				final_flavor_text += " You hate this taste!"
 		else
 			final_flavor_text = null
+
+		A.mood += like_score*5
 
 		if(caller && caller != consumer)
 			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))

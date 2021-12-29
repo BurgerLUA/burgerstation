@@ -7,11 +7,13 @@
 
 	value = 4000
 
-	shoot_delay = 3
+	tier = 2
+
+	shoot_delay = 2.5
 
 	automatic = TRUE
 
-	damage_mod = 1.1
+	damage_mod = 1.2
 
 	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
 

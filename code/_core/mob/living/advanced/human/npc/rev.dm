@@ -1,13 +1,12 @@
 /mob/living/advanced/npc/rev
 	name = "revolutionary soldier"
 	desc = "FOR THE REVOLUTION!"
-	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Suprisingly, they're not syndicate backed."
+	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Surprisingly, they're not syndicate backed."
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate/russian
 
 
 	var/list/possible_outfits = list(
-		/loadout/rev/basic = 50,
 		/loadout/rev/solider = 10,
 		/loadout/rev/solider/alt = 10,
 		/loadout/rev/skat = 10,
@@ -16,8 +15,7 @@
 	)
 
 	var/loadout_to_level = list(
-		/loadout/rev/basic = 1,
-		/loadout/rev/solider = 2,
+		/loadout/rev/solider = 1,
 		/loadout/rev/solider/alt = 2,
 		/loadout/rev/skat = 4,
 		/loadout/rev/exo = 8,
@@ -26,7 +24,7 @@
 
 	var/map_spawn = FALSE
 
-	level = 16
+	level = 22
 
 /mob/living/advanced/npc/rev/Initialize()
 

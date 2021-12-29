@@ -14,7 +14,7 @@
 /obj/item/storage/glovebox/white/fill_inventory()
 	new /obj/item/clothing/hands/gloves/colored(src)
 	new /obj/item/clothing/hands/gloves/colored/left(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/glovebox/yellow/
 	name = "insulated glovebox"
@@ -23,7 +23,7 @@
 /obj/item/storage/glovebox/yellow/fill_inventory()
 	new /obj/item/clothing/hands/gloves/colored/insulated(src)
 	new /obj/item/clothing/hands/gloves/colored/insulated/left(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/glovebox/padded/
 	name = "padded glovebox"
@@ -32,7 +32,7 @@
 /obj/item/storage/glovebox/padded/fill_inventory()
 	new /obj/item/clothing/hands/gloves/colored/padded/black(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/glovebox/brown_padded/
@@ -42,4 +42,4 @@
 /obj/item/storage/glovebox/brown_padded/fill_inventory()
 	new /obj/item/clothing/hands/gloves/colored/padded/brown(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/brown/left(src)
-	return ..()
+	. = ..()

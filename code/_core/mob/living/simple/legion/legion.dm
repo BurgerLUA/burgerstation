@@ -52,7 +52,7 @@
 
 	soul_size = null
 
-	level = 4
+	level = 12
 
 /mob/living/simple/legionare/Destroy()
 
@@ -77,6 +77,9 @@
 		return FALSE
 
 	if(clone) //Clones cannot create heads.
+		return FALSE
+
+	if(dead)
 		return FALSE
 
 	var/mob/living/simple/legionare_head/L = new head_type(get_turf(src))

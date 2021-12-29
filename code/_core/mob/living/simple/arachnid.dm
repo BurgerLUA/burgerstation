@@ -58,7 +58,7 @@
 
 	object_size = 2
 
-	level = 12
+	level = 22
 
 /mob/living/simple/arachnid/post_death()
 	. = ..()

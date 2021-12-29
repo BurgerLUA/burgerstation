@@ -46,6 +46,9 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
 
+	if(P.loyalty_tag == "NanoTrasen" && SStax.check_delinquent(P))
+		P.to_chat(span("warning","Error: Tax delinquency detected. All associated accounts frozen. Please pay your taxes at the nearest tax payment center."))
+		return FALSE
 
 	if(accepts_item)
 		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.item_count_current >= amount)
@@ -146,7 +149,7 @@ var/global/list/equipped_antags = list()
 		var/local_markup = markup
 		if(!ignore_economy)
 			local_markup = max(markup * (SSeconomy.price_multipliers["[I.type]"] ? SSeconomy.price_multipliers["[I.type]"] : 1),markup)
-		stored_cost[I.type] = get_bullshit_price(I.get_value()*local_markup)
+		stored_cost[I.type] = CEILING(get_bullshit_price(I.get_value()*local_markup),1)
 		if(price_max)
 			stored_cost[I.type] = min(price_max,stored_cost[I.type])
 		if(stored_cost[I.type] <= 0)

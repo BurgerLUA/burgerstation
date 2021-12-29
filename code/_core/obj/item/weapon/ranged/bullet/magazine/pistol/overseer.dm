@@ -6,7 +6,9 @@
 	icon_state = "inventory"
 	value = 700
 
-	shoot_delay = 4
+	tier = 2
+
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -77,6 +79,7 @@
 	icon_state = "inventory"
 	value = 2000
 
+	tier = 3
 	shoot_delay = 2
 
 	heat_max = 0.05
@@ -120,8 +123,4 @@
 
 	. = ..()
 
-	attachment_barrel = /obj/item/attachment/barrel/suppressor
-	attachment_barrel = new attachment_barrel(src)
-
-	update_attachment_stats()
-	update_sprite()
+	attachment_barrel = new/obj/item/attachment/barrel/suppressor(src)

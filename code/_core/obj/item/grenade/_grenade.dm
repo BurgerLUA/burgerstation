@@ -27,13 +27,27 @@
 
 	has_quick_function = TRUE
 
+
+/obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+
+	var/num = bullet_num/bullet_num_max
+
+	var/norm_x = sin(num*360)
+	var/norm_y = cos(num*360)
+
+	var/mul = max(abs(norm_x),abs(norm_y))
+
+	return list(norm_x/mul,norm_y/mul)
+
 /obj/item/grenade/Destroy()
 
 	QDEL_NULL(stored_trigger)
 	QDEL_CUT(stored_containers)
 
 	. = ..()
-
+/obj/item/grenade/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/grenade/quick(var/mob/caller,var/atom/object,location,params)
 
@@ -97,7 +111,7 @@
 
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(alpha == 0)
+	if(alpha == 0) //Already gone.
 		return FALSE
 
 	alpha = 0
@@ -177,7 +191,7 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			open = !open
-			caller.to_chat(span("notice","You [open ? "unscrew" : "screw"] the screws on \the [src.name], securing it."))
+			caller.to_chat(span("notice","You [open ? "unscrew" : "screw"] the screws on \the [src.name], [open ? "unsecuring" : "securing"] it."))
 			return TRUE
 		else if(is_beaker(object))
 			INTERACT_CHECK

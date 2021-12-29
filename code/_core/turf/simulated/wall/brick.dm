@@ -15,16 +15,31 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+/turf/simulated/wall/brick/New(var/desired_loc)
+	. = ..()
+	map_color = color
+
 /turf/simulated/wall/brick/red
 	color = "#C66B59"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of red bricks."
+
+/turf/simulated/wall/brick/red/rev //for the rev compound
+	color = "#C66B59"
+	desc = "Like a brick to the head"
+	desc_extended = "A wall made of bricks. This one is made of red bricks."
+	health = 5000
 
 /turf/simulated/wall/brick/red/dark
 	color = "#824439"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
 
+/turf/simulated/wall/brick/red/dark/rev //for the rev compound, has infinite HP
+	color = "#824439"
+	desc = "Like a brick to the head"
+	desc_extended = "A wall made of bricks. This one is made of dark red bricks."
+	health = 6000
 
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"

@@ -25,7 +25,6 @@
 	for(var/obj/structure/interactive/disposals/pipe/DP in src.loc.contents)
 		disposals_count++
 
-
 	if(disposals_count > 1)
 		log_error("Multiple disposals pipes ([disposals_count]) detected at [src.loc.get_debug_name()].")
 
@@ -68,6 +67,7 @@
 /obj/structure/interactive/disposals/pipe/junction/sorting
 	name = "junction sorting disposals pipe"
 	icon_state = "pipe-j1s"
+	var/sorting_tag
 
 /obj/structure/interactive/disposals/pipe/junction/sorting/get_connections()
 	. = list()
@@ -94,4 +94,3 @@
 	. = list()
 	for(var/d in DIRECTIONS_CARDINAL)
 		.["[d]"] = d == dir
-	

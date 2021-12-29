@@ -7,6 +7,7 @@
 	var/obj/item/device/proximity/T = new(src)
 	T.time_set = 50
 	stored_trigger = T
+	open = FALSE
 	return ..()
 
 /obj/item/grenade/landmine/proximity/explosive/

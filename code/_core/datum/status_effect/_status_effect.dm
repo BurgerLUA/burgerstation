@@ -309,7 +309,7 @@
 
 	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
 
-	return ..()
+	. = ..()
 
 /status_effect/druggy
 	name = "Druggy"
@@ -324,13 +324,12 @@
 
 	if(owner && owner.client)
 		var/power = 1 + clamp(duration*0.1,0,min(5,magnitude*0.1))
-		var/enlightenment_power = magnitude >= 70 ? max(0,power - 4)*0.5 : 0
 		var/list/desired_color_mod = list(
 			power,0,0,0,
 			0,power,0,0,
 			0,0,power,0,
 			0,0,0,1,
-			enlightenment_power,enlightenment_power,enlightenment_power,enlightenment_power
+			0,0,0,0
 		)
 		owner.update_eyes()
 		owner.add_color_mod("druggy",desired_color_mod)
@@ -420,7 +419,7 @@
 
 /status_effect/consencrated/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
-	owner.burn_regen_buffer -= 5 * LIFE_TICK
+	owner.burn_regen_buffer -= 5 * TICKS_TO_SECONDS(LIFE_TICK)
 
 /status_effect/cursed
 	name = "Cursed"
@@ -448,7 +447,7 @@
 
 /status_effect/cursed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
-	owner.brute_regen_buffer -= 5 * LIFE_TICK
+	owner.brute_regen_buffer -= 5 * TICKS_TO_SECONDS(LIFE_TICK)
 
 
 

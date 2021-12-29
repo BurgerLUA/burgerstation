@@ -59,6 +59,8 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
+	tier = 0
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/dip/get_static_spread()
 	return 0.002
 

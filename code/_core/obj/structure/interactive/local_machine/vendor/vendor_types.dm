@@ -141,6 +141,7 @@
 		/obj/item/container/beaker/bottle/epinephrine,
 		/obj/item/container/beaker/bottle/calomel,
 		/obj/item/container/beaker/bottle/charcoal,
+		/obj/item/container/beaker/bottle/morphine,
 		/obj/item/container/beaker/vial/zombie_antidote,
 		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
@@ -153,6 +154,20 @@
 		/obj/item/container/medicine/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 	)
+
+/obj/structure/interactive/vending/medical/basic
+	name = "emergency medicine vendor"
+	icon_state = "med"
+	stored_types = list(
+		/obj/item/analyzer/health,
+		/obj/item/container/medicine/bandage,
+		/obj/item/container/medicine/ointment,
+		/obj/item/container/medicine/trauma_kit,
+		/obj/item/container/medicine/burn_kit,
+		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/blood_pack/full/rad_be_gone,
+	)
+
 
 /obj/structure/interactive/vending/medical/chemistry
 	name = "chemistry vendor"
@@ -182,7 +197,8 @@
 		/obj/item/clothing/pants/normal/medical,
 		/obj/item/clothing/uniform/utility/medical,
 		/obj/item/clothing/overwear/coat/labcoat/medical,
-		/obj/item/storage/glovebox/white
+		/obj/item/storage/glovebox/white,
+		/obj/item/defib/belt
 	)
 
 /obj/structure/interactive/vending/robotics
@@ -297,7 +313,8 @@
 		/obj/item/clothing/belt/belt_quiver,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/holy45,
-		/obj/item/magazine/holy45
+		/obj/item/magazine/holy45,
+		/obj/item/weapon/unarmed/holy
 
 	)
 
@@ -594,7 +611,13 @@
 		/obj/item/clothing/uniform/clown/yellow,
 		/obj/item/broom/magic,
 		/obj/item/grenade/timed/lube_smoke,
-		/obj/item/weapon/ranged/spellgem/metronome
+		/obj/item/weapon/ranged/spellgem/metronome,
+		/obj/item/clothing/overwear/armor/burger_coat,
+		/obj/item/clothing/overwear/armor/burger_coat/courier,
+		/obj/item/clothing/overwear/armor/burger_coat/courier/ncr,
+		/obj/item/clothing/overwear/armor/burger_coat/courier/legion,
+		/obj/item/clothing/overwear/armor/burger_coat/courier/ulysses,
+		/obj/item/weapon/melee/flagpole
 	)
 
 	ignore_economy = TRUE
@@ -613,7 +636,7 @@
 		/obj/item/container/food/package/junkfood/halloween/hurr_bar,
 		/obj/item/container/food/package/junkfood/halloween/kit_catgirl_metaclique_bar,
 		/obj/item/container/food/package/junkfood/halloween/malf_way,
-		/obj/item/container/food/package/junkfood/halloween/sniggers_bar,
+		/obj/item/container/food/package/junkfood/halloween/candy_bar,
 		/obj/item/container/food/package/junkfood/halloween/triggerfinger,
 		/obj/item/container/food/package/junkfood/halloween/twink_bar
 	)

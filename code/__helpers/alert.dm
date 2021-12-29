@@ -1,13 +1,12 @@
 #define within_range(point_A,point_B,range) (point_A.z == point_B.z && get_dist(point_A,point_B) <= range)
 
-/proc/create_alert_process(var/list/list_to_use,var/range = VIEW_RANGE,var/atom/epicenter=usr,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
+/proc/create_alert_process(var/list/list_to_use,var/range = VIEW_RANGE,var/atom/epicenter,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
 
 	for(var/k in list_to_use)
-		CHECK_TICK(50,FPS_SERVER*10)
 		var/ai/AI = k
 		if(!AI || AI.qdeleting || !AI.owner || AI.owner.qdeleting || AI.owner.dead || AI.objective_attack)
 			continue
-		if(!within_range(AI.owner,epicenter,VIEW_RANGE))
+		if(!within_range(AI.owner,epicenter,VIEW_RANGE+ZOOM_RANGE))
 			continue
 		if(visual && !AI.owner.is_facing(epicenter))
 			continue
@@ -27,6 +26,8 @@
 
 	var/z = "[epicenter.z]"
 
+	create_alert_process(SSbossai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
+	create_alert_process(SSai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
 	create_alert_process(SSbossai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
 	create_alert_process(SSai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
 

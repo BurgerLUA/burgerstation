@@ -18,6 +18,8 @@
 
 	density = TRUE
 
+	map_color = COLOR_BLACK
+
 /*
 /turf/simulated/floor/chasm/Crossed(atom/movable/O)
 

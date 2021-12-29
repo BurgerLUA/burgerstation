@@ -2,7 +2,6 @@
 	name = "\improper 20mm gyrorocket"
 	desc = "Rocket Punch!"
 	desc_extended = "For pistols and rifles that require gyrojet rounds. Even well made rounds are known for their high misfire chance."
-	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/gyrojet.dmi'
 
 	item_count_max = 4

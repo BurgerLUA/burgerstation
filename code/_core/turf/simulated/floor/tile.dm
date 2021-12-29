@@ -14,6 +14,7 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	map_color = "#FFFFFF"
 
 /turf/simulated/floor/tile/chapel/
 	color = COLOR_GREY_DARK
@@ -28,6 +29,9 @@
 
 /turf/simulated/floor/tile/grey
 	color = COLOR_GREY
+
+/turf/simulated/floor/tile/grey/ish
+	color = "#8A8888"
 
 /turf/simulated/floor/tile/blue_baby
 	color = "#729AB1"
@@ -56,11 +60,6 @@
 /turf/simulated/floor/tile/red
 	color = COLOR_RED
 
-/turf/simulated/floor/tile/security
-	color = COLOR_SECURITY
-	desc = "A secure floor"
-	desc_extended = "Janitors love cleaning this type of tile floor, especially when security slips on it."
-
 /turf/simulated/floor/tile/blue
 	color = COLOR_BLUE
 
@@ -86,7 +85,7 @@
 	color = "#D3CBA5"
 
 /turf/simulated/floor/tile/tan/ish
-	color = "#C6C2AF"
+	color = "#7E7B6B"
 
 /turf/simulated/floor/tile/tan/bright
 	color = "#AC7656"

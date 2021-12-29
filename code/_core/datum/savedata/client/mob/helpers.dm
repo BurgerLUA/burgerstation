@@ -89,12 +89,22 @@ var/global/allow_loading = TRUE
 /savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
 	if(!A)
-		usr?.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 1000.</h2>"))
+		usr?.to_chat(span("danger","<h2>Save failed. Tried to save NULL. Please contact the server owner with error code: 1000.</h2>"))
 		CRASH_SAFE("FATAL ERROR: Tried to save a character without an actual character!")
 		return FALSE
 
+	if(A.qdeleting)
+		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1001.</h2>"))
+		log_error("SAVE ERROR: Tried saving a character that was qdeleting!")
+		return FALSE
+
+	if(A.loc == null)
+		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1002.</h2>"))
+		log_error("SAVE ERROR: Tried saving a character that had a null loc!")
+		return FALSE
+
 	if(!istype(A))
-		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 2000.</h2>"))
+		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1003.</h2>"))
 		CRASH_SAFE("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
 		return FALSE
 
@@ -110,27 +120,34 @@ var/global/allow_loading = TRUE
 		usr?.to_chat(span("warning","Your character was not saved as it is still initializing. This is to prevent save corruption. If you believe you received this message in error, contact Burger on discord."))
 		return FALSE
 
+	A.is_saving = TRUE
 	var/list/loaded_data = A.get_mob_data(save_inventory,force,died)
 
-
+	. = TRUE
 	if(!length(loaded_data))
-		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no data! Contact burger on how this happened with error code: 01."))
-		return FALSE
+		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no data! Contact burger on how this happened with error code: 2001."))
+		log_error("Tried saving [A.get_debug_name()] with no loaded data!")
+		. = FALSE
 	else if(!length(loaded_data["organs"]))
-		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no organ data! Contact burger on how this happened with error code: 02."))
-		return FALSE
+		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no organ data! Contact burger on how this happened with error code: 2002."))
+		log_error("Tried saving [A.get_debug_name()] with no organ data!")
+		. = FALSE
 	else if(!length(loaded_data["skills"]))
-		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no skill data! Contact burger on how this happened with error code: 03."))
-		return FALSE
+		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no skill data! Contact burger on how this happened with error code: 2003."))
+		log_error("Tried saving [A.get_debug_name()] with no skill data!")
+		. =  FALSE
 	else if(!length(loaded_data["attributes"]))
-		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no attribute data! Contact burger on how this happened with error code: 04."))
-		return FALSE
+		A.to_chat(span("danger","FATAL ERROR: COULD NOT SAVE! Your character had no attribute data! Contact burger on how this happened with error code: 2004."))
+		log_error("Tried saving [A.get_debug_name()] with no attribute data!")
+		. = FALSE
 	else if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		if(died)
 			A.to_chat(span("notice","Your mind and body was backed up in the NanoTrasen cloning network..."))
 		else
 			A.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
-		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
+		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 2005.</h2>"))
+		log_error("Failed to save [A.get_debug_name()] with write_json_data_to_id!")
+		. = FALSE
 
-	return TRUE
+	A.is_saving = FALSE

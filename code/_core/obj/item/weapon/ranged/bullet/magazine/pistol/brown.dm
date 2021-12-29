@@ -58,6 +58,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 18 - 16
 
+	tier = 2
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_static_spread()
@@ -81,10 +82,7 @@
 
 	. = ..()
 
-	attachment_barrel = /obj/item/attachment/barrel/suppressor
-	attachment_barrel = new attachment_barrel(src)
-
-	update_attachment_stats()
-	update_sprite()
-
-
+	attachment_barrel = new/obj/item/attachment/barrel/suppressor(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)

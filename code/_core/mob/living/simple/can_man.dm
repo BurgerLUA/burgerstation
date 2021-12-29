@@ -39,7 +39,7 @@
 		PAIN = INFINITY
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -82,7 +82,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 70
 
 /mob/living/simple/can_man/post_death()
 	. = ..()
@@ -103,7 +103,7 @@
 	if(charge_steps)
 		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 
-	return ..()
+	. = ..()
 
 
 /mob/living/simple/can_man/Bump(atom/Obstacle)

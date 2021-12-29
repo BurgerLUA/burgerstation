@@ -68,6 +68,10 @@
 /obj/item/dice/d20/cursed,
 /turf/simulated/floor/grass,
 /area/dmm_suite/clear_area)
+"s" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/grass,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -417,7 +421,7 @@ a
 a
 a
 b
-h
+s
 r
 h
 c

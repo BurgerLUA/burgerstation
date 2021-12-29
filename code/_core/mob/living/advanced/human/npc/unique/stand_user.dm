@@ -5,6 +5,8 @@
 	dir = EAST
 	ai = /ai/advanced/
 
+	level = 20
+
 /mob/living/advanced/npc/unique/stand_user/Initialize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
@@ -17,4 +19,3 @@
 	stand.generate()
 	stand.linked_stand.set_enabled(TRUE)
 
-	

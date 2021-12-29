@@ -11,6 +11,8 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	map_color = "#FFFFFF"
+
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"
 

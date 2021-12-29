@@ -8,3 +8,5 @@
 	corner_category = "xeno_wall"
 
 	destruction_turf = /turf/simulated/floor/xeno/
+
+	map_color = "#19252D"

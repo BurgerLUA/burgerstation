@@ -43,7 +43,7 @@
 
 /obj/item/light_sensor/think()
 	update_sprite()
-	return ..()
+	return TRUE
 
 /obj/item/light_sensor/update_icon()
 

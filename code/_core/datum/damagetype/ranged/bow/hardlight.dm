@@ -1,6 +1,4 @@
 /damagetype/ranged/bow/hardlight
-	name = "bow"
-
 	attack_damage_base = list(
 		LASER = 105*0.50,
 		HEAT = 105*0.25

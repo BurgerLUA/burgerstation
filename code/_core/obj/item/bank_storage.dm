@@ -3,7 +3,6 @@
 	icon = null
 	icon_state = null
 	anchored = TRUE
-	value = -1
 	size = INFINITY
 	weight = INFINITY
 	var/owner //Ckey that owns it.

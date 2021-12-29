@@ -6,7 +6,9 @@
 	icon_state = "inventory"
 	value = 5000
 
-	shoot_delay = 10
+	tier = 3
+
+	shoot_delay = 15
 
 	automatic = FALSE
 
@@ -94,5 +96,3 @@
 	FINALIZE(attachment_sight)
 
 	. = ..()
-
-	update_sprite()

@@ -27,7 +27,7 @@
 
 	if(final_move_dir && move_delay <= 0 && is_valid_dir(final_move_dir))
 
-		var/final_movement_delay = max(adjust_delay,get_movement_delay())
+		var/final_movement_delay = get_movement_delay()
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)
@@ -42,10 +42,11 @@
 			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
 			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
-		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), CEILING(adjust_delay,1)) //Round to the nearest tick. Counting decimal ticks is dumb.
+		move_delay = max(move_delay,0)
+		move_delay += CEILING(final_movement_delay, adjust_delay) //Round to the nearest tick.
 
 		glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
-		glide_size = max(glide_size,2)
+		glide_size = max(glide_size,FPS_CLIENT/FPS_SERVER)
 
 		//Handling intercardinal collisions.
 		if(intercardinal)
@@ -103,7 +104,7 @@
 	if(adjust_delay)
 		move_delay = move_delay - adjust_delay
 
-	return FALSE
+	return is_moving
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 

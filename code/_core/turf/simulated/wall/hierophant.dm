@@ -6,3 +6,5 @@
 	icon_state = "wall"
 	corner_icons = TRUE
 	corner_category = "hierophant"
+
+	map_color = "#470068"

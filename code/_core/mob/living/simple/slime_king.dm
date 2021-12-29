@@ -57,7 +57,7 @@
 		DRUGGY = TRUE
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange
@@ -81,10 +81,11 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
+	movement_delay = DECISECONDS_TO_TICKS(6)
+
 	level = 20
 
-/mob/living/simple/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
+/mob/living/simple/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
 	if(!dead && prob(damage_amount))

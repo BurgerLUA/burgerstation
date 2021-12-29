@@ -1,6 +1,7 @@
 /obj/item/container/food/package/junkfood
 	name = "junk food"
 	icon = 'icons/obj/item/consumable/food/processed.dmi'
+	value = 10
 
 /obj/item/container/food/package/junkfood/chips
 	name = "chippy crisps"
@@ -109,7 +110,7 @@
 
 	if(.) update_sprite()
 
-	
+
 /obj/item/container/food/package/junkfood/halloween/create_packaging()
 	var/obj/item/trash/T = ..()
 	T.icon = icon
@@ -147,11 +148,11 @@
 	return ..()
 
 
-/obj/item/container/food/package/junkfood/halloween/sniggers_bar
-	name = "sniggers bar"
-	icon_state = "sniggers_bar"
+/obj/item/container/food/package/junkfood/halloween/candy_bar
+	name = "candy bar"
+	icon_state = "candy_bar"
 
-/obj/item/container/food/package/junkfood/halloween/sniggers_bar/Generate()
+/obj/item/container/food/package/junkfood/halloween/candy_bar/Generate()
 	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
 	reagents.add_reagent(/reagent/nutrition/nut,5)
 	reagents.add_reagent(/reagent/nutrition/sugar/caramel,5)

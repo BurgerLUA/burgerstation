@@ -29,7 +29,8 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Harvest chance per yield.
-	var/growth_speed = 100 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
+	var/growth_speed = 40 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
+// no, it was just high ^
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
@@ -133,9 +134,10 @@
 	SSbotany.all_plants -= src
 	. = ..()
 
-/obj/structure/interactive/plant/proc/on_life()
+/obj/structure/interactive/plant/proc/on_life(var/tick_rate=1) //Measured in game ticks.
+
+	var/rate = TICKS_TO_DECISECONDS(tick_rate)
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
-	var/rate = TICKS_TO_DECISECONDS(SSbotany.tick_rate)
 	var/real_growth_speed = growth_speed * rate * (P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
 
 	if(nutrition >= 10 && hydration >= 10)
@@ -182,14 +184,13 @@
 		if(total_metabolized > 0)
 			reagents.update_container()
 
-	update_sprite()
-
 	//dead plants auto-remove themselves
 	var/health_percent = health.health_current/health.health_max
-	if (health_percent <= 0.01)
+	if(health_percent <= 0.01)
 		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
 		qdel(src)
-
+	else
+		update_sprite()
 
 	return TRUE
 
@@ -259,8 +260,11 @@
 		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
 		var/health_mod  = health.health_current/health.health_max
 
+		var/child_yield = yield_max
+		var/child_potency = potency
+
 		var/local_potency = (potency  + (skill_power * 10)) * health_mod //10 skill gives +1 potency, up to 10 extra at lv.100
-		var/local_yield = (yield_max  + (skill_power * 4)) * health_mod  //25 skill gives +1 yield, up to 4 extra at lv100
+		var/local_yield = (yield_max  + (skill_power * 2)) * health_mod  //50 skill gives +1 yield, up to 2 extra at lv100
 
 		//Guarentee at least 1 for each.
 		local_potency = CEILING(local_potency,1)
@@ -272,12 +276,8 @@
 			P.plant_type = associated_plant.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
-			P.name = associated_plant.name
-			P.desc = associated_plant.desc
-			P.icon = associated_plant.harvest_icon
-			P.icon_state = associated_plant.harvest_icon_state
-			P.potency = CEILING(local_potency,1)
-			P.yield_max = CEILING(local_yield,1)
+			P.potency =  child_potency //associated_plant.potency //CEILING(local_potency,1)
+			P.yield_max = child_yield //CEILING(local_yield,1)
 			P.yield_percent = CEILING(yield_percent,1)
 			P.growth_speed = growth_speed
 			INITIALIZE(P)

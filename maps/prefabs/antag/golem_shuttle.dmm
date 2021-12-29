@@ -45,13 +45,13 @@
 /turf/simulated/floor/tile/shuttle/purple,
 /area/dmm_suite/clear_area)
 "m" = (
-/obj/structure/interactive/vending/mining,
+/obj/structure/interactive/vending/mining/golem,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/dmm_suite/clear_area)
 "n" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle,
 /area/dmm_suite/clear_area)
@@ -61,8 +61,8 @@
 /area/dmm_suite/clear_area)
 "p" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 8
+	dir = 8;
+	icon_state = "preview"
 	},
 /obj/structure/smooth/table/rack/grey,
 /obj/item/weapon/melee/tool/pickaxe,
@@ -87,15 +87,15 @@
 /area/dmm_suite/clear_area)
 "u" = (
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle/purple,
 /area/dmm_suite/clear_area)
 "v" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle/purple,
 /area/dmm_suite/clear_area)
@@ -106,8 +106,8 @@
 "x" = (
 /obj/structure/smooth/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle/purple,
 /area/dmm_suite/clear_area)
@@ -176,6 +176,10 @@
 /area/dmm_suite/clear_area)
 "J" = (
 /obj/marker/lobby,
+/turf/simulated/floor/tile/shuttle,
+/area/dmm_suite/clear_area)
+"K" = (
+/obj/marker/objective_spawn,
 /turf/simulated/floor/tile/shuttle,
 /area/dmm_suite/clear_area)
 
@@ -434,7 +438,7 @@ a
 b
 k
 H
-j
+K
 H
 k
 b

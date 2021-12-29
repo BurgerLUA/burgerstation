@@ -7,6 +7,7 @@
 	screen_loc = "CENTER,CENTER"
 
 	plane = PLANE_HUD_OBJ
+	layer = -100
 
 /obj/hud/button/floor_object/Destroy()
 	if(associated_object)

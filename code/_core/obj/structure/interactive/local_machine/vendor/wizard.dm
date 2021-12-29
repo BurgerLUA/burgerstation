@@ -17,10 +17,15 @@
 		/obj/item/weapon/ranged/spellgem/f50cal,
 		/obj/item/weapon/ranged/spellgem/fireball,
 		/obj/item/weapon/ranged/spellgem/oozey,
+		/obj/item/weapon/ranged/spellgem/tesla,
 		/obj/item/weapon/ranged/wand/quartz,
 		/obj/item/weapon/melee/torch/lantern,
 		/obj/item/weapon/ranged/magic/spellblade/runesword,
-		/obj/item/weapon/melee/shield/heartstone
+		/obj/item/weapon/melee/shield/heartstone,
+		/obj/item/soulgem/uncommon/filled,
+		/obj/item/soulgem/rare,
+		/obj/item/soulgem/mystic,
+
 	)
 
 	accepts_item = /obj/item/currency/magic_token

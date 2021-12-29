@@ -26,7 +26,7 @@
 	new /obj/item/container/medicine/ointment(src)
 	new /obj/item/storage/pillbottle/dylovene_small(src)
 	new /obj/item/container/syringe/epinephrine(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/kit/brute
@@ -43,7 +43,7 @@
 	new /obj/item/container/medicine/patch/brute(src)
 	new /obj/item/container/medicine/patch/brute(src)
 	new /obj/item/container/medicine/patch/brute(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/kit/burn
 	name = "burn first aid kit"
@@ -59,7 +59,7 @@
 	new /obj/item/container/medicine/patch/burn(src)
 	new /obj/item/container/medicine/patch/burn(src)
 	new /obj/item/container/medicine/patch/burn(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/kit/toxin
 	name = "toxin first aid kit"
@@ -75,10 +75,7 @@
 	new /obj/item/container/beaker/bottle/antihol(src)
 	new /obj/item/container/beaker/bottle/charcoal(src)
 	new /obj/item/container/beaker/bottle/epinephrine(src)
-	return ..()
-
-
-
+	. = ..()
 
 /obj/item/storage/kit/syndicate
 	name = "combat medikit"
@@ -95,7 +92,7 @@
 	new /obj/item/container/syringe/epinephrine(src)
 	new /obj/item/container/syringe/epinephrine(src)
 	new /obj/item/analyzer/health(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/kit/ai3
 	name = "AI-3"
@@ -121,7 +118,7 @@
 	new /obj/item/container/syringe/medipen/dexaline(src)
 	new /obj/item/container/syringe/medipen/iron(src)
 	new /obj/item/container/syringe/medipen/epinephrine(src)
-	return ..()
+	. = ..()
 
 
 /obj/item/storage/kit/advanced
@@ -139,4 +136,4 @@
 	new /obj/item/storage/pillbottle/omnizine(src)
 	new /obj/item/storage/pillbottle/iron(src)
 	new /obj/item/analyzer/health(src)
-	return ..()
+	. = ..()

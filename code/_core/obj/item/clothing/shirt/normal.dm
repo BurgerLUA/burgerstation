@@ -39,9 +39,6 @@
 	)
 
 /obj/item/clothing/shirt/normal/uniform/nanotrasen
-	name = "nanotrasen uniformed shirt"
-	desc = "It's hip to be square"
-	desc_extended = "The shirt of choice for people who hate Casual Fridays."
 	polymorphs = list(
 		"shirt" = COLOR_NANOTRASEN,
 		"shoulders" = COLOR_WHITE
@@ -57,63 +54,47 @@
 	)
 
 /obj/item/clothing/shirt/normal/uniform/botanty
-	name = "botany uniformed shirt"
-	desc = "Blue and green."
-	desc_extended = "The shirt of choice for botanists."
 	polymorphs = list(
 		"shirt" = COLOR_BLUE,
 		"shoulders" = COLOR_GREEN
 	)
 
 /obj/item/clothing/shirt/normal/uniform/janitor
-	name = "janitor uniformed shirt"
-	desc = "Purple and grey."
-	desc_extended = "The shirt of choice for janitor."
 	polymorphs = list(
 		"shirt" = COLOR_GREY,
 		"shoulders" = COLOR_JANITOR
 	)
 
-
 /obj/item/clothing/shirt/normal/uniform/chemistry
-	name = "chemistry uniformed shirt"
-	desc = "Orange and white."
-	desc_extended = "The shirt of choice for botanists."
 	polymorphs = list(
 		"shirt" = COLOR_WHITE,
 		"shoulders" = COLOR_CHEMISTRY
 	)
 
 /obj/item/clothing/shirt/normal/uniform/red_soccer
-	name = "red soccer shirt"
 	polymorphs = list(
 		"shirt_tee" = COLOR_RED,
 		"shoulders" = COLOR_WHITE
 	)
 
 /obj/item/clothing/shirt/normal/uniform/blue_soccer
-	name = "blue soccer shirt"
 	polymorphs = list(
 		"shirt_tee" = COLOR_BLUE,
 		"shoulders" = COLOR_BLACK
 	)
 
 /obj/item/clothing/shirt/normal/uniform/ref_soccer
-	name = "soccer ref shirt"
 	polymorphs = list(
 		"shirt_tee" = COLOR_YELLOW,
 	)
 
 
-/obj/item/clothing/shirt/normal/security
-	name = "security shirt"
-	desc = "HALT HALT HALT"
-	desc_extended = "A shirt identifying security members to the rest of the station, so they might promptly run away"
+/obj/item/clothing/shirt/normal/recruit
 	polymorphs = list(
-		"shirt" = COLOR_SECURITY_LIGHT,
+		"shirt" = COLOR_RECRUIT_LIGHT,
 	)
 
-/obj/item/clothing/shirt/normal/security/ancient
+/obj/item/clothing/shirt/normal/ancient_security
 	name = "ancient security shirt"
 	desc = "Redshirts!"
 	desc_extended = "An old outdated variant of the security shirt."

@@ -1,17 +1,21 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat
 	name = "12g Combat Shotgun"
-	desc = "Reliable, cheap, and strong."
+	desc = "Reliable and strong"
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
 	icon_state = "inventory"
 
-	value = 1200
+	tier = 3
+
+	value = 2800
 
 	shoot_delay = 4
 
+	damage_mod = 1.5
+
 	automatic = FALSE
 
-	bullet_count_max = 8
+	bullet_count_max = 12
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -54,10 +58,10 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-
-
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
+
+	pump_delay = 4
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread()
 	return 0.002
@@ -69,22 +73,20 @@
 	return 0.1
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
-	name = "12 gauge modified combat shotgun"
-	desc = "A very robust combat shotgun. This one has been modified to be have a pistol grip and be shorter."
+	name = "12g Combat Shotgun MOD"
+	desc = "A very robust combat shotgun. This one has been modified to be shorter."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/combat_mod.dmi'
 	icon_state = "inventory"
-	value = 800
-
-	shoot_delay = 2
 
 	automatic = FALSE
 
-	bullet_count_max = 6
+	bullet_count_max = 4
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 
+	weight = 8
 	size = SIZE_3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread()

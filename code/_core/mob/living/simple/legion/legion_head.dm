@@ -43,22 +43,19 @@
 
 	soul_size = null
 
-	level = 2
+	level = 4
+
+	delete_on_death = TRUE
 
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 
 /mob/living/simple/legionare_head/Destroy()
-
+	. = ..()
 	if(parent_legion)
 		parent_legion.tracked_heads -= src
 		parent_legion = null
 
-	return ..()
-
-/mob/living/simple/legionare_head/post_death()
-	qdel(src)
-	return ..()
 
 /mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
 
@@ -75,6 +72,6 @@
 	GENERATE(L)
 	FINALIZE(L)
 
-	qdel(src)
+	death(TRUE)
 
 	return TRUE

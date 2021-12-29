@@ -25,7 +25,16 @@ SUBSYSTEM_DEF(soapstone)
 	data_to_write["color"] = desired_color
 	save_soapstone.quick_write(data_to_write)
 
-	var/obj/structure/interactive/soapstone_message/SM = new (desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
+	var/obj/structure/interactive/soapstone_message/SM = new (desired_loc)
 	INITIALIZE(SM)
+	SM.set_dir(desired_dir)
+	SM.color = desired_color
+	SM.owner = desired_owner
+	SM.ckey = desired_ckey
+	SM.soapstone_text = desired_text
+	SM.date = desired_date
+	SM.time = desired_time
+	if(SM.color == "#000000")
+		SM.icon_state = "death"
 	FINALIZE(SM)
 	return SM

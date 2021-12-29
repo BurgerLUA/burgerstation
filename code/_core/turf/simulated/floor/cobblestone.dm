@@ -10,6 +10,8 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
 
+	map_color = COLOR_GREY
+
 /turf/simulated/floor/cobblestone/side
 	icon_state = "cobble_side"
 
@@ -30,6 +32,7 @@
 
 /turf/simulated/floor/brick/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"
+	map_color = color
 	. = ..()
 
 /turf/simulated/floor/brick/grey

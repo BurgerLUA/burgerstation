@@ -28,6 +28,8 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 
 	soul_size = SOUL_SIZE_COMMON
 
+	level = 2
+
 /mob/living/simple/cat/post_move(var/atom/old_loc)
 
 	var/old_sitting = sitting
@@ -40,7 +42,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	if(sitting != old_sitting)
 		update_sprite()
 
-	return ..()
+	. = ..()
 
 /mob/living/simple/cat/update_icon()
 

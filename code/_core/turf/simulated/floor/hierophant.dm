@@ -17,3 +17,5 @@
 	desired_light_power = 0.5
 	desired_light_range = 8
 	desired_light_color = "#FF00DC"
+
+	map_color = COLOR_PURPLE

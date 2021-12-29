@@ -1,12 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/yarygin
 	name = "\improper modified 9x19mm MP-443"
 	desc = "Korobochka, horoni rebyat."
-	desc_extended = "Russian-produced semiautomatic 9x19 pistol, a service weapon of the Russian army, special forces and other defense and law enforcement agencies. Comes with internal modification which allows it to shoot quick bursts of two bullets, similarly to AN-94."
+	desc_extended = "Russian-produced semiautomatic 9x19 pistol, a service weapon of the Russian army, special forces and other defense and law enforcement agencies."
 	icon = 'icons/obj/item/weapons/ranged/pistol/yarygin.dmi'
 	icon_state = "inventory"
 	value = 200
 
-	shoot_delay = 1.5
+	tier = 2
+
+	shoot_delay = 1
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.5
@@ -16,10 +18,10 @@
 
 	can_wield = FALSE
 
-	automatic = TRUE
+	automatic = FALSE
 
 	size = SIZE_1
-	weight = 3
+	weight = 4
 
 	heat_max = 0.06
 

@@ -10,7 +10,7 @@
 	metabolism_stomach = 0.25
 	experience_per_unit = 2.5
 
-	value = 1.25
+	value = 0.75
 
 	liquid = 0.6
 
@@ -33,7 +33,7 @@
 	metabolism_stomach = 0.25
 	experience_per_unit = 5
 
-	value = 3
+	value = 1.25
 
 	particle_size = 0.4
 
@@ -57,7 +57,7 @@
 	metabolism_stomach = 0.2
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 1
 
 	liquid = 0.75
 
@@ -83,7 +83,7 @@
 	metabolism_stomach = 0.4
 	experience_per_unit = 4
 
-	value = 3
+	value = 1
 
 	liquid = 0.5
 
@@ -111,7 +111,7 @@
 	metabolism_stomach = 0.4
 	experience_per_unit = 4
 
-	value = 3
+	value = 1
 
 	liquid = 0.5
 
@@ -140,7 +140,7 @@
 	metabolism_stomach = 0.25
 	experience_per_unit = 2.5
 
-	value = 1
+	value = 0.5
 
 	particle_size = 0.4
 
@@ -164,7 +164,7 @@
 	metabolism_stomach = 0.2
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 0.75
 
 	liquid = 0.75
 
@@ -190,7 +190,7 @@
 	metabolism_stomach = 0.2
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 0.75
 
 	liquid = 0.75
 
@@ -223,7 +223,7 @@
 
 	value = 1.5
 
-	liquid = 0.75
+	liquid = 0.5
 
 	particle_size = 0.1
 
@@ -246,7 +246,7 @@
 	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 0.75
 
 	liquid = 0.25
 
@@ -276,7 +276,7 @@
 	metabolism_stomach = 0.25
 	experience_per_unit = 2.5
 
-	value = 1.25
+	value = 0.5
 
 	particle_size = 0.2
 
@@ -299,7 +299,7 @@
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.25
 
-	value = 1.5
+	value = 0.5
 
 	particle_size = 0.2
 
@@ -323,7 +323,7 @@
 	metabolism_stomach = 0.25
 	experience_per_unit = 4
 
-	value = 1.5
+	value = 0.75
 
 	particle_size = 0.5
 
@@ -352,7 +352,7 @@
 	metabolism_stomach = 0.25
 	experience_per_unit = 3
 
-	value = 2
+	value = 1
 
 	particle_size = 0.75
 
@@ -410,7 +410,7 @@
 
 	metabolism_skin = 1
 
-	value = 2.5
+	value = 1
 
 	liquid = -0.5
 
@@ -449,7 +449,7 @@
 
 	metabolism_skin = 1
 
-	value = 2
+	value = 1.25
 
 	liquid = -0.5
 
@@ -483,7 +483,7 @@
 	color = "#FFEBEB"
 	flavor = "rotten flesh"
 	metabolism_skin = 1
-	value = 5
+	value = 1.5
 	liquid = -0.5
 	alpha = 255
 
@@ -535,7 +535,7 @@
 	metabolism_stomach = 0.1
 	experience_per_unit = 0
 
-	value = 5
+	value = 2
 
 	liquid = 0.75
 

@@ -61,6 +61,9 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 12 - 16
 
+	tier = 3
+	bypass_balance_check = TRUE
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread()

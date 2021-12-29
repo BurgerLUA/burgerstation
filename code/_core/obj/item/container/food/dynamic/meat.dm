@@ -73,7 +73,8 @@
 			if(!best_fat || amount > best_fat_volume)
 				best_fat = reagent_type
 				best_fat_volume = amount
-		else if(R.flags_reagent & (FLAG_REAGENT_RAW | FLAG_REAGENT_COOKED))
+			continue
+		if(R.flags_reagent & (FLAG_REAGENT_RAW | FLAG_REAGENT_COOKED))
 			total_meat += amount
 			meat_r += GetRedPart(R.color) * amount
 			meat_g += GetGreenPart(R.color) * amount
@@ -87,13 +88,13 @@
 	if(best_fat)
 		var/reagent/RF = REAGENT(best_fat)
 		var/image/fat_image = new/image(initial(icon),"[icon_state]_fat")
-		fat_image.appearance_flags = RESET_COLOR
+		fat_image.appearance_flags = src.appearance_flags | RESET_COLOR
 		fat_image.color = RF ? RF.color : "#FFFFFF"
 		add_overlay(fat_image)
 
 	if(carbon_amount)
 		var/image/carbon_image = new/image(initial(icon),"[icon_state]_marks")
-		carbon_image.appearance_flags = RESET_COLOR
+		carbon_image.appearance_flags = src.appearance_flags | RESET_COLOR
 		carbon_image.alpha = clamp(carbon_amount*55,0,255)
 		add_overlay(carbon_image)
 
@@ -107,7 +108,7 @@
 	return TRUE
 
 
-/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 

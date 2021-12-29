@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
 
+	tier = 1
+
 	value = 800
 
 	shoot_delay = 1.4

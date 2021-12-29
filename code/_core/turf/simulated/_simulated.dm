@@ -45,6 +45,8 @@ var/global/list/blood_turfs = list()
 
 	var/organic = FALSE
 
+	var/map_color = null //The map color. For drawing maps.
+
 /turf/simulated/is_safe_teleport(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)

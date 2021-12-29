@@ -2,6 +2,9 @@
 
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
 	var/checked_weapons = FALSE
+	var/checked_grenades = FALSE
+
+	var/found_grenade = null
 
 	var/obj/item/weapon/objective_weapon
 	var/attack_delay_left
@@ -76,8 +79,18 @@
 	return TRUE
 
 /ai/advanced/proc/handle_gunplay()
-
 	var/mob/living/advanced/A = owner
+
+	if(!checked_grenades)
+		find_grenade()
+
+	if(found_grenade && objective_attack && prob(5))
+		var/turf/T = get_step(A,get_dir(A,objective_attack))
+		if(T.is_safe_teleport(TRUE))
+			if(!handle_grenade(found_grenade))
+				found_grenade = null
+				checked_grenades = FALSE
+			return TRUE
 	if(istype(A.left_item,/obj/item/weapon/ranged/))
 		if(!handle_gun(A.left_item))
 			return FALSE
@@ -86,6 +99,45 @@
 			return FALSE
 
 	return TRUE
+
+/ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)
+
+	if(!G || !is_inventory(G.loc))
+		return FALSE
+
+	var/obj/hud/inventory/I = G.loc
+
+	var/mob/living/advanced/A = owner
+	if(!G.stored_trigger) //Bad grenad, doesn't even work. Drop it.
+		G.drop_item(get_turf(A))
+		return FALSE
+
+	if(G.stored_trigger.active) //Live nade, throw it!
+		var/atom/real_target = objective_attack
+		if(!real_target)
+			var/list/valid_turfs = list()
+			for(var/turf/simulated/floor/F in view(VIEW_RANGE,A))
+				if(get_dist(F,A) <= VIEW_RANGE*0.5)
+					continue
+				valid_turfs += F
+			if(length(valid_turfs))
+				real_target = pick(valid_turfs)
+		if(real_target)
+			var/list/offsets = direction_to_pixel_offset(get_dir(owner,real_target))
+			var/throw_velocity = 10
+			G.drop_item(get_turf(owner))
+			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_iff = owner.iff_tag)
+		next_complex = world.time + 5
+		return FALSE
+	else if(!I.click_flags) //The nade needs to be in our hands.
+		if(!(A.left_item && A.right_item) || src.unequip_weapon(A.left_item) || src.unequip_weapon(A.right_item))
+			A.put_in_hands(G)
+		next_complex = world.time + 10
+		return TRUE
+	else //Time to arm the grenade!
+		G.click_self(A)
+		next_complex = world.time + 20
+		return TRUE
 
 /ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R)
 
@@ -127,16 +179,12 @@
 
 	return TRUE
 
-
-
-
 /ai/advanced/handle_movement()
 
 	if(handle_movement_weapon())
 		return TRUE
 
-	return ..()
-
+	. = ..()
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
@@ -169,6 +217,24 @@
 		A.right_hand.click_on_object(A,target,null,null,params)
 	else if(A.left_hand)
 		A.left_hand.click_on_object(A,target,null,null,params)
+
+	return TRUE
+
+/ai/advanced/proc/is_grenade(var/atom/A)
+	return istype(A,/obj/item/grenade/)
+
+/ai/advanced/proc/find_grenade()
+
+	var/mob/living/advanced/A = owner
+	var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
+	var/obj/item/grenade/G = recursive_find_item(O_groin,src,.proc/is_grenade)
+	if(G)
+		if(debug) log_debug("AI debug: Found a grenade!")
+		found_grenade = G
+	else
+		if(debug) log_debug("AI debug: Did not find a grenade!")
+
+	checked_grenades = TRUE
 
 	return TRUE
 

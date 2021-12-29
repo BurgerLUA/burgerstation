@@ -37,7 +37,8 @@
 		qdel(src)
 	else
 		reward = new reward(src)
-		reward.quality = 200
+		if(!istype(reward,/obj/item/currency))
+			reward.quality = 200
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)
@@ -54,7 +55,12 @@
 
 /obj/item/contract/Finalize()
 	. = ..()
-	update_value()
+	if(!reward)
+		log_error("Warnng: [src.get_debug_name()] had an invalid reward!")
+		qdel(src)
+	else
+		update_value()
+	update_sprite()
 
 /obj/item/contract/get_value()
 	return CEILING(reward.get_value()*0.25,1)
@@ -62,9 +68,9 @@
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
 	. = ..()
 	if(burgerbux_reward)
-		. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]) and Burgerbux(x[burgerbux_reward]).")
+		. += div("notice","Reward on completion: [reward.name] and [burgerbux_reward] Burgerbux.")
 	else
-		. += div("notice","Reward on completion: [reward.name](x[reward.item_count_current]).")
+		. += div("notice","Reward on completion: [reward.name].")
 	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
@@ -99,12 +105,14 @@
 
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
+	var/turf/T = get_turf(P)
 	if(burgerbux_reward)
-		P.to_chat(span("notice","You are awared \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
+		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
 		P.adjust_burgerbux(burgerbux_reward)
 	else
-		P.to_chat(span("notice","You are awared \the [reward.name] for completing the contract."))
-	drop_item(get_turf(P))
+		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
+	src.drop_item(T)
+	reward.drop_item(T)
 	P.put_in_hands(reward)
 	reward = null //Just in case.
 	amount_current = 0 //Just in case.

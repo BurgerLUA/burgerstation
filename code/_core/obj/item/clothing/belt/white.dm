@@ -34,3 +34,13 @@
 
 /obj/item/clothing/belt/storage/colored/merc_alt
 	color = "#97805C"
+
+/obj/item/clothing/belt/storage/colored/recruit
+	color = COLOR_RECRUIT_DARK
+	value_burgerbux = 1
+
+/obj/item/clothing/belt/storage/colored/recruit/fill_inventory()
+	for(var/i=1,i<=dynamic_inventory_count-1,i++)
+		new /obj/item/magazine/rifle_46(src)
+	new /obj/item/weapon/melee/energy/grazer(src)
+	. = ..()

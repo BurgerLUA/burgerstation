@@ -64,8 +64,8 @@
 /loadout/zombie/security
 
 	spawning_items = list(
-		/obj/item/clothing/pants/normal/security/ancient,
-		/obj/item/clothing/shirt/normal/security/ancient,
+		/obj/item/clothing/pants/normal/ancient_security,
+		/obj/item/clothing/shirt/normal/ancient_security,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/armor/bulletproof,
@@ -270,7 +270,7 @@
 		/obj/item/clothing/feet/shoes/colored/black,
 		/obj/item/clothing/feet/shoes/colored/black/left,
 		/obj/item/clothing/neck/tie/red,
-		/obj/item/clothing/pants/normal/security,
+		/obj/item/clothing/pants/normal,
 		/obj/item/clothing/shirt/normal
 	)
 
@@ -292,7 +292,7 @@
 	spawning_items = list(
 		/obj/item/clothing/feet/shoes/colored/black,
 		/obj/item/clothing/feet/shoes/colored/black/left,
-		/obj/item/clothing/pants/normal/security,
+		/obj/item/clothing/pants/normal,
 		/obj/item/clothing/shirt/normal,
 		/obj/item/clothing/overwear/coat/apron/chef
 	)

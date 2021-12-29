@@ -6,13 +6,15 @@
 	icon_state = "inventory"
 	value = 2300
 
-	shoot_delay = 1.9
+	tier = 3
+
+	shoot_delay = 1.5
 
 	firemodes = list("burst","automatic","semi-automatic")
 
 	automatic = TRUE
 
-	damage_mod = 1
+	damage_mod = 1.1
 
 	shoot_sounds = list('sound/weapons/russia/val.ogg')
 

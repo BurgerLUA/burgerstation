@@ -53,7 +53,7 @@
 
 /mob/living/proc/check_death()
 
-	if(!health)
+	if(!health || immortal)
 		return FALSE
 
 	var/health_added = 0
@@ -68,7 +68,7 @@
 
 	return FALSE
 
-/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
@@ -77,11 +77,11 @@
 	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
 	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
-	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*0.30 : FALSE
+	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
 
 	if(savage_hit)
 		total_bleed_damage *= 3
-		src.on_savage_hit(atom_damaged,attacker,weapon,damage_table,damage_amount,critical_hit_multiplier,stealthy)
+		src.on_savage_hit(atom_damaged,attacker,weapon,DT,damage_table,damage_amount,critical_hit_multiplier,stealthy)
 		if(!src.dead)
 			src.visible_message(span("warning","\The [src.name] takes a savage hit!"),span("danger","You take a savage hit!"))
 
@@ -113,7 +113,7 @@
 			queue_health_update = TRUE
 
 	if(ai)
-		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
+		ai.on_damage_received(atom_damaged,attacker,weapon,DT,damage_table,damage_amount,stealthy)
 
 	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
@@ -175,7 +175,7 @@
 	return TRUE
 
 
-/mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/best_attribute = null
 	var/best_damage = 0

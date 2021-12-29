@@ -3,7 +3,7 @@
 	desc = "What the fuck is this?"
 	var/label
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND //NEVER EVER USE KEEP_TOGETHER.
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
@@ -104,19 +104,7 @@
 
 	all_listeners -= src
 
-	return ..()
-
-/atom/PostInitialize()
-
-	if(health)
-		health = new health(src)
-		INITIALIZE(health)
-		FINALIZE(health)
-
-	update_atom_light()
-
-	return ..()
-
+	. = ..()
 
 /atom/proc/get_base_transform()
 	return matrix()
@@ -129,11 +117,17 @@
 	if(listener)
 		all_listeners |= src
 
+	if(health)
+		health = new health(src)
+		INITIALIZE(health)
+		FINALIZE(health)
+
 	. = ..()
 
 /atom/Finalize()
 	. = ..()
 	update_name(name) //Setup labels
+	update_atom_light()
 
 /atom/New()
 

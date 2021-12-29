@@ -6,6 +6,8 @@
 
 	health_base = 2000
 
+	level = 14
+
 /mob/living/advanced/npc/unique/daddy/setup_name()
 	name = "\improper THE LEGEND (SL 99)"
 	return TRUE

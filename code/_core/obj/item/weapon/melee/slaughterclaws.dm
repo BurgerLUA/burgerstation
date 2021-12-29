@@ -4,8 +4,8 @@
 	desc = "HELL IS EMPTY, BLOOD IS FUEL!"
 	desc_extended = "Use Harm intent to rip your enemies a new one! Use disarm intent to punch from afar! Click on a turf on grab intent to bloodcrawl! Then replenish your blood by Helping a corpse!"
 	var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks
-	icon = 'icons/obj/item/weapons/unarmed/powerfist.dmi' //TO DO: beg for a sprite
-	damage_type = /damagetype/unarmed/slaughter //TO DO: add heavy attack (curse you stalkeros)
+	icon = 'icons/obj/item/weapons/unarmed/slaughterclaws.dmi' //thx Nzzy!
+	damage_type = /damagetype/unarmed/slaughter
 	var/damage_type_harm = /damagetype/unarmed/slaughter_heavy
 	size = SIZE_2
 	weight = 10
@@ -36,7 +36,7 @@
 		update_sprite()
 
 	if(self.intent == INTENT_GRAB && isturf(T) && next_teleport_command <= world.time)
-		if(A.flags_area & FLAGS_AREA_NO_TELEPORT) //thing you can do: trap yourself, it's funny...
+		if(!T.is_safe_teleport()||A.flags_area & FLAGS_AREA_NO_TELEPORT) //Alright, that's it. No more water-walking!
 			caller.to_chat(span("danger","Can't bloodcrawl there!"))
 			return TRUE
 		if (target_distance > 10)

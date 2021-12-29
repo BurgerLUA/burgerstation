@@ -14,6 +14,10 @@
 
 	color = COLOR_WOOD
 
+/turf/simulated/wall/wood/New(var/desired_loc)
+	. = ..()
+	map_color = color
+
 /turf/simulated/wall/wood/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)
@@ -46,3 +50,9 @@
 	color = "#724C34"
 	desc = "A wall made of wood"
 	desc_extended = "It's a wall, made of wood, something made it. This one is part of a boat."
+
+/turf/simulated/wall/wood/rev //for the rev base, more HP
+	color = "#724C34"
+	desc = "A wall made of wood"
+	desc_extended = "It's a wall, made of wood, something made it, prolly' the russians. Maybe not."
+	health_base = 2000

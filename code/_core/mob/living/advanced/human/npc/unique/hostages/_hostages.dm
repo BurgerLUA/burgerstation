@@ -2,6 +2,7 @@
 	ai = /ai/advanced/hostage
 	health_base = 200 //Extra health so the escort mission isn't fucking hell.
 	var/hostage = TRUE
+	level = 4
 
 /mob/living/advanced/npc/unique/hostage/Initialize()
 	. = ..()

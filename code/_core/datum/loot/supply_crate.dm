@@ -95,7 +95,10 @@
 		/loot/weapon/shotgun/wood = 1,
 		/loot/weapon/shotgun/dbarrel = 1,
 		/loot/weapon/shotgun/tribarrel = 1,
-		/loot/weapon/smg/tactical = 1
+		/loot/weapon/smg/tactical = 1,
+		/loot/weapon/rifle/moar = 1,
+		/loot/weapon/rifle/sol_burst = 1,
+		/loot/weapon/rifle/sniper_20 = 1
 	)
 
 /loot/supply_crate/syndicate

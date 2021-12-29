@@ -13,6 +13,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/colored/ash/rocky,
 /area/dmm_suite/clear_area)
+"e" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/colored/ash/rocky,
+/area/dmm_suite/clear_area)
 "y" = (
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/colored/ash/rocky,
@@ -542,7 +546,7 @@ b
 b
 b
 b
-b
+e
 c
 d
 b

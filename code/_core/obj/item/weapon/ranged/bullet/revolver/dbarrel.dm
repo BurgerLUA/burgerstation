@@ -6,7 +6,10 @@
 	icon_state = "inventory"
 	value = 400
 
-	shoot_delay = 1
+	tier = 1
+
+	damage_mod = 0.9
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -28,8 +31,6 @@
 	bullet_diameter_max = 19
 
 	heat_max = 0.1
-
-
 
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0

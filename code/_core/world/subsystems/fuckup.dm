@@ -12,7 +12,9 @@ SUBSYSTEM_DEF(fuckup)
 		FU = new k
 		all_fuckups += FU
 
-	log_subsystem(name,"Initialized [length(SSfootstep.all_footsteps)] footstep types.")
+	log_subsystem(name,"Initialized [length(all_fuckups)] fucks.")
+
+	. = ..()
 
 /subsystem/fuckup/proc/apply_fuckup(var/fuckup/FU)
 

@@ -127,9 +127,6 @@
 /turf/simulated/floor/tile/morphing/engineering
 	color = COLOR_ENGINEERING
 
-/turf/simulated/floor/tile/morphing/security
-	color = COLOR_SECURITY
-
 /turf/simulated/floor/tile/morphing/janitor
 	color = COLOR_JANITOR
 

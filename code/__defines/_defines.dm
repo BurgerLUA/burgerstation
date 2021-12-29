@@ -75,3 +75,5 @@
 	"8" = "bind_8",\
 	"9" = "bind_9"\
 )
+
+#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.

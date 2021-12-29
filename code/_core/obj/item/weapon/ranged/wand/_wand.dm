@@ -16,6 +16,8 @@
 
 	use_loyalty_tag = TRUE
 
+	bypass_balance_check = TRUE
+
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)
 	. = ..()

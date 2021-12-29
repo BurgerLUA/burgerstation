@@ -278,14 +278,14 @@
 
 	return TRUE
 
-/obj/item/pinpointer/artifact/
+/obj/item/pinpointer/objective/
 	name = "objectives pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of your objectives, only works when in the field."
 	icon_state = "yellow"
 
 	value = 20
 
-/obj/item/pinpointer/artifact/click_self(var/mob/caller)
+/obj/item/pinpointer/objective/click_self(var/mob/caller)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
