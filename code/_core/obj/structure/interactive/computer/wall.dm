@@ -21,7 +21,7 @@ obj/structure/interactive/computer/wall/update_overlays()
 	. = ..()
 
 	if(computer_type && on)
-		var/image/I2 = new/icon(initial(icon),computer_type)
+		var/image/I2 = new/image(initial(icon),computer_type)
 		I2.plane = PLANE_LIGHTING
 		add_overlay(I2)
 
@@ -30,11 +30,6 @@ obj/structure/interactive/computer/wall/update_overlays()
 		var/image/I3 = new/image(initial(icon),keyboard_type)
 		I3.plane = PLANE_LIGHTING
 		add_overlay(I3)
-
-
-
-
-
 
 obj/structure/interactive/computer/wall/dorms
 	name = "dorms computer"
