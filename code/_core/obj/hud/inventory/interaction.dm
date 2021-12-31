@@ -10,9 +10,12 @@
 			return TRUE
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
-		if(is_item(object) && is_inventory(object.loc))
+		if(is_item(object))
 			var/obj/item/I = object
-			if(!I.is_container)
+			if(istype(I.loc,/obj/item/plate))
+				src.add_object(I)
+				return TRUE
+			if(is_inventory(I.loc) && !I.is_container)
 				toggle_wield(caller,object)
 				return TRUE
 		if(is_organ(src.loc) && isturf(object.loc) && get_dist(caller,object) <= 1)
@@ -22,6 +25,9 @@
 			else
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
+
+	if(istype(object.loc,/obj/item/plate))
+		return src.click_on_object(caller,object.loc,location,control,params)
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
 		var/atom/movable/M = object
@@ -70,8 +76,8 @@
 			var/obj/item/I = parent_inventory.get_top_object()
 			unwield(caller,I)
 			return TRUE
-		if(is_item(object))
-			var/obj/item/I = object
+		if(is_item(top_object))
+			var/obj/item/I = top_object
 			if(I.no_drop)
 				caller.to_chat(span("warning","You can't drop this!"))
 				return TRUE
@@ -82,7 +88,7 @@
 			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
-		if(desired_turf && istype(object,/obj/structure/table) && get_dist(caller_turf,desired_turf) <= 1)
+		if(desired_turf && (istype(object,/obj/structure/table) || istype(object,/obj/item/plate)) && get_dist(caller_turf,desired_turf) <= 1)
 			drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 		else
 			drop_item_from_inventory(get_turf(src))
