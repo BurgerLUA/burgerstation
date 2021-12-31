@@ -1,12 +1,13 @@
 /obj/item/plate
 	name = "plate"
 	desc = "Dinner is served."
-	desc_extended = "A basic plate meant for holding food."
+	desc_extended = "A basic plate meant for holding food. Holds up to 4 items of size 2 or lower. Hold CTRL and click to remove items from the plate."
 	icon = 'icons/obj/item/plate.dmi'
 	icon_state = "plate"
 	mouse_opacity = 2
 	layer = -1000
-	size = SIZE_10
+	size = SIZE_3
+	value = 10
 
 /obj/item/plate/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
@@ -23,9 +24,10 @@
 
 	. = ..()
 
-	if(O.loc == src.loc && is_item(O))
+	if(O.loc == src.loc && is_item(O) && !istype(O,/obj/item/plate) && length(contents) < 4)
 		var/obj/item/I = O
-		I.drop_item(src)
+		if(I.size <= SIZE_2)
+			I.drop_item(src)
 
 /obj/item/plate/Entered(var/atom/movable/enterer,var/atom/oldloc)
 	. = ..()
