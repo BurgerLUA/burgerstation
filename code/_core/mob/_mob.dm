@@ -277,7 +277,6 @@
 
 /mob/Finalize()
 	. = ..()
-	update_parallax()
 	update_z_position()
 
 /mob/New(var/desired_loc,var/client/C)

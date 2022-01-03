@@ -1,28 +1,32 @@
 /turf/simulated/floor/road
 	name = "road"
 	icon = 'icons/turf/floor/road.dmi'
-	icon_state = "1"
+	icon_state = "0,0"
 
 	footstep = /footstep/concrete
 
 	map_color = COLOR_GREY_DARK
 
 /turf/simulated/floor/road/New(var/desired_loc)
-	icon_state = "[rand(1,6)]"
+	icon_state = "[x % 10],[y % 10]"
 	. = ..()
 
 /turf/simulated/floor/sidewalk
 	name = "sidewalk"
 	icon = 'icons/turf/floor/sidewalk.dmi'
-	icon_state = "1"
+	icon_state = "0,0"
 
 	footstep = /footstep/concrete
 
 	map_color = COLOR_GREY
 
 /turf/simulated/floor/sidewalk/New(var/desired_loc)
-	icon_state = "[rand(1,6)]"
+	icon_state = "[x % 10],[y % 10]"
 	. = ..()
+
+/turf/simulated/floor/sidewalk/Finalize()
+	. = ..()
+	update_sprite()
 
 /turf/simulated/floor/sidewalk/update_overlays()
 

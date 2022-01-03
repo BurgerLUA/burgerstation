@@ -2007,9 +2007,8 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "hp" = (
-/obj/structure/carpet/red,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
+/turf/simulated/floor/carpet,
+/area/burgerstation/cafe)
 "hq" = (
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
 	dir = 1
@@ -2025,14 +2024,6 @@
 "hs" = (
 /obj/structure/interactive/bed/sheet,
 /turf/simulated/floor/tile/morphing/cryo,
-/area/burgerstation/cryo)
-"ht" = (
-/obj/structure/carpet/blue,
-/turf/simulated/floor/tile,
-/area/burgerstation/cryo)
-"hu" = (
-/obj/structure/carpet/brown,
-/turf/simulated/floor/tile,
 /area/burgerstation/cryo)
 "hw" = (
 /obj/structure/interactive/disposals/pipe/junction/sorting/flipped{
@@ -2969,24 +2960,6 @@
 "mM" = (
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/cafe)
-"mP" = (
-/turf/simulated/floor/stair/ztravel{
-	dir = 1;
-	icon_state = "stair_left"
-	},
-/area/burgerstation/cafe)
-"mQ" = (
-/turf/simulated/floor/stair/ztravel{
-	dir = 1;
-	icon_state = "stair_middle"
-	},
-/area/burgerstation/cafe)
-"mR" = (
-/turf/simulated/floor/stair/ztravel{
-	dir = 1;
-	icon_state = "stair_right"
-	},
-/area/burgerstation/cafe)
 "mS" = (
 /obj/marker/failsafe,
 /turf/simulated/floor/tile{
@@ -3058,24 +3031,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
-/area/burgerstation/cafe)
-"nh" = (
-/turf/simulated/floor/stair{
-	dir = 1;
-	icon_state = "stair_left"
-	},
-/area/burgerstation/cafe)
-"ni" = (
-/turf/simulated/floor/stair{
-	dir = 1;
-	icon_state = "stair_middle"
-	},
-/area/burgerstation/cafe)
-"nj" = (
-/turf/simulated/floor/stair{
-	dir = 1;
-	icon_state = "stair_right"
-	},
 /area/burgerstation/cafe)
 "nk" = (
 /obj/marker/spawning/window,
@@ -39286,8 +39241,8 @@ eZ
 eZ
 lV
 mu
-mP
-nh
+hp
+hp
 mM
 mp
 mM
@@ -39543,8 +39498,8 @@ fa
 fd
 ff
 mu
-mQ
-ni
+hp
+hp
 mp
 mM
 mp
@@ -39800,8 +39755,8 @@ fb
 fe
 fn
 mu
-mR
-nj
+hp
+hp
 mM
 mp
 uO
@@ -41606,9 +41561,9 @@ lE
 kZ
 ov
 oP
-ht
-ht
-ht
+ph
+ph
+ph
 ph
 ph
 ph
@@ -41863,7 +41818,7 @@ lE
 kZ
 ov
 oQ
-ht
+ph
 ph
 ph
 qp
@@ -42377,9 +42332,9 @@ lE
 nY
 ox
 oS
-hu
-hu
-hu
+ph
+ph
+ph
 ph
 ph
 ph
@@ -42634,9 +42589,9 @@ lE
 nY
 ox
 oS
-hu
-hu
-hu
+ph
+ph
+ph
 qq
 qU
 ph
@@ -42891,9 +42846,9 @@ lE
 nY
 ox
 oS
-hu
-hu
-hu
+ph
+ph
+ph
 ph
 ph
 ph
@@ -43405,8 +43360,8 @@ lE
 kZ
 ov
 oU
-hp
-hp
+ph
+ph
 ph
 ph
 ph
@@ -43662,8 +43617,8 @@ lE
 kZ
 ov
 oV
-hp
-hp
+ph
+ph
 ph
 qp
 ph

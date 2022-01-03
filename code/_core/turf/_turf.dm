@@ -41,6 +41,8 @@
 
 	var/friction = TRUE //True or false. Can't really do decimals 0 to 1, yet.
 
+	var/parallax_icon = 'icons/obj/effects/parallax.dmi'
+
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
 
@@ -134,6 +136,19 @@
 		return FALSE
 
 	return !is_space()
+
+
+/turf/proc/post_move(var/mob/M,var/atom/old_loc)
+
+	if(M.ckey_last)
+		for(var/k in M.parallax)
+			var/obj/parallax/P = M.parallax[k]
+			P.icon = parallax_icon
+			var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
+			var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
+			P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
+
+	return TRUE
 
 /turf/New(loc)
 

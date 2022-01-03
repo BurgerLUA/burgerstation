@@ -100,7 +100,7 @@
 	var/assistance = 1
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them.
-	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage the NPC will flee at.
+	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage (0.00 to 1.00) the NPC will flee at.
 
 	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner.
 
