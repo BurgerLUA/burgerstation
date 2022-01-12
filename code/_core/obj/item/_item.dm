@@ -472,6 +472,9 @@ var/global/list/rarity_to_mul = list(
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 
+	if(contraband)
+		. += div("bad bold","CONTRABAND")
+
 	if(quality <= 0)
 		. += div("rarity bad","<b>Quality</b>: BROKEN")
 	else if(quality >= 200)

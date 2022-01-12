@@ -79,8 +79,12 @@
 	. = list()
 
 	if(contraband)
-		P.adjust_currency(src.get_value(),silent=TRUE)
-		qdel(src) //Prevents any possible exploits.
+		if(P)
+			var/value_to_give = FLOOR(src.get_value()*0.5,1)
+			if(value_to_give > 0)
+				P.to_chat(span("notice","Due to \the [src.name] being contraband, it cannot be stored. You were given [value_to_give] credits as compensation."))
+				P.adjust_currency(value_to_give,silent=TRUE)
+			qdel(src) //Prevents any possible exploits.
 		return
 
 	if(!should_save)
@@ -104,8 +108,6 @@
 		.["inventories"] = new/list(length(inventories))
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/hud/inventory/IN = inventories[i]
-			if(died && !IN.worn)
-				continue
 			var/list/inventory_data = list()
 			try
 				inventory_data = IN.save_inventory_data(save_inventory)
@@ -235,9 +237,23 @@
 
 	for(var/i=1,i<=content_length,i++)
 		var/obj/item/I = contents[i]
-		if(istype(I) && I.can_save)
-			.[i] = I.save_item_data(P,save_inventory,died)
-		else
-			log_error("Tried saving invalid object in an inventory, [I ? I.get_debug_name() : "NULL"].")
+
+		if(died && !I.save_on_death)
+			continue
+
+		if(!istype(I))
+			log_error("Tried saving invalid item ([I ? I : "NULL"]) in an inventory!")
 			.[i] = list()
+			continue
+
+		if(!I.can_save)
+			.[i] = list()
+			continue
+
+		.[i] = I.save_item_data(P,save_inventory,died)
+
+
+
+
+
 

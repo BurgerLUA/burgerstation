@@ -31,6 +31,8 @@
 
 	uses_until_condition_fall = 150
 
+	save_on_death = TRUE
+
 
 
 /obj/item/clothing/feet/socks/ankle

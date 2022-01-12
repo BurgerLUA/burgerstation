@@ -22,7 +22,6 @@
 	var/noise = 0
 
 	var/instances = 4
-
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
 		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
 		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
