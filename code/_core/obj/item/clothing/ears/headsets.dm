@@ -30,7 +30,7 @@
 /obj/item/clothing/ears/headset/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
 
-/obj/item/clothing/ears/headset/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/clothing/ears/headset/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_radio")
 

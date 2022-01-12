@@ -20,7 +20,7 @@
 		. += div("notice","It currently holding [stored_tape.name] inside.")
 	. += div("notice","It is currently [playing ? "playing" : "not playing"].")
 
-/obj/item/cassette_player/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/cassette_player/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_tape")
 
@@ -148,7 +148,7 @@
 		stored_track = pick(SStrack.all_tracks)
 		icon_state = "tape_blue"
 
-/obj/item/cassette_tape/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/cassette_tape/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("stored_track")
 

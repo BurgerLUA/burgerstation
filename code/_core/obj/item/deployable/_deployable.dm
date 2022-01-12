@@ -162,7 +162,7 @@
 			TD.set_iff_tag(C.iff_tag)
 
 
-/obj/item/deployable/mob/sentry/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/deployable/mob/sentry/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_battery")
 	SAVEATOM("stored_magazine")

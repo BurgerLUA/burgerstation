@@ -48,14 +48,6 @@
 	starting_marker = pick(possible_horde_spawnpoints)
 	ending_marker = pick(horde_spawnpoints - starting_marker)
 
-	var/biome/B = SSbiome.chosen_biome
-	chosen_horde_type = pickweight(B.horde_weights)
-	if(!chosen_horde_type)
-		return FALSE
-	enemy_types_to_spawn = B.horde_types[chosen_horde_type]
-	if(!length(enemy_types_to_spawn))
-		return FALSE
-
 	var/spawn_amount = 2 + min(6,CEILING(length(all_players)*0.1,1))
 
 	var/turf/T1 = get_turf(starting_marker)

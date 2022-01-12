@@ -17,7 +17,7 @@
 	. = ..()
 	update_inventory()
 
-/obj/item/weapon/melee/crystal/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/weapon/melee/crystal/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("shape")
 

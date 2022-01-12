@@ -20,7 +20,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 	value = 20
 
-/obj/item/device/signaller/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/device/signaller/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("frequency_current")
 	SAVEVAR("signal_current")

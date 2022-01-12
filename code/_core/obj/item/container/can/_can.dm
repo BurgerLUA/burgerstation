@@ -131,7 +131,7 @@
 			explosive = FALSE
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("explosive")
 

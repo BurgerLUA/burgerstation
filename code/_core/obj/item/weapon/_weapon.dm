@@ -107,7 +107,7 @@
 	update_sprite()
 	return ..()
 
-/obj/item/weapon/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 	if(enchantment)

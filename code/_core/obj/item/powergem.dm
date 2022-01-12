@@ -14,7 +14,7 @@
 
 	value_burgerbux = 1 //Not in rotation, yet.
 
-/obj/item/powergem/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/powergem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("rarity")
 	SAVEVAR("icon_state")

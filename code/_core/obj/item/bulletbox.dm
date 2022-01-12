@@ -33,7 +33,7 @@
 	if(stored_bullet)
 		. += div("notice","It stores [stored_bullet.name] ([bullet_count]/[bullet_max] capacity).")
 
-/obj/item/bulletbox/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("stored_bullet")
 	SAVEVAR("bullet_count")

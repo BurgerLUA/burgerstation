@@ -32,7 +32,7 @@
 
 	. = ..()
 
-/obj/item/material/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/material/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("material_id")
 

@@ -17,7 +17,7 @@
 	QDEL_NULL(rcd_disk)
 	. = ..()
 
-/obj/item/rcd/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/rcd/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("rcd_disk")
 	SAVEVAR("matter_current")

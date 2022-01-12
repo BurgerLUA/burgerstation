@@ -158,8 +158,8 @@ client/verb/air_test(var/pressure as num)
 	var/found_tiles = 0
 	var/error_tiles = 0
 	var/icon/I = new/icon('icons/map_template.dmi',"map_template")
-	for(var/x=1,x<=255,x++)
-		for(var/y=1,y<=255,y++)
+	for(var/x=1,x<=world.maxx,x++)
+		for(var/y=1,y<=world.maxy,y++)
 			var/turf/simulated/S = locate(x,y,src.mob.z)
 			var/found_color = S.color
 			if(!found_color)

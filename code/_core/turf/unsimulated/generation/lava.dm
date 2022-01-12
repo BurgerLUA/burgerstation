@@ -45,9 +45,8 @@ var/global/list/possible_lavaland_fauna = list(
 		return ..()
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
+		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
 
 		var/seed_resolution = WORLD_SIZE * 0.5
 		var/x_seed = used_x / seed_resolution
@@ -148,8 +147,8 @@ var/global/list/possible_lavaland_fauna = list(
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
 
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
+		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
 
 		var/seed_resolution = WORLD_SIZE * 0.5
 		var/x_seed = used_x / seed_resolution

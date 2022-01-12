@@ -13,9 +13,9 @@
 	QDEL_NULL(stored_magazine)
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
-	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
+	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(P,save_inventory,died)
 
 /obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
 	return stored_magazine

@@ -32,7 +32,7 @@
 	. += CEILING(charge_current*0.01,1)
 	. += CEILING(charge_max*0.003,1)
 
-/obj/item/powercell/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charge_current")
 

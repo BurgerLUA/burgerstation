@@ -39,6 +39,7 @@ obj/structure/scenery/bush/snow/New()
 	. = ..()
 	pixel_x += rand(-3,3)
 	pixel_y += rand(-1,2)
+	layer = world.maxy - y
 
 /obj/structure/interactive/tree/pine
 	name = "pine tree"

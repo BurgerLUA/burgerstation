@@ -74,9 +74,14 @@
 
 	return I
 
-/obj/item/proc/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
+
+	if(contraband)
+		P.adjust_currency(src.get_value(),silent=TRUE)
+		qdel(src) //Prevents any possible exploits.
+		return
 
 	if(!should_save)
 		return
@@ -103,7 +108,7 @@
 				continue
 			var/list/inventory_data = list()
 			try
-				inventory_data = IN.get_inventory_data(save_inventory)
+				inventory_data = IN.save_inventory_data(save_inventory)
 			catch(var/exception/e)
 				log_error("Failed to save inventory data of [src.get_debug_name()]. Some information may be lost.")
 				log_error("Save Error: [e] on [e.file]:[e.line]\n[e.desc]!")
@@ -130,7 +135,7 @@
 		.["luck"] = luck
 
 
-/obj/item/organ/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/organ/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
 	. = ..()
 
@@ -163,7 +168,7 @@
 	if(object_data["inventories"])
 		for(var/i=1,i<=length(object_data["inventories"]),i++)
 			var/obj/hud/inventory/I = inventories[i]
-			I.set_inventory_data(P,object_data["inventories"][i])
+			I.load_inventory_data(P,object_data["inventories"][i])
 	if(object_data["soul_bound"])
 		soul_bound = object_data["soul_bound"]
 	if(object_data["item_count_current"])
@@ -190,7 +195,7 @@
 		reagents.update_container()
 	return TRUE
 
-/obj/hud/inventory/proc/set_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
+/obj/hud/inventory/proc/load_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
 
 	if(!inventory_data)
 		log_error("Warning: [src.get_debug_name()] in [P.get_debug_name()] had no inventory data!")
@@ -222,7 +227,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/get_inventory_data(var/save_inventory=TRUE) //Getting the inventory and their contents for saving.
+/obj/hud/inventory/proc/save_inventory_data(var/mob/living/advanced/player/P,var/save_inventory=TRUE,var/died=FALSE) //Getting the inventory and their contents for saving.
 
 	var/content_length = length(contents)
 
@@ -231,7 +236,7 @@
 	for(var/i=1,i<=content_length,i++)
 		var/obj/item/I = contents[i]
 		if(istype(I) && I.can_save)
-			.[i] = I.save_item_data(save_inventory)
+			.[i] = I.save_item_data(P,save_inventory,died)
 		else
 			log_error("Tried saving invalid object in an inventory, [I ? I.get_debug_name() : "NULL"].")
 			.[i] = list()

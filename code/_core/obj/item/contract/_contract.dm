@@ -74,7 +74,7 @@
 	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
-/obj/item/contract/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("reward")
 	SAVEVAR("amount_current")

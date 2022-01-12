@@ -17,7 +17,7 @@
 	. = ..()
 	. += div("notice","This object holds up to [max_load] items that are size [max_size] or lower.")
 
-/obj/item/plate/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/plate/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["contents"] = list()
 	for(var/obj/item/I in contents)

@@ -15,9 +15,6 @@
 /atom/proc/update_underlays()
 	return TRUE
 
-/obj/proc/initialize_blends()
-	return TRUE
-
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
 	if(length(overlays) >= 100)

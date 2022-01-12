@@ -17,7 +17,7 @@
 
 	health_base = 10
 
-/obj/item/cross/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/cross/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("broken")
 

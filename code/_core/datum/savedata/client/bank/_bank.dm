@@ -12,7 +12,7 @@ var/global/list/ckey_to_bank_storage = list()
 		if(!BS)
 			//No need to save since it's been unchanged.
 			continue
-		D.loaded_data = BS.save_item_data(TRUE)
+		D.loaded_data = BS.save_item_data(null)
 		D.save()
 		banks_saved++
 

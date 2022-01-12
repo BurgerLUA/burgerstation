@@ -75,7 +75,7 @@
 
 	return TRUE
 
-/obj/item/grenade/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("open")
 	SAVEVAR("spent")
@@ -85,17 +85,17 @@
 	LOADVAR("open")
 	LOADVAR("spent")
 
-/obj/item/grenade/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
 	. = ..()
 
-	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
+	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(P,save_inventory,died)
 
 	if(length(stored_containers))
 		.["stored_containers"] = list()
 		for(var/k in stored_containers)
 			var/obj/item/container/simple/beaker/B = k
-			.["stored_containers"] += list(B.save_item_data(save_inventory))
+			.["stored_containers"] += list(B.save_item_data(P,save_inventory,died))
 
 
 /obj/item/grenade/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)

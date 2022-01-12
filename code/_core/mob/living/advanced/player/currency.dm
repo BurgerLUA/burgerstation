@@ -1,11 +1,11 @@
-/mob/living/advanced/player/proc/adjust_currency(var/currency_to_add,var/tax=FALSE)
+/mob/living/advanced/player/proc/adjust_currency(var/currency_to_add,var/tax=FALSE,var/silent=FALSE)
 	if(!currency_to_add)
 		return FALSE
 	var/old_currency = currency
 	currency = clamp(currency + currency_to_add,0,999999999)
 	var/difference = currency - old_currency
 	for(var/obj/hud/button/cash_money/B in src.buttons)
-		B.update_stats(currency)
+		B.update_stats(currency,silent=silent)
 
 	if(!tax)
 		if(difference > 0)
@@ -22,7 +22,7 @@
 
 
 
-/mob/living/advanced/player/proc/adjust_burgerbux(var/currency_to_add)
+/mob/living/advanced/player/proc/adjust_burgerbux(var/currency_to_add,var/silent=FALSE)
 	if(!currency_to_add)
 		return FALSE
 	if(!client)
@@ -34,7 +34,7 @@
 	GD.loaded_data["burgerbux"] = max(GD.loaded_data["burgerbux"] + currency_to_add,0)
 	var/difference = GD.loaded_data["burgerbux"] - old_currency
 	for(var/obj/hud/button/microstransactions/B in src.buttons)
-		B.update_stats(GD.loaded_data["burgerbux"])
+		B.update_stats(GD.loaded_data["burgerbux"],silent=silent)
 
 	return difference
 

@@ -29,7 +29,7 @@
 
 	value = 0
 
-/obj/item/container/edible/plant/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/container/edible/plant/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 
 	SAVEPATH("plant_type")

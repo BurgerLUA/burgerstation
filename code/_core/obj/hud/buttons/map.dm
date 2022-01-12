@@ -1,12 +1,16 @@
 /obj/hud/button/map
 	name = "map"
-	screen_loc = "CENTER:-255,CENTER:-255"
+	screen_loc = "CENTER,CENTER"
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
 	user_colors = FALSE
 
 	mouse_opacity = 2
+
+/obj/hud/button/map/New(var/desired_loc)
+	screen_loc = "CENTER:-[world.maxx],CENTER:-[world.maxy]"
+	. = ..()
 
 /obj/hud/button/map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()

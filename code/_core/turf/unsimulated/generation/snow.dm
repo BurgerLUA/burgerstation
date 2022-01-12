@@ -24,9 +24,8 @@
 	var/instances = 4
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
+		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
 
 		var/seed_resolution = WORLD_SIZE * 0.5
 		var/x_seed = used_x / seed_resolution
@@ -46,7 +45,7 @@
 		if(0.1 to 0.4)
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(4))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
 			else if(prob(2))
 				new /obj/marker/generation/plant/oxygen_fruit(src)
 		if(0.4 to 0.41)
@@ -60,9 +59,9 @@
 			if(prob(1))
 				new /obj/marker/generation/plant/nitrogen_flower(src)
 			else if(prob(1))
-				new /obj/marker/generation/snow_tree(src)
+				new /obj/marker/generation/foliage/tree/snow(src)
 			else if(prob(6))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
 			else if(prob(0.2))
 				new /obj/marker/generation/mob/snow_bear(src)
 		if(0.94 to 0.95)
@@ -91,9 +90,8 @@
 	var/instances = 4
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
+		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
 
 		var/seed_resolution = WORLD_SIZE * 0.5
 		var/x_seed = used_x / seed_resolution
@@ -113,7 +111,7 @@
 		if(0.1 to 0.4)
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(4))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
 			else if(prob(2))
 				new /obj/marker/generation/plant/oxygen_fruit(src)
 		if(0.4 to 0.41)
@@ -127,7 +125,7 @@
 			if(prob(1))
 				new /obj/marker/generation/plant/nitrogen_flower(src)
 			else if(prob(6))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
 			else if(prob(0.2))
 				new /obj/marker/generation/mob/snow_bear(src)
 		if(0.94 to 0.95)

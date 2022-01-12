@@ -28,9 +28,8 @@ SUBSYSTEM_DEF(smoothing)
 	return TRUE
 
 /subsystem/smoothing/proc/process_edges()
-
 	for(var/k in queued_smoothing)
-		sleep(-1)
+		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 		queued_smoothing -= k
 		var/atom/A = k
 		A.update_sprite()

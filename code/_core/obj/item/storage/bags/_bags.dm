@@ -173,7 +173,7 @@
 	value = 20
 
 
-/obj/item/storage/pillbottle/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
@@ -369,7 +369,7 @@
 	if(goods && hoard > 0)
 		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")

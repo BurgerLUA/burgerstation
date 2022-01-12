@@ -19,7 +19,7 @@
 
 	var/max_arrows = 200
 
-/obj/item/clothing/belt/belt_quiver/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/clothing/belt/belt_quiver/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["stored_arrows"] = list()
 	for(var/k in stored_arrows)

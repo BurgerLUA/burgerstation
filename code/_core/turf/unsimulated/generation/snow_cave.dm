@@ -1,6 +1,6 @@
 /turf/unsimulated/generation/snow_cave
 	name = "snow cave generation"
-	icon_state = "caves"
+	icon_state = "snow_caves"
 
 /turf/unsimulated/generation/snow_cave/generate(var/size = WORLD_SIZE)
 
@@ -12,9 +12,8 @@
 	var/instances = 2
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
+		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
 
 		var/seed_resolution = WORLD_SIZE * 0.5
 		var/x_seed = used_x / seed_resolution
@@ -31,8 +30,8 @@
 	switch(noise)
 		if(-INFINITY to 0.2)
 			new /turf/simulated/floor/colored/snow(src)
-			if(prob(1)) new /obj/marker/generation/snow_grass(src)
-			if(prob(1)) new /obj/marker/generation/snow_tree(src)
+			if(prob(1)) new /obj/marker/generation/foliage/grass/snow(src)
+			if(prob(1)) new /obj/marker/generation/foliage/tree/snow(src)
 		if(0.2 to 0.3)
 			new /turf/simulated/wall/rock/snow(src)
 			if(prob(1)) new /obj/marker/generation/snow_wall(src)
@@ -59,7 +58,7 @@
 
 
 /turf/unsimulated/generation/snow_cave/path
-	icon_state = "caves_path"
+	icon_state = "snow_caves_path"
 
 /turf/unsimulated/generation/snow_cave/path/generate(var/size = WORLD_SIZE)
 

@@ -6,6 +6,8 @@
 
 	var/value_burgerbux
 
+	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
+
 	var/can_rename = FALSE //Can you rename this item?
 
 	var/last_marker //The last person to name this item. Used for moderation purposes.

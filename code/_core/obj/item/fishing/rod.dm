@@ -47,7 +47,7 @@
 
 
 
-/obj/item/fishing/rod/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/fishing/rod/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("lure")
 	SAVEATOM("line")
@@ -306,7 +306,7 @@
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
 	return TRUE
 
-/obj/item/fishing/rod/telescopic/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/fishing/rod/telescopic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("compact")
 

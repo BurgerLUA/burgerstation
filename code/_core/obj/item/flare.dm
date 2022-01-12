@@ -22,7 +22,7 @@
 	QDEL_NULL(stored_cap)
 	. = ..()
 
-/obj/item/flare/save_item_data(var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/flare/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_cap")
 	SAVEVAR("ignited")

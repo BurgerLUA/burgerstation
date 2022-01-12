@@ -18,9 +18,8 @@
 	var/instances = 3
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
+		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
 
 		var/seed_resolution = WORLD_SIZE * 0.5
 		var/x_seed = used_x / seed_resolution
@@ -38,15 +37,15 @@
 	var/place_ground = TRUE
 	if(noise <= 40)
 		if(!path_only && prob(10))
-			new /obj/marker/generation/forest_tree(src)
+			new /obj/marker/generation/foliage/tree(src)
 			place_grass = FALSE
 			if(prob(40))
 				new /obj/marker/generation/forest_dirt(src)
 				place_ground = FALSE
 		else if(!path_only && prob(2))
 			var/list/valid_bushes = list(
-				/obj/marker/generation/bushes/leafy,
-				/obj/marker/generation/bushes/stalk
+				/obj/marker/generation/foliage/bushes/leafy,
+				/obj/marker/generation/foliage/bushes/stalk
 			)
 			var/atom/chosen_bush = pick(valid_bushes)
 			new chosen_bush(src)
@@ -64,7 +63,7 @@
 				place_grass = FALSE
 	else
 		if(!path_only && prob(1))
-			new /obj/marker/generation/forest_tree(src)
+			new /obj/marker/generation/foliage/tree(src)
 			place_grass = FALSE
 			if(prob(1))
 				new /obj/marker/generation/forest_dirt(src)
@@ -81,9 +80,9 @@
 			if(prob(1))
 				new /obj/marker/generation/mob/mouse/brown(src)
 			var/list/valid_bushes = list(
-				/obj/marker/generation/bushes/generic,
-				/obj/marker/generation/bushes/grass,
-				/obj/marker/generation/bushes/sun
+				/obj/marker/generation/foliage/bushes/generic,
+				/obj/marker/generation/foliage/bushes/grass,
+				/obj/marker/generation/foliage/bushes/sun
 			)
 			var/atom/chosen_bush = pick(valid_bushes)
 			new chosen_bush(src)
@@ -91,13 +90,13 @@
 
 	if(place_grass)
 		if(prob(2))
-			new /obj/marker/generation/flowers(src)
+			new /obj/marker/generation/foliage/flowers(src)
 			if(prob(1))
 				new /obj/marker/generation/mob/bee(src)
 		if(prob(2))
-			new /obj/marker/generation/lavender(src)
+			new /obj/marker/generation/foliage/flowers/lavender(src)
 		else if(prob(10))
-			new /obj/marker/generation/forest_grass(src)
+			new /obj/marker/generation/foliage/grass(src)
 			if(prob(1))
 				if(prob(10))
 					new /mob/living/simple/bull(src)
