@@ -7,6 +7,8 @@
 	var/value_burgerbux
 
 	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
+	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning.
+
 
 	var/can_rename = FALSE //Can you rename this item?
 
@@ -419,8 +421,6 @@ var/global/list/rarity_to_mul = list(
 			inventories[i].item_whitelist = container_whitelist
 		if(container_temperature)
 			inventories[i].inventory_temperature_mod = container_temperature
-		if(container_temperature_mod)
-			inventories[i].inventory_temperature_mod_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new dynamic_inventory_type(src)
@@ -438,8 +438,6 @@ var/global/list/rarity_to_mul = list(
 			D.item_whitelist = container_whitelist
 		if(container_temperature)
 			D.inventory_temperature_mod = container_temperature
-		if(container_temperature_mod)
-			D.inventory_temperature_mod_mod = container_temperature_mod
 		inventories += D
 
 	. = ..()

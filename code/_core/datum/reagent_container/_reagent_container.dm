@@ -25,6 +25,8 @@
 
 	var/allow_recipe_processing = TRUE
 
+	var/temperature_change_mul = 1 //The multiplier for temperature change.
+
 /reagent_container/Destroy()
 	owner = null
 	SSreagent.all_temperature_reagent_containers -= src
@@ -98,13 +100,8 @@
 
 	update_container()
 
-/reagent_container/proc/process_temperature()
 
-	if(!owner)
-		return FALSE
-
-	if(!volume_current)
-		return FALSE
+/reagent_container/proc/get_desired_temperature()
 
 	var/turf/simulated/T
 	if(is_simulated(owner.loc))
@@ -114,13 +111,22 @@
 	if(T && T.loc)
 		A = T.loc
 
-	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
-	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
+	. = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
-		desired_temperature += I.inventory_temperature_mod
-		desired_temperature_mod *= I.inventory_temperature_mod_mod
+		. += I.inventory_temperature_mod
+
+
+/reagent_container/proc/process_temperature()
+
+	if(!owner)
+		return FALSE
+
+	if(!volume_current)
+		return FALSE
+
+	var/desired_temperature = get_desired_temperature()
 
 	if(desired_temperature == average_temperature)
 		return TRUE
@@ -134,7 +140,10 @@
 
 	var/temperature_diff = desired_temperature - average_temperature
 
-	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-0.01,0.01) //The clamp at the end ensures that the temperature will always increase/decrease.
+	var/temperature_change = temperature_change_mul * ((temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-0.01,0.01)) //The clamp at the end ensures that the temperature will always increase/decrease.
+
+	if(!temperature_change)
+		return TRUE
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
@@ -148,15 +157,19 @@
 		var/reagent/R = REAGENT(r_id)
 		var/volume = stored_reagents[r_id]
 		stored_reagents_temperature[r_id] = average_temperature
-		if(R.heated_reagent && R.heated_reagent_temp < average_temperature)
+		if(isnum(R.heated_reagent_temp) && R.heated_reagent_temp < average_temperature)
 			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
 			var/amount_to_remove = CEILING(min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume),REAGENT_ROUNDING)
-			add_reagent(R.heated_reagent,remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE),should_update = FALSE, check_recipes = FALSE)
+			var/removed_amount = remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE)
+			if(R.heated_reagent)
+				add_reagent(R.heated_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
-		else if(R.cooled_reagent && R.cooled_reagent_temp > average_temperature)
+		else if(isnum(R.cooled_reagent_temp) && R.cooled_reagent_temp > average_temperature)
 			var/temperature_cool_mod = (R.cooled_reagent_temp/max(0.1,average_temperature)) ** 2
 			var/amount_to_remove = CEILING(min(R.cooled_reagent_amount + (volume * R.cooled_reagent_mul * temperature_cool_mod),volume),REAGENT_ROUNDING)
-			add_reagent(R.cooled_reagent,remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE),should_update = FALSE, check_recipes = FALSE)
+			var/removed_amount = remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE)
+			if(R.cooled_reagent)
+				add_reagent(R.cooled_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
 
 	if(.)

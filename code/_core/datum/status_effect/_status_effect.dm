@@ -251,18 +251,29 @@
 	owner.stamina_regen_delay = max(owner.stamina_regen_delay,owner.is_player_controlled() ? SECONDS_TO_DECISECONDS(4) : SECONDS_TO_DECISECONDS(10))
 	return ..()
 
-/status_effect/energized
+/status_effect/adrenaline
 	name = "Adrenaline"
 	desc = "You're filled with adrenaline!"
 	id = ADRENALINE
 	minimum = 100 // 10 seconds
 	maximum = 3 * 60 * 10 //5 minutes.
 
-/status_effect/energized/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/adrenaline/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	if(owner.health) owner.health.update_health(check_death=FALSE)
 	owner.remove_status_effect(STAMCRIT)
 	owner.stamina_regen_delay = 0
+
+/status_effect/undying
+	name = "Undying"
+	desc = "You refuse to die!"
+	id = UNDYING
+	minimum = 10 //1 mecond.
+	maximum = 60 * 10 //1 minute.
+
+/status_effect/undying/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(owner.health) owner.health.update_health(check_death=FALSE)
 
 /status_effect/resting
 	name = "Resting"

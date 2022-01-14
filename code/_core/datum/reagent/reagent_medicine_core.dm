@@ -557,3 +557,36 @@
 	owner.tox_regen_buffer += 1*.
 	owner.add_nutrition_quality(30*.)
 	owner.add_nutrition(4*.)
+
+
+/reagent/medicine/inaprovaline
+	name = "Inaprovaline"
+	desc = "A common stabilizer synthesised from basic elements and compounds. Only works when injected. Has a high overdose threshold."
+	color = "#C291FF"
+	alpha = 200
+	flavor = "sour metal"
+	metabolism_stomach = 5/60 // Lasts a minute per 5u
+	metabolism_blood = 10/60 // Lasts a minute per 10u
+
+	experience_per_unit = 0.5
+
+	overdose_threshold = 50
+
+	var/strength = 200
+
+/reagent/medicine/inaprovaline/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+/reagent/medicine/inaprovaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(L.get_status_effect_magnitude(UNDYING) <= strength)
+		L.add_status_effect(UNDYING,strength,-1)
+
+/reagent/medicine/inaprovaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
+
+	. = ..()
+
+	if(L.get_status_effect_magnitude(UNDYING) <= strength)
+		L.remove_status_effect(UNDYING)

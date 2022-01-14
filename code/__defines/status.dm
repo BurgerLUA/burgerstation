@@ -93,3 +93,5 @@
 #define BLIGHTED "blighted"
 
 #define ZOMBIE "zombie"
+
+#define UNDYING "undying"

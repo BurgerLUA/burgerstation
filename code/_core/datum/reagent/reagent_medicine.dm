@@ -26,7 +26,7 @@
 
 /reagent/medicine/adrenaline
 	name = "adrenaline"
-	desc = "Pure adrenaline. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, as well as a speed bonus."
+	desc = "Increases heartrate."
 	color = "#880000"
 	alpha = 225
 	flavor = "pure speed"
@@ -39,6 +39,8 @@
 	value = 1
 
 	particle_size = 0.5
+
+	overdose_threshold = 20
 
 /reagent/medicine/adrenaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -56,7 +58,7 @@
 
 /reagent/medicine/adrenaline/epinephrine
 	name = "epinephrine"
-	desc = "Used for stabilizing dying patients. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, and also regulating oxyloss."
+	desc = "Used for reviving dying patients."
 	desc_extended = ""
 	color = "#FFFFFF"
 	alpha = 225

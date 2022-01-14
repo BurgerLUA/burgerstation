@@ -4,67 +4,6 @@
 	plane = PLANE_OBJ
 	pixel_y = 0
 
-/obj/structure/interactive/vending/smart_fridge/chemistry
-	name = "chemistry smart fridge"
-	stored_types = list()
-
-	var/list/chemicals_to_make = list(
-		/reagent/fuel/acetone,
-		/reagent/aluminium,
-		/reagent/ammonia,
-		/reagent/carbon,
-		/reagent/chlorine,
-		/reagent/copper,
-		/reagent/nutrition/sugar/glucose,
-		/reagent/iron,
-		/reagent/drug/lithium,
-		/reagent/toxin/mercury,
-		/reagent/nitrogen,
-		/reagent/oxygen,
-		/reagent/phenol,
-		/reagent/potassium,
-		/reagent/silicon,
-		/reagent/silver,
-		/reagent/sodium,
-		/reagent/salt/sodium_chloride,
-		/reagent/sulfur,
-		/reagent/acid/sulphuric
-	)
-
-/obj/structure/interactive/vending/smart_fridge/chemistry/PostInitialize()
-
-	. = ..()
-
-	var/turf/T = get_turf(src)
-
-	for(var/k in chemicals_to_make)
-		var/reagent/R = REAGENT(k)
-		if(!R) continue
-		var/obj/item/container/simple/beaker/B = new(T)
-		INITIALIZE(B)
-		GENERATE(B)
-		B.reagents.add_reagent(R.type,B.reagents.volume_max - B.reagents.volume_current)
-		B.name = "beaker of [R.name]"
-		FINALIZE(B)
-
-
-/obj/structure/interactive/vending/smart_fridge/chemistry/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
-
-	. = ..()
-
-
-	if(. && associated_item.reagents && length(associated_item.reagents.stored_reagents))
-		var/obj/item/I2 = .
-		for(var/r_id in associated_item.reagents.stored_reagents)
-			var/amount = associated_item.reagents.stored_reagents[r_id]
-			I2.reagents.add_reagent(r_id,amount,should_update = FALSE)
-		I2.reagents.update_container()
-
-
-/obj/structure/interactive/vending/smart_fridge/chemistry/Finalize()
-	. = ..()
-	sortTim(stored_objects, /proc/cmp_name_dsc)
-
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"
 	stored_types = list(

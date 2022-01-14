@@ -30,7 +30,7 @@
 
 	required_reagents = list(
 		/reagent/fuel/hydrogen = 1,
-		/reagent/oxygen = 1
+		/reagent/fuel/oxygen = 1
 	)
 
 	results = list(

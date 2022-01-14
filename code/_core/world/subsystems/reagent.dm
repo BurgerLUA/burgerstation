@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(reagent)
 			if(!R.has_temperature_recipe && (length(RR.required_temperature_min) || length(RR.required_temperature_max)))
 				R.has_temperature_recipe = TRUE
 
-	sortTim(all_reagent_recipes,/proc/cmp_recipe_name_asc,associative=TRUE)
+	sortTim(all_reagent_recipes,/proc/cmp_recipe_name_asc,associative=TRUE) //Its okay to sort by name since this list is only used for the book that gets generated.
 
 	log_subsystem(name,"Initialized [length(all_reagent_recipes)] reagent recipes.")
 

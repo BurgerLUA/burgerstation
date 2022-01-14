@@ -57,11 +57,8 @@
 		return FALSE
 
 	var/health_added = 0
-	if(has_status_effect(ADRENALINE))
-		health_added = get_status_effect_magnitude(ADRENALINE)
-
-	var/trait/death_check/DC = get_trait_by_category(/trait/death_check)
-	if(DC) health_added += DC.extra_health
+	if(has_status_effect(UNDYING))
+		health_added += get_status_effect_magnitude(UNDYING)
 
 	if((health.health_current + health_added) <= death_threshold)
 		return TRUE

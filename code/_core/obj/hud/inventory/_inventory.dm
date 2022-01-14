@@ -32,7 +32,6 @@
 	var/priority = 0 //The priority level of the inventory. Item transfer favors inventories with higher values.
 
 	var/inventory_temperature_mod = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature.
-	var/inventory_temperature_mod_mod = 0.5 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower. Zero means don't change from inventory.
 
 	var/list/obj/item/item_blacklist = list() //Items that can't go in this invetory.
 	var/list/obj/item/item_whitelist = list() //Items that can only go in this inventory.

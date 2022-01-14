@@ -146,7 +146,7 @@
 	icon_state = "oxygen_fruit"
 
 /obj/item/container/edible/plant/oxygen_fruit/Generate()
-	reagents.add_reagent(/reagent/oxygen,10)
+	reagents.add_reagent(/reagent/fuel/oxygen,10)
 	return ..()
 
 /obj/item/container/edible/plant/wheat

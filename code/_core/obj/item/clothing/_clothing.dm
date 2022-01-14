@@ -15,8 +15,6 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
-	var/save_on_death = FALSE
-
 	var/list/defense_rating = list()
 
 	/*

@@ -116,6 +116,19 @@
 
 	weight = 10
 
+/obj/item/powercell/tiny
+	name = "AA power cell"
+	desc = "Do not swallow."
+	desc_extended = "A tiny battery used commonly to power small devices."
+	icon_state = "cell_tiny"
+	charge_max = CELL_SIZE_TINY
+
+	size = SIZE_0
+
+	value = 10
+
+	weight = 1
+
 
 /obj/item/powercell/recharging
 	name = "fusion power cell"

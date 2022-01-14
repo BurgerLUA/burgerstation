@@ -40,7 +40,7 @@
 
 /obj/item/container/simple/beaker/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/weapon/melee))
+	if(allow_reagent_transfer_to && istype(object,/obj/item/weapon/melee))
 		var/obj/item/weapon/melee/M = object
 		if(!M.reagents)
 			caller.to_chat(span("warning","\The [M.name] cannot be coated!"))
@@ -60,26 +60,28 @@
 
 /obj/item/container/simple/beaker/click_self(var/mob/caller,location,control,params)
 
-	INTERACT_CHECK
-	INTERACT_DELAY(1)
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
-		var/choice = input("How much do you want to transfer at once?","Min: 0.5 Max: [reagents.volume_max]") as null|num
+	if(allow_reagent_transfer_to || allow_reagent_transfer_from)
 		INTERACT_CHECK
-		if(choice)
-			transfer_amount = clamp(choice,0.5,reagents.volume_max)
-			caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
+		INTERACT_DELAY(1)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
+			var/choice = input("How much do you want to transfer at once?","Min: 0.5 Max: [reagents.volume_max]") as null|num
+			INTERACT_CHECK
+			if(choice)
+				transfer_amount = clamp(choice,0.5,reagents.volume_max)
+				caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
 			return TRUE
-		else return TRUE
 
-	var/initial_amount = initial(transfer_amount)
+		var/initial_amount = initial(transfer_amount)
 
-	transfer_amount += initial_amount
-	if(transfer_amount > reagents.volume_max)
-		transfer_amount = initial_amount
+		transfer_amount += initial_amount
+		if(transfer_amount > reagents.volume_max)
+			transfer_amount = initial_amount
 
-	caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
+		caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
 
-	return TRUE
+		return TRUE
+
+	. = ..()
 
 /obj/item/container/simple/beaker/update_underlays()
 	. = ..()
