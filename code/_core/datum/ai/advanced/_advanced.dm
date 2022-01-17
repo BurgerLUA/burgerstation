@@ -213,10 +213,12 @@
 		"alt" = 0
 	)
 
-	if(left_click)
-		A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.click_on_object(A,target,null,null,params)
-	else
-		A.inventories_by_id[BODY_HAND_LEFT_HELD]?.click_on_object(A,target,null,null,params)
+	if(left_click && A.inventories_by_id[BODY_HAND_RIGHT_HELD])
+		A.inventories_by_id[BODY_HAND_RIGHT_HELD].click_on_object(A,target,null,null,params)
+	else if (A.inventories_by_id[BODY_HAND_LEFT_HELD])
+		A.inventories_by_id[BODY_HAND_LEFT_HELD].click_on_object(A,target,null,null,params)
+	else if (A.labeled_organs[BODY_HEAD])
+		A.labeled_organs[BODY_HEAD].attack(A,target,params)
 
 	return TRUE
 

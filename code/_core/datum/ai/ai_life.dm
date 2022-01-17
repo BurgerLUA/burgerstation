@@ -72,6 +72,9 @@
 				set_path_astar(objective_move)
 		else
 			var/result = handle_movement()
+			if(result && owner.has_status_effect(REST))
+				owner.remove_status_effect(REST)
+
 			if(result && frustration_move >= frustration_move_threshold)
 				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
 

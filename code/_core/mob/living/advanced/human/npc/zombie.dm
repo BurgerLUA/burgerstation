@@ -20,16 +20,29 @@
 	stamina_base = 100
 	mana_base = 100
 
-	death_threshold = -100
-
 	sex = NEUTER
 	gender = NEUTER
 
 	damage_received_multiplier = 0.75
 
+	var/rest_chance = 25
+	var/missing_limb_chance = 10
+
 /mob/living/advanced/npc/zombie/Initialize()
 
 	. = ..()
+
+	if(prob(missing_limb_chance))
+		var/turf/T = get_turf(src)
+		switch(rand(1,2))
+			if(1)
+				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
+				if(O) O.unattach_from_parent(T,TRUE)
+			if(2)
+				var/obj/item/organ/O1 = labeled_organs[BODY_LEG_RIGHT]
+				var/obj/item/organ/O2 = labeled_organs[BODY_LEG_LEFT]
+				if(O1) O1.unattach_from_parent(T,TRUE)
+				if(O2) O2.unattach_from_parent(T,TRUE)
 
 	setup_appearance()
 	update_all_blends()
@@ -64,7 +77,9 @@
 
 /mob/living/advanced/npc/zombie/Finalize()
 	. = ..()
-	add_status_effect(ZOMBIE,100,-1)
+	add_status_effect(ZOMBIE,100,-1, force = TRUE)
+	if(prob(rest_chance))
+		add_status_effect(REST,-1,-2, force = TRUE)
 
 /mob/living/advanced/npc/zombie/get_movement_delay()
 

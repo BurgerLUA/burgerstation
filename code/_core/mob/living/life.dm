@@ -251,10 +251,12 @@
 		var/matrix/M = .
 		M.Turn(stun_angle)
 
+/mob/living/proc/should_be_horizontal()
+	return dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
+
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
-
+	var/desired_horizontal = should_be_horizontal()
 	if(desired_horizontal != horizontal)
 		horizontal = desired_horizontal
 		if(horizontal)
@@ -265,7 +267,6 @@
 			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
 		update_plane()
-
 
 	return desired_horizontal
 

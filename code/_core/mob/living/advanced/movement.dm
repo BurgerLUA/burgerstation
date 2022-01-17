@@ -157,6 +157,8 @@ mob/living/advanced/get_movement_delay()
 					var/obj/item/clothing/C = blood_items[k]
 					if(!C) //Give the organ a bloodstain instead.
 						var/obj/item/organ/ORG = src.labeled_organs[k]
+						if(!ORG)
+							continue
 						if(ORG.blood_stain_intensity < S.blood_level)
 							ORG.set_bloodstain(S.blood_level,S.blood_color)
 					else //Give the clothing a bloodstain.

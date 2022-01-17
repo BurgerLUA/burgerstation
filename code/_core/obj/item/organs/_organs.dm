@@ -59,7 +59,7 @@
 
 	var/damage_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
 
-	var/has_life = TRUE
+	var/has_life = FALSE
 
 	var/has_pain = FALSE
 
@@ -153,16 +153,18 @@
 			if(is_player(A))
 				var/mob/living/advanced/player/P = A
 				if(P.dead && is_player(attacker)) //Only gib if the player is dead and the person gibbing is a player.
-					var/mob/living/advanced/A2 = attacker
-					if(A2.client)
+					var/mob/living/advanced/player/P2 = attacker
+					if(P2.client)
 						P.make_unrevivable()
 						gib()
-			else
+			else if(!A.has_status_effect(ZOMBIE))
 				if(A.client)
 					var/turf/T = get_turf(A)
 					A.client.make_ghost(T ? T : locate(128,128,1))
 				gib()
 				A.death()
+			else
+				gib()
 
 /obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
 	return FALSE
@@ -236,7 +238,7 @@
 		O.unattach_from_parent(T,do_delete)
 	return TRUE
 
-/obj/item/organ/proc/gib()
+/obj/item/organ/proc/gib(var/hard=FALSE) //Hard gib also gibs attached organs.
 
 	if(!can_gib)
 		return TRUE
@@ -258,6 +260,16 @@
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = color
 					BG.update_sprite()
+
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
+		if(O.qdeleting)
+			continue
+		if(hard)
+			O.gib(hard)
+		else
+			unattach_from_parent(T)
+
 
 	unattach_from_parent(T,TRUE)
 
@@ -281,9 +293,11 @@
 	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
+	old_owner.handle_horizontal()
 	return TRUE
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
+	new_owner.handle_horizontal()
 	return TRUE
 
 obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
