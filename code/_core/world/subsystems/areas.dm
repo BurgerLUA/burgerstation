@@ -49,14 +49,6 @@ SUBSYSTEM_DEF(area)
 
 	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 
-	/*
-	if(run_unit_tests)
-		log_subsystem(name,"Initialized [length(areas_snow)] snow areas.")
-		log_subsystem(name,"Initialized [length(areas_rain)] rain areas.")
-		log_subsystem(name,"Initialized [length(areas_sandstorm)] sandstorm areas.")
-		log_subsystem(name,"Initialized [length(areas_volcanic)] volcanic areas.")
-	*/
-
 	log_subsystem(name,"Initialized [area_count] total areas.")
 
 	if(ENABLE_WEATHERGEN)
@@ -65,7 +57,7 @@ SUBSYSTEM_DEF(area)
 		set_weather(WEATHER_SANDSTORM,is_sandstorming,areas_sandstorm)
 		set_weather(WEATHER_VOLCANIC,is_volcanic,areas_volcanic)
 
-	return ..()
+	. = ..()
 
 /subsystem/area/on_life()
 

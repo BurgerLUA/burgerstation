@@ -26,11 +26,11 @@
 		if(src.loc.type == /area/) new /area/dungeon/z_01/forest/interior(src)
 		return ..()
 
-	var/seed_resolution = WORLD_SIZE
+	var/seed_resolution = max(world.maxx,world.maxy)
 	var/x_seed = x / seed_resolution
 	var/y_seed = y / seed_resolution
 
-	var/max_instances = 1
+	var/max_instances = 3
 	var/noise = 0
 	for(var/i=1,i<=max_instances,i++)
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))

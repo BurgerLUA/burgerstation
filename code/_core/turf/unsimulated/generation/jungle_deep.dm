@@ -1,10 +1,10 @@
 /turf/unsimulated/generation/jungle_deep
 	name = "deep jungle generation"
-	icon_state = "jungle"
+	icon_state = "jungle_deep"
 	var/path_only = FALSE
 
 /turf/unsimulated/generation/jungle_deep/path
-	icon_state = "jungle_path"
+	icon_state = "jungle_deep_path"
 	path_only = TRUE
 
 /turf/unsimulated/generation/jungle_deep/generate(var/size = WORLD_SIZE)
@@ -16,8 +16,7 @@
 		disallow_generation = TRUE
 		return ..()
 
-
-	var/seed_resolution = WORLD_SIZE
+	var/seed_resolution = max(world.maxx,world.maxy)
 	var/x_seed = x / seed_resolution
 	var/y_seed = y / seed_resolution
 

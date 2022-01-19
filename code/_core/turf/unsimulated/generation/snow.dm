@@ -4,7 +4,7 @@
 
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
-	if(x <= 10 || y <= 10 || x >= 245 || y >= 245)
+	if(x <= 10 || y <= 10 || x >= world.maxx-10 || y >= world.maxy-10)
 		if(no_wall)
 			new /turf/simulated/floor/cave_dirt(src)
 		else
@@ -19,25 +19,15 @@
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		return ..()
 
+	var/seed_resolution = max(world.maxx,world.maxy)
+	var/x_seed = x / seed_resolution
+	var/y_seed = y / seed_resolution
+
+	var/max_instances = 3
 	var/noise = 0
-
-	var/instances = 4
-
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
-		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[2] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances)
+	for(var/i=1,i<=max_instances,i++)
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+	noise *= 1/max_instances
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
@@ -85,25 +75,15 @@
 		disallow_generation = TRUE
 		return ..()
 
+	var/seed_resolution = max(world.maxx,world.maxy)
+	var/x_seed = x / seed_resolution
+	var/y_seed = y / seed_resolution
+
+	var/max_instances = 3
 	var/noise = 0
-
-	var/instances = 4
-
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-		var/used_x = WRAP(x + i*world.maxx*0.25,1,world.maxx)
-		var/used_y = WRAP(y + i*world.maxy*0.25,1,world.maxy)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[2] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances)
+	for(var/i=1,i<=max_instances,i++)
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+	noise *= 1/max_instances
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
