@@ -237,7 +237,7 @@
 	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
 
-	if(volume_current > volume_max)
+	if(volume_current > volume_max && volume_max > 0)
 		var/difference = volume_current - volume_max
 		var/chosen_reagent = stored_reagents[length(stored_reagents)]
 		remove_reagent(chosen_reagent,CEILING(difference,1))

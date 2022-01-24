@@ -22,7 +22,7 @@
 	var/obj/item/right_item
 	var/obj/item/holster_item
 
-	var/list/obj/hud/button/slot/slot_buttons = list()
+	var/list/obj/hud/button/ability/ability_buttons = list()
 
 	health_base = 100
 	stamina_base = 100
@@ -112,7 +112,7 @@
 
 	overlays_assoc?.Cut()
 	tracked_hidden_organs?.Cut()
-	slot_buttons?.Cut()
+	ability_buttons?.Cut()
 
 	held_objects = null
 	worn_objects = null
@@ -326,7 +326,7 @@ mob/living/advanced/Login()
 	. = ..()
 
 	if(client)
-		add_slot_buttons()
+		add_ability_buttons()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
 

@@ -24,6 +24,7 @@
 		else if(prob(1))
 			new /obj/marker/generation/rock_wall(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/forest/interior(src)
+		disallow_generation = TRUE
 		return ..()
 
 	var/seed_resolution = max(world.maxx,world.maxy)
@@ -105,13 +106,14 @@
 					if(prob(1))
 						new /obj/marker/generation/rock_wall(src)
 
-	if(prob(1) && is_floor(src))
-		if(prob(25))
-			new /obj/marker/generation/mob/bat(src)
-		else
-			new /obj/marker/generation/mob/cave_spider(src)
-	else if(needs_bear && prob(1))
-		new /obj/marker/generation/mob/black_bear(src)
+	if(is_floor(src))
+		if(prob(1))
+			if(prob(25))
+				new /obj/marker/generation/mob/bat(src)
+			else
+				new /obj/marker/generation/mob/cave_spider(src)
+		else if(needs_bear && prob(1))
+			new /obj/marker/generation/mob/black_bear(src)
 
 	if(src.loc.type == /area/) new /area/dungeon/z_01/forest/interior(src)
 

@@ -60,6 +60,7 @@
 	. = ..()
 
 
+/*
 /obj/hud/inventory/dynamic/belt
 	var/obj/hud/button/slot/assoc_slot
 	priority = -99 //Belt goes before anything else.
@@ -77,3 +78,4 @@
 			assoc_slot.store_object(I) //Also calls clear_object()
 		else
 			assoc_slot.clear_object()
+*/

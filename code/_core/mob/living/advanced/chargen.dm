@@ -128,7 +128,7 @@
 	if(chargen)
 		add_chargen_buttons()
 
-	add_slot_buttons()
+	add_ability_buttons()
 
 	apply_mob_parts(FALSE,FALSE,FALSE)
 	default_appearance()

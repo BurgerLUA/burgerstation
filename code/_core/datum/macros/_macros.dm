@@ -30,10 +30,11 @@
 
 /macros/Destroy()
 	owner = null
-	return ..()
+	. = ..()
 
 /macros/New(var/client/spawning_owner)
 	owner = spawning_owner
+	. = ..()
 
 /macros/proc/on_pressed(button)
 	var/command = macros[button]
@@ -42,8 +43,12 @@
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
-			var/obj/hud/button/slot/B = A.slot_buttons[text_num]
-			if(B) B.activate_button(owner.mob)
+			var/obj/hud/button/ability/B = A.ability_buttons[text_num]
+			if(B)
+				owner << "Yes [text_num]."
+				B.activate(owner.mob)
+			else
+				owner << "No [text_num]."
 		return TRUE
 
 	switch(command)

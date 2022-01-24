@@ -32,6 +32,8 @@
 
 	var/processed_reagent
 
+	var/obj/item/poured_container //The container to make when this object is poured/splashed. This is all handled in reagent_container.
+
 	var/particle_size = 0.5 //0 to 1
 
 	var/heated_reagent //What this heats into.

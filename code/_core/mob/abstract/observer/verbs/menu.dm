@@ -39,6 +39,9 @@ var/global/antag_count = 0
 	for(var/file in mobdata.get_files())
 		var/filenum = mobdata.get_proper_id_from_filename(file)
 		var/list/local_loaded_data = mobdata.load_json_data_from_id(filenum)
+		if(!local_loaded_data || !local_loaded_data["name"])
+			log_error("FATAL ERROR: Could not generate a valid name for a file! Something is broken! ([file],[filenum])")
+			continue
 		var/name = "[filenum]: [local_loaded_data["name"]]"
 		name_to_choice[name] = filenum
 

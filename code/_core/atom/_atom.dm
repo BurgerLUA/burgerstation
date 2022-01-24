@@ -107,7 +107,7 @@
 	mouse_opacity = 0
 	icon = null
 	icon_state = null
-
+	tag = null
 	all_listeners -= src
 
 	. = ..()
