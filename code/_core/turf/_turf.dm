@@ -35,7 +35,7 @@
 
 	var/safe_fall = FALSE //Set to true if it's safe to fall on this tile.
 
-	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_LAYER
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_LAYER | VIS_INHERIT_ID
 
 	var/disallow_generation = FALSE
 

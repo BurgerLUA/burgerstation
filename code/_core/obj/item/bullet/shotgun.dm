@@ -27,10 +27,6 @@
 /obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
-/obj/item/bullet_cartridge/shotgun_12/Generate()
-	item_count_current = item_count_max
-	return ..()
-
 /obj/item/bullet_cartridge/shotgun_12/slug
 	name = "\improper 12 gauge slug"
 	rarity = RARITY_UNCOMMON

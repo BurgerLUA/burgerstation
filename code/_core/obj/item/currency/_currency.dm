@@ -3,7 +3,6 @@
 	desc = "DOSH"
 	desc_extended = "Grab it while it's hot!"
 
-	item_count_current = 1
 	item_count_max = 10000
 
 	size = 0.002
@@ -36,17 +35,6 @@
 	value = 200
 
 	currency_class = "Telecrystals"
-
-/obj/item/currency/telecrystals/goblin/Generate()
-	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)
-	return ..()
-
-/obj/item/currency/telecrystals/treasure/Generate()
-	item_count_current = pick(1,1,1,1,1,1,2,2,3,3,4,5)*5
-
-/obj/item/currency/telecrystals/player_antagonist_spawn/Generate()
-	item_count_current = 75
-	return ..()
 
 /obj/item/currency/telecrystals/update_icon()
 	switch(item_count_current)
@@ -95,17 +83,9 @@
 
 	currency_class = "Magic Shard"
 
-/obj/item/currency/magic_token/random/Generate()
-	item_count_current = pick(1,1,1,1,1,1,1,1,2,2,2,3,3,4)
-	return ..()
-
 /obj/item/currency/magic_token/update_icon()
 	icon_state = "[item_count_current]"
 	return ..()
-
-/obj/item/currency/magic_token/max/Generate()
-	item_count_current = item_count_max
-
 
 /obj/item/currency/gold_coin
 	name = "gold coin"

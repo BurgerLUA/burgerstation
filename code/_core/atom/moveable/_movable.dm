@@ -1,5 +1,7 @@
 /atom/movable/
 
+	vis_flags = VIS_INHERIT_ID
+
 	step_size = TILE_SIZE
 
 	collision_flags = FLAG_COLLISION_NONE

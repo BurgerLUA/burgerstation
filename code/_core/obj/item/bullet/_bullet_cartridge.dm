@@ -11,7 +11,6 @@
 
 	item_count_max_icon = 1
 	item_count_max = 1
-	item_count_current = 1 //How many bullets are in this object?
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN

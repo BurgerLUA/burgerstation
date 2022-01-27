@@ -2,7 +2,7 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
-	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_DIR | VIS_INHERIT_ID
 
 	var/value_burgerbux
 

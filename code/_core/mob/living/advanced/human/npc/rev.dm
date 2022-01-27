@@ -22,8 +22,6 @@
 		/loadout/rev/sniper = 8
 	)
 
-	var/map_spawn = FALSE
-
 	level = 22
 
 /mob/living/advanced/npc/rev/Initialize()

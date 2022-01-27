@@ -4,7 +4,6 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "ore"
 
-	item_count_current = 1
 	item_count_max = 1
 	item_count_max_icon = 1
 

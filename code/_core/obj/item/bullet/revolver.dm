@@ -26,11 +26,6 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/revolver_38/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
 	desc = "DRAW!"
@@ -135,11 +130,6 @@
 	size = 0.06
 	value = 5
 
-/obj/item/bullet_cartridge/revolver_300/Generate()
-	item_count_current = 5
-	. = ..()
-
-
 /obj/item/bullet_cartridge/revolver_762
 	name = "\improper 7.62x38mmR revolver cartridge"
 	desc = "Isn't this just a cut down rifle bullet?"
@@ -160,11 +150,6 @@
 
 	size = 0.06
 	value = 2
-
-/obj/item/bullet_cartridge/revolver_762/Generate()
-	item_count_current = 7
-	update_sprite()
-	return ..()
 
 /obj/item/bullet_cartridge/revolver_762/surplus
 	name = "\improper surplus 7.62x38mmR revolver cartridge"

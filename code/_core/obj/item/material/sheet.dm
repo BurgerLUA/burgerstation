@@ -4,7 +4,6 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "sheet"
 
-	item_count_current = 1
 	item_count_max = 50
 	item_count_max_icon = 3
 
@@ -38,26 +37,6 @@
 /obj/item/material/sheet/steel
 	material_id = /material/steel
 
-/obj/item/material/sheet/steel/spawn_50/Generate()
-	item_count_current = 50
-	update_sprite()
-	return ..()
-
-/obj/item/material/sheet/steel/spawn_25/Generate()
-	item_count_current = 25
-	update_sprite()
-	return ..()
-
-/obj/item/material/sheet/steel/spawn_10/Generate()
-	item_count_current = 10
-	update_sprite()
-	return ..()
-
 /obj/item/material/sheet/glass
 	material_id = /material/glass
 	drop_sound = 'sound/items/drop/glass.ogg'
-
-/obj/item/material/sheet/glass/spawn_50/Generate()
-	item_count_current = 50
-	update_sprite()
-	return ..()

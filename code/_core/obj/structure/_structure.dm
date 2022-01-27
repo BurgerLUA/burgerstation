@@ -5,7 +5,7 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_NONE
 	collision_dir = NORTH | EAST | SOUTH | WEST
-	vis_flags = VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	anchored = TRUE
 

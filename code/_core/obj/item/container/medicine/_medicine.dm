@@ -16,7 +16,6 @@
 
 	var/treatment_time_mul = 1
 
-	item_count_current = 5
 	item_count_max = 10
 
 	var/icon_state_max = 3

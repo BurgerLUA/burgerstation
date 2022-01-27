@@ -172,7 +172,7 @@
 		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/container/edible/package/junkfood/syndicate,
 		/obj/item/container/simple/can/dr_gibb,
-		/obj/item/currency/telecrystals/player_antagonist_spawn,
+		/obj/item/currency/telecrystals{amount=50},
 		/obj/item/fulton_pack
 	)
 

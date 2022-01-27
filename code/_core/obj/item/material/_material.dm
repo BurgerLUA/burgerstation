@@ -7,7 +7,6 @@
 	var/material_id = /material/steel
 	var/material_multiplier = 1
 
-	item_count_current = 1
 	item_count_max = 50
 	item_count_max_icon = 3
 

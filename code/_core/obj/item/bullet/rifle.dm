@@ -44,10 +44,6 @@
 
 	penetrations = 1
 
-/obj/item/bullet_cartridge/rifle_308/Generate()
-	item_count_current = 5
-	return ..()
-
 /obj/item/bullet_cartridge/rifle_308/nato
 	name = "\improper 7.62mm rifle bullet"
 	desc = "The choice for Marksmen and Machinegunners."
@@ -300,10 +296,6 @@
 
 	inaccuracy_modifer = 0.75
 
-/obj/item/bullet_cartridge/rifle_939mm/Generate()
-	item_count_current = 5
-	return ..()
-
 /obj/item/bullet_cartridge/rifle_939mm/surplus
 	name = "\improper surplus 9x39mm subsonic rifle rifle bullet"
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_939mm/surplus
@@ -334,10 +326,6 @@
 	value = 1.8
 
 	inaccuracy_modifer = 0.75
-
-/obj/item/bullet_cartridge/honey/Generate()
-	item_count_current = 5
-	return ..()
 
 /obj/item/bullet_cartridge/honey/surplus
 	name = "\improper surplus .300 CCA subsonic rifle bullet"

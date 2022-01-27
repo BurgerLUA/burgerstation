@@ -4,7 +4,6 @@
 	desc_extended = "Deploys a structure."
 	var/obj/structure/structure_to_deploy //Store as a type. This should always be a structure.
 
-	item_count_current = 1
 	item_count_max = 10
 	item_count_max_icon = 3
 
@@ -84,10 +83,6 @@
 
 /obj/item/deployable/mountable/browning/get_deploy_time(var/mob/caller)
 	return SECONDS_TO_DECISECONDS(10)
-
-/obj/item/deployable/barricade/filled/Generate()
-	item_count_current = item_count_max
-	return ..()
 
 /obj/item/deployable/mob
 	var/mob/living/mob_to_deploy

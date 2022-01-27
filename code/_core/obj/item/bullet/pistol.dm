@@ -136,7 +136,6 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-
 	bullet_diameter = 9
 	bullet_length = 19
 	bullet_color = COLOR_BULLET
@@ -334,11 +333,6 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/pistol_45/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/pistol_45/ap
 	name = "\improper AP .45 pistol catridge"
 	desc_extended = "For pistols and smgs that requre .45 ammo. This one has an armor piercing tip."
@@ -377,8 +371,3 @@
 	damage_type_bullet = /damagetype/ranged/bullet/holybullet/surplus
 	jam_chance = 1
 	value = 0
-
-/obj/item/bullet_cartridge/pistol_45holy/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()

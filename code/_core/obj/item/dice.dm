@@ -195,7 +195,7 @@
 			return TRUE //Don't delete.
 		if(14)
 			L.to_chat(span("notice","Hey, some gems! Wait..."))
-			CREATE(/obj/item/currency/telecrystals/player_antagonist_spawn,get_turf(src))
+			CREATE(/obj/item/currency/telecrystals{amount=10},get_turf(src))
 		if(15)
 			L.to_chat(span("notice","Hey, more magic!"))
 			var/turf/T = get_turf(src)

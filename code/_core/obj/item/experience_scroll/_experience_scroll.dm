@@ -7,7 +7,6 @@
 	icon = 'icons/obj/item/experience_scroll.dmi'
 	icon_state = "scroll"
 
-	item_count_current = 1
 	item_count_max = 10
 
 	weight = WEIGHT_0

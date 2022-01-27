@@ -19,11 +19,6 @@
 
 	caseless = TRUE
 
-/obj/item/bullet_cartridge/arrow/Generate()
-	item_count_current = item_count_max
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/arrow/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
 	src.projectile_count = item_count_current
 	qdel(src)

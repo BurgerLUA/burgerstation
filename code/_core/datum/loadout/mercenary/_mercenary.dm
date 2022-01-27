@@ -7,7 +7,7 @@
 /obj/item/container/blood_pack/full/o_negative, \
 /obj/item/container/edible/package/junkfood/jerky, \
 /obj/item/container/edible/package/junkfood/jerky, \
-/obj/item/deployable/barricade/filled, \
+/obj/item/deployable/barricade{amount=10}, \
 /obj/item/firing_pin/electronic/iff/mercenary, \
 /obj/item/fulton_pack, \
 /obj/item/weapon/melee/tool/screwdriver,\

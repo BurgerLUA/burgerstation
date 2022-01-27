@@ -9,10 +9,6 @@
 
 	value = 200
 
-/obj/item/fulton_pack/Generate()
-	item_count_current = item_count_max
-	return ..()
-
 /obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE,var/turf_check=FALSE)
 
 	INTERACT_CHECK_NO_DELAY(src)

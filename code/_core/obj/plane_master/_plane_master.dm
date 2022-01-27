@@ -168,3 +168,10 @@
 /obj/plane_master/hud
 	plane = PLANE_HUD
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
+
+
+/obj/plane_master/hud/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=0, size=2, offset=0, color=rgb(0,0,0))

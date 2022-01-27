@@ -4,7 +4,6 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "trash_cube"
 
-	item_count_current = 1
 	item_count_max = 50
 	item_count_max_icon = 3
 

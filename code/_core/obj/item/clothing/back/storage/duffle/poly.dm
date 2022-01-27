@@ -80,7 +80,7 @@
 
 	new /obj/item/weapon/ranged/bullet/magazine/rifle/starter(src)
 
-	new /obj/item/deployable/barricade/filled(src)
+	new /obj/item/deployable/barricade{amount=10}(src)
 
 	new /obj/item/grenade/timed/explosive(src)
 	new /obj/item/grenade/timed/explosive(src)
