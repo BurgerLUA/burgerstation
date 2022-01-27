@@ -4,8 +4,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
 	icon = 'icons/obj/item/bullet/10mm.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 10.17
 	bullet_length = 32
@@ -44,8 +44,8 @@
 	desc_extended = "For pistols that require .50."
 	icon = 'icons/obj/item/bullet/50ae.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -94,8 +94,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require 12.7mm ammo."
 	icon = 'icons/obj/item/bullet/12mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -133,8 +133,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require 9mm ammo."
 	icon = 'icons/obj/item/bullet/9mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 9
 	bullet_length = 19
@@ -172,8 +172,8 @@
 	desc_extended = "For smgs that require 4.6x30mm ammo."
 	icon = 'icons/obj/item/bullet/46mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 
 	bullet_diameter = 4.6
@@ -251,8 +251,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require .40 ammo."
 	icon = 'icons/obj/item/bullet/40.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 10
 	bullet_length = 22
@@ -312,8 +312,8 @@
 	desc_extended = "For pistols and smgs that requre .45 ammo."
 	icon = 'icons/obj/item/bullet/45.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 11.43
 	bullet_length = 23
@@ -351,8 +351,8 @@
 	desc_extended = "For pistols and smgs that require holy .45 ammo."
 	icon = 'icons/obj/item/bullet/holy45.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 11.777
 	bullet_length = 24

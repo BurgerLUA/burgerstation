@@ -16,7 +16,7 @@
 
 	var/treatment_time_mul = 1
 
-	item_count_max = 10
+	amount_max = 10
 
 	var/icon_state_max = 3
 
@@ -31,7 +31,7 @@
 	. = ..()
 
 	if(reagents)
-		reagents.volume_max = item_count_current*10
+		reagents.volume_max = amount*10
 
 /obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
 
@@ -47,7 +47,7 @@
 
 	if(!override_icon_state)
 		icon = initial(icon)
-		icon_state = "[initial(icon_state)]_[clamp(item_count_current,1,icon_state_max)]"
+		icon_state = "[initial(icon_state)]_[clamp(amount,1,icon_state_max)]"
 
 	return ..()
 
@@ -88,9 +88,9 @@
 		else
 			A.health.update_health()
 
-	var/reagent_transfer = CEILING((1/item_count_max)*reagents.volume_current, 1)
+	var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
-	reagents.volume_max = item_count_current*10
+	reagents.volume_max = amount*10
 
 	if(caller == A.loc)
 		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))

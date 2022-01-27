@@ -9,8 +9,8 @@
 	bullet_length = 29
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_38
@@ -37,8 +37,8 @@
 	bullet_length = 33
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_357
@@ -65,8 +65,8 @@
 	bullet_length = 29
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_44
@@ -92,8 +92,8 @@
 	bullet_length = 17.7
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_22
@@ -119,8 +119,8 @@
 	bullet_length = 67
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_300
@@ -140,8 +140,8 @@
 	bullet_length = 38
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 7
-	item_count_max_icon = 7
+	amount_max = 7
+	amount_max_icon = 7
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_762

@@ -172,4 +172,3 @@
 
 	if(stored_magazine)
 		. += div("notice","[length(stored_magazine.stored_bullets)] bullet\s remaining in the magazine.")
-

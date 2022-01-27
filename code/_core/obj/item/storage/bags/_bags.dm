@@ -398,10 +398,10 @@
 	if(hoard)
 		if(istype(object,/obj/hud/inventory))
 			var/mob/living/advanced/C = caller
-			var/maxstack = goods.item_count_max
+			var/maxstack = goods.amount_max
 			if(hoard <= maxstack)
 				maxstack = hoard
-			if((goods.item_count_max == 1) || (hoard == 1))
+			if((goods.amount_max == 1) || (hoard == 1))
 				var/obj/item/M = new goods.type
 				M.drop_item(get_turf(caller))
 				C.put_in_hands(M,params)
@@ -418,14 +418,14 @@
 			if(!choice) return TRUE
 			if(choice >= maxstack)
 				var/obj/item/M = new goods.type
-				M.item_count_current = maxstack
+				M.amount = maxstack
 				M.update_sprite()
 				hoard -= maxstack
 				M.drop_item(get_turf(caller))
 				C.put_in_hands(M,params)
 			else if(choice < maxstack)
 				var/obj/item/M = new goods.type
-				M.item_count_current = choice
+				M.amount = choice
 				M.update_sprite()
 				hoard -= choice
 				M.drop_item(get_turf(caller))
@@ -438,7 +438,7 @@
 		if(ispath(I.type,targetitem))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			hoard += I.item_count_current
+			hoard += I.amount
 			play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 			qdel(I)
 			return TRUE
@@ -466,8 +466,8 @@
 					if(ispath(I.type,/obj/item/coin/antag_token))
 						targetitem = /obj/item/coin/antag_token
 					goods = I
-					hoard = I.item_count_current
-					I.item_count_current = 1
+					hoard = I.amount
+					I.amount = 1
 					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 					caller.to_chat(span("notice","The [src.name] now accepts [I.name]\s."))
 					qdel(I)

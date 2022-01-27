@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/clothing/back/fulton.dmi'
 	icon_state = "inventory"
 
-	item_count_max = 20
+	amount_max = 20
 
 	value = 200
 
@@ -76,7 +76,7 @@
 	F.add_movable(caller,M)
 
 	caller.visible_message(span("warning","\The [caller.name] attaches \the [src.name] to \the [M.name]!"))
-	caller.to_chat(span("notice","You have [item_count_current-1] fulton packs left."))
+	caller.to_chat(span("notice","You have [amount-1] fulton packs left."))
 
 	add_item_count(-1)
 

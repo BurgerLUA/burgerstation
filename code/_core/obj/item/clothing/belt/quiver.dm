@@ -82,7 +82,7 @@
 					stored_arrows -= A.type
 				update_sprite()
 		else
-			var/amount_added = -A.add_item_count(-min(A.item_count_current,max(0,max_arrows - get_arrow_count())))
+			var/amount_added = -A.add_item_count(-min(A.amount,max(0,max_arrows - get_arrow_count())))
 			if(amount_added)
 				if(!stored_arrows[A.type])
 					stored_arrows[A.type] = amount_added
@@ -101,7 +101,7 @@
 			return TRUE
 		var/obj/item/bullet_cartridge/arrow/A = pickweight(stored_arrows)
 		A = new A(get_turf(src))
-		A.item_count_current = 1
+		A.amount = 1
 		stored_arrows[A.type] -= 1
 		caller.to_chat(span("notice","You take 1 arrow from \the [src.name]. There are [stored_arrows[A.type]] arrows left."))
 		if(stored_arrows[A.type] <= 0)

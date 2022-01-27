@@ -4,8 +4,8 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "wood"
 
-	item_count_max = 50
-	item_count_max_icon = 3
+	amount_max = 50
+	amount_max_icon = 3
 
 	crafting_id = "plank"
 

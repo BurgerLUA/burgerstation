@@ -4,8 +4,8 @@
 	desc_extended = "For pistols and rifles that require gyrojet rounds. Even well made rounds are known for their high misfire chance."
 	icon = 'icons/obj/item/bullet/gyrojet.dmi'
 
-	item_count_max = 4
-	item_count_max_icon = 4
+	amount_max = 4
+	amount_max_icon = 4
 
 	bullet_length = 50
 	bullet_diameter = 20

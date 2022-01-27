@@ -94,6 +94,7 @@
 	if(ammo)
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
+			B.amount = 1
 			INITIALIZE(B)
 			//DO NOT PUT GENERATE HERE.
 			FINALIZE(B)

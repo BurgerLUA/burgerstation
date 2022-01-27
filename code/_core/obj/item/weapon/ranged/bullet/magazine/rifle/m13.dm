@@ -78,9 +78,14 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/handle_ammo(var/mob/caller)
 	. = ..()
-	if(!chambered_bullet && stored_magazine) eject_magazine(caller) //Ding
+	if(!chambered_bullet && stored_magazine)
+		eject_magazine(caller) //Ding
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m13/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	. = ..()
-	if(istype(object,/obj/item/bullet_cartridge/))
-		return object.clicked_on_by_object(caller,object,location,control,params)
+/obj/item/weapon/ranged/bullet/magazine/rifle/m13/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
+
+	if(stored_magazine)
+		return B.transfer_src_to_magazine(caller,stored_magazine)
+
+	caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name] without a clip inserted!"))
+
+	return FALSE

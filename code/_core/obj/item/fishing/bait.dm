@@ -5,7 +5,7 @@
 	size = SIZE_0
 	weight = 0.5
 
-	item_count_max = 25
+	amount_max = 25
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
@@ -33,7 +33,7 @@
 	desc_extended = "Bait for sea fishing. Will get you some salty fish, and will never be consumed on successful catches."
 	value = 700
 	nice_bait = TRUE
-	item_count_max = 1
+	amount_max = 1
 
 
 //River
@@ -54,7 +54,7 @@
 	desc_extended = "Bait for river fishing. Will get you fresh fish, and will never be consumed on successful catches."
 	value = 700
 	nice_bait = TRUE
-	item_count_max = 1
+	amount_max = 1
 
 //Lava
 /obj/item/fishing/bait/lava

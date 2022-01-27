@@ -90,11 +90,11 @@
 		var/obj/item/contract/found_contract
 		if(istype(P.right_item,/obj/item/contract/))
 			var/obj/item/contract/C = P.right_item
-			if(C.amount_current >= C.amount_max)
+			if(C.amount >= C.amount_max)
 				found_contract = C
 		if(!found_contract && istype(P.left_item,/obj/item/contract/))
 			var/obj/item/contract/C = P.left_item
-			if(C.amount_current >= C.amount_max)
+			if(C.amount >= C.amount_max)
 				found_contract = C
 		if(found_contract)
 			found_contract.turn_in(P)

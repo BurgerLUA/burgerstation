@@ -4,8 +4,8 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "shard"
 
-	item_count_max = 1
-	item_count_max_icon = 1
+	amount_max = 1
+	amount_max_icon = 1
 
 	crafting_id = "shard"
 

@@ -34,12 +34,12 @@ SUBSYSTEM_DEF(research)
 	rustg_file_write(json_encode(quadrant_high_scores),RESEARCH_SCORES_QUADRANTS)
 
 	var/obj/item/currency/prize_ticket/PT = new(P.loc)
-	PT.item_count_current = CEILING(score,1)
+	PT.amount = CEILING(score,1)
 	INITIALIZE(PT)
 	GENERATE(PT)
 	FINALIZE(PT)
 	P.put_in_hands(PT)
-	P.to_chat(span("notice","The arcade machine vends [PT.item_count_current] prize tickets!"))
+	P.to_chat(span("notice","The arcade machine vends [PT.amount] prize tickets!"))
 
 	return FALSE
 

@@ -122,9 +122,9 @@ var/global/list/equipped_antags = list()
 		return FALSE
 
 	if(accepts_item)
-		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.item_count_current >= amount)
+		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.amount >= amount)
 			P.right_item.add_item_count(-amount)
-		else if(P.left_item && istype(P.left_item,accepts_item) && P.left_item.item_count_current >= amount)
+		else if(P.left_item && istype(P.left_item,accepts_item) && P.left_item.amount >= amount)
 			P.left_item.add_item_count(-amount)
 		else
 			P.to_chat(span("warning","You don't have enough [accepts_item.name]s to purchase this!"))
@@ -222,7 +222,7 @@ var/global/list/equipped_antags = list()
 		GENERATE(accepts_item)
 		FINALIZE(accepts_item)
 		markup *= 1/accepts_item.value
-		price_max = accepts_item.item_count_max
+		price_max = accepts_item.amount_max
 
 	for(var/obj/item/I in stored_objects)
 		if(stored_cost[I.type])

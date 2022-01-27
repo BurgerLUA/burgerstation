@@ -40,16 +40,16 @@
 					if(istype(B.stored_object,/obj/item/currency/gold_coin))
 						A.adjust_currency(B.stored_value)
 						SSeconomy.goblin_economy += B.stored_value
-						SSeconomy.gold_in_circulation -= B.stored_object.item_count_current
+						SSeconomy.gold_in_circulation -= B.stored_object.amount
 						qdel(I)
 					else
 						var/turf/T = get_turf(A)
 						var/obj/item/currency/gold_coin/G = new(T)
 						INITIALIZE(G)
-						G.item_count_current = B.stored_value
+						G.amount = B.stored_value
 						FINALIZE(G)
-						SSeconomy.gold_in_circulation += G.item_count_current
-						SSeconomy.goblin_economy -= G.item_count_current
+						SSeconomy.gold_in_circulation += G.amount
+						SSeconomy.goblin_economy -= G.amount
 						qdel(I)
 						B.set_stored_object(null)
 						A.put_in_hands(G,params)
@@ -126,7 +126,7 @@
 /obj/hud/button/exchange/base/proc/calculate_value()
 	if(stored_object)
 		if(istype(stored_object,/obj/item/currency/gold_coin))
-			stored_value = CEILING(stored_object.item_count_current*SSeconomy.credits_per_gold,1)
+			stored_value = CEILING(stored_object.amount*SSeconomy.credits_per_gold,1)
 			stored_value = max(stored_value,0)
 		else
 			stored_value = CEILING((SSeconomy.crash_sell_multiplier*SSeconomy.sell_multiplier*stored_object.get_value())/SSeconomy.credits_per_gold,1)

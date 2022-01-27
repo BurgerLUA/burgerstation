@@ -9,8 +9,8 @@
 	var/bullet_length = -1
 	var/bullet_diameter = -1
 
-	item_count_max_icon = 1
-	item_count_max = 1
+	amount_max_icon = 1
+	amount_max = 1
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN
@@ -43,7 +43,9 @@
 
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
-	var/power = 0 //Set is SSweapons
+	var/bullet_insert_sound = 'sound/weapons/gun/general/mag_bullet_insert.ogg'
+
+	var/power = 0 //Set in SSweapons.
 
 	var/bulletbox_icon_state = "bullet"
 
@@ -98,11 +100,8 @@
 
 	. = max(0.01,.)
 
-/obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
-	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
-
 /obj/item/bullet_cartridge/proc/get_ammo_count()
-	return item_count_current
+	return amount
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	. = ..()
@@ -119,11 +118,11 @@
 /obj/item/bullet_cartridge/update_icon()
 
 	if(!is_spent)
-		icon_state = "[initial(icon_state)]_[min(item_count_max_icon,item_count_current)]"
+		icon_state = "[initial(icon_state)]_[min(amount_max_icon,amount)]"
 	else
 		icon_state = "[initial(icon_state)]_spent"
 
-	size = initial(size)*item_count_current
+	size = initial(size)*amount
 
 	return ..()
 
@@ -134,10 +133,10 @@
 	if(is_spent)
 		if(!bullet_seed)
 			bullet_seed = rand(100,999)
-		for(var/i=1,i<=min(9,item_count_current-1),i++)
+		for(var/i=1,i<=min(9,amount-1),i++)
 			var/image/I = new(icon,icon_state)
-			I.pixel_x = sin(i*bullet_seed)*TILE_SIZE % 16
-			I.pixel_y = cos(i*bullet_seed)*TILE_SIZE % 16
+			I.pixel_x = sin(i*bullet_seed)*TILE_SIZE % TILE_SIZE*0.5
+			I.pixel_y = cos(i*bullet_seed)*TILE_SIZE % TILE_SIZE*0.5
 			add_overlay(I)
 
 
@@ -148,8 +147,8 @@
 	if(is_spent)
 		. += div("notice","It is spent.")
 
-	if(item_count_current > 1)
-		. += div("notice","It contains [item_count_current] [src.name]\s.")
+	if(amount > 1)
+		. += div("notice","It contains [amount] [src.name]\s.")
 
 
 /obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
@@ -160,7 +159,7 @@
 			return FALSE
 		is_spent = TRUE
 		plane = PLANE_JUNK
-		item_count_max = max(item_count_max,100000) //Some absurd value.
+		amount_max = max(amount_max,100000) //Some absurd value.
 		if(caseless)
 			qdel(src)
 		return src
@@ -172,7 +171,7 @@
 	if(istype(O,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = O
 		if(!B.qdeleting && B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
-			B.transfer_item_count_to(src)
+			B.transfer_amount_to(src)
 
 	return ..()
 
@@ -185,12 +184,12 @@
 		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))
 		return FALSE
 
-	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count())
+	var/bullets_to_add = min(amount,transfer_target.amount_max - transfer_target.get_ammo_count())
 	if(bullets_to_add <= 0)
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
-	src.transfer_item_count_to(transfer_target,bullets_to_add)
+	src.transfer_amount_to(transfer_target,bullets_to_add)
 	if(talk)
 		caller.to_chat(span("notice","You add [bullets_to_add] bullet\s into \the [transfer_target] pile."))
 
@@ -201,11 +200,11 @@
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
 
-	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
+	var/bullets_to_add = min(amount,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
 	if(bullets_to_add <= 0)
 		return FALSE
 
-	var/should_transfer_self = bullets_to_add == item_count_current
+	var/should_transfer_self = bullets_to_add == amount
 
 	if(should_transfer_self)
 		bullets_to_add--
@@ -228,44 +227,6 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/talk = TRUE)
-
-	if(W.can_load_chamber(caller,src))
-		if(item_count_current <= 1)
-			src.drop_item(W)
-			W.chambered_bullet += src
-		else
-			var/obj/item/bullet_cartridge/B = new src.type(W)
-			B.is_spent = is_spent
-			INITIALIZE(B)
-			FINALIZE(B)
-			W.chambered_bullet += B
-			add_item_count(-1)
-		return TRUE
-
-	if(W.can_load_stored(caller,src))
-		var/valid_slot = 0
-		for(var/i=1,i<=length(W.stored_bullets),i++)
-			if(!W.stored_bullets[i])
-				valid_slot = i
-				break
-		if(valid_slot)
-			if(item_count_current <= 1)
-				src.drop_item(W)
-				W.stored_bullets[valid_slot] = src
-			else
-				var/obj/item/bullet_cartridge/B = new src.type(W)
-				B.is_spent = is_spent
-				INITIALIZE(B)
-				FINALIZE(B)
-				W.stored_bullets[valid_slot] = B
-				add_item_count(-1)
-			return TRUE
-
-	caller.to_chat(span("warning","You can't load \the [src.name] into \the [W.name]!"))
-
-	return FALSE
-
 /obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/bullet_cartridge/))
@@ -282,7 +243,7 @@
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
 		if(transfer_src_to_magazine(caller,M,location,control,params))
-			play_sound(get_bullet_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)
+			play_sound(bullet_insert_sound,get_turf(src),range_max=VIEW_RANGE*0.25)
 		return TRUE
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/))
@@ -290,9 +251,9 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
-		if(transfer_src_to_gun(caller,G,location,control,params))
+		if(G.accept_bullet(caller,src))
 			var/turf/T = get_turf(src)
-			play_sound(get_bullet_insert_sound(),T,range_max=VIEW_RANGE*0.25)
+			play_sound(bullet_insert_sound,T,range_max=VIEW_RANGE*0.25)
 			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
 				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)

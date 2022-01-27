@@ -7,7 +7,7 @@
 	heal_brute = 30
 	heal_brute_percent = 0
 	heal_bleeding = TRUE
-	item_count_max = 10
+	amount_max = 10
 
 	value = 5
 
@@ -54,7 +54,7 @@
 	heal_brute = 80
 	heal_brute_percent = 10
 	heal_bleeding = TRUE
-	item_count_max = 10
+	amount_max = 10
 
 	value = 20
 
@@ -78,7 +78,7 @@
 	heal_burn = 80
 	heal_burn_percent = 10
 	heal_bleeding = TRUE
-	item_count_max = 10
+	amount_max = 10
 
 	value = 80
 
@@ -94,7 +94,7 @@
 	treatment_time_mul = 1.25
 	heal_burn = 80
 	heal_burn_percent = 10
-	item_count_max = 10
+	amount_max = 10
 
 	value = 20
 
@@ -114,7 +114,7 @@
 	icon_state = "cable"
 	treatment_time_mul = 1.25
 	heal_burn = 70
-	item_count_max = 10
+	amount_max = 10
 
 	value = 20
 
@@ -126,7 +126,7 @@
 	desc_extended = "Patches like these can't be used to cover wounds on their own, but can administer a great quantity of medicines really fast. Of course, giving too much medicines can be a way to speed up death rather than delay it, so be careful."
 	icon_state = "patch"
 	treatment_time_mul = 0.5
-	item_count_max = 3
+	amount_max = 3
 
 	value = 5
 
@@ -169,6 +169,6 @@
 	heal_brute = 0
 	heal_brute_percent = 0
 	heal_bleeding = TRUE
-	item_count_max = 10
+	amount_max = 10
 
 	value = 10

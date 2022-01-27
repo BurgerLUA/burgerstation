@@ -65,7 +65,7 @@
     value = 100
     weight = 3
 
-    item_count_max = 5
+    amount_max = 5
 
     size = SIZE_3
 
@@ -74,7 +74,7 @@
 
 /obj/item/deployable/bodybag/can_deploy_to(var/mob/caller,var/turf/T)
 
-    if(item_count_current <= 0)
+    if(amount <= 0)
         qdel(src)
         return FALSE
 

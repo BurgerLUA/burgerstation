@@ -4,8 +4,8 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "sheet"
 
-	item_count_max = 50
-	item_count_max_icon = 3
+	amount_max = 50
+	amount_max_icon = 3
 
 	crafting_id = "sheet"
 
@@ -23,7 +23,7 @@
 			INTERACT_DELAY(5)
 			var/obj/item/material/rod/R = new(get_turf(src))
 			R.material_id = material_id
-			R.item_count_current = 4
+			R.amount = 4
 			INITIALIZE(R)
 			GENERATE(R)
 			FINALIZE(R)

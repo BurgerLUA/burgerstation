@@ -45,7 +45,7 @@
 			P.adjust_currency(-(fee + desired_input))
 			var/obj/item/currency/credits/C = new(get_turf(caller))
 			INITIALIZE(C)
-			C.item_count_current = desired_input
+			C.amount = desired_input
 			FINALIZE(C)
 			P.to_chat(span("notice","Transaction complete."))
 			I.add_object(C)
@@ -53,8 +53,8 @@
 
 		if(istype(object,/obj/item/currency/credits/))
 			var/obj/item/currency/credits/C = object
-			P.adjust_currency(C.item_count_current)
-			C.item_count_current = 0
+			P.adjust_currency(C.amount)
+			C.amount = 0
 			qdel(C)
 
 

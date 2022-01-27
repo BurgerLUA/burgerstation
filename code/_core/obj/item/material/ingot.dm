@@ -4,8 +4,8 @@
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "ingot"
 
-	item_count_max = 50
-	item_count_max_icon = 6
+	amount_max = 50
+	amount_max_icon = 6
 
 	crafting_id = "ingot"
 

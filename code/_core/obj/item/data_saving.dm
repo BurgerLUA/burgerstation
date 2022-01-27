@@ -117,8 +117,8 @@
 			.["inventories"][i] = inventory_data
 	if(soul_bound)
 		.["soul_bound"] = soul_bound
-	if(item_count_current > 1)
-		.["item_count_current"] = item_count_current
+	if(amount > 1)
+		.["amount"] = amount
 	if(delete_on_drop)
 		.["delete_on_drop"] = TRUE
 	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
@@ -173,8 +173,8 @@
 			I.load_inventory_data(P,object_data["inventories"][i])
 	if(object_data["soul_bound"])
 		soul_bound = object_data["soul_bound"]
-	if(object_data["item_count_current"])
-		item_count_current = object_data["item_count_current"]
+	if(object_data["amount"])
+		amount = object_data["amount"]
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
 	if(object_data["quality"])

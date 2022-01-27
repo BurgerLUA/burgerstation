@@ -31,9 +31,9 @@
 
 	var/delete_on_drop = FALSE
 
-	var/item_count_current = 1
-	var/item_count_max = 1
-	var/item_count_max_icon = 0
+	var/amount = 1
+	var/amount_max = 1
+	var/amount_max_icon = 0
 
 	var/pixel_height = 2 //The z size of this, in pixels. Used for sandwiches and burgers.
 	var/pixel_height_offset = 0 //The z offset of this, in pixels. Used for sandwiches and burgers.
@@ -307,16 +307,16 @@ var/global/list/rarity_to_mul = list(
 	. = ..()
 
 /obj/item/get_base_value()
-	return initial(value) * item_count_current * price_multiplier * (0.5 + 0.5*clamp(quality/100,0.25,1.5))
+	return initial(value) * amount * price_multiplier * (0.5 + 0.5*clamp(quality/100,0.25,1.5))
 
-/obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
+/obj/item/proc/transfer_amount_to(var/obj/item/target,var/amount_to_transfer = amount)
 	if(!amount_to_transfer) return 0
 	if(amount_to_transfer < 0)
-		return target.transfer_item_count_to(src,-amount_to_transfer)
+		return target.transfer_amount_to(src,-amount_to_transfer)
 	amount_to_transfer = min(
 		amount_to_transfer, //What we want to transfer
-		item_count_current, //What we can actually transfer from
-		target.item_count_max - target.item_count_current //What the target can actually hold.
+		amount, //What we can actually transfer from
+		target.amount_max - target.amount //What the target can actually hold.
 	)
 	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
 
@@ -332,13 +332,13 @@ var/global/list/rarity_to_mul = list(
 		if(!amount_to_add)
 			return 0
 		else if(amount_to_add > 0)
-			amount_to_add = min(amount_to_add,item_count_max - item_count_current)
+			amount_to_add = min(amount_to_add,amount_max - amount)
 		else if(amount_to_add < 0)
-			amount_to_add = max(amount_to_add,-item_count_current)
+			amount_to_add = max(amount_to_add,-amount)
 
-	item_count_current += amount_to_add
+	amount += amount_to_add
 
-	if(item_count_current <= 0)
+	if(amount <= 0)
 		qdel(src)
 	else
 		update_sprite()
@@ -492,7 +492,7 @@ var/global/list/rarity_to_mul = list(
 	. += div("rarity","Base Value: [get_base_value()]cr.")
 	. += div("weightsize","Size: [size], Weight: [weight]")
 
-	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
+	if(amount > 1) . += div("weightsize","Quantity: [amount].")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 

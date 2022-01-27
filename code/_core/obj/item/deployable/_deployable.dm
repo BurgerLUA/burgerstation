@@ -4,8 +4,8 @@
 	desc_extended = "Deploys a structure."
 	var/obj/structure/structure_to_deploy //Store as a type. This should always be a structure.
 
-	item_count_max = 10
-	item_count_max_icon = 3
+	amount_max = 10
+	amount_max_icon = 3
 
 /obj/item/deployable/proc/get_deploy_time(var/mob/caller)
 	return SECONDS_TO_DECISECONDS(3)
@@ -31,7 +31,7 @@
 
 /obj/item/deployable/proc/can_deploy_to(var/mob/caller,var/turf/T)
 
-	if(item_count_current <= 0)
+	if(amount <= 0)
 		qdel(src)
 		return FALSE
 
@@ -62,7 +62,7 @@
 
 	weight = 3
 
-	item_count_max = 5
+	amount_max = 5
 
 	size = SIZE_3
 
@@ -77,7 +77,7 @@
 	value = 8918
 	weight = 58
 
-	item_count_max = 1
+	amount_max = 1
 
 	size = SIZE_9
 
@@ -89,7 +89,7 @@
 
 /obj/item/deployable/mob/can_deploy_to(var/mob/caller,var/turf/T)
 
-	if(item_count_current <= 0)
+	if(amount <= 0)
 		qdel(src)
 		return FALSE
 
@@ -127,7 +127,7 @@
 	mob_to_deploy = /mob/living/simple/turret/deployable
 	icon = 'icons/mob/living/simple/turret_deployable_2.dmi'
 	value = 750
-	item_count_max = 1
+	amount_max = 1
 	weight = 20
 	dan_mode = TRUE
 	size = SIZE_8

@@ -5,8 +5,8 @@
 	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/tranq.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 11.43
 	bullet_length = 25

@@ -78,7 +78,7 @@
 				caller.to_chat(span("notice","You add a shell to your hand. There are [stored_shells[S.type]] shells of that type left."))
 				update_sprite()
 		else
-			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - shell_count)))
+			var/amount_added = -S.add_item_count(-min(S.amount,max(0,max_shells - shell_count)))
 			if(amount_added)
 				if(!stored_shells[S.type])
 					stored_shells[S.type] = amount_added
@@ -111,7 +111,7 @@
 
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			S = new S(get_turf(src))
-			S.item_count_current = 1
+			S.amount = 1
 			stored_shells[S.type] -= 1
 			shell_count -= 1
 			caller.to_chat(span("notice","You take a shell from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
@@ -128,7 +128,7 @@
 			amount = stored_shells[S.type]
 		else
 			amount = handful
-		S.item_count_current = amount
+		S.amount = amount
 		stored_shells[S.type] -= amount
 		shell_count -= amount
 		caller.to_chat(span("notice","You take [amount] shell\s from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))

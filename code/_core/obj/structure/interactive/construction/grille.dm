@@ -29,7 +29,7 @@
 	if(istype(src.loc,/obj/structure/window/))
 		caller.to_chat(span("warning","There is already a window here!"))
 		return FALSE
-	if(S.item_count_current < 4)
+	if(S.amount < 4)
 		caller.to_chat(span("warning","You need 4 glass sheets in order to build a wall!"))
 		return FALSE
 	return TRUE
