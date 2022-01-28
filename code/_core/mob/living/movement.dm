@@ -184,9 +184,9 @@
 
 /mob/living/proc/update_alpha(var/desired_alpha)
 	if(alpha != desired_alpha)
-		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = SECONDS_TO_DECISECONDS(1))
+		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = TICKS_TO_DECISECONDS(LIFE_TICK))
+		update_plane()
 		return TRUE
-
 	return FALSE
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)

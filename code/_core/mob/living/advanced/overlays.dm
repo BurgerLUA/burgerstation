@@ -16,7 +16,6 @@
 	O.initial_icon = desired_icon ? desired_icon : object.icon
 	O.initial_icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.layer = desired_layer ? desired_layer : object.layer
-	//O.plane = desired_plane ? desired_plane : src.plane
 	O.icon = desired_icon ? desired_icon : object.icon
 	O.icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.color = desired_color ? desired_color : object.color

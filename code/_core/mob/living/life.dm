@@ -45,9 +45,6 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	plane = PLANE_OBJ
-	layer = 1000
-
 	handle_horizontal()
 
 	if(following)
@@ -132,8 +129,6 @@
 	attack_flags = 0x0
 	dead = FALSE
 	remove_status_effect(CRIT)
-	plane = initial(plane)
-	layer = initial(layer)
 	if(ai) ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
@@ -280,8 +275,6 @@
 
 	update_alpha(handle_alpha())
 
-	update_plane()
-
 	if(health && queue_health_update)
 		health.update_health()
 		queue_health_update = FALSE
@@ -299,10 +292,12 @@
 	return TRUE
 
 /mob/living/proc/update_plane()
-	if(alpha != 255 || horizontal)
+	if(alpha != 255)
 		plane = PLANE_MOB_STEALTH
+	else if(horizontal)
+		plane = PLANE_MOB_SMALL
 	else
-		plane = PLANE_MOB
+		plane = initial(plane)
 
 /mob/living/proc/handle_hunger()
 

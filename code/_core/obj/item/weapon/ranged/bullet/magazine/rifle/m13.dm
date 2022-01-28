@@ -12,7 +12,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/308/shoot.ogg')
+	shoot_sounds = list('sound/weapons/308/bass_crisp.ogg')
 
 	can_wield = TRUE
 
@@ -78,16 +78,18 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/handle_ammo(var/mob/caller)
 	. = ..()
-	if(!chambered_bullet && stored_magazine)
+	if(. && !chambered_bullet && stored_magazine)
 		var/turf/T = get_turf(src)
 		play_sound('sound/weapons/clip_ping.ogg',T)
 		eject_magazine(caller)
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
 
-	if(stored_magazine)
+	if(!stored_magazine)
+		caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name] without a clip inserted!"))
+		return FALSE
+
+	if(chambered_bullet)
 		return B.transfer_src_to_magazine(caller,stored_magazine)
 
-	caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name] without a clip inserted!"))
-
-	return FALSE
+	. = ..()

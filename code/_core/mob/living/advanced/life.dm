@@ -50,16 +50,6 @@ mob/living/advanced/revive()
 
 	. = ..()
 
-	for(var/k in overlays_assoc)
-		update_overlay_tracked(k, desired_plane = plane)
-
-/mob/living/advanced/post_death()
-
-	. = ..()
-
-	for(var/k in overlays_assoc)
-		update_overlay_tracked(k, desired_plane = plane)
-
 /mob/living/advanced/proc/handle_organs()
 
 	if(!health)
@@ -99,18 +89,20 @@ var/global/list/spread_icons = list(
 	var/obj/item/weapon/ranged/L = left_item
 
 	if(istype(R))
-		desired_spread = max(desired_spread,R.heat_current)
+		desired_spread = max(0,desired_spread,R.heat_current)
 
 	if(istype(L))
-		desired_spread = max(desired_spread,L.heat_current)
+		desired_spread = max(0,desired_spread,L.heat_current)
 
-	if(desired_spread > 0)
+	if(desired_spread >= 0)
 		desired_spread *= 100
-		desired_spread = clamp(FLOOR(desired_spread,1)+1,0,length(spread_icons))
+		desired_spread = clamp(1+CEILING(desired_spread,1),0,length(spread_icons))
 		if(client.mouse_pointer_icon != spread_icons[desired_spread])
 			set_mouse_pointer(spread_icons[desired_spread])
-	else if(client.mouse_pointer_icon != spread_icons[1])
-		set_mouse_pointer(spread_icons[1])
+	else
+		var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
+		if(client.mouse_pointer_icon != icon_to_use)
+			set_mouse_pointer(icon_to_use)
 
 
 
