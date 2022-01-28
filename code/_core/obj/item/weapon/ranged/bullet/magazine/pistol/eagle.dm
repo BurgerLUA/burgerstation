@@ -73,10 +73,10 @@
 	value = 5000
 	tier = 4
 
-	damage_mod = 1.3
-	shoot_delay = 3
+	damage_mod = 2
+	shoot_delay = 4
 
-	weight = 15
+	weight = 20
 	value_burgerbux = 1
 
 

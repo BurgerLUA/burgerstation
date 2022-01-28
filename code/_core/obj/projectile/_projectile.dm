@@ -238,7 +238,7 @@
 	var/rounded_y = CEILING(pixel_y_float,1)
 
 	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough to animate.
-		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < 20)
+		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
 			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
 		else
 			pixel_x = rounded_x

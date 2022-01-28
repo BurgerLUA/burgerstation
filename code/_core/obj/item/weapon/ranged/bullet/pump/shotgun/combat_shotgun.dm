@@ -9,7 +9,7 @@
 
 	value = 2800
 
-	shoot_delay = 4
+	shoot_delay = 2
 
 	damage_mod = 1.5
 
@@ -61,7 +61,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
-	pump_delay = 4
+	pump_delay = 3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread()
 	return 0.002
@@ -81,6 +81,10 @@
 	automatic = FALSE
 
 	bullet_count_max = 4
+
+	shoot_delay = 1
+	damage_mod = 1.3
+	pump_delay = 2
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 

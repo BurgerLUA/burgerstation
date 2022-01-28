@@ -1670,7 +1670,6 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\vintorez.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\shotgun\_shotgun.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\shotgun\autoshotgun.dm"
-#include "code\_core\obj\item\weapon\ranged\bullet\magazine\shotgun\cursed.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\shotgun\saiga.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\smg\_smg.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\smg\bizon.dm"

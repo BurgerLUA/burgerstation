@@ -1,5 +1,5 @@
 /obj/hud/button/ability
-	name = "ability"
+	name = "ERROR"
 	var/id = null
 	desc = "Slot button for quick actions."
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
@@ -86,7 +86,10 @@
 
 	. = ..()
 
-	name = ability.name
+	if(ability)
+		name = ability.name
+	else
+		name = "empty ability"
 
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner

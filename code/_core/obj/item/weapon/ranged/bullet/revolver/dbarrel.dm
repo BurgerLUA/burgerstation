@@ -8,8 +8,8 @@
 
 	tier = 1
 
-	damage_mod = 0.9
-	shoot_delay = 2
+	damage_mod = 0.8
+	shoot_delay = 3
 
 	automatic = FALSE
 

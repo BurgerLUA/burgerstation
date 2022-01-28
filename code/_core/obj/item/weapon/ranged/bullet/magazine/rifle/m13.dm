@@ -1,14 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13
-	name = "\improper 7.62mm M13 Service Rifle"
+	name = "\improper .308 M13 Service Rifle"
 	desc = "HOORAH!."
 	desc_extended = "The M13 is an Old War service rifle used by old Space American colonies to defend territory as well as conquer it. It doesn't see much use today and can only be found in the hands of collectors and grandchildren of veterans. Uses a special 8 round clip to feed rounds."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/m13.dmi'
 	icon_state = "inventory"
-	value = 1400
+	value = 800
 
 	tier = 1
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = FALSE
 
@@ -79,7 +79,9 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/handle_ammo(var/mob/caller)
 	. = ..()
 	if(!chambered_bullet && stored_magazine)
-		eject_magazine(caller) //Ding
+		var/turf/T = get_turf(src)
+		play_sound('sound/weapons/clip_ping.ogg',T)
+		eject_magazine(caller)
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
 

@@ -31,7 +31,6 @@
 		/obj/item/supply_crate/nanotrasen = CHANCE_CRATE,
 		/obj/item/supply_crate/russian = CHANCE_CRATE,
 		/obj/item/supply_crate/syndicate = CHANCE_CRATE,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/cursed = CHANCE_MEME,
 		/obj/item/tempering/quality/clothing = CHANCE_GOD,
 		/obj/item/tempering/quality/energy = CHANCE_GOD,
 		/obj/item/fishing/lure/t3 = CHANCE_GOOD,
