@@ -1,3 +1,10 @@
+var/global/list/ability_colors = list(
+	HEALTH = "red",
+	MANA = "blue",
+	STAMINA = "green"
+)
+
+
 /obj/hud/button/ability
 	name = "ERROR"
 	var/id = null
@@ -55,7 +62,7 @@
 	add_overlay(I)
 	if(ability)
 		var/image/I2 = new/image(ability.icon,ability.icon_state)
-		I2.maptext = "<div align='right' style='color:blue'>[ability.mana_cost]</div>"
+		I2.maptext = "<div align='right' style='color:[ability_colors[ability.resource_type]]'>[ability.cost]</div>"
 		I2.maptext_x = -5
 		add_overlay(I2)
 
@@ -103,11 +110,12 @@
 /obj/hud/button/ability/B
 	id = "2"
 	screen_loc = "LEFT+1+0.25,TOP-0.25"
-	ability = /ability/quick_draw/plus
+	ability = /ability/dash
 
 /obj/hud/button/ability/C
 	id = "3"
 	screen_loc = "LEFT+2+0.25,TOP-0.25"
+	ability = /ability/cqc/carp/crashing_wave_kick
 
 /obj/hud/button/ability/D
 	id = "4"

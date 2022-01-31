@@ -34,6 +34,7 @@
 /obj/effect/damage_number/proc/fade()
 	animate(src,alpha=0,time = 5)
 	CALLBACK("\ref[src]_remove_damage_number",5,src,.proc/remove)
+	return TRUE
 
 /obj/effect/damage_number/proc/remove()
 	qdel(src)
@@ -82,7 +83,11 @@
 
 /obj/effect/temp/status_effect/New(var/desired_location,var/desired_time,var/desired_value)
 	. = ..()
-	maptext = "<div style='font-size:0.5;color:#FFFFFF;text-align:center'>[desired_value]</div>"
+	maptext = "<div style='font-size:0.5;color:#FFFFFF;text-align:center;text-shadow:0px 0px 2px #000000;'>[desired_value]</div>"
 	animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=duration*0.5,easing = CIRCULAR_EASING | EASE_OUT)
-	spawn(duration - 5)
-		animate(src,alpha=0,time = 5)
+	CALLBACK("\ref[src]_fade_status",duration-5,src,.proc/fade)
+
+/obj/effect/temp/status_effect/proc/fade()
+	animate(src,alpha=0,time = 5)
+	return TRUE
+

@@ -12,13 +12,6 @@
 		CRASH_SAFE("Dash called on non-player!")
 		return FALSE
 
-	if(health)
-		if(has_status_effect(STAMCRIT) || health.stamina_current < 25)
-			to_chat(span("warning","You can't dash, you're exhausted!"))
-			return FALSE
-		health.adjust_stamina(-25)
-		queue_health_update = TRUE
-
 	var/final_direction = dash_direction ? dash_direction : get_dir(src,dash_target)
 	glide_size = step_size/DECISECONDS_TO_TICKS(DASH_DELAY)
 	Move(get_step(src,final_direction))
