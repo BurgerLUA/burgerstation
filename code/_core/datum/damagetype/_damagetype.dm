@@ -1,3 +1,5 @@
+var/global/list/all_damage_numbers = list()
+
 /damagetype/
 	var/name //TODO:REMOVE
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
@@ -598,6 +600,17 @@
 					A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
+	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (total_damage_dealt > 0 || damage_blocked > 0) && isturf(victim.loc))
+		var/turf/T = victim.loc
+		if(T)
+			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
+			var/obj/effect/damage_number/DN
+			if(length(all_damage_numbers) && all_damage_numbers[desired_id])
+				DN = all_damage_numbers[desired_id]
+				DN.add_value(total_damage_dealt,damage_blocked)
+			else
+				DN = new(T,total_damage_dealt,damage_blocked,desired_id)
 
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon

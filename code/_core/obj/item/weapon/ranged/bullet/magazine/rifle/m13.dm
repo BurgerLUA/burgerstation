@@ -19,7 +19,7 @@
 	size = SIZE_4
 	weight = 25
 
-	heat_max = 0.12
+	heat_max = 0.125
 
 	bullet_length_min = 46
 	bullet_length_best = 51
@@ -74,14 +74,22 @@
 	return 0.0001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/get_skill_spread(var/mob/living/L)
-	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m13/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/rifle/m13/load_new_bullet_from_magazine(var/mob/caller)
 	. = ..()
-	if(. && !chambered_bullet && stored_magazine)
+	if(!chambered_bullet && stored_magazine)
 		var/turf/T = get_turf(src)
 		play_sound('sound/weapons/clip_ping.ogg',T)
 		eject_magazine(caller)
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/m13/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+
+	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !caller.attack_flags) //Can't remove magazine normally.
+		return TRUE
+
+	. = ..()
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
 

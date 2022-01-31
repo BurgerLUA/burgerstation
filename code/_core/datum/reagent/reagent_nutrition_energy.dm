@@ -24,14 +24,15 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*stamina_strength)
+		owner.health.adjust_stamina(.*stamina_strength*0.5)
 
 /reagent/nutrition/energy/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
-		L.add_status_effect(ADRENALINE,adrenaline_strength,-1)
+	var/local_strength = adrenaline_strength * (container.flags_metabolism & REAGENT_METABOLISM_BLOOD ? 1 : 0.25)
+	if(L.get_status_effect_magnitude(ADRENALINE) <= local_strength)
+		L.add_status_effect(ADRENALINE,local_strength,-1)
 
 /reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
@@ -75,7 +76,7 @@
 	particle_size = 0.3
 
 
-/reagent/nutrition/energy/coffee/expresso
+/reagent/nutrition/energy/coffee/espresso
 	name = "espresso"
 	desc = "Coffee in its purest form."
 	color = "#824C28"

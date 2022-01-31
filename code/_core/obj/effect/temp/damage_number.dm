@@ -14,44 +14,51 @@
 	maptext_height = TILE_SIZE
 	maptext_width = TILE_SIZE*3
 
-	var/current_value
+	var/current_damage
+	var/current_block
+	var/id
 
 	maptext = "Bug"
 
-/obj/effect/damage_number/New(var/desired_location,var/desired_value)
+/obj/effect/damage_number/Destroy()
+	all_damage_numbers -= id
 	. = ..()
-	if(desired_value) add_value(desired_value)
+
+/obj/effect/damage_number/New(var/desired_location,var/desired_damage,var/desired_block,var/desirwed_id)
+	. = ..()
+	if(desirwed_id)
+		id = desirwed_id
+		all_damage_numbers[id] = src
+	if(desired_damage || desired_block) add_value(desired_damage,desired_block)
 
 /obj/effect/damage_number/proc/fade()
-	animate(src,alpha=0,time = 10)
-	CALLBACK("\ref[src]_remove_damage_number",10,src,.proc/remove)
+	animate(src,alpha=0,time = 5)
+	CALLBACK("\ref[src]_remove_damage_number",5,src,.proc/remove)
 
 /obj/effect/damage_number/proc/remove()
 	qdel(src)
 	return TRUE
 
-/obj/effect/damage_number/proc/add_value(var/desired_value)
+/obj/effect/damage_number/proc/add_value(var/desired_damage,var/desired_block)
 	var/desired_color = "#FFFFFF"
 	var/desired_size = 0.5
-	if(current_value)
-		current_value += desired_value
-		animate(src,alpha=255,flags=ANIMATION_RELATIVE)
-		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=30,easing = CIRCULAR_EASING | EASE_OUT)
-		CALLBACK_REMOVE("\ref[src]_remove_damage_number")
-		CALLBACK_REMOVE("\ref[src]_fade_damage_number")
+	if(current_damage || current_block)
+		current_damage += desired_damage
+		current_block += desired_block
 	else
-		current_value = desired_value
+		current_damage = desired_damage
+		current_block = desired_block
 		alpha = 255
-		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=30,easing = CIRCULAR_EASING | EASE_OUT)
-	current_value = clamp(current_value,1,9999999)
-	var/damage_color_math = clamp(255 - (current_value/200)*255,0,255)
-	desired_size = clamp(current_value*0.01,0.25,4)
+		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=10,easing = CIRCULAR_EASING | EASE_OUT,flags = ANIMATION_PARALLEL)
+	current_damage = clamp(current_damage,1,9999999)
+	current_block = clamp(current_block,1,9999999)
+	var/damage_color_math = clamp(255 - (current_damage/200)*255,0,255)
+	desired_size = clamp(current_damage*0.01,0.25,4)
 	desired_color = rgb(255,damage_color_math,damage_color_math)
-	var/desired_text = current_value
-	if(current_value == 69 || current_value == 420)
-		desired_text = "[current_value] (nice)"
-	maptext = "<div style='font-size:[desired_size];color:[desired_color];text-align:center'>[desired_text]</div>"
-	CALLBACK("\ref[src]_fade_damage_number",35,src,.proc/fade)
+	desired_color = blend_colors(desired_color,"#808080",current_block/current_damage)
+	var/desired_text = current_damage
+	maptext = "<div style='font-size:[desired_size];color:[desired_color];text-align:center;text-shadow:0px 0px 2px #000000;'>[desired_text]</div>"
+	CALLBACK("\ref[src]_fade_damage_number",10,src,.proc/fade)
 	return TRUE
 
 

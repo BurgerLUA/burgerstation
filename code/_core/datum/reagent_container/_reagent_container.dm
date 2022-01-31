@@ -212,9 +212,9 @@
 			stored_reagents_temperature -= r_id
 			continue
 
-		red += GetRedPart(R.color) * volume
-		green += GetGreenPart(R.color) * volume
-		blue += GetBluePart(R.color) * volume
+		red += GetRedPart(R.color) * volume * R.color_multiplier
+		green += GetGreenPart(R.color) * volume * R.color_multiplier
+		blue += GetBluePart(R.color) * volume * R.color_multiplier
 		alpha += R.alpha * volume
 		volume_current += volume
 

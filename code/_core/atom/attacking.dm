@@ -1,14 +1,5 @@
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0 && isturf(src.loc))
-		var/turf/T = src.loc
-		if(T)
-			var/obj/effect/damage_number/DN = locate() in T.contents
-			if(DN)
-				DN.add_value(damage_amount)
-			else
-				new /obj/effect/damage_number(T,damage_amount)
-
 	if(health)
 		health.update_health(attacker,damage_amount)
 

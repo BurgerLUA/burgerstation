@@ -13,14 +13,14 @@
 	return ..()
 
 
-//Regular expresso isn't here as that's a proper drink
+//Regular espresso isn't here as that's a proper drink
 
 /obj/item/container/simple/can/coffee/americano
 	name = "\improper Robusto Spaceo Americano"
 	desc = "Expresso with some hot water poured inside."
 
 /obj/item/container/simple/can/coffee/americano/Generate()
-	reagents.add_reagent(/reagent/nutrition/energy/coffee/expresso,reagents.volume_max*0.25,T0C + 96)
+	reagents.add_reagent(/reagent/nutrition/energy/coffee/espresso,reagents.volume_max*0.25,T0C + 96)
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max*0.75,T0C + 96)
 	open = FALSE
 	return ..()
@@ -31,7 +31,7 @@
 	desc = "Expresso with hot cream."
 
 /obj/item/container/simple/can/coffee/latte/Generate()
-	reagents.add_reagent(/reagent/nutrition/energy/coffee/expresso,reagents.volume_max*0.25,T0C + 96)
+	reagents.add_reagent(/reagent/nutrition/energy/coffee/espresso,reagents.volume_max*0.25,T0C + 96)
 	reagents.add_reagent(/reagent/nutrition/cream,reagents.volume_max*0.75,T0C + 96)
 	open = FALSE
 	return ..()

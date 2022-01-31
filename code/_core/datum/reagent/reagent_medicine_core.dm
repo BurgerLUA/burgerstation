@@ -7,7 +7,7 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 2.5
 
 	value = 0.75
@@ -29,8 +29,8 @@
 	color = "#FF0080"
 	alpha = 225
 
-	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_blood = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 5
 
 	value = 1.25
@@ -53,8 +53,8 @@
 
 	flavor = "bandaids"
 
-	metabolism_blood = 0.2
-	metabolism_stomach = 0.2
+	metabolism_blood = 0.4
+	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
 	value = 1
@@ -80,7 +80,7 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.4
-	metabolism_stomach = 0.4
+	metabolism_stomach = 0.1
 	experience_per_unit = 4
 
 	value = 1
@@ -108,7 +108,7 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.4
-	metabolism_stomach = 0.4
+	metabolism_stomach = 0.1
 	experience_per_unit = 4
 
 	value = 1
@@ -137,7 +137,7 @@
 	flavor = "ointment"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 2.5
 
 	value = 0.5
@@ -160,8 +160,8 @@
 
 	flavor = "bandaids"
 
-	metabolism_blood = 0.2
-	metabolism_stomach = 0.2
+	metabolism_blood = 1
+	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
 	value = 0.75
@@ -186,8 +186,8 @@
 
 	flavor = "bandaids"
 
-	metabolism_blood = 0.2
-	metabolism_stomach = 0.2
+	metabolism_blood = 1
+	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
 	value = 0.75
@@ -243,7 +243,7 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.1
-	metabolism_stomach = 0.1
+	metabolism_stomach = 0.01
 	experience_per_unit = 2
 
 	value = 0.75
@@ -273,7 +273,7 @@
 	flavor = "sweetness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 2.5
 
 	value = 0.5
@@ -297,7 +297,7 @@
 	flavor = "bitterness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 
 	value = 0.5
 
@@ -320,7 +320,7 @@
 	flavor = "sourness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 4
 
 	value = 0.75
@@ -342,14 +342,14 @@
 /reagent/medicine/omnizine
 	name = "Omnizine"
 	desc = "Heals everything."
-	desc_extended = "Works just as good when consumed."
+	desc_extended = "Works just as good when consumed, albeit at a slower rate."
 	color = "#F7F7F7"
 	alpha = 255
 
 	flavor = "bitter sourness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 3
 
 	value = 1
@@ -377,8 +377,10 @@
 
 	flavor = "god"
 
-	metabolism_blood = 1
-	metabolism_stomach = 1
+	metabolism_blood = 10
+	metabolism_stomach = 10
+	metabolism_skin = 10
+
 	experience_per_unit = 10
 
 	value = 500

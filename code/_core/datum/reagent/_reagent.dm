@@ -2,10 +2,6 @@
 #define FLAG_REAGENT_COOKED 0x2
 #define FLAG_REAGENT_FAT 0x4
 
-#define METABOLISM_BLOOD 1
-#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.5
-#define METABOLISM_SKIN METABOLISM_BLOOD * 4
-
 /reagent/
 	var/name = "Reagent"
 	var/desc = "The basic description of the reagent."
@@ -13,13 +9,14 @@
 	var/value = 0 //Value per unit.
 
 	var/color = "#FFFFFF" //Reagent's color.
+	var/color_multiplier = 1
 	var/alpha = 255 //Reagent's alpha
 
 	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive. Set to higher values if you want it to cool down and heat up slower.
 
-	var/metabolism_stomach = METABOLISM_STOMACH //How many units of the reagent to metabolize per second.
-	var/metabolism_blood = METABOLISM_BLOOD //How many units of the reagent to metabolize per second.
-	var/metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
+	var/metabolism_stomach = 1 //How many units of the reagent to metabolize per second.
+	var/metabolism_blood = 1 //How many units of the reagent to metabolize per second.
+	var/metabolism_skin = 1 //How many units of the reagent to metabolize per second.
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
 	var/flags_metabolism = REAGENT_METABOLISM_INGEST | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN

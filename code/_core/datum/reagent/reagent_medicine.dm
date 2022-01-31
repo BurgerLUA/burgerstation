@@ -89,8 +89,8 @@
 
 	flavor = "cherry"
 
-	metabolism_blood = METABOLISM_BLOOD * 10
-	metabolism_stomach = METABOLISM_BLOOD * 10
+	metabolism_blood = 5
+	metabolism_stomach = 5
 
 	experience_per_unit = 3
 
@@ -119,8 +119,8 @@
 
 	flavor = "lime"
 
-	metabolism_blood = METABOLISM_BLOOD * 10
-	metabolism_stomach = METABOLISM_BLOOD * 10
+	metabolism_blood = 5
+	metabolism_stomach = 5
 
 	experience_per_unit = 2
 
@@ -149,8 +149,8 @@
 
 	flavor = "blueberry"
 
-	metabolism_blood = METABOLISM_BLOOD * 10
-	metabolism_stomach = METABOLISM_BLOOD * 10
+	metabolism_blood = 5
+	metabolism_stomach = 5
 
 	experience_per_unit = 2
 
@@ -180,8 +180,8 @@
 
 	flavor = "bitter grass"
 
-	metabolism_blood = METABOLISM_BLOOD * 5
-	metabolism_stomach = METABOLISM_BLOOD * 5
+	metabolism_blood = 5
+	metabolism_stomach = 1
 
 	experience_per_unit = 2
 
@@ -329,8 +329,8 @@
 
 	flavor = "fat"
 
-	metabolism_blood = 1
-	metabolism_stomach = 0.5
+	metabolism_blood = 2
+	metabolism_stomach = 0.2
 	experience_per_unit = 4.5
 
 	value = 0.75
