@@ -1,4 +1,4 @@
-/atom/movable/proc/get_movement_delay()
+/atom/movable/proc/get_movement_delay(var/include_stance=TRUE)
 	return movement_delay
 
 /atom/movable/proc/can_enter(var/turf/T,var/loc_overide = src.loc)

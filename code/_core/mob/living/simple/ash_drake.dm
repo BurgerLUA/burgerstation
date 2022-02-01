@@ -187,7 +187,7 @@
 
 	return TRUE
 
-/mob/living/simple/ash_drake/get_movement_delay()
+/mob/living/simple/ash_drake/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 

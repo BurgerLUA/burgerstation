@@ -226,7 +226,6 @@
 #include "code\_core\datum\collectable_poster.dm"
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\ability\_ability.dm"
-#include "code\_core\datum\ability\cqc.dm"
 #include "code\_core\datum\ability\dash.dm"
 #include "code\_core\datum\ability\quick_draw.dm"
 #include "code\_core\datum\addiction\_addiction.dm"

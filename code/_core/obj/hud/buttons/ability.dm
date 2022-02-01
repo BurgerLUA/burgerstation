@@ -30,7 +30,7 @@ var/global/list/ability_colors = list(
 
 	var/ability/ability
 	var/image/ability_icon
-	maptext_y = 10
+	maptext_y = -5
 	maptext_x = 0
 
 /obj/hud/button/ability/New(var/desired_loc)
@@ -78,7 +78,7 @@ var/global/list/ability_colors = list(
 		src.maptext = ""
 		return FALSE
 
-	var/display_number = ability.cooldown_end - world.time
+	var/display_number = DECISECONDS_TO_SECONDS(ability.cooldown_end - world.time)
 	display_number = CEILING(display_number,0.1)
 
 	src.maptext = "<div align = 'center'>[display_number]</align>"
@@ -115,7 +115,6 @@ var/global/list/ability_colors = list(
 /obj/hud/button/ability/C
 	id = "3"
 	screen_loc = "LEFT+2+0.25,TOP-0.25"
-	ability = /ability/cqc/carp/crashing_wave_kick
 
 /obj/hud/button/ability/D
 	id = "4"

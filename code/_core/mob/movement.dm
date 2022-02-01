@@ -46,11 +46,12 @@
 
 	return 1
 
-/mob/get_movement_delay()
+/mob/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
-	. *= get_stance_movement_mul()
+	if(include_stance)
+		. *= get_stance_movement_mul()
 
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)

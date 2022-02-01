@@ -81,7 +81,7 @@
 	if(prob(rest_chance))
 		add_status_effect(REST,-1,-2, force = TRUE)
 
-/mob/living/advanced/npc/zombie/get_movement_delay()
+/mob/living/advanced/npc/zombie/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 

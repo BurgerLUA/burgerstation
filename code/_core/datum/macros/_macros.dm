@@ -44,11 +44,7 @@
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
 			var/obj/hud/button/ability/B = A.ability_buttons[text_num]
-			if(B)
-				owner << "Yes [text_num]."
-				B.activate(owner.mob)
-			else
-				owner << "No [text_num]."
+			if(B) B.activate(owner.mob)
 		return TRUE
 
 	switch(command)

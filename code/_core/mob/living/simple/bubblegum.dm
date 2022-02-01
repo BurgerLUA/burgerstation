@@ -122,7 +122,7 @@
 
 	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
-/mob/living/simple/bubblegum/get_movement_delay()
+/mob/living/simple/bubblegum/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 

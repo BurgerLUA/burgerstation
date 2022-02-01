@@ -264,6 +264,10 @@
 
 	var/expiration_time = -1 //Time at which the mob "expires" after death and cannot be revived. Set to 0 to disable. Set to -1 to make it instant upon death.
 
+	var/atom/dash_target //The target that you're dashing at.
+	var/dash_amount = 0 //Amount of times to move in a direction.
+
+
 /mob/living/Destroy()
 
 	buckled_object = null
