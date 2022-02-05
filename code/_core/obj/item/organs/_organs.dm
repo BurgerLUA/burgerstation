@@ -137,19 +137,19 @@
 
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
-	if(total_bleed_damage>0)
-		var/bleed_to_add = total_bleed_damage/50
-		src.bleeding += bleed_to_add
-
 	. = ..()
 
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
+		if(health && A.blood_type)
+			var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+			if(total_bleed_damage>0)
+				var/bleed_to_add = total_bleed_damage/50
+				src.bleeding += bleed_to_add
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
-		if(!A.immortal && !A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
+		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
 			if(is_player(A))
 				var/mob/living/advanced/player/P = A
 				if(P.dead && is_player(attacker)) //Only gib if the player is dead and the person gibbing is a player.
@@ -347,15 +347,22 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(50 to INFINITY)
 			damage_desc += "<u><b>mutating</b></u>"
 
-
 	switch(bleeding)
 		if(0.5 to 2)
-			damage_desc += "trickling blood"
+			if(health.organic)
+				damage_desc += "trickling blood"
+			else
+				damage_desc += "trickling fluid"
 		if(2 to 4)
-			damage_desc += "<b>bleeding</b>"
+			if(health.organic)
+				damage_desc += "<b>bleeding</b>"
+			else
+				damage_desc += "<b>leaking fluid</b>"
 		if(4 to INFINITY)
-			damage_desc += "<u><b>gushing blood</b></u>"
-
+			if(health.organic)
+				damage_desc += "<u><b>gushing blood</b></u>"
+			else
+				damage_desc += "<u><b>gushing fluid</b></u>"
 	return damage_desc
 
 

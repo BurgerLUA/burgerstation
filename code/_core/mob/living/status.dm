@@ -1,4 +1,4 @@
-/mob/living/proc/add_status_effect(var/status_type,var/magnitude,var/duration,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+/mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=-1,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
 
 	if(!force && length(status_immune) && status_immune[status_type])
 		if(isnum(status_immune[status_type]))

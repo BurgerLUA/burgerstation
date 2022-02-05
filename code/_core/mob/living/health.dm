@@ -53,7 +53,7 @@
 
 /mob/living/proc/check_death()
 
-	if(!health || immortal)
+	if(!health || has_status_effect(IMMORTAL))
 		return FALSE
 
 	var/health_added = 0
@@ -74,7 +74,7 @@
 	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
 	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
-	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
+	var/savage_hit = health && !has_status_effect(IMMORTAL) ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
 
 	if(savage_hit)
 		total_bleed_damage *= 3

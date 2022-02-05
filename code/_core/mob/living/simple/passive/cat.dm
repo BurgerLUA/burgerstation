@@ -7,8 +7,6 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	icon = 'icons/mob/living/simple/cat_colored.dmi'
 	icon_state = "living"
 
-	immortal = TRUE // :(
-
 	ai = /ai/cat
 
 	var/kittens_left = 20 //Needs to be a limit. Just in case.
@@ -27,6 +25,8 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	blood_volume = 200
 
 	soul_size = SOUL_SIZE_COMMON
+
+	health = null //immortal
 
 	level = 2
 

@@ -480,9 +480,12 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(!istype(M))
 			to_chat(span("notice", "This can only be used on instances of type /mob/living/advanced"))
 			return
-
-		M.immortal = TRUE
-		M.movement_delay = 0.5
+		if(M.has_status_effect(IMMORTAL))
+			M.remove_status_effect(IMMORTAL)
+			M.movement_delay = initial(M.movement_delay)
+		else
+			M.add_status_effect(IMMORTAL)
+			M.movement_delay = 0.5
 		href_list["datumrefresh"] = href_list["godmode"]
 	else if(href_list["drop_everything"])
 

@@ -485,3 +485,11 @@
 	owner.sanity_regen_buffer = min(owner.sanity_regen_buffer,0)
 	owner.mana_regen_buffer = min(owner.mana_regen_buffer,0)
 	owner.stamina_regen_buffer = min(owner.stamina_regen_buffer,0)
+
+
+/status_effect/immortal
+	name = "Immortal"
+	desc = "You're immortal. Congrats, cheater."
+	id = IMMORTAL
+
+	affects_dead = TRUE

@@ -95,3 +95,5 @@
 #define ZOMBIE "zombie"
 
 #define UNDYING "undying"
+
+#define IMMORTAL "immortal"

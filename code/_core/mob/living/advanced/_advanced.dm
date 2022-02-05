@@ -320,8 +320,6 @@ mob/living/advanced/Login()
 		var/species/S = SPECIES(species)
 		if(S && S.health)
 			health = S.health
-		else
-			health = /health/mob/living/advanced
 
 	. = ..()
 
@@ -332,6 +330,10 @@ mob/living/advanced/Login()
 
 	if(client)
 		add_species_buttons()
+
+	var/species/S = SPECIES(species)
+	if(S)
+		S.generate_traits(src)
 
 /mob/living/advanced/PostInitialize()
 

@@ -512,6 +512,7 @@
 #include "code\_core\datum\health\construction.dm"
 #include "code\_core\datum\health\mob\living\_living.dm"
 #include "code\_core\datum\health\mob\living\advanced\_advanced.dm"
+#include "code\_core\datum\health\mob\living\advanced\dummy.dm"
 #include "code\_core\datum\health\mob\living\advanced\robot.dm"
 #include "code\_core\datum\health\mob\living\advanced\zombie.dm"
 #include "code\_core\datum\health\mob\living\simple\squarts.dm"

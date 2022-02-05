@@ -504,26 +504,22 @@ var/global/list/all_damage_numbers = list()
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
 	var/total_damage_dealt = 0
-	if(victim.immortal || hit_object.immortal)
+	if(hit_object.health)
+		total_damage_dealt += hit_object.health.adjust_loss_smart(
+			brute = damage_to_deal_main[BRUTE],
+			burn = damage_to_deal_main[BURN],
+			tox = damage_to_deal_main[TOX],
+			oxy = damage_to_deal_main[OXY],
+			fatigue = damage_to_deal_main[FATIGUE],
+			pain = damage_to_deal_main[PAIN],
+			rad = damage_to_deal_main[RAD],
+			sanity = damage_to_deal_main[SANITY],
+			mental = damage_to_deal_main[MENTAL],
+			update = FALSE
+		)
+	else
 		for(var/damage_type in damage_to_deal_main)
 			total_damage_dealt += damage_to_deal_main[damage_type]
-	else
-		if(hit_object.health)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(
-				brute = damage_to_deal_main[BRUTE],
-				burn = damage_to_deal_main[BURN],
-				tox = damage_to_deal_main[TOX],
-				oxy = damage_to_deal_main[OXY],
-				fatigue = damage_to_deal_main[FATIGUE],
-				pain = damage_to_deal_main[PAIN],
-				rad = damage_to_deal_main[RAD],
-				sanity = damage_to_deal_main[SANITY],
-				mental = damage_to_deal_main[MENTAL],
-				update = FALSE
-			)
-		else
-			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
-			return TRUE
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 

@@ -68,7 +68,7 @@
 	if(L.dead)
 		return FALSE
 
-	if(L.immortal && !ignore_immortal)
+	if(!L.health && !ignore_immortal)
 		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))

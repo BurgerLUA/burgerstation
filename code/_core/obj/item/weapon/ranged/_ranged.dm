@@ -334,10 +334,10 @@
 	if(istype(object,/obj/parallax))
 		object = object.defer_click_on_object(caller,location,control,params) //Only time defer_click_on_object should be used like this.
 
-	if(object.z && shoot(caller,object,location,params))
-		return TRUE
+	. = ..()
 
-	return ..()
+	if(!. && object.z && shoot(caller,object,location,params))
+		return TRUE
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE

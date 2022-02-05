@@ -9,9 +9,7 @@
 	amount_max = 1
 
 	projectile = /obj/projectile/thrown //Something here.
-
 	shoot_sounds = list('sound/effects/fwoosh.ogg')
-
 
 /obj/item/weapon/ranged/thrown/update_icon()
 	. = ..()

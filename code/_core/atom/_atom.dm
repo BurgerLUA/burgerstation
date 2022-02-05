@@ -37,8 +37,6 @@
 	var/corner_icons = FALSE
 	var/corner_category = "none"
 
-	var/immortal = FALSE //Is this object allowed to take damage?
-
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
