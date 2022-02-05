@@ -690,6 +690,7 @@
 #include "code\_core\datum\savedata\client\controls\_controls.dm"
 #include "code\_core\datum\savedata\client\death_box\_death_box.dm"
 #include "code\_core\datum\savedata\client\globals\_globals.dm"
+#include "code\_core\datum\savedata\client\loadout\_loadout.dm"
 #include "code\_core\datum\savedata\client\mob\_mob.dm"
 #include "code\_core\datum\savedata\client\mob\helpers.dm"
 #include "code\_core\datum\savedata\client\settings\_settings.dm"

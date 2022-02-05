@@ -16,9 +16,7 @@
 	var/class = /class/npc
 	var/level = 1
 
-	var/enable_AI = FALSE
 	var/ai/ai
-	//var/id //Boss ID
 
 	var/iff_tag
 	var/loyalty_tag
