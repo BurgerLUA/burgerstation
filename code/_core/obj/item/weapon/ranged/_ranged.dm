@@ -375,7 +375,8 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	return FALSE
 
-obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+/obj/item/weapon/ranged/proc/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!object)
 		return FALSE
@@ -398,6 +399,13 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		return FALSE
 
 	if(!can_gun_shoot(caller,object,location,params))
+		return FALSE
+
+	return TRUE
+
+obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+	if(!pre_shoot(caller,object,location,params,damage_multiplier))
 		return FALSE
 
 	var/quality_bonus = get_quality_bonus(0.5,2)

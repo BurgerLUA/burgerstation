@@ -1,4 +1,8 @@
-/damagetype/ranged/bow/
+/damagetype/ranged/thrown/
+
+
+
+/damagetype/ranged/thrown/kunai
 	attack_damage_base = list(
 		PIERCE = 100,
 		BLADE = 40,

@@ -135,6 +135,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/savage_hit_threshold = 0.3 //30%
 
+	var/sneak_attack_multiplier = 2 //200%
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -193,6 +195,9 @@ var/global/list/all_damage_numbers = list()
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
 
+/damagetype/proc/do_sneak_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+	return sneak_attack_multiplier
+
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
 	var/list/new_attack_damage = attack_damage_base.Copy()
@@ -228,6 +233,15 @@ var/global/list/all_damage_numbers = list()
 
 	return new_attack_damage
 
+/damagetype/proc/get_sneak_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+			return TRUE
+
+	return FALSE
+
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(!attacker.is_player_controlled() || victim.is_player_controlled())
@@ -242,11 +256,6 @@ var/global/list/all_damage_numbers = list()
 			var/obj/hud/inventory/I = M.grabbing_hand
 			if(I.owner == attacker)
 				return TRUE
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
-			return TRUE
 
 	var/crit_chance = get_crit_chance(attacker)
 
@@ -410,6 +419,7 @@ var/global/list/all_damage_numbers = list()
 		SANITY = 0
 	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
+	critical_hit_multiplier *= get_sneak_hit_condition(attacker,victim,weapon,hit_object) ? do_sneak_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
 	var/pain_damage = 0
 
