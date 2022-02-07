@@ -32,6 +32,8 @@
 
 	map_color = COLOR_WHITE
 
+	plane = PLANE_AREA_INTERIOR
+
 /area/burgerstation/hall
 	name = "\improper Hallway"
 	icon_state = "hall"

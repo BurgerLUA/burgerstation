@@ -16,9 +16,12 @@
 
 #define PLANE_WALL -40
 
-//Objs
-#define PLANE_DECAL -14
+//Areas
+#define PLANE_AREA_INTERIOR -39
+#define PLANE_AREA_EXTERIOR -38
 
+//Objs
+#define PLANE_DECAL -34
 
 #define PLANE_BLOOD -33
 
@@ -42,9 +45,8 @@
 
 #define PLANE_EFFECT -10
 
-
-//Areas
-#define PLANE_AREA -4
+//Weather
+#define PLANE_WEATHER -4
 
 //Lighting
 #define PLANE_LIGHTING -3
@@ -54,6 +56,7 @@
 #define PLANE_EFFECT_LIGHTING -1
 
 #define PLANE_DARKNESS 0 // This is always 0. There is no way to change this.
+
 
 //Hud Effects
 #define PLANE_DAMAGE_NUMBERS 10

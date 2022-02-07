@@ -171,3 +171,44 @@
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=0, size=2, offset=0, color=rgb(0,0,0))
+
+
+//Exterior areas. For weather effects.
+/obj/plane_master/area_exterior
+	plane = PLANE_AREA_EXTERIOR
+	render_target = "*area_exterior"
+
+/obj/plane_master/area_exterior/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
+
+
+/obj/plane_master/weather
+	plane = PLANE_WEATHER
+
+/obj/plane_master/weather/apply_post_processing()
+	. = ..()
+	filters += filter(type="alpha", x=0, y=0, render_source="*area_exterior")
+
+
+
+/particles/snow
+	width = SCREEN_SIZE
+	height = SCREEN_SIZE
+	count = 2000
+	spawning = 12
+	lifespan = SECONDS_TO_DECISECONDS(6)
+	fade = SECONDS_TO_DECISECONDS(2)
+
+	position = generator("box", list(-SCREEN_SIZE*0.5,SCREEN_SIZE*0.5,0), list(SCREEN_SIZE*0.5,SCREEN_SIZE*0.5,50))
+
+	gravity = list(0,-3)
+	friction = 0.2
+	drift = generator("sphere", 0, 2)
+
+/obj/snow
+    screen_loc = "CENTER"
+    particles = new/particles/snow
+    plane = PLANE_WEATHER

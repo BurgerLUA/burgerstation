@@ -3,7 +3,7 @@
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
-	plane = PLANE_AREA
+	plane = PLANE_AREA_EXTERIOR
 	invisibility = 101
 
 	mouse_opacity = 0
@@ -21,12 +21,11 @@
 	var/list/random_sounds = list()
 	var/list/tracks = list()
 
+	var/weather = WEATHER_NONE
 	var/hazard //The id of the hazard
 
 	var/sunlight_freq = 0
 	var/sunlight_color = "#FFFFFF"
-
-	var/weather = WEATHER_NONE //Optional weather
 
 	var/ambient_temperature = T0C + 20
 
@@ -70,9 +69,10 @@
 
 /area/Initialize()
 
-	if(weather)
-		icon = 'icons/area/weather.dmi'
-		icon_state = weather
+	if(plane == PLANE_AREA_EXTERIOR)
+		icon = 'icons/area/area.dmi'
+		icon_state = "black"
+		invisibility = 0
 
 	var/area_count = 0
 	average_x = 0

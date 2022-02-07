@@ -68,6 +68,8 @@
 	var/obj/plane_master/openspace/plane_master_openspace
 	var/obj/plane_master/currency/plane_master_currency
 	var/obj/plane_master/hud/plane_master_hud
+	var/obj/plane_master/weather/plane_master_weather
+	var/obj/plane_master/area_exterior/plane_master_area_exterior
 
 	var/list/parallax
 
@@ -161,6 +163,8 @@
 	QDEL_NULL(plane_master_openspace)
 	QDEL_NULL(plane_master_currency)
 	QDEL_NULL(plane_master_hud)
+	QDEL_NULL(plane_master_weather)
+	QDEL_NULL(plane_master_area_exterior)
 
 	QDEL_NULL(examine_overlay)
 
@@ -243,6 +247,14 @@
 		plane_master_hud = new(src)
 	C.screen += plane_master_hud
 
+	if(!plane_master_weather)
+		plane_master_weather = new(src)
+	C.screen += plane_master_weather
+
+	if(!plane_master_area_exterior)
+		plane_master_area_exterior = new(src)
+	C.screen += plane_master_area_exterior
+
 	if(!examine_overlay)
 		examine_overlay = new(src)
 	C.screen += examine_overlay
@@ -270,6 +282,8 @@
 		parallax["D"] += P
 		P.owner = src
 	C.screen += parallax["D"]
+
+	C.screen += new/obj/snow
 
 	update_eyes()
 

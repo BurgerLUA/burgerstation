@@ -1,5 +1,5 @@
 //Basic config settings for developers
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1)
 
@@ -27,7 +27,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_LIGHTING FALSE
 
 //Enables/disables turf generation
 #define ENABLE_GENERATION FALSE
