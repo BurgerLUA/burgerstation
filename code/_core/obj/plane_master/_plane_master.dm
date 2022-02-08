@@ -1,7 +1,6 @@
 /obj/plane_master/
 	name = "plane master"
-	icon = 'icons/invisible.dmi'
-	icon_state = "0"
+	icon = null
 	plane = 0
 	screen_loc = "CENTER" //Stolen from /tg/
 	appearance_flags = PLANE_MASTER | PIXEL_SCALE
@@ -191,24 +190,3 @@
 /obj/plane_master/weather/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha", x=0, y=0, render_source="*area_exterior")
-
-
-
-/particles/snow
-	width = SCREEN_SIZE
-	height = SCREEN_SIZE
-	count = 2000
-	spawning = 12
-	lifespan = SECONDS_TO_DECISECONDS(6)
-	fade = SECONDS_TO_DECISECONDS(2)
-
-	position = generator("box", list(-SCREEN_SIZE*0.5,SCREEN_SIZE*0.5,0), list(SCREEN_SIZE*0.5,SCREEN_SIZE*0.5,50))
-
-	gravity = list(0,-3)
-	friction = 0.2
-	drift = generator("sphere", 0, 2)
-
-/obj/snow
-    screen_loc = "CENTER"
-    particles = new/particles/snow
-    plane = PLANE_WEATHER

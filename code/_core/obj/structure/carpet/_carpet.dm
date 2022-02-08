@@ -1,7 +1,7 @@
 /obj/structure/carpet
 	name = "carpet"
 	icon = 'icons/obj/structure/carpet.dmi'
-	icon_state = "base"
+	icon_state = "preview"
 
 	var/trim_icon_state
 	var/trim_color = "#FFFFFF"
@@ -16,6 +16,10 @@
 /obj/structure/carpet/Finalize()
 	. = ..()
 	update_sprite()
+
+/obj/structure/carpet/update_icon()
+	. = ..()
+	icon_state = "base"
 
 /obj/structure/carpet/update_overlays()
 	. = ..()
@@ -45,8 +49,18 @@
 	pattern_icon_state = "p1"
 	pattern_color = "#540F0F"
 
+
 /obj/structure/carpet/blue
 	name = "blue carpet"
+	color = "#17699B"
+
+	trim_icon_state = "t1"
+	trim_color = "#2F5797"
+	pattern_icon_state = "p1"
+	pattern_color = "#3E7497"
+
+/obj/structure/carpet/blue/royal
+	name = "blue royal carpet"
 	color = "#173B7A"
 
 	trim_icon_state = "t1"

@@ -29,7 +29,9 @@
 
 #define PLANE_OBJ -31
 
-#define PLANE_CURRENCY -30
+#define PLANE_ITEM -30
+
+#define PLANE_CURRENCY -29
 
 //Mob
 #define PLANE_MOB_STEALTH -23

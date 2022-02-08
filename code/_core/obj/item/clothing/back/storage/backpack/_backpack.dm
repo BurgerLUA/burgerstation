@@ -20,7 +20,7 @@
 
 /obj/item/clothing/back/storage/backpack/white
 	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'
-	color = COLOR_GREY
+	color = COLOR_GREY_LIGHT
 
 /obj/item/clothing/back/storage/backpack/grey
 	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'

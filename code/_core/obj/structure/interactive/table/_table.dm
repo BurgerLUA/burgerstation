@@ -157,6 +157,9 @@ obj/structure/table/reinforced
 
 	corner_category = "table_reinforced"
 
+obj/structure/table/reinforced/grey
+	color = "#BBBBBB"
+
 obj/structure/table/reinforced/dark
 	color = "#999999"
 

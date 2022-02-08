@@ -71,3 +71,27 @@ obj/structure/interactive/bed/sheet/Generate()
 	INITIALIZE(S)
 	GENERATE(S)
 	FINALIZE(S)
+
+
+/obj/structure/interactive/bed/double
+	name = "double bed"
+	icon_state = "bed_double"
+
+
+/obj/structure/interactive/bed/double/Generate()
+	. = ..()
+	icon_state = "bed_double_top"
+	pixel_offset_y = 20
+	var/obj/structure/interactive/bed/B = new(src.loc)
+	B.icon_state = "bed_double_bottom"
+	INITIALIZE(B)
+	GENERATE(B)
+	FINALIZE(B)
+
+/obj/structure/interactive/bed/double/sheet/Generate()
+	. = ..()
+	var/obj/item/bedsheet/S = new(src.loc)
+	S.icon_state = "sheetwhite_double"
+	INITIALIZE(S)
+	GENERATE(S)
+	FINALIZE(S)

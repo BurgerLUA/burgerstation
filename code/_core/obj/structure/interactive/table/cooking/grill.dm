@@ -15,6 +15,8 @@
 
 	anchored = TRUE
 
+	pixel_y = 3
+
 /obj/structure/table/cooking/grill/update_icon()
 	. = ..()
 

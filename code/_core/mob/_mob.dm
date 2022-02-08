@@ -283,7 +283,7 @@
 		P.owner = src
 	C.screen += parallax["D"]
 
-	C.screen += new/obj/snow
+	C.screen += new/obj/weather/snow
 
 	update_eyes()
 

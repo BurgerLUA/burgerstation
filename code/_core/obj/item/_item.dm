@@ -14,6 +14,7 @@
 
 	var/last_marker //The last person to name this item. Used for moderation purposes.
 
+	plane = PLANE_ITEM
 	layer = LAYER_OBJ_ITEM
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.

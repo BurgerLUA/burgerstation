@@ -30,6 +30,8 @@
 
 	var/turn_angle = 0
 
+	var/last_state = 0
+
 /obj/structure/interactive/blob/Destroy()
 
 	source_blob = null
@@ -115,6 +117,7 @@
 	if(desired_owner)
 		linked_core = desired_owner
 		linked_core.linked_walls += src
+	last_state = health_states
 
 /obj/structure/interactive/blob/Finalize()
 	. = ..()
@@ -130,6 +133,10 @@
 
 	health.adjust_loss_smart(brute = health.health_current - 10)
 	update_sprite()
+
+/obj/structure/interactive/blob/update_icon()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[last_state]"
 
 /obj/structure/interactive/blob/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
@@ -154,8 +161,13 @@
 
 	if(health && health.health_current <= 0)
 		qdel(src)
-	else
-		update_sprite()
+	else if(isturf(src.loc))
+		var/current_state = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
+		if(last_state != current_state)
+			if(last_state > current_state) //Decreasing health.
+				play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),src.loc)
+			last_state = current_state
+			update_sprite()
 
 /obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
@@ -167,32 +179,9 @@
 		var/mob/living/L = O
 		if(L.loyalty_tag == "Blob")
 			return TRUE
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/blob/get_base_transform()
 	. = ..()
 	var/matrix/M = .
 	M.Turn(turn_angle)
-
-/obj/structure/interactive/blob/update_icon()
-
-	. = ..()
-
-	var/turf/T = get_turf(src)
-
-	if(T)
-		var/icon_mul = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
-		var/desired_state = "[initial(icon_state)]_[icon_mul]"
-		if(desired_state != icon_state)
-			if(icon_state != initial(icon_state))
-				play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),T)
-			icon_state = desired_state
-
-
-/obj/structure/interactive/blob/update_overlays()
-	. = ..()
-	var/image/I = new/image(icon,"[icon_state]")
-	I.appearance_flags = RESET_COLOR
-	I.plane = PLANE_LIGHTING
-	I.blend_mode = BLEND_MULTIPLY
-	add_overlay(I)
