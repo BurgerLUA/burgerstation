@@ -87,7 +87,7 @@
 
 	var/list/inventory_bypass = list()
 
-	var/crafting_id = null
+	var/crafting_id = null //Can be a string or a path. Defaults to its path if no value is set.
 
 	var/inventory_sound = 'sound/items/drop/food.ogg' //Sound when moved to an inventory.
 	var/drop_sound = 'sound/items/drop/accessory.ogg' //Sound when moved elsewhere
@@ -245,6 +245,8 @@ var/global/list/rarity_to_mul = list(
 	. = ..()
 	if(length(polymorphs) || color != initial(color))
 		update_sprite()
+	if(!crafting_id)
+		crafting_id = src.type
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)

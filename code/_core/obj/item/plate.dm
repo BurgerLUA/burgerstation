@@ -37,8 +37,42 @@
 
 /obj/item/plate/Entered(var/atom/movable/enterer,var/atom/oldloc)
 	. = ..()
+	enterer.vis_flags &= ~VIS_INHERIT_ID
 	vis_contents |= enterer
 
 /obj/item/plate/Exited(var/atom/movable/exiter,var/atom/newloc)
 	. = ..()
 	vis_contents -= exiter
+	exiter.vis_flags = initial(exiter.vis_flags)
+
+/obj/item/plate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
+		INTERACT_CHECK
+		INTERACT_DELAY(30)
+		var/list/byond_is_weird = list()
+		for(var/obj/item/I in contents)
+			byond_is_weird += I
+		var/cooking_recipe/R = get_plate_recipe(byond_is_weird)
+		if(!R) return TRUE
+
+		var/obj/item/spawned_item
+		if(R.result)
+			var/turf/T = get_turf(src)
+			spawned_item = new R.result(T)
+			INITIALIZE(spawned_item)
+			FINALIZE(spawned_item)
+			spawned_item.force_move(T) //Calls enter exit ect
+
+		for(var/obj/item/I in contents)
+			if(I == spawned_item)
+				continue
+			if(spawned_item && spawned_item.reagents && I.reagents)
+				I.reagents.transfer_reagents_to(spawned_item.reagents,I.reagents.volume_current,caller=caller)
+			qdel(I)
+
+		caller.to_chat(span("notice","You've created \a [R.name]! Bon appétit!"))
+
+		return TRUE
+
+	. = ..()

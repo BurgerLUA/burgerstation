@@ -3,6 +3,8 @@
 	desc = "Like inventories, but better."
 	var/obj/item/storage_storage/storage
 
+	var/loot/stored_loot
+
 /obj/structure/interactive/storage/Initialize()
 	. = ..()
 	storage = new(src)
@@ -26,6 +28,11 @@
 	if(!(caller in viewers(VIEW_RANGE,src)))
 		return TRUE
 
+	if(stored_loot)
+		var/loot/L = SSloot.all_loot[stored_loot]
+		L.do_spawn(src)
+		stored_loot = null
+
 	caller.clear_inventory_defers() //Remove existing ones.
 
 	var/s=0
@@ -40,7 +47,6 @@
 /obj/structure/interactive/storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object) && is_advanced(caller))
-		caller << "HI"
 		examine_storage(caller)
 		return TRUE
 	. = ..()

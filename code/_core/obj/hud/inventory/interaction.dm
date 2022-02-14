@@ -26,8 +26,8 @@
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
 
-	if(istype(object.loc,/obj/item/plate))
-		return src.click_on_object(caller,object.loc,location,control,params)
+	if(istype(object.loc,/obj/item/plate) && !(caller.attack_flags & CONTROL_MOD_GRAB))
+		return src.click_on_object(caller,object.loc,location,control,params) //click on the plate instead
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
 		var/atom/movable/M = object
@@ -119,7 +119,7 @@
 	if(top_object && (object == top_object || caller.attack_flags & CONTROL_MOD_SELF)) //Click on ourself
 		top_object.click_self(caller)
 		return TRUE
-	else if(caller.attack_flags & CONTROL_MOD_SELF)
+	else if(caller.attack_flags & CONTROL_MOD_SELF) //Z click wielding.
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
 			if(src == A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item)
@@ -140,7 +140,7 @@
 					if(found_item)
 						src.add_object(found_item)
 						return TRUE
-			if(!I.anchored) //If it's anchored, we just call click_self on it.
+			if(!I.anchored) //If it's anchored, we just call click_self on it (later in the code).
 				if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
 					var/obj/hud/inventory/INV = I.loc
 					if(!top_object) //We're clicking on an object with an empty hand.
@@ -163,7 +163,7 @@
 							return TRUE
 					else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
 						return TRUE
-				else if(!top_object) //If we don't have a top object, pick it up.
+				else if(!top_object && !(caller.attack_flags & ~(CONTROL_MOD_LEFT|CONTROL_MOD_RIGHT)) ) //If we don't have a top object and we don't have any non-left attack flags, pick it up.
 					src.add_object(object)
 					return TRUE
 		else if(top_object && is_inventory(object)) //We have an object in our hands, clicking on an empty inventory.

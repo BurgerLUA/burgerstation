@@ -46,7 +46,7 @@
 		return TRUE
 
 	var/material/M = SSmaterials.all_materials[material_id]
-	crafting_id = "[crafting_id]_[M.name]"
+	crafting_id = "[initial(crafting_id)]_[M.name]"
 
 	return ..()
 

@@ -2,6 +2,7 @@
 	name = "meat"
 	desc = "IT'S RAW!"
 	desc_extended = "You need plenty of proteins for soldiering, soldier."
+	crafting_id = /obj/item/container/edible/dynamic/meat
 
 	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "meat_1"

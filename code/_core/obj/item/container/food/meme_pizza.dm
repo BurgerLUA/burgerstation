@@ -9,7 +9,6 @@
 
 	value = 1000
 
-
 	scale_sprite = FALSE
 
 	var/servings_left = 2

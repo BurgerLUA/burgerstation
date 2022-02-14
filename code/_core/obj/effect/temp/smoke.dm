@@ -3,7 +3,7 @@
 		return FALSE
 	var/reagent_container/temp/T
 	if(container)
-		T = new(src,1000)
+		T = new(null,1000)
 		T.owner = owner
 		container.transfer_reagents_to(T,container.volume_current,caller=owner)
 		queue_delete(T,desired_duration)

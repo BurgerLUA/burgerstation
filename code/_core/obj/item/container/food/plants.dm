@@ -6,6 +6,8 @@
 	icon = 'icons/obj/item/consumable/food/plants.dmi'
 	icon_state = "slippery"
 
+	crafting_id = /obj/item/container/edible/plant
+
 	consume_verb = "eat"
 
 	var/plant_type/plant_type
@@ -182,4 +184,14 @@
 
 /obj/item/container/edible/plant/lettuce/Generate()
 	reagents.add_reagent(/reagent/nutrition/lettuce,10)
+	return ..()
+
+
+/obj/item/container/edible/plant/chili
+	name = "chili pepper"
+	icon_state = "chili"
+	plant_type = /plant_type/chili
+
+/obj/item/container/edible/plant/chili/Generate()
+	reagents.add_reagent(/reagent/nutrition/capsaicin,5)
 	return ..()
