@@ -26,8 +26,9 @@
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
 
-	if(istype(object.loc,/obj/item/plate) && !(caller.attack_flags & CONTROL_MOD_GRAB))
-		return src.click_on_object(caller,object.loc,location,control,params) //click on the plate instead
+	if(istype(object.loc,/obj/item/plate) && caller.attack_flags & CONTROL_MOD_GRAB) //click on the plate instead if we're grabbing
+		caller.attack_flags &= CONTROL_MOD_GRAB
+		return src.click_on_object(caller,object.loc,location,control,params)
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
 		var/atom/movable/M = object
@@ -163,7 +164,7 @@
 							return TRUE
 					else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
 						return TRUE
-				else if(!top_object && !(caller.attack_flags & ~(CONTROL_MOD_LEFT|CONTROL_MOD_RIGHT)) ) //If we don't have a top object and we don't have any non-left attack flags, pick it up.
+				else if(!top_object && caller.attack_flags && !(caller.attack_flags & ~(CONTROL_MOD_LEFT|CONTROL_MOD_RIGHT)) ) //If we don't have a top object and we don't have any non-left attack flags, pick it up.
 					src.add_object(object)
 					return TRUE
 		else if(top_object && is_inventory(object)) //We have an object in our hands, clicking on an empty inventory.

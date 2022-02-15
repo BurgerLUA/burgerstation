@@ -1,12 +1,12 @@
 /obj/item/plate
 	name = "plate"
 	desc = "Dinner is served."
-	desc_extended = "A basic plate meant for holding food. Hold CTRL and click to remove items from the plate."
+	desc_extended = "A basic plate meant for holding food."
 	icon = 'icons/obj/item/plate.dmi'
 	icon_state = "plate"
 	mouse_opacity = 2
 	layer = -1000
-	size = SIZE_3
+	size = SIZE_4
 	weight = 1
 	value = 10
 
