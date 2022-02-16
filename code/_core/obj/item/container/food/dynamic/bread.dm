@@ -17,6 +17,10 @@
 
 	var/last_cooked = FALSE
 
+/obj/item/container/edible/dynamic/bread/Generate()
+	. = ..()
+	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)
+
 /obj/item/container/edible/dynamic/bread/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
@@ -200,9 +204,9 @@
 	if(cooked_percent > 0.5) //It's bread
 
 		switch(wetness)
-			if(-INFINITY to -20)
+			if(-INFINITY to -9)
 				wetness_prefix = "dry"
-			if(20 to INFINITY)
+			if(11 to INFINITY)
 				wetness_prefix = "moist"
 
 		if(best_bread_reagent_type)
@@ -214,9 +218,9 @@
 	else //It's dough
 
 		switch(wetness)
-			if(-INFINITY to -10)
+			if(-INFINITY to -9)
 				wetness_prefix = "dry"
-			if(10 to INFINITY)
+			if(11 to INFINITY)
 				wetness_prefix = "wet"
 
 		if(best_dough_reagent_type)

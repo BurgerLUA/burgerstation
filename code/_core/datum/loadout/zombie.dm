@@ -310,7 +310,7 @@
 
 	possible_extra_weapon = list(
 		/obj/item/weapon/melee/sword/sabre = 5,
-		/obj/item/container/edible/pourable/sugar = 1,
+		/obj/item/container/simple/sugar = 1,
 		/obj/item/container/simple/beaker/bottle/large/water = 1
 	)
 

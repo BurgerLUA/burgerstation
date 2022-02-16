@@ -11,3 +11,8 @@
 /reagent_container/food/bread
 	volume_max = 120
 	should_update_owner = TRUE
+
+
+/reagent_container/food/toppings
+	volume_max = 300
+	should_update_owner = TRUE

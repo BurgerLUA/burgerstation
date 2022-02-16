@@ -1396,6 +1396,7 @@
 #include "code\_core\obj\item\container\food\dynamic\chicken.dm"
 #include "code\_core\obj\item\container\food\dynamic\fish.dm"
 #include "code\_core\obj\item\container\food\dynamic\meat.dm"
+#include "code\_core\obj\item\container\food\dynamic\pizza.dm"
 #include "code\_core\obj\item\container\food\package\_package.dm"
 #include "code\_core\obj\item\container\food\package\junk.dm"
 #include "code\_core\obj\item\container\food\sandwich\_sandwich.dm"
