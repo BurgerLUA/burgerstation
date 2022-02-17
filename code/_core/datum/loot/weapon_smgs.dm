@@ -33,13 +33,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
-		/obj/item/magazine/smg_10mm,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_45_alt,
+		/obj/item/magazine/smg_45_alt,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = 1,
-		/obj/item/magazine/smg_10mm = 4,
+		/obj/item/magazine/smg_45_alt = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -48,8 +48,8 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
-		/obj/item/magazine/smg_10mm,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smp_9mm,
+		/obj/item/magazine/smp_9mm,
 	)
 
 	loot_table = list(
@@ -63,13 +63,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
-		/obj/item/magazine/smg_9mm,
-		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_4mm_standard,
+		/obj/item/magazine/smg_4mm_standard,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech = 1,
-		/obj/item/magazine/smg_9mm = 4,
+		/obj/item/magazine/smg_4mm_standard = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -78,13 +78,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
-		/obj/item/magazine/smg_46,
-		/obj/item/magazine/smg_46,
+		/obj/item/magazine/smg_pdw,
+		/obj/item/magazine/smg_pdw,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw = 1,
-		/obj/item/magazine/smg_46 = 4,
+		/obj/item/magazine/smg_pdw = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -93,13 +93,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
-		/obj/item/magazine/smg_10mm,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_9mm_banana,
+		/obj/item/magazine/smg_9mm_banana,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = 1,
-		/obj/item/magazine/smg_10mm = 4,
+		/obj/item/magazine/smg_9mm_banana = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -108,13 +108,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
-		/obj/item/magazine/smg_10mm,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_9mm_banana,
+		/obj/item/magazine/smg_9mm_banana,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt = 1,
-		/obj/item/magazine/smg_10mm = 4,
+		/obj/item/magazine/smg_9mm_banana = 4,
 	)
 	loot_count = 6
 	chance_none = 25

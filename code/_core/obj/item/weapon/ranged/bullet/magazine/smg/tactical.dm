@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical
-	name = "\improper 10mm MTAC"
+	name = "\improper 9x19mm MTAC"
 	desc = "Precision in the palms of your hands."
 	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range."
 	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3.dmi'
@@ -23,13 +23,13 @@
 
 	heat_max = 0.03
 
-	bullet_length_min = 25
-	bullet_length_best = 32
-	bullet_length_max = 33
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
 
-	bullet_diameter_min = 10
-	bullet_diameter_best = 10.17
-	bullet_diameter_max = 11
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
 
 	ai_heat_sensitivity = 0.5
 

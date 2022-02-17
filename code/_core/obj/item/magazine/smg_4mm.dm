@@ -1,10 +1,10 @@
-/obj/item/magazine/smg_46
+/obj/item/magazine/smg_pdw
 	name = "\improper 4.6x30mm WT-550 magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/4mm_smg.dmi'
 	icon_state = "mag"
-	bullet_count_max = 40
+	bullet_count_max = 20
 
 	bullet_length_min = 25
 	bullet_length_best = 30
@@ -29,22 +29,22 @@
 	value = 10
 
 
-/obj/item/magazine/smg_46/toxin
+/obj/item/magazine/smg_pdw/toxin
 	name = "\improper 4.6x30mm WT-550 magazine - toxin"
 	icon_state = "TOX"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/toxin
 
-/obj/item/magazine/smg_46/ion
+/obj/item/magazine/smg_pdw/ion
 	name = "\improper 4.6x30mm WT-550 magazine - ion"
 	icon_state = "ION"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ion
 
-/obj/item/magazine/smg_46/incendiary
+/obj/item/magazine/smg_pdw/incendiary
 	name = "\improper 4.6x30mm WT-550 magazine - incendiary"
 	icon_state = "INC"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/incendiary
 
-/obj/item/magazine/smg_46/ap
+/obj/item/magazine/smg_pdw/ap
 	name = "\improper 4.6x30mm WT-550 magazine - armor piercing"
 	icon_state = "AP"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ap

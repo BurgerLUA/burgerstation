@@ -132,11 +132,11 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_9mm_banana,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_45_alt,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
-		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_4mm_standard,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/magazine/bizon_9mm
 	)

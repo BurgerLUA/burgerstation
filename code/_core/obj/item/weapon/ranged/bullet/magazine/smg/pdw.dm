@@ -13,7 +13,7 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1.1
+	shoot_delay = 1
 
 	firemodes = list("burst","automatic","semi-automatic")
 
