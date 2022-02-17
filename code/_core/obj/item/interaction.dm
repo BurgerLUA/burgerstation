@@ -27,26 +27,6 @@
 
 	return TRUE
 
-/obj/item/proc/close_inventory(var/mob/living/advanced/A)
-
-	if(inventory_user)
-		for(var/obj/hud/button/close_inventory/B in inventory_user.buttons)
-			B.update_owner(null)
-		inventory_user.using_inventories -= src
-		inventory_user = null
-
-
-	for(var/i=1,i<=length(inventories),i++) //Close all the inventories.
-		var/obj/hud/inventory/I = inventories[i]
-		animate(I,alpha=0,time=4)
-		I.mouse_opacity = 0
-
-	if(A)
-		for(var/obj/hud/button/close_inventory/B in A.buttons)
-			B.update_owner(null)
-
-	return TRUE
-
 /obj/item/proc/open_inventory(var/mob/living/advanced/A)
 
 	if(inventory_user)
@@ -64,28 +44,47 @@
 
 	for(var/i=1,i<=length(inventories),i++) //Open all the inventories.
 		var/obj/hud/inventory/I = inventories[i]
-		I.update_owner(A)
+		if(i==1)
+			if(!I.assoc_button)
+				I.assoc_button = new /obj/hud/button/close_inventory
+				I.assoc_button.assoc_item = src
+			if(should_center)
+				I.assoc_button.screen_loc = "CENTER+[(length(inventories)+1)/2],[starting_inventory_y]"
+			else
+				I.assoc_button.screen_loc = "CENTER+[0.5+max_inventory_x*0.5],[starting_inventory_y]"
+			I.assoc_button.update_owner(A)
+			I.assoc_button.alpha = 0
+			I.assoc_button.mouse_opacity = 1
+
+			animate(I.assoc_button,alpha=255,time=4)
 		if(should_center)
 			I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],[starting_inventory_y]"
 		else
 			I.screen_loc = "CENTER+[-max_inventory_x*0.5 + i - 0.5 - FLOOR((i-1)/max_inventory_x, 1)*max_inventory_x],[starting_inventory_y]+[FLOOR((i-1)/max_inventory_x, 1)*inventory_y_multiplier]"
+		I.alpha = 0
 		I.mouse_opacity = 2
+		I.update_owner(A)
 		animate(I,alpha=255,time=4)
-
-	var/obj/hud/button/close_inventory/B = new
-	B.inventory_category = inventory_category
-	B.update_owner(A)
-	if(should_center)
-		B.screen_loc = "CENTER+[(length(inventories)+1)/2],[starting_inventory_y]"
-	else
-		B.screen_loc = "CENTER+[0.5+max_inventory_x*0.5],[starting_inventory_y]"
-	B.alpha = 0
-	B.mouse_opacity = 1
-	animate(B,alpha=255,time=4)
 
 	play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
 	inventory_user = A
 	inventory_user.using_inventories |= src
+
+	return TRUE
+
+/obj/item/proc/close_inventory(var/mob/living/advanced/A)
+
+	if(inventory_user)
+		inventory_user.using_inventories -= src
+		inventory_user = null
+
+	for(var/i=1,i<=length(inventories),i++) //Close all the inventories.
+		var/obj/hud/inventory/I = inventories[i]
+		if(I.assoc_button)
+			animate(I.assoc_button,alpha=0,time=4)
+			I.assoc_button.mouse_opacity = 0
+		animate(I,alpha=0,time=4)
+		I.mouse_opacity = 0
 
 	return TRUE
 

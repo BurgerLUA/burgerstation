@@ -69,6 +69,8 @@
 
 	var/inventory_category = "none"
 
+	var/obj/hud/button/close_inventory/assoc_button
+
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)

@@ -26,8 +26,7 @@
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
 
-	if(istype(object.loc,/obj/item/plate) && caller.attack_flags & CONTROL_MOD_GRAB) //click on the plate instead if we're grabbing
-		caller.attack_flags &= CONTROL_MOD_GRAB
+	if(istype(object.loc,/obj/item/plate)) //Plate fuckery.
 		return src.click_on_object(caller,object.loc,location,control,params)
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
