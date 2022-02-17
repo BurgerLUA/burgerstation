@@ -108,6 +108,7 @@
 #include "code\__helpers\conversions.dm"
 #include "code\__helpers\damagetype.dm"
 #include "code\__helpers\debug.dm"
+#include "code\__helpers\debugger.dm" //from auxtools for Visual Studio Code debug
 #include "code\__helpers\direction.dm"
 #include "code\__helpers\dview.dm"
 #include "code\__helpers\garbage.dm"
