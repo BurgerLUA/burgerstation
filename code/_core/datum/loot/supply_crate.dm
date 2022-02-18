@@ -74,7 +74,7 @@
 		/loot/weapon/smg/fbi = 1,
 		/loot/weapon/smg/nanotech = 1,
 		/loot/weapon/smg/pdw = 1,
-		/loot/weapon/smg/tactical/nt = 1
+		/loot/weapon/smg/tactical = 1
 	)
 
 /loot/supply_crate/american

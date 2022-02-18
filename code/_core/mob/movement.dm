@@ -89,6 +89,7 @@
 /mob/proc/update_z_position()
 
 	if(!ckey_last)
+		if(last_z) all_mobs_with_clients_by_z["[last_z]"] -= src
 		return FALSE
 
 	var/turf/T = get_turf(src)

@@ -1,5 +1,5 @@
 /obj/item/bullet_cartridge/pistol_10mm/
-	name = "\improper 10mm pistol cartridge"
+	name = "\improper 10x32mm pistol cartridge"
 	desc = "At least 1mm bigger than 9mm"
 	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
 	icon = 'icons/obj/item/bullet/10mm.dmi'
@@ -371,3 +371,53 @@
 	damage_type_bullet = /damagetype/ranged/bullet/holybullet/surplus
 	jam_chance = 1
 	value = 0
+
+
+
+/obj/item/bullet_cartridge/pistol_10x24mm
+	name = "\improper 10x24mm caseless pistol cartridge"
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	icon = 'icons/obj/item/bullet/10x24mm.dmi'
+
+	amount_max = 6
+	amount_max_icon = 6
+
+	bullet_diameter = 10
+	bullet_length = 24
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.02
+	value = 1.25
+
+/obj/item/bullet_cartridge/pistol_10x24mm/surplus
+	name = "\improper surplus 10x24mm caseless pistol cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/surplus
+	jam_chance = 1
+	value = 0
+
+/obj/item/bullet_cartridge/pistol_10x24mm/explosive
+	name = "\improper 10x24mm HEAP caseless pistol cartridge"
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	icon = 'icons/obj/item/bullet/10x24mm.dmi'
+
+	amount_max = 6
+	amount_max_icon = 6
+
+	bullet_diameter = 10
+	bullet_length = 24
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/explosive
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.02
+	value = 2.4

@@ -89,6 +89,21 @@
 	loot_count = 6
 	chance_none = 25
 
+/loot/weapon/smg/tactical/deathsquad
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/corporate,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/corporate,
+		/obj/item/magazine/smg_9mm_banana,
+		/obj/item/magazine/smg_9mm_banana,
+	)
+
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/corporate = 1,
+		/obj/item/magazine/smg_9mm_banana = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
 /loot/weapon/smg/tactical
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
@@ -99,21 +114,6 @@
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = 1,
-		/obj/item/magazine/smg_9mm_banana = 4,
-	)
-	loot_count = 6
-	chance_none = 25
-
-/loot/weapon/smg/tactical/nt
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt = 1,
 		/obj/item/magazine/smg_9mm_banana = 4,
 	)
 	loot_count = 6

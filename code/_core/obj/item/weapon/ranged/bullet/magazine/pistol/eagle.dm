@@ -74,7 +74,7 @@
 	tier = 4
 
 	damage_mod = 2
-	shoot_delay = 4
+	shoot_delay = 3
 
 	weight = 20
 	value_burgerbux = 1

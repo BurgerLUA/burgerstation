@@ -90,8 +90,8 @@
 	weight = 14
 
 	damage_mod = 1.2
-	shoot_delay = 1.1
-	burst_delay = 3.4
+	shoot_delay = 1
+	burst_delay = 3
 	max_bursts = 3
 
 	firemodes = list("automatic","burst","semi-automatic")

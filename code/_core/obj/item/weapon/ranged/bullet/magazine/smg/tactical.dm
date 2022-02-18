@@ -2,13 +2,13 @@
 	name = "\improper 9x19mm MTAC"
 	desc = "Precision in the palms of your hands."
 	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range."
-	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
 	icon_state = "inventory"
 	value = 1400
 
 	tier = 2
 
-	shoot_delay = 1.3
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -79,7 +79,7 @@
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/equipped/Generate()
@@ -114,8 +114,18 @@
 
 
 
-/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt
-	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3_nt.dmi'
+/obj/item/weapon/ranged/bullet/magazine/smg/tactical/corporate
+	name = "\improper 9x19mm MTAC Corporate Edition"
+	desc = "Precision in the palms of your hands."
+	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range. This one is designated as the corporate edition and has a slightly hire firerate."
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
+	icon_state = "inventory"
+	value = 200
+
+	tier = 3
+
+	shoot_delay = 0.9
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm_black.dmi'
 
 
 

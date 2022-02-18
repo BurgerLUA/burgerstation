@@ -1,14 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/pdw
-	name = "\improper 5.56 PDW"
+	name = "\improper 5.56mm SDW"
 	desc = "For personel defense!"
-	desc_extended = "A small, lightweight personal defense weapon chambered in 5.56. Shoots fast, but isn't that accurate."
+	desc_extended = "A small, lightweight standard defense weapon chambered in 5.56. Shoots relatively fast, but isn't that accurate."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_5.dmi'
 	icon_state = "inventory"
-	value = 1800
+	value = 1000
 
-	tier = 1
+	tier = 2
 
-	shoot_delay = 1.75
+	shoot_delay = 2
 
 	automatic = TRUE
 

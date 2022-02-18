@@ -35,9 +35,6 @@
 /mob/abstract/observer/on_left_down(var/atom/object,location,control,params)
 	return on_left_click(object,location,control,params)
 
-
-
-
 /mob/abstract/observer/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
@@ -46,7 +43,8 @@
 
 /mob/abstract/observer/Logout()
 	. = ..()
-	if(!src.qdeleting) qdel(src)
+	if(!src.qdeleting)
+		qdel(src)
 
 /mob/abstract/observer/Initialize()
 

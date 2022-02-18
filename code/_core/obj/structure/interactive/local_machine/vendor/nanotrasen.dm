@@ -120,7 +120,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer,
 
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,

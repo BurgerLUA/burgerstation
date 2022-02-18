@@ -7,7 +7,7 @@
 
 	value = 800
 
-	tier = 1
+	tier = 2
 
 	shoot_delay = 4
 

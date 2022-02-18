@@ -17,7 +17,7 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/equipped = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/corporate = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm

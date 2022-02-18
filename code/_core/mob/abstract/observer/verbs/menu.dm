@@ -51,7 +51,6 @@ var/global/antag_count = 0
 		return FALSE
 
 	var/file_num = name_to_choice[choice]
-
 	. = client.load(mobdata,file_num)
 
 /mob/abstract/observer/verb/new_character()

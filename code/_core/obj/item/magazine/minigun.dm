@@ -9,7 +9,6 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/misc/sentry = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/dmca = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/caseless

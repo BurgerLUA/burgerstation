@@ -82,7 +82,7 @@
 
 	bullet_count_max = 4
 
-	shoot_delay = 1
+	shoot_delay = 2
 	damage_mod = 1.3
 	pump_delay = 2
 

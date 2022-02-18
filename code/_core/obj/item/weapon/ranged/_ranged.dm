@@ -36,7 +36,7 @@
 	//Precise weapons should have a lower value while inprecise weapons should have a higher value.
 
 
-	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
 
 	var/movement_spread_base = 0.05 //half this at walking speed, this at running speed, this times two at sprinting speed
@@ -720,7 +720,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 
-	. = inaccuracy_modifier //Base var
+	. = inaccuracy_modifier
 
 	if(L.move_delay >= 0)
 		. += movement_inaccuracy_modifier
@@ -733,11 +733,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(attachment_stats["zoom_mul"])
 			total_zoom_mul *= attachment_stats["zoom_mul"]
 		if(L.client.is_zoomed)
-			. *= 1/total_zoom_mul
+			. *= 1/(1 + total_zoom_mul*0.5)
 		else
-			. *= total_zoom_mul/1
+			. *= min(1,total_zoom_mul*0.5)/1
 
-	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1)) //Based on skill
+	. *= max(0.25,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,0.75)) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 

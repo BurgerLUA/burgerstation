@@ -32,17 +32,14 @@
 	for(var/obj/item/I in loc.contents)
 		possible_items += I
 
-	if(!length(possible_items))
-		qdel(src)
-		return
+	if(length(possible_items))
+		stored_item = pick(possible_items)
+		stored_item.drop_item(src)
+		possible_items -= stored_item
 
-	stored_item = pick(possible_items)
-	stored_item.drop_item(src)
-	possible_items -= stored_item
-
-	for(var/k in possible_items)
-		var/obj/item/I = k
-		qdel(I)
+		for(var/k in possible_items)
+			var/obj/item/I = k
+			qdel(I)
 
 
 /obj/structure/interactive/shop/PostInitialize()
