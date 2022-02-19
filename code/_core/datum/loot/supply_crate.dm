@@ -87,7 +87,6 @@
 		/loot/weapon/pistol/big_game = 1,
 		/loot/weapon/pistol/comp = 1,
 		/loot/weapon/pistol/horse = 1,
-		/loot/weapon/rifle/assault = 1,
 		/loot/weapon/rifle/civ_carbine = 1,
 		/loot/weapon/rifle/dmca = 1,
 		/loot/weapon/shotgun/combat = 1,

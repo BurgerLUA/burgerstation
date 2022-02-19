@@ -226,7 +226,7 @@
 				CREATE(/obj/item/magazine/pistol_50,src.loc)
 		if(3)
 			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/magazine/rifle/assault,src.loc)
+				CREATE(/obj/item/weapon/ranged/bullet/magazine/rifle/m4,src.loc)
 			for(var/i=1,i<=rand(6,12),i++)
 				CREATE(/obj/item/magazine/rifle_308,src.loc)
 		if(4 to 6)

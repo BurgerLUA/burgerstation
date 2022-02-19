@@ -16,14 +16,14 @@
 
 /loot/weapon/smg/bullpup
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45,
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard = 1,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped = 1,
 		/obj/item/magazine/smg_45 = 4,
 	)
 	loot_count = 6
@@ -33,13 +33,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
-		/obj/item/magazine/smg_45_alt,
-		/obj/item/magazine/smg_45_alt,
+		/obj/item/magazine/smg_45,
+		/obj/item/magazine/smg_45,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = 1,
-		/obj/item/magazine/smg_45_alt = 4,
+		/obj/item/magazine/smg_45 = 4,
 	)
 	loot_count = 6
 	chance_none = 25

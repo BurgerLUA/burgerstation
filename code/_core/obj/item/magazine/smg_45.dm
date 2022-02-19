@@ -1,9 +1,9 @@
-/obj/item/magazine/smg_45_alt
+/obj/item/magazine/smg_45
 	name = "\improper .45 banana magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
-	icon = 'icons/obj/item/magazine/45_smg_alt.dmi'
-	icon_state = "10mmsmg"
+	icon = 'icons/obj/item/magazine/45_smg.dmi'
+	icon_state = "45"
 	bullet_count_max = 25
 
 	bullet_length_min = 20
@@ -15,6 +15,8 @@
 	bullet_diameter_max = 12
 
 	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod
 	)
@@ -26,7 +28,12 @@
 
 	value = 10
 
-
-/obj/item/magazine/smg_45_alt/update_icon()
+/obj/item/magazine/smg_45/update_icon()
+	. = ..()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"
-	return ..()
+
+/obj/item/magazine/smg_45/ap
+	name = "\improper .45 AP banana magazine"
+	icon = 'icons/obj/item/magazine/45_smg_ap.dmi'
+	icon_state = "45"
+	ammo = /obj/item/bullet_cartridge/rifle_223/nato/ap

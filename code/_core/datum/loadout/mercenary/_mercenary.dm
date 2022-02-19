@@ -188,7 +188,7 @@
 
 		/obj/item/clothing/back/storage/satchel/poly/brown,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/m4,
 
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,

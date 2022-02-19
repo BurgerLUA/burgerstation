@@ -125,16 +125,16 @@
 	markup = 0.5
 
 /obj/structure/interactive/vending/virtual_reality/weapons/smgs
-	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
 		/obj/item/magazine/smp_9mm,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/magazine/smg_9mm_banana,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod,
-		/obj/item/magazine/smg_45_alt,
+		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 		/obj/item/magazine/smg_4mm_standard,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
@@ -159,7 +159,7 @@
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
 		/obj/item/magazine/rifle_762_short,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/merc,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/m4,
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
