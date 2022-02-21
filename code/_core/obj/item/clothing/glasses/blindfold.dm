@@ -3,7 +3,7 @@
 	desc = "A BDSM enthuisast's dream."
 	desc_extended = "A black blindfold that is designed to blind the wearer. Provides excellent magic protection."
 	icon = 'icons/obj/item/clothing/glasses/blindfold.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(,
 		ARCANE = 80

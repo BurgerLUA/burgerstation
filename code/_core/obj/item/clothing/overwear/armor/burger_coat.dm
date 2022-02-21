@@ -4,7 +4,7 @@
 	desc = "Being the best isn't hard, it's letting go."
 	desc_extended = "Burgers never change."
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 45,

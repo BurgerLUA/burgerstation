@@ -2,7 +2,7 @@
 	name = "\improper 5.56mm M5A2"
 	desc = "Made in Space America!"
 	desc_extended = "A typical run of the mill assault rifle designed to quickly put down targets at medium to long ranges."
-	icon = 'icons/obj/item/weapons/ranged/rifle/sol/standard.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/merc.dmi'
 	icon_state = "inventory"
 	value = 1800
 

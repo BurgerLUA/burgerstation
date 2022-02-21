@@ -2,12 +2,12 @@
 	name = "bandolier"
 	desc = "For the aspiring sweeper."
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of shotgun shells. ALT+Click to grab additional shells while already holding a shell."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
 	worn_layer = LAYER_MOB_CLOTHING_COAT
 	dyeable = TRUE
 
-	rarity = RARITY_UNCOMMON
+
 	value = 200
 	size = SIZE_3
 
@@ -25,7 +25,7 @@
 		var/v = stored_shells[k]
 		shell_count += v
 
-/obj/item/clothing/belt/bandolier/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/belt/bandolier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["stored_shells"] = list()
 	for(var/k in stored_shells)
@@ -78,7 +78,7 @@
 				caller.to_chat(span("notice","You add a shell to your hand. There are [stored_shells[S.type]] shells of that type left."))
 				update_sprite()
 		else
-			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - shell_count)))
+			var/amount_added = -S.add_item_count(-min(S.amount,max(0,max_shells - shell_count)))
 			if(amount_added)
 				if(!stored_shells[S.type])
 					stored_shells[S.type] = amount_added
@@ -111,7 +111,7 @@
 
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			S = new S(get_turf(src))
-			S.item_count_current = 1
+			S.amount = 1
 			stored_shells[S.type] -= 1
 			shell_count -= 1
 			caller.to_chat(span("notice","You take a shell from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
@@ -128,7 +128,7 @@
 			amount = stored_shells[S.type]
 		else
 			amount = handful
-		S.item_count_current = amount
+		S.amount = amount
 		stored_shells[S.type] -= amount
 		shell_count -= amount
 		caller.to_chat(span("notice","You take [amount] shell\s from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))

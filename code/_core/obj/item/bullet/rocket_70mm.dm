@@ -7,8 +7,8 @@
 	icon_state = "HE"
 	value = 500
 
-	item_count_max = 1
-	item_count_max_icon = 1
+	amount_max = 1
+	amount_max_icon = 1
 
 	bullet_length = 800
 	bullet_diameter = 70
@@ -20,8 +20,7 @@
 
 	size = 2
 
-/obj/item/bullet_cartridge/rocket_70mm/get_bullet_insert_sound()
-	return 'sound/weapons/rocket/rocket_insert.ogg'
+	bullet_insert_sound = 'sound/weapons/rocket/rocket_insert.ogg'
 
 /obj/item/bullet_cartridge/rocket_70mm/wp
 	name = "70mm White Phosphorous Warhead"
@@ -32,8 +31,8 @@
 	icon_state = "WP"
 	value = 400
 
-	item_count_max = 1
-	item_count_max_icon = 1
+	amount_max = 1
+	amount_max_icon = 1
 
 	bullet_length = 800
 	bullet_diameter = 70
@@ -54,8 +53,8 @@
 	icon_state = "AP"
 	value = 400
 
-	item_count_max = 1
-	item_count_max_icon = 1
+	amount_max = 1
+	amount_max_icon = 1
 
 	bullet_length = 800
 	bullet_diameter = 70

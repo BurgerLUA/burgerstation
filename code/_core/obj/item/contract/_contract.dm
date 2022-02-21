@@ -7,8 +7,8 @@
 	desc_extended = "A spooky contract listing one or more conditions the contract holder should complete. Despite being made out of papyrus, it appears to be very strong."
 
 	var/atom/type_to_check
-	var/amount_current = 0
-	var/amount_max = 0
+	var/value_current = 0
+	var/value_max = 0
 	var/obj/item/reward
 	var/burgerbux_reward = 0
 	var/objective_text = "objectives completed"
@@ -23,9 +23,9 @@
 
 /obj/item/contract/update_sprite()
 	. = ..()
-	if(!amount_max)
+	if(!value_max)
 		icon_state = "torn"
-	else if(amount_current >= amount_max)
+	else if(value_current >= value_max)
 		icon_state = "filled"
 	else
 		icon_state = "unfilled"
@@ -42,13 +42,13 @@
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)
-		amount_current = 0
+		value_current = 0
 
 /obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
 
 	var/mob/living/victim = data[1]
 	if(istype(victim,type_to_check))
-		amount_current++
+		value_current++
 		update_sprite()
 
 	return TRUE
@@ -58,8 +58,9 @@
 	if(!reward)
 		log_error("Warnng: [src.get_debug_name()] had an invalid reward!")
 		qdel(src)
-	else
-		update_value()
+		return .
+
+	update_value()
 	update_sprite()
 
 /obj/item/contract/get_value()
@@ -71,19 +72,19 @@
 		. += div("notice","Reward on completion: [reward.name] and [burgerbux_reward] Burgerbux.")
 	else
 		. += div("notice","Reward on completion: [reward.name].")
-	. += div("notice","[amount_current] out of [amount_max] [objective_text].")
+	. += div("notice","[value_current] out of [value_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
-/obj/item/contract/save_item_data(var/save_inventory = TRUE)
+/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("reward")
-	SAVEVAR("amount_current")
+	SAVEVAR("value_current")
 	SAVEVAR("burgerbux_reward")
 
 /obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("reward")
-	LOADVAR("amount_current")
+	LOADVAR("value_current")
 	LOADVAR("burgerbux_reward")
 
 /obj/item/contract/post_move(var/atom/old_loc)
@@ -104,7 +105,7 @@
 			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
 
 
-/obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P)
+/obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P,var/params)
 	var/turf/T = get_turf(P)
 	if(burgerbux_reward)
 		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
@@ -113,9 +114,9 @@
 		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
 	src.drop_item(T)
 	reward.drop_item(T)
-	P.put_in_hands(reward)
+	P.put_in_hands(reward,params)
 	reward = null //Just in case.
-	amount_current = 0 //Just in case.
+	value_current = 0 //Just in case.
 	qdel(src)
 	return TRUE
 

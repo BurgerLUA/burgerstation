@@ -7,9 +7,10 @@
 
 	item_slot_layer = 3
 
-	dynamic_inventory_type = /obj/hud/inventory/dynamic/belt
+	uses_until_condition_fall = 450
 
 
+/*
 /obj/item/clothing/belt/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
@@ -34,6 +35,7 @@
 							I.assoc_slot.store_object(O)
 					else
 						log_error("Warning: [owner.get_debug_name()] didn't have a slot button [suffix] initialized.")
+*/
 
 
 

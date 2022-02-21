@@ -8,7 +8,7 @@
 	var/magnitude_min = 0
 	var/magnitude_max = 100
 
-	var/rarity = 1
+	var/rarity = 1 //Rarity as a number. High numbers are more rarer.
 
 /ench/proc/generate()
 	magnitude = rand(magnitude_min,magnitude_max)

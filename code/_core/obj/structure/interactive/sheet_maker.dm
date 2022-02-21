@@ -32,7 +32,7 @@ obj/structure/interactive/sheet_maker/proc/make_sheet(var/atom/movable/O)
 	if(istype(O,/obj/item/material/))
 		var/obj/item/material/M = O
 		var/obj/item/material/NM = new material_to_make(src.loc)
-		NM.item_count_current = M.item_count_current
+		NM.amount = M.amount
 		NM.material_id = M.material_id
 		INITIALIZE(NM)
 		FINALIZE(NM)

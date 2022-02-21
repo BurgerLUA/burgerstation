@@ -2,7 +2,7 @@
 	name = "power gem"
 	desc = "A gem filled with power."
 	desc_extended = "A special gem used for augmenting magic weapons with damage bonuses. Click on the magic weapon to apply it. Can be removed with a crowbar."
-	rarity = RARITY_COMMON
+
 
 	icon = 'icons/obj/item/powergem.dmi'
 	icon_state = "gem1"
@@ -14,7 +14,7 @@
 
 	value_burgerbux = 1 //Not in rotation, yet.
 
-/obj/item/powergem/save_item_data(var/save_inventory = TRUE)
+/obj/item/powergem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("rarity")
 	SAVEVAR("icon_state")

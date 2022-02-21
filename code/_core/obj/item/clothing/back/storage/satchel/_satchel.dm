@@ -3,7 +3,7 @@
 	desc = "WEARING BACKPACKS IS LRP!!!"
 	desc_extended = "A satchel for carrying items. Has less space than a backpack, but slows you down the least."
 	icon = 'icons/obj/item/clothing/back/satchel/grey.dmi'
-	rarity = RARITY_COMMON
+
 
 	dynamic_inventory_count = MAX_INVENTORY_X*2
 

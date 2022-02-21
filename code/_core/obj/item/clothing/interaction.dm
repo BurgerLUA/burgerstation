@@ -25,8 +25,8 @@
 	var/obj/hud/inventory/best_inventory_wear
 	var/obj/hud/inventory/best_inventory_equip
 
-	for(var/k in caller.inventory)
-		var/obj/hud/inventory/I = k
+	for(var/k in caller.inventories_by_id)
+		var/obj/hud/inventory/I = caller.inventories_by_id[k]
 		if(I.click_flags && ignore_hands)
 			continue
 		if(!I.allow_quick_equip)
@@ -74,7 +74,7 @@
 			if(IS_INFINITY(damage_rating))
 				armor_list += "[capitalize(damagetype)]: INFINITE"
 			else if(damage_rating)
-				damage_rating = FLOOR(damage_rating*(src.quality/100),1)
+				damage_rating = FLOOR(damage_rating*get_quality_bonus(0.25,2),1)
 				armor_list += "[capitalize(damagetype)]: [damage_rating]"
 		. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
 		. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")

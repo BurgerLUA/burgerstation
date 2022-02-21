@@ -29,7 +29,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	value = 20
 
-/obj/item/device/radio/save_item_data(var/save_inventory = TRUE)
+/obj/item/device/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("frequency")
 

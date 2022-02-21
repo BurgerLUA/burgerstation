@@ -3,7 +3,7 @@
 	desc = "Idi ko mne"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike!"
 	icon = 'icons/obj/item/clothing/hats/seva_suit.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 25,

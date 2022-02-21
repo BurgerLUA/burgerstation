@@ -3,7 +3,7 @@ obj/item/clothing/back/wings/angel
 	desc = "Proof of divinity."
 	desc_extended = "A pair of absolutely divine angel wings. Good for the holy."
 	icon = 'icons/obj/item/clothing/back/wings/angel.dmi'
-	rarity = RARITY_LEGENDARY
+
 
 	defense_rating = list(
 		HOLY = 100,
@@ -21,7 +21,7 @@ obj/item/clothing/back/wings/angel/demon
 	desc = "Heaven's not my kind of place anyway."
 	desc_extended = "A pair of absolutely infernal demonic wings. Good for the profane."
 	icon = 'icons/obj/item/clothing/back/wings/demon.dmi'
-	rarity = RARITY_LEGENDARY
+
 
 	defense_rating = list(
 		HOLY = -100,

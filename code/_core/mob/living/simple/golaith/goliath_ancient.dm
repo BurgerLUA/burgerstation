@@ -35,8 +35,8 @@
 	blood_volume = 1000
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath
 	)
 
 	soul_size = SOUL_SIZE_UNCOMMON

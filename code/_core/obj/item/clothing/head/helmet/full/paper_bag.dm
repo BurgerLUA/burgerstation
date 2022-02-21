@@ -30,7 +30,7 @@
 	. = ..()
 	update_inventory()
 
-/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("logo")
 	SAVEVAR("logobg")
@@ -87,16 +87,9 @@
 	. = ..()
 
 	if(new_location.item_slot & SLOT_HEAD)
+		src.close_inventory(src)
 		dynamic_inventory_count = 0
 		is_container = FALSE
-		if(inventory_user)
-			var/mob/living/advanced/A = inventory_user
-			for(var/obj/hud/inventory/dynamic/B in A.inventory)
-				B.alpha = 0
-				B.mouse_opacity = 0
-			for(var/obj/hud/button/close_inventory/B in A.buttons)
-				B.alpha = 0
-				B.mouse_opacity = 0
 	else
 		dynamic_inventory_count = 7
 		is_container = TRUE

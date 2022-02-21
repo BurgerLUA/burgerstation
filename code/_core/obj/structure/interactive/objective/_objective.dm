@@ -21,9 +21,9 @@ obj/structure/interactive/artifact/Finalize()
 	name = "[pick(SStext.adjectives)] artifact of [pick(SStext.verbs)]"
 	return ..()
 
-obj/structure/interactive/artifact/on_crush()
+obj/structure/interactive/artifact/on_crush(var/message=TRUE)
 	var/turf/T = get_turf(pick(rift_markers))
-	src.visible_message(span("danger","\The [name] strains as it disappears in a large flash!"))
+	if(message) src.visible_message(span("danger","\The [name] strains as it disappears in a large flash!"))
 	src.force_move(T)
 	return FALSE
 

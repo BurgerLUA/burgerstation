@@ -87,7 +87,7 @@
 	. = ..()
 	if(!used) icon_state = "blank"
 
-/obj/item/dice/d20/cursed/save_item_data(var/save_inventory = TRUE)
+/obj/item/dice/d20/cursed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("used")
 
@@ -105,7 +105,7 @@
 
 /obj/item/dice/d20/cursed/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
 
-	if(!caller || silent || !is_living(caller))
+	if(!caller || silent || !is_living(caller) || !caller.client)
 		return ..()
 
 	var/mob/living/L = caller
@@ -186,7 +186,7 @@
 			L.add_attribute_xp(ATTRIBUTE_LUCK,50 - L.get_attribute_level(ATTRIBUTE_LUCK))
 		if(11)
 			L.to_chat(span("notice","Egg."))
-			CREATE(/obj/item/container/food/egg/chicken,get_turf(src))
+			CREATE(/obj/item/container/edible/egg/chicken,get_turf(src))
 		if(12)
 			L.to_chat(span("notice","Hey, magic!"))
 			CREATE(/obj/item/supply_crate/magic,get_turf(src))
@@ -195,7 +195,7 @@
 			return TRUE //Don't delete.
 		if(14)
 			L.to_chat(span("notice","Hey, some gems! Wait..."))
-			CREATE(/obj/item/currency/telecrystals/player_antagonist_spawn,get_turf(src))
+			CREATE(/obj/item/currency/telecrystals{amount=10},get_turf(src))
 		if(15)
 			L.to_chat(span("notice","Hey, more magic!"))
 			var/turf/T = get_turf(src)

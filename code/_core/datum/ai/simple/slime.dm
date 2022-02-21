@@ -42,7 +42,7 @@
 
 /ai/slime/do_attack(var/atom/atom_to_attack)
 
-	if(!is_slime(atom_to_attack) || !can_absorb_slime(atom_to_attack))
+	if(!istype(atom_to_attack,/mob/living/simple/slime/) || !can_absorb_slime(atom_to_attack))
 		return ..()
 
 	var/mob/living/simple/slime/self = owner

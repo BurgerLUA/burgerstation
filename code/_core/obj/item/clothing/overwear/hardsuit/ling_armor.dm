@@ -3,7 +3,7 @@
 	desc = "Holy fuck what is this?"
 	desc_extended = "A clusterfuck of metal and flesh fused into living armor. This must make you do some pretty fucking wacky shit."
 	icon = 'icons/obj/item/clothing/suit/ling_armor.dmi'
-	rarity = RARITY_LEGENDARY
+
 	value = 5000
 
 	defense_rating = list(

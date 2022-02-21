@@ -1,4 +1,4 @@
-/obj/item/container/food/fishing
+/obj/item/container/edible/fishing
 	name = "fish"
 	desc = "morning!! if it was a GOOD morning i'd be FISHING"
 	desc_extended = "A fresh catch."
@@ -8,15 +8,15 @@
 	health = /health/obj/item/misc/
 	scale_sprite = FALSE
 
-/obj/item/container/food/fishing/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/fishing/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/food/fishing/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/fishing/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 		var/original_volume = reagents.volume_current
 		var/turf/T = get_turf(src)
-		var/obj/item/container/food/dynamic/fish/S = new(T)
+		var/obj/item/container/edible/dynamic/fish/S = new(T)
 		INITIALIZE(S)
 		if(S.reagents) src.reagents.transfer_reagents_to(S.reagents,original_volume)
 		FINALIZE(S)
@@ -29,87 +29,87 @@
 
 	return ..()
 
-/obj/item/container/food/fishing/generic
+/obj/item/container/edible/fishing/generic
 	name = "cool fish"
 	icon_state = "fish"
 
-/obj/item/container/food/fishing/generic/Generate()
+/obj/item/container/edible/fishing/generic/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
 
-/obj/item/container/food/fishing/salmon
+/obj/item/container/edible/fishing/salmon
 	name = "salmon"
 	icon_state = "salmon"
 
-/obj/item/container/food/fishing/salmon/Generate()
+/obj/item/container/edible/fishing/salmon/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
 
-/obj/item/container/food/fishing/catfish
+/obj/item/container/edible/fishing/catfish
 	name = "catfish"
 	icon_state = "catfish"
 
-/obj/item/container/food/fishing/catfish/Generate()
+/obj/item/container/edible/fishing/catfish/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,20)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,10)
 	return ..()
 
-/obj/item/container/food/fishing/babycarp
+/obj/item/container/edible/fishing/babycarp
 	name = "baby carp"
 	icon_state = "babycarp"
 
-/obj/item/container/food/fishing/babycarp/Generate()
+/obj/item/container/edible/fishing/babycarp/Generate()
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	reagents.add_reagent(/reagent/medicine/health_potion,5)
 	return ..()
 
-/obj/item/container/food/fishing/clownfish
+/obj/item/container/edible/fishing/clownfish
 	name = "clown fish"
 	icon_state = "clownfish"
 
-/obj/item/container/food/fishing/clownfish/Generate()
+/obj/item/container/edible/fishing/clownfish/Generate()
 	reagents.add_reagent(/reagent/drug/space,5)
 	reagents.add_reagent(/reagent/drug/dust,5)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,10)
 	return ..()
 
-/obj/item/container/food/fishing/eel
+/obj/item/container/edible/fishing/eel
 	name = "eel"
 	icon_state = "electric_eel"
 
-/obj/item/container/food/fishing/eel/Generate()
+/obj/item/container/edible/fishing/eel/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
 	reagents.add_reagent(/reagent/medicine/stamina_potion,5)
 	reagents.add_reagent(/reagent/radioactive/radium,5)
 	return ..()
 
-/obj/item/container/food/fishing/glofish
+/obj/item/container/edible/fishing/glofish
 	name = "glofish"
 	icon_state = "glofish"
 
-/obj/item/container/food/fishing/glofish/Generate()
+/obj/item/container/edible/fishing/glofish/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
 	reagents.add_reagent(/reagent/medicine/mana_potion,5)
 	reagents.add_reagent(/reagent/radioactive/,5)
 	return ..()
 
-/obj/item/container/food/fishing/goldfish
+/obj/item/container/edible/fishing/goldfish
 	name = "goldfish"
 	icon_state = "goldfish"
 
-/obj/item/container/food/fishing/goldfish/Generate()
+/obj/item/container/edible/fishing/goldfish/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
 
-/obj/item/container/food/fishing/shark
+/obj/item/container/edible/fishing/shark
 	name = "shark"
 	desc = "what"
 	icon_state = "shark"
 
-/obj/item/container/food/fishing/shark/Generate()
+/obj/item/container/edible/fishing/shark/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,10)
 	reagents.add_reagent(/reagent/medicine/zombie_antidote,5)

@@ -13,9 +13,9 @@
 	value = 50
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw
 	)
 
 

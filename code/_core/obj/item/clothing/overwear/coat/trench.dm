@@ -3,7 +3,7 @@
 	desc = "Reeks of blood, of which it was borne."
 	desc_extended = "A long black coat. Fashionable, at least it was during the Victorian era."
 	icon = 'icons/obj/item/clothing/suit/trench_coat.dmi'
-	rarity = RARITY_RARE
+
 
 	is_container = TRUE
 	dynamic_inventory_count = 2

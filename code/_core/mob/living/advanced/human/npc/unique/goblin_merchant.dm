@@ -14,7 +14,7 @@
 
 	dialogue_id = /dialogue/npc/goblin_merchant/
 
-	immortal = TRUE
+	health = null
 
 	anchored = TRUE
 

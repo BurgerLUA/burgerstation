@@ -9,10 +9,10 @@
 	damage_type = /damagetype/npc/cow
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw
 	)
 
 	size = SIZE_ANIMAL

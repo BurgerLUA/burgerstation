@@ -1,6 +1,6 @@
 /obj/item/ball
 	name = "ball"
-	rarity = RARITY_RARE
+
 	icon = 'icons/obj/item/ball.dmi'
 
 	collision_flags = FLAG_COLLISION_WALKING

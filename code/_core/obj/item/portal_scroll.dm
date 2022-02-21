@@ -12,7 +12,7 @@
 
 /obj/item/portal_scroll/click_self(var/mob/caller)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 

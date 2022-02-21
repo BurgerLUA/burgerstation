@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structure/ore.dmi'
 	icon_state = "deposit"
 	var/ore_score = 1
-	var/material_id
+	material_id = null
 	plane = PLANE_WALL
 	layer = 99
 	initialize_type = INITIALIZE_LATE

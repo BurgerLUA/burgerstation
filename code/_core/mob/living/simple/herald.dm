@@ -71,10 +71,10 @@
 	blood_volume = 1000
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus
 	)
 
 	soul_size = SOUL_SIZE_RARE

@@ -10,7 +10,7 @@
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(R)
 
-	if(R.item_count_current < 2)
+	if(R.amount < 2)
 		caller.to_chat(span("warning","You need 4 rods in order to build a grille!"))
 		return FALSE
 	if(R.material_id != material_id)
@@ -51,7 +51,7 @@
 	if(istype(src.loc,/turf/simulated/floor/plating/))
 		caller.to_chat(span("warning","There is already a floor plating here!"))
 		return FALSE
-	if(S.item_count_current < 4)
+	if(S.amount < 4)
 		caller.to_chat(span("warning","You need 4 sheets in order to build a floor plating!"))
 		return FALSE
 	if(S.material_id != material_id)

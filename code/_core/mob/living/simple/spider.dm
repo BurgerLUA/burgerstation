@@ -18,9 +18,9 @@
 	value = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_spider/,
-		/obj/item/container/food/dynamic/meat/raw_spider/,
-		/obj/item/container/food/dynamic/meat/raw_spider/
+		/obj/item/container/edible/dynamic/meat/raw_spider/,
+		/obj/item/container/edible/dynamic/meat/raw_spider/,
+		/obj/item/container/edible/dynamic/meat/raw_spider/
 	)
 
 	armor_base = list(

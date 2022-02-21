@@ -7,9 +7,9 @@
 
 	value = 800
 
-	tier = 1
+	tier = 2
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = FALSE
 
@@ -57,7 +57,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
-	pump_delay = 2
+	pump_delay = 3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread()
 	return 0.005
@@ -70,12 +70,12 @@
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom
 	name = "That Shotgun"
-	rarity = RARITY_MYTHICAL
+
 	desc = "Packs a punch (not a kick, that's another series)."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/doom.dmi'
 	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
 	value = 4000
-	shoot_delay = 1
+	shoot_delay = 2
 	heat_max = 0
 	bullet_count_max = 6
 	weight = 12
@@ -89,7 +89,7 @@
 
 	damage_mod = 2
 
-	tier = 4
+	tier = 3
 
 	pump_delay = 8
 

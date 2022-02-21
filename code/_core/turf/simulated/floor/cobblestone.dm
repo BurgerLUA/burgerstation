@@ -22,7 +22,7 @@
 
 /turf/simulated/floor/brick
 	name = "brick floor"
-	icon = 'icons/turf/floor/brick.dmi'
+	icon = 'icons/turf/floor/brick_new.dmi'
 	icon_state = "0,0"
 	color = "#FFFFFF"
 

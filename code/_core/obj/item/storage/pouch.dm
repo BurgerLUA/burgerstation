@@ -30,10 +30,14 @@
 
 /obj/item/storage/pouch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && object.loc == caller && is_pocket(object) && click_self(caller,location,control,params))
-		return TRUE
+	if(is_inventory(object)) //Roughly pockets only.
+		var/obj/hud/inventory/I = object
+		if(I.loc == caller && !I.drag_to_take)
+			return click_self(caller,location,control,params)
 
-	return ..()
+	. = ..()
+
+
 
 /obj/item/storage/pouch/single
 	name = "single large pouch"

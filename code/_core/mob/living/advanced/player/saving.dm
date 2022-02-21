@@ -102,7 +102,7 @@
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 
-	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special. TODO: IT SHOULD THOUGH.
+	for(var/id in loaded_data["organs"]) //This does not use load_and_create (thus load_item_data_pre and load_item_data) as organs are special. TODO: IT SHOULD THOUGH.
 		var/o_type = loaded_data["organs"][id]["type"]
 		if(appearance_only && ispath(o_type,/obj/item/organ/internal/implant))
 			continue
@@ -116,7 +116,7 @@
 			if(loaded_data["organs"][id]["inventories"])
 				for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
 					var/obj/hud/inventory/I = O.inventories[i]
-					I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
+					I.load_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
 		O.update_sprite()
 
 	//Organ checking
@@ -184,7 +184,7 @@
 
 	check_promotion()
 
-/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
+/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
 
@@ -224,7 +224,7 @@
 		if(!O)
 			log_error("WARNING: Organ [id] not found while saving! Save corruption possible!")
 			continue
-		final_organ_list[id] = O.save_item_data(save_inventory)
+		final_organ_list[id] = O.save_item_data(src,save_inventory,died)
 	.["organs"] = final_organ_list
 
 	//Skills

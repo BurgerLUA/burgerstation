@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/sword/armblade //I added a special move to this!
 	name = "fleshblade"
-	rarity = RARITY_LEGENDARY
+
 	desc = "HELP MAINT."
 	desc_extended = "A great weapon, but gross as hell. Holding this gives you an idea... <br>Use in hand to scream for 20 stamina, stunning nearby enemies."
 	icon = 'icons/obj/item/weapons/melee/swords/arm_blade.dmi'

@@ -86,6 +86,8 @@
 
 #define SCALE(value, min, max) ((value - min) / (max - min))
 
+#define SCALEBELOW(value,threshold,maximum) min(maximum,(value/threshold))*maximum)
+
 // Performs a linear interpolation between a and b.
 // Note that amount=0 returns a, amount=1 returns b, and
 // amount=0.5 returns the mean of a and b.
@@ -219,7 +221,7 @@
 #define RULE_OF_THREE(a, b, x) ((a*x)/b)
 
 #define BLOCK_DISTANCE(A1,A2) max(abs(A1.x - A2.x),abs(A1.y - A2.y))
-// )
+
 
 #define HYPOTENUSE(a,b) sqrt(a**2 + b**2)
 

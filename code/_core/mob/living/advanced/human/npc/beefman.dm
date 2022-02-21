@@ -2,7 +2,6 @@
 	name = "meat anomaly"
 	desc = "I told you not to go alone."
 	desc_extended = "A disgusting monster made entirely out of beef. It's unknown where these things came from, but we do know that they're attracted by the rotting corpses of humanoids."
-	enable_AI = TRUE
 	ai = /ai/advanced/beef
 	species = "beefman"
 
@@ -15,10 +14,10 @@
 
 	butcher_contents = list(
 		/obj/item/soulgem/rare,
-		/obj/item/container/food/dynamic/meat/raw_beefman,
-		/obj/item/container/food/dynamic/meat/raw_beefman,
-		/obj/item/container/food/dynamic/meat/raw_beefman,
-		/obj/item/container/food/dynamic/meat/raw_beefman
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman
 	)
 
 	has_hard_crit = FALSE
@@ -36,7 +35,7 @@
 		play_sound('sound/weapons/beef/beef_grab.ogg',get_turf(atom_damaged),range_max=VIEW_RANGE)
 		add_status_effect(STAGGER,5,5,source = attacker)
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/npc/beefman/proc/beef()
 	if(!health)

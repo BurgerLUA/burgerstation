@@ -6,8 +6,6 @@
 		/obj/item/tempering/quality/magic = 100,
 		/obj/item/tempering/quality/melee = 100,
 		/obj/item/tempering/quality/ranged = 100,
-		/obj/item/currency/magic_token/random = 50,
-		/obj/item/currency/telecrystals/treasure = 50,
 		/obj/item/fulton_pack = 50,
 		/loot/magic/soulgem = 50,
 		/obj/item/tempering/luck = 50,

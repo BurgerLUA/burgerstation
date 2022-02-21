@@ -3,7 +3,7 @@
 	desc = "01000010 01100101 01100101 01110000"
 	desc_extended = "A helmet made from a cardboard box"
 	icon = 'icons/obj/item/clothing/hats/cardborghelm.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	size = SIZE_3
 
@@ -24,7 +24,7 @@
 	desc = "Hivmemind not included!"
 	desc_extended = "A mask, part of a xeno costume."
 	icon = 'icons/obj/item/clothing/hats/xenomask.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	size = SIZE_3
 
@@ -45,7 +45,7 @@
 	desc = "OOOOoooOOooo!"
 	desc_extended = "The hood of a ghost costume, with holes cut out to see out of."
 	icon = 'icons/obj/item/clothing/hats/ghostsheethood.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	size = SIZE_2
 
@@ -62,7 +62,7 @@
 	desc = "micheal soft pls no sue"
 	desc_extended = "The helmet included in the blocky skinsuit"
 	icon = 'icons/obj/item/clothing/hats/minefucker.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 10,

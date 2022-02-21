@@ -3,7 +3,7 @@
 	desc = "Go for not going blind."
 	desc_extended = "A special industrial strength welding helmet that protects the user's head, face, and eyes from welding sparks."
 	icon = 'icons/obj/item/clothing/hats/welding.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 50,

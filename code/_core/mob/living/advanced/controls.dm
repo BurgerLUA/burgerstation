@@ -4,7 +4,7 @@ mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS O
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(right_hand && right_hand.on_mouse_up(src,object,location,control,params))
+	if(inventories_by_id[BODY_HAND_RIGHT_HELD]?.on_mouse_up(src,object,location,control,params))
 		return TRUE
 
 	return FALSE
@@ -15,7 +15,7 @@ mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(left_hand && left_hand.on_mouse_up(src,object,location,control,params))
+	if(inventories_by_id[BODY_HAND_LEFT_HELD]?.on_mouse_up(src,object,location,control,params))
 		return TRUE
 
 	return FALSE
@@ -33,10 +33,10 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 			return TRUE
 		return FALSE
 
-	if(right_hand)
-		if(right_hand.click_on_object(src,object,location,control,params))
+	if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+		if(inventories_by_id[BODY_HAND_RIGHT_HELD].click_on_object(src,object,location,control,params))
 			return TRUE
-		if(object.clicked_on_by_object(src,right_hand,location,control,params))
+		if(object.clicked_on_by_object(src,inventories_by_id[BODY_HAND_RIGHT_HELD],location,control,params))
 			return TRUE
 
 	return FALSE
@@ -55,10 +55,10 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 			return TRUE
 		return FALSE
 
-	if(left_hand)
-		if(left_hand.click_on_object(src,object,location,control,params))
+	if(inventories_by_id[BODY_HAND_LEFT_HELD])
+		if(inventories_by_id[BODY_HAND_LEFT_HELD].click_on_object(src,object,location,control,params))
 			return TRUE
-		if(object.clicked_on_by_object(src,left_hand,location,control,params))
+		if(object.clicked_on_by_object(src,inventories_by_id[BODY_HAND_LEFT_HELD],location,control,params))
 			return TRUE
 
 	return FALSE
@@ -70,10 +70,10 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(right_hand)
-		if(right_hand.click_on_object(src,object,location,control,params))
+	if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+		if(inventories_by_id[BODY_HAND_RIGHT_HELD].click_on_object(src,object,location,control,params))
 			return TRUE
-		if(object.clicked_on_by_object(src,right_hand,location,control,params))
+		if(object.clicked_on_by_object(src,inventories_by_id[BODY_HAND_RIGHT_HELD],location,control,params))
 			return TRUE
 
 	return FALSE
@@ -85,10 +85,10 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(left_hand)
-		if(left_hand.click_on_object(src,object,location,control,params))
+	if(inventories_by_id[BODY_HAND_LEFT_HELD])
+		if(inventories_by_id[BODY_HAND_LEFT_HELD].click_on_object(src,object,location,control,params))
 			return TRUE
-		if(object.clicked_on_by_object(src,left_hand,location,control,params))
+		if(object.clicked_on_by_object(src,inventories_by_id[BODY_HAND_LEFT_HELD],location,control,params))
 			return TRUE
 
 	return FALSE

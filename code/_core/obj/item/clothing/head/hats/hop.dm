@@ -3,7 +3,7 @@
 	desc = "can i get all access plz"
 	desc_extended = "A hat usually worn by the all-access giving and disappearing."
 	icon = 'icons/obj/item/clothing/hats/hop.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 20,

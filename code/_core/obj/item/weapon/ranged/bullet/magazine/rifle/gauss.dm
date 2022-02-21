@@ -59,19 +59,19 @@
 	return max(0.001 - (0.001 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto
-	name = "\improper 2x12mm Gauss Carbine"
+	name = "\improper 2.54x12mm Experimental Gauss Carbine"
 	desc = "STOP POSTING ABOUT MONOLITH! I'M TIRED OF SEEING IT!"
 	desc_extended = "The finalized design of the Gauss Gun. Further research and improvements in materials have given it the durability and power efficiency it needs to fire automatically. However, creating even one of this is such an expense that only the Space Russian Military are seen using these. You have to be seriously lucky to get your hands on this." //mucho texto
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
-	rarity = RARITY_MYTHICAL
+
 	value = 15000
 
 	tier = 3
 
 	shoot_delay = 6
 
-	damage_mod = 1.2
+	damage_mod = 1
 
 	automatic = TRUE
 

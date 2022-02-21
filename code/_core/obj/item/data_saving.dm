@@ -74,9 +74,18 @@
 
 	return I
 
-/obj/item/proc/save_item_data(var/save_inventory = TRUE)
+/obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
+
+	if(contraband)
+		if(P)
+			var/value_to_give = FLOOR(src.get_value()*0.5,1)
+			if(value_to_give > 0)
+				P.to_chat(span("notice","Due to \the [src.name] being contraband, it cannot be stored. You were given [value_to_give] credits as compensation."))
+				P.adjust_currency(value_to_give,silent=TRUE)
+			qdel(src) //Prevents any possible exploits.
+		return
 
 	if(!should_save)
 		return
@@ -101,28 +110,34 @@
 			var/obj/hud/inventory/IN = inventories[i]
 			var/list/inventory_data = list()
 			try
-				inventory_data = IN.get_inventory_data(save_inventory)
+				inventory_data = IN.save_inventory_data(save_inventory)
 			catch(var/exception/e)
 				log_error("Failed to save inventory data of [src.get_debug_name()]. Some information may be lost.")
 				log_error("Save Error: [e] on [e.file]:[e.line]\n[e.desc]!")
 			.["inventories"][i] = inventory_data
 	if(soul_bound)
 		.["soul_bound"] = soul_bound
-	if(item_count_current > 1)
-		.["item_count_current"] = item_count_current
+	if(amount > 1)
+		.["amount"] = amount
 	if(delete_on_drop)
 		.["delete_on_drop"] = TRUE
 	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
-	if(quality && quality != initial(quality))
-		.["quality"] = min(quality,140)
+	if(uses_until_condition_fall)
+		var/desired_quality = quality
+		if(died)
+			desired_quality *= 0.25
+			desired_quality -= 25
+			desired_quality = FLOOR(desired_quality,1)
+		if(desired_quality != initial(quality))
+			.["quality"] = clamp(desired_quality,0,200)
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck
 
 
-/obj/item/organ/save_item_data(var/save_inventory = TRUE)
+/obj/item/organ/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
 	. = ..()
 
@@ -155,11 +170,11 @@
 	if(object_data["inventories"])
 		for(var/i=1,i<=length(object_data["inventories"]),i++)
 			var/obj/hud/inventory/I = inventories[i]
-			I.set_inventory_data(P,object_data["inventories"][i])
+			I.load_inventory_data(P,object_data["inventories"][i])
 	if(object_data["soul_bound"])
 		soul_bound = object_data["soul_bound"]
-	if(object_data["item_count_current"])
-		item_count_current = object_data["item_count_current"]
+	if(object_data["amount"])
+		amount = object_data["amount"]
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
 	if(object_data["quality"])
@@ -182,7 +197,7 @@
 		reagents.update_container()
 	return TRUE
 
-/obj/hud/inventory/proc/set_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
+/obj/hud/inventory/proc/load_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
 
 	if(!inventory_data)
 		log_error("Warning: [src.get_debug_name()] in [P.get_debug_name()] had no inventory data!")
@@ -214,7 +229,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/get_inventory_data(var/save_inventory=TRUE) //Getting the inventory and their contents for saving.
+/obj/hud/inventory/proc/save_inventory_data(var/mob/living/advanced/player/P,var/save_inventory=TRUE,var/died=FALSE) //Getting the inventory and their contents for saving.
 
 	var/content_length = length(contents)
 
@@ -222,9 +237,23 @@
 
 	for(var/i=1,i<=content_length,i++)
 		var/obj/item/I = contents[i]
-		if(istype(I) && I.can_save)
-			.[i] = I.save_item_data(save_inventory)
-		else
-			log_error("Tried saving invalid object in an inventory, [I ? I.get_debug_name() : "NULL"].")
+
+		if(died && !I.save_on_death)
+			continue
+
+		if(!istype(I))
+			log_error("Tried saving invalid item ([I ? I : "NULL"]) in an inventory!")
 			.[i] = list()
+			continue
+
+		if(!I.can_save)
+			.[i] = list()
+			continue
+
+		.[i] = I.save_item_data(P,save_inventory,died)
+
+
+
+
+
 

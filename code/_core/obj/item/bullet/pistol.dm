@@ -1,11 +1,11 @@
 /obj/item/bullet_cartridge/pistol_10mm/
-	name = "\improper 10mm pistol cartridge"
+	name = "\improper 10x32mm pistol cartridge"
 	desc = "At least 1mm bigger than 9mm"
 	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
 	icon = 'icons/obj/item/bullet/10mm.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 10.17
 	bullet_length = 32
@@ -44,8 +44,8 @@
 	desc_extended = "For pistols that require .50."
 	icon = 'icons/obj/item/bullet/50ae.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -94,8 +94,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require 12.7mm ammo."
 	icon = 'icons/obj/item/bullet/12mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -133,9 +133,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require 9mm ammo."
 	icon = 'icons/obj/item/bullet/9mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
-
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 9
 	bullet_length = 19
@@ -173,8 +172,8 @@
 	desc_extended = "For smgs that require 4.6x30mm ammo."
 	icon = 'icons/obj/item/bullet/46mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 
 	bullet_diameter = 4.6
@@ -252,8 +251,8 @@
 	desc_extended = "For pistols, revolvers, and smgs that require .40 ammo."
 	icon = 'icons/obj/item/bullet/40.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 10
 	bullet_length = 22
@@ -313,8 +312,8 @@
 	desc_extended = "For pistols and smgs that requre .45 ammo."
 	icon = 'icons/obj/item/bullet/45.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 11.43
 	bullet_length = 23
@@ -334,11 +333,6 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/pistol_45/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/pistol_45/ap
 	name = "\improper AP .45 pistol catridge"
 	desc_extended = "For pistols and smgs that requre .45 ammo. This one has an armor piercing tip."
@@ -357,8 +351,8 @@
 	desc_extended = "For pistols and smgs that require holy .45 ammo."
 	icon = 'icons/obj/item/bullet/holy45.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 11.777
 	bullet_length = 24
@@ -378,7 +372,52 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/pistol_45holy/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
+
+
+/obj/item/bullet_cartridge/pistol_10x24mm
+	name = "\improper 10x24mm caseless pistol cartridge"
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	icon = 'icons/obj/item/bullet/10x24mm.dmi'
+
+	amount_max = 6
+	amount_max_icon = 6
+
+	bullet_diameter = 10
+	bullet_length = 24
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.02
+	value = 1.25
+
+/obj/item/bullet_cartridge/pistol_10x24mm/surplus
+	name = "\improper surplus 10x24mm caseless pistol cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/surplus
+	jam_chance = 1
+	value = 0
+
+/obj/item/bullet_cartridge/pistol_10x24mm/explosive
+	name = "\improper 10x24mm HEAP caseless pistol cartridge"
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	icon = 'icons/obj/item/bullet/10x24mm.dmi'
+
+	amount_max = 6
+	amount_max_icon = 6
+
+	bullet_diameter = 10
+	bullet_length = 24
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/explosive
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.02
+	value = 2.4

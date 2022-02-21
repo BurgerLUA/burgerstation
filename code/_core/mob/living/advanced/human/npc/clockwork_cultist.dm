@@ -2,7 +2,6 @@
 	name = "clockwork cultist"
 	desc = "Hail Ratvar!"
 	desc_extended = "A cultist of Ratvar."
-	enable_AI = TRUE
 	ai = /ai/advanced/clockwork_cult
 
 

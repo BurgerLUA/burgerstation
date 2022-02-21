@@ -46,7 +46,7 @@ var/global/list/ckey_to_death_box_data = list()
 		for(var/j in dropped_items)
 			sleep(-1)
 			var/obj/item/I = j
-			data_list["inventory"] += list(I.save_item_data(TRUE))
+			data_list["inventory"] += list(I.save_item_data(P))
 			data_list["value"] += CEILING(I.get_value(),1)
 			total_items_saved++
 		if(length(data_list["inventory"]))

@@ -13,12 +13,12 @@
 	ai = /ai/boss/ash_drake/
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake
 	)
 
 	stun_angle = 0
@@ -187,7 +187,7 @@
 
 	return TRUE
 
-/mob/living/simple/ash_drake/get_movement_delay()
+/mob/living/simple/ash_drake/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 

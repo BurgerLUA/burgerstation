@@ -4,7 +4,7 @@
 	desc_extended = "A mask made from wrapped cloth. The signature look of mysterious characters, mummies and deeply unfortunate people alike."
 	icon = 'icons/obj/item/clothing/masks/mummy.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 10,

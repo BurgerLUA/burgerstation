@@ -75,7 +75,7 @@
 	dan_mode = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/get_static_spread()
-	return 0.005
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/get_skill_spread(var/mob/living/L)
 	return max(0,0.025 - (0.05 * L.get_skill_power(SKILL_RANGED)))
@@ -93,7 +93,7 @@
 
 	tier = 3
 
-	shoot_delay = 1
+	shoot_delay = 1.5
 
 	size = SIZE_3
 	weight = 10
@@ -105,3 +105,6 @@
 	movement_spread_base = 0.01
 
 	dan_mode = TRUE
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod/get_static_spread()
+	return 0.005

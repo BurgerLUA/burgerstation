@@ -17,7 +17,7 @@
 
 	health_base = 10
 
-/obj/item/cross/save_item_data(var/save_inventory = TRUE)
+/obj/item/cross/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("broken")
 
@@ -50,7 +50,7 @@
 
 	if(O.health && icon_state == initial(icon_state))
 		var/list/defense = O.health.get_defense(ignore_luck=TRUE)
-		if(defense[HOLY] - defense[DARK] < 0)
+		if(defense[HOLY] < defense[DARK])
 			return FALSE
 
-	return ..()
+	. = ..()

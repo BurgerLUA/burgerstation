@@ -7,17 +7,17 @@
 /obj/item/contract/ashwalker/low
 	amount_max = 10
 	burgerbux_reward = 1
-	reward = /obj/item/currency/credits{item_count_current=10*50}
+	reward = /obj/item/currency/credits{amount=10*50}
 
 /obj/item/contract/ashwalker/mid
 	amount_max = 25
 	burgerbux_reward = 5
-	reward = /obj/item/currency/credits{item_count_current=25*50*1.5}
+	reward = /obj/item/currency/credits{amount=25*50*1.5}
 
 /obj/item/contract/ashwalker/high
 	amount_max = 50
 	burgerbux_reward = 10
-	reward = /obj/item/currency/credits{item_count_current=50*50*2}
+	reward = /obj/item/currency/credits{amount=50*50*2}
 
 /obj/item/contract/syndicate
 	name = "contract: Kill Syndicate"
@@ -28,17 +28,17 @@
 /obj/item/contract/syndicate/low
 	amount_max = 10
 	burgerbux_reward = 1
-	reward = /obj/item/currency/credits{item_count_current=10*50}
+	reward = /obj/item/currency/credits{amount=10*50}
 
 /obj/item/contract/syndicate/mid
 	amount_max = 25
 	burgerbux_reward = 5
-	reward = /obj/item/currency/credits{item_count_current=25*50*1.5}
+	reward = /obj/item/currency/credits{amount=25*50*1.5}
 
 /obj/item/contract/syndicate/high
 	amount_max = 50
 	burgerbux_reward = 10
-	reward = /obj/item/currency/credits{item_count_current=50*50*2}
+	reward = /obj/item/currency/credits{amount=50*50*2}
 
 
 
@@ -52,17 +52,17 @@
 
 /obj/item/contract/arachnids/low
 	amount_max = 5
-	reward = /obj/item/currency/credits{item_count_current=5*200}
+	reward = /obj/item/currency/credits{amount=5*200}
 	burgerbux_reward = 1
 
 /obj/item/contract/arachnids/mid
 	amount_max = 10
-	reward = /obj/item/currency/credits{item_count_current=10*200*1.5}
+	reward = /obj/item/currency/credits{amount=10*200*1.5}
 	burgerbux_reward = 5
 
 /obj/item/contract/arachnids/high
 	amount_max = 25
-	reward = /obj/item/currency/credits{item_count_current=25*200*2}
+	reward = /obj/item/currency/credits{amount=25*200*2}
 	burgerbux_reward = 10
 
 //Bosses

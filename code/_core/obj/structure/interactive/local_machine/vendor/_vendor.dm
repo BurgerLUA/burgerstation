@@ -5,6 +5,13 @@ var/global/list/equipped_antags = list()
 	desc = "Vends things!"
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "generic"
+
+	//Gen means generate based on initial icon_state
+	var/icon_state_broken = "gen"
+	var/icon_state_off = "gen"
+	var/icon_state_mask = "gen"
+	var/icon_state_panel = "gen"
+
 	desc_extended = "You can use this to purchase things that are always in stock."
 
 	var/list/obj/item/stored_objects = list()
@@ -39,6 +46,70 @@ var/global/list/equipped_antags = list()
 
 	var/ignore_economy = FALSE
 
+	var/powered = TRUE
+	var/open = FALSE
+	var/broken = FALSE
+
+	health = /health/construction/
+
+/obj/structure/interactive/vending/proc/vend_random(var/count=1) //For malfunctions/hacking/destruction
+
+	if(!length(stored_objects))
+		return FALSE
+
+	var/turf/T = get_turf(src)
+
+	for(var/i=1,i<=count,i++)
+		var/obj/item/stored_object = pick(stored_objects)
+		var/obj/item/created = new stored_objects.type(T)
+		modify_item(created,stored_object)
+		if(created.uses_until_condition_fall > 0)
+			created.quality = max(0,created.quality - rand(25,75))
+		INITIALIZE(created)
+		GENERATE(created)
+		FINALIZE(created)
+
+	return TRUE
+
+
+/obj/structure/interactive/vending/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	if(!broken)
+		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),/material/glass)
+		health.restore()
+		broken = TRUE
+		update_sprite()
+		vend_random(rand(3,6))
+	else
+		create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 4),/material/iron)
+		qdel(src)
+
+/obj/structure/interactive/vending/update_icon()
+
+	. = ..()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	if(icon_state_broken && broken)
+		icon_state = icon_state_broken
+	else if(icon_state_off && !powered)
+		icon_state = icon_state_off
+
+
+/obj/structure/interactive/vending/update_overlays()
+
+	. = ..()
+
+	if(icon_state_panel && open)
+		var/image/I = new/image(initial(icon),icon_state_panel)
+		add_overlay(I)
+
+	if(icon_state_mask && powered)
+		var/image/I = new/image(initial(icon),icon_state_mask)
+		I.plane = PLANE_LIGHTING
+		add_overlay(I)
+
 /obj/structure/interactive/vending/Destroy()
 	QDEL_CUT(stored_objects)
 	QDEL_NULL(accepts_item)
@@ -51,9 +122,9 @@ var/global/list/equipped_antags = list()
 		return FALSE
 
 	if(accepts_item)
-		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.item_count_current >= amount)
+		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.amount >= amount)
 			P.right_item.add_item_count(-amount)
-		else if(P.left_item && istype(P.left_item,accepts_item) && P.left_item.item_count_current >= amount)
+		else if(P.left_item && istype(P.left_item,accepts_item) && P.left_item.amount >= amount)
 			P.left_item.add_item_count(-amount)
 		else
 			P.to_chat(span("warning","You don't have enough [accepts_item.name]s to purchase this!"))
@@ -69,9 +140,10 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/modify_item(var/obj/item/I,var/obj/item/base_item)
 	return TRUE
 
-/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0)
+/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0)
 
 	if(!spend_currency(P,item_value))
+		flick("[initial(icon_state)]-deny",src)
 		return null
 
 	var/obj/item/new_item
@@ -80,7 +152,6 @@ var/global/list/equipped_antags = list()
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	FINALIZE(new_item)
-	new_item.update_sprite()
 
 	P.to_chat(span("notice","You vend \the [new_item.name]."))
 
@@ -91,15 +162,19 @@ var/global/list/equipped_antags = list()
 
 	return new_item
 
-/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn)
-	var/obj/item/I = new item_path(turf_spawn)
-	INITIALIZE(I)
-	GENERATE(I)
-	FINALIZE(I)
-	return I
-
-
 /obj/structure/interactive/vending/Initialize()
+
+	if(icon_state_broken == "gen")
+		icon_state_broken = "[initial(icon_state)]-broken"
+
+	if(icon_state_off == "gen")
+		icon_state_off = "[initial(icon_state)]-off"
+
+	if(icon_state_mask == "gen")
+		icon_state_mask = "[initial(icon_state)]-mask"
+
+	if(icon_state_panel == "gen")
+		icon_state_panel = "[initial(icon_state)]-panel"
 
 	var/turf/T = get_turf(src)
 	for(var/k in stored_types)
@@ -108,20 +183,26 @@ var/global/list/equipped_antags = list()
 
 	. = ..()
 
+/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn)
+	var/obj/item/I = new item_path(turf_spawn)
+	INITIALIZE(I)
+	GENERATE(I)
+	FINALIZE(I)
+	return I
+
 /obj/structure/interactive/vending/proc/get_bullshit_price(var/desired_price)
 
 	if(accepts_item)
 		return CEILING(desired_price,1)
 
-	//Basically makes prices how they'd appear in stores.
-
+	//Makes prices how they'd appear in stores.
 	switch(desired_price)
-		if(0 to 1)
+		if(0 to 1) //Price is less than 1 credit.
 			return CEILING(desired_price,0.01)
-		if(1 to 100)
-			return CEILING(desired_price,1) - 0.01
+		if(1 to 100) //Price is less than 100 credits.
+			return CEILING(desired_price,1) - 0.05
 
-	return CEILING(desired_price,50) - 1
+	return CEILING(desired_price,10) - 1
 
 /obj/structure/interactive/vending/Finalize()
 
@@ -141,7 +222,7 @@ var/global/list/equipped_antags = list()
 		GENERATE(accepts_item)
 		FINALIZE(accepts_item)
 		markup *= 1/accepts_item.value
-		price_max = accepts_item.item_count_max
+		price_max = accepts_item.amount_max
 
 	for(var/obj/item/I in stored_objects)
 		if(stored_cost[I.type])
@@ -160,10 +241,12 @@ var/global/list/equipped_antags = list()
 		else if(!ignore_economy && !isnum(SSeconomy.purchases_this_round["[I.type]"]))
 			SSeconomy.purchases_this_round["[I.type]"] = 0
 
+	update_sprite()
+
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller) && !is_inventory(object))
+	if(!is_player(caller) && !is_inventory(object) || !caller.client)
 		return ..()
 
 	INTERACT_CHECK

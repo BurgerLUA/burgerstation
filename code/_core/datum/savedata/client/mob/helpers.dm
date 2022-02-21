@@ -121,7 +121,7 @@ var/global/allow_loading = TRUE
 		return FALSE
 
 	A.is_saving = TRUE
-	var/list/loaded_data = A.get_mob_data(save_inventory,force,died)
+	var/list/loaded_data = A.get_mob_data(save_inventory,died)
 
 	. = TRUE
 	if(!length(loaded_data))

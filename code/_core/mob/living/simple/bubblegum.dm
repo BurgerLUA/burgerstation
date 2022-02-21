@@ -56,14 +56,14 @@
 	)
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum
 	)
 
 	iff_tag = "Bubblegum"
@@ -115,14 +115,14 @@
 		var/turf/simulated/T = get_turf(A)
 		if(!istype(T))
 			continue
-		if(T.blood_level == 0)
+		if(T.blood_level_hard == 0)
 			continue
 		new/obj/effect/temp/hazard/bubblefist(T,null,src)
 		. = TRUE
 
 	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
-/mob/living/simple/bubblegum/get_movement_delay()
+/mob/living/simple/bubblegum/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 

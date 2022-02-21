@@ -2,7 +2,7 @@
 	name = "enchanting vendor"
 	desc = "Absolutely magic!"
 	desc_extended = "An almost cartoonish vendor of magical equipment and gear for the aspiring enchanter."
-	icon_state = "magivend"
+	icon_state = "MagiVend"
 
 	stored_types = list(
 		/obj/item/paper/book/enchanting_guide,
@@ -16,7 +16,7 @@
 	name = "magic vendor"
 	desc = "Absolutely magic!"
 	desc_extended = "An almost cartoonish vendor of magical equipment and gear for the aspiring wizard."
-	icon_state = "magivend"
+	icon_state = "MagiVend"
 
 	stored_types = list(
 		/obj/item/weapon/ranged/spellgem/arcblades,

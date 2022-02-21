@@ -5,7 +5,7 @@
 	icon = 'icons/mob/living/simple/beepsky.dmi'
 	icon_state = "captain"
 
-	immortal = TRUE //How can you kill a god?
+	health = null //immortal
 
 	ai = /ai/doorman
 

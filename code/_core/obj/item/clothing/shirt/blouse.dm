@@ -39,3 +39,8 @@
 		"blouse" = COLOR_WHITE,
 		"shoulders" = COLOR_BLACK
 	)
+
+/obj/item/clothing/shirt/blouse/random/Generate()
+	. = ..()
+	for(var/k in polymorphs)
+		polymorphs[k] = random_color()

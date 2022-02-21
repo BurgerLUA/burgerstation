@@ -43,11 +43,11 @@
 		M.post_move(old_loc)
 
 
-/obj/structure/interactive/crate/on_crush()
+/obj/structure/interactive/crate/on_crush(var/message=TRUE)
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		M.on_crush()
+		M.on_crush(message)
 
 	return ..()
 
@@ -226,7 +226,7 @@
 				CREATE(/obj/item/magazine/pistol_50,src.loc)
 		if(3)
 			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/magazine/rifle/assault,src.loc)
+				CREATE(/obj/item/weapon/ranged/bullet/magazine/rifle/m4,src.loc)
 			for(var/i=1,i<=rand(6,12),i++)
 				CREATE(/obj/item/magazine/rifle_308,src.loc)
 		if(4 to 6)
@@ -262,11 +262,11 @@
 				CREATE(/obj/item/storage/kit/filled,src.loc)
 		if(26 to 30)
 			for(var/i=1,i<=rand(1,3),i++)
-				CREATE(/obj/item/container/beaker/bottle/large/health_potion,src.loc)
+				CREATE(/obj/item/container/simple/beaker/bottle/large/health_potion,src.loc)
 			for(var/i=1,i<=rand(1,3),i++)
-				CREATE(/obj/item/container/beaker/bottle/large/stamina_potion,src.loc)
+				CREATE(/obj/item/container/simple/beaker/bottle/large/stamina_potion,src.loc)
 			for(var/i=1,i<=rand(1,3),i++)
-				CREATE(/obj/item/container/beaker/bottle/large/mana_potion,src.loc)
+				CREATE(/obj/item/container/simple/beaker/bottle/large/mana_potion,src.loc)
 		if(30 to 32)
 			for(var/i=1,i<=rand(2,4),i++)
 				CREATE(/obj/item/grenade/timed/explosive/,src.loc)

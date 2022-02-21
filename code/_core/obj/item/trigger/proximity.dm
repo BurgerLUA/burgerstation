@@ -20,7 +20,7 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/proximity/save_item_data(var/save_inventory = TRUE)
+/obj/item/device/proximity/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("time_set")
 	SAVEVAR("range_set")

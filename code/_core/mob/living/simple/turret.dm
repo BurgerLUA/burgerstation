@@ -77,7 +77,7 @@
 
 /mob/living/simple/turret/nanotrasen/immortal
 	name = "immortal nanotrasen turret"
-	immortal = TRUE
+	health = null
 
 /mob/living/simple/turret/nanotrasen/post_death()
 	icon_state = "dead"

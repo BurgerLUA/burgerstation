@@ -34,7 +34,7 @@
 /ai/proc/handle_attacking()
 	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
 		var/is_left_click = prob(left_click_chance)
-		spawn do_attack(objective_attack,is_left_click)
+		spawn do_attack(objective_attack,is_left_click) //The spawn here is important as attacking has its own sleeps and whatnot.
 		return TRUE
 	return FALSE
 
@@ -68,7 +68,7 @@
 	if(L.dead)
 		return FALSE
 
-	if(L.immortal && !ignore_immortal)
+	if(!L.health && !ignore_immortal)
 		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))

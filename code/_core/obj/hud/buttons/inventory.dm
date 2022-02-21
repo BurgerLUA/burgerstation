@@ -13,24 +13,18 @@
 
 	var/inventory_category = "none"
 
-/obj/hud/button/close_inventory/proc/close(var/mob/caller)
+	var/obj/item/assoc_item
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
-		for(var/k in A.using_inventories)
-			var/obj/item/I = k
-			if(I.inventory_category != inventory_category)
-				continue
-			I.close_inventory(A)
-
-	return TRUE
+/obj/hud/button/close_inventory/Destroy()
+	. = ..()
+	assoc_item = null
 
 /obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		close(caller)
+		assoc_item.close_inventory(caller)
 
 /obj/hud/button/hide_show_inventory
 	name = "toggle inventory"
@@ -49,7 +43,7 @@
 
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
+		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,2)
 		update_sprite()
 
 

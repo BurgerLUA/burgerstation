@@ -8,8 +8,8 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_length = -1
 	bullet_diameter = -1
@@ -19,13 +19,8 @@
 
 	caseless = TRUE
 
-/obj/item/bullet_cartridge/arrow/Generate()
-	item_count_current = item_count_max
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/arrow/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
-	src.projectile_count = item_count_current
+	src.projectile_count = amount
 	qdel(src)
 	return src
 
@@ -39,8 +34,8 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
-	item_count_max = 3
-	item_count_max_icon = 3
+	amount_max = 3
+	amount_max_icon = 3
 
 	value = 10
 
@@ -54,8 +49,8 @@
 
 	projectile_speed = TILE_SIZE-1
 
-	item_count_max = 1
-	item_count_max_icon = 1
+	amount_max = 1
+	amount_max_icon = 1
 
 	value = -1
 

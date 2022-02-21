@@ -71,7 +71,7 @@
 		var/number_of_players = length(all_players)
 		if(number_of_players >= 10 && prob(number_of_players*0.25))
 			var/mob/living/advanced/player/P = pick(all_players)
-			if(!P.dead)
+			if(!P.dead && P.client)
 				var/turf/T = get_turf(P)
 				if(T && valid_turfs[T])
 					new/obj/effect/falling_meteor(T)

@@ -19,5 +19,7 @@
 
 	map_color = "#000000"
 
+	var/window_blend = FALSE
+
 /turf/simulated/wall/is_occupied()
 	return src

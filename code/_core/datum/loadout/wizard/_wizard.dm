@@ -16,10 +16,5 @@
 		/obj/item/clothing/back/storage/dufflebag/poly/wizard,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/double/black,
-		/obj/item/weapon/melee/torch,
-		/obj/item/currency/magic_token/max,
-		/obj/item/currency/magic_token/max,
-		/obj/item/currency/magic_token/max,
-		/obj/item/currency/magic_token/max,
-		/obj/item/currency/magic_token/max
+		/obj/item/weapon/melee/torch
 	)

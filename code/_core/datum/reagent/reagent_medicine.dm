@@ -14,7 +14,7 @@
 
 	. = ..()
 
-	if(!L.dead && experience_per_unit && caller && is_player(caller))
+	if(!L.dead && experience_per_unit && is_player(caller) && caller.client)
 		caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
 
 /reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
@@ -26,7 +26,7 @@
 
 /reagent/medicine/adrenaline
 	name = "adrenaline"
-	desc = "Pure adrenaline. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, as well as a speed bonus."
+	desc = "Increases heartrate."
 	color = "#880000"
 	alpha = 225
 	flavor = "pure speed"
@@ -39,6 +39,8 @@
 	value = 1
 
 	particle_size = 0.5
+
+	overdose_threshold = 20
 
 /reagent/medicine/adrenaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -56,7 +58,7 @@
 
 /reagent/medicine/adrenaline/epinephrine
 	name = "epinephrine"
-	desc = "Used for stabilizing dying patients. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, and also regulating oxyloss."
+	desc = "Used for reviving dying patients."
 	desc_extended = ""
 	color = "#FFFFFF"
 	alpha = 225
@@ -87,8 +89,8 @@
 
 	flavor = "cherry"
 
-	metabolism_blood = METABOLISM_BLOOD * 10
-	metabolism_stomach = METABOLISM_BLOOD * 10
+	metabolism_blood = 5
+	metabolism_stomach = 5
 
 	experience_per_unit = 3
 
@@ -117,8 +119,8 @@
 
 	flavor = "lime"
 
-	metabolism_blood = METABOLISM_BLOOD * 10
-	metabolism_stomach = METABOLISM_BLOOD * 10
+	metabolism_blood = 5
+	metabolism_stomach = 5
 
 	experience_per_unit = 2
 
@@ -147,8 +149,8 @@
 
 	flavor = "blueberry"
 
-	metabolism_blood = METABOLISM_BLOOD * 10
-	metabolism_stomach = METABOLISM_BLOOD * 10
+	metabolism_blood = 5
+	metabolism_stomach = 5
 
 	experience_per_unit = 2
 
@@ -178,8 +180,8 @@
 
 	flavor = "bitter grass"
 
-	metabolism_blood = METABOLISM_BLOOD * 5
-	metabolism_stomach = METABOLISM_BLOOD * 5
+	metabolism_blood = 5
+	metabolism_stomach = 1
 
 	experience_per_unit = 2
 
@@ -327,8 +329,8 @@
 
 	flavor = "fat"
 
-	metabolism_blood = 1
-	metabolism_stomach = 0.5
+	metabolism_blood = 2
+	metabolism_stomach = 0.2
 	experience_per_unit = 4.5
 
 	value = 0.75

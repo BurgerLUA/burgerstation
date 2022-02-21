@@ -19,8 +19,8 @@
 	for(var/obj/structure/scenery/S in src.contents)
 		qdel(S)
 
-	if(src in SSturfs.wet_turfs)
-		SSturfs.wet_turfs -= src
+	if(src in SSturf.wet_turfs)
+		SSturf.wet_turfs -= src
 
 	var/old_turf_type = src.type
 
@@ -50,7 +50,7 @@
 	if(force_edges_update)
 		update_edges()
 	else
-		queue_update_turf_edges(W)
+		queue_update_edges(W)
 
 	var/area/A = W.loc
 	if(A && A.sunlight_freq > 0 && A.sunlight_color)

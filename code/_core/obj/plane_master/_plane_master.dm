@@ -1,7 +1,6 @@
 /obj/plane_master/
 	name = "plane master"
-	icon = 'icons/invisible.dmi'
-	icon_state = "0"
+	icon = null
 	plane = 0
 	screen_loc = "CENTER" //Stolen from /tg/
 	appearance_flags = PLANE_MASTER | PIXEL_SCALE
@@ -53,8 +52,27 @@
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
+		filters += filter(type="drop_shadow", x=0, y=-4, size=3, offset=0, color=rgb(0,0,0,200))
+
+/obj/plane_master/mobs_small
+	plane = PLANE_MOB_SMALL
+
+/obj/plane_master/mobs_small/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,200))
 
+/obj/plane_master/mobs_large
+	plane = PLANE_MOB_LARGE
+
+/obj/plane_master/mobs_large/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
+		filters += filter(type="drop_shadow", x=0, y=-6, size=5, offset=0, color=rgb(0,0,0,200))
 
 //DARKNESS
 /obj/plane_master/darkness
@@ -145,3 +163,30 @@
 /obj/plane_master/hud
 	plane = PLANE_HUD
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
+
+
+/obj/plane_master/hud/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=0, size=2, offset=0, color=rgb(0,0,0))
+
+
+//Exterior areas. For weather effects.
+/obj/plane_master/area_exterior
+	plane = PLANE_AREA_EXTERIOR
+	render_target = "*area_exterior"
+
+/obj/plane_master/area_exterior/apply_post_processing()
+	. = ..()
+	//Depth
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
+
+
+/obj/plane_master/weather
+	plane = PLANE_WEATHER
+
+/obj/plane_master/weather/apply_post_processing()
+	. = ..()
+	filters += filter(type="alpha", x=0, y=0, render_source="*area_exterior")

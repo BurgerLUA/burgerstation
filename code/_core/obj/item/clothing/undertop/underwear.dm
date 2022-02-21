@@ -60,7 +60,7 @@
 	desc_extended = "why"
 	icon = 'icons/obj/item/clothing/underwear/neko_bra.dmi'
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		DARK = 20,

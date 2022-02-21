@@ -1,18 +1,21 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson
-	name = "M1919 Annihilator"
-	desc = "The Thompson. Annihilator, Chicago Typewriter, Tommygun."
-	desc_extended = "A rugged, battlescarred submachine gun from a bygone era."
-	icon = 'icons/obj/item/weapons/ranged/smg/thompson.dmi'
+	name = "\improper Solarian Typewriter"
+	desc = "The space gangster's choice."
+	desc_extended = "A rugged, battlescarred submachine gun from a bygone era. They don't make them like they used to."
+	icon = 'icons/obj/item/weapons/ranged/smg/sol/45.dmi'
 	icon_state = "inventory"
 	value = 4200
 
-	tier = 3
+	tier = 4
 
-	shoot_delay = 1
+	damage_mod = 1
+	inaccuracy_modifier = 1
+	movement_inaccuracy_modifier = 0.5
+	shoot_delay = 0.8
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
@@ -23,7 +26,7 @@
 
 	dan_mode = TRUE
 
-	heat_max = 0.06
+	heat_max = 0.1
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -58,24 +61,20 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 5 - 7
-	attachment_sight_offset_y = 18 - 15
+	attachment_sight_offset_x = 15 - 7
+	attachment_sight_offset_y = 19 - 15
 
-	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	inaccuracy_modifier = 2 // i hope you like grinding ranged
-	movement_inaccuracy_modifier = 0.5
-	movement_spread_base = 0.2
-
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_static_spread()
-	return 0.04
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_skill_spread(var/mob/living/L)
-	return max(0,0.2 - (0.1 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 
 

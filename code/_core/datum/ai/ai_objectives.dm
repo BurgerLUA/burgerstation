@@ -70,7 +70,8 @@
 
 	var/turf/T = get_turf(owner)
 
-	for(var/light_source/LS in T.affecting_lights)
+	for(var/k in T.affecting_lights)
+		var/light_source/LS = k
 		if(!is_player(LS.top_atom))
 			continue
 		var/mob/living/L = LS.top_atom
@@ -168,6 +169,8 @@
 			. = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			. = radius_find_enemy_combat
+	if(owner.has_status_effect(REST))
+		. *= 0.5
 
 /ai/proc/get_possible_targets()
 
@@ -243,6 +246,8 @@
 
 	if(old_alert_level <= alert_level && alert_level != ALERT_LEVEL_NONE)
 		set_active(TRUE)
+		if(owner.has_status_effect(REST))
+			owner.remove_status_effect(REST)
 
 	if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION) && !CALLBACK_EXISTS("investigate_\ref[src]") && (old_alert_level >= alert_level ? TRUE : prob(50)) )
 		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
@@ -255,7 +260,7 @@
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
-	if(owner.alert_overlay)
+	if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
 		if(new_alert_level == ALERT_LEVEL_COMBAT)
 			owner.alert_overlay.icon_state = "exclaim"
 		else if(new_alert_level == ALERT_LEVEL_CAUTION)

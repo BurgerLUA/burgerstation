@@ -4,7 +4,7 @@
 	desc_extended = "A completely and utterly arbitrary anomaly of nature that prevents living beings from passing it."
 	icon = 'icons/obj/structure/shrine_smoke.dmi'
 	icon_state = "smoke"
-	plane = PLANE_AREA
+	plane = PLANE_EFFECT
 	layer = 100
 	alpha = 255
 

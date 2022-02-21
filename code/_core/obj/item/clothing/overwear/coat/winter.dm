@@ -32,7 +32,7 @@
 	icon = 'icons/obj/item/clothing/suit/bomberjacket.dmi'
 	additional_clothing = list() // no hood
 
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 15,

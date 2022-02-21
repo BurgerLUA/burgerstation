@@ -1,8 +1,8 @@
-/obj/item/clothing/head/helmet/hardsuit/cult
+/obj/item/clothing/head/helmet/full/hardsuit/cult
 
 	name = "hardened cult hood"
 	icon = 'icons/obj/item/clothing/hats/cult_hard.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

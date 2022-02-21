@@ -138,20 +138,12 @@
 
 	)
 
-	var/list/obj/hud/button/spawning_slots = list(
-		/obj/hud/button/slot/A,
-		/obj/hud/button/slot/B,
-		/obj/hud/button/slot/C,
-		/obj/hud/button/slot/D,
-		/obj/hud/button/slot/E,
-		/obj/hud/button/slot/F,
-		/obj/hud/button/slot/G,
-		/obj/hud/button/slot/H,
-		/obj/hud/button/slot/I,
-		/obj/hud/button/slot/J
+	var/list/obj/hud/button/spawning_ability_buttons = list(
+		/obj/hud/button/ability/A,
+		/obj/hud/button/ability/B,
+		/obj/hud/button/ability/C,
+		/obj/hud/button/ability/D
 	)
-
-
 
 	var/list/obj/hud/button/spawning_health = list(
 		/obj/hud/button/health/bar/hp,

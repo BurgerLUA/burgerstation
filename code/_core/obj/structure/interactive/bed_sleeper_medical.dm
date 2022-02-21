@@ -5,6 +5,7 @@
 	desc_extended = "A special medical sleeper that automatically treats all manner of wounds when an occupant is inside and the door is closed. The door must be closed manually."
 	base_color = "#FFFFFF"
 	secondary_color = "#0094FF"
+	tertiary_color = "#0094FF"
 
 /obj/structure/interactive/bed/sleeper/medical/think()
 	if(buckled || is_living(buckled))
@@ -45,3 +46,4 @@
 	name = "syndicate medical sleeper"
 	base_color = "#303030"
 	secondary_color = "#7F0000"
+	tertiary_color = "#7F0000"

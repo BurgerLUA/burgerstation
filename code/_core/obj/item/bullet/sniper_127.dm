@@ -9,8 +9,8 @@
 	bullet_length = 90
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 4
-	item_count_max_icon = 4
+	amount_max = 4
+	amount_max_icon = 4
 
 	projectile = /obj/projectile/bullet/firearm/sniper
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_127

@@ -16,7 +16,7 @@
 		DARK = 40
 	)
 
-	rarity = RARITY_RARE
+
 
 	size = SIZE_2
 

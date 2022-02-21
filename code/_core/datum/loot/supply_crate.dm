@@ -74,7 +74,7 @@
 		/loot/weapon/smg/fbi = 1,
 		/loot/weapon/smg/nanotech = 1,
 		/loot/weapon/smg/pdw = 1,
-		/loot/weapon/smg/tactical/nt = 1
+		/loot/weapon/smg/tactical = 1
 	)
 
 /loot/supply_crate/american
@@ -87,7 +87,6 @@
 		/loot/weapon/pistol/big_game = 1,
 		/loot/weapon/pistol/comp = 1,
 		/loot/weapon/pistol/horse = 1,
-		/loot/weapon/rifle/assault = 1,
 		/loot/weapon/rifle/civ_carbine = 1,
 		/loot/weapon/rifle/dmca = 1,
 		/loot/weapon/shotgun/combat = 1,

@@ -66,7 +66,7 @@
 	density = TRUE
 	anchored = FALSE
 
-/mob/living/simple/ghost/on_crush()
+/mob/living/simple/ghost/on_crush(var/message=TRUE)
 	return FALSE
 
 /mob/living/simple/ghost/handle_alpha()

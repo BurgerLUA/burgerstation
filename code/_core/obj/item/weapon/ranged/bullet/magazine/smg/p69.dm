@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/p69
-	name = ".40 Prototype NT-SMG"
+	name = "9x19mm Prototype NT-SMG"
 	desc = "This looks ugly."
 	desc_extended = "An early prototype of the 9x22mm NanoTech SMG. This one uses .40 ammo."
 	icon = 'icons/obj/item/weapons/ranged/smg/40.dmi'
@@ -23,13 +23,13 @@
 
 	heat_max = 0.05
 
-	bullet_length_min = 21
-	bullet_length_best = 22
-	bullet_length_max = 23
+	bullet_length_min = 25
+	bullet_length_best = 30
+	bullet_length_max = 31
 
-	bullet_diameter_min = 9.8
-	bullet_diameter_best = 10
-	bullet_diameter_max = 11.2
+	bullet_diameter_min = 4
+	bullet_diameter_best = 4.6
+	bullet_diameter_max = 5
 
 	ai_heat_sensitivity = 0.5
 

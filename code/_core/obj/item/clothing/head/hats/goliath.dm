@@ -1,7 +1,7 @@
 /obj/item/clothing/head/hat/goliath
 	name = "goliath cloak hood"
 	icon = 'icons/obj/item/clothing/hats/goliath_cloak.dmi'
-	rarity = RARITY_RARE
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

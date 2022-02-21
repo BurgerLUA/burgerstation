@@ -2,7 +2,7 @@
 	name = "\improper D.U.U.M. helmet"
 	desc = "For badasses who don't like NanoTrasen's colors or something."
 	desc_extended = "A military helmet made for military men."
-	rarity = RARITY_RARE
+
 	icon = 'icons/obj/item/clothing/hats/doom.dmi'
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE,

@@ -16,12 +16,12 @@
 	stun_angle = 0
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid
 	)
 
 	armor_base = list(

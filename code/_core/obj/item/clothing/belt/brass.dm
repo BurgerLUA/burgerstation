@@ -20,7 +20,7 @@
 		LASER = -10
 	)
 
-	rarity = RARITY_UNCOMMON
+
 
 	value = 40
 

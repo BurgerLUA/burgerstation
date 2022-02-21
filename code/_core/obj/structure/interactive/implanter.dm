@@ -49,7 +49,7 @@
 	var/obj/item/organ/internal/implant/added_implant = A.add_organ(stored_implant)
 	if(added_implant)
 		caller.visible_message(span("notice","\The [caller.name] implants something into their [added_implant.attached_organ.name]."),span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
-		if(should_save_on_implant && is_player(A))
+		if(should_save_on_implant && is_player(A) && A.ckey_last)
 			var/savedata/client/mob/mobdata = MOBDATA(A.ckey_last)
 			if(mobdata) mobdata.save_character(A)
 	else

@@ -96,3 +96,9 @@
 /health/obj/item/organ/synthetic/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 	adjust_loss_smart(burn=magnitude)
 	return TRUE
+
+/health/obj/item/organ/dummy
+	organic = FALSE
+
+/health/obj/item/organ/dummy/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+	return brute + burn + tox + oxy + fatigue + pain + rad + sanity + mental // + L + plundered + no wenches + marooned + you have scurvy

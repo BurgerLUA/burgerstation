@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/prescription
 	name = "prescription glasses"
-	rarity = RARITY_UNCOMMON
+
 	desc = "For nerds."
 	desc_extended = "Some less-than-sturdy prescription glasses. Probably a bad idea to wear these during a laser fight."
 	icon = 'icons/obj/item/clothing/glasses/prescription.dmi'

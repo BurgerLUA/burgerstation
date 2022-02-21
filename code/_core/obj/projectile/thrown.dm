@@ -1,4 +1,4 @@
-/obj/projectile/thrown/
+/obj/projectile/thrown
 	name = "thrown object"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID

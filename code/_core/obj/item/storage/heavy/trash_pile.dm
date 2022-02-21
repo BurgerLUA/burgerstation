@@ -26,9 +26,6 @@
 	if(z == 1)
 		if(prob(20))
 			stored_beefman = new(src)
-			INITIALIZE(stored_beefman)
-			GENERATE(stored_beefman)
-			FINALIZE(stored_beefman)
 		else if(prob(20))
 			new /mob/living/simple/passive/mouse/grey(src.loc)
 
@@ -37,7 +34,7 @@
 	if(desired_loot)
 		var/loot/L = SSloot.all_loot[desired_loot]
 		if(L) L.create_loot_table(src)
-	return ..()
+	. = ..()
 
 /obj/item/storage/heavy/trash_pile/update_inventory()
 	. = ..()

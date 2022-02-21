@@ -3,7 +3,7 @@
 	desc = "A hat with three points."
 	desc_extended = "A triple pointed hat. You almost look like a pirate while wearing this."
 	icon = 'icons/obj/item/clothing/hats/tricorn.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 20,

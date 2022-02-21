@@ -1,4 +1,4 @@
-/obj/effect/cleanable/blood/
+/obj/effect/cleanable/blood
 	name = "blood"
 	icon = 'icons/obj/effects/blood.dmi'
 	color = "#990000"
@@ -17,36 +17,6 @@
 	var/blood_level = 0
 
 	density = FALSE
-
-/obj/effect/cleanable/blood/Cross(atom/movable/O,atom/oldloc)
-	return TRUE
-
-/obj/effect/cleanable/blood/Destroy()
-	update_blood_level(null,loc)
-	return ..()
-
-/obj/effect/cleanable/blood/proc/update_blood_level(var/turf/simulated/new_loc,var/turf/simulated/old_loc)
-
-	if(!blood_level)
-		return FALSE
-
-	if(istype(new_loc))
-		old_loc.blood_level += blood_level
-		if(old_loc.blood_level >= 0)
-			blood_turfs |= new_loc
-
-	if(istype(old_loc))
-		old_loc.blood_level -= blood_level
-		if(old_loc.blood_level <= 0)
-			blood_turfs -= old_loc
-
-	return TRUE
-
-/obj/effect/cleanable/blood/get_base_transform()
-	. = ..()
-	if(randomize_angle)
-		var/matrix/M = .
-		M.Turn(pick(0,90,180,270))
 
 /obj/effect/cleanable/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 
@@ -83,10 +53,31 @@
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
 
+	update_blood_level(loc,null)
 
-	update_blood_level(null,src.loc)
+	. = ..()
 
-	return ..()
+/obj/effect/cleanable/blood/Destroy()
+	update_blood_level(null,loc)
+	. = ..()
+
+/obj/effect/cleanable/blood/proc/update_blood_level(var/turf/simulated/new_loc,var/turf/simulated/old_loc)
+
+	if(istype(new_loc))
+		new_loc.add_blood_level(blood_level,desired_color=color)
+		new_loc.add_blood_level_hard(1)
+
+	if(istype(old_loc))
+		old_loc.add_blood_level(-blood_level)
+		old_loc.add_blood_level_hard(-1)
+
+	return TRUE
+
+/obj/effect/cleanable/blood/get_base_transform()
+	. = ..()
+	if(randomize_angle)
+		var/matrix/M = .
+		M.Turn(pick(0,90,180,270))
 
 /obj/effect/cleanable/blood/drip
 	name = "blood drip"
