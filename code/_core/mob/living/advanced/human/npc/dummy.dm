@@ -6,7 +6,7 @@
 
 	species = "dummy"
 
-	immortal = TRUE
+	health = /health/mob/living/advanced/dummy
 
 	blood_type = null
 
@@ -15,6 +15,15 @@
 	reagents = null
 
 	level = 1
+
+/mob/living/advanced/npc/dummy/Finalize()
+	. = ..()
+	add_status_effect(IMMORTAL)
+
+/mob/living/advanced/npc/dummy/add_organ(var/obj/item/organ/O)
+	O = new O(src)
+	O.health = /health/obj/item/organ/dummy
+	return attach_organ(O)
 
 /mob/living/advanced/npc/dummy/get_xp_multiplier()
 	return 0.1

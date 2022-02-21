@@ -9,7 +9,3 @@
 	enable_wounds = FALSE
 
 	reagents = null
-
-	has_life = FALSE
-
-

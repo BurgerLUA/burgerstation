@@ -40,7 +40,7 @@
 	desc_extended = "A primitive yet effective high-explosive yield handheld grenade designed to take out large groups of infantry. Pull the pin and throw."
 
 /obj/item/grenade/fuse/he/Generate()
-	stored_containers += new /obj/item/container/beaker/tnt(src)
+	stored_containers += new /obj/item/container/simple/beaker/tnt(src)
 	return ..()
 
 /obj/item/grenade/fuse/fragmentation
@@ -49,5 +49,5 @@
 	desc_extended = "A primitive yet effective low-explosive yield handheld grenade designed to take out large groups of infantry with fragments. Pull the pin and throw."
 
 /obj/item/grenade/fuse/fragmentation/Generate()
-	stored_containers += new /obj/item/container/beaker/tnt_fragments(src)
+	stored_containers += new /obj/item/container/simple/beaker/tnt_fragments(src)
 	return ..()

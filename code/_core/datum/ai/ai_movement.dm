@@ -12,17 +12,15 @@
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(L.loc)
 
+	//Frustration
 	if(old_turf && new_turf)
 		if(old_turf == new_turf)
 			frustration_move++
 			if(length(current_path))
 				frustration_path++
-			if(frustration_move >= frustration_move_threshold)
-				sidestep_next = 3
-				frustration_move = 0
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
-			frustration_move = 0
+			frustration_move = max(0,frustration_move-1)
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
 	if(!new_turf || !old_turf || new_turf.z != old_turf.z)
@@ -54,10 +52,10 @@
 				return TRUE
 
 		var/target_distance = get_dist(owner,objective_attack)
-		if(target_distance < attack_distance_min)
+		if(target_distance < attack_distance_min) //Get farther to attack.
 			owner.move_dir = get_dir(objective_attack,owner)
-			owner.movement_flags = MOVEMENT_RUNNING
-		if(target_distance > attack_distance_max)
+			owner.movement_flags = MOVEMENT_NORMAL
+		if(target_distance > attack_distance_max) //Get closer to attack.
 			owner.move_dir = get_dir(owner,objective_attack)
 			owner.movement_flags = MOVEMENT_RUNNING
 		else
@@ -74,7 +72,7 @@
 				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90))
 				frustration_move++
 				return TRUE
-			if(prob(target_distance <= 1 ? 25 : 5))
+			if(prob(target_distance <= 1 ? 25 : 5)) //Strafe when close.
 				owner.move_dir = turn(get_dir(owner,objective_attack),pick(-90,90))
 
 		return TRUE

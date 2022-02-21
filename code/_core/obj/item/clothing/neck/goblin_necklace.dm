@@ -10,7 +10,7 @@
 
 	protected_limbs = list(BODY_TORSO)
 
-	rarity = RARITY_LEGENDARY
+
 
 	defense_rating = list(
 		ARCANE = 80,

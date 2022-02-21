@@ -81,6 +81,7 @@
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 	O = new O(src)
+	if(!health) O.health = null
 	return attach_organ(O)
 
 /mob/living/advanced/proc/attach_organ(var/obj/item/organ/O,var/initialize=TRUE)

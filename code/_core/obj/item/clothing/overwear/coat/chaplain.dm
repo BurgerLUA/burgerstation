@@ -19,7 +19,7 @@
 /obj/item/clothing/overwear/coat/chaplain/witchunter
 	name = "witchunter garb"
 	icon = 'icons/obj/item/clothing/suit/witchunter.dmi'
-	rarity = RARITY_RARE
+
 	desc = "Do not react."
 	desc_extended = "Once worn by those driven by zealous delusion, this suit has felt more than its fair share of warmth."
 

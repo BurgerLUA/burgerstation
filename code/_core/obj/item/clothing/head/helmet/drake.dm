@@ -1,7 +1,7 @@
 /obj/item/clothing/head/helmet/drake
 	name = "ash drake helmet"
 	icon = 'icons/obj/item/clothing/hats/drake_helmet.dmi'
-	rarity = RARITY_MYTHICAL
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

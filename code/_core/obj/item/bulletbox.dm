@@ -33,7 +33,7 @@
 	if(stored_bullet)
 		. += div("notice","It stores [stored_bullet.name] ([bullet_count]/[bullet_max] capacity).")
 
-/obj/item/bulletbox/save_item_data(var/save_inventory = TRUE)
+/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("stored_bullet")
 	SAVEVAR("bullet_count")
@@ -62,10 +62,10 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 
-	if(is_bullet(object))
+	if(istype(object,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = object
 		if(!stored_bullet)
-			var/bullets_to_add = min(B.item_count_current,bullet_max)
+			var/bullets_to_add = min(B.amount,bullet_max)
 			set_stored_bullet(B.type)
 			bullets_to_add = abs(B.add_item_count(-bullets_to_add))
 			bullet_count += bullets_to_add
@@ -73,7 +73,7 @@
 			update_sprite()
 			return TRUE
 		if(B.type == stored_bullet.type)
-			var/bullets_to_add = min(B.item_count_current,bullet_max - bullet_count)
+			var/bullets_to_add = min(B.amount,bullet_max - bullet_count)
 			if(bullets_to_add <= 0)
 				return TRUE
 			bullets_to_add = abs(B.add_item_count(-bullets_to_add))
@@ -94,13 +94,13 @@
 		return ..()
 
 	if(is_inventory(object))
-		var/bullets_to_take = min(bullet_count,stored_bullet.item_count_max)
+		var/bullets_to_take = min(bullet_count,stored_bullet.amount_max)
 		if(bullets_to_take <= 0)
 			return TRUE
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/BC = new stored_bullet.type(get_turf(src))
 		INITIALIZE(BC)
-		BC.item_count_current = bullets_to_take
+		BC.amount = bullets_to_take
 		FINALIZE(BC)
 		I.add_object(BC)
 		bullet_count -= bullets_to_take
@@ -108,7 +108,7 @@
 		update_sprite()
 		return TRUE
 
-	if(is_magazine(object))
+	if(istype(object,/obj/item/magazine/))
 		var/obj/item/magazine/M = object
 		if(!M.can_load_magazine(caller,stored_bullet))
 			return TRUE
@@ -141,7 +141,7 @@
 	if(ispath(desired_path))
 		stored_bullet = new desired_path(src)
 		INITIALIZE(stored_bullet)
-		stored_bullet.item_count_current = 1
+		stored_bullet.amount = 1
 		FINALIZE(stored_bullet)
 		bullet_max = FLOOR( 10*(size**3)/stored_bullet.bullet_diameter, 1)
 		if(!bullet_max)

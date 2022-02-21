@@ -1,6 +1,12 @@
 /obj/structure/interactive/vending/fishing
 	name = "fishing equipment vendor"
 	icon_state = "fishing"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/paper/book/fishing,
 		/obj/item/fishing/rod,

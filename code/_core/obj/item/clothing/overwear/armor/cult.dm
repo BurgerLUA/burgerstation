@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/clothing/suit/cult.dmi'
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 20,
@@ -35,7 +35,7 @@
 	desc_extended = "A set of dusty old robes, often worn by elder members of the cult. Dusty, but full of unholy magic."
 	icon = 'icons/obj/item/clothing/suit/cult_old.dmi'
 
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 20,
@@ -63,7 +63,7 @@
 	desc_extended = "A set of heavily padded robes. Has stronger protection than the other robes."
 	icon = 'icons/obj/item/clothing/suit/cult_hard.dmi'
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 40,
@@ -83,5 +83,5 @@
 	value = 500
 
 	additional_clothing = list(
-		/obj/item/clothing/head/helmet/hardsuit/cult
+		/obj/item/clothing/head/helmet/full/hardsuit/cult
 	)

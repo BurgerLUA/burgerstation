@@ -1,4 +1,4 @@
-/obj/item/container/food/dynamic/fish
+/obj/item/container/edible/dynamic/fish
 	name = "fish"
 	desc = "Something smells fishy here..."
 	desc_extended = "Fish. It's good for you. Except the mercury."
@@ -10,7 +10,7 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/food/dynamic/fish/update_icon()
+/obj/item/container/edible/dynamic/fish/update_icon()
 
 	var/total_raw = 0
 	var/total_cooked = 0
@@ -54,12 +54,12 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/fish/raw_crab/Generate()
+/obj/item/container/edible/dynamic/fish/raw_crab/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/crab,15)
 	reagents.add_reagent(/reagent/nutrition/fat/crab,5)
 	return ..()
 
-/obj/item/container/food/dynamic/fish/raw_carp/Generate()
+/obj/item/container/edible/dynamic/fish/raw_carp/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/fish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()

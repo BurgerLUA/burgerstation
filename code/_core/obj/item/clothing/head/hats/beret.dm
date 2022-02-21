@@ -31,7 +31,7 @@
 		PIERCE = 20,
 		COLD = 20
 	)
-	rarity = RARITY_RARE
+
 	value = 200
 
 /obj/item/clothing/head/hat/beret/armored/syndicate

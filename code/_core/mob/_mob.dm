@@ -8,6 +8,10 @@
 	var/ckey_last //The person controlling this. Can be null if control is given up.
 	var/ckey_owner //The one who spawned it in. Only null if deleting.
 
+	var/rarity = RARITY_COMMON //Basically a strength modifer for the mob.
+	var/tier = -1 //-1 means not set.
+	var/tier_type = "mob"
+
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0
 
@@ -53,6 +57,8 @@
 
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
+	var/obj/plane_master/mobs_small/plane_master_mob_small
+	var/obj/plane_master/mobs_small/plane_master_mob_large
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/objs/plane_master_obj
 	var/obj/plane_master/shuttle/plane_master_shuttle
@@ -62,6 +68,8 @@
 	var/obj/plane_master/openspace/plane_master_openspace
 	var/obj/plane_master/currency/plane_master_currency
 	var/obj/plane_master/hud/plane_master_hud
+	var/obj/plane_master/weather/plane_master_weather
+	var/obj/plane_master/area_exterior/plane_master_area_exterior
 
 	var/list/parallax
 
@@ -144,6 +152,8 @@
 
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_mob)
+	QDEL_NULL(plane_master_mob_small)
+	QDEL_NULL(plane_master_mob_large)
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
@@ -153,6 +163,8 @@
 	QDEL_NULL(plane_master_openspace)
 	QDEL_NULL(plane_master_currency)
 	QDEL_NULL(plane_master_hud)
+	QDEL_NULL(plane_master_weather)
+	QDEL_NULL(plane_master_area_exterior)
 
 	QDEL_NULL(examine_overlay)
 
@@ -195,6 +207,14 @@
 		plane_master_mob = new(src)
 	C.screen += plane_master_mob
 
+	if(!plane_master_mob_small)
+		plane_master_mob_small = new(src)
+	C.screen += plane_master_mob_small
+
+	if(!plane_master_mob_large)
+		plane_master_mob_large = new(src)
+	C.screen += plane_master_mob_large
+
 	if(!plane_master_darkness)
 		plane_master_darkness = new(src)
 	C.screen += plane_master_darkness
@@ -227,6 +247,14 @@
 		plane_master_hud = new(src)
 	C.screen += plane_master_hud
 
+	if(!plane_master_weather)
+		plane_master_weather = new(src)
+	C.screen += plane_master_weather
+
+	if(!plane_master_area_exterior)
+		plane_master_area_exterior = new(src)
+	C.screen += plane_master_area_exterior
+
 	if(!examine_overlay)
 		examine_overlay = new(src)
 	C.screen += examine_overlay
@@ -255,13 +283,14 @@
 		P.owner = src
 	C.screen += parallax["D"]
 
+	C.screen += new/obj/weather/snow
+
 	update_eyes()
 
 	return TRUE
 
 /mob/Finalize()
 	. = ..()
-	update_parallax()
 	update_z_position()
 
 /mob/New(var/desired_loc,var/client/C)

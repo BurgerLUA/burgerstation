@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate.dmi'
 	desc = "EVIL!"
 	desc_extended = "A sturdy, yet lightweight black dufflebag. Doesn't slow you down at all for some reason."
-	rarity = RARITY_MYTHICAL
+
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
 
@@ -32,8 +32,8 @@
 	new /obj/item/storage/kit/syndicate/filled(src)
 	new /obj/item/storage/kit/syndicate/filled(src)
 	new /obj/item/storage/kit/syndicate/filled(src)
-	new /obj/item/container/beaker/bottle/large/health_potion(src)
-	new /obj/item/container/beaker/bottle/large/health_potion(src)
+	new /obj/item/container/simple/beaker/bottle/large/health_potion(src)
+	new /obj/item/container/simple/beaker/bottle/large/health_potion(src)
 	new /obj/item/clothing/glasses/medical_hud/advanced(src)
 	new /obj/item/defib(src)
 	//5 Weapon shit

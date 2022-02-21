@@ -9,7 +9,7 @@
 	required_reagents = list(
 		/reagent/drug/lithium = 1,
 		/reagent/toxin/mercury = 1,
-		/reagent/nutrition/sugar = 1
+		/reagent/nutrition/sugar/glucose = 1
 	)
 
 	results = list(
@@ -22,9 +22,9 @@
 	name = "Space Dust"
 
 	required_reagents = list(
-		/reagent/fuel/acetone=1,
-		/reagent/drug/space=1,
-		/reagent/medicine/dexalin=1
+		/reagent/fuel/acetone = 1,
+		/reagent/drug/space = 1,
+		/reagent/medicine/dexalin = 1
 	)
 
 	results = list(

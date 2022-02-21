@@ -48,6 +48,6 @@
 	icon = 'icons/obj/item/weapons/melee/toolbox/gold.dmi'
 	damage_type = /damagetype/melee/club/gold_toolbox
 
-	rarity = RARITY_LEGENDARY
+
 
 	value = 10000

@@ -58,7 +58,7 @@
 #define COLOR_OLIVE_DRAB "#797659"
 
 //Department Colors
-#define COLOR_CARGO "#BB9042"
+#define COLOR_CARGO "#B57329"
 
 #define COLOR_COMMAND "#2C566E"
 
@@ -87,6 +87,7 @@
 #define COLOR_METAL "#777777"
 #define COLOR_METAL_DARK "#626262"
 #define COLOR_STEEL "#444444"
+#define COLOR_STEEL_DARK "#222222"
 #define COLOR_ALUMINIUM "#D6D6D6"
 #define COLOR_ZINC "#BAC4C8"
 #define COLOR_MAGNESIUM "#E9EEEB"
@@ -107,8 +108,8 @@
 #define COLOR_OIL "#3D3D3D"
 
 //Rarity
-#define COLOR_BROKEN "#FFFFFF"
-#define COLOR_COMMON "#404040"
+#define COLOR_BROKEN "#404040"
+#define COLOR_COMMON "#B2B2B2"
 #define COLOR_UNCOMMON "#8888FF"
 #define COLOR_RARE "#FFFF88"
 #define COLOR_MYTHICAL "#FF88FF"
@@ -117,5 +118,5 @@
 
 
 
-#define COLOR_LIGHT "#E8E8CE" //"#DBD4D4" //"#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT "#DEDEE2" //"#E8E8CE" //"#DBD4D4" //"#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
 #define COLOR_LIGHT_BULB "#F8F4C6"

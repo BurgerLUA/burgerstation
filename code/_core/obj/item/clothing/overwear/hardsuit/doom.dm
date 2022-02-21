@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/suit/doom.dmi'
 	desc = "For badasses who don't like NanoTrasen's colors or something."
 	desc_extended = "A military body armor made for military men."
-	rarity = RARITY_RARE
+
 
 	item_slot = SLOT_TORSO_ARMOR
 

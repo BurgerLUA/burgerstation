@@ -44,7 +44,7 @@
 
 	var/obj/item/material/ore/I = O
 	var/obj/item/material/ingot/S = new(src.loc)
-	S.item_count_current = I.item_count_current
+	S.amount = I.amount
 	S.material_id = I.material_id
 	INITIALIZE(S)
 	GENERATE(S)

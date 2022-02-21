@@ -4,7 +4,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "WHY?"
 	desc_extended = "An absolutely cursed mask."
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		ARCANE = 60,

@@ -19,13 +19,13 @@
 	if(owner.has_status_effects(STUN,SLEEP,PARALYZE))
 		return FALSE
 
-	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && is_enemy(owner.grabbing_hand.owner,FALSE))
-		owner.resist()
-		return FALSE
-
 	return TRUE
 
 /ai/proc/on_life(var/tick_rate=1)
+
+	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && is_enemy(owner.grabbing_hand.owner,FALSE))
+		owner.resist()
+		return TRUE
 
 	objective_ticks += tick_rate
 	var/objective_delay = get_objective_delay()
@@ -36,10 +36,21 @@
 			idle_time = 0
 		else
 			if(idle_time && idle_time <= world.time)
-				set_active(FALSE)
+				var/found_player = FALSE
+				for(var/k in all_players)
+					var/mob/living/advanced/player/P = k
+					if(P.z != owner.z)
+						continue
+					if(get_dist(P,owner) <= VIEW_RANGE)
+						found_player = TRUE
+						break
+				if(found_player)
+					idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Try again later.
+				else
+					set_active(FALSE)
 				return TRUE
 			else if(idle_time == 0)
-				idle_time = world.time + SECONDS_TO_DECISECONDS(120) //Idle for more than 2 minutes means you're just wasting space.
+				idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Idle for more than 3 minutes means you're just wasting space.
 
 	if(owner.attack_next <= world.time)
 		handle_attacking()
@@ -51,10 +62,21 @@
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(!owner.anchored && owner.move_delay <= 0)
-		handle_movement()
-		if(sidestep_next > 0)
-			owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
-			sidestep_next--
+		if(frustration_move >= frustration_move_threshold*2 && !length(current_path_astar))
+			var/path_num = length(current_path)
+			if(path_num)
+				set_path_astar(current_path[path_num])
+			else if(objective_attack)
+				set_path_astar(objective_attack)
+			else if(objective_move)
+				set_path_astar(objective_move)
+		else
+			var/result = handle_movement()
+			if(result && owner.has_status_effect(REST))
+				owner.remove_status_effect(REST)
+
+			if(result && frustration_move >= frustration_move_threshold)
+				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
 
 	owner.handle_movement(tick_rate)
 

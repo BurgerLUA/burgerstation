@@ -4,7 +4,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "A modern gas mask. Filters out most forms of gas."
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLADE = 20,
@@ -25,7 +25,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "An advanced gas mask. Filters out most forms of gas."
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 60,
@@ -69,7 +69,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Baton not included."
 	desc_extended = "A space-age gas mask. Filters out most forms of gas."
-	rarity = RARITY_UNCOMMON
+
 
 /obj/item/clothing/mask/gas/poly
 	name = "gas mask"

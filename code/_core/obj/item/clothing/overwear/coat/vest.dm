@@ -2,7 +2,7 @@
 	name = "tactical storage vest"
 	icon = 'icons/obj/item/clothing/suit/black_vest.dmi'
 
-	rarity = RARITY_UNCOMMON
+
 
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
@@ -64,7 +64,7 @@
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'
-	rarity = RARITY_COMMON
+
 	desc = "For when you need pockets but not many."
 
 	size = SIZE_2*2

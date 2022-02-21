@@ -12,7 +12,7 @@
 
 	weight = 1
 
-/obj/item/soulgem/save_item_data(var/save_inventory = TRUE)
+/obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("total_charge")
 
@@ -99,7 +99,7 @@
 
 		return TRUE
 
-	if(is_staff(object))
+	if(istype(object,/obj/item/weapon/ranged/magic/staff/))
 
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

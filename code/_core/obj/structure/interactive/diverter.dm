@@ -122,7 +122,7 @@
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks if it's a weapon."
 
 /obj/structure/interactive/diverter/weapon/should_push(var/atom/movable/M)
-	return is_weapon(M)
+	return istype(M,/obj/item/weapon)
 
 /obj/structure/interactive/diverter/butcherable
 	name = "airjet diverter (butcherable)"

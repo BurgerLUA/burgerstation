@@ -65,7 +65,54 @@
 	. += (bullet_length_max * bullet_diameter_max)/(9*19)*100
 */
 
-/obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
+
+
+
+/obj/item/weapon/ranged/bullet/proc/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
+
+	if(can_load_chamber(caller,B))
+		if(B.amount <= 1)
+			B.drop_item(src)
+			src.chambered_bullet += B
+		else
+			var/obj/item/bullet_cartridge/B2 = new B.type(src)
+			B2.is_spent = B.is_spent
+			INITIALIZE(B2)
+			FINALIZE(B2)
+			src.chambered_bullet += B2
+			B.add_item_count(-1)
+		. = TRUE
+
+	else if(src.can_load_stored(caller,B))
+		for(var/i=1,i<=length(src.stored_bullets),i++)
+			if(src.stored_bullets[i])
+				continue
+			if(B.amount <= 1)
+				B.drop_item(src)
+				src.stored_bullets[i] = B
+			else
+				var/obj/item/bullet_cartridge/B2 = new B.type(src)
+				B2.is_spent = B.is_spent
+				INITIALIZE(B2)
+				FINALIZE(B2)
+				src.stored_bullets[i] = B2
+				B.add_item_count(-1)
+			. = TRUE
+			break
+
+	if(.)
+		var/turf/T = get_turf(src)
+		play_sound(B.bullet_insert_sound,T,range_max=VIEW_RANGE*0.25)
+	else
+		caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
+
+	return .
+
+
+
+
+
+/obj/item/weapon/ranged/bullet/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 
 	if(src.chambered_bullet) .["chambered_bullet"] = src.chambered_bullet.type
@@ -116,7 +163,7 @@
 
 	var/obj/item/bullet_cartridge/B = chambered_bullet
 	var/jam_chance = B.jam_chance
-	if(quality <= 25)
+	if(quality <= 60)
 		jam_chance += 10
 	if(B.bullet_length != bullet_length_best)
 		jam_chance += 10

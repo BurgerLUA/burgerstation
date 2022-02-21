@@ -281,7 +281,7 @@
 	name = "combat hypospray"
 	desc = ";CMO IS A CHANGELING!!"
 	desc_extended = "A sterile, air-needle autoinjector for rapid administration of drugs to patients."
-	rarity = RARITY_RARE
+
 	value = 1000
 	icon = 'icons/obj/item/container/hypospray.dmi'
 	icon_state = "combat_hypo"

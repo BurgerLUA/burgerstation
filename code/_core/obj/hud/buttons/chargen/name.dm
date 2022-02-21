@@ -25,7 +25,7 @@
 
 	. = ..()
 
-	if(is_player(caller))
+	if(is_player(caller) && caller.client)
 		var/mob/living/advanced/player/P = caller
 
 		var/choice = input(P,"What would you like your name to be?","Name Change",P.real_name) as text|null

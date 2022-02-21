@@ -225,16 +225,6 @@ dmm_suite
 			// Handle Turfs & Movable Atoms
 			else
 				if(ispath(atomPath, /turf))
-					switch(atomPath)
-						if(/turf/unsimulated/generation/surface/surface_turf)
-							atomPath = SSbiome.chosen_biome.surface_turf
-						if(/turf/unsimulated/generation/surface/cave_turf)
-							atomPath = SSbiome.chosen_biome.cave_turf
-						if(/turf/unsimulated/generation/surface/surface_path_turf)
-							atomPath = SSbiome.chosen_biome.surface_path_turf
-						if(/turf/unsimulated/generation/surface/cave_path_turf)
-							atomPath = SSbiome.chosen_biome.cave_path_turf
-
 					if(ispath(atomPath, /turf/dmm_suite/no_wall))
 						if(is_simulated(location))
 							var/turf/simulated/S = location

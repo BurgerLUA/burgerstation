@@ -5,13 +5,9 @@
 	icon = 'icons/obj/item/clothing/back/fulton.dmi'
 	icon_state = "inventory"
 
-	item_count_max = 20
+	amount_max = 20
 
 	value = 200
-
-/obj/item/fulton_pack/Generate()
-	item_count_current = item_count_max
-	return ..()
 
 /obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE,var/turf_check=FALSE)
 
@@ -80,7 +76,7 @@
 	F.add_movable(caller,M)
 
 	caller.visible_message(span("warning","\The [caller.name] attaches \the [src.name] to \the [M.name]!"))
-	caller.to_chat(span("notice","You have [item_count_current-1] fulton packs left."))
+	caller.to_chat(span("notice","You have [amount-1] fulton packs left."))
 
 	add_item_count(-1)
 

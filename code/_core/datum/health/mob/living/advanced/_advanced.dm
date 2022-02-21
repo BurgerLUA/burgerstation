@@ -105,16 +105,16 @@
 	var/mob/living/advanced/A = owner
 
 	if(health_current <= 0) //In crit.
-		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*19)
+		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
 	else
 		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
 
 	if(A.has_status_effects(STAMCRIT,SLEEP,REST))
-		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*29)
+		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*27)
 	else
-		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*19)
+		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*18)
 
-	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*19)
+	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*18)
 
 	return ..()
 
@@ -134,10 +134,12 @@
 		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
-		damage[BRUTE] += O.health.damage[BRUTE]
-		damage[BURN] += O.health.damage[BURN]
-		damage[RAD] += O.health.damage[RAD]
-		damage[PAIN] += O.health.damage[PAIN]
+		if(O.damage_coefficient <= 0)
+			continue
+		damage[BRUTE] += O.health.damage[BRUTE] * O.damage_coefficient
+		damage[BURN] += O.health.damage[BURN] * O.damage_coefficient
+		damage[RAD] += O.health.damage[RAD] * O.damage_coefficient
+		damage[PAIN] += O.health.damage[PAIN] * O.damage_coefficient
 
 	. = ..()
 
@@ -148,10 +150,10 @@
 		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
 			A.remove_status_effect(CRIT)
 
-		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && A.status_effects[PAINKILLER] <= 0 && !A.status_effects[PAINCRIT])
+		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
 			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
 
-		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER] > 0) && A.status_effects[PAINCRIT])
+		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
 			A.remove_status_effect(PAINCRIT)
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
@@ -173,6 +175,7 @@
 			continue
 		.[damage_type] += O_defense_rating[damage_type]
 
+	.["items"] = list()
 	for(var/obj/item/clothing/C in A.worn_objects)
 		if(!(O.id in C.protected_limbs))
 			continue
@@ -184,14 +187,11 @@
 				.[damage_type] = C_defense_rating[damage_type]
 				continue
 			var/clothing_defense = C_defense_rating[damage_type]
-			if(clothing_defense > 0)
-				clothing_defense *= C.quality/100
-			else if(clothing_defense < 0)
-				clothing_defense *= max(0,2 - (C.quality/100))
 			if(!ignore_luck)
 				if(C.luck > 50 && prob(C.luck-50))
 					clothing_defense *= 2
 				else if(C.luck < 50 && prob(50-C.luck))
 					clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
+			.["items"] += C
 

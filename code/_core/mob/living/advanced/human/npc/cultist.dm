@@ -2,7 +2,6 @@
 	name = "cultist"
 	desc = "*incomprehensible gibberish*"
 	desc_extended = "A cultist of Nar'sie."
-	enable_AI = TRUE
 	ai = /ai/advanced/cult
 
 

@@ -1,3 +1,5 @@
+var/global/list/all_damage_numbers = list()
+
 /damagetype/
 	var/name //TODO:REMOVE
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
@@ -133,6 +135,8 @@
 
 	var/savage_hit_threshold = 0.3 //30%
 
+	var/sneak_attack_multiplier = 2 //200%
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -191,6 +195,9 @@
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
 
+/damagetype/proc/do_sneak_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+	return sneak_attack_multiplier
+
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
 	var/list/new_attack_damage = attack_damage_base.Copy()
@@ -226,6 +233,15 @@
 
 	return new_attack_damage
 
+/damagetype/proc/get_sneak_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+			return TRUE
+
+	return FALSE
+
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(!attacker.is_player_controlled() || victim.is_player_controlled())
@@ -240,11 +256,6 @@
 			var/obj/hud/inventory/I = M.grabbing_hand
 			if(I.owner == attacker)
 				return TRUE
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
-			return TRUE
 
 	var/crit_chance = get_crit_chance(attacker)
 
@@ -280,13 +291,13 @@
 
 		if(is_advanced(victim))
 			var/mob/living/advanced/A = victim
-			if(i==1 && is_weapon(weapon))
-				if(is_weapon(A.left_item) && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
+			if(i==1 && !ismob(weapon))
+				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
 					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.left_item]")
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.left_item]")
 						return perform_clash(attacker,victim,weapon,A.left_item)
-				if(is_weapon(A.right_item) && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
+				if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
 					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.right_item]")
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.right_item]")
@@ -408,6 +419,7 @@
 		SANITY = 0
 	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
+	critical_hit_multiplier *= get_sneak_hit_condition(attacker,victim,weapon,hit_object) ? do_sneak_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
 	var/pain_damage = 0
 
@@ -492,26 +504,22 @@
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
 	var/total_damage_dealt = 0
-	if(victim.immortal || hit_object.immortal)
+	if(hit_object.health)
+		total_damage_dealt += hit_object.health.adjust_loss_smart(
+			brute = damage_to_deal_main[BRUTE],
+			burn = damage_to_deal_main[BURN],
+			tox = damage_to_deal_main[TOX],
+			oxy = damage_to_deal_main[OXY],
+			fatigue = damage_to_deal_main[FATIGUE],
+			pain = damage_to_deal_main[PAIN],
+			rad = damage_to_deal_main[RAD],
+			sanity = damage_to_deal_main[SANITY],
+			mental = damage_to_deal_main[MENTAL],
+			update = FALSE
+		)
+	else
 		for(var/damage_type in damage_to_deal_main)
 			total_damage_dealt += damage_to_deal_main[damage_type]
-	else
-		if(hit_object.health)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(
-				brute = damage_to_deal_main[BRUTE],
-				burn = damage_to_deal_main[BURN],
-				tox = damage_to_deal_main[TOX],
-				oxy = damage_to_deal_main[OXY],
-				fatigue = damage_to_deal_main[FATIGUE],
-				pain = damage_to_deal_main[PAIN],
-				rad = damage_to_deal_main[RAD],
-				sanity = damage_to_deal_main[SANITY],
-				mental = damage_to_deal_main[MENTAL],
-				update = FALSE
-			)
-		else
-			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
-			return TRUE
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
@@ -533,6 +541,14 @@
 	if(!total_damage_dealt)
 		display_glance_message(attacker,victim,weapon,hit_object)
 	else
+		if(defense_rating_victim && defense_rating_victim["items"])
+			var/condition_damage = total_damage_dealt
+			for(var/k in defense_rating_victim["items"])
+				var/obj/item/I = k
+				if(I.uses_until_condition_fall <= 0)
+					continue
+				I.use_condition(condition_damage)
+
 		display_hit_message(attacker,victim,weapon,hit_object)
 		if(is_living(blamed) && is_living(victim))
 			var/mob/living/A = blamed
@@ -591,6 +607,17 @@
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
+	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (total_damage_dealt > 0 || damage_blocked > 0) && isturf(victim.loc))
+		var/turf/T = victim.loc
+		if(T)
+			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
+			var/obj/effect/damage_number/DN
+			if(length(all_damage_numbers) && all_damage_numbers[desired_id])
+				DN = all_damage_numbers[desired_id]
+				DN.add_value(total_damage_dealt,damage_blocked)
+			else
+				DN = new(T,total_damage_dealt,damage_blocked,desired_id)
+
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon
 		if(W.reagents && victim.reagents)
@@ -602,7 +629,6 @@
 			if(W.enchantment.charge <= 0)
 				qdel(W.enchantment)
 				W.enchantment = null
-
 
 	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)
@@ -673,12 +699,10 @@
 
 	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
 
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		var/matrix/attack_matrix = L.get_base_transform()
-		attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
-		animate(L, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
-		animate(transform = L.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
+	var/matrix/attack_matrix = attacker.get_base_transform()
+	attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
+	animate(attacker, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
+	animate(transform = attacker.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
 
 	. = CEILING(attack_delay,1)
 

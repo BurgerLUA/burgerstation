@@ -83,7 +83,7 @@
 
 /obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
-	rarity = RARITY_MYTHICAL
+
 	desc = "THE LEGEND."
 	desc_extended = "A steel sword that makes up for it's simplicity by being heavy and huge, the Zweihander is a fearsome sight only used by PMCs with no self-regard whatsoever."
 	icon = 'icons/obj/item/weapons/melee/swords/zweihander.dmi'

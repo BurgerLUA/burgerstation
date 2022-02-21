@@ -1,5 +1,5 @@
 /turf/simulated/floor/plating
-	name = "plating"
+	name = "steel floor plating"
 
 	icon = 'icons/turf/floor/plating.dmi'
 	icon_state = "empty"
@@ -26,6 +26,15 @@
 
 /turf/simulated/floor/plating/shuttle
 	name = "reinforced plating"
-	icon = 'icons/turf/floor/shuttle.dmi'
+	icon = 'icons/turf/floor/spaceship.dmi'
 	icon_state = "plating"
 	plane = PLANE_SHUTTLE
+
+
+/turf/simulated/floor/plating/syndicate
+	name = "dark steel floor plating"
+	color = COLOR_STEEL_DARK
+
+/turf/simulated/floor/plating/rev
+	name = "tinted steel floor plating"
+	color = "#626A3B"

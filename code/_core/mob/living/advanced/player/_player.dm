@@ -105,6 +105,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	damage_received_multiplier = 0.75
 
+	expiration_time = SECONDS_TO_DECISECONDS(60)
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	last_autosave = world.time
@@ -154,7 +156,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		followers.Cut()
 
 	if(client)
-		client.make_ghost(src.loc ? src.loc : FALLBACK_TURF)
+		var/turf/T = get_turf(src)
+		client.make_ghost(T ? T : FALLBACK_TURF)
 
 	dialogue_target = null
 
@@ -253,21 +256,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 					continue
 				A.set_active(TRUE)
 			ai_steps = 0
-
-/mob/living/advanced/player/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
-	// only prevent dead bodies from being grabbed if person grabbing is antag
-	// unfortunately due to code in datum/damagetype/unarmed/fists.dm, a GRAB! message will be displayed anyway
-	if(dead && istype(grabber, /mob/living/advanced/player/antagonist/))
-		if(istype(src, /mob/living/advanced/player/antagonist/))
-			return ..() // person being grabbed is also antag, allows revs and syndies to grab each other (maybe check IFF?)
-
-		if(messages)
-			var/mob/living/grabberMob = grabber
-			grabberMob.to_chat(span("warning", "Ew! Why would I touch a disgusting [name]!"))
-
-		return FALSE
-	return ..()
-
 
 /mob/living/advanced/player/proc/prestige(var/skill_id)
 	if(!prestige_count[skill_id])

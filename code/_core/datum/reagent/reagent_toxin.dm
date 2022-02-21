@@ -79,9 +79,9 @@
 
 	particle_size = 0.2
 
-/reagent/toxin/zombie_toxin
-	name = "zombie toxin"
-	desc = "Toxins from a zombie. Doesn't go away when metabolized in the bloodstream and deals constant toxic damage based on the volume."
+/reagent/toxin/blob_toxin
+	name = "blob toxin"
+	desc = "Toxins from a zombie. Stays in the bloodstream even when metabolized unless treated with an antidote."
 
 	damage_per_unit = 1
 
@@ -123,3 +123,14 @@
 	flavor = "venus"
 
 	particle_size = 1
+
+
+/reagent/toxin/blob_spore
+	name = "blob spores"
+	desc = "Don't breathe this in."
+
+	damage_per_unit = 2
+
+	particle_size = 0.8
+
+	color = "#A06300"

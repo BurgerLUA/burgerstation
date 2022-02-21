@@ -3,7 +3,7 @@
 	desc = "Beep beepp boop."
 	desc_extended = "A robot costume made out of cardboard, economic! "
 	icon = 'icons/obj/item/clothing/suit/cardborg.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	size = SIZE_7
 

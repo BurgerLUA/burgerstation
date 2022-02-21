@@ -7,7 +7,7 @@
 	gender = MALE
 
 	anchored = TRUE
-	immortal = TRUE
+	health = null
 
 	level = 46
 

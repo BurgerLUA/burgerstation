@@ -27,7 +27,7 @@
 	blood_volume = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/chicken/raw
+		/obj/item/container/edible/dynamic/chicken/raw
 	)
 
 	soul_size = SOUL_SIZE_COMMON

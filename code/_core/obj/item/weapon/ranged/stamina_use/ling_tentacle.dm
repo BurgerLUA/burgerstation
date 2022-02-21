@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/stamina_use/tentacle
 	name = "tentacle"
-	rarity = RARITY_LEGENDARY
+
 	desc = "HELP MAINT."
 	desc_extended = "A grody tentacle. <br>Use in hand to change whether you appear next to your enemies, or if they're thrown to you."
 	icon = 'icons/obj/item/weapons/ranged/ling_tentacle.dmi'

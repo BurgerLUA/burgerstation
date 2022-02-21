@@ -83,7 +83,7 @@
 				icon_state = "[desired_dir]_close"
 			if(VIEW_RANGE*0.5 to VIEW_RANGE)
 				icon_state = "[desired_dir]_med"
-			if(VIEW_RANGE to 255)
+			if(VIEW_RANGE to INFINITY)
 				icon_state = "[desired_dir]_far"
 			else
 				icon_state = "direct"

@@ -3,14 +3,7 @@
 	if(health)
 		health.update_health(attacker,damage_amount)
 
-	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0 && isturf(src.loc))
-		var/turf/T = src.loc
-		if(T)
-			var/obj/effect/damage_number/DN = locate() in T.contents
-			if(DN)
-				DN.add_value(damage_amount)
-			else
-				new /obj/effect/damage_number(T,damage_amount)
+	HOOK_CALL("on_damage_received")
 
 	return TRUE
 
@@ -157,6 +150,8 @@
 		attacker.attack_next = world.time + swing_result*0.5
 	else
 		attacker.attack_next = world.time + 1
+
+	HOOK_CALL("attack")
 
 	return TRUE
 

@@ -25,11 +25,11 @@
 
 	for(var/obj/hud/inventory/crafting/result/R in src.inventories)
 		var/obj/item/top_object = R.get_top_object()
-		if(is_container(top_object))
+		if(top_object.allow_reagent_transfer_to)
 			C = top_object
 			break
 
-	if(!C && !is_beaker(C))
+	if(!C)
 		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
@@ -49,11 +49,13 @@
 		var/list/reagents_list = list()
 
 		if(I.alchemy_reagents && length(I.alchemy_reagents))
+			should_delete = TRUE //The alchemy reagents were juiced from it.
 			for(var/r_id in I.alchemy_reagents)
 				if(reagents_list[r_id])
 					reagents_list[r_id] += I.alchemy_reagents[r_id]
 				else
 					reagents_list[r_id] = I.alchemy_reagents[r_id]
+		else if(I.allow_reagent_transfer_from)
 			should_delete = TRUE
 
 		if(!length(reagents_list) && !(I.reagents && I.reagents.volume_current))
@@ -68,7 +70,7 @@
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, caller = caller)
 
 		success = TRUE
-		if(should_delete || !is_beaker(I))
+		if(should_delete)
 			qdel(I)
 		else if(I.reagents)
 			I.reagents.update_container()

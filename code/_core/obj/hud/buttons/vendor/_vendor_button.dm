@@ -111,7 +111,7 @@
 		return
 
 	if(.)
-		associated_vendor.purchase_item(caller,associated_item,associated_cost)
+		associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
 
 
 /obj/hud/button/close_vendor

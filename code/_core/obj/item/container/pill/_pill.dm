@@ -1,4 +1,4 @@
-/obj/item/container/pill
+/obj/item/container/edible/pill
 	name = "pill"
 	desc = "FLOORPILL"
 
@@ -19,27 +19,23 @@
 
 	has_quick_function = TRUE
 
-/obj/item/container/pill/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/edible/pill/quick(var/mob/caller,var/atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 
-/obj/item/container/pill/get_consume_verb()
+/obj/item/container/edible/pill/get_consume_verb()
 	return "swallow"
 
-/obj/item/container/pill/get_consume_sound()
+/obj/item/container/edible/pill/get_consume_sound()
 	return null
 
-/obj/item/container/pill/get_examine_list(var/mob/examiner)
+/obj/item/container/edible/pill/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/pill/feed(var/mob/caller,var/mob/living/target)
-	. = ..()
-	if(.) qdel(src)
-
-/obj/item/container/pill/Generate()
+/obj/item/container/edible/pill/Generate()
 	. = ..()
 	update_sprite()
 
-/obj/item/container/pill/update_sprite()
+/obj/item/container/edible/pill/update_sprite()
 
 	. = ..()
 

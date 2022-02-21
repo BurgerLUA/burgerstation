@@ -24,7 +24,7 @@
 /obj/item/cell_charger/get_battery()
 	return battery
 
-/obj/item/cell_charger/save_item_data(var/save_inventory = TRUE)
+/obj/item/cell_charger/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("battery")
 

@@ -6,9 +6,9 @@
 
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath
 	)
 
 	value = 25

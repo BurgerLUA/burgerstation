@@ -14,8 +14,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	priority = 25
 
 /obj/hud/inventory/organs/groin //Underwear + Pants
@@ -32,3 +30,19 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 	priority = 40
+
+/*
+/obj/hud/inventory/organs/groin_u
+	name = "bluespace storage"
+	icon_state = "slot_groin_o"
+	id = BODY_GROIN_U
+
+	max_slots = 1
+	worn = FALSE
+
+	item_slot = SLOT_GROIN_BLUESPACE
+
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+
+	priority = 1
+*/

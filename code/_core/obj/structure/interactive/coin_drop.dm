@@ -8,7 +8,7 @@
 
 	anchored = TRUE
 
-	var/item_count_current = 1
+	var/amount = 1
 
 	var/list/valid_ckeys = list()
 
@@ -19,7 +19,7 @@
 
 /obj/structure/interactive/coin_drop/get_examine_list(var/mob/examiner)
 	. = ..()
-	if(item_count_current > 1) . += div("weightsize","Quantity: [item_count_current].")
+	if(amount > 1) . += div("weightsize","Quantity: [amount].")
 
 /obj/structure/interactive/coin_drop/Destroy()
 	if(cached_coin || cached_sparkle)
@@ -35,7 +35,7 @@
 	. = ..()
 
 /obj/structure/interactive/coin_drop/proc/get_pickup_amount(var/mob/caller,var/loop_turf=TRUE)
-	. = item_count_current
+	. = amount
 	if(loop_turf)
 		for(var/obj/structure/interactive/coin_drop/CD in loc.contents)
 			if(CD == src)
@@ -68,7 +68,7 @@
 	if(pickup_amount <=0)
 		return TRUE
 	var/obj/item/currency/gold_coin/G = new(get_turf(src))
-	G.item_count_current = pickup_amount
+	G.amount = pickup_amount
 	SSeconomy.gold_in_circulation += pickup_amount
 	INITIALIZE(G)
 	FINALIZE(G)
@@ -87,7 +87,7 @@
 
 	var/image/new_sparkle
 	if(!falling)
-		new_sparkle = new/image(icon,"sparkle_fall_[clamp(item_count_current,1,5)]")
+		new_sparkle = new/image(icon,"sparkle_fall_[clamp(amount,1,5)]")
 		new_sparkle.appearance = appearance
 		new_sparkle.loc = src
 		new_sparkle.layer = layer + 0.1
@@ -112,13 +112,13 @@
 	. = ..()
 	icon = initial(icon)
 	if(falling)
-		icon_state = "[clamp(item_count_current,1,5)]_anim"
+		icon_state = "[clamp(amount,1,5)]_anim"
 	else
-		icon_state = "[clamp(item_count_current,1,5)]_fall"
+		icon_state = "[clamp(amount,1,5)]_fall"
 
 /obj/structure/interactive/coin_drop/proc/fly(var/turf/from_turf)
 
-	if(item_count_current > 5)
+	if(amount > 5)
 		return FALSE
 
 	falling = TRUE
@@ -167,8 +167,8 @@
 		var/obj/structure/interactive/coin_drop/G = new(get_step(T,pick(DIRECTIONS_ALL)))
 		G.pixel_x = rand(-4,4)
 		G.pixel_y = rand(-4,4)
-		G.item_count_current = min(amount,rand(min(5,CEILING(amount/10,1)),5))
-		amount -= G.item_count_current
+		G.amount = min(amount,rand(min(5,CEILING(amount/10,1)),5))
+		amount -= G.amount
 		G.valid_ckeys = valid_ckeys.Copy()
 		INITIALIZE(G)
 		FINALIZE(G)

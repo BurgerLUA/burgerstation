@@ -26,7 +26,7 @@
 /obj/item/clothing/overwear/coat/wizard/purple
 	name = "authentic wizard robes"
 	desc = "The real deal."
-	rarity = RARITY_MYTHICAL
+
 	desc_extended = "A real, totally authentic wizard robes with all the protection a wizard needs."
 	color = COLOR_PURPLE
 	defense_rating = list(

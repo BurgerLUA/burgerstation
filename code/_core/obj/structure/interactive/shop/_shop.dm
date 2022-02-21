@@ -32,17 +32,14 @@
 	for(var/obj/item/I in loc.contents)
 		possible_items += I
 
-	if(!length(possible_items))
-		qdel(src)
-		return
+	if(length(possible_items))
+		stored_item = pick(possible_items)
+		stored_item.drop_item(src)
+		possible_items -= stored_item
 
-	stored_item = pick(possible_items)
-	stored_item.drop_item(src)
-	possible_items -= stored_item
-
-	for(var/k in possible_items)
-		var/obj/item/I = k
-		qdel(I)
+		for(var/k in possible_items)
+			var/obj/item/I = k
+			qdel(I)
 
 
 /obj/structure/interactive/shop/PostInitialize()
@@ -64,7 +61,12 @@
 				log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
 			name = "[stored_item.name] - [stored_item_cost] credits"
 
-
+/obj/structure/interactive/shop/Finalize()
+	. = ..()
+	if(!stored_item)
+		qdel(src)
+	else
+		update_sprite()
 
 /obj/structure/interactive/shop/update_overlays()
 
@@ -90,17 +92,18 @@
 	add_overlay(O)
 
 /obj/structure/interactive/shop/update_icon()
+	. = ..()
 	icon = ICON_INVISIBLE
-	return ..()
 
 /obj/structure/interactive/shop/update_sprite()
 
-	if(locate(/obj/structure/smooth/table/) in src.loc.contents)
+	. = ..()
+
+	if(locate(/obj/structure/table/) in src.loc.contents)
 		pixel_y = 4
 	else
 		pixel_y = 0
 
-	return ..()
 
 /obj/structure/interactive/shop/get_examine_list(var/mob/examiner)
 
@@ -121,8 +124,6 @@
 
 	if(!is_player(caller) || !caller.client)
 		return ..()
-
-
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT

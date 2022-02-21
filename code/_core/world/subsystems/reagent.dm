@@ -6,20 +6,18 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/all_reagents = list()
 
-	cpu_usage_max = 50
-	tick_usage_max = 50
+	cpu_usage_max = 75
+	tick_usage_max = 75
 
 	var/list/all_reagent_recipes = list()
 	var/list/reagent_container/all_temperature_reagent_containers = list()
-
-	var/list/containers_to_process = list()
 
 	var/list/stored_book_data = list()
 
 /subsystem/reagent/on_life()
 
 	for(var/k in all_temperature_reagent_containers)
-		CHECK_TICK(tick_usage_max,FPS_SERVER*4)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		var/reagent_container/R = k
 		R.process_temperature()
 
@@ -48,7 +46,7 @@ SUBSYSTEM_DEF(reagent)
 			if(!R.has_temperature_recipe && (length(RR.required_temperature_min) || length(RR.required_temperature_max)))
 				R.has_temperature_recipe = TRUE
 
-	sortTim(all_reagent_recipes,/proc/cmp_recipe_name_asc,associative=TRUE)
+	sortTim(all_reagent_recipes,/proc/cmp_recipe_name_asc,associative=TRUE) //Its okay to sort by name since this list is only used for the book that gets generated.
 
 	log_subsystem(name,"Initialized [length(all_reagent_recipes)] reagent recipes.")
 

@@ -272,7 +272,7 @@
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
-			var/obj/item/container/food/plant/P = new(caller_turf)
+			var/obj/item/container/edible/plant/P = new(caller_turf)
 			P.plant_type = associated_plant.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y

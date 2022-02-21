@@ -147,7 +147,7 @@
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
 			if(G.wielded) //We should unwield
-				A.left_hand.unwield(A,G)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
 			next_complex = world.time + 15
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
@@ -160,8 +160,8 @@
 			if(!G.stored_magazine)
 				G.drop_item(get_turf(owner)) //IT'S NO USE.
 				return FALSE
-			if(G.can_wield && !G.wielded && A.left_hand && !A.left_item)
-				A.left_hand.wield(A,G)
+			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			return FALSE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
@@ -213,10 +213,12 @@
 		"alt" = 0
 	)
 
-	if(left_click && A.right_hand)
-		A.right_hand.click_on_object(A,target,null,null,params)
-	else if(A.left_hand)
-		A.left_hand.click_on_object(A,target,null,null,params)
+	if(left_click && A.inventories_by_id[BODY_HAND_RIGHT_HELD])
+		A.inventories_by_id[BODY_HAND_RIGHT_HELD].click_on_object(A,target,null,null,params)
+	else if (A.inventories_by_id[BODY_HAND_LEFT_HELD])
+		A.inventories_by_id[BODY_HAND_LEFT_HELD].click_on_object(A,target,null,null,params)
+	else if (A.labeled_organs[BODY_HEAD])
+		A.labeled_organs[BODY_HEAD].attack(A,target,params)
 
 	return TRUE
 
@@ -268,14 +270,14 @@
 
 	. = FALSE
 
-	if(A.right_hand && !A.right_item)
-		A.right_hand.add_object(W,FALSE)
+	if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && !A.right_item)
+		A.inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(W,FALSE)
 		. = TRUE
-		if(W.can_wield && !W.wielded && A.left_hand && !A.left_item)
-			A.left_hand.wield(A,W)
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && W.can_wield && !W.wielded && !A.left_item)
+			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,W)
 
-	else if(A.left_hand && !A.left_hand.parent_inventory && !A.left_item)
-		A.left_hand.add_object(W,FALSE)
+	else if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && !A.inventories_by_id[BODY_HAND_LEFT_HELD].parent_inventory && !A.left_item)
+		A.inventories_by_id[BODY_HAND_LEFT_HELD].add_object(W,FALSE)
 		. = TRUE
 
 	if(. && istype(W,/obj/item/weapon/melee/energy))
@@ -314,35 +316,26 @@
 	attack_distance_min = 1
 	attack_distance_max = 1
 
-	if(A.right_item && A.left_item)
-		left_click_chance = 50
-		if(is_ranged_gun(A.right_item))
-			distance_target_min = VIEW_RANGE * 0.5
-			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = VIEW_RANGE * 0.5
-			attack_distance_max = VIEW_RANGE * 0.75
-			if(!is_ranged_gun(A.left_item))
-				left_click_chance = 100
-		else if(is_ranged_gun(A.left_item))
-			distance_target_min = VIEW_RANGE * 0.5
-			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = VIEW_RANGE * 0.5
-			attack_distance_max = VIEW_RANGE * 0.75
-			left_click_chance = 0
-	else if(A.right_item)
+	if(A.right_item && !A.left_item)
 		left_click_chance = 100
-		if(is_ranged_gun(A.right_item))
-			distance_target_min = VIEW_RANGE * 0.5
-			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = VIEW_RANGE * 0.5
-			attack_distance_max = VIEW_RANGE * 0.75
-	else if(A.left_item)
+		attack_distance_min = A.right_item.combat_range
+		attack_distance_max = A.right_item.combat_range
+	else if(!A.right_item && A.left_item)
 		left_click_chance = 0
-		if(is_ranged_gun(A.left_item))
-			distance_target_min = VIEW_RANGE * 0.5
-			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = VIEW_RANGE * 0.5
-			attack_distance_max = VIEW_RANGE * 0.75
+		attack_distance_min = A.left_item.combat_range
+		attack_distance_max = A.left_item.combat_range
+	else if(A.left_item && A.right_item)
+		attack_distance_min = min(A.right_item.combat_range,A.left_item.combat_range)
+		attack_distance_max = max(A.right_item.combat_range,A.left_item.combat_range)
+		var/attack_distance_check = get_dist(owner,objective_attack)
+		if(attack_distance_check <= A.right_item.combat_range && attack_distance_check <= A.left_item.combat_range)
+			left_click_chance = 50
+		else if(attack_distance_check <= A.right_item.combat_range)
+			left_click_chance = 100
+		else if(attack_distance_check <= A.left_item.combat_range)
+			left_click_chance = 0
+
+	distance_target_max = min(VIEW_RANGE,attack_distance_max)
 
 	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4)
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)

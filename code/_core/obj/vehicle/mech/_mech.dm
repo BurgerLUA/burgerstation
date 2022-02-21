@@ -41,7 +41,7 @@
 	. = ..()
 	update_sprite()
 
-/mob/living/vehicle/mech/get_movement_delay()
+/mob/living/vehicle/mech/get_movement_delay(var/include_stance=TRUE)
 	return movement_delay
 
 /mob/living/vehicle/mech/update_icon()

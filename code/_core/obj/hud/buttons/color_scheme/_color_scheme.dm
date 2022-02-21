@@ -49,8 +49,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 			var/obj/hud/button/B = A.health_elements[k]
 			B.update_sprite()
 
-		for(var/k in A.inventory)
-			var/obj/hud/inventory/I = k
+		for(var/k in A.inventories_by_id)
+			var/obj/hud/inventory/I = A.inventories_by_id[k]
 			I.update_sprite()
 
 		A.client.update_window()
@@ -89,8 +89,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 				var/obj/hud/button/B = A.health_elements[k]
 				B.update_sprite()
 
-			for(var/k in A.inventory)
-				var/obj/hud/inventory/I = k
+			for(var/k in A.inventories_by_id)
+				var/obj/hud/inventory/I = A.inventories_by_id[k]
 				I.update_sprite()
 
 			A.client.update_window()

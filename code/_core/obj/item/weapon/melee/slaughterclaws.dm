@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/slaughterclaws
 	name = "slaughter claws"
-	rarity = RARITY_LEGENDARY
+
 	desc = "HELL IS EMPTY, BLOOD IS FUEL!"
 	desc_extended = "Use Harm intent to rip your enemies a new one! Use disarm intent to punch from afar! Click on a turf on grab intent to bloodcrawl! Then replenish your blood by Helping a corpse!"
 	var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks

@@ -9,8 +9,8 @@
 	bullet_length = 29
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_38
@@ -26,11 +26,6 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/revolver_38/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
 	desc = "DRAW!"
@@ -42,8 +37,8 @@
 	bullet_length = 33
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_357
@@ -70,8 +65,8 @@
 	bullet_length = 29
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_44
@@ -97,8 +92,8 @@
 	bullet_length = 17.7
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_22
@@ -124,8 +119,8 @@
 	bullet_length = 67
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_300
@@ -134,11 +129,6 @@
 
 	size = 0.06
 	value = 5
-
-/obj/item/bullet_cartridge/revolver_300/Generate()
-	item_count_current = 5
-	. = ..()
-
 
 /obj/item/bullet_cartridge/revolver_762
 	name = "\improper 7.62x38mmR revolver cartridge"
@@ -150,8 +140,8 @@
 	bullet_length = 38
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 7
-	item_count_max_icon = 7
+	amount_max = 7
+	amount_max_icon = 7
 
 	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_762
@@ -160,11 +150,6 @@
 
 	size = 0.06
 	value = 2
-
-/obj/item/bullet_cartridge/revolver_762/Generate()
-	item_count_current = 7
-	update_sprite()
-	return ..()
 
 /obj/item/bullet_cartridge/revolver_762/surplus
 	name = "\improper surplus 7.62x38mmR revolver cartridge"

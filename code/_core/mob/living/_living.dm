@@ -6,10 +6,6 @@
 
 	enable_chunk_clean = TRUE
 
-	vis_flags = VIS_INHERIT_ID
-
-	var/rarity = RARITY_COMMON
-
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
@@ -20,9 +16,7 @@
 	var/class = /class/npc
 	var/level = 1
 
-	var/enable_AI = FALSE
 	var/ai/ai
-	//var/id //Boss ID
 
 	var/iff_tag
 	var/loyalty_tag
@@ -266,6 +260,12 @@
 
 	var/list/hit_logs = list()
 
+	var/expiration_time = -1 //Time at which the mob "expires" after death and cannot be revived. Set to 0 to disable. Set to -1 to make it instant upon death.
+
+	var/atom/dash_target //The target that you're dashing at.
+	var/dash_amount = 0 //Amount of times to move in a direction.
+
+
 /mob/living/Destroy()
 
 	buckled_object = null
@@ -417,10 +417,10 @@
 
 	return TRUE
 
-/mob/living/on_crush() //What happens when this object is crushed by a larger object.
+/mob/living/on_crush(var/message=TRUE) //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
-	visible_message(span("danger","\The [src.name] is violently crushed!"))
+	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
 	if(blood_type)
 		var/reagent/R = REAGENT(blood_type)
 		for(var/i=1,i<=9,i++)

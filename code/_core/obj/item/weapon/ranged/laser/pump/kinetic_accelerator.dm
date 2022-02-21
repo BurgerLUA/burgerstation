@@ -3,7 +3,7 @@
 	desc = "Pump action!"
 	desc_extended = "An advanced mining tool that uses magnetic kinetic force to pulverize rocks and other foes. Not very effective against smaller objects."
 	icon = 'icons/obj/item/weapons/ranged/laser/kinetic_accelerator.dmi'
-	rarity = RARITY_UNCOMMON
+
 	value = 800
 
 	shoot_sounds = list('sound/weapons/kinetic/fire.ogg')

@@ -103,7 +103,7 @@
 	if(!caller)
 		return ..()
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return FALSE
 
 	var/mob/living/advanced/player/A = caller

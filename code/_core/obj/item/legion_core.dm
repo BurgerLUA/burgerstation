@@ -47,32 +47,31 @@
 
 /obj/item/legion_core/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
-	INTERACT_DELAY(10)
+	if(is_living(object))
 
-	if(expiry_time == -1)
-		caller.to_chat(span("warning","\The [src.name] has expired!"))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(10)
+
+		if(expiry_time == -1)
+			caller.to_chat(span("warning","\The [src.name] has expired!"))
+			return TRUE
+
+		var/mob/living/L = object
+		if(L.dead || !L.health)
+			caller.to_chat(span("warning","\The [src.name] only works on living beings!"))
+			return TRUE
+
+		if(caller == L)
+			caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal their wounds."),span("notice","You use \the [src.name] to heal your wounds."))
+		else
+			caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal the wounds of \the [L.name]."),span("notice","You use \the [src.name] to heal the wounds of \the [L.name]."))
+
+		L.health.adjust_loss_smart(brute=-100,burn=-100,tox=-100)
+		L.to_chat(span("notice","You feel refreshed!"))
+
+		expire()
+
 		return TRUE
 
-	if(!is_living(object))
-		caller.to_chat(span("warning","\The [src.name] only works on living targets!"))
-		return TRUE
-
-	var/mob/living/L = object
-
-	if(L.dead || !L.health)
-		caller.to_chat(span("warning","\The [src.name] only works on living targets!"))
-		return TRUE
-
-	if(caller == L)
-		caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal their wounds."),span("notice","You use \the [src.name] to heal your wounds."))
-	else
-		caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal the wounds of \the [L.name]."),span("notice","You use \the [src.name] to heal the wounds of \the [L.name]."))
-
-	L.health.adjust_loss_smart(brute=-100,burn=-100,tox=-100)
-	L.to_chat(span("notice","You feel refreshed."))
-
-	expire()
-
-	return TRUE
+	. = ..()

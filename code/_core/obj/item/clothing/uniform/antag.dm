@@ -3,7 +3,7 @@
 	desc = "Uh oh, salt inbound."
 	desc_extended = "Some antagonist uniform worn by antagonist."
 	icon = 'icons/obj/item/clothing/uniforms/util_gen.dmi'
-	rarity = RARITY_RARE
+
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

@@ -1,4 +1,4 @@
-/obj/item/container/food/egg
+/obj/item/container/edible/egg
 	name = "egg"
 	desc = "What came first? The rooster that had to fertilize it."
 	desc_extended = "An egg hatched from a chicken."
@@ -7,10 +7,10 @@
 
 	value = 1
 
-/obj/item/container/food/egg/chicken
+/obj/item/container/edible/egg/chicken
 	name = "chicken egg"
 
-/obj/item/container/food/egg/chicken/Generate()
+/obj/item/container/edible/egg/chicken/Generate()
 	reagents.add_reagent(/reagent/nutrition/egg_white,3)
 	reagents.add_reagent(/reagent/nutrition/egg_yellow,3)
 	return ..()

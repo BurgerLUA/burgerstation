@@ -59,17 +59,29 @@
 
 	var/damage_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
 
-	var/has_life = TRUE
+	var/has_life = FALSE
 
 	var/has_pain = FALSE
 
 	var/list/defense_rating = HUMAN_ARMOR
 
-	var/robotic = FALSE //Set to true if the limb is robotic.
-
 	var/can_gib = TRUE
 
 	mouse_opacity = 0 //For now
+
+	enable_blood_stains = TRUE
+
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
+
+/obj/item/organ/New(var/desired_loc)
+	. = ..()
+	attached_organs = list()
+
+/obj/item/organ/Destroy()
+	color = "#000000"
+	attached_organ = null
+	attached_organs?.Cut()
+	return ..()
 
 /obj/item/organ/get_base_transform()
 	. = ..()
@@ -125,30 +137,37 @@
 
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
-	if(total_bleed_damage>0)
-		var/bleed_to_add = total_bleed_damage/50
-		src.bleeding += bleed_to_add
+	. = ..()
 
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
+		if(health && A.blood_type)
+			var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+			if(total_bleed_damage>0)
+				var/bleed_to_add = total_bleed_damage/50
+				src.bleeding += bleed_to_add
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
-		if(!A.immortal && !A.ckey_last && !A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
-			gib()
-			A.death()
-
-	return ..()
+		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
+			if(is_player(A))
+				var/mob/living/advanced/player/P = A
+				if(P.dead && is_player(attacker)) //Only gib if the player is dead and the person gibbing is a player.
+					var/mob/living/advanced/player/P2 = attacker
+					if(P2.client)
+						P.make_unrevivable()
+						gib()
+			else if(!A.has_status_effect(ZOMBIE))
+				if(A.client)
+					var/turf/T = get_turf(A)
+					A.client.make_ghost(T ? T : locate(128,128,1))
+				gib()
+				A.death()
+			else
+				gib()
 
 /obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
 	return FALSE
-
-/obj/item/organ/Destroy()
-	color = "#000000"
-	attached_organ = null
-	attached_organs?.Cut()
-	return ..()
 
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)
 	attached_organ = O
@@ -168,13 +187,9 @@
 
 	if(enable_wounds)
 		for(var/damagetype in visual_wounds)
-			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_icon_state = "none", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
+			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
 
-	return ..()
-
-/obj/item/organ/New(var/desired_loc)
 	. = ..()
-	attached_organs = list()
 
 /obj/item/organ/PostInitialize()
 	. = ..()
@@ -223,7 +238,7 @@
 		O.unattach_from_parent(T,do_delete)
 	return TRUE
 
-/obj/item/organ/proc/gib()
+/obj/item/organ/proc/gib(var/hard=FALSE) //Hard gib also gibs attached organs.
 
 	if(!can_gib)
 		return TRUE
@@ -245,6 +260,16 @@
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = color
 					BG.update_sprite()
+
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
+		if(O.qdeleting)
+			continue
+		if(hard)
+			O.gib(hard)
+		else
+			unattach_from_parent(T)
+
 
 	unattach_from_parent(T,TRUE)
 
@@ -268,9 +293,11 @@
 	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
+	old_owner.handle_horizontal()
 	return TRUE
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
+	new_owner.handle_horizontal()
 	return TRUE
 
 obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
@@ -320,15 +347,22 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(50 to INFINITY)
 			damage_desc += "<u><b>mutating</b></u>"
 
-
 	switch(bleeding)
 		if(0.5 to 2)
-			damage_desc += "trickling blood"
+			if(health.organic)
+				damage_desc += "trickling blood"
+			else
+				damage_desc += "trickling fluid"
 		if(2 to 4)
-			damage_desc += "<b>bleeding</b>"
+			if(health.organic)
+				damage_desc += "<b>bleeding</b>"
+			else
+				damage_desc += "<b>leaking fluid</b>"
 		if(4 to INFINITY)
-			damage_desc += "<u><b>gushing blood</b></u>"
-
+			if(health.organic)
+				damage_desc += "<u><b>gushing blood</b></u>"
+			else
+				damage_desc += "<u><b>gushing fluid</b></u>"
 	return damage_desc
 
 

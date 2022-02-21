@@ -4,6 +4,8 @@
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
+	appearance_flags = PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
+
 	weight = 0
 
 	can_rename = TRUE
@@ -52,8 +54,7 @@
 	var/list/obj/item/additional_clothing = list()
 	var/list/obj/item/additional_clothing_stored
 
-	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
-	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
+	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped. Includes clothing attached to this.
 
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
@@ -66,6 +67,10 @@
 	var/loyalty_tag //Set to a loyalty tag here to restrict this to those who have this tag.
 
 	var/list/ench/clothing_enchantments = list()
+
+	enable_blood_stains = TRUE
+	enable_damage_overlay = TRUE
+	enable_torn_overlay = TRUE
 
 /obj/item/clothing/Destroy()
 	QDEL_CUT(additional_clothing_stored)
@@ -82,7 +87,7 @@
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()
 
-/obj/item/clothing/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 
@@ -110,8 +115,6 @@
 
 	weight = calculate_weight()
 
-	initialize_blends()
-
 	for(var/k in additional_clothing)
 		var/obj/item/C = new k(src)
 		C.should_save = FALSE
@@ -125,7 +128,6 @@
 
 	. = ..()
 
-
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
 	. = ..()
@@ -133,8 +135,6 @@
 	for(var/k in additional_clothing_stored)
 		var/obj/item/C = k
 		C.initialize_blends()
-
-
 
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()

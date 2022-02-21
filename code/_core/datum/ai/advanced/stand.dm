@@ -32,16 +32,13 @@
 	if(L.dead)
 		return FALSE
 
-	if(is_enemy(L,FALSE))
-		return FALSE
-
-	if(L.immortal && !ignore_immortal)
-		return FALSE
-
 	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
 		return FALSE
 
 	if(!L.can_be_attacked(owner))
+		return FALSE
+
+	if(is_enemy(L,FALSE))
 		return FALSE
 
 	return TRUE
@@ -64,4 +61,3 @@
 	. = ..()
 	if(istype(L,/mob/living/advanced/stand/))
 		. += 10
-	

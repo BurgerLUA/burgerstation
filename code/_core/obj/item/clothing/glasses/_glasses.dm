@@ -13,6 +13,8 @@
 	var/see_invisible = 0
 	var/see_in_dark = 0
 
+	uses_until_condition_fall = 75
+
 
 /obj/item/clothing/glasses/get_base_value()
 

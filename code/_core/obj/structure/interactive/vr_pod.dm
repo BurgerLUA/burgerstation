@@ -78,9 +78,11 @@
 
 /obj/structure/interactive/vr_pod/Entered(var/atom/movable/enterer,var/atom/oldloc)
 	if(is_player(enterer))
-		user = enterer
-		add_buttons()
-		update_sprite()
+		var/mob/living/advanced/player/P = enterer
+		if(P.client)
+			user = enterer
+			add_buttons()
+			update_sprite()
 	. = ..()
 
 /obj/structure/interactive/vr_pod/Exited(var/atom/movable/exiter,var/atom/newloc)
@@ -101,7 +103,7 @@
 
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return FALSE
 
 	if(user)

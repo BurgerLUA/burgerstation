@@ -46,5 +46,10 @@
 		/trait/blood_regen/none
 	)
 
+	emote_sounds_male = list()
+	emote_sounds_male_meme = list()
+	emote_sounds_female = list()
+	emote_sounds_female_meme = list()
+
 /species/dummy/generate_blood_type()
 	return null

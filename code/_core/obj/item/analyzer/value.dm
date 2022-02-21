@@ -2,7 +2,7 @@
 	name = "value analyzer"
 	desc = "Is it worth it?"
 	desc_extended = "A special camera and sensor combo that calculates the current market rate of an item."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/analyzers/value.dmi'
 	icon_state = "inventory"
 	value = 450

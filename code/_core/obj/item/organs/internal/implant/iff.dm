@@ -17,29 +17,12 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list() 
 	all_IFFs -= src
 	return ..()
 
-/obj/item/organ/internal/implant/hand/left/iff/proc/update_implant(var/desired_name,var/desired_id,var/desired_squad)
-
-	if(desired_name)
-		registered_name = desired_name
-
-	if(desired_id)
-		registered_id = desired_id
-
-	if(desired_squad)
-		registered_squad = desired_squad
-
-	if(is_living(loc))
-		var/mob/living/L = loc
-		L.to_chat(span("danger","\The [src.name] in your [attached_organ.name] beeps."))
-
-	return TRUE
-
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_add(var/mob/living/advanced/new_owner)
 	new_owner.set_iff_tag(iff_tag)
 	return ..()
 
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.set_iff_tag(null)
+	old_owner.set_iff_tag(initial(old_owner.loyalty_tag))
 	return ..()
 
 /obj/item/organ/internal/implant/hand/left/iff/nanotrasen

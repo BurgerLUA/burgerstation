@@ -21,13 +21,8 @@
 		return FALSE
 
 	var/mob/living/advanced/A = caller
-	var/obj/hud/inventory/I = src.loc
-	var/obj/item/belt_storage = I.loc
-	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
 
-	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
-
-	return A.put_in_hands(src,left = put_in_left)
+	return A.put_in_hands(src,params)
 
 /obj/item/powercell/get_battery()
 	return src
@@ -37,7 +32,7 @@
 	. += CEILING(charge_current*0.01,1)
 	. += CEILING(charge_max*0.003,1)
 
-/obj/item/powercell/save_item_data(var/save_inventory = TRUE)
+/obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charge_current")
 
@@ -120,6 +115,19 @@
 	value = 30
 
 	weight = 10
+
+/obj/item/powercell/tiny
+	name = "AA power cell"
+	desc = "Do not swallow."
+	desc_extended = "A tiny battery used commonly to power small devices."
+	icon_state = "cell_tiny"
+	charge_max = CELL_SIZE_TINY
+
+	size = SIZE_0
+
+	value = 10
+
+	weight = 1
 
 
 /obj/item/powercell/recharging

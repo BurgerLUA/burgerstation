@@ -4,7 +4,7 @@ var/global/list/gps_list = list()
 	name = "gps"
 	desc = "Where are you?"
 	desc_extended = "A highly advanced gps and rangefinder that can get the location of where you aim it."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/analyzers/gps.dmi'
 	icon_state = "inventory"
 	value = 700
@@ -78,7 +78,7 @@ var/global/list/gps_list = list()
 			return
 	return ..()
 
-/obj/item/analyzer/gps/save_item_data(var/save_inventory = TRUE)
+/obj/item/analyzer/gps/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["name"] = name
 	.["assigned_number"] = assigned_number

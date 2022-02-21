@@ -32,6 +32,8 @@
 
 	can_gib = FALSE
 
+	has_life = TRUE
+
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	. = ..()
 	if(is_advanced(src.loc))

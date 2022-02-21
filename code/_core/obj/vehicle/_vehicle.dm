@@ -36,12 +36,12 @@
 		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
 
-/mob/living/vehicle/on_crush()
+/mob/living/vehicle/on_crush(var/message=TRUE)
 
 	for(var/k in passengers)
 		var/mob/living/advanced/A = k
 		exit_vehicle(A,loc)
-		A.on_crush()
+		A.on_crush(message)
 
 	qdel(src)
 

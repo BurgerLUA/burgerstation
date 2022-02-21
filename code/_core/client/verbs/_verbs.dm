@@ -45,6 +45,7 @@
 	verbs += /client/verb/stop_sound
 	verbs += /client/verb/ghost
 	verbs += /client/verb/check_objectives
+	verbs += /client/verb/examine_atom
 
 	if(permissions & FLAG_PERMISSION_HOST)
 		verbs += /client/verb/apply_fuckup
@@ -79,8 +80,6 @@
 
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)
 		verbs += /client/verb/speed_up_setup
-		verbs += /client/verb/set_skill
-		verbs += /client/verb/set_attribute
 		verbs += /client/verb/give_credits
 		verbs += /client/verb/test_spook_station
 		verbs += /client/verb/test_syndicate_raid

@@ -25,6 +25,8 @@
 
 	var/allow_recipe_processing = TRUE
 
+	var/temperature_change_mul = 1 //The multiplier for temperature change.
+
 /reagent_container/Destroy()
 	owner = null
 	SSreagent.all_temperature_reagent_containers -= src
@@ -51,8 +53,8 @@
 
 	. = ..()
 
-	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT))
-		SSreagent.all_temperature_reagent_containers += src
+	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT) && volume_current)
+		SSreagent.all_temperature_reagent_containers |= src
 
 /reagent_container/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
 	. = FALSE
@@ -98,13 +100,8 @@
 
 	update_container()
 
-/reagent_container/proc/process_temperature()
 
-	if(!owner)
-		return FALSE
-
-	if(!volume_current)
-		return FALSE
+/reagent_container/proc/get_desired_temperature()
 
 	var/turf/simulated/T
 	if(is_simulated(owner.loc))
@@ -114,13 +111,22 @@
 	if(T && T.loc)
 		A = T.loc
 
-	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
-	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
+	. = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
-		desired_temperature += I.inventory_temperature_mod
-		desired_temperature_mod *= I.inventory_temperature_mod_mod
+		. += I.inventory_temperature_mod
+
+
+/reagent_container/proc/process_temperature()
+
+	if(!owner)
+		return FALSE
+
+	if(!volume_current)
+		return FALSE
+
+	var/desired_temperature = get_desired_temperature()
 
 	if(desired_temperature == average_temperature)
 		return TRUE
@@ -134,13 +140,16 @@
 
 	var/temperature_diff = desired_temperature - average_temperature
 
-	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
+	var/temperature_change = temperature_change_mul * ((temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-0.01,0.01)) //The clamp at the end ensures that the temperature will always increase/decrease.
+
+	if(!temperature_change)
+		return TRUE
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
 		. = FALSE
 	else //If we're colder than we need to be.
-		temperature_change *= 0.5 //This means it's slow to heat up, but fast to cool down.
+		temperature_change *= 0.5 //This means it's slower to heat up.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
 	 . = FALSE
 
@@ -148,15 +157,19 @@
 		var/reagent/R = REAGENT(r_id)
 		var/volume = stored_reagents[r_id]
 		stored_reagents_temperature[r_id] = average_temperature
-		if(R.heated_reagent && R.heated_reagent_temp < average_temperature)
+		if(isnum(R.heated_reagent_temp) && R.heated_reagent_temp < average_temperature)
 			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
 			var/amount_to_remove = CEILING(min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume),REAGENT_ROUNDING)
-			add_reagent(R.heated_reagent,remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE),should_update = FALSE, check_recipes = FALSE)
+			var/removed_amount = remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE)
+			if(R.heated_reagent)
+				add_reagent(R.heated_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
-		else if(R.cooled_reagent && R.cooled_reagent_temp > average_temperature)
+		else if(isnum(R.cooled_reagent_temp) && R.cooled_reagent_temp > average_temperature)
 			var/temperature_cool_mod = (R.cooled_reagent_temp/max(0.1,average_temperature)) ** 2
 			var/amount_to_remove = CEILING(min(R.cooled_reagent_amount + (volume * R.cooled_reagent_mul * temperature_cool_mod),volume),REAGENT_ROUNDING)
-			add_reagent(R.cooled_reagent,remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE),should_update = FALSE, check_recipes = FALSE)
+			var/removed_amount = remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE)
+			if(R.cooled_reagent)
+				add_reagent(R.cooled_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
 
 	if(.)
@@ -199,9 +212,9 @@
 			stored_reagents_temperature -= r_id
 			continue
 
-		red += GetRedPart(R.color) * volume
-		green += GetGreenPart(R.color) * volume
-		blue += GetBluePart(R.color) * volume
+		red += GetRedPart(R.color) * volume * R.color_multiplier
+		green += GetGreenPart(R.color) * volume * R.color_multiplier
+		blue += GetBluePart(R.color) * volume * R.color_multiplier
 		alpha += R.alpha * volume
 		volume_current += volume
 
@@ -224,10 +237,15 @@
 	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
 
-	if(volume_current > volume_max)
+	if(volume_current > volume_max && volume_max > 0)
 		var/difference = volume_current - volume_max
 		var/chosen_reagent = stored_reagents[length(stored_reagents)]
 		remove_reagent(chosen_reagent,CEILING(difference,1))
+
+	if(volume_current)
+		SSreagent.all_temperature_reagent_containers |= src
+	else
+		SSreagent.all_temperature_reagent_containers -= src
 
 	return TRUE
 
@@ -349,7 +367,7 @@
 
 /reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
-	amount = round(amount,REAGENT_ROUNDING)
+	amount = round(amount,REAGENT_ROUNDING) //TODO: Check if floor or ceiling is better.
 
 	var/reagent/R = REAGENT(reagent_type)
 
@@ -371,8 +389,8 @@
 		else
 			temperature = T0C + 20
 
-	var/previous_amount = SAFENUM(stored_reagents[reagent_type])
-	var/previous_temp = SAFENUM(stored_reagents_temperature[reagent_type])
+	var/previous_amount = stored_reagents[reagent_type]
+	var/previous_temp = stored_reagents_temperature[reagent_type]
 
 	if(volume_current + amount > volume_max)
 		amount = volume_max - volume_current
@@ -396,8 +414,10 @@
 	if(amount)
 		stored_reagents[reagent_type] += amount
 
-	if(amount > 0)
-		if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
+	if(amount > 0) //Temperature stuff.
+		if(!previous_amount || !previous_temp || previous_temp == TNULL) //Fallback nonsense.
+			stored_reagents_temperature[reagent_type] = temperature
+		else if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
 			stored_reagents_temperature[reagent_type] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_type])
 		else
 			stored_reagents_temperature[reagent_type] = temperature
@@ -422,11 +442,9 @@
 	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes,caller)
 
 /reagent_container/proc/remove_all_reagents()
-
 	stored_reagents.Cut()
 	stored_reagents_temperature.Cut()
 	update_container()
-
 	return TRUE
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
@@ -489,12 +507,14 @@
 
 	var/list/flavor_profile = list()
 	var/list/flavor_flags = list()
+	var/total_flavor_strength = 0
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
 		var/flavor_strength = R.flavor_strength*(stored_reagents[r_id]/volume_current)
 		flavor_profile[R.flavor] += flavor_strength
-		flavor_flags["[R.flags_flavor]"] = flavor_strength
+		flavor_flags["[R.flags_flavor]"] += flavor_strength
+		total_flavor_strength += flavor_strength
 
 	sortTim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
 
@@ -504,7 +524,7 @@
 
 	for(var/i=1,i<=flavor_count,i++)
 		var/k = flavor_profile[i] //This gets the key (flavor name)
-		var/v = flavor_profile[k] //This gets the value (flavor strength)
+		var/v = flavor_profile[k] * min(1,0.5 + (flavor_profile[k]/total_flavor_strength))///This gets the value (flavor strength)
 		var/flavor_text
 		switch(v)
 			if(0.05 to 0.1)
@@ -536,14 +556,17 @@
 
 	target = target.change_victim(caller,owner)
 
-	if(target) target.on_splash(caller,src,splash_amount,silent,strength_mod)
+	if(!target)
+		CRASH_SAFE("Tried to splash with invalid target!")
+		return FALSE
 
-	return TRUE
-
+	return target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
 /atom/proc/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE,var/strength_mod=1)
 
-	if(source.stored_reagents)
+	splash_amount = min(splash_amount,source.volume_current)
+
+	if(splash_amount && source.stored_reagents)
 		for(var/r_id in source.stored_reagents)
 			var/reagent/R = REAGENT(r_id)
 			var/volume_to_splash = source.remove_reagent(R.type,source.stored_reagents[r_id] * (splash_amount/source.volume_current),FALSE,FALSE)

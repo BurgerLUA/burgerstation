@@ -56,11 +56,11 @@
 
 	for(var/obj/hud/inventory/crafting/result/R in src.inventories)
 		var/obj/item/top_object = R.get_top_object()
-		if(is_container(top_object))
+		if(top_object.reagents && top_object.allow_reagent_transfer_to)
 			C = top_object
 			break
 
-	if(!C && !is_beaker(C) && !C.reagents)
+	if(!C)
 		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 

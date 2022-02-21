@@ -3,7 +3,7 @@
 	desc = "For biological hazards."
 	desc_extended = "The top part of a full body biohazard suit. Good for protecting yourself from the biohazards."
 	icon = 'icons/obj/item/clothing/hats/bio.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		ARCANE = -50,
@@ -20,7 +20,7 @@
 	desc = "For radioactive hazards."
 	desc_extended = "The top part of a full body radiation suit. Good for protecting yourself from the rads."
 	icon = 'icons/obj/item/clothing/hats/rad.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		ARCANE = -50,
@@ -38,7 +38,7 @@
 	desc = "For explosive hazards."
 	desc_extended = "The top part of a full body bomb suit. Good for protecting yourself from the bombs."
 	icon = 'icons/obj/item/clothing/hats/rad.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		BLUNT = 50,

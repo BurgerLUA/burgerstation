@@ -1,4 +1,4 @@
-/obj/item/container/food/dynamic/chicken
+/obj/item/container/edible/dynamic/chicken
 	name = "chicken"
 	desc = "Hmm, white meat."
 	desc_extended = "A piece of chicken. Somewhat healtier than red meat."
@@ -10,7 +10,7 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/food/dynamic/chicken/update_icon()
+/obj/item/container/edible/dynamic/chicken/update_icon()
 
 	var/total_raw = 0
 	var/total_cooked = 0
@@ -54,16 +54,16 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/chicken/raw/Generate()
+/obj/item/container/edible/dynamic/chicken/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/chicken,15)
 	reagents.add_reagent(/reagent/nutrition/fat/chicken,5)
 	return ..()
 
-/obj/item/container/food/dynamic/chicken/cooked/Generate()
+/obj/item/container/edible/dynamic/chicken/cooked/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/chicken/cooked,15)
 	return ..()
 
-/obj/item/container/food/dynamic/chicken/raw_penguin/Generate()
+/obj/item/container/edible/dynamic/chicken/raw_penguin/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/penguin,15)
 	reagents.add_reagent(/reagent/nutrition/fat/penguin,5)
 	return ..()

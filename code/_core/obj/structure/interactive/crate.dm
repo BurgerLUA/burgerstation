@@ -9,6 +9,10 @@
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
+	pixel_y = 8
+
+	color = "#B67F5B"
+
 /obj/structure/interactive/blocking_crate/Generate()
 	. = ..()
-	icon_state = "[rand(1,5)]"
+	icon_state = "[rand(1,8)]"

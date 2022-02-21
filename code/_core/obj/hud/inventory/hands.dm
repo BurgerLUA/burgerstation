@@ -13,8 +13,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	priority = 74
 
 /obj/hud/inventory/organs/right_hand_worn
@@ -30,8 +28,6 @@
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	priority = 75
 
@@ -53,13 +49,17 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	allow_quick_equip = FALSE
 
 	priority = 2
 
 	x_offset = 16
+
+/obj/hud/inventory/organs/left_hand_held/update_overlays()
+	. = ..()
+	if(owner?.client?.selected_hand == click_flags)
+		var/image/I = new/image(initial(icon),"[icon_state]_selected")
+		add_overlay(I)
 
 /obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
@@ -91,13 +91,17 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	allow_quick_equip = FALSE
 
 	priority = 3
 
 	x_offset = 16
+
+/obj/hud/inventory/organs/right_hand_held/update_overlays()
+	. = ..()
+	if(owner?.client?.selected_hand == click_flags)
+		var/image/I = new/image(initial(icon),"[icon_state]_selected")
+		add_overlay(I)
 
 /obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()

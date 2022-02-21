@@ -52,7 +52,7 @@ obj/item/weapon/melee/tool/brass/welder
 
 	var/active = FALSE
 
-/obj/item/weapon/melee/tool/brass/welder/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/melee/tool/brass/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("fuel_current")
 

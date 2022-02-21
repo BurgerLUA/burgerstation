@@ -30,10 +30,11 @@
 /obj/item/organ/internal/brain/unattach_from_parent(var/turf/T)
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
+		if(A.client)
+			A.client.make_ghost(T)
 		A.death()
 		A.health?.update_health()
-	return ..()
-
+	. = ..()
 
 /obj/item/organ/internal/brain/robotic
 	name = "robotic brain"

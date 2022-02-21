@@ -7,7 +7,7 @@
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 
-	icon = 'icons/turf/wall/rock_preview.dmi'
+	icon = 'icons/turf/wall/rock/preview.dmi'
 	icon_state = "ash"
 
 	corner_icons = TRUE

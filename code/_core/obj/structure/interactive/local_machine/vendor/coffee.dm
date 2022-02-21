@@ -3,7 +3,7 @@
 	icon_state = "coffee"
 
 	stored_types = list(
-		/obj/item/container/beaker/can/coffee/black,
-		/obj/item/container/beaker/can/coffee/americano,
-		/obj/item/container/beaker/can/coffee/latte
+		/obj/item/container/simple/can/coffee/black,
+		/obj/item/container/simple/can/coffee/americano,
+		/obj/item/container/simple/can/coffee/latte
 	)

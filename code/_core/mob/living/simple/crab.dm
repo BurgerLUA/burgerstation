@@ -14,8 +14,8 @@
 	value = 25
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/
 	)
 
 	ai = /ai/
@@ -73,13 +73,13 @@
 
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/
 	)
 
 

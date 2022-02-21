@@ -3,7 +3,7 @@
 	desc = "You monster, stealing from the little green men."
 	desc_extended = "The crown is imbued with the life essence of the late Goblin King. Greatly desired by mages."
 	icon = 'icons/obj/item/clothing/hats/goblin_crown.dmi'
-	rarity = RARITY_LEGENDARY
+
 
 	defense_rating = list(
 		ARCANE = 80,

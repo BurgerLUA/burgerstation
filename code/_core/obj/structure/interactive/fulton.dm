@@ -82,7 +82,7 @@
 				L.force_move(get_turf(FB))
 			else
 				log_error("FATAL WARNING: No fulton beacon was found in world!")
-				L.force_move(locate(pick(rand(1,255),rand(1,255),1)))
+				L.force_move(locate(pick(rand(1,world.maxx),rand(1,world.maxy),1)))
 			return .
 		else
 			L.to_chat(span("danger","You were captured and sold to a prison! Better luck next time!"))
@@ -91,7 +91,7 @@
 	else
 		. = CEILING(stored_movable.get_value(),1)
 
-	if(. && is_player(owner))
+	if(. && is_player(owner) && owner.client)
 		var/mob/living/advanced/player/P = owner
 		. = FLOOR(.*0.25,1)
 		var/added_funds = P.adjust_currency(.)

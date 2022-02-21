@@ -2,7 +2,7 @@
 	name = "genetic analyzer"
 	desc = "HOLD STILL AND LET ME SEE YOUR GENES!"
 	desc_extended = "A handheld portable genetic analyzer that prints the target's prominent genes."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/analyzers/genetic.dmi'
 	icon_state = "inventory"
 	value = 300

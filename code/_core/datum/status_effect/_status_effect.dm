@@ -251,18 +251,29 @@
 	owner.stamina_regen_delay = max(owner.stamina_regen_delay,owner.is_player_controlled() ? SECONDS_TO_DECISECONDS(4) : SECONDS_TO_DECISECONDS(10))
 	return ..()
 
-/status_effect/energized
+/status_effect/adrenaline
 	name = "Adrenaline"
 	desc = "You're filled with adrenaline!"
 	id = ADRENALINE
 	minimum = 100 // 10 seconds
 	maximum = 3 * 60 * 10 //5 minutes.
 
-/status_effect/energized/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/adrenaline/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	if(owner.health) owner.health.update_health(check_death=FALSE)
 	owner.remove_status_effect(STAMCRIT)
 	owner.stamina_regen_delay = 0
+
+/status_effect/undying
+	name = "Undying"
+	desc = "You refuse to die!"
+	id = UNDYING
+	minimum = 10 //1 mecond.
+	maximum = 60 * 10 //1 minute.
+
+/status_effect/undying/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(owner.health) owner.health.update_health(check_death=FALSE)
 
 /status_effect/resting
 	name = "Resting"
@@ -283,7 +294,8 @@
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.drop_hands(A.loc)
-		for(var/obj/hud/inventory/I in A.inventory)
+		for(var/k in A.inventories_by_id)
+			var/obj/hud/inventory/I = A.inventories_by_id[k]
 			if(I.grabbed_object)
 				I.release_object()
 	else
@@ -341,7 +353,6 @@
 		owner.remove_color_mod("druggy")
 	return TRUE
 
-
 /status_effect/stressed
 	name = "Stressed"
 	desc = "You're stressed!"
@@ -369,7 +380,14 @@
 		owner.remove_color_mod("stressed")
 	return TRUE
 
+/status_effect/painkiller
+	name = "Painkiller"
+	desc = "You're under the influence of painkillers!"
+	id = PAINKILLER
+	minimum = 10
+	maximum = 600
 
+	affects_dead = TRUE
 
 /status_effect/mana_void
 	name = "Mana Void"
@@ -377,7 +395,6 @@
 	id = MANAVOID
 	minimum = 10
 	maximum = 100
-
 
 /status_effect/mana_void/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	owner.mana_regen_buffer = -1000
@@ -468,3 +485,11 @@
 	owner.sanity_regen_buffer = min(owner.sanity_regen_buffer,0)
 	owner.mana_regen_buffer = min(owner.mana_regen_buffer,0)
 	owner.stamina_regen_buffer = min(owner.stamina_regen_buffer,0)
+
+
+/status_effect/immortal
+	name = "Immortal"
+	desc = "You're immortal. Congrats, cheater."
+	id = IMMORTAL
+
+	affects_dead = TRUE

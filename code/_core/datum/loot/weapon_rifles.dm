@@ -58,21 +58,6 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/rifle/assault
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault,
-		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault = 1,
-		/obj/item/magazine/rifle_308 = 4,
-	)
-	loot_count = 6
-	chance_none = 25
-
 /loot/weapon/rifle/burst
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,

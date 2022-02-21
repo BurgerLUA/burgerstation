@@ -79,11 +79,11 @@
 		final_pixel_y = P.pixel_y_float
 
 	var/total_difference = abs(final_pixel_x - pixel_x) + abs(final_pixel_y - pixel_y)
-	var/diff_mod = clamp(total_difference*0.1,1,10)
+	var/diff_mod = clamp(total_difference*0.1,1,20)
 
-	var/speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
-	var/x_mod = clamp(final_pixel_x - pixel_x,-speed,speed)
-	var/y_mod = clamp(final_pixel_y - pixel_y,-speed,speed)
+	var/max_speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
+	var/x_mod = clamp(final_pixel_x - pixel_x,-max_speed,max_speed)
+	var/y_mod = clamp(final_pixel_y - pixel_y,-max_speed,max_speed)
 
 	pixel_x = pixel_x + x_mod
 	pixel_y = pixel_y + y_mod

@@ -2,7 +2,7 @@
 	name = "\improper .308 Prototype MOAR"
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
 	desc_extended = "A .308 chambered mother-of-all-battle-rifles (MOABR) developed by the Solarian research team for space battles."
-	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308_advanced.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308.dmi'
 	icon_state = "inventory"
 	value = 6000
 

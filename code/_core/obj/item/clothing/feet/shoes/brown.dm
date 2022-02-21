@@ -2,7 +2,7 @@
 	name = "right leather shoe"
 	desc = "Protects your feet from cigarettes."
 	desc_extended = "An expensive brown shoe, fit for a detective."
-	rarity = RARITY_UNCOMMON
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 

@@ -41,6 +41,8 @@
 
 	var/friction = TRUE //True or false. Can't really do decimals 0 to 1, yet.
 
+	var/parallax_icon = 'icons/obj/effects/parallax.dmi'
+
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
 
@@ -135,6 +137,19 @@
 
 	return !is_space()
 
+
+/turf/proc/post_move(var/mob/M,var/atom/old_loc)
+
+	if(M.ckey_last)
+		for(var/k in M.parallax)
+			var/obj/parallax/P = M.parallax[k]
+			P.icon = parallax_icon
+			var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
+			var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
+			P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
+
+	return TRUE
+
 /turf/New(loc)
 
 	. = ..()
@@ -145,10 +160,18 @@
 
 /turf/Destroy()
 
+	if(corner_category)
+		queue_update_edges(src)
+
 	if(old_living)
 		old_living.Cut()
 
 	return ..()
+
+
+/turf/Finalize()
+	if(corner_icons) SSsmoothing.queued_smoothing += src
+	. = ..()
 
 /*
 /turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -158,7 +181,7 @@
 
 /turf/change_victim(var/atom/attacker,var/atom/object)
 
-	if(density) //Not actually a floor but something more.
+	if(density_north || density_south || density_east || density_west)
 		return src
 
 	for(var/k in contents)
@@ -178,7 +201,7 @@
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay < 0 || get_dist(L,src) > 1)
+			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay <= 0 || get_dist(L,src) > 1)
 				continue
 			return L
 
@@ -255,7 +278,18 @@
 	return FALSE
 
 /turf/should_smooth_with(var/turf/T)
-	return (T.corner_category == corner_category) && (T.plane == plane)
+
+	if(T.plane == plane && T.corner_category == corner_category)
+		return T
+
+	for(var/obj/structure/O in T.contents)
+		if(O.corner_category != corner_category)
+			continue
+		if(O.plane != plane)
+			continue
+		return O
+
+	return null
 
 /turf/proc/is_occupied(var/plane_min=-INFINITY,var/plane_max=INFINITY,var/check_under_tile=FALSE)
 
@@ -278,11 +312,6 @@
 /turf/proc/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
-
-
-/turf/Finalize()
-	. = ..()
-	update_sprite()
 
 /turf/proc/is_clear_path_to(var/turf/target_turf)
 

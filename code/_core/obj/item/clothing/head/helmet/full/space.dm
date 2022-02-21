@@ -3,7 +3,7 @@
 	desc = "Helmets... in space!"
 	desc_extended = "A very sturdy old space helmet. Built in is a system that regulates heating and cooling of the body."
 	icon = 'icons/obj/item/clothing/hats/space_old.dmi'
-	rarity = RARITY_UNCOMMON
+
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

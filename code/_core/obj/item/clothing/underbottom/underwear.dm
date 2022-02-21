@@ -48,7 +48,7 @@
 	icon = 'icons/obj/item/clothing/underwear/long_john.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
-	rarity = RARITY_UNCOMMON
+
 
 	defense_rating = list(
 		ARCANE = 10,
@@ -97,7 +97,7 @@
 	desc_extended = "why"
 	icon = 'icons/obj/item/clothing/underwear/neko_panty.dmi'
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		DARK = 20,

@@ -5,7 +5,11 @@
 	var/extra_weapon_chance = 0
 	var/extra_clothing_chance = 0
 
-
+/loadout/zombie/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+	. = ..()
+	if(.)
+		I.adjust_quality(rand(-50,-90))
+		I.set_bloodstain(rand(2,5),"#880000")
 
 /loadout/zombie/get_spawning_items()
 
@@ -16,6 +20,9 @@
 
 	if(prob(extra_clothing_chance))
 		. += pickweight(possible_extra_clothing)
+
+
+	. += /obj/item/clothing/head/helmet/full/blob_spore
 
 /loadout/zombie/winter
 	spawning_items = list(
@@ -79,7 +86,7 @@
 	)
 
 	possible_extra_clothing = list(
-		/obj/item/clothing/head/helmet/security/old = 10,
+		/obj/item/clothing/head/helmet/old = 10,
 		/obj/item/clothing/head/hat/beret/armored/syndicate = 5,
 		/obj/item/clothing/glasses/sun/security/red = 2
 	)
@@ -202,8 +209,8 @@
 
 	possible_extra_weapon = list(
 		/obj/item/bikehorn = 3,
-		/obj/item/container/pill/space_drugs = 1,
-		/obj/item/container/pill/space_dust = 1
+		/obj/item/container/edible/pill/space_drugs = 1,
+		/obj/item/container/edible/pill/space_dust = 1
 
 	)
 
@@ -257,7 +264,7 @@
 
 	possible_extra_weapon = list(
 				/obj/item/container/syringe = 1,
-				/obj/item/container/beaker = 1,
+				/obj/item/container/simple/beaker = 1,
 				/obj/item/storage/pillbottle/iron_small = 2,
 				/obj/item/storage/pillbottle/antihol_small = 1,
 	)
@@ -279,10 +286,10 @@
 	)
 
 	possible_extra_weapon = list(
-		/obj/item/container/beaker/alcohol/whiskey = 3,
-		/obj/item/container/beaker/alcohol/beer = 4,
-		/obj/item/container/beaker/glass = 1,
-		/obj/item/container/beaker/shot = 1
+		/obj/item/container/simple/whiskey = 3,
+		/obj/item/container/simple/beer = 4,
+		/obj/item/container/simple/beaker/glass = 1,
+		/obj/item/container/simple/beaker/shot = 1
 	)
 
 	extra_weapon_chance = 50
@@ -303,9 +310,86 @@
 
 	possible_extra_weapon = list(
 		/obj/item/weapon/melee/sword/sabre = 5,
-		/obj/item/container/beaker/food/sugar = 1,
-		/obj/item/container/beaker/bottle/large/water = 1
+		/obj/item/container/simple/sugar = 1,
+		/obj/item/container/simple/beaker/bottle/large/water = 1
 	)
 
 	extra_weapon_chance = 80
 	extra_clothing_chance = 75
+
+var/global/zombie_seed = 0
+
+/loadout/zombie/civilian
+	var/list/possible_shirt = list()
+	var/list/possible_pants = list()
+	var/list/possible_socks = list()
+	var/seed = 0
+
+/loadout/zombie/civilian/male
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left
+	)
+	possible_shirt = list(
+		/obj/item/clothing/shirt/normal = 8,
+		/obj/item/clothing/undertop/underwear/shirt = 2
+	)
+	possible_pants = list(
+		/obj/item/clothing/pants/normal = 1
+	)
+	possible_socks = list(
+		/obj/item/clothing/feet/socks/ankle = 7,
+		/obj/item/clothing/feet/socks/knee = 2
+	)
+
+/loadout/zombie/civilian/female
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/panty,
+		/obj/item/clothing/undertop/underwear/bra,
+		/obj/item/clothing/feet/shoes/colored,
+		/obj/item/clothing/feet/shoes/colored/left
+	)
+	possible_shirt = list(
+		/obj/item/clothing/shirt/normal = 8,
+		/obj/item/clothing/shirt/blouse = 2
+	)
+	possible_pants = list(
+		/obj/item/clothing/pants/normal = 8,
+		/obj/item/clothing/pants/skirt = 2
+	)
+	possible_socks = list(
+		/obj/item/clothing/feet/socks/ankle = 7,
+		/obj/item/clothing/feet/socks/knee = 2,
+		/obj/item/clothing/feet/socks/thigh = 1
+	)
+
+
+/loadout/zombie/civilian/get_spawning_items()
+
+	. = ..()
+
+	if(length(possible_shirt))
+		. += pickweight(possible_shirt)
+
+	if(length(possible_pants))
+		. += pickweight(possible_pants)
+
+	if(length(possible_socks))
+		var/chosen_sock = pickweight(possible_socks)
+		. += chosen_sock
+		. += chosen_sock
+
+/loadout/zombie/civilian/post_add(var/mob/living/advanced/A,var/list/added_items = list())
+	. = ..()
+	zombie_seed = null
+
+/loadout/zombie/civilian/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+	if(!zombie_seed)
+		zombie_seed = rand(1,100000)
+	. = ..()
+	var/p_length = length(I.polymorphs)
+	if(p_length && I.item_slot_layer > 1)
+		rand_seed(zombie_seed + length(I.desc))
+		for(var/k in I.polymorphs)
+			I.polymorphs[k] = random_color()

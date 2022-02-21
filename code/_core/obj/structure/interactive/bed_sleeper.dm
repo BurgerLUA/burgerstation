@@ -8,13 +8,16 @@
 
 	var/base_color = "#FFFFFF"
 	secondary_color = "#FFFFFF"
+	var/tertiary_color = "#FFFFFF"
 
 	var/open_sound
 	var/close_sound
 
-	var/open_time = 10
-	var/close_time = 10
+	var/open_time = 12
+	var/close_time = 12
 
+	pixel_y = 4
+	pixel_offset_y = 4
 	pixel_offset_x = 8
 	layer = LAYER_MOB_ABOVE
 	plane = PLANE_EFFECT
@@ -31,15 +34,40 @@
 /obj/structure/interactive/bed/sleeper/Initialize()
 	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
 	check_collisions()
+	set_light(2, 0.25, secondary_color)
 	return ..()
+
+/obj/structure/interactive/bed/sleeper/Finalize()
+	. = ..()
+	icon = initial(icon)
+	icon_state = "closed"
+	color = secondary_color
+	alpha = 175
+
 
 /obj/structure/interactive/bed/sleeper/update_underlays()
 	. = ..()
-	var/image/I = new/image(initial(icon),initial(icon_state))
+	var/image/I = new/image(initial(icon),"under")
 	I.plane = PLANE_OBJ
-	I.layer = -100
+	I.layer = -1000
 	I.color = base_color
-	underlays += I
+	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+	add_underlay(I)
+	var/image/I2 = new/image(initial(icon),"padding")
+	I2.plane = PLANE_OBJ
+	I2.layer = -999
+	I2.color = tertiary_color
+	I2.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+	add_underlay(I2)
+
+/obj/structure/interactive/bed/sleeper/update_overlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"over")
+	I.plane = PLANE_MOB_SMALL
+	I.layer = 1000
+	I.color = base_color
+	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+	add_overlay(I)
 
 /obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -86,13 +114,13 @@
 	if(open_sound)
 		play_sound(open_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_OPENING
-	update_icon()
+	flick("opening",src)
 	CALLBACK("on_open_\ref[src]",open_time,src,.proc/on_open,caller)
 
 /obj/structure/interactive/bed/sleeper/proc/on_open(var/mob/caller)
 	door_state = SLEEPER_OPENED
 	opened_time = 0
-	update_icon()
+	icon_state = "opened"
 	check_collisions()
 	start_thinking(src)
 	return TRUE
@@ -100,7 +128,7 @@
 /obj/structure/interactive/bed/sleeper/proc/on_close(var/mob/caller)
 	door_state = SLEEPER_CLOSED
 	opened_time = 0
-	update_icon()
+	icon_state = "closed"
 	check_collisions()
 	return TRUE
 
@@ -114,7 +142,7 @@
 	if(close_sound)
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_CLOSING
-	update_icon()
+	flick("closing",src)
 	CALLBACK("on_close_\ref[src]",close_time,src,.proc/on_close,caller)
 	stop_thinking(src)
 
@@ -140,25 +168,11 @@ obj/structure/interactive/bed/sleeper/proc/check_collisions()
 	var/desired_collision_flags = initial(collision_flags)
 	var/desired_collision_bullet_flags = initial(collision_flags)
 
-	switch(door_state)
-		if(SLEEPER_OPENED)
-			desired_collision_flags = FLAG_COLLISION_NONE
-			desired_collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
-			set_light(FALSE)
-		if(SLEEPER_CLOSED)
-			set_light(2, 0.5, secondary_color)
-		if(SLEEPER_OPENING)
-			set_light(2, 0.25, secondary_color)
-		if(SLEEPER_CLOSING)
-			set_light(2, 0.25, secondary_color)
+	if(door_state == SLEEPER_OPENED)
+		desired_collision_flags = FLAG_COLLISION_NONE
+		desired_collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+		set_light(FALSE)
 
 	update_collisions(desired_collision_flags,desired_collision_bullet_flags)
 
-	return TRUE
-
-
-/obj/structure/interactive/bed/sleeper/update_icon()
-	var/icon/I = new/icon(initial(icon),door_state)
-	I.Blend(secondary_color,ICON_MULTIPLY)
-	icon = I
 	return TRUE

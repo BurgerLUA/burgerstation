@@ -6,8 +6,8 @@
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
 
-	plane = PLANE_OBJ
-	layer = LAYER_OBJ_AIRLOCK
+	layer = LAYER_WALL
+	plane = PLANE_WALL
 
 	var/filler = "fill"
 	var/panel = TRUE
@@ -15,8 +15,8 @@
 	var/fill_color = "#FFFFFF"
 
 	var/open_wait_time = 3
-	var/open_time_01 = 8
-	var/open_time_02 = 8
+	var/open_time_01 = 5.5
+	var/open_time_02 = 5.5
 
 	var/close_time_01 = 8
 	var/close_time_02 = 8
@@ -50,8 +50,6 @@
 	else
 		. = ..()
 		qdel(src)
-
-
 
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -96,6 +94,13 @@
 		opened_time = 0
 
 	return TRUE
+
+/obj/structure/interactive/door/airlock/should_smooth_with(var/turf/T)
+
+	. = ..()
+
+	if(istype(.,/obj/structure/interactive/door/airlock/))
+		return FALSE
 
 obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 
@@ -301,14 +306,24 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		light_fixtures.color = light_color ? light_color : "#FFFFFF"
 		add_overlay(light_fixtures)
 
-	var/image/frame = new /icon(icon,"frame")
-	add_overlay(frame)
+	if(anchored)
 
+		var/image/frame = new /icon(icon,"frame")
+		add_underlay(frame)
 
-
-/obj/structure/interactive/door/airlock/proc/get_light_color()
-
-
+		for(var/d in DIRECTIONS_CARDINAL)
+			var/turf/T = get_step(src,d)
+			if(!T)
+				continue
+			var/atom/A = should_smooth_with(T)
+			if(A && !istype(A,/obj/structure/interactive/door/airlock/))
+				var/image/I = new/image(icon,"metal_frame_[d]")
+				if(A == T)
+					I.color = A.color
+				else
+					I.color = COLOR_STEEL
+				I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
+				add_underlay(I)
 
 /obj/structure/interactive/door/airlock/Cross(atom/movable/O,atom/oldloc)
 
