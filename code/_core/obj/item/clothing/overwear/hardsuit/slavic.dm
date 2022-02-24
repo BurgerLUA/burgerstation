@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/hardsuit/exosuit
-	name = "Russian exosuit"
+	name = "Slavic exosuit"
 	icon = 'icons/obj/item/clothing/suit/exosuit.dmi'
 	desc = "RIP Tachenko."
 	desc_extended = "An experimental sample of a military exoskeleton. Was never mass-produced due to extraordinary cost and some design flaws. Despite this, it is in demand due to its ability to take on the weight of all carried equipment, and therefore small batches are made in underground facilities."
@@ -64,7 +64,7 @@
 	name = "SKAT-10"
 	icon = 'icons/obj/item/clothing/suit/skat_antag.dmi'
 	desc = "I am out of S.T.A.L.K.E.R. references, really."
-	desc_extended = "Completely redesigned version of SKAT-9 combined suit, made from ground up in joint forces by the Syndicate's and Space Russia's scientists under an unnamed unofficial peace treaty agreement, yet never went into mass production due to immense cost. Comprises a PSZ-15b ultra-heavy military armored suit, built-in semi-solid frag suit, and an enhanced anomalous protection bodysuit. The armor provides one of the best protections against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Has a built-in wound tending system that passively treats its user's wounds when out of combat."
+	desc_extended = "Completely redesigned version of SKAT-9 combined suit, made from ground up in joint forces by the Syndicate's and Space Slav Federation's scientists under an unnamed unofficial peace treaty agreement, yet never went into mass production due to immense cost. Comprises a PSZ-15b ultra-heavy military armored suit, built-in semi-solid frag suit, and an enhanced anomalous protection bodysuit. The armor provides one of the best protections against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Has a built-in wound tending system that passively treats its user's wounds when out of combat."
 
 
 	item_slot = SLOT_TORSO_ARMOR

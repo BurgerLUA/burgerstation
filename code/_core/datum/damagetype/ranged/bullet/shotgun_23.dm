@@ -1,4 +1,4 @@
-/damagetype/ranged/bullet/shotgun_23/ //Russian
+/damagetype/ranged/bullet/shotgun_23/ //Slavic
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

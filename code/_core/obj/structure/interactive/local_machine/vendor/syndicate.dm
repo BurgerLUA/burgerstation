@@ -33,8 +33,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308/ap,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/honey,
-		/obj/item/magazine/honey,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
@@ -182,7 +180,7 @@
 		/obj/item/deployable/barricade{amount=10},
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
-		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/slavic,
 		/obj/item/weapon/melee/toolbox/syndicate,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
@@ -204,7 +202,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/weapon/melee/shield/redstar,
 		/obj/item/weapon/melee/shield/ballistic,
-		/obj/item/storage/cigarettes/russian,
+		/obj/item/storage/cigarettes/slavic,
 		/obj/item/lighter,
 		/obj/item/map
 	)

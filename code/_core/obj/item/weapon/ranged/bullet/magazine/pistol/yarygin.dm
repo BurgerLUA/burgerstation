@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/yarygin
-	name = "\improper modified 9x19mm MP-443"
+	name = "\improper 9x19mm VA pistol"
 	desc = "Korobochka, horoni rebyat."
-	desc_extended = "Russian-produced semiautomatic 9x19 pistol, a service weapon of the Russian army, special forces and other defense and law enforcement agencies."
+	desc_extended = "Slavic-produced semiautomatic 9x19 pistol, a service weapon of the Space Slavic army, special forces and other defense and law enforcement agencies."
 	icon = 'icons/obj/item/weapons/ranged/pistol/yarygin.dmi'
 	icon_state = "inventory"
 	value = 200

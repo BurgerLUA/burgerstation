@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/dip
-	name = ".22 Z-Dip Gun"
+	name = ".22 Z-Drip Gun"
 	desc = "The best in manufactured pistols."
-	desc_extended = "The Z-Dip Gun is a relatively inexpensive pistol meant for civilian self-defense. The low caliber makes it difficult to use as a serious weapon, however."
+	desc_extended = "The Z-Drip Gun is a relatively inexpensive pistol meant for civilian self-defense. The low caliber makes it difficult to use as a serious weapon, however."
 	value = 120
 	icon = 'icons/obj/item/weapons/ranged/pistol/dip_gun.dmi'
 	shoot_delay = 2

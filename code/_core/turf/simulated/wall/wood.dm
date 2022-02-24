@@ -54,5 +54,5 @@
 /turf/simulated/wall/wood/rev //for the rev base, more HP
 	color = "#724C34"
 	desc = "A wall made of wood"
-	desc_extended = "It's a wall, made of wood, something made it, prolly' the russians. Maybe not."
+	desc_extended = "It's a wall, made of wood, something made it, prolly' the Slavs. Maybe not."
 	health_base = 2000

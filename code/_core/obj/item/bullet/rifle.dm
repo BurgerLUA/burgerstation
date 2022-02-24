@@ -301,34 +301,3 @@
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_939mm/surplus
 	jam_chance = 1
 	value = 0
-
-/obj/item/bullet_cartridge/honey
-	name = "\improper .300 CCA subsonic rifle bullet"
-	desc = "Shh."
-	desc_extended = "For rifles that require .300 CCA."
-	icon = 'icons/obj/item/bullet/223.dmi'
-
-	bullet_diameter = 7.62
-	bullet_length = 35
-	bullet_color = COLOR_BULLET
-
-	amount_max = 5
-	amount_max_icon = 5
-	bullet_color = COLOR_BULLET
-
-	projectile = /obj/projectile/bullet/firearm/pistol/stealth
-	damage_type_bullet = /damagetype/ranged/bullet/honey
-
-	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
-
-	size = 0.04
-
-	value = 1.8
-
-	inaccuracy_modifer = 0.75
-
-/obj/item/bullet_cartridge/honey/surplus
-	name = "\improper surplus .300 CCA subsonic rifle bullet"
-	damage_type_bullet = /damagetype/ranged/bullet/honey/surplus
-	jam_chance = 1
-	value = 0

@@ -91,10 +91,10 @@
 	icon_state = "squadpod"
 	auto_open = FALSE
 
-/obj/structure/interactive/crate/closet/supply_pod/american
-	name = "space american supply pod"
+/obj/structure/interactive/crate/closet/supply_pod/yankee
+	name = "space yankee supply pod"
 	icon_state = "squadpod"
 
-/obj/structure/interactive/crate/closet/supply_pod/american/occupied/Generate()
+/obj/structure/interactive/crate/closet/supply_pod/yankee/occupied/Generate()
 	. = ..()
 	CREATE(/mob/living/advanced/npc/space_soldier,src)

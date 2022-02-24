@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun
 	name = "\improper 2.54x12mm Experimental Gauss Rifle"
 	desc = "We thank you, oh Monolith, for revealing the cunning plans of your enemies to us. May your light shine down on the souls of the brave soldiers who gave their lives in service to your will."
-	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the russian facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
+	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the slavic facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss.dmi'
 	icon_state = "inventory"
 	value = 12000
@@ -14,7 +14,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/russia/gauss.ogg')
+	shoot_sounds = list('sound/weapons/slavic/gauss.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -61,7 +61,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/auto
 	name = "\improper 2.54x12mm Experimental Gauss Carbine"
 	desc = "STOP POSTING ABOUT MONOLITH! I'M TIRED OF SEEING IT!"
-	desc_extended = "The finalized design of the Gauss Gun. Further research and improvements in materials have given it the durability and power efficiency it needs to fire automatically. However, creating even one of this is such an expense that only the Space Russian Military are seen using these. You have to be seriously lucky to get your hands on this." //mucho texto
+	desc_extended = "The finalized design of the Gauss Gun. Further research and improvements in materials have given it the durability and power efficiency it needs to fire automatically. However, creating even one of this is such an expense that only the Space Slavic Military are seen using these. You have to be seriously lucky to get your hands on this." //mucho texto
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
 

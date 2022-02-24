@@ -108,22 +108,22 @@
 	)
 	supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod/syndicate
 
-/obj/item/supply_remote/crates/russian
-	name = "drop pod remote - x4 Russian supply crates"
+/obj/item/supply_remote/crates/slavic
+	name = "drop pod remote - x4 Slavic supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic
 	)
 
-/obj/item/supply_remote/crates/american
-	name = "drop pod remote - x4 American supply crates"
+/obj/item/supply_remote/crates/yankee
+	name = "drop pod remote - x4 Yankee supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee
 	)
 
 /obj/item/supply_remote/barbecue

@@ -92,7 +92,7 @@
 	level = 18
 
 /mob/living/simple/bear/armored/revolutionary
-	name = "armored russian bear"
+	name = "armored slavic bear"
 	loyalty_tag = "Revolutionary"
 	iff_tag = "Revolutionary"
 

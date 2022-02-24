@@ -16,7 +16,7 @@
 
 	var/turf/T = get_turf(src)
 
-	var/obj/structure/interactive/crate/closet/supply_pod/american/occupied/O = new(T)
+	var/obj/structure/interactive/crate/closet/supply_pod/yankee/occupied/O = new(T)
 	INITIALIZE(O)
 	GENERATE(O)
 	FINALIZE(O)

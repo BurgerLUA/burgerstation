@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94
-	name = "\improper 5.45x39mm AN-94"
+	name = "\improper 5.45x39mm Nikonov Rifle"
 	desc = "A nuu cheeki breeki i v damkee!"
-	desc_extended = "Weapon of the elite troops of the Russian army. It was developed as a replacement for the outdated AK-74. In the 'Abakan' not only the internal mechanisms are mobile, but the entire receiver along with the barrel, which allows you to reduce the recoil, therefore significantly increasing the accuracy."
+	desc_extended = "Weapon of the elite troops of the Space Slavic army. It was developed as a replacement for the outdated AK Type-13. Its quick 2 round burst system allows for very precise firing and tight groupings."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle.dmi'
 	icon_state = "inventory"
 	value = 4500
@@ -14,7 +14,7 @@
 
 	firemodes = list("burst")
 
-	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
+	shoot_sounds = list('sound/weapons/slavic/abakan.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

@@ -16,7 +16,7 @@
 
 	damage_mod = 1.1
 
-	shoot_sounds = list('sound/weapons/russia/val.ogg')
+	shoot_sounds = list('sound/weapons/slavic/val.ogg')
 
 	can_wield = TRUE
 

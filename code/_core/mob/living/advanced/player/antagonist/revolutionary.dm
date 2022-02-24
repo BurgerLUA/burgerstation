@@ -29,4 +29,4 @@ var/global/list/possible_rev_loadouts = list(
 
 /mob/living/advanced/player/antagonist/revolutionary/add_species_languages()
 	. = ..()
-	known_languages[LANGUAGE_RUSSIAN] = TRUE
+	known_languages[LANGUAGE_SLAVIC] = TRUE

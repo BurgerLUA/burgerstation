@@ -39,7 +39,7 @@
 //Best alloy you can get for the best weapons you can make, i.e. .50 AMR/miniguns and high-frequency blades.
 /obj/item/crafting/ingredient/alloy/plasteel/gun
 	name = "Plasteel-20000"
-	desc = "Main material for Nanotrasen's pulse guns, Syndicate's hardsuits and Space Russia's ballistic shields. Now in gun."
+	desc = "Main material for Nanotrasen's pulse guns, Syndicate's hardsuits and Space Slav Federation ballistic shields. Now in gun."
 	desc_extended = "Fairly big block of gun plasteel alloy. Useful for legendary-grade weapon crafting."
 	icon_state = "FeCPl_20000"
 	crafting_id = "FeCPl_20000"
@@ -84,7 +84,7 @@
 //Best alloy you can get for the best equipment you can make, i.e. HECK armor and HECK helmets.
 /obj/item/crafting/ingredient/alloy/plasteel/armor
 	name = "Plasteel-40000"
-	desc = "Main material for Nanotrasen's pulse guns, Syndicate's hardsuits and Space Russia's ballistic shields. Now in armor."
+	desc = "Main material for Nanotrasen's pulse guns, Syndicate's hardsuits and Space Slav Federation ballistic shields. Now in armor."
 	desc_extended = "Fairly big block of armor plasteel alloy. Useful for legendary-grade armor crafting."
 	icon_state = "FeCPl_40000"
 	crafting_id = "FeCPl_40000"

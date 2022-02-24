@@ -37,7 +37,7 @@
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
 	desc = "Shoot guns with theese."
-	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your slavic bias."
 	color = "#404040"
 
 
@@ -63,7 +63,7 @@
 /obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
 	desc = "Shoot guns with theese."
-	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your slavic bias."
 	color = "#404040"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"

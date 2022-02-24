@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
-	name = ".45 1911 Pistol"
+	name = ".45 1984 Pistol"
 	desc = "No rubber rounds here; it's all lethal."
-	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Americans."
+	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Colonists."
 	value = 700
 
 	tier = 2
@@ -71,8 +71,7 @@
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
-	name = ".45 1911 Pistol MOD"
-	desc = "It's like a Silver Eagle except not."
+	name = ".45 1984 Pistol MOD"
 	desc_extended = "The feeding ramp is polished to a mirror sheen. The slide's been reinforced. And the interlock with the frame is tightened for added precision. \
 	The sight system is original, too. The thumb safety is extended to make it easier on the finger. A long-type trigger with non-slip grooves. A ring hammer... \
 	The base of the trigger guard's been filed down for a higher grip. And not only that, nearly every part of this gun has been expertly crafted and customized. \

@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer
 	name = "\improper 12.7mm High-Power Auto"
 	desc = "The \"Auto\" is for semiauto."
-	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders. The bulkiness of the pistol rivals submachine guns."
+	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
 	value = 700

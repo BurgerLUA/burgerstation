@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine
-	name = "\improper .223 Raider Carbine"
+	name = "\improper .223 Space Raider Carbine"
 	desc = "A favorite by pirates."
 	desc_extended = "Leftover surplus guns left by the good ol days of syndicate raiding parties. While old and outdated, it still sees some uses by old and new syndicate forces."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223.dmi'

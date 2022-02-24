@@ -16,15 +16,15 @@
 
 /loot/supply_crate/all
 	loot_table = list(
-		/loot/supply_crate/russian = 1,
+		/loot/supply_crate/slavic = 1,
 		/loot/supply_crate/nanotrasen = 1,
-		/loot/supply_crate/american = 1,
+		/loot/supply_crate/yankee = 1,
 		/loot/supply_crate/syndicate = 1,
 		/loot/supply_crate/magic = 1,
 		/loot/supply_crate/medicine = 1
 	)
 
-/loot/supply_crate/russian
+/loot/supply_crate/slavic
 	loot_table = list(
 		/loot/weapon/pistol/yarygin = 1,
 		/loot/weapon/pistol/nagant = 1,
@@ -77,7 +77,7 @@
 		/loot/weapon/smg/tactical = 1
 	)
 
-/loot/supply_crate/american
+/loot/supply_crate/yankee
 	loot_table = list(
 		/loot/weapon/pistol/deagle = 1,
 		/loot/weapon/energy/dynamic = 1,

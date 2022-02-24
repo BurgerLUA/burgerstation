@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie
-	name = "10mm Stechkin"
+	name = "10mm Stecharov pistol"
 	desc = "The traitor's second best friend."
 	desc_extended = "The standard Syndicate pistol. Cheap. Reliable. The compactness of the gun makes it useful in assassinations as well as a holdout weapon."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm.dmi'
@@ -74,10 +74,10 @@
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
-	name = "10mm Stechkin MOD"
+	name = "10mm Stecharov pistol MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
-	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is more compact."
+	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is much more compact and concealable."
 
 	size = SIZE_1
 

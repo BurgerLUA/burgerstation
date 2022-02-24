@@ -23,7 +23,7 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/grenade/landmine(src)
 	new /obj/item/deployable/barricade{amount=10}(src)
 	new /obj/item/storage/kit/filled(src)
-	new /obj/item/supply_crate/russian(src)
+	new /obj/item/supply_crate/slavic(src)
 
 	//1 Weapon
 	new /obj/item/weapon/ranged/bullet/magazine/rifle/ak12(src)

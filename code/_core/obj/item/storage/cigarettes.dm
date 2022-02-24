@@ -104,7 +104,7 @@
 	cigarette_type = /obj/item/container/cigarette/syndicate
 	icon_state = "syndicate"
 
-/obj/item/storage/cigarettes/russian
-	name = "\improper Russian Blue cigarettes"
-	cigarette_type = /obj/item/container/cigarette/russian
-	icon_state = "russian"
+/obj/item/storage/cigarettes/slavic
+	name = "\improper Slavic Blue cigarettes"
+	cigarette_type = /obj/item/container/cigarette/slavic
+	icon_state = "slavic"

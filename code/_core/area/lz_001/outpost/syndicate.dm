@@ -16,12 +16,12 @@
 
 	cheese_type = /reagent/nutrition/cheese/brabander
 
-/area/lz_001/outpost/russian
+/area/lz_001/outpost/slavic
 	name = "Revolutionary Outpost"
 	icon_state = "syndicate"
 
 
-/area/lz_001/outpost/russian/snow
-	name = "\improper Russian Outpost Sierra"
+/area/lz_001/outpost/slavic/snow
+	name = "\improper Slavic Outpost Sierra"
 
 	cheese_type = /reagent/nutrition/cheese/raclette

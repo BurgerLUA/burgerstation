@@ -1,6 +1,6 @@
-/language/russian
-	name = "Russian"
-	id = LANGUAGE_RUSSIAN
+/language/slavic
+	name = "Slavic"
+	id = LANGUAGE_SLAVIC
 
 	var/list/possible_replacements = list(
 		"zhena", "reb", "kot", "tvoy", "vodka", "blyad", "verbovka", "ponimat", "zhit", "kley", "sto", "yat", "si", "det",
@@ -19,7 +19,7 @@
 		"suda", "huyar", "odin", "dva", "tri", "holod", "granata", "ne", "re", "ru", "korabl"
 	)
 
-/language/russian/process_text(var/speaker,var/text)
+/language/slavic/process_text(var/speaker,var/text)
 
 	. = ""
 

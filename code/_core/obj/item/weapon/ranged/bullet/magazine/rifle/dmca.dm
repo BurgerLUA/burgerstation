@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca
 	name = "\improper 10x24mm DMCA"
-	desc = "Takedown your foes with this DMCA!"
+	desc = "Take down your foes with this DMCA!"
 	desc_extended = "The 10x24mm DMCA is an extremely robust automatic weapon capable of sending a volley of high impact rounds at long ranges."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/dmca.dmi'
 	icon_state = "inventory"

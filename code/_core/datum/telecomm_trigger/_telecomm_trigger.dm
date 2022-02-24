@@ -1,5 +1,5 @@
 /telecomm_trigger/
-	var/name = "America"
+	var/name
 	var/trigger_file //The json file of the trigger.
 
 	var/selected_trigger_name

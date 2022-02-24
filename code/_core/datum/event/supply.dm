@@ -9,9 +9,9 @@
 	occurances_max = 3
 
 	var/list/atom/movable/possible_items = list(
-		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/slavic,
 		/obj/item/supply_crate/syndicate,
-		/obj/item/supply_crate/american,
+		/obj/item/supply_crate/yankee,
 		/obj/item/supply_crate/nanotrasen,
 		/mob/living/advanced/npc/beefman
 	)

@@ -4,6 +4,6 @@
 
 	stored_types = list(
 		/obj/item/container/simple/can/coffee/black,
-		/obj/item/container/simple/can/coffee/americano,
+		/obj/item/container/simple/can/coffee/freedomno,
 		/obj/item/container/simple/can/coffee/latte
 	)
