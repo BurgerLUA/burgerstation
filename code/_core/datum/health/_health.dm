@@ -29,7 +29,8 @@
 		FATIGUE = 1,
 		PAIN=1,
 		RAD=1,
-		SANITY=1
+		SANITY=1,
+		MENTAL=1
 	)
 	*/
 

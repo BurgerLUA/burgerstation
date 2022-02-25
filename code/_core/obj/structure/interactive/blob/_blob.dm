@@ -5,7 +5,6 @@
 	icon = 'icons/obj/structure/blob.dmi'
 	var/has_damaged_state = FALSE
 
-	var/obj/structure/interactive/blob/source_blob //The blob that created this. Core or a node.
 	var/obj/structure/interactive/blob/core/linked_core
 	var/list/obj/structure/interactive/blob/adjacent_blobs
 
@@ -21,8 +20,8 @@
 
 	damage_type = /damagetype/blob_attack/
 
-	health = /health/construction/
-	health_base = 125
+	health = /health/blob
+	health_base = 120
 
 	density = TRUE
 
@@ -33,8 +32,6 @@
 	var/last_state = 0
 
 /obj/structure/interactive/blob/Destroy()
-
-	source_blob = null
 
 	if(linked_core)
 		linked_core.linked_walls -= src
@@ -48,76 +45,91 @@
 
 	. = ..()
 
-/obj/structure/interactive/blob/proc/grow_charge(var/obj/structure/interactive/blob/original_blob,var/obj/effect/grow_effect,var/node)
+/obj/structure/interactive/blob/proc/grow_charge(var/obj/structure/interactive/blob/original_blob,var/obj/structure/interactive/blob/last_blob,var/tolerance=1,var/turf/priority_turf)
 
-	if(src.qdeleting || !original_blob || !grow_effect || original_blob.qdeleting || grow_effect.qdeleting)
-		if(grow_effect && !grow_effect.qdeleting)
-			qdel(grow_effect)
+	if(src.qdeleting || !original_blob || original_blob.qdeleting)
 		return FALSE
 
-	var/forbidden_dir = get_dir(src,original_blob)
+	tolerance += 0.1
 
-	health.adjust_loss_smart(brute = -20) //Heal by 10.
-	update_sprite()
-	grow_effect.force_move(src.loc)
-
+	var/prefered_dir = last_blob ? get_dir(last_blob,src) : null //Keep the momentum.
+	var/prefered_dir_2 = original_blob ? get_dir(original_blob,src) : null //Move away from the core to expand.
+	if(linked_core)
+		health.adjust_loss_smart(brute = -linked_core.heal_amount)
+	if(update_health_state())
+		update_sprite()
 	var/list/possible_options = list()
 	for(var/k in adjacent_blobs)
 		var/obj/structure/interactive/blob/B = k
-		if(get_dir(src,B) & forbidden_dir) //This makes the blob end up being an x-pattern. It's a little annoying but there isn't anything I can do about it.
-			continue
+		var/d = get_dir(src,B)
 		if(B.color != color)
 			continue
-		possible_options |= B
+		if(priority_turf) //Prioritize turfs getting attacked.
+			if(d & get_dir(src,priority_turf))
+				possible_options |= B
+				continue
+		else //Not getting attacked? Move away from the core to expand.
+			if(prefered_dir_2 && d & prefered_dir_2)
+				possible_options |= B
+				continue
+			if(prefered_dir && d & prefered_dir) //Looks like we're kinda stuck. Float around in circles if possible.
+				possible_options |= B
+				continue
 
 	var/options = length(possible_options)
 
-	if(options >= 2)
+	if(options >= tolerance)
 		var/obj/structure/interactive/blob/chosen_blob = pick(possible_options)
-		CALLBACK("blob_grow_\ref[grow_effect]",1,chosen_blob,.proc/grow_charge,original_blob,grow_effect)
+		CALLBACK("blob_grow_\ref[src]",1,chosen_blob,.proc/grow_charge,original_blob,src,tolerance,priority_turf)
 	else
-		animate(grow_effect,alpha=0,time=10)
-		queue_delete(grow_effect,20)
+		var/list/possible_spawns = list()
 		for(var/d in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(src,d)
+			if(linked_core && T == priority_turf)
+				linked_core.lost_turfs -= priority_turf
 			var/atom/victim = T.change_victim(src,src)
 			if(!victim) //Something went wrong.
 				continue
-			if(istype(victim,/obj/structure/interactive/blob/) && victim.color == src.color)
+			if(istype(victim,/obj/structure/interactive/blob/) && victim.color == src.color) //No friendly fire!
 				continue
-			if(victim != T)
+			if(victim != T) //Attack blocking objects (and mobs).
 				spawn src.attack(src,victim,precise=TRUE)
-			else if(T.density_north || T.density_south || T.density_east || T.density_west)
+				break
+			else if(T.density_north || T.density_south || T.density_east || T.density_west) //Attack blocking walls.
 				spawn src.attack(src,T,precise=TRUE)
+				break
+			else //Turf is clear. Add it to a possible spawn.
+				possible_spawns += T
+
+		if(length(possible_spawns))
+			var/turf/T = pick(possible_spawns)
+			var/obj/structure/interactive/blob/node/found_node = locate() in range(4,T)
+
+			var/obj/structure/interactive/blob/B
+			if(found_node)
+				B = new/obj/structure/interactive/blob/wall(T,linked_core) //Already a node nearby. Make one.
 			else
-				var/obj/structure/interactive/blob/node/found_node = locate() in range(5,T)
+				B = new/obj/structure/interactive/blob/node(T,linked_core) //Make a node if there is none.
+			B.color = color
+			INITIALIZE(B)
+			FINALIZE(B)
 
-				var/obj/structure/interactive/blob/B
-				if(found_node)
-					B = new/obj/structure/interactive/blob/wall(T,linked_core)
-				else
-					B = new/obj/structure/interactive/blob/node(T,linked_core)
-				B.color = color
-				INITIALIZE(B)
-				FINALIZE(B)
-
-				var/list/direction_offsets = direction_to_pixel_offset(get_dir(T,src))
-				var/matrix/M = B.get_base_transform()
-				M.Scale(0.1)
-				M.Translate(direction_offsets[1]*TILE_SIZE,direction_offsets[2]*TILE_SIZE)
-				B.transform = M
-				animate(B,transform=B.get_base_transform(),pixel_x=0,pixel_y=0,time=10)
+			var/list/direction_offsets = direction_to_pixel_offset(get_dir(T,src))
+			var/matrix/M = B.get_base_transform()
+			M.Scale(0.1)
+			M.Translate(direction_offsets[1]*TILE_SIZE,direction_offsets[2]*TILE_SIZE)
+			B.transform = M
+			animate(B,transform=B.get_base_transform(),pixel_x=0,pixel_y=0,time=10)
 
 	return TRUE
 
-/obj/structure/interactive/blob/New(var/desired_loc,var/desired_owner)
+/obj/structure/interactive/blob/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
 	adjacent_blobs = list()
 	. = ..()
 	turn_angle = pick(0,90,180,270)
 	if(desired_owner)
 		linked_core = desired_owner
 		linked_core.linked_walls += src
-	last_state = health_states
 
 /obj/structure/interactive/blob/Finalize()
 	. = ..()
@@ -131,7 +143,9 @@
 			adjacent_blobs |= B
 			B.adjacent_blobs |= src
 
-	health.adjust_loss_smart(brute = health.health_current - 10)
+	if(linked_core)
+		health.adjust_loss_smart(brute = health.health_current - linked_core.heal_amount)
+	update_health_state()
 	update_sprite()
 
 /obj/structure/interactive/blob/update_icon()
@@ -155,24 +169,33 @@
 
 	return ..()
 
+/obj/structure/interactive/blob/proc/update_health_state()
+	. = 0
+	var/current_state = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
+	if(last_state != current_state)
+		if(last_state > current_state)
+			. = -1 //Decreasing
+		else
+			. = 1 //Increasing
+	last_state = current_state
+
 /obj/structure/interactive/blob/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	. = ..()
+	if(!isturf(src.loc))
+		return ..()
 
-	if(health && health.health_current <= 0)
-		qdel(src)
-	else if(isturf(src.loc))
-		var/current_state = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
-		if(last_state != current_state)
-			if(last_state > current_state) //Decreasing health.
-				play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),src.loc)
-			last_state = current_state
-			update_sprite()
+	var/turf/T = src.loc
+	linked_core.lost_turfs |= T
+	. = ..()
+	var/state_code = update_health_state()
+	if(state_code)
+		if(state_code == -1) //Decreasing health.
+			play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),T)
+		update_sprite()
 
 /obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
 	qdel(src)
-
 
 /obj/structure/interactive/blob/Cross(atom/movable/O,atom/oldloc)
 	if(is_living(O))
