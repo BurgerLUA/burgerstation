@@ -5,13 +5,7 @@
 	desc = "Eat Pant."
 	desc_extended = "The peak of fashion."
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10
-	)
+	armor = /armor/cloth
 
 	dyeable = TRUE
 
@@ -84,6 +78,12 @@
 	desc_extended = "Good pants to wear if you're on your knees a lot. Also good for botany."
 	polymorphs = list(
 		"pants" = COLOR_GREEN
+	)
+
+
+/obj/item/clothing/pants/normal/priest
+	polymorphs = list(
+		"pants" = COLOR_GREY_DARK
 	)
 
 /obj/item/clothing/pants/normal/chef
@@ -167,13 +167,7 @@
 	name = "reinforced pants"
 	icon = 'icons/obj/item/clothing/pants/reinforced.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 10,
-		PIERCE = 20,
-		ARCANE = -10,
-		COLD = 10,
-	)
+	armor = /armor/cloth/hard
 
 /obj/item/clothing/pants/normal/reinforced/ntops
 	name = "NT ops reinforced pants"

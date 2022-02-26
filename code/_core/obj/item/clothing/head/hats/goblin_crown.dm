@@ -4,12 +4,7 @@
 	desc_extended = "The crown is imbued with the life essence of the late Goblin King. Greatly desired by mages."
 	icon = 'icons/obj/item/clothing/hats/goblin_crown.dmi'
 
-
-	defense_rating = list(
-		ARCANE = 80,
-		HOLY = -80,
-		DARK = 80
-	)
+	armor = /armor/gold
 
 	size = SIZE_2
 
@@ -33,6 +28,6 @@
 		if(affectLiving.dead)
 			continue
 		if(affectLiving.health.get_mana_loss())
-			affectLiving.mana_regen_buffer += 3
+			affectLiving.mana_regen_buffer += 1
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

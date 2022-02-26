@@ -6,11 +6,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
 
-	defense_rating = list(
-		LASER = 40,
-		ARCANE = 40,
-		BIO = 60
-	)
+	armor = /armor/cloth/protective/coat
 
 	size = SIZE_3
 

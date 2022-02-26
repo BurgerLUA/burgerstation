@@ -13,16 +13,7 @@
 	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 60,
-		PIERCE = 40,
-		ARCANE = -60,
-		HEAT = 60,
-		COLD = 60,
-		FATIGUE = 60,
-		PAIN = 120
-	)
+	armor = /armor/hardsuit/mechanical
 
 	size = SIZE_2
 

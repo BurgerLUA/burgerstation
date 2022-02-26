@@ -7,7 +7,6 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/uniform/science,
 		/obj/item/clothing/pants/normal,
-		/obj/item/clothing/uniform/utility/science,
 		/obj/item/storage/shoebox/black,
 		/obj/item/storage/glovebox/white,
 		/obj/item/clothing/back/storage/satchel/poly/science,
@@ -40,7 +39,6 @@
 	desc_extended = "An experimental vendor that vends even more experimental weapons, armor, and clothing. Use at your own risk!"
 
 	stored_types = list(
-		/obj/item/clothing/uniform/stealth,
 		/obj/item/clothing/head/helmet/full/nanotrasen/light,
 		/obj/item/clothing/head/helmet/full/nanotrasen/medium,
 		/obj/item/clothing/head/helmet/full/nanotrasen/heavy,

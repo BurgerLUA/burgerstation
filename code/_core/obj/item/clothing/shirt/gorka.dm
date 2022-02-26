@@ -6,12 +6,6 @@
 
 	item_slot = SLOT_TORSO
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		COLD = 40,
-		HEAT = -20
-	)
+	armor = /armor/cloth/hard/winter
 
 	value = 60

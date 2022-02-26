@@ -9,16 +9,7 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 75,
-		PIERCE = 50,
-		LASER = 40,
-		ARCANE = -90,
-		HEAT = 20,
-		COLD = 60,
-		BOMB = 75
-	)
+	armor = /armor/hardsuit/combat/slavic
 
 	size = SIZE_7
 
@@ -40,16 +31,7 @@
 	item_slot = SLOT_TORSO_ARMOR
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 40,
-		PIERCE = 75,
-		LASER = 60,
-		ARCANE = -100,
-		HEAT = 20,
-		COLD = 20,
-		BOMB = 50
-	)
+	armor = /armor/hardsuit/combat/slavic
 
 	size = SIZE_7
 
@@ -70,20 +52,7 @@
 	item_slot = SLOT_TORSO_ARMOR
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 90,
-		LASER = 60,
-		ARCANE = -50,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 70,
-		RAD = 60,
-		FATIGUE = 40,
-		BIO = 70,
-		PAIN = 40
-	)
+	armor = /armor/hardsuit/combat/slavic/plus
 
 	size = SIZE_7
 
@@ -111,11 +80,10 @@
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)
 			continue
-		if(affectLiving.health.get_total_loss(include_fatigue = FALSE,include_pain=FALSE,include_sanity=FALSE))
-			affectLiving.brute_regen_buffer += rand(1,5)
-			affectLiving.burn_regen_buffer += rand(1,5)
-			affectLiving.tox_regen_buffer += rand(1,5)
-			affectLiving.rad_regen_buffer += rand(1,5)
-			affectLiving.queue_health_update = TRUE
+		affectLiving.brute_regen_buffer += 1
+		affectLiving.burn_regen_buffer += 1
+		affectLiving.tox_regen_buffer += 1
+		affectLiving.rad_regen_buffer += 1
+		affectLiving.queue_health_update = TRUE
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

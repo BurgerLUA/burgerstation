@@ -8,12 +8,4 @@
 
 	value = 200
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = 10,
-		ARCANE = -40,
-		HEAT = 20,
-		COLD = 20
-	)
+	armor = /armor/military/light

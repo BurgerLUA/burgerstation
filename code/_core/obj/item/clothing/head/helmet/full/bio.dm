@@ -4,13 +4,7 @@
 	desc_extended = "The top part of a full body biohazard suit. Good for protecting yourself from the biohazards."
 	icon = 'icons/obj/item/clothing/hats/bio.dmi'
 
-
-	defense_rating = list(
-		ARCANE = -50,
-		HEAT = 50,
-		COLD = 50,
-		BIO = 200
-	)
+	armor = /armor/bio
 
 	size = SIZE_3
 
@@ -21,14 +15,7 @@
 	desc_extended = "The top part of a full body radiation suit. Good for protecting yourself from the rads."
 	icon = 'icons/obj/item/clothing/hats/rad.dmi'
 
-
-	defense_rating = list(
-		ARCANE = -50,
-		HEAT = 50,
-		COLD = 50,
-		BIO = 100,
-		RAD = 200
-	)
+	armor = /armor/rad
 
 	size = SIZE_3
 
@@ -39,13 +26,6 @@
 	desc_extended = "The top part of a full body bomb suit. Good for protecting yourself from the bombs."
 	icon = 'icons/obj/item/clothing/hats/rad.dmi'
 
-
-	defense_rating = list(
-		BLUNT = 50,
-		ARCANE = -50,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 200
-	)
+	armor = /armor/military/heavy/hard/bomb
 
 	size = SIZE_3

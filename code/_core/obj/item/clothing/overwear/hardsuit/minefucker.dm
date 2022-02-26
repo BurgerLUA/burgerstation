@@ -9,14 +9,6 @@
 
 	value = 500
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = -20,
-		BOMB = -20,
-		FATIGUE = 20
-	)
+	armor = /armor/cloth/flammable
 
 	size = SIZE_5

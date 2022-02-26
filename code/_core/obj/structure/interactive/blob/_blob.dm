@@ -1,5 +1,3 @@
-#define GROWTH_AMOUNT 100
-
 /obj/structure/interactive/blob/
 	name = "blob piece"
 	icon = 'icons/obj/structure/blob.dmi'
@@ -77,7 +75,6 @@
 				continue
 
 	var/options = length(possible_options)
-
 	if(options >= tolerance)
 		var/obj/structure/interactive/blob/chosen_blob = pick(possible_options)
 		CALLBACK("blob_grow_\ref[src]",1,chosen_blob,.proc/grow_charge,original_blob,src,tolerance,priority_turf)

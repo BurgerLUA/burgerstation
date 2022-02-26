@@ -4,20 +4,7 @@
 	desc_extended = "An extremely heavy duty armor set only meant for the badest of badasses."
 	icon = 'icons/obj/item/clothing/suit/hostile.dmi'
 
-
-
-	defense_rating = list(
-		BLADE = 80,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 40,
-		ARCANE = -100,
-		HEAT = 60,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20
-	)
+	armor = /armor/military/heavy/hard
 
 	size = SIZE_7
 

@@ -5,13 +5,7 @@
 	desc = "Eat Pant."
 	desc_extended = "The peak of fashion."
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		HEAT = 10
-	)
+	armor = /armor/cloth/summer
 
 	dyeable = TRUE
 

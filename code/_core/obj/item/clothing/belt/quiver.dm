@@ -5,13 +5,6 @@
 
 	icon = 'icons/obj/item/clothing/belts/belt_quiver.dmi'
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 20
-	)
-
-
 	value = 200
 
 	var/list/stored_arrows = list()

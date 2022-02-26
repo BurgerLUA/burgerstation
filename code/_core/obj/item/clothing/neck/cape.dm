@@ -8,12 +8,7 @@
 
 	protected_limbs = list(BODY_TORSO)
 
-	defense_rating = list(
-		ARCANE = 40,
-		COLD = 20
-	)
-
-
+	armor = /armor/cloth/arcane/reduced
 
 	size = SIZE_2
 
@@ -53,14 +48,7 @@
 		"trim" = COLOR_BROWN
 	)
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		COLD = 25
-	)
-
-
+	armor = /armor/leather
 
 	value = 30
 
@@ -72,15 +60,7 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/)
 
-	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -50,
-		ARCANE = 25,
-		HEAT = 50,
-		COLD = 25
-	)
+	armor = /armor/leather/goliath
 
 	additional_clothing = list(/obj/item/clothing/head/hat/goliath)
 

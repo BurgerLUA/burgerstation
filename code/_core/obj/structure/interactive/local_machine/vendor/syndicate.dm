@@ -165,7 +165,6 @@
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
-		/obj/item/clothing/uniform/antag/rev/officer,
 		/obj/item/clothing/overwear/coat/hos/revfficer,
 		/obj/item/clothing/head/hat/hos/revfficer,
 		/obj/item/clothing/overwear/armor/slavticool,

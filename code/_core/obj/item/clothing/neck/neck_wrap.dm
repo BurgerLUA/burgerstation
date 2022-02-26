@@ -11,15 +11,7 @@
 	protected_limbs = list(BODY_TORSO, BODY_HEAD)
 
 
-
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		DARK = 40,
-		HOLY = -40
-	)
+	armor = /armor/cloth/hoodie
 
 	size = SIZE_1
 

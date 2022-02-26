@@ -11,11 +11,6 @@
 	desc_extended = "A bra. Does not actually stand for Battle Ready Armor."
 	icon = 'icons/obj/item/clothing/underwear/bra.dmi'
 
-	defense_rating = list(
-		ARCANE = 10,
-		COLD = 10
-	)
-
 	dyeable = TRUE
 
 	value = 10
@@ -60,24 +55,12 @@
 	desc_extended = "why"
 	icon = 'icons/obj/item/clothing/underwear/neko_bra.dmi'
 
-
-
-	defense_rating = list(
-		DARK = 20,
-		HOLY = -20
-	)
-
 	value = 500
 
 /obj/item/clothing/undertop/underwear/shirt
 	desc = "undershirt"
 	desc_extended = "Slightly more acceptable to wear alone in public than the bra."
 	icon = 'icons/obj/item/clothing/underwear/undershirt.dmi'
-
-	defense_rating = list(
-		ARCANE = 10,
-		COLD = 10
-	)
 
 	dyeable = TRUE
 

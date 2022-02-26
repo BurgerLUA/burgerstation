@@ -1,5 +1,5 @@
 /obj/item/clothing/hands/gloves/engineering
-	name = "right engineering glove"
+	name = "right engineering rig glove"
 	desc = "Spacewalk with theese."
 	desc_extended = "Part of the engineering rigsuit. Don't lose them!"
 	icon = 'icons/obj/item/clothing/gloves/engineering_rig_gloves.dmi'
@@ -7,22 +7,7 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -120,
-		HEAT = 80,
-		COLD = 80,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 80,
-		FATIGUE = INFINITY,
-		PAIN = 80
-	)
+	armor = /armor/hardsuit/engineering
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 2
@@ -33,7 +18,7 @@
 	value = 230
 
 /obj/item/clothing/hands/gloves/engineering/left
-	name = "left engineering glove"
+	name = "left engineering rig glove"
 	desc = "Spacewalk with theese."
 	desc_extended = "Part of the engineering rigsuit. Don't lose them!"
 

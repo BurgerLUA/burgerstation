@@ -6,15 +6,7 @@
 
 	icon = 'icons/obj/item/clothing/shoes/winter.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = -20,
-		HEAT = -20,
-		COLD = 60
-	)
+	armor = /armor/cloth/winter/hard
 
 	protection_cold = list(
 		BODY_FOOT_RIGHT = 3,

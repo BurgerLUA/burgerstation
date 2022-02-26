@@ -80,8 +80,3 @@
 /obj/item/supply_crate/medicine
 	loot = /loot/supply_crate/medicine
 	icon_state = "supply_medicine"
-
-/obj/item/supply_crate/bos
-	loot = /loot/supply_crate/bos
-	icon_state = "supply_bos"
-	value = 2000

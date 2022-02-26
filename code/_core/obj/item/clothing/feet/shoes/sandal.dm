@@ -8,12 +8,9 @@
 
 	icon = 'icons/obj/item/clothing/shoes/sandal.dmi'
 
-	defense_rating = list(
-		ARCANE = 80
-	)
+	armor = /armor/cloth/arcane
 
 	size = SIZE_1
-
 
 	value = 20
 

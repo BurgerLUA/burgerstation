@@ -5,17 +5,6 @@
 
 	icon = 'icons/obj/item/clothing/belts/skull_codpiece.dmi'
 
-
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		ARCANE = 40,
-		HOLY = -40,
-		DARK = 40,
-		PAIN = 40
-	)
-
+	armor = /armor/leather/hard
 
 	value = 100

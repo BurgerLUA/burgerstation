@@ -6,13 +6,7 @@
 
 	item_slot = SLOT_TORSO
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10
-	)
+	armor = /armor/cloth
 
 	dyeable = TRUE
 

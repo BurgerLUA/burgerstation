@@ -9,16 +9,6 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
-		ARCANE = -50,
-		HEAT = 50,
-		BOMB = 50,
-		HOLY = 75,
-		DARK = 75
-	)
+	armor = /armor/military/heavy/hard
 
 	size = SIZE_7

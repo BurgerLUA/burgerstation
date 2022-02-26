@@ -7,11 +7,7 @@
 
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
-	defense_rating = list(
-		LASER = -60,
-		ARCANE = -60,
-		HOLY = -60
-	)
+	armor = /armor/mechanical/night_vision
 
 	value = 100
 

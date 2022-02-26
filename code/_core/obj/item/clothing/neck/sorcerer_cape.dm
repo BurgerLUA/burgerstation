@@ -9,14 +9,7 @@
 
 	protected_limbs = list(BODY_TORSO)
 
-	defense_rating = list(
-		ARCANE = 80,
-		COLD = 20,
-		HOLY = -40,
-		DARK = 40
-	)
-
-
+	armor = /armor/dark/arcane/light
 
 	size = SIZE_2
 

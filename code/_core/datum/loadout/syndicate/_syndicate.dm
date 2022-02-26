@@ -142,7 +142,6 @@
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/feet/socks/ankle,
 		/obj/item/clothing/feet/socks/ankle,
-		/obj/item/clothing/uniform/antag/syndicate,
 		/obj/item/clothing/glasses/sun/security/red,
 		/obj/item/clothing/head/hat/beret/armored/syndicate,
 		/obj/item/clothing/mask/gas/syndicate,

@@ -9,17 +9,7 @@
 		BODY_HAIR_HEAD = TRUE
 	)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = 20,
-		COLD = 20,
-		HOLY = -80,
-		DARK = 80
-	)
+	armor = /armor/dark/cult_robes
 
 	size = SIZE_2
 
@@ -28,17 +18,6 @@
 	name = "ancient cult hood"
 	icon = 'icons/obj/item/clothing/hats/cult_old.dmi'
 
-
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = 20,
-		COLD = 20,
-		HOLY = -120,
-		DARK = 120
-	)
+	armor = /armor/dark/cult_robes/ancient
 
 	size = SIZE_2

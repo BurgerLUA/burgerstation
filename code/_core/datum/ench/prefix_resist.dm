@@ -48,8 +48,12 @@
 	name = "Shock Insulated"
 	damage_id = SHOCK
 
+/ench/prefix/resist/acid
+	name = "Acidproof"
+	damage_id = ACID
+
 /ench/prefix/resist/bomb
-	name = "Bomb Proof"
+	name = "Bombproof"
 	damage_id = BOMB
 
 /ench/prefix/resist/bio

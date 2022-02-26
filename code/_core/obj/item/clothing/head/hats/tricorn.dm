@@ -4,16 +4,7 @@
 	desc_extended = "A triple pointed hat. You almost look like a pirate while wearing this."
 	icon = 'icons/obj/item/clothing/hats/tricorn.dmi'
 
-
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = -40,
-		ARCANE = 40,
-		HEAT = 10,
-		COLD = -20
-	)
+	armor = /armor/cloth/hard
 
 	size = SIZE_2
 

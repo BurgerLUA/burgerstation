@@ -50,7 +50,6 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/reinforced/ntops,
 		/obj/item/clothing/shirt/normal/reinforced/ntops,
-		/obj/item/clothing/uniform/utility/command,
 		/obj/item/storage/shoebox/jackboot,
 		/obj/item/storage/glovebox/padded,
 		/obj/item/clothing/back/storage/satchel/poly/ntops,

@@ -5,10 +5,7 @@
 	desc = "Protect others!"
 	desc_extended = "A face mask designed to prevent the spread of airborne viruses."
 
-
-	defense_rating = list(
-		BIO = 80,
-	)
+	armor = /armor/cloth/bio
 
 	size = SIZE_2
 

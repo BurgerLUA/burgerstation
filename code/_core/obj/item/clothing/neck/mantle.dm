@@ -12,10 +12,7 @@
 
 	protected_limbs = list(BODY_TORSO)
 
-	defense_rating = list(
-		ARCANE = 40,
-		COLD = 20
-	)
+	armor = /armor/leather
 
 	size = SIZE_3
 

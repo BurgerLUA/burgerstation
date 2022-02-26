@@ -5,12 +5,7 @@
 	desc = "WHY?"
 	desc_extended = "An absolutely cursed mask."
 
-
-	defense_rating = list(
-		ARCANE = 60,
-		HOLY = -60,
-		DARK = 80
-	)
+	armor = /armor/dark/meme
 
 	size = SIZE_2
 

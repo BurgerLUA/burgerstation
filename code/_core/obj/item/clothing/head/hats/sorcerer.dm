@@ -8,14 +8,7 @@
 		BODY_HAIR_HEAD = TRUE
 	)
 
-	defense_rating = list(
-		ARCANE = 80,
-		COLD = 20,
-		HOLY = -40,
-		DARK = 40
-	)
-
-
+	armor = /armor/dark/arcane
 
 	size = SIZE_2
 

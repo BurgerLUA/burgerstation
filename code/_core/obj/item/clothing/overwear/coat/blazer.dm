@@ -2,8 +2,6 @@
 	name = "blue blazer"
 	icon = 'icons/obj/item/clothing/suit/blazer_blue.dmi'
 
-
-
 	desc = "I NEED just one pocket actually."
 	desc_extended = "A snazzy blue blazer with a pocket inside. Of course, it won't do much against the horrors of the void."
 
@@ -13,13 +11,6 @@
 
 	size = SIZE_3
 
-
-	defense_rating = list(
-		BLADE = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		HEAT = -20,
-		COLD = 20
-	)
+	armor = /armor/cloth/hoodie
 
 	value = 30

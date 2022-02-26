@@ -8,14 +8,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
-	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 75,
-		HEAT = -25,
-		ARCANE = -75,
-		BOMB = 100
-	)
+	armor = /armor/military/heavy/hard/bomb
 
 	size = SIZE_6
 

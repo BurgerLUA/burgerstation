@@ -115,7 +115,6 @@
 	linked_stand.set_loyalty_tag(stand_user.loyalty_tag)
 	INITIALIZE(linked_stand)
 	FINALIZE(linked_stand)
-	linked_stand.equip_loadout(pick(subtypesof(/loadout/stand/)))
 
 /stand/proc/display_stand(var/mob/caller)
 	caller.to_chat("Stand Name: <b>[name]</b>")

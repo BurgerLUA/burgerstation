@@ -6,10 +6,7 @@
 
 	protected_limbs = list(BODY_TORSO, BODY_GROIN)
 
-	defense_rating = list(
-		ARCANE = 20,
-		HEAT = 20
-	)
+	armor = /armor/cloth/protective
 
 	size = SIZE_2
 
@@ -28,13 +25,9 @@
 
 	protected_limbs = list(BODY_TORSO, BODY_GROIN)
 
-	defense_rating = list(
-		ARCANE = 40,
-		HEAT = 40
-	)
+	armor = /armor/cloth/protective/chef
 
-	size = SIZE_2
-
+	size = SIZE_3
 
 	value = 400
 
@@ -54,14 +47,7 @@
 
 	container_max_size = SIZE_3
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = 40
-	)
+	armor = /armor/leather/protective
 
 	size = SIZE_3
 

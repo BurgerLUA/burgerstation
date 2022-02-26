@@ -9,7 +9,12 @@
 #define COLOR_BLACK "#303030"
 
 #define COLOR_RED "#994444"
+#define COLOR_RED_DARK "#490000"
+
+
 #define COLOR_GREEN "#449944"
+#define COLOR_GREEN_LIGHT "#44FF44"
+#define COLOR_GREEN_DARK "#00FF00"
 #define COLOR_GREEN_MILITARY "#5F7F42"
 
 
@@ -21,7 +26,7 @@
 
 #define COLOR_ROCK "#7A746F"
 
-#define COLOR_RED_DARK "#490000"
+
 
 #define COLOR_PINK "#FF74FF"
 

@@ -9,15 +9,6 @@
 		BODY_HAIR_HEAD = TRUE
 	)
 
-	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 50,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = -50,
-		HEAT = 100,
-		COLD = 100,
-		BIO = 100
-	)
+	armor = /armor/hardsuit/env
 
 	size = SIZE_3

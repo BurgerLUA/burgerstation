@@ -6,17 +6,7 @@
 
 	value = 5000
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = -60,
-		ARCANE = -60,
-		HEAT = -60,
-		COLD = 60,
-		BIO = 60,
-		RAD = 60
-	)
+	armor = /armor/hardsuit/combat/ling
 
 	size = SIZE_7
 

@@ -5,15 +5,7 @@
 	icon = 'icons/obj/item/clothing/masks/mummy.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 
-
-	defense_rating = list(
-		BLADE = 10,
-		PIERCE = 10,
-		LASER = -10,
-		ARCANE = 40,
-		HOLY = -40,
-		DARK = 40
-	)
+	armor = /armor/cloth
 
 	value = 20
 

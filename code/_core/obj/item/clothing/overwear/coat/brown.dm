@@ -9,14 +9,8 @@
 	dynamic_inventory_count = 4
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 20,
-		PIERCE = 20,
-		HEAT = -20,
-		COLD = 20
-	)
+	armor = /armor/leather/coat
 
 	size = SIZE_3
-
 
 	value = 60

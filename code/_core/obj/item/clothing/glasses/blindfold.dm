@@ -4,10 +4,7 @@
 	desc_extended = "A black blindfold that is designed to blind the wearer. Provides excellent magic protection."
 	icon = 'icons/obj/item/clothing/glasses/blindfold.dmi'
 
-
-	defense_rating = list(,
-		ARCANE = 80
-	)
+	armor = /armor/cloth/arcane
 
 	size = SIZE_1
 

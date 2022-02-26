@@ -17,11 +17,7 @@
 
 	dyeable = TRUE
 
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = 10,
-		HEAT = -10
-	)
+	armor = /armor/cloth/reduced
 
 	size = SIZE_0
 

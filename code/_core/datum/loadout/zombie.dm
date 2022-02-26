@@ -35,8 +35,7 @@
 
 /loadout/zombie/desert
 	spawning_items = list(
-		/obj/item/clothing/mask/mummy,
-		/obj/item/clothing/uniform/mummy
+		/obj/item/clothing/mask/mummy
 	)
 
 
@@ -117,7 +116,6 @@
 /loadout/zombie/chaplain
 
 	spawning_items = list(
-		/obj/item/clothing/uniform/priest,
 		/obj/item/clothing/overwear/coat/chaplain,
 		/obj/item/clothing/feet/shoes/colored/black,
 		/obj/item/clothing/feet/shoes/colored/black/left
@@ -135,7 +133,6 @@
 /loadout/zombie/captain
 
 	spawning_items = list(
-		/obj/item/clothing/uniform/captain,
 		/obj/item/clothing/head/hat/captain,
 		/obj/item/clothing/hands/gloves/captain,
 		/obj/item/clothing/hands/gloves/captain/left,
@@ -196,7 +193,6 @@
 
 /loadout/zombie/clown
 	spawning_items = list(
-		/obj/item/clothing/uniform/clown,
 		/obj/item/clothing/feet/shoes/clown,
 		/obj/item/clothing/feet/shoes/clown/left,
 		/obj/item/clothing/hands/gloves/colored,
@@ -248,7 +244,6 @@
 /loadout/zombie/chemist
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
-		/obj/item/clothing/uniform/chemist,
 		/obj/item/clothing/overwear/coat/labcoat/chemist,
 		/obj/item/clothing/feet/shoes/colored,
 		/obj/item/clothing/feet/shoes/colored/left,

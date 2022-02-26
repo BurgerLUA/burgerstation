@@ -233,6 +233,8 @@
 			add_status_effect(ADRENALINE,100,100)
 			add_status_effect(STUN,10,10)
 			play_sound('sound/effects/impacts/savage_shock.ogg',T,volume=80)
+		if(ACID)
+			//Todo: Sounds and effects.
 		if(BOMB)
 			play_sound('sound/effects/impacts/savage_bomb.ogg',T,volume=80)
 			bang(30)
