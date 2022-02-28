@@ -1,5 +1,3 @@
-var/global/list/obj/item/device/radio/all_radios = list()
-
 /obj/item/device/radio/
 	name = "radio"
 	desc = "Long distance communication. What could possibly go wrong?"
@@ -8,9 +6,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	icon_state = "inventory"
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
-	var/list/listening_frequencies = list( // The frequencies this radio is allowed to talk on.
-		RADIO_FREQ_COMMON //Can always hear common, no matter what.
-	)
+	var/list/listening_frequencies = list() // The frequencies this radio is allowed to talk on. The above frequency is included.
 
 	var/receiving = TRUE //Whether or not the radio can receive messages.
 	var/broadcasting = FALSE //Whether or not the radio can broadcast messages without having to press the button.
@@ -22,39 +18,82 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/radio_sound = 'sound/items/radio.ogg'
 
-	var/broadcasting_range = 5
-	var/listen_range = 0 // Set to 0 to ignore distance.
+	var/broadcasting_range = 5 //Range in tiles of which to broadcast sounds.
+	var/listen_range = VIEW_RANGE //Range in tiles of which to recieve sounds. Set to 0 to ignore.
 
-	listener = TRUE
+	listener = TRUE //This should always be true.
 
 	value = 20
+
+/obj/item/device/radio/Generate()
+	. = ..()
+	listening_frequencies = list(
+		"[frequency]" = TRUE
+	)
 
 /obj/item/device/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("frequency")
+	SAVELIST("listening_frequencies")
 
 /obj/item/device/radio/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("frequency")
+	LOADLIST("listening_frequencies")
 
 /obj/item/device/radio/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
-	broadcasting = !broadcasting
-	caller.to_chat(span("notice","You toggle the receiver to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
-	return TRUE
 
-/obj/item/device/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+	if(caller.attack_flags & CONTROL_MOD_GRAB)
 
-	if(!is_inventory(object))
-		return ..()
+		var/list/possible_settings = list()
 
-	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
-	INTERACT_DELAY(1)
+		for(var/k in listening_frequencies)
+			var/frequency_string = frequency_to_name(frequency)
+			if(frequency_string == "Unknown")
+				frequency_string = k
+			var/active = listening_frequencies[k] ? TRUE : FALSE
+			possible_settings["[active ? "Remove" : "Add"] [frequency_string]"] = k
+
+		possible_settings["Add..."] = "Add..."
+		possible_settings["Cancel"] = "Cancel"
+
+		var/chosen_setting = input("What would you like to do?","Radio Settings","Cancel") as null|anything in possible_settings
+		if(chosen_setting == "Add...")
+			var/desired_frequency = input("What frequency do you wish to add?","Add Frequency","[RADIO_FREQ_COMMON]") as null|text
+			if(!desired_frequency)
+				return TRUE
+			desired_frequency = text2num(desired_frequency)
+			if(!desired_frequency || desired_frequency <= 0)
+				caller.to_chat(span("warning","Invalid frequency!"))
+				return TRUE
+			if(MODULUS(desired_frequency,1)) //Entered a correct frequency, however it needs to be multiplied to fit the current system.
+				desired_frequency *= 10
+			desired_frequency = round(desired_frequency,2) + 1
+			if(desired_frequency > frequency_max)
+				caller.to_chat(span("warning","Input frequency ([desired_frequency]) is too high for this radio's maximum frequency ([frequency_max])!"))
+				return TRUE
+			if(desired_frequency < frequency_min)
+				caller.to_chat(span("warning","Input frequency ([desired_frequency]) is too low for this radio's minimum frequency ([frequency_min])!"))
+				return TRUE
+
+		else if(chosen_setting == "Cancel")
+			return TRUE
+		else
+			//We have an existing number. Toggle it.
+			listening_frequencies[chosen_setting[chosen_setting]] = !listening_frequencies[chosen_setting[chosen_setting]]
+			caller.to_chat(span("notice","The frequency [chosen_setting[chosen_setting]]([frequency_to_name(chosen_setting[chosen_setting])]) was [listening_frequencies[chosen_setting[chosen_setting]] ? "added to" : "removed from"] \the [src.name]'s listening frequencies."))
+		return TRUE
+
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
+		broadcasting = !broadcasting
+		caller.to_chat(span("notice","You toggle the microphone to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
+		return TRUE
+
 
 	receiving = !receiving
-	caller.to_chat(span("notice","You toggle the speaker <b>[receiving ? "on" : "off"]</b>."))
+	caller.to_chat(span("notice","You toggle the signal reciever <b>[receiving ? "on" : "off"]</b>."))
 	return TRUE
 
 /obj/item/device/radio/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
@@ -89,10 +128,10 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 /obj/item/device/radio/Finalize()
 	. = ..()
-	all_radios |= src
+	SSradio.all_radios |= src
 
 /obj/item/device/radio/Destroy()
-	all_radios -= src
+	SSradio.all_radios -= src
 	. = ..()
 
 //Radio Data Format
@@ -110,18 +149,18 @@ list(
 /obj/item/device/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(signal_freq == -1) //Sent
-		for(var/k in all_radios)
+		for(var/k in SSradio.all_radios)
 			var/obj/item/device/radio/S = k
 			if(S == src)
 				continue
 			S.trigger(caller,src,frequency,signal_code)
-	else
+	else //Recieved
 		if(loc && signal_freq == frequency)
 			loc.trigger(caller,src,signal_freq,signal_code)
 			return TRUE
 
 /obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
-	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals.
+	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals. This prevents spam.
 		return FALSE
 	if(listen_range > 0 && get_dist(source,src) > listen_range)
 		return FALSE
@@ -130,83 +169,79 @@ list(
 	if(frequency > 0 && (frequency < frequency_min || frequency > frequency_max))
 		return FALSE
 	use_radio(speaker,src,text,language_text,talk_type,src.frequency,language,talk_range)
-	return ..()
-
+	. = ..()
 
 /obj/item/device/radio/nanotrasen
-	name = "\improper NanoTrasen Radio"
+	name = "\improper NanoTrasen station radio"
 
 	frequency_min = RADIO_FREQ_ALPHA - 20
 	frequency_max = RADIO_FREQ_SHIP + 20
 
+	value = 15
+
+/obj/item/device/radio/headset
+	name = "headset radio"
 	broadcasting_range = 1
+	listen_range = 2
+
+/obj/item/device/radio/headset/nanotrasen
+	name = "\improper NanoTrasen headset radio"
+
+	frequency_min = RADIO_FREQ_ALPHA - 20
+	frequency_max = RADIO_FREQ_SHIP + 20
 
 	value = 15
 
-/obj/item/device/radio/mercenary
-	name = "\improper Mercenary Radio"
+/obj/item/device/radio/headset/mercenary
+	name = "\improper Mercenary headset radio"
 
-	frequency_min = RADIO_FREQ_MERCENARY
+	frequency_min = RADIO_FREQ_MERCENARY_MIN
 	frequency_max = RADIO_FREQ_COMMON
 
-	frequency = RADIO_FREQ_MERCENARY
-
-	listening_frequencies = list(
-		RADIO_FREQ_COMMON,
-		RADIO_FREQ_MERCENARY
-	)
-
-	broadcasting_range = 1
+	contraband = TRUE
 
 	value = 300
 
-/obj/item/device/radio/syndicate
-	name = "\improper Syndicate Radio"
-
-	frequency_min = RADIO_FREQ_SYNDICATE
-	frequency_max = RADIO_FREQ_COMMON
-
-	frequency = RADIO_FREQ_SYNDICATE
-
+/obj/item/device/radio/headset/mercenary/Generate()
+	. = ..()
+	frequency = SSradio.radio_merc
 	listening_frequencies = list(
-		RADIO_FREQ_COMMON,
-		RADIO_FREQ_SYNDICATE
+		"[RADIO_FREQ_COMMON]" = TRUE,
+		"[frequency]" = TRUE
 	)
 
-	broadcasting_range = 1
+/obj/item/device/radio/headset/syndicate
+	name = "\improper Syndicate headset radio"
+
+	frequency_min = RADIO_FREQ_SYNDICATE_MIN
+	frequency_max = RADIO_FREQ_COMMON
+
+	contraband = TRUE
 
 	value = 300
 
-/obj/item/device/radio/revolutionary
-	name = "\improper Revolutionary Radio"
-
-	frequency_min = RADIO_FREQ_REVOLUTIONARY
-	frequency_max = RADIO_FREQ_COMMON
-
-	frequency = RADIO_FREQ_REVOLUTIONARY
-
+/obj/item/device/radio/headset/syndicate/Generate()
+	. = ..()
+	frequency = SSradio.radio_syn
 	listening_frequencies = list(
-		RADIO_FREQ_COMMON,
-		RADIO_FREQ_REVOLUTIONARY
+		"[RADIO_FREQ_COMMON]" = TRUE,
+		"[frequency]" = TRUE
 	)
 
-	broadcasting_range = 1
+/obj/item/device/radio/headset/revolutionary
+	name = "\improper Revolutionary headset radio"
+
+	frequency_min = RADIO_FREQ_REVOLUTIONARY_MIN
+	frequency_max = RADIO_FREQ_COMMON
+
+	contraband = TRUE
 
 	value = 300
 
-/obj/item/device/radio/virtual_reality
-	name = "\improper Virtual Reality Radio"
-
-	frequency_min = RADIO_FREQ_SYNDICATE
-	frequency_max = RADIO_FREQ_COMMON
-
-	frequency = RADIO_FREQ_COMMON
-
+/obj/item/device/radio/headset/revolutionary/Generate()
+	. = ..()
+	frequency = SSradio.radio_rev
 	listening_frequencies = list(
-		RADIO_FREQ_COMMON,
-		RADIO_FREQ_SYNDICATE
+		"[RADIO_FREQ_COMMON]" = TRUE,
+		"[frequency]" = TRUE
 	)
-
-	broadcasting_range = 1
-
-	value = 300

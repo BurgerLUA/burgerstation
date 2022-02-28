@@ -68,19 +68,23 @@
 
 	switch(text_type)
 		if(TEXT_RADIO) //Snowflake code.
-			for(var/k in all_radios)
-				CHECK_TICK(75,FPS_SERVER)
-				var/obj/item/device/radio/R = k
-				var/turf/T = get_turf(R)
-				if(T == source_turf)
-					if(frequency == -1)
-						frequency = R.frequency
-					R.on_listen(speaker,source,text_to_say,language_text_to_say,TEXT_TALK,frequency,language,talk_range)
-					if(speaker.is_player_controlled()) log_chat("RADIO [frequency_to_name(frequency)]: [speaker.get_log_name()]: [text_to_say]")
-					break
+			if(is_advanced(speaker))
+				var/mob/living/advanced/A = speaker
+				if(A.inventories_by_id[BODY_EARS])
+					var/obj/hud/inventory/I = A.inventories_by_id[BODY_EARS]
+					var/obj/item/clothing/ears/headset/H = I.get_top_object()
+					if(istype(H))
+						var/obj/item/device/radio/R = H.stored_radio
+						if(frequency == -1)
+							frequency = R.frequency
+						R.on_listen(speaker,source,text_to_say,language_text_to_say,TEXT_TALK,frequency,language,talk_range)
+						if(speaker.is_player_controlled()) log_chat("RADIO [frequency_to_name(frequency)]: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_TALK)
 			use_ears(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 			if(speaker.is_player_controlled()) log_chat("TALK: [speaker.get_log_name()]: [text_to_say]")
+			var/area/A = source_turf.loc
+			if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
+				new/obj/effect/chat_text(source,language_text_to_say)
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_mobs_with_clients)
@@ -116,10 +120,6 @@
 				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
 			if(speaker.is_player_controlled()) log_chat("GHOST: [speaker.get_log_name()]: [text_to_say]")
 
-	if(text_type == TEXT_TALK)
-		var/area/A = get_area(source)
-		if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
-			new/obj/effect/chat_text(source,language_text_to_say)
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
 

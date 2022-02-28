@@ -13,8 +13,9 @@
 		"3" = RADIO_FREQ_CHARLIE,
 		"4" = RADIO_FREQ_DELTA,
 		"d" = RADIO_FREQ_DELTA,
-		"t" = RADIO_FREQ_SYNDICATE,
-		"m" = RADIO_FREQ_MERCENARY
+		"t" = "syndicate",
+		"m" = "mercenary",
+		"r" = "revolutionary"
 	)
 
 	var/list/language_keys = list(

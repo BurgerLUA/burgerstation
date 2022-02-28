@@ -133,7 +133,7 @@
 	if(!. || !caller.client)
 		return .
 
-
+	/* VIRUTAL REALITY
 	if(istype(caller,/mob/living/advanced/player/virtual))
 		if(!SSvirtual_reality || !SSvirtual_reality.current_virtual_reality)
 			return .
@@ -158,6 +158,7 @@
 
 		L.client.spectate(desired_spectate)
 		return .
+	*/
 
 	caller.client.ghost()
 
