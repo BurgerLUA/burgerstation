@@ -820,6 +820,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
+"op" = (
+/obj/structure/interactive/status_display/global_display/round,
+/turf/simulated/wall/metal,
+/area/fob/main)
 "Cr" = (
 /turf/simulated/floor/plating,
 /area/transit/dropship/alpha/landing)
@@ -830,6 +834,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
+"Ex" = (
+/obj/structure/interactive/status_display/global_display/alpha,
+/turf/simulated/wall/metal,
+/area/dmm_suite/clear_area)
+"ED" = (
+/obj/decal/hazard/black{
+	dir = 1;
+	icon_state = "line"
+	},
+/obj/structure/interactive/status_display/global_display/bravo,
+/turf/simulated/wall/metal,
+/area/fob/main)
 "Gr" = (
 /obj/decal/hazard/black,
 /turf/simulated/floor/plating,
@@ -1647,7 +1663,7 @@ ab
 ab
 ab
 ab
-ad
+Ex
 RT
 Jx
 no
@@ -2610,7 +2626,7 @@ ah
 ah
 ah
 ah
-aD
+ED
 cI
 aL
 aF
@@ -2943,7 +2959,7 @@ ah
 aE
 aG
 aG
-aP
+op
 aU
 aT
 aT
@@ -2955,7 +2971,7 @@ bk
 bk
 bJ
 bQ
-aP
+op
 bf
 aT
 cc
@@ -3270,7 +3286,7 @@ ah
 ah
 ah
 ah
-aD
+ED
 aF
 aF
 aF
