@@ -122,7 +122,7 @@
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(R)
 
-	if(R.item_count_current < 2)
+	if(R.amount < 2)
 		caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))
 		return FALSE
 

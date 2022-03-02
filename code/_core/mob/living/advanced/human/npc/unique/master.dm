@@ -13,7 +13,7 @@
 
 	dialogue_id = /dialogue/npc/master
 
-	immortal = TRUE
+	health = null
 
 	anchored = TRUE
 

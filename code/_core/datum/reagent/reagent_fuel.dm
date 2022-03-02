@@ -16,6 +16,21 @@
 
 	. = ..()
 
+/reagent/fuel/oxygen //Found in the snow biome as a magic plant
+	name = "Liquid Oxygen"
+	desc = "What most lifeforms breathe in, but in liquid form."
+	color = "#E6F2F2"
+	alpha = 200
+
+	flavor = "oxygen"
+
+	liquid = 0.25
+
+	explosion_strength_per_unit = 0.25
+
+	heated_reagent = null //Nothing.
+	heated_reagent_temp = 54.36
+
 /reagent/fuel/oil
 	name = "Processed Oil"
 	color = "#131616"

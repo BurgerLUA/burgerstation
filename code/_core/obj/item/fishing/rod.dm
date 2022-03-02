@@ -47,7 +47,7 @@
 
 
 
-/obj/item/fishing/rod/save_item_data(var/save_inventory = TRUE)
+/obj/item/fishing/rod/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("lure")
 	SAVEATOM("line")
@@ -98,7 +98,7 @@
 			return TRUE
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
-		C.put_in_hands(object_removed)
+		C.put_in_hands(object_removed,params)
 		return TRUE
 
 	if(is_item(object))
@@ -306,7 +306,7 @@
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
 	return TRUE
 
-/obj/item/fishing/rod/telescopic/save_item_data(var/save_inventory = TRUE)
+/obj/item/fishing/rod/telescopic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("compact")
 

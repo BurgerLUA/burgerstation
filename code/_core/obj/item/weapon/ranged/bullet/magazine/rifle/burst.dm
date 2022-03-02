@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst
 	name = "\improper 5.56mm L-HON"
 	desc = "Made in Space France!"
-	desc_extended = "A 3-round burst assault rifle designed to quickly put down targets at medium to long ranges."
+	desc_extended = "A 3-round burst assault rifle designed to quickly put down targets at medium to long ranges. Used commonly by NanoTrasen forces who can't decide between a submachine gun or an assault rifle."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3.dmi'
 	icon_state = "inventory"
 	value = 1800
 
-	tier = 1
+	tier = 2
 
 	damage_mod = 1.1
 	shoot_delay = 1
@@ -89,8 +89,9 @@
 
 	weight = 14
 
+	damage_mod = 1.2
 	shoot_delay = 1
-	burst_delay = 4
+	burst_delay = 3
 	max_bursts = 3
 
 	firemodes = list("automatic","burst","semi-automatic")

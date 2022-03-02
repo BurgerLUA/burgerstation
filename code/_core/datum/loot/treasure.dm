@@ -3,7 +3,6 @@
 		/loot/supply_crate/all = 1,
 		/loot/soulgem/assorted = 1,
 		/loot/experience_scrolls = 1,
-		/obj/item/currency/magic_token/random = 1,
 		/loot/enchanting_book = 1,
 		/loot/tempering_items = 1
 	)

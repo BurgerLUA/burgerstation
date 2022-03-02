@@ -3,11 +3,8 @@
 	desc = "MESON!"
 	desc_extended = "Some almost magical goggles that allow you to see floors and walls through walls."
 	icon = 'icons/obj/item/clothing/glasses/meson.dmi'
-	rarity = RARITY_UNCOMMON
 
-	defense_rating = list(,
-		ARCANE = -20
-	)
+	armor = /armor/mechanical
 
 	size = SIZE_1
 
@@ -22,13 +19,11 @@
 	desc = "MESON!"
 	desc_extended = "Some almost magical goggles that allow you to see floors and walls through walls. This one can also see in the dark better."
 	icon = 'icons/obj/item/clothing/glasses/meson_night_vision.dmi'
-	rarity = RARITY_RARE
+
 
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
-	defense_rating = list(,
-		ARCANE = -20
-	)
+	armor = /armor/mechanical/night_vision
 
 	size = SIZE_1
 

@@ -46,11 +46,12 @@
 
 	return 1
 
-/mob/get_movement_delay()
+/mob/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
-	. *= get_stance_movement_mul()
+	if(include_stance)
+		. *= get_stance_movement_mul()
 
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)
@@ -85,25 +86,10 @@
 		CT.glide_size = src.glide_size
 		CT.force_move(src.loc)
 
-
-/mob/proc/update_parallax()
-
-	if(!ckey_last)
-		return FALSE
-
-	var/turf/T = get_turf(src.loc)
-
-	for(var/k in parallax)
-		var/obj/parallax/P = parallax[k]
-		var/desired_x = FLOOR(-(T.x - (WORLD_SIZE*0.5)) * P.ratio,1)
-		var/desired_y = FLOOR(-(T.y - (WORLD_SIZE*0.5)) * P.ratio,1)
-		P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
-
-	return TRUE
-
 /mob/proc/update_z_position()
 
 	if(!ckey_last)
+		if(last_z) all_mobs_with_clients_by_z["[last_z]"] -= src
 		return FALSE
 
 	var/turf/T = get_turf(src)
@@ -124,12 +110,14 @@
 
 /mob/post_move(var/atom/old_loc)
 
-	update_parallax()
-
 	. = ..()
 
 	if(client)
 		client.post_move(loc,old_loc)
+
+	if(loc)
+		var/turf/T = get_turf(src)
+		T.post_move(src,old_loc)
 
 	update_rs_chat()
 

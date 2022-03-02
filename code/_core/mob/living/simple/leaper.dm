@@ -82,7 +82,7 @@
 	level = 20
 
 /mob/living/simple/leaper/handle_alpha()
-	if(immortal)
+	if(has_status_effect(IMMORTAL))
 		return 0
 	. = ..()
 
@@ -116,7 +116,7 @@
 
 	var/turf/desired_turf = pick(valid_turfs)
 
-	immortal = TRUE
+	add_status_effect(IMMORTAL)
 	density = FALSE
 	CALLBACK("\ref[src]_leaper_teleport",10,src,.proc/teleport,desired_turf)
 
@@ -125,7 +125,7 @@
 /mob/living/simple/leaper/proc/teleport(var/turf/desired_turf)
 
 	if(desired_turf) src.force_move(desired_turf)
-	immortal = FALSE
+	remove_status_effect(IMMORTAL)
 	density = TRUE
 
 	return TRUE

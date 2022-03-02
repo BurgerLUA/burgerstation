@@ -4,7 +4,7 @@
 	icon = 'icons/obj/item/radio.dmi'
 	icon_state = "inventory"
 
-	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
+	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset/nanotrasen
 
 	value = 20
 
@@ -33,9 +33,9 @@
 /obj/item/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
 
-/obj/item/radio/save_item_data(var/save_inventory = TRUE)
+/obj/item/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
-	if(stored_radio) .["stored_radio"] = stored_radio.save_item_data(save_inventory)
+	if(stored_radio) .["stored_radio"] = stored_radio.save_item_data(P,save_inventory,died)
 
 /obj/item/radio/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()

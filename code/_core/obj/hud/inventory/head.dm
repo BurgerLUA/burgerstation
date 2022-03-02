@@ -7,12 +7,10 @@
 	item_slot = SLOT_HEAD
 
 
-	max_slots = 1
+	max_slots = 2 //Extra slot for blob head.
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	priority = 75
 
@@ -29,8 +27,6 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	drop_on_death = TRUE
-
 	priority = 50
 
 /obj/hud/inventory/organs/face
@@ -45,8 +41,6 @@
 	worn = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 
 	priority = 50
 
@@ -79,8 +73,6 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 */
 
 /*
@@ -93,6 +85,4 @@
 	held_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
 */

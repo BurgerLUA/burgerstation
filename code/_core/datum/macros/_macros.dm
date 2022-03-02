@@ -13,15 +13,16 @@
 		"3" = RADIO_FREQ_CHARLIE,
 		"4" = RADIO_FREQ_DELTA,
 		"d" = RADIO_FREQ_DELTA,
-		"t" = RADIO_FREQ_SYNDICATE,
-		"m" = RADIO_FREQ_MERCENARY
+		"t" = "syndicate",
+		"m" = "mercenary",
+		"r" = "revolutionary"
 	)
 
 	var/list/language_keys = list(
 		"1" = LANGUAGE_BASIC,
 		"o" = LANGUAGE_LIZARD,
 		"t" = LANGUAGE_CODESPEAK,
-		"p" = LANGUAGE_RUSSIAN,
+		"p" = LANGUAGE_SLAVIC,
 		"e" = LANGUAGE_CANADIAN,
 		"0" = LANGUAGE_BINARY,
 		"c" = LANGUAGE_CULT
@@ -30,10 +31,11 @@
 
 /macros/Destroy()
 	owner = null
-	return ..()
+	. = ..()
 
 /macros/New(var/client/spawning_owner)
 	owner = spawning_owner
+	. = ..()
 
 /macros/proc/on_pressed(button)
 	var/command = macros[button]
@@ -42,8 +44,8 @@
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
-			var/obj/hud/button/slot/B = A.slot_buttons[text_num]
-			if(B) B.activate_button(owner.mob)
+			var/obj/hud/button/ability/B = A.ability_buttons[text_num]
+			if(B) B.activate(owner.mob)
 		return TRUE
 
 	switch(command)
@@ -84,12 +86,6 @@
 			if(is_living(owner.mob))
 				var/mob/living/L = owner.mob
 				L.handle_blocking()
-				if(world.time - owner.mob.last_hold < 5)
-					L.dash(null,owner.mob.move_dir ? owner.mob.move_dir : owner.mob.dir,2)
-				else if(world.time - owner.mob.last_hold >= 30) //Can't spam it.
-					owner.mob.last_hold = world.time
-			else
-				owner.mob.last_hold = world.time
 		if("grab")
 			owner.mob.attack_flags |= CONTROL_MOD_GRAB
 			if(is_living(owner.mob))
@@ -98,7 +94,21 @@
 		if("quick_self")
 			owner.mob.attack_flags |= CONTROL_MOD_SELF
 		if("quick_holder")
-			owner.mob.attack_flags |= CONTROL_MOD_OWNER
+			if(owner.selected_hand)
+				if(owner.selected_hand == LEFT_HAND)
+					owner.selected_hand = RIGHT_HAND
+				else
+					owner.selected_hand = LEFT_HAND
+				if(is_advanced(owner.mob))
+					var/mob/living/advanced/A = owner.mob
+					A.inventories_by_id[BODY_HAND_LEFT_HELD].overlays.Cut()
+					A.inventories_by_id[BODY_HAND_LEFT_HELD].update_overlays()
+					A.inventories_by_id[BODY_HAND_RIGHT_HELD].overlays.Cut()
+					A.inventories_by_id[BODY_HAND_RIGHT_HELD].update_overlays()
+				owner.show_popup_menus = TRUE
+			else
+				owner.mob.attack_flags |= CONTROL_MOD_OWNER
+				owner.show_popup_menus = FALSE
 		if("kick")
 			owner.mob.attack_flags |= CONTROL_MOD_KICK
 		if("zoom")

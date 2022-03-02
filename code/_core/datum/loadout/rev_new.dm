@@ -5,7 +5,7 @@
 		/obj/item/clothing/pants/gorka,
 		/obj/item/clothing/shirt/gorka,
 		/obj/item/clothing/overwear/armor/slavticool,
-		/obj/item/clothing/head/helmet/security/slavticool,
+		/obj/item/clothing/head/helmet/slavticool,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
@@ -30,7 +30,7 @@
 		/obj/item/clothing/pants/gorka,
 		/obj/item/clothing/shirt/gorka,
 		/obj/item/clothing/overwear/armor/slavticool,
-		/obj/item/clothing/head/helmet/security/slavticool,
+		/obj/item/clothing/head/helmet/slavticool,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
@@ -126,7 +126,6 @@
 /loadout/rev/player_antagonist/researcher
 	spawning_items = list(
 		/obj/item/clothing/ears/headset/revolutionary,
-		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/coat/vest/revolutionary,
 		/obj/item/clothing/head/hat/skimask/black,
@@ -156,13 +155,13 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/currency/telecrystals/player_antagonist_spawn,
+		/obj/item/currency/telecrystals{amount=50},
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/chips,
-		/obj/item/container/beaker/can/grey_bull,
-		/obj/item/container/beaker/alcohol/vodka,
+		/obj/item/container/edible/package/junkfood/jerky,
+		/obj/item/container/edible/package/junkfood/chips,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/vodka,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
 	)
@@ -171,7 +170,6 @@
 /loadout/rev/player_antagonist/contractor
 	spawning_items = list(
 		/obj/item/clothing/ears/headset/revolutionary,
-		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/hardsuit/skat/antag,
 		/obj/item/clothing/overwear/coat/vest/revolutionary,
 		/obj/item/clothing/head/hat/skimask/black,
@@ -201,13 +199,13 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/currency/telecrystals/player_antagonist_spawn,
+		/obj/item/currency/telecrystals{amount=50},
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/ai3/filled,
-		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/chips,
-		/obj/item/container/beaker/can/grey_bull,
-		/obj/item/container/beaker/alcohol/vodka,
+		/obj/item/container/edible/package/junkfood/jerky,
+		/obj/item/container/edible/package/junkfood/chips,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/vodka,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
 	)

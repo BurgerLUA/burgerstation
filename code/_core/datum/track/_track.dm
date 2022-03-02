@@ -116,9 +116,9 @@
 	path = 'sound/music/Rising Bells.ogg'
 	length = 1*60 + 17
 
-/track/russian_heavy //Snow Music
-	name = "Russian Heavy"
-	path = 'sound/music/Russian Heavy.ogg'
+/track/slavic_heavy //Snow Music
+	name = "Slavic Heavy"
+	path = 'sound/music/Slavic Heavy.ogg'
 	length = 2*60 + 49
 
 /track/skeletons //Boss Music

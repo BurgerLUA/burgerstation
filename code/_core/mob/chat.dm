@@ -118,6 +118,14 @@ var/regex/vowels = new("\[aeiou\]", "i")
 				return FALSE
 		else if(client && old_first == ".")
 			if(client.macros.radio_keys[first_character])
+				if(istext(client.macros.radio_keys[first_character]))
+					switch(client.macros.radio_keys[first_character]) //Dynamic radio.
+						if("syndicate")
+							frequency_to_use = SSradio.radio_syn
+						if("mercenary")
+							frequency_to_use = SSradio.radio_merc
+						if("revolutionary")
+							frequency_to_use = SSradio.radio_rev
 				frequency_to_use = client.macros.radio_keys[first_character]
 				text_to_say = copytext(text_to_say,2,0)
 			else

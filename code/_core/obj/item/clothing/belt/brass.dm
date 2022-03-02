@@ -12,15 +12,7 @@
 
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 20,
-		PIERCE = 20,
-		ARCANE = 10,
-		HEAT = -10,
-		LASER = -10
-	)
-
-	rarity = RARITY_UNCOMMON
+	armor = /armor/brass/belt
 
 	value = 40
 

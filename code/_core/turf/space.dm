@@ -1,6 +1,16 @@
 /turf/bluespace
 	name = "bluespace"
 	icon_state = "bluespace"
+	opacity = 1
+	plane = PLANE_SPACE
+
+	parallax_icon = 'icons/obj/effects/parallax_bluespace.dmi'
+
+/turf/bluespace/New(var/desired_loc)
+	. = ..()
+	icon = null
+	icon_state = null
+	invisibility = 101
 
 /turf/bluespace/Entered(atom/movable/Obj, atom/OldLoc)
 
@@ -15,13 +25,18 @@
 
 	return ..()
 
-
 /turf/space
 	name = "space"
 	icon = 'icons/turf/space/space.dmi'
-	icon_state = "1"
+	icon_state = "preview"
 	opacity = 0
 	plane = PLANE_SPACE
+
+/turf/space/New(var/desired_loc)
+	. = ..()
+	icon = null
+	icon_state = null
+	invisibility = 101
 
 /turf/space/is_space()
 	return TRUE
@@ -40,12 +55,6 @@
 
 	return ..()
 
-/turf/space/New(var/desired_loc)
-	icon_state = "space"
-	return ..()
-
 /turf/space/blocking
 	name = "deep space"
-	icon = 'icons/turf/space/space.dmi'
-	icon_state = "space"
 	opacity = 1

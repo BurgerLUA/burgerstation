@@ -1,17 +1,13 @@
 /obj/item/clothing/glasses/nightvision
 	name = "nightvision goggles"
-	rarity = RARITY_RARE
+
 	desc = "Kept you waiting, huh?"
 	desc_extended = "A pair of tactical nightvision goggles. Keep away from light."
 	icon = 'icons/obj/item/clothing/glasses/nightvision.dmi'
 
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
-	defense_rating = list(
-		LASER = -60,
-		ARCANE = -60,
-		HOLY = -60
-	)
+	armor = /armor/mechanical/night_vision
 
 	value = 100
 

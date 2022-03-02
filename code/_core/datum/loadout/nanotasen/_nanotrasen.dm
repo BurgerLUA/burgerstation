@@ -4,7 +4,6 @@
 		/obj/item/clothing/pants/normal/striped/nanotrasen,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/clothing/ears/headset,
 		/obj/item/clothing/glasses/sun,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,

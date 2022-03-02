@@ -21,15 +21,11 @@
 
 	inaccuracy_modifer = 1.25
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 /obj/item/bullet_cartridge/shotgun_20/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
-
-/obj/item/bullet_cartridge/shotgun_20/Generate()
-	item_count_current = item_count_max
-	return ..()
 
 /obj/item/bullet_cartridge/shotgun_20/slug
 	name = "\improper 20 gauge slug"

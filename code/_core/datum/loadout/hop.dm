@@ -2,8 +2,6 @@
 	spawning_items = list(
 		/obj/item/clothing/ears/headset,
 
-		/obj/item/clothing/uniform/hop,
-
 		/obj/item/clothing/hands/gloves/colored,
 		/obj/item/clothing/hands/gloves/colored/left,
 

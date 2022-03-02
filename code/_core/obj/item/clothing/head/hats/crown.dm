@@ -1,16 +1,13 @@
 /obj/item/clothing/head/hat/crown
-	name = "\improper royal crown"
+	name = "\improper royal winner's crown"
 	icon = 'icons/obj/item/clothing/hats/crown.dmi'
 	desc = "Fit for a King. Or Queen."
-	desc_extended = "A very valuable crown meant to show off your status as royalty. Backed by the church!"
-	rarity = RARITY_RARE
+	desc_extended = "A very valuable crown meant to show off your status as royalty. Awarded to those who became the Last Man Standing."
 
-	defense_rating = list(
-		ARCANE = 75,
-		HOLY = 75,
-		DARK = 75
-	)
+	armor = /armor/reward
 
 	size = SIZE_2
 
 	value = 400
+
+	value_burgerbux = 1

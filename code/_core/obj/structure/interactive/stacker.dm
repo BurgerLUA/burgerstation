@@ -25,17 +25,17 @@
 		return FALSE
 
 	var/obj/item/I = O
-	if(I.item_count_max <= 1)
+	if(I.amount_max <= 1)
 		return FALSE
-	if(I.item_count_current >= I.item_count_max)
+	if(I.amount >= I.amount_max)
 		return FALSE
 
 	I.drop_item(src)
 
 	for(var/obj/item/E in contents) //E for existing
 		if(I.can_transfer_stacks_to(E))
-			I.transfer_item_count_to(E)
-			if(E.item_count_current == E.item_count_max)
+			I.transfer_amount_to(E)
+			if(E.amount == E.amount_max)
 				E.drop_item(src.loc)
 			break
 

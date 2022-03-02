@@ -11,7 +11,8 @@
 		"enable_zoom_view_lock" = 0,
 		"enable_depth" = 1,
 		"enable_smooth_shadows" = 1,
-		"enable_currency_bloom" = 1
+		"enable_currency_bloom" = 1,
+		"enable_old_right_click" = 1
 	)
 
 /savedata/client/settings/get_file(var/file_id)
@@ -44,8 +45,8 @@
 
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner.mob
-			for(var/k in A.inventory)
-				var/obj/hud/inventory/I = k
+			for(var/k in A.inventories_by_id)
+				var/obj/hud/inventory/I = A.inventories_by_id[k]
 				I.update_sprite()
 
 	owner.update_window()

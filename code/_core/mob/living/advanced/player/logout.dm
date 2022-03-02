@@ -1,6 +1,6 @@
 mob/living/advanced/player/proc/can_save(var/area/A)
 
-	if(!client)
+	if(!ckey_last)
 		return FALSE
 
 	if(!A || !(A.flags_area & FLAGS_AREA_SAVEZONE))

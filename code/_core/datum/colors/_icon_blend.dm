@@ -2,6 +2,7 @@
 #define ICON_BLEND_COLOR 0x1
 #define ICON_BLEND_MASK 0x2
 #define ICON_BLEND_OVERLAY 0x4
+#define ICON_BLEND_CUT 0x8
 
 /icon_blend/
 	var/id

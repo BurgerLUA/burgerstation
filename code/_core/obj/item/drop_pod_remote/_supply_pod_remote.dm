@@ -13,7 +13,7 @@
 
 	weight = 4
 
-/obj/item/supply_remote/save_item_data(var/save_inventory = TRUE)
+/obj/item/supply_remote/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charges")
 
@@ -108,28 +108,28 @@
 	)
 	supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod/syndicate
 
-/obj/item/supply_remote/crates/russian
-	name = "drop pod remote - x4 Russian supply crates"
+/obj/item/supply_remote/crates/slavic
+	name = "drop pod remote - x4 Slavic supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic
 	)
 
-/obj/item/supply_remote/crates/american
-	name = "drop pod remote - x4 American supply crates"
+/obj/item/supply_remote/crates/yankee
+	name = "drop pod remote - x4 Yankee supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee
 	)
 
 /obj/item/supply_remote/barbecue
 	name = "drop pod remote - Barbecue Kit"
 	desc_extended = "A special remote designed to drop cool essential things into the battlefield. This one contains a portable barbecue."
 	stored_object_types = list(
-		/obj/structure/smooth/table/cooking/barbecue
+		/obj/structure/table/cooking/barbecue
 	)
 	value = 500

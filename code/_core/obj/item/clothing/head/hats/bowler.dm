@@ -5,8 +5,6 @@
 	icon = 'icons/obj/item/clothing/hats/bowler.dmi'
 	icon_state = "inventory"
 
-	defense_rating = list(
-		ARCANE = 75,
-	)
+	armor = /armor/cloth
 
 	value = 40

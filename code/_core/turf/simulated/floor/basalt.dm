@@ -24,10 +24,22 @@
 
 	map_color = COLOR_GREY_DARK
 
+	var/light_turf = FALSE
+
 /turf/simulated/floor/basalt/setup_turf_light(var/sunlight_freq)
-	if(prob(10))
-		icon_state = "basalt[rand(1,4)]"
-		src.set_light(4,0.5,"#FF8300")
-	else if(prob(20))
-		icon_state = "basalt[rand(4,12)]"
+	if(light_turf) src.set_light(4,0.5,"#FF8300")
 	return TRUE
+
+/turf/simulated/floor/basalt/smooth_turf()
+
+	var/code = get_smooth_code()
+	if(code == "ffff")
+		icon = initial(icon)
+		if(prob(3))
+			light_turf = TRUE
+			icon_state = "basalt[rand(1,5)]"
+		else if(prob(6))
+			icon_state = "basalt[rand(6,15)]"
+		return TRUE
+
+	. = ..()

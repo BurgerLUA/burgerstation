@@ -2,7 +2,7 @@
 	name = "right magboot"
 	desc = "Water-proof."
 	desc_extended = "Heavy boots with a magnetic sole. Prevents you from losing grip and floating off into the void."
-	rarity = RARITY_UNCOMMON
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
@@ -13,16 +13,7 @@
 	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 60,
-		PIERCE = 40,
-		ARCANE = -60,
-		HEAT = 60,
-		COLD = 60,
-		FATIGUE = 60,
-		PAIN = 120
-	)
+	armor = /armor/hardsuit/mechanical
 
 	size = SIZE_2
 

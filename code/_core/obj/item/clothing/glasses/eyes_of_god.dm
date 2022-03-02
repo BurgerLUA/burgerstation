@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/eyes_of_god
 	name = "eyes of god"
-	rarity = RARITY_LEGENDARY
+
 	desc = "Wear them, if you dare."
 	desc_extended = "A pair of eyeballs that let you see how the gods see things. You may lose your sanity."
 	icon = 'icons/obj/item/clothing/glasses/eyes_of_god.dmi'

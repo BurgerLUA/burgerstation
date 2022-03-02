@@ -6,6 +6,11 @@
 	name = "security wardrobe vendor"
 	icon_state = "secdrobe_new"
 
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/clothing/feet/socks/knee/white,
 		/obj/item/clothing/underbottom/underwear/boxers/nanotrasen,
@@ -33,13 +38,18 @@
 /obj/structure/interactive/vending/nanotrasen/wardrobe/ops
 	name = "nt ops wardrobe vendor"
 	icon_state = "secdrobe_ops"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/clothing/feet/socks/knee/white,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/reinforced/ntops,
 		/obj/item/clothing/shirt/normal/reinforced/ntops,
-		/obj/item/clothing/uniform/utility/command,
 		/obj/item/storage/shoebox/jackboot,
 		/obj/item/storage/glovebox/padded,
 		/obj/item/clothing/back/storage/satchel/poly/ntops,
@@ -68,6 +78,11 @@
 	name = "gun vendor"
 	icon_state = "gundrobe"
 
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
@@ -95,11 +110,16 @@
 	name = "NT ops gun vendor"
 	icon_state = "gundrobe_ops"
 
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer,
 
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
@@ -126,6 +146,11 @@
 	name = "drip gun vendor"
 	icon_state = "dipdrobe"
 
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/dip,
@@ -150,14 +175,19 @@
 	name = "ammo vendor"
 	icon_state = "ammodrobe"
 
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 	stored_types = list(
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_12mm/nt,
 		/obj/item/magazine/pistol_tranq_11m,
-		/obj/item/magazine/smg_46,
-		/obj/item/magazine/smg_9mm,
-		/obj/item/magazine/smg_10mm,
+		/obj/item/magazine/smg_pdw,
+		/obj/item/magazine/smg_4mm_standard,
+		/obj/item/magazine/smg_9mm_banana,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556/ap,
 		/obj/item/magazine/lmg_556,
@@ -182,14 +212,29 @@
 /obj/structure/interactive/vending/nanotrasen/ammo/ops
 	icon_state = "ammodrobe_ops"
 
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
 
 /obj/structure/interactive/vending/nanotrasen/gundrobe/engineering
 	icon_state = "gundrobe_engineering"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 
 /obj/structure/interactive/vending/nanotrasen/attachment
 	name = "attachment vendor"
 	icon_state = "attachment"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 	stored_types = list(
 		/obj/item/attachment/barrel/charger,
@@ -214,6 +259,11 @@
 /obj/structure/interactive/vending/nanotrasen/loadout
 	name = "loadout vendor"
 	icon_state = "gear"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 	stored_types = list(
 		/obj/item/clothing/back/storage/dufflebag/poly/recruit

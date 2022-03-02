@@ -2,8 +2,6 @@
 	name = "tactical storage vest"
 	icon = 'icons/obj/item/clothing/suit/black_vest.dmi'
 
-	rarity = RARITY_UNCOMMON
-
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
 
@@ -14,12 +12,7 @@
 	dynamic_inventory_count = 6
 	container_max_size = SIZE_1
 
-	defense_rating = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = -20
-	)
+	armor = /armor/cloth/hard
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -64,7 +57,7 @@
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'
-	rarity = RARITY_COMMON
+
 	desc = "For when you need pockets but not many."
 
 	size = SIZE_2*2
@@ -72,15 +65,7 @@
 	dynamic_inventory_count = 2
 	container_max_size = SIZE_1
 
-	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = -10,
-		ARCANE = 10,
-		HEAT = 10,
-		COLD = 25
-	)
+	armor = /armor/leather/coat
 
 	value = 30
 

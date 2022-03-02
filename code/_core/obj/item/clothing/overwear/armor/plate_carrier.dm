@@ -1,18 +1,14 @@
 /obj/item/clothing/overwear/armor/plate_carrier
 	name = "plate carrier"
 	desc = "Standard armor for the soldiering kind."
-	desc_extended = "A plate carrier system. Requires an armor plate to useable. Alt-click to remove plates."
+	desc_extended = "A plate carrier system that provides little protection alone but can be reinforced with plates. Requires an armor plate to useable. Alt-click to remove plates."
 	icon = 'icons/obj/item/clothing/suit/plate_carrier.dmi'
 
 	protected_limbs = list(BODY_TORSO)
 
 	dyeable = TRUE
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10
-	)
+	armor = /armor/cloth/hard
 
 	value = 50
 
@@ -20,7 +16,7 @@
 
 	size = SIZE_3
 
-/obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVELISTATOM("installed_plate_carriers")
 
@@ -88,13 +84,6 @@
 	icon = 'icons/obj/item/clothing/suit/plate_carrier_pouched.dmi'
 
 	dyeable = TRUE
-
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = -10
-	)
 
 	value = 70
 

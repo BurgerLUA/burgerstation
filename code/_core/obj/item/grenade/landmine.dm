@@ -16,6 +16,6 @@
 	desc_extended = "A prebuilt proximity explosive landmine. The labeling indicates that the proximity delay is set to 5 seconds."
 
 /obj/item/grenade/landmine/proximity/explosive/Generate()
-	stored_containers += new /obj/item/container/beaker/water(src)
-	stored_containers += new /obj/item/container/beaker/potassium(src)
+	stored_containers += new /obj/item/container/simple/beaker/water(src)
+	stored_containers += new /obj/item/container/simple/beaker/potassium(src)
 	return ..()

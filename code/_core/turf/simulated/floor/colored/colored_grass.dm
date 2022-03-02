@@ -19,7 +19,7 @@
 	corner_category = "moss"
 
 /turf/simulated/floor/colored/grass/jungle
-	name = "jungle grass"
+	name = "dark grass"
 	color = "#42512B"
 	corner_category = "jungle_grass"
 

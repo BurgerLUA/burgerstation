@@ -35,7 +35,7 @@
 			log_error("Warning: [A.get_debug_name()] tried to craft without a stored crafting table!")
 
 
-	
+
 /obj/hud/button/crafting/close
 	name = "close crafting menu"
 	icon_state = "close_crafting"
@@ -48,7 +48,7 @@
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 
-		for(var/obj/hud/inventory/crafting/I in A.inventory)
+		for(var/obj/hud/inventory/crafting/I in A.inventories_by_id)
 			animate(I,alpha=0,time=4)
 			I.mouse_opacity = 0
 
@@ -57,4 +57,3 @@
 			B.mouse_opacity = 0
 			B.stored_crafting_table = null
 
-	

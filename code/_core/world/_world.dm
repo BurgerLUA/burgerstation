@@ -42,7 +42,7 @@ var/global/world_state = STATE_STARTING
 	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
 	var/duration = get_clock_time(FLOOR(world.time/10,1),FORMAT_HOUR | FORMAT_MINUTE)
-	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "MultiZ (255x255x3)"]</b><br>Duration: <b>[duration]</b>"
+	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "Map Name Here ([world.maxx]x[world.maxy])"]</b><br>Duration: <b>[duration]</b>"
 
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
@@ -128,7 +128,10 @@ var/global/world_state = STATE_STARTING
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
 		if(P.qdeleting)
-			log_error("Warning: Tried saving a qdeleting character!")
+			log_error("Warning: Tried saving [P.get_debug_name()], which was qdeleting!")
+			continue
+		if(!P.ckey_last)
+			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey!")
 			continue
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)

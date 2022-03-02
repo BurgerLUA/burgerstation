@@ -1,22 +1,22 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca
-	name = "\improper 4.6x30mm DMCA"
-	desc = "Takedown your foes with this DMCA!"
-	desc_extended = "The 4.6x30mm DMCA is an extremely robust automatic weapon capable of sending a volley of penetrating small arms."
+	name = "\improper 10x24mm DMCA"
+	desc = "Take down your foes with this DMCA!"
+	desc_extended = "The 10x24mm DMCA is an extremely robust automatic weapon capable of sending a volley of high impact rounds at long ranges."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/dmca.dmi'
 	icon_state = "inventory"
 	value = 3000
 
-	tier = 2
+	tier = 3
 
-	shoot_delay = 1
-	burst_delay = 5
-	max_bursts = 5
+	shoot_delay = 0.6
+	burst_delay = 0.6*8
+	max_bursts = 4
 
 	damage_mod = 1.25
 
 	automatic = TRUE
 
-	firemodes = list("burst","semi-automatic")
+	firemodes = list("burst")
 
 	shoot_sounds = list('sound/weapons/46/shoot.ogg')
 
@@ -25,15 +25,15 @@
 	size = SIZE_4
 	weight = 25
 
-	heat_max = 0.03
+	heat_max = 0.1
 
-	bullet_length_min = 25
-	bullet_length_best = 30
-	bullet_length_max = 31
+	bullet_length_min = 22
+	bullet_length_best = 24
+	bullet_length_max = 25
 
-	bullet_diameter_min = 4
-	bullet_diameter_best = 4.6
-	bullet_diameter_max = 5
+	bullet_diameter_min = 9
+	bullet_diameter_best = 10
+	bullet_diameter_max = 10.5
 
 	ai_heat_sensitivity = 0.5
 
@@ -69,8 +69,6 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-
-
 	dan_mode = TRUE
 
 	inaccuracy_modifier = 2
@@ -79,7 +77,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()
-	return 0.05
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_skill_spread(var/mob/living/L)
-	return max(0,0.1 - (0.05 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.05 * L.get_skill_power(SKILL_RANGED)))

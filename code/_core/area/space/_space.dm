@@ -18,10 +18,10 @@
 	return TRUE
 
 /area/space/bluespace
-	name = "bluespace"
+	name = "bluespace light"
 	icon_state=  "bluespess"
 
-	sunlight_freq = 8
+	sunlight_freq = 1
 	sunlight_color = "#0094FF"
 
 	cheese_type = /reagent/nutrition/cheese/bluespace

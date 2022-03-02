@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/honey
-	name = "\improper .300 Mead Squirrel"
+	name = "\improper 5.45x39mm Badger"
 	desc = "MP5SD, but cooler."
-	desc_extended = "An integrally supressed PDW, firing .300 CCA subsonic ammo. Designed for covert operations."
+	desc_extended = "A Syndicate carbine designed from stolen Space Slavic tech,"
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/honey.dmi'
 	icon_state = "inventory"
 	value = 2300

@@ -3,7 +3,7 @@
 	desc = "Sticking your head in isn't recommended."
 	desc_extended = "A special backpack that creates its own pocket inside the bluespace dimension to store an absurd amount of items. It's extremely heavy, however, and only practical for hauling items over long distances."
 	icon = 'icons/obj/item/clothing/back/backpack/bluespace.dmi'
-	rarity = RARITY_RARE
+
 
 
 	dynamic_inventory_count = MAX_INVENTORY_X*4

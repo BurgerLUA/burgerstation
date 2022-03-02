@@ -87,21 +87,11 @@
 	id = "inhale"
 	action = "\The #USER inhales!"
 
-/emote/inhale/can_emote(var/atom/emoter,var/atom/target)
-	. = ..()
-	if(!.) return FALSE
-	if(is_advanced(emoter))
-		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
-			if(istype(I,/obj/item/container/cigarette))
-				return TRUE
-
 /emote/inhale/on_emote(var/atom/emoter,var/atom/target)
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
+		if(A.inventories_by_id[BODY_FACE])
+			var/obj/item/I = A.inventories_by_id[BODY_FACE].get_top_object()
 			if(istype(I,/obj/item/container/cigarette))
 				var/obj/item/container/cigarette/C = I
 				C.consume(5)
@@ -117,16 +107,16 @@
 	if(!.) return FALSE
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
+		if(A.inventories_by_id[BODY_FACE])
+			var/obj/item/I = A.inventories_by_id[BODY_FACE].get_top_object()
 			if(istype(I,/obj/item/container/cigarette))
 				return TRUE
 
 /emote/drag/on_emote(var/atom/emoter,var/atom/target)
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
+		if(A.inventories_by_id[BODY_FACE])
+			var/obj/item/I = A.inventories_by_id[BODY_FACE].get_top_object()
 			if(istype(I,/obj/item/container/cigarette))
 				var/obj/item/container/cigarette/C = I
 				C.consume(10)

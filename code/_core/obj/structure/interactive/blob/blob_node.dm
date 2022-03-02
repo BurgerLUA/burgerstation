@@ -38,5 +38,5 @@
 /obj/structure/interactive/blob/node/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,"node_overlay")
-	I.appearance_flags = KEEP_TOGETHER | RESET_COLOR
+	I.appearance_flags = RESET_COLOR | KEEP_APART
 	add_overlay(I)

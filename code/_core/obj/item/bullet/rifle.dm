@@ -9,8 +9,8 @@
 	bullet_length = 51
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 	bullet_color = COLOR_BULLET
 
 	projectile = /obj/projectile/bullet/firearm/rifle
@@ -43,10 +43,6 @@
 	value = 2.4
 
 	penetrations = 1
-
-/obj/item/bullet_cartridge/rifle_308/Generate()
-	item_count_current = 5
-	return ..()
 
 /obj/item/bullet_cartridge/rifle_308/nato
 	name = "\improper 7.62mm rifle bullet"
@@ -122,8 +118,8 @@
 	bullet_length = 45
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_223
@@ -160,8 +156,8 @@
 	desc_extended = "For rifles and machineguns that requre 5,56mm."
 	rarity = RARITY_COMMON
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm
@@ -189,8 +185,8 @@
 	desc_extended = "For rifles and machineguns that requre 5,56mm. This doesn't leave a case."
 	rarity = RARITY_UNCOMMON
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm
@@ -235,8 +231,8 @@
 	bullet_color = COLOR_BULLET
 
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_545mm
@@ -263,8 +259,8 @@
 	bullet_color = COLOR_BULLET
 
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_545mm/ap
@@ -285,8 +281,8 @@
 	bullet_length = 39
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 	bullet_color = COLOR_BULLET
 
 	projectile = /obj/projectile/bullet/firearm/pistol/stealth
@@ -300,47 +296,8 @@
 
 	inaccuracy_modifer = 0.75
 
-/obj/item/bullet_cartridge/rifle_939mm/Generate()
-	item_count_current = 5
-	return ..()
-
 /obj/item/bullet_cartridge/rifle_939mm/surplus
 	name = "\improper surplus 9x39mm subsonic rifle rifle bullet"
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_939mm/surplus
-	jam_chance = 1
-	value = 0
-
-/obj/item/bullet_cartridge/honey
-	name = "\improper .300 CCA subsonic rifle bullet"
-	desc = "Shh."
-	desc_extended = "For rifles that require .300 CCA."
-	icon = 'icons/obj/item/bullet/223.dmi'
-
-	bullet_diameter = 7.62
-	bullet_length = 35
-	bullet_color = COLOR_BULLET
-
-	item_count_max = 5
-	item_count_max_icon = 5
-	bullet_color = COLOR_BULLET
-
-	projectile = /obj/projectile/bullet/firearm/pistol/stealth
-	damage_type_bullet = /damagetype/ranged/bullet/honey
-
-	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
-
-	size = 0.04
-
-	value = 1.8
-
-	inaccuracy_modifer = 0.75
-
-/obj/item/bullet_cartridge/honey/Generate()
-	item_count_current = 5
-	return ..()
-
-/obj/item/bullet_cartridge/honey/surplus
-	name = "\improper surplus .300 CCA subsonic rifle bullet"
-	damage_type_bullet = /damagetype/ranged/bullet/honey/surplus
 	jam_chance = 1
 	value = 0

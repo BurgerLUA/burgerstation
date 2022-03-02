@@ -23,6 +23,10 @@
 
 	repair_flag = FLAG_TOOL_WELDER
 
+/obj/structure/interactive/barricade/Destroy()
+	. = ..()
+	climbers.Cut()
+
 /obj/structure/interactive/barricade/Cross(atom/movable/O,atom/oldloc)
 	if(climbers[O])
 		return TRUE
@@ -113,9 +117,11 @@ obj/structure/interactive/barricade/Finalize()
 
 	var/image/above = new/image(icon,"[icon_state]_above")
 	above.layer = LAYER_MOB_ABOVE
+	above.appearance_flags = LONG_GLIDE | TILE_BOUND | PIXEL_SCALE | KEEP_APART
 
 	var/image/below = new/image(icon,"[icon_state]_below")
 	below.layer = LAYER_MOB_BELOW
+	below.appearance_flags = LONG_GLIDE | TILE_BOUND | PIXEL_SCALE | KEEP_APART
 
 	icon = ICON_INVISIBLE
 	add_overlay(below)

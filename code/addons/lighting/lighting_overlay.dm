@@ -1,5 +1,5 @@
 /atom/movable/lighting_overlay
-	name          = ""
+	name          = "lighting overlay"
 	anchored      = TRUE
 	icon          = LIGHTING_ICON
 	icon_state    = LIGHTING_BASE_ICON_STATE
@@ -42,7 +42,7 @@
 	return ..()
 
 // This is a macro PURELY so that the if below is actually readable.
-#define ALL_EQUAL ((rr == gr && gr == br && br == ar) && (rg == gg && gg == bg && bg == ag) && (rb == gb && gb == bb && bb == ab))
+#define ALL_EQUAL ((rr == ar && gr == ar && br == ar) && (rg == ag && gg == ag && bg == ag) && (rb == ab && gb == ab && bb == ab))
 
 /atom/movable/lighting_overlay/update_overlays()
 
@@ -86,12 +86,20 @@
 	var/ag = ca.cache_g
 	var/ab = ca.cache_b
 
-	if ((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
+	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
 		icon_state = LIGHTING_TRANSPARENT_ICON_STATE
 		color = null
+		alpha = 255
 	else if (max <= LIGHTING_SOFT_THRESHOLD)
 		icon_state = LIGHTING_DARKNESS_ICON_STATE
 		color = null
+		alpha = 255
+	/* Can't get this to work. Don't know why but it's inaccurate, somehow.
+	else if(ALL_EQUAL)
+		icon_state = LIGHTING_TRANSPARENT_ICON_STATE
+		color = rgb(ca.cache_r,ca.cache_g,ca.cache_b)
+		alpha = 255 - ca.cache_mx*255
+	*/
 	else
 		icon_state = LIGHTING_BASE_ICON_STATE
 		if (islist(color))

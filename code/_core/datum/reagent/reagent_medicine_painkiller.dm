@@ -107,6 +107,7 @@
 	. = ..()
 	owner.pain_regen_buffer -= .*20
 
+
 /reagent/medicine/painkiller/assprin
 	name = "Assprin"
 	desc = "A generic painkiller."

@@ -2,23 +2,14 @@
 	name = "right mining boot"
 	desc = "For when the heat is actually turned up."
 	desc_extended = "A tough brown boot. Shields your feet from the ashes."
-	rarity = RARITY_UNCOMMON
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
 	icon = 'icons/obj/item/clothing/shoes/boots_miner.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		ARCANE = 20,
-		HEAT = 20,
-		COLD = 20,
-		BOMB = 20,
-		PAIN = 60
-	)
+	armor = /armor/leather/mining
 
 	size = SIZE_2
 

@@ -1,18 +1,20 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever
-	name = "12g lever-action shotgun"
+	name = "12g 1984 lever-action shotgun"
 	desc = "Git off my property!"
 	desc_extended = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower. The weapon of choice for Space Farmers."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
-	value = 800
+	value = 900
 
 	tier = 2
 
-	shoot_delay = 4
+	shoot_delay = 2
+
+	pump_delay = 4
 
 	automatic = FALSE
 
-	bullet_count_max = 6
+	bullet_count_max = 5
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -57,8 +59,6 @@
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
-
-	pump_delay = 2
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread()
 	return 0.001

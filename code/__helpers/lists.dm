@@ -353,6 +353,11 @@
 	for(var/thing in flat_list)
 		.[thing] = TRUE
 
+/proc/make_associative_count(var/list/flat_list)
+	. = list()
+	for(var/thing in flat_list)
+		.[thing]++
+
 /proc/assoc_list_strip_value(var/list/input)
 	var/list/ret = list()
 	for(var/key in input)

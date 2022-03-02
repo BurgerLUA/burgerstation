@@ -19,7 +19,8 @@
 	value_burgerbux = 1
 
 /obj/item/tempering/magazine/bluespace/can_temper(var/mob/caller,var/obj/item/magazine/I)
-	if (!is_magazine(I))
+
+	if(!istype(I,/obj/item/magazine))
 		return FALSE
 
 	if(I.bluespaced)
@@ -46,7 +47,7 @@
 	value_burgerbux = 1
 
 /obj/item/tempering/magazine/refiller/can_temper(var/mob/caller,var/obj/item/magazine/I)
-	if (!is_magazine(I))
+	if(!istype(I,/obj/item/magazine))
 		return FALSE
 
 	if(I.regenerate)
@@ -75,7 +76,7 @@
 	var/new_sound = list('sound/weapons/magic/chaos.ogg')
 
 /obj/item/tempering/magazine/spellswap/can_temper(var/mob/caller,var/obj/item/magazine/I)
-	if (!is_magazine(I))
+	if(!istype(I,/obj/item/magazine))
 		return FALSE
 
 	return ..()

@@ -176,7 +176,7 @@ var/global/list/shield_price_mul = list(
 	value = 1200
 
 /obj/item/weapon/melee/shield/redstar
-	name = "russian redstar shield"
+	name = "slavic redstar shield"
 	icon = 'icons/obj/item/shields/redstar.dmi'
 
 	block_defense = list(

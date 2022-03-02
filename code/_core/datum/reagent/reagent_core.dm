@@ -112,16 +112,6 @@
 
 	liquid = -0.25
 
-/reagent/oxygen //Found in the snow biome as a magic plant
-	name = "Liquid Oxygen"
-	desc = "What most lifeforms breathe in.."
-	color = "#E6F2F2"
-	alpha = 200
-
-	flavor = "oxygen"
-
-	liquid = 0.25
-
 /reagent/nitrogen //Found in the snow biome as a magic plant
 	name = "Liquid Nitrogen"
 	desc = "What most lifeforms also breathe in but don't really use."

@@ -4,13 +4,7 @@
 	desc = "HON HON HON"
 	desc_extended = "A fashionable beret."
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10
-	)
+	armor = /armor/cloth
 
 	size = SIZE_2
 
@@ -19,19 +13,12 @@
 
 	dyeable = TRUE
 
-/obj/item/clothing/head/hat/beret/shaleez
-	color = COLOR_CRIMSON
-
 /obj/item/clothing/head/hat/beret/armored
 	name = "armored beret"
 	desc_extended = "A fashionable beret with extra padding and protection built into it."
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		COLD = 20
-	)
-	rarity = RARITY_RARE
+
+	armor = /armor/leather/hard
+
 	value = 200
 
 /obj/item/clothing/head/hat/beret/armored/syndicate

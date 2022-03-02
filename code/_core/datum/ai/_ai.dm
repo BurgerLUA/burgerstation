@@ -16,6 +16,12 @@
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
+	var/distance_target_min = 1 //The minimum distance in which the mob can start "clicking" to attack.
+	var/distance_target_max = 1 //The maximum distance in which the mob can start "clicking" to attack.
+
+	var/attack_distance_min = 0 //The minimum distance in which the mob should move to the target to attack.
+	var/attack_distance_max = 1 //The maximum distance in which the mob should move to the target to attack.
+
 	//Measured in ticks.
 	var/objective_ticks = 0
 
@@ -31,8 +37,7 @@
 
 	var/shoot_obstacles = TRUE
 
-	var/attack_distance_min = 0
-	var/attack_distance_max = 1
+
 
 	var/left_click_chance = 90
 
@@ -67,9 +72,6 @@
 
 	var/list/obstacles = list()
 
-	var/distance_target_min = 1
-	var/distance_target_max = 1
-
 	var/use_alerts = TRUE
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
@@ -98,7 +100,7 @@
 	var/assistance = 1
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them.
-	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage the NPC will flee at.
+	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage (0.00 to 1.00) the NPC will flee at.
 
 	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner.
 
@@ -119,6 +121,7 @@
 	var/ignore_hazard_turfs = FALSE
 
 	var/boss = FALSE
+
 
 /ai/Destroy()
 
@@ -217,13 +220,9 @@
 	return TRUE
 
 /ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
-
 	owner = desired_owner
-
-	objective_ticks = rand(0,objective_delay)
-
-	start_turf = get_turf(owner)
-
+	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
+	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
 	. = ..()
 
 /ai/Finalize()
@@ -233,8 +232,7 @@
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	set_active(active,TRUE)
 
-
 /ai/proc/post_death(var/mob/living/L,args)
-	set_active(FALSE)
+	set_active(FALSE,TRUE)
 	return TRUE
 

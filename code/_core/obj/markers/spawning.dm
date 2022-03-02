@@ -41,16 +41,22 @@
 
 	return D
 
+/obj/marker/spawning/window/
+	color = "#6E9CAD"
+
 /obj/marker/spawning/window/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
 
+/obj/marker/spawning/window/tinted
+	color = "#353535"
+
 /obj/marker/spawning/window/tinted/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	W.color = "#353535"
@@ -59,31 +65,48 @@
 
 /obj/marker/spawning/window/rcd/do_spawn(var/turf/T)
 	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/W = new(T)
+	var/obj/structure/window/W = new(T)
 	INITIALIZE(G)
 	INITIALIZE(W)
 	GENERATE(G)
 	GENERATE(W)
 	FINALIZE(G)
 	FINALIZE(W)
-	queue_update_smooth_edges(W)
+	queue_update_edges(T)
 
 /obj/marker/spawning/window/reinforced/
 	icon_state = "window_grille_reinforced"
+	color = "#345A68"
 
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/G = new(T)
-	var/obj/structure/smooth/window/reinforced/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/reinforced/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(W)
+	setup_airlock()
+
+/obj/marker/spawning/window/shuttle
+	icon_state = "window_grille_reinforced"
+	color = "#394D5B"
+
+/obj/marker/spawning/window/shuttle/do_spawn(var/turf/T)
+	var/obj/structure/table/window/G = new(T)
+	G.plane = PLANE_SHUTTLE
+	G.color = "#FFFFFF"
+	var/obj/structure/window/reinforced/W = new(T)
+	W.plane = PLANE_SHUTTLE
+	W.color = "#394D5B"
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
 
 /obj/marker/spawning/window/extra/
 	icon_state = "window_grille_extra"
+	color = "#E423C9"
 
 /obj/marker/spawning/window/extra/do_spawn(var/turf/T)
-	var/obj/structure/interactive/construction/grille/plasteel/G = new(T)
-	var/obj/structure/smooth/window/reinforced/plasma/W = new(T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/window/reinforced/plasma/W = new(T)
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()
@@ -110,10 +133,10 @@
 	name = "random supply crate"
 	icon_state = "supply"
 	possible_objects = list(
-		/obj/item/supply_crate/american = 1,
+		/obj/item/supply_crate/yankee = 1,
 		/obj/item/supply_crate/magic = 2,
 		/obj/item/supply_crate/nanotrasen = 3,
-		/obj/item/supply_crate/russian = 2,
+		/obj/item/supply_crate/slavic = 2,
 		/obj/item/supply_crate/syndicate = 2,
 		/obj/item/supply_crate/medicine = 20
 	)

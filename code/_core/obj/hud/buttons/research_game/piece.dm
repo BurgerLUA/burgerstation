@@ -22,6 +22,11 @@
 	var/x_p
 	var/y_p
 
+	var/image/P1
+	var/image/P2
+	var/image/P3
+	var/image/P4
+
 	var/obj/hud/button/research/board/linked_board
 
 /obj/hud/button/research/piece/Destroy()
@@ -249,11 +254,11 @@
 /obj/hud/button/research/piece/update_sprite()
 	. = ..()
 	screen_loc = "CENTER+[x_p-RESEARCH_BOARD_SIZE*0.5],CENTER+[y_p-RESEARCH_BOARD_SIZE*0.5]"
-	
+
 /obj/hud/button/research/piece/update_icon()
 	. = ..()
 	icon_state = "piece_static"
-	
+
 /obj/hud/button/research/piece/update_underlays()
 
 	. = ..()
@@ -273,4 +278,3 @@
 	I4.color = color_04
 	underlays += I4
 
-	

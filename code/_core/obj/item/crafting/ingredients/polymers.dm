@@ -44,7 +44,7 @@
 /obj/item/crafting/ingredient/polymer/omega
 	name = "experimental polymer Omega"
 	desc = "Who knew your... universe was smart?"
-	desc_extended = "Specially designed container of completely sentient polymers capable of taking on any shape or form. Omega variation is an early prototype of an improved malfunctioning Tetha polymer that obliterated an entire Space Russian research facility, theoretically capable of rewriting laws of the universe itself when used correctly. Used for creation of god-tier equipment."
+	desc_extended = "Specially designed container of completely sentient polymers capable of taking on any shape or form. Omega variation is an early prototype of an improved malfunctioning Tetha polymer that obliterated an entire Space Slavic research facility, theoretically capable of rewriting laws of the universe itself when used correctly. Used for creation of god-tier equipment."
 	icon_state = "omega"
 	value = 6000
 	value_burgerbux = 1 //no vendor and trash bullshit.

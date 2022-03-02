@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(traits)
 	name = "Traits"
 	desc = "Stores all the known traits in a list."
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_FIRST
 
 	var/list/all_traits = list()
 

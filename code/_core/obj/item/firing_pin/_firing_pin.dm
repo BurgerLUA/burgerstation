@@ -24,7 +24,7 @@
 	name = "mechanical firing pin"
 	desc = "Oh god oh fuck."
 	desc_extended = "A completely mechanical firing pin that has no digital IFF technology and thus can be shot by anyone and aimed at anybody. These are extremely rare and extremely illegal. Having one may result in contract termination."
-	rarity = RARITY_LEGENDARY
+
 	value = 50000
 	value_burgerbux = 1
 

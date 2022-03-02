@@ -29,8 +29,14 @@
 	//Dynamic accuracy.
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
+	var/heat_to_remove = 0.01 //Heat to remove per decisecond.
+	var/heat_power = 1 //Heat converted into accuracy. See: https://www.desmos.com/calculator/r7tq4ovdcz
+	//Note for heat power:
+	//Higher values start low and then ramp up at the end. Lower values ramp up quickly but stay consistant.
+	//Precise weapons should have a lower value while inprecise weapons should have a higher value.
 
-	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+
+	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
 
 	var/movement_spread_base = 0.05 //half this at walking speed, this at running speed, this times two at sprinting speed
@@ -67,6 +73,8 @@
 
 	var/current_firemode = 1
 	var/list/firemodes = list()
+
+	combat_range = VIEW_RANGE
 
 /obj/item/weapon/ranged/Destroy()
 	QDEL_NULL(attachment_stock)
@@ -149,7 +157,7 @@
 	. = CEILING(.,1)
 */
 
-/obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("firing_pin")
 	SAVEATOM("attachment_barrel")
@@ -278,6 +286,7 @@
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
 
 	if(quality <= 0)
+		caller.to_chat(span("warning","\The [src.name] is completely broken!"))
 		return FALSE
 
 	if(!use_loyalty_tag)
@@ -301,7 +310,7 @@
 /obj/item/weapon/ranged/think()
 
 	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
-		heat_current = max(heat_current-(SIZE_3/max(1,size)),0) //Smaller guns easier to handle.
+		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
 
@@ -325,10 +334,10 @@
 	if(istype(object,/obj/parallax))
 		object = object.defer_click_on_object(caller,location,control,params) //Only time defer_click_on_object should be used like this.
 
-	if(object.z && shoot(caller,object,location,params))
-		return TRUE
+	. = ..()
 
-	return ..()
+	if(!. && object.z && shoot(caller,object,location,params))
+		return TRUE
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
@@ -357,12 +366,17 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 		var/turf/T = get_turf(src)
 		play_sound(pick(shoot_sounds_to_use),T,range_min = VIEW_RANGE*0.5, range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
-			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,caller,shoot_alert_to_use)
+			var/use_caller = TRUE
+			if(is_living(caller))
+				var/mob/living/L = caller
+				if(L.ai) use_caller = FALSE
+			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,use_caller ? caller : null,shoot_alert_to_use)
 		return TRUE
 
 	return FALSE
 
-obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+/obj/item/weapon/ranged/proc/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!object)
 		return FALSE
@@ -387,8 +401,15 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!can_gun_shoot(caller,object,location,params))
 		return FALSE
 
+	return TRUE
+
+obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+	if(!pre_shoot(caller,object,location,params,damage_multiplier))
+		return FALSE
+
 	var/quality_bonus = get_quality_bonus(0.5,2)
-	var/quality_penalty = 1/get_quality_bonus(0.25,2)
+	var/quality_penalty = max(1,1/get_quality_bonus(0.25,2))
 
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
@@ -432,9 +453,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/mob/living/advanced/A = caller
 		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
 	if(wielded)
-		arm_strength *= 2
+		arm_strength *= 3
 
-	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.025*bullet_count_to_use
+	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.003*bullet_count_to_use
 	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
 
 	if(projectile_to_use)
@@ -567,7 +588,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!use_loyalty_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	if(automatic && is_player(caller))
+	if(automatic && is_player(caller) && caller.client)
 		spawn(next_shoot_time - world.time)
 			var/mob/living/advanced/player/P = caller
 			if(P && P.client && !P.qdeleting && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
@@ -699,7 +720,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 
-	. = inaccuracy_modifier //Base var
+	. = inaccuracy_modifier
 
 	if(L.move_delay >= 0)
 		. += movement_inaccuracy_modifier
@@ -712,11 +733,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(attachment_stats["zoom_mul"])
 			total_zoom_mul *= attachment_stats["zoom_mul"]
 		if(L.client.is_zoomed)
-			. *= 1/total_zoom_mul
+			. *= 1/(1 + total_zoom_mul*0.5)
 		else
-			. *= total_zoom_mul/1
+			. *= min(1,total_zoom_mul*0.5)/1
 
-	. *= max(0,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1)) //Based on skill
+	. *= max(0.25,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,0.75)) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 

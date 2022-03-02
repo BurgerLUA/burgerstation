@@ -4,13 +4,7 @@
 	desc_extended = "The loin is imbued with the life essence of the late Goblin King. Greatly desired by mages."
 	icon = 'icons/obj/item/clothing/pants/goblin_loin.dmi'
 
-	defense_rating = list(
-		ARCANE = 80,
-		HOLY = -80,
-		DARK = 80
-	)
-
-	rarity = RARITY_LEGENDARY
+	armor = /armor/cloth
 
 	size = SIZE_2
 

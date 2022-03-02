@@ -59,12 +59,12 @@ var/global/list/all_telecomms = list()
 
 /obj/structure/interactive/telecomms/proc/process_data(var/list/data_to_process = list())
 
-	for(var/k in all_radios)
+	for(var/k in SSradio.all_radios)
 		CHECK_TICK(75,FPS_SERVER)
 		var/obj/item/device/radio/R = k
 		if(!R || R.qdeleting)
 			continue
-		if(R.frequency != data_to_process["frequency"] && !(data_to_process["frequency"] in R.listening_frequencies))
+		if(R.frequency != data_to_process["frequency"] && !R.listening_frequencies["[data_to_process["frequency"]]"])
 			continue
 		var/area/A = get_area(R)
 		if(!A)
@@ -72,7 +72,17 @@ var/global/list/all_telecomms = list()
 			continue
 		if(!A.area_identifier || !broadcasting_areas[A.area_identifier])
 			continue
-		use_ears(data_to_process["speaker"],R,data_to_process["text_to_say"],data_to_process["language_text_to_say"],data_to_process["text_type"],data_to_process["frequency"],data_to_process["language"],data_to_process["talk_range"],R.broadcasting_range)
+		use_ears(
+			data_to_process["speaker"],
+			R,
+			data_to_process["text_to_say"],
+			data_to_process["language_text_to_say"],
+			data_to_process["text_type"],
+			data_to_process["frequency"],
+			data_to_process["language"],
+			data_to_process["talk_range"],
+			R.broadcasting_range
+		)
 
 	return TRUE
 

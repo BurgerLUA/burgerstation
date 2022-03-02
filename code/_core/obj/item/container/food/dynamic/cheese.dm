@@ -1,4 +1,4 @@
-/obj/item/container/food/dynamic/cheese
+/obj/item/container/edible/dynamic/cheese
 	name = "cheese"
 	desc = "A rat's favorite."
 	desc_extended = "Nothing says class like huge yellow blocks of cheddar."
@@ -17,12 +17,12 @@
 
 	reagents = /reagent_container/food/cheese
 
-/obj/item/container/food/dynamic/cheese/Generate()
+/obj/item/container/edible/dynamic/cheese/Generate()
 	created_date = get_date()
 	created_time = get_time()
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	var/original_volume = reagents.volume_current
 
 	if(icon_state == "wheel")
@@ -34,7 +34,7 @@
 			return ..()
 
 		for(var/i=1,i<=pieces,i++)
-			var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
+			var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
 			C.icon_state = "wheel"
 			INITIALIZE(C)
 			reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
@@ -57,7 +57,7 @@
 				return ..()
 
 			for(var/i=1,i<=pieces,i++)
-				var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
+				var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
 				C.icon_state = "block"
 				INITIALIZE(C)
 				reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
@@ -76,7 +76,7 @@
 				L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
 			return ..()
 		else
-			var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
+			var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
 			C.icon_state = "block"
 			INITIALIZE(C)
 			reagents.transfer_reagents_to(C.reagents,1)
@@ -88,10 +88,10 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/cheese/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/food/dynamic/cheese/update_icon()
+/obj/item/container/edible/dynamic/cheese/update_icon()
 
 	if(icon_state == "wheel" && reagents.volume_current <= 10)
 		icon_state = "wheel_slice"
@@ -108,20 +108,20 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/block
+/obj/item/container/edible/dynamic/cheese/block
 	name = "block cheese"
 	icon_state = "block"
 	value = 20
 
-/obj/item/container/food/dynamic/cheese/block/Generate()
+/obj/item/container/edible/dynamic/cheese/block/Generate()
 	reagents.add_reagent(/reagent/nutrition/cheese,40)
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/wheel
+/obj/item/container/edible/dynamic/cheese/wheel
 	name = "wheel cheese"
 	icon_state = "wheel"
 	value = 30
 
-/obj/item/container/food/dynamic/cheese/wheel/Generate()
+/obj/item/container/edible/dynamic/cheese/wheel/Generate()
 	reagents.add_reagent(/reagent/nutrition/cheese,40)
 	return ..()

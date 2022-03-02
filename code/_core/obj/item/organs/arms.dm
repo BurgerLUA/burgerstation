@@ -29,6 +29,8 @@
 
 	gib_icon_state = "gibarm"
 
+	has_life = TRUE
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT

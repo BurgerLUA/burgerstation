@@ -6,18 +6,18 @@
 
 	item_slot = SLOT_TORSO
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10
-	)
+	armor = /armor/cloth
 
 	dyeable = TRUE
 
 	polymorphs = list(
 		"shirt" = COLOR_WHITE
+	)
+
+
+/obj/item/clothing/shirt/normal/priest
+	polymorphs = list(
+		"shirt" = COLOR_GREY_DARK
 	)
 
 /obj/item/clothing/shirt/normal/striped
@@ -149,13 +149,7 @@
 	name = "reinforced shirt"
 	icon = 'icons/obj/item/clothing/shirts/reinforced.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 10,
-		PIERCE = 20,
-		ARCANE = -10,
-		COLD = 10,
-	)
+	armor = /armor/cloth/hard
 
 /obj/item/clothing/shirt/normal/reinforced/ntops
 	name = "NT ops reinforced shirt"
@@ -174,3 +168,8 @@
 	polymorphs = list(
 		"shirt_tee" = "#626C65"
 	)
+
+/obj/item/clothing/shirt/normal/random/Generate()
+	. = ..()
+	for(var/k in polymorphs)
+		polymorphs[k] = random_color()

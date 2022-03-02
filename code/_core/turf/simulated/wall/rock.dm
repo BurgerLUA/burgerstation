@@ -4,11 +4,11 @@
 	desc = "Rock hard"
 	desc_extended = "A natural wall made of rock, might have something behind it, might not, occasionally has minerals."
 
-	icon = 'icons/turf/wall/rock_preview.dmi'
+	icon = 'icons/turf/wall/rock/preview.dmi'
 	icon_state = "rock"
 
 
-	real_icon = 'icons/turf/wall/rock.dmi'
+	real_icon = 'icons/turf/wall/rock/normal.dmi'
 	real_icon_state = "wall"
 
 	corner_icons = TRUE
@@ -30,7 +30,7 @@
 	return ..()
 
 /turf/simulated/wall/rock/snow
-	real_icon = 'icons/turf/wall/rock_snow.dmi'
+	real_icon = 'icons/turf/wall/rock/snow.dmi'
 	real_icon_state = "wall"
 
 	desc = "Rock hard"
@@ -44,7 +44,7 @@
 	map_color = COLOR_GREY
 
 /turf/simulated/wall/rock/basalt
-	real_icon = 'icons/turf/wall/rock_basalt.dmi'
+	real_icon = 'icons/turf/wall/rock/basalt.dmi'
 	real_icon_state = "wall"
 
 	desc = "Rock hard"
@@ -61,7 +61,7 @@
 
 
 /turf/simulated/wall/rock/brown
-	real_icon = 'icons/turf/wall/rock_brown.dmi'
+	real_icon = 'icons/turf/wall/rock/brown.dmi'
 	real_icon_state = "wall"
 
 	desc = "Rock hard"
@@ -75,7 +75,7 @@
 	map_color = COLOR_BROWN_DARK
 
 /turf/simulated/wall/rock/moss
-	real_icon = 'icons/turf/wall/rock_moss.dmi'
+	real_icon = 'icons/turf/wall/rock/moss.dmi'
 	real_icon_state = "wall"
 
 	desc = "Rock hard"
@@ -89,7 +89,7 @@
 	map_color = COLOR_BROWN_DARK
 
 /turf/simulated/wall/rock/desert
-	real_icon = 'icons/turf/wall/rock_desert.dmi'
+	real_icon = 'icons/turf/wall/rock/desert.dmi'
 	real_icon_state = "wall"
 
 	desc = "Rock hard"
@@ -105,7 +105,7 @@
 	map_color = COLOR_BROWN_DARK
 
 /turf/simulated/wall/rock/ice
-	real_icon = 'icons/turf/wall/rock_ice.dmi'
+	real_icon = 'icons/turf/wall/rock/ice.dmi'
 	real_icon_state = "ice"
 
 	desc = "Rock hard"
@@ -126,7 +126,7 @@
 	desc = "End of the line Bucko"
 	desc_extended = "An impassable barrier of stone, go around or turn around."
 
-	real_icon = 'icons/turf/wall/rock_bedrock.dmi'
+	real_icon = 'icons/turf/wall/rock/bedrock.dmi'
 	real_icon_state = "wall"
 
 	icon_state = "bedrock"

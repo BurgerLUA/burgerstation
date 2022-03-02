@@ -2,7 +2,7 @@
 	name = "\improper 9x19mm PP-19"
 	desc = "Gruz dvesti."
 	desc_extended = "PP-19, also known as 'Bizon', is a 9x19 chambered submachine gun with an incredibly high ammo capacity."
-	icon = 'icons/obj/item/weapons/ranged/smg/bison.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/slavic/9mm.dmi'
 	icon_state = "inventory"
 	value = 2000
 
@@ -10,7 +10,7 @@
 
 	shoot_delay = 1.1
 
-	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
+	shoot_sounds = list('sound/weapons/slavic/abakan.ogg')
 
 	firemodes = list("burst","automatic","semi-automatic")
 

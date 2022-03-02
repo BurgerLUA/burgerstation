@@ -2,13 +2,14 @@ SUBSYSTEM_DEF(obj)
 	name = "Objs Subsystem"
 	desc = "Initialize objs after they are made. Also handles queued object smoothing."
 	priority = SS_ORDER_OBJS
-	tick_rate = DECISECONDS_TO_TICKS(1)
-	var/list/queued_smooth = list()
 
 	var/list/initialize_early = list()
 	var/list/initialize_normal = list()
 	var/list/initialize_late = list()
 	var/list/initialize_none = list()
+
+	var/list/icon_cache = list()
+	var/saved_icons = 0
 
 /subsystem/obj/Initialize()
 
@@ -54,26 +55,3 @@ SUBSYSTEM_DEF(obj)
 	initialize_none.Cut()
 
 	return ..()
-
-/subsystem/obj/on_life()
-
-	for(var/k in queued_smooth)
-		var/obj/structure/smooth/S = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-		queued_smooth -= S
-		S.update_sprite()
-		//This doesn't need to be "processed" as the only thing that could go wrong is update sprite.
-
-	return TRUE
-
-/proc/queue_update_smooth_edges(var/obj/structure/smooth/S,var/include_self=TRUE)
-
-	if(include_self)
-		SSobj.queued_smooth |= S
-
-	for(var/direction in DIRECTIONS_ALL)
-		var/turf/T = get_step(S,direction)
-		for(var/obj/structure/smooth/S2 in T.contents)
-			SSobj.queued_smooth |= S2
-
-	return TRUE

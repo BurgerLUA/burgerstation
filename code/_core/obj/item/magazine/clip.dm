@@ -5,7 +5,7 @@
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_bullet_gun(object))
+	if(istype(object,/obj/item/weapon/ranged/bullet/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
@@ -33,5 +33,5 @@
 			caller.to_chat(span("warning","You can't load anything into \the [object.name] with \the [src.name]!"))
 		return TRUE
 
-	return ..()
+	. = ..()
 

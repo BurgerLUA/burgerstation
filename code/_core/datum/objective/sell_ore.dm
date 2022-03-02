@@ -15,7 +15,7 @@
 
 	if(istype(object,/obj/item/material/))
 		var/obj/item/material/M = object
-		desired_quota -= M.material_multiplier * M.item_count_current
+		desired_quota -= M.material_multiplier * M.amount
 		check_completion()
 
 	return ..()

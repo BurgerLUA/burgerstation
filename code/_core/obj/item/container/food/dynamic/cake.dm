@@ -1,4 +1,4 @@
-/obj/item/container/food/dynamic/cake
+/obj/item/container/edible/dynamic/cake
 	name = "pastry dough"
 	icon = 'icons/obj/item/consumable/food/cake.dmi'
 	icon_state = "dough_ball"
@@ -17,7 +17,7 @@
 
 	var/last_cooked = FALSE
 
-/obj/item/container/food/dynamic/cake/click_self(var/mob/caller,location,control,params)
+/obj/item/container/edible/dynamic/cake/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
@@ -31,10 +31,10 @@
 
 	return TRUE
 
-/obj/item/container/food/dynamic/cake/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/edible/dynamic/cake/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(icon_state == raw_icon_state && istype(object,/obj/item/container/food/dynamic/cake)) //IT'S RAW.
-		var/obj/item/container/food/dynamic/bread/B = object
+	if(icon_state == raw_icon_state && istype(object,/obj/item/container/edible/dynamic/cake)) //IT'S RAW.
+		var/obj/item/container/edible/dynamic/bread/B = object
 		if(B.icon_state == B.raw_icon_state) //IT'S FUCKING RAW.
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
@@ -55,7 +55,7 @@
 	return ..()
 
 
-/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 
@@ -71,7 +71,7 @@
 					return FALSE
 				raw_icon_state = "dough_slice"
 				for(var/i=1,i<=pieces-1,i++)
-					var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
+					var/obj/item/container/edible/dynamic/bread/B = new(get_turf(src))
 					B.pixel_x = pixel_x
 					B.pixel_y = pixel_y
 					B.raw_icon_state = raw_icon_state
@@ -88,7 +88,7 @@
 
 			else if(raw_icon_state == "dough_ball")
 				if(original_volume > 10)
-					var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
+					var/obj/item/container/edible/dynamic/bread/B = new(get_turf(src))
 					B.pixel_x = pixel_x
 					B.pixel_y = pixel_y
 					INITIALIZE(B)
@@ -114,16 +114,16 @@
 
 	return TRUE
 
-/obj/item/container/food/dynamic/cake/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/cake/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/food/dynamic/cake/update_sprite()
+/obj/item/container/edible/dynamic/cake/update_sprite()
 	if(reagents)
 		color = reagents.color
 	return ..()
 
 
-/obj/item/container/food/dynamic/cake/update_overlays()
+/obj/item/container/edible/dynamic/cake/update_overlays()
 
 	. = ..()
 
@@ -146,7 +146,7 @@
 			add_overlay(I)
 
 
-/obj/item/container/food/dynamic/cake/update_icon()
+/obj/item/container/edible/dynamic/cake/update_icon()
 
 	if(last_cooked)
 		return FALSE

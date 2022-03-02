@@ -6,3 +6,5 @@
 	drop_sound = 'sound/items/drop/leather.ogg'
 
 	item_slot_layer = 3
+
+	uses_until_condition_fall = 300

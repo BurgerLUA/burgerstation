@@ -48,12 +48,18 @@
 
 	var/obj/item/top_object = get_top_vis_object()
 	if(!top_object)
-		caller.to_chat(span("warning","There is nothing to strip!"))
+		caller.to_chat(span("warning","There is nothing to remove!"))
 		return FALSE
 
-	top_object.try_strip(caller)
+	if(is_organ(top_object.loc))
+		top_object.try_strip(caller)
+		return TRUE
+	else if(is_inventory(object))
+		var/obj/hud/inventory/I = object
+		I.add_object(top_object)
+		return TRUE
 
-	return TRUE
+	return FALSE
 
 /obj/hud/button/inventory_defer/proc/update_vis_contents()
 

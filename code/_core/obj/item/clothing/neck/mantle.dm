@@ -12,10 +12,7 @@
 
 	protected_limbs = list(BODY_TORSO)
 
-	defense_rating = list(
-		ARCANE = 40,
-		COLD = 20
-	)
+	armor = /armor/leather
 
 	size = SIZE_3
 
@@ -39,7 +36,7 @@
 
 /obj/item/clothing/neck/mantle/daddy
 	name = "dad's bib"
-	rarity = RARITY_RARE
+
 	icon = 'icons/obj/item/clothing/suit/knight_daddy_bib.dmi'
 
 	desc = "For eating ass."

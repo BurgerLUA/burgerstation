@@ -1,17 +1,21 @@
 /turf/simulated/floor/tile/morphing/
-	icon = 'icons/turf/floor/tile_morphing.dmi'
-	icon_state = "floor"
+	icon = 'icons/turf/floor/tile_quad.dmi'
+	icon_state = "multi"
 	var/original_color
 	corner_icons = TRUE
 
 /turf/simulated/floor/tile/morphing/should_smooth_with(var/turf/T)
-	return istype(T,/turf/simulated/floor/tile/) && !istype(T,/turf/simulated/floor/tile/morphing)
+
+	if(istype(T,/turf/simulated/floor/tile/) && !istype(T,/turf/simulated/floor/tile/morphing))
+		return T
+
+	return null
 
 /turf/simulated/floor/tile/morphing/Initialize()
 	original_color = color ? color : "#FFFFFF"
 	return ..()
 
-/turf/simulated/floor/tile/morphing/smooth_turfs()
+/turf/simulated/floor/tile/morphing/smooth_turf()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
@@ -28,8 +32,9 @@
 			calc_list[dir_to_text] = FALSE
 			continue
 
-		if(should_smooth_with(T))
-			calc_list[dir_to_text] = T.color ? T.color : "#FFFFFF"
+		var/atom/A = should_smooth_with(T)
+		if(A)
+			calc_list[dir_to_text] = A.color ? A.color : "#FFFFFF"
 			continue
 
 	var/ne = 0
@@ -69,11 +74,11 @@
 
 	var/icon/I
 
-	if(turf_icon_cache[full_icon_string])
-		I = turf_icon_cache[full_icon_string]
-		saved_icons++
+	if(SSturf.icon_cache[full_icon_string])
+		I = SSturf.icon_cache[full_icon_string]
+		SSturf.saved_icons++
 	else
-		I = new /icon(icon,"floor")
+		I = new/icon(icon,icon_state)
 		I.Blend(original_color,ICON_MULTIPLY)
 
 		if(ne)
@@ -96,7 +101,7 @@
 			SW.Blend(sw,ICON_MULTIPLY)
 			I.Blend(SW,ICON_OVERLAY)
 
-		turf_icon_cache[full_icon_string] = I
+		SSturf.icon_cache[full_icon_string] = I
 
 	icon = I
 

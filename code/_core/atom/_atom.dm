@@ -3,7 +3,7 @@
 	desc = "What the fuck is this?"
 	var/label
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND //NEVER EVER USE KEEP_TOGETHER.
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
@@ -37,8 +37,6 @@
 	var/corner_icons = FALSE
 	var/corner_category = "none"
 
-	var/immortal = FALSE //Is this object allowed to take damage?
-
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
@@ -66,6 +64,12 @@
 
 /atom/proc/get_consume_sound()
 	return 'sound/items/consumables/eatfood.ogg'
+
+/atom/verb/examine()
+	set name = "Examine"
+	set hidden = TRUE
+	if(usr && usr.client)
+		usr.client.examine(src)
 
 /atom/proc/update_atom_light()
 	if(desired_light_range > 0 && desired_light_power > 0)
@@ -101,7 +105,7 @@
 	mouse_opacity = 0
 	icon = null
 	icon_state = null
-
+	tag = null
 	all_listeners -= src
 
 	. = ..()

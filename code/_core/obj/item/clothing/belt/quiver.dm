@@ -2,16 +2,9 @@
 	name = "belt quiver"
 	desc = "For the aspiring archer."
 	desc_extended = "A not-so-fancy belt quiver meant to hold a number of arrows. ALT+Click to grab additional arrows while already holding an arrow."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/clothing/belts/belt_quiver.dmi'
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 20
-	)
-
-	rarity = RARITY_UNCOMMON
 	value = 200
 
 	var/list/stored_arrows = list()
@@ -19,7 +12,7 @@
 
 	var/max_arrows = 200
 
-/obj/item/clothing/belt/belt_quiver/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/belt/belt_quiver/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["stored_arrows"] = list()
 	for(var/k in stored_arrows)
@@ -82,7 +75,7 @@
 					stored_arrows -= A.type
 				update_sprite()
 		else
-			var/amount_added = -A.add_item_count(-min(A.item_count_current,max(0,max_arrows - get_arrow_count())))
+			var/amount_added = -A.add_item_count(-min(A.amount,max(0,max_arrows - get_arrow_count())))
 			if(amount_added)
 				if(!stored_arrows[A.type])
 					stored_arrows[A.type] = amount_added
@@ -101,7 +94,7 @@
 			return TRUE
 		var/obj/item/bullet_cartridge/arrow/A = pickweight(stored_arrows)
 		A = new A(get_turf(src))
-		A.item_count_current = 1
+		A.amount = 1
 		stored_arrows[A.type] -= 1
 		caller.to_chat(span("notice","You take 1 arrow from \the [src.name]. There are [stored_arrows[A.type]] arrows left."))
 		if(stored_arrows[A.type] <= 0)

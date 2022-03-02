@@ -1,80 +1,80 @@
-/obj/item/container/pill/bicaridine
+/obj/item/container/edible/pill/bicaridine
 	name = "bicaridine pill (20u)"
 
-/obj/item/container/pill/bicaridine/Generate()
+/obj/item/container/edible/pill/bicaridine/Generate()
 	reagents.add_reagent(/reagent/medicine/bicaridine,20)
 	return ..()
 
-/obj/item/container/pill/kelotane
+/obj/item/container/edible/pill/kelotane
 	name = "kelotane pill (20u)"
 
-/obj/item/container/pill/kelotane/Generate()
+/obj/item/container/edible/pill/kelotane/Generate()
 	reagents.add_reagent(/reagent/medicine/kelotane,20)
 	return ..()
 
-/obj/item/container/pill/dylovene
+/obj/item/container/edible/pill/dylovene
 	name = "dylovene pill (20u)"
 
-/obj/item/container/pill/dylovene/Generate()
+/obj/item/container/edible/pill/dylovene/Generate()
 	reagents.add_reagent(/reagent/medicine/dylovene,20)
 	return ..()
 
-/obj/item/container/pill/calomel
+/obj/item/container/edible/pill/calomel
 	name = "calomel pill (20u)"
 
-/obj/item/container/pill/calomel/Generate()
+/obj/item/container/edible/pill/calomel/Generate()
 	reagents.add_reagent(/reagent/medicine/purge,20)
 	return ..()
 
-/obj/item/container/pill/charcoal
+/obj/item/container/edible/pill/charcoal
 	name = "charcoal pill (20u)"
 
-/obj/item/container/pill/charcoal/Generate()
+/obj/item/container/edible/pill/charcoal/Generate()
 	reagents.add_reagent(/reagent/medicine/charcoal,20)
 	return ..()
 
-/obj/item/container/pill/iron
+/obj/item/container/edible/pill/iron
 	name = "iron pill (20u)"
 
-/obj/item/container/pill/iron/Generate()
+/obj/item/container/edible/pill/iron/Generate()
 	reagents.add_reagent(/reagent/iron,20)
 	return ..()
 
-/obj/item/container/pill/space_drugs
+/obj/item/container/edible/pill/space_drugs
 	name = "space drugs (5u)"
 	icon_state = "circle"
 
-/obj/item/container/pill/space_drugs/Generate()
+/obj/item/container/edible/pill/space_drugs/Generate()
 	reagents.add_reagent(/reagent/drug/space,5)
 	return ..()
 
 
-/obj/item/container/pill/space_dust
+/obj/item/container/edible/pill/space_dust
 	name = "space dust (10u)"
 	icon_state = "circle"
 
-/obj/item/container/pill/space_dust/Generate()
+/obj/item/container/edible/pill/space_dust/Generate()
 	reagents.add_reagent(/reagent/drug/liberty_dust,10)
 	return ..()
 
 
-/obj/item/container/pill/omnizine
+/obj/item/container/edible/pill/omnizine
 	name = "omnizine pill (20u)"
 
-/obj/item/container/pill/omnizine/Generate()
+/obj/item/container/edible/pill/omnizine/Generate()
 	reagents.add_reagent(/reagent/medicine/omnizine,20)
 	return ..()
 
-/obj/item/container/pill/antihol
+/obj/item/container/edible/pill/antihol
 	name = "antihol pill (20u)"
 
-/obj/item/container/pill/antihol/Generate()
+/obj/item/container/edible/pill/antihol/Generate()
 	reagents.add_reagent(/reagent/medicine/antihol,20)
 	return ..()
 
-/obj/item/container/pill/assprin
+/obj/item/container/edible/pill/assprin
 	name = "assprin pill (10u)"
 
-/obj/item/container/pill/assprin/Generate()
+/obj/item/container/edible/pill/assprin/Generate()
 	reagents.add_reagent(/reagent/medicine/painkiller/assprin,10)
 	return ..()

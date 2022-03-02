@@ -7,7 +7,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
-	rarity = RARITY_MYTHICAL
+
 
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 
@@ -22,14 +22,7 @@
 		"light" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 40,
-		ARCANE = -40,
-		BOMB = 40
-	)
+	armor = /armor/military/light/hard
 
 	value = 300
 
@@ -49,14 +42,7 @@
 		"medium" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -60,
-		BOMB = 40
-	)
+	armor = /armor/military/medium/hard
 
 	value = 600
 
@@ -75,14 +61,7 @@
 		"heavy" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 40,
-		ARCANE = -80,
-		BOMB = 40
-	)
+	armor = /armor/military/heavy/hard
 
 	value = 1200
 

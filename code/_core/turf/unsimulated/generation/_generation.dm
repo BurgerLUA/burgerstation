@@ -28,12 +28,20 @@
 /turf/unsimulated/generation/surface/surface_turf
 	icon_state = "surface_turf"
 
-/turf/unsimulated/generation/surface/cave_turf
-	icon_state = "cave_turf"
-
 /turf/unsimulated/generation/surface/surface_path_turf
 	icon_state = "surface_path_turf"
 
+/turf/unsimulated/generation/surface/cave_turf
+	icon_state = "cave_turf"
+
 /turf/unsimulated/generation/surface/cave_path_turf
 	icon_state = "cave_path_turf"
+
+/turf/unsimulated/generation/surface/snow_turf
+	icon_state = "snow_turf"
+
+/turf/unsimulated/generation/surface/snow_path_turf
+	icon_state = "snow_path_turf"
+
+
 

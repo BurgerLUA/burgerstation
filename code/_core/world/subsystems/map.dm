@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(map)
 	var/list/z_icons = list()
 
 /subsystem/map/Initialize()
-	. = ..()
+	set background = 1
 	log_subsystem(src.name,"Creating maps...")
 	for(var/z=1,z<=world.maxz,z++)
 		var/icon/I = new/icon('icons/map_template.dmi',"template")
@@ -41,4 +41,6 @@ SUBSYSTEM_DEF(map)
 				CHECK_TICK(tick_usage_max,FPS_SERVER)
 		I.Scale(world.maxx*2,world.maxy*2)
 		z_icons += I
+
+	. = ..()
 

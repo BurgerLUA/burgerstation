@@ -2,18 +2,13 @@
 	name = "right duck"
 	desc = "Ducks were harmed in the making of these slippers."
 	desc_extended = "Squeaky footsteps included for all your ducking needs. Quack!"
-	rarity = RARITY_MYTHICAL
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
 	icon = 'icons/obj/item/clothing/shoes/duck.dmi'
 
-	defense_rating = list(
-		BLUNT = 20,
-		ARCANE = 20,
-		HOLY = 60,
-		DARK = -60
-	)
+	armor = /armor/cloth/clown
 
 	size = SIZE_2
 
@@ -40,4 +35,5 @@
 
 //sqeak when stepped on
 /obj/item/clothing/feet/shoes/duck/Crossed(atom/movable/O)
+	. = ..()
 	play_sound(pick('sound/effects/footsteps/quack1.ogg','sound/effects/footsteps/quack2.ogg'),get_turf(src),range_max=VIEW_RANGE)

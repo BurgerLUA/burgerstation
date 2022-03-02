@@ -2,7 +2,7 @@
 	name = "plant analyzer"
 	desc = "Minmaxxing plant setups since 2520."
 	desc_extended = "An incredible complex sensor that sends (mostly) harmless radiation waves to calculate a plant's attributes and health."
-	rarity = RARITY_COMMON
+
 	icon = 'icons/obj/item/analyzers/armor.dmi'
 	icon_state = "inventory"
 	value = 100

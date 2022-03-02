@@ -33,8 +33,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308/ap,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/honey,
-		/obj/item/magazine/honey,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
@@ -67,13 +65,13 @@
 		/obj/item/storage/kit/toxin/filled,
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/syndicate/filled,
-		/obj/item/container/beaker/bottle/epinephrine,
-		/obj/item/container/beaker/bottle/morphine,
-		/obj/item/container/beaker/bottle/calomel,
-		/obj/item/container/beaker/vial/zombie_antidote,
+		/obj/item/container/simple/beaker/bottle/epinephrine,
+		/obj/item/container/simple/beaker/bottle/morphine,
+		/obj/item/container/simple/beaker/bottle/calomel,
+		/obj/item/container/simple/beaker/vial/zombie_antidote,
 		/obj/item/container/syringe,
 		/obj/item/container/blood_pack/full/synthblood,
-		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 		/obj/item/storage/pillbottle/assprin,
 		/obj/item/container/syringe/medipen/hypospray
@@ -84,6 +82,10 @@
 /obj/structure/interactive/vending/syndicate/attachment
 	name = "syndicate attachment vendor"
 	icon_state = "attachment"
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 	stored_types = list(
 		/obj/item/attachment/barrel/charger,
 		/obj/item/attachment/barrel/compensator,
@@ -107,6 +109,10 @@
 /obj/structure/interactive/vending/syndicate/prize
 	name = "hacked prize vendor"
 	icon_state = "prize_hacked"
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 	stored_types = list(
 		/obj/item/announcement/syndicate,
@@ -121,7 +127,7 @@
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
-		/obj/item/deployable/barricade/filled,
+		/obj/item/deployable/barricade{amount=10},
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
 		/obj/item/supply_crate/syndicate,
@@ -134,7 +140,6 @@
 		/obj/item/disk/rcd/glass_window,
 		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
-		/obj/item/disk/rcd/metal_wall/bunker,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
 		/obj/item/disk/rcd/chair,
@@ -160,22 +165,21 @@
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
-		/obj/item/clothing/uniform/antag/rev/officer,
 		/obj/item/clothing/overwear/coat/hos/revfficer,
 		/obj/item/clothing/head/hat/hos/revfficer,
 		/obj/item/clothing/overwear/armor/slavticool,
-		/obj/item/clothing/head/helmet/security/slavticool,
-		/obj/item/clothing/head/helmet/security/slavticool/thermal,
+		/obj/item/clothing/head/helmet/slavticool,
+		/obj/item/clothing/head/helmet/slavticool/thermal,
 		/obj/item/clothing/overwear/hardsuit/exosuit,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/hardsuit/skat,
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
-		/obj/item/deployable/barricade/filled,
+		/obj/item/deployable/barricade{amount=10},
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
-		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/slavic,
 		/obj/item/weapon/melee/toolbox/syndicate,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
@@ -184,7 +188,6 @@
 		/obj/item/disk/rcd/glass_window,
 		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
-		/obj/item/disk/rcd/metal_wall/bunker,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
 		/obj/item/disk/rcd/chair,
@@ -198,7 +201,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/weapon/melee/shield/redstar,
 		/obj/item/weapon/melee/shield/ballistic,
-		/obj/item/storage/cigarettes/russian,
+		/obj/item/storage/cigarettes/slavic,
 		/obj/item/lighter,
 		/obj/item/map
 	)

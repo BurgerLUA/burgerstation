@@ -1,6 +1,6 @@
 /species/moth/
 	name = "Moth"
-	desc = "Still furry"
+	desc = "Still furry."
 	id = "moth"
 	flags_species = SPECIES_MOTH
 	bite_size = 5
@@ -13,6 +13,12 @@
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#F7D896"
 	default_color_hair = "#FFFFFF"
+
+	accent = list(
+		"o" = "ø",
+		"ae" = "æ",
+		"a" = "å"
+	)
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/moth,

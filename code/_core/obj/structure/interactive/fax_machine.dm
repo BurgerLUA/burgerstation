@@ -37,7 +37,7 @@
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
 		return TRUE
 
-	if(is_paper(object))
+	if(istype(object,/obj/item/paper/))
 
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

@@ -73,7 +73,7 @@
 			continue
 		stored_material[material_type] -= material_to_make*1000
 		var/obj/item/material/trash_cube/S = new(placing_turf)
-		S.item_count_current = material_to_make
+		S.amount = material_to_make
 		S.material_id = material_type
 		INITIALIZE(S)
 		FINALIZE(S)

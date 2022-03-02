@@ -43,7 +43,7 @@
 			best_cheese = k
 			best_cheese_value = v
 
-	var/obj/item/container/food/dynamic/cheese/C = new(T)
+	var/obj/item/container/edible/dynamic/cheese/C = new(T)
 	C.icon_state = icon_state
 	INITIALIZE(C)
 	C.reagents.add_reagent(best_cheese,total_milk_volume,original_temperature,FALSE,FALSE)
@@ -124,4 +124,3 @@
 		I.color = reagents.color
 		add_overlay(I)
 
-	

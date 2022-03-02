@@ -11,7 +11,7 @@
 
 	dialogue_id = /dialogue/npc/contractor
 
-	immortal = TRUE
+	health = null
 
 	anchored = TRUE
 	density = TRUE

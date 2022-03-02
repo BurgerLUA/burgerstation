@@ -3,12 +3,9 @@
 	icon = 'icons/obj/item/clothing/hats/nurse.dmi'
 	desc = "Uwu~."
 	desc_extended = "A severely outdated nurse's hat."
-	rarity = RARITY_UNCOMMON
 
-	defense_rating = list(
-		ARCANE = 40,
-		BIO = 40
-	)
+
+	armor = /armor/cloth
 
 	size = SIZE_2
 

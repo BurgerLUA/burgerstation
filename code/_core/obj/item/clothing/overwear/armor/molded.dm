@@ -7,12 +7,7 @@
 
 	size = SIZE_3
 
-	defense_rating = list(
-		BLUNT = 20,
-		PIERCE = 80,
-		ARCANE = -40
-	)
-
+	armor = /armor/military/light/bulletproof
 
 	protected_limbs = list(BODY_TORSO)
 

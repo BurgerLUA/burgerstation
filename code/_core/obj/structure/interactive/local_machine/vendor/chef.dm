@@ -5,9 +5,9 @@
 	stored_types = list(
 		/obj/item/paper/book/cooking,
 		/obj/item/container/cheese_mold/block,
-		/obj/item/container/beaker/glass,
-		/obj/item/container/beaker/bowl,
-		/obj/item/container/beaker/large,
+		/obj/item/container/simple/beaker/glass,
+		/obj/item/container/simple/beaker/bowl,
+		/obj/item/container/simple/beaker/large,
 		/obj/item/clothing/head/helmet/full/paperbag,
 		/obj/item/supply_remote/barbecue,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
@@ -15,7 +15,7 @@
 
 /obj/structure/interactive/vending/chef/wardrobe
 	name = "chef wardrobe vendor"
-	icon_state = "chefdrobe_new"
+	icon_state = "chefdrobe"
 
 	stored_types = list(
 		/obj/item/clothing/underbottom/underwear/boxers,

@@ -1,5 +1,7 @@
 /atom/movable/
 
+	vis_flags = VIS_INHERIT_ID
+
 	step_size = TILE_SIZE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -65,12 +67,15 @@
 	var/enable_chunk_clean = FALSE
 
 /atom/movable/Destroy()
+	if(corner_category)
+		queue_update_edges(get_turf(src))
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
 	grabbing_hand = null
 	force_move(null)
-	return ..()
+	loc = null
+	. = ..()
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 
@@ -158,13 +163,11 @@
 		var/turf/simulated/T = loc
 		T.blocks_air |= blocks_air
 
-
-
-
-
 /atom/movable/Finalize()
+	set_anchored(anchored,TRUE)
+	. = ..()
 	update_value()
-	return ..()
+
 
 /atom/movable/proc/update_value()
 	value = get_base_value()
@@ -183,15 +186,12 @@
 	return TRUE
 
 
-/atom/movable/proc/set_anchored(var/desired_anchored=TRUE)
+/atom/movable/proc/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
 
-	if(anchored == desired_anchored)
+	if(anchored == desired_anchored && !force)
 		return FALSE
 
 	anchored = desired_anchored
-
-	if(!anchored)
-		force_move(loc)
 
 	return TRUE
 

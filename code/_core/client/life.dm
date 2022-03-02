@@ -29,6 +29,10 @@
 			if(A.loc == null)
 				spectate(null)
 
+	if(is_advanced(mob))
+		var/mob/living/advanced/A = mob
+		A.handle_mouse_pointer()
+
 	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
 		del(src)
 

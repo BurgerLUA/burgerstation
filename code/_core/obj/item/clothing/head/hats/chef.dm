@@ -4,10 +4,7 @@
 	desc = "If you can't handle the heat, stay out of the kitchen."
 	desc_extended = "A fancy chef hat. For chefing."
 
-	defense_rating = list(
-		ARCANE = 40,
-		HEAT = 40
-	)
+	armor = /armor/cloth
 
 	size = SIZE_2
 

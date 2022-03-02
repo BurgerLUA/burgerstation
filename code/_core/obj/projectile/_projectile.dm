@@ -185,23 +185,23 @@
 		qdel(src)
 		return TRUE
 
-	if(hit_target_turf && new_loc == target_turf)
-		on_projectile_hit(new_loc)
-		qdel(src)
-		return TRUE
-
 	steps_current += 1
-
-	if(steps_allowed && steps_allowed <= steps_current)
-		on_projectile_hit(new_loc)
-		qdel(src)
-		return TRUE
 
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	for(var/k in collide_with)
 		on_projectile_hit(k)
 
 	if(penetrations_left < 0)
+		qdel(src)
+		return TRUE
+
+	if(steps_allowed && steps_allowed <= steps_current)
+		on_projectile_hit(new_loc)
+		qdel(src)
+		return TRUE
+
+	if(hit_target_turf && new_loc == target_turf)
+		on_projectile_hit(new_loc)
 		qdel(src)
 		return TRUE
 
@@ -238,7 +238,7 @@
 	var/rounded_y = CEILING(pixel_y_float,1)
 
 	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough to animate.
-		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < 20)
+		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
 			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
 		else
 			pixel_x = rounded_x

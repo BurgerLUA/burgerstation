@@ -111,5 +111,6 @@
 #define LAYER_MOB_CLOTHING_MASK        FLOAT_LAYER + 0.75
 #define LAYER_MOB_CLOTHING_HELMET      FLOAT_LAYER + 0.76
 #define LAYER_MOB_CLOTHING_ALL         FLOAT_LAYER + 0.77
+#define LAYER_MOB_BLOB                 FLOAT_LAYER + 0.78
 
 #define LAYER_MOB_HELD                 FLOAT_LAYER + 0.81

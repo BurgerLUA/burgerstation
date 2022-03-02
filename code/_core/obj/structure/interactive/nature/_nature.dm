@@ -85,7 +85,7 @@ obj/structure/scenery/lolipop_tree
 
 	var/top_color = "#FFFFFF"
 
-obj/structure/scenery/lolipop_tree/New()
+/obj/structure/scenery/lolipop_tree/New()
 
 	switch(rand(1,3))
 		if(1)
@@ -95,25 +95,21 @@ obj/structure/scenery/lolipop_tree/New()
 		if(3)
 			top_color = rgb(pick(0,255),pick(0,255),255)
 
+	. = ..()
+
+/obj/structure/scenery/lolipop_tree/Finalize()
+	. = ..()
 	update_sprite()
 
-	return ..()
 
+obj/structure/scenery/lolipop_tree/update_overlays()
 
-obj/structure/scenery/lolipop_tree/update_icon()
+	. = ..()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+	var/image/I2 = new/image(initial(icon),"top")
+	I2.color = top_color
+	add_overlay(I2)
 
-	var/icon/I = new/icon(icon,icon_state)
-	var/icon/I2 = new/icon(icon,"top")
-
-	I2.Blend(top_color,ICON_MULTIPLY)
-	I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
 
 obj/structure/scenery/peppermint
 	name = "red peppermint"

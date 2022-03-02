@@ -40,7 +40,7 @@
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/seed,
-		/obj/item/container/food/plant
+		/obj/item/container/edible/plant
 	)
 
 	value = 30
@@ -70,7 +70,7 @@
 	for(var/k in inventories)
 		CHECK_TICK(50,FPS_SERVER*4)
 		var/obj/hud/inventory/I = k
-		for(var/obj/item/container/food/plant/P in I.contents)
+		for(var/obj/item/container/edible/plant/P in I.contents)
 			CHECK_TICK(50,FPS_SERVER*2)
 			if(!P.plant_type)
 				continue
@@ -140,8 +140,8 @@
 	container_max_size = SIZE_2
 	container_max_slots = 10
 	container_whitelist = list(
-		/obj/item/container/beaker,
-		/obj/item/container/pill,
+		/obj/item/container/simple/beaker,
+		/obj/item/container/edible/pill,
 		/obj/item/container/syringe
 	)
 
@@ -159,7 +159,7 @@
 	container_max_size = SIZE_0
 	container_max_slots = 30
 	container_whitelist = list(
-		/obj/item/container/pill,
+		/obj/item/container/edible/pill,
 	)
 
 	var/color_lid = "#FFFFFF"
@@ -173,7 +173,7 @@
 	value = 20
 
 
-/obj/item/storage/pillbottle/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
@@ -237,7 +237,7 @@
 
 /obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/bicaridine(src)
+		new /obj/item/container/edible/pill/bicaridine(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/bicaridine_small
@@ -246,7 +246,7 @@
 
 /obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/bicaridine(src)
+		new /obj/item/container/edible/pill/bicaridine(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/kelotane
@@ -255,7 +255,7 @@
 
 /obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/kelotane(src)
+		new /obj/item/container/edible/pill/kelotane(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/kelotane_small
@@ -264,7 +264,7 @@
 
 /obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/kelotane(src)
+		new /obj/item/container/edible/pill/kelotane(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/dylovene
@@ -273,7 +273,7 @@
 
 /obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/dylovene(src)
+		new /obj/item/container/edible/pill/dylovene(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/dylovene_small
@@ -282,7 +282,7 @@
 
 /obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/dylovene(src)
+		new /obj/item/container/edible/pill/dylovene(src)
 	. = ..()
 
 
@@ -292,7 +292,7 @@
 
 /obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/iron(src)
+		new /obj/item/container/edible/pill/iron(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/iron_small
@@ -301,7 +301,7 @@
 
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/iron(src)
+		new /obj/item/container/edible/pill/iron(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/omnizine
@@ -310,7 +310,7 @@
 
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/omnizine(src)
+		new /obj/item/container/edible/pill/omnizine(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/charcoal
@@ -319,7 +319,7 @@
 
 /obj/item/storage/pillbottle/charcoal/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/charcoal(src)
+		new /obj/item/container/edible/pill/charcoal(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/antihol_small
@@ -328,7 +328,7 @@
 
 /obj/item/storage/pillbottle/antihol_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/antihol(src)
+		new /obj/item/container/edible/pill/antihol(src)
 	. = ..()
 
 /obj/item/storage/pillbottle/assprin
@@ -337,7 +337,7 @@
 
 /obj/item/storage/pillbottle/assprin/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/assprin(src)
+		new /obj/item/container/edible/pill/assprin(src)
 	. = ..()
 
 
@@ -369,7 +369,7 @@
 	if(goods && hoard > 0)
 		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")
@@ -398,13 +398,13 @@
 	if(hoard)
 		if(istype(object,/obj/hud/inventory))
 			var/mob/living/advanced/C = caller
-			var/maxstack = goods.item_count_max
+			var/maxstack = goods.amount_max
 			if(hoard <= maxstack)
 				maxstack = hoard
-			if((goods.item_count_max == 1) || (hoard == 1))
+			if((goods.amount_max == 1) || (hoard == 1))
 				var/obj/item/M = new goods.type
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 				C.to_chat(span("notice","You take out a single [M.name]."))
 				hoard--
 				INTERACT_DELAY(1)
@@ -418,18 +418,18 @@
 			if(!choice) return TRUE
 			if(choice >= maxstack)
 				var/obj/item/M = new goods.type
-				M.item_count_current = maxstack
+				M.amount = maxstack
 				M.update_sprite()
 				hoard -= maxstack
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 			else if(choice < maxstack)
 				var/obj/item/M = new goods.type
-				M.item_count_current = choice
+				M.amount = choice
 				M.update_sprite()
 				hoard -= choice
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 			if (!hoard)
 				caller.to_chat(span("notice","\The [src.name] is now empty."))
 				goods = null
@@ -438,7 +438,7 @@
 		if(ispath(I.type,targetitem))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			hoard += I.item_count_current
+			hoard += I.amount
 			play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 			qdel(I)
 			return TRUE
@@ -466,8 +466,8 @@
 					if(ispath(I.type,/obj/item/coin/antag_token))
 						targetitem = /obj/item/coin/antag_token
 					goods = I
-					hoard = I.item_count_current
-					I.item_count_current = 1
+					hoard = I.amount
+					I.amount = 1
 					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 					caller.to_chat(span("notice","The [src.name] now accepts [I.name]\s."))
 					qdel(I)

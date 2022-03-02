@@ -123,11 +123,11 @@
 	if(enabled)
 		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 		force_move(owner.loc)
-		immortal = FALSE
+		remove_status_effect(IMMORTAL)
 		mouse_opacity = initial(mouse_opacity)
 	else
 		update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
-		immortal = TRUE
+		add_status_effect(IMMORTAL)
 		mouse_opacity = 0
 
 	set_dir(owner.dir,TRUE)

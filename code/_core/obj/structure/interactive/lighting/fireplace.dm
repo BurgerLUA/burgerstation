@@ -13,41 +13,28 @@
 
 	plane = PLANE_OBJ
 
-/obj/structure/interactive/lighting/fireplace/New()
+/obj/structure/interactive/lighting/fireplace/Finalize()
+	. = ..()
 	update_sprite()
-	return ..()
 
-/obj/structure/interactive/lighting/fireplace/update_icon()
+/obj/structure/interactive/lighting/fireplace/update_overlays()
+	. = ..()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	if(desired_light_range <= 0)
-		return ..()
-
-	var/light_mod = clamp(round(desired_light_range-1),0,4)
-	var/icon/I = new /icon(icon,icon_state)
-	var/icon/F = new /icon(icon,"fireplace_fire[light_mod]")
-
-	I.Blend(F,ICON_OVERLAY)
-
-	if(light_mod > 0)
-		var/icon/F2 = new /icon(icon,"fireplace_glow")
-		I.Blend(F2,ICON_OVERLAY)
-
-	icon = I
+	if(desired_light_range > 0)
+		var/light_mod = min(CEILING(desired_light_range/2,1),4)
+		var/image/G = new/image(initial(icon),"fireplace_glow")
+		add_overlay(G)
+		var/image/L = new/image(initial(icon),"fireplace_fire[light_mod]")
+		add_overlay(L)
 
 /obj/structure/interactive/lighting/fireplace/fire01
 	desired_light_range = 2
 
 /obj/structure/interactive/lighting/fireplace/fire02
-	desired_light_range = 3
-
-/obj/structure/interactive/lighting/fireplace/fire03
 	desired_light_range = 4
 
-/obj/structure/interactive/lighting/fireplace/fire04
-	desired_light_range = 5
-
-/obj/structure/interactive/lighting/fireplace/fire05
+/obj/structure/interactive/lighting/fireplace/fire03
 	desired_light_range = 6
+
+/obj/structure/interactive/lighting/fireplace/fire04
+	desired_light_range = 8

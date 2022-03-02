@@ -6,25 +6,17 @@
 
 	)
 
-/loot/supply_crate/bos
-	loot_table = list(
-		/loot/armor/t45d = 1,
-		/loot/armor/t51b = 1,
-		/loot/armor/apa = 1,
-		/loot/armor/ncrpa = 1
-	)
-
 /loot/supply_crate/all
 	loot_table = list(
-		/loot/supply_crate/russian = 1,
+		/loot/supply_crate/slavic = 1,
 		/loot/supply_crate/nanotrasen = 1,
-		/loot/supply_crate/american = 1,
+		/loot/supply_crate/yankee = 1,
 		/loot/supply_crate/syndicate = 1,
 		/loot/supply_crate/magic = 1,
 		/loot/supply_crate/medicine = 1
 	)
 
-/loot/supply_crate/russian
+/loot/supply_crate/slavic
 	loot_table = list(
 		/loot/weapon/pistol/yarygin = 1,
 		/loot/weapon/pistol/nagant = 1,
@@ -74,10 +66,10 @@
 		/loot/weapon/smg/fbi = 1,
 		/loot/weapon/smg/nanotech = 1,
 		/loot/weapon/smg/pdw = 1,
-		/loot/weapon/smg/tactical/nt = 1
+		/loot/weapon/smg/tactical = 1
 	)
 
-/loot/supply_crate/american
+/loot/supply_crate/yankee
 	loot_table = list(
 		/loot/weapon/pistol/deagle = 1,
 		/loot/weapon/energy/dynamic = 1,
@@ -87,7 +79,6 @@
 		/loot/weapon/pistol/big_game = 1,
 		/loot/weapon/pistol/comp = 1,
 		/loot/weapon/pistol/horse = 1,
-		/loot/weapon/rifle/assault = 1,
 		/loot/weapon/rifle/civ_carbine = 1,
 		/loot/weapon/rifle/dmca = 1,
 		/loot/weapon/shotgun/combat = 1,

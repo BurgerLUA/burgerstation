@@ -5,6 +5,8 @@ SUBSYSTEM_DEF(ore)
 
 /subsystem/ore/Initialize()
 
+	set background = 1
+
 	var/spawned_ore_chunks = 0
 
 	for(var/turf/simulated/floor/S in world)
@@ -30,4 +32,4 @@ SUBSYSTEM_DEF(ore)
 
 	log_subsystem(name,"Spawned [spawned_ore_chunks] ore chunks.")
 
-	return ..()
+	. = ..()

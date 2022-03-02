@@ -7,6 +7,7 @@
 /proc/random_color()
 	return rgb(rand(0,255),rand(0,255),rand(0,255))
 
+
 // Couple of helpers to get the RGB of a hexadecimal colour string.
 /proc/GetRedPart(var/hexadecimal)
 	return hex2num(copytext(hexadecimal, 2, 4))

@@ -3,13 +3,8 @@
 	desc = "Made in Space China."
 	desc_extended = "A cheaply made plastic ninja mask. Supposed to make you go faster."
 	icon = 'icons/obj/item/clothing/masks/ninja.dmi'
-	rarity = RARITY_MYTHICAL
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10
-	)
+	armor = /armor/mechanical
 
 	size = SIZE_1
 

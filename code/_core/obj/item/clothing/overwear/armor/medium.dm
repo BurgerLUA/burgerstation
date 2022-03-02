@@ -6,12 +6,7 @@
 
 	value = 120
 
-	defense_rating = list(
-		BLADE = 80,
-		BLUNT = 40,
-		PIERCE = 40,
-		ARCANE = -40
-	)
+	armor = /armor/military/light
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
 

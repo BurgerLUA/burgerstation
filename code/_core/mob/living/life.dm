@@ -45,9 +45,6 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	plane = PLANE_OBJ
-	layer = 1000
-
 	handle_horizontal()
 
 	if(following)
@@ -99,9 +96,6 @@
 		create_gold_drop(T,CEILING(drops_gold,1))
 		drops_gold = 0
 
-	if(delete_on_death)
-		dust()
-
 	return TRUE
 
 
@@ -129,15 +123,13 @@
 */
 
 /mob/living/proc/revive()
+	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 	hit_logs = list() //Clear logs.
 	movement_flags = 0x0
 	attack_flags = 0x0
 	dead = FALSE
 	remove_status_effect(CRIT)
-	plane = initial(plane)
-	layer = initial(layer)
-	if(ai)
-		ai.set_active(TRUE)
+	if(ai) ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
 	if(health)
@@ -214,6 +206,14 @@
 
 	HOOK_CALL("post_death")
 
+	if(expiration_time == -1)
+		make_unrevivable()
+	else if(expiration_time > 0)
+		CALLBACK("\ref[src]_make_unrevivable",expiration_time,src,.proc/make_unrevivable)
+
+	if(delete_on_death)
+		dust()
+
 	return TRUE
 
 /mob/living/proc/on_kill(var/mob/living/victim)
@@ -246,10 +246,12 @@
 		var/matrix/M = .
 		M.Turn(stun_angle)
 
+/mob/living/proc/should_be_horizontal()
+	return dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
+
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
-
+	var/desired_horizontal = should_be_horizontal()
 	if(desired_horizontal != horizontal)
 		horizontal = desired_horizontal
 		if(horizontal)
@@ -259,7 +261,7 @@
 		else
 			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
-
+		update_plane()
 
 	return desired_horizontal
 
@@ -272,8 +274,6 @@
 	handle_health_buffer()
 
 	update_alpha(handle_alpha())
-
-	update_plane()
 
 	if(health && queue_health_update)
 		health.update_health()
@@ -292,11 +292,12 @@
 	return TRUE
 
 /mob/living/proc/update_plane()
-
-	if(alpha != 255 || horizontal)
+	if(alpha != 255)
 		plane = PLANE_MOB_STEALTH
+	else if(horizontal)
+		plane = PLANE_MOB_SMALL
 	else
-		plane = PLANE_MOB
+		plane = initial(plane)
 
 /mob/living/proc/handle_hunger()
 
@@ -557,3 +558,18 @@ mob/living/proc/on_life_slow()
 	new/obj/effect/temp/fist(T,4,"#FFFFFF")
 	play_sound('sound/effects/anima_fragment_attack.ogg',T,range_max=VIEW_RANGE)
 	on_crush()
+
+
+/mob/living/proc/make_unrevivable() //only applies to players.
+
+	if(client)
+		var/client/C = client
+		var/turf/T = get_turf(src)
+		C.make_ghost(T ? T : locate(128,128,1))
+		to_chat(span("danger","You can no longer be revived..."))
+	else
+		ckey_last = null
+
+	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
+
+	return TRUE

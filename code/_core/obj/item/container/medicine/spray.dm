@@ -42,8 +42,8 @@
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
-	if(istype(object,/obj/item/container/medicine))
-		var/obj/item/container/medicine/M = object
+	if(istype(object,/obj/item/container/healing))
+		var/obj/item/container/healing/M = object
 		if(M.robotic)
 			caller.to_chat(span("warning","\The [M.name] cannot be infused!"))
 			return TRUE

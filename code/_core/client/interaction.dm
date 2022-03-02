@@ -2,11 +2,17 @@
 
 	. = 0x0
 
-	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("left" in params) :("right" in params))
-		. |= CLICK_RIGHT
+	if(selected_hand)
+		if(selected_hand == LEFT_HAND)
+			. |= CLICK_RIGHT
+		else
+			. |= CLICK_LEFT
+	else
+		if((settings.loaded_data["swap_mouse"] && check_swap) ? ("left" in params) :("right" in params))
+			. |= CLICK_RIGHT
 
-	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
-		. |= CLICK_LEFT
+		if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
+			. |= CLICK_LEFT
 
 	if("middle" in params)
 		. |= CLICK_MIDDLE
@@ -29,7 +35,7 @@
 	object = object.defer_click_on_object(mob,location,control,new_params)
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
-	return ..()
+	. = ..()
 
 /client/Click(var/atom/object,location,control,params)
 
@@ -56,7 +62,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)
 
-	return ..()
+	. = ..()
 
 /client/MouseDown(var/atom/object,location,control,params)
 
@@ -111,7 +117,7 @@
 		else
 			examine(object)
 
-	return ..()
+	. = ..()
 
 /client/MouseUp(var/atom/object,location,control,params)
 
@@ -142,7 +148,7 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.on_right_up(object,location,control,new_params)
 
-	return ..()
+	. = ..()
 
 /client/MouseDrop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
@@ -172,7 +178,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,new_params)
 
-	return ..()
+	. = ..()
 
 
 /client/MouseDrag(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
@@ -186,7 +192,7 @@
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
-		return ..()
+		return FALSE
 
 	. = ..()
 

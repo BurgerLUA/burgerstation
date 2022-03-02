@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/holy45
-	name = "Holy .45 M1911 Pistol"
+	name = "Holy .45 M1984 Pistol"
 	desc = "We can't expect God to do all the work."
-	desc_extended = "The tool to carry out God's will."
+	desc_extended = "A special replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland."
 	value = 2000
 
 	tier = 4

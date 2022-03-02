@@ -1,4 +1,4 @@
-/obj/item/container/beaker/bucket
+/obj/item/container/simple/beaker/bucket
 	name = "bucket"
 	desc = "A big bucket"
 	desc_extended = "A very large bucket that can hold up to 500u of reagents."
@@ -12,7 +12,7 @@
 
 	color = COLOR_GREY
 
-/obj/item/container/beaker/bucket/update_overlays()
+/obj/item/container/simple/beaker/bucket/update_overlays()
 
 	. = ..()
 
@@ -21,11 +21,11 @@
 	I.color = COLOR_STEEL
 	add_overlay(I)
 
-	
-/obj/item/container/beaker/bucket/water
+
+/obj/item/container/simple/beaker/bucket/water
 	name = "water bucket"
 	color = COLOR_BLUE
 
-/obj/item/container/beaker/bucket/water/Generate()
+/obj/item/container/simple/beaker/bucket/water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()

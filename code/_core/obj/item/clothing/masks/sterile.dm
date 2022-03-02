@@ -4,11 +4,8 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Protect others!"
 	desc_extended = "A face mask designed to prevent the spread of airborne viruses."
-	rarity = RARITY_UNCOMMON
 
-	defense_rating = list(
-		BIO = 80,
-	)
+	armor = /armor/cloth/bio
 
 	size = SIZE_2
 

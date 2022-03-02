@@ -12,12 +12,8 @@
 
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 20,
-		PIERCE = 20
-	)
+	armor = /armor/leather
 
-	rarity = RARITY_UNCOMMON
 
 	value = 40
 
@@ -39,12 +35,12 @@
 	value_burgerbux = 1
 
 /obj/item/clothing/belt/storage/medical/filled/fill_inventory()
-	new /obj/item/container/beaker/bottle/bicaridine(src)
-	new /obj/item/container/beaker/bottle/kelotane(src)
-	new /obj/item/container/beaker/bottle/dylovene(src)
+	new /obj/item/container/simple/beaker/bottle/bicaridine(src)
+	new /obj/item/container/simple/beaker/bottle/kelotane(src)
+	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/syringe(src)
-	new /obj/item/container/medicine/trauma_kit(src)
-	new /obj/item/container/medicine/burn_kit(src)
+	new /obj/item/container/healing/trauma_kit(src)
+	new /obj/item/container/healing/burn_kit(src)
 	new /obj/item/container/spray/silver_sulfadiazine(src)
 	new /obj/item/container/spray/styptic_powder(src)
 	. = ..()
@@ -64,12 +60,7 @@
 
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 30,
-		PIERCE = 30
-	)
-
-	rarity = RARITY_UNCOMMON
+	armor = /armor/cloth/reduced
 
 	protected_limbs = list(BODY_GROIN,BODY_TORSO)
 

@@ -29,10 +29,10 @@
 	mana_base = 50
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_bear/,
-		/obj/item/container/food/dynamic/meat/raw_bear/,
-		/obj/item/container/food/dynamic/meat/raw_bear/,
-		/obj/item/container/food/dynamic/meat/raw_bear/
+		/obj/item/container/edible/dynamic/meat/raw_bear/,
+		/obj/item/container/edible/dynamic/meat/raw_bear/,
+		/obj/item/container/edible/dynamic/meat/raw_bear/,
+		/obj/item/container/edible/dynamic/meat/raw_bear/
 	)
 
 	size = SIZE_LARGE
@@ -92,7 +92,7 @@
 	level = 18
 
 /mob/living/simple/bear/armored/revolutionary
-	name = "armored russian bear"
+	name = "armored slavic bear"
 	loyalty_tag = "Revolutionary"
 	iff_tag = "Revolutionary"
 

@@ -81,6 +81,13 @@
 			T.old_living = list()
 		T.old_living |= src
 		src.old_turf = T
+		if(is_simulated(old_loc) && !horizontal && move_mod > 1)
+			var/turf/simulated/S = T
+			var/slip_strength = S.get_slip_strength(src)
+			if(slip_strength >= 4 - move_mod)
+				var/obj/item/wet_floor_sign/WFS = locate() in range(1,S)
+				if(!WFS || move_mod > 2)
+					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
 
 	handle_tabled()
 
@@ -114,6 +121,22 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
+	if(dash_target && dash_target.loc && dash_amount > 0 && !horizontal && can_move() && isturf(src.loc)) //can_move dose not consider delays.
+		var/final_direction = get_dir(src,dash_target)
+		if(!final_direction)
+			dash_amount = 0
+			return TRUE
+		glide_size = step_size/adjust_delay
+		src.set_dir(final_direction)
+		if(!Move(get_step(src,final_direction)))
+			dash_amount = 0
+		else
+			dash_amount--
+		return TRUE
+	else
+		dash_amount = 0
+		dash_target = null
+
 	if(move_dir) //If you're actuall moving.
 		if(!can_move())
 			return FALSE
@@ -133,17 +156,15 @@
 
 	. = ..()
 
-/mob/living/get_movement_delay()
+/mob/living/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
 	if(is_sneaking)
 		. *= max(2 - stealth_mod*0.5,1)
 
-	. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
-
-	if(!has_status_effect(ADRENALINE))
-		. *= 1.1
+	if(ckey_last)
+		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
 	if(intoxication)
 		. += intoxication*0.003
@@ -179,9 +200,9 @@
 
 /mob/living/proc/update_alpha(var/desired_alpha)
 	if(alpha != desired_alpha)
-		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = SECONDS_TO_DECISECONDS(1))
+		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = TICKS_TO_DECISECONDS(LIFE_TICK))
+		update_plane()
 		return TRUE
-
 	return FALSE
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)

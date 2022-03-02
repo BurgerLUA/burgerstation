@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12
 	name = "\improper 5.45x39mm AK-12"
 	desc = "A nuu cheeki breeki i v damkee!"
-	desc_extended = "AK-12 is a 5.45x39mm fully automatic rifle renowned for its precision and the ability to shoot at faster rates than the more widespread AK-13. Smaller caliber allows it to have less recoil, yet it doesn't make it any weaker - rifle is fine, as always. Currently in use by the Space Russia's special forces (they don't really like to change equipment if it works finely) and elite revolutionaries, seemingly receiving batches of this weapon by black markets and deals with the government. Cheap as hell, effective and easy to maintain - a dream weapon for anyone, but rare to come by."
+	desc_extended = "AK-12 is a 5.45x39mm fully automatic rifle renowned for its precision and the ability to shoot at faster rates than the more widespread AK-13. Smaller caliber allows it to have less recoil, yet it doesn't make it any weaker - rifle is fine, as always. Currently in use by the Space Slav Federation special forces (they don't really like to change equipment if it works finely) and elite revolutionaries, seemingly receiving batches of this weapon by black markets and deals with the government. Cheap as hell, effective and easy to maintain - a dream weapon for anyone, but rare to come by."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle_2.dmi'
 	icon_state = "inventory"
 	value = 2000
@@ -10,7 +10,7 @@
 
 	shoot_delay = 1.1
 
-	shoot_sounds = list('sound/weapons/russia/abakan.ogg')
+	shoot_sounds = list('sound/weapons/slavic/abakan.ogg')
 
 	firemodes = list("automatic","semi-automatic")
 

@@ -87,7 +87,7 @@
 
 
 /obj/item/storage/ammo/buckshot_23
-	name = "box of russian shotgun buckshot"
+	name = "box of slavic shotgun buckshot"
 	desc_extended = "An ammo box that can hold 16 23x75mmR shotgun buckshot."
 	icon_state = "23buck"
 
@@ -101,7 +101,7 @@
 	. = ..()
 
 /obj/item/storage/ammo/slug_23
-	name = "box of russian shotgun slugs"
+	name = "box of slavic shotgun slugs"
 	desc_extended = "An ammo box that can hold 16 23x75mmR shotgun slugs."
 	icon_state = "23slug"
 
@@ -115,7 +115,7 @@
 	. = ..()
 
 /obj/item/storage/ammo/fire_23
-	name = "box of russian shotgun incendiary slugs"
+	name = "box of slavic shotgun incendiary slugs"
 	desc_extended = "An ammo box that can hold 16 23x75mmR shotgun incendiary slugs."
 	icon_state = "23fire"
 
@@ -129,7 +129,7 @@
 	. = ..()
 
 /obj/item/storage/ammo/rubber_23
-	name = "box of russian shotgun rubber slugs"
+	name = "box of slavic shotgun rubber slugs"
 	desc_extended = "An ammo box that can hold 16 23x75mmR shotgun rubber slugs."
 	icon_state = "23rubber"
 

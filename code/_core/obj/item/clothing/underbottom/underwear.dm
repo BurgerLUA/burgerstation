@@ -13,11 +13,6 @@
 	icon = 'icons/obj/item/clothing/underwear/boxers_new.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
-	defense_rating = list(
-		ARCANE = 10,
-		COLD = 10,
-	)
-
 	dyeable = TRUE
 
 	value = 10
@@ -48,13 +43,7 @@
 	icon = 'icons/obj/item/clothing/underwear/long_john.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
-	rarity = RARITY_UNCOMMON
-
-	defense_rating = list(
-		ARCANE = 10,
-		HEAT = -20,
-		COLD = 20,
-	)
+	armor = /armor/cloth
 
 	dyeable = TRUE
 
@@ -67,11 +56,6 @@
 	icon = 'icons/obj/item/clothing/underwear/panty.dmi'
 	desc = "The choice of women, femme boys, and Programmers alike"
 	desc_extended = "A pair of slim underwear."
-
-	defense_rating = list(
-		ARCANE = 10,
-		COLD = 10,
-	)
 
 	dyeable = TRUE
 
@@ -97,13 +81,6 @@
 	desc_extended = "why"
 	icon = 'icons/obj/item/clothing/underwear/neko_panty.dmi'
 
-	rarity = RARITY_MYTHICAL
-
-	defense_rating = list(
-		DARK = 20,
-		HOLY = -20
-	)
-
 	value = 500
 
 /obj/item/clothing/underbottom/underwear/thong
@@ -112,10 +89,6 @@
 	desc_extended = "Possibly the barest minimum legal requirement to qualify as underwear."
 	icon = 'icons/obj/item/clothing/underwear/thong.dmi'
 	color = COLOR_WHITE
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = -20,
-	)
 
 	dyeable = TRUE
 
@@ -128,10 +101,6 @@
 	desc = "Emergency Underwear"
 	desc_extended = "For when you don't have sewing tools available, this will do."
 	icon = 'icons/obj/item/clothing/underwear/loincloth.dmi'
-
-	defense_rating = list(
-		ARCANE = 20
-	)
 
 	value = 5
 

@@ -4,7 +4,7 @@
 	desc_extended = "A headset for communicating with your fellows. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
 	icon = 'icons/obj/item/clothing/ears/headset.dmi'
 
-	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
+	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset/nanotrasen
 
 /obj/item/clothing/ears/headset/Finalize()
 	if(ispath(stored_radio))
@@ -30,7 +30,7 @@
 /obj/item/clothing/ears/headset/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
 
-/obj/item/clothing/ears/headset/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/ears/headset/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_radio")
 
@@ -41,28 +41,24 @@
 /obj/item/clothing/ears/headset/syndicate
 	name = "syndicate headset"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
-	stored_radio = /obj/item/device/radio/syndicate
+	stored_radio = /obj/item/device/radio/headset/syndicate
 
 /obj/item/clothing/ears/headset/mercenary
 	name = "mercenary headset"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
-	stored_radio = /obj/item/device/radio/mercenary
+	stored_radio = /obj/item/device/radio/headset/mercenary
 
 /obj/item/clothing/ears/headset/revolutionary
 	name = "revolutionary headset"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
-	stored_radio = /obj/item/device/radio/revolutionary
-
-/obj/item/clothing/ears/headset/virtual_reality
-	name = "auto headset"
-	stored_radio = /obj/item/device/radio/virtual_reality
+	stored_radio = /obj/item/device/radio/headset/revolutionary
 
 /obj/item/clothing/ears/headset/cat
 	name = "\improper cat ear headset"
 	icon = 'icons/obj/item/clothing/hats/cat.dmi'
 	desc = "; HELPIES!"
 	desc_extended = "This may have been a mistake. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
-	stored_radio = /obj/item/device/radio/nanotrasen
+	stored_radio = /obj/item/device/radio/headset/nanotrasen
 
 	no_initial_blend = TRUE
 

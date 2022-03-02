@@ -56,7 +56,7 @@
 					var/mob/living/aLiving = A
 					if(aLiving.boss)
 						continue
-					if(aLiving.immortal)
+					if(!aLiving.health)
 						continue
 					if(aLiving.ckey)
 						second_cooldown += 15
@@ -78,7 +78,7 @@
 					var/mob/living/aLiving = A
 					if(aLiving.boss)
 						continue
-					if(aLiving.immortal)
+					if(!aLiving.health)
 						continue
 					if(aLiving.ckey)
 						second_cooldown += 15

@@ -2,7 +2,7 @@
 	name = "\improper 5.56mm MOAR"
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
 	desc_extended = "A 5.56mm chambered mother-of-all-rifles (MOAR) developed by the Solarian research team for space battles."
-	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308_advanced_new.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/308.dmi'
 	icon_state = "inventory"
 	value = 12000
 

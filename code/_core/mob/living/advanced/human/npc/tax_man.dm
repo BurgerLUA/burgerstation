@@ -2,7 +2,6 @@
 	name = "tax man"
 	desc = "Handles your tax."
 	desc_extended = "Pay your taxes or suffer the consequences."
-	enable_AI = TRUE
 	ai = null
 	move_mod = 1
 

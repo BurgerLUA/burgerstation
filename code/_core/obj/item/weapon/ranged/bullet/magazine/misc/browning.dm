@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/misc/browning
-	name = "\improper Browning Gun"
+	name = "mounted.50 machine gun"
 	desc = ""
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/mech.dmi'

@@ -13,14 +13,7 @@
 
 	no_initial_blend = TRUE
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 40,
-		COLD = 20,
-		PAIN = 10
-	)
+	armor = /armor/cloth/hard
 
 	size = SIZE_1
 

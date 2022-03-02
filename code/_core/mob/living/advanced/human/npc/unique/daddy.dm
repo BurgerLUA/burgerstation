@@ -1,6 +1,5 @@
 /mob/living/advanced/npc/unique/daddy
 	name = "\improper the legend"
-	enable_AI = TRUE
 	ai = /ai/advanced/daddy
 
 
