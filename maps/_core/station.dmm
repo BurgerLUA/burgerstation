@@ -597,9 +597,9 @@
 /turf/simulated/floor/tile/shuttle,
 /area/transit/dropship/alpha/station)
 "ch" = (
-/obj/structure/table/cooking/grill,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
+/obj/structure/table,
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/west)
 "ci" = (
 /obj/structure/interactive/status_display/global_display/alpha,
 /turf/simulated/wall/metal/shuttle,
@@ -1075,6 +1075,10 @@
 	},
 /turf/simulated/floor/tile/shuttle/engineering,
 /area/transit/dropship/alpha/station)
+"dP" = (
+/obj/structure/table,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/medical)
 "dQ" = (
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/north)
@@ -1979,6 +1983,10 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
+"hc" = (
+/obj/structure/table/cooking/grill,
+/turf/simulated/floor/tile,
+/area/burgerstation/cafe/kitchen)
 "hd" = (
 /obj/structure/interactive/shop,
 /obj/item/crafting/filter,
@@ -21177,7 +21185,7 @@ fN
 gf
 gC
 ha
-gD
+ch
 hP
 ig
 gD
@@ -21442,7 +21450,7 @@ gD
 iW
 je
 jz
-gD
+ch
 hP
 ke
 ig
@@ -24262,9 +24270,9 @@ ao
 gK
 hf
 hB
-hB
-hB
-hB
+dP
+dP
+dP
 iS
 iY
 ji
@@ -24519,9 +24527,9 @@ gb
 gL
 hg
 as
-hB
-hB
-hB
+dP
+dP
+dP
 iS
 iZ
 jj
@@ -24776,9 +24784,9 @@ ao
 gK
 gK
 hB
-hB
-hB
-hB
+dP
+dP
+dP
 iS
 gK
 jj
@@ -26067,7 +26075,7 @@ gN
 gN
 gN
 jm
-ch
+hc
 jn
 kb
 kb
@@ -26323,7 +26331,7 @@ im
 iE
 iE
 hZ
-ch
+hc
 jn
 jL
 jD
