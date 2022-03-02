@@ -45,17 +45,17 @@
 /turf/simulated/wall/metal/reinforced,
 /area/fob/power)
 "al" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/candle,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/fob/power)
 "am" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/powerbutton,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/fob/power)
 "an" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/fob/power)
 "ao" = (
@@ -338,8 +338,8 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bp" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bq" = (
@@ -365,7 +365,7 @@
 /turf/simulated/floor/tile/grey,
 /area/fob/main)
 "bw" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table,
 /turf/simulated/floor/tile/grey,
 /area/fob/main)
 "bx" = (
@@ -376,12 +376,12 @@
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bz" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bA" = (
-/obj/structure/smooth/table/wood,
 /obj/marker/rift_location,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bB" = (
@@ -389,7 +389,7 @@
 /turf/simulated/floor/plating,
 /area/fob/main)
 "bC" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bD" = (
@@ -492,23 +492,13 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
-"bS" = (
-/obj/structure/smooth/table/wood,
-/turf/simulated/floor/wood/brown,
-/area/fob/main)
-"bT" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/shot,
-/obj/item/container/beaker/alcohol/whiskey,
-/turf/simulated/floor/wood/brown,
-/area/fob/main)
 "bU" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
-/obj/structure/smooth/table/reinforced,
 /obj/item/supply_crate/nanotrasen,
 /obj/structure/interactive/shop/high_markup,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bV" = (
@@ -545,11 +535,11 @@
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "ca" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/shot,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "cb" = (
@@ -796,9 +786,9 @@
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "gW" = (
-/obj/structure/smooth/table/reinforced,
-/obj/item/supply_crate/russian,
 /obj/structure/interactive/shop/high_markup,
+/obj/item/supply_crate/slavic,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "lN" = (
@@ -867,10 +857,13 @@
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "Ou" = (
-/obj/structure/smooth/table/reinforced,
-/obj/item/supply_crate/american,
 /obj/structure/interactive/shop/high_markup,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
+/area/fob/main)
+"RH" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/tan/ish,
 /area/fob/main)
 "RT" = (
 /obj/decal/hazard/box,
@@ -2580,7 +2573,7 @@ bq
 bD
 bd
 aF
-aG
+RH
 bB
 aF
 aT
@@ -2646,7 +2639,7 @@ bV
 bD
 bd
 aF
-aG
+RH
 bB
 ch
 cm
@@ -3306,7 +3299,7 @@ bY
 bB
 bd
 aF
-aG
+RH
 bB
 ch
 cm
@@ -3372,7 +3365,7 @@ bs
 bB
 bd
 aF
-aG
+RH
 bB
 aF
 aT
@@ -3496,7 +3489,7 @@ aV
 aP
 bt
 bA
-by
+bz
 by
 bs
 bs
@@ -3566,7 +3559,7 @@ bF
 by
 bs
 bs
-bs
+ca
 aP
 aa
 cH
@@ -3629,9 +3622,9 @@ aP
 bs
 bs
 bs
-bs
-bS
-bT
+ca
+ca
+ca
 ca
 aP
 aa
@@ -3948,7 +3941,7 @@ ao
 ap
 at
 at
-ap
+an
 ak
 aa
 aa
@@ -4014,7 +4007,7 @@ aw
 ap
 at
 at
-ap
+an
 ak
 aa
 aa
@@ -4080,7 +4073,7 @@ ax
 ap
 at
 at
-ap
+an
 ak
 aa
 cH

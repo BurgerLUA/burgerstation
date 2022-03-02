@@ -598,8 +598,8 @@
 /area/transit/dropship/alpha/station)
 "ch" = (
 /obj/structure/table,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/west)
+/turf/simulated/floor/plating,
+/area/burgerstation/hanger)
 "ci" = (
 /obj/structure/interactive/status_display/global_display/alpha,
 /turf/simulated/wall/metal/shuttle,
@@ -1077,8 +1077,8 @@
 /area/transit/dropship/alpha/station)
 "dP" = (
 /obj/structure/table,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/medical)
+/turf/simulated/floor/tile/morphing/janitor,
+/area/burgerstation/engineering)
 "dQ" = (
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/north)
@@ -1599,6 +1599,7 @@
 "fz" = (
 /obj/structure/interactive/shop,
 /obj/item/deployable/barricade,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "fA" = (
@@ -1984,9 +1985,9 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
 "hc" = (
-/obj/structure/table/cooking/grill,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
+/obj/structure/table,
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/west)
 "hd" = (
 /obj/structure/interactive/shop,
 /obj/item/crafting/filter,
@@ -2085,6 +2086,7 @@
 /area/burgerstation/engineering)
 "hu" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/janitor,
 /area/burgerstation/engineering)
 "hv" = (
@@ -2444,6 +2446,7 @@
 /area/burgerstation/engineering)
 "iK" = (
 /obj/item/mop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/janitor,
 /area/burgerstation/engineering)
 "iL" = (
@@ -4182,6 +4185,7 @@
 "pw" = (
 /obj/structure/interactive/shop,
 /obj/item/storage/emergency,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "px" = (
@@ -4336,6 +4340,7 @@
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "qa" = (
@@ -5165,40 +5170,54 @@
 /obj/structure/interactive/plant/liberty_cap,
 /turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
-"tl" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/grass/jungle,
-/area/lz_001/jungle)
-"zm" = (
-/turf/simulated/floor/carpet,
-/area/lz_001/jungle)
-"EO" = (
+"sO" = (
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/lz_001/jungle)
-"FM" = (
+"sR" = (
+/obj/structure/table,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/medical)
+"zw" = (
 /mob/living/simple/crab/passive,
 /turf/simulated/floor/carpet,
 /area/lz_001/jungle)
-"Ih" = (
-/turf/simulated/floor/tile/grey,
+"AH" = (
+/turf/simulated/floor/carpet,
 /area/lz_001/jungle)
-"OA" = (
-/turf/simulated/wall/metal,
+"DH" = (
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
-"OJ" = (
+"GE" = (
 /obj/item/container/edible/package/junkfood/raisins,
 /turf/simulated/floor/carpet,
 /area/lz_001/jungle)
-"SL" = (
+"Hu" = (
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/central)
-"TD" = (
+"IT" = (
+/obj/structure/table/cooking/grill,
+/turf/simulated/floor/tile,
+/area/burgerstation/cafe/kitchen)
+"KM" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/engineering)
+"Rm" = (
+/obj/structure/interactive/door/airlock/station/nanotrasen/glass,
+/turf/simulated/floor/tile/grey,
+/area/lz_001/jungle)
+"TW" = (
 /mob/living/simple/turret/nanotrasen,
 /turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
-"Uz" = (
-/obj/structure/interactive/door/airlock/station/nanotrasen/glass,
+"Vv" = (
 /turf/simulated/floor/tile/grey,
+/area/lz_001/jungle)
+"XU" = (
+/turf/simulated/wall/metal,
 /area/lz_001/jungle)
 
 (1,1,1) = {"
@@ -17617,7 +17636,7 @@ bw
 bC
 bC
 bC
-bD
+fK
 bw
 bw
 bU
@@ -21220,7 +21239,7 @@ fN
 gf
 gC
 ha
-ch
+hc
 hP
 ig
 gD
@@ -21485,7 +21504,7 @@ gD
 iW
 je
 jz
-ch
+hc
 hP
 ke
 ig
@@ -24305,9 +24324,9 @@ ao
 gK
 hf
 hB
-dP
-dP
-dP
+sR
+sR
+sR
 iS
 iY
 ji
@@ -24562,9 +24581,9 @@ gb
 gL
 hg
 as
-dP
-dP
-dP
+sR
+sR
+sR
 iS
 iZ
 jj
@@ -24819,9 +24838,9 @@ ao
 gK
 gK
 hB
-dP
-dP
-dP
+sR
+sR
+sR
 iS
 gK
 jj
@@ -26110,7 +26129,7 @@ gN
 gN
 gN
 jm
-hc
+IT
 jn
 kb
 kb
@@ -26366,7 +26385,7 @@ im
 iE
 iE
 hZ
-hc
+IT
 jn
 jL
 jD
@@ -26402,7 +26421,7 @@ rW
 au
 au
 au
-TD
+TW
 au
 au
 au
@@ -26657,8 +26676,8 @@ rW
 kO
 rW
 sx
-OA
-OA
+XU
+XU
 au
 au
 au
@@ -26914,9 +26933,9 @@ aR
 gS
 ss
 sy
-EO
-tl
-EO
+sO
+DH
+sO
 au
 au
 au
@@ -27171,9 +27190,9 @@ gT
 sn
 st
 sz
-Ih
-Uz
-EO
+Vv
+Rm
+sO
 au
 au
 au
@@ -27426,11 +27445,11 @@ gS
 gS
 gS
 mK
-SL
+Hu
 sy
-EO
-tl
-EO
+sO
+DH
+sO
 au
 au
 au
@@ -27685,8 +27704,8 @@ kN
 so
 rW
 sx
-OA
-OA
+XU
+XU
 au
 au
 au
@@ -27944,7 +27963,7 @@ rW
 au
 au
 bm
-TD
+TW
 au
 au
 au
@@ -28455,8 +28474,8 @@ sf
 kN
 sp
 rW
-FM
-zm
+zw
+AH
 au
 au
 bq
@@ -28712,8 +28731,8 @@ sg
 kN
 sp
 rW
-OJ
-zm
+GE
+AH
 au
 au
 au
@@ -28969,8 +28988,8 @@ sg
 kN
 sp
 rW
-zm
-zm
+AH
+AH
 au
 au
 au
@@ -30202,9 +30221,9 @@ cx
 bC
 aH
 dd
-bC
-bC
-bC
+ch
+ch
+ch
 eA
 aH
 bC
@@ -31756,8 +31775,8 @@ bK
 bK
 bT
 gU
-hv
-dY
+dP
+KM
 dW
 dY
 iK
@@ -32013,7 +32032,7 @@ bJ
 gp
 gp
 gU
-hv
+dP
 hv
 hv
 dY
