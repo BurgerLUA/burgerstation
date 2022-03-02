@@ -52,43 +52,16 @@
 /turf/simulated/floor/carpet,
 /area/vr)
 "at" = (
-/obj/structure/smooth/table/glass,
-/turf/simulated/floor/carpet,
-/area/vr)
+/obj/structure/interactive/bar_sign/adminbus,
+/turf/simulated/wall/rock/basalt,
+/area/centcomm/chargen)
 "au" = (
-/obj/structure/smooth/table/glass,
-/obj/item/container/beaker/alcohol/absinthe,
-/obj/item/container/beaker/alcohol/brandy,
-/obj/item/container/beaker/alcohol/gin,
-/obj/item/container/beaker/alcohol/grappa,
-/obj/item/container/beaker/alcohol/rum,
-/obj/item/container/beaker/alcohol/vodka,
-/turf/simulated/floor/carpet,
-/area/vr)
+/obj/structure/table/cooking/bonfire,
+/turf/simulated/floor/basalt,
+/area/herald)
 "av" = (
-/obj/structure/smooth/table/glass,
 /obj/structure/interactive/lighting/fixture/tube/station,
-/obj/item/container/beaker/alcohol/coffee_liqueur,
-/obj/item/container/beaker/alcohol/fernet,
-/obj/item/container/beaker/alcohol/hearty_punch,
-/obj/item/container/beaker/alcohol/nothing,
-/obj/item/container/beaker/alcohol/schnapps/gold,
-/obj/item/container/beaker/alcohol/tequila,
 /turf/simulated/floor/carpet,
-/area/vr)
-"aw" = (
-/obj/structure/smooth/table/glass,
-/obj/item/container/beaker/alcohol/ale,
-/obj/item/container/beaker/alcohol/beer,
-/obj/item/container/beaker/alcohol/cider,
-/obj/item/container/beaker/alcohol/whiskey,
-/obj/item/container/beaker/alcohol/wine,
-/obj/item/container/beaker/alcohol/wine/vermouth,
-/turf/simulated/floor/carpet,
-/area/vr)
-"ax" = (
-/obj/structure/smooth/table/wood,
-/turf/simulated/floor/brick/grey/dark,
 /area/vr)
 "ay" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -106,10 +79,6 @@
 "aA" = (
 /turf/simulated/wall/metal,
 /area/centcomm)
-"aB" = (
-/obj/structure/smooth/table/wood,
-/turf/simulated/floor/carpet,
-/area/vr)
 "aC" = (
 /obj/structure/interactive/chair/wood{
 	dir = 8;
@@ -129,10 +98,6 @@
 	icon_state = "preview"
 	},
 /turf/simulated/floor/brick/grey/dark,
-/area/vr)
-"aF" = (
-/obj/structure/interactive/virtual_reality/join_game,
-/turf/simulated/floor/carpet,
 /area/vr)
 "aG" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -465,10 +430,6 @@
 /obj/marker/herald/destination,
 /turf/simulated/floor/basalt,
 /area/herald)
-"dc" = (
-/obj/structure/smooth/table/cooking/bonfire,
-/turf/simulated/floor/basalt,
-/area/herald)
 "dd" = (
 /obj/structure/shuttle_engine/burst/left{
 	dir = 8;
@@ -479,23 +440,9 @@
 "de" = (
 /turf/simulated/wall/shuttle,
 /area/transit/space_cop/station)
-"df" = (
-/obj/structure/smooth/window/shuttle/end_01{
-	dir = 8;
-	icon_state = "end_01"
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/space_cop/station)
 "dg" = (
 /obj/structure/interactive/door/airlock/shuttle,
 /turf/simulated/floor/tile/shuttle,
-/area/transit/space_cop/station)
-"dh" = (
-/obj/structure/smooth/window/shuttle/end_01{
-	dir = 4;
-	icon_state = "end_01"
-	},
-/turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "di" = (
 /obj/structure/shuttle_engine/propulsion{
@@ -509,21 +456,10 @@
 	dir = 8;
 	icon_state = "heater"
 	},
-/obj/structure/smooth/window/directional/anchored{
-	dir = 4;
-	icon_state = "single"
-	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "dk" = (
 /turf/simulated/floor/tile/shuttle,
-/area/transit/space_cop/station)
-"dl" = (
-/obj/structure/smooth/window/shuttle/end_02{
-	dir = 1;
-	icon_state = "end_02"
-	},
-/turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "dm" = (
 /obj/structure/interactive/chair{
@@ -534,18 +470,10 @@
 "dn" = (
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/space_cop/station)
-"do" = (
-/obj/structure/smooth/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/space_cop/station)
 "dp" = (
 /obj/structure/shuttle_engine/heater{
 	dir = 8;
 	icon_state = "heater"
-	},
-/obj/structure/smooth/window/directional/anchored{
-	dir = 4;
-	icon_state = "single"
 	},
 /obj/shuttle_controller/space_cop{
 	dir = 4;
@@ -554,7 +482,6 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "dq" = (
-/obj/structure/smooth/window/shuttle/end_02,
 /turf/simulated/floor/plating/shuttle,
 /area/transit/space_cop/station)
 "dr" = (
@@ -580,10 +507,6 @@
 /obj/structure/interactive/chair{
 	dir = 4
 	},
-/turf/simulated/floor/tile,
-/area/space/deep)
-"dw" = (
-/obj/structure/smooth/table,
 /turf/simulated/floor/tile,
 /area/space/deep)
 "dx" = (
@@ -630,10 +553,6 @@
 	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
-"dG" = (
-/obj/structure/interactive/vending/halloween,
-/turf/simulated/floor/wood/rich,
-/area/wizard)
 "dH" = (
 /obj/structure/interactive/vending/soda/full,
 /turf/simulated/floor/wood/rich,
@@ -644,10 +563,6 @@
 /area/wizard)
 "dJ" = (
 /obj/structure/interactive/chair/wood,
-/turf/simulated/floor/wood/rich,
-/area/wizard)
-"dK" = (
-/obj/structure/smooth/table/wood,
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "dL" = (
@@ -690,24 +605,8 @@
 /obj/structure/interactive/potted_plant/bin,
 /turf/simulated/floor/wood/rich,
 /area/wizard)
-"dS" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 4;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/wood/rich,
-/area/wizard)
 "dT" = (
 /obj/marker/lobby,
-/turf/simulated/floor/wood/rich,
-/area/wizard)
-"dU" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 8;
-	icon_state = "preview"
-	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "dV" = (
@@ -758,10 +657,6 @@
 /obj/structure/interactive/misc/curtain_open,
 /turf/simulated/floor/tile/tint,
 /area/wizard)
-"ed" = (
-/obj/structure/interactive/bed/padded,
-/turf/simulated/floor/wood/rich,
-/area/wizard)
 "ee" = (
 /obj/structure/interactive/chair/wood{
 	dir = 4;
@@ -775,13 +670,6 @@
 /area/wizard)
 "eg" = (
 /obj/structure/interactive/misc/dresser,
-/turf/simulated/floor/wood/rich,
-/area/wizard)
-"eh" = (
-/obj/structure/smooth/table/wood,
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 1
-	},
 /turf/simulated/floor/wood/rich,
 /area/wizard)
 "ei" = (
@@ -817,10 +705,6 @@
 /area/centcomm/chargen)
 "KL" = (
 /obj/structure/interactive/plant/embershroom_mushroom,
-/turf/simulated/floor/basalt,
-/area/centcomm/chargen)
-"YT" = (
-/obj/structure/interactive/adminbus/nocolide,
 /turf/simulated/floor/basalt,
 /area/centcomm/chargen)
 
@@ -8236,17 +8120,17 @@ dy
 du
 du
 du
-dw
-dw
-dw
 du
 du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
+du
+du
+du
 du
 du
 du
@@ -8493,17 +8377,17 @@ dy
 dE
 du
 du
-dw
-dw
-dw
 du
 du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
+du
+du
+du
 du
 du
 du
@@ -8750,17 +8634,17 @@ dz
 du
 du
 du
-dw
-dw
-dw
 du
 du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
+du
+du
+du
 du
 du
 dD
@@ -9268,9 +9152,9 @@ du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
 du
 du
 du
@@ -9525,9 +9409,9 @@ du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
 du
 du
 du
@@ -9782,9 +9666,9 @@ du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
 du
 du
 du
@@ -10292,17 +10176,17 @@ dz
 du
 du
 du
-dw
-dw
-dw
 du
 du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
+du
+du
+du
 du
 du
 dD
@@ -10549,17 +10433,17 @@ dy
 dE
 du
 du
-dw
-dw
-dw
 du
 du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
+du
+du
+du
 du
 du
 du
@@ -10806,17 +10690,17 @@ dy
 du
 du
 du
-dw
-dw
-dw
 du
 du
 du
 du
 du
-dw
-dw
-dw
+du
+du
+du
+du
+du
+du
 du
 du
 du
@@ -15462,7 +15346,7 @@ aq
 ap
 aq
 as
-aF
+as
 as
 as
 as
@@ -16487,7 +16371,7 @@ ao
 ap
 as
 as
-ax
+aq
 aq
 az
 az
@@ -16742,18 +16626,18 @@ ag
 ag
 ao
 ap
-at
 as
-ax
-aq
-aB
-aB
-aB
+as
 aq
 aq
-aB
-aB
-aB
+as
+as
+as
+aq
+aq
+as
+as
+as
 aq
 ap
 ao
@@ -16999,9 +16883,9 @@ ag
 ag
 ao
 ap
-au
 as
-ax
+as
+aq
 aq
 aC
 aC
@@ -17258,7 +17142,7 @@ ao
 ap
 av
 as
-ax
+aq
 aq
 aq
 aq
@@ -17513,9 +17397,9 @@ ag
 ag
 ao
 ap
-aw
 as
-ax
+as
+aq
 aq
 az
 az
@@ -17770,18 +17654,18 @@ ag
 ag
 ao
 ap
-at
 as
-ax
-aq
-aB
-aB
-aB
+as
 aq
 aq
-aB
-aB
-aB
+as
+as
+as
+aq
+aq
+as
+as
+as
 aH
 ap
 ao
@@ -18029,7 +17913,7 @@ ao
 ap
 as
 as
-ax
+aq
 aq
 aC
 aC
@@ -39107,13 +38991,13 @@ cd
 cd
 cd
 cd
-df
+dq
 dk
 dn
 dn
 dn
 dk
-df
+dq
 cd
 cd
 "}
@@ -39878,13 +39762,13 @@ cd
 cd
 cd
 cd
-dh
+dq
 dk
 dn
 dn
 dn
 dk
-dh
+dq
 cd
 cd
 "}
@@ -40392,13 +40276,13 @@ cd
 cd
 cd
 cd
-df
+dq
 dk
 dn
 dn
 dn
 dk
-df
+dq
 cd
 cd
 "}
@@ -41163,13 +41047,13 @@ cd
 cd
 cd
 cd
-dh
+dq
 dk
 dn
 dn
 dn
 dk
-dh
+dq
 cd
 cd
 "}
@@ -41421,10 +41305,10 @@ cd
 cd
 cd
 de
-dl
-do
-do
-do
+dq
+dq
+dq
+dq
 dq
 de
 cd
@@ -49336,7 +49220,7 @@ cg
 cg
 cQ
 dJ
-dK
+cQ
 dN
 cQ
 cg
@@ -49603,11 +49487,11 @@ cg
 cP
 cg
 cg
-ed
+cQ
 el
 eg
 cg
-ed
+cQ
 el
 eg
 cg
@@ -49641,7 +49525,7 @@ da
 da
 da
 da
-da
+au
 da
 da
 da
@@ -49846,7 +49730,7 @@ an
 an
 an
 cg
-dG
+cQ
 cQ
 cQ
 cQ
@@ -49862,11 +49746,11 @@ dZ
 cg
 dL
 ee
-eh
+dF
 cg
 dL
 dJ
-eh
+dF
 cg
 cQ
 cQ
@@ -49898,7 +49782,7 @@ cj
 da
 da
 db
-dc
+da
 da
 da
 da
@@ -50108,9 +49992,9 @@ cQ
 dF
 cg
 cg
-dK
-dK
-dS
+cQ
+cQ
+dP
 dR
 cg
 dW
@@ -51645,14 +51529,14 @@ cg
 cP
 cg
 cg
-dG
+cQ
 cQ
 dF
 cg
 cg
-dK
-dK
-dU
+cQ
+cQ
+dO
 dR
 cg
 dW
@@ -51918,11 +51802,11 @@ ec
 cg
 dL
 ee
-eh
+dF
 cg
 dL
 dQ
-eh
+dF
 cg
 cQ
 cQ
@@ -52173,11 +52057,11 @@ cg
 cP
 cg
 cg
-ed
+cQ
 el
 eg
 cg
-ed
+cQ
 el
 eg
 cg
@@ -52420,7 +52304,7 @@ cg
 cg
 cQ
 dJ
-dK
+cQ
 dN
 cQ
 cg
@@ -59428,7 +59312,7 @@ ag
 ag
 aK
 aM
-aM
+at
 aN
 aN
 aN
@@ -60970,7 +60854,7 @@ ag
 ag
 aK
 aM
-YT
+aN
 aN
 aN
 aN

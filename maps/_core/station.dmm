@@ -84,9 +84,9 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/maint/west)
 "aV" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/clothing/ears/headset,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "bb" = (
@@ -109,7 +109,6 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "bh" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/analyzer/gps/advanced,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -142,9 +141,9 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "bD" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/weapon/ranged/bullet/revolver/detective,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "bE" = (
@@ -182,12 +181,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "bL" = (
-/obj/structure/smooth/table/rack,
 /obj/item/storage/kit/toxin/filled,
 /obj/structure/interactive/shop,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "bM" = (
@@ -208,7 +207,8 @@
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
-/turf/simulated/floor/tile/blue_baby,
+/obj/item/container/simple/nothing,
+/obj/structure/table/wood,
 /area/burgerstation/dressing)
 "cc" = (
 /turf/simulated/floor/tile/morphing/green,
@@ -263,7 +263,6 @@
 /area/burgerstation/arrivals)
 "cD" = (
 /obj/structure/interactive/teleporter,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "cE" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -272,12 +271,12 @@
 /turf/simulated/floor/tile/shuttle/engineering,
 /area/transit/dropship/alpha/station)
 "cF" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
 /obj/item/grenade/timed/explosive,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "cG" = (
@@ -288,10 +287,10 @@
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "cH" = (
-/obj/structure/smooth/table,
 /obj/item/crafting/grinder{
 	pixel_y = 8
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "cJ" = (
@@ -327,8 +326,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/bathrooms)
 "dj" = (
-/obj/structure/smooth/table,
 /obj/item/trash/cheese_chips,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/arrivals)
 "dk" = (
@@ -345,9 +344,9 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "do" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/weapon/melee/shield/buckler,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "dr" = (
@@ -369,8 +368,8 @@
 /area/burgerstation/maint/disposals)
 "dw" = (
 /obj/item/defib,
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "dx" = (
@@ -399,9 +398,9 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/arrivals)
 "dP" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/weapon/melee/energy/sword/blue,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "dQ" = (
@@ -556,13 +555,6 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/hall/central)
 "fg" = (
-/obj/structure/smooth/table/glass,
-/obj/item/container/beaker/alcohol/coffee_liqueur,
-/obj/item/container/beaker/alcohol/fernet,
-/obj/item/container/beaker/alcohol/hearty_punch,
-/obj/item/container/beaker/alcohol/nothing,
-/obj/item/container/beaker/alcohol/schnapps/gold,
-/obj/item/container/beaker/alcohol/tequila,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
@@ -599,7 +591,6 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/bathrooms)
 "ft" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/analyzer/health,
 /turf/simulated/floor/tile/morphing/science,
@@ -621,13 +612,8 @@
 /turf/simulated/floor/tile/shuttle/blue,
 /area/transit/arrivals_shuttle_01/station)
 "fH" = (
-/obj/structure/smooth/table/glass,
-/obj/item/container/beaker/alcohol/ale,
-/obj/item/container/beaker/alcohol/beer,
-/obj/item/container/beaker/alcohol/cider,
-/obj/item/container/beaker/alcohol/whiskey,
-/obj/item/container/beaker/alcohol/wine,
-/obj/item/container/beaker/alcohol/wine/vermouth,
+/obj/structure/table,
+/obj/item/container/simple/hearty_punch,
 /turf/simulated/floor/tile/morphing/library,
 /area/burgerstation/cafe/bar)
 "fK" = (
@@ -645,7 +631,6 @@
 /turf/simulated/floor/tile/shuttle,
 /area/transit/arrivals_shuttle_01/station)
 "fM" = (
-/obj/structure/smooth/table,
 /obj/item/clothing/ears/headset,
 /obj/structure/interactive/shop,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -663,7 +648,6 @@
 /turf/simulated/floor/tile/shuttle/purple,
 /area/transit/dropship/charlie/station)
 "fP" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
@@ -679,12 +663,11 @@
 "gh" = (
 /obj/structure/interactive/atmospherics/vent,
 /obj/decal/tile/cross/pink,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "gm" = (
-/obj/structure/smooth/table/rack,
 /obj/item/storage/kit/burn/filled,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "gn" = (
@@ -819,7 +802,6 @@
 /area/burgerstation/hanger)
 "hm" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/analyzer/value,
 /turf/simulated/floor/tile/morphing/science,
@@ -829,22 +811,21 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
 "ho" = (
-/obj/structure/smooth/table/reinforced/dark/pvp,
 /obj/structure/interactive/shop,
 /obj/item/coin/antag_token,
+/obj/structure/table/reinforced/dark/pvp,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
 "hp" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe)
 "hs" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/clothing/glasses/sun,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "hu" = (
@@ -926,9 +907,9 @@
 /turf/simulated/floor/carpet,
 /area/burgerstation/medical)
 "hR" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/clothing/glasses/nightvision,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "hS" = (
@@ -936,10 +917,10 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/botany)
 "hU" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/computer/console/laptop{
 	dir = 4
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/tax)
 "hW" = (
@@ -966,15 +947,15 @@
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "if" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/clothing/overwear/coat/vest,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "ih" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/paper/book/cargo_catalog,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/cargo)
 "ij" = (
@@ -988,7 +969,6 @@
 /area/burgerstation/mining)
 "in" = (
 /obj/structure/interactive/atmospherics/vent,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "io" = (
 /obj/structure/interactive/disposals/pipe,
@@ -1042,10 +1022,10 @@
 /turf/simulated/wall/rock/indestructable,
 /area/burgerstation/library)
 "iU" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/radio,
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "iV" = (
@@ -1072,7 +1052,6 @@
 	dir = 1
 	},
 /obj/decal/tile/cross/pink,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "ji" = (
 /turf/simulated/wall/wood,
@@ -1087,7 +1066,6 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cryo)
 "js" = (
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "jy" = (
 /obj/decal/hazard{
@@ -1111,7 +1089,7 @@
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/tax)
 "jD" = (
-/obj/structure/smooth/table/fancy,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "jI" = (
@@ -1301,8 +1279,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "lC" = (
-/obj/structure/smooth/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/wall/metal/shuttle,
 /area/transit/dropship/charlie/station)
 "lF" = (
 /obj/structure/interactive/disposals/pipe{
@@ -1310,10 +1287,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
-"lG" = (
-/obj/structure/smooth/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/bravo/station)
 "lJ" = (
 /obj/decal/hazard/corner{
 	dir = 4;
@@ -1336,7 +1309,6 @@
 "lU" = (
 /obj/decal/tile/cross/pink,
 /obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "lZ" = (
 /obj/structure/interactive/vending/clothes/shirt,
@@ -1376,8 +1348,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "mt" = (
-/obj/structure/smooth/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/wall/metal/shuttle,
 /area/transit/dropship/alpha/station)
 "mw" = (
 /turf/simulated/floor/tile/shuttle/blue,
@@ -1397,9 +1368,8 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "mC" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/medical)
+/turf/simulated/floor/plating/shuttle,
+/area/transit/dropship/alpha/station)
 "mF" = (
 /turf/simulated/wall/metal,
 /area/burgerstation/medical)
@@ -1416,12 +1386,12 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mV" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/weapon/melee/baton,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "mW" = (
@@ -1532,13 +1502,14 @@
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "oa" = (
-/obj/structure/smooth/table/reinforced,
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/science)
+/obj/structure/table,
+/obj/item/container/simple/wine/lizard,
+/turf/simulated/floor/tile/morphing/library,
+/area/burgerstation/cafe/bar)
 "oe" = (
 /obj/item/storage/kit/filled,
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "oh" = (
@@ -1584,7 +1555,6 @@
 	dir = 8;
 	icon_state = "corner"
 	},
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/maint/south)
 "oC" = (
 /turf/simulated/wall/rock/indestructable,
@@ -1682,10 +1652,8 @@
 /area/burgerstation/arrivals)
 "pD" = (
 /obj/item/storage/heavy/trash_pile,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/maint/south)
 "pE" = (
-/obj/structure/smooth/window,
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/bathrooms)
@@ -1712,7 +1680,6 @@
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "qc" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/storage/emergency,
 /turf/simulated/floor/tile/morphing/cryo,
@@ -1726,9 +1693,9 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "qg" = (
-/obj/structure/smooth/table,
 /obj/item/clothing/head/hat/chef,
 /obj/structure/interactive/disposals/pipe,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "ql" = (
@@ -1762,9 +1729,10 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/medical)
 "qD" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/dropship/bravo/station)
+/obj/structure/table,
+/obj/item/container/simple/wine,
+/turf/simulated/floor/tile/morphing/library,
+/area/burgerstation/cafe/bar)
 "qE" = (
 /mob/living/advanced/npc/nanotrasen{
 	dir = 4;
@@ -1775,11 +1743,6 @@
 	},
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
-"qG" = (
-/obj/structure/smooth/table,
-/obj/item/container/beaker/bowl,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "qI" = (
 /obj/structure/interactive/status_display/global_display/round,
 /turf/simulated/wall/metal,
@@ -1798,7 +1761,6 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "qN" = (
-/obj/structure/smooth/table/wood,
 /mob/living/simple/passive/frog{
 	name = "Mildred"
 	},
@@ -1916,7 +1878,6 @@
 /obj/structure/interactive/disposals/pipe{
 	dir = 6
 	},
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "rP" = (
 /obj/structure/interactive/atmospherics/scrubber,
@@ -1927,9 +1888,9 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "rW" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
 /obj/item/marker,
+/obj/structure/table/wood,
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/dressing)
 "sa" = (
@@ -1947,7 +1908,6 @@
 /area/burgerstation/medical)
 "sd" = (
 /obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "se" = (
 /obj/structure/interactive/vending/clothes/hat,
@@ -1984,19 +1944,13 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "sx" = (
-/obj/structure/smooth/table,
 /obj/item/clothing/head/helmet/polymorphic/medical,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "sy" = (
 /obj/structure/interactive/crate,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
-/obj/item/container/food/dynamic/meat/raw,
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/botany)
 "sE" = (
@@ -2004,16 +1958,16 @@
 /turf/simulated/floor/tile/shuttle/engineering,
 /area/transit/dropship/alpha/station)
 "sG" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile/shuttle/engineering,
-/area/transit/dropship/alpha/station)
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/library,
+/area/burgerstation/cafe/bar)
 "sI" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/crafting/smelter,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "sJ" = (
@@ -2049,9 +2003,9 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "sT" = (
-/obj/structure/smooth/table/wood,
-/turf/simulated/floor/carpet,
-/area/burgerstation/medical)
+/obj/structure/table/wood,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/tax)
 "sX" = (
 /obj/structure/interactive/conveyor{
 	dir = 1;
@@ -2091,12 +2045,12 @@
 	},
 /area/burgerstation/chapel)
 "tv" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/crafting/pill_press,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "tw" = (
@@ -2160,7 +2114,8 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/east)
 "tY" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
+/obj/item/container/simple/absinthe/premium,
 /turf/simulated/floor/tile/morphing/library,
 /area/burgerstation/cafe/bar)
 "ua" = (
@@ -2174,12 +2129,6 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
-"uo" = (
-/obj/structure/smooth/table,
-/obj/item/container/beaker/large,
-/obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "ur" = (
 /obj/item/storage/heavy/trash_pile,
 /turf/simulated/floor/plating,
@@ -2229,7 +2178,6 @@
 /turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
 "vf" = (
-/obj/structure/smooth/window/shuttle,
 /turf/simulated/floor/plating/shuttle,
 /area/transit/arrivals_shuttle_01/station)
 "vg" = (
@@ -2363,9 +2311,9 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "wC" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
 /obj/item/weapon/ranged/wand/crafted,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "wD" = (
@@ -2391,8 +2339,8 @@
 /area/burgerstation/maint/disposals)
 "wR" = (
 /obj/item/pinpointer/crew,
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "wX" = (
@@ -2447,12 +2395,9 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/hanger)
 "xh" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/west)
+/area)
 "xi" = (
 /obj/marker/lobby,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "xj" = (
 /obj/structure/interactive/bed/sleeper/medical,
@@ -2516,12 +2461,12 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/maint/south)
 "xY" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/library)
 "xZ" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "yd" = (
@@ -2554,12 +2499,7 @@
 /area/burgerstation/cargo)
 "yp" = (
 /obj/marker/map_node,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
-"yr" = (
-/obj/structure/smooth/window/shuttle/middle,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/dropship/bravo/station)
 "ys" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/nanotrasen,
@@ -2614,8 +2554,8 @@
 /area/burgerstation/cargo)
 "yO" = (
 /obj/item/weapon/melee/torch/flashlight/maglight,
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "yV" = (
@@ -2632,6 +2572,10 @@
 "yZ" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"zd" = (
+/obj/structure/table/wood,
+/turf/simulated/floor/carpet,
+/area/burgerstation/medical)
 "zf" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -2649,9 +2593,9 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/bar)
 "zp" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
 /obj/item/announcement,
+/obj/structure/table/wood,
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/dressing)
 "zs" = (
@@ -2711,11 +2655,6 @@
 "zY" = (
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cafe/botany)
-"Aa" = (
-/obj/structure/smooth/table/reinforced,
-/obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "Ad" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -2737,16 +2676,12 @@
 /obj/structure/interactive/vending/nanotrasen/ammo,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
-"Au" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/plating,
-/area/burgerstation/hanger)
 "Av" = (
 /obj/structure/interactive/status_display/global_display/round,
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/bar)
 "Ax" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "AB" = (
@@ -2762,10 +2697,6 @@
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cryo)
-"AH" = (
-/obj/structure/smooth/table/cooking/grill,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "AJ" = (
 /obj/structure/shuttle_engine,
 /turf/simulated/floor/plating/shuttle,
@@ -2809,7 +2740,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/hanger)
 "Ba" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "Bg" = (
@@ -2903,7 +2834,7 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering)
 "BQ" = (
-/obj/structure/smooth/table/reinforced/dark/pvp,
+/obj/structure/table/reinforced/dark/pvp,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/pvp)
 "BR" = (
@@ -2930,7 +2861,6 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/bar)
 "Ce" = (
-/obj/structure/smooth/window,
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
 /area/burgerstation/hall/east)
@@ -2939,18 +2869,18 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
 "Cj" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/crafting/filter,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "Cn" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/weapon/melee/energy/stunbaton,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "Cp" = (
@@ -3031,13 +2961,13 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe)
 "CX" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/paper/cargo,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/cargo)
 "CY" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/arrivals)
 "CZ" = (
@@ -3046,7 +2976,6 @@
 /area/transit/dropship/bravo/station)
 "De" = (
 /obj/decal/tile/cross/pink,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "Dj" = (
 /obj/structure/interactive/conveyor{
@@ -3108,7 +3037,6 @@
 /area/burgerstation/hall/north)
 "DQ" = (
 /obj/structure/interactive/atmospherics/scrubber,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "DS" = (
 /obj/structure/interactive/vending/hydroponics/nutri,
@@ -3132,12 +3060,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "El" = (
-/obj/structure/smooth/table/wood,
 /obj/item/paper/cargo{
 	desc = "Seriously";
 	desc_extended = "Tax Evasoion is a crime.";
 	name = "pay ur taxes : )"
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/tax)
 "Em" = (
@@ -3161,8 +3089,8 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/north)
 "Ez" = (
-/obj/structure/smooth/table,
 /obj/item/clothing/overwear/coat/apron,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "EC" = (
@@ -3198,7 +3126,6 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/transit/cargo/ship)
 "ES" = (
-/obj/structure/smooth/table/cooking/grill,
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
@@ -3215,9 +3142,9 @@
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/crafting/grinder,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "EX" = (
@@ -3256,10 +3183,6 @@
 /obj/structure/interactive/crate/engineering,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
-"FE" = (
-/obj/structure/smooth/table/reinforced,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/hall/east)
 "FH" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
@@ -3306,7 +3229,6 @@
 /turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
 "Gf" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/analyzer/gps,
 /turf/simulated/floor/tile/morphing/science,
@@ -3341,7 +3263,6 @@
 "Gt" = (
 /obj/structure/interactive/atmospherics/scrubber,
 /obj/decal/tile/cross/pink,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "Gu" = (
 /obj/structure/interactive/chair{
@@ -3385,10 +3306,6 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/north)
-"GK" = (
-/obj/structure/interactive/vending/smart_fridge/chemistry,
-/turf/simulated/wall/metal,
-/area/burgerstation/medical/chemistry)
 "GN" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/medical,
@@ -3398,7 +3315,7 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "GP" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/library,
 /area/burgerstation/cafe/bar)
 "GR" = (
@@ -3421,10 +3338,6 @@
 /obj/structure/interactive/door/airlock/station/command/no_access,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/medical)
-"Hb" = (
-/obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile/morphing/cryo,
-/area/burgerstation/cryo)
 "Hc" = (
 /obj/structure/interactive/status_display/global_display/round,
 /turf/simulated/wall/metal/reinforced,
@@ -3481,7 +3394,6 @@
 /mob/living/simple/passive/mouse/grey{
 	name = "jerry"
 	},
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "HJ" = (
 /obj/structure/interactive/disposals/machine/outlet,
@@ -3560,8 +3472,8 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "IG" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/fax_machine/cargo,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/cargo)
 "IH" = (
@@ -3570,8 +3482,6 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "II" = (
-/obj/structure/smooth/table,
-/obj/item/container/beaker/bucket/water,
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/janitor,
 /area/burgerstation/engineering)
@@ -3582,8 +3492,7 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/cargo)
 "IO" = (
-/obj/structure/smooth/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/wall/metal/shuttle,
 /area/transit/dropship/delta/station)
 "IT" = (
 /turf/simulated/wall/metal/reinforced,
@@ -3726,9 +3635,9 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "KR" = (
-/obj/structure/smooth/table/reinforced,
 /obj/item/handcuffs,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing,
 /area/burgerstation/armory)
 "KS" = (
@@ -3788,7 +3697,6 @@
 "Lr" = (
 /obj/decal/tile/cross/pink,
 /obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "Ls" = (
 /obj/marker/lobby,
@@ -3860,9 +3768,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cryo)
 "Mk" = (
-/obj/structure/smooth/table/rack,
 /obj/item/storage/kit/brute/filled,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "Ml" = (
@@ -3870,7 +3778,8 @@
 /turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
 "Mn" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/tax)
 "Ms" = (
@@ -3899,12 +3808,11 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/cargo)
 "MB" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "MC" = (
 /obj/decal/hazard/black/full,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/maint/south)
 "MG" = (
 /obj/structure/shuttle_engine/propulsion{
@@ -3924,7 +3832,7 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "MR" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/medical/chemistry)
 "MS" = (
@@ -3988,11 +3896,11 @@
 /turf/simulated/floor/grass/jungle,
 /area/lz_001/jungle)
 "Nx" = (
-/obj/structure/smooth/table/wood,
 /mob/living/simple/passive/gutlunch{
 	name = "Father Gutlunch"
 	},
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "Ny" = (
@@ -4071,15 +3979,15 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "Oa" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
 /obj/item/clothing/belt/storage/colored/purple,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "Ob" = (
-/obj/structure/smooth/table,
 /obj/item/clothing/overwear/coat/vest/colored/medical,
 /obj/structure/interactive/shop,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "Oc" = (
@@ -4132,8 +4040,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
 "Oz" = (
-/obj/structure/smooth/window/shuttle/end_02,
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/wall/metal/shuttle,
 /area/transit/dropship/bravo/station)
 "OA" = (
 /obj/structure/interactive/chair{
@@ -4154,7 +4061,6 @@
 /area/burgerstation/engineering)
 "OQ" = (
 /obj/structure/scenery/flowers,
-/obj/structure/smooth/window,
 /turf/simulated/floor/grass/jungle,
 /area/burgerstation/chapel)
 "OV" = (
@@ -4173,7 +4079,6 @@
 /area/burgerstation/arrivals)
 "Ph" = (
 /obj/structure/interactive/door/airlock/station/science/glass,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "Pi" = (
 /obj/decal/hazard{
@@ -4303,8 +4208,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe)
 "Qc" = (
-/obj/structure/smooth/table/fancy,
 /obj/structure/interactive/disposals/pipe,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/chapel)
 "Qd" = (
@@ -4325,8 +4230,8 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/hall/east)
 "Qy" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/disposals/pipe,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "QA" = (
@@ -4345,8 +4250,8 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/dropship/bravo/station)
 "QN" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
+/obj/structure/table/wood,
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/dressing)
 "QS" = (
@@ -4411,9 +4316,9 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/cargo)
 "Ru" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/magazine/clip/revolver/bullet_38,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "Rv" = (
@@ -4422,12 +4327,12 @@
 /turf/simulated/floor/tile/dark/ish,
 /area/burgerstation/cafe)
 "Rw" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/crafting/alchemy,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
 	},
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/burgerstation/medical/chemistry)
 "Ry" = (
@@ -4466,9 +4371,9 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "Sc" = (
-/obj/structure/smooth/table,
-/obj/item/container/beaker/bottle/large/enzymes,
 /obj/structure/interactive/disposals/pipe,
+/obj/structure/table/reinforced,
+/obj/item/container/simple/milk,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "Sd" = (
@@ -4518,7 +4423,6 @@
 "Sy" = (
 /obj/decal/tile/cross/pink,
 /obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile/blue_baby,
 /area/burgerstation/dressing)
 "SC" = (
 /obj/decal/hazard,
@@ -4542,10 +4446,6 @@
 /obj/decal/hazard/full,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering)
-"SV" = (
-/obj/structure/smooth/table/reinforced,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "SW" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
@@ -4580,12 +4480,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
 "Tg" = (
-/obj/structure/smooth/table/wood,
 /obj/structure/interactive/shop,
 /obj/item/weapon/ranged/wand/branch,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/library)
 "Tl" = (
@@ -4596,11 +4496,11 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "To" = (
-/obj/structure/smooth/table/wood,
 /mob/living/simple/cat/runtime{
 	dir = 4;
 	icon_state = "living"
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/burgerstation/medical)
 "Ts" = (
@@ -4611,10 +4511,6 @@
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
-"TE" = (
-/obj/structure/smooth/table,
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "TH" = (
 /obj/structure/interactive/bed/sleeper/medical,
 /turf/simulated/floor/tile/morphing/medical,
@@ -4649,10 +4545,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/jungle)
-"Uo" = (
-/obj/structure/smooth/table/reinforced,
-/turf/simulated/floor/tile/morphing,
-/area/burgerstation/armory)
 "Up" = (
 /obj/structure/interactive/door/airlock/shuttle{
 	debug = 1
@@ -4709,22 +4601,11 @@
 	icon_state = "stair_middle"
 	},
 /area/burgerstation/arrivals)
-"Vd" = (
-/obj/structure/smooth/table/glass,
-/obj/item/container/beaker/alcohol/absinthe,
-/obj/item/container/beaker/alcohol/brandy,
-/obj/item/container/beaker/alcohol/gin,
-/obj/item/container/beaker/alcohol/grappa,
-/obj/item/container/beaker/alcohol/rum,
-/obj/item/container/beaker/alcohol/vodka,
-/turf/simulated/floor/tile/morphing/library,
-/area/burgerstation/cafe/bar)
 "Vg" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "Vi" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/analyzer/armor,
 /turf/simulated/floor/tile/morphing/science,
@@ -4909,7 +4790,6 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
 "WU" = (
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/maint/south)
 "WW" = (
 /obj/structure/interactive/chair/wood{
@@ -4941,12 +4821,10 @@
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/library)
 "Xj" = (
-/obj/structure/smooth/table,
-/obj/item/container/beaker/food/flour,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "Xm" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/deployable/barricade,
 /turf/simulated/floor/tile/morphing/engineering,
@@ -5077,16 +4955,16 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering)
 "Yt" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/pinpointer/boss,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "Yw" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/structure/sign/department/c/infirm,
 /obj/item/clothing/glasses/sun/security,
+/obj/structure/table,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "Yx" = (
@@ -5115,7 +4993,6 @@
 "YP" = (
 /obj/structure/interactive/door/airlock/station/science/glass,
 /obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "YR" = (
 /obj/structure/interactive/vending/chaplain/wardrobe,
@@ -5136,7 +5013,6 @@
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
-/turf/simulated/floor/tile/overlapping/dark,
 /area/burgerstation/science)
 "Zd" = (
 /obj/marker/lobby,
@@ -5191,9 +5067,9 @@
 /turf/simulated/floor/plating/shuttle,
 /area/transit/cargo/ship)
 "Zy" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/pinpointer/objective,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "ZB" = (
@@ -5220,7 +5096,6 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/hanger)
 "ZJ" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/shop,
 /obj/item/analyzer/genetic,
 /turf/simulated/floor/tile/morphing/science,
@@ -5245,9 +5120,9 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
 "ZP" = (
-/obj/structure/smooth/table,
 /obj/structure/interactive/shop,
 /obj/item/pinpointer/landmark,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "ZS" = (
@@ -18448,13 +18323,13 @@ yV
 oh
 oh
 oh
-yr
+Oz
 oh
 oh
-yr
+Oz
 pG
 oh
-yr
+Oz
 oh
 oh
 QI
@@ -18700,7 +18575,7 @@ eG
 eG
 nS
 Qa
-lG
+Oz
 Oz
 Ur
 OA
@@ -18957,9 +18832,9 @@ eG
 eG
 nS
 Qa
-lG
-qD
-qD
+Oz
+ua
+ua
 dQ
 ua
 ua
@@ -19214,8 +19089,8 @@ eG
 eG
 nS
 Qa
-lG
-qD
+Oz
+ua
 dQ
 qQ
 qQ
@@ -19471,7 +19346,7 @@ eG
 eG
 nS
 Qa
-lG
+Oz
 nr
 kV
 ua
@@ -19728,8 +19603,8 @@ eG
 eG
 nS
 Qa
-lG
-qD
+Oz
+ua
 dQ
 OA
 OA
@@ -19769,7 +19644,7 @@ Bk
 Bk
 Bk
 Bk
-WU
+xh
 Bk
 Bk
 Bk
@@ -19985,9 +19860,9 @@ eG
 eG
 tb
 Qa
-lG
-qD
-qD
+Oz
+ua
+ua
 dQ
 ua
 ua
@@ -20242,7 +20117,7 @@ eG
 eG
 tb
 Qa
-lG
+Oz
 Oz
 Ur
 qQ
@@ -21286,7 +21161,7 @@ XG
 Lq
 nJ
 uT
-xh
+uR
 Ug
 hu
 uR
@@ -21551,7 +21426,7 @@ uR
 AU
 yG
 Xa
-xh
+uR
 Ug
 Gw
 hu
@@ -22333,11 +22208,11 @@ LC
 zy
 TR
 Mn
-Mn
+sT
 hU
-Mn
+sT
 hU
-Mn
+sT
 hU
 ji
 wN
@@ -22569,7 +22444,7 @@ dJ
 sN
 Mx
 JY
-GK
+KA
 MR
 bj
 XB
@@ -23346,7 +23221,7 @@ Rw
 tv
 EW
 sI
-GK
+KA
 zh
 as
 pu
@@ -24371,9 +24246,9 @@ ao
 zh
 ei
 pu
-mC
-mC
-mC
+pu
+pu
+pu
 PO
 zs
 Jv
@@ -24402,9 +24277,9 @@ Aj
 Aj
 Hl
 Aj
-MB
+Aj
 qN
-MB
+Aj
 Oa
 Gh
 Bk
@@ -24628,9 +24503,9 @@ DK
 cx
 dk
 as
-mC
-mC
-mC
+pu
+pu
+pu
 PO
 zR
 Ad
@@ -24885,14 +24760,14 @@ ao
 zh
 zh
 pu
-mC
-mC
-mC
+pu
+pu
+pu
 PO
 zh
 Ad
 FJ
-sT
+zd
 hQ
 FJ
 Xd
@@ -25406,7 +25281,7 @@ pu
 zh
 Ad
 FJ
-FJ
+zd
 Sl
 JF
 Xd
@@ -26184,7 +26059,7 @@ lM
 hx
 Pq
 fe
-oa
+jb
 jb
 DQ
 cD
@@ -26432,12 +26307,12 @@ hE
 sy
 sy
 sa
-AH
+lM
 lM
 Ez
-qG
+Xj
 lM
-SV
+Xj
 hx
 Pq
 fe
@@ -26692,9 +26567,9 @@ gu
 IX
 IX
 Sc
-uo
+Qy
 IX
-Aa
+Qy
 iX
 MN
 fe
@@ -26951,7 +26826,7 @@ lM
 cH
 Xj
 lM
-SV
+Xj
 hx
 gC
 fe
@@ -27208,7 +27083,7 @@ lM
 jB
 Wq
 lM
-SV
+Xj
 hx
 pg
 iX
@@ -27463,9 +27338,9 @@ we
 lM
 lM
 lM
-TE
+Xj
 lM
-SV
+Xj
 hx
 Pq
 hx
@@ -27722,7 +27597,7 @@ IX
 qg
 Qy
 IX
-Aa
+Qy
 iX
 bM
 hx
@@ -27979,7 +27854,7 @@ lM
 lM
 lM
 lM
-SV
+Xj
 hx
 Pq
 hx
@@ -28232,10 +28107,10 @@ VJ
 VJ
 sa
 xZ
-SV
-SV
-SV
-SV
+Xj
+Xj
+Xj
+Xj
 OE
 Wp
 Pq
@@ -28998,7 +28873,7 @@ zk
 tY
 fH
 fg
-Vd
+aw
 nj
 aw
 GP
@@ -29545,7 +29420,7 @@ BV
 YH
 kD
 nm
-Uo
+kD
 Jb
 ci
 Gh
@@ -29767,9 +29642,9 @@ Mx
 Lq
 zk
 Yd
-tY
-tY
-tY
+oa
+qD
+sG
 aw
 aw
 GP
@@ -30268,9 +30143,9 @@ bE
 RP
 aH
 IB
-Au
-Au
-Au
+RP
+RP
+RP
 fq
 aH
 RP
@@ -30830,7 +30705,7 @@ wj
 YH
 kD
 UW
-Uo
+kD
 Gh
 ci
 Gh
@@ -31036,9 +30911,9 @@ mt
 mt
 Cr
 zE
-mt
+mC
 eD
-mt
+mC
 zE
 yX
 eD
@@ -31289,7 +31164,7 @@ eG
 eG
 nS
 mt
-sG
+nV
 nV
 gc
 Kv
@@ -31582,7 +31457,7 @@ XN
 om
 no
 Gp
-FE
+YN
 eL
 eL
 eL
@@ -31803,7 +31678,7 @@ eG
 eG
 nS
 mt
-sG
+nV
 nV
 nV
 nV
@@ -31839,7 +31714,7 @@ XN
 om
 Af
 YN
-FE
+YN
 eL
 eL
 eL
@@ -32096,7 +31971,7 @@ XN
 om
 Af
 Ga
-FE
+YN
 eL
 eL
 eL
@@ -32353,7 +32228,7 @@ XN
 om
 Af
 YN
-FE
+YN
 eL
 eL
 tX
@@ -32610,7 +32485,7 @@ XN
 kL
 Af
 da
-FE
+YN
 eL
 eL
 eL
@@ -32619,7 +32494,7 @@ rs
 rs
 rs
 io
-Hb
+Cq
 Mi
 Cq
 Cq
@@ -32867,7 +32742,7 @@ XN
 om
 Af
 YN
-FE
+YN
 eL
 eL
 eL
@@ -33124,7 +32999,7 @@ XN
 om
 Af
 Ga
-FE
+YN
 eL
 eL
 eL
@@ -33381,7 +33256,7 @@ om
 om
 Af
 YN
-FE
+YN
 eL
 eL
 eL
@@ -33638,7 +33513,7 @@ Vz
 om
 no
 QX
-FE
+YN
 eL
 eL
 eL
