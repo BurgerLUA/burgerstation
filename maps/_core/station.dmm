@@ -5077,13 +5077,13 @@
 /obj/structure/interactive/disposals/pipe/ending{
 	dir = 4
 	},
-/turf/simulated/floor/tile/grey,
+/turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/central)
 "st" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 9
 	},
-/turf/simulated/floor/tile/grey,
+/turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/central)
 "su" = (
 /obj/decal/poster/nanotrasen{
@@ -5111,7 +5111,7 @@
 /turf/simulated/wall/rock/indestructable,
 /area/burgerstation/hall/central)
 "sz" = (
-/obj/marker/spawning/window/reinforced,
+/obj/structure/interactive/door/airlock/station/nanotrasen/glass,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "sA" = (
@@ -5164,6 +5164,41 @@
 "sL" = (
 /obj/structure/interactive/plant/liberty_cap,
 /turf/simulated/floor/grass/jungle,
+/area/lz_001/jungle)
+"tl" = (
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/grass/jungle,
+/area/lz_001/jungle)
+"zm" = (
+/turf/simulated/floor/carpet,
+/area/lz_001/jungle)
+"EO" = (
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/lz_001/jungle)
+"FM" = (
+/mob/living/simple/crab/passive,
+/turf/simulated/floor/carpet,
+/area/lz_001/jungle)
+"Ih" = (
+/turf/simulated/floor/tile/grey,
+/area/lz_001/jungle)
+"OA" = (
+/turf/simulated/wall/metal,
+/area/lz_001/jungle)
+"OJ" = (
+/obj/item/container/edible/package/junkfood/raisins,
+/turf/simulated/floor/carpet,
+/area/lz_001/jungle)
+"SL" = (
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/burgerstation/hall/central)
+"TD" = (
+/mob/living/simple/turret/nanotrasen,
+/turf/simulated/floor/grass/jungle,
+/area/lz_001/jungle)
+"Uz" = (
+/obj/structure/interactive/door/airlock/station/nanotrasen/glass,
+/turf/simulated/floor/tile/grey,
 /area/lz_001/jungle)
 
 (1,1,1) = {"
@@ -25855,7 +25890,7 @@ au
 au
 au
 au
-au
+aI
 au
 au
 au
@@ -26112,7 +26147,7 @@ au
 au
 au
 au
-aI
+au
 au
 au
 au
@@ -26367,12 +26402,12 @@ rW
 au
 au
 au
+TD
 au
 au
 au
 au
-au
-au
+aI
 au
 au
 au
@@ -26622,8 +26657,8 @@ rW
 kO
 rW
 sx
-au
-au
+OA
+OA
 au
 au
 au
@@ -26879,9 +26914,9 @@ aR
 gS
 ss
 sy
-au
-au
-au
+EO
+tl
+EO
 au
 au
 au
@@ -27136,9 +27171,9 @@ gT
 sn
 st
 sz
-au
-au
-au
+Ih
+Uz
+EO
 au
 au
 au
@@ -27391,11 +27426,11 @@ gS
 gS
 gS
 mK
-gS
+SL
 sy
-au
-au
-au
+EO
+tl
+EO
 au
 au
 au
@@ -27650,8 +27685,8 @@ kN
 so
 rW
 sx
-au
-au
+OA
+OA
 au
 au
 au
@@ -27909,7 +27944,7 @@ rW
 au
 au
 bm
-au
+TD
 au
 au
 au
@@ -28420,8 +28455,8 @@ sf
 kN
 sp
 rW
-au
-au
+FM
+zm
 au
 au
 bq
@@ -28677,8 +28712,8 @@ sg
 kN
 sp
 rW
-au
-au
+OJ
+zm
 au
 au
 au
@@ -28934,8 +28969,8 @@ sg
 kN
 sp
 rW
-au
-au
+zm
+zm
 au
 au
 au
@@ -29198,7 +29233,7 @@ au
 bq
 au
 au
-au
+aI
 au
 au
 au
