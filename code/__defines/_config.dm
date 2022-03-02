@@ -27,7 +27,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING FALSE //remember to toggle -v
+#define ENABLE_LIGHTING FALSE
 
 //Enables/disables turf generation
 #define ENABLE_GENERATION FALSE
