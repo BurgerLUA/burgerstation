@@ -9,7 +9,7 @@
 	mouse_opacity = 2
 
 /obj/hud/button/map/New(var/desired_loc)
-	screen_loc = "CENTER:-[world.maxx],CENTER:-[world.maxy]"
+	screen_loc = "CENTER:-[world.maxx/2],CENTER:-[world.maxy/2]"
 	. = ..()
 
 /obj/hud/button/map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

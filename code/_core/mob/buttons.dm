@@ -26,29 +26,29 @@
 		client.known_buttons = buttons.Copy()
 
 //Health
-/mob/proc/toggle_health(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
+/mob/proc/toggle_health(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	draw_health = !draw_health
 	show_health(draw_health,show_flags_whitelist,show_flags_blacklist,speed)
 
-/mob/proc/show_health(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
+/mob/proc/show_health(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
 	for(var/k in health_elements)
 		var/obj/hud/button/H = health_elements[k]
 		if(H.flags & show_flags_whitelist && !(H.flags & show_flags_blacklist))
 			H.show(show,speed)
 
 //Buttons
-/mob/proc/toggle_buttons(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
+/mob/proc/toggle_buttons(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	draw_buttons = !draw_buttons
 	show_buttons(draw_buttons,show_flags_whitelist,show_flags_blacklist,speed)
 
-/mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
+/mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
 	for(var/k in buttons)
 		var/obj/hud/button/B = k
 		if(B.flags & show_flags_whitelist && !(B.flags & show_flags_blacklist))
 			B.show(show,speed)
 
 //HUD
-/mob/proc/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=1)
+/mob/proc/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
 	show_buttons(show,show_flags_whitelist,show_flags_blacklist,speed)
 	show_health(show,show_flags_whitelist,show_flags_blacklist,speed)
 

@@ -58,3 +58,16 @@
 		"helmet_heavy" = COLOR_DEATHSQUAD_BLACK,
 		"visor_heavy" = COLOR_DEATHSQUAD_RED
 	)
+
+/obj/item/clothing/head/helmet/full/nanotrasen/custom
+	name = "custom Jaeger helmet"
+	icon = 'icons/obj/item/clothing/hats/nano.dmi'
+	polymorphs = list(
+		"base" = "#404040",
+		"visor" = "#FFD7AD",
+		"stripe" = "#B54A4A"
+	)
+
+	armor = /armor/military/heavy/hard
+
+	value = 400

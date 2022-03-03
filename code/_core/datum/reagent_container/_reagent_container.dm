@@ -38,6 +38,8 @@
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
+		if(R.abstract)
+			continue
 		var/volume = stored_reagents[r_id]
 		returning_text += "[volume] units of [R.name]"
 
@@ -135,6 +137,8 @@
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
+		if(R.abstract)
+			continue
 		var/volume = stored_reagents[r_id]
 		temperature_mod += (volume * R.temperature_mod)
 
@@ -155,6 +159,8 @@
 
 	for(var/r_id in stored_reagents_temperature)
 		var/reagent/R = REAGENT(r_id)
+		if(R.abstract)
+			continue
 		var/volume = stored_reagents[r_id]
 		stored_reagents_temperature[r_id] = average_temperature
 		if(isnum(R.heated_reagent_temp) && R.heated_reagent_temp < average_temperature)
@@ -205,11 +211,13 @@
 		if(R.lethal) contains_lethal = TRUE
 
 		var/volume = stored_reagents[r_id]
-		var/temperature = stored_reagents_temperature[r_id] ? stored_reagents_temperature[r_id] : T0C + 20
 
 		if(volume <= 0)
 			stored_reagents -= r_id
 			stored_reagents_temperature -= r_id
+			continue
+
+		if(R.abstract)
 			continue
 
 		red += GetRedPart(R.color) * volume * R.color_multiplier
@@ -217,6 +225,8 @@
 		blue += GetBluePart(R.color) * volume * R.color_multiplier
 		alpha += R.alpha * volume
 		volume_current += volume
+
+		var/temperature = stored_reagents_temperature[r_id] ? stored_reagents_temperature[r_id] : T0C + 20
 
 		temperature_math_01[r_id] = temperature
 		temperature_math_02[r_id] = volume * R.temperature_mod
@@ -379,7 +389,7 @@
 		//CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
 		return 0
 
-	if(temperature == TNULL)
+	if(temperature == TNULL || R.abstract)
 		if(owner)
 			var/area/A = get_area(owner)
 			if(A)
@@ -447,7 +457,7 @@
 	update_container()
 	return TRUE
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller,var/include_abstract=FALSE) //Transfer all the reagents.
 
 	if(!target_container)
 		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
@@ -482,6 +492,9 @@
 	var/old_volume = volume_current
 
 	for(var/r_id in stored_reagents)
+		var/reagent/R = REAGENT(r_id)
+		if(R.abstract && !include_abstract)
+			continue
 		var/volume = stored_reagents[r_id]
 		var/ratio = volume / old_volume
 		var/temp = stored_reagents_temperature[r_id]
@@ -641,7 +654,7 @@
 			consumer.to_chat(span("notice",final_flavor_text))
 
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
-		. = transfer_reagents_to(S.reagents,volume_current, caller = caller)
+		. = transfer_reagents_to(S.reagents,volume_current, caller = caller,include_abstract=TRUE)
 	else
-		. = transfer_reagents_to(consumer.reagents,volume_current, caller = caller)
+		. = transfer_reagents_to(consumer.reagents,volume_current, caller = caller,include_abstract=TRUE)
 

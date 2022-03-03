@@ -630,6 +630,7 @@
 #include "code\_core\datum\rank\_rank.dm"
 #include "code\_core\datum\reagent\_reagent.dm"
 #include "code\_core\datum\reagent\bee.dm"
+#include "code\_core\datum\reagent\reagent_abstract.dm"
 #include "code\_core\datum\reagent\reagent_acid.dm"
 #include "code\_core\datum\reagent\reagent_blood.dm"
 #include "code\_core\datum\reagent\reagent_core.dm"

@@ -91,7 +91,7 @@ obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O)
 			P.handle_hairstyle_chargen(-1,update_blends=FALSE)
 			P.handle_beardstyle_chargen(-1,update_blends=FALSE)
 			P.update_all_blends()
-			P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+			P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 
 	return ..()
 
@@ -116,7 +116,7 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 		P.handle_hairstyle_chargen(-1,update_blends=FALSE)
 		P.handle_beardstyle_chargen(-1,update_blends=FALSE)
 		P.update_all_blends()
-		P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+		P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 
 /obj/structure/interactive/misc/mirror/cracked/chargen/Uncrossed(atom/movable/O)
 	if(istype(O,/mob/living/advanced/player/antagonist/))

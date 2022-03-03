@@ -70,3 +70,19 @@
 		"under" = "#FFFFFF",
 		"heavy" = COLOR_DEATHSQUAD_BLACK
 	)
+
+
+/obj/item/clothing/overwear/armor/nanotrasen/custom
+	name = "custom Jaeger armor"
+	icon = 'icons/obj/item/clothing/suit/nano.dmi'
+	polymorphs = list(
+		"base" = "#404040",
+		"chest" = "#FFD7AD",
+		"shoulders" = "#B54A4A"
+	)
+
+	worn_layer = LAYER_MOB_CLOTHING_ARMOR
+
+	armor = /armor/military/heavy/hard
+
+	value = 1200
