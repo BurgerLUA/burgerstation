@@ -6,6 +6,7 @@
 
 	var/drill_depth = 0
 	var/drill_counter = 0
+	var/can_rotate = FALSE
 
 	var/obj/structure/interactive/ground_ore_deposit/found_deposit
 
