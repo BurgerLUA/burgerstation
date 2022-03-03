@@ -30,7 +30,7 @@
 	return try_transfer_reagents(caller,caller,location,null,params)
 
 /obj/item/container/simple/beaker/get_consume_verb()
-	return "drink"
+	return "drink" //this
 
 /obj/item/container/simple/beaker/get_consume_sound()
 	return 'sound/items/consumables/drink.ogg'
