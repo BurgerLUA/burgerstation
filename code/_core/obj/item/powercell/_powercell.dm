@@ -117,7 +117,7 @@
 	weight = 10
 
 /obj/item/powercell/tiny
-	name = "AA power cell"
+	name = "device power cell"
 	desc = "Do not swallow."
 	desc_extended = "A tiny battery used commonly to power small devices."
 	icon_state = "cell_tiny"
