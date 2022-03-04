@@ -71,6 +71,8 @@
 
 	drop_sound = 'sound/items/drop/gun.ogg'
 
+	dan_mode = TRUE
+
 	var/current_firemode = 1
 	var/list/firemodes = list()
 

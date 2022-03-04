@@ -7,6 +7,8 @@
 
 	automatic = FALSE
 
+	dan_mode = FALSE
+
 	use_loyalty_tag = TRUE
 	firing_pin = null
 
