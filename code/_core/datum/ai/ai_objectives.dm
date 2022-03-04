@@ -17,6 +17,9 @@
 	if(old_attack == A)
 		return FALSE
 
+	if(is_player(old_attack))
+		ai_attacking_players[old_attack] -= owner
+
 	attackers -= old_attack
 
 	if(A) owner.set_dir(get_dir(owner,A))
@@ -37,6 +40,8 @@
 			objective_move = null
 		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
+		if(is_player(A))
+			ai_attacking_players[A][owner] = TRUE
 		return TRUE
 	else if(istype(A))
 		frustration_attack = 0

@@ -39,18 +39,26 @@
 	return FALSE
 
 
-/ai/proc/get_attack_score(var/atom/A)
+/ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.
 
 	var/dist = get_dist(A.loc,owner.loc)
 
 	if(dist <= attack_distance_max)
+		var/health_mod = A.health ? max(0,A.health.health_current/A.health.health_max) : 0
 		if(attackers[A])
-			return 3000 - (A.health ? A.health.health_current : 0)
+			return -2 //Target those who attacked you, but still attack those who are literally touching you.
 		if(is_living(A))
 			var/mob/living/L = A
-			if(L.ai && L.ai.objective_attack == owner)
-				return 2000 - (A.health ? A.health.health_current : 0)
-		return 1000 - (A.health ? A.health.health_current : 0)
+			if(attack_distance_max > 2 && is_player(A))
+				//We're attacking a player from a distance. Go easy on them.
+				if(length(ai_attacking_players[A]) > 2 && !ai_attacking_players[A][owner])
+					return -9999 //Wow they're being overwhelmed. Very lowest priority.
+				return -dist*(0.5 + 1-health_mod) //Attack those with high health. Low health will be spared.
+			else if(L.ai)
+				if(L.ai.objective_attack == owner)
+					return 9999 //Prioritize AI wars.
+				else
+					return -dist*0.25 //Prioritize attacking other AI.
 
 	return -dist
 
