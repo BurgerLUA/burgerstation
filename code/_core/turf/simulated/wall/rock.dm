@@ -26,6 +26,7 @@
 	map_color = COLOR_GREY_DARK
 
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(src,list(/obj/item/material/sandtone/ = 5),material_id)
 	CREATE(/obj/structure/scenery/rocks,src)
 	return ..()
 

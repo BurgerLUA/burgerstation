@@ -1474,6 +1474,7 @@
 #include "code\_core\obj\item\material\ingot.dm"
 #include "code\_core\obj\item\material\ore.dm"
 #include "code\_core\obj\item\material\rod.dm"
+#include "code\_core\obj\item\material\sandstone.dm"
 #include "code\_core\obj\item\material\shard.dm"
 #include "code\_core\obj\item\material\sheet.dm"
 #include "code\_core\obj\item\material\trash_cube.dm"
