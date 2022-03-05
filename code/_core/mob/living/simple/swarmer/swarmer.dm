@@ -74,7 +74,7 @@
 	GENERATE(V)
 	FINALIZE(V)
 
-	trap_cooldown = world.time + 60
+	trap_cooldown = world.time + 45
 
 	return TRUE
 
