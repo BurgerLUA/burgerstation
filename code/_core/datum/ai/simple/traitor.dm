@@ -1,4 +1,4 @@
-/ai/traitor
+/ai/traitor //AMONGUS AI
 	roaming_distance = VIEW_RANGE
 	radius_find_enemy = VIEW_RANGE
 

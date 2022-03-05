@@ -179,7 +179,7 @@
 
 	. = ..()
 
-	if(!use_loyalty_tag && ispath(firing_pin))
+	if(use_iff_tag && ispath(firing_pin))
 		firing_pin = new firing_pin(src)
 		INITIALIZE(firing_pin)
 		GENERATE(firing_pin)
@@ -227,7 +227,7 @@
 			INTERACT_DELAY(5)
 			add_attachment(caller,I)
 			return TRUE
-		if(!use_loyalty_tag)
+		if(use_iff_tag)
 			if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
@@ -291,7 +291,7 @@
 		caller.to_chat(span("warning","\The [src.name] is completely broken!"))
 		return FALSE
 
-	if(!use_loyalty_tag)
+	if(use_iff_tag)
 		if(ispath(firing_pin))
 			log_error("WARNING: WEAPON OF TYPE [src.type] HAD A PATH AS A FIRING PIN.")
 			firing_pin = null
@@ -589,7 +589,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 					O.health.adjust_loss_smart(PAIN=arm_damage)
 
 
-	if(!use_loyalty_tag && firing_pin)
+	if(use_iff_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
 	if(automatic && is_player(caller) && caller.client)

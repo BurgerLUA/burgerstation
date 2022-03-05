@@ -5,8 +5,8 @@
 	ai = /ai/advanced/beef
 	species = "beefman"
 
-	iff_tag = "beefman"
-	loyalty_tag = "beefman"
+	iff_tag = "Beefman"
+	loyalty_tag = "Beefman"
 
 	movement_delay = 1 //Lowest possible.
 

@@ -3,10 +3,6 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
-	ignore_loyalty = FALSE
-	ignore_iff = TRUE
-
-
 /obj/projectile/magic/fireball
 	name = "fireball"
 	icon_state = "fireball"

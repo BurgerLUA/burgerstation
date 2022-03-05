@@ -44,8 +44,6 @@
 
 	pixel_x = -16
 
-
-
 	loyalty_tag = "Shark"
 	iff_tag = "Shark"
 

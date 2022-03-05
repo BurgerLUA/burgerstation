@@ -36,15 +36,11 @@
 
 	var/mob/living/advanced/A = caller
 
-	if(!A.iff_tag)
-		caller.to_chat(span("danger","The firing pin doesn't detect your IFF signature and refuses to fire!"))
-		return FALSE
-
-	if(A.iff_tag != iff_tag)
+	if(!check_iff(A.iff_tag,src.iff_tag,get_area(weapon),hostile=TRUE))
 		caller.to_chat(span("danger","The firing pin doesn't recognize your IFF signature and refuses to fire!"))
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /obj/item/firing_pin/electronic/iff/nanotrasen
 	name = "electronic nanotrasen firing pin"

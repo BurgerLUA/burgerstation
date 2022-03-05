@@ -63,7 +63,7 @@
 		for(var/obj/item/weapon/W in view(6,A))
 			if(istype(W,/obj/item/weapon/ranged/))
 				var/obj/item/weapon/ranged/R = W
-				if(!R.firing_pin || R.firing_pin != A.iff_tag)
+				if(!R.firing_pin || R.firing_pin.iff_tag != A.iff_tag)
 					continue
 			if(istype(W,/obj/item/weapon/ranged/bullet/))
 				var/obj/item/weapon/ranged/bullet/B = W

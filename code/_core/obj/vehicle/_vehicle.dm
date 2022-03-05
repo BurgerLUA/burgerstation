@@ -276,10 +276,8 @@
 		caller.to_chat(span("warning","You can't get inside \the [src.name]!"))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
-
-	if(A.iff_tag != iff_tag)
-		A.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
+	if(!check_iff(caller,src,hostile=FALSE))
+		caller.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
 		return FALSE
 
 	return TRUE

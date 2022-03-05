@@ -16,6 +16,7 @@
 	movement_spread_base = 0.01
 
 	use_loyalty_tag = TRUE
+	use_iff_tag = FALSE
 	firing_pin = null
 
 	inaccuracy_modifier = 0

@@ -15,6 +15,7 @@
 	automatic = TRUE
 
 	use_loyalty_tag = TRUE
+	use_iff_tag = FALSE
 	has_quick_function = TRUE
 
 /obj/item/weapon/ranged/spellgem/get_owner()

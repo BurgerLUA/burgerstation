@@ -123,6 +123,7 @@
 #include "code\__helpers\list_defines.dm"
 #include "code\__helpers\lists.dm"
 #include "code\__helpers\logging.dm"
+#include "code\__helpers\loyalty_iff.dm"
 #include "code\__helpers\math.dm"
 #include "code\__helpers\name.dm"
 #include "code\__helpers\path.dm"

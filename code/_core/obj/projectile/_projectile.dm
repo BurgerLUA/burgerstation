@@ -57,10 +57,8 @@
 	var/obj/effect/temp/muzzleflash/muzzleflash_effect
 
 	var/iff_tag
-	var/ignore_iff = FALSE //Set to true if you want it to ignore IFF collision checking.
-
 	var/loyalty_tag
-	var/ignore_loyalty = TRUE //SEt to true if you want to ignore loyalty tag collision checking.
+	var/hostile = TRUE //Set to true if this is a hostile projectile. Set to false if it isn't.
 
 	var/rotate_projectile = TRUE
 
