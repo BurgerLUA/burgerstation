@@ -219,7 +219,7 @@
 	icon_state = "barricade"
 	bullet_block_chance = 90
 	collision_flags = FLAG_COLLISION_BARICADE
-	health_base = 800
+	health_base = 300
 
 /obj/structure/interactive/swarmer/trap
 	name = "holographic trap"
