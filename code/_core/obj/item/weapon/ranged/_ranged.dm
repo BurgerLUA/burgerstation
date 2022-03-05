@@ -14,7 +14,7 @@
 	var/next_shoot_time = 0
 
 	var/ranged_damage_type
-	var/projectile_speed = 31 //Fallback value
+	var/projectile_speed = TILE_SIZE - 1 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
 

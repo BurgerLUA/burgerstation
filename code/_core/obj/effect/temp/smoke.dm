@@ -35,6 +35,8 @@
 /obj/effect/temp/smoke/Destroy()
 	. = ..()
 	blacklist_turfs?.Cut()
+	owner = null
+	container = null //The container is a shared list
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
 	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))
@@ -42,7 +44,7 @@
 
 /obj/effect/temp/smoke/Crossed(var/atom/movable/O)
 	. = ..()
-	try_splash(O)
+	if(O.density) try_splash(O)
 
 /obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255)
 	. = ..()
@@ -51,8 +53,6 @@
 	if(isnum(desired_volume))
 		smoke_volume = desired_volume
 	blacklist_turfs = desired_blacklist_turfs
-	if(desired_location)
-		try_splash(desired_location)
 	alpha = desired_alpha
 	if(alpha >= 255)
 		opacity = TRUE
@@ -92,21 +92,21 @@
 
 	var/max_i = min(smoke_volume,rand(3,4),length(possible_turfs))
 
-	if(!max_i)
-		return FALSE
-
-	for(var/i=1,i<=max_i,i++)
-		var/turf/T = pick(possible_turfs)
-		possible_turfs -= T
-		new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1),alpha)
-		blacklist_turfs[T] = TRUE
+	if(max_i)
+		for(var/i=1,i<=max_i,i++)
+			var/turf/T = pick(possible_turfs)
+			possible_turfs -= T
+			new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1),alpha)
+			blacklist_turfs[T] = TRUE
+			smoke_volume--
+	else
 		smoke_volume--
-
-	if(smoke_volume <= 0)
-		return FALSE
 
 	var/turf/T = get_turf(src)
 	try_splash(T)
+
+	if(smoke_volume <= 0)
+		return FALSE
 
 /obj/effect/temp/smoke/get_base_transform()
 	. = ..()
