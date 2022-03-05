@@ -51,7 +51,7 @@
 		caller.to_chat(span("warning","There is nothing to remove!"))
 		return FALSE
 
-	if(is_organ(top_object.loc))
+	if(is_organ(object.loc))
 		top_object.try_strip(caller)
 		return TRUE
 	else if(is_inventory(object))
