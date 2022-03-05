@@ -4,11 +4,7 @@
 	desc_extended = "A hard leather eyepatch meant to cover one eye."
 	icon = 'icons/obj/item/clothing/glasses/eyepatch.dmi'
 
-
-	defense_rating = list(,
-		ARCANE = 20,
-		PAIN = 20
-	)
+	armor = /armor/cloth/arcane/reduced
 
 	size = SIZE_1
 

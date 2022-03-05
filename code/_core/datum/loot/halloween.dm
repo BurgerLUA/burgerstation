@@ -5,12 +5,10 @@
 
 	loot_table = list(
 		/loot/costume/witch = 1,
-		/loot/costume/clown = 1,
 		/loot/costume/ghost = 1,
 		/loot/costume/cardborg = 1,
 		/loot/costume/dracula = 1,
 		/loot/costume/draculass = 1,
-		/loot/costume/mummy = 1,
 		/loot/costume/miner = 1,
 		/loot/candy/three = 20
 	)
@@ -50,14 +48,6 @@
 	)
 
 
-/loot/costume/clown
-	loot_table_guaranteed = list(
-		/obj/item/clothing/mask/clown,
-		/obj/item/clothing/uniform/clown,
-		/obj/item/storage/shoebox/clown,
-	)
-
-
 /loot/costume/ghost
 	loot_table_guaranteed = list(
 		/obj/item/clothing/overwear/coat/ghost_sheet
@@ -82,13 +72,6 @@
 		/obj/item/clothing/pants/draculass,
 		/obj/item/clothing/shirt/draculass,
 		/obj/item/clothing/neck/vampire,
-	)
-
-
-/loot/costume/mummy
-	loot_table_guaranteed = list(
-		/obj/item/clothing/uniform/mummy,
-		/obj/item/clothing/mask/mummy,
 	)
 
 /loot/costume/miner

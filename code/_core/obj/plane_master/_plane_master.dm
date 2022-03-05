@@ -30,8 +30,13 @@
 /obj/plane_master/proc/apply_post_processing()
 	return TRUE
 
+//FLOORS
 /obj/plane_master/floor
 	plane = PLANE_FLOOR
+
+/obj/plane_master/floor/apply_post_processing()
+	. = ..()
+	//filters += filter(type="radial_blur", size=0.02/VIEW_RANGE)
 
 //WALLS
 /obj/plane_master/walls
@@ -42,6 +47,8 @@
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0,200))
+
+	//filters += filter(type="radial_blur", size= 0.02/VIEW_RANGE)
 
 //MOBS
 /obj/plane_master/mobs
@@ -170,7 +177,6 @@
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=0, size=2, offset=0, color=rgb(0,0,0))
-
 
 //Exterior areas. For weather effects.
 /obj/plane_master/area_exterior

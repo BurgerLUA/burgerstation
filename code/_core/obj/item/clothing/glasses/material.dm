@@ -5,9 +5,7 @@
 	icon = 'icons/obj/item/clothing/glasses/material.dmi'
 
 
-	defense_rating = list(,
-		ARCANE = -20
-	)
+	armor = /armor/mechanical
 
 	size = SIZE_1
 

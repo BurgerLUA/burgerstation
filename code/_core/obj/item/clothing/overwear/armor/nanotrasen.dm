@@ -22,14 +22,7 @@
 		"light" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 40,
-		ARCANE = -40,
-		BOMB = 40
-	)
+	armor = /armor/military/light/hard
 
 	value = 300
 
@@ -49,14 +42,7 @@
 		"medium" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -60,
-		BOMB = 40
-	)
+	armor = /armor/military/medium/hard
 
 	value = 600
 
@@ -75,14 +61,7 @@
 		"heavy" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 40,
-		ARCANE = -80,
-		BOMB = 40
-	)
+	armor = /armor/military/heavy/hard
 
 	value = 1200
 
@@ -91,3 +70,19 @@
 		"under" = "#FFFFFF",
 		"heavy" = COLOR_DEATHSQUAD_BLACK
 	)
+
+
+/obj/item/clothing/overwear/armor/nanotrasen/custom
+	name = "custom Jaeger armor"
+	icon = 'icons/obj/item/clothing/suit/nano.dmi'
+	polymorphs = list(
+		"base" = "#404040",
+		"chest" = "#FFD7AD",
+		"shoulders" = "#B54A4A"
+	)
+
+	worn_layer = LAYER_MOB_CLOTHING_ARMOR
+
+	armor = /armor/military/heavy/hard
+
+	value = 1200

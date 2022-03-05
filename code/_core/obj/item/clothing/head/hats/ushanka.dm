@@ -5,9 +5,7 @@
 
 	icon = 'icons/obj/item/clothing/hats/ushanka.dmi'
 
-	defense_rating = list(
-		COLD = 60
-	)
+	armor = /armor/cloth/winter/
 
 	size = SIZE_2
 

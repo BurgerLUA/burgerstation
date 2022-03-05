@@ -1,12 +1,10 @@
 /obj/item/clothing/head/helmet/full/blob_spore
 	name = "blob spore"
 	icon = 'icons/obj/item/clothing/hats/blob.dmi'
-	desc = "Oh no."
-	desc_extended = "A very dangerous blob spore that appears attached to a head. Should probably remove this before things get worse."
+	desc = "OH GOD ITS EATING MY BRAINS."
+	desc_extended = "A very dangerous blob spore that appears attached to a head. Should probably remove this before your brains get eaten."
 
 	worn_layer = LAYER_MOB_BLOB
-
-	defense_rating = list()
 
 	size = SIZE_5
 

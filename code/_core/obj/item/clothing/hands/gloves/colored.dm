@@ -7,14 +7,7 @@
 	icon = 'icons/obj/item/clothing/gloves/regular.dmi'
 	color = "#FFFFFF"
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10,
-		BIO = 20
-	)
+	armor = /armor/cloth/
 
 	size = SIZE_1
 
@@ -37,21 +30,10 @@
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
 	desc = "Shoot guns with theese."
-	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your slavic bias."
 	color = "#404040"
 
-
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -10,
-		ARCANE = -20,
-		HEAT = 20,
-		COLD = 20,
-		BOMB = 20,
-		BIO = 10
-	)
+	armor = /armor/cloth/hard
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 1
@@ -63,7 +45,7 @@
 /obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
 	desc = "Shoot guns with theese."
-	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your slavic bias."
 	color = "#404040"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
@@ -83,18 +65,7 @@
 	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 
-
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = -60,
-		HEAT = 40,
-		COLD = 40,
-		BIO = 10,
-		FATIGUE = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/glasses/sunglasses/insulated
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 2
@@ -128,17 +99,7 @@
 	desc_extended = "A padded glove. Equipped with a fancier icon for extra tactical-ness."
 	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
 
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = -40,
-		ARCANE = -60,
-		HEAT = 60,
-		COLD = 60,
-		BIO = 10
-	)
+	armor = /armor/military/light
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 3
@@ -183,10 +144,13 @@
 
 
 /obj/item/clothing/hands/gloves/colored/padded/brown
+	name = "left padded workman's glove"
 	color = COLOR_BROWN
 
+	armor = /armor/leather/mining
+
 /obj/item/clothing/hands/gloves/colored/padded/brown/left
-	name = "left padded glove"
+	name = "left padded workman's glove"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
@@ -203,7 +167,7 @@
 	color = "#6C8A97"
 
 /obj/item/clothing/hands/gloves/colored/padded/merc/left
-	name = "left padded glove"
+	name = "left padded tactical glove"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
@@ -219,7 +183,7 @@
 	color = "#48482D"
 
 /obj/item/clothing/hands/gloves/colored/padded/merc_alt/left
-	name = "left padded glove"
+	name = "left padded tactical glove"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

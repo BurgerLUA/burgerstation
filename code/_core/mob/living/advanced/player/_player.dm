@@ -111,7 +111,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	click_and_drag_icon	= new(src)
 	last_autosave = world.time
 	all_players += src
-	return ..()
+	ai_attacking_players[src] = list()
+	. = ..()
 
 /mob/living/advanced/player/restore_inventory()
 
@@ -169,6 +170,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		current_squad = null
 
 	all_players -= src
+
+	ai_attacking_players -= src
 
 	active_device = null
 	active_structure = null

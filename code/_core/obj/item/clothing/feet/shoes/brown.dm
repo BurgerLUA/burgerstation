@@ -8,14 +8,7 @@
 
 	icon = 'icons/obj/item/clothing/shoes/brown.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		ARCANE = 20,
-		COLD = 20,
-		PAIN = 20
-	)
+	armor = /armor/cloth/hard
 
 	size = SIZE_1
 

@@ -15,11 +15,11 @@
 
 //Regular espresso isn't here as that's a proper drink
 
-/obj/item/container/simple/can/coffee/americano
-	name = "\improper Robusto Spaceo Americano"
+/obj/item/container/simple/can/coffee/freedomno
+	name = "\improper Robusto Spaceo freedomno"
 	desc = "Expresso with some hot water poured inside."
 
-/obj/item/container/simple/can/coffee/americano/Generate()
+/obj/item/container/simple/can/coffee/freedomno/Generate()
 	reagents.add_reagent(/reagent/nutrition/energy/coffee/espresso,reagents.volume_max*0.25,T0C + 96)
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max*0.75,T0C + 96)
 	open = FALSE

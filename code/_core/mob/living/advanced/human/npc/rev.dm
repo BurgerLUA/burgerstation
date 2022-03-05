@@ -2,7 +2,7 @@
 	name = "revolutionary soldier"
 	desc = "FOR THE REVOLUTION!"
 	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Surprisingly, they're not syndicate backed."
-	ai = /ai/advanced/syndicate/russian
+	ai = /ai/advanced/syndicate/slavic
 
 
 	var/list/possible_outfits = list(

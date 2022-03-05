@@ -12,13 +12,7 @@
 
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 10,
-		PIERCE = 20,
-		ARCANE = 20,
-		PAIN = 20
-	)
+	armor = /armor/cloth/hard
 
 
 	value = 30

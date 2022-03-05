@@ -5,12 +5,8 @@
 	desc_extended = "A bedsheet with some holes cut out to see out of, a classic."
 	icon = 'icons/obj/item/clothing/suit/ghostsheet.dmi'
 
+	armor = /armor/cloth/flammable
 
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = 20,
-		DARK = 20
-	)
 	size = SIZE_2
 
 	value = 100

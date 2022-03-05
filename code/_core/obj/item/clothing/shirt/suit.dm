@@ -6,9 +6,7 @@
 	desc_extended = "hello yes this is a description"
 
 
-	defense_rating = list(
-		ARCANE = 50
-	)
+	armor = /armor/cloth
 
 	size = SIZE_2
 

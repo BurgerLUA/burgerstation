@@ -78,7 +78,6 @@
 	spawning_items = list(
 		//No underwear
 
-		/obj/item/clothing/uniform/stealth/dyeable/virtual,
 		/obj/item/clothing/feet/shoes/colored/merc,
 		/obj/item/clothing/feet/shoes/colored/merc/left,
 		/obj/item/clothing/hands/gloves/colored/padded/merc,
@@ -120,7 +119,6 @@
 		/obj/item/clothing/feet/socks/ankle,
 		/obj/item/clothing/underbottom/underwear/boxers/heart,
 
-		/obj/item/clothing/uniform/stealth/dyeable/merc,
 		/obj/item/clothing/overwear/armor/sneaking,
 		/obj/item/clothing/overwear/coat/vest/poly/pockets_only,
 

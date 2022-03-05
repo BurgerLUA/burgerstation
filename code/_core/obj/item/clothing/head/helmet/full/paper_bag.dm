@@ -13,10 +13,7 @@
 
 	value = 10
 
-	defense_rating = list(
-		ARCANE = 20,
-		HEAT = -20
-	)
+	armor = /armor/cloth/flammable
 
 	polymorphs = list(
 		"base" = "#F9B583",

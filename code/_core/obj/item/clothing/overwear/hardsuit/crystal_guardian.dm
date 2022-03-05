@@ -4,22 +4,9 @@
 	desc_extended = "Little is known about the origin of Crystal Guardians, their attunement towards crystal based magic is unparalelled and in turn is utilized in all of their equipment."
 	icon = 'icons/obj/item/clothing/suit/crystal_guardian.dmi'
 
-
-	defense_rating = list(
-		BLADE = 80,
-		BLUNT = 60,
-		PIERCE = 40,
-		LASER = -60,
-		ARCANE = 120,
-		HEAT = -60,
-		COLD = 60,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20
-	)
+	armor = /armor/steel/arcane
 
 	size = SIZE_7
-
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/crystal_guardian)
 

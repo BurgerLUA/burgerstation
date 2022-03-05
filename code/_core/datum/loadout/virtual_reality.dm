@@ -5,7 +5,7 @@
 	. = ..()
 	if(istype(I,/obj/item/clothing))
 		var/obj/item/clothing/C = I
-		C.defense_rating = list()
+		C.armor = /armor/
 		C.anchored = TRUE
 
 /loadout/virtual_reality/syndicate

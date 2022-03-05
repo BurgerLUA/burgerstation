@@ -14,7 +14,8 @@
 		/obj/item/clothing/overwear/armor/knight/daddy,
 		/obj/item/clothing/neck/mantle/daddy,
 
-		/obj/item/clothing/uniform/priest,
+		/obj/item/clothing/shirt/normal/priest,
+		/obj/item/clothing/pants/normal/priest,
 		/obj/item/clothing/overwear/coat/chaplain,
 
 		/obj/item/storage/glovebox/white,

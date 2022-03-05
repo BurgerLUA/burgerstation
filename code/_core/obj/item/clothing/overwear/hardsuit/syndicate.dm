@@ -5,19 +5,7 @@
 	icon = 'icons/obj/item/clothing/suit/syndie_basic.dmi'
 
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -40,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20,
-		PAIN = 60
-	)
+	armor = /armor/hardsuit/combat/syndicate
 
 	size = SIZE_7
 
@@ -35,19 +23,7 @@
 	icon = 'icons/obj/item/clothing/suit/syndie_advanced.dmi'
 
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 60,
-		ARCANE = -60,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20,
-		PAIN = 60
-	)
+	armor = /armor/hardsuit/combat/syndicate/plus
 
 	size = SIZE_6
 
@@ -63,19 +39,7 @@
 	icon = 'icons/obj/item/clothing/suit/syndie_elite.dmi'
 
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 60,
-		ARCANE = -60,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20,
-		PAIN = 60
-	)
+	armor = /armor/hardsuit/combat/syndicate/fast
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie/elite)
 

@@ -518,7 +518,7 @@
 	nutrition_amount = 13
 	heal_factor = 20
 
-	flavor = "russia"
+	flavor = "slavic cooking"
 
 	flags_reagent = FLAG_REAGENT_COOKED
 	heated_reagent = /reagent/carbon

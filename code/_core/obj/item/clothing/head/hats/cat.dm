@@ -4,14 +4,7 @@
 	desc = "Pwease gimme huggie wuggies! uwu!"
 	desc_extended = "Dude what the fuck are you doing? Why did you buy this, why the fuck would you wanna even wear this? What the fuck, dude?"
 
-
-	defense_rating = list(
-		HOLY = -80,
-		DARK = 80,
-		BLADE = -60,
-		BLUNT = -60,
-		PIERCE = -60
-	)
+	armor = /armor/dark/meme
 
 	protected_limbs = TARGETABLE_LIMBS
 
@@ -37,14 +30,7 @@
 	desc = "Pwease gimme huggie wuggies! uwu!"
 	desc_extended = "Dude what the fuck are you doing? Why did you buy this, why the fuck would you wanna even wear this? What the fuck, dude?"
 
-
-	defense_rating = list(
-		HOLY = -80,
-		ARCANE = 80,
-		BLADE = -60,
-		BLUNT = -60,
-		PIERCE = -60
-	)
+	armor = /armor/dark/meme
 
 	protected_limbs = TARGETABLE_LIMBS
 

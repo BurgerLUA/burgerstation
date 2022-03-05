@@ -11,11 +11,7 @@
 
 	value = 10
 
-	defense_rating = list(
-		ARCANE = 20,
-		HEAT = -20,
-		COLD = 60
-	)
+	armor = /armor/cloth/hoodie
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

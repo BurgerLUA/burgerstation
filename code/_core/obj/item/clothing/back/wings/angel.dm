@@ -4,12 +4,7 @@ obj/item/clothing/back/wings/angel
 	desc_extended = "A pair of absolutely divine angel wings. Good for the holy."
 	icon = 'icons/obj/item/clothing/back/wings/angel.dmi'
 
-
-	defense_rating = list(
-		HOLY = 100,
-		DARK = -100
-	)
-
+	armor = /armor/holy/wings
 	dyeable = TRUE
 
 	value = 3000
@@ -21,15 +16,8 @@ obj/item/clothing/back/wings/angel/demon
 	desc = "Heaven's not my kind of place anyway."
 	desc_extended = "A pair of absolutely infernal demonic wings. Good for the profane."
 	icon = 'icons/obj/item/clothing/back/wings/demon.dmi'
-
-
-	defense_rating = list(
-		HOLY = -100,
-		DARK = 100
-	)
-
-	value = 3000
-
-	speed_bonus = 0.25 //25% faster.
-
 	color = COLOR_BLACK
+
+	armor = /armor/dark/wings
+
+

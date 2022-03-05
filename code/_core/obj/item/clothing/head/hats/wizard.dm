@@ -4,12 +4,7 @@
 	desc = "Roll for style."
 	desc_extended = "A typical hat worn often by manchildren and those in the wizard federation."
 
-
-	defense_rating = list(
-		ARCANE = 80,
-		DARK = -40,
-		HOLY = -40
-	)
+	armor = /armor/cloth/arcane
 
 	size = SIZE_2
 
@@ -30,13 +25,4 @@
 	name = "authentic wizard hat"
 	desc = "The real deal."
 
-	desc_extended = "A real, totally authentic wizard hat with all the protection a wizard needs."
-	color = COLOR_PURPLE
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		ARCANE = 80,
-		DARK = -40,
-		HOLY = -40
-	)
+	armor = /armor/cloth/arcane/bonus

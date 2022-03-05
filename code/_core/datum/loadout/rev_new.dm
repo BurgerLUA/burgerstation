@@ -126,7 +126,6 @@
 /loadout/rev/player_antagonist/researcher
 	spawning_items = list(
 		/obj/item/clothing/ears/headset/revolutionary,
-		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/coat/vest/revolutionary,
 		/obj/item/clothing/head/hat/skimask/black,
@@ -171,7 +170,6 @@
 /loadout/rev/player_antagonist/contractor
 	spawning_items = list(
 		/obj/item/clothing/ears/headset/revolutionary,
-		/obj/item/clothing/uniform/antag/rev,
 		/obj/item/clothing/overwear/hardsuit/skat/antag,
 		/obj/item/clothing/overwear/coat/vest/revolutionary,
 		/obj/item/clothing/head/hat/skimask/black,

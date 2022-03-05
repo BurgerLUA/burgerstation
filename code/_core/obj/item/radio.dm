@@ -4,7 +4,7 @@
 	icon = 'icons/obj/item/radio.dmi'
 	icon_state = "inventory"
 
-	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
+	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset/nanotrasen
 
 	value = 20
 

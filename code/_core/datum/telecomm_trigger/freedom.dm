@@ -1,8 +1,8 @@
-/telecomm_trigger/america
-	name = "Space America Invasion"
-	trigger_file = "data/server/telecomm_trigger/america.json"
+/telecomm_trigger/freedom
+	name = "Space Freedom Invasion"
+	trigger_file = "data/server/telecomm_trigger/freedom.json"
 
-/telecomm_trigger/america/New()
+/telecomm_trigger/freedom/New()
 	. = ..()
 
 	if(!trigger_file)
@@ -27,7 +27,7 @@
 
 	selected_trigger_regex = regex(loaded_list[selected_trigger_name])
 
-/telecomm_trigger/america/trigger()
+/telecomm_trigger/freedom/trigger()
 	. = ..()
 	var/list/valid_turfs = list()
 
@@ -44,10 +44,10 @@
 		return FALSE
 
 	announce(
-		"Incoming Message from the American Space Federation",
+		"Incoming Message from the Freedom Space Federation",
 		"Declaration of Freedom",
-		"Did someone say [selected_trigger_name]? We're coming to spread democracy in the area. Do not resist. God bless Space America.",
-		sound_to_play = 'sound/voice/announcement/america_invade.ogg'
+		"Did someone say [selected_trigger_name]? We're coming to spread democracy in the area. Do not resist. God bless Space freedom.",
+		sound_to_play = 'sound/voice/announcement/freedom_invade.ogg'
 	)
 
 	for(var/i=1,i<=30,i++)

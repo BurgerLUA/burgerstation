@@ -4,16 +4,7 @@
 	desc_extended = "A hat usually worn by the leader of shitcurity. Or security if they can keep them in line."
 	icon = 'icons/obj/item/clothing/hats/hos.dmi'
 
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 10,
-		ARCANE = -40,
-		HEAT = 10,
-		COLD = 10
-	)
+	armor = /armor/leather/hard
 
 	size = SIZE_2
 
@@ -25,17 +16,6 @@
 	desc = "Conscript spam baste."
 	desc_extended = "A cap usually worn by the leader of revolutionaries."
 	icon = 'icons/obj/item/clothing/hats/revfficer.dmi'
-
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 10,
-		ARCANE = -40,
-		HEAT = 10,
-		COLD = 10
-	)
 
 	size = SIZE_2
 

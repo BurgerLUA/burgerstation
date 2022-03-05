@@ -15,36 +15,7 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
-	var/list/defense_rating = list()
-
-	/*
-	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		SANITY = 0,
-		ION = 0,
-		PAIN = 0
-	)
-	*/
-
-
-	//Armor guide. Uses bullets as an example.
-	//10 is very minor protection, like reinforced clothing.
-	//25 is minor protection, like a makeshift plate vest.
-	//50 is moderate protection, like police grade kevlar.
-	//75 is serious protection, like military grade kevlar.
-	//100 is ultra protection, like syndicate elite space armor.
+	var/armor/armor = /armor/ //GOD THIS SYSTEM IS A PAIN IN THE ASS.
 
 	var/list/protected_limbs = list()
 	var/list/protection_cold = list()
@@ -85,7 +56,8 @@
 	return ..()
 
 /obj/item/clothing/proc/get_defense_rating()
-	return defense_rating.Copy()
+	var/armor/A = ARMOR(armor)
+	return A.defense_rating
 
 /obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()

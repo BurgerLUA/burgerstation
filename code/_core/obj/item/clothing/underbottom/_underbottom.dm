@@ -11,3 +11,5 @@
 	uses_until_condition_fall = 150
 
 	save_on_death = TRUE
+
+	armor = /armor/cloth/reduced

@@ -6,11 +6,7 @@
 
 	item_slot = SLOT_FACE
 
-
-	defense_rating = list(,
-		ARCANE = 20,
-		PAIN = 20
-	)
+	armor = /armor/cloth
 
 	size = SIZE_1
 

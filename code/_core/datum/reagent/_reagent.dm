@@ -55,6 +55,8 @@
 	var/list/involved_in_recipes
 	var/has_temperature_recipe = FALSE
 
+	var/abstract = FALSE //Set to true so its not calculated in reagent additions. Note that abstract reagents can only be removed directly.
+
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 	return amount_added
 

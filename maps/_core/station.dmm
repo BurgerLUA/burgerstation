@@ -2029,6 +2029,10 @@
 /obj/structure/interactive/computer/arcade/bubbletwist,
 /turf/simulated/floor/tile,
 /area/burgerstation/cryo)
+"hu" = (
+/obj/structure/interactive/telecomms/station,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/engineering)
 "hw" = (
 /obj/structure/interactive/disposals/pipe/junction/sorting/flipped{
 	sorting_tag = "disposals"
@@ -30260,7 +30264,7 @@ dO
 dO
 dQ
 dQ
-dQ
+hu
 dQ
 dQ
 dQ

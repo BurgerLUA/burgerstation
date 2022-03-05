@@ -4,12 +4,7 @@
 	desc_extended = "Protects against the cold, but leaves you vurnerable to heat."
 	icon = 'icons/obj/item/clothing/suit/winter_coat.dmi'
 
-	defense_rating = list(
-		LASER = -40,
-		ARCANE = 40,
-		HEAT = -40,
-		COLD = 80
-	)
+	armor = /armor/cloth/winter
 
 	protection_cold = list(
 		BODY_TORSO = 5,
@@ -27,23 +22,10 @@
 
 /obj/item/clothing/overwear/coat/winter/bomber
 	name = "bomber jacket"
-	desc = "Sleek and clean, the death machines stand ready on their decks."
-	desc_extended = "Wait this actually protects agains bombs. What the fuck, Burger."
+	desc = "Does not actually protect against bombs."
+	desc_extended = "Does not actually protect against bombs."
 	icon = 'icons/obj/item/clothing/suit/bomberjacket.dmi'
-	additional_clothing = list() // no hood
-
-
-
-	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = -25,
-		ARCANE = 50,
-		HEAT = -25,
-		COLD = 75,
-		BOMB = 25
-	)
+	additional_clothing = null // no hood
 
 	size = SIZE_3
 

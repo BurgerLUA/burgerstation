@@ -8,18 +8,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 20,
-		ARCANE = 20,
-		HEAT = 20,
-		COLD = -20,
-		HOLY = -40,
-		DARK = 40,
-		PAIN = 60
-	)
+	armor = /armor/leather/drake
 
 	size = SIZE_7
 

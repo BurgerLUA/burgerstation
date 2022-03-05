@@ -1,6 +1,5 @@
 /loadout/deathsquad
 	spawning_items = list(
-		/obj/item/clothing/uniform/stealth,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
@@ -10,7 +9,6 @@
 
 /loadout/deathsquad/light
 	spawning_items = list(
-		/obj/item/clothing/uniform/stealth,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
@@ -22,7 +20,6 @@
 
 /loadout/deathsquad/medium
 	spawning_items = list(
-		/obj/item/clothing/uniform/stealth,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
@@ -34,7 +31,6 @@
 
 /loadout/deathsquad/heavy
 	spawning_items = list(
-		/obj/item/clothing/uniform/stealth,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,

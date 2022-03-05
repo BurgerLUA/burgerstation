@@ -13,14 +13,7 @@
 		"visor_light" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 40,
-		ARCANE = -40,
-		BOMB = 40
-	)
+	armor = /armor/military/light/hard
 
 	value = 200
 
@@ -38,14 +31,7 @@
 		"visor_medium" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -60,
-		BOMB = 40
-	)
+	armor = /armor/military/medium/hard
 
 	value = 300
 
@@ -63,14 +49,7 @@
 		"visor_heavy" = "#FFFFFF"
 	)
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 40,
-		ARCANE = -80,
-		BOMB = 40
-	)
+	armor = /armor/military/heavy/hard
 
 	value = 400
 
@@ -79,3 +58,16 @@
 		"helmet_heavy" = COLOR_DEATHSQUAD_BLACK,
 		"visor_heavy" = COLOR_DEATHSQUAD_RED
 	)
+
+/obj/item/clothing/head/helmet/full/nanotrasen/custom
+	name = "custom Jaeger helmet"
+	icon = 'icons/obj/item/clothing/hats/nano.dmi'
+	polymorphs = list(
+		"base" = "#404040",
+		"visor" = "#FFD7AD",
+		"stripe" = "#B54A4A"
+	)
+
+	armor = /armor/military/heavy/hard
+
+	value = 400

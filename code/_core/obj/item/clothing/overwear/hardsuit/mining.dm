@@ -4,19 +4,7 @@
 	desc_extended = "A hardsuit worn by miners to protect against a variety of hazards, such as rock falls, black lungs, and cave monsters."
 	icon = 'icons/obj/item/clothing/suit/hardsuit_mining.dmi'
 
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -80,
-		HEAT = 60,
-		COLD = 60,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20
-	)
+	armor = /armor/hardsuit/mining
 
 	size = SIZE_7
 

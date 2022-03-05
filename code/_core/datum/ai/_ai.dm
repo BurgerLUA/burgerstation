@@ -1,3 +1,5 @@
+var/global/list/ai_attacking_players = list()
+
 /ai/
 
 	var/mob/living/owner

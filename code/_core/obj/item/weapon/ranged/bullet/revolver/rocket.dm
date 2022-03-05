@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/bullet/rocket
+/obj/item/weapon/ranged/bullet/revolver/rocket
 	name = "70mm NT Anti Armor Weapon System"
 	desc = "I'm a Rocket Man."
 	desc_extended = "NT's answer to the Syndicate Mechs and Borgs: NT AAWS. Single-shot portable anti-tank weapon, though if you're brave enough you can try to use it more than once."

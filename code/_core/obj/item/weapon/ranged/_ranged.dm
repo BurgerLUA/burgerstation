@@ -14,7 +14,7 @@
 	var/next_shoot_time = 0
 
 	var/ranged_damage_type
-	var/projectile_speed = 31 //Fallback value
+	var/projectile_speed = TILE_SIZE - 1 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
 
@@ -70,6 +70,8 @@
 	damage_type = /damagetype/melee/club/gun_butt //Melee.
 
 	drop_sound = 'sound/items/drop/gun.ogg'
+
+	dan_mode = TRUE
 
 	var/current_firemode = 1
 	var/list/firemodes = list()
@@ -358,6 +360,8 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 		var/mob/living/advanced/A = caller
 		if(A.ai)
 			. *= max(1,(heat_current*ai_heat_sensitivity)*(get_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
+			if(is_player(target))
+				. *= max(1,length(ai_attacking_players[target])) //Lower firerate.
 
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)

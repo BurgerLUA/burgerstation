@@ -18,9 +18,6 @@
 	)
 	*/
 
-	var/old_damage_number = 0
-
-
 /health/construction/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
@@ -30,7 +27,7 @@
 		C.on_destruction(attacker,TRUE)
 
 /health/construction/glass
-
+	var/old_damage_number = 0
 
 /health/construction/glass/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 

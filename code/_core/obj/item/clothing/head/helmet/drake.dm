@@ -2,23 +2,11 @@
 	name = "ash drake helmet"
 	icon = 'icons/obj/item/clothing/hats/drake_helmet.dmi'
 
-
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE
 	)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 20,
-		ARCANE = 20,
-		HEAT = 20,
-		COLD = -20,
-		HOLY = -40,
-		DARK = 40,
-		PAIN = 60
-	)
+	armor = /armor/leather/drake
 
 	size = SIZE_3
 

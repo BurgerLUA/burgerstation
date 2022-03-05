@@ -15,12 +15,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 	item_slot_layer = 1
 
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = 20,
-		HEAT = 20,
-		BIO = 20
-	)
+	armor = /armor/cloth
 
 	value = 40
 

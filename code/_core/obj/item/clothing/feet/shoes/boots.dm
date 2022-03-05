@@ -9,16 +9,7 @@
 
 	icon = 'icons/obj/item/clothing/shoes/boots.dmi'
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = -40,
-		ARCANE = -40,
-		COLD = 40,
-		BOMB = 40,
-		PAIN = 40
-	)
+	armor = /armor/leather/hard_boot
 
 	size = SIZE_2
 

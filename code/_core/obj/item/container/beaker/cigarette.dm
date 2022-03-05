@@ -179,9 +179,9 @@
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/medicine/omnizine,20)
 
-/obj/item/container/cigarette/russian
+/obj/item/container/cigarette/slavic
 	consume_amount = 1
 
-/obj/item/container/cigarette/russian/Generate()
+/obj/item/container/cigarette/slavic/Generate()
 	. = ..() //Each contain 20
 	reagents.add_reagent(/reagent/medicine/omnizine,20)

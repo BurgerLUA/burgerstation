@@ -82,7 +82,7 @@ var/global/time_dialation = 0
 			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
 			O.force_move(get_turf(pick(lobby_positions)))
 			play_music_track(possible_music[lobby_track], O.client)
-			O.show_hud(TRUE,speed = 2)
+			O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")
 

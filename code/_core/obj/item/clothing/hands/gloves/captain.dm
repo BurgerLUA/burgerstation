@@ -7,22 +7,7 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 20,
-		ARCANE = -120,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 40,
-		RAD = 40,
-		FATIGUE = 120,
-		PAIN = 120
-	)
+	armor = /armor/military/medium/captain_gloves
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 1
@@ -31,6 +16,8 @@
 	size = SIZE_1
 
 	value = 800
+
+	contraband = TRUE
 
 /obj/item/clothing/hands/gloves/captain/left
 	name = "left glove of the captain"

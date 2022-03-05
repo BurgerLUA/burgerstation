@@ -4,12 +4,7 @@
 	desc_extended = "A brown wide brim hat usually worn by a detective. Has light protection."
 	icon = 'icons/obj/item/clothing/hats/detective.dmi'
 
-
-	defense_rating = list(
-		BLADE = 15,
-		PIERCE = 30,
-		ARCANE = 50,
-	)
+	armor = /armor/leather
 
 	size = SIZE_2
 

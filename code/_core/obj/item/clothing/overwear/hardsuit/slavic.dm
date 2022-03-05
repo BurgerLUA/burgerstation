@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/hardsuit/exosuit
-	name = "Russian exosuit"
+	name = "Slavic exosuit"
 	icon = 'icons/obj/item/clothing/suit/exosuit.dmi'
 	desc = "RIP Tachenko."
 	desc_extended = "An experimental sample of a military exoskeleton. Was never mass-produced due to extraordinary cost and some design flaws. Despite this, it is in demand due to its ability to take on the weight of all carried equipment, and therefore small batches are made in underground facilities."
@@ -9,16 +9,7 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 75,
-		PIERCE = 50,
-		LASER = 40,
-		ARCANE = -90,
-		HEAT = 20,
-		COLD = 60,
-		BOMB = 75
-	)
+	armor = /armor/hardsuit/combat/slavic
 
 	size = SIZE_7
 
@@ -40,16 +31,7 @@
 	item_slot = SLOT_TORSO_ARMOR
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 40,
-		PIERCE = 75,
-		LASER = 60,
-		ARCANE = -100,
-		HEAT = 20,
-		COLD = 20,
-		BOMB = 50
-	)
+	armor = /armor/hardsuit/combat/slavic
 
 	size = SIZE_7
 
@@ -64,26 +46,13 @@
 	name = "SKAT-10"
 	icon = 'icons/obj/item/clothing/suit/skat_antag.dmi'
 	desc = "I am out of S.T.A.L.K.E.R. references, really."
-	desc_extended = "Completely redesigned version of SKAT-9 combined suit, made from ground up in joint forces by the Syndicate's and Space Russia's scientists under an unnamed unofficial peace treaty agreement, yet never went into mass production due to immense cost. Comprises a PSZ-15b ultra-heavy military armored suit, built-in semi-solid frag suit, and an enhanced anomalous protection bodysuit. The armor provides one of the best protections against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Has a built-in wound tending system that passively treats its user's wounds when out of combat."
+	desc_extended = "Completely redesigned version of SKAT-9 combined suit, made from ground up in joint forces by the Syndicate's and Space Slav Federation's scientists under an unnamed unofficial peace treaty agreement, yet never went into mass production due to immense cost. Comprises a PSZ-15b ultra-heavy military armored suit, built-in semi-solid frag suit, and an enhanced anomalous protection bodysuit. The armor provides one of the best protections against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Has a built-in wound tending system that passively treats its user's wounds when out of combat."
 
 
 	item_slot = SLOT_TORSO_ARMOR
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 90,
-		LASER = 60,
-		ARCANE = -50,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 70,
-		RAD = 60,
-		FATIGUE = 40,
-		BIO = 70,
-		PAIN = 40
-	)
+	armor = /armor/hardsuit/combat/slavic/plus
 
 	size = SIZE_7
 
@@ -111,11 +80,10 @@
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)
 			continue
-		if(affectLiving.health.get_total_loss(include_fatigue = FALSE,include_pain=FALSE,include_sanity=FALSE))
-			affectLiving.brute_regen_buffer += rand(1,5)
-			affectLiving.burn_regen_buffer += rand(1,5)
-			affectLiving.tox_regen_buffer += rand(1,5)
-			affectLiving.rad_regen_buffer += rand(1,5)
-			affectLiving.queue_health_update = TRUE
+		affectLiving.brute_regen_buffer += 1
+		affectLiving.burn_regen_buffer += 1
+		affectLiving.tox_regen_buffer += 1
+		affectLiving.rad_regen_buffer += 1
+		affectLiving.queue_health_update = TRUE
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

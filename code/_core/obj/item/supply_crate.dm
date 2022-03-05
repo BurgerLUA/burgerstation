@@ -56,17 +56,17 @@
 	qdel(src)
 
 
-/obj/item/supply_crate/russian
-	loot = /loot/supply_crate/russian
-	icon_state = "supply_russian"
+/obj/item/supply_crate/slavic
+	loot = /loot/supply_crate/slavic
+	icon_state = "supply_slavic"
 
 /obj/item/supply_crate/syndicate
 	loot = /loot/supply_crate/syndicate
 	icon_state = "supply_syndicate"
 
-/obj/item/supply_crate/american
-	loot = /loot/supply_crate/american
-	icon_state = "supply_american"
+/obj/item/supply_crate/yankee
+	loot = /loot/supply_crate/yankee
+	icon_state = "supply_freedomn"
 
 /obj/item/supply_crate/nanotrasen
 	loot = /loot/supply_crate/nanotrasen
@@ -80,8 +80,3 @@
 /obj/item/supply_crate/medicine
 	loot = /loot/supply_crate/medicine
 	icon_state = "supply_medicine"
-
-/obj/item/supply_crate/bos
-	loot = /loot/supply_crate/bos
-	icon_state = "supply_bos"
-	value = 2000

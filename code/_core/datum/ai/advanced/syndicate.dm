@@ -16,8 +16,8 @@
 	owner.move_dir = pick(DIRECTIONS_ALL)
 	return TRUE
 
-/ai/advanced/syndicate/russian
-	language_to_use = LANGUAGE_RUSSIAN
+/ai/advanced/syndicate/slavic
+	language_to_use = LANGUAGE_SLAVIC
 
 /ai/advanced/syndicate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 

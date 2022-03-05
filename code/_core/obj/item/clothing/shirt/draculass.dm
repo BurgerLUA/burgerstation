@@ -6,16 +6,6 @@
 
 	item_slot = SLOT_TORSO
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = -10,
-		ARCANE = 40,
-		HEAT = -40,
-		COLD = 40,
-		HOLY = -40,
-		DARK = 40
-	)
+	armor = /armor/dark/arcane/vampire
 
 	value = 100

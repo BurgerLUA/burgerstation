@@ -4,15 +4,7 @@
 	desc = "RUSH B"
 	desc_extended = "Standard-issue of the Nanotrasen security force. Protects your head from bullets."
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -40,
-		BOMB = 40,
-		PAIN = 60
-	)
+	armor = /armor/military/light/hard
 
 	size = SIZE_3
 
@@ -66,15 +58,7 @@
 
 /obj/item/clothing/head/helmet/polymorphic/reinforced
 	name = "reinforced protective helmet"
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 60,
-		LASER = 40,
-		ARCANE = -60,
-		BOMB = 40,
-		PAIN = 60
-	)
+	armor = /armor/military/medium/hard
 
 /obj/item/clothing/head/helmet/polymorphic/reinforced/ntops
 	name = "NT ops reinforced protective helmet"
@@ -96,10 +80,6 @@
 		"ears" = COLOR_BLACK,
 		"stripe" = COLOR_BLACK
 	)
-	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 50
-	)
+	armor = /armor/military/medium/hard
 	value_burgerbux = 1
 	value = 400

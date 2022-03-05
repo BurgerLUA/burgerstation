@@ -12,11 +12,7 @@
 
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 20,
-		PIERCE = 20
-	)
-
+	armor = /armor/leather
 
 
 	value = 40
@@ -64,12 +60,7 @@
 
 	container_max_size = SIZE_2
 
-	defense_rating = list(
-		BLADE = 30,
-		PIERCE = 30
-	)
-
-
+	armor = /armor/cloth/reduced
 
 	protected_limbs = list(BODY_GROIN,BODY_TORSO)
 

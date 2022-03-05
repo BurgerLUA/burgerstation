@@ -4,16 +4,7 @@
 	desc_extended = "A special industrial strength welding helmet that protects the user's head, face, and eyes from welding sparks."
 	icon = 'icons/obj/item/clothing/hats/welding.dmi'
 
-
-	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 50,
-		ARCANE = -25,
-		HEAT = 50,
-		PAIN = 100
-	)
+	armor = /armor/military/medium/hard
 
 	size = SIZE_3
 

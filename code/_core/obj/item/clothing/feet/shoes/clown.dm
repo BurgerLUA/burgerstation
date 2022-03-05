@@ -8,12 +8,7 @@
 
 	icon = 'icons/obj/item/clothing/shoes/clown.dmi'
 
-	defense_rating = list(
-		BLUNT = 20,
-		ARCANE = 20,
-		HOLY = -60,
-		DARK = 60
-	)
+	armor = /armor/cloth/clown
 
 	size = SIZE_2
 

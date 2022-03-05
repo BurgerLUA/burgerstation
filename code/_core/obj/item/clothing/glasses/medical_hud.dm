@@ -9,9 +9,7 @@
 
 	value = 120
 
-	defense_rating = list(
-		ARCANE = -20,
-	)
+	armor = /armor/mechanical
 
 	item_slot_layer = 2
 
@@ -24,7 +22,3 @@
 	vision_mod = FLAG_VISION_MEDICAL | FLAG_VISION_MEDICAL_ADVANCED
 
 	value = 200
-
-	defense_rating = list(
-		ARCANE = -60,
-	)

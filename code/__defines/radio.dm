@@ -17,11 +17,14 @@
 //In use.
 #define RADIO_FREQ_MIN 1101
 
-#define RADIO_FREQ_MERCENARY 1107
+#define RADIO_FREQ_MERCENARY_MIN 1107
+#define RADIO_FREQ_MERCENARY_MAX 1153
 
-#define RADIO_FREQ_REVOLUTIONARY 1154
+#define RADIO_FREQ_REVOLUTIONARY_MIN 1155
+#define RADIO_FREQ_REVOLUTIONARY_MAX 1211
 
-#define RADIO_FREQ_SYNDICATE 1213
+#define RADIO_FREQ_SYNDICATE_MIN 1213
+#define RADIO_FREQ_SYNDICATE_MAX 1335
 
 #define RADIO_FREQ_ALPHA    1451
 #define RADIO_FREQ_BRAVO    1453
@@ -51,10 +54,13 @@
 			return "Common"
 		if(RADIO_FREQ_SHIP)
 			return "ShipComm"
-		if(RADIO_FREQ_SYNDICATE)
-			return "Syndicate"
-		if(RADIO_FREQ_MERCENARY)
-			return "Mercenary"
-		if(RADIO_FREQ_REVOLUTIONARY)
-			return "Revolutionary"
+
+	//For some reason switch statements don't accept variables.
+	if(frequency == SSradio.radio_syn)
+		return "Syndicate"
+	if(frequency == SSradio.radio_merc)
+		return "Mercenary"
+	if(frequency == SSradio.radio_rev)
+		return "Revolutionary"
+
 	return "Unknown"

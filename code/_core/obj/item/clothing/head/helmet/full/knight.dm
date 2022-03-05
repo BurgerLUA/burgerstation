@@ -1,14 +1,6 @@
 /obj/item/clothing/head/helmet/full/knight/
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		HEAT = -40,
-		ARCANE = -60,
-		PAIN = 60
-	)
+	armor = /armor/steel
 
 	size = SIZE_3
 
@@ -42,16 +34,7 @@
 	name = "templar knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_templar.dmi'
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		HEAT = -40,
-		ARCANE = -60,
-		HOLY = 60,
-		PAIN = 60
-	)
+	armor = /armor/steel/holy
 
 	value = 110
 
@@ -59,16 +42,7 @@
 	name = "battlemage helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_battlemage.dmi'
 
-
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 60,
-		LASER = 20,
-		HEAT = -20,
-		ARCANE = 60,
-		PAIN = 60
-	)
+	armor = /armor/steel/arcane
 
 	size = SIZE_4
 
@@ -79,15 +53,7 @@
 	name = "clockwork helmet"
 	icon = 'icons/obj/item/clothing/hats/clockwork.dmi'
 
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = -60,
-		ARCANE = 60,
-		HEAT = -40
-	)
+	armor = /armor/brass
 
 	value = 500
 

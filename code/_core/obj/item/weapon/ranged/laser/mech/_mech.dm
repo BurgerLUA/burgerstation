@@ -10,6 +10,8 @@
 	automatic = FALSE
 	bullet_color = "#0000FF"
 
+	dan_mode = FALSE
+
 	charge_cost = 1000
 
 	view_punch_to_add = 0

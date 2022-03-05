@@ -9,16 +9,7 @@
 
 	icon = 'icons/obj/item/clothing/shoes/boots_miner.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		ARCANE = 20,
-		HEAT = 20,
-		COLD = 20,
-		BOMB = 20,
-		PAIN = 60
-	)
+	armor = /armor/leather/mining
 
 	size = SIZE_2
 

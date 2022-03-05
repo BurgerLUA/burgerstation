@@ -6,17 +6,6 @@
 
 	value_burgerbux = 1 //to keep it from spawning without the hardsuit
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 20,
-		LASER = -60,
-		ARCANE = 120,
-		HEAT = -60,
-		COLD = 60,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20
-	)
+	armor = /armor/steel/arcane
 
 	size = SIZE_3

@@ -4,16 +4,7 @@
 	desc_extended = "A hat usually worn by the all-access giving and disappearing."
 	icon = 'icons/obj/item/clothing/hats/hop.dmi'
 
-
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 10,
-		ARCANE = -20,
-		HEAT = 10,
-		COLD = 10
-	)
+	armor = /armor/leather
 
 	size = SIZE_2
 

@@ -97,7 +97,7 @@
 /obj/item/storage/kit/ai3
 	name = "AI-3"
 	desc = "Ya like cheese?"
-	desc_extended = "A basic Russian-made AI-3 infantry first aid kit. Usually contains four pairs of high-volume injectors to treat every basic type of damage, as well as epinephrine and iron medipens."
+	desc_extended = "A basic Slavic-made AI-3 infantry first aid kit. Usually contains four pairs of high-volume injectors to treat every basic type of damage, as well as epinephrine and iron medipens."
 	icon_state = "ai3"
 
 	is_container = TRUE

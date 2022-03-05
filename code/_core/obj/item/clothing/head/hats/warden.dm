@@ -6,18 +6,7 @@
 
 	size = SIZE_2
 
-
-
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 10,
-		ARCANE = -40,
-		HEAT = 10,
-		COLD = 10
-	)
-
+	armor = /armor/leather/hard
 
 /obj/item/clothing/head/hat/warden/drill
 	name = "warden's drill hat"

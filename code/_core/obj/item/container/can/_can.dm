@@ -147,3 +147,8 @@
 	reagents.add_reagent(/reagent/nutrition/soda/space_up,reagents.volume_max)
 	open = FALSE
 	return ..()
+
+/obj/item/container/simple/can/get_consume_verb()
+	return "drink"
+/obj/item/container/simple/can/get_consume_sound()
+	return 'sound/items/consumables/drink.ogg'

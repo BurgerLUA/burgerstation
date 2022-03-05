@@ -8,17 +8,7 @@
 		BODY_HAIR_HEAD = TRUE
 	)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = -40,
-		ARCANE = 20,
-		HEAT = 40,
-		COLD = 40,
-		HOLY = -60,
-		DARK = 60
-	)
+	armor = /armor/dark/cult_robes/hard
 
 	size = SIZE_3
 

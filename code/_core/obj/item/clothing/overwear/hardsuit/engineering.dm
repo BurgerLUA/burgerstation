@@ -6,20 +6,7 @@
 
 	value = 1500
 
-	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 20,
-		ARCANE = -60,
-		HEAT = 60,
-		COLD = 60,
-		BOMB = 20,
-		BIO = 60,
-		RAD = 60,
-		FATIGUE = 20,
-		PAIN = 20
-	)
+	armor = /armor/hardsuit/engineering
 
 	size = SIZE_7
 
