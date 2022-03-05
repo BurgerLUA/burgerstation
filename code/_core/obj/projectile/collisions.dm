@@ -132,8 +132,10 @@
 	if(!.)
 		return null
 
-	var/projectile_dir = get_dir(old_turf,new_turf)
+	if(bullet_block_chance <= 0)
+		return null
 
+	var/projectile_dir = get_dir(old_turf,new_turf)
 	if(projectile_dir & src.collision_dir)
 		if(bullet_block_chance >= 100)
 			return src

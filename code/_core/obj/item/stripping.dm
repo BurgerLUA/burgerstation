@@ -38,7 +38,7 @@
 
 	INTERACT_CHECK_OTHER(L)
 
-	if(!L.dead)
+	if(L.dead)
 		caller.to_chat(span("warning","You can't remove clothing from living people!"))
 		return FALSE
 
