@@ -42,7 +42,6 @@ proc/dir2text(var/dir)
 
 	return english_list(.,"none","-","-")
 
-
 proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 	switch(dir)

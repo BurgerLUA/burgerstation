@@ -218,6 +218,12 @@
 		is_zoomed = real_dir
 		mob.set_dir(real_dir)
 		update_camera_offset(desired_x_offset,desired_y_offset)
+	else if(is_living(mob))
+		var/mob/living/L = mob
+		if(L.intent == INTENT_HARM)
+			var/real_angle = get_angle(mob,location) + 90
+			var/real_dir = angle2dir(real_angle)
+			mob.set_dir(real_dir)
 
 	. = ..()
 

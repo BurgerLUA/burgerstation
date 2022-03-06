@@ -14,7 +14,7 @@
 	if(driving)
 		return driving.handle_movement(adjust_delay)
 
-	return ..()
+	. = ..()
 
 
 mob/living/advanced/get_movement_delay(var/include_stance=TRUE)

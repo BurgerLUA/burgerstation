@@ -92,10 +92,7 @@
 	animate(src, pixel_z = 64, time = 30)
 
 /mob/living/simple/colossus/handle_alpha()
-
-	if(dead)
-		return 0
-
-	return ..()
+	if(dead) return 0
+	. = ..()
 
 

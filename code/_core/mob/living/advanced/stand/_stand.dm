@@ -56,7 +56,7 @@
 	return ..()
 
 /mob/living/advanced/stand/handle_alpha()
-	return enabled ? 200 : 0
+	return enabled ? 255 : 0
 
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 	. = ..()

@@ -46,7 +46,7 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
+	if(intent == INTENT_HARM || attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..()
@@ -197,13 +197,6 @@
 
 /mob/living/proc/on_sneak()
 	return TRUE
-
-/mob/living/proc/update_alpha(var/desired_alpha)
-	if(alpha != desired_alpha)
-		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = TICKS_TO_DECISECONDS(LIFE_TICK))
-		update_plane()
-		return TRUE
-	return FALSE
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 

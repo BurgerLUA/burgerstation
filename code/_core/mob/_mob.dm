@@ -58,7 +58,8 @@
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/mobs_small/plane_master_mob_small
-	var/obj/plane_master/mobs_small/plane_master_mob_large
+	var/obj/plane_master/mobs_large/plane_master_mob_large
+	var/obj/plane_master/mobs_stealth/plane_master_mob_stealth
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/objs/plane_master_obj
 	var/obj/plane_master/shuttle/plane_master_shuttle
@@ -70,6 +71,8 @@
 	var/obj/plane_master/hud/plane_master_hud
 	var/obj/plane_master/weather/plane_master_weather
 	var/obj/plane_master/area_exterior/plane_master_area_exterior
+
+	var/obj/fov/fov
 
 	var/list/parallax
 
@@ -154,6 +157,7 @@
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_mob_small)
 	QDEL_NULL(plane_master_mob_large)
+	QDEL_NULL(plane_master_mob_stealth)
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
@@ -165,6 +169,8 @@
 	QDEL_NULL(plane_master_hud)
 	QDEL_NULL(plane_master_weather)
 	QDEL_NULL(plane_master_area_exterior)
+
+	QDEL_NULL(fov)
 
 	QDEL_NULL(examine_overlay)
 
@@ -214,6 +220,10 @@
 	if(!plane_master_mob_large)
 		plane_master_mob_large = new(src)
 	C.screen += plane_master_mob_large
+
+	if(!plane_master_mob_stealth)
+		plane_master_mob_stealth = new(src)
+	C.screen += plane_master_mob_stealth
 
 	if(!plane_master_darkness)
 		plane_master_darkness = new(src)
@@ -292,6 +302,9 @@
 /mob/Finalize()
 	. = ..()
 	update_z_position()
+	fov = new(src)
+	fov.render_target = "*fov_\ref[src]"
+	overlays += fov
 
 /mob/New(var/desired_loc,var/client/C)
 

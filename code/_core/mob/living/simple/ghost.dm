@@ -7,8 +7,6 @@
 	ai = /ai/ghost/
 	damage_type = /damagetype/npc/ghost
 
-	var/desired_alpha = 200 //Controlled in AI.
-
 	has_footsteps = TRUE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -65,6 +63,8 @@
 
 	density = TRUE
 	anchored = FALSE
+
+	var/desired_alpha = 200 //Controlled in AI.
 
 /mob/living/simple/ghost/on_crush(var/message=TRUE)
 	return FALSE
