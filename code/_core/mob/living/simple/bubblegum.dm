@@ -20,7 +20,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = AI_TICK_FAST
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	stun_angle = 0
 
@@ -127,7 +127,7 @@
 	. = ..()
 
 	if(charge_steps)
-		. = AI_TICK_FAST*1
+		. = AI_TICK_FAST
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 

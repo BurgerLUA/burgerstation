@@ -265,6 +265,8 @@
 	var/atom/dash_target //The target that you're dashing at.
 	var/dash_amount = 0 //Amount of times to move in a direction.
 
+	var/last_move_time = 0
+	var/last_move_delay = 0
 
 /mob/living/Destroy()
 

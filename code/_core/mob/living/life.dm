@@ -291,6 +291,11 @@
 
 	return TRUE
 
+/mob/living/proc/update_alpha(var/desired_alpha)
+
+	if(alpha != desired_alpha)
+		animate(src,alpha=desired_alpha,time=LIFE_TICK)
+
 /mob/living/proc/update_plane()
 	if(alpha != 255)
 		plane = PLANE_MOB_STEALTH

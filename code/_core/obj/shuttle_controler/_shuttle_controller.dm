@@ -247,7 +247,7 @@ var/global/list/all_shuttle_controlers = list()
 				continue
 			if(M.loc != T)
 				continue
-			M.move_delay = max(M.move_delay,SECONDS_TO_TICKS(3))
+			M.next_move = max(M.next_move,SECONDS_TO_TICKS(3))
 			M.force_move(replacing_turf)
 			if(enable_shuttle_throwing)
 				objects_to_throw += M

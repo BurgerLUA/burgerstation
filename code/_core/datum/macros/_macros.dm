@@ -51,19 +51,19 @@
 	switch(command)
 		if("move_up")
 			owner.mob.move_dir |= NORTH
-			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			owner.mob.next_move = max(owner.mob.next_move,1)
 			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = NORTH
 		if("move_down")
 			owner.mob.move_dir |= SOUTH
-			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			owner.mob.next_move = max(owner.mob.next_move,1)
 			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = SOUTH
 		if("move_left")
 			owner.mob.move_dir |= WEST
-			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			owner.mob.next_move = max(owner.mob.next_move,1)
 			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = WEST
 		if("move_right")
 			owner.mob.move_dir |= EAST
-			owner.mob.move_delay = max(owner.mob.move_delay,1)
+			owner.mob.next_move = max(owner.mob.next_move,1)
 			if(!owner.mob.first_move_dir) owner.mob.first_move_dir = EAST
 		if("sprint")
 			owner.mob.movement_flags |= MOVEMENT_RUNNING

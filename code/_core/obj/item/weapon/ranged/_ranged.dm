@@ -263,7 +263,7 @@
 	return 0.025 - (0.05 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
-	if(L.move_delay < 0)
+	if(L.next_move < 0)
 		return 0
 
 	. = movement_spread_base
@@ -726,7 +726,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	. = inaccuracy_modifier
 
-	if(L.move_delay >= 0)
+	if(L.next_move >= 0)
 		. += movement_inaccuracy_modifier
 
 	if(. <= 0)

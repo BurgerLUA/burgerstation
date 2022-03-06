@@ -123,7 +123,7 @@
 	var/old_dir = owner.dir
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
-	owner.move_delay = max(owner.move_delay,duration)
+	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
 	if(!result) //We can't move.
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
@@ -157,7 +157,7 @@
 	var/old_dir = owner.dir
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
-	owner.move_delay = max(owner.move_delay,duration)
+	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
 	if(!result) //We can't move.
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
@@ -186,7 +186,7 @@
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	owner.move_delay = max(owner.move_delay,duration)
+	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
 
 /status_effect/slip
 	name = "Slipped"

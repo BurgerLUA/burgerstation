@@ -15,7 +15,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = AI_TICK_FAST*3
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	stun_angle = 0
 

@@ -207,7 +207,7 @@
 	if(owner.attack_next <= world.time)
 		handle_attacking()
 
-	if(owner.move_delay <= 0)
+	if(owner.next_move <= 0)
 		handle_ghost_pathing()
 		handle_movement()
 

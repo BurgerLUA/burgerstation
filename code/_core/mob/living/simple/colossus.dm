@@ -20,7 +20,7 @@
 	stamina_base = 500
 	mana_base = 2000
 
-	move_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	force_spawn = TRUE
 	boss = TRUE

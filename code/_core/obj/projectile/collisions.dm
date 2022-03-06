@@ -112,7 +112,7 @@
 		var/mob/living/L = k
 		if(!L.density)
 			continue
-		if(L.mouse_opacity <= 0 || L.dead || L.move_delay <= 0 || get_dist(L,src) > 1)
+		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1)
 			continue
 		if(L.projectile_should_collide(P,new_turf,old_turf))
 			. |= L

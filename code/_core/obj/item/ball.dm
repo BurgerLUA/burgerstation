@@ -48,19 +48,19 @@
 
 	if(north_momentum > 0)
 		desired_move_dir |= NORTH
-		if(move_delay <= 0)
+		if(next_move <= 0)
 			north_momentum -= 1
 	else if(north_momentum < 0)
 		desired_move_dir |= SOUTH
-		if(move_delay <= 0)
+		if(next_move <= 0)
 			north_momentum += 1
 	if(east_momentum > 0)
 		desired_move_dir |= EAST
-		if(move_delay <= 0)
+		if(next_move <= 0)
 			east_momentum -= 1
 	else if(east_momentum < 0)
 		desired_move_dir |= WEST
-		if(move_delay <= 0)
+		if(next_move <= 0)
 			east_momentum += 1
 
 	north_momentum = FLOOR(north_momentum,1)
@@ -135,8 +135,8 @@
 				east_momentum = FLOOR(-east_momentum*bounciness,1)
 			east_momentum += move_mod
 
-		if(move_mod == 1 && O.move_delay > 0)
-			movement_delay = max(1,O.move_delay - 1)
+		if(move_mod == 1 && O.next_move > 0)
+			movement_delay = max(1,O.next_move - 1)
 			dribbling = TRUE
 			dribble_counter = !dribble_counter
 		else

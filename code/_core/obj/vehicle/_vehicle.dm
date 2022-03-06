@@ -183,15 +183,15 @@
 	if(ai)
 		return ..()
 
-	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
+	if(length(passengers) && passengers[1].move_dir && next_move <= 0)
 		var/final_movement_delay = get_movement_delay()
-		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay),0.1)
-		glide_size = step_size/move_delay
+		next_move = round(max(final_movement_delay,next_move + final_movement_delay),0.1)
+		glide_size = step_size/next_move
 		Move(get_step(src,passengers[1].move_dir),passengers[1].move_dir)
 		return TRUE
 
 	if(adjust_delay)
-		move_delay = move_delay - adjust_delay
+		next_move = max(0,next_move - adjust_delay)
 
 	return FALSE
 

@@ -4,7 +4,7 @@
 		return FALSE
 
 	if(enter)
-		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(move_delay)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
+		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(next_move)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
 		return FALSE
 
 	do_footstep(T,footsteps_to_use,enter)
@@ -90,6 +90,9 @@
 					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
 
 	handle_tabled()
+
+	last_move_delay = next_move
+	last_move_time = world.time
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
@@ -235,10 +238,10 @@
 		currently_tabled = tabled
 		if(currently_tabled)
 			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
-			move_delay = max(10,move_delay)
+			next_move = max(DECISECONDS_TO_TICKS(10),next_move)
 		else
 			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
-			move_delay = max(5,move_delay)
+			next_move = max(DECISECONDS_TO_TICKS(5),next_move)
 
 	return TRUE
 
