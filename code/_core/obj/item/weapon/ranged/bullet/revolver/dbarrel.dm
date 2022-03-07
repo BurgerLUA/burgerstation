@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/dbarrel
-	name = "\improper 12 gauge boomstick"
+	name = "\improper 12g boomstick"
 	desc = "The bartender's trusty double barrel shotgun. It was cut in half by a clown."
 	desc_extended = "Double barreled shotguns are often sawed off in order to be used as a sidearm, at the cost of the user's wrist bones."
 	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
@@ -8,7 +8,7 @@
 
 	tier = 1
 
-	damage_mod = 0.8
+	damage_mod = 0.6
 	shoot_delay = 3
 
 	automatic = FALSE

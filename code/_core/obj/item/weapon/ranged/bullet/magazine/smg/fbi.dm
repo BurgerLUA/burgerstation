@@ -75,13 +75,3 @@
 
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod
-	name = ".45 NT-FBI MK2"
-	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/45_2.dmi'
-	desc_extended = "The heavy kick of this SMG is only somewhat offset by its advanced recoil compensation mechanism. Perfect for when you need the power of a Magnum revolver in full-auto. This variant has a heavier design which helps with cooling."
-
-	heat_max = 0.06
-
-	value = 1900
-	weight = 10

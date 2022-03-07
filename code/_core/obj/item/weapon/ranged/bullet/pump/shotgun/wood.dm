@@ -1,26 +1,28 @@
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood
-	name = "12g Civilian Shotgun"
-	desc = "Good ol' fashioned shotgun."
-	desc_extended = "A classic pump action shotgun with the stock and barrel shortened. Most commonly used by hunters, but has been seen on Security and PMCs on a budget as well."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/regular.dmi'
-	icon_state = "inventory"
+/obj/item/weapon/ranged/bullet/pump/shotgun/doom
+	name = "That Shotgun"
+	desc = "Packs a punch (not a kick, that's another series)."
+	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/sol/classic.dmi'
 
-	value = 800
+	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
+	pump_sound = 'sound/weapons/shotgun_pump_old.ogg'
 
-	tier = 2
-
-	shoot_delay = 4
+	value = 4000
+	tier = 3
 
 	automatic = FALSE
 
+	shoot_delay = 2
+	damage_mod = 2
+	heat_max = 0
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
-
 	size = SIZE_4
-	weight = 9
+	weight = 12
 
-	heat_max = 0.12
+	can_wield = TRUE
+
+	dan_mode = TRUE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
@@ -45,6 +47,7 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
+
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 18 - 16
 
@@ -57,47 +60,14 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
-	pump_delay = 3
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread()
-	return 0.005
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.08 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
-	return 0.1
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom
-	name = "That Shotgun"
-
-	desc = "Packs a punch (not a kick, that's another series)."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/doom.dmi'
-	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
-	value = 4000
-	shoot_delay = 2
-	heat_max = 0
-	bullet_count_max = 6
-	weight = 12
-
-	dan_mode = TRUE
-
-	can_wield = TRUE
-
-	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
-	pump_sound = 'sound/weapons/shotgun_pump_old.ogg'
-
-	damage_mod = 2
-
-	tier = 3
 
 	pump_delay = 8
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_static_spread()
+/obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_skill_spread(var/mob/living/L)
 	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/doom/get_base_spread()
+/obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_base_spread()
 	return 0.1

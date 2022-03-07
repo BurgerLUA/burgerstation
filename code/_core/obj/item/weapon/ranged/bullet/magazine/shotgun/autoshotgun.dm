@@ -2,15 +2,15 @@
 	name = "\improper 20g Bulldog"
 	desc = "For when you want to clear a room."
 	desc_extended = "The 20 Gauge Bulldog is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bulldog\" for its bullpup design as well as the fact that it kicks like one too."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/semi.dmi'
 	icon_state = "inventory"
 	value = 2900
 
 	tier = 3
 
-	shoot_delay = 3
+	shoot_delay = 4
 
-	automatic = TRUE
+	automatic = FALSE
 
 	shoot_sounds = list('sound/weapons/12gauge/shoot.ogg')
 

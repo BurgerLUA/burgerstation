@@ -2,7 +2,7 @@
 	name = "12g Masterstroke Shotgun"
 	desc = "Reliable, cheap, and strong."
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/nt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/pump.dmi'
 	icon_state = "inventory"
 	value = 1700
 

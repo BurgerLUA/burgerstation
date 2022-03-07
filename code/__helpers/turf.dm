@@ -80,5 +80,5 @@
 
 
 
-/proc/get_dist_real(var/atom/A1,var/atom/A2) //More intensive than get_dist
+/proc/get_dist_real(var/atom/A1,var/atom/A2) //More intensive than get_dist, but more accurate.
 	return sqrt( ((A1.x - A2.x)**2) + ((A1.y - A2.y)**2) )

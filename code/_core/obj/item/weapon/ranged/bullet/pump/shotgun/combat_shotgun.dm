@@ -1,8 +1,8 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat
-	name = "12g Combat Shotgun"
+	name = "12g Hunter-Killer Combat Shotgun"
 	desc = "Reliable and strong"
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/pump.dmi'
 	icon_state = "inventory"
 
 	tier = 3
@@ -15,7 +15,7 @@
 
 	automatic = FALSE
 
-	bullet_count_max = 12
+	bullet_count_max = 8
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -73,17 +73,19 @@
 	return 0.1
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
-	name = "12g Combat Shotgun MOD"
-	desc = "A very robust combat shotgun. This one has been modified to be shorter."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/combat_mod.dmi'
+	name = "12g Hunter-Killer Combat Shotgun MOD"
+	desc = "A very robust combat shotgun. This one has been modified to be stronger and lighter."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/pump_mod.dmi'
 	icon_state = "inventory"
+
+	tier = 4
 
 	automatic = FALSE
 
-	bullet_count_max = 4
+	bullet_count_max = 6
 
 	shoot_delay = 2
-	damage_mod = 1.3
+	damage_mod = 1.4
 	pump_delay = 2
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
@@ -92,12 +94,3 @@
 
 	weight = 8
 	size = SIZE_3
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread()
-	return 0.004
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_base_spread()
-	return 0.2

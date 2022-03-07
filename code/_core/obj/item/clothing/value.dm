@@ -17,7 +17,7 @@ var/global/list/limbs_to_value = list(
 /obj/item/clothing/get_base_value()
 
 	var/armor/A = ARMOR(armor)
-	. = 5 + A.value
+	if(A) . = 5 + A.value
 
 	var/total_value_mul = 0
 	for(var/limb_zone in protected_limbs)

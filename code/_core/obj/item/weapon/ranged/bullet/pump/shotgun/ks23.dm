@@ -2,7 +2,7 @@
 	name = "23x75mmR KS23 Shotgun"
 	desc = "Technically a Carbine!"
 	desc_extended = "A slavic shotgun with a rifled barrel and a 23mm bore."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/ks23.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/slavic/pump.dmi'
 	icon_state = "inventory"
 	value = 1800
 

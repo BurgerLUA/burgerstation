@@ -8,7 +8,7 @@
 
 	damage_mod = 1
 
-	tier = 1
+	tier = 2
 
 	automatic = TRUE
 	can_wield = FALSE

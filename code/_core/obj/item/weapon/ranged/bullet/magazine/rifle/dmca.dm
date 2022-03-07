@@ -9,7 +9,7 @@
 	tier = 3
 
 	shoot_delay = 0.6
-	burst_delay = 0.6*8
+	burst_delay = 0.6*6
 	max_bursts = 4
 
 	damage_mod = 1.25

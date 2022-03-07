@@ -8,7 +8,7 @@
 
 	tier = 2
 
-	shoot_delay = 0.5
+	shoot_delay = 0.25
 
 	automatic = FALSE
 
