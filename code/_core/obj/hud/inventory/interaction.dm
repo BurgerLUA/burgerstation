@@ -43,29 +43,47 @@
 		if(!isturf(caller.loc))
 			return TRUE
 		var/mob/living/L = caller
-		caller.face_atom(object)
-		var/atom/movable/object_to_throw = top_object
+		caller.face_atom(object) //Changing dir
+		var/atom/movable/object_to_throw
+		if(grabbed_object) object_to_throw = grabbed_object //We want to throw something that we pull
+		else object_to_throw = top_object //Else we throw something in our hand
+
 		if(istype(object_to_throw))
-			var/obj/item/I = object_to_throw
-			if(I.additional_clothing_parent || I.no_drop)
-				caller.to_chat(span("warning","You can't throw this!"))
-				return TRUE
-			var/vel_x = object.x - caller.x
+			if(ismob(object_to_throw) && grab_level < 2) //To throw mob you need agressive grab
+				caller.to_chat(span("warning","You need a better grip to do that!"))
+				return TRUE //Isn't agressive grab on mob?
+
+			var/vel_x = object.x - caller.x //Caller pos is the same as object anyway
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
-			if(!highest)
-				I.drop_item(get_turf(caller)) //Drop if we can't throw.
-				return TRUE
+			/*if(highest == 0) //Our position is the same as target
+				release_object(caller) //Better not to divide by zero
+				return TRUE*/
+			if(highest == 0) highest = 1
+
+			if(is_item(object_to_throw)) //Item needs aditional procedures
+				var/obj/item/I = object_to_throw
+				if(I.additional_clothing_parent || I.no_drop) //Can't throw additional clothing
+					caller.to_chat(span("warning","You can't throw this!"))
+					return TRUE
+				if(!highest) //We want to throw it in us?.. No velocity
+					I.drop_item(get_turf(caller)) //Drop if we can't throw.
+					return TRUE
+				I.drop_item(get_turf(caller),silent=TRUE)
 
 			vel_x *= 1/highest
-			vel_y *= 1/highest
-
+			vel_y *= 1/highest //Should it be in two lines instead of four?
 			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
 			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
 
-			I.drop_item(get_turf(caller),silent=TRUE)
-			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+			if(grabbed_object == object_to_throw)
+				grabbed_object.Move(get_turf(caller)) //Anti-offset
+				release_object(caller)
+
+			//Throwing it
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))
 
@@ -94,8 +112,21 @@
 			drop_item_from_inventory(get_turf(src))
 		return TRUE
 
-	if(grabbed_object && grabbed_object == object)
-		release_object(caller)
+	if(grabbed_object && grabbed_object == object && is_living(grabbed_object)) //We click on the hand that grabbed something
+		if(world.time <= grab_time+DECISECONDS_TO_TICKS(20)) //Prevents insta agressive-grab
+			caller.to_chat(span("warning","Too soon to tighting your grip on [object]! Need to wait another [TICKS_TO_SECONDS(grab_time+DECISECONDS_TO_TICKS(20) - world.time)] seconds!"))
+			return TRUE
+		caller.to_chat(span("warning","You tighten your grip on [object]!"))
+		grab_level = 2 //Agressive grab
+		grab_time = world.time //We grabbed now. Used in agressive grab
+
+		var/mob/living/A = owner //How can something not alive grab anything?..
+		A.add_status_effect(SLOW,30,30) //I don't know any better way..
+		var/mob/living/V = grabbed_object //Checked above
+		V.add_status_effect(REST,30,30)
+		V.add_status_effect(SLOW,30,30)
+
+		update_overlays() //Changing appearnce
 		return TRUE
 
 	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects

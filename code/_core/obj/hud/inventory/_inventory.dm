@@ -71,6 +71,9 @@
 
 	var/obj/hud/button/close_inventory/assoc_button
 
+	var/grab_level = 1 //Passive grab
+	var/grab_time //Cooldown on upgrading grab
+
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)
@@ -137,9 +140,14 @@
 	if(parent_inventory)
 		color = "#ff0000"
 	else if(grabbed_object)
-		color = "#ffff00"
-		var/image/I = new/image(initial(icon),"grab")
-		add_overlay(I)
+		if(grab_level == 1) //Passive grab
+			color = "#ffff00"
+			var/image/I = new/image(initial(icon),"grab")
+			add_overlay(I)
+		else if(grab_level == 2) //Agressive grab
+			color = COLOR_RIVER_LIGHT
+			var/image/I = new/image(initial(icon),"grab")
+			add_overlay(I)
 	else
 		color = initial(color)
 
