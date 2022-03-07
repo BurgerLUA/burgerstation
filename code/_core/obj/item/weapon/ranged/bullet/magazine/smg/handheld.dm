@@ -55,14 +55,14 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 28 - 16
-	attachment_barrel_offset_y = 25 - 16
+	attachment_barrel_offset_x = 27 - 16
+	attachment_barrel_offset_y = 21 - 16
 
-	attachment_sight_offset_x = 12 - 16
-	attachment_sight_offset_y = 26 - 16
+	attachment_sight_offset_x = 23 - 16
+	attachment_sight_offset_y = 23 - 16
 
-	attachment_undermount_offset_x = 22 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_y = 19 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0

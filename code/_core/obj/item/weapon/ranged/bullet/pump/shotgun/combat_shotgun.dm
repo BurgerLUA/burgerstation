@@ -49,14 +49,14 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 13 - 16
-	attachment_sight_offset_y = 19 - 16
+	attachment_sight_offset_x = 16 - 16
+	attachment_sight_offset_y = 18 - 16
 
-	attachment_undermount_offset_x = 27 - 16
-	attachment_undermount_offset_y = 14 - 16
+	attachment_undermount_offset_x = 29 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
@@ -74,7 +74,7 @@
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
 	name = "12g Hunter-Killer Combat Shotgun MOD"
-	desc = "A very robust combat shotgun. This one has been modified to be stronger and lighter."
+	desc = "A very robust combat shotgun. This one has been modified to be stronger and lighter. Used mostly by elite syndicate operatives on boarding missions."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/pump_mod.dmi'
 	icon_state = "inventory"
 
@@ -94,3 +94,12 @@
 
 	weight = 8
 	size = SIZE_3
+
+	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 16 - 16
+	attachment_sight_offset_y = 19 - 16
+
+	attachment_undermount_offset_x = 30 - 16
+	attachment_undermount_offset_y = 17 - 16

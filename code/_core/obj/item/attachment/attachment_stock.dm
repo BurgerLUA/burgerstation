@@ -13,7 +13,17 @@
 
 	removable = FALSE
 
+/obj/item/attachment/stock/sniper_127/mk2 //Actually not a stock but whatever. Players won't know this.
+	name = "12.7mm barrel"
+	desc = "Extendong."
+	desc_extended = ""
+	icon_state = "barrel_sniper2"
 
+	attachment_stats = list()
+
+	value = 0
+
+	removable = FALSE
 
 /obj/item/attachment/stock/sniper_50 //Actually not a stock but whatever. Players won't know this.
 	name = "50cal barrel"

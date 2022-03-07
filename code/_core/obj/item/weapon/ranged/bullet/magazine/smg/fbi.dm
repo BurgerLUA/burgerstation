@@ -57,12 +57,12 @@
 	)
 
 	attachment_barrel_offset_x = 30 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 15 - 16
-	attachment_sight_offset_y = 20 - 16
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 16 - 16
 
 	inaccuracy_modifier = 0.5
@@ -71,7 +71,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi/get_static_spread()
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))

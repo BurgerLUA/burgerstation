@@ -56,15 +56,13 @@
 	)
 
 	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 20 - 16
+	attachment_barrel_offset_y = 17 - 16
 
-	attachment_sight_offset_x = 16 - 16
-	attachment_sight_offset_y = 23 - 16
+	attachment_sight_offset_x = 18 - 16
+	attachment_sight_offset_y = 20 - 16
 
 	attachment_undermount_offset_x = 27 - 16
-	attachment_undermount_offset_y = 15 - 16
-
-
+	attachment_undermount_offset_y = 12 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25

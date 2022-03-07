@@ -2,7 +2,7 @@
 	name = "\improper 4.6x30mm FNG"
 	desc = ""
 	desc_extended = "An extremely lightweight, cheap and near recoiless combat rifle designed for new trainees to get some hands-on experience with firearms."
-	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/starter.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/46_1.dmi'
 	icon_state = "inventory"
 	value = 400
 
