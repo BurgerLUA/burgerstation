@@ -9,6 +9,8 @@
 
 	value = 450
 
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/ghillie)
+
 /obj/item/clothing/overwear/coat/ghillie/forest
 	name = "SKAT-9M patterned ghillie suit (forest)"
 	desc = "Sneeki breeki like."
