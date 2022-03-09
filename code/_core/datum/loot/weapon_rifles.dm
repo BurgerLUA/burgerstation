@@ -337,21 +337,6 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/rifle/svt
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svt,
-		/obj/item/magazine/rifle_762_long,
-		/obj/item/magazine/rifle_762_long,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/svt = 1,
-		/obj/item/magazine/rifle_762_long = 4,
-	)
-	loot_count = 6
-	chance_none = 25
-
 /loot/weapon/rifle/syringe
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,

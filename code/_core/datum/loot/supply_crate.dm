@@ -27,7 +27,6 @@
 		/loot/weapon/rifle/gauss_gun = 1,
 		/loot/weapon/rifle/groza = 1,
 		/loot/weapon/rifle/rpk = 1,
-		/loot/weapon/rifle/svt = 1,
 		/loot/weapon/rifle/val = 1,
 		/loot/weapon/rifle/vintorez = 1,
 		/loot/weapon/shotgun/ks23 = 1,

@@ -86,11 +86,6 @@
 	GENERATE(attachment_stock)
 	FINALIZE(attachment_stock)
 
-	attachment_barrel = new /obj/item/attachment/barrel/sniper_20(src)
-	INITIALIZE(attachment_barrel)
-	GENERATE(attachment_barrel)
-	FINALIZE(attachment_barrel)
-
 	attachment_sight = new /obj/item/attachment/sight/scope/massive/sniper_20(src)
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
