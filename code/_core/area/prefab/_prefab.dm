@@ -35,6 +35,15 @@
 
 	interior = TRUE
 
+/area/prefab/syndimining
+	name = "Syndicate Mining Base"
+	icon_state = "red"
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sound_environment = ENVIRONMENT_AUDITORIUM
+
+	interior = TRUE
+
 /area/prefab/hierophant
 	name = "Hierophant's Arena"
 	icon_state = "purple"
