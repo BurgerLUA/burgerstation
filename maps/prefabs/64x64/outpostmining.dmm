@@ -1,0 +1,5832 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ak" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"ap" = (
+/obj/structure/table/cooking/grill,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"aF" = (
+/obj/structure/interactive/computer/console,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"aJ" = (
+/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/scanner/crate_only,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"aU" = (
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"aZ" = (
+/obj/decal/hazard{
+	dir = 1
+	},
+/obj/structure/interactive/disposals/machine/chute,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"bd" = (
+/obj/structure/table,
+/obj/item/storage/kit/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"bh" = (
+/turf/simulated/wall/metal,
+/area/prefab/syndimining)
+"bx" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"bz" = (
+/obj/structure/interactive/reagent_tank/ethanol,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"bJ" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"bR" = (
+/obj/decal/tile/cross/red,
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"ce" = (
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"cv" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/computer/console/old,
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"cK" = (
+/obj/structure/interactive/door/airlock/station/maintenance,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"cU" = (
+/obj/structure/interactive/vending/junk/full,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"df" = (
+/obj/structure/interactive/diverter{
+	dir = 4
+	},
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"dl" = (
+/obj/structure/interactive/atm,
+/turf/simulated/wall/metal/reinforced,
+/area/prefab/syndimining)
+"dw" = (
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/scanner/crate_only,
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"dW" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"ec" = (
+/obj/structure/interactive/vending/engineering/wardrobe,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"eh" = (
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"ew" = (
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"eE" = (
+/obj/decal/tile/cross/red,
+/turf/simulated/wall/metal,
+/area/prefab/syndimining)
+"eR" = (
+/obj/structure/interactive/atm,
+/turf/simulated/wall/metal,
+/area/prefab/syndimining)
+"fl" = (
+/obj/structure/interactive/shield{
+	dir = 4;
+	icon_state = "shieldwall"
+	},
+/obj/structure/scenery/fake_door/nocolide/blast_door,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"fy" = (
+/obj/structure/short_wall/sand,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"fB" = (
+/obj/structure/interactive/fax_machine/cargo,
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"gf" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"gg" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"gq" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"gC" = (
+/obj/structure/interactive/chair/stool,
+/obj/marker/hostage_rest,
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"gL" = (
+/obj/structure/interactive/vending/mining,
+/obj/decal/hazard{
+	dir = 6
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"hi" = (
+/obj/structure/interactive/vending/chef/wardrobe,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"hp" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"ht" = (
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"hv" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"hJ" = (
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"hP" = (
+/obj/structure/interactive/lighting/fixture/floor/syndicate,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"hW" = (
+/obj/decal/hazard/full,
+/obj/effect/temp/crate_gib,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"hX" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"in" = (
+/obj/structure/interactive/disposals/machine/chute,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"ir" = (
+/turf/simulated/floor/colored/dirt/soil,
+/area/prefab/syndimining)
+"iw" = (
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"iH" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/limiter{
+	dir = 4
+	},
+/obj/structure/interactive/door/airlock/external/glass/bolted,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"iQ" = (
+/obj/structure/interactive/vending/mining,
+/obj/decal/hazard{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"iW" = (
+/mob/living/simple/bot/medibot/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"js" = (
+/obj/structure/table,
+/obj/item/container/simple/hearty_punch,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"jH" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"jM" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"jP" = (
+/obj/decal/tile/cross/red,
+/obj/structure/table/fancy,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"jQ" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"jW" = (
+/obj/structure/shuttle_engine/propulsion/right{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/prefab/syndimining)
+"ke" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"kg" = (
+/obj/structure/interactive/conveyor{
+	dir = 4;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"kj" = (
+/obj/structure/interactive/vending/soda/full,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"kl" = (
+/obj/structure/interactive/atmospherics/vent,
+/obj/decal/tile/cross/red,
+/obj/structure/table/fancy,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"kn" = (
+/obj/item/clothing/head/hat/chef,
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"kD" = (
+/obj/structure/interactive/door/airlock/station/glass,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"kH" = (
+/obj/item/clothing/overwear/coat/apron,
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"kU" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"kX" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood{
+	dir = 1;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"la" = (
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"lb" = (
+/obj/item/clothing/head/helmet/polymorphic/medical,
+/obj/structure/interactive/shop,
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"lj" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"lp" = (
+/obj/structure/interactive/vending/nanotrasen/attachment,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"lq" = (
+/obj/structure/table,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"lu" = (
+/obj/structure/interactive/vending/medical/wardrobe,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"lw" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"lH" = (
+/turf/simulated/wall/metal/reinforced,
+/area/prefab/syndimining)
+"lS" = (
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"mb" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/stool/bar,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"mf" = (
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/scanner/iff_nanotrasen,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"mD" = (
+/obj/structure/interactive/stacker,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"mK" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"mT" = (
+/obj/structure/interactive/conveyor{
+	dir = 4;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"ng" = (
+/obj/decal/hazard{
+	dir = 9;
+	icon_state = "line"
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"ni" = (
+/obj/structure/interactive/door/airlock/external/glass/bolted,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"nA" = (
+/obj/decal/hazard{
+	dir = 5
+	},
+/obj/structure/interactive/vending/nanotrasen/attachment,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"nD" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"nS" = (
+/obj/decal/hazard,
+/obj/structure/interactive/shield{
+	dir = 4;
+	icon_state = "shieldwall"
+	},
+/obj/structure/scenery/fake_door/nocolide/blast_door,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"nY" = (
+/obj/structure/interactive/disposals/machine/outlet,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"od" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/stool,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"or" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"oI" = (
+/obj/structure/interactive/status_display/global_display/round,
+/turf/simulated/wall/metal,
+/area/prefab/syndimining)
+"pb" = (
+/mob/living/simple/turret/syndicate,
+/turf/simulated/wall/dark/shuttle,
+/area/prefab/syndimining)
+"pe" = (
+/obj/structure/interactive/status_display/global_display/bravo,
+/turf/simulated/wall/dark/shuttle,
+/area/prefab/syndimining)
+"pg" = (
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"pB" = (
+/obj/structure/interactive/fire_closet{
+	dir = 4
+	},
+/turf/simulated/wall/dark/shuttle,
+/area/prefab/syndimining)
+"pP" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"pW" = (
+/obj/item/storage/heavy/trash_pile,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"qp" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"qv" = (
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"qM" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood{
+	dir = 1;
+	icon_state = "wooden_chair"
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"qV" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"rb" = (
+/obj/structure/interactive/door/airlock/station/engineering/glass,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"rn" = (
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"rz" = (
+/obj/structure/shuttle_engine,
+/turf/simulated/floor/plating/shuttle,
+/area/prefab/syndimining)
+"rH" = (
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"rS" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/decal/tile/cross/red,
+/obj/structure/table/fancy,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"rV" = (
+/obj/structure/interactive/restocker/ammo,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"rW" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"sv" = (
+/obj/structure/interactive/vending/coffee,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"sz" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"sC" = (
+/obj/decal/hazard,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"sE" = (
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"sL" = (
+/obj/structure/shuttle_engine,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"ti" = (
+/obj/structure/interactive/vending/engineering/equipment,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"tq" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"tP" = (
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/green,
+/area/prefab/syndimining)
+"tX" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/structure/interactive/vending/nanotrasen/gundrobe,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"tZ" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood,
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"uh" = (
+/obj/decal/hazard{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"um" = (
+/obj/structure/interactive/crate/engineering,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"ur" = (
+/obj/structure/interactive/bed/sleeper/medical/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"uw" = (
+/obj/structure/interactive/chair,
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"uG" = (
+/obj/structure/interactive/disposals/machine/outlet{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"uP" = (
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"uQ" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"ve" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"vw" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"vZ" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/structure/interactive/vending/nanotrasen/ammo,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"we" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/computer/console/old,
+/obj/structure/table/reinforced/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"wh" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"wo" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"wy" = (
+/obj/structure/interactive/status_display/global_display/round,
+/turf/simulated/wall/metal/reinforced,
+/area/prefab/syndimining)
+"wF" = (
+/obj/decal/hazard/full,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"wN" = (
+/obj/decal/hazard/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"wP" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"wQ" = (
+/turf/simulated/wall/dark/shuttle,
+/area/prefab/syndimining)
+"wX" = (
+/obj/structure/interactive/shop,
+/obj/item/deployable/barricade,
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"wZ" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/mob/living/advanced/npc/syndicate/scientist,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"xi" = (
+/obj/structure/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/prefab/syndimining)
+"xB" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood,
+/mob/living/advanced/npc/syndicate/triple,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"xC" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"xK" = (
+/turf/simulated/floor/tile/morphing/green,
+/area/prefab/syndimining)
+"xR" = (
+/obj/decal/tile/cross/red,
+/obj/structure/table/fancy,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"xV" = (
+/obj/decal/tile/cross/red,
+/obj/structure/table/reinforced/dark,
+/obj/structure/interactive/computer/console/laptop{
+	dir = 1
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"xY" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"yi" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"yD" = (
+/obj/item/crafting/grinder{
+	pixel_y = 8
+	},
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"yF" = (
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/scanner/crate_only,
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"yI" = (
+/obj/structure/shuttle_engine/propulsion/left{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/prefab/syndimining)
+"yW" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"za" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"zf" = (
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"zr" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"zv" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 8
+	},
+/obj/structure/interactive/vending/chef/dinnerwear,
+/turf/simulated/floor/tile/coldroom,
+/area/prefab/syndimining)
+"zF" = (
+/obj/structure/interactive/computer/console,
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"zI" = (
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"zR" = (
+/obj/item/clothing/overwear/coat/vest/colored/medical,
+/obj/structure/interactive/shop,
+/obj/structure/table,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"zT" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"zV" = (
+/obj/decal/tile/cross/red,
+/obj/structure/table/reinforced/dark,
+/obj/structure/interactive/computer/console/laptop{
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Ai" = (
+/obj/structure/interactive/chair/stool,
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"At" = (
+/obj/structure/table/dark,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"AH" = (
+/obj/structure/interactive/mining_brace,
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"AO" = (
+/obj/decal/hazard{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"AT" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/structure/interactive/smelter,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"Ba" = (
+/obj/marker/spawning/window/tinted,
+/turf/space,
+/area/prefab/syndimining)
+"Bi" = (
+/obj/decal/hazard{
+	dir = 10
+	},
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Bx" = (
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"BB" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/stool/bar,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"BU" = (
+/obj/structure/interactive/reagent_tank/water,
+/turf/simulated/floor/tile/coldroom,
+/area/prefab/syndimining)
+"BZ" = (
+/obj/decal/hazard/full,
+/obj/structure/interactive/crate/engineering,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Ct" = (
+/obj/structure/interactive/disposals/machine/outlet{
+	dir = 4
+	},
+/turf/simulated/floor/tile/coldroom,
+/area/prefab/syndimining)
+"CJ" = (
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"CV" = (
+/obj/decal/tile/cross/red,
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"CZ" = (
+/obj/structure/interactive/conveyor{
+	dir = 4;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/limiter{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Dq" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"DR" = (
+/obj/structure/interactive/disposals/machine/outlet,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"DV" = (
+/obj/structure/interactive/door/airlock/station/glass,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Eh" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"Em" = (
+/obj/structure/interactive/crate/engineering,
+/obj/decal/hazard/full,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"EF" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"EM" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"EP" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/obj/decal/hazard{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"ES" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"ET" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"EU" = (
+/obj/structure/shuttle_engine/burst,
+/turf/simulated/floor/plating/shuttle,
+/area/prefab/syndimining)
+"Fd" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"Fj" = (
+/obj/decal/hazard{
+	dir = 1
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"Fl" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"FM" = (
+/obj/structure/interactive/door/airlock/station/bar,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"FR" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"FS" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/structure/interactive/ore_storage{
+	dir = 8
+	},
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"FV" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Gi" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"GI" = (
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"GP" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/colored/dirt/soil,
+/area/prefab/syndimining)
+"GS" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"GY" = (
+/obj/structure/interactive/crate,
+/obj/item/container/edible/dynamic/meat/raw_monkey,
+/turf/simulated/floor/tile/coldroom,
+/area/prefab/syndimining)
+"Hr" = (
+/obj/structure/table,
+/obj/item/storage/kit/brute/filled,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Hx" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"HZ" = (
+/obj/structure/table,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"Ig" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/limiter{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Iq" = (
+/obj/structure/interactive/mining_brace,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"Iz" = (
+/obj/marker/lobby,
+/turf/simulated/floor/tile/morphing/green,
+/area/prefab/syndimining)
+"IB" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"IC" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"IN" = (
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"IR" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"Jb" = (
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"Jo" = (
+/obj/marker/spawning/window/tinted,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Jy" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"JE" = (
+/obj/structure/scenery/fake_door/nocolide/blast_door,
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"JT" = (
+/mob/living/simple/turret/syndicate,
+/turf/simulated/wall/metal/reinforced,
+/area/prefab/syndimining)
+"JX" = (
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"KN" = (
+/obj/decal/hazard/corner{
+	dir = 1;
+	icon_state = "corner"
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"KZ" = (
+/turf/simulated/floor/tile/coldroom,
+/area/prefab/syndimining)
+"Ln" = (
+/obj/structure/table/reinforced/dark,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"Lv" = (
+/mob/living/advanced/npc/syndicate,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"LE" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/structure/interactive/stacker,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"LJ" = (
+/obj/structure/table,
+/obj/item/container/simple/coffee_liqueur,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"LO" = (
+/obj/structure/interactive/crate,
+/obj/item/container/edible/dynamic/meat/raw_monkey,
+/obj/item/container/edible/dynamic/meat/raw_monkey,
+/turf/simulated/floor/tile/coldroom,
+/area/prefab/syndimining)
+"LP" = (
+/obj/marker/spawning/window/tinted,
+/turf/simulated/floor/plating/shuttle,
+/area/prefab/syndimining)
+"LW" = (
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"LX" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair/wood{
+	dir = 1;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/tile/dark/ish,
+/area/prefab/syndimining)
+"LZ" = (
+/mob/living/advanced/npc/dummy/armor_heavy,
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"MD" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"MJ" = (
+/obj/decal/tile/cross/red,
+/mob/living/advanced/npc/syndicate,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"MP" = (
+/obj/decal/tile/cross/red,
+/mob/living/advanced/npc/syndicate,
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"MV" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/prefab/syndimining)
+"MZ" = (
+/obj/structure/interactive/diverter{
+	dir = 8;
+	icon_state = "diverter"
+	},
+/obj/item/supply_crate/syndicate,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"Nl" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Nq" = (
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"Ns" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"ND" = (
+/obj/structure/interactive/door/airlock/station/glass,
+/turf/simulated/floor/tile/morphing/green,
+/area/prefab/syndimining)
+"Oa" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Od" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/scanner/iff_nanotrasen,
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"Oe" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Oq" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/bar_sign/bawse_loot,
+/turf/simulated/wall/metal,
+/area/prefab/syndimining)
+"Oy" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"OE" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"OG" = (
+/obj/structure/interactive/chair{
+	dir = 4
+	},
+/mob/living/advanced/npc/syndicate/scientist,
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"OX" = (
+/obj/structure/interactive/vending/medical/medicine,
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"PT" = (
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"PX" = (
+/obj/decal/hazard/corner{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Qw" = (
+/obj/structure/interactive/conveyor{
+	dir = 4;
+	icon_state = "conveyor"
+	},
+/obj/decal/hazard{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Qx" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/limiter{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"QP" = (
+/obj/structure/interactive/vending/hydroponics/nutri,
+/turf/simulated/floor/tile/morphing/green,
+/area/prefab/syndimining)
+"QQ" = (
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"QX" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Rg" = (
+/obj/structure/interactive/vending/hydroponics/seeds,
+/turf/simulated/floor/tile/morphing/green,
+/area/prefab/syndimining)
+"Rr" = (
+/obj/structure/interactive/mining_drill,
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"RE" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"RJ" = (
+/obj/structure/interactive/chair/stool,
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"RL" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"SB" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/vending/coffee,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"SH" = (
+/obj/decal/hazard{
+	dir = 4
+	},
+/obj/structure/interactive/disposals/machine/outlet{
+	dir = 1
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"SP" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"SS" = (
+/turf/simulated/floor/tile/shuttle/engineering,
+/area/prefab/syndimining)
+"Tb" = (
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"Tn" = (
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"To" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Tr" = (
+/obj/structure/interactive/computer/console/medical{
+	dir = 4;
+	icon_state = "computer"
+	},
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Ts" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/limiter{
+	dir = 8
+	},
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"TA" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"TI" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Ul" = (
+/obj/decal/hazard/full,
+/obj/item/supply_crate/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"UE" = (
+/obj/structure/interactive/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"UQ" = (
+/obj/structure/table/reinforced/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile,
+/area/prefab/syndimining)
+"UY" = (
+/obj/structure/interactive/status_display/global_display/alpha,
+/turf/simulated/wall/dark/shuttle,
+/area/prefab/syndimining)
+"Vc" = (
+/obj/decal/hazard/black/full,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Vs" = (
+/mob/living/advanced/npc/dummy/armor_heavy,
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Vt" = (
+/obj/structure/table,
+/obj/item/container/simple/absinthe/premium,
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"Vv" = (
+/obj/structure/interactive/disposals/machine/outlet{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"VA" = (
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"VQ" = (
+/obj/decal/hazard/corner,
+/obj/structure/interactive/shield{
+	dir = 4;
+	icon_state = "shieldwall"
+	},
+/obj/structure/scenery/fake_door/nocolide/blast_door,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Wc" = (
+/obj/decal/hazard/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"Wg" = (
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"Wk" = (
+/obj/structure/interactive/scanner/living,
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"WG" = (
+/obj/decal/tile/cross/red,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"WN" = (
+/obj/decal/hazard,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/brown,
+/area/prefab/syndimining)
+"WW" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"Xi" = (
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"XL" = (
+/obj/decal/hazard/full,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Ye" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Yz" = (
+/obj/structure/interactive/vending/nanotrasen/gundrobe,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"YA" = (
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/shuttle/red,
+/area/prefab/syndimining)
+"YM" = (
+/obj/structure/scenery/fake_door/nocolide/blast_door,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"YQ" = (
+/obj/decal/hazard{
+	dir = 1
+	},
+/obj/structure/interactive/conveyor,
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating,
+/area/prefab/syndimining)
+"YR" = (
+/obj/structure/interactive/chair,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/library,
+/area/prefab/syndimining)
+"YW" = (
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/black,
+/area/prefab/syndimining)
+"Za" = (
+/obj/structure/interactive/smelter,
+/obj/structure/interactive/conveyor,
+/turf/simulated/floor/tile/dark,
+/area/prefab/syndimining)
+"Zq" = (
+/obj/structure/interactive/disposals/machine/outlet{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/prefab/syndimining)
+"Zu" = (
+/obj/structure/interactive/vending/nanotrasen/ammo,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+"ZQ" = (
+/obj/structure/interactive/door/airlock/station/engineering/glass,
+/turf/simulated/floor/tile/morphing/engineering,
+/area/prefab/syndimining)
+
+(1,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(2,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+JT
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+JT
+Jy
+fy
+fy
+fy
+fy
+fy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(3,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+QX
+pW
+lS
+lS
+lS
+lS
+QX
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+QX
+lS
+lS
+lS
+Vs
+lS
+LZ
+pW
+lH
+Jy
+Jy
+Lv
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(4,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+lS
+lS
+lS
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(5,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+lS
+ke
+ng
+pb
+wQ
+LP
+LP
+LP
+LP
+LP
+pB
+LP
+LP
+wQ
+pb
+EU
+Vc
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(6,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+LP
+pe
+mK
+zT
+zT
+GS
+GS
+zT
+zT
+zT
+GS
+wQ
+rz
+EU
+Vc
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(7,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+rH
+rH
+VA
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+MD
+wQ
+rz
+EU
+Vc
+lS
+lS
+lS
+lS
+lS
+IB
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(8,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+rH
+VA
+WW
+WW
+WW
+WW
+WW
+WW
+WW
+WW
+VA
+VA
+ce
+VA
+uh
+lS
+lS
+GI
+lS
+WG
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(9,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+aF
+yW
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+pe
+VA
+uh
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(10,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+rH
+VA
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+VA
+VA
+ce
+VA
+uh
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(11,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+rH
+rH
+VA
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+MD
+wQ
+rz
+EU
+Vc
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(12,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+sC
+LP
+LP
+pe
+qV
+WW
+WW
+rH
+WW
+WW
+rH
+YA
+WW
+wQ
+rz
+EU
+Vc
+lS
+lS
+ew
+lS
+lS
+IB
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(13,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+lS
+ve
+AO
+pb
+wQ
+pB
+pe
+kg
+wQ
+wQ
+or
+pe
+pB
+wQ
+pb
+EU
+Vc
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(14,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+lS
+lS
+lS
+ve
+ve
+ve
+ve
+Qw
+ve
+ve
+EP
+ve
+IN
+ve
+ve
+ve
+lS
+lS
+wP
+lS
+lS
+lS
+lS
+lH
+hP
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(15,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+wP
+lS
+lS
+lS
+pW
+lS
+wP
+mT
+lS
+lS
+ES
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+gf
+gf
+gf
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+JT
+Jy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(16,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+JT
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+aU
+aU
+mT
+ES
+lH
+QQ
+kU
+ew
+ew
+ew
+ew
+kU
+ew
+ew
+ew
+ew
+ew
+ew
+eh
+ew
+kU
+ew
+ew
+ew
+ew
+lH
+Jy
+Jy
+Lv
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(17,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+lH
+lH
+lH
+lH
+mT
+ES
+lH
+QQ
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+xY
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(18,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+wQ
+wQ
+wQ
+wQ
+lH
+CZ
+Ig
+Ts
+Ig
+RL
+ES
+lH
+QQ
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+Oa
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(19,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+dw
+df
+df
+df
+Wk
+iH
+Qx
+pP
+hJ
+hJ
+lH
+pP
+lH
+QQ
+ew
+ew
+lH
+kj
+YR
+At
+UE
+Ns
+At
+jH
+cU
+lH
+lH
+lH
+lH
+lH
+ew
+ew
+eh
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(20,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+gq
+rH
+Dq
+wQ
+hJ
+hJ
+Oe
+hJ
+rV
+QQ
+lj
+lH
+QQ
+ew
+ew
+lH
+lH
+wy
+lH
+lH
+lH
+lH
+lH
+lH
+ap
+zI
+Fd
+zI
+zI
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(21,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+dw
+rH
+rH
+rH
+iw
+ni
+QQ
+QQ
+QQ
+QQ
+ew
+Vv
+wy
+QQ
+ew
+ew
+gg
+xK
+xK
+bh
+Ct
+GY
+LO
+bh
+ap
+zI
+kH
+Ln
+zI
+Ln
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(22,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+dw
+rH
+rH
+rH
+iw
+ni
+QQ
+ew
+hW
+ew
+BZ
+qv
+lH
+QQ
+ew
+ew
+gg
+QP
+ew
+bh
+KZ
+KZ
+KZ
+kD
+zI
+zI
+zI
+zI
+zI
+Ln
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(23,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+rH
+rH
+rH
+wQ
+lH
+um
+ew
+XL
+ew
+hW
+FR
+lH
+tq
+ew
+ew
+gg
+Rg
+xY
+bh
+BU
+zv
+KZ
+bh
+bx
+zI
+yD
+Ln
+zI
+Ln
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(24,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+wQ
+wQ
+wQ
+wQ
+lH
+um
+ew
+ew
+To
+ew
+QQ
+QQ
+QQ
+ew
+ew
+ND
+tP
+ew
+bh
+bh
+bh
+bh
+bh
+hi
+zI
+IR
+wo
+zI
+Ln
+ew
+ew
+xY
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(25,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+sL
+sL
+sL
+wQ
+lH
+um
+ew
+OE
+ew
+ew
+ew
+ew
+QQ
+ew
+ew
+DV
+ew
+ew
+ew
+Fl
+ew
+kD
+zI
+zI
+zI
+PT
+Ln
+zI
+Ln
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(26,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+jW
+xi
+xi
+xi
+yI
+lH
+HZ
+ew
+ew
+Fl
+ew
+QQ
+QQ
+QQ
+ew
+ew
+ND
+xK
+To
+xK
+Iz
+xK
+bh
+zI
+zI
+zI
+kn
+Ln
+zI
+Ln
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(27,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+pg
+ew
+XL
+ew
+XL
+FR
+dl
+QQ
+ew
+ew
+gg
+Rg
+ew
+tP
+ir
+ir
+bh
+zI
+zI
+zI
+zI
+zI
+zI
+Ln
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(28,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+fB
+eh
+hW
+ew
+BZ
+QQ
+dl
+QQ
+ew
+ew
+gg
+QP
+xK
+xK
+ir
+ir
+bh
+UQ
+Ln
+Ln
+Ln
+Ln
+Ln
+bh
+Ye
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(29,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+fB
+ew
+XL
+ew
+Ul
+qv
+dl
+QQ
+ew
+ew
+gg
+ir
+ir
+ir
+ir
+ir
+oI
+RJ
+od
+RJ
+gC
+RJ
+Ai
+Jo
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(30,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+wQ
+wQ
+wQ
+wQ
+lH
+fB
+ew
+ew
+QQ
+QQ
+QQ
+lH
+QQ
+ew
+ew
+gg
+ir
+ir
+ir
+ir
+ir
+bh
+ht
+WG
+ht
+WG
+ht
+WG
+Jo
+ew
+ew
+ew
+lH
+hP
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(31,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+rn
+rn
+rn
+LW
+aJ
+Nq
+Nq
+Jb
+MZ
+lH
+lH
+lH
+QQ
+ew
+ew
+gg
+ir
+ir
+GP
+ir
+ir
+bh
+SB
+ht
+rW
+kl
+kX
+Hx
+Jo
+ew
+ew
+ew
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+JT
+fy
+fy
+fy
+fy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(32,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+yi
+yi
+yi
+wQ
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+wy
+tq
+ew
+ew
+bh
+bh
+bh
+bh
+bh
+bh
+eR
+ht
+WG
+xB
+jP
+LX
+WG
+Oq
+ew
+ew
+ew
+lH
+WG
+ak
+MP
+MP
+WG
+xV
+WG
+Ba
+Jy
+Jy
+Jy
+hP
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(33,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+yi
+yi
+yi
+wQ
+lH
+ec
+ti
+Yz
+Zu
+lp
+wX
+lH
+QQ
+ew
+ew
+bh
+Vt
+js
+hX
+Wg
+Wg
+JX
+BB
+ht
+rW
+rS
+kX
+ht
+eE
+ew
+ew
+ew
+lH
+WG
+WG
+zV
+zV
+bR
+bR
+WG
+Ba
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(34,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+yi
+yi
+yi
+wQ
+lH
+QQ
+To
+ew
+ew
+ew
+FR
+lH
+QQ
+ew
+ew
+bh
+Wg
+ew
+ew
+ew
+ew
+JX
+mb
+WG
+ht
+WG
+ht
+WG
+ht
+ew
+ew
+xY
+lH
+WG
+WG
+WG
+WG
+Tn
+WG
+WG
+Ba
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(35,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+yF
+yi
+yi
+yi
+wQ
+lH
+QQ
+Em
+XL
+XL
+ew
+QQ
+ZQ
+QQ
+ew
+ew
+FM
+ew
+ew
+ew
+ew
+ew
+JX
+BB
+ht
+tZ
+xR
+kX
+ht
+WG
+ew
+ew
+ew
+lH
+WG
+WG
+WG
+WG
+WG
+WG
+WG
+lH
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(36,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+wQ
+wQ
+wQ
+wQ
+lH
+tq
+ew
+OE
+ew
+OE
+ew
+rb
+QQ
+ew
+ew
+bh
+Wg
+ew
+ew
+ew
+eh
+JX
+mb
+WG
+dW
+jP
+qM
+WG
+ht
+ew
+ew
+ew
+lH
+MJ
+WG
+WG
+WG
+WG
+WG
+zr
+lH
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(37,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+wQ
+sL
+sL
+sL
+wQ
+lH
+nY
+XL
+XL
+Em
+ew
+ew
+ZQ
+QQ
+eh
+ew
+bh
+Wg
+Bx
+LJ
+Bx
+Wg
+JX
+BB
+ht
+rW
+xR
+kX
+ht
+WG
+ew
+ew
+ew
+lH
+WG
+WG
+WG
+WG
+WG
+WG
+WG
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+"}
+(38,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+jW
+xi
+xi
+xi
+yI
+lH
+sv
+ew
+ew
+Fl
+ew
+xY
+lH
+uP
+ew
+ew
+bh
+bh
+bh
+oI
+bh
+bh
+bh
+bh
+bh
+bh
+eE
+eE
+eE
+eE
+Ye
+ew
+ew
+TA
+WG
+WG
+WG
+WG
+WG
+WG
+WG
+TA
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+"}
+(39,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+pg
+ET
+QQ
+RE
+QQ
+in
+lH
+uP
+ew
+ew
+cK
+lS
+pW
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+pW
+lS
+lS
+cK
+ew
+ew
+ew
+TA
+WG
+WG
+WG
+WG
+WG
+WG
+WG
+TA
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+"}
+(40,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+jQ
+ew
+ew
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+ew
+ew
+ew
+TA
+WG
+WG
+WG
+WG
+WG
+WG
+WG
+TA
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(41,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+lH
+gL
+iQ
+iQ
+tX
+vZ
+nA
+wy
+uP
+ew
+ew
+Jo
+Tb
+lu
+OX
+zf
+bd
+zf
+Tb
+Eh
+Tb
+Tb
+Tb
+Tb
+Jo
+la
+ew
+ew
+lH
+WG
+WG
+WG
+WG
+WG
+WG
+WG
+lH
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(42,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+dl
+Fj
+To
+ew
+Fl
+ew
+WN
+lH
+uP
+ew
+ew
+Jo
+Tb
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+Tb
+Jo
+Tb
+ew
+ew
+lH
+CV
+WG
+WG
+WG
+WG
+WG
+zr
+lH
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(43,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+JT
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+aZ
+ew
+OE
+ew
+ew
+KN
+qp
+uP
+ew
+ew
+Tb
+Tb
+ew
+lq
+lq
+lq
+FV
+ew
+ew
+eh
+ur
+ew
+EM
+Jo
+Tb
+ew
+ew
+lH
+we
+za
+WG
+WG
+WG
+WG
+WG
+lH
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(44,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+lH
+pW
+lS
+lH
+lS
+lS
+lS
+lS
+DR
+YQ
+Za
+mf
+mD
+uG
+OE
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+OE
+lq
+lq
+lq
+vw
+ew
+ew
+ew
+ew
+ew
+Tb
+Jo
+Tb
+ew
+xY
+lH
+cv
+xC
+WG
+WG
+WG
+WG
+WG
+lH
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(45,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+lH
+pW
+lS
+lH
+aU
+aU
+aU
+aU
+aU
+Bi
+AT
+Od
+LE
+SH
+ew
+nD
+nD
+uP
+ew
+ew
+Tb
+Tb
+ew
+Hr
+lq
+lq
+FV
+ew
+ew
+ew
+Tr
+ew
+Tb
+Tb
+Tb
+ew
+ew
+lH
+WG
+WG
+IC
+WG
+WG
+IC
+WG
+lH
+Jy
+Jy
+Jy
+hP
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(46,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+lH
+lS
+lS
+lH
+ES
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+rb
+lH
+lH
+uP
+ew
+ew
+Jo
+lb
+ew
+lw
+uQ
+wZ
+iW
+ew
+ew
+ew
+ew
+ew
+ew
+Tb
+ew
+ew
+ew
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+JT
+fy
+fy
+fy
+fy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(47,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+lH
+hp
+lS
+lH
+ES
+hJ
+lS
+QX
+uw
+CJ
+CJ
+CJ
+Nl
+lS
+lS
+bz
+lH
+uP
+ew
+ew
+Jo
+zR
+ew
+To
+Fl
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+Tb
+ew
+ew
+ew
+lH
+hP
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(48,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+lH
+lS
+lS
+lH
+ES
+hJ
+lS
+lS
+lS
+TI
+TI
+bJ
+lS
+lS
+lS
+lS
+lH
+uP
+ew
+ew
+Jo
+Zq
+ew
+ew
+ew
+ew
+ew
+Tb
+wh
+Tb
+Tb
+ew
+ew
+Tb
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(49,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+ke
+ke
+MV
+FS
+jM
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+Oy
+lH
+uP
+ew
+ew
+Jo
+sE
+sE
+sE
+Xi
+sE
+sE
+sE
+Jo
+Jo
+Tb
+ew
+ew
+Tb
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(50,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+lS
+lS
+ES
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+uP
+ew
+ew
+Jo
+Jo
+Jo
+Jo
+Jo
+Jo
+Jo
+Jo
+Jo
+Tb
+Tb
+Tb
+Tb
+Tb
+ew
+ew
+xY
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Lv
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(51,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+lS
+lS
+lS
+ES
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lS
+lH
+Ye
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(52,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+VQ
+ke
+ke
+lS
+ES
+lS
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+ke
+PX
+lS
+lH
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+lH
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(53,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+nS
+wQ
+LP
+LP
+or
+wQ
+LP
+UY
+LP
+wQ
+YW
+UY
+wQ
+EU
+wF
+wF
+lH
+ew
+ew
+ew
+eh
+Oa
+ew
+ew
+ew
+ew
+Oa
+ew
+ew
+ew
+eh
+ew
+ew
+Oa
+ew
+ew
+ew
+lH
+Jy
+Jy
+Lv
+Jy
+Jy
+Jy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(54,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+nS
+LP
+SS
+SS
+rH
+hv
+Gi
+OG
+Gi
+hv
+rH
+LP
+rz
+EU
+wF
+wF
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+JT
+fy
+fy
+fy
+fy
+fy
+fy
+Jy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(55,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+nS
+LP
+zF
+EF
+rH
+rH
+rH
+rH
+rH
+rH
+rH
+LP
+rz
+EU
+wF
+wF
+lH
+hP
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(56,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+nS
+LP
+SS
+SS
+SS
+SS
+rH
+rH
+rH
+rH
+SP
+wQ
+wQ
+EU
+wF
+wF
+lH
+Jy
+Jy
+Jy
+Jy
+Lv
+Jy
+Jy
+Jy
+Jy
+Lv
+Jy
+Jy
+Jy
+Jy
+Jy
+Lv
+Jy
+Jy
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(57,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+nS
+wQ
+LP
+LP
+wQ
+JE
+wQ
+YM
+YM
+wQ
+JE
+wQ
+wQ
+EU
+wF
+wF
+lH
+Jy
+Jy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(58,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+fl
+ve
+ve
+AO
+UY
+SS
+Iq
+rH
+Iq
+rH
+AH
+LP
+rz
+EU
+wF
+wF
+lH
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(59,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+fl
+lS
+lS
+sC
+wQ
+Rr
+AH
+Rr
+AH
+Rr
+AH
+LP
+rz
+EU
+wF
+wF
+lH
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(60,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+fl
+lS
+lS
+sC
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
+UY
+wQ
+EU
+wF
+wF
+lH
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(61,1,1) = {"
+Jy
+Jy
+Jy
+Jy
+Jy
+fl
+lS
+lS
+wN
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+Wc
+IB
+lH
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(62,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+lH
+lS
+wP
+pW
+lS
+lS
+lS
+wP
+lS
+lS
+lS
+lS
+wP
+lS
+lS
+pW
+lH
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(63,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+JT
+cK
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+lH
+JT
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
+(64,1,1) = {"
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+Jy
+Jy
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+sz
+"}
