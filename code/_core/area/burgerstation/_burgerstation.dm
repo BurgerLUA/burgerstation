@@ -32,7 +32,9 @@
 
 	map_color = COLOR_WHITE
 
-	plane = PLANE_AREA_INTERIOR
+	dynamic_lighting = TRUE
+
+	interior = TRUE
 
 /area/burgerstation/hall
 	name = "\improper Hallway"

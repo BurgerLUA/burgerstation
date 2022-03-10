@@ -79,4 +79,4 @@
 
 #define PLANE_HUD_MOUSE 102
 
-
+#define PLANE_AREA 200

@@ -3,8 +3,9 @@
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
-	plane = PLANE_AREA_EXTERIOR
+	plane = PLANE_AREA //This should never be changed. Just use interior=TRUE
 	invisibility = 101
+	alpha = 150
 
 	mouse_opacity = 0
 
@@ -67,12 +68,23 @@
 
 	return TRUE
 
+/area/New(var/desired_loc)
+
+	if(interior)
+		plane = PLANE_AREA_INTERIOR
+	else
+		plane = PLANE_AREA_EXTERIOR
+
 /area/Initialize()
 
 	if(plane == PLANE_AREA_EXTERIOR)
 		icon = 'icons/area/area.dmi'
 		icon_state = "black"
 		invisibility = 0
+	else
+		invisibility = 101
+
+	alpha = 255
 
 	var/area_count = 0
 	average_x = 0
