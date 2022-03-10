@@ -679,6 +679,7 @@ var/global/list/rarity_to_mul = list(
 				return FALSE
 			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
+			play_sound('sound/items/consumables/pourwater.ogg',get_turf(caller),range_max=VIEW_RANGE*0.5)
 			return TRUE
 		else if(object.allow_reagent_transfer_from && allow_reagent_transfer_to)
 			if(object.reagents.volume_current <= 0)
@@ -689,6 +690,7 @@ var/global/list/rarity_to_mul = list(
 				return FALSE
 			var/actual_transfer_amount = object.reagents.transfer_reagents_to(reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [src]."))
+			play_sound('sound/items/consumables/pourwater.ogg',get_turf(caller),range_max=VIEW_RANGE*0.5)
 			return TRUE
 
 	return FALSE
