@@ -7,7 +7,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 			var/obj/item/organ/beard/O = labeled_organs[BODY_HAIR_FACE]
 			if(O.additional_blends["hair_face"])
 				var/icon_blend/IB = O.additional_blends["hair_face"]
-				var/found_value = S.all_hair_face.Find(IB.icon_state)
+				var/found_value = SSspecies.all_hair_files[S.default_icon_hair_face].Find(IB.icon_state)
 				if(found_value)
 					hair_num = found_value
 				else
@@ -53,7 +53,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	for(var/obj/hud/button/chargen/change_beardstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_icon = S.all_hair_face[clamp(choice_main,1,length(S.all_hair_face))]
+	var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair_face][clamp(choice_main,1,length(SSspecies.all_hair_files[S.default_icon_hair_face]))]
 	if(desired_color)
 		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon, desired_color = desired_color)
 	else
@@ -83,10 +83,10 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/species/S = SPECIES(A.species)
-		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_face))
+		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair_face]))
 		A.handle_beardstyle_chargen(hair_num)
 
-	
+
 /obj/hud/button/chargen/change_beardstyle/main/update_owner(var/mob/desired_owner)
 	. = ..()
 	if(. && is_advanced(desired_owner))
@@ -94,7 +94,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		hair_num = 1
 		A.handle_beardstyle_chargen(1)
 
-	
+
 /obj/hud/button/chargen/change_beardstyle/left
 	name = "cycle beardstyle left"
 	dir = WEST
@@ -122,8 +122,8 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	var/mob/living/advanced/A = owner
 	var/species/S = SPECIES(A.species)
 
-	if(hair_num >= 1 && hair_num <= length(S.all_hair_face))
-		var/hair_icon = S.all_hair_face[hair_num]
+	if(hair_num >= 1 && hair_num <= length(SSspecies.all_hair_files[S.default_icon_hair_face]))
+		var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair_face][hair_num]
 		if(hair_icon)
 			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
 			var/icon/I3 = new/icon(S.default_icon_hair_face,hair_icon)
@@ -141,7 +141,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.handle_beardstyle_chargen(hair_num)
-	
+
 /obj/hud/button/chargen/beardstyle/main
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+3"
@@ -156,7 +156,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		if(desired_color)
 			A.handle_beardstyle_chargen(hair_num,desired_color)
 
-	
+
 /obj/hud/button/chargen/beardstyle/slot01
 	icon_state = "square_trim"
 	screen_loc = "CENTER-2,CENTER+3"

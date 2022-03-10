@@ -2033,6 +2033,16 @@
 /obj/structure/interactive/telecomms/station,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering)
+"hv" = (
+/obj/structure/interactive/misc/sink{
+	pixel_y = 20
+	},
+/obj/structure/interactive/misc/mirror/chargen/limited{
+	pixel_y = 32
+	},
+/obj/marker/spawnpoint/chargen,
+/turf/simulated/floor/tile,
+/area/burgerstation/bathrooms)
 "hw" = (
 /obj/structure/interactive/disposals/pipe/junction/sorting/flipped{
 	sorting_tag = "disposals"
@@ -4081,15 +4091,6 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/bathrooms)
 "sd" = (
-/turf/simulated/floor/tile,
-/area/burgerstation/bathrooms)
-"se" = (
-/obj/structure/interactive/misc/sink{
-	pixel_y = 20
-	},
-/obj/structure/interactive/misc/mirror/chargen/limited{
-	pixel_y = 32
-	},
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "sf" = (
@@ -45937,7 +45938,7 @@ hF
 hF
 gU
 rL
-se
+hv
 sd
 sd
 sd
@@ -46194,7 +46195,7 @@ qs
 hF
 gU
 rL
-se
+hv
 sd
 sT
 sT
@@ -46451,7 +46452,7 @@ qt
 hF
 gU
 rL
-se
+hv
 sd
 sT
 sT
@@ -46708,7 +46709,7 @@ qt
 hF
 gU
 rL
-se
+hv
 sd
 sd
 sd
@@ -46965,7 +46966,7 @@ qt
 hF
 gU
 rL
-se
+hv
 sd
 sd
 sd

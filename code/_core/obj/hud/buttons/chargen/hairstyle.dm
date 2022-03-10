@@ -7,7 +7,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 			var/obj/item/organ/head/O = labeled_organs[BODY_HAIR_HEAD]
 			if(O.additional_blends["hair_head"])
 				var/icon_blend/IB = O.additional_blends["hair_head"]
-				var/found_value = S.all_hair_head.Find(IB.icon_state)
+				var/found_value = SSspecies.all_hair_files[S.default_icon_hair].Find(IB.icon_state)
 				if(found_value)
 					hair_num = found_value
 				else
@@ -53,7 +53,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_icon = S.all_hair_head[clamp(choice_main,1,length(S.all_hair_head))]
+	var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair][clamp(choice_main,1,length(SSspecies.all_hair_files[SSspecies.all_hair_files[S.default_icon_hair]]))]
 	if(desired_color)
 		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)
 	else
@@ -82,7 +82,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		var/mob/living/advanced/A = desired_owner
 		A.handle_hairstyle_chargen(A.sex == MALE ? 2 : 16)
 
-	
+
 /obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -90,10 +90,10 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/species/S = SPECIES(A.species)
-		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_head))
+		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair]))
 		A.handle_hairstyle_chargen(hair_num)
 
-	
+
 /obj/hud/button/chargen/change_hairstyle/left
 	name = "cycle hairstyle left"
 	dir = WEST
@@ -121,8 +121,8 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	var/mob/living/advanced/A = owner
 	var/species/S = SPECIES(A.species)
 
-	if(hair_num >= 1 && hair_num <= length(S.all_hair_head))
-		var/hair_icon = S.all_hair_head[hair_num]
+	if(hair_num >= 1 && hair_num <= length(SSspecies.all_hair_files[S.default_icon_hair]))
+		var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair][hair_num]
 		if(hair_icon)
 			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
 			var/icon/I3 = new/icon(S.default_icon_hair,hair_icon)
@@ -159,7 +159,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		if(desired_color)
 			A.handle_hairstyle_chargen(hair_num,desired_color)
 
-	
+
 /obj/hud/button/chargen/hairstyle/slot01
 	icon_state = "square_trim"
 	screen_loc = "CENTER-2,CENTER+4"
