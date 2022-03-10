@@ -57,10 +57,6 @@
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
-			if(highest == 0) //Our position is the same as target
-				release_object(caller) //Better not to divide by zero
-				return TRUE
-
 			if(is_item(object_to_throw)) //Item needs aditional procedures
 				var/obj/item/I = object_to_throw
 				if(I.additional_clothing_parent || I.no_drop) //Can't throw additional clothing
@@ -70,6 +66,10 @@
 					I.drop_item(get_turf(caller)) //Drop if we can't throw.
 					return TRUE
 				I.drop_item(get_turf(caller),silent=TRUE)
+
+			if(highest == 0) //Our position is the same as target
+				release_object(caller) //Better not to divide by zero
+				return TRUE
 
 			vel_x *= 1/highest
 			vel_y *= 1/highest //Should it be in two lines instead of four?
@@ -113,16 +113,15 @@
 
 	if(grabbed_object && grabbed_object == object && is_living(grabbed_object)) //We click on the hand that grabbed something
 		if(world.time <= grab_time+DECISECONDS_TO_TICKS(20)) //Prevents insta agressive-grab
-			caller.to_chat(span("warning","Too soon to tighting your grip on [object]! Need to wait another [TICKS_TO_SECONDS(grab_time+DECISECONDS_TO_TICKS(20) - world.time)] seconds!"))
 			return TRUE
 		caller.to_chat(span("warning","You tighten your grip on [object]!"))
 		grab_level = 2 //Agressive grab
 		grab_time = world.time //We grabbed now. Used in agressive grab
 
 		var/mob/living/A = owner //How can something not alive grab anything?..
-		A.add_status_effect(SLOW,30,30) //I don't know any better way..
+		A.add_status_effect(SLOW,30,30,stealthy=1) //I don't know any better way..
 		var/mob/living/V = grabbed_object //Checked above
-		V.add_status_effect(REST,30,30)
+		V.add_status_effect(REST,30,30,stealthy=1)
 		V.add_status_effect(SLOW,30,30)
 
 		update_overlays() //Changing appearnce
