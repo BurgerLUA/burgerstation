@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(events)
 	name = "Event Subsystem"
 	desc = "Handles processing for events."
 	priority = SS_ORDER_NORMAL
-	tick_rate = SECONDS_TO_TICKS(1)
+	tick_rate = SECONDS_TO_TICKS(5)
 
 	var/list/all_events = list()
 
@@ -67,6 +67,9 @@ SUBSYSTEM_DEF(events)
 	return TRUE
 
 /subsystem/events/proc/trigger_random_event(var/minor)
+
+	if(!SSgamemode?.active_gamemode?.allow_launch)
+		return FALSE
 
 	var/event_id
 
