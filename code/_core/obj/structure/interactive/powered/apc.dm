@@ -9,19 +9,7 @@
 
 	plane = PLANE_OBJ
 
-	power_draw = 0
-	power_supply = 0
-
 	var/obj/item/powercell/cell = /obj/item/powercell/industrial
-
-/*
-/obj/structure/interactive/powered/apc/proc/sync_machines()
-	var/area/A = get_area(src)
-	for(var/k in A.machines)
-		var/obj/structure/interactive/powered/machine/M = k
-		if(M.
-*/
-
 
 /obj/structure/interactive/powered/apc/Generate()
 	. = ..()
