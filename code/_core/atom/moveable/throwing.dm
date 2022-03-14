@@ -12,6 +12,7 @@
 	if(istype(src.loc,/obj/projectile/thrown/))
 		return FALSE
 	var/damage_type_to_use = damage_type_thrown ? damage_type_thrown : damage_type
+	if(damage_type_to_use == /damagetype/error) damage_type_to_use = /damagetype/melee/club/stunbaton //Basically something broken OR mobs
 	var/obj/projectile/thrown/P = new(get_turf(src),thrower,src,vel_x,vel_y,target_x,target_y,get_turf(desired_target),damage_type_to_use,desired_target,"#FFFFFF",thrower,desired_iff = desired_iff)
 	P.appearance = src.appearance
 	P.pixel_x = src.pixel_x
