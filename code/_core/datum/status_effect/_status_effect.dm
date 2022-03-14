@@ -54,7 +54,6 @@
 
 	affects_dead = FALSE
 
-
 /status_effect/stun/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	owner.remove_status_effect(STAGGER)

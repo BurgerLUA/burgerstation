@@ -1,3 +1,16 @@
+/mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(dead)
+		return FALSE
+
+	if(has_status_effects(PARALYZE,SLEEP,STAMCRIT,STUN,PARRIED))
+		return FALSE
+
+	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
+		return FALSE
+
+	. = ..()
+
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(!isturf(src.loc))
