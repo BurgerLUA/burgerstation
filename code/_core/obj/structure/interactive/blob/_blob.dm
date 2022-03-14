@@ -62,7 +62,7 @@
 		var/d = get_dir(src,B)
 		if(B.color != color)
 			continue
-		if(priority_turf) //Prioritize turfs getting attacked.
+		if(priority_turf) //Prioritize blobs getting attacked.
 			if(d & get_dir(src,priority_turf))
 				possible_options |= B
 				continue

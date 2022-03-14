@@ -47,9 +47,14 @@
 
 	level = 4
 
-	var/exploded = FALSE
-
 	reagents = /reagent_container/blob
+
+	var/idle = FALSE
+
+/mob/living/simple/blob_spore/post_move(var/atom/old_loc)
+	if(idle)
+		idle = FALSE
+		icon_state = initial(icon_state)
 
 /mob/living/simple/blob_spore/post_death()
 

@@ -620,7 +620,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 						current_bursts = 0
 				else
-					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")
+					log_error("Warning: [caller] tried shooting in an invalid turf: [desired_x],[desired_y],[caller.z].")
 			else if(max_bursts_to_use > 0)
 				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 				current_bursts = 0
