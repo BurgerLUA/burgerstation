@@ -45,10 +45,7 @@
 		return ..()
 
 	A.health.adjust_stamina(-cost_stamina)
-
 	A.update_health_element_icons(stamina=TRUE)
-
-	A.stamina_regen_delay = max(A.stamina_regen_delay,10) //I'll change this if it's unreasonable.
 
 	return null
 

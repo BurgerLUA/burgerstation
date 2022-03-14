@@ -17,6 +17,11 @@
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
 
+/obj/structure/interactive/door/airlock/station/command/ce
+	name = "chief engineer's office"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
+
 /obj/structure/interactive/door/airlock/station/chapel
 	name = "chapel airlock"
 	color = "#E1DFD2"
@@ -113,11 +118,30 @@
 	filler = "fill"
 	fill_color = COLOR_ENGINEERING
 
+/obj/structure/interactive/door/airlock/station/engineering/telecomms
+	name = "telecomms airlock"
+	color = COLOR_ENGINEERING
+	fill_color = COLOR_COMMAND
+
 /obj/structure/interactive/door/airlock/station/engineering/glass
 	name = "engineering airlock"
 	color = COLOR_ENGINEERING
 	filler = "glass"
 	fill_color = COLOR_WHITE
+
+/obj/structure/interactive/door/airlock/station/engineering/glass/ce
+	name = "chief engineer's office airlock"
+	color = COLOR_ENGINEERING
+	filler = "glass"
+	fill_color = COLOR_WHITE
+	no_access = TRUE
+
+/obj/structure/interactive/door/airlock/station/engineering/glass/supermatter
+	name = "supermatter airlock"
+	color = COLOR_ENGINEERING
+	filler = "glass"
+	fill_color = COLOR_PINK
+	locked = TRUE
 
 /obj/structure/interactive/door/airlock/station/medical
 	name = "medical airlock"

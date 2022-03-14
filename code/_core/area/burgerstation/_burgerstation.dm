@@ -224,6 +224,20 @@
 
 	map_color = COLOR_ENGINEERING
 
+/area/burgerstation/engineering/telecomms
+	name = "\improper Telecomms"
+	icon_state = "cmd"
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+
+	map_color = COLOR_ENGINEERING
+
+/area/burgerstation/engineering/supermatter
+	name = "\improper Telecomms"
+	icon_state = "cmd"
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+
+	map_color = COLOR_ENGINEERING
+
 /area/burgerstation/medical
 	name = "\improper Medical"
 	icon_state = "med"

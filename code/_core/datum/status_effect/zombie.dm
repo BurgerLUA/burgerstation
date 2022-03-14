@@ -48,10 +48,12 @@
 	A.add_status_effect(ADRENALINE,100,-1,stealthy=TRUE)
 
 	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
+	H.add_blend("zombie", desired_icon = 'icons/mob/living/advanced/hair/human_misc.dmi', desired_icon_state = "zombie", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY)
 	HOOK_ADD("on_damage_received","\ref[H]_zombie_on_damage_received",H,src,.proc/on_headshot)
 	HOOK_ADD("post_death","\ref[owner]_zombie_post_death",owner,src,.proc/post_death)
 	HOOK_ADD("attack","\ref[owner]_zombie_attack",owner,src,.proc/attack)
 	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,.proc/on_damage_received)
+	H.update_sprite()
 
 	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in A.organs
 	if(L) L.loyalty_tag = "Blob"

@@ -1,5 +1,7 @@
 /mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=-1,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
 
+	PROCESS_LIVING(src)
+
 	if(!force && length(status_immune) && status_immune[status_type])
 		if(isnum(status_immune[status_type]))
 			if(ENABLE_DAMAGE_NUMBERS && !stealthy)

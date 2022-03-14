@@ -5,7 +5,7 @@
 	var/power_network/power_network
 	var/connection_dir = 0x0
 	var/list/connections = list() //ASSOC LIST
-	var/obj/structure/interactive/powered/connected_machine
+	var/obj/structure/interactive/powered/connected_machine //Will always be the machine connected on the top.
 
 /obj/structure/interactive/wire/Destroy()
 

@@ -14,8 +14,6 @@
 	var/throw_range_min = 2
 	var/throw_range_max = 3
 
-	plane = PLANE_OBJ
-
 	bullet_block_chance = 50
 
 	density = TRUE

@@ -854,3 +854,9 @@ var/global/list/rarity_to_mul = list(
 					I.update_worn_icon(src)
 
 	return TRUE
+
+
+
+/obj/item/dust(var/atom/source)
+	qdel(src)
+	return TRUE

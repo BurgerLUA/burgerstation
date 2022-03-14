@@ -57,8 +57,6 @@
 
 	if(.)
 
-		if(!is_living(owner)) return
-
 		var/mob/living/L = owner
 
 		if(has_bloodoxygen && L.blood_volume_max)
@@ -97,8 +95,6 @@
 /health/mob/living/update_health_stats()
 
 	. = ..()
-
-	if(!is_living(owner)) return
 
 	var/mob/living/L = owner
 
@@ -154,9 +150,6 @@
 
 /health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
 
-	if(!is_living(owner))
-		return ..()
-
 	var/mob/living/L = owner
 
 	var/returning_value = 0
@@ -175,6 +168,24 @@
 			returning_value += damage[damage_type]
 
 	return returning_value
+
+/health/mob/living/adjust_loss(var/loss_type,var/value)
+	. = ..()
+	if(. < 0)
+		var/mob/living/L = owner
+		L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
+
+/health/mob/living/adjust_mana(var/adjust_value)
+	. = ..()
+	if(. < 0)
+		var/mob/living/L = owner
+		L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
+
+/health/mob/living/adjust_stamina(var/adjust_value)
+	. = ..()
+	if(. < 0)
+		var/mob/living/L = owner
+		L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
 
 /health/mob/living/inorganic
 	organic = FALSE
