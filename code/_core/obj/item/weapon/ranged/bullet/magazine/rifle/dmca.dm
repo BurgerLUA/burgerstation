@@ -12,6 +12,9 @@
 	burst_delay = 0.6*6
 	max_bursts = 4
 
+	recoil_delay = 0.25
+	heat_power = 2
+
 	damage_mod = 1.25
 
 	automatic = TRUE
@@ -52,8 +55,6 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-
-
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
@@ -77,7 +78,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()
-	return 0.001
+	return 0.004
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.05 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

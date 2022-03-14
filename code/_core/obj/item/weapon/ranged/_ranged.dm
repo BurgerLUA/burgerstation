@@ -13,6 +13,9 @@
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
 	var/next_shoot_time = 0
 
+	var/recoil_delay = 0 //As a factor. Lower values mean slower kicks, higher values mean faster kicks.
+	var/queued_recoil = 0
+
 	var/ranged_damage_type
 	var/projectile_speed = TILE_SIZE - 1 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
@@ -89,7 +92,7 @@
 
 
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
-	if(!length(firemodes))
+	if(length(firemodes) <= 1)
 		return FALSE
 	current_firemode++
 	if(current_firemode > length(firemodes))
@@ -114,7 +117,7 @@
 /obj/item/weapon/ranged/get_examine_list(var/mob/examiner)
 	. = ..()
 
-	if(length(firemodes))
+	if(length(firemodes) > 1)
 		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
@@ -254,7 +257,7 @@
 	. = ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()
-	return heat_current
+	return heat_current*heat_power
 
 /obj/item/weapon/ranged/proc/get_static_spread()
 	return 0.025
@@ -263,7 +266,8 @@
 	return 0.025 - (0.05 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
-	if(L.next_move < 0)
+
+	if(L.next_move <= 0)
 		return 0
 
 	. = movement_spread_base
@@ -311,12 +315,17 @@
 
 /obj/item/weapon/ranged/think()
 
+	if(recoil_delay > 0 && queued_recoil > 0)
+		var/heat_to_add = CEILING(queued_recoil*recoil_delay,0.001)
+		heat_current = min(heat_max,heat_current + heat_to_add)
+		queued_recoil = max(0,queued_recoil - heat_to_add)
+
 	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
 		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
 
-	return . && heat_current > 0
+	return . && (heat_current > 0 || (recoil_delay > 0 && queued_recoil > 0))
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -565,7 +574,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	next_shoot_time = world.time + shoot_delay_to_use
 	if(heat_max)
-		heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
+		if(recoil_delay > 0)
+			queued_recoil = heat_per_shot_to_use
+		else
+			heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
 		start_thinking(src)
 
 	if(is_advanced(caller))
@@ -726,7 +738,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	. = inaccuracy_modifier
 
-	if(L.next_move >= 0)
+	if(L.next_move > 0)
 		. += movement_inaccuracy_modifier
 
 	if(. <= 0)
