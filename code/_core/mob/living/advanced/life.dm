@@ -99,7 +99,7 @@ var/global/list/spread_icons = list(
 		desired_spread = max(0,desired_spread,L.heat_current)
 
 	if(desired_spread >= 0)
-		desired_spread *= 100
+		desired_spread *= 75 //Entirely arbitrary.
 		desired_spread = clamp(1+CEILING(desired_spread,1),0,length(spread_icons))
 		if(client.mouse_pointer_icon != spread_icons[desired_spread])
 			set_mouse_pointer(spread_icons[desired_spread])

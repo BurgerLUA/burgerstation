@@ -33,11 +33,6 @@
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
 	var/heat_to_remove = 0.01 //Heat to remove per decisecond.
-	var/heat_power = 1 //Heat converted into accuracy. See: https://www.desmos.com/calculator/r7tq4ovdcz
-	//Note for heat power:
-	//Higher values start low and then ramp up at the end. Lower values ramp up quickly but stay consistant.
-	//Precise weapons should have a lower value while inprecise weapons should have a higher value.
-
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
@@ -257,13 +252,13 @@
 	. = ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()
-	return heat_current*heat_power
+	return heat_current
 
 /obj/item/weapon/ranged/proc/get_static_spread()
-	return 0.025
+	return 0.01
 
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L)
-	return 0.025 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return 0.01 - (0.02 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
 
@@ -468,7 +463,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(wielded)
 		arm_strength *= 3
 
-	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.003*bullet_count_to_use
+	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use
 	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
 
 	if(projectile_to_use)

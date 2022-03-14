@@ -13,7 +13,6 @@
 	max_bursts = 4
 
 	recoil_delay = 0.25
-	heat_power = 2
 
 	damage_mod = 1.25
 
