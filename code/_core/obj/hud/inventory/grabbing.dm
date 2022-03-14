@@ -26,6 +26,7 @@
 	caller.visible_message(span("warning","\The [caller.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
 	animate(grabbed_object,pixel_x = initial(grabbed_object.pixel_x), pixel_y = initial(grabbed_object.pixel_y), time = SECONDS_TO_DECISECONDS(1))
 	grabbed_object.grabbing_hand = src
+	grab_time = world.time //To prevent instant agressive grab
 
 	overlays.Cut()
 	update_overlays()
@@ -53,6 +54,7 @@
 		L.resist_counter = 0
 	grabbed_object.grabbing_hand = null
 	grabbed_object = null
+	grab_level = 1
 	overlays.Cut()
 	update_overlays()
 	return TRUE
