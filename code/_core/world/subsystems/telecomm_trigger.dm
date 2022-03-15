@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(telecomm_trigger)
 /subsystem/telecomm_trigger/Initialize()
 
 	var/list/possible_triggers = subtypesof(/telecomm_trigger/)
-	if(possible_triggers)
+	if(length(possible_triggers))
 		var/telecomm_trigger/T = pick(possible_triggers)
 		T = new T
 		if(T.selected_trigger_name && T.selected_trigger_regex)

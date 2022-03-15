@@ -40,7 +40,6 @@
 		if(!reset) connected_wire.power_network.power_draw -= power_draw
 		power_draw = desired_power_draw
 		connected_wire.power_network.power_draw += power_draw
-		world.log << "NEW NETWORK POWER DRAW: [connected_wire.power_network.power_draw] (+[power_draw])"
 
 	return TRUE
 
@@ -60,7 +59,6 @@
 		if(!reset) connected_wire.power_network.power_supply -= power_supply
 		power_supply = desired_power_supply
 		connected_wire.power_network.power_supply += power_supply
-		world.log << "NEW NETWORK POWER SUPPLY: [connected_wire.power_network.power_supply] (+[power_supply])"
 
 	return TRUE
 

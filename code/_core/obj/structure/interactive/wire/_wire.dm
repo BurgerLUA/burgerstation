@@ -39,8 +39,6 @@
 
 	return TRUE
 
-
-
 /obj/structure/interactive/wire/proc/do_snap()
 	src.visible_message(span("danger","\The [src.name] snaps!"))
 	qdel(src)
@@ -48,13 +46,13 @@
 /obj/structure/interactive/wire/Destroy()
 
 	if(power_network)
-		power_network.remove_wire(src)
+		qdel(power_network)
+		power_network = null
 
 	for(var/k in connections)
-		var/obj/structure/interactive/wire/W = connections[k]
+		var/obj/structure/interactive/wire/W = k
 		W.generate_4way()
-		if(power_network)
-			W.finalize_network()
+		W.refresh_network()
 
 	connections.Cut()
 
@@ -64,6 +62,11 @@
 
 	if(is_item(object))
 		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			INTERACT_CHECK
+			INTERACT_DELAY(10)
+			qdel(src)
+			return TRUE
 		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
 			INTERACT_CHECK
 			INTERACT_DELAY(10)
@@ -73,38 +76,21 @@
 				caller.to_chat(span("notice","Draw: [power_network.power_draw]w."))
 			else
 				caller.to_chat(span("warning","No power network detected!"))
+			return TRUE
 
 	. = ..()
 
-/obj/structure/interactive/wire/proc/finalize_network()
 
-	var/power_network/best_network
-	var/list/found_power_networks = list()
+/obj/structure/interactive/wire/proc/refresh_network()
+
+	if(!power_network)
+		CRASH("refresh_network() not find a valid power network!")
+
 	var/list/found_connections = get_new_connections()
 
 	for(var/k in found_connections)
 		var/obj/structure/interactive/wire/W = k
-		if(W.power_network)
-			found_power_networks |= W.power_network
-
-	for(var/k in found_power_networks)
-		var/power_network/PN = k
-		if(!best_network || PN.id < best_network.id)
-			best_network = PN
-
-	for(var/k in found_connections)
-		var/obj/structure/interactive/wire/W = k
-		if(W.power_network != best_network)
-			W.power_network.remove_wire(W)
-		best_network.add_wire(W)
-
-	for(var/k in found_power_networks)
-		var/power_network/PN=k
-		if(PN == best_network)
-			continue
-		qdel(PN)
-
-	log_debug("Merged [length(found_power_networks)] power networks into 1.")
+		power_network.add_wire(W)
 
 /obj/structure/interactive/wire/proc/get_new_connections(var/list/existing_list)
 
@@ -141,9 +127,6 @@
 
 /obj/structure/interactive/wire/Finalize()
 	. = ..()
-	if(!power_network)
-		power_network = new /power_network/
-		power_network.add_wire(src)
 
 /obj/structure/interactive/wire/update_overlays()
 
@@ -194,9 +177,7 @@
 		if(W_old_connection_dir != W.connection_dir)
 			W.update_sprite()
 
-	if(length(possible_power_networks))
-		var/power_network/PN = pick(possible_power_networks)
-		PN.add_wire(src)
+	merge_networks(possible_power_networks)
 
 	if(connection_dir != old_connection_dir)
 		update_sprite()
@@ -204,6 +185,29 @@
 
 	return FALSE
 
+
+/obj/structure/interactive/wire/proc/merge_networks(var/list/possible_power_networks)
+
+	var/power_network/best_network
+	for(var/k in possible_power_networks)
+		var/power_network/PN = k
+		if(PN.qdeleting)
+			continue
+		if(!best_network || PN.id < best_network.id)
+			best_network = PN
+
+	if(best_network)
+		best_network.add_wire(src)
+		for(var/k in possible_power_networks) //Transfer the reset of the wires.
+			if(k == best_network)
+				continue
+			var/power_network/PN = k
+			for(var/j in PN.connected_wires)
+				best_network.add_wire(j)
+			qdel(PN)
+	else
+		power_network = new /power_network/
+		power_network.add_wire(src)
 
 
 
