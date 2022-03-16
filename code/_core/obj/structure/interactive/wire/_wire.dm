@@ -23,12 +23,18 @@
 		caller?.to_chat(span("warning","\The [src.name] is already connected to \a [connected_machine.name]! Remove it first before adding a new connection."))
 		return FALSE
 
-	var/obj/structure/interactive/powered/P = locate() in src.loc
-	if(!P)
+	var/obj/structure/interactive/powered/found_machine
+	for(var/obj/structure/interactive/powered/P in src.loc.contents)
+		if(!P.wire_powered)
+			continue
+		found_machine = P
+		break
+
+	if(!found_machine)
 		caller?.to_chat(span("warning","There is nothing to connect \the [src.name] to!"))
 		return FALSE
 
-	connected_machine = P
+	connected_machine = found_machine
 	connected_machine.connected_wire = src
 
 	caller?.to_chat(span("notice","You connect \the [src.name] to \the [connected_machine.name]."))
@@ -124,9 +130,6 @@
 /obj/structure/interactive/wire/PostInitialize()
 	. = ..()
 	generate_4way()
-
-/obj/structure/interactive/wire/Finalize()
-	. = ..()
 
 /obj/structure/interactive/wire/update_overlays()
 

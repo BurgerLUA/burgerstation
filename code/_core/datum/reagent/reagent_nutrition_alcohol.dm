@@ -28,7 +28,7 @@
 	nutrition_quality_amount = -nutrition_amount*0.5
 	particle_size = 0.1 + min(power_mod,1)*0.2
 	liquid = 1 - min(power_mod,1)*0.5
-	return ..()
+	. = ..()
 
 
 /reagent/nutrition/ethanol/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)

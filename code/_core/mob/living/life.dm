@@ -545,8 +545,7 @@ mob/living/proc/on_life_slow()
 	var/trait/general_regen/GR = get_trait_by_category(/trait/general_regen/)
 
 	if(health_regen_delay <= 0 && health.health_regeneration > 0)
-		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod
-		if(GR) health_mod *= GR.health_regen_mul
+		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod*(GR ? GR.stamina_regen_mul : 1)
 		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod)
 		var/burn_to_adjust = min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod)
 		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod)

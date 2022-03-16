@@ -16,4 +16,4 @@ SUBSYSTEM_DEF(telecomm_trigger)
 			log_subsystem(src.name,"Loaded telecomm trigger [T.name] with trigger type of [T.selected_trigger_name].")
 		else
 			log_subsystem(src.name,"Could not find a valid telecomm trigger to load.")
-		. = ..()
+	. = ..()

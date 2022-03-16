@@ -184,6 +184,8 @@
 
 	map_color = COLOR_GREEN
 
+	requires_power = TRUE
+
 /area/burgerstation/arrivals
 	name = "\improper Arrivals Dock"
 	icon_state = "ariv"

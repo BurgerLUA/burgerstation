@@ -6,6 +6,8 @@
 
 	var/list/obj/item/powercell/stored_cells = list()
 
+	wire_powered = TRUE
+
 /obj/structure/interactive/powered/smes/standard/Generate()
 	. = ..()
 	for(var/i=1,i<=4,i++)
@@ -22,11 +24,15 @@
 		var/obj/item/powercell/PC = stored_cells[i]
 		. += div("notice","\The [PC.name](#[i]) has [PC.charge_current] out of [PC.charge_max] charge remaining.")
 
+/obj/structure/interactive/powered/smes/get_power_supply()
+	return max(0,connected_wire.power_network.power_draw - (connected_wire.power_network.power_supply-power_supply))
+
+
 /obj/structure/interactive/powered/smes/power_process(var/power_multiplier=1)
 
 	. = ..()
 
-	var/required_power = connected_wire.power_network.power_draw - (connected_wire.power_network.power_supply-power_supply)
+	var/required_power = get_power_supply()
 
 	if(required_power > 0)
 		var/actual_power_provided = 0

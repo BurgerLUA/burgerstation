@@ -11,14 +11,18 @@
 
 	plane = PLANE_OBJ
 
-	var/on = TRUE
+	var/on = FALSE
 
 	var/next_interact = 0
 
 	dir_offset = TILE_SIZE - 8
 
-/obj/structure/interactive/light_switch/off
-	on = FALSE
+/obj/structure/interactive/light_switch/Destroy()
+	if(isturf(loc))
+		var/area/A = loc.loc
+		if(A.requires_power)
+			A.light_switches -= src
+	. = ..()
 
 /obj/structure/interactive/light_switch/Initialize()
 	. = ..()
@@ -27,7 +31,25 @@
 
 /obj/structure/interactive/light_switch/Finalize()
 	. = ..()
+	if(isturf(loc))
+		var/area/A = loc.loc
+		if(A.requires_power)
+			A.light_switches |= src
+		else
+			log_error("ERROR: Created [src.get_debug_name()] in an [A.type] that doesn't require power. Deleting!")
+			qdel(src)
 	update_sprite()
+
+/obj/structure/interactive/light_switch/post_move(var/atom/old_loc)
+	. = ..()
+	if(isturf(old_loc))
+		var/area/A = old_loc.loc
+		if(A.requires_power)
+			A.light_switches -= src
+	if(isturf(loc))
+		var/area/A = loc.loc
+		if(A.requires_power)
+			A.light_switches |= src
 
 /obj/structure/interactive/light_switch/update_atom_light()
 
@@ -49,13 +71,13 @@
 		flick("anim_off",src)
 		icon_state = "off"
 
-
-
 /obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
 	var/area/A = get_area(src)
-	if(!A) return FALSE
-	A.sync_lights(!on)
+	if(!A || !A.apc || !A.apc.cell || A.apc.cell.charge_current/A.apc.cell.charge_max <= 0.3)
+		caller.to_chat(span("warning","This doesn't seem to be working..."))
+		return FALSE
 	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)
+	A.toggle_power_lights(!A.enable_power_lights,lightswitch=TRUE)
 	return TRUE
 
 /obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
