@@ -1,7 +1,6 @@
 /obj/item/weapon/melee/tool/brass
 	name = "tool"
 	drop_sound = 'sound/items/drop/scrap.ogg'
-
 	has_quick_function = TRUE
 
 

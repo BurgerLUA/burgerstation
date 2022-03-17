@@ -1,7 +1,6 @@
 /obj/item/weapon/melee/tool
 	name = "tool"
 	drop_sound = 'sound/items/drop/scrap.ogg'
-
 	has_quick_function = TRUE
 
 /obj/item/weapon/melee/tool/quick(var/mob/caller,var/atom/object,location,params)

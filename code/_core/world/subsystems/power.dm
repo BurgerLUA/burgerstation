@@ -17,6 +17,9 @@ SUBSYSTEM_DEF(power)
 		var/area/A = SSarea.all_areas[k]
 		if(!A.requires_power)
 			continue
+		if(!A.apc)
+			if(!A.no_apc) log_error("WARNING: area of type [A.type] did not find an APC. Set area.no_apc to TRUE to remove this warning.")
+			continue
 		A.toggle_power_lights(FALSE,force=TRUE)
 		A.toggle_power_machines(FALSE,force=TRUE)
 		A.toggle_power_doors(FALSE,force=TRUE)

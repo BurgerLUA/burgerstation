@@ -32,6 +32,8 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	var/sound_spam = 0
 	var/display_spam = 0
 
+	wire_powered = TRUE
+
 /obj/structure/interactive/supermatter/Crossed(var/atom/movable/O)
 
 	. = ..()
@@ -45,10 +47,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		if(display_spam <= world.time)
 			src.visible_message(span("danger","\The [O.name] flashes in a brilliant light as the [src.name]'s energy swallows it!"))
 			display_spam = world.time + 1
-
-/obj/structure/interactive/supermatter/station
-	health = null
-	charge_max = 0
 
 /obj/structure/interactive/supermatter/proc/add_charge(var/charge_amount=0)
 	if(charge_max <= 0)
@@ -102,6 +100,13 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	return TRUE
 
 
+/obj/structure/interactive/supermatter/station
+	health = null
+	charge_max = 0
+	wire_powered = TRUE
+
+/obj/structure/interactive/supermatter/station/get_power_supply()
+	return 3000000
 
 /obj/structure/interactive/supermatter/defense
 	health_base = 3000

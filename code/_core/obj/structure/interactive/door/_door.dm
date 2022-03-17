@@ -33,9 +33,7 @@ obj/structure/interactive/door
 
 	allow_path = TRUE
 
-	var/uses_power = FALSE //Set to true if this door uses power.
-	var/powered = FALSE //Set to true if this door is active.
-	var/power_draw = 0.
+	powered = FALSE //Set to true if this door is active.
 
 /obj/structure/interactive/door/New(var/desired_loc)
 
@@ -54,7 +52,7 @@ obj/structure/interactive/door
 
 /obj/structure/interactive/door/Destroy()
 
-	if(uses_power)
+	if(apc_powered)
 		var/area/A = get_area(src)
 		if(A.requires_power)
 			update_power_draw(0)
@@ -64,12 +62,12 @@ obj/structure/interactive/door
 
 /obj/structure/interactive/door/Finalize()
 
-	if(uses_power)
+	if(apc_powered)
 		var/area/A = get_area(src)
 		if(A.requires_power)
 			A.powered_doors |= src
 		else
-			uses_power = FALSE
+			apc_powered = FALSE
 
 	. = ..()
 
@@ -77,7 +75,7 @@ obj/structure/interactive/door
 
 /obj/structure/interactive/door/post_move(var/atom/old_loc)
 	. = ..()
-	if(uses_power)
+	if(apc_powered)
 		if(isturf(old_loc))
 			var/area/A = old_loc.loc
 			if(A.requires_power)
@@ -88,7 +86,7 @@ obj/structure/interactive/door
 			if(A.requires_power)
 				A.powered_doors |= src
 			else
-				uses_power = FALSE
+				apc_powered = FALSE
 
 obj/structure/interactive/door/update_icon()
 	..()
@@ -211,20 +209,18 @@ obj/structure/interactive/door/closet/setup_dir_offsets()
 	. = ..()
 	dir = SOUTH
 
-/obj/structure/interactive/door/proc/get_power_draw()
+/obj/structure/interactive/door/get_power_draw()
 	return 10
 
-/obj/structure/interactive/door/proc/update_power_draw(var/desired_power_draw,var/reset=FALSE)
+/obj/structure/interactive/door/update_power_draw(var/desired_power_draw,var/reset=FALSE)
 
 	var/area/A = null
 
 	A = get_area(src)
 	if(!A.apc)
-		power_draw = -1
-		CRASH("Tried updating power draw without a connected APC!")
+		desired_power_draw = 0
 	if(!A.requires_power)
-		power_draw = -1
-		CRASH("Tried updating power draw in an area that doesnt' require power!")
+		desired_power_draw = 0
 
 	desired_power_draw = max(0,desired_power_draw)
 

@@ -29,14 +29,13 @@
 
 	if(disposals_count > 1)
 		log_error("Multiple disposals pipes ([disposals_count]) detected at [src.loc.get_debug_name()].")
-
-	plane = PLANE_JUNK
+		qdel(src)
 
 	return ..()
 
 /obj/structure/interactive/disposals/pipe/New(var/desired_loc)
 	plane = PLANE_FLOOR
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/disposals/pipe/ending
 	name = "connector disposals pipe"

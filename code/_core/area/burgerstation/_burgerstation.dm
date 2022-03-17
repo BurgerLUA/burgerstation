@@ -36,6 +36,8 @@
 
 	interior = TRUE
 
+	requires_power = TRUE
+
 /area/burgerstation/hall
 	name = "\improper Hallway"
 	icon_state = "hall"
@@ -184,8 +186,6 @@
 
 	map_color = COLOR_GREEN
 
-	requires_power = TRUE
-
 /area/burgerstation/arrivals
 	name = "\improper Arrivals Dock"
 	icon_state = "ariv"
@@ -219,6 +219,11 @@
 
 	map_color = COLOR_ENGINEERING
 
+/area/burgerstation/engineering/lobby
+	name = "\improper Engineering Lobby"
+	icon_state = "eng"
+	color = "#00FF00"
+
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
 	icon_state = "cmd"
@@ -234,7 +239,7 @@
 	map_color = COLOR_ENGINEERING
 
 /area/burgerstation/engineering/supermatter
-	name = "\improper Telecomms"
+	name = "\improper Supermatter"
 	icon_state = "cmd"
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 

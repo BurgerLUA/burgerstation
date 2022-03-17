@@ -46,7 +46,6 @@ var/global/list/equipped_antags = list()
 
 	var/ignore_economy = FALSE
 
-	var/powered = TRUE
 	var/open = FALSE
 	var/broken = FALSE
 
@@ -303,3 +302,6 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/on_inactive(var/mob/living/advanced/player/P)
 	hide_buttons_from(P)
 	return ..()
+
+/obj/structure/interactive/vending/get_power_draw()
+	return 180

@@ -2026,7 +2026,7 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "ht" = (
-/obj/structure/interactive/computer/arcade/bubbletwist,
+/obj/item/weapon/melee/tool/multitool,
 /turf/simulated/floor/tile,
 /area/burgerstation/cryo)
 "hu" = (
@@ -2267,6 +2267,7 @@
 /area/burgerstation/engineering)
 "iq" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/interactive/potted_plant/nanotrasen,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "ir" = (
@@ -2808,7 +2809,6 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/dressing)
 "ks" = (
-/obj/structure/interactive/reagent_tank/cheese_powder,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/dressing)
 "kt" = (
@@ -3245,11 +3245,9 @@
 /turf/simulated/floor/tile/nanotrasen,
 /area/burgerstation/arrivals)
 "mc" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/interactive/shop,
-/obj/item/analyzer/gps,
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/science)
+/obj/structure/interactive/wire,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "md" = (
 /obj/structure/interactive/fire_closet{
 	dir = 8
@@ -3306,11 +3304,10 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mm" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/interactive/shop,
-/obj/item/analyzer/gps/advanced,
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/science)
+/obj/structure/interactive/power/smes/standard,
+/obj/structure/interactive/wire,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "mn" = (
 /obj/structure/interactive/disposals/pipe/ending{
 	dir = 8
@@ -3357,10 +3354,9 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/east)
 "mx" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/interactive/shop,
-/turf/simulated/floor/tile/morphing/science,
-/area/burgerstation/science)
+/obj/structure/interactive/powered/apc,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
 "my" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
@@ -3616,10 +3612,23 @@
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/botany)
+"nu" = (
+/obj/item/weapon/melee/tool/wirecutters,
+/turf/simulated/floor/tile,
+/area/burgerstation/cryo)
+"nv" = (
+/obj/structure/interactive/wire,
+/turf/simulated/floor/tile/morphing/cryo,
+/area/burgerstation/cryo)
 "nw" = (
 /obj/marker/lobby,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
+"nx" = (
+/obj/structure/interactive/vending/clothes/overshirt,
+/obj/structure/interactive/wire,
+/turf/simulated/floor/tile/morphing/cryo,
+/area/burgerstation/cryo)
 "ny" = (
 /turf/simulated/floor/tile{
 	icon_state = "single"
@@ -3648,6 +3657,13 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/transit/arrivals_shuttle_01/station)
+"nD" = (
+/obj/structure/interactive/light_switch{
+	dir = 4;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/metal,
+/area/burgerstation/cryo)
 "nE" = (
 /obj/structure/interactive/potted_plant/nanotrasen,
 /obj/structure/interactive/lighting/fixture/tube/station{
@@ -3909,10 +3925,6 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "oS" = (
-/turf/simulated/floor/tile/morphing/cryo,
-/area/burgerstation/cryo)
-"oT" = (
-/obj/structure/interactive/vending/clothes/overshirt,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/cryo)
 "oU" = (
@@ -4498,13 +4510,6 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/medical/chemistry)
-"rZ" = (
-/obj/structure/interactive/light_switch{
-	dir = 8;
-	icon_state = "setup"
-	},
-/turf/simulated/wall/metal,
-/area/burgerstation/cryo)
 "sb" = (
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
@@ -34117,7 +34122,7 @@ rd
 rd
 rd
 rd
-mx
+qH
 pV
 uT
 vK
@@ -34374,7 +34379,7 @@ rd
 rd
 rd
 rd
-mx
+qH
 qJ
 uT
 uT
@@ -34631,7 +34636,7 @@ rd
 rd
 rd
 rd
-mx
+qH
 pV
 uT
 vK
@@ -34888,7 +34893,7 @@ rd
 rd
 rd
 rd
-mx
+qH
 pU
 uT
 vK
@@ -35145,7 +35150,7 @@ rd
 rd
 rd
 rd
-mx
+qH
 pV
 uT
 uT
@@ -35398,11 +35403,11 @@ ty
 tU
 ud
 uu
-mc
-mm
-mx
 qH
-mx
+qH
+qH
+qH
+qH
 pU
 uT
 vK
@@ -41295,7 +41300,7 @@ ou
 ov
 ov
 ov
-ou
+nD
 ou
 qT
 qr
@@ -42321,8 +42326,8 @@ lE
 kZ
 ow
 oR
-ph
-ph
+mx
+mc
 ph
 ph
 ph
@@ -42579,8 +42584,8 @@ nY
 ox
 oS
 ph
-ph
-ph
+mc
+nu
 ph
 ph
 ph
@@ -42834,10 +42839,10 @@ lZ
 lE
 nY
 ox
-oS
+nv
+mc
+mc
 ht
-ph
-ph
 qq
 qU
 ph
@@ -43091,13 +43096,13 @@ ma
 lE
 nY
 ox
-oS
+nv
 ph
-ph
-ph
-ph
-ph
-ph
+mc
+mc
+mc
+mc
+mm
 ph
 ph
 ph
@@ -43348,9 +43353,9 @@ ma
 lE
 kZ
 oy
-oT
-ph
-ph
+nx
+mc
+mc
 ph
 qp
 ph
@@ -43607,7 +43612,7 @@ kZ
 ov
 oU
 ph
-ph
+mm
 ph
 ph
 ph
@@ -44384,7 +44389,7 @@ qr
 qV
 qr
 rH
-rZ
+ou
 sA
 rH
 qM

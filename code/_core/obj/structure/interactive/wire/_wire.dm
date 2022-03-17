@@ -5,11 +5,29 @@
 	var/power_network/power_network
 	var/connection_dir = 0x0
 	var/list/connections = list() //ASSOC LIST
-	var/obj/structure/interactive/powered/connected_machine
+	var/obj/structure/interactive/connected_machine
+
+	layer = LAYER_FLOOR_PIPE
+	under_tile = TRUE
+	plane = PLANE_AREA-1 //Layered above stuff in maps.
 
 	initialize_type = INITIALIZE_LATE
 
 	color = COLOR_WHITE
+
+/obj/structure/interactive/wire/New(var/desired_loc)
+	. = ..()
+	var/wire_count = 0
+	for(var/obj/structure/interactive/wire/W in src.loc.contents)
+		if(W.color != src.color)
+			continue
+		wire_count++
+
+	if(wire_count > 1)
+		log_error("Multiple wire cables ([wire_count]) detected at [src.loc.get_debug_name()].")
+		qdel(src)
+
+	plane = PLANE_FLOOR
 
 /obj/structure/interactive/wire/get_examine_list(var/mob/examiner)
 	. = ..()
@@ -23,8 +41,8 @@
 		caller?.to_chat(span("warning","\The [src.name] is already connected to \a [connected_machine.name]! Remove it first before adding a new connection."))
 		return FALSE
 
-	var/obj/structure/interactive/powered/found_machine
-	for(var/obj/structure/interactive/powered/P in src.loc.contents)
+	var/obj/structure/interactive/found_machine
+	for(var/obj/structure/interactive/P in src.loc.contents)
 		if(!P.wire_powered)
 			continue
 		found_machine = P
@@ -167,18 +185,25 @@
 		var/turf/T = get_step(src,k)
 		if(!T)
 			continue
-		var/obj/structure/interactive/wire/W = locate() in T.contents
-		if(!W || W.qdeleting)
+		var/obj/structure/interactive/wire/found_wire
+		for(var/obj/structure/interactive/wire/W in T.contents)
+			if(W.qdeleting)
+				continue
+			if(W.color != src.color)
+				continue
+			found_wire = W
+			break
+		if(!found_wire)
 			continue
-		if(W.power_network)
-			possible_power_networks |= W.power_network
+		if(found_wire.power_network)
+			possible_power_networks |= found_wire.power_network
 		connection_dir |= k
-		connections[W] = TRUE
-		var/W_old_connection_dir = W.connection_dir
-		W.connection_dir |= turn(k,180)
-		W.connections[src] = TRUE
-		if(W_old_connection_dir != W.connection_dir)
-			W.update_sprite()
+		connections[found_wire] = TRUE
+		var/found_wire_old_connection_dir = found_wire.connection_dir
+		found_wire.connection_dir |= turn(k,180)
+		found_wire.connections[src] = TRUE
+		if(found_wire_old_connection_dir != found_wire.connection_dir)
+			found_wire.update_sprite()
 
 	merge_networks(possible_power_networks)
 
@@ -212,8 +237,14 @@
 		power_network = new /power_network/
 		power_network.add_wire(src)
 
+/obj/structure/interactive/wire/red
+	color = "#FF0000"
 
+/obj/structure/interactive/wire/yellow
+	color = "#FFFF00"
 
+/obj/structure/interactive/wire/green
+	color = "#00FF00"
 
 
 

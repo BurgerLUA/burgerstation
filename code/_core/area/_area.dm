@@ -46,10 +46,11 @@
 
 	var/flags_generation = FLAG_GENERATION_NONE
 
-	var/obj/structure/interactive/powered/apc/apc //The area's APC, if any.
-
 	//Power Code
+	var/no_apc = FALSE //Used for error checking.
 	var/requires_power = FALSE //Set to true if everything is this area requires power.
+
+	var/obj/structure/interactive/power/apc/apc //The area's APC, if any.
 
 	var/power_draw = 0
 
@@ -58,7 +59,7 @@
 	var/enable_power_lights = FALSE
 
 	var/list/obj/structure/interactive/door/powered_doors
-	var/list/obj/structure/interactive/powered/powered_machines
+	var/list/obj/structure/interactive/powered_machines
 	var/list/obj/structure/interactive/lighting/powered_lights
 
 	var/list/obj/structure/interactive/light_switch/light_switches
@@ -209,7 +210,7 @@
 
 	for(var/k in powered_doors)
 		var/obj/structure/interactive/door/D = k
-		if(!D.uses_power)
+		if(!D.apc_powered)
 			continue
 		D.powered = enable_power_doors
 		if(D.powered)
@@ -232,7 +233,7 @@
 	enable_power_machines = enable
 
 	for(var/k in powered_machines)
-		var/obj/structure/interactive/powered/P = k
+		var/obj/structure/interactive/P = k
 		if(P.wire_powered)
 			continue
 		P.powered = enable_power_machines

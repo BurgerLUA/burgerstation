@@ -16,7 +16,7 @@
 
 	health_base = 10
 
-	uses_power = TRUE
+	apc_powered = TRUE
 	lightswitch = TRUE
 
 /obj/structure/interactive/lighting/fixture/Generate()
