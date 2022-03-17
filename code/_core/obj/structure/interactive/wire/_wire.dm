@@ -7,30 +7,113 @@
 	var/list/connections = list() //ASSOC LIST
 	var/obj/structure/interactive/powered/connected_machine
 
+	initialize_type = INITIALIZE_LATE
+
+	color = COLOR_WHITE
+
+/obj/structure/interactive/wire/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += div("notice","It is connected to [length(connections)] other wire(s).")
+	if(connected_machine)
+		. += div("notice","It is connected to \the [connected_machine].")
+
+/obj/structure/interactive/wire/proc/find_wire_connection(var/mob/caller)
+
+	if(connected_machine)
+		caller?.to_chat(span("warning","\The [src.name] is already connected to \a [connected_machine.name]! Remove it first before adding a new connection."))
+		return FALSE
+
+	var/obj/structure/interactive/powered/found_machine
+	for(var/obj/structure/interactive/powered/P in src.loc.contents)
+		if(!P.wire_powered)
+			continue
+		found_machine = P
+		break
+
+	if(!found_machine)
+		caller?.to_chat(span("warning","There is nothing to connect \the [src.name] to!"))
+		return FALSE
+
+	connected_machine = found_machine
+	connected_machine.connected_wire = src
+
+	caller?.to_chat(span("notice","You connect \the [src.name] to \the [connected_machine.name]."))
+
+	if(power_network) power_network.add_wire(src) //This acts as an update.
+
+	update_sprite()
+
+	return TRUE
+
+/obj/structure/interactive/wire/proc/do_snap()
+	src.visible_message(span("danger","\The [src.name] snaps!"))
+	qdel(src)
+
 /obj/structure/interactive/wire/Destroy()
 
-	for(var/k in connections)
-		var/obj/structure/interactive/wire/W = connections[k]
-		W.check_new_connections()
-	connections.Cut()
-
 	if(power_network)
-		power_network.remove_wire(src)
-		power_network.remove_machine(connected_machine)
-		power_network.update_wires()
+		qdel(power_network)
+		power_network = null
 
-	power_network = null
-	connected_machine = null
+	for(var/k in connections)
+		var/obj/structure/interactive/wire/W = k
+		W.generate_4way()
+		W.refresh_network()
+
+	connections.Cut()
 
 	. = ..()
 
-/obj/structure/interactive/wire/proc/get_all_connections(var/list/existing_list = list())
+/obj/structure/interactive/wire/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	for(var/k in connections)
-		var/obj/structure/interactive/wire/W = connections[k]
-		if(existing_list[W])
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			INTERACT_CHECK
+			INTERACT_DELAY(10)
+			qdel(src)
+			return TRUE
+		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
+			INTERACT_CHECK
+			INTERACT_DELAY(10)
+			if(power_network)
+				caller.to_chat(span("notice","Network ID: \ref[power_network]."))
+				caller.to_chat(span("notice","Supply: [power_network.power_supply]w."))
+				caller.to_chat(span("notice","Draw: [power_network.power_draw]w."))
+			else
+				caller.to_chat(span("warning","No power network detected!"))
+			return TRUE
+
+	. = ..()
+
+
+/obj/structure/interactive/wire/proc/refresh_network()
+
+	if(!power_network)
+		CRASH("refresh_network() not find a valid power network!")
+
+	var/list/found_connections = get_new_connections()
+
+	for(var/k in found_connections)
+		var/obj/structure/interactive/wire/W = k
+		power_network.add_wire(W)
+
+/obj/structure/interactive/wire/proc/get_new_connections(var/list/existing_list)
+
+	set background = 1
+
+	if(!existing_list)
+		existing_list = list()
+
+	existing_list[src] = TRUE
+
+	for(var/k in connections) //Connections is an ASSOC list. wire = TRUE
+		if(existing_list[k])
 			continue
-		existing_list |= W.get_all_connections(existing_list)
+		var/obj/structure/interactive/wire/W = k
+		if(W.qdeleting)
+			continue
+		existing_list |= W.get_new_connections(existing_list)
 
 	return existing_list
 
@@ -40,9 +123,13 @@
 	icon = null
 	icon_state = null
 
-/obj/structure/interactive/wire/Finalize()
+/obj/structure/interactive/wire/Initialize()
 	. = ..()
-	check_new_connections()
+	find_wire_connection()
+
+/obj/structure/interactive/wire/PostInitialize()
+	. = ..()
+	generate_4way()
 
 /obj/structure/interactive/wire/update_overlays()
 
@@ -53,31 +140,28 @@
 	if(connection_dir in DIRECTIONS_CARDINAL)
 		icon = initial_icon
 		icon_state = "[connection_dir]"
-		desc = "Directional"
 	else if(connection_dir == 0x0)
 		icon = initial_icon
 		icon_state = "none"
-		desc = "None"
 	else
 		for(var/k in DIRECTIONS_CARDINAL)
 			if(!(connection_dir & k))
 				continue
 			var/image/I = new/image(initial_icon,"[k]")
 			add_overlay(I)
-		desc = "T-Junction"
 
 	if(connected_machine)
 		var/image/I = new/image(initial_icon,"connection")
 		add_overlay(I)
 
-	name = "wire: [dir2text(connection_dir)]"
-
-/obj/structure/interactive/wire/proc/check_new_connections()
+/obj/structure/interactive/wire/proc/generate_4way()
 
 	var/old_connection_dir = connection_dir
 
 	connections.Cut()
 	connection_dir = 0x0
+
+	var/list/possible_power_networks = list()
 
 	for(var/k in DIRECTIONS_CARDINAL)
 		var/turf/T = get_step(src,k)
@@ -86,6 +170,8 @@
 		var/obj/structure/interactive/wire/W = locate() in T.contents
 		if(!W || W.qdeleting)
 			continue
+		if(W.power_network)
+			possible_power_networks |= W.power_network
 		connection_dir |= k
 		connections[W] = TRUE
 		var/W_old_connection_dir = W.connection_dir
@@ -94,12 +180,37 @@
 		if(W_old_connection_dir != W.connection_dir)
 			W.update_sprite()
 
+	merge_networks(possible_power_networks)
+
 	if(connection_dir != old_connection_dir)
 		update_sprite()
 		return TRUE
 
 	return FALSE
 
+
+/obj/structure/interactive/wire/proc/merge_networks(var/list/possible_power_networks)
+
+	var/power_network/best_network
+	for(var/k in possible_power_networks)
+		var/power_network/PN = k
+		if(PN.qdeleting)
+			continue
+		if(!best_network || PN.id < best_network.id)
+			best_network = PN
+
+	if(best_network)
+		best_network.add_wire(src)
+		for(var/k in possible_power_networks) //Transfer the reset of the wires.
+			if(k == best_network)
+				continue
+			var/power_network/PN = k
+			for(var/j in PN.connected_wires)
+				best_network.add_wire(j)
+			qdel(PN)
+	else
+		power_network = new /power_network/
+		power_network.add_wire(src)
 
 
 

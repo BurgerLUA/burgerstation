@@ -35,23 +35,37 @@
 	. = ..()
 	var/mob/living/advanced/A = owner
 
-	var/obj/item/organ/hand/HR = A.labeled_organs[BODY_HAND_RIGHT]
-	if(HR) A.remove_organ(HR,TRUE)
-	var/obj/item/organ/hand/HL = A.labeled_organs[BODY_HAND_LEFT]
-	if(HL) A.remove_organ(HL,TRUE)
+	A.health.health_regeneration = 0
 
-	A.add_organ(/obj/item/organ/hand/zombie) //Right hand.
-	A.add_organ(/obj/item/organ/hand/zombie/left) //Left hand.
+	var/obj/item/organ/hand/HR = A.labeled_organs[BODY_HAND_RIGHT]
+	if(HR)
+		A.remove_organ(HR,TRUE)
+		A.add_organ(/obj/item/organ/hand/zombie) //Right hand.
+	var/obj/item/organ/hand/HL = A.labeled_organs[BODY_HAND_LEFT]
+	if(HL)
+		A.remove_organ(HL,TRUE)
+		A.add_organ(/obj/item/organ/hand/zombie/left) //Left hand.
 
 	A.change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	A.add_status_effect(PAINKILLER,100,-1,stealthy=TRUE)
-	A.add_status_effect(ADRENALINE,100,-1,stealthy=TRUE)
 
 	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
+	H.add_blend("zombie", desired_icon = 'icons/mob/living/advanced/hair/human_misc.dmi', desired_icon_state = "zombie", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY)
 	HOOK_ADD("on_damage_received","\ref[H]_zombie_on_damage_received",H,src,.proc/on_headshot)
 	HOOK_ADD("post_death","\ref[owner]_zombie_post_death",owner,src,.proc/post_death)
 	HOOK_ADD("attack","\ref[owner]_zombie_attack",owner,src,.proc/attack)
 	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,.proc/on_damage_received)
+	H.update_sprite()
+
+	for(var/k in A.organs)
+		var/obj/item/organ/O = k
+		if(!O.health)
+			continue
+		if(O.id == BODY_TORSO)
+			O.damage_coefficient *= 0.5
+		else if(O.id == BODY_HEAD)
+			O.damage_coefficient *= 2
+		else
+			O.damage_coefficient *= 0.1
 
 	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in A.organs
 	if(L) L.loyalty_tag = "Blob"
@@ -70,8 +84,7 @@
 		var/turf/T = get_turf(A)
 		A.client.make_ghost(T ? T : FALLBACK_TURF)
 	A.ckey_last = null
-
-	A.health.adjust_loss_smart(tox=-A.health.get_loss(TOX))
+	A.add_status_effect(ADRENALINE,100,-1,force=TRUE,stealthy=TRUE)
 
 	post_death(A)
 
@@ -121,17 +134,8 @@
 	if(!H || !H.health)
 		return FALSE
 
-	var/obj/hud/inventory/I = L.inventories_by_id[BODY_HEAD]
-	if(I)
-		var/obj/item/I2 = I.get_top_object()
-		if(!istype(I2,/obj/item/clothing/head/helmet/full/blob_spore))
-			return FALSE
-
 	var/extra_health = max(0,-L.health.health_current*1.25)
-	if(extra_health)
-		L.health_base += extra_health
-		L.health.update_health_stats()
-		L.health.update_health()
+	L.add_status_effect(UNDYING,extra_health,-1,force=TRUE,stealthy=TRUE)
 
 	if(!L.check_death())
 		L.revive()

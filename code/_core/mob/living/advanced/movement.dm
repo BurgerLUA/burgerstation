@@ -2,7 +2,6 @@
 
 	if(health && health.adjust_stamina(-1))
 		update_health_element_icons(stamina=TRUE)
-		stamina_regen_delay = max(stamina_regen_delay,30)
 
 	return ..()
 
@@ -38,7 +37,6 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	if(on && health && !health.adjust_stamina(-10))
 		update_health_element_icons(stamina=TRUE)
-		stamina_regen_delay = max(stamina_regen_delay,60)
 		return FALSE
 
 	return ..()
@@ -48,7 +46,6 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 	if(health)
 		if(health.adjust_stamina( -(2-stealth_mod)*2.5 ))
 			update_health_element_icons(stamina=TRUE)
-			stamina_regen_delay = max(stamina_regen_delay,30)
 		else
 			toggle_sneak(FALSE)
 			return FALSE

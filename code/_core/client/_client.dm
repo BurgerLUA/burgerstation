@@ -94,6 +94,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	show_popup_menus = FALSE
 
+	var/drag_last = 0
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 

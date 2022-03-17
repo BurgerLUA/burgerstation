@@ -268,6 +268,8 @@
 	var/last_move_time = 0
 	var/last_move_delay = 0
 
+	var/processing = FALSE
+
 /mob/living/Destroy()
 
 	buckled_object = null
@@ -303,7 +305,8 @@
 
 	hit_logs?.Cut()
 
-	all_living -= src
+	SSliving.all_living -= src
+	SSliving.processing_mobs -= src
 
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
@@ -445,10 +448,12 @@
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
-/mob/living/proc/dust()
-	new /obj/effect/temp/death(src.loc,30)
-	qdel(src)
-	return TRUE
+/mob/living/dust(var/atom/source)
+	if(death(TRUE))
+		new /obj/effect/temp/death(src.loc,30)
+		qdel(src)
+		return TRUE
+	return FALSE
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
@@ -515,7 +520,7 @@
 		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
 		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
 
-	all_living += src
+	SSliving.all_living += src
 
 
 /mob/living/Initialize()
@@ -589,6 +594,9 @@
 
 	return TRUE
 
+/mob/living/Login()
+	. = ..()
+	PROCESS_LIVING(src)
 
 /mob/living/Logout()
 

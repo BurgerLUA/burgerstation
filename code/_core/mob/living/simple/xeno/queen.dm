@@ -125,7 +125,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	var/obj/marker/map_node/N_end = find_closest_node(src)
 
 	if(N_end)
-		for(var/mob/living/simple/xeno/X in all_living)
+		for(var/mob/living/simple/xeno/X in SSliving.all_living)
 			CHECK_TICK(75,FPS_SERVER)
 			if(X == src)
 				continue

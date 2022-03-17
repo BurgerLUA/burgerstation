@@ -16,6 +16,7 @@
 
 	health_base = 10
 
+	uses_power = TRUE
 	lightswitch = TRUE
 
 /obj/structure/interactive/lighting/fixture/Generate()
@@ -41,9 +42,9 @@
 
 
 /obj/structure/interactive/lighting/fixture/Finalize()
+	. = ..()
 	update_atom_light()
 	update_sprite()
-	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_atom_light()
 	if(on && desired_light_range && desired_light_power && desired_light_color)

@@ -6,7 +6,7 @@
 	var/list/obj/structure/interactive/blob/node/linked_nodes = list()
 	var/current_node = 1
 
-	health_states = 0
+	health_states = 1
 
 	var/next_grow = 0
 	var/heal_amount = 10 //How much to heal as well the starting HP of new blob walls.

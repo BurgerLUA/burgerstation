@@ -10,7 +10,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	collision_dir = NORTH | EAST | SOUTH | WEST
+	collision_dir = 0x0 //Special stuff.
 
 	value = 1000
 
@@ -29,49 +29,35 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	var/charge = 0
 	var/charge_max = SECONDS_TO_DECISECONDS(600)
 
-/obj/structure/interactive/supermatter/defense
-	health_base = 3000
-	charge_max = SECONDS_TO_DECISECONDS(1200)
+	var/sound_spam = 0
+	var/display_spam = 0
 
-/obj/structure/interactive/supermatter/defense/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		if(L.loyalty_tag == "NanoTrasen")
-			return FALSE
+/obj/structure/interactive/supermatter/Crossed(var/atom/movable/O)
 
 	. = ..()
 
-/obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+	if(O.density && O.dust(src))
+		var/turf/T = get_turf(src)
+		if(sound_spam <= world.time)
+			play_sound('sound/effects/supermatter_dust.ogg',T)
+			sound_spam = world.time + 5
+			display_spam = 0
+		if(display_spam <= world.time)
+			src.visible_message(span("danger","\The [O.name] flashes in a brilliant light as the [src.name]'s energy swallows it!"))
+			display_spam = world.time + 1
 
-	if(is_living(P.owner))
-		var/mob/living/L = P.owner
-		if(L.iff_tag == "NanoTrasen")
-			return FALSE
-
-	. = ..()
-
-/obj/structure/interactive/supermatter/get_examine_list(var/mob/examiner)
-
-	. = ..()
-
-	. += div("notice","It is [FLOOR(charge,1)]/[charge_max]([FLOOR(100*(charge/charge_max),1)]%) charged.")
-
+/obj/structure/interactive/supermatter/station
+	health = null
+	charge_max = 0
 
 /obj/structure/interactive/supermatter/proc/add_charge(var/charge_amount=0)
+	if(charge_max <= 0)
+		return FALSE
 	charge += charge_amount
 	if(charge >= charge_max)
 		src.visible_message(span("notice","\The [src.name] disappears in a vibrant flash!"))
 		qdel(src)
 	return TRUE
-
-/obj/structure/interactive/supermatter/New(var/desired_loc)
-	known_supermatters += src
-	return ..()
-
-/obj/structure/interactive/supermatter/Destroy()
-	known_supermatters -= src
-	return ..()
 
 /obj/structure/interactive/supermatter/on_destruction(var/mob/caller,var/damage = FALSE)
 	charge = 0
@@ -104,10 +90,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 			trigger_warning()
 		update_map_text()
 
-
-/obj/structure/interactive/supermatter/unanchored
-	anchored = FALSE
-
 /obj/structure/interactive/supermatter/proc/trigger_warning()
 	var/health_percent = health.health_current/health.health_max
 	var/message = "Warning: Supermatter Crystal at [FLOOR(health_percent*100,1)]% integrity."
@@ -118,3 +100,37 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	last_warning_percent = health_percent
 	last_warning_time = world.time
 	return TRUE
+
+
+
+/obj/structure/interactive/supermatter/defense
+	health_base = 3000
+	charge_max = SECONDS_TO_DECISECONDS(1200)
+
+/obj/structure/interactive/supermatter/defense/New(var/desired_loc)
+	known_supermatters += src
+	return ..()
+
+/obj/structure/interactive/supermatter/defense/Destroy()
+	known_supermatters -= src
+	return ..()
+
+/obj/structure/interactive/supermatter/defense/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.loyalty_tag == "NanoTrasen")
+			return FALSE
+	. = ..()
+
+/obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	if(is_living(P.owner))
+		var/mob/living/L = P.owner
+		if(L.iff_tag == "NanoTrasen")
+			return FALSE
+	. = ..()
+
+/obj/structure/interactive/supermatter/defense/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += div("notice","It is [FLOOR(charge,1)]/[charge_max]([FLOOR(100*(charge/charge_max),1)]%) charged.")

@@ -90,14 +90,14 @@
 
 /loot/weapon/rifle/civ_carbine
 	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/bullpup_sol,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/bullpup_sol,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,
 	)
 
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine = 1,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/bullpup_sol = 1,
 		/obj/item/magazine/rifle_556 = 4,
 	)
 	loot_count = 6

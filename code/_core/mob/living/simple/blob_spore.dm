@@ -2,7 +2,7 @@
 
 	name = "blob spore"
 	desc = "Get out of my head!"
-	desc_extended = "A fast-moving fragile and explosive spore of a blob designed to latch onto sapience beings and take control of them. Full control is granted when the victim succumbs to death."
+	desc_extended = "A fast-moving fragile and volatile spore of a blob designed to latch onto a sapience being's head and inject mind-controlling spores. Full control is granted when the victim succumbs to death."
 	icon = 'icons/mob/living/simple/blob.dmi'
 	icon_state = "blobpod"
 
@@ -45,11 +45,16 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 10
-
-	var/exploded = FALSE
+	level = 4
 
 	reagents = /reagent_container/blob
+
+	var/idle = FALSE
+
+/mob/living/simple/blob_spore/post_move(var/atom/old_loc)
+	if(idle)
+		idle = FALSE
+		icon_state = initial(icon_state)
 
 /mob/living/simple/blob_spore/post_death()
 

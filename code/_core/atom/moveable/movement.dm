@@ -211,6 +211,8 @@
 			if(M.density && !M.Uncross(src,NewLoc))
 				return FALSE
 
+	//No going back. We're moving.
+
 	//Do: Enter the turf.
 	if(src.density) NewLoc.Entered(src,OldLoc)
 

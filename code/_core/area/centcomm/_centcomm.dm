@@ -24,6 +24,8 @@
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
+	dynamic_lighting = TRUE
+
 /area/centcomm/chargen
 	name = "Chargen Area"
 	area_identifier = "Character Generation"

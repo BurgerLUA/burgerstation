@@ -30,15 +30,18 @@
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(var/mob/caller,var/messsage=TRUE)
-	if(messsage) caller.visible_message(span("notice","\The [caller.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
-	var/turf/T = get_turf(caller)
+	if(messsage && caller) caller.visible_message(span("notice","\The [caller.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
+	var/turf/T = get_turf(caller ? caller : src)
 	if(T)
 		var/mob/living/simple/blob_spore/BS = new(T)
 		INITIALIZE(BS)
 		GENERATE(BS)
 		FINALIZE(BS)
-		BS.ai.set_objective(caller)
-		BS.add_status_effect(STUN,30,30) //So it doesn't latch immediately after being removed.
+		if(caller)
+			BS.ai.set_objective(caller)
+		else
+			BS.ai.set_active(TRUE)
+		BS.add_status_effect(STUN,30,30,stealthy=TRUE) //So it doesn't latch immediately after being removed.
 	qdel(src)
 	return TRUE
 
@@ -49,22 +52,32 @@
 
 /obj/item/clothing/head/helmet/full/blob_spore/think()
 
-	if(inert)
-		return FALSE
-
 	if(!is_inventory(src.loc))
+		remove_blob()
 		return FALSE
 
 	var/obj/hud/inventory/I = src.loc
 
 	if(!is_advanced(I.owner) || !is_organ(I.loc))
+		remove_blob()
 		return FALSE
 
 	var/mob/living/advanced/A = I.owner
 	var/obj/item/organ/O = I.loc
 
-	if(A.has_status_effect(ZOMBIE))
+	if(O.id != BODY_HEAD)
+		remove_blob()
 		return FALSE
+
+	if(A.has_status_effect(ZOMBIE))
+		remove_blob()
+		return FALSE
+
+	if(inert)
+		if(next_feed <= world.time)
+			A.add_status_effect(ZOMBIE,100,-1)
+			remove_blob()
+		return TRUE
 
 	if(next_feed <= world.time)
 		var/turf/T = get_turf(src)
@@ -79,17 +92,14 @@
 
 	if(A.ai && !A.is_busy() && prob(25))
 		click_self(A)
-		return TRUE
 
 	. = ..()
 
 	if(A.dead)
-		if(O.id == BODY_HEAD)
-			A.add_status_effect(ZOMBIE,100,-1)
-			inert = TRUE
-		else
-			remove_blob(A,FALSE)
-		return FALSE
+		inert = TRUE
+		next_feed = world.time + SECONDS_TO_DECISECONDS(10)
+
+
 
 /obj/item/clothing/head/helmet/full/blob_spore/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 

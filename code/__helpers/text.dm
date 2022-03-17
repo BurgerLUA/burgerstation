@@ -49,9 +49,14 @@
 
 	input = sanitize(input,max_length)
 
-	if(caller && SSbadwords.has_badword(input))
-		caller.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
-		return FALSE
+	if(caller)
+		if(forbidden_characters && forbidden_characters.Find(input)) //Буквально 1984
+			if(SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"])
+				caller.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"]))
+			return FALSE
+		if(SSbadwords.has_badword(input))
+			caller.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
+			return FALSE
 
 	return input
 

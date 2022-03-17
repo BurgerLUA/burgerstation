@@ -13,6 +13,9 @@
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
 	var/next_shoot_time = 0
 
+	var/recoil_delay = 0 //As a factor. Lower values mean slower kicks, higher values mean faster kicks.
+	var/queued_recoil = 0
+
 	var/ranged_damage_type
 	var/projectile_speed = TILE_SIZE - 1 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
@@ -30,11 +33,6 @@
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
 	var/heat_to_remove = 0.01 //Heat to remove per decisecond.
-	var/heat_power = 1 //Heat converted into accuracy. See: https://www.desmos.com/calculator/r7tq4ovdcz
-	//Note for heat power:
-	//Higher values start low and then ramp up at the end. Lower values ramp up quickly but stay consistant.
-	//Precise weapons should have a lower value while inprecise weapons should have a higher value.
-
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
@@ -89,7 +87,7 @@
 
 
 /obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
-	if(!length(firemodes))
+	if(length(firemodes) <= 1)
 		return FALSE
 	current_firemode++
 	if(current_firemode > length(firemodes))
@@ -114,7 +112,7 @@
 /obj/item/weapon/ranged/get_examine_list(var/mob/examiner)
 	. = ..()
 
-	if(length(firemodes))
+	if(length(firemodes) > 1)
 		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
@@ -257,13 +255,14 @@
 	return heat_current
 
 /obj/item/weapon/ranged/proc/get_static_spread()
-	return 0.025
+	return 0.01
 
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L)
-	return 0.025 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return 0.01 - (0.02 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
-	if(L.next_move < 0)
+
+	if(L.next_move <= 0)
 		return 0
 
 	. = movement_spread_base
@@ -311,12 +310,17 @@
 
 /obj/item/weapon/ranged/think()
 
+	if(recoil_delay > 0 && queued_recoil > 0)
+		var/heat_to_add = CEILING(queued_recoil*recoil_delay,0.001)
+		heat_current = min(heat_max,heat_current + heat_to_add)
+		queued_recoil = max(0,queued_recoil - heat_to_add)
+
 	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
 		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
 
-	return . && heat_current > 0
+	return . && (heat_current > 0 || (recoil_delay > 0 && queued_recoil > 0))
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -459,7 +463,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(wielded)
 		arm_strength *= 3
 
-	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.003*bullet_count_to_use
+	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use
 	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
 
 	if(projectile_to_use)
@@ -565,7 +569,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	next_shoot_time = world.time + shoot_delay_to_use
 	if(heat_max)
-		heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
+		if(recoil_delay > 0)
+			queued_recoil = heat_per_shot_to_use
+		else
+			heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
 		start_thinking(src)
 
 	if(is_advanced(caller))
@@ -613,7 +620,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 						current_bursts = 0
 				else
-					log_error("Warning: [caller] tried shooting in an inavlid turf: [desired_x],[desired_y],[caller.z].")
+					log_error("Warning: [caller] tried shooting in an invalid turf: [desired_x],[desired_y],[caller.z].")
 			else if(max_bursts_to_use > 0)
 				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 				current_bursts = 0
@@ -726,7 +733,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	. = inaccuracy_modifier
 
-	if(L.next_move >= 0)
+	if(L.next_move > 0)
 		. += movement_inaccuracy_modifier
 
 	if(. <= 0)

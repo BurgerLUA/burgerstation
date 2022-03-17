@@ -22,6 +22,8 @@
 
 	has_quick_function = TRUE
 
+	value = 0
+
 /obj/item/container/simple/beaker/Finalize()
 	. = ..()
 	update_sprite()

@@ -1,5 +1,6 @@
 /area/dungeon/
 	area_identifier = "Mission"
+	dynamic_lighting = TRUE
 
 /area/dungeon/z_00
 	name = "\improper Level 0 - Surface Above"

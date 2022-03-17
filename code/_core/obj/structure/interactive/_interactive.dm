@@ -55,14 +55,28 @@ obj/structure/interactive/proc/do_repair(var/mob/living/advanced/caller,var/obj/
 obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 
+	if(is_item(object))
+		var/obj/item/I = object
 
-	if(repair_flag && is_item(object) && is_advanced(caller) && can_repair(caller,object))
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		INTERACT_DELAY(5)
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_repair,caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_repair,caller,object)
-		return TRUE
+		if(repair_flag && is_advanced(caller) && can_repair(caller,I))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_repair,caller,object)
+			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_repair,caller,object)
+			return TRUE
+
+		var/obj/item/I2 = src.check_interactables(caller,src,location,control,params)
+		if(I2)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			I2.drop_item(get_turf(caller))
+			caller.to_chat(span("notice","You successfully remove \the [I2.name] from \the [I.name] with \the [src.name]."))
+			return TRUE
+
+
+
 
 	return ..()
 

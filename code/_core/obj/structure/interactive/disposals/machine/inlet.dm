@@ -9,8 +9,6 @@
 
 	collision_dir = 0x0
 
-	plane = PLANE_OBJ
-
 	bullet_block_chance = 50
 
 	density = TRUE

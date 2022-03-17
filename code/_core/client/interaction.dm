@@ -94,6 +94,8 @@
 		examine(object)
 		return TRUE
 
+	drag_last = world.time
+
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_down(object,location,control,new_params)
 
@@ -165,6 +167,9 @@
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
+		return FALSE
+
+	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
 
 	var/click_flags = get_click_flags(new_params,TRUE)

@@ -76,3 +76,13 @@
 	trim_color = COLOR_GOLD
 	pattern_icon_state = "p3"
 	pattern_color = "#AE4600"
+
+
+/obj/structure/carpet/command
+	name = "commanding carpet"
+	color = COLOR_COMMAND
+
+	trim_icon_state = "t1"
+	trim_color = COLOR_GOLD
+	pattern_icon_state = "p3"
+	pattern_color = COLOR_BLUE
