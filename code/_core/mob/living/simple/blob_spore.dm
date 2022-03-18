@@ -15,18 +15,7 @@
 	ai = /ai/blob_spore
 
 	damage_type = /damagetype/npc/blob_spore
-	armor_base = list(
-		BLUNT = 0,
-		LASER = -40,
-		HEAT = -40,
-		COLD = 40,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/blob/spore
 
 	size = SIZE_ANIMAL
 

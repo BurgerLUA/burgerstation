@@ -15,15 +15,7 @@
 
 	damage_type = /damagetype/unarmed/claw/
 
-	armor_base = list(
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = -20,
-		ARCANE = 20,
-		HOLY = 40,
-		DARK = 40,
-		ION = INFINITY
-	)
+	armor = /armor/demon
 
 	size = SIZE_LARGE
 

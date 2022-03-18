@@ -25,17 +25,7 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 80,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/colossus
 
 	status_immune = list(
 		STUN = TRUE,

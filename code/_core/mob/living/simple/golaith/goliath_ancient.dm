@@ -11,23 +11,7 @@
 
 	health_base = 400
 
-	armor_base = list(
-		BLADE = 75,
-		BLUNT = 90,
-		PIERCE = 90,
-		LASER = 90,
-		ARCANE = 50,
-		HEAT = 100,
-		COLD = 100,
-		BOMB = 25,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/goliath
 
 	size = SIZE_GIANT
 

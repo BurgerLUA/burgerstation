@@ -13,9 +13,7 @@
 
 	damage_type = /damagetype/unarmed/claw
 
-	armor_base = list(
-		ION = INFINITY
-	)
+	armor = /armor/default_organic
 
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"

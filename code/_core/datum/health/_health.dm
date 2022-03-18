@@ -20,41 +20,7 @@
 
 	var/list/resistance = list() //How much to multiply damage
 
-	/* TEMPLATE
-	var/list/resistance = list(
-		BRUTE = 1,
-		BURN = 1,
-		TOX = 1,
-		OXY = 1,
-		FATIGUE = 1,
-		PAIN=1,
-		RAD=1,
-		SANITY=1,
-		MENTAL=1
-	)
-	*/
-
-	/* TEMPLATE
-	var/list/armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		PAIN = 0,
-		SANITY = 0
-	)
-	*/
-
-	var/list/armor_base = list()
+	var/armor/armor
 
 	var/organic = FALSE
 
@@ -153,7 +119,10 @@
 	return TRUE
 
 /health/proc/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
-	return armor_base.Copy()
+	var/armor/A = ARMOR(armor)
+	if(!A)
+		return list()
+	return A.defense_rating.Copy()
 
 /health/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current

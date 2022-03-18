@@ -22,18 +22,7 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 80,
-		BLUNT = 80,
-		LASER = 80,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = 80,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/default_organic/tough
 
 	status_immune = list(
 		STUN = TRUE,

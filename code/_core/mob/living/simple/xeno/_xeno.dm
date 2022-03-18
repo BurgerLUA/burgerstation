@@ -34,6 +34,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	armor = /armor/xeno
+
 	level = 20
 
 /mob/living/simple/xeno/get_emote_sound(var/emote_id)

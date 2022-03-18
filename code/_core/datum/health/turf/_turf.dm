@@ -8,7 +8,7 @@
 		if(T.material_id)
 			var/material/M = SSmaterials.all_materials[T.material_id]
 			if(M && M.armor)
-				armor_base = M.armor.Copy()
+				armor = M.armor
 
 	return ..()
 

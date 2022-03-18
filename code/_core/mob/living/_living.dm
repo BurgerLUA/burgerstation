@@ -106,24 +106,7 @@
 	var/last_flavor = ""
 	var/last_flavor_time = 0
 
-	var/list/armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0,
-		SANITY = 0
-	)
+	var/armor/armor
 
 	var/list/mob_value
 
@@ -541,7 +524,7 @@
 /mob/living/PostInitialize()
 	. = ..()
 	if(health)
-		health.armor_base = armor_base
+		health.armor = armor
 	if(ai)
 		INITIALIZE(ai)
 	set_loyalty_tag(loyalty_tag,TRUE)

@@ -29,16 +29,7 @@
 		/obj/item/container/edible/dynamic/fish/raw_carp
 	)
 
-	armor_base = list(
-		BLADE = 40,
-		HEAT = 100,
-		COLD = 100,
-		BIO = 100,
-		RAD = INFINITY,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/carp/shark
 
 	stun_angle = 180
 

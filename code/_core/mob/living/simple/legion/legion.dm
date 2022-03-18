@@ -9,7 +9,7 @@
 
 	ai = /ai/legion
 
-	health_base = 200
+	health_base = 100
 	stamina_base = 200
 	mana_base = 200
 
@@ -35,20 +35,7 @@
 
 	blood_type = null
 
-	armor_base = list(
-		LASER = 80,
-		ARCANE = 80,
-		HEAT = 80,
-		COLD = 80,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -40,
-		DARK = 40,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/legion
 
 	soul_size = null
 
@@ -132,25 +119,7 @@
 
 	stun_angle = 0
 
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -50,
-		ARCANE = 100,
-		HEAT = -200,
-		COLD = INFINITY,
-		BOMB = -50,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -50,
-		DARK = 200,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
-
-
+	armor = /armor/legion/snow
 
 	size = SIZE_LARGE
 

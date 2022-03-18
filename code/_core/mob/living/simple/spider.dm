@@ -23,15 +23,7 @@
 		/obj/item/container/edible/dynamic/meat/raw_spider/
 	)
 
-	armor_base = list(
-		HEAT = -20,
-		COLD = 20,
-		BIO = 80,
-		RAD = 40,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/insect
 
 	size = SIZE_LARGE
 
@@ -55,24 +47,6 @@
 	name = "glowspider"
 	icon_state = "nurse"
 
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = -25,
-		BOMB = 0,
-		BIO = INFINITY,
-		RAD = 25,
-		HOLY = 75,
-		DARK = 50,
-		FATIGUE = 25,
-		ION = INFINITY,
-		PAIN = 25
-	)
-
 	level = 18
 
 /mob/living/simple/spider/desert/Initialize()
@@ -82,24 +56,6 @@
 /mob/living/simple/spider/twilight
 	name = "twilight spider"
 	icon_state = "hunter"
-
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = -25,
-		BOMB = 0,
-		BIO = 75,
-		RAD = 25,
-		HOLY = 25,
-		DARK = 100,
-		FATIGUE = 25,
-		ION = INFINITY,
-		PAIN = 25
-	)
 
 	level = 20
 

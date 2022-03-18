@@ -17,20 +17,7 @@
 
 	level = 4
 
-	armor_base = list(
-		LASER = -30,
-		ARCANE = 50,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -40,
-		PAIN = INFINITY
-	)
+	armor = /armor/borg
 
 	var/ranged = FALSE
 	var/mob/living/simple/swarmer/console/parent_console
@@ -120,23 +107,6 @@
 	level = 8
 
 	damage_type = /damagetype/unarmed/
-	armor_base = list(
-		PIERCE = 30,
-		BLADE = 30,
-		BLUNT = 50,
-		LASER = 30,
-		ARCANE = 70,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = -20, //a well placed grenade will one shot it
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -40,
-		PAIN = INFINITY
-	)
 
 	anchored = TRUE
 

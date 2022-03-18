@@ -14,19 +14,6 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	value = 2000
 
-	armor_base = list(
-		BLADE = 10,
-		BLUNT = 60,
-		PIERCE = 60,
-		HEAT = 10,
-		COLD = 80,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
-
 	status_immune = list(
 		STUN = TRUE,
 		SLEEP = TRUE,

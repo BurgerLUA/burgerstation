@@ -24,18 +24,7 @@
 
 	value = 100
 
-	armor_base = list(
-		BLADE = -20,
-		BLUNT = 80,
-		LASER = -20,
-		HEAT = 60,
-		COLD = -60,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/slime
 
 	size = SIZE_ANIMAL
 

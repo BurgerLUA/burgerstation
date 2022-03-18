@@ -26,23 +26,7 @@
 
 	value = 500
 
-	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -100,
-		PAIN = INFINITY
-	)
+	armor = /armor/borg
 
 	class = /class/mech
 

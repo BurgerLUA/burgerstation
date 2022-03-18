@@ -27,18 +27,7 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		LASER = 80,
-		HEAT = 20,
-		COLD = 10,
-		HOLY = -20,
-		DARK = 60,
-		FATIGUE = 60,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/bubblegum
 
 	status_immune = list(
 		STUN = TRUE,

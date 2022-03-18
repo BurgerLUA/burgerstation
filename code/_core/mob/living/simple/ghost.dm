@@ -22,23 +22,7 @@
 	iff_tag = "Ghost"
 	loyalty_tag = "Ghost"
 
-	armor_base = list(
-		BLADE = INFINITY,
-		BLUNT = INFINITY,
-		PIERCE = INFINITY,
-		LASER = INFINITY,
-		ARCANE = INFINITY,
-		HEAT = INFINITY,
-		COLD = INFINITY,
-		BOMB = INFINITY,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = 0,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/ghost
 
 	status_immune = list(
 		STUN = TRUE,

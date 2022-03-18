@@ -11,11 +11,6 @@
 	mana_base = 100
 	stamina_base = 100
 
-	armor_base = list(
-		HOLY = 60,
-		DARK = -60
-	)
-
 	level = 40
 
 /mob/living/advanced/npc/clockwork_cultist/Initialize()

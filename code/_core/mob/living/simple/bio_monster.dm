@@ -15,18 +15,7 @@
 
 	damage_type = /damagetype/npc/bio_monster
 
-	armor_base = list(
-		BLUNT = 40,
-		LASER = -40,
-		HEAT = -40,
-		COLD = 40,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/blob
 
 	size = SIZE_LARGE
 

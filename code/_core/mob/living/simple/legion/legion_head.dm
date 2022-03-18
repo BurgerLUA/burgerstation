@@ -26,20 +26,7 @@
 
 	blood_type = null
 
-	armor_base = list(
-		LASER = 80,
-		ARCANE = 80,
-		HEAT = 80,
-		COLD = 80,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -40,
-		DARK = 40,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/legion
 
 	soul_size = null
 

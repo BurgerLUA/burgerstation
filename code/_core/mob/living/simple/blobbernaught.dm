@@ -16,18 +16,7 @@
 
 	damage_type = /damagetype/npc/blobbernaut
 
-	armor_base = list(
-		BLUNT = 40,
-		LASER = -40,
-		HEAT = -40,
-		COLD = 40,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/blob/armored
 
 	size = SIZE_LARGE
 

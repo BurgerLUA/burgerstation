@@ -13,9 +13,7 @@
 
 	health_base = 10000
 
-	armor_base = list(
-		ION = INFINITY
-	)
+	armor = /armor/default_organic
 
 	boss_loot = /loot/lavaland/hierophant
 

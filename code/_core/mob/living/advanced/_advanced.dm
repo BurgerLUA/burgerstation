@@ -70,27 +70,6 @@
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs
 
-	armor_base = list()
-
-	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		ION = 0,
-		PAIN = 0,
-		SANITY = 0
-	)
-
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 

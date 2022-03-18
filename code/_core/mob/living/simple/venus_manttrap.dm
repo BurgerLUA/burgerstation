@@ -15,19 +15,7 @@
 
 	value = 50
 
-	armor_base = list(
-		BLADE = -20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 40,
-		HEAT = -60,
-		COLD = -20,
-		BIO = -80,
-		RAD = 60,
-		FATIGUE = 60,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/plant
 
 	iff_tag = "Jungle"
 	loyalty_tag = "Jungle"

@@ -25,16 +25,7 @@
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	armor_base = list(
-		BLADE = 40,
-		HEAT = 100,
-		COLD = 100,
-		BIO = 100,
-		RAD = INFINITY,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/carp/shark
 
 	size = SIZE_LARGE
 
