@@ -141,7 +141,7 @@
 
 
 
-/mob/living/simple/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
+/mob/living/simple/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty)
 
 	if(!can_leap)
 		return ..()

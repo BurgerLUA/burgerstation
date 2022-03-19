@@ -29,8 +29,6 @@
 				A.force_move(current_loc)
 			animate_hit(A)
 			A.on_thrown(owner,hit_atom,hit_wall)
-			world.log << "YEET"
-
 /obj/projectile/thrown/Destroy()
 
 	for(var/k in src.contents)
@@ -42,7 +40,6 @@
 			A.force_move(previous_loc)
 		animate_hit(A)
 		A.on_thrown(owner,null,current_loc)
-		world.log << "OKAY"
 
 	. = ..()
 

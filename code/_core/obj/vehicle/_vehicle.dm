@@ -160,9 +160,8 @@
 	if(is_hud(object))
 		return ..()
 
-	if(!params || !length(params))
-		params["right"] = rand(0,1)
-		params["left"] = rand(0,1)
+	if(!length(params))
+		params = list("right" = rand(0,1), "left" = rand(0,1))
 
 	if(params["left"])
 		if(length(equipment) >= 1)

@@ -214,7 +214,7 @@
 /atom/get_log_name()
 	return "[src.name]([src.type])([x],[y],[z])</a>"
 
-/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod = 1)
+/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod=1)
 	return 0
 
 

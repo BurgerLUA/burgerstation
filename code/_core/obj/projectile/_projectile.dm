@@ -83,7 +83,7 @@
 	SSprojectiles.all_projectiles -= src
 	. = ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+/obj/projectile/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
 
 	if(!desired_owner)
 		log_error("WARNING: PROJECTILE [src.get_debug_name()] DID NOT HAVE AN OWNER!")
@@ -183,15 +183,15 @@
 		qdel(src)
 		return TRUE
 
+	if(penetrations_left < 0)
+		qdel(src)
+		return TRUE
+
 	steps_current += 1
 
 	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
 	for(var/k in collide_with)
 		on_projectile_hit(k)
-
-	if(penetrations_left < 0)
-		qdel(src)
-		return TRUE
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc)
@@ -263,8 +263,8 @@
 			return TRUE
 
 		var/list/params = list()
-		params[PARAM_ICON_X] = shoot_x
-		params[PARAM_ICON_Y] = shoot_y
+		params[PARAM_ICON_X] = num2text(shoot_x)
+		params[PARAM_ICON_Y] = num2text(shoot_y)
 
 		var/precise = FALSE
 		if(is_living(hit_atom))
@@ -275,7 +275,7 @@
 		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
 
 		if(!object_to_damage)
-			DT.perform_miss(owner,hit_atom,weapon)
+			DT.perform_miss(null,hit_atom,weapon)
 			return FALSE
 
 		if(DT.falloff > 0)
@@ -296,15 +296,10 @@
 
 	return TRUE
 
-/obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
-
-	. = inaccuracy_modifier
-
+/obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1)
+	if(inaccuracy_modifier <= 0)
+		return 0
 	if(is_living(source))
 		var/mob/living/L = source
-		if(L.ai)
-			. *= max(1,get_dist(start_turf,target)/VIEW_RANGE)
-		if(target_atom)
-			. *= max(1,get_dist(target_atom,target)/(VIEW_RANGE*0.5))
-
-	. *= 10
+		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
+	return 0

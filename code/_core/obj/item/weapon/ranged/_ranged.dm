@@ -468,14 +468,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	if(projectile_to_use)
 
-		if(!params || !length(params))
-			params = list()
-
-		if(!params[PARAM_ICON_X])
-			params[PARAM_ICON_X] = rand(0,32)
-
-		if(!params[PARAM_ICON_Y])
-			params[PARAM_ICON_Y] = rand(0,32)
+		if(!length(params))
+			params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
 
 		var/icon_pos_x = text2num(params[PARAM_ICON_X])
 		var/icon_pos_y = text2num(params[PARAM_ICON_Y])

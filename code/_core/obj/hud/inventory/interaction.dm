@@ -80,8 +80,9 @@
 				grabbed_object.Move(get_turf(caller)) //Anti-offset
 				release_object(caller)
 
+			var/list/target_cords = L.get_current_target_cords(params)
 			//Throwing it
-			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(params[target_cords[1]]),text2num(params[target_cords[2]]),vel_x,vel_y,steps_allowed = VIEW_RANGE,steps_allowed = VIEW_RANGE,desired_loyalty = L.loyalty_tag)
 
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))

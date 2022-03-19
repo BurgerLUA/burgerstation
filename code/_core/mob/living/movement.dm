@@ -220,13 +220,11 @@
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
 
-	if(has_status_effects(STUN,STAGGER,PARALYZE))
-		return ..()
-
-	if(hit_wall)
-		add_status_effect(STUN,5,5,source = owner)
-	else
-		add_status_effect(STAGGER,2,2,source = owner)
+	if(!has_status_effects(STUN,STAGGER,PARALYZE))
+		if(hit_wall)
+			add_status_effect(STUN,10,10,source = owner)
+		else
+			add_status_effect(STAGGER,5,5,source = owner)
 
 	return ..()
 
@@ -245,7 +243,7 @@
 
 	return TRUE
 
-/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
+/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty)
 
 	if(buckled_object)
 		return null

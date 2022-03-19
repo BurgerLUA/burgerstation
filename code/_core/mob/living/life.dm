@@ -292,9 +292,9 @@
 		if(health.stamina_current < health.stamina_max)
 			desired_heartrate += (1 - health.stamina_current/health.stamina_max)*60
 			desired_heartrate += 20
-		if(abs(desired_heartrate - 80) >= 20)
+		if(abs(desired_heartrate - 60) > 30)
 			play_sound('sound/effects/heartbeat_single.ogg',src,pitch=0.5 + (60/desired_heartrate)*0.5)
-		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600))
+		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
 
 
 	return TRUE

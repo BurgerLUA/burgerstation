@@ -332,7 +332,7 @@
 /mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
-		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
+		params = list(PARAM_ICON_X = 16,PARAM_ICON_Y = 16)
 
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])

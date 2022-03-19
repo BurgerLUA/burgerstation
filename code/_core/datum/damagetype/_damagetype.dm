@@ -697,6 +697,9 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	if(!attacker)
+		return 0
+
 	var/attack_delay = get_attack_delay(attacker)
 
 	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
