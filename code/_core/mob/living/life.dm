@@ -283,6 +283,20 @@
 
 	handle_status_effects(LIFE_TICK_FAST)
 
+	if(client && !dead && health && next_heartbeat <= world.time)
+		var/desired_heartrate = 60
+		if(has_status_effect(ADRENALINE))
+			desired_heartrate += 40
+		if(health.health_current <= 0)
+			desired_heartrate += (health.health_current/health.health_max)*60 //This will be negative
+		if(health.stamina_current < health.stamina_max)
+			desired_heartrate += (1 - health.stamina_current/health.stamina_max)*60
+			desired_heartrate += 20
+		if(abs(desired_heartrate - 80) >= 20)
+			play_sound('sound/effects/heartbeat_single.ogg',src,pitch=0.5 + (60/desired_heartrate)*0.5)
+		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600))
+
+
 	return TRUE
 
 mob/living/proc/on_life_slow()
@@ -451,32 +465,32 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_health())
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
-			health.health_max*0.1,
+			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
-			health.health_max*0.1,
+			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
-			health.health_max*0.1,
+			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		var/pain_to_regen = clamp(
 			pain_regen_buffer,
-			health.health_max*0.1,
+			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
-			health.health_max*0.1,
+			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
-			health.health_max*0.1,
+			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		update_health = health.adjust_loss_smart(
@@ -498,7 +512,7 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_stamina())
 		var/stamina_to_regen = clamp(
 			stamina_regen_buffer,
-			health.stamina_max*0.1,
+			-health.stamina_max*0.1,
 			max(health.stamina_regeneration*2,2)
 		)
 		health.adjust_stamina(stamina_to_regen)
@@ -508,7 +522,7 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_mana())
 		var/mana_to_regen = clamp(
 			mana_regen_buffer,
-			health.mana_max*0.1,
+			-health.mana_max*0.1,
 			max(health.mana_regeneration*2,2)
 		)
 		health.adjust_mana(mana_to_regen)

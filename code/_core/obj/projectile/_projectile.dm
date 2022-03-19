@@ -222,7 +222,7 @@
 		last_loc_x = current_loc_x
 		last_loc_y = current_loc_y
 
-	if(!start_time)
+	if(!start_time) //First time running.
 		var/matrix/M = get_base_transform()
 		var/new_angle = -ATAN2(vel_x,vel_y) + 90
 		M.Turn(new_angle)
@@ -231,11 +231,10 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-
 	var/rounded_x = CEILING(pixel_x_float,1)
 	var/rounded_y = CEILING(pixel_y_float,1)
 
-	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough to animate.
+	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough change to animate.
 		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
 			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
 		else

@@ -253,6 +253,8 @@
 
 	var/processing = FALSE
 
+	var/next_heartbeat = 0
+
 /mob/living/Destroy()
 
 	buckled_object = null
