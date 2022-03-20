@@ -82,7 +82,7 @@
 
 			var/list/target_cords = L.get_current_target_cords(params)
 			//Throwing it
-			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(params[target_cords[1]]),text2num(params[target_cords[2]]),vel_x,vel_y,steps_allowed = VIEW_RANGE,steps_allowed = VIEW_RANGE,desired_loyalty = L.loyalty_tag)
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(target_cords[1]),text2num(target_cords[2]),vel_x,vel_y,steps_allowed = VIEW_RANGE,steps_allowed = VIEW_RANGE,desired_loyalty = L.loyalty_tag)
 
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))
