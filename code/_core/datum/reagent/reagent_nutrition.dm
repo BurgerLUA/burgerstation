@@ -102,7 +102,7 @@
 				owner.tox_regen_buffer += amount_to_heal
 
 		if(owner.health && nutrition_amount + hydration_amount != 0)
-			owner.health.adjust_stamina( (nutrition_amount + hydration_amount) * .)
+			owner.stamina_regen_buffer += (nutrition_amount + hydration_amount) * .
 
 /reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

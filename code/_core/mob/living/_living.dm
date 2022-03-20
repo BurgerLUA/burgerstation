@@ -55,6 +55,7 @@
 	var/pain_regen_buffer = 0
 	var/rad_regen_buffer = 0
 	var/sanity_regen_buffer = 0
+	var/mental_regen_buffer = 0
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0
 

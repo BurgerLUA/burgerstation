@@ -44,8 +44,9 @@
 	if(!A.health)
 		return ..()
 
-	A.health.adjust_stamina(-cost_stamina)
-	A.update_health_element_icons(stamina=TRUE)
+
+	if(A.health.adjust_stamina(-cost_stamina))
+		A.update_health_element_icons(stamina=TRUE)
 
 	return null
 

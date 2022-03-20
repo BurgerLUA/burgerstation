@@ -95,7 +95,7 @@
 		GENERATE(stored_corpse)
 		FINALIZE(stored_corpse)
 		stored_corpse.death()
-		if(stored_corpse.health) stored_corpse.health.adjust_loss_smart(brute=100,burn=100)
+		if(stored_corpse.health) stored_corpse.health.adjust_loss_smart(brute=rand(100,200),burn=rand(100,200))
 
 	return ..()
 

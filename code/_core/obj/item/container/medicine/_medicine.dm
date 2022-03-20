@@ -73,20 +73,17 @@
 	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_loss(BURN)*heal_multiplier)
 
 	if(brute_to_heal || burn_to_heal)
-		. += A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal)
+		. += A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal,robotic=robotic,organic=!robotic)
 
 	if(.)
 		if(is_organ(A) && is_living(A.loc))
 			var/mob/living/L = A.loc
-			A.health.update_health()
-			L.queue_health_update = TRUE
 			if(is_player(caller) && caller.client)
 				var/mob/living/advanced/player/P = caller
 				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
 					var/experience_gain = -.*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
-		else
-			A.health.update_health()
+		A.health.update_health()
 
 	var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)

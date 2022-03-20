@@ -9,6 +9,8 @@
 	var/list/addictions = list()
 	var/list/withdrawal = list()
 
+	health = /health/obj/item/organ
+
 	has_life = TRUE
 
 /obj/item/organ/internal/brain/on_life()
@@ -38,3 +40,4 @@
 
 /obj/item/organ/internal/brain/robotic
 	name = "robotic brain"
+	health = /health/obj/item/organ/synthetic

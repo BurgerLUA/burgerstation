@@ -132,13 +132,13 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*2)
+		owner.stamina_regen_buffer += .*2
 
 /reagent/medicine/stamina_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*3)
+		owner.stamina_regen_buffer += .*3
 
 /reagent/medicine/mana_potion
 	name = "Mana Juice"
@@ -162,13 +162,13 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*2)
+		owner.mana_regen_buffer += .*2
 
 /reagent/medicine/mana_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*3)
+		owner.mana_regen_buffer += .*3
 
 /reagent/medicine/antihol
 	name = "Antihol"

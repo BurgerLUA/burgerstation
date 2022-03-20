@@ -148,7 +148,8 @@
 		pain = -health.get_loss(PAIN),
 		rad = -health.get_loss(RAD),
 		sanity = -health.get_loss(SANITY),
-		mental = -health.get_loss(MENTAL)
+		mental = -health.get_loss(MENTAL),
+		update = FALSE
 	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
@@ -159,6 +160,7 @@
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
+	queue_health_update = TRUE
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -341,8 +343,8 @@ mob/living/proc/on_life_slow()
 		queue_health_update = TRUE
 	else if(blood_volume > blood_volume_max)
 		blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
-		if(health && blood_volume >= blood_volume_max*1.05)
-			health.adjust_loss_smart(tox=TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25,robotic=FALSE)
+		if(blood_volume >= blood_volume_max*1.05)
+			tox_regen_buffer -= 0.25*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 
 	if(reagents)
 		reagents.metabolize(src)
@@ -427,8 +429,8 @@ mob/living/proc/on_life_slow()
 			if(last_intoxication_message != 4)
 				to_chat(span("danger","You feel utterly and completely fucking shitfaced."))
 				last_intoxication_message = 4
-			health.adjust_loss_smart(tox=0.25*TICKS_TO_SECONDS(LIFE_TICK_SLOW),robotic = FALSE)
-			queue_health_update = TRUE
+			tox_regen_buffer -= 0.25*TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+
 
 	if(should_apply_status_effects && (intoxication/threshold_multiplier) >= 600 && prob((intoxication/threshold_multiplier)/100))
 		var/list/possible_status_effects = list(
@@ -445,7 +447,7 @@ mob/living/proc/on_life_slow()
 	return initial(alpha)
 
 /mob/living/proc/can_buffer_health()
-	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer || sanity_regen_buffer)
+	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer || pain_regen_buffer || rad_regen_buffer || sanity_regen_buffer || mental_regen_buffer)
 
 /mob/living/proc/can_buffer_stamina()
 	return stamina_regen_buffer
@@ -466,41 +468,47 @@ mob/living/proc/on_life_slow()
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,2)
+			max(health.health_regeneration*2,1)
 		)
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,2)
+			max(health.health_regeneration*2,1)
 		)
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,2)
+			max(health.health_regeneration*2,1)
 		)
 		var/pain_to_regen = clamp(
 			pain_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,2)
+			max(health.health_regeneration*2,1)
 		)
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,2)
+			max(health.health_regeneration*2,1)
 		)
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
+			-health.health_max*0.1,
+			max(health.health_regeneration*2,1)
+		)
+		var/mental_to_regen = clamp(
+			mental_regen_buffer,
 			-health.health_max*0.1,
 			max(health.health_regeneration*2,2)
 		)
 		update_health = health.adjust_loss_smart(
 			brute = -brute_to_regen,
 			burn = -burn_to_regen,
-			tox=-tox_to_regen,
-			pain=-pain_to_regen,
-			rad=-rad_to_regen,
-			sanity=-sanity_to_regen,
-			robotic=FALSE
+			tox = -tox_to_regen,
+			pain = -pain_to_regen,
+			rad = -rad_to_regen,
+			sanity = -sanity_to_regen,
+			mental = -mental_to_regen,
+			robotic = FALSE
 		)
 		brute_regen_buffer -= brute_to_regen
 		burn_regen_buffer -= burn_to_regen

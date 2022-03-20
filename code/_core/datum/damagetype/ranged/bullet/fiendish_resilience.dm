@@ -34,7 +34,6 @@
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.reagents.add_reagent(reagent_to_add,volume_to_add,caller=attacker) //I successfully stole stolen bloodsteal code!
-				A.health.adjust_loss_smart(oxy = -blood_to_steal)
 				play_sound(pick('sound/effects/demon_consume.ogg'),get_turf(V),range_max=VIEW_RANGE*0.5)
 			else if (V.blood_volume <= 0)
 				A.to_chat(span("danger","That enemy has no vigor to steal!"))

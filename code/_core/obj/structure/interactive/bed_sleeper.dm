@@ -136,9 +136,10 @@
 	return TRUE
 
 /obj/structure/interactive/bed/sleeper/proc/close(var/mob/caller)
-	var/mob/living/advanced/A = locate() in get_turf(src)
-	if(A && can_buckle(A,caller))
-		buckle(A,caller)
+	if(!buckled)
+		var/mob/living/advanced/A = locate() in get_turf(src)
+		if(A && can_buckle(A,caller))
+			buckle(A,caller)
 	if(close_sound)
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_CLOSING

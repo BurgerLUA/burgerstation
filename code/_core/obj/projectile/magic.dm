@@ -97,7 +97,7 @@
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(L.dead && L.loyalty_tag == src.loyalty_tag)
-			L.health.adjust_loss_smart(brute=-10,burn=-10,tox=-10,)
+			L.health.adjust_loss_smart(brute=-10,burn=-10,tox=-10,robotic=FALSE)
 			L.blood_oxygen += 0.2
 			L.blood_volume = clamp(L.blood_volume+20,0,L.blood_volume_max)
 

@@ -16,7 +16,10 @@
 					brute = brute > 0 ? brute : 0,
 					burn = burn > 0 ? burn : 0,
 					pain = pain > 0 ? pain : 0,
-					rad = rad > 0 ? rad : 0
+					rad = rad > 0 ? rad : 0,
+					organic = organic,
+					robotic = robotic,
+					update = FALSE
 				)
 
 	if((src.organic && organic) || (!src.organic && robotic))
@@ -92,7 +95,7 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[PAIN])
-				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN])
+				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=FALSE,organic=organic,robotic=robotic)
 
 	if(. && update)
 		A.queue_health_update = TRUE

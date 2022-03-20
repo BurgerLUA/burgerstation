@@ -94,7 +94,7 @@
 	organic = FALSE
 
 /health/obj/item/organ/synthetic/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
-	adjust_loss_smart(burn=magnitude)
+	adjust_loss_smart(burn=magnitude,organic=FALSE,robotic=TRUE)
 	return TRUE
 
 /health/obj/item/organ/dummy

@@ -81,13 +81,13 @@
 
 	if(next_feed <= world.time)
 		var/turf/T = get_turf(src)
-		damage_ramp += 2
-		O.health.adjust_loss_smart(brute=damage_ramp)
-		play_sound('sound/effects/blob_infection.ogg',T)
-		if(A.blood_type)
-			var/reagent/R = REAGENT(A.blood_type)
-			for(var/i=1,i<=2,i++)
-				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+		if(O.health.adjust_loss_smart(brute=damage_ramp))
+			damage_ramp += 2
+			play_sound('sound/effects/blob_infection.ogg',T)
+			if(A.blood_type)
+				var/reagent/R = REAGENT(A.blood_type)
+				for(var/i=1,i<=2,i++)
+					create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
 		next_feed = world.time + SECONDS_TO_DECISECONDS(1)
 
 	if(A.ai && !A.is_busy() && prob(25))

@@ -24,6 +24,8 @@
 
 	var/bad_delete = TRUE
 
+	var/interact_check = FALSE
+
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
 
 	if(alpha == 0)
@@ -71,5 +73,6 @@
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	play_sound_target('sound/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
-	INTERACT_CHECK
+	if(interact_check)
+		INTERACT_CHECK
 	return TRUE

@@ -40,6 +40,9 @@
 			if(caller.health && caller.health.mana_current < cost)
 				return FALSE
 			caller.health.adjust_mana(-cost)
+	if(resource_type && is_living(caller))
+		var/mob/living/L = caller
+		L.queue_health_update = TRUE
 
 	cooldown_end = world.time + cooldown
 
