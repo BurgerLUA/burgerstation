@@ -12,6 +12,9 @@
 	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
 	if(!H || !H.health)
 		return FALSE
+	var/obj/item/organ/internal/brain/B = A.labeled_organs[BODY_BRAIN]
+	if(!B || !B.health || !B.health.organic)
+		return FALSE
 	. = ..()
 
 /status_effect/zombie/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
