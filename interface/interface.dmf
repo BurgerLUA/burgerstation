@@ -442,19 +442,24 @@ window "main"
 		size = 800x800
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
+		statusbar = false
 		icon = 'interface\\icons\\burger.png'
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
+		outer-size = 816x859
+		inner-size = 800x800
 	elem "splitter"
 		type = CHILD
 		pos = 0,0
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "map"
@@ -469,7 +474,6 @@ window "map"
 		size = 800x800
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -477,8 +481,6 @@ window "map"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 814x814
-		inner-size = 800x800
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -507,7 +509,6 @@ window "map"
 		size = 680x320
 		anchor1 = 0,100
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 

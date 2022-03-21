@@ -3,7 +3,7 @@
 	desc = "sneaker no sneaking"
 	desc_extended = "Press to sneak."
 	icon_state = "sneak_0"
-	screen_loc = "RIGHT-3,BOTTOM"
+	screen_loc = "RIGHT-3,BOTTOM:12"
 
 	var/sneaking = 0
 
@@ -18,7 +18,7 @@
 		L.sneak()
 		sneaking = L.is_sneaking
 
-	
+
 /obj/hud/button/sneak/update_icon()
 	icon_state = "sneak_[sneaking]"
 	..()
@@ -28,7 +28,7 @@
 	desc = "who fucking walks lmao"
 	desc_extended = "Where you press determines where you click"
 	icon_state = "move_1"
-	screen_loc = "RIGHT-3,BOTTOM"
+	screen_loc = "RIGHT:1-3,BOTTOM:11"
 
 	var/move_mod_button = 0
 
@@ -61,13 +61,13 @@
 
 		update_sprite()
 
-	
+
 /obj/hud/button/rest
 	name = "rest"
 	desc = "No sleeping on the job!"
 	desc_extended = "Press to toggle laying down."
 	icon_state = "rest"
-	screen_loc = "RIGHT-2:8,BOTTOM+1"
+	screen_loc = "RIGHT-2:8,BOTTOM:10+1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -79,13 +79,13 @@
 		var/mob/living/L = caller
 		L.rest()
 
-	
+
 /obj/hud/button/stand
 	name = "stand"
 	desc = "Summons and unsummons your stand."
 	desc_extended = "Press to toggle your stand. Put yourself on harm intent to make your stand attack your enemies. Help intent doesn't."
 	icon_state = "stand"
-	screen_loc = "RIGHT-2:8,BOTTOM+1"
+	screen_loc = "RIGHT-2:8,BOTTOM:12+1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -100,4 +100,3 @@
 		else
 			L.to_chat(span("danger","You don't have a stand for some reason!"))
 
-	

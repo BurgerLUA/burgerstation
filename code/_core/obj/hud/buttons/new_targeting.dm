@@ -4,7 +4,7 @@
 	desc_extended = "Where you press determines where you attack."
 	icon = 'icons/hud/paperdoll.dmi'
 	icon_state = "base"
-	screen_loc = "RIGHT:-1,BOTTOM"
+	screen_loc = "RIGHT,BOTTOM:11"
 
 	flags = FLAGS_HUD_MOB
 

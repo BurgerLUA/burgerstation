@@ -34,9 +34,9 @@
 			if(NORTHEAST)
 				screen_loc = "RIGHT,TOP"
 			if(SOUTHEAST)
-				screen_loc = "RIGHT,BOTTOM"
+				screen_loc = "RIGHT,BOTTOM:12"
 			if(SOUTHWEST)
-				screen_loc = "LEFT,BOTTOM"
+				screen_loc = "LEFT,BOTTOM:12"
 			if(SOUTH)
 				screen_loc = "CENTER-2,CENTER-2"
 

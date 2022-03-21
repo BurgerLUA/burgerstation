@@ -28,7 +28,7 @@
 	min = 0
 	color = "#FF0000"
 
-	screen_loc = "RIGHT-0.25,BOTTOM+6"
+	screen_loc = "RIGHT-0.25,BOTTOM:12+6"
 
 	flags = FLAGS_HUD_MOB
 
@@ -54,7 +54,7 @@
 	min = 0
 	color = "#00ff00"
 
-	screen_loc = "RIGHT,BOTTOM+6"
+	screen_loc = "RIGHT,BOTTOM:12+6"
 
 	flags = FLAGS_HUD_MOB
 
@@ -80,7 +80,7 @@
 	min = 0
 	color = "#0000ff"
 
-	screen_loc = "RIGHT+0.25,BOTTOM+6"
+	screen_loc = "RIGHT+0.25,BOTTOM:12+6"
 
 	flags = FLAGS_HUD_MOB
 

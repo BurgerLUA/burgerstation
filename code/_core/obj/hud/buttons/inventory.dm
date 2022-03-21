@@ -31,7 +31,7 @@
 	desc = "Need more space? Click this button."
 	desc_extended = "Hides your inventory from view. Inventories such as pockets, belts, backpacks, and hands are not hidden."
 	icon_state = "view_inventory"
-	screen_loc = "LEFT,BOTTOM"
+	screen_loc = "LEFT:1,BOTTOM:12"
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY
 

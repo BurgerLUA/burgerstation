@@ -76,10 +76,7 @@
 	var/list/obj/item/organ/spawning_organs_female = list()
 
 	var/list/obj/hud/button/spawning_buttons = list(
-		// /obj/hud/button/drop,
-		// /obj/hud/button/drop/left,
-		// /obj/hud/button/resist,
-		// /obj/hud/button/resist_auto,
+		/obj/hud/button/examine_bar,
 		/obj/hud/button/hide_show_inventory,
 		/obj/hud/button/move,
 		/obj/hud/button/targeting_new,
@@ -88,14 +85,11 @@
 		/obj/hud/button/intent/disarm,
 		/obj/hud/button/intent/grab,
 		/obj/hud/button/sneak,
-		/obj/hud/button/resist,
 
 		/obj/hud/button/toggle_cash_money,
 		/obj/hud/button/cash_money,
 		/obj/hud/button/microstransactions,
 		/obj/hud/button/toggle_microtransactions,
-
-		//obj/hud/button/boss_health,
 
 		/obj/hud/button/crafting/craft,
 		/obj/hud/button/crafting/close,
@@ -104,34 +98,16 @@
 		/obj/hud/button/widget/logout,
 		/obj/hud/button/widget/change_theme,
 
-		//obj/hud/button/teleport/teleport_here,
-		//obj/hud/button/teleport/cycle/right,
-		//obj/hud/button/teleport/cycle/left,
-
 		/obj/hud/button/squad/main,
-
-		//obj/hud/button/ping,
 
 		/obj/hud/button/message,
 
 		/obj/hud/button/rest,
 
-		/*
-		/obj/hud/button/evade/block,
-		/obj/hud/button/evade/dodge,
-		/obj/hud/button/evade/parry,
-		*/
-
 		/obj/hud/button/hunger,
 		/obj/hud/button/mood,
 
-		/obj/hud/button/objectives,
 
-		/*
-		/obj/hud/button/exchange/close,
-		/obj/hud/button/exchange/sell,
-		/obj/hud/button/exchange/base
-		*/
 
 	)
 

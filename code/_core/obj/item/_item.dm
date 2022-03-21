@@ -48,7 +48,7 @@
 	var/container_whitelist = list()
 	var/max_inventory_x = MAX_INVENTORY_X
 	var/inventory_category = "dynamic"
-	var/starting_inventory_y = "BOTTOM+1.25"
+	var/starting_inventory_y = "BOTTOM:12+1.25"
 	var/inventory_y_multiplier = 1
 
 	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.

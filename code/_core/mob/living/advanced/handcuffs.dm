@@ -20,6 +20,8 @@
 			stored_handcuffs.drop_item(get_turf(src))
 			stored_handcuffs = null
 
+	src.to_chat(span("danger","You are handcuffed! Click on yourself to try and escape!"))
+
 	handcuffed = desired_handcuffs
 	handcuff_break_counter = 0
 

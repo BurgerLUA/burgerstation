@@ -44,6 +44,11 @@
 #define BODY_EAR_LEFT "ear_l"
 #define BODY_EAR_RIGHT "ear_r"
 
+#define BODY_RING_01 "ring_01"
+#define BODY_RING_02 "ring_02"
+#define BODY_RING_03 "ring_03"
+#define BODY_RING_04 "ring_04"
+
 #define BODY_TAIL "tail"
 
 #define BODY_WINGS "wings"

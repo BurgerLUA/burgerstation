@@ -50,6 +50,7 @@
 #define SLOT_FOOT         (1<<12)
 #define SLOT_HAND         (1<<13)
 #define SLOT_SPECIAL      (1<<14)
+#define SLOT_RING         (1<<15)
 
 #define SLOT_MOD_NONE     (1<<0)
 #define SLOT_MOD_CENTER   (1<<1)
