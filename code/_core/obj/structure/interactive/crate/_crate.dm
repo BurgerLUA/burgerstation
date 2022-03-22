@@ -116,6 +116,8 @@
 				continue
 			if(M.loc != src.loc)
 				continue
+			if(can_prevent_close(M))
+				continue
 			M.Move(src)
 
 	update_sprite()

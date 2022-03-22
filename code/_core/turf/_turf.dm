@@ -249,6 +249,9 @@
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
+	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT)
+		return FALSE
+
 	if(density && (!enterer || (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags)))
 		if(oldloc)
 			var/enter_direction = get_dir(oldloc,src)

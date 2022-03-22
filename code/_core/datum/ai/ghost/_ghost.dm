@@ -310,11 +310,11 @@
 				A.smash_all_lights()
 				create_emf(T,4)
 			else
-				if(!A.enable_power_lights)
+				if(!(A.enable_power_lights & ON))
 					A.smash_all_lights()
 					create_emf(T,4)
 				else
-					A.toggle_power_lights(FALSE,lightswitch=TRUE)
+					A.toggle_power_lights(OFF | (A.enable_power_lights & AUTO))
 					create_emf(T,3)
 		if(stat_afraid_of_light)
 			var/annoying_player = FALSE

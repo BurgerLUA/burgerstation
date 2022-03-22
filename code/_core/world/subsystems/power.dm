@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(power)
 	name = "Power Subsystem"
 	desc = "Handle power processing and other cool things."
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_POWER
 
 	tick_rate = SECONDS_TO_TICKS(1)
 
@@ -20,9 +20,9 @@ SUBSYSTEM_DEF(power)
 		if(!A.apc)
 			if(!A.no_apc) log_error("WARNING: area of type [A.type] did not find an APC. Set area.no_apc to TRUE to remove this warning.")
 			continue
-		A.toggle_power_lights(FALSE,force=TRUE)
-		A.toggle_power_machines(FALSE,force=TRUE)
-		A.toggle_power_doors(FALSE,force=TRUE)
+		A.toggle_power_lights(A.default_state_power_lights,force=TRUE)
+		A.toggle_power_machines(A.default_state_power_machines,force=TRUE)
+		A.toggle_power_doors(A.default_state_power_doors,force=TRUE)
 
 /subsystem/power/on_life()
 

@@ -13,11 +13,11 @@
 	health_base = 100
 
 	butcher_contents = list(
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
 		/obj/item/soulgem/rare,
-		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/container/edible/dynamic/meat/raw_beefman
 	)
 
 	has_hard_crit = FALSE

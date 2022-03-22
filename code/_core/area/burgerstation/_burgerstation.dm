@@ -38,6 +38,10 @@
 
 	requires_power = TRUE
 
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
 /area/burgerstation/hall
 	name = "\improper Hallway"
 	icon_state = "hall"
@@ -92,11 +96,21 @@
 
 	map_color = COLOR_BLUE
 
+	default_state_power_lights = OFF
+
+/area/burgerstation/cafe/kitchen/freezer
+	name = "\improper Kitchen Freezer"
+	icon_state = "cryo"
+
+	map_color = COLOR_BLUE
+
 /area/burgerstation/cafe/bar
 	name = "\improper Bar"
 	icon_state = "bar"
 
 	map_color = COLOR_CYAN
+
+	default_state_power_lights = OFF
 
 /area/burgerstation/cafe/botany
 	name = "\improper Botany"

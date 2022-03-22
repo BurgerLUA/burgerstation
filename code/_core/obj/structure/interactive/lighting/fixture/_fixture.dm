@@ -17,7 +17,6 @@
 	health_base = 10
 
 	apc_powered = TRUE
-	lightswitch = TRUE
 
 /obj/structure/interactive/lighting/fixture/Generate()
 	desired_light_color = color

@@ -47,6 +47,11 @@
 	var/flags_generation = FLAG_GENERATION_NONE
 
 	//Power Code
+	var/default_state_power_lights = OFF
+	var/default_state_power_machines = OFF
+	var/default_state_power_doors = OFF
+
+
 	var/no_apc = FALSE //Used for error checking.
 	var/requires_power = FALSE //Set to true if everything is this area requires power.
 
@@ -54,9 +59,9 @@
 
 	var/power_draw = 0
 
-	var/enable_power_doors = FALSE
-	var/enable_power_machines = FALSE
-	var/enable_power_lights = FALSE
+	var/enable_power_doors = OFF
+	var/enable_power_machines = OFF
+	var/enable_power_lights = OFF
 
 	var/list/obj/structure/interactive/door/powered_doors
 	var/list/obj/structure/interactive/powered_machines
@@ -182,14 +187,30 @@
 		max_charge = apc.cell.charge_max
 
 	//Doors
-	toggle_power_doors(available_charge > 0)
+	if(enable_power_doors & AUTO)
+		if(available_charge/max_charge >= 0.1)
+			toggle_power_doors(ON|AUTO)
+		else
+			toggle_power_doors(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_doors & OFF))
+		toggle_power_doors(OFF|AUTO)
 
 	//Machines
-	toggle_power_machines(available_charge/max_charge >= 0.2)
+	if(enable_power_machines & AUTO)
+		if(available_charge/max_charge >= 0.2)
+			toggle_power_machines(ON|AUTO)
+		else
+			toggle_power_doors(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_machines & OFF))
+		toggle_power_machines(OFF|AUTO)
 
-	//Lights
-	if(available_charge/max_charge <= 0.3)
-		toggle_power_lights(FALSE) //Lights have to be manually enabled again.
+	if(enable_power_lights & AUTO)
+		if(available_charge/max_charge >= 0.3)
+			toggle_power_lights(ON|AUTO)
+		else
+			toggle_power_lights(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_lights & OFF))
+		toggle_power_lights(OFF|AUTO)
 
 	//Removing power.
 	if(apc && apc.cell)
@@ -198,13 +219,10 @@
 	return TRUE
 
 
-/area/proc/toggle_power_doors(var/enable=TRUE,var/force=FALSE)
+/area/proc/toggle_power_doors(var/enable=ON|AUTO,var/force=FALSE)
 
 	if(!requires_power)
 		CRASH("Called toggle_power_doors on an [src.type] that doesn't require power.")
-
-	if(enable == enable_power_doors && !force)
-		return FALSE
 
 	enable_power_doors = enable
 
@@ -212,7 +230,9 @@
 		var/obj/structure/interactive/door/D = k
 		if(!D.apc_powered)
 			continue
-		D.powered = enable_power_doors
+		if(D.powered == (enable_power_doors & ON ? TRUE : FALSE) && !force)
+			continue
+		D.powered = enable_power_doors & ON ? TRUE : FALSE
 		if(D.powered)
 			D.update_power_draw(D.get_power_draw())
 		else
@@ -222,21 +242,20 @@
 	return TRUE
 
 
-/area/proc/toggle_power_machines(var/enable=TRUE,var/force=FALSE)
+/area/proc/toggle_power_machines(var/enable=ON|AUTO,var/force=FALSE)
 
 	if(!requires_power)
 		CRASH("Called toggle_power_machines on an [src.type] that doesn't require power.")
-
-	if(enable == enable_power_machines && !force)
-		return FALSE
 
 	enable_power_machines = enable
 
 	for(var/k in powered_machines)
 		var/obj/structure/interactive/P = k
-		if(P.wire_powered)
+		if(!P.apc_powered)
 			continue
-		P.powered = enable_power_machines
+		if(P.powered == (enable_power_machines & ON ? TRUE : FALSE) && !force)
+			continue
+		P.powered = enable_power_machines & ON ? TRUE : FALSE
 		if(P.powered)
 			P.update_power_draw(P.get_power_draw())
 		else
@@ -245,23 +264,20 @@
 
 	return TRUE
 
-/area/proc/toggle_power_lights(var/enable=TRUE,var/lightswitch=FALSE,var/force=FALSE)
+/area/proc/toggle_power_lights(var/enable=ON|AUTO,var/force=FALSE)
 
 	if(!requires_power)
 		CRASH("Called toggle_power_lights on an [src.type] that doesn't require power.")
-
-	if(enable == enable_power_lights && !force)
-		return FALSE
 
 	enable_power_lights = enable
 
 	for(var/k in powered_lights)
 		var/obj/structure/interactive/lighting/L = k
-		if(!L.lightswitch && lightswitch)
+		if(!L.apc_powered)
 			continue
-		if(L.on == enable_power_lights)
+		if(L.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
 			continue
-		L.on = enable_power_lights
+		L.on = enable_power_lights & ON ? TRUE : FALSE
 		if(L.on)
 			L.update_power_draw(L.get_power_draw())
 		else
@@ -269,12 +285,12 @@
 		L.update_atom_light()
 		L.update_sprite()
 
-	if(lightswitch)
-		for(var/k in light_switches)
-			var/obj/structure/interactive/light_switch/LS = k
-			if(LS.on == enable_power_lights)
-				continue
-			LS.on = enable_power_lights
-			LS.update_sprite()
+	for(var/k in light_switches)
+		var/obj/structure/interactive/light_switch/LS = k
+		if(LS.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
+			continue
+		LS.on = enable_power_lights & ON ? TRUE : FALSE
+		LS.update_atom_light()
+		LS.update_icon()
 
 	return TRUE

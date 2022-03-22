@@ -18,6 +18,10 @@
 /obj/structure/interactive/crate/closet/anchored
 	anchored = TRUE
 
+/obj/structure/interactive/crate/closet/freezer
+	name = "freezer closet"
+	icon_state = "freezer"
+
 /obj/structure/interactive/crate/engineering
 	icon_state = "engineering"
 

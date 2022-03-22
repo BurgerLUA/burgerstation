@@ -50,10 +50,30 @@
 	update_sprite()
 
 /mob/living/simple/gutlunch/proc/consume_turf(var/turf/T)
+
 	. = FALSE
-	for(var/k in T.contents)
-		if(is_item(k))
-			var/obj/item/I = k
+
+	var/eat_limit = 5 //Look, I don't want to know what would happen if someone places 500 items on a single tile.
+
+	for(var/mob/living/L in T.contents) //First pass.
+		if(eat_limit <= 0)
+			break
+		if(L.qdeleting)
+			continue
+		if(!L.dead)
+			continue
+		if(L.is_player_controlled())
+			continue
+		if(!(L.override_butcher || length(L.butcher_contents)) || !L.can_be_butchered())
+			continue
+		L.on_butcher(src)
+		. = TRUE
+		eat_limit--
+
+	if(eat_limit > 0)
+		for(var/obj/item/I in T.contents) //Second pass.
+			if(eat_limit <= 0)
+				break
 			if(I.qdeleting)
 				continue
 			if(I.get_value() < 100)
@@ -61,16 +81,7 @@
 			else
 				I.force_move(src)
 			. = TRUE
-		else if(is_living(k))
-			var/mob/living/L = k
-			if(!L.dead)
-				continue
-			if(L.is_player_controlled())
-				continue
-			if(!(L.override_butcher || length(L.butcher_contents)) || !L.can_be_butchered())
-				continue
-			L.on_butcher(src)
-			. = TRUE
+
 	if(.)
 		play_sound(T,'sound/effects/gutlunch_eat.ogg')
 		T.visible_message(span("warning","\The [src.name] eats up everything on \the [T.name]!"))

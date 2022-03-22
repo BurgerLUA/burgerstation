@@ -51,6 +51,8 @@ var/global/list/equipped_antags = list()
 
 	health = /health/construction/
 
+	apc_powered = TRUE
+
 /obj/structure/interactive/vending/proc/vend_random(var/count=1) //For malfunctions/hacking/destruction
 
 	if(!length(stored_objects))
@@ -140,6 +142,9 @@ var/global/list/equipped_antags = list()
 	return TRUE
 
 /obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0)
+
+	if(!powered)
+		return null
 
 	if(!spend_currency(P,item_value))
 		flick("[initial(icon_state)]-deny",src)
@@ -245,7 +250,7 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller) && !is_inventory(object) || !caller.client)
+	if(!is_player(caller) && !is_inventory(object) || !caller.client || !powered)
 		return ..()
 
 	INTERACT_CHECK

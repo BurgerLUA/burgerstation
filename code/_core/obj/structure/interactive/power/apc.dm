@@ -15,6 +15,7 @@
 
 /obj/structure/interactive/power/apc/get_examine_list(var/mob/examiner)
 	. = ..()
+	. += div("notice","Area Power Draw: [src.power_draw]w.")
 	. += div("notice","\The [cell.name] has [cell.charge_current] out of [cell.charge_max] charge remaining.")
 
 /obj/structure/interactive/power/apc/Destroy()
@@ -49,7 +50,7 @@
 		INITIALIZE(cell)
 		GENERATE(cell)
 		FINALIZE(cell)
-		cell.charge_current = rand(cell.charge_max*0.25,cell.charge_max*0.5)
+		cell.charge_current = rand(cell.charge_max*0.5,cell.charge_max*0.75)
 
 /obj/structure/interactive/power/apc/update_overlays()
 
@@ -69,5 +70,5 @@
 
 /obj/structure/interactive/power/apc/power_process(var/power_multiplier=1)
 	. = ..()
-	cell.charge_current += FLOOR(power_draw*power_multiplier,1)
 	update_power_draw(get_power_draw())
+	cell.charge_current += FLOOR(power_draw*power_multiplier,1)
