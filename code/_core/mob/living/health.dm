@@ -119,7 +119,7 @@
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
 		if(blade_damage > 0 && src.can_be_butchered(L,weapon))
 			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
-			PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
+			PROGRESS_BAR(L,src,max(10,src.health.health_max*0.05),.proc/on_butcher,L)
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
 
 	if(!dead && has_status_effect(PARRIED))
@@ -130,40 +130,42 @@
 
 /mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item)
 
-	INTERACT_CHECK_NO_DELAY(src)
-	INTERACT_CHECK_NO_DELAY(butchering_item)
+	if(caller)
+		INTERACT_CHECK_NO_DELAY(src)
+		if(butchering_item)
+			INTERACT_CHECK_NO_DELAY(butchering_item)
 
 	if(!src.dead)
-		to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))
+		caller?.to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))
 		return FALSE
 
 	return TRUE
 
-/mob/living/proc/butcher(var/mob/living/target)
+/mob/living/proc/on_butcher(var/mob/caller)
 
-	if(target.qdeleting)
+	if(src.qdeleting)
 		return FALSE
 
-	src.visible_message(span("danger","\The [src.name] butchers \the [target.name]!"),span("danger","You butcher \the [target.name]."))
+	caller?.visible_message(span("danger","\The [caller.name] butchers \the [src.name]!"),span("danger","You butcher \the [src.name]."))
 
-	var/turf/T = get_turf(target)
+	var/turf/T = get_turf(src)
 
-	if(target.override_butcher)
-		target.create_override_contents(src)
+	if(src.override_butcher)
+		src.create_override_contents(caller)
 	else
-		for(var/k in target.butcher_contents)
+		for(var/k in src.butcher_contents)
 			var/obj/O = new k(T)
 			INITIALIZE(O)
 			GENERATE(O)
 			FINALIZE(O)
 
-	for(var/k in target.contents)
+	for(var/k in src.contents)
 		var/atom/movable/M = k
 		if(is_organ(M))
 			continue
 		M.force_move(T)
 
-	qdel(target)
+	src.on_crush()
 
 	return TRUE
 

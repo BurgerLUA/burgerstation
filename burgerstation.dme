@@ -876,6 +876,7 @@
 #include "code\_core\mob\living\simple\goblin.dm"
 #include "code\_core\mob\living\simple\goblin_king.dm"
 #include "code\_core\mob\living\simple\gorilla.dm"
+#include "code\_core\mob\living\simple\gutlunch.dm"
 #include "code\_core\mob\living\simple\halloween_spirit.dm"
 #include "code\_core\mob\living\simple\herald.dm"
 #include "code\_core\mob\living\simple\hierophant.dm"
