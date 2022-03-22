@@ -39,6 +39,7 @@ var/global/list/gps_list = list()
 		caller.to_chat(span("warning","Invalid target!"))
 		return FALSE
 
+	caller.to_chat(span("notice","Distance: [get_dist_advanced(caller,target)]u."))
 	caller.to_chat(span("notice","Position: ([target.x],[target.y],[target.z])."))
 	caller.to_chat(span("notice","Angle: [get_angle(caller,target)] degrees."))
 	next_scan = world.time + SECONDS_TO_DECISECONDS(2)

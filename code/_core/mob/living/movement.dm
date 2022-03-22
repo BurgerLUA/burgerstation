@@ -91,7 +91,7 @@
 
 	handle_tabled()
 
-	last_move_delay = next_move
+	last_move_delay = TICKS_TO_DECISECONDS(next_move)
 	last_move_time = world.time
 
 /mob/living/Bump(atom/Obstacle)
