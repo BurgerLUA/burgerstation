@@ -115,7 +115,7 @@
 /obj/hud/inventory/proc/show(var/should_show,var/speed=SECONDS_TO_DECISECONDS(1))
 	if(should_show)
 		animate(src,alpha=initial(alpha),time=speed)
-		src.mouse_opacity = 2
+		mouse_opacity = initial(mouse_opacity)
 	else
 		animate(src,alpha=0,time=speed)
 		src.mouse_opacity = 0
