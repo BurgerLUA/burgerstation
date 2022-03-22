@@ -1,11 +1,22 @@
 /mob/living/simple/gutlunch
 	name = "gutlunch"
 	desc = "Nature's vacuum cleaners."
-	desc_extended = "A wild lavaland species whose diet consists of iron, carbon, and calcium from rocks and minerals. Known to eat just about anything, including corpses."
+	desc_extended = "A wild lavaland species whose diet consists of iron, carbon, and calcium from rocks and minerals. Known to eat just about anything, including corpses of their own species and others."
 	icon = 'icons/mob/living/simple/gutlunch.dmi'
 	icon_state = "1"
 
-	loyalty_tag = "Gutshank"
+	loyalty_tag = "Gutlunch"
+
+	damage_type = /damagetype/npc/cow
+
+	blood_type = /reagent/blood/gutlunch
+	blood_volume = 300
+
+	health_base = 100
+	stamina_base = 50
+	mana_base = 25
+
+	size = SIZE_ANIMAL
 
 /mob/living/simple/gutlunch/post_move(var/atom/old_loc)
 	. = ..()
