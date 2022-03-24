@@ -121,7 +121,7 @@
 		.["amount"] = amount
 	if(delete_on_drop)
 		.["delete_on_drop"] = TRUE
-	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
+	if(reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
 	if(uses_until_condition_fall)
@@ -186,7 +186,7 @@
 
 
 /obj/item/proc/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	if(object_data["reagents"] && length(object_data["reagents"]))
+	if(length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
 			var/reagent/R = text2path(r_id)

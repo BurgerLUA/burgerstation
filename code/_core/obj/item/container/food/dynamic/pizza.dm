@@ -7,6 +7,8 @@
 	cooked_icon_state = "bread_pizza"
 	raw_icon_state = "dough_pizza"
 
+	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE | LONG_GLIDE
+
 	health = /health/obj/item/misc/
 
 	scale_sprite = FALSE
@@ -15,6 +17,8 @@
 
 	allow_reagent_transfer_to = FALSE
 	allow_reagent_transfer_from = FALSE
+
+	var/sliced = FALSE
 
 	var/color_sauce
 	var/color_cheese
@@ -33,27 +37,87 @@
 		"large" = 0
 	)
 
-/obj/item/container/edible/dynamic/pizza/Generate()
-	. = ..()
-	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)
+/obj/item/container/edible/dynamic/pizza/sliced
+	sliced = TRUE
+	pixel_x = 6
+	pixel_y = -1
 
-/obj/item/container/edible/dynamic/pizza/Initialize()
-	. = ..()
-	if(reagents_toppings)
-		reagents_toppings = new reagents_toppings(src)
+/obj/item/container/edible/dynamic/pizza/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+	return !sliced
 
 /obj/item/container/edible/dynamic/pizza/Destroy()
 	. = ..()
 	QDEL_NULL(reagents_toppings)
 
-/obj/item/container/edible/dynamic/pizza/Generate()
+/obj/item/container/edible/dynamic/pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+	. = ..()
+	SAVEVAR("sliced")
+	SAVEVAR("color_sauce")
+	SAVEVAR("color_cheese")
+	SAVELIST("topping_data")
+	SAVELIST("offsets")
+	if(reagents_toppings && length(reagents_toppings.stored_reagents))
+		.["reagents_toppings"] = reagents.stored_reagents
+
+/obj/item/container/edible/dynamic/pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("sliced")
+	LOADVAR("color_sauce")
+	LOADVAR("color_cheese")
+	LOADLIST("topping_data")
+	LOADLIST("offsets")
+
+/obj/item/container/edible/dynamic/pizza/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(length(object_data["reagents_toppings"]))
+		for(var/r_id in object_data["reagents_toppings"])
+			var/volume = object_data["reagents_toppings"][r_id]
+			var/reagent/R = text2path(r_id)
+			if(!R)
+				log_error("Load item error: Tried loading an invalid reagent [r_id]!")
+				continue
+			reagents_toppings.add_reagent(R,volume,TNULL,FALSE)
+		reagents_toppings.update_container()
+
+/obj/item/container/edible/dynamic/pizza/Initialize()
 	. = ..()
 	for(var/k in offsets)
 		offsets[k] = rand(1,3)
+	if(reagents_toppings)
+		reagents_toppings = new reagents_toppings(src)
+
+/obj/item/container/edible/dynamic/pizza/Generate()
+	. = ..()
+	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)
+
+/obj/item/container/edible/dynamic/pizza/Finalize()
+	. = ..()
+	if(sliced)
+		var/icon/I = new/icon(initial(icon),"slice_mask")
+		filters += filter(type="alpha",icon=I)
+
+/obj/item/container/edible/dynamic/pizza/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+
+	. = ..()
+
+	if(!sliced && isturf(loc))
+		var/turf/T = loc
+		var/original_reagents_amount = reagents.volume_current
+		var/original_reagents_toppings_amount = reagents_toppings.volume_current
+		for(var/i=1,i<=8,i++)
+			var/obj/item/container/edible/dynamic/pizza/sliced/P = new(T)
+			INITIALIZE(P)
+			P.topping_data = topping_data.Copy()
+			P.color_cheese = color_cheese
+			P.color_sauce = color_sauce
+			reagents.transfer_reagents_to(P.reagents,original_reagents_amount/8)
+			reagents_toppings.transfer_reagents_to(P.reagents_toppings,original_reagents_toppings_amount/8)
+			FINALIZE(P)
+		qdel(src)
 
 /obj/item/container/edible/dynamic/pizza/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/container) && object.reagents && object.reagents.volume_current && !istype(object,/obj/item/container/edible/dynamic/pizza))
+	if(!sliced && istype(object,/obj/item/container) && object.reagents && object.reagents.volume_current && !istype(object,/obj/item/container/edible/dynamic/pizza))
 		var/valid = FALSE
 		var/obj/item/I = object
 		if(I.allow_reagent_transfer_to && I.allow_reagent_transfer_from) //Sauce
@@ -91,6 +155,13 @@
 			caller.to_chat(span("warning","You can't reasonably find a way to add \the [I.name] to \the [initial(src.name)]..."))
 
 		return TRUE
+
+	. = ..()
+
+/obj/item/container/edible/dynamic/pizza/update_sprite()
+
+	if(reagents)
+		color = reagents.color
 
 	. = ..()
 
@@ -135,9 +206,19 @@
 	return T.qdeleting ? null : T
 
 
-/obj/item/container/edible/dynamic/pizza/update_sprite()
-
-	if(reagents)
-		color = reagents.color
-
+/obj/item/container/edible/dynamic/pizza/mushroom/Generate()
 	. = ..()
+	reagents_toppings.add_reagent(/reagent/nutrition/tomato,10)
+	color_sauce = "#C90000"
+
+	reagents_toppings.add_reagent(/reagent/nutrition/cheese/cheddar,10)
+	color_cheese = "#FF9F00"
+
+	reagents_toppings.add_reagent(/reagent/nutrition/meat/cow/cooked,20)
+	topping_data["large"] += "#6B3731"
+
+	reagents_toppings.add_reagent(/reagent/nutrition/porcini,10)
+	topping_data["medium"] += "#68593E"
+
+	reagents_toppings.add_reagent(/reagent/nutrition/capsaicin,5)
+	topping_data["small"] += "#EF3232"

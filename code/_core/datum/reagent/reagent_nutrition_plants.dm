@@ -15,7 +15,7 @@
 /reagent/nutrition/porcini
 	name = "porcini"
 	desc = "Nutrition and flavor from a porcini mushroom."
-	color = "#444444"
+	color = "#68593E"
 
 	nutrition_amount = 7
 	nutrition_quality_amount = 6

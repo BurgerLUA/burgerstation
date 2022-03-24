@@ -2765,6 +2765,7 @@
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
 	},
+/obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen/freezer)
 "kh" = (
@@ -2910,6 +2911,7 @@
 /area/burgerstation/cafe/kitchen/freezer)
 "kL" = (
 /obj/structure/interactive/disposals/pipe,
+/obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen/freezer)
 "kM" = (
@@ -5273,6 +5275,7 @@
 "ty" = (
 /obj/structure/interactive/door/airlock/station/general,
 /obj/structure/interactive/disposals/pipe,
+/obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen/freezer)
 "tz" = (
@@ -5838,6 +5841,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/science)
+"vy" = (
+/obj/structure/interactive/disposals/pipe{
+	dir = 9
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile,
+/area/burgerstation/cafe/kitchen)
 "vz" = (
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile,
@@ -6029,6 +6039,14 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/science)
+"wl" = (
+/obj/decal/poster/nanotrasen{
+	dir = 1;
+	icon_state = ""
+	},
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal,
+/area/burgerstation/cafe/kitchen/freezer)
 "wm" = (
 /obj/structure/interactive/atmospherics/scrubber,
 /obj/structure/interactive/disposals/pipe{
@@ -35238,12 +35256,12 @@ ef
 aI
 bq
 aI
-jw
+wl
 kg
 kL
 kL
 ty
-mh
+vy
 mj
 mX
 mj
@@ -48628,18 +48646,18 @@ sf
 rL
 sD
 sf
-rL
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+sE
+uq
+uq
+uq
+uq
+uq
+uq
+uq
+uq
+uq
+uq
+uq
 uq
 ak
 ab
@@ -48885,19 +48903,19 @@ sg
 rL
 tt
 sd
-rL
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-uq
+sE
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 ab
 ab
@@ -49143,19 +49161,19 @@ sE
 sh
 sE
 sE
-uq
-uq
-uq
-uq
-uq
-uq
-uq
-uq
-uq
-uq
-uq
-uq
 ak
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ab
 ab
@@ -49401,18 +49419,18 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ab
 ab
