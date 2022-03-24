@@ -5,6 +5,8 @@
 	icon_state = "longboy"
 
 	screen_loc = "LEFT,BOTTOM"
+	maptext_width = VIEW_RANGE*TILE_SIZE
+
 
 	maptext = "hello"
 

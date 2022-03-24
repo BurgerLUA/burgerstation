@@ -72,6 +72,8 @@
 	var/obj/plane_master/weather/plane_master_weather
 	var/obj/plane_master/area_exterior/plane_master_area_exterior
 
+	var/obj/hud/button/examine_bar/examine_bar
+
 	var/obj/fov/fov
 
 	var/list/parallax
@@ -137,6 +139,9 @@
 	for(var/k in health_elements)
 		var/obj/hud/button/B = health_elements[k]
 		B.update_owner(null)
+
+	if(examine_bar)
+		examine_bar.update_owner(null)
 
 	stored_chat_text?.Cut()
 
@@ -268,6 +273,10 @@
 	if(!examine_overlay)
 		examine_overlay = new(src)
 	C.screen += examine_overlay
+
+	if(!examine_bar)
+		examine_bar = new(src)
+	examine_bar.update_owner(src)
 
 	if(!parallax["A"])
 		var/obj/parallax/layer1/P = new(src)

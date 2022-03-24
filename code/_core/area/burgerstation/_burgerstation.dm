@@ -84,6 +84,12 @@
 
 	map_color = COLOR_CYAN
 
+/area/burgerstation/merchant
+	name = "\improper Merchant's Store"
+	icon_state = "village"
+
+	map_color = COLOR_GOLD
+
 /area/burgerstation/cafe
 	name = "\improper Cafe"
 	icon_state = "cafe"

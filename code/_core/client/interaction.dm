@@ -210,10 +210,13 @@
 	if(!mob)
 		return ..()
 
-	if(object)
-		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
+	if(istype(object,/atom/))
+		var/atom/A = object
+		mob.examine_overlay.maptext = "<center size='3'>[A.name]</center>"
+		if(mob.examine_bar) mob.examine_bar.maptext = "[A.name]"
 	else
 		mob.examine_overlay.maptext = null
+		if(mob.examine_bar) mob.examine_bar.maptext = null
 
 	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
 		var/real_angle = get_angle(mob,location) + 90

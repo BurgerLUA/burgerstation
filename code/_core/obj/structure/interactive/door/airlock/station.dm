@@ -118,6 +118,12 @@
 	filler = "fill"
 	fill_color = COLOR_ENGINEERING
 
+/obj/structure/interactive/door/airlock/station/substation
+	name = "power substation airlock"
+	color = COLOR_ENGINEERING
+	filler = "fill"
+	fill_color = COLOR_YELLOW
+
 /obj/structure/interactive/door/airlock/station/engineering/telecomms
 	name = "telecomms airlock"
 	color = COLOR_ENGINEERING

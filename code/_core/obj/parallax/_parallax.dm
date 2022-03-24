@@ -37,7 +37,7 @@
 
 	if(last_turf != location)
 		last_turf = location
-		return C.MouseEntered(location,location,control,params)
+		return C.MouseEntered(null,location,control,params)
 
 	. = ..()
 

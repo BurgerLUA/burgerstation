@@ -53,6 +53,9 @@
 
 	var/dir_offset = TILE_SIZE
 
+/atom/proc/get_display_name(var/mob/caller)
+	return "[src.name]"
+
 /atom/proc/update_name(var/desired_name)
 	name = desired_name
 	if(label)

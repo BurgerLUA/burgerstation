@@ -76,7 +76,6 @@
 	var/list/obj/item/organ/spawning_organs_female = list()
 
 	var/list/obj/hud/button/spawning_buttons = list(
-		/obj/hud/button/examine_bar,
 		/obj/hud/button/hide_show_inventory,
 		/obj/hud/button/move,
 		/obj/hud/button/targeting_new,
