@@ -25,6 +25,5 @@
 	B.pixel_y = -tile_offset_y
 	desired_x += B.pixel_x
 	desired_y += B.pixel_y
-	world.log << "x: [desired_x], y: [desired_y]"
 	animate(B,pixel_x = clamp(desired_x,-8,8), pixel_y = clamp(desired_y,-8,8), time = 3)
 	return B
