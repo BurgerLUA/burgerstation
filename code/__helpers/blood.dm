@@ -9,8 +9,7 @@
 	var/tile_offset_y = FLOOR(desired_y/TILE_SIZE,1)
 
 	if(tile_offset_x || tile_offset_y)
-		var/turf/desired_new_loc = locate(desired_loc.x + tile_offset_x, desired_loc.y + tile_offset_y, desired_loc.z)
-		desired_loc =
+		desired_loc = locate(desired_loc.x + tile_offset_x, desired_loc.y + tile_offset_y, desired_loc.z)
 
 	if(!desired_loc)
 		return null
