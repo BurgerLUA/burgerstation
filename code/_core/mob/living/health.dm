@@ -121,22 +121,11 @@
 		var/atom/atom_to_butcher = src
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
-			atom_to_butcher = O
-			var/organ_length = length(O.attached_organs)
-			if(organ_length) //Prioritized attached organs first.
-				if(organ_length == 1)
-					atom_to_butcher = src //If there is only one organ left, it should be the last butcher.
-				else
-					var/list/valid_organs = list()
-					for(var/k in O.attached_organs)
-						var/obj/item/organ/AO = k
-						if(istype(AO,/obj/item/organ/internal)) //Ignore internal organs.
-							continue
-						valid_organs += AO
-					if(length(valid_organs))
-						atom_to_butcher = pick(valid_organs)
-
-		if(blade_damage > 0 && src.can_be_butchered(L,weapon,atom_to_butcher))
+			if(!O.qdeleting && O.loc == src) //Last part is a very safe sanity check.
+				atom_to_butcher = O.get_ending_organ()
+				if(atom_to_butcher == O)
+					atom_to_butcher = src
+		if(atom_to_butcher && blade_damage > 0 && src.can_be_butchered(L,weapon,atom_to_butcher))
 			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [atom_to_butcher.name]!"))
 			PROGRESS_BAR(L,src,max(10,src.health.health_max*0.05),.proc/on_butcher,L,atom_to_butcher)
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon,atom_to_butcher)
@@ -170,7 +159,7 @@
 
 	. = list()
 
-	var/turf/T = get_turf(caller)
+	var/turf/T = get_turf(src)
 
 	if(src.override_butcher)
 		src.create_override_contents(caller,atom_to_butcher)
@@ -191,15 +180,14 @@
 			FINALIZE(M)
 			. += M
 
-	for(var/k in atom_to_butcher.contents)
-		var/atom/movable/M = k
-		if(is_organ(M))
+	for(var/obj/item/I in atom_to_butcher.contents)
+		if(is_organ(I))
 			continue
-		M.force_move(T)
-		. += M
+		I.drop_item(T)
+		. += I
 
 	caller?.visible_message(span("danger","\The [caller.name] butchers \the [atom_to_butcher.name]!"),span("danger","You butcher \the [atom_to_butcher.name]."))
-	atom_to_butcher.on_crush()
+	atom_to_butcher.gib(hard=TRUE)
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return damage_received_multiplier

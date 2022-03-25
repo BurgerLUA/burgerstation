@@ -202,3 +202,7 @@
 
 /atom/movable/proc/dust(var/atom/source)
 	return FALSE
+
+/atom/movable/proc/gib(var/hard=FALSE)
+	qdel(src)
+	return TRUE

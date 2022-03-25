@@ -1,5 +1,5 @@
 /obj/item/container/edible/dynamic/pizza
-	name = "dough"
+	name = "pizza"
 	icon = 'icons/obj/item/consumable/food/dynamic_pizza.dmi'
 	icon_state = "bread_pizza"
 	crafting_id = "pizza"
@@ -37,7 +37,10 @@
 		"large" = 0
 	)
 
+	var/cooked_percent = 0 //0 to 1 value of how much it's cooked.
+
 /obj/item/container/edible/dynamic/pizza/sliced
+	crafting_id = "pizza_slice"
 	sliced = TRUE
 	pixel_x = 6
 	pixel_y = -1
@@ -160,10 +163,28 @@
 
 /obj/item/container/edible/dynamic/pizza/update_sprite()
 
+	var/total_raw = 0
+	var/total_cooked = 0
+
+	for(var/id in reagents.stored_reagents)
+		var/reagent/R = REAGENT(id)
+		var/volume = reagents.stored_reagents[id]
+		if(R.flags_reagent & FLAG_REAGENT_RAW)
+			total_raw += volume
+		else
+			total_cooked += volume
+
+	cooked_percent = total_cooked/(total_raw+total_cooked)
+
 	if(reagents)
 		color = reagents.color
 
 	. = ..()
+
+/obj/item/container/edible/dynamic/pizza/update_icon()
+	. = ..()
+	icon = initial(icon)
+	icon_state = "none"
 
 /obj/item/container/edible/dynamic/pizza/update_overlays()
 
@@ -189,6 +210,24 @@
 			topping.appearance_flags = appearance_flags | RESET_COLOR
 			topping.color = v[i]
 			add_overlay(topping)
+
+/obj/item/container/edible/dynamic/pizza/update_underlays()
+
+	. = ..()
+
+	var/cooked_alpha = CEILING(cooked_percent*255,1)
+	var/raw_alpha = 255 - cooked_alpha
+
+	var/image/cooked = new/image(icon,"pizza_cooked")
+	cooked.alpha = cooked_alpha
+	cooked.appearance_flags = appearance_flags
+	add_underlay(cooked)
+
+	var/image/raw = new/image(icon,"pizza_raw")
+	raw.alpha = raw_alpha
+	raw.appearance_flags = appearance_flags
+	add_underlay(raw)
+
 
 /obj/item/container/edible/dynamic/pizza/get_reagents_to_consume(var/mob/living/consumer) //I know its shitcode to do this but what can you do.
 

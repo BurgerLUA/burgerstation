@@ -29,7 +29,7 @@
 
 
 
-/obj/item/organ/internal/brain/unattach_from_parent(var/turf/T)
+/obj/item/organ/internal/brain/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		if(A.client)

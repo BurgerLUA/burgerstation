@@ -139,18 +139,6 @@
 	return TRUE
 
 /mob/living/proc/rejuvenate()
-	if(health) health.adjust_loss_smart(
-		brute = -health.get_loss(BRUTE),
-		burn = -health.get_loss(BURN),
-		tox = -health.get_loss(TOX),
-		oxy = -health.get_loss(OXY),
-		fatigue = -health.get_loss(FATIGUE),
-		pain = -health.get_loss(PAIN),
-		rad = -health.get_loss(RAD),
-		sanity = -health.get_loss(SANITY),
-		mental = -health.get_loss(MENTAL),
-		update = FALSE
-	)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
 	nutrition = initial(nutrition)
@@ -160,7 +148,17 @@
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
-	queue_health_update = TRUE
+	if(health) health.adjust_loss_smart(
+		brute = -health.get_loss(BRUTE),
+		burn = -health.get_loss(BURN),
+		tox = -health.get_loss(TOX),
+		oxy = -health.get_loss(OXY),
+		fatigue = -health.get_loss(FATIGUE),
+		pain = -health.get_loss(PAIN),
+		rad = -health.get_loss(RAD),
+		sanity = -health.get_loss(SANITY),
+		mental = -health.get_loss(MENTAL)
+	)
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -607,6 +605,7 @@ mob/living/proc/on_life_slow()
 	new/obj/effect/temp/fist(T,4,"#FFFFFF")
 	play_sound('sound/effects/anima_fragment_attack.ogg',T,range_max=VIEW_RANGE)
 	on_crush()
+	return TRUE
 
 
 /mob/living/proc/make_unrevivable() //only applies to players.

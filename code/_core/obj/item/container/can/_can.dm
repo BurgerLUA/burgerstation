@@ -1,5 +1,5 @@
 /obj/item/container/simple/
-	var/initial_reagent = /reagent/nutrition/ethanol
+	var/initial_reagent = null
 
 /obj/item/container/simple/Generate()
 	. = ..()

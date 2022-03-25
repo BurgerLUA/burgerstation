@@ -49,7 +49,7 @@
 		var/atom/movable/M = k
 		M.on_crush(message)
 
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 

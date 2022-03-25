@@ -122,7 +122,7 @@
 	if(driving)
 		return FALSE
 	drop_all_items(get_turf(src))
-	return ..()
+	. = ..()
 
 /mob/living/advanced/proc/update_clothes()
 
@@ -494,3 +494,11 @@ mob/living/advanced/Login()
 	for(var/k in organs)
 		var/obj/item/organ/O = k
 		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+
+/mob/living/advanced/gib(var/hard=FALSE)
+
+	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
+	if(O)
+		return O.gib(hard)
+
+	. = ..()

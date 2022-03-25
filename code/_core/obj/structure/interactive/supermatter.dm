@@ -126,6 +126,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		var/mob/living/L = attacker
 		if(L.loyalty_tag == "NanoTrasen")
 			return FALSE
+
 	. = ..()
 
 /obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)

@@ -253,36 +253,29 @@
 	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
 
 	if(damage_type && all_damage_types[damage_type])
-
-		if(!owner || owner.qdeleting)
-			return TRUE
-
 		var/damagetype/DT = all_damage_types[damage_type]
+		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner,weapon,null,DT))
+			var/list/params = list()
+			params[PARAM_ICON_X] = num2text(shoot_x)
+			params[PARAM_ICON_Y] = num2text(shoot_y)
 
-		if(!hit_atom.can_be_attacked(owner,weapon,null,DT))
-			return TRUE
+			var/precise = FALSE
+			if(is_living(hit_atom))
+				var/mob/living/L = hit_atom
+				if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+					precise = TRUE
 
-		var/list/params = list()
-		params[PARAM_ICON_X] = num2text(shoot_x)
-		params[PARAM_ICON_Y] = num2text(shoot_y)
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
 
-		var/precise = FALSE
-		if(is_living(hit_atom))
-			var/mob/living/L = hit_atom
-			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
-				precise = TRUE
+			if(!object_to_damage)
+				DT.perform_miss(null,hit_atom,weapon)
+				return FALSE
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
+			if(DT.falloff > 0)
+				damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
-		if(!object_to_damage)
-			DT.perform_miss(null,hit_atom,weapon)
-			return FALSE
-
-		if(DT.falloff > 0)
-			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
-
-		if(damage_multiplier > 0)
-			DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+			if(damage_multiplier > 0)
+				DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 

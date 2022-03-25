@@ -18,21 +18,13 @@
 
 	density = FALSE
 
-/obj/effect/cleanable/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
-
-	if(!desired_x)
-		desired_x = 0
-
-	if(!desired_y)
-		desired_y = 0
-
-	desired_x *=2
-	desired_y *=2
+/obj/effect/cleanable/blood/New(var/desired_location,var/desired_color)
 
 	if(desired_color) color = desired_color
 
 	transform = get_base_transform()
 
+	/*
 	if(animate_position)
 		desired_x = clamp(desired_x,-TILE_SIZE,TILE_SIZE)
 		desired_y = clamp(desired_y,-TILE_SIZE,TILE_SIZE)
@@ -52,6 +44,7 @@
 		desired_y = clamp(desired_y,-TILE_SIZE/2,TILE_SIZE/2)
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
+	*/
 
 	update_blood_level(loc,null)
 

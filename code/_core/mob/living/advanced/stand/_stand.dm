@@ -124,7 +124,8 @@
 		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 		force_move(owner.loc)
 		remove_status_effect(IMMORTAL)
-		mouse_opacity = initial(mouse_opacity)
+		var/initial_mouse = initial(mouse_opacity)
+		mouse_opacity = initial_mouse ? initial_mouse : 1
 	else
 		update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 		add_status_effect(IMMORTAL)

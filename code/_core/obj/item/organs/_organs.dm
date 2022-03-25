@@ -18,7 +18,6 @@
 	var/attach_flag //The organ type that it wishes to attach to. Use FLAG_ORGAN_ flags.
 	var/obj/item/organ/attached_organ //The organ that it is attached to.
 	var/list/obj/item/organ/attached_organs //The organs that are attached to it.
-	var/attach_method = 0 //0 Means it's attached to it. 1 means inside it. TODO: Flags.
 
 	//var/style
 
@@ -149,22 +148,80 @@
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
-		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && prob(SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])) )
-			if(is_player(A))
-				var/mob/living/advanced/player/P = A
-				if(P.dead && is_player(attacker)) //Only gib if the player is dead and the person gibbing is a player.
-					var/mob/living/advanced/player/P2 = attacker
-					if(P2.client)
-						P.make_unrevivable()
-						gib()
-			else if(!A.has_status_effect(ZOMBIE))
-				if(A.client)
-					var/turf/T = get_turf(A)
-					A.client.make_ghost(T ? T : locate(128,128,1))
-				gib()
-				A.death()
+		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && !(A.override_butcher || length(A.butcher_contents)))
+			var/gib_chance = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])
+			if(A.dead)
+				gib_chance -= length(attached_organs)*10 //No cheesing torso.
+				if(gib_chance > 0) gib_chance += min(0,health.health_current)*0.5 //More damage means more of a chance to gib.
 			else
-				gib()
+				gib_chance -= length(attached_organs)*30 //No cheesing torso.
+			if(gib_chance > 0 && prob(gib_chance))
+				if(is_player(A))
+					var/mob/living/advanced/player/P = A
+					if(P.dead && is_player(attacker)) //Only gib if the player is dead
+						var/mob/living/advanced/player/P2 = attacker
+						if(P2.client) //and the person gibbing is an active player
+							gib()
+						//Otherwise, don't gib.
+				else
+					gib()
+
+
+/obj/item/organ/proc/get_ending_organ(var/limit=10)
+	set background = 1
+	var/list/valid_organs = list()
+	for(var/k in src.attached_organs)
+		var/obj/item/organ/AO = k
+		if(AO.qdeleting)
+			continue
+		if(!AO.can_be_targeted) //Internal organ.
+			continue
+		valid_organs += AO
+	if(!length(valid_organs))
+		return src
+	var/obj/item/organ/O = pick(valid_organs)
+	if(limit <= 0)
+		return O
+	limit--
+	return O.get_ending_organ(limit)
+
+/obj/item/organ/gib(var/hard=FALSE) //Hard gib destroys the limb.
+
+	if(!can_gib)
+		return FALSE
+
+	if(qdeleting) //Likely already gibbed.
+		return FALSE
+
+	var/turf/T = get_turf(src)
+	if(is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
+		if(!A.has_status_effect(ZOMBIE))
+			A.death()
+			A.make_unrevivable()
+			if(A.client)
+				A.client.make_ghost(T ? T : locate(128,128,1))
+		if(!A.dead)
+			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
+		if(A.blood_type)
+			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
+			var/reagent/R = REAGENT(A.blood_type)
+			for(var/i=1,i<=clamp(organ_size,1,4),i++)
+				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
+			if(gib_icon_state)
+				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
+				if(BG)
+					BG.icon_state = gib_icon_state
+					BG.flesh_color = color
+					BG.update_sprite()
+
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
+		O.gib(hard)
+
+	unattach_from_parent(T,hard)
+
+	return TRUE
 
 /obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
 	return FALSE
@@ -236,43 +293,6 @@
 	for(var/k in attached_organs)
 		var/obj/item/organ/O = k
 		O.unattach_from_parent(T,do_delete)
-	return TRUE
-
-/obj/item/organ/proc/gib(var/hard=FALSE) //Hard gib also gibs attached organs.
-
-	if(!can_gib)
-		return TRUE
-
-	var/turf/T = get_turf(src)
-
-	if(is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		if(!A.dead)
-			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
-		if(A.blood_type)
-			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
-			var/reagent/R = REAGENT(A.blood_type)
-			for(var/i=1,i<=clamp(organ_size,1,4),i++)
-				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
-			if(gib_icon_state)
-				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
-				if(BG)
-					BG.icon_state = gib_icon_state
-					BG.flesh_color = color
-					BG.update_sprite()
-
-	for(var/k in attached_organs)
-		var/obj/item/organ/O = k
-		if(O.qdeleting)
-			continue
-		if(hard)
-			O.gib(hard)
-		else
-			unattach_from_parent(T)
-
-
-	unattach_from_parent(T,TRUE)
-
 	return TRUE
 
 /obj/item/organ/proc/on_life()

@@ -77,7 +77,7 @@ var/global/list/kitchen_gun_slogans = list(
 	"And it sparkles like new!",
 	"GOODBYE DIRT!",
 	"I LOVE YOU, KITCHEN GUN!",
-	"HAHAHAHAHA",
+	"HAHAHAHAHA!",
 	"There! All clean again!"
 )
 
@@ -92,14 +92,37 @@ var/global/list/kitchen_gun_slogans = list(
 	weight = 7
 	heat_max = 0.03
 	value = 800
+	var/slogan_number = 1
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()
 	if(.)
 		caller.do_say("BANG!")
-		CALLBACK("kitchen_gun_slogan_\ref[caller]",SECONDS_TO_DECISECONDS(2),caller,/mob/do_say,pick(kitchen_gun_slogans))
+		CALLBACK("kitchen_gun_slogan_\ref[caller]",SECONDS_TO_DECISECONDS(2),src,.proc/say_slogan,caller)
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/proc/say_slogan(var/mob/caller)
+	var/slogan_to_say = kitchen_gun_slogans[slogan_number]
+	caller.do_say(slogan_to_say)
+	slogan_number += 1
+	if(slogan_number > length(kitchen_gun_slogans))
+		slogan_number = 1
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
+
+	if(istype(P,/obj/projectile/thrown/))
+		return ..()
+
+	var/turf/T = P.current_loc
+	if(istype(T))
+		for(var/obj/effect/cleanable/C in T.contents)
+			qdel(C)
+
+	. = ..()
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
-	if(damage_type_to_use == /damagetype/ranged/bullet/pistol_9mm)
-		projectile_to_use = /obj/projectile/bullet/firearm/pistol/cleaning
+
 	. = ..()
+
+	for(var/k in .)
+		var/obj/projectile/P = k
+		P.hit_target_turf = TRUE

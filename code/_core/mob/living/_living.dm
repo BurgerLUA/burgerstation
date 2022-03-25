@@ -412,12 +412,16 @@
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
+	gib(TRUE)
+
+/mob/living/gib(var/hard=FALSE)
 	if(blood_type)
 		var/reagent/R = REAGENT(blood_type)
+		var/turf/T = get_turf(src)
 		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
-	death(TRUE)
-	if(!qdeleting) qdel(src)
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+	. = ..()
+
 
 /mob/living/on_fall(var/turf/old_loc)
 	. = ..()

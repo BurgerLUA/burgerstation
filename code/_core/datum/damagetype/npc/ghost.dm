@@ -23,21 +23,3 @@
 
 	attack_delay = 1
 	attack_delay_max = 1
-
-/*
-/damagetype/npc/ghost/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
-
-	for(var/mob/living/L in victims)
-		L.on_crush()
-
-	return TRUE
-
-/
-/damagetype/npc/ghost/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		if(L.dead) L.on_crush()
-
-	return ..()
-*/
