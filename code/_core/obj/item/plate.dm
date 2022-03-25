@@ -13,6 +13,8 @@
 	var/max_load = 4
 	var/max_size = SIZE_2
 
+	pixel_y = 4
+
 /obj/item/plate/get_examine_list(var/mob/examiner)
 	. = ..()
 	. += div("notice","This object holds up to [max_load] items that are size [max_size] or lower.")

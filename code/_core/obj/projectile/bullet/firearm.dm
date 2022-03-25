@@ -32,6 +32,19 @@
 	name = "pistol bullet"
 	icon_state = "bullet_small"
 
+/obj/projectile/bullet/firearm/pistol/cleaning //For the kitchen gun.
+	icon_state = "bullet_small"
+	hit_target_turf = TRUE
+
+/obj/projectile/bullet/firearm/pistolt/cleaning/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(. && hit_atom)
+		var/turf/T = hit_atom
+		if(!isturf(T))
+			T = get_turf(hit_atom)
+			for(var/obj/effect/cleanable/C in T.contents)
+				qdel(C)
+
 /obj/projectile/bullet/firearm/shotgun_pellet
 	name = "shotgun pellet"
 	icon_state = "pellet"

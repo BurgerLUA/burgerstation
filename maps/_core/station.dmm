@@ -1769,7 +1769,7 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "gv" = (
-/obj/structure/table/simple,
+/obj/structure/table,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "gw" = (
@@ -2774,7 +2774,10 @@
 /area/burgerstation/science)
 "ki" = (
 /obj/structure/interactive/crate/closet/freezer,
-/mob/living/advanced/npc/beefman,
+/mob/living/advanced/npc/beefman{
+	icon_state = "directional";
+	dir = 8
+	},
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen/freezer)
 "kj" = (
@@ -2994,12 +2997,15 @@
 /area/burgerstation/cafe/kitchen)
 "ld" = (
 /obj/structure/interactive/vending/chef/wardrobe,
-/turf/simulated/floor/tile/red,
-/area/burgerstation/cafe/kitchen)
+/turf/simulated/floor/tile/coldroom,
+/area/burgerstation/cafe/kitchen/freezer)
 "le" = (
-/obj/structure/table/steel,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/central)
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 8
+	},
+/obj/structure/interactive/vending/chef/equipment,
+/turf/simulated/floor/tile/coldroom,
+/area/burgerstation/cafe/kitchen/freezer)
 "lf" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
@@ -3090,12 +3096,6 @@
 	},
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
-"lt" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 8
-	},
-/turf/simulated/floor/tile/coldroom,
-/area/burgerstation/cafe/kitchen/freezer)
 "lu" = (
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cafe/bar)
@@ -3188,10 +3188,7 @@
 /area/burgerstation/hall/west)
 "lM" = (
 /obj/structure/interactive/crate,
-/obj/item/weapon/melee/combat_knife,
-/turf/simulated/floor/tile/coldroom,
-/area/burgerstation/cafe/kitchen/freezer)
-"lN" = (
+/obj/item/weapon/melee/sword/butcher_cleaver,
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen/freezer)
 "lO" = (
@@ -3203,11 +3200,9 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cafe)
 "lQ" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/turf/simulated/floor/tile,
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/disposals/pipe/ending,
+/turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "lR" = (
 /obj/structure/table/reinforced/steel,
@@ -3282,22 +3277,22 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/botany)
 "mf" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 6
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/disposals/pipe/ending,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/cafe)
+"mg" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1
 	},
 /turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
-"mg" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/turf/simulated/floor/tile,
-/area/burgerstation/cafe/kitchen)
 "mh" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 9
+/obj/structure/table/rack/grey,
+/turf/simulated/floor/tile{
+	icon_state = "single"
 	},
-/turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mi" = (
 /obj/structure/table/cooking/grill,
@@ -3309,26 +3304,32 @@
 /turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "mk" = (
-/obj/structure/interactive/vending/chef/dinnerwear,
+/obj/structure/interactive/vending/chef/dinnerware,
 /turf/simulated/floor/tile{
 	icon_state = "single"
 	},
 /area/burgerstation/cafe/kitchen)
 "ml" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 4
+	},
 /obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/red,
+/obj/structure/interactive/disposals/pipe{
+	dir = 6
+	},
+/turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mm" = (
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering/lobby)
 "mn" = (
-/obj/structure/interactive/disposals/pipe/ending{
+/obj/structure/interactive/wire/red,
+/obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
-/obj/structure/interactive/disposals/machine/chute,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/cafe)
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/central)
 "mo" = (
 /obj/structure/interactive/vending/cigarette,
 /turf/simulated/floor/tile/dark/ish,
@@ -3421,17 +3422,18 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/botany)
 "mH" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
 	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile,
+/turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "mI" = (
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mJ" = (
-/obj/structure/interactive/disposals/pipe,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "mK" = (
@@ -3858,16 +3860,19 @@
 	},
 /area/burgerstation/cafe/kitchen)
 "ok" = (
-/obj/structure/interactive/disposals/pipe,
+/obj/structure/table/reinforced/steel,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
 /turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "ol" = (
-/obj/structure/table/rack/grey,
-/obj/structure/interactive/disposals/pipe/junction/flipped,
-/turf/simulated/floor/tile{
-	icon_state = "single"
+/obj/structure/interactive/chair/stool,
+/obj/structure/interactive/disposals/pipe{
+	dir = 9
 	},
-/area/burgerstation/cafe/kitchen)
+/turf/simulated/floor/tile/dark/ish,
+/area/burgerstation/cafe)
 "om" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tile/red,
@@ -3966,9 +3971,9 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cafe/kitchen/freezer)
 "oG" = (
-/obj/marker/spawning/window,
+/obj/structure/interactive/wire/green,
 /obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "oH" = (
 /obj/structure/interactive/fire_closet{
@@ -5483,6 +5488,9 @@
 /obj/marker/lobby,
 /turf/simulated/wall/metal,
 /area/burgerstation/medical)
+"ul" = (
+/turf/simulated/wall/metal/reinforced,
+/area/space)
 "um" = (
 /obj/structure/interactive/bed/sleeper/medical,
 /turf/simulated/floor/tile{
@@ -5698,6 +5706,7 @@
 /area/burgerstation/cafe)
 "va" = (
 /obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "vb" = (
@@ -5719,6 +5728,7 @@
 "vf" = (
 /obj/structure/interactive/door/airlock/station/kitchen/glass,
 /obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "vg" = (
@@ -5735,8 +5745,8 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "vj" = (
-/obj/structure/interactive/disposals/pipe,
 /obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "vk" = (
@@ -6029,26 +6039,20 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/kitchen/freezer)
 "wm" = (
-/obj/structure/interactive/atmospherics/scrubber,
-/obj/structure/interactive/disposals/pipe{
+/obj/structure/interactive/disposals/pipe/junction{
 	dir = 8
 	},
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1
-	},
-/turf/simulated/floor/tile/red,
+/turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "wn" = (
 /obj/structure/table/rack/grey,
 /turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "wo" = (
-/obj/structure/interactive/disposals/machine/chute,
-/obj/structure/interactive/disposals/pipe/ending{
-	dir = 8
-	},
-/turf/simulated/floor/tile/red,
-/area/burgerstation/cafe/kitchen)
+/obj/structure/table/steel,
+/obj/item/plate,
+/turf/simulated/floor/tile/dark/ish,
+/area/burgerstation/cafe)
 "wp" = (
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
@@ -6085,12 +6089,10 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "wx" = (
-/obj/structure/interactive/disposals/pipe/junction{
-	dir = 8
-	},
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/tile/grey,
-/area/burgerstation/hall/central)
+/obj/structure/table/fancy,
+/obj/item/container/simple/beer,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/cafe)
 "wy" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
 	dir = 8
@@ -6510,9 +6512,29 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
+"xN" = (
+/turf/simulated/wall/metal/reinforced,
+/area/space/light)
 "xO" = (
 /obj/structure/interactive/atm,
 /turf/simulated/wall/metal,
+/area/burgerstation/cafe)
+"xP" = (
+/obj/structure/table/steel,
+/obj/item/weapon/melee/sword/chef_knife,
+/turf/simulated/floor/tile{
+	icon_state = "single"
+	},
+/area/burgerstation/cafe/kitchen)
+"xQ" = (
+/obj/structure/table/fancy,
+/obj/item/weapon/melee/sword/fork,
+/turf/simulated/floor/wood/rich,
+/area/burgerstation/cafe)
+"xR" = (
+/obj/structure/table/fancy,
+/obj/item/weapon/melee/sword/spoon,
+/turf/simulated/floor/wood/rich,
 /area/burgerstation/cafe)
 "xS" = (
 /obj/decal/hazard{
@@ -6526,6 +6548,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
+"xU" = (
+/obj/structure/table/wood,
+/obj/item/container/simple/beer,
+/turf/simulated/floor/tile/dark/ish,
+/area/burgerstation/cafe)
 "xV" = (
 /obj/decal/hazard{
 	dir = 10;
@@ -6537,6 +6564,10 @@
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
+"xX" = (
+/obj/structure/interactive/vending/chef/dinnerware,
+/turf/simulated/floor/tile/dark,
+/area/burgerstation/cafe)
 "yf" = (
 /obj/structure/interactive/vending/nanotrasen/loadout,
 /turf/simulated/floor/tile/tint,
@@ -27777,9 +27808,9 @@ ak
 ak
 ak
 ak
-ab
-ab
-ab
+ak
+ak
+ak
 ab
 ab
 ab
@@ -28033,9 +28064,9 @@ gN
 gN
 gN
 gN
-ak
-ak
-ak
+gN
+gN
+gN
 ak
 ab
 ab
@@ -28289,9 +28320,9 @@ ru
 ru
 ru
 ru
-gN
-gN
-gN
+ru
+ru
+ru
 gN
 ak
 ab
@@ -28545,9 +28576,9 @@ gN
 gN
 gN
 gN
-ru
-ru
-ru
+oa
+oa
+oa
 ru
 gN
 ak
@@ -35197,15 +35228,15 @@ kK
 lM
 qx
 kp
-mH
 ml
+oG
 va
-ml
+oG
 va
-ml
+oG
 vf
-vi
-pm
+vj
+pe
 pE
 pS
 ak
@@ -35454,7 +35485,7 @@ kL
 kL
 ty
 vy
-mj
+mH
 mX
 mj
 mI
@@ -35707,11 +35738,11 @@ bq
 aI
 jw
 ki
-lt
-lN
+le
+ld
 jx
 ws
-mI
+mJ
 nR
 vu
 om
@@ -35968,15 +35999,15 @@ kJ
 oF
 kJ
 mi
-mj
-lb
+mH
+xP
 om
 lb
-mf
-ol
-oG
-vj
-wx
+mj
+mh
+on
+vi
+mn
 pE
 pV
 qD
@@ -36224,13 +36255,13 @@ aj
 ak
 ak
 lO
-ld
-mI
+ws
+mJ
 mj
 nw
 mj
-mg
-wo
+mI
+mj
 on
 vi
 ww
@@ -36453,9 +36484,9 @@ ab
 ab
 ab
 ab
-ab
-ab
-ak
+ul
+ul
+xN
 aV
 aV
 cq
@@ -36482,11 +36513,11 @@ ak
 ak
 lO
 mk
-mj
+mH
 lc
 om
 lb
-wm
+mg
 jy
 oH
 vi
@@ -36710,7 +36741,7 @@ ab
 ab
 ab
 ab
-ab
+ul
 ab
 ak
 aV
@@ -36738,12 +36769,12 @@ aj
 ak
 ak
 lO
-mf
-mJ
-ok
-mJ
-ok
-mh
+lQ
+wm
+mj
+mI
+mj
+mI
 on
 oI
 vi
@@ -36967,7 +36998,7 @@ ab
 ab
 ab
 ab
-ab
+ul
 ab
 ak
 aV
@@ -36995,14 +37026,14 @@ aj
 ak
 ak
 lO
-lQ
-wr
+lR
+ok
 lR
 wr
 lR
 wr
 oo
-le
+gv
 vi
 wy
 pG
@@ -37252,8 +37283,8 @@ aj
 ak
 ak
 lP
-mn
-mL
+mf
+ol
 nb
 mL
 nb
@@ -37481,9 +37512,9 @@ ab
 ab
 ab
 ab
-ab
-ab
-ak
+ul
+ul
+xN
 aV
 ae
 vV
@@ -37509,7 +37540,7 @@ aj
 ak
 ak
 lP
-mo
+wo
 mp
 mM
 mp
@@ -37738,7 +37769,7 @@ ab
 ab
 ab
 ab
-ab
+ul
 ab
 ak
 aV
@@ -37766,7 +37797,7 @@ aj
 ak
 ak
 lP
-mp
+xX
 mM
 mp
 mM
@@ -37995,7 +38026,7 @@ ab
 ab
 ab
 ab
-ab
+ul
 ab
 ak
 aV
@@ -38282,10 +38313,10 @@ bv
 kz
 mp
 mM
-mK
-mK
+xQ
+xR
 mp
-nT
+xU
 nk
 oK
 vi
@@ -38509,9 +38540,9 @@ ab
 ab
 ab
 ab
-ab
-ab
-ak
+ul
+ul
+xN
 aV
 ae
 vV
@@ -38766,7 +38797,7 @@ ab
 ab
 ab
 ab
-ab
+ul
 ab
 ak
 aV
@@ -39023,7 +39054,7 @@ ab
 ab
 ab
 ab
-ab
+ul
 ab
 ak
 aV
@@ -39825,7 +39856,7 @@ kz
 mp
 vd
 mK
-mK
+wx
 mp
 nT
 nk
@@ -41113,7 +41144,7 @@ mz
 mp
 mM
 mp
-mM
+mo
 oN
 ku
 pv
@@ -46006,7 +46037,7 @@ gU
 gV
 eX
 sb
-tb
+sb
 tb
 sj
 ts
@@ -46264,7 +46295,7 @@ ur
 us
 tb
 tb
-sb
+tb
 qg
 qg
 tH
@@ -46520,7 +46551,7 @@ hF
 gU
 gJ
 sb
-tb
+sb
 tb
 tb
 tb

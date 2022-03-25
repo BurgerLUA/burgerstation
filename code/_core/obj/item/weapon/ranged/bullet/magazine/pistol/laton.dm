@@ -71,3 +71,35 @@
 	shoot_delay = 1.25
 	weight = 4
 	heat_max = 0.06
+	value = 350
+
+var/global/list/kitchen_gun_slogans = list(
+	"And it sparkles like new!",
+	"GOODBYE DIRT!",
+	"I LOVE YOU, KITCHEN GUN!",
+	"HAHAHAHAHA",
+	"There! All clean again!"
+)
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen
+	name = "9mm Laton Kitchen Gun"
+	desc = "And it sparkles like new!"
+	desc_extended = "Say goodbye to daily stains and dirty surfaces with new Laton Kitchen Gun! A modified 9mm Laton utilizing special jaintorial silver technology to clean stains and spills as you shoot, as long as you use standard 9mm ammo. Shoots 3 round bursts."
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_kitchen.dmi'
+	shoot_delay = 5
+	burst_delay = 25
+	max_bursts = 3
+	weight = 7
+	heat_max = 0.03
+	value = 800
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
+	. = ..()
+	if(.)
+		caller.do_say("BANG!")
+		CALLBACK("kitchen_gun_slogan_\ref[caller]",SECONDS_TO_DECISECONDS(2),caller,/mob/do_say,pick(kitchen_gun_slogans))
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+	if(damage_type_to_use == /damagetype/ranged/bullet/pistol_9mm)
+		projectile_to_use = /obj/projectile/bullet/firearm/pistol/cleaning
+	. = ..()

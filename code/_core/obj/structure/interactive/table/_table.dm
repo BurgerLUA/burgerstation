@@ -21,7 +21,7 @@
 
 	density = TRUE
 
-	pixel_y = 3
+	pixel_y = 0
 
 /obj/structure/table/PostInitialize()
 
@@ -126,6 +126,8 @@ obj/structure/table/fancy
 	pixel_y = -1
 	corner_category = "table_fancy"
 
+	pixel_y = 4
+
 obj/structure/table/glass
 	name = "glass table"
 	icon = 'icons/obj/structure/table/glass.dmi'
@@ -159,6 +161,8 @@ obj/structure/table/reinforced
 	icon_state = "table"
 
 	corner_category = "table_reinforced"
+
+	pixel_y = 3
 
 obj/structure/table/reinforced/steel
 	color = COLOR_STEEL_LIGHT
