@@ -34,7 +34,7 @@
 /damagetype/ranged/ling_tentacle/pull/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(victim))
-		var/list/offsets = direction_to_pixel_offset(get_dir(attacker,victim))
+		var/list/offsets = get_directional_offsets(attacker,victim)
 		var/mob/living/L = victim
 		var/mob/living/A = attacker
 		var/distance = get_dist(A,L)

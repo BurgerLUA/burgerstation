@@ -6,7 +6,7 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAMCRIT,STUN,PARRIED))
 		return FALSE
 
-	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
+	if(grabbing_hand && grabbing_hand.owner && is_behind(grabbing_hand.owner,src))
 		return FALSE
 
 	. = ..()

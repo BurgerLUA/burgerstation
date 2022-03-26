@@ -419,7 +419,7 @@
 		var/reagent/R = REAGENT(blood_type)
 		var/turf/T = get_turf(src)
 		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 	. = ..()
 
 

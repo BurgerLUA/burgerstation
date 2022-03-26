@@ -178,8 +178,6 @@
 	if(!NewLoc || NewLoc == OldLoc)
 		return FALSE
 
-	//var/move_direction = get_dir(OldLoc,NewLoc)
-
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 

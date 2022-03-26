@@ -218,20 +218,16 @@
 		mob.examine_overlay.maptext = null
 		if(mob.examine_bar) mob.examine_bar.maptext = null
 
-	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
-		var/real_angle = get_angle(mob,location) + 90
-		var/desired_x_offset = sin(real_angle)
-		var/desired_y_offset = cos(real_angle)
-		var/real_dir = angle2dir(real_angle)
-		is_zoomed = real_dir
-		mob.set_dir(real_dir)
-		update_camera_offset(desired_x_offset,desired_y_offset)
-	else if(is_living(mob))
-		var/mob/living/L = mob
-		if(L.intent == INTENT_HARM)
-			var/real_angle = get_angle(mob,location) + 90
-			var/real_dir = angle2dir(real_angle)
-			mob.set_dir(real_dir)
+	if(mob && isturf(location))
+		if(zoom_held && (world.time - zoom_time) > 4)
+			var/list/offsets = get_directional_offsets(mob,location)
+			is_zoomed = get_dir_advanced(mob,location)
+			mob.set_dir(is_zoomed)
+			update_camera_offset(offsets[1],offsets[2])
+		else if(is_living(mob))
+			var/mob/living/L = mob
+			if(L.intent == INTENT_HARM)
+				mob.set_dir(get_dir_advanced(mob,location))
 
 	. = ..()
 

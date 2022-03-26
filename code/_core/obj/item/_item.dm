@@ -275,7 +275,7 @@ var/global/list/rarity_to_mul = list(
 		add_blend(
 			"bloodstain",
 			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
-			desired_icon_state = blood_stain_intensity ? "[blood_stain_intensity]" : null,
+			desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
 			desired_color = blood_stain_color,
 			desired_blend = ICON_ADD,
 			desired_type = ICON_BLEND_MASK,
@@ -769,19 +769,32 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
 
-	if(!enable_blood_stains || desired_level <= 0 || !desired_color)
+	if(!force && !enable_blood_stains)
+		return FALSE
+
+	if(!blood_stain_color && !desired_color)
+		return FALSE
+
+	desired_level = clamp(desired_level,0,5)
+
+	if(!enable_blood_stains || desired_level <= 0)
 		remove_blend("bloodstain")
 		return TRUE
 
-	desired_level = clamp(CEILING(desired_level,1),0,5)
+	//Store the old values.
+	var/old_level = blood_stain_intensity
+	var/old_color = blood_stain_color
 
-	if(!force && desired_level == blood_stain_intensity && desired_color == blood_stain_color)
+	//Set the new values.
+	blood_stain_intensity = desired_level
+	if(desired_color)
+		blood_stain_color = desired_color
+
+	//If the old values are the same as the new levels, don't even bother doing an update.
+	if(!force && CEILING(old_level,1) == CEILING(blood_stain_intensity,1) && old_color == desired_color)
 		return FALSE
 
-	blood_stain_intensity = desired_level
-	blood_stain_color = desired_color
-
-	add_blend("bloodstain", desired_icon_state = blood_stain_intensity ? "[blood_stain_intensity]" : null, desired_color = blood_stain_color)
+	add_blend("bloodstain", desired_icon_state = blood_stain_intensity > 0 ? "[CEILING(blood_stain_intensity,1)]" : null, desired_color = blood_stain_color)
 	update_sprite()
 
 	if(is_inventory(loc))
@@ -816,7 +829,7 @@ var/global/list/rarity_to_mul = list(
 		add_overlay(I)
 
 	if(enable_blood_stains && blood_stain_intensity > 0 && blood_stain_color)
-		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[blood_stain_intensity]")
+		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[CEILING(blood_stain_intensity,1)]")
 		I.appearance_flags = RESET_COLOR
 		I.blend_mode = BLEND_INSET_OVERLAY
 		I.color = blood_stain_color

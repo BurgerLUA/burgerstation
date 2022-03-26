@@ -113,7 +113,7 @@
 
 	//shoot gun
 	else if(wielded)
-		if(angle2dir_cardinal(get_angle(caller,object)+90)==linked_gun.dir)
+		if(angle2dir_cardinal(get_angle(caller,object))==linked_gun.dir)
 			linked_gun.stored_weapon.shoot(caller,object,location,params,damage_multiplier=1)
 		else
 			caller.to_chat(span("warning","You can't turn the gun that far!"))

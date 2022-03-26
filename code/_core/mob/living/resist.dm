@@ -28,7 +28,7 @@
 		if(attacker)
 			var/attacker_power = attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10
 			var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)*5
-			var/difficulty = (attacker_power - src_power) * (get_dir(attacker,src) == src.dir) ? 5 : 1
+			var/difficulty = (attacker_power - src_power) * (is_behind(attacker,src) ? 1 : 5)
 			if(resist_counter >= difficulty)
 				src.visible_message(
 					span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),

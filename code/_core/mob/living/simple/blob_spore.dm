@@ -53,7 +53,7 @@
 		smoke(T,10,SECONDS_TO_DECISECONDS(3),reagents,src,255)
 		var/reagent/R = REAGENT(blood_type)
 		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 
 	. = ..()
 

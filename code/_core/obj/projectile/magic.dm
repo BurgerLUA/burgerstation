@@ -137,7 +137,7 @@
 	if(!target_to_track || target_to_track.z != src.z || target_to_track.qdeleting)
 		return .
 
-	var/desired_angle = get_angle(current_loc,target_to_track) + 90
+	var/desired_angle = get_angle(current_loc,target_to_track)
 
 	if(!isnum(last_angle))
 		last_angle = desired_angle

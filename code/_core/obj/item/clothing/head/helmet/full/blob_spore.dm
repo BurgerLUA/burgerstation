@@ -87,7 +87,7 @@
 			if(A.blood_type)
 				var/reagent/R = REAGENT(A.blood_type)
 				for(var/i=1,i<=2,i++)
-					create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+					create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 		next_feed = world.time + SECONDS_TO_DECISECONDS(1)
 
 	if(A.ai && !A.is_busy() && prob(25))

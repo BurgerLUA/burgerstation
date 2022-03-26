@@ -402,7 +402,7 @@ var/global/list/all_damage_numbers = list()
 				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
 		//Blocking
-		if(L.attack_flags & CONTROL_MOD_BLOCK && abs(get_angle(victim,attacker)) <= 90)
+		if(L.attack_flags & CONTROL_MOD_BLOCK && is_facing(L,attacker))
 			block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
 			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier,block_multiplier)
 		else
@@ -654,9 +654,7 @@ var/global/list/all_damage_numbers = list()
 		var/multiplier = TILE_SIZE * (damage_dealt / victim.health.health_max) * 2
 		multiplier = clamp(multiplier,0,TILE_SIZE*0.25)
 
-		var/attack_direction = get_dir(attacker,victim)
-		var/list/offsets = direction_to_pixel_offset(attack_direction)
-
+		var/list/offsets = get_directional_offsets(attacker,victim)
 		if(ismob(victim))
 			var/mob/M = victim
 			if(M.client)
@@ -702,7 +700,7 @@ var/global/list/all_damage_numbers = list()
 
 	var/attack_delay = get_attack_delay(attacker)
 
-	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
+	var/list/pixel_offset = get_directional_offsets(attacker,victim)
 
 	var/matrix/attack_matrix = attacker.get_base_transform()
 	attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)

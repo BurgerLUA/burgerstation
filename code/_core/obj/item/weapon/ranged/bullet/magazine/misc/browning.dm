@@ -73,7 +73,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
-	if(angle2dir_cardinal(get_angle(caller,object)+90)==linked_gun.dir)
+	if(angle2dir_cardinal(get_angle(caller,object))==linked_gun.dir)
 		return TRUE
 	else
 		caller.to_chat(span("warning","Your finger slips!"))

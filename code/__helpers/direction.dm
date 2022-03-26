@@ -7,25 +7,19 @@ proc/direction_to_pixel_offset(var/dir)
 	return list(offset_x,offset_y)
 
 /proc/get_angle(var/atom/A1,var/atom/A2)
-	if(!A1 || !A2)
+	if(!A1 || !A1.z || !A2 || !A2.z)
 		return 0
-	return ATAN2(A2.x - A1.x,A1.y - A2.y)
+	return MODULUS(ATAN2(A2.x - A1.x,A1.y - A2.y) + 90,360) //The 90 offset is needed.
 
-/atom/proc/is_facing(var/atom/A) //Strict means 90 degree cone. Not means 180 degree cone.
+/proc/is_behind(var/atom/A,var/atom/B) //Returns the facing direction if A is directly behind B.
+	return get_true_4dir(B.dir) & get_dir_advanced(A,B)
 
-	var/sight_dir = get_dir(src,A)
+/proc/is_facing(var/atom/A,var/atom/B) //Returns the facing direction if A is facing B.
+	return get_true_4dir(A.dir) & get_dir_advanced(A,B)
 
-	if(dir == sight_dir)
-		return TRUE
-
-	if(turn(dir,45) == sight_dir)
-		return TRUE
-
-	if(turn(dir,-45) == sight_dir)
-		return TRUE
-
-	return FALSE
-
+/proc/get_directional_offsets(var/atom/A,var/atom/B)
+	var/angle = get_angle(A,B)
+	return list(sin(angle),cos(angle))
 
 proc/dir2text(var/dir)
 
@@ -56,7 +50,9 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 	return dir
 
-
+/proc/get_dir_advanced(var/atom/A,var/atom/B,var/cardinal_only=FALSE)
+	var/angle = get_angle(A,B)
+	return cardinal_only ? angle2dir_cardinal(angle) : angle2dir(angle)
 
 /proc/sanitize_direction(var/dir)
 	. = 0x0
@@ -78,5 +74,5 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 	if(west && !east)
 		. |= WEST
 
-/proc/num2dir(var/x)
+/proc/dir2letter(var/x)
 	return "[x & 1 ? "n" : ""][x & 2 ? "s" : ""][x & 4 ? "e" : ""][x & 8 ? "w" : ""]"

@@ -136,7 +136,7 @@
 			if(L.blood_type)
 				var/reagent/R = REAGENT(L.blood_type)
 				for(var/i=1,i<=9,i++)
-					create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
+					create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 				L.to_chat(span("danger","Wait, where did all my blood go?!"))
 				L.blood_volume = 0
 			else

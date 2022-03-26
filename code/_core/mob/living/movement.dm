@@ -125,7 +125,7 @@
 /mob/living/handle_movement(var/adjust_delay = 1)
 
 	if(dash_target && dash_target.loc && dash_amount > 0 && !horizontal && can_move() && isturf(src.loc)) //can_move dose not consider delays.
-		var/final_direction = get_dir(src,dash_target)
+		var/final_direction = get_dir_advanced(src,dash_target)
 		if(!final_direction)
 			dash_amount = 0
 			return TRUE

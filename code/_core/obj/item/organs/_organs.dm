@@ -72,6 +72,27 @@
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
 
+
+
+/obj/item/organ/get_top_object()
+
+	var/atom/returning_object
+	var/is_held = FALSE
+
+	for(var/k in inventories)
+		var/obj/hud/inventory/INV = k
+		if(is_held && INV.worn)
+			continue
+		var/atom/A = INV.get_top_object()
+		if(A)
+			returning_object = A
+			is_held = !INV.worn
+
+	if(!returning_object)
+		returning_object = src
+
+	return returning_object
+
 /obj/item/organ/New(var/desired_loc)
 	. = ..()
 	attached_organs = list()
@@ -207,9 +228,9 @@
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
-				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
+				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2),TRUE)
 			if(gib_icon_state)
-				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3),TRUE)
+				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE),TRUE)
 				if(BG)
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = color

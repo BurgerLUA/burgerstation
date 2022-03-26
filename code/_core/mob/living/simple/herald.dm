@@ -76,7 +76,7 @@
 	if( (next_teleport - world.time) >= SECONDS_TO_DECISECONDS(2) )
 		return /damagetype/cqc/sleeping_carp/crashing_wave_kick
 
-	if(attacker && victim && get_dir(attacker,victim) == victim.dir )
+	if(attacker && victim && !is_facing(victim,attacker))
 		return /damagetype/cqc/sleeping_carp/keelhaul
 
 	return ..()

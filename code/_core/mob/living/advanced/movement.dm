@@ -1,3 +1,23 @@
+/mob/living/advanced/do_footstep(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+
+	. = ..()
+
+	if(.)
+		var/obj/item/foot_left = labeled_organs[BODY_FOOT_LEFT]?.get_top_object()
+		var/obj/item/foot_right = labeled_organs[BODY_FOOT_RIGHT]?.get_top_object()
+		if(foot_left?.blood_stain_intensity > 2)
+			var/obj/effect/cleanable/blood/footprint/F = new(T)
+			F.set_dir(dir)
+			F.icon_state = "human_left[enter ? "_enter" : "_exit"]"
+			F.alpha = clamp(((foot_left.blood_stain_intensity-2)/2)*255,10,255)
+			foot_left.set_bloodstain(max(2,foot_left.blood_stain_intensity - 0.1))
+		if(foot_right?.blood_stain_intensity > 2)
+			var/obj/effect/cleanable/blood/footprint/F = new(T)
+			F.set_dir(dir)
+			F.icon_state = "human_right[enter ? "_enter" : "_exit"]"
+			F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
+			foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
+
 /mob/living/advanced/on_sprint()
 
 	if(health && health.adjust_stamina(-1))
@@ -147,11 +167,9 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 						var/obj/item/organ/ORG = src.labeled_organs[k]
 						if(!ORG)
 							continue
-						if(ORG.blood_stain_intensity < S.blood_level)
-							ORG.set_bloodstain(S.blood_level,S.blood_color)
+						ORG.set_bloodstain(ORG.blood_stain_intensity + S.blood_level,S.blood_color)
 					else //Give the clothing a bloodstain.
-						if(C.blood_stain_intensity < S.blood_level)
-							C.set_bloodstain(S.blood_level,S.blood_color)
+						C.set_bloodstain(C.blood_stain_intensity + S.blood_level,S.blood_color)
 
 /mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 

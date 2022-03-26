@@ -104,7 +104,7 @@
 				break
 
 		for(var/i=1,i<=total_bleed_damage/10,i++)
-			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
+			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-TILE_SIZE,TILE_SIZE),offset_y + rand(-TILE_SIZE,TILE_SIZE)))
 				break
 
 		if(health && total_bleed_damage)
@@ -219,7 +219,7 @@
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)
 				for(var/i=1,i<=rand(3,5),i++)
-					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3))
+					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2))
 		if(BLUNT)
 			add_status_effect(STAGGER,20,20)
 			play_sound('sound/effects/impacts/savage_blunt.ogg',T,volume=80)

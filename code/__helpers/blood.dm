@@ -2,8 +2,8 @@
 
 /proc/create_blood(var/obj/effect/cleanable/blood/desired_effect, var/turf/simulated/desired_loc,var/desired_color = "#FFFFFF",var/desired_x,var/desired_y,var/bypass_blood_limit=FALSE)
 
-	desired_x = clamp(desired_x,-TILE_SIZE*1.5,TILE_SIZE*1.5)
-	desired_y = clamp(desired_y,-TILE_SIZE*1.5,TILE_SIZE*1.5)
+	desired_x = clamp(desired_x,-TILE_SIZE,TILE_SIZE)
+	desired_y = clamp(desired_y,-TILE_SIZE,TILE_SIZE)
 
 	var/tile_offset_x = FLOOR(desired_x/TILE_SIZE,1)
 	var/tile_offset_y = FLOOR(desired_y/TILE_SIZE,1)

@@ -6,7 +6,6 @@
 	plane = PLANE_BLOOD
 	alpha = 200
 
-	var/animate_position = FALSE
 	var/randomize_angle = TRUE
 
 	anchored = TRUE
@@ -24,28 +23,6 @@
 
 	transform = get_base_transform()
 
-	/*
-	if(animate_position)
-		desired_x = clamp(desired_x,-TILE_SIZE,TILE_SIZE)
-		desired_y = clamp(desired_y,-TILE_SIZE,TILE_SIZE)
-		var/move_x = SIGN(desired_x) * FLOOR(abs(desired_x)/TILE_SIZE,1)
-		var/move_y = SIGN(desired_y) * FLOOR(abs(desired_y)/TILE_SIZE,1)
-		desired_x -= move_x*TILE_SIZE
-		desired_y -= move_y*TILE_SIZE
-		if(move_x || move_y)
-			var/turf/desired_turf = locate(x + move_x,y + move_y,z)
-			if(desired_turf)
-				loc = desired_turf
-				pixel_x = -move_x*TILE_SIZE
-				pixel_y = -move_y*TILE_SIZE
-				animate(src,pixel_x=desired_x,pixel_y=desired_y,time=3,easing=QUAD_EASING,time=3)
-	else
-		desired_x = clamp(desired_x,-TILE_SIZE/2,TILE_SIZE/2)
-		desired_y = clamp(desired_y,-TILE_SIZE/2,TILE_SIZE/2)
-		pixel_x = SAFENUM(desired_x)
-		pixel_y = SAFENUM(desired_y)
-	*/
-
 	update_blood_level(loc,null)
 
 	. = ..()
@@ -55,6 +32,9 @@
 	. = ..()
 
 /obj/effect/cleanable/blood/proc/update_blood_level(var/turf/simulated/new_loc,var/turf/simulated/old_loc)
+
+	if(blood_level < 0)
+		return FALSE
 
 	if(istype(new_loc))
 		new_loc.add_blood_level(blood_level,desired_color=color)
@@ -75,13 +55,11 @@
 /obj/effect/cleanable/blood/drip
 	name = "blood drip"
 	icon_state = "drip"
-	animate_position = FALSE
 	blood_level = 1
 
 /obj/effect/cleanable/blood/splatter/
 	name = "blood splatter"
 	icon_state = "splatter_1"
-	animate_position = TRUE
 	blood_level = 10
 
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
@@ -91,27 +69,28 @@
 /obj/effect/cleanable/blood/splatter_small/
 	name = "small blood splatter"
 	icon_state = "micro"
-	animate_position = TRUE
 	blood_level = 0 //Trivial to clean.
-
 
 /obj/effect/cleanable/blood/gib/
 	name = "giblet splatter"
 	icon_state = "gib_1"
-	animate_position = TRUE
 	blood_level = 20
 
 /obj/effect/cleanable/blood/gib/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "gib_[rand(1,10)]"
 	return ..()
 
+/obj/effect/cleanable/blood/footprint
+	name = "footprints"
+	icon = 'icons/obj/effects/footprints.dmi'
+	icon_state = "human"
+	randomize_angle = FALSE
+	blood_level = -1
+
 /obj/effect/cleanable/blood/line/
 	name = "blood line"
 	icon_state = "trail_1"
-	animate_position = TRUE
 	blood_level = 5
-
-	animate_position = FALSE
 
 	randomize_angle = FALSE
 

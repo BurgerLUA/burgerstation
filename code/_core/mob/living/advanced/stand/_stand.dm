@@ -83,14 +83,7 @@
 	var/desired_y = 4
 	layer = LAYER_MOB_ABOVE
 
-	var/desired_dir = dir
-
-	/*
-	if(ai && ai.objective_attack)
-		desired_dir = get_dir(src,ai.objective_attack)
-	*/
-
-	var/list/vector_2d = direction_to_pixel_offset(desired_dir)
+	var/list/vector_2d = direction_to_pixel_offset(get_true_4dir(owner.dir))
 
 	if(owner)
 		if(!enabled || (ai && ai.objective_attack) || src.loc != owner.loc)
