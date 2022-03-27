@@ -53,14 +53,14 @@
 
 	if(mob.vision)
 		for(var/mob/living/L in view(VIEW_RANGE*0.5,mob))
-			if(mob.vision & FLAG_VISION_MEDICAL && L.medical_hud_image && L.alpha >= 255)
+			if( (mob.vision & FLAG_VISION_MEDICAL) && L.medical_hud_image && L.alpha >= 255)
 				stored_hud_images += L.medical_hud_image
 				images += L.medical_hud_image
-			if(mob.vision & FLAG_VISION_SECURITY && L.security_hud_image && L.alpha >= 255)
+			if( (mob.vision & FLAG_VISION_SECURITY) && L.security_hud_image && L.alpha >= 255)
 				var/should_draw = TRUE
 				if(is_living(mob))
 					var/mob/living/L2 = mob
-					if(L2.loyalty_tag != L.loyalty_tag)
+					if(!L2.dead && L2.loyalty_tag != L.loyalty_tag)
 						should_draw = FALSE
 				if(should_draw)
 					stored_hud_images += L.security_hud_image

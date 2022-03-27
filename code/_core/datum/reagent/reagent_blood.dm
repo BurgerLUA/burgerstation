@@ -26,7 +26,7 @@
 
 	. = ..()
 
-	owner.add_nutrition(4*.) //Blood is actually nutritious.
+	owner.add_nutrition(2*.) //Blood is actually nutritious.
 
 /reagent/blood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

@@ -36,7 +36,7 @@
 	var/atom/old_loc = src.loc
 	. = ..()
 	if(is_advanced(old_loc))
-		var/mob/living/advanced/A = src.loc
+		var/mob/living/advanced/A = old_loc
 		A.death()
 		qdel(A)
 

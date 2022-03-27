@@ -25,8 +25,6 @@ var/global/list/all_damage_numbers = list()
 
 	var/attack_delay_mod = 1
 
-	var/block_coefficient = 0.25 //The block co-efficient. High values means it penetrates armor easier.
-
 	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
 	var/draw_blood = FALSE //This weapon causes blood visual effects.

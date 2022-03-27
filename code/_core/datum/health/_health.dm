@@ -1,3 +1,5 @@
+#define HEALTH_PRECISION 0.01
+
 /health/
 
 	var/atom/owner // The owner of this health object
@@ -86,7 +88,7 @@
 /health/proc/adjust_loss(var/loss_type,var/value)
 	if(resistance[loss_type] && value > 0) value *= resistance[loss_type]
 	value -= min(0,damage[loss_type] + value)
-	damage[loss_type] += value
+	damage[loss_type] += FLOOR(value,HEALTH_PRECISION)
 	if(max_damage[loss_type])
 		damage[loss_type] = min(damage[loss_type],max_damage[loss_type])
 	return value
@@ -127,6 +129,7 @@
 /health/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current
 	var/new_value = clamp(mana_current + adjust_value,0,mana_max)
+	new_value = FLOOR(new_value,HEALTH_PRECISION)
 	if(old_value != new_value)
 		mana_current = new_value
 		return new_value - old_value
@@ -135,6 +138,7 @@
 /health/proc/adjust_stamina(var/adjust_value)
 	var/old_value = stamina_current
 	var/new_value = clamp(stamina_current + adjust_value,0,stamina_max)
+	new_value = FLOOR(new_value,HEALTH_PRECISION)
 	if(old_value != new_value)
 		stamina_current = new_value
 		return new_value - old_value

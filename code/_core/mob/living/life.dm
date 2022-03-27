@@ -96,6 +96,8 @@
 		create_gold_drop(T,CEILING(drops_gold,1))
 		drops_gold = 0
 
+	update_eyes()
+
 	return TRUE
 
 
@@ -136,6 +138,7 @@
 		health.update_health(update_hud=TRUE,check_death=TRUE)
 	handle_horizontal()
 	undelete(src)
+	update_eyes()
 	return TRUE
 
 /mob/living/proc/rejuvenate()
@@ -277,6 +280,19 @@
 	if(deafened_duration && deafened_duration > 0)
 		deafened_duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 
+	//Fire stacks.
+	if(fire_stacks)
+		adjust_fire_stacks(-min(fire_stacks,TICKS_TO_DECISECONDS(LIFE_TICK)))
+		if(on_fire && health)
+			var/damagetype/DT = all_damage_types[/damagetype/on_fire]
+			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(TICKS_TO_DECISECONDS(LIFE_TICK/8))*5
+			for(var/i=1,i<=3,i++)
+				var/list/params = list()
+				params[PARAM_ICON_X] = rand(0,32)
+				params[PARAM_ICON_Y] = rand(0,32)
+				var/atom/object_to_damage = src.get_object_to_damage(src,src,params,TRUE,TRUE)
+				DT.process_damage(src,src,src,object_to_damage,src,damage_multiplier)
+
 	return TRUE
 
 /mob/living/proc/on_life_fast()
@@ -291,7 +307,6 @@
 			desired_heartrate += (health.health_current/health.health_max)*60 //This will be negative
 		if(health.stamina_current < health.stamina_max)
 			desired_heartrate += (1 - health.stamina_current/health.stamina_max)*60
-			desired_heartrate += 20
 		if(abs(desired_heartrate - 60) > 30)
 			play_sound('sound/effects/heartbeat_single.ogg',src,pitch=0.5 + (60/desired_heartrate)*0.5)
 		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
@@ -310,27 +325,14 @@ mob/living/proc/on_life_slow()
 		if(talk_duration <= 0 && !is_typing)
 			animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
 
-	//Fire stacks.
-	if(fire_stacks)
-		adjust_fire_stacks(-min(fire_stacks,TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)))
-		if(on_fire && health)
-			var/damagetype/DT = all_damage_types[/damagetype/on_fire]
-			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(TICKS_TO_DECISECONDS(LIFE_TICK_SLOW/8))*5
-			for(var/i=1,i<=3,i++)
-				var/list/params = list()
-				params[PARAM_ICON_X] = rand(0,32)
-				params[PARAM_ICON_Y] = rand(0,32)
-				var/atom/object_to_damage = src.get_object_to_damage(src,src,params,TRUE,TRUE)
-				DT.process_damage(src,src,src,object_to_damage,src,damage_multiplier)
-
 	if(dead)
 		return FALSE
 
-	blood_toxicity = max(blood_toxicity - TICKS_TO_DECISECONDS(LIFE_TICK_SLOW),0)
+	blood_toxicity = max(blood_toxicity - TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.1,0)
 	if(blood_toxicity > 20)
 		chem_power = max(0,1 - (blood_toxicity-20)*0.01)
 	else
-		chem_power = 0
+		chem_power = 1
 
 	if(blood_volume < blood_volume_max)
 		var/consume_multiplier = 1
@@ -367,8 +369,8 @@ mob/living/proc/on_life_slow()
 		plane = initial(plane)
 
 /mob/living/proc/handle_hunger()
-	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
-	var/hunger_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*5
+	var/thirst_mod = 1
+	var/hunger_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*3
 
 	var/trait/metabolism/M = get_trait_by_category(/trait/metabolism/)
 	if(M)
@@ -376,9 +378,9 @@ mob/living/proc/on_life_slow()
 		thirst_mod *= M.thirst_multiplier
 
 	if(hunger_mod > 0)
-		add_nutrition(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.10*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
-		add_nutrition_fast(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.20*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
-		add_hydration(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.05*thirst_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
+		add_nutrition(-0.04*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
+		add_nutrition_fast(-0.08*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
+		add_hydration(-0.13*thirst_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	if(client)
 		for(var/obj/hud/button/hunger/B in buttons)
@@ -462,41 +464,43 @@ mob/living/proc/on_life_slow()
 	var/update_stamina = FALSE
 	var/update_mana = FALSE
 
+	var/multiplier = TICKS_TO_SECONDS(LIFE_TICK)
+
 	if(can_buffer_health())
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,1)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,1)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,1)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		var/pain_to_regen = clamp(
 			pain_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,1)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,1)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,1)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		var/mental_to_regen = clamp(
 			mental_regen_buffer,
 			-health.health_max*0.1,
-			max(health.health_regeneration*2,2)
+			max(health.health_regeneration*multiplier,multiplier)
 		)
 		update_health = health.adjust_loss_smart(
 			brute = -brute_to_regen,
@@ -519,7 +523,7 @@ mob/living/proc/on_life_slow()
 		var/stamina_to_regen = clamp(
 			stamina_regen_buffer,
 			-health.stamina_max*0.1,
-			max(health.stamina_regeneration*2,2)
+			max(health.stamina_regeneration*multiplier,multiplier)
 		)
 		health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
@@ -529,7 +533,7 @@ mob/living/proc/on_life_slow()
 		var/mana_to_regen = clamp(
 			mana_regen_buffer,
 			-health.mana_max*0.1,
-			max(health.mana_regeneration*2,2)
+			max(health.mana_regeneration*multiplier,multiplier)
 		)
 		health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
@@ -559,7 +563,7 @@ mob/living/proc/on_life_slow()
 	stamina_regen_delay = max(0,stamina_regen_delay - delay_mod)
 	mana_regen_delay = max(0,mana_regen_delay - delay_mod)
 
-	var/nutrition_hydration_mod = 0.25  + (get_nutrition_mod() * get_hydration_mod() * 0.75)
+	var/nutrition_hydration_mod = 0.25 + get_nutrition_quality_mod()*0.75
 	var/player_controlled = is_player_controlled()
 
 	var/trait/general_regen/GR = get_trait_by_category(/trait/general_regen/)

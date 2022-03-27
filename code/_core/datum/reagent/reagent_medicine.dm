@@ -387,8 +387,8 @@
 	if(. >= metabolism_blood)
 		var/true_multiplier = TICKS_TO_SECONDS(LIFE_TICK_SLOW) * (. / metabolism_blood) * multiplier
 		owner.sanity_regen_buffer += 5*true_multiplier
-		owner.add_hydration(-0.05*true_multiplier)
-		owner.add_nutrition(-0.1*true_multiplier)
+		owner.add_hydration(-0.04*true_multiplier)
+		owner.add_nutrition(-0.01*true_multiplier)
 
 /reagent/medicine/synthblood
 	name = "synthblood"
