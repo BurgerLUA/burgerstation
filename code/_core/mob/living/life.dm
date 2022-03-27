@@ -297,6 +297,11 @@
 
 /mob/living/proc/on_life_fast()
 
+	for(var/k in health_icons_to_update)
+		var/obj/hud/button/health/B = k
+		if(!B.special_think())
+			health_icons_to_update -= k
+
 	handle_status_effects(LIFE_TICK_FAST)
 
 	if(client && !dead && health && next_heartbeat <= world.time)
@@ -618,7 +623,7 @@ mob/living/proc/on_life_slow()
 		var/client/C = client
 		var/turf/T = get_turf(src)
 		C.make_ghost(T ? T : locate(128,128,1))
-		to_chat(span("danger","You can no longer be revived..."))
+		C.to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
 	else
 		ckey_last = null
 

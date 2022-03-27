@@ -26,23 +26,20 @@
 
 /mob/living/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
-	if(!src.client)
+	if(!client)
 		return FALSE
 
 	if(health && health_elements["health"])
 		var/obj/hud/button/health/H = health_elements["health"]
 		H.update_stats(src)
-		H.update_sprite()
 
 	if(stamina && health_elements["stamina"])
 		var/obj/hud/button/health/S = health_elements["stamina"]
 		S.update_stats(src)
-		S.update_sprite()
 
 	if(mana && health_elements["mana"])
 		var/obj/hud/button/health/M = health_elements["mana"]
 		M.update_stats(src)
-		M.update_sprite()
 
 	if(length(screen_blood))
 		for(var/k in screen_blood)

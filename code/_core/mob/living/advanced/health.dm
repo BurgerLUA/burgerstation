@@ -14,7 +14,7 @@
 
 	if(. && health && length(health_elements) && health_elements["body"])
 		var/obj/hud/button/health/body/B = health_elements["body"]
-		B.update_stats()
+		B.update_stats(src)
 
 /mob/living/advanced/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 

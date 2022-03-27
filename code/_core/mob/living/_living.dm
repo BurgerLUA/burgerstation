@@ -256,6 +256,8 @@
 
 	var/next_heartbeat = 0
 
+	var/list/health_icons_to_update = list()
+
 /mob/living/Destroy()
 
 	buckled_object = null

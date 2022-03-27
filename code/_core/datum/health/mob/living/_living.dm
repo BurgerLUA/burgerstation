@@ -71,7 +71,7 @@
 		if(L.medical_hud_image)
 			var/health_icon_state
 			if(L.dead)
-				var/time_left = SScallback.all_callbacks["\ref[src]_make_unrevivable"] ? SScallback.all_callbacks["\ref[src]_make_unrevivable"]["time"] - world.time : 0
+				var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
 				if(time_left > 0)
 					health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
 				else
