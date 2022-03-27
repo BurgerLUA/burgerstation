@@ -33,8 +33,9 @@
 	has_life = TRUE
 
 /obj/item/organ/torso/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
+	var/atom/old_loc = src.loc
 	. = ..()
-	if(is_advanced(src.loc))
+	if(is_advanced(old_loc))
 		var/mob/living/advanced/A = src.loc
 		A.death()
 		qdel(A)

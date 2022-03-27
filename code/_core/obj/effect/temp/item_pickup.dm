@@ -13,8 +13,8 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 
 	var/list/offsets = get_directional_offsets(get_turf(old_location),get_turf(desired_location))
 
-	pixel_x = offsets[1]
-	pixel_y = offsets[2]
+	pixel_x = -offsets[1]*TILE_SIZE
+	pixel_y = -offsets[2]*TILE_SIZE
 
 	switch(desired_animation_type)
 		if("pickup")

@@ -12,6 +12,6 @@
 	src.plane = PLANE_EFFECT
 	src.alpha = 0
 
-	var/list/offsets = get_directional_offsets(victim,attacker)
-	animate(src, alpha = 175, pixel_x = offsets[1], pixel_y = offsets[2], time = duration*0.4, easing = QUAD_EASING | EASE_OUT)
+	var/list/offsets = get_directional_offsets(attacker,victim)
+	animate(src, alpha = 175, pixel_x = offsets[1]*TILE_SIZE, pixel_y = offsets[2]*TILE_SIZE, time = duration*0.4, easing = QUAD_EASING | EASE_OUT)
 

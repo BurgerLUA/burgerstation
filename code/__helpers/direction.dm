@@ -54,13 +54,13 @@ proc/get_true_4dir_advanced(var/previous_dir,var/dir) //Converts a possible 8 wa
 
 	switch(dir)
 		if(SOUTHWEST)
-			dir = previous_dir & SOUTH ? previous_dir & SOUTH : WEST
+			dir = previous_dir & SOUTH ? SOUTH : WEST
 		if(SOUTHEAST)
-			dir = previous_dir & SOUTH ? previous_dir & SOUTH : EAST
+			dir = previous_dir & SOUTH ? SOUTH : EAST
 		if(NORTHWEST)
-			dir = previous_dir & NORTH ? previous_dir & NORTH : WEST
+			dir = previous_dir & NORTH ? NORTH : WEST
 		if(NORTHEAST)
-			dir = previous_dir & NORTH ? previous_dir & NORTH : EAST
+			dir = previous_dir & NORTH ? NORTH : EAST
 
 	return dir
 
