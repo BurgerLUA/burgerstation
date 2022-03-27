@@ -57,6 +57,12 @@ mob/living/on_left_down(object,location,control,params)
 		var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
 		CALLBACK("\ref[src]_intent_switch",10,src,.proc/set_mouse_pointer,icon_to_use)
 
+	for(var/k in src.light_sprite_sources)
+		var/obj/light_sprite/LS = k
+		if(LS.icon_state != "cone")
+			continue
+		LS.set_dir(src.dir)
+		LS.transform = LS.get_base_transform()
 
 	return TRUE
 

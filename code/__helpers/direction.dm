@@ -50,6 +50,20 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 	return dir
 
+proc/get_true_4dir_advanced(var/previous_dir,var/dir) //Converts a possible 8 way dir into a 4 way dir.
+
+	switch(dir)
+		if(SOUTHWEST)
+			dir = previous_dir & SOUTH ? previous_dir & SOUTH : WEST
+		if(SOUTHEAST)
+			dir = previous_dir & SOUTH ? previous_dir & SOUTH : EAST
+		if(NORTHWEST)
+			dir = previous_dir & NORTH ? previous_dir & NORTH : WEST
+		if(NORTHEAST)
+			dir = previous_dir & NORTH ? previous_dir & NORTH : EAST
+
+	return dir
+
 /proc/get_dir_advanced(var/atom/A,var/atom/B,var/cardinal_only=FALSE)
 	var/angle = get_angle(A,B)
 	return cardinal_only ? angle2dir_cardinal(angle) : angle2dir(angle)

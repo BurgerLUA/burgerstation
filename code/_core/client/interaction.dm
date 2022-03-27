@@ -228,7 +228,12 @@
 			var/mob/living/L = mob
 			if(L.intent == INTENT_HARM)
 				mob.set_dir(get_dir_advanced(mob,location))
-
+				for(var/k in mob.light_sprite_sources)
+					var/obj/light_sprite/LS = k
+					if(LS.icon_state != "cone")
+						continue
+					LS.set_dir(SOUTH)
+					LS.transform = LS.get_base_transform()
 	. = ..()
 
 /client/proc/store_new_params(object,location,params)

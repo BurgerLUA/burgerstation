@@ -174,6 +174,8 @@
 
 	if(driving)
 		desired_dir = driving.dir
+	else
+		desired_dir = get_true_4dir_advanced(dir,desired_dir)
 
 	if(!force && grabbing_hand)
 		return FALSE
