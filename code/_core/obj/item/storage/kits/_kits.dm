@@ -47,7 +47,7 @@
 
 /obj/item/storage/kit/burn
 	name = "burn first aid kit"
-	desc_extended = "A first aid kit that focuses on healing burn injuries. Usually contains a pill bottle filled with kelotane, two tubes of ointment, one set of burn kits and four sets of silver sulfadiazine."
+	desc_extended = "A first aid kit that focuses on healing burn injuries."
 	icon_state = "burn"
 
 /obj/item/storage/kit/burn/filled/fill_inventory()
@@ -63,7 +63,7 @@
 
 /obj/item/storage/kit/toxin
 	name = "toxin first aid kit"
-	desc_extended = "A first aid kit that focuses on healing toxin based injuries. Usually contains a pill bottle filled with kelotane, two tubes of ointment, one set of burn kits and four sets of silver sulfadiazine."
+	desc_extended = "A first aid kit that focuses on healing toxin based injuries."
 	icon_state = "toxin"
 
 /obj/item/storage/kit/toxin/filled/fill_inventory()
@@ -80,7 +80,7 @@
 /obj/item/storage/kit/syndicate
 	name = "combat medikit"
 	desc = "I hope you've got insurance."
-	desc_extended = "A combat medical kit for healing when under pressure. Usually contains five pill bottles, each filled with bicaridine, dylovene, kelotane, iron and epinephrine pills. Also contains two epinephrine syringes and a health analyzer."
+	desc_extended = "A combat medical kit for healing when under pressure."
 	icon_state = "tactical"
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()
@@ -97,7 +97,7 @@
 /obj/item/storage/kit/ai3
 	name = "AI-3"
 	desc = "Ya like cheese?"
-	desc_extended = "A basic Slavic-made AI-3 infantry first aid kit. Usually contains four pairs of high-volume injectors to treat every basic type of damage, as well as epinephrine and iron medipens."
+	desc_extended = "A basic Slavic-made AI-3 infantry first aid kit."
 	icon_state = "ai3"
 
 	is_container = TRUE
@@ -124,7 +124,7 @@
 /obj/item/storage/kit/advanced
 	name = "advanced first aid kit"
 	desc = "I hope you've got insurance."
-	desc_extended = "A first aid kit for healing when under pressure. Usually contains five pill bottles, each filled with bicaridine, dylovene, kelotane, iron and epinephrine pills. Also contains two epinephrine syringes and a health analyzer."
+	desc_extended = "A first aid kit for healing when under pressure."
 	icon_state = "purple"
 
 /obj/item/storage/kit/advanced/filled/fill_inventory()
@@ -135,5 +135,23 @@
 	new /obj/item/storage/pillbottle/charcoal(src)
 	new /obj/item/storage/pillbottle/omnizine(src)
 	new /obj/item/storage/pillbottle/iron(src)
-	new /obj/item/analyzer/health(src)
+	new /obj/item/container/blood_pack/full/rad_be_gone(src)
+	. = ..()
+
+
+/obj/item/storage/kit/rad
+	name = "radiation first aid kit"
+	desc = "For those overly radical moments."
+	desc_extended = "A first aid kit that focuses on healing radiation related injuries."
+
+/obj/item/storage/kit/rad/filled/fill_inventory()
+	new /obj/item/container/blood_pack/full/rad_be_gone(src)
+	new /obj/item/container/blood_pack/full/rad_be_gone(src)
+	new /obj/item/storage/pillbottle/potassium_iodide_small(src)
+	new /obj/item/storage/pillbottle/space_prussian_blue_small(src)
+	new /obj/item/container/syringe(src)
+	new /obj/item/container/simple/beaker/bottle/dylovene(src)
+	new /obj/item/container/simple/beaker/bottle/charcoal(src)
+	new /obj/item/container/simple/vodka(src)
+	new /obj/item/container/simple/beaker/shot(src)
 	. = ..()

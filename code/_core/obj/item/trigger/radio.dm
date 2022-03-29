@@ -192,6 +192,19 @@ list(
 
 	value = 15
 
+/obj/item/device/radio/headset/nanotrasen/medical
+	name = "\improper NanoTrasen medical headset radio"
+
+	frequency_min = RADIO_FREQ_ALPHA - 20
+	frequency_max = RADIO_FREQ_SHIP + 20
+
+	value = 15
+
+/obj/item/device/radio/headset/nanotrasen/medical/Generate()
+	. = ..()
+	listening_frequencies["[RADIO_FREQ_MEDICAL]"] = TRUE
+
+
 /obj/item/device/radio/headset/mercenary
 	name = "\improper Mercenary headset radio"
 

@@ -341,6 +341,25 @@
 	. = ..()
 
 
+/obj/item/storage/pillbottle/potassium_iodide_small
+	name = "potassium iodide pill bottle"
+	desc = "Contains 10 20u potassium iodide pills."
+
+/obj/item/storage/pillbottle/potassium_iodide_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/edible/pill/potassium_iodide(src)
+	. = ..()
+
+/obj/item/storage/pillbottle/space_prussian_blue_small
+	name = "space prussian blue pill bottle"
+	desc = "Contains 10 20u space prussian blue pills."
+
+/obj/item/storage/pillbottle/space_prussian_blue_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/edible/pill/space_prussian_blue(src)
+	. = ..()
+
+
 
 /obj/item/storage/bagofhoarding
 	name = "bag of hoarding"

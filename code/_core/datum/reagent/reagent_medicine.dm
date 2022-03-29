@@ -425,3 +425,52 @@
 /reagent/medicine/rad_b_gone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.rad_regen_buffer += .*5
+
+
+/reagent/medicine/potassium_iodide
+	name = "Potassium Iodide"
+	desc = "A common and cheap medicine used to prevent further lingering radiation damage, but not cure it."
+	color = "#FFF4EC"
+	alpha = 255
+	flavor = "salty bananas"
+	value = 0.1
+
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.5
+
+	experience_per_unit = 0.5
+
+	liquid = -0.5
+	particle_size = 0.4
+
+/reagent/medicine/potassium_iodide/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.rad_regen_buffer < 0)
+		owner.rad_regen_buffer = min(0,owner.rad_regen_buffer + 3*.)
+
+/reagent/medicine/space_prussian_blue
+	name = "Space Prussian Blue"
+	desc = "A relatively uncommon but inexpensive pigment that acts as a great dye as well as an excellent way to treat radiation poisoning caused by consuming radioactive substances. Only works when ingested."
+	color = "#1D2A60"
+	alpha = 255
+	flavor = "salty bananas"
+	value = 1.3
+
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.5
+
+	experience_per_unit = 0.5
+
+	liquid = -0.2
+	particle_size = 0.5
+
+
+/reagent/medicine/space_prussian_blue/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	for(var/reagent_id in container.stored_reagents)
+		var/reagent/R = REAGENT(reagent_id)
+		if(!istype(R,/reagent/radioactive/))
+			continue
+		container.remove_reagent(reagent_id,.*10)

@@ -15,6 +15,14 @@
 		"straps" = COLOR_BLACK
 	)
 
+/obj/item/clothing/back/storage/dufflebag/poly/medical
+	polymorphs = list(
+		"body" = COLOR_WHITE,
+		"detail" = COLOR_MEDICAL,
+		"straps" = COLOR_WHITE
+	)
+
+
 /obj/item/clothing/back/storage/dufflebag/poly/engineering
 	polymorphs = list(
 		"body" = COLOR_BROWN,

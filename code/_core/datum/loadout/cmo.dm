@@ -20,7 +20,6 @@
 
 		/obj/item/clothing/glasses/medical_hud/advanced,
 
-		/obj/item/clothing/back/storage/backpack/medical,
 		/obj/item/clothing/belt/storage/medical,
 
 		/obj/item/weapon/melee/energy/chainsaw/

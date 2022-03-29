@@ -1,8 +1,8 @@
 /obj/item/defib
 	name = "defibrillator"
 	icon = 'icons/obj/item/defib.dmi'
-	desc = "Contains a lot of atoms!"
-	desc_extended = "Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
+	desc = "A spaceman's last hope."
+	desc_extended = "A heavy-duty auto-charging defibrillator designed to restart a patient's heart. Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
 
 	var/obj/item/defib_paddle/paddle_left
 	var/obj/item/defib_paddle/paddle_right
@@ -11,32 +11,23 @@
 	item_slot = SLOT_TORSO_BACK
 	slot_icons = TRUE
 
-
 	size = SIZE_3
 
-	value = 110
+	value = 200
 
-	weight = 8
+	weight = 16
 
 /obj/item/defib/belt
 	name = "compact defibrillator"
 	icon = 'icons/obj/item/clothing/belts/compact_defib.dmi'
-	desc = "Contains a lot of atoms!"
-	desc_extended = "Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
+	desc_extended = "A auto-charging defibrillator designed to restart a patient's heart. Put it on your belt slot to be able to take out the paddles, and then apply them to a recently dead person. Now in a smaller size!"
 
-	//is_container = TRUE
-
-	//dynamic_inventory_count = 4
-
-	size = MAX_INVENTORY_X*SIZE_1
+	size = SIZE_2
 	item_slot = SLOT_GROIN_BELT
-	container_max_size = SIZE_2
 
-
+	weight = 8
 
 	value = 1600
-
-	weight = 4
 
 /obj/item/defib/Destroy()
 	QDEL_NULL(paddle_left)
@@ -110,6 +101,16 @@
 	if(target_dead) //Was dead
 		target.revive()
 		caller.visible_message(span("danger","\The [target.name] jolts to life!"))
+		/* TODO, CHECK THE JOB INSTEAD.
+		if(money && is_player(caller) && is_player(target))
+			var/mob/living/advanced/player/PC = caller
+			var/mob/living/advanced/player/PT = target
+			if(PC.loyalty_tag == PT.loyalty_tag)
+				var/charged_amount = PT.adjust_currency(-500)
+				if(charged_amount > 0)
+					src.do_say("[charged_amount] credit(s) have been transfered from the patient's account into the practitioner's account for successful revival.")
+					PC.adjust_currency(charged_amount)
+		*/
 	else
 		target.do_emote("scream")
 		target.add_status_effect(ADRENALINE,50,100)
@@ -165,7 +166,7 @@
 
 	throwable = FALSE
 
-	size = 99
+	size = 9999
 
 	size = SIZE_6
 

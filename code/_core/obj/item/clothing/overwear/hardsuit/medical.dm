@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/hardsuit/medical
-	name = "medical voidsuit"
+	name = "advanced medical voidsuit"
 	desc = "Out the fucking way!"
 	desc_extended = "A hardsuit worn by medics while retrieving corpses to avoid becoming a corpse themselves."
 	icon = 'icons/obj/item/clothing/suit/hardsuit_medical.dmi'

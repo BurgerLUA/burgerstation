@@ -206,12 +206,18 @@
 
 	map_color = COLOR_GREEN
 
+/area/burgerstation/cryo/locker_room
+	name = "\improper Changing Room"
+	icon_state = "armory"
+
+	map_color = COLOR_GREEN_DARK
+
 /area/burgerstation/arrivals
 	name = "\improper Arrivals Dock"
 	icon_state = "ariv"
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
-	map_color = COLOR_GREEN
+	map_color = COLOR_YELLOW
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
