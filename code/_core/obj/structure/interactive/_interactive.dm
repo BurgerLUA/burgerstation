@@ -23,9 +23,11 @@ obj/structure/interactive/
 		if(A && A.requires_power)
 			update_power_draw(0)
 			A.powered_machines -= src
+	apc_powered = FALSE
 
 	if(connected_wire)
 		connected_wire.do_snap()
+	wire_powered = FALSE
 
 	. = ..()
 

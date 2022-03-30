@@ -100,7 +100,9 @@ var/global/list/all_clients = list() //Assoc list
 	return TRUE //duh
 
 /client/proc/get_debug_name()
-	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[mob.x];y=[mob.y];z=[mob.z]'>([mob.x],[mob.y],[mob.z])</a>" : "NONE"])"
+	var/turf/T
+	if(mob) T = get_turf(mob)
+	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>" : "NONE"])"
 
 /client/proc/get_log_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"

@@ -166,7 +166,7 @@ var/global/list/equipped_antags = list()
 
 	return new_item
 
-/obj/structure/interactive/vending/Initialize()
+/obj/structure/interactive/vending/PostInitialize()
 
 	if(icon_state_broken == "gen")
 		icon_state_broken = "[initial(icon_state)]-broken"

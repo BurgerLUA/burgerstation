@@ -424,7 +424,6 @@
 			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 	. = ..()
 
-
 /mob/living/on_fall(var/turf/old_loc)
 	. = ..()
 	health?.adjust_loss_smart(brute=100)
@@ -435,7 +434,11 @@
 	if(!dead) . *= 3
 
 /mob/living/get_debug_name()
-	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
+	var/turf/T = get_turf(src)
+	var/shown_x = T ? T.x : 0
+	var/shown_y = T ? T.y : 0
+	var/shown_z = T ? T.z : 0
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
 
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"

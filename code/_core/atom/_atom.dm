@@ -214,6 +214,13 @@
 /atom/get_debug_name()
 	return "[src.name]([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
 
+/atom/movable/get_debug_name()
+	var/turf/T = get_turf(src)
+	var/shown_x = T ? T.x : 0
+	var/shown_y = T ? T.y : 0
+	var/shown_z = T ? T.z : 0
+	return "[src.name]([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[z]'>([shown_x],[shown_y],[shown_z])</a>"
+
 /atom/get_log_name()
 	return "[src.name]([src.type])([x],[y],[z])</a>"
 
