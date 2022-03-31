@@ -35,6 +35,20 @@
 /mob/abstract/observer/on_left_down(var/atom/object,location,control,params)
 	return on_left_click(object,location,control,params)
 
+/mob/abstract/observer/MouseDrop(over_object, src_location, over_location, src_control, over_control, params)
+	. = ..()
+	if(over_object)
+		if(is_player(over_object))
+			if(!client || !(client.permissions & FLAG_PERMISSION_MODERATOR))
+				return
+			if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") != "Yes") return
+			if(!over_object || !src) return //Extra checks
+			var/mob/living/advanced/player/P = over_object
+			client.control_mob(P)
+			P.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+			P.add_species_buttons()
+			P.add_species_health_elements()
+
 /mob/abstract/observer/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
