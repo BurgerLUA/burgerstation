@@ -86,3 +86,5 @@
 	var/B_score = B.item_slot*10 + B.item_slot_layer
 	return cmp_numeric_asc(A_score,B_score)
 
+/proc/cmp_loadout_dsc(var/list/A,var/list/B)
+	return sorttext("[A["name"]]","[B["name"]]")

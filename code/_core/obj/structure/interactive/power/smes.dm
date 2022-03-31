@@ -2,7 +2,7 @@
 	name = "super-magnetic power conductor"
 
 	icon = 'icons/obj/structure/power.dmi'
-	icon_state = "smes"
+	icon_state = "smes_map"
 
 	var/list/obj/item/powercell/stored_cells = list()
 
@@ -10,7 +10,31 @@
 
 	var/obj/item/powercell/cell_type = /obj/item/powercell
 
-	var/obj/structure/interactive/power/connection_terminal/terminal
+	var/obj/structure/interactive/power/apc_connection_terminal/terminal
+
+	dir_offset = -4
+
+	pixel_y = 4
+
+/obj/structure/interactive/power/smes/New(var/desired_loc)
+	. = ..()
+	terminal = new(get_step(src,dir))
+	terminal.connected_smes = src
+	terminal.dir = turn(dir,180)
+
+/obj/structure/interactive/power/smes/Initialize()
+	setup_dir_offsets()
+	dir = SOUTH
+	. = ..()
+
+/obj/structure/interactive/power/smes/Finalize()
+	. = ..()
+	update_sprite()
+
+/obj/structure/interactive/power/smes/update_icon()
+	. = ..()
+	icon = initial(icon)
+	icon_state = "smes"
 
 /obj/structure/interactive/power/smes/Destroy()
 	. = ..()
@@ -79,7 +103,7 @@
 /obj/structure/interactive/power/smes/industrial
 	cell_type = /obj/item/powercell/industrial
 
-/obj/structure/interactive/power/connection_terminal
+/obj/structure/interactive/power/apc_connection_terminal
 	name = "SMES connection terminal"
 	icon = 'icons/obj/structure/power.dmi'
 	icon_state = "terminal"
@@ -87,22 +111,13 @@
 
 	wire_powered = TRUE
 
-/obj/structure/interactive/power/connection_terminal/Destroy()
+/obj/structure/interactive/power/apc_connection_terminal/Destroy()
 	. = ..()
 	if(connected_smes)
 		connected_smes.terminal = null
 		connected_smes = null
 
-/obj/structure/interactive/power/connection_terminal/Generate()
-	. = ..()
-	var/turf/T = get_step(src,dir)
-	connected_smes = locate() in T.contents
-	if(!connected_smes)
-		qdel(src)
-	else
-		connected_smes.terminal = src
-
-/obj/structure/interactive/power/connection_terminal/get_power_draw()
+/obj/structure/interactive/power/apc_connection_terminal/get_power_draw()
 
 	var/missing_charge = 0
 	for(var/k in connected_smes.stored_cells)

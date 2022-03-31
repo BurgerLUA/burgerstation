@@ -31,7 +31,7 @@
 
 /obj/structure/interactive/power/apc/update_underlays()
 	. = ..()
-	var/image/I = new/image(icon,"terminal_apc")
+	var/image/I = new/image(icon,"apc_terminal")
 	I.pixel_x = -pixel_x
 	I.pixel_y = -pixel_y
 	I.plane = PLANE_FLOOR

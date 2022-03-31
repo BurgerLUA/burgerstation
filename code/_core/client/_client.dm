@@ -183,6 +183,10 @@ var/global/list/all_clients = list() //Assoc list
 	if(!bankdata)
 		new/savedata/client/bank(ckey)
 
+	var/savedata/client/loadout/loadoutdata = ckey_to_loadout_data[ckey]
+	if(!loadoutdata)
+		new/savedata/client/loadout(ckey)
+
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)
 		new/savedata/client/mob(ckey)
