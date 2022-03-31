@@ -3,9 +3,9 @@
 	icon = 'icons/obj/structure/power.dmi'
 	icon_state = "apc"
 
-	desired_light_range = 1
+	desired_light_range = 2
 	desired_light_power = 1
-	desired_light_color = "#00FF00"
+	desired_light_color = "#64BEB5"
 
 	plane = PLANE_OBJ
 
@@ -28,6 +28,15 @@
 /obj/structure/interactive/power/apc/Initialize()
 	setup_dir_offsets()
 	. = ..()
+
+/obj/structure/interactive/power/apc/update_underlays()
+	. = ..()
+	var/image/I = new/image(icon,"terminal_apc")
+	I.pixel_x = -pixel_x
+	I.pixel_y = -pixel_y
+	I.plane = PLANE_FLOOR
+	I.layer = LAYER_FLOOR_TILE - 0.01
+	add_underlay(I)
 
 /obj/structure/interactive/power/apc/Finalize()
 	. = ..()
@@ -56,7 +65,7 @@
 
 	. = ..()
 
-	var/image/I1 = new/image(initial(icon),"apc_light")
+	var/image/I1 = new/image(initial(icon),"apc_light_1")
 	I1.plane = PLANE_EFFECT_LIGHTING
 
 	var/image/I2 = new/image(initial(icon),"apc_light_2")
