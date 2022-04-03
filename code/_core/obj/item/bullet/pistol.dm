@@ -188,6 +188,28 @@
 	size = 0.01
 	value = 0.4
 
+/obj/item/bullet_cartridge/pistol_4mm/smart
+	name = "\improper 4.6x30mm smart cartridge"
+	desc = "Smarter than the average merc."
+	desc_extended = "For smgs that require 4.6x30mm ammo. This bullet variant has fins on the side and a gps in the center that can home in on a target."
+	icon = 'icons/obj/item/bullet/4mm_smart.dmi'
+
+	amount_max = 5
+	amount_max_icon = 5
+
+
+	bullet_diameter = 4.6
+	bullet_length = 30
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol/smart
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
+
+	projectile_speed = TILE_SIZE*0.5 - 1
+
+	size = 0.01
+	value = 2
+
 
 /obj/item/bullet_cartridge/pistol_4mm/toxin
 	name = "\improper toxin 4.6x30mm smg cartridge"
