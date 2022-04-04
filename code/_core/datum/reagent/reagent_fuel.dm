@@ -7,6 +7,8 @@
 
 	var/explosion_strength_per_unit = 1
 
+	blood_toxicity_multiplier = 5
+
 /reagent/fuel/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
 
 	if(explosion_strength_per_unit)

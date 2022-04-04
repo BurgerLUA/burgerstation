@@ -21,6 +21,8 @@
 
 	lethal = TRUE
 
+	blood_toxicity_multiplier = 3
+
 /reagent/nutrition/ethanol/New(var/desired_loc)
 	var/power_mod = power/100
 	nutrition_amount = power_mod*10
@@ -50,10 +52,10 @@
 	if(owner.health)
 		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
 		if(IR && IR.reverse_intoxication)
-			owner.intoxication -= power*.
+			owner.intoxication -= power*.*multiplier
 		else
-			owner.intoxication += power*.*0.5
-		owner.sanity_regen_buffer += power*.
+			owner.intoxication += power*.*0.5*multiplier
+		owner.sanity_regen_buffer += power*.*multiplier
 
 /reagent/nutrition/ethanol/fernet
 	name = "fernet"

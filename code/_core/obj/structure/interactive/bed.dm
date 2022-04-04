@@ -17,6 +17,24 @@ obj/structure/interactive/bed
 
 	pixel_y = 4
 
+	density = TRUE
+
+/obj/structure/interactive/bed/Crossed(atom/movable/O)
+	. = ..()
+	if(loc && src.z != 0 && is_living(O))
+		var/mob/living/L = O
+		if(L.horizontal)
+			var/found = FALSE
+			for(var/mob/living/L2 in loc.contents)
+				if(L == L2)
+					continue
+				if(!L2.horizontal)
+					continue
+				L2.add_disease(/disease/hrp)
+				found = TRUE
+			if(found)
+				L.add_disease(/disease/hrp)
+
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
 	. = ..()

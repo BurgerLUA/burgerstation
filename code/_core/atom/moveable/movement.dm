@@ -175,7 +175,7 @@
 
 	var/atom/OldLoc = loc
 
-	if(!NewLoc || NewLoc == OldLoc)
+	if(!NewLoc)
 		return FALSE
 
 	if(change_dir_on_move && Dir)

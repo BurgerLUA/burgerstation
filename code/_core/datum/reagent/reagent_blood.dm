@@ -22,6 +22,8 @@
 
 	value = 0.5
 
+	blood_toxicity_multiplier = 0
+
 /reagent/blood/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -35,11 +37,12 @@
 	if(owner.blood_type)
 		var/reagent/blood/R = REAGENT(owner.blood_type)
 		if(R.compatible_blood[src.type])
-			owner.blood_volume += .
+			owner.blood_volume += .*multiplier
 			owner.queue_health_update = TRUE
 		else
-			owner.blood_volume += . *0.5
-			owner.tox_regen_buffer += .*0.5
+			owner.blood_volume += . *0.5*multiplier
+			owner.tox_regen_buffer += .*0.5*multiplier
+			owner.blood_toxicity += .
 
 /reagent/blood/human/ab_negative
 	name = "AB Negative Human Blood"
@@ -176,17 +179,17 @@
 	.=..()
 	owner.add_status_effect(DRUGGY)
 	owner.add_status_effect(CONFUSED)
-	owner.brute_regen_buffer += .*3
-	owner.burn_regen_buffer += .*2
-	owner.pain_regen_buffer += .*5
-	owner.add_hydration(.*-5)
+	owner.brute_regen_buffer += .*3*multiplier
+	owner.burn_regen_buffer += .*2*multiplier
+	owner.pain_regen_buffer += .*5*multiplier
+	owner.add_hydration(.*-5*multiplier)
 	if(owner.health)
 		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
 		if(IR && IR.reverse_intoxication)
-			owner.intoxication -= 12
+			owner.intoxication -= 12*.*multiplier
 		else
-			owner.intoxication += 12
-		owner.sanity_regen_buffer -= 12
+			owner.intoxication += 12*.*multiplier
+		owner.sanity_regen_buffer -= 12*.*multiplier
 
 /reagent/blood/alien/red
 	name = "Red Alien Blood"

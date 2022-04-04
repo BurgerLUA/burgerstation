@@ -39,6 +39,9 @@
 	var/intoxication = 0
 	var/last_intoxication_message = 0
 
+	var/immune_system_strength = 100 //Read only. Calculated in calculate_immune_system_strength()
+	var/list/diseases = list() //Assoc list of diseases.
+
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_VOLUME_DEFAULT
 	var/blood_volume_max = 0 //Set to blood_volume on new.
@@ -257,6 +260,7 @@
 	var/next_heartbeat = 0
 
 	var/list/health_icons_to_update = list()
+
 
 /mob/living/Destroy()
 

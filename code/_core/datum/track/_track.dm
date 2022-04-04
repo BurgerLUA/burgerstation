@@ -245,3 +245,8 @@
 	name = "Entrance"
 	path = 'sound/music/Entrance.ogg'
 	length = 2*60 + 40
+
+/track/second_rise //Menu music
+	name = "Second Rise"
+	path = 'sound/music/Second Rise.ogg'
+	length = 2*60 + 40

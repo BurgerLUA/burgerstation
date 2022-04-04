@@ -10,6 +10,8 @@
 
 	particle_size = 0.25
 
+	blood_toxicity_multiplier = 1
+
 
 
 /reagent/acid/sulphuric

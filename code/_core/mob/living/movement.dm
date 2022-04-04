@@ -96,8 +96,7 @@
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
-	return ..()
-
+	. = ..()
 
 /mob/living/proc/can_move()
 
@@ -203,11 +202,11 @@
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.density)
+	if(is_living(O) && O.density) //A living being is crossing us.
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
-			//If the crosser is horizontal, or the src is horizontal, run normal checks.
-			return ..()
+			//If the crosser is horizontal, or the src is horizontal, you can cross.
+			return TRUE
 		if(L.loyalty_tag == src.loyalty_tag && (!L.ai || !src.ai))
 			//If the crosser is not an AI and we're on the same team, allow it.
 			return TRUE

@@ -252,8 +252,9 @@
 			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
 		update_plane()
+		Move(loc) //Update collisions.
 
-	return desired_horizontal
+	return horizontal
 
 /mob/living/proc/on_life()
 
@@ -325,6 +326,22 @@ mob/living/proc/on_life_slow()
 		dust()
 		return TRUE
 
+	//Immune system
+	immune_system_strength = initial(immune_system_strength)
+	for(var/k in diseases)
+		var/disease/D = diseases[k]
+		D.on_life(src)
+		if(D.stage >= D.immune_system_mod_starts_at_stage)
+			immune_system_strength += D.stage*D.immune_system_mod
+
+	if(immune_system_strength > 0)
+		immune_system_strength *= get_nutrition_quality_mod()
+		immune_system_strength *= min(1,blood_volume/blood_volume_max)
+		immune_system_strength *= chem_power
+		if(health && health.health_max > 0) immune_system_strength *= health.health_current/health.health_max
+	immune_system_strength = max(0,FLOOR(immune_system_strength,1))
+
+	//Talking.
 	if(talk_duration)
 		talk_duration = max(0,talk_duration-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
 		if(talk_duration <= 0 && !is_typing)

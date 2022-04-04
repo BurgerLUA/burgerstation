@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structure/closet.dmi'
 	icon_state = "closet"
 
-	pixel_y = 2
+	pixel_y = 4
 
 /obj/structure/interactive/crate/closet/can_prevent_close(var/atom/movable/M)
 	if(is_living(M))
