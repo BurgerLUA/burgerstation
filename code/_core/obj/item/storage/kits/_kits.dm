@@ -25,7 +25,7 @@
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/storage/pillbottle/dylovene_small(src)
-	new /obj/item/container/syringe/epinephrine(src)
+	new /obj/item/container/syringe/hypodermic/epinephrine(src)
 	. = ..()
 
 
@@ -67,7 +67,7 @@
 	icon_state = "toxin"
 
 /obj/item/storage/kit/toxin/filled/fill_inventory()
-	new /obj/item/container/syringe(src)
+	new /obj/item/container/syringe/hypodermic(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
@@ -89,8 +89,8 @@
 	new /obj/item/storage/pillbottle/kelotane(src)
 	new /obj/item/storage/pillbottle/iron(src)
 	new /obj/item/storage/pillbottle/omnizine(src)
-	new /obj/item/container/syringe/epinephrine(src)
-	new /obj/item/container/syringe/epinephrine(src)
+	new /obj/item/container/syringe/hypodermic/epinephrine(src)
+	new /obj/item/container/syringe/hypodermic/epinephrine(src)
 	new /obj/item/analyzer/health(src)
 	. = ..()
 
@@ -149,7 +149,7 @@
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
 	new /obj/item/storage/pillbottle/potassium_iodide_small(src)
 	new /obj/item/storage/pillbottle/space_prussian_blue_small(src)
-	new /obj/item/container/syringe(src)
+	new /obj/item/container/syringe/hypodermic(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/charcoal(src)
 	new /obj/item/container/simple/vodka(src)

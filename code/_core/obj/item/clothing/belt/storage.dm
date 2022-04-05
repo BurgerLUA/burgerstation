@@ -38,7 +38,7 @@
 	new /obj/item/container/simple/beaker/bottle/bicaridine(src)
 	new /obj/item/container/simple/beaker/bottle/kelotane(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
-	new /obj/item/container/syringe(src)
+	new /obj/item/container/syringe/hypodermic(src)
 	new /obj/item/container/healing/trauma_kit(src)
 	new /obj/item/container/healing/burn_kit(src)
 	new /obj/item/container/spray/silver_sulfadiazine(src)

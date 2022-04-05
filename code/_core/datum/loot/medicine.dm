@@ -35,7 +35,7 @@
 		/obj/item/container/spray/silver_sulfadiazine = 4,
 		/obj/item/container/spray/styptic_powder = 4,
 		/obj/item/container/spray/synthflesh = 4,
-		/obj/item/container/syringe/epinephrine = 8,
+		/obj/item/container/syringe/hypodermic/epinephrine = 8,
 
 		/obj/item/storage/pillbottle/bicaridine = 2,
 		/obj/item/storage/pillbottle/charcoal = 1,
