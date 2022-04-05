@@ -62,6 +62,11 @@
 	icon_state = "splatter_1"
 	blood_level = 10
 
+/obj/effect/cleanable/blood/splatter/grease //Used for a meme and not in game.
+	color = "#955746"
+	plane = PLANE_OBJ
+	layer = 9999
+
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "splatter_[rand(1,12)]"
 	return ..()

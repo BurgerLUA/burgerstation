@@ -44,8 +44,6 @@
 	if(istype(weapon,/obj/item/weapon/ranged/bullet/magazine/smg/smart))
 		smart = TRUE
 
-	target_atom = null
-
 	if(smart && iff_tag && target_turf)
 		var/mob/living/best_target
 		var/best_distance = INFINITY
@@ -60,6 +58,9 @@
 				best_distance = dist
 		if(best_target)
 			target_atom = best_target
+
+	if(!is_living(target_atom))
+		smart = FALSE
 
 
 /obj/projectile/bullet/firearm/pistol/smart/update_projectile(var/tick_rate=1)

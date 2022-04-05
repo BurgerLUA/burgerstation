@@ -42,6 +42,9 @@
 
 	return A.put_in_hands(src,params)
 
+/obj/item/container/healing/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/container/healing/update_icon()
 

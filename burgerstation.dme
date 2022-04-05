@@ -946,6 +946,7 @@
 #include "code\_core\obj\effect\cleanable\_cleanable.dm"
 #include "code\_core\obj\effect\cleanable\blood.dm"
 #include "code\_core\obj\effect\cleanable\spray.dm"
+#include "code\_core\obj\effect\cleanable\tile_rot.dm"
 #include "code\_core\obj\effect\temp\_temp.dm"
 #include "code\_core\obj\effect\temp\alert.dm"
 #include "code\_core\obj\effect\temp\arrow.dm"
