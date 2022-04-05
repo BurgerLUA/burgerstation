@@ -28,35 +28,44 @@
 	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/container/syringe/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
+	. = ..()
 	update_sprite()
-	return ..()
-
 
 /obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 
+/obj/item/container/syringe/adjust_quality(var/quality_to_add=0)
+	. = ..()
+	if(.) update_sprite()
+
 /obj/item/container/syringe/update_icon()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
+	. = ..()
+	//Plunger
 	var/num_state = CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
+	icon = initial(icon)
+	icon_state = "[icon_state]_[num_state]"
 
-	var/icon/I = icon(icon,"[icon_state]_[num_state]")
-	var/icon/I2 = icon(icon,"liquid")
-
+/obj/item/container/syringe/update_underlays()
+	. = ..()
+	//Liquid
 	if(reagents && reagents.volume_current)
-		I2.Blend(reagents.color,ICON_MULTIPLY)
-		I.Blend(I2,ICON_UNDERLAY)
+		var/image/I = new/image(icon,"liquid")
+		I.appearance_flags = I.appearance_flags | RESET_COLOR
+		I.color = reagents.color
+		add_underlay(I)
 
+/obj/item/container/syringe/update_overlays()
+	. = ..()
+	//Action
 	if(src.loc && is_inventory(src.loc))
-		var/icon/I3 = icon(icon,"action_[injecting]")
-		I.Blend(I3,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
+		var/image/I = new/image(icon,"action_[injecting]")
+		I.appearance_flags = I.appearance_flags | RESET_COLOR
+		add_overlay(I)
+	//Needle
+	var/image/I = new/image(icon,"needle[quality <= 0 ? "_broken" : ""]")
+	I.appearance_flags = I.appearance_flags | RESET_COLOR
+	add_overlay(I)
 
 /obj/item/container/syringe/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
@@ -72,6 +81,10 @@
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
+
+	if(quality <= 0)
+		caller.to_chat(span("warning","\The [src.name] is too broken to be used!"))
+		return FALSE
 
 	if(!target.reagents)
 		caller.to_chat(span("warning","You can't target \the [target.name]!"))
@@ -178,10 +191,18 @@
 
 	if(is_organ(object) && is_living(object.loc))
 		var/mob/living/L = object.loc
-		L.to_chat(span("warning","You feel a tiny prick on your [object.name]."))
+		L.to_chat(span("warning","Your [object.name] feels a tiny prick from \the [src.name]."))
+		var/damage_to_deal = min(1 - quality/100,1)*15
+		if(damage_to_deal > 0 && object.health?.adjust_loss_smart(pain=damage_to_deal))
+			L.to_chat(span("danger","\The roughness of \the [src.name] hurts!"))
+		adjust_quality(-20)
 	else if(is_living(object))
 		var/mob/living/L = object
-		L.to_chat(span("warning","You feel a tiny prick."))
+		L.to_chat(span("warning","You feel a tiny prick from \the [src.name]."))
+		var/damage_to_deal = min(1 - quality/100,1)*15
+		if(damage_to_deal > 0 && L.health?.adjust_loss_smart(pain=damage_to_deal))
+			L.to_chat(span("danger","\The roughness of \the [src.name] hurts!"))
+		adjust_quality(-20)
 
 	return FALSE
 
