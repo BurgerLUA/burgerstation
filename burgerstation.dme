@@ -116,7 +116,6 @@
 #include "code\__helpers\health.dm"
 #include "code\__helpers\hooks.dm"
 #include "code\__helpers\icon_procs.dm"
-#include "code\__helpers\interaction.dm"
 #include "code\__helpers\lazy.dm"
 #include "code\__helpers\list.dm"
 #include "code\__helpers\list_defines.dm"

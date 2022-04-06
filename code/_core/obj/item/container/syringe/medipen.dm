@@ -32,7 +32,7 @@
 	else
 		var/list/names = list()
 		for(var/r_id in reagents.stored_reagents)
-			var/reagent/R = REAGENT(id)
+			var/reagent/R = REAGENT(r_id)
 			names |= R.name
 		desc_extended = "[desc_extended] This one contains [english_list(names)]."
 
