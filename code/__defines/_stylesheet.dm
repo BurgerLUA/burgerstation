@@ -4,6 +4,9 @@ a,a:link,a:visited,a:hover,a:focus,a:active{
 	text-decoration: none;
 	font-weight: bold;
 }
+big {
+	font-size: 20px;
+}
 body {
 	font-family: Verdana, sans-serif;
 	font-size: 10px;
@@ -15,6 +18,9 @@ body {
 .ooc{
 	color: #1339AC;
 	font-weight: bold;
+}
+.ahelp{
+	color: #7F006E;
 }
 .looc{
 	color: #46B2B2;
@@ -71,6 +77,9 @@ body {
 }
 .bold{
 	font-weight: bold;
+}
+.italic{
+	font-style: italic;
 }
 .center{
 	text-align: center;

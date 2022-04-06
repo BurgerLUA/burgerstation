@@ -50,9 +50,13 @@
 	if(permissions & FLAG_PERMISSION_HOST)
 		verbs += /client/verb/apply_fuckup
 
+	//Adminhelp
+	verbs += /client/verb/adminhelp
+
 	//Moderator/Admin
 	if((permissions & FLAG_PERMISSION_MODERATOR) || (permissions & FLAG_PERMISSION_ADMIN))
 		verbs += /client/verb/ban
+		verbs += /client/verb/bwoink
 		verbs += /client/verb/get_clients
 		verbs += /client/verb/jump_to_player
 		verbs += /client/verb/jump_to_area
