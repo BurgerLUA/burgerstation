@@ -20,7 +20,7 @@
 	var/default_color_hair = "#00FF00"
 
 	var/default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
-	var/default_icon_state_hair = "bald"
+	var/default_icon_state_hair = "none"
 
 	var/default_icon_hair_face = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
 	var/default_icon_state_hair_face = "none"

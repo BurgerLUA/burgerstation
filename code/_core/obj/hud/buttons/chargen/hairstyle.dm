@@ -4,7 +4,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	if(hair_num == -1)
 		if(labeled_organs[BODY_HAIR_HEAD])
-			var/obj/item/organ/head/O = labeled_organs[BODY_HAIR_HEAD]
+			var/obj/item/organ/hair/O = labeled_organs[BODY_HAIR_HEAD]
 			if(O.additional_blends["hair_head"])
 				var/icon_blend/IB = O.additional_blends["hair_head"]
 				var/found_value = SSspecies.all_hair_files[S.default_icon_hair].Find(IB.icon_state)
@@ -53,7 +53,8 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair][clamp(choice_main,1,length(SSspecies.all_hair_files[SSspecies.all_hair_files[S.default_icon_hair]]))]
+	var/final_hair_number = clamp(choice_main,1,length(SSspecies.all_hair_files[S.default_icon_hair]))
+	var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair][final_hair_number]
 	if(desired_color)
 		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)
 	else
@@ -76,13 +77,6 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	chargen_flags = CHARGEN_HAIR
 
-/obj/hud/button/chargen/change_hairstyle/main/update_owner(var/mob/desired_owner)
-	. = ..()
-	if(. && is_advanced(desired_owner))
-		var/mob/living/advanced/A = desired_owner
-		A.handle_hairstyle_chargen(A.sex == MALE ? 2 : 16)
-
-
 /obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -93,6 +87,12 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair]))
 		A.handle_hairstyle_chargen(hair_num)
 
+
+/obj/hud/button/chargen/change_hairstyle/main/update_owner(var/mob/desired_owner)
+	. = ..()
+	if(. && is_advanced(desired_owner))
+		var/mob/living/advanced/A = desired_owner
+		A.handle_hairstyle_chargen(A.sex == MALE ? 2 : 16)
 
 /obj/hud/button/chargen/change_hairstyle/left
 	name = "cycle hairstyle left"
@@ -136,9 +136,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	..()
 
 /obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
 	. = ..()
-
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.handle_hairstyle_chargen(hair_num)
