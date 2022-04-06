@@ -68,6 +68,7 @@ var/global/ticket_number_counter = 1
 
 	for(var/k in involved_ckeys)
 		var/client/C2 = CLIENT(k)
+		play_sound('sound/effects/bwoink.ogg',C2)
 		if(C2 == C) //We're the person that sent the message.
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR) //We're a moderator who sent the message.
 				C2?.to_chat(span("ahelp","Admin PM sent-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
@@ -84,6 +85,7 @@ var/global/ticket_number_counter = 1
 			var/client/C2 = all_clients[k]
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR)
 				C2.to_chat(span("ahelp","New ticket (#[ticket_number]) message from <a href='?src=\ref[src];password=[password]'>[victim]</a>: [message]"))
+				play_sound('sound/effects/bwoink.ogg',C2)
 				notified_admins++
 		log_admin("[notified_admins] admins were notified of ticket #[ticket_number].")
 		if(!notified_admins)
