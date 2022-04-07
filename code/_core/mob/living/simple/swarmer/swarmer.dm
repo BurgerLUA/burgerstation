@@ -111,7 +111,7 @@
 	anchored = TRUE
 
 	soul_size = null
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	collision_flags = FLAG_COLLISION_WALL //YOU'RE UP AGAINST THE WALL AND I AM THE FUCKING WALL
 

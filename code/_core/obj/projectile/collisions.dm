@@ -3,7 +3,7 @@
 	if(P.owner == src)
 		return null
 
-	if( (collision_bullet_flags & FLAG_COLLISION_SPECIFIC) && P.target_atom == src)
+	if( (collision_bullet_flags & FLAG_COLLISION_BULLET_SPECIFIC) && P.target_atom == src)
 		return src
 
 	if(P.collision_flags_special && P.collision_flags_special & collision_flags)

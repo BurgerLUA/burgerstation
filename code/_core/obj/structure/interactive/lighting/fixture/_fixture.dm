@@ -10,7 +10,7 @@
 
 	rotation_mod = -1
 
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 	health = /health/construction
 

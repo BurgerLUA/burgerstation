@@ -28,7 +28,7 @@
 
 	armor = /armor/carp
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	movement_delay = AI_TICK //I'm fast as fuck boi.
 

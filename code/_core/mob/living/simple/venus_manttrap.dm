@@ -22,7 +22,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/plant
 	blood_volume = 400

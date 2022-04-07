@@ -17,7 +17,7 @@
 
 	armor = /armor/demon
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	iff_tag = "Hell"
 	loyalty_tag = "Hell"

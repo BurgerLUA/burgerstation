@@ -30,7 +30,7 @@
 	iff_tag = "Goliath"
 	loyalty_tag = "Goliath"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/goliath
 	blood_volume = 750

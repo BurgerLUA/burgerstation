@@ -18,7 +18,7 @@
 
 	armor = /armor/cult_construct
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/unholy
 	blood_volume = 1000

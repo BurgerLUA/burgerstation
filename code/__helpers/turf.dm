@@ -43,7 +43,7 @@
 	var/A1_z = A1.z
 	if(A1_z == 0)
 		var/turf/T = get_turf(A1)
-		if(T.z == 0)
+		if(!T || T.z == 0)
 			return max(world.maxx,world.maxy)
 		A1_x = T.x
 		A1_y = T.y
@@ -54,7 +54,7 @@
 	var/A2_z = A2.z
 	if(A2_z == 0)
 		var/turf/T = get_turf(A2)
-		if(T.z == 0)
+		if(!T || T.z == 0)
 			return max(world.maxx,world.maxy)
 		A2_x = T.x
 		A2_y = T.y

@@ -41,7 +41,7 @@
 /obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!referencing)
-		CRASH_SAFE("Warning: Referenced item not detected!")
+		CRASH_SAFE("Warning: Referenced inventory not detected!")
 		return TRUE
 
 	update_vis_contents()
@@ -51,7 +51,7 @@
 		caller.to_chat(span("warning","There is nothing to remove!"))
 		return FALSE
 
-	if(is_organ(object.loc))
+	if(is_organ(referencing.loc))
 		top_object.try_strip(caller)
 		return TRUE
 	else if(is_inventory(object))

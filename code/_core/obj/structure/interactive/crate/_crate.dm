@@ -6,8 +6,10 @@
 	icon_state = "crate"
 
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_WALKING //Not wall because crawling.
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+
+	collision_flags = FLAG_COLLISION_BARICADE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
 	density = TRUE
 	layer = LAYER_OBJ_CRATE
 
@@ -25,7 +27,7 @@
 
 	can_rotate = FALSE
 
-	size = SIZE_LARGE
+	size = SIZE_HUMAN
 
 	pixel_y = 8
 
@@ -204,6 +206,8 @@
 		var/atom/movable/M = k
 		if(!M.force_move(src.loc))
 			log_error("Warning: [M.get_debug_name()] is stuck in a crate!")
+		else if(is_item(M))
+			M.pixel_y = initial(M.pixel_y) + src.pixel_y
 
 	open = TRUE
 

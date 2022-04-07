@@ -17,7 +17,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/carp
 	blood_volume = 750

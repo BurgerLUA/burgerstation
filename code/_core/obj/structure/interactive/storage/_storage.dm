@@ -18,6 +18,7 @@
 		for(var/obj/item/I in loc.contents)
 			storage.add_to_inventory(null,I)
 
+
 /obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/caller) //caller wants to see inside src
 
 	if(!src.can_caller_interact_with(caller,distance_checks=FALSE))
@@ -30,8 +31,11 @@
 
 	if(stored_loot)
 		var/loot/L = SSloot.all_loot[stored_loot]
-		L.do_spawn(src)
 		stored_loot = null
+		var/turf/T = get_turf(src)
+		var/list/spawned_loot = L.do_spawn(T)
+		for(var/obj/item/I in spawned_loot)
+			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 
 	caller.clear_inventory_defers() //Remove existing ones.
 
@@ -50,3 +54,23 @@
 		examine_storage(caller)
 		return TRUE
 	. = ..()
+
+
+/obj/structure/interactive/storage/trash_pile
+	name = "trash pile"
+	desc = "Look inside, if you dare."
+	desc_extended = "A large pile of trash containing long discarded items. It could be dangerous to search one.."
+	icon = 'icons/obj/structure/trash_piles.dmi'
+	icon_state = "trash"
+
+	stored_loot = /loot/trash_pile
+
+	var/mob/living/stored_threat
+
+/obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
+	icon_state = "[initial(icon_state)]_[rand(1,11)]"
+	. = ..()
+
+/obj/structure/interactive/storage/trash_pile/Destroy()
+	. = ..()
+	QDEL_NULL(stored_threat)

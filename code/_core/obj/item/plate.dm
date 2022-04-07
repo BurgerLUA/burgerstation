@@ -13,7 +13,7 @@
 	health = /health/construction/
 	health_base = 1
 
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 	var/max_load = 4
 	var/max_size = SIZE_2
@@ -52,7 +52,7 @@
 	. = ..()
 
 	broken = TRUE
-	collision_bullet_flags &= ~FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags &= ~FLAG_COLLISION_BULLET_SPECIFIC
 
 	update_sprite()
 

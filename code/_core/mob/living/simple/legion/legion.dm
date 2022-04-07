@@ -121,7 +121,7 @@
 
 	armor = /armor/legion/snow
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 /mob/living/simple/legionare/snow/post_death()
 	. = ..()

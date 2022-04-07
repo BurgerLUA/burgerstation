@@ -1,16 +1,17 @@
 //Inventory sizes.
-#define SIZE_0 0.5
-#define SIZE_1 1
-#define SIZE_2 2
-#define SIZE_3 3
-#define SIZE_4 4
-#define SIZE_5 5
-#define SIZE_6 6
-#define SIZE_7 7
-#define SIZE_8 8
-#define SIZE_9 9
-#define SIZE_10 10
-#define SIZE_X 1000
+#define SIZE_0 0.5 //Pen
+#define SIZE_1 1 //Rubber Ducky
+#define SIZE_2 3 //Pistol
+#define SIZE_3 6 //SMG
+#define SIZE_4 10 //Rifle
+#define SIZE_5 15 //Sniper
+
+#define SIZE_6 30 //Minigun or big-ass sniper
+#define SIZE_7 60 //Human
+#define SIZE_8 120 //Giant
+#define SIZE_9 240 //Bubblegum
+#define SIZE_10 480 //Nar-sie
+#define SIZE_X 1000 //Meme
 
 //Inventory weights
 #define WEIGHT_0 0.5

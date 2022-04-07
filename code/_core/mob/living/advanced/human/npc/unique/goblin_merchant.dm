@@ -6,7 +6,7 @@
 
 	species = "goblin"
 
-	pixel_z = -2
+	pixel_z = 1
 
 	blood_type = /reagent/blood/goblin
 

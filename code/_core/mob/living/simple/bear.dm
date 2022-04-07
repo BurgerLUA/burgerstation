@@ -26,7 +26,7 @@
 		/obj/item/container/edible/dynamic/meat/raw_bear/
 	)
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	var/armored = FALSE
 

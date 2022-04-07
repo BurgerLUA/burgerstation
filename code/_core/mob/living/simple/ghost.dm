@@ -39,7 +39,7 @@
 		FIRE = TRUE
 	)
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	soul_size = SOUL_SIZE_RARE
 

@@ -6,6 +6,11 @@
 	icon = 'icons/obj/structure/closet.dmi'
 	icon_state = "closet"
 
+	collision_flags = FLAG_COLLISION_WALL //Not wall because crawling.
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
+	bullet_block_chance = 90
+
 	pixel_y = 4
 
 /obj/structure/interactive/crate/closet/can_prevent_close(var/atom/movable/M)

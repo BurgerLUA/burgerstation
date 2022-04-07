@@ -17,7 +17,7 @@
 	iff_tag = "Clockwork"
 	loyalty_tag = "Clockwork"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = null
 	blood_volume = 0

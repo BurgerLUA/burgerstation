@@ -25,7 +25,7 @@
 
 	armor = /armor/tough_furred
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	iff_tag = "Cow"
 	loyalty_tag = "Cow"

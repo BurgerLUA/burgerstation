@@ -18,7 +18,7 @@
 
 	armor = /armor/blob/armored
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	var/obj/structure/interactive/blob/node/linked_node
 

@@ -1,21 +1,20 @@
 /obj/structure/interactive/crate/bodybag
-    name = "body bag"
-    desc = "You were loud and ugly and now your dead!"
-    desc_extended = "A plastic bag to transport corpse."
-    icon = 'icons/obj/structure/crates.dmi'
-    icon_state = "bodybag"
+	name = "body bag"
+	desc = "You were loud and ugly and now your dead!"
+	desc_extended = "A plastic bag to transport corpse."
+	icon = 'icons/obj/structure/crates.dmi'
+	icon_state = "bodybag"
 
-    value = 100 //same value as /obj/item/deployable/bodybag to avoid money dubing
-    anchored = FALSE
-    collision_flags = FLAG_COLLISION_ITEM
-    collision_bullet_flags = FLAG_COLLISION_SPECIFIC
-    density = TRUE
-    layer = LAYER_OBJ_CRATE
-    size = SIZE_HUMAN
+	collision_flags = FLAG_COLLISION_WALKING //Not wall because crawling.
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-    pixel_y = 2
+	value = 100 //same value as /obj/item/deployable/bodybag to avoid money duping
+	anchored = FALSE
+	bullet_block_chance = 0
 
-    density = TRUE
+	pixel_y = 2
+
+	density = TRUE
 
 /obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

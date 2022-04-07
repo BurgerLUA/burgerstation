@@ -24,7 +24,7 @@
 	iff_tag = "Watcher"
 	loyalty_tag = "Watcher"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	pixel_x = -12
 
@@ -64,7 +64,7 @@
 
 	pixel_x = 0
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	status_immune = list()
 
@@ -97,7 +97,7 @@
 
 	pixel_x = 0
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	status_immune = list()
 

@@ -40,8 +40,8 @@
 		var/obj/item/I = k
 		var/x = (i % maximum_x) - (maximum_x-1)*0.5
 		var/y = FLOOR(i/maximum_x,1) - (maximum_y-1)*0.5
-		I.pixel_x = x*TILE_SIZE*0.5*0.5 + initial(pixel_x)
-		I.pixel_y = y*TILE_SIZE*0.5*0.5 + 4 + initial(pixel_y)
+		I.pixel_x = x*TILE_SIZE*0.2 + initial(pixel_x)
+		I.pixel_y = y*TILE_SIZE*0.2 + 4 + initial(pixel_y)
 		i++
 
 	return ..()

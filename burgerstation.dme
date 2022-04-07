@@ -1559,7 +1559,6 @@
 #include "code\_core\obj\item\storage\heavy\corpse.dm"
 #include "code\_core\obj\item\storage\heavy\cupboard.dm"
 #include "code\_core\obj\item\storage\heavy\fridge.dm"
-#include "code\_core\obj\item\storage\heavy\trash_pile.dm"
 #include "code\_core\obj\item\storage\kits\_kits.dm"
 #include "code\_core\obj\item\tempering\_tempering.dm"
 #include "code\_core\obj\item\tempering\tempering_luck.dm"

@@ -10,7 +10,7 @@
 	health_base = 25
 
 	initialize_type = INITIALIZE_LATE
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 	var/loot
 
