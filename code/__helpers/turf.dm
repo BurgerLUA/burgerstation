@@ -1,4 +1,4 @@
-/proc/get_area(A)
+/proc/get_area(var/datum/A)
 	if(isarea(A)) return A
 	var/turf/T = get_turf(A)
 	return T ? T.loc : null

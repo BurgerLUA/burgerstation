@@ -575,11 +575,10 @@ mob/living/proc/on_life_slow()
 	if(health.health_regeneration <= 0 && health.stamina_regeneration <= 0 && health.mana_regeneration <= 0)
 		return FALSE
 
-	var/delay_mod = TICKS_TO_DECISECONDS(LIFE_TICK)
+	if(health.health_regen_cooef <= 0 && health.stamina_regen_cooef <= 0 && health.mana_regen_cooef <= 0)
+		return FALSE
 
-	var/health_adjust = 0
-	var/mana_adjust = 0
-	var/stamina_adjust = 0
+	var/delay_mod = TICKS_TO_DECISECONDS(LIFE_TICK)
 
 	health_regen_delay = max(0,health_regen_delay - delay_mod)
 	stamina_regen_delay = max(0,stamina_regen_delay - delay_mod)
@@ -590,34 +589,34 @@ mob/living/proc/on_life_slow()
 
 	var/trait/general_regen/GR = get_trait_by_category(/trait/general_regen/)
 
-	if(health_regen_delay <= 0 && health.health_regeneration > 0)
-		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod*(GR ? GR.stamina_regen_mul : 1)
-		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE) - brute_regen_buffer),health_mod)
-		var/burn_to_adjust = min(max(0,health.get_loss(BURN) - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.get_loss(PAIN) - pain_regen_buffer),health_mod)
-		health_adjust += brute_to_adjust + burn_to_adjust + pain_to_adjust
-		if(health_adjust)
+	if(health.health_regen_cooef > 0 && health_regen_delay <= 0 && health.health_regeneration > 0)
+		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod*(GR ? GR.health_regen_mul : 1)
+		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE)*health.health_regen_cooef - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.get_loss(BURN)*health.health_regen_cooef - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.get_loss(PAIN)*health.health_regen_cooef - pain_regen_buffer),health_mod)
+		if(brute_to_adjust != 0 || burn_to_adjust != 0 || pain_to_adjust != 0)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust
 			pain_regen_buffer += pain_to_adjust
-			if(health_adjust > 0 && player_controlled)
-				add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
+			var/total_adjust = max(0,brute_to_adjust) + max(0,burn_regen_buffer) + max(0,pain_regen_buffer)
+			if(total_adjust > 0 && player_controlled)
+				add_attribute_xp(ATTRIBUTE_FORTITUDE,total_adjust)
 
-	if(stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
+	if(health.stamina_regen_cooef > 0 && stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
 		var/stamina_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.stamina_regeneration*nutrition_hydration_mod*(GR ? GR.stamina_regen_mul : 1)
-		stamina_adjust += min(max(0,health.get_stamina_loss() - stamina_regen_buffer),stamina_to_regen)
-		if(stamina_adjust)
+		var/stamina_adjust = min(max(0,health.get_stamina_loss()*health.stamina_regen_cooef - stamina_regen_buffer),stamina_to_regen)
+		if(stamina_adjust != 0)
 			stamina_regen_buffer += stamina_adjust
 			if(stamina_adjust > 0 && player_controlled)
-				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust*10)
+				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust)
 
-	if(mana_regen_delay <= 0 && health.mana_regeneration > 0)
+	if(health.mana_regen_cooef > 0 && mana_regen_delay <= 0 && health.mana_regeneration > 0)
 		var/mana_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.mana_regeneration*nutrition_hydration_mod*(1+(health.mana_current/health.mana_max)*3)*(GR ? GR.mana_regen_mul : 1)
-		mana_adjust += min(max(0,health.get_mana_loss() - mana_regen_buffer),mana_to_regen)
-		if(mana_adjust)
+		var/mana_adjust = min(max(0,health.get_mana_loss()*health.mana_regen_cooef - mana_regen_buffer),mana_to_regen)
+		if(mana_adjust != 0)
 			mana_regen_buffer += mana_adjust
 			if(mana_adjust > 0 && player_controlled)
-				add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust*10)
+				add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust)
 
 	return TRUE
 

@@ -11,5 +11,3 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/crystal_guardian)
 
 	value = 2000
-
-	loyalty_tag = null //Anyone can use

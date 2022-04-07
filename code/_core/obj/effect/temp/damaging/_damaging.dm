@@ -68,7 +68,8 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	if(is_living(victim) && is_living(owner) && owner != victim)
 		var/mob/living/L = victim
 		var/mob/living/L2 = owner
-		if(L.loyalty_tag == L2.loyalty_tag)
+		var/area/A = get_area(L)
+		if(!allow_hostile_action(L.loyalty_tag,L2.loyalty_tag,A))
 			return FALSE
 	var/damagetype/DT = all_damage_types[damage_type]
 	var/list/params = get_params()

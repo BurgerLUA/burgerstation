@@ -12,8 +12,3 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/mining)
 
 	value = 1000
-
-	loyalty_tag = "NanoTrasen"
-
-/obj/item/clothing/overwear/hardsuit/mining/golem
-	loyalty_tag = "golem"

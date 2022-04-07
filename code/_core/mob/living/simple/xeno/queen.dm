@@ -102,10 +102,16 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	do_say("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
-	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+	var/turf/T = get_turf(src)
+
+	play_sound('sound/voice/xeno/queen_screech.ogg',T, range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+
+	var/area/A = T.loc
 
 	for(var/mob/living/L in view(VIEW_RANGE,src))
-		if(L.loyalty_tag == src.loyalty_tag)
+		if(L.dead)
+			continue
+		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
 			continue
 		L.add_status_effect(STUN,20,20)
 

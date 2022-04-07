@@ -83,7 +83,7 @@
 			var/mob/living/L = A.loc
 			if(is_player(caller) && caller.client)
 				var/mob/living/advanced/player/P = caller
-				if(L.loyalty_tag == P.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
+				if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
 					var/experience_gain = -.*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 		A.health.update_health()
@@ -114,7 +114,7 @@
 		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
 		return FALSE
 
-	if(heal_brute < 0 || heal_burn < 0)
+	if(heal_brute < 0 || heal_burn < 0) //Hostile!
 		if(!is_living(caller))
 			return FALSE
 		var/mob/living/caller_as_living = caller
@@ -128,9 +128,12 @@
 			target_as_living = target
 		else
 			return FALSE
-		if(caller_as_living != target_as_living && caller_as_living.loyalty_tag == target_as_living.loyalty_tag)
-			caller.to_chat(span("warning","You'd feel it would be unsafe to treat your fellow man with \the [src.name]..."))
-			return FALSE
+
+		if(caller_as_living != target_as_living)
+			var/area/A = get_area(target_as_living)
+			if(!allow_hostile_action(caller_as_living.loyalty_tag,target_as_living.loyalty_tag,A))
+				caller.to_chat(span("warning","You'd feel it would be unsafe to treat your fellow man with the dangerous [src.name]..."))
+				return FALSE
 
 	if(robotic)
 		if(target.health.organic)

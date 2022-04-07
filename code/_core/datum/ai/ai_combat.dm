@@ -42,7 +42,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 	DIFFICULTY_EASY = 1,
 	DIFFICULTY_NORMAL = 2,
 	DIFFICULTY_HARD = 4,
-	DIFFICULTY_EXTREME = 6
+	DIFFICULTY_EXTREME = 6,
+	DIFFICULTY_SURVIVOR = 6
 )
 
 /ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.
@@ -61,7 +62,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 			if(is_player(A))
 				var/mob/living/advanced/player/P = L
 				var/difficulty_mod = difficulty_to_ai_modifier[P.difficulty]
-				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 2*difficulty_mod && !ai_attacking_players[A][owner])
+				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
 					return -9999 //Wow they're being overwhelmed. Very lowest priority.
 				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
 				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health. Low health will be spared. Higher difficulty will make you more desirable.
@@ -120,7 +121,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 					return TRUE
 				if(assistance == 1 && is_living(L.ai.objective_attack))
 					var/mob/living/L2 = L.ai.objective_attack
-					if(L2.loyalty_tag == owner.loyalty_tag)
+					if(allow_helpful_action(L2.loyalty_tag,owner.loyalty_tag))
 						return TRUE
 			if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
 				return TRUE
@@ -140,7 +141,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 			if(!is_living(A))
 				return TRUE
 			var/mob/living/L = A
-			return owner.loyalty_tag != L.loyalty_tag
+			var/area/A2 = get_area(L)
+			return allow_hostile_action(owner.loyalty_tag,L.loyalty_tag,A2)
 		if(3)
 			return TRUE
 

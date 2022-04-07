@@ -111,8 +111,13 @@ var/global/list/difficulty_to_damage_mul = list(
 	DIFFICULTY_EASY = 0.5,
 	DIFFICULTY_NORMAL = 0.75,
 	DIFFICULTY_HARD = 1,
-	DIFFICULTY_EXTREME = 1
+	DIFFICULTY_EXTREME = 1,
+	DIFFICULTY_SURVIVOR = 1
 )
+
+/mob/living/advanced/player/Finalize()
+	. = ..()
+	setup_difficulty()
 
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
@@ -154,6 +159,27 @@ var/global/list/difficulty_to_damage_mul = list(
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 
 	name = SStext.check_duplicate_player_name(real_name,ckey_last)
+
+	return TRUE
+
+
+/mob/living/advanced/player/proc/setup_difficulty()
+
+	var/actual_difficulty = difficulty
+	if(enable_friendly_fire)
+		actual_difficulty = DIFFICULTY_NORMAL
+
+	if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
+		health.health_regeneration = 0
+	else
+		health.health_regeneration = initial(health.health_regeneration)
+
+	if(actual_difficulty == DIFFICULTY_SURVIVOR)
+		health.stamina_regen_cooef = 0.5
+		health.mana_regen_cooef = 0.5
+	else
+		health.stamina_regen_cooef = initial(health.stamina_regen_cooef)
+		health.mana_regen_cooef = initial(health.mana_regen_cooef)
 
 	return TRUE
 

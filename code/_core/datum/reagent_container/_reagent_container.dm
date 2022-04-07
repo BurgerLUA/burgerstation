@@ -480,12 +480,11 @@
 		else if(target_container.owner && is_living(target_container.owner.loc))
 			L2 = target_container.owner.loc
 
-		if(L2 && L1 != L2 && L1.loyalty_tag && L1.loyalty_tag == L2.loyalty_tag)
-			for(var/r_id in stored_reagents)
-				var/reagent/R = REAGENT(r_id)
-				if(R.lethal)
-					caller.to_chat(span("warning","Your loyalty prevents you from giving lethal reagents to your allies!"))
-					return 0
+		if(src.contains_lethal && L2 && L1 != L2)
+			var/area/A = get_area(L2)
+			if(!allow_hostile_action(L1.loyalty_tag,L2.loyalty_tag,A))
+				L1.to_chat(span("warning","Your loyalty tag prevents you from giving lethal reagents to your allies!"))
+				return 0
 
 	var/total_amount_transfered = 0
 

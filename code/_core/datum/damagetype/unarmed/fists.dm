@@ -137,7 +137,8 @@
 
 		if(is_living(attacker))
 			var/mob/living/A = attacker
-			if(L.loyalty_tag != A.loyalty_tag)
+			var/area/A2 = get_area(L)
+			if(allow_hostile_action(A.loyalty_tag,L.loyalty_tag,A2))
 				if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
 					L.add_status_effect(DISARM,5,5, source = attacker)
 				else

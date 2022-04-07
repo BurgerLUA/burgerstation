@@ -158,6 +158,10 @@
 
 	var/list/possible_crew = list()
 
+	if(enable_friendly_fire)
+		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
+		return FALSE
+
 	if(encoded && is_living(caller))
 		var/mob/living/L = caller
 		if(L.loyalty_tag != desired_loyalty)

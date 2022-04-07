@@ -207,9 +207,9 @@
 		if(L.horizontal || src.horizontal)
 			//If the crosser is horizontal, or the src is horizontal, you can cross.
 			return TRUE
-		if(L.loyalty_tag == src.loyalty_tag && (!L.ai || !src.ai))
-			//If the crosser is not an AI and we're on the same team, allow it.
-			return TRUE
+		if((!L.ai || !src.ai))
+			if(allow_helpful_action(L.loyalty_tag,src.loyalty_tag)) //If the crosser is not an AI and we're on the same team, allow it.
+				return TRUE
 		if(L.size >= SIZE_ANIMAL)
 			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE

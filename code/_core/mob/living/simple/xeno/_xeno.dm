@@ -134,7 +134,8 @@
 
 	if(is_living(O))
 		var/mob/living/L = O
-		if(L.loyalty_tag == loyalty_tag)
+		var/area/A = get_area(L)
+		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
 			return TRUE
 
 	return ..()

@@ -44,10 +44,12 @@
 
 		var/list/possible_targets = list()
 
-		for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
-			if(A.loyalty_tag != src.loyalty_tag)
+		var/area/A2 = get_area(src)
+
+		for(var/mob/living/advanced/L in view(VIEW_RANGE,src))
+			if(!L.dead)
 				continue
-			if(!A.dead)
+			if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A2))
 				continue
 			possible_targets += src
 

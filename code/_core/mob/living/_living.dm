@@ -604,8 +604,10 @@
 
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(desired_loyalty && loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
-		return TRUE
+	if(owner != src)
+		var/area/A = get_area(src)
+		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty,A))
+			return TRUE
 
 	if(magnitude > 6)
 		var/x_mod = src.x - epicenter.x

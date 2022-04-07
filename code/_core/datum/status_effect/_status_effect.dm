@@ -313,9 +313,10 @@
 
 	if(is_living(source))
 		var/mob/living/L = source
-		if(L.loyalty_tag != owner.loyalty_tag)
+		var/area/A = get_area(owner)
+		if(allow_hostile_action(owner.loyalty_tag,L.loyalty_tag,A))
 			L.add_status_effect(PARALYZE,10,10,source=source,stealthy=TRUE)
-			if(!owner.dead && owner.dir == source.dir) //Grab from behind.
+			if(!owner.dead && (owner.dir == source.dir || owner.horizontal)) //Grab from behind.
 				owner.add_status_effect(PARALYZE,30,30,source = source,stealthy = TRUE)
 				owner.add_status_effect(DISARM,30,30,source = source)
 				return ..()

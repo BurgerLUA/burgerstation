@@ -58,5 +58,5 @@
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
 		/obj/item/crafting/workbench,
-		/obj/item/clothing/overwear/hardsuit/mining/golem // golem loyalty tag
+		/obj/item/clothing/overwear/hardsuit/mining
 	)

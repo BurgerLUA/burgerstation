@@ -8,7 +8,7 @@
 	layer = 0
 	plane = PLANE_HUD
 
-	screen_loc = "CENTER-4.5,CENTER-4.5"
+	screen_loc = "CENTER:-144,CENTER:-144"
 
 	mouse_opacity = 0
 
@@ -30,15 +30,15 @@
 
 		switch(dir)
 			if(NORTHWEST)
-				screen_loc = "LEFT,TOP"
+				screen_loc = "LEFT,TOP to RIGHT,BOTTOM:12"
 			if(NORTHEAST)
-				screen_loc = "RIGHT,TOP"
+				screen_loc = "RIGHT,TOP to LEFT,BOTTOM:12"
 			if(SOUTHEAST)
-				screen_loc = "RIGHT,BOTTOM:12"
+				screen_loc = "RIGHT,BOTTOM:12 to LEFT,TOP"
 			if(SOUTHWEST)
-				screen_loc = "LEFT,BOTTOM:12"
+				screen_loc = "LEFT,BOTTOM:12 to RIGHT,TOP"
 			if(SOUTH)
-				screen_loc = "CENTER-2,CENTER-2"
+				screen_loc = "CENTER:-64,CENTER:-64"
 
 	..()
 
@@ -83,20 +83,34 @@
 			owner.add_color_mod("health",desired_color)
 
 	else if(dir in DIRECTIONS_INTERCARDINAL)
-		var/max_stamina = owner.health.stamina_max
-		var/stamina = owner.health.stamina_current
 
-		var/max_mana = owner.health.mana_max
-		var/mana = owner.health.mana_current
-
-		var/max_pain = owner.health.health_max
+		var/max_pain = owner.health.health_max*owner.health.health_regen_cooef
 		var/pain = owner.health.get_loss(PAIN)
 
-		alpha = max(1 - health/max_health, 1 - stamina/max_stamina, 1 - mana/max_mana,pain/max_pain)*255
-		color = rgb(255*(1 - pain/max_pain) - (health/max_health)*255,255*(1 - pain/max_pain) - (stamina/max_stamina)*255,255*(1 - pain/max_pain) - (mana/max_mana)*255)
+		var/max_stamina = owner.health.stamina_max*owner.health.stamina_regen_cooef
+		var/stamina = owner.health.stamina_current
 
-	else
-		alpha = 255 - 255*(health/max_health)
+		var/max_mana = owner.health.mana_max*owner.health.mana_regen_cooef
+		var/mana = owner.health.mana_current
+
+		var/pain_mod = clamp(pain/max_pain,0,1)
+		var/health_mod = clamp(health/max_health,0,1)
+		var/stamina_mod = clamp(stamina/max_stamina,0,1)
+		var/mana_mod = clamp(mana/max_mana,0,1)
+
+		alpha = max(
+			1 - health_mod,
+			1 - stamina_mod,
+			1 - mana_mod,
+			pain_mod
+		)*255
+		color = rgb(
+			255*(1 - pain_mod) - health_mod*255,
+			255*(1 - pain_mod) - stamina_mod*255,
+			255*(1 - pain_mod) - mana_mod*255)
+
+	else //Unused.
+		alpha = 255 - 255*clamp(health/max_health,0,1)
 		color = rgb(255,0,0)
 
 	return TRUE

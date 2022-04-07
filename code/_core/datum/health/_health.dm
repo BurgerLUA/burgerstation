@@ -7,14 +7,17 @@
 	var/health_max = -1
 	var/health_current = -1
 	var/health_regeneration = -1
+	var/health_regen_cooef = 1 //What percentage to naturally regenerate health.
 
 	var/stamina_max = -1
 	var/stamina_current = -1
 	var/stamina_regeneration = -1
+	var/stamina_regen_cooef = 1 //What percentage to naturally regenerate stamina.
 
 	var/mana_max = -1
 	var/mana_current = -1
 	var/mana_regeneration = -1
+	var/mana_regen_cooef = 1 //What percentage to naturally regenerate mana.
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 

@@ -51,7 +51,7 @@
 	if(P.iff_tag && !check_iff(src.iff_tag,P.iff_tag,new_turf.loc,P.hostile))
 		return null
 
-	if(P.loyalty_tag && !check_loyalty(src.loyalty_tag,P.loyalty_tag,new_turf.loc,P.hostile))
+	if(P.loyalty_tag && !allow_hostile_action(src.loyalty_tag,P.loyalty_tag,new_turf.loc))
 		return null
 
 	if(!P.hit_laying && dead && get_dist(src,P.target_atom) > 0)

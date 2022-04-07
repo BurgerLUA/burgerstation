@@ -18,8 +18,6 @@
 
 	value = 750 //Extraordinary cost. :P
 
-	loyalty_tag = "Revolutionary"
-
 
 /obj/item/clothing/overwear/hardsuit/skat
 	name = "SKAT-9"
@@ -40,8 +38,6 @@
 
 	value = 1050
 
-	loyalty_tag = "Revolutionary"
-
 /obj/item/clothing/overwear/hardsuit/skat/antag
 	name = "SKAT-10"
 	icon = 'icons/obj/item/clothing/suit/skat_antag.dmi'
@@ -60,8 +56,6 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/skat/antag)
 
 	value = 2050
-
-	loyalty_tag = "Revolutionary"
 
 	var/cooldown_effect = 0
 

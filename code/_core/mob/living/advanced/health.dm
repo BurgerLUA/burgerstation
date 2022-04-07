@@ -20,10 +20,8 @@
 
 	. = ..()
 
-	if(!stealthy && damage_amount > 0)
-		health_regen_delay = max(health_regen_delay,300)
-		if(!dead && damage_amount > 10 && prob(damage_amount*0.3))
-			src.send_pain(damage_amount)
+	if(!dead && damage_amount > 10 && prob(damage_amount*0.3))
+		src.send_pain(damage_amount)
 
 	HOOK_CALL("on_damage_received") //For hulking and whatnot.
 

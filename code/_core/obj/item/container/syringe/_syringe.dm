@@ -119,15 +119,18 @@
 		else if(is_living(target.loc))
 			victim = target.loc
 
-		if(victim != attacker && victim.loyalty_tag == attacker.loyalty_tag) //Same team!
-			if(injecting)
-				if(reagents.contains_lethal)
-					caller.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
-					return FALSE
-			else
-				if((victim.blood_volume-inject_amount_desired)/victim.blood_volume_max < 0.9)
-					caller.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
-					return FALSE
+		if(victim != attacker)
+			var/area/A = get_area(victim)
+			if(!allow_hostile_action(victim.loyalty_tag,attacker.loyalty_tag,A))
+				if(injecting)
+					if(reagents.contains_lethal)
+						attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
+						return FALSE
+				else
+					if((victim.blood_volume-inject_amount_desired)/victim.blood_volume_max < 0.9)
+						attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
+						return FALSE
+
 
 	return TRUE
 
