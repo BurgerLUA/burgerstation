@@ -23,8 +23,6 @@
 	sex = NEUTER
 	gender = NEUTER
 
-	damage_received_multiplier = 0.75
-
 	var/rest_chance = 25
 	var/missing_limb_chance = 10
 

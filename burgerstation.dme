@@ -40,6 +40,7 @@
 #include "code\__defines\crash.dm"
 #include "code\__defines\damage.dm"
 #include "code\__defines\delay.dm"
+#include "code\__defines\difficulty.dm"
 #include "code\__defines\directions.dm"
 #include "code\__defines\door.dm"
 #include "code\__defines\enchantment.dm"

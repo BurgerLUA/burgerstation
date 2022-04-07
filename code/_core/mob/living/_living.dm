@@ -118,8 +118,6 @@
 	//STATUS = TRUE //Means it's immune.
 	//STATUS = OTHERSTATUS //Means it will do OTHERSTATUS instead for half the duration.
 
-	var/damage_received_multiplier = 1
-
 	var/dead = FALSE
 	var/time_of_death = -1
 

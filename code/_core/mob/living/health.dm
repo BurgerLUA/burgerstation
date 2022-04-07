@@ -187,7 +187,7 @@
 	atom_to_butcher.gib(hard=TRUE)
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-	return damage_received_multiplier
+	return 1
 
 /mob/living/proc/create_override_contents(var/mob/living/caller)
 	return TRUE

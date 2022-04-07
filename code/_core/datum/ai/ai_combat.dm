@@ -38,27 +38,33 @@
 		return TRUE
 	return FALSE
 
+var/global/list/difficulty_to_ai_modifier = list(
+	DIFFICULTY_EASY = 1,
+	DIFFICULTY_NORMAL = 2,
+	DIFFICULTY_HARD = 4,
+	DIFFICULTY_EXTREME = 6
+)
 
 /ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.
 
 	var/dist = get_dist(A.loc,owner.loc)
 
 	if(dist <= attack_distance_max)
-		var/health_mod = A.health ? max(0,A.health.health_current/A.health.health_max) : 0
 		if(attackers[A])
 			return -2 //Target those who attacked you, but still attack those who are literally touching you.
 		if(is_living(A))
 			var/mob/living/L = A
-			if(attack_distance_max > 2 && is_player(A))
-				//We're attacking a player from a distance. Go easy on them.
-				if(length(ai_attacking_players[A]) > 2 && !ai_attacking_players[A][owner])
-					return -9999 //Wow they're being overwhelmed. Very lowest priority.
-				return -dist*(0.5 + 1-health_mod) //Attack those with high health. Low health will be spared.
-			else if(L.ai)
+			if(L.ai)
 				if(L.ai.objective_attack == owner)
 					return 9999 //Prioritize AI wars.
-				else
-					return -dist*0.25 //Prioritize attacking other AI.
+				return -dist*0.25 //Prioritize attacking other AI.
+			if(is_player(A))
+				var/mob/living/advanced/player/P = L
+				var/difficulty_mod = difficulty_to_ai_modifier[P.difficulty]
+				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 2*difficulty_mod && !ai_attacking_players[A][owner])
+					return -9999 //Wow they're being overwhelmed. Very lowest priority.
+				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
+				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health. Low health will be spared. Higher difficulty will make you more desirable.
 
 	return -dist
 
