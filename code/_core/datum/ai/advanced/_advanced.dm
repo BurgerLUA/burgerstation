@@ -63,7 +63,7 @@
 		for(var/obj/item/weapon/W in view(6,A))
 			if(istype(W,/obj/item/weapon/ranged/))
 				var/obj/item/weapon/ranged/R = W
-				if(!R.firing_pin || R.firing_pin != A.iff_tag)
+				if(!R.firing_pin || R.firing_pin.iff_tag != A.iff_tag)
 					continue
 			if(istype(W,/obj/item/weapon/ranged/bullet/))
 				var/obj/item/weapon/ranged/bullet/B = W
@@ -123,7 +123,7 @@
 			if(length(valid_turfs))
 				real_target = pick(valid_turfs)
 		if(real_target)
-			var/list/offsets = direction_to_pixel_offset(get_dir(owner,real_target))
+			var/list/offsets = get_directional_offsets(owner,real_target)
 			var/throw_velocity = 10
 			G.drop_item(get_turf(owner))
 			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_iff = owner.iff_tag)

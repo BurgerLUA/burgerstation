@@ -12,7 +12,7 @@
 	var/tmp/move_dir = 0x0
 	var/tmp/move_dir_last = 0x0 //Used for momentum and speed.
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
-	var/tmp/move_delay = 0 //How long until you can move again, in ticks.
+	var/tmp/next_move = 0 //How long until you can move again, in ticks.
 
 	var/momentum_speed = 0 //Tiles per second. Maximum 10.
 	var/momentum_dir = 0x0
@@ -198,3 +198,11 @@
 
 /atom/movable/proc/on_chunk_clean() //What happens if this object is chunk cleaned.
 	return FALSE
+
+
+/atom/movable/proc/dust(var/atom/source)
+	return FALSE
+
+/atom/movable/proc/gib(var/hard=FALSE)
+	qdel(src)
+	return TRUE

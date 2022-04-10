@@ -9,6 +9,7 @@
 
 	dan_mode = FALSE
 
+	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 	firing_pin = null
 

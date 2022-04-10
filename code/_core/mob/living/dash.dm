@@ -10,7 +10,7 @@
 		return FALSE
 
 	if(has_trait(/trait/block_runner))
-		if(move_delay < 0)
+		if(next_move < 0)
 			return FALSE
 	else
 		if(move_mod >= 3)

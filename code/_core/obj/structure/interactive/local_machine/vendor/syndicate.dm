@@ -69,12 +69,12 @@
 		/obj/item/container/simple/beaker/bottle/morphine,
 		/obj/item/container/simple/beaker/bottle/calomel,
 		/obj/item/container/simple/beaker/vial/zombie_antidote,
-		/obj/item/container/syringe,
+		/obj/item/container/syringe/hypodermic,
 		/obj/item/container/blood_pack/full/synthblood,
 		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 		/obj/item/storage/pillbottle/assprin,
-		/obj/item/container/syringe/medipen/hypospray
+		/obj/item/container/syringe/hypospray
 
 	)
 	markup = 0.75

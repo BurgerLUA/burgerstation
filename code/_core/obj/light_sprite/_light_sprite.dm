@@ -20,6 +20,10 @@
 	return ..()
 
 /obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE)
+	if(icon_state == "cone" && is_living(top_atom))
+		var/mob/living/L = top_atom
+		if(L.intent == INTENT_HARM && (L.client || L.ai?.objective_attack))
+			desired_dir = NORTH
 	dir = desired_dir
 	return dir
 
@@ -50,6 +54,13 @@
 	. = ..()
 	var/matrix/M = .
 	M.Scale(size)
+	if(icon_state == "cone" && is_living(top_atom))
+		var/mob/living/L = top_atom
+		if(L.intent == INTENT_HARM)
+			if(L.client)
+				M.Turn(get_angle(L,L.client.last_location))
+			else if(L.ai?.objective_attack)
+				M.Turn(get_angle(L,L.ai.objective_attack))
 	M.Translate(TILE_SIZE*0.5 - (160*0.5))
 
 /obj/light_sprite/update_sprite()

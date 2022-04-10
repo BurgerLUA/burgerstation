@@ -4,3 +4,5 @@
 	trackable = TRUE
 
 	area_identifier = "Mission"
+
+	dynamic_lighting = TRUE

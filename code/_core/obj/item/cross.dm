@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/cross.dmi'
 	icon_state = "inventory"
 
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 	value = 100
 

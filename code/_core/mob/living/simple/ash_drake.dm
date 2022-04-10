@@ -37,22 +37,7 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = 80,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = -40,
-		BIO = 20,
-		RAD = 80,
-		HOLY = -20,
-		DARK = 80,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/drake
 
 	fatigue_mul = 0
 

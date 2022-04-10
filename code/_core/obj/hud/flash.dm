@@ -16,7 +16,7 @@
 	var/duration = 0
 
 /obj/hud/flash/New(var/desired_loc)
-	screen_loc = "LEFT,BOTTOM"
+	screen_loc = "LEFT,BOTTOM:12"
 	. = ..()
 
 /obj/hud/flash/Destroy()

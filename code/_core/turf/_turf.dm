@@ -201,7 +201,7 @@
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.move_delay <= 0 || get_dist(L,src) > 1)
+			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.next_move <= 0 || get_dist(L,src) > 1)
 				continue
 			return L
 
@@ -248,6 +248,9 @@
 	return istype(health)
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
+
+	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT)
+		return FALSE
 
 	if(density && (!enterer || (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags)))
 		if(oldloc)

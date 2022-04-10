@@ -17,5 +17,3 @@
 		/obj/item/clothing/feet/shoes/engineering,
 		/obj/item/clothing/feet/shoes/engineering/left
 	)
-
-	loyalty_tag = "NanoTrasen"

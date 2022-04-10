@@ -42,22 +42,26 @@
 	if(dir & NORTH)
 		pixel_y -= dir_offset
 		light_offset_y -= dir_offset*0.5
-		y_offset++
+		if(dir_offset >= 16)
+			y_offset++
 
 	if(dir & SOUTH)
 		pixel_y += dir_offset
 		light_offset_y += dir_offset*0.5
-		y_offset--
+		if(dir_offset >= 16)
+			y_offset--
 
 	if(dir & EAST)
 		pixel_x -= dir_offset
 		light_offset_x -= dir_offset*0.5
-		x_offset++
+		if(dir_offset >= 16)
+			x_offset++
 
 	if(dir & WEST)
 		pixel_x += dir_offset
 		light_offset_x += dir_offset*0.5
-		x_offset--
+		if(dir_offset >= 16)
+			x_offset--
 
 	if(x_offset || y_offset)
 		loc = locate(x+x_offset,y+y_offset,z) //Legitimately don't know why force_move or get_step doesn't work here. Even in initialize.

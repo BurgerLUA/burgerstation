@@ -18,5 +18,13 @@
 
 #define FLAGS_AREA_NO_TELEPORT 0x200
 
+#define FLAG_AREA_ALLOW_DEATHMATCH 0x400 //Allow deathmatch to occur when it is time.
+
 #define FLAGS_AREA_COMM_SCRAMBLED 0x1
 #define FLAGS_AREA_COMM_DISABLED 0x2
+
+
+//Lighting states.
+#define ON 0x1
+#define OFF 0x2
+#define AUTO 0x4

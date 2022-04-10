@@ -31,9 +31,7 @@ var/global/list/valid_antag_colors = list(
 
 	size = SIZE_BOSS
 
-	armor_base = list(
-		ION = INFINITY
-	)
+	armor = /armor/default_organic
 
 	attack_range = 3
 

@@ -1,4 +1,4 @@
-/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
+/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty)
 
 	if(!thrower)
 		CRASH_SAFE("No thrower exists!")
@@ -11,8 +11,32 @@
 		return FALSE
 	if(istype(src.loc,/obj/projectile/thrown/))
 		return FALSE
-	var/damage_type_to_use = damage_type_thrown ? damage_type_thrown : damage_type
-	var/obj/projectile/thrown/P = new(get_turf(src),thrower,src,vel_x,vel_y,target_x,target_y,get_turf(desired_target),damage_type_to_use,desired_target,"#FFFFFF",thrower,desired_iff = desired_iff)
+	var/damage_type_to_use = damage_type
+	if(damage_type_thrown)
+		damage_type_to_use = damage_type_thrown
+
+	if(!damage_type_to_use || damage_type_to_use == /damagetype/error)
+		damage_type_to_use = /damagetype/melee/club/stunbaton
+
+	var/obj/projectile/thrown/P = new(
+		get_turf(src),
+		desired_owner = thrower,
+		desired_weapon = src,
+		desired_vel_x = vel_x,
+		desired_vel_y = vel_y,
+		desired_shoot_x = target_x,
+		desired_shoot_y = target_y,
+		desired_turf = get_turf(desired_target),
+		desired_damage_type = damage_type_to_use,
+		desired_target = desired_target,
+		desired_color ="#FFFFFF",
+		desired_blamed = thrower,
+		desired_damage_multiplier = 1,
+		desired_iff = null,
+		desired_loyalty = desired_loyalty,
+		desired_inaccuracy_modifier = 0,
+		desired_penetrations_left = 0
+	)
 	P.appearance = src.appearance
 	P.pixel_x = src.pixel_x
 	P.pixel_y = src.pixel_y

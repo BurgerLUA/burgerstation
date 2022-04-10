@@ -474,9 +474,9 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(!istype(A))
 			to_chat(span("notice", "This can only be used on instances of type /atom"))
 		callproc(A)
-		//href_list["datumrefresh"] = href_list["callproc"]
+
 	else if(href_list["godmode"])
-		var/mob/living/advanced/M = locate(href_list["drop_everything"])
+		var/mob/living/advanced/M = locate(href_list["godmode"])
 		if(!istype(M))
 			to_chat(span("notice", "This can only be used on instances of type /mob/living/advanced"))
 			return
@@ -487,6 +487,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			M.add_status_effect(IMMORTAL)
 			M.movement_delay = 0.5
 		href_list["datumrefresh"] = href_list["godmode"]
+
 	else if(href_list["drop_everything"])
 
 		var/mob/living/advanced/M = locate(href_list["drop_everything"])
@@ -508,16 +509,15 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		for(var/mob/abstract/observer/ghost/G in range(5))
 			if(!G.client) continue
 			ghosts |= G.client
-		if(length(ghosts))//as null|mob|obj|turf|area in world
+		if(length(ghosts))
 			NO = input("Please choose a new client to obtain [M.name].","Control mob",src) as anything in ghosts
 			if(!NO) return FALSE
 
 
 		var/mob/living/advanced/player/P = M
+
 		if(P.client) P.client.make_ghost(P.loc)
-		/*else
-			spawn(5)
-				P.PostInitialize()*/
+
 		NO.control_mob(P)
 		P.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 		P.add_species_buttons()
@@ -670,7 +670,6 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			return
 
 		var/new_language = input("Please choose a language to add.","Language",null) as null|anything in SSlanguage.all_languages
-
 		if(!new_language)
 			return
 
@@ -678,11 +677,8 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "Mob doesn't exist anymore"))
 			return
 
-		if(!H.known_languages[new_language] == FALSE)
-			H.known_languages[new_language] = TRUE
-			to_chat(span("notice",  "Added [new_language] to [H]."))
-		else
-			to_chat(span("notice",  "Mob already knows that language."))
+		H.known_languages[new_language] = TRUE
+
 		href_list["datumrefresh"] = href_list["addlanguage"]
 
 	else if(href_list["remlanguage"])
@@ -703,6 +699,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 		if(H.known_languages[rem_language] == TRUE)
 			H.known_languages[rem_language] = FALSE
+			H.known_languages -= rem_language
 			to_chat(span("notice",  "Removed [rem_language] from [H]."))
 		else
 			to_chat(span("notice",  "Mob doesn't know that language."))
@@ -830,18 +827,19 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "Mob doesn't exist anymore"))
 			return
 		switch(Text)
-			if("brute")	L.health.adjust_loss_smart(brute=amount,update=TRUE)
-			if("fire")	L.health.adjust_loss_smart(burn=amount,update=TRUE)
-			if("toxin")	L.health.adjust_loss_smart(tox=amount,update=TRUE)
-			if("oxygen")L.health.adjust_loss_smart(oxy=amount,update=TRUE)
-			if("fatigue")	L.health.adjust_loss_smart(fatigue=amount,update=TRUE)
-			if("sanity")	L.health.adjust_loss_smart(sanity=amount,update=TRUE)
-			if("mental")	L.health.adjust_loss_smart(mental=amount,update=TRUE)
+			if("brute")	L.health.adjust_loss_smart(brute=amount,update=FALSE)
+			if("fire")	L.health.adjust_loss_smart(burn=amount,update=FALSE)
+			if("toxin")	L.health.adjust_loss_smart(tox=amount,update=FALSE)
+			if("oxygen")L.health.adjust_loss_smart(oxy=amount,update=FALSE)
+			if("fatigue")	L.health.adjust_loss_smart(fatigue=amount,update=FALSE)
+			if("sanity")	L.health.adjust_loss_smart(sanity=amount,update=FALSE)
+			if("mental")	L.health.adjust_loss_smart(mental=amount,update=FALSE)
 			if("stamina")	L.health.adjust_stamina(amount)
 			if("mana")	L.health.adjust_mana(amount)
 			else
 				to_chat(span("notice",  "You caused an error. DEBUG: Text:[Text] Mob:[L]"))
 				return
+		L.queue_health_update = TRUE
 
 		if(amount != 0)
 			href_list["datumrefresh"] = href_list["mobToDamage"]

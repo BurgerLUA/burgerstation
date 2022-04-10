@@ -25,7 +25,7 @@
 	if(!move_dir && use_momentum && move_dir_last && acceleration_value > 0)
 		final_move_dir = move_dir_last
 
-	if(final_move_dir && move_delay <= 0 && is_valid_dir(final_move_dir))
+	if(final_move_dir && next_move <= 0 && is_valid_dir(final_move_dir))
 
 		var/final_movement_delay = get_movement_delay()
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
@@ -42,10 +42,9 @@
 			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
 			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
-		move_delay = max(move_delay,0)
-		move_delay += CEILING(final_movement_delay, adjust_delay) //Round to the nearest tick.
+		next_move += CEILING(final_movement_delay, adjust_delay) //Round to the nearest tick.
 
-		glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
+		glide_size = next_move ? CEILING(step_size/next_move,0.01) : 1
 		glide_size = max(glide_size,FPS_CLIENT/FPS_SERVER)
 
 		//Handling intercardinal collisions.
@@ -67,9 +66,9 @@
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir
 			is_moving = TRUE
-		else
+		else //Blocked by a wall or something.
 			move_dir_last = 0x0
-			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
+			next_move = max(next_move,DECISECONDS_TO_TICKS(1))
 			is_moving = FALSE
 
 		if(acceleration_mod)
@@ -86,7 +85,7 @@
 					acceleration_value = first_max_value
 			acceleration_value = clamp(acceleration_value,0,100) //Hard cap of 100
 
-	if(move_delay <= 0)
+	if(next_move <= 0)
 		is_moving = FALSE
 
 	//Handle acceleration and deceleration
@@ -102,7 +101,7 @@
 		acceleration_value = FLOOR(acceleration_value,0.01)
 
 	if(adjust_delay)
-		move_delay = move_delay - adjust_delay
+		next_move = max(0,next_move - adjust_delay)
 
 	return is_moving
 
@@ -176,10 +175,8 @@
 
 	var/atom/OldLoc = loc
 
-	if(!NewLoc || NewLoc == OldLoc)
+	if(!NewLoc)
 		return FALSE
-
-	//var/move_direction = get_dir(OldLoc,NewLoc)
 
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
@@ -211,6 +208,8 @@
 				continue
 			if(M.density && !M.Uncross(src,NewLoc))
 				return FALSE
+
+	//No going back. We're moving.
 
 	//Do: Enter the turf.
 	if(src.density) NewLoc.Entered(src,OldLoc)
@@ -248,7 +247,7 @@
 	if((collision_flags & FLAG_COLLISION_WALKING) && isturf(loc))
 		var/turf/T = loc
 		if(T.friction < 1)
-			var/calculated_speed = SECONDS_TO_DECISECONDS(glide_size/TILE_SIZE)
+			var/calculated_speed = SECONDS_TO_TICKS(glide_size/TILE_SIZE)
 			var/calculated_direction = get_dir(OldLoc,loc)
 			start_momentum(calculated_speed,calculated_direction)
 
@@ -297,8 +296,8 @@
 		return FALSE
 
 	var/desired_delay = CEILING(10/momentum_speed,1)
-	move_delay = max(move_delay,DECISECONDS_TO_TICKS(desired_delay))
-	glide_size = move_delay ? CEILING(step_size/move_delay,0.01) : 1
+	next_move = max(next_move,DECISECONDS_TO_TICKS(desired_delay))
+	glide_size = next_move ? CEILING(step_size/next_move,0.01) : 1
 	var/turf/desired_turf = get_step(src,momentum_dir)
 	CALLBACK("momentum_\ref[src]",desired_delay,src,.proc/process_momentum)
 	if(!no_move && desired_turf)

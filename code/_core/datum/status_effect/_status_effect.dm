@@ -54,7 +54,6 @@
 
 	affects_dead = FALSE
 
-
 /status_effect/stun/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	owner.remove_status_effect(STAGGER)
@@ -123,7 +122,7 @@
 	var/old_dir = owner.dir
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
-	owner.move_delay = max(owner.move_delay,duration)
+	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
 	if(!result) //We can't move.
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
@@ -157,7 +156,7 @@
 	var/old_dir = owner.dir
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
-	owner.move_delay = max(owner.move_delay,duration)
+	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
 	if(!result) //We can't move.
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
@@ -186,7 +185,7 @@
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	owner.move_delay = max(owner.move_delay,duration)
+	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
 
 /status_effect/slip
 	name = "Slipped"
@@ -307,19 +306,24 @@
 	name = "Grab"
 	desc = "You're grabbed!"
 	id = GRAB
-	minimum = 1
-	maximum = 1
+	minimum = 0
+	maximum = 0
 
 /status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
-	if(source && is_living(source) && owner && !owner.dead && owner.dir == source.dir)
+	if(is_living(source))
 		var/mob/living/L = source
-		if(L.loyalty_tag != owner.loyalty_tag)
-			owner.add_status_effect(PARALYZE,30,30,source = source,stealthy = TRUE)
-			owner.add_status_effect(DISARM,30,30,source = source)
-			return ..()
+		var/area/A = get_area(owner)
+		if(allow_hostile_action(owner.loyalty_tag,L.loyalty_tag,A))
+			L.add_status_effect(PARALYZE,10,10,source=source,stealthy=TRUE)
+			if(!owner.dead && (owner.dir == source.dir || owner.horizontal)) //Grab from behind.
+				owner.add_status_effect(PARALYZE,30,30,source = source,stealthy = TRUE)
+				owner.add_status_effect(DISARM,30,30,source = source)
+				return ..()
 
 	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
+
+
 
 	. = ..()
 

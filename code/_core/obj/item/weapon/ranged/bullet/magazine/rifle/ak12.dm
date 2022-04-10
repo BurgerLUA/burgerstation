@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12
 	name = "\improper 5.45x39mm AK-12"
 	desc = "A nuu cheeki breeki i v damkee!"
-	desc_extended = "AK-12 is a 5.45x39mm fully automatic rifle renowned for its precision and the ability to shoot at faster rates than the more widespread AK-13. Smaller caliber allows it to have less recoil, yet it doesn't make it any weaker - rifle is fine, as always. Currently in use by the Space Slav Federation special forces (they don't really like to change equipment if it works finely) and elite revolutionaries, seemingly receiving batches of this weapon by black markets and deals with the government. Cheap as hell, effective and easy to maintain - a dream weapon for anyone, but rare to come by."
+	desc_extended = "AK-12 is a 5.45x39mm fully automatic rifle renowned for its precision and the ability to shoot at faster rates than the more widespread AK Type-13. Smaller caliber allows it to have less recoil, yet it doesn't make it any weaker - rifle is fine, as always. Currently in use by the Space Slav Federation special forces (they don't really like to change equipment if it works finely) and elite revolutionaries, seemingly receiving batches of this weapon by black markets and deals with the government. Cheap as hell, effective and easy to maintain - a dream weapon for anyone, but rare to come by."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle_2.dmi'
 	icon_state = "inventory"
 	value = 2000
@@ -68,4 +68,29 @@
 	return 0.004
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak12/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak12/syndicate
+	name = "\improper 5.45x39mm AK-12 SYN"
+	desc = "A nuu cheeki breeki i v damkee!"
+	desc_extended = "AK-12 is a 5.45x39mm fully automatic rifle renowned for its precision and the ability to shoot at faster rates than the more widespread AK-13. Smaller caliber allows it to have less recoil, yet it doesn't make it any weaker - rifle is fine, as always. Currently in use by the Space Slav Federation special forces (they don't really like to change equipment if it works finely) and elite revolutionaries, seemingly receiving batches of this weapon by black markets and deals with the government. Cheap as hell, effective and easy to maintain - a dream weapon for anyone, but rare to come by."
+	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/545.dmi'
+	icon_state = "inventory"
+	value = 2400
+
+	tier = 3
+	shoot_delay = 1
+
+	weight = 18
+
+	heat_max = 0.12
+
+	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 20 - 16
+
+	attachment_undermount_offset_x = 24 - 15
+	attachment_undermount_offset_y = 17 - 16

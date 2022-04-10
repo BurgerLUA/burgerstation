@@ -1,3 +1,5 @@
+#define HEALTH_PRECISION 0.01
+
 /health/
 
 	var/atom/owner // The owner of this health object
@@ -5,14 +7,17 @@
 	var/health_max = -1
 	var/health_current = -1
 	var/health_regeneration = -1
+	var/health_regen_cooef = 1 //What percentage to naturally regenerate health.
 
 	var/stamina_max = -1
 	var/stamina_current = -1
 	var/stamina_regeneration = -1
+	var/stamina_regen_cooef = 1 //What percentage to naturally regenerate stamina.
 
 	var/mana_max = -1
 	var/mana_current = -1
 	var/mana_regeneration = -1
+	var/mana_regen_cooef = 1 //What percentage to naturally regenerate mana.
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 
@@ -20,41 +25,7 @@
 
 	var/list/resistance = list() //How much to multiply damage
 
-	/* TEMPLATE
-	var/list/resistance = list(
-		BRUTE = 1,
-		BURN = 1,
-		TOX = 1,
-		OXY = 1,
-		FATIGUE = 1,
-		PAIN=1,
-		RAD=1,
-		SANITY=1,
-		MENTAL=1
-	)
-	*/
-
-	/* TEMPLATE
-	var/list/armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		PAIN = 0,
-		SANITY = 0
-	)
-	*/
-
-	var/list/armor_base = list()
+	var/armor/armor
 
 	var/organic = FALSE
 
@@ -120,7 +91,7 @@
 /health/proc/adjust_loss(var/loss_type,var/value)
 	if(resistance[loss_type] && value > 0) value *= resistance[loss_type]
 	value -= min(0,damage[loss_type] + value)
-	damage[loss_type] += value
+	damage[loss_type] += FLOOR(value,HEALTH_PRECISION)
 	if(max_damage[loss_type])
 		damage[loss_type] = min(damage[loss_type],max_damage[loss_type])
 	return value
@@ -153,11 +124,15 @@
 	return TRUE
 
 /health/proc/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
-	return armor_base.Copy()
+	var/armor/A = ARMOR(armor)
+	if(!A)
+		return list()
+	return A.defense_rating.Copy()
 
 /health/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current
 	var/new_value = clamp(mana_current + adjust_value,0,mana_max)
+	new_value = FLOOR(new_value,HEALTH_PRECISION)
 	if(old_value != new_value)
 		mana_current = new_value
 		return new_value - old_value
@@ -166,6 +141,7 @@
 /health/proc/adjust_stamina(var/adjust_value)
 	var/old_value = stamina_current
 	var/new_value = clamp(stamina_current + adjust_value,0,stamina_max)
+	new_value = FLOOR(new_value,HEALTH_PRECISION)
 	if(old_value != new_value)
 		stamina_current = new_value
 		return new_value - old_value

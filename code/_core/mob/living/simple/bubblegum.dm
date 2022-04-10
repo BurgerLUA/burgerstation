@@ -20,25 +20,14 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = AI_TICK_FAST
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	stun_angle = 0
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		LASER = 80,
-		HEAT = 20,
-		COLD = 10,
-		HOLY = -20,
-		DARK = 60,
-		FATIGUE = 60,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/bubblegum
 
 	status_immune = list(
 		STUN = TRUE,
@@ -127,7 +116,7 @@
 	. = ..()
 
 	if(charge_steps)
-		. = AI_TICK_FAST*1
+		. = AI_TICK_FAST
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 

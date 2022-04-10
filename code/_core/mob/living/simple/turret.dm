@@ -22,7 +22,7 @@
 
 	size = SIZE_HUMAN
 
-	armor_base = CYBORG_ARMOR
+	armor = /armor/borg
 
 	soul_size = null
 

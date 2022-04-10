@@ -76,8 +76,8 @@
 	if(scan_mode)
 		icon_state = "scan"
 	else if(tracked_atom)
-		var/distance = get_dist(src,tracked_atom)
-		var/desired_dir = get_dir(src,tracked_atom)
+		var/distance = get_dist_advanced(src,tracked_atom)
+		var/desired_dir = get_dir_advanced(src,tracked_atom)
 		switch(distance)
 			if(1 to VIEW_RANGE*0.5)
 				icon_state = "[desired_dir]_close"
@@ -158,6 +158,10 @@
 
 	var/list/possible_crew = list()
 
+	if(enable_friendly_fire)
+		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
+		return FALSE
+
 	if(encoded && is_living(caller))
 		var/mob/living/L = caller
 		if(L.loyalty_tag != desired_loyalty)
@@ -169,7 +173,7 @@
 			continue
 		if(!can_track(P))
 			continue
-		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"
+		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir_advanced(caller,P))], [get_dist_advanced(src,P)]m)"
 		possible_crew[name_mod] = P
 
 	scan_mode = TRUE
@@ -253,7 +257,7 @@
 		if(my_area.area_identifier != A.area_identifier)
 			continue
 		var/turf/T = locate(A.average_x,A.average_y,A.z)
-		var/name_mod = "[A.name] ([dir2text(get_dir(caller,T))], [get_dist(src,T)]m)"
+		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,T))], [get_dist_advanced(src,T)]m)"
 		possible_landmarks[name_mod] = T
 
 	if(!length(possible_landmarks))
@@ -300,7 +304,7 @@
 			var/atom/A = k
 			if(!can_track(A))
 				continue
-			var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"
+			var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
 			possible_artifacts[name_mod] = A
 
 	if(!length(possible_artifacts))
@@ -344,7 +348,7 @@
 		var/atom/A = k
 		if(!can_track(A))
 			continue
-		var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"
+		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
 		possible_bosses[name_mod] = A
 
 	if(!length(possible_bosses))

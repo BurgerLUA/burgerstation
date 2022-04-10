@@ -38,16 +38,15 @@
 	if(caller == target)
 		return TRUE
 
-	if(caller.loyalty_tag != target.loyalty_tag)
-		return TRUE
-
-	if(desired_inject)
-		if(reagents.contains_lethal)
-			if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
+	var/area/A = get_area(target)
+	if(!allow_hostile_action(caller.loyalty_tag,target.loyalty_tag,A))
+		if(desired_inject)
+			if(reagents.contains_lethal)
+				if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
+				return FALSE
+		else
+			if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
 			return FALSE
-	else
-		if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
-		return FALSE
 
 	return TRUE
 

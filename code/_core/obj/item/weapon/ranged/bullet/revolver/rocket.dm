@@ -36,16 +36,15 @@
 
 	uses_until_condition_fall = 0
 
-/obj/item/weapon/ranged/bullet/rocket/get_base_spread()
+/obj/item/weapon/ranged/bullet/revolver/rocket/get_base_spread()
 	return 0.2
 
-/obj/item/weapon/ranged/bullet/rocket/get_static_spread()
+/obj/item/weapon/ranged/bullet/revolver/rocket/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/rocket/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/revolver/rocket/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))
 
-
-/obj/item/weapon/ranged/bullet/rocket/use_condition(var/amount_to_use=1)
-	adjust_quality(-25)
+/obj/item/weapon/ranged/bullet/revolver/rocket/use_condition(var/amount_to_use=1)
+	adjust_quality(-10)
 	return TRUE

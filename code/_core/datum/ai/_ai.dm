@@ -202,7 +202,11 @@ var/global/list/ai_attacking_players = list()
 
 	var/turf/T = get_turf(owner)
 
+	if(!T)
+		CRASH("AI had an invalid turf!")
+
 	if(active)
+		PROCESS_LIVING(owner)
 		add_to_active_list(T.z)
 		remove_from_inactive_list(T.z)
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)

@@ -30,11 +30,12 @@ var/global/list/armor_slowdown_values = list(
 	. = 1
 
 	var/armor/A = ARMOR(armor)
-	for(var/k in A.defense_rating)
-		if(IS_INFINITY(A.defense_rating[k]))
-			continue
-		. += A.defense_rating[k] * armor_slowdown_values[k]
-	. *= length(protected_limbs)
+	if(A)
+		for(var/k in A.defense_rating)
+			if(IS_INFINITY(A.defense_rating[k]))
+				continue
+			. += A.defense_rating[k] * armor_slowdown_values[k]
+		. *= length(protected_limbs)
 
 	. = max(.,0)
 

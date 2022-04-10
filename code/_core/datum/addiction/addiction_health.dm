@@ -14,10 +14,10 @@
 				A.brute_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 				A.to_chat(span("warning","Your body itches..."))
 			if(2)
+				A.sanity_regen_buffer -= -TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 				A.to_chat(span("warning","You feel moody..."))
-				A.health?.adjust_loss_smart(sanity=-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
-			if(2)
+			if(3)
+				A.mental_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 				A.to_chat(span("warning","You can't seem to think..."))
-				A.health?.adjust_loss_smart(mental=-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
 
 	return ..()

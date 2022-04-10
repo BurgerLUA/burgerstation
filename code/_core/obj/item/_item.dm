@@ -48,7 +48,7 @@
 	var/container_whitelist = list()
 	var/max_inventory_x = MAX_INVENTORY_X
 	var/inventory_category = "dynamic"
-	var/starting_inventory_y = "BOTTOM+1.25"
+	var/starting_inventory_y = "BOTTOM:12+1.25"
 	var/inventory_y_multiplier = 1
 
 	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
@@ -275,7 +275,7 @@ var/global/list/rarity_to_mul = list(
 		add_blend(
 			"bloodstain",
 			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
-			desired_icon_state = blood_stain_intensity ? "[blood_stain_intensity]" : null,
+			desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
 			desired_color = blood_stain_color,
 			desired_blend = ICON_ADD,
 			desired_type = ICON_BLEND_MASK,
@@ -679,6 +679,7 @@ var/global/list/rarity_to_mul = list(
 				return FALSE
 			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
+			play_sound('sound/items/consumables/pourwater.ogg',get_turf(caller),range_max=VIEW_RANGE*0.5)
 			return TRUE
 		else if(object.allow_reagent_transfer_from && allow_reagent_transfer_to)
 			if(object.reagents.volume_current <= 0)
@@ -689,6 +690,7 @@ var/global/list/rarity_to_mul = list(
 				return FALSE
 			var/actual_transfer_amount = object.reagents.transfer_reagents_to(reagents,transfer_amount, caller = caller)
 			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [src]."))
+			play_sound('sound/items/consumables/pourwater.ogg',get_turf(caller),range_max=VIEW_RANGE*0.5)
 			return TRUE
 
 	return FALSE
@@ -710,9 +712,11 @@ var/global/list/rarity_to_mul = list(
 		var/mob/living/C = caller
 		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
 			return FALSE
-		if(reagents.contains_lethal && L != C && L.loyalty_tag == C.loyalty_tag)
-			caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
-			return FALSE
+		if(reagents.contains_lethal && L != C)
+			var/area/A = get_area(L)
+			if(!allow_hostile_action(C.loyalty_tag,L.loyalty_tag,A))
+				caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
+				return FALSE
 
 	if(L.dead)
 		caller.to_chat(span("warning","\The [L.name] is dead!"))
@@ -767,19 +771,32 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
 
-	if(!enable_blood_stains || desired_level <= 0 || !desired_color)
+	if(!force && !enable_blood_stains)
+		return FALSE
+
+	if(!blood_stain_color && !desired_color)
+		return FALSE
+
+	desired_level = clamp(desired_level,0,5)
+
+	if(!enable_blood_stains || desired_level <= 0)
 		remove_blend("bloodstain")
 		return TRUE
 
-	desired_level = clamp(CEILING(desired_level,1),0,5)
+	//Store the old values.
+	var/old_level = blood_stain_intensity
+	var/old_color = blood_stain_color
 
-	if(!force && desired_level == blood_stain_intensity && desired_color == blood_stain_color)
+	//Set the new values.
+	blood_stain_intensity = desired_level
+	if(desired_color)
+		blood_stain_color = desired_color
+
+	//If the old values are the same as the new levels, don't even bother doing an update.
+	if(!force && CEILING(old_level,1) == CEILING(blood_stain_intensity,1) && old_color == desired_color)
 		return FALSE
 
-	blood_stain_intensity = desired_level
-	blood_stain_color = desired_color
-
-	add_blend("bloodstain", desired_icon_state = blood_stain_intensity ? "[blood_stain_intensity]" : null, desired_color = blood_stain_color)
+	add_blend("bloodstain", desired_icon_state = blood_stain_intensity > 0 ? "[CEILING(blood_stain_intensity,1)]" : null, desired_color = blood_stain_color)
 	update_sprite()
 
 	if(is_inventory(loc))
@@ -814,7 +831,7 @@ var/global/list/rarity_to_mul = list(
 		add_overlay(I)
 
 	if(enable_blood_stains && blood_stain_intensity > 0 && blood_stain_color)
-		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[blood_stain_intensity]")
+		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[CEILING(blood_stain_intensity,1)]")
 		I.appearance_flags = RESET_COLOR
 		I.blend_mode = BLEND_INSET_OVERLAY
 		I.color = blood_stain_color
@@ -853,4 +870,10 @@ var/global/list/rarity_to_mul = list(
 					A.remove_overlay("\ref[src]")
 					I.update_worn_icon(src)
 
+	return TRUE
+
+
+
+/obj/item/dust(var/atom/source)
+	qdel(src)
 	return TRUE

@@ -9,6 +9,8 @@
 	var/list/addictions = list()
 	var/list/withdrawal = list()
 
+	health = /health/obj/item/organ
+
 	has_life = TRUE
 
 /obj/item/organ/internal/brain/on_life()
@@ -27,14 +29,16 @@
 
 
 
-/obj/item/organ/internal/brain/unattach_from_parent(var/turf/T)
-	if(is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
+/obj/item/organ/internal/brain/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
+	var/atom/old_loc = src.loc
+	. = ..()
+	if(is_advanced(old_loc))
+		var/mob/living/advanced/A = old_loc
 		if(A.client)
 			A.client.make_ghost(T)
 		A.death()
-		A.health?.update_health()
-	. = ..()
+
 
 /obj/item/organ/internal/brain/robotic
 	name = "robotic brain"
+	health = /health/obj/item/organ/synthetic

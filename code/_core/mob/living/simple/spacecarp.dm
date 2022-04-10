@@ -1,8 +1,8 @@
 /mob/living/simple/spacecarp/
 	name = "space carp"
 	desc = "Wait, where is the space?"
-	icon = 'icons/mob/living/simple/sealife.dmi'
-	icon_state = "carp"
+	icon = 'icons/mob/living/simple/carp.dmi'
+	icon_state = "base"
 
 	ai = /ai/carp
 	damage_type = /damagetype/unarmed/bite/
@@ -26,20 +26,11 @@
 	loyalty_tag = "Carp"
 	iff_tag = "Carp"
 
-	armor_base = list(
-		BLADE = 40,
-		HEAT = 100,
-		COLD = 100,
-		BIO = 100,
-		RAD = INFINITY,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/carp
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
-	movement_delay = DECISECONDS_TO_TICKS(1.5)
+	movement_delay = AI_TICK //I'm fast as fuck boi.
 
 	has_footsteps = FALSE
 
@@ -50,6 +41,16 @@
 	soul_size = SOUL_SIZE_COMMON
 
 	level = 16
+
+/mob/living/simple/spacecarp/Generate()
+	. = ..()
+	color = hsv(rand(0,1536), 175, 200)
+
+/mob/living/simple/spacecarp/update_overlays()
+	. = ..()
+	var/image/I = new/image(icon,"[icon_state]_mouth")
+	I.appearance_flags = appearance_flags | RESET_COLOR
+	add_overlay(I)
 
 /mob/living/simple/spacecarp/post_death()
 	..()

@@ -14,19 +14,6 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	value = 2000
 
-	armor_base = list(
-		BLADE = 10,
-		BLUNT = 60,
-		PIERCE = 60,
-		HEAT = 10,
-		COLD = 80,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
-
 	status_immune = list(
 		STUN = TRUE,
 		SLEEP = TRUE,
@@ -115,17 +102,23 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	do_say("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
-	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+	var/turf/T = get_turf(src)
+
+	play_sound('sound/voice/xeno/queen_screech.ogg',T, range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
+
+	var/area/A = T.loc
 
 	for(var/mob/living/L in view(VIEW_RANGE,src))
-		if(L.loyalty_tag == src.loyalty_tag)
+		if(L.dead)
+			continue
+		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
 			continue
 		L.add_status_effect(STUN,20,20)
 
 	var/obj/marker/map_node/N_end = find_closest_node(src)
 
 	if(N_end)
-		for(var/mob/living/simple/xeno/X in all_living)
+		for(var/mob/living/simple/xeno/X in SSliving.all_living)
 			CHECK_TICK(75,FPS_SERVER)
 			if(X == src)
 				continue

@@ -15,6 +15,7 @@
 	dan_mode = TRUE
 
 	use_loyalty_tag = TRUE
+	use_iff_tag = FALSE
 
 	bypass_balance_check = TRUE
 

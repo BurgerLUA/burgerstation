@@ -423,8 +423,8 @@
 /area/lz_001/outpost/syndicate/jungle)
 "cl" = (
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -717,12 +717,12 @@
 /area/lz_001/caves/diamond_cave)
 "dM" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_corner"
 	},
 /area)
 "dN" = (
@@ -733,18 +733,18 @@
 /area/lz_001/forest/village)
 "dP" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area)
 "dQ" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_side"
 	},
 /area)
 "dR" = (
@@ -760,8 +760,8 @@
 /area/lz_001/caves/lagoon)
 "dU" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area)
 "dV" = (
@@ -769,8 +769,8 @@
 /area)
 "dW" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "dX" = (
@@ -793,8 +793,8 @@
 /area/lz_001/forest/village)
 "ec" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ed" = (
@@ -802,8 +802,8 @@
 /area/lz_001/caves/lagoon)
 "ee" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ef" = (
@@ -812,18 +812,18 @@
 /area/lz_001/forest/village)
 "eg" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_corner"
 	},
 /area)
 "eh" = (
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_corner"
 	},
 /area)
 "ei" = (
@@ -850,8 +850,8 @@
 "eo" = (
 /obj/marker/rift_location,
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ep" = (
@@ -893,8 +893,8 @@
 /area/lz_001/caves/knight)
 "eA" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area)
 "eB" = (
@@ -904,15 +904,15 @@
 "eC" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "eD" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "eE" = (
@@ -928,23 +928,23 @@
 /area)
 "eH" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 6
+	dir = 6;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "eI" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 1
+	dir = 1;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "eJ" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 10
+	dir = 10;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
@@ -959,8 +959,8 @@
 /area/lz_001/caves/knight)
 "eM" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /obj/structure/interactive/mining_brace,
 /turf/simulated/floor/plating,
@@ -979,8 +979,8 @@
 /area/lz_001/caves/knight)
 "eQ" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 4
+	dir = 4;
+	icon_state = "line"
 	},
 /obj/structure/interactive/ore_box,
 /turf/simulated/floor/plating,
@@ -991,8 +991,8 @@
 /area/lz_001/caves/knight)
 "eS" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/forest/village)
@@ -1002,8 +1002,8 @@
 /area/lz_001/forest/village)
 "eU" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 5
+	dir = 5;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
@@ -1014,16 +1014,16 @@
 /area/lz_001/caves/knight)
 "eW" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 9
+	dir = 9;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "eX" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area)
 "eY" = (
@@ -1092,8 +1092,8 @@
 "fs" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ft" = (
@@ -1110,8 +1110,8 @@
 /area/lz_001/forest/village)
 "fw" = (
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "fx" = (
@@ -1122,8 +1122,8 @@
 "fy" = (
 /obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 1
+	dir = 1;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1150,8 +1150,8 @@
 /area/lz_001/forest/village/interior/armory)
 "fI" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 4
+	dir = 4;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1160,8 +1160,8 @@
 /area/lz_001/caves/knight)
 "fK" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1183,8 +1183,8 @@
 /area/lz_001/forest/village/interior/bar)
 "fO" = (
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 4
+	dir = 4;
+	icon_state = "sink"
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
@@ -1224,8 +1224,8 @@
 /area/lz_001/forest/village/interior/armory)
 "gb" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area)
 "gc" = (
@@ -1288,8 +1288,8 @@
 /area/lz_001/forest/village/interior/armory)
 "gq" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
+	dir = 4;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
@@ -1343,15 +1343,15 @@
 /area)
 "gF" = (
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "gG" = (
 /obj/structure/interactive/barricade,
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "gH" = (
@@ -1361,23 +1361,23 @@
 "gI" = (
 /obj/structure/interactive/barricade,
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "gJ" = (
 /obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 8
+	dir = 8;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "gK" = (
 /obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 4
+	dir = 4;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1519,8 +1519,8 @@
 /area/lz_001/desert)
 "hy" = (
 /turf/simulated/floor/stair/wood/dock{
-	icon_state = "stair";
-	dir = 1
+	dir = 1;
+	icon_state = "stair"
 	},
 /area/lz_001/caves/lagoon)
 "hz" = (
@@ -1554,22 +1554,22 @@
 /area/lz_001/caves/lagoon/ship)
 "hH" = (
 /mob/living/advanced/npc/pirate_crew/ranged{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
 "hI" = (
 /mob/living/advanced/npc/pirate_crew/magic{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
 "hJ" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
@@ -1586,8 +1586,8 @@
 /area/lz_001/caves/lagoon/ship)
 "hN" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair";
-	dir = 4
+	dir = 4;
+	icon_state = "stair"
 	},
 /area/lz_001/caves/lagoon/ship)
 "hO" = (
@@ -1600,15 +1600,15 @@
 /area/lz_001/caves/lagoon/ship)
 "hQ" = (
 /mob/living/advanced/npc/pirate_crew/ninja{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "hR" = (
 /mob/living/advanced/npc/pirate_crew/magic{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1618,8 +1618,8 @@
 /area/lz_001/caves/lagoon/ship)
 "hT" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1629,8 +1629,8 @@
 /area/lz_001/caves/lagoon/ship)
 "hV" = (
 /mob/living/advanced/npc/pirate_crew/ranged{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1648,15 +1648,15 @@
 /area/lz_001/caves/lagoon/ship)
 "hZ" = (
 /mob/living/advanced/npc/unique/pirate_mate{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "ia" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair";
-	dir = 8
+	dir = 8;
+	icon_state = "stair"
 	},
 /area/lz_001/caves/lagoon/ship)
 "ib" = (
@@ -1664,8 +1664,8 @@
 /area/lz_001/caves/glow_cave)
 "ic" = (
 /mob/living/advanced/npc/unique/pirate_captain{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1675,8 +1675,8 @@
 /area/lz_001/caves/lagoon)
 "ie" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1690,8 +1690,8 @@
 /area/lz_001/caves/lagoon/ship)
 "ik" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/desert_cave)
@@ -1700,8 +1700,8 @@
 /area/lz_001/caves/desert_cave)
 "im" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)

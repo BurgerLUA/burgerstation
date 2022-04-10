@@ -1,16 +1,14 @@
-/obj/structure/interactive/vending/chef/dinnerwear
+/obj/structure/interactive/vending/chef/dinnerware
 	name = "dinnerware vendor"
 	icon_state = "dinnerware"
 
 	stored_types = list(
-		/obj/item/paper/book/cooking,
-		/obj/item/container/cheese_mold/block,
+		/obj/item/weapon/melee/sword/fork,
+		/obj/item/weapon/melee/sword/spoon,
 		/obj/item/container/simple/beaker/glass,
+		/obj/item/container/simple/beaker/shot,
 		/obj/item/container/simple/beaker/bowl,
-		/obj/item/container/simple/beaker/large,
 		/obj/item/clothing/head/helmet/full/paperbag,
-		/obj/item/supply_remote/barbecue,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
 	)
 
 /obj/structure/interactive/vending/chef/wardrobe
@@ -25,6 +23,27 @@
 		/obj/item/storage/shoebox/black,
 		/obj/item/clothing/head/hat/chef,
 		/obj/item/clothing/overwear/coat/apron,
-		/obj/item/clothing/overwear/coat/apron/chef,
-		/obj/item/weapon/melee/sword/sabre
+		/obj/item/clothing/overwear/coat/apron/chef
+	)
+
+/obj/structure/interactive/vending/chef/equipment
+	name = "chef equipment vendor"
+	icon_state = "chef_equipment"
+
+	stored_types = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/weapon/melee/sword/spoon,
+		/obj/item/weapon/melee/sword/fork,
+		/obj/item/weapon/melee/sword/chef_knife,
+		/obj/item/weapon/melee/sword/butcher_cleaver,
+		/obj/item/clothing/back/flamethrower,
+		/obj/item/container/cheese_mold,
+		/obj/item/container/cheese_mold/block,
+		/obj/item/fishing/rod,
+		/obj/item/fishing/lure/t1,
+		/obj/item/fishing/line/t1,
+		/obj/item/fishing/bait/river,
+		/obj/item/fishing/bait/sea,
+		/obj/item/fishing/tacklebox/green
 	)

@@ -6,11 +6,24 @@
 	var/min = 0
 	var/max = 100
 	var/current = 0
+	var/desired = 0
 
-/obj/hud/button/health/bar/update_stats(var/mob/living/M)
-	var/math = FLOOR((current/max) * 28, 1)
-	icon_state = "bar_[clamp(math,0,28)]"
-	return TRUE
+	var/max_state = 28
+
+	var/should_think = FALSE
+
+/obj/hud/button/health/bar/special_think()
+
+	if(desired > current)
+		current = min(current+2,desired,max_state)
+		. = TRUE
+	else if(desired < current)
+		current = max(current-2,desired,0)
+		. = TRUE
+	else
+		. = FALSE
+
+	icon_state = "bar_[current]"
 
 /obj/hud/button/health/bar/update_underlays()
 	. = ..()
@@ -28,7 +41,7 @@
 	min = 0
 	color = "#FF0000"
 
-	screen_loc = "RIGHT-0.25,BOTTOM+6"
+	screen_loc = "RIGHT-0.25,BOTTOM:12+6"
 
 	flags = FLAGS_HUD_MOB
 
@@ -41,10 +54,12 @@
 		return ..()
 
 	min = 0
-	max = FLOOR(M.health.health_max, 1)
-	current = FLOOR(M.health.health_current - M.health.get_loss(PAIN), 1)
+	max = M.health.health_max
 
-	return ..()
+	var/mod = (M.health.health_current - M.health.get_loss(PAIN))/max
+	desired = FLOOR(mod*max_state, 1)
+
+	. = ..()
 
 /obj/hud/button/health/bar/sp
 	name = "stamina"
@@ -54,7 +69,7 @@
 	min = 0
 	color = "#00ff00"
 
-	screen_loc = "RIGHT,BOTTOM+6"
+	screen_loc = "RIGHT,BOTTOM:12+6"
 
 	flags = FLAGS_HUD_MOB
 
@@ -67,10 +82,12 @@
 		return ..()
 
 	min = 0
-	max = FLOOR(M.health.stamina_max, 1)
-	current = FLOOR(M.health.stamina_current, 1)
+	max = M.health.stamina_max
 
-	return ..()
+	var/mod = M.health.stamina_current/max
+	desired = FLOOR(mod*max_state, 1)
+
+	. = ..()
 
 /obj/hud/button/health/bar/mp
 	name = "mana"
@@ -80,7 +97,7 @@
 	min = 0
 	color = "#0000ff"
 
-	screen_loc = "RIGHT+0.25,BOTTOM+6"
+	screen_loc = "RIGHT+0.25,BOTTOM:12+6"
 
 	flags = FLAGS_HUD_MOB
 
@@ -93,7 +110,9 @@
 		return ..()
 
 	min = 0
-	max = FLOOR(M.health.mana_max, 1)
-	current = FLOOR(M.health.mana_current, 1)
+	max = M.health.mana_max
 
-	return ..()
+	var/mod = M.health.mana_current/max
+	desired = FLOOR(mod*max_state, 1)
+
+	. = ..()

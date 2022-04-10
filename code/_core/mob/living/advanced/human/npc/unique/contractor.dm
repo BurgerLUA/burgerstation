@@ -15,7 +15,6 @@
 
 	anchored = TRUE
 	density = TRUE
-	size = SIZE_10
 
 	level = 400
 

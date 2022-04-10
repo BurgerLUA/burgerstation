@@ -32,7 +32,15 @@
 
 	map_color = COLOR_WHITE
 
-	plane = PLANE_AREA_INTERIOR
+	dynamic_lighting = TRUE
+
+	interior = TRUE
+
+	requires_power = TRUE
+
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
 
 /area/burgerstation/hall
 	name = "\improper Hallway"
@@ -76,6 +84,12 @@
 
 	map_color = COLOR_CYAN
 
+/area/burgerstation/merchant
+	name = "\improper Merchant's Store"
+	icon_state = "village"
+
+	map_color = COLOR_GOLD
+
 /area/burgerstation/cafe
 	name = "\improper Cafe"
 	icon_state = "cafe"
@@ -88,11 +102,21 @@
 
 	map_color = COLOR_BLUE
 
+	default_state_power_lights = OFF
+
+/area/burgerstation/cafe/kitchen/freezer
+	name = "\improper Kitchen Freezer"
+	icon_state = "cryo"
+
+	map_color = COLOR_BLUE
+
 /area/burgerstation/cafe/bar
 	name = "\improper Bar"
 	icon_state = "bar"
 
 	map_color = COLOR_CYAN
+
+	default_state_power_lights = OFF
 
 /area/burgerstation/cafe/botany
 	name = "\improper Botany"
@@ -182,12 +206,18 @@
 
 	map_color = COLOR_GREEN
 
+/area/burgerstation/cryo/locker_room
+	name = "\improper Changing Room"
+	icon_state = "armory"
+
+	map_color = COLOR_GREEN_DARK
+
 /area/burgerstation/arrivals
 	name = "\improper Arrivals Dock"
 	icon_state = "ariv"
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
-	map_color = COLOR_GREEN
+	map_color = COLOR_YELLOW
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
@@ -215,8 +245,27 @@
 
 	map_color = COLOR_ENGINEERING
 
+/area/burgerstation/engineering/lobby
+	name = "\improper Engineering Lobby"
+	icon_state = "eng"
+	color = "#00FF00"
+
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
+	icon_state = "cmd"
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+
+	map_color = COLOR_ENGINEERING
+
+/area/burgerstation/engineering/telecomms
+	name = "\improper Telecomms"
+	icon_state = "cmd"
+	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+
+	map_color = COLOR_ENGINEERING
+
+/area/burgerstation/engineering/supermatter
+	name = "\improper Supermatter"
 	icon_state = "cmd"
 	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 

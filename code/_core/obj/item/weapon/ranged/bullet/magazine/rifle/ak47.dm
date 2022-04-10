@@ -4,11 +4,11 @@
 	desc_extended = "An old relic created by ancient Space Slavs to be used for lesser colonies in proxy wars. The absurdly large cartridge packs a pretty accurate and deadly punch."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
-	value = 2200
+	value = 1600
 
-	tier = 3
+	tier = 2
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -49,7 +49,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

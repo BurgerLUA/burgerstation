@@ -36,6 +36,7 @@
 	size = SIZE_3
 	weight = 10
 
+	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 
 /obj/item/weapon/ranged/bow/post_move(var/atom/old_loc)

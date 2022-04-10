@@ -3,7 +3,7 @@
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
 	desc_extended = "Press this button if you want to resist out of whatever situation your in. (That doesn't mean that it will do it.)"
 	icon_state = "resist"
-	screen_loc = "RIGHT-3:8,BOTTOM+1"
+	screen_loc = "RIGHT-3:8,BOTTOM:10+1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -15,13 +15,13 @@
 		var/mob/living/L = owner
 		L.resist()
 
-	
+
 /obj/hud/button/resist_auto
 	name = "toggle auto resist"
 	desc = "For when you don't like clicking."
 	desc_extended = "Automatically attempts to resist in some situations."
 	icon_state = "auto"
-	screen_loc = "RIGHT-1,BOTTOM+1"
+	screen_loc = "RIGHT-1,BOTTOM:11+1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -42,14 +42,14 @@
 		owner.auto_resist = !owner.auto_resist
 		update_sprite()
 
-	
+
 /*
 /obj/hud/button/targeting
 	name = "limb targeting"
 	desc = "aim for the head"
 	desc_extended = "Where you press determines where you attack."
 	icon_state = "targeting"
-	screen_loc = "RIGHT,BOTTOM"
+	screen_loc = "RIGHT,BOTTOM:12"
 
 	flags = FLAGS_HUD_MOB
 
@@ -143,7 +143,7 @@
 	desc = "turn all of them on, what could possibly go wrong"
 	desc_extended = ""
 	icon_state = "dpb_box"
-	screen_loc = "RIGHT-2,BOTTOM+1"
+	screen_loc = "RIGHT-2,BOTTOM:12+1"
 
 	var/enable_dodge = 0
 	var/enable_block = 1

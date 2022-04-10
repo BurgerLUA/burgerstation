@@ -1,5 +1,5 @@
 /obj/structure/table
-	name = "table"
+	name = "plastic table"
 	desc = "A table for placing objects down or taking them."
 	desc_extended = "To place items on a table, press Q + Left/Right click depending on if the item is in your left or right hand. Climbing over tables is automatic; Walk into a table for long enough to climb over it."
 	icon = 'icons/obj/structure/table/normal_new.dmi'
@@ -21,7 +21,7 @@
 
 	density = TRUE
 
-	pixel_y = 3
+	pixel_y = 0
 
 /obj/structure/table/PostInitialize()
 
@@ -40,8 +40,8 @@
 		var/obj/item/I = k
 		var/x = (i % maximum_x) - (maximum_x-1)*0.5
 		var/y = FLOOR(i/maximum_x,1) - (maximum_y-1)*0.5
-		I.pixel_x = x*TILE_SIZE*0.5*0.5 + initial(pixel_x)
-		I.pixel_y = y*TILE_SIZE*0.5*0.5 + 4 + initial(pixel_y)
+		I.pixel_x = x*TILE_SIZE*0.2 + initial(pixel_x)
+		I.pixel_y = y*TILE_SIZE*0.2 + 4 + initial(pixel_y)
 		i++
 
 	return ..()
@@ -102,7 +102,7 @@
 	return ..()
 
 obj/structure/table/rack
-	name = "table"
+	name = "plastic rack"
 	desc = "A rack. Not the middle ages kind."
 	desc_extended = "To place items on a rack, press Q + Left/Right click depending on if the item is in your left or right hand."
 	icon = 'icons/obj/structure/rack.dmi'
@@ -124,17 +124,22 @@ obj/structure/table/fancy
 	name = "fancy table"
 	icon = 'icons/obj/structure/table/fancy.dmi'
 	pixel_y = -1
-
 	corner_category = "table_fancy"
+
+	pixel_y = 4
 
 obj/structure/table/glass
 	name = "glass table"
 	icon = 'icons/obj/structure/table/glass.dmi'
-
 	corner_category = "table_glass"
 
-obj/structure/table/dark
-	color = "#999999"
+obj/structure/table/steel
+	name = "steel table"
+	color = COLOR_STEEL_LIGHT
+
+obj/structure/table/steel/dark
+	name = "dark steel table"
+	color = COLOR_STEEL_DARK
 
 obj/structure/table/wood
 	name = "wood table"
@@ -157,16 +162,13 @@ obj/structure/table/reinforced
 
 	corner_category = "table_reinforced"
 
-obj/structure/table/reinforced/grey
-	color = "#BBBBBB"
+	pixel_y = 3
 
-obj/structure/table/reinforced/dark
-	color = "#999999"
+obj/structure/table/reinforced/steel
+	color = COLOR_STEEL_LIGHT
 
-obj/structure/table/reinforced/dark/pvp
-	name = "table of doom"
-	desc = "<font color='red'><b>WARNING: OTHERS PAST THIS TABLE WILL BE ALLOWED TO KILL YOU AND YOU WILL BE ALLOWED TO KILL THEM.</b></font>"
-	desc_extended = "An absolutely cursed table that disrupts loyalty implant signals, but not IFF, when the user is standing on it. A favorite among those looking for something to prove."
+obj/structure/table/reinforced/steel/dark
+	color = COLOR_STEEL_DARK
 
 obj/structure/table/reinforced/yellow
 	color = "#FFFF00"

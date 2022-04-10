@@ -13,6 +13,8 @@
 
 	var/status_effect = DRUGGY
 
+	blood_toxicity_multiplier = 5
+
 /reagent/drug/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -20,7 +22,7 @@
 	owner.add_status_effect(
 		status_effect,
 		magnitude = strength,
-		duration = . * duration_mod //Every 20 units should last 5 minutes.
+		duration = . * duration_mod*multiplier //Every 20 units should last 5 minutes.
 	)
 
 /reagent/drug/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -30,7 +32,7 @@
 	owner.add_status_effect(
 		status_effect,
 		magnitude = strength*2,
-		duration = . * duration_mod //Every 20 units should last 5 minutes.
+		duration = . * duration_mod*multiplier //Every 20 units should last 5 minutes.
 	)
 
 /reagent/drug/liberty_dust

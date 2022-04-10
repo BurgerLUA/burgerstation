@@ -15,25 +15,14 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = AI_TICK_FAST*3
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	stun_angle = 0
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 80,
-		BLUNT = 80,
-		LASER = 80,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = 80,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/default_organic/tough
 
 	status_immune = list(
 		STUN = TRUE,
@@ -119,7 +108,10 @@
 	do_say("Suffer our wraith invaders, suffer!")
 	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 	var/stun_time = angered ? 40 : 20
+	var/area/A = get_area(src)
 	for(var/mob/living/L in view(VIEW_RANGE,src))
-		if(L.loyalty_tag == src.loyalty_tag)
+		if(L.dead)
+			continue
+		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
 			continue
 		L.add_status_effect(STUN,20,stun_time)

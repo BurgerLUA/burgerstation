@@ -2,7 +2,7 @@
 	name = "\improper 4.6x30mm FNG"
 	desc = ""
 	desc_extended = "An extremely lightweight, cheap and near recoiless combat rifle designed for new trainees to get some hands-on experience with firearms."
-	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/starter.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/46_1.dmi'
 	icon_state = "inventory"
 	value = 400
 
@@ -50,7 +50,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

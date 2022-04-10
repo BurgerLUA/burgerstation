@@ -6,7 +6,7 @@
 
 	species = "goblin"
 
-	pixel_z = -2
+	pixel_z = 1
 
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"

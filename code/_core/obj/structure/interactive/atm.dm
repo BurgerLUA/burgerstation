@@ -21,9 +21,6 @@
 	if(caller.client && is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		if(is_inventory(object))
-			if(P.loyalty_tag == "NanoTrasen" && SStax.check_delinquent(P))
-				P.to_chat(span("warning","Error: Tax delinquency detected. All associated accounts frozen. Please pay your taxes at the nearest tax payment center."))
-				return FALSE
 			var/obj/hud/inventory/I = object
 			var/desired_input = input("How many credits do you wish to withdraw? (Limit: 5000cr, 1% + 2cr fee.)","Withdraw Credits",0) as num
 			INTERACT_CHECK

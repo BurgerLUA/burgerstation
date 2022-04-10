@@ -27,6 +27,10 @@
 		caller.to_chat(span("warning","You can't use this here!"))
 		return TRUE
 
+	if(enable_friendly_fire)
+		caller.to_chat(span("warning","This doesn't seem to be working for some reason..."))
+		return TRUE
+
 	if(!P.loyalty_tag || !portal_markers[P.loyalty_tag])
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE

@@ -45,7 +45,7 @@
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(!L.add_status_effect(GRAB, source = A))
+			if(!L.add_status_effect(GRAB,200,0,source = A))
 				A.to_chat(span("warning","\The [L.name] is too strong to be grabbed!"))
 				return ..()
 		if(istype(weapon,/obj/item/organ/hand))

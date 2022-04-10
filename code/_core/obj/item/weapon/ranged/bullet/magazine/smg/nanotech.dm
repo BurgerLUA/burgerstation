@@ -46,9 +46,7 @@
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
-		/obj/item/attachment/sight/targeting_computer = TRUE,
-
-		/obj/item/attachment/stock/c20r = FALSE
+		/obj/item/attachment/sight/targeting_computer = TRUE
 	)
 
 	attachment_barrel_offset_x = 29 - 16

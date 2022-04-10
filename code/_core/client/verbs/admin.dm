@@ -1,3 +1,58 @@
+/client/verb/adminhelp(var/text_to_say as message)
+	set name = "Adminhelp"
+	set category = "Admin"
+
+	if(!text_to_say)
+		text_to_say = input("adminhelp") as message
+
+	text_to_say = police_input(src,text_to_say)
+
+	if(!text_to_say)
+		return FALSE
+
+	var/tickets_open = length(ckey_to_tickets[ckey])
+
+	if(tickets_open)
+		var/desired_input = input("You already have [tickets_open] ticket(s) open. Do you wish to create a new ticket or respond to an existing ticket?","Multiple Tickets","Cancel") as null|anything in list("Create New Ticket","Respond to Existing Ticket","Cancel")
+		if(desired_input == "Respond to Existing Ticket")
+			src.to_chat(span("ahelp","Click on an active ticket below to respond to it."))
+			for(var/k in ckey_to_tickets[ckey])
+				var/ticket/T = k
+				src.to_chat(span("ahelp","<a href='?src=\ref[T];password=[T.password]'>ticket (#[T.ticket_number])</a>"))
+			return TRUE
+		if(!desired_input || desired_input == "Cancel")
+			return TRUE
+
+	var/ticket/T = new
+	T.open(src,text_to_say,TRUE)
+
+/client/verb/bwoink(var/ckey_to_bwoink as text, var/bwoink_message as message)
+	set name = "Bwoink"
+	set category = "Admin"
+
+	if(!ckey_to_bwoink)
+		var/list/valid_ckeys = list()
+		for(var/k in all_clients)
+			valid_ckeys += k
+		ckey_to_bwoink = input("Who do you want to bwoink?","Bwoink Player") as null|anything in valid_ckeys
+
+	if(!ckey_to_bwoink)
+		src.to_chat(span("warning","Invalid ckey!"))
+		return FALSE
+
+	if(!bwoink_message)
+		bwoink_message = input("Bwoink") as message
+
+	bwoink_message = sanitize(bwoink_message)
+
+	if(!bwoink_message)
+		src.to_chat(span("warning","Invalid message!"))
+		return FALSE
+
+	var/ticket/T = new
+	T.open(src,bwoink_message,FALSE)
+	T.join(CLIENT(ckey_to_bwoink),TRUE)
+
 /client/verb/ban()
 
 	set name = "Ban"

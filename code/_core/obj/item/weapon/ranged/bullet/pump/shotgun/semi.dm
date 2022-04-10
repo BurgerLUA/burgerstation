@@ -1,8 +1,8 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 	name = "12g SEM"
 	desc = "When you're too lazy to pump."
-	desc_extended = "A lightweight 12 gauge auto-cycling semi-automatic shotgun designed to clear rooms very fast without the effort of pumping; except when you load a new round in for the first time. Has an internal magazine size of 5."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/semi.dmi'
+	desc_extended = "A lightweight 12 gauge auto-cycling semi-automatic shotgun designed to clear rooms very fast without the effort of pumping; except when you load a new round in for the first time."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/semi.dmi'
 	icon_state = "inventory"
 
 	value = 3000
@@ -40,8 +40,6 @@
 		/obj/item/attachment/sight/scope = TRUE,
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
-
-		/obj/item/attachment/stock/c20r = FALSE,
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

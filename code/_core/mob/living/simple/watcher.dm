@@ -15,16 +15,7 @@
 
 	stun_angle = 0
 
-	armor_base = list(
-		BLADE = -20,
-		PIERCE = -20,
-		ARCANE = 80,
-		HEAT = 60,
-		COLD = 80,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 100
-	)
+	armor = /armor/insect
 
 	status_immune = list(
 		FIRE = TRUE
@@ -33,7 +24,7 @@
 	iff_tag = "Watcher"
 	loyalty_tag = "Watcher"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	pixel_x = -12
 
@@ -73,20 +64,11 @@
 
 	pixel_x = 0
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	status_immune = list()
 
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		ARCANE = 80,
-		HEAT = -20,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = 0,
-		PAIN = INFINITY
-	)
+	armor = /armor/brass_construct
 
 	level = 8
 
@@ -107,8 +89,6 @@
 
 	movement_delay = 1 // Fast
 
-
-
 	ai = /ai/watcher/clockwork
 
 	blood_type = /reagent/blood/robot
@@ -117,17 +97,8 @@
 
 	pixel_x = 0
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	status_immune = list()
 
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		ARCANE = 80,
-		HEAT = -20,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = 0,
-		PAIN = INFINITY
-	)
+	armor = /armor/brass_construct

@@ -14,8 +14,6 @@
 
 	value = 400
 
-	loyalty_tag = "Syndicate"
-
 /obj/item/clothing/overwear/hardsuit/syndie/advanced
 	name = "mauler hardsuit mk2"
 	desc = "Perimeter Secured."

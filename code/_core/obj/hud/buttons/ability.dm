@@ -11,7 +11,7 @@ var/global/list/ability_colors = list(
 	desc = "Slot button for quick actions."
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
 	icon_state = "square_trim"
-	screen_loc = "LEFT+0.25,TOP-0.25"
+	screen_loc = "LEFT,TOP"
 	alpha = 200
 
 	flags = FLAGS_HUD_MOB
@@ -104,18 +104,18 @@ var/global/list/ability_colors = list(
 
 /obj/hud/button/ability/A
 	id = "1"
-	screen_loc = "LEFT+0.25,TOP-0.25"
+	screen_loc = "LEFT,TOP"
 	ability = /ability/quick_draw
 
 /obj/hud/button/ability/B
 	id = "2"
-	screen_loc = "LEFT+1+0.25,TOP-0.25"
+	screen_loc = "LEFT+1,TOP"
 	ability = /ability/dash
 
 /obj/hud/button/ability/C
 	id = "3"
-	screen_loc = "LEFT+2+0.25,TOP-0.25"
+	screen_loc = "LEFT+2,TOP"
 
 /obj/hud/button/ability/D
 	id = "4"
-	screen_loc = "LEFT+3+0.25,TOP-0.25"
+	screen_loc = "LEFT+3,TOP"

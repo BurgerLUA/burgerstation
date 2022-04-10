@@ -50,7 +50,7 @@
 	var/addiction_strength = 1 //Percent chance to become addicted per maximium amount taken.
 	var/addiction_threshold = 30 //The percent chance needs to be greater than this value to be considered addicted.
 
-	var/blood_toxicity_multiplier = 0 //How much blood toxicity to add per unit.
+	var/blood_toxicity_multiplier = 1 //How much blood toxicity to add per unit metabolized.
 
 	var/list/involved_in_recipes
 	var/has_temperature_recipe = FALSE

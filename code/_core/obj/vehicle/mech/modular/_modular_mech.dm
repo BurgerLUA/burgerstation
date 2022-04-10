@@ -26,23 +26,7 @@
 
 	value = 500
 
-	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -100,
-		PAIN = INFINITY
-	)
+	armor = /armor/borg
 
 	class = /class/mech
 
@@ -348,7 +332,7 @@
 /mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
-		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
+		params = list(PARAM_ICON_X = 16,PARAM_ICON_Y = 16)
 
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])

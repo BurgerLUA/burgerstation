@@ -1,16 +1,17 @@
 //Inventory sizes.
-#define SIZE_0 0.5
-#define SIZE_1 1
-#define SIZE_2 2
-#define SIZE_3 3
-#define SIZE_4 4
-#define SIZE_5 6
-#define SIZE_6 10
-#define SIZE_7 15
-#define SIZE_8 25
-#define SIZE_9 50
-#define SIZE_10 75
-#define SIZE_X 1000
+#define SIZE_0 0.5 //Pen
+#define SIZE_1 1 //Rubber Ducky
+#define SIZE_2 3 //Pistol
+#define SIZE_3 6 //SMG
+#define SIZE_4 10 //Rifle
+#define SIZE_5 15 //Sniper
+
+#define SIZE_6 30 //Minigun or big-ass sniper
+#define SIZE_7 60 //Human
+#define SIZE_8 120 //Giant
+#define SIZE_9 240 //Bubblegum
+#define SIZE_10 480 //Nar-sie
+#define SIZE_X 1000 //Meme
 
 //Inventory weights
 #define WEIGHT_0 0.5
@@ -50,6 +51,7 @@
 #define SLOT_FOOT         (1<<12)
 #define SLOT_HAND         (1<<13)
 #define SLOT_SPECIAL      (1<<14)
+#define SLOT_RING         (1<<15)
 
 #define SLOT_MOD_NONE     (1<<0)
 #define SLOT_MOD_CENTER   (1<<1)

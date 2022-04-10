@@ -11,7 +11,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/smg/chris = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm

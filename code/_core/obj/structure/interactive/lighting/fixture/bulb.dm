@@ -8,7 +8,7 @@
 	color = COLOR_LIGHT_BULB
 
 	desired_light_power = 0.5
-	desired_light_range = VIEW_RANGE*0.4
+	desired_light_range = 5
 	desired_light_color = null //Set in update_icon
 	desired_light_angle = LIGHT_OMNI
 

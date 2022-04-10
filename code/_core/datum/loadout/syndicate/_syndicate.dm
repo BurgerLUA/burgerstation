@@ -188,7 +188,6 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/mask/gas/poly/syndicate,
 		/obj/item/clothing/neck/tie/black,
-		/obj/item/container/syringe/medipen/hypospray,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,

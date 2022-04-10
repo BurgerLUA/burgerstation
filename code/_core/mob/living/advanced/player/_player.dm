@@ -31,6 +31,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	has_hard_crit = TRUE
 
+	var/difficulty = DIFFICULTY_NORMAL
+
 	var/currency = 8000
 	var/revenue = 0
 	var/expenses = 0
@@ -103,9 +105,26 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	var/job_rank = 1
 	var/job_next_promotion
 
-	damage_received_multiplier = 0.75
+	expiration_time = SECONDS_TO_DECISECONDS(180)
 
-	expiration_time = SECONDS_TO_DECISECONDS(60)
+var/global/list/difficulty_to_damage_mul = list(
+	DIFFICULTY_EASY = 0.5,
+	DIFFICULTY_NORMAL = 0.75,
+	DIFFICULTY_HARD = 1,
+	DIFFICULTY_EXTREME = 1,
+	DIFFICULTY_SURVIVOR = 1
+)
+
+/mob/living/advanced/player/Finalize()
+	. = ..()
+	setup_difficulty()
+
+/mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+
+	if(attacker.is_player_controlled())
+		return 1
+
+	return difficulty_to_damage_mul[difficulty]
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
@@ -140,6 +159,27 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 
 	name = SStext.check_duplicate_player_name(real_name,ckey_last)
+
+	return TRUE
+
+
+/mob/living/advanced/player/proc/setup_difficulty()
+
+	var/actual_difficulty = difficulty
+	if(enable_friendly_fire)
+		actual_difficulty = DIFFICULTY_NORMAL
+
+	if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
+		health.health_regeneration = 0
+	else
+		health.health_regeneration = initial(health.health_regeneration)
+
+	if(actual_difficulty == DIFFICULTY_SURVIVOR)
+		health.stamina_regen_cooef = 0.5
+		health.mana_regen_cooef = 0.5
+	else
+		health.stamina_regen_cooef = initial(health.stamina_regen_cooef)
+		health.mana_regen_cooef = initial(health.mana_regen_cooef)
 
 	return TRUE
 

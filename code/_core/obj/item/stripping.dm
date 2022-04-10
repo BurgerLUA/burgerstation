@@ -44,7 +44,8 @@
 
 	if(is_living(caller))
 		var/mob/living/CL = caller
-		if(CL.loyalty_tag != "NanoTrasen" && L.loyalty_tag != CL.loyalty_tag)
+		var/turf/T = get_turf(CL)
+		if(!allow_hostile_action(CL.loyalty_tag,L.loyalty_tag,T.loc))
 			return FALSE
 
 	return TRUE

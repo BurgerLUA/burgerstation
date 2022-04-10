@@ -57,8 +57,6 @@
 
 	if(.)
 
-		if(!is_living(owner)) return
-
 		var/mob/living/L = owner
 
 		if(has_bloodoxygen && L.blood_volume_max)
@@ -73,11 +71,9 @@
 		if(L.medical_hud_image)
 			var/health_icon_state
 			if(L.dead)
-				if(L.is_player_controlled() && !L.suicide)
-					if(should_be_dead)
-						health_icon_state = "revive_2"
-					else
-						health_icon_state = "revive_3"
+				var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
+				if(time_left > 0)
+					health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
 				else
 					health_icon_state = "dead"
 			else if (L.has_status_effect(CRIT))
@@ -97,8 +93,6 @@
 /health/mob/living/update_health_stats()
 
 	. = ..()
-
-	if(!is_living(owner)) return
 
 	var/mob/living/L = owner
 
@@ -154,9 +148,6 @@
 
 /health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
 
-	if(!is_living(owner))
-		return ..()
-
 	var/mob/living/L = owner
 
 	var/returning_value = 0
@@ -175,6 +166,24 @@
 			returning_value += damage[damage_type]
 
 	return returning_value
+
+/health/mob/living/adjust_loss(var/loss_type,var/value)
+	. = ..()
+	if(. < 0)
+		var/mob/living/L = owner
+		L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
+
+/health/mob/living/adjust_mana(var/adjust_value)
+	. = ..()
+	if(. < 0)
+		var/mob/living/L = owner
+		L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
+
+/health/mob/living/adjust_stamina(var/adjust_value)
+	. = ..()
+	if(. < 0)
+		var/mob/living/L = owner
+		L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
 
 /health/mob/living/inorganic
 	organic = FALSE

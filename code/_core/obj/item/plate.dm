@@ -3,15 +3,75 @@
 	desc = "Dinner is served."
 	desc_extended = "A basic plate meant for holding food."
 	icon = 'icons/obj/item/plate.dmi'
-	icon_state = "plate"
+	icon_state = "plate_medium"
 	mouse_opacity = 1
 	layer = -1000
 	size = SIZE_4
 	weight = 1
 	value = 10
 
+	health = /health/construction/
+	health_base = 1
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
+
 	var/max_load = 4
 	var/max_size = SIZE_2
+
+	pixel_y = 4
+
+	var/broken = FALSE
+
+
+/obj/item/plate/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+	. = ..()
+	SAVEVAR("broken")
+
+/obj/item/plate/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("broken")
+
+
+
+/obj/item/plate/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall)
+
+	if(hit_wall || hit_atom)
+		on_destruction(owner,TRUE)
+
+	return ..()
+
+/obj/item/plate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+	return !broken
+
+/obj/item/plate/on_destruction(var/mob/caller,var/damage = FALSE)
+
+	var/turf/T = get_turf(src)
+
+	if(T) play_sound('sound/effects/ceramic_break.ogg',T)
+
+	. = ..()
+
+	broken = TRUE
+	collision_bullet_flags &= ~FLAG_COLLISION_BULLET_SPECIFIC
+
+	update_sprite()
+
+	if(T)
+		for(var/k in contents)
+			var/atom/movable/M = k
+			M.force_move(T)
+
+
+/obj/item/plate/update_icon()
+
+	. = ..()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	if(broken)
+		icon_state = "[icon_state]_broken"
+
 
 /obj/item/plate/get_examine_list(var/mob/examiner)
 	. = ..()
@@ -30,7 +90,8 @@
 
 /obj/item/plate/Crossed(atom/movable/O)
 	. = ..()
-	if(O.loc == src.loc && is_item(O) && !istype(O,/obj/item/plate) && length(contents) < max_load)
+
+	if(!broken && O.loc == src.loc && is_item(O) && !istype(O,/obj/item/plate) && length(contents) < max_load)
 		var/obj/item/I = O
 		if(I.size <= max_size)
 			I.drop_item(src)
@@ -47,7 +108,7 @@
 
 /obj/item/plate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(caller.attack_flags & CONTROL_MOD_DISARM && !broken)
 		INTERACT_CHECK
 		INTERACT_DELAY(30)
 		var/list/byond_is_weird = list()

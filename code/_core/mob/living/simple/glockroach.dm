@@ -17,11 +17,7 @@
 
 	stun_angle = 180
 
-	armor_base = list(
-		BIO = INFINITY,
-		RAD = INFINITY,
-		ION = INFINITY
-	)
+	armor = /armor/insect
 
 	size = SIZE_CRITTER
 

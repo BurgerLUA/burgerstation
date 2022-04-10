@@ -67,7 +67,7 @@
 		else
 			caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal the wounds of \the [L.name]."),span("notice","You use \the [src.name] to heal the wounds of \the [L.name]."))
 
-		L.health.adjust_loss_smart(brute=-100,burn=-100,tox=-100)
+		L.health.adjust_loss_smart(brute=-100,burn=-100,tox=-100,organic=TRUE,robotic=FALSE)
 		L.to_chat(span("notice","You feel refreshed!"))
 
 		expire()

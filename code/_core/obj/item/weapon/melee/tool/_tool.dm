@@ -1,7 +1,6 @@
 /obj/item/weapon/melee/tool
 	name = "tool"
 	drop_sound = 'sound/items/drop/scrap.ogg'
-
 	has_quick_function = TRUE
 
 /obj/item/weapon/melee/tool/quick(var/mob/caller,var/atom/object,location,params)
@@ -156,21 +155,6 @@
 	weight = 3
 
 	value = 10
-
-/obj/item/weapon/melee/tool/multitool/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	if(istype(object,/obj/structure/interactive/)) //TODO: MOVE THIS TO STRUCTURE CODE
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		INTERACT_DELAY(1)
-		var/obj/structure/interactive/I = object
-		var/obj/item/I2 = I.check_interactables(caller,src,location,control,params)
-		if(I2)
-			I2.drop_item(get_turf(caller))
-			caller.to_chat(span("notice","You successfully remove \the [I2.name] from \the [I.name] with \the [src.name]."))
-		return TRUE
-
-	return ..()
 
 /obj/item/weapon/melee/tool/screwdriver
 	name = "screwdriver"

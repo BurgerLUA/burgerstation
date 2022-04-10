@@ -4,7 +4,7 @@
 		return FALSE
 
 	if(enter)
-		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(move_delay)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
+		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(next_move)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
 		return FALSE
 
 	do_footstep(T,footsteps_to_use,enter)
@@ -46,7 +46,7 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
+	if(intent == INTENT_HARM || attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..()
@@ -91,10 +91,12 @@
 
 	handle_tabled()
 
+	last_move_delay = TICKS_TO_DECISECONDS(next_move)
+	last_move_time = world.time
+
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
-	return ..()
-
+	. = ..()
 
 /mob/living/proc/can_move()
 
@@ -122,7 +124,7 @@
 /mob/living/handle_movement(var/adjust_delay = 1)
 
 	if(dash_target && dash_target.loc && dash_amount > 0 && !horizontal && can_move() && isturf(src.loc)) //can_move dose not consider delays.
-		var/final_direction = get_dir(src,dash_target)
+		var/final_direction = get_dir_advanced(src,dash_target)
 		if(!final_direction)
 			dash_amount = 0
 			return TRUE
@@ -198,23 +200,16 @@
 /mob/living/proc/on_sneak()
 	return TRUE
 
-/mob/living/proc/update_alpha(var/desired_alpha)
-	if(alpha != desired_alpha)
-		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = TICKS_TO_DECISECONDS(LIFE_TICK))
-		update_plane()
-		return TRUE
-	return FALSE
-
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.density)
+	if(is_living(O) && O.density) //A living being is crossing us.
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
-			//If the crosser is horizontal, or the src is horizontal, run normal checks.
-			return ..()
-		if(L.loyalty_tag == src.loyalty_tag && (!L.ai || !src.ai))
-			//If the crosser is not an AI and we're on the same team, allow it.
+			//If the crosser is horizontal, or the src is horizontal, you can cross.
 			return TRUE
+		if((!L.ai || !src.ai))
+			if(allow_helpful_action(L.loyalty_tag,src.loyalty_tag)) //If the crosser is not an AI and we're on the same team, allow it.
+				return TRUE
 		if(L.size >= SIZE_ANIMAL)
 			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE
@@ -224,13 +219,11 @@
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
 
-	if(has_status_effects(STUN,STAGGER,PARALYZE))
-		return ..()
-
-	if(hit_wall)
-		add_status_effect(STUN,5,5,source = owner)
-	else
-		add_status_effect(STAGGER,2,2,source = owner)
+	if(!has_status_effects(STUN,STAGGER,PARALYZE))
+		if(hit_wall)
+			add_status_effect(STUN,10,10,source = owner)
+		else
+			add_status_effect(STAGGER,5,5,source = owner)
 
 	return ..()
 
@@ -242,14 +235,14 @@
 		currently_tabled = tabled
 		if(currently_tabled)
 			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
-			move_delay = max(10,move_delay)
+			next_move = max(DECISECONDS_TO_TICKS(10),next_move)
 		else
 			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
-			move_delay = max(5,move_delay)
+			next_move = max(DECISECONDS_TO_TICKS(5),next_move)
 
 	return TRUE
 
-/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
+/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty)
 
 	if(buckled_object)
 		return null

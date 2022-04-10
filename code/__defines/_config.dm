@@ -44,3 +44,5 @@
 //Enables/disables wikibot helper functions
 #define ENABLE_WIKIBOT FALSE
 
+//Soft limit to prevent more than any of this amount of being on a single turf at once. THIS INCLUDES EVERYTHING THAT USES move(). forcemove() is intentionally ignored.
+#define TURF_CONTENT_LIMIT 100

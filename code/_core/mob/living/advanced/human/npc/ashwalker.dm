@@ -36,10 +36,10 @@
 	change_organ_visual("skin", desired_color = skin_color)
 
 	if(sex == MALE)
-		change_organ_visual("hair_face", desired_color = pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)), desired_icon_state = pick(S.all_hair_face))
+		change_organ_visual("hair_face", desired_color = pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)), desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair_face]))
 		equip_loadout(loadout_to_use)
 	else
-		change_organ_visual("hair_head", desired_color = skin_color, desired_icon_state = pick(S.all_hair_head))
+		change_organ_visual("hair_head", desired_color = skin_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
 		equip_loadout(loadout_to_use_female)
 
 	update_all_blends()

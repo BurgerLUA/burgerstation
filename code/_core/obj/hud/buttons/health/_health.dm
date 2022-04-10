@@ -12,6 +12,9 @@
 
 	flags = FLAGS_HUD_MOB
 
+/obj/hud/button/health/proc/special_think()
+	return FALSE
+
 /obj/hud/button/health/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_living(caller))
@@ -22,7 +25,7 @@
 	return ..()
 
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
-	update_sprite()
+	if(M) M.health_icons_to_update |= src
 	return TRUE
 
 /obj/hud/button/health/update_owner(var/mob/desired_owner)

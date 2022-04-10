@@ -111,6 +111,13 @@
 		"filter" = COLOR_PLASTEEL
 	)
 
+/obj/item/clothing/mask/gas/poly/medical
+	polymorphs = list(
+		"base" = COLOR_SILVER,
+		"eyes" = COLOR_MEDICAL,
+		"filter" = COLOR_PLASTEEL
+	)
+
 /obj/item/clothing/mask/gas/poly/janitor
 	polymorphs = list(
 		"base" = COLOR_METAL,

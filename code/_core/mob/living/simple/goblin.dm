@@ -13,9 +13,7 @@
 
 	damage_type = /damagetype/unarmed/claw
 
-	armor_base = list(
-		ION = INFINITY
-	)
+	armor = /armor/default_organic
 
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"
@@ -25,7 +23,7 @@
 	blood_type = /reagent/blood/goblin
 	blood_volume = 300
 
-	move_delay = 10
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	stun_angle = 90
 

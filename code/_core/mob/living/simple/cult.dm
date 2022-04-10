@@ -13,48 +13,12 @@
 
 	level = 10
 
-/mob/living/simple/cult/cultist
-	name = "blood cult peon"
-	icon = 'icons/mob/living/simple/cult.dmi'
-	icon_state = "cultist"
-
-	ai = /ai/cultist
-
-	stun_angle = 0
-
-	damage_type = /damagetype/melee/sword/claymore/cult
-
-	health_base = 100
-	stamina_base = 50
-	mana_base = 50
-
-	movement_delay = DECISECONDS_TO_TICKS(3)
-
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 20,
-		COLD = 20,
-		HOLY = -60,
-		DARK = 60,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
-
-	level = 18
-
-
-/mob/living/simple/cult/cultist/post_death()
-	. = ..()
-	icon_state = "[initial(icon_state)]_dead"
-
 /mob/living/simple/cult/construct
 	stun_angle = 0
 
-	size = SIZE_LARGE
+	armor = /armor/cult_construct
+
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/unholy
 	blood_volume = 1000
@@ -80,21 +44,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(7)
 
-	armor_base = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = -10,
-		HEAT = 60,
-		COLD = 60,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = INFINITY,
-		ION = 0,
-		PAIN = INFINITY
-	)
-
 	level = 36
 
 
@@ -114,20 +63,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	armor_base = list(
-		BLADE = 60,
-		BLUNT = 60,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = -10,
-		HEAT = 60,
-		COLD = 60,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
-
 	level = 16
 
 
@@ -146,19 +81,6 @@
 	mana_base = 50
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
-
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
 
 	level = 24
 
@@ -180,19 +102,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		LASER = -40,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
-
 	level = 28
 
 
@@ -212,19 +121,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 10,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
-
 	level = 24
 
 
@@ -242,20 +138,7 @@
 	stamina_base = 100
 	mana_base = 50
 
-	movement_delay = 1
-
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
+	movement_delay = AI_TICK
 
 	level = 16
 

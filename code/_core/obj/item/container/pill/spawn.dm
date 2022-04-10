@@ -65,6 +65,13 @@
 	reagents.add_reagent(/reagent/medicine/omnizine,20)
 	return ..()
 
+/obj/item/container/edible/pill/potassium_iodide
+	name = "potassium iodide pill (20u)"
+
+/obj/item/container/edible/pill/potassium_iodide/Generate()
+	reagents.add_reagent(/reagent/medicine/potassium_iodide,20)
+	return ..()
+
 /obj/item/container/edible/pill/antihol
 	name = "antihol pill (20u)"
 
@@ -77,4 +84,11 @@
 
 /obj/item/container/edible/pill/assprin/Generate()
 	reagents.add_reagent(/reagent/medicine/painkiller/assprin,10)
+	return ..()
+
+/obj/item/container/edible/pill/space_prussian_blue
+	name = "space prussian blue (20u)"
+
+/obj/item/container/edible/pill/space_prussian_blue/Generate()
+	reagents.add_reagent(/reagent/medicine/space_prussian_blue,10)
 	return ..()

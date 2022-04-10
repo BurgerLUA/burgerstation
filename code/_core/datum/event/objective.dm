@@ -14,7 +14,7 @@
 /event/objective/on_start()
 	var/gamemode/G = SSgamemode.active_gamemode
 
-	if(G.allow_launch) //No bonuses yet bruh.
+	if(!G)
 		return FALSE
 
 	if(!length(possible_objectives))

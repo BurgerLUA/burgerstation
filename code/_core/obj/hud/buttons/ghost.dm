@@ -2,7 +2,7 @@
 	name = "create a new character"
 	desc = ""
 	icon_state = "new_character"
-	screen_loc = "CENTER-0.5,BOTTOM"
+	screen_loc = "CENTER-0.5,BOTTOM:12"
 
 	flags = FLAGS_HUD_MOB
 
@@ -29,7 +29,7 @@
 	name = "load an existing character"
 	desc = ""
 	icon_state = "load_character"
-	screen_loc = "CENTER+0.5,BOTTOM"
+	screen_loc = "CENTER+0.5,BOTTOM:12"
 
 	flags = FLAGS_HUD_MOB
 
@@ -58,7 +58,7 @@
 	name = "become antagonist"
 	desc = ""
 	icon_state = "become_antag"
-	screen_loc = "CENTER+1.5,BOTTOM"
+	screen_loc = "CENTER+1.5,BOTTOM:12"
 
 	flags = FLAGS_HUD_MOB
 
@@ -77,7 +77,7 @@
 	name = "spectate player"
 	desc = ""
 	icon_state = "square_round_small"
-	screen_loc = "CENTER-1.5,BOTTOM"
+	screen_loc = "CENTER-1.5,BOTTOM:12"
 
 	flags = FLAGS_HUD_MOB
 
@@ -118,7 +118,7 @@
 	name = "ghost"
 	desc = ""
 	icon_state = "square_round_small"
-	screen_loc = "CENTER,BOTTOM+2"
+	screen_loc = "CENTER,BOTTOM:12+2"
 
 	flags = FLAGS_HUD_DEAD
 

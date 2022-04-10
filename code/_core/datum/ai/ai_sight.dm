@@ -3,7 +3,7 @@
 	if(owner.z != A.z)
 		return 0
 
-	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
+	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !is_facing(owner,A))
 		return 0
 
 	var/true_distance = get_dist(owner,A)
@@ -20,7 +20,7 @@
 	if(true_distance >= min(VIEW_RANGE+ZOOM_RANGE,radius_find_enemy_combat))
 		return 0
 
-	if(vision_distance > radius_find_enemy_combat && owner.dir != get_dir(owner,A)) //We're too focused on another enemy.
+	if(vision_distance > radius_find_enemy_combat && !is_facing(owner,A)) //We're too focused on another enemy.
 		return 0
 
 	. = 100

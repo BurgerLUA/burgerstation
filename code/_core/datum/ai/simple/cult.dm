@@ -9,7 +9,8 @@
 /ai/artificer/handle_attacking()
 
 	if(objective_attack && length(tracked_mobs) < 4 && owner.health && owner.health.mana_current >= 20 && next_spawn <= world.time)
-		owner.health.adjust_mana(-20)
+		if(owner.health.adjust_mana(-20))
+			owner.update_health_element_icons(mana=TRUE)
 		var/mob/living/simple/cult/construct/harvester/H = new(owner.loc)
 		INITIALIZE(H)
 		GENERATE(H)

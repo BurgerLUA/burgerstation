@@ -53,7 +53,7 @@
 	mouse_drop_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = 1
 
-	mouse_opacity = 2
+	mouse_opacity = 1
 
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 	var/is_container = FALSE //Set to true if it uses the container inventory system.
@@ -70,6 +70,9 @@
 	var/inventory_category = "none"
 
 	var/obj/hud/button/close_inventory/assoc_button
+
+	var/grab_level = 1 //Passive grab
+	var/grab_time //Cooldown on upgrading grab
 
 /obj/hud/inventory/Destroy()
 
@@ -112,7 +115,8 @@
 /obj/hud/inventory/proc/show(var/should_show,var/speed=SECONDS_TO_DECISECONDS(1))
 	if(should_show)
 		animate(src,alpha=initial(alpha),time=speed)
-		src.mouse_opacity = 2
+		var/initial_mouse = initial(mouse_opacity)
+		mouse_opacity = initial_mouse ? initial_mouse : 1
 	else
 		animate(src,alpha=0,time=speed)
 		src.mouse_opacity = 0
@@ -137,9 +141,14 @@
 	if(parent_inventory)
 		color = "#ff0000"
 	else if(grabbed_object)
-		color = "#ffff00"
-		var/image/I = new/image(initial(icon),"grab")
-		add_overlay(I)
+		if(grab_level == 1) //Passive grab
+			color = "#ffff00"
+			var/image/I = new/image(initial(icon),"grab")
+			add_overlay(I)
+		else if(grab_level == 2) //Agressive grab
+			color = COLOR_RIVER_LIGHT
+			var/image/I = new/image(initial(icon),"grab")
+			add_overlay(I)
 	else
 		color = initial(color)
 

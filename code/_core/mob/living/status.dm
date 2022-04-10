@@ -1,5 +1,8 @@
 /mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=-1,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
 
+	PROCESS_LIVING(src)
+
+	//Check immunities first.
 	if(!force && length(status_immune) && status_immune[status_type])
 		if(isnum(status_immune[status_type]))
 			if(ENABLE_DAMAGE_NUMBERS && !stealthy)
@@ -8,8 +11,10 @@
 			return FALSE
 		else
 			status_type = status_immune[status_type]
-			magnitude = magnitude*0.5
-			duration = duration*0.5
+			if(magnitude != -1)
+				magnitude = magnitude*0.5
+			if(duration != -1)
+				duration = duration*0.5
 
 	var/status_effect/S = SSstatus.all_status_effects[status_type]
 	if(!S)
@@ -26,7 +31,9 @@
 
 	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
 		status_effects[status_type]["duration"] = duration
-	else
+	else //Duration exists.
+		if(status_effects[status_type]["duration"] == -1) //Can't alter a permanent status effect.
+			return FALSE
 		var/mag_mod = magnitude/status_effects[status_type]["magnitude"]
 		if(mag_mod >= 1) //New magnitude is stronger or equal to old
 			status_effects[status_type]["duration"] = duration + (status_effects[status_type]["duration"]/mag_mod)
@@ -77,9 +84,9 @@
 			remove_status_effect(status)
 			continue
 		if(status_effects[status]["duration"] < -1)
-			status_effects[status]["duration"] = min(-1,status_effects[status]["duration"] + TICKS_TO_DECISECONDS(LIFE_TICK))
+			status_effects[status]["duration"] = min(-1,status_effects[status]["duration"] + amount_to_remove)
 			continue
-		status_effects[status]["duration"] = max(0,status_effects[status]["duration"] - TICKS_TO_DECISECONDS(LIFE_TICK))
+		status_effects[status]["duration"] = max(0,status_effects[status]["duration"] - amount_to_remove)
 
 	return TRUE
 

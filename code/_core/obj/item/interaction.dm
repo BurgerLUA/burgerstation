@@ -62,8 +62,9 @@
 		else
 			I.screen_loc = "CENTER+[-max_inventory_x*0.5 + i - 0.5 - FLOOR((i-1)/max_inventory_x, 1)*max_inventory_x],[starting_inventory_y]+[FLOOR((i-1)/max_inventory_x, 1)*inventory_y_multiplier]"
 		I.alpha = 0
-		I.mouse_opacity = 2
 		I.update_owner(A)
+		var/initial_mouse = initial(I.mouse_opacity)
+		I.mouse_opacity = initial_mouse ? initial_mouse : 1
 		animate(I,alpha=255,time=4)
 
 	play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)

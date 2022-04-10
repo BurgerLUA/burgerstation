@@ -5,19 +5,19 @@
 	ai = /ai/advanced/beef
 	species = "beefman"
 
-	iff_tag = "beefman"
-	loyalty_tag = "beefman"
+	iff_tag = "Beefman"
+	loyalty_tag = "Beefman"
 
 	movement_delay = 1 //Lowest possible.
 
 	health_base = 100
 
 	butcher_contents = list(
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
 		/obj/item/soulgem/rare,
-		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/container/edible/dynamic/meat/raw_beefman
 	)
 
 	has_hard_crit = FALSE

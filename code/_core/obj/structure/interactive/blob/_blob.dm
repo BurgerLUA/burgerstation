@@ -50,8 +50,8 @@
 
 	tolerance += 0.1
 
-	var/prefered_dir = last_blob ? get_dir(last_blob,src) : null //Keep the momentum.
-	var/prefered_dir_2 = original_blob ? get_dir(original_blob,src) : null //Move away from the core to expand.
+	var/prefered_dir = last_blob ? get_dir_advanced(last_blob,src) : null //Keep the momentum.
+	var/prefered_dir_2 = original_blob ? get_dir_advanced(original_blob,src) : null //Move away from the core to expand.
 	if(linked_core)
 		health.adjust_loss_smart(brute = -linked_core.heal_amount)
 	if(update_health_state())
@@ -59,11 +59,11 @@
 	var/list/possible_options = list()
 	for(var/k in adjacent_blobs)
 		var/obj/structure/interactive/blob/B = k
-		var/d = get_dir(src,B)
+		var/d = get_dir_advanced(src,B)
 		if(B.color != color)
 			continue
-		if(priority_turf) //Prioritize turfs getting attacked.
-			if(d & get_dir(src,priority_turf))
+		if(priority_turf) //Prioritize blobs getting attacked.
+			if(d & get_dir_advanced(src,priority_turf))
 				possible_options |= B
 				continue
 		else //Not getting attacked? Move away from the core to expand.
@@ -111,7 +111,7 @@
 			INITIALIZE(B)
 			FINALIZE(B)
 
-			var/list/direction_offsets = direction_to_pixel_offset(get_dir(T,src))
+			var/list/direction_offsets = get_directional_offsets(T,src)
 			var/matrix/M = B.get_base_transform()
 			M.Scale(0.1)
 			M.Translate(direction_offsets[1]*TILE_SIZE,direction_offsets[2]*TILE_SIZE)

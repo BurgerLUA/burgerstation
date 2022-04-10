@@ -28,7 +28,7 @@
 		if(attacker)
 			var/attacker_power = attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10
 			var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)*5
-			var/difficulty = (attacker_power - src_power) * (get_dir(attacker,src) == src.dir) ? 5 : 1
+			var/difficulty = (attacker_power - src_power) * (is_behind(attacker,src) ? 1 : 5)
 			if(resist_counter >= difficulty)
 				src.visible_message(
 					span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),
@@ -44,7 +44,8 @@
 					span("warning","You try to resist!"),
 				)
 		resist_counter += 1
-		health.adjust_stamina(-20)
+		if(health.adjust_stamina(-20))
+			src.update_health_element_icons(stamina=TRUE)
 		next_resist = world.time + 10
 		return FALSE
 
@@ -63,7 +64,8 @@
 				span("danger","You quickly pat out the flames!"),
 			)
 		adjust_fire_stacks(-stacks_to_remove)
-		health.adjust_stamina(-5)
+		if(health.adjust_stamina(-5))
+			src.update_health_element_icons(stamina=TRUE)
 		next_resist = world.time + 15
 		return FALSE
 
@@ -87,7 +89,7 @@
 
 	. = ..()
 
-	if(. && handcuffed && !horizontal && !grabbing_hand)
+	if(. && handcuffed && !grabbing_hand)
 
 		var/counter_to_add = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.5,1,2)*10*(client ? 3 : 1)
 
@@ -101,13 +103,15 @@
 			counter_to_add *= 3
 			src.visible_message(
 				span("danger","\The [src.name] tries to resist out of the handcuffs!"),
-				span("danger","You try to resist out of the handcuffs!")
+				span("danger","You visibly try to resist out of the handcuffs!")
 			)
 		else
-			to_chat(span("warning","You attempt to stealthfully resist out of the handcuffs..."))
+			to_chat(span("warning","You attempt to stealthily resist out of the handcuffs..."))
 
 		handcuff_break_counter += counter_to_add
-		health.adjust_stamina(-20)
+		if(health.adjust_stamina(-20))
+			src.update_health_element_icons(stamina=TRUE)
+
 
 		switch(handcuff_break_counter)
 			if(0 to 25)

@@ -11,6 +11,7 @@
 	automatic = TRUE
 
 	use_loyalty_tag = TRUE
+	use_iff_tag = FALSE
 
 /obj/item/weapon/ranged/stamina_use/can_gun_shoot(var/mob/caller)
 
@@ -43,11 +44,9 @@
 	if(!A.health)
 		return ..()
 
-	A.health.adjust_stamina(-cost_stamina)
 
-	A.update_health_element_icons(stamina=TRUE)
-
-	A.stamina_regen_delay = max(A.stamina_regen_delay,10) //I'll change this if it's unreasonable.
+	if(A.health.adjust_stamina(-cost_stamina))
+		A.update_health_element_icons(stamina=TRUE)
 
 	return null
 

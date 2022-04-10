@@ -27,18 +27,18 @@
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
-		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
+		params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
 
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
 	if(!accurate && is_living(attacker) && attacker != src)
-		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
+		var/inaccuracy = weapon ? weapon.get_inaccuracy(attacker,src,inaccuracy_modifier) : 0
 		if(!src.anchored && !src.horizontal)
 			inaccuracy += (evasion_rating*0.01*TILE_SIZE*0.5)
-
-		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
-		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
+		if(inaccuracy > 0)
+			x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
+			y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
 	var/best_distance = INFINITY
 	var/obj/item/organ/best_organ
@@ -68,14 +68,13 @@
 				best_distance = distance
 				best_distance_organ = O
 
-
 	if(best_organ)
 		return best_organ
 
 	if(best_distance_organ)
 		return best_distance_organ
 
-	return FALSE
+	return null
 
 /mob/living/proc/get_current_target_cords(params)
 	if(!params)
@@ -231,7 +230,10 @@
 
 /mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
 
-	if(last_hold && (world.time - last_hold <= 5 + 5*get_skill_power(SKILL_PARRY,0,1,2)))
-		return TRUE
+	if(!is_facing(src,attacker))
+		return FALSE
 
-	return FALSE
+	if(world.time - last_hold > 5 + 5*get_skill_power(SKILL_PARRY,0,1,2))
+		return FALSE
+
+	return TRUE

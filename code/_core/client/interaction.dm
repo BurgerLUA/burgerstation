@@ -94,6 +94,8 @@
 		examine(object)
 		return TRUE
 
+	drag_last = world.time
+
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_down(object,location,control,new_params)
 
@@ -164,7 +166,10 @@
 		return FALSE
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
-	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
+	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < 4)
+		return FALSE
+
+	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
 
 	var/click_flags = get_click_flags(new_params,TRUE)
@@ -191,7 +196,7 @@
 	var/list/new_params = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
-	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
+	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < 4)
 		return FALSE
 
 	. = ..()
@@ -205,20 +210,30 @@
 	if(!mob)
 		return ..()
 
-	if(object)
-		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
+	if(istype(object,/atom/))
+		var/atom/A = object
+		mob.examine_overlay.maptext = "<center size='3'>[A.name]</center>"
+		if(mob.examine_bar) mob.examine_bar.maptext = "[A.name]"
 	else
 		mob.examine_overlay.maptext = null
+		if(mob.examine_bar) mob.examine_bar.maptext = null
 
-	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
-		var/real_angle = get_angle(mob,location) + 90
-		var/desired_x_offset = sin(real_angle)
-		var/desired_y_offset = cos(real_angle)
-		var/real_dir = angle2dir(real_angle)
-		is_zoomed = real_dir
-		mob.set_dir(real_dir)
-		update_camera_offset(desired_x_offset,desired_y_offset)
-
+	if(mob && isturf(location))
+		if(zoom_held && (world.time - zoom_time) > 4)
+			var/list/offsets = get_directional_offsets(mob,location)
+			is_zoomed = get_dir_advanced(mob,location)
+			mob.set_dir(is_zoomed)
+			update_camera_offset(offsets[1],offsets[2])
+		else if(is_living(mob))
+			var/mob/living/L = mob
+			if(L.intent == INTENT_HARM)
+				mob.set_dir(get_dir_advanced(mob,location))
+				for(var/k in mob.light_sprite_sources)
+					var/obj/light_sprite/LS = k
+					if(LS.icon_state != "cone")
+						continue
+					LS.set_dir(SOUTH)
+					LS.transform = LS.get_base_transform()
 	. = ..()
 
 /client/proc/store_new_params(object,location,params)

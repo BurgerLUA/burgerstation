@@ -89,16 +89,14 @@
 	if(best_fat)
 		var/reagent/RF = REAGENT(best_fat)
 		var/image/fat_image = new/image(initial(icon),"[icon_state]_fat")
-		fat_image.appearance_flags = src.appearance_flags | RESET_COLOR | KEEP_APART
+		fat_image.appearance_flags = src.appearance_flags | RESET_COLOR
 		fat_image.color = RF ? RF.color : "#FFFFFF"
-		fat_image.layer = layer + 0.01
 		add_overlay(fat_image)
 
 	if(carbon_amount)
 		var/image/carbon_image = new/image(initial(icon),"[icon_state]_marks")
-		carbon_image.appearance_flags = src.appearance_flags | RESET_COLOR | KEEP_APART
+		carbon_image.appearance_flags = src.appearance_flags | RESET_COLOR
 		carbon_image.alpha = clamp(carbon_amount*55,0,255)
-		carbon_image.layer = layer + 0.02
 		add_overlay(carbon_image)
 
 	color = blend_colors(rgb(meat_r,meat_g,meat_b),"#000000",carbon_amount/(reagents.volume_current*0.5))

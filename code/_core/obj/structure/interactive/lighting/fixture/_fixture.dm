@@ -10,13 +10,13 @@
 
 	rotation_mod = -1
 
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 	health = /health/construction
 
 	health_base = 10
 
-	lightswitch = TRUE
+	apc_powered = TRUE
 
 /obj/structure/interactive/lighting/fixture/Generate()
 	desired_light_color = color
@@ -41,9 +41,9 @@
 
 
 /obj/structure/interactive/lighting/fixture/Finalize()
+	. = ..()
 	update_atom_light()
 	update_sprite()
-	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_atom_light()
 	if(on && desired_light_range && desired_light_power && desired_light_color)

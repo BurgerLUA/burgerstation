@@ -1,6 +1,7 @@
-#define LOADOUT_LIMIT 10
+#define LOADOUT_LIMIT 5
 
 var/global/list/ckey_to_loadout_data = list()
+var/global/list/ckey_to_loadout_cooldown = list()
 
 /savedata/client/loadout
 	loaded_data = list()
@@ -38,7 +39,11 @@ var/global/list/ckey_to_loadout_data = list()
 
 /proc/save_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
 
-	if(!P.ckey_last || !name)
+	if(!P.ckey || !name)
+		return FALSE
+
+	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before saving another loadout!"))
 		return FALSE
 
 	var/list/objects_to_check = P.worn_objects.Copy()
@@ -48,15 +53,15 @@ var/global/list/ckey_to_loadout_data = list()
 	var/list/final_data_list = list()
 	var/final_cost = 0
 	for(var/k in objects_to_check)
-		var/obj/item/I = objects_to_check[k]
-		var/generated_list = I.save_item_data(P)
+		var/obj/item/I = k
+		var/list/generated_list = I.save_item_data(P)
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			generated_list["original_slot"] = I2.id
-		final_data_list += generated_list
+		final_data_list += list(generated_list)
 		final_cost += I.get_value()
 
-	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey_last]
+	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
 
 	if(length(L.loaded_data) && L.loaded_data[name])
 		if(usr != P)
@@ -73,33 +78,48 @@ var/global/list/ckey_to_loadout_data = list()
 		"cost" = final_cost
 	)
 
-	P.to_chat(span("notice","Successfully saved loadout [name]."))
+	L.save()
+	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE
 
 
 /proc/apply_loadout_to_mob(var/mob/living/advanced/player/P,var/name="Default")
 
-	if(!P.ckey_last || !name)
+	if(!P || !P.ckey || !name)
 		return FALSE
 
-	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey_last]
+	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before purchasing another loadout!"))
+		return FALSE
+
+	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
 	var/list/found_data = L.loaded_data[name]
+
 	if(!found_data)
+		CRASH("Tried loading a player-made loadout ([name]) that didn't exist!")
+
+	if(found_data["cost"] > P.currency)
+		P.to_chat(span("warning","You don't have enough credits to purchase this loadout!"))
 		return FALSE
 
-	var/turf/T = get_turf(src)
+	var/turf/T = get_turf(P)
 	var/total_value = 0
-	for(var/k in found_data["loadout"])
-		var/list/data = k
+	for(var/data in found_data["loadout"])
 		var/obj/item/I = load_and_create(P,data,T,TRUE)
+		if(!I)
+			P.to_chat(span("danger","Could not load item of type [data["type"]] as it doesn't exist anymore!"))
+			continue
 		var/obj/hud/inventory/I2 = data["original_slot"] ? P.inventories_by_id[data["original_slot"]] : null
-		if(I2)
-			I2.add_object(I,messages=FALSE,silent=TRUE)
+		var/success = I2 ? I2.add_object(I,messages=FALSE,silent=TRUE) : I.quick_equip(P,silent=TRUE)
+		if(success)
+			total_value += I.get_value()
 		else
-			I.quick_equip(P,silent=TRUE)
-		total_value += I.get_value()
+			P.to_chat(span("warning","\The [I.name] could not be equipped. You will not be charged for this item."))
+			qdel(I)
 
+	P.to_chat(span("notice","You were charged [P.adjust_currency(-total_value)] credits for this loadout."))
+	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE
 

@@ -118,15 +118,6 @@
 
 	butcher_contents = list()
 
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		ARCANE = 80,
-		HEAT = -20,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = 0,
-		PAIN = INFINITY
-	)
+	armor = /armor/default_organic
 
 	level = 12

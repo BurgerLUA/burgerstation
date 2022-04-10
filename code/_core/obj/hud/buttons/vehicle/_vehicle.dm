@@ -13,7 +13,7 @@
 	name = "left weapon"
 	icon = 'icons/hud/vehicle_long.dmi'
 	icon_state = "right"
-	screen_loc = "CENTER-2.5,BOTTOM"
+	screen_loc = "CENTER-2.5,BOTTOM:12"
 	maptext = "Left Weapon"
 	maptext_width = TILE_SIZE*3 - 8
 	maptext_x = 4
@@ -36,7 +36,7 @@
 /obj/hud/button/vehicle/weapon/right
 	name = "right weapon"
 	icon_state = "left"
-	screen_loc = "CENTER+0.5,BOTTOM"
+	screen_loc = "CENTER+0.5,BOTTOM:12"
 	maptext = "<div style='text-align:right'>Right Weapon</div>"
 	maptext_width = TILE_SIZE*3 - 8
 	maptext_x = 4
@@ -50,7 +50,7 @@
 /obj/hud/button/vehicle/eject
 	name = "eject"
 	icon_state = "eject"
-	screen_loc = "RIGHT,BOTTOM+2"
+	screen_loc = "RIGHT,BOTTOM:12+2"
 
 /obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -66,7 +66,7 @@
 	name = "ammo display"
 	icon_state = "none"
 	var/weapon_slot = 1
-	screen_loc = "CENTER-1.4,BOTTOM+0.5"
+	screen_loc = "CENTER-1.4,BOTTOM:12+0.5"
 
 /obj/hud/button/vehicle/ammo_display/proc/set_map_text(var/desired_text)
 	maptext = desired_text
@@ -83,7 +83,7 @@
 	name = "ammo display"
 	icon_state = "none"
 	weapon_slot = 2
-	screen_loc = "CENTER+1.4,BOTTOM+0.5"
+	screen_loc = "CENTER+1.4,BOTTOM:12+0.5"
 
 /obj/hud/button/vehicle/ammo_display/right/set_map_text(var/desired_text)
 	maptext = "<div style='text-align:right'>[desired_text]</div>"

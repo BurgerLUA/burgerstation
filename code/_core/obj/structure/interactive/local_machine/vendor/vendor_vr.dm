@@ -133,7 +133,7 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 		/obj/item/magazine/smg_4mm_standard,
@@ -142,9 +142,8 @@
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/shotguns
-	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/semi.dmi'
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
 		/obj/item/bullet_cartridge/shotgun_12

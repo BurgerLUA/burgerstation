@@ -35,8 +35,6 @@
 
 	var/speed_bonus = 0
 
-	var/loyalty_tag //Set to a loyalty tag here to restrict this to those who have this tag.
-
 	var/list/ench/clothing_enchantments = list()
 
 	enable_blood_stains = TRUE
@@ -47,16 +45,10 @@
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 
-/obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
-
-	if(loyalty_tag && owner.loyalty_tag != loyalty_tag)
-		if(messages) owner.to_chat(span("warning","<b>\The [src.name]</b> dings, \"Invalid Loyalty Tag detected!\""))
-		return FALSE
-
-	return ..()
-
 /obj/item/clothing/proc/get_defense_rating()
 	var/armor/A = ARMOR(armor)
+	if(!A)
+		return list()
 	return A.defense_rating
 
 /obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)

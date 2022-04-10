@@ -6,7 +6,9 @@
 	worn_layer = LAYER_MOB_HANDS
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/nw,
+		/obj/hud/inventory/organs/ring/sw
 	)
 	break_threshold = 15
 
@@ -93,7 +95,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -112,7 +116,9 @@
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	defense_rating = REPTILE_ARMOR
@@ -123,7 +129,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -142,7 +150,9 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	defense_rating = REPTILE_ARMOR
@@ -153,7 +163,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -173,7 +185,9 @@
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	enable_glow = TRUE
@@ -188,7 +202,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -208,7 +224,9 @@
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	defense_rating = CYBORG_ARMOR
@@ -220,7 +238,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -240,7 +260,9 @@
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 	damage_type = /damagetype/unarmed/beef/
 
@@ -255,7 +277,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -281,7 +305,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -301,7 +327,9 @@
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	defense_rating = SKELETON_ARMOR
@@ -312,7 +340,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -334,7 +364,9 @@
 	icon = 'icons/mob/living/advanced/species/monkey.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 /obj/item/organ/hand/monkey/left
@@ -343,7 +375,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -364,7 +398,9 @@
 	name = "right zombie hand"
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 /obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
@@ -390,7 +426,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -410,7 +448,9 @@
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	defense_rating = GOBLIN_ARMOR
@@ -421,7 +461,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -440,7 +482,9 @@
 	icon = 'icons/mob/living/advanced/species/moth.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 /obj/item/organ/hand/moth/left
@@ -449,7 +493,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -471,7 +517,9 @@
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
 	inventories = list(
 		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 /obj/item/organ/hand/golem/left
@@ -480,7 +528,9 @@
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/hud/inventory/organs/left_hand_worn,
-		/obj/hud/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
 	)
 
 	attach_flag = BODY_ARM_LEFT

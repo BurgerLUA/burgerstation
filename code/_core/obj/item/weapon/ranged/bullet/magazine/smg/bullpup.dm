@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
-	name = ".45 C-20r submachine gun"
+	name = ".45 C-20r"
 	desc = "GET DAT FUKKEN DISK"
 	desc_extended = "Commonly used by Syndicate Operatives for its reliability and light weight, the 45 C-20r was the primary firearm of the Syndicate Nuclear Operatives, before NT figured out having self destruct nukes on their station wasn't a great idea."
 	icon = 'icons/obj/item/weapons/ranged/smg/syndicate/45.dmi'
@@ -16,7 +16,8 @@
 
 	firemodes = list("burst","automatic","semi-automatic")
 
-	can_wield = FALSE
+	dan_mode = TRUE
+	can_wield = TRUE
 
 	override_icon_state = TRUE
 
@@ -52,16 +53,21 @@
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
+
+		/obj/item/attachment/undermount/angled_grip = FALSE,
+		/obj/item/attachment/undermount/bipod = FALSE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
 	attachment_barrel_offset_x = 30 - 16
-	attachment_barrel_offset_y = 18 - 16
+	attachment_barrel_offset_y = 17 - 16
 
-	attachment_sight_offset_x = 24 - 16
+	attachment_sight_offset_x = 23 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 0 - 16
-	attachment_undermount_offset_y = 0 - 16
+	attachment_undermount_offset_x = 28 - 16
+	attachment_undermount_offset_y = 15 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0

@@ -1,7 +1,7 @@
 /obj/item/container/simple/
-	var/initial_reagent = /reagent/nutrition/ethanol
+	var/initial_reagent = null
 
-/obj/item/container/simple/can/Generate()
+/obj/item/container/simple/Generate()
 	. = ..()
 	if(initial_reagent)
 		reagents.add_reagent(initial_reagent,reagents.volume_max)

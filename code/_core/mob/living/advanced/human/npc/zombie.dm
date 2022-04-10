@@ -23,8 +23,6 @@
 	sex = NEUTER
 	gender = NEUTER
 
-	damage_received_multiplier = 0.75
-
 	var/rest_chance = 25
 	var/missing_limb_chance = 10
 
@@ -48,32 +46,17 @@
 	update_all_blends()
 	equip_loadout(loadout_to_use)
 
-	var/health/mob/living/advanced/zombie/ZH = health
-	if(!istype(ZH))
-		return .
-
 	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
-	var/grand_total_loss = 0
-
 	for(var/k in organs)
 		var/obj/item/organ/O = k
-		if(!O.health)
-			continue
-		if(O.id == BODY_TORSO)
-			O.damage_coefficient *= 0.5
-		else if(O.id == BODY_HEAD)
-			O.damage_coefficient *= 2
-		else
-			O.damage_coefficient *= 0.1
 		var/total_loss = RAND_PRECISE(0.25,0.5) * min(total_loss_limit,O.health.health_max) * (1/max(1,O.damage_coefficient))
 		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
 		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
 		var/tox_loss = total_loss - (burn_loss + brute_loss)
-		grand_total_loss += O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
+		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss,update=FALSE)
+	queue_health_update = TRUE
 
-	ZH.extra_max_health += grand_total_loss
-	ZH.update_health_stats()
-	ZH.update_health()
+
 
 /mob/living/advanced/npc/zombie/Finalize()
 	. = ..()
@@ -81,6 +64,7 @@
 	if(prob(rest_chance))
 		add_status_effect(REST,-1,-2, force = TRUE)
 
+/*
 /mob/living/advanced/npc/zombie/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
@@ -89,6 +73,7 @@
 	. *= max(1,2 - T.lightness)
 	if(ai && ai.objective_attack)
 		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
+*/
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 	setup_sex()

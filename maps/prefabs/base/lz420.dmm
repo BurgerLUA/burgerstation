@@ -45,17 +45,17 @@
 /turf/simulated/wall/metal/reinforced,
 /area/fob/power)
 "al" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/candle,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/fob/power)
 "am" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/powerbutton,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/fob/power)
 "an" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/fob/power)
 "ao" = (
@@ -338,8 +338,8 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bp" = (
-/obj/structure/smooth/table/reinforced,
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bq" = (
@@ -365,7 +365,7 @@
 /turf/simulated/floor/tile/grey,
 /area/fob/main)
 "bw" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table,
 /turf/simulated/floor/tile/grey,
 /area/fob/main)
 "bx" = (
@@ -376,12 +376,12 @@
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bz" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bA" = (
-/obj/structure/smooth/table/wood,
 /obj/marker/rift_location,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/fob/main)
 "bB" = (
@@ -389,7 +389,7 @@
 /turf/simulated/floor/plating,
 /area/fob/main)
 "bC" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bD" = (
@@ -492,20 +492,13 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
-"bS" = (
-/obj/structure/smooth/table/wood,
-/turf/simulated/floor/wood/brown,
-/area/fob/main)
-"bT" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/shot,
-/obj/item/container/beaker/alcohol/whiskey,
-/turf/simulated/floor/wood/brown,
-/area/fob/main)
 "bU" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
+/obj/item/supply_crate/nanotrasen,
+/obj/structure/interactive/shop/high_markup,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/fob/main)
 "bV" = (
@@ -542,11 +535,11 @@
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "ca" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/shot,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/brown,
 /area/fob/main)
 "cb" = (
@@ -776,11 +769,117 @@
 /area/fob/main)
 "cN" = (
 /obj/structure/interactive/atm{
-	icon_state = "atm_map";
-	dir = 8
+	dir = 8;
+	icon_state = "atm_map"
 	},
 /turf/simulated/wall/metal,
 /area/fob/main)
+"eW" = (
+/obj/structure/interactive/lighting/fixture/floor,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"fV" = (
+/obj/decal/hazard/black{
+	dir = 8;
+	icon_state = "line"
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"gW" = (
+/obj/structure/interactive/shop/high_markup,
+/obj/item/supply_crate/slavic,
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/fob/main)
+"lN" = (
+/obj/structure/interactive/lighting/fixture/floor,
+/obj/decal/hazard/corner{
+	dir = 8;
+	icon_state = "corner"
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"no" = (
+/obj/structure/interactive/ore_box,
+/obj/decal/hazard/box,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"oo" = (
+/obj/decal/hazard/black{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"op" = (
+/obj/structure/interactive/status_display/global_display/round,
+/turf/simulated/wall/metal,
+/area/fob/main)
+"Cr" = (
+/turf/simulated/floor/plating,
+/area/transit/dropship/alpha/landing)
+"CD" = (
+/obj/decal/hazard/black{
+	dir = 4;
+	icon_state = "line"
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"Ex" = (
+/obj/structure/interactive/status_display/global_display/alpha,
+/turf/simulated/wall/metal,
+/area/dmm_suite/clear_area)
+"ED" = (
+/obj/decal/hazard/black{
+	dir = 1;
+	icon_state = "line"
+	},
+/obj/structure/interactive/status_display/global_display/bravo,
+/turf/simulated/wall/metal,
+/area/fob/main)
+"Gr" = (
+/obj/decal/hazard/black,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"Jx" = (
+/obj/decal/hazard/box,
+/obj/structure/interactive/ore_box,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"JK" = (
+/obj/structure/interactive/lighting/fixture/floor,
+/obj/decal/hazard/corner,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"KO" = (
+/obj/decal/hazard/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"Ou" = (
+/obj/structure/interactive/shop/high_markup,
+/obj/structure/table,
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/fob/main)
+"RH" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/tan/ish,
+/area/fob/main)
+"RT" = (
+/obj/decal/hazard/box,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"Sy" = (
+/obj/structure/interactive/lighting/fixture/floor,
+/obj/decal/hazard/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"TD" = (
+/obj/structure/interactive/computer/console/remote_flight/alpha,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 ab
@@ -897,21 +996,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+JK
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+CD
+lN
 ab
 "}
 (3,1,1) = {"
@@ -963,21 +1062,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (4,1,1) = {"
@@ -1029,21 +1128,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (5,1,1) = {"
@@ -1095,21 +1194,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (6,1,1) = {"
@@ -1161,21 +1260,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (7,1,1) = {"
@@ -1227,21 +1326,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (8,1,1) = {"
@@ -1293,21 +1392,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (9,1,1) = {"
@@ -1359,21 +1458,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (10,1,1) = {"
@@ -1425,21 +1524,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Gr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+oo
 ab
 "}
 (11,1,1) = {"
@@ -1491,21 +1590,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+KO
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+Sy
 ab
 "}
 (12,1,1) = {"
@@ -1557,13 +1656,13 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Ex
+RT
+Jx
+no
+RT
+no
+TD
 ab
 ab
 ab
@@ -1623,13 +1722,13 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+eW
+ad
+ad
+ad
+ad
+ad
+eW
 ab
 ab
 ab
@@ -2206,7 +2305,7 @@ bq
 bq
 bq
 bq
-bq
+Ou
 aP
 aa
 aa
@@ -2272,7 +2371,7 @@ bv
 bv
 bv
 bv
-bq
+gW
 bh
 aa
 cH
@@ -2474,7 +2573,7 @@ bq
 bD
 bd
 aF
-aG
+RH
 bB
 aF
 aT
@@ -2520,7 +2619,7 @@ ah
 ah
 ah
 ah
-aD
+ED
 cI
 aL
 aF
@@ -2540,7 +2639,7 @@ bV
 bD
 bd
 aF
-aG
+RH
 bB
 ch
 cm
@@ -2853,7 +2952,7 @@ ah
 aE
 aG
 aG
-aP
+op
 aU
 aT
 aT
@@ -2865,7 +2964,7 @@ bk
 bk
 bJ
 bQ
-aP
+op
 bf
 aT
 cc
@@ -3180,7 +3279,7 @@ ah
 ah
 ah
 ah
-aD
+ED
 aF
 aF
 aF
@@ -3200,7 +3299,7 @@ bY
 bB
 bd
 aF
-aG
+RH
 bB
 ch
 cm
@@ -3266,7 +3365,7 @@ bs
 bB
 bd
 aF
-aG
+RH
 bB
 aF
 aT
@@ -3390,7 +3489,7 @@ aV
 aP
 bt
 bA
-by
+bz
 by
 bs
 bs
@@ -3460,7 +3559,7 @@ bF
 by
 bs
 bs
-bs
+ca
 aP
 aa
 cH
@@ -3523,9 +3622,9 @@ aP
 bs
 bs
 bs
-bs
-bS
-bT
+ca
+ca
+ca
 ca
 aP
 aa
@@ -3842,7 +3941,7 @@ ao
 ap
 at
 at
-ap
+an
 ak
 aa
 aa
@@ -3908,7 +4007,7 @@ aw
 ap
 at
 at
-ap
+an
 ak
 aa
 aa
@@ -3974,7 +4073,7 @@ ax
 ap
 at
 at
-ap
+an
 ak
 aa
 cH

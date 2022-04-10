@@ -53,6 +53,11 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/revolutionary
 
+/obj/item/clothing/ears/headset/nanotrasen/medical
+	name = "nanotrasen medical headset"
+	icon = 'icons/obj/item/clothing/ears/medical_headset.dmi'
+	stored_radio = /obj/item/device/radio/headset/nanotrasen/medical
+
 /obj/item/clothing/ears/headset/cat
 	name = "\improper cat ear headset"
 	icon = 'icons/obj/item/clothing/hats/cat.dmi'

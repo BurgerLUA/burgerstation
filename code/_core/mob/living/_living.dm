@@ -39,6 +39,9 @@
 	var/intoxication = 0
 	var/last_intoxication_message = 0
 
+	var/immune_system_strength = 100 //Read only. Calculated in calculate_immune_system_strength()
+	var/list/diseases = list() //Assoc list of diseases.
+
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_VOLUME_DEFAULT
 	var/blood_volume_max = 0 //Set to blood_volume on new.
@@ -55,6 +58,7 @@
 	var/pain_regen_buffer = 0
 	var/rad_regen_buffer = 0
 	var/sanity_regen_buffer = 0
+	var/mental_regen_buffer = 0
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0
 
@@ -106,32 +110,13 @@
 	var/last_flavor = ""
 	var/last_flavor_time = 0
 
-	var/list/armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0,
-		SANITY = 0
-	)
+	var/armor/armor
 
 	var/list/mob_value
 
 	var/list/status_immune = list() //What status effects area they immune to?
 	//STATUS = TRUE //Means it's immune.
 	//STATUS = OTHERSTATUS //Means it will do OTHERSTATUS instead for half the duration.
-
-	var/damage_received_multiplier = 1
 
 	var/dead = FALSE
 	var/time_of_death = -1
@@ -265,6 +250,15 @@
 	var/atom/dash_target //The target that you're dashing at.
 	var/dash_amount = 0 //Amount of times to move in a direction.
 
+	var/last_move_time = 0
+	var/last_move_delay = 0
+
+	var/processing = FALSE
+
+	var/next_heartbeat = 0
+
+	var/list/health_icons_to_update = list()
+
 
 /mob/living/Destroy()
 
@@ -301,7 +295,8 @@
 
 	hit_logs?.Cut()
 
-	all_living -= src
+	SSliving.all_living -= src
+	SSliving.processing_mobs -= src
 
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
@@ -421,12 +416,15 @@
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
+	gib(TRUE)
+
+/mob/living/gib(var/hard=FALSE)
 	if(blood_type)
 		var/reagent/R = REAGENT(blood_type)
+		var/turf/T = get_turf(src)
 		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
-	death(TRUE)
-	if(!qdeleting) qdel(src)
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+	. = ..()
 
 /mob/living/on_fall(var/turf/old_loc)
 	. = ..()
@@ -438,15 +436,21 @@
 	if(!dead) . *= 3
 
 /mob/living/get_debug_name()
-	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
+	var/turf/T = get_turf(src)
+	var/shown_x = T ? T.x : 0
+	var/shown_y = T ? T.y : 0
+	var/shown_z = T ? T.z : 0
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
 
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
-/mob/living/proc/dust()
-	new /obj/effect/temp/death(src.loc,30)
-	qdel(src)
-	return TRUE
+/mob/living/dust(var/atom/source)
+	if(death(TRUE))
+		new /obj/effect/temp/death(src.loc,30)
+		qdel(src)
+		return TRUE
+	return FALSE
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
@@ -513,7 +517,7 @@
 		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
 		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
 
-	all_living += src
+	SSliving.all_living += src
 
 
 /mob/living/Initialize()
@@ -534,7 +538,7 @@
 /mob/living/PostInitialize()
 	. = ..()
 	if(health)
-		health.armor_base = armor_base
+		health.armor = armor
 	if(ai)
 		INITIALIZE(ai)
 	set_loyalty_tag(loyalty_tag,TRUE)
@@ -587,6 +591,9 @@
 
 	return TRUE
 
+/mob/living/Login()
+	. = ..()
+	PROCESS_LIVING(src)
 
 /mob/living/Logout()
 
@@ -597,8 +604,10 @@
 
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(desired_loyalty && loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
-		return TRUE
+	if(owner != src)
+		var/area/A = get_area(src)
+		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty,A))
+			return TRUE
 
 	if(magnitude > 6)
 		var/x_mod = src.x - epicenter.x

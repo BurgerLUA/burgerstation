@@ -8,7 +8,7 @@
 			continue
 		if(!within_range(AI.owner,epicenter,VIEW_RANGE+ZOOM_RANGE))
 			continue
-		if(visual && !AI.owner.is_facing(epicenter))
+		if(visual && !is_facing(AI.owner,epicenter))
 			continue
 		if(alert_source && !AI.is_enemy(alert_source,FALSE))
 			continue

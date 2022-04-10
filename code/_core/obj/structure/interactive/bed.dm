@@ -8,8 +8,7 @@ obj/structure/interactive/bed
 	var/pixel_offset_x = 0
 	var/pixel_offset_y = 0
 
-	plane = PLANE_MOB_STEALTH
-	layer = 0
+	plane = PLANE_OBJ
 	var/opened_time = 0
 
 	bullet_block_chance = 50
@@ -17,6 +16,24 @@ obj/structure/interactive/bed
 	interaction_flags = FLAG_INTERACTION_LIVING
 
 	pixel_y = 4
+
+	density = TRUE
+
+/obj/structure/interactive/bed/Crossed(atom/movable/O)
+	. = ..()
+	if(loc && src.z != 0 && is_living(O))
+		var/mob/living/L = O
+		if(L.horizontal)
+			var/found = FALSE
+			for(var/mob/living/L2 in loc.contents)
+				if(L == L2)
+					continue
+				if(!L2.horizontal)
+					continue
+				L2.add_disease(/disease/hrp)
+				found = TRUE
+			if(found)
+				L.add_disease(/disease/hrp)
 
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 

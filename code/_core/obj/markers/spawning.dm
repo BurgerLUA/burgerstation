@@ -1,6 +1,7 @@
 /obj/marker/spawning/
 	name = "spawning marker"
 	icon = 'icons/obj/markers/spawning.dmi'
+	icon_state = "spawn"
 	initialize_type = INITIALIZE_EARLY
 	plane = PLANE_OBJ
 
@@ -119,14 +120,55 @@
 /obj/marker/spawning/random/do_spawn(var/turf/T)
 	if(!prob(chance_none))
 		var/atom/movable/M = pickweight(possible_objects)
-		M = new M(T)
-		LATE_INIT(M)
+		if(isturf(M))
+			T.change_turf(M)
+		else
+			if(prob(10) && ispath(M,/obj/structure/table/) || ispath(M,/obj/structure/interactive/crate))
+				var/loot/L = LOOT(/loot/trash_pile)
+				L.do_spawn(T)
+			M = new M(T)
+			LATE_INIT(M)
 
-/obj/marker/spawning/random/object_of_interest
+
+/obj/marker/spawning/random/maintenance
+	icon_state = "maint"
+	chance_none = 20
 	possible_objects = list(
-		/obj/structure/interactive/vending/random = 1,
-		/obj/structure/interactive/vending/old_ammo = 1,
-		/obj/item/storage/heavy/trash_pile = 1
+		//Trash piles and loot
+		/obj/structure/interactive/storage/trash_pile = 100,
+		/obj/marker/spawning/random/supply_crate = 1,
+		/obj/structure/interactive/bookcase = 5,
+		//Crates
+		/obj/structure/interactive/crate = 30,
+		/obj/structure/interactive/crate/closet = 20,
+		/obj/structure/interactive/crate/engineering = 10,
+		/obj/structure/interactive/crate/loot = 5,
+		/obj/structure/interactive/crate/coffin = 5,
+		//Reagents
+		/obj/structure/interactive/reagent_tank/rolly/water = 50,
+		/obj/structure/interactive/reagent_tank/rolly/ethanol = 50,
+		/obj/structure/interactive/reagent_tank/barrel/oil = 5,
+		/obj/structure/interactive/reagent_tank/barrel/water = 5,
+		/obj/structure/interactive/reagent_tank/rolly/lube = 5,
+
+		//Tables
+		/obj/structure/table/rack/grey = 50,
+		/obj/structure/table/steel = 10,
+
+		//Structures
+		/obj/structure/interactive/construction/grille = 20,
+		/obj/structure/interactive/construction/girder = 10,
+		/obj/structure/interactive/potted_plant/nanotrasen = 10,
+
+		//Turfs
+		/turf/simulated/wall/metal = 10,
+		/turf/simulated/floor/colored/dirt = 5,
+
+		//Vending
+		/obj/structure/interactive/vending/random = 10,
+
+		//Misc
+		/obj/structure/interactive/ore_box = 5
 	)
 
 /obj/marker/spawning/random/supply_crate

@@ -207,7 +207,7 @@
 	if(owner.attack_next <= world.time)
 		handle_attacking()
 
-	if(owner.move_delay <= 0)
+	if(owner.next_move <= 0)
 		handle_ghost_pathing()
 		handle_movement()
 
@@ -310,10 +310,11 @@
 				A.smash_all_lights()
 				create_emf(T,4)
 			else
-				if(!A.toggle_all_lights())
+				if(!(A.enable_power_lights & ON))
 					A.smash_all_lights()
 					create_emf(T,4)
 				else
+					A.toggle_power_lights(OFF | (A.enable_power_lights & AUTO))
 					create_emf(T,3)
 		if(stat_afraid_of_light)
 			var/annoying_player = FALSE

@@ -3,6 +3,17 @@
 	var/reagent_name = "Reagent Name"
 	var/list/addiction_reagents = list()
 
+	var/organic = TRUE
+	var/robotic = FALSE
+
+/addiction/proc/can_add(var/mob/living/advanced/A,var/obj/item/organ/internal/brain/B,var/addiction_value=0,var/withdrawal_value=0)
+	if(!organic && B.health.organic)
+		return FALSE
+	if(!robotic && !B.health.organic)
+		return FALSE
+
+	return TRUE
+
 /addiction/proc/on_add(var/mob/living/advanced/A,var/obj/item/organ/internal/brain/B,var/addiction_value=0,var/withdrawal_value=0)
 	return TRUE
 

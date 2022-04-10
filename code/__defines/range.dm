@@ -15,3 +15,5 @@
 #define BOSS_RANGE VIEW_RANGE + ZOOM_RANGE*2 //If you're out of this range, you're out of the boss fight.
 
 #define SCREEN_SIZE (TILE_SIZE*(VIEW_RANGE*2 + 1))
+
+#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.

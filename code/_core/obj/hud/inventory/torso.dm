@@ -2,7 +2,7 @@
 	name = "torso slot"
 	icon_state = "slot_torso"
 	id = BODY_TORSO
-	screen_loc = "LEFT+1,BOTTOM+2"
+	screen_loc = "LEFT:2+1,BOTTOM+2:14"
 	max_slots = 2
 	worn = TRUE
 
@@ -16,7 +16,7 @@
 	name = "armor slot"
 	icon_state = "slot_torso_o"
 	id = BODY_TORSO_O
-	screen_loc = "LEFT,BOTTOM+2"
+	screen_loc = "LEFT:1,BOTTOM+3:15"
 	max_slots = 2
 	worn = TRUE
 
@@ -30,7 +30,7 @@
 	name = "back slot"
 	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
-	screen_loc = "CENTER-4,BOTTOM"
+	screen_loc = "CENTER-4,BOTTOM:10"
 	max_slots = 1
 	worn = TRUE
 
@@ -47,7 +47,7 @@
 	name = "holster"
 	icon_state = "slot_torso_ob"
 	id = BODY_TORSO_OB
-	screen_loc = "CENTER-5,BOTTOM"
+	screen_loc = "CENTER-5,BOTTOM:10"
 	max_slots = 1
 	worn = FALSE
 

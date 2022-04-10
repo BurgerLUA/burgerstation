@@ -22,13 +22,7 @@
 
 	stun_angle = 180
 
-	armor_base = list(
-		BLADE = 60,
-		PIERCE = 60,
-		HEAT = -60,
-		COLD = -60,
-		ION = INFINITY
-	)
+	armor = /armor/chitin
 
 	size = SIZE_ANIMAL
 
@@ -91,17 +85,7 @@
 
 	damage_type = /damagetype/npc/crab
 
-	armor_base = list(
-		BLADE = 80,
-		BLUNT = 40,
-		PIERCE = 80,
-		ARCANE = -20,
-		HEAT = -60,
-		COLD = -60,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/chitin
 
 	fatigue_mul = 0
 

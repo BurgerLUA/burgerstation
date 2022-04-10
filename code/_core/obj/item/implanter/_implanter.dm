@@ -52,7 +52,7 @@
 	if(A.labeled_organs[initial_id])
 		if(removes_existing)
 			var/obj/item/organ/O = A.labeled_organs[initial_id]
-			O.unattach_from_parent(A.loc)
+			O.unattach_from_parent(A.loc,do_delete=TRUE)
 		else
 			caller.to_chat(span("warning","You already have an implant of that type!"))
 			return TRUE

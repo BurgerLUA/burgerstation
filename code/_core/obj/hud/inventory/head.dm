@@ -2,7 +2,7 @@
 	name = "head slot"
 	icon_state = "slot_head"
 	id = BODY_HEAD
-	screen_loc = "LEFT,BOTTOM+3"
+	screen_loc = "LEFT:1,BOTTOM:16+4"
 
 	item_slot = SLOT_HEAD
 
@@ -18,7 +18,7 @@
 	name = "neck slot"
 	icon_state = "slot_neck"
 	id = BODY_NECK
-	screen_loc = "LEFT+2,BOTTOM+2"
+	screen_loc = "LEFT+1:2,BOTTOM:15+3"
 
 	item_slot = SLOT_NECK
 
@@ -33,7 +33,7 @@
 	name = "face slot"
 	icon_state = "slot_face"
 	id = BODY_FACE
-	screen_loc = "LEFT+1,BOTTOM+3"
+	screen_loc = "LEFT+1:2,BOTTOM+4:16"
 
 	item_slot = SLOT_FACE
 
@@ -49,7 +49,7 @@
 	name = "ear slot"
 	id = BODY_EARS
 	icon_state = "slot_ears"
-	screen_loc = "LEFT+2,BOTTOM+3"
+	screen_loc = "LEFT:3+2,BOTTOM+3:15"
 
 	item_slot = SLOT_EAR
 
@@ -68,7 +68,7 @@
 	name = "glasses slot"
 	icon_state = "SLOT_EYES"
 	id = BODY_EYES
-	screen_loc = "LEFT+2,BOTTOM+3"
+	screen_loc = "LEFT:1+2,BOTTOM:12+3"
 	item_slot = SLOT_EYES
 	worn_slots = 1
 
@@ -80,7 +80,7 @@
 	name = "special slot"
 	icon_state = "square_trim"
 	id = BODY_SPECIAL
-	screen_loc = "CENTER+4,BOTTOM"
+	screen_loc = "CENTER+4,BOTTOM:12"
 	item_slot = SLOT_SPECIAL
 	held_slots = 1
 

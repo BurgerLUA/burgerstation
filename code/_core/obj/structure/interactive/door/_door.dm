@@ -33,6 +33,8 @@ obj/structure/interactive/door
 
 	allow_path = TRUE
 
+	powered = FALSE //Set to true if this door is active.
+
 /obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)
@@ -46,11 +48,45 @@ obj/structure/interactive/door
 		door_state = DOOR_STATE_CLOSED
 		locked = TRUE
 
-	return ..()
-
-/obj/structure/interactive/door/PostInitialize()
 	. = ..()
+
+/obj/structure/interactive/door/Destroy()
+
+	if(apc_powered)
+		var/area/A = get_area(src)
+		if(A.requires_power)
+			update_power_draw(0)
+			A.powered_doors -= src
+
+	. = ..()
+
+/obj/structure/interactive/door/Finalize()
+
+	if(apc_powered)
+		var/area/A = get_area(src)
+		if(A.requires_power)
+			A.powered_doors |= src
+		else
+			apc_powered = FALSE
+
+	. = ..()
+
 	update_sprite()
+
+/obj/structure/interactive/door/post_move(var/atom/old_loc)
+	. = ..()
+	if(apc_powered)
+		if(isturf(old_loc))
+			var/area/A = old_loc.loc
+			if(A.requires_power)
+				update_power_draw(0)
+				A.powered_doors -= src
+		if(isturf(loc))
+			var/area/A = loc.loc
+			if(A.requires_power)
+				A.powered_doors |= src
+			else
+				apc_powered = FALSE
 
 obj/structure/interactive/door/update_icon()
 	..()
@@ -172,3 +208,25 @@ obj/structure/interactive/door/closet/setup_dir_offsets()
 	icon_state = "closet"
 	. = ..()
 	dir = SOUTH
+
+/obj/structure/interactive/door/get_power_draw()
+	return 10
+
+/obj/structure/interactive/door/update_power_draw(var/desired_power_draw,var/reset=FALSE)
+
+	var/area/A = null
+
+	A = get_area(src)
+	if(!A.apc)
+		desired_power_draw = 0
+	if(!A.requires_power)
+		desired_power_draw = 0
+
+	desired_power_draw = max(0,desired_power_draw)
+
+	if(desired_power_draw != power_draw)
+		if(!reset) A.power_draw -= power_draw
+		power_draw = desired_power_draw
+		A.power_draw += power_draw
+
+	return TRUE

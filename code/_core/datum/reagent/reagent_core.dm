@@ -60,7 +60,7 @@
 	. = ..()
 
 	if(owner.blood_type)
-		owner.blood_volume = clamp(owner.blood_volume + .*4,0,owner.blood_volume_max)
+		owner.blood_volume = clamp(owner.blood_volume + .*4*multiplier,0,owner.blood_volume_max)
 		owner.queue_health_update = TRUE
 		owner.tox_regen_buffer -= . * 0.5
 
@@ -69,7 +69,7 @@
 	. = ..()
 
 	if(owner.blood_type)
-		owner.blood_volume = clamp(owner.blood_volume + .*2,0,owner.blood_volume_max)
+		owner.blood_volume = clamp(owner.blood_volume + .*2*multiplier,0,owner.blood_volume_max)
 		owner.queue_health_update = TRUE
 
 /reagent/steel
@@ -159,7 +159,7 @@
 
 /reagent/salt/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.add_hydration(.*-5)
+	owner.add_hydration(.*-5*multiplier)
 
 /reagent/salt/sodium_chloride
 	name = "sodium chloride"
@@ -233,17 +233,19 @@
 
 	liquid = 0.4
 
+	blood_toxicity_multiplier = -0.5 //A meme, but whatever.
+
 /reagent/space_cleaner/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer += .*1
+	owner.tox_regen_buffer += .*1*multiplier
 
 /reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer += .*2
+	owner.tox_regen_buffer += .*2*multiplier
 
 /reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
@@ -330,6 +332,8 @@
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.5
 	metabolism_skin = 10
+
+	blood_toxicity_multiplier = 3
 
 /reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

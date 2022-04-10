@@ -15,6 +15,11 @@
 	desc = "The plating underneath the floor"
 	desc_extended = "A floor found underneath an actual floor."
 
+/turf/simulated/floor/plating/reinforced
+	name = "reinforced plating"
+	icon_state = "filled3"
+	exposed = FALSE
+
 /turf/simulated/floor/plating/New(var/desired_loc)
 	. = ..()
 	map_color = color

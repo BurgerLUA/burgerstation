@@ -21,20 +21,7 @@
 
 	stun_angle = 0
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 40,
-		LASER = 60,
-		HEAT = 80,
-		COLD = -20,
-		BOMB = 80,
-		BIO = 20,
-		HOLY = -20,
-		DARK = 100,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/goliath
 
 	status_immune = list(
 		FIRE = TRUE
@@ -43,7 +30,7 @@
 	iff_tag = "Goliath"
 	loyalty_tag = "Goliath"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/goliath
 	blood_volume = 750

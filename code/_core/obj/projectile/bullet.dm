@@ -41,20 +41,24 @@
 	name = "launched syringe"
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "syringe"
-	ignore_iff = TRUE
 	var/reagent_to_add = /reagent/medicine/omnizine
 	var/volume_to_add = 15
+
+/obj/projectile/bullet/syringe/Initialize()
+	. = ..()
+	var/reagent/R = REAGENT(reagent_to_add)
+	hostile = R.lethal
 
 /obj/projectile/bullet/syringe/on_projectile_hit(var/atom/hit_atom)
 
 	if(is_living(hit_atom))
 		var/mob/living/L = hit_atom
-		if(L.iff_tag == iff_tag)
-			if(L.reagents)
-				L.reagents.add_reagent(reagent_to_add,volume_to_add,caller=owner)
-			return TRUE
+		if(L.reagents)
+			L.reagents.add_reagent(reagent_to_add,volume_to_add,caller=owner)
+		return TRUE
 
-	return ..()
+	. = ..()
+
 
 /obj/projectile/bullet/HE_40M
 

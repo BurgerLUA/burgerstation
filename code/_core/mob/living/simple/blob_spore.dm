@@ -2,7 +2,7 @@
 
 	name = "blob spore"
 	desc = "Get out of my head!"
-	desc_extended = "A fast-moving fragile and explosive spore of a blob designed to latch onto sapience beings and take control of them. Full control is granted when the victim succumbs to death."
+	desc_extended = "A fast-moving fragile and volatile spore of a blob designed to latch onto a sapience being's head and inject mind-controlling spores. Full control is granted when the victim succumbs to death."
 	icon = 'icons/mob/living/simple/blob.dmi'
 	icon_state = "blobpod"
 
@@ -15,18 +15,7 @@
 	ai = /ai/blob_spore
 
 	damage_type = /damagetype/npc/blob_spore
-	armor_base = list(
-		BLUNT = 0,
-		LASER = -40,
-		HEAT = -40,
-		COLD = 40,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/blob/spore
 
 	size = SIZE_ANIMAL
 
@@ -45,11 +34,16 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 10
-
-	var/exploded = FALSE
+	level = 4
 
 	reagents = /reagent_container/blob
+
+	var/idle = FALSE
+
+/mob/living/simple/blob_spore/post_move(var/atom/old_loc)
+	if(idle)
+		idle = FALSE
+		icon_state = initial(icon_state)
 
 /mob/living/simple/blob_spore/post_death()
 
@@ -59,7 +53,7 @@
 		smoke(T,10,SECONDS_TO_DECISECONDS(3),reagents,src,255)
 		var/reagent/R = REAGENT(blood_type)
 		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-32,32),rand(-32,32))
+			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 
 	. = ..()
 

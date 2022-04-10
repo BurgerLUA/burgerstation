@@ -12,3 +12,6 @@
 	desc = "Welcome to Burgerstation 13"
 	icon = 'icons/logo.dmi'
 	icon_state = "logo_01"
+
+/obj/effect/stealth_test
+	plane = PLANE_MOB_STEALTH

@@ -46,7 +46,7 @@
 		return FALSE
 	if((!L.client || !L.client.is_zoomed) && get_dist(A,L) > VIEW_RANGE)
 		return FALSE
-	if(!L.is_facing(A))
+	if(!is_facing(L,A))
 		return FALSE
 	return TRUE
 

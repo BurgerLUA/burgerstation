@@ -2,7 +2,7 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 
 /obj/hud/button/objectives
 	name = "objectives"
-	screen_loc = "LEFT,BOTTOM+4"
+	screen_loc = "LEFT,BOTTOM:13+4"
 	maptext_width = TILE_SIZE*VIEW_RANGE
 	maptext_height = TILE_SIZE*VIEW_RANGE
 	alpha = 100
@@ -31,7 +31,7 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	if(. && SSgamemode && SSgamemode.active_gamemode && SSgamemode.active_gamemode.objective_text)
 		set_stored_text(SSgamemode.active_gamemode.objective_text)
 
-	
+
 /obj/hud/button/objectives/Destroy()
 	all_objective_buttons -= src
 	return ..()
@@ -50,4 +50,3 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 			maptext = null
 			animate(src,alpha = 100,time = 1)
 
-	

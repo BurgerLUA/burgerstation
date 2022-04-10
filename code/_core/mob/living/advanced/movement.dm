@@ -1,8 +1,27 @@
+/mob/living/advanced/do_footstep(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+
+	. = ..()
+
+	if(.)
+		var/obj/item/foot_left = labeled_organs[BODY_FOOT_LEFT]?.get_top_object()
+		var/obj/item/foot_right = labeled_organs[BODY_FOOT_RIGHT]?.get_top_object()
+		if(foot_left?.blood_stain_intensity > 2)
+			var/obj/effect/cleanable/blood/footprint/F = new(T)
+			F.set_dir(dir)
+			F.icon_state = "human_left[enter ? "_enter" : "_exit"]"
+			F.alpha = clamp(((foot_left.blood_stain_intensity-2)/2)*255,10,255)
+			foot_left.set_bloodstain(max(2,foot_left.blood_stain_intensity - 0.1))
+		if(foot_right?.blood_stain_intensity > 2)
+			var/obj/effect/cleanable/blood/footprint/F = new(T)
+			F.set_dir(dir)
+			F.icon_state = "human_right[enter ? "_enter" : "_exit"]"
+			F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
+			foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
+
 /mob/living/advanced/on_sprint()
 
 	if(health && health.adjust_stamina(-1))
 		update_health_element_icons(stamina=TRUE)
-		stamina_regen_delay = max(stamina_regen_delay,30)
 
 	return ..()
 
@@ -14,7 +33,7 @@
 	if(driving)
 		return driving.handle_movement(adjust_delay)
 
-	return ..()
+	. = ..()
 
 
 mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
@@ -38,7 +57,6 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	if(on && health && !health.adjust_stamina(-10))
 		update_health_element_icons(stamina=TRUE)
-		stamina_regen_delay = max(stamina_regen_delay,60)
 		return FALSE
 
 	return ..()
@@ -48,7 +66,6 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 	if(health)
 		if(health.adjust_stamina( -(2-stealth_mod)*2.5 ))
 			update_health_element_icons(stamina=TRUE)
-			stamina_regen_delay = max(stamina_regen_delay,30)
 		else
 			toggle_sneak(FALSE)
 			return FALSE
@@ -86,7 +103,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 			var/bypass_safe = TRUE
 			if(src.loyalty_tag && is_living(inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object))
 				var/mob/living/L = inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object
-				if(L.loyalty_tag == src.loyalty_tag)
+				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
@@ -102,7 +119,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 			var/bypass_safe = TRUE
 			if(src.loyalty_tag && is_living(inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object))
 				var/mob/living/L = inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object
-				if(L.loyalty_tag == src.loyalty_tag)
+				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
@@ -150,11 +167,9 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 						var/obj/item/organ/ORG = src.labeled_organs[k]
 						if(!ORG)
 							continue
-						if(ORG.blood_stain_intensity < S.blood_level)
-							ORG.set_bloodstain(S.blood_level,S.blood_color)
+						ORG.set_bloodstain(ORG.blood_stain_intensity + S.blood_level,S.blood_color)
 					else //Give the clothing a bloodstain.
-						if(C.blood_stain_intensity < S.blood_level)
-							C.set_bloodstain(S.blood_level,S.blood_color)
+						C.set_bloodstain(C.blood_stain_intensity + S.blood_level,S.blood_color)
 
 /mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 

@@ -30,18 +30,7 @@
 	boss = TRUE
 	force_spawn = TRUE
 
-	armor_base = list(
-		BLADE = -20,
-		BLUNT = 80,
-		LASER = -20,
-		HEAT = 60,
-		COLD = -60,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/slime
 
 	status_immune = list(
 		STUN = TRUE,

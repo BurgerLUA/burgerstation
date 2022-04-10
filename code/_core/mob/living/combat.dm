@@ -1,18 +1,27 @@
+/mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(dead)
+		return FALSE
+
+	if(has_status_effects(PARALYZE,SLEEP,STAMCRIT,STUN,PARRIED))
+		return FALSE
+
+	if(grabbing_hand && grabbing_hand.owner && is_behind(grabbing_hand.owner,src))
+		return FALSE
+
+	. = ..()
+
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(!isturf(src.loc))
 		return FALSE
 
-	if(src.loyalty_tag && is_living(attacker))
+	if(is_living(attacker))
 		var/mob/living/L = attacker
-		if(L.loyalty_tag == src.loyalty_tag)
-			var/area/A1 = get_area(L)
-			var/area/A2 = get_area(src)
-			if(!(A1.flags_area & FLAG_AREA_NO_LOYALTY && A2.flags_area & FLAG_AREA_NO_LOYALTY))
-				if(!damage_type)
-					return FALSE
-				if(!damage_type.allow_friendly_fire)
-					return FALSE
+		if(!damage_type || !damage_type.allow_friendly_fire)
+			var/area/A = get_area(src)
+			if(!allow_hostile_action(src.loyalty_tag,L.loyalty_tag,A))
+				return FALSE
 
 	return ..()
 

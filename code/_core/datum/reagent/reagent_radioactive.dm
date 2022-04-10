@@ -10,6 +10,8 @@
 
 	particle_size = 0.7
 
+	blood_toxicity_multiplier = 10
+
 /reagent/radioactive/radium
 	name = "radium"
 	desc = "Radioactive rare radium."

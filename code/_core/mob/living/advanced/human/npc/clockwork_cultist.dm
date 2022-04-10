@@ -11,11 +11,6 @@
 	mana_base = 100
 	stamina_base = 100
 
-	armor_base = list(
-		HOLY = 60,
-		DARK = -60
-	)
-
 	level = 40
 
 /mob/living/advanced/npc/clockwork_cultist/Initialize()
@@ -30,9 +25,9 @@
 	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
 
 	var/hair_color = random_color()
-	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(S.all_hair_head))
+	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
 	if(sex == MALE && prob(25))
-		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
+		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair_face]))
 
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/clockwork_cult)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/clockwork_cult)

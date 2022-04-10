@@ -46,11 +46,12 @@ var/global/list/equipped_antags = list()
 
 	var/ignore_economy = FALSE
 
-	var/powered = TRUE
 	var/open = FALSE
 	var/broken = FALSE
 
 	health = /health/construction/
+
+	apc_powered = TRUE
 
 /obj/structure/interactive/vending/proc/vend_random(var/count=1) //For malfunctions/hacking/destruction
 
@@ -117,10 +118,6 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
 
-	if(P.loyalty_tag == "NanoTrasen" && SStax.check_delinquent(P))
-		P.to_chat(span("warning","Error: Tax delinquency detected. All associated accounts frozen. Please pay your taxes at the nearest tax payment center."))
-		return FALSE
-
 	if(accepts_item)
 		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.amount >= amount)
 			P.right_item.add_item_count(-amount)
@@ -142,6 +139,9 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0)
 
+	if(!powered)
+		return null
+
 	if(!spend_currency(P,item_value))
 		flick("[initial(icon_state)]-deny",src)
 		return null
@@ -162,7 +162,7 @@ var/global/list/equipped_antags = list()
 
 	return new_item
 
-/obj/structure/interactive/vending/Initialize()
+/obj/structure/interactive/vending/PostInitialize()
 
 	if(icon_state_broken == "gen")
 		icon_state_broken = "[initial(icon_state)]-broken"
@@ -246,7 +246,7 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller) && !is_inventory(object) || !caller.client)
+	if(!is_player(caller) && !is_inventory(object) || !caller.client || !powered)
 		return ..()
 
 	INTERACT_CHECK
@@ -303,3 +303,6 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/on_inactive(var/mob/living/advanced/player/P)
 	hide_buttons_from(P)
 	return ..()
+
+/obj/structure/interactive/vending/get_power_draw()
+	return 180

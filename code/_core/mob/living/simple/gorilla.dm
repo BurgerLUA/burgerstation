@@ -14,7 +14,7 @@
 
 	value = 400
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	movement_delay = DECISECONDS_TO_TICKS(5)
 

@@ -9,3 +9,6 @@
 			if(drug_mod >= 100)
 				sight |= SEE_MOBS
 				sight &= ~BLIND
+
+	if(dead)
+		vision |= (FLAG_VISION_MEDICAL | FLAG_VISION_SECURITY)

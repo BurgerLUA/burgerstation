@@ -30,16 +30,15 @@
 
 	gib_icon_state = "gibtorso"
 
-	can_gib = FALSE
-
 	has_life = TRUE
 
-/obj/item/organ/torso/unattach_from_parent(var/turf/T)
+/obj/item/organ/torso/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
+	var/atom/old_loc = src.loc
 	. = ..()
-	if(is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
+	if(is_advanced(old_loc))
+		var/mob/living/advanced/A = old_loc
 		A.death()
-		A.health?.update_health()
+		qdel(A)
 
 /obj/item/organ/torso/female
 	desc = "A torso. Female variant"

@@ -7,8 +7,6 @@
 	ai = /ai/ghost/
 	damage_type = /damagetype/npc/ghost
 
-	var/desired_alpha = 200 //Controlled in AI.
-
 	has_footsteps = TRUE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -24,23 +22,7 @@
 	iff_tag = "Ghost"
 	loyalty_tag = "Ghost"
 
-	armor_base = list(
-		BLADE = INFINITY,
-		BLUNT = INFINITY,
-		PIERCE = INFINITY,
-		LASER = INFINITY,
-		ARCANE = INFINITY,
-		HEAT = INFINITY,
-		COLD = INFINITY,
-		BOMB = INFINITY,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = 0,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/ghost
 
 	status_immune = list(
 		STUN = TRUE,
@@ -57,7 +39,7 @@
 		FIRE = TRUE
 	)
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	soul_size = SOUL_SIZE_RARE
 
@@ -65,6 +47,8 @@
 
 	density = TRUE
 	anchored = FALSE
+
+	var/desired_alpha = 200 //Controlled in AI.
 
 /mob/living/simple/ghost/on_crush(var/message=TRUE)
 	return FALSE

@@ -70,27 +70,6 @@
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs
 
-	armor_base = list()
-
-	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		ION = 0,
-		PAIN = 0,
-		SANITY = 0
-	)
-
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 
@@ -143,7 +122,7 @@
 	if(driving)
 		return FALSE
 	drop_all_items(get_turf(src))
-	return ..()
+	. = ..()
 
 /mob/living/advanced/proc/update_clothes()
 
@@ -195,6 +174,8 @@
 
 	if(driving)
 		desired_dir = driving.dir
+	else
+		desired_dir = get_true_4dir_advanced(dir,desired_dir)
 
 	if(!force && grabbing_hand)
 		return FALSE
@@ -515,3 +496,11 @@ mob/living/advanced/Login()
 	for(var/k in organs)
 		var/obj/item/organ/O = k
 		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+
+/mob/living/advanced/gib(var/hard=FALSE)
+
+	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
+	if(O)
+		return O.gib(hard)
+
+	. = ..()

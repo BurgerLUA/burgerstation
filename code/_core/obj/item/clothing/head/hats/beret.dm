@@ -30,5 +30,8 @@
 /obj/item/clothing/head/hat/beret/nanotrasen
 	color = COLOR_NANOTRASEN
 
+/obj/item/clothing/head/hat/beret/medical
+	color = COLOR_MEDICAL
+
 /obj/item/clothing/head/hat/beret/science
 	color = COLOR_SCIENCE

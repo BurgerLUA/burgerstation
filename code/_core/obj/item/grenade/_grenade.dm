@@ -71,7 +71,7 @@
 
 	src.click_self(caller)
 	src.drop_item(get_turf(L),silent=TRUE)
-	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_loyalty = L.loyalty_tag)
 
 	return TRUE
 

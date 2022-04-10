@@ -2,7 +2,7 @@
 	name = "12g 1984 lever-action shotgun"
 	desc = "Git off my property!"
 	desc_extended = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower. The weapon of choice for Space Farmers."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/lever_action.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/sol/cowboy.dmi'
 	icon_state = "inventory"
 	value = 900
 
@@ -40,7 +40,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

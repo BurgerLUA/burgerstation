@@ -81,6 +81,14 @@
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-6, size=5, offset=0, color=rgb(0,0,0,200))
 
+
+/obj/plane_master/mobs_stealth
+	plane = PLANE_MOB_STEALTH
+
+/obj/plane_master/mobs_stealth/apply_post_processing()
+	. = ..()
+	filters += filter(type="alpha",render_source="*fov_\ref[owner]")
+
 //DARKNESS
 /obj/plane_master/darkness
 	plane = 0

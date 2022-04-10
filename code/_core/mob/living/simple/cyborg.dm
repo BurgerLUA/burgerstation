@@ -18,7 +18,7 @@
 
 	size = SIZE_HUMAN
 
-	armor_base = CYBORG_ARMOR
+	armor = /armor/borg
 
 	soul_size = null
 
@@ -28,10 +28,9 @@
 
 	health = /health/mob/living/simple/squats/
 
-
 	movement_delay = 2
 
-	health_base = 300
+	health_base = 800
 	stamina_base = 500
 	mana_base = 100
 
@@ -39,22 +38,7 @@
 	jog_delay_mul = 3
 	walk_delay_mul = 3
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = 20,
-		ARCANE = -80,
-		HEAT = -40,
-		COLD = 40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		ION = -80,
-		PAIN = INFINITY
-	)
+	armor = /armor/borg/military
 
 	iff_tag = "Syndicate"
 	loyalty_tag = "Syndicate"
@@ -94,20 +78,7 @@
 	stamina_base = 200
 	mana_base = 100
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 40,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = -40,
-		COLD = 20,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/borg/military
 
 	iff_tag = "Syndicate"
 	loyalty_tag = "Syndicate"

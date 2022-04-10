@@ -107,7 +107,11 @@
 
 /obj/item/attachment/sight/scope/massive/sniper_20
 	icon_state = "scope_sniper_20"
+	removable = FALSE
 
+/obj/item/attachment/sight/scope/massive/sniper_127
+	icon_state = "x8_scope_2"
+	removable = FALSE
 
 /obj/item/attachment/sight/targeting_computer
 	name = "targeting computer"

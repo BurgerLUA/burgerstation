@@ -94,11 +94,15 @@ var/global/list/all_clients = list() //Assoc list
 
 	show_popup_menus = FALSE
 
+	var/drag_last = 0
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 
 /client/proc/get_debug_name()
-	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[mob.x];y=[mob.y];z=[mob.z]'>([mob.x],[mob.y],[mob.z])</a>" : "NONE"])"
+	var/turf/T
+	if(mob) T = get_turf(mob)
+	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>" : "NONE"])"
 
 /client/proc/get_log_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
@@ -178,6 +182,10 @@ var/global/list/all_clients = list() //Assoc list
 	var/savedata/client/bank/bankdata = ckey_to_bank_data[ckey]
 	if(!bankdata)
 		new/savedata/client/bank(ckey)
+
+	var/savedata/client/loadout/loadoutdata = ckey_to_loadout_data[ckey]
+	if(!loadoutdata)
+		new/savedata/client/loadout(ckey)
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)

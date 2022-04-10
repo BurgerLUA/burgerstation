@@ -48,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -120,11 +120,11 @@
 	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range. This one is designated as the corporate edition and has a slightly hire firerate."
 	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 2000
 
 	tier = 3
 
-	shoot_delay = 0.9
+	shoot_delay = 0.8
 	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm_black.dmi'
 
 

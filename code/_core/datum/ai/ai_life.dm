@@ -61,7 +61,7 @@
 			alert_time = initial(alert_time)
 			set_alert_level(max(0,alert_level-1),TRUE)
 
-	if(!owner.anchored && owner.move_delay <= 0)
+	if(!owner.anchored && owner.next_move <= 0)
 		if(frustration_move >= frustration_move_threshold*2 && !length(current_path_astar))
 			var/path_num = length(current_path)
 			if(path_num)

@@ -2,7 +2,7 @@
 #define TRACKS_CAVE list(/track/cave_spook)
 #define TRACKS_LAVA list(/track/cursed_lava,/track/lavaland,/track/walking_danger)
 #define TRACKS_MOUNTAIN list(/track/crystal_whispers,/track/dawn,/track/rising_bells,/track/slavic_heavy,/track/snow_fall,/track/vapor)
-#define TRACKS_LOBBY list(/track/slow_fall,/track/boat,/track/two_thirty_six,/track/relaxed_intro, /track/new_year, /track/carrib,/track/movie,/track/footsteps)
+#define TRACKS_LOBBY list(/track/slow_fall,/track/boat,/track/two_thirty_six,/track/relaxed_intro, /track/new_year, /track/carrib,/track/movie,/track/footsteps,/track/second_rise)
 
 
 

@@ -20,22 +20,12 @@
 	stamina_base = 500
 	mana_base = 2000
 
-	move_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 80,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/colossus
 
 	status_immune = list(
 		STUN = TRUE,
@@ -92,10 +82,7 @@
 	animate(src, pixel_z = 64, time = 30)
 
 /mob/living/simple/colossus/handle_alpha()
-
-	if(dead)
-		return 0
-
-	return ..()
+	if(dead) return 0
+	. = ..()
 
 

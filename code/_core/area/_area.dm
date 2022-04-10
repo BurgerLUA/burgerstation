@@ -3,8 +3,9 @@
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
-	plane = PLANE_AREA_EXTERIOR
+	plane = PLANE_AREA //This should never be changed. Just use interior=TRUE
 	invisibility = 101
+	alpha = 150
 
 	mouse_opacity = 0
 
@@ -45,6 +46,28 @@
 
 	var/flags_generation = FLAG_GENERATION_NONE
 
+	//Power Code
+	var/default_state_power_lights = OFF
+	var/default_state_power_machines = OFF
+	var/default_state_power_doors = OFF
+
+
+	var/no_apc = FALSE //Used for error checking.
+	var/requires_power = FALSE //Set to true if everything is this area requires power.
+
+	var/obj/structure/interactive/power/apc/apc //The area's APC, if any.
+
+	var/power_draw = 0
+
+	var/enable_power_doors = OFF
+	var/enable_power_machines = OFF
+	var/enable_power_lights = OFF
+
+	var/list/obj/structure/interactive/door/powered_doors
+	var/list/obj/structure/interactive/powered_machines
+	var/list/obj/structure/interactive/lighting/powered_lights
+
+	var/list/obj/structure/interactive/light_switch/light_switches
 
 /area/proc/is_space()
 	return FALSE
@@ -57,6 +80,10 @@
 	SSarea.all_areas -= src.type
 	SSarea.areas_by_identifier[area_identifier] -= src
 
+	powered_doors.Cut()
+	powered_machines.Cut()
+	powered_lights.Cut()
+
 	return ..()
 
 /area/proc/update_lighting_overlay_color(var/desired_color)
@@ -67,12 +94,29 @@
 
 	return TRUE
 
+/area/New(var/desired_loc)
+
+	if(requires_power)
+		powered_doors = list()
+		powered_machines = list()
+		powered_lights = list()
+		light_switches = list()
+
+	if(interior)
+		plane = PLANE_AREA_INTERIOR
+	else
+		plane = PLANE_AREA_EXTERIOR
+
 /area/Initialize()
 
 	if(plane == PLANE_AREA_EXTERIOR)
 		icon = 'icons/area/area.dmi'
 		icon_state = "black"
 		invisibility = 0
+	else
+		invisibility = 101
+
+	alpha = 255
 
 	var/area_count = 0
 	average_x = 0
@@ -128,28 +172,125 @@
 		T.on_destruction(null,TRUE)
 	return TRUE
 
-/area/proc/toggle_all_lights()
-	var/obj/structure/interactive/light_switch/LS = locate() in src.contents
-	if(LS && LS.on)
-		LS.toggle()
-		return TRUE
-	return FALSE
+/area/proc/apc_process()
 
-/area/proc/sync_lights(var/desired_state = TRUE)
+	//Priority:
+	//Doors
+	//Machines
+	//Lights
 
-	for(var/obj/structure/interactive/lighting/L in src.contents)
-		if(!L.lightswitch)
+	//Getting Power
+	var/available_charge = 0
+	var/max_charge = 1
+	if(apc && apc.cell)
+		available_charge = apc.cell.charge_current
+		max_charge = apc.cell.charge_max
+
+	//Doors
+	if(enable_power_doors & AUTO)
+		if(available_charge/max_charge >= 0.1)
+			toggle_power_doors(ON|AUTO)
+		else
+			toggle_power_doors(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_doors & OFF))
+		toggle_power_doors(OFF|AUTO)
+
+	//Machines
+	if(enable_power_machines & AUTO)
+		if(available_charge/max_charge >= 0.2)
+			toggle_power_machines(ON|AUTO)
+		else
+			toggle_power_doors(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_machines & OFF))
+		toggle_power_machines(OFF|AUTO)
+
+	if(enable_power_lights & AUTO)
+		if(available_charge/max_charge >= 0.3)
+			toggle_power_lights(ON|AUTO)
+		else
+			toggle_power_lights(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_lights & OFF))
+		toggle_power_lights(OFF|AUTO)
+
+	//Removing power.
+	if(apc && apc.cell)
+		apc.cell.charge_current = max(0,apc.cell.charge_current - power_draw)
+
+	return TRUE
+
+
+/area/proc/toggle_power_doors(var/enable=ON|AUTO,var/force=FALSE)
+
+	if(!requires_power)
+		CRASH("Called toggle_power_doors on an [src.type] that doesn't require power.")
+
+	enable_power_doors = enable
+
+	for(var/k in powered_doors)
+		var/obj/structure/interactive/door/D = k
+		if(!D.apc_powered)
 			continue
-		if(L.on == desired_state)
+		if(D.powered == (enable_power_doors & ON ? TRUE : FALSE) && !force)
 			continue
-		L.on = desired_state
+		D.powered = enable_power_doors & ON ? TRUE : FALSE
+		if(D.powered)
+			D.update_power_draw(D.get_power_draw())
+		else
+			D.update_power_draw(0)
+		D.update_sprite()
+
+	return TRUE
+
+
+/area/proc/toggle_power_machines(var/enable=ON|AUTO,var/force=FALSE)
+
+	if(!requires_power)
+		CRASH("Called toggle_power_machines on an [src.type] that doesn't require power.")
+
+	enable_power_machines = enable
+
+	for(var/k in powered_machines)
+		var/obj/structure/interactive/P = k
+		if(!P.apc_powered)
+			continue
+		if(P.powered == (enable_power_machines & ON ? TRUE : FALSE) && !force)
+			continue
+		P.powered = enable_power_machines & ON ? TRUE : FALSE
+		if(P.powered)
+			P.update_power_draw(P.get_power_draw())
+		else
+			P.update_power_draw(0)
+		P.update_sprite()
+
+	return TRUE
+
+/area/proc/toggle_power_lights(var/enable=ON|AUTO,var/force=FALSE)
+
+	if(!requires_power)
+		CRASH("Called toggle_power_lights on an [src.type] that doesn't require power.")
+
+	enable_power_lights = enable
+
+	for(var/k in powered_lights)
+		var/obj/structure/interactive/lighting/L = k
+		if(!L.apc_powered)
+			continue
+		if(L.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
+			continue
+		L.on = enable_power_lights & ON ? TRUE : FALSE
+		if(L.on)
+			L.update_power_draw(L.get_power_draw())
+		else
+			L.update_power_draw(0)
 		L.update_atom_light()
 		L.update_sprite()
 
-	for(var/obj/structure/interactive/light_switch/LS in src.contents)
-		if(LS.on == desired_state)
+	for(var/k in light_switches)
+		var/obj/structure/interactive/light_switch/LS = k
+		if(LS.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
 			continue
-		LS.on = desired_state
-		LS.update_sprite()
+		LS.on = enable_power_lights & ON ? TRUE : FALSE
+		LS.update_atom_light()
+		LS.update_icon()
 
 	return TRUE

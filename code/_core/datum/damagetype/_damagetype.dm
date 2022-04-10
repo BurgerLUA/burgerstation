@@ -25,8 +25,6 @@ var/global/list/all_damage_numbers = list()
 
 	var/attack_delay_mod = 1
 
-	var/block_coefficient = 0.25 //The block co-efficient. High values means it penetrates armor easier.
-
 	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
 	var/draw_blood = FALSE //This weapon causes blood visual effects.
@@ -402,7 +400,7 @@ var/global/list/all_damage_numbers = list()
 				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
 		//Blocking
-		if(L.attack_flags & CONTROL_MOD_BLOCK && abs(get_angle(victim,attacker)) <= 90)
+		if(L.attack_flags & CONTROL_MOD_BLOCK && is_facing(L,attacker))
 			block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
 			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier,block_multiplier)
 		else
@@ -646,29 +644,20 @@ var/global/list/all_damage_numbers = list()
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
 
-	if(victim.health && victim.health.health_max && ismovable(victim))
-		var/atom/movable/A = victim
-		if(A.anchored)
-			return
+	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+	var/list/offsets = get_directional_offsets(attacker,victim)
 
-		var/multiplier = TILE_SIZE * (damage_dealt / victim.health.health_max) * 2
-		multiplier = clamp(multiplier,0,TILE_SIZE*0.25)
+	if(ismob(victim))
+		var/mob/M = victim
+		if(M.client)
+			M.client.desired_punch_x += offsets[1]*multiplier
+			M.client.desired_punch_y += offsets[2]*multiplier
 
-		var/attack_direction = get_dir(attacker,victim)
-		var/list/offsets = direction_to_pixel_offset(attack_direction)
-
-		if(ismob(victim))
-			var/mob/M = victim
-			if(M.client)
-				M.client.desired_punch_x += offsets[1]*multiplier
-				M.client.desired_punch_y += offsets[2]*multiplier
-
-		else if(victim.health.health_current - damage_dealt <= 0)
-			if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
-				animate(victim, pixel_x = initial(victim.pixel_x) + offsets[1]*multiplier, pixel_y = initial(victim.pixel_y) + offsets[2]*multiplier,time=2)
-		else
-			animate(victim, pixel_x = initial(victim.pixel_x) + offsets[1]*multiplier, pixel_y = initial(victim.pixel_y) + offsets[2]*multiplier,time=1)
-			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
+	if(ismob(attacker))
+		var/mob/M = attacker
+		if(M.client)
+			M.client.desired_punch_x += -offsets[1]*multiplier*0.25
+			M.client.desired_punch_y += -offsets[2]*multiplier*0.25
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -697,9 +686,12 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	if(!attacker)
+		return 0
+
 	var/attack_delay = get_attack_delay(attacker)
 
-	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
+	var/list/pixel_offset = get_directional_offsets(attacker,victim)
 
 	var/matrix/attack_matrix = attacker.get_base_transform()
 	attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)

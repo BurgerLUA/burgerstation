@@ -8,5 +8,5 @@
 	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/container/edible/pill/dylovene(src)
-	new /obj/item/container/syringe/epinephrine(src)
+	new /obj/item/container/syringe/hypodermic/epinephrine(src)
 	. = ..()

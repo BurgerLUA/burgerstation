@@ -100,15 +100,15 @@
 
 /reagent/medicine/health_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 2*.
-	owner.burn_regen_buffer += 2*.
-	owner.tox_regen_buffer += 2*.
+	owner.brute_regen_buffer += 2*.*multiplier
+	owner.burn_regen_buffer += 2*.*multiplier
+	owner.tox_regen_buffer += 2*.*multiplier
 
 /reagent/medicine/health_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 3*.
-	owner.burn_regen_buffer += 3*.
-	owner.tox_regen_buffer += 3*.
+	owner.brute_regen_buffer += 3*.*multiplier
+	owner.burn_regen_buffer += 3*.*multiplier
+	owner.tox_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/stamina_potion
 	name = "Stamina Juice"
@@ -132,13 +132,13 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*2)
+		owner.stamina_regen_buffer += .*2*multiplier
 
 /reagent/medicine/stamina_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(.*3)
+		owner.stamina_regen_buffer += .*3*multiplier
 
 /reagent/medicine/mana_potion
 	name = "Mana Juice"
@@ -162,13 +162,13 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*2)
+		owner.mana_regen_buffer += .*2*multiplier
 
 /reagent/medicine/mana_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_mana(.*3)
+		owner.mana_regen_buffer += .*3*multiplier
 
 /reagent/medicine/antihol
 	name = "Antihol"
@@ -195,14 +195,14 @@
 
 	if(owner.health)
 		if(owner.health.organic)
-			owner.intoxication = max(0,owner.intoxication - .*10)
+			owner.intoxication = max(0,owner.intoxication - .*10*multiplier)
 		else
-			owner.intoxication = owner.intoxication + .*10
+			owner.intoxication = owner.intoxication + .*10*multiplier
 
 	for(var/reagent_id in container.stored_reagents)
 		var/reagent/R = REAGENT(reagent_id)
 		if(istype(R,/reagent/nutrition/ethanol))
-			container.remove_reagent(reagent_id,.*3)
+			container.remove_reagent(reagent_id,.*3*multiplier)
 
 /reagent/medicine/antihol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -210,14 +210,14 @@
 
 	if(owner.health)
 		if(owner.health.organic)
-			owner.intoxication = max(0,owner.intoxication - .*10)
+			owner.intoxication = max(0,owner.intoxication - .*10*multiplier)
 		else
-			owner.intoxication = owner.intoxication + .*10
+			owner.intoxication = owner.intoxication + .*10*multiplier
 
 	for(var/reagent_id in container.stored_reagents)
 		var/reagent/R = REAGENT(reagent_id)
 		if(istype(R,/reagent/nutrition/ethanol))
-			container.remove_reagent(reagent_id,.*3)
+			container.remove_reagent(reagent_id,.*3*multiplier)
 
 /reagent/medicine/purge
 	name = "Calomel"
@@ -244,7 +244,7 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(R.type == src.type)
 			continue
-		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4)
+		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4*multiplier)
 
 /reagent/medicine/purge/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -256,7 +256,7 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(R.type == src.type)
 			continue
-		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4)
+		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4*multiplier)
 
 /reagent/medicine/charcoal
 	name = "charcoal"
@@ -284,7 +284,7 @@
 		if(!R.lethal)
 			continue
 		container.remove_reagent(reagent_id,.)
-		owner.tox_regen_buffer += 3*.
+		owner.tox_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/charcoal/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -296,8 +296,8 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(!R.lethal)
 			continue
-		container.remove_reagent(reagent_id,.*2)
-		owner.tox_regen_buffer += 2*.
+		container.remove_reagent(reagent_id,.*2*multiplier)
+		owner.tox_regen_buffer += 2*.*multiplier
 
 /reagent/medicine/zombie_antidote
 	name = "zombie antidote"
@@ -315,11 +315,11 @@
 
 /reagent/medicine/zombie_antidote/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.reagents.remove_reagent(/reagent/toxin/zombie_toxin,.)
+	owner.reagents.remove_reagent(/reagent/toxin/zombie_toxin,.*multiplier)
 
 /reagent/medicine/zombie_antidote/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.reagents.add_reagent(/reagent/medicine/zombie_antidote/,.*0.75)
+	owner.reagents.add_reagent(/reagent/medicine/zombie_antidote/,.*0.75*multiplier)
 
 /reagent/medicine/mitogen
 	name = "Mitogen"
@@ -344,16 +344,16 @@
 	. = ..()
 
 	if(owner.health)
-		owner.brute_regen_buffer += 10*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)
-		owner.tox_regen_buffer -= 0.1*.
+		owner.brute_regen_buffer += 10*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)*multiplier
+		owner.tox_regen_buffer -= 0.1*.*multiplier
 
 /reagent/medicine/mitogen/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	if(owner.health)
-		owner.brute_regen_buffer += 8*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)
-		owner.tox_regen_buffer -= 0.1*.
+		owner.brute_regen_buffer += 8*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)*multiplier
+		owner.tox_regen_buffer -= 0.1*.*multiplier
 
 
 
@@ -387,8 +387,8 @@
 	if(. >= metabolism_blood)
 		var/true_multiplier = TICKS_TO_SECONDS(LIFE_TICK_SLOW) * (. / metabolism_blood) * multiplier
 		owner.sanity_regen_buffer += 5*true_multiplier
-		owner.add_hydration(-0.05*true_multiplier)
-		owner.add_nutrition(-0.1*true_multiplier)
+		owner.add_hydration(-0.04*true_multiplier)
+		owner.add_nutrition(-0.01*true_multiplier)
 
 /reagent/medicine/synthblood
 	name = "synthblood"
@@ -407,7 +407,7 @@
 /reagent/medicine/synthblood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(owner.blood_type && owner.health.organic)
-		owner.blood_volume += .*0.75
+		owner.blood_volume += .*0.75*multiplier
 
 /reagent/medicine/rad_b_gone
 	name = "Rad-B-Gone"
@@ -424,4 +424,53 @@
 
 /reagent/medicine/rad_b_gone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.rad_regen_buffer += .*5
+	owner.rad_regen_buffer += .*5*multiplier
+
+
+/reagent/medicine/potassium_iodide
+	name = "Potassium Iodide"
+	desc = "A common and cheap medicine used to prevent further lingering radiation damage, but not cure it."
+	color = "#FFF4EC"
+	alpha = 255
+	flavor = "salty bananas"
+	value = 0.1
+
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.5
+
+	experience_per_unit = 0.5
+
+	liquid = -0.5
+	particle_size = 0.4
+
+/reagent/medicine/potassium_iodide/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+	if(owner.rad_regen_buffer < 0)
+		owner.rad_regen_buffer = min(0,owner.rad_regen_buffer + 3*.*multiplier)
+
+/reagent/medicine/space_prussian_blue
+	name = "Space Prussian Blue"
+	desc = "A relatively uncommon but inexpensive pigment that acts as a great dye as well as an excellent way to treat radiation poisoning caused by consuming radioactive substances. Only works when ingested."
+	color = "#1D2A60"
+	alpha = 255
+	flavor = "salty bananas"
+	value = 1.3
+
+	metabolism_blood = 0.5
+	metabolism_stomach = 0.5
+
+	experience_per_unit = 0.5
+
+	liquid = -0.2
+	particle_size = 0.5
+
+
+/reagent/medicine/space_prussian_blue/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	for(var/reagent_id in container.stored_reagents)
+		var/reagent/R = REAGENT(reagent_id)
+		if(!istype(R,/reagent/radioactive/))
+			continue
+		container.remove_reagent(reagent_id,.*10*multiplier)
