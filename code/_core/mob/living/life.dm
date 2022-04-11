@@ -298,6 +298,11 @@
 
 /mob/living/proc/on_life_fast()
 
+	if(stun_immunity > 0)
+		stun_immunity = max(stun_immunity - LIFE_TICK_FAST,0)
+	else if(stun_immunity < 0)
+		stun_immunity = min(stun_immunity + LIFE_TICK_FAST,0)
+
 	for(var/k in health_icons_to_update)
 		var/obj/hud/button/health/B = k
 		if(!B.special_think())

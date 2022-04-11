@@ -259,6 +259,8 @@
 
 	var/list/health_icons_to_update = list()
 
+	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
+
 
 /mob/living/Destroy()
 

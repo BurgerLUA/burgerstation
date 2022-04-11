@@ -7,6 +7,12 @@
 
 	var/affects_dead = TRUE
 
+/status_effect/proc/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	return duration
+
+/status_effect/proc/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	return magnitude
+
 /status_effect/proc/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
 
 	if(victim.dead && !affects_dead)
@@ -42,7 +48,7 @@
 	if(victim.is_player_controlled())
 		return FALSE
 
-	return ..()
+	. = ..()
 
 
 /status_effect/stun
@@ -54,12 +60,23 @@
 
 	affects_dead = FALSE
 
+/status_effect/stun/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	if(owner.stun_immunity > 0)
+		duration *= 0.25
+	return duration
+
+/status_effect/stun/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	if(owner.stun_immunity > 0)
+		magnitude *= 0.25
+	return magnitude
+
 /status_effect/stun/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	owner.remove_status_effect(STAGGER)
 	owner.remove_status_effect(PARRIED)
 	owner.remove_status_effect(SHOVED)
-
+	if(duration > 0 && magnitude > 0)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
 
 
 /status_effect/sleeping
@@ -71,6 +88,21 @@
 
 	affects_dead = FALSE
 
+/status_effect/sleeping/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(duration > 0 && magnitude > 0)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
+
+/status_effect/sleeping/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	if(owner.stun_immunity > 0)
+		duration *= 0.25
+	return duration
+
+/status_effect/sleeping/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	if(owner.stun_immunity > 0)
+		magnitude *= 0.25
+	return magnitude
+
 /status_effect/paralyzed
 	name = "Paralyzed"
 	desc = "You're paralyzed!"
@@ -79,6 +111,21 @@
 	maximum = 80
 
 	affects_dead = FALSE
+
+/status_effect/paralyzed/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	if(owner.stun_immunity > 0)
+		duration *= 0.25
+	return duration
+
+/status_effect/paralyzed/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	if(owner.stun_immunity > 0)
+		magnitude *= 0.25
+	return magnitude
+
+/status_effect/paralyzed/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(duration > 0 && magnitude > 0)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
 
 /status_effect/fire
 	name = "Fire"

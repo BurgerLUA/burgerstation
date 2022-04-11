@@ -6,6 +6,7 @@ var/global/mob/abstract/node_checker
 	name = "node checker"
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+	plane = PLANE_AREA
 	layer = LAYER_GHOST
 	invisibility = 100
 	invisibility = 101

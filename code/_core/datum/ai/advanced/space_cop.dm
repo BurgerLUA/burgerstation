@@ -19,6 +19,7 @@ var/global/list/space_cop_tag_shitlist = list()
 
 /ai/advanced/space_cop/handle_objectives(var/tick_rate)
 
+	/*
 	if(!roam && !located_chair_turf && !length(current_path))
 		if(tracked_event && tracked_event.recalling && tracked_event.associated_shuttle_controller && get_dist(owner,tracked_event.associated_shuttle_controller) <= VIEW_RANGE)
 			for(var/obj/structure/interactive/chair/C in view(owner.loc,8))
@@ -27,6 +28,7 @@ var/global/list/space_cop_tag_shitlist = list()
 				if(A1 == A2)
 					located_chair_turf = get_turf(C)
 					break
+	*/
 
 	return ..()
 

@@ -74,14 +74,6 @@ obj/structure/interactive/computer/wall/dorms
 
 	return TRUE
 
-
-/obj/structure/interactive/computer/wall/remote_flight/lz420_elevator
-	name = "elevator controls"
-	desired_shuttle_controller = /obj/shuttle_controller/lz420_elevator
-
-
-
-
 /obj/structure/interactive/computer/wall/flight
 	name = "flight control console"
 	desc = "Beep boop."

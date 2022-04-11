@@ -85,8 +85,6 @@
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)
 		verbs += /client/verb/speed_up_setup
 		verbs += /client/verb/give_credits
-		verbs += /client/verb/test_spook_station
-		verbs += /client/verb/test_syndicate_raid
 		verbs += /client/verb/add_language
 		verbs += /client/verb/remove_language
 		verbs += /client/verb/remove_trait

@@ -4,7 +4,6 @@
 	icon_state = ""
 	layer = LAYER_AREA
 	plane = PLANE_AREA //This should never be changed. Just use interior=TRUE
-	invisibility = 101
 	alpha = 150
 
 	mouse_opacity = 0
@@ -109,6 +108,14 @@
 
 /area/Initialize()
 
+	SSarea.all_areas[src.type] = src
+	if(src.area_identifier)
+		if(!SSarea.areas_by_identifier[src.area_identifier])
+			SSarea.areas_by_identifier[src.area_identifier] = list()
+		SSarea.areas_by_identifier[src.area_identifier] += src
+
+	. = ..()
+
 	if(plane == PLANE_AREA_EXTERIOR)
 		icon = 'icons/area/area.dmi'
 		icon_state = "black"
@@ -117,6 +124,28 @@
 		invisibility = 101
 
 	alpha = 255
+
+	if(length(src.random_sounds))
+		SSarea.areas_ambient += src
+
+	if(ENABLE_WEATHERGEN && src.weather)
+		src.invisibility = 0
+		src.alpha = 0
+		switch(src.weather)
+			if(WEATHER_SNOW)
+				SSarea.areas_snow += src
+			if(WEATHER_RAIN)
+				SSarea.areas_rain += src
+			if(WEATHER_SANDSTORM)
+				SSarea.areas_sandstorm += src
+			if(WEATHER_VOLCANIC)
+				SSarea.areas_volcanic += src
+
+/area/Finalize()
+	. = ..()
+	generate_average()
+
+/area/proc/generate_average()
 
 	var/area_count = 0
 	average_x = 0
@@ -135,7 +164,7 @@
 		average_x = CEILING(average_x/area_count,1)
 		average_y = CEILING(average_y/area_count,1)
 
-	return ..()
+	return TRUE
 
 /area/proc/setup_sunlight(var/turf/T)
 

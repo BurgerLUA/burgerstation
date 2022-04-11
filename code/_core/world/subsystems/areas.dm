@@ -24,28 +24,10 @@ SUBSYSTEM_DEF(area)
 	var/area_count = 0
 
 	for(var/area/A in world)
-		all_areas[A.type] = A
-		if(A.area_identifier)
-			if(!areas_by_identifier[A.area_identifier])
-				areas_by_identifier[A.area_identifier] = list()
-			areas_by_identifier[A.area_identifier] += A
 		INITIALIZE(A)
-		area_count += 1
-		if(length(A.random_sounds))
-			areas_ambient += A
-		if(ENABLE_WEATHERGEN && A.weather)
-			A.invisibility = 0
-			A.alpha = 0
-			switch(A.weather)
-				if(WEATHER_SNOW)
-					areas_snow += A
-				if(WEATHER_RAIN)
-					areas_rain += A
-				if(WEATHER_SANDSTORM)
-					areas_sandstorm += A
-				if(WEATHER_VOLCANIC)
-					areas_volcanic += A
-
+		GENERATE(A)
+		FINALIZE(A)
+		area_count++
 
 	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 

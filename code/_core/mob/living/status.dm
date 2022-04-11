@@ -25,6 +25,12 @@
 	if(!S.can_add_status_effect(source,src))
 		return FALSE
 
+	if(!force)
+		if(magnitude != -1)
+			magnitude = S.modify_magnitude(source,src,magnitude,force)
+		if(duration != -1)
+			duration = S.modify_duration(source,src,duration)
+
 	if(!status_effects[status_type])
 		status_effects[status_type] = list()
 		. = TRUE

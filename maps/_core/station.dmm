@@ -54,8 +54,8 @@
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
 "am" = (
-/turf/simulated/wall/metal/shuttle,
-/area/transit/cargo_inbound/ship)
+/turf/simulated/floor/plating,
+/area)
 "an" = (
 /obj/structure/interactive/fire_closet{
 	dir = 1
@@ -89,14 +89,8 @@
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/library)
 "av" = (
-/obj/structure/interactive/conveyor{
-	dir = 1;
-	icon_state = "conveyor"
-	},
-/obj/structure/interactive/door/airlock/shuttle,
-/obj/structure/interactive/scanner/living,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/turf/simulated/wall/metal/shuttle,
+/area)
 "aw" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 6
@@ -294,10 +288,9 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "bg" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/obj/structure/interactive/scanner/living,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/obj/marker/spawning/window/shuttle,
+/turf/simulated/floor/plating/shuttle,
+/area)
 "bh" = (
 /obj/decal/hazard{
 	dir = 5
@@ -319,18 +312,16 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cargo)
 "bk" = (
-/obj/structure/interactive/conveyor{
-	dir = 1;
-	icon_state = "conveyor"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/obj/structure/scenery/fake_door/airlock_external/glass,
+/turf/simulated/floor/tile/shuttle/blue,
+/area)
 "bl" = (
-/obj/structure/shuttle_engine/propulsion/right{
-	dir = 4
+/obj/structure/shuttle_engine/burst/right{
+	dir = 4;
+	icon_state = "burst_r"
 	},
 /turf/simulated/floor/plating/shuttle,
-/area/transit/cargo_inbound/ship)
+/area)
 "bm" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
@@ -423,11 +414,12 @@
 /turf/simulated/floor/tile/morphing/cargo,
 /area/burgerstation/cargo)
 "bE" = (
-/obj/structure/shuttle_engine/propulsion{
-	dir = 4
+/obj/structure/interactive/chair{
+	dir = 8
 	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/cargo_inbound/ship)
+/obj/marker/shuttle_marker,
+/turf/simulated/floor/tile/shuttle/blue,
+/area)
 "bF" = (
 /obj/structure/interactive/power/apc{
 	dir = 1
@@ -459,12 +451,8 @@
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
 "bM" = (
-/obj/structure/interactive/conveyor{
-	dir = 8;
-	icon_state = "conveyor"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/transit/cargo_inbound/ship)
+/turf/simulated/floor/tile/shuttle/blue,
+/area)
 "bN" = (
 /obj/structure/interactive/power/apc,
 /turf/simulated/wall/brick/chapel,
@@ -592,9 +580,12 @@
 /turf/simulated/floor/tile/morphing/cargo,
 /area/burgerstation/cargo)
 "cm" = (
-/obj/structure/shuttle_engine,
-/turf/simulated/floor/tile/shuttle/black,
-/area/transit/cargo_inbound/ship)
+/obj/structure/shuttle_engine/heater{
+	dir = 4;
+	icon_state = "heater"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area)
 "cn" = (
 /obj/structure/table/fancy,
 /turf/simulated/floor/wood/rich,
@@ -755,11 +746,11 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
 "cN" = (
-/obj/structure/shuttle_engine/propulsion/left{
+/obj/structure/shuttle_engine/propulsion{
 	dir = 4
 	},
 /turf/simulated/floor/plating/shuttle,
-/area/transit/cargo_inbound/ship)
+/area)
 "cO" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -2355,9 +2346,12 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/arrivals)
 "iB" = (
-/obj/marker/spawning/window/shuttle,
-/turf/simulated/floor/plating/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/obj/marker/shuttle_marker,
+/turf/simulated/floor/tile/shuttle,
+/area)
 "iC" = (
 /obj/structure/sign/department/a/engineering,
 /turf/simulated/wall/metal/reinforced,
@@ -2585,8 +2579,8 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/arrivals)
 "jq" = (
-/turf/simulated/floor/plating,
-/area/transit/arrivals_shuttle_02/station)
+/turf/simulated/floor/tile/shuttle,
+/area)
 "jr" = (
 /obj/structure/interactive/conveyor{
 	dir = 8;
@@ -2740,8 +2734,9 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/telecomms)
 "jV" = (
-/turf/simulated/wall/metal/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/obj/structure/scenery/fake_door/nocolide/external,
+/turf/simulated/floor/tile/shuttle/blue,
+/area)
 "jW" = (
 /obj/structure/interactive/door/airlock/station/engineering/glass/ce,
 /obj/structure/interactive/disposals/pipe,
@@ -3603,16 +3598,21 @@
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
 "nn" = (
-/obj/structure/scenery/fake_door/airlock_external/glass,
-/turf/simulated/floor/tile/shuttle/blue,
-/area/transit/arrivals_shuttle_01/station)
-"no" = (
-/obj/structure/shuttle_engine/burst/right{
+/obj/structure/shuttle_engine/burst/left{
 	dir = 4;
-	icon_state = "burst_r"
+	icon_state = "burst_l"
 	},
 /turf/simulated/floor/plating/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/area)
+"no" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/door/airlock/shuttle,
+/obj/structure/interactive/scanner/living,
+/turf/simulated/floor/tile/shuttle,
+/area)
 "np" = (
 /obj/structure/table/reinforced/steel,
 /obj/item/cell_charger,
@@ -3661,28 +3661,30 @@
 	},
 /area/burgerstation/arrivals)
 "nz" = (
-/obj/structure/interactive/chair{
-	dir = 8
-	},
-/obj/marker/shuttle_marker,
-/turf/simulated/floor/tile/shuttle/blue,
-/area/transit/arrivals_shuttle_01/station)
+/obj/structure/interactive/door/airlock/shuttle,
+/obj/structure/interactive/scanner/living,
+/turf/simulated/floor/tile/shuttle,
+/area)
 "nA" = (
-/turf/simulated/floor/tile/shuttle/blue,
-/area/transit/arrivals_shuttle_01/station)
-"nB" = (
-/obj/structure/shuttle_engine/heater{
-	dir = 4;
-	icon_state = "heater"
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/arrivals_shuttle_01/station)
-"nC" = (
-/obj/structure/shuttle_engine/propulsion{
+/obj/structure/shuttle_engine/propulsion/right{
 	dir = 4
 	},
 /turf/simulated/floor/plating/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/area)
+"nB" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/shuttle,
+/area)
+"nC" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/shuttle,
+/area)
 "nD" = (
 /obj/structure/interactive/light_switch{
 	dir = 4;
@@ -3729,15 +3731,15 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "nM" = (
-/obj/structure/interactive/chair{
-	dir = 8
-	},
-/obj/marker/shuttle_marker,
-/turf/simulated/floor/tile/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/obj/structure/shuttle_engine,
+/turf/simulated/floor/tile/shuttle/black,
+/area)
 "nN" = (
-/turf/simulated/floor/tile/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/obj/structure/shuttle_engine/propulsion/left{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area)
 "nO" = (
 /obj/structure/interactive/supermatter/station,
 /obj/structure/interactive/wire/yellow,
@@ -4112,16 +4114,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/medical)
 "pi" = (
-/obj/structure/scenery/fake_door/nocolide/external,
-/turf/simulated/floor/tile/shuttle/blue,
-/area/transit/arrivals_shuttle_01/station)
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/debug)
 "pj" = (
-/obj/structure/shuttle_engine/burst/left{
-	dir = 4;
-	icon_state = "burst_l"
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/transit/arrivals_shuttle_01/station)
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/debug)
 "pk" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -5254,6 +5252,17 @@
 	},
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/hall/central)
+"tq" = (
+/obj/marker/shuttle/station/destination,
+/turf/simulated/floor/plating,
+/area/space)
+"tr" = (
+/obj/marker/shuttle/station,
+/obj/structure/interactive/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/debug)
 "ts" = (
 /obj/structure/interactive/vending/medical/basic{
 	icon_state = "wallmed";
@@ -5377,6 +5386,10 @@
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
+"tO" = (
+/obj/marker/shuttle/station/transit,
+/turf/space,
+/area/space)
 "tP" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -5436,6 +5449,13 @@
 /obj/marker/lobby,
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
+"tZ" = (
+/obj/structure/interactive/computer/console/flight{
+	icon_state = "computer";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/debug)
 "ua" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/disposals/pipe{
@@ -5578,6 +5598,10 @@
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/plating,
 /area/burgerstation/medical)
+"uA" = (
+/obj/marker/spawning/window/shuttle,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/debug)
 "uB" = (
 /obj/structure/interactive/power/apc,
 /turf/simulated/wall/brick/chapel,
@@ -6627,6 +6651,14 @@
 /obj/marker/spawning/random/maintenance,
 /turf/simulated/floor/plating,
 /area/burgerstation/cafe/botany)
+"yh" = (
+/obj/marker/spawning/window/shuttle,
+/obj/shuttle_controller/debug{
+	icon_state = "shuttle";
+	dir = 8
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/debug)
 
 (1,1,1) = {"
 aa
@@ -25534,12 +25566,12 @@ ar
 aq
 aq
 aq
-am
-am
-am
-am
-am
-am
+av
+av
+av
+av
+av
+av
 ak
 ab
 ab
@@ -25791,12 +25823,12 @@ bD
 bD
 bD
 cC
-av
-bk
-bk
-bk
-bk
-bg
+no
+nB
+nB
+nB
+nB
+nz
 ak
 ab
 ab
@@ -26048,12 +26080,12 @@ fX
 fX
 aq
 aq
-am
-bM
-bM
-bM
-bM
-am
+av
+nC
+nC
+nC
+nC
+av
 ak
 ab
 ab
@@ -26305,12 +26337,12 @@ gj
 gj
 ar
 ak
-am
-bM
-bM
-bM
-bM
-am
+av
+nC
+nC
+nC
+nC
+av
 ak
 ab
 ab
@@ -26562,12 +26594,12 @@ gj
 gj
 ar
 ak
-am
-bM
-bM
-bM
-bM
-am
+av
+nC
+nC
+nC
+nC
+av
 ak
 ab
 ab
@@ -26819,12 +26851,12 @@ gj
 hq
 aq
 aq
-am
-bM
-bM
-bM
-bM
-am
+av
+nC
+nC
+nC
+nC
+av
 ak
 ab
 ab
@@ -27076,12 +27108,12 @@ gj
 gj
 gj
 rt
-bg
-bM
-bM
-bM
-bM
-bg
+nz
+nC
+nC
+nC
+nC
+nz
 ak
 ab
 ab
@@ -27316,9 +27348,9 @@ lI
 my
 hd
 lI
-lI
-lI
-lI
+pi
+yh
+pi
 lI
 lI
 cu
@@ -27333,12 +27365,12 @@ hk
 hr
 aq
 aq
-am
-am
-am
-am
-am
-am
+av
+av
+av
+av
+av
+av
 ak
 ab
 ab
@@ -27573,9 +27605,9 @@ lI
 my
 lI
 lI
-lI
-lI
-lI
+uA
+tZ
+uA
 lI
 lI
 cu
@@ -27590,12 +27622,12 @@ bj
 lS
 aq
 ak
-am
-cm
-cm
-cm
-cm
-am
+av
+nM
+nM
+nM
+nM
+av
 ak
 ab
 ab
@@ -27830,9 +27862,9 @@ lI
 my
 lI
 lI
-lI
-lI
-lI
+uA
+tr
+uA
 lI
 lI
 cL
@@ -27847,12 +27879,12 @@ hc
 mc
 aq
 ak
-bl
-bE
-bE
-bE
-bE
+nA
 cN
+cN
+cN
+cN
+nN
 ak
 ak
 ak
@@ -28087,9 +28119,9 @@ lI
 my
 lI
 lI
-lI
-lI
-lI
+pi
+pj
+pi
 lI
 lI
 cu
@@ -39171,7 +39203,7 @@ rV
 ag
 ak
 ab
-ab
+tO
 ab
 ab
 ab
@@ -48900,7 +48932,7 @@ ac
 ac
 ac
 ac
-ac
+tq
 ac
 ac
 ac
@@ -49154,21 +49186,21 @@ hW
 iy
 gA
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-jV
-jV
-iB
-iB
-iB
-jV
-jV
+av
+av
+bg
+bg
+bg
+av
+av
 ac
 gA
 vH
@@ -49411,21 +49443,21 @@ hF
 iy
 gA
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-iB
-nz
-nz
-nA
-nz
-nz
-iB
+bg
+bE
+bE
+bM
+bE
+bE
+bg
 ac
 gA
 vH
@@ -49668,21 +49700,21 @@ hF
 iz
 gB
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
+bg
+bE
 iB
-nz
-nM
-nN
-nM
-nz
+jq
 iB
+bE
+bg
 ac
 vR
 vI
@@ -49925,21 +49957,21 @@ hF
 iy
 gA
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
+bg
+bE
 iB
-nz
-nM
-nN
-nM
-nz
+jq
 iB
+bE
+bg
 ac
 gA
 qt
@@ -50182,21 +50214,21 @@ hF
 iy
 iN
 xr
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-jV
-nz
-nM
-nN
-nM
-nz
-jV
+av
+bE
+iB
+jq
+iB
+bE
+av
 xr
 pM
 qt
@@ -50439,21 +50471,21 @@ hF
 hF
 iO
 jc
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-nn
-nA
-nN
-nN
-nN
-nA
-pi
+bk
+bM
+jq
+jq
+jq
+bM
+jV
 pA
 pN
 hF
@@ -50696,21 +50728,21 @@ hF
 hF
 iO
 jc
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-nn
-nA
-nN
-nN
-nN
-nA
-pi
+bk
+bM
+jq
+jq
+jq
+bM
+jV
 pA
 pN
 hF
@@ -50953,21 +50985,21 @@ hF
 iy
 iN
 xr
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-jV
-nz
-nM
-nM
-nM
-nz
-jV
+av
+bE
+iB
+iB
+iB
+bE
+av
 xr
 pM
 qt
@@ -51210,21 +51242,21 @@ hF
 iy
 gA
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-jV
-jV
-iB
-jV
-iB
-jV
-jV
+av
+av
+bg
+av
+bg
+av
+av
 ac
 gA
 qt
@@ -51467,21 +51499,21 @@ hY
 iy
 gB
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-jV
-nB
-nB
-nB
-nB
-nB
-jV
+av
+cm
+cm
+cm
+cm
+cm
+av
 ac
 gB
 qt
@@ -51724,21 +51756,21 @@ gG
 iA
 gA
 ac
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+am
+am
+am
+am
+am
+am
+am
 ac
-no
-nC
-nC
-nC
-nC
-nC
-pj
+bl
+cN
+cN
+cN
+cN
+cN
+nn
 ac
 gA
 qv

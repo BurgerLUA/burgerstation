@@ -43,6 +43,10 @@
 
 	var/parallax_icon = 'icons/obj/effects/parallax.dmi'
 
+	//Stored variables for shuttles
+	var/transit_area
+	var/transit_turf
+
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
 

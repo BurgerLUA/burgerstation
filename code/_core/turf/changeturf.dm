@@ -1,7 +1,7 @@
 /turf/proc/change_turf(var/turf/N, var/force_lighting_update = FALSE, var/force_edges_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
 
 	if(!N)
-		return FALSE
+		CRASH("change_turf() was provided a null turf!")
 
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
@@ -57,6 +57,19 @@
 		A.setup_sunlight(W)
 
 	W.post_change_turf(old_turf_type)
+
+/turf/proc/change_area(var/area/N) //Remember to call A.generate_average() when done changing areas.
+
+	if(!N)
+		CRASH("change_area() was provided a null area!")
+
+	var/area/A = SSarea.all_areas[N]
+	if(!A)
+		CRASH("change_area() had an invalid area type ([N])!")
+
+	A.contents |= src
+	return TRUE
+
 
 /turf/proc/post_change_turf(var/old_turf_type)
 	return TRUE
