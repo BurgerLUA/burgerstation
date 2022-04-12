@@ -368,3 +368,12 @@
 	)
 
 	color = "#52001C"
+
+/reagent/blood/rat
+	name = "Rat Blood"
+
+	compatible_blood = list(
+		/reagent/blood/rat = TRUE
+	)
+
+	color = "#932B1C"

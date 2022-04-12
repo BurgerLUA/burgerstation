@@ -33,8 +33,6 @@
 
 	var/turf/destruction_turf //The destruction turf of the area, if any.
 
-	var/list/turf/sunlight_turfs = list()
-
 	var/safe_storage = FALSE //Set to true if items don't ever delete due to chunk cleaning. This means mobs don't get spawned as well.
 	var/interior = FALSE
 
@@ -73,9 +71,6 @@
 
 /area/Destroy()
 
-	if(sunlight_turfs)
-		sunlight_turfs.Cut()
-
 	SSarea.all_areas -= src.type
 	SSarea.areas_by_identifier[area_identifier] -= src
 
@@ -101,10 +96,13 @@
 		powered_lights = list()
 		light_switches = list()
 
-	if(interior)
+	if(interior || src.weather)
 		plane = PLANE_AREA_INTERIOR
 	else
 		plane = PLANE_AREA_EXTERIOR
+
+	if(sunlight_freq > 1) //Odd sunlight freqs greater than 1 must be even.
+		sunlight_freq = CEILING(sunlight_freq,2)
 
 /area/Initialize()
 
@@ -168,20 +166,22 @@
 
 /area/proc/setup_sunlight(var/turf/T)
 
-	if(sunlight_freq == 0)
+	if(sunlight_freq <= 0)
 		return FALSE
-
-	if(T.desired_light_power && T.desired_light_range)
-		return FALSE //Already has a light.
 
 	if(T.setup_turf_light(sunlight_freq))
 		return TRUE
 
-	if((T.x % sunlight_freq) || (T.y % sunlight_freq))
-		return FALSE
+	if(sunlight_freq > 1)
+		if(T.x % sunlight_freq)
+			return FALSE
+		var/bonus = !(T.x % (sunlight_freq*2)) && sunlight_freq > 1 ? sunlight_freq*0.5 : 0
+		T.name = "[T.x].[T.y]: [bonus]."
+		if((T.y+bonus) % sunlight_freq)
+			return FALSE
 
 	T.desired_light_power = 1
-	T.desired_light_range = sunlight_freq
+	T.desired_light_range = 1 + sunlight_freq
 	T.desired_light_color = sunlight_color
 	T.update_atom_light()
 

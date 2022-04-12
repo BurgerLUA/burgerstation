@@ -9,8 +9,6 @@
 
 	plane = PLANE_FLOOR
 
-	density_down = TRUE
-
 	density = FALSE
 
 	map_color = "#FFFFFF"

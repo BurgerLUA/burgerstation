@@ -12,19 +12,16 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 	collision_dir = 0x0 //Special stuff.
 
-	value = 1000
+	value = 10000
 
 	density = TRUE
+	anchored = TRUE
 
 	var/last_warning_percent = 1
 	var/last_warning_time = 0
 
 	health = /health/construction/
 	health_base = 2000
-
-	desired_light_power = 0.75
-	desired_light_range = 6
-	desired_light_color = "#FFFF00"
 
 	var/charge = 0
 	var/charge_max = SECONDS_TO_DECISECONDS(60)

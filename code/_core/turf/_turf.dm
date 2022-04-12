@@ -7,6 +7,8 @@
 	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR
 
+	opacity = 0
+
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	collision_flags = FLAG_COLLISION_NONE
 
@@ -29,8 +31,6 @@
 
 	var/world_spawn = FALSE
 
-	var/lightness = 0 //Calculated tile darkness.
-
 	var/list/stored_shuttle_items
 
 	var/safe_fall = FALSE //Set to true if it's safe to fall on this tile.
@@ -46,6 +46,8 @@
 	//Stored variables for shuttles
 	var/transit_area
 	var/transit_turf
+
+	density = FALSE
 
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
@@ -281,7 +283,7 @@
 
 	return ..()
 
-/turf/proc/setup_turf_light(var/sunlight_freq=VIEW_RANGE*0.5)
+/turf/proc/setup_turf_light(var/sunlight_freq)
 	return FALSE
 
 /turf/should_smooth_with(var/turf/T)

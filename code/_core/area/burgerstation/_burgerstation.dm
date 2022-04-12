@@ -245,6 +245,24 @@
 
 	map_color = COLOR_ENGINEERING
 
+/area/burgerstation/engineering/solars
+	name = "\improper Solars"
+	icon_state = "solars"
+
+	map_color = COLOR_BLUE
+
+/area/burgerstation/engineering/solars/ne
+	name = "\improper Starboard Bow Solars"
+
+/area/burgerstation/engineering/solars/se
+	name = "\improper Starboard Quarter Solars"
+
+/area/burgerstation/engineering/solars/nw
+	name = "\improper Port Bow Solars"
+
+/area/burgerstation/engineering/solars/sw
+	name = "\improper Port Quarter Solars"
+
 /area/burgerstation/engineering/lobby
 	name = "\improper Engineering Lobby"
 	icon_state = "eng"

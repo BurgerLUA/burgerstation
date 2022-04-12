@@ -1,15 +1,16 @@
 /turf/simulated/
 
+	dynamic_lighting = TRUE
+
+	health = null
+	health_base = 100
+
 	var/real_icon
 	var/real_icon_state
-
-	dynamic_lighting = TRUE
 
 	var/tile = FALSE //Set to true if this is a tile.
 
 	var/turf/destruction_turf
-	health = null
-	health_base = 100
 
 	var/reinforced_material_id
 	var/reinforced_color

@@ -398,7 +398,7 @@
 	var/Sy = pixel_turf.y
 	var/Sz = pixel_turf.z
 	var/corner_height = LIGHTING_HEIGHT
-	var/actual_range = (light_angle && facing_opaque) ? light_range * LIGHTING_BLOCKED_FACTOR : light_range
+	var/actual_range = (light_angle && facing_opaque && source_atom != source_turf) ? light_range * LIGHTING_BLOCKED_FACTOR : light_range
 	var/test_x
 	var/test_y
 
