@@ -31,7 +31,7 @@
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)
-			final_movement_delay *= HYPOTENUSE(1,1)
+			final_movement_delay *= SQRT2
 
 		if(isturf(loc) && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc

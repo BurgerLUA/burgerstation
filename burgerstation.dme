@@ -2030,6 +2030,7 @@
 #include "code\_core\turf\simulated\floor\river.dm"
 #include "code\_core\turf\simulated\floor\road.dm"
 #include "code\_core\turf\simulated\floor\snow.dm"
+#include "code\_core\turf\simulated\floor\space.dm"
 #include "code\_core\turf\simulated\floor\stairs.dm"
 #include "code\_core\turf\simulated\floor\tile.dm"
 #include "code\_core\turf\simulated\floor\tile_morphing.dm"

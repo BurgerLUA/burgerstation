@@ -228,3 +228,5 @@
 
 
 #define IS_INFINITY(a) (abs(a) >= INFINITY)
+
+#define SQRT2 1.41421356237

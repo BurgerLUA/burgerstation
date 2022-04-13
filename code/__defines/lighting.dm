@@ -11,6 +11,8 @@
 
 #define LIGHTING_SOFT_THRESHOLD 0.01 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
 #define LIGHTING_BLOCKED_FACTOR 0.75 // How much the range of a directional light will be reduced while facing a wall.
+#define LIGHTING_BLOCKED_FACTOR_TURF 0.5
+
 
 // If defined, instant updates will be used whenever server load permits. Otherwise queued updates are always used.
 //#define USE_INTELLIGENT_LIGHTING_UPDATES

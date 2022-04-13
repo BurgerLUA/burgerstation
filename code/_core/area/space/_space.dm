@@ -14,7 +14,7 @@
 
 	sound_environment = ENVIRONMENT_UNDERWATER
 
-	dynamic_lighting = TRUE
+	dynamic_lighting = FALSE
 
 /area/space/is_space()
 	return TRUE

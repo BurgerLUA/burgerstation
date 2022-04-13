@@ -31,13 +31,7 @@
 	icon_state = "preview"
 	opacity = 0
 	plane = PLANE_SPACE
-	dynamic_lighting = TRUE
-
-/turf/space/New(var/desired_loc)
-	. = ..()
-	icon = null
-	icon_state = null
-	invisibility = 101
+	dynamic_lighting = FALSE
 
 /turf/space/is_space()
 	return TRUE
