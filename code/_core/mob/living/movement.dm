@@ -113,6 +113,8 @@
 
 /mob/living/on_sprint()
 	add_hydration(-0.4)
+	if(health)
+		health.adjust_stamina(-1)
 	if(client)
 		add_attribute_xp(ATTRIBUTE_AGILITY,1)
 	return ..()
@@ -189,15 +191,18 @@
 			S.sneaking = on
 			S.update_sprite()
 
-	if(on && !dead)
+	if(on && !dead && (!health || health.adjust_stamina(-10)))
 		stealth_mod = get_skill_power(SKILL_SURVIVAL,0,1,2)
 		is_sneaking = TRUE
-		return TRUE
 	else
 		is_sneaking = FALSE
-		return FALSE
+
+	return is_sneaking
 
 /mob/living/proc/on_sneak()
+	if(health && !health.adjust_stamina( -(2-stealth_mod)*2.5 ))
+		toggle_sneak(FALSE)
+		return FALSE
 	return TRUE
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)

@@ -87,7 +87,7 @@
 		else
 			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
 
-		I.color = color_mod
+		animate(I,color=color_mod,time=LIFE_TICK)
 		labeled_overlays[o_id] = I
 
 

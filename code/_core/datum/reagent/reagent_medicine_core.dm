@@ -18,11 +18,11 @@
 
 /reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 5*.*multiplier
+	owner.brute_regen_buffer += 10*.*multiplier
 
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.*multiplier
+	owner.brute_regen_buffer += 8*.*multiplier
 
 /reagent/medicine/bicaridine_plus
 	name = "Bicaridine+"
@@ -39,11 +39,11 @@
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 10*.*multiplier
+	owner.brute_regen_buffer += 15*.*multiplier
 
 /reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 8*.*multiplier
+	owner.brute_regen_buffer += 12*.*multiplier
 
 /reagent/medicine/caridone
 	name = "Caridone"
@@ -65,11 +65,11 @@
 
 /reagent/medicine/caridone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,10)*.*multiplier
+	owner.brute_regen_buffer += rand(1,20)*.*multiplier
 
 /reagent/medicine/caridone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,10)*.*multiplier
+	owner.brute_regen_buffer += rand(1,20)*.*multiplier
 
 /reagent/medicine/percardone
 	name = "Percardone"
@@ -119,8 +119,8 @@
 
 /reagent/medicine/dicarditane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.*multiplier
-	owner.burn_regen_buffer += 2*.*multiplier
+	owner.brute_regen_buffer += 12*.*multiplier
+	owner.burn_regen_buffer += 6*.*multiplier
 
 /reagent/medicine/dicarditane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()

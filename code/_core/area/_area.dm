@@ -208,7 +208,7 @@
 	//Machines
 	//Lights
 
-	//Getting Power
+	//Getting power.
 	var/available_charge = 0
 	var/max_charge = 1
 	if(apc && apc.cell)
@@ -218,8 +218,8 @@
 	//Doors
 	if(enable_power_doors & AUTO)
 		if(available_charge/max_charge >= 0.1)
-			toggle_power_doors(ON|AUTO)
-		else
+			if(!(enable_power_doors & ON)) toggle_power_doors(ON|AUTO)
+		else if(!(enable_power_doors & OFF))
 			toggle_power_doors(OFF|AUTO)
 	else if(available_charge <= 0 && !(enable_power_doors & OFF))
 		toggle_power_doors(OFF|AUTO)
@@ -227,16 +227,17 @@
 	//Machines
 	if(enable_power_machines & AUTO)
 		if(available_charge/max_charge >= 0.2)
-			toggle_power_machines(ON|AUTO)
-		else
-			toggle_power_doors(OFF|AUTO)
+			if(!(enable_power_machines & ON)) toggle_power_machines(ON|AUTO)
+		else if(!(enable_power_machines & OFF))
+			toggle_power_machines(OFF|AUTO)
 	else if(available_charge <= 0 && !(enable_power_machines & OFF))
 		toggle_power_machines(OFF|AUTO)
 
+	//Lights
 	if(enable_power_lights & AUTO)
 		if(available_charge/max_charge >= 0.3)
-			toggle_power_lights(ON|AUTO)
-		else
+			if(!(enable_power_lights & ON)) toggle_power_lights(ON|AUTO)
+		else if(!(enable_power_lights & OFF))
 			toggle_power_lights(OFF|AUTO)
 	else if(available_charge <= 0 && !(enable_power_lights & OFF))
 		toggle_power_lights(OFF|AUTO)
@@ -252,6 +253,9 @@
 
 	if(!requires_power)
 		CRASH("Called toggle_power_doors on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
 
 	enable_power_doors = enable
 
@@ -276,6 +280,9 @@
 	if(!requires_power)
 		CRASH("Called toggle_power_machines on an [src.type] that doesn't require power.")
 
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
+
 	enable_power_machines = enable
 
 	for(var/k in powered_machines)
@@ -297,6 +304,9 @@
 
 	if(!requires_power)
 		CRASH("Called toggle_power_lights on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
 
 	enable_power_lights = enable
 

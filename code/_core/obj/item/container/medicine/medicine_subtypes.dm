@@ -4,7 +4,7 @@
 	desc_extended = "Folks here believe that any affliction can be smothered in bandages, and any decently soft cloth can serve as one. Makes one wonder how people with such advanced medical knowledge even get sick at all."
 	icon_state = "brutepack"
 	treatment_time_mul = 1
-	heal_brute = 30
+	heal_brute = 50
 	heal_brute_percent = 0
 	heal_bleeding = TRUE
 	amount_max = 10
@@ -15,7 +15,7 @@
 	name = "badages"
 	desc = "Fucking puns."
 	desc_extended = "A pair of bandages with spikes on them. This will hurt..."
-	heal_brute = -30
+	heal_brute = -25
 	value = 100
 
 /obj/item/container/healing/bandage/advanced
@@ -33,7 +33,7 @@
 	desc_extended = "Applied topically to burns to heal the skin and relieve pain. Standard ointment bottles used to have Silver Sulfadiazine in them, but were deemed too expensive to keep buying in bulk."
 	icon_state = "ointment"
 	treatment_time_mul = 1
-	heal_burn = 30
+	heal_burn = 50
 	heal_burn_percent = 0
 	value = 5
 

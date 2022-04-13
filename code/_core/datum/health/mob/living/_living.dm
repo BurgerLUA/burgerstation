@@ -67,7 +67,7 @@
 
 		if(has_bloodoxygen && L.blood_volume_max)
 			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
-			damage[OXY] = max(0,health_max*(2 - blood_oxygen*2))
+			damage[OXY] = FLOOR(max(0,health_max*(2 - blood_oxygen*2)),HEALTH_PRECISION)
 
 		var/should_be_dead = check_death && L.check_death()
 
@@ -93,7 +93,9 @@
 			L.medical_hud_image_advanced.icon_state = "[damage[TOX] > 0][damage[BURN] > 0][damage[BRUTE] > 0]"
 
 		if(update_hud)
-			L.update_health_element_icons(TRUE,TRUE,TRUE)
+			for(var/k in L.stat_elements)
+				var/obj/hud/button/stat/S = L.stat_elements[k]
+				L.stat_buttons_to_update |= S
 			L.update_boss_health()
 
 /health/mob/living/update_health_stats()
@@ -118,7 +120,7 @@
 	if(.)
 		var/mob/living/L = owner
 		L.queue_health_update = TRUE
-		if(. < 0)
+		if(. > 0) //Increase damage
 			L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
 
 /health/mob/living/adjust_mana(var/adjust_value)
@@ -126,7 +128,7 @@
 	if(.)
 		var/mob/living/L = owner
 		L.queue_health_update = TRUE
-		if(. < 0)
+		if(. < 0) //Reduce mana.
 			L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
 
 /health/mob/living/adjust_stamina(var/adjust_value)
@@ -135,7 +137,7 @@
 		var/mob/living/L = owner
 		L.queue_health_update = TRUE
 		if(stamina_current >= stamina_max*0.25 && L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
-		if(. < 0)
+		if(. < 0) //Reduce stamina.
 			L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
 
 
@@ -159,7 +161,7 @@
 	if(sanity)
 		var/mob/living/L = owner
 		var/sanity_loss = get_loss(SANITY)
-		if(sanity_loss >= 100)
+		if(sanity_loss >= mana_current)
 			if(!L.has_status_effect(STRESSED))
 				L.add_status_effect(STRESSED,-1,1)
 		else if(sanity_loss == 0)
@@ -167,26 +169,16 @@
 
 	return .
 
-/health/mob/living/get_total_loss(var/include_fatigue = TRUE,var/include_pain=TRUE,var/include_sanity=TRUE)
-
+/health/mob/living/get_overall_health()
 	var/mob/living/L = owner
-
-	var/returning_value = 0
+	. = health_max
 	for(var/damage_type in damage)
-		if(!include_fatigue && damage_type == FATIGUE)
-			continue
-		if(!include_pain && damage_type == PAIN)
-			continue
-		if(!include_sanity && damage_type == SANITY)
-			continue
 		if((damage_type == TOX || damage_type == OXY) && L.has_status_effect(ADRENALINE))
 			continue
-		if(damage_type == PAIN)
-			returning_value += max(0,damage[damage_type] - L.get_status_effect_magnitude(PAINKILLER)) //Does this even work?
+		else if(damage_type == PAIN)
+			. -= max(0,damage[damage_type] - L.get_status_effect_magnitude(PAINKILLER))
 		else
-			returning_value += damage[damage_type]
-
-	return returning_value
+			. -= damage[damage_type]
 
 /health/mob/living/inorganic
 	organic = FALSE

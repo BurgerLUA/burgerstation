@@ -128,7 +128,7 @@
 			var/list/offsets = get_directional_offsets(owner,real_target)
 			var/throw_velocity = 10
 			G.drop_item(get_turf(owner))
-			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_iff_tag = owner.iff_tag)
+			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_loyalty_tag = owner.loyalty_tag)
 		next_complex = world.time + 5
 		return FALSE
 	else if(!I.click_flags) //The nade needs to be in our hands.

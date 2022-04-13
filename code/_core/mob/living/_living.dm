@@ -97,8 +97,6 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
-	var/list/obj/hud/screen_blood/screen_blood
-
 	var/allow_experience_gains = FALSE
 
 	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
@@ -257,7 +255,8 @@
 
 	var/next_heartbeat = 0
 
-	var/list/health_icons_to_update = list()
+	var/list/stat_elements = list() //Assoc list.
+	var/list/stat_buttons_to_update = list()
 
 	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
 
@@ -291,9 +290,6 @@
 		QDEL_CUT_ASSOC(skills)
 
 	QDEL_NULL(ai)
-
-	if(screen_blood)
-		QDEL_CUT(screen_blood)
 
 	hit_logs?.Cut()
 
@@ -329,6 +325,8 @@
 	traits_by_category?.Cut()
 
 	status_effects?.Cut()
+
+	stat_buttons_to_update?.Cut()
 
 	QDEL_NULL(stand)
 
@@ -511,14 +509,6 @@
 
 	. = ..()
 
-	if(desired_client)
-		screen_blood = list()
-		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,NORTHEAST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTHEAST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
-
 	SSliving.all_living += src
 
 
@@ -547,6 +537,13 @@
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
 
+	if(client)
+		for(var/d in DIRECTIONS_INTERCARDINAL + SOUTH)
+			var/obj/hud/button/stat/screen_effect/SE = new(src)
+			SE.set_dir(d)
+			SE.update_owner(src)
+
+
 /mob/living/Finalize()
 
 	. = ..()
@@ -564,6 +561,8 @@
 		death()
 
 	update_level(TRUE)
+
+	queue_health_update = TRUE
 
 /mob/living/proc/setup_name()
 	if(boss)

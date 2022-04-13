@@ -519,9 +519,8 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(P.client) P.client.make_ghost(P.loc)
 
 		NO.control_mob(P)
-		P.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 		P.add_species_buttons()
-		P.add_species_health_elements()
+		P.queue_health_update = TRUE
 		href_list["datumrefresh"] = href_list["direct_control"]
 
 	else if(href_list["delall"])
@@ -772,12 +771,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			if(S.default_color_skin)
 				O.additional_blends["skin"].color = S.default_color_skin
 				M.update_overlay_tracked("\ref[O]")
-		if(M.health && M.health_elements && M.health_elements["body"])
-			var/obj/hud/button/health/body/B = M.health_elements["body"]
-			B.update_owner(null) //Please, don't question how...It works...
-			B.update_owner(M)
-		M.update_health_element_icons()
-		M.queue_health_update = 1
+		M.queue_health_update = TRUE
 
 	else if(href_list["remorgan"])
 		href_list["datumrefresh"] = href_list["remorgan"]
@@ -806,12 +800,12 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(!ismob(M))
 			to_chat(span("notice",  "This can only be done to instances of type /mob/living/advanced"))
 			return
-		M.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 		M.client.update_zoom(initial(M.client.zoom_level))
 		M.client.update_verbs()
 		M.client.update_color_mods()
 		M.restore_inventory()
 		M.restore_buttons()
+		M.queue_health_update = TRUE
 		href_list["datumrefresh"] = href_list["regenerateicons"]
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])

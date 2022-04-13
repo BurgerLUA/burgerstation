@@ -18,13 +18,6 @@
 			F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
 			foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
 
-/mob/living/advanced/on_sprint()
-
-	if(health && health.adjust_stamina(-1))
-		update_health_element_icons(stamina=TRUE)
-
-	return ..()
-
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
 	if(grabbing_hand && handcuffed)
@@ -52,25 +45,6 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		pain_mul = clamp(0.1 + (1 - ((health.get_loss(PAIN) - pain_bonus)/health.health_max))*0.9,0.1,1)
 
 	. *= move_delay_multiplier * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
-
-/mob/living/advanced/toggle_sneak(var/on = TRUE)
-
-	if(on && health && !health.adjust_stamina(-10))
-		update_health_element_icons(stamina=TRUE)
-		return FALSE
-
-	return ..()
-
-/mob/living/advanced/on_sneak()
-
-	if(health)
-		if(health.adjust_stamina( -(2-stealth_mod)*2.5 ))
-			update_health_element_icons(stamina=TRUE)
-		else
-			toggle_sneak(FALSE)
-			return FALSE
-
-	return ..()
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 

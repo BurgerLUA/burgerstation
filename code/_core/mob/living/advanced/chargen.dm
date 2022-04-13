@@ -133,7 +133,7 @@
 	apply_mob_parts(FALSE,FALSE,FALSE)
 	default_appearance()
 	add_species_buttons()
-	add_species_health_elements()
+	//add_species_health_elements()
 
 	if(length(kept_items))
 		equip_objects_in_list(kept_items)
@@ -144,9 +144,10 @@
 		B.update_sprite()
 
 	update_all_blends()
-	update_health_element_icons(TRUE,TRUE,TRUE)
 
 	show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
+
+	queue_health_update = TRUE
 
 
 

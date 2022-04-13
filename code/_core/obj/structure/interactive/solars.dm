@@ -27,5 +27,5 @@
 /obj/structure/interactive/solar_panel/get_power_supply()
 	var/turf/T = loc
 	if(!istype(loc))
-		return rand(1,10)
-	return CEILING(T.lightness * rand(250,300),1)
+		return 5
+	return CEILING(10 + T.lightness * 290,1)

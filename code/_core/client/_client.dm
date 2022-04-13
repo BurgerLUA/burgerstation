@@ -15,9 +15,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/selected_hand //Set to a value of LEFT_HAND or RIGHT_HAND to enable. Null to disable.
 
-	var/list/obj/hud/inventory/known_inventory
-	var/list/obj/hud/button/known_buttons
-	var/list/obj/hud/button/known_health_elements
+	var/list/obj/hud/inventory/known_inventory = list()
+	var/list/obj/hud/button/known_buttons = list()
+	var/list/obj/hud/button/known_stat_elements = list()
 
 	var/zoom_level = 2
 
@@ -111,17 +111,10 @@ var/global/list/all_clients = list() //Assoc list
 
 	all_clients -= src.ckey
 
-	if(known_inventory)
-		known_inventory.Cut()
-
-	if(known_buttons)
-		known_buttons.Cut()
-
-	if(known_health_elements)
-		known_health_elements.Cut()
-
-	if(stored_hud_images)
-		stored_hud_images.Cut()
+	known_inventory?.Cut()
+	known_buttons?.Cut()
+	known_stat_elements?.Cut()
+	stored_hud_images?.Cut()
 
 	last_location = null
 	last_object = null
@@ -190,10 +183,6 @@ var/global/list/all_clients = list() //Assoc list
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)
 		new/savedata/client/mob(ckey)
-
-	known_health_elements = list()
-	known_inventory = list()
-	known_buttons = list()
 
 	update_zoom(2)
 

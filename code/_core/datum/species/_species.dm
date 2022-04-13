@@ -117,12 +117,14 @@
 		/obj/hud/button/ability/D
 	)
 
+	/*
 	var/list/obj/hud/button/spawning_health = list(
 		/obj/hud/button/health/bar/hp,
 		/obj/hud/button/health/bar/sp,
 		/obj/hud/button/health/bar/mp,
 		/obj/hud/button/health/body
 	)
+	*/
 
 	var/list/valid_blood_types = list(
 		/reagent/blood/human/ab_negative,

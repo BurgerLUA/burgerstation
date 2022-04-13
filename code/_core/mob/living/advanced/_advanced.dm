@@ -110,6 +110,13 @@
 
 	return ..()
 
+/mob/living/advanced/PostInitialize()
+	. = ..()
+
+	if(client)
+		var/obj/hud/button/stat/body/B = new(src)
+		B.update_owner(src)
+
 /mob/living/advanced/Finalize()
 
 	var/species/S = SPECIES(species)
@@ -280,9 +287,9 @@ mob/living/advanced/Login()
 	. = ..()
 	restore_buttons()
 	restore_inventory()
-	restore_health_elements()
+	restore_stat_elements()
 	restore_local_machines()
-	update_health_element_icons(TRUE,TRUE,TRUE)
+	queue_health_update = TRUE
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/k in local_machines)
@@ -317,14 +324,6 @@ mob/living/advanced/Login()
 	var/species/S = SPECIES(species)
 	if(S)
 		S.generate_traits(src)
-
-/mob/living/advanced/PostInitialize()
-
-	. = ..()
-
-	if(client)
-		update_health_element_icons(TRUE,TRUE,TRUE)
-		add_species_health_elements()
 
 /mob/living/advanced/Finalize()
 	. = ..()

@@ -269,6 +269,11 @@
 		health.update_health()
 		queue_health_update = FALSE
 
+	for(var/k in stat_buttons_to_update)
+		var/obj/hud/button/stat/B = k
+		if(!B.update())
+			stat_buttons_to_update -= k
+
 	if(flash_overlay && flash_overlay.duration > 0)
 		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 		if(flash_overlay.duration <= 0)
@@ -297,16 +302,11 @@
 /mob/living/proc/on_life_fast()
 
 	if(stun_immunity > 0)
-		stun_immunity = max(stun_immunity - LIFE_TICK_FAST,0)
+		stun_immunity = max(stun_immunity - TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
 	else if(stun_immunity < 0)
-		stun_immunity = min(stun_immunity + LIFE_TICK_FAST,0)
+		stun_immunity = min(stun_immunity + TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
 
-	for(var/k in health_icons_to_update)
-		var/obj/hud/button/health/B = k
-		if(!B.special_think())
-			health_icons_to_update -= k
-
-	handle_status_effects(LIFE_TICK_FAST)
+	handle_status_effects(TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
 
 	if(client && !dead && health && next_heartbeat <= world.time)
 		var/desired_heartrate = 60

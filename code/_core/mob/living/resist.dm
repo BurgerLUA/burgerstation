@@ -44,8 +44,7 @@
 					span("warning","You try to resist!"),
 				)
 		resist_counter += 1
-		if(health.adjust_stamina(-20))
-			src.update_health_element_icons(stamina=TRUE)
+		health.adjust_stamina(-20)
 		next_resist = world.time + 10
 		return FALSE
 
@@ -64,8 +63,7 @@
 				span("danger","You quickly pat out the flames!"),
 			)
 		adjust_fire_stacks(-stacks_to_remove)
-		if(health.adjust_stamina(-5))
-			src.update_health_element_icons(stamina=TRUE)
+		health.adjust_stamina(-5)
 		next_resist = world.time + 15
 		return FALSE
 
@@ -109,9 +107,7 @@
 			to_chat(span("warning","You attempt to stealthily resist out of the handcuffs..."))
 
 		handcuff_break_counter += counter_to_add
-		if(health.adjust_stamina(-20))
-			src.update_health_element_icons(stamina=TRUE)
-
+		health.adjust_stamina(-20)
 
 		switch(handcuff_break_counter)
 			if(0 to 25)

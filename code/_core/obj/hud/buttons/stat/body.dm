@@ -1,42 +1,29 @@
-/obj/hud/button/stat/
+/obj/hud/button/stat/body
 	name = "limb health"
 	desc = "Health for your limbs."
-	var/id = "body"
+	id = "body"
 
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "invisible"
 
 	screen_loc = "RIGHT,BOTTOM:12+5"
 
-	layer = LAYER_HUD
-	plane = PLANE_HUD
-	flags = FLAGS_HUD_MOB
-
 	user_colors = FALSE
 
 	var/list/labeled_overlays = list()
 
-/obj/hud/button/stat/Destroy()
+/obj/hud/button/stat/body/Destroy()
 	labeled_overlays?.Cut()
 	. = ..()
 
-/obj/hud/button/stat/update_owner(var/mob/desired_owner)
-
-	if(owner && is_living(owner))
-		var/mob/living/L = owner
-		L.remove_health_element(src)
+/obj/hud/button/stat/body/update_owner(var/mob/desired_owner)
 
 	. = ..()
-
-	if(owner && is_living(owner))
-		var/mob/living/L = owner
-		L.add_health_element(src)
-		L.health_icons_to_update |= src
-		update_sprite()
 
 	labeled_overlays.Cut()
 	vis_contents.Cut()
 
+	//Generate the organs.
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		for(var/o_id in A.labeled_organs)
@@ -56,10 +43,9 @@
 			I.color = "#FFFFFF"
 			labeled_overlays[o_id] = I
 			add_vis_content(I)
-		A.
-		update_vis_contents()
+		update()
 
-/obj/hud/button/stat/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/stat/body/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -68,10 +54,10 @@
 
 	return ..()
 
-/obj/hud/button/stat/proc/update()
+/obj/hud/button/stat/body/update()
 
 	if(!is_advanced(owner))
-		return
+		return FALSE
 
 	var/mob/living/advanced/A = owner
 
@@ -84,7 +70,7 @@
 			I.color = "#000000"
 			continue
 
-		var/health_mod = (O.health.health_current - O.health.get_loss(PAIN)) / O.health.health_max
+		var/health_mod = CEILING( (O.health.health_current - O.health.get_loss(PAIN)) / O.health.health_max, 0.01)
 
 		var/good_color = "#00FF00"
 		var/bad_color = "#FF0000"
@@ -102,11 +88,11 @@
 		else
 			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
 
-		animate(I,color=color_mod,time=LIFE_TICK)
+		animate(I,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK))
 		labeled_overlays[o_id] = I
 
-	return TRUE
+	. = ..()
 
 
-/obj/hud/button/stat/get_examine_list(var/mob/examiner)
+/obj/hud/button/stat/body/get_examine_list(var/mob/examiner)
 	return examiner.get_examine_list(examiner)

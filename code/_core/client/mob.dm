@@ -72,20 +72,11 @@
 
 /client/proc/clear_mob(var/mob/M,var/hard = FALSE) //This is called when the client no longer controls this mob.
 
-	if(known_inventory)
-		known_inventory.Cut()
-
-	if(known_buttons)
-		known_buttons.Cut()
-
-	if(known_health_elements)
-		known_health_elements.Cut()
-
-	if(screen)
-		screen.Cut()
-
-	if(images)
-		images.Cut()
+	known_inventory?.Cut()
+	known_buttons?.Cut()
+	known_stat_elements?.Cut()
+	screen?.Cut()
+	images?.Cut()
 
 	if(!M)
 		return FALSE

@@ -61,8 +61,7 @@
 	if(!A.health)
 		return ..()
 
-	if(A.health.adjust_mana(-cost_mana))
-		A.update_health_element_icons(mana=TRUE)
+	A.health.adjust_mana(-cost_mana)
 
 	return null
 
