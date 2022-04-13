@@ -134,8 +134,6 @@
 	if(ai) ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
-	if(health)
-		health.update_health(update_hud=TRUE,check_death=TRUE)
 	handle_horizontal()
 	undelete(src)
 	update_eyes()
@@ -259,7 +257,7 @@
 /mob/living/proc/on_life()
 
 	if(!dead)
-		handle_regen()
+		handle_natural_regen()
 
 	handle_blocking()
 
@@ -487,49 +485,45 @@ mob/living/proc/on_life_slow()
 	if(!health)
 		return FALSE
 
-	var/update_health = FALSE
-	var/update_stamina = FALSE
-	var/update_mana = FALSE
-
 	var/multiplier = TICKS_TO_SECONDS(LIFE_TICK)
 
 	if(can_buffer_health())
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
 		var/pain_to_regen = clamp(
 			pain_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
 		var/mental_to_regen = clamp(
 			mental_regen_buffer,
-			-health.health_max*0.1,
-			max(health.health_regeneration*multiplier,multiplier)
+			-health.health_max*0.1*multiplier,
+			health.health_max*0.1*multiplier
 		)
-		update_health = health.adjust_loss_smart(
+		health.adjust_loss_smart(
 			brute = -brute_to_regen,
 			burn = -burn_to_regen,
 			tox = -tox_to_regen,
@@ -554,7 +548,6 @@ mob/living/proc/on_life_slow()
 		)
 		health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
-		update_stamina = TRUE
 
 	if(can_buffer_mana())
 		var/mana_to_regen = clamp(
@@ -564,15 +557,10 @@ mob/living/proc/on_life_slow()
 		)
 		health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
-		update_mana = TRUE
-
-	if(update_health || update_stamina || update_mana)
-		queue_health_update = TRUE
-		return TRUE
 
 	return FALSE
 
-/mob/living/proc/handle_regen()
+/mob/living/proc/handle_natural_regen()
 
 	if(!health)
 		return FALSE

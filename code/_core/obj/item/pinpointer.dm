@@ -147,7 +147,7 @@
 
 	value = 20
 
-	var/desired_loyalty = "NanoTrasen"
+	var/desired_loyalty_tag = "NanoTrasen"
 
 	var/encoded = TRUE
 
@@ -164,12 +164,12 @@
 
 	if(encoded && is_living(caller))
 		var/mob/living/L = caller
-		if(L.loyalty_tag != desired_loyalty)
+		if(L.loyalty_tag != desired_loyalty_tag)
 			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
 			return FALSE
 
 	for(var/mob/living/advanced/player/P in all_players)
-		if(P.loyalty_tag != desired_loyalty)
+		if(P.loyalty_tag != desired_loyalty_tag)
 			continue
 		if(!can_track(P))
 			continue
@@ -217,7 +217,7 @@
 	name = "syndicate operative pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of Syndicate Raiders."
 	icon_state = "syndicate"
-	desired_loyalty = "Syndicate"
+	desired_loyalty_tag = "Syndicate"
 	value = 1000
 	encoded = TRUE
 
@@ -225,7 +225,7 @@
 	name = "revolutionary soldier pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of Revolutionary Soldiers."
 	icon_state = "rev"
-	desired_loyalty = "Revolutionary"
+	desired_loyalty_tag = "Revolutionary"
 	value = 1000
 	encoded = TRUE
 

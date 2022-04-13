@@ -142,7 +142,6 @@
 		/obj/structure/interactive/crate = 30,
 		/obj/structure/interactive/crate/closet = 20,
 		/obj/structure/interactive/crate/engineering = 10,
-		/obj/structure/interactive/crate/loot = 5,
 		/obj/structure/interactive/crate/coffin = 5,
 		//Reagents
 		/obj/structure/interactive/reagent_tank/rolly/water = 50,

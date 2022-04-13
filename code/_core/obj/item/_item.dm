@@ -724,7 +724,7 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(magnitude > 3)
 

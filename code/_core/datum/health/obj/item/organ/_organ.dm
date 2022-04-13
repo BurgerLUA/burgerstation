@@ -1,6 +1,12 @@
 /health/obj/item/organ/
 	organic = TRUE
 
+/health/obj/item/organ/restore()
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
+	if(is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		A.queue_organ_health_update |= owner
+
 /health/obj/item/organ/update_health_stats()
 
 	if(!is_organ(owner))
@@ -21,33 +27,34 @@
 
 	. = ..()
 
-	if(. && owner.finalized)
+	if(.)
 
-		if(!health_max)	return
+		if(!health_max)	return .
 
-		if(!is_organ(owner)) return
+		if(!is_organ(owner)) return .
 
 		var/obj/item/organ/O = owner
 
-		if(O.enable_wounds && O.loc && is_advanced(O.loc))
+		if(!O.finalized) return .
+
+		if(is_advanced(O.loc))
 			var/mob/living/advanced/A = O.loc
-			var/should_update = FALSE
-			for(var/damage_type in O.visual_wounds)
-				var/last_amount = O.visual_wounds[damage_type]
-				var/current_amount = clamp(CEILING((get_loss(damage_type)/health_max*0.5)*3, 1),0,3)
-				if(last_amount != current_amount)
-					var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
-					O.add_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
-					O.visual_wounds[damage_type] = current_amount
-					should_update = TRUE
-					if(damage_type == BRUTE && current_amount == 0)
-						O.bleeding = 0
+			if(O.enable_wounds)
+				var/should_update_overlay = FALSE
+				for(var/damage_type in O.visual_wounds)
+					var/last_amount = O.visual_wounds[damage_type]
+					var/current_amount = clamp(CEILING((get_loss(damage_type)/health_max*0.5)*3, 1),0,3)
+					if(last_amount != current_amount)
+						var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
+						O.add_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
+						O.visual_wounds[damage_type] = current_amount
+						should_update_overlay = TRUE
+						if(damage_type == BRUTE && current_amount == 0)
+							O.bleeding = 0
+				if(should_update_overlay)
+					A.update_overlay_tracked("\ref[O]")
 
-			if(should_update)
-				A.update_overlay_tracked("\ref[O]")
-				A.queue_health_update = TRUE
-
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -82,23 +89,20 @@
 
 	. += ..()
 
-	if(. && update && is_organ(owner))
-		var/obj/item/organ/O = owner
-		if(O.health) O.health.update_health()
-		if(is_advanced(owner.loc))
-			var/mob/living/advanced/A = owner.loc
-			A.queue_health_update = TRUE
+	if((brute || burn || rad || pain) && is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		A.queue_organ_health_update |= owner
 
 /health/obj/item/organ/synthetic
 	resistance = list(PAIN=0,TOX=0)
 	organic = FALSE
 
-/health/obj/item/organ/synthetic/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/health/obj/item/organ/synthetic/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	adjust_loss_smart(burn=magnitude,organic=FALSE,robotic=TRUE)
 	return TRUE
 
 /health/obj/item/organ/dummy
 	organic = FALSE
 
-/health/obj/item/organ/dummy/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/obj/item/organ/dummy/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
 	return brute + burn + tox + oxy + fatigue + pain + rad + sanity + mental // + L + plundered + no wenches + marooned + you have scurvy

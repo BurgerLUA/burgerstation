@@ -78,6 +78,5 @@
 		affectLiving.burn_regen_buffer += 1
 		affectLiving.tox_regen_buffer += 1
 		affectLiving.rad_regen_buffer += 1
-		affectLiving.queue_health_update = TRUE
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

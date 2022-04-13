@@ -81,6 +81,8 @@
 	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
 	var/last_mood_gain = 0
 
+	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -479,7 +481,7 @@ mob/living/advanced/Login()
 	text = S.mod_speech(src,text)
 	return ..()
 
-/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	for(var/i=1,i<=5,i++)
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
@@ -489,13 +491,13 @@ mob/living/advanced/Login()
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
 
-/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	. = ..()
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
-		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 /mob/living/advanced/gib(var/hard=FALSE)
 

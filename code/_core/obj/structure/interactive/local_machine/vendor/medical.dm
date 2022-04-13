@@ -46,6 +46,7 @@
 	pixel_x = 0
 	pixel_y = 0
 	dir_offset = TILE_SIZE - 8
+	density = FALSE
 
 /obj/structure/interactive/vending/medical/basic/Initialize()
 	. = ..()

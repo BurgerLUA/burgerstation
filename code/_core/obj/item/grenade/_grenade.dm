@@ -71,7 +71,7 @@
 
 	src.click_self(caller)
 	src.drop_item(get_turf(L),silent=TRUE)
-	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_loyalty = L.loyalty_tag)
+	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_loyalty_tag = L.loyalty_tag)
 
 	return TRUE
 
@@ -109,7 +109,7 @@
 			stored_containers += load_and_create(P,k,src)
 
 
-/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(alpha == 0) //Already gone.
 		return FALSE

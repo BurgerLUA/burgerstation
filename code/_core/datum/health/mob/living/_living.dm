@@ -2,6 +2,12 @@
 	var/has_bloodoxygen = TRUE
 	organic = TRUE
 
+/health/mob/living/restore()
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
+	var/mob/living/L = owner
+	L.queue_health_update = TRUE
+	return TRUE
+
 /health/mob/living/get_damage_multiplier()
 
 	. = ..()
@@ -107,29 +113,44 @@
 
 	L.queue_health_update = TRUE
 
+/health/mob/living/adjust_loss(var/loss_type,var/value)
+	. = ..()
+	if(.)
+		var/mob/living/L = owner
+		L.queue_health_update = TRUE
+		if(. < 0)
+			L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
+
+/health/mob/living/adjust_mana(var/adjust_value)
+	. = ..()
+	if(.)
+		var/mob/living/L = owner
+		L.queue_health_update = TRUE
+		if(. < 0)
+			L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
+
 /health/mob/living/adjust_stamina(var/adjust_value)
 	. = ..()
-	if(. && stamina_current >= stamina_max*0.25)
+	if(.)
 		var/mob/living/L = owner
-		if(L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
+		L.queue_health_update = TRUE
+		if(stamina_current >= stamina_max*0.25 && L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
+		if(. < 0)
+			L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
 
-/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+
+/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
 
 	. = 0
 
 	if(fatigue || mental)
 		var/mob/living/L = owner
-		var/fatigue_adjusted = FALSE
-		var/mana_adjusted = FALSE
-		if(fatigue && (L.ai || !L.has_status_effect(STAMCRIT)) && adjust_stamina(-fatigue))
-			fatigue_adjusted = TRUE
+		if(fatigue && (L.ai || !L.has_status_effect(STAMCRIT)))
+			. += -adjust_stamina(-fatigue)
 			if(stamina_current <= 0)
 				L.add_status_effect(STAMCRIT,-1,-1)
-		if(mental && adjust_mana(-mental))
-			mana_adjusted = TRUE
-		if(fatigue_adjusted || mana_adjusted)
-			L.queue_health_update = TRUE
-		. += fatigue + mental
+		if(mental)
+			. += -adjust_mana(-mental)
 		fatigue = 0
 		mental = 0
 
@@ -166,24 +187,6 @@
 			returning_value += damage[damage_type]
 
 	return returning_value
-
-/health/mob/living/adjust_loss(var/loss_type,var/value)
-	. = ..()
-	if(. < 0)
-		var/mob/living/L = owner
-		L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
-
-/health/mob/living/adjust_mana(var/adjust_value)
-	. = ..()
-	if(. < 0)
-		var/mob/living/L = owner
-		L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
-
-/health/mob/living/adjust_stamina(var/adjust_value)
-	. = ..()
-	if(. < 0)
-		var/mob/living/L = owner
-		L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
 
 /health/mob/living/inorganic
 	organic = FALSE

@@ -86,7 +86,6 @@
 				if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
 					var/experience_gain = -.*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
-		A.health.update_health()
 
 	var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)

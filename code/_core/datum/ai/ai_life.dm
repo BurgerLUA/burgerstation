@@ -62,7 +62,7 @@
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(!owner.anchored && owner.next_move <= 0)
-		if(frustration_move >= frustration_move_threshold*2 && !length(current_path_astar))
+		if(use_pathfinding && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
 			var/path_num = length(current_path)
 			if(path_num)
 				set_path_astar(current_path[path_num])
@@ -75,7 +75,7 @@
 			if(result && owner.has_status_effect(REST))
 				owner.remove_status_effect(REST)
 
-			if(result && frustration_move >= frustration_move_threshold)
+			if(!use_pathfinding && result && frustration_move >= frustration_move_threshold)
 				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
 
 	owner.handle_movement(tick_rate)

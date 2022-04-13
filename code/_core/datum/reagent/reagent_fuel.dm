@@ -9,11 +9,11 @@
 
 	blood_toxicity_multiplier = 5
 
-/reagent/fuel/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
+/reagent/fuel/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 
 	if(explosion_strength_per_unit)
 		var/volume_amount = container.remove_reagent(src.type,container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
-		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty)
+		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
 		smoke(epicenter,volume_amount*explosion_strength_per_unit*0.02,SECONDS_TO_DECISECONDS(2*explosion_strength_per_unit),null,owner,alpha=100)
 
 	. = ..()

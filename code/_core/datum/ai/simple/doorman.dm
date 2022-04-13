@@ -11,6 +11,8 @@
 	aggression = 0
 	retaliate = TRUE
 
+	frustration_move_threshold = 10
+
 /ai/doorman/Destroy()
 	beepsky_marker = null
 	return ..()

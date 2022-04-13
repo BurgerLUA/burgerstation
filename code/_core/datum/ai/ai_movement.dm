@@ -20,7 +20,7 @@
 				frustration_path++
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
-			frustration_move = max(0,frustration_move-1)
+			frustration_move = max(0,frustration_move-0.25)
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
 	if(!new_turf || !old_turf || new_turf.z != old_turf.z)
@@ -63,13 +63,13 @@
 			var/owner_to_objective_dir = get_dir(owner,objective_attack)
 			var/turf/T1 = get_step(owner,owner_to_objective_dir)
 			if(!T1.is_safe_teleport(FALSE))
-				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90))
+				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90,180))
 				frustration_move++
 				return TRUE
 			var/objective_to_owner_dir = get_dir(objective_attack,owner)
 			var/turf/T2 = get_step(objective_attack,objective_to_owner_dir)
 			if(!T2.is_safe_teleport(FALSE))
-				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90))
+				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90,180))
 				frustration_move++
 				return TRUE
 			if(prob(target_distance <= 1 ? 25 : 5)) //Strafe when close.

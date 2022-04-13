@@ -91,7 +91,6 @@
 					continue
 				src.set_dir(get_dir(src,L))
 				L.death()
-				L.health?.update_health()
 				play_sound('sound/effects/neck_snap.ogg',T)
 				if(debug) log_subsystem("Peanut","Found a target. We've killed them.")
 				break

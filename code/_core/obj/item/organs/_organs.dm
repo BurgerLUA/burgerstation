@@ -407,8 +407,8 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 	return damage_desc
 
 
-/obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	. = ..()
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)

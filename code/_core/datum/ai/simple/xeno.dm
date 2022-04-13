@@ -20,7 +20,7 @@
 		if(X.can_leap && world.time >= next_leap && objective_distance >= 3)
 			var/list/offsets = direction_to_pixel_offset(get_dir(owner,objective_attack))
 			var/throw_velocity = 20
-			owner.throw_self(owner,objective_attack,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = 6, desired_iff = owner.iff_tag)
+			owner.throw_self(owner,objective_attack,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = 6, desired_iff_tag = owner.iff_tag)
 			next_leap = world.time + SECONDS_TO_DECISECONDS(10)
 			return TRUE
 

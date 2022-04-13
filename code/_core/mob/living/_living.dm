@@ -597,18 +597,11 @@
 	. = ..()
 	PROCESS_LIVING(src)
 
-/mob/living/Logout()
-
-	if(health)
-		health.update_health() //TODO: Find out what the fuck this is for.
-
-	return ..()
-
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(owner != src)
 		var/area/A = get_area(src)
-		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty,A))
+		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty_tag,A))
 			return TRUE
 
 	if(magnitude > 6)
@@ -630,11 +623,11 @@
 		add_status_effect(STAGGER,magnitude,magnitude, source = epicenter)
 
 	if(health)
-		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty)
+		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 	return TRUE
 
-/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	var/list/params = list()
 	params[PARAM_ICON_X] = 16
 	params[PARAM_ICON_Y] = 16

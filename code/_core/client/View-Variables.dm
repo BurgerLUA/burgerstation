@@ -827,19 +827,18 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "Mob doesn't exist anymore"))
 			return
 		switch(Text)
-			if("brute")	L.health.adjust_loss_smart(brute=amount,update=FALSE)
-			if("fire")	L.health.adjust_loss_smart(burn=amount,update=FALSE)
-			if("toxin")	L.health.adjust_loss_smart(tox=amount,update=FALSE)
-			if("oxygen")L.health.adjust_loss_smart(oxy=amount,update=FALSE)
-			if("fatigue")	L.health.adjust_loss_smart(fatigue=amount,update=FALSE)
-			if("sanity")	L.health.adjust_loss_smart(sanity=amount,update=FALSE)
-			if("mental")	L.health.adjust_loss_smart(mental=amount,update=FALSE)
+			if("brute")	L.health.adjust_loss_smart(brute=amount)
+			if("fire")	L.health.adjust_loss_smart(burn=amount)
+			if("toxin")	L.health.adjust_loss_smart(tox=amount)
+			if("oxygen")L.health.adjust_loss_smart(oxy=amount)
+			if("fatigue")	L.health.adjust_loss_smart(fatigue=amount)
+			if("sanity")	L.health.adjust_loss_smart(sanity=amount)
+			if("mental")	L.health.adjust_loss_smart(mental=amount)
 			if("stamina")	L.health.adjust_stamina(amount)
 			if("mana")	L.health.adjust_mana(amount)
 			else
 				to_chat(span("notice",  "You caused an error. DEBUG: Text:[Text] Mob:[L]"))
 				return
-		L.queue_health_update = TRUE
 
 		if(amount != 0)
 			href_list["datumrefresh"] = href_list["mobToDamage"]

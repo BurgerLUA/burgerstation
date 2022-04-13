@@ -1,4 +1,4 @@
-/atom/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/atom/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(health)
 		var/area/A = get_area(src)
@@ -13,6 +13,6 @@
 	return TRUE
 
 
-/atom/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
-	if(health) health.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+/atom/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+	if(health) health.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 	return TRUE

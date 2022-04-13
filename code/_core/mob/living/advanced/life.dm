@@ -7,6 +7,21 @@
 		return TRUE
 	. = ..()
 
+/mob/living/advanced/on_life()
+
+	if(health && length(queue_organ_health_update))
+		for(var/k in queue_organ_health_update)
+			var/obj/item/organ/O = k
+			if(!labeled_organs[O.id])
+				continue
+			if(!O.health)
+				continue
+			O.health.update_health()
+		queue_organ_health_update.Cut()
+		queue_health_update = TRUE //If organs were updated, then the main body should be updated (which is done below in the . = ..())
+
+	. = ..()
+
 /mob/living/advanced/on_life_slow()
 
 	. = ..()

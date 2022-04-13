@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/stored_book_data = list()
 
+	var/list/valid_random_reagents = list()
+
 /subsystem/reagent/on_life()
 
 	for(var/k in all_temperature_reagent_containers)
@@ -29,6 +31,8 @@ SUBSYSTEM_DEF(reagent)
 		var/reagent/R = k
 		R = new k
 		all_reagents[R.type] = R
+		if(!R.abstract && R.value > 0)
+			valid_random_reagents += R.type
 
 	log_subsystem(name,"Initialized [length(all_reagents)] reagents.")
 

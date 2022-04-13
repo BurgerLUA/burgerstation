@@ -53,8 +53,7 @@
 		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
 		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
 		var/tox_loss = total_loss - (burn_loss + brute_loss)
-		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss,update=FALSE)
-	queue_health_update = TRUE
+		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
 
 
 
