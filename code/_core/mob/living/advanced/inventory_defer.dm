@@ -12,8 +12,6 @@
 	var/y_pos = -FLOOR(1 + slot/6,1)
 
 	var/obj/hud/button/inventory_defer/B = new
-	B.icon = initial(I.icon)
-	B.icon_state = initial(I.icon_state)
 	B.screen_loc = "CENTER+[0.5+x_pos],TOP+[y_pos]"
 	B.clone(I)
 	B.update_owner(src)

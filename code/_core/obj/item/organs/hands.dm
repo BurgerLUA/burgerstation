@@ -114,12 +114,6 @@
 /obj/item/organ/hand/reptile
 	name = "right reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = REPTILE_ARMOR
 
@@ -148,12 +142,6 @@
 /obj/item/organ/hand/reptile_advanced
 	name = "right advanced reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = REPTILE_ARMOR
 
@@ -183,12 +171,6 @@
 /obj/item/organ/hand/diona
 	name = "right diona hand"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	enable_glow = TRUE
 	enable_detail = TRUE
@@ -222,12 +204,6 @@
 /obj/item/organ/hand/cyborg
 	name = "right cyborg hand"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = CYBORG_ARMOR
 	health = /health/obj/item/organ/synthetic
@@ -258,12 +234,6 @@
 /obj/item/organ/hand/beefman
 	name = "right beef hand"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 	damage_type = /damagetype/unarmed/beef/
 
 	defense_rating = MEATMEN_ARMOR
@@ -325,12 +295,6 @@
 /obj/item/organ/hand/skeleton
 	name = "right skeleton hand"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = SKELETON_ARMOR
 
@@ -362,12 +326,6 @@
 /obj/item/organ/hand/monkey
 	name = "right monkey hand"
 	icon = 'icons/mob/living/advanced/species/monkey.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/monkey/left
 	name = "left monkey hand"
@@ -396,12 +354,6 @@
 //Zombie
 /obj/item/organ/hand/zombie
 	name = "right zombie hand"
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
 
@@ -446,12 +398,6 @@
 /obj/item/organ/hand/goblin
 	name = "right goblin hand"
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = GOBLIN_ARMOR
 
@@ -480,12 +426,6 @@
 /obj/item/organ/hand/moth
 	name = "right moth hand"
 	icon = 'icons/mob/living/advanced/species/moth.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/moth/left
 	name = "left moth hand"
@@ -515,12 +455,6 @@
 /obj/item/organ/hand/golem
 	name = "right golem hand"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/golem/left
 	name = "left golem hand"
