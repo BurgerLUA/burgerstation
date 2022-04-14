@@ -13,10 +13,13 @@ var/global/list/possible_lavaland_fauna = list(
 	/obj/marker/generation/mob/watcher = 5,
 	/obj/marker/generation/mob/legion = 5
 )
+var/global/list/possible_lavaland_decor = list(
+	/obj/structure/interactive/basalt = 5,
+)
 
 #define PLACE_MUSHROOM var/datum/D__LINE__ = pickweight(possible_mushrooms); new D__LINE__(src)
 #define PLACE_LAVALAND_FAUNA var/datum/D__LINE__ = pickweight(possible_lavaland_fauna); new D__LINE__(src)
-
+#define PLACE_LAVALAND_DECOR var/datum/D__LINE__ =pickweight(possible_lavaland_decor); new D__LINE__(src) //not used, I know!
 
 /turf/unsimulated/generation/lava
 	name = "lava generation"
