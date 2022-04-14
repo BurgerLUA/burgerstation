@@ -542,7 +542,8 @@
 			var/obj/hud/button/stat/screen_effect/SE = new(src)
 			SE.set_dir(d)
 			SE.update_owner(src)
-
+		var/obj/hud/button/stat/ecg/L = new(src)
+		L.update_owner(src)
 
 /mob/living/Finalize()
 

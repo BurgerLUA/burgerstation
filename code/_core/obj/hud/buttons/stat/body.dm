@@ -12,6 +12,8 @@
 
 	var/list/labeled_overlays = list()
 
+	layer = 0
+
 /obj/hud/button/stat/body/Destroy()
 	labeled_overlays?.Cut()
 	. = ..()
@@ -40,7 +42,7 @@
 			I.appearance = src.appearance
 			I.icon = icon
 			I.icon_state = O.hud_id
-			I.color = "#FFFFFF"
+			I.color = "#000000"
 			labeled_overlays[o_id] = I
 			add_vis_content(I)
 		update()
@@ -61,6 +63,16 @@
 
 	var/mob/living/advanced/A = owner
 
+	var/good_color = "#00FF00"
+
+	var/bad_color = "#FF0000"
+
+	if(owner && owner.client)
+		var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
+		good_color = color_scheme[2]
+
+		bad_color = color_scheme[6]
+
 	for(var/o_id in labeled_overlays)
 
 		var/obj/hud/I = labeled_overlays[o_id]
@@ -72,15 +84,7 @@
 
 		var/health_mod = CEILING( (O.health.health_current - O.health.get_loss(PAIN)) / O.health.health_max, 0.01)
 
-		var/good_color = "#00FF00"
-		var/bad_color = "#FF0000"
 		var/color_mod = "#000000" //Final color
-
-		if(owner && owner.client)
-			var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
-			good_color = color_scheme[3]
-			bad_color = color_scheme[6]
-
 		if(health_mod <= 0)
 			color_mod = "#303030"
 		else if(health_mod >= 1)
@@ -88,7 +92,11 @@
 		else
 			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
 
-		animate(I,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK))
+		if(I.color == "#000000")
+			I.color = color_mod
+		else
+			animate(I,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK))
+
 		labeled_overlays[o_id] = I
 
 	. = ..()

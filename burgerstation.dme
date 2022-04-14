@@ -1022,6 +1022,7 @@
 #include "code\_core\obj\hud\buttons\squad\_squad.dm"
 #include "code\_core\obj\hud\buttons\stat\_stat.dm"
 #include "code\_core\obj\hud\buttons\stat\body.dm"
+#include "code\_core\obj\hud\buttons\stat\ecg.dm"
 #include "code\_core\obj\hud\buttons\stat\screen_effect.dm"
 #include "code\_core\obj\hud\buttons\vehicle\_vehicle.dm"
 #include "code\_core\obj\hud\buttons\vendor\_vendor_button.dm"
