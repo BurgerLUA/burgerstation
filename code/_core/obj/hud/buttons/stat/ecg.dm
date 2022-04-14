@@ -76,7 +76,7 @@
 	if(color == "#000000")
 		color=color_mod
 	else
-		animate(src,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK))
+		animate(src,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
 
 	if(text_to_use)
 		maptext = "<font color='#0000FF'>[text_to_use]</font>"
@@ -85,3 +85,6 @@
 
 
 	. = ..()
+
+/obj/hud/button/stat/ecg/get_examine_list(var/mob/examiner)
+	return examiner.get_examine_list(examiner)

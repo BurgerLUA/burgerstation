@@ -269,11 +269,6 @@
 		health.update_health()
 		queue_health_update = FALSE
 
-	for(var/k in stat_buttons_to_update)
-		var/obj/hud/button/stat/B = k
-		if(!B.update())
-			stat_buttons_to_update -= k
-
 	if(flash_overlay && flash_overlay.duration > 0)
 		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 		if(flash_overlay.duration <= 0)
@@ -300,6 +295,11 @@
 	return TRUE
 
 /mob/living/proc/on_life_fast()
+
+	for(var/k in stat_buttons_to_update)
+		var/obj/hud/button/stat/B = k
+		if(!B.update())
+			stat_buttons_to_update -= k
 
 	if(stun_immunity > 0)
 		stun_immunity = max(stun_immunity - TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
