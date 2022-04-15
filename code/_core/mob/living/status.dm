@@ -1,4 +1,7 @@
-/mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=-1,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+/mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=null,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+
+	if(!isnum(duration))
+		duration = magnitude
 
 	PROCESS_LIVING(src)
 

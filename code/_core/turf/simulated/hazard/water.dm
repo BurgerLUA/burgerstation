@@ -3,19 +3,14 @@
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
 
-	collision_flags = FLAG_COLLISION_WALKING | FLAG_COLLISION_CRAWLING
+	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	footstep = /footstep/water
 	fishing_rewards = /loot/fishing/river
 
-	density_north = TRUE
-	density_east = TRUE
-	density_south = TRUE
-	density_west = TRUE
-
-	plane = PLANE_FLOOR
-	layer = 0
+	plane = PLANE_MOB
+	layer = LAYER_MOB_WATER
 
 	desired_light_frequency = 4
 	desired_light_power = 0.5
@@ -26,6 +21,37 @@
 	reagents = /reagent_container/turf/
 
 	map_color = COLOR_BLUE
+
+	blend_mode = BLEND_MULTIPLY
+
+
+/turf/simulated/hazard/water/Exited(atom/movable/O, atom/newloc)
+
+	. = ..()
+
+	if(O.density && O.layer < LAYER_MOB_WATER && src.layer != newloc.layer)
+		for(var/i=1,i<=5,i++)
+			FILTER_REMOVE(O,"water[i]")
+
+/turf/simulated/hazard/water/Entered(atom/movable/O, atom/oldloc)
+
+	. = ..()
+
+	if(O.density && O.layer < LAYER_MOB_WATER && src.layer != oldloc.layer)
+		for(var/i=1,i<=5,i++)
+			FILTER_ADD(O,"water[i]",type="wave",x=rand(40,50),y=rand(40,50),size=rand(2,4),offset=RAND_PRECISE(0,1))
+			var/num = length(O.filters)
+			var/f = O.filters[num]
+			animate(f,offset=f:offset,time=0,loop=-1,flags=ANIMATION_PARALLEL)
+			animate(offset=f:offset-1,time=rand(10,10))
+
+
+/turf/simulated/hazard/water/Exit(atom/movable/O,atom/oldloc)
+
+	if(O.layer <= LAYER_MOB_SWIMMING && src.layer != oldloc.layer && !O.grabbing_hand) //Keep fish and objects in the water, unless its being grabbed.
+		return FALSE
+
+	. = ..()
 
 /turf/simulated/hazard/water/jungle/Finalize()
 	. = ..()

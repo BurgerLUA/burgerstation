@@ -53,6 +53,8 @@
 
 	var/dir_offset = TILE_SIZE
 
+	var/list/filter_list
+
 /atom/proc/get_display_name(var/mob/caller)
 	return "[src.name]"
 

@@ -35,7 +35,7 @@
 					span("danger","You resist out of the grip of \the [attacker.name]!")
 				)
 				grabbing_hand.release_object()
-				attacker.add_status_effect(STAGGER,10,source = src)
+				attacker.add_status_effect(STAGGER,10,10,source = src)
 				resist_counter = 0
 				return TRUE
 			else

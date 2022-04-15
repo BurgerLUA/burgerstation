@@ -7155,6 +7155,9 @@
 /obj/decal/hazard/black,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
+"Ad" = (
+/turf/simulated/hazard/water,
+/area/burgerstation/hall/east)
 
 (1,1,1) = {"
 aa
@@ -46090,9 +46093,9 @@ do
 kZ
 pq
 ma
-ma
-ma
-ma
+Ad
+Ad
+Ad
 ma
 vJ
 kZ
@@ -46347,9 +46350,9 @@ do
 kZ
 pq
 ma
-ma
-ma
-lZ
+Ad
+Ad
+Ad
 lZ
 vJ
 kX
@@ -46604,9 +46607,9 @@ kA
 la
 pq
 ma
-ma
-ma
-ma
+Ad
+Ad
+Ad
 lZ
 vJ
 nZ
