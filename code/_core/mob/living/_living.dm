@@ -127,6 +127,8 @@
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
 
+	var/obj/effect/water_mask
+
 	var/has_footsteps = TRUE
 
 	var/climb_counter = 0
@@ -314,6 +316,7 @@
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
 	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(water_mask)
 
 	QDEL_NULL(flash_overlay)
 
@@ -483,29 +486,47 @@
 		security_hud_image.layer = PLANE_AUGMENTED
 		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
-	chat_overlay = new(src.loc)
+	chat_overlay = new(src)
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
 	chat_overlay.alpha = 0
+	src.vis_contents += chat_overlay
 	//This is initialized somewhere else.
 
-	alert_overlay = new(src.loc)
+	alert_overlay = new(src)
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 	alert_overlay.pixel_z = 20
+	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.
 
-	fire_overlay = new(src.loc)
+	fire_overlay = new(src)
 	fire_overlay.layer = LAYER_MOB_FIRE
 	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
 	fire_overlay.icon_state = "0"
+	src.vis_contents += fire_overlay
 	//This is initialized somewhere else.
 
-	shield_overlay = new(src.loc)
+	shield_overlay = new(src)
 	shield_overlay.layer = LAYER_EFFECT
 	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
 	shield_overlay.icon_state = "block"
 	shield_overlay.alpha = 0
+	src.vis_contents += shield_overlay
+	//This is initialized somewhere else.
+
+	water_mask = new(src)
+	water_mask.plane = PLANE_MOB_WATER_MASK
+	water_mask.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	water_mask.icon = 'icons/water_mask.dmi'
+	water_mask.icon_state = "water_mask"
+	water_mask.pixel_x = -32 + pixel_x
+	water_mask.pixel_y = -32 + pixel_y
+	water_mask.render_target = "*water_mask_\ref[src]"
+	water_mask.alpha = 255 //Should always be max.
+	water_mask.filters += filter(type="alpha", x=0, y=0, render_source="plane_water")
+	src.vis_contents += water_mask
+	filters += filter(type="alpha", x=0, y=0, render_source="*water_mask_\ref[src]", flags=MASK_INVERSE)
 
 	. = ..()
 

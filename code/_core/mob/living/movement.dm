@@ -55,6 +55,7 @@
 
 	. = ..()
 
+	/*
 	var/turf/current_loc_as_turf = get_turf(src)
 	if(chat_overlay)
 		chat_overlay.glide_size = src.glide_size
@@ -68,6 +69,7 @@
 	if(shield_overlay)
 		shield_overlay.glide_size = src.glide_size
 		shield_overlay.force_move(current_loc_as_turf)
+	*/
 
 	if(is_sneaking)
 		on_sneak()

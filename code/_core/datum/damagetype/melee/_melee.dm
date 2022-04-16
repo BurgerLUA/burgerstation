@@ -18,7 +18,7 @@
 
 	var/condition_on_hit = TRUE
 
-	savage_hit_threshold = 0.1
+	savage_hit_threshold = 0.25
 
 	sneak_attack_multiplier = 4
 

@@ -50,6 +50,16 @@
 
 	//filters += filter(type="radial_blur", size= 0.02/VIEW_RANGE)
 
+//WATER
+/obj/plane_master/water
+	plane = PLANE_WATER
+	render_target = "plane_water"
+
+/obj/plane_master/water/apply_post_processing()
+	. = ..()
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=0, size=-3, offset=0, color=rgb(0,0,0,200))
+
 //MOBS
 /obj/plane_master/mobs
 	plane = PLANE_MOB
@@ -84,6 +94,7 @@
 
 /obj/plane_master/mobs_stealth
 	plane = PLANE_MOB_STEALTH
+	render_target = "plane_mob_stealth"
 
 /obj/plane_master/mobs_stealth/apply_post_processing()
 	. = ..()
@@ -149,7 +160,6 @@
 //Openspace
 /obj/plane_master/openspace
 	plane = PLANE_FLOOR_BELOW
-	appearance_flags = PLANE_MASTER
 	color = "#333333"
 
 /obj/plane_master/openspace/apply_post_processing()
@@ -204,3 +214,10 @@
 /obj/plane_master/weather/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha", x=0, y=0, render_source="*area_exterior")
+
+
+/obj/plane_master/water_mask
+	plane = PLANE_MOB_WATER_MASK
+
+/obj/plane_master/water_mask/apply_post_processing()
+	. = ..()

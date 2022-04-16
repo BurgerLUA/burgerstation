@@ -70,7 +70,7 @@
 			var/b = greyscale_amount*light_mod
 
 			var/list/desired_color = list(
-				a,b,b,0,
+				1,b,b,0,
 				b,a,b,0,
 				b,b,a,0,
 				0,0,0,1,

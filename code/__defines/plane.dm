@@ -8,6 +8,9 @@
 
 #define PLANE_FLOOR_BELOW -50 //For openspace.
 
+#define PLANE_WATER_FLOOR -44
+
+#define PLANE_WATER -43
 
 //Turfs
 #define PLANE_FLOOR -42
@@ -42,8 +45,10 @@
 
 #define PLANE_MOB_LARGE -20
 
+#define PLANE_MOB_WATER_MASK -19
+
 //Special Objs
-#define PLANE_SCENERY -11
+#define PLANE_SCENERY -15
 
 #define PLANE_EFFECT -10
 

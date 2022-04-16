@@ -133,7 +133,7 @@ var/global/list/all_damage_numbers = list()
 
 	var/attack_animation_distance = 18
 
-	var/savage_hit_threshold = 0.3 //30%
+	var/savage_hit_threshold = 0.4 //40%
 
 	var/sneak_attack_multiplier = 2 //200%
 

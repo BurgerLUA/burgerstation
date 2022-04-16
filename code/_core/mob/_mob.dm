@@ -5,6 +5,8 @@
 	layer = LAYER_MOB
 	plane = PLANE_MOB
 
+	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE | LONG_GLIDE
+
 	var/ckey_last //The person controlling this. Can be null if control is given up.
 	var/ckey_owner //The one who spawned it in. Only null if deleting.
 
@@ -56,6 +58,7 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	var/obj/plane_master/walls/plane_master_wall
+	var/obj/plane_master/water/plane_master_water
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/mobs_small/plane_master_mob_small
 	var/obj/plane_master/mobs_large/plane_master_mob_large
@@ -71,6 +74,7 @@
 	var/obj/plane_master/hud/plane_master_hud
 	var/obj/plane_master/weather/plane_master_weather
 	var/obj/plane_master/area_exterior/plane_master_area_exterior
+	var/obj/plane_master/water_mask/plane_master_water_mask
 
 	var/obj/hud/button/examine_bar/examine_bar
 
@@ -159,6 +163,7 @@
 		observing = null
 
 	QDEL_NULL(plane_master_wall)
+	QDEL_NULL(plane_master_water)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_mob_small)
 	QDEL_NULL(plane_master_mob_large)
@@ -174,6 +179,7 @@
 	QDEL_NULL(plane_master_hud)
 	QDEL_NULL(plane_master_weather)
 	QDEL_NULL(plane_master_area_exterior)
+	QDEL_NULL(plane_master_water_mask)
 
 	QDEL_NULL(fov)
 
@@ -213,6 +219,10 @@
 	if(!plane_master_wall)
 		plane_master_wall = new(src)
 	C.screen += plane_master_wall
+
+	if(!plane_master_water)
+		plane_master_water = new(src)
+	C.screen += plane_master_water
 
 	if(!plane_master_mob)
 		plane_master_mob = new(src)
@@ -269,6 +279,10 @@
 	if(!plane_master_area_exterior)
 		plane_master_area_exterior = new(src)
 	C.screen += plane_master_area_exterior
+
+	if(!plane_master_water_mask)
+		plane_master_water_mask = new(src)
+	C.screen += plane_master_water_mask
 
 	if(!examine_overlay)
 		examine_overlay = new(src)
