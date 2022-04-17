@@ -217,8 +217,8 @@
 		"help"
 	)
 
-	var/tabled = FALSE
-	var/currently_tabled = FALSE
+	var/on_table = FALSE
+	var/on_liquid = FALSE
 
 	density = TRUE
 
@@ -457,6 +457,8 @@
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
+	render_target = "\ref[src]"
+
 	blood_volume_max = blood_volume
 
 	if(desired_level_multiplier > 0)
@@ -473,18 +475,18 @@
 		medical_hud_image.loc = src
 		medical_hud_image.layer = PLANE_AUGMENTED
 		medical_hud_image.pixel_y = 4
-		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
 		medical_hud_image_advanced.loc = src
 		medical_hud_image_advanced.layer = PLANE_AUGMENTED
-		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 	if(enable_security_hud)
 		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 		security_hud_image.loc = src
 		security_hud_image.layer = PLANE_AUGMENTED
-		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 	chat_overlay = new(src)
 	chat_overlay.layer = LAYER_EFFECT
@@ -515,18 +517,19 @@
 	src.vis_contents += shield_overlay
 	//This is initialized somewhere else.
 
-	water_mask = new(src)
-	water_mask.plane = PLANE_MOB_WATER_MASK
-	water_mask.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	//Create the water mask effect.
+	water_mask = new(src) //Blend mode doesn't work here.
 	water_mask.icon = 'icons/water_mask.dmi'
 	water_mask.icon_state = "water_mask"
-	water_mask.pixel_x = -32 + pixel_x
-	water_mask.pixel_y = -32 + pixel_y
-	water_mask.render_target = "*water_mask_\ref[src]"
-	water_mask.alpha = 255 //Should always be max.
-	water_mask.filters += filter(type="alpha", x=0, y=0, render_source="plane_water")
-	src.vis_contents += water_mask
-	filters += filter(type="alpha", x=0, y=0, render_source="*water_mask_\ref[src]", flags=MASK_INVERSE)
+	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
+	water_mask.plane = PLANE_MOB_WATER_MASK
+	water_mask.layer = 0
+	water_mask.pixel_x = -32
+	water_mask.pixel_y = -16
+	water_mask.pixel_z = -16 //I DON'T KNOW WHY THIS IS FUCKING NEEDED BUT IT IS.
+	water_mask.alpha = 200
+	water_mask.filters += filter(type="alpha",x=0,y=0,render_source="\ref[src]")
+	vis_contents += water_mask
 
 	. = ..()
 

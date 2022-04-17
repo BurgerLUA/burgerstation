@@ -55,22 +55,6 @@
 
 	. = ..()
 
-	/*
-	var/turf/current_loc_as_turf = get_turf(src)
-	if(chat_overlay)
-		chat_overlay.glide_size = src.glide_size
-		chat_overlay.force_move(current_loc_as_turf)
-	if(alert_overlay)
-		alert_overlay.glide_size = src.glide_size
-		alert_overlay.force_move(current_loc_as_turf)
-	if(fire_overlay)
-		fire_overlay.glide_size = src.glide_size
-		fire_overlay.force_move(current_loc_as_turf)
-	if(shield_overlay)
-		shield_overlay.glide_size = src.glide_size
-		shield_overlay.force_move(current_loc_as_turf)
-	*/
-
 	if(is_sneaking)
 		on_sneak()
 
@@ -91,10 +75,12 @@
 				if(!WFS || move_mod > 2)
 					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
 
-	handle_tabled()
+	climb_counter = 0
 
 	last_move_delay = TICKS_TO_DECISECONDS(next_move)
 	last_move_time = world.time
+
+	update_pixel_z()
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
@@ -234,20 +220,28 @@
 
 	return ..()
 
-/mob/living/proc/handle_tabled()
+/mob/living/proc/get_pixel_z()
 
-	climb_counter = 0
+	. = initial(pixel_z)
 
-	if(tabled != currently_tabled)
-		currently_tabled = tabled
-		if(currently_tabled)
-			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
-			next_move = max(DECISECONDS_TO_TICKS(10),next_move)
-		else
-			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
-			next_move = max(DECISECONDS_TO_TICKS(5),next_move)
+	if(on_table)
+		. += 10
 
-	return TRUE
+	if(on_liquid)
+		var/turf/simulated/liquid/L = loc
+		. -= L.depth
+
+/mob/living/proc/update_pixel_z()
+
+	var/desired_pixel_z = get_pixel_z()
+
+	if(pixel_z != desired_pixel_z)
+		animate(src, pixel_z = desired_pixel_z, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
+		//animate(water_mask,pixel_z=-(16 + desired_pixel_z),time=10,easing = CIRCULAR_EASING | EASE_OUT)
+		next_move = max(DECISECONDS_TO_TICKS(10),next_move)
+		return TRUE
+
+	return FALSE
 
 /mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag)
 

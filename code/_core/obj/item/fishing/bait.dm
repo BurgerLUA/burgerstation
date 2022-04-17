@@ -24,7 +24,7 @@
 		"base" = "#3269A8",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/hazard/water/sea
+	valid_turf = /turf/simulated/liquid/water/sea
 	value = 50
 
 /obj/item/fishing/bait/sea/infinite
@@ -45,7 +45,7 @@
 		"base" = "#36A2B5",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/hazard/water
+	valid_turf = /turf/simulated/liquid/water
 	value = 50
 
 /obj/item/fishing/bait/river/infinite
@@ -65,6 +65,6 @@
 		"base" = "#DE6A21",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/hazard/lava/
+	valid_turf = /turf/simulated/liquid/lava/
 
 	value = 250

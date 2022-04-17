@@ -7156,7 +7156,7 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
 "Ad" = (
-/turf/simulated/liquid/water,
+/turf/simulated/hazard/water,
 /area/burgerstation/hall/east)
 
 (1,1,1) = {"

@@ -1,4 +1,4 @@
-/turf/simulated/hazard/lava/
+/turf/simulated/liquid/lava/
 	name = "lava"
 	icon = 'icons/turf/floor/lava2.dmi'
 	desc = "Melting hot lava, dont fall in!"
@@ -18,26 +18,28 @@
 
 	map_color = COLOR_ORANGE
 
-/turf/simulated/hazard/lava/Enter(atom/movable/O,atom/oldloc)
+	depth = 4
+
+/turf/simulated/liquid/lava/Enter(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/mob/abstract/node_checker))
 		return FALSE
 
 	return ..()
 
-/turf/simulated/hazard/lava/Entered(atom/movable/O,atom/oldloc)
+/turf/simulated/liquid/lava/Entered(atom/movable/O,atom/oldloc)
 	if(is_living(O))
 		lava_idiot(O)
 	return ..()
 
-/turf/simulated/hazard/lava/post_change_turf(var/old_turf_type)
+/turf/simulated/liquid/lava/post_change_turf(var/old_turf_type)
 
 	. = ..()
 
 	for(var/mob/living/L in contents)
 		lava_idiot(L)
 
-/turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L,var/check=FALSE)
+/turf/simulated/liquid/lava/proc/lava_idiot(var/mob/living/L,var/check=FALSE)
 
 	if(length(L.status_immune) && L.status_immune[FIRE])
 		return FALSE

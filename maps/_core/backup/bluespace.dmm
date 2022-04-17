@@ -191,7 +191,7 @@
 /turf/simulated/floor/basalt,
 /area/centcomm/chargen)
 "aO" = (
-/turf/simulated/liquid/lava,
+/turf/simulated/hazard/lava,
 /area/centcomm/chargen)
 "aP" = (
 /obj/effect/fake_lighting/solid,

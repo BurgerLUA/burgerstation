@@ -1,6 +1,6 @@
 /ai/proc/can_enter_turf(var/turf/T)
 
-	if(!ignore_hazard_turfs && istype(T,/turf/simulated/hazard/))
+	if(!ignore_hazard_turfs && istype(T,/turf/simulated/liquid/))
 		return FALSE
 
 	return TRUE

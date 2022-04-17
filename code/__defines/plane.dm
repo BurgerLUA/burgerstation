@@ -10,8 +10,6 @@
 
 #define PLANE_WATER_FLOOR -44
 
-#define PLANE_WATER -43
-
 //Turfs
 #define PLANE_FLOOR -42
 
@@ -37,6 +35,10 @@
 #define PLANE_CURRENCY -29
 
 //Mob
+#define PLANE_MOB_FISH -25
+
+#define PLANE_WATER -24
+
 #define PLANE_MOB_STEALTH -23
 
 #define PLANE_MOB_SMALL -22
@@ -45,7 +47,7 @@
 
 #define PLANE_MOB_LARGE -20
 
-#define PLANE_MOB_WATER_MASK -19
+#define PLANE_MOB_WATER_MASK -18
 
 //Special Objs
 #define PLANE_SCENERY -15

@@ -15,7 +15,7 @@
 /turf/unsimulated/generation/snow,
 /area/lz_001/snow)
 "af" = (
-/turf/simulated/liquid/water/sea,
+/turf/simulated/hazard/water/sea,
 /area/lz_001/snow)
 "ag" = (
 /turf/unsimulated/generation/forest,
@@ -66,7 +66,7 @@
 	},
 /area/dungeon/z_01/forest)
 "aJ" = (
-/turf/simulated/liquid/water,
+/turf/simulated/hazard/water,
 /area/lz_001/caves)
 "aK" = (
 /turf/simulated/floor/cobblestone/side{
@@ -109,11 +109,11 @@
 /area/lz_001/desert)
 "aX" = (
 /mob/living/simple/spacecarp,
-/turf/simulated/liquid/water/sea,
+/turf/simulated/hazard/water/sea,
 /area/lz_001/forest)
 "aY" = (
 /mob/living/simple/spacecarp/leader,
-/turf/simulated/liquid/water/sea,
+/turf/simulated/hazard/water/sea,
 /area/lz_001/forest)
 "bd" = (
 /turf/simulated/floor/cult,
@@ -125,7 +125,7 @@
 	},
 /area/dungeon/z_01/forest)
 "dl" = (
-/turf/simulated/liquid/water/sea,
+/turf/simulated/hazard/water/sea,
 /area/lz_001/forest)
 "fR" = (
 /turf/simulated/floor/colored/sand/beach,
@@ -134,7 +134,7 @@
 /turf/unsimulated/generation/forest_cave,
 /area/lz_001/forest)
 "jB" = (
-/turf/simulated/liquid/water/sea,
+/turf/simulated/hazard/water/sea,
 /area/dungeon/z_01/forest)
 "kE" = (
 /turf/simulated/floor/wood/dock,
@@ -161,7 +161,7 @@
 /turf/simulated/wall/metal/reinforced,
 /area/lz_001/forest)
 "up" = (
-/turf/simulated/liquid/water/sea,
+/turf/simulated/hazard/water/sea,
 /area/lz_001/desert)
 "zo" = (
 /turf/unsimulated/generation/forest,

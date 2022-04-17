@@ -5,7 +5,7 @@
 	layer = LAYER_MOB
 	plane = PLANE_MOB
 
-	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE | LONG_GLIDE
+	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
 
 	var/ckey_last //The person controlling this. Can be null if control is given up.
 	var/ckey_owner //The one who spawned it in. Only null if deleting.

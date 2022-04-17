@@ -740,9 +740,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(L.client.is_zoomed)
 			. *= 1/(1 + total_zoom_mul*0.5)
 		else
-			. *= min(1,total_zoom_mul*0.5)/1
+			. *= min(1,total_zoom_mul*0.35)/1
 
-	. *= max(0.25,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,0.75)) //Based on skill
+	. *= max(0.1,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1)) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 

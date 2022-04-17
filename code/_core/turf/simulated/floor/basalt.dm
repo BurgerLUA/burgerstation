@@ -16,7 +16,7 @@
 
 	move_delay_modifier = 1.05
 
-	destruction_turf = /turf/simulated/hazard/lava/
+	destruction_turf = /turf/simulated/liquid/lava/
 
 	health_base = 300
 

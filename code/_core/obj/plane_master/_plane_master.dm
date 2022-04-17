@@ -52,7 +52,7 @@
 
 //WATER
 /obj/plane_master/water
-	plane = PLANE_WATER
+	plane = PLANE_WATER_FLOOR
 	render_target = "plane_water"
 
 /obj/plane_master/water/apply_post_processing()
@@ -70,6 +70,9 @@
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-4, size=3, offset=0, color=rgb(0,0,0,200))
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
+
+
 
 /obj/plane_master/mobs_small
 	plane = PLANE_MOB_SMALL
@@ -80,6 +83,8 @@
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,200))
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
+
 
 /obj/plane_master/mobs_large
 	plane = PLANE_MOB_LARGE
@@ -90,7 +95,7 @@
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-6, size=5, offset=0, color=rgb(0,0,0,200))
-
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
 
 /obj/plane_master/mobs_stealth
 	plane = PLANE_MOB_STEALTH
@@ -99,6 +104,7 @@
 /obj/plane_master/mobs_stealth/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha",render_source="*fov_\ref[owner]")
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
 
 //DARKNESS
 /obj/plane_master/darkness
@@ -218,6 +224,9 @@
 
 /obj/plane_master/water_mask
 	plane = PLANE_MOB_WATER_MASK
+	render_target = "*plane_water_mask"
 
 /obj/plane_master/water_mask/apply_post_processing()
 	. = ..()
+	src.filters += filter(type="alpha", x=0, y=0, render_source="plane_water") //Masks only draw in water.
+

@@ -1,5 +1,5 @@
 /obj/marker/generation/lava
-	object_to_place = /turf/simulated/hazard/lava
+	object_to_place = /turf/simulated/liquid/lava
 	grow_amount_min = 5
 	grow_amount_max = 10
 	objects_max = 50
@@ -40,7 +40,7 @@
 	color = COLOR_CYAN
 
 /obj/marker/generation/water
-	object_to_place = /turf/simulated/hazard/water
+	object_to_place = /turf/simulated/liquid/water
 	grow_amount_min = 15
 	grow_amount_max = 30
 	objects_max = 10
@@ -51,7 +51,7 @@
 
 /obj/marker/generation/water/jungle
 	objects_max = 15
-	object_to_place = /turf/simulated/hazard/water/jungle
+	object_to_place = /turf/simulated/liquid/water/jungle
 
 /obj/marker/generation/sand
 	object_to_place = /turf/simulated/floor/colored/sand/beach

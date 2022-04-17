@@ -86,7 +86,7 @@
 	if(!checked_grenades)
 		find_grenade()
 
-	if(found_grenade && objective_attack && prob(5))
+	if(found_grenade && objective_attack && get_dist(owner,objective_attack) > 4 && prob(5))
 		var/turf/T = get_step(A,get_dir(A,objective_attack))
 		if(T.is_safe_teleport(TRUE))
 			if(!handle_grenade(found_grenade))
@@ -352,4 +352,4 @@
 		else
 			checked_weapons = TRUE //Give up.
 
-	return ..()
+	. = ..()

@@ -32,7 +32,7 @@ var/global/list/possible_lavaland_decor = list(
 		return ..()
 
 	if(x <= VIEW_RANGE || x >= world.maxx - VIEW_RANGE || y <= VIEW_RANGE || y >= world.maxy - VIEW_RANGE) //Handle corners.
-		new /turf/simulated/hazard/lava(src)
+		new /turf/simulated/liquid/lava(src)
 		if(prob(2))
 			new /obj/marker/generation/lava(src)
 		return ..()
@@ -146,13 +146,13 @@ var/global/list/possible_lavaland_decor = list(
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
-			new /turf/simulated/hazard/lava(src)
+			new /turf/simulated/liquid/lava(src)
 		if(0.1 to 0.2)
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
 		if(0.2 to 0.4)
-			new /turf/simulated/hazard/lava(src)
+			new /turf/simulated/liquid/lava(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt(src)
 		if(0.4 to 0.6)
@@ -160,7 +160,7 @@ var/global/list/possible_lavaland_decor = list(
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.6 to 0.8)
-			new /turf/simulated/hazard/lava(src)
+			new /turf/simulated/liquid/lava(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.8 to INFINITY)

@@ -211,11 +211,11 @@
 
 	//No going back. We're moving.
 
-	//Do: Enter the turf.
-	if(src.density) NewLoc.Entered(src,OldLoc)
-
 	//Do: Exit the turf.
 	if(src.density) OldLoc.Exited(src,NewLoc)
+
+	//Do: Enter the turf.
+	if(src.density) NewLoc.Entered(src,OldLoc)
 
 	//Do: Crossed the contents
 	if(src.density)

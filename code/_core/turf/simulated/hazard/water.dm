@@ -1,6 +1,6 @@
 var/global/obj/water_ground
 
-/turf/simulated/hazard/water
+/turf/simulated/liquid/water
 	name = "water"
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
@@ -26,28 +26,9 @@ var/global/obj/water_ground
 
 	alpha = 150
 
-/turf/simulated/hazard/water/Finalize()
+	depth = 8
 
-	. = ..()
-
-	if(!water_ground)
-		water_ground = new(null)
-		water_ground.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
-		water_ground.vis_flags = VIS_INHERIT_ID
-		water_ground.icon = 'icons/turf/floor/icons.dmi'
-		water_ground.icon_state = "dirt"
-		water_ground.plane = PLANE_WATER_FLOOR
-		water_ground.layer = -1000
-	vis_contents += water_ground
-
-/turf/simulated/hazard/water/Exit(atom/movable/O,atom/oldloc)
-
-	if(O.layer <= LAYER_MOB_SWIMMING && src.layer != oldloc.layer && !O.grabbing_hand) //Keep fish and objects in the water, unless its being grabbed.
-		return FALSE
-
-	. = ..()
-
-/turf/simulated/hazard/water/jungle/Finalize()
+/turf/simulated/liquid/water/jungle/Finalize()
 
 	. = ..()
 
@@ -61,6 +42,6 @@ var/global/obj/water_ground
 					R.pixel_y = rand(-8,8)
 				break
 
-/turf/simulated/hazard/water/sea
+/turf/simulated/liquid/water/sea
 	name = "saltwater"
 	fishing_rewards = /loot/fishing/sea

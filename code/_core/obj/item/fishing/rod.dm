@@ -20,7 +20,7 @@
 	var/obj/effect/fishing_bob/fishing_bob
 	var/obj/effect/alert/exclaim/fishing_alert
 
-	var/turf/simulated/hazard/fishing_turf
+	var/turf/simulated/liquid/fishing_turf
 
 	var/mob/last_caller
 
@@ -249,17 +249,17 @@
 			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
 			return TRUE
 
-	if(istype(object,/turf/simulated/hazard/))
+	if(istype(object,/turf/simulated/liquid/))
 		if(compact)
 			caller.to_chat(span("notice","Extend your fishing rod first!"))
 			return TRUE
-		var/turf/simulated/hazard/H = object
+		var/turf/simulated/liquid/H = object
 		if(!H.fishing_rewards)
 			return TRUE
 		if(!line || !lure || !bait || H.type != bait.valid_turf)
 			caller.to_chat(span("warning","You need a line, a lure, and the right bait in order to use \the [src.name]!"))
 			return TRUE
-		if(!line.lavaproof && istype(object,/turf/simulated/hazard/lava))
+		if(!line.lavaproof && istype(object,/turf/simulated/liquid/lava))
 			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))
 			return TRUE
 		INTERACT_CHECK

@@ -33,7 +33,7 @@
 #include "code\__defines\chat.dm"
 #include "code\__defines\check_tick.dm"
 #include "code\__defines\code.dm"
-#include "code\__defines\colission.dm"
+#include "code\__defines\collision.dm"
 #include "code\__defines\colors.dm"
 #include "code\__defines\config.dm"
 #include "code\__defines\controls.dm"
