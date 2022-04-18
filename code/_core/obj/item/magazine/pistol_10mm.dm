@@ -10,7 +10,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/sol = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm

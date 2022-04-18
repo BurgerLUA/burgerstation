@@ -8,7 +8,8 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/longcon = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_45
