@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman
-	name = "\improper .308 AR-M"
+	name = "\improper .308 Mauler MR"
 	desc = "Vanilla, but still powerful."
 	desc_extended = "The .308 Mauler Marksman Rifle is THE dmr for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/308.dmi'
 	icon_state = "inventory"
-	value = 3750
+	value = 1900
 
 	tier = 2
 
@@ -80,7 +80,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod
-	name = "\improper .308 Marksman Rifle MOD"
+	name = "\improper .308 Mauler MR MOD"
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/308_mod.dmi'
 
 	heat_max = 0.4

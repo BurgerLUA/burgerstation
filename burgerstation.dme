@@ -1460,7 +1460,6 @@
 #include "code\_core\obj\item\magazine\pistol_9mm.dm"
 #include "code\_core\obj\item\magazine\pulse.dm"
 #include "code\_core\obj\item\magazine\revolver.dm"
-#include "code\_core\obj\item\magazine\rifle_308.dm"
 #include "code\_core\obj\item\magazine\rifle_308_m13.dm"
 #include "code\_core\obj\item\magazine\rifle_4mm.dm"
 #include "code\_core\obj\item\magazine\rifle_545.dm"

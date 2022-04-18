@@ -8,8 +8,8 @@
 
 	tier = 2
 
-	damage_mod = 1.1
-	shoot_delay = 1
+	damage_mod = 1.3
+	shoot_delay = 1.1
 	burst_delay = 7
 	max_bursts = 3
 
@@ -22,7 +22,7 @@
 	can_wield = TRUE
 
 	size = SIZE_4
-	weight = 12
+	weight = 14
 
 	bullet_length_min = 40
 	bullet_length_best = 45

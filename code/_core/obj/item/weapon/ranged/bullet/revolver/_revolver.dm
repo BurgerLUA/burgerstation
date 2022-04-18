@@ -12,6 +12,29 @@
 
 	tier_type = "revolver"
 
+/obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+	var/quick_shot = world.time - last_shoot_time < shoot_delay
+
+	. = ..()
+
+	if(. && quick_shot)
+		var/turf/T = get_turf(src)
+		play_sound('sound/weapons/revolver_timing.ogg',T)
+
+
+/obj/item/weapon/ranged/bullet/revolver/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
+
+	. = ..()
+
+	if(!caller.client)
+		return .
+
+	var/shot_ago = world.time - last_shoot_time
+
+	if(shot_ago >= .*0.25 && shot_ago <= .*0.5) //Can shoot really fast if you time it.
+		return shot_ago * 0.25
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)

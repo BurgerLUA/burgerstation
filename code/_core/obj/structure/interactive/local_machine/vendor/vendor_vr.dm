@@ -161,7 +161,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/m4,
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
-		/obj/item/magazine/rifle_308,
+		/obj/item/magazine/sniper_308,
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/special

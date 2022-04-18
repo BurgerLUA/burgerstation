@@ -15,9 +15,9 @@
 	bullet_diameter_max = 12
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
-		/obj/item/weapon/ranged/bullet/magazine/smg/fbi
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_45

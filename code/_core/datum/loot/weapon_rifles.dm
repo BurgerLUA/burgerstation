@@ -17,13 +17,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
-		/obj/item/magazine/sniper_762,
-		/obj/item/magazine/sniper_762,
+		/obj/item/magazine/sniper_308/nato,
+		/obj/item/magazine/sniper_308/nato,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced = 1,
-		/obj/item/magazine/sniper_762 = 4,
+		/obj/item/magazine/sniper_308/nato = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -203,13 +203,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
-		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308,
+		/obj/item/magazine/sniper_308,
+		/obj/item/magazine/sniper_308,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman = 1,
-		/obj/item/magazine/rifle_308 = 4,
+		/obj/item/magazine/sniper_308 = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -300,13 +300,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
-		/obj/item/magazine/sniper_762,
-		/obj/item/magazine/sniper_762,
+		/obj/item/magazine/sniper_308/nato,
+		/obj/item/magazine/sniper_308/nato,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service = 1,
-		/obj/item/magazine/sniper_762 = 4,
+		/obj/item/magazine/sniper_308/nato = 4,
 	)
 	loot_count = 6
 	chance_none = 25

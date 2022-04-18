@@ -8,13 +8,13 @@
 
 	tier = 1
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
 	damage_mod = 1.1
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
@@ -23,7 +23,7 @@
 	size = SIZE_3
 	weight = 10
 
-	heat_max = 0.05
+	heat_max = 0.08
 
 	bullet_length_min = 40
 	bullet_length_best = 45

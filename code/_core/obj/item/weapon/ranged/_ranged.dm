@@ -12,6 +12,7 @@
 	var/shoot_delay = 4 //In deciseconds
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
 	var/next_shoot_time = 0
+	var/last_shoot_time = 0 //Only used for revolvers but still.
 
 	var/recoil_delay = 0 //As a factor. Lower values mean slower kicks, higher values mean faster kicks.
 	var/queued_recoil = 0
@@ -32,7 +33,6 @@
 	//Dynamic accuracy.
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
-	var/heat_to_remove = 0.01 //Heat to remove per decisecond.
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
@@ -306,16 +306,19 @@
 	if(next_shoot_time > world.time)
 		return FALSE
 
+	if(last_shoot_time - world.time > get_shoot_delay(caller,object,location,params))
+		return FALSE
+
 	return TRUE
 
 /obj/item/weapon/ranged/think()
 
-	if(recoil_delay > 0 && queued_recoil > 0)
-		var/heat_to_add = CEILING(queued_recoil*recoil_delay,0.001)
+	if(queued_recoil > 0)
+		var/heat_to_add = CEILING(queued_recoil*0.25,0.001)
 		heat_current = min(heat_max,heat_current + heat_to_add)
 		queued_recoil = max(0,queued_recoil - heat_to_add)
-
-	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
+	else if(heat_max && last_shoot_time + (shoot_delay*(weight/10)) < world.time)
+		var/heat_to_remove = CEILING(0.03/max(1,weight) + heat_current*0.1,0.001)
 		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
@@ -461,10 +464,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/mob/living/advanced/A = caller
 		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
 	if(wielded)
-		arm_strength *= 3
+		arm_strength *= 2
 
-	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use
-	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
+	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
+	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
+	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
 
 	if(projectile_to_use)
 
@@ -561,9 +565,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			penetrations_left
 		)
 
-	next_shoot_time = world.time + shoot_delay_to_use
+	last_shoot_time = world.time
+
 	if(heat_max)
-		if(recoil_delay > 0)
+		if(recoil_delay_to_use > 0)
 			queued_recoil = heat_per_shot_to_use
 		else
 			heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
@@ -594,7 +599,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		firing_pin.on_shoot(caller,src)
 
 	if(automatic && is_player(caller) && caller.client)
-		spawn(next_shoot_time - world.time)
+		spawn(shoot_delay_to_use)
 			var/mob/living/advanced/player/P = caller
 			if(P && P.client && !P.qdeleting && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])

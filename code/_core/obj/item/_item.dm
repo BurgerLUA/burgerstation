@@ -533,7 +533,7 @@ var/global/list/rarity_to_mul = list(
 	else
 		undelete(src)
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
