@@ -22,7 +22,7 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
-		/obj/item/magazine/smp_9mm,
+		/obj/item/magazine/smg_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/smg/thompson,
 		/obj/item/magazine/thompson,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,

@@ -1,16 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/starter
-	name = "\improper 4.6x30mm FNG"
-	desc = ""
-	desc_extended = "An extremely lightweight, cheap and near recoiless combat rifle designed for new trainees to get some hands-on experience with firearms."
+	name = "\improper .45 FNG"
+	desc = "Who the hell came up with this?"
+	desc_extended = "An extremely lightweight, cheap and near recoiless combat rifle designed for new trainees to get some hands-on experience with larger firearms. It's a god damn rifle with a submachinegun round."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/46_1.dmi'
 	icon_state = "inventory"
 	value = 400
 
 	tier = 0
 
-	shoot_delay = 2.5
-
-	damage_mod = 1
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -25,13 +23,13 @@
 
 	heat_max = 0.05
 
-	bullet_length_min = 25
-	bullet_length_best = 30
-	bullet_length_max = 31
+	bullet_length_min = 20
+	bullet_length_best = 23
+	bullet_length_max = 24
 
-	bullet_diameter_min = 4
-	bullet_diameter_best = 4.6
-	bullet_diameter_max = 5
+	bullet_diameter_min = 11
+	bullet_diameter_best = 11.43
+	bullet_diameter_max = 12
 
 	ai_heat_sensitivity = 1
 

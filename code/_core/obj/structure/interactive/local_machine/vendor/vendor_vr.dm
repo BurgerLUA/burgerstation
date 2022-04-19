@@ -128,11 +128,11 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
-		/obj/item/magazine/smp_9mm,
+		/obj/item/magazine/smg_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
-		/obj/item/magazine/smg_9mm_banana,
+		/obj/item/magazine/smg_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,

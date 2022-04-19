@@ -17,7 +17,9 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/starter = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/starter/equipped = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_45
