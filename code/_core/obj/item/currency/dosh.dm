@@ -27,7 +27,4 @@
 
 /obj/item/currency/dosh/update_sprite()
 	. = ..()
-	if(amount == 1)
-		name = "1 dosh"
-	else
-		name = "[amount] doshes"
+	name = "dosh ($[amount*5])"
