@@ -3,7 +3,7 @@ var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 /obj/item/currency/credits
 	name = "credits"
 	desc = "Looks familiar."
-	desc_extended = "A plastic microchip containing a super-unique 1024 Exabyte long hash representing ownership of local space on the bluespace net. Has real-world value, apparantly."
+	desc_extended = "A plastic microchip containing a super-unique 1024 Exabyte long hash representing ownership of local space on the bluespace net. Has real-world value, apparently."
 	icon = 'icons/obj/item/credit.dmi'
 	icon_state = "null"
 
