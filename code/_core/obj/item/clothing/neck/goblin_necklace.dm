@@ -34,7 +34,8 @@
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)
 			continue
-		if(affectLiving.health.get_mana_loss())
-			affectLiving.mana_regen_buffer += 1
+		if(affectLiving.health.mana_current >= affectLiving.health.mana_max)
+			continue
+		affectLiving.mana_regen_buffer += 1
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

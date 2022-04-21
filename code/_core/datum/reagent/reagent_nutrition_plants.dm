@@ -262,17 +262,17 @@
 /reagent/nutrition/capsaicin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.pain_regen_buffer += -.*multiplier
-	owner.send_pain(.*multiplier)
+	owner.send_pain_response(.*multiplier)
 
 
 /reagent/nutrition/capsaicin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 	owner.pain_regen_buffer += -. * 0.5*multiplier
-	owner.send_pain(. * 0.5*multiplier)
+	owner.send_pain_response(. * 0.5*multiplier)
 
 /reagent/nutrition/capsaicin/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 	owner.pain_regen_buffer += -.*multiplier
-	owner.send_pain(.*multiplier)
+	owner.send_pain_response(.*multiplier)

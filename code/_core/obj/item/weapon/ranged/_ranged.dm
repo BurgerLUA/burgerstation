@@ -592,7 +592,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 					else
 						O = A.labeled_organs[BODY_HAND_LEFT]
 				if(O && O.health)
-					O.health.adjust_loss_smart(PAIN=arm_damage,organic=TRUE,robotic=FALSE)
+					if(O.health.organic)
+						O.health.adjust_loss_smart(BRUTE=min(arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
+					else
+						O.health.adjust_loss_smart(BRUTE=min(arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
+					if(arm_damage >= 20 && O.send_pain_response(arm_damage))
+						A.to_chat(span("warning","The recoil of \the [src.name] injures your arm!"))
 
 
 	if(use_iff_tag && firing_pin)

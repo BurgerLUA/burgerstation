@@ -202,6 +202,6 @@
 	. = ..()
 	if(is_living(O))
 		O.to_chat(span("danger","<h1>You're stunned by the trap!!</h1>"))
-		O.send_pain(400)
+		O.send_pain_response(50)
 		return TRUE
 	qdel(src)

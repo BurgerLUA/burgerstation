@@ -160,7 +160,7 @@
 
 	if(sanity)
 		var/mob/living/L = owner
-		var/sanity_loss = get_loss(SANITY)
+		var/sanity_loss = damage[SANITY]
 		if(sanity_loss >= mana_current)
 			if(!L.has_status_effect(STRESSED))
 				L.add_status_effect(STRESSED,-1,1)
@@ -173,12 +173,11 @@
 	var/mob/living/L = owner
 	. = health_max
 	for(var/damage_type in damage)
+		if(damage_type == PAIN) //Don't include pain.
+			continue
 		if((damage_type == TOX || damage_type == OXY) && L.has_status_effect(ADRENALINE))
 			continue
-		else if(damage_type == PAIN)
-			. -= max(0,damage[damage_type] - L.get_status_effect_magnitude(PAINKILLER))
-		else
-			. -= damage[damage_type]
+		. -= damage[damage_type]
 
 /health/mob/living/inorganic
 	organic = FALSE

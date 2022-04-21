@@ -54,12 +54,13 @@
 		good_color_text = color_scheme[4]
 		bad_color_text = color_scheme[5]
 
-	var/health_mod = clamp(L.health.health_current/owner.health.health_max,0,1)
+	var/perceived_health_mod = clamp( (L.health.health_current - owner.health.damage[PAIN]) / owner.health.health_max,0,1)
+	var/real_health_mod = clamp(L.health.health_current/owner.health.health_max,0,1)
 
 	var/list/color_mod = list(
-		blend_colors(bad_color,good_color,health_mod),
-		blend_colors(bad_color_outline,good_color_outline,health_mod),
-		blend_colors(bad_color_text,good_color_text,health_mod)
+		blend_colors(bad_color,good_color,perceived_health_mod),
+		blend_colors(bad_color_outline,good_color_outline,perceived_health_mod),
+		blend_colors(bad_color_text,good_color_text,perceived_health_mod)
 	)
 
 	var/text_to_use
@@ -70,8 +71,8 @@
 			icon_state = "dead"
 		text_to_use = "<center>DEATH</center>"
 	else
-		icon_state = "[clamp(CEILING(health_mod*5,1),0,5)]"
-		text_to_use = "[FLOOR(health_mod*100,1)]%"
+		icon_state = "[clamp(CEILING(real_health_mod*5,1),0,5)]"
+		text_to_use = "[FLOOR(perceived_health_mod*100,1)]%"
 
 	if(color == "#000000")
 		color=color_mod

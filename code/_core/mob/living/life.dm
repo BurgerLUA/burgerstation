@@ -150,15 +150,15 @@
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
 	if(health) health.adjust_loss_smart(
-		brute = -health.get_loss(BRUTE),
-		burn = -health.get_loss(BURN),
-		tox = -health.get_loss(TOX),
-		oxy = -health.get_loss(OXY),
-		fatigue = -health.get_loss(FATIGUE),
-		pain = -health.get_loss(PAIN),
-		rad = -health.get_loss(RAD),
-		sanity = -health.get_loss(SANITY),
-		mental = -health.get_loss(MENTAL)
+		brute = -health.damage[BRUTE],
+		burn = -health.damage[BURN],
+		tox = -health.damage[TOX],
+		oxy = -health.damage[OXY],
+		fatigue = -health.damage[FATIGUE],
+		pain = -health.damage[PAIN],
+		rad = -health.damage[RAD],
+		sanity = -health.damage[SANITY],
+		mental = -health.damage[MENTAL]
 	)
 	return TRUE
 
@@ -310,8 +310,8 @@
 		var/desired_heartrate = 60
 		if(has_status_effect(ADRENALINE))
 			desired_heartrate += 40
-		if(health.health_current <= 0)
-			desired_heartrate += (health.health_current/health.health_max)*60 //This will be negative
+		if(health.health_current - health.damage[PAIN] <= 0)
+			desired_heartrate += ((health.health_current - health.damage[PAIN])/health.health_max)*60 //This will be negative
 		if(health.stamina_current < health.stamina_max)
 			desired_heartrate += (1 - health.stamina_current/health.stamina_max)*60
 		if(abs(desired_heartrate - 60) > 30)
@@ -582,9 +582,9 @@ mob/living/proc/on_life_slow()
 
 	if(health.health_regen_cooef > 0 && health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod*(GR ? GR.health_regen_mul : 1)
-		var/brute_to_adjust = min(max(0,health.get_loss(BRUTE)*health.health_regen_cooef - brute_regen_buffer),health_mod)
-		var/burn_to_adjust = min(max(0,health.get_loss(BURN)*health.health_regen_cooef - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.get_loss(PAIN)*health.health_regen_cooef - pain_regen_buffer),health_mod)
+		var/brute_to_adjust = min(max(0,health.damage[BRUTE]*health.health_regen_cooef - brute_regen_buffer),health_mod)
+		var/burn_to_adjust = min(max(0,health.damage[BURN]*health.health_regen_cooef - burn_regen_buffer),health_mod)
+		var/pain_to_adjust = min(max(0,health.damage[PAIN]*health.health_regen_cooef - pain_regen_buffer),health_mod)
 		if(brute_to_adjust != 0 || burn_to_adjust != 0 || pain_to_adjust != 0)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust
@@ -595,7 +595,7 @@ mob/living/proc/on_life_slow()
 
 	if(health.stamina_regen_cooef > 0 && stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
 		var/stamina_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.stamina_regeneration*nutrition_hydration_mod*(GR ? GR.stamina_regen_mul : 1)
-		var/stamina_adjust = min(max(0,health.get_stamina_loss()*health.stamina_regen_cooef - stamina_regen_buffer),stamina_to_regen)
+		var/stamina_adjust = min(max(0,(health.stamina_max - health.stamina_current)*health.stamina_regen_cooef - stamina_regen_buffer),stamina_to_regen)
 		if(stamina_adjust != 0)
 			stamina_regen_buffer += stamina_adjust
 			if(stamina_adjust > 0 && player_controlled)
@@ -603,7 +603,7 @@ mob/living/proc/on_life_slow()
 
 	if(health.mana_regen_cooef > 0 && mana_regen_delay <= 0 && health.mana_regeneration > 0)
 		var/mana_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.mana_regeneration*nutrition_hydration_mod*(1+(health.mana_current/health.mana_max)*3)*(GR ? GR.mana_regen_mul : 1)
-		var/mana_adjust = min(max(0,health.get_mana_loss()*health.mana_regen_cooef - mana_regen_buffer),mana_to_regen)
+		var/mana_adjust = min(max(0,(health.mana_max - health.mana_current)*health.mana_regen_cooef - mana_regen_buffer),mana_to_regen)
 		if(mana_adjust != 0)
 			mana_regen_buffer += mana_adjust
 			if(mana_adjust > 0 && player_controlled)

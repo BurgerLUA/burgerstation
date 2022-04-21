@@ -1,5 +1,7 @@
 #define DEFAULT_NAME "Your name here."
 
+var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
+
 /mob/living/advanced
 
 	name = DEFAULT_NAME
@@ -422,16 +424,9 @@ mob/living/advanced/Login()
 	if(health?.stamina_current <= 0 || has_status_effect(STAMCRIT))
 		return FALSE
 
-	var/list/organs_to_check = list(
-		BODY_FOOT_RIGHT,
-		BODY_FOOT_LEFT,
-		BODY_LEG_LEFT,
-		BODY_LEG_RIGHT
-	)
-
-	for(var/k in organs_to_check)
+	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(!O || !O.health || O.health.health_current <= 0)
+		if(!O || (O.health && (O.health.health_current <= 0 || O.broken)))
 			return FALSE
 
 	return ..()

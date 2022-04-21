@@ -47,9 +47,8 @@
 	if(check && !istype(L.loc,src.type))
 		return FALSE
 
-	if(!L.on_fire)
+	if(!L.on_fire && L.send_pain_response(20))
 		L.to_chat(span("danger","<h1>The lava is HOT!</h1>"))
-		L.send_pain(20)
 
 	L.add_status_effect(FIRE,100,0,stealthy=L.on_fire)
 

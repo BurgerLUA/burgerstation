@@ -31,14 +31,14 @@
 	. = ..()
 
 	var/local_strength = adrenaline_strength * (container.flags_metabolism & REAGENT_METABOLISM_BLOOD ? 1 : 0.25)
-	if(L.get_status_effect_magnitude(ADRENALINE) <= local_strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= local_strength)
 		L.add_status_effect(ADRENALINE,local_strength,-1)
 
 /reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(ADRENALINE) <= adrenaline_strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
 		L.remove_status_effect(ADRENALINE)
 
 /reagent/nutrition/energy/grey_bull

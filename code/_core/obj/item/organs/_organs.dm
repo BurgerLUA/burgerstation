@@ -139,9 +139,11 @@
 /obj/item/organ/proc/get_defense_rating()
 	return defense_rating
 
-/obj/item/organ/proc/send_pain(var/pain_amount=50)
+/obj/item/organ/proc/send_pain_response(var/pain_amount=50)
+	if(!has_pain)
+		return FALSE
 	var/mob/living/advanced/A = loc
-	if(!A.send_pain(pain_amount))
+	if(!A.send_pain_response(pain_amount))
 		return FALSE
 	on_pain()
 	for(var/k in attached_organs)
@@ -167,7 +169,7 @@
 	if(display_mesage && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.visible_message(span("warning","\The [A.name]\s [broken_name] breaks!"),span("danger","Your [broken_name] breaks!"))
-
+	src.health.adjust_loss_smart(pain=health.health_max*0.25)
 	return TRUE
 
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
@@ -176,20 +178,18 @@
 
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
-
 		if(health)
 			if(broken)
 				health.adjust_loss_smart(pain=damage_amount*0.25)
-			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.get_loss(BRUTE) <= SAFENUM(damage_table[BLUNT]))
+			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
 				break_bone()
 			if(A.blood_type)
 				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
 				if(total_bleed_damage>0)
 					var/bleed_to_add = total_bleed_damage/50
 					src.bleeding += bleed_to_add
-		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
-			if(!A.dead)
-				send_pain(damage_amount)
+		if(!A.dead && has_pain && atom_damaged == src && (broken || (src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
+			src.send_pain_response(damage_amount)
 		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && !(A.override_butcher || length(A.butcher_contents)))
 			var/gib_chance = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])
 			if(A.dead)

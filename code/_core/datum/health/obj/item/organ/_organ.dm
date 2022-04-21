@@ -43,7 +43,7 @@
 				var/should_update_overlay = FALSE
 				for(var/damage_type in O.visual_wounds)
 					var/last_amount = O.visual_wounds[damage_type]
-					var/current_amount = clamp(CEILING((get_loss(damage_type)/health_max*0.5)*3, 1),0,3)
+					var/current_amount = clamp(CEILING((damage[damage_type]/health_max*0.5)*3, 1),0,3)
 					if(last_amount != current_amount)
 						var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
 						O.add_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
@@ -62,9 +62,11 @@
 	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
 		return 0
 
-	if(pain && pain > 0 && is_advanced(owner.loc))
+	if(pain > 0 && is_advanced(owner.loc))
+		var/obj/item/organ/O = owner
 		var/mob/living/advanced/A = owner.loc
-		A.mood -= pain*0.25
+		A.mood -= pain*0.05
+		O.send_pain_response(pain)
 
 	if(tox || oxy || fatigue || sanity || mental) //These types should be dealt to the owner.
 		if(is_advanced(owner.loc))

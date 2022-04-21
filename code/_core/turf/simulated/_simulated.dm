@@ -89,22 +89,6 @@
 		SSturf.blood_turfs -= src
 	return TRUE
 
-/turf/simulated/get_examine_list(var/mob/caller)
-	. = ..()
-	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
-	. += div("notice","The slippery percentage is [get_slip_strength()*100]%.")
-
-/*
-/turf/simulated/New(var/atom/desired_loc)
-
-	if(real_icon)
-		icon = real_icon
-	if(real_icon_state)
-		icon_state = real_icon_state
-
-	return ..()
-*/
-
 /turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	if(!destruction_turf)

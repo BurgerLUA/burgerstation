@@ -62,7 +62,7 @@
 
 		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
 
-			var/health_loss = 1 - health/max_health
+			var/health_loss = 1 - (health - owner.health.damage[PAIN])/max_health
 			var/greyscale_amount = clamp(( (health_loss**2) - 0.6)*3,0,0.9)
 
 			var/light_mod = clamp(0.5 + (health/max_health),0.5,1)
@@ -70,7 +70,7 @@
 			var/b = greyscale_amount*light_mod
 
 			var/list/desired_color = list(
-				1,b,b,0,
+				0.25 + a*0.75,b,b,0,
 				b,a,b,0,
 				b,b,a,0,
 				0,0,0,1,
@@ -82,7 +82,7 @@
 	else if(dir in DIRECTIONS_INTERCARDINAL)
 
 		var/max_pain = owner.health.health_max*owner.health.health_regen_cooef
-		var/pain = owner.health.get_loss(PAIN)
+		var/pain = owner.health.damage[PAIN]
 
 		var/max_stamina = owner.health.stamina_max*owner.health.stamina_regen_cooef
 		var/stamina = owner.health.stamina_current

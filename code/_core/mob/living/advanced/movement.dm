@@ -28,8 +28,6 @@
 
 	. = ..()
 
-var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
-
 mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
@@ -37,7 +35,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 	var/health_mul = 1
 	var/stamina_mul = 1
 	var/pain_mul = 1
-	var/adrenaline_bonus = 1 + ((get_status_effect_magnitude(ADRENALINE)/100)*(0.5 + (get_status_effect_duration(ADRENALINE)/100))*0.5)
+	var/adrenaline_bonus = 1 + ((STATUS_EFFECT_MAGNITUDE(src,ADRENALINE)/100)*(min(1,STATUS_EFFECT_DURATION(src,ADRENALINE)/100)))
 
 	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
@@ -46,10 +44,10 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 				. *= 1.25
 
 	if(health)
-		var/pain_bonus = min(1,get_status_effect_magnitude(PAINKILLER)/100) * min(1,0.5 + (get_status_effect_duration(PAINKILLER)/100)*0.5) * health.health_max
+		var/pain_bonus = min(1,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)/100) * min(1,0.5 + (STATUS_EFFECT_DURATION(src,PAINKILLER)/100)*0.5) * health.health_max
 		health_mul = clamp(0.5 + ((health.health_current + pain_bonus)/health.health_max),0.5,1)
 		stamina_mul = clamp(0.75 + ((health.stamina_current + pain_bonus)/health.stamina_max),0.75,1)
-		pain_mul = clamp(0.1 + (1 - ((health.get_loss(PAIN) - pain_bonus)/health.health_max))*0.9,0.1,1)
+		pain_mul = clamp(0.1 + (1 - ((health.damage[PAIN] - pain_bonus)/health.health_max))*0.9,0.1,1)
 
 	. *= move_delay_multiplier * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
 
@@ -82,13 +80,8 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 			if(O && O.health && O.broken && prob(80))
 				O.health.adjust_loss_smart(pain=1)
 				sent_pain = O
-		if(prob(5) && sent_pain)
-			if(sent_pain.health.health_current <= 0)
-				src.to_chat(span("danger","Your broken [sent_pain.name] causes you to collapse!"))
-				src.add_status_effect(STUN,30,stealthy=TRUE)
-			else
-				src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
-				src.add_status_effect(STAGGER,10,stealthy=TRUE)
+		if(prob(5) && sent_pain && sent_pain.send_pain_response(20))
+			src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
 
 	if(. && isturf(old_loc))
 		var/turf/T = old_loc

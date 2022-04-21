@@ -47,7 +47,7 @@
 		if(cowardice >= 0)
 			var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
 			if(health_percent <= cowardice)
-				owner.move_dir = get_dir(objective_attack,owner)
+				owner.move_dir = get_dir(objective_attack,owner) //RUN AWAY.
 				owner.movement_flags = MOVEMENT_RUNNING
 				return TRUE
 

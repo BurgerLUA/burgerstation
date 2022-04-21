@@ -36,7 +36,7 @@
 		if(rad) . += adjust_loss(RAD,rad)
 		if(sanity)
 			. += adjust_loss(SANITY,sanity)
-			var/sanity_loss = get_loss(SANITY)
+			var/sanity_loss = damage[SANITY]
 			if(sanity_loss >= 100)
 				if(!A.has_status_effect(STRESSED))
 					A.add_status_effect(STRESSED,-1,-1)
@@ -131,6 +131,8 @@
 	damage[BURN] = 0
 	damage[RAD] = 0
 	damage[PAIN] = 0
+
+	//TODO: MAKE PAIN BLOCK ORGAN DAMAGE.
 
 	for(var/k in A.organs)
 		var/obj/item/organ/O = k

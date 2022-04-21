@@ -77,7 +77,7 @@
 	if(dead)
 		to_chat(span("warning","You're already resting... in peace."))
 		return FALSE
-	if(has_status_effect(REST) && get_status_effect_duration(REST) == -1)
+	if(STATUS_EFFECT_DURATION(src,REST) == -1)
 		PROGRESS_BAR(src,src,3,.proc/remove_status_effect,REST)
 	else
 		add_status_effect(REST,-1,-2, force = TRUE)

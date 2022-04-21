@@ -55,6 +55,7 @@
 
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)
+		. *= 1 + (health.damage[PAIN]/health.health_max)
 
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)

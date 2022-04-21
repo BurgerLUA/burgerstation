@@ -25,7 +25,7 @@
 
 	return ..()
 
-/mob/living/proc/send_pain(var/pain_strength=50)
+/mob/living/proc/send_pain_response(var/pain_strength=50)
 	if(!has_trait(/trait/pain_tolerant))
 		if(pain_strength < 75)
 			do_emote("pain")

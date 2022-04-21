@@ -46,14 +46,14 @@
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
 		L.add_status_effect(ADRENALINE,strength,-1)
 
 /reagent/medicine/adrenaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
 		L.remove_status_effect(ADRENALINE)
 
 /reagent/medicine/adrenaline/epinephrine

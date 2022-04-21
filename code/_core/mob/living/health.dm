@@ -5,7 +5,7 @@
 
 	var/health_added = 0
 	if(has_status_effect(UNDYING))
-		health_added += get_status_effect_magnitude(UNDYING)
+		health_added += STATUS_EFFECT_MAGNITUDE(src,UNDYING)
 
 	if((health.health_current + health_added) <= death_threshold)
 		return TRUE
@@ -78,8 +78,8 @@
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon,atom_to_butcher)
 
 	if(!dead && has_status_effect(PARRIED))
-		var/stun_duration = get_status_effect_duration(STUN)*2
-		var/stun_magnitude = get_status_effect_magnitude(STUN)*2
+		var/stun_duration = STATUS_EFFECT_DURATION(src,STUN)*2
+		var/stun_magnitude = STATUS_EFFECT_MAGNITUDE(src,STUN)*2
 		remove_status_effect(PARRIED)
 		add_status_effect(STUN,stun_magnitude,stun_duration)
 
@@ -227,6 +227,7 @@
 		if(PAIN)
 			add_status_effect(STUN,30,30)
 			play_sound('sound/effects/impacts/savage_pain.ogg',T,volume=80)
+			send_pain_response(1000)
 		if(ION)
 			add_status_effect(PARALYZE,30,30)
 			play_sound('sound/effects/impacts/savage_ion.ogg',T,volume=80)

@@ -176,15 +176,15 @@ client/proc/debug_variables(datum/D in world)
 			body += "<br><font size='1'><a href='?_src_=vars;datumedit=\ref[D];varnameedit=ckey'>[M.ckey ? M.ckey : "No ckey"]</a> / <a href='?_src_=vars;datumedit=\ref[D];varnameedit=real_name'>[M.name ? M.name : "No real name"]</a></font>"
 			body += {"
 			<br><font size='1'>
-			BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brute'>[M.health.get_loss(BRUTE)]</a>
-			FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fire'>[M.health.get_loss(BURN)]</a>
-			TOXIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=toxin'>[M.health.get_loss(TOX)]</a>
-			OXY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=oxygen'>[M.health.get_loss(OXY)]</a>
-			FATIGUE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fatigue'>[M.health.get_loss(FATIGUE)]</a>
-			SANITY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=sanity'>[M.health.get_loss(SANITY)]</a>
-			MENTAL:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mental'>[M.health.get_loss(MENTAL)]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.health.get_stamina_loss()]</a>
-			MANA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mana'>[M.health.get_mana_loss()]</a>
+			BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brute'>[M.health.damage[BRUTE]]</a>
+			FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fire'>[M.health.damage[BURN]]</a>
+			TOXIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=toxin'>[M.health.damage[TOX]]</a>
+			OXY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=oxygen'>[M.health.damage[OXY]]</a>
+			FATIGUE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fatigue'>[M.health.damage[FATIGUE]]</a>
+			SANITY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=sanity'>[M.health.damage[SANITY]]</a>
+			MENTAL:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mental'>[M.health.damage[MENTAL]]</a>
+			STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.health.stamina_max - M.health.stamina_current]</a>
+			MANA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mana'>[M.health.mana_max - M.health.mana_current]</a>
 			</font>
 			"}
 		else

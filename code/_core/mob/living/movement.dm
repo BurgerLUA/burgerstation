@@ -135,7 +135,7 @@
 		if(grabbing_hand)
 			resist()
 			return FALSE
-		if(get_status_effect_magnitude(SLEEP) == -1)
+		if(STATUS_EFFECT_MAGNITUDE(src,SLEEP) == -1)
 			remove_status_effect(SLEEP)
 			return FALSE
 

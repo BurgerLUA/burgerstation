@@ -3,7 +3,7 @@
 	. = ..()
 
 	if(has_status_effect(DRUGGY))
-		var/drug_mod = get_status_effect_magnitude(DRUGGY) * min(1,get_status_effect_duration(DRUGGY)/60)
+		var/drug_mod = STATUS_EFFECT_MAGNITUDE(src,DRUGGY) * min(1,STATUS_EFFECT_DURATION(src,DRUGGY)/60)
 		if(drug_mod >= 80)
 			sight |= SEE_OBJS
 			if(drug_mod >= 100)

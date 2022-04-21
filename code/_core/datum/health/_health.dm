@@ -106,15 +106,6 @@
 		return new_value - old_value
 	return 0
 
-/health/proc/get_loss(var/damage_type)
-	return damage[damage_type]
-
-/health/proc/get_stamina_loss()
-	return stamina_max - stamina_current
-
-/health/proc/get_mana_loss()
-	return mana_max - mana_current
-
 /health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
 	health_current = get_overall_health()
 	return TRUE

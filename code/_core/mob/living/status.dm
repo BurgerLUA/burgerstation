@@ -109,9 +109,3 @@
 		if(src.status_effects[status_type])
 			return TRUE
 	return FALSE
-
-/mob/living/proc/get_status_effect_duration(var/status_type)
-	return status_effects[status_type] ? status_effects[status_type]["duration"] : 0
-
-/mob/living/proc/get_status_effect_magnitude(var/status_type)
-	return status_effects[status_type] ? status_effects[status_type]["magnitude"] : 0

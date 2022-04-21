@@ -133,6 +133,7 @@
 #include "code\__helpers\recursive.dm"
 #include "code\__helpers\saving.dm"
 #include "code\__helpers\screen_location.dm"
+#include "code\__helpers\status.dm"
 #include "code\__helpers\subsystems.dm"
 #include "code\__helpers\text.dm"
 #include "code\__helpers\thinking.dm"

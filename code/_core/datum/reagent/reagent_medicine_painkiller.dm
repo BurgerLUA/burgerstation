@@ -16,14 +16,14 @@
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(PAINKILLER) <= strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,PAINKILLER) <= strength)
 		L.add_status_effect(PAINKILLER,strength,-1)
 
 /reagent/medicine/painkiller/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(PAINKILLER) <= strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,PAINKILLER) <= strength)
 		L.remove_status_effect(PAINKILLER)
 
 /reagent/medicine/painkiller/opium

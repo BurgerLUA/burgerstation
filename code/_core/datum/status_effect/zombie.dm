@@ -188,10 +188,9 @@
 	if(!is_advanced(A))
 		return FALSE
 
-
 	if(!A.dead)
-		if(A.health.health_current <= 0)
-			A.death()
+		if(A.health.health_current/A.health.health_max <= 0.5)
+			A.death() //Instant death.
 		else
 			return FALSE
 
