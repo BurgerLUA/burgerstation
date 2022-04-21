@@ -26,6 +26,8 @@
 
 	drop_sound = 'sound/items/drop/soda.ogg'
 
+	size = SIZE_1
+
 /obj/item/container/simple/can/click_self(var/mob/caller,location,control,params)
 
 	if(open) return ..()

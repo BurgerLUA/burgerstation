@@ -13,11 +13,16 @@
 
 	value = 10
 
-/obj/item/storage/kit/New(var/desired_loc)
+/obj/item/storage/kit/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
-	icon_state = "[initial(icon_state)][rand(1,4)]"
+	SAVEVAR("icon_state")
+
+/obj/item/storage/kit/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("icon_state")
 
 /obj/item/storage/kit/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/bandage(src)
@@ -35,6 +40,7 @@
 	icon_state = "brute"
 
 /obj/item/storage/kit/brute/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/storage/pillbottle/bicaridine_small(src)
 	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/bandage(src)
@@ -51,6 +57,7 @@
 	icon_state = "burn"
 
 /obj/item/storage/kit/burn/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/storage/pillbottle/kelotane_small(src)
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/container/healing/ointment(src)
@@ -67,6 +74,7 @@
 	icon_state = "toxin"
 
 /obj/item/storage/kit/toxin/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/container/syringe/hypodermic(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
@@ -84,6 +92,7 @@
 	icon_state = "oxy"
 
 /obj/item/storage/kit/oxy/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/container/blood_pack/full/o_negative(src)
 	new /obj/item/container/blood_pack/full/o_negative(src)
 	new /obj/item/container/blood_pack/full/o_negative(src)
@@ -99,6 +108,7 @@
 	icon_state = "tactical"
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/container/syringe/hypospray/combat(src)
 	new /obj/item/container/simple/beaker/bottle/medium/bicaridine(src)
 	new /obj/item/container/simple/beaker/bottle/medium/kelotane(src)
@@ -143,6 +153,7 @@
 	icon_state = "purple"
 
 /obj/item/storage/kit/advanced/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/container/healing/trauma_kit/advanced(src)
 	new /obj/item/container/healing/burn_kit/advanced(src)
 	new /obj/item/container/spray/synthflesh(src)
@@ -160,6 +171,7 @@
 	icon_state = "rad"
 
 /obj/item/storage/kit/rad/filled/fill_inventory()
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
 	new /obj/item/storage/pillbottle/potassium_iodide_small(src)

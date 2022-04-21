@@ -5,7 +5,7 @@
 
 	value = 800
 	icon = 'icons/obj/item/container/hypospray.dmi'
-	icon_state = "combat_hypo"
+	icon_state = "hypo"
 
 	injection_sound = 'sound/effects/stimpack.ogg'
 
@@ -25,8 +25,8 @@
 	desc_extended = "A sterile, reusuable air-needle autoinjector for rapid administration of drugs to patients. About half the size of a regular hypospray, and just as powerful. Injects up to 30 units at a time, instantly."
 
 	value = 1600
-	icon = 'icons/obj/item/container/hypospray.dmi'
-	icon_state = "hypo"
+	icon = 'icons/obj/item/container/hypospray_combat.dmi'
+	icon_state = "combat_hypo"
 
 	injection_sound = 'sound/effects/stimpack.ogg'
 

@@ -16,6 +16,7 @@
 
 	var/treatment_time_mul = 1
 
+	amount = 0 //This gets generated.
 	amount_max = 10
 
 	var/icon_state_max = 3
@@ -25,6 +26,13 @@
 	var/override_icon_state = FALSE
 
 	var/organic = TRUE //Set to true if heals robotic limbs and not organic limbs.
+
+	size = SIZE_1
+
+/obj/item/container/healing/Generate()
+	if(amount == 0)
+		amount = amount_max
+	. = ..()
 
 /obj/item/container/healing/Initialize(var/desired_loc)
 

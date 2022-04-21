@@ -1557,6 +1557,7 @@
 #include "code\_core\obj\item\storage\heavy\cupboard.dm"
 #include "code\_core\obj\item\storage\heavy\fridge.dm"
 #include "code\_core\obj\item\storage\kits\_kits.dm"
+#include "code\_core\obj\item\storage\kits\kits_small.dm"
 #include "code\_core\obj\item\tempering\_tempering.dm"
 #include "code\_core\obj\item\tempering\tempering_luck.dm"
 #include "code\_core\obj\item\tempering\tempering_magazine.dm"

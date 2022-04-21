@@ -24,6 +24,8 @@
 
 	value = 0
 
+	size = SIZE_2
+
 /obj/item/container/simple/beaker/Finalize()
 	. = ..()
 	update_sprite()

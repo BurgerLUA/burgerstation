@@ -75,20 +75,20 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(get_dist(src,I) > 1)
 			I.close_inventory(src)
 
-	if(. && isturf(loc))
+	if(. && isturf(loc) && !horizontal)
 		var/obj/item/organ/sent_pain
 		for(var/k in movement_organs)
 			var/obj/item/organ/O = labeled_organs[k]
 			if(O && O.health && O.broken && prob(80))
 				O.health.adjust_loss_smart(pain=1)
 				sent_pain = O
-		if(!prob(80) && sent_pain)
+		if(prob(5) && sent_pain)
 			if(sent_pain.health.health_current <= 0)
 				src.to_chat(span("danger","Your broken [sent_pain.name] causes you to collapse!"))
-				src.add_status_effect(STUN,30)
+				src.add_status_effect(STUN,30,stealthy=TRUE)
 			else
-				src.to_chat(span("danger","Your broken [sent_pain.name] struggles to keep you upright!"))
-				src.add_status_effect(STAGGER,10)
+				src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
+				src.add_status_effect(STAGGER,10,stealthy=TRUE)
 
 	if(. && isturf(old_loc))
 		var/turf/T = old_loc

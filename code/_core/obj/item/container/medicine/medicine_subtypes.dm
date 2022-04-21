@@ -105,7 +105,7 @@
 
 	value = 120
 
-	organic = FALSE
+	organic = TRUE
 
 /obj/item/container/healing/bone_gel/treat(var/mob/caller,var/atom/A)
 
