@@ -178,7 +178,9 @@
 		var/mob/living/advanced/A = loc
 
 		if(health)
-			if(can_be_broken && !broken && SAFENUM(damage_table[BLUNT]) > health.health_max - health.get_loss(BRUTE))
+			if(broken)
+				health.adjust_loss_smart(pain=damage_amount*0.25)
+			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.get_loss(BRUTE) <= SAFENUM(damage_table[BLUNT]))
 				break_bone()
 			if(A.blood_type)
 				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
